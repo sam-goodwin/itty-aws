@@ -3522,8 +3522,8 @@ export const createBucket: API.OperationMethod<
   CreateBucketError,
   ChronosphereOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2, __c0, 2) as any as S.Schema<CreateBucketRequest>,
-  output: __S(4, __c0, 4) as any as S.Schema<Configv1CreateBucketResponse>,
+  input: __S(4032, __c126, 0) as any as S.Schema<CreateBucketRequest>,
+  output: __S(4160, __c130, 0) as any as S.Schema<Configv1CreateBucketResponse>,
   errors: [BadRequest, Conflict, UnknownChronosphereError],
   protocol: ChronosphereProtocol,
   retry: Retry.Retry,
@@ -3536,8 +3536,8 @@ export const createClassicDashboard: API.OperationMethod<
   CreateClassicDashboardError,
   ChronosphereOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(7, __c0, 7) as any as S.Schema<CreateClassicDashboardRequest>,
-  output: __S(9, __c1, 1) as any as S.Schema<Configv1CreateClassicDashboardResponse>,
+  input: __S(4896, __c153, 0) as any as S.Schema<CreateClassicDashboardRequest>,
+  output: __S(5024, __c157, 0) as any as S.Schema<Configv1CreateClassicDashboardResponse>,
   errors: [BadRequest, Conflict, UnknownChronosphereError],
   protocol: ChronosphereProtocol,
   retry: Retry.Retry,
@@ -3550,8 +3550,8 @@ export const createCollection: API.OperationMethod<
   CreateCollectionError,
   ChronosphereOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(11, __c1, 3) as any as S.Schema<CreateCollectionRequest>,
-  output: __S(13, __c1, 5) as any as S.Schema<Configv1CreateCollectionResponse>,
+  input: __S(5376, __c168, 0) as any as S.Schema<CreateCollectionRequest>,
+  output: __S(5472, __c171, 0) as any as S.Schema<Configv1CreateCollectionResponse>,
   errors: [BadRequest, Conflict, UnknownChronosphereError],
   protocol: ChronosphereProtocol,
   retry: Retry.Retry,
@@ -3564,8 +3564,8 @@ export const createDashboard: API.OperationMethod<
   CreateDashboardError,
   ChronosphereOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(15, __c1, 7) as any as S.Schema<CreateDashboardRequest>,
-  output: __S(17, __c2, 1) as any as S.Schema<Configv1CreateDashboardResponse>,
+  input: __S(5824, __c182, 0) as any as S.Schema<CreateDashboardRequest>,
+  output: __S(5920, __c185, 0) as any as S.Schema<Configv1CreateDashboardResponse>,
   errors: [BadRequest, Conflict, UnknownChronosphereError],
   protocol: ChronosphereProtocol,
   retry: Retry.Retry,
@@ -3578,8 +3578,8 @@ export const createDataset: API.OperationMethod<
   CreateDatasetError,
   ChronosphereOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(35, __c4, 3) as any as S.Schema<CreateDatasetRequest>,
-  output: __S(37, __c4, 5) as any as S.Schema<Configv1CreateDatasetResponse>,
+  input: __S(6336, __c198, 0) as any as S.Schema<CreateDatasetRequest>,
+  output: __S(6528, __c204, 0) as any as S.Schema<Configv1CreateDatasetResponse>,
   errors: [BadRequest, Conflict, UnknownChronosphereError],
   protocol: ChronosphereProtocol,
   retry: Retry.Retry,
@@ -3592,8 +3592,8 @@ export const createDerivedLabel: API.OperationMethod<
   CreateDerivedLabelError,
   ChronosphereOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(50, __c6, 2) as any as S.Schema<CreateDerivedLabelRequest>,
-  output: __S(52, __c6, 4) as any as S.Schema<Configv1CreateDerivedLabelResponse>,
+  input: __S(6880, __c215, 0) as any as S.Schema<CreateDerivedLabelRequest>,
+  output: __S(7008, __c219, 0) as any as S.Schema<Configv1CreateDerivedLabelResponse>,
   errors: [BadRequest, Conflict, UnknownChronosphereError],
   protocol: ChronosphereProtocol,
   retry: Retry.Retry,
@@ -3606,8 +3606,8 @@ export const createDerivedMetric: API.OperationMethod<
   CreateDerivedMetricError,
   ChronosphereOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(62, __c7, 6) as any as S.Schema<CreateDerivedMetricRequest>,
-  output: __S(64, __c8, 0) as any as S.Schema<Configv1CreateDerivedMetricResponse>,
+  input: __S(7360, __c230, 0) as any as S.Schema<CreateDerivedMetricRequest>,
+  output: __S(7488, __c234, 0) as any as S.Schema<Configv1CreateDerivedMetricResponse>,
   errors: [BadRequest, Conflict, UnknownChronosphereError],
   protocol: ChronosphereProtocol,
   retry: Retry.Retry,
@@ -3620,8 +3620,8 @@ export const createDropRule: API.OperationMethod<
   CreateDropRuleError,
   ChronosphereOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(68, __c8, 4) as any as S.Schema<CreateDropRuleRequest>,
-  output: __S(70, __c8, 6) as any as S.Schema<Configv1CreateDropRuleResponse>,
+  input: __S(0, __c0, 0) as any as S.Schema<CreateDropRuleRequest>,
+  output: __S(96, __c3, 0) as any as S.Schema<Configv1CreateDropRuleResponse>,
   errors: [BadRequest, Conflict, UnknownChronosphereError],
   protocol: ChronosphereProtocol,
   retry: Retry.Retry,
@@ -3634,8 +3634,8 @@ export const createGcpMetricsIntegration: API.OperationMethod<
   CreateGcpMetricsIntegrationError,
   ChronosphereOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(75, __c9, 3) as any as S.Schema<CreateGcpMetricsIntegrationRequest>,
-  output: __S(77, __c9, 5) as any as S.Schema<Configv1CreateGcpMetricsIntegrationResponse>,
+  input: __S(448, __c14, 0) as any as S.Schema<CreateGcpMetricsIntegrationRequest>,
+  output: __S(544, __c17, 0) as any as S.Schema<Configv1CreateGcpMetricsIntegrationResponse>,
   errors: [BadRequest, Conflict, UnknownChronosphereError],
   protocol: ChronosphereProtocol,
   retry: Retry.Retry,
@@ -3648,8 +3648,8 @@ export const createGrafanaDashboard: API.OperationMethod<
   CreateGrafanaDashboardError,
   ChronosphereOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(78, __c9, 6) as any as S.Schema<CreateGrafanaDashboardRequest>,
-  output: __S(79, __c9, 7) as any as S.Schema<Configv1CreateGrafanaDashboardResponse>,
+  input: __S(896, __c28, 0) as any as S.Schema<CreateGrafanaDashboardRequest>,
+  output: __S(928, __c29, 0) as any as S.Schema<Configv1CreateGrafanaDashboardResponse>,
   errors: [BadRequest, Conflict, UnknownChronosphereError],
   protocol: ChronosphereProtocol,
   retry: Retry.Retry,
@@ -3662,8 +3662,8 @@ export const createLogAllocationConfig: API.OperationMethod<
   CreateLogAllocationConfigError,
   ChronosphereOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(87, __c10, 7) as any as S.Schema<CreateLogAllocationConfigRequest>,
-  output: __S(89, __c11, 1) as any as S.Schema<Configv1CreateLogAllocationConfigResponse>,
+  input: __S(1280, __c40, 0) as any as S.Schema<CreateLogAllocationConfigRequest>,
+  output: __S(1319, __c41, 7) as any as S.Schema<Configv1CreateLogAllocationConfigResponse>,
   errors: [BadRequest, Conflict, UnknownChronosphereError],
   protocol: ChronosphereProtocol,
   retry: Retry.Retry,
@@ -3676,8 +3676,8 @@ export const createLogIngestConfig: API.OperationMethod<
   CreateLogIngestConfigError,
   ChronosphereOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(93, __c11, 5) as any as S.Schema<CreateLogIngestConfigRequest>,
-  output: __S(95, __c11, 7) as any as S.Schema<Configv1CreateLogIngestConfigResponse>,
+  input: __S(1696, __c53, 0) as any as S.Schema<CreateLogIngestConfigRequest>,
+  output: __S(1731, __c54, 3) as any as S.Schema<Configv1CreateLogIngestConfigResponse>,
   errors: [BadRequest, Conflict, UnknownChronosphereError],
   protocol: ChronosphereProtocol,
   retry: Retry.Retry,
@@ -3690,8 +3690,8 @@ export const createLogScaleAction: API.OperationMethod<
   CreateLogScaleActionError,
   ChronosphereOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(106, __c13, 2) as any as S.Schema<CreateLogScaleActionRequest>,
-  output: __S(108, __c13, 4) as any as S.Schema<Configv1CreateLogScaleActionResponse>,
+  input: __S(2112, __c66, 0) as any as S.Schema<CreateLogScaleActionRequest>,
+  output: __S(2144, __c67, 0) as any as S.Schema<Configv1CreateLogScaleActionResponse>,
   errors: [BadRequest, Conflict, UnknownChronosphereError],
   protocol: ChronosphereProtocol,
   retry: Retry.Retry,
@@ -3704,8 +3704,8 @@ export const createLogScaleAlert: API.OperationMethod<
   CreateLogScaleAlertError,
   ChronosphereOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(110, __c13, 6) as any as S.Schema<CreateLogScaleAlertRequest>,
-  output: __S(112, __c14, 0) as any as S.Schema<Configv1CreateLogScaleAlertResponse>,
+  input: __S(2304, __c72, 0) as any as S.Schema<CreateLogScaleAlertRequest>,
+  output: __S(2336, __c73, 0) as any as S.Schema<Configv1CreateLogScaleAlertResponse>,
   errors: [BadRequest, Conflict, UnknownChronosphereError],
   protocol: ChronosphereProtocol,
   retry: Retry.Retry,
@@ -3718,8 +3718,8 @@ export const createMappingRule: API.OperationMethod<
   CreateMappingRuleError,
   ChronosphereOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(116, __c14, 4) as any as S.Schema<CreateMappingRuleRequest>,
-  output: __S(118, __c14, 6) as any as S.Schema<Configv1CreateMappingRuleResponse>,
+  input: __S(2432, __c76, 0) as any as S.Schema<CreateMappingRuleRequest>,
+  output: __S(2464, __c77, 0) as any as S.Schema<Configv1CreateMappingRuleResponse>,
   errors: [BadRequest, Conflict, UnknownChronosphereError],
   protocol: ChronosphereProtocol,
   retry: Retry.Retry,
@@ -3732,8 +3732,8 @@ export const createMonitor: API.OperationMethod<
   CreateMonitorError,
   ChronosphereOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(135, __c16, 7) as any as S.Schema<CreateMonitorRequest>,
-  output: __S(137, __c17, 1) as any as S.Schema<Configv1CreateMonitorResponse>,
+  input: __S(2592, __c81, 0) as any as S.Schema<CreateMonitorRequest>,
+  output: __S(2624, __c82, 0) as any as S.Schema<Configv1CreateMonitorResponse>,
   errors: [BadRequest, Conflict, UnknownChronosphereError],
   protocol: ChronosphereProtocol,
   retry: Retry.Retry,
@@ -3746,8 +3746,8 @@ export const createMutingRule: API.OperationMethod<
   CreateMutingRuleError,
   ChronosphereOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(139, __c17, 3) as any as S.Schema<CreateMutingRuleRequest>,
-  output: __S(141, __c17, 5) as any as S.Schema<Configv1CreateMutingRuleResponse>,
+  input: __S(2784, __c87, 0) as any as S.Schema<CreateMutingRuleRequest>,
+  output: __S(2816, __c88, 0) as any as S.Schema<Configv1CreateMutingRuleResponse>,
   errors: [BadRequest, Conflict, UnknownChronosphereError],
   protocol: ChronosphereProtocol,
   retry: Retry.Retry,
@@ -3760,8 +3760,8 @@ export const createNotificationPolicy: API.OperationMethod<
   CreateNotificationPolicyError,
   ChronosphereOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(149, __c18, 5) as any as S.Schema<CreateNotificationPolicyRequest>,
-  output: __S(151, __c18, 7) as any as S.Schema<Configv1CreateNotificationPolicyResponse>,
+  input: __S(2912, __c91, 0) as any as S.Schema<CreateNotificationPolicyRequest>,
+  output: __S(2944, __c92, 0) as any as S.Schema<Configv1CreateNotificationPolicyResponse>,
   errors: [BadRequest, Conflict, UnknownChronosphereError],
   protocol: ChronosphereProtocol,
   retry: Retry.Retry,
@@ -3774,8 +3774,8 @@ export const createNotifier: API.OperationMethod<
   CreateNotifierError,
   ChronosphereOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(173, __c21, 5) as any as S.Schema<CreateNotifierRequest>,
-  output: __S(175, __c21, 7) as any as S.Schema<Configv1CreateNotifierResponse>,
+  input: __S(3040, __c95, 0) as any as S.Schema<CreateNotifierRequest>,
+  output: __S(3072, __c96, 0) as any as S.Schema<Configv1CreateNotifierResponse>,
   errors: [BadRequest, Conflict, UnknownChronosphereError],
   protocol: ChronosphereProtocol,
   retry: Retry.Retry,
@@ -3788,8 +3788,8 @@ export const createOtelMetricsIngestion: API.OperationMethod<
   CreateOtelMetricsIngestionError,
   ChronosphereOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(178, __c22, 2) as any as S.Schema<CreateOtelMetricsIngestionRequest>,
-  output: __S(180, __c22, 4) as any as S.Schema<Configv1CreateOtelMetricsIngestionResponse>,
+  input: __S(3168, __c99, 0) as any as S.Schema<CreateOtelMetricsIngestionRequest>,
+  output: __S(3202, __c100, 2) as any as S.Schema<Configv1CreateOtelMetricsIngestionResponse>,
   errors: [BadRequest, Conflict, UnknownChronosphereError],
   protocol: ChronosphereProtocol,
   retry: Retry.Retry,
@@ -3802,8 +3802,8 @@ export const createRecordingRule: API.OperationMethod<
   CreateRecordingRuleError,
   ChronosphereOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(183, __c22, 7) as any as S.Schema<CreateRecordingRuleRequest>,
-  output: __S(185, __c23, 1) as any as S.Schema<Configv1CreateRecordingRuleResponse>,
+  input: __S(3264, __c102, 0) as any as S.Schema<CreateRecordingRuleRequest>,
+  output: __S(3296, __c103, 0) as any as S.Schema<Configv1CreateRecordingRuleResponse>,
   errors: [BadRequest, Conflict, UnknownChronosphereError],
   protocol: ChronosphereProtocol,
   retry: Retry.Retry,
@@ -3817,8 +3817,8 @@ export const createResourcePools: API.OperationMethod<
   CreateResourcePoolsError,
   ChronosphereOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(197, __c24, 5) as any as S.Schema<CreateResourcePoolsRequest>,
-  output: __S(199, __c24, 7) as any as S.Schema<Configv1CreateResourcePoolsResponse>,
+  input: __S(3392, __c106, 0) as any as S.Schema<CreateResourcePoolsRequest>,
+  output: __S(3435, __c107, 11) as any as S.Schema<Configv1CreateResourcePoolsResponse>,
   errors: [BadRequest, Conflict, UnknownChronosphereError],
   protocol: ChronosphereProtocol,
   retry: Retry.Retry,
@@ -3831,8 +3831,8 @@ export const createRollupRule: API.OperationMethod<
   CreateRollupRuleError,
   ChronosphereOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(205, __c25, 5) as any as S.Schema<CreateRollupRuleRequest>,
-  output: __S(207, __c25, 7) as any as S.Schema<Configv1CreateRollupRuleResponse>,
+  input: __S(3488, __c109, 0) as any as S.Schema<CreateRollupRuleRequest>,
+  output: __S(3520, __c110, 0) as any as S.Schema<Configv1CreateRollupRuleResponse>,
   errors: [BadRequest, Conflict, UnknownChronosphereError],
   protocol: ChronosphereProtocol,
   retry: Retry.Retry,
@@ -3845,8 +3845,8 @@ export const createServiceAccount: API.OperationMethod<
   CreateServiceAccountError,
   ChronosphereOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(210, __c26, 2) as any as S.Schema<CreateServiceAccountRequest>,
-  output: __S(212, __c26, 4) as any as S.Schema<Configv1CreateServiceAccountResponse>,
+  input: __S(3617, __c113, 1) as any as S.Schema<CreateServiceAccountRequest>,
+  output: __S(3648, __c114, 0) as any as S.Schema<Configv1CreateServiceAccountResponse>,
   errors: [BadRequest, Conflict, UnknownChronosphereError],
   protocol: ChronosphereProtocol,
   retry: Retry.Retry,
@@ -3859,8 +3859,8 @@ export const createSLO: API.OperationMethod<
   CreateSLOError,
   ChronosphereOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(222, __c27, 6) as any as S.Schema<CreateSLORequest>,
-  output: __S(224, __c28, 0) as any as S.Schema<Configv1CreateSLOResponse>,
+  input: __S(3712, __c116, 0) as any as S.Schema<CreateSLORequest>,
+  output: __S(3745, __c117, 1) as any as S.Schema<Configv1CreateSLOResponse>,
   errors: [BadRequest, Conflict, UnknownChronosphereError],
   protocol: ChronosphereProtocol,
   retry: Retry.Retry,
@@ -3873,8 +3873,8 @@ export const createTeam: API.OperationMethod<
   CreateTeamError,
   ChronosphereOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(226, __c28, 2) as any as S.Schema<CreateTeamRequest>,
-  output: __S(228, __c28, 4) as any as S.Schema<Configv1CreateTeamResponse>,
+  input: __S(3808, __c119, 0) as any as S.Schema<CreateTeamRequest>,
+  output: __S(3841, __c120, 1) as any as S.Schema<Configv1CreateTeamResponse>,
   errors: [BadRequest, Conflict, UnknownChronosphereError],
   protocol: ChronosphereProtocol,
   retry: Retry.Retry,
@@ -3887,8 +3887,8 @@ export const createTraceBehavior: API.OperationMethod<
   CreateTraceBehaviorError,
   ChronosphereOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(234, __c29, 2) as any as S.Schema<CreateTraceBehaviorRequest>,
-  output: __S(236, __c29, 4) as any as S.Schema<Configv1CreateTraceBehaviorResponse>,
+  input: __S(3904, __c122, 0) as any as S.Schema<CreateTraceBehaviorRequest>,
+  output: __S(3936, __c123, 0) as any as S.Schema<Configv1CreateTraceBehaviorResponse>,
   errors: [BadRequest, Conflict, UnknownChronosphereError],
   protocol: ChronosphereProtocol,
   retry: Retry.Retry,
@@ -3901,8 +3901,8 @@ export const createTraceBehaviorConfig: API.OperationMethod<
   CreateTraceBehaviorConfigError,
   ChronosphereOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(243, __c30, 3) as any as S.Schema<CreateTraceBehaviorConfigRequest>,
-  output: __S(245, __c30, 5) as any as S.Schema<Configv1CreateTraceBehaviorConfigResponse>,
+  input: __S(4192, __c131, 0) as any as S.Schema<CreateTraceBehaviorConfigRequest>,
+  output: __S(4229, __c132, 5) as any as S.Schema<Configv1CreateTraceBehaviorConfigResponse>,
   errors: [BadRequest, Conflict, UnknownChronosphereError],
   protocol: ChronosphereProtocol,
   retry: Retry.Retry,
@@ -3918,11 +3918,11 @@ export const createTraceJaegerRemoteSamplingStrategy: API.OperationMethod<
   CreateTraceJaegerRemoteSamplingStrategyError,
   ChronosphereOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(253, __c31, 5) as any as S.Schema<CreateTraceJaegerRemoteSamplingStrategyRequest>,
+  input: __S(4288, __c134, 0) as any as S.Schema<CreateTraceJaegerRemoteSamplingStrategyRequest>,
   output: __S(
-    255,
-    __c31,
-    7,
+    4320,
+    __c135,
+    0,
   ) as any as S.Schema<Configv1CreateTraceJaegerRemoteSamplingStrategyResponse>,
   errors: [BadRequest, Conflict, UnknownChronosphereError],
   protocol: ChronosphereProtocol,
@@ -3937,8 +3937,8 @@ export const createTraceMetricsRule: API.OperationMethod<
   CreateTraceMetricsRuleError,
   ChronosphereOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(261, __c32, 5) as any as S.Schema<CreateTraceMetricsRuleRequest>,
-  output: __S(263, __c32, 7) as any as S.Schema<Configv1CreateTraceMetricsRuleResponse>,
+  input: __S(4416, __c138, 0) as any as S.Schema<CreateTraceMetricsRuleRequest>,
+  output: __S(4448, __c139, 0) as any as S.Schema<Configv1CreateTraceMetricsRuleResponse>,
   errors: [BadRequest, Conflict, UnknownChronosphereError],
   protocol: ChronosphereProtocol,
   retry: Retry.Retry,
@@ -3952,8 +3952,8 @@ export const createTraceTailSamplingRules: API.OperationMethod<
   CreateTraceTailSamplingRulesError,
   ChronosphereOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(268, __c33, 4) as any as S.Schema<CreateTraceTailSamplingRulesRequest>,
-  output: __S(270, __c33, 6) as any as S.Schema<Configv1CreateTraceTailSamplingRulesResponse>,
+  input: __S(4544, __c142, 0) as any as S.Schema<CreateTraceTailSamplingRulesRequest>,
+  output: __S(4580, __c143, 4) as any as S.Schema<Configv1CreateTraceTailSamplingRulesResponse>,
   errors: [BadRequest, Conflict, UnknownChronosphereError],
   protocol: ChronosphereProtocol,
   retry: Retry.Retry,
@@ -3966,8 +3966,8 @@ export const deleteBucket: API.OperationMethod<
   DeleteBucketError,
   ChronosphereOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(271, __c33, 7) as any as S.Schema<DeleteBucketRequest>,
-  output: __S(274, __c34, 2) as any as S.Schema<Configv1DeleteBucketResponse>,
+  input: __S(4640, __c145, 0) as any as S.Schema<DeleteBucketRequest>,
+  output: __S(4643, __c145, 3) as any as S.Schema<Configv1DeleteBucketResponse>,
   errors: [BadRequest, NotFound, UnknownChronosphereError],
   protocol: ChronosphereProtocol,
   retry: Retry.Retry,
@@ -3980,8 +3980,8 @@ export const deleteClassicDashboard: API.OperationMethod<
   DeleteClassicDashboardError,
   ChronosphereOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(275, __c34, 3) as any as S.Schema<DeleteClassicDashboardRequest>,
-  output: __S(276, __c34, 4) as any as S.Schema<DeleteClassicDashboardResponse>,
+  input: __S(4672, __c146, 0) as any as S.Schema<DeleteClassicDashboardRequest>,
+  output: __S(4704, __c147, 0) as any as S.Schema<DeleteClassicDashboardResponse>,
   errors: [BadRequest, NotFound, UnknownChronosphereError],
   protocol: ChronosphereProtocol,
   retry: Retry.Retry,
@@ -3994,8 +3994,8 @@ export const deleteCollection: API.OperationMethod<
   DeleteCollectionError,
   ChronosphereOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(277, __c34, 5) as any as S.Schema<DeleteCollectionRequest>,
-  output: __S(278, __c34, 6) as any as S.Schema<DeleteCollectionResponse>,
+  input: __S(4736, __c148, 0) as any as S.Schema<DeleteCollectionRequest>,
+  output: __S(4768, __c149, 0) as any as S.Schema<DeleteCollectionResponse>,
   errors: [BadRequest, NotFound, UnknownChronosphereError],
   protocol: ChronosphereProtocol,
   retry: Retry.Retry,
@@ -4008,8 +4008,8 @@ export const deleteDashboard: API.OperationMethod<
   DeleteDashboardError,
   ChronosphereOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(279, __c34, 7) as any as S.Schema<DeleteDashboardRequest>,
-  output: __S(278, __c34, 6) as any as S.Schema<DeleteDashboardResponse>,
+  input: __S(4800, __c150, 0) as any as S.Schema<DeleteDashboardRequest>,
+  output: __S(4768, __c149, 0) as any as S.Schema<DeleteDashboardResponse>,
   errors: [BadRequest, NotFound, UnknownChronosphereError],
   protocol: ChronosphereProtocol,
   retry: Retry.Retry,
@@ -4022,8 +4022,8 @@ export const deleteDataset: API.OperationMethod<
   DeleteDatasetError,
   ChronosphereOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(280, __c35, 0) as any as S.Schema<DeleteDatasetRequest>,
-  output: __S(278, __c34, 6) as any as S.Schema<DeleteDatasetResponse>,
+  input: __S(4832, __c151, 0) as any as S.Schema<DeleteDatasetRequest>,
+  output: __S(4768, __c149, 0) as any as S.Schema<DeleteDatasetResponse>,
   errors: [BadRequest, NotFound, UnknownChronosphereError],
   protocol: ChronosphereProtocol,
   retry: Retry.Retry,
@@ -4036,8 +4036,8 @@ export const deleteDerivedLabel: API.OperationMethod<
   DeleteDerivedLabelError,
   ChronosphereOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(281, __c35, 1) as any as S.Schema<DeleteDerivedLabelRequest>,
-  output: __S(276, __c34, 4) as any as S.Schema<DeleteDerivedLabelResponse>,
+  input: __S(4864, __c152, 0) as any as S.Schema<DeleteDerivedLabelRequest>,
+  output: __S(4704, __c147, 0) as any as S.Schema<DeleteDerivedLabelResponse>,
   errors: [BadRequest, NotFound, UnknownChronosphereError],
   protocol: ChronosphereProtocol,
   retry: Retry.Retry,
@@ -4050,8 +4050,8 @@ export const deleteDerivedMetric: API.OperationMethod<
   DeleteDerivedMetricError,
   ChronosphereOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(282, __c35, 2) as any as S.Schema<DeleteDerivedMetricRequest>,
-  output: __S(276, __c34, 4) as any as S.Schema<DeleteDerivedMetricResponse>,
+  input: __S(5056, __c158, 0) as any as S.Schema<DeleteDerivedMetricRequest>,
+  output: __S(4704, __c147, 0) as any as S.Schema<DeleteDerivedMetricResponse>,
   errors: [BadRequest, NotFound, UnknownChronosphereError],
   protocol: ChronosphereProtocol,
   retry: Retry.Retry,
@@ -4064,8 +4064,8 @@ export const deleteDropRule: API.OperationMethod<
   DeleteDropRuleError,
   ChronosphereOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(283, __c35, 3) as any as S.Schema<DeleteDropRuleRequest>,
-  output: __S(278, __c34, 6) as any as S.Schema<DeleteDropRuleResponse>,
+  input: __S(5088, __c159, 0) as any as S.Schema<DeleteDropRuleRequest>,
+  output: __S(4768, __c149, 0) as any as S.Schema<DeleteDropRuleResponse>,
   errors: [BadRequest, NotFound, UnknownChronosphereError],
   protocol: ChronosphereProtocol,
   retry: Retry.Retry,
@@ -4078,8 +4078,8 @@ export const deleteGcpMetricsIntegration: API.OperationMethod<
   DeleteGcpMetricsIntegrationError,
   ChronosphereOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(284, __c35, 4) as any as S.Schema<DeleteGcpMetricsIntegrationRequest>,
-  output: __S(276, __c34, 4) as any as S.Schema<DeleteGcpMetricsIntegrationResponse>,
+  input: __S(5120, __c160, 0) as any as S.Schema<DeleteGcpMetricsIntegrationRequest>,
+  output: __S(4704, __c147, 0) as any as S.Schema<DeleteGcpMetricsIntegrationResponse>,
   errors: [BadRequest, NotFound, UnknownChronosphereError],
   protocol: ChronosphereProtocol,
   retry: Retry.Retry,
@@ -4092,8 +4092,8 @@ export const deleteGrafanaDashboard: API.OperationMethod<
   DeleteGrafanaDashboardError,
   ChronosphereOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(285, __c35, 5) as any as S.Schema<DeleteGrafanaDashboardRequest>,
-  output: __S(276, __c34, 4) as any as S.Schema<DeleteGrafanaDashboardResponse>,
+  input: __S(5152, __c161, 0) as any as S.Schema<DeleteGrafanaDashboardRequest>,
+  output: __S(4704, __c147, 0) as any as S.Schema<DeleteGrafanaDashboardResponse>,
   errors: [BadRequest, NotFound, UnknownChronosphereError],
   protocol: ChronosphereProtocol,
   retry: Retry.Retry,
@@ -4106,8 +4106,8 @@ export const deleteLogAllocationConfig: API.OperationMethod<
   DeleteLogAllocationConfigError,
   ChronosphereOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(286, __c35, 6) as any as S.Schema<DeleteLogAllocationConfigRequest>,
-  output: __S(276, __c34, 4) as any as S.Schema<DeleteLogAllocationConfigResponse>,
+  input: __S(5184, __c162, 0) as any as S.Schema<DeleteLogAllocationConfigRequest>,
+  output: __S(4704, __c147, 0) as any as S.Schema<DeleteLogAllocationConfigResponse>,
   errors: [BadRequest, NotFound, UnknownChronosphereError],
   protocol: ChronosphereProtocol,
   retry: Retry.Retry,
@@ -4120,8 +4120,8 @@ export const deleteLogIngestConfig: API.OperationMethod<
   DeleteLogIngestConfigError,
   ChronosphereOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(287, __c35, 7) as any as S.Schema<DeleteLogIngestConfigRequest>,
-  output: __S(276, __c34, 4) as any as S.Schema<DeleteLogIngestConfigResponse>,
+  input: __S(5216, __c163, 0) as any as S.Schema<DeleteLogIngestConfigRequest>,
+  output: __S(4704, __c147, 0) as any as S.Schema<DeleteLogIngestConfigResponse>,
   errors: [BadRequest, NotFound, UnknownChronosphereError],
   protocol: ChronosphereProtocol,
   retry: Retry.Retry,
@@ -4134,8 +4134,8 @@ export const deleteLogScaleAction: API.OperationMethod<
   DeleteLogScaleActionError,
   ChronosphereOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(288, __c36, 0) as any as S.Schema<DeleteLogScaleActionRequest>,
-  output: __S(276, __c34, 4) as any as S.Schema<DeleteLogScaleActionResponse>,
+  input: __S(5248, __c164, 0) as any as S.Schema<DeleteLogScaleActionRequest>,
+  output: __S(4704, __c147, 0) as any as S.Schema<DeleteLogScaleActionResponse>,
   errors: [BadRequest, NotFound, UnknownChronosphereError],
   protocol: ChronosphereProtocol,
   retry: Retry.Retry,
@@ -4148,8 +4148,8 @@ export const deleteLogScaleAlert: API.OperationMethod<
   DeleteLogScaleAlertError,
   ChronosphereOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(289, __c36, 1) as any as S.Schema<DeleteLogScaleAlertRequest>,
-  output: __S(276, __c34, 4) as any as S.Schema<DeleteLogScaleAlertResponse>,
+  input: __S(5280, __c165, 0) as any as S.Schema<DeleteLogScaleAlertRequest>,
+  output: __S(4704, __c147, 0) as any as S.Schema<DeleteLogScaleAlertResponse>,
   errors: [BadRequest, NotFound, UnknownChronosphereError],
   protocol: ChronosphereProtocol,
   retry: Retry.Retry,
@@ -4162,8 +4162,8 @@ export const deleteMappingRule: API.OperationMethod<
   DeleteMappingRuleError,
   ChronosphereOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(290, __c36, 2) as any as S.Schema<DeleteMappingRuleRequest>,
-  output: __S(276, __c34, 4) as any as S.Schema<DeleteMappingRuleResponse>,
+  input: __S(5312, __c166, 0) as any as S.Schema<DeleteMappingRuleRequest>,
+  output: __S(4704, __c147, 0) as any as S.Schema<DeleteMappingRuleResponse>,
   errors: [BadRequest, NotFound, UnknownChronosphereError],
   protocol: ChronosphereProtocol,
   retry: Retry.Retry,
@@ -4176,8 +4176,8 @@ export const deleteMonitor: API.OperationMethod<
   DeleteMonitorError,
   ChronosphereOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(291, __c36, 3) as any as S.Schema<DeleteMonitorRequest>,
-  output: __S(278, __c34, 6) as any as S.Schema<DeleteMonitorResponse>,
+  input: __S(5344, __c167, 0) as any as S.Schema<DeleteMonitorRequest>,
+  output: __S(4768, __c149, 0) as any as S.Schema<DeleteMonitorResponse>,
   errors: [BadRequest, NotFound, UnknownChronosphereError],
   protocol: ChronosphereProtocol,
   retry: Retry.Retry,
@@ -4190,8 +4190,8 @@ export const deleteMutingRule: API.OperationMethod<
   DeleteMutingRuleError,
   ChronosphereOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(292, __c36, 4) as any as S.Schema<DeleteMutingRuleRequest>,
-  output: __S(278, __c34, 6) as any as S.Schema<DeleteMutingRuleResponse>,
+  input: __S(5504, __c172, 0) as any as S.Schema<DeleteMutingRuleRequest>,
+  output: __S(4768, __c149, 0) as any as S.Schema<DeleteMutingRuleResponse>,
   errors: [BadRequest, NotFound, UnknownChronosphereError],
   protocol: ChronosphereProtocol,
   retry: Retry.Retry,
@@ -4204,8 +4204,8 @@ export const deleteNotificationPolicy: API.OperationMethod<
   DeleteNotificationPolicyError,
   ChronosphereOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(293, __c36, 5) as any as S.Schema<DeleteNotificationPolicyRequest>,
-  output: __S(276, __c34, 4) as any as S.Schema<DeleteNotificationPolicyResponse>,
+  input: __S(5536, __c173, 0) as any as S.Schema<DeleteNotificationPolicyRequest>,
+  output: __S(4704, __c147, 0) as any as S.Schema<DeleteNotificationPolicyResponse>,
   errors: [BadRequest, NotFound, UnknownChronosphereError],
   protocol: ChronosphereProtocol,
   retry: Retry.Retry,
@@ -4218,8 +4218,8 @@ export const deleteNotifier: API.OperationMethod<
   DeleteNotifierError,
   ChronosphereOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(294, __c36, 6) as any as S.Schema<DeleteNotifierRequest>,
-  output: __S(278, __c34, 6) as any as S.Schema<DeleteNotifierResponse>,
+  input: __S(5568, __c174, 0) as any as S.Schema<DeleteNotifierRequest>,
+  output: __S(4768, __c149, 0) as any as S.Schema<DeleteNotifierResponse>,
   errors: [BadRequest, NotFound, UnknownChronosphereError],
   protocol: ChronosphereProtocol,
   retry: Retry.Retry,
@@ -4232,8 +4232,8 @@ export const deleteOtelMetricsIngestion: API.OperationMethod<
   DeleteOtelMetricsIngestionError,
   ChronosphereOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(295, __c36, 7) as any as S.Schema<DeleteOtelMetricsIngestionRequest>,
-  output: __S(276, __c34, 4) as any as S.Schema<DeleteOtelMetricsIngestionResponse>,
+  input: __S(5600, __c175, 0) as any as S.Schema<DeleteOtelMetricsIngestionRequest>,
+  output: __S(4704, __c147, 0) as any as S.Schema<DeleteOtelMetricsIngestionResponse>,
   errors: [BadRequest, NotFound, UnknownChronosphereError],
   protocol: ChronosphereProtocol,
   retry: Retry.Retry,
@@ -4246,8 +4246,8 @@ export const deleteRecordingRule: API.OperationMethod<
   DeleteRecordingRuleError,
   ChronosphereOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(296, __c37, 0) as any as S.Schema<DeleteRecordingRuleRequest>,
-  output: __S(276, __c34, 4) as any as S.Schema<DeleteRecordingRuleResponse>,
+  input: __S(5632, __c176, 0) as any as S.Schema<DeleteRecordingRuleRequest>,
+  output: __S(4704, __c147, 0) as any as S.Schema<DeleteRecordingRuleResponse>,
   errors: [BadRequest, NotFound, UnknownChronosphereError],
   protocol: ChronosphereProtocol,
   retry: Retry.Retry,
@@ -4260,8 +4260,8 @@ export const deleteResourcePools: API.OperationMethod<
   DeleteResourcePoolsError,
   ChronosphereOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(297, __c37, 1) as any as S.Schema<DeleteResourcePoolsRequest>,
-  output: __S(276, __c34, 4) as any as S.Schema<DeleteResourcePoolsResponse>,
+  input: __S(5664, __c177, 0) as any as S.Schema<DeleteResourcePoolsRequest>,
+  output: __S(4704, __c147, 0) as any as S.Schema<DeleteResourcePoolsResponse>,
   errors: [BadRequest, NotFound, UnknownChronosphereError],
   protocol: ChronosphereProtocol,
   retry: Retry.Retry,
@@ -4274,8 +4274,8 @@ export const deleteRollupRule: API.OperationMethod<
   DeleteRollupRuleError,
   ChronosphereOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(298, __c37, 2) as any as S.Schema<DeleteRollupRuleRequest>,
-  output: __S(278, __c34, 6) as any as S.Schema<DeleteRollupRuleResponse>,
+  input: __S(5696, __c178, 0) as any as S.Schema<DeleteRollupRuleRequest>,
+  output: __S(4768, __c149, 0) as any as S.Schema<DeleteRollupRuleResponse>,
   errors: [BadRequest, NotFound, UnknownChronosphereError],
   protocol: ChronosphereProtocol,
   retry: Retry.Retry,
@@ -4288,8 +4288,8 @@ export const deleteServiceAccount: API.OperationMethod<
   DeleteServiceAccountError,
   ChronosphereOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(299, __c37, 3) as any as S.Schema<DeleteServiceAccountRequest>,
-  output: __S(276, __c34, 4) as any as S.Schema<DeleteServiceAccountResponse>,
+  input: __S(5728, __c179, 0) as any as S.Schema<DeleteServiceAccountRequest>,
+  output: __S(4704, __c147, 0) as any as S.Schema<DeleteServiceAccountResponse>,
   errors: [BadRequest, NotFound, UnknownChronosphereError],
   protocol: ChronosphereProtocol,
   retry: Retry.Retry,
@@ -4302,8 +4302,8 @@ export const deleteSLO: API.OperationMethod<
   DeleteSLOError,
   ChronosphereOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(300, __c37, 4) as any as S.Schema<DeleteSLORequest>,
-  output: __S(278, __c34, 6) as any as S.Schema<DeleteSLOResponse>,
+  input: __S(5760, __c180, 0) as any as S.Schema<DeleteSLORequest>,
+  output: __S(4768, __c149, 0) as any as S.Schema<DeleteSLOResponse>,
   errors: [BadRequest, NotFound, UnknownChronosphereError],
   protocol: ChronosphereProtocol,
   retry: Retry.Retry,
@@ -4316,8 +4316,8 @@ export const deleteTeam: API.OperationMethod<
   DeleteTeamError,
   ChronosphereOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(301, __c37, 5) as any as S.Schema<DeleteTeamRequest>,
-  output: __S(278, __c34, 6) as any as S.Schema<DeleteTeamResponse>,
+  input: __S(5792, __c181, 0) as any as S.Schema<DeleteTeamRequest>,
+  output: __S(4768, __c149, 0) as any as S.Schema<DeleteTeamResponse>,
   errors: [BadRequest, NotFound, UnknownChronosphereError],
   protocol: ChronosphereProtocol,
   retry: Retry.Retry,
@@ -4330,8 +4330,8 @@ export const deleteTraceBehavior: API.OperationMethod<
   DeleteTraceBehaviorError,
   ChronosphereOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(302, __c37, 6) as any as S.Schema<DeleteTraceBehaviorRequest>,
-  output: __S(276, __c34, 4) as any as S.Schema<DeleteTraceBehaviorResponse>,
+  input: __S(5952, __c186, 0) as any as S.Schema<DeleteTraceBehaviorRequest>,
+  output: __S(4704, __c147, 0) as any as S.Schema<DeleteTraceBehaviorResponse>,
   errors: [BadRequest, NotFound, UnknownChronosphereError],
   protocol: ChronosphereProtocol,
   retry: Retry.Retry,
@@ -4344,8 +4344,8 @@ export const deleteTraceBehaviorConfig: API.OperationMethod<
   DeleteTraceBehaviorConfigError,
   ChronosphereOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(303, __c37, 7) as any as S.Schema<DeleteTraceBehaviorConfigRequest>,
-  output: __S(276, __c34, 4) as any as S.Schema<DeleteTraceBehaviorConfigResponse>,
+  input: __S(5984, __c187, 0) as any as S.Schema<DeleteTraceBehaviorConfigRequest>,
+  output: __S(4704, __c147, 0) as any as S.Schema<DeleteTraceBehaviorConfigResponse>,
   errors: [BadRequest, NotFound, UnknownChronosphereError],
   protocol: ChronosphereProtocol,
   retry: Retry.Retry,
@@ -4361,8 +4361,8 @@ export const deleteTraceJaegerRemoteSamplingStrategy: API.OperationMethod<
   DeleteTraceJaegerRemoteSamplingStrategyError,
   ChronosphereOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(304, __c38, 0) as any as S.Schema<DeleteTraceJaegerRemoteSamplingStrategyRequest>,
-  output: __S(276, __c34, 4) as any as S.Schema<DeleteTraceJaegerRemoteSamplingStrategyResponse>,
+  input: __S(6016, __c188, 0) as any as S.Schema<DeleteTraceJaegerRemoteSamplingStrategyRequest>,
+  output: __S(4704, __c147, 0) as any as S.Schema<DeleteTraceJaegerRemoteSamplingStrategyResponse>,
   errors: [BadRequest, NotFound, UnknownChronosphereError],
   protocol: ChronosphereProtocol,
   retry: Retry.Retry,
@@ -4375,8 +4375,8 @@ export const deleteTraceMetricsRule: API.OperationMethod<
   DeleteTraceMetricsRuleError,
   ChronosphereOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(305, __c38, 1) as any as S.Schema<DeleteTraceMetricsRuleRequest>,
-  output: __S(276, __c34, 4) as any as S.Schema<DeleteTraceMetricsRuleResponse>,
+  input: __S(6048, __c189, 0) as any as S.Schema<DeleteTraceMetricsRuleRequest>,
+  output: __S(4704, __c147, 0) as any as S.Schema<DeleteTraceMetricsRuleResponse>,
   errors: [BadRequest, NotFound, UnknownChronosphereError],
   protocol: ChronosphereProtocol,
   retry: Retry.Retry,
@@ -4389,8 +4389,8 @@ export const deleteTraceTailSamplingRules: API.OperationMethod<
   DeleteTraceTailSamplingRulesError,
   ChronosphereOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(306, __c38, 2) as any as S.Schema<DeleteTraceTailSamplingRulesRequest>,
-  output: __S(276, __c34, 4) as any as S.Schema<DeleteTraceTailSamplingRulesResponse>,
+  input: __S(6080, __c190, 0) as any as S.Schema<DeleteTraceTailSamplingRulesRequest>,
+  output: __S(4704, __c147, 0) as any as S.Schema<DeleteTraceTailSamplingRulesResponse>,
   errors: [BadRequest, NotFound, UnknownChronosphereError],
   protocol: ChronosphereProtocol,
   retry: Retry.Retry,
@@ -4405,8 +4405,8 @@ export const listBuckets: API.PaginatedOperationMethod<
   Configv1Bucket
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(307, __c38, 3) as any as S.Schema<ListBucketsRequest>,
-    output: __S(310, __c38, 6) as any as S.Schema<Configv1ListBucketsResponse>,
+    input: __S(6112, __c191, 0) as any as S.Schema<ListBucketsRequest>,
+    output: __S(6114, __c191, 2) as any as S.Schema<Configv1ListBucketsResponse>,
     errors: [UnknownChronosphereError],
     protocol: ChronosphereProtocol,
     retry: Retry.Retry,
@@ -4430,8 +4430,8 @@ export const listClassicDashboards: API.PaginatedOperationMethod<
   Configv1GrafanaDashboard
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(311, __c38, 7) as any as S.Schema<ListClassicDashboardsRequest>,
-    output: __S(313, __c39, 1) as any as S.Schema<Configv1ListClassicDashboardsResponse>,
+    input: __S(6176, __c193, 0) as any as S.Schema<ListClassicDashboardsRequest>,
+    output: __S(6177, __c193, 1) as any as S.Schema<Configv1ListClassicDashboardsResponse>,
     errors: [UnknownChronosphereError],
     protocol: ChronosphereProtocol,
     retry: Retry.Retry,
@@ -4455,8 +4455,8 @@ export const listCollections: API.PaginatedOperationMethod<
   Configv1Collection
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(314, __c39, 2) as any as S.Schema<ListCollectionsRequest>,
-    output: __S(316, __c39, 4) as any as S.Schema<Configv1ListCollectionsResponse>,
+    input: __S(6240, __c195, 0) as any as S.Schema<ListCollectionsRequest>,
+    output: __S(6242, __c195, 2) as any as S.Schema<Configv1ListCollectionsResponse>,
     errors: [UnknownChronosphereError],
     protocol: ChronosphereProtocol,
     retry: Retry.Retry,
@@ -4480,8 +4480,8 @@ export const listDashboards: API.PaginatedOperationMethod<
   Configv1Dashboard
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(317, __c39, 5) as any as S.Schema<ListDashboardsRequest>,
-    output: __S(319, __c39, 7) as any as S.Schema<Configv1ListDashboardsResponse>,
+    input: __S(6272, __c196, 0) as any as S.Schema<ListDashboardsRequest>,
+    output: __S(6274, __c196, 2) as any as S.Schema<Configv1ListDashboardsResponse>,
     errors: [UnknownChronosphereError],
     protocol: ChronosphereProtocol,
     retry: Retry.Retry,
@@ -4505,8 +4505,8 @@ export const listDatasets: API.PaginatedOperationMethod<
   Configv1Dataset
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(320, __c40, 0) as any as S.Schema<ListDatasetsRequest>,
-    output: __S(322, __c40, 2) as any as S.Schema<Configv1ListDatasetsResponse>,
+    input: __S(6304, __c197, 0) as any as S.Schema<ListDatasetsRequest>,
+    output: __S(6306, __c197, 2) as any as S.Schema<Configv1ListDatasetsResponse>,
     errors: [UnknownChronosphereError],
     protocol: ChronosphereProtocol,
     retry: Retry.Retry,
@@ -4530,8 +4530,8 @@ export const listDerivedLabels: API.PaginatedOperationMethod<
   Configv1DerivedLabel
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(323, __c40, 3) as any as S.Schema<ListDerivedLabelsRequest>,
-    output: __S(325, __c40, 5) as any as S.Schema<Configv1ListDerivedLabelsResponse>,
+    input: __S(6560, __c205, 0) as any as S.Schema<ListDerivedLabelsRequest>,
+    output: __S(6562, __c205, 2) as any as S.Schema<Configv1ListDerivedLabelsResponse>,
     errors: [UnknownChronosphereError],
     protocol: ChronosphereProtocol,
     retry: Retry.Retry,
@@ -4555,8 +4555,8 @@ export const listDerivedMetrics: API.PaginatedOperationMethod<
   Configv1DerivedMetric
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(326, __c40, 6) as any as S.Schema<ListDerivedMetricsRequest>,
-    output: __S(328, __c41, 0) as any as S.Schema<Configv1ListDerivedMetricsResponse>,
+    input: __S(6592, __c206, 0) as any as S.Schema<ListDerivedMetricsRequest>,
+    output: __S(6594, __c206, 2) as any as S.Schema<Configv1ListDerivedMetricsResponse>,
     errors: [UnknownChronosphereError],
     protocol: ChronosphereProtocol,
     retry: Retry.Retry,
@@ -4580,8 +4580,8 @@ export const listDropRules: API.PaginatedOperationMethod<
   Configv1DropRule
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(329, __c41, 1) as any as S.Schema<ListDropRulesRequest>,
-    output: __S(331, __c41, 3) as any as S.Schema<Configv1ListDropRulesResponse>,
+    input: __S(6624, __c207, 0) as any as S.Schema<ListDropRulesRequest>,
+    output: __S(6626, __c207, 2) as any as S.Schema<Configv1ListDropRulesResponse>,
     errors: [UnknownChronosphereError],
     protocol: ChronosphereProtocol,
     retry: Retry.Retry,
@@ -4605,8 +4605,8 @@ export const listGcpMetricsIntegrations: API.PaginatedOperationMethod<
   Configv1GcpMetricsIntegration
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(332, __c41, 4) as any as S.Schema<ListGcpMetricsIntegrationsRequest>,
-    output: __S(334, __c41, 6) as any as S.Schema<Configv1ListGcpMetricsIntegrationsResponse>,
+    input: __S(6656, __c208, 0) as any as S.Schema<ListGcpMetricsIntegrationsRequest>,
+    output: __S(6658, __c208, 2) as any as S.Schema<Configv1ListGcpMetricsIntegrationsResponse>,
     errors: [UnknownChronosphereError],
     protocol: ChronosphereProtocol,
     retry: Retry.Retry,
@@ -4630,8 +4630,8 @@ export const listGrafanaDashboards: API.PaginatedOperationMethod<
   Configv1GrafanaDashboard
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(335, __c41, 7) as any as S.Schema<ListGrafanaDashboardsRequest>,
-    output: __S(336, __c42, 0) as any as S.Schema<Configv1ListGrafanaDashboardsResponse>,
+    input: __S(6688, __c209, 0) as any as S.Schema<ListGrafanaDashboardsRequest>,
+    output: __S(6689, __c209, 1) as any as S.Schema<Configv1ListGrafanaDashboardsResponse>,
     errors: [UnknownChronosphereError],
     protocol: ChronosphereProtocol,
     retry: Retry.Retry,
@@ -4655,8 +4655,8 @@ export const listLogScaleActions: API.PaginatedOperationMethod<
   Configv1LogScaleAction
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(337, __c42, 1) as any as S.Schema<ListLogScaleActionsRequest>,
-    output: __S(339, __c42, 3) as any as S.Schema<Configv1ListLogScaleActionsResponse>,
+    input: __S(6720, __c210, 0) as any as S.Schema<ListLogScaleActionsRequest>,
+    output: __S(6722, __c210, 2) as any as S.Schema<Configv1ListLogScaleActionsResponse>,
     errors: [UnknownChronosphereError],
     protocol: ChronosphereProtocol,
     retry: Retry.Retry,
@@ -4680,8 +4680,8 @@ export const listLogScaleAlerts: API.PaginatedOperationMethod<
   Configv1LogScaleAlert
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(340, __c42, 4) as any as S.Schema<ListLogScaleAlertsRequest>,
-    output: __S(342, __c42, 6) as any as S.Schema<Configv1ListLogScaleAlertsResponse>,
+    input: __S(6752, __c211, 0) as any as S.Schema<ListLogScaleAlertsRequest>,
+    output: __S(6754, __c211, 2) as any as S.Schema<Configv1ListLogScaleAlertsResponse>,
     errors: [UnknownChronosphereError],
     protocol: ChronosphereProtocol,
     retry: Retry.Retry,
@@ -4705,8 +4705,8 @@ export const listMappingRules: API.PaginatedOperationMethod<
   Configv1MappingRule
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(343, __c42, 7) as any as S.Schema<ListMappingRulesRequest>,
-    output: __S(345, __c43, 1) as any as S.Schema<Configv1ListMappingRulesResponse>,
+    input: __S(6784, __c212, 0) as any as S.Schema<ListMappingRulesRequest>,
+    output: __S(6786, __c212, 2) as any as S.Schema<Configv1ListMappingRulesResponse>,
     errors: [UnknownChronosphereError],
     protocol: ChronosphereProtocol,
     retry: Retry.Retry,
@@ -4730,8 +4730,8 @@ export const listMonitors: API.PaginatedOperationMethod<
   Configv1Monitor
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(346, __c43, 2) as any as S.Schema<ListMonitorsRequest>,
-    output: __S(348, __c43, 4) as any as S.Schema<Configv1ListMonitorsResponse>,
+    input: __S(6816, __c213, 0) as any as S.Schema<ListMonitorsRequest>,
+    output: __S(6818, __c213, 2) as any as S.Schema<Configv1ListMonitorsResponse>,
     errors: [UnknownChronosphereError],
     protocol: ChronosphereProtocol,
     retry: Retry.Retry,
@@ -4755,8 +4755,8 @@ export const listMutingRules: API.PaginatedOperationMethod<
   Configv1MutingRule
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(350, __c43, 6) as any as S.Schema<ListMutingRulesRequest>,
-    output: __S(352, __c44, 0) as any as S.Schema<Configv1ListMutingRulesResponse>,
+    input: __S(6849, __c214, 1) as any as S.Schema<ListMutingRulesRequest>,
+    output: __S(6851, __c214, 3) as any as S.Schema<Configv1ListMutingRulesResponse>,
     errors: [UnknownChronosphereError],
     protocol: ChronosphereProtocol,
     retry: Retry.Retry,
@@ -4780,8 +4780,8 @@ export const listNotificationPolicies: API.PaginatedOperationMethod<
   Configv1NotificationPolicy
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(353, __c44, 1) as any as S.Schema<ListNotificationPoliciesRequest>,
-    output: __S(355, __c44, 3) as any as S.Schema<Configv1ListNotificationPoliciesResponse>,
+    input: __S(7040, __c220, 0) as any as S.Schema<ListNotificationPoliciesRequest>,
+    output: __S(7042, __c220, 2) as any as S.Schema<Configv1ListNotificationPoliciesResponse>,
     errors: [UnknownChronosphereError],
     protocol: ChronosphereProtocol,
     retry: Retry.Retry,
@@ -4805,8 +4805,8 @@ export const listNotifiers: API.PaginatedOperationMethod<
   Configv1Notifier
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(356, __c44, 4) as any as S.Schema<ListNotifiersRequest>,
-    output: __S(358, __c44, 6) as any as S.Schema<Configv1ListNotifiersResponse>,
+    input: __S(7072, __c221, 0) as any as S.Schema<ListNotifiersRequest>,
+    output: __S(7074, __c221, 2) as any as S.Schema<Configv1ListNotifiersResponse>,
     errors: [UnknownChronosphereError],
     protocol: ChronosphereProtocol,
     retry: Retry.Retry,
@@ -4830,8 +4830,8 @@ export const listRecordingRules: API.PaginatedOperationMethod<
   Configv1RecordingRule
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(359, __c44, 7) as any as S.Schema<ListRecordingRulesRequest>,
-    output: __S(361, __c45, 1) as any as S.Schema<Configv1ListRecordingRulesResponse>,
+    input: __S(7104, __c222, 0) as any as S.Schema<ListRecordingRulesRequest>,
+    output: __S(7106, __c222, 2) as any as S.Schema<Configv1ListRecordingRulesResponse>,
     errors: [UnknownChronosphereError],
     protocol: ChronosphereProtocol,
     retry: Retry.Retry,
@@ -4855,8 +4855,8 @@ export const listRollupRules: API.PaginatedOperationMethod<
   Configv1RollupRule
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(362, __c45, 2) as any as S.Schema<ListRollupRulesRequest>,
-    output: __S(364, __c45, 4) as any as S.Schema<Configv1ListRollupRulesResponse>,
+    input: __S(7136, __c223, 0) as any as S.Schema<ListRollupRulesRequest>,
+    output: __S(7138, __c223, 2) as any as S.Schema<Configv1ListRollupRulesResponse>,
     errors: [UnknownChronosphereError],
     protocol: ChronosphereProtocol,
     retry: Retry.Retry,
@@ -4880,8 +4880,8 @@ export const listServiceAccounts: API.PaginatedOperationMethod<
   Configv1ServiceAccount
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(365, __c45, 5) as any as S.Schema<ListServiceAccountsRequest>,
-    output: __S(367, __c45, 7) as any as S.Schema<Configv1ListServiceAccountsResponse>,
+    input: __S(7168, __c224, 0) as any as S.Schema<ListServiceAccountsRequest>,
+    output: __S(7170, __c224, 2) as any as S.Schema<Configv1ListServiceAccountsResponse>,
     errors: [UnknownChronosphereError],
     protocol: ChronosphereProtocol,
     retry: Retry.Retry,
@@ -4905,8 +4905,8 @@ export const listSLOs: API.PaginatedOperationMethod<
   Configv1SLO
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(368, __c46, 0) as any as S.Schema<ListSLOsRequest>,
-    output: __S(370, __c46, 2) as any as S.Schema<Configv1ListSLOsResponse>,
+    input: __S(7200, __c225, 0) as any as S.Schema<ListSLOsRequest>,
+    output: __S(7202, __c225, 2) as any as S.Schema<Configv1ListSLOsResponse>,
     errors: [UnknownChronosphereError],
     protocol: ChronosphereProtocol,
     retry: Retry.Retry,
@@ -4930,8 +4930,8 @@ export const listTeams: API.PaginatedOperationMethod<
   Configv1Team
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(371, __c46, 3) as any as S.Schema<ListTeamsRequest>,
-    output: __S(373, __c46, 5) as any as S.Schema<Configv1ListTeamsResponse>,
+    input: __S(7232, __c226, 0) as any as S.Schema<ListTeamsRequest>,
+    output: __S(7234, __c226, 2) as any as S.Schema<Configv1ListTeamsResponse>,
     errors: [UnknownChronosphereError],
     protocol: ChronosphereProtocol,
     retry: Retry.Retry,
@@ -4955,8 +4955,8 @@ export const listTraceBehaviors: API.PaginatedOperationMethod<
   Configv1TraceBehavior
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(374, __c46, 6) as any as S.Schema<ListTraceBehaviorsRequest>,
-    output: __S(376, __c47, 0) as any as S.Schema<Configv1ListTraceBehaviorsResponse>,
+    input: __S(7264, __c227, 0) as any as S.Schema<ListTraceBehaviorsRequest>,
+    output: __S(7266, __c227, 2) as any as S.Schema<Configv1ListTraceBehaviorsResponse>,
     errors: [UnknownChronosphereError],
     protocol: ChronosphereProtocol,
     retry: Retry.Retry,
@@ -4980,11 +4980,11 @@ export const listTraceJaegerRemoteSamplingStrategies: API.PaginatedOperationMeth
   Configv1TraceJaegerRemoteSamplingStrategy
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(377, __c47, 1) as any as S.Schema<ListTraceJaegerRemoteSamplingStrategiesRequest>,
+    input: __S(7296, __c228, 0) as any as S.Schema<ListTraceJaegerRemoteSamplingStrategiesRequest>,
     output: __S(
-      379,
-      __c47,
-      3,
+      7298,
+      __c228,
+      2,
     ) as any as S.Schema<Configv1ListTraceJaegerRemoteSamplingStrategiesResponse>,
     errors: [UnknownChronosphereError],
     protocol: ChronosphereProtocol,
@@ -5009,8 +5009,8 @@ export const listTraceMetricsRules: API.PaginatedOperationMethod<
   Configv1TraceMetricsRule
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(380, __c47, 4) as any as S.Schema<ListTraceMetricsRulesRequest>,
-    output: __S(382, __c47, 6) as any as S.Schema<Configv1ListTraceMetricsRulesResponse>,
+    input: __S(7328, __c229, 0) as any as S.Schema<ListTraceMetricsRulesRequest>,
+    output: __S(7330, __c229, 2) as any as S.Schema<Configv1ListTraceMetricsRulesResponse>,
     errors: [UnknownChronosphereError],
     protocol: ChronosphereProtocol,
     retry: Retry.Retry,
@@ -5032,8 +5032,8 @@ export const readBucket: API.OperationMethod<
   ReadBucketError,
   ChronosphereOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(383, __c47, 7) as any as S.Schema<ReadBucketRequest>,
-  output: __S(4, __c0, 4) as any as S.Schema<Configv1ReadBucketResponse>,
+  input: __S(7520, __c235, 0) as any as S.Schema<ReadBucketRequest>,
+  output: __S(4160, __c130, 0) as any as S.Schema<Configv1ReadBucketResponse>,
   errors: [NotFound, UnknownChronosphereError],
   protocol: ChronosphereProtocol,
   retry: Retry.Retry,
@@ -5046,8 +5046,8 @@ export const readClassicDashboard: API.OperationMethod<
   ReadClassicDashboardError,
   ChronosphereOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(384, __c48, 0) as any as S.Schema<ReadClassicDashboardRequest>,
-  output: __S(9, __c1, 1) as any as S.Schema<Configv1ReadClassicDashboardResponse>,
+  input: __S(7552, __c236, 0) as any as S.Schema<ReadClassicDashboardRequest>,
+  output: __S(5024, __c157, 0) as any as S.Schema<Configv1ReadClassicDashboardResponse>,
   errors: [NotFound, UnknownChronosphereError],
   protocol: ChronosphereProtocol,
   retry: Retry.Retry,
@@ -5060,8 +5060,8 @@ export const readCollection: API.OperationMethod<
   ReadCollectionError,
   ChronosphereOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(385, __c48, 1) as any as S.Schema<ReadCollectionRequest>,
-  output: __S(13, __c1, 5) as any as S.Schema<Configv1ReadCollectionResponse>,
+  input: __S(7584, __c237, 0) as any as S.Schema<ReadCollectionRequest>,
+  output: __S(5472, __c171, 0) as any as S.Schema<Configv1ReadCollectionResponse>,
   errors: [NotFound, UnknownChronosphereError],
   protocol: ChronosphereProtocol,
   retry: Retry.Retry,
@@ -5074,8 +5074,8 @@ export const readDashboard: API.OperationMethod<
   ReadDashboardError,
   ChronosphereOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(386, __c48, 2) as any as S.Schema<ReadDashboardRequest>,
-  output: __S(17, __c2, 1) as any as S.Schema<Configv1ReadDashboardResponse>,
+  input: __S(7616, __c238, 0) as any as S.Schema<ReadDashboardRequest>,
+  output: __S(5920, __c185, 0) as any as S.Schema<Configv1ReadDashboardResponse>,
   errors: [NotFound, UnknownChronosphereError],
   protocol: ChronosphereProtocol,
   retry: Retry.Retry,
@@ -5088,8 +5088,8 @@ export const readDataset: API.OperationMethod<
   ReadDatasetError,
   ChronosphereOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(387, __c48, 3) as any as S.Schema<ReadDatasetRequest>,
-  output: __S(37, __c4, 5) as any as S.Schema<Configv1ReadDatasetResponse>,
+  input: __S(7648, __c239, 0) as any as S.Schema<ReadDatasetRequest>,
+  output: __S(6528, __c204, 0) as any as S.Schema<Configv1ReadDatasetResponse>,
   errors: [NotFound, UnknownChronosphereError],
   protocol: ChronosphereProtocol,
   retry: Retry.Retry,
@@ -5102,8 +5102,8 @@ export const readDerivedLabel: API.OperationMethod<
   ReadDerivedLabelError,
   ChronosphereOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(388, __c48, 4) as any as S.Schema<ReadDerivedLabelRequest>,
-  output: __S(52, __c6, 4) as any as S.Schema<Configv1ReadDerivedLabelResponse>,
+  input: __S(7680, __c240, 0) as any as S.Schema<ReadDerivedLabelRequest>,
+  output: __S(7008, __c219, 0) as any as S.Schema<Configv1ReadDerivedLabelResponse>,
   errors: [NotFound, UnknownChronosphereError],
   protocol: ChronosphereProtocol,
   retry: Retry.Retry,
@@ -5116,8 +5116,8 @@ export const readDerivedMetric: API.OperationMethod<
   ReadDerivedMetricError,
   ChronosphereOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(389, __c48, 5) as any as S.Schema<ReadDerivedMetricRequest>,
-  output: __S(64, __c8, 0) as any as S.Schema<Configv1ReadDerivedMetricResponse>,
+  input: __S(7712, __c241, 0) as any as S.Schema<ReadDerivedMetricRequest>,
+  output: __S(7488, __c234, 0) as any as S.Schema<Configv1ReadDerivedMetricResponse>,
   errors: [NotFound, UnknownChronosphereError],
   protocol: ChronosphereProtocol,
   retry: Retry.Retry,
@@ -5130,8 +5130,8 @@ export const readDropRule: API.OperationMethod<
   ReadDropRuleError,
   ChronosphereOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(390, __c48, 6) as any as S.Schema<ReadDropRuleRequest>,
-  output: __S(70, __c8, 6) as any as S.Schema<Configv1ReadDropRuleResponse>,
+  input: __S(7744, __c242, 0) as any as S.Schema<ReadDropRuleRequest>,
+  output: __S(96, __c3, 0) as any as S.Schema<Configv1ReadDropRuleResponse>,
   errors: [NotFound, UnknownChronosphereError],
   protocol: ChronosphereProtocol,
   retry: Retry.Retry,
@@ -5144,8 +5144,8 @@ export const readGcpMetricsIntegration: API.OperationMethod<
   ReadGcpMetricsIntegrationError,
   ChronosphereOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(391, __c48, 7) as any as S.Schema<ReadGcpMetricsIntegrationRequest>,
-  output: __S(77, __c9, 5) as any as S.Schema<Configv1ReadGcpMetricsIntegrationResponse>,
+  input: __S(7776, __c243, 0) as any as S.Schema<ReadGcpMetricsIntegrationRequest>,
+  output: __S(544, __c17, 0) as any as S.Schema<Configv1ReadGcpMetricsIntegrationResponse>,
   errors: [NotFound, UnknownChronosphereError],
   protocol: ChronosphereProtocol,
   retry: Retry.Retry,
@@ -5158,8 +5158,8 @@ export const readGrafanaDashboard: API.OperationMethod<
   ReadGrafanaDashboardError,
   ChronosphereOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(392, __c49, 0) as any as S.Schema<ReadGrafanaDashboardRequest>,
-  output: __S(79, __c9, 7) as any as S.Schema<Configv1ReadGrafanaDashboardResponse>,
+  input: __S(7808, __c244, 0) as any as S.Schema<ReadGrafanaDashboardRequest>,
+  output: __S(928, __c29, 0) as any as S.Schema<Configv1ReadGrafanaDashboardResponse>,
   errors: [NotFound, UnknownChronosphereError],
   protocol: ChronosphereProtocol,
   retry: Retry.Retry,
@@ -5172,8 +5172,8 @@ export const readLogAllocationConfig: API.OperationMethod<
   ReadLogAllocationConfigError,
   ChronosphereOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(393, __c49, 1) as any as S.Schema<ReadLogAllocationConfigRequest>,
-  output: __S(89, __c11, 1) as any as S.Schema<Configv1ReadLogAllocationConfigResponse>,
+  input: __S(128, __c4, 0) as any as S.Schema<ReadLogAllocationConfigRequest>,
+  output: __S(1319, __c41, 7) as any as S.Schema<Configv1ReadLogAllocationConfigResponse>,
   errors: [NotFound, UnknownChronosphereError],
   protocol: ChronosphereProtocol,
   retry: Retry.Retry,
@@ -5186,8 +5186,8 @@ export const readLogIngestConfig: API.OperationMethod<
   ReadLogIngestConfigError,
   ChronosphereOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(394, __c49, 2) as any as S.Schema<ReadLogIngestConfigRequest>,
-  output: __S(95, __c11, 7) as any as S.Schema<Configv1ReadLogIngestConfigResponse>,
+  input: __S(160, __c5, 0) as any as S.Schema<ReadLogIngestConfigRequest>,
+  output: __S(1731, __c54, 3) as any as S.Schema<Configv1ReadLogIngestConfigResponse>,
   errors: [NotFound, UnknownChronosphereError],
   protocol: ChronosphereProtocol,
   retry: Retry.Retry,
@@ -5200,8 +5200,8 @@ export const readLogScaleAction: API.OperationMethod<
   ReadLogScaleActionError,
   ChronosphereOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(395, __c49, 3) as any as S.Schema<ReadLogScaleActionRequest>,
-  output: __S(108, __c13, 4) as any as S.Schema<Configv1ReadLogScaleActionResponse>,
+  input: __S(192, __c6, 0) as any as S.Schema<ReadLogScaleActionRequest>,
+  output: __S(2144, __c67, 0) as any as S.Schema<Configv1ReadLogScaleActionResponse>,
   errors: [NotFound, UnknownChronosphereError],
   protocol: ChronosphereProtocol,
   retry: Retry.Retry,
@@ -5214,8 +5214,8 @@ export const readLogScaleAlert: API.OperationMethod<
   ReadLogScaleAlertError,
   ChronosphereOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(396, __c49, 4) as any as S.Schema<ReadLogScaleAlertRequest>,
-  output: __S(112, __c14, 0) as any as S.Schema<Configv1ReadLogScaleAlertResponse>,
+  input: __S(224, __c7, 0) as any as S.Schema<ReadLogScaleAlertRequest>,
+  output: __S(2336, __c73, 0) as any as S.Schema<Configv1ReadLogScaleAlertResponse>,
   errors: [NotFound, UnknownChronosphereError],
   protocol: ChronosphereProtocol,
   retry: Retry.Retry,
@@ -5228,8 +5228,8 @@ export const readMappingRule: API.OperationMethod<
   ReadMappingRuleError,
   ChronosphereOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(397, __c49, 5) as any as S.Schema<ReadMappingRuleRequest>,
-  output: __S(118, __c14, 6) as any as S.Schema<Configv1ReadMappingRuleResponse>,
+  input: __S(256, __c8, 0) as any as S.Schema<ReadMappingRuleRequest>,
+  output: __S(2464, __c77, 0) as any as S.Schema<Configv1ReadMappingRuleResponse>,
   errors: [NotFound, UnknownChronosphereError],
   protocol: ChronosphereProtocol,
   retry: Retry.Retry,
@@ -5242,8 +5242,8 @@ export const readMonitor: API.OperationMethod<
   ReadMonitorError,
   ChronosphereOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(398, __c49, 6) as any as S.Schema<ReadMonitorRequest>,
-  output: __S(137, __c17, 1) as any as S.Schema<Configv1ReadMonitorResponse>,
+  input: __S(288, __c9, 0) as any as S.Schema<ReadMonitorRequest>,
+  output: __S(2624, __c82, 0) as any as S.Schema<Configv1ReadMonitorResponse>,
   errors: [NotFound, UnknownChronosphereError],
   protocol: ChronosphereProtocol,
   retry: Retry.Retry,
@@ -5256,8 +5256,8 @@ export const readMutingRule: API.OperationMethod<
   ReadMutingRuleError,
   ChronosphereOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(399, __c49, 7) as any as S.Schema<ReadMutingRuleRequest>,
-  output: __S(141, __c17, 5) as any as S.Schema<Configv1ReadMutingRuleResponse>,
+  input: __S(320, __c10, 0) as any as S.Schema<ReadMutingRuleRequest>,
+  output: __S(2816, __c88, 0) as any as S.Schema<Configv1ReadMutingRuleResponse>,
   errors: [NotFound, UnknownChronosphereError],
   protocol: ChronosphereProtocol,
   retry: Retry.Retry,
@@ -5270,8 +5270,8 @@ export const readNotificationPolicy: API.OperationMethod<
   ReadNotificationPolicyError,
   ChronosphereOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(400, __c50, 0) as any as S.Schema<ReadNotificationPolicyRequest>,
-  output: __S(151, __c18, 7) as any as S.Schema<Configv1ReadNotificationPolicyResponse>,
+  input: __S(352, __c11, 0) as any as S.Schema<ReadNotificationPolicyRequest>,
+  output: __S(2944, __c92, 0) as any as S.Schema<Configv1ReadNotificationPolicyResponse>,
   errors: [NotFound, UnknownChronosphereError],
   protocol: ChronosphereProtocol,
   retry: Retry.Retry,
@@ -5284,8 +5284,8 @@ export const readNotifier: API.OperationMethod<
   ReadNotifierError,
   ChronosphereOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(401, __c50, 1) as any as S.Schema<ReadNotifierRequest>,
-  output: __S(175, __c21, 7) as any as S.Schema<Configv1ReadNotifierResponse>,
+  input: __S(384, __c12, 0) as any as S.Schema<ReadNotifierRequest>,
+  output: __S(3072, __c96, 0) as any as S.Schema<Configv1ReadNotifierResponse>,
   errors: [NotFound, UnknownChronosphereError],
   protocol: ChronosphereProtocol,
   retry: Retry.Retry,
@@ -5298,8 +5298,8 @@ export const readOtelMetricsIngestion: API.OperationMethod<
   ReadOtelMetricsIngestionError,
   ChronosphereOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(402, __c50, 2) as any as S.Schema<ReadOtelMetricsIngestionRequest>,
-  output: __S(180, __c22, 4) as any as S.Schema<Configv1ReadOtelMetricsIngestionResponse>,
+  input: __S(416, __c13, 0) as any as S.Schema<ReadOtelMetricsIngestionRequest>,
+  output: __S(3202, __c100, 2) as any as S.Schema<Configv1ReadOtelMetricsIngestionResponse>,
   errors: [NotFound, UnknownChronosphereError],
   protocol: ChronosphereProtocol,
   retry: Retry.Retry,
@@ -5312,8 +5312,8 @@ export const readRecordingRule: API.OperationMethod<
   ReadRecordingRuleError,
   ChronosphereOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(403, __c50, 3) as any as S.Schema<ReadRecordingRuleRequest>,
-  output: __S(185, __c23, 1) as any as S.Schema<Configv1ReadRecordingRuleResponse>,
+  input: __S(576, __c18, 0) as any as S.Schema<ReadRecordingRuleRequest>,
+  output: __S(3296, __c103, 0) as any as S.Schema<Configv1ReadRecordingRuleResponse>,
   errors: [NotFound, UnknownChronosphereError],
   protocol: ChronosphereProtocol,
   retry: Retry.Retry,
@@ -5326,8 +5326,8 @@ export const readResourcePools: API.OperationMethod<
   ReadResourcePoolsError,
   ChronosphereOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(404, __c50, 4) as any as S.Schema<ReadResourcePoolsRequest>,
-  output: __S(199, __c24, 7) as any as S.Schema<Configv1ReadResourcePoolsResponse>,
+  input: __S(608, __c19, 0) as any as S.Schema<ReadResourcePoolsRequest>,
+  output: __S(3435, __c107, 11) as any as S.Schema<Configv1ReadResourcePoolsResponse>,
   errors: [NotFound, UnknownChronosphereError],
   protocol: ChronosphereProtocol,
   retry: Retry.Retry,
@@ -5340,8 +5340,8 @@ export const readRollupRule: API.OperationMethod<
   ReadRollupRuleError,
   ChronosphereOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(405, __c50, 5) as any as S.Schema<ReadRollupRuleRequest>,
-  output: __S(207, __c25, 7) as any as S.Schema<Configv1ReadRollupRuleResponse>,
+  input: __S(640, __c20, 0) as any as S.Schema<ReadRollupRuleRequest>,
+  output: __S(3520, __c110, 0) as any as S.Schema<Configv1ReadRollupRuleResponse>,
   errors: [NotFound, UnknownChronosphereError],
   protocol: ChronosphereProtocol,
   retry: Retry.Retry,
@@ -5354,8 +5354,8 @@ export const readService: API.OperationMethod<
   ReadServiceError,
   ChronosphereOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(406, __c50, 6) as any as S.Schema<ReadServiceRequest>,
-  output: __S(407, __c50, 7) as any as S.Schema<Configv1ReadServiceResponse>,
+  input: __S(672, __c21, 0) as any as S.Schema<ReadServiceRequest>,
+  output: __S(673, __c21, 1) as any as S.Schema<Configv1ReadServiceResponse>,
   errors: [NotFound, UnknownChronosphereError],
   protocol: ChronosphereProtocol,
   retry: Retry.Retry,
@@ -5368,8 +5368,8 @@ export const readServiceAccount: API.OperationMethod<
   ReadServiceAccountError,
   ChronosphereOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(408, __c51, 0) as any as S.Schema<ReadServiceAccountRequest>,
-  output: __S(212, __c26, 4) as any as S.Schema<Configv1ReadServiceAccountResponse>,
+  input: __S(704, __c22, 0) as any as S.Schema<ReadServiceAccountRequest>,
+  output: __S(3648, __c114, 0) as any as S.Schema<Configv1ReadServiceAccountResponse>,
   errors: [NotFound, UnknownChronosphereError],
   protocol: ChronosphereProtocol,
   retry: Retry.Retry,
@@ -5382,8 +5382,8 @@ export const readSLO: API.OperationMethod<
   ReadSLOError,
   ChronosphereOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(409, __c51, 1) as any as S.Schema<ReadSLORequest>,
-  output: __S(410, __c51, 2) as any as S.Schema<Configv1ReadSLOResponse>,
+  input: __S(736, __c23, 0) as any as S.Schema<ReadSLORequest>,
+  output: __S(737, __c23, 1) as any as S.Schema<Configv1ReadSLOResponse>,
   errors: [NotFound, UnknownChronosphereError],
   protocol: ChronosphereProtocol,
   retry: Retry.Retry,
@@ -5396,8 +5396,8 @@ export const readTeam: API.OperationMethod<
   ReadTeamError,
   ChronosphereOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(411, __c51, 3) as any as S.Schema<ReadTeamRequest>,
-  output: __S(412, __c51, 4) as any as S.Schema<Configv1ReadTeamResponse>,
+  input: __S(768, __c24, 0) as any as S.Schema<ReadTeamRequest>,
+  output: __S(769, __c24, 1) as any as S.Schema<Configv1ReadTeamResponse>,
   errors: [NotFound, UnknownChronosphereError],
   protocol: ChronosphereProtocol,
   retry: Retry.Retry,
@@ -5410,8 +5410,8 @@ export const readTraceBehavior: API.OperationMethod<
   ReadTraceBehaviorError,
   ChronosphereOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(413, __c51, 5) as any as S.Schema<ReadTraceBehaviorRequest>,
-  output: __S(236, __c29, 4) as any as S.Schema<Configv1ReadTraceBehaviorResponse>,
+  input: __S(800, __c25, 0) as any as S.Schema<ReadTraceBehaviorRequest>,
+  output: __S(3936, __c123, 0) as any as S.Schema<Configv1ReadTraceBehaviorResponse>,
   errors: [NotFound, UnknownChronosphereError],
   protocol: ChronosphereProtocol,
   retry: Retry.Retry,
@@ -5424,8 +5424,8 @@ export const readTraceBehaviorConfig: API.OperationMethod<
   ReadTraceBehaviorConfigError,
   ChronosphereOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(414, __c51, 6) as any as S.Schema<ReadTraceBehaviorConfigRequest>,
-  output: __S(245, __c30, 5) as any as S.Schema<Configv1ReadTraceBehaviorConfigResponse>,
+  input: __S(832, __c26, 0) as any as S.Schema<ReadTraceBehaviorConfigRequest>,
+  output: __S(4229, __c132, 5) as any as S.Schema<Configv1ReadTraceBehaviorConfigResponse>,
   errors: [NotFound, UnknownChronosphereError],
   protocol: ChronosphereProtocol,
   retry: Retry.Retry,
@@ -5438,11 +5438,11 @@ export const readTraceJaegerRemoteSamplingStrategy: API.OperationMethod<
   ReadTraceJaegerRemoteSamplingStrategyError,
   ChronosphereOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(415, __c51, 7) as any as S.Schema<ReadTraceJaegerRemoteSamplingStrategyRequest>,
+  input: __S(864, __c27, 0) as any as S.Schema<ReadTraceJaegerRemoteSamplingStrategyRequest>,
   output: __S(
-    255,
-    __c31,
-    7,
+    4320,
+    __c135,
+    0,
   ) as any as S.Schema<Configv1ReadTraceJaegerRemoteSamplingStrategyResponse>,
   errors: [NotFound, UnknownChronosphereError],
   protocol: ChronosphereProtocol,
@@ -5456,8 +5456,8 @@ export const readTraceMetricsRule: API.OperationMethod<
   ReadTraceMetricsRuleError,
   ChronosphereOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(416, __c52, 0) as any as S.Schema<ReadTraceMetricsRuleRequest>,
-  output: __S(263, __c32, 7) as any as S.Schema<Configv1ReadTraceMetricsRuleResponse>,
+  input: __S(960, __c30, 0) as any as S.Schema<ReadTraceMetricsRuleRequest>,
+  output: __S(4448, __c139, 0) as any as S.Schema<Configv1ReadTraceMetricsRuleResponse>,
   errors: [NotFound, UnknownChronosphereError],
   protocol: ChronosphereProtocol,
   retry: Retry.Retry,
@@ -5470,8 +5470,8 @@ export const readTraceTailSamplingRules: API.OperationMethod<
   ReadTraceTailSamplingRulesError,
   ChronosphereOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(417, __c52, 1) as any as S.Schema<ReadTraceTailSamplingRulesRequest>,
-  output: __S(270, __c33, 6) as any as S.Schema<Configv1ReadTraceTailSamplingRulesResponse>,
+  input: __S(992, __c31, 0) as any as S.Schema<ReadTraceTailSamplingRulesRequest>,
+  output: __S(4580, __c143, 4) as any as S.Schema<Configv1ReadTraceTailSamplingRulesResponse>,
   errors: [NotFound, UnknownChronosphereError],
   protocol: ChronosphereProtocol,
   retry: Retry.Retry,
@@ -5484,8 +5484,8 @@ export const updateBucket: API.OperationMethod<
   UpdateBucketError,
   ChronosphereOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(418, __c52, 2) as any as S.Schema<UpdateBucketRequest>,
-  output: __S(4, __c0, 4) as any as S.Schema<Configv1UpdateBucketResponse>,
+  input: __S(1024, __c32, 0) as any as S.Schema<UpdateBucketRequest>,
+  output: __S(4160, __c130, 0) as any as S.Schema<Configv1UpdateBucketResponse>,
   errors: [BadRequest, NotFound, Conflict, UnknownChronosphereError],
   protocol: ChronosphereProtocol,
   retry: Retry.Retry,
@@ -5498,8 +5498,8 @@ export const updateClassicDashboard: API.OperationMethod<
   UpdateClassicDashboardError,
   ChronosphereOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(419, __c52, 3) as any as S.Schema<UpdateClassicDashboardRequest>,
-  output: __S(9, __c1, 1) as any as S.Schema<Configv1UpdateClassicDashboardResponse>,
+  input: __S(1056, __c33, 0) as any as S.Schema<UpdateClassicDashboardRequest>,
+  output: __S(5024, __c157, 0) as any as S.Schema<Configv1UpdateClassicDashboardResponse>,
   errors: [BadRequest, NotFound, Conflict, UnknownChronosphereError],
   protocol: ChronosphereProtocol,
   retry: Retry.Retry,
@@ -5512,8 +5512,8 @@ export const updateCollection: API.OperationMethod<
   UpdateCollectionError,
   ChronosphereOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(420, __c52, 4) as any as S.Schema<UpdateCollectionRequest>,
-  output: __S(13, __c1, 5) as any as S.Schema<Configv1UpdateCollectionResponse>,
+  input: __S(1088, __c34, 0) as any as S.Schema<UpdateCollectionRequest>,
+  output: __S(5472, __c171, 0) as any as S.Schema<Configv1UpdateCollectionResponse>,
   errors: [BadRequest, NotFound, Conflict, UnknownChronosphereError],
   protocol: ChronosphereProtocol,
   retry: Retry.Retry,
@@ -5526,8 +5526,8 @@ export const updateDashboard: API.OperationMethod<
   UpdateDashboardError,
   ChronosphereOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(421, __c52, 5) as any as S.Schema<UpdateDashboardRequest>,
-  output: __S(17, __c2, 1) as any as S.Schema<Configv1UpdateDashboardResponse>,
+  input: __S(1120, __c35, 0) as any as S.Schema<UpdateDashboardRequest>,
+  output: __S(5920, __c185, 0) as any as S.Schema<Configv1UpdateDashboardResponse>,
   errors: [BadRequest, NotFound, Conflict, UnknownChronosphereError],
   protocol: ChronosphereProtocol,
   retry: Retry.Retry,
@@ -5540,8 +5540,8 @@ export const updateDataset: API.OperationMethod<
   UpdateDatasetError,
   ChronosphereOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(422, __c52, 6) as any as S.Schema<UpdateDatasetRequest>,
-  output: __S(37, __c4, 5) as any as S.Schema<Configv1UpdateDatasetResponse>,
+  input: __S(1152, __c36, 0) as any as S.Schema<UpdateDatasetRequest>,
+  output: __S(6528, __c204, 0) as any as S.Schema<Configv1UpdateDatasetResponse>,
   errors: [BadRequest, NotFound, Conflict, UnknownChronosphereError],
   protocol: ChronosphereProtocol,
   retry: Retry.Retry,
@@ -5554,8 +5554,8 @@ export const updateDerivedLabel: API.OperationMethod<
   UpdateDerivedLabelError,
   ChronosphereOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(423, __c52, 7) as any as S.Schema<UpdateDerivedLabelRequest>,
-  output: __S(52, __c6, 4) as any as S.Schema<Configv1UpdateDerivedLabelResponse>,
+  input: __S(1184, __c37, 0) as any as S.Schema<UpdateDerivedLabelRequest>,
+  output: __S(7008, __c219, 0) as any as S.Schema<Configv1UpdateDerivedLabelResponse>,
   errors: [BadRequest, NotFound, Conflict, UnknownChronosphereError],
   protocol: ChronosphereProtocol,
   retry: Retry.Retry,
@@ -5568,8 +5568,8 @@ export const updateDerivedMetric: API.OperationMethod<
   UpdateDerivedMetricError,
   ChronosphereOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(424, __c53, 0) as any as S.Schema<UpdateDerivedMetricRequest>,
-  output: __S(64, __c8, 0) as any as S.Schema<Configv1UpdateDerivedMetricResponse>,
+  input: __S(1216, __c38, 0) as any as S.Schema<UpdateDerivedMetricRequest>,
+  output: __S(7488, __c234, 0) as any as S.Schema<Configv1UpdateDerivedMetricResponse>,
   errors: [BadRequest, NotFound, Conflict, UnknownChronosphereError],
   protocol: ChronosphereProtocol,
   retry: Retry.Retry,
@@ -5582,8 +5582,8 @@ export const updateDropRule: API.OperationMethod<
   UpdateDropRuleError,
   ChronosphereOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(425, __c53, 1) as any as S.Schema<UpdateDropRuleRequest>,
-  output: __S(70, __c8, 6) as any as S.Schema<Configv1UpdateDropRuleResponse>,
+  input: __S(1248, __c39, 0) as any as S.Schema<UpdateDropRuleRequest>,
+  output: __S(96, __c3, 0) as any as S.Schema<Configv1UpdateDropRuleResponse>,
   errors: [BadRequest, NotFound, Conflict, UnknownChronosphereError],
   protocol: ChronosphereProtocol,
   retry: Retry.Retry,
@@ -5600,8 +5600,8 @@ export const updateGcpMetricsIntegration: API.OperationMethod<
   UpdateGcpMetricsIntegrationError,
   ChronosphereOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(426, __c53, 2) as any as S.Schema<UpdateGcpMetricsIntegrationRequest>,
-  output: __S(77, __c9, 5) as any as S.Schema<Configv1UpdateGcpMetricsIntegrationResponse>,
+  input: __S(1376, __c43, 0) as any as S.Schema<UpdateGcpMetricsIntegrationRequest>,
+  output: __S(544, __c17, 0) as any as S.Schema<Configv1UpdateGcpMetricsIntegrationResponse>,
   errors: [BadRequest, NotFound, Conflict, UnknownChronosphereError],
   protocol: ChronosphereProtocol,
   retry: Retry.Retry,
@@ -5614,8 +5614,8 @@ export const updateGrafanaDashboard: API.OperationMethod<
   UpdateGrafanaDashboardError,
   ChronosphereOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(427, __c53, 3) as any as S.Schema<UpdateGrafanaDashboardRequest>,
-  output: __S(79, __c9, 7) as any as S.Schema<Configv1UpdateGrafanaDashboardResponse>,
+  input: __S(1408, __c44, 0) as any as S.Schema<UpdateGrafanaDashboardRequest>,
+  output: __S(928, __c29, 0) as any as S.Schema<Configv1UpdateGrafanaDashboardResponse>,
   errors: [BadRequest, NotFound, Conflict, UnknownChronosphereError],
   protocol: ChronosphereProtocol,
   retry: Retry.Retry,
@@ -5628,8 +5628,8 @@ export const updateLogAllocationConfig: API.OperationMethod<
   UpdateLogAllocationConfigError,
   ChronosphereOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(428, __c53, 4) as any as S.Schema<UpdateLogAllocationConfigRequest>,
-  output: __S(89, __c11, 1) as any as S.Schema<Configv1UpdateLogAllocationConfigResponse>,
+  input: __S(1440, __c45, 0) as any as S.Schema<UpdateLogAllocationConfigRequest>,
+  output: __S(1319, __c41, 7) as any as S.Schema<Configv1UpdateLogAllocationConfigResponse>,
   errors: [BadRequest, NotFound, UnknownChronosphereError],
   protocol: ChronosphereProtocol,
   retry: Retry.Retry,
@@ -5642,8 +5642,8 @@ export const updateLogIngestConfig: API.OperationMethod<
   UpdateLogIngestConfigError,
   ChronosphereOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(429, __c53, 5) as any as S.Schema<UpdateLogIngestConfigRequest>,
-  output: __S(95, __c11, 7) as any as S.Schema<Configv1UpdateLogIngestConfigResponse>,
+  input: __S(1472, __c46, 0) as any as S.Schema<UpdateLogIngestConfigRequest>,
+  output: __S(1731, __c54, 3) as any as S.Schema<Configv1UpdateLogIngestConfigResponse>,
   errors: [BadRequest, NotFound, UnknownChronosphereError],
   protocol: ChronosphereProtocol,
   retry: Retry.Retry,
@@ -5656,8 +5656,8 @@ export const updateLogScaleAction: API.OperationMethod<
   UpdateLogScaleActionError,
   ChronosphereOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(430, __c53, 6) as any as S.Schema<UpdateLogScaleActionRequest>,
-  output: __S(108, __c13, 4) as any as S.Schema<Configv1UpdateLogScaleActionResponse>,
+  input: __S(1504, __c47, 0) as any as S.Schema<UpdateLogScaleActionRequest>,
+  output: __S(2144, __c67, 0) as any as S.Schema<Configv1UpdateLogScaleActionResponse>,
   errors: [BadRequest, NotFound, Conflict, UnknownChronosphereError],
   protocol: ChronosphereProtocol,
   retry: Retry.Retry,
@@ -5670,8 +5670,8 @@ export const updateLogScaleAlert: API.OperationMethod<
   UpdateLogScaleAlertError,
   ChronosphereOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(431, __c53, 7) as any as S.Schema<UpdateLogScaleAlertRequest>,
-  output: __S(112, __c14, 0) as any as S.Schema<Configv1UpdateLogScaleAlertResponse>,
+  input: __S(1536, __c48, 0) as any as S.Schema<UpdateLogScaleAlertRequest>,
+  output: __S(2336, __c73, 0) as any as S.Schema<Configv1UpdateLogScaleAlertResponse>,
   errors: [BadRequest, NotFound, Conflict, UnknownChronosphereError],
   protocol: ChronosphereProtocol,
   retry: Retry.Retry,
@@ -5684,8 +5684,8 @@ export const updateMappingRule: API.OperationMethod<
   UpdateMappingRuleError,
   ChronosphereOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(432, __c54, 0) as any as S.Schema<UpdateMappingRuleRequest>,
-  output: __S(118, __c14, 6) as any as S.Schema<Configv1UpdateMappingRuleResponse>,
+  input: __S(1568, __c49, 0) as any as S.Schema<UpdateMappingRuleRequest>,
+  output: __S(2464, __c77, 0) as any as S.Schema<Configv1UpdateMappingRuleResponse>,
   errors: [BadRequest, NotFound, Conflict, UnknownChronosphereError],
   protocol: ChronosphereProtocol,
   retry: Retry.Retry,
@@ -5698,8 +5698,8 @@ export const updateMonitor: API.OperationMethod<
   UpdateMonitorError,
   ChronosphereOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(433, __c54, 1) as any as S.Schema<UpdateMonitorRequest>,
-  output: __S(137, __c17, 1) as any as S.Schema<Configv1UpdateMonitorResponse>,
+  input: __S(1600, __c50, 0) as any as S.Schema<UpdateMonitorRequest>,
+  output: __S(2624, __c82, 0) as any as S.Schema<Configv1UpdateMonitorResponse>,
   errors: [BadRequest, NotFound, Conflict, UnknownChronosphereError],
   protocol: ChronosphereProtocol,
   retry: Retry.Retry,
@@ -5712,8 +5712,8 @@ export const updateMutingRule: API.OperationMethod<
   UpdateMutingRuleError,
   ChronosphereOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(434, __c54, 2) as any as S.Schema<UpdateMutingRuleRequest>,
-  output: __S(141, __c17, 5) as any as S.Schema<Configv1UpdateMutingRuleResponse>,
+  input: __S(1632, __c51, 0) as any as S.Schema<UpdateMutingRuleRequest>,
+  output: __S(2816, __c88, 0) as any as S.Schema<Configv1UpdateMutingRuleResponse>,
   errors: [BadRequest, NotFound, Conflict, UnknownChronosphereError],
   protocol: ChronosphereProtocol,
   retry: Retry.Retry,
@@ -5726,8 +5726,8 @@ export const updateNotificationPolicy: API.OperationMethod<
   UpdateNotificationPolicyError,
   ChronosphereOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(435, __c54, 3) as any as S.Schema<UpdateNotificationPolicyRequest>,
-  output: __S(151, __c18, 7) as any as S.Schema<Configv1UpdateNotificationPolicyResponse>,
+  input: __S(1664, __c52, 0) as any as S.Schema<UpdateNotificationPolicyRequest>,
+  output: __S(2944, __c92, 0) as any as S.Schema<Configv1UpdateNotificationPolicyResponse>,
   errors: [BadRequest, NotFound, Conflict, UnknownChronosphereError],
   protocol: ChronosphereProtocol,
   retry: Retry.Retry,
@@ -5740,8 +5740,8 @@ export const updateNotifier: API.OperationMethod<
   UpdateNotifierError,
   ChronosphereOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(436, __c54, 4) as any as S.Schema<UpdateNotifierRequest>,
-  output: __S(175, __c21, 7) as any as S.Schema<Configv1UpdateNotifierResponse>,
+  input: __S(1792, __c56, 0) as any as S.Schema<UpdateNotifierRequest>,
+  output: __S(3072, __c96, 0) as any as S.Schema<Configv1UpdateNotifierResponse>,
   errors: [BadRequest, NotFound, Conflict, UnknownChronosphereError],
   protocol: ChronosphereProtocol,
   retry: Retry.Retry,
@@ -5754,8 +5754,8 @@ export const updateOtelMetricsIngestion: API.OperationMethod<
   UpdateOtelMetricsIngestionError,
   ChronosphereOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(437, __c54, 5) as any as S.Schema<UpdateOtelMetricsIngestionRequest>,
-  output: __S(180, __c22, 4) as any as S.Schema<Configv1UpdateOtelMetricsIngestionResponse>,
+  input: __S(1824, __c57, 0) as any as S.Schema<UpdateOtelMetricsIngestionRequest>,
+  output: __S(3202, __c100, 2) as any as S.Schema<Configv1UpdateOtelMetricsIngestionResponse>,
   errors: [BadRequest, NotFound, UnknownChronosphereError],
   protocol: ChronosphereProtocol,
   retry: Retry.Retry,
@@ -5768,8 +5768,8 @@ export const updateRecordingRule: API.OperationMethod<
   UpdateRecordingRuleError,
   ChronosphereOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(438, __c54, 6) as any as S.Schema<UpdateRecordingRuleRequest>,
-  output: __S(185, __c23, 1) as any as S.Schema<Configv1UpdateRecordingRuleResponse>,
+  input: __S(1856, __c58, 0) as any as S.Schema<UpdateRecordingRuleRequest>,
+  output: __S(3296, __c103, 0) as any as S.Schema<Configv1UpdateRecordingRuleResponse>,
   errors: [BadRequest, NotFound, Conflict, UnknownChronosphereError],
   protocol: ChronosphereProtocol,
   retry: Retry.Retry,
@@ -5782,8 +5782,8 @@ export const updateResourcePools: API.OperationMethod<
   UpdateResourcePoolsError,
   ChronosphereOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(439, __c54, 7) as any as S.Schema<UpdateResourcePoolsRequest>,
-  output: __S(199, __c24, 7) as any as S.Schema<Configv1UpdateResourcePoolsResponse>,
+  input: __S(1888, __c59, 0) as any as S.Schema<UpdateResourcePoolsRequest>,
+  output: __S(3435, __c107, 11) as any as S.Schema<Configv1UpdateResourcePoolsResponse>,
   errors: [BadRequest, NotFound, UnknownChronosphereError],
   protocol: ChronosphereProtocol,
   retry: Retry.Retry,
@@ -5796,8 +5796,8 @@ export const updateRollupRule: API.OperationMethod<
   UpdateRollupRuleError,
   ChronosphereOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(440, __c55, 0) as any as S.Schema<UpdateRollupRuleRequest>,
-  output: __S(207, __c25, 7) as any as S.Schema<Configv1UpdateRollupRuleResponse>,
+  input: __S(1920, __c60, 0) as any as S.Schema<UpdateRollupRuleRequest>,
+  output: __S(3520, __c110, 0) as any as S.Schema<Configv1UpdateRollupRuleResponse>,
   errors: [BadRequest, NotFound, Conflict, UnknownChronosphereError],
   protocol: ChronosphereProtocol,
   retry: Retry.Retry,
@@ -5810,8 +5810,8 @@ export const updateSLO: API.OperationMethod<
   UpdateSLOError,
   ChronosphereOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(441, __c55, 1) as any as S.Schema<UpdateSLORequest>,
-  output: __S(224, __c28, 0) as any as S.Schema<Configv1UpdateSLOResponse>,
+  input: __S(1952, __c61, 0) as any as S.Schema<UpdateSLORequest>,
+  output: __S(3745, __c117, 1) as any as S.Schema<Configv1UpdateSLOResponse>,
   errors: [BadRequest, NotFound, Conflict, UnknownChronosphereError],
   protocol: ChronosphereProtocol,
   retry: Retry.Retry,
@@ -5824,8 +5824,8 @@ export const updateTeam: API.OperationMethod<
   UpdateTeamError,
   ChronosphereOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(442, __c55, 2) as any as S.Schema<UpdateTeamRequest>,
-  output: __S(228, __c28, 4) as any as S.Schema<Configv1UpdateTeamResponse>,
+  input: __S(1984, __c62, 0) as any as S.Schema<UpdateTeamRequest>,
+  output: __S(3841, __c120, 1) as any as S.Schema<Configv1UpdateTeamResponse>,
   errors: [BadRequest, NotFound, Conflict, UnknownChronosphereError],
   protocol: ChronosphereProtocol,
   retry: Retry.Retry,
@@ -5838,8 +5838,8 @@ export const updateTraceBehavior: API.OperationMethod<
   UpdateTraceBehaviorError,
   ChronosphereOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(443, __c55, 3) as any as S.Schema<UpdateTraceBehaviorRequest>,
-  output: __S(236, __c29, 4) as any as S.Schema<Configv1UpdateTraceBehaviorResponse>,
+  input: __S(2016, __c63, 0) as any as S.Schema<UpdateTraceBehaviorRequest>,
+  output: __S(3936, __c123, 0) as any as S.Schema<Configv1UpdateTraceBehaviorResponse>,
   errors: [BadRequest, NotFound, Conflict, UnknownChronosphereError],
   protocol: ChronosphereProtocol,
   retry: Retry.Retry,
@@ -5852,8 +5852,8 @@ export const updateTraceBehaviorConfig: API.OperationMethod<
   UpdateTraceBehaviorConfigError,
   ChronosphereOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(444, __c55, 4) as any as S.Schema<UpdateTraceBehaviorConfigRequest>,
-  output: __S(245, __c30, 5) as any as S.Schema<Configv1UpdateTraceBehaviorConfigResponse>,
+  input: __S(2048, __c64, 0) as any as S.Schema<UpdateTraceBehaviorConfigRequest>,
+  output: __S(4229, __c132, 5) as any as S.Schema<Configv1UpdateTraceBehaviorConfigResponse>,
   errors: [BadRequest, NotFound, UnknownChronosphereError],
   protocol: ChronosphereProtocol,
   retry: Retry.Retry,
@@ -5870,11 +5870,11 @@ export const updateTraceJaegerRemoteSamplingStrategy: API.OperationMethod<
   UpdateTraceJaegerRemoteSamplingStrategyError,
   ChronosphereOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(445, __c55, 5) as any as S.Schema<UpdateTraceJaegerRemoteSamplingStrategyRequest>,
+  input: __S(2080, __c65, 0) as any as S.Schema<UpdateTraceJaegerRemoteSamplingStrategyRequest>,
   output: __S(
-    255,
-    __c31,
-    7,
+    4320,
+    __c135,
+    0,
   ) as any as S.Schema<Configv1UpdateTraceJaegerRemoteSamplingStrategyResponse>,
   errors: [BadRequest, NotFound, Conflict, UnknownChronosphereError],
   protocol: ChronosphereProtocol,
@@ -5888,8 +5888,8 @@ export const updateTraceMetricsRule: API.OperationMethod<
   UpdateTraceMetricsRuleError,
   ChronosphereOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(446, __c55, 6) as any as S.Schema<UpdateTraceMetricsRuleRequest>,
-  output: __S(263, __c32, 7) as any as S.Schema<Configv1UpdateTraceMetricsRuleResponse>,
+  input: __S(2240, __c70, 0) as any as S.Schema<UpdateTraceMetricsRuleRequest>,
+  output: __S(4448, __c139, 0) as any as S.Schema<Configv1UpdateTraceMetricsRuleResponse>,
   errors: [BadRequest, NotFound, Conflict, UnknownChronosphereError],
   protocol: ChronosphereProtocol,
   retry: Retry.Retry,
@@ -5902,8 +5902,8 @@ export const updateTraceTailSamplingRules: API.OperationMethod<
   UpdateTraceTailSamplingRulesError,
   ChronosphereOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(447, __c55, 7) as any as S.Schema<UpdateTraceTailSamplingRulesRequest>,
-  output: __S(270, __c33, 6) as any as S.Schema<Configv1UpdateTraceTailSamplingRulesResponse>,
+  input: __S(2272, __c71, 0) as any as S.Schema<UpdateTraceTailSamplingRulesRequest>,
+  output: __S(4580, __c143, 4) as any as S.Schema<Configv1UpdateTraceTailSamplingRulesResponse>,
   errors: [BadRequest, NotFound, UnknownChronosphereError],
   protocol: ChronosphereProtocol,
   retry: Retry.Retry,
@@ -5913,77 +5913,12 @@ export const updateTraceTailSamplingRules: API.OperationMethod<
 function __c0(j: number): any {
   switch (j) {
     case 0:
-      return S.Record(S.String, S.String);
-    case 1:
       return S.suspend(() =>
         S.Struct({
-          slug: S.optional(S.String),
-          name: S.optional(S.String),
-          description: S.optional(S.String),
-          labels: S.optional(__S(0, __c0, 0)),
-          team_slug: S.optional(S.String),
-          notification_policy_slug: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Configv1BucketInput" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          bucket: S.optional(__S(1, __c0, 1)),
+          drop_rule: S.optional(__S(32, __c1, 0)),
           dry_run: S.optional(S.Boolean),
-        }).pipe(T.Http({ method: "POST", uri: "/api/v1/config/buckets", code: 200 })),
-      ).annotate({ identifier: "CreateBucketRequest" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          slug: S.optional(S.String),
-          name: S.optional(S.String),
-          created_at: S.optional(S.String),
-          updated_at: S.optional(S.String),
-          description: S.optional(S.String),
-          labels: S.optional(__S(0, __c0, 0)),
-          team_slug: S.optional(S.String),
-          notification_policy_slug: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Configv1Bucket" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          bucket: S.optional(__S(3, __c0, 3)),
-        }),
-      ).annotate({
-        identifier: "Configv1CreateBucketResponse",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          type: S.optional(S.String),
-          slug: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "Configv1CollectionReference",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          slug: S.optional(S.String),
-          name: S.optional(S.String),
-          bucket_slug: S.optional(S.String),
-          collection_slug: S.optional(S.String),
-          collection: S.optional(__S(5, __c0, 5)),
-          dashboard_json: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "Configv1GrafanaDashboardInput",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          classic_dashboard: S.optional(__S(6, __c0, 6)),
-          dry_run: S.optional(S.Boolean),
-        }).pipe(T.Http({ method: "POST", uri: "/api/v1/config/classic-dashboards", code: 200 })),
-      ).annotate({
-        identifier: "CreateClassicDashboardRequest",
-      });
+        }).pipe(T.Http({ method: "POST", uri: "/api/v1/config/drop-rules", code: 200 })),
+      ).annotate({ identifier: "CreateDropRuleRequest" });
   }
 }
 function __c1(j: number): any {
@@ -5993,476 +5928,18 @@ function __c1(j: number): any {
         S.Struct({
           slug: S.optional(S.String),
           name: S.optional(S.String),
-          created_at: S.optional(S.String),
-          updated_at: S.optional(S.String),
-          bucket_slug: S.optional(S.String),
-          collection_slug: S.optional(S.String),
-          collection: S.optional(__S(5, __c0, 5)),
-          dashboard_json: S.optional(S.String),
+          mode: S.optional(S.String),
+          filters: S.optional(__S(6913, __c216, 1)),
+          conditional_rate_based_drop: S.optional(__S(64, __c2, 0)),
+          value_based_drop: S.optional(__S(65, __c2, 1)),
+          drop_nan_value: S.optional(S.Boolean),
         }),
-      ).annotate({ identifier: "Configv1GrafanaDashboard" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          classic_dashboard: S.optional(__S(8, __c1, 0)),
-        }),
-      ).annotate({
-        identifier: "Configv1CreateClassicDashboardResponse",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          slug: S.optional(S.String),
-          name: S.optional(S.String),
-          team_slug: S.optional(S.String),
-          description: S.optional(S.String),
-          notification_policy_slug: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Configv1CollectionInput" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          collection: S.optional(__S(10, __c1, 2)),
-          dry_run: S.optional(S.Boolean),
-        }).pipe(T.Http({ method: "POST", uri: "/api/v1/config/collections", code: 200 })),
-      ).annotate({ identifier: "CreateCollectionRequest" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          slug: S.optional(S.String),
-          name: S.optional(S.String),
-          created_at: S.optional(S.String),
-          updated_at: S.optional(S.String),
-          team_slug: S.optional(S.String),
-          description: S.optional(S.String),
-          notification_policy_slug: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Configv1Collection" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          collection: S.optional(__S(12, __c1, 4)),
-        }),
-      ).annotate({
-        identifier: "Configv1CreateCollectionResponse",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          slug: S.optional(S.String),
-          name: S.optional(S.String),
-          collection_slug: S.optional(S.String),
-          collection: S.optional(__S(5, __c0, 5)),
-          dashboard_json: S.optional(S.String),
-          labels: S.optional(__S(0, __c0, 0)),
-        }),
-      ).annotate({ identifier: "Configv1DashboardInput" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          dashboard: S.optional(__S(14, __c1, 6)),
-          dry_run: S.optional(S.Boolean),
-        }).pipe(T.Http({ method: "POST", uri: "/api/v1/config/dashboards", code: 200 })),
-      ).annotate({ identifier: "CreateDashboardRequest" });
+      ).annotate({ identifier: "Configv1DropRuleInput" });
   }
 }
 function __c2(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() =>
-        S.Struct({
-          slug: S.optional(S.String),
-          name: S.optional(S.String),
-          created_at: S.optional(S.String),
-          updated_at: S.optional(S.String),
-          collection_slug: S.optional(S.String),
-          collection: S.optional(__S(5, __c0, 5)),
-          dashboard_json: S.optional(S.String),
-          labels: S.optional(__S(0, __c0, 0)),
-        }),
-      ).annotate({ identifier: "Configv1Dashboard" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          dashboard: S.optional(__S(16, __c2, 0)),
-        }),
-      ).annotate({
-        identifier: "Configv1CreateDashboardResponse",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          min_secs: S.optional(S.Number),
-          max_secs: S.optional(S.Number),
-        }),
-      ).annotate({
-        identifier: "TraceSearchFilterDurationFilter",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          value: S.optional(S.Boolean),
-        }),
-      ).annotate({
-        identifier: "TraceSearchFilterBoolFilter",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          duration: S.optional(__S(18, __c2, 2)),
-          error: S.optional(__S(19, __c2, 3)),
-        }),
-      ).annotate({
-        identifier: "TraceSearchFilterTraceFilter",
-      });
-    case 5:
-      return S.Array(S.String);
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          match: S.optional(S.String),
-          value: S.optional(S.String),
-          in_values: S.optional(__S(21, __c2, 5)),
-        }),
-      ).annotate({
-        identifier: "TraceSearchFilterStringFilter",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          comparison: S.optional(S.String),
-          value: S.optional(S.Number),
-        }),
-      ).annotate({
-        identifier: "TraceSearchFilterNumericFilter",
-      });
-  }
-}
-function __c3(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          key: S.optional(S.String),
-          value: S.optional(__S(22, __c2, 6)),
-          numeric_value: S.optional(__S(23, __c2, 7)),
-        }),
-      ).annotate({
-        identifier: "TraceSearchFilterTagFilter",
-      });
-    case 1:
-      return S.Array(__S(24, __c3, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          min: S.optional(S.Number),
-          max: S.optional(S.Number),
-        }),
-      ).annotate({
-        identifier: "TraceSearchFilterCountFilter",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          match_type: S.optional(S.String),
-          service: S.optional(__S(22, __c2, 6)),
-          operation: S.optional(__S(22, __c2, 6)),
-          parent_service: S.optional(__S(22, __c2, 6)),
-          parent_operation: S.optional(__S(22, __c2, 6)),
-          duration: S.optional(__S(18, __c2, 2)),
-          error: S.optional(__S(19, __c2, 3)),
-          tags: S.optional(__S(25, __c3, 1)),
-          span_count: S.optional(__S(26, __c3, 2)),
-          is_root_span: S.optional(__S(19, __c2, 3)),
-        }),
-      ).annotate({
-        identifier: "TraceSearchFilterSpanFilter",
-      });
-    case 4:
-      return S.Array(__S(27, __c3, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          trace: S.optional(__S(20, __c2, 4)),
-          span: S.optional(__S(28, __c3, 4)),
-        }),
-      ).annotate({
-        identifier: "Configv1TraceSearchFilter",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          match_criteria: S.optional(__S(29, __c3, 5)),
-        }),
-      ).annotate({ identifier: "Configv1TraceDataset" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          query: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Configv1LogSearchFilter" });
-  }
-}
-function __c4(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          match_criteria: S.optional(__S(31, __c3, 7)),
-        }),
-      ).annotate({ identifier: "Configv1LogDataset" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          type: S.optional(S.String),
-          trace_dataset: S.optional(__S(30, __c3, 6)),
-          log_dataset: S.optional(__S(32, __c4, 0)),
-        }),
-      ).annotate({
-        identifier: "DatasetDatasetConfiguration",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.optional(S.String),
-          slug: S.optional(S.String),
-          description: S.optional(S.String),
-          configuration: S.optional(__S(33, __c4, 1)),
-        }),
-      ).annotate({ identifier: "Configv1DatasetInput" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          dataset: S.optional(__S(34, __c4, 2)),
-          dry_run: S.optional(S.Boolean),
-        }).pipe(T.Http({ method: "POST", uri: "/api/v1/config/datasets", code: 200 })),
-      ).annotate({ identifier: "CreateDatasetRequest" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.optional(S.String),
-          slug: S.optional(S.String),
-          created_at: S.optional(S.String),
-          updated_at: S.optional(S.String),
-          description: S.optional(S.String),
-          configuration: S.optional(__S(33, __c4, 1)),
-        }),
-      ).annotate({ identifier: "Configv1Dataset" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          dataset: S.optional(__S(36, __c4, 4)),
-        }),
-      ).annotate({
-        identifier: "Configv1CreateDatasetResponse",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.optional(S.String),
-          value_glob: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Configv1LabelFilter" });
-    case 7:
-      return S.Array(__S(38, __c4, 6));
-  }
-}
-function __c5(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          value: S.optional(S.String),
-          filters: S.optional(__S(39, __c4, 7)),
-        }),
-      ).annotate({
-        identifier: "ConstructedLabelValueDefinition",
-      });
-    case 1:
-      return S.Array(__S(40, __c5, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          value_definitions: S.optional(__S(41, __c5, 1)),
-        }),
-      ).annotate({
-        identifier: "MetricLabelConstructedLabel",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          source_value_globs: S.optional(__S(21, __c2, 5)),
-          target_value: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "MappingLabelValueMapping" });
-    case 4:
-      return S.Array(__S(43, __c5, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          filters: S.optional(__S(39, __c4, 7)),
-          source_label: S.optional(S.String),
-          value_mappings: S.optional(__S(44, __c5, 4)),
-        }),
-      ).annotate({ identifier: "MappingLabelNameMapping" });
-    case 6:
-      return S.Array(__S(45, __c5, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          name_mappings: S.optional(__S(46, __c5, 6)),
-          value_mappings: S.optional(__S(44, __c5, 4)),
-        }),
-      ).annotate({ identifier: "MetricLabelMappingLabel" });
-  }
-}
-function __c6(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          constructed_label: S.optional(__S(42, __c5, 2)),
-          mapping_label: S.optional(__S(47, __c5, 7)),
-        }),
-      ).annotate({ identifier: "DerivedLabelMetricLabel" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.optional(S.String),
-          slug: S.optional(S.String),
-          label_name: S.optional(S.String),
-          description: S.optional(S.String),
-          metric_label: S.optional(__S(48, __c6, 0)),
-          existing_label_policy: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "Configv1DerivedLabelInput",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          derived_label: S.optional(__S(49, __c6, 1)),
-          dry_run: S.optional(S.Boolean),
-        }).pipe(T.Http({ method: "POST", uri: "/api/v1/config/derived-labels", code: 200 })),
-      ).annotate({
-        identifier: "CreateDerivedLabelRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.optional(S.String),
-          slug: S.optional(S.String),
-          created_at: S.optional(S.String),
-          updated_at: S.optional(S.String),
-          label_name: S.optional(S.String),
-          description: S.optional(S.String),
-          metric_label: S.optional(__S(48, __c6, 0)),
-          existing_label_policy: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Configv1DerivedLabel" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          derived_label: S.optional(__S(51, __c6, 3)),
-        }),
-      ).annotate({
-        identifier: "Configv1CreateDerivedLabelResponse",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          type: S.optional(S.String),
-          name: S.optional(S.String),
-          value: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "Configv1DerivedMetricLabelMatcher",
-      });
-    case 6:
-      return S.Array(__S(53, __c6, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          labels: S.optional(__S(54, __c6, 6)),
-        }),
-      ).annotate({ identifier: "DerivedMetricSelector" });
-  }
-}
-function __c7(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.optional(S.String),
-          default_prometheus_selector: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "DerivedMetricVariable" });
-    case 1:
-      return S.Array(__S(56, __c7, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          prometheus_expr: S.optional(S.String),
-          variables: S.optional(__S(57, __c7, 1)),
-        }),
-      ).annotate({ identifier: "DerivedMetricQuery" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          selector: S.optional(__S(55, __c6, 7)),
-          query: S.optional(__S(58, __c7, 2)),
-        }),
-      ).annotate({
-        identifier: "DerivedMetricSelectorQuery",
-      });
-    case 4:
-      return S.Array(__S(59, __c7, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.optional(S.String),
-          slug: S.optional(S.String),
-          metric_name: S.optional(S.String),
-          description: S.optional(S.String),
-          queries: S.optional(__S(60, __c7, 4)),
-        }),
-      ).annotate({
-        identifier: "Configv1DerivedMetricInput",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          derived_metric: S.optional(__S(61, __c7, 5)),
-          dry_run: S.optional(S.Boolean),
-        }).pipe(T.Http({ method: "POST", uri: "/api/v1/config/derived-metrics", code: 200 })),
-      ).annotate({
-        identifier: "CreateDerivedMetricRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.optional(S.String),
-          slug: S.optional(S.String),
-          created_at: S.optional(S.String),
-          updated_at: S.optional(S.String),
-          metric_name: S.optional(S.String),
-          description: S.optional(S.String),
-          queries: S.optional(__S(60, __c7, 4)),
-        }),
-      ).annotate({ identifier: "Configv1DerivedMetric" });
-  }
-}
-function __c8(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          derived_metric: S.optional(__S(63, __c7, 7)),
-        }),
-      ).annotate({
-        identifier: "Configv1CreateDerivedMetricResponse",
-      });
-    case 1:
       return S.suspend(() =>
         S.Struct({
           enabled: S.optional(S.Boolean),
@@ -6472,33 +5949,14 @@ function __c8(j: number): any {
       ).annotate({
         identifier: "DropRuleConditionalRateBasedDrop",
       });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           enabled: S.optional(S.Boolean),
           target_drop_value: S.optional(S.Number),
         }),
       ).annotate({ identifier: "DropRuleValueBasedDrop" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          slug: S.optional(S.String),
-          name: S.optional(S.String),
-          mode: S.optional(S.String),
-          filters: S.optional(__S(39, __c4, 7)),
-          conditional_rate_based_drop: S.optional(__S(65, __c8, 1)),
-          value_based_drop: S.optional(__S(66, __c8, 2)),
-          drop_nan_value: S.optional(S.Boolean),
-        }),
-      ).annotate({ identifier: "Configv1DropRuleInput" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          drop_rule: S.optional(__S(67, __c8, 3)),
-          dry_run: S.optional(S.Boolean),
-        }).pipe(T.Http({ method: "POST", uri: "/api/v1/config/drop-rules", code: 200 })),
-      ).annotate({ identifier: "CreateDropRuleRequest" });
-    case 5:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           slug: S.optional(S.String),
@@ -6506,28 +5964,84 @@ function __c8(j: number): any {
           created_at: S.optional(S.String),
           updated_at: S.optional(S.String),
           mode: S.optional(S.String),
-          filters: S.optional(__S(39, __c4, 7)),
-          conditional_rate_based_drop: S.optional(__S(65, __c8, 1)),
-          value_based_drop: S.optional(__S(66, __c8, 2)),
+          filters: S.optional(__S(6913, __c216, 1)),
+          conditional_rate_based_drop: S.optional(__S(64, __c2, 0)),
+          value_based_drop: S.optional(__S(65, __c2, 1)),
           drop_nan_value: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "Configv1DropRule" });
-    case 6:
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          drop_rule: S.optional(__S(69, __c8, 5)),
+          drop_rule: S.optional(__S(66, __c2, 2)),
         }),
       ).annotate({
         identifier: "Configv1CreateDropRuleResponse",
       });
-    case 7:
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({}).pipe(
+          T.Http({ method: "GET", uri: "/api/v1/config/log-allocation-config", code: 200 }),
+        ),
+      ).annotate({
+        identifier: "ReadLogAllocationConfigRequest",
+      });
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({}).pipe(
+          T.Http({ method: "GET", uri: "/api/v1/config/log-ingest-config", code: 200 }),
+        ),
+      ).annotate({
+        identifier: "ReadLogIngestConfigRequest",
+      });
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          client_email: S.optional(S.String),
-        }),
+          slug: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({ method: "GET", uri: "/api/v1/config/log-scale-actions/{slug}", code: 200 }),
+        ),
       ).annotate({
-        identifier: "Configv1GcpMetricsIntegrationServiceAccount",
+        identifier: "ReadLogScaleActionRequest",
       });
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          slug: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({ method: "GET", uri: "/api/v1/config/log-scale-alerts/{slug}", code: 200 }),
+        ),
+      ).annotate({ identifier: "ReadLogScaleAlertRequest" });
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          slug: S.String.pipe(T.Label()),
+        }).pipe(T.Http({ method: "GET", uri: "/api/v1/config/mapping-rules/{slug}", code: 200 })),
+      ).annotate({ identifier: "ReadMappingRuleRequest" });
   }
 }
 function __c9(j: number): any {
@@ -6535,29 +6049,63 @@ function __c9(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          project_id: S.optional(S.String),
-          prefixes: S.optional(__S(21, __c2, 5)),
-        }),
-      ).annotate({
-        identifier: "GcpMetricsIntegrationMetricGroup",
-      });
-    case 1:
-      return S.Array(__S(72, __c9, 0));
-    case 2:
+          slug: S.String.pipe(T.Label()),
+        }).pipe(T.Http({ method: "GET", uri: "/api/v1/config/monitors/{slug}", code: 200 })),
+      ).annotate({ identifier: "ReadMonitorRequest" });
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          slug: S.optional(S.String),
-          name: S.optional(S.String),
-          service_account: S.optional(__S(71, __c8, 7)),
-          metric_groups: S.optional(__S(73, __c9, 1)),
-        }),
-      ).annotate({
-        identifier: "Configv1GcpMetricsIntegrationInput",
-      });
-    case 3:
+          slug: S.String.pipe(T.Label()),
+        }).pipe(T.Http({ method: "GET", uri: "/api/v1/config/muting-rules/{slug}", code: 200 })),
+      ).annotate({ identifier: "ReadMutingRuleRequest" });
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          gcp_metrics_integration: S.optional(__S(74, __c9, 2)),
+          slug: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({ method: "GET", uri: "/api/v1/config/notification-policies/{slug}", code: 200 }),
+        ),
+      ).annotate({
+        identifier: "ReadNotificationPolicyRequest",
+      });
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          slug: S.String.pipe(T.Label()),
+        }).pipe(T.Http({ method: "GET", uri: "/api/v1/config/notifiers/{slug}", code: 200 })),
+      ).annotate({ identifier: "ReadNotifierRequest" });
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({}).pipe(
+          T.Http({ method: "GET", uri: "/api/v1/config/otel-metrics-ingestion", code: 200 }),
+        ),
+      ).annotate({
+        identifier: "ReadOtelMetricsIngestionRequest",
+      });
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          gcp_metrics_integration: S.optional(__S(480, __c15, 0)),
           dry_run: S.optional(S.Boolean),
         }).pipe(
           T.Http({ method: "POST", uri: "/api/v1/config/gcp-metrics-integrations", code: 200 }),
@@ -6565,47 +6113,382 @@ function __c9(j: number): any {
       ).annotate({
         identifier: "CreateGcpMetricsIntegrationRequest",
       });
-    case 4:
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          slug: S.optional(S.String),
+          name: S.optional(S.String),
+          service_account: S.optional(__S(512, __c16, 0)),
+          metric_groups: S.optional(__S(514, __c16, 2)),
+        }),
+      ).annotate({
+        identifier: "Configv1GcpMetricsIntegrationInput",
+      });
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          client_email: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "Configv1GcpMetricsIntegrationServiceAccount",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          project_id: S.optional(S.String),
+          prefixes: S.optional(__S(6496, __c203, 0)),
+        }),
+      ).annotate({
+        identifier: "GcpMetricsIntegrationMetricGroup",
+      });
+    case 2:
+      return S.Array(__S(513, __c16, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
           slug: S.optional(S.String),
           name: S.optional(S.String),
           created_at: S.optional(S.String),
           updated_at: S.optional(S.String),
-          service_account: S.optional(__S(71, __c8, 7)),
-          metric_groups: S.optional(__S(73, __c9, 1)),
+          service_account: S.optional(__S(512, __c16, 0)),
+          metric_groups: S.optional(__S(514, __c16, 2)),
         }),
       ).annotate({
         identifier: "Configv1GcpMetricsIntegration",
       });
-    case 5:
+  }
+}
+function __c17(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          gcp_metrics_integration: S.optional(__S(76, __c9, 4)),
+          gcp_metrics_integration: S.optional(__S(515, __c16, 3)),
         }),
       ).annotate({
         identifier: "Configv1CreateGcpMetricsIntegrationResponse",
       });
-    case 6:
+  }
+}
+function __c18(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          grafana_dashboard: S.optional(__S(6, __c0, 6)),
+          slug: S.String.pipe(T.Label()),
+        }).pipe(T.Http({ method: "GET", uri: "/api/v1/config/recording-rules/{slug}", code: 200 })),
+      ).annotate({ identifier: "ReadRecordingRuleRequest" });
+  }
+}
+function __c19(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({}).pipe(
+          T.Http({ method: "GET", uri: "/api/v1/config/resource-pools", code: 200 }),
+        ),
+      ).annotate({ identifier: "ReadResourcePoolsRequest" });
+  }
+}
+function __c20(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          slug: S.String.pipe(T.Label()),
+        }).pipe(T.Http({ method: "GET", uri: "/api/v1/config/rollup-rules/{slug}", code: 200 })),
+      ).annotate({ identifier: "ReadRollupRuleRequest" });
+  }
+}
+function __c21(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          slug: S.String.pipe(T.Label()),
+        }).pipe(T.Http({ method: "GET", uri: "/api/v1/config/services/{slug}", code: 200 })),
+      ).annotate({ identifier: "ReadServiceRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          service: S.optional(__S(5440, __c170, 0)),
+        }),
+      ).annotate({
+        identifier: "Configv1ReadServiceResponse",
+      });
+  }
+}
+function __c22(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          slug: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({ method: "GET", uri: "/api/v1/config/service-accounts/{slug}", code: 200 }),
+        ),
+      ).annotate({
+        identifier: "ReadServiceAccountRequest",
+      });
+  }
+}
+function __c23(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          slug: S.String.pipe(T.Label()),
+        }).pipe(T.Http({ method: "GET", uri: "/api/v1/config/slos/{slug}", code: 200 })),
+      ).annotate({ identifier: "ReadSLORequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          slo: S.optional(__S(3784, __c118, 8)),
+        }),
+      ).annotate({ identifier: "Configv1ReadSLOResponse" });
+  }
+}
+function __c24(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          slug: S.String.pipe(T.Label()),
+        }).pipe(T.Http({ method: "GET", uri: "/api/v1/config/teams/{slug}", code: 200 })),
+      ).annotate({ identifier: "ReadTeamRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          team: S.optional(__S(3872, __c121, 0)),
+        }),
+      ).annotate({ identifier: "Configv1ReadTeamResponse" });
+  }
+}
+function __c25(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          slug: S.String.pipe(T.Label()),
+        }).pipe(T.Http({ method: "GET", uri: "/api/v1/config/trace-behaviors/{slug}", code: 200 })),
+      ).annotate({ identifier: "ReadTraceBehaviorRequest" });
+  }
+}
+function __c26(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({}).pipe(
+          T.Http({ method: "GET", uri: "/api/v1/config/trace-behavior-config", code: 200 }),
+        ),
+      ).annotate({
+        identifier: "ReadTraceBehaviorConfigRequest",
+      });
+  }
+}
+function __c27(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          slug: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/api/v1/config/trace-jaeger-remote-sampling-strategies/{slug}",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "ReadTraceJaegerRemoteSamplingStrategyRequest",
+      });
+  }
+}
+function __c28(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          grafana_dashboard: S.optional(__S(4928, __c154, 0)),
           dry_run: S.optional(S.Boolean),
         }).pipe(T.Http({ method: "POST", uri: "/api/v1/config/grafana-dashboards", code: 200 })),
       ).annotate({
         identifier: "CreateGrafanaDashboardRequest",
       });
-    case 7:
+  }
+}
+function __c29(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          grafana_dashboard: S.optional(__S(8, __c1, 0)),
+          grafana_dashboard: S.optional(__S(4960, __c155, 0)),
         }),
       ).annotate({
         identifier: "Configv1CreateGrafanaDashboardResponse",
       });
   }
 }
-function __c10(j: number): any {
+function __c30(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          slug: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({ method: "GET", uri: "/api/v1/config/trace-metrics-rules/{slug}", code: 200 }),
+        ),
+      ).annotate({
+        identifier: "ReadTraceMetricsRuleRequest",
+      });
+  }
+}
+function __c31(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({}).pipe(
+          T.Http({ method: "GET", uri: "/api/v1/config/trace-tail-sampling-rules", code: 200 }),
+        ),
+      ).annotate({
+        identifier: "ReadTraceTailSamplingRulesRequest",
+      });
+  }
+}
+function __c32(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          slug: S.String.pipe(T.Label()),
+          bucket: S.optional(__S(4064, __c127, 0)),
+          create_if_missing: S.optional(S.Boolean),
+          dry_run: S.optional(S.Boolean),
+        }).pipe(T.Http({ method: "PUT", uri: "/api/v1/config/buckets/{slug}", code: 200 })),
+      ).annotate({ identifier: "UpdateBucketRequest" });
+  }
+}
+function __c33(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          slug: S.String.pipe(T.Label()),
+          classic_dashboard: S.optional(__S(4928, __c154, 0)),
+          create_if_missing: S.optional(S.Boolean),
+          dry_run: S.optional(S.Boolean),
+        }).pipe(
+          T.Http({ method: "PUT", uri: "/api/v1/config/classic-dashboards/{slug}", code: 200 }),
+        ),
+      ).annotate({
+        identifier: "UpdateClassicDashboardRequest",
+      });
+  }
+}
+function __c34(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          slug: S.String.pipe(T.Label()),
+          collection: S.optional(__S(5408, __c169, 0)),
+          create_if_missing: S.optional(S.Boolean),
+          dry_run: S.optional(S.Boolean),
+        }).pipe(T.Http({ method: "PUT", uri: "/api/v1/config/collections/{slug}", code: 200 })),
+      ).annotate({ identifier: "UpdateCollectionRequest" });
+  }
+}
+function __c35(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          slug: S.String.pipe(T.Label()),
+          dashboard: S.optional(__S(5856, __c183, 0)),
+          create_if_missing: S.optional(S.Boolean),
+          dry_run: S.optional(S.Boolean),
+        }).pipe(T.Http({ method: "PUT", uri: "/api/v1/config/dashboards/{slug}", code: 200 })),
+      ).annotate({ identifier: "UpdateDashboardRequest" });
+  }
+}
+function __c36(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          slug: S.String.pipe(T.Label()),
+          dataset: S.optional(__S(6368, __c199, 0)),
+          create_if_missing: S.optional(S.Boolean),
+          dry_run: S.optional(S.Boolean),
+        }).pipe(T.Http({ method: "PUT", uri: "/api/v1/config/datasets/{slug}", code: 200 })),
+      ).annotate({ identifier: "UpdateDatasetRequest" });
+  }
+}
+function __c37(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          slug: S.String.pipe(T.Label()),
+          derived_label: S.optional(__S(6944, __c217, 0)),
+          create_if_missing: S.optional(S.Boolean),
+          dry_run: S.optional(S.Boolean),
+        }).pipe(T.Http({ method: "PUT", uri: "/api/v1/config/derived-labels/{slug}", code: 200 })),
+      ).annotate({
+        identifier: "UpdateDerivedLabelRequest",
+      });
+  }
+}
+function __c38(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          slug: S.String.pipe(T.Label()),
+          derived_metric: S.optional(__S(7392, __c231, 0)),
+          create_if_missing: S.optional(S.Boolean),
+          dry_run: S.optional(S.Boolean),
+        }).pipe(T.Http({ method: "PUT", uri: "/api/v1/config/derived-metrics/{slug}", code: 200 })),
+      ).annotate({
+        identifier: "UpdateDerivedMetricRequest",
+      });
+  }
+}
+function __c39(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          slug: S.String.pipe(T.Label()),
+          drop_rule: S.optional(__S(32, __c1, 0)),
+          create_if_missing: S.optional(S.Boolean),
+          dry_run: S.optional(S.Boolean),
+        }).pipe(T.Http({ method: "PUT", uri: "/api/v1/config/drop-rules/{slug}", code: 200 })),
+      ).annotate({ identifier: "UpdateDropRuleRequest" });
+  }
+}
+function __c40(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          log_allocation_config: S.optional(__S(1344, __c42, 0)),
+          dry_run: S.optional(S.Boolean),
+        }).pipe(T.Http({ method: "POST", uri: "/api/v1/config/log-allocation-config", code: 200 })),
+      ).annotate({
+        identifier: "CreateLogAllocationConfigRequest",
+      });
+  }
+}
+function __c41(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -6616,12 +6499,12 @@ function __c10(j: number): any {
         identifier: "Configv1LogAllocationConfigAllocation",
       });
     case 1:
-      return S.Array(__S(31, __c3, 7));
+      return S.Array(__S(6400, __c200, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          high_priority_filters: S.optional(__S(81, __c10, 1)),
-          low_priority_filters: S.optional(__S(81, __c10, 1)),
+          high_priority_filters: S.optional(__S(1313, __c41, 1)),
+          low_priority_filters: S.optional(__S(1313, __c41, 1)),
         }),
       ).annotate({
         identifier: "LogAllocationConfigHighLowPriorities",
@@ -6629,8 +6512,8 @@ function __c10(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          allocation: S.optional(__S(80, __c10, 0)),
-          priorities: S.optional(__S(82, __c10, 2)),
+          allocation: S.optional(__S(1312, __c41, 0)),
+          priorities: S.optional(__S(1314, __c41, 2)),
         }),
       ).annotate({
         identifier: "LogAllocationConfigDefaultDataset",
@@ -6639,105 +6522,458 @@ function __c10(j: number): any {
       return S.suspend(() =>
         S.Struct({
           dataset_slug: S.optional(S.String),
-          allocation: S.optional(__S(80, __c10, 0)),
-          priorities: S.optional(__S(82, __c10, 2)),
+          allocation: S.optional(__S(1312, __c41, 0)),
+          priorities: S.optional(__S(1314, __c41, 2)),
         }),
       ).annotate({
         identifier: "LogAllocationConfigDatasetAllocation",
       });
     case 5:
-      return S.Array(__S(84, __c10, 4));
+      return S.Array(__S(1316, __c41, 4));
     case 6:
-      return S.suspend(() =>
-        S.Struct({
-          default_dataset: S.optional(__S(83, __c10, 3)),
-          dataset_allocations: S.optional(__S(85, __c10, 5)),
-        }),
-      ).annotate({
-        identifier: "Configv1LogAllocationConfigInput",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          log_allocation_config: S.optional(__S(86, __c10, 6)),
-          dry_run: S.optional(S.Boolean),
-        }).pipe(T.Http({ method: "POST", uri: "/api/v1/config/log-allocation-config", code: 200 })),
-      ).annotate({
-        identifier: "CreateLogAllocationConfigRequest",
-      });
-  }
-}
-function __c11(j: number): any {
-  switch (j) {
-    case 0:
       return S.suspend(() =>
         S.Struct({
           created_at: S.optional(S.String),
           updated_at: S.optional(S.String),
-          default_dataset: S.optional(__S(83, __c10, 3)),
-          dataset_allocations: S.optional(__S(85, __c10, 5)),
+          default_dataset: S.optional(__S(1315, __c41, 3)),
+          dataset_allocations: S.optional(__S(1317, __c41, 5)),
         }),
       ).annotate({
         identifier: "Configv1LogAllocationConfig",
       });
-    case 1:
+    case 7:
       return S.suspend(() =>
         S.Struct({
-          log_allocation_config: S.optional(__S(88, __c11, 0)),
+          log_allocation_config: S.optional(__S(1318, __c41, 6)),
         }),
       ).annotate({
         identifier: "Configv1CreateLogAllocationConfigResponse",
       });
-    case 2:
+  }
+}
+function __c42(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          default_dataset: S.optional(__S(1315, __c41, 3)),
+          dataset_allocations: S.optional(__S(1317, __c41, 5)),
+        }),
+      ).annotate({
+        identifier: "Configv1LogAllocationConfigInput",
+      });
+  }
+}
+function __c43(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          slug: S.String.pipe(T.Label()),
+          gcp_metrics_integration: S.optional(__S(480, __c15, 0)),
+          create_if_missing: S.optional(S.Boolean),
+          dry_run: S.optional(S.Boolean),
+        }).pipe(
+          T.Http({
+            method: "PUT",
+            uri: "/api/v1/config/gcp-metrics-integrations/{slug}",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "UpdateGcpMetricsIntegrationRequest",
+      });
+  }
+}
+function __c44(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          slug: S.String.pipe(T.Label()),
+          grafana_dashboard: S.optional(__S(4928, __c154, 0)),
+          create_if_missing: S.optional(S.Boolean),
+          dry_run: S.optional(S.Boolean),
+        }).pipe(
+          T.Http({ method: "PUT", uri: "/api/v1/config/grafana-dashboards/{slug}", code: 200 }),
+        ),
+      ).annotate({
+        identifier: "UpdateGrafanaDashboardRequest",
+      });
+  }
+}
+function __c45(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          log_allocation_config: S.optional(__S(1344, __c42, 0)),
+          create_if_missing: S.optional(S.Boolean),
+          dry_run: S.optional(S.Boolean),
+        }).pipe(T.Http({ method: "PUT", uri: "/api/v1/config/log-allocation-config", code: 200 })),
+      ).annotate({
+        identifier: "UpdateLogAllocationConfigRequest",
+      });
+  }
+}
+function __c46(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          log_ingest_config: S.optional(__S(1760, __c55, 0)),
+          create_if_missing: S.optional(S.Boolean),
+          dry_run: S.optional(S.Boolean),
+        }).pipe(T.Http({ method: "PUT", uri: "/api/v1/config/log-ingest-config", code: 200 })),
+      ).annotate({
+        identifier: "UpdateLogIngestConfigRequest",
+      });
+  }
+}
+function __c47(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          slug: S.String.pipe(T.Label()),
+          log_scale_action: S.optional(__S(2176, __c68, 0)),
+          create_if_missing: S.optional(S.Boolean),
+          dry_run: S.optional(S.Boolean),
+        }).pipe(
+          T.Http({ method: "PUT", uri: "/api/v1/config/log-scale-actions/{slug}", code: 200 }),
+        ),
+      ).annotate({
+        identifier: "UpdateLogScaleActionRequest",
+      });
+  }
+}
+function __c48(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          slug: S.String.pipe(T.Label()),
+          log_scale_alert: S.optional(__S(2368, __c74, 0)),
+          create_if_missing: S.optional(S.Boolean),
+          dry_run: S.optional(S.Boolean),
+        }).pipe(
+          T.Http({ method: "PUT", uri: "/api/v1/config/log-scale-alerts/{slug}", code: 200 }),
+        ),
+      ).annotate({
+        identifier: "UpdateLogScaleAlertRequest",
+      });
+  }
+}
+function __c49(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          slug: S.String.pipe(T.Label()),
+          mapping_rule: S.optional(__S(2496, __c78, 0)),
+          create_if_missing: S.optional(S.Boolean),
+          dry_run: S.optional(S.Boolean),
+        }).pipe(T.Http({ method: "PUT", uri: "/api/v1/config/mapping-rules/{slug}", code: 200 })),
+      ).annotate({ identifier: "UpdateMappingRuleRequest" });
+  }
+}
+function __c50(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          slug: S.String.pipe(T.Label()),
+          monitor: S.optional(__S(2656, __c83, 0)),
+          create_if_missing: S.optional(S.Boolean),
+          dry_run: S.optional(S.Boolean),
+        }).pipe(T.Http({ method: "PUT", uri: "/api/v1/config/monitors/{slug}", code: 200 })),
+      ).annotate({ identifier: "UpdateMonitorRequest" });
+  }
+}
+function __c51(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          slug: S.String.pipe(T.Label()),
+          muting_rule: S.optional(__S(2848, __c89, 0)),
+          create_if_missing: S.optional(S.Boolean),
+          dry_run: S.optional(S.Boolean),
+        }).pipe(T.Http({ method: "PUT", uri: "/api/v1/config/muting-rules/{slug}", code: 200 })),
+      ).annotate({ identifier: "UpdateMutingRuleRequest" });
+  }
+}
+function __c52(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          slug: S.String.pipe(T.Label()),
+          notification_policy: S.optional(__S(2976, __c93, 0)),
+          create_if_missing: S.optional(S.Boolean),
+          dry_run: S.optional(S.Boolean),
+        }).pipe(
+          T.Http({ method: "PUT", uri: "/api/v1/config/notification-policies/{slug}", code: 200 }),
+        ),
+      ).annotate({
+        identifier: "UpdateNotificationPolicyRequest",
+      });
+  }
+}
+function __c53(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          log_ingest_config: S.optional(__S(1760, __c55, 0)),
+          dry_run: S.optional(S.Boolean),
+        }).pipe(T.Http({ method: "POST", uri: "/api/v1/config/log-ingest-config", code: 200 })),
+      ).annotate({
+        identifier: "CreateLogIngestConfigRequest",
+      });
+  }
+}
+function __c54(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
           regex: S.optional(S.String),
         }),
       ).annotate({ identifier: "Configv1LogParser" });
-    case 3:
-      return S.Array(__S(90, __c11, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          parsers: S.optional(__S(91, __c11, 3)),
-        }),
-      ).annotate({
-        identifier: "Configv1LogIngestConfigInput",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          log_ingest_config: S.optional(__S(92, __c11, 4)),
-          dry_run: S.optional(S.Boolean),
-        }).pipe(T.Http({ method: "POST", uri: "/api/v1/config/log-ingest-config", code: 200 })),
-      ).annotate({
-        identifier: "CreateLogIngestConfigRequest",
-      });
-    case 6:
+    case 1:
+      return S.Array(__S(1728, __c54, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           created_at: S.optional(S.String),
           updated_at: S.optional(S.String),
-          parsers: S.optional(__S(91, __c11, 3)),
+          parsers: S.optional(__S(1729, __c54, 1)),
         }),
       ).annotate({ identifier: "Configv1LogIngestConfig" });
-    case 7:
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          log_ingest_config: S.optional(__S(94, __c11, 6)),
+          log_ingest_config: S.optional(__S(1730, __c54, 2)),
         }),
       ).annotate({
         identifier: "Configv1CreateLogIngestConfigResponse",
       });
   }
 }
-function __c12(j: number): any {
+function __c55(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          recipients: S.optional(__S(21, __c2, 5)),
+          parsers: S.optional(__S(1729, __c54, 1)),
+        }),
+      ).annotate({
+        identifier: "Configv1LogIngestConfigInput",
+      });
+  }
+}
+function __c56(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          slug: S.String.pipe(T.Label()),
+          notifier: S.optional(__S(3104, __c97, 0)),
+          create_if_missing: S.optional(S.Boolean),
+          dry_run: S.optional(S.Boolean),
+        }).pipe(T.Http({ method: "PUT", uri: "/api/v1/config/notifiers/{slug}", code: 200 })),
+      ).annotate({ identifier: "UpdateNotifierRequest" });
+  }
+}
+function __c57(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          otel_metrics_ingestion: S.optional(__S(3232, __c101, 0)),
+          create_if_missing: S.optional(S.Boolean),
+          dry_run: S.optional(S.Boolean),
+        }).pipe(T.Http({ method: "PUT", uri: "/api/v1/config/otel-metrics-ingestion", code: 200 })),
+      ).annotate({
+        identifier: "UpdateOtelMetricsIngestionRequest",
+      });
+  }
+}
+function __c58(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          slug: S.String.pipe(T.Label()),
+          recording_rule: S.optional(__S(3328, __c104, 0)),
+          create_if_missing: S.optional(S.Boolean),
+          dry_run: S.optional(S.Boolean),
+        }).pipe(T.Http({ method: "PUT", uri: "/api/v1/config/recording-rules/{slug}", code: 200 })),
+      ).annotate({
+        identifier: "UpdateRecordingRuleRequest",
+      });
+  }
+}
+function __c59(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          resource_pools: S.optional(__S(3456, __c108, 0)),
+          create_if_missing: S.optional(S.Boolean),
+          dry_run: S.optional(S.Boolean),
+        }).pipe(T.Http({ method: "PUT", uri: "/api/v1/config/resource-pools", code: 200 })),
+      ).annotate({
+        identifier: "UpdateResourcePoolsRequest",
+      });
+  }
+}
+function __c60(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          slug: S.String.pipe(T.Label()),
+          rollup_rule: S.optional(__S(3552, __c111, 0)),
+          create_if_missing: S.optional(S.Boolean),
+          dry_run: S.optional(S.Boolean),
+        }).pipe(T.Http({ method: "PUT", uri: "/api/v1/config/rollup-rules/{slug}", code: 200 })),
+      ).annotate({ identifier: "UpdateRollupRuleRequest" });
+  }
+}
+function __c61(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          slug: S.String.pipe(T.Label()),
+          slo: S.optional(__S(3744, __c117, 0)),
+          create_if_missing: S.optional(S.Boolean),
+          dry_run: S.optional(S.Boolean),
+        }).pipe(T.Http({ method: "PUT", uri: "/api/v1/config/slos/{slug}", code: 200 })),
+      ).annotate({ identifier: "UpdateSLORequest" });
+  }
+}
+function __c62(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          slug: S.String.pipe(T.Label()),
+          team: S.optional(__S(3840, __c120, 0)),
+          create_if_missing: S.optional(S.Boolean),
+          dry_run: S.optional(S.Boolean),
+        }).pipe(T.Http({ method: "PUT", uri: "/api/v1/config/teams/{slug}", code: 200 })),
+      ).annotate({ identifier: "UpdateTeamRequest" });
+  }
+}
+function __c63(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          slug: S.String.pipe(T.Label()),
+          trace_behavior: S.optional(__S(3968, __c124, 0)),
+          create_if_missing: S.optional(S.Boolean),
+          dry_run: S.optional(S.Boolean),
+        }).pipe(T.Http({ method: "PUT", uri: "/api/v1/config/trace-behaviors/{slug}", code: 200 })),
+      ).annotate({
+        identifier: "UpdateTraceBehaviorRequest",
+      });
+  }
+}
+function __c64(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          trace_behavior_config: S.optional(__S(4257, __c133, 1)),
+          create_if_missing: S.optional(S.Boolean),
+          dry_run: S.optional(S.Boolean),
+        }).pipe(T.Http({ method: "PUT", uri: "/api/v1/config/trace-behavior-config", code: 200 })),
+      ).annotate({
+        identifier: "UpdateTraceBehaviorConfigRequest",
+      });
+  }
+}
+function __c65(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          slug: S.String.pipe(T.Label()),
+          trace_jaeger_remote_sampling_strategy: S.optional(__S(4352, __c136, 0)),
+          create_if_missing: S.optional(S.Boolean),
+          dry_run: S.optional(S.Boolean),
+        }).pipe(
+          T.Http({
+            method: "PUT",
+            uri: "/api/v1/config/trace-jaeger-remote-sampling-strategies/{slug}",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "UpdateTraceJaegerRemoteSamplingStrategyRequest",
+      });
+  }
+}
+function __c66(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          log_scale_action: S.optional(__S(2176, __c68, 0)),
+          dry_run: S.optional(S.Boolean),
+        }).pipe(T.Http({ method: "POST", uri: "/api/v1/config/log-scale-actions", code: 200 })),
+      ).annotate({
+        identifier: "CreateLogScaleActionRequest",
+      });
+  }
+}
+function __c67(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          log_scale_action: S.optional(__S(2217, __c69, 9)),
+        }),
+      ).annotate({
+        identifier: "Configv1CreateLogScaleActionResponse",
+      });
+  }
+}
+function __c68(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          slug: S.optional(S.String),
+          repository: S.optional(S.String),
+          name: S.optional(S.String),
+          action_type: S.optional(S.String),
+          email_action: S.optional(__S(2208, __c69, 0)),
+          humio_action: S.optional(__S(2209, __c69, 1)),
+          ops_genie_action: S.optional(__S(2210, __c69, 2)),
+          pager_duty_action: S.optional(__S(2211, __c69, 3)),
+          slack_action: S.optional(__S(2212, __c69, 4)),
+          slack_post_message_action: S.optional(__S(2213, __c69, 5)),
+          victor_ops_action: S.optional(__S(2214, __c69, 6)),
+          webhook_action: S.optional(__S(2215, __c69, 7)),
+          upload_file_action: S.optional(__S(2216, __c69, 8)),
+        }),
+      ).annotate({
+        identifier: "Configv1LogScaleActionInput",
+      });
+  }
+}
+function __c69(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          recipients: S.optional(__S(6496, __c203, 0)),
           subject_template: S.optional(S.String),
           body_template: S.optional(S.String),
           attach_csv: S.optional(S.Boolean),
@@ -6778,7 +7014,7 @@ function __c12(j: number): any {
       return S.suspend(() =>
         S.Struct({
           url: S.optional(S.String),
-          fields: S.optional(__S(0, __c0, 0)),
+          fields: S.optional(__S(4096, __c128, 0)),
           use_proxy: S.optional(S.Boolean),
         }),
       ).annotate({
@@ -6788,8 +7024,8 @@ function __c12(j: number): any {
       return S.suspend(() =>
         S.Struct({
           api_token: S.optional(S.String.pipe(T.SensitiveValue({}))),
-          channels: S.optional(__S(21, __c2, 5)),
-          fields: S.optional(__S(0, __c0, 0)),
+          channels: S.optional(__S(6496, __c203, 0)),
+          fields: S.optional(__S(4096, __c128, 0)),
           use_proxy: S.optional(S.Boolean),
         }),
       ).annotate({
@@ -6810,7 +7046,7 @@ function __c12(j: number): any {
         S.Struct({
           method: S.optional(S.String),
           url: S.optional(S.String),
-          headers: S.optional(__S(0, __c0, 0)),
+          headers: S.optional(__S(4096, __c128, 0)),
           body_template: S.optional(S.String),
           ignore_ssl: S.optional(S.Boolean),
           use_proxy: S.optional(S.Boolean),
@@ -6818,11 +7054,7 @@ function __c12(j: number): any {
       ).annotate({
         identifier: "LogScaleActionWebhookAction",
       });
-  }
-}
-function __c13(j: number): any {
-  switch (j) {
-    case 0:
+    case 8:
       return S.suspend(() =>
         S.Struct({
           file_name: S.optional(S.String),
@@ -6830,36 +7062,7 @@ function __c13(j: number): any {
       ).annotate({
         identifier: "LogScaleActionUploadFileAction",
       });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          slug: S.optional(S.String),
-          repository: S.optional(S.String),
-          name: S.optional(S.String),
-          action_type: S.optional(S.String),
-          email_action: S.optional(__S(96, __c12, 0)),
-          humio_action: S.optional(__S(97, __c12, 1)),
-          ops_genie_action: S.optional(__S(98, __c12, 2)),
-          pager_duty_action: S.optional(__S(99, __c12, 3)),
-          slack_action: S.optional(__S(100, __c12, 4)),
-          slack_post_message_action: S.optional(__S(101, __c12, 5)),
-          victor_ops_action: S.optional(__S(102, __c12, 6)),
-          webhook_action: S.optional(__S(103, __c12, 7)),
-          upload_file_action: S.optional(__S(104, __c13, 0)),
-        }),
-      ).annotate({
-        identifier: "Configv1LogScaleActionInput",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          log_scale_action: S.optional(__S(105, __c13, 1)),
-          dry_run: S.optional(S.Boolean),
-        }).pipe(T.Http({ method: "POST", uri: "/api/v1/config/log-scale-actions", code: 200 })),
-      ).annotate({
-        identifier: "CreateLogScaleActionRequest",
-      });
-    case 3:
+    case 9:
       return S.suspend(() =>
         S.Struct({
           slug: S.optional(S.String),
@@ -6868,26 +7071,80 @@ function __c13(j: number): any {
           created_at: S.optional(S.String),
           updated_at: S.optional(S.String),
           action_type: S.optional(S.String),
-          email_action: S.optional(__S(96, __c12, 0)),
-          humio_action: S.optional(__S(97, __c12, 1)),
-          ops_genie_action: S.optional(__S(98, __c12, 2)),
-          pager_duty_action: S.optional(__S(99, __c12, 3)),
-          slack_action: S.optional(__S(100, __c12, 4)),
-          slack_post_message_action: S.optional(__S(101, __c12, 5)),
-          victor_ops_action: S.optional(__S(102, __c12, 6)),
-          webhook_action: S.optional(__S(103, __c12, 7)),
-          upload_file_action: S.optional(__S(104, __c13, 0)),
+          email_action: S.optional(__S(2208, __c69, 0)),
+          humio_action: S.optional(__S(2209, __c69, 1)),
+          ops_genie_action: S.optional(__S(2210, __c69, 2)),
+          pager_duty_action: S.optional(__S(2211, __c69, 3)),
+          slack_action: S.optional(__S(2212, __c69, 4)),
+          slack_post_message_action: S.optional(__S(2213, __c69, 5)),
+          victor_ops_action: S.optional(__S(2214, __c69, 6)),
+          webhook_action: S.optional(__S(2215, __c69, 7)),
+          upload_file_action: S.optional(__S(2216, __c69, 8)),
         }),
       ).annotate({ identifier: "Configv1LogScaleAction" });
-    case 4:
+  }
+}
+function __c70(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          log_scale_action: S.optional(__S(107, __c13, 3)),
+          slug: S.String.pipe(T.Label()),
+          trace_metrics_rule: S.optional(__S(4480, __c140, 0)),
+          create_if_missing: S.optional(S.Boolean),
+          dry_run: S.optional(S.Boolean),
+        }).pipe(
+          T.Http({ method: "PUT", uri: "/api/v1/config/trace-metrics-rules/{slug}", code: 200 }),
+        ),
+      ).annotate({
+        identifier: "UpdateTraceMetricsRuleRequest",
+      });
+  }
+}
+function __c71(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          trace_tail_sampling_rules: S.optional(__S(4608, __c144, 0)),
+          create_if_missing: S.optional(S.Boolean),
+          dry_run: S.optional(S.Boolean),
+        }).pipe(
+          T.Http({ method: "PUT", uri: "/api/v1/config/trace-tail-sampling-rules", code: 200 }),
+        ),
+      ).annotate({
+        identifier: "UpdateTraceTailSamplingRulesRequest",
+      });
+  }
+}
+function __c72(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          log_scale_alert: S.optional(__S(2368, __c74, 0)),
+          dry_run: S.optional(S.Boolean),
+        }).pipe(T.Http({ method: "POST", uri: "/api/v1/config/log-scale-alerts", code: 200 })),
+      ).annotate({
+        identifier: "CreateLogScaleAlertRequest",
+      });
+  }
+}
+function __c73(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          log_scale_alert: S.optional(__S(2400, __c75, 0)),
         }),
       ).annotate({
-        identifier: "Configv1CreateLogScaleActionResponse",
+        identifier: "Configv1CreateLogScaleAlertResponse",
       });
-    case 5:
+  }
+}
+function __c74(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           slug: S.optional(S.String),
@@ -6899,24 +7156,19 @@ function __c13(j: number): any {
           time_window_secs: S.optional(S.Number),
           throttle_secs: S.optional(S.Number),
           throttle_field: S.optional(S.String),
-          log_scale_action_slugs: S.optional(__S(21, __c2, 5)),
-          tags: S.optional(__S(21, __c2, 5)),
+          log_scale_action_slugs: S.optional(__S(6496, __c203, 0)),
+          tags: S.optional(__S(6496, __c203, 0)),
           run_as_user: S.optional(S.String),
           alert_type: S.optional(S.String),
         }),
       ).annotate({
         identifier: "Configv1LogScaleAlertInput",
       });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          log_scale_alert: S.optional(__S(109, __c13, 5)),
-          dry_run: S.optional(S.Boolean),
-        }).pipe(T.Http({ method: "POST", uri: "/api/v1/config/log-scale-alerts", code: 200 })),
-      ).annotate({
-        identifier: "CreateLogScaleAlertRequest",
-      });
-    case 7:
+  }
+}
+function __c75(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           slug: S.optional(S.String),
@@ -6930,25 +7182,56 @@ function __c13(j: number): any {
           time_window_secs: S.optional(S.Number),
           throttle_secs: S.optional(S.Number),
           throttle_field: S.optional(S.String),
-          log_scale_action_slugs: S.optional(__S(21, __c2, 5)),
-          tags: S.optional(__S(21, __c2, 5)),
+          log_scale_action_slugs: S.optional(__S(6496, __c203, 0)),
+          tags: S.optional(__S(6496, __c203, 0)),
           run_as_user: S.optional(S.String),
           alert_type: S.optional(S.String),
         }),
       ).annotate({ identifier: "Configv1LogScaleAlert" });
   }
 }
-function __c14(j: number): any {
+function __c76(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          log_scale_alert: S.optional(__S(111, __c13, 7)),
+          mapping_rule: S.optional(__S(2496, __c78, 0)),
+          dry_run: S.optional(S.Boolean),
+        }).pipe(T.Http({ method: "POST", uri: "/api/v1/config/mapping-rules", code: 200 })),
+      ).annotate({ identifier: "CreateMappingRuleRequest" });
+  }
+}
+function __c77(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          mapping_rule: S.optional(__S(2561, __c80, 1)),
         }),
       ).annotate({
-        identifier: "Configv1CreateLogScaleAlertResponse",
+        identifier: "Configv1CreateMappingRuleResponse",
       });
-    case 1:
+  }
+}
+function __c78(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          slug: S.optional(S.String),
+          name: S.optional(S.String),
+          bucket_slug: S.optional(S.String),
+          filters: S.optional(__S(6913, __c216, 1)),
+          aggregation_policy: S.optional(__S(2560, __c80, 0)),
+          drop: S.optional(S.Boolean),
+          mode: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Configv1MappingRuleInput" });
+  }
+}
+function __c79(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           resolution: S.optional(S.String),
@@ -6957,37 +7240,22 @@ function __c14(j: number): any {
       ).annotate({
         identifier: "Configv1MappingRuleStoragePolicy",
       });
-    case 2:
+  }
+}
+function __c80(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           aggregation: S.optional(S.String),
-          storage_policy: S.optional(__S(113, __c14, 1)),
+          storage_policy: S.optional(__S(2528, __c79, 0)),
           interval: S.optional(S.String),
           drop_timestamp: S.optional(S.Boolean),
         }),
       ).annotate({
         identifier: "MappingRuleAggregationPolicy",
       });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          slug: S.optional(S.String),
-          name: S.optional(S.String),
-          bucket_slug: S.optional(S.String),
-          filters: S.optional(__S(39, __c4, 7)),
-          aggregation_policy: S.optional(__S(114, __c14, 2)),
-          drop: S.optional(S.Boolean),
-          mode: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Configv1MappingRuleInput" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          mapping_rule: S.optional(__S(115, __c14, 3)),
-          dry_run: S.optional(S.Boolean),
-        }).pipe(T.Http({ method: "POST", uri: "/api/v1/config/mapping-rules", code: 200 })),
-      ).annotate({ identifier: "CreateMappingRuleRequest" });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           slug: S.optional(S.String),
@@ -6995,30 +7263,87 @@ function __c14(j: number): any {
           created_at: S.optional(S.String),
           updated_at: S.optional(S.String),
           bucket_slug: S.optional(S.String),
-          filters: S.optional(__S(39, __c4, 7)),
-          aggregation_policy: S.optional(__S(114, __c14, 2)),
+          filters: S.optional(__S(6913, __c216, 1)),
+          aggregation_policy: S.optional(__S(2560, __c80, 0)),
           drop: S.optional(S.Boolean),
           mode: S.optional(S.String),
         }),
       ).annotate({ identifier: "Configv1MappingRule" });
-    case 6:
+  }
+}
+function __c81(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          mapping_rule: S.optional(__S(117, __c14, 5)),
+          monitor: S.optional(__S(2656, __c83, 0)),
+          dry_run: S.optional(S.Boolean),
+        }).pipe(T.Http({ method: "POST", uri: "/api/v1/config/monitors", code: 200 })),
+      ).annotate({ identifier: "CreateMonitorRequest" });
+  }
+}
+function __c82(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          monitor: S.optional(__S(2764, __c86, 12)),
         }),
       ).annotate({
-        identifier: "Configv1CreateMappingRuleResponse",
+        identifier: "Configv1CreateMonitorResponse",
       });
-    case 7:
+  }
+}
+function __c83(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          label_names: S.optional(__S(21, __c2, 5)),
+          slug: S.optional(S.String),
+          name: S.optional(S.String),
+          bucket_slug: S.optional(S.String),
+          collection_slug: S.optional(S.String),
+          collection: S.optional(__S(4992, __c156, 0)),
+          labels: S.optional(__S(4096, __c128, 0)),
+          annotations: S.optional(__S(4096, __c128, 0)),
+          signal_grouping: S.optional(__S(2720, __c85, 0)),
+          series_conditions: S.optional(__S(2758, __c86, 6)),
+          notification_policy_slug: S.optional(S.String),
+          interval_secs: S.optional(S.Number),
+          prometheus_query: S.optional(S.String),
+          graphite_query: S.optional(S.String),
+          schedule: S.optional(__S(2763, __c86, 11)),
+          logging_query: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Configv1MonitorInput" });
+  }
+}
+function __c84(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          type: S.optional(S.String),
+          name: S.optional(S.String),
+          value: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Configv1LabelMatcher" });
+    case 1:
+      return S.Array(__S(2688, __c84, 0));
+  }
+}
+function __c85(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          label_names: S.optional(__S(6496, __c203, 0)),
           signal_per_series: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "MonitorSignalGrouping" });
   }
 }
-function __c15(j: number): any {
+function __c86(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -7030,11 +7355,11 @@ function __c15(j: number): any {
         }),
       ).annotate({ identifier: "MonitorCondition" });
     case 1:
-      return S.Array(__S(120, __c15, 0));
+      return S.Array(__S(2752, __c86, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          conditions: S.optional(__S(121, __c15, 1)),
+          conditions: S.optional(__S(2753, __c86, 1)),
         }),
       ).annotate({
         identifier: "SeriesConditionsConditions",
@@ -7042,8 +7367,8 @@ function __c15(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          warn: S.optional(__S(122, __c15, 2)),
-          critical: S.optional(__S(122, __c15, 2)),
+          warn: S.optional(__S(2754, __c86, 2)),
+          critical: S.optional(__S(2754, __c86, 2)),
         }),
       ).annotate({
         identifier: "SeriesConditionsSeverityConditions",
@@ -7051,102 +7376,57 @@ function __c15(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          type: S.optional(S.String),
-          name: S.optional(S.String),
-          value: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Configv1LabelMatcher" });
-    case 5:
-      return S.Array(__S(124, __c15, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          label_matchers: S.optional(__S(125, __c15, 5)),
-          severity_conditions: S.optional(__S(123, __c15, 3)),
+          label_matchers: S.optional(__S(2689, __c84, 1)),
+          severity_conditions: S.optional(__S(2755, __c86, 3)),
         }),
       ).annotate({
         identifier: "MonitorSeriesConditionsOverride",
       });
-    case 7:
-      return S.Array(__S(126, __c15, 6));
-  }
-}
-function __c16(j: number): any {
-  switch (j) {
-    case 0:
+    case 5:
+      return S.Array(__S(2756, __c86, 4));
+    case 6:
       return S.suspend(() =>
         S.Struct({
-          defaults: S.optional(__S(123, __c15, 3)),
-          overrides: S.optional(__S(127, __c15, 7)),
+          defaults: S.optional(__S(2755, __c86, 3)),
+          overrides: S.optional(__S(2757, __c86, 5)),
         }),
       ).annotate({ identifier: "MonitorSeriesConditions" });
-    case 1:
+    case 7:
       return S.suspend(() =>
         S.Struct({
           start_hh_mm: S.optional(S.String),
           end_hh_mm: S.optional(S.String),
         }),
       ).annotate({ identifier: "ScheduleDayTimeRange" });
-    case 2:
-      return S.Array(__S(129, __c16, 1));
-    case 3:
+    case 8:
+      return S.Array(__S(2759, __c86, 7));
+    case 9:
       return S.suspend(() =>
         S.Struct({
           active: S.optional(S.String),
-          ranges: S.optional(__S(130, __c16, 2)),
+          ranges: S.optional(__S(2760, __c86, 8)),
         }),
       ).annotate({ identifier: "ScheduleScheduleDay" });
-    case 4:
+    case 10:
       return S.suspend(() =>
         S.Struct({
-          monday: S.optional(__S(131, __c16, 3)),
-          tuesday: S.optional(__S(131, __c16, 3)),
-          wednesday: S.optional(__S(131, __c16, 3)),
-          thursday: S.optional(__S(131, __c16, 3)),
-          friday: S.optional(__S(131, __c16, 3)),
-          saturday: S.optional(__S(131, __c16, 3)),
-          sunday: S.optional(__S(131, __c16, 3)),
+          monday: S.optional(__S(2761, __c86, 9)),
+          tuesday: S.optional(__S(2761, __c86, 9)),
+          wednesday: S.optional(__S(2761, __c86, 9)),
+          thursday: S.optional(__S(2761, __c86, 9)),
+          friday: S.optional(__S(2761, __c86, 9)),
+          saturday: S.optional(__S(2761, __c86, 9)),
+          sunday: S.optional(__S(2761, __c86, 9)),
         }),
       ).annotate({ identifier: "ScheduleWeeklySchedule" });
-    case 5:
+    case 11:
       return S.suspend(() =>
         S.Struct({
           timezone: S.optional(S.String),
-          weekly_schedule: S.optional(__S(132, __c16, 4)),
+          weekly_schedule: S.optional(__S(2762, __c86, 10)),
         }),
       ).annotate({ identifier: "MonitorSchedule" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          slug: S.optional(S.String),
-          name: S.optional(S.String),
-          bucket_slug: S.optional(S.String),
-          collection_slug: S.optional(S.String),
-          collection: S.optional(__S(5, __c0, 5)),
-          labels: S.optional(__S(0, __c0, 0)),
-          annotations: S.optional(__S(0, __c0, 0)),
-          signal_grouping: S.optional(__S(119, __c14, 7)),
-          series_conditions: S.optional(__S(128, __c16, 0)),
-          notification_policy_slug: S.optional(S.String),
-          interval_secs: S.optional(S.Number),
-          prometheus_query: S.optional(S.String),
-          graphite_query: S.optional(S.String),
-          schedule: S.optional(__S(133, __c16, 5)),
-          logging_query: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Configv1MonitorInput" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          monitor: S.optional(__S(134, __c16, 6)),
-          dry_run: S.optional(S.Boolean),
-        }).pipe(T.Http({ method: "POST", uri: "/api/v1/config/monitors", code: 200 })),
-      ).annotate({ identifier: "CreateMonitorRequest" });
-  }
-}
-function __c17(j: number): any {
-  switch (j) {
-    case 0:
+    case 12:
       return S.suspend(() =>
         S.Struct({
           slug: S.optional(S.String),
@@ -7155,157 +7435,219 @@ function __c17(j: number): any {
           updated_at: S.optional(S.String),
           bucket_slug: S.optional(S.String),
           collection_slug: S.optional(S.String),
-          collection: S.optional(__S(5, __c0, 5)),
-          labels: S.optional(__S(0, __c0, 0)),
-          annotations: S.optional(__S(0, __c0, 0)),
-          signal_grouping: S.optional(__S(119, __c14, 7)),
-          series_conditions: S.optional(__S(128, __c16, 0)),
+          collection: S.optional(__S(4992, __c156, 0)),
+          labels: S.optional(__S(4096, __c128, 0)),
+          annotations: S.optional(__S(4096, __c128, 0)),
+          signal_grouping: S.optional(__S(2720, __c85, 0)),
+          series_conditions: S.optional(__S(2758, __c86, 6)),
           notification_policy_slug: S.optional(S.String),
           interval_secs: S.optional(S.Number),
           prometheus_query: S.optional(S.String),
           graphite_query: S.optional(S.String),
-          schedule: S.optional(__S(133, __c16, 5)),
+          schedule: S.optional(__S(2763, __c86, 11)),
           logging_query: S.optional(S.String),
         }),
       ).annotate({ identifier: "Configv1Monitor" });
-    case 1:
+  }
+}
+function __c87(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          monitor: S.optional(__S(136, __c17, 0)),
+          muting_rule: S.optional(__S(2848, __c89, 0)),
+          dry_run: S.optional(S.Boolean),
+        }).pipe(T.Http({ method: "POST", uri: "/api/v1/config/muting-rules", code: 200 })),
+      ).annotate({ identifier: "CreateMutingRuleRequest" });
+  }
+}
+function __c88(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          muting_rule: S.optional(__S(2880, __c90, 0)),
         }),
       ).annotate({
-        identifier: "Configv1CreateMonitorResponse",
+        identifier: "Configv1CreateMutingRuleResponse",
       });
-    case 2:
+  }
+}
+function __c89(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           slug: S.optional(S.String),
           name: S.optional(S.String),
-          label_matchers: S.optional(__S(54, __c6, 6)),
+          label_matchers: S.optional(__S(7425, __c232, 1)),
           starts_at: S.optional(S.String),
           ends_at: S.optional(S.String),
           comment: S.optional(S.String),
         }),
       ).annotate({ identifier: "Configv1MutingRuleInput" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          muting_rule: S.optional(__S(138, __c17, 2)),
-          dry_run: S.optional(S.Boolean),
-        }).pipe(T.Http({ method: "POST", uri: "/api/v1/config/muting-rules", code: 200 })),
-      ).annotate({ identifier: "CreateMutingRuleRequest" });
-    case 4:
+  }
+}
+function __c90(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           slug: S.optional(S.String),
           name: S.optional(S.String),
           created_at: S.optional(S.String),
           updated_at: S.optional(S.String),
-          label_matchers: S.optional(__S(54, __c6, 6)),
+          label_matchers: S.optional(__S(7425, __c232, 1)),
           starts_at: S.optional(S.String),
           ends_at: S.optional(S.String),
           comment: S.optional(S.String),
         }),
       ).annotate({ identifier: "Configv1MutingRule" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          muting_rule: S.optional(__S(140, __c17, 4)),
-        }),
-      ).annotate({
-        identifier: "Configv1CreateMutingRuleResponse",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          label_names: S.optional(__S(21, __c2, 5)),
-        }),
-      ).annotate({
-        identifier: "NotificationPolicyRoutesGroupBy",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          notifier_slugs: S.optional(__S(21, __c2, 5)),
-          repeat_interval_secs: S.optional(S.Number),
-          group_by: S.optional(__S(142, __c17, 6)),
-        }),
-      ).annotate({ identifier: "RoutesNotifierList" });
   }
 }
-function __c18(j: number): any {
+function __c91(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          warn: S.optional(__S(143, __c17, 7)),
-          critical: S.optional(__S(143, __c17, 7)),
-        }),
-      ).annotate({ identifier: "RoutesSeverityNotifiers" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          alert_label_matchers: S.optional(__S(125, __c15, 5)),
-          notifiers: S.optional(__S(144, __c18, 0)),
-        }),
-      ).annotate({
-        identifier: "NotificationPolicyRoutesOverride",
-      });
-    case 2:
-      return S.Array(__S(145, __c18, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          defaults: S.optional(__S(144, __c18, 0)),
-          overrides: S.optional(__S(146, __c18, 2)),
-        }),
-      ).annotate({ identifier: "NotificationPolicyRoutes" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          slug: S.optional(S.String),
-          name: S.optional(S.String),
-          bucket_slug: S.optional(S.String),
-          team_slug: S.optional(S.String),
-          routes: S.optional(__S(147, __c18, 3)),
-        }),
-      ).annotate({
-        identifier: "Configv1NotificationPolicyInput",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          notification_policy: S.optional(__S(148, __c18, 4)),
+          notification_policy: S.optional(__S(2976, __c93, 0)),
           dry_run: S.optional(S.Boolean),
         }).pipe(T.Http({ method: "POST", uri: "/api/v1/config/notification-policies", code: 200 })),
       ).annotate({
         identifier: "CreateNotificationPolicyRequest",
       });
-    case 6:
+  }
+}
+function __c92(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          slug: S.optional(S.String),
-          name: S.optional(S.String),
-          created_at: S.optional(S.String),
-          updated_at: S.optional(S.String),
-          bucket_slug: S.optional(S.String),
-          team_slug: S.optional(S.String),
-          routes: S.optional(__S(147, __c18, 3)),
-        }),
-      ).annotate({
-        identifier: "Configv1NotificationPolicy",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          notification_policy: S.optional(__S(150, __c18, 6)),
+          notification_policy: S.optional(__S(3014, __c94, 6)),
         }),
       ).annotate({
         identifier: "Configv1CreateNotificationPolicyResponse",
       });
   }
 }
-function __c19(j: number): any {
+function __c93(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          slug: S.optional(S.String),
+          name: S.optional(S.String),
+          bucket_slug: S.optional(S.String),
+          team_slug: S.optional(S.String),
+          routes: S.optional(__S(3013, __c94, 5)),
+        }),
+      ).annotate({
+        identifier: "Configv1NotificationPolicyInput",
+      });
+  }
+}
+function __c94(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          label_names: S.optional(__S(6496, __c203, 0)),
+        }),
+      ).annotate({
+        identifier: "NotificationPolicyRoutesGroupBy",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          notifier_slugs: S.optional(__S(6496, __c203, 0)),
+          repeat_interval_secs: S.optional(S.Number),
+          group_by: S.optional(__S(3008, __c94, 0)),
+        }),
+      ).annotate({ identifier: "RoutesNotifierList" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          warn: S.optional(__S(3009, __c94, 1)),
+          critical: S.optional(__S(3009, __c94, 1)),
+        }),
+      ).annotate({ identifier: "RoutesSeverityNotifiers" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          alert_label_matchers: S.optional(__S(2689, __c84, 1)),
+          notifiers: S.optional(__S(3010, __c94, 2)),
+        }),
+      ).annotate({
+        identifier: "NotificationPolicyRoutesOverride",
+      });
+    case 4:
+      return S.Array(__S(3011, __c94, 3));
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          defaults: S.optional(__S(3010, __c94, 2)),
+          overrides: S.optional(__S(3012, __c94, 4)),
+        }),
+      ).annotate({ identifier: "NotificationPolicyRoutes" });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          slug: S.optional(S.String),
+          name: S.optional(S.String),
+          created_at: S.optional(S.String),
+          updated_at: S.optional(S.String),
+          bucket_slug: S.optional(S.String),
+          team_slug: S.optional(S.String),
+          routes: S.optional(__S(3013, __c94, 5)),
+        }),
+      ).annotate({
+        identifier: "Configv1NotificationPolicy",
+      });
+  }
+}
+function __c95(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          notifier: S.optional(__S(3104, __c97, 0)),
+          dry_run: S.optional(S.Boolean),
+        }).pipe(T.Http({ method: "POST", uri: "/api/v1/config/notifiers", code: 200 })),
+      ).annotate({ identifier: "CreateNotifierRequest" });
+  }
+}
+function __c96(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          notifier: S.optional(__S(3156, __c98, 20)),
+        }),
+      ).annotate({
+        identifier: "Configv1CreateNotifierResponse",
+      });
+  }
+}
+function __c97(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          slug: S.optional(S.String),
+          name: S.optional(S.String),
+          skip_resolved: S.optional(S.Boolean),
+          webhook: S.optional(__S(3139, __c98, 3)),
+          slack: S.optional(__S(3145, __c98, 9)),
+          pagerduty: S.optional(__S(3150, __c98, 14)),
+          email: S.optional(__S(3151, __c98, 15)),
+          ops_genie: S.optional(__S(3154, __c98, 18)),
+          victor_ops: S.optional(__S(3155, __c98, 19)),
+          discard: S.optional(S.Boolean),
+        }),
+      ).annotate({ identifier: "Configv1NotifierInput" });
+  }
+}
+function __c98(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -7323,16 +7665,16 @@ function __c19(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          basic_auth: S.optional(__S(152, __c19, 0)),
+          basic_auth: S.optional(__S(3136, __c98, 0)),
           bearer_token: S.optional(S.String),
           proxy_url: S.optional(S.String),
-          tls_config: S.optional(__S(153, __c19, 1)),
+          tls_config: S.optional(__S(3137, __c98, 1)),
         }),
       ).annotate({ identifier: "NotifierHTTPConfig" });
     case 3:
       return S.suspend(() =>
         S.Struct({
-          http_config: S.optional(__S(154, __c19, 2)),
+          http_config: S.optional(__S(3138, __c98, 2)),
           url: S.optional(S.String),
         }),
       ).annotate({ identifier: "NotifierWebhookConfig" });
@@ -7345,7 +7687,7 @@ function __c19(j: number): any {
         }),
       ).annotate({ identifier: "SlackConfigField" });
     case 5:
-      return S.Array(__S(156, __c19, 4));
+      return S.Array(__S(3140, __c98, 4));
     case 6:
       return S.suspend(() =>
         S.Struct({
@@ -7366,21 +7708,17 @@ function __c19(j: number): any {
           style: S.optional(S.String),
           name: S.optional(S.String),
           value: S.optional(S.String),
-          confirm_field: S.optional(__S(158, __c19, 6)),
+          confirm_field: S.optional(__S(3142, __c98, 6)),
         }),
       ).annotate({
         identifier: "NotifierSlackConfigAction",
       });
-  }
-}
-function __c20(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(159, __c19, 7));
-    case 1:
+    case 8:
+      return S.Array(__S(3143, __c98, 7));
+    case 9:
       return S.suspend(() =>
         S.Struct({
-          http_config: S.optional(__S(154, __c19, 2)),
+          http_config: S.optional(__S(3138, __c98, 2)),
           api_url: S.optional(S.String),
           channel: S.optional(S.String),
           username: S.optional(S.String),
@@ -7398,12 +7736,12 @@ function __c20(j: number): any {
           thumb_url: S.optional(S.String),
           short_fields: S.optional(S.Boolean),
           link_names: S.optional(S.Boolean),
-          mrkdwn_in: S.optional(__S(21, __c2, 5)),
-          fields: S.optional(__S(157, __c19, 5)),
-          actions: S.optional(__S(160, __c20, 0)),
+          mrkdwn_in: S.optional(__S(6496, __c203, 0)),
+          fields: S.optional(__S(3141, __c98, 5)),
+          actions: S.optional(__S(3144, __c98, 8)),
         }),
       ).annotate({ identifier: "NotifierSlackConfig" });
-    case 2:
+    case 10:
       return S.suspend(() =>
         S.Struct({
           src: S.optional(S.String),
@@ -7411,21 +7749,21 @@ function __c20(j: number): any {
           href: S.optional(S.String),
         }),
       ).annotate({ identifier: "PagerdutyConfigImage" });
-    case 3:
-      return S.Array(__S(162, __c20, 2));
-    case 4:
+    case 11:
+      return S.Array(__S(3146, __c98, 10));
+    case 12:
       return S.suspend(() =>
         S.Struct({
           href: S.optional(S.String),
           text: S.optional(S.String),
         }),
       ).annotate({ identifier: "PagerdutyConfigLink" });
-    case 5:
-      return S.Array(__S(164, __c20, 4));
-    case 6:
+    case 13:
+      return S.Array(__S(3148, __c98, 12));
+    case 14:
       return S.suspend(() =>
         S.Struct({
-          http_config: S.optional(__S(154, __c19, 2)),
+          http_config: S.optional(__S(3138, __c98, 2)),
           url: S.optional(S.String),
           client: S.optional(S.String),
           client_url: S.optional(S.String),
@@ -7434,14 +7772,14 @@ function __c20(j: number): any {
           class: S.optional(S.String),
           component: S.optional(S.String),
           group: S.optional(S.String),
-          details: S.optional(__S(0, __c0, 0)),
-          images: S.optional(__S(163, __c20, 3)),
-          links: S.optional(__S(165, __c20, 5)),
+          details: S.optional(__S(4096, __c128, 0)),
+          images: S.optional(__S(3147, __c98, 11)),
+          links: S.optional(__S(3149, __c98, 13)),
           service_key: S.optional(S.String),
           routing_key: S.optional(S.String),
         }),
       ).annotate({ identifier: "NotifierPagerdutyConfig" });
-    case 7:
+    case 15:
       return S.suspend(() =>
         S.Struct({
           to: S.optional(S.String),
@@ -7449,11 +7787,7 @@ function __c20(j: number): any {
           text: S.optional(S.String),
         }),
       ).annotate({ identifier: "NotifierEmailConfig" });
-  }
-}
-function __c21(j: number): any {
-  switch (j) {
-    case 0:
+    case 16:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
@@ -7462,28 +7796,28 @@ function __c21(j: number): any {
           responder_type: S.optional(S.String),
         }),
       ).annotate({ identifier: "OpsGenieConfigResponder" });
-    case 1:
-      return S.Array(__S(168, __c21, 0));
-    case 2:
+    case 17:
+      return S.Array(__S(3152, __c98, 16));
+    case 18:
       return S.suspend(() =>
         S.Struct({
-          http_config: S.optional(__S(154, __c19, 2)),
+          http_config: S.optional(__S(3138, __c98, 2)),
           api_key: S.optional(S.String.pipe(T.SensitiveValue({}))),
           api_url: S.optional(S.String),
           message: S.optional(S.String),
           description: S.optional(S.String),
           source: S.optional(S.String),
-          details: S.optional(__S(0, __c0, 0)),
-          responders: S.optional(__S(169, __c21, 1)),
+          details: S.optional(__S(4096, __c128, 0)),
+          responders: S.optional(__S(3153, __c98, 17)),
           tags: S.optional(S.String),
           note: S.optional(S.String),
           priority: S.optional(S.String),
         }),
       ).annotate({ identifier: "NotifierOpsGenieConfig" });
-    case 3:
+    case 19:
       return S.suspend(() =>
         S.Struct({
-          http_config: S.optional(__S(154, __c19, 2)),
+          http_config: S.optional(__S(3138, __c98, 2)),
           api_key: S.optional(S.String.pipe(T.SensitiveValue({}))),
           api_url: S.optional(S.String),
           routing_key: S.optional(S.String),
@@ -7491,32 +7825,10 @@ function __c21(j: number): any {
           entity_display_name: S.optional(S.String),
           state_message: S.optional(S.String),
           monitoring_tool: S.optional(S.String),
-          custom_fields: S.optional(__S(0, __c0, 0)),
+          custom_fields: S.optional(__S(4096, __c128, 0)),
         }),
       ).annotate({ identifier: "NotifierVictorOpsConfig" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          slug: S.optional(S.String),
-          name: S.optional(S.String),
-          skip_resolved: S.optional(S.Boolean),
-          webhook: S.optional(__S(155, __c19, 3)),
-          slack: S.optional(__S(161, __c20, 1)),
-          pagerduty: S.optional(__S(166, __c20, 6)),
-          email: S.optional(__S(167, __c20, 7)),
-          ops_genie: S.optional(__S(170, __c21, 2)),
-          victor_ops: S.optional(__S(171, __c21, 3)),
-          discard: S.optional(S.Boolean),
-        }),
-      ).annotate({ identifier: "Configv1NotifierInput" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          notifier: S.optional(__S(172, __c21, 4)),
-          dry_run: S.optional(S.Boolean),
-        }).pipe(T.Http({ method: "POST", uri: "/api/v1/config/notifiers", code: 200 })),
-      ).annotate({ identifier: "CreateNotifierRequest" });
-    case 6:
+    case 20:
       return S.suspend(() =>
         S.Struct({
           slug: S.optional(S.String),
@@ -7524,33 +7836,40 @@ function __c21(j: number): any {
           created_at: S.optional(S.String),
           updated_at: S.optional(S.String),
           skip_resolved: S.optional(S.Boolean),
-          webhook: S.optional(__S(155, __c19, 3)),
-          slack: S.optional(__S(161, __c20, 1)),
-          pagerduty: S.optional(__S(166, __c20, 6)),
-          email: S.optional(__S(167, __c20, 7)),
-          ops_genie: S.optional(__S(170, __c21, 2)),
-          victor_ops: S.optional(__S(171, __c21, 3)),
+          webhook: S.optional(__S(3139, __c98, 3)),
+          slack: S.optional(__S(3145, __c98, 9)),
+          pagerduty: S.optional(__S(3150, __c98, 14)),
+          email: S.optional(__S(3151, __c98, 15)),
+          ops_genie: S.optional(__S(3154, __c98, 18)),
+          victor_ops: S.optional(__S(3155, __c98, 19)),
           discard: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "Configv1Notifier" });
-    case 7:
+  }
+}
+function __c99(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          notifier: S.optional(__S(174, __c21, 6)),
-        }),
+          otel_metrics_ingestion: S.optional(__S(3232, __c101, 0)),
+          dry_run: S.optional(S.Boolean),
+        }).pipe(
+          T.Http({ method: "POST", uri: "/api/v1/config/otel-metrics-ingestion", code: 200 }),
+        ),
       ).annotate({
-        identifier: "Configv1CreateNotifierResponse",
+        identifier: "CreateOtelMetricsIngestionRequest",
       });
   }
 }
-function __c22(j: number): any {
+function __c100(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           flatten_mode: S.optional(S.String),
           filter_mode: S.optional(S.String),
-          exclude_keys: S.optional(__S(21, __c2, 5)),
+          exclude_keys: S.optional(__S(6496, __c203, 0)),
           generate_target_info: S.optional(S.Boolean),
         }),
       ).annotate({
@@ -7559,55 +7878,69 @@ function __c22(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          resource_attributes: S.optional(__S(176, __c22, 0)),
-        }),
-      ).annotate({
-        identifier: "Configv1OtelMetricsIngestionInput",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          otel_metrics_ingestion: S.optional(__S(177, __c22, 1)),
-          dry_run: S.optional(S.Boolean),
-        }).pipe(
-          T.Http({ method: "POST", uri: "/api/v1/config/otel-metrics-ingestion", code: 200 }),
-        ),
-      ).annotate({
-        identifier: "CreateOtelMetricsIngestionRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
           created_at: S.optional(S.String),
           updated_at: S.optional(S.String),
-          resource_attributes: S.optional(__S(176, __c22, 0)),
+          resource_attributes: S.optional(__S(3200, __c100, 0)),
         }),
       ).annotate({
         identifier: "Configv1OtelMetricsIngestion",
       });
-    case 4:
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          otel_metrics_ingestion: S.optional(__S(179, __c22, 3)),
+          otel_metrics_ingestion: S.optional(__S(3201, __c100, 1)),
         }),
       ).annotate({
         identifier: "Configv1CreateOtelMetricsIngestionResponse",
       });
-    case 5:
+  }
+}
+function __c101(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          add: S.optional(__S(0, __c0, 0)),
+          resource_attributes: S.optional(__S(3200, __c100, 0)),
         }),
       ).annotate({
-        identifier: "Configv1RecordingRuleLabelPolicy",
+        identifier: "Configv1OtelMetricsIngestionInput",
       });
-    case 6:
+  }
+}
+function __c102(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          recording_rule: S.optional(__S(3328, __c104, 0)),
+          dry_run: S.optional(S.Boolean),
+        }).pipe(T.Http({ method: "POST", uri: "/api/v1/config/recording-rules", code: 200 })),
+      ).annotate({
+        identifier: "CreateRecordingRuleRequest",
+      });
+  }
+}
+function __c103(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          recording_rule: S.optional(__S(3361, __c105, 1)),
+        }),
+      ).annotate({
+        identifier: "Configv1CreateRecordingRuleResponse",
+      });
+  }
+}
+function __c104(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           slug: S.optional(S.String),
           name: S.optional(S.String),
           bucket_slug: S.optional(S.String),
-          label_policy: S.optional(__S(181, __c22, 5)),
+          label_policy: S.optional(__S(3360, __c105, 0)),
           interval_secs: S.optional(S.Number),
           metric_name: S.optional(S.String),
           prometheus_expr: S.optional(S.String),
@@ -7616,20 +7949,19 @@ function __c22(j: number): any {
       ).annotate({
         identifier: "Configv1RecordingRuleInput",
       });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          recording_rule: S.optional(__S(182, __c22, 6)),
-          dry_run: S.optional(S.Boolean),
-        }).pipe(T.Http({ method: "POST", uri: "/api/v1/config/recording-rules", code: 200 })),
-      ).annotate({
-        identifier: "CreateRecordingRuleRequest",
-      });
   }
 }
-function __c23(j: number): any {
+function __c105(j: number): any {
   switch (j) {
     case 0:
+      return S.suspend(() =>
+        S.Struct({
+          add: S.optional(__S(4096, __c128, 0)),
+        }),
+      ).annotate({
+        identifier: "Configv1RecordingRuleLabelPolicy",
+      });
+    case 1:
       return S.suspend(() =>
         S.Struct({
           slug: S.optional(S.String),
@@ -7637,132 +7969,180 @@ function __c23(j: number): any {
           created_at: S.optional(S.String),
           updated_at: S.optional(S.String),
           bucket_slug: S.optional(S.String),
-          label_policy: S.optional(__S(181, __c22, 5)),
+          label_policy: S.optional(__S(3360, __c105, 0)),
           interval_secs: S.optional(S.Number),
           metric_name: S.optional(S.String),
           prometheus_expr: S.optional(S.String),
           execution_group: S.optional(S.String),
         }),
       ).annotate({ identifier: "Configv1RecordingRule" });
-    case 1:
+  }
+}
+function __c106(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          recording_rule: S.optional(__S(184, __c23, 0)),
-        }),
+          resource_pools: S.optional(__S(3456, __c108, 0)),
+          dry_run: S.optional(S.Boolean),
+        }).pipe(T.Http({ method: "POST", uri: "/api/v1/config/resource-pools", code: 200 })),
       ).annotate({
-        identifier: "Configv1CreateRecordingRuleResponse",
+        identifier: "CreateResourcePoolsRequest",
       });
-    case 2:
+  }
+}
+function __c107(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           license: S.optional(S.String),
           value: S.optional(S.String),
         }),
       ).annotate({ identifier: "AllocationFixedValue" });
-    case 3:
-      return S.Array(__S(186, __c23, 2));
-    case 4:
+    case 1:
+      return S.Array(__S(3424, __c107, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           percent_of_pool_allocation: S.optional(S.Number),
           fixed_value: S.optional(S.String),
         }),
       ).annotate({ identifier: "AllocationThreshold" });
-    case 5:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           license: S.optional(S.String),
-          all_priorities: S.optional(__S(188, __c23, 4)),
-          default_and_low_priority: S.optional(__S(188, __c23, 4)),
-          low_priority: S.optional(__S(188, __c23, 4)),
+          all_priorities: S.optional(__S(3426, __c107, 2)),
+          default_and_low_priority: S.optional(__S(3426, __c107, 2)),
+          low_priority: S.optional(__S(3426, __c107, 2)),
         }),
       ).annotate({ identifier: "AllocationThresholds" });
-    case 6:
-      return S.Array(__S(189, __c23, 5));
-    case 7:
+    case 4:
+      return S.Array(__S(3427, __c107, 3));
+    case 5:
       return S.suspend(() =>
         S.Struct({
           percent_of_license: S.optional(S.Number),
-          fixed_values: S.optional(__S(187, __c23, 3)),
-          priority_thresholds: S.optional(__S(190, __c23, 6)),
+          fixed_values: S.optional(__S(3425, __c107, 1)),
+          priority_thresholds: S.optional(__S(3428, __c107, 4)),
         }),
       ).annotate({
         identifier: "Configv1ResourcePoolsAllocation",
       });
-  }
-}
-function __c24(j: number): any {
-  switch (j) {
-    case 0:
+    case 6:
       return S.suspend(() =>
         S.Struct({
-          high_priority_filters: S.optional(__S(39, __c4, 7)),
-          low_priority_filters: S.optional(__S(39, __c4, 7)),
+          high_priority_filters: S.optional(__S(6913, __c216, 1)),
+          low_priority_filters: S.optional(__S(6913, __c216, 1)),
         }),
       ).annotate({ identifier: "ResourcePoolsPriorities" });
-    case 1:
+    case 7:
       return S.suspend(() =>
         S.Struct({
-          allocation: S.optional(__S(191, __c23, 7)),
-          priorities: S.optional(__S(192, __c24, 0)),
-          priority_thresholds: S.optional(__S(190, __c23, 6)),
+          allocation: S.optional(__S(3429, __c107, 5)),
+          priorities: S.optional(__S(3430, __c107, 6)),
+          priority_thresholds: S.optional(__S(3428, __c107, 4)),
         }),
       ).annotate({ identifier: "ResourcePoolsDefaultPool" });
-    case 2:
+    case 8:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
-          allocation: S.optional(__S(191, __c23, 7)),
-          filters: S.optional(__S(39, __c4, 7)),
-          priorities: S.optional(__S(192, __c24, 0)),
+          allocation: S.optional(__S(3429, __c107, 5)),
+          filters: S.optional(__S(6913, __c216, 1)),
+          priorities: S.optional(__S(3430, __c107, 6)),
         }),
       ).annotate({ identifier: "ResourcePoolsPool" });
-    case 3:
-      return S.Array(__S(194, __c24, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          default_pool: S.optional(__S(193, __c24, 1)),
-          pools: S.optional(__S(195, __c24, 3)),
-        }),
-      ).annotate({
-        identifier: "Configv1ResourcePoolsInput",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          resource_pools: S.optional(__S(196, __c24, 4)),
-          dry_run: S.optional(S.Boolean),
-        }).pipe(T.Http({ method: "POST", uri: "/api/v1/config/resource-pools", code: 200 })),
-      ).annotate({
-        identifier: "CreateResourcePoolsRequest",
-      });
-    case 6:
+    case 9:
+      return S.Array(__S(3432, __c107, 8));
+    case 10:
       return S.suspend(() =>
         S.Struct({
           created_at: S.optional(S.String),
           updated_at: S.optional(S.String),
-          default_pool: S.optional(__S(193, __c24, 1)),
-          pools: S.optional(__S(195, __c24, 3)),
+          default_pool: S.optional(__S(3431, __c107, 7)),
+          pools: S.optional(__S(3433, __c107, 9)),
         }),
       ).annotate({ identifier: "Configv1ResourcePools" });
-    case 7:
+    case 11:
       return S.suspend(() =>
         S.Struct({
-          resource_pools: S.optional(__S(198, __c24, 6)),
+          resource_pools: S.optional(__S(3434, __c107, 10)),
         }),
       ).annotate({
         identifier: "Configv1CreateResourcePoolsResponse",
       });
   }
 }
-function __c25(j: number): any {
+function __c108(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          keep: S.optional(__S(21, __c2, 5)),
-          discard: S.optional(__S(21, __c2, 5)),
+          default_pool: S.optional(__S(3431, __c107, 7)),
+          pools: S.optional(__S(3433, __c107, 9)),
+        }),
+      ).annotate({
+        identifier: "Configv1ResourcePoolsInput",
+      });
+  }
+}
+function __c109(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          rollup_rule: S.optional(__S(3552, __c111, 0)),
+          dry_run: S.optional(S.Boolean),
+        }).pipe(T.Http({ method: "POST", uri: "/api/v1/config/rollup-rules", code: 200 })),
+      ).annotate({ identifier: "CreateRollupRuleRequest" });
+  }
+}
+function __c110(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          rollup_rule: S.optional(__S(3588, __c112, 4)),
+        }),
+      ).annotate({
+        identifier: "Configv1CreateRollupRuleResponse",
+      });
+  }
+}
+function __c111(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          slug: S.optional(S.String),
+          name: S.optional(S.String),
+          bucket_slug: S.optional(S.String),
+          filters: S.optional(__S(6913, __c216, 1)),
+          metric_name: S.optional(S.String),
+          metric_type: S.optional(S.String),
+          aggregation: S.optional(S.String),
+          storage_policy: S.optional(__S(2528, __c79, 0)),
+          interval: S.optional(S.String),
+          expansive_match: S.optional(S.Boolean),
+          add_metric_type_label: S.optional(S.Boolean),
+          drop_raw: S.optional(S.Boolean),
+          label_policy: S.optional(__S(3584, __c112, 0)),
+          label_replace: S.optional(S.Unknown),
+          mode: S.optional(S.String),
+          graphite_label_policy: S.optional(__S(3587, __c112, 3)),
+        }),
+      ).annotate({ identifier: "Configv1RollupRuleInput" });
+  }
+}
+function __c112(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          keep: S.optional(__S(6496, __c203, 0)),
+          discard: S.optional(__S(6496, __c203, 0)),
         }),
       ).annotate({
         identifier: "Configv1RollupRuleLabelPolicy",
@@ -7777,11 +8157,11 @@ function __c25(j: number): any {
         identifier: "GraphiteLabelPolicyReplace",
       });
     case 2:
-      return S.Array(__S(201, __c25, 1));
+      return S.Array(__S(3585, __c112, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          replace: S.optional(__S(202, __c25, 2)),
+          replace: S.optional(__S(3586, __c112, 2)),
         }),
       ).annotate({
         identifier: "RollupRuleGraphiteLabelPolicy",
@@ -7791,69 +8171,69 @@ function __c25(j: number): any {
         S.Struct({
           slug: S.optional(S.String),
           name: S.optional(S.String),
+          created_at: S.optional(S.String),
+          updated_at: S.optional(S.String),
           bucket_slug: S.optional(S.String),
-          filters: S.optional(__S(39, __c4, 7)),
+          filters: S.optional(__S(6913, __c216, 1)),
           metric_name: S.optional(S.String),
           metric_type: S.optional(S.String),
           aggregation: S.optional(S.String),
-          storage_policy: S.optional(__S(113, __c14, 1)),
+          storage_policy: S.optional(__S(2528, __c79, 0)),
           interval: S.optional(S.String),
           expansive_match: S.optional(S.Boolean),
           add_metric_type_label: S.optional(S.Boolean),
           drop_raw: S.optional(S.Boolean),
-          label_policy: S.optional(__S(200, __c25, 0)),
+          label_policy: S.optional(__S(3584, __c112, 0)),
           label_replace: S.optional(S.Unknown),
           mode: S.optional(S.String),
-          graphite_label_policy: S.optional(__S(203, __c25, 3)),
+          graphite_label_policy: S.optional(__S(3587, __c112, 3)),
         }),
-      ).annotate({ identifier: "Configv1RollupRuleInput" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          rollup_rule: S.optional(__S(204, __c25, 4)),
-          dry_run: S.optional(S.Boolean),
-        }).pipe(T.Http({ method: "POST", uri: "/api/v1/config/rollup-rules", code: 200 })),
-      ).annotate({ identifier: "CreateRollupRuleRequest" });
-    case 6:
+      ).annotate({ identifier: "Configv1RollupRule" });
+  }
+}
+function __c113(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           slug: S.optional(S.String),
           name: S.optional(S.String),
-          created_at: S.optional(S.String),
-          updated_at: S.optional(S.String),
-          bucket_slug: S.optional(S.String),
-          filters: S.optional(__S(39, __c4, 7)),
-          metric_name: S.optional(S.String),
-          metric_type: S.optional(S.String),
-          aggregation: S.optional(S.String),
-          storage_policy: S.optional(__S(113, __c14, 1)),
-          interval: S.optional(S.String),
-          expansive_match: S.optional(S.Boolean),
-          add_metric_type_label: S.optional(S.Boolean),
-          drop_raw: S.optional(S.Boolean),
-          label_policy: S.optional(__S(200, __c25, 0)),
-          label_replace: S.optional(S.Unknown),
-          mode: S.optional(S.String),
-          graphite_label_policy: S.optional(__S(203, __c25, 3)),
-        }),
-      ).annotate({ identifier: "Configv1RollupRule" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          rollup_rule: S.optional(__S(206, __c25, 6)),
+          unrestricted: S.optional(S.Boolean),
+          metrics_restriction: S.optional(__S(3680, __c115, 0)),
         }),
       ).annotate({
-        identifier: "Configv1CreateRollupRuleResponse",
+        identifier: "Configv1ServiceAccountInput",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          service_account: S.optional(__S(3616, __c113, 0)),
+          dry_run: S.optional(S.Boolean),
+        }).pipe(T.Http({ method: "POST", uri: "/api/v1/config/service-accounts", code: 200 })),
+      ).annotate({
+        identifier: "CreateServiceAccountRequest",
       });
   }
 }
-function __c26(j: number): any {
+function __c114(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          service_account: S.optional(__S(3681, __c115, 1)),
+        }),
+      ).annotate({
+        identifier: "Configv1CreateServiceAccountResponse",
+      });
+  }
+}
+function __c115(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           permission: S.optional(S.String),
-          labels: S.optional(__S(0, __c0, 0)),
+          labels: S.optional(__S(4096, __c128, 0)),
         }),
       ).annotate({
         identifier: "ServiceAccountMetricsRestriction",
@@ -7863,43 +8243,57 @@ function __c26(j: number): any {
         S.Struct({
           slug: S.optional(S.String),
           name: S.optional(S.String),
-          unrestricted: S.optional(S.Boolean),
-          metrics_restriction: S.optional(__S(208, __c26, 0)),
-        }),
-      ).annotate({
-        identifier: "Configv1ServiceAccountInput",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          service_account: S.optional(__S(209, __c26, 1)),
-          dry_run: S.optional(S.Boolean),
-        }).pipe(T.Http({ method: "POST", uri: "/api/v1/config/service-accounts", code: 200 })),
-      ).annotate({
-        identifier: "CreateServiceAccountRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          slug: S.optional(S.String),
-          name: S.optional(S.String),
           created_at: S.optional(S.String),
           updated_at: S.optional(S.String),
           token: S.optional(S.String),
           email: S.optional(S.String),
           unrestricted: S.optional(S.Boolean),
-          metrics_restriction: S.optional(__S(208, __c26, 0)),
+          metrics_restriction: S.optional(__S(3680, __c115, 0)),
         }),
       ).annotate({ identifier: "Configv1ServiceAccount" });
-    case 4:
+  }
+}
+function __c116(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          service_account: S.optional(__S(211, __c26, 3)),
+          slo: S.optional(__S(3744, __c117, 0)),
+          dry_run: S.optional(S.Boolean),
+        }).pipe(T.Http({ method: "POST", uri: "/api/v1/config/slos", code: 200 })),
+      ).annotate({ identifier: "CreateSLORequest" });
+  }
+}
+function __c117(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          slug: S.optional(S.String),
+          name: S.optional(S.String),
+          description: S.optional(S.String),
+          collection_ref: S.optional(__S(4992, __c156, 0)),
+          notification_policy_slug: S.optional(S.String),
+          signal_grouping: S.optional(__S(2720, __c85, 0)),
+          labels: S.optional(__S(4096, __c128, 0)),
+          annotations: S.optional(__S(4096, __c128, 0)),
+          sli: S.optional(__S(3779, __c118, 3)),
+          definition: S.optional(__S(3783, __c118, 7)),
+        }),
+      ).annotate({ identifier: "Configv1SLOInput" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          slo: S.optional(__S(3784, __c118, 8)),
         }),
       ).annotate({
-        identifier: "Configv1CreateServiceAccountResponse",
+        identifier: "Configv1CreateSLOResponse",
       });
-    case 5:
+  }
+}
+function __c118(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           good_query_template: S.optional(S.String),
@@ -7907,87 +8301,61 @@ function __c26(j: number): any {
           total_query_template: S.optional(S.String),
         }),
       ).annotate({ identifier: "SLICustomIndicatorConfig" });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           op: S.optional(S.String),
           value: S.optional(S.Number),
         }),
       ).annotate({ identifier: "SLITimeSliceCondition" });
-    case 7:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           query_template: S.optional(S.String),
           timeslice_size: S.optional(S.String),
-          condition: S.optional(__S(214, __c26, 6)),
+          condition: S.optional(__S(3777, __c118, 1)),
         }),
       ).annotate({
         identifier: "SLICustomTimeSliceIndicatorConfig",
       });
-  }
-}
-function __c27(j: number): any {
-  switch (j) {
-    case 0:
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          custom_indicator: S.optional(__S(213, __c26, 5)),
-          custom_timeslice_indicator: S.optional(__S(215, __c26, 7)),
-          custom_dimension_labels: S.optional(__S(21, __c2, 5)),
-          additional_promql_filters: S.optional(__S(125, __c15, 5)),
+          custom_indicator: S.optional(__S(3776, __c118, 0)),
+          custom_timeslice_indicator: S.optional(__S(3778, __c118, 2)),
+          custom_dimension_labels: S.optional(__S(6496, __c203, 0)),
+          additional_promql_filters: S.optional(__S(2689, __c84, 1)),
         }),
       ).annotate({ identifier: "Configv1SLI" });
-    case 1:
+    case 4:
       return S.suspend(() =>
         S.Struct({
           duration: S.optional(S.String),
         }),
       ).annotate({ identifier: "DefinitionTimeWindow" });
-    case 2:
+    case 5:
       return S.suspend(() =>
         S.Struct({
           window: S.optional(S.String),
           budget: S.optional(S.Number),
           severity: S.optional(S.String),
-          labels: S.optional(__S(0, __c0, 0)),
+          labels: S.optional(__S(4096, __c128, 0)),
         }),
       ).annotate({
         identifier: "DefinitionBurnRateDefinition",
       });
-    case 3:
-      return S.Array(__S(218, __c27, 2));
-    case 4:
+    case 6:
+      return S.Array(__S(3781, __c118, 5));
+    case 7:
       return S.suspend(() =>
         S.Struct({
           objective: S.optional(S.Number),
-          time_window: S.optional(__S(217, __c27, 1)),
-          burn_rate_alerting_config: S.optional(__S(219, __c27, 3)),
+          time_window: S.optional(__S(3780, __c118, 4)),
+          burn_rate_alerting_config: S.optional(__S(3782, __c118, 6)),
           enable_burn_rate_alerting: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "SLODefinition" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          slug: S.optional(S.String),
-          name: S.optional(S.String),
-          description: S.optional(S.String),
-          collection_ref: S.optional(__S(5, __c0, 5)),
-          notification_policy_slug: S.optional(S.String),
-          signal_grouping: S.optional(__S(119, __c14, 7)),
-          labels: S.optional(__S(0, __c0, 0)),
-          annotations: S.optional(__S(0, __c0, 0)),
-          sli: S.optional(__S(216, __c27, 0)),
-          definition: S.optional(__S(220, __c27, 4)),
-        }),
-      ).annotate({ identifier: "Configv1SLOInput" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          slo: S.optional(__S(221, __c27, 5)),
-          dry_run: S.optional(S.Boolean),
-        }).pipe(T.Http({ method: "POST", uri: "/api/v1/config/slos", code: 200 })),
-      ).annotate({ identifier: "CreateSLORequest" });
-    case 7:
+    case 8:
       return S.suspend(() =>
         S.Struct({
           slug: S.optional(S.String),
@@ -7995,63 +8363,113 @@ function __c27(j: number): any {
           description: S.optional(S.String),
           created_at: S.optional(S.String),
           updated_at: S.optional(S.String),
-          collection_ref: S.optional(__S(5, __c0, 5)),
+          collection_ref: S.optional(__S(4992, __c156, 0)),
           notification_policy_slug: S.optional(S.String),
-          signal_grouping: S.optional(__S(119, __c14, 7)),
-          labels: S.optional(__S(0, __c0, 0)),
-          annotations: S.optional(__S(0, __c0, 0)),
-          sli: S.optional(__S(216, __c27, 0)),
-          definition: S.optional(__S(220, __c27, 4)),
+          signal_grouping: S.optional(__S(2720, __c85, 0)),
+          labels: S.optional(__S(4096, __c128, 0)),
+          annotations: S.optional(__S(4096, __c128, 0)),
+          sli: S.optional(__S(3779, __c118, 3)),
+          definition: S.optional(__S(3783, __c118, 7)),
         }),
       ).annotate({ identifier: "Configv1SLO" });
   }
 }
-function __c28(j: number): any {
+function __c119(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          slo: S.optional(__S(223, __c27, 7)),
-        }),
-      ).annotate({
-        identifier: "Configv1CreateSLOResponse",
-      });
-    case 1:
+          team: S.optional(__S(3840, __c120, 0)),
+          dry_run: S.optional(S.Boolean),
+        }).pipe(T.Http({ method: "POST", uri: "/api/v1/config/teams", code: 200 })),
+      ).annotate({ identifier: "CreateTeamRequest" });
+  }
+}
+function __c120(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           slug: S.optional(S.String),
           name: S.optional(S.String),
-          user_emails: S.optional(__S(21, __c2, 5)),
+          user_emails: S.optional(__S(6496, __c203, 0)),
           description: S.optional(S.String),
         }),
       ).annotate({ identifier: "Configv1TeamInput" });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          team: S.optional(__S(225, __c28, 1)),
-          dry_run: S.optional(S.Boolean),
-        }).pipe(T.Http({ method: "POST", uri: "/api/v1/config/teams", code: 200 })),
-      ).annotate({ identifier: "CreateTeamRequest" });
-    case 3:
+          team: S.optional(__S(3872, __c121, 0)),
+        }),
+      ).annotate({
+        identifier: "Configv1CreateTeamResponse",
+      });
+  }
+}
+function __c121(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           slug: S.optional(S.String),
           name: S.optional(S.String),
           created_at: S.optional(S.String),
           updated_at: S.optional(S.String),
-          user_emails: S.optional(__S(21, __c2, 5)),
+          user_emails: S.optional(__S(6496, __c203, 0)),
           description: S.optional(S.String),
         }),
       ).annotate({ identifier: "Configv1Team" });
-    case 4:
+  }
+}
+function __c122(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          team: S.optional(__S(227, __c28, 3)),
+          trace_behavior: S.optional(__S(3968, __c124, 0)),
+          dry_run: S.optional(S.Boolean),
+        }).pipe(T.Http({ method: "POST", uri: "/api/v1/config/trace-behaviors", code: 200 })),
+      ).annotate({
+        identifier: "CreateTraceBehaviorRequest",
+      });
+  }
+}
+function __c123(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          trace_behavior: S.optional(__S(4004, __c125, 4)),
         }),
       ).annotate({
-        identifier: "Configv1CreateTeamResponse",
+        identifier: "Configv1CreateTraceBehaviorResponse",
       });
-    case 5:
+  }
+}
+function __c124(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.optional(S.String),
+          slug: S.optional(S.String),
+          description: S.optional(S.String),
+          base_tail_sample_rate: S.optional(S.Number),
+          base_head_sample_rate: S.optional(S.Number),
+          error_sample_options: S.optional(__S(4000, __c125, 0)),
+          fast_sample_options: S.optional(__S(4001, __c125, 1)),
+          slow_sample_options: S.optional(__S(4002, __c125, 2)),
+          large_trace_sample_options: S.optional(__S(4003, __c125, 3)),
+          small_trace_sample_options: S.optional(__S(4003, __c125, 3)),
+        }),
+      ).annotate({
+        identifier: "Configv1TraceBehaviorInput",
+      });
+  }
+}
+function __c125(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           sample_rate: S.optional(S.Number),
@@ -8061,7 +8479,7 @@ function __c28(j: number): any {
       ).annotate({
         identifier: "TraceBehaviorErrorSampleOptions",
       });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           max_duration_seconds: S.optional(S.Number),
@@ -8072,7 +8490,7 @@ function __c28(j: number): any {
       ).annotate({
         identifier: "TraceBehaviorFastSampleOptions",
       });
-    case 7:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           min_duration_seconds: S.optional(S.Number),
@@ -8083,11 +8501,7 @@ function __c28(j: number): any {
       ).annotate({
         identifier: "TraceBehaviorSlowSampleOptions",
       });
-  }
-}
-function __c29(j: number): any {
-  switch (j) {
-    case 0:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           span_count_threshold: S.optional(S.Number),
@@ -8098,33 +8512,7 @@ function __c29(j: number): any {
       ).annotate({
         identifier: "TraceBehaviorLargeTraceSampleOptions",
       });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.optional(S.String),
-          slug: S.optional(S.String),
-          description: S.optional(S.String),
-          base_tail_sample_rate: S.optional(S.Number),
-          base_head_sample_rate: S.optional(S.Number),
-          error_sample_options: S.optional(__S(229, __c28, 5)),
-          fast_sample_options: S.optional(__S(230, __c28, 6)),
-          slow_sample_options: S.optional(__S(231, __c28, 7)),
-          large_trace_sample_options: S.optional(__S(232, __c29, 0)),
-          small_trace_sample_options: S.optional(__S(232, __c29, 0)),
-        }),
-      ).annotate({
-        identifier: "Configv1TraceBehaviorInput",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          trace_behavior: S.optional(__S(233, __c29, 1)),
-          dry_run: S.optional(S.Boolean),
-        }).pipe(T.Http({ method: "POST", uri: "/api/v1/config/trace-behaviors", code: 200 })),
-      ).annotate({
-        identifier: "CreateTraceBehaviorRequest",
-      });
-    case 3:
+    case 4:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
@@ -8134,22 +8522,92 @@ function __c29(j: number): any {
           description: S.optional(S.String),
           base_tail_sample_rate: S.optional(S.Number),
           base_head_sample_rate: S.optional(S.Number),
-          error_sample_options: S.optional(__S(229, __c28, 5)),
-          fast_sample_options: S.optional(__S(230, __c28, 6)),
-          slow_sample_options: S.optional(__S(231, __c28, 7)),
-          large_trace_sample_options: S.optional(__S(232, __c29, 0)),
-          small_trace_sample_options: S.optional(__S(232, __c29, 0)),
+          error_sample_options: S.optional(__S(4000, __c125, 0)),
+          fast_sample_options: S.optional(__S(4001, __c125, 1)),
+          slow_sample_options: S.optional(__S(4002, __c125, 2)),
+          large_trace_sample_options: S.optional(__S(4003, __c125, 3)),
+          small_trace_sample_options: S.optional(__S(4003, __c125, 3)),
         }),
       ).annotate({ identifier: "Configv1TraceBehavior" });
-    case 4:
+  }
+}
+function __c126(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          trace_behavior: S.optional(__S(235, __c29, 3)),
+          bucket: S.optional(__S(4064, __c127, 0)),
+          dry_run: S.optional(S.Boolean),
+        }).pipe(T.Http({ method: "POST", uri: "/api/v1/config/buckets", code: 200 })),
+      ).annotate({ identifier: "CreateBucketRequest" });
+  }
+}
+function __c127(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          slug: S.optional(S.String),
+          name: S.optional(S.String),
+          description: S.optional(S.String),
+          labels: S.optional(__S(4096, __c128, 0)),
+          team_slug: S.optional(S.String),
+          notification_policy_slug: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Configv1BucketInput" });
+  }
+}
+function __c128(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, S.String);
+  }
+}
+function __c129(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          slug: S.optional(S.String),
+          name: S.optional(S.String),
+          created_at: S.optional(S.String),
+          updated_at: S.optional(S.String),
+          description: S.optional(S.String),
+          labels: S.optional(__S(4096, __c128, 0)),
+          team_slug: S.optional(S.String),
+          notification_policy_slug: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Configv1Bucket" });
+  }
+}
+function __c130(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          bucket: S.optional(__S(4128, __c129, 0)),
         }),
       ).annotate({
-        identifier: "Configv1CreateTraceBehaviorResponse",
+        identifier: "Configv1CreateBucketResponse",
       });
-    case 5:
+  }
+}
+function __c131(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          trace_behavior_config: S.optional(__S(4257, __c133, 1)),
+          dry_run: S.optional(S.Boolean),
+        }).pipe(T.Http({ method: "POST", uri: "/api/v1/config/trace-behavior-config", code: 200 })),
+      ).annotate({
+        identifier: "CreateTraceBehaviorConfigRequest",
+      });
+  }
+}
+function __c132(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           created_at: S.optional(S.String),
@@ -8162,9 +8620,9 @@ function __c29(j: number): any {
       ).annotate({
         identifier: "TraceBehaviorConfigMainBehaviorAssignment",
       });
-    case 6:
-      return S.Array(__S(237, __c29, 5));
-    case 7:
+    case 1:
+      return S.Array(__S(4224, __c132, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           created_at: S.optional(S.String),
@@ -8179,45 +8637,18 @@ function __c29(j: number): any {
       ).annotate({
         identifier: "TraceBehaviorConfigOverrideBehaviorAssignment",
       });
-  }
-}
-function __c30(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(239, __c29, 7));
-    case 1:
-      return S.Array(__S(239, __c29, 7));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          main_behavior_assignments: S.optional(__S(238, __c29, 6)),
-          override_behavior_assignments: S.optional(__S(240, __c30, 0)),
-          dataset_priorities: S.optional(__S(21, __c2, 5)),
-          baseline_behavior_slug: S.optional(S.String),
-          preview_behavior_assignments: S.optional(__S(241, __c30, 1)),
-        }),
-      ).annotate({
-        identifier: "Configv1TraceBehaviorConfigInput",
-      });
     case 3:
-      return S.suspend(() =>
-        S.Struct({
-          trace_behavior_config: S.optional(__S(242, __c30, 2)),
-          dry_run: S.optional(S.Boolean),
-        }).pipe(T.Http({ method: "POST", uri: "/api/v1/config/trace-behavior-config", code: 200 })),
-      ).annotate({
-        identifier: "CreateTraceBehaviorConfigRequest",
-      });
+      return S.Array(__S(4226, __c132, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
           created_at: S.optional(S.String),
           updated_at: S.optional(S.String),
-          main_behavior_assignments: S.optional(__S(238, __c29, 6)),
-          override_behavior_assignments: S.optional(__S(241, __c30, 1)),
-          dataset_priorities: S.optional(__S(21, __c2, 5)),
+          main_behavior_assignments: S.optional(__S(4225, __c132, 1)),
+          override_behavior_assignments: S.optional(__S(4227, __c132, 3)),
+          dataset_priorities: S.optional(__S(6496, __c203, 0)),
           baseline_behavior_slug: S.optional(S.String),
-          preview_behavior_assignments: S.optional(__S(241, __c30, 1)),
+          preview_behavior_assignments: S.optional(__S(4227, __c132, 3)),
         }),
       ).annotate({
         identifier: "Configv1TraceBehaviorConfig",
@@ -8225,78 +8656,37 @@ function __c30(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          trace_behavior_config: S.optional(__S(244, __c30, 4)),
+          trace_behavior_config: S.optional(__S(4228, __c132, 4)),
         }),
       ).annotate({
         identifier: "Configv1CreateTraceBehaviorConfigResponse",
       });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          sampling_rate: S.optional(S.Number),
-        }),
-      ).annotate({
-        identifier: "TraceJaegerRemoteSamplingStrategyProbabilisticStrategy",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          operation: S.optional(S.String),
-          probabilistic_sampling_strategy: S.optional(__S(246, __c30, 6)),
-        }),
-      ).annotate({
-        identifier: "PerOperationSamplingStrategiesPerOperationSamplingStrategy",
-      });
   }
 }
-function __c31(j: number): any {
+function __c133(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(247, __c30, 7));
+      return S.Array(__S(4226, __c132, 2));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          default_sampling_rate: S.optional(S.Number),
-          default_lower_bound_traces_per_second: S.optional(S.Number),
-          default_upper_bound_traces_per_second: S.optional(S.Number),
-          per_operation_strategies: S.optional(__S(248, __c31, 0)),
+          main_behavior_assignments: S.optional(__S(4225, __c132, 1)),
+          override_behavior_assignments: S.optional(__S(4256, __c133, 0)),
+          dataset_priorities: S.optional(__S(6496, __c203, 0)),
+          baseline_behavior_slug: S.optional(S.String),
+          preview_behavior_assignments: S.optional(__S(4227, __c132, 3)),
         }),
       ).annotate({
-        identifier: "TraceJaegerRemoteSamplingStrategyPerOperationSamplingStrategies",
+        identifier: "Configv1TraceBehaviorConfigInput",
       });
-    case 2:
+  }
+}
+function __c134(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          max_traces_per_second: S.optional(S.Number),
-        }),
-      ).annotate({
-        identifier: "TraceJaegerRemoteSamplingStrategyRateLimitingSamplingStrategy",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          probabilistic_strategy: S.optional(__S(246, __c30, 6)),
-          per_operation_strategies: S.optional(__S(249, __c31, 1)),
-          rate_limiting_strategy: S.optional(__S(250, __c31, 2)),
-        }),
-      ).annotate({
-        identifier: "TraceJaegerRemoteSamplingStrategyAppliedStrategy",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          slug: S.optional(S.String),
-          name: S.optional(S.String),
-          service_name: S.optional(S.String),
-          applied_strategy: S.optional(__S(251, __c31, 3)),
-        }),
-      ).annotate({
-        identifier: "Configv1TraceJaegerRemoteSamplingStrategyInput",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          trace_jaeger_remote_sampling_strategy: S.optional(__S(252, __c31, 4)),
+          trace_jaeger_remote_sampling_strategy: S.optional(__S(4352, __c136, 0)),
           dry_run: S.optional(S.Boolean),
         }).pipe(
           T.Http({
@@ -8308,6 +8698,85 @@ function __c31(j: number): any {
       ).annotate({
         identifier: "CreateTraceJaegerRemoteSamplingStrategyRequest",
       });
+  }
+}
+function __c135(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          trace_jaeger_remote_sampling_strategy: S.optional(__S(4390, __c137, 6)),
+        }),
+      ).annotate({
+        identifier: "Configv1CreateTraceJaegerRemoteSamplingStrategyResponse",
+      });
+  }
+}
+function __c136(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          slug: S.optional(S.String),
+          name: S.optional(S.String),
+          service_name: S.optional(S.String),
+          applied_strategy: S.optional(__S(4389, __c137, 5)),
+        }),
+      ).annotate({
+        identifier: "Configv1TraceJaegerRemoteSamplingStrategyInput",
+      });
+  }
+}
+function __c137(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          sampling_rate: S.optional(S.Number),
+        }),
+      ).annotate({
+        identifier: "TraceJaegerRemoteSamplingStrategyProbabilisticStrategy",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          operation: S.optional(S.String),
+          probabilistic_sampling_strategy: S.optional(__S(4384, __c137, 0)),
+        }),
+      ).annotate({
+        identifier: "PerOperationSamplingStrategiesPerOperationSamplingStrategy",
+      });
+    case 2:
+      return S.Array(__S(4385, __c137, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          default_sampling_rate: S.optional(S.Number),
+          default_lower_bound_traces_per_second: S.optional(S.Number),
+          default_upper_bound_traces_per_second: S.optional(S.Number),
+          per_operation_strategies: S.optional(__S(4386, __c137, 2)),
+        }),
+      ).annotate({
+        identifier: "TraceJaegerRemoteSamplingStrategyPerOperationSamplingStrategies",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          max_traces_per_second: S.optional(S.Number),
+        }),
+      ).annotate({
+        identifier: "TraceJaegerRemoteSamplingStrategyRateLimitingSamplingStrategy",
+      });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          probabilistic_strategy: S.optional(__S(4384, __c137, 0)),
+          per_operation_strategies: S.optional(__S(4387, __c137, 3)),
+          rate_limiting_strategy: S.optional(__S(4388, __c137, 4)),
+        }),
+      ).annotate({
+        identifier: "TraceJaegerRemoteSamplingStrategyAppliedStrategy",
+      });
     case 6:
       return S.suspend(() =>
         S.Struct({
@@ -8316,22 +8785,57 @@ function __c31(j: number): any {
           created_at: S.optional(S.String),
           updated_at: S.optional(S.String),
           service_name: S.optional(S.String),
-          applied_strategy: S.optional(__S(251, __c31, 3)),
+          applied_strategy: S.optional(__S(4389, __c137, 5)),
         }),
       ).annotate({
         identifier: "Configv1TraceJaegerRemoteSamplingStrategy",
       });
-    case 7:
+  }
+}
+function __c138(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          trace_jaeger_remote_sampling_strategy: S.optional(__S(254, __c31, 6)),
-        }),
+          trace_metrics_rule: S.optional(__S(4480, __c140, 0)),
+          dry_run: S.optional(S.Boolean),
+        }).pipe(T.Http({ method: "POST", uri: "/api/v1/config/trace-metrics-rules", code: 200 })),
       ).annotate({
-        identifier: "Configv1CreateTraceJaegerRemoteSamplingStrategyResponse",
+        identifier: "CreateTraceMetricsRuleRequest",
       });
   }
 }
-function __c32(j: number): any {
+function __c139(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          trace_metrics_rule: S.optional(__S(4516, __c141, 4)),
+        }),
+      ).annotate({
+        identifier: "Configv1CreateTraceMetricsRuleResponse",
+      });
+  }
+}
+function __c140(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.optional(S.String),
+          slug: S.optional(S.String),
+          metric_name: S.optional(S.String),
+          metric_labels: S.optional(__S(4096, __c128, 0)),
+          histogram_buckets_secs: S.optional(__S(4512, __c141, 0)),
+          trace_filter: S.optional(__S(6442, __c201, 10)),
+          group_by: S.optional(__S(4515, __c141, 3)),
+        }),
+      ).annotate({
+        identifier: "Configv1TraceMetricsRuleInput",
+      });
+  }
+}
+function __c141(j: number): any {
   switch (j) {
     case 0:
       return S.Array(S.Number);
@@ -8346,37 +8850,14 @@ function __c32(j: number): any {
       return S.suspend(() =>
         S.Struct({
           label: S.optional(S.String),
-          key: S.optional(__S(257, __c32, 1)),
+          key: S.optional(__S(4513, __c141, 1)),
         }),
       ).annotate({
         identifier: "Configv1TraceMetricsRuleGroupBy",
       });
     case 3:
-      return S.Array(__S(258, __c32, 2));
+      return S.Array(__S(4514, __c141, 2));
     case 4:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.optional(S.String),
-          slug: S.optional(S.String),
-          metric_name: S.optional(S.String),
-          metric_labels: S.optional(__S(0, __c0, 0)),
-          histogram_buckets_secs: S.optional(__S(256, __c32, 0)),
-          trace_filter: S.optional(__S(29, __c3, 5)),
-          group_by: S.optional(__S(259, __c32, 3)),
-        }),
-      ).annotate({
-        identifier: "Configv1TraceMetricsRuleInput",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          trace_metrics_rule: S.optional(__S(260, __c32, 4)),
-          dry_run: S.optional(S.Boolean),
-        }).pipe(T.Http({ method: "POST", uri: "/api/v1/config/trace-metrics-rules", code: 200 })),
-      ).annotate({
-        identifier: "CreateTraceMetricsRuleRequest",
-      });
-    case 6:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
@@ -8384,28 +8865,35 @@ function __c32(j: number): any {
           created_at: S.optional(S.String),
           updated_at: S.optional(S.String),
           metric_name: S.optional(S.String),
-          metric_labels: S.optional(__S(0, __c0, 0)),
-          histogram_buckets_secs: S.optional(__S(256, __c32, 0)),
-          trace_filter: S.optional(__S(29, __c3, 5)),
-          group_by: S.optional(__S(259, __c32, 3)),
+          metric_labels: S.optional(__S(4096, __c128, 0)),
+          histogram_buckets_secs: S.optional(__S(4512, __c141, 0)),
+          trace_filter: S.optional(__S(6442, __c201, 10)),
+          group_by: S.optional(__S(4515, __c141, 3)),
         }),
       ).annotate({ identifier: "Configv1TraceMetricsRule" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          trace_metrics_rule: S.optional(__S(262, __c32, 6)),
-        }),
-      ).annotate({
-        identifier: "Configv1CreateTraceMetricsRuleResponse",
-      });
   }
 }
-function __c33(j: number): any {
+function __c142(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          filter: S.optional(__S(29, __c3, 5)),
+          trace_tail_sampling_rules: S.optional(__S(4608, __c144, 0)),
+          dry_run: S.optional(S.Boolean),
+        }).pipe(
+          T.Http({ method: "POST", uri: "/api/v1/config/trace-tail-sampling-rules", code: 200 }),
+        ),
+      ).annotate({
+        identifier: "CreateTraceTailSamplingRulesRequest",
+      });
+  }
+}
+function __c143(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          filter: S.optional(__S(6442, __c201, 10)),
           sample_rate: S.optional(S.Number),
           name: S.optional(S.String),
           system_name: S.optional(S.String),
@@ -8416,7 +8904,7 @@ function __c33(j: number): any {
         identifier: "Configv1TraceTailSamplingRule",
       });
     case 1:
-      return S.Array(__S(264, __c33, 0));
+      return S.Array(__S(4576, __c143, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -8429,54 +8917,47 @@ function __c33(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          rules: S.optional(__S(265, __c33, 1)),
-          default_sample_rate: S.optional(__S(266, __c33, 2)),
-        }),
-      ).annotate({
-        identifier: "Configv1TraceTailSamplingRulesInput",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          trace_tail_sampling_rules: S.optional(__S(267, __c33, 3)),
-          dry_run: S.optional(S.Boolean),
-        }).pipe(
-          T.Http({ method: "POST", uri: "/api/v1/config/trace-tail-sampling-rules", code: 200 }),
-        ),
-      ).annotate({
-        identifier: "CreateTraceTailSamplingRulesRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
           created_at: S.optional(S.String),
           updated_at: S.optional(S.String),
-          rules: S.optional(__S(265, __c33, 1)),
-          default_sample_rate: S.optional(__S(266, __c33, 2)),
+          rules: S.optional(__S(4577, __c143, 1)),
+          default_sample_rate: S.optional(__S(4578, __c143, 2)),
         }),
       ).annotate({
         identifier: "Configv1TraceTailSamplingRules",
       });
-    case 6:
+    case 4:
       return S.suspend(() =>
         S.Struct({
-          trace_tail_sampling_rules: S.optional(__S(269, __c33, 5)),
+          trace_tail_sampling_rules: S.optional(__S(4579, __c143, 3)),
         }),
       ).annotate({
         identifier: "Configv1CreateTraceTailSamplingRulesResponse",
       });
-    case 7:
+  }
+}
+function __c144(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          rules: S.optional(__S(4577, __c143, 1)),
+          default_sample_rate: S.optional(__S(4578, __c143, 2)),
+        }),
+      ).annotate({
+        identifier: "Configv1TraceTailSamplingRulesInput",
+      });
+  }
+}
+function __c145(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           slug: S.String.pipe(T.Label()),
           force_delete: S.optional(S.Boolean.pipe(T.Query())),
         }).pipe(T.Http({ method: "DELETE", uri: "/api/v1/config/buckets/{slug}", code: 200 })),
       ).annotate({ identifier: "DeleteBucketRequest" });
-  }
-}
-function __c34(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           resource: S.optional(S.String),
@@ -8484,17 +8965,21 @@ function __c34(j: number): any {
           action: S.optional(S.String),
         }),
       ).annotate({ identifier: "ResourceChange" });
-    case 1:
-      return S.Array(__S(272, __c34, 0));
     case 2:
+      return S.Array(__S(4641, __c145, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          changes: S.optional(__S(273, __c34, 1)),
+          changes: S.optional(__S(4642, __c145, 2)),
         }),
       ).annotate({
         identifier: "Configv1DeleteBucketResponse",
       });
-    case 3:
+  }
+}
+function __c146(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           slug: S.String.pipe(T.Label()),
@@ -8504,21 +8989,37 @@ function __c34(j: number): any {
       ).annotate({
         identifier: "DeleteClassicDashboardRequest",
       });
-    case 4:
+  }
+}
+function __c147(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() => S.Unknown.pipe(T.RawResponseRoot())).annotate({
         identifier: "DeleteClassicDashboardResponse",
       });
-    case 5:
+  }
+}
+function __c148(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           slug: S.String.pipe(T.Label()),
         }).pipe(T.Http({ method: "DELETE", uri: "/api/v1/config/collections/{slug}", code: 200 })),
       ).annotate({ identifier: "DeleteCollectionRequest" });
-    case 6:
+  }
+}
+function __c149(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() => S.Unknown.pipe(T.RawResponseRoot())).annotate({
         identifier: "DeleteCollectionResponse",
       });
-    case 7:
+  }
+}
+function __c150(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           slug: S.String.pipe(T.Label()),
@@ -8526,7 +9027,7 @@ function __c34(j: number): any {
       ).annotate({ identifier: "DeleteDashboardRequest" });
   }
 }
-function __c35(j: number): any {
+function __c151(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -8534,7 +9035,11 @@ function __c35(j: number): any {
           slug: S.String.pipe(T.Label()),
         }).pipe(T.Http({ method: "DELETE", uri: "/api/v1/config/datasets/{slug}", code: 200 })),
       ).annotate({ identifier: "DeleteDatasetRequest" });
-    case 1:
+  }
+}
+function __c152(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           slug: S.String.pipe(T.Label()),
@@ -8544,7 +9049,83 @@ function __c35(j: number): any {
       ).annotate({
         identifier: "DeleteDerivedLabelRequest",
       });
-    case 2:
+  }
+}
+function __c153(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          classic_dashboard: S.optional(__S(4928, __c154, 0)),
+          dry_run: S.optional(S.Boolean),
+        }).pipe(T.Http({ method: "POST", uri: "/api/v1/config/classic-dashboards", code: 200 })),
+      ).annotate({
+        identifier: "CreateClassicDashboardRequest",
+      });
+  }
+}
+function __c154(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          slug: S.optional(S.String),
+          name: S.optional(S.String),
+          bucket_slug: S.optional(S.String),
+          collection_slug: S.optional(S.String),
+          collection: S.optional(__S(4992, __c156, 0)),
+          dashboard_json: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "Configv1GrafanaDashboardInput",
+      });
+  }
+}
+function __c155(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          slug: S.optional(S.String),
+          name: S.optional(S.String),
+          created_at: S.optional(S.String),
+          updated_at: S.optional(S.String),
+          bucket_slug: S.optional(S.String),
+          collection_slug: S.optional(S.String),
+          collection: S.optional(__S(4992, __c156, 0)),
+          dashboard_json: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Configv1GrafanaDashboard" });
+  }
+}
+function __c156(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          type: S.optional(S.String),
+          slug: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "Configv1CollectionReference",
+      });
+  }
+}
+function __c157(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          classic_dashboard: S.optional(__S(4960, __c155, 0)),
+        }),
+      ).annotate({
+        identifier: "Configv1CreateClassicDashboardResponse",
+      });
+  }
+}
+function __c158(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           slug: S.String.pipe(T.Label()),
@@ -8554,13 +9135,21 @@ function __c35(j: number): any {
       ).annotate({
         identifier: "DeleteDerivedMetricRequest",
       });
-    case 3:
+  }
+}
+function __c159(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           slug: S.String.pipe(T.Label()),
         }).pipe(T.Http({ method: "DELETE", uri: "/api/v1/config/drop-rules/{slug}", code: 200 })),
       ).annotate({ identifier: "DeleteDropRuleRequest" });
-    case 4:
+  }
+}
+function __c160(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           slug: S.String.pipe(T.Label()),
@@ -8574,7 +9163,11 @@ function __c35(j: number): any {
       ).annotate({
         identifier: "DeleteGcpMetricsIntegrationRequest",
       });
-    case 5:
+  }
+}
+function __c161(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           slug: S.String.pipe(T.Label()),
@@ -8584,7 +9177,11 @@ function __c35(j: number): any {
       ).annotate({
         identifier: "DeleteGrafanaDashboardRequest",
       });
-    case 6:
+  }
+}
+function __c162(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({}).pipe(
           T.Http({ method: "DELETE", uri: "/api/v1/config/log-allocation-config", code: 200 }),
@@ -8592,7 +9189,11 @@ function __c35(j: number): any {
       ).annotate({
         identifier: "DeleteLogAllocationConfigRequest",
       });
-    case 7:
+  }
+}
+function __c163(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({}).pipe(
           T.Http({ method: "DELETE", uri: "/api/v1/config/log-ingest-config", code: 200 }),
@@ -8602,7 +9203,7 @@ function __c35(j: number): any {
       });
   }
 }
-function __c36(j: number): any {
+function __c164(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -8614,7 +9215,11 @@ function __c36(j: number): any {
       ).annotate({
         identifier: "DeleteLogScaleActionRequest",
       });
-    case 1:
+  }
+}
+function __c165(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           slug: S.String.pipe(T.Label()),
@@ -8624,7 +9229,11 @@ function __c36(j: number): any {
       ).annotate({
         identifier: "DeleteLogScaleAlertRequest",
       });
-    case 2:
+  }
+}
+function __c166(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           slug: S.String.pipe(T.Label()),
@@ -8632,19 +9241,84 @@ function __c36(j: number): any {
           T.Http({ method: "DELETE", uri: "/api/v1/config/mapping-rules/{slug}", code: 200 }),
         ),
       ).annotate({ identifier: "DeleteMappingRuleRequest" });
-    case 3:
+  }
+}
+function __c167(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           slug: S.String.pipe(T.Label()),
         }).pipe(T.Http({ method: "DELETE", uri: "/api/v1/config/monitors/{slug}", code: 200 })),
       ).annotate({ identifier: "DeleteMonitorRequest" });
-    case 4:
+  }
+}
+function __c168(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          collection: S.optional(__S(5408, __c169, 0)),
+          dry_run: S.optional(S.Boolean),
+        }).pipe(T.Http({ method: "POST", uri: "/api/v1/config/collections", code: 200 })),
+      ).annotate({ identifier: "CreateCollectionRequest" });
+  }
+}
+function __c169(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          slug: S.optional(S.String),
+          name: S.optional(S.String),
+          team_slug: S.optional(S.String),
+          description: S.optional(S.String),
+          notification_policy_slug: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Configv1CollectionInput" });
+  }
+}
+function __c170(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          slug: S.optional(S.String),
+          name: S.optional(S.String),
+          created_at: S.optional(S.String),
+          updated_at: S.optional(S.String),
+          team_slug: S.optional(S.String),
+          description: S.optional(S.String),
+          notification_policy_slug: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Configv1Collection" });
+  }
+}
+function __c171(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          collection: S.optional(__S(5440, __c170, 0)),
+        }),
+      ).annotate({
+        identifier: "Configv1CreateCollectionResponse",
+      });
+  }
+}
+function __c172(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           slug: S.String.pipe(T.Label()),
         }).pipe(T.Http({ method: "DELETE", uri: "/api/v1/config/muting-rules/{slug}", code: 200 })),
       ).annotate({ identifier: "DeleteMutingRuleRequest" });
-    case 5:
+  }
+}
+function __c173(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           slug: S.String.pipe(T.Label()),
@@ -8658,13 +9332,21 @@ function __c36(j: number): any {
       ).annotate({
         identifier: "DeleteNotificationPolicyRequest",
       });
-    case 6:
+  }
+}
+function __c174(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           slug: S.String.pipe(T.Label()),
         }).pipe(T.Http({ method: "DELETE", uri: "/api/v1/config/notifiers/{slug}", code: 200 })),
       ).annotate({ identifier: "DeleteNotifierRequest" });
-    case 7:
+  }
+}
+function __c175(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({}).pipe(
           T.Http({ method: "DELETE", uri: "/api/v1/config/otel-metrics-ingestion", code: 200 }),
@@ -8674,7 +9356,7 @@ function __c36(j: number): any {
       });
   }
 }
-function __c37(j: number): any {
+function __c176(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -8686,7 +9368,11 @@ function __c37(j: number): any {
       ).annotate({
         identifier: "DeleteRecordingRuleRequest",
       });
-    case 1:
+  }
+}
+function __c177(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           dry_run: S.optional(S.Boolean.pipe(T.Query())),
@@ -8694,13 +9380,21 @@ function __c37(j: number): any {
       ).annotate({
         identifier: "DeleteResourcePoolsRequest",
       });
-    case 2:
+  }
+}
+function __c178(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           slug: S.String.pipe(T.Label()),
         }).pipe(T.Http({ method: "DELETE", uri: "/api/v1/config/rollup-rules/{slug}", code: 200 })),
       ).annotate({ identifier: "DeleteRollupRuleRequest" });
-    case 3:
+  }
+}
+function __c179(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           slug: S.String.pipe(T.Label()),
@@ -8710,19 +9404,86 @@ function __c37(j: number): any {
       ).annotate({
         identifier: "DeleteServiceAccountRequest",
       });
-    case 4:
+  }
+}
+function __c180(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           slug: S.String.pipe(T.Label()),
         }).pipe(T.Http({ method: "DELETE", uri: "/api/v1/config/slos/{slug}", code: 200 })),
       ).annotate({ identifier: "DeleteSLORequest" });
-    case 5:
+  }
+}
+function __c181(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           slug: S.String.pipe(T.Label()),
         }).pipe(T.Http({ method: "DELETE", uri: "/api/v1/config/teams/{slug}", code: 200 })),
       ).annotate({ identifier: "DeleteTeamRequest" });
-    case 6:
+  }
+}
+function __c182(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          dashboard: S.optional(__S(5856, __c183, 0)),
+          dry_run: S.optional(S.Boolean),
+        }).pipe(T.Http({ method: "POST", uri: "/api/v1/config/dashboards", code: 200 })),
+      ).annotate({ identifier: "CreateDashboardRequest" });
+  }
+}
+function __c183(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          slug: S.optional(S.String),
+          name: S.optional(S.String),
+          collection_slug: S.optional(S.String),
+          collection: S.optional(__S(4992, __c156, 0)),
+          dashboard_json: S.optional(S.String),
+          labels: S.optional(__S(4096, __c128, 0)),
+        }),
+      ).annotate({ identifier: "Configv1DashboardInput" });
+  }
+}
+function __c184(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          slug: S.optional(S.String),
+          name: S.optional(S.String),
+          created_at: S.optional(S.String),
+          updated_at: S.optional(S.String),
+          collection_slug: S.optional(S.String),
+          collection: S.optional(__S(4992, __c156, 0)),
+          dashboard_json: S.optional(S.String),
+          labels: S.optional(__S(4096, __c128, 0)),
+        }),
+      ).annotate({ identifier: "Configv1Dashboard" });
+  }
+}
+function __c185(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          dashboard: S.optional(__S(5888, __c184, 0)),
+        }),
+      ).annotate({
+        identifier: "Configv1CreateDashboardResponse",
+      });
+  }
+}
+function __c186(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           slug: S.String.pipe(T.Label()),
@@ -8732,7 +9493,11 @@ function __c37(j: number): any {
       ).annotate({
         identifier: "DeleteTraceBehaviorRequest",
       });
-    case 7:
+  }
+}
+function __c187(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           dry_run: S.optional(S.Boolean.pipe(T.Query())),
@@ -8744,7 +9509,7 @@ function __c37(j: number): any {
       });
   }
 }
-function __c38(j: number): any {
+function __c188(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -8760,7 +9525,11 @@ function __c38(j: number): any {
       ).annotate({
         identifier: "DeleteTraceJaegerRemoteSamplingStrategyRequest",
       });
-    case 1:
+  }
+}
+function __c189(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           slug: S.String.pipe(T.Label()),
@@ -8770,7 +9539,11 @@ function __c38(j: number): any {
       ).annotate({
         identifier: "DeleteTraceMetricsRuleRequest",
       });
-    case 2:
+  }
+}
+function __c190(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           dry_run: S.optional(S.Boolean.pipe(T.Query())),
@@ -8780,559 +9553,938 @@ function __c38(j: number): any {
       ).annotate({
         identifier: "DeleteTraceTailSamplingRulesRequest",
       });
-    case 3:
+  }
+}
+function __c191(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           page_max_size: S.optional(S.Number.pipe(T.Query("page.max_size"))),
           page_token: S.optional(S.String.pipe(T.Query("page.token"))),
-          slugs: S.optional(__S(21, __c2, 5).pipe(T.Query())),
-          names: S.optional(__S(21, __c2, 5).pipe(T.Query())),
+          slugs: S.optional(__S(6496, __c203, 0).pipe(T.Query())),
+          names: S.optional(__S(6496, __c203, 0).pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/api/v1/config/buckets", code: 200 })),
       ).annotate({ identifier: "ListBucketsRequest" });
-    case 4:
+    case 1:
+      return S.Array(__S(4128, __c129, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          page: S.optional(__S(6144, __c192, 0)),
+          buckets: __S(6113, __c191, 1),
+        }),
+      ).annotate({
+        identifier: "Configv1ListBucketsResponse",
+      });
+  }
+}
+function __c192(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           next_token: S.optional(S.String),
         }),
       ).annotate({ identifier: "Configv1PageResult" });
-    case 5:
-      return S.Array(__S(3, __c0, 3));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          page: S.optional(__S(308, __c38, 4)),
-          buckets: __S(309, __c38, 5),
-        }),
-      ).annotate({
-        identifier: "Configv1ListBucketsResponse",
-      });
-    case 7:
+  }
+}
+function __c193(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           page_max_size: S.optional(S.Number.pipe(T.Query("page.max_size"))),
           page_token: S.optional(S.String.pipe(T.Query("page.token"))),
-          slugs: S.optional(__S(21, __c2, 5).pipe(T.Query())),
-          bucket_slugs: S.optional(__S(21, __c2, 5).pipe(T.Query())),
-          collection_slugs: S.optional(__S(21, __c2, 5).pipe(T.Query())),
-          names: S.optional(__S(21, __c2, 5).pipe(T.Query())),
+          slugs: S.optional(__S(6496, __c203, 0).pipe(T.Query())),
+          bucket_slugs: S.optional(__S(6496, __c203, 0).pipe(T.Query())),
+          collection_slugs: S.optional(__S(6496, __c203, 0).pipe(T.Query())),
+          names: S.optional(__S(6496, __c203, 0).pipe(T.Query())),
           include_dashboard_json: S.optional(S.Boolean.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/api/v1/config/classic-dashboards", code: 200 })),
       ).annotate({
         identifier: "ListClassicDashboardsRequest",
       });
-  }
-}
-function __c39(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(8, __c1, 0));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          page: S.optional(__S(308, __c38, 4)),
-          classic_dashboards: __S(312, __c39, 0),
+          page: S.optional(__S(6144, __c192, 0)),
+          classic_dashboards: __S(6208, __c194, 0),
         }),
       ).annotate({
         identifier: "Configv1ListClassicDashboardsResponse",
       });
-    case 2:
+  }
+}
+function __c194(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(4960, __c155, 0));
+  }
+}
+function __c195(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           page_max_size: S.optional(S.Number.pipe(T.Query("page.max_size"))),
           page_token: S.optional(S.String.pipe(T.Query("page.token"))),
-          slugs: S.optional(__S(21, __c2, 5).pipe(T.Query())),
-          team_slugs: S.optional(__S(21, __c2, 5).pipe(T.Query())),
-          names: S.optional(__S(21, __c2, 5).pipe(T.Query())),
-          notification_policy_slugs: S.optional(__S(21, __c2, 5).pipe(T.Query())),
+          slugs: S.optional(__S(6496, __c203, 0).pipe(T.Query())),
+          team_slugs: S.optional(__S(6496, __c203, 0).pipe(T.Query())),
+          names: S.optional(__S(6496, __c203, 0).pipe(T.Query())),
+          notification_policy_slugs: S.optional(__S(6496, __c203, 0).pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/api/v1/config/collections", code: 200 })),
       ).annotate({ identifier: "ListCollectionsRequest" });
-    case 3:
-      return S.Array(__S(12, __c1, 4));
-    case 4:
+    case 1:
+      return S.Array(__S(5440, __c170, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          page: S.optional(__S(308, __c38, 4)),
-          collections: __S(315, __c39, 3),
+          page: S.optional(__S(6144, __c192, 0)),
+          collections: __S(6241, __c195, 1),
         }),
       ).annotate({
         identifier: "Configv1ListCollectionsResponse",
       });
-    case 5:
+  }
+}
+function __c196(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           page_max_size: S.optional(S.Number.pipe(T.Query("page.max_size"))),
           page_token: S.optional(S.String.pipe(T.Query("page.token"))),
-          slugs: S.optional(__S(21, __c2, 5).pipe(T.Query())),
-          collection_slugs: S.optional(__S(21, __c2, 5).pipe(T.Query())),
-          names: S.optional(__S(21, __c2, 5).pipe(T.Query())),
+          slugs: S.optional(__S(6496, __c203, 0).pipe(T.Query())),
+          collection_slugs: S.optional(__S(6496, __c203, 0).pipe(T.Query())),
+          names: S.optional(__S(6496, __c203, 0).pipe(T.Query())),
           include_dashboard_json: S.optional(S.Boolean.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/api/v1/config/dashboards", code: 200 })),
       ).annotate({ identifier: "ListDashboardsRequest" });
-    case 6:
-      return S.Array(__S(16, __c2, 0));
-    case 7:
+    case 1:
+      return S.Array(__S(5888, __c184, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          page: S.optional(__S(308, __c38, 4)),
-          dashboards: __S(318, __c39, 6),
+          page: S.optional(__S(6144, __c192, 0)),
+          dashboards: __S(6273, __c196, 1),
         }),
       ).annotate({
         identifier: "Configv1ListDashboardsResponse",
       });
   }
 }
-function __c40(j: number): any {
+function __c197(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           page_max_size: S.optional(S.Number.pipe(T.Query("page.max_size"))),
           page_token: S.optional(S.String.pipe(T.Query("page.token"))),
-          slugs: S.optional(__S(21, __c2, 5).pipe(T.Query())),
-          names: S.optional(__S(21, __c2, 5).pipe(T.Query())),
+          slugs: S.optional(__S(6496, __c203, 0).pipe(T.Query())),
+          names: S.optional(__S(6496, __c203, 0).pipe(T.Query())),
           type: S.optional(S.String.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/api/v1/config/datasets", code: 200 })),
       ).annotate({ identifier: "ListDatasetsRequest" });
     case 1:
-      return S.Array(__S(36, __c4, 4));
+      return S.Array(__S(6467, __c202, 3));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          page: S.optional(__S(308, __c38, 4)),
-          datasets: __S(321, __c40, 1),
+          page: S.optional(__S(6144, __c192, 0)),
+          datasets: __S(6305, __c197, 1),
         }),
       ).annotate({
         identifier: "Configv1ListDatasetsResponse",
       });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          page_max_size: S.optional(S.Number.pipe(T.Query("page.max_size"))),
-          page_token: S.optional(S.String.pipe(T.Query("page.token"))),
-          slugs: S.optional(__S(21, __c2, 5).pipe(T.Query())),
-          names: S.optional(__S(21, __c2, 5).pipe(T.Query())),
-        }).pipe(T.Http({ method: "GET", uri: "/api/v1/config/derived-labels", code: 200 })),
-      ).annotate({ identifier: "ListDerivedLabelsRequest" });
-    case 4:
-      return S.Array(__S(51, __c6, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          page: S.optional(__S(308, __c38, 4)),
-          derived_labels: __S(324, __c40, 4),
-        }),
-      ).annotate({
-        identifier: "Configv1ListDerivedLabelsResponse",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          page_max_size: S.optional(S.Number.pipe(T.Query("page.max_size"))),
-          page_token: S.optional(S.String.pipe(T.Query("page.token"))),
-          slugs: S.optional(__S(21, __c2, 5).pipe(T.Query())),
-          names: S.optional(__S(21, __c2, 5).pipe(T.Query())),
-        }).pipe(T.Http({ method: "GET", uri: "/api/v1/config/derived-metrics", code: 200 })),
-      ).annotate({
-        identifier: "ListDerivedMetricsRequest",
-      });
-    case 7:
-      return S.Array(__S(63, __c7, 7));
   }
 }
-function __c41(j: number): any {
+function __c198(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          page: S.optional(__S(308, __c38, 4)),
-          derived_metrics: __S(327, __c40, 7),
+          dataset: S.optional(__S(6368, __c199, 0)),
+          dry_run: S.optional(S.Boolean),
+        }).pipe(T.Http({ method: "POST", uri: "/api/v1/config/datasets", code: 200 })),
+      ).annotate({ identifier: "CreateDatasetRequest" });
+  }
+}
+function __c199(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.optional(S.String),
+          slug: S.optional(S.String),
+          description: S.optional(S.String),
+          configuration: S.optional(__S(6466, __c202, 2)),
+        }),
+      ).annotate({ identifier: "Configv1DatasetInput" });
+  }
+}
+function __c200(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          query: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Configv1LogSearchFilter" });
+  }
+}
+function __c201(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          min_secs: S.optional(S.Number),
+          max_secs: S.optional(S.Number),
         }),
       ).annotate({
-        identifier: "Configv1ListDerivedMetricsResponse",
+        identifier: "TraceSearchFilterDurationFilter",
       });
     case 1:
       return S.suspend(() =>
         S.Struct({
-          page_max_size: S.optional(S.Number.pipe(T.Query("page.max_size"))),
-          page_token: S.optional(S.String.pipe(T.Query("page.token"))),
-          slugs: S.optional(__S(21, __c2, 5).pipe(T.Query())),
-          names: S.optional(__S(21, __c2, 5).pipe(T.Query())),
-        }).pipe(T.Http({ method: "GET", uri: "/api/v1/config/drop-rules", code: 200 })),
-      ).annotate({ identifier: "ListDropRulesRequest" });
+          value: S.optional(S.Boolean),
+        }),
+      ).annotate({
+        identifier: "TraceSearchFilterBoolFilter",
+      });
     case 2:
-      return S.Array(__S(69, __c8, 5));
+      return S.suspend(() =>
+        S.Struct({
+          duration: S.optional(__S(6432, __c201, 0)),
+          error: S.optional(__S(6433, __c201, 1)),
+        }),
+      ).annotate({
+        identifier: "TraceSearchFilterTraceFilter",
+      });
     case 3:
       return S.suspend(() =>
         S.Struct({
-          page: S.optional(__S(308, __c38, 4)),
-          drop_rules: __S(330, __c41, 2),
+          match: S.optional(S.String),
+          value: S.optional(S.String),
+          in_values: S.optional(__S(6496, __c203, 0)),
         }),
       ).annotate({
-        identifier: "Configv1ListDropRulesResponse",
+        identifier: "TraceSearchFilterStringFilter",
       });
     case 4:
       return S.suspend(() =>
         S.Struct({
+          comparison: S.optional(S.String),
+          value: S.optional(S.Number),
+        }),
+      ).annotate({
+        identifier: "TraceSearchFilterNumericFilter",
+      });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          key: S.optional(S.String),
+          value: S.optional(__S(6435, __c201, 3)),
+          numeric_value: S.optional(__S(6436, __c201, 4)),
+        }),
+      ).annotate({
+        identifier: "TraceSearchFilterTagFilter",
+      });
+    case 6:
+      return S.Array(__S(6437, __c201, 5));
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          min: S.optional(S.Number),
+          max: S.optional(S.Number),
+        }),
+      ).annotate({
+        identifier: "TraceSearchFilterCountFilter",
+      });
+    case 8:
+      return S.suspend(() =>
+        S.Struct({
+          match_type: S.optional(S.String),
+          service: S.optional(__S(6435, __c201, 3)),
+          operation: S.optional(__S(6435, __c201, 3)),
+          parent_service: S.optional(__S(6435, __c201, 3)),
+          parent_operation: S.optional(__S(6435, __c201, 3)),
+          duration: S.optional(__S(6432, __c201, 0)),
+          error: S.optional(__S(6433, __c201, 1)),
+          tags: S.optional(__S(6438, __c201, 6)),
+          span_count: S.optional(__S(6439, __c201, 7)),
+          is_root_span: S.optional(__S(6433, __c201, 1)),
+        }),
+      ).annotate({
+        identifier: "TraceSearchFilterSpanFilter",
+      });
+    case 9:
+      return S.Array(__S(6440, __c201, 8));
+    case 10:
+      return S.suspend(() =>
+        S.Struct({
+          trace: S.optional(__S(6434, __c201, 2)),
+          span: S.optional(__S(6441, __c201, 9)),
+        }),
+      ).annotate({
+        identifier: "Configv1TraceSearchFilter",
+      });
+  }
+}
+function __c202(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          match_criteria: S.optional(__S(6442, __c201, 10)),
+        }),
+      ).annotate({ identifier: "Configv1TraceDataset" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          match_criteria: S.optional(__S(6400, __c200, 0)),
+        }),
+      ).annotate({ identifier: "Configv1LogDataset" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          type: S.optional(S.String),
+          trace_dataset: S.optional(__S(6464, __c202, 0)),
+          log_dataset: S.optional(__S(6465, __c202, 1)),
+        }),
+      ).annotate({
+        identifier: "DatasetDatasetConfiguration",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.optional(S.String),
+          slug: S.optional(S.String),
+          created_at: S.optional(S.String),
+          updated_at: S.optional(S.String),
+          description: S.optional(S.String),
+          configuration: S.optional(__S(6466, __c202, 2)),
+        }),
+      ).annotate({ identifier: "Configv1Dataset" });
+  }
+}
+function __c203(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c204(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          dataset: S.optional(__S(6467, __c202, 3)),
+        }),
+      ).annotate({
+        identifier: "Configv1CreateDatasetResponse",
+      });
+  }
+}
+function __c205(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
           page_max_size: S.optional(S.Number.pipe(T.Query("page.max_size"))),
           page_token: S.optional(S.String.pipe(T.Query("page.token"))),
-          slugs: S.optional(__S(21, __c2, 5).pipe(T.Query())),
-          names: S.optional(__S(21, __c2, 5).pipe(T.Query())),
+          slugs: S.optional(__S(6496, __c203, 0).pipe(T.Query())),
+          names: S.optional(__S(6496, __c203, 0).pipe(T.Query())),
+        }).pipe(T.Http({ method: "GET", uri: "/api/v1/config/derived-labels", code: 200 })),
+      ).annotate({ identifier: "ListDerivedLabelsRequest" });
+    case 1:
+      return S.Array(__S(6985, __c218, 9));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          page: S.optional(__S(6144, __c192, 0)),
+          derived_labels: __S(6561, __c205, 1),
+        }),
+      ).annotate({
+        identifier: "Configv1ListDerivedLabelsResponse",
+      });
+  }
+}
+function __c206(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          page_max_size: S.optional(S.Number.pipe(T.Query("page.max_size"))),
+          page_token: S.optional(S.String.pipe(T.Query("page.token"))),
+          slugs: S.optional(__S(6496, __c203, 0).pipe(T.Query())),
+          names: S.optional(__S(6496, __c203, 0).pipe(T.Query())),
+        }).pipe(T.Http({ method: "GET", uri: "/api/v1/config/derived-metrics", code: 200 })),
+      ).annotate({
+        identifier: "ListDerivedMetricsRequest",
+      });
+    case 1:
+      return S.Array(__S(7462, __c233, 6));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          page: S.optional(__S(6144, __c192, 0)),
+          derived_metrics: __S(6593, __c206, 1),
+        }),
+      ).annotate({
+        identifier: "Configv1ListDerivedMetricsResponse",
+      });
+  }
+}
+function __c207(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          page_max_size: S.optional(S.Number.pipe(T.Query("page.max_size"))),
+          page_token: S.optional(S.String.pipe(T.Query("page.token"))),
+          slugs: S.optional(__S(6496, __c203, 0).pipe(T.Query())),
+          names: S.optional(__S(6496, __c203, 0).pipe(T.Query())),
+        }).pipe(T.Http({ method: "GET", uri: "/api/v1/config/drop-rules", code: 200 })),
+      ).annotate({ identifier: "ListDropRulesRequest" });
+    case 1:
+      return S.Array(__S(66, __c2, 2));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          page: S.optional(__S(6144, __c192, 0)),
+          drop_rules: __S(6625, __c207, 1),
+        }),
+      ).annotate({
+        identifier: "Configv1ListDropRulesResponse",
+      });
+  }
+}
+function __c208(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          page_max_size: S.optional(S.Number.pipe(T.Query("page.max_size"))),
+          page_token: S.optional(S.String.pipe(T.Query("page.token"))),
+          slugs: S.optional(__S(6496, __c203, 0).pipe(T.Query())),
+          names: S.optional(__S(6496, __c203, 0).pipe(T.Query())),
         }).pipe(
           T.Http({ method: "GET", uri: "/api/v1/config/gcp-metrics-integrations", code: 200 }),
         ),
       ).annotate({
         identifier: "ListGcpMetricsIntegrationsRequest",
       });
-    case 5:
-      return S.Array(__S(76, __c9, 4));
-    case 6:
+    case 1:
+      return S.Array(__S(515, __c16, 3));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          page: S.optional(__S(308, __c38, 4)),
-          gcp_metrics_integrations: __S(333, __c41, 5),
+          page: S.optional(__S(6144, __c192, 0)),
+          gcp_metrics_integrations: __S(6657, __c208, 1),
         }),
       ).annotate({
         identifier: "Configv1ListGcpMetricsIntegrationsResponse",
       });
-    case 7:
+  }
+}
+function __c209(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           page_max_size: S.optional(S.Number.pipe(T.Query("page.max_size"))),
           page_token: S.optional(S.String.pipe(T.Query("page.token"))),
-          slugs: S.optional(__S(21, __c2, 5).pipe(T.Query())),
-          bucket_slugs: S.optional(__S(21, __c2, 5).pipe(T.Query())),
-          collection_slugs: S.optional(__S(21, __c2, 5).pipe(T.Query())),
-          names: S.optional(__S(21, __c2, 5).pipe(T.Query())),
+          slugs: S.optional(__S(6496, __c203, 0).pipe(T.Query())),
+          bucket_slugs: S.optional(__S(6496, __c203, 0).pipe(T.Query())),
+          collection_slugs: S.optional(__S(6496, __c203, 0).pipe(T.Query())),
+          names: S.optional(__S(6496, __c203, 0).pipe(T.Query())),
           include_dashboard_json: S.optional(S.Boolean.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/api/v1/config/grafana-dashboards", code: 200 })),
       ).annotate({
         identifier: "ListGrafanaDashboardsRequest",
       });
-  }
-}
-function __c42(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          page: S.optional(__S(308, __c38, 4)),
-          grafana_dashboards: __S(312, __c39, 0),
+          page: S.optional(__S(6144, __c192, 0)),
+          grafana_dashboards: __S(6208, __c194, 0),
         }),
       ).annotate({
         identifier: "Configv1ListGrafanaDashboardsResponse",
       });
-    case 1:
+  }
+}
+function __c210(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           page_max_size: S.optional(S.Number.pipe(T.Query("page.max_size"))),
           page_token: S.optional(S.String.pipe(T.Query("page.token"))),
-          slugs: S.optional(__S(21, __c2, 5).pipe(T.Query())),
-          names: S.optional(__S(21, __c2, 5).pipe(T.Query())),
+          slugs: S.optional(__S(6496, __c203, 0).pipe(T.Query())),
+          names: S.optional(__S(6496, __c203, 0).pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/api/v1/config/log-scale-actions", code: 200 })),
       ).annotate({
         identifier: "ListLogScaleActionsRequest",
       });
+    case 1:
+      return S.Array(__S(2217, __c69, 9));
     case 2:
-      return S.Array(__S(107, __c13, 3));
-    case 3:
       return S.suspend(() =>
         S.Struct({
-          page: S.optional(__S(308, __c38, 4)),
-          log_scale_actions: __S(338, __c42, 2),
+          page: S.optional(__S(6144, __c192, 0)),
+          log_scale_actions: __S(6721, __c210, 1),
         }),
       ).annotate({
         identifier: "Configv1ListLogScaleActionsResponse",
       });
-    case 4:
+  }
+}
+function __c211(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           page_max_size: S.optional(S.Number.pipe(T.Query("page.max_size"))),
           page_token: S.optional(S.String.pipe(T.Query("page.token"))),
-          slugs: S.optional(__S(21, __c2, 5).pipe(T.Query())),
-          names: S.optional(__S(21, __c2, 5).pipe(T.Query())),
+          slugs: S.optional(__S(6496, __c203, 0).pipe(T.Query())),
+          names: S.optional(__S(6496, __c203, 0).pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/api/v1/config/log-scale-alerts", code: 200 })),
       ).annotate({
         identifier: "ListLogScaleAlertsRequest",
       });
-    case 5:
-      return S.Array(__S(111, __c13, 7));
-    case 6:
+    case 1:
+      return S.Array(__S(2400, __c75, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          page: S.optional(__S(308, __c38, 4)),
-          log_scale_alerts: __S(341, __c42, 5),
+          page: S.optional(__S(6144, __c192, 0)),
+          log_scale_alerts: __S(6753, __c211, 1),
         }),
       ).annotate({
         identifier: "Configv1ListLogScaleAlertsResponse",
       });
-    case 7:
+  }
+}
+function __c212(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           page_max_size: S.optional(S.Number.pipe(T.Query("page.max_size"))),
           page_token: S.optional(S.String.pipe(T.Query("page.token"))),
-          slugs: S.optional(__S(21, __c2, 5).pipe(T.Query())),
-          bucket_slugs: S.optional(__S(21, __c2, 5).pipe(T.Query())),
-          names: S.optional(__S(21, __c2, 5).pipe(T.Query())),
+          slugs: S.optional(__S(6496, __c203, 0).pipe(T.Query())),
+          bucket_slugs: S.optional(__S(6496, __c203, 0).pipe(T.Query())),
+          names: S.optional(__S(6496, __c203, 0).pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/api/v1/config/mapping-rules", code: 200 })),
       ).annotate({ identifier: "ListMappingRulesRequest" });
-  }
-}
-function __c43(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(117, __c14, 5));
     case 1:
+      return S.Array(__S(2561, __c80, 1));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          page: S.optional(__S(308, __c38, 4)),
-          mapping_rules: __S(344, __c43, 0),
+          page: S.optional(__S(6144, __c192, 0)),
+          mapping_rules: __S(6785, __c212, 1),
         }),
       ).annotate({
         identifier: "Configv1ListMappingRulesResponse",
       });
-    case 2:
+  }
+}
+function __c213(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           page_max_size: S.optional(S.Number.pipe(T.Query("page.max_size"))),
           page_token: S.optional(S.String.pipe(T.Query("page.token"))),
-          slugs: S.optional(__S(21, __c2, 5).pipe(T.Query())),
-          bucket_slugs: S.optional(__S(21, __c2, 5).pipe(T.Query())),
-          collection_slugs: S.optional(__S(21, __c2, 5).pipe(T.Query())),
-          names: S.optional(__S(21, __c2, 5).pipe(T.Query())),
-          team_slugs: S.optional(__S(21, __c2, 5).pipe(T.Query())),
+          slugs: S.optional(__S(6496, __c203, 0).pipe(T.Query())),
+          bucket_slugs: S.optional(__S(6496, __c203, 0).pipe(T.Query())),
+          collection_slugs: S.optional(__S(6496, __c203, 0).pipe(T.Query())),
+          names: S.optional(__S(6496, __c203, 0).pipe(T.Query())),
+          team_slugs: S.optional(__S(6496, __c203, 0).pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/api/v1/config/monitors", code: 200 })),
       ).annotate({ identifier: "ListMonitorsRequest" });
-    case 3:
-      return S.Array(__S(136, __c17, 0));
-    case 4:
+    case 1:
+      return S.Array(__S(2764, __c86, 12));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          page: S.optional(__S(308, __c38, 4)),
-          monitors: __S(347, __c43, 3),
+          page: S.optional(__S(6144, __c192, 0)),
+          monitors: __S(6817, __c213, 1),
         }),
       ).annotate({
         identifier: "Configv1ListMonitorsResponse",
       });
-    case 5:
+  }
+}
+function __c214(j: number): any {
+  switch (j) {
+    case 0:
       return S.Array(S.String);
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           page_max_size: S.optional(S.Number.pipe(T.Query("page.max_size"))),
           page_token: S.optional(S.String.pipe(T.Query("page.token"))),
-          slugs: S.optional(__S(21, __c2, 5).pipe(T.Query())),
-          names: S.optional(__S(21, __c2, 5).pipe(T.Query())),
-          states: S.optional(__S(349, __c43, 5).pipe(T.Query())),
+          slugs: S.optional(__S(6496, __c203, 0).pipe(T.Query())),
+          names: S.optional(__S(6496, __c203, 0).pipe(T.Query())),
+          states: S.optional(__S(6848, __c214, 0).pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/api/v1/config/muting-rules", code: 200 })),
       ).annotate({ identifier: "ListMutingRulesRequest" });
-    case 7:
-      return S.Array(__S(140, __c17, 4));
-  }
-}
-function __c44(j: number): any {
-  switch (j) {
-    case 0:
+    case 2:
+      return S.Array(__S(2880, __c90, 0));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          page: S.optional(__S(308, __c38, 4)),
-          muting_rules: __S(351, __c43, 7),
+          page: S.optional(__S(6144, __c192, 0)),
+          muting_rules: __S(6850, __c214, 2),
         }),
       ).annotate({
         identifier: "Configv1ListMutingRulesResponse",
       });
+  }
+}
+function __c215(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          derived_label: S.optional(__S(6944, __c217, 0)),
+          dry_run: S.optional(S.Boolean),
+        }).pipe(T.Http({ method: "POST", uri: "/api/v1/config/derived-labels", code: 200 })),
+      ).annotate({
+        identifier: "CreateDerivedLabelRequest",
+      });
+  }
+}
+function __c216(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.optional(S.String),
+          value_glob: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Configv1LabelFilter" });
     case 1:
+      return S.Array(__S(6912, __c216, 0));
+  }
+}
+function __c217(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.optional(S.String),
+          slug: S.optional(S.String),
+          label_name: S.optional(S.String),
+          description: S.optional(S.String),
+          metric_label: S.optional(__S(6984, __c218, 8)),
+          existing_label_policy: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "Configv1DerivedLabelInput",
+      });
+  }
+}
+function __c218(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          value: S.optional(S.String),
+          filters: S.optional(__S(6913, __c216, 1)),
+        }),
+      ).annotate({
+        identifier: "ConstructedLabelValueDefinition",
+      });
+    case 1:
+      return S.Array(__S(6976, __c218, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          value_definitions: S.optional(__S(6977, __c218, 1)),
+        }),
+      ).annotate({
+        identifier: "MetricLabelConstructedLabel",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          source_value_globs: S.optional(__S(6496, __c203, 0)),
+          target_value: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "MappingLabelValueMapping" });
+    case 4:
+      return S.Array(__S(6979, __c218, 3));
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          filters: S.optional(__S(6913, __c216, 1)),
+          source_label: S.optional(S.String),
+          value_mappings: S.optional(__S(6980, __c218, 4)),
+        }),
+      ).annotate({ identifier: "MappingLabelNameMapping" });
+    case 6:
+      return S.Array(__S(6981, __c218, 5));
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          name_mappings: S.optional(__S(6982, __c218, 6)),
+          value_mappings: S.optional(__S(6980, __c218, 4)),
+        }),
+      ).annotate({ identifier: "MetricLabelMappingLabel" });
+    case 8:
+      return S.suspend(() =>
+        S.Struct({
+          constructed_label: S.optional(__S(6978, __c218, 2)),
+          mapping_label: S.optional(__S(6983, __c218, 7)),
+        }),
+      ).annotate({ identifier: "DerivedLabelMetricLabel" });
+    case 9:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.optional(S.String),
+          slug: S.optional(S.String),
+          created_at: S.optional(S.String),
+          updated_at: S.optional(S.String),
+          label_name: S.optional(S.String),
+          description: S.optional(S.String),
+          metric_label: S.optional(__S(6984, __c218, 8)),
+          existing_label_policy: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Configv1DerivedLabel" });
+  }
+}
+function __c219(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          derived_label: S.optional(__S(6985, __c218, 9)),
+        }),
+      ).annotate({
+        identifier: "Configv1CreateDerivedLabelResponse",
+      });
+  }
+}
+function __c220(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           page_max_size: S.optional(S.Number.pipe(T.Query("page.max_size"))),
           page_token: S.optional(S.String.pipe(T.Query("page.token"))),
-          slugs: S.optional(__S(21, __c2, 5).pipe(T.Query())),
-          names: S.optional(__S(21, __c2, 5).pipe(T.Query())),
-          bucket_slugs: S.optional(__S(21, __c2, 5).pipe(T.Query())),
-          team_slugs: S.optional(__S(21, __c2, 5).pipe(T.Query())),
+          slugs: S.optional(__S(6496, __c203, 0).pipe(T.Query())),
+          names: S.optional(__S(6496, __c203, 0).pipe(T.Query())),
+          bucket_slugs: S.optional(__S(6496, __c203, 0).pipe(T.Query())),
+          team_slugs: S.optional(__S(6496, __c203, 0).pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/api/v1/config/notification-policies", code: 200 })),
       ).annotate({
         identifier: "ListNotificationPoliciesRequest",
       });
+    case 1:
+      return S.Array(__S(3014, __c94, 6));
     case 2:
-      return S.Array(__S(150, __c18, 6));
-    case 3:
       return S.suspend(() =>
         S.Struct({
-          page: S.optional(__S(308, __c38, 4)),
-          notification_policies: __S(354, __c44, 2),
+          page: S.optional(__S(6144, __c192, 0)),
+          notification_policies: __S(7041, __c220, 1),
         }),
       ).annotate({
         identifier: "Configv1ListNotificationPoliciesResponse",
       });
-    case 4:
+  }
+}
+function __c221(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           page_max_size: S.optional(S.Number.pipe(T.Query("page.max_size"))),
           page_token: S.optional(S.String.pipe(T.Query("page.token"))),
-          slugs: S.optional(__S(21, __c2, 5).pipe(T.Query())),
-          names: S.optional(__S(21, __c2, 5).pipe(T.Query())),
+          slugs: S.optional(__S(6496, __c203, 0).pipe(T.Query())),
+          names: S.optional(__S(6496, __c203, 0).pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/api/v1/config/notifiers", code: 200 })),
       ).annotate({ identifier: "ListNotifiersRequest" });
-    case 5:
-      return S.Array(__S(174, __c21, 6));
-    case 6:
+    case 1:
+      return S.Array(__S(3156, __c98, 20));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          page: S.optional(__S(308, __c38, 4)),
-          notifiers: __S(357, __c44, 5),
+          page: S.optional(__S(6144, __c192, 0)),
+          notifiers: __S(7073, __c221, 1),
         }),
       ).annotate({
         identifier: "Configv1ListNotifiersResponse",
       });
-    case 7:
+  }
+}
+function __c222(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           page_max_size: S.optional(S.Number.pipe(T.Query("page.max_size"))),
           page_token: S.optional(S.String.pipe(T.Query("page.token"))),
-          slugs: S.optional(__S(21, __c2, 5).pipe(T.Query())),
-          names: S.optional(__S(21, __c2, 5).pipe(T.Query())),
-          bucket_slugs: S.optional(__S(21, __c2, 5).pipe(T.Query())),
-          execution_groups: S.optional(__S(21, __c2, 5).pipe(T.Query())),
+          slugs: S.optional(__S(6496, __c203, 0).pipe(T.Query())),
+          names: S.optional(__S(6496, __c203, 0).pipe(T.Query())),
+          bucket_slugs: S.optional(__S(6496, __c203, 0).pipe(T.Query())),
+          execution_groups: S.optional(__S(6496, __c203, 0).pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/api/v1/config/recording-rules", code: 200 })),
       ).annotate({
         identifier: "ListRecordingRulesRequest",
       });
-  }
-}
-function __c45(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(184, __c23, 0));
     case 1:
+      return S.Array(__S(3361, __c105, 1));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          page: S.optional(__S(308, __c38, 4)),
-          recording_rules: __S(360, __c45, 0),
+          page: S.optional(__S(6144, __c192, 0)),
+          recording_rules: __S(7105, __c222, 1),
         }),
       ).annotate({
         identifier: "Configv1ListRecordingRulesResponse",
       });
-    case 2:
+  }
+}
+function __c223(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           page_max_size: S.optional(S.Number.pipe(T.Query("page.max_size"))),
           page_token: S.optional(S.String.pipe(T.Query("page.token"))),
-          slugs: S.optional(__S(21, __c2, 5).pipe(T.Query())),
-          names: S.optional(__S(21, __c2, 5).pipe(T.Query())),
-          bucket_slugs: S.optional(__S(21, __c2, 5).pipe(T.Query())),
+          slugs: S.optional(__S(6496, __c203, 0).pipe(T.Query())),
+          names: S.optional(__S(6496, __c203, 0).pipe(T.Query())),
+          bucket_slugs: S.optional(__S(6496, __c203, 0).pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/api/v1/config/rollup-rules", code: 200 })),
       ).annotate({ identifier: "ListRollupRulesRequest" });
-    case 3:
-      return S.Array(__S(206, __c25, 6));
-    case 4:
+    case 1:
+      return S.Array(__S(3588, __c112, 4));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          page: S.optional(__S(308, __c38, 4)),
-          rollup_rules: __S(363, __c45, 3),
+          page: S.optional(__S(6144, __c192, 0)),
+          rollup_rules: __S(7137, __c223, 1),
         }),
       ).annotate({
         identifier: "Configv1ListRollupRulesResponse",
       });
-    case 5:
+  }
+}
+function __c224(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           page_max_size: S.optional(S.Number.pipe(T.Query("page.max_size"))),
           page_token: S.optional(S.String.pipe(T.Query("page.token"))),
-          slugs: S.optional(__S(21, __c2, 5).pipe(T.Query())),
-          names: S.optional(__S(21, __c2, 5).pipe(T.Query())),
+          slugs: S.optional(__S(6496, __c203, 0).pipe(T.Query())),
+          names: S.optional(__S(6496, __c203, 0).pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/api/v1/config/service-accounts", code: 200 })),
       ).annotate({
         identifier: "ListServiceAccountsRequest",
       });
-    case 6:
-      return S.Array(__S(211, __c26, 3));
-    case 7:
+    case 1:
+      return S.Array(__S(3681, __c115, 1));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          page: S.optional(__S(308, __c38, 4)),
-          service_accounts: __S(366, __c45, 6),
+          page: S.optional(__S(6144, __c192, 0)),
+          service_accounts: __S(7169, __c224, 1),
         }),
       ).annotate({
         identifier: "Configv1ListServiceAccountsResponse",
       });
   }
 }
-function __c46(j: number): any {
+function __c225(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           page_max_size: S.optional(S.Number.pipe(T.Query("page.max_size"))),
           page_token: S.optional(S.String.pipe(T.Query("page.token"))),
-          slugs: S.optional(__S(21, __c2, 5).pipe(T.Query())),
-          names: S.optional(__S(21, __c2, 5).pipe(T.Query())),
-          collection_slugs: S.optional(__S(21, __c2, 5).pipe(T.Query())),
-          service_slugs: S.optional(__S(21, __c2, 5).pipe(T.Query())),
+          slugs: S.optional(__S(6496, __c203, 0).pipe(T.Query())),
+          names: S.optional(__S(6496, __c203, 0).pipe(T.Query())),
+          collection_slugs: S.optional(__S(6496, __c203, 0).pipe(T.Query())),
+          service_slugs: S.optional(__S(6496, __c203, 0).pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/api/v1/config/slos", code: 200 })),
       ).annotate({ identifier: "ListSLOsRequest" });
     case 1:
-      return S.Array(__S(223, __c27, 7));
+      return S.Array(__S(3784, __c118, 8));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          page: S.optional(__S(308, __c38, 4)),
-          slos: __S(369, __c46, 1),
+          page: S.optional(__S(6144, __c192, 0)),
+          slos: __S(7201, __c225, 1),
         }),
       ).annotate({ identifier: "Configv1ListSLOsResponse" });
-    case 3:
+  }
+}
+function __c226(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           page_max_size: S.optional(S.Number.pipe(T.Query("page.max_size"))),
           page_token: S.optional(S.String.pipe(T.Query("page.token"))),
-          slugs: S.optional(__S(21, __c2, 5).pipe(T.Query())),
-          names: S.optional(__S(21, __c2, 5).pipe(T.Query())),
+          slugs: S.optional(__S(6496, __c203, 0).pipe(T.Query())),
+          names: S.optional(__S(6496, __c203, 0).pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/api/v1/config/teams", code: 200 })),
       ).annotate({ identifier: "ListTeamsRequest" });
-    case 4:
-      return S.Array(__S(227, __c28, 3));
-    case 5:
+    case 1:
+      return S.Array(__S(3872, __c121, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          page: S.optional(__S(308, __c38, 4)),
-          teams: __S(372, __c46, 4),
+          page: S.optional(__S(6144, __c192, 0)),
+          teams: __S(7233, __c226, 1),
         }),
       ).annotate({
         identifier: "Configv1ListTeamsResponse",
       });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          page_max_size: S.optional(S.Number.pipe(T.Query("page.max_size"))),
-          page_token: S.optional(S.String.pipe(T.Query("page.token"))),
-          slugs: S.optional(__S(21, __c2, 5).pipe(T.Query())),
-          names: S.optional(__S(21, __c2, 5).pipe(T.Query())),
-        }).pipe(T.Http({ method: "GET", uri: "/api/v1/config/trace-behaviors", code: 200 })),
-      ).annotate({
-        identifier: "ListTraceBehaviorsRequest",
-      });
-    case 7:
-      return S.Array(__S(235, __c29, 3));
   }
 }
-function __c47(j: number): any {
+function __c227(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          page: S.optional(__S(308, __c38, 4)),
-          trace_behaviors: __S(375, __c46, 7),
+          page_max_size: S.optional(S.Number.pipe(T.Query("page.max_size"))),
+          page_token: S.optional(S.String.pipe(T.Query("page.token"))),
+          slugs: S.optional(__S(6496, __c203, 0).pipe(T.Query())),
+          names: S.optional(__S(6496, __c203, 0).pipe(T.Query())),
+        }).pipe(T.Http({ method: "GET", uri: "/api/v1/config/trace-behaviors", code: 200 })),
+      ).annotate({
+        identifier: "ListTraceBehaviorsRequest",
+      });
+    case 1:
+      return S.Array(__S(4004, __c125, 4));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          page: S.optional(__S(6144, __c192, 0)),
+          trace_behaviors: __S(7265, __c227, 1),
         }),
       ).annotate({
         identifier: "Configv1ListTraceBehaviorsResponse",
       });
-    case 1:
+  }
+}
+function __c228(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           page_max_size: S.optional(S.Number.pipe(T.Query("page.max_size"))),
           page_token: S.optional(S.String.pipe(T.Query("page.token"))),
-          slugs: S.optional(__S(21, __c2, 5).pipe(T.Query())),
-          names: S.optional(__S(21, __c2, 5).pipe(T.Query())),
-          service_names: S.optional(__S(21, __c2, 5).pipe(T.Query())),
+          slugs: S.optional(__S(6496, __c203, 0).pipe(T.Query())),
+          names: S.optional(__S(6496, __c203, 0).pipe(T.Query())),
+          service_names: S.optional(__S(6496, __c203, 0).pipe(T.Query())),
           name_or_service_contains: S.optional(S.String.pipe(T.Query())),
         }).pipe(
           T.Http({
@@ -9344,41 +10496,155 @@ function __c47(j: number): any {
       ).annotate({
         identifier: "ListTraceJaegerRemoteSamplingStrategiesRequest",
       });
+    case 1:
+      return S.Array(__S(4390, __c137, 6));
     case 2:
-      return S.Array(__S(254, __c31, 6));
-    case 3:
       return S.suspend(() =>
         S.Struct({
-          page: S.optional(__S(308, __c38, 4)),
-          trace_jaeger_remote_sampling_strategies: __S(378, __c47, 2),
+          page: S.optional(__S(6144, __c192, 0)),
+          trace_jaeger_remote_sampling_strategies: __S(7297, __c228, 1),
         }),
       ).annotate({
         identifier: "Configv1ListTraceJaegerRemoteSamplingStrategiesResponse",
       });
-    case 4:
+  }
+}
+function __c229(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           page_max_size: S.optional(S.Number.pipe(T.Query("page.max_size"))),
           page_token: S.optional(S.String.pipe(T.Query("page.token"))),
-          slugs: S.optional(__S(21, __c2, 5).pipe(T.Query())),
-          names: S.optional(__S(21, __c2, 5).pipe(T.Query())),
-          metric_names: S.optional(__S(21, __c2, 5).pipe(T.Query())),
+          slugs: S.optional(__S(6496, __c203, 0).pipe(T.Query())),
+          names: S.optional(__S(6496, __c203, 0).pipe(T.Query())),
+          metric_names: S.optional(__S(6496, __c203, 0).pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/api/v1/config/trace-metrics-rules", code: 200 })),
       ).annotate({
         identifier: "ListTraceMetricsRulesRequest",
       });
-    case 5:
-      return S.Array(__S(262, __c32, 6));
-    case 6:
+    case 1:
+      return S.Array(__S(4516, __c141, 4));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          page: S.optional(__S(308, __c38, 4)),
-          trace_metrics_rules: __S(381, __c47, 5),
+          page: S.optional(__S(6144, __c192, 0)),
+          trace_metrics_rules: __S(7329, __c229, 1),
         }),
       ).annotate({
         identifier: "Configv1ListTraceMetricsRulesResponse",
       });
-    case 7:
+  }
+}
+function __c230(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          derived_metric: S.optional(__S(7392, __c231, 0)),
+          dry_run: S.optional(S.Boolean),
+        }).pipe(T.Http({ method: "POST", uri: "/api/v1/config/derived-metrics", code: 200 })),
+      ).annotate({
+        identifier: "CreateDerivedMetricRequest",
+      });
+  }
+}
+function __c231(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.optional(S.String),
+          slug: S.optional(S.String),
+          metric_name: S.optional(S.String),
+          description: S.optional(S.String),
+          queries: S.optional(__S(7461, __c233, 5)),
+        }),
+      ).annotate({
+        identifier: "Configv1DerivedMetricInput",
+      });
+  }
+}
+function __c232(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          type: S.optional(S.String),
+          name: S.optional(S.String),
+          value: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "Configv1DerivedMetricLabelMatcher",
+      });
+    case 1:
+      return S.Array(__S(7424, __c232, 0));
+  }
+}
+function __c233(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          labels: S.optional(__S(7425, __c232, 1)),
+        }),
+      ).annotate({ identifier: "DerivedMetricSelector" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.optional(S.String),
+          default_prometheus_selector: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "DerivedMetricVariable" });
+    case 2:
+      return S.Array(__S(7457, __c233, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          prometheus_expr: S.optional(S.String),
+          variables: S.optional(__S(7458, __c233, 2)),
+        }),
+      ).annotate({ identifier: "DerivedMetricQuery" });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          selector: S.optional(__S(7456, __c233, 0)),
+          query: S.optional(__S(7459, __c233, 3)),
+        }),
+      ).annotate({
+        identifier: "DerivedMetricSelectorQuery",
+      });
+    case 5:
+      return S.Array(__S(7460, __c233, 4));
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.optional(S.String),
+          slug: S.optional(S.String),
+          created_at: S.optional(S.String),
+          updated_at: S.optional(S.String),
+          metric_name: S.optional(S.String),
+          description: S.optional(S.String),
+          queries: S.optional(__S(7461, __c233, 5)),
+        }),
+      ).annotate({ identifier: "Configv1DerivedMetric" });
+  }
+}
+function __c234(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          derived_metric: S.optional(__S(7462, __c233, 6)),
+        }),
+      ).annotate({
+        identifier: "Configv1CreateDerivedMetricResponse",
+      });
+  }
+}
+function __c235(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           slug: S.String.pipe(T.Label()),
@@ -9386,7 +10652,7 @@ function __c47(j: number): any {
       ).annotate({ identifier: "ReadBucketRequest" });
   }
 }
-function __c48(j: number): any {
+function __c236(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -9398,43 +10664,71 @@ function __c48(j: number): any {
       ).annotate({
         identifier: "ReadClassicDashboardRequest",
       });
-    case 1:
+  }
+}
+function __c237(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           slug: S.String.pipe(T.Label()),
         }).pipe(T.Http({ method: "GET", uri: "/api/v1/config/collections/{slug}", code: 200 })),
       ).annotate({ identifier: "ReadCollectionRequest" });
-    case 2:
+  }
+}
+function __c238(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           slug: S.String.pipe(T.Label()),
         }).pipe(T.Http({ method: "GET", uri: "/api/v1/config/dashboards/{slug}", code: 200 })),
       ).annotate({ identifier: "ReadDashboardRequest" });
-    case 3:
+  }
+}
+function __c239(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           slug: S.String.pipe(T.Label()),
         }).pipe(T.Http({ method: "GET", uri: "/api/v1/config/datasets/{slug}", code: 200 })),
       ).annotate({ identifier: "ReadDatasetRequest" });
-    case 4:
+  }
+}
+function __c240(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           slug: S.String.pipe(T.Label()),
         }).pipe(T.Http({ method: "GET", uri: "/api/v1/config/derived-labels/{slug}", code: 200 })),
       ).annotate({ identifier: "ReadDerivedLabelRequest" });
-    case 5:
+  }
+}
+function __c241(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           slug: S.String.pipe(T.Label()),
         }).pipe(T.Http({ method: "GET", uri: "/api/v1/config/derived-metrics/{slug}", code: 200 })),
       ).annotate({ identifier: "ReadDerivedMetricRequest" });
-    case 6:
+  }
+}
+function __c242(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           slug: S.String.pipe(T.Label()),
         }).pipe(T.Http({ method: "GET", uri: "/api/v1/config/drop-rules/{slug}", code: 200 })),
       ).annotate({ identifier: "ReadDropRuleRequest" });
-    case 7:
+  }
+}
+function __c243(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           slug: S.String.pipe(T.Label()),
@@ -9450,7 +10744,7 @@ function __c48(j: number): any {
       });
   }
 }
-function __c49(j: number): any {
+function __c244(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -9462,547 +10756,8 @@ function __c49(j: number): any {
       ).annotate({
         identifier: "ReadGrafanaDashboardRequest",
       });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({}).pipe(
-          T.Http({ method: "GET", uri: "/api/v1/config/log-allocation-config", code: 200 }),
-        ),
-      ).annotate({
-        identifier: "ReadLogAllocationConfigRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({}).pipe(
-          T.Http({ method: "GET", uri: "/api/v1/config/log-ingest-config", code: 200 }),
-        ),
-      ).annotate({
-        identifier: "ReadLogIngestConfigRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          slug: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({ method: "GET", uri: "/api/v1/config/log-scale-actions/{slug}", code: 200 }),
-        ),
-      ).annotate({
-        identifier: "ReadLogScaleActionRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          slug: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({ method: "GET", uri: "/api/v1/config/log-scale-alerts/{slug}", code: 200 }),
-        ),
-      ).annotate({ identifier: "ReadLogScaleAlertRequest" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          slug: S.String.pipe(T.Label()),
-        }).pipe(T.Http({ method: "GET", uri: "/api/v1/config/mapping-rules/{slug}", code: 200 })),
-      ).annotate({ identifier: "ReadMappingRuleRequest" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          slug: S.String.pipe(T.Label()),
-        }).pipe(T.Http({ method: "GET", uri: "/api/v1/config/monitors/{slug}", code: 200 })),
-      ).annotate({ identifier: "ReadMonitorRequest" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          slug: S.String.pipe(T.Label()),
-        }).pipe(T.Http({ method: "GET", uri: "/api/v1/config/muting-rules/{slug}", code: 200 })),
-      ).annotate({ identifier: "ReadMutingRuleRequest" });
   }
 }
-function __c50(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          slug: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({ method: "GET", uri: "/api/v1/config/notification-policies/{slug}", code: 200 }),
-        ),
-      ).annotate({
-        identifier: "ReadNotificationPolicyRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          slug: S.String.pipe(T.Label()),
-        }).pipe(T.Http({ method: "GET", uri: "/api/v1/config/notifiers/{slug}", code: 200 })),
-      ).annotate({ identifier: "ReadNotifierRequest" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({}).pipe(
-          T.Http({ method: "GET", uri: "/api/v1/config/otel-metrics-ingestion", code: 200 }),
-        ),
-      ).annotate({
-        identifier: "ReadOtelMetricsIngestionRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          slug: S.String.pipe(T.Label()),
-        }).pipe(T.Http({ method: "GET", uri: "/api/v1/config/recording-rules/{slug}", code: 200 })),
-      ).annotate({ identifier: "ReadRecordingRuleRequest" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({}).pipe(
-          T.Http({ method: "GET", uri: "/api/v1/config/resource-pools", code: 200 }),
-        ),
-      ).annotate({ identifier: "ReadResourcePoolsRequest" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          slug: S.String.pipe(T.Label()),
-        }).pipe(T.Http({ method: "GET", uri: "/api/v1/config/rollup-rules/{slug}", code: 200 })),
-      ).annotate({ identifier: "ReadRollupRuleRequest" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          slug: S.String.pipe(T.Label()),
-        }).pipe(T.Http({ method: "GET", uri: "/api/v1/config/services/{slug}", code: 200 })),
-      ).annotate({ identifier: "ReadServiceRequest" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          service: S.optional(__S(12, __c1, 4)),
-        }),
-      ).annotate({
-        identifier: "Configv1ReadServiceResponse",
-      });
-  }
-}
-function __c51(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          slug: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({ method: "GET", uri: "/api/v1/config/service-accounts/{slug}", code: 200 }),
-        ),
-      ).annotate({
-        identifier: "ReadServiceAccountRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          slug: S.String.pipe(T.Label()),
-        }).pipe(T.Http({ method: "GET", uri: "/api/v1/config/slos/{slug}", code: 200 })),
-      ).annotate({ identifier: "ReadSLORequest" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          slo: S.optional(__S(223, __c27, 7)),
-        }),
-      ).annotate({ identifier: "Configv1ReadSLOResponse" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          slug: S.String.pipe(T.Label()),
-        }).pipe(T.Http({ method: "GET", uri: "/api/v1/config/teams/{slug}", code: 200 })),
-      ).annotate({ identifier: "ReadTeamRequest" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          team: S.optional(__S(227, __c28, 3)),
-        }),
-      ).annotate({ identifier: "Configv1ReadTeamResponse" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          slug: S.String.pipe(T.Label()),
-        }).pipe(T.Http({ method: "GET", uri: "/api/v1/config/trace-behaviors/{slug}", code: 200 })),
-      ).annotate({ identifier: "ReadTraceBehaviorRequest" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({}).pipe(
-          T.Http({ method: "GET", uri: "/api/v1/config/trace-behavior-config", code: 200 }),
-        ),
-      ).annotate({
-        identifier: "ReadTraceBehaviorConfigRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          slug: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/api/v1/config/trace-jaeger-remote-sampling-strategies/{slug}",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "ReadTraceJaegerRemoteSamplingStrategyRequest",
-      });
-  }
-}
-function __c52(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          slug: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({ method: "GET", uri: "/api/v1/config/trace-metrics-rules/{slug}", code: 200 }),
-        ),
-      ).annotate({
-        identifier: "ReadTraceMetricsRuleRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({}).pipe(
-          T.Http({ method: "GET", uri: "/api/v1/config/trace-tail-sampling-rules", code: 200 }),
-        ),
-      ).annotate({
-        identifier: "ReadTraceTailSamplingRulesRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          slug: S.String.pipe(T.Label()),
-          bucket: S.optional(__S(1, __c0, 1)),
-          create_if_missing: S.optional(S.Boolean),
-          dry_run: S.optional(S.Boolean),
-        }).pipe(T.Http({ method: "PUT", uri: "/api/v1/config/buckets/{slug}", code: 200 })),
-      ).annotate({ identifier: "UpdateBucketRequest" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          slug: S.String.pipe(T.Label()),
-          classic_dashboard: S.optional(__S(6, __c0, 6)),
-          create_if_missing: S.optional(S.Boolean),
-          dry_run: S.optional(S.Boolean),
-        }).pipe(
-          T.Http({ method: "PUT", uri: "/api/v1/config/classic-dashboards/{slug}", code: 200 }),
-        ),
-      ).annotate({
-        identifier: "UpdateClassicDashboardRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          slug: S.String.pipe(T.Label()),
-          collection: S.optional(__S(10, __c1, 2)),
-          create_if_missing: S.optional(S.Boolean),
-          dry_run: S.optional(S.Boolean),
-        }).pipe(T.Http({ method: "PUT", uri: "/api/v1/config/collections/{slug}", code: 200 })),
-      ).annotate({ identifier: "UpdateCollectionRequest" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          slug: S.String.pipe(T.Label()),
-          dashboard: S.optional(__S(14, __c1, 6)),
-          create_if_missing: S.optional(S.Boolean),
-          dry_run: S.optional(S.Boolean),
-        }).pipe(T.Http({ method: "PUT", uri: "/api/v1/config/dashboards/{slug}", code: 200 })),
-      ).annotate({ identifier: "UpdateDashboardRequest" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          slug: S.String.pipe(T.Label()),
-          dataset: S.optional(__S(34, __c4, 2)),
-          create_if_missing: S.optional(S.Boolean),
-          dry_run: S.optional(S.Boolean),
-        }).pipe(T.Http({ method: "PUT", uri: "/api/v1/config/datasets/{slug}", code: 200 })),
-      ).annotate({ identifier: "UpdateDatasetRequest" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          slug: S.String.pipe(T.Label()),
-          derived_label: S.optional(__S(49, __c6, 1)),
-          create_if_missing: S.optional(S.Boolean),
-          dry_run: S.optional(S.Boolean),
-        }).pipe(T.Http({ method: "PUT", uri: "/api/v1/config/derived-labels/{slug}", code: 200 })),
-      ).annotate({
-        identifier: "UpdateDerivedLabelRequest",
-      });
-  }
-}
-function __c53(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          slug: S.String.pipe(T.Label()),
-          derived_metric: S.optional(__S(61, __c7, 5)),
-          create_if_missing: S.optional(S.Boolean),
-          dry_run: S.optional(S.Boolean),
-        }).pipe(T.Http({ method: "PUT", uri: "/api/v1/config/derived-metrics/{slug}", code: 200 })),
-      ).annotate({
-        identifier: "UpdateDerivedMetricRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          slug: S.String.pipe(T.Label()),
-          drop_rule: S.optional(__S(67, __c8, 3)),
-          create_if_missing: S.optional(S.Boolean),
-          dry_run: S.optional(S.Boolean),
-        }).pipe(T.Http({ method: "PUT", uri: "/api/v1/config/drop-rules/{slug}", code: 200 })),
-      ).annotate({ identifier: "UpdateDropRuleRequest" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          slug: S.String.pipe(T.Label()),
-          gcp_metrics_integration: S.optional(__S(74, __c9, 2)),
-          create_if_missing: S.optional(S.Boolean),
-          dry_run: S.optional(S.Boolean),
-        }).pipe(
-          T.Http({
-            method: "PUT",
-            uri: "/api/v1/config/gcp-metrics-integrations/{slug}",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "UpdateGcpMetricsIntegrationRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          slug: S.String.pipe(T.Label()),
-          grafana_dashboard: S.optional(__S(6, __c0, 6)),
-          create_if_missing: S.optional(S.Boolean),
-          dry_run: S.optional(S.Boolean),
-        }).pipe(
-          T.Http({ method: "PUT", uri: "/api/v1/config/grafana-dashboards/{slug}", code: 200 }),
-        ),
-      ).annotate({
-        identifier: "UpdateGrafanaDashboardRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          log_allocation_config: S.optional(__S(86, __c10, 6)),
-          create_if_missing: S.optional(S.Boolean),
-          dry_run: S.optional(S.Boolean),
-        }).pipe(T.Http({ method: "PUT", uri: "/api/v1/config/log-allocation-config", code: 200 })),
-      ).annotate({
-        identifier: "UpdateLogAllocationConfigRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          log_ingest_config: S.optional(__S(92, __c11, 4)),
-          create_if_missing: S.optional(S.Boolean),
-          dry_run: S.optional(S.Boolean),
-        }).pipe(T.Http({ method: "PUT", uri: "/api/v1/config/log-ingest-config", code: 200 })),
-      ).annotate({
-        identifier: "UpdateLogIngestConfigRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          slug: S.String.pipe(T.Label()),
-          log_scale_action: S.optional(__S(105, __c13, 1)),
-          create_if_missing: S.optional(S.Boolean),
-          dry_run: S.optional(S.Boolean),
-        }).pipe(
-          T.Http({ method: "PUT", uri: "/api/v1/config/log-scale-actions/{slug}", code: 200 }),
-        ),
-      ).annotate({
-        identifier: "UpdateLogScaleActionRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          slug: S.String.pipe(T.Label()),
-          log_scale_alert: S.optional(__S(109, __c13, 5)),
-          create_if_missing: S.optional(S.Boolean),
-          dry_run: S.optional(S.Boolean),
-        }).pipe(
-          T.Http({ method: "PUT", uri: "/api/v1/config/log-scale-alerts/{slug}", code: 200 }),
-        ),
-      ).annotate({
-        identifier: "UpdateLogScaleAlertRequest",
-      });
-  }
-}
-function __c54(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          slug: S.String.pipe(T.Label()),
-          mapping_rule: S.optional(__S(115, __c14, 3)),
-          create_if_missing: S.optional(S.Boolean),
-          dry_run: S.optional(S.Boolean),
-        }).pipe(T.Http({ method: "PUT", uri: "/api/v1/config/mapping-rules/{slug}", code: 200 })),
-      ).annotate({ identifier: "UpdateMappingRuleRequest" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          slug: S.String.pipe(T.Label()),
-          monitor: S.optional(__S(134, __c16, 6)),
-          create_if_missing: S.optional(S.Boolean),
-          dry_run: S.optional(S.Boolean),
-        }).pipe(T.Http({ method: "PUT", uri: "/api/v1/config/monitors/{slug}", code: 200 })),
-      ).annotate({ identifier: "UpdateMonitorRequest" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          slug: S.String.pipe(T.Label()),
-          muting_rule: S.optional(__S(138, __c17, 2)),
-          create_if_missing: S.optional(S.Boolean),
-          dry_run: S.optional(S.Boolean),
-        }).pipe(T.Http({ method: "PUT", uri: "/api/v1/config/muting-rules/{slug}", code: 200 })),
-      ).annotate({ identifier: "UpdateMutingRuleRequest" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          slug: S.String.pipe(T.Label()),
-          notification_policy: S.optional(__S(148, __c18, 4)),
-          create_if_missing: S.optional(S.Boolean),
-          dry_run: S.optional(S.Boolean),
-        }).pipe(
-          T.Http({ method: "PUT", uri: "/api/v1/config/notification-policies/{slug}", code: 200 }),
-        ),
-      ).annotate({
-        identifier: "UpdateNotificationPolicyRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          slug: S.String.pipe(T.Label()),
-          notifier: S.optional(__S(172, __c21, 4)),
-          create_if_missing: S.optional(S.Boolean),
-          dry_run: S.optional(S.Boolean),
-        }).pipe(T.Http({ method: "PUT", uri: "/api/v1/config/notifiers/{slug}", code: 200 })),
-      ).annotate({ identifier: "UpdateNotifierRequest" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          otel_metrics_ingestion: S.optional(__S(177, __c22, 1)),
-          create_if_missing: S.optional(S.Boolean),
-          dry_run: S.optional(S.Boolean),
-        }).pipe(T.Http({ method: "PUT", uri: "/api/v1/config/otel-metrics-ingestion", code: 200 })),
-      ).annotate({
-        identifier: "UpdateOtelMetricsIngestionRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          slug: S.String.pipe(T.Label()),
-          recording_rule: S.optional(__S(182, __c22, 6)),
-          create_if_missing: S.optional(S.Boolean),
-          dry_run: S.optional(S.Boolean),
-        }).pipe(T.Http({ method: "PUT", uri: "/api/v1/config/recording-rules/{slug}", code: 200 })),
-      ).annotate({
-        identifier: "UpdateRecordingRuleRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          resource_pools: S.optional(__S(196, __c24, 4)),
-          create_if_missing: S.optional(S.Boolean),
-          dry_run: S.optional(S.Boolean),
-        }).pipe(T.Http({ method: "PUT", uri: "/api/v1/config/resource-pools", code: 200 })),
-      ).annotate({
-        identifier: "UpdateResourcePoolsRequest",
-      });
-  }
-}
-function __c55(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          slug: S.String.pipe(T.Label()),
-          rollup_rule: S.optional(__S(204, __c25, 4)),
-          create_if_missing: S.optional(S.Boolean),
-          dry_run: S.optional(S.Boolean),
-        }).pipe(T.Http({ method: "PUT", uri: "/api/v1/config/rollup-rules/{slug}", code: 200 })),
-      ).annotate({ identifier: "UpdateRollupRuleRequest" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          slug: S.String.pipe(T.Label()),
-          slo: S.optional(__S(221, __c27, 5)),
-          create_if_missing: S.optional(S.Boolean),
-          dry_run: S.optional(S.Boolean),
-        }).pipe(T.Http({ method: "PUT", uri: "/api/v1/config/slos/{slug}", code: 200 })),
-      ).annotate({ identifier: "UpdateSLORequest" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          slug: S.String.pipe(T.Label()),
-          team: S.optional(__S(225, __c28, 1)),
-          create_if_missing: S.optional(S.Boolean),
-          dry_run: S.optional(S.Boolean),
-        }).pipe(T.Http({ method: "PUT", uri: "/api/v1/config/teams/{slug}", code: 200 })),
-      ).annotate({ identifier: "UpdateTeamRequest" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          slug: S.String.pipe(T.Label()),
-          trace_behavior: S.optional(__S(233, __c29, 1)),
-          create_if_missing: S.optional(S.Boolean),
-          dry_run: S.optional(S.Boolean),
-        }).pipe(T.Http({ method: "PUT", uri: "/api/v1/config/trace-behaviors/{slug}", code: 200 })),
-      ).annotate({
-        identifier: "UpdateTraceBehaviorRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          trace_behavior_config: S.optional(__S(242, __c30, 2)),
-          create_if_missing: S.optional(S.Boolean),
-          dry_run: S.optional(S.Boolean),
-        }).pipe(T.Http({ method: "PUT", uri: "/api/v1/config/trace-behavior-config", code: 200 })),
-      ).annotate({
-        identifier: "UpdateTraceBehaviorConfigRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          slug: S.String.pipe(T.Label()),
-          trace_jaeger_remote_sampling_strategy: S.optional(__S(252, __c31, 4)),
-          create_if_missing: S.optional(S.Boolean),
-          dry_run: S.optional(S.Boolean),
-        }).pipe(
-          T.Http({
-            method: "PUT",
-            uri: "/api/v1/config/trace-jaeger-remote-sampling-strategies/{slug}",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "UpdateTraceJaegerRemoteSamplingStrategyRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          slug: S.String.pipe(T.Label()),
-          trace_metrics_rule: S.optional(__S(260, __c32, 4)),
-          create_if_missing: S.optional(S.Boolean),
-          dry_run: S.optional(S.Boolean),
-        }).pipe(
-          T.Http({ method: "PUT", uri: "/api/v1/config/trace-metrics-rules/{slug}", code: 200 }),
-        ),
-      ).annotate({
-        identifier: "UpdateTraceMetricsRuleRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          trace_tail_sampling_rules: S.optional(__S(267, __c33, 3)),
-          create_if_missing: S.optional(S.Boolean),
-          dry_run: S.optional(S.Boolean),
-        }).pipe(
-          T.Http({ method: "PUT", uri: "/api/v1/config/trace-tail-sampling-rules", code: 200 }),
-        ),
-      ).annotate({
-        identifier: "UpdateTraceTailSamplingRulesRequest",
-      });
-  }
-}
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

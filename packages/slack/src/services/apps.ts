@@ -427,8 +427,8 @@ export const bulkDelete: API.OperationMethod<
   BulkDeleteError,
   SlackOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1, __c0, 1) as any as S.Schema<BulkDeleteRequest>,
-  output: __S(2, __c0, 2) as any as S.Schema<BulkDeleteResponse>,
+  input: __S(0, __c0, 0) as any as S.Schema<BulkDeleteRequest>,
+  output: __S(1, __c0, 1) as any as S.Schema<BulkDeleteResponse>,
   errors: [SlackError, SlackRateLimited],
   protocol: SlackProtocol,
   retry: Retry.Retry,
@@ -442,8 +442,8 @@ export const bulkGet: API.OperationMethod<
   BulkGetError,
   SlackOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3, __c0, 3) as any as S.Schema<BulkGetRequest>,
-  output: __S(6, __c0, 6) as any as S.Schema<BulkGetResponse>,
+  input: __S(8, __c2, 0) as any as S.Schema<BulkGetRequest>,
+  output: __S(9, __c2, 1) as any as S.Schema<BulkGetResponse>,
   errors: [SlackError, SlackRateLimited],
   protocol: SlackProtocol,
   retry: Retry.Retry,
@@ -457,8 +457,8 @@ export const bulkPut: API.OperationMethod<
   BulkPutError,
   SlackOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(7, __c0, 7) as any as S.Schema<BulkPutRequest>,
-  output: __S(8, __c1, 0) as any as S.Schema<BulkPutResponse>,
+  input: __S(64, __c16, 0) as any as S.Schema<BulkPutRequest>,
+  output: __S(65, __c16, 1) as any as S.Schema<BulkPutResponse>,
   errors: [SlackError, SlackRateLimited],
   protocol: SlackProtocol,
   retry: Retry.Retry,
@@ -472,8 +472,8 @@ export const connectionsOpen: API.OperationMethod<
   ConnectionsOpenError,
   SlackOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(9, __c1, 1) as any as S.Schema<ConnectionsOpenRequest>,
-  output: __S(10, __c1, 2) as any as S.Schema<ConnectionsOpenResponse>,
+  input: __S(80, __c20, 0) as any as S.Schema<ConnectionsOpenRequest>,
+  output: __S(81, __c20, 1) as any as S.Schema<ConnectionsOpenResponse>,
   errors: [SlackError, SlackRateLimited],
   protocol: SlackProtocol,
   retry: Retry.Retry,
@@ -487,8 +487,8 @@ export const createManifest: API.OperationMethod<
   CreateManifestError,
   SlackOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(11, __c1, 3) as any as S.Schema<CreateManifestRequest>,
-  output: __S(13, __c1, 5) as any as S.Schema<CreateManifestResponse>,
+  input: __S(84, __c21, 0) as any as S.Schema<CreateManifestRequest>,
+  output: __S(86, __c21, 2) as any as S.Schema<CreateManifestResponse>,
   errors: [SlackError, SlackRateLimited],
   protocol: SlackProtocol,
   retry: Retry.Retry,
@@ -502,8 +502,8 @@ export const datastoreCount: API.OperationMethod<
   DatastoreCountError,
   SlackOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(14, __c1, 6) as any as S.Schema<DatastoreCountRequest>,
-  output: __S(15, __c1, 7) as any as S.Schema<DatastoreCountResponse>,
+  input: __S(88, __c22, 0) as any as S.Schema<DatastoreCountRequest>,
+  output: __S(89, __c22, 1) as any as S.Schema<DatastoreCountResponse>,
   errors: [SlackError, SlackRateLimited],
   protocol: SlackProtocol,
   retry: Retry.Retry,
@@ -519,8 +519,8 @@ export const datastoreQuery: API.PaginatedOperationMethod<
   DatastoreQueryResponseItemsItemMap
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(16, __c2, 0) as any as S.Schema<DatastoreQueryRequest>,
-    output: __S(18, __c2, 2) as any as S.Schema<DatastoreQueryResponse>,
+    input: __S(92, __c23, 0) as any as S.Schema<DatastoreQueryRequest>,
+    output: __S(93, __c23, 1) as any as S.Schema<DatastoreQueryResponse>,
     errors: [SlackError, SlackRateLimited],
     protocol: SlackProtocol,
     retry: Retry.Retry,
@@ -543,8 +543,8 @@ export const deleteAuthExternal: API.OperationMethod<
   DeleteAuthExternalError,
   SlackOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(19, __c2, 3) as any as S.Schema<DeleteAuthExternalRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<DeleteAuthExternalResponse>,
+  input: __S(100, __c25, 0) as any as S.Schema<DeleteAuthExternalRequest>,
+  output: __S(104, __c26, 0) as any as S.Schema<DeleteAuthExternalResponse>,
   errors: [SlackError, SlackRateLimited],
   protocol: SlackProtocol,
   retry: Retry.Retry,
@@ -558,8 +558,8 @@ export const deleteDatastore: API.OperationMethod<
   DeleteDatastoreError,
   SlackOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(21, __c2, 5) as any as S.Schema<DeleteDatastoreRequest>,
-  output: __S(22, __c2, 6) as any as S.Schema<DeleteDatastoreResponse>,
+  input: __S(108, __c27, 0) as any as S.Schema<DeleteDatastoreRequest>,
+  output: __S(112, __c28, 0) as any as S.Schema<DeleteDatastoreResponse>,
   errors: [SlackError, SlackRateLimited],
   protocol: SlackProtocol,
   retry: Retry.Retry,
@@ -573,8 +573,8 @@ export const deleteManifest: API.OperationMethod<
   DeleteManifestError,
   SlackOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(23, __c2, 7) as any as S.Schema<DeleteManifestRequest>,
-  output: __S(22, __c2, 6) as any as S.Schema<DeleteManifestResponse>,
+  input: __S(116, __c29, 0) as any as S.Schema<DeleteManifestRequest>,
+  output: __S(112, __c28, 0) as any as S.Schema<DeleteManifestResponse>,
   errors: [SlackError, SlackRateLimited],
   protocol: SlackProtocol,
   retry: Retry.Retry,
@@ -588,8 +588,8 @@ export const exportManifest: API.OperationMethod<
   ExportManifestError,
   SlackOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(24, __c3, 0) as any as S.Schema<ExportManifestRequest>,
-  output: __S(25, __c3, 1) as any as S.Schema<ExportManifestResponse>,
+  input: __S(20, __c5, 0) as any as S.Schema<ExportManifestRequest>,
+  output: __S(21, __c5, 1) as any as S.Schema<ExportManifestResponse>,
   errors: [SlackError, SlackRateLimited],
   protocol: SlackProtocol,
   retry: Retry.Retry,
@@ -603,8 +603,8 @@ export const getAuthExternal: API.OperationMethod<
   GetAuthExternalError,
   SlackOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(26, __c3, 2) as any as S.Schema<GetAuthExternalRequest>,
-  output: __S(27, __c3, 3) as any as S.Schema<GetAuthExternalResponse>,
+  input: __S(24, __c6, 0) as any as S.Schema<GetAuthExternalRequest>,
+  output: __S(25, __c6, 1) as any as S.Schema<GetAuthExternalResponse>,
   errors: [SlackError, SlackRateLimited],
   protocol: SlackProtocol,
   retry: Retry.Retry,
@@ -618,8 +618,8 @@ export const getDatastore: API.OperationMethod<
   GetDatastoreError,
   SlackOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(28, __c3, 4) as any as S.Schema<GetDatastoreRequest>,
-  output: __S(29, __c3, 5) as any as S.Schema<GetDatastoreResponse>,
+  input: __S(28, __c7, 0) as any as S.Schema<GetDatastoreRequest>,
+  output: __S(32, __c8, 0) as any as S.Schema<GetDatastoreResponse>,
   errors: [SlackError, SlackRateLimited],
   protocol: SlackProtocol,
   retry: Retry.Retry,
@@ -635,8 +635,8 @@ export const listActivities: API.PaginatedOperationMethod<
   unknown
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(30, __c3, 6) as any as S.Schema<ListActivitiesRequest>,
-    output: __S(32, __c4, 0) as any as S.Schema<ListActivitiesResponse>,
+    input: __S(36, __c9, 0) as any as S.Schema<ListActivitiesRequest>,
+    output: __S(38, __c9, 2) as any as S.Schema<ListActivitiesResponse>,
     errors: [SlackError, SlackRateLimited],
     protocol: SlackProtocol,
     retry: Retry.Retry,
@@ -661,8 +661,8 @@ export const listEventAuthorizations: API.PaginatedOperationMethod<
   ListEventAuthorizationsResponseAuthorizationsItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(33, __c4, 1) as any as S.Schema<ListEventAuthorizationsRequest>,
-    output: __S(36, __c4, 4) as any as S.Schema<ListEventAuthorizationsResponse>,
+    input: __S(40, __c10, 0) as any as S.Schema<ListEventAuthorizationsRequest>,
+    output: __S(43, __c10, 3) as any as S.Schema<ListEventAuthorizationsResponse>,
     errors: [SlackError, SlackRateLimited],
     protocol: SlackProtocol,
     retry: Retry.Retry,
@@ -685,8 +685,8 @@ export const putDatastore: API.OperationMethod<
   PutDatastoreError,
   SlackOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(37, __c4, 5) as any as S.Schema<PutDatastoreRequest>,
-  output: __S(29, __c3, 5) as any as S.Schema<PutDatastoreResponse>,
+  input: __S(44, __c11, 0) as any as S.Schema<PutDatastoreRequest>,
+  output: __S(32, __c8, 0) as any as S.Schema<PutDatastoreResponse>,
   errors: [SlackError, SlackRateLimited],
   protocol: SlackProtocol,
   retry: Retry.Retry,
@@ -700,8 +700,8 @@ export const setIcon: API.OperationMethod<
   SetIconError,
   SlackOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(38, __c4, 6) as any as S.Schema<SetIconRequest>,
-  output: __S(22, __c2, 6) as any as S.Schema<SetIconResponse>,
+  input: __S(48, __c12, 0) as any as S.Schema<SetIconRequest>,
+  output: __S(112, __c28, 0) as any as S.Schema<SetIconResponse>,
   errors: [SlackError, SlackRateLimited],
   protocol: SlackProtocol,
   retry: Retry.Retry,
@@ -715,8 +715,8 @@ export const setManagedPermissions: API.OperationMethod<
   SetManagedPermissionsError,
   SlackOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(39, __c4, 7) as any as S.Schema<SetManagedPermissionsRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<SetManagedPermissionsResponse>,
+  input: __S(52, __c13, 0) as any as S.Schema<SetManagedPermissionsRequest>,
+  output: __S(104, __c26, 0) as any as S.Schema<SetManagedPermissionsResponse>,
   errors: [SlackError, SlackRateLimited],
   protocol: SlackProtocol,
   retry: Retry.Retry,
@@ -730,8 +730,8 @@ export const uninstallApp: API.OperationMethod<
   UninstallAppError,
   SlackOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(40, __c5, 0) as any as S.Schema<UninstallAppRequest>,
-  output: __S(41, __c5, 1) as any as S.Schema<UninstallAppResponse>,
+  input: __S(56, __c14, 0) as any as S.Schema<UninstallAppRequest>,
+  output: __S(57, __c14, 1) as any as S.Schema<UninstallAppResponse>,
   errors: [SlackError, SlackRateLimited],
   protocol: SlackProtocol,
   retry: Retry.Retry,
@@ -745,8 +745,8 @@ export const updateDatastore: API.OperationMethod<
   UpdateDatastoreError,
   SlackOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(42, __c5, 2) as any as S.Schema<UpdateDatastoreRequest>,
-  output: __S(29, __c3, 5) as any as S.Schema<UpdateDatastoreResponse>,
+  input: __S(60, __c15, 0) as any as S.Schema<UpdateDatastoreRequest>,
+  output: __S(32, __c8, 0) as any as S.Schema<UpdateDatastoreResponse>,
   errors: [SlackError, SlackRateLimited],
   protocol: SlackProtocol,
   retry: Retry.Retry,
@@ -760,8 +760,8 @@ export const updateManifest: API.OperationMethod<
   UpdateManifestError,
   SlackOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(43, __c5, 3) as any as S.Schema<UpdateManifestRequest>,
-  output: __S(44, __c5, 4) as any as S.Schema<UpdateManifestResponse>,
+  input: __S(68, __c17, 0) as any as S.Schema<UpdateManifestRequest>,
+  output: __S(69, __c17, 1) as any as S.Schema<UpdateManifestResponse>,
   errors: [SlackError, SlackRateLimited],
   protocol: SlackProtocol,
   retry: Retry.Retry,
@@ -775,8 +775,8 @@ export const updateUserConnection: API.OperationMethod<
   UpdateUserConnectionError,
   SlackOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(45, __c5, 5) as any as S.Schema<UpdateUserConnectionRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<UpdateUserConnectionResponse>,
+  input: __S(72, __c18, 0) as any as S.Schema<UpdateUserConnectionRequest>,
+  output: __S(104, __c26, 0) as any as S.Schema<UpdateUserConnectionResponse>,
   errors: [SlackError, SlackRateLimited],
   protocol: SlackProtocol,
   retry: Retry.Retry,
@@ -790,8 +790,8 @@ export const validateManifest: API.OperationMethod<
   ValidateManifestError,
   SlackOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(46, __c5, 6) as any as S.Schema<ValidateManifestRequest>,
-  output: __S(49, __c6, 1) as any as S.Schema<ValidateManifestResponse>,
+  input: __S(76, __c19, 0) as any as S.Schema<ValidateManifestRequest>,
+  output: __S(79, __c19, 3) as any as S.Schema<ValidateManifestResponse>,
   errors: [SlackError, SlackRateLimited],
   protocol: SlackProtocol,
   retry: Retry.Retry,
@@ -801,121 +801,26 @@ export const validateManifest: API.OperationMethod<
 function __c0(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(S.String);
-    case 1:
       return S.suspend(() =>
         S.Struct({
           datastore: S.String,
-          ids: __S(0, __c0, 0),
+          ids: __S(4, __c1, 0),
           app_id: S.optional(S.String),
         }).pipe(T.Http({ method: "POST", uri: "/apps.datastore.bulkDelete", code: 200 })),
       ).annotate({ identifier: "BulkDeleteRequest" });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           ok: S.Boolean,
-          failed_items: S.optional(__S(0, __c0, 0)),
+          failed_items: S.optional(__S(4, __c1, 0)),
         }),
       ).annotate({ identifier: "BulkDeleteResponse" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          datastore: S.String,
-          ids: __S(0, __c0, 0),
-          app_id: S.optional(S.String),
-        }).pipe(T.Http({ method: "POST", uri: "/apps.datastore.bulkGet", code: 200 })),
-      ).annotate({ identifier: "BulkGetRequest" });
-    case 4:
-      return S.Record(S.String, S.Unknown);
-    case 5:
-      return S.Array(__S(4, __c0, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          ok: S.Boolean,
-          items: S.optional(__S(5, __c0, 5)),
-          failed_items: S.optional(__S(0, __c0, 0)),
-        }),
-      ).annotate({ identifier: "BulkGetResponse" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          datastore: S.String,
-          items: __S(5, __c0, 5),
-          app_id: S.optional(S.String),
-        }).pipe(T.Http({ method: "POST", uri: "/apps.datastore.bulkPut", code: 200 })),
-      ).annotate({ identifier: "BulkPutRequest" });
   }
 }
 function __c1(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() =>
-        S.Struct({
-          ok: S.Boolean,
-          datastore: S.optional(S.String),
-          failed_items: S.optional(__S(5, __c0, 5)),
-        }),
-      ).annotate({ identifier: "BulkPutResponse" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({}).pipe(T.Http({ method: "POST", uri: "/apps.connections.open", code: 200 })),
-      ).annotate({ identifier: "ConnectionsOpenRequest" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          ok: S.Boolean,
-          url: S.String,
-        }),
-      ).annotate({ identifier: "ConnectionsOpenResponse" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          manifest: S.String,
-          team_id: S.optional(S.String),
-        }).pipe(T.Http({ method: "POST", uri: "/apps.manifest.create", code: 200 })),
-      ).annotate({ identifier: "CreateManifestRequest" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          client_id: S.optional(S.String),
-          client_secret: S.optional(S.String.pipe(T.SensitiveValue({}))),
-          verification_token: S.optional(S.String),
-          signing_secret: S.optional(S.String.pipe(T.SensitiveValue({}))),
-        }),
-      ).annotate({
-        identifier: "CreateManifestResponseCredentials",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          ok: S.Boolean,
-          app_id: S.String,
-          credentials: __S(12, __c1, 4),
-          oauth_authorize_url: S.optional(S.String),
-          team_id: S.optional(S.String),
-          team_domain: S.optional(S.String),
-          app_token: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "CreateManifestResponse" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          datastore: S.String,
-          expression: S.optional(S.String),
-          expression_attributes: S.optional(__S(4, __c0, 4)),
-          expression_values: S.optional(__S(4, __c0, 4)),
-          app_id: S.optional(S.String),
-        }).pipe(T.Http({ method: "POST", uri: "/apps.datastore.count", code: 200 })),
-      ).annotate({ identifier: "DatastoreCountRequest" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          ok: S.Boolean,
-          datastore: S.optional(S.String),
-          count: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "DatastoreCountResponse" });
+      return S.Array(S.String);
   }
 }
 function __c2(j: number): any {
@@ -924,72 +829,33 @@ function __c2(j: number): any {
       return S.suspend(() =>
         S.Struct({
           datastore: S.String,
-          expression: S.optional(S.String),
-          expression_attributes: S.optional(__S(4, __c0, 4)),
-          expression_values: S.optional(__S(4, __c0, 4)),
+          ids: __S(4, __c1, 0),
           app_id: S.optional(S.String),
-          cursor: S.optional(S.String),
-          limit: S.optional(S.Number),
-        }).pipe(T.Http({ method: "POST", uri: "/apps.datastore.query", code: 200 })),
-      ).annotate({ identifier: "DatastoreQueryRequest" });
+        }).pipe(T.Http({ method: "POST", uri: "/apps.datastore.bulkGet", code: 200 })),
+      ).annotate({ identifier: "BulkGetRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
-          next_cursor: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "DatastoreQueryResponseResponseMetadata",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
           ok: S.Boolean,
-          datastore: S.optional(S.String),
-          items: __S(5, __c0, 5),
-          response_metadata: S.optional(__S(17, __c2, 1)),
+          items: S.optional(__S(16, __c4, 0)),
+          failed_items: S.optional(__S(4, __c1, 0)),
         }),
-      ).annotate({ identifier: "DatastoreQueryResponse" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          app_id: S.optional(S.String),
-          provider_key: S.optional(S.String),
-          external_token_id: S.optional(S.String),
-        }).pipe(T.Http({ method: "POST", uri: "/apps.auth.external.delete", code: 200 })),
-      ).annotate({
-        identifier: "DeleteAuthExternalRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          ok: S.Boolean,
-        }),
-      ).annotate({
-        identifier: "DeleteAuthExternalResponse",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          datastore: S.String,
-          id: S.String,
-          app_id: S.optional(S.String),
-        }).pipe(T.Http({ method: "POST", uri: "/apps.datastore.delete", code: 200 })),
-      ).annotate({ identifier: "DeleteDatastoreRequest" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          ok: S.Boolean,
-        }),
-      ).annotate({ identifier: "DeleteDatastoreResponse" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          app_id: S.String,
-        }).pipe(T.Http({ method: "POST", uri: "/apps.manifest.delete", code: 200 })),
-      ).annotate({ identifier: "DeleteManifestRequest" });
+      ).annotate({ identifier: "BulkGetResponse" });
   }
 }
 function __c3(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, S.Unknown);
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(12, __c3, 0));
+  }
+}
+function __c5(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1004,14 +870,18 @@ function __c3(j: number): any {
           manifest: S.Unknown,
         }),
       ).annotate({ identifier: "ExportManifestResponse" });
-    case 2:
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           external_token_id: S.String,
           force_refresh: S.optional(S.Boolean),
         }).pipe(T.Http({ method: "POST", uri: "/apps.auth.external.get", code: 200 })),
       ).annotate({ identifier: "GetAuthExternalRequest" });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           ok: S.Boolean,
@@ -1019,7 +889,11 @@ function __c3(j: number): any {
           token_response_extras: S.Unknown,
         }),
       ).annotate({ identifier: "GetAuthExternalResponse" });
-    case 4:
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           datastore: S.String,
@@ -1027,15 +901,23 @@ function __c3(j: number): any {
           app_id: S.optional(S.String),
         }).pipe(T.Http({ method: "POST", uri: "/apps.datastore.get", code: 200 })),
       ).annotate({ identifier: "GetDatastoreRequest" });
-    case 5:
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           ok: S.Boolean,
           datastore: S.optional(S.String),
-          item: S.optional(__S(4, __c0, 4)),
+          item: S.optional(__S(12, __c3, 0)),
         }),
       ).annotate({ identifier: "GetDatastoreResponse" });
-    case 6:
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           app_id: S.String,
@@ -1060,21 +942,21 @@ function __c3(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ListActivitiesRequest" });
-    case 7:
+    case 1:
       return S.Array(S.Unknown);
-  }
-}
-function __c4(j: number): any {
-  switch (j) {
-    case 0:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           ok: S.Boolean,
-          activities: __S(31, __c3, 7),
-          response_metadata: S.optional(__S(17, __c2, 1)),
+          activities: __S(37, __c9, 1),
+          response_metadata: S.optional(__S(96, __c24, 0)),
         }),
       ).annotate({ identifier: "ListActivitiesResponse" });
-    case 1:
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           event_context: S.String,
@@ -1084,7 +966,7 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "ListEventAuthorizationsRequest",
       });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           enterprise_id: S.NullOr(S.String),
@@ -1096,28 +978,36 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "ListEventAuthorizationsResponseAuthorizationsItem",
       });
+    case 2:
+      return S.Array(__S(41, __c10, 1));
     case 3:
-      return S.Array(__S(34, __c4, 2));
-    case 4:
       return S.suspend(() =>
         S.Struct({
           ok: S.Boolean,
           cursor_next: S.optional(S.String),
-          authorizations: __S(35, __c4, 3),
-          response_metadata: S.optional(__S(17, __c2, 1)),
+          authorizations: __S(42, __c10, 2),
+          response_metadata: S.optional(__S(96, __c24, 0)),
         }),
       ).annotate({
         identifier: "ListEventAuthorizationsResponse",
       });
-    case 5:
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           datastore: S.String,
-          item: __S(4, __c0, 4),
+          item: __S(12, __c3, 0),
           app_id: S.optional(S.String),
         }).pipe(T.Http({ method: "POST", uri: "/apps.datastore.put", code: 200 })),
       ).annotate({ identifier: "PutDatastoreRequest" });
-    case 6:
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           app_id: S.String,
@@ -1125,7 +1015,11 @@ function __c4(j: number): any {
           url: S.optional(S.String),
         }).pipe(T.Http({ method: "POST", uri: "/apps.icon.set", code: 200 })),
       ).annotate({ identifier: "SetIconRequest" });
-    case 7:
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           app_id: S.String,
@@ -1136,7 +1030,7 @@ function __c4(j: number): any {
       });
   }
 }
-function __c5(j: number): any {
+function __c14(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1159,22 +1053,50 @@ function __c5(j: number): any {
           uninstalled: S.Boolean,
         }),
       ).annotate({ identifier: "UninstallAppResponse" });
-    case 2:
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           datastore: S.String,
-          item: __S(4, __c0, 4),
+          item: __S(12, __c3, 0),
           app_id: S.optional(S.String),
         }).pipe(T.Http({ method: "POST", uri: "/apps.datastore.update", code: 200 })),
       ).annotate({ identifier: "UpdateDatastoreRequest" });
-    case 3:
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          datastore: S.String,
+          items: __S(16, __c4, 0),
+          app_id: S.optional(S.String),
+        }).pipe(T.Http({ method: "POST", uri: "/apps.datastore.bulkPut", code: 200 })),
+      ).annotate({ identifier: "BulkPutRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          ok: S.Boolean,
+          datastore: S.optional(S.String),
+          failed_items: S.optional(__S(16, __c4, 0)),
+        }),
+      ).annotate({ identifier: "BulkPutResponse" });
+  }
+}
+function __c17(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           manifest: S.String,
           app_id: S.String,
         }).pipe(T.Http({ method: "POST", uri: "/apps.manifest.update", code: 200 })),
       ).annotate({ identifier: "UpdateManifestRequest" });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           ok: S.Boolean,
@@ -1182,7 +1104,11 @@ function __c5(j: number): any {
           permissions_updated: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "UpdateManifestResponse" });
-    case 5:
+  }
+}
+function __c18(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           user_id: S.String,
@@ -1191,14 +1117,18 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "UpdateUserConnectionRequest",
       });
-    case 6:
+  }
+}
+function __c19(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           manifest: S.String,
           app_id: S.optional(S.String),
         }).pipe(T.Http({ method: "POST", uri: "/apps.manifest.validate", code: 200 })),
       ).annotate({ identifier: "ValidateManifestRequest" });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           code: S.String,
@@ -1208,23 +1138,184 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "ValidateManifestResponseWarningsItem",
       });
-  }
-}
-function __c6(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(47, __c5, 7));
-    case 1:
+    case 2:
+      return S.Array(__S(77, __c19, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
           ok: S.Boolean,
-          errors: __S(0, __c0, 0),
-          warnings: S.optional(__S(48, __c6, 0)),
+          errors: __S(4, __c1, 0),
+          warnings: S.optional(__S(78, __c19, 2)),
         }),
       ).annotate({ identifier: "ValidateManifestResponse" });
   }
 }
-
+function __c20(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({}).pipe(T.Http({ method: "POST", uri: "/apps.connections.open", code: 200 })),
+      ).annotate({ identifier: "ConnectionsOpenRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          ok: S.Boolean,
+          url: S.String,
+        }),
+      ).annotate({ identifier: "ConnectionsOpenResponse" });
+  }
+}
+function __c21(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          manifest: S.String,
+          team_id: S.optional(S.String),
+        }).pipe(T.Http({ method: "POST", uri: "/apps.manifest.create", code: 200 })),
+      ).annotate({ identifier: "CreateManifestRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          client_id: S.optional(S.String),
+          client_secret: S.optional(S.String.pipe(T.SensitiveValue({}))),
+          verification_token: S.optional(S.String),
+          signing_secret: S.optional(S.String.pipe(T.SensitiveValue({}))),
+        }),
+      ).annotate({
+        identifier: "CreateManifestResponseCredentials",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          ok: S.Boolean,
+          app_id: S.String,
+          credentials: __S(85, __c21, 1),
+          oauth_authorize_url: S.optional(S.String),
+          team_id: S.optional(S.String),
+          team_domain: S.optional(S.String),
+          app_token: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "CreateManifestResponse" });
+  }
+}
+function __c22(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          datastore: S.String,
+          expression: S.optional(S.String),
+          expression_attributes: S.optional(__S(12, __c3, 0)),
+          expression_values: S.optional(__S(12, __c3, 0)),
+          app_id: S.optional(S.String),
+        }).pipe(T.Http({ method: "POST", uri: "/apps.datastore.count", code: 200 })),
+      ).annotate({ identifier: "DatastoreCountRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          ok: S.Boolean,
+          datastore: S.optional(S.String),
+          count: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "DatastoreCountResponse" });
+  }
+}
+function __c23(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          datastore: S.String,
+          expression: S.optional(S.String),
+          expression_attributes: S.optional(__S(12, __c3, 0)),
+          expression_values: S.optional(__S(12, __c3, 0)),
+          app_id: S.optional(S.String),
+          cursor: S.optional(S.String),
+          limit: S.optional(S.Number),
+        }).pipe(T.Http({ method: "POST", uri: "/apps.datastore.query", code: 200 })),
+      ).annotate({ identifier: "DatastoreQueryRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          ok: S.Boolean,
+          datastore: S.optional(S.String),
+          items: __S(16, __c4, 0),
+          response_metadata: S.optional(__S(96, __c24, 0)),
+        }),
+      ).annotate({ identifier: "DatastoreQueryResponse" });
+  }
+}
+function __c24(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          next_cursor: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "DatastoreQueryResponseResponseMetadata",
+      });
+  }
+}
+function __c25(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          app_id: S.optional(S.String),
+          provider_key: S.optional(S.String),
+          external_token_id: S.optional(S.String),
+        }).pipe(T.Http({ method: "POST", uri: "/apps.auth.external.delete", code: 200 })),
+      ).annotate({
+        identifier: "DeleteAuthExternalRequest",
+      });
+  }
+}
+function __c26(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          ok: S.Boolean,
+        }),
+      ).annotate({
+        identifier: "DeleteAuthExternalResponse",
+      });
+  }
+}
+function __c27(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          datastore: S.String,
+          id: S.String,
+          app_id: S.optional(S.String),
+        }).pipe(T.Http({ method: "POST", uri: "/apps.datastore.delete", code: 200 })),
+      ).annotate({ identifier: "DeleteDatastoreRequest" });
+  }
+}
+function __c28(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          ok: S.Boolean,
+        }),
+      ).annotate({ identifier: "DeleteDatastoreResponse" });
+  }
+}
+function __c29(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          app_id: S.String,
+        }).pipe(T.Http({ method: "POST", uri: "/apps.manifest.delete", code: 200 })),
+      ).annotate({ identifier: "DeleteManifestRequest" });
+  }
+}
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

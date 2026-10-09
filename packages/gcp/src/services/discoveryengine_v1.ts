@@ -7688,11 +7688,15 @@ export const answerProjectsLocationsCollectionsDataStoresServingConfigs: API.Ope
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    39,
-    __c4,
-    7,
+    10080,
+    __c315,
+    0,
   ) as any as S.Schema<AnswerProjectsLocationsCollectionsDataStoresServingConfigsRequest>,
-  output: __S(106, __c13, 2) as any as S.Schema<GoogleCloudDiscoveryengineV1AnswerQueryResponse>,
+  output: __S(
+    10396,
+    __c324,
+    28,
+  ) as any as S.Schema<GoogleCloudDiscoveryengineV1AnswerQueryResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7712,11 +7716,15 @@ export const answerProjectsLocationsCollectionsEnginesServingConfigs: API.Operat
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    107,
-    __c13,
-    3,
+    10912,
+    __c341,
+    0,
   ) as any as S.Schema<AnswerProjectsLocationsCollectionsEnginesServingConfigsRequest>,
-  output: __S(106, __c13, 2) as any as S.Schema<GoogleCloudDiscoveryengineV1AnswerQueryResponse>,
+  output: __S(
+    10396,
+    __c324,
+    28,
+  ) as any as S.Schema<GoogleCloudDiscoveryengineV1AnswerQueryResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7736,11 +7744,15 @@ export const answerProjectsLocationsDataStoresServingConfigs: API.OperationMetho
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    108,
-    __c13,
-    4,
+    11264,
+    __c352,
+    0,
   ) as any as S.Schema<AnswerProjectsLocationsDataStoresServingConfigsRequest>,
-  output: __S(106, __c13, 2) as any as S.Schema<GoogleCloudDiscoveryengineV1AnswerQueryResponse>,
+  output: __S(
+    10396,
+    __c324,
+    28,
+  ) as any as S.Schema<GoogleCloudDiscoveryengineV1AnswerQueryResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7760,11 +7772,11 @@ export const batchCreateProjectsLocationsCollectionsDataStoresSiteSearchEngineTa
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    116,
-    __c14,
-    4,
+    0,
+    __c0,
+    0,
   ) as any as S.Schema<BatchCreateProjectsLocationsCollectionsDataStoresSiteSearchEngineTargetSitesRequest>,
-  output: __S(117, __c14, 5) as any as S.Schema<GoogleLongrunningOperation>,
+  output: __S(64, __c2, 0) as any as S.Schema<GoogleLongrunningOperation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7784,11 +7796,11 @@ export const batchCreateProjectsLocationsDataStoresSiteSearchEngineTargetSites: 
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    118,
-    __c14,
-    6,
+    480,
+    __c15,
+    0,
   ) as any as S.Schema<BatchCreateProjectsLocationsDataStoresSiteSearchEngineTargetSitesRequest>,
-  output: __S(117, __c14, 5) as any as S.Schema<GoogleLongrunningOperation>,
+  output: __S(64, __c2, 0) as any as S.Schema<GoogleLongrunningOperation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7806,13 +7818,13 @@ export const batchGetDocumentsMetadataProjectsLocationsCollectionsDataStoresBran
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    119,
-    __c14,
-    7,
+    832,
+    __c26,
+    0,
   ) as any as S.Schema<BatchGetDocumentsMetadataProjectsLocationsCollectionsDataStoresBranchesRequest>,
   output: __S(
-    123,
-    __c15,
+    867,
+    __c27,
     3,
   ) as any as S.Schema<GoogleCloudDiscoveryengineV1BatchGetDocumentsMetadataResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
@@ -7832,13 +7844,13 @@ export const batchGetDocumentsMetadataProjectsLocationsDataStoresBranches: API.O
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    124,
-    __c15,
-    4,
+    1248,
+    __c39,
+    0,
   ) as any as S.Schema<BatchGetDocumentsMetadataProjectsLocationsDataStoresBranchesRequest>,
   output: __S(
-    123,
-    __c15,
+    867,
+    __c27,
     3,
   ) as any as S.Schema<GoogleCloudDiscoveryengineV1BatchGetDocumentsMetadataResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
@@ -7860,11 +7872,11 @@ export const batchUpdateUserLicensesProjectsLocationsUserStores: API.OperationMe
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    129,
-    __c16,
-    1,
+    1602,
+    __c50,
+    2,
   ) as any as S.Schema<BatchUpdateUserLicensesProjectsLocationsUserStoresRequest>,
-  output: __S(117, __c14, 5) as any as S.Schema<GoogleLongrunningOperation>,
+  output: __S(64, __c2, 0) as any as S.Schema<GoogleLongrunningOperation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7884,11 +7896,11 @@ export const batchVerifyTargetSitesProjectsLocationsCollectionsDataStoresSiteSea
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    131,
-    __c16,
-    3,
+    1984,
+    __c62,
+    0,
   ) as any as S.Schema<BatchVerifyTargetSitesProjectsLocationsCollectionsDataStoresSiteSearchEngineRequest>,
-  output: __S(117, __c14, 5) as any as S.Schema<GoogleLongrunningOperation>,
+  output: __S(64, __c2, 0) as any as S.Schema<GoogleLongrunningOperation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7908,11 +7920,11 @@ export const cancelProjectsLocationsCollectionsDataStoresBranchesOperations: API
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    132,
-    __c16,
-    4,
+    2688,
+    __c84,
+    0,
   ) as any as S.Schema<CancelProjectsLocationsCollectionsDataStoresBranchesOperationsRequest>,
-  output: __S(133, __c16, 5) as any as S.Schema<GoogleProtobufEmpty>,
+  output: __S(2720, __c85, 0) as any as S.Schema<GoogleProtobufEmpty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7932,11 +7944,11 @@ export const cancelProjectsLocationsCollectionsEnginesAssistantsAgentsA2aV1Tasks
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    134,
-    __c16,
-    6,
+    3200,
+    __c100,
+    0,
   ) as any as S.Schema<CancelProjectsLocationsCollectionsEnginesAssistantsAgentsA2aV1TasksRequest>,
-  output: __S(144, __c18, 0) as any as S.Schema<A2aV1Task>,
+  output: __S(3241, __c101, 9) as any as S.Schema<A2aV1Task>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7956,11 +7968,11 @@ export const cancelProjectsLocationsCollectionsEnginesOperations: API.OperationM
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    145,
-    __c18,
-    1,
+    3744,
+    __c117,
+    0,
   ) as any as S.Schema<CancelProjectsLocationsCollectionsEnginesOperationsRequest>,
-  output: __S(133, __c16, 5) as any as S.Schema<GoogleProtobufEmpty>,
+  output: __S(2720, __c85, 0) as any as S.Schema<GoogleProtobufEmpty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7980,11 +7992,11 @@ export const cancelProjectsLocationsDataStoresBranchesOperations: API.OperationM
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    146,
-    __c18,
-    2,
+    4192,
+    __c131,
+    0,
   ) as any as S.Schema<CancelProjectsLocationsDataStoresBranchesOperationsRequest>,
-  output: __S(133, __c16, 5) as any as S.Schema<GoogleProtobufEmpty>,
+  output: __S(2720, __c85, 0) as any as S.Schema<GoogleProtobufEmpty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8003,8 +8015,8 @@ export const cancelProjectsOperations: API.OperationMethod<
   CancelProjectsOperationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(147, __c18, 3) as any as S.Schema<CancelProjectsOperationsRequest>,
-  output: __S(133, __c16, 5) as any as S.Schema<GoogleProtobufEmpty>,
+  input: __S(4544, __c142, 0) as any as S.Schema<CancelProjectsOperationsRequest>,
+  output: __S(2720, __c85, 0) as any as S.Schema<GoogleProtobufEmpty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8023,8 +8035,12 @@ export const checkProjectsLocationsGroundingConfigs: API.OperationMethod<
   CheckProjectsLocationsGroundingConfigsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(152, __c19, 0) as any as S.Schema<CheckProjectsLocationsGroundingConfigsRequest>,
-  output: __S(159, __c19, 7) as any as S.Schema<GoogleCloudDiscoveryengineV1CheckGroundingResponse>,
+  input: __S(4900, __c153, 4) as any as S.Schema<CheckProjectsLocationsGroundingConfigsRequest>,
+  output: __S(
+    4907,
+    __c153,
+    11,
+  ) as any as S.Schema<GoogleCloudDiscoveryengineV1CheckGroundingResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8042,11 +8058,11 @@ export const collectProjectsLocationsCollectionsDataStoresUserEvents: API.Operat
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    160,
-    __c20,
+    5248,
+    __c164,
     0,
   ) as any as S.Schema<CollectProjectsLocationsCollectionsDataStoresUserEventsRequest>,
-  output: __S(161, __c20, 1) as any as S.Schema<GoogleApiHttpBody>,
+  output: __S(5280, __c165, 0) as any as S.Schema<GoogleApiHttpBody>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8060,8 +8076,12 @@ export const collectProjectsLocationsDataStoresUserEvents: API.OperationMethod<
   CollectProjectsLocationsDataStoresUserEventsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(162, __c20, 2) as any as S.Schema<CollectProjectsLocationsDataStoresUserEventsRequest>,
-  output: __S(161, __c20, 1) as any as S.Schema<GoogleApiHttpBody>,
+  input: __S(
+    5632,
+    __c176,
+    0,
+  ) as any as S.Schema<CollectProjectsLocationsDataStoresUserEventsRequest>,
+  output: __S(5280, __c165, 0) as any as S.Schema<GoogleApiHttpBody>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8075,8 +8095,8 @@ export const collectProjectsLocationsUserEvents: API.OperationMethod<
   CollectProjectsLocationsUserEventsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(163, __c20, 3) as any as S.Schema<CollectProjectsLocationsUserEventsRequest>,
-  output: __S(161, __c20, 1) as any as S.Schema<GoogleApiHttpBody>,
+  input: __S(5984, __c187, 0) as any as S.Schema<CollectProjectsLocationsUserEventsRequest>,
+  output: __S(5280, __c165, 0) as any as S.Schema<GoogleApiHttpBody>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8094,11 +8114,15 @@ export const completeQueryProjectsLocationsCollectionsDataStores: API.OperationM
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    164,
-    __c20,
-    4,
+    6432,
+    __c201,
+    0,
   ) as any as S.Schema<CompleteQueryProjectsLocationsCollectionsDataStoresRequest>,
-  output: __S(167, __c20, 7) as any as S.Schema<GoogleCloudDiscoveryengineV1CompleteQueryResponse>,
+  output: __S(
+    6466,
+    __c202,
+    2,
+  ) as any as S.Schema<GoogleCloudDiscoveryengineV1CompleteQueryResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8118,14 +8142,14 @@ export const completeQueryProjectsLocationsCollectionsDataStoresCompletionConfig
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    177,
-    __c22,
-    1,
+    6944,
+    __c217,
+    0,
   ) as any as S.Schema<CompleteQueryProjectsLocationsCollectionsDataStoresCompletionConfigRequest>,
   output: __S(
-    195,
-    __c24,
-    3,
+    6990,
+    __c218,
+    14,
   ) as any as S.Schema<GoogleCloudDiscoveryengineV1AdvancedCompleteQueryResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
@@ -8146,14 +8170,14 @@ export const completeQueryProjectsLocationsCollectionsEnginesCompletionConfig: A
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    196,
-    __c24,
-    4,
+    7488,
+    __c234,
+    0,
   ) as any as S.Schema<CompleteQueryProjectsLocationsCollectionsEnginesCompletionConfigRequest>,
   output: __S(
-    195,
-    __c24,
-    3,
+    6990,
+    __c218,
+    14,
   ) as any as S.Schema<GoogleCloudDiscoveryengineV1AdvancedCompleteQueryResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
@@ -8168,8 +8192,12 @@ export const completeQueryProjectsLocationsDataStores: API.OperationMethod<
   CompleteQueryProjectsLocationsDataStoresError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(197, __c24, 5) as any as S.Schema<CompleteQueryProjectsLocationsDataStoresRequest>,
-  output: __S(167, __c20, 7) as any as S.Schema<GoogleCloudDiscoveryengineV1CompleteQueryResponse>,
+  input: __S(7872, __c246, 0) as any as S.Schema<CompleteQueryProjectsLocationsDataStoresRequest>,
+  output: __S(
+    6466,
+    __c202,
+    2,
+  ) as any as S.Schema<GoogleCloudDiscoveryengineV1CompleteQueryResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8189,14 +8217,14 @@ export const completeQueryProjectsLocationsDataStoresCompletionConfig: API.Opera
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    198,
-    __c24,
-    6,
+    8064,
+    __c252,
+    0,
   ) as any as S.Schema<CompleteQueryProjectsLocationsDataStoresCompletionConfigRequest>,
   output: __S(
-    195,
-    __c24,
-    3,
+    6990,
+    __c218,
+    14,
   ) as any as S.Schema<GoogleCloudDiscoveryengineV1AdvancedCompleteQueryResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
@@ -8217,14 +8245,14 @@ export const converseProjectsLocationsCollectionsDataStoresConversations: API.Op
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    221,
-    __c27,
-    5,
+    8096,
+    __c253,
+    0,
   ) as any as S.Schema<ConverseProjectsLocationsCollectionsDataStoresConversationsRequest>,
   output: __S(
-    238,
-    __c29,
-    6,
+    8129,
+    __c254,
+    1,
   ) as any as S.Schema<GoogleCloudDiscoveryengineV1ConverseConversationResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
@@ -8245,14 +8273,14 @@ export const converseProjectsLocationsCollectionsEnginesConversations: API.Opera
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    239,
-    __c29,
-    7,
+    8288,
+    __c259,
+    0,
   ) as any as S.Schema<ConverseProjectsLocationsCollectionsEnginesConversationsRequest>,
   output: __S(
-    238,
-    __c29,
-    6,
+    8129,
+    __c254,
+    1,
   ) as any as S.Schema<GoogleCloudDiscoveryengineV1ConverseConversationResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
@@ -8273,14 +8301,14 @@ export const converseProjectsLocationsDataStoresConversations: API.OperationMeth
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    240,
-    __c30,
+    8320,
+    __c260,
     0,
   ) as any as S.Schema<ConverseProjectsLocationsDataStoresConversationsRequest>,
   output: __S(
-    238,
-    __c29,
-    6,
+    8129,
+    __c254,
+    1,
   ) as any as S.Schema<GoogleCloudDiscoveryengineV1ConverseConversationResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
@@ -8300,8 +8328,12 @@ export const createProjectsLocationsCollectionsDataStores: API.OperationMethod<
   CreateProjectsLocationsCollectionsDataStoresError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(268, __c33, 4) as any as S.Schema<CreateProjectsLocationsCollectionsDataStoresRequest>,
-  output: __S(117, __c14, 5) as any as S.Schema<GoogleLongrunningOperation>,
+  input: __S(
+    8352,
+    __c261,
+    0,
+  ) as any as S.Schema<CreateProjectsLocationsCollectionsDataStoresRequest>,
+  output: __S(64, __c2, 0) as any as S.Schema<GoogleLongrunningOperation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8321,11 +8353,11 @@ export const createProjectsLocationsCollectionsDataStoresBranchesDocuments: API.
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    269,
-    __c33,
-    5,
+    8576,
+    __c268,
+    0,
   ) as any as S.Schema<CreateProjectsLocationsCollectionsDataStoresBranchesDocumentsRequest>,
-  output: __S(188, __c23, 4) as any as S.Schema<GoogleCloudDiscoveryengineV1Document>,
+  output: __S(7047, __c220, 7) as any as S.Schema<GoogleCloudDiscoveryengineV1Document>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8345,11 +8377,11 @@ export const createProjectsLocationsCollectionsDataStoresControls: API.Operation
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    286,
-    __c35,
-    6,
+    8608,
+    __c269,
+    0,
   ) as any as S.Schema<CreateProjectsLocationsCollectionsDataStoresControlsRequest>,
-  output: __S(285, __c35, 5) as any as S.Schema<GoogleCloudDiscoveryengineV1Control>,
+  output: __S(8654, __c270, 14) as any as S.Schema<GoogleCloudDiscoveryengineV1Control>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8370,11 +8402,11 @@ export const createProjectsLocationsCollectionsDataStoresConversations: API.Oper
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    287,
-    __c35,
-    7,
+    8704,
+    __c272,
+    0,
   ) as any as S.Schema<CreateProjectsLocationsCollectionsDataStoresConversationsRequest>,
-  output: __S(216, __c27, 0) as any as S.Schema<GoogleCloudDiscoveryengineV1Conversation>,
+  output: __S(8197, __c256, 5) as any as S.Schema<GoogleCloudDiscoveryengineV1Conversation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, LlmAddOnRequired, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8395,11 +8427,11 @@ export const createProjectsLocationsCollectionsDataStoresSchemas: API.OperationM
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    288,
-    __c36,
+    8736,
+    __c273,
     0,
   ) as any as S.Schema<CreateProjectsLocationsCollectionsDataStoresSchemasRequest>,
-  output: __S(117, __c14, 5) as any as S.Schema<GoogleLongrunningOperation>,
+  output: __S(64, __c2, 0) as any as S.Schema<GoogleLongrunningOperation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, DataStoreNotReady, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8419,11 +8451,11 @@ export const createProjectsLocationsCollectionsDataStoresServingConfigs: API.Ope
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    298,
-    __c37,
-    2,
+    8768,
+    __c274,
+    0,
   ) as any as S.Schema<CreateProjectsLocationsCollectionsDataStoresServingConfigsRequest>,
-  output: __S(297, __c37, 1) as any as S.Schema<GoogleCloudDiscoveryengineV1ServingConfig>,
+  output: __S(8836, __c276, 4) as any as S.Schema<GoogleCloudDiscoveryengineV1ServingConfig>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8443,11 +8475,11 @@ export const createProjectsLocationsCollectionsDataStoresSessions: API.Operation
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    299,
-    __c37,
-    3,
+    8864,
+    __c277,
+    0,
   ) as any as S.Schema<CreateProjectsLocationsCollectionsDataStoresSessionsRequest>,
-  output: __S(105, __c13, 1) as any as S.Schema<GoogleCloudDiscoveryengineV1Session>,
+  output: __S(10498, __c328, 2) as any as S.Schema<GoogleCloudDiscoveryengineV1Session>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8467,11 +8499,11 @@ export const createProjectsLocationsCollectionsDataStoresSiteSearchEngineSitemap
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    301,
-    __c37,
-    5,
+    8896,
+    __c278,
+    0,
   ) as any as S.Schema<CreateProjectsLocationsCollectionsDataStoresSiteSearchEngineSitemapsRequest>,
-  output: __S(117, __c14, 5) as any as S.Schema<GoogleLongrunningOperation>,
+  output: __S(64, __c2, 0) as any as S.Schema<GoogleLongrunningOperation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8491,11 +8523,11 @@ export const createProjectsLocationsCollectionsDataStoresSiteSearchEngineTargetS
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    302,
-    __c37,
-    6,
+    8960,
+    __c280,
+    0,
   ) as any as S.Schema<CreateProjectsLocationsCollectionsDataStoresSiteSearchEngineTargetSitesRequest>,
-  output: __S(117, __c14, 5) as any as S.Schema<GoogleLongrunningOperation>,
+  output: __S(64, __c2, 0) as any as S.Schema<GoogleLongrunningOperation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8514,8 +8546,8 @@ export const createProjectsLocationsCollectionsEngines: API.OperationMethod<
   CreateProjectsLocationsCollectionsEnginesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(322, __c40, 2) as any as S.Schema<CreateProjectsLocationsCollectionsEnginesRequest>,
-  output: __S(117, __c14, 5) as any as S.Schema<GoogleLongrunningOperation>,
+  input: __S(8992, __c281, 0) as any as S.Schema<CreateProjectsLocationsCollectionsEnginesRequest>,
+  output: __S(64, __c2, 0) as any as S.Schema<GoogleLongrunningOperation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8535,11 +8567,11 @@ export const createProjectsLocationsCollectionsEnginesAssistants: API.OperationM
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    334,
-    __c41,
-    6,
+    9056,
+    __c283,
+    0,
   ) as any as S.Schema<CreateProjectsLocationsCollectionsEnginesAssistantsRequest>,
-  output: __S(333, __c41, 5) as any as S.Schema<GoogleCloudDiscoveryengineV1Assistant>,
+  output: __S(9098, __c284, 10) as any as S.Schema<GoogleCloudDiscoveryengineV1Assistant>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8559,11 +8591,11 @@ export const createProjectsLocationsCollectionsEnginesAssistantsAgentsA2aV1Tasks
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    338,
-    __c42,
-    2,
+    9120,
+    __c285,
+    0,
   ) as any as S.Schema<CreateProjectsLocationsCollectionsEnginesAssistantsAgentsA2aV1TasksPushNotificationConfigsRequest>,
-  output: __S(337, __c42, 1) as any as S.Schema<A2aV1TaskPushNotificationConfig>,
+  output: __S(9152, __c286, 0) as any as S.Schema<A2aV1TaskPushNotificationConfig>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8583,11 +8615,11 @@ export const createProjectsLocationsCollectionsEnginesControls: API.OperationMet
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    339,
-    __c42,
-    3,
+    9216,
+    __c288,
+    0,
   ) as any as S.Schema<CreateProjectsLocationsCollectionsEnginesControlsRequest>,
-  output: __S(285, __c35, 5) as any as S.Schema<GoogleCloudDiscoveryengineV1Control>,
+  output: __S(8654, __c270, 14) as any as S.Schema<GoogleCloudDiscoveryengineV1Control>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8608,11 +8640,11 @@ export const createProjectsLocationsCollectionsEnginesConversations: API.Operati
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    340,
-    __c42,
-    4,
+    9248,
+    __c289,
+    0,
   ) as any as S.Schema<CreateProjectsLocationsCollectionsEnginesConversationsRequest>,
-  output: __S(216, __c27, 0) as any as S.Schema<GoogleCloudDiscoveryengineV1Conversation>,
+  output: __S(8197, __c256, 5) as any as S.Schema<GoogleCloudDiscoveryengineV1Conversation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, LlmAddOnRequired, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8632,11 +8664,11 @@ export const createProjectsLocationsCollectionsEnginesServingConfigs: API.Operat
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    341,
-    __c42,
-    5,
+    9280,
+    __c290,
+    0,
   ) as any as S.Schema<CreateProjectsLocationsCollectionsEnginesServingConfigsRequest>,
-  output: __S(297, __c37, 1) as any as S.Schema<GoogleCloudDiscoveryengineV1ServingConfig>,
+  output: __S(8836, __c276, 4) as any as S.Schema<GoogleCloudDiscoveryengineV1ServingConfig>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8656,11 +8688,11 @@ export const createProjectsLocationsCollectionsEnginesSessions: API.OperationMet
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    342,
-    __c42,
-    6,
+    9312,
+    __c291,
+    0,
   ) as any as S.Schema<CreateProjectsLocationsCollectionsEnginesSessionsRequest>,
-  output: __S(105, __c13, 1) as any as S.Schema<GoogleCloudDiscoveryengineV1Session>,
+  output: __S(10498, __c328, 2) as any as S.Schema<GoogleCloudDiscoveryengineV1Session>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8679,8 +8711,8 @@ export const createProjectsLocationsDataStores: API.OperationMethod<
   CreateProjectsLocationsDataStoresError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(343, __c42, 7) as any as S.Schema<CreateProjectsLocationsDataStoresRequest>,
-  output: __S(117, __c14, 5) as any as S.Schema<GoogleLongrunningOperation>,
+  input: __S(9344, __c292, 0) as any as S.Schema<CreateProjectsLocationsDataStoresRequest>,
+  output: __S(64, __c2, 0) as any as S.Schema<GoogleLongrunningOperation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8700,11 +8732,11 @@ export const createProjectsLocationsDataStoresBranchesDocuments: API.OperationMe
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    344,
-    __c43,
+    9376,
+    __c293,
     0,
   ) as any as S.Schema<CreateProjectsLocationsDataStoresBranchesDocumentsRequest>,
-  output: __S(188, __c23, 4) as any as S.Schema<GoogleCloudDiscoveryengineV1Document>,
+  output: __S(7047, __c220, 7) as any as S.Schema<GoogleCloudDiscoveryengineV1Document>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8723,8 +8755,8 @@ export const createProjectsLocationsDataStoresControls: API.OperationMethod<
   CreateProjectsLocationsDataStoresControlsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(345, __c43, 1) as any as S.Schema<CreateProjectsLocationsDataStoresControlsRequest>,
-  output: __S(285, __c35, 5) as any as S.Schema<GoogleCloudDiscoveryengineV1Control>,
+  input: __S(9408, __c294, 0) as any as S.Schema<CreateProjectsLocationsDataStoresControlsRequest>,
+  output: __S(8654, __c270, 14) as any as S.Schema<GoogleCloudDiscoveryengineV1Control>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8745,11 +8777,11 @@ export const createProjectsLocationsDataStoresConversations: API.OperationMethod
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    346,
-    __c43,
-    2,
+    9440,
+    __c295,
+    0,
   ) as any as S.Schema<CreateProjectsLocationsDataStoresConversationsRequest>,
-  output: __S(216, __c27, 0) as any as S.Schema<GoogleCloudDiscoveryengineV1Conversation>,
+  output: __S(8197, __c256, 5) as any as S.Schema<GoogleCloudDiscoveryengineV1Conversation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, LlmAddOnRequired, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8769,8 +8801,8 @@ export const createProjectsLocationsDataStoresSchemas: API.OperationMethod<
   CreateProjectsLocationsDataStoresSchemasError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(347, __c43, 3) as any as S.Schema<CreateProjectsLocationsDataStoresSchemasRequest>,
-  output: __S(117, __c14, 5) as any as S.Schema<GoogleLongrunningOperation>,
+  input: __S(9472, __c296, 0) as any as S.Schema<CreateProjectsLocationsDataStoresSchemasRequest>,
+  output: __S(64, __c2, 0) as any as S.Schema<GoogleLongrunningOperation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, DataStoreNotReady, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8790,11 +8822,11 @@ export const createProjectsLocationsDataStoresServingConfigs: API.OperationMetho
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    348,
-    __c43,
-    4,
+    9504,
+    __c297,
+    0,
   ) as any as S.Schema<CreateProjectsLocationsDataStoresServingConfigsRequest>,
-  output: __S(297, __c37, 1) as any as S.Schema<GoogleCloudDiscoveryengineV1ServingConfig>,
+  output: __S(8836, __c276, 4) as any as S.Schema<GoogleCloudDiscoveryengineV1ServingConfig>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8813,8 +8845,8 @@ export const createProjectsLocationsDataStoresSessions: API.OperationMethod<
   CreateProjectsLocationsDataStoresSessionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(349, __c43, 5) as any as S.Schema<CreateProjectsLocationsDataStoresSessionsRequest>,
-  output: __S(105, __c13, 1) as any as S.Schema<GoogleCloudDiscoveryengineV1Session>,
+  input: __S(9536, __c298, 0) as any as S.Schema<CreateProjectsLocationsDataStoresSessionsRequest>,
+  output: __S(10498, __c328, 2) as any as S.Schema<GoogleCloudDiscoveryengineV1Session>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8834,11 +8866,11 @@ export const createProjectsLocationsDataStoresSiteSearchEngineSitemaps: API.Oper
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    350,
-    __c43,
-    6,
+    9568,
+    __c299,
+    0,
   ) as any as S.Schema<CreateProjectsLocationsDataStoresSiteSearchEngineSitemapsRequest>,
-  output: __S(117, __c14, 5) as any as S.Schema<GoogleLongrunningOperation>,
+  output: __S(64, __c2, 0) as any as S.Schema<GoogleLongrunningOperation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8858,11 +8890,11 @@ export const createProjectsLocationsDataStoresSiteSearchEngineTargetSites: API.O
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    351,
-    __c43,
-    7,
+    9600,
+    __c300,
+    0,
   ) as any as S.Schema<CreateProjectsLocationsDataStoresSiteSearchEngineTargetSitesRequest>,
-  output: __S(117, __c14, 5) as any as S.Schema<GoogleLongrunningOperation>,
+  output: __S(64, __c2, 0) as any as S.Schema<GoogleLongrunningOperation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8882,8 +8914,12 @@ export const createProjectsLocationsIdentityMappingStores: API.OperationMethod<
   CreateProjectsLocationsIdentityMappingStoresError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(353, __c44, 1) as any as S.Schema<CreateProjectsLocationsIdentityMappingStoresRequest>,
-  output: __S(352, __c44, 0) as any as S.Schema<GoogleCloudDiscoveryengineV1IdentityMappingStore>,
+  input: __S(
+    9632,
+    __c301,
+    0,
+  ) as any as S.Schema<CreateProjectsLocationsIdentityMappingStoresRequest>,
+  output: __S(9664, __c302, 0) as any as S.Schema<GoogleCloudDiscoveryengineV1IdentityMappingStore>,
   errors: [
     NotFound,
     Forbidden,
@@ -8909,8 +8945,8 @@ export const createProjectsLocationsLicenseConfigs: API.OperationMethod<
   CreateProjectsLocationsLicenseConfigsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(355, __c44, 3) as any as S.Schema<CreateProjectsLocationsLicenseConfigsRequest>,
-  output: __S(354, __c44, 2) as any as S.Schema<GoogleCloudDiscoveryengineV1LicenseConfig>,
+  input: __S(9696, __c303, 0) as any as S.Schema<CreateProjectsLocationsLicenseConfigsRequest>,
+  output: __S(9728, __c304, 0) as any as S.Schema<GoogleCloudDiscoveryengineV1LicenseConfig>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8929,8 +8965,8 @@ export const deleteProjectsLocationsCmekConfigs: API.OperationMethod<
   DeleteProjectsLocationsCmekConfigsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(356, __c44, 4) as any as S.Schema<DeleteProjectsLocationsCmekConfigsRequest>,
-  output: __S(117, __c14, 5) as any as S.Schema<GoogleLongrunningOperation>,
+  input: __S(9760, __c305, 0) as any as S.Schema<DeleteProjectsLocationsCmekConfigsRequest>,
+  output: __S(64, __c2, 0) as any as S.Schema<GoogleLongrunningOperation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8949,8 +8985,8 @@ export const deleteProjectsLocationsCollections: API.OperationMethod<
   DeleteProjectsLocationsCollectionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(357, __c44, 5) as any as S.Schema<DeleteProjectsLocationsCollectionsRequest>,
-  output: __S(117, __c14, 5) as any as S.Schema<GoogleLongrunningOperation>,
+  input: __S(9792, __c306, 0) as any as S.Schema<DeleteProjectsLocationsCollectionsRequest>,
+  output: __S(64, __c2, 0) as any as S.Schema<GoogleLongrunningOperation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8969,8 +9005,12 @@ export const deleteProjectsLocationsCollectionsDataStores: API.OperationMethod<
   DeleteProjectsLocationsCollectionsDataStoresError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(358, __c44, 6) as any as S.Schema<DeleteProjectsLocationsCollectionsDataStoresRequest>,
-  output: __S(117, __c14, 5) as any as S.Schema<GoogleLongrunningOperation>,
+  input: __S(
+    9824,
+    __c307,
+    0,
+  ) as any as S.Schema<DeleteProjectsLocationsCollectionsDataStoresRequest>,
+  output: __S(64, __c2, 0) as any as S.Schema<GoogleLongrunningOperation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8990,11 +9030,11 @@ export const deleteProjectsLocationsCollectionsDataStoresBranchesDocuments: API.
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    359,
-    __c44,
-    7,
+    9856,
+    __c308,
+    0,
   ) as any as S.Schema<DeleteProjectsLocationsCollectionsDataStoresBranchesDocumentsRequest>,
-  output: __S(133, __c16, 5) as any as S.Schema<GoogleProtobufEmpty>,
+  output: __S(2720, __c85, 0) as any as S.Schema<GoogleProtobufEmpty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -9014,11 +9054,11 @@ export const deleteProjectsLocationsCollectionsDataStoresControls: API.Operation
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    360,
-    __c45,
+    9888,
+    __c309,
     0,
   ) as any as S.Schema<DeleteProjectsLocationsCollectionsDataStoresControlsRequest>,
-  output: __S(133, __c16, 5) as any as S.Schema<GoogleProtobufEmpty>,
+  output: __S(2720, __c85, 0) as any as S.Schema<GoogleProtobufEmpty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -9038,11 +9078,11 @@ export const deleteProjectsLocationsCollectionsDataStoresConversations: API.Oper
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    361,
-    __c45,
-    1,
+    9920,
+    __c310,
+    0,
   ) as any as S.Schema<DeleteProjectsLocationsCollectionsDataStoresConversationsRequest>,
-  output: __S(133, __c16, 5) as any as S.Schema<GoogleProtobufEmpty>,
+  output: __S(2720, __c85, 0) as any as S.Schema<GoogleProtobufEmpty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -9062,11 +9102,11 @@ export const deleteProjectsLocationsCollectionsDataStoresSchemas: API.OperationM
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    362,
-    __c45,
-    2,
+    9952,
+    __c311,
+    0,
   ) as any as S.Schema<DeleteProjectsLocationsCollectionsDataStoresSchemasRequest>,
-  output: __S(117, __c14, 5) as any as S.Schema<GoogleLongrunningOperation>,
+  output: __S(64, __c2, 0) as any as S.Schema<GoogleLongrunningOperation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -9086,11 +9126,11 @@ export const deleteProjectsLocationsCollectionsDataStoresServingConfigs: API.Ope
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    363,
-    __c45,
-    3,
+    9984,
+    __c312,
+    0,
   ) as any as S.Schema<DeleteProjectsLocationsCollectionsDataStoresServingConfigsRequest>,
-  output: __S(133, __c16, 5) as any as S.Schema<GoogleProtobufEmpty>,
+  output: __S(2720, __c85, 0) as any as S.Schema<GoogleProtobufEmpty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -9110,11 +9150,11 @@ export const deleteProjectsLocationsCollectionsDataStoresSessions: API.Operation
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    364,
-    __c45,
-    4,
+    10016,
+    __c313,
+    0,
   ) as any as S.Schema<DeleteProjectsLocationsCollectionsDataStoresSessionsRequest>,
-  output: __S(133, __c16, 5) as any as S.Schema<GoogleProtobufEmpty>,
+  output: __S(2720, __c85, 0) as any as S.Schema<GoogleProtobufEmpty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -9134,11 +9174,11 @@ export const deleteProjectsLocationsCollectionsDataStoresSiteSearchEngineSitemap
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    365,
-    __c45,
-    5,
+    10048,
+    __c314,
+    0,
   ) as any as S.Schema<DeleteProjectsLocationsCollectionsDataStoresSiteSearchEngineSitemapsRequest>,
-  output: __S(117, __c14, 5) as any as S.Schema<GoogleLongrunningOperation>,
+  output: __S(64, __c2, 0) as any as S.Schema<GoogleLongrunningOperation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -9158,11 +9198,11 @@ export const deleteProjectsLocationsCollectionsDataStoresSiteSearchEngineTargetS
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    366,
-    __c45,
-    6,
+    10592,
+    __c331,
+    0,
   ) as any as S.Schema<DeleteProjectsLocationsCollectionsDataStoresSiteSearchEngineTargetSitesRequest>,
-  output: __S(117, __c14, 5) as any as S.Schema<GoogleLongrunningOperation>,
+  output: __S(64, __c2, 0) as any as S.Schema<GoogleLongrunningOperation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -9181,8 +9221,8 @@ export const deleteProjectsLocationsCollectionsEngines: API.OperationMethod<
   DeleteProjectsLocationsCollectionsEnginesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(367, __c45, 7) as any as S.Schema<DeleteProjectsLocationsCollectionsEnginesRequest>,
-  output: __S(117, __c14, 5) as any as S.Schema<GoogleLongrunningOperation>,
+  input: __S(10624, __c332, 0) as any as S.Schema<DeleteProjectsLocationsCollectionsEnginesRequest>,
+  output: __S(64, __c2, 0) as any as S.Schema<GoogleLongrunningOperation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -9202,11 +9242,11 @@ export const deleteProjectsLocationsCollectionsEnginesAssistants: API.OperationM
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    368,
-    __c46,
+    10656,
+    __c333,
     0,
   ) as any as S.Schema<DeleteProjectsLocationsCollectionsEnginesAssistantsRequest>,
-  output: __S(133, __c16, 5) as any as S.Schema<GoogleProtobufEmpty>,
+  output: __S(2720, __c85, 0) as any as S.Schema<GoogleProtobufEmpty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -9226,11 +9266,11 @@ export const deleteProjectsLocationsCollectionsEnginesAssistantsAgentsA2aV1Tasks
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    369,
-    __c46,
-    1,
+    10688,
+    __c334,
+    0,
   ) as any as S.Schema<DeleteProjectsLocationsCollectionsEnginesAssistantsAgentsA2aV1TasksPushNotificationConfigsRequest>,
-  output: __S(133, __c16, 5) as any as S.Schema<GoogleProtobufEmpty>,
+  output: __S(2720, __c85, 0) as any as S.Schema<GoogleProtobufEmpty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -9250,11 +9290,11 @@ export const deleteProjectsLocationsCollectionsEnginesControls: API.OperationMet
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    370,
-    __c46,
-    2,
+    10720,
+    __c335,
+    0,
   ) as any as S.Schema<DeleteProjectsLocationsCollectionsEnginesControlsRequest>,
-  output: __S(133, __c16, 5) as any as S.Schema<GoogleProtobufEmpty>,
+  output: __S(2720, __c85, 0) as any as S.Schema<GoogleProtobufEmpty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -9274,11 +9314,11 @@ export const deleteProjectsLocationsCollectionsEnginesConversations: API.Operati
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    371,
-    __c46,
-    3,
+    10752,
+    __c336,
+    0,
   ) as any as S.Schema<DeleteProjectsLocationsCollectionsEnginesConversationsRequest>,
-  output: __S(133, __c16, 5) as any as S.Schema<GoogleProtobufEmpty>,
+  output: __S(2720, __c85, 0) as any as S.Schema<GoogleProtobufEmpty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -9298,11 +9338,11 @@ export const deleteProjectsLocationsCollectionsEnginesServingConfigs: API.Operat
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    372,
-    __c46,
-    4,
+    10784,
+    __c337,
+    0,
   ) as any as S.Schema<DeleteProjectsLocationsCollectionsEnginesServingConfigsRequest>,
-  output: __S(133, __c16, 5) as any as S.Schema<GoogleProtobufEmpty>,
+  output: __S(2720, __c85, 0) as any as S.Schema<GoogleProtobufEmpty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -9322,11 +9362,11 @@ export const deleteProjectsLocationsCollectionsEnginesSessions: API.OperationMet
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    373,
-    __c46,
-    5,
+    10816,
+    __c338,
+    0,
   ) as any as S.Schema<DeleteProjectsLocationsCollectionsEnginesSessionsRequest>,
-  output: __S(133, __c16, 5) as any as S.Schema<GoogleProtobufEmpty>,
+  output: __S(2720, __c85, 0) as any as S.Schema<GoogleProtobufEmpty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -9345,8 +9385,8 @@ export const deleteProjectsLocationsDataStores: API.OperationMethod<
   DeleteProjectsLocationsDataStoresError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(374, __c46, 6) as any as S.Schema<DeleteProjectsLocationsDataStoresRequest>,
-  output: __S(117, __c14, 5) as any as S.Schema<GoogleLongrunningOperation>,
+  input: __S(10848, __c339, 0) as any as S.Schema<DeleteProjectsLocationsDataStoresRequest>,
+  output: __S(64, __c2, 0) as any as S.Schema<GoogleLongrunningOperation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -9366,11 +9406,11 @@ export const deleteProjectsLocationsDataStoresBranchesDocuments: API.OperationMe
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    375,
-    __c46,
-    7,
+    10880,
+    __c340,
+    0,
   ) as any as S.Schema<DeleteProjectsLocationsDataStoresBranchesDocumentsRequest>,
-  output: __S(133, __c16, 5) as any as S.Schema<GoogleProtobufEmpty>,
+  output: __S(2720, __c85, 0) as any as S.Schema<GoogleProtobufEmpty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -9389,8 +9429,8 @@ export const deleteProjectsLocationsDataStoresControls: API.OperationMethod<
   DeleteProjectsLocationsDataStoresControlsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(376, __c47, 0) as any as S.Schema<DeleteProjectsLocationsDataStoresControlsRequest>,
-  output: __S(133, __c16, 5) as any as S.Schema<GoogleProtobufEmpty>,
+  input: __S(10944, __c342, 0) as any as S.Schema<DeleteProjectsLocationsDataStoresControlsRequest>,
+  output: __S(2720, __c85, 0) as any as S.Schema<GoogleProtobufEmpty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -9410,11 +9450,11 @@ export const deleteProjectsLocationsDataStoresConversations: API.OperationMethod
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    377,
-    __c47,
-    1,
+    10976,
+    __c343,
+    0,
   ) as any as S.Schema<DeleteProjectsLocationsDataStoresConversationsRequest>,
-  output: __S(133, __c16, 5) as any as S.Schema<GoogleProtobufEmpty>,
+  output: __S(2720, __c85, 0) as any as S.Schema<GoogleProtobufEmpty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -9433,8 +9473,8 @@ export const deleteProjectsLocationsDataStoresSchemas: API.OperationMethod<
   DeleteProjectsLocationsDataStoresSchemasError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(378, __c47, 2) as any as S.Schema<DeleteProjectsLocationsDataStoresSchemasRequest>,
-  output: __S(117, __c14, 5) as any as S.Schema<GoogleLongrunningOperation>,
+  input: __S(11008, __c344, 0) as any as S.Schema<DeleteProjectsLocationsDataStoresSchemasRequest>,
+  output: __S(64, __c2, 0) as any as S.Schema<GoogleLongrunningOperation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -9454,11 +9494,11 @@ export const deleteProjectsLocationsDataStoresServingConfigs: API.OperationMetho
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    379,
-    __c47,
-    3,
+    11040,
+    __c345,
+    0,
   ) as any as S.Schema<DeleteProjectsLocationsDataStoresServingConfigsRequest>,
-  output: __S(133, __c16, 5) as any as S.Schema<GoogleProtobufEmpty>,
+  output: __S(2720, __c85, 0) as any as S.Schema<GoogleProtobufEmpty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -9477,8 +9517,8 @@ export const deleteProjectsLocationsDataStoresSessions: API.OperationMethod<
   DeleteProjectsLocationsDataStoresSessionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(380, __c47, 4) as any as S.Schema<DeleteProjectsLocationsDataStoresSessionsRequest>,
-  output: __S(133, __c16, 5) as any as S.Schema<GoogleProtobufEmpty>,
+  input: __S(11072, __c346, 0) as any as S.Schema<DeleteProjectsLocationsDataStoresSessionsRequest>,
+  output: __S(2720, __c85, 0) as any as S.Schema<GoogleProtobufEmpty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -9498,11 +9538,11 @@ export const deleteProjectsLocationsDataStoresSiteSearchEngineSitemaps: API.Oper
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    381,
-    __c47,
-    5,
+    11104,
+    __c347,
+    0,
   ) as any as S.Schema<DeleteProjectsLocationsDataStoresSiteSearchEngineSitemapsRequest>,
-  output: __S(117, __c14, 5) as any as S.Schema<GoogleLongrunningOperation>,
+  output: __S(64, __c2, 0) as any as S.Schema<GoogleLongrunningOperation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -9522,11 +9562,11 @@ export const deleteProjectsLocationsDataStoresSiteSearchEngineTargetSites: API.O
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    382,
-    __c47,
-    6,
+    11136,
+    __c348,
+    0,
   ) as any as S.Schema<DeleteProjectsLocationsDataStoresSiteSearchEngineTargetSitesRequest>,
-  output: __S(117, __c14, 5) as any as S.Schema<GoogleLongrunningOperation>,
+  output: __S(64, __c2, 0) as any as S.Schema<GoogleLongrunningOperation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -9545,8 +9585,12 @@ export const deleteProjectsLocationsIdentityMappingStores: API.OperationMethod<
   DeleteProjectsLocationsIdentityMappingStoresError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(383, __c47, 7) as any as S.Schema<DeleteProjectsLocationsIdentityMappingStoresRequest>,
-  output: __S(117, __c14, 5) as any as S.Schema<GoogleLongrunningOperation>,
+  input: __S(
+    11168,
+    __c349,
+    0,
+  ) as any as S.Schema<DeleteProjectsLocationsIdentityMappingStoresRequest>,
+  output: __S(64, __c2, 0) as any as S.Schema<GoogleLongrunningOperation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -9566,11 +9610,11 @@ export const disableAdvancedSiteSearchProjectsLocationsCollectionsDataStoresSite
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    384,
-    __c48,
+    11200,
+    __c350,
     0,
   ) as any as S.Schema<DisableAdvancedSiteSearchProjectsLocationsCollectionsDataStoresSiteSearchEngineRequest>,
-  output: __S(117, __c14, 5) as any as S.Schema<GoogleLongrunningOperation>,
+  output: __S(64, __c2, 0) as any as S.Schema<GoogleLongrunningOperation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -9590,11 +9634,11 @@ export const disableAdvancedSiteSearchProjectsLocationsDataStoresSiteSearchEngin
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    385,
-    __c48,
-    1,
+    11232,
+    __c351,
+    0,
   ) as any as S.Schema<DisableAdvancedSiteSearchProjectsLocationsDataStoresSiteSearchEngineRequest>,
-  output: __S(117, __c14, 5) as any as S.Schema<GoogleLongrunningOperation>,
+  output: __S(64, __c2, 0) as any as S.Schema<GoogleLongrunningOperation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -9614,14 +9658,14 @@ export const distributeLicenseConfigBillingAccountsBillingAccountLicenseConfigs:
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    387,
-    __c48,
-    3,
+    11297,
+    __c353,
+    1,
   ) as any as S.Schema<DistributeLicenseConfigBillingAccountsBillingAccountLicenseConfigsRequest>,
   output: __S(
-    388,
-    __c48,
-    4,
+    11328,
+    __c354,
+    0,
   ) as any as S.Schema<GoogleCloudDiscoveryengineV1DistributeLicenseConfigResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
@@ -9642,11 +9686,11 @@ export const enableAdvancedSiteSearchProjectsLocationsCollectionsDataStoresSiteS
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    389,
-    __c48,
-    5,
+    11360,
+    __c355,
+    0,
   ) as any as S.Schema<EnableAdvancedSiteSearchProjectsLocationsCollectionsDataStoresSiteSearchEngineRequest>,
-  output: __S(117, __c14, 5) as any as S.Schema<GoogleLongrunningOperation>,
+  output: __S(64, __c2, 0) as any as S.Schema<GoogleLongrunningOperation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -9666,11 +9710,11 @@ export const enableAdvancedSiteSearchProjectsLocationsDataStoresSiteSearchEngine
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    390,
-    __c48,
-    6,
+    11392,
+    __c356,
+    0,
   ) as any as S.Schema<EnableAdvancedSiteSearchProjectsLocationsDataStoresSiteSearchEngineRequest>,
-  output: __S(117, __c14, 5) as any as S.Schema<GoogleLongrunningOperation>,
+  output: __S(64, __c2, 0) as any as S.Schema<GoogleLongrunningOperation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -9689,13 +9733,13 @@ export const fetchDomainVerificationStatusProjectsLocationsCollectionsDataStores
   GoogleCloudDiscoveryengineV1FetchDomainVerificationStatusResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(
-    391,
-    __c48,
-    7,
+    11424,
+    __c357,
+    0,
   ) as any as S.Schema<FetchDomainVerificationStatusProjectsLocationsCollectionsDataStoresSiteSearchEngineRequest>,
   output: __S(
-    393,
-    __c49,
+    11425,
+    __c357,
     1,
   ) as any as S.Schema<GoogleCloudDiscoveryengineV1FetchDomainVerificationStatusResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
@@ -9716,11 +9760,15 @@ export const fetchProjectsLocationsCollectionsDataStoresSiteSearchEngineSitemaps
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    394,
-    __c49,
-    2,
+    11488,
+    __c359,
+    0,
   ) as any as S.Schema<FetchProjectsLocationsCollectionsDataStoresSiteSearchEngineSitemapsRequest>,
-  output: __S(397, __c49, 5) as any as S.Schema<GoogleCloudDiscoveryengineV1FetchSitemapsResponse>,
+  output: __S(
+    11522,
+    __c360,
+    2,
+  ) as any as S.Schema<GoogleCloudDiscoveryengineV1FetchSitemapsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -9738,11 +9786,15 @@ export const fetchProjectsLocationsDataStoresSiteSearchEngineSitemaps: API.Opera
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    398,
-    __c49,
-    6,
+    11552,
+    __c361,
+    0,
   ) as any as S.Schema<FetchProjectsLocationsDataStoresSiteSearchEngineSitemapsRequest>,
-  output: __S(397, __c49, 5) as any as S.Schema<GoogleCloudDiscoveryengineV1FetchSitemapsResponse>,
+  output: __S(
+    11522,
+    __c360,
+    2,
+  ) as any as S.Schema<GoogleCloudDiscoveryengineV1FetchSitemapsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -9756,8 +9808,8 @@ export const getAclConfigProjectsLocations: API.OperationMethod<
   GetAclConfigProjectsLocationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(399, __c49, 7) as any as S.Schema<GetAclConfigProjectsLocationsRequest>,
-  output: __S(402, __c50, 2) as any as S.Schema<GoogleCloudDiscoveryengineV1AclConfig>,
+  input: __S(11584, __c362, 0) as any as S.Schema<GetAclConfigProjectsLocationsRequest>,
+  output: __S(11618, __c363, 2) as any as S.Schema<GoogleCloudDiscoveryengineV1AclConfig>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -9775,11 +9827,11 @@ export const getCardProjectsLocationsCollectionsEnginesAssistantsAgentsA2aV1: AP
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    403,
-    __c50,
-    3,
+    11648,
+    __c364,
+    0,
   ) as any as S.Schema<GetCardProjectsLocationsCollectionsEnginesAssistantsAgentsA2aV1Request>,
-  output: __S(430, __c53, 6) as any as S.Schema<A2aV1AgentCard>,
+  output: __S(11675, __c364, 27) as any as S.Schema<A2aV1AgentCard>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -9793,8 +9845,8 @@ export const getCmekConfigProjectsLocations: API.OperationMethod<
   GetCmekConfigProjectsLocationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(431, __c53, 7) as any as S.Schema<GetCmekConfigProjectsLocationsRequest>,
-  output: __S(266, __c33, 2) as any as S.Schema<GoogleCloudDiscoveryengineV1CmekConfig>,
+  input: __S(11680, __c365, 0) as any as S.Schema<GetCmekConfigProjectsLocationsRequest>,
+  output: __S(8450, __c264, 2) as any as S.Schema<GoogleCloudDiscoveryengineV1CmekConfig>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -9808,8 +9860,12 @@ export const getDataConnectorProjectsLocationsCollections: API.OperationMethod<
   GetDataConnectorProjectsLocationsCollectionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(432, __c54, 0) as any as S.Schema<GetDataConnectorProjectsLocationsCollectionsRequest>,
-  output: __S(460, __c57, 4) as any as S.Schema<GoogleCloudDiscoveryengineV1DataConnector>,
+  input: __S(
+    11712,
+    __c366,
+    0,
+  ) as any as S.Schema<GetDataConnectorProjectsLocationsCollectionsRequest>,
+  output: __S(11802, __c368, 26) as any as S.Schema<GoogleCloudDiscoveryengineV1DataConnector>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -9823,8 +9879,8 @@ export const getIamPolicyProjectsLocationsCollections: API.OperationMethod<
   GetIamPolicyProjectsLocationsCollectionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(461, __c57, 5) as any as S.Schema<GetIamPolicyProjectsLocationsCollectionsRequest>,
-  output: __S(465, __c58, 1) as any as S.Schema<GoogleIamV1Policy>,
+  input: __S(128, __c4, 0) as any as S.Schema<GetIamPolicyProjectsLocationsCollectionsRequest>,
+  output: __S(163, __c5, 3) as any as S.Schema<GoogleIamV1Policy>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -9842,11 +9898,11 @@ export const getIamPolicyProjectsLocationsCollectionsDataStores: API.OperationMe
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    466,
-    __c58,
-    2,
+    192,
+    __c6,
+    0,
   ) as any as S.Schema<GetIamPolicyProjectsLocationsCollectionsDataStoresRequest>,
-  output: __S(465, __c58, 1) as any as S.Schema<GoogleIamV1Policy>,
+  output: __S(163, __c5, 3) as any as S.Schema<GoogleIamV1Policy>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -9864,11 +9920,11 @@ export const getIamPolicyProjectsLocationsCollectionsEngines: API.OperationMetho
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    467,
-    __c58,
-    3,
+    224,
+    __c7,
+    0,
   ) as any as S.Schema<GetIamPolicyProjectsLocationsCollectionsEnginesRequest>,
-  output: __S(465, __c58, 1) as any as S.Schema<GoogleIamV1Policy>,
+  output: __S(163, __c5, 3) as any as S.Schema<GoogleIamV1Policy>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -9882,8 +9938,8 @@ export const getIamPolicyProjectsLocationsDataStores: API.OperationMethod<
   GetIamPolicyProjectsLocationsDataStoresError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(468, __c58, 4) as any as S.Schema<GetIamPolicyProjectsLocationsDataStoresRequest>,
-  output: __S(465, __c58, 1) as any as S.Schema<GoogleIamV1Policy>,
+  input: __S(256, __c8, 0) as any as S.Schema<GetIamPolicyProjectsLocationsDataStoresRequest>,
+  output: __S(163, __c5, 3) as any as S.Schema<GoogleIamV1Policy>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -9897,8 +9953,8 @@ export const getProjectsLocationsCmekConfigs: API.OperationMethod<
   GetProjectsLocationsCmekConfigsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(469, __c58, 5) as any as S.Schema<GetProjectsLocationsCmekConfigsRequest>,
-  output: __S(266, __c33, 2) as any as S.Schema<GoogleCloudDiscoveryengineV1CmekConfig>,
+  input: __S(288, __c9, 0) as any as S.Schema<GetProjectsLocationsCmekConfigsRequest>,
+  output: __S(8450, __c264, 2) as any as S.Schema<GoogleCloudDiscoveryengineV1CmekConfig>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -9916,11 +9972,11 @@ export const getProjectsLocationsCollectionsDataConnectorOperations: API.Operati
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    470,
-    __c58,
-    6,
+    320,
+    __c10,
+    0,
   ) as any as S.Schema<GetProjectsLocationsCollectionsDataConnectorOperationsRequest>,
-  output: __S(117, __c14, 5) as any as S.Schema<GoogleLongrunningOperation>,
+  output: __S(64, __c2, 0) as any as S.Schema<GoogleLongrunningOperation>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -9934,8 +9990,8 @@ export const getProjectsLocationsCollectionsDataStores: API.OperationMethod<
   GetProjectsLocationsCollectionsDataStoresError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(471, __c58, 7) as any as S.Schema<GetProjectsLocationsCollectionsDataStoresRequest>,
-  output: __S(267, __c33, 3) as any as S.Schema<GoogleCloudDiscoveryengineV1DataStore>,
+  input: __S(352, __c11, 0) as any as S.Schema<GetProjectsLocationsCollectionsDataStoresRequest>,
+  output: __S(8530, __c266, 18) as any as S.Schema<GoogleCloudDiscoveryengineV1DataStore>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -9953,11 +10009,11 @@ export const getProjectsLocationsCollectionsDataStoresBranchesDocuments: API.Ope
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    472,
-    __c59,
+    384,
+    __c12,
     0,
   ) as any as S.Schema<GetProjectsLocationsCollectionsDataStoresBranchesDocumentsRequest>,
-  output: __S(188, __c23, 4) as any as S.Schema<GoogleCloudDiscoveryengineV1Document>,
+  output: __S(7047, __c220, 7) as any as S.Schema<GoogleCloudDiscoveryengineV1Document>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -9975,11 +10031,11 @@ export const getProjectsLocationsCollectionsDataStoresBranchesOperations: API.Op
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    473,
-    __c59,
-    1,
+    416,
+    __c13,
+    0,
   ) as any as S.Schema<GetProjectsLocationsCollectionsDataStoresBranchesOperationsRequest>,
-  output: __S(117, __c14, 5) as any as S.Schema<GoogleLongrunningOperation>,
+  output: __S(64, __c2, 0) as any as S.Schema<GoogleLongrunningOperation>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -9997,11 +10053,11 @@ export const getProjectsLocationsCollectionsDataStoresControls: API.OperationMet
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    474,
-    __c59,
-    2,
+    448,
+    __c14,
+    0,
   ) as any as S.Schema<GetProjectsLocationsCollectionsDataStoresControlsRequest>,
-  output: __S(285, __c35, 5) as any as S.Schema<GoogleCloudDiscoveryengineV1Control>,
+  output: __S(8654, __c270, 14) as any as S.Schema<GoogleCloudDiscoveryengineV1Control>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -10019,11 +10075,11 @@ export const getProjectsLocationsCollectionsDataStoresConversations: API.Operati
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    475,
-    __c59,
-    3,
+    512,
+    __c16,
+    0,
   ) as any as S.Schema<GetProjectsLocationsCollectionsDataStoresConversationsRequest>,
-  output: __S(216, __c27, 0) as any as S.Schema<GoogleCloudDiscoveryengineV1Conversation>,
+  output: __S(8197, __c256, 5) as any as S.Schema<GoogleCloudDiscoveryengineV1Conversation>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -10041,11 +10097,11 @@ export const getProjectsLocationsCollectionsDataStoresModelsOperations: API.Oper
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    476,
-    __c59,
-    4,
+    544,
+    __c17,
+    0,
   ) as any as S.Schema<GetProjectsLocationsCollectionsDataStoresModelsOperationsRequest>,
-  output: __S(117, __c14, 5) as any as S.Schema<GoogleLongrunningOperation>,
+  output: __S(64, __c2, 0) as any as S.Schema<GoogleLongrunningOperation>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -10063,11 +10119,11 @@ export const getProjectsLocationsCollectionsDataStoresOperations: API.OperationM
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    477,
-    __c59,
-    5,
+    576,
+    __c18,
+    0,
   ) as any as S.Schema<GetProjectsLocationsCollectionsDataStoresOperationsRequest>,
-  output: __S(117, __c14, 5) as any as S.Schema<GoogleLongrunningOperation>,
+  output: __S(64, __c2, 0) as any as S.Schema<GoogleLongrunningOperation>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -10085,11 +10141,11 @@ export const getProjectsLocationsCollectionsDataStoresSchemas: API.OperationMeth
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    478,
-    __c59,
-    6,
+    608,
+    __c19,
+    0,
   ) as any as S.Schema<GetProjectsLocationsCollectionsDataStoresSchemasRequest>,
-  output: __S(249, __c31, 1) as any as S.Schema<GoogleCloudDiscoveryengineV1Schema>,
+  output: __S(8416, __c263, 0) as any as S.Schema<GoogleCloudDiscoveryengineV1Schema>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -10107,11 +10163,11 @@ export const getProjectsLocationsCollectionsDataStoresSchemasOperations: API.Ope
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    479,
-    __c59,
-    7,
+    640,
+    __c20,
+    0,
   ) as any as S.Schema<GetProjectsLocationsCollectionsDataStoresSchemasOperationsRequest>,
-  output: __S(117, __c14, 5) as any as S.Schema<GoogleLongrunningOperation>,
+  output: __S(64, __c2, 0) as any as S.Schema<GoogleLongrunningOperation>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -10129,11 +10185,11 @@ export const getProjectsLocationsCollectionsDataStoresServingConfigs: API.Operat
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    480,
-    __c60,
+    672,
+    __c21,
     0,
   ) as any as S.Schema<GetProjectsLocationsCollectionsDataStoresServingConfigsRequest>,
-  output: __S(297, __c37, 1) as any as S.Schema<GoogleCloudDiscoveryengineV1ServingConfig>,
+  output: __S(8836, __c276, 4) as any as S.Schema<GoogleCloudDiscoveryengineV1ServingConfig>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -10151,11 +10207,11 @@ export const getProjectsLocationsCollectionsDataStoresSessions: API.OperationMet
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    481,
-    __c60,
-    1,
+    704,
+    __c22,
+    0,
   ) as any as S.Schema<GetProjectsLocationsCollectionsDataStoresSessionsRequest>,
-  output: __S(105, __c13, 1) as any as S.Schema<GoogleCloudDiscoveryengineV1Session>,
+  output: __S(10498, __c328, 2) as any as S.Schema<GoogleCloudDiscoveryengineV1Session>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -10173,11 +10229,11 @@ export const getProjectsLocationsCollectionsDataStoresSessionsAnswers: API.Opera
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    482,
-    __c60,
-    2,
+    736,
+    __c23,
+    0,
   ) as any as S.Schema<GetProjectsLocationsCollectionsDataStoresSessionsAnswersRequest>,
-  output: __S(102, __c12, 6) as any as S.Schema<GoogleCloudDiscoveryengineV1Answer>,
+  output: __S(10463, __c326, 31) as any as S.Schema<GoogleCloudDiscoveryengineV1Answer>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -10195,11 +10251,11 @@ export const getProjectsLocationsCollectionsDataStoresSiteSearchEngineOperations
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    483,
-    __c60,
-    3,
+    768,
+    __c24,
+    0,
   ) as any as S.Schema<GetProjectsLocationsCollectionsDataStoresSiteSearchEngineOperationsRequest>,
-  output: __S(117, __c14, 5) as any as S.Schema<GoogleLongrunningOperation>,
+  output: __S(64, __c2, 0) as any as S.Schema<GoogleLongrunningOperation>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -10217,11 +10273,11 @@ export const getProjectsLocationsCollectionsDataStoresSiteSearchEngineTargetSite
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    484,
-    __c60,
-    4,
+    800,
+    __c25,
+    0,
   ) as any as S.Schema<GetProjectsLocationsCollectionsDataStoresSiteSearchEngineTargetSitesRequest>,
-  output: __S(112, __c14, 0) as any as S.Schema<GoogleCloudDiscoveryengineV1TargetSite>,
+  output: __S(99, __c3, 3) as any as S.Schema<GoogleCloudDiscoveryengineV1TargetSite>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -10239,11 +10295,11 @@ export const getProjectsLocationsCollectionsDataStoresSiteSearchEngineTargetSite
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    485,
-    __c60,
-    5,
+    896,
+    __c28,
+    0,
   ) as any as S.Schema<GetProjectsLocationsCollectionsDataStoresSiteSearchEngineTargetSitesOperationsRequest>,
-  output: __S(117, __c14, 5) as any as S.Schema<GoogleLongrunningOperation>,
+  output: __S(64, __c2, 0) as any as S.Schema<GoogleLongrunningOperation>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -10261,11 +10317,11 @@ export const getProjectsLocationsCollectionsDataStoresWidgetConfigs: API.Operati
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    486,
-    __c60,
-    6,
+    928,
+    __c29,
+    0,
   ) as any as S.Schema<GetProjectsLocationsCollectionsDataStoresWidgetConfigsRequest>,
-  output: __S(518, __c64, 6) as any as S.Schema<GoogleCloudDiscoveryengineV1WidgetConfig>,
+  output: __S(991, __c30, 31) as any as S.Schema<GoogleCloudDiscoveryengineV1WidgetConfig>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -10279,8 +10335,8 @@ export const getProjectsLocationsCollectionsEngines: API.OperationMethod<
   GetProjectsLocationsCollectionsEnginesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(519, __c64, 7) as any as S.Schema<GetProjectsLocationsCollectionsEnginesRequest>,
-  output: __S(321, __c40, 1) as any as S.Schema<GoogleCloudDiscoveryengineV1Engine>,
+  input: __S(992, __c31, 0) as any as S.Schema<GetProjectsLocationsCollectionsEnginesRequest>,
+  output: __S(9042, __c282, 18) as any as S.Schema<GoogleCloudDiscoveryengineV1Engine>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -10298,11 +10354,11 @@ export const getProjectsLocationsCollectionsEnginesAssistants: API.OperationMeth
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    520,
-    __c65,
+    1024,
+    __c32,
     0,
   ) as any as S.Schema<GetProjectsLocationsCollectionsEnginesAssistantsRequest>,
-  output: __S(333, __c41, 5) as any as S.Schema<GoogleCloudDiscoveryengineV1Assistant>,
+  output: __S(9098, __c284, 10) as any as S.Schema<GoogleCloudDiscoveryengineV1Assistant>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -10320,11 +10376,11 @@ export const getProjectsLocationsCollectionsEnginesAssistantsAgentsA2aV1Tasks: A
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    521,
-    __c65,
-    1,
+    1056,
+    __c33,
+    0,
   ) as any as S.Schema<GetProjectsLocationsCollectionsEnginesAssistantsAgentsA2aV1TasksRequest>,
-  output: __S(144, __c18, 0) as any as S.Schema<A2aV1Task>,
+  output: __S(3241, __c101, 9) as any as S.Schema<A2aV1Task>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -10342,11 +10398,11 @@ export const getProjectsLocationsCollectionsEnginesAssistantsAgentsA2aV1TasksPus
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    522,
-    __c65,
-    2,
+    1088,
+    __c34,
+    0,
   ) as any as S.Schema<GetProjectsLocationsCollectionsEnginesAssistantsAgentsA2aV1TasksPushNotificationConfigsRequest>,
-  output: __S(337, __c42, 1) as any as S.Schema<A2aV1TaskPushNotificationConfig>,
+  output: __S(9152, __c286, 0) as any as S.Schema<A2aV1TaskPushNotificationConfig>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -10364,11 +10420,11 @@ export const getProjectsLocationsCollectionsEnginesAssistantsAgentsOperations: A
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    523,
-    __c65,
-    3,
+    1120,
+    __c35,
+    0,
   ) as any as S.Schema<GetProjectsLocationsCollectionsEnginesAssistantsAgentsOperationsRequest>,
-  output: __S(117, __c14, 5) as any as S.Schema<GoogleLongrunningOperation>,
+  output: __S(64, __c2, 0) as any as S.Schema<GoogleLongrunningOperation>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -10383,11 +10439,11 @@ export const getProjectsLocationsCollectionsEnginesControls: API.OperationMethod
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    524,
-    __c65,
-    4,
+    1152,
+    __c36,
+    0,
   ) as any as S.Schema<GetProjectsLocationsCollectionsEnginesControlsRequest>,
-  output: __S(285, __c35, 5) as any as S.Schema<GoogleCloudDiscoveryengineV1Control>,
+  output: __S(8654, __c270, 14) as any as S.Schema<GoogleCloudDiscoveryengineV1Control>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -10405,11 +10461,11 @@ export const getProjectsLocationsCollectionsEnginesConversations: API.OperationM
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    525,
-    __c65,
-    5,
+    1184,
+    __c37,
+    0,
   ) as any as S.Schema<GetProjectsLocationsCollectionsEnginesConversationsRequest>,
-  output: __S(216, __c27, 0) as any as S.Schema<GoogleCloudDiscoveryengineV1Conversation>,
+  output: __S(8197, __c256, 5) as any as S.Schema<GoogleCloudDiscoveryengineV1Conversation>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -10427,11 +10483,11 @@ export const getProjectsLocationsCollectionsEnginesOperations: API.OperationMeth
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    526,
-    __c65,
-    6,
+    1216,
+    __c38,
+    0,
   ) as any as S.Schema<GetProjectsLocationsCollectionsEnginesOperationsRequest>,
-  output: __S(117, __c14, 5) as any as S.Schema<GoogleLongrunningOperation>,
+  output: __S(64, __c2, 0) as any as S.Schema<GoogleLongrunningOperation>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -10449,11 +10505,11 @@ export const getProjectsLocationsCollectionsEnginesServingConfigs: API.Operation
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    527,
-    __c65,
-    7,
+    1280,
+    __c40,
+    0,
   ) as any as S.Schema<GetProjectsLocationsCollectionsEnginesServingConfigsRequest>,
-  output: __S(297, __c37, 1) as any as S.Schema<GoogleCloudDiscoveryengineV1ServingConfig>,
+  output: __S(8836, __c276, 4) as any as S.Schema<GoogleCloudDiscoveryengineV1ServingConfig>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -10468,11 +10524,11 @@ export const getProjectsLocationsCollectionsEnginesSessions: API.OperationMethod
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    528,
-    __c66,
+    1312,
+    __c41,
     0,
   ) as any as S.Schema<GetProjectsLocationsCollectionsEnginesSessionsRequest>,
-  output: __S(105, __c13, 1) as any as S.Schema<GoogleCloudDiscoveryengineV1Session>,
+  output: __S(10498, __c328, 2) as any as S.Schema<GoogleCloudDiscoveryengineV1Session>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -10490,11 +10546,11 @@ export const getProjectsLocationsCollectionsEnginesSessionsAnswers: API.Operatio
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    529,
-    __c66,
-    1,
+    1344,
+    __c42,
+    0,
   ) as any as S.Schema<GetProjectsLocationsCollectionsEnginesSessionsAnswersRequest>,
-  output: __S(102, __c12, 6) as any as S.Schema<GoogleCloudDiscoveryengineV1Answer>,
+  output: __S(10463, __c326, 31) as any as S.Schema<GoogleCloudDiscoveryengineV1Answer>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -10512,11 +10568,11 @@ export const getProjectsLocationsCollectionsEnginesWidgetConfigs: API.OperationM
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    530,
-    __c66,
-    2,
+    1376,
+    __c43,
+    0,
   ) as any as S.Schema<GetProjectsLocationsCollectionsEnginesWidgetConfigsRequest>,
-  output: __S(518, __c64, 6) as any as S.Schema<GoogleCloudDiscoveryengineV1WidgetConfig>,
+  output: __S(991, __c30, 31) as any as S.Schema<GoogleCloudDiscoveryengineV1WidgetConfig>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -10530,8 +10586,8 @@ export const getProjectsLocationsCollectionsOperations: API.OperationMethod<
   GetProjectsLocationsCollectionsOperationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(531, __c66, 3) as any as S.Schema<GetProjectsLocationsCollectionsOperationsRequest>,
-  output: __S(117, __c14, 5) as any as S.Schema<GoogleLongrunningOperation>,
+  input: __S(1408, __c44, 0) as any as S.Schema<GetProjectsLocationsCollectionsOperationsRequest>,
+  output: __S(64, __c2, 0) as any as S.Schema<GoogleLongrunningOperation>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -10545,8 +10601,8 @@ export const getProjectsLocationsDataStores: API.OperationMethod<
   GetProjectsLocationsDataStoresError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(532, __c66, 4) as any as S.Schema<GetProjectsLocationsDataStoresRequest>,
-  output: __S(267, __c33, 3) as any as S.Schema<GoogleCloudDiscoveryengineV1DataStore>,
+  input: __S(1440, __c45, 0) as any as S.Schema<GetProjectsLocationsDataStoresRequest>,
+  output: __S(8530, __c266, 18) as any as S.Schema<GoogleCloudDiscoveryengineV1DataStore>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -10564,11 +10620,11 @@ export const getProjectsLocationsDataStoresBranchesDocuments: API.OperationMetho
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    533,
-    __c66,
-    5,
+    1472,
+    __c46,
+    0,
   ) as any as S.Schema<GetProjectsLocationsDataStoresBranchesDocumentsRequest>,
-  output: __S(188, __c23, 4) as any as S.Schema<GoogleCloudDiscoveryengineV1Document>,
+  output: __S(7047, __c220, 7) as any as S.Schema<GoogleCloudDiscoveryengineV1Document>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -10586,11 +10642,11 @@ export const getProjectsLocationsDataStoresBranchesOperations: API.OperationMeth
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    534,
-    __c66,
-    6,
+    1504,
+    __c47,
+    0,
   ) as any as S.Schema<GetProjectsLocationsDataStoresBranchesOperationsRequest>,
-  output: __S(117, __c14, 5) as any as S.Schema<GoogleLongrunningOperation>,
+  output: __S(64, __c2, 0) as any as S.Schema<GoogleLongrunningOperation>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -10604,8 +10660,8 @@ export const getProjectsLocationsDataStoresControls: API.OperationMethod<
   GetProjectsLocationsDataStoresControlsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(535, __c66, 7) as any as S.Schema<GetProjectsLocationsDataStoresControlsRequest>,
-  output: __S(285, __c35, 5) as any as S.Schema<GoogleCloudDiscoveryengineV1Control>,
+  input: __S(1536, __c48, 0) as any as S.Schema<GetProjectsLocationsDataStoresControlsRequest>,
+  output: __S(8654, __c270, 14) as any as S.Schema<GoogleCloudDiscoveryengineV1Control>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -10619,8 +10675,8 @@ export const getProjectsLocationsDataStoresConversations: API.OperationMethod<
   GetProjectsLocationsDataStoresConversationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(536, __c67, 0) as any as S.Schema<GetProjectsLocationsDataStoresConversationsRequest>,
-  output: __S(216, __c27, 0) as any as S.Schema<GoogleCloudDiscoveryengineV1Conversation>,
+  input: __S(1568, __c49, 0) as any as S.Schema<GetProjectsLocationsDataStoresConversationsRequest>,
+  output: __S(8197, __c256, 5) as any as S.Schema<GoogleCloudDiscoveryengineV1Conversation>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -10635,11 +10691,11 @@ export const getProjectsLocationsDataStoresModelsOperations: API.OperationMethod
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    537,
-    __c67,
-    1,
+    1664,
+    __c52,
+    0,
   ) as any as S.Schema<GetProjectsLocationsDataStoresModelsOperationsRequest>,
-  output: __S(117, __c14, 5) as any as S.Schema<GoogleLongrunningOperation>,
+  output: __S(64, __c2, 0) as any as S.Schema<GoogleLongrunningOperation>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -10653,8 +10709,8 @@ export const getProjectsLocationsDataStoresOperations: API.OperationMethod<
   GetProjectsLocationsDataStoresOperationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(538, __c67, 2) as any as S.Schema<GetProjectsLocationsDataStoresOperationsRequest>,
-  output: __S(117, __c14, 5) as any as S.Schema<GoogleLongrunningOperation>,
+  input: __S(1696, __c53, 0) as any as S.Schema<GetProjectsLocationsDataStoresOperationsRequest>,
+  output: __S(64, __c2, 0) as any as S.Schema<GoogleLongrunningOperation>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -10668,8 +10724,8 @@ export const getProjectsLocationsDataStoresSchemas: API.OperationMethod<
   GetProjectsLocationsDataStoresSchemasError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(539, __c67, 3) as any as S.Schema<GetProjectsLocationsDataStoresSchemasRequest>,
-  output: __S(249, __c31, 1) as any as S.Schema<GoogleCloudDiscoveryengineV1Schema>,
+  input: __S(1728, __c54, 0) as any as S.Schema<GetProjectsLocationsDataStoresSchemasRequest>,
+  output: __S(8416, __c263, 0) as any as S.Schema<GoogleCloudDiscoveryengineV1Schema>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -10683,8 +10739,12 @@ export const getProjectsLocationsDataStoresServingConfigs: API.OperationMethod<
   GetProjectsLocationsDataStoresServingConfigsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(540, __c67, 4) as any as S.Schema<GetProjectsLocationsDataStoresServingConfigsRequest>,
-  output: __S(297, __c37, 1) as any as S.Schema<GoogleCloudDiscoveryengineV1ServingConfig>,
+  input: __S(
+    1760,
+    __c55,
+    0,
+  ) as any as S.Schema<GetProjectsLocationsDataStoresServingConfigsRequest>,
+  output: __S(8836, __c276, 4) as any as S.Schema<GoogleCloudDiscoveryengineV1ServingConfig>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -10698,8 +10758,8 @@ export const getProjectsLocationsDataStoresSessions: API.OperationMethod<
   GetProjectsLocationsDataStoresSessionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(541, __c67, 5) as any as S.Schema<GetProjectsLocationsDataStoresSessionsRequest>,
-  output: __S(105, __c13, 1) as any as S.Schema<GoogleCloudDiscoveryengineV1Session>,
+  input: __S(1792, __c56, 0) as any as S.Schema<GetProjectsLocationsDataStoresSessionsRequest>,
+  output: __S(10498, __c328, 2) as any as S.Schema<GoogleCloudDiscoveryengineV1Session>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -10714,11 +10774,11 @@ export const getProjectsLocationsDataStoresSessionsAnswers: API.OperationMethod<
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    542,
-    __c67,
-    6,
+    1824,
+    __c57,
+    0,
   ) as any as S.Schema<GetProjectsLocationsDataStoresSessionsAnswersRequest>,
-  output: __S(102, __c12, 6) as any as S.Schema<GoogleCloudDiscoveryengineV1Answer>,
+  output: __S(10463, __c326, 31) as any as S.Schema<GoogleCloudDiscoveryengineV1Answer>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -10736,11 +10796,11 @@ export const getProjectsLocationsDataStoresSiteSearchEngineTargetSites: API.Oper
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    543,
-    __c67,
-    7,
+    1856,
+    __c58,
+    0,
   ) as any as S.Schema<GetProjectsLocationsDataStoresSiteSearchEngineTargetSitesRequest>,
-  output: __S(112, __c14, 0) as any as S.Schema<GoogleCloudDiscoveryengineV1TargetSite>,
+  output: __S(99, __c3, 3) as any as S.Schema<GoogleCloudDiscoveryengineV1TargetSite>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -10754,8 +10814,8 @@ export const getProjectsLocationsDataStoresWidgetConfigs: API.OperationMethod<
   GetProjectsLocationsDataStoresWidgetConfigsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(544, __c68, 0) as any as S.Schema<GetProjectsLocationsDataStoresWidgetConfigsRequest>,
-  output: __S(518, __c64, 6) as any as S.Schema<GoogleCloudDiscoveryengineV1WidgetConfig>,
+  input: __S(1888, __c59, 0) as any as S.Schema<GetProjectsLocationsDataStoresWidgetConfigsRequest>,
+  output: __S(991, __c30, 31) as any as S.Schema<GoogleCloudDiscoveryengineV1WidgetConfig>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -10769,8 +10829,8 @@ export const getProjectsLocationsIdentityMappingStores: API.OperationMethod<
   GetProjectsLocationsIdentityMappingStoresError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(545, __c68, 1) as any as S.Schema<GetProjectsLocationsIdentityMappingStoresRequest>,
-  output: __S(352, __c44, 0) as any as S.Schema<GoogleCloudDiscoveryengineV1IdentityMappingStore>,
+  input: __S(1920, __c60, 0) as any as S.Schema<GetProjectsLocationsIdentityMappingStoresRequest>,
+  output: __S(9664, __c302, 0) as any as S.Schema<GoogleCloudDiscoveryengineV1IdentityMappingStore>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -10788,11 +10848,11 @@ export const getProjectsLocationsIdentityMappingStoresOperations: API.OperationM
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    546,
-    __c68,
-    2,
+    1952,
+    __c61,
+    0,
   ) as any as S.Schema<GetProjectsLocationsIdentityMappingStoresOperationsRequest>,
-  output: __S(117, __c14, 5) as any as S.Schema<GoogleLongrunningOperation>,
+  output: __S(64, __c2, 0) as any as S.Schema<GoogleLongrunningOperation>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -10806,8 +10866,8 @@ export const getProjectsLocationsLicenseConfigs: API.OperationMethod<
   GetProjectsLocationsLicenseConfigsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(547, __c68, 3) as any as S.Schema<GetProjectsLocationsLicenseConfigsRequest>,
-  output: __S(354, __c44, 2) as any as S.Schema<GoogleCloudDiscoveryengineV1LicenseConfig>,
+  input: __S(2048, __c64, 0) as any as S.Schema<GetProjectsLocationsLicenseConfigsRequest>,
+  output: __S(9728, __c304, 0) as any as S.Schema<GoogleCloudDiscoveryengineV1LicenseConfig>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -10821,8 +10881,8 @@ export const getProjectsLocationsOperations: API.OperationMethod<
   GetProjectsLocationsOperationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(548, __c68, 4) as any as S.Schema<GetProjectsLocationsOperationsRequest>,
-  output: __S(117, __c14, 5) as any as S.Schema<GoogleLongrunningOperation>,
+  input: __S(2080, __c65, 0) as any as S.Schema<GetProjectsLocationsOperationsRequest>,
+  output: __S(64, __c2, 0) as any as S.Schema<GoogleLongrunningOperation>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -10836,8 +10896,8 @@ export const getProjectsLocationsPodcastsOperations: API.OperationMethod<
   GetProjectsLocationsPodcastsOperationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(549, __c68, 5) as any as S.Schema<GetProjectsLocationsPodcastsOperationsRequest>,
-  output: __S(117, __c14, 5) as any as S.Schema<GoogleLongrunningOperation>,
+  input: __S(2112, __c66, 0) as any as S.Schema<GetProjectsLocationsPodcastsOperationsRequest>,
+  output: __S(64, __c2, 0) as any as S.Schema<GoogleLongrunningOperation>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -10851,8 +10911,8 @@ export const getProjectsLocationsUserStores: API.OperationMethod<
   GetProjectsLocationsUserStoresError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(550, __c68, 6) as any as S.Schema<GetProjectsLocationsUserStoresRequest>,
-  output: __S(551, __c68, 7) as any as S.Schema<GoogleCloudDiscoveryengineV1UserStore>,
+  input: __S(2144, __c67, 0) as any as S.Schema<GetProjectsLocationsUserStoresRequest>,
+  output: __S(2176, __c68, 0) as any as S.Schema<GoogleCloudDiscoveryengineV1UserStore>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -10866,8 +10926,8 @@ export const getProjectsOperations: API.OperationMethod<
   GetProjectsOperationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(552, __c69, 0) as any as S.Schema<GetProjectsOperationsRequest>,
-  output: __S(117, __c14, 5) as any as S.Schema<GoogleLongrunningOperation>,
+  input: __S(2208, __c69, 0) as any as S.Schema<GetProjectsOperationsRequest>,
+  output: __S(64, __c2, 0) as any as S.Schema<GoogleLongrunningOperation>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -10885,11 +10945,11 @@ export const getSiteSearchEngineProjectsLocationsCollectionsDataStores: API.Oper
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    553,
-    __c69,
-    1,
+    2240,
+    __c70,
+    0,
   ) as any as S.Schema<GetSiteSearchEngineProjectsLocationsCollectionsDataStoresRequest>,
-  output: __S(554, __c69, 2) as any as S.Schema<GoogleCloudDiscoveryengineV1SiteSearchEngine>,
+  output: __S(2272, __c71, 0) as any as S.Schema<GoogleCloudDiscoveryengineV1SiteSearchEngine>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -10904,11 +10964,11 @@ export const getSiteSearchEngineProjectsLocationsDataStores: API.OperationMethod
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    555,
-    __c69,
-    3,
+    2304,
+    __c72,
+    0,
   ) as any as S.Schema<GetSiteSearchEngineProjectsLocationsDataStoresRequest>,
-  output: __S(554, __c69, 2) as any as S.Schema<GoogleCloudDiscoveryengineV1SiteSearchEngine>,
+  output: __S(2272, __c71, 0) as any as S.Schema<GoogleCloudDiscoveryengineV1SiteSearchEngine>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -10928,11 +10988,11 @@ export const importIdentityMappingsProjectsLocationsIdentityMappingStores: API.O
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    560,
-    __c70,
-    0,
+    2337,
+    __c73,
+    1,
   ) as any as S.Schema<ImportIdentityMappingsProjectsLocationsIdentityMappingStoresRequest>,
-  output: __S(117, __c14, 5) as any as S.Schema<GoogleLongrunningOperation>,
+  output: __S(64, __c2, 0) as any as S.Schema<GoogleLongrunningOperation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -10952,11 +11012,11 @@ export const importProjectsLocationsCollectionsDataStoresBranchesDocuments: API.
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    578,
-    __c72,
-    2,
+    2432,
+    __c76,
+    0,
   ) as any as S.Schema<ImportProjectsLocationsCollectionsDataStoresBranchesDocumentsRequest>,
-  output: __S(117, __c14, 5) as any as S.Schema<GoogleLongrunningOperation>,
+  output: __S(64, __c2, 0) as any as S.Schema<GoogleLongrunningOperation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -10976,11 +11036,11 @@ export const importProjectsLocationsCollectionsDataStoresCompletionSuggestions: 
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    583,
-    __c72,
-    7,
+    2624,
+    __c82,
+    0,
   ) as any as S.Schema<ImportProjectsLocationsCollectionsDataStoresCompletionSuggestionsRequest>,
-  output: __S(117, __c14, 5) as any as S.Schema<GoogleLongrunningOperation>,
+  output: __S(64, __c2, 0) as any as S.Schema<GoogleLongrunningOperation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -11000,11 +11060,11 @@ export const importProjectsLocationsCollectionsDataStoresSuggestionDenyListEntri
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    588,
-    __c73,
-    4,
+    2752,
+    __c86,
+    0,
   ) as any as S.Schema<ImportProjectsLocationsCollectionsDataStoresSuggestionDenyListEntriesRequest>,
-  output: __S(117, __c14, 5) as any as S.Schema<GoogleLongrunningOperation>,
+  output: __S(64, __c2, 0) as any as S.Schema<GoogleLongrunningOperation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -11024,11 +11084,11 @@ export const importProjectsLocationsCollectionsDataStoresUserEvents: API.Operati
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    606,
-    __c75,
-    6,
+    2816,
+    __c88,
+    0,
   ) as any as S.Schema<ImportProjectsLocationsCollectionsDataStoresUserEventsRequest>,
-  output: __S(117, __c14, 5) as any as S.Schema<GoogleLongrunningOperation>,
+  output: __S(64, __c2, 0) as any as S.Schema<GoogleLongrunningOperation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -11048,11 +11108,11 @@ export const importProjectsLocationsDataStoresBranchesDocuments: API.OperationMe
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    607,
-    __c75,
-    7,
+    2912,
+    __c91,
+    0,
   ) as any as S.Schema<ImportProjectsLocationsDataStoresBranchesDocumentsRequest>,
-  output: __S(117, __c14, 5) as any as S.Schema<GoogleLongrunningOperation>,
+  output: __S(64, __c2, 0) as any as S.Schema<GoogleLongrunningOperation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -11072,11 +11132,11 @@ export const importProjectsLocationsDataStoresCompletionSuggestions: API.Operati
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    608,
-    __c76,
+    2944,
+    __c92,
     0,
   ) as any as S.Schema<ImportProjectsLocationsDataStoresCompletionSuggestionsRequest>,
-  output: __S(117, __c14, 5) as any as S.Schema<GoogleLongrunningOperation>,
+  output: __S(64, __c2, 0) as any as S.Schema<GoogleLongrunningOperation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -11096,11 +11156,11 @@ export const importProjectsLocationsDataStoresSuggestionDenyListEntries: API.Ope
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    609,
-    __c76,
-    1,
+    2976,
+    __c93,
+    0,
   ) as any as S.Schema<ImportProjectsLocationsDataStoresSuggestionDenyListEntriesRequest>,
-  output: __S(117, __c14, 5) as any as S.Schema<GoogleLongrunningOperation>,
+  output: __S(64, __c2, 0) as any as S.Schema<GoogleLongrunningOperation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -11119,8 +11179,8 @@ export const importProjectsLocationsDataStoresUserEvents: API.OperationMethod<
   ImportProjectsLocationsDataStoresUserEventsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(610, __c76, 2) as any as S.Schema<ImportProjectsLocationsDataStoresUserEventsRequest>,
-  output: __S(117, __c14, 5) as any as S.Schema<GoogleLongrunningOperation>,
+  input: __S(3008, __c94, 0) as any as S.Schema<ImportProjectsLocationsDataStoresUserEventsRequest>,
+  output: __S(64, __c2, 0) as any as S.Schema<GoogleLongrunningOperation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -11139,8 +11199,8 @@ export const importProjectsLocationsUserEvents: API.OperationMethod<
   ImportProjectsLocationsUserEventsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(611, __c76, 3) as any as S.Schema<ImportProjectsLocationsUserEventsRequest>,
-  output: __S(117, __c14, 5) as any as S.Schema<GoogleLongrunningOperation>,
+  input: __S(3040, __c95, 0) as any as S.Schema<ImportProjectsLocationsUserEventsRequest>,
+  output: __S(64, __c2, 0) as any as S.Schema<GoogleLongrunningOperation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -11159,14 +11219,14 @@ export const listIdentityMappingsProjectsLocationsIdentityMappingStores: API.Pag
   GoogleCloudDiscoveryengineV1ListIdentityMappingsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(
-    612,
-    __c76,
-    4,
+    3072,
+    __c96,
+    0,
   ) as any as S.Schema<ListIdentityMappingsProjectsLocationsIdentityMappingStoresRequest>,
   output: __S(
-    613,
-    __c76,
-    5,
+    3073,
+    __c96,
+    1,
   ) as any as S.Schema<GoogleCloudDiscoveryengineV1ListIdentityMappingsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
@@ -11182,11 +11242,11 @@ export const listProjectsLocationsCmekConfigs: API.OperationMethod<
   ListProjectsLocationsCmekConfigsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(614, __c76, 6) as any as S.Schema<ListProjectsLocationsCmekConfigsRequest>,
+  input: __S(3104, __c97, 0) as any as S.Schema<ListProjectsLocationsCmekConfigsRequest>,
   output: __S(
-    616,
-    __c77,
-    0,
+    3106,
+    __c97,
+    2,
   ) as any as S.Schema<GoogleCloudDiscoveryengineV1ListCmekConfigsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
@@ -11206,11 +11266,11 @@ export const listProjectsLocationsCollectionsDataConnectorOperations: API.Pagina
   GoogleLongrunningListOperationsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(
-    617,
-    __c77,
-    1,
+    3136,
+    __c98,
+    0,
   ) as any as S.Schema<ListProjectsLocationsCollectionsDataConnectorOperationsRequest>,
-  output: __S(619, __c77, 3) as any as S.Schema<GoogleLongrunningListOperationsResponse>,
+  output: __S(3169, __c99, 1) as any as S.Schema<GoogleLongrunningListOperationsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -11226,8 +11286,12 @@ export const listProjectsLocationsCollectionsDataStores: API.PaginatedOperationM
   GcpOpContext,
   GoogleCloudDiscoveryengineV1ListDataStoresResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(620, __c77, 4) as any as S.Schema<ListProjectsLocationsCollectionsDataStoresRequest>,
-  output: __S(622, __c77, 6) as any as S.Schema<GoogleCloudDiscoveryengineV1ListDataStoresResponse>,
+  input: __S(3264, __c102, 0) as any as S.Schema<ListProjectsLocationsCollectionsDataStoresRequest>,
+  output: __S(
+    3297,
+    __c103,
+    1,
+  ) as any as S.Schema<GoogleCloudDiscoveryengineV1ListDataStoresResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -11247,11 +11311,15 @@ export const listProjectsLocationsCollectionsDataStoresBranchesDocuments: API.Pa
   GoogleCloudDiscoveryengineV1ListDocumentsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(
-    623,
-    __c77,
-    7,
+    3328,
+    __c104,
+    0,
   ) as any as S.Schema<ListProjectsLocationsCollectionsDataStoresBranchesDocumentsRequest>,
-  output: __S(624, __c78, 0) as any as S.Schema<GoogleCloudDiscoveryengineV1ListDocumentsResponse>,
+  output: __S(
+    3360,
+    __c105,
+    0,
+  ) as any as S.Schema<GoogleCloudDiscoveryengineV1ListDocumentsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -11271,11 +11339,11 @@ export const listProjectsLocationsCollectionsDataStoresBranchesOperations: API.P
   GoogleLongrunningListOperationsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(
-    625,
-    __c78,
-    1,
+    3392,
+    __c106,
+    0,
   ) as any as S.Schema<ListProjectsLocationsCollectionsDataStoresBranchesOperationsRequest>,
-  output: __S(619, __c77, 3) as any as S.Schema<GoogleLongrunningListOperationsResponse>,
+  output: __S(3169, __c99, 1) as any as S.Schema<GoogleLongrunningListOperationsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -11295,11 +11363,11 @@ export const listProjectsLocationsCollectionsDataStoresControls: API.PaginatedOp
   GoogleCloudDiscoveryengineV1ListControlsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(
-    626,
-    __c78,
-    2,
+    3424,
+    __c107,
+    0,
   ) as any as S.Schema<ListProjectsLocationsCollectionsDataStoresControlsRequest>,
-  output: __S(628, __c78, 4) as any as S.Schema<GoogleCloudDiscoveryengineV1ListControlsResponse>,
+  output: __S(3457, __c108, 1) as any as S.Schema<GoogleCloudDiscoveryengineV1ListControlsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -11319,14 +11387,14 @@ export const listProjectsLocationsCollectionsDataStoresConversations: API.Pagina
   GoogleCloudDiscoveryengineV1ListConversationsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(
-    629,
-    __c78,
-    5,
+    3488,
+    __c109,
+    0,
   ) as any as S.Schema<ListProjectsLocationsCollectionsDataStoresConversationsRequest>,
   output: __S(
-    631,
-    __c78,
-    7,
+    3521,
+    __c110,
+    1,
   ) as any as S.Schema<GoogleCloudDiscoveryengineV1ListConversationsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
@@ -11346,13 +11414,13 @@ export const listProjectsLocationsCollectionsDataStoresCustomModels: API.Operati
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    632,
-    __c79,
+    3552,
+    __c111,
     0,
   ) as any as S.Schema<ListProjectsLocationsCollectionsDataStoresCustomModelsRequest>,
   output: __S(
-    636,
-    __c79,
+    3556,
+    __c111,
     4,
   ) as any as S.Schema<GoogleCloudDiscoveryengineV1ListCustomModelsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
@@ -11373,11 +11441,11 @@ export const listProjectsLocationsCollectionsDataStoresModelsOperations: API.Pag
   GoogleLongrunningListOperationsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(
-    637,
-    __c79,
-    5,
+    3584,
+    __c112,
+    0,
   ) as any as S.Schema<ListProjectsLocationsCollectionsDataStoresModelsOperationsRequest>,
-  output: __S(619, __c77, 3) as any as S.Schema<GoogleLongrunningListOperationsResponse>,
+  output: __S(3169, __c99, 1) as any as S.Schema<GoogleLongrunningListOperationsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -11397,11 +11465,11 @@ export const listProjectsLocationsCollectionsDataStoresOperations: API.Paginated
   GoogleLongrunningListOperationsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(
-    638,
-    __c79,
-    6,
+    3616,
+    __c113,
+    0,
   ) as any as S.Schema<ListProjectsLocationsCollectionsDataStoresOperationsRequest>,
-  output: __S(619, __c77, 3) as any as S.Schema<GoogleLongrunningListOperationsResponse>,
+  output: __S(3169, __c99, 1) as any as S.Schema<GoogleLongrunningListOperationsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -11421,11 +11489,11 @@ export const listProjectsLocationsCollectionsDataStoresSchemas: API.PaginatedOpe
   GoogleCloudDiscoveryengineV1ListSchemasResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(
-    639,
-    __c79,
-    7,
+    3648,
+    __c114,
+    0,
   ) as any as S.Schema<ListProjectsLocationsCollectionsDataStoresSchemasRequest>,
-  output: __S(641, __c80, 1) as any as S.Schema<GoogleCloudDiscoveryengineV1ListSchemasResponse>,
+  output: __S(3681, __c115, 1) as any as S.Schema<GoogleCloudDiscoveryengineV1ListSchemasResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -11445,11 +11513,11 @@ export const listProjectsLocationsCollectionsDataStoresSchemasOperations: API.Pa
   GoogleLongrunningListOperationsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(
-    642,
-    __c80,
-    2,
+    3712,
+    __c116,
+    0,
   ) as any as S.Schema<ListProjectsLocationsCollectionsDataStoresSchemasOperationsRequest>,
-  output: __S(619, __c77, 3) as any as S.Schema<GoogleLongrunningListOperationsResponse>,
+  output: __S(3169, __c99, 1) as any as S.Schema<GoogleLongrunningListOperationsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -11469,14 +11537,14 @@ export const listProjectsLocationsCollectionsDataStoresServingConfigs: API.Pagin
   GoogleCloudDiscoveryengineV1ListServingConfigsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(
-    643,
-    __c80,
-    3,
+    3776,
+    __c118,
+    0,
   ) as any as S.Schema<ListProjectsLocationsCollectionsDataStoresServingConfigsRequest>,
   output: __S(
-    645,
-    __c80,
-    5,
+    3809,
+    __c119,
+    1,
   ) as any as S.Schema<GoogleCloudDiscoveryengineV1ListServingConfigsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
@@ -11497,11 +11565,11 @@ export const listProjectsLocationsCollectionsDataStoresSessions: API.PaginatedOp
   GoogleCloudDiscoveryengineV1ListSessionsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(
-    646,
-    __c80,
-    6,
+    3840,
+    __c120,
+    0,
   ) as any as S.Schema<ListProjectsLocationsCollectionsDataStoresSessionsRequest>,
-  output: __S(648, __c81, 0) as any as S.Schema<GoogleCloudDiscoveryengineV1ListSessionsResponse>,
+  output: __S(3873, __c121, 1) as any as S.Schema<GoogleCloudDiscoveryengineV1ListSessionsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -11521,11 +11589,11 @@ export const listProjectsLocationsCollectionsDataStoresSiteSearchEngineOperation
   GoogleLongrunningListOperationsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(
-    649,
-    __c81,
-    1,
+    3904,
+    __c122,
+    0,
   ) as any as S.Schema<ListProjectsLocationsCollectionsDataStoresSiteSearchEngineOperationsRequest>,
-  output: __S(619, __c77, 3) as any as S.Schema<GoogleLongrunningListOperationsResponse>,
+  output: __S(3169, __c99, 1) as any as S.Schema<GoogleLongrunningListOperationsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -11545,14 +11613,14 @@ export const listProjectsLocationsCollectionsDataStoresSiteSearchEngineTargetSit
   GoogleCloudDiscoveryengineV1ListTargetSitesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(
-    650,
-    __c81,
-    2,
+    3936,
+    __c123,
+    0,
   ) as any as S.Schema<ListProjectsLocationsCollectionsDataStoresSiteSearchEngineTargetSitesRequest>,
   output: __S(
-    651,
-    __c81,
-    3,
+    3968,
+    __c124,
+    0,
   ) as any as S.Schema<GoogleCloudDiscoveryengineV1ListTargetSitesResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
@@ -11573,11 +11641,11 @@ export const listProjectsLocationsCollectionsDataStoresSiteSearchEngineTargetSit
   GoogleLongrunningListOperationsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(
-    652,
-    __c81,
-    4,
+    4000,
+    __c125,
+    0,
   ) as any as S.Schema<ListProjectsLocationsCollectionsDataStoresSiteSearchEngineTargetSitesOperationsRequest>,
-  output: __S(619, __c77, 3) as any as S.Schema<GoogleLongrunningListOperationsResponse>,
+  output: __S(3169, __c99, 1) as any as S.Schema<GoogleLongrunningListOperationsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -11593,8 +11661,8 @@ export const listProjectsLocationsCollectionsEngines: API.PaginatedOperationMeth
   GcpOpContext,
   GoogleCloudDiscoveryengineV1ListEnginesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(653, __c81, 5) as any as S.Schema<ListProjectsLocationsCollectionsEnginesRequest>,
-  output: __S(655, __c81, 7) as any as S.Schema<GoogleCloudDiscoveryengineV1ListEnginesResponse>,
+  input: __S(4032, __c126, 0) as any as S.Schema<ListProjectsLocationsCollectionsEnginesRequest>,
+  output: __S(4034, __c126, 2) as any as S.Schema<GoogleCloudDiscoveryengineV1ListEnginesResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -11614,11 +11682,15 @@ export const listProjectsLocationsCollectionsEnginesAssistants: API.PaginatedOpe
   GoogleCloudDiscoveryengineV1ListAssistantsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(
-    656,
-    __c82,
+    4064,
+    __c127,
     0,
   ) as any as S.Schema<ListProjectsLocationsCollectionsEnginesAssistantsRequest>,
-  output: __S(658, __c82, 2) as any as S.Schema<GoogleCloudDiscoveryengineV1ListAssistantsResponse>,
+  output: __S(
+    4066,
+    __c127,
+    2,
+  ) as any as S.Schema<GoogleCloudDiscoveryengineV1ListAssistantsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -11638,11 +11710,11 @@ export const listProjectsLocationsCollectionsEnginesAssistantsAgentsA2aV1TasksPu
   A2aV1ListTaskPushNotificationConfigResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(
-    659,
-    __c82,
-    3,
+    4096,
+    __c128,
+    0,
   ) as any as S.Schema<ListProjectsLocationsCollectionsEnginesAssistantsAgentsA2aV1TasksPushNotificationConfigsRequest>,
-  output: __S(661, __c82, 5) as any as S.Schema<A2aV1ListTaskPushNotificationConfigResponse>,
+  output: __S(4098, __c128, 2) as any as S.Schema<A2aV1ListTaskPushNotificationConfigResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -11662,11 +11734,11 @@ export const listProjectsLocationsCollectionsEnginesControls: API.PaginatedOpera
   GoogleCloudDiscoveryengineV1ListControlsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(
-    662,
-    __c82,
-    6,
+    4128,
+    __c129,
+    0,
   ) as any as S.Schema<ListProjectsLocationsCollectionsEnginesControlsRequest>,
-  output: __S(628, __c78, 4) as any as S.Schema<GoogleCloudDiscoveryengineV1ListControlsResponse>,
+  output: __S(3457, __c108, 1) as any as S.Schema<GoogleCloudDiscoveryengineV1ListControlsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -11686,14 +11758,14 @@ export const listProjectsLocationsCollectionsEnginesConversations: API.Paginated
   GoogleCloudDiscoveryengineV1ListConversationsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(
-    663,
-    __c82,
-    7,
+    4160,
+    __c130,
+    0,
   ) as any as S.Schema<ListProjectsLocationsCollectionsEnginesConversationsRequest>,
   output: __S(
-    631,
-    __c78,
-    7,
+    3521,
+    __c110,
+    1,
   ) as any as S.Schema<GoogleCloudDiscoveryengineV1ListConversationsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
@@ -11714,11 +11786,11 @@ export const listProjectsLocationsCollectionsEnginesOperations: API.PaginatedOpe
   GoogleLongrunningListOperationsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(
-    664,
-    __c83,
+    4224,
+    __c132,
     0,
   ) as any as S.Schema<ListProjectsLocationsCollectionsEnginesOperationsRequest>,
-  output: __S(619, __c77, 3) as any as S.Schema<GoogleLongrunningListOperationsResponse>,
+  output: __S(3169, __c99, 1) as any as S.Schema<GoogleLongrunningListOperationsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -11738,14 +11810,14 @@ export const listProjectsLocationsCollectionsEnginesServingConfigs: API.Paginate
   GoogleCloudDiscoveryengineV1ListServingConfigsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(
-    665,
-    __c83,
-    1,
+    4256,
+    __c133,
+    0,
   ) as any as S.Schema<ListProjectsLocationsCollectionsEnginesServingConfigsRequest>,
   output: __S(
-    645,
-    __c80,
-    5,
+    3809,
+    __c119,
+    1,
   ) as any as S.Schema<GoogleCloudDiscoveryengineV1ListServingConfigsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
@@ -11766,11 +11838,11 @@ export const listProjectsLocationsCollectionsEnginesSessions: API.PaginatedOpera
   GoogleCloudDiscoveryengineV1ListSessionsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(
-    666,
-    __c83,
-    2,
+    4288,
+    __c134,
+    0,
   ) as any as S.Schema<ListProjectsLocationsCollectionsEnginesSessionsRequest>,
-  output: __S(648, __c81, 0) as any as S.Schema<GoogleCloudDiscoveryengineV1ListSessionsResponse>,
+  output: __S(3873, __c121, 1) as any as S.Schema<GoogleCloudDiscoveryengineV1ListSessionsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -11786,8 +11858,8 @@ export const listProjectsLocationsCollectionsOperations: API.PaginatedOperationM
   GcpOpContext,
   GoogleLongrunningListOperationsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(667, __c83, 3) as any as S.Schema<ListProjectsLocationsCollectionsOperationsRequest>,
-  output: __S(619, __c77, 3) as any as S.Schema<GoogleLongrunningListOperationsResponse>,
+  input: __S(4320, __c135, 0) as any as S.Schema<ListProjectsLocationsCollectionsOperationsRequest>,
+  output: __S(3169, __c99, 1) as any as S.Schema<GoogleLongrunningListOperationsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -11803,8 +11875,12 @@ export const listProjectsLocationsDataStores: API.PaginatedOperationMethod<
   GcpOpContext,
   GoogleCloudDiscoveryengineV1ListDataStoresResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(668, __c83, 4) as any as S.Schema<ListProjectsLocationsDataStoresRequest>,
-  output: __S(622, __c77, 6) as any as S.Schema<GoogleCloudDiscoveryengineV1ListDataStoresResponse>,
+  input: __S(4352, __c136, 0) as any as S.Schema<ListProjectsLocationsDataStoresRequest>,
+  output: __S(
+    3297,
+    __c103,
+    1,
+  ) as any as S.Schema<GoogleCloudDiscoveryengineV1ListDataStoresResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -11824,11 +11900,15 @@ export const listProjectsLocationsDataStoresBranchesDocuments: API.PaginatedOper
   GoogleCloudDiscoveryengineV1ListDocumentsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(
-    669,
-    __c83,
-    5,
+    4384,
+    __c137,
+    0,
   ) as any as S.Schema<ListProjectsLocationsDataStoresBranchesDocumentsRequest>,
-  output: __S(624, __c78, 0) as any as S.Schema<GoogleCloudDiscoveryengineV1ListDocumentsResponse>,
+  output: __S(
+    3360,
+    __c105,
+    0,
+  ) as any as S.Schema<GoogleCloudDiscoveryengineV1ListDocumentsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -11848,11 +11928,11 @@ export const listProjectsLocationsDataStoresBranchesOperations: API.PaginatedOpe
   GoogleLongrunningListOperationsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(
-    670,
-    __c83,
-    6,
+    4416,
+    __c138,
+    0,
   ) as any as S.Schema<ListProjectsLocationsDataStoresBranchesOperationsRequest>,
-  output: __S(619, __c77, 3) as any as S.Schema<GoogleLongrunningListOperationsResponse>,
+  output: __S(3169, __c99, 1) as any as S.Schema<GoogleLongrunningListOperationsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -11868,8 +11948,8 @@ export const listProjectsLocationsDataStoresControls: API.PaginatedOperationMeth
   GcpOpContext,
   GoogleCloudDiscoveryengineV1ListControlsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(671, __c83, 7) as any as S.Schema<ListProjectsLocationsDataStoresControlsRequest>,
-  output: __S(628, __c78, 4) as any as S.Schema<GoogleCloudDiscoveryengineV1ListControlsResponse>,
+  input: __S(4448, __c139, 0) as any as S.Schema<ListProjectsLocationsDataStoresControlsRequest>,
+  output: __S(3457, __c108, 1) as any as S.Schema<GoogleCloudDiscoveryengineV1ListControlsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -11885,11 +11965,15 @@ export const listProjectsLocationsDataStoresConversations: API.PaginatedOperatio
   GcpOpContext,
   GoogleCloudDiscoveryengineV1ListConversationsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(672, __c84, 0) as any as S.Schema<ListProjectsLocationsDataStoresConversationsRequest>,
+  input: __S(
+    4480,
+    __c140,
+    0,
+  ) as any as S.Schema<ListProjectsLocationsDataStoresConversationsRequest>,
   output: __S(
-    631,
-    __c78,
-    7,
+    3521,
+    __c110,
+    1,
   ) as any as S.Schema<GoogleCloudDiscoveryengineV1ListConversationsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
@@ -11910,11 +11994,11 @@ export const listProjectsLocationsDataStoresModelsOperations: API.PaginatedOpera
   GoogleLongrunningListOperationsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(
-    673,
-    __c84,
-    1,
+    4512,
+    __c141,
+    0,
   ) as any as S.Schema<ListProjectsLocationsDataStoresModelsOperationsRequest>,
-  output: __S(619, __c77, 3) as any as S.Schema<GoogleLongrunningListOperationsResponse>,
+  output: __S(3169, __c99, 1) as any as S.Schema<GoogleLongrunningListOperationsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -11930,8 +12014,8 @@ export const listProjectsLocationsDataStoresOperations: API.PaginatedOperationMe
   GcpOpContext,
   GoogleLongrunningListOperationsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(674, __c84, 2) as any as S.Schema<ListProjectsLocationsDataStoresOperationsRequest>,
-  output: __S(619, __c77, 3) as any as S.Schema<GoogleLongrunningListOperationsResponse>,
+  input: __S(4576, __c143, 0) as any as S.Schema<ListProjectsLocationsDataStoresOperationsRequest>,
+  output: __S(3169, __c99, 1) as any as S.Schema<GoogleLongrunningListOperationsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -11947,8 +12031,8 @@ export const listProjectsLocationsDataStoresSchemas: API.PaginatedOperationMetho
   GcpOpContext,
   GoogleCloudDiscoveryengineV1ListSchemasResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(675, __c84, 3) as any as S.Schema<ListProjectsLocationsDataStoresSchemasRequest>,
-  output: __S(641, __c80, 1) as any as S.Schema<GoogleCloudDiscoveryengineV1ListSchemasResponse>,
+  input: __S(4608, __c144, 0) as any as S.Schema<ListProjectsLocationsDataStoresSchemasRequest>,
+  output: __S(3681, __c115, 1) as any as S.Schema<GoogleCloudDiscoveryengineV1ListSchemasResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -11965,14 +12049,14 @@ export const listProjectsLocationsDataStoresServingConfigs: API.PaginatedOperati
   GoogleCloudDiscoveryengineV1ListServingConfigsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(
-    676,
-    __c84,
-    4,
+    4640,
+    __c145,
+    0,
   ) as any as S.Schema<ListProjectsLocationsDataStoresServingConfigsRequest>,
   output: __S(
-    645,
-    __c80,
-    5,
+    3809,
+    __c119,
+    1,
   ) as any as S.Schema<GoogleCloudDiscoveryengineV1ListServingConfigsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
@@ -11989,8 +12073,8 @@ export const listProjectsLocationsDataStoresSessions: API.PaginatedOperationMeth
   GcpOpContext,
   GoogleCloudDiscoveryengineV1ListSessionsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(677, __c84, 5) as any as S.Schema<ListProjectsLocationsDataStoresSessionsRequest>,
-  output: __S(648, __c81, 0) as any as S.Schema<GoogleCloudDiscoveryengineV1ListSessionsResponse>,
+  input: __S(4672, __c146, 0) as any as S.Schema<ListProjectsLocationsDataStoresSessionsRequest>,
+  output: __S(3873, __c121, 1) as any as S.Schema<GoogleCloudDiscoveryengineV1ListSessionsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -12010,14 +12094,14 @@ export const listProjectsLocationsDataStoresSiteSearchEngineTargetSites: API.Pag
   GoogleCloudDiscoveryengineV1ListTargetSitesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(
-    678,
-    __c84,
-    6,
+    4704,
+    __c147,
+    0,
   ) as any as S.Schema<ListProjectsLocationsDataStoresSiteSearchEngineTargetSitesRequest>,
   output: __S(
-    651,
-    __c81,
-    3,
+    3968,
+    __c124,
+    0,
   ) as any as S.Schema<GoogleCloudDiscoveryengineV1ListTargetSitesResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
@@ -12034,11 +12118,11 @@ export const listProjectsLocationsIdentityMappingStores: API.PaginatedOperationM
   GcpOpContext,
   GoogleCloudDiscoveryengineV1ListIdentityMappingStoresResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(679, __c84, 7) as any as S.Schema<ListProjectsLocationsIdentityMappingStoresRequest>,
+  input: __S(4736, __c148, 0) as any as S.Schema<ListProjectsLocationsIdentityMappingStoresRequest>,
   output: __S(
-    681,
-    __c85,
-    1,
+    4738,
+    __c148,
+    2,
   ) as any as S.Schema<GoogleCloudDiscoveryengineV1ListIdentityMappingStoresResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
@@ -12059,11 +12143,11 @@ export const listProjectsLocationsIdentityMappingStoresOperations: API.Paginated
   GoogleLongrunningListOperationsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(
-    682,
-    __c85,
-    2,
+    4768,
+    __c149,
+    0,
   ) as any as S.Schema<ListProjectsLocationsIdentityMappingStoresOperationsRequest>,
-  output: __S(619, __c77, 3) as any as S.Schema<GoogleLongrunningListOperationsResponse>,
+  output: __S(3169, __c99, 1) as any as S.Schema<GoogleLongrunningListOperationsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -12079,11 +12163,11 @@ export const listProjectsLocationsLicenseConfigs: API.PaginatedOperationMethod<
   GcpOpContext,
   GoogleCloudDiscoveryengineV1ListLicenseConfigsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(683, __c85, 3) as any as S.Schema<ListProjectsLocationsLicenseConfigsRequest>,
+  input: __S(4800, __c150, 0) as any as S.Schema<ListProjectsLocationsLicenseConfigsRequest>,
   output: __S(
-    685,
-    __c85,
-    5,
+    4802,
+    __c150,
+    2,
   ) as any as S.Schema<GoogleCloudDiscoveryengineV1ListLicenseConfigsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
@@ -12100,8 +12184,8 @@ export const listProjectsLocationsOperations: API.PaginatedOperationMethod<
   GcpOpContext,
   GoogleLongrunningListOperationsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(686, __c85, 6) as any as S.Schema<ListProjectsLocationsOperationsRequest>,
-  output: __S(619, __c77, 3) as any as S.Schema<GoogleLongrunningListOperationsResponse>,
+  input: __S(4832, __c151, 0) as any as S.Schema<ListProjectsLocationsOperationsRequest>,
+  output: __S(3169, __c99, 1) as any as S.Schema<GoogleLongrunningListOperationsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -12120,14 +12204,14 @@ export const listProjectsLocationsUserStoresLicenseConfigsUsageStats: API.Operat
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    687,
-    __c85,
-    7,
+    4864,
+    __c152,
+    0,
   ) as any as S.Schema<ListProjectsLocationsUserStoresLicenseConfigsUsageStatsRequest>,
   output: __S(
-    690,
-    __c86,
-    2,
+    4867,
+    __c152,
+    3,
   ) as any as S.Schema<GoogleCloudDiscoveryengineV1ListLicenseConfigsUsageStatsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
@@ -12143,11 +12227,15 @@ export const listProjectsLocationsUserStoresUserLicenses: API.PaginatedOperation
   GcpOpContext,
   GoogleCloudDiscoveryengineV1ListUserLicensesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(691, __c86, 3) as any as S.Schema<ListProjectsLocationsUserStoresUserLicensesRequest>,
+  input: __S(
+    4928,
+    __c154,
+    0,
+  ) as any as S.Schema<ListProjectsLocationsUserStoresUserLicensesRequest>,
   output: __S(
-    692,
-    __c86,
-    4,
+    4929,
+    __c154,
+    1,
   ) as any as S.Schema<GoogleCloudDiscoveryengineV1ListUserLicensesResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
@@ -12164,8 +12252,8 @@ export const listProjectsOperations: API.PaginatedOperationMethod<
   GcpOpContext,
   GoogleLongrunningListOperationsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(693, __c86, 5) as any as S.Schema<ListProjectsOperationsRequest>,
-  output: __S(619, __c77, 3) as any as S.Schema<GoogleLongrunningListOperationsResponse>,
+  input: __S(4960, __c155, 0) as any as S.Schema<ListProjectsOperationsRequest>,
+  output: __S(3169, __c99, 1) as any as S.Schema<GoogleLongrunningListOperationsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -12185,8 +12273,12 @@ export const mcpProjectsLocationsCollectionsDataConnector: API.OperationMethod<
   McpProjectsLocationsCollectionsDataConnectorError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(694, __c86, 6) as any as S.Schema<McpProjectsLocationsCollectionsDataConnectorRequest>,
-  output: __S(161, __c20, 1) as any as S.Schema<GoogleApiHttpBody>,
+  input: __S(
+    4992,
+    __c156,
+    0,
+  ) as any as S.Schema<McpProjectsLocationsCollectionsDataConnectorRequest>,
+  output: __S(5280, __c165, 0) as any as S.Schema<GoogleApiHttpBody>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -12205,8 +12297,8 @@ export const patchProjectsLocationsCmekConfigs: API.OperationMethod<
   PatchProjectsLocationsCmekConfigsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(695, __c86, 7) as any as S.Schema<PatchProjectsLocationsCmekConfigsRequest>,
-  output: __S(117, __c14, 5) as any as S.Schema<GoogleLongrunningOperation>,
+  input: __S(5024, __c157, 0) as any as S.Schema<PatchProjectsLocationsCmekConfigsRequest>,
+  output: __S(64, __c2, 0) as any as S.Schema<GoogleLongrunningOperation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -12225,8 +12317,12 @@ export const patchProjectsLocationsCollectionsDataStores: API.OperationMethod<
   PatchProjectsLocationsCollectionsDataStoresError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(696, __c87, 0) as any as S.Schema<PatchProjectsLocationsCollectionsDataStoresRequest>,
-  output: __S(267, __c33, 3) as any as S.Schema<GoogleCloudDiscoveryengineV1DataStore>,
+  input: __S(
+    5056,
+    __c158,
+    0,
+  ) as any as S.Schema<PatchProjectsLocationsCollectionsDataStoresRequest>,
+  output: __S(8530, __c266, 18) as any as S.Schema<GoogleCloudDiscoveryengineV1DataStore>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -12246,11 +12342,11 @@ export const patchProjectsLocationsCollectionsDataStoresBranchesDocuments: API.O
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    697,
-    __c87,
-    1,
+    5088,
+    __c159,
+    0,
   ) as any as S.Schema<PatchProjectsLocationsCollectionsDataStoresBranchesDocumentsRequest>,
-  output: __S(188, __c23, 4) as any as S.Schema<GoogleCloudDiscoveryengineV1Document>,
+  output: __S(7047, __c220, 7) as any as S.Schema<GoogleCloudDiscoveryengineV1Document>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -12270,11 +12366,11 @@ export const patchProjectsLocationsCollectionsDataStoresControls: API.OperationM
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    698,
-    __c87,
-    2,
+    5120,
+    __c160,
+    0,
   ) as any as S.Schema<PatchProjectsLocationsCollectionsDataStoresControlsRequest>,
-  output: __S(285, __c35, 5) as any as S.Schema<GoogleCloudDiscoveryengineV1Control>,
+  output: __S(8654, __c270, 14) as any as S.Schema<GoogleCloudDiscoveryengineV1Control>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -12294,11 +12390,11 @@ export const patchProjectsLocationsCollectionsDataStoresConversations: API.Opera
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    699,
-    __c87,
-    3,
+    5152,
+    __c161,
+    0,
   ) as any as S.Schema<PatchProjectsLocationsCollectionsDataStoresConversationsRequest>,
-  output: __S(216, __c27, 0) as any as S.Schema<GoogleCloudDiscoveryengineV1Conversation>,
+  output: __S(8197, __c256, 5) as any as S.Schema<GoogleCloudDiscoveryengineV1Conversation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -12318,11 +12414,11 @@ export const patchProjectsLocationsCollectionsDataStoresSchemas: API.OperationMe
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    700,
-    __c87,
-    4,
+    5184,
+    __c162,
+    0,
   ) as any as S.Schema<PatchProjectsLocationsCollectionsDataStoresSchemasRequest>,
-  output: __S(117, __c14, 5) as any as S.Schema<GoogleLongrunningOperation>,
+  output: __S(64, __c2, 0) as any as S.Schema<GoogleLongrunningOperation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -12342,11 +12438,11 @@ export const patchProjectsLocationsCollectionsDataStoresServingConfigs: API.Oper
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    701,
-    __c87,
-    5,
+    5216,
+    __c163,
+    0,
   ) as any as S.Schema<PatchProjectsLocationsCollectionsDataStoresServingConfigsRequest>,
-  output: __S(297, __c37, 1) as any as S.Schema<GoogleCloudDiscoveryengineV1ServingConfig>,
+  output: __S(8836, __c276, 4) as any as S.Schema<GoogleCloudDiscoveryengineV1ServingConfig>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -12366,11 +12462,11 @@ export const patchProjectsLocationsCollectionsDataStoresSessions: API.OperationM
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    702,
-    __c87,
-    6,
+    5312,
+    __c166,
+    0,
   ) as any as S.Schema<PatchProjectsLocationsCollectionsDataStoresSessionsRequest>,
-  output: __S(105, __c13, 1) as any as S.Schema<GoogleCloudDiscoveryengineV1Session>,
+  output: __S(10498, __c328, 2) as any as S.Schema<GoogleCloudDiscoveryengineV1Session>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -12390,11 +12486,11 @@ export const patchProjectsLocationsCollectionsDataStoresSiteSearchEngineTargetSi
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    703,
-    __c87,
-    7,
+    5344,
+    __c167,
+    0,
   ) as any as S.Schema<PatchProjectsLocationsCollectionsDataStoresSiteSearchEngineTargetSitesRequest>,
-  output: __S(117, __c14, 5) as any as S.Schema<GoogleLongrunningOperation>,
+  output: __S(64, __c2, 0) as any as S.Schema<GoogleLongrunningOperation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -12414,11 +12510,11 @@ export const patchProjectsLocationsCollectionsDataStoresWidgetConfigs: API.Opera
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    704,
-    __c88,
+    5376,
+    __c168,
     0,
   ) as any as S.Schema<PatchProjectsLocationsCollectionsDataStoresWidgetConfigsRequest>,
-  output: __S(518, __c64, 6) as any as S.Schema<GoogleCloudDiscoveryengineV1WidgetConfig>,
+  output: __S(991, __c30, 31) as any as S.Schema<GoogleCloudDiscoveryengineV1WidgetConfig>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -12437,8 +12533,8 @@ export const patchProjectsLocationsCollectionsEngines: API.OperationMethod<
   PatchProjectsLocationsCollectionsEnginesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(705, __c88, 1) as any as S.Schema<PatchProjectsLocationsCollectionsEnginesRequest>,
-  output: __S(321, __c40, 1) as any as S.Schema<GoogleCloudDiscoveryengineV1Engine>,
+  input: __S(5408, __c169, 0) as any as S.Schema<PatchProjectsLocationsCollectionsEnginesRequest>,
+  output: __S(9042, __c282, 18) as any as S.Schema<GoogleCloudDiscoveryengineV1Engine>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -12458,11 +12554,11 @@ export const patchProjectsLocationsCollectionsEnginesAssistants: API.OperationMe
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    706,
-    __c88,
-    2,
+    5440,
+    __c170,
+    0,
   ) as any as S.Schema<PatchProjectsLocationsCollectionsEnginesAssistantsRequest>,
-  output: __S(333, __c41, 5) as any as S.Schema<GoogleCloudDiscoveryengineV1Assistant>,
+  output: __S(9098, __c284, 10) as any as S.Schema<GoogleCloudDiscoveryengineV1Assistant>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -12482,11 +12578,11 @@ export const patchProjectsLocationsCollectionsEnginesControls: API.OperationMeth
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    707,
-    __c88,
-    3,
+    5472,
+    __c171,
+    0,
   ) as any as S.Schema<PatchProjectsLocationsCollectionsEnginesControlsRequest>,
-  output: __S(285, __c35, 5) as any as S.Schema<GoogleCloudDiscoveryengineV1Control>,
+  output: __S(8654, __c270, 14) as any as S.Schema<GoogleCloudDiscoveryengineV1Control>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -12506,11 +12602,11 @@ export const patchProjectsLocationsCollectionsEnginesConversations: API.Operatio
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    708,
-    __c88,
-    4,
+    5504,
+    __c172,
+    0,
   ) as any as S.Schema<PatchProjectsLocationsCollectionsEnginesConversationsRequest>,
-  output: __S(216, __c27, 0) as any as S.Schema<GoogleCloudDiscoveryengineV1Conversation>,
+  output: __S(8197, __c256, 5) as any as S.Schema<GoogleCloudDiscoveryengineV1Conversation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -12530,11 +12626,11 @@ export const patchProjectsLocationsCollectionsEnginesServingConfigs: API.Operati
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    709,
-    __c88,
-    5,
+    5536,
+    __c173,
+    0,
   ) as any as S.Schema<PatchProjectsLocationsCollectionsEnginesServingConfigsRequest>,
-  output: __S(297, __c37, 1) as any as S.Schema<GoogleCloudDiscoveryengineV1ServingConfig>,
+  output: __S(8836, __c276, 4) as any as S.Schema<GoogleCloudDiscoveryengineV1ServingConfig>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -12554,11 +12650,11 @@ export const patchProjectsLocationsCollectionsEnginesSessions: API.OperationMeth
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    710,
-    __c88,
-    6,
+    5568,
+    __c174,
+    0,
   ) as any as S.Schema<PatchProjectsLocationsCollectionsEnginesSessionsRequest>,
-  output: __S(105, __c13, 1) as any as S.Schema<GoogleCloudDiscoveryengineV1Session>,
+  output: __S(10498, __c328, 2) as any as S.Schema<GoogleCloudDiscoveryengineV1Session>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -12578,11 +12674,11 @@ export const patchProjectsLocationsCollectionsEnginesWidgetConfigs: API.Operatio
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    711,
-    __c88,
-    7,
+    5600,
+    __c175,
+    0,
   ) as any as S.Schema<PatchProjectsLocationsCollectionsEnginesWidgetConfigsRequest>,
-  output: __S(518, __c64, 6) as any as S.Schema<GoogleCloudDiscoveryengineV1WidgetConfig>,
+  output: __S(991, __c30, 31) as any as S.Schema<GoogleCloudDiscoveryengineV1WidgetConfig>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -12601,8 +12697,8 @@ export const patchProjectsLocationsDataStores: API.OperationMethod<
   PatchProjectsLocationsDataStoresError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(712, __c89, 0) as any as S.Schema<PatchProjectsLocationsDataStoresRequest>,
-  output: __S(267, __c33, 3) as any as S.Schema<GoogleCloudDiscoveryengineV1DataStore>,
+  input: __S(5664, __c177, 0) as any as S.Schema<PatchProjectsLocationsDataStoresRequest>,
+  output: __S(8530, __c266, 18) as any as S.Schema<GoogleCloudDiscoveryengineV1DataStore>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -12622,11 +12718,11 @@ export const patchProjectsLocationsDataStoresBranchesDocuments: API.OperationMet
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    713,
-    __c89,
-    1,
+    5696,
+    __c178,
+    0,
   ) as any as S.Schema<PatchProjectsLocationsDataStoresBranchesDocumentsRequest>,
-  output: __S(188, __c23, 4) as any as S.Schema<GoogleCloudDiscoveryengineV1Document>,
+  output: __S(7047, __c220, 7) as any as S.Schema<GoogleCloudDiscoveryengineV1Document>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -12645,8 +12741,8 @@ export const patchProjectsLocationsDataStoresControls: API.OperationMethod<
   PatchProjectsLocationsDataStoresControlsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(714, __c89, 2) as any as S.Schema<PatchProjectsLocationsDataStoresControlsRequest>,
-  output: __S(285, __c35, 5) as any as S.Schema<GoogleCloudDiscoveryengineV1Control>,
+  input: __S(5728, __c179, 0) as any as S.Schema<PatchProjectsLocationsDataStoresControlsRequest>,
+  output: __S(8654, __c270, 14) as any as S.Schema<GoogleCloudDiscoveryengineV1Control>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -12666,11 +12762,11 @@ export const patchProjectsLocationsDataStoresConversations: API.OperationMethod<
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    715,
-    __c89,
-    3,
+    5760,
+    __c180,
+    0,
   ) as any as S.Schema<PatchProjectsLocationsDataStoresConversationsRequest>,
-  output: __S(216, __c27, 0) as any as S.Schema<GoogleCloudDiscoveryengineV1Conversation>,
+  output: __S(8197, __c256, 5) as any as S.Schema<GoogleCloudDiscoveryengineV1Conversation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -12689,8 +12785,8 @@ export const patchProjectsLocationsDataStoresSchemas: API.OperationMethod<
   PatchProjectsLocationsDataStoresSchemasError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(716, __c89, 4) as any as S.Schema<PatchProjectsLocationsDataStoresSchemasRequest>,
-  output: __S(117, __c14, 5) as any as S.Schema<GoogleLongrunningOperation>,
+  input: __S(5792, __c181, 0) as any as S.Schema<PatchProjectsLocationsDataStoresSchemasRequest>,
+  output: __S(64, __c2, 0) as any as S.Schema<GoogleLongrunningOperation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -12710,11 +12806,11 @@ export const patchProjectsLocationsDataStoresServingConfigs: API.OperationMethod
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    717,
-    __c89,
-    5,
+    5824,
+    __c182,
+    0,
   ) as any as S.Schema<PatchProjectsLocationsDataStoresServingConfigsRequest>,
-  output: __S(297, __c37, 1) as any as S.Schema<GoogleCloudDiscoveryengineV1ServingConfig>,
+  output: __S(8836, __c276, 4) as any as S.Schema<GoogleCloudDiscoveryengineV1ServingConfig>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -12733,8 +12829,8 @@ export const patchProjectsLocationsDataStoresSessions: API.OperationMethod<
   PatchProjectsLocationsDataStoresSessionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(718, __c89, 6) as any as S.Schema<PatchProjectsLocationsDataStoresSessionsRequest>,
-  output: __S(105, __c13, 1) as any as S.Schema<GoogleCloudDiscoveryengineV1Session>,
+  input: __S(5856, __c183, 0) as any as S.Schema<PatchProjectsLocationsDataStoresSessionsRequest>,
+  output: __S(10498, __c328, 2) as any as S.Schema<GoogleCloudDiscoveryengineV1Session>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -12754,11 +12850,11 @@ export const patchProjectsLocationsDataStoresSiteSearchEngineTargetSites: API.Op
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    719,
-    __c89,
-    7,
+    5888,
+    __c184,
+    0,
   ) as any as S.Schema<PatchProjectsLocationsDataStoresSiteSearchEngineTargetSitesRequest>,
-  output: __S(117, __c14, 5) as any as S.Schema<GoogleLongrunningOperation>,
+  output: __S(64, __c2, 0) as any as S.Schema<GoogleLongrunningOperation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -12778,11 +12874,11 @@ export const patchProjectsLocationsDataStoresWidgetConfigs: API.OperationMethod<
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    720,
-    __c90,
+    5920,
+    __c185,
     0,
   ) as any as S.Schema<PatchProjectsLocationsDataStoresWidgetConfigsRequest>,
-  output: __S(518, __c64, 6) as any as S.Schema<GoogleCloudDiscoveryengineV1WidgetConfig>,
+  output: __S(991, __c30, 31) as any as S.Schema<GoogleCloudDiscoveryengineV1WidgetConfig>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -12801,8 +12897,8 @@ export const patchProjectsLocationsLicenseConfigs: API.OperationMethod<
   PatchProjectsLocationsLicenseConfigsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(721, __c90, 1) as any as S.Schema<PatchProjectsLocationsLicenseConfigsRequest>,
-  output: __S(354, __c44, 2) as any as S.Schema<GoogleCloudDiscoveryengineV1LicenseConfig>,
+  input: __S(5952, __c186, 0) as any as S.Schema<PatchProjectsLocationsLicenseConfigsRequest>,
+  output: __S(9728, __c304, 0) as any as S.Schema<GoogleCloudDiscoveryengineV1LicenseConfig>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -12821,8 +12917,8 @@ export const patchProjectsLocationsUserStores: API.OperationMethod<
   PatchProjectsLocationsUserStoresError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(722, __c90, 2) as any as S.Schema<PatchProjectsLocationsUserStoresRequest>,
-  output: __S(551, __c68, 7) as any as S.Schema<GoogleCloudDiscoveryengineV1UserStore>,
+  input: __S(6016, __c188, 0) as any as S.Schema<PatchProjectsLocationsUserStoresRequest>,
+  output: __S(2176, __c68, 0) as any as S.Schema<GoogleCloudDiscoveryengineV1UserStore>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -12836,8 +12932,8 @@ export const provisionProjects: API.OperationMethod<
   ProvisionProjectsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(725, __c90, 5) as any as S.Schema<ProvisionProjectsRequest>,
-  output: __S(117, __c14, 5) as any as S.Schema<GoogleLongrunningOperation>,
+  input: __S(6048, __c189, 0) as any as S.Schema<ProvisionProjectsRequest>,
+  output: __S(64, __c2, 0) as any as S.Schema<GoogleLongrunningOperation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -12856,8 +12952,8 @@ export const provisionProjectsLocations: API.OperationMethod<
   ProvisionProjectsLocationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(726, __c90, 6) as any as S.Schema<ProvisionProjectsLocationsRequest>,
-  output: __S(117, __c14, 5) as any as S.Schema<GoogleLongrunningOperation>,
+  input: __S(6112, __c191, 0) as any as S.Schema<ProvisionProjectsLocationsRequest>,
+  output: __S(64, __c2, 0) as any as S.Schema<GoogleLongrunningOperation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -12877,11 +12973,11 @@ export const purgeIdentityMappingsProjectsLocationsIdentityMappingStores: API.Op
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    728,
-    __c91,
-    0,
+    6145,
+    __c192,
+    1,
   ) as any as S.Schema<PurgeIdentityMappingsProjectsLocationsIdentityMappingStoresRequest>,
-  output: __S(117, __c14, 5) as any as S.Schema<GoogleLongrunningOperation>,
+  output: __S(64, __c2, 0) as any as S.Schema<GoogleLongrunningOperation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -12901,11 +12997,11 @@ export const purgeProjectsLocationsCollectionsDataStoresBranchesDocuments: API.O
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    731,
-    __c91,
-    3,
+    6176,
+    __c193,
+    0,
   ) as any as S.Schema<PurgeProjectsLocationsCollectionsDataStoresBranchesDocumentsRequest>,
-  output: __S(117, __c14, 5) as any as S.Schema<GoogleLongrunningOperation>,
+  output: __S(64, __c2, 0) as any as S.Schema<GoogleLongrunningOperation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -12925,11 +13021,11 @@ export const purgeProjectsLocationsCollectionsDataStoresCompletionSuggestions: A
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    732,
-    __c91,
-    4,
+    6240,
+    __c195,
+    0,
   ) as any as S.Schema<PurgeProjectsLocationsCollectionsDataStoresCompletionSuggestionsRequest>,
-  output: __S(117, __c14, 5) as any as S.Schema<GoogleLongrunningOperation>,
+  output: __S(64, __c2, 0) as any as S.Schema<GoogleLongrunningOperation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -12949,11 +13045,11 @@ export const purgeProjectsLocationsCollectionsDataStoresSuggestionDenyListEntrie
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    733,
-    __c91,
-    5,
+    6272,
+    __c196,
+    0,
   ) as any as S.Schema<PurgeProjectsLocationsCollectionsDataStoresSuggestionDenyListEntriesRequest>,
-  output: __S(117, __c14, 5) as any as S.Schema<GoogleLongrunningOperation>,
+  output: __S(64, __c2, 0) as any as S.Schema<GoogleLongrunningOperation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -12973,11 +13069,11 @@ export const purgeProjectsLocationsCollectionsDataStoresUserEvents: API.Operatio
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    735,
-    __c91,
-    7,
+    6304,
+    __c197,
+    0,
   ) as any as S.Schema<PurgeProjectsLocationsCollectionsDataStoresUserEventsRequest>,
-  output: __S(117, __c14, 5) as any as S.Schema<GoogleLongrunningOperation>,
+  output: __S(64, __c2, 0) as any as S.Schema<GoogleLongrunningOperation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -12997,11 +13093,11 @@ export const purgeProjectsLocationsDataStoresBranchesDocuments: API.OperationMet
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    736,
-    __c92,
+    6368,
+    __c199,
     0,
   ) as any as S.Schema<PurgeProjectsLocationsDataStoresBranchesDocumentsRequest>,
-  output: __S(117, __c14, 5) as any as S.Schema<GoogleLongrunningOperation>,
+  output: __S(64, __c2, 0) as any as S.Schema<GoogleLongrunningOperation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -13021,11 +13117,11 @@ export const purgeProjectsLocationsDataStoresCompletionSuggestions: API.Operatio
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    737,
-    __c92,
-    1,
+    6400,
+    __c200,
+    0,
   ) as any as S.Schema<PurgeProjectsLocationsDataStoresCompletionSuggestionsRequest>,
-  output: __S(117, __c14, 5) as any as S.Schema<GoogleLongrunningOperation>,
+  output: __S(64, __c2, 0) as any as S.Schema<GoogleLongrunningOperation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -13045,11 +13141,11 @@ export const purgeProjectsLocationsDataStoresSuggestionDenyListEntries: API.Oper
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    738,
-    __c92,
-    2,
+    6496,
+    __c203,
+    0,
   ) as any as S.Schema<PurgeProjectsLocationsDataStoresSuggestionDenyListEntriesRequest>,
-  output: __S(117, __c14, 5) as any as S.Schema<GoogleLongrunningOperation>,
+  output: __S(64, __c2, 0) as any as S.Schema<GoogleLongrunningOperation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -13068,8 +13164,8 @@ export const purgeProjectsLocationsDataStoresUserEvents: API.OperationMethod<
   PurgeProjectsLocationsDataStoresUserEventsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(739, __c92, 3) as any as S.Schema<PurgeProjectsLocationsDataStoresUserEventsRequest>,
-  output: __S(117, __c14, 5) as any as S.Schema<GoogleLongrunningOperation>,
+  input: __S(6528, __c204, 0) as any as S.Schema<PurgeProjectsLocationsDataStoresUserEventsRequest>,
+  output: __S(64, __c2, 0) as any as S.Schema<GoogleLongrunningOperation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -13088,8 +13184,8 @@ export const rankProjectsLocationsRankingConfigs: API.OperationMethod<
   RankProjectsLocationsRankingConfigsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(743, __c92, 7) as any as S.Schema<RankProjectsLocationsRankingConfigsRequest>,
-  output: __S(744, __c93, 0) as any as S.Schema<GoogleCloudDiscoveryengineV1RankResponse>,
+  input: __S(6563, __c205, 3) as any as S.Schema<RankProjectsLocationsRankingConfigsRequest>,
+  output: __S(6564, __c205, 4) as any as S.Schema<GoogleCloudDiscoveryengineV1RankResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -13109,11 +13205,11 @@ export const recommendProjectsLocationsCollectionsDataStoresServingConfigs: API.
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    746,
-    __c93,
-    2,
+    6592,
+    __c206,
+    0,
   ) as any as S.Schema<RecommendProjectsLocationsCollectionsDataStoresServingConfigsRequest>,
-  output: __S(749, __c93, 5) as any as S.Schema<GoogleCloudDiscoveryengineV1RecommendResponse>,
+  output: __S(6627, __c207, 3) as any as S.Schema<GoogleCloudDiscoveryengineV1RecommendResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -13133,11 +13229,11 @@ export const recommendProjectsLocationsCollectionsEnginesServingConfigs: API.Ope
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    750,
-    __c93,
-    6,
+    6656,
+    __c208,
+    0,
   ) as any as S.Schema<RecommendProjectsLocationsCollectionsEnginesServingConfigsRequest>,
-  output: __S(749, __c93, 5) as any as S.Schema<GoogleCloudDiscoveryengineV1RecommendResponse>,
+  output: __S(6627, __c207, 3) as any as S.Schema<GoogleCloudDiscoveryengineV1RecommendResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -13157,11 +13253,11 @@ export const recommendProjectsLocationsDataStoresServingConfigs: API.OperationMe
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    751,
-    __c93,
-    7,
+    6688,
+    __c209,
+    0,
   ) as any as S.Schema<RecommendProjectsLocationsDataStoresServingConfigsRequest>,
-  output: __S(749, __c93, 5) as any as S.Schema<GoogleCloudDiscoveryengineV1RecommendResponse>,
+  output: __S(6627, __c207, 3) as any as S.Schema<GoogleCloudDiscoveryengineV1RecommendResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -13181,11 +13277,11 @@ export const recrawlUrisProjectsLocationsCollectionsDataStoresSiteSearchEngine: 
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    753,
-    __c94,
-    1,
+    6720,
+    __c210,
+    0,
   ) as any as S.Schema<RecrawlUrisProjectsLocationsCollectionsDataStoresSiteSearchEngineRequest>,
-  output: __S(117, __c14, 5) as any as S.Schema<GoogleLongrunningOperation>,
+  output: __S(64, __c2, 0) as any as S.Schema<GoogleLongrunningOperation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -13205,11 +13301,11 @@ export const recrawlUrisProjectsLocationsDataStoresSiteSearchEngine: API.Operati
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    754,
-    __c94,
-    2,
+    6784,
+    __c212,
+    0,
   ) as any as S.Schema<RecrawlUrisProjectsLocationsDataStoresSiteSearchEngineRequest>,
-  output: __S(117, __c14, 5) as any as S.Schema<GoogleLongrunningOperation>,
+  output: __S(64, __c2, 0) as any as S.Schema<GoogleLongrunningOperation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -13229,14 +13325,14 @@ export const retractLicenseConfigBillingAccountsBillingAccountLicenseConfigs: AP
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    756,
-    __c94,
-    4,
+    6817,
+    __c213,
+    1,
   ) as any as S.Schema<RetractLicenseConfigBillingAccountsBillingAccountLicenseConfigsRequest>,
   output: __S(
-    388,
-    __c48,
-    4,
+    11328,
+    __c354,
+    0,
   ) as any as S.Schema<GoogleCloudDiscoveryengineV1RetractLicenseConfigResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
@@ -13257,11 +13353,11 @@ export const searchLiteProjectsLocationsCollectionsDataStoresServingConfigs: API
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    779,
-    __c97,
-    3,
+    6848,
+    __c214,
+    0,
   ) as any as S.Schema<SearchLiteProjectsLocationsCollectionsDataStoresServingConfigsRequest>,
-  output: __S(795, __c99, 3) as any as S.Schema<GoogleCloudDiscoveryengineV1SearchResponse>,
+  output: __S(6917, __c216, 5) as any as S.Schema<GoogleCloudDiscoveryengineV1SearchResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -13281,11 +13377,11 @@ export const searchLiteProjectsLocationsCollectionsEnginesServingConfigs: API.Op
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    796,
-    __c99,
-    4,
+    7104,
+    __c222,
+    0,
   ) as any as S.Schema<SearchLiteProjectsLocationsCollectionsEnginesServingConfigsRequest>,
-  output: __S(795, __c99, 3) as any as S.Schema<GoogleCloudDiscoveryengineV1SearchResponse>,
+  output: __S(6917, __c216, 5) as any as S.Schema<GoogleCloudDiscoveryengineV1SearchResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -13305,11 +13401,11 @@ export const searchLiteProjectsLocationsDataStoresServingConfigs: API.OperationM
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    797,
-    __c99,
-    5,
+    7136,
+    __c223,
+    0,
   ) as any as S.Schema<SearchLiteProjectsLocationsDataStoresServingConfigsRequest>,
-  output: __S(795, __c99, 3) as any as S.Schema<GoogleCloudDiscoveryengineV1SearchResponse>,
+  output: __S(6917, __c216, 5) as any as S.Schema<GoogleCloudDiscoveryengineV1SearchResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -13329,11 +13425,11 @@ export const searchProjectsLocationsCollectionsDataStoresServingConfigs: API.Ope
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    798,
-    __c99,
-    6,
+    7168,
+    __c224,
+    0,
   ) as any as S.Schema<SearchProjectsLocationsCollectionsDataStoresServingConfigsRequest>,
-  output: __S(795, __c99, 3) as any as S.Schema<GoogleCloudDiscoveryengineV1SearchResponse>,
+  output: __S(6917, __c216, 5) as any as S.Schema<GoogleCloudDiscoveryengineV1SearchResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -13353,11 +13449,11 @@ export const searchProjectsLocationsCollectionsEnginesServingConfigs: API.Operat
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    799,
-    __c99,
-    7,
+    7200,
+    __c225,
+    0,
   ) as any as S.Schema<SearchProjectsLocationsCollectionsEnginesServingConfigsRequest>,
-  output: __S(795, __c99, 3) as any as S.Schema<GoogleCloudDiscoveryengineV1SearchResponse>,
+  output: __S(6917, __c216, 5) as any as S.Schema<GoogleCloudDiscoveryengineV1SearchResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -13377,11 +13473,11 @@ export const searchProjectsLocationsDataStoresServingConfigs: API.OperationMetho
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    800,
-    __c100,
+    7232,
+    __c226,
     0,
   ) as any as S.Schema<SearchProjectsLocationsDataStoresServingConfigsRequest>,
-  output: __S(795, __c99, 3) as any as S.Schema<GoogleCloudDiscoveryengineV1SearchResponse>,
+  output: __S(6917, __c216, 5) as any as S.Schema<GoogleCloudDiscoveryengineV1SearchResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -13401,11 +13497,11 @@ export const sendProjectsLocationsCollectionsEnginesAssistantsAgentsA2aV1Message
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    803,
-    __c100,
-    3,
+    7264,
+    __c227,
+    0,
   ) as any as S.Schema<SendProjectsLocationsCollectionsEnginesAssistantsAgentsA2aV1MessageRequest>,
-  output: __S(804, __c100, 4) as any as S.Schema<A2aV1SendMessageResponse>,
+  output: __S(7265, __c227, 1) as any as S.Schema<A2aV1SendMessageResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -13424,8 +13520,8 @@ export const setIamPolicyProjectsLocationsCollections: API.OperationMethod<
   SetIamPolicyProjectsLocationsCollectionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(806, __c100, 6) as any as S.Schema<SetIamPolicyProjectsLocationsCollectionsRequest>,
-  output: __S(465, __c58, 1) as any as S.Schema<GoogleIamV1Policy>,
+  input: __S(7328, __c229, 0) as any as S.Schema<SetIamPolicyProjectsLocationsCollectionsRequest>,
+  output: __S(163, __c5, 3) as any as S.Schema<GoogleIamV1Policy>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -13445,11 +13541,11 @@ export const setIamPolicyProjectsLocationsCollectionsDataStores: API.OperationMe
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    807,
-    __c100,
-    7,
+    7392,
+    __c231,
+    0,
   ) as any as S.Schema<SetIamPolicyProjectsLocationsCollectionsDataStoresRequest>,
-  output: __S(465, __c58, 1) as any as S.Schema<GoogleIamV1Policy>,
+  output: __S(163, __c5, 3) as any as S.Schema<GoogleIamV1Policy>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -13469,11 +13565,11 @@ export const setIamPolicyProjectsLocationsCollectionsEngines: API.OperationMetho
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    808,
-    __c101,
+    7424,
+    __c232,
     0,
   ) as any as S.Schema<SetIamPolicyProjectsLocationsCollectionsEnginesRequest>,
-  output: __S(465, __c58, 1) as any as S.Schema<GoogleIamV1Policy>,
+  output: __S(163, __c5, 3) as any as S.Schema<GoogleIamV1Policy>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -13492,8 +13588,8 @@ export const setIamPolicyProjectsLocationsDataStores: API.OperationMethod<
   SetIamPolicyProjectsLocationsDataStoresError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(809, __c101, 1) as any as S.Schema<SetIamPolicyProjectsLocationsDataStoresRequest>,
-  output: __S(465, __c58, 1) as any as S.Schema<GoogleIamV1Policy>,
+  input: __S(7456, __c233, 0) as any as S.Schema<SetIamPolicyProjectsLocationsDataStoresRequest>,
+  output: __S(163, __c5, 3) as any as S.Schema<GoogleIamV1Policy>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -13512,8 +13608,8 @@ export const setUpDataConnectorProjectsLocations: API.OperationMethod<
   SetUpDataConnectorProjectsLocationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(811, __c101, 3) as any as S.Schema<SetUpDataConnectorProjectsLocationsRequest>,
-  output: __S(117, __c14, 5) as any as S.Schema<GoogleLongrunningOperation>,
+  input: __S(7521, __c235, 1) as any as S.Schema<SetUpDataConnectorProjectsLocationsRequest>,
+  output: __S(64, __c2, 0) as any as S.Schema<GoogleLongrunningOperation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -13532,8 +13628,8 @@ export const setUpDataConnectorV2ProjectsLocations: API.OperationMethod<
   SetUpDataConnectorV2ProjectsLocationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(812, __c101, 4) as any as S.Schema<SetUpDataConnectorV2ProjectsLocationsRequest>,
-  output: __S(117, __c14, 5) as any as S.Schema<GoogleLongrunningOperation>,
+  input: __S(7552, __c236, 0) as any as S.Schema<SetUpDataConnectorV2ProjectsLocationsRequest>,
+  output: __S(64, __c2, 0) as any as S.Schema<GoogleLongrunningOperation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -13553,11 +13649,15 @@ export const streamAnswerProjectsLocationsCollectionsDataStoresServingConfigs: A
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    813,
-    __c101,
-    5,
+    7584,
+    __c237,
+    0,
   ) as any as S.Schema<StreamAnswerProjectsLocationsCollectionsDataStoresServingConfigsRequest>,
-  output: __S(106, __c13, 2) as any as S.Schema<GoogleCloudDiscoveryengineV1AnswerQueryResponse>,
+  output: __S(
+    10396,
+    __c324,
+    28,
+  ) as any as S.Schema<GoogleCloudDiscoveryengineV1AnswerQueryResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -13577,11 +13677,15 @@ export const streamAnswerProjectsLocationsCollectionsEnginesServingConfigs: API.
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    814,
-    __c101,
-    6,
+    7616,
+    __c238,
+    0,
   ) as any as S.Schema<StreamAnswerProjectsLocationsCollectionsEnginesServingConfigsRequest>,
-  output: __S(106, __c13, 2) as any as S.Schema<GoogleCloudDiscoveryengineV1AnswerQueryResponse>,
+  output: __S(
+    10396,
+    __c324,
+    28,
+  ) as any as S.Schema<GoogleCloudDiscoveryengineV1AnswerQueryResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -13601,11 +13705,15 @@ export const streamAnswerProjectsLocationsDataStoresServingConfigs: API.Operatio
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    815,
-    __c101,
-    7,
+    7648,
+    __c239,
+    0,
   ) as any as S.Schema<StreamAnswerProjectsLocationsDataStoresServingConfigsRequest>,
-  output: __S(106, __c13, 2) as any as S.Schema<GoogleCloudDiscoveryengineV1AnswerQueryResponse>,
+  output: __S(
+    10396,
+    __c324,
+    28,
+  ) as any as S.Schema<GoogleCloudDiscoveryengineV1AnswerQueryResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -13625,11 +13733,15 @@ export const streamAssistProjectsLocationsCollectionsEnginesAssistants: API.Oper
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    824,
-    __c103,
-    0,
+    7688,
+    __c240,
+    8,
   ) as any as S.Schema<StreamAssistProjectsLocationsCollectionsEnginesAssistantsRequest>,
-  output: __S(830, __c103, 6) as any as S.Schema<GoogleCloudDiscoveryengineV1StreamAssistResponse>,
+  output: __S(
+    7694,
+    __c240,
+    14,
+  ) as any as S.Schema<GoogleCloudDiscoveryengineV1StreamAssistResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -13649,11 +13761,11 @@ export const streamProjectsLocationsCollectionsEnginesAssistantsAgentsA2aV1Messa
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    831,
-    __c103,
-    7,
+    7712,
+    __c241,
+    0,
   ) as any as S.Schema<StreamProjectsLocationsCollectionsEnginesAssistantsAgentsA2aV1MessageRequest>,
-  output: __S(834, __c104, 2) as any as S.Schema<A2aV1StreamResponse>,
+  output: __S(7746, __c242, 2) as any as S.Schema<A2aV1StreamResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -13671,11 +13783,11 @@ export const subscribeProjectsLocationsCollectionsEnginesAssistantsAgentsA2aV1Ta
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    835,
-    __c104,
-    3,
+    7776,
+    __c243,
+    0,
   ) as any as S.Schema<SubscribeProjectsLocationsCollectionsEnginesAssistantsAgentsA2aV1TasksRequest>,
-  output: __S(834, __c104, 2) as any as S.Schema<A2aV1StreamResponse>,
+  output: __S(7746, __c242, 2) as any as S.Schema<A2aV1StreamResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -13695,11 +13807,11 @@ export const trainCustomModelProjectsLocationsCollectionsDataStores: API.Operati
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    838,
-    __c104,
-    6,
+    7810,
+    __c244,
+    2,
   ) as any as S.Schema<TrainCustomModelProjectsLocationsCollectionsDataStoresRequest>,
-  output: __S(117, __c14, 5) as any as S.Schema<GoogleLongrunningOperation>,
+  output: __S(64, __c2, 0) as any as S.Schema<GoogleLongrunningOperation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -13718,8 +13830,8 @@ export const updateAclConfigProjectsLocations: API.OperationMethod<
   UpdateAclConfigProjectsLocationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(839, __c104, 7) as any as S.Schema<UpdateAclConfigProjectsLocationsRequest>,
-  output: __S(402, __c50, 2) as any as S.Schema<GoogleCloudDiscoveryengineV1AclConfig>,
+  input: __S(7840, __c245, 0) as any as S.Schema<UpdateAclConfigProjectsLocationsRequest>,
+  output: __S(11618, __c363, 2) as any as S.Schema<GoogleCloudDiscoveryengineV1AclConfig>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -13738,8 +13850,8 @@ export const updateCmekConfigProjectsLocations: API.OperationMethod<
   UpdateCmekConfigProjectsLocationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(840, __c105, 0) as any as S.Schema<UpdateCmekConfigProjectsLocationsRequest>,
-  output: __S(117, __c14, 5) as any as S.Schema<GoogleLongrunningOperation>,
+  input: __S(7904, __c247, 0) as any as S.Schema<UpdateCmekConfigProjectsLocationsRequest>,
+  output: __S(64, __c2, 0) as any as S.Schema<GoogleLongrunningOperation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -13759,11 +13871,11 @@ export const updateDataConnectorProjectsLocationsCollections: API.OperationMetho
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    841,
-    __c105,
-    1,
+    7936,
+    __c248,
+    0,
   ) as any as S.Schema<UpdateDataConnectorProjectsLocationsCollectionsRequest>,
-  output: __S(460, __c57, 4) as any as S.Schema<GoogleCloudDiscoveryengineV1DataConnector>,
+  output: __S(11802, __c368, 26) as any as S.Schema<GoogleCloudDiscoveryengineV1DataConnector>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -13783,11 +13895,11 @@ export const writeProjectsLocationsCollectionsDataStoresUserEvents: API.Operatio
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    842,
-    __c105,
-    2,
+    7968,
+    __c249,
+    0,
   ) as any as S.Schema<WriteProjectsLocationsCollectionsDataStoresUserEventsRequest>,
-  output: __S(602, __c75, 2) as any as S.Schema<GoogleCloudDiscoveryengineV1UserEvent>,
+  output: __S(2893, __c90, 13) as any as S.Schema<GoogleCloudDiscoveryengineV1UserEvent>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -13806,8 +13918,8 @@ export const writeProjectsLocationsDataStoresUserEvents: API.OperationMethod<
   WriteProjectsLocationsDataStoresUserEventsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(843, __c105, 3) as any as S.Schema<WriteProjectsLocationsDataStoresUserEventsRequest>,
-  output: __S(602, __c75, 2) as any as S.Schema<GoogleCloudDiscoveryengineV1UserEvent>,
+  input: __S(8000, __c250, 0) as any as S.Schema<WriteProjectsLocationsDataStoresUserEventsRequest>,
+  output: __S(2893, __c90, 13) as any as S.Schema<GoogleCloudDiscoveryengineV1UserEvent>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -13826,8 +13938,8 @@ export const writeProjectsLocationsUserEvents: API.OperationMethod<
   WriteProjectsLocationsUserEventsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(844, __c105, 4) as any as S.Schema<WriteProjectsLocationsUserEventsRequest>,
-  output: __S(602, __c75, 2) as any as S.Schema<GoogleCloudDiscoveryengineV1UserEvent>,
+  input: __S(8032, __c251, 0) as any as S.Schema<WriteProjectsLocationsUserEventsRequest>,
+  output: __S(2893, __c90, 13) as any as S.Schema<GoogleCloudDiscoveryengineV1UserEvent>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -13839,1014 +13951,8 @@ function __c0(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          title: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier:
-          "GoogleCloudDiscoveryengineV1AnswerQueryRequestEndUserSpecEndUserMetaDataChunkInfoDocumentMetadata",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          documentMetadata: S.optional(__S(0, __c0, 0)),
-          content: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier:
-          "GoogleCloudDiscoveryengineV1AnswerQueryRequestEndUserSpecEndUserMetaDataChunkInfo",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          chunkInfo: S.optional(__S(1, __c0, 1)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDiscoveryengineV1AnswerQueryRequestEndUserSpecEndUserMetaData",
-      });
-    case 3:
-      return S.Array(__S(2, __c0, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          endUserMetadata: S.optional(__S(3, __c0, 3)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDiscoveryengineV1AnswerQueryRequestEndUserSpec",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          enable: S.optional(S.Boolean),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDiscoveryengineV1AnswerQueryRequestRelatedQuestionsSpec",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          category: S.optional(S.String),
-          threshold: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDiscoveryengineV1AnswerQueryRequestSafetySpecSafetySetting",
-      });
-    case 7:
-      return S.Array(__S(6, __c0, 6));
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          enable: S.optional(S.Boolean),
-          safetySettings: S.optional(__S(7, __c0, 7)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDiscoveryengineV1AnswerQueryRequestSafetySpec",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          includeGroundingSupports: S.optional(S.Boolean),
-          filteringLevel: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDiscoveryengineV1AnswerQueryRequestGroundingSpec",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          modelVersion: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDiscoveryengineV1AnswerQueryRequestAnswerGenerationSpecModelSpec",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          preamble: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDiscoveryengineV1AnswerQueryRequestAnswerGenerationSpecPromptSpec",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          ignoreJailBreakingQuery: S.optional(S.Boolean),
-          modelSpec: S.optional(__S(10, __c1, 2)),
-          includeCitations: S.optional(S.Boolean),
-          ignoreLowRelevantContent: S.optional(S.Boolean),
-          promptSpec: S.optional(__S(11, __c1, 3)),
-          ignoreAdversarialQuery: S.optional(S.Boolean),
-          answerLanguageCode: S.optional(S.String),
-          ignoreNonAnswerSeekingQuery: S.optional(S.Boolean),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDiscoveryengineV1AnswerQueryRequestAnswerGenerationSpec",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          queryId: S.optional(S.String),
-          text: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDiscoveryengineV1Query",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          boostAmount: S.optional(S.Number),
-          attributeValue: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier:
-          "GoogleCloudDiscoveryengineV1SearchRequestBoostSpecConditionBoostSpecBoostControlSpecControlPoint",
-      });
-    case 7:
-      return S.Array(__S(14, __c1, 6));
-  }
-}
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          fieldName: S.optional(S.String),
-          attributeType: S.optional(S.String),
-          controlPoints: S.optional(__S(15, __c1, 7)),
-          interpolationType: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier:
-          "GoogleCloudDiscoveryengineV1SearchRequestBoostSpecConditionBoostSpecBoostControlSpec",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          condition: S.optional(S.String),
-          boost: S.optional(S.Number),
-          boostControlSpec: S.optional(__S(16, __c2, 0)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDiscoveryengineV1SearchRequestBoostSpecConditionBoostSpec",
-      });
-    case 2:
-      return S.Array(__S(17, __c2, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          conditionBoostSpecs: S.optional(__S(18, __c2, 2)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDiscoveryengineV1SearchRequestBoostSpec",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          customSearchOperators: S.optional(S.String),
-          filter: S.optional(S.String),
-          numResults: S.optional(S.Number),
-          dataStore: S.optional(S.String),
-          boostSpec: S.optional(__S(19, __c2, 3)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDiscoveryengineV1SearchRequestDataStoreSpec",
-      });
-    case 5:
-      return S.Array(__S(20, __c2, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          boostSpec: S.optional(__S(19, __c2, 3)),
-          maxReturnResults: S.optional(S.Number),
-          filter: S.optional(S.String),
-          dataStoreSpecs: S.optional(__S(21, __c2, 5)),
-          searchResultMode: S.optional(S.String),
-          orderBy: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDiscoveryengineV1AnswerQueryRequestSearchSpecSearchParams",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          content: S.optional(S.String),
-          pageIdentifier: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier:
-          "GoogleCloudDiscoveryengineV1AnswerQueryRequestSearchSpecSearchResultListSearchResultUnstructuredDocumentInfoExtractiveSegment",
-      });
-  }
-}
-function __c3(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(23, __c2, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          uri: S.optional(S.String),
-          title: S.optional(S.String),
-          extractiveSegments: S.optional(__S(24, __c3, 0)),
-          document: S.optional(S.String),
-          documentContexts: S.optional(__S(24, __c3, 0)),
-          extractiveAnswers: S.optional(__S(24, __c3, 0)),
-        }),
-      ).annotate({
-        identifier:
-          "GoogleCloudDiscoveryengineV1AnswerQueryRequestSearchSpecSearchResultListSearchResultUnstructuredDocumentInfo",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          title: S.optional(S.String),
-          uri: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier:
-          "GoogleCloudDiscoveryengineV1AnswerQueryRequestSearchSpecSearchResultListSearchResultChunkInfoDocumentMetadata",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          chunk: S.optional(S.String),
-          documentMetadata: S.optional(__S(26, __c3, 2)),
-          content: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier:
-          "GoogleCloudDiscoveryengineV1AnswerQueryRequestSearchSpecSearchResultListSearchResultChunkInfo",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          unstructuredDocumentInfo: S.optional(__S(25, __c3, 1)),
-          chunkInfo: S.optional(__S(27, __c3, 3)),
-        }),
-      ).annotate({
-        identifier:
-          "GoogleCloudDiscoveryengineV1AnswerQueryRequestSearchSpecSearchResultListSearchResult",
-      });
-    case 5:
-      return S.Array(__S(28, __c3, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          searchResults: S.optional(__S(29, __c3, 5)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDiscoveryengineV1AnswerQueryRequestSearchSpecSearchResultList",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          searchParams: S.optional(__S(22, __c2, 6)),
-          searchResultList: S.optional(__S(30, __c3, 6)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDiscoveryengineV1AnswerQueryRequestSearchSpec",
-      });
-  }
-}
-function __c4(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(S.String);
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          types: S.optional(__S(32, __c4, 0)),
-        }),
-      ).annotate({
-        identifier:
-          "GoogleCloudDiscoveryengineV1AnswerQueryRequestQueryUnderstandingSpecQueryClassificationSpec",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          modelType: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier:
-          "GoogleCloudDiscoveryengineV1AnswerQueryRequestQueryUnderstandingSpecQueryRephraserSpecModelSpec",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          modelSpec: S.optional(__S(34, __c4, 2)),
-          disable: S.optional(S.Boolean),
-          maxRephraseSteps: S.optional(S.Number),
-        }),
-      ).annotate({
-        identifier:
-          "GoogleCloudDiscoveryengineV1AnswerQueryRequestQueryUnderstandingSpecQueryRephraserSpec",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          disableSpellCorrection: S.optional(S.Boolean),
-          queryClassificationSpec: S.optional(__S(33, __c4, 1)),
-          queryRephraserSpec: S.optional(__S(35, __c4, 3)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDiscoveryengineV1AnswerQueryRequestQueryUnderstandingSpec",
-      });
-    case 5:
-      return S.Record(S.String, S.String);
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          asynchronousMode: S.optional(S.Boolean),
-          endUserSpec: S.optional(__S(4, __c0, 4)),
-          relatedQuestionsSpec: S.optional(__S(5, __c0, 5)),
-          safetySpec: S.optional(__S(8, __c1, 0)),
-          groundingSpec: S.optional(__S(9, __c1, 1)),
-          answerGenerationSpec: S.optional(__S(12, __c1, 4)),
-          query: S.optional(__S(13, __c1, 5)),
-          searchSpec: S.optional(__S(31, __c3, 7)),
-          userPseudoId: S.optional(S.String),
-          queryUnderstandingSpec: S.optional(__S(36, __c4, 4)),
-          userLabels: S.optional(__S(37, __c4, 5)),
-          session: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDiscoveryengineV1AnswerQueryRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          servingConfig: S.String.pipe(T.Label()),
-          body: S.optional(__S(38, __c4, 6).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/{+servingConfig}:answer",
-            baseUrl: "https://discoveryengine.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "AnswerProjectsLocationsCollectionsDataStoresServingConfigsRequest",
-      });
-  }
-}
-function __c5(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(S.String);
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          bannedPhrases: S.optional(__S(40, __c5, 0)),
-        }),
-      ).annotate({
-        identifier:
-          "GoogleCloudDiscoveryengineV1AssistAnswerCustomerPolicyEnforcementResultBannedPhraseEnforcementResult",
-      });
-    case 2:
-      return S.Record(S.String, S.Unknown);
-    case 3:
-      return S.Array(__S(42, __c5, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          code: S.optional(S.Number),
-          message: S.optional(S.String),
-          details: S.optional(__S(43, __c5, 3)),
-        }),
-      ).annotate({ identifier: "GoogleRpcStatus" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          error: S.optional(__S(44, __c5, 4)),
-          modelArmorViolation: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier:
-          "GoogleCloudDiscoveryengineV1AssistAnswerCustomerPolicyEnforcementResultModelArmorEnforcementResult",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          bannedPhraseEnforcementResult: S.optional(__S(41, __c5, 1)),
-          modelArmorEnforcementResult: S.optional(__S(45, __c5, 5)),
-        }),
-      ).annotate({
-        identifier:
-          "GoogleCloudDiscoveryengineV1AssistAnswerCustomerPolicyEnforcementResultPolicyEnforcementResult",
-      });
-    case 7:
-      return S.Array(__S(46, __c5, 6));
-  }
-}
-function __c6(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          verdict: S.optional(S.String),
-          violationSource: S.optional(S.String),
-          policyResults: S.optional(__S(47, __c5, 7)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDiscoveryengineV1AssistAnswerCustomerPolicyEnforcementResult",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          day: S.optional(S.Number),
-          month: S.optional(S.Number),
-          year: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "GoogleTypeDate" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          endIndex: S.optional(S.Number),
-          uri: S.optional(S.String),
-          license: S.optional(S.String),
-          title: S.optional(S.String),
-          startIndex: S.optional(S.Number),
-          publicationDate: S.optional(__S(49, __c6, 1)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDiscoveryengineV1Citation",
-      });
-    case 3:
-      return S.Array(__S(50, __c6, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          citations: S.optional(__S(51, __c6, 3)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDiscoveryengineV1CitationMetadata",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          mimeType: S.optional(S.String),
-          fileId: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDiscoveryengineV1AssistantContentFile",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          outcome: S.optional(S.String),
-          output: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDiscoveryengineV1AssistantContentCodeExecutionResult",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          code: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDiscoveryengineV1AssistantContentExecutableCode",
-      });
-  }
-}
-function __c7(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          mimeType: S.optional(S.String),
-          data: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDiscoveryengineV1AssistantContentBlob",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          file: S.optional(__S(53, __c6, 5)),
-          text: S.optional(S.String),
-          role: S.optional(S.String),
-          codeExecutionResult: S.optional(__S(54, __c6, 6)),
-          thought: S.optional(S.Boolean),
-          executableCode: S.optional(__S(55, __c6, 7)),
-          inlineData: S.optional(__S(56, __c7, 0)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDiscoveryengineV1AssistantContent",
-      });
-    case 2:
-      return S.Array(S.Number);
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          contentId: S.optional(S.String),
-          referenceIndices: S.optional(__S(58, __c7, 2)),
-        }),
-      ).annotate({
-        identifier:
-          "GoogleCloudDiscoveryengineV1AssistantGroundedContentTextGroundingMetadataVisualSegment",
-      });
-    case 4:
-      return S.Array(__S(59, __c7, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          title: S.optional(S.String),
-          pageIdentifier: S.optional(S.String),
-          language: S.optional(S.String),
-          mimeType: S.optional(S.String),
-          domain: S.optional(S.String),
-          uri: S.optional(S.String),
-          document: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier:
-          "GoogleCloudDiscoveryengineV1AssistantGroundedContentTextGroundingMetadataReferenceDocumentMetadata",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          chunkMetadata: S.optional(__S(42, __c5, 2)),
-          documentMetadata: S.optional(__S(61, __c7, 5)),
-          content: S.optional(S.String),
-          codeSnippet: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier:
-          "GoogleCloudDiscoveryengineV1AssistantGroundedContentTextGroundingMetadataReference",
-      });
-    case 7:
-      return S.Array(__S(62, __c7, 6));
-  }
-}
-function __c8(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          startIndex: S.optional(S.String),
-          referenceIndices: S.optional(__S(58, __c7, 2)),
-          text: S.optional(S.String),
-          endIndex: S.optional(S.String),
-          groundingScore: S.optional(S.Number),
-        }),
-      ).annotate({
-        identifier:
-          "GoogleCloudDiscoveryengineV1AssistantGroundedContentTextGroundingMetadataSegment",
-      });
-    case 1:
-      return S.Array(__S(64, __c8, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          visualSegments: S.optional(__S(60, __c7, 4)),
-          references: S.optional(__S(63, __c7, 7)),
-          segments: S.optional(__S(65, __c8, 1)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDiscoveryengineV1AssistantGroundedContentTextGroundingMetadata",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          citationMetadata: S.optional(__S(52, __c6, 4)),
-          content: S.optional(__S(57, __c7, 1)),
-          textGroundingMetadata: S.optional(__S(66, __c8, 2)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDiscoveryengineV1AssistantGroundedContent",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          groundedContent: S.optional(__S(67, __c8, 3)),
-          createTime: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDiscoveryengineV1AssistAnswerReply",
-      });
-    case 5:
-      return S.Array(__S(68, __c8, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          customerPolicyEnforcementResult: S.optional(__S(48, __c6, 0)),
-          connectorDisplayNames: S.optional(__S(37, __c4, 5)),
-          state: S.optional(S.String),
-          name: S.optional(S.String),
-          replies: S.optional(__S(69, __c8, 5)),
-          assistSkippedReasons: S.optional(__S(32, __c4, 0)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDiscoveryengineV1AssistAnswer",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          referenceId: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDiscoveryengineV1AnswerCitationSource",
-      });
-  }
-}
-function __c9(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(71, __c8, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          groundingCheckRequired: S.optional(S.Boolean),
-          endIndex: S.optional(S.String),
-          startIndex: S.optional(S.String),
-          groundingScore: S.optional(S.Number),
-          sources: S.optional(__S(72, __c9, 0)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDiscoveryengineV1AnswerGroundingSupport",
-      });
-    case 2:
-      return S.Array(__S(73, __c9, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          query: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDiscoveryengineV1AnswerStepActionSearchAction",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          content: S.optional(S.String),
-          relevanceScore: S.optional(S.Number),
-          chunk: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDiscoveryengineV1AnswerStepActionObservationSearchResultChunkInfo",
-      });
-    case 5:
-      return S.Array(__S(76, __c9, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          snippet: S.optional(S.String),
-          snippetStatus: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier:
-          "GoogleCloudDiscoveryengineV1AnswerStepActionObservationSearchResultSnippetInfo",
-      });
-    case 7:
-      return S.Array(__S(78, __c9, 6));
-  }
-}
-function __c10(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          document: S.optional(S.String),
-          uri: S.optional(S.String),
-          structData: S.optional(__S(42, __c5, 2)),
-          title: S.optional(S.String),
-          chunkInfo: S.optional(__S(77, __c9, 5)),
-          snippetInfo: S.optional(__S(79, __c9, 7)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDiscoveryengineV1AnswerStepActionObservationSearchResult",
-      });
-    case 1:
-      return S.Array(__S(80, __c10, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          searchResults: S.optional(__S(81, __c10, 1)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDiscoveryengineV1AnswerStepActionObservation",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          searchAction: S.optional(__S(75, __c9, 3)),
-          observation: S.optional(__S(82, __c10, 2)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDiscoveryengineV1AnswerStepAction",
-      });
-    case 4:
-      return S.Array(__S(83, __c10, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          actions: S.optional(__S(84, __c10, 4)),
-          state: S.optional(S.String),
-          thought: S.optional(S.String),
-          description: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDiscoveryengineV1AnswerStep",
-      });
-    case 6:
-      return S.Array(__S(85, __c10, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          positive: S.optional(S.Boolean),
-          type: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier:
-          "GoogleCloudDiscoveryengineV1AnswerQueryUnderstandingInfoQueryClassificationInfo",
-      });
-  }
-}
-function __c11(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(87, __c10, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          queryClassificationInfo: S.optional(__S(88, __c11, 0)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDiscoveryengineV1AnswerQueryUnderstandingInfo",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          uri: S.optional(S.String),
-          title: S.optional(S.String),
-          structData: S.optional(__S(42, __c5, 2)),
-          document: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDiscoveryengineV1AnswerReferenceStructuredDocumentInfo",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          relevanceScore: S.optional(S.Number),
-          content: S.optional(S.String),
-          pageIdentifier: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier:
-          "GoogleCloudDiscoveryengineV1AnswerReferenceUnstructuredDocumentInfoChunkContent",
-      });
-    case 4:
-      return S.Array(__S(91, __c11, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          chunkContents: S.optional(__S(92, __c11, 4)),
-          uri: S.optional(S.String),
-          structData: S.optional(__S(42, __c5, 2)),
-          title: S.optional(S.String),
-          document: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDiscoveryengineV1AnswerReferenceUnstructuredDocumentInfo",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          pageIdentifier: S.optional(S.String),
-          uri: S.optional(S.String),
-          structData: S.optional(__S(42, __c5, 2)),
-          title: S.optional(S.String),
-          document: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDiscoveryengineV1AnswerReferenceChunkInfoDocumentMetadata",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          documentMetadata: S.optional(__S(94, __c11, 6)),
-          chunk: S.optional(S.String),
-          relevanceScore: S.optional(S.Number),
-          content: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDiscoveryengineV1AnswerReferenceChunkInfo",
-      });
-  }
-}
-function __c12(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          structuredDocumentInfo: S.optional(__S(90, __c11, 2)),
-          unstructuredDocumentInfo: S.optional(__S(93, __c11, 5)),
-          chunkInfo: S.optional(__S(95, __c11, 7)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDiscoveryengineV1AnswerReference",
-      });
-    case 1:
-      return S.Array(__S(96, __c12, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          startIndex: S.optional(S.String),
-          endIndex: S.optional(S.String),
-          sources: S.optional(__S(72, __c9, 0)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDiscoveryengineV1AnswerCitation",
-      });
-    case 3:
-      return S.Array(__S(98, __c12, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          category: S.optional(S.String),
-          blocked: S.optional(S.Boolean),
-          severityScore: S.optional(S.Number),
-          severity: S.optional(S.String),
-          probability: S.optional(S.String),
-          probabilityScore: S.optional(S.Number),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDiscoveryengineV1SafetyRating",
-      });
-    case 5:
-      return S.Array(__S(100, __c12, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          relatedQuestions: S.optional(__S(40, __c5, 0)),
-          completeTime: S.optional(S.String),
-          name: S.optional(S.String),
-          groundingSupports: S.optional(__S(74, __c9, 2)),
-          state: S.optional(S.String),
-          steps: S.optional(__S(86, __c10, 6)),
-          answerText: S.optional(S.String),
-          queryUnderstandingInfo: S.optional(__S(89, __c11, 1)),
-          references: S.optional(__S(97, __c12, 1)),
-          citations: S.optional(__S(99, __c12, 3)),
-          createTime: S.optional(S.String),
-          safetyRatings: S.optional(__S(101, __c12, 5)),
-          answerSkippedReasons: S.optional(__S(32, __c4, 0)),
-          groundingScore: S.optional(S.Number),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDiscoveryengineV1Answer",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          queryConfig: S.optional(__S(37, __c4, 5)),
-          live: S.optional(S.Boolean),
-          detailedAssistAnswer: S.optional(__S(70, __c8, 6)),
-          detailedAnswer: S.optional(__S(102, __c12, 6)),
-          answer: S.optional(S.String),
-          query: S.optional(__S(13, __c1, 5)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDiscoveryengineV1SessionTurn",
-      });
-  }
-}
-function __c13(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(103, __c12, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          displayName: S.optional(S.String),
-          name: S.optional(S.String),
-          isPinned: S.optional(S.Boolean),
-          pendingAsyncAssistOperationId: S.optional(S.String),
-          labels: S.optional(__S(40, __c5, 0)),
-          endTime: S.optional(S.String),
-          startTime: S.optional(S.String),
-          turns: S.optional(__S(104, __c13, 0)),
-          userPseudoId: S.optional(S.String),
-          state: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDiscoveryengineV1Session",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          session: S.optional(__S(105, __c13, 1)),
-          answerQueryToken: S.optional(S.String),
-          answer: S.optional(__S(102, __c12, 6)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDiscoveryengineV1AnswerQueryResponse",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          servingConfig: S.String.pipe(T.Label()),
-          body: S.optional(__S(38, __c4, 6).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/{+servingConfig}:answer",
-            baseUrl: "https://discoveryengine.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "AnswerProjectsLocationsCollectionsEnginesServingConfigsRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          servingConfig: S.String.pipe(T.Label()),
-          body: S.optional(__S(38, __c4, 6).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/{+servingConfig}:answer",
-            baseUrl: "https://discoveryengine.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "AnswerProjectsLocationsDataStoresServingConfigsRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          totalRequiredQuota: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDiscoveryengineV1TargetSiteFailureReasonQuotaFailure",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          quotaFailure: S.optional(__S(109, __c13, 5)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDiscoveryengineV1TargetSiteFailureReason",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          siteVerificationState: S.optional(S.String),
-          verifyTime: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDiscoveryengineV1SiteVerificationInfo",
-      });
-  }
-}
-function __c14(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          indexingStatus: S.optional(S.String),
-          providedUriPattern: S.optional(S.String),
-          name: S.optional(S.String),
-          rootDomainUri: S.optional(S.String),
-          failureReason: S.optional(__S(110, __c13, 6)),
-          generatedUriPattern: S.optional(S.String),
-          exactMatch: S.optional(S.Boolean),
-          type: S.optional(S.String),
-          siteVerificationInfo: S.optional(__S(111, __c13, 7)),
-          updateTime: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDiscoveryengineV1TargetSite",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          parent: S.optional(S.String),
-          targetSite: S.optional(__S(112, __c14, 0)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDiscoveryengineV1CreateTargetSiteRequest",
-      });
-    case 2:
-      return S.Array(__S(113, __c14, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          requests: S.optional(__S(114, __c14, 2)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDiscoveryengineV1BatchCreateTargetSitesRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
           parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(115, __c14, 3).pipe(T.HttpBody())),
+          body: S.optional(__S(34, __c1, 2).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -14858,3773 +13964,96 @@ function __c14(j: number): any {
         identifier:
           "BatchCreateProjectsLocationsCollectionsDataStoresSiteSearchEngineTargetSitesRequest",
       });
-    case 5:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          metadata: S.optional(__S(42, __c5, 2)),
-          response: S.optional(__S(42, __c5, 2)),
+          parent: S.optional(S.String),
+          targetSite: S.optional(__S(99, __c3, 3)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDiscoveryengineV1CreateTargetSiteRequest",
+      });
+    case 1:
+      return S.Array(__S(32, __c1, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          requests: S.optional(__S(33, __c1, 1)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDiscoveryengineV1BatchCreateTargetSitesRequest",
+      });
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          metadata: S.optional(__S(10112, __c316, 0)),
+          response: S.optional(__S(10112, __c316, 0)),
           name: S.optional(S.String),
           done: S.optional(S.Boolean),
-          error: S.optional(__S(44, __c5, 4)),
+          error: S.optional(__S(10176, __c318, 0)),
         }),
       ).annotate({
         identifier: "GoogleLongrunningOperation",
       });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(115, __c14, 3).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/{+parent}/targetSites:batchCreate",
-            baseUrl: "https://discoveryengine.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "BatchCreateProjectsLocationsDataStoresSiteSearchEngineTargetSitesRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          "matcher.fhirMatcher.fhirResources": S.optional(__S(40, __c5, 0).pipe(T.Query())),
-          parent: S.String.pipe(T.Label()),
-          "matcher.urisMatcher.uris": S.optional(__S(40, __c5, 0).pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v1/{+parent}/batchGetDocumentsMetadata",
-            baseUrl: "https://discoveryengine.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier:
-          "BatchGetDocumentsMetadataProjectsLocationsCollectionsDataStoresBranchesRequest",
-      });
   }
 }
-function __c15(j: number): any {
+function __c3(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          uri: S.optional(S.String),
-          fhirResource: S.optional(S.String),
+          totalRequiredQuota: S.optional(S.String),
         }),
       ).annotate({
-        identifier:
-          "GoogleCloudDiscoveryengineV1BatchGetDocumentsMetadataResponseDocumentMetadataMatcherValue",
+        identifier: "GoogleCloudDiscoveryengineV1TargetSiteFailureReasonQuotaFailure",
       });
     case 1:
       return S.suspend(() =>
         S.Struct({
-          state: S.optional(S.String),
-          matcherValue: S.optional(__S(120, __c15, 0)),
-          dataIngestionSource: S.optional(S.String),
-          lastRefreshedTime: S.optional(S.String),
+          quotaFailure: S.optional(__S(96, __c3, 0)),
         }),
       ).annotate({
-        identifier: "GoogleCloudDiscoveryengineV1BatchGetDocumentsMetadataResponseDocumentMetadata",
+        identifier: "GoogleCloudDiscoveryengineV1TargetSiteFailureReason",
       });
     case 2:
-      return S.Array(__S(121, __c15, 1));
-    case 3:
       return S.suspend(() =>
         S.Struct({
-          documentsMetadata: S.optional(__S(122, __c15, 2)),
+          siteVerificationState: S.optional(S.String),
+          verifyTime: S.optional(S.String),
         }),
       ).annotate({
-        identifier: "GoogleCloudDiscoveryengineV1BatchGetDocumentsMetadataResponse",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          "matcher.fhirMatcher.fhirResources": S.optional(__S(40, __c5, 0).pipe(T.Query())),
-          parent: S.String.pipe(T.Label()),
-          "matcher.urisMatcher.uris": S.optional(__S(40, __c5, 0).pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v1/{+parent}/batchGetDocumentsMetadata",
-            baseUrl: "https://discoveryengine.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "BatchGetDocumentsMetadataProjectsLocationsDataStoresBranchesRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          lastLoginTime: S.optional(S.String),
-          createTime: S.optional(S.String),
-          userPrincipal: S.optional(S.String),
-          licenseConfig: S.optional(S.String),
-          userProfile: S.optional(S.String),
-          licenseAssignmentState: S.optional(S.String),
-          updateTime: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDiscoveryengineV1UserLicense",
-      });
-    case 6:
-      return S.Array(__S(125, __c15, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          updateMask: S.optional(S.String),
-          userLicenses: S.optional(__S(126, __c15, 6)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDiscoveryengineV1BatchUpdateUserLicensesRequestInlineSource",
-      });
-  }
-}
-function __c16(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          deleteUnassignedUserLicenses: S.optional(S.Boolean),
-          inlineSource: S.optional(__S(127, __c15, 7)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDiscoveryengineV1BatchUpdateUserLicensesRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(128, __c16, 0).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/{+parent}:batchUpdateUserLicenses",
-            baseUrl: "https://discoveryengine.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "BatchUpdateUserLicensesProjectsLocationsUserStoresRequest",
-      });
-    case 2:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "GoogleCloudDiscoveryengineV1BatchVerifyTargetSitesRequest",
+        identifier: "GoogleCloudDiscoveryengineV1SiteVerificationInfo",
       });
     case 3:
       return S.suspend(() =>
         S.Struct({
-          parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(130, __c16, 2).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/{+parent}:batchVerifyTargetSites",
-            baseUrl: "https://discoveryengine.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier:
-          "BatchVerifyTargetSitesProjectsLocationsCollectionsDataStoresSiteSearchEngineRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-          body: S.optional(__S(130, __c16, 2).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/{+name}:cancel",
-            baseUrl: "https://discoveryengine.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "CancelProjectsLocationsCollectionsDataStoresBranchesOperationsRequest",
-      });
-    case 5:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "GoogleProtobufEmpty",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          tenant: S.String.pipe(T.Label()),
-          name: S.String.pipe(T.Label()),
-          body: S.optional(__S(130, __c16, 2).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/{+tenant}/a2a/v1/{+name}:cancel",
-            baseUrl: "https://discoveryengine.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "CancelProjectsLocationsCollectionsEnginesAssistantsAgentsA2aV1TasksRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          fileWithBytes: S.optional(S.String),
-          mimeType: S.optional(S.String),
+          indexingStatus: S.optional(S.String),
+          providedUriPattern: S.optional(S.String),
           name: S.optional(S.String),
-          fileWithUri: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "A2aV1FilePart" });
-  }
-}
-function __c17(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          data: S.optional(__S(42, __c5, 2)),
-        }),
-      ).annotate({ identifier: "A2aV1DataPart" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          text: S.optional(S.String),
-          file: S.optional(__S(135, __c16, 7)),
-          data: S.optional(__S(136, __c17, 0)),
-          metadata: S.optional(__S(42, __c5, 2)),
-        }),
-      ).annotate({ identifier: "A2aV1Part" });
-    case 2:
-      return S.Array(__S(137, __c17, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          messageId: S.optional(S.String),
-          taskId: S.optional(S.String),
-          metadata: S.optional(__S(42, __c5, 2)),
-          role: S.optional(S.String),
-          content: S.optional(__S(138, __c17, 2)),
-          extensions: S.optional(__S(40, __c5, 0)),
-          contextId: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "A2aV1Message" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          timestamp: S.optional(S.String),
-          message: S.optional(__S(139, __c17, 3)),
-          state: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "A2aV1TaskStatus" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.optional(S.String),
-          metadata: S.optional(__S(42, __c5, 2)),
-          parts: S.optional(__S(138, __c17, 2)),
-          artifactId: S.optional(S.String),
-          description: S.optional(S.String),
-          extensions: S.optional(__S(40, __c5, 0)),
-        }),
-      ).annotate({ identifier: "A2aV1Artifact" });
-    case 6:
-      return S.Array(__S(141, __c17, 5));
-    case 7:
-      return S.Array(__S(139, __c17, 3));
-  }
-}
-function __c18(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          contextId: S.optional(S.String),
-          id: S.optional(S.String),
-          status: S.optional(__S(140, __c17, 4)),
-          artifacts: S.optional(__S(142, __c17, 6)),
-          metadata: S.optional(__S(42, __c5, 2)),
-          history: S.optional(__S(143, __c17, 7)),
-        }),
-      ).annotate({ identifier: "A2aV1Task" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-          body: S.optional(__S(130, __c16, 2).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/{+name}:cancel",
-            baseUrl: "https://discoveryengine.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "CancelProjectsLocationsCollectionsEnginesOperationsRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-          body: S.optional(__S(130, __c16, 2).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/{+name}:cancel",
-            baseUrl: "https://discoveryengine.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "CancelProjectsLocationsDataStoresBranchesOperationsRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-          body: S.optional(__S(130, __c16, 2).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/{+name}:cancel",
-            baseUrl: "https://discoveryengine.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "CancelProjectsOperationsRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          citationThreshold: S.optional(S.Number),
-          enableClaimLevelScore: S.optional(S.Boolean),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDiscoveryengineV1CheckGroundingSpec",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          attributes: S.optional(__S(37, __c4, 5)),
-          factText: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDiscoveryengineV1GroundingFact",
-      });
-    case 6:
-      return S.Array(__S(149, __c18, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          userLabels: S.optional(__S(37, __c4, 5)),
-          groundingSpec: S.optional(__S(148, __c18, 4)),
-          facts: S.optional(__S(150, __c18, 6)),
-          answerCandidate: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDiscoveryengineV1CheckGroundingRequest",
-      });
-  }
-}
-function __c19(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          groundingConfig: S.String.pipe(T.Label()),
-          body: S.optional(__S(151, __c18, 7).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/{+groundingConfig}:check",
-            baseUrl: "https://discoveryengine.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "CheckProjectsLocationsGroundingConfigsRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          chunkText: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDiscoveryengineV1CheckGroundingResponseCheckGroundingFactChunk",
-      });
-    case 2:
-      return S.Array(__S(153, __c19, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          sourceMetadata: S.optional(__S(37, __c4, 5)),
-          chunkText: S.optional(S.String),
-          title: S.optional(S.String),
-          uri: S.optional(S.String),
-          domain: S.optional(S.String),
-          index: S.optional(S.Number),
-          source: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDiscoveryengineV1FactChunk",
-      });
-    case 4:
-      return S.Array(__S(155, __c19, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          score: S.optional(S.Number),
-          endPos: S.optional(S.Number),
-          claimText: S.optional(S.String),
-          startPos: S.optional(S.Number),
-          groundingCheckRequired: S.optional(S.Boolean),
-          citationIndices: S.optional(__S(58, __c7, 2)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDiscoveryengineV1CheckGroundingResponseClaim",
-      });
-    case 6:
-      return S.Array(__S(157, __c19, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          citedFacts: S.optional(__S(154, __c19, 2)),
-          citedChunks: S.optional(__S(156, __c19, 4)),
-          supportScore: S.optional(S.Number),
-          claims: S.optional(__S(158, __c19, 6)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDiscoveryengineV1CheckGroundingResponse",
-      });
-  }
-}
-function __c20(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          userEvent: S.optional(S.String.pipe(T.Query())),
-          uri: S.optional(S.String.pipe(T.Query())),
-          ets: S.optional(S.String.pipe(T.Query())),
-          parent: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v1/{+parent}/userEvents:collect",
-            baseUrl: "https://discoveryengine.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "CollectProjectsLocationsCollectionsDataStoresUserEventsRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          extensions: S.optional(__S(43, __c5, 3)),
-          contentType: S.optional(S.String),
-          data: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "GoogleApiHttpBody" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          parent: S.String.pipe(T.Label()),
-          userEvent: S.optional(S.String.pipe(T.Query())),
-          uri: S.optional(S.String.pipe(T.Query())),
-          ets: S.optional(S.String.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v1/{+parent}/userEvents:collect",
-            baseUrl: "https://discoveryengine.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "CollectProjectsLocationsDataStoresUserEventsRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          userEvent: S.optional(S.String.pipe(T.Query())),
-          parent: S.String.pipe(T.Label()),
-          uri: S.optional(S.String.pipe(T.Query())),
-          ets: S.optional(S.String.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v1/{+parent}/userEvents:collect",
-            baseUrl: "https://discoveryengine.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "CollectProjectsLocationsUserEventsRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          includeTailSuggestions: S.optional(S.Boolean.pipe(T.Query())),
-          queryModel: S.optional(S.String.pipe(T.Query())),
-          userPseudoId: S.optional(S.String.pipe(T.Query())),
-          dataStore: S.String.pipe(T.Label()),
-          query: S.optional(S.String.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v1/{+dataStore}:completeQuery",
-            baseUrl: "https://discoveryengine.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "CompleteQueryProjectsLocationsCollectionsDataStoresRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          suggestion: S.optional(S.String),
-          completableFieldPaths: S.optional(__S(40, __c5, 0)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDiscoveryengineV1CompleteQueryResponseQuerySuggestion",
-      });
-    case 6:
-      return S.Array(__S(165, __c20, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          tailMatchTriggered: S.optional(S.Boolean),
-          querySuggestions: S.optional(__S(166, __c20, 6)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDiscoveryengineV1CompleteQueryResponse",
-      });
-  }
-}
-function __c21(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          longitude: S.optional(S.Number),
-          latitude: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "GoogleTypeLatLng" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          point: S.optional(__S(168, __c21, 0)),
-          address: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDiscoveryengineV1UserInfoPreciseLocation",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          userAgent: S.optional(S.String),
-          timeZone: S.optional(S.String),
-          userId: S.optional(S.String),
-          preciseLocation: S.optional(__S(169, __c21, 1)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDiscoveryengineV1UserInfo",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          condition: S.optional(S.String),
-          boost: S.optional(S.Number),
-        }),
-      ).annotate({
-        identifier:
-          "GoogleCloudDiscoveryengineV1AdvancedCompleteQueryRequestBoostSpecConditionBoostSpec",
-      });
-    case 4:
-      return S.Array(__S(171, __c21, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          conditionBoostSpecs: S.optional(__S(172, __c21, 4)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDiscoveryengineV1AdvancedCompleteQueryRequestBoostSpec",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          suggestionType: S.optional(S.String),
-          maxSuggestions: S.optional(S.Number),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDiscoveryengineV1AdvancedCompleteQueryRequestSuggestionTypeSpec",
-      });
-    case 7:
-      return S.Array(__S(174, __c21, 6));
-  }
-}
-function __c22(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          queryModel: S.optional(S.String),
-          userPseudoId: S.optional(S.String),
-          suggestionTypes: S.optional(__S(32, __c4, 0)),
-          userInfo: S.optional(__S(170, __c21, 2)),
-          boostSpec: S.optional(__S(173, __c21, 5)),
-          includeTailSuggestions: S.optional(S.Boolean),
-          suggestionTypeSpecs: S.optional(__S(175, __c21, 7)),
-          experimentIds: S.optional(__S(40, __c5, 0)),
-          query: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDiscoveryengineV1AdvancedCompleteQueryRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          completionConfig: S.String.pipe(T.Label()),
-          body: S.optional(__S(176, __c22, 0).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/{+completionConfig}:completeQuery",
-            baseUrl: "https://discoveryengine.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "CompleteQueryProjectsLocationsCollectionsDataStoresCompletionConfigRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          completableFieldPaths: S.optional(__S(40, __c5, 0)),
-          suggestion: S.optional(S.String),
-          score: S.optional(S.Number),
-          dataStore: S.optional(__S(40, __c5, 0)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDiscoveryengineV1AdvancedCompleteQueryResponseQuerySuggestion",
-      });
-    case 3:
-      return S.Array(__S(178, __c22, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          mimeType: S.optional(S.String),
-          uri: S.optional(S.String),
-          rawBytes: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDiscoveryengineV1DocumentContent",
-      });
-    case 5:
-      return S.Array(__S(44, __c5, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          indexTime: S.optional(S.String),
-          errorSamples: S.optional(__S(181, __c22, 5)),
-          pendingMessage: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDiscoveryengineV1DocumentIndexStatus",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          groupId: S.optional(S.String),
-          userId: S.optional(S.String),
-          externalEntityId: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDiscoveryengineV1Principal",
-      });
-  }
-}
-function __c23(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(183, __c22, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          principals: S.optional(__S(184, __c23, 0)),
-          idpWide: S.optional(S.Boolean),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDiscoveryengineV1DocumentAclInfoAccessRestriction",
-      });
-    case 2:
-      return S.Array(__S(185, __c23, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          readers: S.optional(__S(186, __c23, 2)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDiscoveryengineV1DocumentAclInfo",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          structData: S.optional(__S(42, __c5, 2)),
-          schemaId: S.optional(S.String),
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          parentDocumentId: S.optional(S.String),
-          content: S.optional(__S(180, __c22, 4)),
-          derivedStructData: S.optional(__S(42, __c5, 2)),
-          indexStatus: S.optional(__S(182, __c22, 6)),
-          indexTime: S.optional(S.String),
-          jsonData: S.optional(S.String),
-          aclInfo: S.optional(__S(187, __c23, 3)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDiscoveryengineV1Document",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          score: S.optional(S.Number),
-          document: S.optional(__S(188, __c23, 4)),
-          displayPhotoUri: S.optional(S.String),
-          personType: S.optional(S.String),
-          dataStore: S.optional(S.String),
-          suggestion: S.optional(S.String),
-          destinationUri: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDiscoveryengineV1AdvancedCompleteQueryResponsePersonSuggestion",
-      });
-    case 6:
-      return S.Array(__S(189, __c23, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          suggestion: S.optional(S.String),
-          recentSearchTime: S.optional(S.String),
-          score: S.optional(S.Number),
-        }),
-      ).annotate({
-        identifier:
-          "GoogleCloudDiscoveryengineV1AdvancedCompleteQueryResponseRecentSearchSuggestion",
-      });
-  }
-}
-function __c24(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(191, __c23, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          suggestion: S.optional(S.String),
-          score: S.optional(S.Number),
-          destinationUri: S.optional(S.String),
-          contentType: S.optional(S.String),
-          iconUri: S.optional(S.String),
-          dataStore: S.optional(S.String),
-          document: S.optional(__S(188, __c23, 4)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDiscoveryengineV1AdvancedCompleteQueryResponseContentSuggestion",
-      });
-    case 2:
-      return S.Array(__S(193, __c24, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          querySuggestions: S.optional(__S(179, __c22, 3)),
-          peopleSuggestions: S.optional(__S(190, __c23, 6)),
-          recentSearchSuggestions: S.optional(__S(192, __c24, 0)),
-          tailMatchTriggered: S.optional(S.Boolean),
-          contentSuggestions: S.optional(__S(194, __c24, 2)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDiscoveryengineV1AdvancedCompleteQueryResponse",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          completionConfig: S.String.pipe(T.Label()),
-          body: S.optional(__S(176, __c22, 0).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/{+completionConfig}:completeQuery",
-            baseUrl: "https://discoveryengine.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "CompleteQueryProjectsLocationsCollectionsEnginesCompletionConfigRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          userPseudoId: S.optional(S.String.pipe(T.Query())),
-          includeTailSuggestions: S.optional(S.Boolean.pipe(T.Query())),
-          queryModel: S.optional(S.String.pipe(T.Query())),
-          dataStore: S.String.pipe(T.Label()),
-          query: S.optional(S.String.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v1/{+dataStore}:completeQuery",
-            baseUrl: "https://discoveryengine.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "CompleteQueryProjectsLocationsDataStoresRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          completionConfig: S.String.pipe(T.Label()),
-          body: S.optional(__S(176, __c22, 0).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/{+completionConfig}:completeQuery",
-            baseUrl: "https://discoveryengine.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "CompleteQueryProjectsLocationsDataStoresCompletionConfigRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          contextDocuments: S.optional(__S(40, __c5, 0)),
-          activeDocument: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDiscoveryengineV1ConversationContext",
-      });
-  }
-}
-function __c25(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          context: S.optional(__S(199, __c24, 7)),
-          input: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDiscoveryengineV1TextInput",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          content: S.optional(S.String),
-          pageIdentifier: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDiscoveryengineV1SearchResponseSummaryReferenceChunkContent",
-      });
-    case 2:
-      return S.Array(__S(201, __c25, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          chunkContents: S.optional(__S(202, __c25, 2)),
-          title: S.optional(S.String),
-          document: S.optional(S.String),
-          uri: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDiscoveryengineV1SearchResponseSummaryReference",
-      });
-    case 4:
-      return S.Array(__S(203, __c25, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          referenceIndex: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDiscoveryengineV1SearchResponseSummaryCitationSource",
-      });
-    case 6:
-      return S.Array(__S(205, __c25, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          endIndex: S.optional(S.String),
-          sources: S.optional(__S(206, __c25, 6)),
-          startIndex: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDiscoveryengineV1SearchResponseSummaryCitation",
-      });
-  }
-}
-function __c26(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(207, __c25, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          citations: S.optional(__S(208, __c26, 0)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDiscoveryengineV1SearchResponseSummaryCitationMetadata",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          summary: S.optional(S.String),
-          references: S.optional(__S(204, __c25, 4)),
-          citationMetadata: S.optional(__S(209, __c26, 1)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDiscoveryengineV1SearchResponseSummarySummaryWithMetadata",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          scores: S.optional(__S(58, __c7, 2)),
-          categories: S.optional(__S(40, __c5, 0)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDiscoveryengineV1SearchResponseSummarySafetyAttributes",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          summaryWithMetadata: S.optional(__S(210, __c26, 2)),
-          safetyAttributes: S.optional(__S(211, __c26, 3)),
-          summaryText: S.optional(S.String),
-          summarySkippedReasons: S.optional(__S(32, __c4, 0)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDiscoveryengineV1SearchResponseSummary",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          summary: S.optional(__S(212, __c26, 4)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDiscoveryengineV1Reply",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          userInput: S.optional(__S(200, __c25, 0)),
-          createTime: S.optional(S.String),
-          reply: S.optional(__S(213, __c26, 5)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDiscoveryengineV1ConversationMessage",
-      });
-    case 7:
-      return S.Array(__S(214, __c26, 6));
-  }
-}
-function __c27(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          userPseudoId: S.optional(S.String),
-          messages: S.optional(__S(215, __c26, 7)),
-          name: S.optional(S.String),
-          state: S.optional(S.String),
-          startTime: S.optional(S.String),
-          endTime: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDiscoveryengineV1Conversation",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          version: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier:
-          "GoogleCloudDiscoveryengineV1SearchRequestContentSearchSpecSummarySpecModelSpec",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          preamble: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier:
-          "GoogleCloudDiscoveryengineV1SearchRequestContentSearchSpecSummarySpecModelPromptSpec",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          useSemanticChunks: S.optional(S.Boolean),
-          summaryResultCount: S.optional(S.Number),
-          modelSpec: S.optional(__S(217, __c27, 1)),
-          ignoreNonSummarySeekingQuery: S.optional(S.Boolean),
-          ignoreLowRelevantContent: S.optional(S.Boolean),
-          modelPromptSpec: S.optional(__S(218, __c27, 2)),
-          languageCode: S.optional(S.String),
-          ignoreAdversarialQuery: S.optional(S.Boolean),
-          ignoreJailBreakingQuery: S.optional(S.Boolean),
-          includeCitations: S.optional(S.Boolean),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDiscoveryengineV1SearchRequestContentSearchSpecSummarySpec",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          filter: S.optional(S.String),
-          query: S.optional(__S(200, __c25, 0)),
-          boostSpec: S.optional(__S(19, __c2, 3)),
-          userLabels: S.optional(__S(37, __c4, 5)),
-          conversation: S.optional(__S(216, __c27, 0)),
-          safeSearch: S.optional(S.Boolean),
-          summarySpec: S.optional(__S(219, __c27, 3)),
-          servingConfig: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDiscoveryengineV1ConverseConversationRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-          body: S.optional(__S(220, __c27, 4).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/{+name}:converse",
-            baseUrl: "https://discoveryengine.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "ConverseProjectsLocationsCollectionsDataStoresConversationsRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          values: S.optional(__S(58, __c7, 2)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDiscoveryengineV1DoubleList",
-      });
-    case 7:
-      return S.Record(S.String, __S(222, __c27, 6));
-  }
-}
-function __c28(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          semanticRelevanceScore: S.optional(S.Number),
-          retrievalSources: S.optional(__S(32, __c4, 0)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDiscoveryengineV1SearchResponseSearchResultRetrievalSignals",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          structData: S.optional(__S(42, __c5, 2)),
-          title: S.optional(S.String),
-          mimeType: S.optional(S.String),
-          uri: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDiscoveryengineV1ChunkDocumentMetadata",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          structureType: S.optional(S.String),
-          content: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDiscoveryengineV1ChunkStructuredContent",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          imageId: S.optional(S.String),
-          structuredContent: S.optional(__S(226, __c28, 2)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDiscoveryengineV1ChunkAnnotationMetadata",
-      });
-    case 4:
-      return S.Array(__S(227, __c28, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          pageStart: S.optional(S.Number),
-          pageEnd: S.optional(S.Number),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDiscoveryengineV1ChunkPageSpan",
-      });
-    case 6:
-      return S.Array(/*@__PURE__*/ S.suspend(() => __S(232, __c29, 0)));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          nextChunks: S.optional(__S(230, __c28, 6)),
-          previousChunks: S.optional(__S(230, __c28, 6)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDiscoveryengineV1ChunkChunkMetadata",
-      });
-  }
-}
-function __c29(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          annotationContents: S.optional(__S(40, __c5, 0)),
-          documentMetadata: S.optional(__S(225, __c28, 1)),
-          dataUrls: S.optional(__S(40, __c5, 0)),
-          name: S.optional(S.String),
-          annotationMetadata: S.optional(__S(228, __c28, 4)),
-          derivedStructData: S.optional(__S(42, __c5, 2)),
-          content: S.optional(S.String),
-          pageSpan: S.optional(__S(229, __c28, 5)),
-          chunkMetadata: S.optional(__S(231, __c28, 7)),
-          relevanceScore: S.optional(S.Number),
-          id: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDiscoveryengineV1Chunk",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.optional(S.String),
-          value: S.optional(S.Number),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDiscoveryengineV1SearchResponseSearchResultRankSignalsCustomSignal",
-      });
-    case 2:
-      return S.Array(__S(233, __c29, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          documentAge: S.optional(S.Number),
-          relevanceScore: S.optional(S.Number),
-          topicalityRank: S.optional(S.Number),
-          keywordSimilarityScore: S.optional(S.Number),
-          defaultRank: S.optional(S.Number),
-          pctrRank: S.optional(S.Number),
-          boostingFactor: S.optional(S.Number),
-          precomputedExpressionValues: S.optional(__S(58, __c7, 2)),
-          semanticSimilarityScore: S.optional(S.Number),
-          customSignals: S.optional(__S(234, __c29, 2)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDiscoveryengineV1SearchResponseSearchResultRankSignals",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          modelScores: S.optional(__S(223, __c27, 7)),
-          retrievalSignals: S.optional(__S(224, __c28, 0)),
-          chunk: S.optional(__S(232, __c29, 0)),
-          id: S.optional(S.String),
-          rankSignals: S.optional(__S(235, __c29, 3)),
-          document: S.optional(__S(188, __c23, 4)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDiscoveryengineV1SearchResponseSearchResult",
-      });
-    case 5:
-      return S.Array(__S(236, __c29, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          conversation: S.optional(__S(216, __c27, 0)),
-          reply: S.optional(__S(213, __c26, 5)),
-          searchResults: S.optional(__S(237, __c29, 5)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDiscoveryengineV1ConverseConversationResponse",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-          body: S.optional(__S(220, __c27, 4).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/{+name}:converse",
-            baseUrl: "https://discoveryengine.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "ConverseProjectsLocationsCollectionsEnginesConversationsRequest",
-      });
-  }
-}
-function __c30(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-          body: S.optional(__S(220, __c27, 4).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/{+name}:converse",
-            baseUrl: "https://discoveryengine.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "ConverseProjectsLocationsDataStoresConversationsRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          unstructuredDataUpdateTime: S.optional(S.String),
-          unstructuredDataSize: S.optional(S.String),
-          structuredDataUpdateTime: S.optional(S.String),
-          websiteDataUpdateTime: S.optional(S.String),
-          structuredDataSize: S.optional(S.String),
-          websiteDataSize: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDiscoveryengineV1DataStoreBillingEstimation",
-      });
-    case 2:
-      return S.Array(S.String);
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          mode: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDiscoveryengineV1NaturalLanguageQueryUnderstandingConfig",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          disableInitialIndex: S.optional(S.Boolean),
-          disableAutomaticRefresh: S.optional(S.Boolean),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDiscoveryengineV1AdvancedSiteSearchConfig",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          superAdminEmailAddress: S.optional(S.String),
-          dasherCustomerId: S.optional(S.String),
+          rootDomainUri: S.optional(S.String),
+          failureReason: S.optional(__S(97, __c3, 1)),
+          generatedUriPattern: S.optional(S.String),
+          exactMatch: S.optional(S.Boolean),
           type: S.optional(S.String),
-          superAdminServiceAccount: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDiscoveryengineV1WorkspaceConfig",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          policy: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDiscoveryengineV1DataProtectionPolicySensitiveDataProtectionPolicy",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          sensitiveDataProtectionPolicy: S.optional(__S(246, __c30, 6)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDiscoveryengineV1DataProtectionPolicy",
-      });
-  }
-}
-function __c31(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          initialFilterGroups: S.optional(__S(40, __c5, 0)),
-          enableStaticIndexingForBatchIngestion: S.optional(S.Boolean),
-          enableConfigurableSchema: S.optional(S.Boolean),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDiscoveryengineV1HealthcareFhirConfig",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          jsonSchema: S.optional(S.String),
-          name: S.optional(S.String),
-          structSchema: S.optional(__S(42, __c5, 2)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDiscoveryengineV1Schema",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          user: S.optional(S.String),
-          enablePsvs: S.optional(S.Boolean),
-          database: S.optional(S.String),
-          instance: S.optional(S.String),
-          password: S.optional(S.String),
-          authMode: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier:
-          "GoogleCloudDiscoveryengineV1DataStoreFederatedSearchConfigAlloyDbConfigAlloyDbConnectionConfig",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          nlConfigId: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier:
-          "GoogleCloudDiscoveryengineV1DataStoreFederatedSearchConfigAlloyDbConfigAlloyDbAiNaturalLanguageConfig",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          alloydbConnectionConfig: S.optional(__S(250, __c31, 2)),
-          returnedFields: S.optional(__S(40, __c5, 0)),
-          alloydbAiNlConfig: S.optional(__S(251, __c31, 3)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDiscoveryengineV1DataStoreFederatedSearchConfigAlloyDbConfig",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          searchConfig: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDiscoveryengineV1DataStoreFederatedSearchConfigNotebooklmConfig",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          appName: S.optional(S.String),
-          instanceName: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier:
-          "GoogleCloudDiscoveryengineV1DataStoreFederatedSearchConfigThirdPartyOauthConfig",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          alloyDbConfig: S.optional(__S(252, __c31, 4)),
-          notebooklmConfig: S.optional(__S(253, __c31, 5)),
-          thirdPartyOauthConfig: S.optional(__S(254, __c31, 6)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDiscoveryengineV1DataStoreFederatedSearchConfig",
-      });
-  }
-}
-function __c32(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          chunkSize: S.optional(S.Number),
-          includeAncestorHeadings: S.optional(S.Boolean),
-        }),
-      ).annotate({
-        identifier:
-          "GoogleCloudDiscoveryengineV1DocumentProcessingConfigChunkingConfigLayoutBasedChunkingConfig",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          layoutBasedChunkingConfig: S.optional(__S(256, __c32, 0)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDiscoveryengineV1DocumentProcessingConfigChunkingConfig",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          enableImageAnnotation: S.optional(S.Boolean),
-          enableLlmLayoutParsing: S.optional(S.Boolean),
-          enableTableAnnotation: S.optional(S.Boolean),
-          excludeHtmlIds: S.optional(__S(40, __c5, 0)),
-          excludeHtmlElements: S.optional(__S(40, __c5, 0)),
-          enableGetProcessedDocument: S.optional(S.Boolean),
-          structuredContentTypes: S.optional(__S(40, __c5, 0)),
-          excludeHtmlClasses: S.optional(__S(40, __c5, 0)),
-        }),
-      ).annotate({
-        identifier:
-          "GoogleCloudDiscoveryengineV1DocumentProcessingConfigParsingConfigLayoutParsingConfig",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          enhancedDocumentElements: S.optional(__S(40, __c5, 0)),
-          useNativeText: S.optional(S.Boolean),
-        }),
-      ).annotate({
-        identifier:
-          "GoogleCloudDiscoveryengineV1DocumentProcessingConfigParsingConfigOcrParsingConfig",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          layoutParsingConfig: S.optional(__S(258, __c32, 2)),
-          ocrParsingConfig: S.optional(__S(259, __c32, 3)),
-          digitalParsingConfig: S.optional(__S(130, __c16, 2)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDiscoveryengineV1DocumentProcessingConfigParsingConfig",
-      });
-    case 5:
-      return S.Record(S.String, __S(260, __c32, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          chunkingConfig: S.optional(__S(257, __c32, 1)),
-          parsingConfigOverrides: S.optional(__S(261, __c32, 5)),
-          name: S.optional(S.String),
-          defaultParsingConfig: S.optional(__S(260, __c32, 4)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDiscoveryengineV1DocumentProcessingConfig",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          disabledForServing: S.optional(S.Boolean),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDiscoveryengineV1DataStoreServingConfigDataStore",
-      });
-  }
-}
-function __c33(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          kmsKey: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDiscoveryengineV1SingleRegionKey",
-      });
-    case 1:
-      return S.Array(__S(264, __c33, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          isDefault: S.optional(S.Boolean),
-          kmsKeyVersion: S.optional(S.String),
-          lastRotationTimestampMicros: S.optional(S.String),
-          singleRegionKeys: S.optional(__S(265, __c33, 1)),
-          state: S.optional(S.String),
-          notebooklmState: S.optional(S.String),
-          kmsKey: S.optional(S.String),
-          name: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDiscoveryengineV1CmekConfig",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          contentConfig: S.optional(S.String),
-          configurableBillingApproach: S.optional(S.String),
-          kmsKeyName: S.optional(S.String),
-          billingEstimation: S.optional(__S(241, __c30, 1)),
-          defaultSchemaId: S.optional(S.String),
-          solutionTypes: S.optional(__S(242, __c30, 2)),
-          naturalLanguageQueryUnderstandingConfig: S.optional(__S(243, __c30, 3)),
-          advancedSiteSearchConfig: S.optional(__S(244, __c30, 4)),
-          isInfobotFaqDataStore: S.optional(S.Boolean),
-          aclEnabled: S.optional(S.Boolean),
-          displayName: S.optional(S.String),
-          identityMappingStore: S.optional(S.String),
-          name: S.optional(S.String),
-          createTime: S.optional(S.String),
-          industryVertical: S.optional(S.String),
-          workspaceConfig: S.optional(__S(245, __c30, 5)),
-          configurableBillingApproachUpdateTime: S.optional(S.String),
-          dataProtectionPolicy: S.optional(__S(247, __c30, 7)),
-          healthcareFhirConfig: S.optional(__S(248, __c31, 0)),
-          startingSchema: S.optional(__S(249, __c31, 1)),
-          federatedSearchConfig: S.optional(__S(255, __c31, 7)),
-          documentProcessingConfig: S.optional(__S(262, __c32, 6)),
-          servingConfigDataStore: S.optional(__S(263, __c32, 7)),
-          cmekConfig: S.optional(__S(266, __c33, 2)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDiscoveryengineV1DataStore",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          skipDefaultSchemaCreation: S.optional(S.Boolean.pipe(T.Query())),
-          parent: S.String.pipe(T.Label()),
-          createAdvancedSiteSearch: S.optional(S.Boolean.pipe(T.Query())),
-          disableCmek: S.optional(S.Boolean.pipe(T.Query())),
-          dataStoreId: S.optional(S.String.pipe(T.Query())),
-          cmekConfigName: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(267, __c33, 3).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/{+parent}/dataStores",
-            baseUrl: "https://discoveryengine.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateProjectsLocationsCollectionsDataStoresRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          documentId: S.optional(S.String.pipe(T.Query())),
-          parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(188, __c23, 4).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/{+parent}/documents",
-            baseUrl: "https://discoveryengine.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateProjectsLocationsCollectionsDataStoresBranchesDocumentsRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          filter: S.optional(S.String),
-          dataStore: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDiscoveryengineV1ControlFilterAction",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          boostAmount: S.optional(S.Number),
-          attributeValue: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier:
-          "GoogleCloudDiscoveryengineV1ControlBoostActionInterpolationBoostSpecControlPoint",
-      });
-  }
-}
-function __c34(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(271, __c33, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          interpolationType: S.optional(S.String),
-          attributeType: S.optional(S.String),
-          fieldName: S.optional(S.String),
-          controlPoints: S.optional(__S(272, __c34, 0)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDiscoveryengineV1ControlBoostActionInterpolationBoostSpec",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          filter: S.optional(S.String),
-          fixedBoost: S.optional(S.Number),
-          boost: S.optional(S.Number),
-          interpolationBoostSpec: S.optional(__S(273, __c34, 1)),
-          dataStore: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDiscoveryengineV1ControlBoostAction",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          title: S.optional(S.String),
-          uri: S.optional(S.String),
-          description: S.optional(S.String),
-          enabled: S.optional(S.Boolean),
-          document: S.optional(S.String),
-          imageUri: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDiscoveryengineV1SearchLinkPromotion",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          dataStore: S.optional(S.String),
-          searchLinkPromotion: S.optional(__S(275, __c34, 3)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDiscoveryengineV1ControlPromoteAction",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          redirectUri: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDiscoveryengineV1ControlRedirectAction",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          synonyms: S.optional(__S(40, __c5, 0)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDiscoveryengineV1ControlSynonymsAction",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          startTime: S.optional(S.String),
-          endTime: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDiscoveryengineV1ConditionTimeRange",
-      });
-  }
-}
-function __c35(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(279, __c34, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          fullMatch: S.optional(S.Boolean),
-          value: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDiscoveryengineV1ConditionQueryTerm",
-      });
-    case 2:
-      return S.Array(__S(281, __c35, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          activeTimeRange: S.optional(__S(280, __c35, 0)),
-          queryTerms: S.optional(__S(282, __c35, 2)),
-          queryRegex: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDiscoveryengineV1Condition",
-      });
-    case 4:
-      return S.Array(__S(283, __c35, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          displayName: S.optional(S.String),
-          filterAction: S.optional(__S(270, __c33, 6)),
-          solutionType: S.optional(S.String),
-          name: S.optional(S.String),
-          boostAction: S.optional(__S(274, __c34, 2)),
-          promoteAction: S.optional(__S(276, __c34, 4)),
-          redirectAction: S.optional(__S(277, __c34, 5)),
-          synonymsAction: S.optional(__S(278, __c34, 6)),
-          conditions: S.optional(__S(284, __c35, 4)),
-          useCases: S.optional(__S(242, __c30, 2)),
-          associatedServingConfigIds: S.optional(__S(40, __c5, 0)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDiscoveryengineV1Control",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          parent: S.String.pipe(T.Label()),
-          controlId: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(285, __c35, 5).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/{+parent}/controls",
-            baseUrl: "https://discoveryengine.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateProjectsLocationsCollectionsDataStoresControlsRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(216, __c27, 0).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/{+parent}/conversations",
-            baseUrl: "https://discoveryengine.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateProjectsLocationsCollectionsDataStoresConversationsRequest",
-      });
-  }
-}
-function __c36(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          schemaId: S.optional(S.String.pipe(T.Query())),
-          parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(249, __c31, 1).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/{+parent}/schemas",
-            baseUrl: "https://discoveryengine.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateProjectsLocationsCollectionsDataStoresSchemasRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          maxExtractiveSegmentCount: S.optional(S.Number),
-          numPreviousSegments: S.optional(S.Number),
-          maxExtractiveAnswerCount: S.optional(S.Number),
-          numNextSegments: S.optional(S.Number),
-          returnExtractiveSegmentScore: S.optional(S.Boolean),
-        }),
-      ).annotate({
-        identifier:
-          "GoogleCloudDiscoveryengineV1SearchRequestContentSearchSpecExtractiveContentSpec",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          referenceOnly: S.optional(S.Boolean),
-          returnSnippet: S.optional(S.Boolean),
-          maxSnippetCount: S.optional(S.Number),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDiscoveryengineV1SearchRequestContentSearchSpecSnippetSpec",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          numNextChunks: S.optional(S.Number),
-          numPreviousChunks: S.optional(S.Number),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDiscoveryengineV1SearchRequestContentSearchSpecChunkSpec",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          summarySpec: S.optional(__S(219, __c27, 3)),
-          extractiveContentSpec: S.optional(__S(289, __c36, 1)),
-          snippetSpec: S.optional(__S(290, __c36, 2)),
-          chunkSpec: S.optional(__S(291, __c36, 3)),
-          searchResultMode: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDiscoveryengineV1SearchRequestContentSearchSpec",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          contentSearchSpec: S.optional(__S(292, __c36, 4)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDiscoveryengineV1ServingConfigGenericConfig",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          enableUserDefinedClassifier: S.optional(S.Boolean),
-          topP: S.optional(S.Number),
-          taskMarker: S.optional(S.String),
-          modelId: S.optional(S.String),
-          topK: S.optional(S.String),
-          seed: S.optional(S.Number),
-          preamble: S.optional(S.String),
-          temperature: S.optional(S.Number),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDiscoveryengineV1AnswerGenerationSpecUserDefinedClassifierSpec",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          userDefinedClassifierSpec: S.optional(__S(294, __c36, 6)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDiscoveryengineV1AnswerGenerationSpec",
-      });
-  }
-}
-function __c37(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          contentWatchedPercentageThreshold: S.optional(S.Number),
-          contentFreshnessCutoffDays: S.optional(S.Number),
-          demotionEventType: S.optional(S.String),
-          demoteContentWatchedPastDays: S.optional(S.Number),
-          contentWatchedSecondsThreshold: S.optional(S.Number),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDiscoveryengineV1ServingConfigMediaConfig",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
+          siteVerificationInfo: S.optional(__S(98, __c3, 2)),
           updateTime: S.optional(S.String),
-          genericConfig: S.optional(__S(293, __c36, 5)),
-          boostControlIds: S.optional(__S(40, __c5, 0)),
-          promoteControlIds: S.optional(__S(40, __c5, 0)),
-          name: S.optional(S.String),
-          onewaySynonymsControlIds: S.optional(__S(40, __c5, 0)),
-          dissociateControlIds: S.optional(__S(40, __c5, 0)),
-          replacementControlIds: S.optional(__S(40, __c5, 0)),
-          createTime: S.optional(S.String),
-          redirectControlIds: S.optional(__S(40, __c5, 0)),
-          synonymsControlIds: S.optional(__S(40, __c5, 0)),
-          modelId: S.optional(S.String),
-          diversityLevel: S.optional(S.String),
-          ignoreControlIds: S.optional(__S(40, __c5, 0)),
-          displayName: S.optional(S.String),
-          solutionType: S.optional(S.String),
-          filterControlIds: S.optional(__S(40, __c5, 0)),
-          rankingExpression: S.optional(S.String),
-          answerGenerationSpec: S.optional(__S(295, __c36, 7)),
-          mediaConfig: S.optional(__S(296, __c37, 0)),
         }),
       ).annotate({
-        identifier: "GoogleCloudDiscoveryengineV1ServingConfig",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          servingConfigId: S.optional(S.String.pipe(T.Query())),
-          parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(297, __c37, 1).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/{+parent}/servingConfigs",
-            baseUrl: "https://discoveryengine.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateProjectsLocationsCollectionsDataStoresServingConfigsRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          sessionId: S.optional(S.String.pipe(T.Query())),
-          parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(105, __c13, 1).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/{+parent}/sessions",
-            baseUrl: "https://discoveryengine.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateProjectsLocationsCollectionsDataStoresSessionsRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.optional(S.String),
-          uri: S.optional(S.String),
-          createTime: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDiscoveryengineV1Sitemap",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(300, __c37, 4).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/{+parent}/sitemaps",
-            baseUrl: "https://discoveryengine.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateProjectsLocationsCollectionsDataStoresSiteSearchEngineSitemapsRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(112, __c14, 0).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/{+parent}/targetSites",
-            baseUrl: "https://discoveryengine.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier:
-          "CreateProjectsLocationsCollectionsDataStoresSiteSearchEngineTargetSitesRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          disablePrivateKgQueryUnderstanding: S.optional(S.Boolean),
-          disablePrivateKgAutoComplete: S.optional(S.Boolean),
-          disablePrivateKgQueryUiChips: S.optional(S.Boolean),
-          disablePrivateKgEnrichment: S.optional(S.Boolean),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDiscoveryengineV1EngineKnowledgeGraphConfigFeatureConfig",
+        identifier: "GoogleCloudDiscoveryengineV1TargetSite",
       });
   }
 }
-function __c38(j: number): any {
+function __c4(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() =>
-        S.Struct({
-          enableCloudKnowledgeGraph: S.optional(S.Boolean),
-          cloudKnowledgeGraphTypes: S.optional(__S(40, __c5, 0)),
-          featureConfig: S.optional(__S(303, __c37, 7)),
-          privateKnowledgeGraphTypes: S.optional(__S(40, __c5, 0)),
-          enablePrivateKnowledgeGraph: S.optional(S.Boolean),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDiscoveryengineV1EngineKnowledgeGraphConfig",
-      });
-    case 1:
-      return S.Record(S.String, S.String);
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          days: S.optional(S.Number),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDiscoveryengineV1SessionConfigSessionTtl",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          sessionTtl: S.optional(__S(306, __c38, 2)),
-          sessionManagementPolicy: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDiscoveryengineV1SessionConfig",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          dialogflowAgent: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDiscoveryengineV1EngineChatEngineMetadata",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDiscoveryengineV1AgentGatewaySettingAgentGatewayReference",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          defaultEgressAgentGateway: S.optional(__S(309, __c38, 5)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDiscoveryengineV1AgentGatewaySetting",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          observabilityEnabled: S.optional(S.Boolean),
-          sensitiveLoggingEnabled: S.optional(S.Boolean),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDiscoveryengineV1ObservabilityConfig",
-      });
-  }
-}
-function __c39(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          companyName: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDiscoveryengineV1EngineCommonConfig",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          timeZone: S.optional(S.String),
-          defaultLanguageCode: S.optional(S.String),
-          business: S.optional(S.String),
-          location: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDiscoveryengineV1EngineChatEngineConfigAgentCreationConfig",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          agentCreationConfig: S.optional(__S(313, __c39, 1)),
-          allowCrossRegion: S.optional(S.Boolean),
-          dialogflowAgentToLink: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDiscoveryengineV1EngineChatEngineConfig",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          requiredSubscriptionTier: S.optional(S.String),
-          searchAddOns: S.optional(__S(32, __c4, 0)),
-          searchTier: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDiscoveryengineV1EngineSearchEngineConfig",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          targetFieldValueFloat: S.optional(S.Number),
-          targetField: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier:
-          "GoogleCloudDiscoveryengineV1EngineMediaRecommendationEngineConfigOptimizationObjectiveConfig",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          contextEventType: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier:
-          "GoogleCloudDiscoveryengineV1EngineMediaRecommendationEngineConfigRecommendedForYouFeatureConfig",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          timeWindowDays: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier:
-          "GoogleCloudDiscoveryengineV1EngineMediaRecommendationEngineConfigMostPopularFeatureConfig",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          recommendedForYouConfig: S.optional(__S(317, __c39, 5)),
-          mostPopularConfig: S.optional(__S(318, __c39, 6)),
-        }),
-      ).annotate({
-        identifier:
-          "GoogleCloudDiscoveryengineV1EngineMediaRecommendationEngineConfigEngineFeaturesConfig",
-      });
-  }
-}
-function __c40(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          type: S.optional(S.String),
-          optimizationObjectiveConfig: S.optional(__S(316, __c39, 4)),
-          trainingState: S.optional(S.String),
-          engineFeaturesConfig: S.optional(__S(319, __c39, 7)),
-          optimizationObjective: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDiscoveryengineV1EngineMediaRecommendationEngineConfig",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          knowledgeGraphConfig: S.optional(__S(304, __c38, 0)),
-          cmekConfig: S.optional(__S(266, __c33, 2)),
-          configurableBillingApproach: S.optional(S.String),
-          associatedAgentRegistry: S.optional(S.String),
-          procurementContactEmails: S.optional(__S(40, __c5, 0)),
-          modelConfigs: S.optional(__S(305, __c38, 1)),
-          dataStoreIds: S.optional(__S(40, __c5, 0)),
-          appType: S.optional(S.String),
-          displayName: S.optional(S.String),
-          sessionConfig: S.optional(__S(307, __c38, 3)),
-          createTime: S.optional(S.String),
-          chatEngineMetadata: S.optional(__S(308, __c38, 4)),
-          agentGatewaySetting: S.optional(__S(310, __c38, 6)),
-          observabilityConfig: S.optional(__S(311, __c38, 7)),
-          disableAnalytics: S.optional(S.Boolean),
-          industryVertical: S.optional(S.String),
-          updateTime: S.optional(S.String),
-          name: S.optional(S.String),
-          marketplaceAgentVisibility: S.optional(S.String),
-          commonConfig: S.optional(__S(312, __c39, 0)),
-          features: S.optional(__S(305, __c38, 1)),
-          connectorTenantInfo: S.optional(__S(37, __c4, 5)),
-          chatEngineConfig: S.optional(__S(314, __c39, 2)),
-          solutionType: S.optional(S.String),
-          searchEngineConfig: S.optional(__S(315, __c39, 3)),
-          mediaRecommendationEngineConfig: S.optional(__S(320, __c40, 0)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDiscoveryengineV1Engine",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          parent: S.String.pipe(T.Label()),
-          engineId: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(321, __c40, 1).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/{+parent}/engines",
-            baseUrl: "https://discoveryengine.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateProjectsLocationsCollectionsEnginesRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          matchType: S.optional(S.String),
-          phrase: S.optional(S.String),
-          ignoreDiacritics: S.optional(S.Boolean),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDiscoveryengineV1AssistantCustomerPolicyBannedPhrase",
-      });
-    case 4:
-      return S.Array(__S(323, __c40, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          failureMode: S.optional(S.String),
-          responseTemplate: S.optional(S.String),
-          userPromptTemplate: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDiscoveryengineV1AssistantCustomerPolicyModelArmorConfig",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          bannedPhrases: S.optional(__S(324, __c40, 4)),
-          modelArmorConfig: S.optional(__S(325, __c40, 5)),
-          dataProtectionPolicy: S.optional(__S(247, __c30, 7)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDiscoveryengineV1AssistantCustomerPolicy",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          additionalSystemInstruction: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDiscoveryengineV1AssistantGenerationConfigSystemInstruction",
-      });
-  }
-}
-function __c41(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          systemInstruction: S.optional(__S(327, __c40, 7)),
-          allowedModelIds: S.optional(__S(40, __c5, 0)),
-          defaultModelId: S.optional(S.String),
-          defaultLanguage: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDiscoveryengineV1AssistantGenerationConfig",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          toolName: S.optional(S.String),
-          toolDisplayName: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDiscoveryengineV1AssistantToolInfo",
-      });
-    case 2:
-      return S.Array(__S(329, __c41, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          toolInfo: S.optional(__S(330, __c41, 2)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDiscoveryengineV1AssistantToolList",
-      });
-    case 4:
-      return S.Record(S.String, __S(331, __c41, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          defaultWebGroundingToggleOff: S.optional(S.Boolean),
-          displayName: S.optional(S.String),
-          customerPolicy: S.optional(__S(326, __c40, 6)),
-          updateTime: S.optional(S.String),
-          generationConfig: S.optional(__S(328, __c41, 0)),
-          description: S.optional(S.String),
-          name: S.optional(S.String),
-          enabledTools: S.optional(__S(332, __c41, 4)),
-          createTime: S.optional(S.String),
-          webGroundingType: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDiscoveryengineV1Assistant",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          assistantId: S.optional(S.String.pipe(T.Query())),
-          parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(333, __c41, 5).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/{+parent}/assistants",
-            baseUrl: "https://discoveryengine.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateProjectsLocationsCollectionsEnginesAssistantsRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          schemes: S.optional(__S(40, __c5, 0)),
-          credentials: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "A2aV1AuthenticationInfo" });
-  }
-}
-function __c42(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          token: S.optional(S.String),
-          authentication: S.optional(__S(335, __c41, 7)),
-          url: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "A2aV1PushNotificationConfig",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          pushNotificationConfig: S.optional(__S(336, __c42, 0)),
-          name: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "A2aV1TaskPushNotificationConfig",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          configId: S.optional(S.String.pipe(T.Query())),
-          parent: S.String.pipe(T.Label()),
-          tenant: S.String.pipe(T.Label()),
-          body: S.optional(__S(337, __c42, 1).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/{+tenant}/a2a/v1/{+parent}",
-            baseUrl: "https://discoveryengine.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier:
-          "CreateProjectsLocationsCollectionsEnginesAssistantsAgentsA2aV1TasksPushNotificationConfigsRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          controlId: S.optional(S.String.pipe(T.Query())),
-          parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(285, __c35, 5).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/{+parent}/controls",
-            baseUrl: "https://discoveryengine.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateProjectsLocationsCollectionsEnginesControlsRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(216, __c27, 0).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/{+parent}/conversations",
-            baseUrl: "https://discoveryengine.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateProjectsLocationsCollectionsEnginesConversationsRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          servingConfigId: S.optional(S.String.pipe(T.Query())),
-          parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(297, __c37, 1).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/{+parent}/servingConfigs",
-            baseUrl: "https://discoveryengine.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateProjectsLocationsCollectionsEnginesServingConfigsRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          parent: S.String.pipe(T.Label()),
-          sessionId: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(105, __c13, 1).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/{+parent}/sessions",
-            baseUrl: "https://discoveryengine.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateProjectsLocationsCollectionsEnginesSessionsRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          parent: S.String.pipe(T.Label()),
-          dataStoreId: S.optional(S.String.pipe(T.Query())),
-          disableCmek: S.optional(S.Boolean.pipe(T.Query())),
-          cmekConfigName: S.optional(S.String.pipe(T.Query())),
-          createAdvancedSiteSearch: S.optional(S.Boolean.pipe(T.Query())),
-          skipDefaultSchemaCreation: S.optional(S.Boolean.pipe(T.Query())),
-          body: S.optional(__S(267, __c33, 3).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/{+parent}/dataStores",
-            baseUrl: "https://discoveryengine.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateProjectsLocationsDataStoresRequest",
-      });
-  }
-}
-function __c43(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          parent: S.String.pipe(T.Label()),
-          documentId: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(188, __c23, 4).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/{+parent}/documents",
-            baseUrl: "https://discoveryengine.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateProjectsLocationsDataStoresBranchesDocumentsRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          parent: S.String.pipe(T.Label()),
-          controlId: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(285, __c35, 5).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/{+parent}/controls",
-            baseUrl: "https://discoveryengine.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateProjectsLocationsDataStoresControlsRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(216, __c27, 0).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/{+parent}/conversations",
-            baseUrl: "https://discoveryengine.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateProjectsLocationsDataStoresConversationsRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          parent: S.String.pipe(T.Label()),
-          schemaId: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(249, __c31, 1).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/{+parent}/schemas",
-            baseUrl: "https://discoveryengine.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateProjectsLocationsDataStoresSchemasRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          parent: S.String.pipe(T.Label()),
-          servingConfigId: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(297, __c37, 1).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/{+parent}/servingConfigs",
-            baseUrl: "https://discoveryengine.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateProjectsLocationsDataStoresServingConfigsRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          sessionId: S.optional(S.String.pipe(T.Query())),
-          parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(105, __c13, 1).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/{+parent}/sessions",
-            baseUrl: "https://discoveryengine.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateProjectsLocationsDataStoresSessionsRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(300, __c37, 4).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/{+parent}/sitemaps",
-            baseUrl: "https://discoveryengine.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateProjectsLocationsDataStoresSiteSearchEngineSitemapsRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(112, __c14, 0).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/{+parent}/targetSites",
-            baseUrl: "https://discoveryengine.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateProjectsLocationsDataStoresSiteSearchEngineTargetSitesRequest",
-      });
-  }
-}
-function __c44(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          cmekConfig: S.optional(__S(266, __c33, 2)),
-          name: S.optional(S.String),
-          kmsKeyName: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDiscoveryengineV1IdentityMappingStore",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          identityMappingStoreId: S.optional(S.String.pipe(T.Query())),
-          disableCmek: S.optional(S.Boolean.pipe(T.Query())),
-          cmekConfigName: S.optional(S.String.pipe(T.Query())),
-          parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(352, __c44, 0).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/{+parent}/identityMappingStores",
-            baseUrl: "https://discoveryengine.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateProjectsLocationsIdentityMappingStoresRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.optional(S.String),
-          geminiBundle: S.optional(S.Boolean),
-          earlyTerminationDate: S.optional(__S(49, __c6, 1)),
-          autoRenew: S.optional(S.Boolean),
-          licenseCount: S.optional(S.String),
-          earlyTerminated: S.optional(S.Boolean),
-          startDate: S.optional(__S(49, __c6, 1)),
-          subscriptionTier: S.optional(S.String),
-          state: S.optional(S.String),
-          subscriptionTerm: S.optional(S.String),
-          endDate: S.optional(__S(49, __c6, 1)),
-          freeTrial: S.optional(S.Boolean),
-          lastUserUpdateTime: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDiscoveryengineV1LicenseConfig",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          parent: S.String.pipe(T.Label()),
-          licenseConfigId: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(354, __c44, 2).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/{+parent}/licenseConfigs",
-            baseUrl: "https://discoveryengine.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateProjectsLocationsLicenseConfigsRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "v1/{+name}",
-            baseUrl: "https://discoveryengine.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteProjectsLocationsCmekConfigsRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "v1/{+name}",
-            baseUrl: "https://discoveryengine.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteProjectsLocationsCollectionsRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "v1/{+name}",
-            baseUrl: "https://discoveryengine.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteProjectsLocationsCollectionsDataStoresRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "v1/{+name}",
-            baseUrl: "https://discoveryengine.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteProjectsLocationsCollectionsDataStoresBranchesDocumentsRequest",
-      });
-  }
-}
-function __c45(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "v1/{+name}",
-            baseUrl: "https://discoveryengine.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteProjectsLocationsCollectionsDataStoresControlsRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "v1/{+name}",
-            baseUrl: "https://discoveryengine.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteProjectsLocationsCollectionsDataStoresConversationsRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "v1/{+name}",
-            baseUrl: "https://discoveryengine.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteProjectsLocationsCollectionsDataStoresSchemasRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "v1/{+name}",
-            baseUrl: "https://discoveryengine.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteProjectsLocationsCollectionsDataStoresServingConfigsRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "v1/{+name}",
-            baseUrl: "https://discoveryengine.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteProjectsLocationsCollectionsDataStoresSessionsRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "v1/{+name}",
-            baseUrl: "https://discoveryengine.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteProjectsLocationsCollectionsDataStoresSiteSearchEngineSitemapsRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "v1/{+name}",
-            baseUrl: "https://discoveryengine.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier:
-          "DeleteProjectsLocationsCollectionsDataStoresSiteSearchEngineTargetSitesRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "v1/{+name}",
-            baseUrl: "https://discoveryengine.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteProjectsLocationsCollectionsEnginesRequest",
-      });
-  }
-}
-function __c46(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "v1/{+name}",
-            baseUrl: "https://discoveryengine.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteProjectsLocationsCollectionsEnginesAssistantsRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          tenant: S.String.pipe(T.Label()),
-          name: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "v1/{+tenant}/a2a/v1/{+name}",
-            baseUrl: "https://discoveryengine.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier:
-          "DeleteProjectsLocationsCollectionsEnginesAssistantsAgentsA2aV1TasksPushNotificationConfigsRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "v1/{+name}",
-            baseUrl: "https://discoveryengine.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteProjectsLocationsCollectionsEnginesControlsRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "v1/{+name}",
-            baseUrl: "https://discoveryengine.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteProjectsLocationsCollectionsEnginesConversationsRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "v1/{+name}",
-            baseUrl: "https://discoveryengine.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteProjectsLocationsCollectionsEnginesServingConfigsRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "v1/{+name}",
-            baseUrl: "https://discoveryengine.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteProjectsLocationsCollectionsEnginesSessionsRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "v1/{+name}",
-            baseUrl: "https://discoveryengine.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteProjectsLocationsDataStoresRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "v1/{+name}",
-            baseUrl: "https://discoveryengine.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteProjectsLocationsDataStoresBranchesDocumentsRequest",
-      });
-  }
-}
-function __c47(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "v1/{+name}",
-            baseUrl: "https://discoveryengine.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteProjectsLocationsDataStoresControlsRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "v1/{+name}",
-            baseUrl: "https://discoveryengine.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteProjectsLocationsDataStoresConversationsRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "v1/{+name}",
-            baseUrl: "https://discoveryengine.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteProjectsLocationsDataStoresSchemasRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "v1/{+name}",
-            baseUrl: "https://discoveryengine.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteProjectsLocationsDataStoresServingConfigsRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "v1/{+name}",
-            baseUrl: "https://discoveryengine.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteProjectsLocationsDataStoresSessionsRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "v1/{+name}",
-            baseUrl: "https://discoveryengine.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteProjectsLocationsDataStoresSiteSearchEngineSitemapsRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "v1/{+name}",
-            baseUrl: "https://discoveryengine.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteProjectsLocationsDataStoresSiteSearchEngineTargetSitesRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "v1/{+name}",
-            baseUrl: "https://discoveryengine.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteProjectsLocationsIdentityMappingStoresRequest",
-      });
-  }
-}
-function __c48(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          siteSearchEngine: S.String.pipe(T.Label()),
-          body: S.optional(__S(130, __c16, 2).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/{+siteSearchEngine}:disableAdvancedSiteSearch",
-            baseUrl: "https://discoveryengine.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier:
-          "DisableAdvancedSiteSearchProjectsLocationsCollectionsDataStoresSiteSearchEngineRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          siteSearchEngine: S.String.pipe(T.Label()),
-          body: S.optional(__S(130, __c16, 2).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/{+siteSearchEngine}:disableAdvancedSiteSearch",
-            baseUrl: "https://discoveryengine.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "DisableAdvancedSiteSearchProjectsLocationsDataStoresSiteSearchEngineRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          projectNumber: S.optional(S.String),
-          licenseCount: S.optional(S.String),
-          licenseConfigId: S.optional(S.String),
-          location: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDiscoveryengineV1DistributeLicenseConfigRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          billingAccountLicenseConfig: S.String.pipe(T.Label()),
-          body: S.optional(__S(386, __c48, 2).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/{+billingAccountLicenseConfig}:distributeLicenseConfig",
-            baseUrl: "https://discoveryengine.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "DistributeLicenseConfigBillingAccountsBillingAccountLicenseConfigsRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          licenseConfig: S.optional(__S(354, __c44, 2)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDiscoveryengineV1DistributeLicenseConfigResponse",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          siteSearchEngine: S.String.pipe(T.Label()),
-          body: S.optional(__S(130, __c16, 2).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/{+siteSearchEngine}:enableAdvancedSiteSearch",
-            baseUrl: "https://discoveryengine.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier:
-          "EnableAdvancedSiteSearchProjectsLocationsCollectionsDataStoresSiteSearchEngineRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          siteSearchEngine: S.String.pipe(T.Label()),
-          body: S.optional(__S(130, __c16, 2).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/{+siteSearchEngine}:enableAdvancedSiteSearch",
-            baseUrl: "https://discoveryengine.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "EnableAdvancedSiteSearchProjectsLocationsDataStoresSiteSearchEngineRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          pageToken: S.optional(S.String.pipe(T.Query())),
-          pageSize: S.optional(S.Number.pipe(T.Query())),
-          siteSearchEngine: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v1/{+siteSearchEngine}:fetchDomainVerificationStatus",
-            baseUrl: "https://discoveryengine.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier:
-          "FetchDomainVerificationStatusProjectsLocationsCollectionsDataStoresSiteSearchEngineRequest",
-      });
-  }
-}
-function __c49(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(112, __c14, 0));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          totalSize: S.optional(S.Number),
-          targetSites: S.optional(__S(392, __c49, 0)),
-          nextPageToken: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDiscoveryengineV1FetchDomainVerificationStatusResponse",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          "matcher.urisMatcher.uris": S.optional(__S(40, __c5, 0).pipe(T.Query())),
-          parent: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v1/{+parent}/sitemaps:fetch",
-            baseUrl: "https://discoveryengine.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "FetchProjectsLocationsCollectionsDataStoresSiteSearchEngineSitemapsRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          sitemap: S.optional(__S(300, __c37, 4)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDiscoveryengineV1FetchSitemapsResponseSitemapMetadata",
-      });
-    case 4:
-      return S.Array(__S(395, __c49, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          sitemapsMetadata: S.optional(__S(396, __c49, 4)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDiscoveryengineV1FetchSitemapsResponse",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          parent: S.String.pipe(T.Label()),
-          "matcher.urisMatcher.uris": S.optional(__S(40, __c5, 0).pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v1/{+parent}/sitemaps:fetch",
-            baseUrl: "https://discoveryengine.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "FetchProjectsLocationsDataStoresSiteSearchEngineSitemapsRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v1/{+name}",
-            baseUrl: "https://discoveryengine.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetAclConfigProjectsLocationsRequest",
-      });
-  }
-}
-function __c50(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          workforcePoolName: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDiscoveryengineV1IdpConfigExternalIdpConfig",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          externalIdpConfig: S.optional(__S(400, __c50, 0)),
-          idpType: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDiscoveryengineV1IdpConfig",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          idpConfig: S.optional(__S(401, __c50, 1)),
-          name: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDiscoveryengineV1AclConfig",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          tenant: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v1/{+tenant}/a2a/v1/card",
-            baseUrl: "https://discoveryengine.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetCardProjectsLocationsCollectionsEnginesAssistantsAgentsA2aV1Request",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          organization: S.optional(S.String),
-          url: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "A2aV1AgentProvider" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          protected: S.optional(S.String),
-          signature: S.optional(S.String),
-          header: S.optional(__S(42, __c5, 2)),
-        }),
-      ).annotate({ identifier: "A2aV1AgentCardSignature" });
-    case 6:
-      return S.Array(__S(405, __c50, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          scopes: S.optional(__S(37, __c4, 5)),
-          refreshUrl: S.optional(S.String),
-          authorizationUrl: S.optional(S.String),
-          tokenUrl: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "A2aV1AuthorizationCodeOAuthFlow",
-      });
-  }
-}
-function __c51(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          refreshUrl: S.optional(S.String),
-          scopes: S.optional(__S(37, __c4, 5)),
-          tokenUrl: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "A2aV1ClientCredentialsOAuthFlow",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          authorizationUrl: S.optional(S.String),
-          refreshUrl: S.optional(S.String),
-          scopes: S.optional(__S(37, __c4, 5)),
-        }),
-      ).annotate({ identifier: "A2aV1ImplicitOAuthFlow" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          scopes: S.optional(__S(37, __c4, 5)),
-          tokenUrl: S.optional(S.String),
-          refreshUrl: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "A2aV1PasswordOAuthFlow" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          authorizationCode: S.optional(__S(407, __c50, 7)),
-          clientCredentials: S.optional(__S(408, __c51, 0)),
-          implicit: S.optional(__S(409, __c51, 1)),
-          password: S.optional(__S(410, __c51, 2)),
-        }),
-      ).annotate({ identifier: "A2aV1OAuthFlows" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          flows: S.optional(__S(411, __c51, 3)),
-          description: S.optional(S.String),
-          oauth2MetadataUrl: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "A2aV1OAuth2SecurityScheme",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          description: S.optional(S.String),
-          openIdConnectUrl: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "A2aV1OpenIdConnectSecurityScheme",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          description: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "A2aV1MutualTlsSecurityScheme",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          bearerFormat: S.optional(S.String),
-          description: S.optional(S.String),
-          scheme: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "A2aV1HTTPAuthSecurityScheme",
-      });
-  }
-}
-function __c52(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          description: S.optional(S.String),
-          location: S.optional(S.String),
-          name: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "A2aV1APIKeySecurityScheme",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          oauth2SecurityScheme: S.optional(__S(412, __c51, 4)),
-          openIdConnectSecurityScheme: S.optional(__S(413, __c51, 5)),
-          mtlsSecurityScheme: S.optional(__S(414, __c51, 6)),
-          httpAuthSecurityScheme: S.optional(__S(415, __c51, 7)),
-          apiKeySecurityScheme: S.optional(__S(416, __c52, 0)),
-        }),
-      ).annotate({ identifier: "A2aV1SecurityScheme" });
-    case 2:
-      return S.Record(S.String, __S(417, __c52, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          required: S.optional(S.Boolean),
-          description: S.optional(S.String),
-          params: S.optional(__S(42, __c5, 2)),
-          uri: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "A2aV1AgentExtension" });
-    case 4:
-      return S.Array(__S(419, __c52, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          streaming: S.optional(S.Boolean),
-          pushNotifications: S.optional(S.Boolean),
-          extensions: S.optional(__S(420, __c52, 4)),
-        }),
-      ).annotate({ identifier: "A2aV1AgentCapabilities" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          list: S.optional(__S(40, __c5, 0)),
-        }),
-      ).annotate({ identifier: "A2aV1StringList" });
-    case 7:
-      return S.Record(S.String, __S(422, __c52, 6));
-  }
-}
-function __c53(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          schemes: S.optional(__S(423, __c52, 7)),
-        }),
-      ).annotate({ identifier: "A2aV1Security" });
-    case 1:
-      return S.Array(__S(424, __c53, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          tenant: S.optional(S.String),
-          url: S.optional(S.String),
-          transport: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "A2aV1AgentInterface" });
-    case 3:
-      return S.Array(__S(426, __c53, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          examples: S.optional(__S(40, __c5, 0)),
-          outputModes: S.optional(__S(40, __c5, 0)),
-          tags: S.optional(__S(40, __c5, 0)),
-          security: S.optional(__S(425, __c53, 1)),
-          description: S.optional(S.String),
-          inputModes: S.optional(__S(40, __c5, 0)),
-        }),
-      ).annotate({ identifier: "A2aV1AgentSkill" });
-    case 5:
-      return S.Array(__S(428, __c53, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          provider: S.optional(__S(404, __c50, 4)),
-          iconUrl: S.optional(S.String),
-          version: S.optional(S.String),
-          documentationUrl: S.optional(S.String),
-          defaultOutputModes: S.optional(__S(40, __c5, 0)),
-          signatures: S.optional(__S(406, __c50, 6)),
-          defaultInputModes: S.optional(__S(40, __c5, 0)),
-          securitySchemes: S.optional(__S(418, __c52, 2)),
-          name: S.optional(S.String),
-          url: S.optional(S.String),
-          capabilities: S.optional(__S(421, __c52, 5)),
-          security: S.optional(__S(425, __c53, 1)),
-          preferredTransport: S.optional(S.String),
-          description: S.optional(S.String),
-          protocolVersion: S.optional(S.String),
-          supportsAuthenticatedExtendedCard: S.optional(S.Boolean),
-          additionalInterfaces: S.optional(__S(427, __c53, 3)),
-          skills: S.optional(__S(429, __c53, 5)),
-        }),
-      ).annotate({ identifier: "A2aV1AgentCard" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v1/{+name}",
-            baseUrl: "https://discoveryengine.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetCmekConfigProjectsLocationsRequest",
-      });
-  }
-}
-function __c54(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v1/{+name}",
-            baseUrl: "https://discoveryengine.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetDataConnectorProjectsLocationsCollectionsRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          alertId: S.optional(S.String),
-          enrollState: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDiscoveryengineV1AlertPolicyConfigAlertEnrollment",
-      });
-    case 2:
-      return S.Array(__S(433, __c54, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          alertEnrollments: S.optional(__S(434, __c54, 2)),
-          alertPolicyName: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDiscoveryengineV1AlertPolicyConfig",
-      });
-    case 4:
-      return S.Array(__S(435, __c54, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          version: S.optional(S.String),
-          id: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "GoogleTypeTimeZone" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          nanos: S.optional(S.Number),
-          minutes: S.optional(S.Number),
-          timeZone: S.optional(__S(437, __c54, 5)),
-          utcOffset: S.optional(S.String),
-          month: S.optional(S.Number),
-          seconds: S.optional(S.Number),
-          year: S.optional(S.Number),
-          hours: S.optional(S.Number),
-          day: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "GoogleTypeDateTime" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          refreshInterval: S.optional(S.String),
-          nextSyncTime: S.optional(__S(438, __c54, 6)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDiscoveryengineV1IdentityScheduleConfig",
-      });
-  }
-}
-function __c55(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          enabledActions: S.optional(__S(40, __c5, 0)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDiscoveryengineV1CliConfig",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          jsonAuthParams: S.optional(S.String),
-          additionalParams: S.optional(__S(42, __c5, 2)),
-          authParams: S.optional(__S(42, __c5, 2)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDiscoveryengineV1DataConnectorFederatedConfig",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          error: S.optional(__S(44, __c5, 4)),
-          streamingErrorReason: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDiscoveryengineV1DataConnectorRealtimeSyncConfigStreamingError",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          streamingError: S.optional(__S(442, __c55, 2)),
-          realtimeSyncSecret: S.optional(S.String),
-          webhookUri: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDiscoveryengineV1DataConnectorRealtimeSyncConfig",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          baseVersion: S.optional(S.String),
-          tools: S.optional(__S(43, __c5, 3)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDiscoveryengineV1BAPConfigToolspecOverride",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          enabledActions: S.optional(__S(40, __c5, 0)),
-          supportedConnectorModes: S.optional(__S(32, __c4, 0)),
-          toolspecOverride: S.optional(__S(444, __c55, 4)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDiscoveryengineV1BAPConfig",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          startingSchema: S.optional(__S(249, __c31, 1)),
-          params: S.optional(__S(42, __c5, 2)),
-          jsonParams: S.optional(S.String),
-          dataStore: S.optional(S.String),
-          healthcareFhirConfig: S.optional(__S(248, __c31, 0)),
-          entityName: S.optional(S.String),
-          keyPropertyMappings: S.optional(__S(37, __c4, 5)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDiscoveryengineV1DataConnectorSourceEntity",
-      });
-    case 7:
-      return S.Array(__S(446, __c55, 6));
-  }
-}
-function __c56(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.optional(S.String),
-          displayName: S.optional(S.String),
-          enabled: S.optional(S.Boolean),
-          description: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDiscoveryengineV1DynamicTool",
-      });
-    case 1:
-      return S.Array(__S(448, __c56, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          note: S.optional(S.String),
-          shortDescription: S.optional(S.String),
-          description: S.optional(S.String),
-          author: S.optional(S.String),
-          title: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDiscoveryengineV1DataConnectorConnectorMetadata",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          host: S.optional(S.String),
-          port: S.optional(S.Number),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDiscoveryengineV1DestinationConfigDestination",
-      });
-    case 4:
-      return S.Array(__S(451, __c56, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          destinations: S.optional(__S(452, __c56, 4)),
-          params: S.optional(__S(42, __c5, 2)),
-          jsonParams: S.optional(S.String),
-          key: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDiscoveryengineV1DestinationConfig",
-      });
-    case 6:
-      return S.Array(__S(453, __c56, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          displayName: S.optional(S.String),
-          uri: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDiscoveryengineV1Tenant",
-      });
-  }
-}
-function __c57(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          authParams: S.optional(__S(42, __c5, 2)),
-          additionalParams: S.optional(__S(42, __c5, 2)),
-          tenant: S.optional(__S(455, __c56, 7)),
-          jsonAuthParams: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDiscoveryengineV1DataConnectorEndUserConfig",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          scopes: S.optional(__S(40, __c5, 0)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDiscoveryengineV1ActionConfigScopeList",
-      });
-    case 2:
-      return S.Record(S.String, __S(457, __c57, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          actionParams: S.optional(__S(42, __c5, 2)),
-          createBapConnection: S.optional(S.Boolean),
-          jsonActionParams: S.optional(S.String),
-          useStaticSecrets: S.optional(S.Boolean),
-          userDefinedScopesMapping: S.optional(__S(458, __c57, 2)),
-          serviceName: S.optional(S.String),
-          isActionConfigured: S.optional(S.Boolean),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDiscoveryengineV1ActionConfig",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          latestPauseTime: S.optional(S.String),
-          staticIpEnabled: S.optional(S.Boolean),
-          alertPolicyConfigs: S.optional(__S(436, __c54, 4)),
-          updateTime: S.optional(S.String),
-          errors: S.optional(__S(181, __c22, 5)),
-          name: S.optional(S.String),
-          autoRunDisabled: S.optional(S.Boolean),
-          state: S.optional(S.String),
-          connectorSourceId: S.optional(S.String),
-          connectorModes: S.optional(__S(32, __c4, 0)),
-          identityScheduleConfig: S.optional(__S(439, __c54, 7)),
-          hybridIngestionDisabled: S.optional(S.Boolean),
-          cliConfig: S.optional(__S(440, __c55, 0)),
-          federatedConfig: S.optional(__S(441, __c55, 1)),
-          blockingReasons: S.optional(__S(32, __c4, 0)),
-          oauthStaticIpAddresses: S.optional(__S(40, __c5, 0)),
-          jsonParams: S.optional(S.String),
-          params: S.optional(__S(42, __c5, 2)),
-          realtimeSyncConfig: S.optional(__S(443, __c55, 3)),
-          aclEnabled: S.optional(S.Boolean),
-          staticIpAddresses: S.optional(__S(40, __c5, 0)),
-          tag: S.optional(S.String),
-          dataSource: S.optional(S.String),
-          incrementalSyncDisabled: S.optional(S.Boolean),
-          kmsKeyName: S.optional(S.String),
-          vpcscEnabled: S.optional(S.Boolean),
-          realtimeState: S.optional(S.String),
-          syncMode: S.optional(S.String),
-          privateConnectivityProjectId: S.optional(S.String),
-          bapConfig: S.optional(__S(445, __c55, 5)),
-          actionState: S.optional(S.String),
-          refreshInterval: S.optional(S.String),
-          createEuaSaas: S.optional(S.Boolean),
-          entities: S.optional(__S(447, __c55, 7)),
-          removeParamKeys: S.optional(__S(40, __c5, 0)),
-          dynamicTools: S.optional(__S(449, __c56, 1)),
-          identityRefreshInterval: S.optional(S.String),
-          connectorType: S.optional(S.String),
-          nextSyncTime: S.optional(__S(438, __c54, 6)),
-          dataProtectionPolicy: S.optional(__S(247, __c30, 7)),
-          createTime: S.optional(S.String),
-          incrementalRefreshInterval: S.optional(S.String),
-          metadata: S.optional(__S(450, __c56, 2)),
-          destinationConfigs: S.optional(__S(454, __c56, 6)),
-          endUserConfig: S.optional(__S(456, __c57, 0)),
-          egressFqdns: S.optional(__S(40, __c5, 0)),
-          actionConfig: S.optional(__S(459, __c57, 3)),
-          lastSyncTime: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDiscoveryengineV1DataConnector",
-      });
-    case 5:
       return S.suspend(() =>
         S.Struct({
           "options.requestedPolicyVersion": S.optional(S.Number.pipe(T.Query())),
@@ -18639,7 +14068,11 @@ function __c57(j: number): any {
       ).annotate({
         identifier: "GetIamPolicyProjectsLocationsCollectionsRequest",
       });
-    case 6:
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           description: S.optional(S.String),
@@ -18648,29 +14081,29 @@ function __c57(j: number): any {
           title: S.optional(S.String),
         }),
       ).annotate({ identifier: "GoogleTypeExpr" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          role: S.optional(S.String),
-          members: S.optional(__S(40, __c5, 0)),
-          condition: S.optional(__S(462, __c57, 6)),
-        }),
-      ).annotate({ identifier: "GoogleIamV1Binding" });
-  }
-}
-function __c58(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(463, __c57, 7));
     case 1:
       return S.suspend(() =>
         S.Struct({
+          role: S.optional(S.String),
+          members: S.optional(__S(10208, __c319, 0)),
+          condition: S.optional(__S(160, __c5, 0)),
+        }),
+      ).annotate({ identifier: "GoogleIamV1Binding" });
+    case 2:
+      return S.Array(__S(161, __c5, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
           etag: S.optional(S.String),
-          bindings: S.optional(__S(464, __c58, 0)),
+          bindings: S.optional(__S(162, __c5, 2)),
           version: S.optional(S.Number),
         }),
       ).annotate({ identifier: "GoogleIamV1Policy" });
-    case 2:
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           resource: S.String.pipe(T.Label()),
@@ -18685,7 +14118,11 @@ function __c58(j: number): any {
       ).annotate({
         identifier: "GetIamPolicyProjectsLocationsCollectionsDataStoresRequest",
       });
-    case 3:
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           "options.requestedPolicyVersion": S.optional(S.Number.pipe(T.Query())),
@@ -18700,7 +14137,11 @@ function __c58(j: number): any {
       ).annotate({
         identifier: "GetIamPolicyProjectsLocationsCollectionsEnginesRequest",
       });
-    case 4:
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           "options.requestedPolicyVersion": S.optional(S.Number.pipe(T.Query())),
@@ -18715,7 +14156,11 @@ function __c58(j: number): any {
       ).annotate({
         identifier: "GetIamPolicyProjectsLocationsDataStoresRequest",
       });
-    case 5:
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -18729,7 +14174,11 @@ function __c58(j: number): any {
       ).annotate({
         identifier: "GetProjectsLocationsCmekConfigsRequest",
       });
-    case 6:
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -18743,7 +14192,11 @@ function __c58(j: number): any {
       ).annotate({
         identifier: "GetProjectsLocationsCollectionsDataConnectorOperationsRequest",
       });
-    case 7:
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -18759,7 +14212,7 @@ function __c58(j: number): any {
       });
   }
 }
-function __c59(j: number): any {
+function __c12(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -18775,7 +14228,11 @@ function __c59(j: number): any {
       ).annotate({
         identifier: "GetProjectsLocationsCollectionsDataStoresBranchesDocumentsRequest",
       });
-    case 1:
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -18789,7 +14246,11 @@ function __c59(j: number): any {
       ).annotate({
         identifier: "GetProjectsLocationsCollectionsDataStoresBranchesOperationsRequest",
       });
-    case 2:
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -18803,7 +14264,30 @@ function __c59(j: number): any {
       ).annotate({
         identifier: "GetProjectsLocationsCollectionsDataStoresControlsRequest",
       });
-    case 3:
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          parent: S.String.pipe(T.Label()),
+          body: S.optional(__S(34, __c1, 2).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/{+parent}/targetSites:batchCreate",
+            baseUrl: "https://discoveryengine.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "BatchCreateProjectsLocationsDataStoresSiteSearchEngineTargetSitesRequest",
+      });
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -18817,7 +14301,11 @@ function __c59(j: number): any {
       ).annotate({
         identifier: "GetProjectsLocationsCollectionsDataStoresConversationsRequest",
       });
-    case 4:
+  }
+}
+function __c17(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -18831,7 +14319,11 @@ function __c59(j: number): any {
       ).annotate({
         identifier: "GetProjectsLocationsCollectionsDataStoresModelsOperationsRequest",
       });
-    case 5:
+  }
+}
+function __c18(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -18845,7 +14337,11 @@ function __c59(j: number): any {
       ).annotate({
         identifier: "GetProjectsLocationsCollectionsDataStoresOperationsRequest",
       });
-    case 6:
+  }
+}
+function __c19(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -18859,7 +14355,11 @@ function __c59(j: number): any {
       ).annotate({
         identifier: "GetProjectsLocationsCollectionsDataStoresSchemasRequest",
       });
-    case 7:
+  }
+}
+function __c20(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -18875,7 +14375,7 @@ function __c59(j: number): any {
       });
   }
 }
-function __c60(j: number): any {
+function __c21(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -18891,7 +14391,11 @@ function __c60(j: number): any {
       ).annotate({
         identifier: "GetProjectsLocationsCollectionsDataStoresServingConfigsRequest",
       });
-    case 1:
+  }
+}
+function __c22(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           includeAnswerDetails: S.optional(S.Boolean.pipe(T.Query())),
@@ -18906,7 +14410,11 @@ function __c60(j: number): any {
       ).annotate({
         identifier: "GetProjectsLocationsCollectionsDataStoresSessionsRequest",
       });
-    case 2:
+  }
+}
+function __c23(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -18920,7 +14428,11 @@ function __c60(j: number): any {
       ).annotate({
         identifier: "GetProjectsLocationsCollectionsDataStoresSessionsAnswersRequest",
       });
-    case 3:
+  }
+}
+function __c24(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -18934,7 +14446,11 @@ function __c60(j: number): any {
       ).annotate({
         identifier: "GetProjectsLocationsCollectionsDataStoresSiteSearchEngineOperationsRequest",
       });
-    case 4:
+  }
+}
+function __c25(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -18948,7 +14464,67 @@ function __c60(j: number): any {
       ).annotate({
         identifier: "GetProjectsLocationsCollectionsDataStoresSiteSearchEngineTargetSitesRequest",
       });
-    case 5:
+  }
+}
+function __c26(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          "matcher.fhirMatcher.fhirResources": S.optional(__S(10208, __c319, 0).pipe(T.Query())),
+          parent: S.String.pipe(T.Label()),
+          "matcher.urisMatcher.uris": S.optional(__S(10208, __c319, 0).pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v1/{+parent}/batchGetDocumentsMetadata",
+            baseUrl: "https://discoveryengine.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier:
+          "BatchGetDocumentsMetadataProjectsLocationsCollectionsDataStoresBranchesRequest",
+      });
+  }
+}
+function __c27(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          uri: S.optional(S.String),
+          fhirResource: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier:
+          "GoogleCloudDiscoveryengineV1BatchGetDocumentsMetadataResponseDocumentMetadataMatcherValue",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          state: S.optional(S.String),
+          matcherValue: S.optional(__S(864, __c27, 0)),
+          dataIngestionSource: S.optional(S.String),
+          lastRefreshedTime: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDiscoveryengineV1BatchGetDocumentsMetadataResponseDocumentMetadata",
+      });
+    case 2:
+      return S.Array(__S(865, __c27, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          documentsMetadata: S.optional(__S(866, __c27, 2)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDiscoveryengineV1BatchGetDocumentsMetadataResponse",
+      });
+  }
+}
+function __c28(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -18963,7 +14539,11 @@ function __c60(j: number): any {
         identifier:
           "GetProjectsLocationsCollectionsDataStoresSiteSearchEngineTargetSitesOperationsRequest",
       });
-    case 6:
+  }
+}
+function __c29(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           languageCode: S.optional(S.String.pipe(T.Query())),
@@ -18983,7 +14563,11 @@ function __c60(j: number): any {
       ).annotate({
         identifier: "GetProjectsLocationsCollectionsDataStoresWidgetConfigsRequest",
       });
-    case 7:
+  }
+}
+function __c30(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           authState: S.optional(S.String),
@@ -18993,11 +14577,7 @@ function __c60(j: number): any {
       ).annotate({
         identifier: "GoogleCloudDiscoveryengineV1WidgetConfigConnectorAuthState",
       });
-  }
-}
-function __c61(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
@@ -19009,20 +14589,20 @@ function __c61(j: number): any {
       ).annotate({
         identifier: "GoogleCloudDiscoveryengineV1WidgetConfigDataStoreComponent",
       });
-    case 1:
-      return S.Array(__S(488, __c61, 0));
     case 2:
+      return S.Array(__S(961, __c30, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           dataSourceDisplayName: S.optional(S.String),
-          connectorAuthState: S.optional(__S(487, __c60, 7)),
+          connectorAuthState: S.optional(__S(960, __c30, 0)),
           tag: S.optional(S.String),
-          metadata: S.optional(__S(450, __c56, 2)),
+          metadata: S.optional(__S(11744, __c367, 0)),
           name: S.optional(S.String),
           connectorIconLink: S.optional(S.String),
           dataSourceVersion: S.optional(S.Number),
-          dataStoreComponents: S.optional(__S(489, __c61, 1)),
+          dataStoreComponents: S.optional(__S(962, __c30, 2)),
           isFirstParty: S.optional(S.Boolean),
           dataSource: S.optional(S.String),
           dataSourceEndUserDisplayName: S.optional(S.String),
@@ -19031,9 +14611,9 @@ function __c61(j: number): any {
       ).annotate({
         identifier: "GoogleCloudDiscoveryengineV1WidgetConfigCollectionComponent",
       });
-    case 3:
-      return S.Array(__S(490, __c61, 2));
     case 4:
+      return S.Array(__S(963, __c30, 3));
+    case 5:
       return S.suspend(() =>
         S.Struct({
           url: S.optional(S.String),
@@ -19041,15 +14621,15 @@ function __c61(j: number): any {
       ).annotate({
         identifier: "GoogleCloudDiscoveryengineV1WidgetConfigImage",
       });
-    case 5:
+    case 6:
       return S.suspend(() =>
         S.Struct({
-          logo: S.optional(__S(492, __c61, 4)),
+          logo: S.optional(__S(965, __c30, 5)),
         }),
       ).annotate({
         identifier: "GoogleCloudDiscoveryengineV1WidgetConfigUiBrandingSettings",
       });
-    case 6:
+    case 7:
       return S.suspend(() =>
         S.Struct({
           displayName: S.optional(S.String),
@@ -19058,38 +14638,34 @@ function __c61(j: number): any {
       ).annotate({
         identifier: "GoogleCloudDiscoveryengineV1WidgetConfigFacetField",
       });
-    case 7:
-      return S.Array(__S(494, __c61, 6));
-  }
-}
-function __c62(j: number): any {
-  switch (j) {
-    case 0:
+    case 8:
+      return S.Array(__S(967, __c30, 7));
+    case 9:
       return S.suspend(() =>
         S.Struct({
           displayTemplate: S.optional(S.String),
           field: S.optional(S.String),
-          deviceVisibility: S.optional(__S(32, __c4, 0)),
+          deviceVisibility: S.optional(__S(10336, __c323, 0)),
         }),
       ).annotate({
         identifier: "GoogleCloudDiscoveryengineV1WidgetConfigUIComponentField",
       });
-    case 1:
-      return S.Record(S.String, __S(496, __c62, 0));
-    case 2:
+    case 10:
+      return S.Record(S.String, __S(969, __c30, 9));
+    case 11:
       return S.suspend(() =>
         S.Struct({
-          facetField: S.optional(__S(495, __c61, 7)),
+          facetField: S.optional(__S(968, __c30, 8)),
           name: S.optional(S.String),
           id: S.optional(S.String),
-          fieldsUiComponentsMap: S.optional(__S(497, __c62, 1)),
+          fieldsUiComponentsMap: S.optional(__S(970, __c30, 10)),
         }),
       ).annotate({
         identifier: "GoogleCloudDiscoveryengineV1WidgetConfigDataStoreUiConfig",
       });
-    case 3:
-      return S.Array(__S(498, __c62, 2));
-    case 4:
+    case 12:
+      return S.Array(__S(971, __c30, 11));
+    case 13:
       return S.suspend(() =>
         S.Struct({
           complianceLevel: S.optional(S.String),
@@ -19098,31 +14674,27 @@ function __c62(j: number): any {
       ).annotate({
         identifier: "GoogleCloudDiscoveryengineV1WidgetConfigCustomerProvidedConfig",
       });
-    case 5:
+    case 14:
       return S.suspend(() =>
         S.Struct({
-          icon: S.optional(__S(492, __c61, 4)),
+          icon: S.optional(__S(965, __c30, 5)),
           title: S.optional(S.String),
           destinationUri: S.optional(S.String),
         }),
       ).annotate({
         identifier: "GoogleCloudDiscoveryengineV1WidgetConfigHomepageSettingShortcut",
       });
-    case 6:
-      return S.Array(__S(501, __c62, 5));
-    case 7:
+    case 15:
+      return S.Array(__S(974, __c30, 14));
+    case 16:
       return S.suspend(() =>
         S.Struct({
-          shortcuts: S.optional(__S(502, __c62, 6)),
+          shortcuts: S.optional(__S(975, __c30, 15)),
         }),
       ).annotate({
         identifier: "GoogleCloudDiscoveryengineV1WidgetConfigHomepageSetting",
       });
-  }
-}
-function __c63(j: number): any {
-  switch (j) {
-    case 0:
+    case 17:
       return S.suspend(() =>
         S.Struct({
           disableLocationContext: S.optional(S.Boolean),
@@ -19133,21 +14705,21 @@ function __c63(j: number): any {
       ).annotate({
         identifier: "GoogleCloudDiscoveryengineV1WidgetConfigAssistantSettings",
       });
-    case 1:
+    case 18:
       return S.suspend(() =>
         S.Struct({
           batchAuthorizationGroup: S.optional(S.String),
           placeholder: S.optional(S.String),
-          connectorAuthState: S.optional(__S(487, __c60, 7)),
+          connectorAuthState: S.optional(__S(960, __c30, 0)),
         }),
       ).annotate({
         identifier: "GoogleCloudDiscoveryengineV1WidgetConfigBatchAuthStatus",
       });
-    case 2:
-      return S.Array(__S(505, __c63, 1));
-    case 3:
+    case 19:
+      return S.Array(__S(978, __c30, 18));
+    case 20:
       return S.Record(S.String, S.String);
-    case 4:
+    case 21:
       return S.suspend(() =>
         S.Struct({
           semanticAddOnDisabled: S.optional(S.Boolean),
@@ -19157,7 +14729,7 @@ function __c63(j: number): any {
       ).annotate({
         identifier: "GoogleCloudDiscoveryengineV1WidgetConfigUiSettingsSearchAddonSpec",
       });
-    case 5:
+    case 22:
       return S.suspend(() =>
         S.Struct({
           modelVersion: S.optional(S.String),
@@ -19174,18 +14746,18 @@ function __c63(j: number): any {
       ).annotate({
         identifier: "GoogleCloudDiscoveryengineV1WidgetConfigUiSettingsGenerativeAnswerConfig",
       });
-    case 6:
+    case 23:
       return S.suspend(() =>
         S.Struct({
           adminOverridable: S.optional(S.Boolean),
-          regions: S.optional(__S(40, __c5, 0)),
+          regions: S.optional(__S(10208, __c319, 0)),
           enabledByDefault: S.optional(S.Boolean),
         }),
       ).annotate({
         identifier:
           "GoogleCloudDiscoveryengineV1WidgetConfigUiSettingsModelConfigInfoResolvedModelAdminView",
       });
-    case 7:
+    case 24:
       return S.suspend(() =>
         S.Struct({
           modelId: S.optional(S.String),
@@ -19197,73 +14769,69 @@ function __c63(j: number): any {
           iconUrl: S.optional(S.String),
           description: S.optional(S.String),
           label: S.optional(S.String),
-          adminView: S.optional(__S(510, __c63, 6)),
+          adminView: S.optional(__S(983, __c30, 23)),
         }),
       ).annotate({
         identifier:
           "GoogleCloudDiscoveryengineV1WidgetConfigUiSettingsModelConfigInfoResolvedModel",
       });
-  }
-}
-function __c64(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(511, __c63, 7));
-    case 1:
+    case 25:
+      return S.Array(__S(984, __c30, 24));
+    case 26:
       return S.suspend(() =>
         S.Struct({
-          resolvedModels: S.optional(__S(512, __c64, 0)),
+          resolvedModels: S.optional(__S(985, __c30, 25)),
           defaultModelId: S.optional(S.String),
         }),
       ).annotate({
         identifier: "GoogleCloudDiscoveryengineV1WidgetConfigUiSettingsModelConfigInfo",
       });
-    case 2:
+    case 27:
       return S.suspend(() =>
         S.Struct({
           googleDrivePickerEnabled: S.optional(S.Boolean),
           defaultSearchRequestOrderBy: S.optional(S.String),
           sourceAdminDisplayNameEnabled: S.optional(S.Boolean),
-          modelConfigs: S.optional(__S(507, __c63, 3)),
+          modelConfigs: S.optional(__S(980, __c30, 20)),
           enableCreateAgentButton: S.optional(S.Boolean),
           disableUserEventsCollection: S.optional(S.Boolean),
           resultDescriptionType: S.optional(S.String),
           enableSearchAsYouType: S.optional(S.Boolean),
-          features: S.optional(__S(507, __c63, 3)),
+          features: S.optional(__S(980, __c30, 20)),
           interactionType: S.optional(S.String),
-          searchAddonSpec: S.optional(__S(508, __c63, 4)),
-          generativeAnswerConfig: S.optional(__S(509, __c63, 5)),
+          searchAddonSpec: S.optional(__S(981, __c30, 21)),
+          generativeAnswerConfig: S.optional(__S(982, __c30, 22)),
           enableVisualContentSummary: S.optional(S.Boolean),
-          modelConfigInfo: S.optional(__S(513, __c64, 1)),
+          modelConfigInfo: S.optional(__S(986, __c30, 26)),
           enableSafeSearch: S.optional(S.Boolean),
           enablePeopleSearch: S.optional(S.Boolean),
           enableQualityFeedback: S.optional(S.Boolean),
-          dataStoreUiConfigs: S.optional(__S(499, __c62, 3)),
+          dataStoreUiConfigs: S.optional(__S(972, __c30, 12)),
           enableAutocomplete: S.optional(S.Boolean),
           onedrivePickerEnabled: S.optional(S.Boolean),
         }),
       ).annotate({
         identifier: "GoogleCloudDiscoveryengineV1WidgetConfigUiSettings",
       });
-    case 3:
+    case 28:
       return S.suspend(() =>
         S.Struct({
           type: S.optional(S.String),
           description: S.optional(S.String),
           displayName: S.optional(S.String),
-          parameterSchema: S.optional(__S(42, __c5, 2)),
-          outputSchema: S.optional(__S(42, __c5, 2)),
+          parameterSchema: S.optional(__S(10112, __c316, 0)),
+          outputSchema: S.optional(__S(10112, __c316, 0)),
           iconUrl: S.optional(S.String),
         }),
       ).annotate({
         identifier: "GoogleCloudDiscoveryengineV1WidgetConfigNode",
       });
-    case 4:
-      return S.Array(__S(515, __c64, 3));
-    case 5:
+    case 29:
+      return S.Array(__S(988, __c30, 28));
+    case 30:
       return S.suspend(() =>
         S.Struct({
-          allowlistedDomains: S.optional(__S(40, __c5, 0)),
+          allowlistedDomains: S.optional(__S(10208, __c319, 0)),
           workforceIdentityPoolProvider: S.optional(S.String),
           allowPublicAccess: S.optional(S.Boolean),
           enableWebApp: S.optional(S.Boolean),
@@ -19272,52 +14840,56 @@ function __c64(j: number): any {
       ).annotate({
         identifier: "GoogleCloudDiscoveryengineV1WidgetConfigAccessSettings",
       });
-    case 6:
+    case 31:
       return S.suspend(() =>
         S.Struct({
           updateTime: S.optional(S.String),
-          collectionComponents: S.optional(__S(491, __c61, 3)),
+          collectionComponents: S.optional(__S(964, __c30, 4)),
           name: S.optional(S.String),
-          uiBranding: S.optional(__S(493, __c61, 5)),
+          uiBranding: S.optional(__S(966, __c30, 6)),
           enableAutocomplete: S.optional(S.Boolean),
           llmEnabled: S.optional(S.Boolean),
-          dataStoreUiConfigs: S.optional(__S(499, __c62, 3)),
+          dataStoreUiConfigs: S.optional(__S(972, __c30, 12)),
           enableSafeSearch: S.optional(S.Boolean),
           industryVertical: S.optional(S.String),
-          customerProvidedConfig: S.optional(__S(500, __c62, 4)),
+          customerProvidedConfig: S.optional(__S(973, __c30, 13)),
           enableSearchAsYouType: S.optional(S.Boolean),
           enableSnippetResultSummary: S.optional(S.Boolean),
           allowPublicAccess: S.optional(S.Boolean),
           dataStoreType: S.optional(S.String),
-          contentSearchSpec: S.optional(__S(292, __c36, 4)),
-          homepageSetting: S.optional(__S(503, __c62, 7)),
+          contentSearchSpec: S.optional(__S(8803, __c275, 3)),
+          homepageSetting: S.optional(__S(976, __c30, 16)),
           minimumDataTermAccepted: S.optional(S.Boolean),
           defaultSearchRequestOrderBy: S.optional(S.String),
           displayName: S.optional(S.String),
           enablePrivateKnowledgeGraph: S.optional(S.Boolean),
           solutionType: S.optional(S.String),
           enableConversationalSearch: S.optional(S.Boolean),
-          facetField: S.optional(__S(495, __c61, 7)),
-          assistantSettings: S.optional(__S(504, __c63, 0)),
-          fieldsUiComponentsMap: S.optional(__S(497, __c62, 1)),
-          batchAuthStatuses: S.optional(__S(506, __c63, 2)),
+          facetField: S.optional(__S(968, __c30, 8)),
+          assistantSettings: S.optional(__S(977, __c30, 17)),
+          fieldsUiComponentsMap: S.optional(__S(970, __c30, 10)),
+          batchAuthStatuses: S.optional(__S(979, __c30, 19)),
           enableResultScore: S.optional(S.Boolean),
           geminiBundle: S.optional(S.Boolean),
-          uiSettings: S.optional(__S(514, __c64, 2)),
-          allowlistedDomains: S.optional(__S(40, __c5, 0)),
+          uiSettings: S.optional(__S(987, __c30, 27)),
+          allowlistedDomains: S.optional(__S(10208, __c319, 0)),
           enableQualityFeedback: S.optional(S.Boolean),
           enableWebApp: S.optional(S.Boolean),
           createTime: S.optional(S.String),
           resultDisplayType: S.optional(S.String),
           configId: S.optional(S.String),
-          nodes: S.optional(__S(516, __c64, 4)),
+          nodes: S.optional(__S(989, __c30, 29)),
           enableSummarization: S.optional(S.Boolean),
-          accessSettings: S.optional(__S(517, __c64, 5)),
+          accessSettings: S.optional(__S(990, __c30, 30)),
         }),
       ).annotate({
         identifier: "GoogleCloudDiscoveryengineV1WidgetConfig",
       });
-    case 7:
+  }
+}
+function __c31(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -19333,7 +14905,7 @@ function __c64(j: number): any {
       });
   }
 }
-function __c65(j: number): any {
+function __c32(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -19349,7 +14921,11 @@ function __c65(j: number): any {
       ).annotate({
         identifier: "GetProjectsLocationsCollectionsEnginesAssistantsRequest",
       });
-    case 1:
+  }
+}
+function __c33(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -19365,7 +14941,11 @@ function __c65(j: number): any {
       ).annotate({
         identifier: "GetProjectsLocationsCollectionsEnginesAssistantsAgentsA2aV1TasksRequest",
       });
-    case 2:
+  }
+}
+function __c34(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -19381,7 +14961,11 @@ function __c65(j: number): any {
         identifier:
           "GetProjectsLocationsCollectionsEnginesAssistantsAgentsA2aV1TasksPushNotificationConfigsRequest",
       });
-    case 3:
+  }
+}
+function __c35(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -19395,7 +14979,11 @@ function __c65(j: number): any {
       ).annotate({
         identifier: "GetProjectsLocationsCollectionsEnginesAssistantsAgentsOperationsRequest",
       });
-    case 4:
+  }
+}
+function __c36(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -19409,7 +14997,11 @@ function __c65(j: number): any {
       ).annotate({
         identifier: "GetProjectsLocationsCollectionsEnginesControlsRequest",
       });
-    case 5:
+  }
+}
+function __c37(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -19423,7 +15015,11 @@ function __c65(j: number): any {
       ).annotate({
         identifier: "GetProjectsLocationsCollectionsEnginesConversationsRequest",
       });
-    case 6:
+  }
+}
+function __c38(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -19437,7 +15033,31 @@ function __c65(j: number): any {
       ).annotate({
         identifier: "GetProjectsLocationsCollectionsEnginesOperationsRequest",
       });
-    case 7:
+  }
+}
+function __c39(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          "matcher.fhirMatcher.fhirResources": S.optional(__S(10208, __c319, 0).pipe(T.Query())),
+          parent: S.String.pipe(T.Label()),
+          "matcher.urisMatcher.uris": S.optional(__S(10208, __c319, 0).pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v1/{+parent}/batchGetDocumentsMetadata",
+            baseUrl: "https://discoveryengine.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "BatchGetDocumentsMetadataProjectsLocationsDataStoresBranchesRequest",
+      });
+  }
+}
+function __c40(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -19453,7 +15073,7 @@ function __c65(j: number): any {
       });
   }
 }
-function __c66(j: number): any {
+function __c41(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -19470,7 +15090,11 @@ function __c66(j: number): any {
       ).annotate({
         identifier: "GetProjectsLocationsCollectionsEnginesSessionsRequest",
       });
-    case 1:
+  }
+}
+function __c42(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -19484,7 +15108,11 @@ function __c66(j: number): any {
       ).annotate({
         identifier: "GetProjectsLocationsCollectionsEnginesSessionsAnswersRequest",
       });
-    case 2:
+  }
+}
+function __c43(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           acceptCache: S.optional(S.Boolean.pipe(T.Query())),
@@ -19504,7 +15132,11 @@ function __c66(j: number): any {
       ).annotate({
         identifier: "GetProjectsLocationsCollectionsEnginesWidgetConfigsRequest",
       });
-    case 3:
+  }
+}
+function __c44(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -19518,7 +15150,11 @@ function __c66(j: number): any {
       ).annotate({
         identifier: "GetProjectsLocationsCollectionsOperationsRequest",
       });
-    case 4:
+  }
+}
+function __c45(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -19532,7 +15168,11 @@ function __c66(j: number): any {
       ).annotate({
         identifier: "GetProjectsLocationsDataStoresRequest",
       });
-    case 5:
+  }
+}
+function __c46(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -19546,7 +15186,11 @@ function __c66(j: number): any {
       ).annotate({
         identifier: "GetProjectsLocationsDataStoresBranchesDocumentsRequest",
       });
-    case 6:
+  }
+}
+function __c47(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -19560,7 +15204,11 @@ function __c66(j: number): any {
       ).annotate({
         identifier: "GetProjectsLocationsDataStoresBranchesOperationsRequest",
       });
-    case 7:
+  }
+}
+function __c48(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -19576,7 +15224,7 @@ function __c66(j: number): any {
       });
   }
 }
-function __c67(j: number): any {
+function __c49(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -19592,7 +15240,68 @@ function __c67(j: number): any {
       ).annotate({
         identifier: "GetProjectsLocationsDataStoresConversationsRequest",
       });
+  }
+}
+function __c50(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          updateMask: S.optional(S.String),
+          userLicenses: S.optional(__S(1633, __c51, 1)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDiscoveryengineV1BatchUpdateUserLicensesRequestInlineSource",
+      });
     case 1:
+      return S.suspend(() =>
+        S.Struct({
+          deleteUnassignedUserLicenses: S.optional(S.Boolean),
+          inlineSource: S.optional(__S(1600, __c50, 0)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDiscoveryengineV1BatchUpdateUserLicensesRequest",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          parent: S.String.pipe(T.Label()),
+          body: S.optional(__S(1601, __c50, 1).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/{+parent}:batchUpdateUserLicenses",
+            baseUrl: "https://discoveryengine.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "BatchUpdateUserLicensesProjectsLocationsUserStoresRequest",
+      });
+  }
+}
+function __c51(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          lastLoginTime: S.optional(S.String),
+          createTime: S.optional(S.String),
+          userPrincipal: S.optional(S.String),
+          licenseConfig: S.optional(S.String),
+          userProfile: S.optional(S.String),
+          licenseAssignmentState: S.optional(S.String),
+          updateTime: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDiscoveryengineV1UserLicense",
+      });
+    case 1:
+      return S.Array(__S(1632, __c51, 0));
+  }
+}
+function __c52(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -19606,7 +15315,11 @@ function __c67(j: number): any {
       ).annotate({
         identifier: "GetProjectsLocationsDataStoresModelsOperationsRequest",
       });
-    case 2:
+  }
+}
+function __c53(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -19620,7 +15333,11 @@ function __c67(j: number): any {
       ).annotate({
         identifier: "GetProjectsLocationsDataStoresOperationsRequest",
       });
-    case 3:
+  }
+}
+function __c54(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -19634,7 +15351,11 @@ function __c67(j: number): any {
       ).annotate({
         identifier: "GetProjectsLocationsDataStoresSchemasRequest",
       });
-    case 4:
+  }
+}
+function __c55(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -19648,7 +15369,11 @@ function __c67(j: number): any {
       ).annotate({
         identifier: "GetProjectsLocationsDataStoresServingConfigsRequest",
       });
-    case 5:
+  }
+}
+function __c56(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           includeAnswerDetails: S.optional(S.Boolean.pipe(T.Query())),
@@ -19663,7 +15388,11 @@ function __c67(j: number): any {
       ).annotate({
         identifier: "GetProjectsLocationsDataStoresSessionsRequest",
       });
-    case 6:
+  }
+}
+function __c57(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -19677,7 +15406,11 @@ function __c67(j: number): any {
       ).annotate({
         identifier: "GetProjectsLocationsDataStoresSessionsAnswersRequest",
       });
-    case 7:
+  }
+}
+function __c58(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -19693,7 +15426,7 @@ function __c67(j: number): any {
       });
   }
 }
-function __c68(j: number): any {
+function __c59(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -19715,7 +15448,11 @@ function __c68(j: number): any {
       ).annotate({
         identifier: "GetProjectsLocationsDataStoresWidgetConfigsRequest",
       });
-    case 1:
+  }
+}
+function __c60(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -19729,7 +15466,11 @@ function __c68(j: number): any {
       ).annotate({
         identifier: "GetProjectsLocationsIdentityMappingStoresRequest",
       });
-    case 2:
+  }
+}
+function __c61(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -19743,7 +15484,39 @@ function __c68(j: number): any {
       ).annotate({
         identifier: "GetProjectsLocationsIdentityMappingStoresOperationsRequest",
       });
-    case 3:
+  }
+}
+function __c62(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          parent: S.String.pipe(T.Label()),
+          body: S.optional(__S(2016, __c63, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/{+parent}:batchVerifyTargetSites",
+            baseUrl: "https://discoveryengine.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier:
+          "BatchVerifyTargetSitesProjectsLocationsCollectionsDataStoresSiteSearchEngineRequest",
+      });
+  }
+}
+function __c63(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "GoogleCloudDiscoveryengineV1BatchVerifyTargetSitesRequest",
+      });
+  }
+}
+function __c64(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -19757,7 +15530,11 @@ function __c68(j: number): any {
       ).annotate({
         identifier: "GetProjectsLocationsLicenseConfigsRequest",
       });
-    case 4:
+  }
+}
+function __c65(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -19771,7 +15548,11 @@ function __c68(j: number): any {
       ).annotate({
         identifier: "GetProjectsLocationsOperationsRequest",
       });
-    case 5:
+  }
+}
+function __c66(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -19785,7 +15566,11 @@ function __c68(j: number): any {
       ).annotate({
         identifier: "GetProjectsLocationsPodcastsOperationsRequest",
       });
-    case 6:
+  }
+}
+function __c67(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -19799,7 +15584,11 @@ function __c68(j: number): any {
       ).annotate({
         identifier: "GetProjectsLocationsUserStoresRequest",
       });
-    case 7:
+  }
+}
+function __c68(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           defaultLicenseConfig: S.optional(S.String),
@@ -19829,7 +15618,11 @@ function __c69(j: number): any {
       ).annotate({
         identifier: "GetProjectsOperationsRequest",
       });
-    case 1:
+  }
+}
+function __c70(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -19843,7 +15636,11 @@ function __c69(j: number): any {
       ).annotate({
         identifier: "GetSiteSearchEngineProjectsLocationsCollectionsDataStoresRequest",
       });
-    case 2:
+  }
+}
+function __c71(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
@@ -19851,7 +15648,11 @@ function __c69(j: number): any {
       ).annotate({
         identifier: "GoogleCloudDiscoveryengineV1SiteSearchEngine",
       });
-    case 3:
+  }
+}
+function __c72(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -19865,44 +15666,23 @@ function __c69(j: number): any {
       ).annotate({
         identifier: "GetSiteSearchEngineProjectsLocationsDataStoresRequest",
       });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          externalIdentity: S.optional(S.String),
-          groupId: S.optional(S.String),
-          externalIdentityName: S.optional(S.String),
-          userId: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDiscoveryengineV1IdentityMappingEntry",
-      });
-    case 5:
-      return S.Array(__S(556, __c69, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          identityMappingEntries: S.optional(__S(557, __c69, 5)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDiscoveryengineV1ImportIdentityMappingsRequestInlineSource",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          inlineSource: S.optional(__S(558, __c69, 6)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDiscoveryengineV1ImportIdentityMappingsRequest",
-      });
   }
 }
-function __c70(j: number): any {
+function __c73(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
+          inlineSource: S.optional(__S(2400, __c75, 0)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDiscoveryengineV1ImportIdentityMappingsRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
           identityMappingStore: S.String.pipe(T.Label()),
-          body: S.optional(__S(559, __c69, 7).pipe(T.HttpBody())),
+          body: S.optional(__S(2336, __c73, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -19913,17 +15693,109 @@ function __c70(j: number): any {
       ).annotate({
         identifier: "ImportIdentityMappingsProjectsLocationsIdentityMappingStoresRequest",
       });
-    case 1:
-      return S.Array(__S(188, __c23, 4));
-    case 2:
+  }
+}
+function __c74(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          documents: S.optional(__S(561, __c70, 1)),
+          externalIdentity: S.optional(S.String),
+          groupId: S.optional(S.String),
+          externalIdentityName: S.optional(S.String),
+          userId: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDiscoveryengineV1IdentityMappingEntry",
+      });
+    case 1:
+      return S.Array(__S(2368, __c74, 0));
+  }
+}
+function __c75(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          identityMappingEntries: S.optional(__S(2369, __c74, 1)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDiscoveryengineV1ImportIdentityMappingsRequestInlineSource",
+      });
+  }
+}
+function __c76(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          parent: S.String.pipe(T.Label()),
+          body: S.optional(__S(2572, __c80, 12).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/{+parent}/documents:import",
+            baseUrl: "https://discoveryengine.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "ImportProjectsLocationsCollectionsDataStoresBranchesDocumentsRequest",
+      });
+  }
+}
+function __c77(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          inputUris: S.optional(__S(10208, __c319, 0)),
+          dataSchema: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDiscoveryengineV1GcsSource",
+      });
+  }
+}
+function __c78(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          datasetId: S.optional(S.String),
+          partitionDate: S.optional(__S(10560, __c330, 0)),
+          tableId: S.optional(S.String),
+          gcsStagingDir: S.optional(S.String),
+          projectId: S.optional(S.String),
+          dataSchema: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDiscoveryengineV1BigQuerySource",
+      });
+  }
+}
+function __c79(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          gcsPrefix: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDiscoveryengineV1ImportErrorConfig",
+      });
+  }
+}
+function __c80(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          documents: S.optional(__S(2592, __c81, 0)),
         }),
       ).annotate({
         identifier: "GoogleCloudDiscoveryengineV1ImportDocumentsRequestInlineSource",
       });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           projectId: S.optional(S.String),
@@ -19936,7 +15808,7 @@ function __c70(j: number): any {
       ).annotate({
         identifier: "GoogleCloudDiscoveryengineV1AlloyDbSource",
       });
-    case 4:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           qualifier: S.optional(S.String),
@@ -19947,54 +15819,42 @@ function __c70(j: number): any {
       ).annotate({
         identifier: "GoogleCloudDiscoveryengineV1BigtableOptionsBigtableColumn",
       });
-    case 5:
-      return S.Array(__S(564, __c70, 4));
-    case 6:
+    case 3:
+      return S.Array(__S(2562, __c80, 2));
+    case 4:
       return S.suspend(() =>
         S.Struct({
           fieldName: S.optional(S.String),
-          columns: S.optional(__S(565, __c70, 5)),
+          columns: S.optional(__S(2563, __c80, 3)),
           encoding: S.optional(S.String),
           type: S.optional(S.String),
         }),
       ).annotate({
         identifier: "GoogleCloudDiscoveryengineV1BigtableOptionsBigtableColumnFamily",
       });
-    case 7:
-      return S.Record(S.String, __S(566, __c70, 6));
-  }
-}
-function __c71(j: number): any {
-  switch (j) {
-    case 0:
+    case 5:
+      return S.Record(S.String, __S(2564, __c80, 4));
+    case 6:
       return S.suspend(() =>
         S.Struct({
           keyFieldName: S.optional(S.String),
-          families: S.optional(__S(567, __c70, 7)),
+          families: S.optional(__S(2565, __c80, 5)),
         }),
       ).annotate({
         identifier: "GoogleCloudDiscoveryengineV1BigtableOptions",
       });
-    case 1:
+    case 7:
       return S.suspend(() =>
         S.Struct({
           tableId: S.optional(S.String),
           projectId: S.optional(S.String),
-          bigtableOptions: S.optional(__S(568, __c71, 0)),
+          bigtableOptions: S.optional(__S(2566, __c80, 6)),
           instanceId: S.optional(S.String),
         }),
       ).annotate({
         identifier: "GoogleCloudDiscoveryengineV1BigtableSource",
       });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          gcsPrefix: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDiscoveryengineV1ImportErrorConfig",
-      });
-    case 3:
+    case 8:
       return S.suspend(() =>
         S.Struct({
           gcsStagingDir: S.optional(S.String),
@@ -20007,18 +15867,18 @@ function __c71(j: number): any {
       ).annotate({
         identifier: "GoogleCloudDiscoveryengineV1CloudSqlSource",
       });
-    case 4:
+    case 9:
       return S.suspend(() =>
         S.Struct({
           gcsStagingDir: S.optional(S.String),
-          resourceTypes: S.optional(__S(40, __c5, 0)),
+          resourceTypes: S.optional(__S(10208, __c319, 0)),
           updateFromLatestPredefinedSchema: S.optional(S.Boolean),
           fhirStore: S.optional(S.String),
         }),
       ).annotate({
         identifier: "GoogleCloudDiscoveryengineV1FhirStoreSource",
       });
-    case 5:
+    case 10:
       return S.suspend(() =>
         S.Struct({
           projectId: S.optional(S.String),
@@ -20029,7 +15889,7 @@ function __c71(j: number): any {
       ).annotate({
         identifier: "GoogleCloudDiscoveryengineV1FirestoreSource",
       });
-    case 6:
+    case 11:
       return S.suspend(() =>
         S.Struct({
           projectId: S.optional(S.String),
@@ -20041,109 +15901,43 @@ function __c71(j: number): any {
       ).annotate({
         identifier: "GoogleCloudDiscoveryengineV1SpannerSource",
       });
-    case 7:
+    case 12:
       return S.suspend(() =>
         S.Struct({
-          datasetId: S.optional(S.String),
-          partitionDate: S.optional(__S(49, __c6, 1)),
-          tableId: S.optional(S.String),
-          gcsStagingDir: S.optional(S.String),
-          projectId: S.optional(S.String),
-          dataSchema: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDiscoveryengineV1BigQuerySource",
-      });
-  }
-}
-function __c72(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          inputUris: S.optional(__S(40, __c5, 0)),
-          dataSchema: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDiscoveryengineV1GcsSource",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          inlineSource: S.optional(__S(562, __c70, 2)),
-          alloyDbSource: S.optional(__S(563, __c70, 3)),
-          bigtableSource: S.optional(__S(569, __c71, 1)),
+          inlineSource: S.optional(__S(2560, __c80, 0)),
+          alloyDbSource: S.optional(__S(2561, __c80, 1)),
+          bigtableSource: S.optional(__S(2567, __c80, 7)),
           idField: S.optional(S.String),
           autoGenerateIds: S.optional(S.Boolean),
-          errorConfig: S.optional(__S(570, __c71, 2)),
-          cloudSqlSource: S.optional(__S(571, __c71, 3)),
+          errorConfig: S.optional(__S(2528, __c79, 0)),
+          cloudSqlSource: S.optional(__S(2568, __c80, 8)),
           forceRefreshContent: S.optional(S.Boolean),
-          fhirStoreSource: S.optional(__S(572, __c71, 4)),
-          firestoreSource: S.optional(__S(573, __c71, 5)),
-          spannerSource: S.optional(__S(574, __c71, 6)),
+          fhirStoreSource: S.optional(__S(2569, __c80, 9)),
+          firestoreSource: S.optional(__S(2570, __c80, 10)),
+          spannerSource: S.optional(__S(2571, __c80, 11)),
           reconciliationMode: S.optional(S.String),
-          bigquerySource: S.optional(__S(575, __c71, 7)),
-          gcsSource: S.optional(__S(576, __c72, 0)),
+          bigquerySource: S.optional(__S(2496, __c78, 0)),
+          gcsSource: S.optional(__S(2464, __c77, 0)),
           updateMask: S.optional(S.String),
         }),
       ).annotate({
         identifier: "GoogleCloudDiscoveryengineV1ImportDocumentsRequest",
       });
-    case 2:
+  }
+}
+function __c81(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(7047, __c220, 7));
+  }
+}
+function __c82(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(577, __c72, 1).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/{+parent}/documents:import",
-            baseUrl: "https://discoveryengine.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "ImportProjectsLocationsCollectionsDataStoresBranchesDocumentsRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          languageCode: S.optional(S.String),
-          alternativePhrases: S.optional(__S(40, __c5, 0)),
-          suggestion: S.optional(S.String),
-          groupId: S.optional(S.String),
-          groupScore: S.optional(S.Number),
-          globalScore: S.optional(S.Number),
-          frequency: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDiscoveryengineV1CompletionSuggestion",
-      });
-    case 4:
-      return S.Array(__S(579, __c72, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          suggestions: S.optional(__S(580, __c72, 4)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDiscoveryengineV1ImportCompletionSuggestionsRequestInlineSource",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          bigquerySource: S.optional(__S(575, __c71, 7)),
-          gcsSource: S.optional(__S(576, __c72, 0)),
-          errorConfig: S.optional(__S(570, __c71, 2)),
-          inlineSource: S.optional(__S(581, __c72, 5)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDiscoveryengineV1ImportCompletionSuggestionsRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(582, __c72, 6).pipe(T.HttpBody())),
+          body: S.optional(__S(2659, __c83, 3).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -20156,7 +15950,92 @@ function __c72(j: number): any {
       });
   }
 }
-function __c73(j: number): any {
+function __c83(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          languageCode: S.optional(S.String),
+          alternativePhrases: S.optional(__S(10208, __c319, 0)),
+          suggestion: S.optional(S.String),
+          groupId: S.optional(S.String),
+          groupScore: S.optional(S.Number),
+          globalScore: S.optional(S.Number),
+          frequency: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDiscoveryengineV1CompletionSuggestion",
+      });
+    case 1:
+      return S.Array(__S(2656, __c83, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          suggestions: S.optional(__S(2657, __c83, 1)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDiscoveryengineV1ImportCompletionSuggestionsRequestInlineSource",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          bigquerySource: S.optional(__S(2496, __c78, 0)),
+          gcsSource: S.optional(__S(2464, __c77, 0)),
+          errorConfig: S.optional(__S(2528, __c79, 0)),
+          inlineSource: S.optional(__S(2658, __c83, 2)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDiscoveryengineV1ImportCompletionSuggestionsRequest",
+      });
+  }
+}
+function __c84(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+          body: S.optional(__S(2016, __c63, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/{+name}:cancel",
+            baseUrl: "https://discoveryengine.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "CancelProjectsLocationsCollectionsDataStoresBranchesOperationsRequest",
+      });
+  }
+}
+function __c85(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "GoogleProtobufEmpty",
+      });
+  }
+}
+function __c86(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          parent: S.String.pipe(T.Label()),
+          body: S.optional(__S(2787, __c87, 3).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/{+parent}/suggestionDenyListEntries:import",
+            baseUrl: "https://discoveryengine.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "ImportProjectsLocationsCollectionsDataStoresSuggestionDenyListEntriesRequest",
+      });
+  }
+}
+function __c87(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -20168,11 +16047,11 @@ function __c73(j: number): any {
         identifier: "GoogleCloudDiscoveryengineV1SuggestionDenyListEntry",
       });
     case 1:
-      return S.Array(__S(584, __c73, 0));
+      return S.Array(__S(2784, __c87, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          entries: S.optional(__S(585, __c73, 1)),
+          entries: S.optional(__S(2785, __c87, 1)),
         }),
       ).annotate({
         identifier:
@@ -20181,28 +16060,61 @@ function __c73(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          gcsSource: S.optional(__S(576, __c72, 0)),
-          inlineSource: S.optional(__S(586, __c73, 2)),
+          gcsSource: S.optional(__S(2464, __c77, 0)),
+          inlineSource: S.optional(__S(2786, __c87, 2)),
         }),
       ).annotate({
         identifier: "GoogleCloudDiscoveryengineV1ImportSuggestionDenyListEntriesRequest",
       });
-    case 4:
+  }
+}
+function __c88(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(587, __c73, 3).pipe(T.HttpBody())),
+          body: S.optional(__S(2850, __c89, 2).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
-            uri: "v1/{+parent}/suggestionDenyListEntries:import",
+            uri: "v1/{+parent}/userEvents:import",
             baseUrl: "https://discoveryengine.googleapis.com/",
           }),
         ),
       ).annotate({
-        identifier: "ImportProjectsLocationsCollectionsDataStoresSuggestionDenyListEntriesRequest",
+        identifier: "ImportProjectsLocationsCollectionsDataStoresUserEventsRequest",
       });
-    case 5:
+  }
+}
+function __c89(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(2893, __c90, 13));
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          userEvents: S.optional(__S(2848, __c89, 0)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDiscoveryengineV1ImportUserEventsRequestInlineSource",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          errorConfig: S.optional(__S(2528, __c79, 0)),
+          inlineSource: S.optional(__S(2849, __c89, 1)),
+          gcsSource: S.optional(__S(2464, __c77, 0)),
+          bigquerySource: S.optional(__S(2496, __c78, 0)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDiscoveryengineV1ImportUserEventsRequest",
+      });
+  }
+}
+function __c90(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           orderBy: S.optional(S.String),
@@ -20212,7 +16124,7 @@ function __c73(j: number): any {
       ).annotate({
         identifier: "GoogleCloudDiscoveryengineV1SearchInfo",
       });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           selectedPosition: S.optional(S.Number),
@@ -20221,7 +16133,7 @@ function __c73(j: number): any {
       ).annotate({
         identifier: "GoogleCloudDiscoveryengineV1CompletionInfo",
       });
-    case 7:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           mediaProgressPercentage: S.optional(S.Number),
@@ -20230,22 +16142,18 @@ function __c73(j: number): any {
       ).annotate({
         identifier: "GoogleCloudDiscoveryengineV1MediaInfo",
       });
-  }
-}
-function __c74(j: number): any {
-  switch (j) {
-    case 0:
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          text: S.optional(__S(40, __c5, 0)),
-          numbers: S.optional(__S(58, __c7, 2)),
+          text: S.optional(__S(10208, __c319, 0)),
+          numbers: S.optional(__S(10240, __c320, 0)),
         }),
       ).annotate({
         identifier: "GoogleCloudDiscoveryengineV1CustomAttribute",
       });
-    case 1:
-      return S.Record(S.String, __S(592, __c74, 0));
-    case 2:
+    case 4:
+      return S.Record(S.String, __S(2883, __c90, 3));
+    case 5:
       return S.suspend(() =>
         S.Struct({
           referrerUri: S.optional(S.String),
@@ -20256,27 +16164,27 @@ function __c74(j: number): any {
       ).annotate({
         identifier: "GoogleCloudDiscoveryengineV1PageInfo",
       });
-    case 3:
+    case 6:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           uri: S.optional(S.String),
           quantity: S.optional(S.Number),
           conversionValue: S.optional(S.Number),
-          promotionIds: S.optional(__S(40, __c5, 0)),
+          promotionIds: S.optional(__S(10208, __c319, 0)),
           name: S.optional(S.String),
           joined: S.optional(S.Boolean),
         }),
       ).annotate({
         identifier: "GoogleCloudDiscoveryengineV1DocumentInfo",
       });
-    case 4:
-      return S.Array(__S(595, __c74, 3));
-    case 5:
+    case 7:
+      return S.Array(__S(2886, __c90, 6));
+    case 8:
       return S.suspend(() =>
         S.Struct({
           panelId: S.optional(S.String),
-          documents: S.optional(__S(596, __c74, 4)),
+          documents: S.optional(__S(2887, __c90, 7)),
           totalPanels: S.optional(S.Number),
           panelPosition: S.optional(S.Number),
           displayName: S.optional(S.String),
@@ -20284,13 +16192,13 @@ function __c74(j: number): any {
       ).annotate({
         identifier: "GoogleCloudDiscoveryengineV1PanelInfo",
       });
-    case 6:
-      return S.Array(__S(597, __c74, 5));
-    case 7:
+    case 9:
+      return S.Array(__S(2888, __c90, 8));
+    case 10:
       return S.suspend(() =>
         S.Struct({
           questionIndex: S.optional(S.Number),
-          query: S.optional(__S(13, __c1, 5)),
+          query: S.optional(__S(10464, __c327, 0)),
           answerQueryToken: S.optional(S.String),
           assistToken: S.optional(S.String),
           session: S.optional(S.String),
@@ -20298,18 +16206,14 @@ function __c74(j: number): any {
       ).annotate({
         identifier: "GoogleCloudDiscoveryengineV1FeedbackConversationInfo",
       });
-  }
-}
-function __c75(j: number): any {
-  switch (j) {
-    case 0:
+    case 11:
       return S.suspend(() =>
         S.Struct({
           componentVersion: S.optional(S.String),
           dataTermsAccepted: S.optional(S.Boolean),
           feedbackSource: S.optional(S.String),
-          reasons: S.optional(__S(242, __c30, 2)),
-          conversationInfo: S.optional(__S(599, __c74, 7)),
+          reasons: S.optional(__S(8384, __c262, 0)),
+          conversationInfo: S.optional(__S(2890, __c90, 10)),
           llmModelVersion: S.optional(S.String),
           feedbackType: S.optional(S.String),
           comment: S.optional(S.String),
@@ -20317,7 +16221,7 @@ function __c75(j: number): any {
       ).annotate({
         identifier: "GoogleCloudDiscoveryengineV1Feedback",
       });
-    case 1:
+    case 12:
       return S.suspend(() =>
         S.Struct({
           cost: S.optional(S.Number),
@@ -20330,78 +16234,46 @@ function __c75(j: number): any {
       ).annotate({
         identifier: "GoogleCloudDiscoveryengineV1TransactionInfo",
       });
-    case 2:
+    case 13:
       return S.suspend(() =>
         S.Struct({
-          searchInfo: S.optional(__S(589, __c73, 5)),
-          completionInfo: S.optional(__S(590, __c73, 6)),
+          searchInfo: S.optional(__S(2880, __c90, 0)),
+          completionInfo: S.optional(__S(2881, __c90, 1)),
           dataStore: S.optional(S.String),
-          mediaInfo: S.optional(__S(591, __c73, 7)),
-          attributes: S.optional(__S(593, __c74, 1)),
+          mediaInfo: S.optional(__S(2882, __c90, 2)),
+          attributes: S.optional(__S(2884, __c90, 4)),
           filter: S.optional(S.String),
           directUserRequest: S.optional(S.Boolean),
-          pageInfo: S.optional(__S(594, __c74, 2)),
-          panels: S.optional(__S(598, __c74, 6)),
+          pageInfo: S.optional(__S(2885, __c90, 5)),
+          panels: S.optional(__S(2889, __c90, 9)),
           eventType: S.optional(S.String),
-          feedback: S.optional(__S(600, __c75, 0)),
+          feedback: S.optional(__S(2891, __c90, 11)),
           attributionToken: S.optional(S.String),
           eventTime: S.optional(S.String),
-          transactionInfo: S.optional(__S(601, __c75, 1)),
-          tagIds: S.optional(__S(40, __c5, 0)),
-          documents: S.optional(__S(596, __c74, 4)),
-          panel: S.optional(__S(597, __c74, 5)),
+          transactionInfo: S.optional(__S(2892, __c90, 12)),
+          tagIds: S.optional(__S(10208, __c319, 0)),
+          documents: S.optional(__S(2887, __c90, 7)),
+          panel: S.optional(__S(2888, __c90, 8)),
           entity: S.optional(S.String),
           userPseudoId: S.optional(S.String),
           engine: S.optional(S.String),
           conversionType: S.optional(S.String),
-          promotionIds: S.optional(__S(40, __c5, 0)),
-          userInfo: S.optional(__S(170, __c21, 2)),
+          promotionIds: S.optional(__S(10208, __c319, 0)),
+          userInfo: S.optional(__S(7010, __c219, 2)),
           sessionId: S.optional(S.String),
         }),
       ).annotate({
         identifier: "GoogleCloudDiscoveryengineV1UserEvent",
       });
-    case 3:
-      return S.Array(__S(602, __c75, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          userEvents: S.optional(__S(603, __c75, 3)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDiscoveryengineV1ImportUserEventsRequestInlineSource",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          errorConfig: S.optional(__S(570, __c71, 2)),
-          inlineSource: S.optional(__S(604, __c75, 4)),
-          gcsSource: S.optional(__S(576, __c72, 0)),
-          bigquerySource: S.optional(__S(575, __c71, 7)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDiscoveryengineV1ImportUserEventsRequest",
-      });
-    case 6:
+  }
+}
+function __c91(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(605, __c75, 5).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/{+parent}/userEvents:import",
-            baseUrl: "https://discoveryengine.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "ImportProjectsLocationsCollectionsDataStoresUserEventsRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(577, __c72, 1).pipe(T.HttpBody())),
+          body: S.optional(__S(2572, __c80, 12).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -20414,13 +16286,13 @@ function __c75(j: number): any {
       });
   }
 }
-function __c76(j: number): any {
+function __c92(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(582, __c72, 6).pipe(T.HttpBody())),
+          body: S.optional(__S(2659, __c83, 3).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -20431,11 +16303,15 @@ function __c76(j: number): any {
       ).annotate({
         identifier: "ImportProjectsLocationsDataStoresCompletionSuggestionsRequest",
       });
-    case 1:
+  }
+}
+function __c93(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(587, __c73, 3).pipe(T.HttpBody())),
+          body: S.optional(__S(2787, __c87, 3).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -20446,11 +16322,15 @@ function __c76(j: number): any {
       ).annotate({
         identifier: "ImportProjectsLocationsDataStoresSuggestionDenyListEntriesRequest",
       });
-    case 2:
+  }
+}
+function __c94(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(605, __c75, 5).pipe(T.HttpBody())),
+          body: S.optional(__S(2850, __c89, 2).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -20461,11 +16341,15 @@ function __c76(j: number): any {
       ).annotate({
         identifier: "ImportProjectsLocationsDataStoresUserEventsRequest",
       });
-    case 3:
+  }
+}
+function __c95(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(605, __c75, 5).pipe(T.HttpBody())),
+          body: S.optional(__S(2850, __c89, 2).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -20476,7 +16360,11 @@ function __c76(j: number): any {
       ).annotate({
         identifier: "ImportProjectsLocationsUserEventsRequest",
       });
-    case 4:
+  }
+}
+function __c96(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           identityMappingStore: S.String.pipe(T.Label()),
@@ -20492,16 +16380,20 @@ function __c76(j: number): any {
       ).annotate({
         identifier: "ListIdentityMappingsProjectsLocationsIdentityMappingStoresRequest",
       });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          identityMappingEntries: S.optional(__S(557, __c69, 5)),
+          identityMappingEntries: S.optional(__S(2369, __c74, 1)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({
         identifier: "GoogleCloudDiscoveryengineV1ListIdentityMappingsResponse",
       });
-    case 6:
+  }
+}
+function __c97(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
@@ -20515,21 +16407,21 @@ function __c76(j: number): any {
       ).annotate({
         identifier: "ListProjectsLocationsCmekConfigsRequest",
       });
-    case 7:
-      return S.Array(__S(266, __c33, 2));
-  }
-}
-function __c77(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
+      return S.Array(__S(8450, __c264, 2));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          cmekConfigs: S.optional(__S(615, __c76, 7)),
+          cmekConfigs: S.optional(__S(3105, __c97, 1)),
         }),
       ).annotate({
         identifier: "GoogleCloudDiscoveryengineV1ListCmekConfigsResponse",
       });
-    case 1:
+  }
+}
+function __c98(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           pageToken: S.optional(S.String.pipe(T.Query())),
@@ -20547,19 +16439,123 @@ function __c77(j: number): any {
       ).annotate({
         identifier: "ListProjectsLocationsCollectionsDataConnectorOperationsRequest",
       });
-    case 2:
-      return S.Array(__S(117, __c14, 5));
-    case 3:
+  }
+}
+function __c99(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(64, __c2, 0));
+    case 1:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          operations: S.optional(__S(618, __c77, 2)),
-          unreachable: S.optional(__S(40, __c5, 0)),
+          operations: S.optional(__S(3168, __c99, 0)),
+          unreachable: S.optional(__S(10208, __c319, 0)),
         }),
       ).annotate({
         identifier: "GoogleLongrunningListOperationsResponse",
       });
+  }
+}
+function __c100(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          tenant: S.String.pipe(T.Label()),
+          name: S.String.pipe(T.Label()),
+          body: S.optional(__S(2016, __c63, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/{+tenant}/a2a/v1/{+name}:cancel",
+            baseUrl: "https://discoveryengine.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "CancelProjectsLocationsCollectionsEnginesAssistantsAgentsA2aV1TasksRequest",
+      });
+  }
+}
+function __c101(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          fileWithBytes: S.optional(S.String),
+          mimeType: S.optional(S.String),
+          name: S.optional(S.String),
+          fileWithUri: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "A2aV1FilePart" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          data: S.optional(__S(10112, __c316, 0)),
+        }),
+      ).annotate({ identifier: "A2aV1DataPart" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          text: S.optional(S.String),
+          file: S.optional(__S(3232, __c101, 0)),
+          data: S.optional(__S(3233, __c101, 1)),
+          metadata: S.optional(__S(10112, __c316, 0)),
+        }),
+      ).annotate({ identifier: "A2aV1Part" });
+    case 3:
+      return S.Array(__S(3234, __c101, 2));
     case 4:
+      return S.suspend(() =>
+        S.Struct({
+          messageId: S.optional(S.String),
+          taskId: S.optional(S.String),
+          metadata: S.optional(__S(10112, __c316, 0)),
+          role: S.optional(S.String),
+          content: S.optional(__S(3235, __c101, 3)),
+          extensions: S.optional(__S(10208, __c319, 0)),
+          contextId: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "A2aV1Message" });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          timestamp: S.optional(S.String),
+          message: S.optional(__S(3236, __c101, 4)),
+          state: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "A2aV1TaskStatus" });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.optional(S.String),
+          metadata: S.optional(__S(10112, __c316, 0)),
+          parts: S.optional(__S(3235, __c101, 3)),
+          artifactId: S.optional(S.String),
+          description: S.optional(S.String),
+          extensions: S.optional(__S(10208, __c319, 0)),
+        }),
+      ).annotate({ identifier: "A2aV1Artifact" });
+    case 7:
+      return S.Array(__S(3238, __c101, 6));
+    case 8:
+      return S.Array(__S(3236, __c101, 4));
+    case 9:
+      return S.suspend(() =>
+        S.Struct({
+          contextId: S.optional(S.String),
+          id: S.optional(S.String),
+          status: S.optional(__S(3237, __c101, 5)),
+          artifacts: S.optional(__S(3239, __c101, 7)),
+          metadata: S.optional(__S(10112, __c316, 0)),
+          history: S.optional(__S(3240, __c101, 8)),
+        }),
+      ).annotate({ identifier: "A2aV1Task" });
+  }
+}
+function __c102(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
@@ -20576,18 +16572,26 @@ function __c77(j: number): any {
       ).annotate({
         identifier: "ListProjectsLocationsCollectionsDataStoresRequest",
       });
-    case 5:
-      return S.Array(__S(267, __c33, 3));
-    case 6:
+  }
+}
+function __c103(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(8530, __c266, 18));
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          dataStores: S.optional(__S(621, __c77, 5)),
+          dataStores: S.optional(__S(3296, __c103, 0)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({
         identifier: "GoogleCloudDiscoveryengineV1ListDataStoresResponse",
       });
-    case 7:
+  }
+}
+function __c104(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -20605,18 +16609,22 @@ function __c77(j: number): any {
       });
   }
 }
-function __c78(j: number): any {
+function __c105(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          documents: S.optional(__S(561, __c70, 1)),
+          documents: S.optional(__S(2592, __c81, 0)),
         }),
       ).annotate({
         identifier: "GoogleCloudDiscoveryengineV1ListDocumentsResponse",
       });
-    case 1:
+  }
+}
+function __c106(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           returnPartialSuccess: S.optional(S.Boolean.pipe(T.Query())),
@@ -20634,7 +16642,11 @@ function __c78(j: number): any {
       ).annotate({
         identifier: "ListProjectsLocationsCollectionsDataStoresBranchesOperationsRequest",
       });
-    case 2:
+  }
+}
+function __c107(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
@@ -20651,18 +16663,26 @@ function __c78(j: number): any {
       ).annotate({
         identifier: "ListProjectsLocationsCollectionsDataStoresControlsRequest",
       });
-    case 3:
-      return S.Array(__S(285, __c35, 5));
-    case 4:
+  }
+}
+function __c108(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(8654, __c270, 14));
+    case 1:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          controls: S.optional(__S(627, __c78, 3)),
+          controls: S.optional(__S(3456, __c108, 0)),
         }),
       ).annotate({
         identifier: "GoogleCloudDiscoveryengineV1ListControlsResponse",
       });
-    case 5:
+  }
+}
+function __c109(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           filter: S.optional(S.String.pipe(T.Query())),
@@ -20680,12 +16700,16 @@ function __c78(j: number): any {
       ).annotate({
         identifier: "ListProjectsLocationsCollectionsDataStoresConversationsRequest",
       });
-    case 6:
-      return S.Array(__S(216, __c27, 0));
-    case 7:
+  }
+}
+function __c110(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(8197, __c256, 5));
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          conversations: S.optional(__S(630, __c78, 6)),
+          conversations: S.optional(__S(3520, __c110, 0)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({
@@ -20693,7 +16717,7 @@ function __c78(j: number): any {
       });
   }
 }
-function __c79(j: number): any {
+function __c111(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -20717,7 +16741,7 @@ function __c79(j: number): any {
           errorMessage: S.optional(S.String),
           modelVersion: S.optional(S.String),
           createTime: S.optional(S.String),
-          metrics: S.optional(__S(633, __c79, 1)),
+          metrics: S.optional(__S(3553, __c111, 1)),
           trainingStartTime: S.optional(S.String),
           displayName: S.optional(S.String),
           modelState: S.optional(S.String),
@@ -20727,16 +16751,20 @@ function __c79(j: number): any {
         identifier: "GoogleCloudDiscoveryengineV1CustomTuningModel",
       });
     case 3:
-      return S.Array(__S(634, __c79, 2));
+      return S.Array(__S(3554, __c111, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          models: S.optional(__S(635, __c79, 3)),
+          models: S.optional(__S(3555, __c111, 3)),
         }),
       ).annotate({
         identifier: "GoogleCloudDiscoveryengineV1ListCustomModelsResponse",
       });
-    case 5:
+  }
+}
+function __c112(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           returnPartialSuccess: S.optional(S.Boolean.pipe(T.Query())),
@@ -20754,7 +16782,11 @@ function __c79(j: number): any {
       ).annotate({
         identifier: "ListProjectsLocationsCollectionsDataStoresModelsOperationsRequest",
       });
-    case 6:
+  }
+}
+function __c113(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           filter: S.optional(S.String.pipe(T.Query())),
@@ -20772,7 +16804,11 @@ function __c79(j: number): any {
       ).annotate({
         identifier: "ListProjectsLocationsCollectionsDataStoresOperationsRequest",
       });
-    case 7:
+  }
+}
+function __c114(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -20790,20 +16826,24 @@ function __c79(j: number): any {
       });
   }
 }
-function __c80(j: number): any {
+function __c115(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(249, __c31, 1));
+      return S.Array(__S(8416, __c263, 0));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          schemas: S.optional(__S(640, __c80, 0)),
+          schemas: S.optional(__S(3680, __c115, 0)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({
         identifier: "GoogleCloudDiscoveryengineV1ListSchemasResponse",
       });
-    case 2:
+  }
+}
+function __c116(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           pageToken: S.optional(S.String.pipe(T.Query())),
@@ -20821,7 +16861,30 @@ function __c80(j: number): any {
       ).annotate({
         identifier: "ListProjectsLocationsCollectionsDataStoresSchemasOperationsRequest",
       });
-    case 3:
+  }
+}
+function __c117(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+          body: S.optional(__S(2016, __c63, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/{+name}:cancel",
+            baseUrl: "https://discoveryengine.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "CancelProjectsLocationsCollectionsEnginesOperationsRequest",
+      });
+  }
+}
+function __c118(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
@@ -20837,18 +16900,26 @@ function __c80(j: number): any {
       ).annotate({
         identifier: "ListProjectsLocationsCollectionsDataStoresServingConfigsRequest",
       });
-    case 4:
-      return S.Array(__S(297, __c37, 1));
-    case 5:
+  }
+}
+function __c119(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(8836, __c276, 4));
+    case 1:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          servingConfigs: S.optional(__S(644, __c80, 4)),
+          servingConfigs: S.optional(__S(3808, __c119, 0)),
         }),
       ).annotate({
         identifier: "GoogleCloudDiscoveryengineV1ListServingConfigsResponse",
       });
-    case 6:
+  }
+}
+function __c120(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           filter: S.optional(S.String.pipe(T.Query())),
@@ -20866,22 +16937,26 @@ function __c80(j: number): any {
       ).annotate({
         identifier: "ListProjectsLocationsCollectionsDataStoresSessionsRequest",
       });
-    case 7:
-      return S.Array(__S(105, __c13, 1));
   }
 }
-function __c81(j: number): any {
+function __c121(j: number): any {
   switch (j) {
     case 0:
+      return S.Array(__S(10498, __c328, 2));
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          sessions: S.optional(__S(647, __c80, 7)),
+          sessions: S.optional(__S(3872, __c121, 0)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({
         identifier: "GoogleCloudDiscoveryengineV1ListSessionsResponse",
       });
-    case 1:
+  }
+}
+function __c122(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -20899,7 +16974,11 @@ function __c81(j: number): any {
       ).annotate({
         identifier: "ListProjectsLocationsCollectionsDataStoresSiteSearchEngineOperationsRequest",
       });
-    case 2:
+  }
+}
+function __c123(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -20915,17 +16994,25 @@ function __c81(j: number): any {
       ).annotate({
         identifier: "ListProjectsLocationsCollectionsDataStoresSiteSearchEngineTargetSitesRequest",
       });
-    case 3:
+  }
+}
+function __c124(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          targetSites: S.optional(__S(392, __c49, 0)),
+          targetSites: S.optional(__S(11456, __c358, 0)),
           totalSize: S.optional(S.Number),
         }),
       ).annotate({
         identifier: "GoogleCloudDiscoveryengineV1ListTargetSitesResponse",
       });
-    case 4:
+  }
+}
+function __c125(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -20944,7 +17031,11 @@ function __c81(j: number): any {
         identifier:
           "ListProjectsLocationsCollectionsDataStoresSiteSearchEngineTargetSitesOperationsRequest",
       });
-    case 5:
+  }
+}
+function __c126(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
@@ -20961,20 +17052,20 @@ function __c81(j: number): any {
       ).annotate({
         identifier: "ListProjectsLocationsCollectionsEnginesRequest",
       });
-    case 6:
-      return S.Array(__S(321, __c40, 1));
-    case 7:
+    case 1:
+      return S.Array(__S(9042, __c282, 18));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          engines: S.optional(__S(654, __c81, 6)),
+          engines: S.optional(__S(4033, __c126, 1)),
         }),
       ).annotate({
         identifier: "GoogleCloudDiscoveryengineV1ListEnginesResponse",
       });
   }
 }
-function __c82(j: number): any {
+function __c127(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -20993,17 +17084,21 @@ function __c82(j: number): any {
         identifier: "ListProjectsLocationsCollectionsEnginesAssistantsRequest",
       });
     case 1:
-      return S.Array(__S(333, __c41, 5));
+      return S.Array(__S(9098, __c284, 10));
     case 2:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          assistants: S.optional(__S(657, __c82, 1)),
+          assistants: S.optional(__S(4065, __c127, 1)),
         }),
       ).annotate({
         identifier: "GoogleCloudDiscoveryengineV1ListAssistantsResponse",
       });
-    case 3:
+  }
+}
+function __c128(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           pageToken: S.optional(S.String.pipe(T.Query())),
@@ -21021,18 +17116,22 @@ function __c82(j: number): any {
         identifier:
           "ListProjectsLocationsCollectionsEnginesAssistantsAgentsA2aV1TasksPushNotificationConfigsRequest",
       });
-    case 4:
-      return S.Array(__S(337, __c42, 1));
-    case 5:
+    case 1:
+      return S.Array(__S(9152, __c286, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          configs: S.optional(__S(660, __c82, 4)),
+          configs: S.optional(__S(4097, __c128, 1)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({
         identifier: "A2aV1ListTaskPushNotificationConfigResponse",
       });
-    case 6:
+  }
+}
+function __c129(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           filter: S.optional(S.String.pipe(T.Query())),
@@ -21049,7 +17148,11 @@ function __c82(j: number): any {
       ).annotate({
         identifier: "ListProjectsLocationsCollectionsEnginesControlsRequest",
       });
-    case 7:
+  }
+}
+function __c130(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -21069,7 +17172,26 @@ function __c82(j: number): any {
       });
   }
 }
-function __c83(j: number): any {
+function __c131(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+          body: S.optional(__S(2016, __c63, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/{+name}:cancel",
+            baseUrl: "https://discoveryengine.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "CancelProjectsLocationsDataStoresBranchesOperationsRequest",
+      });
+  }
+}
+function __c132(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -21089,7 +17211,11 @@ function __c83(j: number): any {
       ).annotate({
         identifier: "ListProjectsLocationsCollectionsEnginesOperationsRequest",
       });
-    case 1:
+  }
+}
+function __c133(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           pageToken: S.optional(S.String.pipe(T.Query())),
@@ -21105,7 +17231,11 @@ function __c83(j: number): any {
       ).annotate({
         identifier: "ListProjectsLocationsCollectionsEnginesServingConfigsRequest",
       });
-    case 2:
+  }
+}
+function __c134(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           orderBy: S.optional(S.String.pipe(T.Query())),
@@ -21123,7 +17253,11 @@ function __c83(j: number): any {
       ).annotate({
         identifier: "ListProjectsLocationsCollectionsEnginesSessionsRequest",
       });
-    case 3:
+  }
+}
+function __c135(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           pageToken: S.optional(S.String.pipe(T.Query())),
@@ -21141,7 +17275,11 @@ function __c83(j: number): any {
       ).annotate({
         identifier: "ListProjectsLocationsCollectionsOperationsRequest",
       });
-    case 4:
+  }
+}
+function __c136(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           filter: S.optional(S.String.pipe(T.Query())),
@@ -21158,7 +17296,11 @@ function __c83(j: number): any {
       ).annotate({
         identifier: "ListProjectsLocationsDataStoresRequest",
       });
-    case 5:
+  }
+}
+function __c137(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -21174,7 +17316,11 @@ function __c83(j: number): any {
       ).annotate({
         identifier: "ListProjectsLocationsDataStoresBranchesDocumentsRequest",
       });
-    case 6:
+  }
+}
+function __c138(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           pageToken: S.optional(S.String.pipe(T.Query())),
@@ -21192,7 +17338,11 @@ function __c83(j: number): any {
       ).annotate({
         identifier: "ListProjectsLocationsDataStoresBranchesOperationsRequest",
       });
-    case 7:
+  }
+}
+function __c139(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           pageToken: S.optional(S.String.pipe(T.Query())),
@@ -21211,7 +17361,7 @@ function __c83(j: number): any {
       });
   }
 }
-function __c84(j: number): any {
+function __c140(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -21231,7 +17381,11 @@ function __c84(j: number): any {
       ).annotate({
         identifier: "ListProjectsLocationsDataStoresConversationsRequest",
       });
-    case 1:
+  }
+}
+function __c141(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -21249,7 +17403,30 @@ function __c84(j: number): any {
       ).annotate({
         identifier: "ListProjectsLocationsDataStoresModelsOperationsRequest",
       });
-    case 2:
+  }
+}
+function __c142(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+          body: S.optional(__S(2016, __c63, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/{+name}:cancel",
+            baseUrl: "https://discoveryengine.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "CancelProjectsOperationsRequest",
+      });
+  }
+}
+function __c143(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           filter: S.optional(S.String.pipe(T.Query())),
@@ -21267,7 +17444,11 @@ function __c84(j: number): any {
       ).annotate({
         identifier: "ListProjectsLocationsDataStoresOperationsRequest",
       });
-    case 3:
+  }
+}
+function __c144(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -21283,7 +17464,11 @@ function __c84(j: number): any {
       ).annotate({
         identifier: "ListProjectsLocationsDataStoresSchemasRequest",
       });
-    case 4:
+  }
+}
+function __c145(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
@@ -21299,7 +17484,11 @@ function __c84(j: number): any {
       ).annotate({
         identifier: "ListProjectsLocationsDataStoresServingConfigsRequest",
       });
-    case 5:
+  }
+}
+function __c146(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           filter: S.optional(S.String.pipe(T.Query())),
@@ -21317,7 +17506,11 @@ function __c84(j: number): any {
       ).annotate({
         identifier: "ListProjectsLocationsDataStoresSessionsRequest",
       });
-    case 6:
+  }
+}
+function __c147(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           pageToken: S.optional(S.String.pipe(T.Query())),
@@ -21333,7 +17526,11 @@ function __c84(j: number): any {
       ).annotate({
         identifier: "ListProjectsLocationsDataStoresSiteSearchEngineTargetSitesRequest",
       });
-    case 7:
+  }
+}
+function __c148(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -21349,22 +17546,22 @@ function __c84(j: number): any {
       ).annotate({
         identifier: "ListProjectsLocationsIdentityMappingStoresRequest",
       });
-  }
-}
-function __c85(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(352, __c44, 0));
     case 1:
+      return S.Array(__S(9664, __c302, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          identityMappingStores: S.optional(__S(680, __c85, 0)),
+          identityMappingStores: S.optional(__S(4737, __c148, 1)),
         }),
       ).annotate({
         identifier: "GoogleCloudDiscoveryengineV1ListIdentityMappingStoresResponse",
       });
-    case 2:
+  }
+}
+function __c149(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           filter: S.optional(S.String.pipe(T.Query())),
@@ -21382,7 +17579,11 @@ function __c85(j: number): any {
       ).annotate({
         identifier: "ListProjectsLocationsIdentityMappingStoresOperationsRequest",
       });
-    case 3:
+  }
+}
+function __c150(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           pageToken: S.optional(S.String.pipe(T.Query())),
@@ -21399,18 +17600,22 @@ function __c85(j: number): any {
       ).annotate({
         identifier: "ListProjectsLocationsLicenseConfigsRequest",
       });
-    case 4:
-      return S.Array(__S(354, __c44, 2));
-    case 5:
+    case 1:
+      return S.Array(__S(9728, __c304, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          licenseConfigs: S.optional(__S(684, __c85, 4)),
+          licenseConfigs: S.optional(__S(4801, __c150, 1)),
         }),
       ).annotate({
         identifier: "GoogleCloudDiscoveryengineV1ListLicenseConfigsResponse",
       });
-    case 6:
+  }
+}
+function __c151(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           filter: S.optional(S.String.pipe(T.Query())),
@@ -21428,7 +17633,11 @@ function __c85(j: number): any {
       ).annotate({
         identifier: "ListProjectsLocationsOperationsRequest",
       });
-    case 7:
+  }
+}
+function __c152(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
@@ -21442,11 +17651,7 @@ function __c85(j: number): any {
       ).annotate({
         identifier: "ListProjectsLocationsUserStoresLicenseConfigsUsageStatsRequest",
       });
-  }
-}
-function __c86(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           licenseConfig: S.optional(S.String),
@@ -21455,17 +17660,123 @@ function __c86(j: number): any {
       ).annotate({
         identifier: "GoogleCloudDiscoveryengineV1LicenseConfigUsageStats",
       });
-    case 1:
-      return S.Array(__S(688, __c86, 0));
     case 2:
+      return S.Array(__S(4865, __c152, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          licenseConfigUsageStats: S.optional(__S(689, __c86, 1)),
+          licenseConfigUsageStats: S.optional(__S(4866, __c152, 2)),
         }),
       ).annotate({
         identifier: "GoogleCloudDiscoveryengineV1ListLicenseConfigsUsageStatsResponse",
       });
+  }
+}
+function __c153(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          citationThreshold: S.optional(S.Number),
+          enableClaimLevelScore: S.optional(S.Boolean),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDiscoveryengineV1CheckGroundingSpec",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          attributes: S.optional(__S(10272, __c321, 0)),
+          factText: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDiscoveryengineV1GroundingFact",
+      });
+    case 2:
+      return S.Array(__S(4897, __c153, 1));
     case 3:
+      return S.suspend(() =>
+        S.Struct({
+          userLabels: S.optional(__S(10272, __c321, 0)),
+          groundingSpec: S.optional(__S(4896, __c153, 0)),
+          facts: S.optional(__S(4898, __c153, 2)),
+          answerCandidate: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDiscoveryengineV1CheckGroundingRequest",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          groundingConfig: S.String.pipe(T.Label()),
+          body: S.optional(__S(4899, __c153, 3).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/{+groundingConfig}:check",
+            baseUrl: "https://discoveryengine.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "CheckProjectsLocationsGroundingConfigsRequest",
+      });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          chunkText: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDiscoveryengineV1CheckGroundingResponseCheckGroundingFactChunk",
+      });
+    case 6:
+      return S.Array(__S(4901, __c153, 5));
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          sourceMetadata: S.optional(__S(10272, __c321, 0)),
+          chunkText: S.optional(S.String),
+          title: S.optional(S.String),
+          uri: S.optional(S.String),
+          domain: S.optional(S.String),
+          index: S.optional(S.Number),
+          source: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDiscoveryengineV1FactChunk",
+      });
+    case 8:
+      return S.Array(__S(4903, __c153, 7));
+    case 9:
+      return S.suspend(() =>
+        S.Struct({
+          score: S.optional(S.Number),
+          endPos: S.optional(S.Number),
+          claimText: S.optional(S.String),
+          startPos: S.optional(S.Number),
+          groundingCheckRequired: S.optional(S.Boolean),
+          citationIndices: S.optional(__S(10240, __c320, 0)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDiscoveryengineV1CheckGroundingResponseClaim",
+      });
+    case 10:
+      return S.Array(__S(4905, __c153, 9));
+    case 11:
+      return S.suspend(() =>
+        S.Struct({
+          citedFacts: S.optional(__S(4902, __c153, 6)),
+          citedChunks: S.optional(__S(4904, __c153, 8)),
+          supportScore: S.optional(S.Number),
+          claims: S.optional(__S(4906, __c153, 10)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDiscoveryengineV1CheckGroundingResponse",
+      });
+  }
+}
+function __c154(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           orderBy: S.optional(S.String.pipe(T.Query())),
@@ -21483,16 +17794,20 @@ function __c86(j: number): any {
       ).annotate({
         identifier: "ListProjectsLocationsUserStoresUserLicensesRequest",
       });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          userLicenses: S.optional(__S(126, __c15, 6)),
+          userLicenses: S.optional(__S(1633, __c51, 1)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({
         identifier: "GoogleCloudDiscoveryengineV1ListUserLicensesResponse",
       });
-    case 5:
+  }
+}
+function __c155(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -21510,7 +17825,11 @@ function __c86(j: number): any {
       ).annotate({
         identifier: "ListProjectsOperationsRequest",
       });
-    case 6:
+  }
+}
+function __c156(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           data: S.optional(S.String.pipe(T.Query())),
@@ -21518,7 +17837,7 @@ function __c86(j: number): any {
           collectionsId: S.String.pipe(T.Label()),
           projectsId: S.String.pipe(T.Label()),
           locationsId: S.String.pipe(T.Label()),
-          extensions: S.optional(__S(40, __c5, 0).pipe(T.Query())),
+          extensions: S.optional(__S(10208, __c319, 0).pipe(T.Query())),
         }).pipe(
           T.Http({
             method: "DELETE",
@@ -21529,12 +17848,16 @@ function __c86(j: number): any {
       ).annotate({
         identifier: "McpProjectsLocationsCollectionsDataConnectorRequest",
       });
-    case 7:
+  }
+}
+function __c157(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
           setDefault: S.optional(S.Boolean.pipe(T.Query())),
-          body: S.optional(__S(266, __c33, 2).pipe(T.HttpBody())),
+          body: S.optional(__S(8450, __c264, 2).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -21547,14 +17870,14 @@ function __c86(j: number): any {
       });
   }
 }
-function __c87(j: number): any {
+function __c158(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
           updateMask: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(267, __c33, 3).pipe(T.HttpBody())),
+          body: S.optional(__S(8530, __c266, 18).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -21565,13 +17888,17 @@ function __c87(j: number): any {
       ).annotate({
         identifier: "PatchProjectsLocationsCollectionsDataStoresRequest",
       });
-    case 1:
+  }
+}
+function __c159(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
           allowMissing: S.optional(S.Boolean.pipe(T.Query())),
           updateMask: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(188, __c23, 4).pipe(T.HttpBody())),
+          body: S.optional(__S(7047, __c220, 7).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -21582,12 +17909,16 @@ function __c87(j: number): any {
       ).annotate({
         identifier: "PatchProjectsLocationsCollectionsDataStoresBranchesDocumentsRequest",
       });
-    case 2:
+  }
+}
+function __c160(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           updateMask: S.optional(S.String.pipe(T.Query())),
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(285, __c35, 5).pipe(T.HttpBody())),
+          body: S.optional(__S(8654, __c270, 14).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -21598,12 +17929,16 @@ function __c87(j: number): any {
       ).annotate({
         identifier: "PatchProjectsLocationsCollectionsDataStoresControlsRequest",
       });
-    case 3:
+  }
+}
+function __c161(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
           updateMask: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(216, __c27, 0).pipe(T.HttpBody())),
+          body: S.optional(__S(8197, __c256, 5).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -21614,12 +17949,16 @@ function __c87(j: number): any {
       ).annotate({
         identifier: "PatchProjectsLocationsCollectionsDataStoresConversationsRequest",
       });
-    case 4:
+  }
+}
+function __c162(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
           allowMissing: S.optional(S.Boolean.pipe(T.Query())),
-          body: S.optional(__S(249, __c31, 1).pipe(T.HttpBody())),
+          body: S.optional(__S(8416, __c263, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -21630,12 +17969,16 @@ function __c87(j: number): any {
       ).annotate({
         identifier: "PatchProjectsLocationsCollectionsDataStoresSchemasRequest",
       });
-    case 5:
+  }
+}
+function __c163(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
           updateMask: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(297, __c37, 1).pipe(T.HttpBody())),
+          body: S.optional(__S(8836, __c276, 4).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -21646,12 +17989,49 @@ function __c87(j: number): any {
       ).annotate({
         identifier: "PatchProjectsLocationsCollectionsDataStoresServingConfigsRequest",
       });
-    case 6:
+  }
+}
+function __c164(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          userEvent: S.optional(S.String.pipe(T.Query())),
+          uri: S.optional(S.String.pipe(T.Query())),
+          ets: S.optional(S.String.pipe(T.Query())),
+          parent: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v1/{+parent}/userEvents:collect",
+            baseUrl: "https://discoveryengine.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "CollectProjectsLocationsCollectionsDataStoresUserEventsRequest",
+      });
+  }
+}
+function __c165(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          extensions: S.optional(__S(10144, __c317, 0)),
+          contentType: S.optional(S.String),
+          data: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "GoogleApiHttpBody" });
+  }
+}
+function __c166(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           updateMask: S.optional(S.String.pipe(T.Query())),
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(105, __c13, 1).pipe(T.HttpBody())),
+          body: S.optional(__S(10498, __c328, 2).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -21662,11 +18042,15 @@ function __c87(j: number): any {
       ).annotate({
         identifier: "PatchProjectsLocationsCollectionsDataStoresSessionsRequest",
       });
-    case 7:
+  }
+}
+function __c167(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(112, __c14, 0).pipe(T.HttpBody())),
+          body: S.optional(__S(99, __c3, 3).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -21679,14 +18063,14 @@ function __c87(j: number): any {
       });
   }
 }
-function __c88(j: number): any {
+function __c168(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
           updateMask: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(518, __c64, 6).pipe(T.HttpBody())),
+          body: S.optional(__S(991, __c30, 31).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -21697,12 +18081,16 @@ function __c88(j: number): any {
       ).annotate({
         identifier: "PatchProjectsLocationsCollectionsDataStoresWidgetConfigsRequest",
       });
-    case 1:
+  }
+}
+function __c169(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           updateMask: S.optional(S.String.pipe(T.Query())),
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(321, __c40, 1).pipe(T.HttpBody())),
+          body: S.optional(__S(9042, __c282, 18).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -21713,12 +18101,16 @@ function __c88(j: number): any {
       ).annotate({
         identifier: "PatchProjectsLocationsCollectionsEnginesRequest",
       });
-    case 2:
+  }
+}
+function __c170(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
           updateMask: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(333, __c41, 5).pipe(T.HttpBody())),
+          body: S.optional(__S(9098, __c284, 10).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -21729,12 +18121,16 @@ function __c88(j: number): any {
       ).annotate({
         identifier: "PatchProjectsLocationsCollectionsEnginesAssistantsRequest",
       });
-    case 3:
+  }
+}
+function __c171(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           updateMask: S.optional(S.String.pipe(T.Query())),
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(285, __c35, 5).pipe(T.HttpBody())),
+          body: S.optional(__S(8654, __c270, 14).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -21745,12 +18141,16 @@ function __c88(j: number): any {
       ).annotate({
         identifier: "PatchProjectsLocationsCollectionsEnginesControlsRequest",
       });
-    case 4:
+  }
+}
+function __c172(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
           updateMask: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(216, __c27, 0).pipe(T.HttpBody())),
+          body: S.optional(__S(8197, __c256, 5).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -21761,12 +18161,16 @@ function __c88(j: number): any {
       ).annotate({
         identifier: "PatchProjectsLocationsCollectionsEnginesConversationsRequest",
       });
-    case 5:
+  }
+}
+function __c173(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           updateMask: S.optional(S.String.pipe(T.Query())),
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(297, __c37, 1).pipe(T.HttpBody())),
+          body: S.optional(__S(8836, __c276, 4).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -21777,12 +18181,16 @@ function __c88(j: number): any {
       ).annotate({
         identifier: "PatchProjectsLocationsCollectionsEnginesServingConfigsRequest",
       });
-    case 6:
+  }
+}
+function __c174(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
           updateMask: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(105, __c13, 1).pipe(T.HttpBody())),
+          body: S.optional(__S(10498, __c328, 2).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -21793,12 +18201,16 @@ function __c88(j: number): any {
       ).annotate({
         identifier: "PatchProjectsLocationsCollectionsEnginesSessionsRequest",
       });
-    case 7:
+  }
+}
+function __c175(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
           updateMask: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(518, __c64, 6).pipe(T.HttpBody())),
+          body: S.optional(__S(991, __c30, 31).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -21811,14 +18223,35 @@ function __c88(j: number): any {
       });
   }
 }
-function __c89(j: number): any {
+function __c176(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          parent: S.String.pipe(T.Label()),
+          userEvent: S.optional(S.String.pipe(T.Query())),
+          uri: S.optional(S.String.pipe(T.Query())),
+          ets: S.optional(S.String.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v1/{+parent}/userEvents:collect",
+            baseUrl: "https://discoveryengine.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "CollectProjectsLocationsDataStoresUserEventsRequest",
+      });
+  }
+}
+function __c177(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
           updateMask: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(267, __c33, 3).pipe(T.HttpBody())),
+          body: S.optional(__S(8530, __c266, 18).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -21829,13 +18262,17 @@ function __c89(j: number): any {
       ).annotate({
         identifier: "PatchProjectsLocationsDataStoresRequest",
       });
-    case 1:
+  }
+}
+function __c178(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           allowMissing: S.optional(S.Boolean.pipe(T.Query())),
           name: S.String.pipe(T.Label()),
           updateMask: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(188, __c23, 4).pipe(T.HttpBody())),
+          body: S.optional(__S(7047, __c220, 7).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -21846,12 +18283,16 @@ function __c89(j: number): any {
       ).annotate({
         identifier: "PatchProjectsLocationsDataStoresBranchesDocumentsRequest",
       });
-    case 2:
+  }
+}
+function __c179(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           updateMask: S.optional(S.String.pipe(T.Query())),
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(285, __c35, 5).pipe(T.HttpBody())),
+          body: S.optional(__S(8654, __c270, 14).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -21862,12 +18303,16 @@ function __c89(j: number): any {
       ).annotate({
         identifier: "PatchProjectsLocationsDataStoresControlsRequest",
       });
-    case 3:
+  }
+}
+function __c180(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           updateMask: S.optional(S.String.pipe(T.Query())),
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(216, __c27, 0).pipe(T.HttpBody())),
+          body: S.optional(__S(8197, __c256, 5).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -21878,12 +18323,16 @@ function __c89(j: number): any {
       ).annotate({
         identifier: "PatchProjectsLocationsDataStoresConversationsRequest",
       });
-    case 4:
+  }
+}
+function __c181(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
           allowMissing: S.optional(S.Boolean.pipe(T.Query())),
-          body: S.optional(__S(249, __c31, 1).pipe(T.HttpBody())),
+          body: S.optional(__S(8416, __c263, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -21894,12 +18343,16 @@ function __c89(j: number): any {
       ).annotate({
         identifier: "PatchProjectsLocationsDataStoresSchemasRequest",
       });
-    case 5:
+  }
+}
+function __c182(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
           updateMask: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(297, __c37, 1).pipe(T.HttpBody())),
+          body: S.optional(__S(8836, __c276, 4).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -21910,12 +18363,16 @@ function __c89(j: number): any {
       ).annotate({
         identifier: "PatchProjectsLocationsDataStoresServingConfigsRequest",
       });
-    case 6:
+  }
+}
+function __c183(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
           updateMask: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(105, __c13, 1).pipe(T.HttpBody())),
+          body: S.optional(__S(10498, __c328, 2).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -21926,11 +18383,15 @@ function __c89(j: number): any {
       ).annotate({
         identifier: "PatchProjectsLocationsDataStoresSessionsRequest",
       });
-    case 7:
+  }
+}
+function __c184(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(112, __c14, 0).pipe(T.HttpBody())),
+          body: S.optional(__S(99, __c3, 3).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -21943,14 +18404,14 @@ function __c89(j: number): any {
       });
   }
 }
-function __c90(j: number): any {
+function __c185(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           updateMask: S.optional(S.String.pipe(T.Query())),
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(518, __c64, 6).pipe(T.HttpBody())),
+          body: S.optional(__S(991, __c30, 31).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -21961,12 +18422,16 @@ function __c90(j: number): any {
       ).annotate({
         identifier: "PatchProjectsLocationsDataStoresWidgetConfigsRequest",
       });
-    case 1:
+  }
+}
+function __c186(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
           updateMask: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(354, __c44, 2).pipe(T.HttpBody())),
+          body: S.optional(__S(9728, __c304, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -21977,12 +18442,37 @@ function __c90(j: number): any {
       ).annotate({
         identifier: "PatchProjectsLocationsLicenseConfigsRequest",
       });
-    case 2:
+  }
+}
+function __c187(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          userEvent: S.optional(S.String.pipe(T.Query())),
+          parent: S.String.pipe(T.Label()),
+          uri: S.optional(S.String.pipe(T.Query())),
+          ets: S.optional(S.String.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v1/{+parent}/userEvents:collect",
+            baseUrl: "https://discoveryengine.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "CollectProjectsLocationsUserEventsRequest",
+      });
+  }
+}
+function __c188(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
           updateMask: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(551, __c68, 7).pipe(T.HttpBody())),
+          body: S.optional(__S(2176, __c68, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -21993,30 +18483,15 @@ function __c90(j: number): any {
       ).annotate({
         identifier: "PatchProjectsLocationsUserStoresRequest",
       });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          isBiz: S.optional(S.Boolean),
-          acceptBizQos: S.optional(S.Boolean),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDiscoveryengineV1ProvisionProjectRequestSaasParams",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          dataUseTermsVersion: S.optional(S.String),
-          saasParams: S.optional(__S(723, __c90, 3)),
-          acceptDataUseTerms: S.optional(S.Boolean),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDiscoveryengineV1ProvisionProjectRequest",
-      });
-    case 5:
+  }
+}
+function __c189(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(724, __c90, 4).pipe(T.HttpBody())),
+          body: S.optional(__S(6081, __c190, 1).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -22025,11 +18500,38 @@ function __c90(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ProvisionProjectsRequest" });
-    case 6:
+  }
+}
+function __c190(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          isBiz: S.optional(S.Boolean),
+          acceptBizQos: S.optional(S.Boolean),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDiscoveryengineV1ProvisionProjectRequestSaasParams",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          dataUseTermsVersion: S.optional(S.String),
+          saasParams: S.optional(__S(6080, __c190, 0)),
+          acceptDataUseTerms: S.optional(S.Boolean),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDiscoveryengineV1ProvisionProjectRequest",
+      });
+  }
+}
+function __c191(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(724, __c90, 4).pipe(T.HttpBody())),
+          body: S.optional(__S(6081, __c190, 1).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -22040,25 +18542,25 @@ function __c90(j: number): any {
       ).annotate({
         identifier: "ProvisionProjectsLocationsRequest",
       });
-    case 7:
+  }
+}
+function __c192(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           filter: S.optional(S.String),
-          inlineSource: S.optional(__S(558, __c69, 6)),
+          inlineSource: S.optional(__S(2400, __c75, 0)),
           force: S.optional(S.Boolean),
         }),
       ).annotate({
         identifier: "GoogleCloudDiscoveryengineV1PurgeIdentityMappingsRequest",
       });
-  }
-}
-function __c91(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           identityMappingStore: S.String.pipe(T.Label()),
-          body: S.optional(__S(727, __c90, 7).pipe(T.HttpBody())),
+          body: S.optional(__S(6144, __c192, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -22069,31 +18571,15 @@ function __c91(j: number): any {
       ).annotate({
         identifier: "PurgeIdentityMappingsProjectsLocationsIdentityMappingStoresRequest",
       });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          documents: S.optional(__S(40, __c5, 0)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDiscoveryengineV1PurgeDocumentsRequestInlineSource",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          inlineSource: S.optional(__S(729, __c91, 1)),
-          gcsSource: S.optional(__S(576, __c72, 0)),
-          errorConfig: S.optional(__S(570, __c71, 2)),
-          filter: S.optional(S.String),
-          force: S.optional(S.Boolean),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDiscoveryengineV1PurgeDocumentsRequest",
-      });
-    case 3:
+  }
+}
+function __c193(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(730, __c91, 2).pipe(T.HttpBody())),
+          body: S.optional(__S(6209, __c194, 1).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -22104,11 +18590,39 @@ function __c91(j: number): any {
       ).annotate({
         identifier: "PurgeProjectsLocationsCollectionsDataStoresBranchesDocumentsRequest",
       });
-    case 4:
+  }
+}
+function __c194(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          documents: S.optional(__S(10208, __c319, 0)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDiscoveryengineV1PurgeDocumentsRequestInlineSource",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          inlineSource: S.optional(__S(6208, __c194, 0)),
+          gcsSource: S.optional(__S(2464, __c77, 0)),
+          errorConfig: S.optional(__S(2528, __c79, 0)),
+          filter: S.optional(S.String),
+          force: S.optional(S.Boolean),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDiscoveryengineV1PurgeDocumentsRequest",
+      });
+  }
+}
+function __c195(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(130, __c16, 2).pipe(T.HttpBody())),
+          body: S.optional(__S(2016, __c63, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -22119,11 +18633,15 @@ function __c91(j: number): any {
       ).annotate({
         identifier: "PurgeProjectsLocationsCollectionsDataStoresCompletionSuggestionsRequest",
       });
-    case 5:
+  }
+}
+function __c196(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(130, __c16, 2).pipe(T.HttpBody())),
+          body: S.optional(__S(2016, __c63, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -22134,20 +18652,15 @@ function __c91(j: number): any {
       ).annotate({
         identifier: "PurgeProjectsLocationsCollectionsDataStoresSuggestionDenyListEntriesRequest",
       });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          filter: S.optional(S.String),
-          force: S.optional(S.Boolean),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDiscoveryengineV1PurgeUserEventsRequest",
-      });
-    case 7:
+  }
+}
+function __c197(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(734, __c91, 6).pipe(T.HttpBody())),
+          body: S.optional(__S(6336, __c198, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -22160,13 +18673,26 @@ function __c91(j: number): any {
       });
   }
 }
-function __c92(j: number): any {
+function __c198(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          filter: S.optional(S.String),
+          force: S.optional(S.Boolean),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDiscoveryengineV1PurgeUserEventsRequest",
+      });
+  }
+}
+function __c199(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(730, __c91, 2).pipe(T.HttpBody())),
+          body: S.optional(__S(6209, __c194, 1).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -22177,11 +18703,15 @@ function __c92(j: number): any {
       ).annotate({
         identifier: "PurgeProjectsLocationsDataStoresBranchesDocumentsRequest",
       });
-    case 1:
+  }
+}
+function __c200(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(130, __c16, 2).pipe(T.HttpBody())),
+          body: S.optional(__S(2016, __c63, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -22192,11 +18722,61 @@ function __c92(j: number): any {
       ).annotate({
         identifier: "PurgeProjectsLocationsDataStoresCompletionSuggestionsRequest",
       });
+  }
+}
+function __c201(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          includeTailSuggestions: S.optional(S.Boolean.pipe(T.Query())),
+          queryModel: S.optional(S.String.pipe(T.Query())),
+          userPseudoId: S.optional(S.String.pipe(T.Query())),
+          dataStore: S.String.pipe(T.Label()),
+          query: S.optional(S.String.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v1/{+dataStore}:completeQuery",
+            baseUrl: "https://discoveryengine.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "CompleteQueryProjectsLocationsCollectionsDataStoresRequest",
+      });
+  }
+}
+function __c202(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          suggestion: S.optional(S.String),
+          completableFieldPaths: S.optional(__S(10208, __c319, 0)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDiscoveryengineV1CompleteQueryResponseQuerySuggestion",
+      });
+    case 1:
+      return S.Array(__S(6464, __c202, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
+          tailMatchTriggered: S.optional(S.Boolean),
+          querySuggestions: S.optional(__S(6465, __c202, 1)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDiscoveryengineV1CompleteQueryResponse",
+      });
+  }
+}
+function __c203(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
           parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(130, __c16, 2).pipe(T.HttpBody())),
+          body: S.optional(__S(2016, __c63, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -22207,11 +18787,15 @@ function __c92(j: number): any {
       ).annotate({
         identifier: "PurgeProjectsLocationsDataStoresSuggestionDenyListEntriesRequest",
       });
-    case 3:
+  }
+}
+function __c204(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(734, __c91, 6).pipe(T.HttpBody())),
+          body: S.optional(__S(6336, __c198, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -22222,7 +18806,11 @@ function __c92(j: number): any {
       ).annotate({
         identifier: "PurgeProjectsLocationsDataStoresUserEventsRequest",
       });
-    case 4:
+  }
+}
+function __c205(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           score: S.optional(S.Number),
@@ -22233,26 +18821,26 @@ function __c92(j: number): any {
       ).annotate({
         identifier: "GoogleCloudDiscoveryengineV1RankingRecord",
       });
-    case 5:
-      return S.Array(__S(740, __c92, 4));
-    case 6:
+    case 1:
+      return S.Array(__S(6560, __c205, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          records: S.optional(__S(741, __c92, 5)),
+          records: S.optional(__S(6561, __c205, 1)),
           query: S.optional(S.String),
           model: S.optional(S.String),
           ignoreRecordDetailsInResponse: S.optional(S.Boolean),
-          userLabels: S.optional(__S(37, __c4, 5)),
+          userLabels: S.optional(__S(10272, __c321, 0)),
           topN: S.optional(S.Number),
         }),
       ).annotate({
         identifier: "GoogleCloudDiscoveryengineV1RankRequest",
       });
-    case 7:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           rankingConfig: S.String.pipe(T.Label()),
-          body: S.optional(__S(742, __c92, 6).pipe(T.HttpBody())),
+          body: S.optional(__S(6562, __c205, 2).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -22263,36 +18851,23 @@ function __c92(j: number): any {
       ).annotate({
         identifier: "RankProjectsLocationsRankingConfigsRequest",
       });
-  }
-}
-function __c93(j: number): any {
-  switch (j) {
-    case 0:
+    case 4:
       return S.suspend(() =>
         S.Struct({
-          records: S.optional(__S(741, __c92, 5)),
+          records: S.optional(__S(6561, __c205, 1)),
         }),
       ).annotate({
         identifier: "GoogleCloudDiscoveryengineV1RankResponse",
       });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          params: S.optional(__S(42, __c5, 2)),
-          validateOnly: S.optional(S.Boolean),
-          userEvent: S.optional(__S(602, __c75, 2)),
-          userLabels: S.optional(__S(37, __c4, 5)),
-          filter: S.optional(S.String),
-          pageSize: S.optional(S.Number),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDiscoveryengineV1RecommendRequest",
-      });
-    case 2:
+  }
+}
+function __c206(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           servingConfig: S.String.pipe(T.Label()),
-          body: S.optional(__S(745, __c93, 1).pipe(T.HttpBody())),
+          body: S.optional(__S(6624, __c207, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -22303,34 +18878,55 @@ function __c93(j: number): any {
       ).annotate({
         identifier: "RecommendProjectsLocationsCollectionsDataStoresServingConfigsRequest",
       });
-    case 3:
+  }
+}
+function __c207(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          params: S.optional(__S(10112, __c316, 0)),
+          validateOnly: S.optional(S.Boolean),
+          userEvent: S.optional(__S(2893, __c90, 13)),
+          userLabels: S.optional(__S(10272, __c321, 0)),
+          filter: S.optional(S.String),
+          pageSize: S.optional(S.Number),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDiscoveryengineV1RecommendRequest",
+      });
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
-          metadata: S.optional(__S(42, __c5, 2)),
-          document: S.optional(__S(188, __c23, 4)),
+          metadata: S.optional(__S(10112, __c316, 0)),
+          document: S.optional(__S(7047, __c220, 7)),
         }),
       ).annotate({
         identifier: "GoogleCloudDiscoveryengineV1RecommendResponseRecommendationResult",
       });
-    case 4:
-      return S.Array(__S(747, __c93, 3));
-    case 5:
+    case 2:
+      return S.Array(__S(6625, __c207, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
           attributionToken: S.optional(S.String),
-          results: S.optional(__S(748, __c93, 4)),
-          missingIds: S.optional(__S(40, __c5, 0)),
+          results: S.optional(__S(6626, __c207, 2)),
+          missingIds: S.optional(__S(10208, __c319, 0)),
           validateOnly: S.optional(S.Boolean),
         }),
       ).annotate({
         identifier: "GoogleCloudDiscoveryengineV1RecommendResponse",
       });
-    case 6:
+  }
+}
+function __c208(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           servingConfig: S.String.pipe(T.Label()),
-          body: S.optional(__S(745, __c93, 1).pipe(T.HttpBody())),
+          body: S.optional(__S(6624, __c207, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -22341,11 +18937,15 @@ function __c93(j: number): any {
       ).annotate({
         identifier: "RecommendProjectsLocationsCollectionsEnginesServingConfigsRequest",
       });
-    case 7:
+  }
+}
+function __c209(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           servingConfig: S.String.pipe(T.Label()),
-          body: S.optional(__S(745, __c93, 1).pipe(T.HttpBody())),
+          body: S.optional(__S(6624, __c207, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -22358,22 +18958,13 @@ function __c93(j: number): any {
       });
   }
 }
-function __c94(j: number): any {
+function __c210(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          uris: S.optional(__S(40, __c5, 0)),
-          siteCredential: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDiscoveryengineV1RecrawlUrisRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
           siteSearchEngine: S.String.pipe(T.Label()),
-          body: S.optional(__S(752, __c94, 0).pipe(T.HttpBody())),
+          body: S.optional(__S(6752, __c211, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -22384,11 +18975,28 @@ function __c94(j: number): any {
       ).annotate({
         identifier: "RecrawlUrisProjectsLocationsCollectionsDataStoresSiteSearchEngineRequest",
       });
-    case 2:
+  }
+}
+function __c211(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          uris: S.optional(__S(10208, __c319, 0)),
+          siteCredential: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDiscoveryengineV1RecrawlUrisRequest",
+      });
+  }
+}
+function __c212(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           siteSearchEngine: S.String.pipe(T.Label()),
-          body: S.optional(__S(752, __c94, 0).pipe(T.HttpBody())),
+          body: S.optional(__S(6752, __c211, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -22399,7 +19007,11 @@ function __c94(j: number): any {
       ).annotate({
         identifier: "RecrawlUrisProjectsLocationsDataStoresSiteSearchEngineRequest",
       });
-    case 3:
+  }
+}
+function __c213(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           licenseConfig: S.optional(S.String),
@@ -22409,11 +19021,11 @@ function __c94(j: number): any {
       ).annotate({
         identifier: "GoogleCloudDiscoveryengineV1RetractLicenseConfigRequest",
       });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           billingAccountLicenseConfig: S.String.pipe(T.Label()),
-          body: S.optional(__S(755, __c94, 3).pipe(T.HttpBody())),
+          body: S.optional(__S(6816, __c213, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -22424,240 +19036,15 @@ function __c94(j: number): any {
       ).annotate({
         identifier: "RetractLicenseConfigBillingAccountsBillingAccountLicenseConfigsRequest",
       });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          allowedFieldNames: S.optional(__S(40, __c5, 0)),
-          extractedFilterBehavior: S.optional(S.String),
-          geoSearchQueryDetectionFieldNames: S.optional(__S(40, __c5, 0)),
-          filterExtractionCondition: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier:
-          "GoogleCloudDiscoveryengineV1SearchRequestNaturalLanguageQueryUnderstandingSpec",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          exclusiveMaximum: S.optional(S.Number),
-          minimum: S.optional(S.Number),
-          maximum: S.optional(S.Number),
-          exclusiveMinimum: S.optional(S.Number),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDiscoveryengineV1Interval",
-      });
-    case 7:
-      return S.Array(__S(758, __c94, 6));
   }
 }
-function __c95(j: number): any {
+function __c214(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() =>
-        S.Struct({
-          contains: S.optional(__S(40, __c5, 0)),
-          key: S.optional(S.String),
-          restrictedValues: S.optional(__S(40, __c5, 0)),
-          prefixes: S.optional(__S(40, __c5, 0)),
-          intervals: S.optional(__S(759, __c94, 7)),
-          orderBy: S.optional(S.String),
-          caseInsensitive: S.optional(S.Boolean),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDiscoveryengineV1SearchRequestFacetSpecFacetKey",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          excludedFilterKeys: S.optional(__S(40, __c5, 0)),
-          enableDynamicPosition: S.optional(S.Boolean),
-          facetKey: S.optional(__S(760, __c95, 0)),
-          limit: S.optional(S.Number),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDiscoveryengineV1SearchRequestFacetSpec",
-      });
-    case 2:
-      return S.Array(__S(761, __c95, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          searchResultPersistenceCount: S.optional(S.Number),
-          queryId: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDiscoveryengineV1SearchRequestSessionSpec",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          expressionsToPrecompute: S.optional(__S(40, __c5, 0)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDiscoveryengineV1SearchRequestCustomRankingParams",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          imageBytes: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDiscoveryengineV1SearchRequestImageQuery",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          returnRelevanceScore: S.optional(S.Boolean),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDiscoveryengineV1SearchRequestRelevanceScoreSpec",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          mode: S.optional(S.String),
-          maxCount: S.optional(S.Number),
-          field: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDiscoveryengineV1SearchRequestCrowdingSpec",
-      });
-  }
-}
-function __c96(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(767, __c95, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          mode: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDiscoveryengineV1SearchRequestSpellCorrectionSpec",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          weight: S.optional(S.Number),
-          key: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDiscoveryengineV1SearchRequestSearchAsYouTypeSpecField",
-      });
-    case 3:
-      return S.Array(__S(770, __c96, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          condition: S.optional(S.String),
-          scoreThreshold: S.optional(S.Number),
-          fields: S.optional(__S(771, __c96, 3)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDiscoveryengineV1SearchRequestSearchAsYouTypeSpec",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          relevanceThreshold: S.optional(S.String),
-          semanticRelevanceThreshold: S.optional(S.Number),
-        }),
-      ).annotate({
-        identifier:
-          "GoogleCloudDiscoveryengineV1SearchRequestRelevanceFilterSpecRelevanceThresholdSpec",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          semanticSearchThreshold: S.optional(__S(773, __c96, 5)),
-          keywordSearchThreshold: S.optional(__S(773, __c96, 5)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDiscoveryengineV1SearchRequestRelevanceFilterSpec",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          matchHighlightingCondition: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDiscoveryengineV1SearchRequestDisplaySpec",
-      });
-  }
-}
-function __c97(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          condition: S.optional(S.String),
-          pinUnexpandedResults: S.optional(S.Boolean),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDiscoveryengineV1SearchRequestQueryExpansionSpec",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          disableSemanticAddOn: S.optional(S.Boolean),
-          disableGenerativeAnswerAddOn: S.optional(S.Boolean),
-          disableKpiPersonalizationAddOn: S.optional(S.Boolean),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDiscoveryengineV1SearchRequestSearchAddonSpec",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          boostSpec: S.optional(__S(19, __c2, 3)),
-          relevanceThreshold: S.optional(S.String),
-          naturalLanguageQueryUnderstandingSpec: S.optional(__S(757, __c94, 5)),
-          facetSpecs: S.optional(__S(762, __c95, 2)),
-          safeSearch: S.optional(S.Boolean),
-          entity: S.optional(S.String),
-          userInfo: S.optional(__S(170, __c21, 2)),
-          sessionSpec: S.optional(__S(763, __c95, 3)),
-          query: S.optional(S.String),
-          pageToken: S.optional(S.String),
-          contentSearchSpec: S.optional(__S(292, __c36, 4)),
-          rankingExpression: S.optional(S.String),
-          customRankingParams: S.optional(__S(764, __c95, 4)),
-          branch: S.optional(S.String),
-          filter: S.optional(S.String),
-          imageQuery: S.optional(__S(765, __c95, 5)),
-          orderBy: S.optional(S.String),
-          relevanceScoreSpec: S.optional(__S(766, __c95, 6)),
-          offset: S.optional(S.Number),
-          oneBoxPageSize: S.optional(S.Number),
-          params: S.optional(__S(42, __c5, 2)),
-          crowdingSpecs: S.optional(__S(768, __c96, 0)),
-          pageCategories: S.optional(__S(40, __c5, 0)),
-          spellCorrectionSpec: S.optional(__S(769, __c96, 1)),
-          numResultsPerDataStore: S.optional(S.Number),
-          dataStoreSpecs: S.optional(__S(21, __c2, 5)),
-          searchAsYouTypeSpec: S.optional(__S(772, __c96, 4)),
-          languageCode: S.optional(S.String),
-          userPseudoId: S.optional(S.String),
-          relevanceFilterSpec: S.optional(__S(774, __c96, 6)),
-          canonicalFilter: S.optional(S.String),
-          displaySpec: S.optional(__S(775, __c96, 7)),
-          queryExpansionSpec: S.optional(__S(776, __c97, 0)),
-          pageSize: S.optional(S.Number),
-          userLabels: S.optional(__S(37, __c4, 5)),
-          searchAddonSpec: S.optional(__S(777, __c97, 1)),
-          rankingExpressionBackend: S.optional(S.String),
-          session: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDiscoveryengineV1SearchRequest",
-      });
-    case 3:
       return S.suspend(() =>
         S.Struct({
           servingConfig: S.String.pipe(T.Label()),
-          body: S.optional(__S(778, __c97, 2).pipe(T.HttpBody())),
+          body: S.optional(__S(6901, __c215, 21).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -22668,7 +19055,228 @@ function __c97(j: number): any {
       ).annotate({
         identifier: "SearchLiteProjectsLocationsCollectionsDataStoresServingConfigsRequest",
       });
+  }
+}
+function __c215(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          allowedFieldNames: S.optional(__S(10208, __c319, 0)),
+          extractedFilterBehavior: S.optional(S.String),
+          geoSearchQueryDetectionFieldNames: S.optional(__S(10208, __c319, 0)),
+          filterExtractionCondition: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier:
+          "GoogleCloudDiscoveryengineV1SearchRequestNaturalLanguageQueryUnderstandingSpec",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          exclusiveMaximum: S.optional(S.Number),
+          minimum: S.optional(S.Number),
+          maximum: S.optional(S.Number),
+          exclusiveMinimum: S.optional(S.Number),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDiscoveryengineV1Interval",
+      });
+    case 2:
+      return S.Array(__S(6881, __c215, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          contains: S.optional(__S(10208, __c319, 0)),
+          key: S.optional(S.String),
+          restrictedValues: S.optional(__S(10208, __c319, 0)),
+          prefixes: S.optional(__S(10208, __c319, 0)),
+          intervals: S.optional(__S(6882, __c215, 2)),
+          orderBy: S.optional(S.String),
+          caseInsensitive: S.optional(S.Boolean),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDiscoveryengineV1SearchRequestFacetSpecFacetKey",
+      });
     case 4:
+      return S.suspend(() =>
+        S.Struct({
+          excludedFilterKeys: S.optional(__S(10208, __c319, 0)),
+          enableDynamicPosition: S.optional(S.Boolean),
+          facetKey: S.optional(__S(6883, __c215, 3)),
+          limit: S.optional(S.Number),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDiscoveryengineV1SearchRequestFacetSpec",
+      });
+    case 5:
+      return S.Array(__S(6884, __c215, 4));
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          searchResultPersistenceCount: S.optional(S.Number),
+          queryId: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDiscoveryengineV1SearchRequestSessionSpec",
+      });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          expressionsToPrecompute: S.optional(__S(10208, __c319, 0)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDiscoveryengineV1SearchRequestCustomRankingParams",
+      });
+    case 8:
+      return S.suspend(() =>
+        S.Struct({
+          imageBytes: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDiscoveryengineV1SearchRequestImageQuery",
+      });
+    case 9:
+      return S.suspend(() =>
+        S.Struct({
+          returnRelevanceScore: S.optional(S.Boolean),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDiscoveryengineV1SearchRequestRelevanceScoreSpec",
+      });
+    case 10:
+      return S.suspend(() =>
+        S.Struct({
+          mode: S.optional(S.String),
+          maxCount: S.optional(S.Number),
+          field: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDiscoveryengineV1SearchRequestCrowdingSpec",
+      });
+    case 11:
+      return S.Array(__S(6890, __c215, 10));
+    case 12:
+      return S.suspend(() =>
+        S.Struct({
+          mode: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDiscoveryengineV1SearchRequestSpellCorrectionSpec",
+      });
+    case 13:
+      return S.suspend(() =>
+        S.Struct({
+          weight: S.optional(S.Number),
+          key: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDiscoveryengineV1SearchRequestSearchAsYouTypeSpecField",
+      });
+    case 14:
+      return S.Array(__S(6893, __c215, 13));
+    case 15:
+      return S.suspend(() =>
+        S.Struct({
+          condition: S.optional(S.String),
+          scoreThreshold: S.optional(S.Number),
+          fields: S.optional(__S(6894, __c215, 14)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDiscoveryengineV1SearchRequestSearchAsYouTypeSpec",
+      });
+    case 16:
+      return S.suspend(() =>
+        S.Struct({
+          relevanceThreshold: S.optional(S.String),
+          semanticRelevanceThreshold: S.optional(S.Number),
+        }),
+      ).annotate({
+        identifier:
+          "GoogleCloudDiscoveryengineV1SearchRequestRelevanceFilterSpecRelevanceThresholdSpec",
+      });
+    case 17:
+      return S.suspend(() =>
+        S.Struct({
+          semanticSearchThreshold: S.optional(__S(6896, __c215, 16)),
+          keywordSearchThreshold: S.optional(__S(6896, __c215, 16)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDiscoveryengineV1SearchRequestRelevanceFilterSpec",
+      });
+    case 18:
+      return S.suspend(() =>
+        S.Struct({
+          matchHighlightingCondition: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDiscoveryengineV1SearchRequestDisplaySpec",
+      });
+    case 19:
+      return S.suspend(() =>
+        S.Struct({
+          condition: S.optional(S.String),
+          pinUnexpandedResults: S.optional(S.Boolean),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDiscoveryengineV1SearchRequestQueryExpansionSpec",
+      });
+    case 20:
+      return S.suspend(() =>
+        S.Struct({
+          disableSemanticAddOn: S.optional(S.Boolean),
+          disableGenerativeAnswerAddOn: S.optional(S.Boolean),
+          disableKpiPersonalizationAddOn: S.optional(S.Boolean),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDiscoveryengineV1SearchRequestSearchAddonSpec",
+      });
+    case 21:
+      return S.suspend(() =>
+        S.Struct({
+          boostSpec: S.optional(__S(10405, __c325, 5)),
+          relevanceThreshold: S.optional(S.String),
+          naturalLanguageQueryUnderstandingSpec: S.optional(__S(6880, __c215, 0)),
+          facetSpecs: S.optional(__S(6885, __c215, 5)),
+          safeSearch: S.optional(S.Boolean),
+          entity: S.optional(S.String),
+          userInfo: S.optional(__S(7010, __c219, 2)),
+          sessionSpec: S.optional(__S(6886, __c215, 6)),
+          query: S.optional(S.String),
+          pageToken: S.optional(S.String),
+          contentSearchSpec: S.optional(__S(8803, __c275, 3)),
+          rankingExpression: S.optional(S.String),
+          customRankingParams: S.optional(__S(6887, __c215, 7)),
+          branch: S.optional(S.String),
+          filter: S.optional(S.String),
+          imageQuery: S.optional(__S(6888, __c215, 8)),
+          orderBy: S.optional(S.String),
+          relevanceScoreSpec: S.optional(__S(6889, __c215, 9)),
+          offset: S.optional(S.Number),
+          oneBoxPageSize: S.optional(S.Number),
+          params: S.optional(__S(10112, __c316, 0)),
+          crowdingSpecs: S.optional(__S(6891, __c215, 11)),
+          pageCategories: S.optional(__S(10208, __c319, 0)),
+          spellCorrectionSpec: S.optional(__S(6892, __c215, 12)),
+          numResultsPerDataStore: S.optional(S.Number),
+          dataStoreSpecs: S.optional(__S(10305, __c322, 1)),
+          searchAsYouTypeSpec: S.optional(__S(6895, __c215, 15)),
+          languageCode: S.optional(S.String),
+          userPseudoId: S.optional(S.String),
+          relevanceFilterSpec: S.optional(__S(6897, __c215, 17)),
+          canonicalFilter: S.optional(S.String),
+          displaySpec: S.optional(__S(6898, __c215, 18)),
+          queryExpansionSpec: S.optional(__S(6899, __c215, 19)),
+          pageSize: S.optional(S.Number),
+          userLabels: S.optional(__S(10272, __c321, 0)),
+          searchAddonSpec: S.optional(__S(6900, __c215, 20)),
+          rankingExpressionBackend: S.optional(S.String),
+          session: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDiscoveryengineV1SearchRequest",
+      });
+    case 22:
       return S.suspend(() =>
         S.Struct({
           querySegment: S.optional(S.String),
@@ -22680,33 +19288,29 @@ function __c97(j: number): any {
         identifier:
           "GoogleCloudDiscoveryengineV1SearchResponseNaturalLanguageQueryUnderstandingInfoStructuredExtractedFilterNumberConstraint",
       });
-    case 5:
-      return S.Array(/*@__PURE__*/ S.suspend(() => __S(785, __c98, 1)));
-    case 6:
+    case 23:
+      return S.Array(/*@__PURE__*/ S.suspend(() => __S(6907, __c215, 27)));
+    case 24:
       return S.suspend(() =>
         S.Struct({
-          expressions: S.optional(__S(781, __c97, 5)),
+          expressions: S.optional(__S(6903, __c215, 23)),
         }),
       ).annotate({
         identifier:
           "GoogleCloudDiscoveryengineV1SearchResponseNaturalLanguageQueryUnderstandingInfoStructuredExtractedFilterAndExpression",
       });
-    case 7:
+    case 25:
       return S.suspend(() =>
         S.Struct({
           querySegment: S.optional(S.String),
-          values: S.optional(__S(40, __c5, 0)),
+          values: S.optional(__S(10208, __c319, 0)),
           fieldName: S.optional(S.String),
         }),
       ).annotate({
         identifier:
           "GoogleCloudDiscoveryengineV1SearchResponseNaturalLanguageQueryUnderstandingInfoStructuredExtractedFilterStringConstraint",
       });
-  }
-}
-function __c98(j: number): any {
-  switch (j) {
-    case 0:
+    case 26:
       return S.suspend(() =>
         S.Struct({
           address: S.optional(S.String),
@@ -22719,43 +19323,43 @@ function __c98(j: number): any {
         identifier:
           "GoogleCloudDiscoveryengineV1SearchResponseNaturalLanguageQueryUnderstandingInfoStructuredExtractedFilterGeolocationConstraint",
       });
-    case 1:
+    case 27:
       return S.suspend(() =>
         S.Struct({
-          numberConstraint: S.optional(__S(780, __c97, 4)),
-          andExpr: S.optional(__S(782, __c97, 6)),
-          stringConstraint: S.optional(__S(783, __c97, 7)),
-          geolocationConstraint: S.optional(__S(784, __c98, 0)),
-          orExpr: S.optional(__S(782, __c97, 6)),
+          numberConstraint: S.optional(__S(6902, __c215, 22)),
+          andExpr: S.optional(__S(6904, __c215, 24)),
+          stringConstraint: S.optional(__S(6905, __c215, 25)),
+          geolocationConstraint: S.optional(__S(6906, __c215, 26)),
+          orExpr: S.optional(__S(6904, __c215, 24)),
         }),
       ).annotate({
         identifier:
           "GoogleCloudDiscoveryengineV1SearchResponseNaturalLanguageQueryUnderstandingInfoStructuredExtractedFilterExpression",
       });
-    case 2:
+    case 28:
       return S.suspend(() =>
         S.Struct({
-          expression: S.optional(__S(785, __c98, 1)),
+          expression: S.optional(__S(6907, __c215, 27)),
         }),
       ).annotate({
         identifier:
           "GoogleCloudDiscoveryengineV1SearchResponseNaturalLanguageQueryUnderstandingInfoStructuredExtractedFilter",
       });
-    case 3:
+    case 29:
       return S.suspend(() =>
         S.Struct({
-          structuredExtractedFilter: S.optional(__S(786, __c98, 2)),
+          structuredExtractedFilter: S.optional(__S(6908, __c215, 28)),
           extractedFilters: S.optional(S.String),
           rewrittenQuery: S.optional(S.String),
-          classifiedIntents: S.optional(__S(40, __c5, 0)),
+          classifiedIntents: S.optional(__S(10208, __c319, 0)),
         }),
       ).annotate({
         identifier:
           "GoogleCloudDiscoveryengineV1SearchResponseNaturalLanguageQueryUnderstandingInfo",
       });
-    case 4:
-      return S.Array(__S(275, __c34, 3));
-    case 5:
+    case 30:
+      return S.Array(__S(8672, __c271, 0));
+    case 31:
       return S.suspend(() =>
         S.Struct({
           pinnedResultCount: S.optional(S.String),
@@ -22764,7 +19368,11 @@ function __c98(j: number): any {
       ).annotate({
         identifier: "GoogleCloudDiscoveryengineV1SearchResponseQueryExpansionInfo",
       });
-    case 6:
+  }
+}
+function __c216(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           queryId: S.optional(S.String),
@@ -22773,60 +19381,310 @@ function __c98(j: number): any {
       ).annotate({
         identifier: "GoogleCloudDiscoveryengineV1SearchResponseSessionInfo",
       });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           value: S.optional(S.String),
           count: S.optional(S.String),
-          interval: S.optional(__S(758, __c94, 6)),
+          interval: S.optional(__S(6881, __c215, 1)),
         }),
       ).annotate({
         identifier: "GoogleCloudDiscoveryengineV1SearchResponseFacetFacetValue",
       });
-  }
-}
-function __c99(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(791, __c98, 7));
-    case 1:
+    case 2:
+      return S.Array(__S(6913, __c216, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          values: S.optional(__S(792, __c99, 0)),
+          values: S.optional(__S(6914, __c216, 2)),
           key: S.optional(S.String),
           dynamicFacet: S.optional(S.Boolean),
         }),
       ).annotate({
         identifier: "GoogleCloudDiscoveryengineV1SearchResponseFacet",
       });
-    case 2:
-      return S.Array(__S(793, __c99, 1));
-    case 3:
+    case 4:
+      return S.Array(__S(6915, __c216, 3));
+    case 5:
       return S.suspend(() =>
         S.Struct({
           redirectUri: S.optional(S.String),
-          results: S.optional(__S(237, __c29, 5)),
-          naturalLanguageQueryUnderstandingInfo: S.optional(__S(787, __c98, 3)),
-          appliedControls: S.optional(__S(40, __c5, 0)),
+          results: S.optional(__S(8175, __c255, 15)),
+          naturalLanguageQueryUnderstandingInfo: S.optional(__S(6909, __c215, 29)),
+          appliedControls: S.optional(__S(10208, __c319, 0)),
           attributionToken: S.optional(S.String),
           semanticState: S.optional(S.String),
           correctedQuery: S.optional(S.String),
-          searchLinkPromotions: S.optional(__S(788, __c98, 4)),
-          summary: S.optional(__S(212, __c26, 4)),
+          searchLinkPromotions: S.optional(__S(6910, __c215, 30)),
+          summary: S.optional(__S(8235, __c257, 11)),
           nextPageToken: S.optional(S.String),
-          queryExpansionInfo: S.optional(__S(789, __c98, 5)),
+          queryExpansionInfo: S.optional(__S(6911, __c215, 31)),
           totalSize: S.optional(S.Number),
-          sessionInfo: S.optional(__S(790, __c98, 6)),
-          facets: S.optional(__S(794, __c99, 2)),
+          sessionInfo: S.optional(__S(6912, __c216, 0)),
+          facets: S.optional(__S(6916, __c216, 4)),
         }),
       ).annotate({
         identifier: "GoogleCloudDiscoveryengineV1SearchResponse",
       });
+  }
+}
+function __c217(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          completionConfig: S.String.pipe(T.Label()),
+          body: S.optional(__S(6981, __c218, 5).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/{+completionConfig}:completeQuery",
+            baseUrl: "https://discoveryengine.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "CompleteQueryProjectsLocationsCollectionsDataStoresCompletionConfigRequest",
+      });
+  }
+}
+function __c218(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          condition: S.optional(S.String),
+          boost: S.optional(S.Number),
+        }),
+      ).annotate({
+        identifier:
+          "GoogleCloudDiscoveryengineV1AdvancedCompleteQueryRequestBoostSpecConditionBoostSpec",
+      });
+    case 1:
+      return S.Array(__S(6976, __c218, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          conditionBoostSpecs: S.optional(__S(6977, __c218, 1)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDiscoveryengineV1AdvancedCompleteQueryRequestBoostSpec",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          suggestionType: S.optional(S.String),
+          maxSuggestions: S.optional(S.Number),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDiscoveryengineV1AdvancedCompleteQueryRequestSuggestionTypeSpec",
+      });
+    case 4:
+      return S.Array(__S(6979, __c218, 3));
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          queryModel: S.optional(S.String),
+          userPseudoId: S.optional(S.String),
+          suggestionTypes: S.optional(__S(10336, __c323, 0)),
+          userInfo: S.optional(__S(7010, __c219, 2)),
+          boostSpec: S.optional(__S(6978, __c218, 2)),
+          includeTailSuggestions: S.optional(S.Boolean),
+          suggestionTypeSpecs: S.optional(__S(6980, __c218, 4)),
+          experimentIds: S.optional(__S(10208, __c319, 0)),
+          query: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDiscoveryengineV1AdvancedCompleteQueryRequest",
+      });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          completableFieldPaths: S.optional(__S(10208, __c319, 0)),
+          suggestion: S.optional(S.String),
+          score: S.optional(S.Number),
+          dataStore: S.optional(__S(10208, __c319, 0)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDiscoveryengineV1AdvancedCompleteQueryResponseQuerySuggestion",
+      });
+    case 7:
+      return S.Array(__S(6982, __c218, 6));
+    case 8:
+      return S.suspend(() =>
+        S.Struct({
+          score: S.optional(S.Number),
+          document: S.optional(__S(7047, __c220, 7)),
+          displayPhotoUri: S.optional(S.String),
+          personType: S.optional(S.String),
+          dataStore: S.optional(S.String),
+          suggestion: S.optional(S.String),
+          destinationUri: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDiscoveryengineV1AdvancedCompleteQueryResponsePersonSuggestion",
+      });
+    case 9:
+      return S.Array(__S(6984, __c218, 8));
+    case 10:
+      return S.suspend(() =>
+        S.Struct({
+          suggestion: S.optional(S.String),
+          recentSearchTime: S.optional(S.String),
+          score: S.optional(S.Number),
+        }),
+      ).annotate({
+        identifier:
+          "GoogleCloudDiscoveryengineV1AdvancedCompleteQueryResponseRecentSearchSuggestion",
+      });
+    case 11:
+      return S.Array(__S(6986, __c218, 10));
+    case 12:
+      return S.suspend(() =>
+        S.Struct({
+          suggestion: S.optional(S.String),
+          score: S.optional(S.Number),
+          destinationUri: S.optional(S.String),
+          contentType: S.optional(S.String),
+          iconUri: S.optional(S.String),
+          dataStore: S.optional(S.String),
+          document: S.optional(__S(7047, __c220, 7)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDiscoveryengineV1AdvancedCompleteQueryResponseContentSuggestion",
+      });
+    case 13:
+      return S.Array(__S(6988, __c218, 12));
+    case 14:
+      return S.suspend(() =>
+        S.Struct({
+          querySuggestions: S.optional(__S(6983, __c218, 7)),
+          peopleSuggestions: S.optional(__S(6985, __c218, 9)),
+          recentSearchSuggestions: S.optional(__S(6987, __c218, 11)),
+          tailMatchTriggered: S.optional(S.Boolean),
+          contentSuggestions: S.optional(__S(6989, __c218, 13)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDiscoveryengineV1AdvancedCompleteQueryResponse",
+      });
+  }
+}
+function __c219(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          longitude: S.optional(S.Number),
+          latitude: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "GoogleTypeLatLng" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          point: S.optional(__S(7008, __c219, 0)),
+          address: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDiscoveryengineV1UserInfoPreciseLocation",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          userAgent: S.optional(S.String),
+          timeZone: S.optional(S.String),
+          userId: S.optional(S.String),
+          preciseLocation: S.optional(__S(7009, __c219, 1)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDiscoveryengineV1UserInfo",
+      });
+  }
+}
+function __c220(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          mimeType: S.optional(S.String),
+          uri: S.optional(S.String),
+          rawBytes: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDiscoveryengineV1DocumentContent",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          indexTime: S.optional(S.String),
+          errorSamples: S.optional(__S(7072, __c221, 0)),
+          pendingMessage: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDiscoveryengineV1DocumentIndexStatus",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          groupId: S.optional(S.String),
+          userId: S.optional(S.String),
+          externalEntityId: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDiscoveryengineV1Principal",
+      });
+    case 3:
+      return S.Array(__S(7042, __c220, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
+          principals: S.optional(__S(7043, __c220, 3)),
+          idpWide: S.optional(S.Boolean),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDiscoveryengineV1DocumentAclInfoAccessRestriction",
+      });
+    case 5:
+      return S.Array(__S(7044, __c220, 4));
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          readers: S.optional(__S(7045, __c220, 5)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDiscoveryengineV1DocumentAclInfo",
+      });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          structData: S.optional(__S(10112, __c316, 0)),
+          schemaId: S.optional(S.String),
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          parentDocumentId: S.optional(S.String),
+          content: S.optional(__S(7040, __c220, 0)),
+          derivedStructData: S.optional(__S(10112, __c316, 0)),
+          indexStatus: S.optional(__S(7041, __c220, 1)),
+          indexTime: S.optional(S.String),
+          jsonData: S.optional(S.String),
+          aclInfo: S.optional(__S(7046, __c220, 6)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDiscoveryengineV1Document",
+      });
+  }
+}
+function __c221(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(10176, __c318, 0));
+  }
+}
+function __c222(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
           servingConfig: S.String.pipe(T.Label()),
-          body: S.optional(__S(778, __c97, 2).pipe(T.HttpBody())),
+          body: S.optional(__S(6901, __c215, 21).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -22837,11 +19695,15 @@ function __c99(j: number): any {
       ).annotate({
         identifier: "SearchLiteProjectsLocationsCollectionsEnginesServingConfigsRequest",
       });
-    case 5:
+  }
+}
+function __c223(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           servingConfig: S.String.pipe(T.Label()),
-          body: S.optional(__S(778, __c97, 2).pipe(T.HttpBody())),
+          body: S.optional(__S(6901, __c215, 21).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -22852,11 +19714,15 @@ function __c99(j: number): any {
       ).annotate({
         identifier: "SearchLiteProjectsLocationsDataStoresServingConfigsRequest",
       });
-    case 6:
+  }
+}
+function __c224(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           servingConfig: S.String.pipe(T.Label()),
-          body: S.optional(__S(778, __c97, 2).pipe(T.HttpBody())),
+          body: S.optional(__S(6901, __c215, 21).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -22867,11 +19733,15 @@ function __c99(j: number): any {
       ).annotate({
         identifier: "SearchProjectsLocationsCollectionsDataStoresServingConfigsRequest",
       });
-    case 7:
+  }
+}
+function __c225(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           servingConfig: S.String.pipe(T.Label()),
-          body: S.optional(__S(778, __c97, 2).pipe(T.HttpBody())),
+          body: S.optional(__S(6901, __c215, 21).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -22884,13 +19754,13 @@ function __c99(j: number): any {
       });
   }
 }
-function __c100(j: number): any {
+function __c226(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           servingConfig: S.String.pipe(T.Label()),
-          body: S.optional(__S(778, __c97, 2).pipe(T.HttpBody())),
+          body: S.optional(__S(6901, __c215, 21).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -22901,30 +19771,15 @@ function __c100(j: number): any {
       ).annotate({
         identifier: "SearchProjectsLocationsDataStoresServingConfigsRequest",
       });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          acceptedOutputModes: S.optional(__S(40, __c5, 0)),
-          pushNotification: S.optional(__S(336, __c42, 0)),
-          historyLength: S.optional(S.Number),
-          blocking: S.optional(S.Boolean),
-        }),
-      ).annotate({
-        identifier: "A2aV1SendMessageConfiguration",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          configuration: S.optional(__S(801, __c100, 1)),
-          message: S.optional(__S(139, __c17, 3)),
-          metadata: S.optional(__S(42, __c5, 2)),
-        }),
-      ).annotate({ identifier: "A2aV1SendMessageRequest" });
-    case 3:
+  }
+}
+function __c227(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           tenant: S.String.pipe(T.Label()),
-          body: S.optional(__S(802, __c100, 2).pipe(T.HttpBody())),
+          body: S.optional(__S(7297, __c228, 1).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -22935,26 +19790,45 @@ function __c100(j: number): any {
       ).annotate({
         identifier: "SendProjectsLocationsCollectionsEnginesAssistantsAgentsA2aV1MessageRequest",
       });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          message: S.optional(__S(139, __c17, 3)),
-          task: S.optional(__S(144, __c18, 0)),
+          message: S.optional(__S(3236, __c101, 4)),
+          task: S.optional(__S(3241, __c101, 9)),
         }),
       ).annotate({ identifier: "A2aV1SendMessageResponse" });
-    case 5:
+  }
+}
+function __c228(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          policy: S.optional(__S(465, __c58, 1)),
+          acceptedOutputModes: S.optional(__S(10208, __c319, 0)),
+          pushNotification: S.optional(__S(9185, __c287, 1)),
+          historyLength: S.optional(S.Number),
+          blocking: S.optional(S.Boolean),
         }),
       ).annotate({
-        identifier: "GoogleIamV1SetIamPolicyRequest",
+        identifier: "A2aV1SendMessageConfiguration",
       });
-    case 6:
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          configuration: S.optional(__S(7296, __c228, 0)),
+          message: S.optional(__S(3236, __c101, 4)),
+          metadata: S.optional(__S(10112, __c316, 0)),
+        }),
+      ).annotate({ identifier: "A2aV1SendMessageRequest" });
+  }
+}
+function __c229(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           resource: S.String.pipe(T.Label()),
-          body: S.optional(__S(805, __c100, 5).pipe(T.HttpBody())),
+          body: S.optional(__S(7360, __c230, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -22965,11 +19839,27 @@ function __c100(j: number): any {
       ).annotate({
         identifier: "SetIamPolicyProjectsLocationsCollectionsRequest",
       });
-    case 7:
+  }
+}
+function __c230(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          policy: S.optional(__S(163, __c5, 3)),
+        }),
+      ).annotate({
+        identifier: "GoogleIamV1SetIamPolicyRequest",
+      });
+  }
+}
+function __c231(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           resource: S.String.pipe(T.Label()),
-          body: S.optional(__S(805, __c100, 5).pipe(T.HttpBody())),
+          body: S.optional(__S(7360, __c230, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -22982,13 +19872,13 @@ function __c100(j: number): any {
       });
   }
 }
-function __c101(j: number): any {
+function __c232(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           resource: S.String.pipe(T.Label()),
-          body: S.optional(__S(805, __c100, 5).pipe(T.HttpBody())),
+          body: S.optional(__S(7360, __c230, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -22999,11 +19889,15 @@ function __c101(j: number): any {
       ).annotate({
         identifier: "SetIamPolicyProjectsLocationsCollectionsEnginesRequest",
       });
-    case 1:
+  }
+}
+function __c233(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           resource: S.String.pipe(T.Label()),
-          body: S.optional(__S(805, __c100, 5).pipe(T.HttpBody())),
+          body: S.optional(__S(7360, __c230, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -23014,21 +19908,44 @@ function __c101(j: number): any {
       ).annotate({
         identifier: "SetIamPolicyProjectsLocationsDataStoresRequest",
       });
-    case 2:
+  }
+}
+function __c234(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          completionConfig: S.String.pipe(T.Label()),
+          body: S.optional(__S(6981, __c218, 5).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/{+completionConfig}:completeQuery",
+            baseUrl: "https://discoveryengine.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "CompleteQueryProjectsLocationsCollectionsEnginesCompletionConfigRequest",
+      });
+  }
+}
+function __c235(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           collectionId: S.optional(S.String),
           collectionDisplayName: S.optional(S.String),
-          dataConnector: S.optional(__S(460, __c57, 4)),
+          dataConnector: S.optional(__S(11802, __c368, 26)),
         }),
       ).annotate({
         identifier: "GoogleCloudDiscoveryengineV1SetUpDataConnectorRequest",
       });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(810, __c101, 2).pipe(T.HttpBody())),
+          body: S.optional(__S(7520, __c235, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -23039,13 +19956,17 @@ function __c101(j: number): any {
       ).annotate({
         identifier: "SetUpDataConnectorProjectsLocationsRequest",
       });
-    case 4:
+  }
+}
+function __c236(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           collectionDisplayName: S.optional(S.String.pipe(T.Query())),
           parent: S.String.pipe(T.Label()),
           collectionId: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(460, __c57, 4).pipe(T.HttpBody())),
+          body: S.optional(__S(11802, __c368, 26).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -23056,11 +19977,15 @@ function __c101(j: number): any {
       ).annotate({
         identifier: "SetUpDataConnectorV2ProjectsLocationsRequest",
       });
-    case 5:
+  }
+}
+function __c237(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           servingConfig: S.String.pipe(T.Label()),
-          body: S.optional(__S(38, __c4, 6).pipe(T.HttpBody())),
+          body: S.optional(__S(10395, __c324, 27).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -23071,11 +19996,15 @@ function __c101(j: number): any {
       ).annotate({
         identifier: "StreamAnswerProjectsLocationsCollectionsDataStoresServingConfigsRequest",
       });
-    case 6:
+  }
+}
+function __c238(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           servingConfig: S.String.pipe(T.Label()),
-          body: S.optional(__S(38, __c4, 6).pipe(T.HttpBody())),
+          body: S.optional(__S(10395, __c324, 27).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -23086,11 +20015,15 @@ function __c101(j: number): any {
       ).annotate({
         identifier: "StreamAnswerProjectsLocationsCollectionsEnginesServingConfigsRequest",
       });
-    case 7:
+  }
+}
+function __c239(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           servingConfig: S.String.pipe(T.Label()),
-          body: S.optional(__S(38, __c4, 6).pipe(T.HttpBody())),
+          body: S.optional(__S(10395, __c324, 27).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -23103,7 +20036,7 @@ function __c101(j: number): any {
       });
   }
 }
-function __c102(j: number): any {
+function __c240(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -23114,11 +20047,11 @@ function __c102(j: number): any {
         identifier: "GoogleCloudDiscoveryengineV1StreamAssistRequestAgentsSpecAgentSpec",
       });
     case 1:
-      return S.Array(__S(816, __c102, 0));
+      return S.Array(__S(7680, __c240, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          agentSpecs: S.optional(__S(817, __c102, 1)),
+          agentSpecs: S.optional(__S(7681, __c240, 1)),
         }),
       ).annotate({
         identifier: "GoogleCloudDiscoveryengineV1StreamAssistRequestAgentsSpec",
@@ -23135,7 +20068,7 @@ function __c102(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          dataStoreSpecs: S.optional(__S(21, __c2, 5)),
+          dataStoreSpecs: S.optional(__S(10305, __c322, 1)),
           filter: S.optional(S.String),
         }),
       ).annotate({
@@ -23144,10 +20077,10 @@ function __c102(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          videoGenerationSpec: S.optional(__S(130, __c16, 2)),
-          webGroundingSpec: S.optional(__S(130, __c16, 2)),
-          imageGenerationSpec: S.optional(__S(130, __c16, 2)),
-          vertexAiSearchSpec: S.optional(__S(820, __c102, 4)),
+          videoGenerationSpec: S.optional(__S(2016, __c63, 0)),
+          webGroundingSpec: S.optional(__S(2016, __c63, 0)),
+          imageGenerationSpec: S.optional(__S(2016, __c63, 0)),
+          vertexAiSearchSpec: S.optional(__S(7684, __c240, 4)),
         }),
       ).annotate({
         identifier: "GoogleCloudDiscoveryengineV1StreamAssistRequestToolsSpec",
@@ -23163,25 +20096,21 @@ function __c102(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          agentsSpec: S.optional(__S(818, __c102, 2)),
-          userMetadata: S.optional(__S(819, __c102, 3)),
-          toolsSpec: S.optional(__S(821, __c102, 5)),
+          agentsSpec: S.optional(__S(7682, __c240, 2)),
+          userMetadata: S.optional(__S(7683, __c240, 3)),
+          toolsSpec: S.optional(__S(7685, __c240, 5)),
           session: S.optional(S.String),
-          generationSpec: S.optional(__S(822, __c102, 6)),
-          query: S.optional(__S(13, __c1, 5)),
+          generationSpec: S.optional(__S(7686, __c240, 6)),
+          query: S.optional(__S(10464, __c327, 0)),
         }),
       ).annotate({
         identifier: "GoogleCloudDiscoveryengineV1StreamAssistRequest",
       });
-  }
-}
-function __c103(j: number): any {
-  switch (j) {
-    case 0:
+    case 8:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(823, __c102, 7).pipe(T.HttpBody())),
+          body: S.optional(__S(7687, __c240, 7).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -23192,7 +20121,7 @@ function __c103(j: number): any {
       ).annotate({
         identifier: "StreamAssistProjectsLocationsCollectionsEnginesAssistantsRequest",
       });
-    case 1:
+    case 9:
       return S.suspend(() =>
         S.Struct({
           session: S.optional(S.String),
@@ -23200,7 +20129,7 @@ function __c103(j: number): any {
       ).annotate({
         identifier: "GoogleCloudDiscoveryengineV1StreamAssistResponseSessionInfo",
       });
-    case 2:
+    case 10:
       return S.suspend(() =>
         S.Struct({
           errorMessage: S.optional(S.String),
@@ -23209,9 +20138,9 @@ function __c103(j: number): any {
       ).annotate({
         identifier: "GoogleCloudDiscoveryengineV1StreamAssistResponseConnectorAuthError",
       });
-    case 3:
-      return S.Array(__S(826, __c103, 2));
-    case 4:
+    case 11:
+      return S.Array(__S(7690, __c240, 10));
+    case 12:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
@@ -23220,26 +20149,30 @@ function __c103(j: number): any {
       ).annotate({
         identifier: "GoogleCloudDiscoveryengineV1StreamAssistResponseInvokedSkill",
       });
-    case 5:
-      return S.Array(__S(828, __c103, 4));
-    case 6:
+    case 13:
+      return S.Array(__S(7692, __c240, 12));
+    case 14:
       return S.suspend(() =>
         S.Struct({
-          answer: S.optional(__S(70, __c8, 6)),
-          sessionInfo: S.optional(__S(825, __c103, 1)),
-          connectorAuthErrors: S.optional(__S(827, __c103, 3)),
-          invokedSkills: S.optional(__S(829, __c103, 5)),
+          answer: S.optional(__S(10552, __c329, 24)),
+          sessionInfo: S.optional(__S(7689, __c240, 9)),
+          connectorAuthErrors: S.optional(__S(7691, __c240, 11)),
+          invokedSkills: S.optional(__S(7693, __c240, 13)),
           assistToken: S.optional(S.String),
-          invocationTools: S.optional(__S(40, __c5, 0)),
+          invocationTools: S.optional(__S(10208, __c319, 0)),
         }),
       ).annotate({
         identifier: "GoogleCloudDiscoveryengineV1StreamAssistResponse",
       });
-    case 7:
+  }
+}
+function __c241(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           tenant: S.String.pipe(T.Label()),
-          body: S.optional(__S(802, __c100, 2).pipe(T.HttpBody())),
+          body: S.optional(__S(7297, __c228, 1).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -23252,15 +20185,15 @@ function __c103(j: number): any {
       });
   }
 }
-function __c104(j: number): any {
+function __c242(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           final: S.optional(S.Boolean),
           contextId: S.optional(S.String),
-          status: S.optional(__S(140, __c17, 4)),
-          metadata: S.optional(__S(42, __c5, 2)),
+          status: S.optional(__S(3237, __c101, 5)),
+          metadata: S.optional(__S(10112, __c316, 0)),
           taskId: S.optional(S.String),
         }),
       ).annotate({
@@ -23269,8 +20202,8 @@ function __c104(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          artifact: S.optional(__S(141, __c17, 5)),
-          metadata: S.optional(__S(42, __c5, 2)),
+          artifact: S.optional(__S(3238, __c101, 6)),
+          metadata: S.optional(__S(10112, __c316, 0)),
           contextId: S.optional(S.String),
           taskId: S.optional(S.String),
           append: S.optional(S.Boolean),
@@ -23282,13 +20215,17 @@ function __c104(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          task: S.optional(__S(144, __c18, 0)),
-          statusUpdate: S.optional(__S(832, __c104, 0)),
-          message: S.optional(__S(139, __c17, 3)),
-          artifactUpdate: S.optional(__S(833, __c104, 1)),
+          task: S.optional(__S(3241, __c101, 9)),
+          statusUpdate: S.optional(__S(7744, __c242, 0)),
+          message: S.optional(__S(3236, __c101, 4)),
+          artifactUpdate: S.optional(__S(7745, __c242, 1)),
         }),
       ).annotate({ identifier: "A2aV1StreamResponse" });
-    case 3:
+  }
+}
+function __c243(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           tenant: S.String.pipe(T.Label()),
@@ -23303,7 +20240,11 @@ function __c104(j: number): any {
       ).annotate({
         identifier: "SubscribeProjectsLocationsCollectionsEnginesAssistantsAgentsA2aV1TasksRequest",
       });
-    case 4:
+  }
+}
+function __c244(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           trainDataPath: S.optional(S.String),
@@ -23314,22 +20255,22 @@ function __c104(j: number): any {
       ).annotate({
         identifier: "GoogleCloudDiscoveryengineV1TrainCustomModelRequestGcsTrainingInput",
       });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          gcsTrainingInput: S.optional(__S(836, __c104, 4)),
+          gcsTrainingInput: S.optional(__S(7808, __c244, 0)),
           modelType: S.optional(S.String),
-          errorConfig: S.optional(__S(570, __c71, 2)),
+          errorConfig: S.optional(__S(2528, __c79, 0)),
           modelId: S.optional(S.String),
         }),
       ).annotate({
         identifier: "GoogleCloudDiscoveryengineV1TrainCustomModelRequest",
       });
-    case 6:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           dataStore: S.String.pipe(T.Label()),
-          body: S.optional(__S(837, __c104, 5).pipe(T.HttpBody())),
+          body: S.optional(__S(7809, __c244, 1).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -23340,11 +20281,15 @@ function __c104(j: number): any {
       ).annotate({
         identifier: "TrainCustomModelProjectsLocationsCollectionsDataStoresRequest",
       });
-    case 7:
+  }
+}
+function __c245(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(402, __c50, 2).pipe(T.HttpBody())),
+          body: S.optional(__S(11618, __c363, 2).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -23357,14 +20302,36 @@ function __c104(j: number): any {
       });
   }
 }
-function __c105(j: number): any {
+function __c246(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          userPseudoId: S.optional(S.String.pipe(T.Query())),
+          includeTailSuggestions: S.optional(S.Boolean.pipe(T.Query())),
+          queryModel: S.optional(S.String.pipe(T.Query())),
+          dataStore: S.String.pipe(T.Label()),
+          query: S.optional(S.String.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v1/{+dataStore}:completeQuery",
+            baseUrl: "https://discoveryengine.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "CompleteQueryProjectsLocationsDataStoresRequest",
+      });
+  }
+}
+function __c247(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
           setDefault: S.optional(S.Boolean.pipe(T.Query())),
-          body: S.optional(__S(266, __c33, 2).pipe(T.HttpBody())),
+          body: S.optional(__S(8450, __c264, 2).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -23375,12 +20342,16 @@ function __c105(j: number): any {
       ).annotate({
         identifier: "UpdateCmekConfigProjectsLocationsRequest",
       });
-    case 1:
+  }
+}
+function __c248(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           updateMask: S.optional(S.String.pipe(T.Query())),
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(460, __c57, 4).pipe(T.HttpBody())),
+          body: S.optional(__S(11802, __c368, 26).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -23391,12 +20362,16 @@ function __c105(j: number): any {
       ).annotate({
         identifier: "UpdateDataConnectorProjectsLocationsCollectionsRequest",
       });
-    case 2:
+  }
+}
+function __c249(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
           writeAsync: S.optional(S.Boolean.pipe(T.Query())),
-          body: S.optional(__S(602, __c75, 2).pipe(T.HttpBody())),
+          body: S.optional(__S(2893, __c90, 13).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -23407,12 +20382,16 @@ function __c105(j: number): any {
       ).annotate({
         identifier: "WriteProjectsLocationsCollectionsDataStoresUserEventsRequest",
       });
-    case 3:
+  }
+}
+function __c250(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           writeAsync: S.optional(S.Boolean.pipe(T.Query())),
           parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(602, __c75, 2).pipe(T.HttpBody())),
+          body: S.optional(__S(2893, __c90, 13).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -23423,12 +20402,16 @@ function __c105(j: number): any {
       ).annotate({
         identifier: "WriteProjectsLocationsDataStoresUserEventsRequest",
       });
-    case 4:
+  }
+}
+function __c251(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
           writeAsync: S.optional(S.Boolean.pipe(T.Query())),
-          body: S.optional(__S(602, __c75, 2).pipe(T.HttpBody())),
+          body: S.optional(__S(2893, __c90, 13).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -23441,7 +20424,4187 @@ function __c105(j: number): any {
       });
   }
 }
-
+function __c252(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          completionConfig: S.String.pipe(T.Label()),
+          body: S.optional(__S(6981, __c218, 5).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/{+completionConfig}:completeQuery",
+            baseUrl: "https://discoveryengine.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "CompleteQueryProjectsLocationsDataStoresCompletionConfigRequest",
+      });
+  }
+}
+function __c253(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+          body: S.optional(__S(8128, __c254, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/{+name}:converse",
+            baseUrl: "https://discoveryengine.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "ConverseProjectsLocationsCollectionsDataStoresConversationsRequest",
+      });
+  }
+}
+function __c254(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          filter: S.optional(S.String),
+          query: S.optional(__S(8193, __c256, 1)),
+          boostSpec: S.optional(__S(10405, __c325, 5)),
+          userLabels: S.optional(__S(10272, __c321, 0)),
+          conversation: S.optional(__S(8197, __c256, 5)),
+          safeSearch: S.optional(S.Boolean),
+          summarySpec: S.optional(__S(8258, __c258, 2)),
+          servingConfig: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDiscoveryengineV1ConverseConversationRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          conversation: S.optional(__S(8197, __c256, 5)),
+          reply: S.optional(__S(8194, __c256, 2)),
+          searchResults: S.optional(__S(8175, __c255, 15)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDiscoveryengineV1ConverseConversationResponse",
+      });
+  }
+}
+function __c255(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          values: S.optional(__S(10240, __c320, 0)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDiscoveryengineV1DoubleList",
+      });
+    case 1:
+      return S.Record(S.String, __S(8160, __c255, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          semanticRelevanceScore: S.optional(S.Number),
+          retrievalSources: S.optional(__S(10336, __c323, 0)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDiscoveryengineV1SearchResponseSearchResultRetrievalSignals",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          structData: S.optional(__S(10112, __c316, 0)),
+          title: S.optional(S.String),
+          mimeType: S.optional(S.String),
+          uri: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDiscoveryengineV1ChunkDocumentMetadata",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          structureType: S.optional(S.String),
+          content: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDiscoveryengineV1ChunkStructuredContent",
+      });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          imageId: S.optional(S.String),
+          structuredContent: S.optional(__S(8164, __c255, 4)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDiscoveryengineV1ChunkAnnotationMetadata",
+      });
+    case 6:
+      return S.Array(__S(8165, __c255, 5));
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          pageStart: S.optional(S.Number),
+          pageEnd: S.optional(S.Number),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDiscoveryengineV1ChunkPageSpan",
+      });
+    case 8:
+      return S.Array(/*@__PURE__*/ S.suspend(() => __S(8170, __c255, 10)));
+    case 9:
+      return S.suspend(() =>
+        S.Struct({
+          nextChunks: S.optional(__S(8168, __c255, 8)),
+          previousChunks: S.optional(__S(8168, __c255, 8)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDiscoveryengineV1ChunkChunkMetadata",
+      });
+    case 10:
+      return S.suspend(() =>
+        S.Struct({
+          annotationContents: S.optional(__S(10208, __c319, 0)),
+          documentMetadata: S.optional(__S(8163, __c255, 3)),
+          dataUrls: S.optional(__S(10208, __c319, 0)),
+          name: S.optional(S.String),
+          annotationMetadata: S.optional(__S(8166, __c255, 6)),
+          derivedStructData: S.optional(__S(10112, __c316, 0)),
+          content: S.optional(S.String),
+          pageSpan: S.optional(__S(8167, __c255, 7)),
+          chunkMetadata: S.optional(__S(8169, __c255, 9)),
+          relevanceScore: S.optional(S.Number),
+          id: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDiscoveryengineV1Chunk",
+      });
+    case 11:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.optional(S.String),
+          value: S.optional(S.Number),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDiscoveryengineV1SearchResponseSearchResultRankSignalsCustomSignal",
+      });
+    case 12:
+      return S.Array(__S(8171, __c255, 11));
+    case 13:
+      return S.suspend(() =>
+        S.Struct({
+          documentAge: S.optional(S.Number),
+          relevanceScore: S.optional(S.Number),
+          topicalityRank: S.optional(S.Number),
+          keywordSimilarityScore: S.optional(S.Number),
+          defaultRank: S.optional(S.Number),
+          pctrRank: S.optional(S.Number),
+          boostingFactor: S.optional(S.Number),
+          precomputedExpressionValues: S.optional(__S(10240, __c320, 0)),
+          semanticSimilarityScore: S.optional(S.Number),
+          customSignals: S.optional(__S(8172, __c255, 12)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDiscoveryengineV1SearchResponseSearchResultRankSignals",
+      });
+    case 14:
+      return S.suspend(() =>
+        S.Struct({
+          modelScores: S.optional(__S(8161, __c255, 1)),
+          retrievalSignals: S.optional(__S(8162, __c255, 2)),
+          chunk: S.optional(__S(8170, __c255, 10)),
+          id: S.optional(S.String),
+          rankSignals: S.optional(__S(8173, __c255, 13)),
+          document: S.optional(__S(7047, __c220, 7)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDiscoveryengineV1SearchResponseSearchResult",
+      });
+    case 15:
+      return S.Array(__S(8174, __c255, 14));
+  }
+}
+function __c256(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          contextDocuments: S.optional(__S(10208, __c319, 0)),
+          activeDocument: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDiscoveryengineV1ConversationContext",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          context: S.optional(__S(8192, __c256, 0)),
+          input: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDiscoveryengineV1TextInput",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          summary: S.optional(__S(8235, __c257, 11)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDiscoveryengineV1Reply",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          userInput: S.optional(__S(8193, __c256, 1)),
+          createTime: S.optional(S.String),
+          reply: S.optional(__S(8194, __c256, 2)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDiscoveryengineV1ConversationMessage",
+      });
+    case 4:
+      return S.Array(__S(8195, __c256, 3));
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          userPseudoId: S.optional(S.String),
+          messages: S.optional(__S(8196, __c256, 4)),
+          name: S.optional(S.String),
+          state: S.optional(S.String),
+          startTime: S.optional(S.String),
+          endTime: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDiscoveryengineV1Conversation",
+      });
+  }
+}
+function __c257(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          content: S.optional(S.String),
+          pageIdentifier: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDiscoveryengineV1SearchResponseSummaryReferenceChunkContent",
+      });
+    case 1:
+      return S.Array(__S(8224, __c257, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          chunkContents: S.optional(__S(8225, __c257, 1)),
+          title: S.optional(S.String),
+          document: S.optional(S.String),
+          uri: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDiscoveryengineV1SearchResponseSummaryReference",
+      });
+    case 3:
+      return S.Array(__S(8226, __c257, 2));
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          referenceIndex: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDiscoveryengineV1SearchResponseSummaryCitationSource",
+      });
+    case 5:
+      return S.Array(__S(8228, __c257, 4));
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          endIndex: S.optional(S.String),
+          sources: S.optional(__S(8229, __c257, 5)),
+          startIndex: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDiscoveryengineV1SearchResponseSummaryCitation",
+      });
+    case 7:
+      return S.Array(__S(8230, __c257, 6));
+    case 8:
+      return S.suspend(() =>
+        S.Struct({
+          citations: S.optional(__S(8231, __c257, 7)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDiscoveryengineV1SearchResponseSummaryCitationMetadata",
+      });
+    case 9:
+      return S.suspend(() =>
+        S.Struct({
+          summary: S.optional(S.String),
+          references: S.optional(__S(8227, __c257, 3)),
+          citationMetadata: S.optional(__S(8232, __c257, 8)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDiscoveryengineV1SearchResponseSummarySummaryWithMetadata",
+      });
+    case 10:
+      return S.suspend(() =>
+        S.Struct({
+          scores: S.optional(__S(10240, __c320, 0)),
+          categories: S.optional(__S(10208, __c319, 0)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDiscoveryengineV1SearchResponseSummarySafetyAttributes",
+      });
+    case 11:
+      return S.suspend(() =>
+        S.Struct({
+          summaryWithMetadata: S.optional(__S(8233, __c257, 9)),
+          safetyAttributes: S.optional(__S(8234, __c257, 10)),
+          summaryText: S.optional(S.String),
+          summarySkippedReasons: S.optional(__S(10336, __c323, 0)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDiscoveryengineV1SearchResponseSummary",
+      });
+  }
+}
+function __c258(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          version: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier:
+          "GoogleCloudDiscoveryengineV1SearchRequestContentSearchSpecSummarySpecModelSpec",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          preamble: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier:
+          "GoogleCloudDiscoveryengineV1SearchRequestContentSearchSpecSummarySpecModelPromptSpec",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          useSemanticChunks: S.optional(S.Boolean),
+          summaryResultCount: S.optional(S.Number),
+          modelSpec: S.optional(__S(8256, __c258, 0)),
+          ignoreNonSummarySeekingQuery: S.optional(S.Boolean),
+          ignoreLowRelevantContent: S.optional(S.Boolean),
+          modelPromptSpec: S.optional(__S(8257, __c258, 1)),
+          languageCode: S.optional(S.String),
+          ignoreAdversarialQuery: S.optional(S.Boolean),
+          ignoreJailBreakingQuery: S.optional(S.Boolean),
+          includeCitations: S.optional(S.Boolean),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDiscoveryengineV1SearchRequestContentSearchSpecSummarySpec",
+      });
+  }
+}
+function __c259(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+          body: S.optional(__S(8128, __c254, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/{+name}:converse",
+            baseUrl: "https://discoveryengine.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "ConverseProjectsLocationsCollectionsEnginesConversationsRequest",
+      });
+  }
+}
+function __c260(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+          body: S.optional(__S(8128, __c254, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/{+name}:converse",
+            baseUrl: "https://discoveryengine.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "ConverseProjectsLocationsDataStoresConversationsRequest",
+      });
+  }
+}
+function __c261(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          skipDefaultSchemaCreation: S.optional(S.Boolean.pipe(T.Query())),
+          parent: S.String.pipe(T.Label()),
+          createAdvancedSiteSearch: S.optional(S.Boolean.pipe(T.Query())),
+          disableCmek: S.optional(S.Boolean.pipe(T.Query())),
+          dataStoreId: S.optional(S.String.pipe(T.Query())),
+          cmekConfigName: S.optional(S.String.pipe(T.Query())),
+          body: S.optional(__S(8530, __c266, 18).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/{+parent}/dataStores",
+            baseUrl: "https://discoveryengine.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateProjectsLocationsCollectionsDataStoresRequest",
+      });
+  }
+}
+function __c262(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c263(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          jsonSchema: S.optional(S.String),
+          name: S.optional(S.String),
+          structSchema: S.optional(__S(10112, __c316, 0)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDiscoveryengineV1Schema",
+      });
+  }
+}
+function __c264(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          kmsKey: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDiscoveryengineV1SingleRegionKey",
+      });
+    case 1:
+      return S.Array(__S(8448, __c264, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          isDefault: S.optional(S.Boolean),
+          kmsKeyVersion: S.optional(S.String),
+          lastRotationTimestampMicros: S.optional(S.String),
+          singleRegionKeys: S.optional(__S(8449, __c264, 1)),
+          state: S.optional(S.String),
+          notebooklmState: S.optional(S.String),
+          kmsKey: S.optional(S.String),
+          name: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDiscoveryengineV1CmekConfig",
+      });
+  }
+}
+function __c265(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          policy: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDiscoveryengineV1DataProtectionPolicySensitiveDataProtectionPolicy",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          sensitiveDataProtectionPolicy: S.optional(__S(8480, __c265, 0)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDiscoveryengineV1DataProtectionPolicy",
+      });
+  }
+}
+function __c266(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          unstructuredDataUpdateTime: S.optional(S.String),
+          unstructuredDataSize: S.optional(S.String),
+          structuredDataUpdateTime: S.optional(S.String),
+          websiteDataUpdateTime: S.optional(S.String),
+          structuredDataSize: S.optional(S.String),
+          websiteDataSize: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDiscoveryengineV1DataStoreBillingEstimation",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          mode: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDiscoveryengineV1NaturalLanguageQueryUnderstandingConfig",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          disableInitialIndex: S.optional(S.Boolean),
+          disableAutomaticRefresh: S.optional(S.Boolean),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDiscoveryengineV1AdvancedSiteSearchConfig",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          superAdminEmailAddress: S.optional(S.String),
+          dasherCustomerId: S.optional(S.String),
+          type: S.optional(S.String),
+          superAdminServiceAccount: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDiscoveryengineV1WorkspaceConfig",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          user: S.optional(S.String),
+          enablePsvs: S.optional(S.Boolean),
+          database: S.optional(S.String),
+          instance: S.optional(S.String),
+          password: S.optional(S.String),
+          authMode: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier:
+          "GoogleCloudDiscoveryengineV1DataStoreFederatedSearchConfigAlloyDbConfigAlloyDbConnectionConfig",
+      });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          nlConfigId: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier:
+          "GoogleCloudDiscoveryengineV1DataStoreFederatedSearchConfigAlloyDbConfigAlloyDbAiNaturalLanguageConfig",
+      });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          alloydbConnectionConfig: S.optional(__S(8516, __c266, 4)),
+          returnedFields: S.optional(__S(10208, __c319, 0)),
+          alloydbAiNlConfig: S.optional(__S(8517, __c266, 5)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDiscoveryengineV1DataStoreFederatedSearchConfigAlloyDbConfig",
+      });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          searchConfig: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDiscoveryengineV1DataStoreFederatedSearchConfigNotebooklmConfig",
+      });
+    case 8:
+      return S.suspend(() =>
+        S.Struct({
+          appName: S.optional(S.String),
+          instanceName: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier:
+          "GoogleCloudDiscoveryengineV1DataStoreFederatedSearchConfigThirdPartyOauthConfig",
+      });
+    case 9:
+      return S.suspend(() =>
+        S.Struct({
+          alloyDbConfig: S.optional(__S(8518, __c266, 6)),
+          notebooklmConfig: S.optional(__S(8519, __c266, 7)),
+          thirdPartyOauthConfig: S.optional(__S(8520, __c266, 8)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDiscoveryengineV1DataStoreFederatedSearchConfig",
+      });
+    case 10:
+      return S.suspend(() =>
+        S.Struct({
+          chunkSize: S.optional(S.Number),
+          includeAncestorHeadings: S.optional(S.Boolean),
+        }),
+      ).annotate({
+        identifier:
+          "GoogleCloudDiscoveryengineV1DocumentProcessingConfigChunkingConfigLayoutBasedChunkingConfig",
+      });
+    case 11:
+      return S.suspend(() =>
+        S.Struct({
+          layoutBasedChunkingConfig: S.optional(__S(8522, __c266, 10)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDiscoveryengineV1DocumentProcessingConfigChunkingConfig",
+      });
+    case 12:
+      return S.suspend(() =>
+        S.Struct({
+          enableImageAnnotation: S.optional(S.Boolean),
+          enableLlmLayoutParsing: S.optional(S.Boolean),
+          enableTableAnnotation: S.optional(S.Boolean),
+          excludeHtmlIds: S.optional(__S(10208, __c319, 0)),
+          excludeHtmlElements: S.optional(__S(10208, __c319, 0)),
+          enableGetProcessedDocument: S.optional(S.Boolean),
+          structuredContentTypes: S.optional(__S(10208, __c319, 0)),
+          excludeHtmlClasses: S.optional(__S(10208, __c319, 0)),
+        }),
+      ).annotate({
+        identifier:
+          "GoogleCloudDiscoveryengineV1DocumentProcessingConfigParsingConfigLayoutParsingConfig",
+      });
+    case 13:
+      return S.suspend(() =>
+        S.Struct({
+          enhancedDocumentElements: S.optional(__S(10208, __c319, 0)),
+          useNativeText: S.optional(S.Boolean),
+        }),
+      ).annotate({
+        identifier:
+          "GoogleCloudDiscoveryengineV1DocumentProcessingConfigParsingConfigOcrParsingConfig",
+      });
+    case 14:
+      return S.suspend(() =>
+        S.Struct({
+          layoutParsingConfig: S.optional(__S(8524, __c266, 12)),
+          ocrParsingConfig: S.optional(__S(8525, __c266, 13)),
+          digitalParsingConfig: S.optional(__S(2016, __c63, 0)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDiscoveryengineV1DocumentProcessingConfigParsingConfig",
+      });
+    case 15:
+      return S.Record(S.String, __S(8526, __c266, 14));
+    case 16:
+      return S.suspend(() =>
+        S.Struct({
+          chunkingConfig: S.optional(__S(8523, __c266, 11)),
+          parsingConfigOverrides: S.optional(__S(8527, __c266, 15)),
+          name: S.optional(S.String),
+          defaultParsingConfig: S.optional(__S(8526, __c266, 14)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDiscoveryengineV1DocumentProcessingConfig",
+      });
+    case 17:
+      return S.suspend(() =>
+        S.Struct({
+          disabledForServing: S.optional(S.Boolean),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDiscoveryengineV1DataStoreServingConfigDataStore",
+      });
+    case 18:
+      return S.suspend(() =>
+        S.Struct({
+          contentConfig: S.optional(S.String),
+          configurableBillingApproach: S.optional(S.String),
+          kmsKeyName: S.optional(S.String),
+          billingEstimation: S.optional(__S(8512, __c266, 0)),
+          defaultSchemaId: S.optional(S.String),
+          solutionTypes: S.optional(__S(8384, __c262, 0)),
+          naturalLanguageQueryUnderstandingConfig: S.optional(__S(8513, __c266, 1)),
+          advancedSiteSearchConfig: S.optional(__S(8514, __c266, 2)),
+          isInfobotFaqDataStore: S.optional(S.Boolean),
+          aclEnabled: S.optional(S.Boolean),
+          displayName: S.optional(S.String),
+          identityMappingStore: S.optional(S.String),
+          name: S.optional(S.String),
+          createTime: S.optional(S.String),
+          industryVertical: S.optional(S.String),
+          workspaceConfig: S.optional(__S(8515, __c266, 3)),
+          configurableBillingApproachUpdateTime: S.optional(S.String),
+          dataProtectionPolicy: S.optional(__S(8481, __c265, 1)),
+          healthcareFhirConfig: S.optional(__S(8544, __c267, 0)),
+          startingSchema: S.optional(__S(8416, __c263, 0)),
+          federatedSearchConfig: S.optional(__S(8521, __c266, 9)),
+          documentProcessingConfig: S.optional(__S(8528, __c266, 16)),
+          servingConfigDataStore: S.optional(__S(8529, __c266, 17)),
+          cmekConfig: S.optional(__S(8450, __c264, 2)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDiscoveryengineV1DataStore",
+      });
+  }
+}
+function __c267(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          initialFilterGroups: S.optional(__S(10208, __c319, 0)),
+          enableStaticIndexingForBatchIngestion: S.optional(S.Boolean),
+          enableConfigurableSchema: S.optional(S.Boolean),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDiscoveryengineV1HealthcareFhirConfig",
+      });
+  }
+}
+function __c268(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          documentId: S.optional(S.String.pipe(T.Query())),
+          parent: S.String.pipe(T.Label()),
+          body: S.optional(__S(7047, __c220, 7).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/{+parent}/documents",
+            baseUrl: "https://discoveryengine.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateProjectsLocationsCollectionsDataStoresBranchesDocumentsRequest",
+      });
+  }
+}
+function __c269(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          parent: S.String.pipe(T.Label()),
+          controlId: S.optional(S.String.pipe(T.Query())),
+          body: S.optional(__S(8654, __c270, 14).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/{+parent}/controls",
+            baseUrl: "https://discoveryengine.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateProjectsLocationsCollectionsDataStoresControlsRequest",
+      });
+  }
+}
+function __c270(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          filter: S.optional(S.String),
+          dataStore: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDiscoveryengineV1ControlFilterAction",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          boostAmount: S.optional(S.Number),
+          attributeValue: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier:
+          "GoogleCloudDiscoveryengineV1ControlBoostActionInterpolationBoostSpecControlPoint",
+      });
+    case 2:
+      return S.Array(__S(8641, __c270, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          interpolationType: S.optional(S.String),
+          attributeType: S.optional(S.String),
+          fieldName: S.optional(S.String),
+          controlPoints: S.optional(__S(8642, __c270, 2)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDiscoveryengineV1ControlBoostActionInterpolationBoostSpec",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          filter: S.optional(S.String),
+          fixedBoost: S.optional(S.Number),
+          boost: S.optional(S.Number),
+          interpolationBoostSpec: S.optional(__S(8643, __c270, 3)),
+          dataStore: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDiscoveryengineV1ControlBoostAction",
+      });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          dataStore: S.optional(S.String),
+          searchLinkPromotion: S.optional(__S(8672, __c271, 0)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDiscoveryengineV1ControlPromoteAction",
+      });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          redirectUri: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDiscoveryengineV1ControlRedirectAction",
+      });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          synonyms: S.optional(__S(10208, __c319, 0)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDiscoveryengineV1ControlSynonymsAction",
+      });
+    case 8:
+      return S.suspend(() =>
+        S.Struct({
+          startTime: S.optional(S.String),
+          endTime: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDiscoveryengineV1ConditionTimeRange",
+      });
+    case 9:
+      return S.Array(__S(8648, __c270, 8));
+    case 10:
+      return S.suspend(() =>
+        S.Struct({
+          fullMatch: S.optional(S.Boolean),
+          value: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDiscoveryengineV1ConditionQueryTerm",
+      });
+    case 11:
+      return S.Array(__S(8650, __c270, 10));
+    case 12:
+      return S.suspend(() =>
+        S.Struct({
+          activeTimeRange: S.optional(__S(8649, __c270, 9)),
+          queryTerms: S.optional(__S(8651, __c270, 11)),
+          queryRegex: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDiscoveryengineV1Condition",
+      });
+    case 13:
+      return S.Array(__S(8652, __c270, 12));
+    case 14:
+      return S.suspend(() =>
+        S.Struct({
+          displayName: S.optional(S.String),
+          filterAction: S.optional(__S(8640, __c270, 0)),
+          solutionType: S.optional(S.String),
+          name: S.optional(S.String),
+          boostAction: S.optional(__S(8644, __c270, 4)),
+          promoteAction: S.optional(__S(8645, __c270, 5)),
+          redirectAction: S.optional(__S(8646, __c270, 6)),
+          synonymsAction: S.optional(__S(8647, __c270, 7)),
+          conditions: S.optional(__S(8653, __c270, 13)),
+          useCases: S.optional(__S(8384, __c262, 0)),
+          associatedServingConfigIds: S.optional(__S(10208, __c319, 0)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDiscoveryengineV1Control",
+      });
+  }
+}
+function __c271(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          title: S.optional(S.String),
+          uri: S.optional(S.String),
+          description: S.optional(S.String),
+          enabled: S.optional(S.Boolean),
+          document: S.optional(S.String),
+          imageUri: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDiscoveryengineV1SearchLinkPromotion",
+      });
+  }
+}
+function __c272(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          parent: S.String.pipe(T.Label()),
+          body: S.optional(__S(8197, __c256, 5).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/{+parent}/conversations",
+            baseUrl: "https://discoveryengine.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateProjectsLocationsCollectionsDataStoresConversationsRequest",
+      });
+  }
+}
+function __c273(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          schemaId: S.optional(S.String.pipe(T.Query())),
+          parent: S.String.pipe(T.Label()),
+          body: S.optional(__S(8416, __c263, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/{+parent}/schemas",
+            baseUrl: "https://discoveryengine.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateProjectsLocationsCollectionsDataStoresSchemasRequest",
+      });
+  }
+}
+function __c274(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          servingConfigId: S.optional(S.String.pipe(T.Query())),
+          parent: S.String.pipe(T.Label()),
+          body: S.optional(__S(8836, __c276, 4).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/{+parent}/servingConfigs",
+            baseUrl: "https://discoveryengine.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateProjectsLocationsCollectionsDataStoresServingConfigsRequest",
+      });
+  }
+}
+function __c275(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          maxExtractiveSegmentCount: S.optional(S.Number),
+          numPreviousSegments: S.optional(S.Number),
+          maxExtractiveAnswerCount: S.optional(S.Number),
+          numNextSegments: S.optional(S.Number),
+          returnExtractiveSegmentScore: S.optional(S.Boolean),
+        }),
+      ).annotate({
+        identifier:
+          "GoogleCloudDiscoveryengineV1SearchRequestContentSearchSpecExtractiveContentSpec",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          referenceOnly: S.optional(S.Boolean),
+          returnSnippet: S.optional(S.Boolean),
+          maxSnippetCount: S.optional(S.Number),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDiscoveryengineV1SearchRequestContentSearchSpecSnippetSpec",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          numNextChunks: S.optional(S.Number),
+          numPreviousChunks: S.optional(S.Number),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDiscoveryengineV1SearchRequestContentSearchSpecChunkSpec",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          summarySpec: S.optional(__S(8258, __c258, 2)),
+          extractiveContentSpec: S.optional(__S(8800, __c275, 0)),
+          snippetSpec: S.optional(__S(8801, __c275, 1)),
+          chunkSpec: S.optional(__S(8802, __c275, 2)),
+          searchResultMode: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDiscoveryengineV1SearchRequestContentSearchSpec",
+      });
+  }
+}
+function __c276(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          contentSearchSpec: S.optional(__S(8803, __c275, 3)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDiscoveryengineV1ServingConfigGenericConfig",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          enableUserDefinedClassifier: S.optional(S.Boolean),
+          topP: S.optional(S.Number),
+          taskMarker: S.optional(S.String),
+          modelId: S.optional(S.String),
+          topK: S.optional(S.String),
+          seed: S.optional(S.Number),
+          preamble: S.optional(S.String),
+          temperature: S.optional(S.Number),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDiscoveryengineV1AnswerGenerationSpecUserDefinedClassifierSpec",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          userDefinedClassifierSpec: S.optional(__S(8833, __c276, 1)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDiscoveryengineV1AnswerGenerationSpec",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          contentWatchedPercentageThreshold: S.optional(S.Number),
+          contentFreshnessCutoffDays: S.optional(S.Number),
+          demotionEventType: S.optional(S.String),
+          demoteContentWatchedPastDays: S.optional(S.Number),
+          contentWatchedSecondsThreshold: S.optional(S.Number),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDiscoveryengineV1ServingConfigMediaConfig",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          updateTime: S.optional(S.String),
+          genericConfig: S.optional(__S(8832, __c276, 0)),
+          boostControlIds: S.optional(__S(10208, __c319, 0)),
+          promoteControlIds: S.optional(__S(10208, __c319, 0)),
+          name: S.optional(S.String),
+          onewaySynonymsControlIds: S.optional(__S(10208, __c319, 0)),
+          dissociateControlIds: S.optional(__S(10208, __c319, 0)),
+          replacementControlIds: S.optional(__S(10208, __c319, 0)),
+          createTime: S.optional(S.String),
+          redirectControlIds: S.optional(__S(10208, __c319, 0)),
+          synonymsControlIds: S.optional(__S(10208, __c319, 0)),
+          modelId: S.optional(S.String),
+          diversityLevel: S.optional(S.String),
+          ignoreControlIds: S.optional(__S(10208, __c319, 0)),
+          displayName: S.optional(S.String),
+          solutionType: S.optional(S.String),
+          filterControlIds: S.optional(__S(10208, __c319, 0)),
+          rankingExpression: S.optional(S.String),
+          answerGenerationSpec: S.optional(__S(8834, __c276, 2)),
+          mediaConfig: S.optional(__S(8835, __c276, 3)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDiscoveryengineV1ServingConfig",
+      });
+  }
+}
+function __c277(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          sessionId: S.optional(S.String.pipe(T.Query())),
+          parent: S.String.pipe(T.Label()),
+          body: S.optional(__S(10498, __c328, 2).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/{+parent}/sessions",
+            baseUrl: "https://discoveryengine.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateProjectsLocationsCollectionsDataStoresSessionsRequest",
+      });
+  }
+}
+function __c278(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          parent: S.String.pipe(T.Label()),
+          body: S.optional(__S(8928, __c279, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/{+parent}/sitemaps",
+            baseUrl: "https://discoveryengine.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateProjectsLocationsCollectionsDataStoresSiteSearchEngineSitemapsRequest",
+      });
+  }
+}
+function __c279(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.optional(S.String),
+          uri: S.optional(S.String),
+          createTime: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDiscoveryengineV1Sitemap",
+      });
+  }
+}
+function __c280(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          parent: S.String.pipe(T.Label()),
+          body: S.optional(__S(99, __c3, 3).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/{+parent}/targetSites",
+            baseUrl: "https://discoveryengine.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier:
+          "CreateProjectsLocationsCollectionsDataStoresSiteSearchEngineTargetSitesRequest",
+      });
+  }
+}
+function __c281(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          parent: S.String.pipe(T.Label()),
+          engineId: S.optional(S.String.pipe(T.Query())),
+          body: S.optional(__S(9042, __c282, 18).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/{+parent}/engines",
+            baseUrl: "https://discoveryengine.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateProjectsLocationsCollectionsEnginesRequest",
+      });
+  }
+}
+function __c282(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          disablePrivateKgQueryUnderstanding: S.optional(S.Boolean),
+          disablePrivateKgAutoComplete: S.optional(S.Boolean),
+          disablePrivateKgQueryUiChips: S.optional(S.Boolean),
+          disablePrivateKgEnrichment: S.optional(S.Boolean),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDiscoveryengineV1EngineKnowledgeGraphConfigFeatureConfig",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          enableCloudKnowledgeGraph: S.optional(S.Boolean),
+          cloudKnowledgeGraphTypes: S.optional(__S(10208, __c319, 0)),
+          featureConfig: S.optional(__S(9024, __c282, 0)),
+          privateKnowledgeGraphTypes: S.optional(__S(10208, __c319, 0)),
+          enablePrivateKnowledgeGraph: S.optional(S.Boolean),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDiscoveryengineV1EngineKnowledgeGraphConfig",
+      });
+    case 2:
+      return S.Record(S.String, S.String);
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          days: S.optional(S.Number),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDiscoveryengineV1SessionConfigSessionTtl",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          sessionTtl: S.optional(__S(9027, __c282, 3)),
+          sessionManagementPolicy: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDiscoveryengineV1SessionConfig",
+      });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          dialogflowAgent: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDiscoveryengineV1EngineChatEngineMetadata",
+      });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDiscoveryengineV1AgentGatewaySettingAgentGatewayReference",
+      });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          defaultEgressAgentGateway: S.optional(__S(9030, __c282, 6)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDiscoveryengineV1AgentGatewaySetting",
+      });
+    case 8:
+      return S.suspend(() =>
+        S.Struct({
+          observabilityEnabled: S.optional(S.Boolean),
+          sensitiveLoggingEnabled: S.optional(S.Boolean),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDiscoveryengineV1ObservabilityConfig",
+      });
+    case 9:
+      return S.suspend(() =>
+        S.Struct({
+          companyName: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDiscoveryengineV1EngineCommonConfig",
+      });
+    case 10:
+      return S.suspend(() =>
+        S.Struct({
+          timeZone: S.optional(S.String),
+          defaultLanguageCode: S.optional(S.String),
+          business: S.optional(S.String),
+          location: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDiscoveryengineV1EngineChatEngineConfigAgentCreationConfig",
+      });
+    case 11:
+      return S.suspend(() =>
+        S.Struct({
+          agentCreationConfig: S.optional(__S(9034, __c282, 10)),
+          allowCrossRegion: S.optional(S.Boolean),
+          dialogflowAgentToLink: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDiscoveryengineV1EngineChatEngineConfig",
+      });
+    case 12:
+      return S.suspend(() =>
+        S.Struct({
+          requiredSubscriptionTier: S.optional(S.String),
+          searchAddOns: S.optional(__S(10336, __c323, 0)),
+          searchTier: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDiscoveryengineV1EngineSearchEngineConfig",
+      });
+    case 13:
+      return S.suspend(() =>
+        S.Struct({
+          targetFieldValueFloat: S.optional(S.Number),
+          targetField: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier:
+          "GoogleCloudDiscoveryengineV1EngineMediaRecommendationEngineConfigOptimizationObjectiveConfig",
+      });
+    case 14:
+      return S.suspend(() =>
+        S.Struct({
+          contextEventType: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier:
+          "GoogleCloudDiscoveryengineV1EngineMediaRecommendationEngineConfigRecommendedForYouFeatureConfig",
+      });
+    case 15:
+      return S.suspend(() =>
+        S.Struct({
+          timeWindowDays: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier:
+          "GoogleCloudDiscoveryengineV1EngineMediaRecommendationEngineConfigMostPopularFeatureConfig",
+      });
+    case 16:
+      return S.suspend(() =>
+        S.Struct({
+          recommendedForYouConfig: S.optional(__S(9038, __c282, 14)),
+          mostPopularConfig: S.optional(__S(9039, __c282, 15)),
+        }),
+      ).annotate({
+        identifier:
+          "GoogleCloudDiscoveryengineV1EngineMediaRecommendationEngineConfigEngineFeaturesConfig",
+      });
+    case 17:
+      return S.suspend(() =>
+        S.Struct({
+          type: S.optional(S.String),
+          optimizationObjectiveConfig: S.optional(__S(9037, __c282, 13)),
+          trainingState: S.optional(S.String),
+          engineFeaturesConfig: S.optional(__S(9040, __c282, 16)),
+          optimizationObjective: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDiscoveryengineV1EngineMediaRecommendationEngineConfig",
+      });
+    case 18:
+      return S.suspend(() =>
+        S.Struct({
+          knowledgeGraphConfig: S.optional(__S(9025, __c282, 1)),
+          cmekConfig: S.optional(__S(8450, __c264, 2)),
+          configurableBillingApproach: S.optional(S.String),
+          associatedAgentRegistry: S.optional(S.String),
+          procurementContactEmails: S.optional(__S(10208, __c319, 0)),
+          modelConfigs: S.optional(__S(9026, __c282, 2)),
+          dataStoreIds: S.optional(__S(10208, __c319, 0)),
+          appType: S.optional(S.String),
+          displayName: S.optional(S.String),
+          sessionConfig: S.optional(__S(9028, __c282, 4)),
+          createTime: S.optional(S.String),
+          chatEngineMetadata: S.optional(__S(9029, __c282, 5)),
+          agentGatewaySetting: S.optional(__S(9031, __c282, 7)),
+          observabilityConfig: S.optional(__S(9032, __c282, 8)),
+          disableAnalytics: S.optional(S.Boolean),
+          industryVertical: S.optional(S.String),
+          updateTime: S.optional(S.String),
+          name: S.optional(S.String),
+          marketplaceAgentVisibility: S.optional(S.String),
+          commonConfig: S.optional(__S(9033, __c282, 9)),
+          features: S.optional(__S(9026, __c282, 2)),
+          connectorTenantInfo: S.optional(__S(10272, __c321, 0)),
+          chatEngineConfig: S.optional(__S(9035, __c282, 11)),
+          solutionType: S.optional(S.String),
+          searchEngineConfig: S.optional(__S(9036, __c282, 12)),
+          mediaRecommendationEngineConfig: S.optional(__S(9041, __c282, 17)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDiscoveryengineV1Engine",
+      });
+  }
+}
+function __c283(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          assistantId: S.optional(S.String.pipe(T.Query())),
+          parent: S.String.pipe(T.Label()),
+          body: S.optional(__S(9098, __c284, 10).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/{+parent}/assistants",
+            baseUrl: "https://discoveryengine.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateProjectsLocationsCollectionsEnginesAssistantsRequest",
+      });
+  }
+}
+function __c284(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          matchType: S.optional(S.String),
+          phrase: S.optional(S.String),
+          ignoreDiacritics: S.optional(S.Boolean),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDiscoveryengineV1AssistantCustomerPolicyBannedPhrase",
+      });
+    case 1:
+      return S.Array(__S(9088, __c284, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          failureMode: S.optional(S.String),
+          responseTemplate: S.optional(S.String),
+          userPromptTemplate: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDiscoveryengineV1AssistantCustomerPolicyModelArmorConfig",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          bannedPhrases: S.optional(__S(9089, __c284, 1)),
+          modelArmorConfig: S.optional(__S(9090, __c284, 2)),
+          dataProtectionPolicy: S.optional(__S(8481, __c265, 1)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDiscoveryengineV1AssistantCustomerPolicy",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          additionalSystemInstruction: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDiscoveryengineV1AssistantGenerationConfigSystemInstruction",
+      });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          systemInstruction: S.optional(__S(9092, __c284, 4)),
+          allowedModelIds: S.optional(__S(10208, __c319, 0)),
+          defaultModelId: S.optional(S.String),
+          defaultLanguage: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDiscoveryengineV1AssistantGenerationConfig",
+      });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          toolName: S.optional(S.String),
+          toolDisplayName: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDiscoveryengineV1AssistantToolInfo",
+      });
+    case 7:
+      return S.Array(__S(9094, __c284, 6));
+    case 8:
+      return S.suspend(() =>
+        S.Struct({
+          toolInfo: S.optional(__S(9095, __c284, 7)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDiscoveryengineV1AssistantToolList",
+      });
+    case 9:
+      return S.Record(S.String, __S(9096, __c284, 8));
+    case 10:
+      return S.suspend(() =>
+        S.Struct({
+          defaultWebGroundingToggleOff: S.optional(S.Boolean),
+          displayName: S.optional(S.String),
+          customerPolicy: S.optional(__S(9091, __c284, 3)),
+          updateTime: S.optional(S.String),
+          generationConfig: S.optional(__S(9093, __c284, 5)),
+          description: S.optional(S.String),
+          name: S.optional(S.String),
+          enabledTools: S.optional(__S(9097, __c284, 9)),
+          createTime: S.optional(S.String),
+          webGroundingType: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDiscoveryengineV1Assistant",
+      });
+  }
+}
+function __c285(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          configId: S.optional(S.String.pipe(T.Query())),
+          parent: S.String.pipe(T.Label()),
+          tenant: S.String.pipe(T.Label()),
+          body: S.optional(__S(9152, __c286, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/{+tenant}/a2a/v1/{+parent}",
+            baseUrl: "https://discoveryengine.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier:
+          "CreateProjectsLocationsCollectionsEnginesAssistantsAgentsA2aV1TasksPushNotificationConfigsRequest",
+      });
+  }
+}
+function __c286(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          pushNotificationConfig: S.optional(__S(9185, __c287, 1)),
+          name: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "A2aV1TaskPushNotificationConfig",
+      });
+  }
+}
+function __c287(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          schemes: S.optional(__S(10208, __c319, 0)),
+          credentials: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "A2aV1AuthenticationInfo" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          token: S.optional(S.String),
+          authentication: S.optional(__S(9184, __c287, 0)),
+          url: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "A2aV1PushNotificationConfig",
+      });
+  }
+}
+function __c288(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          controlId: S.optional(S.String.pipe(T.Query())),
+          parent: S.String.pipe(T.Label()),
+          body: S.optional(__S(8654, __c270, 14).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/{+parent}/controls",
+            baseUrl: "https://discoveryengine.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateProjectsLocationsCollectionsEnginesControlsRequest",
+      });
+  }
+}
+function __c289(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          parent: S.String.pipe(T.Label()),
+          body: S.optional(__S(8197, __c256, 5).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/{+parent}/conversations",
+            baseUrl: "https://discoveryengine.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateProjectsLocationsCollectionsEnginesConversationsRequest",
+      });
+  }
+}
+function __c290(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          servingConfigId: S.optional(S.String.pipe(T.Query())),
+          parent: S.String.pipe(T.Label()),
+          body: S.optional(__S(8836, __c276, 4).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/{+parent}/servingConfigs",
+            baseUrl: "https://discoveryengine.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateProjectsLocationsCollectionsEnginesServingConfigsRequest",
+      });
+  }
+}
+function __c291(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          parent: S.String.pipe(T.Label()),
+          sessionId: S.optional(S.String.pipe(T.Query())),
+          body: S.optional(__S(10498, __c328, 2).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/{+parent}/sessions",
+            baseUrl: "https://discoveryengine.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateProjectsLocationsCollectionsEnginesSessionsRequest",
+      });
+  }
+}
+function __c292(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          parent: S.String.pipe(T.Label()),
+          dataStoreId: S.optional(S.String.pipe(T.Query())),
+          disableCmek: S.optional(S.Boolean.pipe(T.Query())),
+          cmekConfigName: S.optional(S.String.pipe(T.Query())),
+          createAdvancedSiteSearch: S.optional(S.Boolean.pipe(T.Query())),
+          skipDefaultSchemaCreation: S.optional(S.Boolean.pipe(T.Query())),
+          body: S.optional(__S(8530, __c266, 18).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/{+parent}/dataStores",
+            baseUrl: "https://discoveryengine.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateProjectsLocationsDataStoresRequest",
+      });
+  }
+}
+function __c293(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          parent: S.String.pipe(T.Label()),
+          documentId: S.optional(S.String.pipe(T.Query())),
+          body: S.optional(__S(7047, __c220, 7).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/{+parent}/documents",
+            baseUrl: "https://discoveryengine.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateProjectsLocationsDataStoresBranchesDocumentsRequest",
+      });
+  }
+}
+function __c294(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          parent: S.String.pipe(T.Label()),
+          controlId: S.optional(S.String.pipe(T.Query())),
+          body: S.optional(__S(8654, __c270, 14).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/{+parent}/controls",
+            baseUrl: "https://discoveryengine.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateProjectsLocationsDataStoresControlsRequest",
+      });
+  }
+}
+function __c295(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          parent: S.String.pipe(T.Label()),
+          body: S.optional(__S(8197, __c256, 5).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/{+parent}/conversations",
+            baseUrl: "https://discoveryengine.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateProjectsLocationsDataStoresConversationsRequest",
+      });
+  }
+}
+function __c296(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          parent: S.String.pipe(T.Label()),
+          schemaId: S.optional(S.String.pipe(T.Query())),
+          body: S.optional(__S(8416, __c263, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/{+parent}/schemas",
+            baseUrl: "https://discoveryengine.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateProjectsLocationsDataStoresSchemasRequest",
+      });
+  }
+}
+function __c297(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          parent: S.String.pipe(T.Label()),
+          servingConfigId: S.optional(S.String.pipe(T.Query())),
+          body: S.optional(__S(8836, __c276, 4).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/{+parent}/servingConfigs",
+            baseUrl: "https://discoveryengine.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateProjectsLocationsDataStoresServingConfigsRequest",
+      });
+  }
+}
+function __c298(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          sessionId: S.optional(S.String.pipe(T.Query())),
+          parent: S.String.pipe(T.Label()),
+          body: S.optional(__S(10498, __c328, 2).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/{+parent}/sessions",
+            baseUrl: "https://discoveryengine.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateProjectsLocationsDataStoresSessionsRequest",
+      });
+  }
+}
+function __c299(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          parent: S.String.pipe(T.Label()),
+          body: S.optional(__S(8928, __c279, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/{+parent}/sitemaps",
+            baseUrl: "https://discoveryengine.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateProjectsLocationsDataStoresSiteSearchEngineSitemapsRequest",
+      });
+  }
+}
+function __c300(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          parent: S.String.pipe(T.Label()),
+          body: S.optional(__S(99, __c3, 3).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/{+parent}/targetSites",
+            baseUrl: "https://discoveryengine.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateProjectsLocationsDataStoresSiteSearchEngineTargetSitesRequest",
+      });
+  }
+}
+function __c301(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          identityMappingStoreId: S.optional(S.String.pipe(T.Query())),
+          disableCmek: S.optional(S.Boolean.pipe(T.Query())),
+          cmekConfigName: S.optional(S.String.pipe(T.Query())),
+          parent: S.String.pipe(T.Label()),
+          body: S.optional(__S(9664, __c302, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/{+parent}/identityMappingStores",
+            baseUrl: "https://discoveryengine.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateProjectsLocationsIdentityMappingStoresRequest",
+      });
+  }
+}
+function __c302(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          cmekConfig: S.optional(__S(8450, __c264, 2)),
+          name: S.optional(S.String),
+          kmsKeyName: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDiscoveryengineV1IdentityMappingStore",
+      });
+  }
+}
+function __c303(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          parent: S.String.pipe(T.Label()),
+          licenseConfigId: S.optional(S.String.pipe(T.Query())),
+          body: S.optional(__S(9728, __c304, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/{+parent}/licenseConfigs",
+            baseUrl: "https://discoveryengine.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateProjectsLocationsLicenseConfigsRequest",
+      });
+  }
+}
+function __c304(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.optional(S.String),
+          geminiBundle: S.optional(S.Boolean),
+          earlyTerminationDate: S.optional(__S(10560, __c330, 0)),
+          autoRenew: S.optional(S.Boolean),
+          licenseCount: S.optional(S.String),
+          earlyTerminated: S.optional(S.Boolean),
+          startDate: S.optional(__S(10560, __c330, 0)),
+          subscriptionTier: S.optional(S.String),
+          state: S.optional(S.String),
+          subscriptionTerm: S.optional(S.String),
+          endDate: S.optional(__S(10560, __c330, 0)),
+          freeTrial: S.optional(S.Boolean),
+          lastUserUpdateTime: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDiscoveryengineV1LicenseConfig",
+      });
+  }
+}
+function __c305(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "v1/{+name}",
+            baseUrl: "https://discoveryengine.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteProjectsLocationsCmekConfigsRequest",
+      });
+  }
+}
+function __c306(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "v1/{+name}",
+            baseUrl: "https://discoveryengine.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteProjectsLocationsCollectionsRequest",
+      });
+  }
+}
+function __c307(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "v1/{+name}",
+            baseUrl: "https://discoveryengine.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteProjectsLocationsCollectionsDataStoresRequest",
+      });
+  }
+}
+function __c308(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "v1/{+name}",
+            baseUrl: "https://discoveryengine.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteProjectsLocationsCollectionsDataStoresBranchesDocumentsRequest",
+      });
+  }
+}
+function __c309(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "v1/{+name}",
+            baseUrl: "https://discoveryengine.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteProjectsLocationsCollectionsDataStoresControlsRequest",
+      });
+  }
+}
+function __c310(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "v1/{+name}",
+            baseUrl: "https://discoveryengine.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteProjectsLocationsCollectionsDataStoresConversationsRequest",
+      });
+  }
+}
+function __c311(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "v1/{+name}",
+            baseUrl: "https://discoveryengine.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteProjectsLocationsCollectionsDataStoresSchemasRequest",
+      });
+  }
+}
+function __c312(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "v1/{+name}",
+            baseUrl: "https://discoveryengine.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteProjectsLocationsCollectionsDataStoresServingConfigsRequest",
+      });
+  }
+}
+function __c313(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "v1/{+name}",
+            baseUrl: "https://discoveryengine.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteProjectsLocationsCollectionsDataStoresSessionsRequest",
+      });
+  }
+}
+function __c314(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "v1/{+name}",
+            baseUrl: "https://discoveryengine.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteProjectsLocationsCollectionsDataStoresSiteSearchEngineSitemapsRequest",
+      });
+  }
+}
+function __c315(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          servingConfig: S.String.pipe(T.Label()),
+          body: S.optional(__S(10395, __c324, 27).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/{+servingConfig}:answer",
+            baseUrl: "https://discoveryengine.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "AnswerProjectsLocationsCollectionsDataStoresServingConfigsRequest",
+      });
+  }
+}
+function __c316(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, S.Unknown);
+  }
+}
+function __c317(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(10112, __c316, 0));
+  }
+}
+function __c318(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          code: S.optional(S.Number),
+          message: S.optional(S.String),
+          details: S.optional(__S(10144, __c317, 0)),
+        }),
+      ).annotate({ identifier: "GoogleRpcStatus" });
+  }
+}
+function __c319(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c320(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.Number);
+  }
+}
+function __c321(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, S.String);
+  }
+}
+function __c322(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          customSearchOperators: S.optional(S.String),
+          filter: S.optional(S.String),
+          numResults: S.optional(S.Number),
+          dataStore: S.optional(S.String),
+          boostSpec: S.optional(__S(10405, __c325, 5)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDiscoveryengineV1SearchRequestDataStoreSpec",
+      });
+    case 1:
+      return S.Array(__S(10304, __c322, 0));
+  }
+}
+function __c323(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c324(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          title: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier:
+          "GoogleCloudDiscoveryengineV1AnswerQueryRequestEndUserSpecEndUserMetaDataChunkInfoDocumentMetadata",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          documentMetadata: S.optional(__S(10368, __c324, 0)),
+          content: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier:
+          "GoogleCloudDiscoveryengineV1AnswerQueryRequestEndUserSpecEndUserMetaDataChunkInfo",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          chunkInfo: S.optional(__S(10369, __c324, 1)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDiscoveryengineV1AnswerQueryRequestEndUserSpecEndUserMetaData",
+      });
+    case 3:
+      return S.Array(__S(10370, __c324, 2));
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          endUserMetadata: S.optional(__S(10371, __c324, 3)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDiscoveryengineV1AnswerQueryRequestEndUserSpec",
+      });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          enable: S.optional(S.Boolean),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDiscoveryengineV1AnswerQueryRequestRelatedQuestionsSpec",
+      });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          category: S.optional(S.String),
+          threshold: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDiscoveryengineV1AnswerQueryRequestSafetySpecSafetySetting",
+      });
+    case 7:
+      return S.Array(__S(10374, __c324, 6));
+    case 8:
+      return S.suspend(() =>
+        S.Struct({
+          enable: S.optional(S.Boolean),
+          safetySettings: S.optional(__S(10375, __c324, 7)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDiscoveryengineV1AnswerQueryRequestSafetySpec",
+      });
+    case 9:
+      return S.suspend(() =>
+        S.Struct({
+          includeGroundingSupports: S.optional(S.Boolean),
+          filteringLevel: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDiscoveryengineV1AnswerQueryRequestGroundingSpec",
+      });
+    case 10:
+      return S.suspend(() =>
+        S.Struct({
+          modelVersion: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDiscoveryengineV1AnswerQueryRequestAnswerGenerationSpecModelSpec",
+      });
+    case 11:
+      return S.suspend(() =>
+        S.Struct({
+          preamble: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDiscoveryengineV1AnswerQueryRequestAnswerGenerationSpecPromptSpec",
+      });
+    case 12:
+      return S.suspend(() =>
+        S.Struct({
+          ignoreJailBreakingQuery: S.optional(S.Boolean),
+          modelSpec: S.optional(__S(10378, __c324, 10)),
+          includeCitations: S.optional(S.Boolean),
+          ignoreLowRelevantContent: S.optional(S.Boolean),
+          promptSpec: S.optional(__S(10379, __c324, 11)),
+          ignoreAdversarialQuery: S.optional(S.Boolean),
+          answerLanguageCode: S.optional(S.String),
+          ignoreNonAnswerSeekingQuery: S.optional(S.Boolean),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDiscoveryengineV1AnswerQueryRequestAnswerGenerationSpec",
+      });
+    case 13:
+      return S.suspend(() =>
+        S.Struct({
+          boostSpec: S.optional(__S(10405, __c325, 5)),
+          maxReturnResults: S.optional(S.Number),
+          filter: S.optional(S.String),
+          dataStoreSpecs: S.optional(__S(10305, __c322, 1)),
+          searchResultMode: S.optional(S.String),
+          orderBy: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDiscoveryengineV1AnswerQueryRequestSearchSpecSearchParams",
+      });
+    case 14:
+      return S.suspend(() =>
+        S.Struct({
+          content: S.optional(S.String),
+          pageIdentifier: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier:
+          "GoogleCloudDiscoveryengineV1AnswerQueryRequestSearchSpecSearchResultListSearchResultUnstructuredDocumentInfoExtractiveSegment",
+      });
+    case 15:
+      return S.Array(__S(10382, __c324, 14));
+    case 16:
+      return S.suspend(() =>
+        S.Struct({
+          uri: S.optional(S.String),
+          title: S.optional(S.String),
+          extractiveSegments: S.optional(__S(10383, __c324, 15)),
+          document: S.optional(S.String),
+          documentContexts: S.optional(__S(10383, __c324, 15)),
+          extractiveAnswers: S.optional(__S(10383, __c324, 15)),
+        }),
+      ).annotate({
+        identifier:
+          "GoogleCloudDiscoveryengineV1AnswerQueryRequestSearchSpecSearchResultListSearchResultUnstructuredDocumentInfo",
+      });
+    case 17:
+      return S.suspend(() =>
+        S.Struct({
+          title: S.optional(S.String),
+          uri: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier:
+          "GoogleCloudDiscoveryengineV1AnswerQueryRequestSearchSpecSearchResultListSearchResultChunkInfoDocumentMetadata",
+      });
+    case 18:
+      return S.suspend(() =>
+        S.Struct({
+          chunk: S.optional(S.String),
+          documentMetadata: S.optional(__S(10385, __c324, 17)),
+          content: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier:
+          "GoogleCloudDiscoveryengineV1AnswerQueryRequestSearchSpecSearchResultListSearchResultChunkInfo",
+      });
+    case 19:
+      return S.suspend(() =>
+        S.Struct({
+          unstructuredDocumentInfo: S.optional(__S(10384, __c324, 16)),
+          chunkInfo: S.optional(__S(10386, __c324, 18)),
+        }),
+      ).annotate({
+        identifier:
+          "GoogleCloudDiscoveryengineV1AnswerQueryRequestSearchSpecSearchResultListSearchResult",
+      });
+    case 20:
+      return S.Array(__S(10387, __c324, 19));
+    case 21:
+      return S.suspend(() =>
+        S.Struct({
+          searchResults: S.optional(__S(10388, __c324, 20)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDiscoveryengineV1AnswerQueryRequestSearchSpecSearchResultList",
+      });
+    case 22:
+      return S.suspend(() =>
+        S.Struct({
+          searchParams: S.optional(__S(10381, __c324, 13)),
+          searchResultList: S.optional(__S(10389, __c324, 21)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDiscoveryengineV1AnswerQueryRequestSearchSpec",
+      });
+    case 23:
+      return S.suspend(() =>
+        S.Struct({
+          types: S.optional(__S(10336, __c323, 0)),
+        }),
+      ).annotate({
+        identifier:
+          "GoogleCloudDiscoveryengineV1AnswerQueryRequestQueryUnderstandingSpecQueryClassificationSpec",
+      });
+    case 24:
+      return S.suspend(() =>
+        S.Struct({
+          modelType: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier:
+          "GoogleCloudDiscoveryengineV1AnswerQueryRequestQueryUnderstandingSpecQueryRephraserSpecModelSpec",
+      });
+    case 25:
+      return S.suspend(() =>
+        S.Struct({
+          modelSpec: S.optional(__S(10392, __c324, 24)),
+          disable: S.optional(S.Boolean),
+          maxRephraseSteps: S.optional(S.Number),
+        }),
+      ).annotate({
+        identifier:
+          "GoogleCloudDiscoveryengineV1AnswerQueryRequestQueryUnderstandingSpecQueryRephraserSpec",
+      });
+    case 26:
+      return S.suspend(() =>
+        S.Struct({
+          disableSpellCorrection: S.optional(S.Boolean),
+          queryClassificationSpec: S.optional(__S(10391, __c324, 23)),
+          queryRephraserSpec: S.optional(__S(10393, __c324, 25)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDiscoveryengineV1AnswerQueryRequestQueryUnderstandingSpec",
+      });
+    case 27:
+      return S.suspend(() =>
+        S.Struct({
+          asynchronousMode: S.optional(S.Boolean),
+          endUserSpec: S.optional(__S(10372, __c324, 4)),
+          relatedQuestionsSpec: S.optional(__S(10373, __c324, 5)),
+          safetySpec: S.optional(__S(10376, __c324, 8)),
+          groundingSpec: S.optional(__S(10377, __c324, 9)),
+          answerGenerationSpec: S.optional(__S(10380, __c324, 12)),
+          query: S.optional(__S(10464, __c327, 0)),
+          searchSpec: S.optional(__S(10390, __c324, 22)),
+          userPseudoId: S.optional(S.String),
+          queryUnderstandingSpec: S.optional(__S(10394, __c324, 26)),
+          userLabels: S.optional(__S(10272, __c321, 0)),
+          session: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDiscoveryengineV1AnswerQueryRequest",
+      });
+    case 28:
+      return S.suspend(() =>
+        S.Struct({
+          session: S.optional(__S(10498, __c328, 2)),
+          answerQueryToken: S.optional(S.String),
+          answer: S.optional(__S(10463, __c326, 31)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDiscoveryengineV1AnswerQueryResponse",
+      });
+  }
+}
+function __c325(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          boostAmount: S.optional(S.Number),
+          attributeValue: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier:
+          "GoogleCloudDiscoveryengineV1SearchRequestBoostSpecConditionBoostSpecBoostControlSpecControlPoint",
+      });
+    case 1:
+      return S.Array(__S(10400, __c325, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          fieldName: S.optional(S.String),
+          attributeType: S.optional(S.String),
+          controlPoints: S.optional(__S(10401, __c325, 1)),
+          interpolationType: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier:
+          "GoogleCloudDiscoveryengineV1SearchRequestBoostSpecConditionBoostSpecBoostControlSpec",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          condition: S.optional(S.String),
+          boost: S.optional(S.Number),
+          boostControlSpec: S.optional(__S(10402, __c325, 2)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDiscoveryengineV1SearchRequestBoostSpecConditionBoostSpec",
+      });
+    case 4:
+      return S.Array(__S(10403, __c325, 3));
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          conditionBoostSpecs: S.optional(__S(10404, __c325, 4)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDiscoveryengineV1SearchRequestBoostSpec",
+      });
+  }
+}
+function __c326(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          referenceId: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDiscoveryengineV1AnswerCitationSource",
+      });
+    case 1:
+      return S.Array(__S(10432, __c326, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          groundingCheckRequired: S.optional(S.Boolean),
+          endIndex: S.optional(S.String),
+          startIndex: S.optional(S.String),
+          groundingScore: S.optional(S.Number),
+          sources: S.optional(__S(10433, __c326, 1)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDiscoveryengineV1AnswerGroundingSupport",
+      });
+    case 3:
+      return S.Array(__S(10434, __c326, 2));
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          query: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDiscoveryengineV1AnswerStepActionSearchAction",
+      });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          content: S.optional(S.String),
+          relevanceScore: S.optional(S.Number),
+          chunk: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDiscoveryengineV1AnswerStepActionObservationSearchResultChunkInfo",
+      });
+    case 6:
+      return S.Array(__S(10437, __c326, 5));
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          snippet: S.optional(S.String),
+          snippetStatus: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier:
+          "GoogleCloudDiscoveryengineV1AnswerStepActionObservationSearchResultSnippetInfo",
+      });
+    case 8:
+      return S.Array(__S(10439, __c326, 7));
+    case 9:
+      return S.suspend(() =>
+        S.Struct({
+          document: S.optional(S.String),
+          uri: S.optional(S.String),
+          structData: S.optional(__S(10112, __c316, 0)),
+          title: S.optional(S.String),
+          chunkInfo: S.optional(__S(10438, __c326, 6)),
+          snippetInfo: S.optional(__S(10440, __c326, 8)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDiscoveryengineV1AnswerStepActionObservationSearchResult",
+      });
+    case 10:
+      return S.Array(__S(10441, __c326, 9));
+    case 11:
+      return S.suspend(() =>
+        S.Struct({
+          searchResults: S.optional(__S(10442, __c326, 10)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDiscoveryengineV1AnswerStepActionObservation",
+      });
+    case 12:
+      return S.suspend(() =>
+        S.Struct({
+          searchAction: S.optional(__S(10436, __c326, 4)),
+          observation: S.optional(__S(10443, __c326, 11)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDiscoveryengineV1AnswerStepAction",
+      });
+    case 13:
+      return S.Array(__S(10444, __c326, 12));
+    case 14:
+      return S.suspend(() =>
+        S.Struct({
+          actions: S.optional(__S(10445, __c326, 13)),
+          state: S.optional(S.String),
+          thought: S.optional(S.String),
+          description: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDiscoveryengineV1AnswerStep",
+      });
+    case 15:
+      return S.Array(__S(10446, __c326, 14));
+    case 16:
+      return S.suspend(() =>
+        S.Struct({
+          positive: S.optional(S.Boolean),
+          type: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier:
+          "GoogleCloudDiscoveryengineV1AnswerQueryUnderstandingInfoQueryClassificationInfo",
+      });
+    case 17:
+      return S.Array(__S(10448, __c326, 16));
+    case 18:
+      return S.suspend(() =>
+        S.Struct({
+          queryClassificationInfo: S.optional(__S(10449, __c326, 17)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDiscoveryengineV1AnswerQueryUnderstandingInfo",
+      });
+    case 19:
+      return S.suspend(() =>
+        S.Struct({
+          uri: S.optional(S.String),
+          title: S.optional(S.String),
+          structData: S.optional(__S(10112, __c316, 0)),
+          document: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDiscoveryengineV1AnswerReferenceStructuredDocumentInfo",
+      });
+    case 20:
+      return S.suspend(() =>
+        S.Struct({
+          relevanceScore: S.optional(S.Number),
+          content: S.optional(S.String),
+          pageIdentifier: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier:
+          "GoogleCloudDiscoveryengineV1AnswerReferenceUnstructuredDocumentInfoChunkContent",
+      });
+    case 21:
+      return S.Array(__S(10452, __c326, 20));
+    case 22:
+      return S.suspend(() =>
+        S.Struct({
+          chunkContents: S.optional(__S(10453, __c326, 21)),
+          uri: S.optional(S.String),
+          structData: S.optional(__S(10112, __c316, 0)),
+          title: S.optional(S.String),
+          document: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDiscoveryengineV1AnswerReferenceUnstructuredDocumentInfo",
+      });
+    case 23:
+      return S.suspend(() =>
+        S.Struct({
+          pageIdentifier: S.optional(S.String),
+          uri: S.optional(S.String),
+          structData: S.optional(__S(10112, __c316, 0)),
+          title: S.optional(S.String),
+          document: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDiscoveryengineV1AnswerReferenceChunkInfoDocumentMetadata",
+      });
+    case 24:
+      return S.suspend(() =>
+        S.Struct({
+          documentMetadata: S.optional(__S(10455, __c326, 23)),
+          chunk: S.optional(S.String),
+          relevanceScore: S.optional(S.Number),
+          content: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDiscoveryengineV1AnswerReferenceChunkInfo",
+      });
+    case 25:
+      return S.suspend(() =>
+        S.Struct({
+          structuredDocumentInfo: S.optional(__S(10451, __c326, 19)),
+          unstructuredDocumentInfo: S.optional(__S(10454, __c326, 22)),
+          chunkInfo: S.optional(__S(10456, __c326, 24)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDiscoveryengineV1AnswerReference",
+      });
+    case 26:
+      return S.Array(__S(10457, __c326, 25));
+    case 27:
+      return S.suspend(() =>
+        S.Struct({
+          startIndex: S.optional(S.String),
+          endIndex: S.optional(S.String),
+          sources: S.optional(__S(10433, __c326, 1)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDiscoveryengineV1AnswerCitation",
+      });
+    case 28:
+      return S.Array(__S(10459, __c326, 27));
+    case 29:
+      return S.suspend(() =>
+        S.Struct({
+          category: S.optional(S.String),
+          blocked: S.optional(S.Boolean),
+          severityScore: S.optional(S.Number),
+          severity: S.optional(S.String),
+          probability: S.optional(S.String),
+          probabilityScore: S.optional(S.Number),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDiscoveryengineV1SafetyRating",
+      });
+    case 30:
+      return S.Array(__S(10461, __c326, 29));
+    case 31:
+      return S.suspend(() =>
+        S.Struct({
+          relatedQuestions: S.optional(__S(10208, __c319, 0)),
+          completeTime: S.optional(S.String),
+          name: S.optional(S.String),
+          groundingSupports: S.optional(__S(10435, __c326, 3)),
+          state: S.optional(S.String),
+          steps: S.optional(__S(10447, __c326, 15)),
+          answerText: S.optional(S.String),
+          queryUnderstandingInfo: S.optional(__S(10450, __c326, 18)),
+          references: S.optional(__S(10458, __c326, 26)),
+          citations: S.optional(__S(10460, __c326, 28)),
+          createTime: S.optional(S.String),
+          safetyRatings: S.optional(__S(10462, __c326, 30)),
+          answerSkippedReasons: S.optional(__S(10336, __c323, 0)),
+          groundingScore: S.optional(S.Number),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDiscoveryengineV1Answer",
+      });
+  }
+}
+function __c327(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          queryId: S.optional(S.String),
+          text: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDiscoveryengineV1Query",
+      });
+  }
+}
+function __c328(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          queryConfig: S.optional(__S(10272, __c321, 0)),
+          live: S.optional(S.Boolean),
+          detailedAssistAnswer: S.optional(__S(10552, __c329, 24)),
+          detailedAnswer: S.optional(__S(10463, __c326, 31)),
+          answer: S.optional(S.String),
+          query: S.optional(__S(10464, __c327, 0)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDiscoveryengineV1SessionTurn",
+      });
+    case 1:
+      return S.Array(__S(10496, __c328, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          displayName: S.optional(S.String),
+          name: S.optional(S.String),
+          isPinned: S.optional(S.Boolean),
+          pendingAsyncAssistOperationId: S.optional(S.String),
+          labels: S.optional(__S(10208, __c319, 0)),
+          endTime: S.optional(S.String),
+          startTime: S.optional(S.String),
+          turns: S.optional(__S(10497, __c328, 1)),
+          userPseudoId: S.optional(S.String),
+          state: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDiscoveryengineV1Session",
+      });
+  }
+}
+function __c329(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          bannedPhrases: S.optional(__S(10208, __c319, 0)),
+        }),
+      ).annotate({
+        identifier:
+          "GoogleCloudDiscoveryengineV1AssistAnswerCustomerPolicyEnforcementResultBannedPhraseEnforcementResult",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          error: S.optional(__S(10176, __c318, 0)),
+          modelArmorViolation: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier:
+          "GoogleCloudDiscoveryengineV1AssistAnswerCustomerPolicyEnforcementResultModelArmorEnforcementResult",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          bannedPhraseEnforcementResult: S.optional(__S(10528, __c329, 0)),
+          modelArmorEnforcementResult: S.optional(__S(10529, __c329, 1)),
+        }),
+      ).annotate({
+        identifier:
+          "GoogleCloudDiscoveryengineV1AssistAnswerCustomerPolicyEnforcementResultPolicyEnforcementResult",
+      });
+    case 3:
+      return S.Array(__S(10530, __c329, 2));
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          verdict: S.optional(S.String),
+          violationSource: S.optional(S.String),
+          policyResults: S.optional(__S(10531, __c329, 3)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDiscoveryengineV1AssistAnswerCustomerPolicyEnforcementResult",
+      });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          endIndex: S.optional(S.Number),
+          uri: S.optional(S.String),
+          license: S.optional(S.String),
+          title: S.optional(S.String),
+          startIndex: S.optional(S.Number),
+          publicationDate: S.optional(__S(10560, __c330, 0)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDiscoveryengineV1Citation",
+      });
+    case 6:
+      return S.Array(__S(10533, __c329, 5));
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          citations: S.optional(__S(10534, __c329, 6)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDiscoveryengineV1CitationMetadata",
+      });
+    case 8:
+      return S.suspend(() =>
+        S.Struct({
+          mimeType: S.optional(S.String),
+          fileId: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDiscoveryengineV1AssistantContentFile",
+      });
+    case 9:
+      return S.suspend(() =>
+        S.Struct({
+          outcome: S.optional(S.String),
+          output: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDiscoveryengineV1AssistantContentCodeExecutionResult",
+      });
+    case 10:
+      return S.suspend(() =>
+        S.Struct({
+          code: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDiscoveryengineV1AssistantContentExecutableCode",
+      });
+    case 11:
+      return S.suspend(() =>
+        S.Struct({
+          mimeType: S.optional(S.String),
+          data: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDiscoveryengineV1AssistantContentBlob",
+      });
+    case 12:
+      return S.suspend(() =>
+        S.Struct({
+          file: S.optional(__S(10536, __c329, 8)),
+          text: S.optional(S.String),
+          role: S.optional(S.String),
+          codeExecutionResult: S.optional(__S(10537, __c329, 9)),
+          thought: S.optional(S.Boolean),
+          executableCode: S.optional(__S(10538, __c329, 10)),
+          inlineData: S.optional(__S(10539, __c329, 11)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDiscoveryengineV1AssistantContent",
+      });
+    case 13:
+      return S.suspend(() =>
+        S.Struct({
+          contentId: S.optional(S.String),
+          referenceIndices: S.optional(__S(10240, __c320, 0)),
+        }),
+      ).annotate({
+        identifier:
+          "GoogleCloudDiscoveryengineV1AssistantGroundedContentTextGroundingMetadataVisualSegment",
+      });
+    case 14:
+      return S.Array(__S(10541, __c329, 13));
+    case 15:
+      return S.suspend(() =>
+        S.Struct({
+          title: S.optional(S.String),
+          pageIdentifier: S.optional(S.String),
+          language: S.optional(S.String),
+          mimeType: S.optional(S.String),
+          domain: S.optional(S.String),
+          uri: S.optional(S.String),
+          document: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier:
+          "GoogleCloudDiscoveryengineV1AssistantGroundedContentTextGroundingMetadataReferenceDocumentMetadata",
+      });
+    case 16:
+      return S.suspend(() =>
+        S.Struct({
+          chunkMetadata: S.optional(__S(10112, __c316, 0)),
+          documentMetadata: S.optional(__S(10543, __c329, 15)),
+          content: S.optional(S.String),
+          codeSnippet: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier:
+          "GoogleCloudDiscoveryengineV1AssistantGroundedContentTextGroundingMetadataReference",
+      });
+    case 17:
+      return S.Array(__S(10544, __c329, 16));
+    case 18:
+      return S.suspend(() =>
+        S.Struct({
+          startIndex: S.optional(S.String),
+          referenceIndices: S.optional(__S(10240, __c320, 0)),
+          text: S.optional(S.String),
+          endIndex: S.optional(S.String),
+          groundingScore: S.optional(S.Number),
+        }),
+      ).annotate({
+        identifier:
+          "GoogleCloudDiscoveryengineV1AssistantGroundedContentTextGroundingMetadataSegment",
+      });
+    case 19:
+      return S.Array(__S(10546, __c329, 18));
+    case 20:
+      return S.suspend(() =>
+        S.Struct({
+          visualSegments: S.optional(__S(10542, __c329, 14)),
+          references: S.optional(__S(10545, __c329, 17)),
+          segments: S.optional(__S(10547, __c329, 19)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDiscoveryengineV1AssistantGroundedContentTextGroundingMetadata",
+      });
+    case 21:
+      return S.suspend(() =>
+        S.Struct({
+          citationMetadata: S.optional(__S(10535, __c329, 7)),
+          content: S.optional(__S(10540, __c329, 12)),
+          textGroundingMetadata: S.optional(__S(10548, __c329, 20)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDiscoveryengineV1AssistantGroundedContent",
+      });
+    case 22:
+      return S.suspend(() =>
+        S.Struct({
+          groundedContent: S.optional(__S(10549, __c329, 21)),
+          createTime: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDiscoveryengineV1AssistAnswerReply",
+      });
+    case 23:
+      return S.Array(__S(10550, __c329, 22));
+    case 24:
+      return S.suspend(() =>
+        S.Struct({
+          customerPolicyEnforcementResult: S.optional(__S(10532, __c329, 4)),
+          connectorDisplayNames: S.optional(__S(10272, __c321, 0)),
+          state: S.optional(S.String),
+          name: S.optional(S.String),
+          replies: S.optional(__S(10551, __c329, 23)),
+          assistSkippedReasons: S.optional(__S(10336, __c323, 0)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDiscoveryengineV1AssistAnswer",
+      });
+  }
+}
+function __c330(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          day: S.optional(S.Number),
+          month: S.optional(S.Number),
+          year: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "GoogleTypeDate" });
+  }
+}
+function __c331(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "v1/{+name}",
+            baseUrl: "https://discoveryengine.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier:
+          "DeleteProjectsLocationsCollectionsDataStoresSiteSearchEngineTargetSitesRequest",
+      });
+  }
+}
+function __c332(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "v1/{+name}",
+            baseUrl: "https://discoveryengine.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteProjectsLocationsCollectionsEnginesRequest",
+      });
+  }
+}
+function __c333(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "v1/{+name}",
+            baseUrl: "https://discoveryengine.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteProjectsLocationsCollectionsEnginesAssistantsRequest",
+      });
+  }
+}
+function __c334(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          tenant: S.String.pipe(T.Label()),
+          name: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "v1/{+tenant}/a2a/v1/{+name}",
+            baseUrl: "https://discoveryengine.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier:
+          "DeleteProjectsLocationsCollectionsEnginesAssistantsAgentsA2aV1TasksPushNotificationConfigsRequest",
+      });
+  }
+}
+function __c335(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "v1/{+name}",
+            baseUrl: "https://discoveryengine.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteProjectsLocationsCollectionsEnginesControlsRequest",
+      });
+  }
+}
+function __c336(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "v1/{+name}",
+            baseUrl: "https://discoveryengine.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteProjectsLocationsCollectionsEnginesConversationsRequest",
+      });
+  }
+}
+function __c337(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "v1/{+name}",
+            baseUrl: "https://discoveryengine.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteProjectsLocationsCollectionsEnginesServingConfigsRequest",
+      });
+  }
+}
+function __c338(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "v1/{+name}",
+            baseUrl: "https://discoveryengine.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteProjectsLocationsCollectionsEnginesSessionsRequest",
+      });
+  }
+}
+function __c339(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "v1/{+name}",
+            baseUrl: "https://discoveryengine.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteProjectsLocationsDataStoresRequest",
+      });
+  }
+}
+function __c340(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "v1/{+name}",
+            baseUrl: "https://discoveryengine.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteProjectsLocationsDataStoresBranchesDocumentsRequest",
+      });
+  }
+}
+function __c341(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          servingConfig: S.String.pipe(T.Label()),
+          body: S.optional(__S(10395, __c324, 27).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/{+servingConfig}:answer",
+            baseUrl: "https://discoveryengine.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "AnswerProjectsLocationsCollectionsEnginesServingConfigsRequest",
+      });
+  }
+}
+function __c342(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "v1/{+name}",
+            baseUrl: "https://discoveryengine.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteProjectsLocationsDataStoresControlsRequest",
+      });
+  }
+}
+function __c343(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "v1/{+name}",
+            baseUrl: "https://discoveryengine.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteProjectsLocationsDataStoresConversationsRequest",
+      });
+  }
+}
+function __c344(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "v1/{+name}",
+            baseUrl: "https://discoveryengine.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteProjectsLocationsDataStoresSchemasRequest",
+      });
+  }
+}
+function __c345(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "v1/{+name}",
+            baseUrl: "https://discoveryengine.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteProjectsLocationsDataStoresServingConfigsRequest",
+      });
+  }
+}
+function __c346(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "v1/{+name}",
+            baseUrl: "https://discoveryengine.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteProjectsLocationsDataStoresSessionsRequest",
+      });
+  }
+}
+function __c347(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "v1/{+name}",
+            baseUrl: "https://discoveryengine.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteProjectsLocationsDataStoresSiteSearchEngineSitemapsRequest",
+      });
+  }
+}
+function __c348(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "v1/{+name}",
+            baseUrl: "https://discoveryengine.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteProjectsLocationsDataStoresSiteSearchEngineTargetSitesRequest",
+      });
+  }
+}
+function __c349(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "v1/{+name}",
+            baseUrl: "https://discoveryengine.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteProjectsLocationsIdentityMappingStoresRequest",
+      });
+  }
+}
+function __c350(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          siteSearchEngine: S.String.pipe(T.Label()),
+          body: S.optional(__S(2016, __c63, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/{+siteSearchEngine}:disableAdvancedSiteSearch",
+            baseUrl: "https://discoveryengine.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier:
+          "DisableAdvancedSiteSearchProjectsLocationsCollectionsDataStoresSiteSearchEngineRequest",
+      });
+  }
+}
+function __c351(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          siteSearchEngine: S.String.pipe(T.Label()),
+          body: S.optional(__S(2016, __c63, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/{+siteSearchEngine}:disableAdvancedSiteSearch",
+            baseUrl: "https://discoveryengine.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "DisableAdvancedSiteSearchProjectsLocationsDataStoresSiteSearchEngineRequest",
+      });
+  }
+}
+function __c352(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          servingConfig: S.String.pipe(T.Label()),
+          body: S.optional(__S(10395, __c324, 27).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/{+servingConfig}:answer",
+            baseUrl: "https://discoveryengine.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "AnswerProjectsLocationsDataStoresServingConfigsRequest",
+      });
+  }
+}
+function __c353(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          projectNumber: S.optional(S.String),
+          licenseCount: S.optional(S.String),
+          licenseConfigId: S.optional(S.String),
+          location: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDiscoveryengineV1DistributeLicenseConfigRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          billingAccountLicenseConfig: S.String.pipe(T.Label()),
+          body: S.optional(__S(11296, __c353, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/{+billingAccountLicenseConfig}:distributeLicenseConfig",
+            baseUrl: "https://discoveryengine.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "DistributeLicenseConfigBillingAccountsBillingAccountLicenseConfigsRequest",
+      });
+  }
+}
+function __c354(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          licenseConfig: S.optional(__S(9728, __c304, 0)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDiscoveryengineV1DistributeLicenseConfigResponse",
+      });
+  }
+}
+function __c355(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          siteSearchEngine: S.String.pipe(T.Label()),
+          body: S.optional(__S(2016, __c63, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/{+siteSearchEngine}:enableAdvancedSiteSearch",
+            baseUrl: "https://discoveryengine.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier:
+          "EnableAdvancedSiteSearchProjectsLocationsCollectionsDataStoresSiteSearchEngineRequest",
+      });
+  }
+}
+function __c356(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          siteSearchEngine: S.String.pipe(T.Label()),
+          body: S.optional(__S(2016, __c63, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/{+siteSearchEngine}:enableAdvancedSiteSearch",
+            baseUrl: "https://discoveryengine.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "EnableAdvancedSiteSearchProjectsLocationsDataStoresSiteSearchEngineRequest",
+      });
+  }
+}
+function __c357(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          pageToken: S.optional(S.String.pipe(T.Query())),
+          pageSize: S.optional(S.Number.pipe(T.Query())),
+          siteSearchEngine: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v1/{+siteSearchEngine}:fetchDomainVerificationStatus",
+            baseUrl: "https://discoveryengine.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier:
+          "FetchDomainVerificationStatusProjectsLocationsCollectionsDataStoresSiteSearchEngineRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          totalSize: S.optional(S.Number),
+          targetSites: S.optional(__S(11456, __c358, 0)),
+          nextPageToken: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDiscoveryengineV1FetchDomainVerificationStatusResponse",
+      });
+  }
+}
+function __c358(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(99, __c3, 3));
+  }
+}
+function __c359(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          "matcher.urisMatcher.uris": S.optional(__S(10208, __c319, 0).pipe(T.Query())),
+          parent: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v1/{+parent}/sitemaps:fetch",
+            baseUrl: "https://discoveryengine.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "FetchProjectsLocationsCollectionsDataStoresSiteSearchEngineSitemapsRequest",
+      });
+  }
+}
+function __c360(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          sitemap: S.optional(__S(8928, __c279, 0)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDiscoveryengineV1FetchSitemapsResponseSitemapMetadata",
+      });
+    case 1:
+      return S.Array(__S(11520, __c360, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          sitemapsMetadata: S.optional(__S(11521, __c360, 1)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDiscoveryengineV1FetchSitemapsResponse",
+      });
+  }
+}
+function __c361(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          parent: S.String.pipe(T.Label()),
+          "matcher.urisMatcher.uris": S.optional(__S(10208, __c319, 0).pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v1/{+parent}/sitemaps:fetch",
+            baseUrl: "https://discoveryengine.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "FetchProjectsLocationsDataStoresSiteSearchEngineSitemapsRequest",
+      });
+  }
+}
+function __c362(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v1/{+name}",
+            baseUrl: "https://discoveryengine.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetAclConfigProjectsLocationsRequest",
+      });
+  }
+}
+function __c363(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          workforcePoolName: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDiscoveryengineV1IdpConfigExternalIdpConfig",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          externalIdpConfig: S.optional(__S(11616, __c363, 0)),
+          idpType: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDiscoveryengineV1IdpConfig",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          idpConfig: S.optional(__S(11617, __c363, 1)),
+          name: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDiscoveryengineV1AclConfig",
+      });
+  }
+}
+function __c364(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          tenant: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v1/{+tenant}/a2a/v1/card",
+            baseUrl: "https://discoveryengine.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetCardProjectsLocationsCollectionsEnginesAssistantsAgentsA2aV1Request",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          organization: S.optional(S.String),
+          url: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "A2aV1AgentProvider" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          protected: S.optional(S.String),
+          signature: S.optional(S.String),
+          header: S.optional(__S(10112, __c316, 0)),
+        }),
+      ).annotate({ identifier: "A2aV1AgentCardSignature" });
+    case 3:
+      return S.Array(__S(11650, __c364, 2));
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          scopes: S.optional(__S(10272, __c321, 0)),
+          refreshUrl: S.optional(S.String),
+          authorizationUrl: S.optional(S.String),
+          tokenUrl: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "A2aV1AuthorizationCodeOAuthFlow",
+      });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          refreshUrl: S.optional(S.String),
+          scopes: S.optional(__S(10272, __c321, 0)),
+          tokenUrl: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "A2aV1ClientCredentialsOAuthFlow",
+      });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          authorizationUrl: S.optional(S.String),
+          refreshUrl: S.optional(S.String),
+          scopes: S.optional(__S(10272, __c321, 0)),
+        }),
+      ).annotate({ identifier: "A2aV1ImplicitOAuthFlow" });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          scopes: S.optional(__S(10272, __c321, 0)),
+          tokenUrl: S.optional(S.String),
+          refreshUrl: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "A2aV1PasswordOAuthFlow" });
+    case 8:
+      return S.suspend(() =>
+        S.Struct({
+          authorizationCode: S.optional(__S(11652, __c364, 4)),
+          clientCredentials: S.optional(__S(11653, __c364, 5)),
+          implicit: S.optional(__S(11654, __c364, 6)),
+          password: S.optional(__S(11655, __c364, 7)),
+        }),
+      ).annotate({ identifier: "A2aV1OAuthFlows" });
+    case 9:
+      return S.suspend(() =>
+        S.Struct({
+          flows: S.optional(__S(11656, __c364, 8)),
+          description: S.optional(S.String),
+          oauth2MetadataUrl: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "A2aV1OAuth2SecurityScheme",
+      });
+    case 10:
+      return S.suspend(() =>
+        S.Struct({
+          description: S.optional(S.String),
+          openIdConnectUrl: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "A2aV1OpenIdConnectSecurityScheme",
+      });
+    case 11:
+      return S.suspend(() =>
+        S.Struct({
+          description: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "A2aV1MutualTlsSecurityScheme",
+      });
+    case 12:
+      return S.suspend(() =>
+        S.Struct({
+          bearerFormat: S.optional(S.String),
+          description: S.optional(S.String),
+          scheme: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "A2aV1HTTPAuthSecurityScheme",
+      });
+    case 13:
+      return S.suspend(() =>
+        S.Struct({
+          description: S.optional(S.String),
+          location: S.optional(S.String),
+          name: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "A2aV1APIKeySecurityScheme",
+      });
+    case 14:
+      return S.suspend(() =>
+        S.Struct({
+          oauth2SecurityScheme: S.optional(__S(11657, __c364, 9)),
+          openIdConnectSecurityScheme: S.optional(__S(11658, __c364, 10)),
+          mtlsSecurityScheme: S.optional(__S(11659, __c364, 11)),
+          httpAuthSecurityScheme: S.optional(__S(11660, __c364, 12)),
+          apiKeySecurityScheme: S.optional(__S(11661, __c364, 13)),
+        }),
+      ).annotate({ identifier: "A2aV1SecurityScheme" });
+    case 15:
+      return S.Record(S.String, __S(11662, __c364, 14));
+    case 16:
+      return S.suspend(() =>
+        S.Struct({
+          required: S.optional(S.Boolean),
+          description: S.optional(S.String),
+          params: S.optional(__S(10112, __c316, 0)),
+          uri: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "A2aV1AgentExtension" });
+    case 17:
+      return S.Array(__S(11664, __c364, 16));
+    case 18:
+      return S.suspend(() =>
+        S.Struct({
+          streaming: S.optional(S.Boolean),
+          pushNotifications: S.optional(S.Boolean),
+          extensions: S.optional(__S(11665, __c364, 17)),
+        }),
+      ).annotate({ identifier: "A2aV1AgentCapabilities" });
+    case 19:
+      return S.suspend(() =>
+        S.Struct({
+          list: S.optional(__S(10208, __c319, 0)),
+        }),
+      ).annotate({ identifier: "A2aV1StringList" });
+    case 20:
+      return S.Record(S.String, __S(11667, __c364, 19));
+    case 21:
+      return S.suspend(() =>
+        S.Struct({
+          schemes: S.optional(__S(11668, __c364, 20)),
+        }),
+      ).annotate({ identifier: "A2aV1Security" });
+    case 22:
+      return S.Array(__S(11669, __c364, 21));
+    case 23:
+      return S.suspend(() =>
+        S.Struct({
+          tenant: S.optional(S.String),
+          url: S.optional(S.String),
+          transport: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "A2aV1AgentInterface" });
+    case 24:
+      return S.Array(__S(11671, __c364, 23));
+    case 25:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          examples: S.optional(__S(10208, __c319, 0)),
+          outputModes: S.optional(__S(10208, __c319, 0)),
+          tags: S.optional(__S(10208, __c319, 0)),
+          security: S.optional(__S(11670, __c364, 22)),
+          description: S.optional(S.String),
+          inputModes: S.optional(__S(10208, __c319, 0)),
+        }),
+      ).annotate({ identifier: "A2aV1AgentSkill" });
+    case 26:
+      return S.Array(__S(11673, __c364, 25));
+    case 27:
+      return S.suspend(() =>
+        S.Struct({
+          provider: S.optional(__S(11649, __c364, 1)),
+          iconUrl: S.optional(S.String),
+          version: S.optional(S.String),
+          documentationUrl: S.optional(S.String),
+          defaultOutputModes: S.optional(__S(10208, __c319, 0)),
+          signatures: S.optional(__S(11651, __c364, 3)),
+          defaultInputModes: S.optional(__S(10208, __c319, 0)),
+          securitySchemes: S.optional(__S(11663, __c364, 15)),
+          name: S.optional(S.String),
+          url: S.optional(S.String),
+          capabilities: S.optional(__S(11666, __c364, 18)),
+          security: S.optional(__S(11670, __c364, 22)),
+          preferredTransport: S.optional(S.String),
+          description: S.optional(S.String),
+          protocolVersion: S.optional(S.String),
+          supportsAuthenticatedExtendedCard: S.optional(S.Boolean),
+          additionalInterfaces: S.optional(__S(11672, __c364, 24)),
+          skills: S.optional(__S(11674, __c364, 26)),
+        }),
+      ).annotate({ identifier: "A2aV1AgentCard" });
+  }
+}
+function __c365(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v1/{+name}",
+            baseUrl: "https://discoveryengine.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetCmekConfigProjectsLocationsRequest",
+      });
+  }
+}
+function __c366(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v1/{+name}",
+            baseUrl: "https://discoveryengine.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetDataConnectorProjectsLocationsCollectionsRequest",
+      });
+  }
+}
+function __c367(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          note: S.optional(S.String),
+          shortDescription: S.optional(S.String),
+          description: S.optional(S.String),
+          author: S.optional(S.String),
+          title: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDiscoveryengineV1DataConnectorConnectorMetadata",
+      });
+  }
+}
+function __c368(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          alertId: S.optional(S.String),
+          enrollState: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDiscoveryengineV1AlertPolicyConfigAlertEnrollment",
+      });
+    case 1:
+      return S.Array(__S(11776, __c368, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          alertEnrollments: S.optional(__S(11777, __c368, 1)),
+          alertPolicyName: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDiscoveryengineV1AlertPolicyConfig",
+      });
+    case 3:
+      return S.Array(__S(11778, __c368, 2));
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          version: S.optional(S.String),
+          id: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "GoogleTypeTimeZone" });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          nanos: S.optional(S.Number),
+          minutes: S.optional(S.Number),
+          timeZone: S.optional(__S(11780, __c368, 4)),
+          utcOffset: S.optional(S.String),
+          month: S.optional(S.Number),
+          seconds: S.optional(S.Number),
+          year: S.optional(S.Number),
+          hours: S.optional(S.Number),
+          day: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "GoogleTypeDateTime" });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          refreshInterval: S.optional(S.String),
+          nextSyncTime: S.optional(__S(11781, __c368, 5)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDiscoveryengineV1IdentityScheduleConfig",
+      });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          enabledActions: S.optional(__S(10208, __c319, 0)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDiscoveryengineV1CliConfig",
+      });
+    case 8:
+      return S.suspend(() =>
+        S.Struct({
+          jsonAuthParams: S.optional(S.String),
+          additionalParams: S.optional(__S(10112, __c316, 0)),
+          authParams: S.optional(__S(10112, __c316, 0)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDiscoveryengineV1DataConnectorFederatedConfig",
+      });
+    case 9:
+      return S.suspend(() =>
+        S.Struct({
+          error: S.optional(__S(10176, __c318, 0)),
+          streamingErrorReason: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDiscoveryengineV1DataConnectorRealtimeSyncConfigStreamingError",
+      });
+    case 10:
+      return S.suspend(() =>
+        S.Struct({
+          streamingError: S.optional(__S(11785, __c368, 9)),
+          realtimeSyncSecret: S.optional(S.String),
+          webhookUri: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDiscoveryengineV1DataConnectorRealtimeSyncConfig",
+      });
+    case 11:
+      return S.suspend(() =>
+        S.Struct({
+          baseVersion: S.optional(S.String),
+          tools: S.optional(__S(10144, __c317, 0)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDiscoveryengineV1BAPConfigToolspecOverride",
+      });
+    case 12:
+      return S.suspend(() =>
+        S.Struct({
+          enabledActions: S.optional(__S(10208, __c319, 0)),
+          supportedConnectorModes: S.optional(__S(10336, __c323, 0)),
+          toolspecOverride: S.optional(__S(11787, __c368, 11)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDiscoveryengineV1BAPConfig",
+      });
+    case 13:
+      return S.suspend(() =>
+        S.Struct({
+          startingSchema: S.optional(__S(8416, __c263, 0)),
+          params: S.optional(__S(10112, __c316, 0)),
+          jsonParams: S.optional(S.String),
+          dataStore: S.optional(S.String),
+          healthcareFhirConfig: S.optional(__S(8544, __c267, 0)),
+          entityName: S.optional(S.String),
+          keyPropertyMappings: S.optional(__S(10272, __c321, 0)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDiscoveryengineV1DataConnectorSourceEntity",
+      });
+    case 14:
+      return S.Array(__S(11789, __c368, 13));
+    case 15:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.optional(S.String),
+          displayName: S.optional(S.String),
+          enabled: S.optional(S.Boolean),
+          description: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDiscoveryengineV1DynamicTool",
+      });
+    case 16:
+      return S.Array(__S(11791, __c368, 15));
+    case 17:
+      return S.suspend(() =>
+        S.Struct({
+          host: S.optional(S.String),
+          port: S.optional(S.Number),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDiscoveryengineV1DestinationConfigDestination",
+      });
+    case 18:
+      return S.Array(__S(11793, __c368, 17));
+    case 19:
+      return S.suspend(() =>
+        S.Struct({
+          destinations: S.optional(__S(11794, __c368, 18)),
+          params: S.optional(__S(10112, __c316, 0)),
+          jsonParams: S.optional(S.String),
+          key: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDiscoveryengineV1DestinationConfig",
+      });
+    case 20:
+      return S.Array(__S(11795, __c368, 19));
+    case 21:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          displayName: S.optional(S.String),
+          uri: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDiscoveryengineV1Tenant",
+      });
+    case 22:
+      return S.suspend(() =>
+        S.Struct({
+          authParams: S.optional(__S(10112, __c316, 0)),
+          additionalParams: S.optional(__S(10112, __c316, 0)),
+          tenant: S.optional(__S(11797, __c368, 21)),
+          jsonAuthParams: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDiscoveryengineV1DataConnectorEndUserConfig",
+      });
+    case 23:
+      return S.suspend(() =>
+        S.Struct({
+          scopes: S.optional(__S(10208, __c319, 0)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDiscoveryengineV1ActionConfigScopeList",
+      });
+    case 24:
+      return S.Record(S.String, __S(11799, __c368, 23));
+    case 25:
+      return S.suspend(() =>
+        S.Struct({
+          actionParams: S.optional(__S(10112, __c316, 0)),
+          createBapConnection: S.optional(S.Boolean),
+          jsonActionParams: S.optional(S.String),
+          useStaticSecrets: S.optional(S.Boolean),
+          userDefinedScopesMapping: S.optional(__S(11800, __c368, 24)),
+          serviceName: S.optional(S.String),
+          isActionConfigured: S.optional(S.Boolean),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDiscoveryengineV1ActionConfig",
+      });
+    case 26:
+      return S.suspend(() =>
+        S.Struct({
+          latestPauseTime: S.optional(S.String),
+          staticIpEnabled: S.optional(S.Boolean),
+          alertPolicyConfigs: S.optional(__S(11779, __c368, 3)),
+          updateTime: S.optional(S.String),
+          errors: S.optional(__S(7072, __c221, 0)),
+          name: S.optional(S.String),
+          autoRunDisabled: S.optional(S.Boolean),
+          state: S.optional(S.String),
+          connectorSourceId: S.optional(S.String),
+          connectorModes: S.optional(__S(10336, __c323, 0)),
+          identityScheduleConfig: S.optional(__S(11782, __c368, 6)),
+          hybridIngestionDisabled: S.optional(S.Boolean),
+          cliConfig: S.optional(__S(11783, __c368, 7)),
+          federatedConfig: S.optional(__S(11784, __c368, 8)),
+          blockingReasons: S.optional(__S(10336, __c323, 0)),
+          oauthStaticIpAddresses: S.optional(__S(10208, __c319, 0)),
+          jsonParams: S.optional(S.String),
+          params: S.optional(__S(10112, __c316, 0)),
+          realtimeSyncConfig: S.optional(__S(11786, __c368, 10)),
+          aclEnabled: S.optional(S.Boolean),
+          staticIpAddresses: S.optional(__S(10208, __c319, 0)),
+          tag: S.optional(S.String),
+          dataSource: S.optional(S.String),
+          incrementalSyncDisabled: S.optional(S.Boolean),
+          kmsKeyName: S.optional(S.String),
+          vpcscEnabled: S.optional(S.Boolean),
+          realtimeState: S.optional(S.String),
+          syncMode: S.optional(S.String),
+          privateConnectivityProjectId: S.optional(S.String),
+          bapConfig: S.optional(__S(11788, __c368, 12)),
+          actionState: S.optional(S.String),
+          refreshInterval: S.optional(S.String),
+          createEuaSaas: S.optional(S.Boolean),
+          entities: S.optional(__S(11790, __c368, 14)),
+          removeParamKeys: S.optional(__S(10208, __c319, 0)),
+          dynamicTools: S.optional(__S(11792, __c368, 16)),
+          identityRefreshInterval: S.optional(S.String),
+          connectorType: S.optional(S.String),
+          nextSyncTime: S.optional(__S(11781, __c368, 5)),
+          dataProtectionPolicy: S.optional(__S(8481, __c265, 1)),
+          createTime: S.optional(S.String),
+          incrementalRefreshInterval: S.optional(S.String),
+          metadata: S.optional(__S(11744, __c367, 0)),
+          destinationConfigs: S.optional(__S(11796, __c368, 20)),
+          endUserConfig: S.optional(__S(11798, __c368, 22)),
+          egressFqdns: S.optional(__S(10208, __c319, 0)),
+          actionConfig: S.optional(__S(11801, __c368, 25)),
+          lastSyncTime: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDiscoveryengineV1DataConnector",
+      });
+  }
+}
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

@@ -336,8 +336,8 @@ export const batchMeterUsage: API.OperationMethod<
   BatchMeterUsageError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(6, __c0, 6) as any as S.Schema<BatchMeterUsageRequest>,
-  output: __S(9, __c1, 1) as any as S.Schema<BatchMeterUsageResult>,
+  input: __S(2, __c0, 2) as any as S.Schema<BatchMeterUsageRequest>,
+  output: __S(5, __c0, 5) as any as S.Schema<BatchMeterUsageResult>,
   errors: [
     DisabledApiException,
     InternalServiceErrorException,
@@ -415,8 +415,8 @@ export const meterUsage: API.OperationMethod<
   MeterUsageError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(10, __c1, 2) as any as S.Schema<MeterUsageRequest>,
-  output: __S(11, __c1, 3) as any as S.Schema<MeterUsageResult>,
+  input: __S(16, __c2, 0) as any as S.Schema<MeterUsageRequest>,
+  output: __S(17, __c2, 1) as any as S.Schema<MeterUsageResult>,
   errors: [
     CustomerNotEntitledException,
     DuplicateRequestException,
@@ -492,8 +492,8 @@ export const registerUsage: API.OperationMethod<
   RegisterUsageError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(12, __c1, 4) as any as S.Schema<RegisterUsageRequest>,
-  output: __S(13, __c1, 5) as any as S.Schema<RegisterUsageResult>,
+  input: __S(24, __c3, 0) as any as S.Schema<RegisterUsageRequest>,
+  output: __S(25, __c3, 1) as any as S.Schema<RegisterUsageResult>,
   errors: [
     CustomerNotEntitledException,
     DisabledApiException,
@@ -542,8 +542,8 @@ export const resolveCustomer: API.OperationMethod<
   ResolveCustomerError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(14, __c1, 6) as any as S.Schema<ResolveCustomerRequest>,
-  output: __S(15, __c1, 7) as any as S.Schema<ResolveCustomerResult>,
+  input: __S(32, __c4, 0) as any as S.Schema<ResolveCustomerRequest>,
+  output: __S(33, __c4, 1) as any as S.Schema<ResolveCustomerResult>,
   errors: [
     DisabledApiException,
     ExpiredTokenException,
@@ -560,59 +560,63 @@ export const resolveCustomer: API.OperationMethod<
 function __c0(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => S.Struct({ Key: S.String, Value: S.String })).annotate({
-        identifier: "Tag",
-      });
-    case 1:
-      return S.Array(__S(0, __c0, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({ AllocatedUsageQuantity: S.Number, Tags: S.optional(__S(1, __c0, 1)) }),
-      ).annotate({ identifier: "UsageAllocation" });
-    case 3:
-      return S.Array(__S(2, __c0, 2));
-    case 4:
       return S.suspend(() =>
         S.Struct({
           Timestamp: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
           CustomerIdentifier: S.optional(S.String),
           Dimension: S.String,
           Quantity: S.optional(S.Number),
-          UsageAllocations: S.optional(__S(3, __c0, 3)),
+          UsageAllocations: S.optional(__S(11, __c1, 3)),
           CustomerAWSAccountId: S.optional(S.String),
           LicenseArn: S.optional(S.String),
         }),
       ).annotate({ identifier: "UsageRecord" });
-    case 5:
-      return S.Array(__S(4, __c0, 4));
-    case 6:
+    case 1:
+      return S.Array(__S(0, __c0, 0));
+    case 2:
       return S.suspend(() =>
-        S.Struct({ UsageRecords: __S(5, __c0, 5), ProductCode: S.optional(S.String) }).pipe(
+        S.Struct({ UsageRecords: __S(1, __c0, 1), ProductCode: S.optional(S.String) }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "BatchMeterUsageRequest" });
-    case 7:
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          UsageRecord: S.optional(__S(4, __c0, 4)),
+          UsageRecord: S.optional(__S(0, __c0, 0)),
           MeteringRecordId: S.optional(S.String),
           Status: S.optional(S.String),
         }),
       ).annotate({ identifier: "UsageRecordResult" });
+    case 4:
+      return S.Array(__S(3, __c0, 3));
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          Results: S.optional(__S(4, __c0, 4)),
+          UnprocessedRecords: S.optional(__S(1, __c0, 1)),
+        }),
+      ).annotate({ identifier: "BatchMeterUsageResult" });
   }
 }
 function __c1(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(7, __c0, 7));
+      return S.suspend(() => S.Struct({ Key: S.String, Value: S.String })).annotate({
+        identifier: "Tag",
+      });
     case 1:
-      return S.suspend(() =>
-        S.Struct({
-          Results: S.optional(__S(8, __c1, 0)),
-          UnprocessedRecords: S.optional(__S(5, __c0, 5)),
-        }),
-      ).annotate({ identifier: "BatchMeterUsageResult" });
+      return S.Array(__S(8, __c1, 0));
     case 2:
+      return S.suspend(() =>
+        S.Struct({ AllocatedUsageQuantity: S.Number, Tags: S.optional(__S(9, __c1, 1)) }),
+      ).annotate({ identifier: "UsageAllocation" });
+    case 3:
+      return S.Array(__S(10, __c1, 2));
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           ProductCode: S.String,
@@ -620,15 +624,19 @@ function __c1(j: number): any {
           UsageDimension: S.String,
           UsageQuantity: S.optional(S.Number),
           DryRun: S.optional(S.Boolean),
-          UsageAllocations: S.optional(__S(3, __c0, 3)),
+          UsageAllocations: S.optional(__S(11, __c1, 3)),
           ClientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "MeterUsageRequest" });
-    case 3:
+    case 1:
       return S.suspend(() => S.Struct({ MeteringRecordId: S.optional(S.String) })).annotate({
         identifier: "MeterUsageResult",
       });
-    case 4:
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           ProductCode: S.String,
@@ -636,20 +644,24 @@ function __c1(j: number): any {
           Nonce: S.optional(S.String),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "RegisterUsageRequest" });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           PublicKeyRotationTimestamp: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           Signature: S.optional(S.String),
         }),
       ).annotate({ identifier: "RegisterUsageResult" });
-    case 6:
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ RegistrationToken: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "ResolveCustomerRequest" });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           CustomerIdentifier: S.optional(S.String),
@@ -660,7 +672,6 @@ function __c1(j: number): any {
       ).annotate({ identifier: "ResolveCustomerResult" });
   }
 }
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

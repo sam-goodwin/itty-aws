@@ -1591,7 +1591,7 @@ export const CancelOrderItem: API.OperationMethod<
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(0, __c0, 0) as any as S.Schema<CancelOrderItemRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<CancelOrderItemResponse>,
+  output: __S(32, __c1, 0) as any as S.Schema<CancelOrderItemResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1605,8 +1605,8 @@ export const CreateAddress: API.OperationMethod<
   CreateAddressError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(7, __c0, 7) as any as S.Schema<CreateAddressRequest>,
-  output: __S(10, __c1, 2) as any as S.Schema<CreateAddressResponse>,
+  input: __S(64, __c2, 0) as any as S.Schema<CreateAddressRequest>,
+  output: __S(256, __c8, 0) as any as S.Schema<CreateAddressResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1620,8 +1620,8 @@ export const CreateOrderItem: API.OperationMethod<
   CreateOrderItemError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(30, __c3, 6) as any as S.Schema<CreateOrderItemRequest>,
-  output: __S(61, __c7, 5) as any as S.Schema<CreateOrderItemResponse>,
+  input: __S(775, __c24, 7) as any as S.Schema<CreateOrderItemRequest>,
+  output: __S(962, __c30, 2) as any as S.Schema<CreateOrderItemResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1635,8 +1635,8 @@ export const DeleteAddress: API.OperationMethod<
   DeleteAddressError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(62, __c7, 6) as any as S.Schema<DeleteAddressRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<DeleteAddressResponse>,
+  input: __S(1024, __c32, 0) as any as S.Schema<DeleteAddressRequest>,
+  output: __S(32, __c1, 0) as any as S.Schema<DeleteAddressResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1650,8 +1650,8 @@ export const DeleteOrderItem: API.OperationMethod<
   DeleteOrderItemError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(63, __c7, 7) as any as S.Schema<DeleteOrderItemRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<DeleteOrderItemResponse>,
+  input: __S(1056, __c33, 0) as any as S.Schema<DeleteOrderItemRequest>,
+  output: __S(32, __c1, 0) as any as S.Schema<DeleteOrderItemResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1665,8 +1665,8 @@ export const GetAddress: API.OperationMethod<
   GetAddressError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(64, __c8, 0) as any as S.Schema<GetAddressRequest>,
-  output: __S(10, __c1, 2) as any as S.Schema<GetAddressResponse>,
+  input: __S(1088, __c34, 0) as any as S.Schema<GetAddressRequest>,
+  output: __S(256, __c8, 0) as any as S.Schema<GetAddressResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1680,8 +1680,8 @@ export const GetOrder: API.OperationMethod<
   GetOrderError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(65, __c8, 1) as any as S.Schema<GetOrderRequest>,
-  output: __S(67, __c8, 3) as any as S.Schema<GetOrderResponse>,
+  input: __S(1120, __c35, 0) as any as S.Schema<GetOrderRequest>,
+  output: __S(1153, __c36, 1) as any as S.Schema<GetOrderResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1695,8 +1695,8 @@ export const GetOrderItem: API.OperationMethod<
   GetOrderItemError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(68, __c8, 4) as any as S.Schema<GetOrderItemRequest>,
-  output: __S(61, __c7, 5) as any as S.Schema<GetOrderItemResponse>,
+  input: __S(1184, __c37, 0) as any as S.Schema<GetOrderItemRequest>,
+  output: __S(962, __c30, 2) as any as S.Schema<GetOrderItemResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1710,8 +1710,8 @@ export const ListAddressByResourceGroup: API.OperationMethod<
   ListAddressByResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(69, __c8, 5) as any as S.Schema<ListAddressByResourceGroupRequest>,
-  output: __S(71, __c8, 7) as any as S.Schema<AddressResourceList>,
+  input: __S(1216, __c38, 0) as any as S.Schema<ListAddressByResourceGroupRequest>,
+  output: __S(1249, __c39, 1) as any as S.Schema<AddressResourceList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1725,8 +1725,8 @@ export const ListAddressBySubscription: API.OperationMethod<
   ListAddressBySubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(72, __c9, 0) as any as S.Schema<ListAddressBySubscriptionRequest>,
-  output: __S(71, __c8, 7) as any as S.Schema<AddressResourceList>,
+  input: __S(1280, __c40, 0) as any as S.Schema<ListAddressBySubscriptionRequest>,
+  output: __S(1249, __c39, 1) as any as S.Schema<AddressResourceList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1740,8 +1740,8 @@ export const ListOperations: API.OperationMethod<
   ListOperationsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(73, __c9, 1) as any as S.Schema<ListOperationsRequest>,
-  output: __S(77, __c9, 5) as any as S.Schema<ListOperationsResponse>,
+  input: __S(288, __c9, 0) as any as S.Schema<ListOperationsRequest>,
+  output: __S(292, __c9, 4) as any as S.Schema<ListOperationsResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1755,8 +1755,8 @@ export const ListOrderByResourceGroup: API.OperationMethod<
   ListOrderByResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(78, __c9, 6) as any as S.Schema<ListOrderByResourceGroupRequest>,
-  output: __S(80, __c10, 0) as any as S.Schema<OrderResourceList>,
+  input: __S(320, __c10, 0) as any as S.Schema<ListOrderByResourceGroupRequest>,
+  output: __S(353, __c11, 1) as any as S.Schema<OrderResourceList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1770,8 +1770,8 @@ export const ListOrderBySubscription: API.OperationMethod<
   ListOrderBySubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(81, __c10, 1) as any as S.Schema<ListOrderBySubscriptionRequest>,
-  output: __S(80, __c10, 0) as any as S.Schema<OrderResourceList>,
+  input: __S(384, __c12, 0) as any as S.Schema<ListOrderBySubscriptionRequest>,
+  output: __S(353, __c11, 1) as any as S.Schema<OrderResourceList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1785,8 +1785,8 @@ export const ListOrderItemByResourceGroup: API.OperationMethod<
   ListOrderItemByResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(82, __c10, 2) as any as S.Schema<ListOrderItemByResourceGroupRequest>,
-  output: __S(84, __c10, 4) as any as S.Schema<OrderItemResourceList>,
+  input: __S(416, __c13, 0) as any as S.Schema<ListOrderItemByResourceGroupRequest>,
+  output: __S(449, __c14, 1) as any as S.Schema<OrderItemResourceList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1800,8 +1800,8 @@ export const ListOrderItemBySubscription: API.OperationMethod<
   ListOrderItemBySubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(85, __c10, 5) as any as S.Schema<ListOrderItemBySubscriptionRequest>,
-  output: __S(84, __c10, 4) as any as S.Schema<OrderItemResourceList>,
+  input: __S(480, __c15, 0) as any as S.Schema<ListOrderItemBySubscriptionRequest>,
+  output: __S(449, __c14, 1) as any as S.Schema<OrderItemResourceList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1815,8 +1815,8 @@ export const ListProductsAndConfigurationConfigurations: API.OperationMethod<
   ListProductsAndConfigurationConfigurationsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(95, __c11, 7) as any as S.Schema<ListProductsAndConfigurationConfigurationsRequest>,
-  output: __S(121, __c15, 1) as any as S.Schema<Configurations>,
+  input: __S(515, __c16, 3) as any as S.Schema<ListProductsAndConfigurationConfigurationsRequest>,
+  output: __S(516, __c16, 4) as any as S.Schema<Configurations>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1830,8 +1830,8 @@ export const ListProductsAndConfigurationProductFamilies: API.OperationMethod<
   ListProductsAndConfigurationProductFamiliesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(124, __c15, 4) as any as S.Schema<ListProductsAndConfigurationProductFamiliesRequest>,
-  output: __S(134, __c16, 6) as any as S.Schema<ProductFamilies>,
+  input: __S(610, __c19, 2) as any as S.Schema<ListProductsAndConfigurationProductFamiliesRequest>,
+  output: __S(613, __c19, 5) as any as S.Schema<ProductFamilies>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1846,11 +1846,11 @@ export const ListProductsAndConfigurationProductFamiliesMetadata: API.OperationM
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    135,
-    __c16,
-    7,
+    672,
+    __c21,
+    0,
   ) as any as S.Schema<ListProductsAndConfigurationProductFamiliesMetadataRequest>,
-  output: __S(138, __c17, 2) as any as S.Schema<ProductFamiliesMetadata>,
+  output: __S(675, __c21, 3) as any as S.Schema<ProductFamiliesMetadata>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1864,8 +1864,8 @@ export const OrderItemsReturn: API.OperationMethod<
   OrderItemsReturnError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(139, __c17, 3) as any as S.Schema<OrderItemsReturnRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<OrderItemsReturnResponse>,
+  input: __S(704, __c22, 0) as any as S.Schema<OrderItemsReturnRequest>,
+  output: __S(32, __c1, 0) as any as S.Schema<OrderItemsReturnResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1879,8 +1879,8 @@ export const UpdateAddress: API.OperationMethod<
   UpdateAddressError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(141, __c17, 5) as any as S.Schema<UpdateAddressRequest>,
-  output: __S(10, __c1, 2) as any as S.Schema<UpdateAddressResponse>,
+  input: __S(737, __c23, 1) as any as S.Schema<UpdateAddressRequest>,
+  output: __S(256, __c8, 0) as any as S.Schema<UpdateAddressResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1894,8 +1894,8 @@ export const UpdateOrderItem: API.OperationMethod<
   UpdateOrderItemError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(145, __c18, 1) as any as S.Schema<UpdateOrderItemRequest>,
-  output: __S(61, __c7, 5) as any as S.Schema<UpdateOrderItemResponse>,
+  input: __S(995, __c31, 3) as any as S.Schema<UpdateOrderItemRequest>,
+  output: __S(962, __c30, 2) as any as S.Schema<UpdateOrderItemResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1920,13 +1920,74 @@ function __c0(j: number): any {
           }),
         ),
       ).annotate({ identifier: "CancelOrderItemRequest" });
-    case 1:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "CancelOrderItemResponse",
       });
-    case 2:
-      return S.Record(S.String, S.String);
-    case 3:
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          addressName: S.String.pipe(T.Label()),
+          tags: S.optional(__S(224, __c7, 0)),
+          location: S.String,
+          properties: __S(96, __c3, 0),
+        }).pipe(
+          T.Http({
+            method: "PUT",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EdgeOrder/addresses/{addressName}",
+            code: 200,
+            apiVersion: "2024-02-01",
+          }),
+        ),
+      ).annotate({ identifier: "CreateAddressRequest" });
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          addressClassification: S.optional(S.String),
+          shippingAddress: S.optional(__S(192, __c6, 0)),
+          contactDetails: S.optional(__S(193, __c6, 1)),
+        }),
+      ).annotate({ identifier: "AddressPropertiesInput" });
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          createdBy: S.optional(S.String),
+          createdByType: S.optional(S.String),
+          createdAt: S.optional(S.String),
+          lastModifiedBy: S.optional(S.String),
+          lastModifiedByType: S.optional(S.String),
+          lastModifiedAt: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "SystemData" });
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           streetAddress1: S.optional(S.String),
@@ -1941,528 +2002,32 @@ function __c0(j: number): any {
           addressType: S.optional(S.String),
         }),
       ).annotate({ identifier: "ShippingAddress" });
-    case 4:
-      return S.Array(S.String);
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           contactName: S.optional(S.String),
           phone: S.optional(S.String),
           phoneExtension: S.optional(S.String),
           mobile: S.optional(S.String),
-          emailList: S.optional(__S(4, __c0, 4)),
+          emailList: S.optional(__S(128, __c4, 0)),
         }),
       ).annotate({ identifier: "ContactDetails" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          addressClassification: S.optional(S.String),
-          shippingAddress: S.optional(__S(3, __c0, 3)),
-          contactDetails: S.optional(__S(5, __c0, 5)),
-        }),
-      ).annotate({ identifier: "AddressPropertiesInput" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          addressName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(2, __c0, 2)),
-          location: S.String,
-          properties: __S(6, __c0, 6),
-        }).pipe(
-          T.Http({
-            method: "PUT",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EdgeOrder/addresses/{addressName}",
-            code: 200,
-            apiVersion: "2024-02-01",
-          }),
-        ),
-      ).annotate({ identifier: "CreateAddressRequest" });
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          createdBy: S.optional(S.String),
-          createdByType: S.optional(S.String),
-          createdAt: S.optional(S.String),
-          lastModifiedBy: S.optional(S.String),
-          lastModifiedByType: S.optional(S.String),
-          lastModifiedAt: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "SystemData" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          addressClassification: S.optional(S.String),
-          shippingAddress: S.optional(__S(3, __c0, 3)),
-          contactDetails: S.optional(__S(5, __c0, 5)),
-          addressValidationStatus: S.optional(S.String),
-          provisioningState: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "AddressProperties" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(8, __c1, 0)),
-          tags: S.optional(__S(2, __c0, 2)),
-          location: S.String,
-          properties: __S(9, __c1, 1),
-        }),
-      ).annotate({ identifier: "CreateAddressResponse" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          productFamilyName: S.optional(S.String),
-          productLineName: S.optional(S.String),
-          productName: S.optional(S.String),
-          configurationName: S.optional(S.String),
-          configurationIdDisplayName: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "HierarchyInformation" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          quantity: S.optional(S.Number),
-          provisioningArmId: S.optional(S.String),
-          provisioningEndPoint: S.optional(S.String),
-          serialNumber: S.optional(S.String),
-          vendorName: S.optional(S.String),
-          readyToConnectArmId: S.optional(S.String),
-          managementResourceArmId: S.optional(S.String),
-          autoProvisioningStatus: S.optional(S.String),
-          devicePresenceVerification: S.optional(__S(1, __c0, 1)),
-        }),
-      ).annotate({ identifier: "ProvisioningDetailsInput" });
-    case 5:
-      return S.Array(__S(12, __c1, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          hierarchyInformation: __S(11, __c1, 3),
-          quantity: S.Number,
-          provisioningDetails: S.optional(__S(13, __c1, 5)),
-        }),
-      ).annotate({
-        identifier: "AdditionalConfigurationInput",
-      });
-    case 7:
-      return S.Array(__S(14, __c1, 6));
-  }
-}
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          displayInfo: S.optional(__S(1, __c0, 1)),
-          hierarchyInformation: __S(11, __c1, 3),
-          parentProvisioningDetails: S.optional(__S(12, __c1, 4)),
-          optInAdditionalConfigurations: S.optional(__S(15, __c1, 7)),
-        }),
-      ).annotate({ identifier: "ProductDetailsInput" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          siteId: S.String,
-        }),
-      ).annotate({ identifier: "SiteDetails" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          stageName: S.String,
-          sendNotification: S.Boolean,
-        }),
-      ).annotate({ identifier: "NotificationPreference" });
-    case 3:
-      return S.Array(__S(18, __c2, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          preferredShipmentType: S.String,
-        }),
-      ).annotate({ identifier: "TransportPreferences" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          doubleEncryptionStatus: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "EncryptionPreferences" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          preferredManagementResourceId: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "ManagementResourcePreferences",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          preferredTermCommitmentType: S.String,
-          preferredTermCommitmentDuration: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "TermCommitmentPreferences",
-      });
-  }
-}
-function __c3(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          notificationPreferences: S.optional(__S(19, __c2, 3)),
-          transportPreferences: S.optional(__S(20, __c2, 4)),
-          encryptionPreferences: S.optional(__S(21, __c2, 5)),
-          managementResourcePreferences: S.optional(__S(22, __c2, 6)),
-          termCommitmentPreferences: S.optional(__S(23, __c2, 7)),
-        }),
-      ).annotate({ identifier: "Preferences" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          productDetails: __S(16, __c2, 0),
-          orderItemType: S.String,
-          orderItemMode: S.optional(S.String),
-          siteDetails: S.optional(__S(17, __c2, 1)),
-          preferences: S.optional(__S(24, __c3, 0)),
-          notificationEmailList: S.optional(__S(4, __c0, 4)),
-          error: S.optional(__S(1, __c0, 1)),
-        }),
-      ).annotate({ identifier: "OrderItemDetailsInput" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          forwardAddress: __S(6, __c0, 6),
-        }),
-      ).annotate({ identifier: "AddressDetailsInput" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          orderItemDetails: __S(25, __c3, 1),
-          addressDetails: S.optional(__S(26, __c3, 2)),
-          orderId: S.String,
-        }),
-      ).annotate({ identifier: "OrderItemPropertiesInput" });
-    case 4:
-      return S.Record(S.String, __S(1, __c0, 1));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          type: S.optional(S.String),
-          userAssignedIdentities: S.optional(__S(28, __c3, 4)),
-        }),
-      ).annotate({ identifier: "ResourceIdentityInput" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          orderItemName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(2, __c0, 2)),
-          location: S.String,
-          properties: __S(27, __c3, 3),
-          identity: S.optional(__S(29, __c3, 5)),
-        }).pipe(
-          T.Http({
-            method: "PUT",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EdgeOrder/orderItems/{orderItemName}",
-            code: 200,
-            apiVersion: "2024-02-01",
-          }),
-        ),
-      ).annotate({ identifier: "CreateOrderItemRequest" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          productFamilyDisplayName: S.optional(S.String),
-          configurationDisplayName: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "DisplayInfo" });
-  }
-}
-function __c4(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          status: S.optional(S.String),
-          message: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "DevicePresenceVerificationDetails",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          quantity: S.optional(S.Number),
-          provisioningArmId: S.optional(S.String),
-          provisioningEndPoint: S.optional(S.String),
-          serialNumber: S.optional(S.String),
-          vendorName: S.optional(S.String),
-          readyToConnectArmId: S.optional(S.String),
-          managementResourceArmId: S.optional(S.String),
-          uniqueDeviceIdentifier: S.optional(S.String),
-          autoProvisioningStatus: S.optional(S.String),
-          devicePresenceVerification: S.optional(__S(32, __c4, 0)),
-        }),
-      ).annotate({ identifier: "ProvisioningDetails" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          serialNumber: S.optional(S.String),
-          displaySerialNumber: S.optional(S.String),
-          managementResourceId: S.optional(S.String),
-          managementResourceTenantId: S.optional(S.String),
-          provisioningSupport: S.optional(S.String),
-          provisioningDetails: S.optional(__S(33, __c4, 1)),
-        }),
-      ).annotate({ identifier: "DeviceDetails" });
-    case 3:
-      return S.Array(__S(33, __c4, 1));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          hierarchyInformation: __S(11, __c1, 3),
-          quantity: S.Number,
-          provisioningDetails: S.optional(__S(35, __c4, 3)),
-        }),
-      ).annotate({ identifier: "AdditionalConfiguration" });
-    case 5:
-      return S.Array(__S(36, __c4, 4));
-    case 6:
-      return S.Array(__S(34, __c4, 2));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          termCommitmentType: S.String,
-          termCommitmentTypeDuration: S.optional(S.String),
-          pendingDaysForTerm: S.optional(S.Number),
-        }),
-      ).annotate({
-        identifier: "TermCommitmentInformation",
-      });
-  }
-}
-function __c5(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          displayInfo: S.optional(__S(31, __c3, 7)),
-          hierarchyInformation: S.optional(__S(11, __c1, 3)),
-          quantity: S.optional(S.Number),
-          identificationType: S.optional(S.String),
-          deviceDetails: S.optional(__S(38, __c4, 6)),
-          termCommitmentInformation: S.optional(__S(39, __c4, 7)),
-        }),
-      ).annotate({
-        identifier: "ConfigurationDeviceDetails",
-      });
-    case 1:
-      return S.Array(__S(40, __c5, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          displayInfo: S.optional(__S(31, __c3, 7)),
-          hierarchyInformation: __S(11, __c1, 3),
-          productDoubleEncryptionStatus: S.optional(S.String),
-          identificationType: S.optional(S.String),
-          parentDeviceDetails: S.optional(__S(34, __c4, 2)),
-          parentProvisioningDetails: S.optional(__S(33, __c4, 1)),
-          optInAdditionalConfigurations: S.optional(__S(37, __c4, 5)),
-          childConfigurationDeviceDetails: S.optional(__S(41, __c5, 1)),
-          termCommitmentInformation: S.optional(__S(39, __c4, 7)),
-        }),
-      ).annotate({ identifier: "ProductDetails" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          stageStatus: S.optional(S.String),
-          stageName: S.optional(S.String),
-          displayName: S.optional(S.String),
-          startTime: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "StageDetails" });
-    case 4:
-      return S.Array(__S(43, __c5, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          carrierName: S.optional(S.String),
-          carrierDisplayName: S.optional(S.String),
-          trackingId: S.optional(S.String),
-          trackingUrl: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ForwardShippingDetails" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          sasKeyForLabel: S.optional(S.String),
-          carrierName: S.optional(S.String),
-          carrierDisplayName: S.optional(S.String),
-          trackingId: S.optional(S.String),
-          trackingUrl: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ReverseShippingDetails" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          resourceProviderNamespace: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ResourceProviderDetails" });
-  }
-}
-function __c6(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(47, __c5, 7));
-    case 1:
-      return S.Array(/*@__PURE__*/ S.suspend(() => __S(52, __c6, 4)));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          type: S.optional(S.String),
-          info: S.optional(S.Unknown),
-        }),
-      ).annotate({ identifier: "ErrorAdditionalInfo" });
-    case 3:
-      return S.Array(__S(50, __c6, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          code: S.optional(S.String),
-          message: S.optional(S.String),
-          target: S.optional(S.String),
-          details: S.optional(__S(49, __c6, 1)),
-          additionalInfo: S.optional(__S(51, __c6, 3)),
-        }),
-      ).annotate({ identifier: "ErrorDetail" });
-    case 5:
-      return S.Array(__S(52, __c6, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          code: S.optional(S.String),
-          message: S.optional(S.String),
-          target: S.optional(S.String),
-          details: S.optional(__S(53, __c6, 5)),
-          additionalInfo: S.optional(__S(51, __c6, 3)),
-        }),
-      ).annotate({ identifier: "OrderItemDetailsError" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          productDetails: __S(42, __c5, 2),
-          orderItemType: S.String,
-          orderItemMode: S.optional(S.String),
-          siteDetails: S.optional(__S(17, __c2, 1)),
-          currentStage: S.optional(__S(43, __c5, 3)),
-          orderItemStageHistory: S.optional(__S(44, __c5, 4)),
-          preferences: S.optional(__S(24, __c3, 0)),
-          forwardShippingDetails: S.optional(__S(45, __c5, 5)),
-          reverseShippingDetails: S.optional(__S(46, __c5, 6)),
-          notificationEmailList: S.optional(__S(4, __c0, 4)),
-          cancellationReason: S.optional(S.String),
-          cancellationStatus: S.optional(S.String),
-          deletionStatus: S.optional(S.String),
-          returnReason: S.optional(S.String),
-          returnStatus: S.optional(S.String),
-          managementRpDetailsList: S.optional(__S(48, __c6, 0)),
-          error: S.optional(__S(54, __c6, 6)),
-        }),
-      ).annotate({ identifier: "OrderItemDetails" });
   }
 }
 function __c7(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() =>
-        S.Struct({
-          forwardAddress: __S(9, __c1, 1),
-          returnAddress: S.optional(__S(9, __c1, 1)),
-        }),
-      ).annotate({ identifier: "AddressDetails" });
+      return S.Record(S.String, S.String);
     case 1:
       return S.suspend(() =>
         S.Struct({
-          orderItemDetails: __S(55, __c6, 7),
-          addressDetails: S.optional(__S(56, __c7, 0)),
-          startTime: S.optional(S.String),
-          orderId: S.String,
+          addressClassification: S.optional(S.String),
+          shippingAddress: S.optional(__S(192, __c6, 0)),
+          contactDetails: S.optional(__S(193, __c6, 1)),
+          addressValidationStatus: S.optional(S.String),
           provisioningState: S.optional(S.String),
         }),
-      ).annotate({ identifier: "OrderItemProperties" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          principalId: S.optional(S.String),
-          clientId: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "ResourceIdentityUserAssignedIdentitiesValue",
-      });
-    case 3:
-      return S.Record(S.String, __S(58, __c7, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          type: S.optional(S.String),
-          principalId: S.optional(S.String),
-          tenantId: S.optional(S.String),
-          userAssignedIdentities: S.optional(__S(59, __c7, 3)),
-        }),
-      ).annotate({ identifier: "ResourceIdentity" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(8, __c1, 0)),
-          tags: S.optional(__S(2, __c0, 2)),
-          location: S.String,
-          properties: __S(57, __c7, 1),
-          identity: S.optional(__S(60, __c7, 4)),
-        }),
-      ).annotate({ identifier: "CreateOrderItemResponse" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          addressName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EdgeOrder/addresses/{addressName}",
-            code: 200,
-            apiVersion: "2024-02-01",
-          }),
-        ),
-      ).annotate({ identifier: "DeleteAddressRequest" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          orderItemName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EdgeOrder/orderItems/{orderItemName}",
-            code: 200,
-            apiVersion: "2024-02-01",
-          }),
-        ),
-      ).annotate({ identifier: "DeleteOrderItemRequest" });
+      ).annotate({ identifier: "AddressProperties" });
   }
 }
 function __c8(j: number): any {
@@ -2470,120 +2035,20 @@ function __c8(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          addressName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EdgeOrder/addresses/{addressName}",
-            code: 200,
-            apiVersion: "2024-02-01",
-          }),
-        ),
-      ).annotate({ identifier: "GetAddressRequest" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          location: S.String.pipe(T.Label()),
-          orderName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EdgeOrder/locations/{location}/orders/{orderName}",
-            code: 200,
-            apiVersion: "2024-02-01",
-          }),
-        ),
-      ).annotate({ identifier: "GetOrderRequest" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          orderItemIds: S.optional(__S(4, __c0, 4)),
-          currentStage: S.optional(__S(43, __c5, 3)),
-          orderStageHistory: S.optional(__S(44, __c5, 4)),
-          orderMode: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "OrderProperties" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(8, __c1, 0)),
-          properties: __S(66, __c8, 2),
+          systemData: S.optional(__S(160, __c5, 0)),
+          tags: S.optional(__S(224, __c7, 0)),
+          location: S.String,
+          properties: __S(225, __c7, 1),
         }),
-      ).annotate({ identifier: "GetOrderResponse" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          orderItemName: S.String.pipe(T.Label()),
-          _expand: S.optional(S.String.pipe(T.Query("$expand"))),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EdgeOrder/orderItems/{orderItemName}",
-            code: 200,
-            apiVersion: "2024-02-01",
-          }),
-        ),
-      ).annotate({ identifier: "GetOrderItemRequest" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          _filter: S.optional(S.String.pipe(T.Query("$filter"))),
-          _skipToken: S.optional(S.String.pipe(T.Query("$skipToken"))),
-          _top: S.optional(S.Number.pipe(T.Query("$top"))),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EdgeOrder/addresses",
-            code: 200,
-            apiVersion: "2024-02-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListAddressByResourceGroupRequest",
-      });
-    case 6:
-      return S.Array(__S(10, __c1, 2));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          value: __S(70, __c8, 6),
-          nextLink: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "AddressResourceList" });
+      ).annotate({ identifier: "CreateAddressResponse" });
   }
 }
 function __c9(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          _filter: S.optional(S.String.pipe(T.Query("$filter"))),
-          _skipToken: S.optional(S.String.pipe(T.Query("$skipToken"))),
-          _top: S.optional(S.Number.pipe(T.Query("$top"))),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/providers/Microsoft.EdgeOrder/addresses",
-            code: 200,
-            apiVersion: "2024-02-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListAddressBySubscriptionRequest",
-      });
-    case 1:
       return S.suspend(() =>
         S.Struct({}).pipe(
           T.Http({
@@ -2594,7 +2059,7 @@ function __c9(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ListOperationsRequest" });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           provider: S.optional(S.String),
@@ -2603,26 +2068,30 @@ function __c9(j: number): any {
           description: S.optional(S.String),
         }),
       ).annotate({ identifier: "OperationDisplay" });
-    case 3:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
           isDataAction: S.optional(S.Boolean),
-          display: S.optional(__S(74, __c9, 2)),
+          display: S.optional(__S(289, __c9, 1)),
           origin: S.optional(S.String),
           actionType: S.optional(S.String),
         }),
       ).annotate({ identifier: "Operation" });
+    case 3:
+      return S.Array(__S(290, __c9, 2));
     case 4:
-      return S.Array(__S(75, __c9, 3));
-    case 5:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(76, __c9, 4)),
+          value: S.optional(__S(291, __c9, 3)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListOperationsResponse" });
-    case 6:
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -2640,20 +2109,24 @@ function __c9(j: number): any {
       ).annotate({
         identifier: "ListOrderByResourceGroupRequest",
       });
-    case 7:
-      return S.Array(__S(67, __c8, 3));
   }
 }
-function __c10(j: number): any {
+function __c11(j: number): any {
   switch (j) {
     case 0:
+      return S.Array(__S(1153, __c36, 1));
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          value: __S(79, __c9, 7),
+          value: __S(352, __c11, 0),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "OrderResourceList" });
-    case 1:
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -2670,7 +2143,11 @@ function __c10(j: number): any {
       ).annotate({
         identifier: "ListOrderBySubscriptionRequest",
       });
-    case 2:
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -2690,16 +2167,24 @@ function __c10(j: number): any {
       ).annotate({
         identifier: "ListOrderItemByResourceGroupRequest",
       });
-    case 3:
-      return S.Array(__S(61, __c7, 5));
-    case 4:
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(962, __c30, 2));
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          value: __S(83, __c10, 3),
+          value: __S(448, __c14, 0),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "OrderItemResourceList" });
-    case 5:
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -2718,66 +2203,34 @@ function __c10(j: number): any {
       ).annotate({
         identifier: "ListOrderItemBySubscriptionRequest",
       });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          type: S.String,
-          supportedValues: __S(4, __c0, 4),
-        }),
-      ).annotate({ identifier: "FilterableProperty" });
-    case 7:
-      return S.Array(__S(86, __c10, 6));
   }
 }
-function __c11(j: number): any {
+function __c16(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(11, __c1, 3));
+      return S.Array(__S(864, __c27, 0));
     case 1:
-      return S.Array(S.String);
+      return S.suspend(() =>
+        S.Struct({
+          hierarchyInformations: S.optional(__S(512, __c16, 0)),
+          childConfigurationTypes: S.optional(__S(578, __c18, 2)),
+        }),
+      ).annotate({ identifier: "ChildConfigurationFilter" });
     case 2:
       return S.suspend(() =>
         S.Struct({
-          hierarchyInformations: S.optional(__S(88, __c11, 0)),
-          childConfigurationTypes: S.optional(__S(89, __c11, 1)),
-        }),
-      ).annotate({ identifier: "ChildConfigurationFilter" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          hierarchyInformation: __S(11, __c1, 3),
-          filterableProperty: S.optional(__S(87, __c10, 7)),
-          childConfigurationFilter: S.optional(__S(90, __c11, 2)),
+          hierarchyInformation: __S(864, __c27, 0),
+          filterableProperty: S.optional(__S(577, __c18, 1)),
+          childConfigurationFilter: S.optional(__S(513, __c16, 1)),
         }),
       ).annotate({ identifier: "ConfigurationFilter" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.optional(S.String),
-          state: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "CustomerSubscriptionRegisteredFeatures",
-      });
-    case 5:
-      return S.Array(__S(92, __c11, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          registeredFeatures: S.optional(__S(93, __c11, 5)),
-          locationPlacementId: S.optional(S.String),
-          quotaId: S.String,
-        }),
-      ).annotate({
-        identifier: "CustomerSubscriptionDetails",
-      });
-    case 7:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           _skipToken: S.optional(S.String.pipe(T.Query("$skipToken"))),
-          configurationFilter: S.optional(__S(91, __c11, 3)),
-          customerSubscriptionDetails: S.optional(__S(94, __c11, 6)),
+          configurationFilter: S.optional(__S(514, __c16, 2)),
+          customerSubscriptionDetails: S.optional(__S(546, __c17, 2)),
         }).pipe(
           T.Http({
             method: "POST",
@@ -2789,40 +2242,83 @@ function __c11(j: number): any {
       ).annotate({
         identifier: "ListProductsAndConfigurationConfigurationsRequest",
       });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          value: __S(603, __c18, 27),
+          nextLink: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Configurations" });
   }
 }
-function __c12(j: number): any {
+function __c17(j: number): any {
   switch (j) {
     case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.optional(S.String),
+          state: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "CustomerSubscriptionRegisteredFeatures",
+      });
+    case 1:
+      return S.Array(__S(544, __c17, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          registeredFeatures: S.optional(__S(545, __c17, 1)),
+          locationPlacementId: S.optional(S.String),
+          quotaId: S.String,
+        }),
+      ).annotate({
+        identifier: "CustomerSubscriptionDetails",
+      });
+  }
+}
+function __c18(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          type: S.String,
+          supportedValues: __S(128, __c4, 0),
+        }),
+      ).annotate({ identifier: "FilterableProperty" });
+    case 1:
+      return S.Array(__S(576, __c18, 0));
+    case 2:
+      return S.Array(S.String);
+    case 3:
       return S.suspend(() =>
         S.Struct({
           linkType: S.optional(S.String),
           linkUrl: S.optional(S.String),
         }),
       ).annotate({ identifier: "Link" });
-    case 1:
-      return S.Array(__S(96, __c12, 0));
-    case 2:
+    case 4:
+      return S.Array(__S(579, __c18, 3));
+    case 5:
       return S.suspend(() =>
         S.Struct({
           descriptionType: S.optional(S.String),
           shortDescription: S.optional(S.String),
           longDescription: S.optional(S.String),
-          keywords: S.optional(__S(4, __c0, 4)),
-          attributes: S.optional(__S(4, __c0, 4)),
-          links: S.optional(__S(97, __c12, 1)),
+          keywords: S.optional(__S(128, __c4, 0)),
+          attributes: S.optional(__S(128, __c4, 0)),
+          links: S.optional(__S(580, __c18, 4)),
         }),
       ).annotate({ identifier: "Description" });
-    case 3:
+    case 6:
       return S.suspend(() =>
         S.Struct({
           imageType: S.optional(S.String),
           imageUrl: S.optional(S.String),
         }),
       ).annotate({ identifier: "ImageInformation" });
-    case 4:
-      return S.Array(__S(99, __c12, 3));
-    case 5:
+    case 7:
+      return S.Array(__S(582, __c18, 6));
+    case 8:
       return S.suspend(() =>
         S.Struct({
           billingType: S.String,
@@ -2830,37 +2326,33 @@ function __c12(j: number): any {
           chargingType: S.optional(S.String),
         }),
       ).annotate({ identifier: "MeterDetails" });
-    case 6:
+    case 9:
       return S.suspend(() =>
         S.Struct({
           termType: S.String,
           termTypeDuration: S.String,
         }),
       ).annotate({ identifier: "TermTypeDetails" });
-    case 7:
+    case 10:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
-          meterDetails: S.optional(__S(101, __c12, 5)),
+          meterDetails: S.optional(__S(584, __c18, 8)),
           meteringType: S.optional(S.String),
           frequency: S.optional(S.String),
-          termTypeDetails: S.optional(__S(102, __c12, 6)),
+          termTypeDetails: S.optional(__S(585, __c18, 9)),
         }),
       ).annotate({ identifier: "BillingMeterDetails" });
-  }
-}
-function __c13(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(103, __c12, 7));
-    case 1:
+    case 11:
+      return S.Array(__S(586, __c18, 10));
+    case 12:
       return S.suspend(() =>
         S.Struct({
-          billingMeterDetails: S.optional(__S(104, __c13, 0)),
+          billingMeterDetails: S.optional(__S(587, __c18, 11)),
           billingInfoUrl: S.optional(S.String),
         }),
       ).annotate({ identifier: "CostInformation" });
-    case 2:
+    case 13:
       return S.suspend(() =>
         S.Struct({
           availabilityStage: S.optional(S.String),
@@ -2868,16 +2360,16 @@ function __c13(j: number): any {
           disabledReasonMessage: S.optional(S.String),
         }),
       ).annotate({ identifier: "AvailabilityInformation" });
-    case 3:
+    case 14:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
           value: S.optional(S.String),
         }),
       ).annotate({ identifier: "Specification" });
-    case 4:
-      return S.Array(__S(107, __c13, 3));
-    case 5:
+    case 15:
+      return S.Array(__S(590, __c18, 14));
+    case 16:
       return S.suspend(() =>
         S.Struct({
           length: S.optional(S.Number),
@@ -2889,117 +2381,106 @@ function __c13(j: number): any {
           weightUnit: S.optional(S.String),
         }),
       ).annotate({ identifier: "Dimensions" });
-    case 6:
+    case 17:
       return S.suspend(() =>
         S.Struct({
           categoryName: S.optional(S.String),
           categoryDisplayName: S.optional(S.String),
           description: S.optional(S.String),
-          links: S.optional(__S(97, __c12, 1)),
+          links: S.optional(__S(580, __c18, 4)),
         }),
       ).annotate({ identifier: "CategoryInformation" });
-    case 7:
-      return S.Array(/*@__PURE__*/ S.suspend(() => __S(116, __c14, 4)));
-  }
-}
-function __c14(j: number): any {
-  switch (j) {
-    case 0:
+    case 18:
+      return S.Array(/*@__PURE__*/ S.suspend(() => __S(599, __c18, 23)));
+    case 19:
       return S.Array(S.String);
-    case 1:
+    case 20:
       return S.suspend(() =>
         S.Struct({
           childConfigurationType: S.optional(S.String),
           isPartOfBaseConfiguration: S.optional(S.Boolean),
           minimumQuantity: S.optional(S.Number),
           maximumQuantity: S.optional(S.Number),
-          specifications: S.optional(__S(108, __c13, 4)),
-          dimensions: S.optional(__S(109, __c13, 5)),
+          specifications: S.optional(__S(591, __c18, 15)),
+          dimensions: S.optional(__S(592, __c18, 16)),
           provisioningSupport: S.optional(S.String),
-          childConfigurationTypes: S.optional(__S(89, __c11, 1)),
-          groupedChildConfigurations: S.optional(__S(111, __c13, 7)),
-          supportedTermCommitmentDurations: S.optional(__S(112, __c14, 0)),
-          filterableProperties: S.optional(__S(87, __c10, 7)),
+          childConfigurationTypes: S.optional(__S(578, __c18, 2)),
+          groupedChildConfigurations: S.optional(__S(594, __c18, 18)),
+          supportedTermCommitmentDurations: S.optional(__S(595, __c18, 19)),
+          filterableProperties: S.optional(__S(577, __c18, 1)),
           displayName: S.optional(S.String),
-          description: S.optional(__S(98, __c12, 2)),
-          imageInformation: S.optional(__S(100, __c12, 4)),
-          costInformation: S.optional(__S(105, __c13, 1)),
-          availabilityInformation: S.optional(__S(106, __c13, 2)),
-          hierarchyInformation: S.optional(__S(11, __c1, 3)),
+          description: S.optional(__S(581, __c18, 5)),
+          imageInformation: S.optional(__S(583, __c18, 7)),
+          costInformation: S.optional(__S(588, __c18, 12)),
+          availabilityInformation: S.optional(__S(589, __c18, 13)),
+          hierarchyInformation: S.optional(__S(864, __c27, 0)),
           fulfilledBy: S.optional(S.String),
         }),
       ).annotate({
         identifier: "ChildConfigurationProperties",
       });
-    case 2:
+    case 21:
       return S.suspend(() =>
         S.Struct({
-          properties: S.optional(__S(113, __c14, 1)),
+          properties: S.optional(__S(596, __c18, 20)),
         }),
       ).annotate({ identifier: "ChildConfiguration" });
-    case 3:
-      return S.Array(__S(114, __c14, 2));
-    case 4:
+    case 22:
+      return S.Array(__S(597, __c18, 21));
+    case 23:
       return S.suspend(() =>
         S.Struct({
-          categoryInformation: S.optional(__S(110, __c13, 6)),
-          childConfigurations: S.optional(__S(115, __c14, 3)),
+          categoryInformation: S.optional(__S(593, __c18, 17)),
+          childConfigurations: S.optional(__S(598, __c18, 22)),
         }),
       ).annotate({
         identifier: "GroupedChildConfigurations",
       });
-    case 5:
-      return S.Array(__S(116, __c14, 4));
-    case 6:
+    case 24:
+      return S.Array(__S(599, __c18, 23));
+    case 25:
       return S.suspend(() =>
         S.Struct({
           displayName: S.optional(S.String),
-          description: S.optional(__S(98, __c12, 2)),
-          imageInformation: S.optional(__S(100, __c12, 4)),
-          costInformation: S.optional(__S(105, __c13, 1)),
-          availabilityInformation: S.optional(__S(106, __c13, 2)),
-          hierarchyInformation: S.optional(__S(11, __c1, 3)),
+          description: S.optional(__S(581, __c18, 5)),
+          imageInformation: S.optional(__S(583, __c18, 7)),
+          costInformation: S.optional(__S(588, __c18, 12)),
+          availabilityInformation: S.optional(__S(589, __c18, 13)),
+          hierarchyInformation: S.optional(__S(864, __c27, 0)),
           fulfilledBy: S.optional(S.String),
-          filterableProperties: S.optional(__S(87, __c10, 7)),
-          specifications: S.optional(__S(108, __c13, 4)),
-          dimensions: S.optional(__S(109, __c13, 5)),
+          filterableProperties: S.optional(__S(577, __c18, 1)),
+          specifications: S.optional(__S(591, __c18, 15)),
+          dimensions: S.optional(__S(592, __c18, 16)),
           provisioningSupport: S.optional(S.String),
-          childConfigurationTypes: S.optional(__S(89, __c11, 1)),
-          groupedChildConfigurations: S.optional(__S(117, __c14, 5)),
-          supportedTermCommitmentDurations: S.optional(__S(4, __c0, 4)),
+          childConfigurationTypes: S.optional(__S(578, __c18, 2)),
+          groupedChildConfigurations: S.optional(__S(600, __c18, 24)),
+          supportedTermCommitmentDurations: S.optional(__S(128, __c4, 0)),
         }),
       ).annotate({ identifier: "ConfigurationProperties" });
-    case 7:
+    case 26:
       return S.suspend(() =>
         S.Struct({
-          properties: S.optional(__S(118, __c14, 6)),
+          properties: S.optional(__S(601, __c18, 25)),
         }),
       ).annotate({ identifier: "Configuration" });
+    case 27:
+      return S.Array(__S(602, __c18, 26));
   }
 }
-function __c15(j: number): any {
+function __c19(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(119, __c14, 7));
+      return S.Array(__S(576, __c18, 0));
     case 1:
-      return S.suspend(() =>
-        S.Struct({
-          value: __S(120, __c15, 0),
-          nextLink: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Configurations" });
+      return S.Record(S.String, __S(608, __c19, 0));
     case 2:
-      return S.Array(__S(86, __c10, 6));
-    case 3:
-      return S.Record(S.String, __S(122, __c15, 2));
-    case 4:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           _expand: S.optional(S.String.pipe(T.Query("$expand"))),
           _skipToken: S.optional(S.String.pipe(T.Query("$skipToken"))),
-          filterableProperties: __S(123, __c15, 3),
-          customerSubscriptionDetails: S.optional(__S(94, __c11, 6)),
+          filterableProperties: __S(609, __c19, 1),
+          customerSubscriptionDetails: S.optional(__S(546, __c17, 2)),
         }).pipe(
           T.Http({
             method: "POST",
@@ -3011,85 +2492,89 @@ function __c15(j: number): any {
       ).annotate({
         identifier: "ListProductsAndConfigurationProductFamiliesRequest",
       });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          properties: S.optional(__S(646, __c20, 6)),
+        }),
+      ).annotate({ identifier: "ProductFamily" });
+    case 4:
+      return S.Array(__S(611, __c19, 3));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          displayName: S.optional(S.String),
-          description: S.optional(__S(98, __c12, 2)),
-          imageInformation: S.optional(__S(100, __c12, 4)),
-          costInformation: S.optional(__S(105, __c13, 1)),
-          availabilityInformation: S.optional(__S(106, __c13, 2)),
-          hierarchyInformation: S.optional(__S(11, __c1, 3)),
-          fulfilledBy: S.optional(S.String),
-          filterableProperties: S.optional(__S(87, __c10, 7)),
-          configurations: S.optional(__S(120, __c15, 0)),
+          value: __S(612, __c19, 4),
+          nextLink: S.optional(S.String),
         }),
-      ).annotate({ identifier: "ProductProperties" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          properties: S.optional(__S(125, __c15, 5)),
-        }),
-      ).annotate({ identifier: "Product" });
-    case 7:
-      return S.Array(__S(126, __c15, 6));
+      ).annotate({ identifier: "ProductFamilies" });
   }
 }
-function __c16(j: number): any {
+function __c20(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           displayName: S.optional(S.String),
-          description: S.optional(__S(98, __c12, 2)),
-          imageInformation: S.optional(__S(100, __c12, 4)),
-          costInformation: S.optional(__S(105, __c13, 1)),
-          availabilityInformation: S.optional(__S(106, __c13, 2)),
-          hierarchyInformation: S.optional(__S(11, __c1, 3)),
+          description: S.optional(__S(581, __c18, 5)),
+          imageInformation: S.optional(__S(583, __c18, 7)),
+          costInformation: S.optional(__S(588, __c18, 12)),
+          availabilityInformation: S.optional(__S(589, __c18, 13)),
+          hierarchyInformation: S.optional(__S(864, __c27, 0)),
           fulfilledBy: S.optional(S.String),
-          filterableProperties: S.optional(__S(87, __c10, 7)),
-          products: S.optional(__S(127, __c15, 7)),
+          filterableProperties: S.optional(__S(577, __c18, 1)),
+          configurations: S.optional(__S(603, __c18, 27)),
         }),
-      ).annotate({ identifier: "ProductLineProperties" });
+      ).annotate({ identifier: "ProductProperties" });
     case 1:
       return S.suspend(() =>
         S.Struct({
-          properties: S.optional(__S(128, __c16, 0)),
+          properties: S.optional(__S(640, __c20, 0)),
         }),
-      ).annotate({ identifier: "ProductLine" });
+      ).annotate({ identifier: "Product" });
     case 2:
-      return S.Array(__S(129, __c16, 1));
+      return S.Array(__S(641, __c20, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
           displayName: S.optional(S.String),
-          description: S.optional(__S(98, __c12, 2)),
-          imageInformation: S.optional(__S(100, __c12, 4)),
-          costInformation: S.optional(__S(105, __c13, 1)),
-          availabilityInformation: S.optional(__S(106, __c13, 2)),
-          hierarchyInformation: S.optional(__S(11, __c1, 3)),
+          description: S.optional(__S(581, __c18, 5)),
+          imageInformation: S.optional(__S(583, __c18, 7)),
+          costInformation: S.optional(__S(588, __c18, 12)),
+          availabilityInformation: S.optional(__S(589, __c18, 13)),
+          hierarchyInformation: S.optional(__S(864, __c27, 0)),
           fulfilledBy: S.optional(S.String),
-          filterableProperties: S.optional(__S(87, __c10, 7)),
-          productLines: S.optional(__S(130, __c16, 2)),
-          resourceProviderDetails: S.optional(__S(48, __c6, 0)),
+          filterableProperties: S.optional(__S(577, __c18, 1)),
+          products: S.optional(__S(642, __c20, 2)),
         }),
-      ).annotate({ identifier: "ProductFamilyProperties" });
+      ).annotate({ identifier: "ProductLineProperties" });
     case 4:
       return S.suspend(() =>
         S.Struct({
-          properties: S.optional(__S(131, __c16, 3)),
+          properties: S.optional(__S(643, __c20, 3)),
         }),
-      ).annotate({ identifier: "ProductFamily" });
+      ).annotate({ identifier: "ProductLine" });
     case 5:
-      return S.Array(__S(132, __c16, 4));
+      return S.Array(__S(644, __c20, 4));
     case 6:
       return S.suspend(() =>
         S.Struct({
-          value: __S(133, __c16, 5),
-          nextLink: S.optional(S.String),
+          displayName: S.optional(S.String),
+          description: S.optional(__S(581, __c18, 5)),
+          imageInformation: S.optional(__S(583, __c18, 7)),
+          costInformation: S.optional(__S(588, __c18, 12)),
+          availabilityInformation: S.optional(__S(589, __c18, 13)),
+          hierarchyInformation: S.optional(__S(864, __c27, 0)),
+          fulfilledBy: S.optional(S.String),
+          filterableProperties: S.optional(__S(577, __c18, 1)),
+          productLines: S.optional(__S(645, __c20, 5)),
+          resourceProviderDetails: S.optional(__S(897, __c28, 1)),
         }),
-      ).annotate({ identifier: "ProductFamilies" });
-    case 7:
+      ).annotate({ identifier: "ProductFamilyProperties" });
+  }
+}
+function __c21(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -3105,34 +2590,34 @@ function __c16(j: number): any {
       ).annotate({
         identifier: "ListProductsAndConfigurationProductFamiliesMetadataRequest",
       });
-  }
-}
-function __c17(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          properties: S.optional(__S(131, __c16, 3)),
+          properties: S.optional(__S(646, __c20, 6)),
         }),
       ).annotate({
         identifier: "ProductFamiliesMetadataDetails",
       });
-    case 1:
-      return S.Array(__S(136, __c17, 0));
     case 2:
+      return S.Array(__S(673, __c21, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          value: __S(137, __c17, 1),
+          value: __S(674, __c21, 2),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ProductFamiliesMetadata" });
-    case 3:
+  }
+}
+function __c22(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           orderItemName: S.String.pipe(T.Label()),
-          returnAddress: S.optional(__S(6, __c0, 6)),
+          returnAddress: S.optional(__S(96, __c3, 0)),
           returnReason: S.String,
           serviceTag: S.optional(S.String),
           shippingBoxRequired: S.optional(S.Boolean),
@@ -3145,21 +2630,25 @@ function __c17(j: number): any {
           }),
         ),
       ).annotate({ identifier: "OrderItemsReturnRequest" });
-    case 4:
+  }
+}
+function __c23(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          shippingAddress: S.optional(__S(3, __c0, 3)),
-          contactDetails: S.optional(__S(5, __c0, 5)),
+          shippingAddress: S.optional(__S(192, __c6, 0)),
+          contactDetails: S.optional(__S(193, __c6, 1)),
         }),
       ).annotate({ identifier: "AddressUpdateProperties" });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           addressName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(140, __c17, 4)),
-          tags: S.optional(__S(2, __c0, 2)),
+          properties: S.optional(__S(736, __c23, 0)),
+          tags: S.optional(__S(224, __c7, 0)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -3169,47 +2658,468 @@ function __c17(j: number): any {
           }),
         ),
       ).annotate({ identifier: "UpdateAddressRequest" });
+  }
+}
+function __c24(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(800, __c25, 0));
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          hierarchyInformation: __S(864, __c27, 0),
+          quantity: S.Number,
+          provisioningDetails: S.optional(__S(768, __c24, 0)),
+        }),
+      ).annotate({
+        identifier: "AdditionalConfigurationInput",
+      });
+    case 2:
+      return S.Array(__S(769, __c24, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          displayInfo: S.optional(__S(32, __c1, 0)),
+          hierarchyInformation: __S(864, __c27, 0),
+          parentProvisioningDetails: S.optional(__S(800, __c25, 0)),
+          optInAdditionalConfigurations: S.optional(__S(770, __c24, 2)),
+        }),
+      ).annotate({ identifier: "ProductDetailsInput" });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          productDetails: __S(771, __c24, 3),
+          orderItemType: S.String,
+          orderItemMode: S.optional(S.String),
+          siteDetails: S.optional(__S(928, __c29, 0)),
+          preferences: S.optional(__S(935, __c29, 7)),
+          notificationEmailList: S.optional(__S(128, __c4, 0)),
+          error: S.optional(__S(32, __c1, 0)),
+        }),
+      ).annotate({ identifier: "OrderItemDetailsInput" });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          forwardAddress: __S(96, __c3, 0),
+        }),
+      ).annotate({ identifier: "AddressDetailsInput" });
     case 6:
       return S.suspend(() =>
         S.Struct({
-          parentProvisioningDetails: S.optional(__S(12, __c1, 4)),
+          orderItemDetails: __S(772, __c24, 4),
+          addressDetails: S.optional(__S(773, __c24, 5)),
+          orderId: S.String,
         }),
-      ).annotate({
-        identifier: "ProductDetailsUpdateParameterInput",
-      });
+      ).annotate({ identifier: "OrderItemPropertiesInput" });
     case 7:
-      return S.suspend(() =>
-        S.Struct({
-          productDetails: S.optional(__S(142, __c17, 6)),
-          siteDetails: S.optional(__S(17, __c2, 1)),
-        }),
-      ).annotate({
-        identifier: "OrderItemDetailsUpdateParameterInput",
-      });
-  }
-}
-function __c18(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          forwardAddress: S.optional(__S(6, __c0, 6)),
-          preferences: S.optional(__S(24, __c3, 0)),
-          notificationEmailList: S.optional(__S(4, __c0, 4)),
-          orderItemDetails: S.optional(__S(143, __c17, 7)),
-        }),
-      ).annotate({
-        identifier: "OrderItemUpdatePropertiesInput",
-      });
-    case 1:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           orderItemName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(144, __c18, 0)),
-          tags: S.optional(__S(2, __c0, 2)),
-          identity: S.optional(__S(29, __c3, 5)),
+          tags: S.optional(__S(224, __c7, 0)),
+          location: S.String,
+          properties: __S(774, __c24, 6),
+          identity: S.optional(__S(802, __c25, 2)),
+        }).pipe(
+          T.Http({
+            method: "PUT",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EdgeOrder/orderItems/{orderItemName}",
+            code: 200,
+            apiVersion: "2024-02-01",
+          }),
+        ),
+      ).annotate({ identifier: "CreateOrderItemRequest" });
+  }
+}
+function __c25(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          quantity: S.optional(S.Number),
+          provisioningArmId: S.optional(S.String),
+          provisioningEndPoint: S.optional(S.String),
+          serialNumber: S.optional(S.String),
+          vendorName: S.optional(S.String),
+          readyToConnectArmId: S.optional(S.String),
+          managementResourceArmId: S.optional(S.String),
+          autoProvisioningStatus: S.optional(S.String),
+          devicePresenceVerification: S.optional(__S(32, __c1, 0)),
+        }),
+      ).annotate({ identifier: "ProvisioningDetailsInput" });
+    case 1:
+      return S.Record(S.String, __S(32, __c1, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          type: S.optional(S.String),
+          userAssignedIdentities: S.optional(__S(801, __c25, 1)),
+        }),
+      ).annotate({ identifier: "ResourceIdentityInput" });
+  }
+}
+function __c26(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          stageStatus: S.optional(S.String),
+          stageName: S.optional(S.String),
+          displayName: S.optional(S.String),
+          startTime: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "StageDetails" });
+    case 1:
+      return S.Array(__S(832, __c26, 0));
+  }
+}
+function __c27(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          productFamilyName: S.optional(S.String),
+          productLineName: S.optional(S.String),
+          productName: S.optional(S.String),
+          configurationName: S.optional(S.String),
+          configurationIdDisplayName: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "HierarchyInformation" });
+  }
+}
+function __c28(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          resourceProviderNamespace: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ResourceProviderDetails" });
+    case 1:
+      return S.Array(__S(896, __c28, 0));
+  }
+}
+function __c29(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          siteId: S.String,
+        }),
+      ).annotate({ identifier: "SiteDetails" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          stageName: S.String,
+          sendNotification: S.Boolean,
+        }),
+      ).annotate({ identifier: "NotificationPreference" });
+    case 2:
+      return S.Array(__S(929, __c29, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          preferredShipmentType: S.String,
+        }),
+      ).annotate({ identifier: "TransportPreferences" });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          doubleEncryptionStatus: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "EncryptionPreferences" });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          preferredManagementResourceId: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "ManagementResourcePreferences",
+      });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          preferredTermCommitmentType: S.String,
+          preferredTermCommitmentDuration: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "TermCommitmentPreferences",
+      });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          notificationPreferences: S.optional(__S(930, __c29, 2)),
+          transportPreferences: S.optional(__S(931, __c29, 3)),
+          encryptionPreferences: S.optional(__S(932, __c29, 4)),
+          managementResourcePreferences: S.optional(__S(933, __c29, 5)),
+          termCommitmentPreferences: S.optional(__S(934, __c29, 6)),
+        }),
+      ).annotate({ identifier: "Preferences" });
+    case 8:
+      return S.suspend(() =>
+        S.Struct({
+          productFamilyDisplayName: S.optional(S.String),
+          configurationDisplayName: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "DisplayInfo" });
+    case 9:
+      return S.suspend(() =>
+        S.Struct({
+          status: S.optional(S.String),
+          message: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "DevicePresenceVerificationDetails",
+      });
+    case 10:
+      return S.suspend(() =>
+        S.Struct({
+          quantity: S.optional(S.Number),
+          provisioningArmId: S.optional(S.String),
+          provisioningEndPoint: S.optional(S.String),
+          serialNumber: S.optional(S.String),
+          vendorName: S.optional(S.String),
+          readyToConnectArmId: S.optional(S.String),
+          managementResourceArmId: S.optional(S.String),
+          uniqueDeviceIdentifier: S.optional(S.String),
+          autoProvisioningStatus: S.optional(S.String),
+          devicePresenceVerification: S.optional(__S(937, __c29, 9)),
+        }),
+      ).annotate({ identifier: "ProvisioningDetails" });
+    case 11:
+      return S.suspend(() =>
+        S.Struct({
+          serialNumber: S.optional(S.String),
+          displaySerialNumber: S.optional(S.String),
+          managementResourceId: S.optional(S.String),
+          managementResourceTenantId: S.optional(S.String),
+          provisioningSupport: S.optional(S.String),
+          provisioningDetails: S.optional(__S(938, __c29, 10)),
+        }),
+      ).annotate({ identifier: "DeviceDetails" });
+    case 12:
+      return S.Array(__S(938, __c29, 10));
+    case 13:
+      return S.suspend(() =>
+        S.Struct({
+          hierarchyInformation: __S(864, __c27, 0),
+          quantity: S.Number,
+          provisioningDetails: S.optional(__S(940, __c29, 12)),
+        }),
+      ).annotate({ identifier: "AdditionalConfiguration" });
+    case 14:
+      return S.Array(__S(941, __c29, 13));
+    case 15:
+      return S.Array(__S(939, __c29, 11));
+    case 16:
+      return S.suspend(() =>
+        S.Struct({
+          termCommitmentType: S.String,
+          termCommitmentTypeDuration: S.optional(S.String),
+          pendingDaysForTerm: S.optional(S.Number),
+        }),
+      ).annotate({
+        identifier: "TermCommitmentInformation",
+      });
+    case 17:
+      return S.suspend(() =>
+        S.Struct({
+          displayInfo: S.optional(__S(936, __c29, 8)),
+          hierarchyInformation: S.optional(__S(864, __c27, 0)),
+          quantity: S.optional(S.Number),
+          identificationType: S.optional(S.String),
+          deviceDetails: S.optional(__S(943, __c29, 15)),
+          termCommitmentInformation: S.optional(__S(944, __c29, 16)),
+        }),
+      ).annotate({
+        identifier: "ConfigurationDeviceDetails",
+      });
+    case 18:
+      return S.Array(__S(945, __c29, 17));
+    case 19:
+      return S.suspend(() =>
+        S.Struct({
+          displayInfo: S.optional(__S(936, __c29, 8)),
+          hierarchyInformation: __S(864, __c27, 0),
+          productDoubleEncryptionStatus: S.optional(S.String),
+          identificationType: S.optional(S.String),
+          parentDeviceDetails: S.optional(__S(939, __c29, 11)),
+          parentProvisioningDetails: S.optional(__S(938, __c29, 10)),
+          optInAdditionalConfigurations: S.optional(__S(942, __c29, 14)),
+          childConfigurationDeviceDetails: S.optional(__S(946, __c29, 18)),
+          termCommitmentInformation: S.optional(__S(944, __c29, 16)),
+        }),
+      ).annotate({ identifier: "ProductDetails" });
+    case 20:
+      return S.suspend(() =>
+        S.Struct({
+          carrierName: S.optional(S.String),
+          carrierDisplayName: S.optional(S.String),
+          trackingId: S.optional(S.String),
+          trackingUrl: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ForwardShippingDetails" });
+    case 21:
+      return S.suspend(() =>
+        S.Struct({
+          sasKeyForLabel: S.optional(S.String),
+          carrierName: S.optional(S.String),
+          carrierDisplayName: S.optional(S.String),
+          trackingId: S.optional(S.String),
+          trackingUrl: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ReverseShippingDetails" });
+    case 22:
+      return S.Array(/*@__PURE__*/ S.suspend(() => __S(953, __c29, 25)));
+    case 23:
+      return S.suspend(() =>
+        S.Struct({
+          type: S.optional(S.String),
+          info: S.optional(S.Unknown),
+        }),
+      ).annotate({ identifier: "ErrorAdditionalInfo" });
+    case 24:
+      return S.Array(__S(951, __c29, 23));
+    case 25:
+      return S.suspend(() =>
+        S.Struct({
+          code: S.optional(S.String),
+          message: S.optional(S.String),
+          target: S.optional(S.String),
+          details: S.optional(__S(950, __c29, 22)),
+          additionalInfo: S.optional(__S(952, __c29, 24)),
+        }),
+      ).annotate({ identifier: "ErrorDetail" });
+    case 26:
+      return S.Array(__S(953, __c29, 25));
+    case 27:
+      return S.suspend(() =>
+        S.Struct({
+          code: S.optional(S.String),
+          message: S.optional(S.String),
+          target: S.optional(S.String),
+          details: S.optional(__S(954, __c29, 26)),
+          additionalInfo: S.optional(__S(952, __c29, 24)),
+        }),
+      ).annotate({ identifier: "OrderItemDetailsError" });
+    case 28:
+      return S.suspend(() =>
+        S.Struct({
+          productDetails: __S(947, __c29, 19),
+          orderItemType: S.String,
+          orderItemMode: S.optional(S.String),
+          siteDetails: S.optional(__S(928, __c29, 0)),
+          currentStage: S.optional(__S(832, __c26, 0)),
+          orderItemStageHistory: S.optional(__S(833, __c26, 1)),
+          preferences: S.optional(__S(935, __c29, 7)),
+          forwardShippingDetails: S.optional(__S(948, __c29, 20)),
+          reverseShippingDetails: S.optional(__S(949, __c29, 21)),
+          notificationEmailList: S.optional(__S(128, __c4, 0)),
+          cancellationReason: S.optional(S.String),
+          cancellationStatus: S.optional(S.String),
+          deletionStatus: S.optional(S.String),
+          returnReason: S.optional(S.String),
+          returnStatus: S.optional(S.String),
+          managementRpDetailsList: S.optional(__S(897, __c28, 1)),
+          error: S.optional(__S(955, __c29, 27)),
+        }),
+      ).annotate({ identifier: "OrderItemDetails" });
+    case 29:
+      return S.suspend(() =>
+        S.Struct({
+          forwardAddress: __S(225, __c7, 1),
+          returnAddress: S.optional(__S(225, __c7, 1)),
+        }),
+      ).annotate({ identifier: "AddressDetails" });
+    case 30:
+      return S.suspend(() =>
+        S.Struct({
+          orderItemDetails: __S(956, __c29, 28),
+          addressDetails: S.optional(__S(957, __c29, 29)),
+          startTime: S.optional(S.String),
+          orderId: S.String,
+          provisioningState: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "OrderItemProperties" });
+    case 31:
+      return S.suspend(() =>
+        S.Struct({
+          principalId: S.optional(S.String),
+          clientId: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "ResourceIdentityUserAssignedIdentitiesValue",
+      });
+  }
+}
+function __c30(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, __S(959, __c29, 31));
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          type: S.optional(S.String),
+          principalId: S.optional(S.String),
+          tenantId: S.optional(S.String),
+          userAssignedIdentities: S.optional(__S(960, __c30, 0)),
+        }),
+      ).annotate({ identifier: "ResourceIdentity" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(160, __c5, 0)),
+          tags: S.optional(__S(224, __c7, 0)),
+          location: S.String,
+          properties: __S(958, __c29, 30),
+          identity: S.optional(__S(961, __c30, 1)),
+        }),
+      ).annotate({ identifier: "CreateOrderItemResponse" });
+  }
+}
+function __c31(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          parentProvisioningDetails: S.optional(__S(800, __c25, 0)),
+        }),
+      ).annotate({
+        identifier: "ProductDetailsUpdateParameterInput",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          productDetails: S.optional(__S(992, __c31, 0)),
+          siteDetails: S.optional(__S(928, __c29, 0)),
+        }),
+      ).annotate({
+        identifier: "OrderItemDetailsUpdateParameterInput",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          forwardAddress: S.optional(__S(96, __c3, 0)),
+          preferences: S.optional(__S(935, __c29, 7)),
+          notificationEmailList: S.optional(__S(128, __c4, 0)),
+          orderItemDetails: S.optional(__S(993, __c31, 1)),
+        }),
+      ).annotate({
+        identifier: "OrderItemUpdatePropertiesInput",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          orderItemName: S.String.pipe(T.Label()),
+          properties: S.optional(__S(994, __c31, 2)),
+          tags: S.optional(__S(224, __c7, 0)),
+          identity: S.optional(__S(802, __c25, 2)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -3221,7 +3131,184 @@ function __c18(j: number): any {
       ).annotate({ identifier: "UpdateOrderItemRequest" });
   }
 }
-
+function __c32(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          addressName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EdgeOrder/addresses/{addressName}",
+            code: 200,
+            apiVersion: "2024-02-01",
+          }),
+        ),
+      ).annotate({ identifier: "DeleteAddressRequest" });
+  }
+}
+function __c33(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          orderItemName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EdgeOrder/orderItems/{orderItemName}",
+            code: 200,
+            apiVersion: "2024-02-01",
+          }),
+        ),
+      ).annotate({ identifier: "DeleteOrderItemRequest" });
+  }
+}
+function __c34(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          addressName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EdgeOrder/addresses/{addressName}",
+            code: 200,
+            apiVersion: "2024-02-01",
+          }),
+        ),
+      ).annotate({ identifier: "GetAddressRequest" });
+  }
+}
+function __c35(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          location: S.String.pipe(T.Label()),
+          orderName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EdgeOrder/locations/{location}/orders/{orderName}",
+            code: 200,
+            apiVersion: "2024-02-01",
+          }),
+        ),
+      ).annotate({ identifier: "GetOrderRequest" });
+  }
+}
+function __c36(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          orderItemIds: S.optional(__S(128, __c4, 0)),
+          currentStage: S.optional(__S(832, __c26, 0)),
+          orderStageHistory: S.optional(__S(833, __c26, 1)),
+          orderMode: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "OrderProperties" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(160, __c5, 0)),
+          properties: __S(1152, __c36, 0),
+        }),
+      ).annotate({ identifier: "GetOrderResponse" });
+  }
+}
+function __c37(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          orderItemName: S.String.pipe(T.Label()),
+          _expand: S.optional(S.String.pipe(T.Query("$expand"))),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EdgeOrder/orderItems/{orderItemName}",
+            code: 200,
+            apiVersion: "2024-02-01",
+          }),
+        ),
+      ).annotate({ identifier: "GetOrderItemRequest" });
+  }
+}
+function __c38(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          _filter: S.optional(S.String.pipe(T.Query("$filter"))),
+          _skipToken: S.optional(S.String.pipe(T.Query("$skipToken"))),
+          _top: S.optional(S.Number.pipe(T.Query("$top"))),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EdgeOrder/addresses",
+            code: 200,
+            apiVersion: "2024-02-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListAddressByResourceGroupRequest",
+      });
+  }
+}
+function __c39(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(256, __c8, 0));
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          value: __S(1248, __c39, 0),
+          nextLink: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "AddressResourceList" });
+  }
+}
+function __c40(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          _filter: S.optional(S.String.pipe(T.Query("$filter"))),
+          _skipToken: S.optional(S.String.pipe(T.Query("$skipToken"))),
+          _top: S.optional(S.Number.pipe(T.Query("$top"))),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/providers/Microsoft.EdgeOrder/addresses",
+            code: 200,
+            apiVersion: "2024-02-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListAddressBySubscriptionRequest",
+      });
+  }
+}
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

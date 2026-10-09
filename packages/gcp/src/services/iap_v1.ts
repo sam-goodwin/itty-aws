@@ -493,8 +493,8 @@ export const createProjectsBrands: API.OperationMethod<
   CreateProjectsBrandsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1, __c0, 1) as any as S.Schema<CreateProjectsBrandsRequest>,
-  output: __S(0, __c0, 0) as any as S.Schema<Brand>,
+  input: __S(480, __c15, 0) as any as S.Schema<CreateProjectsBrandsRequest>,
+  output: __S(512, __c16, 0) as any as S.Schema<Brand>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -513,8 +513,12 @@ export const createProjectsBrandsIdentityAwareProxyClients: API.OperationMethod<
   CreateProjectsBrandsIdentityAwareProxyClientsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3, __c0, 3) as any as S.Schema<CreateProjectsBrandsIdentityAwareProxyClientsRequest>,
-  output: __S(2, __c0, 2) as any as S.Schema<IdentityAwareProxyClient>,
+  input: __S(
+    544,
+    __c17,
+    0,
+  ) as any as S.Schema<CreateProjectsBrandsIdentityAwareProxyClientsRequest>,
+  output: __S(576, __c18, 0) as any as S.Schema<IdentityAwareProxyClient>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -533,8 +537,8 @@ export const createProjectsIap_tunnelLocationsDestGroups: API.OperationMethod<
   CreateProjectsIap_tunnelLocationsDestGroupsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(6, __c0, 6) as any as S.Schema<CreateProjectsIap_tunnelLocationsDestGroupsRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<TunnelDestGroup>,
+  input: __S(608, __c19, 0) as any as S.Schema<CreateProjectsIap_tunnelLocationsDestGroupsRequest>,
+  output: __S(640, __c20, 0) as any as S.Schema<TunnelDestGroup>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -553,8 +557,12 @@ export const deleteProjectsBrandsIdentityAwareProxyClients: API.OperationMethod<
   DeleteProjectsBrandsIdentityAwareProxyClientsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(7, __c0, 7) as any as S.Schema<DeleteProjectsBrandsIdentityAwareProxyClientsRequest>,
-  output: __S(8, __c1, 0) as any as S.Schema<Empty>,
+  input: __S(
+    704,
+    __c22,
+    0,
+  ) as any as S.Schema<DeleteProjectsBrandsIdentityAwareProxyClientsRequest>,
+  output: __S(736, __c23, 0) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -573,8 +581,8 @@ export const deleteProjectsIap_tunnelLocationsDestGroups: API.OperationMethod<
   DeleteProjectsIap_tunnelLocationsDestGroupsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(9, __c1, 1) as any as S.Schema<DeleteProjectsIap_tunnelLocationsDestGroupsRequest>,
-  output: __S(8, __c1, 0) as any as S.Schema<Empty>,
+  input: __S(768, __c24, 0) as any as S.Schema<DeleteProjectsIap_tunnelLocationsDestGroupsRequest>,
+  output: __S(736, __c23, 0) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -588,8 +596,8 @@ export const getIamPolicyV1: API.OperationMethod<
   GetIamPolicyV1Error,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(12, __c1, 4) as any as S.Schema<GetIamPolicyV1Request>,
-  output: __S(16, __c2, 0) as any as S.Schema<Policy>,
+  input: __S(802, __c25, 2) as any as S.Schema<GetIamPolicyV1Request>,
+  output: __S(835, __c26, 3) as any as S.Schema<Policy>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -603,8 +611,8 @@ export const getIapSettingsV1: API.OperationMethod<
   GetIapSettingsV1Error,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(17, __c2, 1) as any as S.Schema<GetIapSettingsV1Request>,
-  output: __S(40, __c5, 0) as any as S.Schema<IapSettings>,
+  input: __S(0, __c0, 0) as any as S.Schema<GetIapSettingsV1Request>,
+  output: __S(54, __c1, 22) as any as S.Schema<IapSettings>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -618,8 +626,8 @@ export const getProjectsBrands: API.OperationMethod<
   GetProjectsBrandsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(41, __c5, 1) as any as S.Schema<GetProjectsBrandsRequest>,
-  output: __S(0, __c0, 0) as any as S.Schema<Brand>,
+  input: __S(64, __c2, 0) as any as S.Schema<GetProjectsBrandsRequest>,
+  output: __S(512, __c16, 0) as any as S.Schema<Brand>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -633,8 +641,8 @@ export const getProjectsBrandsIdentityAwareProxyClients: API.OperationMethod<
   GetProjectsBrandsIdentityAwareProxyClientsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(42, __c5, 2) as any as S.Schema<GetProjectsBrandsIdentityAwareProxyClientsRequest>,
-  output: __S(2, __c0, 2) as any as S.Schema<IdentityAwareProxyClient>,
+  input: __S(96, __c3, 0) as any as S.Schema<GetProjectsBrandsIdentityAwareProxyClientsRequest>,
+  output: __S(576, __c18, 0) as any as S.Schema<IdentityAwareProxyClient>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -648,8 +656,8 @@ export const getProjectsIap_tunnelLocationsDestGroups: API.OperationMethod<
   GetProjectsIap_tunnelLocationsDestGroupsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(43, __c5, 3) as any as S.Schema<GetProjectsIap_tunnelLocationsDestGroupsRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<TunnelDestGroup>,
+  input: __S(128, __c4, 0) as any as S.Schema<GetProjectsIap_tunnelLocationsDestGroupsRequest>,
+  output: __S(640, __c20, 0) as any as S.Schema<TunnelDestGroup>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -663,8 +671,8 @@ export const listProjectsBrands: API.OperationMethod<
   ListProjectsBrandsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(44, __c5, 4) as any as S.Schema<ListProjectsBrandsRequest>,
-  output: __S(46, __c5, 6) as any as S.Schema<ListBrandsResponse>,
+  input: __S(160, __c5, 0) as any as S.Schema<ListProjectsBrandsRequest>,
+  output: __S(162, __c5, 2) as any as S.Schema<ListBrandsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -679,8 +687,8 @@ export const listProjectsBrandsIdentityAwareProxyClients: API.PaginatedOperation
   GcpOpContext,
   ListIdentityAwareProxyClientsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(47, __c5, 7) as any as S.Schema<ListProjectsBrandsIdentityAwareProxyClientsRequest>,
-  output: __S(49, __c6, 1) as any as S.Schema<ListIdentityAwareProxyClientsResponse>,
+  input: __S(192, __c6, 0) as any as S.Schema<ListProjectsBrandsIdentityAwareProxyClientsRequest>,
+  output: __S(194, __c6, 2) as any as S.Schema<ListIdentityAwareProxyClientsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -696,8 +704,8 @@ export const listProjectsIap_tunnelLocationsDestGroups: API.PaginatedOperationMe
   GcpOpContext,
   ListTunnelDestGroupsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(50, __c6, 2) as any as S.Schema<ListProjectsIap_tunnelLocationsDestGroupsRequest>,
-  output: __S(52, __c6, 4) as any as S.Schema<ListTunnelDestGroupsResponse>,
+  input: __S(224, __c7, 0) as any as S.Schema<ListProjectsIap_tunnelLocationsDestGroupsRequest>,
+  output: __S(226, __c7, 2) as any as S.Schema<ListTunnelDestGroupsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -717,8 +725,8 @@ export const patchProjectsIap_tunnelLocationsDestGroups: API.OperationMethod<
   PatchProjectsIap_tunnelLocationsDestGroupsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(53, __c6, 5) as any as S.Schema<PatchProjectsIap_tunnelLocationsDestGroupsRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<TunnelDestGroup>,
+  input: __S(256, __c8, 0) as any as S.Schema<PatchProjectsIap_tunnelLocationsDestGroupsRequest>,
+  output: __S(640, __c20, 0) as any as S.Schema<TunnelDestGroup>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -738,11 +746,11 @@ export const resetSecretProjectsBrandsIdentityAwareProxyClients: API.OperationMe
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    55,
-    __c6,
-    7,
+    288,
+    __c9,
+    0,
   ) as any as S.Schema<ResetSecretProjectsBrandsIdentityAwareProxyClientsRequest>,
-  output: __S(2, __c0, 2) as any as S.Schema<IdentityAwareProxyClient>,
+  output: __S(576, __c18, 0) as any as S.Schema<IdentityAwareProxyClient>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -756,8 +764,8 @@ export const setIamPolicyV1: API.OperationMethod<
   SetIamPolicyV1Error,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(57, __c7, 1) as any as S.Schema<SetIamPolicyV1Request>,
-  output: __S(16, __c2, 0) as any as S.Schema<Policy>,
+  input: __S(353, __c11, 1) as any as S.Schema<SetIamPolicyV1Request>,
+  output: __S(835, __c26, 3) as any as S.Schema<Policy>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -771,8 +779,8 @@ export const testIamPermissionsV1: API.OperationMethod<
   TestIamPermissionsV1Error,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(59, __c7, 3) as any as S.Schema<TestIamPermissionsV1Request>,
-  output: __S(58, __c7, 2) as any as S.Schema<TestIamPermissionsResponse>,
+  input: __S(385, __c12, 1) as any as S.Schema<TestIamPermissionsV1Request>,
+  output: __S(384, __c12, 0) as any as S.Schema<TestIamPermissionsResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -786,8 +794,8 @@ export const updateIapSettingsV1: API.OperationMethod<
   UpdateIapSettingsV1Error,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(60, __c7, 4) as any as S.Schema<UpdateIapSettingsV1Request>,
-  output: __S(40, __c5, 0) as any as S.Schema<IapSettings>,
+  input: __S(416, __c13, 0) as any as S.Schema<UpdateIapSettingsV1Request>,
+  output: __S(54, __c1, 22) as any as S.Schema<IapSettings>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -806,8 +814,8 @@ export const validateAttributeExpressionV1: API.OperationMethod<
   ValidateAttributeExpressionV1Error,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(61, __c7, 5) as any as S.Schema<ValidateAttributeExpressionV1Request>,
-  output: __S(54, __c6, 6) as any as S.Schema<ValidateIapAttributeExpressionResponse>,
+  input: __S(448, __c14, 0) as any as S.Schema<ValidateAttributeExpressionV1Request>,
+  output: __S(320, __c10, 0) as any as S.Schema<ValidateIapAttributeExpressionResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -819,163 +827,6 @@ function __c0(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          applicationTitle: S.optional(S.String),
-          supportEmail: S.optional(S.String),
-          name: S.optional(S.String),
-          orgInternalOnly: S.optional(S.Boolean),
-        }),
-      ).annotate({ identifier: "Brand" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(0, __c0, 0).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/{+parent}/brands",
-            baseUrl: "https://iap.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateProjectsBrandsRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          secret: S.optional(S.String),
-          name: S.optional(S.String),
-          displayName: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "IdentityAwareProxyClient" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(2, __c0, 2).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/{+parent}/identityAwareProxyClients",
-            baseUrl: "https://iap.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateProjectsBrandsIdentityAwareProxyClientsRequest",
-      });
-    case 4:
-      return S.Array(S.String);
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          fqdns: S.optional(__S(4, __c0, 4)),
-          cidrs: S.optional(__S(4, __c0, 4)),
-          name: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "TunnelDestGroup" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          tunnelDestGroupId: S.optional(S.String.pipe(T.Query())),
-          parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(5, __c0, 5).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/{+parent}/destGroups",
-            baseUrl: "https://iap.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateProjectsIap_tunnelLocationsDestGroupsRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({ method: "DELETE", uri: "v1/{+name}", baseUrl: "https://iap.googleapis.com/" }),
-        ),
-      ).annotate({
-        identifier: "DeleteProjectsBrandsIdentityAwareProxyClientsRequest",
-      });
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "Empty",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({ method: "DELETE", uri: "v1/{+name}", baseUrl: "https://iap.googleapis.com/" }),
-        ),
-      ).annotate({
-        identifier: "DeleteProjectsIap_tunnelLocationsDestGroupsRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          requestedPolicyVersion: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "GetPolicyOptions" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          options: S.optional(__S(10, __c1, 2)),
-        }),
-      ).annotate({ identifier: "GetIamPolicyRequest" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          resource: S.String.pipe(T.Label()),
-          body: S.optional(__S(11, __c1, 3).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/{+resource}:getIamPolicy",
-            baseUrl: "https://iap.googleapis.com/",
-          }),
-        ),
-      ).annotate({ identifier: "GetIamPolicyV1Request" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          location: S.optional(S.String),
-          title: S.optional(S.String),
-          description: S.optional(S.String),
-          expression: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Expr" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          role: S.optional(S.String),
-          condition: S.optional(__S(13, __c1, 5)),
-          members: S.optional(__S(4, __c0, 4)),
-        }),
-      ).annotate({ identifier: "Binding" });
-    case 7:
-      return S.Array(__S(14, __c1, 6));
-  }
-}
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          etag: S.optional(S.String),
-          version: S.optional(S.Number),
-          bindings: S.optional(__S(15, __c1, 7)),
-        }),
-      ).annotate({ identifier: "Policy" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
           name: S.String.pipe(T.Label()),
         }).pipe(
           T.Http({
@@ -985,7 +836,11 @@ function __c2(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetIapSettingsV1Request" });
-    case 2:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           remediationTokenGenerationEnabled: S.optional(S.Boolean),
@@ -993,45 +848,41 @@ function __c2(j: number): any {
           generateTroubleshootingUri: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "AccessDeniedPageSettings" });
-    case 3:
+    case 1:
       return S.Array(S.String);
-    case 4:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           expression: S.optional(S.String),
           enable: S.optional(S.Boolean),
-          outputCredentials: S.optional(__S(19, __c2, 3)),
+          outputCredentials: S.optional(__S(33, __c1, 1)),
         }),
       ).annotate({
         identifier: "AttributePropagationSettings",
       });
-    case 5:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           rctokenAud: S.optional(S.String),
         }),
       ).annotate({ identifier: "CsmSettings" });
-    case 6:
+    case 4:
       return S.suspend(() =>
         S.Struct({
-          accessDeniedPageSettings: S.optional(__S(18, __c2, 2)),
+          accessDeniedPageSettings: S.optional(__S(32, __c1, 0)),
           cookieDomain: S.optional(S.String),
-          attributePropagationSettings: S.optional(__S(20, __c2, 4)),
-          csmSettings: S.optional(__S(21, __c2, 5)),
+          attributePropagationSettings: S.optional(__S(34, __c1, 2)),
+          csmSettings: S.optional(__S(35, __c1, 3)),
         }),
       ).annotate({ identifier: "ApplicationSettings" });
-    case 7:
+    case 5:
       return S.suspend(() =>
         S.Struct({
-          domains: S.optional(__S(4, __c0, 4)),
+          domains: S.optional(__S(672, __c21, 0)),
           enable: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "AllowedDomainsSettings" });
-  }
-}
-function __c3(j: number): any {
-  switch (j) {
-    case 0:
+    case 6:
       return S.suspend(() =>
         S.Struct({
           type: S.optional(S.String),
@@ -1039,88 +890,84 @@ function __c3(j: number): any {
           id: S.optional(S.String),
         }),
       ).annotate({ identifier: "PolicyName" });
-    case 1:
+    case 7:
       return S.Record(S.String, S.String);
-    case 2:
+    case 8:
       return S.suspend(() =>
         S.Struct({
-          tagsToUpsert: S.optional(__S(25, __c3, 1)),
-          tagKeysToRemove: S.optional(__S(4, __c0, 4)),
+          tagsToUpsert: S.optional(__S(39, __c1, 7)),
+          tagKeysToRemove: S.optional(__S(672, __c21, 0)),
         }),
       ).annotate({ identifier: "TagsPartialState" });
-    case 3:
+    case 9:
       return S.suspend(() =>
         S.Struct({
-          tags: S.optional(__S(25, __c3, 1)),
+          tags: S.optional(__S(39, __c1, 7)),
         }),
       ).annotate({
         identifier: "TagsFullStateForChildResource",
       });
-    case 4:
+    case 10:
       return S.suspend(() =>
         S.Struct({
-          tags: S.optional(__S(25, __c3, 1)),
+          tags: S.optional(__S(39, __c1, 7)),
         }),
       ).annotate({ identifier: "TagsFullState" });
-    case 5:
+    case 11:
       return S.suspend(() =>
         S.Struct({
-          tagsPartialState: S.optional(__S(26, __c3, 2)),
-          tagsFullStateForChildResource: S.optional(__S(27, __c3, 3)),
-          tagsFullState: S.optional(__S(28, __c3, 4)),
+          tagsPartialState: S.optional(__S(40, __c1, 8)),
+          tagsFullStateForChildResource: S.optional(__S(41, __c1, 9)),
+          tagsFullState: S.optional(__S(42, __c1, 10)),
         }),
       ).annotate({ identifier: "NextStateOfTags" });
-    case 6:
+    case 12:
       return S.Record(S.String, S.Unknown);
-    case 7:
+    case 13:
       return S.suspend(() =>
         S.Struct({
-          nextStateOfTags: S.optional(__S(29, __c3, 5)),
+          nextStateOfTags: S.optional(__S(43, __c1, 11)),
           type: S.optional(S.String),
-          labels: S.optional(__S(25, __c3, 1)),
+          labels: S.optional(__S(39, __c1, 7)),
           name: S.optional(S.String),
           service: S.optional(S.String),
-          expectedNextState: S.optional(__S(30, __c3, 6)),
-          locations: S.optional(__S(4, __c0, 4)),
+          expectedNextState: S.optional(__S(44, __c1, 12)),
+          locations: S.optional(__S(672, __c21, 0)),
         }),
       ).annotate({ identifier: "Resource" });
-  }
-}
-function __c4(j: number): any {
-  switch (j) {
-    case 0:
+    case 14:
       return S.suspend(() =>
         S.Struct({
           iamPermission: S.optional(S.String),
-          policyName: S.optional(__S(24, __c3, 0)),
+          policyName: S.optional(__S(38, __c1, 6)),
           iamServiceName: S.optional(S.String),
-          resource: S.optional(__S(31, __c3, 7)),
+          resource: S.optional(__S(45, __c1, 13)),
         }),
       ).annotate({ identifier: "PolicyDelegationSettings" });
-    case 1:
+    case 15:
       return S.suspend(() =>
         S.Struct({
-          tenantIds: S.optional(__S(4, __c0, 4)),
+          tenantIds: S.optional(__S(672, __c21, 0)),
           loginPageUri: S.optional(S.String),
         }),
       ).annotate({ identifier: "GcipSettings" });
-    case 2:
+    case 16:
       return S.suspend(() =>
         S.Struct({
           allowHttpOptions: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "CorsSettings" });
-    case 3:
+    case 17:
       return S.suspend(() =>
         S.Struct({
           clientId: S.optional(S.String),
           clientSecret: S.optional(S.String),
-          programmaticClients: S.optional(__S(4, __c0, 4)),
+          programmaticClients: S.optional(__S(672, __c21, 0)),
           loginHint: S.optional(S.String),
           clientSecretSha256: S.optional(S.String),
         }),
       ).annotate({ identifier: "OAuthSettings" });
-    case 4:
+    case 18:
       return S.suspend(() =>
         S.Struct({
           clientId: S.optional(S.String),
@@ -1128,16 +975,16 @@ function __c4(j: number): any {
           clientSecret: S.optional(S.String),
         }),
       ).annotate({ identifier: "OAuth2" });
-    case 5:
+    case 19:
       return S.suspend(() =>
         S.Struct({
-          oauth2: S.optional(__S(36, __c4, 4)),
-          workforcePools: S.optional(__S(4, __c0, 4)),
+          oauth2: S.optional(__S(50, __c1, 18)),
+          workforcePools: S.optional(__S(672, __c21, 0)),
         }),
       ).annotate({
         identifier: "WorkforceIdentitySettings",
       });
-    case 6:
+    case 20:
       return S.suspend(() =>
         S.Struct({
           method: S.optional(S.String),
@@ -1145,32 +992,32 @@ function __c4(j: number): any {
           policyType: S.optional(S.String),
         }),
       ).annotate({ identifier: "ReauthSettings" });
-    case 7:
+    case 21:
       return S.suspend(() =>
         S.Struct({
-          allowedDomainsSettings: S.optional(__S(23, __c2, 7)),
-          identitySources: S.optional(__S(19, __c2, 3)),
-          policyDelegationSettings: S.optional(__S(32, __c4, 0)),
-          gcipSettings: S.optional(__S(33, __c4, 1)),
-          corsSettings: S.optional(__S(34, __c4, 2)),
-          oauthSettings: S.optional(__S(35, __c4, 3)),
-          workforceIdentitySettings: S.optional(__S(37, __c4, 5)),
-          reauthSettings: S.optional(__S(38, __c4, 6)),
+          allowedDomainsSettings: S.optional(__S(37, __c1, 5)),
+          identitySources: S.optional(__S(33, __c1, 1)),
+          policyDelegationSettings: S.optional(__S(46, __c1, 14)),
+          gcipSettings: S.optional(__S(47, __c1, 15)),
+          corsSettings: S.optional(__S(48, __c1, 16)),
+          oauthSettings: S.optional(__S(49, __c1, 17)),
+          workforceIdentitySettings: S.optional(__S(51, __c1, 19)),
+          reauthSettings: S.optional(__S(52, __c1, 20)),
         }),
       ).annotate({ identifier: "AccessSettings" });
-  }
-}
-function __c5(j: number): any {
-  switch (j) {
-    case 0:
+    case 22:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
-          applicationSettings: S.optional(__S(22, __c2, 6)),
-          accessSettings: S.optional(__S(39, __c4, 7)),
+          applicationSettings: S.optional(__S(36, __c1, 4)),
+          accessSettings: S.optional(__S(53, __c1, 21)),
         }),
       ).annotate({ identifier: "IapSettings" });
-    case 1:
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -1178,7 +1025,11 @@ function __c5(j: number): any {
           T.Http({ method: "GET", uri: "v1/{+name}", baseUrl: "https://iap.googleapis.com/" }),
         ),
       ).annotate({ identifier: "GetProjectsBrandsRequest" });
-    case 2:
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -1188,7 +1039,11 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "GetProjectsBrandsIdentityAwareProxyClientsRequest",
       });
-    case 3:
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -1198,7 +1053,11 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "GetProjectsIap_tunnelLocationsDestGroupsRequest",
       });
-    case 4:
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
@@ -1212,15 +1071,19 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "ListProjectsBrandsRequest",
       });
-    case 5:
-      return S.Array(__S(0, __c0, 0));
-    case 6:
+    case 1:
+      return S.Array(__S(512, __c16, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          brands: S.optional(__S(45, __c5, 5)),
+          brands: S.optional(__S(161, __c5, 1)),
         }),
       ).annotate({ identifier: "ListBrandsResponse" });
-    case 7:
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
@@ -1236,22 +1099,22 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "ListProjectsBrandsIdentityAwareProxyClientsRequest",
       });
-  }
-}
-function __c6(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(2, __c0, 2));
     case 1:
+      return S.Array(__S(576, __c18, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          identityAwareProxyClients: S.optional(__S(48, __c6, 0)),
+          identityAwareProxyClients: S.optional(__S(193, __c6, 1)),
         }),
       ).annotate({
         identifier: "ListIdentityAwareProxyClientsResponse",
       });
-    case 2:
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           pageToken: S.optional(S.String.pipe(T.Query())),
@@ -1267,38 +1130,42 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "ListProjectsIap_tunnelLocationsDestGroupsRequest",
       });
-    case 3:
-      return S.Array(__S(5, __c0, 5));
-    case 4:
+    case 1:
+      return S.Array(__S(640, __c20, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          tunnelDestGroups: S.optional(__S(51, __c6, 3)),
+          tunnelDestGroups: S.optional(__S(225, __c7, 1)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({
         identifier: "ListTunnelDestGroupsResponse",
       });
-    case 5:
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           updateMask: S.optional(S.String.pipe(T.Query())),
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(5, __c0, 5).pipe(T.HttpBody())),
+          body: S.optional(__S(640, __c20, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({ method: "PATCH", uri: "v1/{+name}", baseUrl: "https://iap.googleapis.com/" }),
         ),
       ).annotate({
         identifier: "PatchProjectsIap_tunnelLocationsDestGroupsRequest",
       });
-    case 6:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "ResetIdentityAwareProxyClientSecretRequest",
-      });
-    case 7:
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(54, __c6, 6).pipe(T.HttpBody())),
+          body: S.optional(__S(320, __c10, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -1311,19 +1178,27 @@ function __c6(j: number): any {
       });
   }
 }
-function __c7(j: number): any {
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "ResetIdentityAwareProxyClientSecretRequest",
+      });
+  }
+}
+function __c11(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          policy: S.optional(__S(16, __c2, 0)),
+          policy: S.optional(__S(835, __c26, 3)),
         }),
       ).annotate({ identifier: "SetIamPolicyRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
           resource: S.String.pipe(T.Label()),
-          body: S.optional(__S(56, __c7, 0).pipe(T.HttpBody())),
+          body: S.optional(__S(352, __c11, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -1332,19 +1207,23 @@ function __c7(j: number): any {
           }),
         ),
       ).annotate({ identifier: "SetIamPolicyV1Request" });
-    case 2:
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          permissions: S.optional(__S(4, __c0, 4)),
+          permissions: S.optional(__S(672, __c21, 0)),
         }),
       ).annotate({
         identifier: "TestIamPermissionsRequest",
       });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           resource: S.String.pipe(T.Label()),
-          body: S.optional(__S(58, __c7, 2).pipe(T.HttpBody())),
+          body: S.optional(__S(384, __c12, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -1355,12 +1234,16 @@ function __c7(j: number): any {
       ).annotate({
         identifier: "TestIamPermissionsV1Request",
       });
-    case 4:
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
           updateMask: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(40, __c5, 0).pipe(T.HttpBody())),
+          body: S.optional(__S(54, __c1, 22).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -1371,7 +1254,11 @@ function __c7(j: number): any {
       ).annotate({
         identifier: "UpdateIapSettingsV1Request",
       });
-    case 5:
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -1388,7 +1275,203 @@ function __c7(j: number): any {
       });
   }
 }
-
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          parent: S.String.pipe(T.Label()),
+          body: S.optional(__S(512, __c16, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/{+parent}/brands",
+            baseUrl: "https://iap.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateProjectsBrandsRequest",
+      });
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          applicationTitle: S.optional(S.String),
+          supportEmail: S.optional(S.String),
+          name: S.optional(S.String),
+          orgInternalOnly: S.optional(S.Boolean),
+        }),
+      ).annotate({ identifier: "Brand" });
+  }
+}
+function __c17(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          parent: S.String.pipe(T.Label()),
+          body: S.optional(__S(576, __c18, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/{+parent}/identityAwareProxyClients",
+            baseUrl: "https://iap.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateProjectsBrandsIdentityAwareProxyClientsRequest",
+      });
+  }
+}
+function __c18(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          secret: S.optional(S.String),
+          name: S.optional(S.String),
+          displayName: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "IdentityAwareProxyClient" });
+  }
+}
+function __c19(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          tunnelDestGroupId: S.optional(S.String.pipe(T.Query())),
+          parent: S.String.pipe(T.Label()),
+          body: S.optional(__S(640, __c20, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/{+parent}/destGroups",
+            baseUrl: "https://iap.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateProjectsIap_tunnelLocationsDestGroupsRequest",
+      });
+  }
+}
+function __c20(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          fqdns: S.optional(__S(672, __c21, 0)),
+          cidrs: S.optional(__S(672, __c21, 0)),
+          name: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "TunnelDestGroup" });
+  }
+}
+function __c21(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c22(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({ method: "DELETE", uri: "v1/{+name}", baseUrl: "https://iap.googleapis.com/" }),
+        ),
+      ).annotate({
+        identifier: "DeleteProjectsBrandsIdentityAwareProxyClientsRequest",
+      });
+  }
+}
+function __c23(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "Empty",
+      });
+  }
+}
+function __c24(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({ method: "DELETE", uri: "v1/{+name}", baseUrl: "https://iap.googleapis.com/" }),
+        ),
+      ).annotate({
+        identifier: "DeleteProjectsIap_tunnelLocationsDestGroupsRequest",
+      });
+  }
+}
+function __c25(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          requestedPolicyVersion: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "GetPolicyOptions" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          options: S.optional(__S(800, __c25, 0)),
+        }),
+      ).annotate({ identifier: "GetIamPolicyRequest" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          resource: S.String.pipe(T.Label()),
+          body: S.optional(__S(801, __c25, 1).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/{+resource}:getIamPolicy",
+            baseUrl: "https://iap.googleapis.com/",
+          }),
+        ),
+      ).annotate({ identifier: "GetIamPolicyV1Request" });
+  }
+}
+function __c26(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          location: S.optional(S.String),
+          title: S.optional(S.String),
+          description: S.optional(S.String),
+          expression: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Expr" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          role: S.optional(S.String),
+          condition: S.optional(__S(832, __c26, 0)),
+          members: S.optional(__S(672, __c21, 0)),
+        }),
+      ).annotate({ identifier: "Binding" });
+    case 2:
+      return S.Array(__S(833, __c26, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          etag: S.optional(S.String),
+          version: S.optional(S.Number),
+          bindings: S.optional(__S(834, __c26, 2)),
+        }),
+      ).annotate({ identifier: "Policy" });
+  }
+}
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

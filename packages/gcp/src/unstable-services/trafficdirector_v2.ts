@@ -402,8 +402,8 @@ export const client_statusDiscovery: API.OperationMethod<
   Client_statusDiscoveryError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(15, __c1, 7) as any as S.Schema<Client_statusDiscoveryRequest>,
-  output: __S(55, __c6, 7) as any as S.Schema<ClientStatusResponse>,
+  input: __S(15, __c0, 15) as any as S.Schema<Client_statusDiscoveryRequest>,
+  output: __S(55, __c1, 23) as any as S.Schema<ClientStatusResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -441,7 +441,7 @@ function __c0(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          oneOf: S.optional(S.suspend(() => __S(9, __c1, 1))),
+          oneOf: S.optional(S.suspend(() => __S(9, __c0, 9))),
         }),
       ).annotate({ identifier: "ListMatcher" });
     case 6:
@@ -457,11 +457,7 @@ function __c0(j: number): any {
           regex: S.optional(S.String),
         }),
       ).annotate({ identifier: "RegexMatcher" });
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
+    case 8:
       return S.suspend(() =>
         S.Struct({
           exact: S.optional(S.String),
@@ -472,7 +468,7 @@ function __c1(j: number): any {
           safeRegex: S.optional(__S(7, __c0, 7)),
         }),
       ).annotate({ identifier: "StringMatcher" });
-    case 1:
+    case 9:
       return S.suspend(() =>
         S.Struct({
           doubleMatch: S.optional(__S(3, __c0, 3)),
@@ -480,37 +476,37 @@ function __c1(j: number): any {
           nullMatch: S.optional(__S(4, __c0, 4)),
           boolMatch: S.optional(S.Boolean),
           listMatch: S.optional(__S(5, __c0, 5)),
-          stringMatch: S.optional(__S(8, __c1, 0)),
+          stringMatch: S.optional(__S(8, __c0, 8)),
         }),
       ).annotate({ identifier: "ValueMatcher" });
-    case 2:
+    case 10:
       return S.suspend(() =>
         S.Struct({
           path: S.optional(__S(1, __c0, 1)),
-          value: S.optional(__S(9, __c1, 1)),
+          value: S.optional(__S(9, __c0, 9)),
         }),
       ).annotate({ identifier: "StructMatcher" });
-    case 3:
-      return S.Array(__S(10, __c1, 2));
-    case 4:
+    case 11:
+      return S.Array(__S(10, __c0, 10));
+    case 12:
       return S.suspend(() =>
         S.Struct({
-          nodeMetadatas: S.optional(__S(11, __c1, 3)),
-          nodeId: S.optional(__S(8, __c1, 0)),
+          nodeMetadatas: S.optional(__S(11, __c0, 11)),
+          nodeId: S.optional(__S(8, __c0, 8)),
         }),
       ).annotate({ identifier: "NodeMatcher" });
-    case 5:
-      return S.Array(__S(12, __c1, 4));
-    case 6:
+    case 13:
+      return S.Array(__S(12, __c0, 12));
+    case 14:
       return S.suspend(() =>
         S.Struct({
-          nodeMatchers: S.optional(__S(13, __c1, 5)),
+          nodeMatchers: S.optional(__S(13, __c0, 13)),
         }),
       ).annotate({ identifier: "ClientStatusRequest" });
-    case 7:
+    case 15:
       return S.suspend(() =>
         S.Struct({
-          body: S.optional(__S(14, __c1, 6).pipe(T.HttpBody())),
+          body: S.optional(__S(14, __c0, 14).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -521,11 +517,7 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "Client_statusDiscoveryRequest",
       });
-  }
-}
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
+    case 16:
       return S.suspend(() =>
         S.Struct({
           namedPort: S.optional(S.String),
@@ -536,23 +528,23 @@ function __c2(j: number): any {
           ipv4Compat: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "SocketAddress" });
-    case 1:
+    case 17:
       return S.suspend(() =>
         S.Struct({
           mode: S.optional(S.Number),
           path: S.optional(S.String),
         }),
       ).annotate({ identifier: "Pipe" });
-    case 2:
+    case 18:
       return S.suspend(() =>
         S.Struct({
-          socketAddress: S.optional(__S(16, __c2, 0)),
-          pipe: S.optional(__S(17, __c2, 1)),
+          socketAddress: S.optional(__S(16, __c0, 16)),
+          pipe: S.optional(__S(17, __c0, 17)),
         }),
       ).annotate({ identifier: "Address" });
-    case 3:
-      return S.Array(__S(18, __c2, 2));
-    case 4:
+    case 19:
+      return S.Array(__S(18, __c0, 18));
+    case 20:
       return S.suspend(() =>
         S.Struct({
           subZone: S.optional(S.String),
@@ -560,9 +552,9 @@ function __c2(j: number): any {
           region: S.optional(S.String),
         }),
       ).annotate({ identifier: "Locality" });
-    case 5:
+    case 21:
       return S.Array(S.String);
-    case 6:
+    case 22:
       return S.suspend(() =>
         S.Struct({
           majorNumber: S.optional(S.Number),
@@ -570,75 +562,71 @@ function __c2(j: number): any {
           patch: S.optional(S.Number),
         }),
       ).annotate({ identifier: "SemanticVersion" });
-    case 7:
+    case 23:
       return S.Record(S.String, S.Unknown);
-  }
-}
-function __c3(j: number): any {
-  switch (j) {
-    case 0:
+    case 24:
       return S.suspend(() =>
         S.Struct({
-          version: S.optional(__S(22, __c2, 6)),
-          metadata: S.optional(__S(23, __c2, 7)),
+          version: S.optional(__S(22, __c0, 22)),
+          metadata: S.optional(__S(23, __c0, 23)),
         }),
       ).annotate({ identifier: "BuildVersion" });
-    case 1:
+    case 25:
       return S.suspend(() =>
         S.Struct({
-          version: S.optional(__S(24, __c3, 0)),
+          version: S.optional(__S(24, __c0, 24)),
           category: S.optional(S.String),
           typeDescriptor: S.optional(S.String),
           disabled: S.optional(S.Boolean),
           name: S.optional(S.String),
         }),
       ).annotate({ identifier: "Extension" });
-    case 2:
-      return S.Array(__S(25, __c3, 1));
-    case 3:
+    case 26:
+      return S.Array(__S(25, __c0, 25));
+    case 27:
       return S.suspend(() =>
         S.Struct({
-          listeningAddresses: S.optional(__S(19, __c2, 3)),
+          listeningAddresses: S.optional(__S(19, __c0, 19)),
           userAgentVersion: S.optional(S.String),
           buildVersion: S.optional(S.String),
           userAgentName: S.optional(S.String),
-          locality: S.optional(__S(20, __c2, 4)),
+          locality: S.optional(__S(20, __c0, 20)),
           id: S.optional(S.String),
-          clientFeatures: S.optional(__S(21, __c2, 5)),
+          clientFeatures: S.optional(__S(21, __c0, 21)),
           cluster: S.optional(S.String),
-          extensions: S.optional(__S(26, __c3, 2)),
-          userAgentBuildVersion: S.optional(__S(24, __c3, 0)),
-          metadata: S.optional(__S(23, __c2, 7)),
+          extensions: S.optional(__S(26, __c0, 26)),
+          userAgentBuildVersion: S.optional(__S(24, __c0, 24)),
+          metadata: S.optional(__S(23, __c0, 23)),
         }),
       ).annotate({ identifier: "Node" });
-    case 4:
+    case 28:
       return S.suspend(() =>
         S.Struct({
           versionInfo: S.optional(S.String),
-          routeConfig: S.optional(__S(23, __c2, 7)),
+          routeConfig: S.optional(__S(23, __c0, 23)),
           lastUpdated: S.optional(S.String),
         }),
       ).annotate({ identifier: "DynamicRouteConfig" });
-    case 5:
-      return S.Array(__S(28, __c3, 4));
-    case 6:
+    case 29:
+      return S.Array(__S(28, __c0, 28));
+    case 30:
       return S.suspend(() =>
         S.Struct({
-          routeConfig: S.optional(__S(23, __c2, 7)),
+          routeConfig: S.optional(__S(23, __c0, 23)),
           lastUpdated: S.optional(S.String),
         }),
       ).annotate({ identifier: "StaticRouteConfig" });
-    case 7:
-      return S.Array(__S(30, __c3, 6));
+    case 31:
+      return S.Array(__S(30, __c0, 30));
   }
 }
-function __c4(j: number): any {
+function __c1(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          dynamicRouteConfigs: S.optional(__S(29, __c3, 5)),
-          staticRouteConfigs: S.optional(__S(31, __c3, 7)),
+          dynamicRouteConfigs: S.optional(__S(29, __c0, 29)),
+          staticRouteConfigs: S.optional(__S(31, __c0, 31)),
         }),
       ).annotate({ identifier: "RoutesConfigDump" });
     case 1:
@@ -646,144 +634,135 @@ function __c4(j: number): any {
         S.Struct({
           versionInfo: S.optional(S.String),
           lastUpdated: S.optional(S.String),
-          cluster: S.optional(__S(23, __c2, 7)),
+          cluster: S.optional(__S(23, __c0, 23)),
         }),
       ).annotate({ identifier: "DynamicCluster" });
     case 2:
-      return S.Array(__S(33, __c4, 1));
+      return S.Array(__S(33, __c1, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
           lastUpdated: S.optional(S.String),
-          cluster: S.optional(__S(23, __c2, 7)),
+          cluster: S.optional(__S(23, __c0, 23)),
         }),
       ).annotate({ identifier: "StaticCluster" });
     case 4:
-      return S.Array(__S(35, __c4, 3));
+      return S.Array(__S(35, __c1, 3));
     case 5:
       return S.suspend(() =>
         S.Struct({
           versionInfo: S.optional(S.String),
-          dynamicActiveClusters: S.optional(__S(34, __c4, 2)),
-          staticClusters: S.optional(__S(36, __c4, 4)),
-          dynamicWarmingClusters: S.optional(__S(34, __c4, 2)),
+          dynamicActiveClusters: S.optional(__S(34, __c1, 2)),
+          staticClusters: S.optional(__S(36, __c1, 4)),
+          dynamicWarmingClusters: S.optional(__S(34, __c1, 2)),
         }),
       ).annotate({ identifier: "ClustersConfigDump" });
     case 6:
       return S.suspend(() =>
         S.Struct({
-          listener: S.optional(__S(23, __c2, 7)),
+          listener: S.optional(__S(23, __c0, 23)),
           lastUpdated: S.optional(S.String),
         }),
       ).annotate({ identifier: "StaticListener" });
     case 7:
-      return S.Array(__S(38, __c4, 6));
-  }
-}
-function __c5(j: number): any {
-  switch (j) {
-    case 0:
+      return S.Array(__S(38, __c1, 6));
+    case 8:
       return S.suspend(() =>
         S.Struct({
-          failedConfiguration: S.optional(__S(23, __c2, 7)),
+          failedConfiguration: S.optional(__S(23, __c0, 23)),
           lastUpdateAttempt: S.optional(S.String),
           details: S.optional(S.String),
         }),
       ).annotate({ identifier: "UpdateFailureState" });
-    case 1:
+    case 9:
       return S.suspend(() =>
         S.Struct({
-          listener: S.optional(__S(23, __c2, 7)),
+          listener: S.optional(__S(23, __c0, 23)),
           versionInfo: S.optional(S.String),
           lastUpdated: S.optional(S.String),
         }),
       ).annotate({ identifier: "DynamicListenerState" });
-    case 2:
+    case 10:
       return S.suspend(() =>
         S.Struct({
-          errorState: S.optional(__S(40, __c5, 0)),
+          errorState: S.optional(__S(40, __c1, 8)),
           name: S.optional(S.String),
-          warmingState: S.optional(__S(41, __c5, 1)),
-          activeState: S.optional(__S(41, __c5, 1)),
-          drainingState: S.optional(__S(41, __c5, 1)),
+          warmingState: S.optional(__S(41, __c1, 9)),
+          activeState: S.optional(__S(41, __c1, 9)),
+          drainingState: S.optional(__S(41, __c1, 9)),
         }),
       ).annotate({ identifier: "DynamicListener" });
-    case 3:
-      return S.Array(__S(42, __c5, 2));
-    case 4:
+    case 11:
+      return S.Array(__S(42, __c1, 10));
+    case 12:
       return S.suspend(() =>
         S.Struct({
-          staticListeners: S.optional(__S(39, __c4, 7)),
-          dynamicListeners: S.optional(__S(43, __c5, 3)),
+          staticListeners: S.optional(__S(39, __c1, 7)),
+          dynamicListeners: S.optional(__S(43, __c1, 11)),
           versionInfo: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListenersConfigDump" });
-    case 5:
-      return S.Array(__S(23, __c2, 7));
-    case 6:
+    case 13:
+      return S.Array(__S(23, __c0, 23));
+    case 14:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
           versionInfo: S.optional(S.String),
           lastUpdated: S.optional(S.String),
-          scopedRouteConfigs: S.optional(__S(45, __c5, 5)),
+          scopedRouteConfigs: S.optional(__S(45, __c1, 13)),
         }),
       ).annotate({
         identifier: "DynamicScopedRouteConfigs",
       });
-    case 7:
-      return S.Array(__S(46, __c5, 6));
-  }
-}
-function __c6(j: number): any {
-  switch (j) {
-    case 0:
+    case 15:
+      return S.Array(__S(46, __c1, 14));
+    case 16:
       return S.suspend(() =>
         S.Struct({
-          scopedRouteConfigs: S.optional(__S(45, __c5, 5)),
+          scopedRouteConfigs: S.optional(__S(45, __c1, 13)),
           lastUpdated: S.optional(S.String),
           name: S.optional(S.String),
         }),
       ).annotate({ identifier: "InlineScopedRouteConfigs" });
-    case 1:
-      return S.Array(__S(48, __c6, 0));
-    case 2:
+    case 17:
+      return S.Array(__S(48, __c1, 16));
+    case 18:
       return S.suspend(() =>
         S.Struct({
-          dynamicScopedRouteConfigs: S.optional(__S(47, __c5, 7)),
-          inlineScopedRouteConfigs: S.optional(__S(49, __c6, 1)),
+          dynamicScopedRouteConfigs: S.optional(__S(47, __c1, 15)),
+          inlineScopedRouteConfigs: S.optional(__S(49, __c1, 17)),
         }),
       ).annotate({ identifier: "ScopedRoutesConfigDump" });
-    case 3:
+    case 19:
       return S.suspend(() =>
         S.Struct({
           status: S.optional(S.String),
-          routeConfig: S.optional(__S(32, __c4, 0)),
-          clusterConfig: S.optional(__S(37, __c4, 5)),
-          listenerConfig: S.optional(__S(44, __c5, 4)),
-          scopedRouteConfig: S.optional(__S(50, __c6, 2)),
+          routeConfig: S.optional(__S(32, __c1, 0)),
+          clusterConfig: S.optional(__S(37, __c1, 5)),
+          listenerConfig: S.optional(__S(44, __c1, 12)),
+          scopedRouteConfig: S.optional(__S(50, __c1, 18)),
         }),
       ).annotate({ identifier: "PerXdsConfig" });
-    case 4:
-      return S.Array(__S(51, __c6, 3));
-    case 5:
+    case 20:
+      return S.Array(__S(51, __c1, 19));
+    case 21:
       return S.suspend(() =>
         S.Struct({
-          node: S.optional(__S(27, __c3, 3)),
-          xdsConfig: S.optional(__S(52, __c6, 4)),
+          node: S.optional(__S(27, __c0, 27)),
+          xdsConfig: S.optional(__S(52, __c1, 20)),
         }),
       ).annotate({ identifier: "ClientConfig" });
-    case 6:
-      return S.Array(__S(53, __c6, 5));
-    case 7:
+    case 22:
+      return S.Array(__S(53, __c1, 21));
+    case 23:
       return S.suspend(() =>
         S.Struct({
-          config: S.optional(__S(54, __c6, 6)),
+          config: S.optional(__S(54, __c1, 22)),
         }),
       ).annotate({ identifier: "ClientStatusResponse" });
   }
 }
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

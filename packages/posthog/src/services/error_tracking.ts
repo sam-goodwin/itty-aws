@@ -2342,8 +2342,8 @@ export const createErrorTrackingAlert: API.OperationMethod<
   CreateErrorTrackingAlertError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(7, __c0, 7) as any as S.Schema<CreateErrorTrackingAlertRequest>,
-  output: __S(11, __c1, 3) as any as S.Schema<ErrorTrackingAlert>,
+  input: __S(512, __c32, 0) as any as S.Schema<CreateErrorTrackingAlertRequest>,
+  output: __S(565, __c35, 5) as any as S.Schema<ErrorTrackingAlert>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -2356,8 +2356,8 @@ export const createErrorTrackingAssignmentRule: API.OperationMethod<
   CreateErrorTrackingAssignmentRuleError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(16, __c2, 0) as any as S.Schema<CreateErrorTrackingAssignmentRuleRequest>,
-  output: __S(18, __c2, 2) as any as S.Schema<ErrorTrackingAssignmentRule>,
+  input: __S(832, __c52, 0) as any as S.Schema<CreateErrorTrackingAssignmentRuleRequest>,
+  output: __S(849, __c53, 1) as any as S.Schema<ErrorTrackingAssignmentRule>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -2370,8 +2370,8 @@ export const createErrorTrackingBypassRule: API.OperationMethod<
   CreateErrorTrackingBypassRuleError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(19, __c2, 3) as any as S.Schema<CreateErrorTrackingBypassRuleRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<ErrorTrackingBypassRule>,
+  input: __S(1072, __c67, 0) as any as S.Schema<CreateErrorTrackingBypassRuleRequest>,
+  output: __S(1088, __c68, 0) as any as S.Schema<ErrorTrackingBypassRule>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -2384,8 +2384,8 @@ export const createErrorTrackingExternalReference: API.OperationMethod<
   CreateErrorTrackingExternalReferenceError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(21, __c2, 5) as any as S.Schema<CreateErrorTrackingExternalReferenceRequest>,
-  output: __S(23, __c2, 7) as any as S.Schema<ErrorTrackingExternalReferenceResult>,
+  input: __S(1312, __c82, 0) as any as S.Schema<CreateErrorTrackingExternalReferenceRequest>,
+  output: __S(1329, __c83, 1) as any as S.Schema<ErrorTrackingExternalReferenceResult>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -2399,8 +2399,12 @@ export const createErrorTrackingExternalReferencesLinkIssue: API.OperationMethod
   CreateErrorTrackingExternalReferencesLinkIssueError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(25, __c3, 1) as any as S.Schema<CreateErrorTrackingExternalReferencesLinkIssueRequest>,
-  output: __S(23, __c2, 7) as any as S.Schema<ErrorTrackingExternalReferenceResult>,
+  input: __S(
+    1537,
+    __c96,
+    1,
+  ) as any as S.Schema<CreateErrorTrackingExternalReferencesLinkIssueRequest>,
+  output: __S(1329, __c83, 1) as any as S.Schema<ErrorTrackingExternalReferenceResult>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -2413,8 +2417,8 @@ export const createErrorTrackingGroupingRule: API.OperationMethod<
   CreateErrorTrackingGroupingRuleError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(27, __c3, 3) as any as S.Schema<CreateErrorTrackingGroupingRuleRequest>,
-  output: __S(29, __c3, 5) as any as S.Schema<ErrorTrackingGroupingRule>,
+  input: __S(1713, __c107, 1) as any as S.Schema<CreateErrorTrackingGroupingRuleRequest>,
+  output: __S(1729, __c108, 1) as any as S.Schema<ErrorTrackingGroupingRule>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -2427,8 +2431,8 @@ export const createErrorTrackingIssuesMerge: API.OperationMethod<
   CreateErrorTrackingIssuesMergeError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(31, __c3, 7) as any as S.Schema<CreateErrorTrackingIssuesMergeRequest>,
-  output: __S(32, __c4, 0) as any as S.Schema<ErrorTrackingIssueMergeResponse>,
+  input: __S(1936, __c121, 0) as any as S.Schema<CreateErrorTrackingIssuesMergeRequest>,
+  output: __S(1937, __c121, 1) as any as S.Schema<ErrorTrackingIssueMergeResponse>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -2441,8 +2445,8 @@ export const createErrorTrackingIssuesSplit: API.OperationMethod<
   CreateErrorTrackingIssuesSplitError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(35, __c4, 3) as any as S.Schema<CreateErrorTrackingIssuesSplitRequest>,
-  output: __S(36, __c4, 4) as any as S.Schema<ErrorTrackingIssueSplitResponse>,
+  input: __S(2, __c0, 2) as any as S.Schema<CreateErrorTrackingIssuesSplitRequest>,
+  output: __S(3, __c0, 3) as any as S.Schema<ErrorTrackingIssueSplitResponse>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -2456,8 +2460,8 @@ export const createErrorTrackingQueryIssue: API.OperationMethod<
   CreateErrorTrackingQueryIssueError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(38, __c4, 6) as any as S.Schema<CreateErrorTrackingQueryIssueRequest>,
-  output: __S(51, __c6, 3) as any as S.Schema<ErrorTrackingIssueDetail>,
+  input: __S(48, __c3, 0) as any as S.Schema<CreateErrorTrackingQueryIssueRequest>,
+  output: __S(56, __c3, 8) as any as S.Schema<ErrorTrackingIssueDetail>,
   errors: [NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -2471,8 +2475,8 @@ export const createErrorTrackingQueryIssueEvent: API.OperationMethod<
   CreateErrorTrackingQueryIssueEventError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(54, __c6, 6) as any as S.Schema<CreateErrorTrackingQueryIssueEventRequest>,
-  output: __S(57, __c7, 1) as any as S.Schema<ErrorTrackingIssueEventsResponse>,
+  input: __S(96, __c6, 0) as any as S.Schema<CreateErrorTrackingQueryIssueEventRequest>,
+  output: __S(99, __c6, 3) as any as S.Schema<ErrorTrackingIssueEventsResponse>,
   errors: [NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -2485,8 +2489,8 @@ export const createErrorTrackingRecommendationsDismiss: API.OperationMethod<
   CreateErrorTrackingRecommendationsDismissError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(58, __c7, 2) as any as S.Schema<CreateErrorTrackingRecommendationsDismissRequest>,
-  output: __S(59, __c7, 3) as any as S.Schema<ErrorTrackingRecommendation>,
+  input: __S(128, __c8, 0) as any as S.Schema<CreateErrorTrackingRecommendationsDismissRequest>,
+  output: __S(144, __c9, 0) as any as S.Schema<ErrorTrackingRecommendation>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -2499,8 +2503,8 @@ export const createErrorTrackingRelease: API.OperationMethod<
   CreateErrorTrackingReleaseError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(60, __c7, 4) as any as S.Schema<CreateErrorTrackingReleaseRequest>,
-  output: __S(61, __c7, 5) as any as S.Schema<ErrorTrackingRelease>,
+  input: __S(160, __c10, 0) as any as S.Schema<CreateErrorTrackingReleaseRequest>,
+  output: __S(176, __c11, 0) as any as S.Schema<ErrorTrackingRelease>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -2513,8 +2517,8 @@ export const createErrorTrackingSeverityRule: API.OperationMethod<
   CreateErrorTrackingSeverityRuleError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(62, __c7, 6) as any as S.Schema<CreateErrorTrackingSeverityRuleRequest>,
-  output: __S(64, __c8, 0) as any as S.Schema<ErrorTrackingSeverityRule>,
+  input: __S(192, __c12, 0) as any as S.Schema<CreateErrorTrackingSeverityRuleRequest>,
+  output: __S(209, __c13, 1) as any as S.Schema<ErrorTrackingSeverityRule>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -2527,8 +2531,8 @@ export const createErrorTrackingSuppressionRule: API.OperationMethod<
   CreateErrorTrackingSuppressionRuleError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(65, __c8, 1) as any as S.Schema<CreateErrorTrackingSuppressionRuleRequest>,
-  output: __S(66, __c8, 2) as any as S.Schema<ErrorTrackingSuppressionRule>,
+  input: __S(224, __c14, 0) as any as S.Schema<CreateErrorTrackingSuppressionRuleRequest>,
+  output: __S(240, __c15, 0) as any as S.Schema<ErrorTrackingSuppressionRule>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -2541,8 +2545,8 @@ export const errorTrackingAlertsDestroy: API.OperationMethod<
   ErrorTrackingAlertsDestroyError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(67, __c8, 3) as any as S.Schema<ErrorTrackingAlertsDestroyRequest>,
-  output: __S(68, __c8, 4) as any as S.Schema<ErrorTrackingAlertsDestroyResponse>,
+  input: __S(256, __c16, 0) as any as S.Schema<ErrorTrackingAlertsDestroyRequest>,
+  output: __S(272, __c17, 0) as any as S.Schema<ErrorTrackingAlertsDestroyResponse>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -2555,8 +2559,8 @@ export const errorTrackingAssignmentRulesDestroy: API.OperationMethod<
   ErrorTrackingAssignmentRulesDestroyError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(69, __c8, 5) as any as S.Schema<ErrorTrackingAssignmentRulesDestroyRequest>,
-  output: __S(68, __c8, 4) as any as S.Schema<ErrorTrackingAssignmentRulesDestroyResponse>,
+  input: __S(288, __c18, 0) as any as S.Schema<ErrorTrackingAssignmentRulesDestroyRequest>,
+  output: __S(272, __c17, 0) as any as S.Schema<ErrorTrackingAssignmentRulesDestroyResponse>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -2569,8 +2573,8 @@ export const errorTrackingBypassRulesDestroy: API.OperationMethod<
   ErrorTrackingBypassRulesDestroyError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(70, __c8, 6) as any as S.Schema<ErrorTrackingBypassRulesDestroyRequest>,
-  output: __S(68, __c8, 4) as any as S.Schema<ErrorTrackingBypassRulesDestroyResponse>,
+  input: __S(304, __c19, 0) as any as S.Schema<ErrorTrackingBypassRulesDestroyRequest>,
+  output: __S(272, __c17, 0) as any as S.Schema<ErrorTrackingBypassRulesDestroyResponse>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -2584,8 +2588,8 @@ export const errorTrackingExternalReferencesDestroy: API.OperationMethod<
   ErrorTrackingExternalReferencesDestroyError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(71, __c8, 7) as any as S.Schema<ErrorTrackingExternalReferencesDestroyRequest>,
-  output: __S(68, __c8, 4) as any as S.Schema<ErrorTrackingExternalReferencesDestroyResponse>,
+  input: __S(320, __c20, 0) as any as S.Schema<ErrorTrackingExternalReferencesDestroyRequest>,
+  output: __S(272, __c17, 0) as any as S.Schema<ErrorTrackingExternalReferencesDestroyResponse>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -2600,11 +2604,11 @@ export const errorTrackingExternalReferencesSearchIssuesRetrieve: API.OperationM
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    72,
-    __c9,
+    336,
+    __c21,
     0,
   ) as any as S.Schema<ErrorTrackingExternalReferencesSearchIssuesRetrieveRequest>,
-  output: __S(75, __c9, 3) as any as S.Schema<ErrorTrackingExternalIssueSearchResult>,
+  output: __S(339, __c21, 3) as any as S.Schema<ErrorTrackingExternalIssueSearchResult>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -2618,8 +2622,8 @@ export const errorTrackingFingerprintsDestroy: API.OperationMethod<
   ErrorTrackingFingerprintsDestroyError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(76, __c9, 4) as any as S.Schema<ErrorTrackingFingerprintsDestroyRequest>,
-  output: __S(68, __c8, 4) as any as S.Schema<ErrorTrackingFingerprintsDestroyResponse>,
+  input: __S(352, __c22, 0) as any as S.Schema<ErrorTrackingFingerprintsDestroyRequest>,
+  output: __S(272, __c17, 0) as any as S.Schema<ErrorTrackingFingerprintsDestroyResponse>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -2632,8 +2636,8 @@ export const errorTrackingGroupingRulesDestroy: API.OperationMethod<
   ErrorTrackingGroupingRulesDestroyError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(77, __c9, 5) as any as S.Schema<ErrorTrackingGroupingRulesDestroyRequest>,
-  output: __S(68, __c8, 4) as any as S.Schema<ErrorTrackingGroupingRulesDestroyResponse>,
+  input: __S(368, __c23, 0) as any as S.Schema<ErrorTrackingGroupingRulesDestroyRequest>,
+  output: __S(272, __c17, 0) as any as S.Schema<ErrorTrackingGroupingRulesDestroyResponse>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -2646,8 +2650,8 @@ export const errorTrackingIssuesAssignPartialUpdate: API.OperationMethod<
   ErrorTrackingIssuesAssignPartialUpdateError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(79, __c9, 7) as any as S.Schema<ErrorTrackingIssuesAssignPartialUpdateRequest>,
-  output: __S(80, __c10, 0) as any as S.Schema<ErrorTrackingIssueAssignResponse>,
+  input: __S(384, __c24, 0) as any as S.Schema<ErrorTrackingIssuesAssignPartialUpdateRequest>,
+  output: __S(416, __c26, 0) as any as S.Schema<ErrorTrackingIssueAssignResponse>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -2660,8 +2664,8 @@ export const errorTrackingIssuesBulkCreate: API.OperationMethod<
   ErrorTrackingIssuesBulkCreateError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(81, __c10, 1) as any as S.Schema<ErrorTrackingIssuesBulkCreateRequest>,
-  output: __S(80, __c10, 0) as any as S.Schema<ErrorTrackingIssueSuccessResponse>,
+  input: __S(432, __c27, 0) as any as S.Schema<ErrorTrackingIssuesBulkCreateRequest>,
+  output: __S(416, __c26, 0) as any as S.Schema<ErrorTrackingIssueSuccessResponse>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -2675,8 +2679,8 @@ export const errorTrackingIssuesDestroy: API.OperationMethod<
   ErrorTrackingIssuesDestroyError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(82, __c10, 2) as any as S.Schema<ErrorTrackingIssuesDestroyRequest>,
-  output: __S(68, __c8, 4) as any as S.Schema<ErrorTrackingIssuesDestroyResponse>,
+  input: __S(448, __c28, 0) as any as S.Schema<ErrorTrackingIssuesDestroyRequest>,
+  output: __S(272, __c17, 0) as any as S.Schema<ErrorTrackingIssuesDestroyResponse>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -2690,8 +2694,8 @@ export const errorTrackingQueryIssuesListCreate: API.OperationMethod<
   ErrorTrackingQueryIssuesListCreateError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(84, __c10, 4) as any as S.Schema<ErrorTrackingQueryIssuesListCreateRequest>,
-  output: __S(87, __c10, 7) as any as S.Schema<ErrorTrackingIssuesListResponse>,
+  input: __S(465, __c29, 1) as any as S.Schema<ErrorTrackingQueryIssuesListCreateRequest>,
+  output: __S(468, __c29, 4) as any as S.Schema<ErrorTrackingIssuesListResponse>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -2704,8 +2708,8 @@ export const errorTrackingRecommendationsRefreshCreate: API.OperationMethod<
   ErrorTrackingRecommendationsRefreshCreateError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(88, __c11, 0) as any as S.Schema<ErrorTrackingRecommendationsRefreshCreateRequest>,
-  output: __S(59, __c7, 3) as any as S.Schema<ErrorTrackingRecommendation>,
+  input: __S(480, __c30, 0) as any as S.Schema<ErrorTrackingRecommendationsRefreshCreateRequest>,
+  output: __S(144, __c9, 0) as any as S.Schema<ErrorTrackingRecommendation>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -2718,8 +2722,8 @@ export const errorTrackingRecommendationsRestoreCreate: API.OperationMethod<
   ErrorTrackingRecommendationsRestoreCreateError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(89, __c11, 1) as any as S.Schema<ErrorTrackingRecommendationsRestoreCreateRequest>,
-  output: __S(59, __c7, 3) as any as S.Schema<ErrorTrackingRecommendation>,
+  input: __S(496, __c31, 0) as any as S.Schema<ErrorTrackingRecommendationsRestoreCreateRequest>,
+  output: __S(144, __c9, 0) as any as S.Schema<ErrorTrackingRecommendation>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -2732,8 +2736,8 @@ export const errorTrackingReleasesDestroy: API.OperationMethod<
   ErrorTrackingReleasesDestroyError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(90, __c11, 2) as any as S.Schema<ErrorTrackingReleasesDestroyRequest>,
-  output: __S(68, __c8, 4) as any as S.Schema<ErrorTrackingReleasesDestroyResponse>,
+  input: __S(592, __c37, 0) as any as S.Schema<ErrorTrackingReleasesDestroyRequest>,
+  output: __S(272, __c17, 0) as any as S.Schema<ErrorTrackingReleasesDestroyResponse>,
   errors: [Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -2746,8 +2750,12 @@ export const errorTrackingSettingsRetrieveSettingsRetrieve: API.OperationMethod<
   ErrorTrackingSettingsRetrieveSettingsRetrieveError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(91, __c11, 3) as any as S.Schema<ErrorTrackingSettingsRetrieveSettingsRetrieveRequest>,
-  output: __S(92, __c11, 4) as any as S.Schema<ErrorTrackingSettings>,
+  input: __S(
+    608,
+    __c38,
+    0,
+  ) as any as S.Schema<ErrorTrackingSettingsRetrieveSettingsRetrieveRequest>,
+  output: __S(624, __c39, 0) as any as S.Schema<ErrorTrackingSettings>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -2761,11 +2769,11 @@ export const errorTrackingSettingsUpdateSettingsPartialUpdate: API.OperationMeth
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    93,
-    __c11,
-    5,
+    640,
+    __c40,
+    0,
   ) as any as S.Schema<ErrorTrackingSettingsUpdateSettingsPartialUpdateRequest>,
-  output: __S(92, __c11, 4) as any as S.Schema<ErrorTrackingSettings>,
+  output: __S(624, __c39, 0) as any as S.Schema<ErrorTrackingSettings>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -2778,8 +2786,8 @@ export const errorTrackingSeverityRulesDestroy: API.OperationMethod<
   ErrorTrackingSeverityRulesDestroyError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(94, __c11, 6) as any as S.Schema<ErrorTrackingSeverityRulesDestroyRequest>,
-  output: __S(68, __c8, 4) as any as S.Schema<ErrorTrackingSeverityRulesDestroyResponse>,
+  input: __S(656, __c41, 0) as any as S.Schema<ErrorTrackingSeverityRulesDestroyRequest>,
+  output: __S(272, __c17, 0) as any as S.Schema<ErrorTrackingSeverityRulesDestroyResponse>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -2793,11 +2801,11 @@ export const errorTrackingSpikeDetectionConfigUpdateConfigPartialUpdate: API.Ope
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    95,
-    __c11,
-    7,
+    672,
+    __c42,
+    0,
   ) as any as S.Schema<ErrorTrackingSpikeDetectionConfigUpdateConfigPartialUpdateRequest>,
-  output: __S(96, __c12, 0) as any as S.Schema<ErrorTrackingSpikeDetectionConfig>,
+  output: __S(688, __c43, 0) as any as S.Schema<ErrorTrackingSpikeDetectionConfig>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -2810,8 +2818,8 @@ export const errorTrackingStackFramesBatchGetCreate: API.OperationMethod<
   ErrorTrackingStackFramesBatchGetCreateError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(97, __c12, 1) as any as S.Schema<ErrorTrackingStackFramesBatchGetCreateRequest>,
-  output: __S(100, __c12, 4) as any as S.Schema<ErrorTrackingStackFrameBatchGetResponse>,
+  input: __S(704, __c44, 0) as any as S.Schema<ErrorTrackingStackFramesBatchGetCreateRequest>,
+  output: __S(705, __c44, 1) as any as S.Schema<ErrorTrackingStackFrameBatchGetResponse>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -2825,8 +2833,8 @@ export const errorTrackingStackFramesDestroy: API.OperationMethod<
   ErrorTrackingStackFramesDestroyError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(101, __c12, 5) as any as S.Schema<ErrorTrackingStackFramesDestroyRequest>,
-  output: __S(68, __c8, 4) as any as S.Schema<ErrorTrackingStackFramesDestroyResponse>,
+  input: __S(752, __c47, 0) as any as S.Schema<ErrorTrackingStackFramesDestroyRequest>,
+  output: __S(272, __c17, 0) as any as S.Schema<ErrorTrackingStackFramesDestroyResponse>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -2839,8 +2847,8 @@ export const errorTrackingSuppressionRulesDestroy: API.OperationMethod<
   ErrorTrackingSuppressionRulesDestroyError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(102, __c12, 6) as any as S.Schema<ErrorTrackingSuppressionRulesDestroyRequest>,
-  output: __S(68, __c8, 4) as any as S.Schema<ErrorTrackingSuppressionRulesDestroyResponse>,
+  input: __S(768, __c48, 0) as any as S.Schema<ErrorTrackingSuppressionRulesDestroyRequest>,
+  output: __S(272, __c17, 0) as any as S.Schema<ErrorTrackingSuppressionRulesDestroyResponse>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -2854,8 +2862,8 @@ export const errorTrackingSymbolSetsBulkCheckUploadCreate: API.OperationMethod<
   ErrorTrackingSymbolSetsBulkCheckUploadCreateError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(105, __c13, 1) as any as S.Schema<ErrorTrackingSymbolSetsBulkCheckUploadCreateRequest>,
-  output: __S(107, __c13, 3) as any as S.Schema<ErrorTrackingSymbolSetBulkCheckUploadResponse>,
+  input: __S(784, __c49, 0) as any as S.Schema<ErrorTrackingSymbolSetsBulkCheckUploadCreateRequest>,
+  output: __S(785, __c49, 1) as any as S.Schema<ErrorTrackingSymbolSetBulkCheckUploadResponse>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -2872,8 +2880,8 @@ export const errorTrackingSymbolSetsBulkDeleteCreate: API.OperationMethod<
   ErrorTrackingSymbolSetsBulkDeleteCreateError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(108, __c13, 4) as any as S.Schema<ErrorTrackingSymbolSetsBulkDeleteCreateRequest>,
-  output: __S(68, __c8, 4) as any as S.Schema<ErrorTrackingSymbolSetsBulkDeleteCreateResponse>,
+  input: __S(816, __c51, 0) as any as S.Schema<ErrorTrackingSymbolSetsBulkDeleteCreateRequest>,
+  output: __S(272, __c17, 0) as any as S.Schema<ErrorTrackingSymbolSetsBulkDeleteCreateResponse>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -2891,14 +2899,14 @@ export const errorTrackingSymbolSetsBulkFinishUploadCreate: API.OperationMethod<
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    110,
-    __c13,
-    6,
+    897,
+    __c56,
+    1,
   ) as any as S.Schema<ErrorTrackingSymbolSetsBulkFinishUploadCreateRequest>,
   output: __S(
-    68,
-    __c8,
-    4,
+    272,
+    __c17,
+    0,
   ) as any as S.Schema<ErrorTrackingSymbolSetsBulkFinishUploadCreateResponse>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
@@ -2916,8 +2924,8 @@ export const errorTrackingSymbolSetsBulkStartUploadCreate: API.OperationMethod<
   ErrorTrackingSymbolSetsBulkStartUploadCreateError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(111, __c13, 7) as any as S.Schema<ErrorTrackingSymbolSetsBulkStartUploadCreateRequest>,
-  output: __S(115, __c14, 3) as any as S.Schema<ErrorTrackingSymbolSetBulkStartUploadResponse>,
+  input: __S(912, __c57, 0) as any as S.Schema<ErrorTrackingSymbolSetsBulkStartUploadCreateRequest>,
+  output: __S(916, __c57, 4) as any as S.Schema<ErrorTrackingSymbolSetBulkStartUploadResponse>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -2930,8 +2938,8 @@ export const errorTrackingSymbolSetsDestroy: API.OperationMethod<
   ErrorTrackingSymbolSetsDestroyError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(116, __c14, 4) as any as S.Schema<ErrorTrackingSymbolSetsDestroyRequest>,
-  output: __S(68, __c8, 4) as any as S.Schema<ErrorTrackingSymbolSetsDestroyResponse>,
+  input: __S(928, __c58, 0) as any as S.Schema<ErrorTrackingSymbolSetsDestroyRequest>,
+  output: __S(272, __c17, 0) as any as S.Schema<ErrorTrackingSymbolSetsDestroyResponse>,
   errors: [Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -2945,8 +2953,8 @@ export const errorTrackingSymbolSetsDownloadRetrieve: API.OperationMethod<
   ErrorTrackingSymbolSetsDownloadRetrieveError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(117, __c14, 5) as any as S.Schema<ErrorTrackingSymbolSetsDownloadRetrieveRequest>,
-  output: __S(118, __c14, 6) as any as S.Schema<SymbolSetDownloadResponse>,
+  input: __S(944, __c59, 0) as any as S.Schema<ErrorTrackingSymbolSetsDownloadRetrieveRequest>,
+  output: __S(945, __c59, 1) as any as S.Schema<SymbolSetDownloadResponse>,
   errors: [Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -2963,8 +2971,8 @@ export const errorTrackingSymbolSetsFinishUploadUpdate: API.OperationMethod<
   ErrorTrackingSymbolSetsFinishUploadUpdateError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(119, __c14, 7) as any as S.Schema<ErrorTrackingSymbolSetsFinishUploadUpdateRequest>,
-  output: __S(68, __c8, 4) as any as S.Schema<ErrorTrackingSymbolSetsFinishUploadUpdateResponse>,
+  input: __S(960, __c60, 0) as any as S.Schema<ErrorTrackingSymbolSetsFinishUploadUpdateRequest>,
+  output: __S(272, __c17, 0) as any as S.Schema<ErrorTrackingSymbolSetsFinishUploadUpdateResponse>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -2977,8 +2985,8 @@ export const getErrorTrackingAlert: API.OperationMethod<
   GetErrorTrackingAlertError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(120, __c15, 0) as any as S.Schema<GetErrorTrackingAlertRequest>,
-  output: __S(11, __c1, 3) as any as S.Schema<ErrorTrackingAlert>,
+  input: __S(976, __c61, 0) as any as S.Schema<GetErrorTrackingAlertRequest>,
+  output: __S(565, __c35, 5) as any as S.Schema<ErrorTrackingAlert>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -2991,8 +2999,8 @@ export const getErrorTrackingAssignmentRule: API.OperationMethod<
   GetErrorTrackingAssignmentRuleError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(121, __c15, 1) as any as S.Schema<GetErrorTrackingAssignmentRuleRequest>,
-  output: __S(18, __c2, 2) as any as S.Schema<ErrorTrackingAssignmentRule>,
+  input: __S(992, __c62, 0) as any as S.Schema<GetErrorTrackingAssignmentRuleRequest>,
+  output: __S(849, __c53, 1) as any as S.Schema<ErrorTrackingAssignmentRule>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -3005,8 +3013,8 @@ export const getErrorTrackingBypassRule: API.OperationMethod<
   GetErrorTrackingBypassRuleError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(122, __c15, 2) as any as S.Schema<GetErrorTrackingBypassRuleRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<ErrorTrackingBypassRule>,
+  input: __S(1008, __c63, 0) as any as S.Schema<GetErrorTrackingBypassRuleRequest>,
+  output: __S(1088, __c68, 0) as any as S.Schema<ErrorTrackingBypassRule>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -3019,8 +3027,8 @@ export const getErrorTrackingExternalReference: API.OperationMethod<
   GetErrorTrackingExternalReferenceError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(123, __c15, 3) as any as S.Schema<GetErrorTrackingExternalReferenceRequest>,
-  output: __S(23, __c2, 7) as any as S.Schema<ErrorTrackingExternalReferenceResult>,
+  input: __S(1024, __c64, 0) as any as S.Schema<GetErrorTrackingExternalReferenceRequest>,
+  output: __S(1329, __c83, 1) as any as S.Schema<ErrorTrackingExternalReferenceResult>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -3033,8 +3041,8 @@ export const getErrorTrackingFingerprint: API.OperationMethod<
   GetErrorTrackingFingerprintError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(124, __c15, 4) as any as S.Schema<GetErrorTrackingFingerprintRequest>,
-  output: __S(125, __c15, 5) as any as S.Schema<ErrorTrackingFingerprint>,
+  input: __S(1040, __c65, 0) as any as S.Schema<GetErrorTrackingFingerprintRequest>,
+  output: __S(1056, __c66, 0) as any as S.Schema<ErrorTrackingFingerprint>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -3047,8 +3055,8 @@ export const getErrorTrackingFingerprintsResolve: API.OperationMethod<
   GetErrorTrackingFingerprintsResolveError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(126, __c15, 6) as any as S.Schema<GetErrorTrackingFingerprintsResolveRequest>,
-  output: __S(125, __c15, 5) as any as S.Schema<ErrorTrackingFingerprint>,
+  input: __S(1104, __c69, 0) as any as S.Schema<GetErrorTrackingFingerprintsResolveRequest>,
+  output: __S(1056, __c66, 0) as any as S.Schema<ErrorTrackingFingerprint>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -3062,11 +3070,11 @@ export const getErrorTrackingGitProviderFileLinksResolveGithub: API.OperationMet
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    127,
-    __c15,
-    7,
+    1120,
+    __c70,
+    0,
   ) as any as S.Schema<GetErrorTrackingGitProviderFileLinksResolveGithubRequest>,
-  output: __S(128, __c16, 0) as any as S.Schema<GitProviderFileLinkResolveResponse>,
+  output: __S(1136, __c71, 0) as any as S.Schema<GitProviderFileLinkResolveResponse>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -3080,11 +3088,11 @@ export const getErrorTrackingGitProviderFileLinksResolveGitlab: API.OperationMet
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    129,
-    __c16,
-    1,
+    1152,
+    __c72,
+    0,
   ) as any as S.Schema<GetErrorTrackingGitProviderFileLinksResolveGitlabRequest>,
-  output: __S(128, __c16, 0) as any as S.Schema<GitProviderFileLinkResolveResponse>,
+  output: __S(1136, __c71, 0) as any as S.Schema<GitProviderFileLinkResolveResponse>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -3097,8 +3105,8 @@ export const getErrorTrackingGroupingRule: API.OperationMethod<
   GetErrorTrackingGroupingRuleError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(130, __c16, 2) as any as S.Schema<GetErrorTrackingGroupingRuleRequest>,
-  output: __S(29, __c3, 5) as any as S.Schema<ErrorTrackingGroupingRule>,
+  input: __S(1168, __c73, 0) as any as S.Schema<GetErrorTrackingGroupingRuleRequest>,
+  output: __S(1729, __c108, 1) as any as S.Schema<ErrorTrackingGroupingRule>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -3111,8 +3119,8 @@ export const getErrorTrackingIssue: API.OperationMethod<
   GetErrorTrackingIssueError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(131, __c16, 3) as any as S.Schema<GetErrorTrackingIssueRequest>,
-  output: __S(135, __c16, 7) as any as S.Schema<ErrorTrackingIssueRead>,
+  input: __S(1184, __c74, 0) as any as S.Schema<GetErrorTrackingIssueRequest>,
+  output: __S(1218, __c76, 2) as any as S.Schema<ErrorTrackingIssueRead>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -3125,8 +3133,8 @@ export const getErrorTrackingIssuesActivity: API.OperationMethod<
   GetErrorTrackingIssuesActivityError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(136, __c17, 0) as any as S.Schema<GetErrorTrackingIssuesActivityRequest>,
-  output: __S(68, __c8, 4) as any as S.Schema<GetErrorTrackingIssuesActivityResponse>,
+  input: __S(1232, __c77, 0) as any as S.Schema<GetErrorTrackingIssuesActivityRequest>,
+  output: __S(272, __c17, 0) as any as S.Schema<GetErrorTrackingIssuesActivityResponse>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -3139,8 +3147,8 @@ export const getErrorTrackingIssuesAllActivity: API.OperationMethod<
   GetErrorTrackingIssuesAllActivityError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(137, __c17, 1) as any as S.Schema<GetErrorTrackingIssuesAllActivityRequest>,
-  output: __S(68, __c8, 4) as any as S.Schema<GetErrorTrackingIssuesAllActivityResponse>,
+  input: __S(1248, __c78, 0) as any as S.Schema<GetErrorTrackingIssuesAllActivityRequest>,
+  output: __S(272, __c17, 0) as any as S.Schema<GetErrorTrackingIssuesAllActivityResponse>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -3153,8 +3161,8 @@ export const getErrorTrackingIssuesExist: API.OperationMethod<
   GetErrorTrackingIssuesExistError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(138, __c17, 2) as any as S.Schema<GetErrorTrackingIssuesExistRequest>,
-  output: __S(139, __c17, 3) as any as S.Schema<ErrorTrackingIssueExistsResponse>,
+  input: __S(1264, __c79, 0) as any as S.Schema<GetErrorTrackingIssuesExistRequest>,
+  output: __S(1265, __c79, 1) as any as S.Schema<ErrorTrackingIssueExistsResponse>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -3167,8 +3175,8 @@ export const getErrorTrackingIssuesValue: API.OperationMethod<
   GetErrorTrackingIssuesValueError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(140, __c17, 4) as any as S.Schema<GetErrorTrackingIssuesValueRequest>,
-  output: __S(143, __c17, 7) as any as S.Schema<ErrorTrackingIssueValuesResponse>,
+  input: __S(1280, __c80, 0) as any as S.Schema<GetErrorTrackingIssuesValueRequest>,
+  output: __S(1283, __c80, 3) as any as S.Schema<ErrorTrackingIssueValuesResponse>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -3181,8 +3189,8 @@ export const getErrorTrackingRelease: API.OperationMethod<
   GetErrorTrackingReleaseError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(144, __c18, 0) as any as S.Schema<GetErrorTrackingReleaseRequest>,
-  output: __S(61, __c7, 5) as any as S.Schema<ErrorTrackingRelease>,
+  input: __S(1296, __c81, 0) as any as S.Schema<GetErrorTrackingReleaseRequest>,
+  output: __S(176, __c11, 0) as any as S.Schema<ErrorTrackingRelease>,
   errors: [Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -3195,8 +3203,8 @@ export const getErrorTrackingReleasesHash: API.OperationMethod<
   GetErrorTrackingReleasesHashError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(145, __c18, 1) as any as S.Schema<GetErrorTrackingReleasesHashRequest>,
-  output: __S(68, __c8, 4) as any as S.Schema<GetErrorTrackingReleasesHashResponse>,
+  input: __S(1360, __c85, 0) as any as S.Schema<GetErrorTrackingReleasesHashRequest>,
+  output: __S(272, __c17, 0) as any as S.Schema<GetErrorTrackingReleasesHashResponse>,
   errors: [Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -3209,8 +3217,8 @@ export const getErrorTrackingSeverityRule: API.OperationMethod<
   GetErrorTrackingSeverityRuleError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(146, __c18, 2) as any as S.Schema<GetErrorTrackingSeverityRuleRequest>,
-  output: __S(64, __c8, 0) as any as S.Schema<ErrorTrackingSeverityRule>,
+  input: __S(1376, __c86, 0) as any as S.Schema<GetErrorTrackingSeverityRuleRequest>,
+  output: __S(209, __c13, 1) as any as S.Schema<ErrorTrackingSeverityRule>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -3223,8 +3231,8 @@ export const getErrorTrackingStackFrame: API.OperationMethod<
   GetErrorTrackingStackFrameError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(147, __c18, 3) as any as S.Schema<GetErrorTrackingStackFrameRequest>,
-  output: __S(98, __c12, 2) as any as S.Schema<ErrorTrackingStackFrame>,
+  input: __S(1392, __c87, 0) as any as S.Schema<GetErrorTrackingStackFrameRequest>,
+  output: __S(720, __c45, 0) as any as S.Schema<ErrorTrackingStackFrame>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -3237,8 +3245,8 @@ export const getErrorTrackingSuppressionRule: API.OperationMethod<
   GetErrorTrackingSuppressionRuleError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(148, __c18, 4) as any as S.Schema<GetErrorTrackingSuppressionRuleRequest>,
-  output: __S(66, __c8, 2) as any as S.Schema<ErrorTrackingSuppressionRule>,
+  input: __S(1408, __c88, 0) as any as S.Schema<GetErrorTrackingSuppressionRuleRequest>,
+  output: __S(240, __c15, 0) as any as S.Schema<ErrorTrackingSuppressionRule>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -3251,8 +3259,8 @@ export const getErrorTrackingSymbolSet: API.OperationMethod<
   GetErrorTrackingSymbolSetError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(149, __c18, 5) as any as S.Schema<GetErrorTrackingSymbolSetRequest>,
-  output: __S(150, __c18, 6) as any as S.Schema<ErrorTrackingSymbolSet>,
+  input: __S(1424, __c89, 0) as any as S.Schema<GetErrorTrackingSymbolSetRequest>,
+  output: __S(1440, __c90, 0) as any as S.Schema<ErrorTrackingSymbolSet>,
   errors: [Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -3265,8 +3273,8 @@ export const listErrorTrackingAlerts: API.OperationMethod<
   ListErrorTrackingAlertsError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(151, __c18, 7) as any as S.Schema<ListErrorTrackingAlertsRequest>,
-  output: __S(153, __c19, 1) as any as S.Schema<PaginatedErrorTrackingAlertList>,
+  input: __S(1456, __c91, 0) as any as S.Schema<ListErrorTrackingAlertsRequest>,
+  output: __S(1458, __c91, 2) as any as S.Schema<PaginatedErrorTrackingAlertList>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -3279,8 +3287,8 @@ export const listErrorTrackingAssignmentRules: API.OperationMethod<
   ListErrorTrackingAssignmentRulesError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(154, __c19, 2) as any as S.Schema<ListErrorTrackingAssignmentRulesRequest>,
-  output: __S(156, __c19, 4) as any as S.Schema<PaginatedErrorTrackingAssignmentRuleList>,
+  input: __S(1472, __c92, 0) as any as S.Schema<ListErrorTrackingAssignmentRulesRequest>,
+  output: __S(1474, __c92, 2) as any as S.Schema<PaginatedErrorTrackingAssignmentRuleList>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -3293,8 +3301,8 @@ export const listErrorTrackingBypassRules: API.OperationMethod<
   ListErrorTrackingBypassRulesError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(157, __c19, 5) as any as S.Schema<ListErrorTrackingBypassRulesRequest>,
-  output: __S(159, __c19, 7) as any as S.Schema<PaginatedErrorTrackingBypassRuleList>,
+  input: __S(1488, __c93, 0) as any as S.Schema<ListErrorTrackingBypassRulesRequest>,
+  output: __S(1490, __c93, 2) as any as S.Schema<PaginatedErrorTrackingBypassRuleList>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -3307,8 +3315,8 @@ export const listErrorTrackingExternalReferences: API.OperationMethod<
   ListErrorTrackingExternalReferencesError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(160, __c20, 0) as any as S.Schema<ListErrorTrackingExternalReferencesRequest>,
-  output: __S(161, __c20, 1) as any as S.Schema<PaginatedErrorTrackingExternalReferenceResultList>,
+  input: __S(1504, __c94, 0) as any as S.Schema<ListErrorTrackingExternalReferencesRequest>,
+  output: __S(1505, __c94, 1) as any as S.Schema<PaginatedErrorTrackingExternalReferenceResultList>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -3321,8 +3329,8 @@ export const listErrorTrackingFingerprints: API.OperationMethod<
   ListErrorTrackingFingerprintsError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(162, __c20, 2) as any as S.Schema<ListErrorTrackingFingerprintsRequest>,
-  output: __S(164, __c20, 4) as any as S.Schema<PaginatedErrorTrackingFingerprintList>,
+  input: __S(1520, __c95, 0) as any as S.Schema<ListErrorTrackingFingerprintsRequest>,
+  output: __S(1522, __c95, 2) as any as S.Schema<PaginatedErrorTrackingFingerprintList>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -3335,8 +3343,8 @@ export const listErrorTrackingGroupingRules: API.OperationMethod<
   ListErrorTrackingGroupingRulesError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(165, __c20, 5) as any as S.Schema<ListErrorTrackingGroupingRulesRequest>,
-  output: __S(167, __c20, 7) as any as S.Schema<ErrorTrackingGroupingRuleListResponse>,
+  input: __S(1552, __c97, 0) as any as S.Schema<ListErrorTrackingGroupingRulesRequest>,
+  output: __S(1554, __c97, 2) as any as S.Schema<ErrorTrackingGroupingRuleListResponse>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -3349,8 +3357,8 @@ export const listErrorTrackingIssues: API.OperationMethod<
   ListErrorTrackingIssuesError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(168, __c21, 0) as any as S.Schema<ListErrorTrackingIssuesRequest>,
-  output: __S(170, __c21, 2) as any as S.Schema<PaginatedErrorTrackingIssueReadList>,
+  input: __S(1568, __c98, 0) as any as S.Schema<ListErrorTrackingIssuesRequest>,
+  output: __S(1570, __c98, 2) as any as S.Schema<PaginatedErrorTrackingIssueReadList>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -3363,8 +3371,8 @@ export const listErrorTrackingRecommendations: API.OperationMethod<
   ListErrorTrackingRecommendationsError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(171, __c21, 3) as any as S.Schema<ListErrorTrackingRecommendationsRequest>,
-  output: __S(173, __c21, 5) as any as S.Schema<PaginatedErrorTrackingRecommendationList>,
+  input: __S(1584, __c99, 0) as any as S.Schema<ListErrorTrackingRecommendationsRequest>,
+  output: __S(1586, __c99, 2) as any as S.Schema<PaginatedErrorTrackingRecommendationList>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -3377,8 +3385,8 @@ export const listErrorTrackingReleases: API.OperationMethod<
   ListErrorTrackingReleasesError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(174, __c21, 6) as any as S.Schema<ListErrorTrackingReleasesRequest>,
-  output: __S(176, __c22, 0) as any as S.Schema<PaginatedErrorTrackingReleaseList>,
+  input: __S(1600, __c100, 0) as any as S.Schema<ListErrorTrackingReleasesRequest>,
+  output: __S(1602, __c100, 2) as any as S.Schema<PaginatedErrorTrackingReleaseList>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -3391,8 +3399,8 @@ export const listErrorTrackingSeverityRules: API.OperationMethod<
   ListErrorTrackingSeverityRulesError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(177, __c22, 1) as any as S.Schema<ListErrorTrackingSeverityRulesRequest>,
-  output: __S(179, __c22, 3) as any as S.Schema<ErrorTrackingSeverityRuleListResponse>,
+  input: __S(1616, __c101, 0) as any as S.Schema<ListErrorTrackingSeverityRulesRequest>,
+  output: __S(1618, __c101, 2) as any as S.Schema<ErrorTrackingSeverityRuleListResponse>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -3405,8 +3413,8 @@ export const listErrorTrackingSpikeDetectionConfig: API.OperationMethod<
   ListErrorTrackingSpikeDetectionConfigError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(180, __c22, 4) as any as S.Schema<ListErrorTrackingSpikeDetectionConfigRequest>,
-  output: __S(96, __c12, 0) as any as S.Schema<ErrorTrackingSpikeDetectionConfig>,
+  input: __S(1632, __c102, 0) as any as S.Schema<ListErrorTrackingSpikeDetectionConfigRequest>,
+  output: __S(688, __c43, 0) as any as S.Schema<ErrorTrackingSpikeDetectionConfig>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -3419,8 +3427,8 @@ export const listErrorTrackingSpikeEvents: API.OperationMethod<
   ListErrorTrackingSpikeEventsError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(181, __c22, 5) as any as S.Schema<ListErrorTrackingSpikeEventsRequest>,
-  output: __S(185, __c23, 1) as any as S.Schema<PaginatedErrorTrackingSpikeEventList>,
+  input: __S(1648, __c103, 0) as any as S.Schema<ListErrorTrackingSpikeEventsRequest>,
+  output: __S(1652, __c103, 4) as any as S.Schema<PaginatedErrorTrackingSpikeEventList>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -3433,8 +3441,8 @@ export const listErrorTrackingStackFrames: API.OperationMethod<
   ListErrorTrackingStackFramesError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(186, __c23, 2) as any as S.Schema<ListErrorTrackingStackFramesRequest>,
-  output: __S(187, __c23, 3) as any as S.Schema<PaginatedErrorTrackingStackFrameList>,
+  input: __S(1664, __c104, 0) as any as S.Schema<ListErrorTrackingStackFramesRequest>,
+  output: __S(1665, __c104, 1) as any as S.Schema<PaginatedErrorTrackingStackFrameList>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -3447,8 +3455,8 @@ export const listErrorTrackingSuppressionRules: API.OperationMethod<
   ListErrorTrackingSuppressionRulesError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(188, __c23, 4) as any as S.Schema<ListErrorTrackingSuppressionRulesRequest>,
-  output: __S(190, __c23, 6) as any as S.Schema<PaginatedErrorTrackingSuppressionRuleList>,
+  input: __S(1680, __c105, 0) as any as S.Schema<ListErrorTrackingSuppressionRulesRequest>,
+  output: __S(1682, __c105, 2) as any as S.Schema<PaginatedErrorTrackingSuppressionRuleList>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -3461,8 +3469,8 @@ export const listErrorTrackingSymbolSets: API.OperationMethod<
   ListErrorTrackingSymbolSetsError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(191, __c23, 7) as any as S.Schema<ListErrorTrackingSymbolSetsRequest>,
-  output: __S(193, __c24, 1) as any as S.Schema<PaginatedErrorTrackingSymbolSetList>,
+  input: __S(1696, __c106, 0) as any as S.Schema<ListErrorTrackingSymbolSetsRequest>,
+  output: __S(1698, __c106, 2) as any as S.Schema<PaginatedErrorTrackingSymbolSetList>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -3475,8 +3483,8 @@ export const updateErrorTrackingAlert: API.OperationMethod<
   UpdateErrorTrackingAlertError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(194, __c24, 2) as any as S.Schema<UpdateErrorTrackingAlertRequest>,
-  output: __S(11, __c1, 3) as any as S.Schema<ErrorTrackingAlert>,
+  input: __S(1744, __c109, 0) as any as S.Schema<UpdateErrorTrackingAlertRequest>,
+  output: __S(565, __c35, 5) as any as S.Schema<ErrorTrackingAlert>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -3489,8 +3497,8 @@ export const updateErrorTrackingAlertsPartial: API.OperationMethod<
   UpdateErrorTrackingAlertsPartialError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(195, __c24, 3) as any as S.Schema<UpdateErrorTrackingAlertsPartialRequest>,
-  output: __S(11, __c1, 3) as any as S.Schema<ErrorTrackingAlert>,
+  input: __S(1760, __c110, 0) as any as S.Schema<UpdateErrorTrackingAlertsPartialRequest>,
+  output: __S(565, __c35, 5) as any as S.Schema<ErrorTrackingAlert>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -3503,8 +3511,8 @@ export const updateErrorTrackingAssignmentRule: API.OperationMethod<
   UpdateErrorTrackingAssignmentRuleError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(196, __c24, 4) as any as S.Schema<UpdateErrorTrackingAssignmentRuleRequest>,
-  output: __S(68, __c8, 4) as any as S.Schema<UpdateErrorTrackingAssignmentRuleResponse>,
+  input: __S(1776, __c111, 0) as any as S.Schema<UpdateErrorTrackingAssignmentRuleRequest>,
+  output: __S(272, __c17, 0) as any as S.Schema<UpdateErrorTrackingAssignmentRuleResponse>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -3517,8 +3525,8 @@ export const updateErrorTrackingAssignmentRulesPartial: API.OperationMethod<
   UpdateErrorTrackingAssignmentRulesPartialError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(197, __c24, 5) as any as S.Schema<UpdateErrorTrackingAssignmentRulesPartialRequest>,
-  output: __S(68, __c8, 4) as any as S.Schema<UpdateErrorTrackingAssignmentRulesPartialResponse>,
+  input: __S(1792, __c112, 0) as any as S.Schema<UpdateErrorTrackingAssignmentRulesPartialRequest>,
+  output: __S(272, __c17, 0) as any as S.Schema<UpdateErrorTrackingAssignmentRulesPartialResponse>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -3532,13 +3540,13 @@ export const updateErrorTrackingAssignmentRulesReorderPartial: API.OperationMeth
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    199,
-    __c24,
-    7,
+    1808,
+    __c113,
+    0,
   ) as any as S.Schema<UpdateErrorTrackingAssignmentRulesReorderPartialRequest>,
   output: __S(
-    200,
-    __c25,
+    1824,
+    __c114,
     0,
   ) as any as S.Schema<UpdateErrorTrackingAssignmentRulesReorderPartialResponse>,
   errors: [],
@@ -3553,8 +3561,8 @@ export const updateErrorTrackingBypassRule: API.OperationMethod<
   UpdateErrorTrackingBypassRuleError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(201, __c25, 1) as any as S.Schema<UpdateErrorTrackingBypassRuleRequest>,
-  output: __S(68, __c8, 4) as any as S.Schema<UpdateErrorTrackingBypassRuleResponse>,
+  input: __S(1856, __c116, 0) as any as S.Schema<UpdateErrorTrackingBypassRuleRequest>,
+  output: __S(272, __c17, 0) as any as S.Schema<UpdateErrorTrackingBypassRuleResponse>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -3567,8 +3575,8 @@ export const updateErrorTrackingBypassRulesPartial: API.OperationMethod<
   UpdateErrorTrackingBypassRulesPartialError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(202, __c25, 2) as any as S.Schema<UpdateErrorTrackingBypassRulesPartialRequest>,
-  output: __S(68, __c8, 4) as any as S.Schema<UpdateErrorTrackingBypassRulesPartialResponse>,
+  input: __S(1872, __c117, 0) as any as S.Schema<UpdateErrorTrackingBypassRulesPartialRequest>,
+  output: __S(272, __c17, 0) as any as S.Schema<UpdateErrorTrackingBypassRulesPartialResponse>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -3581,8 +3589,16 @@ export const updateErrorTrackingBypassRulesReorderPartial: API.OperationMethod<
   UpdateErrorTrackingBypassRulesReorderPartialError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(204, __c25, 4) as any as S.Schema<UpdateErrorTrackingBypassRulesReorderPartialRequest>,
-  output: __S(68, __c8, 4) as any as S.Schema<UpdateErrorTrackingBypassRulesReorderPartialResponse>,
+  input: __S(
+    1889,
+    __c118,
+    1,
+  ) as any as S.Schema<UpdateErrorTrackingBypassRulesReorderPartialRequest>,
+  output: __S(
+    272,
+    __c17,
+    0,
+  ) as any as S.Schema<UpdateErrorTrackingBypassRulesReorderPartialResponse>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -3595,8 +3611,8 @@ export const updateErrorTrackingGroupingRule: API.OperationMethod<
   UpdateErrorTrackingGroupingRuleError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(205, __c25, 5) as any as S.Schema<UpdateErrorTrackingGroupingRuleRequest>,
-  output: __S(68, __c8, 4) as any as S.Schema<UpdateErrorTrackingGroupingRuleResponse>,
+  input: __S(1904, __c119, 0) as any as S.Schema<UpdateErrorTrackingGroupingRuleRequest>,
+  output: __S(272, __c17, 0) as any as S.Schema<UpdateErrorTrackingGroupingRuleResponse>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -3609,8 +3625,8 @@ export const updateErrorTrackingGroupingRulesPartial: API.OperationMethod<
   UpdateErrorTrackingGroupingRulesPartialError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(206, __c25, 6) as any as S.Schema<UpdateErrorTrackingGroupingRulesPartialRequest>,
-  output: __S(68, __c8, 4) as any as S.Schema<UpdateErrorTrackingGroupingRulesPartialResponse>,
+  input: __S(1920, __c120, 0) as any as S.Schema<UpdateErrorTrackingGroupingRulesPartialRequest>,
+  output: __S(272, __c17, 0) as any as S.Schema<UpdateErrorTrackingGroupingRulesPartialResponse>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -3624,14 +3640,14 @@ export const updateErrorTrackingGroupingRulesReorderPartial: API.OperationMethod
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    207,
-    __c25,
-    7,
+    1968,
+    __c123,
+    0,
   ) as any as S.Schema<UpdateErrorTrackingGroupingRulesReorderPartialRequest>,
   output: __S(
-    68,
-    __c8,
-    4,
+    272,
+    __c17,
+    0,
   ) as any as S.Schema<UpdateErrorTrackingGroupingRulesReorderPartialResponse>,
   errors: [],
   protocol: PosthogProtocol,
@@ -3645,8 +3661,8 @@ export const updateErrorTrackingIssue: API.OperationMethod<
   UpdateErrorTrackingIssueError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(208, __c26, 0) as any as S.Schema<UpdateErrorTrackingIssueRequest>,
-  output: __S(135, __c16, 7) as any as S.Schema<ErrorTrackingIssueRead>,
+  input: __S(1984, __c124, 0) as any as S.Schema<UpdateErrorTrackingIssueRequest>,
+  output: __S(1218, __c76, 2) as any as S.Schema<ErrorTrackingIssueRead>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -3659,8 +3675,8 @@ export const updateErrorTrackingIssuesCohort: API.OperationMethod<
   UpdateErrorTrackingIssuesCohortError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(209, __c26, 1) as any as S.Schema<UpdateErrorTrackingIssuesCohortRequest>,
-  output: __S(80, __c10, 0) as any as S.Schema<ErrorTrackingIssueSuccessResponse>,
+  input: __S(2000, __c125, 0) as any as S.Schema<UpdateErrorTrackingIssuesCohortRequest>,
+  output: __S(416, __c26, 0) as any as S.Schema<ErrorTrackingIssueSuccessResponse>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -3673,8 +3689,8 @@ export const updateErrorTrackingIssuesPartial: API.OperationMethod<
   UpdateErrorTrackingIssuesPartialError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(210, __c26, 2) as any as S.Schema<UpdateErrorTrackingIssuesPartialRequest>,
-  output: __S(135, __c16, 7) as any as S.Schema<ErrorTrackingIssueRead>,
+  input: __S(2016, __c126, 0) as any as S.Schema<UpdateErrorTrackingIssuesPartialRequest>,
+  output: __S(1218, __c76, 2) as any as S.Schema<ErrorTrackingIssueRead>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -3687,8 +3703,8 @@ export const updateErrorTrackingRelease: API.OperationMethod<
   UpdateErrorTrackingReleaseError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(211, __c26, 3) as any as S.Schema<UpdateErrorTrackingReleaseRequest>,
-  output: __S(68, __c8, 4) as any as S.Schema<UpdateErrorTrackingReleaseResponse>,
+  input: __S(2032, __c127, 0) as any as S.Schema<UpdateErrorTrackingReleaseRequest>,
+  output: __S(272, __c17, 0) as any as S.Schema<UpdateErrorTrackingReleaseResponse>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -3705,8 +3721,8 @@ export const updateErrorTrackingReleasesPartial: API.OperationMethod<
   UpdateErrorTrackingReleasesPartialError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(212, __c26, 4) as any as S.Schema<UpdateErrorTrackingReleasesPartialRequest>,
-  output: __S(68, __c8, 4) as any as S.Schema<UpdateErrorTrackingReleasesPartialResponse>,
+  input: __S(2048, __c128, 0) as any as S.Schema<UpdateErrorTrackingReleasesPartialRequest>,
+  output: __S(272, __c17, 0) as any as S.Schema<UpdateErrorTrackingReleasesPartialResponse>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -3719,8 +3735,8 @@ export const updateErrorTrackingSeverityRule: API.OperationMethod<
   UpdateErrorTrackingSeverityRuleError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(213, __c26, 5) as any as S.Schema<UpdateErrorTrackingSeverityRuleRequest>,
-  output: __S(68, __c8, 4) as any as S.Schema<UpdateErrorTrackingSeverityRuleResponse>,
+  input: __S(2064, __c129, 0) as any as S.Schema<UpdateErrorTrackingSeverityRuleRequest>,
+  output: __S(272, __c17, 0) as any as S.Schema<UpdateErrorTrackingSeverityRuleResponse>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -3733,8 +3749,8 @@ export const updateErrorTrackingSeverityRulesPartial: API.OperationMethod<
   UpdateErrorTrackingSeverityRulesPartialError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(214, __c26, 6) as any as S.Schema<UpdateErrorTrackingSeverityRulesPartialRequest>,
-  output: __S(68, __c8, 4) as any as S.Schema<UpdateErrorTrackingSeverityRulesPartialResponse>,
+  input: __S(2080, __c130, 0) as any as S.Schema<UpdateErrorTrackingSeverityRulesPartialRequest>,
+  output: __S(272, __c17, 0) as any as S.Schema<UpdateErrorTrackingSeverityRulesPartialResponse>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -3748,14 +3764,14 @@ export const updateErrorTrackingSeverityRulesReorderPartial: API.OperationMethod
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    215,
-    __c26,
-    7,
+    2096,
+    __c131,
+    0,
   ) as any as S.Schema<UpdateErrorTrackingSeverityRulesReorderPartialRequest>,
   output: __S(
-    68,
-    __c8,
-    4,
+    272,
+    __c17,
+    0,
   ) as any as S.Schema<UpdateErrorTrackingSeverityRulesReorderPartialResponse>,
   errors: [],
   protocol: PosthogProtocol,
@@ -3769,8 +3785,8 @@ export const updateErrorTrackingSuppressionRule: API.OperationMethod<
   UpdateErrorTrackingSuppressionRuleError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(216, __c27, 0) as any as S.Schema<UpdateErrorTrackingSuppressionRuleRequest>,
-  output: __S(68, __c8, 4) as any as S.Schema<UpdateErrorTrackingSuppressionRuleResponse>,
+  input: __S(2112, __c132, 0) as any as S.Schema<UpdateErrorTrackingSuppressionRuleRequest>,
+  output: __S(272, __c17, 0) as any as S.Schema<UpdateErrorTrackingSuppressionRuleResponse>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -3783,8 +3799,8 @@ export const updateErrorTrackingSuppressionRulesPartial: API.OperationMethod<
   UpdateErrorTrackingSuppressionRulesPartialError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(217, __c27, 1) as any as S.Schema<UpdateErrorTrackingSuppressionRulesPartialRequest>,
-  output: __S(68, __c8, 4) as any as S.Schema<UpdateErrorTrackingSuppressionRulesPartialResponse>,
+  input: __S(16, __c1, 0) as any as S.Schema<UpdateErrorTrackingSuppressionRulesPartialRequest>,
+  output: __S(272, __c17, 0) as any as S.Schema<UpdateErrorTrackingSuppressionRulesPartialResponse>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -3798,13 +3814,13 @@ export const updateErrorTrackingSuppressionRulesReorderPartial: API.OperationMet
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    218,
-    __c27,
-    2,
+    32,
+    __c2,
+    0,
   ) as any as S.Schema<UpdateErrorTrackingSuppressionRulesReorderPartialRequest>,
   output: __S(
-    200,
-    __c25,
+    1824,
+    __c114,
     0,
   ) as any as S.Schema<UpdateErrorTrackingSuppressionRulesReorderPartialResponse>,
   errors: [],
@@ -3816,343 +3832,6 @@ export const updateErrorTrackingSuppressionRulesReorderPartial: API.OperationMet
 function __c0(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(S.String);
-    case 1:
-      return S.Record(S.String, S.Unknown);
-    case 2:
-      return S.Array(__S(1, __c0, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          events: S.optional(__S(2, __c0, 2)),
-          actions: S.optional(__S(2, __c0, 2)),
-          properties: S.optional(__S(2, __c0, 2)),
-          filter_test_accounts: S.optional(S.Boolean),
-        }),
-      ).annotate({
-        identifier: "ErrorTrackingAlertFiltersInput",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          channel: S.String,
-          channel_name: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "ErrorTrackingAlertSlackConfig",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          channel_type: S.String,
-          integration_id: S.optional(S.NullOr(S.Number)),
-          config: __S(4, __c0, 4),
-        }),
-      ).annotate({
-        identifier: "ErrorTrackingAlertDestinationRequest",
-      });
-    case 6:
-      return S.Array(__S(5, __c0, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          project_id: S.String.pipe(T.Label()),
-          name: S.String,
-          triggers: __S(0, __c0, 0),
-          filters: S.optional(__S(3, __c0, 3)),
-          throttle_seconds: S.optional(S.Number),
-          destinations: __S(6, __c0, 6),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/api/projects/{project_id}/error_tracking/alerts/",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateErrorTrackingAlertRequest",
-      });
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          events: S.optional(__S(2, __c0, 2)),
-          actions: S.optional(__S(2, __c0, 2)),
-          properties: S.optional(__S(2, __c0, 2)),
-          filter_test_accounts: S.optional(S.Boolean),
-          bytecode: S.Unknown,
-        }),
-      ).annotate({
-        identifier: "ErrorTrackingAlertFilters",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          channel_type: S.String,
-          integration_id: S.optional(S.NullOr(S.Number)),
-          config: __S(4, __c0, 4),
-          id: S.String,
-          last_delivered_at: S.NullOr(S.String),
-          last_failure_at: S.NullOr(S.String),
-          last_error: S.String,
-          consecutive_failures: S.Number,
-        }),
-      ).annotate({
-        identifier: "ErrorTrackingAlertDestination",
-      });
-    case 2:
-      return S.Array(__S(9, __c1, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String,
-          name: S.String,
-          enabled: S.Boolean,
-          triggers: __S(0, __c0, 0),
-          filters: __S(8, __c1, 0),
-          throttle_seconds: S.Number,
-          destinations: __S(10, __c1, 2),
-          created_at: S.String,
-          updated_at: S.String,
-        }),
-      ).annotate({ identifier: "ErrorTrackingAlert" });
-    case 4:
-      return S.Record(S.String, S.String);
-    case 5:
-      return S.Array(S.Unknown);
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          type: S.optional(S.String),
-          values: S.optional(__S(13, __c1, 5)),
-        }),
-      ).annotate({ identifier: "PropertyGroupFilterValue" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          type: S.optional(S.String),
-          id: S.optional(S.Unknown),
-        }),
-      ).annotate({
-        identifier: "ErrorTrackingAssignmentRuleAssigneeRequest",
-      });
-  }
-}
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          project_id: S.String.pipe(T.Label()),
-          filters: S.optional(__S(14, __c1, 6)),
-          assignee: S.optional(__S(15, __c1, 7)),
-          order_key: S.optional(S.Number),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/api/projects/{project_id}/error_tracking/assignment_rules/",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateErrorTrackingAssignmentRuleRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          type: S.optional(S.String),
-          id: S.optional(S.Unknown),
-        }),
-      ).annotate({
-        identifier: "ErrorTrackingAssignmentRuleAssignee",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          filters: S.optional(S.Unknown),
-          assignee: S.optional(S.NullOr(__S(17, __c2, 1))),
-          order_key: S.optional(S.Number),
-          disabled_data: S.optional(S.Unknown),
-          created_at: S.optional(S.String),
-          updated_at: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "ErrorTrackingAssignmentRule",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          project_id: S.String.pipe(T.Label()),
-          filters: __S(14, __c1, 6),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/api/projects/{project_id}/error_tracking/bypass_rules/",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateErrorTrackingBypassRuleRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String,
-          filters: S.Unknown,
-          order_key: S.Number,
-          disabled_data: S.Unknown,
-          created_at: S.String,
-          updated_at: S.String,
-        }),
-      ).annotate({ identifier: "ErrorTrackingBypassRule" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          project_id: S.String.pipe(T.Label()),
-          integration_id: S.Number,
-          config: __S(12, __c1, 4),
-          issue: S.String,
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/api/projects/{project_id}/error_tracking/external_references/",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateErrorTrackingExternalReferenceRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.Number),
-          kind: S.optional(S.String),
-          display_name: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "ErrorTrackingExternalReferenceIntegrationResult",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          integration: S.optional(__S(22, __c2, 6)),
-          external_url: S.optional(S.String),
-          external_id: S.optional(S.String),
-          title: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "ErrorTrackingExternalReferenceResult",
-      });
-  }
-}
-function __c3(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Record(S.String, S.Unknown);
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          project_id: S.String.pipe(T.Label()),
-          integration_id: S.Number,
-          issue: S.String,
-          external_context: __S(24, __c3, 0),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/api/projects/{project_id}/error_tracking/external_references/link_issue/",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateErrorTrackingExternalReferencesLinkIssueRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          type: S.optional(S.String),
-          id: S.optional(S.Unknown),
-        }),
-      ).annotate({
-        identifier: "ErrorTrackingGroupingRuleAssigneeRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          project_id: S.String.pipe(T.Label()),
-          filters: S.optional(__S(14, __c1, 6)),
-          assignee: S.optional(S.NullOr(__S(26, __c3, 2))),
-          description: S.optional(S.NullOr(S.String)),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/api/projects/{project_id}/error_tracking/grouping_rules/",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateErrorTrackingGroupingRuleRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          type: S.optional(S.String),
-          id: S.optional(S.Unknown),
-        }),
-      ).annotate({
-        identifier: "ErrorTrackingGroupingRuleAssignee",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          filters: S.optional(S.Unknown),
-          assignee: S.optional(S.NullOr(__S(28, __c3, 4))),
-          description: S.optional(S.NullOr(S.String)),
-          issue: S.optional(S.NullOr(__S(12, __c1, 4))),
-          order_key: S.optional(S.Number),
-          disabled_data: S.optional(S.Unknown),
-          created_at: S.optional(S.String),
-          updated_at: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "ErrorTrackingGroupingRule",
-      });
-    case 6:
-      return S.Array(S.String);
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          project_id: S.String.pipe(T.Label()),
-          id: S.String.pipe(T.Label()),
-          ids: S.optional(__S(30, __c3, 6)),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/api/projects/{project_id}/error_tracking/issues/{id}/merge/",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateErrorTrackingIssuesMergeRequest",
-      });
-  }
-}
-function __c4(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          success: S.optional(S.Boolean),
-        }),
-      ).annotate({
-        identifier: "ErrorTrackingIssueMergeResponse",
-      });
-    case 1:
       return S.suspend(() =>
         S.Struct({
           fingerprint: S.optional(S.String),
@@ -4162,14 +3841,14 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "ErrorTrackingIssueSplitFingerprint",
       });
+    case 1:
+      return S.Array(__S(0, __c0, 0));
     case 2:
-      return S.Array(__S(33, __c4, 1));
-    case 3:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
           id: S.String.pipe(T.Label()),
-          fingerprints: S.optional(__S(34, __c4, 2)),
+          fingerprints: S.optional(__S(1, __c0, 1)),
         }).pipe(
           T.Http({
             method: "POST",
@@ -4180,28 +3859,65 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "CreateErrorTrackingIssuesSplitRequest",
       });
-    case 4:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           success: S.optional(S.Boolean),
-          new_issue_ids: S.optional(__S(30, __c3, 6)),
+          new_issue_ids: S.optional(__S(1952, __c122, 0)),
         }),
       ).annotate({
         identifier: "ErrorTrackingIssueSplitResponse",
       });
-    case 5:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          date_from: S.optional(S.String),
-          date_to: S.optional(S.NullOr(S.String)),
-        }),
-      ).annotate({ identifier: "ErrorTrackingDateRange" });
-    case 6:
+          project_id: S.String.pipe(T.Label()),
+          id: S.String.pipe(T.Label()),
+          filters: S.optional(__S(865, __c54, 1)),
+          sampling_rate: S.optional(S.Number),
+        }).pipe(
+          T.Http({
+            method: "PATCH",
+            uri: "/api/projects/{project_id}/error_tracking/suppression_rules/{id}/",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "UpdateErrorTrackingSuppressionRulesPartialRequest",
+      });
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          project_id: S.String.pipe(T.Label()),
+          orders: S.optional(__S(1840, __c115, 0)),
+        }).pipe(
+          T.Http({
+            method: "PATCH",
+            uri: "/api/projects/{project_id}/error_tracking/suppression_rules/reorder/",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "UpdateErrorTrackingSuppressionRulesReorderPartialRequest",
+      });
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
           issueId: S.String,
-          dateRange: S.optional(__S(37, __c4, 5)),
+          dateRange: S.optional(__S(64, __c4, 0)),
           filterTestAccounts: S.optional(S.Boolean),
           volumeResolution: S.optional(S.Number),
           includeSparkline: S.optional(S.Boolean),
@@ -4216,45 +3932,7 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "CreateErrorTrackingQueryIssueRequest",
       });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.NullOr(S.Unknown)),
-          type: S.optional(S.NullOr(S.String)),
-        }),
-      ).annotate({
-        identifier: "ErrorTrackingAssigneeResponse",
-      });
-  }
-}
-function __c5(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(S.Number);
     case 1:
-      return S.suspend(() =>
-        S.Struct({
-          label: S.String,
-          value: S.optional(S.NullOr(S.Number)),
-        }),
-      ).annotate({
-        identifier: "ErrorTrackingVolumeBucket",
-      });
-    case 2:
-      return S.Array(__S(41, __c5, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          occurrences: S.optional(S.Number),
-          users: S.optional(S.Number),
-          sessions: S.optional(S.Number),
-          volumeRange: S.optional(__S(40, __c5, 0)),
-          volume_buckets: S.optional(__S(42, __c5, 2)),
-        }),
-      ).annotate({
-        identifier: "ErrorTrackingAggregations",
-      });
-    case 4:
       return S.suspend(() =>
         S.Struct({
           function: S.optional(S.String),
@@ -4264,7 +3942,7 @@ function __c5(j: number): any {
           in_app: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "ErrorTrackingTopFrame" });
-    case 5:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           version: S.optional(S.String),
@@ -4277,7 +3955,7 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "ErrorTrackingLatestRelease",
       });
-    case 6:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           occurrences: S.optional(S.Number),
@@ -4285,7 +3963,7 @@ function __c5(j: number): any {
           sessions: S.optional(S.Number),
         }),
       ).annotate({ identifier: "ErrorTrackingImpact" });
-    case 7:
+    case 4:
       return S.suspend(() =>
         S.Struct({
           value: S.String,
@@ -4294,41 +3972,37 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "ErrorTrackingBreakdownValue",
       });
-  }
-}
-function __c6(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(47, __c5, 7));
-    case 1:
+    case 5:
+      return S.Array(__S(52, __c3, 4));
+    case 6:
       return S.suspend(() =>
         S.Struct({
-          path: S.optional(__S(48, __c6, 0)),
-          url: S.optional(__S(48, __c6, 0)),
-          screen: S.optional(__S(48, __c6, 0)),
-          browser: S.optional(__S(48, __c6, 0)),
-          os: S.optional(__S(48, __c6, 0)),
-          library: S.optional(__S(48, __c6, 0)),
-          library_version: S.optional(__S(48, __c6, 0)),
-          app_version: S.optional(__S(48, __c6, 0)),
+          path: S.optional(__S(53, __c3, 5)),
+          url: S.optional(__S(53, __c3, 5)),
+          screen: S.optional(__S(53, __c3, 5)),
+          browser: S.optional(__S(53, __c3, 5)),
+          os: S.optional(__S(53, __c3, 5)),
+          library: S.optional(__S(53, __c3, 5)),
+          library_version: S.optional(__S(53, __c3, 5)),
+          app_version: S.optional(__S(53, __c3, 5)),
         }),
       ).annotate({
         identifier: "ErrorTrackingBreakdownTopValues",
       });
-    case 2:
+    case 7:
       return S.suspend(() =>
         S.Struct({
           date_from: S.String,
           date_to: S.String,
           range_limited: S.Boolean,
           occurrences: S.Number,
-          sample_session_ids: __S(30, __c3, 6),
-          top_values: __S(49, __c6, 1),
+          sample_session_ids: __S(1952, __c122, 0),
+          top_values: __S(54, __c3, 6),
         }),
       ).annotate({
         identifier: "ErrorTrackingIssueBreakdown",
       });
-    case 3:
+    case 8:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
@@ -4340,40 +4014,82 @@ function __c6(j: number): any {
           last_seen: S.optional(S.NullOr(S.String)),
           library: S.optional(S.NullOr(S.String)),
           source: S.optional(S.NullOr(S.String)),
-          assignee: S.optional(S.NullOr(__S(39, __c4, 7))),
-          aggregations: S.optional(S.NullOr(__S(43, __c5, 3))),
+          assignee: S.optional(S.NullOr(__S(80, __c5, 0))),
+          aggregations: S.optional(S.NullOr(__S(84, __c5, 4))),
           function: S.optional(S.NullOr(S.String)),
-          top_in_app_frame: S.optional(__S(44, __c5, 4)),
-          latest_release: S.optional(__S(45, __c5, 5)),
-          impact: S.optional(__S(46, __c5, 6)),
-          sparkline: S.optional(__S(40, __c5, 0)),
-          breakdown: S.optional(__S(50, __c6, 2)),
+          top_in_app_frame: S.optional(__S(49, __c3, 1)),
+          latest_release: S.optional(__S(50, __c3, 2)),
+          impact: S.optional(__S(51, __c3, 3)),
+          sparkline: S.optional(__S(81, __c5, 1)),
+          breakdown: S.optional(__S(55, __c3, 7)),
         }),
       ).annotate({ identifier: "ErrorTrackingIssueDetail" });
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          date_from: S.optional(S.String),
+          date_to: S.optional(S.NullOr(S.String)),
+        }),
+      ).annotate({ identifier: "ErrorTrackingDateRange" });
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.NullOr(S.Unknown)),
+          type: S.optional(S.NullOr(S.String)),
+        }),
+      ).annotate({
+        identifier: "ErrorTrackingAssigneeResponse",
+      });
+    case 1:
+      return S.Array(S.Number);
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          label: S.String,
+          value: S.optional(S.NullOr(S.Number)),
+        }),
+      ).annotate({
+        identifier: "ErrorTrackingVolumeBucket",
+      });
+    case 3:
+      return S.Array(__S(82, __c5, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          key: S.optional(S.String),
-          value: S.optional(S.Unknown),
-          operator: S.optional(S.NullOr(S.Unknown)),
-          type: S.optional(S.Unknown),
+          occurrences: S.optional(S.Number),
+          users: S.optional(S.Number),
+          sessions: S.optional(S.Number),
+          volumeRange: S.optional(__S(81, __c5, 1)),
+          volume_buckets: S.optional(__S(83, __c5, 3)),
         }),
-      ).annotate({ identifier: "PropertyItem" });
-    case 5:
-      return S.Array(__S(52, __c6, 4));
-    case 6:
+      ).annotate({
+        identifier: "ErrorTrackingAggregations",
+      });
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
           issueId: S.String,
-          dateRange: S.optional(__S(37, __c4, 5)),
+          dateRange: S.optional(__S(64, __c4, 0)),
           filterTestAccounts: S.optional(S.Boolean),
-          filterGroup: S.optional(__S(53, __c6, 5)),
+          filterGroup: S.optional(__S(113, __c7, 1)),
           searchQuery: S.optional(S.String),
           orderDirection: S.optional(S.String),
           limit: S.optional(S.Number),
           offset: S.optional(S.Number),
-          include: S.optional(__S(0, __c0, 0)),
+          include: S.optional(__S(544, __c34, 0)),
           onlyAppFrames: S.optional(S.Boolean),
         }).pipe(
           T.Http({
@@ -4385,25 +4101,21 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "CreateErrorTrackingQueryIssueEventRequest",
       });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           uuid: S.optional(S.String),
           distinct_id: S.optional(S.String),
           timestamp: S.optional(S.String),
-          properties: S.optional(__S(1, __c0, 1)),
+          properties: S.optional(__S(528, __c33, 0)),
         }),
       ).annotate({ identifier: "ErrorTrackingEvent" });
-  }
-}
-function __c7(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(55, __c6, 7));
-    case 1:
+    case 2:
+      return S.Array(__S(97, __c6, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          results: __S(56, __c7, 0),
+          results: __S(98, __c6, 2),
           hasMore: S.Boolean,
           limit: S.Number,
           offset: S.Number,
@@ -4412,7 +4124,26 @@ function __c7(j: number): any {
       ).annotate({
         identifier: "ErrorTrackingIssueEventsResponse",
       });
-    case 2:
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          key: S.optional(S.String),
+          value: S.optional(S.Unknown),
+          operator: S.optional(S.NullOr(S.Unknown)),
+          type: S.optional(S.Unknown),
+        }),
+      ).annotate({ identifier: "PropertyItem" });
+    case 1:
+      return S.Array(__S(112, __c7, 0));
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -4427,7 +4158,11 @@ function __c7(j: number): any {
       ).annotate({
         identifier: "CreateErrorTrackingRecommendationsDismissRequest",
       });
-    case 3:
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
@@ -4443,14 +4178,18 @@ function __c7(j: number): any {
       ).annotate({
         identifier: "ErrorTrackingRecommendation",
       });
-    case 4:
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
           version: S.String,
           project: S.String,
           hash_id: S.optional(S.NullOr(S.String)),
-          metadata: S.optional(S.NullOr(__S(1, __c0, 1))),
+          metadata: S.optional(S.NullOr(__S(528, __c33, 0))),
         }).pipe(
           T.Http({
             method: "POST",
@@ -4461,23 +4200,31 @@ function __c7(j: number): any {
       ).annotate({
         identifier: "CreateErrorTrackingReleaseRequest",
       });
-    case 5:
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           hash_id: S.optional(S.String),
           team_id: S.optional(S.Number),
           created_at: S.optional(S.String),
-          metadata: S.optional(S.NullOr(__S(1, __c0, 1))),
+          metadata: S.optional(S.NullOr(__S(528, __c33, 0))),
           version: S.optional(S.String),
           project: S.optional(S.String),
         }),
       ).annotate({ identifier: "ErrorTrackingRelease" });
-    case 6:
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
-          filters: __S(14, __c1, 6),
+          filters: __S(865, __c54, 1),
           severity: S.String,
           order_key: S.optional(S.Number),
         }).pipe(
@@ -4490,39 +4237,43 @@ function __c7(j: number): any {
       ).annotate({
         identifier: "CreateErrorTrackingSeverityRuleRequest",
       });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          message: S.optional(S.String),
-          issue: S.optional(__S(1, __c0, 1)),
-          properties: S.optional(__S(1, __c0, 1)),
-        }),
-      ).annotate({
-        identifier: "ErrorTrackingSeverityRuleDisabledData",
-      });
   }
 }
-function __c8(j: number): any {
+function __c13(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
+          message: S.optional(S.String),
+          issue: S.optional(__S(528, __c33, 0)),
+          properties: S.optional(__S(528, __c33, 0)),
+        }),
+      ).annotate({
+        identifier: "ErrorTrackingSeverityRuleDisabledData",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
           id: S.String,
-          filters: __S(14, __c1, 6),
+          filters: __S(865, __c54, 1),
           severity: S.String,
           order_key: S.Number,
-          disabled_data: S.NullOr(__S(63, __c7, 7)),
+          disabled_data: S.NullOr(__S(208, __c13, 0)),
           created_at: S.String,
           updated_at: S.String,
         }),
       ).annotate({
         identifier: "ErrorTrackingSeverityRule",
       });
-    case 1:
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
-          filters: S.optional(__S(14, __c1, 6)),
+          filters: S.optional(__S(865, __c54, 1)),
           sampling_rate: S.optional(S.Number),
         }).pipe(
           T.Http({
@@ -4534,7 +4285,11 @@ function __c8(j: number): any {
       ).annotate({
         identifier: "CreateErrorTrackingSuppressionRuleRequest",
       });
-    case 2:
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
@@ -4548,7 +4303,11 @@ function __c8(j: number): any {
       ).annotate({
         identifier: "ErrorTrackingSuppressionRule",
       });
-    case 3:
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -4563,11 +4322,19 @@ function __c8(j: number): any {
       ).annotate({
         identifier: "ErrorTrackingAlertsDestroyRequest",
       });
-    case 4:
+  }
+}
+function __c17(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "ErrorTrackingAlertsDestroyResponse",
       });
-    case 5:
+  }
+}
+function __c18(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -4582,7 +4349,11 @@ function __c8(j: number): any {
       ).annotate({
         identifier: "ErrorTrackingAssignmentRulesDestroyRequest",
       });
-    case 6:
+  }
+}
+function __c19(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -4597,7 +4368,11 @@ function __c8(j: number): any {
       ).annotate({
         identifier: "ErrorTrackingBypassRulesDestroyRequest",
       });
-    case 7:
+  }
+}
+function __c20(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -4614,7 +4389,7 @@ function __c8(j: number): any {
       });
   }
 }
-function __c9(j: number): any {
+function __c21(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4639,22 +4414,26 @@ function __c9(j: number): any {
           id: S.String,
           title: S.String,
           url: S.String,
-          external_context: __S(1, __c0, 1),
+          external_context: __S(528, __c33, 0),
         }),
       ).annotate({
         identifier: "ErrorTrackingExternalIssueResult",
       });
     case 2:
-      return S.Array(__S(73, __c9, 1));
+      return S.Array(__S(337, __c21, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          issues: __S(74, __c9, 2),
+          issues: __S(338, __c21, 2),
         }),
       ).annotate({
         identifier: "ErrorTrackingExternalIssueSearchResult",
       });
-    case 4:
+  }
+}
+function __c22(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -4669,7 +4448,11 @@ function __c9(j: number): any {
       ).annotate({
         identifier: "ErrorTrackingFingerprintsDestroyRequest",
       });
-    case 5:
+  }
+}
+function __c23(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -4684,21 +4467,16 @@ function __c9(j: number): any {
       ).annotate({
         identifier: "ErrorTrackingGroupingRulesDestroyRequest",
       });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.Unknown,
-          type: S.String,
-        }),
-      ).annotate({
-        identifier: "ErrorTrackingIssueAssigneeWrite",
-      });
-    case 7:
+  }
+}
+function __c24(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
           id: S.String.pipe(T.Label()),
-          assignee: S.optional(S.NullOr(__S(78, __c9, 6))),
+          assignee: S.optional(S.NullOr(__S(400, __c25, 0))),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -4711,7 +4489,20 @@ function __c9(j: number): any {
       });
   }
 }
-function __c10(j: number): any {
+function __c25(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.Unknown,
+          type: S.String,
+        }),
+      ).annotate({
+        identifier: "ErrorTrackingIssueAssigneeWrite",
+      });
+  }
+}
+function __c26(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4721,14 +4512,18 @@ function __c10(j: number): any {
       ).annotate({
         identifier: "ErrorTrackingIssueAssignResponse",
       });
-    case 1:
+  }
+}
+function __c27(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
           action: S.String,
-          ids: __S(30, __c3, 6),
+          ids: __S(1952, __c122, 0),
           status: S.optional(S.String),
-          assignee: S.optional(S.NullOr(__S(78, __c9, 6))),
+          assignee: S.optional(S.NullOr(__S(400, __c25, 0))),
         }).pipe(
           T.Http({
             method: "POST",
@@ -4739,7 +4534,11 @@ function __c10(j: number): any {
       ).annotate({
         identifier: "ErrorTrackingIssuesBulkCreateRequest",
       });
-    case 2:
+  }
+}
+function __c28(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -4754,23 +4553,27 @@ function __c10(j: number): any {
       ).annotate({
         identifier: "ErrorTrackingIssuesDestroyRequest",
       });
-    case 3:
+  }
+}
+function __c29(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.Unknown,
           type: S.String,
         }),
       ).annotate({ identifier: "ErrorTrackingAssignee" });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
-          dateRange: S.optional(__S(37, __c4, 5)),
+          dateRange: S.optional(__S(64, __c4, 0)),
           status: S.optional(S.String),
-          assignee: S.optional(S.NullOr(__S(83, __c10, 3))),
+          assignee: S.optional(S.NullOr(__S(464, __c29, 0))),
           filterTestAccounts: S.optional(S.Boolean),
           searchQuery: S.optional(S.String),
-          filterGroup: S.optional(__S(53, __c6, 5)),
+          filterGroup: S.optional(__S(113, __c7, 1)),
           orderBy: S.optional(S.String),
           orderDirection: S.optional(S.String),
           limit: S.optional(S.Number),
@@ -4793,7 +4596,7 @@ function __c10(j: number): any {
       ).annotate({
         identifier: "ErrorTrackingQueryIssuesListCreateRequest",
       });
-    case 5:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
@@ -4805,18 +4608,18 @@ function __c10(j: number): any {
           last_seen: S.optional(S.NullOr(S.String)),
           library: S.optional(S.NullOr(S.String)),
           source: S.optional(S.NullOr(S.String)),
-          assignee: S.optional(S.NullOr(__S(39, __c4, 7))),
-          aggregations: S.optional(S.NullOr(__S(43, __c5, 3))),
+          assignee: S.optional(S.NullOr(__S(80, __c5, 0))),
+          aggregations: S.optional(S.NullOr(__S(84, __c5, 4))),
         }),
       ).annotate({
         identifier: "ErrorTrackingIssueListItem",
       });
-    case 6:
-      return S.Array(__S(85, __c10, 5));
-    case 7:
+    case 3:
+      return S.Array(__S(466, __c29, 2));
+    case 4:
       return S.suspend(() =>
         S.Struct({
-          results: __S(86, __c10, 6),
+          results: __S(467, __c29, 3),
           hasMore: S.Boolean,
           limit: S.Number,
           offset: S.Number,
@@ -4827,7 +4630,7 @@ function __c10(j: number): any {
       });
   }
 }
-function __c11(j: number): any {
+function __c30(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4845,7 +4648,11 @@ function __c11(j: number): any {
       ).annotate({
         identifier: "ErrorTrackingRecommendationsRefreshCreateRequest",
       });
-    case 1:
+  }
+}
+function __c31(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -4860,7 +4667,131 @@ function __c11(j: number): any {
       ).annotate({
         identifier: "ErrorTrackingRecommendationsRestoreCreateRequest",
       });
+  }
+}
+function __c32(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          project_id: S.String.pipe(T.Label()),
+          name: S.String,
+          triggers: __S(544, __c34, 0),
+          filters: S.optional(__S(576, __c36, 0)),
+          throttle_seconds: S.optional(S.Number),
+          destinations: __S(578, __c36, 2),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/api/projects/{project_id}/error_tracking/alerts/",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateErrorTrackingAlertRequest",
+      });
+  }
+}
+function __c33(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, S.Unknown);
+  }
+}
+function __c34(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c35(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(528, __c33, 0));
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          channel: S.String,
+          channel_name: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "ErrorTrackingAlertSlackConfig",
+      });
     case 2:
+      return S.suspend(() =>
+        S.Struct({
+          events: S.optional(__S(560, __c35, 0)),
+          actions: S.optional(__S(560, __c35, 0)),
+          properties: S.optional(__S(560, __c35, 0)),
+          filter_test_accounts: S.optional(S.Boolean),
+          bytecode: S.Unknown,
+        }),
+      ).annotate({
+        identifier: "ErrorTrackingAlertFilters",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          channel_type: S.String,
+          integration_id: S.optional(S.NullOr(S.Number)),
+          config: __S(561, __c35, 1),
+          id: S.String,
+          last_delivered_at: S.NullOr(S.String),
+          last_failure_at: S.NullOr(S.String),
+          last_error: S.String,
+          consecutive_failures: S.Number,
+        }),
+      ).annotate({
+        identifier: "ErrorTrackingAlertDestination",
+      });
+    case 4:
+      return S.Array(__S(563, __c35, 3));
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          name: S.String,
+          enabled: S.Boolean,
+          triggers: __S(544, __c34, 0),
+          filters: __S(562, __c35, 2),
+          throttle_seconds: S.Number,
+          destinations: __S(564, __c35, 4),
+          created_at: S.String,
+          updated_at: S.String,
+        }),
+      ).annotate({ identifier: "ErrorTrackingAlert" });
+  }
+}
+function __c36(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          events: S.optional(__S(560, __c35, 0)),
+          actions: S.optional(__S(560, __c35, 0)),
+          properties: S.optional(__S(560, __c35, 0)),
+          filter_test_accounts: S.optional(S.Boolean),
+        }),
+      ).annotate({
+        identifier: "ErrorTrackingAlertFiltersInput",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          channel_type: S.String,
+          integration_id: S.optional(S.NullOr(S.Number)),
+          config: __S(561, __c35, 1),
+        }),
+      ).annotate({
+        identifier: "ErrorTrackingAlertDestinationRequest",
+      });
+    case 2:
+      return S.Array(__S(577, __c36, 1));
+  }
+}
+function __c37(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -4875,7 +4806,11 @@ function __c11(j: number): any {
       ).annotate({
         identifier: "ErrorTrackingReleasesDestroyRequest",
       });
-    case 3:
+  }
+}
+function __c38(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -4889,7 +4824,11 @@ function __c11(j: number): any {
       ).annotate({
         identifier: "ErrorTrackingSettingsRetrieveSettingsRetrieveRequest",
       });
-    case 4:
+  }
+}
+function __c39(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_rate_limit_value: S.optional(S.NullOr(S.Number)),
@@ -4898,7 +4837,11 @@ function __c11(j: number): any {
           per_issue_rate_limit_bucket_size_minutes: S.optional(S.NullOr(S.Number)),
         }),
       ).annotate({ identifier: "ErrorTrackingSettings" });
-    case 5:
+  }
+}
+function __c40(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -4916,7 +4859,11 @@ function __c11(j: number): any {
       ).annotate({
         identifier: "ErrorTrackingSettingsUpdateSettingsPartialUpdateRequest",
       });
-    case 6:
+  }
+}
+function __c41(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -4931,7 +4878,11 @@ function __c11(j: number): any {
       ).annotate({
         identifier: "ErrorTrackingSeverityRulesDestroyRequest",
       });
-    case 7:
+  }
+}
+function __c42(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -4950,7 +4901,7 @@ function __c11(j: number): any {
       });
   }
 }
-function __c12(j: number): any {
+function __c43(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4962,11 +4913,15 @@ function __c12(j: number): any {
       ).annotate({
         identifier: "ErrorTrackingSpikeDetectionConfig",
       });
-    case 1:
+  }
+}
+function __c44(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
-          raw_ids: __S(30, __c3, 6),
+          raw_ids: __S(1952, __c122, 0),
           symbol_set: S.optional(S.NullOr(S.String)),
         }).pipe(
           T.Http({
@@ -4978,30 +4933,42 @@ function __c12(j: number): any {
       ).annotate({
         identifier: "ErrorTrackingStackFramesBatchGetCreateRequest",
       });
-    case 2:
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          results: __S(736, __c46, 0),
+        }),
+      ).annotate({
+        identifier: "ErrorTrackingStackFrameBatchGetResponse",
+      });
+  }
+}
+function __c45(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           raw_id: S.optional(S.String),
           created_at: S.optional(S.String),
-          contents: S.optional(__S(1, __c0, 1)),
+          contents: S.optional(__S(528, __c33, 0)),
           resolved: S.optional(S.Boolean),
-          context: S.optional(S.NullOr(__S(1, __c0, 1))),
+          context: S.optional(S.NullOr(__S(528, __c33, 0))),
           symbol_set_ref: S.optional(S.NullOr(S.String)),
-          release: S.optional(S.NullOr(__S(61, __c7, 5))),
+          release: S.optional(S.NullOr(__S(176, __c11, 0))),
         }),
       ).annotate({ identifier: "ErrorTrackingStackFrame" });
-    case 3:
-      return S.Array(__S(98, __c12, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          results: __S(99, __c12, 3),
-        }),
-      ).annotate({
-        identifier: "ErrorTrackingStackFrameBatchGetResponse",
-      });
-    case 5:
+  }
+}
+function __c46(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(720, __c45, 0));
+  }
+}
+function __c47(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -5016,7 +4983,11 @@ function __c12(j: number): any {
       ).annotate({
         identifier: "ErrorTrackingStackFramesDestroyRequest",
       });
-    case 6:
+  }
+}
+function __c48(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -5031,28 +5002,15 @@ function __c12(j: number): any {
       ).annotate({
         identifier: "ErrorTrackingSuppressionRulesDestroyRequest",
       });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          chunk_id: S.String,
-          release_id: S.optional(S.NullOr(S.String)),
-          content_hash: S.optional(S.NullOr(S.String)),
-          content_length: S.optional(S.NullOr(S.Number)),
-        }),
-      ).annotate({
-        identifier: "ErrorTrackingSymbolSetUpload",
-      });
   }
 }
-function __c13(j: number): any {
+function __c49(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(103, __c12, 7));
-    case 1:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
-          symbol_sets: __S(104, __c13, 0),
+          symbol_sets: __S(801, __c50, 1),
           force: S.optional(S.Boolean),
           skip_on_conflict: S.optional(S.Boolean),
         }).pipe(
@@ -5065,21 +5023,42 @@ function __c13(j: number): any {
       ).annotate({
         identifier: "ErrorTrackingSymbolSetsBulkCheckUploadCreateRequest",
       });
-    case 2:
-      return S.Array(S.String);
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          chunk_ids_to_upload: __S(106, __c13, 2),
+          chunk_ids_to_upload: __S(802, __c50, 2),
         }),
       ).annotate({
         identifier: "ErrorTrackingSymbolSetBulkCheckUploadResponse",
       });
-    case 4:
+  }
+}
+function __c50(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          chunk_id: S.String,
+          release_id: S.optional(S.NullOr(S.String)),
+          content_hash: S.optional(S.NullOr(S.String)),
+          content_length: S.optional(S.NullOr(S.Number)),
+        }),
+      ).annotate({
+        identifier: "ErrorTrackingSymbolSetUpload",
+      });
+    case 1:
+      return S.Array(__S(800, __c50, 0));
+    case 2:
+      return S.Array(S.String);
+  }
+}
+function __c51(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
-          ids: __S(30, __c3, 6),
+          ids: __S(1952, __c122, 0),
         }).pipe(
           T.Http({
             method: "POST",
@@ -5090,13 +5069,91 @@ function __c13(j: number): any {
       ).annotate({
         identifier: "ErrorTrackingSymbolSetsBulkDeleteCreateRequest",
       });
-    case 5:
-      return S.Record(S.String, S.String);
-    case 6:
+  }
+}
+function __c52(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
-          content_hashes: __S(109, __c13, 5),
+          filters: S.optional(__S(865, __c54, 1)),
+          assignee: S.optional(__S(880, __c55, 0)),
+          order_key: S.optional(S.Number),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/api/projects/{project_id}/error_tracking/assignment_rules/",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateErrorTrackingAssignmentRuleRequest",
+      });
+  }
+}
+function __c53(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          type: S.optional(S.String),
+          id: S.optional(S.Unknown),
+        }),
+      ).annotate({
+        identifier: "ErrorTrackingAssignmentRuleAssignee",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          filters: S.optional(S.Unknown),
+          assignee: S.optional(S.NullOr(__S(848, __c53, 0))),
+          order_key: S.optional(S.Number),
+          disabled_data: S.optional(S.Unknown),
+          created_at: S.optional(S.String),
+          updated_at: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "ErrorTrackingAssignmentRule",
+      });
+  }
+}
+function __c54(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.Unknown);
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          type: S.optional(S.String),
+          values: S.optional(__S(864, __c54, 0)),
+        }),
+      ).annotate({ identifier: "PropertyGroupFilterValue" });
+  }
+}
+function __c55(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          type: S.optional(S.String),
+          id: S.optional(S.Unknown),
+        }),
+      ).annotate({
+        identifier: "ErrorTrackingAssignmentRuleAssigneeRequest",
+      });
+  }
+}
+function __c56(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, S.String);
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          project_id: S.String.pipe(T.Label()),
+          content_hashes: __S(896, __c56, 0),
         }).pipe(
           T.Http({
             method: "POST",
@@ -5107,14 +5164,18 @@ function __c13(j: number): any {
       ).annotate({
         identifier: "ErrorTrackingSymbolSetsBulkFinishUploadCreateRequest",
       });
-    case 7:
+  }
+}
+function __c57(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
-          symbol_sets: S.optional(__S(104, __c13, 0)),
+          symbol_sets: S.optional(__S(801, __c50, 1)),
           force: S.optional(S.Boolean),
           skip_on_conflict: S.optional(S.Boolean),
-          chunk_ids: S.optional(__S(106, __c13, 2)),
+          chunk_ids: S.optional(__S(802, __c50, 2)),
           release_id: S.optional(S.NullOr(S.String)),
         }).pipe(
           T.Http({
@@ -5126,42 +5187,42 @@ function __c13(j: number): any {
       ).annotate({
         identifier: "ErrorTrackingSymbolSetsBulkStartUploadCreateRequest",
       });
-  }
-}
-function __c14(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           url: S.String,
-          fields: __S(12, __c1, 4),
+          fields: __S(1344, __c84, 0),
         }),
       ).annotate({
         identifier: "ErrorTrackingSymbolSetPresignedPost",
       });
-    case 1:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           symbol_set_id: S.String,
-          presigned_url: __S(112, __c14, 0),
-          fallback_presigned_url: S.optional(__S(112, __c14, 0)),
+          presigned_url: __S(913, __c57, 1),
+          fallback_presigned_url: S.optional(__S(913, __c57, 1)),
           presigned_put_url: S.optional(S.String),
           fallback_presigned_put_url: S.optional(S.String),
         }),
       ).annotate({
         identifier: "ErrorTrackingSymbolSetBulkStartUploadEntry",
       });
-    case 2:
-      return S.Record(S.String, __S(113, __c14, 1));
     case 3:
+      return S.Record(S.String, __S(914, __c57, 2));
+    case 4:
       return S.suspend(() =>
         S.Struct({
-          id_map: __S(114, __c14, 2),
+          id_map: __S(915, __c57, 3),
         }),
       ).annotate({
         identifier: "ErrorTrackingSymbolSetBulkStartUploadResponse",
       });
-    case 4:
+  }
+}
+function __c58(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -5176,7 +5237,11 @@ function __c14(j: number): any {
       ).annotate({
         identifier: "ErrorTrackingSymbolSetsDestroyRequest",
       });
-    case 5:
+  }
+}
+function __c59(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -5191,7 +5256,7 @@ function __c14(j: number): any {
       ).annotate({
         identifier: "ErrorTrackingSymbolSetsDownloadRetrieveRequest",
       });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           url: S.optional(S.String),
@@ -5199,7 +5264,11 @@ function __c14(j: number): any {
       ).annotate({
         identifier: "SymbolSetDownloadResponse",
       });
-    case 7:
+  }
+}
+function __c60(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -5217,7 +5286,7 @@ function __c14(j: number): any {
       });
   }
 }
-function __c15(j: number): any {
+function __c61(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5234,7 +5303,11 @@ function __c15(j: number): any {
       ).annotate({
         identifier: "GetErrorTrackingAlertRequest",
       });
-    case 1:
+  }
+}
+function __c62(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -5249,7 +5322,11 @@ function __c15(j: number): any {
       ).annotate({
         identifier: "GetErrorTrackingAssignmentRuleRequest",
       });
-    case 2:
+  }
+}
+function __c63(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -5264,7 +5341,11 @@ function __c15(j: number): any {
       ).annotate({
         identifier: "GetErrorTrackingBypassRuleRequest",
       });
-    case 3:
+  }
+}
+function __c64(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -5279,7 +5360,11 @@ function __c15(j: number): any {
       ).annotate({
         identifier: "GetErrorTrackingExternalReferenceRequest",
       });
-    case 4:
+  }
+}
+function __c65(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -5294,7 +5379,11 @@ function __c15(j: number): any {
       ).annotate({
         identifier: "GetErrorTrackingFingerprintRequest",
       });
-    case 5:
+  }
+}
+function __c66(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
@@ -5303,7 +5392,45 @@ function __c15(j: number): any {
           created_at: S.optional(S.String),
         }),
       ).annotate({ identifier: "ErrorTrackingFingerprint" });
-    case 6:
+  }
+}
+function __c67(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          project_id: S.String.pipe(T.Label()),
+          filters: __S(865, __c54, 1),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/api/projects/{project_id}/error_tracking/bypass_rules/",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateErrorTrackingBypassRuleRequest",
+      });
+  }
+}
+function __c68(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          filters: S.Unknown,
+          order_key: S.Number,
+          disabled_data: S.Unknown,
+          created_at: S.String,
+          updated_at: S.String,
+        }),
+      ).annotate({ identifier: "ErrorTrackingBypassRule" });
+  }
+}
+function __c69(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -5318,7 +5445,11 @@ function __c15(j: number): any {
       ).annotate({
         identifier: "GetErrorTrackingFingerprintsResolveRequest",
       });
-    case 7:
+  }
+}
+function __c70(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -5338,7 +5469,7 @@ function __c15(j: number): any {
       });
   }
 }
-function __c16(j: number): any {
+function __c71(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5350,7 +5481,11 @@ function __c16(j: number): any {
       ).annotate({
         identifier: "GitProviderFileLinkResolveResponse",
       });
-    case 1:
+  }
+}
+function __c72(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -5368,7 +5503,11 @@ function __c16(j: number): any {
       ).annotate({
         identifier: "GetErrorTrackingGitProviderFileLinksResolveGitlabRequest",
       });
-    case 2:
+  }
+}
+function __c73(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -5383,7 +5522,11 @@ function __c16(j: number): any {
       ).annotate({
         identifier: "GetErrorTrackingGroupingRuleRequest",
       });
-    case 3:
+  }
+}
+function __c74(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -5399,7 +5542,17 @@ function __c16(j: number): any {
       ).annotate({
         identifier: "GetErrorTrackingIssueRequest",
       });
-    case 4:
+  }
+}
+function __c75(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(1329, __c83, 1));
+  }
+}
+function __c76(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.NullOr(S.Unknown),
@@ -5408,9 +5561,7 @@ function __c16(j: number): any {
       ).annotate({
         identifier: "ErrorTrackingIssueAssigneeRead",
       });
-    case 5:
-      return S.Array(__S(23, __c2, 7));
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.Number,
@@ -5419,7 +5570,7 @@ function __c16(j: number): any {
       ).annotate({
         identifier: "ErrorTrackingIssueCohortRead",
       });
-    case 7:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
@@ -5428,14 +5579,14 @@ function __c16(j: number): any {
           name: S.NullOr(S.String),
           description: S.NullOr(S.String),
           first_seen: S.NullOr(S.String),
-          assignee: S.NullOr(__S(132, __c16, 4)),
-          external_issues: __S(133, __c16, 5),
-          cohort: S.NullOr(__S(134, __c16, 6)),
+          assignee: S.NullOr(__S(1216, __c76, 0)),
+          external_issues: __S(1200, __c75, 0),
+          cohort: S.NullOr(__S(1217, __c76, 1)),
         }),
       ).annotate({ identifier: "ErrorTrackingIssueRead" });
   }
 }
-function __c17(j: number): any {
+function __c77(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5452,7 +5603,11 @@ function __c17(j: number): any {
       ).annotate({
         identifier: "GetErrorTrackingIssuesActivityRequest",
       });
-    case 1:
+  }
+}
+function __c78(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -5466,7 +5621,11 @@ function __c17(j: number): any {
       ).annotate({
         identifier: "GetErrorTrackingIssuesAllActivityRequest",
       });
-    case 2:
+  }
+}
+function __c79(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -5480,7 +5639,7 @@ function __c17(j: number): any {
       ).annotate({
         identifier: "GetErrorTrackingIssuesExistRequest",
       });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           exists: S.Boolean,
@@ -5488,7 +5647,11 @@ function __c17(j: number): any {
       ).annotate({
         identifier: "ErrorTrackingIssueExistsResponse",
       });
-    case 4:
+  }
+}
+function __c80(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -5504,18 +5667,18 @@ function __c17(j: number): any {
       ).annotate({
         identifier: "GetErrorTrackingIssuesValueRequest",
       });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           name: S.String,
         }),
       ).annotate({ identifier: "ErrorTrackingIssueValue" });
-    case 6:
-      return S.Array(__S(141, __c17, 5));
-    case 7:
+    case 2:
+      return S.Array(__S(1281, __c80, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          results: __S(142, __c17, 6),
+          results: __S(1282, __c80, 2),
           refreshing: S.Boolean,
         }),
       ).annotate({
@@ -5523,7 +5686,7 @@ function __c17(j: number): any {
       });
   }
 }
-function __c18(j: number): any {
+function __c81(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5540,7 +5703,64 @@ function __c18(j: number): any {
       ).annotate({
         identifier: "GetErrorTrackingReleaseRequest",
       });
+  }
+}
+function __c82(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          project_id: S.String.pipe(T.Label()),
+          integration_id: S.Number,
+          config: __S(1344, __c84, 0),
+          issue: S.String,
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/api/projects/{project_id}/error_tracking/external_references/",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateErrorTrackingExternalReferenceRequest",
+      });
+  }
+}
+function __c83(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.Number),
+          kind: S.optional(S.String),
+          display_name: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "ErrorTrackingExternalReferenceIntegrationResult",
+      });
     case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          integration: S.optional(__S(1328, __c83, 0)),
+          external_url: S.optional(S.String),
+          external_id: S.optional(S.String),
+          title: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "ErrorTrackingExternalReferenceResult",
+      });
+  }
+}
+function __c84(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, S.String);
+  }
+}
+function __c85(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -5555,7 +5775,11 @@ function __c18(j: number): any {
       ).annotate({
         identifier: "GetErrorTrackingReleasesHashRequest",
       });
-    case 2:
+  }
+}
+function __c86(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -5570,7 +5794,11 @@ function __c18(j: number): any {
       ).annotate({
         identifier: "GetErrorTrackingSeverityRuleRequest",
       });
-    case 3:
+  }
+}
+function __c87(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -5585,7 +5813,11 @@ function __c18(j: number): any {
       ).annotate({
         identifier: "GetErrorTrackingStackFrameRequest",
       });
-    case 4:
+  }
+}
+function __c88(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -5600,7 +5832,11 @@ function __c18(j: number): any {
       ).annotate({
         identifier: "GetErrorTrackingSuppressionRuleRequest",
       });
-    case 5:
+  }
+}
+function __c89(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -5615,7 +5851,11 @@ function __c18(j: number): any {
       ).annotate({
         identifier: "GetErrorTrackingSymbolSetRequest",
       });
-    case 6:
+  }
+}
+function __c90(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
@@ -5625,10 +5865,14 @@ function __c18(j: number): any {
           last_used: S.optional(S.NullOr(S.String)),
           failure_reason: S.optional(S.NullOr(S.String)),
           has_uploaded_file: S.optional(S.Boolean),
-          release: S.optional(S.NullOr(__S(61, __c7, 5))),
+          release: S.optional(S.NullOr(__S(176, __c11, 0))),
         }),
       ).annotate({ identifier: "ErrorTrackingSymbolSet" });
-    case 7:
+  }
+}
+function __c91(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -5644,24 +5888,24 @@ function __c18(j: number): any {
       ).annotate({
         identifier: "ListErrorTrackingAlertsRequest",
       });
-  }
-}
-function __c19(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(11, __c1, 3));
     case 1:
+      return S.Array(__S(565, __c35, 5));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           count: S.Number,
           next: S.optional(S.NullOr(S.String)),
           previous: S.optional(S.NullOr(S.String)),
-          results: __S(152, __c19, 0),
+          results: __S(1457, __c91, 1),
         }),
       ).annotate({
         identifier: "PaginatedErrorTrackingAlertList",
       });
-    case 2:
+  }
+}
+function __c92(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -5677,20 +5921,24 @@ function __c19(j: number): any {
       ).annotate({
         identifier: "ListErrorTrackingAssignmentRulesRequest",
       });
-    case 3:
-      return S.Array(__S(18, __c2, 2));
-    case 4:
+    case 1:
+      return S.Array(__S(849, __c53, 1));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           count: S.optional(S.Number),
           next: S.optional(S.NullOr(S.String)),
           previous: S.optional(S.NullOr(S.String)),
-          results: S.optional(__S(155, __c19, 3)),
+          results: S.optional(__S(1473, __c92, 1)),
         }),
       ).annotate({
         identifier: "PaginatedErrorTrackingAssignmentRuleList",
       });
-    case 5:
+  }
+}
+function __c93(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -5706,22 +5954,22 @@ function __c19(j: number): any {
       ).annotate({
         identifier: "ListErrorTrackingBypassRulesRequest",
       });
-    case 6:
-      return S.Array(__S(20, __c2, 4));
-    case 7:
+    case 1:
+      return S.Array(__S(1088, __c68, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           count: S.Number,
           next: S.optional(S.NullOr(S.String)),
           previous: S.optional(S.NullOr(S.String)),
-          results: __S(158, __c19, 6),
+          results: __S(1489, __c93, 1),
         }),
       ).annotate({
         identifier: "PaginatedErrorTrackingBypassRuleList",
       });
   }
 }
-function __c20(j: number): any {
+function __c94(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5745,12 +5993,16 @@ function __c20(j: number): any {
           count: S.Number,
           next: S.optional(S.NullOr(S.String)),
           previous: S.optional(S.NullOr(S.String)),
-          results: __S(133, __c16, 5),
+          results: __S(1200, __c75, 0),
         }),
       ).annotate({
         identifier: "PaginatedErrorTrackingExternalReferenceResultList",
       });
-    case 2:
+  }
+}
+function __c95(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -5767,20 +6019,47 @@ function __c20(j: number): any {
       ).annotate({
         identifier: "ListErrorTrackingFingerprintsRequest",
       });
-    case 3:
-      return S.Array(__S(125, __c15, 5));
-    case 4:
+    case 1:
+      return S.Array(__S(1056, __c66, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           count: S.optional(S.Number),
           next: S.optional(S.NullOr(S.String)),
           previous: S.optional(S.NullOr(S.String)),
-          results: S.optional(__S(163, __c20, 3)),
+          results: S.optional(__S(1521, __c95, 1)),
         }),
       ).annotate({
         identifier: "PaginatedErrorTrackingFingerprintList",
       });
-    case 5:
+  }
+}
+function __c96(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, S.Unknown);
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          project_id: S.String.pipe(T.Label()),
+          integration_id: S.Number,
+          issue: S.String,
+          external_context: __S(1536, __c96, 0),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/api/projects/{project_id}/error_tracking/external_references/link_issue/",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateErrorTrackingExternalReferencesLinkIssueRequest",
+      });
+  }
+}
+function __c97(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -5794,19 +6073,19 @@ function __c20(j: number): any {
       ).annotate({
         identifier: "ListErrorTrackingGroupingRulesRequest",
       });
-    case 6:
-      return S.Array(__S(29, __c3, 5));
-    case 7:
+    case 1:
+      return S.Array(__S(1729, __c108, 1));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          results: S.optional(__S(166, __c20, 6)),
+          results: S.optional(__S(1553, __c97, 1)),
         }),
       ).annotate({
         identifier: "ErrorTrackingGroupingRuleListResponse",
       });
   }
 }
-function __c21(j: number): any {
+function __c98(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5825,19 +6104,23 @@ function __c21(j: number): any {
         identifier: "ListErrorTrackingIssuesRequest",
       });
     case 1:
-      return S.Array(__S(135, __c16, 7));
+      return S.Array(__S(1218, __c76, 2));
     case 2:
       return S.suspend(() =>
         S.Struct({
           count: S.Number,
           next: S.optional(S.NullOr(S.String)),
           previous: S.optional(S.NullOr(S.String)),
-          results: __S(169, __c21, 1),
+          results: __S(1569, __c98, 1),
         }),
       ).annotate({
         identifier: "PaginatedErrorTrackingIssueReadList",
       });
-    case 3:
+  }
+}
+function __c99(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -5854,20 +6137,24 @@ function __c21(j: number): any {
       ).annotate({
         identifier: "ListErrorTrackingRecommendationsRequest",
       });
-    case 4:
-      return S.Array(__S(59, __c7, 3));
-    case 5:
+    case 1:
+      return S.Array(__S(144, __c9, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           count: S.optional(S.Number),
           next: S.optional(S.NullOr(S.String)),
           previous: S.optional(S.NullOr(S.String)),
-          results: S.optional(__S(172, __c21, 4)),
+          results: S.optional(__S(1585, __c99, 1)),
         }),
       ).annotate({
         identifier: "PaginatedErrorTrackingRecommendationList",
       });
-    case 6:
+  }
+}
+function __c100(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -5883,24 +6170,24 @@ function __c21(j: number): any {
       ).annotate({
         identifier: "ListErrorTrackingReleasesRequest",
       });
-    case 7:
-      return S.Array(__S(61, __c7, 5));
-  }
-}
-function __c22(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
+      return S.Array(__S(176, __c11, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           count: S.optional(S.Number),
           next: S.optional(S.NullOr(S.String)),
           previous: S.optional(S.NullOr(S.String)),
-          results: S.optional(__S(175, __c21, 7)),
+          results: S.optional(__S(1601, __c100, 1)),
         }),
       ).annotate({
         identifier: "PaginatedErrorTrackingReleaseList",
       });
-    case 1:
+  }
+}
+function __c101(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -5914,17 +6201,21 @@ function __c22(j: number): any {
       ).annotate({
         identifier: "ListErrorTrackingSeverityRulesRequest",
       });
+    case 1:
+      return S.Array(__S(209, __c13, 1));
     case 2:
-      return S.Array(__S(64, __c8, 0));
-    case 3:
       return S.suspend(() =>
         S.Struct({
-          results: __S(178, __c22, 2),
+          results: __S(1617, __c101, 1),
         }),
       ).annotate({
         identifier: "ErrorTrackingSeverityRuleListResponse",
       });
-    case 4:
+  }
+}
+function __c102(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -5938,7 +6229,11 @@ function __c22(j: number): any {
       ).annotate({
         identifier: "ListErrorTrackingSpikeDetectionConfigRequest",
       });
-    case 5:
+  }
+}
+function __c103(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -5958,7 +6253,7 @@ function __c22(j: number): any {
       ).annotate({
         identifier: "ListErrorTrackingSpikeEventsRequest",
       });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
@@ -5968,34 +6263,34 @@ function __c22(j: number): any {
       ).annotate({
         identifier: "ErrorTrackingSpikeEventIssue",
       });
-    case 7:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
-          issue: S.optional(__S(182, __c22, 6)),
+          issue: S.optional(__S(1649, __c103, 1)),
           detected_at: S.optional(S.String),
           computed_baseline: S.optional(S.Number),
           current_bucket_value: S.optional(S.Number),
         }),
       ).annotate({ identifier: "ErrorTrackingSpikeEvent" });
-  }
-}
-function __c23(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(183, __c22, 7));
-    case 1:
+    case 3:
+      return S.Array(__S(1650, __c103, 2));
+    case 4:
       return S.suspend(() =>
         S.Struct({
           count: S.optional(S.Number),
           next: S.optional(S.NullOr(S.String)),
           previous: S.optional(S.NullOr(S.String)),
-          results: S.optional(__S(184, __c23, 0)),
+          results: S.optional(__S(1651, __c103, 3)),
         }),
       ).annotate({
         identifier: "PaginatedErrorTrackingSpikeEventList",
       });
-    case 2:
+  }
+}
+function __c104(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -6011,18 +6306,22 @@ function __c23(j: number): any {
       ).annotate({
         identifier: "ListErrorTrackingStackFramesRequest",
       });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           count: S.optional(S.Number),
           next: S.optional(S.NullOr(S.String)),
           previous: S.optional(S.NullOr(S.String)),
-          results: S.optional(__S(99, __c12, 3)),
+          results: S.optional(__S(736, __c46, 0)),
         }),
       ).annotate({
         identifier: "PaginatedErrorTrackingStackFrameList",
       });
-    case 4:
+  }
+}
+function __c105(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -6038,20 +6337,24 @@ function __c23(j: number): any {
       ).annotate({
         identifier: "ListErrorTrackingSuppressionRulesRequest",
       });
-    case 5:
-      return S.Array(__S(66, __c8, 2));
-    case 6:
+    case 1:
+      return S.Array(__S(240, __c15, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           count: S.optional(S.Number),
           next: S.optional(S.NullOr(S.String)),
           previous: S.optional(S.NullOr(S.String)),
-          results: S.optional(__S(189, __c23, 5)),
+          results: S.optional(__S(1681, __c105, 1)),
         }),
       ).annotate({
         identifier: "PaginatedErrorTrackingSuppressionRuleList",
       });
-    case 7:
+  }
+}
+function __c106(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -6071,33 +6374,92 @@ function __c23(j: number): any {
       ).annotate({
         identifier: "ListErrorTrackingSymbolSetsRequest",
       });
-  }
-}
-function __c24(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(150, __c18, 6));
     case 1:
+      return S.Array(__S(1440, __c90, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           count: S.optional(S.Number),
           next: S.optional(S.NullOr(S.String)),
           previous: S.optional(S.NullOr(S.String)),
-          results: S.optional(__S(192, __c24, 0)),
+          results: S.optional(__S(1697, __c106, 1)),
         }),
       ).annotate({
         identifier: "PaginatedErrorTrackingSymbolSetList",
       });
-    case 2:
+  }
+}
+function __c107(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          type: S.optional(S.String),
+          id: S.optional(S.Unknown),
+        }),
+      ).annotate({
+        identifier: "ErrorTrackingGroupingRuleAssigneeRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          project_id: S.String.pipe(T.Label()),
+          filters: S.optional(__S(865, __c54, 1)),
+          assignee: S.optional(S.NullOr(__S(1712, __c107, 0))),
+          description: S.optional(S.NullOr(S.String)),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/api/projects/{project_id}/error_tracking/grouping_rules/",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateErrorTrackingGroupingRuleRequest",
+      });
+  }
+}
+function __c108(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          type: S.optional(S.String),
+          id: S.optional(S.Unknown),
+        }),
+      ).annotate({
+        identifier: "ErrorTrackingGroupingRuleAssignee",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          filters: S.optional(S.Unknown),
+          assignee: S.optional(S.NullOr(__S(1728, __c108, 0))),
+          description: S.optional(S.NullOr(S.String)),
+          issue: S.optional(S.NullOr(__S(1344, __c84, 0))),
+          order_key: S.optional(S.Number),
+          disabled_data: S.optional(S.Unknown),
+          created_at: S.optional(S.String),
+          updated_at: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "ErrorTrackingGroupingRule",
+      });
+  }
+}
+function __c109(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
           id: S.String.pipe(T.Label()),
           name: S.String,
-          triggers: __S(0, __c0, 0),
-          filters: S.optional(__S(3, __c0, 3)),
+          triggers: __S(544, __c34, 0),
+          filters: S.optional(__S(576, __c36, 0)),
           throttle_seconds: S.optional(S.Number),
-          destinations: __S(6, __c0, 6),
+          destinations: __S(578, __c36, 2),
           enabled: S.optional(S.Boolean),
         }).pipe(
           T.Http({
@@ -6109,17 +6471,21 @@ function __c24(j: number): any {
       ).annotate({
         identifier: "UpdateErrorTrackingAlertRequest",
       });
-    case 3:
+  }
+}
+function __c110(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
           id: S.String.pipe(T.Label()),
           name: S.optional(S.String),
           enabled: S.optional(S.Boolean),
-          triggers: S.optional(__S(0, __c0, 0)),
-          filters: S.optional(__S(3, __c0, 3)),
+          triggers: S.optional(__S(544, __c34, 0)),
+          filters: S.optional(__S(576, __c36, 0)),
           throttle_seconds: S.optional(S.Number),
-          destinations: S.optional(__S(6, __c0, 6)),
+          destinations: S.optional(__S(578, __c36, 2)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -6130,13 +6496,17 @@ function __c24(j: number): any {
       ).annotate({
         identifier: "UpdateErrorTrackingAlertsPartialRequest",
       });
-    case 4:
+  }
+}
+function __c111(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
           id: S.String.pipe(T.Label()),
-          filters: S.optional(S.NullOr(__S(14, __c1, 6))),
-          assignee: S.optional(S.NullOr(__S(15, __c1, 7))),
+          filters: S.optional(S.NullOr(__S(865, __c54, 1))),
+          assignee: S.optional(S.NullOr(__S(880, __c55, 0))),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -6147,13 +6517,17 @@ function __c24(j: number): any {
       ).annotate({
         identifier: "UpdateErrorTrackingAssignmentRuleRequest",
       });
-    case 5:
+  }
+}
+function __c112(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
           id: S.String.pipe(T.Label()),
-          filters: S.optional(S.NullOr(__S(14, __c1, 6))),
-          assignee: S.optional(S.NullOr(__S(15, __c1, 7))),
+          filters: S.optional(S.NullOr(__S(865, __c54, 1))),
+          assignee: S.optional(S.NullOr(__S(880, __c55, 0))),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -6164,13 +6538,15 @@ function __c24(j: number): any {
       ).annotate({
         identifier: "UpdateErrorTrackingAssignmentRulesPartialRequest",
       });
-    case 6:
-      return S.Record(S.String, S.Number);
-    case 7:
+  }
+}
+function __c113(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
-          orders: S.optional(__S(198, __c24, 6)),
+          orders: S.optional(__S(1840, __c115, 0)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -6183,18 +6559,28 @@ function __c24(j: number): any {
       });
   }
 }
-function __c25(j: number): any {
+function __c114(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "UpdateErrorTrackingAssignmentRulesReorderPartialResponse",
       });
-    case 1:
+  }
+}
+function __c115(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, S.Number);
+  }
+}
+function __c116(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
           id: S.String.pipe(T.Label()),
-          filters: S.optional(__S(14, __c1, 6)),
+          filters: S.optional(__S(865, __c54, 1)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -6205,12 +6591,16 @@ function __c25(j: number): any {
       ).annotate({
         identifier: "UpdateErrorTrackingBypassRuleRequest",
       });
-    case 2:
+  }
+}
+function __c117(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
           id: S.String.pipe(T.Label()),
-          filters: S.optional(__S(14, __c1, 6)),
+          filters: S.optional(__S(865, __c54, 1)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -6221,13 +6611,17 @@ function __c25(j: number): any {
       ).annotate({
         identifier: "UpdateErrorTrackingBypassRulesPartialRequest",
       });
-    case 3:
+  }
+}
+function __c118(j: number): any {
+  switch (j) {
+    case 0:
       return S.Record(S.String, S.Number);
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
-          orders: S.optional(__S(203, __c25, 3)),
+          orders: S.optional(__S(1888, __c118, 0)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -6238,12 +6632,16 @@ function __c25(j: number): any {
       ).annotate({
         identifier: "UpdateErrorTrackingBypassRulesReorderPartialRequest",
       });
-    case 5:
+  }
+}
+function __c119(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
           id: S.String.pipe(T.Label()),
-          filters: S.optional(S.NullOr(__S(14, __c1, 6))),
+          filters: S.optional(S.NullOr(__S(865, __c54, 1))),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -6254,12 +6652,16 @@ function __c25(j: number): any {
       ).annotate({
         identifier: "UpdateErrorTrackingGroupingRuleRequest",
       });
-    case 6:
+  }
+}
+function __c120(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
           id: S.String.pipe(T.Label()),
-          filters: S.optional(S.NullOr(__S(14, __c1, 6))),
+          filters: S.optional(S.NullOr(__S(865, __c54, 1))),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -6270,11 +6672,49 @@ function __c25(j: number): any {
       ).annotate({
         identifier: "UpdateErrorTrackingGroupingRulesPartialRequest",
       });
-    case 7:
+  }
+}
+function __c121(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
-          orders: S.optional(__S(198, __c24, 6)),
+          id: S.String.pipe(T.Label()),
+          ids: S.optional(__S(1952, __c122, 0)),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/api/projects/{project_id}/error_tracking/issues/{id}/merge/",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateErrorTrackingIssuesMergeRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          success: S.optional(S.Boolean),
+        }),
+      ).annotate({
+        identifier: "ErrorTrackingIssueMergeResponse",
+      });
+  }
+}
+function __c122(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c123(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          project_id: S.String.pipe(T.Label()),
+          orders: S.optional(__S(1840, __c115, 0)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -6287,7 +6727,7 @@ function __c25(j: number): any {
       });
   }
 }
-function __c26(j: number): any {
+function __c124(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -6308,7 +6748,11 @@ function __c26(j: number): any {
       ).annotate({
         identifier: "UpdateErrorTrackingIssueRequest",
       });
-    case 1:
+  }
+}
+function __c125(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -6324,7 +6768,11 @@ function __c26(j: number): any {
       ).annotate({
         identifier: "UpdateErrorTrackingIssuesCohortRequest",
       });
-    case 2:
+  }
+}
+function __c126(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -6343,7 +6791,11 @@ function __c26(j: number): any {
       ).annotate({
         identifier: "UpdateErrorTrackingIssuesPartialRequest",
       });
-    case 3:
+  }
+}
+function __c127(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -6351,7 +6803,7 @@ function __c26(j: number): any {
           version: S.optional(S.NullOr(S.String)),
           project: S.optional(S.NullOr(S.String)),
           hash_id: S.optional(S.NullOr(S.String)),
-          metadata: S.optional(S.NullOr(__S(1, __c0, 1))),
+          metadata: S.optional(S.NullOr(__S(528, __c33, 0))),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -6362,7 +6814,11 @@ function __c26(j: number): any {
       ).annotate({
         identifier: "UpdateErrorTrackingReleaseRequest",
       });
-    case 4:
+  }
+}
+function __c128(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -6370,7 +6826,7 @@ function __c26(j: number): any {
           version: S.optional(S.NullOr(S.String)),
           project: S.optional(S.NullOr(S.String)),
           hash_id: S.optional(S.NullOr(S.String)),
-          metadata: S.optional(S.NullOr(__S(1, __c0, 1))),
+          metadata: S.optional(S.NullOr(__S(528, __c33, 0))),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -6381,12 +6837,16 @@ function __c26(j: number): any {
       ).annotate({
         identifier: "UpdateErrorTrackingReleasesPartialRequest",
       });
-    case 5:
+  }
+}
+function __c129(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
           id: S.String.pipe(T.Label()),
-          filters: S.optional(__S(14, __c1, 6)),
+          filters: S.optional(__S(865, __c54, 1)),
           severity: S.optional(S.String),
         }).pipe(
           T.Http({
@@ -6398,12 +6858,16 @@ function __c26(j: number): any {
       ).annotate({
         identifier: "UpdateErrorTrackingSeverityRuleRequest",
       });
-    case 6:
+  }
+}
+function __c130(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
           id: S.String.pipe(T.Label()),
-          filters: S.optional(__S(14, __c1, 6)),
+          filters: S.optional(__S(865, __c54, 1)),
           severity: S.optional(S.String),
         }).pipe(
           T.Http({
@@ -6415,11 +6879,15 @@ function __c26(j: number): any {
       ).annotate({
         identifier: "UpdateErrorTrackingSeverityRulesPartialRequest",
       });
-    case 7:
+  }
+}
+function __c131(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
-          orders: S.optional(__S(198, __c24, 6)),
+          orders: S.optional(__S(1840, __c115, 0)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -6432,14 +6900,14 @@ function __c26(j: number): any {
       });
   }
 }
-function __c27(j: number): any {
+function __c132(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
           id: S.String.pipe(T.Label()),
-          filters: S.optional(__S(14, __c1, 6)),
+          filters: S.optional(__S(865, __c54, 1)),
           sampling_rate: S.optional(S.Number),
         }).pipe(
           T.Http({
@@ -6451,41 +6919,8 @@ function __c27(j: number): any {
       ).annotate({
         identifier: "UpdateErrorTrackingSuppressionRuleRequest",
       });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          project_id: S.String.pipe(T.Label()),
-          id: S.String.pipe(T.Label()),
-          filters: S.optional(__S(14, __c1, 6)),
-          sampling_rate: S.optional(S.Number),
-        }).pipe(
-          T.Http({
-            method: "PATCH",
-            uri: "/api/projects/{project_id}/error_tracking/suppression_rules/{id}/",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "UpdateErrorTrackingSuppressionRulesPartialRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          project_id: S.String.pipe(T.Label()),
-          orders: S.optional(__S(198, __c24, 6)),
-        }).pipe(
-          T.Http({
-            method: "PATCH",
-            uri: "/api/projects/{project_id}/error_tracking/suppression_rules/reorder/",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "UpdateErrorTrackingSuppressionRulesReorderPartialRequest",
-      });
   }
 }
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

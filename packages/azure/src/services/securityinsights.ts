@@ -4179,7 +4179,7 @@ export const ActionsCreateOrUpdate: API.OperationMethod<
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(1, __c0, 1) as any as S.Schema<ActionsCreateOrUpdateRequest>,
-  output: __S(4, __c0, 4) as any as S.Schema<ActionsCreateOrUpdateResponse>,
+  output: __S(2, __c0, 2) as any as S.Schema<ActionsCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4193,8 +4193,8 @@ export const AlertRulesCreateOrUpdate: API.OperationMethod<
   AlertRulesCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(5, __c0, 5) as any as S.Schema<AlertRulesCreateOrUpdateRequest>,
-  output: __S(6, __c0, 6) as any as S.Schema<AlertRulesCreateOrUpdateResponse>,
+  input: __S(48, __c3, 0) as any as S.Schema<AlertRulesCreateOrUpdateRequest>,
+  output: __S(64, __c4, 0) as any as S.Schema<AlertRulesCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4208,8 +4208,8 @@ export const AutomationRulesCreateOrUpdate: API.OperationMethod<
   AutomationRulesCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(13, __c1, 5) as any as S.Schema<AutomationRulesCreateOrUpdateRequest>,
-  output: __S(16, __c2, 0) as any as S.Schema<AutomationRulesCreateOrUpdateResponse>,
+  input: __S(273, __c17, 1) as any as S.Schema<AutomationRulesCreateOrUpdateRequest>,
+  output: __S(288, __c18, 0) as any as S.Schema<AutomationRulesCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4223,8 +4223,8 @@ export const BookmarksCreateOrUpdate: API.OperationMethod<
   BookmarksCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(21, __c2, 5) as any as S.Schema<BookmarksCreateOrUpdateRequest>,
-  output: __S(24, __c3, 0) as any as S.Schema<BookmarksCreateOrUpdateResponse>,
+  input: __S(529, __c33, 1) as any as S.Schema<BookmarksCreateOrUpdateRequest>,
+  output: __S(530, __c33, 2) as any as S.Schema<BookmarksCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4238,8 +4238,8 @@ export const CreateMetadata: API.OperationMethod<
   CreateMetadataError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(32, __c4, 0) as any as S.Schema<CreateMetadataRequest>,
-  output: __S(33, __c4, 1) as any as S.Schema<CreateMetadataResponse>,
+  input: __S(944, __c59, 0) as any as S.Schema<CreateMetadataRequest>,
+  output: __S(977, __c61, 1) as any as S.Schema<CreateMetadataResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4253,8 +4253,8 @@ export const CreateSentinelOnboardingState: API.OperationMethod<
   CreateSentinelOnboardingStateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(35, __c4, 3) as any as S.Schema<CreateSentinelOnboardingStateRequest>,
-  output: __S(36, __c4, 4) as any as S.Schema<CreateSentinelOnboardingStateResponse>,
+  input: __S(1296, __c81, 0) as any as S.Schema<CreateSentinelOnboardingStateRequest>,
+  output: __S(1312, __c82, 0) as any as S.Schema<CreateSentinelOnboardingStateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4268,8 +4268,8 @@ export const CreateSourceControl: API.OperationMethod<
   CreateSourceControlError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(44, __c5, 4) as any as S.Schema<CreateSourceControlRequest>,
-  output: __S(56, __c7, 0) as any as S.Schema<CreateSourceControlResponse>,
+  input: __S(1589, __c99, 5) as any as S.Schema<CreateSourceControlRequest>,
+  output: __S(1590, __c99, 6) as any as S.Schema<CreateSourceControlResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4283,8 +4283,8 @@ export const CreateThreatIntelligenceIndicator: API.OperationMethod<
   CreateThreatIntelligenceIndicatorError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(71, __c8, 7) as any as S.Schema<CreateThreatIntelligenceIndicatorRequest>,
-  output: __S(72, __c9, 0) as any as S.Schema<CreateThreatIntelligenceIndicatorResponse>,
+  input: __S(1808, __c113, 0) as any as S.Schema<CreateThreatIntelligenceIndicatorRequest>,
+  output: __S(1824, __c114, 0) as any as S.Schema<CreateThreatIntelligenceIndicatorResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4298,8 +4298,12 @@ export const CreateThreatIntelligenceIndicatorIndicator: API.OperationMethod<
   CreateThreatIntelligenceIndicatorIndicatorError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(73, __c9, 1) as any as S.Schema<CreateThreatIntelligenceIndicatorIndicatorRequest>,
-  output: __S(72, __c9, 0) as any as S.Schema<CreateThreatIntelligenceIndicatorIndicatorResponse>,
+  input: __S(2048, __c128, 0) as any as S.Schema<CreateThreatIntelligenceIndicatorIndicatorRequest>,
+  output: __S(
+    1824,
+    __c114,
+    0,
+  ) as any as S.Schema<CreateThreatIntelligenceIndicatorIndicatorResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4313,8 +4317,8 @@ export const DataConnectorDefinitionsCreateOrUpdate: API.OperationMethod<
   DataConnectorDefinitionsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(74, __c9, 2) as any as S.Schema<DataConnectorDefinitionsCreateOrUpdateRequest>,
-  output: __S(6, __c0, 6) as any as S.Schema<DataConnectorDefinitionsCreateOrUpdateResponse>,
+  input: __S(2240, __c140, 0) as any as S.Schema<DataConnectorDefinitionsCreateOrUpdateRequest>,
+  output: __S(64, __c4, 0) as any as S.Schema<DataConnectorDefinitionsCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4328,8 +4332,8 @@ export const DataConnectorsCreateOrUpdate: API.OperationMethod<
   DataConnectorsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(75, __c9, 3) as any as S.Schema<DataConnectorsCreateOrUpdateRequest>,
-  output: __S(6, __c0, 6) as any as S.Schema<DataConnectorsCreateOrUpdateResponse>,
+  input: __S(80, __c5, 0) as any as S.Schema<DataConnectorsCreateOrUpdateRequest>,
+  output: __S(64, __c4, 0) as any as S.Schema<DataConnectorsCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4343,8 +4347,8 @@ export const DeleteAction: API.OperationMethod<
   DeleteActionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(76, __c9, 4) as any as S.Schema<DeleteActionRequest>,
-  output: __S(77, __c9, 5) as any as S.Schema<DeleteActionResponse>,
+  input: __S(96, __c6, 0) as any as S.Schema<DeleteActionRequest>,
+  output: __S(112, __c7, 0) as any as S.Schema<DeleteActionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4358,8 +4362,8 @@ export const DeleteAlertRule: API.OperationMethod<
   DeleteAlertRuleError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(78, __c9, 6) as any as S.Schema<DeleteAlertRuleRequest>,
-  output: __S(77, __c9, 5) as any as S.Schema<DeleteAlertRuleResponse>,
+  input: __S(128, __c8, 0) as any as S.Schema<DeleteAlertRuleRequest>,
+  output: __S(112, __c7, 0) as any as S.Schema<DeleteAlertRuleResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4373,8 +4377,8 @@ export const DeleteAutomationRule: API.OperationMethod<
   DeleteAutomationRuleError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(79, __c9, 7) as any as S.Schema<DeleteAutomationRuleRequest>,
-  output: __S(80, __c10, 0) as any as S.Schema<DeleteAutomationRuleResponse>,
+  input: __S(144, __c9, 0) as any as S.Schema<DeleteAutomationRuleRequest>,
+  output: __S(145, __c9, 1) as any as S.Schema<DeleteAutomationRuleResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4388,8 +4392,8 @@ export const DeleteBookmark: API.OperationMethod<
   DeleteBookmarkError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(81, __c10, 1) as any as S.Schema<DeleteBookmarkRequest>,
-  output: __S(77, __c9, 5) as any as S.Schema<DeleteBookmarkResponse>,
+  input: __S(160, __c10, 0) as any as S.Schema<DeleteBookmarkRequest>,
+  output: __S(112, __c7, 0) as any as S.Schema<DeleteBookmarkResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4403,8 +4407,8 @@ export const DeleteContentTemplate: API.OperationMethod<
   DeleteContentTemplateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(82, __c10, 2) as any as S.Schema<DeleteContentTemplateRequest>,
-  output: __S(77, __c9, 5) as any as S.Schema<DeleteContentTemplateResponse>,
+  input: __S(176, __c11, 0) as any as S.Schema<DeleteContentTemplateRequest>,
+  output: __S(112, __c7, 0) as any as S.Schema<DeleteContentTemplateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4418,8 +4422,8 @@ export const DeleteDataConnector: API.OperationMethod<
   DeleteDataConnectorError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(83, __c10, 3) as any as S.Schema<DeleteDataConnectorRequest>,
-  output: __S(77, __c9, 5) as any as S.Schema<DeleteDataConnectorResponse>,
+  input: __S(192, __c12, 0) as any as S.Schema<DeleteDataConnectorRequest>,
+  output: __S(112, __c7, 0) as any as S.Schema<DeleteDataConnectorResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4433,8 +4437,8 @@ export const DeleteDataConnectorDefinition: API.OperationMethod<
   DeleteDataConnectorDefinitionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(84, __c10, 4) as any as S.Schema<DeleteDataConnectorDefinitionRequest>,
-  output: __S(85, __c10, 5) as any as S.Schema<DeleteDataConnectorDefinitionResponse>,
+  input: __S(208, __c13, 0) as any as S.Schema<DeleteDataConnectorDefinitionRequest>,
+  output: __S(224, __c14, 0) as any as S.Schema<DeleteDataConnectorDefinitionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4448,8 +4452,8 @@ export const DeleteIncident: API.OperationMethod<
   DeleteIncidentError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(86, __c10, 6) as any as S.Schema<DeleteIncidentRequest>,
-  output: __S(77, __c9, 5) as any as S.Schema<DeleteIncidentResponse>,
+  input: __S(240, __c15, 0) as any as S.Schema<DeleteIncidentRequest>,
+  output: __S(112, __c7, 0) as any as S.Schema<DeleteIncidentResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4463,8 +4467,8 @@ export const DeleteIncidentComment: API.OperationMethod<
   DeleteIncidentCommentError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(87, __c10, 7) as any as S.Schema<DeleteIncidentCommentRequest>,
-  output: __S(77, __c9, 5) as any as S.Schema<DeleteIncidentCommentResponse>,
+  input: __S(256, __c16, 0) as any as S.Schema<DeleteIncidentCommentRequest>,
+  output: __S(112, __c7, 0) as any as S.Schema<DeleteIncidentCommentResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4478,8 +4482,8 @@ export const DeleteIncidentRelation: API.OperationMethod<
   DeleteIncidentRelationError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(88, __c11, 0) as any as S.Schema<DeleteIncidentRelationRequest>,
-  output: __S(77, __c9, 5) as any as S.Schema<DeleteIncidentRelationResponse>,
+  input: __S(336, __c21, 0) as any as S.Schema<DeleteIncidentRelationRequest>,
+  output: __S(112, __c7, 0) as any as S.Schema<DeleteIncidentRelationResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4493,8 +4497,8 @@ export const DeleteIncidentTask: API.OperationMethod<
   DeleteIncidentTaskError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(89, __c11, 1) as any as S.Schema<DeleteIncidentTaskRequest>,
-  output: __S(77, __c9, 5) as any as S.Schema<DeleteIncidentTaskResponse>,
+  input: __S(352, __c22, 0) as any as S.Schema<DeleteIncidentTaskRequest>,
+  output: __S(112, __c7, 0) as any as S.Schema<DeleteIncidentTaskResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4508,8 +4512,8 @@ export const DeleteMetadata: API.OperationMethod<
   DeleteMetadataError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(90, __c11, 2) as any as S.Schema<DeleteMetadataRequest>,
-  output: __S(77, __c9, 5) as any as S.Schema<DeleteMetadataResponse>,
+  input: __S(368, __c23, 0) as any as S.Schema<DeleteMetadataRequest>,
+  output: __S(112, __c7, 0) as any as S.Schema<DeleteMetadataResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4523,8 +4527,8 @@ export const DeleteSecurityMLAnalyticsSettings: API.OperationMethod<
   DeleteSecurityMLAnalyticsSettingsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(91, __c11, 3) as any as S.Schema<DeleteSecurityMLAnalyticsSettingsRequest>,
-  output: __S(85, __c10, 5) as any as S.Schema<DeleteSecurityMLAnalyticsSettingsResponse>,
+  input: __S(384, __c24, 0) as any as S.Schema<DeleteSecurityMLAnalyticsSettingsRequest>,
+  output: __S(224, __c14, 0) as any as S.Schema<DeleteSecurityMLAnalyticsSettingsResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4538,8 +4542,8 @@ export const DeleteSentinelOnboardingState: API.OperationMethod<
   DeleteSentinelOnboardingStateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(92, __c11, 4) as any as S.Schema<DeleteSentinelOnboardingStateRequest>,
-  output: __S(85, __c10, 5) as any as S.Schema<DeleteSentinelOnboardingStateResponse>,
+  input: __S(400, __c25, 0) as any as S.Schema<DeleteSentinelOnboardingStateRequest>,
+  output: __S(224, __c14, 0) as any as S.Schema<DeleteSentinelOnboardingStateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4553,8 +4557,8 @@ export const DeleteSourceControl: API.OperationMethod<
   DeleteSourceControlError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(94, __c11, 6) as any as S.Schema<DeleteSourceControlRequest>,
-  output: __S(97, __c12, 1) as any as S.Schema<Warning>,
+  input: __S(416, __c26, 0) as any as S.Schema<DeleteSourceControlRequest>,
+  output: __S(419, __c26, 3) as any as S.Schema<Warning>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4568,8 +4572,8 @@ export const DeleteThreatIntelligenceIndicator: API.OperationMethod<
   DeleteThreatIntelligenceIndicatorError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(98, __c12, 2) as any as S.Schema<DeleteThreatIntelligenceIndicatorRequest>,
-  output: __S(85, __c10, 5) as any as S.Schema<DeleteThreatIntelligenceIndicatorResponse>,
+  input: __S(448, __c28, 0) as any as S.Schema<DeleteThreatIntelligenceIndicatorRequest>,
+  output: __S(224, __c14, 0) as any as S.Schema<DeleteThreatIntelligenceIndicatorResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4583,8 +4587,8 @@ export const DeleteWatchlist: API.OperationMethod<
   DeleteWatchlistError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(99, __c12, 3) as any as S.Schema<DeleteWatchlistRequest>,
-  output: __S(77, __c9, 5) as any as S.Schema<DeleteWatchlistResponse>,
+  input: __S(464, __c29, 0) as any as S.Schema<DeleteWatchlistRequest>,
+  output: __S(112, __c7, 0) as any as S.Schema<DeleteWatchlistResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4598,8 +4602,8 @@ export const DeleteWatchlistItem: API.OperationMethod<
   DeleteWatchlistItemError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(100, __c12, 4) as any as S.Schema<DeleteWatchlistItemRequest>,
-  output: __S(77, __c9, 5) as any as S.Schema<DeleteWatchlistItemResponse>,
+  input: __S(480, __c30, 0) as any as S.Schema<DeleteWatchlistItemRequest>,
+  output: __S(112, __c7, 0) as any as S.Schema<DeleteWatchlistItemResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4613,8 +4617,8 @@ export const GetAction: API.OperationMethod<
   GetActionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(101, __c12, 5) as any as S.Schema<GetActionRequest>,
-  output: __S(102, __c12, 6) as any as S.Schema<GetActionResponse>,
+  input: __S(496, __c31, 0) as any as S.Schema<GetActionRequest>,
+  output: __S(512, __c32, 0) as any as S.Schema<GetActionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4628,8 +4632,8 @@ export const GetAlertRule: API.OperationMethod<
   GetAlertRuleError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(103, __c12, 7) as any as S.Schema<GetAlertRuleRequest>,
-  output: __S(104, __c13, 0) as any as S.Schema<GetAlertRuleResponse>,
+  input: __S(624, __c39, 0) as any as S.Schema<GetAlertRuleRequest>,
+  output: __S(640, __c40, 0) as any as S.Schema<GetAlertRuleResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4643,8 +4647,8 @@ export const GetAlertRuleTemplate: API.OperationMethod<
   GetAlertRuleTemplateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(105, __c13, 1) as any as S.Schema<GetAlertRuleTemplateRequest>,
-  output: __S(106, __c13, 2) as any as S.Schema<GetAlertRuleTemplateResponse>,
+  input: __S(656, __c41, 0) as any as S.Schema<GetAlertRuleTemplateRequest>,
+  output: __S(657, __c41, 1) as any as S.Schema<GetAlertRuleTemplateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4658,8 +4662,8 @@ export const GetAutomationRule: API.OperationMethod<
   GetAutomationRuleError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(107, __c13, 3) as any as S.Schema<GetAutomationRuleRequest>,
-  output: __S(16, __c2, 0) as any as S.Schema<GetAutomationRuleResponse>,
+  input: __S(672, __c42, 0) as any as S.Schema<GetAutomationRuleRequest>,
+  output: __S(288, __c18, 0) as any as S.Schema<GetAutomationRuleResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4673,8 +4677,8 @@ export const GetBookmark: API.OperationMethod<
   GetBookmarkError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(108, __c13, 4) as any as S.Schema<GetBookmarkRequest>,
-  output: __S(109, __c13, 5) as any as S.Schema<GetBookmarkResponse>,
+  input: __S(688, __c43, 0) as any as S.Schema<GetBookmarkRequest>,
+  output: __S(704, __c44, 0) as any as S.Schema<GetBookmarkResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4688,8 +4692,8 @@ export const GetContentPackage: API.OperationMethod<
   GetContentPackageError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(110, __c13, 6) as any as S.Schema<GetContentPackageRequest>,
-  output: __S(112, __c14, 0) as any as S.Schema<GetContentPackageResponse>,
+  input: __S(720, __c45, 0) as any as S.Schema<GetContentPackageRequest>,
+  output: __S(736, __c46, 0) as any as S.Schema<GetContentPackageResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4703,8 +4707,8 @@ export const GetContentTemplate: API.OperationMethod<
   GetContentTemplateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(113, __c14, 1) as any as S.Schema<GetContentTemplateRequest>,
-  output: __S(116, __c14, 4) as any as S.Schema<GetContentTemplateResponse>,
+  input: __S(768, __c48, 0) as any as S.Schema<GetContentTemplateRequest>,
+  output: __S(784, __c49, 0) as any as S.Schema<GetContentTemplateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4718,8 +4722,8 @@ export const GetDataConnector: API.OperationMethod<
   GetDataConnectorError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(117, __c14, 5) as any as S.Schema<GetDataConnectorRequest>,
-  output: __S(104, __c13, 0) as any as S.Schema<GetDataConnectorResponse>,
+  input: __S(816, __c51, 0) as any as S.Schema<GetDataConnectorRequest>,
+  output: __S(640, __c40, 0) as any as S.Schema<GetDataConnectorResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4733,8 +4737,8 @@ export const GetDataConnectorDefinition: API.OperationMethod<
   GetDataConnectorDefinitionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(118, __c14, 6) as any as S.Schema<GetDataConnectorDefinitionRequest>,
-  output: __S(6, __c0, 6) as any as S.Schema<GetDataConnectorDefinitionResponse>,
+  input: __S(832, __c52, 0) as any as S.Schema<GetDataConnectorDefinitionRequest>,
+  output: __S(64, __c4, 0) as any as S.Schema<GetDataConnectorDefinitionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4748,8 +4752,8 @@ export const GetIncident: API.OperationMethod<
   GetIncidentError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(119, __c14, 7) as any as S.Schema<GetIncidentRequest>,
-  output: __S(125, __c15, 5) as any as S.Schema<GetIncidentResponse>,
+  input: __S(848, __c53, 0) as any as S.Schema<GetIncidentRequest>,
+  output: __S(880, __c55, 0) as any as S.Schema<GetIncidentResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4763,8 +4767,8 @@ export const GetIncidentComment: API.OperationMethod<
   GetIncidentCommentError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(126, __c15, 6) as any as S.Schema<GetIncidentCommentRequest>,
-  output: __S(128, __c16, 0) as any as S.Schema<GetIncidentCommentResponse>,
+  input: __S(896, __c56, 0) as any as S.Schema<GetIncidentCommentRequest>,
+  output: __S(912, __c57, 0) as any as S.Schema<GetIncidentCommentResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4778,8 +4782,8 @@ export const GetIncidentRelation: API.OperationMethod<
   GetIncidentRelationError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(129, __c16, 1) as any as S.Schema<GetIncidentRelationRequest>,
-  output: __S(131, __c16, 3) as any as S.Schema<GetIncidentRelationResponse>,
+  input: __S(992, __c62, 0) as any as S.Schema<GetIncidentRelationRequest>,
+  output: __S(1008, __c63, 0) as any as S.Schema<GetIncidentRelationResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4793,8 +4797,8 @@ export const GetIncidentTask: API.OperationMethod<
   GetIncidentTaskError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(132, __c16, 4) as any as S.Schema<GetIncidentTaskRequest>,
-  output: __S(134, __c16, 6) as any as S.Schema<GetIncidentTaskResponse>,
+  input: __S(1040, __c65, 0) as any as S.Schema<GetIncidentTaskRequest>,
+  output: __S(1072, __c67, 0) as any as S.Schema<GetIncidentTaskResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4808,8 +4812,8 @@ export const GetMetadata: API.OperationMethod<
   GetMetadataError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(135, __c16, 7) as any as S.Schema<GetMetadataRequest>,
-  output: __S(33, __c4, 1) as any as S.Schema<GetMetadataResponse>,
+  input: __S(1088, __c68, 0) as any as S.Schema<GetMetadataRequest>,
+  output: __S(977, __c61, 1) as any as S.Schema<GetMetadataResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4823,8 +4827,8 @@ export const GetProductPackage: API.OperationMethod<
   GetProductPackageError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(136, __c17, 0) as any as S.Schema<GetProductPackageRequest>,
-  output: __S(138, __c17, 2) as any as S.Schema<GetProductPackageResponse>,
+  input: __S(1104, __c69, 0) as any as S.Schema<GetProductPackageRequest>,
+  output: __S(1105, __c69, 1) as any as S.Schema<GetProductPackageResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4838,8 +4842,8 @@ export const GetProductTemplate: API.OperationMethod<
   GetProductTemplateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(139, __c17, 3) as any as S.Schema<GetProductTemplateRequest>,
-  output: __S(141, __c17, 5) as any as S.Schema<GetProductTemplateResponse>,
+  input: __S(1136, __c71, 0) as any as S.Schema<GetProductTemplateRequest>,
+  output: __S(1137, __c71, 1) as any as S.Schema<GetProductTemplateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4853,8 +4857,8 @@ export const GetSecurityMLAnalyticsSettings: API.OperationMethod<
   GetSecurityMLAnalyticsSettingsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(142, __c17, 6) as any as S.Schema<GetSecurityMLAnalyticsSettingsRequest>,
-  output: __S(6, __c0, 6) as any as S.Schema<GetSecurityMLAnalyticsSettingsResponse>,
+  input: __S(1168, __c73, 0) as any as S.Schema<GetSecurityMLAnalyticsSettingsRequest>,
+  output: __S(64, __c4, 0) as any as S.Schema<GetSecurityMLAnalyticsSettingsResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4868,8 +4872,8 @@ export const GetSentinelOnboardingState: API.OperationMethod<
   GetSentinelOnboardingStateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(143, __c17, 7) as any as S.Schema<GetSentinelOnboardingStateRequest>,
-  output: __S(36, __c4, 4) as any as S.Schema<GetSentinelOnboardingStateResponse>,
+  input: __S(1184, __c74, 0) as any as S.Schema<GetSentinelOnboardingStateRequest>,
+  output: __S(1312, __c82, 0) as any as S.Schema<GetSentinelOnboardingStateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4883,8 +4887,8 @@ export const GetSourceControl: API.OperationMethod<
   GetSourceControlError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(144, __c18, 0) as any as S.Schema<GetSourceControlRequest>,
-  output: __S(145, __c18, 1) as any as S.Schema<GetSourceControlResponse>,
+  input: __S(1200, __c75, 0) as any as S.Schema<GetSourceControlRequest>,
+  output: __S(1216, __c76, 0) as any as S.Schema<GetSourceControlResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4898,8 +4902,8 @@ export const GetThreatIntelligenceIndicator: API.OperationMethod<
   GetThreatIntelligenceIndicatorError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(146, __c18, 2) as any as S.Schema<GetThreatIntelligenceIndicatorRequest>,
-  output: __S(72, __c9, 0) as any as S.Schema<GetThreatIntelligenceIndicatorResponse>,
+  input: __S(1232, __c77, 0) as any as S.Schema<GetThreatIntelligenceIndicatorRequest>,
+  output: __S(1824, __c114, 0) as any as S.Schema<GetThreatIntelligenceIndicatorResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4913,8 +4917,8 @@ export const GetWatchlist: API.OperationMethod<
   GetWatchlistError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(147, __c18, 3) as any as S.Schema<GetWatchlistRequest>,
-  output: __S(149, __c18, 5) as any as S.Schema<GetWatchlistResponse>,
+  input: __S(1248, __c78, 0) as any as S.Schema<GetWatchlistRequest>,
+  output: __S(1264, __c79, 0) as any as S.Schema<GetWatchlistResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4928,8 +4932,8 @@ export const GetWatchlistItem: API.OperationMethod<
   GetWatchlistItemError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(150, __c18, 6) as any as S.Schema<GetWatchlistItemRequest>,
-  output: __S(152, __c19, 0) as any as S.Schema<GetWatchlistItemResponse>,
+  input: __S(1344, __c84, 0) as any as S.Schema<GetWatchlistItemRequest>,
+  output: __S(1360, __c85, 0) as any as S.Schema<GetWatchlistItemResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4943,8 +4947,8 @@ export const IncidentCommentsCreateOrUpdate: API.OperationMethod<
   IncidentCommentsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(154, __c19, 2) as any as S.Schema<IncidentCommentsCreateOrUpdateRequest>,
-  output: __S(128, __c16, 0) as any as S.Schema<IncidentCommentsCreateOrUpdateResponse>,
+  input: __S(1393, __c87, 1) as any as S.Schema<IncidentCommentsCreateOrUpdateRequest>,
+  output: __S(912, __c57, 0) as any as S.Schema<IncidentCommentsCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4958,8 +4962,8 @@ export const IncidentRelationsCreateOrUpdate: API.OperationMethod<
   IncidentRelationsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(156, __c19, 4) as any as S.Schema<IncidentRelationsCreateOrUpdateRequest>,
-  output: __S(131, __c16, 3) as any as S.Schema<IncidentRelationsCreateOrUpdateResponse>,
+  input: __S(1409, __c88, 1) as any as S.Schema<IncidentRelationsCreateOrUpdateRequest>,
+  output: __S(1008, __c63, 0) as any as S.Schema<IncidentRelationsCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4973,8 +4977,8 @@ export const IncidentsCreateOrUpdate: API.OperationMethod<
   IncidentsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(158, __c19, 6) as any as S.Schema<IncidentsCreateOrUpdateRequest>,
-  output: __S(159, __c19, 7) as any as S.Schema<IncidentsCreateOrUpdateResponse>,
+  input: __S(1425, __c89, 1) as any as S.Schema<IncidentsCreateOrUpdateRequest>,
+  output: __S(1426, __c89, 2) as any as S.Schema<IncidentsCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4988,8 +4992,8 @@ export const IncidentTasksCreateOrUpdate: API.OperationMethod<
   IncidentTasksCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(161, __c20, 1) as any as S.Schema<IncidentTasksCreateOrUpdateRequest>,
-  output: __S(162, __c20, 2) as any as S.Schema<IncidentTasksCreateOrUpdateResponse>,
+  input: __S(1441, __c90, 1) as any as S.Schema<IncidentTasksCreateOrUpdateRequest>,
+  output: __S(1442, __c90, 2) as any as S.Schema<IncidentTasksCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5003,8 +5007,8 @@ export const InstallContentPackage: API.OperationMethod<
   InstallContentPackageError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(163, __c20, 3) as any as S.Schema<InstallContentPackageRequest>,
-  output: __S(112, __c14, 0) as any as S.Schema<InstallContentPackageResponse>,
+  input: __S(1456, __c91, 0) as any as S.Schema<InstallContentPackageRequest>,
+  output: __S(736, __c46, 0) as any as S.Schema<InstallContentPackageResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5018,8 +5022,8 @@ export const InstallContentTemplate: API.OperationMethod<
   InstallContentTemplateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(165, __c20, 5) as any as S.Schema<InstallContentTemplateRequest>,
-  output: __S(116, __c14, 4) as any as S.Schema<InstallContentTemplateResponse>,
+  input: __S(1473, __c92, 1) as any as S.Schema<InstallContentTemplateRequest>,
+  output: __S(784, __c49, 0) as any as S.Schema<InstallContentTemplateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5033,8 +5037,8 @@ export const ListActionByAlertRule: API.OperationMethod<
   ListActionByAlertRuleError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(166, __c20, 6) as any as S.Schema<ListActionByAlertRuleRequest>,
-  output: __S(168, __c21, 0) as any as S.Schema<ActionsList>,
+  input: __S(1488, __c93, 0) as any as S.Schema<ListActionByAlertRuleRequest>,
+  output: __S(1490, __c93, 2) as any as S.Schema<ActionsList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5048,8 +5052,8 @@ export const ListAlertRules: API.OperationMethod<
   ListAlertRulesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(169, __c21, 1) as any as S.Schema<ListAlertRulesRequest>,
-  output: __S(172, __c21, 4) as any as S.Schema<AlertRulesList>,
+  input: __S(1504, __c94, 0) as any as S.Schema<ListAlertRulesRequest>,
+  output: __S(1536, __c96, 0) as any as S.Schema<AlertRulesList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5063,8 +5067,8 @@ export const ListAlertRuleTemplates: API.OperationMethod<
   ListAlertRuleTemplatesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(173, __c21, 5) as any as S.Schema<ListAlertRuleTemplatesRequest>,
-  output: __S(176, __c22, 0) as any as S.Schema<AlertRuleTemplatesList>,
+  input: __S(1552, __c97, 0) as any as S.Schema<ListAlertRuleTemplatesRequest>,
+  output: __S(1553, __c97, 1) as any as S.Schema<AlertRuleTemplatesList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5078,8 +5082,8 @@ export const ListAutomationRules: API.OperationMethod<
   ListAutomationRulesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(177, __c22, 1) as any as S.Schema<ListAutomationRulesRequest>,
-  output: __S(180, __c22, 4) as any as S.Schema<AutomationRulesList>,
+  input: __S(1648, __c103, 0) as any as S.Schema<ListAutomationRulesRequest>,
+  output: __S(1651, __c103, 3) as any as S.Schema<AutomationRulesList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5093,8 +5097,8 @@ export const ListBookmarks: API.OperationMethod<
   ListBookmarksError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(181, __c22, 5) as any as S.Schema<ListBookmarksRequest>,
-  output: __S(183, __c22, 7) as any as S.Schema<BookmarkList>,
+  input: __S(1664, __c104, 0) as any as S.Schema<ListBookmarksRequest>,
+  output: __S(1666, __c104, 2) as any as S.Schema<BookmarkList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5108,8 +5112,8 @@ export const ListContentPackages: API.OperationMethod<
   ListContentPackagesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(184, __c23, 0) as any as S.Schema<ListContentPackagesRequest>,
-  output: __S(187, __c23, 3) as any as S.Schema<PackageList>,
+  input: __S(1680, __c105, 0) as any as S.Schema<ListContentPackagesRequest>,
+  output: __S(1683, __c105, 3) as any as S.Schema<PackageList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5123,8 +5127,8 @@ export const ListContentTemplates: API.OperationMethod<
   ListContentTemplatesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(188, __c23, 4) as any as S.Schema<ListContentTemplatesRequest>,
-  output: __S(191, __c23, 7) as any as S.Schema<TemplateList>,
+  input: __S(1696, __c106, 0) as any as S.Schema<ListContentTemplatesRequest>,
+  output: __S(1699, __c106, 3) as any as S.Schema<TemplateList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5138,8 +5142,8 @@ export const ListDataConnectorDefinitions: API.OperationMethod<
   ListDataConnectorDefinitionsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(192, __c24, 0) as any as S.Schema<ListDataConnectorDefinitionsRequest>,
-  output: __S(193, __c24, 1) as any as S.Schema<DataConnectorDefinitionArmCollectionWrapper>,
+  input: __S(1712, __c107, 0) as any as S.Schema<ListDataConnectorDefinitionsRequest>,
+  output: __S(1713, __c107, 1) as any as S.Schema<DataConnectorDefinitionArmCollectionWrapper>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5153,8 +5157,8 @@ export const ListDataConnectors: API.OperationMethod<
   ListDataConnectorsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(194, __c24, 2) as any as S.Schema<ListDataConnectorsRequest>,
-  output: __S(172, __c21, 4) as any as S.Schema<DataConnectorList>,
+  input: __S(1728, __c108, 0) as any as S.Schema<ListDataConnectorsRequest>,
+  output: __S(1536, __c96, 0) as any as S.Schema<DataConnectorList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5168,8 +5172,8 @@ export const ListIncidentAlerts: API.OperationMethod<
   ListIncidentAlertsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(195, __c24, 3) as any as S.Schema<ListIncidentAlertsRequest>,
-  output: __S(202, __c25, 2) as any as S.Schema<IncidentAlertList>,
+  input: __S(1744, __c109, 0) as any as S.Schema<ListIncidentAlertsRequest>,
+  output: __S(1751, __c109, 7) as any as S.Schema<IncidentAlertList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5183,8 +5187,8 @@ export const ListIncidentBookmarks: API.OperationMethod<
   ListIncidentBookmarksError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(203, __c25, 3) as any as S.Schema<ListIncidentBookmarksRequest>,
-  output: __S(207, __c25, 7) as any as S.Schema<IncidentBookmarkList>,
+  input: __S(1760, __c110, 0) as any as S.Schema<ListIncidentBookmarksRequest>,
+  output: __S(1764, __c110, 4) as any as S.Schema<IncidentBookmarkList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5198,8 +5202,8 @@ export const ListIncidentComments: API.OperationMethod<
   ListIncidentCommentsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(208, __c26, 0) as any as S.Schema<ListIncidentCommentsRequest>,
-  output: __S(211, __c26, 3) as any as S.Schema<IncidentCommentList>,
+  input: __S(1776, __c111, 0) as any as S.Schema<ListIncidentCommentsRequest>,
+  output: __S(1779, __c111, 3) as any as S.Schema<IncidentCommentList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5213,8 +5217,8 @@ export const ListIncidentEntities: API.OperationMethod<
   ListIncidentEntitiesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(212, __c26, 4) as any as S.Schema<ListIncidentEntitiesRequest>,
-  output: __S(215, __c26, 7) as any as S.Schema<IncidentEntitiesResponse>,
+  input: __S(1792, __c112, 0) as any as S.Schema<ListIncidentEntitiesRequest>,
+  output: __S(1795, __c112, 3) as any as S.Schema<IncidentEntitiesResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5228,8 +5232,8 @@ export const ListIncidentRelations: API.OperationMethod<
   ListIncidentRelationsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(216, __c27, 0) as any as S.Schema<ListIncidentRelationsRequest>,
-  output: __S(219, __c27, 3) as any as S.Schema<RelationList>,
+  input: __S(1888, __c118, 0) as any as S.Schema<ListIncidentRelationsRequest>,
+  output: __S(1891, __c118, 3) as any as S.Schema<RelationList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5243,8 +5247,8 @@ export const ListIncidents: API.OperationMethod<
   ListIncidentsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(220, __c27, 4) as any as S.Schema<ListIncidentsRequest>,
-  output: __S(222, __c27, 6) as any as S.Schema<IncidentList>,
+  input: __S(1904, __c119, 0) as any as S.Schema<ListIncidentsRequest>,
+  output: __S(1906, __c119, 2) as any as S.Schema<IncidentList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5258,8 +5262,8 @@ export const ListIncidentTasks: API.OperationMethod<
   ListIncidentTasksError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(223, __c27, 7) as any as S.Schema<ListIncidentTasksRequest>,
-  output: __S(225, __c28, 1) as any as S.Schema<IncidentTaskList>,
+  input: __S(1920, __c120, 0) as any as S.Schema<ListIncidentTasksRequest>,
+  output: __S(1922, __c120, 2) as any as S.Schema<IncidentTaskList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5273,8 +5277,8 @@ export const ListMetadata: API.OperationMethod<
   ListMetadataError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(226, __c28, 2) as any as S.Schema<ListMetadataRequest>,
-  output: __S(228, __c28, 4) as any as S.Schema<MetadataList>,
+  input: __S(1936, __c121, 0) as any as S.Schema<ListMetadataRequest>,
+  output: __S(1938, __c121, 2) as any as S.Schema<MetadataList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5288,8 +5292,8 @@ export const ListOperations: API.OperationMethod<
   ListOperationsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(229, __c28, 5) as any as S.Schema<ListOperationsRequest>,
-  output: __S(233, __c29, 1) as any as S.Schema<OperationsList>,
+  input: __S(1952, __c122, 0) as any as S.Schema<ListOperationsRequest>,
+  output: __S(1956, __c122, 4) as any as S.Schema<OperationsList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5303,8 +5307,8 @@ export const ListProductPackages: API.OperationMethod<
   ListProductPackagesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(234, __c29, 2) as any as S.Schema<ListProductPackagesRequest>,
-  output: __S(237, __c29, 5) as any as S.Schema<ProductPackageList>,
+  input: __S(1968, __c123, 0) as any as S.Schema<ListProductPackagesRequest>,
+  output: __S(1971, __c123, 3) as any as S.Schema<ProductPackageList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5318,8 +5322,8 @@ export const ListProductTemplates: API.OperationMethod<
   ListProductTemplatesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(238, __c29, 6) as any as S.Schema<ListProductTemplatesRequest>,
-  output: __S(241, __c30, 1) as any as S.Schema<ProductTemplateList>,
+  input: __S(1984, __c124, 0) as any as S.Schema<ListProductTemplatesRequest>,
+  output: __S(1987, __c124, 3) as any as S.Schema<ProductTemplateList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5333,8 +5337,8 @@ export const ListSecurityMLAnalyticsSettings: API.OperationMethod<
   ListSecurityMLAnalyticsSettingsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(242, __c30, 2) as any as S.Schema<ListSecurityMLAnalyticsSettingsRequest>,
-  output: __S(244, __c30, 4) as any as S.Schema<SecurityMLAnalyticsSettingsList>,
+  input: __S(2000, __c125, 0) as any as S.Schema<ListSecurityMLAnalyticsSettingsRequest>,
+  output: __S(2002, __c125, 2) as any as S.Schema<SecurityMLAnalyticsSettingsList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5348,8 +5352,8 @@ export const ListSentinelOnboardingStates: API.OperationMethod<
   ListSentinelOnboardingStatesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(245, __c30, 5) as any as S.Schema<ListSentinelOnboardingStatesRequest>,
-  output: __S(248, __c31, 0) as any as S.Schema<SentinelOnboardingStatesList>,
+  input: __S(2016, __c126, 0) as any as S.Schema<ListSentinelOnboardingStatesRequest>,
+  output: __S(2019, __c126, 3) as any as S.Schema<SentinelOnboardingStatesList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5363,8 +5367,8 @@ export const ListSourceControlRepositories: API.OperationMethod<
   ListSourceControlRepositoriesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(249, __c31, 1) as any as S.Schema<ListSourceControlRepositoriesRequest>,
-  output: __S(252, __c31, 4) as any as S.Schema<RepoList>,
+  input: __S(2032, __c127, 0) as any as S.Schema<ListSourceControlRepositoriesRequest>,
+  output: __S(2035, __c127, 3) as any as S.Schema<RepoList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5378,8 +5382,8 @@ export const ListSourceControls: API.OperationMethod<
   ListSourceControlsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(253, __c31, 5) as any as S.Schema<ListSourceControlsRequest>,
-  output: __S(255, __c31, 7) as any as S.Schema<SourceControlList>,
+  input: __S(2064, __c129, 0) as any as S.Schema<ListSourceControlsRequest>,
+  output: __S(2066, __c129, 2) as any as S.Schema<SourceControlList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5393,8 +5397,8 @@ export const ListThreatIntelligenceIndicatorMetrics: API.OperationMethod<
   ListThreatIntelligenceIndicatorMetricsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(256, __c32, 0) as any as S.Schema<ListThreatIntelligenceIndicatorMetricsRequest>,
-  output: __S(262, __c32, 6) as any as S.Schema<ThreatIntelligenceMetricsList>,
+  input: __S(2080, __c130, 0) as any as S.Schema<ListThreatIntelligenceIndicatorMetricsRequest>,
+  output: __S(2086, __c130, 6) as any as S.Schema<ThreatIntelligenceMetricsList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5408,8 +5412,8 @@ export const ListThreatIntelligenceIndicators: API.OperationMethod<
   ListThreatIntelligenceIndicatorsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(263, __c32, 7) as any as S.Schema<ListThreatIntelligenceIndicatorsRequest>,
-  output: __S(265, __c33, 1) as any as S.Schema<ThreatIntelligenceInformationList>,
+  input: __S(2096, __c131, 0) as any as S.Schema<ListThreatIntelligenceIndicatorsRequest>,
+  output: __S(2113, __c132, 1) as any as S.Schema<ThreatIntelligenceInformationList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5423,8 +5427,8 @@ export const ListWatchlistItems: API.OperationMethod<
   ListWatchlistItemsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(266, __c33, 2) as any as S.Schema<ListWatchlistItemsRequest>,
-  output: __S(268, __c33, 4) as any as S.Schema<WatchlistItemList>,
+  input: __S(2128, __c133, 0) as any as S.Schema<ListWatchlistItemsRequest>,
+  output: __S(2130, __c133, 2) as any as S.Schema<WatchlistItemList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5438,8 +5442,8 @@ export const ListWatchlists: API.OperationMethod<
   ListWatchlistsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(269, __c33, 5) as any as S.Schema<ListWatchlistsRequest>,
-  output: __S(271, __c33, 7) as any as S.Schema<WatchlistList>,
+  input: __S(2144, __c134, 0) as any as S.Schema<ListWatchlistsRequest>,
+  output: __S(2146, __c134, 2) as any as S.Schema<WatchlistList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5453,8 +5457,8 @@ export const ReplaceThreatIntelligenceIndicatorTags: API.OperationMethod<
   ReplaceThreatIntelligenceIndicatorTagsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(272, __c34, 0) as any as S.Schema<ReplaceThreatIntelligenceIndicatorTagsRequest>,
-  output: __S(72, __c9, 0) as any as S.Schema<ReplaceThreatIntelligenceIndicatorTagsResponse>,
+  input: __S(2160, __c135, 0) as any as S.Schema<ReplaceThreatIntelligenceIndicatorTagsRequest>,
+  output: __S(1824, __c114, 0) as any as S.Schema<ReplaceThreatIntelligenceIndicatorTagsResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5468,8 +5472,8 @@ export const RunEntityPlaybook: API.OperationMethod<
   RunEntityPlaybookError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(273, __c34, 1) as any as S.Schema<RunEntityPlaybookRequest>,
-  output: __S(77, __c9, 5) as any as S.Schema<RunEntityPlaybookResponse>,
+  input: __S(2176, __c136, 0) as any as S.Schema<RunEntityPlaybookRequest>,
+  output: __S(112, __c7, 0) as any as S.Schema<RunEntityPlaybookResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5483,8 +5487,8 @@ export const RunIncidentPlaybook: API.OperationMethod<
   RunIncidentPlaybookError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(274, __c34, 2) as any as S.Schema<RunIncidentPlaybookRequest>,
-  output: __S(77, __c9, 5) as any as S.Schema<RunIncidentPlaybookResponse>,
+  input: __S(2192, __c137, 0) as any as S.Schema<RunIncidentPlaybookRequest>,
+  output: __S(112, __c7, 0) as any as S.Schema<RunIncidentPlaybookResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5498,8 +5502,8 @@ export const SecurityMLAnalyticsSettingsCreateOrUpdate: API.OperationMethod<
   SecurityMLAnalyticsSettingsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(275, __c34, 3) as any as S.Schema<SecurityMLAnalyticsSettingsCreateOrUpdateRequest>,
-  output: __S(6, __c0, 6) as any as S.Schema<SecurityMLAnalyticsSettingsCreateOrUpdateResponse>,
+  input: __S(2208, __c138, 0) as any as S.Schema<SecurityMLAnalyticsSettingsCreateOrUpdateRequest>,
+  output: __S(64, __c4, 0) as any as S.Schema<SecurityMLAnalyticsSettingsCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5513,8 +5517,8 @@ export const ThreatIntelligenceIndicatorAppendTags: API.OperationMethod<
   ThreatIntelligenceIndicatorAppendTagsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(276, __c34, 4) as any as S.Schema<ThreatIntelligenceIndicatorAppendTagsRequest>,
-  output: __S(85, __c10, 5) as any as S.Schema<ThreatIntelligenceIndicatorAppendTagsResponse>,
+  input: __S(2224, __c139, 0) as any as S.Schema<ThreatIntelligenceIndicatorAppendTagsRequest>,
+  output: __S(224, __c14, 0) as any as S.Schema<ThreatIntelligenceIndicatorAppendTagsResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5528,8 +5532,8 @@ export const ThreatIntelligenceIndicatorQueryIndicators: API.OperationMethod<
   ThreatIntelligenceIndicatorQueryIndicatorsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(279, __c34, 7) as any as S.Schema<ThreatIntelligenceIndicatorQueryIndicatorsRequest>,
-  output: __S(265, __c33, 1) as any as S.Schema<ThreatIntelligenceInformationList>,
+  input: __S(2258, __c141, 2) as any as S.Schema<ThreatIntelligenceIndicatorQueryIndicatorsRequest>,
+  output: __S(2113, __c132, 1) as any as S.Schema<ThreatIntelligenceInformationList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5543,8 +5547,8 @@ export const UninstallContentPackage: API.OperationMethod<
   UninstallContentPackageError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(280, __c35, 0) as any as S.Schema<UninstallContentPackageRequest>,
-  output: __S(281, __c35, 1) as any as S.Schema<UninstallContentPackageResponse>,
+  input: __S(2272, __c142, 0) as any as S.Schema<UninstallContentPackageRequest>,
+  output: __S(2273, __c142, 1) as any as S.Schema<UninstallContentPackageResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5558,8 +5562,8 @@ export const UpdateMetadata: API.OperationMethod<
   UpdateMetadataError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(283, __c35, 3) as any as S.Schema<UpdateMetadataRequest>,
-  output: __S(33, __c4, 1) as any as S.Schema<UpdateMetadataResponse>,
+  input: __S(2289, __c143, 1) as any as S.Schema<UpdateMetadataRequest>,
+  output: __S(977, __c61, 1) as any as S.Schema<UpdateMetadataResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5573,8 +5577,8 @@ export const WatchlistItemsCreateOrUpdate: API.OperationMethod<
   WatchlistItemsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(285, __c35, 5) as any as S.Schema<WatchlistItemsCreateOrUpdateRequest>,
-  output: __S(286, __c35, 6) as any as S.Schema<WatchlistItemsCreateOrUpdateResponse>,
+  input: __S(2305, __c144, 1) as any as S.Schema<WatchlistItemsCreateOrUpdateRequest>,
+  output: __S(2306, __c144, 2) as any as S.Schema<WatchlistItemsCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5588,8 +5592,8 @@ export const WatchlistsCreateOrUpdate: API.OperationMethod<
   WatchlistsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(288, __c36, 0) as any as S.Schema<WatchlistsCreateOrUpdateRequest>,
-  output: __S(289, __c36, 1) as any as S.Schema<WatchlistsCreateOrUpdateResponse>,
+  input: __S(2321, __c145, 1) as any as S.Schema<WatchlistsCreateOrUpdateRequest>,
+  output: __S(2322, __c145, 2) as any as S.Schema<WatchlistsCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5629,6 +5633,23 @@ function __c0(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(16, __c1, 0)),
+          properties: S.optional(__S(32, __c2, 0)),
+          etag: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "ActionsCreateOrUpdateResponse",
+      });
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
           createdBy: S.optional(S.String),
           createdByType: S.optional(S.String),
           createdAt: S.optional(S.String),
@@ -5637,27 +5658,22 @@ function __c0(j: number): any {
           lastModifiedAt: S.optional(S.String),
         }),
       ).annotate({ identifier: "SystemData" });
-    case 3:
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           logicAppResourceId: S.String,
           workflowId: S.optional(S.String),
         }),
       ).annotate({ identifier: "ActionResponseProperties" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(2, __c0, 2)),
-          properties: S.optional(__S(3, __c0, 3)),
-          etag: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "ActionsCreateOrUpdateResponse",
-      });
-    case 5:
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -5678,292 +5694,6 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "AlertRulesCreateOrUpdateRequest",
       });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(2, __c0, 2)),
-          kind: S.String,
-          etag: S.optional(S.String),
-          properties: S.optional(S.Unknown),
-        }),
-      ).annotate({
-        identifier: "AlertRulesCreateOrUpdateResponse",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          conditionType: S.String,
-          conditionProperties: S.optional(S.Unknown),
-        }),
-      ).annotate({ identifier: "AutomationRuleCondition" });
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(7, __c0, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          isEnabled: S.Boolean,
-          expirationTimeUtc: S.optional(S.String),
-          triggersOn: S.String,
-          triggersWhen: S.String,
-          conditions: S.optional(__S(8, __c1, 0)),
-        }),
-      ).annotate({
-        identifier: "AutomationRuleTriggeringLogic",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          order: S.Number,
-          actionType: S.String,
-          actionConfiguration: S.optional(S.Unknown),
-        }),
-      ).annotate({ identifier: "AutomationRuleAction" });
-    case 3:
-      return S.Array(__S(10, __c1, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          displayName: S.String,
-          order: S.Number,
-          triggeringLogic: __S(9, __c1, 1),
-          actions: __S(11, __c1, 3),
-        }),
-      ).annotate({
-        identifier: "AutomationRulePropertiesInput",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          workspaceName: S.String.pipe(T.Label()),
-          automationRuleId: S.String.pipe(T.Label()),
-          properties: __S(12, __c1, 4),
-          etag: S.optional(S.String),
-        }).pipe(
-          T.Http({
-            method: "PUT",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/providers/Microsoft.SecurityInsights/automationRules/{automationRuleId}",
-            code: 200,
-            apiVersion: "2025-09-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "AutomationRulesCreateOrUpdateRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          email: S.optional(S.String),
-          name: S.optional(S.String),
-          objectId: S.optional(S.String),
-          userPrincipalName: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ClientInfo" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          displayName: S.String,
-          order: S.Number,
-          triggeringLogic: __S(9, __c1, 1),
-          actions: __S(11, __c1, 3),
-          lastModifiedTimeUtc: S.optional(S.String),
-          createdTimeUtc: S.optional(S.String),
-          lastModifiedBy: S.optional(__S(14, __c1, 6)),
-          createdBy: S.optional(__S(14, __c1, 6)),
-        }),
-      ).annotate({ identifier: "AutomationRuleProperties" });
-  }
-}
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(2, __c0, 2)),
-          properties: __S(15, __c1, 7),
-          etag: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "AutomationRulesCreateOrUpdateResponse",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          objectId: S.optional(S.NullOr(S.String)),
-        }),
-      ).annotate({ identifier: "UserInfoInput" });
-    case 2:
-      return S.Array(S.String);
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          incidentId: S.optional(S.String),
-          severity: S.optional(S.String),
-          title: S.optional(S.String),
-          relationName: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "IncidentInfo" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          created: S.optional(S.String),
-          createdBy: S.optional(__S(17, __c2, 1)),
-          displayName: S.String,
-          labels: S.optional(__S(18, __c2, 2)),
-          notes: S.optional(S.String),
-          query: S.String,
-          queryResult: S.optional(S.String),
-          updated: S.optional(S.String),
-          updatedBy: S.optional(__S(17, __c2, 1)),
-          eventTime: S.optional(S.String),
-          queryStartTime: S.optional(S.String),
-          queryEndTime: S.optional(S.String),
-          incidentInfo: S.optional(__S(19, __c2, 3)),
-        }),
-      ).annotate({ identifier: "BookmarkPropertiesInput" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          workspaceName: S.String.pipe(T.Label()),
-          bookmarkId: S.String.pipe(T.Label()),
-          properties: S.optional(__S(20, __c2, 4)),
-          etag: S.optional(S.String),
-        }).pipe(
-          T.Http({
-            method: "PUT",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/providers/Microsoft.SecurityInsights/bookmarks/{bookmarkId}",
-            code: 200,
-            apiVersion: "2025-09-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "BookmarksCreateOrUpdateRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          email: S.optional(S.String),
-          name: S.optional(S.String),
-          objectId: S.optional(S.NullOr(S.String)),
-        }),
-      ).annotate({ identifier: "UserInfo" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          created: S.optional(S.String),
-          createdBy: S.optional(__S(22, __c2, 6)),
-          displayName: S.String,
-          labels: S.optional(__S(18, __c2, 2)),
-          notes: S.optional(S.String),
-          query: S.String,
-          queryResult: S.optional(S.String),
-          updated: S.optional(S.String),
-          updatedBy: S.optional(__S(22, __c2, 6)),
-          eventTime: S.optional(S.String),
-          queryStartTime: S.optional(S.String),
-          queryEndTime: S.optional(S.String),
-          incidentInfo: S.optional(__S(19, __c2, 3)),
-        }),
-      ).annotate({ identifier: "BookmarkProperties" });
-  }
-}
-function __c3(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(2, __c0, 2)),
-          properties: S.optional(__S(23, __c2, 7)),
-          etag: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "BookmarksCreateOrUpdateResponse",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          kind: S.String,
-          name: S.optional(S.String),
-          sourceId: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "MetadataSource" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.optional(S.String),
-          email: S.optional(S.String),
-          link: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "MetadataAuthor" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          tier: S.String,
-          name: S.optional(S.String),
-          email: S.optional(S.String),
-          link: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "MetadataSupport" });
-    case 4:
-      return S.Array(/*@__PURE__*/ S.suspend(() => __S(29, __c3, 5)));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          contentId: S.optional(S.String),
-          kind: S.optional(S.String),
-          version: S.optional(S.String),
-          name: S.optional(S.String),
-          operator: S.optional(S.String),
-          criteria: S.optional(__S(28, __c3, 4)),
-        }),
-      ).annotate({ identifier: "MetadataDependencies" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          domains: S.optional(__S(18, __c2, 2)),
-          verticals: S.optional(__S(18, __c2, 2)),
-        }),
-      ).annotate({ identifier: "MetadataCategories" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          contentId: S.optional(S.String),
-          parentId: S.String,
-          version: S.optional(S.String),
-          kind: S.String,
-          source: S.optional(__S(25, __c3, 1)),
-          author: S.optional(__S(26, __c3, 2)),
-          support: S.optional(__S(27, __c3, 3)),
-          dependencies: S.optional(__S(29, __c3, 5)),
-          categories: S.optional(__S(30, __c3, 6)),
-          providers: S.optional(__S(18, __c2, 2)),
-          firstPublishDate: S.optional(S.String),
-          lastPublishDate: S.optional(S.String),
-          customVersion: S.optional(S.String),
-          contentSchemaVersion: S.optional(S.String),
-          icon: S.optional(S.String),
-          threatAnalysisTactics: S.optional(__S(18, __c2, 2)),
-          threatAnalysisTechniques: S.optional(__S(18, __c2, 2)),
-          previewImages: S.optional(__S(18, __c2, 2)),
-          previewImagesDark: S.optional(__S(18, __c2, 2)),
-        }),
-      ).annotate({ identifier: "MetadataProperties" });
   }
 }
 function __c4(j: number): any {
@@ -5971,461 +5701,22 @@ function __c4(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          workspaceName: S.String.pipe(T.Label()),
-          metadataName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(31, __c3, 7)),
-          etag: S.optional(S.String),
-        }).pipe(
-          T.Http({
-            method: "PUT",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/providers/Microsoft.SecurityInsights/metadata/{metadataName}",
-            code: 200,
-            apiVersion: "2025-09-01",
-          }),
-        ),
-      ).annotate({ identifier: "CreateMetadataRequest" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(2, __c0, 2)),
-          properties: S.optional(__S(31, __c3, 7)),
+          systemData: S.optional(__S(16, __c1, 0)),
+          kind: S.String,
           etag: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "CreateMetadataResponse" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          customerManagedKey: S.optional(S.Boolean),
+          properties: S.optional(S.Unknown),
         }),
       ).annotate({
-        identifier: "SentinelOnboardingStateProperties",
+        identifier: "AlertRulesCreateOrUpdateResponse",
       });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          workspaceName: S.String.pipe(T.Label()),
-          sentinelOnboardingStateName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(34, __c4, 2)),
-          etag: S.optional(S.String),
-        }).pipe(
-          T.Http({
-            method: "PUT",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/providers/Microsoft.SecurityInsights/onboardingStates/{sentinelOnboardingStateName}",
-            code: 200,
-            apiVersion: "2025-09-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateSentinelOnboardingStateRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(2, __c0, 2)),
-          properties: S.optional(__S(34, __c4, 2)),
-          etag: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "CreateSentinelOnboardingStateResponse",
-      });
-    case 5:
-      return S.Array(S.String);
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          url: S.String,
-          branch: S.String,
-          displayUrl: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "RepositoryInput" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          credentialsExpireOn: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ServicePrincipalInput" });
   }
 }
 function __c5(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() =>
-        S.Struct({
-          kind: S.String,
-          code: S.optional(S.String),
-          state: S.optional(S.String),
-          clientId: S.optional(S.String),
-          token: S.optional(S.String),
-          installationId: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "RepositoryAccess" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          rotateWebhookSecret: S.optional(S.Boolean),
-        }),
-      ).annotate({ identifier: "WebhookInput" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          webhook: S.optional(__S(41, __c5, 1)),
-        }),
-      ).annotate({
-        identifier: "RepositoryResourceInfoInput",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          displayName: S.String,
-          description: S.optional(S.String),
-          repoType: S.String,
-          contentTypes: __S(37, __c4, 5),
-          repository: __S(38, __c4, 6),
-          servicePrincipal: S.optional(__S(39, __c4, 7)),
-          repositoryAccess: S.optional(__S(40, __c5, 0)),
-          repositoryResourceInfo: S.optional(__S(42, __c5, 2)),
-        }),
-      ).annotate({
-        identifier: "SourceControlPropertiesInput",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          workspaceName: S.String.pipe(T.Label()),
-          sourceControlId: S.String.pipe(T.Label()),
-          properties: __S(43, __c5, 3),
-          etag: S.optional(S.String),
-        }).pipe(
-          T.Http({
-            method: "PUT",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/providers/Microsoft.SecurityInsights/sourcecontrols/{sourceControlId}",
-            code: 200,
-            apiVersion: "2025-09-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateSourceControlRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          url: S.String,
-          branch: S.String,
-          displayUrl: S.optional(S.String),
-          deploymentLogsUrl: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Repository" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          tenantId: S.optional(S.String),
-          appId: S.optional(S.String),
-          credentialsExpireOn: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ServicePrincipal" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          tenantId: S.optional(S.String),
-          appId: S.optional(S.String),
-          subject: S.optional(S.String),
-          issuer: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "WorkloadIdentityFederation",
-      });
-  }
-}
-function __c6(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          webhookId: S.optional(S.String),
-          webhookUrl: S.optional(S.String),
-          webhookSecretUpdateTime: S.optional(S.String),
-          rotateWebhookSecret: S.optional(S.Boolean),
-        }),
-      ).annotate({ identifier: "Webhook" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          appInstallationId: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "GitHubResourceInfo" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          pipelineId: S.optional(S.String),
-          serviceConnectionId: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "AzureDevOpsResourceInfo" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          webhook: S.optional(__S(48, __c6, 0)),
-          gitHubResourceInfo: S.optional(__S(49, __c6, 1)),
-          azureDevOpsResourceInfo: S.optional(__S(50, __c6, 2)),
-        }),
-      ).annotate({ identifier: "RepositoryResourceInfo" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          deploymentId: S.optional(S.String),
-          deploymentState: S.optional(S.String),
-          deploymentResult: S.optional(S.String),
-          deploymentTime: S.optional(S.String),
-          deploymentLogsUrl: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Deployment" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          deploymentFetchStatus: S.optional(S.String),
-          deployment: S.optional(__S(52, __c6, 4)),
-          message: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "DeploymentInfo" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          url: S.optional(S.String),
-          state: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "PullRequest" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          version: S.optional(S.String),
-          displayName: S.String,
-          description: S.optional(S.String),
-          repoType: S.String,
-          contentTypes: __S(37, __c4, 5),
-          repository: __S(45, __c5, 5),
-          servicePrincipal: S.optional(__S(46, __c5, 6)),
-          workloadIdentityFederation: S.optional(__S(47, __c5, 7)),
-          repositoryAccess: S.optional(__S(40, __c5, 0)),
-          repositoryResourceInfo: S.optional(__S(51, __c6, 3)),
-          lastDeploymentInfo: S.optional(__S(53, __c6, 5)),
-          pullRequest: S.optional(__S(54, __c6, 6)),
-        }),
-      ).annotate({ identifier: "SourceControlProperties" });
-  }
-}
-function __c7(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(2, __c0, 2)),
-          properties: __S(55, __c6, 7),
-          etag: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "CreateSourceControlResponse",
-      });
-    case 1:
-      return S.Array(S.String);
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          killChainName: S.optional(S.String),
-          phaseName: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "ThreatIntelligenceKillChainPhase",
-      });
-    case 3:
-      return S.Array(__S(58, __c7, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          valueType: S.optional(S.String),
-          value: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "ThreatIntelligenceParsedPatternTypeValue",
-      });
-    case 5:
-      return S.Array(__S(60, __c7, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          patternTypeKey: S.optional(S.String),
-          patternTypeValues: S.optional(__S(61, __c7, 5)),
-        }),
-      ).annotate({
-        identifier: "ThreatIntelligenceParsedPattern",
-      });
-    case 7:
-      return S.Array(__S(62, __c7, 6));
-  }
-}
-function __c8(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Record(S.String, S.String);
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          description: S.optional(S.String),
-          externalId: S.optional(S.String),
-          sourceName: S.optional(S.String),
-          url: S.optional(S.String),
-          hashes: S.optional(__S(64, __c8, 0)),
-        }),
-      ).annotate({
-        identifier: "ThreatIntelligenceExternalReference",
-      });
-    case 2:
-      return S.Array(__S(65, __c8, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          language: S.optional(S.String),
-          markingRef: S.optional(S.Number),
-          selectors: S.optional(__S(18, __c2, 2)),
-        }),
-      ).annotate({
-        identifier: "ThreatIntelligenceGranularMarkingModel",
-      });
-    case 4:
-      return S.Array(__S(67, __c8, 3));
-    case 5:
-      return S.Record(S.String, S.Unknown);
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          threatIntelligenceTags: S.optional(__S(57, __c7, 1)),
-          lastUpdatedTimeUtc: S.optional(S.String),
-          source: S.optional(S.String),
-          displayName: S.optional(S.String),
-          description: S.optional(S.String),
-          indicatorTypes: S.optional(__S(18, __c2, 2)),
-          pattern: S.optional(S.String),
-          patternType: S.optional(S.String),
-          patternVersion: S.optional(S.String),
-          killChainPhases: S.optional(__S(59, __c7, 3)),
-          parsedPattern: S.optional(__S(63, __c7, 7)),
-          externalId: S.optional(S.String),
-          createdByRef: S.optional(S.String),
-          defanged: S.optional(S.Boolean),
-          externalLastUpdatedTimeUtc: S.optional(S.String),
-          externalReferences: S.optional(__S(66, __c8, 2)),
-          granularMarkings: S.optional(__S(68, __c8, 4)),
-          labels: S.optional(__S(18, __c2, 2)),
-          revoked: S.optional(S.Boolean),
-          confidence: S.optional(S.Number),
-          objectMarkingRefs: S.optional(__S(57, __c7, 1)),
-          language: S.optional(S.String),
-          threatTypes: S.optional(__S(18, __c2, 2)),
-          validFrom: S.optional(S.String),
-          validUntil: S.optional(S.String),
-          created: S.optional(S.String),
-          modified: S.optional(S.String),
-          extensions: S.optional(__S(69, __c8, 5)),
-        }),
-      ).annotate({
-        identifier: "ThreatIntelligenceIndicatorPropertiesInput",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          workspaceName: S.String.pipe(T.Label()),
-          name: S.String.pipe(T.Label()),
-          kind: S.String,
-          etag: S.optional(S.String),
-          properties: S.optional(__S(70, __c8, 6)),
-        }).pipe(
-          T.Http({
-            method: "PUT",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/providers/Microsoft.SecurityInsights/threatIntelligence/main/indicators/{name}",
-            code: 200,
-            apiVersion: "2025-09-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateThreatIntelligenceIndicatorRequest",
-      });
-  }
-}
-function __c9(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(2, __c0, 2)),
-          kind: S.String,
-          etag: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "CreateThreatIntelligenceIndicatorResponse",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          workspaceName: S.String.pipe(T.Label()),
-          kind: S.String,
-          etag: S.optional(S.String),
-          properties: S.optional(__S(70, __c8, 6)),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/providers/Microsoft.SecurityInsights/threatIntelligence/main/createIndicator",
-            code: 200,
-            apiVersion: "2025-09-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateThreatIntelligenceIndicatorIndicatorRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          workspaceName: S.String.pipe(T.Label()),
-          dataConnectorDefinitionName: S.String.pipe(T.Label()),
-          kind: S.String,
-          etag: S.optional(S.String),
-          properties: S.optional(S.Unknown),
-        }).pipe(
-          T.Http({
-            method: "PUT",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/providers/Microsoft.SecurityInsights/dataConnectorDefinitions/{dataConnectorDefinitionName}",
-            code: 200,
-            apiVersion: "2025-09-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "DataConnectorDefinitionsCreateOrUpdateRequest",
-      });
-    case 3:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -6446,7 +5737,11 @@ function __c9(j: number): any {
       ).annotate({
         identifier: "DataConnectorsCreateOrUpdateRequest",
       });
-    case 4:
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -6463,11 +5758,19 @@ function __c9(j: number): any {
           }),
         ),
       ).annotate({ identifier: "DeleteActionRequest" });
-    case 5:
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "DeleteActionResponse",
       });
-    case 6:
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -6483,7 +5786,11 @@ function __c9(j: number): any {
           }),
         ),
       ).annotate({ identifier: "DeleteAlertRuleRequest" });
-    case 7:
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -6501,15 +5808,15 @@ function __c9(j: number): any {
       ).annotate({
         identifier: "DeleteAutomationRuleRequest",
       });
+    case 1:
+      return S.suspend(() => S.Unknown.pipe(T.RawResponseRoot())).annotate({
+        identifier: "DeleteAutomationRuleResponse",
+      });
   }
 }
 function __c10(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => S.Unknown.pipe(T.RawResponseRoot())).annotate({
-        identifier: "DeleteAutomationRuleResponse",
-      });
-    case 1:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -6525,7 +5832,11 @@ function __c10(j: number): any {
           }),
         ),
       ).annotate({ identifier: "DeleteBookmarkRequest" });
-    case 2:
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -6543,7 +5854,11 @@ function __c10(j: number): any {
       ).annotate({
         identifier: "DeleteContentTemplateRequest",
       });
-    case 3:
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -6561,7 +5876,11 @@ function __c10(j: number): any {
       ).annotate({
         identifier: "DeleteDataConnectorRequest",
       });
-    case 4:
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -6579,11 +5898,19 @@ function __c10(j: number): any {
       ).annotate({
         identifier: "DeleteDataConnectorDefinitionRequest",
       });
-    case 5:
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "DeleteDataConnectorDefinitionResponse",
       });
-    case 6:
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -6599,7 +5926,11 @@ function __c10(j: number): any {
           }),
         ),
       ).annotate({ identifier: "DeleteIncidentRequest" });
-    case 7:
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -6620,7 +5951,120 @@ function __c10(j: number): any {
       });
   }
 }
-function __c11(j: number): any {
+function __c17(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          displayName: S.String,
+          order: S.Number,
+          triggeringLogic: __S(322, __c20, 2),
+          actions: __S(324, __c20, 4),
+        }),
+      ).annotate({
+        identifier: "AutomationRulePropertiesInput",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          workspaceName: S.String.pipe(T.Label()),
+          automationRuleId: S.String.pipe(T.Label()),
+          properties: __S(272, __c17, 0),
+          etag: S.optional(S.String),
+        }).pipe(
+          T.Http({
+            method: "PUT",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/providers/Microsoft.SecurityInsights/automationRules/{automationRuleId}",
+            code: 200,
+            apiVersion: "2025-09-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "AutomationRulesCreateOrUpdateRequest",
+      });
+  }
+}
+function __c18(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(16, __c1, 0)),
+          properties: __S(325, __c20, 5),
+          etag: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "AutomationRulesCreateOrUpdateResponse",
+      });
+  }
+}
+function __c19(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          email: S.optional(S.String),
+          name: S.optional(S.String),
+          objectId: S.optional(S.String),
+          userPrincipalName: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ClientInfo" });
+  }
+}
+function __c20(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          conditionType: S.String,
+          conditionProperties: S.optional(S.Unknown),
+        }),
+      ).annotate({ identifier: "AutomationRuleCondition" });
+    case 1:
+      return S.Array(__S(320, __c20, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          isEnabled: S.Boolean,
+          expirationTimeUtc: S.optional(S.String),
+          triggersOn: S.String,
+          triggersWhen: S.String,
+          conditions: S.optional(__S(321, __c20, 1)),
+        }),
+      ).annotate({
+        identifier: "AutomationRuleTriggeringLogic",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          order: S.Number,
+          actionType: S.String,
+          actionConfiguration: S.optional(S.Unknown),
+        }),
+      ).annotate({ identifier: "AutomationRuleAction" });
+    case 4:
+      return S.Array(__S(323, __c20, 3));
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          displayName: S.String,
+          order: S.Number,
+          triggeringLogic: __S(322, __c20, 2),
+          actions: __S(324, __c20, 4),
+          lastModifiedTimeUtc: S.optional(S.String),
+          createdTimeUtc: S.optional(S.String),
+          lastModifiedBy: S.optional(__S(304, __c19, 0)),
+          createdBy: S.optional(__S(304, __c19, 0)),
+        }),
+      ).annotate({ identifier: "AutomationRuleProperties" });
+  }
+}
+function __c21(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -6641,7 +6085,11 @@ function __c11(j: number): any {
       ).annotate({
         identifier: "DeleteIncidentRelationRequest",
       });
-    case 1:
+  }
+}
+function __c22(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -6660,7 +6108,11 @@ function __c11(j: number): any {
       ).annotate({
         identifier: "DeleteIncidentTaskRequest",
       });
-    case 2:
+  }
+}
+function __c23(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -6676,7 +6128,11 @@ function __c11(j: number): any {
           }),
         ),
       ).annotate({ identifier: "DeleteMetadataRequest" });
-    case 3:
+  }
+}
+function __c24(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -6694,7 +6150,11 @@ function __c11(j: number): any {
       ).annotate({
         identifier: "DeleteSecurityMLAnalyticsSettingsRequest",
       });
-    case 4:
+  }
+}
+function __c25(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -6712,20 +6172,18 @@ function __c11(j: number): any {
       ).annotate({
         identifier: "DeleteSentinelOnboardingStateRequest",
       });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          repositoryAccess: __S(40, __c5, 0),
-        }),
-      ).annotate({ identifier: "RepositoryAccessObject" });
-    case 6:
+  }
+}
+function __c26(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           workspaceName: S.String.pipe(T.Label()),
           sourceControlId: S.String.pipe(T.Label()),
-          properties: __S(93, __c11, 5),
+          properties: __S(432, __c27, 0),
         }).pipe(
           T.Http({
             method: "POST",
@@ -6737,27 +6195,37 @@ function __c11(j: number): any {
       ).annotate({
         identifier: "DeleteSourceControlRequest",
       });
-    case 7:
-      return S.Array(/*@__PURE__*/ S.suspend(() => __S(96, __c12, 0)));
-  }
-}
-function __c12(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
+      return S.Array(/*@__PURE__*/ S.suspend(() => __S(418, __c26, 2)));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           code: S.optional(S.String),
           message: S.optional(S.String),
-          details: S.optional(__S(95, __c11, 7)),
+          details: S.optional(__S(417, __c26, 1)),
         }),
       ).annotate({ identifier: "WarningBody" });
-    case 1:
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          warning: S.optional(__S(96, __c12, 0)),
+          warning: S.optional(__S(418, __c26, 2)),
         }),
       ).annotate({ identifier: "Warning" });
-    case 2:
+  }
+}
+function __c27(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          repositoryAccess: __S(1600, __c100, 0),
+        }),
+      ).annotate({ identifier: "RepositoryAccessObject" });
+  }
+}
+function __c28(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -6775,7 +6243,11 @@ function __c12(j: number): any {
       ).annotate({
         identifier: "DeleteThreatIntelligenceIndicatorRequest",
       });
-    case 3:
+  }
+}
+function __c29(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -6791,7 +6263,11 @@ function __c12(j: number): any {
           }),
         ),
       ).annotate({ identifier: "DeleteWatchlistRequest" });
-    case 4:
+  }
+}
+function __c30(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -6810,7 +6286,11 @@ function __c12(j: number): any {
       ).annotate({
         identifier: "DeleteWatchlistItemRequest",
       });
-    case 5:
+  }
+}
+function __c31(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -6827,18 +6307,144 @@ function __c12(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetActionRequest" });
-    case 6:
+  }
+}
+function __c32(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(2, __c0, 2)),
-          properties: S.optional(__S(3, __c0, 3)),
+          systemData: S.optional(__S(16, __c1, 0)),
+          properties: S.optional(__S(32, __c2, 0)),
           etag: S.optional(S.String),
         }),
       ).annotate({ identifier: "GetActionResponse" });
-    case 7:
+  }
+}
+function __c33(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          created: S.optional(S.String),
+          createdBy: S.optional(__S(608, __c38, 0)),
+          displayName: S.String,
+          labels: S.optional(__S(592, __c37, 0)),
+          notes: S.optional(S.String),
+          query: S.String,
+          queryResult: S.optional(S.String),
+          updated: S.optional(S.String),
+          updatedBy: S.optional(__S(608, __c38, 0)),
+          eventTime: S.optional(S.String),
+          queryStartTime: S.optional(S.String),
+          queryEndTime: S.optional(S.String),
+          incidentInfo: S.optional(__S(576, __c36, 0)),
+        }),
+      ).annotate({ identifier: "BookmarkPropertiesInput" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          workspaceName: S.String.pipe(T.Label()),
+          bookmarkId: S.String.pipe(T.Label()),
+          properties: S.optional(__S(528, __c33, 0)),
+          etag: S.optional(S.String),
+        }).pipe(
+          T.Http({
+            method: "PUT",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/providers/Microsoft.SecurityInsights/bookmarks/{bookmarkId}",
+            code: 200,
+            apiVersion: "2025-09-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "BookmarksCreateOrUpdateRequest",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(16, __c1, 0)),
+          properties: S.optional(__S(560, __c35, 0)),
+          etag: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "BookmarksCreateOrUpdateResponse",
+      });
+  }
+}
+function __c34(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          email: S.optional(S.String),
+          name: S.optional(S.String),
+          objectId: S.optional(S.NullOr(S.String)),
+        }),
+      ).annotate({ identifier: "UserInfo" });
+  }
+}
+function __c35(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          created: S.optional(S.String),
+          createdBy: S.optional(__S(544, __c34, 0)),
+          displayName: S.String,
+          labels: S.optional(__S(592, __c37, 0)),
+          notes: S.optional(S.String),
+          query: S.String,
+          queryResult: S.optional(S.String),
+          updated: S.optional(S.String),
+          updatedBy: S.optional(__S(544, __c34, 0)),
+          eventTime: S.optional(S.String),
+          queryStartTime: S.optional(S.String),
+          queryEndTime: S.optional(S.String),
+          incidentInfo: S.optional(__S(576, __c36, 0)),
+        }),
+      ).annotate({ identifier: "BookmarkProperties" });
+  }
+}
+function __c36(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          incidentId: S.optional(S.String),
+          severity: S.optional(S.String),
+          title: S.optional(S.String),
+          relationName: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "IncidentInfo" });
+  }
+}
+function __c37(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c38(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          objectId: S.optional(S.NullOr(S.String)),
+        }),
+      ).annotate({ identifier: "UserInfoInput" });
+  }
+}
+function __c39(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -6856,7 +6462,7 @@ function __c12(j: number): any {
       ).annotate({ identifier: "GetAlertRuleRequest" });
   }
 }
-function __c13(j: number): any {
+function __c40(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -6864,13 +6470,17 @@ function __c13(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(2, __c0, 2)),
+          systemData: S.optional(__S(16, __c1, 0)),
           kind: S.String,
           etag: S.optional(S.String),
           properties: S.optional(S.Unknown),
         }),
       ).annotate({ identifier: "GetAlertRuleResponse" });
-    case 1:
+  }
+}
+function __c41(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -6888,19 +6498,23 @@ function __c13(j: number): any {
       ).annotate({
         identifier: "GetAlertRuleTemplateRequest",
       });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(2, __c0, 2)),
+          systemData: S.optional(__S(16, __c1, 0)),
           kind: S.String,
         }),
       ).annotate({
         identifier: "GetAlertRuleTemplateResponse",
       });
-    case 3:
+  }
+}
+function __c42(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -6916,7 +6530,11 @@ function __c13(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetAutomationRuleRequest" });
-    case 4:
+  }
+}
+function __c43(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -6932,18 +6550,26 @@ function __c13(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetBookmarkRequest" });
-    case 5:
+  }
+}
+function __c44(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(2, __c0, 2)),
-          properties: S.optional(__S(23, __c2, 7)),
+          systemData: S.optional(__S(16, __c1, 0)),
+          properties: S.optional(__S(560, __c35, 0)),
           etag: S.optional(S.String),
         }),
       ).annotate({ identifier: "GetBookmarkResponse" });
-    case 6:
+  }
+}
+function __c45(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -6959,7 +6585,28 @@ function __c13(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetContentPackageRequest" });
-    case 7:
+  }
+}
+function __c46(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(16, __c1, 0)),
+          properties: S.optional(__S(752, __c47, 0)),
+          etag: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GetContentPackageResponse",
+      });
+  }
+}
+function __c47(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           contentId: S.optional(S.String),
@@ -6974,37 +6621,24 @@ function __c13(j: number): any {
           displayName: S.optional(S.String),
           description: S.optional(S.String),
           publisherDisplayName: S.optional(S.String),
-          source: S.optional(__S(25, __c3, 1)),
-          author: S.optional(__S(26, __c3, 2)),
-          support: S.optional(__S(27, __c3, 3)),
-          dependencies: S.optional(__S(29, __c3, 5)),
-          providers: S.optional(__S(18, __c2, 2)),
+          source: S.optional(__S(960, __c60, 0)),
+          author: S.optional(__S(961, __c60, 1)),
+          support: S.optional(__S(962, __c60, 2)),
+          dependencies: S.optional(__S(964, __c60, 4)),
+          providers: S.optional(__S(592, __c37, 0)),
           firstPublishDate: S.optional(S.String),
           lastPublishDate: S.optional(S.String),
-          categories: S.optional(__S(30, __c3, 6)),
-          threatAnalysisTactics: S.optional(__S(18, __c2, 2)),
-          threatAnalysisTechniques: S.optional(__S(18, __c2, 2)),
+          categories: S.optional(__S(965, __c60, 5)),
+          threatAnalysisTactics: S.optional(__S(592, __c37, 0)),
+          threatAnalysisTechniques: S.optional(__S(592, __c37, 0)),
           icon: S.optional(S.String),
         }),
       ).annotate({ identifier: "PackageBaseProperties" });
   }
 }
-function __c14(j: number): any {
+function __c48(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(2, __c0, 2)),
-          properties: S.optional(__S(111, __c13, 7)),
-          etag: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GetContentPackageResponse",
-      });
-    case 1:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -7022,9 +6656,30 @@ function __c14(j: number): any {
       ).annotate({
         identifier: "GetContentTemplateRequest",
       });
-    case 2:
-      return S.Array(/*@__PURE__*/ S.suspend(() => __S(115, __c14, 3)));
-    case 3:
+  }
+}
+function __c49(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(16, __c1, 0)),
+          properties: S.optional(__S(801, __c50, 1)),
+          etag: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GetContentTemplateResponse",
+      });
+  }
+}
+function __c50(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(/*@__PURE__*/ S.suspend(() => __S(801, __c50, 1)));
+    case 1:
       return S.suspend(() =>
         S.Struct({
           contentId: S.optional(S.String),
@@ -7033,43 +6688,34 @@ function __c14(j: number): any {
           version: S.optional(S.String),
           displayName: S.optional(S.String),
           contentKind: S.optional(S.String),
-          source: S.optional(__S(25, __c3, 1)),
-          author: S.optional(__S(26, __c3, 2)),
-          support: S.optional(__S(27, __c3, 3)),
-          dependencies: S.optional(__S(29, __c3, 5)),
-          categories: S.optional(__S(30, __c3, 6)),
-          providers: S.optional(__S(18, __c2, 2)),
+          source: S.optional(__S(960, __c60, 0)),
+          author: S.optional(__S(961, __c60, 1)),
+          support: S.optional(__S(962, __c60, 2)),
+          dependencies: S.optional(__S(964, __c60, 4)),
+          categories: S.optional(__S(965, __c60, 5)),
+          providers: S.optional(__S(592, __c37, 0)),
           firstPublishDate: S.optional(S.String),
           lastPublishDate: S.optional(S.String),
           customVersion: S.optional(S.String),
           contentSchemaVersion: S.optional(S.String),
           icon: S.optional(S.String),
-          threatAnalysisTactics: S.optional(__S(18, __c2, 2)),
-          threatAnalysisTechniques: S.optional(__S(18, __c2, 2)),
-          previewImages: S.optional(__S(18, __c2, 2)),
-          previewImagesDark: S.optional(__S(18, __c2, 2)),
+          threatAnalysisTactics: S.optional(__S(592, __c37, 0)),
+          threatAnalysisTechniques: S.optional(__S(592, __c37, 0)),
+          previewImages: S.optional(__S(592, __c37, 0)),
+          previewImagesDark: S.optional(__S(592, __c37, 0)),
           packageId: S.optional(S.String),
           packageKind: S.optional(S.String),
           packageName: S.optional(S.String),
           isDeprecated: S.optional(S.String),
           mainTemplate: S.optional(S.Unknown),
-          dependantTemplates: S.optional(__S(114, __c14, 2)),
+          dependantTemplates: S.optional(__S(800, __c50, 0)),
         }),
       ).annotate({ identifier: "TemplateProperties" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(2, __c0, 2)),
-          properties: S.optional(__S(115, __c14, 3)),
-          etag: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GetContentTemplateResponse",
-      });
-    case 5:
+  }
+}
+function __c51(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -7085,7 +6731,11 @@ function __c14(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetDataConnectorRequest" });
-    case 6:
+  }
+}
+function __c52(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -7103,7 +6753,11 @@ function __c14(j: number): any {
       ).annotate({
         identifier: "GetDataConnectorDefinitionRequest",
       });
-    case 7:
+  }
+}
+function __c53(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -7121,7 +6775,7 @@ function __c14(j: number): any {
       ).annotate({ identifier: "GetIncidentRequest" });
   }
 }
-function __c15(j: number): any {
+function __c54(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -7141,15 +6795,15 @@ function __c15(j: number): any {
         }),
       ).annotate({ identifier: "IncidentLabel" });
     case 2:
-      return S.Array(__S(121, __c15, 1));
+      return S.Array(__S(865, __c54, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
           alertsCount: S.optional(S.Number),
           bookmarksCount: S.optional(S.Number),
           commentsCount: S.optional(S.Number),
-          alertProductNames: S.optional(__S(18, __c2, 2)),
-          tactics: S.optional(__S(37, __c4, 5)),
+          alertProductNames: S.optional(__S(592, __c37, 0)),
+          tactics: S.optional(__S(1616, __c101, 0)),
           providerIncidentUrl: S.optional(S.String),
         }),
       ).annotate({ identifier: "IncidentAdditionalData" });
@@ -7163,32 +6817,40 @@ function __c15(j: number): any {
           classification: S.optional(S.String),
           classificationReason: S.optional(S.String),
           classificationComment: S.optional(S.String),
-          owner: S.optional(__S(120, __c15, 0)),
-          labels: S.optional(__S(122, __c15, 2)),
+          owner: S.optional(__S(864, __c54, 0)),
+          labels: S.optional(__S(866, __c54, 2)),
           firstActivityTimeUtc: S.optional(S.String),
           lastActivityTimeUtc: S.optional(S.String),
           lastModifiedTimeUtc: S.optional(S.String),
           createdTimeUtc: S.optional(S.String),
           incidentNumber: S.optional(S.Number),
-          additionalData: S.optional(__S(123, __c15, 3)),
-          relatedAnalyticRuleIds: S.optional(__S(18, __c2, 2)),
+          additionalData: S.optional(__S(867, __c54, 3)),
+          relatedAnalyticRuleIds: S.optional(__S(592, __c37, 0)),
           incidentUrl: S.optional(S.String),
           providerName: S.optional(S.String),
           providerIncidentId: S.optional(S.String),
         }),
       ).annotate({ identifier: "IncidentProperties" });
-    case 5:
+  }
+}
+function __c55(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(2, __c0, 2)),
-          properties: S.optional(__S(124, __c15, 4)),
+          systemData: S.optional(__S(16, __c1, 0)),
+          properties: S.optional(__S(868, __c54, 4)),
           etag: S.optional(S.String),
         }),
       ).annotate({ identifier: "GetIncidentResponse" });
-    case 6:
+  }
+}
+function __c56(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -7207,20 +6869,9 @@ function __c15(j: number): any {
       ).annotate({
         identifier: "GetIncidentCommentRequest",
       });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          message: S.String,
-          createdTimeUtc: S.optional(S.String),
-          lastModifiedTimeUtc: S.optional(S.String),
-          author: S.optional(__S(14, __c1, 6)),
-        }),
-      ).annotate({
-        identifier: "IncidentCommentProperties",
-      });
   }
 }
-function __c16(j: number): any {
+function __c57(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -7228,14 +6879,143 @@ function __c16(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(2, __c0, 2)),
-          properties: S.optional(__S(127, __c15, 7)),
+          systemData: S.optional(__S(16, __c1, 0)),
+          properties: S.optional(__S(928, __c58, 0)),
           etag: S.optional(S.String),
         }),
       ).annotate({
         identifier: "GetIncidentCommentResponse",
       });
+  }
+}
+function __c58(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          message: S.String,
+          createdTimeUtc: S.optional(S.String),
+          lastModifiedTimeUtc: S.optional(S.String),
+          author: S.optional(__S(304, __c19, 0)),
+        }),
+      ).annotate({
+        identifier: "IncidentCommentProperties",
+      });
+  }
+}
+function __c59(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          workspaceName: S.String.pipe(T.Label()),
+          metadataName: S.String.pipe(T.Label()),
+          properties: S.optional(__S(976, __c61, 0)),
+          etag: S.optional(S.String),
+        }).pipe(
+          T.Http({
+            method: "PUT",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/providers/Microsoft.SecurityInsights/metadata/{metadataName}",
+            code: 200,
+            apiVersion: "2025-09-01",
+          }),
+        ),
+      ).annotate({ identifier: "CreateMetadataRequest" });
+  }
+}
+function __c60(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          kind: S.String,
+          name: S.optional(S.String),
+          sourceId: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "MetadataSource" });
     case 1:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.optional(S.String),
+          email: S.optional(S.String),
+          link: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "MetadataAuthor" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          tier: S.String,
+          name: S.optional(S.String),
+          email: S.optional(S.String),
+          link: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "MetadataSupport" });
+    case 3:
+      return S.Array(/*@__PURE__*/ S.suspend(() => __S(964, __c60, 4)));
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          contentId: S.optional(S.String),
+          kind: S.optional(S.String),
+          version: S.optional(S.String),
+          name: S.optional(S.String),
+          operator: S.optional(S.String),
+          criteria: S.optional(__S(963, __c60, 3)),
+        }),
+      ).annotate({ identifier: "MetadataDependencies" });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          domains: S.optional(__S(592, __c37, 0)),
+          verticals: S.optional(__S(592, __c37, 0)),
+        }),
+      ).annotate({ identifier: "MetadataCategories" });
+  }
+}
+function __c61(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          contentId: S.optional(S.String),
+          parentId: S.String,
+          version: S.optional(S.String),
+          kind: S.String,
+          source: S.optional(__S(960, __c60, 0)),
+          author: S.optional(__S(961, __c60, 1)),
+          support: S.optional(__S(962, __c60, 2)),
+          dependencies: S.optional(__S(964, __c60, 4)),
+          categories: S.optional(__S(965, __c60, 5)),
+          providers: S.optional(__S(592, __c37, 0)),
+          firstPublishDate: S.optional(S.String),
+          lastPublishDate: S.optional(S.String),
+          customVersion: S.optional(S.String),
+          contentSchemaVersion: S.optional(S.String),
+          icon: S.optional(S.String),
+          threatAnalysisTactics: S.optional(__S(592, __c37, 0)),
+          threatAnalysisTechniques: S.optional(__S(592, __c37, 0)),
+          previewImages: S.optional(__S(592, __c37, 0)),
+          previewImagesDark: S.optional(__S(592, __c37, 0)),
+        }),
+      ).annotate({ identifier: "MetadataProperties" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(16, __c1, 0)),
+          properties: S.optional(__S(976, __c61, 0)),
+          etag: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "CreateMetadataResponse" });
+  }
+}
+function __c62(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -7254,7 +7034,28 @@ function __c16(j: number): any {
       ).annotate({
         identifier: "GetIncidentRelationRequest",
       });
-    case 2:
+  }
+}
+function __c63(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(16, __c1, 0)),
+          properties: S.optional(__S(1024, __c64, 0)),
+          etag: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GetIncidentRelationResponse",
+      });
+  }
+}
+function __c64(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           relatedResourceId: S.String,
@@ -7263,20 +7064,11 @@ function __c16(j: number): any {
           relatedResourceKind: S.optional(S.String),
         }),
       ).annotate({ identifier: "RelationProperties" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(2, __c0, 2)),
-          properties: S.optional(__S(130, __c16, 2)),
-          etag: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GetIncidentRelationResponse",
-      });
-    case 4:
+  }
+}
+function __c65(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -7293,7 +7085,11 @@ function __c16(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetIncidentTaskRequest" });
-    case 5:
+  }
+}
+function __c66(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           title: S.String,
@@ -7301,22 +7097,30 @@ function __c16(j: number): any {
           status: S.String,
           createdTimeUtc: S.optional(S.String),
           lastModifiedTimeUtc: S.optional(S.String),
-          createdBy: S.optional(__S(14, __c1, 6)),
-          lastModifiedBy: S.optional(__S(14, __c1, 6)),
+          createdBy: S.optional(__S(304, __c19, 0)),
+          lastModifiedBy: S.optional(__S(304, __c19, 0)),
         }),
       ).annotate({ identifier: "IncidentTaskProperties" });
-    case 6:
+  }
+}
+function __c67(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(2, __c0, 2)),
-          properties: __S(133, __c16, 5),
+          systemData: S.optional(__S(16, __c1, 0)),
+          properties: __S(1056, __c66, 0),
           etag: S.optional(S.String),
         }),
       ).annotate({ identifier: "GetIncidentTaskResponse" });
-    case 7:
+  }
+}
+function __c68(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -7334,7 +7138,7 @@ function __c16(j: number): any {
       ).annotate({ identifier: "GetMetadataRequest" });
   }
 }
-function __c17(j: number): any {
+function __c69(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -7355,6 +7159,23 @@ function __c17(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(16, __c1, 0)),
+          properties: S.optional(__S(1120, __c70, 0)),
+          etag: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GetProductPackageResponse",
+      });
+  }
+}
+function __c70(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
           contentId: S.optional(S.String),
           contentProductId: S.optional(S.String),
           contentKind: S.optional(S.String),
@@ -7367,36 +7188,27 @@ function __c17(j: number): any {
           displayName: S.optional(S.String),
           description: S.optional(S.String),
           publisherDisplayName: S.optional(S.String),
-          source: S.optional(__S(25, __c3, 1)),
-          author: S.optional(__S(26, __c3, 2)),
-          support: S.optional(__S(27, __c3, 3)),
-          dependencies: S.optional(__S(29, __c3, 5)),
-          providers: S.optional(__S(18, __c2, 2)),
+          source: S.optional(__S(960, __c60, 0)),
+          author: S.optional(__S(961, __c60, 1)),
+          support: S.optional(__S(962, __c60, 2)),
+          dependencies: S.optional(__S(964, __c60, 4)),
+          providers: S.optional(__S(592, __c37, 0)),
           firstPublishDate: S.optional(S.String),
           lastPublishDate: S.optional(S.String),
-          categories: S.optional(__S(30, __c3, 6)),
-          threatAnalysisTactics: S.optional(__S(18, __c2, 2)),
-          threatAnalysisTechniques: S.optional(__S(18, __c2, 2)),
+          categories: S.optional(__S(965, __c60, 5)),
+          threatAnalysisTactics: S.optional(__S(592, __c37, 0)),
+          threatAnalysisTechniques: S.optional(__S(592, __c37, 0)),
           icon: S.optional(S.String),
           installedVersion: S.optional(S.String),
           metadataResourceId: S.optional(S.String),
           packagedContent: S.optional(S.Unknown),
         }),
       ).annotate({ identifier: "ProductPackageProperties" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(2, __c0, 2)),
-          properties: S.optional(__S(137, __c17, 1)),
-          etag: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GetProductPackageResponse",
-      });
-    case 3:
+  }
+}
+function __c71(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -7414,7 +7226,24 @@ function __c17(j: number): any {
       ).annotate({
         identifier: "GetProductTemplateRequest",
       });
-    case 4:
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(16, __c1, 0)),
+          properties: S.optional(__S(1152, __c72, 0)),
+          etag: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GetProductTemplateResponse",
+      });
+  }
+}
+function __c72(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           contentId: S.optional(S.String),
@@ -7423,21 +7252,21 @@ function __c17(j: number): any {
           version: S.optional(S.String),
           displayName: S.optional(S.String),
           contentKind: S.optional(S.String),
-          source: S.optional(__S(25, __c3, 1)),
-          author: S.optional(__S(26, __c3, 2)),
-          support: S.optional(__S(27, __c3, 3)),
-          dependencies: S.optional(__S(29, __c3, 5)),
-          categories: S.optional(__S(30, __c3, 6)),
-          providers: S.optional(__S(18, __c2, 2)),
+          source: S.optional(__S(960, __c60, 0)),
+          author: S.optional(__S(961, __c60, 1)),
+          support: S.optional(__S(962, __c60, 2)),
+          dependencies: S.optional(__S(964, __c60, 4)),
+          categories: S.optional(__S(965, __c60, 5)),
+          providers: S.optional(__S(592, __c37, 0)),
           firstPublishDate: S.optional(S.String),
           lastPublishDate: S.optional(S.String),
           customVersion: S.optional(S.String),
           contentSchemaVersion: S.optional(S.String),
           icon: S.optional(S.String),
-          threatAnalysisTactics: S.optional(__S(18, __c2, 2)),
-          threatAnalysisTechniques: S.optional(__S(18, __c2, 2)),
-          previewImages: S.optional(__S(18, __c2, 2)),
-          previewImagesDark: S.optional(__S(18, __c2, 2)),
+          threatAnalysisTactics: S.optional(__S(592, __c37, 0)),
+          threatAnalysisTechniques: S.optional(__S(592, __c37, 0)),
+          previewImages: S.optional(__S(592, __c37, 0)),
+          previewImagesDark: S.optional(__S(592, __c37, 0)),
           packageId: S.optional(S.String),
           packageKind: S.optional(S.String),
           packageName: S.optional(S.String),
@@ -7447,20 +7276,11 @@ function __c17(j: number): any {
       ).annotate({
         identifier: "ProductTemplateProperties",
       });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(2, __c0, 2)),
-          properties: S.optional(__S(140, __c17, 4)),
-          etag: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GetProductTemplateResponse",
-      });
-    case 6:
+  }
+}
+function __c73(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -7478,7 +7298,11 @@ function __c17(j: number): any {
       ).annotate({
         identifier: "GetSecurityMLAnalyticsSettingsRequest",
       });
-    case 7:
+  }
+}
+function __c74(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -7498,7 +7322,7 @@ function __c17(j: number): any {
       });
   }
 }
-function __c18(j: number): any {
+function __c75(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -7516,18 +7340,26 @@ function __c18(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetSourceControlRequest" });
-    case 1:
+  }
+}
+function __c76(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(2, __c0, 2)),
-          properties: __S(55, __c6, 7),
+          systemData: S.optional(__S(16, __c1, 0)),
+          properties: __S(1642, __c102, 10),
           etag: S.optional(S.String),
         }),
       ).annotate({ identifier: "GetSourceControlResponse" });
-    case 2:
+  }
+}
+function __c77(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -7545,7 +7377,11 @@ function __c18(j: number): any {
       ).annotate({
         identifier: "GetThreatIntelligenceIndicatorRequest",
       });
-    case 3:
+  }
+}
+function __c78(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -7561,7 +7397,26 @@ function __c18(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetWatchlistRequest" });
-    case 4:
+  }
+}
+function __c79(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(16, __c1, 0)),
+          properties: S.optional(__S(1280, __c80, 0)),
+          etag: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "GetWatchlistResponse" });
+  }
+}
+function __c80(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           watchlistId: S.optional(S.String),
@@ -7571,13 +7426,13 @@ function __c18(j: number): any {
           sourceType: S.optional(S.String),
           created: S.optional(S.String),
           updated: S.optional(S.String),
-          createdBy: S.optional(__S(22, __c2, 6)),
-          updatedBy: S.optional(__S(22, __c2, 6)),
+          createdBy: S.optional(__S(544, __c34, 0)),
+          updatedBy: S.optional(__S(544, __c34, 0)),
           description: S.optional(S.String),
           watchlistType: S.optional(S.String),
           watchlistAlias: S.optional(S.String),
           isDeleted: S.optional(S.Boolean),
-          labels: S.optional(__S(18, __c2, 2)),
+          labels: S.optional(__S(592, __c37, 0)),
           defaultDuration: S.optional(S.String),
           tenantId: S.optional(S.String),
           numberOfLinesToSkip: S.optional(S.Number),
@@ -7588,18 +7443,64 @@ function __c18(j: number): any {
           provisioningState: S.optional(S.String),
         }),
       ).annotate({ identifier: "WatchlistProperties" });
-    case 5:
+  }
+}
+function __c81(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          workspaceName: S.String.pipe(T.Label()),
+          sentinelOnboardingStateName: S.String.pipe(T.Label()),
+          properties: S.optional(__S(1328, __c83, 0)),
+          etag: S.optional(S.String),
+        }).pipe(
+          T.Http({
+            method: "PUT",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/providers/Microsoft.SecurityInsights/onboardingStates/{sentinelOnboardingStateName}",
+            code: 200,
+            apiVersion: "2025-09-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateSentinelOnboardingStateRequest",
+      });
+  }
+}
+function __c82(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(2, __c0, 2)),
-          properties: S.optional(__S(148, __c18, 4)),
+          systemData: S.optional(__S(16, __c1, 0)),
+          properties: S.optional(__S(1328, __c83, 0)),
           etag: S.optional(S.String),
         }),
-      ).annotate({ identifier: "GetWatchlistResponse" });
-    case 6:
+      ).annotate({
+        identifier: "CreateSentinelOnboardingStateResponse",
+      });
+  }
+}
+function __c83(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          customerManagedKey: S.optional(S.Boolean),
+        }),
+      ).annotate({
+        identifier: "SentinelOnboardingStateProperties",
+      });
+  }
+}
+function __c84(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -7616,7 +7517,26 @@ function __c18(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetWatchlistItemRequest" });
-    case 7:
+  }
+}
+function __c85(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(16, __c1, 0)),
+          properties: S.optional(__S(1376, __c86, 0)),
+          etag: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "GetWatchlistItemResponse" });
+  }
+}
+function __c86(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           watchlistItemType: S.optional(S.String),
@@ -7625,28 +7545,17 @@ function __c18(j: number): any {
           isDeleted: S.optional(S.Boolean),
           created: S.optional(S.String),
           updated: S.optional(S.String),
-          createdBy: S.optional(__S(22, __c2, 6)),
-          updatedBy: S.optional(__S(22, __c2, 6)),
+          createdBy: S.optional(__S(544, __c34, 0)),
+          updatedBy: S.optional(__S(544, __c34, 0)),
           itemsKeyValue: S.Unknown,
           entityMapping: S.optional(S.Unknown),
         }),
       ).annotate({ identifier: "WatchlistItemProperties" });
   }
 }
-function __c19(j: number): any {
+function __c87(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(2, __c0, 2)),
-          properties: S.optional(__S(151, __c18, 7)),
-          etag: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "GetWatchlistItemResponse" });
-    case 1:
       return S.suspend(() =>
         S.Struct({
           message: S.String,
@@ -7654,7 +7563,7 @@ function __c19(j: number): any {
       ).annotate({
         identifier: "IncidentCommentPropertiesInput",
       });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -7662,7 +7571,7 @@ function __c19(j: number): any {
           workspaceName: S.String.pipe(T.Label()),
           incidentId: S.String.pipe(T.Label()),
           incidentCommentId: S.String.pipe(T.Label()),
-          properties: S.optional(__S(153, __c19, 1)),
+          properties: S.optional(__S(1392, __c87, 0)),
           etag: S.optional(S.String),
         }).pipe(
           T.Http({
@@ -7675,13 +7584,17 @@ function __c19(j: number): any {
       ).annotate({
         identifier: "IncidentCommentsCreateOrUpdateRequest",
       });
-    case 3:
+  }
+}
+function __c88(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           relatedResourceId: S.String,
         }),
       ).annotate({ identifier: "RelationPropertiesInput" });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -7689,7 +7602,7 @@ function __c19(j: number): any {
           workspaceName: S.String.pipe(T.Label()),
           incidentId: S.String.pipe(T.Label()),
           relationName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(155, __c19, 3)),
+          properties: S.optional(__S(1408, __c88, 0)),
           etag: S.optional(S.String),
         }).pipe(
           T.Http({
@@ -7702,7 +7615,11 @@ function __c19(j: number): any {
       ).annotate({
         identifier: "IncidentRelationsCreateOrUpdateRequest",
       });
-    case 5:
+  }
+}
+function __c89(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           title: S.String,
@@ -7712,20 +7629,20 @@ function __c19(j: number): any {
           classification: S.optional(S.String),
           classificationReason: S.optional(S.String),
           classificationComment: S.optional(S.String),
-          owner: S.optional(__S(120, __c15, 0)),
-          labels: S.optional(__S(122, __c15, 2)),
+          owner: S.optional(__S(864, __c54, 0)),
+          labels: S.optional(__S(866, __c54, 2)),
           firstActivityTimeUtc: S.optional(S.String),
           lastActivityTimeUtc: S.optional(S.String),
         }),
       ).annotate({ identifier: "IncidentPropertiesInput" });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           workspaceName: S.String.pipe(T.Label()),
           incidentId: S.String.pipe(T.Label()),
-          properties: S.optional(__S(157, __c19, 5)),
+          properties: S.optional(__S(1424, __c89, 0)),
           etag: S.optional(S.String),
         }).pipe(
           T.Http({
@@ -7738,14 +7655,14 @@ function __c19(j: number): any {
       ).annotate({
         identifier: "IncidentsCreateOrUpdateRequest",
       });
-    case 7:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(2, __c0, 2)),
-          properties: S.optional(__S(124, __c15, 4)),
+          systemData: S.optional(__S(16, __c1, 0)),
+          properties: S.optional(__S(868, __c54, 4)),
           etag: S.optional(S.String),
         }),
       ).annotate({
@@ -7753,7 +7670,7 @@ function __c19(j: number): any {
       });
   }
 }
-function __c20(j: number): any {
+function __c90(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -7761,8 +7678,8 @@ function __c20(j: number): any {
           title: S.String,
           description: S.optional(S.String),
           status: S.String,
-          createdBy: S.optional(__S(14, __c1, 6)),
-          lastModifiedBy: S.optional(__S(14, __c1, 6)),
+          createdBy: S.optional(__S(304, __c19, 0)),
+          lastModifiedBy: S.optional(__S(304, __c19, 0)),
         }),
       ).annotate({
         identifier: "IncidentTaskPropertiesInput",
@@ -7775,7 +7692,7 @@ function __c20(j: number): any {
           workspaceName: S.String.pipe(T.Label()),
           incidentId: S.String.pipe(T.Label()),
           incidentTaskId: S.String.pipe(T.Label()),
-          properties: __S(160, __c20, 0),
+          properties: __S(1440, __c90, 0),
           etag: S.optional(S.String),
         }).pipe(
           T.Http({
@@ -7794,21 +7711,25 @@ function __c20(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(2, __c0, 2)),
-          properties: __S(133, __c16, 5),
+          systemData: S.optional(__S(16, __c1, 0)),
+          properties: __S(1056, __c66, 0),
           etag: S.optional(S.String),
         }),
       ).annotate({
         identifier: "IncidentTasksCreateOrUpdateResponse",
       });
-    case 3:
+  }
+}
+function __c91(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           workspaceName: S.String.pipe(T.Label()),
           packageId: S.String.pipe(T.Label()),
-          properties: S.optional(__S(111, __c13, 7)),
+          properties: S.optional(__S(752, __c47, 0)),
           etag: S.optional(S.String),
         }).pipe(
           T.Http({
@@ -7821,7 +7742,11 @@ function __c20(j: number): any {
       ).annotate({
         identifier: "InstallContentPackageRequest",
       });
-    case 4:
+  }
+}
+function __c92(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           contentId: S.optional(S.String),
@@ -7830,35 +7755,35 @@ function __c20(j: number): any {
           version: S.optional(S.String),
           displayName: S.optional(S.String),
           contentKind: S.optional(S.String),
-          source: S.optional(__S(25, __c3, 1)),
-          author: S.optional(__S(26, __c3, 2)),
-          support: S.optional(__S(27, __c3, 3)),
-          dependencies: S.optional(__S(29, __c3, 5)),
-          categories: S.optional(__S(30, __c3, 6)),
-          providers: S.optional(__S(18, __c2, 2)),
+          source: S.optional(__S(960, __c60, 0)),
+          author: S.optional(__S(961, __c60, 1)),
+          support: S.optional(__S(962, __c60, 2)),
+          dependencies: S.optional(__S(964, __c60, 4)),
+          categories: S.optional(__S(965, __c60, 5)),
+          providers: S.optional(__S(592, __c37, 0)),
           firstPublishDate: S.optional(S.String),
           lastPublishDate: S.optional(S.String),
           customVersion: S.optional(S.String),
           contentSchemaVersion: S.optional(S.String),
           icon: S.optional(S.String),
-          threatAnalysisTactics: S.optional(__S(18, __c2, 2)),
-          threatAnalysisTechniques: S.optional(__S(18, __c2, 2)),
-          previewImages: S.optional(__S(18, __c2, 2)),
-          previewImagesDark: S.optional(__S(18, __c2, 2)),
+          threatAnalysisTactics: S.optional(__S(592, __c37, 0)),
+          threatAnalysisTechniques: S.optional(__S(592, __c37, 0)),
+          previewImages: S.optional(__S(592, __c37, 0)),
+          previewImagesDark: S.optional(__S(592, __c37, 0)),
           packageId: S.optional(S.String),
           packageKind: S.optional(S.String),
           packageName: S.optional(S.String),
           mainTemplate: S.optional(S.Unknown),
         }),
       ).annotate({ identifier: "TemplatePropertiesInput" });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           workspaceName: S.String.pipe(T.Label()),
           templateId: S.String.pipe(T.Label()),
-          properties: S.optional(__S(164, __c20, 4)),
+          properties: S.optional(__S(1472, __c92, 0)),
           etag: S.optional(S.String),
         }).pipe(
           T.Http({
@@ -7871,7 +7796,11 @@ function __c20(j: number): any {
       ).annotate({
         identifier: "InstallContentTemplateRequest",
       });
-    case 6:
+  }
+}
+function __c93(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -7889,20 +7818,20 @@ function __c20(j: number): any {
       ).annotate({
         identifier: "ListActionByAlertRuleRequest",
       });
-    case 7:
-      return S.Array(__S(102, __c12, 6));
-  }
-}
-function __c21(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
+      return S.Array(__S(512, __c32, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          value: __S(167, __c20, 7),
+          value: __S(1489, __c93, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ActionsList" });
-    case 1:
+  }
+}
+function __c94(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -7917,27 +7846,39 @@ function __c21(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ListAlertRulesRequest" });
-    case 2:
+  }
+}
+function __c95(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(2, __c0, 2)),
+          systemData: S.optional(__S(16, __c1, 0)),
           kind: S.String,
           etag: S.optional(S.String),
         }),
       ).annotate({ identifier: "AlertRule" });
-    case 3:
-      return S.Array(__S(170, __c21, 2));
-    case 4:
+    case 1:
+      return S.Array(__S(1520, __c95, 0));
+  }
+}
+function __c96(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          value: __S(171, __c21, 3),
+          value: __S(1521, __c95, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "AlertRulesList" });
-    case 5:
+  }
+}
+function __c97(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -7954,30 +7895,242 @@ function __c21(j: number): any {
       ).annotate({
         identifier: "ListAlertRuleTemplatesRequest",
       });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          value: __S(1569, __c98, 1),
+          nextLink: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "AlertRuleTemplatesList" });
+  }
+}
+function __c98(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(16, __c1, 0)),
+          kind: S.String,
+        }),
+      ).annotate({ identifier: "AlertRuleTemplate" });
+    case 1:
+      return S.Array(__S(1568, __c98, 0));
+  }
+}
+function __c99(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          url: S.String,
+          branch: S.String,
+          displayUrl: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "RepositoryInput" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          credentialsExpireOn: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ServicePrincipalInput" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          rotateWebhookSecret: S.optional(S.Boolean),
+        }),
+      ).annotate({ identifier: "WebhookInput" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          webhook: S.optional(__S(1586, __c99, 2)),
+        }),
+      ).annotate({
+        identifier: "RepositoryResourceInfoInput",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          displayName: S.String,
+          description: S.optional(S.String),
+          repoType: S.String,
+          contentTypes: __S(1616, __c101, 0),
+          repository: __S(1584, __c99, 0),
+          servicePrincipal: S.optional(__S(1585, __c99, 1)),
+          repositoryAccess: S.optional(__S(1600, __c100, 0)),
+          repositoryResourceInfo: S.optional(__S(1587, __c99, 3)),
+        }),
+      ).annotate({
+        identifier: "SourceControlPropertiesInput",
+      });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          workspaceName: S.String.pipe(T.Label()),
+          sourceControlId: S.String.pipe(T.Label()),
+          properties: __S(1588, __c99, 4),
+          etag: S.optional(S.String),
+        }).pipe(
+          T.Http({
+            method: "PUT",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/providers/Microsoft.SecurityInsights/sourcecontrols/{sourceControlId}",
+            code: 200,
+            apiVersion: "2025-09-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateSourceControlRequest",
+      });
     case 6:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(2, __c0, 2)),
-          kind: S.String,
+          systemData: S.optional(__S(16, __c1, 0)),
+          properties: __S(1642, __c102, 10),
+          etag: S.optional(S.String),
         }),
-      ).annotate({ identifier: "AlertRuleTemplate" });
-    case 7:
-      return S.Array(__S(174, __c21, 6));
+      ).annotate({
+        identifier: "CreateSourceControlResponse",
+      });
   }
 }
-function __c22(j: number): any {
+function __c100(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          value: __S(175, __c21, 7),
-          nextLink: S.optional(S.String),
+          kind: S.String,
+          code: S.optional(S.String),
+          state: S.optional(S.String),
+          clientId: S.optional(S.String),
+          token: S.optional(S.String),
+          installationId: S.optional(S.String),
         }),
-      ).annotate({ identifier: "AlertRuleTemplatesList" });
+      ).annotate({ identifier: "RepositoryAccess" });
+  }
+}
+function __c101(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c102(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          url: S.String,
+          branch: S.String,
+          displayUrl: S.optional(S.String),
+          deploymentLogsUrl: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Repository" });
     case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          tenantId: S.optional(S.String),
+          appId: S.optional(S.String),
+          credentialsExpireOn: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ServicePrincipal" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          tenantId: S.optional(S.String),
+          appId: S.optional(S.String),
+          subject: S.optional(S.String),
+          issuer: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "WorkloadIdentityFederation",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          webhookId: S.optional(S.String),
+          webhookUrl: S.optional(S.String),
+          webhookSecretUpdateTime: S.optional(S.String),
+          rotateWebhookSecret: S.optional(S.Boolean),
+        }),
+      ).annotate({ identifier: "Webhook" });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          appInstallationId: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "GitHubResourceInfo" });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          pipelineId: S.optional(S.String),
+          serviceConnectionId: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "AzureDevOpsResourceInfo" });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          webhook: S.optional(__S(1635, __c102, 3)),
+          gitHubResourceInfo: S.optional(__S(1636, __c102, 4)),
+          azureDevOpsResourceInfo: S.optional(__S(1637, __c102, 5)),
+        }),
+      ).annotate({ identifier: "RepositoryResourceInfo" });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          deploymentId: S.optional(S.String),
+          deploymentState: S.optional(S.String),
+          deploymentResult: S.optional(S.String),
+          deploymentTime: S.optional(S.String),
+          deploymentLogsUrl: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Deployment" });
+    case 8:
+      return S.suspend(() =>
+        S.Struct({
+          deploymentFetchStatus: S.optional(S.String),
+          deployment: S.optional(__S(1639, __c102, 7)),
+          message: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "DeploymentInfo" });
+    case 9:
+      return S.suspend(() =>
+        S.Struct({
+          url: S.optional(S.String),
+          state: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "PullRequest" });
+    case 10:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          version: S.optional(S.String),
+          displayName: S.String,
+          description: S.optional(S.String),
+          repoType: S.String,
+          contentTypes: __S(1616, __c101, 0),
+          repository: __S(1632, __c102, 0),
+          servicePrincipal: S.optional(__S(1633, __c102, 1)),
+          workloadIdentityFederation: S.optional(__S(1634, __c102, 2)),
+          repositoryAccess: S.optional(__S(1600, __c100, 0)),
+          repositoryResourceInfo: S.optional(__S(1638, __c102, 6)),
+          lastDeploymentInfo: S.optional(__S(1640, __c102, 8)),
+          pullRequest: S.optional(__S(1641, __c102, 9)),
+        }),
+      ).annotate({ identifier: "SourceControlProperties" });
+  }
+}
+function __c103(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -7994,27 +8147,31 @@ function __c22(j: number): any {
       ).annotate({
         identifier: "ListAutomationRulesRequest",
       });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(2, __c0, 2)),
-          properties: __S(15, __c1, 7),
+          systemData: S.optional(__S(16, __c1, 0)),
+          properties: __S(325, __c20, 5),
           etag: S.optional(S.String),
         }),
       ).annotate({ identifier: "AutomationRule" });
+    case 2:
+      return S.Array(__S(1649, __c103, 1));
     case 3:
-      return S.Array(__S(178, __c22, 2));
-    case 4:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(179, __c22, 3)),
+          value: S.optional(__S(1650, __c103, 2)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "AutomationRulesList" });
-    case 5:
+  }
+}
+function __c104(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -8029,18 +8186,18 @@ function __c22(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ListBookmarksRequest" });
-    case 6:
-      return S.Array(__S(109, __c13, 5));
-    case 7:
+    case 1:
+      return S.Array(__S(704, __c44, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          value: __S(182, __c22, 6),
+          value: __S(1665, __c104, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "BookmarkList" });
   }
 }
-function __c23(j: number): any {
+function __c105(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -8072,21 +8229,25 @@ function __c23(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(2, __c0, 2)),
-          properties: S.optional(__S(111, __c13, 7)),
+          systemData: S.optional(__S(16, __c1, 0)),
+          properties: S.optional(__S(752, __c47, 0)),
           etag: S.optional(S.String),
         }),
       ).annotate({ identifier: "PackageModel" });
     case 2:
-      return S.Array(__S(185, __c23, 1));
+      return S.Array(__S(1681, __c105, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          value: __S(186, __c23, 2),
+          value: __S(1682, __c105, 2),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "PackageList" });
-    case 4:
+  }
+}
+function __c106(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -8111,29 +8272,29 @@ function __c23(j: number): any {
       ).annotate({
         identifier: "ListContentTemplatesRequest",
       });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(2, __c0, 2)),
-          properties: S.optional(__S(115, __c14, 3)),
+          systemData: S.optional(__S(16, __c1, 0)),
+          properties: S.optional(__S(801, __c50, 1)),
           etag: S.optional(S.String),
         }),
       ).annotate({ identifier: "TemplateModel" });
-    case 6:
-      return S.Array(__S(189, __c23, 5));
-    case 7:
+    case 2:
+      return S.Array(__S(1697, __c106, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          value: __S(190, __c23, 6),
+          value: __S(1698, __c106, 2),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "TemplateList" });
   }
 }
-function __c24(j: number): any {
+function __c107(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -8155,13 +8316,17 @@ function __c24(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(171, __c21, 3)),
+          value: S.optional(__S(1521, __c95, 1)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
         identifier: "DataConnectorDefinitionArmCollectionWrapper",
       });
-    case 2:
+  }
+}
+function __c108(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -8178,7 +8343,11 @@ function __c24(j: number): any {
       ).annotate({
         identifier: "ListDataConnectorsRequest",
       });
-    case 3:
+  }
+}
+function __c109(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -8196,7 +8365,7 @@ function __c24(j: number): any {
       ).annotate({
         identifier: "ListIncidentAlertsRequest",
       });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           reason: S.optional(S.String),
@@ -8205,20 +8374,20 @@ function __c24(j: number): any {
       ).annotate({
         identifier: "SecurityAlertPropertiesConfidenceReasonsItem",
       });
-    case 5:
-      return S.Array(__S(196, __c24, 4));
-    case 6:
+    case 2:
+      return S.Array(__S(1745, __c109, 1));
+    case 3:
       return S.Array(S.Unknown);
-    case 7:
+    case 4:
       return S.suspend(() =>
         S.Struct({
-          additionalData: S.optional(__S(69, __c8, 5)),
+          additionalData: S.optional(__S(1840, __c115, 0)),
           friendlyName: S.optional(S.String),
           alertDisplayName: S.optional(S.String),
           alertType: S.optional(S.String),
           compromisedEntity: S.optional(S.String),
           confidenceLevel: S.optional(S.String),
-          confidenceReasons: S.optional(__S(197, __c24, 5)),
+          confidenceReasons: S.optional(__S(1746, __c109, 2)),
           confidenceScore: S.optional(S.Number),
           confidenceScoreStatus: S.optional(S.String),
           description: S.optional(S.String),
@@ -8229,42 +8398,42 @@ function __c24(j: number): any {
           productComponentName: S.optional(S.String),
           productName: S.optional(S.String),
           productVersion: S.optional(S.String),
-          remediationSteps: S.optional(__S(18, __c2, 2)),
+          remediationSteps: S.optional(__S(592, __c37, 0)),
           severity: S.optional(S.String),
           startTimeUtc: S.optional(S.String),
           status: S.optional(S.String),
           systemAlertId: S.optional(S.String),
-          tactics: S.optional(__S(37, __c4, 5)),
+          tactics: S.optional(__S(1616, __c101, 0)),
           timeGenerated: S.optional(S.String),
           vendorName: S.optional(S.String),
           alertLink: S.optional(S.String),
-          resourceIdentifiers: S.optional(__S(198, __c24, 6)),
+          resourceIdentifiers: S.optional(__S(1747, __c109, 3)),
         }),
       ).annotate({ identifier: "SecurityAlertProperties" });
-  }
-}
-function __c25(j: number): any {
-  switch (j) {
-    case 0:
+    case 5:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(2, __c0, 2)),
+          systemData: S.optional(__S(16, __c1, 0)),
           kind: S.String,
-          properties: S.optional(__S(199, __c24, 7)),
+          properties: S.optional(__S(1748, __c109, 4)),
         }),
       ).annotate({ identifier: "SecurityAlert" });
-    case 1:
-      return S.Array(__S(200, __c25, 0));
-    case 2:
+    case 6:
+      return S.Array(__S(1749, __c109, 5));
+    case 7:
       return S.suspend(() =>
         S.Struct({
-          value: __S(201, __c25, 1),
+          value: __S(1750, __c109, 6),
         }),
       ).annotate({ identifier: "IncidentAlertList" });
-    case 3:
+  }
+}
+function __c110(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -8282,48 +8451,48 @@ function __c25(j: number): any {
       ).annotate({
         identifier: "ListIncidentBookmarksRequest",
       });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          additionalData: S.optional(__S(69, __c8, 5)),
+          additionalData: S.optional(__S(1840, __c115, 0)),
           friendlyName: S.optional(S.String),
           created: S.optional(S.String),
-          createdBy: S.optional(__S(22, __c2, 6)),
+          createdBy: S.optional(__S(544, __c34, 0)),
           displayName: S.String,
           eventTime: S.optional(S.String),
-          labels: S.optional(__S(18, __c2, 2)),
+          labels: S.optional(__S(592, __c37, 0)),
           notes: S.optional(S.String),
           query: S.String,
           queryResult: S.optional(S.String),
           updated: S.optional(S.String),
-          updatedBy: S.optional(__S(22, __c2, 6)),
-          incidentInfo: S.optional(__S(19, __c2, 3)),
+          updatedBy: S.optional(__S(544, __c34, 0)),
+          incidentInfo: S.optional(__S(576, __c36, 0)),
         }),
       ).annotate({
         identifier: "HuntingBookmarkProperties",
       });
-    case 5:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(2, __c0, 2)),
+          systemData: S.optional(__S(16, __c1, 0)),
           kind: S.String,
-          properties: S.optional(__S(204, __c25, 4)),
+          properties: S.optional(__S(1761, __c110, 1)),
         }),
       ).annotate({ identifier: "HuntingBookmark" });
-    case 6:
-      return S.Array(__S(205, __c25, 5));
-    case 7:
+    case 3:
+      return S.Array(__S(1762, __c110, 2));
+    case 4:
       return S.suspend(() =>
         S.Struct({
-          value: __S(206, __c25, 6),
+          value: __S(1763, __c110, 3),
         }),
       ).annotate({ identifier: "IncidentBookmarkList" });
   }
 }
-function __c26(j: number): any {
+function __c111(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -8353,21 +8522,25 @@ function __c26(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(2, __c0, 2)),
-          properties: S.optional(__S(127, __c15, 7)),
+          systemData: S.optional(__S(16, __c1, 0)),
+          properties: S.optional(__S(928, __c58, 0)),
           etag: S.optional(S.String),
         }),
       ).annotate({ identifier: "IncidentComment" });
     case 2:
-      return S.Array(__S(209, __c26, 1));
+      return S.Array(__S(1777, __c111, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          value: __S(210, __c26, 2),
+          value: __S(1778, __c111, 2),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "IncidentCommentList" });
-    case 4:
+  }
+}
+function __c112(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -8385,7 +8558,7 @@ function __c26(j: number): any {
       ).annotate({
         identifier: "ListIncidentEntitiesRequest",
       });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           entityKind: S.String,
@@ -8394,18 +8567,172 @@ function __c26(j: number): any {
       ).annotate({
         identifier: "IncidentEntitiesResultsMetadata",
       });
-    case 6:
-      return S.Array(__S(213, __c26, 5));
-    case 7:
+    case 2:
+      return S.Array(__S(1793, __c112, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          entities: S.optional(__S(175, __c21, 7)),
-          metaData: S.optional(__S(214, __c26, 6)),
+          entities: S.optional(__S(1569, __c98, 1)),
+          metaData: S.optional(__S(1794, __c112, 2)),
         }),
       ).annotate({ identifier: "IncidentEntitiesResponse" });
   }
 }
-function __c27(j: number): any {
+function __c113(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          workspaceName: S.String.pipe(T.Label()),
+          name: S.String.pipe(T.Label()),
+          kind: S.String,
+          etag: S.optional(S.String),
+          properties: S.optional(__S(1867, __c116, 11)),
+        }).pipe(
+          T.Http({
+            method: "PUT",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/providers/Microsoft.SecurityInsights/threatIntelligence/main/indicators/{name}",
+            code: 200,
+            apiVersion: "2025-09-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateThreatIntelligenceIndicatorRequest",
+      });
+  }
+}
+function __c114(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(16, __c1, 0)),
+          kind: S.String,
+          etag: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "CreateThreatIntelligenceIndicatorResponse",
+      });
+  }
+}
+function __c115(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, S.Unknown);
+  }
+}
+function __c116(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          killChainName: S.optional(S.String),
+          phaseName: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "ThreatIntelligenceKillChainPhase",
+      });
+    case 1:
+      return S.Array(__S(1856, __c116, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          valueType: S.optional(S.String),
+          value: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "ThreatIntelligenceParsedPatternTypeValue",
+      });
+    case 3:
+      return S.Array(__S(1858, __c116, 2));
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          patternTypeKey: S.optional(S.String),
+          patternTypeValues: S.optional(__S(1859, __c116, 3)),
+        }),
+      ).annotate({
+        identifier: "ThreatIntelligenceParsedPattern",
+      });
+    case 5:
+      return S.Array(__S(1860, __c116, 4));
+    case 6:
+      return S.Record(S.String, S.String);
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          description: S.optional(S.String),
+          externalId: S.optional(S.String),
+          sourceName: S.optional(S.String),
+          url: S.optional(S.String),
+          hashes: S.optional(__S(1862, __c116, 6)),
+        }),
+      ).annotate({
+        identifier: "ThreatIntelligenceExternalReference",
+      });
+    case 8:
+      return S.Array(__S(1863, __c116, 7));
+    case 9:
+      return S.suspend(() =>
+        S.Struct({
+          language: S.optional(S.String),
+          markingRef: S.optional(S.Number),
+          selectors: S.optional(__S(592, __c37, 0)),
+        }),
+      ).annotate({
+        identifier: "ThreatIntelligenceGranularMarkingModel",
+      });
+    case 10:
+      return S.Array(__S(1865, __c116, 9));
+    case 11:
+      return S.suspend(() =>
+        S.Struct({
+          threatIntelligenceTags: S.optional(__S(1872, __c117, 0)),
+          lastUpdatedTimeUtc: S.optional(S.String),
+          source: S.optional(S.String),
+          displayName: S.optional(S.String),
+          description: S.optional(S.String),
+          indicatorTypes: S.optional(__S(592, __c37, 0)),
+          pattern: S.optional(S.String),
+          patternType: S.optional(S.String),
+          patternVersion: S.optional(S.String),
+          killChainPhases: S.optional(__S(1857, __c116, 1)),
+          parsedPattern: S.optional(__S(1861, __c116, 5)),
+          externalId: S.optional(S.String),
+          createdByRef: S.optional(S.String),
+          defanged: S.optional(S.Boolean),
+          externalLastUpdatedTimeUtc: S.optional(S.String),
+          externalReferences: S.optional(__S(1864, __c116, 8)),
+          granularMarkings: S.optional(__S(1866, __c116, 10)),
+          labels: S.optional(__S(592, __c37, 0)),
+          revoked: S.optional(S.Boolean),
+          confidence: S.optional(S.Number),
+          objectMarkingRefs: S.optional(__S(1872, __c117, 0)),
+          language: S.optional(S.String),
+          threatTypes: S.optional(__S(592, __c37, 0)),
+          validFrom: S.optional(S.String),
+          validUntil: S.optional(S.String),
+          created: S.optional(S.String),
+          modified: S.optional(S.String),
+          extensions: S.optional(__S(1840, __c115, 0)),
+        }),
+      ).annotate({
+        identifier: "ThreatIntelligenceIndicatorPropertiesInput",
+      });
+  }
+}
+function __c117(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c118(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -8435,21 +8762,25 @@ function __c27(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(2, __c0, 2)),
-          properties: S.optional(__S(130, __c16, 2)),
+          systemData: S.optional(__S(16, __c1, 0)),
+          properties: S.optional(__S(1024, __c64, 0)),
           etag: S.optional(S.String),
         }),
       ).annotate({ identifier: "Relation" });
     case 2:
-      return S.Array(__S(217, __c27, 1));
+      return S.Array(__S(1889, __c118, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          value: __S(218, __c27, 2),
+          value: __S(1890, __c118, 2),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "RelationList" });
-    case 4:
+  }
+}
+function __c119(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -8468,16 +8799,20 @@ function __c27(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ListIncidentsRequest" });
-    case 5:
-      return S.Array(__S(125, __c15, 5));
-    case 6:
+    case 1:
+      return S.Array(__S(880, __c55, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          value: __S(221, __c27, 5),
+          value: __S(1905, __c119, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "IncidentList" });
-    case 7:
+  }
+}
+function __c120(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -8493,20 +8828,20 @@ function __c27(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ListIncidentTasksRequest" });
-  }
-}
-function __c28(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(134, __c16, 6));
     case 1:
+      return S.Array(__S(1072, __c67, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(224, __c28, 0)),
+          value: S.optional(__S(1921, __c120, 1)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "IncidentTaskList" });
-    case 2:
+  }
+}
+function __c121(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -8525,16 +8860,20 @@ function __c28(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ListMetadataRequest" });
-    case 3:
-      return S.Array(__S(33, __c4, 1));
-    case 4:
+    case 1:
+      return S.Array(__S(977, __c61, 1));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          value: __S(227, __c28, 3),
+          value: __S(1937, __c121, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "MetadataList" });
-    case 5:
+  }
+}
+function __c122(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({}).pipe(
           T.Http({
@@ -8545,7 +8884,7 @@ function __c28(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ListOperationsRequest" });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           description: S.optional(S.String),
@@ -8554,29 +8893,29 @@ function __c28(j: number): any {
           resource: S.optional(S.String),
         }),
       ).annotate({ identifier: "OperationDisplay" });
-    case 7:
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          display: S.optional(__S(230, __c28, 6)),
+          display: S.optional(__S(1953, __c122, 1)),
           name: S.optional(S.String),
           origin: S.optional(S.String),
           isDataAction: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "Operation" });
-  }
-}
-function __c29(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(231, __c28, 7));
-    case 1:
+    case 3:
+      return S.Array(__S(1954, __c122, 2));
+    case 4:
       return S.suspend(() =>
         S.Struct({
           nextLink: S.optional(S.String),
-          value: __S(232, __c29, 0),
+          value: __S(1955, __c122, 3),
         }),
       ).annotate({ identifier: "OperationsList" });
-    case 2:
+  }
+}
+function __c123(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -8598,27 +8937,31 @@ function __c29(j: number): any {
       ).annotate({
         identifier: "ListProductPackagesRequest",
       });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(2, __c0, 2)),
-          properties: S.optional(__S(137, __c17, 1)),
+          systemData: S.optional(__S(16, __c1, 0)),
+          properties: S.optional(__S(1120, __c70, 0)),
           etag: S.optional(S.String),
         }),
       ).annotate({ identifier: "ProductPackageModel" });
-    case 4:
-      return S.Array(__S(235, __c29, 3));
-    case 5:
+    case 2:
+      return S.Array(__S(1969, __c123, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          value: __S(236, __c29, 4),
+          value: __S(1970, __c123, 2),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ProductPackageList" });
-    case 6:
+  }
+}
+function __c124(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -8642,31 +8985,31 @@ function __c29(j: number): any {
       ).annotate({
         identifier: "ListProductTemplatesRequest",
       });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(2, __c0, 2)),
-          properties: S.optional(__S(140, __c17, 4)),
+          systemData: S.optional(__S(16, __c1, 0)),
+          properties: S.optional(__S(1152, __c72, 0)),
           etag: S.optional(S.String),
         }),
       ).annotate({ identifier: "ProductTemplateModel" });
-  }
-}
-function __c30(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(239, __c29, 7));
-    case 1:
+    case 2:
+      return S.Array(__S(1985, __c124, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          value: __S(240, __c30, 0),
+          value: __S(1986, __c124, 2),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ProductTemplateList" });
-    case 2:
+  }
+}
+function __c125(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -8683,18 +9026,22 @@ function __c30(j: number): any {
       ).annotate({
         identifier: "ListSecurityMLAnalyticsSettingsRequest",
       });
-    case 3:
-      return S.Array(__S(6, __c0, 6));
-    case 4:
+    case 1:
+      return S.Array(__S(64, __c4, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          value: __S(243, __c30, 3),
+          value: __S(2001, __c125, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
         identifier: "SecurityMLAnalyticsSettingsList",
       });
-    case 5:
+  }
+}
+function __c126(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -8711,38 +9058,38 @@ function __c30(j: number): any {
       ).annotate({
         identifier: "ListSentinelOnboardingStatesRequest",
       });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(2, __c0, 2)),
-          properties: S.optional(__S(34, __c4, 2)),
+          systemData: S.optional(__S(16, __c1, 0)),
+          properties: S.optional(__S(1328, __c83, 0)),
           etag: S.optional(S.String),
         }),
       ).annotate({ identifier: "SentinelOnboardingState" });
-    case 7:
-      return S.Array(__S(246, __c30, 6));
-  }
-}
-function __c31(j: number): any {
-  switch (j) {
-    case 0:
+    case 2:
+      return S.Array(__S(2017, __c126, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          value: __S(247, __c30, 7),
+          value: __S(2018, __c126, 2),
         }),
       ).annotate({
         identifier: "SentinelOnboardingStatesList",
       });
-    case 1:
+  }
+}
+function __c127(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           workspaceName: S.String.pipe(T.Label()),
-          properties: __S(93, __c11, 5),
+          properties: __S(432, __c27, 0),
         }).pipe(
           T.Http({
             method: "POST",
@@ -8754,25 +9101,53 @@ function __c31(j: number): any {
       ).annotate({
         identifier: "ListSourceControlRepositoriesRequest",
       });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           url: S.optional(S.String),
           fullName: S.optional(S.String),
           installationId: S.optional(S.Number),
-          branches: S.optional(__S(18, __c2, 2)),
+          branches: S.optional(__S(592, __c37, 0)),
         }),
       ).annotate({ identifier: "Repo" });
+    case 2:
+      return S.Array(__S(2033, __c127, 1));
     case 3:
-      return S.Array(__S(250, __c31, 2));
-    case 4:
       return S.suspend(() =>
         S.Struct({
-          value: __S(251, __c31, 3),
+          value: __S(2034, __c127, 2),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "RepoList" });
-    case 5:
+  }
+}
+function __c128(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          workspaceName: S.String.pipe(T.Label()),
+          kind: S.String,
+          etag: S.optional(S.String),
+          properties: S.optional(__S(1867, __c116, 11)),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/providers/Microsoft.SecurityInsights/threatIntelligence/main/createIndicator",
+            code: 200,
+            apiVersion: "2025-09-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateThreatIntelligenceIndicatorIndicatorRequest",
+      });
+  }
+}
+function __c129(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -8789,18 +9164,18 @@ function __c31(j: number): any {
       ).annotate({
         identifier: "ListSourceControlsRequest",
       });
-    case 6:
-      return S.Array(__S(145, __c18, 1));
-    case 7:
+    case 1:
+      return S.Array(__S(1216, __c76, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          value: __S(254, __c31, 6),
+          value: __S(2065, __c129, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "SourceControlList" });
   }
 }
-function __c32(j: number): any {
+function __c130(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -8829,35 +9204,39 @@ function __c32(j: number): any {
         identifier: "ThreatIntelligenceMetricEntity",
       });
     case 2:
-      return S.Array(__S(257, __c32, 1));
+      return S.Array(__S(2081, __c130, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
           lastUpdatedTimeUtc: S.optional(S.String),
-          threatTypeMetrics: S.optional(__S(258, __c32, 2)),
-          patternTypeMetrics: S.optional(__S(258, __c32, 2)),
-          sourceMetrics: S.optional(__S(258, __c32, 2)),
+          threatTypeMetrics: S.optional(__S(2082, __c130, 2)),
+          patternTypeMetrics: S.optional(__S(2082, __c130, 2)),
+          sourceMetrics: S.optional(__S(2082, __c130, 2)),
         }),
       ).annotate({ identifier: "ThreatIntelligenceMetric" });
     case 4:
       return S.suspend(() =>
         S.Struct({
-          properties: S.optional(__S(259, __c32, 3)),
+          properties: S.optional(__S(2083, __c130, 3)),
         }),
       ).annotate({
         identifier: "ThreatIntelligenceMetrics",
       });
     case 5:
-      return S.Array(__S(260, __c32, 4));
+      return S.Array(__S(2084, __c130, 4));
     case 6:
       return S.suspend(() =>
         S.Struct({
-          value: __S(261, __c32, 5),
+          value: __S(2085, __c130, 5),
         }),
       ).annotate({
         identifier: "ThreatIntelligenceMetricsList",
       });
-    case 7:
+  }
+}
+function __c131(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -8880,20 +9259,24 @@ function __c32(j: number): any {
       });
   }
 }
-function __c33(j: number): any {
+function __c132(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(72, __c9, 0));
+      return S.Array(__S(1824, __c114, 0));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          value: __S(264, __c33, 0),
+          value: __S(2112, __c132, 0),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
         identifier: "ThreatIntelligenceInformationList",
       });
-    case 2:
+  }
+}
+function __c133(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -8912,16 +9295,20 @@ function __c33(j: number): any {
       ).annotate({
         identifier: "ListWatchlistItemsRequest",
       });
-    case 3:
-      return S.Array(__S(152, __c19, 0));
-    case 4:
+    case 1:
+      return S.Array(__S(1360, __c85, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          value: __S(267, __c33, 3),
+          value: __S(2129, __c133, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "WatchlistItemList" });
-    case 5:
+  }
+}
+function __c134(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -8937,18 +9324,18 @@ function __c33(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ListWatchlistsRequest" });
-    case 6:
-      return S.Array(__S(149, __c18, 5));
-    case 7:
+    case 1:
+      return S.Array(__S(1264, __c79, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          value: __S(270, __c33, 6),
+          value: __S(2145, __c134, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "WatchlistList" });
   }
 }
-function __c34(j: number): any {
+function __c135(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -8959,7 +9346,7 @@ function __c34(j: number): any {
           name: S.String.pipe(T.Label()),
           kind: S.String,
           etag: S.optional(S.String),
-          properties: S.optional(__S(70, __c8, 6)),
+          properties: S.optional(__S(1867, __c116, 11)),
         }).pipe(
           T.Http({
             method: "POST",
@@ -8971,7 +9358,11 @@ function __c34(j: number): any {
       ).annotate({
         identifier: "ReplaceThreatIntelligenceIndicatorTagsRequest",
       });
-    case 1:
+  }
+}
+function __c136(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -8990,7 +9381,11 @@ function __c34(j: number): any {
           }),
         ),
       ).annotate({ identifier: "RunEntityPlaybookRequest" });
-    case 2:
+  }
+}
+function __c137(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -9010,7 +9405,11 @@ function __c34(j: number): any {
       ).annotate({
         identifier: "RunIncidentPlaybookRequest",
       });
-    case 3:
+  }
+}
+function __c138(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -9031,14 +9430,18 @@ function __c34(j: number): any {
       ).annotate({
         identifier: "SecurityMLAnalyticsSettingsCreateOrUpdateRequest",
       });
-    case 4:
+  }
+}
+function __c139(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           workspaceName: S.String.pipe(T.Label()),
           name: S.String.pipe(T.Label()),
-          threatIntelligenceTags: S.optional(__S(57, __c7, 1)),
+          threatIntelligenceTags: S.optional(__S(1872, __c117, 0)),
         }).pipe(
           T.Http({
             method: "POST",
@@ -9050,7 +9453,36 @@ function __c34(j: number): any {
       ).annotate({
         identifier: "ThreatIntelligenceIndicatorAppendTagsRequest",
       });
-    case 5:
+  }
+}
+function __c140(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          workspaceName: S.String.pipe(T.Label()),
+          dataConnectorDefinitionName: S.String.pipe(T.Label()),
+          kind: S.String,
+          etag: S.optional(S.String),
+          properties: S.optional(S.Unknown),
+        }).pipe(
+          T.Http({
+            method: "PUT",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/providers/Microsoft.SecurityInsights/dataConnectorDefinitions/{dataConnectorDefinitionName}",
+            code: 200,
+            apiVersion: "2025-09-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "DataConnectorDefinitionsCreateOrUpdateRequest",
+      });
+  }
+}
+function __c141(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           itemKey: S.optional(S.String),
@@ -9059,9 +9491,9 @@ function __c34(j: number): any {
       ).annotate({
         identifier: "ThreatIntelligenceSortingCriteria",
       });
-    case 6:
-      return S.Array(__S(277, __c34, 5));
-    case 7:
+    case 1:
+      return S.Array(__S(2256, __c141, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -9073,12 +9505,12 @@ function __c34(j: number): any {
           minValidUntil: S.optional(S.String),
           maxValidUntil: S.optional(S.String),
           includeDisabled: S.optional(S.Boolean),
-          sortBy: S.optional(__S(278, __c34, 6)),
-          sources: S.optional(__S(18, __c2, 2)),
-          patternTypes: S.optional(__S(57, __c7, 1)),
-          threatTypes: S.optional(__S(57, __c7, 1)),
-          ids: S.optional(__S(18, __c2, 2)),
-          keywords: S.optional(__S(18, __c2, 2)),
+          sortBy: S.optional(__S(2257, __c141, 1)),
+          sources: S.optional(__S(592, __c37, 0)),
+          patternTypes: S.optional(__S(1872, __c117, 0)),
+          threatTypes: S.optional(__S(1872, __c117, 0)),
+          ids: S.optional(__S(592, __c37, 0)),
+          keywords: S.optional(__S(592, __c37, 0)),
           skipToken: S.optional(S.String),
         }).pipe(
           T.Http({
@@ -9093,7 +9525,7 @@ function __c34(j: number): any {
       });
   }
 }
-function __c35(j: number): any {
+function __c142(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -9117,31 +9549,35 @@ function __c35(j: number): any {
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "UninstallContentPackageResponse",
       });
-    case 2:
+  }
+}
+function __c143(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           contentId: S.optional(S.String),
           parentId: S.optional(S.String),
           version: S.optional(S.String),
           kind: S.optional(S.String),
-          source: S.optional(__S(25, __c3, 1)),
-          author: S.optional(__S(26, __c3, 2)),
-          support: S.optional(__S(27, __c3, 3)),
-          dependencies: S.optional(__S(29, __c3, 5)),
-          categories: S.optional(__S(30, __c3, 6)),
-          providers: S.optional(__S(18, __c2, 2)),
+          source: S.optional(__S(960, __c60, 0)),
+          author: S.optional(__S(961, __c60, 1)),
+          support: S.optional(__S(962, __c60, 2)),
+          dependencies: S.optional(__S(964, __c60, 4)),
+          categories: S.optional(__S(965, __c60, 5)),
+          providers: S.optional(__S(592, __c37, 0)),
           firstPublishDate: S.optional(S.String),
           lastPublishDate: S.optional(S.String),
           customVersion: S.optional(S.String),
           contentSchemaVersion: S.optional(S.String),
           icon: S.optional(S.String),
-          threatAnalysisTactics: S.optional(__S(18, __c2, 2)),
-          threatAnalysisTechniques: S.optional(__S(18, __c2, 2)),
-          previewImages: S.optional(__S(18, __c2, 2)),
-          previewImagesDark: S.optional(__S(18, __c2, 2)),
+          threatAnalysisTactics: S.optional(__S(592, __c37, 0)),
+          threatAnalysisTechniques: S.optional(__S(592, __c37, 0)),
+          previewImages: S.optional(__S(592, __c37, 0)),
+          previewImagesDark: S.optional(__S(592, __c37, 0)),
         }),
       ).annotate({ identifier: "MetadataPropertiesPatch" });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -9149,7 +9585,7 @@ function __c35(j: number): any {
           workspaceName: S.String.pipe(T.Label()),
           metadataName: S.String.pipe(T.Label()),
           etag: S.optional(S.String),
-          properties: S.optional(__S(282, __c35, 2)),
+          properties: S.optional(__S(2288, __c143, 0)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -9159,7 +9595,11 @@ function __c35(j: number): any {
           }),
         ),
       ).annotate({ identifier: "UpdateMetadataRequest" });
-    case 4:
+  }
+}
+function __c144(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           watchlistItemType: S.optional(S.String),
@@ -9168,15 +9608,15 @@ function __c35(j: number): any {
           isDeleted: S.optional(S.Boolean),
           created: S.optional(S.String),
           updated: S.optional(S.String),
-          createdBy: S.optional(__S(17, __c2, 1)),
-          updatedBy: S.optional(__S(17, __c2, 1)),
+          createdBy: S.optional(__S(608, __c38, 0)),
+          updatedBy: S.optional(__S(608, __c38, 0)),
           itemsKeyValue: S.Unknown,
           entityMapping: S.optional(S.Unknown),
         }),
       ).annotate({
         identifier: "WatchlistItemPropertiesInput",
       });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -9184,7 +9624,7 @@ function __c35(j: number): any {
           workspaceName: S.String.pipe(T.Label()),
           watchlistAlias: S.String.pipe(T.Label()),
           watchlistItemId: S.String.pipe(T.Label()),
-          properties: S.optional(__S(284, __c35, 4)),
+          properties: S.optional(__S(2304, __c144, 0)),
           etag: S.optional(S.String),
         }).pipe(
           T.Http({
@@ -9197,20 +9637,24 @@ function __c35(j: number): any {
       ).annotate({
         identifier: "WatchlistItemsCreateOrUpdateRequest",
       });
-    case 6:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(2, __c0, 2)),
-          properties: S.optional(__S(151, __c18, 7)),
+          systemData: S.optional(__S(16, __c1, 0)),
+          properties: S.optional(__S(1376, __c86, 0)),
           etag: S.optional(S.String),
         }),
       ).annotate({
         identifier: "WatchlistItemsCreateOrUpdateResponse",
       });
-    case 7:
+  }
+}
+function __c145(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           watchlistId: S.optional(S.String),
@@ -9220,13 +9664,13 @@ function __c35(j: number): any {
           sourceType: S.optional(S.String),
           created: S.optional(S.String),
           updated: S.optional(S.String),
-          createdBy: S.optional(__S(17, __c2, 1)),
-          updatedBy: S.optional(__S(17, __c2, 1)),
+          createdBy: S.optional(__S(608, __c38, 0)),
+          updatedBy: S.optional(__S(608, __c38, 0)),
           description: S.optional(S.String),
           watchlistType: S.optional(S.String),
           watchlistAlias: S.optional(S.String),
           isDeleted: S.optional(S.Boolean),
-          labels: S.optional(__S(18, __c2, 2)),
+          labels: S.optional(__S(592, __c37, 0)),
           defaultDuration: S.optional(S.String),
           tenantId: S.optional(S.String),
           numberOfLinesToSkip: S.optional(S.Number),
@@ -9236,18 +9680,14 @@ function __c35(j: number): any {
           uploadStatus: S.optional(S.String),
         }),
       ).annotate({ identifier: "WatchlistPropertiesInput" });
-  }
-}
-function __c36(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           workspaceName: S.String.pipe(T.Label()),
           watchlistAlias: S.String.pipe(T.Label()),
-          properties: S.optional(__S(287, __c35, 7)),
+          properties: S.optional(__S(2320, __c145, 0)),
           etag: S.optional(S.String),
         }).pipe(
           T.Http({
@@ -9260,14 +9700,14 @@ function __c36(j: number): any {
       ).annotate({
         identifier: "WatchlistsCreateOrUpdateRequest",
       });
-    case 1:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(2, __c0, 2)),
-          properties: S.optional(__S(148, __c18, 4)),
+          systemData: S.optional(__S(16, __c1, 0)),
+          properties: S.optional(__S(1280, __c80, 0)),
           etag: S.optional(S.String),
         }),
       ).annotate({
@@ -9275,7 +9715,6 @@ function __c36(j: number): any {
       });
   }
 }
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

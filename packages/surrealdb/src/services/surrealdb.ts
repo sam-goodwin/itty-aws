@@ -185,7 +185,7 @@ export const createSql: API.OperationMethod<
   SurrealdbOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(0, __c0, 0) as any as S.Schema<CreateSqlRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<CreateSqlResponse>,
+  output: __S(8, __c1, 0) as any as S.Schema<CreateSqlResponse>,
   errors: [UnknownSurrealdbError],
   protocol: SurrealdbProtocol,
   retry: Retry.Retry,
@@ -199,8 +199,8 @@ export const deleteKey: API.OperationMethod<
   DeleteKeyError,
   SurrealdbOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2, __c0, 2) as any as S.Schema<DeleteKeyRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<DeleteKeyResponse>,
+  input: __S(16, __c2, 0) as any as S.Schema<DeleteKeyRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<DeleteKeyResponse>,
   errors: [UnknownSurrealdbError],
   protocol: SurrealdbProtocol,
   retry: Retry.Retry,
@@ -214,8 +214,8 @@ export const deleteKeyById: API.OperationMethod<
   DeleteKeyByIdError,
   SurrealdbOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3, __c0, 3) as any as S.Schema<DeleteKeyByIdRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<DeleteKeyByIdResponse>,
+  input: __S(80, __c10, 0) as any as S.Schema<DeleteKeyByIdRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<DeleteKeyByIdResponse>,
   errors: [UnknownSurrealdbError],
   protocol: SurrealdbProtocol,
   retry: Retry.Retry,
@@ -229,8 +229,8 @@ export const getExport: API.OperationMethod<
   GetExportError,
   SurrealdbOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(4, __c0, 4) as any as S.Schema<GetExportRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<GetExportResponse>,
+  input: __S(88, __c11, 0) as any as S.Schema<GetExportRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<GetExportResponse>,
   errors: [UnknownSurrealdbError],
   protocol: SurrealdbProtocol,
   retry: Retry.Retry,
@@ -244,8 +244,8 @@ export const getHealth: API.OperationMethod<
   GetHealthError,
   SurrealdbOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(5, __c0, 5) as any as S.Schema<GetHealthRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<GetHealthResponse>,
+  input: __S(96, __c12, 0) as any as S.Schema<GetHealthRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<GetHealthResponse>,
   errors: [UnknownSurrealdbError],
   protocol: SurrealdbProtocol,
   retry: Retry.Retry,
@@ -259,8 +259,8 @@ export const getKey: API.OperationMethod<
   GetKeyError,
   SurrealdbOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(6, __c0, 6) as any as S.Schema<GetKeyRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<GetKeyResponse>,
+  input: __S(104, __c13, 0) as any as S.Schema<GetKeyRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<GetKeyResponse>,
   errors: [UnknownSurrealdbError],
   protocol: SurrealdbProtocol,
   retry: Retry.Retry,
@@ -274,8 +274,8 @@ export const getKeyById: API.OperationMethod<
   GetKeyByIdError,
   SurrealdbOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(7, __c0, 7) as any as S.Schema<GetKeyByIdRequest>,
-  output: __S(12, __c1, 4) as any as S.Schema<GetKeyByIdResponse>,
+  input: __S(112, __c14, 0) as any as S.Schema<GetKeyByIdRequest>,
+  output: __S(117, __c14, 5) as any as S.Schema<GetKeyByIdResponse>,
   errors: [UnknownSurrealdbError],
   protocol: SurrealdbProtocol,
   retry: Retry.Retry,
@@ -289,8 +289,8 @@ export const getStatus: API.OperationMethod<
   GetStatusError,
   SurrealdbOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(13, __c1, 5) as any as S.Schema<GetStatusRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<GetStatusResponse>,
+  input: __S(120, __c15, 0) as any as S.Schema<GetStatusRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<GetStatusResponse>,
   errors: [UnknownSurrealdbError],
   protocol: SurrealdbProtocol,
   retry: Retry.Retry,
@@ -304,8 +304,8 @@ export const getVersion: API.OperationMethod<
   GetVersionError,
   SurrealdbOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(14, __c1, 6) as any as S.Schema<GetVersionRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<GetVersionResponse>,
+  input: __S(128, __c16, 0) as any as S.Schema<GetVersionRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<GetVersionResponse>,
   errors: [UnknownSurrealdbError],
   protocol: SurrealdbProtocol,
   retry: Retry.Retry,
@@ -319,8 +319,8 @@ export const Import: API.OperationMethod<
   ImportError,
   SurrealdbOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(15, __c1, 7) as any as S.Schema<ImportRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<ImportResponse>,
+  input: __S(136, __c17, 0) as any as S.Schema<ImportRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<ImportResponse>,
   errors: [UnknownSurrealdbError],
   protocol: SurrealdbProtocol,
   retry: Retry.Retry,
@@ -334,8 +334,8 @@ export const putKey: API.OperationMethod<
   PutKeyError,
   SurrealdbOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(17, __c2, 1) as any as S.Schema<PutKeyRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<PutKeyResponse>,
+  input: __S(24, __c3, 0) as any as S.Schema<PutKeyRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<PutKeyResponse>,
   errors: [UnknownSurrealdbError],
   protocol: SurrealdbProtocol,
   retry: Retry.Retry,
@@ -349,8 +349,8 @@ export const putKeyById: API.OperationMethod<
   PutKeyByIdError,
   SurrealdbOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(18, __c2, 2) as any as S.Schema<PutKeyByIdRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<PutKeyByIdResponse>,
+  input: __S(40, __c5, 0) as any as S.Schema<PutKeyByIdRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<PutKeyByIdResponse>,
   errors: [UnknownSurrealdbError],
   protocol: SurrealdbProtocol,
   retry: Retry.Retry,
@@ -364,8 +364,8 @@ export const updateKey: API.OperationMethod<
   UpdateKeyError,
   SurrealdbOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(19, __c2, 3) as any as S.Schema<UpdateKeyRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<UpdateKeyResponse>,
+  input: __S(48, __c6, 0) as any as S.Schema<UpdateKeyRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<UpdateKeyResponse>,
   errors: [UnknownSurrealdbError],
   protocol: SurrealdbProtocol,
   retry: Retry.Retry,
@@ -379,8 +379,8 @@ export const updateKeyById: API.OperationMethod<
   UpdateKeyByIdError,
   SurrealdbOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(20, __c2, 4) as any as S.Schema<UpdateKeyByIdRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<UpdateKeyByIdResponse>,
+  input: __S(56, __c7, 0) as any as S.Schema<UpdateKeyByIdRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<UpdateKeyByIdResponse>,
   errors: [UnknownSurrealdbError],
   protocol: SurrealdbProtocol,
   retry: Retry.Retry,
@@ -394,8 +394,8 @@ export const updateKeyById2: API.OperationMethod<
   UpdateKeyById2Error,
   SurrealdbOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(21, __c2, 5) as any as S.Schema<UpdateKeyByIdRequest2>,
-  output: __S(1, __c0, 1) as any as S.Schema<UpdateKeyById2Response>,
+  input: __S(64, __c8, 0) as any as S.Schema<UpdateKeyByIdRequest2>,
+  output: __S(8, __c1, 0) as any as S.Schema<UpdateKeyById2Response>,
   errors: [UnknownSurrealdbError],
   protocol: SurrealdbProtocol,
   retry: Retry.Retry,
@@ -409,8 +409,8 @@ export const updateKeyByTable: API.OperationMethod<
   UpdateKeyByTableError,
   SurrealdbOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(22, __c2, 6) as any as S.Schema<UpdateKeyByTableRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<UpdateKeyByTableResponse>,
+  input: __S(72, __c9, 0) as any as S.Schema<UpdateKeyByTableRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<UpdateKeyByTableResponse>,
   errors: [UnknownSurrealdbError],
   protocol: SurrealdbProtocol,
   retry: Retry.Retry,
@@ -427,11 +427,19 @@ function __c0(j: number): any {
           body: S.String.pipe(T.HttpBody()),
         }).pipe(T.Http({ method: "POST", uri: "/sql", code: 200 })),
       ).annotate({ identifier: "CreateSqlRequest" });
-    case 1:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "CreateSqlResponse",
       });
-    case 2:
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           table: S.String.pipe(T.Label()),
@@ -439,7 +447,99 @@ function __c0(j: number): any {
           dB: S.optional(S.String.pipe(T.Header("DB"))),
         }).pipe(T.Http({ method: "DELETE", uri: "/key/{table}", code: 200 })),
       ).annotate({ identifier: "DeleteKeyRequest" });
-    case 3:
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          table: S.String.pipe(T.Label()),
+          nS: S.optional(S.String.pipe(T.Header("NS"))),
+          dB: S.optional(S.String.pipe(T.Header("DB"))),
+          body: __S(32, __c4, 0).pipe(T.HttpBody()),
+        }).pipe(T.Http({ method: "PUT", uri: "/key/{table}", code: 200 })),
+      ).annotate({ identifier: "PutKeyRequest" });
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, S.Unknown);
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          table: S.String.pipe(T.Label()),
+          id: S.String.pipe(T.Label()),
+          tags: S.optional(S.String.pipe(T.Query())),
+          nS: S.optional(S.String.pipe(T.Header("NS"))),
+          dB: S.optional(S.String.pipe(T.Header("DB"))),
+          body: __S(32, __c4, 0).pipe(T.HttpBody()),
+        }).pipe(T.Http({ method: "PUT", uri: "/key/{table}/{id}", code: 200 })),
+      ).annotate({ identifier: "PutKeyByIdRequest" });
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          table: S.String.pipe(T.Label()),
+          nS: S.optional(S.String.pipe(T.Header("NS"))),
+          dB: S.optional(S.String.pipe(T.Header("DB"))),
+          body: __S(32, __c4, 0).pipe(T.HttpBody()),
+        }).pipe(T.Http({ method: "POST", uri: "/key/{table}", code: 200 })),
+      ).annotate({ identifier: "UpdateKeyRequest" });
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          table: S.String.pipe(T.Label()),
+          id: S.String.pipe(T.Label()),
+          nS: S.optional(S.String.pipe(T.Header("NS"))),
+          dB: S.optional(S.String.pipe(T.Header("DB"))),
+          body: __S(32, __c4, 0).pipe(T.HttpBody()),
+        }).pipe(T.Http({ method: "POST", uri: "/key/{table}/{id}", code: 200 })),
+      ).annotate({ identifier: "UpdateKeyByIdRequest" });
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          table: S.String.pipe(T.Label()),
+          id: S.String.pipe(T.Label()),
+          nS: S.optional(S.String.pipe(T.Header("NS"))),
+          dB: S.optional(S.String.pipe(T.Header("DB"))),
+          body: __S(32, __c4, 0).pipe(T.HttpBody()),
+        }).pipe(T.Http({ method: "PATCH", uri: "/key/{table}/{id}", code: 200 })),
+      ).annotate({ identifier: "UpdateKeyByIdRequest2" });
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          table: S.String.pipe(T.Label()),
+          nS: S.optional(S.String.pipe(T.Header("NS"))),
+          dB: S.optional(S.String.pipe(T.Header("DB"))),
+          body: __S(32, __c4, 0).pipe(T.HttpBody()),
+        }).pipe(T.Http({ method: "PATCH", uri: "/key/{table}", code: 200 })),
+      ).annotate({ identifier: "UpdateKeyByTableRequest" });
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           table: S.String.pipe(T.Label()),
@@ -448,18 +548,30 @@ function __c0(j: number): any {
           dB: S.optional(S.String.pipe(T.Header("DB"))),
         }).pipe(T.Http({ method: "DELETE", uri: "/key/{table}/{id}", code: 200 })),
       ).annotate({ identifier: "DeleteKeyByIdRequest" });
-    case 4:
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           nS: S.optional(S.String.pipe(T.Header("NS"))),
           dB: S.optional(S.String.pipe(T.Header("DB"))),
         }).pipe(T.Http({ method: "GET", uri: "/export", code: 200 })),
       ).annotate({ identifier: "GetExportRequest" });
-    case 5:
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({}).pipe(T.Http({ method: "GET", uri: "/health", code: 200 })),
       ).annotate({ identifier: "GetHealthRequest" });
-    case 6:
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           table: S.String.pipe(T.Label()),
@@ -470,7 +582,11 @@ function __c0(j: number): any {
           dB: S.optional(S.String.pipe(T.Header("DB"))),
         }).pipe(T.Http({ method: "GET", uri: "/key/{table}", code: 200 })),
       ).annotate({ identifier: "GetKeyRequest" });
-    case 7:
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           table: S.String.pipe(T.Label()),
@@ -479,11 +595,7 @@ function __c0(j: number): any {
           dB: S.optional(S.String.pipe(T.Header("DB"))),
         }).pipe(T.Http({ method: "GET", uri: "/key/{table}/{id}", code: 200 })),
       ).annotate({ identifier: "GetKeyByIdRequest" });
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
@@ -492,33 +604,45 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "GetKeyByIdResponseBodyItemResultItem",
       });
-    case 1:
-      return S.Array(__S(8, __c1, 0));
     case 2:
+      return S.Array(__S(113, __c14, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          result: S.optional(__S(9, __c1, 1)),
+          result: S.optional(__S(114, __c14, 2)),
           status: S.optional(S.String),
           time: S.optional(S.String),
         }),
       ).annotate({
         identifier: "GetKeyByIdResponseBodyItem",
       });
-    case 3:
-      return S.Array(__S(10, __c1, 2));
     case 4:
-      return S.suspend(() => __S(11, __c1, 3).pipe(T.RawResponseRoot())).annotate({
+      return S.Array(__S(115, __c14, 3));
+    case 5:
+      return S.suspend(() => __S(116, __c14, 4).pipe(T.RawResponseRoot())).annotate({
         identifier: "GetKeyByIdResponse",
       });
-    case 5:
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({}).pipe(T.Http({ method: "GET", uri: "/status", code: 200 })),
       ).annotate({ identifier: "GetStatusRequest" });
-    case 6:
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({}).pipe(T.Http({ method: "GET", uri: "/version", code: 200 })),
       ).annotate({ identifier: "GetVersionRequest" });
-    case 7:
+  }
+}
+function __c17(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           nS: S.optional(S.String.pipe(T.Header("NS"))),
@@ -528,71 +652,6 @@ function __c1(j: number): any {
       ).annotate({ identifier: "ImportRequest" });
   }
 }
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Record(S.String, S.Unknown);
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          table: S.String.pipe(T.Label()),
-          nS: S.optional(S.String.pipe(T.Header("NS"))),
-          dB: S.optional(S.String.pipe(T.Header("DB"))),
-          body: __S(16, __c2, 0).pipe(T.HttpBody()),
-        }).pipe(T.Http({ method: "PUT", uri: "/key/{table}", code: 200 })),
-      ).annotate({ identifier: "PutKeyRequest" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          table: S.String.pipe(T.Label()),
-          id: S.String.pipe(T.Label()),
-          tags: S.optional(S.String.pipe(T.Query())),
-          nS: S.optional(S.String.pipe(T.Header("NS"))),
-          dB: S.optional(S.String.pipe(T.Header("DB"))),
-          body: __S(16, __c2, 0).pipe(T.HttpBody()),
-        }).pipe(T.Http({ method: "PUT", uri: "/key/{table}/{id}", code: 200 })),
-      ).annotate({ identifier: "PutKeyByIdRequest" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          table: S.String.pipe(T.Label()),
-          nS: S.optional(S.String.pipe(T.Header("NS"))),
-          dB: S.optional(S.String.pipe(T.Header("DB"))),
-          body: __S(16, __c2, 0).pipe(T.HttpBody()),
-        }).pipe(T.Http({ method: "POST", uri: "/key/{table}", code: 200 })),
-      ).annotate({ identifier: "UpdateKeyRequest" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          table: S.String.pipe(T.Label()),
-          id: S.String.pipe(T.Label()),
-          nS: S.optional(S.String.pipe(T.Header("NS"))),
-          dB: S.optional(S.String.pipe(T.Header("DB"))),
-          body: __S(16, __c2, 0).pipe(T.HttpBody()),
-        }).pipe(T.Http({ method: "POST", uri: "/key/{table}/{id}", code: 200 })),
-      ).annotate({ identifier: "UpdateKeyByIdRequest" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          table: S.String.pipe(T.Label()),
-          id: S.String.pipe(T.Label()),
-          nS: S.optional(S.String.pipe(T.Header("NS"))),
-          dB: S.optional(S.String.pipe(T.Header("DB"))),
-          body: __S(16, __c2, 0).pipe(T.HttpBody()),
-        }).pipe(T.Http({ method: "PATCH", uri: "/key/{table}/{id}", code: 200 })),
-      ).annotate({ identifier: "UpdateKeyByIdRequest2" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          table: S.String.pipe(T.Label()),
-          nS: S.optional(S.String.pipe(T.Header("NS"))),
-          dB: S.optional(S.String.pipe(T.Header("DB"))),
-          body: __S(16, __c2, 0).pipe(T.HttpBody()),
-        }).pipe(T.Http({ method: "PATCH", uri: "/key/{table}", code: 200 })),
-      ).annotate({ identifier: "UpdateKeyByTableRequest" });
-  }
-}
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

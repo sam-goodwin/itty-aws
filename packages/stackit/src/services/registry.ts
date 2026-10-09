@@ -186,8 +186,8 @@ export const createArtifactory: API.OperationMethod<
   CreateArtifactoryError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2, __c0, 2) as any as S.Schema<CreateArtifactoryRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<Artifactory>,
+  input: __S(1, __c0, 1) as any as S.Schema<CreateArtifactoryRequest>,
+  output: __S(6, __c1, 2) as any as S.Schema<Artifactory>,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -201,8 +201,8 @@ export const deleteArtifactory: API.OperationMethod<
   DeleteArtifactoryError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(6, __c0, 6) as any as S.Schema<DeleteArtifactoryRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<DeleteArtifactoryResponse>,
+  input: __S(12, __c3, 0) as any as S.Schema<DeleteArtifactoryRequest>,
+  output: __S(13, __c3, 1) as any as S.Schema<DeleteArtifactoryResponse>,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -216,8 +216,8 @@ export const getArtifactory: API.OperationMethod<
   GetArtifactoryError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(8, __c1, 0) as any as S.Schema<GetArtifactoryRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<Artifactory>,
+  input: __S(16, __c4, 0) as any as S.Schema<GetArtifactoryRequest>,
+  output: __S(6, __c1, 2) as any as S.Schema<Artifactory>,
   errors: [BadRequest, Forbidden, NotFound, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -231,8 +231,8 @@ export const listArtifactories: API.OperationMethod<
   ListArtifactoriesError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(9, __c1, 1) as any as S.Schema<ListArtifactoriesRequest>,
-  output: __S(11, __c1, 3) as any as S.Schema<ArtifactoryList>,
+  input: __S(20, __c5, 0) as any as S.Schema<ListArtifactoriesRequest>,
+  output: __S(22, __c5, 2) as any as S.Schema<ArtifactoryList>,
   errors: [BadRequest, Forbidden, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -246,8 +246,8 @@ export const listReplicationAdapters: API.OperationMethod<
   ListReplicationAdaptersError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(12, __c1, 4) as any as S.Schema<ListReplicationAdaptersRequest>,
-  output: __S(15, __c1, 7) as any as S.Schema<ReplicationAdapterList>,
+  input: __S(24, __c6, 0) as any as S.Schema<ListReplicationAdaptersRequest>,
+  output: __S(27, __c6, 3) as any as S.Schema<ReplicationAdapterList>,
   errors: [BadRequest, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -261,8 +261,8 @@ export const patchArtifactory: API.OperationMethod<
   PatchArtifactoryError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(17, __c2, 1) as any as S.Schema<PatchArtifactoryRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<Artifactory>,
+  input: __S(29, __c7, 1) as any as S.Schema<PatchArtifactoryRequest>,
+  output: __S(6, __c1, 2) as any as S.Schema<Artifactory>,
   errors: [BadRequest, Forbidden, NotFound, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -274,27 +274,20 @@ function __c0(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          access_key: S.optional(S.String),
-          access_secret: S.optional(S.String.pipe(T.SensitiveValue({}))),
-        }),
-      ).annotate({ identifier: "Credentials" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          credentials: S.optional(__S(0, __c0, 0)),
+          credentials: S.optional(__S(8, __c2, 0)),
           description: S.optional(S.String),
           registry_type: S.String,
           url: S.String,
         }),
       ).annotate({ identifier: "CreateProxyRequest" });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.Label()),
           regionId: S.String.pipe(T.Label()),
           claim: S.optional(S.Boolean.pipe(T.Query())),
           name: S.String,
-          proxy: S.optional(__S(1, __c0, 1)),
+          proxy: S.optional(__S(0, __c0, 0)),
         }).pipe(
           T.Http({
             method: "POST",
@@ -304,35 +297,54 @@ function __c0(j: number): any {
           }),
         ),
       ).annotate({ identifier: "CreateArtifactoryRequest" });
-    case 3:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           access_key: S.optional(S.String),
         }),
       ).annotate({ identifier: "RedactedCredentials" });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          credentials: S.optional(__S(3, __c0, 3)),
+          credentials: S.optional(__S(4, __c1, 0)),
           description: S.optional(S.String),
           registry_type: S.String,
           url: S.String,
         }),
       ).annotate({ identifier: "Proxy" });
-    case 5:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           consumed_quota_bytes: S.Number,
           create_time: S.String,
           id: S.String,
           name: S.String,
-          proxy: S.optional(__S(4, __c0, 4)),
+          proxy: S.optional(__S(5, __c1, 1)),
           state: S.String,
           url: S.String,
           user_count: S.Number,
         }),
       ).annotate({ identifier: "Artifactory" });
-    case 6:
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          access_key: S.optional(S.String),
+          access_secret: S.optional(S.String.pipe(T.SensitiveValue({}))),
+        }),
+      ).annotate({ identifier: "Credentials" });
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.Label()),
@@ -347,13 +359,13 @@ function __c0(j: number): any {
           }),
         ),
       ).annotate({ identifier: "DeleteArtifactoryRequest" });
-    case 7:
+    case 1:
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "DeleteArtifactoryResponse",
       });
   }
 }
-function __c1(j: number): any {
+function __c4(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -370,7 +382,11 @@ function __c1(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetArtifactoryRequest" });
-    case 1:
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.Label()),
@@ -386,16 +402,20 @@ function __c1(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ListArtifactoriesRequest" });
+    case 1:
+      return S.Array(__S(6, __c1, 2));
     case 2:
-      return S.Array(__S(5, __c0, 5));
-    case 3:
       return S.suspend(() =>
         S.Struct({
-          artifactories: __S(10, __c1, 2),
+          artifactories: __S(21, __c5, 1),
           next_page_token: S.optional(S.String),
         }),
       ).annotate({ identifier: "ArtifactoryList" });
-    case 4:
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.Label()),
@@ -411,30 +431,30 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "ListReplicationAdaptersRequest",
       });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           display_name: S.String,
           registry_type: S.String,
         }),
       ).annotate({ identifier: "ReplicationAdapter" });
-    case 6:
-      return S.Array(__S(13, __c1, 5));
-    case 7:
+    case 2:
+      return S.Array(__S(25, __c6, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
           next_page_token: S.optional(S.String),
-          replication_adapters: __S(14, __c1, 6),
+          replication_adapters: __S(26, __c6, 2),
         }),
       ).annotate({ identifier: "ReplicationAdapterList" });
   }
 }
-function __c2(j: number): any {
+function __c7(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          credentials: S.optional(__S(0, __c0, 0)),
+          credentials: S.optional(__S(8, __c2, 0)),
           description: S.optional(S.String),
           url: S.optional(S.String),
         }),
@@ -445,7 +465,7 @@ function __c2(j: number): any {
           projectId: S.String.pipe(T.Label()),
           regionId: S.String.pipe(T.Label()),
           artifactoryId: S.String.pipe(T.Label()),
-          proxy: S.optional(__S(16, __c2, 0)),
+          proxy: S.optional(__S(28, __c7, 0)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -457,7 +477,6 @@ function __c2(j: number): any {
       ).annotate({ identifier: "PatchArtifactoryRequest" });
   }
 }
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

@@ -270,8 +270,8 @@ export const createTagger: API.OperationMethod<
   CreateTaggerError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(7, __c0, 7) as any as S.Schema<CreateTaggerRequest>,
-  output: __S(10, __c1, 2) as any as S.Schema<Tagger>,
+  input: __S(0, __c0, 0) as any as S.Schema<CreateTaggerRequest>,
+  output: __S(14, __c1, 6) as any as S.Schema<Tagger>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -285,8 +285,8 @@ export const createTaggersTestHog: API.OperationMethod<
   CreateTaggersTestHogError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(11, __c1, 3) as any as S.Schema<CreateTaggersTestHogRequest>,
-  output: __S(15, __c1, 7) as any as S.Schema<TestHogTaggerResponse>,
+  input: __S(26, __c3, 2) as any as S.Schema<CreateTaggersTestHogRequest>,
+  output: __S(29, __c3, 5) as any as S.Schema<TestHogTaggerResponse>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -299,8 +299,8 @@ export const getTagger: API.OperationMethod<
   GetTaggerError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(16, __c2, 0) as any as S.Schema<GetTaggerRequest>,
-  output: __S(10, __c1, 2) as any as S.Schema<Tagger>,
+  input: __S(40, __c5, 0) as any as S.Schema<GetTaggerRequest>,
+  output: __S(14, __c1, 6) as any as S.Schema<Tagger>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -313,8 +313,8 @@ export const listTaggers: API.OperationMethod<
   ListTaggersError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(18, __c2, 2) as any as S.Schema<ListTaggersRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<PaginatedTaggerList>,
+  input: __S(49, __c6, 1) as any as S.Schema<ListTaggersRequest>,
+  output: __S(51, __c6, 3) as any as S.Schema<PaginatedTaggerList>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -328,8 +328,8 @@ export const taggersDestroy: API.OperationMethod<
   TaggersDestroyError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(21, __c2, 5) as any as S.Schema<TaggersDestroyRequest>,
-  output: __S(22, __c2, 6) as any as S.Schema<TaggersDestroyResponse>,
+  input: __S(56, __c7, 0) as any as S.Schema<TaggersDestroyRequest>,
+  output: __S(57, __c7, 1) as any as S.Schema<TaggersDestroyResponse>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -342,8 +342,8 @@ export const updateTagger: API.OperationMethod<
   UpdateTaggerError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(23, __c2, 7) as any as S.Schema<UpdateTaggerRequest>,
-  output: __S(10, __c1, 2) as any as S.Schema<Tagger>,
+  input: __S(64, __c8, 0) as any as S.Schema<UpdateTaggerRequest>,
+  output: __S(14, __c1, 6) as any as S.Schema<Tagger>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -356,8 +356,8 @@ export const updateTaggersPartial: API.OperationMethod<
   UpdateTaggersPartialError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(24, __c3, 0) as any as S.Schema<UpdateTaggersPartialRequest>,
-  output: __S(10, __c1, 2) as any as S.Schema<Tagger>,
+  input: __S(72, __c9, 0) as any as S.Schema<UpdateTaggersPartialRequest>,
+  output: __S(14, __c1, 6) as any as S.Schema<Tagger>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -369,47 +369,14 @@ function __c0(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          name: S.String,
-          description: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "TagDefinition" });
-    case 1:
-      return S.Array(__S(0, __c0, 0));
-    case 2:
-      return S.Record(S.String, S.Unknown);
-    case 3:
-      return S.Array(__S(2, __c0, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String,
-          rollout_percentage: S.optional(S.Number),
-          properties: S.optional(__S(3, __c0, 3)),
-        }),
-      ).annotate({ identifier: "TaggerCondition" });
-    case 5:
-      return S.Array(__S(4, __c0, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          provider: S.String,
-          model: S.String,
-          provider_key_id: S.optional(S.NullOr(S.String)),
-        }),
-      ).annotate({
-        identifier: "TaggerModelConfigurationWrite",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
           project_id: S.String.pipe(T.Label()),
           name: S.String,
           description: S.optional(S.String),
           enabled: S.optional(S.Boolean),
           tagger_type: S.optional(S.String),
           tagger_config: S.Unknown,
-          conditions: S.optional(__S(5, __c0, 5)),
-          model_configuration: S.optional(S.NullOr(__S(6, __c0, 6))),
+          conditions: S.optional(__S(11, __c1, 3)),
+          model_configuration: S.optional(S.NullOr(__S(16, __c2, 0))),
         }).pipe(T.Http({ method: "POST", uri: "/api/projects/{project_id}/taggers/", code: 200 })),
       ).annotate({ identifier: "CreateTaggerRequest" });
   }
@@ -417,6 +384,20 @@ function __c0(j: number): any {
 function __c1(j: number): any {
   switch (j) {
     case 0:
+      return S.Record(S.String, S.Unknown);
+    case 1:
+      return S.Array(__S(8, __c1, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          rollout_percentage: S.optional(S.Number),
+          properties: S.optional(__S(9, __c1, 1)),
+        }),
+      ).annotate({ identifier: "TaggerCondition" });
+    case 3:
+      return S.Array(__S(10, __c1, 2));
+    case 4:
       return S.suspend(() =>
         S.Struct({
           provider: S.String,
@@ -425,7 +406,7 @@ function __c1(j: number): any {
           provider_key_name: S.NullOr(S.String),
         }),
       ).annotate({ identifier: "TaggerModelConfiguration" });
-    case 1:
+    case 5:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.Number),
@@ -435,11 +416,11 @@ function __c1(j: number): any {
           last_name: S.optional(S.String),
           email: S.optional(S.String),
           is_email_verified: S.optional(S.NullOr(S.Boolean)),
-          hedgehog_config: S.optional(S.NullOr(__S(2, __c0, 2))),
+          hedgehog_config: S.optional(S.NullOr(__S(8, __c1, 0))),
           role_at_organization: S.optional(S.NullOr(S.Unknown)),
         }),
       ).annotate({ identifier: "UserBasic" });
-    case 2:
+    case 6:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
@@ -448,21 +429,48 @@ function __c1(j: number): any {
           enabled: S.optional(S.Boolean),
           tagger_type: S.optional(S.String),
           tagger_config: S.Unknown,
-          conditions: S.optional(__S(5, __c0, 5)),
-          model_configuration: S.optional(S.NullOr(__S(8, __c1, 0))),
+          conditions: S.optional(__S(11, __c1, 3)),
+          model_configuration: S.optional(S.NullOr(__S(12, __c1, 4))),
           created_at: S.String,
           updated_at: S.String,
-          created_by: __S(9, __c1, 1),
+          created_by: __S(13, __c1, 5),
           deleted: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "Tagger" });
-    case 3:
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          provider: S.String,
+          model: S.String,
+          provider_key_id: S.optional(S.NullOr(S.String)),
+        }),
+      ).annotate({
+        identifier: "TaggerModelConfigurationWrite",
+      });
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String,
+          description: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "TagDefinition" });
+    case 1:
+      return S.Array(__S(24, __c3, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
           source: S.String,
           sample_count: S.optional(S.Number),
-          tags: S.optional(__S(1, __c0, 1)),
+          tags: S.optional(__S(25, __c3, 1)),
         }).pipe(
           T.Http({
             method: "POST",
@@ -473,32 +481,36 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "CreateTaggersTestHogRequest",
       });
-    case 4:
-      return S.Array(S.String);
-    case 5:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           event_uuid: S.String,
           trace_id: S.optional(S.NullOr(S.String)),
           input_preview: S.String,
           output_preview: S.String,
-          tags: __S(12, __c1, 4),
+          tags: __S(32, __c4, 0),
           reasoning: S.String,
           error: S.optional(S.NullOr(S.String)),
         }),
       ).annotate({ identifier: "TestHogTaggerResultItem" });
-    case 6:
-      return S.Array(__S(13, __c1, 5));
-    case 7:
+    case 4:
+      return S.Array(__S(27, __c3, 3));
+    case 5:
       return S.suspend(() =>
         S.Struct({
-          results: __S(14, __c1, 6),
+          results: __S(28, __c3, 4),
           message: S.optional(S.String),
         }),
       ).annotate({ identifier: "TestHogTaggerResponse" });
   }
 }
-function __c2(j: number): any {
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c5(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -509,32 +521,40 @@ function __c2(j: number): any {
           T.Http({ method: "GET", uri: "/api/projects/{project_id}/taggers/{id}/", code: 200 }),
         ),
       ).annotate({ identifier: "GetTaggerRequest" });
-    case 1:
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
       return S.Array(S.String);
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
           enabled: S.optional(S.Boolean.pipe(T.Query())),
-          id__in: S.optional(__S(12, __c1, 4).pipe(T.Query())),
+          id__in: S.optional(__S(32, __c4, 0).pipe(T.Query())),
           limit: S.optional(S.Number.pipe(T.Query())),
           offset: S.optional(S.Number.pipe(T.Query())),
-          order_by: S.optional(__S(17, __c2, 1).pipe(T.Query())),
+          order_by: S.optional(__S(48, __c6, 0).pipe(T.Query())),
           search: S.optional(S.String.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/api/projects/{project_id}/taggers/", code: 200 })),
       ).annotate({ identifier: "ListTaggersRequest" });
+    case 2:
+      return S.Array(__S(14, __c1, 6));
     case 3:
-      return S.Array(__S(10, __c1, 2));
-    case 4:
       return S.suspend(() =>
         S.Struct({
           count: S.Number,
           next: S.optional(S.NullOr(S.String)),
           previous: S.optional(S.NullOr(S.String)),
-          results: __S(19, __c2, 3),
+          results: __S(50, __c6, 2),
         }),
       ).annotate({ identifier: "PaginatedTaggerList" });
-    case 5:
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -543,11 +563,15 @@ function __c2(j: number): any {
           T.Http({ method: "DELETE", uri: "/api/projects/{project_id}/taggers/{id}/", code: 200 }),
         ),
       ).annotate({ identifier: "TaggersDestroyRequest" });
-    case 6:
+    case 1:
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "TaggersDestroyResponse",
       });
-    case 7:
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -557,8 +581,8 @@ function __c2(j: number): any {
           enabled: S.optional(S.Boolean),
           tagger_type: S.optional(S.String),
           tagger_config: S.Unknown,
-          conditions: S.optional(__S(5, __c0, 5)),
-          model_configuration: S.optional(S.NullOr(__S(6, __c0, 6))),
+          conditions: S.optional(__S(11, __c1, 3)),
+          model_configuration: S.optional(S.NullOr(__S(16, __c2, 0))),
           deleted: S.optional(S.Boolean),
         }).pipe(
           T.Http({ method: "PUT", uri: "/api/projects/{project_id}/taggers/{id}/", code: 200 }),
@@ -566,7 +590,7 @@ function __c2(j: number): any {
       ).annotate({ identifier: "UpdateTaggerRequest" });
   }
 }
-function __c3(j: number): any {
+function __c9(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -578,8 +602,8 @@ function __c3(j: number): any {
           enabled: S.optional(S.Boolean),
           tagger_type: S.optional(S.String),
           tagger_config: S.optional(S.Unknown),
-          conditions: S.optional(__S(5, __c0, 5)),
-          model_configuration: S.optional(S.NullOr(__S(6, __c0, 6))),
+          conditions: S.optional(__S(11, __c1, 3)),
+          model_configuration: S.optional(S.NullOr(__S(16, __c2, 0))),
           deleted: S.optional(S.Boolean),
         }).pipe(
           T.Http({ method: "PATCH", uri: "/api/projects/{project_id}/taggers/{id}/", code: 200 }),
@@ -589,7 +613,6 @@ function __c3(j: number): any {
       });
   }
 }
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

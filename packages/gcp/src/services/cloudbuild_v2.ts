@@ -596,11 +596,11 @@ export const accessReadTokenProjectsLocationsConnectionsRepositories: API.Operat
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    1,
-    __c0,
-    1,
+    320,
+    __c20,
+    0,
   ) as any as S.Schema<AccessReadTokenProjectsLocationsConnectionsRepositoriesRequest>,
-  output: __S(2, __c0, 2) as any as S.Schema<FetchReadTokenResponse>,
+  output: __S(321, __c20, 1) as any as S.Schema<FetchReadTokenResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -620,11 +620,11 @@ export const accessReadWriteTokenProjectsLocationsConnectionsRepositories: API.O
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    3,
-    __c0,
-    3,
+    352,
+    __c22,
+    0,
   ) as any as S.Schema<AccessReadWriteTokenProjectsLocationsConnectionsRepositoriesRequest>,
-  output: __S(4, __c0, 4) as any as S.Schema<FetchReadWriteTokenResponse>,
+  output: __S(353, __c22, 1) as any as S.Schema<FetchReadWriteTokenResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -644,11 +644,11 @@ export const batchCreateProjectsLocationsConnectionsRepositories: API.OperationM
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    10,
-    __c1,
-    2,
+    371,
+    __c23,
+    3,
   ) as any as S.Schema<BatchCreateProjectsLocationsConnectionsRepositoriesRequest>,
-  output: __S(14, __c1, 6) as any as S.Schema<Operation>,
+  output: __S(401, __c25, 1) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -667,8 +667,8 @@ export const cancelProjectsLocationsOperations: API.OperationMethod<
   CancelProjectsLocationsOperationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(15, __c1, 7) as any as S.Schema<CancelProjectsLocationsOperationsRequest>,
-  output: __S(0, __c0, 0) as any as S.Schema<Empty>,
+  input: __S(464, __c29, 0) as any as S.Schema<CancelProjectsLocationsOperationsRequest>,
+  output: __S(336, __c21, 0) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -687,8 +687,8 @@ export const createProjectsLocationsConnections: API.OperationMethod<
   CreateProjectsLocationsConnectionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(26, __c3, 2) as any as S.Schema<CreateProjectsLocationsConnectionsRequest>,
-  output: __S(14, __c1, 6) as any as S.Schema<Operation>,
+  input: __S(480, __c30, 0) as any as S.Schema<CreateProjectsLocationsConnectionsRequest>,
+  output: __S(401, __c25, 1) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -707,8 +707,12 @@ export const createProjectsLocationsConnectionsRepositories: API.OperationMethod
   CreateProjectsLocationsConnectionsRepositoriesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(27, __c3, 3) as any as S.Schema<CreateProjectsLocationsConnectionsRepositoriesRequest>,
-  output: __S(14, __c1, 6) as any as S.Schema<Operation>,
+  input: __S(
+    512,
+    __c32,
+    0,
+  ) as any as S.Schema<CreateProjectsLocationsConnectionsRepositoriesRequest>,
+  output: __S(401, __c25, 1) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -727,8 +731,8 @@ export const deleteProjectsLocationsConnections: API.OperationMethod<
   DeleteProjectsLocationsConnectionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(28, __c3, 4) as any as S.Schema<DeleteProjectsLocationsConnectionsRequest>,
-  output: __S(14, __c1, 6) as any as S.Schema<Operation>,
+  input: __S(0, __c0, 0) as any as S.Schema<DeleteProjectsLocationsConnectionsRequest>,
+  output: __S(401, __c25, 1) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -747,8 +751,8 @@ export const deleteProjectsLocationsConnectionsRepositories: API.OperationMethod
   DeleteProjectsLocationsConnectionsRepositoriesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(29, __c3, 5) as any as S.Schema<DeleteProjectsLocationsConnectionsRepositoriesRequest>,
-  output: __S(14, __c1, 6) as any as S.Schema<Operation>,
+  input: __S(16, __c1, 0) as any as S.Schema<DeleteProjectsLocationsConnectionsRepositoriesRequest>,
+  output: __S(401, __c25, 1) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -767,11 +771,11 @@ export const fetchGitRefsProjectsLocationsConnectionsRepositories: API.Paginated
   FetchGitRefsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(
-    30,
-    __c3,
-    6,
+    32,
+    __c2,
+    0,
   ) as any as S.Schema<FetchGitRefsProjectsLocationsConnectionsRepositoriesRequest>,
-  output: __S(32, __c4, 0) as any as S.Schema<FetchGitRefsResponse>,
+  output: __S(33, __c2, 1) as any as S.Schema<FetchGitRefsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -791,11 +795,11 @@ export const fetchLinkableRepositoriesProjectsLocationsConnections: API.Paginate
   FetchLinkableRepositoriesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(
-    33,
+    64,
     __c4,
-    1,
+    0,
   ) as any as S.Schema<FetchLinkableRepositoriesProjectsLocationsConnectionsRequest>,
-  output: __S(35, __c4, 3) as any as S.Schema<FetchLinkableRepositoriesResponse>,
+  output: __S(65, __c4, 1) as any as S.Schema<FetchLinkableRepositoriesResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -810,8 +814,8 @@ export const getIamPolicyProjectsLocationsConnections: API.OperationMethod<
   GetIamPolicyProjectsLocationsConnectionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(36, __c4, 4) as any as S.Schema<GetIamPolicyProjectsLocationsConnectionsRequest>,
-  output: __S(44, __c5, 4) as any as S.Schema<Policy>,
+  input: __S(96, __c6, 0) as any as S.Schema<GetIamPolicyProjectsLocationsConnectionsRequest>,
+  output: __S(119, __c7, 7) as any as S.Schema<Policy>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -825,8 +829,8 @@ export const getProjectsLocations: API.OperationMethod<
   GetProjectsLocationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(45, __c5, 5) as any as S.Schema<GetProjectsLocationsRequest>,
-  output: __S(46, __c5, 6) as any as S.Schema<Location>,
+  input: __S(128, __c8, 0) as any as S.Schema<GetProjectsLocationsRequest>,
+  output: __S(144, __c9, 0) as any as S.Schema<Location>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -840,8 +844,8 @@ export const getProjectsLocationsConnections: API.OperationMethod<
   GetProjectsLocationsConnectionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(47, __c5, 7) as any as S.Schema<GetProjectsLocationsConnectionsRequest>,
-  output: __S(25, __c3, 1) as any as S.Schema<Connection>,
+  input: __S(160, __c10, 0) as any as S.Schema<GetProjectsLocationsConnectionsRequest>,
+  output: __S(505, __c31, 9) as any as S.Schema<Connection>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -855,8 +859,8 @@ export const getProjectsLocationsConnectionsRepositories: API.OperationMethod<
   GetProjectsLocationsConnectionsRepositoriesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(48, __c6, 0) as any as S.Schema<GetProjectsLocationsConnectionsRepositoriesRequest>,
-  output: __S(6, __c0, 6) as any as S.Schema<Repository>,
+  input: __S(176, __c11, 0) as any as S.Schema<GetProjectsLocationsConnectionsRepositoriesRequest>,
+  output: __S(448, __c28, 0) as any as S.Schema<Repository>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -870,8 +874,8 @@ export const getProjectsLocationsOperations: API.OperationMethod<
   GetProjectsLocationsOperationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(49, __c6, 1) as any as S.Schema<GetProjectsLocationsOperationsRequest>,
-  output: __S(14, __c1, 6) as any as S.Schema<Operation>,
+  input: __S(192, __c12, 0) as any as S.Schema<GetProjectsLocationsOperationsRequest>,
+  output: __S(401, __c25, 1) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -886,8 +890,8 @@ export const listProjectsLocations: API.PaginatedOperationMethod<
   GcpOpContext,
   ListLocationsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(50, __c6, 2) as any as S.Schema<ListProjectsLocationsRequest>,
-  output: __S(52, __c6, 4) as any as S.Schema<ListLocationsResponse>,
+  input: __S(208, __c13, 0) as any as S.Schema<ListProjectsLocationsRequest>,
+  output: __S(210, __c13, 2) as any as S.Schema<ListLocationsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -903,8 +907,8 @@ export const listProjectsLocationsConnections: API.PaginatedOperationMethod<
   GcpOpContext,
   ListConnectionsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(53, __c6, 5) as any as S.Schema<ListProjectsLocationsConnectionsRequest>,
-  output: __S(55, __c6, 7) as any as S.Schema<ListConnectionsResponse>,
+  input: __S(224, __c14, 0) as any as S.Schema<ListProjectsLocationsConnectionsRequest>,
+  output: __S(226, __c14, 2) as any as S.Schema<ListConnectionsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -920,8 +924,8 @@ export const listProjectsLocationsConnectionsRepositories: API.PaginatedOperatio
   GcpOpContext,
   ListRepositoriesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(56, __c7, 0) as any as S.Schema<ListProjectsLocationsConnectionsRepositoriesRequest>,
-  output: __S(57, __c7, 1) as any as S.Schema<ListRepositoriesResponse>,
+  input: __S(240, __c15, 0) as any as S.Schema<ListProjectsLocationsConnectionsRepositoriesRequest>,
+  output: __S(241, __c15, 1) as any as S.Schema<ListRepositoriesResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -941,8 +945,8 @@ export const patchProjectsLocationsConnections: API.OperationMethod<
   PatchProjectsLocationsConnectionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(58, __c7, 2) as any as S.Schema<PatchProjectsLocationsConnectionsRequest>,
-  output: __S(14, __c1, 6) as any as S.Schema<Operation>,
+  input: __S(256, __c16, 0) as any as S.Schema<PatchProjectsLocationsConnectionsRequest>,
+  output: __S(401, __c25, 1) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -961,8 +965,8 @@ export const processWebhookProjectsLocationsConnections: API.OperationMethod<
   ProcessWebhookProjectsLocationsConnectionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(60, __c7, 4) as any as S.Schema<ProcessWebhookProjectsLocationsConnectionsRequest>,
-  output: __S(0, __c0, 0) as any as S.Schema<Empty>,
+  input: __S(273, __c17, 1) as any as S.Schema<ProcessWebhookProjectsLocationsConnectionsRequest>,
+  output: __S(336, __c21, 0) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -981,8 +985,8 @@ export const setIamPolicyProjectsLocationsConnections: API.OperationMethod<
   SetIamPolicyProjectsLocationsConnectionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(62, __c7, 6) as any as S.Schema<SetIamPolicyProjectsLocationsConnectionsRequest>,
-  output: __S(44, __c5, 4) as any as S.Schema<Policy>,
+  input: __S(289, __c18, 1) as any as S.Schema<SetIamPolicyProjectsLocationsConnectionsRequest>,
+  output: __S(119, __c7, 7) as any as S.Schema<Policy>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1001,8 +1005,12 @@ export const testIamPermissionsProjectsLocationsConnections: API.OperationMethod
   TestIamPermissionsProjectsLocationsConnectionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(64, __c8, 0) as any as S.Schema<TestIamPermissionsProjectsLocationsConnectionsRequest>,
-  output: __S(63, __c7, 7) as any as S.Schema<TestIamPermissionsResponse>,
+  input: __S(
+    305,
+    __c19,
+    1,
+  ) as any as S.Schema<TestIamPermissionsProjectsLocationsConnectionsRequest>,
+  output: __S(304, __c19, 0) as any as S.Schema<TestIamPermissionsResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1012,293 +1020,6 @@ export const testIamPermissionsProjectsLocationsConnections: API.OperationMethod
 function __c0(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "FetchReadTokenRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          repository: S.String.pipe(T.Label()),
-          body: S.optional(__S(0, __c0, 0).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v2/{+repository}:accessReadToken",
-            baseUrl: "https://cloudbuild.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "AccessReadTokenProjectsLocationsConnectionsRepositoriesRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          expirationTime: S.optional(S.String),
-          token: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "FetchReadTokenResponse" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          repository: S.String.pipe(T.Label()),
-          body: S.optional(__S(0, __c0, 0).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v2/{+repository}:accessReadWriteToken",
-            baseUrl: "https://cloudbuild.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "AccessReadWriteTokenProjectsLocationsConnectionsRepositoriesRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          token: S.optional(S.String),
-          expirationTime: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "FetchReadWriteTokenResponse",
-      });
-    case 5:
-      return S.Record(S.String, S.String);
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          webhookId: S.optional(S.String),
-          etag: S.optional(S.String),
-          annotations: S.optional(__S(5, __c0, 5)),
-          remoteUri: S.optional(S.String),
-          name: S.optional(S.String),
-          updateTime: S.optional(S.String),
-          createTime: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Repository" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          repository: S.optional(__S(6, __c0, 6)),
-          parent: S.optional(S.String),
-          repositoryId: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "CreateRepositoryRequest" });
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(7, __c0, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          requests: S.optional(__S(8, __c1, 0)),
-        }),
-      ).annotate({
-        identifier: "BatchCreateRepositoriesRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(9, __c1, 1).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v2/{+parent}/repositories:batchCreate",
-            baseUrl: "https://cloudbuild.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "BatchCreateProjectsLocationsConnectionsRepositoriesRequest",
-      });
-    case 3:
-      return S.Record(S.String, S.Unknown);
-    case 4:
-      return S.Array(__S(11, __c1, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          code: S.optional(S.Number),
-          message: S.optional(S.String),
-          details: S.optional(__S(12, __c1, 4)),
-        }),
-      ).annotate({ identifier: "Status" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          done: S.optional(S.Boolean),
-          response: S.optional(__S(11, __c1, 3)),
-          error: S.optional(__S(13, __c1, 5)),
-          metadata: S.optional(__S(11, __c1, 3)),
-          name: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Operation" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-          body: S.optional(__S(0, __c0, 0).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v2/{+name}:cancel",
-            baseUrl: "https://cloudbuild.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "CancelProjectsLocationsOperationsRequest",
-      });
-  }
-}
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          username: S.optional(S.String),
-          userTokenSecretVersion: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "UserCredential" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          service: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleDevtoolsCloudbuildV2ServiceDirectoryConfig",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          webhookSecretSecretVersion: S.optional(S.String),
-          serverVersion: S.optional(S.String),
-          authorizerCredential: S.optional(__S(16, __c2, 0)),
-          readAuthorizerCredential: S.optional(__S(16, __c2, 0)),
-          sslCa: S.optional(S.String),
-          hostUri: S.optional(S.String),
-          serviceDirectoryConfig: S.optional(__S(17, __c2, 1)),
-        }),
-      ).annotate({
-        identifier: "BitbucketDataCenterConfig",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          authorizerCredential: S.optional(__S(16, __c2, 0)),
-          serverVersion: S.optional(S.String),
-          hostUri: S.optional(S.String),
-          serviceDirectoryConfig: S.optional(__S(17, __c2, 1)),
-          webhookSecretSecretVersion: S.optional(S.String),
-          sslCa: S.optional(S.String),
-          readAuthorizerCredential: S.optional(__S(16, __c2, 0)),
-        }),
-      ).annotate({
-        identifier: "GoogleDevtoolsCloudbuildV2GitLabConfig",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          appSlug: S.optional(S.String),
-          hostUri: S.optional(S.String),
-          appInstallationId: S.optional(S.String),
-          privateKeySecretVersion: S.optional(S.String),
-          serverVersion: S.optional(S.String),
-          serviceDirectoryConfig: S.optional(__S(17, __c2, 1)),
-          webhookSecretSecretVersion: S.optional(S.String),
-          apiKey: S.optional(S.String),
-          sslCa: S.optional(S.String),
-          appId: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleDevtoolsCloudbuildV2GitHubEnterpriseConfig",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          actionUri: S.optional(S.String),
-          message: S.optional(S.String),
-          stage: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "InstallationState" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          readAuthorizerCredential: S.optional(__S(16, __c2, 0)),
-          authorizerCredential: S.optional(__S(16, __c2, 0)),
-          workspace: S.optional(S.String),
-          webhookSecretSecretVersion: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "BitbucketCloudConfig" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          username: S.optional(S.String),
-          oauthTokenSecretVersion: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "OAuthCredential" });
-  }
-}
-function __c3(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          authorizerCredential: S.optional(__S(23, __c2, 7)),
-          appInstallationId: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "GitHubConfig" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          bitbucketDataCenterConfig: S.optional(__S(18, __c2, 2)),
-          updateTime: S.optional(S.String),
-          gitlabConfig: S.optional(__S(19, __c2, 3)),
-          githubEnterpriseConfig: S.optional(__S(20, __c2, 4)),
-          createTime: S.optional(S.String),
-          name: S.optional(S.String),
-          reconciling: S.optional(S.Boolean),
-          installationState: S.optional(__S(21, __c2, 5)),
-          annotations: S.optional(__S(5, __c0, 5)),
-          bitbucketCloudConfig: S.optional(__S(22, __c2, 6)),
-          etag: S.optional(S.String),
-          githubConfig: S.optional(__S(24, __c3, 0)),
-          disabled: S.optional(S.Boolean),
-        }),
-      ).annotate({ identifier: "Connection" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          parent: S.String.pipe(T.Label()),
-          connectionId: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(25, __c3, 1).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v2/{+parent}/connections",
-            baseUrl: "https://cloudbuild.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateProjectsLocationsConnectionsRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          parent: S.String.pipe(T.Label()),
-          repositoryId: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(6, __c0, 6).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v2/{+parent}/repositories",
-            baseUrl: "https://cloudbuild.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateProjectsLocationsConnectionsRepositoriesRequest",
-      });
-    case 4:
       return S.suspend(() =>
         S.Struct({
           validateOnly: S.optional(S.Boolean.pipe(T.Query())),
@@ -1314,7 +1035,11 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "DeleteProjectsLocationsConnectionsRequest",
       });
-    case 5:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           validateOnly: S.optional(S.Boolean.pipe(T.Query())),
@@ -1330,7 +1055,11 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "DeleteProjectsLocationsConnectionsRepositoriesRequest",
       });
-    case 6:
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           pageToken: S.optional(S.String.pipe(T.Query())),
@@ -1347,20 +1076,24 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "FetchGitRefsProjectsLocationsConnectionsRepositoriesRequest",
       });
-    case 7:
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          refNames: S.optional(__S(48, __c3, 0)),
+          nextPageToken: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "FetchGitRefsResponse" });
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
       return S.Array(S.String);
   }
 }
 function __c4(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() =>
-        S.Struct({
-          refNames: S.optional(__S(31, __c3, 7)),
-          nextPageToken: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "FetchGitRefsResponse" });
-    case 1:
       return S.suspend(() =>
         S.Struct({
           connection: S.String.pipe(T.Label()),
@@ -1376,18 +1109,26 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "FetchLinkableRepositoriesProjectsLocationsConnectionsRequest",
       });
-    case 2:
-      return S.Array(__S(6, __c0, 6));
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          repositories: S.optional(__S(34, __c4, 2)),
+          repositories: S.optional(__S(80, __c5, 0)),
         }),
       ).annotate({
         identifier: "FetchLinkableRepositoriesResponse",
       });
-    case 4:
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(448, __c28, 0));
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           resource: S.String.pipe(T.Label()),
@@ -1402,7 +1143,11 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "GetIamPolicyProjectsLocationsConnectionsRequest",
       });
-    case 5:
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           description: S.optional(S.String),
@@ -1411,48 +1156,48 @@ function __c4(j: number): any {
           title: S.optional(S.String),
         }),
       ).annotate({ identifier: "Expr" });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          members: S.optional(__S(31, __c3, 7)),
+          members: S.optional(__S(48, __c3, 0)),
           role: S.optional(S.String),
-          condition: S.optional(__S(37, __c4, 5)),
+          condition: S.optional(__S(112, __c7, 0)),
         }),
       ).annotate({ identifier: "Binding" });
-    case 7:
-      return S.Array(__S(38, __c4, 6));
-  }
-}
-function __c5(j: number): any {
-  switch (j) {
-    case 0:
+    case 2:
+      return S.Array(__S(113, __c7, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          exemptedMembers: S.optional(__S(31, __c3, 7)),
+          exemptedMembers: S.optional(__S(48, __c3, 0)),
           logType: S.optional(S.String),
         }),
       ).annotate({ identifier: "AuditLogConfig" });
-    case 1:
-      return S.Array(__S(40, __c5, 0));
-    case 2:
+    case 4:
+      return S.Array(__S(115, __c7, 3));
+    case 5:
       return S.suspend(() =>
         S.Struct({
           service: S.optional(S.String),
-          auditLogConfigs: S.optional(__S(41, __c5, 1)),
+          auditLogConfigs: S.optional(__S(116, __c7, 4)),
         }),
       ).annotate({ identifier: "AuditConfig" });
-    case 3:
-      return S.Array(__S(42, __c5, 2));
-    case 4:
+    case 6:
+      return S.Array(__S(117, __c7, 5));
+    case 7:
       return S.suspend(() =>
         S.Struct({
-          bindings: S.optional(__S(39, __c4, 7)),
-          auditConfigs: S.optional(__S(43, __c5, 3)),
+          bindings: S.optional(__S(114, __c7, 2)),
+          auditConfigs: S.optional(__S(118, __c7, 6)),
           etag: S.optional(S.String),
           version: S.optional(S.Number),
         }),
       ).annotate({ identifier: "Policy" });
-    case 5:
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -1466,17 +1211,25 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "GetProjectsLocationsRequest",
       });
-    case 6:
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          labels: S.optional(__S(5, __c0, 5)),
+          labels: S.optional(__S(432, __c27, 0)),
           displayName: S.optional(S.String),
           locationId: S.optional(S.String),
-          metadata: S.optional(__S(11, __c1, 3)),
+          metadata: S.optional(__S(384, __c24, 0)),
           name: S.optional(S.String),
         }),
       ).annotate({ identifier: "Location" });
-    case 7:
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -1492,7 +1245,7 @@ function __c5(j: number): any {
       });
   }
 }
-function __c6(j: number): any {
+function __c11(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1508,7 +1261,11 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "GetProjectsLocationsConnectionsRepositoriesRequest",
       });
-    case 1:
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -1522,11 +1279,15 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "GetProjectsLocationsOperationsRequest",
       });
-    case 2:
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           filter: S.optional(S.String.pipe(T.Query())),
-          extraLocationTypes: S.optional(__S(31, __c3, 7).pipe(T.Query())),
+          extraLocationTypes: S.optional(__S(48, __c3, 0).pipe(T.Query())),
           pageToken: S.optional(S.String.pipe(T.Query())),
           name: S.String.pipe(T.Label()),
           pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -1540,16 +1301,20 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "ListProjectsLocationsRequest",
       });
-    case 3:
-      return S.Array(__S(46, __c5, 6));
-    case 4:
+    case 1:
+      return S.Array(__S(144, __c9, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          locations: S.optional(__S(51, __c6, 3)),
+          locations: S.optional(__S(209, __c13, 1)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListLocationsResponse" });
-    case 5:
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           returnPartialSuccess: S.optional(S.Boolean.pipe(T.Query())),
@@ -1566,19 +1331,19 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "ListProjectsLocationsConnectionsRequest",
       });
-    case 6:
-      return S.Array(__S(25, __c3, 1));
-    case 7:
+    case 1:
+      return S.Array(__S(505, __c31, 9));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          connections: S.optional(__S(54, __c6, 6)),
-          unreachable: S.optional(__S(31, __c3, 7)),
+          connections: S.optional(__S(225, __c14, 1)),
+          unreachable: S.optional(__S(48, __c3, 0)),
         }),
       ).annotate({ identifier: "ListConnectionsResponse" });
   }
 }
-function __c7(j: number): any {
+function __c15(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1601,19 +1366,23 @@ function __c7(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          repositories: S.optional(__S(34, __c4, 2)),
+          repositories: S.optional(__S(80, __c5, 0)),
           nextPageToken: S.optional(S.String),
-          unreachable: S.optional(__S(31, __c3, 7)),
+          unreachable: S.optional(__S(48, __c3, 0)),
         }),
       ).annotate({ identifier: "ListRepositoriesResponse" });
-    case 2:
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           updateMask: S.optional(S.String.pipe(T.Query())),
           name: S.String.pipe(T.Label()),
           etag: S.optional(S.String.pipe(T.Query())),
           allowMissing: S.optional(S.Boolean.pipe(T.Query())),
-          body: S.optional(__S(25, __c3, 1).pipe(T.HttpBody())),
+          body: S.optional(__S(505, __c31, 9).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -1624,20 +1393,24 @@ function __c7(j: number): any {
       ).annotate({
         identifier: "PatchProjectsLocationsConnectionsRequest",
       });
-    case 3:
+  }
+}
+function __c17(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           contentType: S.optional(S.String),
           data: S.optional(S.String),
-          extensions: S.optional(__S(12, __c1, 4)),
+          extensions: S.optional(__S(416, __c26, 0)),
         }),
       ).annotate({ identifier: "HttpBody" });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           webhookKey: S.optional(S.String.pipe(T.Query())),
           parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(59, __c7, 3).pipe(T.HttpBody())),
+          body: S.optional(__S(272, __c17, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -1648,18 +1421,22 @@ function __c7(j: number): any {
       ).annotate({
         identifier: "ProcessWebhookProjectsLocationsConnectionsRequest",
       });
-    case 5:
+  }
+}
+function __c18(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          policy: S.optional(__S(44, __c5, 4)),
+          policy: S.optional(__S(119, __c7, 7)),
           updateMask: S.optional(S.String),
         }),
       ).annotate({ identifier: "SetIamPolicyRequest" });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           resource: S.String.pipe(T.Label()),
-          body: S.optional(__S(61, __c7, 5).pipe(T.HttpBody())),
+          body: S.optional(__S(288, __c18, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -1670,23 +1447,23 @@ function __c7(j: number): any {
       ).annotate({
         identifier: "SetIamPolicyProjectsLocationsConnectionsRequest",
       });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          permissions: S.optional(__S(31, __c3, 7)),
-        }),
-      ).annotate({
-        identifier: "TestIamPermissionsRequest",
-      });
   }
 }
-function __c8(j: number): any {
+function __c19(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
+          permissions: S.optional(__S(48, __c3, 0)),
+        }),
+      ).annotate({
+        identifier: "TestIamPermissionsRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
           resource: S.String.pipe(T.Label()),
-          body: S.optional(__S(63, __c7, 7).pipe(T.HttpBody())),
+          body: S.optional(__S(304, __c19, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -1699,7 +1476,333 @@ function __c8(j: number): any {
       });
   }
 }
-
+function __c20(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          repository: S.String.pipe(T.Label()),
+          body: S.optional(__S(336, __c21, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v2/{+repository}:accessReadToken",
+            baseUrl: "https://cloudbuild.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "AccessReadTokenProjectsLocationsConnectionsRepositoriesRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          expirationTime: S.optional(S.String),
+          token: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "FetchReadTokenResponse" });
+  }
+}
+function __c21(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "FetchReadTokenRequest",
+      });
+  }
+}
+function __c22(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          repository: S.String.pipe(T.Label()),
+          body: S.optional(__S(336, __c21, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v2/{+repository}:accessReadWriteToken",
+            baseUrl: "https://cloudbuild.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "AccessReadWriteTokenProjectsLocationsConnectionsRepositoriesRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          token: S.optional(S.String),
+          expirationTime: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "FetchReadWriteTokenResponse",
+      });
+  }
+}
+function __c23(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          repository: S.optional(__S(448, __c28, 0)),
+          parent: S.optional(S.String),
+          repositoryId: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "CreateRepositoryRequest" });
+    case 1:
+      return S.Array(__S(368, __c23, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          requests: S.optional(__S(369, __c23, 1)),
+        }),
+      ).annotate({
+        identifier: "BatchCreateRepositoriesRequest",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          parent: S.String.pipe(T.Label()),
+          body: S.optional(__S(370, __c23, 2).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v2/{+parent}/repositories:batchCreate",
+            baseUrl: "https://cloudbuild.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "BatchCreateProjectsLocationsConnectionsRepositoriesRequest",
+      });
+  }
+}
+function __c24(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, S.Unknown);
+  }
+}
+function __c25(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          code: S.optional(S.Number),
+          message: S.optional(S.String),
+          details: S.optional(__S(416, __c26, 0)),
+        }),
+      ).annotate({ identifier: "Status" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          done: S.optional(S.Boolean),
+          response: S.optional(__S(384, __c24, 0)),
+          error: S.optional(__S(400, __c25, 0)),
+          metadata: S.optional(__S(384, __c24, 0)),
+          name: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Operation" });
+  }
+}
+function __c26(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(384, __c24, 0));
+  }
+}
+function __c27(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, S.String);
+  }
+}
+function __c28(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          webhookId: S.optional(S.String),
+          etag: S.optional(S.String),
+          annotations: S.optional(__S(432, __c27, 0)),
+          remoteUri: S.optional(S.String),
+          name: S.optional(S.String),
+          updateTime: S.optional(S.String),
+          createTime: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Repository" });
+  }
+}
+function __c29(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+          body: S.optional(__S(336, __c21, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v2/{+name}:cancel",
+            baseUrl: "https://cloudbuild.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "CancelProjectsLocationsOperationsRequest",
+      });
+  }
+}
+function __c30(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          parent: S.String.pipe(T.Label()),
+          connectionId: S.optional(S.String.pipe(T.Query())),
+          body: S.optional(__S(505, __c31, 9).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v2/{+parent}/connections",
+            baseUrl: "https://cloudbuild.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateProjectsLocationsConnectionsRequest",
+      });
+  }
+}
+function __c31(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          username: S.optional(S.String),
+          userTokenSecretVersion: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "UserCredential" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          service: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleDevtoolsCloudbuildV2ServiceDirectoryConfig",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          webhookSecretSecretVersion: S.optional(S.String),
+          serverVersion: S.optional(S.String),
+          authorizerCredential: S.optional(__S(496, __c31, 0)),
+          readAuthorizerCredential: S.optional(__S(496, __c31, 0)),
+          sslCa: S.optional(S.String),
+          hostUri: S.optional(S.String),
+          serviceDirectoryConfig: S.optional(__S(497, __c31, 1)),
+        }),
+      ).annotate({
+        identifier: "BitbucketDataCenterConfig",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          authorizerCredential: S.optional(__S(496, __c31, 0)),
+          serverVersion: S.optional(S.String),
+          hostUri: S.optional(S.String),
+          serviceDirectoryConfig: S.optional(__S(497, __c31, 1)),
+          webhookSecretSecretVersion: S.optional(S.String),
+          sslCa: S.optional(S.String),
+          readAuthorizerCredential: S.optional(__S(496, __c31, 0)),
+        }),
+      ).annotate({
+        identifier: "GoogleDevtoolsCloudbuildV2GitLabConfig",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          appSlug: S.optional(S.String),
+          hostUri: S.optional(S.String),
+          appInstallationId: S.optional(S.String),
+          privateKeySecretVersion: S.optional(S.String),
+          serverVersion: S.optional(S.String),
+          serviceDirectoryConfig: S.optional(__S(497, __c31, 1)),
+          webhookSecretSecretVersion: S.optional(S.String),
+          apiKey: S.optional(S.String),
+          sslCa: S.optional(S.String),
+          appId: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleDevtoolsCloudbuildV2GitHubEnterpriseConfig",
+      });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          actionUri: S.optional(S.String),
+          message: S.optional(S.String),
+          stage: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "InstallationState" });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          readAuthorizerCredential: S.optional(__S(496, __c31, 0)),
+          authorizerCredential: S.optional(__S(496, __c31, 0)),
+          workspace: S.optional(S.String),
+          webhookSecretSecretVersion: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "BitbucketCloudConfig" });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          username: S.optional(S.String),
+          oauthTokenSecretVersion: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "OAuthCredential" });
+    case 8:
+      return S.suspend(() =>
+        S.Struct({
+          authorizerCredential: S.optional(__S(503, __c31, 7)),
+          appInstallationId: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "GitHubConfig" });
+    case 9:
+      return S.suspend(() =>
+        S.Struct({
+          bitbucketDataCenterConfig: S.optional(__S(498, __c31, 2)),
+          updateTime: S.optional(S.String),
+          gitlabConfig: S.optional(__S(499, __c31, 3)),
+          githubEnterpriseConfig: S.optional(__S(500, __c31, 4)),
+          createTime: S.optional(S.String),
+          name: S.optional(S.String),
+          reconciling: S.optional(S.Boolean),
+          installationState: S.optional(__S(501, __c31, 5)),
+          annotations: S.optional(__S(432, __c27, 0)),
+          bitbucketCloudConfig: S.optional(__S(502, __c31, 6)),
+          etag: S.optional(S.String),
+          githubConfig: S.optional(__S(504, __c31, 8)),
+          disabled: S.optional(S.Boolean),
+        }),
+      ).annotate({ identifier: "Connection" });
+  }
+}
+function __c32(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          parent: S.String.pipe(T.Label()),
+          repositoryId: S.optional(S.String.pipe(T.Query())),
+          body: S.optional(__S(448, __c28, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v2/{+parent}/repositories",
+            baseUrl: "https://cloudbuild.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateProjectsLocationsConnectionsRepositoriesRequest",
+      });
+  }
+}
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

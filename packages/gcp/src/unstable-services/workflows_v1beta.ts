@@ -242,8 +242,8 @@ export const createProjectsLocationsWorkflows: API.OperationMethod<
   CreateProjectsLocationsWorkflowsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2, __c0, 2) as any as S.Schema<CreateProjectsLocationsWorkflowsRequest>,
-  output: __S(6, __c0, 6) as any as S.Schema<Operation>,
+  input: __S(20, __c5, 0) as any as S.Schema<CreateProjectsLocationsWorkflowsRequest>,
+  output: __S(30, __c7, 2) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -262,8 +262,8 @@ export const deleteProjectsLocationsOperations: API.OperationMethod<
   DeleteProjectsLocationsOperationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(7, __c0, 7) as any as S.Schema<DeleteProjectsLocationsOperationsRequest>,
-  output: __S(8, __c1, 0) as any as S.Schema<Empty>,
+  input: __S(40, __c10, 0) as any as S.Schema<DeleteProjectsLocationsOperationsRequest>,
+  output: __S(41, __c10, 1) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -282,8 +282,8 @@ export const deleteProjectsLocationsWorkflows: API.OperationMethod<
   DeleteProjectsLocationsWorkflowsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(9, __c1, 1) as any as S.Schema<DeleteProjectsLocationsWorkflowsRequest>,
-  output: __S(6, __c0, 6) as any as S.Schema<Operation>,
+  input: __S(44, __c11, 0) as any as S.Schema<DeleteProjectsLocationsWorkflowsRequest>,
+  output: __S(30, __c7, 2) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -297,8 +297,8 @@ export const getProjectsLocations: API.OperationMethod<
   GetProjectsLocationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(10, __c1, 2) as any as S.Schema<GetProjectsLocationsRequest>,
-  output: __S(11, __c1, 3) as any as S.Schema<Location>,
+  input: __S(48, __c12, 0) as any as S.Schema<GetProjectsLocationsRequest>,
+  output: __S(52, __c13, 0) as any as S.Schema<Location>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -312,8 +312,8 @@ export const getProjectsLocationsOperations: API.OperationMethod<
   GetProjectsLocationsOperationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(12, __c1, 4) as any as S.Schema<GetProjectsLocationsOperationsRequest>,
-  output: __S(6, __c0, 6) as any as S.Schema<Operation>,
+  input: __S(56, __c14, 0) as any as S.Schema<GetProjectsLocationsOperationsRequest>,
+  output: __S(30, __c7, 2) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -327,8 +327,8 @@ export const getProjectsLocationsWorkflows: API.OperationMethod<
   GetProjectsLocationsWorkflowsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(13, __c1, 5) as any as S.Schema<GetProjectsLocationsWorkflowsRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<Workflow>,
+  input: __S(60, __c15, 0) as any as S.Schema<GetProjectsLocationsWorkflowsRequest>,
+  output: __S(36, __c9, 0) as any as S.Schema<Workflow>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -343,8 +343,8 @@ export const listProjectsLocations: API.PaginatedOperationMethod<
   GcpOpContext,
   ListLocationsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(15, __c1, 7) as any as S.Schema<ListProjectsLocationsRequest>,
-  output: __S(17, __c2, 1) as any as S.Schema<ListLocationsResponse>,
+  input: __S(0, __c0, 0) as any as S.Schema<ListProjectsLocationsRequest>,
+  output: __S(2, __c0, 2) as any as S.Schema<ListLocationsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -360,8 +360,8 @@ export const listProjectsLocationsOperations: API.PaginatedOperationMethod<
   GcpOpContext,
   ListOperationsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(18, __c2, 2) as any as S.Schema<ListProjectsLocationsOperationsRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<ListOperationsResponse>,
+  input: __S(8, __c2, 0) as any as S.Schema<ListProjectsLocationsOperationsRequest>,
+  output: __S(10, __c2, 2) as any as S.Schema<ListOperationsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -377,8 +377,8 @@ export const listProjectsLocationsWorkflows: API.PaginatedOperationMethod<
   GcpOpContext,
   ListWorkflowsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(21, __c2, 5) as any as S.Schema<ListProjectsLocationsWorkflowsRequest>,
-  output: __S(23, __c2, 7) as any as S.Schema<ListWorkflowsResponse>,
+  input: __S(12, __c3, 0) as any as S.Schema<ListProjectsLocationsWorkflowsRequest>,
+  output: __S(14, __c3, 2) as any as S.Schema<ListWorkflowsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -398,8 +398,8 @@ export const patchProjectsLocationsWorkflows: API.OperationMethod<
   PatchProjectsLocationsWorkflowsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(24, __c3, 0) as any as S.Schema<PatchProjectsLocationsWorkflowsRequest>,
-  output: __S(6, __c0, 6) as any as S.Schema<Operation>,
+  input: __S(16, __c4, 0) as any as S.Schema<PatchProjectsLocationsWorkflowsRequest>,
+  output: __S(30, __c7, 2) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -409,157 +409,12 @@ export const patchProjectsLocationsWorkflows: API.OperationMethod<
 function __c0(j: number): any {
   switch (j) {
     case 0:
-      return S.Record(S.String, S.String);
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.optional(S.String),
-          serviceAccount: S.optional(S.String),
-          updateTime: S.optional(S.String),
-          createTime: S.optional(S.String),
-          revisionId: S.optional(S.String),
-          sourceContents: S.optional(S.String),
-          labels: S.optional(__S(0, __c0, 0)),
-          description: S.optional(S.String),
-          state: S.optional(S.String),
-          revisionCreateTime: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Workflow" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          parent: S.String.pipe(T.Label()),
-          workflowId: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(1, __c0, 1).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1beta/{+parent}/workflows",
-            baseUrl: "https://workflows.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateProjectsLocationsWorkflowsRequest",
-      });
-    case 3:
-      return S.Record(S.String, S.Unknown);
-    case 4:
-      return S.Array(__S(3, __c0, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          code: S.optional(S.Number),
-          message: S.optional(S.String),
-          details: S.optional(__S(4, __c0, 4)),
-        }),
-      ).annotate({ identifier: "Status" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          done: S.optional(S.Boolean),
-          metadata: S.optional(__S(3, __c0, 3)),
-          response: S.optional(__S(3, __c0, 3)),
-          error: S.optional(__S(5, __c0, 5)),
-          name: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Operation" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "v1beta/{+name}",
-            baseUrl: "https://workflows.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteProjectsLocationsOperationsRequest",
-      });
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "Empty",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "v1beta/{+name}",
-            baseUrl: "https://workflows.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteProjectsLocationsWorkflowsRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v1beta/{+name}",
-            baseUrl: "https://workflows.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetProjectsLocationsRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          labels: S.optional(__S(0, __c0, 0)),
-          name: S.optional(S.String),
-          displayName: S.optional(S.String),
-          metadata: S.optional(__S(3, __c0, 3)),
-          locationId: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Location" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v1beta/{+name}",
-            baseUrl: "https://workflows.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetProjectsLocationsOperationsRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v1beta/{+name}",
-            baseUrl: "https://workflows.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetProjectsLocationsWorkflowsRequest",
-      });
-    case 6:
-      return S.Array(S.String);
-    case 7:
       return S.suspend(() =>
         S.Struct({
           pageSize: S.optional(S.Number.pipe(T.Query())),
           pageToken: S.optional(S.String.pipe(T.Query())),
           filter: S.optional(S.String.pipe(T.Query())),
-          extraLocationTypes: S.optional(__S(14, __c1, 6).pipe(T.Query())),
+          extraLocationTypes: S.optional(__S(4, __c1, 0).pipe(T.Query())),
           name: S.String.pipe(T.Label()),
         }).pipe(
           T.Http({
@@ -571,20 +426,26 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "ListProjectsLocationsRequest",
       });
+    case 1:
+      return S.Array(__S(52, __c13, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          locations: S.optional(__S(1, __c0, 1)),
+          nextPageToken: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ListLocationsResponse" });
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
   }
 }
 function __c2(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(11, __c1, 3));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          locations: S.optional(__S(16, __c2, 0)),
-          nextPageToken: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ListLocationsResponse" });
-    case 2:
       return S.suspend(() =>
         S.Struct({
           filter: S.optional(S.String.pipe(T.Query())),
@@ -602,17 +463,21 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "ListProjectsLocationsOperationsRequest",
       });
-    case 3:
-      return S.Array(__S(6, __c0, 6));
-    case 4:
+    case 1:
+      return S.Array(__S(30, __c7, 2));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          unreachable: S.optional(__S(14, __c1, 6)),
-          operations: S.optional(__S(19, __c2, 3)),
+          unreachable: S.optional(__S(4, __c1, 0)),
+          operations: S.optional(__S(9, __c2, 1)),
         }),
       ).annotate({ identifier: "ListOperationsResponse" });
-    case 5:
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -630,26 +495,26 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "ListProjectsLocationsWorkflowsRequest",
       });
-    case 6:
-      return S.Array(__S(1, __c0, 1));
-    case 7:
+    case 1:
+      return S.Array(__S(36, __c9, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          workflows: S.optional(__S(22, __c2, 6)),
-          unreachable: S.optional(__S(14, __c1, 6)),
+          workflows: S.optional(__S(13, __c3, 1)),
+          unreachable: S.optional(__S(4, __c1, 0)),
         }),
       ).annotate({ identifier: "ListWorkflowsResponse" });
   }
 }
-function __c3(j: number): any {
+function __c4(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           updateMask: S.optional(S.String.pipe(T.Query())),
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(1, __c0, 1).pipe(T.HttpBody())),
+          body: S.optional(__S(36, __c9, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -662,7 +527,189 @@ function __c3(j: number): any {
       });
   }
 }
-
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          parent: S.String.pipe(T.Label()),
+          workflowId: S.optional(S.String.pipe(T.Query())),
+          body: S.optional(__S(36, __c9, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1beta/{+parent}/workflows",
+            baseUrl: "https://workflows.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateProjectsLocationsWorkflowsRequest",
+      });
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, S.Unknown);
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(24, __c6, 0));
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          code: S.optional(S.Number),
+          message: S.optional(S.String),
+          details: S.optional(__S(28, __c7, 0)),
+        }),
+      ).annotate({ identifier: "Status" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          done: S.optional(S.Boolean),
+          metadata: S.optional(__S(24, __c6, 0)),
+          response: S.optional(__S(24, __c6, 0)),
+          error: S.optional(__S(29, __c7, 1)),
+          name: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Operation" });
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, S.String);
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.optional(S.String),
+          serviceAccount: S.optional(S.String),
+          updateTime: S.optional(S.String),
+          createTime: S.optional(S.String),
+          revisionId: S.optional(S.String),
+          sourceContents: S.optional(S.String),
+          labels: S.optional(__S(32, __c8, 0)),
+          description: S.optional(S.String),
+          state: S.optional(S.String),
+          revisionCreateTime: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Workflow" });
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "v1beta/{+name}",
+            baseUrl: "https://workflows.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteProjectsLocationsOperationsRequest",
+      });
+    case 1:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "Empty",
+      });
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "v1beta/{+name}",
+            baseUrl: "https://workflows.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteProjectsLocationsWorkflowsRequest",
+      });
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v1beta/{+name}",
+            baseUrl: "https://workflows.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetProjectsLocationsRequest",
+      });
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          labels: S.optional(__S(32, __c8, 0)),
+          name: S.optional(S.String),
+          displayName: S.optional(S.String),
+          metadata: S.optional(__S(24, __c6, 0)),
+          locationId: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Location" });
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v1beta/{+name}",
+            baseUrl: "https://workflows.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetProjectsLocationsOperationsRequest",
+      });
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v1beta/{+name}",
+            baseUrl: "https://workflows.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetProjectsLocationsWorkflowsRequest",
+      });
+  }
+}
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

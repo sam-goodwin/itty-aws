@@ -1790,8 +1790,8 @@ export const acceptPromooffer: API.OperationMethod<
   AcceptPromoofferError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(0, __c0, 0) as any as S.Schema<AcceptPromoofferRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<Empty>,
+  input: __S(1440, __c45, 0) as any as S.Schema<AcceptPromoofferRequest>,
+  output: __S(1472, __c46, 0) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1805,8 +1805,8 @@ export const addBookCloudloading: API.OperationMethod<
   AddBookCloudloadingError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2, __c0, 2) as any as S.Schema<AddBookCloudloadingRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<BooksCloudloadingResource>,
+  input: __S(1824, __c57, 0) as any as S.Schema<AddBookCloudloadingRequest>,
+  output: __S(1856, __c58, 0) as any as S.Schema<BooksCloudloadingResource>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1825,8 +1825,8 @@ export const addVolumeMylibraryBookshelves: API.OperationMethod<
   AddVolumeMylibraryBookshelvesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(4, __c0, 4) as any as S.Schema<AddVolumeMylibraryBookshelvesRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<Empty>,
+  input: __S(2048, __c64, 0) as any as S.Schema<AddVolumeMylibraryBookshelvesRequest>,
+  output: __S(1472, __c46, 0) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1845,8 +1845,8 @@ export const clearVolumesMylibraryBookshelves: API.OperationMethod<
   ClearVolumesMylibraryBookshelvesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(5, __c0, 5) as any as S.Schema<ClearVolumesMylibraryBookshelvesRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<Empty>,
+  input: __S(2080, __c65, 0) as any as S.Schema<ClearVolumesMylibraryBookshelvesRequest>,
+  output: __S(1472, __c46, 0) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1860,8 +1860,8 @@ export const deleteBookCloudloading: API.OperationMethod<
   DeleteBookCloudloadingError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(6, __c0, 6) as any as S.Schema<DeleteBookCloudloadingRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<Empty>,
+  input: __S(2112, __c66, 0) as any as S.Schema<DeleteBookCloudloadingRequest>,
+  output: __S(1472, __c46, 0) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1880,8 +1880,8 @@ export const deleteMylibraryAnnotations: API.OperationMethod<
   DeleteMylibraryAnnotationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(7, __c0, 7) as any as S.Schema<DeleteMylibraryAnnotationsRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<Empty>,
+  input: __S(2144, __c67, 0) as any as S.Schema<DeleteMylibraryAnnotationsRequest>,
+  output: __S(1472, __c46, 0) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1895,8 +1895,8 @@ export const dismissPromooffer: API.OperationMethod<
   DismissPromoofferError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(8, __c1, 0) as any as S.Schema<DismissPromoofferRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<Empty>,
+  input: __S(0, __c0, 0) as any as S.Schema<DismissPromoofferRequest>,
+  output: __S(1472, __c46, 0) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1910,8 +1910,8 @@ export const getBookshelves: API.OperationMethod<
   GetBookshelvesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(9, __c1, 1) as any as S.Schema<GetBookshelvesRequest>,
-  output: __S(10, __c1, 2) as any as S.Schema<Bookshelf>,
+  input: __S(32, __c1, 0) as any as S.Schema<GetBookshelvesRequest>,
+  output: __S(64, __c2, 0) as any as S.Schema<Bookshelf>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1925,8 +1925,8 @@ export const getFamilyInfoFamilysharing: API.OperationMethod<
   GetFamilyInfoFamilysharingError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(11, __c1, 3) as any as S.Schema<GetFamilyInfoFamilysharingRequest>,
-  output: __S(13, __c1, 5) as any as S.Schema<FamilyInfo>,
+  input: __S(96, __c3, 0) as any as S.Schema<GetFamilyInfoFamilysharingRequest>,
+  output: __S(98, __c3, 2) as any as S.Schema<FamilyInfo>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1940,8 +1940,8 @@ export const getLayers: API.OperationMethod<
   GetLayersError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(14, __c1, 6) as any as S.Schema<GetLayersRequest>,
-  output: __S(16, __c2, 0) as any as S.Schema<Layersummary>,
+  input: __S(128, __c4, 0) as any as S.Schema<GetLayersRequest>,
+  output: __S(192, __c6, 0) as any as S.Schema<Layersummary>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1955,8 +1955,8 @@ export const getLayersAnnotationData: API.OperationMethod<
   GetLayersAnnotationDataError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(17, __c2, 1) as any as S.Schema<GetLayersAnnotationDataRequest>,
-  output: __S(39, __c4, 7) as any as S.Schema<DictionaryAnnotationdata>,
+  input: __S(224, __c7, 0) as any as S.Schema<GetLayersAnnotationDataRequest>,
+  output: __S(246, __c7, 22) as any as S.Schema<DictionaryAnnotationdata>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1970,8 +1970,8 @@ export const getLayersVolumeAnnotations: API.OperationMethod<
   GetLayersVolumeAnnotationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(40, __c5, 0) as any as S.Schema<GetLayersVolumeAnnotationsRequest>,
-  output: __S(43, __c5, 3) as any as S.Schema<Volumeannotation>,
+  input: __S(256, __c8, 0) as any as S.Schema<GetLayersVolumeAnnotationsRequest>,
+  output: __S(321, __c10, 1) as any as S.Schema<Volumeannotation>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1985,8 +1985,8 @@ export const getMylibraryBookshelves: API.OperationMethod<
   GetMylibraryBookshelvesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(44, __c5, 4) as any as S.Schema<GetMylibraryBookshelvesRequest>,
-  output: __S(10, __c1, 2) as any as S.Schema<Bookshelf>,
+  input: __S(352, __c11, 0) as any as S.Schema<GetMylibraryBookshelvesRequest>,
+  output: __S(64, __c2, 0) as any as S.Schema<Bookshelf>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2000,8 +2000,8 @@ export const getMylibraryReadingpositions: API.OperationMethod<
   GetMylibraryReadingpositionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(45, __c5, 5) as any as S.Schema<GetMylibraryReadingpositionsRequest>,
-  output: __S(46, __c5, 6) as any as S.Schema<ReadingPosition>,
+  input: __S(384, __c12, 0) as any as S.Schema<GetMylibraryReadingpositionsRequest>,
+  output: __S(416, __c13, 0) as any as S.Schema<ReadingPosition>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2015,8 +2015,8 @@ export const getNotification: API.OperationMethod<
   GetNotificationError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(47, __c5, 7) as any as S.Schema<GetNotificationRequest>,
-  output: __S(48, __c6, 0) as any as S.Schema<Notification>,
+  input: __S(448, __c14, 0) as any as S.Schema<GetNotificationRequest>,
+  output: __S(449, __c14, 1) as any as S.Schema<Notification>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2030,8 +2030,8 @@ export const getPersonalizedstream: API.OperationMethod<
   GetPersonalizedstreamError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(49, __c6, 1) as any as S.Schema<GetPersonalizedstreamRequest>,
-  output: __S(91, __c11, 3) as any as S.Schema<Discoveryclusters>,
+  input: __S(480, __c15, 0) as any as S.Schema<GetPersonalizedstreamRequest>,
+  output: __S(484, __c15, 4) as any as S.Schema<Discoveryclusters>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2045,8 +2045,8 @@ export const getPromooffer: API.OperationMethod<
   GetPromoofferError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(92, __c11, 4) as any as S.Schema<GetPromoofferRequest>,
-  output: __S(97, __c12, 1) as any as S.Schema<Offers>,
+  input: __S(640, __c20, 0) as any as S.Schema<GetPromoofferRequest>,
+  output: __S(645, __c20, 5) as any as S.Schema<Offers>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2060,8 +2060,8 @@ export const getSeries: API.OperationMethod<
   GetSeriesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(98, __c12, 2) as any as S.Schema<GetSeriesRequest>,
-  output: __S(104, __c13, 0) as any as S.Schema<Series>,
+  input: __S(672, __c21, 0) as any as S.Schema<GetSeriesRequest>,
+  output: __S(678, __c21, 6) as any as S.Schema<Series>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2075,8 +2075,8 @@ export const getSeriesMembership: API.OperationMethod<
   GetSeriesMembershipError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(105, __c13, 1) as any as S.Schema<GetSeriesMembershipRequest>,
-  output: __S(106, __c13, 2) as any as S.Schema<Seriesmembership>,
+  input: __S(704, __c22, 0) as any as S.Schema<GetSeriesMembershipRequest>,
+  output: __S(705, __c22, 1) as any as S.Schema<Seriesmembership>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2090,8 +2090,8 @@ export const getUserSettingsMyconfig: API.OperationMethod<
   GetUserSettingsMyconfigError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(107, __c13, 3) as any as S.Schema<GetUserSettingsMyconfigRequest>,
-  output: __S(111, __c13, 7) as any as S.Schema<Usersettings>,
+  input: __S(736, __c23, 0) as any as S.Schema<GetUserSettingsMyconfigRequest>,
+  output: __S(771, __c24, 3) as any as S.Schema<Usersettings>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2105,8 +2105,8 @@ export const getVolumes: API.OperationMethod<
   GetVolumesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(112, __c14, 0) as any as S.Schema<GetVolumesRequest>,
-  output: __S(86, __c10, 6) as any as S.Schema<Volume>,
+  input: __S(800, __c25, 0) as any as S.Schema<GetVolumesRequest>,
+  output: __S(579, __c18, 3) as any as S.Schema<Volume>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2125,8 +2125,8 @@ export const insertMylibraryAnnotations: API.OperationMethod<
   InsertMylibraryAnnotationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(117, __c14, 5) as any as S.Schema<InsertMylibraryAnnotationsRequest>,
-  output: __S(116, __c14, 4) as any as S.Schema<Annotation>,
+  input: __S(832, __c26, 0) as any as S.Schema<InsertMylibraryAnnotationsRequest>,
+  output: __S(867, __c27, 3) as any as S.Schema<Annotation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2140,8 +2140,8 @@ export const listBookshelves: API.OperationMethod<
   ListBookshelvesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(118, __c14, 6) as any as S.Schema<ListBookshelvesRequest>,
-  output: __S(120, __c15, 0) as any as S.Schema<Bookshelves>,
+  input: __S(896, __c28, 0) as any as S.Schema<ListBookshelvesRequest>,
+  output: __S(929, __c29, 1) as any as S.Schema<Bookshelves>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2155,8 +2155,8 @@ export const listBookshelvesVolumes: API.OperationMethod<
   ListBookshelvesVolumesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(121, __c15, 1) as any as S.Schema<ListBookshelvesVolumesRequest>,
-  output: __S(122, __c15, 2) as any as S.Schema<Volumes>,
+  input: __S(960, __c30, 0) as any as S.Schema<ListBookshelvesVolumesRequest>,
+  output: __S(992, __c31, 0) as any as S.Schema<Volumes>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2170,8 +2170,8 @@ export const listCategoriesOnboarding: API.OperationMethod<
   ListCategoriesOnboardingError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(123, __c15, 3) as any as S.Schema<ListCategoriesOnboardingRequest>,
-  output: __S(126, __c15, 6) as any as S.Schema<Category>,
+  input: __S(1024, __c32, 0) as any as S.Schema<ListCategoriesOnboardingRequest>,
+  output: __S(1027, __c32, 3) as any as S.Schema<Category>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2186,8 +2186,8 @@ export const listCategoryVolumesOnboarding: API.PaginatedOperationMethod<
   GcpOpContext,
   Volume
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(127, __c15, 7) as any as S.Schema<ListCategoryVolumesOnboardingRequest>,
-  output: __S(128, __c16, 0) as any as S.Schema<Volume2>,
+  input: __S(1056, __c33, 0) as any as S.Schema<ListCategoryVolumesOnboardingRequest>,
+  output: __S(1057, __c33, 1) as any as S.Schema<Volume2>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2202,8 +2202,8 @@ export const listLayers: API.OperationMethod<
   ListLayersError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(129, __c16, 1) as any as S.Schema<ListLayersRequest>,
-  output: __S(131, __c16, 3) as any as S.Schema<Layersummaries>,
+  input: __S(1088, __c34, 0) as any as S.Schema<ListLayersRequest>,
+  output: __S(1090, __c34, 2) as any as S.Schema<Layersummaries>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2218,8 +2218,8 @@ export const listLayersAnnotationData: API.PaginatedOperationMethod<
   GcpOpContext,
   GeoAnnotationdata
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(132, __c16, 4) as any as S.Schema<ListLayersAnnotationDataRequest>,
-  output: __S(141, __c17, 5) as any as S.Schema<Annotationsdata>,
+  input: __S(1120, __c35, 0) as any as S.Schema<ListLayersAnnotationDataRequest>,
+  output: __S(1129, __c35, 9) as any as S.Schema<Annotationsdata>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2235,8 +2235,8 @@ export const listLayersVolumeAnnotations: API.PaginatedOperationMethod<
   GcpOpContext,
   Volumeannotation
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(142, __c17, 6) as any as S.Schema<ListLayersVolumeAnnotationsRequest>,
-  output: __S(144, __c18, 0) as any as S.Schema<Volumeannotations>,
+  input: __S(1152, __c36, 0) as any as S.Schema<ListLayersVolumeAnnotationsRequest>,
+  output: __S(1154, __c36, 2) as any as S.Schema<Volumeannotations>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2252,8 +2252,8 @@ export const listMylibraryAnnotations: API.PaginatedOperationMethod<
   GcpOpContext,
   Annotation
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(145, __c18, 1) as any as S.Schema<ListMylibraryAnnotationsRequest>,
-  output: __S(147, __c18, 3) as any as S.Schema<Annotations>,
+  input: __S(1184, __c37, 0) as any as S.Schema<ListMylibraryAnnotationsRequest>,
+  output: __S(1186, __c37, 2) as any as S.Schema<Annotations>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2268,8 +2268,8 @@ export const listMylibraryBookshelves: API.OperationMethod<
   ListMylibraryBookshelvesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(148, __c18, 4) as any as S.Schema<ListMylibraryBookshelvesRequest>,
-  output: __S(120, __c15, 0) as any as S.Schema<Bookshelves>,
+  input: __S(1216, __c38, 0) as any as S.Schema<ListMylibraryBookshelvesRequest>,
+  output: __S(929, __c29, 1) as any as S.Schema<Bookshelves>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2283,8 +2283,8 @@ export const listMylibraryBookshelvesVolumes: API.OperationMethod<
   ListMylibraryBookshelvesVolumesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(149, __c18, 5) as any as S.Schema<ListMylibraryBookshelvesVolumesRequest>,
-  output: __S(122, __c15, 2) as any as S.Schema<Volumes>,
+  input: __S(1248, __c39, 0) as any as S.Schema<ListMylibraryBookshelvesVolumesRequest>,
+  output: __S(992, __c31, 0) as any as S.Schema<Volumes>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2298,8 +2298,8 @@ export const listOfflineMetadataDictionary: API.OperationMethod<
   ListOfflineMetadataDictionaryError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(150, __c18, 6) as any as S.Schema<ListOfflineMetadataDictionaryRequest>,
-  output: __S(153, __c19, 1) as any as S.Schema<Metadata>,
+  input: __S(1280, __c40, 0) as any as S.Schema<ListOfflineMetadataDictionaryRequest>,
+  output: __S(1283, __c40, 3) as any as S.Schema<Metadata>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2313,8 +2313,8 @@ export const listVolumes: API.OperationMethod<
   ListVolumesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(154, __c19, 2) as any as S.Schema<ListVolumesRequest>,
-  output: __S(122, __c15, 2) as any as S.Schema<Volumes>,
+  input: __S(1312, __c41, 0) as any as S.Schema<ListVolumesRequest>,
+  output: __S(992, __c31, 0) as any as S.Schema<Volumes>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2328,8 +2328,8 @@ export const listVolumesAssociated: API.OperationMethod<
   ListVolumesAssociatedError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(155, __c19, 3) as any as S.Schema<ListVolumesAssociatedRequest>,
-  output: __S(122, __c15, 2) as any as S.Schema<Volumes>,
+  input: __S(1344, __c42, 0) as any as S.Schema<ListVolumesAssociatedRequest>,
+  output: __S(992, __c31, 0) as any as S.Schema<Volumes>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2343,8 +2343,8 @@ export const listVolumesMybooks: API.OperationMethod<
   ListVolumesMybooksError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(157, __c19, 5) as any as S.Schema<ListVolumesMybooksRequest>,
-  output: __S(122, __c15, 2) as any as S.Schema<Volumes>,
+  input: __S(1376, __c43, 0) as any as S.Schema<ListVolumesMybooksRequest>,
+  output: __S(992, __c31, 0) as any as S.Schema<Volumes>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2358,8 +2358,8 @@ export const listVolumesRecommended: API.OperationMethod<
   ListVolumesRecommendedError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(158, __c19, 6) as any as S.Schema<ListVolumesRecommendedRequest>,
-  output: __S(122, __c15, 2) as any as S.Schema<Volumes>,
+  input: __S(1504, __c47, 0) as any as S.Schema<ListVolumesRecommendedRequest>,
+  output: __S(992, __c31, 0) as any as S.Schema<Volumes>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2373,8 +2373,8 @@ export const listVolumesUseruploaded: API.OperationMethod<
   ListVolumesUseruploadedError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(159, __c19, 7) as any as S.Schema<ListVolumesUseruploadedRequest>,
-  output: __S(122, __c15, 2) as any as S.Schema<Volumes>,
+  input: __S(1536, __c48, 0) as any as S.Schema<ListVolumesUseruploadedRequest>,
+  output: __S(992, __c31, 0) as any as S.Schema<Volumes>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2393,8 +2393,8 @@ export const moveVolumeMylibraryBookshelves: API.OperationMethod<
   MoveVolumeMylibraryBookshelvesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(160, __c20, 0) as any as S.Schema<MoveVolumeMylibraryBookshelvesRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<Empty>,
+  input: __S(1568, __c49, 0) as any as S.Schema<MoveVolumeMylibraryBookshelvesRequest>,
+  output: __S(1472, __c46, 0) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2408,8 +2408,8 @@ export const rateVolumesRecommended: API.OperationMethod<
   RateVolumesRecommendedError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(161, __c20, 1) as any as S.Schema<RateVolumesRecommendedRequest>,
-  output: __S(162, __c20, 2) as any as S.Schema<BooksVolumesRecommendedRateResponse>,
+  input: __S(1600, __c50, 0) as any as S.Schema<RateVolumesRecommendedRequest>,
+  output: __S(1601, __c50, 1) as any as S.Schema<BooksVolumesRecommendedRateResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2428,8 +2428,8 @@ export const releaseDownloadAccessMyconfig: API.OperationMethod<
   ReleaseDownloadAccessMyconfigError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(163, __c20, 3) as any as S.Schema<ReleaseDownloadAccessMyconfigRequest>,
-  output: __S(165, __c20, 5) as any as S.Schema<DownloadAccesses>,
+  input: __S(1632, __c51, 0) as any as S.Schema<ReleaseDownloadAccessMyconfigRequest>,
+  output: __S(1634, __c51, 2) as any as S.Schema<DownloadAccesses>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2448,8 +2448,8 @@ export const removeVolumeMylibraryBookshelves: API.OperationMethod<
   RemoveVolumeMylibraryBookshelvesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(166, __c20, 6) as any as S.Schema<RemoveVolumeMylibraryBookshelvesRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<Empty>,
+  input: __S(1664, __c52, 0) as any as S.Schema<RemoveVolumeMylibraryBookshelvesRequest>,
+  output: __S(1472, __c46, 0) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2463,8 +2463,8 @@ export const requestAccessMyconfig: API.OperationMethod<
   RequestAccessMyconfigError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(167, __c20, 7) as any as S.Schema<RequestAccessMyconfigRequest>,
-  output: __S(169, __c21, 1) as any as S.Schema<RequestAccessData>,
+  input: __S(1696, __c53, 0) as any as S.Schema<RequestAccessMyconfigRequest>,
+  output: __S(1698, __c53, 2) as any as S.Schema<RequestAccessData>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2483,8 +2483,8 @@ export const setPositionMylibraryReadingpositions: API.OperationMethod<
   SetPositionMylibraryReadingpositionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(170, __c21, 2) as any as S.Schema<SetPositionMylibraryReadingpositionsRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<Empty>,
+  input: __S(1728, __c54, 0) as any as S.Schema<SetPositionMylibraryReadingpositionsRequest>,
+  output: __S(1472, __c46, 0) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2498,8 +2498,8 @@ export const shareFamilysharing: API.OperationMethod<
   ShareFamilysharingError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(171, __c21, 3) as any as S.Schema<ShareFamilysharingRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<Empty>,
+  input: __S(1760, __c55, 0) as any as S.Schema<ShareFamilysharingRequest>,
+  output: __S(1472, __c46, 0) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2518,8 +2518,8 @@ export const summaryMylibraryAnnotations: API.OperationMethod<
   SummaryMylibraryAnnotationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(172, __c21, 4) as any as S.Schema<SummaryMylibraryAnnotationsRequest>,
-  output: __S(175, __c21, 7) as any as S.Schema<AnnotationsSummary>,
+  input: __S(1792, __c56, 0) as any as S.Schema<SummaryMylibraryAnnotationsRequest>,
+  output: __S(1795, __c56, 3) as any as S.Schema<AnnotationsSummary>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2538,8 +2538,8 @@ export const syncVolumeLicensesMyconfig: API.OperationMethod<
   SyncVolumeLicensesMyconfigError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(176, __c22, 0) as any as S.Schema<SyncVolumeLicensesMyconfigRequest>,
-  output: __S(122, __c15, 2) as any as S.Schema<Volumes>,
+  input: __S(1888, __c59, 0) as any as S.Schema<SyncVolumeLicensesMyconfigRequest>,
+  output: __S(992, __c31, 0) as any as S.Schema<Volumes>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2553,8 +2553,8 @@ export const unshareFamilysharing: API.OperationMethod<
   UnshareFamilysharingError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(177, __c22, 1) as any as S.Schema<UnshareFamilysharingRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<Empty>,
+  input: __S(1920, __c60, 0) as any as S.Schema<UnshareFamilysharingRequest>,
+  output: __S(1472, __c46, 0) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2568,8 +2568,8 @@ export const updateBookCloudloading: API.OperationMethod<
   UpdateBookCloudloadingError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(178, __c22, 2) as any as S.Schema<UpdateBookCloudloadingRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<BooksCloudloadingResource>,
+  input: __S(1952, __c61, 0) as any as S.Schema<UpdateBookCloudloadingRequest>,
+  output: __S(1856, __c58, 0) as any as S.Schema<BooksCloudloadingResource>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2588,8 +2588,8 @@ export const updateMylibraryAnnotations: API.OperationMethod<
   UpdateMylibraryAnnotationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(179, __c22, 3) as any as S.Schema<UpdateMylibraryAnnotationsRequest>,
-  output: __S(116, __c14, 4) as any as S.Schema<Annotation>,
+  input: __S(1984, __c62, 0) as any as S.Schema<UpdateMylibraryAnnotationsRequest>,
+  output: __S(867, __c27, 3) as any as S.Schema<Annotation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2608,8 +2608,8 @@ export const updateUserSettingsMyconfig: API.OperationMethod<
   UpdateUserSettingsMyconfigError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(180, __c22, 4) as any as S.Schema<UpdateUserSettingsMyconfigRequest>,
-  output: __S(111, __c13, 7) as any as S.Schema<Usersettings>,
+  input: __S(2016, __c63, 0) as any as S.Schema<UpdateUserSettingsMyconfigRequest>,
+  output: __S(771, __c24, 3) as any as S.Schema<Usersettings>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2617,122 +2617,6 @@ export const updateUserSettingsMyconfig: API.OperationMethod<
 
 // Schema builders: each runs one schema initializer, on that schema's first use.
 function __c0(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          manufacturer: S.optional(S.String.pipe(T.Query())),
-          model: S.optional(S.String.pipe(T.Query())),
-          volumeId: S.optional(S.String.pipe(T.Query())),
-          device: S.optional(S.String.pipe(T.Query())),
-          serial: S.optional(S.String.pipe(T.Query())),
-          offerId: S.optional(S.String.pipe(T.Query())),
-          product: S.optional(S.String.pipe(T.Query())),
-          androidId: S.optional(S.String.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "books/v1/promooffer/accept",
-            baseUrl: "https://books.googleapis.com/",
-          }),
-        ),
-      ).annotate({ identifier: "AcceptPromoofferRequest" });
-    case 1:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "Empty",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          upload_client_token: S.optional(S.String.pipe(T.Query())),
-          mime_type: S.optional(S.String.pipe(T.Query())),
-          name: S.optional(S.String.pipe(T.Query())),
-          drive_document_id: S.optional(S.String.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "books/v1/cloudloading/addBook",
-            baseUrl: "https://books.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "AddBookCloudloadingRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          volumeId: S.optional(S.String),
-          author: S.optional(S.String),
-          title: S.optional(S.String),
-          processingState: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "BooksCloudloadingResource",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          reason: S.optional(S.String.pipe(T.Query())),
-          shelf: S.String.pipe(T.Label()),
-          volumeId: S.String.pipe(T.Query()),
-          source: S.optional(S.String.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "books/v1/mylibrary/bookshelves/{shelf}/addVolume",
-            baseUrl: "https://books.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "AddVolumeMylibraryBookshelvesRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          source: S.optional(S.String.pipe(T.Query())),
-          shelf: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "books/v1/mylibrary/bookshelves/{shelf}/clearVolumes",
-            baseUrl: "https://books.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "ClearVolumesMylibraryBookshelvesRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          volumeId: S.String.pipe(T.Query()),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "books/v1/cloudloading/deleteBook",
-            baseUrl: "https://books.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteBookCloudloadingRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          annotationId: S.String.pipe(T.Label()),
-          source: S.optional(S.String.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "books/v1/mylibrary/annotations/{annotationId}",
-            baseUrl: "https://books.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteMylibraryAnnotationsRequest",
-      });
-  }
-}
-function __c1(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2752,7 +2636,11 @@ function __c1(j: number): any {
           }),
         ),
       ).annotate({ identifier: "DismissPromoofferRequest" });
-    case 1:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           source: S.optional(S.String.pipe(T.Query())),
@@ -2766,7 +2654,11 @@ function __c1(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetBookshelvesRequest" });
-    case 2:
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           updated: S.optional(S.String),
@@ -2781,7 +2673,11 @@ function __c1(j: number): any {
           created: S.optional(S.String),
         }),
       ).annotate({ identifier: "Bookshelf" });
-    case 3:
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           source: S.optional(S.String.pipe(T.Query())),
@@ -2795,7 +2691,7 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "GetFamilyInfoFamilysharingRequest",
       });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           acquirePermission: S.optional(S.String),
@@ -2805,14 +2701,18 @@ function __c1(j: number): any {
           allowedMaturityRating: S.optional(S.String),
         }),
       ).annotate({ identifier: "FamilyInfoMembership" });
-    case 5:
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          membership: S.optional(__S(12, __c1, 4)),
+          membership: S.optional(__S(97, __c3, 1)),
           kind: S.optional(S.String),
         }),
       ).annotate({ identifier: "FamilyInfo" });
-    case 6:
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           volumeId: S.String.pipe(T.Label()),
@@ -2827,11 +2727,15 @@ function __c1(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetLayersRequest" });
-    case 7:
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
       return S.Array(S.String);
   }
 }
-function __c2(j: number): any {
+function __c6(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2843,7 +2747,7 @@ function __c2(j: number): any {
           kind: S.optional(S.String),
           annotationsDataLink: S.optional(S.String),
           contentVersion: S.optional(S.String),
-          annotationTypes: S.optional(__S(15, __c1, 7)),
+          annotationTypes: S.optional(__S(160, __c5, 0)),
           layerId: S.optional(S.String),
           selfLink: S.optional(S.String),
           dataCount: S.optional(S.Number),
@@ -2851,7 +2755,11 @@ function __c2(j: number): any {
           volumeAnnotationsVersion: S.optional(S.String),
         }),
       ).annotate({ identifier: "Layersummary" });
-    case 1:
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           source: S.optional(S.String.pipe(T.Query())),
@@ -2874,25 +2782,25 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "GetLayersAnnotationDataRequest",
       });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           url: S.optional(S.String),
           attribution: S.optional(S.String),
         }),
       ).annotate({ identifier: "DictlayerdataDictSource" });
-    case 3:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           text: S.optional(S.String),
-          source: S.optional(__S(18, __c2, 2)),
+          source: S.optional(__S(225, __c7, 1)),
         }),
       ).annotate({
         identifier: "DictlayerdataDictWordsItemDerivativesItem",
       });
+    case 3:
+      return S.Array(__S(226, __c7, 2));
     case 4:
-      return S.Array(__S(19, __c2, 3));
-    case 5:
       return S.suspend(() =>
         S.Struct({
           attribution: S.optional(S.String),
@@ -2901,22 +2809,18 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "DictlayerdataDictWordsItemSource",
       });
-    case 6:
+    case 5:
       return S.suspend(() =>
         S.Struct({
-          source: S.optional(__S(21, __c2, 5)),
+          source: S.optional(__S(228, __c7, 4)),
           text: S.optional(S.String),
         }),
       ).annotate({
         identifier: "DictlayerdataDictWordsItemSensesItemSynonymsItem",
       });
+    case 6:
+      return S.Array(__S(229, __c7, 5));
     case 7:
-      return S.Array(__S(22, __c2, 6));
-  }
-}
-function __c3(j: number): any {
-  switch (j) {
-    case 0:
       return S.suspend(() =>
         S.Struct({
           value: S.optional(S.String),
@@ -2925,100 +2829,96 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "DictlayerdataDictWordsItemSensesItemConjugationsItem",
       });
-    case 1:
-      return S.Array(__S(24, __c3, 0));
-    case 2:
+    case 8:
+      return S.Array(__S(231, __c7, 7));
+    case 9:
       return S.suspend(() =>
         S.Struct({
-          source: S.optional(__S(18, __c2, 2)),
+          source: S.optional(__S(225, __c7, 1)),
           text: S.optional(S.String),
         }),
       ).annotate({
         identifier: "DictlayerdataDictWordsItemSensesItemDefinitionsItemExamplesItem",
       });
-    case 3:
-      return S.Array(__S(26, __c3, 2));
-    case 4:
+    case 10:
+      return S.Array(__S(233, __c7, 9));
+    case 11:
       return S.suspend(() =>
         S.Struct({
-          examples: S.optional(__S(27, __c3, 3)),
+          examples: S.optional(__S(234, __c7, 10)),
           definition: S.optional(S.String),
         }),
       ).annotate({
         identifier: "DictlayerdataDictWordsItemSensesItemDefinitionsItem",
       });
-    case 5:
-      return S.Array(__S(28, __c3, 4));
-    case 6:
+    case 12:
+      return S.Array(__S(235, __c7, 11));
+    case 13:
       return S.suspend(() =>
         S.Struct({
           partOfSpeech: S.optional(S.String),
           pronunciationUrl: S.optional(S.String),
-          synonyms: S.optional(__S(23, __c2, 7)),
+          synonyms: S.optional(__S(230, __c7, 6)),
           pronunciation: S.optional(S.String),
           syllabification: S.optional(S.String),
-          conjugations: S.optional(__S(25, __c3, 1)),
-          definitions: S.optional(__S(29, __c3, 5)),
-          source: S.optional(__S(18, __c2, 2)),
+          conjugations: S.optional(__S(232, __c7, 8)),
+          definitions: S.optional(__S(236, __c7, 12)),
+          source: S.optional(__S(225, __c7, 1)),
         }),
       ).annotate({
         identifier: "DictlayerdataDictWordsItemSensesItem",
       });
-    case 7:
-      return S.Array(__S(30, __c3, 6));
-  }
-}
-function __c4(j: number): any {
-  switch (j) {
-    case 0:
+    case 14:
+      return S.Array(__S(237, __c7, 13));
+    case 15:
       return S.suspend(() =>
         S.Struct({
           text: S.optional(S.String),
-          source: S.optional(__S(21, __c2, 5)),
+          source: S.optional(__S(228, __c7, 4)),
         }),
       ).annotate({
         identifier: "DictlayerdataDictWordsItemExamplesItem",
       });
-    case 1:
-      return S.Array(__S(32, __c4, 0));
-    case 2:
+    case 16:
+      return S.Array(__S(239, __c7, 15));
+    case 17:
       return S.suspend(() =>
         S.Struct({
-          derivatives: S.optional(__S(20, __c2, 4)),
-          source: S.optional(__S(21, __c2, 5)),
-          senses: S.optional(__S(31, __c3, 7)),
-          examples: S.optional(__S(33, __c4, 1)),
+          derivatives: S.optional(__S(227, __c7, 3)),
+          source: S.optional(__S(228, __c7, 4)),
+          senses: S.optional(__S(238, __c7, 14)),
+          examples: S.optional(__S(240, __c7, 16)),
         }),
       ).annotate({
         identifier: "DictlayerdataDictWordsItem",
       });
-    case 3:
-      return S.Array(__S(34, __c4, 2));
-    case 4:
+    case 18:
+      return S.Array(__S(241, __c7, 17));
+    case 19:
       return S.suspend(() =>
         S.Struct({
-          source: S.optional(__S(18, __c2, 2)),
-          words: S.optional(__S(35, __c4, 3)),
+          source: S.optional(__S(225, __c7, 1)),
+          words: S.optional(__S(242, __c7, 18)),
         }),
       ).annotate({ identifier: "DictlayerdataDict" });
-    case 5:
+    case 20:
       return S.suspend(() =>
         S.Struct({
           title: S.optional(S.String),
         }),
       ).annotate({ identifier: "DictlayerdataCommon" });
-    case 6:
+    case 21:
       return S.suspend(() =>
         S.Struct({
-          dict: S.optional(__S(36, __c4, 4)),
-          common: S.optional(__S(37, __c4, 5)),
+          dict: S.optional(__S(243, __c7, 19)),
+          common: S.optional(__S(244, __c7, 20)),
           kind: S.optional(S.String),
         }),
       ).annotate({ identifier: "Dictlayerdata" });
-    case 7:
+    case 22:
       return S.suspend(() =>
         S.Struct({
-          data: S.optional(__S(38, __c4, 6)),
+          data: S.optional(__S(245, __c7, 21)),
           annotationType: S.optional(S.String),
           layerId: S.optional(S.String),
           volumeId: S.optional(S.String),
@@ -3031,7 +2931,7 @@ function __c4(j: number): any {
       ).annotate({ identifier: "DictionaryAnnotationdata" });
   }
 }
-function __c5(j: number): any {
+function __c8(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3051,7 +2951,11 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "GetLayersVolumeAnnotationsRequest",
       });
-    case 1:
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           endOffset: S.optional(S.String),
@@ -3060,37 +2964,45 @@ function __c5(j: number): any {
           startOffset: S.optional(S.String),
         }),
       ).annotate({ identifier: "BooksAnnotationsRange" });
-    case 2:
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          cfiRange: S.optional(__S(41, __c5, 1)),
-          gbTextRange: S.optional(__S(41, __c5, 1)),
-          gbImageRange: S.optional(__S(41, __c5, 1)),
+          cfiRange: S.optional(__S(288, __c9, 0)),
+          gbTextRange: S.optional(__S(288, __c9, 0)),
+          gbImageRange: S.optional(__S(288, __c9, 0)),
           contentVersion: S.optional(S.String),
         }),
       ).annotate({
         identifier: "VolumeannotationContentRanges",
       });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           selfLink: S.optional(S.String),
           annotationDataLink: S.optional(S.String),
           deleted: S.optional(S.Boolean),
           selectedText: S.optional(S.String),
-          contentRanges: S.optional(__S(42, __c5, 2)),
+          contentRanges: S.optional(__S(320, __c10, 0)),
           data: S.optional(S.String),
           annotationDataId: S.optional(S.String),
           layerId: S.optional(S.String),
           kind: S.optional(S.String),
           annotationType: S.optional(S.String),
-          pageIds: S.optional(__S(15, __c1, 7)),
+          pageIds: S.optional(__S(160, __c5, 0)),
           volumeId: S.optional(S.String),
           id: S.optional(S.String),
           updated: S.optional(S.String),
         }),
       ).annotate({ identifier: "Volumeannotation" });
-    case 4:
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           shelf: S.String.pipe(T.Label()),
@@ -3105,7 +3017,11 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "GetMylibraryBookshelvesRequest",
       });
-    case 5:
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           volumeId: S.String.pipe(T.Label()),
@@ -3121,7 +3037,11 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "GetMylibraryReadingpositionsRequest",
       });
-    case 6:
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           pdfPosition: S.optional(S.String),
@@ -3133,7 +3053,11 @@ function __c5(j: number): any {
           updated: S.optional(S.String),
         }),
       ).annotate({ identifier: "ReadingPosition" });
-    case 7:
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           notification_id: S.String.pipe(T.Query()),
@@ -3147,11 +3071,7 @@ function __c5(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetNotificationRequest" });
-  }
-}
-function __c6(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           kind: S.optional(S.String),
@@ -3162,7 +3082,7 @@ function __c6(j: number): any {
           body: S.optional(S.String),
           dont_show_notification: S.optional(S.Boolean),
           title: S.optional(S.String),
-          crmExperimentIds: S.optional(__S(15, __c1, 7)),
+          crmExperimentIds: S.optional(__S(160, __c5, 0)),
           is_document_mature: S.optional(S.Boolean),
           doc_id: S.optional(S.String),
           notificationGroup: S.optional(S.String),
@@ -3172,7 +3092,11 @@ function __c6(j: number): any {
           targetUrl: S.optional(S.String),
         }),
       ).annotate({ identifier: "Notification" });
-    case 1:
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           locale: S.optional(S.String.pipe(T.Query())),
@@ -3188,320 +3112,47 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "GetPersonalizedstreamRequest",
       });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          volumeAnnotationsVersion: S.optional(S.String),
-          layerId: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "VolumeLayerInfoLayersItem",
-      });
-    case 3:
-      return S.Array(__S(50, __c6, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          layers: S.optional(__S(51, __c6, 3)),
-        }),
-      ).annotate({ identifier: "VolumeLayerInfo" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          textSnippet: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "VolumeSearchInfo" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          image: S.optional(S.Boolean),
-          text: S.optional(S.Boolean),
-        }),
-      ).annotate({
-        identifier: "VolumeVolumeInfoReadingModes",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          imageBubbleVersion: S.optional(S.String),
-          epubBubbleVersion: S.optional(S.String),
-          containsImageBubbles: S.optional(S.Boolean),
-          containsEpubBubbles: S.optional(S.Boolean),
-        }),
-      ).annotate({
-        identifier: "VolumeVolumeInfoPanelizationSummary",
-      });
-  }
-}
-function __c7(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          issueOrderNumber: S.optional(S.Number),
-          issueDisplayNumber: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "VolumeseriesinfoVolumeSeriesItemIssueItem",
-      });
-    case 1:
-      return S.Array(__S(56, __c7, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          orderNumber: S.optional(S.Number),
-          issue: S.optional(__S(57, __c7, 1)),
-          seriesId: S.optional(S.String),
-          seriesBookType: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "VolumeseriesinfoVolumeSeriesItem",
-      });
-    case 3:
-      return S.Array(__S(58, __c7, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          shortSeriesBookTitle: S.optional(S.String),
-          kind: S.optional(S.String),
-          bookDisplayNumber: S.optional(S.String),
-          volumeSeries: S.optional(__S(59, __c7, 3)),
-        }),
-      ).annotate({ identifier: "Volumeseriesinfo" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          height: S.optional(S.String),
-          thickness: S.optional(S.String),
-          width: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "VolumeVolumeInfoDimensions",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          identifier: S.optional(S.String),
-          type: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "VolumeVolumeInfoIndustryIdentifiersItem",
-      });
-    case 7:
-      return S.Array(__S(62, __c7, 6));
-  }
-}
-function __c8(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          smallThumbnail: S.optional(S.String),
-          extraLarge: S.optional(S.String),
-          thumbnail: S.optional(S.String),
-          small: S.optional(S.String),
-          medium: S.optional(S.String),
-          large: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "VolumeVolumeInfoImageLinks",
-      });
     case 1:
       return S.suspend(() =>
         S.Struct({
-          allowAnonLogging: S.optional(S.Boolean),
-          readingModes: S.optional(__S(54, __c6, 6)),
-          description: S.optional(S.String),
-          publishedDate: S.optional(S.String),
-          printType: S.optional(S.String),
-          categories: S.optional(__S(15, __c1, 7)),
-          infoLink: S.optional(S.String),
-          panelizationSummary: S.optional(__S(55, __c6, 7)),
-          authors: S.optional(__S(15, __c1, 7)),
-          language: S.optional(S.String),
-          canonicalVolumeLink: S.optional(S.String),
-          seriesInfo: S.optional(__S(60, __c7, 4)),
-          maturityRating: S.optional(S.String),
-          contentVersion: S.optional(S.String),
-          dimensions: S.optional(__S(61, __c7, 5)),
-          subtitle: S.optional(S.String),
-          previewLink: S.optional(S.String),
-          industryIdentifiers: S.optional(__S(63, __c7, 7)),
-          printedPageCount: S.optional(S.Number),
-          ratingsCount: S.optional(S.Number),
-          pageCount: S.optional(S.Number),
-          mainCategory: S.optional(S.String),
-          imageLinks: S.optional(__S(64, __c8, 0)),
-          comicsContent: S.optional(S.Boolean),
-          samplePageCount: S.optional(S.Number),
+          moreButtonUrl: S.optional(S.String),
+          maskColorArgb: S.optional(S.String),
+          moreButtonText: S.optional(S.String),
+          fillColorArgb: S.optional(S.String),
+          textColorArgb: S.optional(S.String),
+          imageUrl: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "DiscoveryclustersClustersItemBanner_with_content_container",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          totalVolumes: S.optional(S.Number),
+          subTitle: S.optional(S.String),
+          volumes: S.optional(__S(608, __c19, 0)),
+          uid: S.optional(S.String),
           title: S.optional(S.String),
-          averageRating: S.optional(S.Number),
-          publisher: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "VolumeVolumeInfo" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          count: S.optional(S.Number),
-          unit: S.optional(S.String),
+          banner_with_content_container: S.optional(__S(481, __c15, 1)),
         }),
       ).annotate({
-        identifier: "VolumeSaleInfoOffersItemRentalDuration",
+        identifier: "DiscoveryclustersClustersItem",
       });
     case 3:
-      return S.suspend(() =>
-        S.Struct({
-          amountInMicros: S.optional(S.Number),
-          currencyCode: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "VolumeSaleInfoOffersItemRetailPrice",
-      });
+      return S.Array(__S(482, __c15, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          giftable: S.optional(S.Boolean),
-          finskyOfferType: S.optional(S.Number),
-          rentalDuration: S.optional(__S(66, __c8, 2)),
-          retailPrice: S.optional(__S(67, __c8, 3)),
-          listPrice: S.optional(__S(67, __c8, 3)),
-        }),
-      ).annotate({ identifier: "VolumeSaleInfoOffersItem" });
-    case 5:
-      return S.Array(__S(68, __c8, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          amount: S.optional(S.Number),
-          currencyCode: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "VolumeSaleInfoListPrice" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          currencyCode: S.optional(S.String),
-          amount: S.optional(S.Number),
-        }),
-      ).annotate({
-        identifier: "VolumeSaleInfoRetailPrice",
-      });
-  }
-}
-function __c9(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          onSaleDate: S.optional(S.String),
-          offers: S.optional(__S(69, __c8, 5)),
-          country: S.optional(S.String),
-          listPrice: S.optional(__S(70, __c8, 6)),
-          retailPrice: S.optional(__S(71, __c8, 7)),
-          isEbook: S.optional(S.Boolean),
-          saleability: S.optional(S.String),
-          buyLink: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "VolumeSaleInfo" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          explanation: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "VolumeRecommendedInfo" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          processingState: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "VolumeUserInfoUserUploadedVolumeInfo",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          endUtcSec: S.optional(S.String),
-          startUtcSec: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "VolumeUserInfoRentalPeriod",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          displayName: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ReviewAuthor" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          extraDescription: S.optional(S.String),
-          url: S.optional(S.String),
-          description: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ReviewSource" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          author: S.optional(__S(76, __c9, 4)),
-          fullTextUrl: S.optional(S.String),
-          source: S.optional(__S(77, __c9, 5)),
-          volumeId: S.optional(S.String),
-          date: S.optional(S.String),
-          type: S.optional(S.String),
-          title: S.optional(S.String),
-          content: S.optional(S.String),
-          rating: S.optional(S.String),
           kind: S.optional(S.String),
+          clusters: S.optional(__S(483, __c15, 3)),
+          totalClusters: S.optional(S.Number),
         }),
-      ).annotate({ identifier: "Review" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          isSharingDisabledByFop: S.optional(S.Boolean),
-          familyRole: S.optional(S.String),
-          isSharingAllowed: S.optional(S.Boolean),
-        }),
-      ).annotate({
-        identifier: "VolumeUserInfoFamilySharing",
-      });
+      ).annotate({ identifier: "Discoveryclusters" });
   }
 }
-function __c10(j: number): any {
+function __c16(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() =>
-        S.Struct({
-          allowedCharacterCount: S.optional(S.Number),
-          remainingCharacterCount: S.optional(S.Number),
-          limitType: S.optional(S.String),
-          updated: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "VolumeUserInfoCopy" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          userUploadedVolumeInfo: S.optional(__S(74, __c9, 2)),
-          isPreordered: S.optional(S.Boolean),
-          acquiredTime: S.optional(S.String),
-          rentalPeriod: S.optional(__S(75, __c9, 3)),
-          acquisitionType: S.optional(S.Number),
-          review: S.optional(__S(78, __c9, 6)),
-          readingPosition: S.optional(__S(46, __c5, 6)),
-          familySharing: S.optional(__S(79, __c9, 7)),
-          updated: S.optional(S.String),
-          isInMyBooks: S.optional(S.Boolean),
-          isFamilySharingDisabledByFop: S.optional(S.Boolean),
-          isFamilySharedToUser: S.optional(S.Boolean),
-          entitlementType: S.optional(S.Number),
-          rentalState: S.optional(S.String),
-          copy: S.optional(__S(80, __c10, 0)),
-          isUploaded: S.optional(S.Boolean),
-          isFamilySharingAllowed: S.optional(S.Boolean),
-          isPurchased: S.optional(S.Boolean),
-          isFamilySharedFromUser: S.optional(S.Boolean),
-        }),
-      ).annotate({ identifier: "VolumeUserInfo" });
-    case 2:
       return S.suspend(() =>
         S.Struct({
           justAcquired: S.optional(S.Boolean),
@@ -3520,7 +3171,312 @@ function __c10(j: number): any {
       ).annotate({
         identifier: "DownloadAccessRestriction",
       });
+  }
+}
+function __c17(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          volumeAnnotationsVersion: S.optional(S.String),
+          layerId: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "VolumeLayerInfoLayersItem",
+      });
+    case 1:
+      return S.Array(__S(544, __c17, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          layers: S.optional(__S(545, __c17, 1)),
+        }),
+      ).annotate({ identifier: "VolumeLayerInfo" });
     case 3:
+      return S.suspend(() =>
+        S.Struct({
+          textSnippet: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "VolumeSearchInfo" });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          image: S.optional(S.Boolean),
+          text: S.optional(S.Boolean),
+        }),
+      ).annotate({
+        identifier: "VolumeVolumeInfoReadingModes",
+      });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          imageBubbleVersion: S.optional(S.String),
+          epubBubbleVersion: S.optional(S.String),
+          containsImageBubbles: S.optional(S.Boolean),
+          containsEpubBubbles: S.optional(S.Boolean),
+        }),
+      ).annotate({
+        identifier: "VolumeVolumeInfoPanelizationSummary",
+      });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          issueOrderNumber: S.optional(S.Number),
+          issueDisplayNumber: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "VolumeseriesinfoVolumeSeriesItemIssueItem",
+      });
+    case 7:
+      return S.Array(__S(550, __c17, 6));
+    case 8:
+      return S.suspend(() =>
+        S.Struct({
+          orderNumber: S.optional(S.Number),
+          issue: S.optional(__S(551, __c17, 7)),
+          seriesId: S.optional(S.String),
+          seriesBookType: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "VolumeseriesinfoVolumeSeriesItem",
+      });
+    case 9:
+      return S.Array(__S(552, __c17, 8));
+    case 10:
+      return S.suspend(() =>
+        S.Struct({
+          shortSeriesBookTitle: S.optional(S.String),
+          kind: S.optional(S.String),
+          bookDisplayNumber: S.optional(S.String),
+          volumeSeries: S.optional(__S(553, __c17, 9)),
+        }),
+      ).annotate({ identifier: "Volumeseriesinfo" });
+    case 11:
+      return S.suspend(() =>
+        S.Struct({
+          height: S.optional(S.String),
+          thickness: S.optional(S.String),
+          width: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "VolumeVolumeInfoDimensions",
+      });
+    case 12:
+      return S.suspend(() =>
+        S.Struct({
+          identifier: S.optional(S.String),
+          type: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "VolumeVolumeInfoIndustryIdentifiersItem",
+      });
+    case 13:
+      return S.Array(__S(556, __c17, 12));
+    case 14:
+      return S.suspend(() =>
+        S.Struct({
+          smallThumbnail: S.optional(S.String),
+          extraLarge: S.optional(S.String),
+          thumbnail: S.optional(S.String),
+          small: S.optional(S.String),
+          medium: S.optional(S.String),
+          large: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "VolumeVolumeInfoImageLinks",
+      });
+    case 15:
+      return S.suspend(() =>
+        S.Struct({
+          allowAnonLogging: S.optional(S.Boolean),
+          readingModes: S.optional(__S(548, __c17, 4)),
+          description: S.optional(S.String),
+          publishedDate: S.optional(S.String),
+          printType: S.optional(S.String),
+          categories: S.optional(__S(160, __c5, 0)),
+          infoLink: S.optional(S.String),
+          panelizationSummary: S.optional(__S(549, __c17, 5)),
+          authors: S.optional(__S(160, __c5, 0)),
+          language: S.optional(S.String),
+          canonicalVolumeLink: S.optional(S.String),
+          seriesInfo: S.optional(__S(554, __c17, 10)),
+          maturityRating: S.optional(S.String),
+          contentVersion: S.optional(S.String),
+          dimensions: S.optional(__S(555, __c17, 11)),
+          subtitle: S.optional(S.String),
+          previewLink: S.optional(S.String),
+          industryIdentifiers: S.optional(__S(557, __c17, 13)),
+          printedPageCount: S.optional(S.Number),
+          ratingsCount: S.optional(S.Number),
+          pageCount: S.optional(S.Number),
+          mainCategory: S.optional(S.String),
+          imageLinks: S.optional(__S(558, __c17, 14)),
+          comicsContent: S.optional(S.Boolean),
+          samplePageCount: S.optional(S.Number),
+          title: S.optional(S.String),
+          averageRating: S.optional(S.Number),
+          publisher: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "VolumeVolumeInfo" });
+    case 16:
+      return S.suspend(() =>
+        S.Struct({
+          count: S.optional(S.Number),
+          unit: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "VolumeSaleInfoOffersItemRentalDuration",
+      });
+    case 17:
+      return S.suspend(() =>
+        S.Struct({
+          amountInMicros: S.optional(S.Number),
+          currencyCode: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "VolumeSaleInfoOffersItemRetailPrice",
+      });
+    case 18:
+      return S.suspend(() =>
+        S.Struct({
+          giftable: S.optional(S.Boolean),
+          finskyOfferType: S.optional(S.Number),
+          rentalDuration: S.optional(__S(560, __c17, 16)),
+          retailPrice: S.optional(__S(561, __c17, 17)),
+          listPrice: S.optional(__S(561, __c17, 17)),
+        }),
+      ).annotate({ identifier: "VolumeSaleInfoOffersItem" });
+    case 19:
+      return S.Array(__S(562, __c17, 18));
+    case 20:
+      return S.suspend(() =>
+        S.Struct({
+          amount: S.optional(S.Number),
+          currencyCode: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "VolumeSaleInfoListPrice" });
+    case 21:
+      return S.suspend(() =>
+        S.Struct({
+          currencyCode: S.optional(S.String),
+          amount: S.optional(S.Number),
+        }),
+      ).annotate({
+        identifier: "VolumeSaleInfoRetailPrice",
+      });
+    case 22:
+      return S.suspend(() =>
+        S.Struct({
+          onSaleDate: S.optional(S.String),
+          offers: S.optional(__S(563, __c17, 19)),
+          country: S.optional(S.String),
+          listPrice: S.optional(__S(564, __c17, 20)),
+          retailPrice: S.optional(__S(565, __c17, 21)),
+          isEbook: S.optional(S.Boolean),
+          saleability: S.optional(S.String),
+          buyLink: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "VolumeSaleInfo" });
+    case 23:
+      return S.suspend(() =>
+        S.Struct({
+          explanation: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "VolumeRecommendedInfo" });
+    case 24:
+      return S.suspend(() =>
+        S.Struct({
+          processingState: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "VolumeUserInfoUserUploadedVolumeInfo",
+      });
+    case 25:
+      return S.suspend(() =>
+        S.Struct({
+          endUtcSec: S.optional(S.String),
+          startUtcSec: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "VolumeUserInfoRentalPeriod",
+      });
+    case 26:
+      return S.suspend(() =>
+        S.Struct({
+          displayName: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ReviewAuthor" });
+    case 27:
+      return S.suspend(() =>
+        S.Struct({
+          extraDescription: S.optional(S.String),
+          url: S.optional(S.String),
+          description: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ReviewSource" });
+    case 28:
+      return S.suspend(() =>
+        S.Struct({
+          author: S.optional(__S(570, __c17, 26)),
+          fullTextUrl: S.optional(S.String),
+          source: S.optional(__S(571, __c17, 27)),
+          volumeId: S.optional(S.String),
+          date: S.optional(S.String),
+          type: S.optional(S.String),
+          title: S.optional(S.String),
+          content: S.optional(S.String),
+          rating: S.optional(S.String),
+          kind: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Review" });
+    case 29:
+      return S.suspend(() =>
+        S.Struct({
+          isSharingDisabledByFop: S.optional(S.Boolean),
+          familyRole: S.optional(S.String),
+          isSharingAllowed: S.optional(S.Boolean),
+        }),
+      ).annotate({
+        identifier: "VolumeUserInfoFamilySharing",
+      });
+    case 30:
+      return S.suspend(() =>
+        S.Struct({
+          allowedCharacterCount: S.optional(S.Number),
+          remainingCharacterCount: S.optional(S.Number),
+          limitType: S.optional(S.String),
+          updated: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "VolumeUserInfoCopy" });
+    case 31:
+      return S.suspend(() =>
+        S.Struct({
+          userUploadedVolumeInfo: S.optional(__S(568, __c17, 24)),
+          isPreordered: S.optional(S.Boolean),
+          acquiredTime: S.optional(S.String),
+          rentalPeriod: S.optional(__S(569, __c17, 25)),
+          acquisitionType: S.optional(S.Number),
+          review: S.optional(__S(572, __c17, 28)),
+          readingPosition: S.optional(__S(416, __c13, 0)),
+          familySharing: S.optional(__S(573, __c17, 29)),
+          updated: S.optional(S.String),
+          isInMyBooks: S.optional(S.Boolean),
+          isFamilySharingDisabledByFop: S.optional(S.Boolean),
+          isFamilySharedToUser: S.optional(S.Boolean),
+          entitlementType: S.optional(S.Number),
+          rentalState: S.optional(S.String),
+          copy: S.optional(__S(574, __c17, 30)),
+          isUploaded: S.optional(S.Boolean),
+          isFamilySharingAllowed: S.optional(S.Boolean),
+          isPurchased: S.optional(S.Boolean),
+          isFamilySharedFromUser: S.optional(S.Boolean),
+        }),
+      ).annotate({ identifier: "VolumeUserInfo" });
+  }
+}
+function __c18(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           isAvailable: S.optional(S.Boolean),
@@ -3528,7 +3484,7 @@ function __c10(j: number): any {
           acsTokenLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "VolumeAccessInfoPdf" });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           acsTokenLink: S.optional(S.String),
@@ -3536,10 +3492,10 @@ function __c10(j: number): any {
           downloadLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "VolumeAccessInfoEpub" });
-    case 5:
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          downloadAccess: S.optional(__S(82, __c10, 2)),
+          downloadAccess: S.optional(__S(512, __c16, 0)),
           webReaderLink: S.optional(S.String),
           quoteSharingAllowed: S.optional(S.Boolean),
           textToSpeechPermission: S.optional(S.String),
@@ -3547,73 +3503,41 @@ function __c10(j: number): any {
           viewability: S.optional(S.String),
           publicDomain: S.optional(S.Boolean),
           country: S.optional(S.String),
-          pdf: S.optional(__S(83, __c10, 3)),
+          pdf: S.optional(__S(576, __c18, 0)),
           embeddable: S.optional(S.Boolean),
-          epub: S.optional(__S(84, __c10, 4)),
+          epub: S.optional(__S(577, __c18, 1)),
           explicitOfflineLicenseManagement: S.optional(S.Boolean),
           viewOrderUrl: S.optional(S.String),
           accessViewStatus: S.optional(S.String),
         }),
       ).annotate({ identifier: "VolumeAccessInfo" });
-    case 6:
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          layerInfo: S.optional(__S(52, __c6, 4)),
-          searchInfo: S.optional(__S(53, __c6, 5)),
-          volumeInfo: S.optional(__S(65, __c8, 1)),
-          saleInfo: S.optional(__S(72, __c9, 0)),
-          recommendedInfo: S.optional(__S(73, __c9, 1)),
-          userInfo: S.optional(__S(81, __c10, 1)),
-          accessInfo: S.optional(__S(85, __c10, 5)),
+          layerInfo: S.optional(__S(546, __c17, 2)),
+          searchInfo: S.optional(__S(547, __c17, 3)),
+          volumeInfo: S.optional(__S(559, __c17, 15)),
+          saleInfo: S.optional(__S(566, __c17, 22)),
+          recommendedInfo: S.optional(__S(567, __c17, 23)),
+          userInfo: S.optional(__S(575, __c17, 31)),
+          accessInfo: S.optional(__S(578, __c18, 2)),
           id: S.optional(S.String),
           selfLink: S.optional(S.String),
           kind: S.optional(S.String),
           etag: S.optional(S.String),
         }),
       ).annotate({ identifier: "Volume" });
-    case 7:
-      return S.Array(__S(86, __c10, 6));
   }
 }
-function __c11(j: number): any {
+function __c19(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() =>
-        S.Struct({
-          moreButtonUrl: S.optional(S.String),
-          maskColorArgb: S.optional(S.String),
-          moreButtonText: S.optional(S.String),
-          fillColorArgb: S.optional(S.String),
-          textColorArgb: S.optional(S.String),
-          imageUrl: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "DiscoveryclustersClustersItemBanner_with_content_container",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          totalVolumes: S.optional(S.Number),
-          subTitle: S.optional(S.String),
-          volumes: S.optional(__S(87, __c10, 7)),
-          uid: S.optional(S.String),
-          title: S.optional(S.String),
-          banner_with_content_container: S.optional(__S(88, __c11, 0)),
-        }),
-      ).annotate({
-        identifier: "DiscoveryclustersClustersItem",
-      });
-    case 2:
-      return S.Array(__S(89, __c11, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          kind: S.optional(S.String),
-          clusters: S.optional(__S(90, __c11, 2)),
-          totalClusters: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "Discoveryclusters" });
-    case 4:
+      return S.Array(__S(579, __c18, 3));
+  }
+}
+function __c20(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           model: S.optional(S.String.pipe(T.Query())),
@@ -3630,7 +3554,7 @@ function __c11(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetPromoofferRequest" });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           description: S.optional(S.String),
@@ -3641,34 +3565,34 @@ function __c11(j: number): any {
           canonicalVolumeLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "OffersItemsItemItemsItem" });
-    case 6:
-      return S.Array(__S(93, __c11, 5));
-    case 7:
+    case 2:
+      return S.Array(__S(641, __c20, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
           gservicesKey: S.optional(S.String),
-          items: S.optional(__S(94, __c11, 6)),
+          items: S.optional(__S(642, __c20, 2)),
           artUrl: S.optional(S.String),
           id: S.optional(S.String),
         }),
       ).annotate({ identifier: "OffersItemsItem" });
-  }
-}
-function __c12(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(95, __c11, 7));
-    case 1:
+    case 4:
+      return S.Array(__S(643, __c20, 3));
+    case 5:
       return S.suspend(() =>
         S.Struct({
           kind: S.optional(S.String),
-          items: S.optional(__S(96, __c12, 0)),
+          items: S.optional(__S(644, __c20, 4)),
         }),
       ).annotate({ identifier: "Offers" });
-    case 2:
+  }
+}
+function __c21(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          series_id: __S(15, __c1, 7).pipe(T.Query()),
+          series_id: __S(160, __c5, 0).pipe(T.Query()),
         }).pipe(
           T.Http({
             method: "GET",
@@ -3677,7 +3601,7 @@ function __c12(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetSeriesRequest" });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           currencyCode: S.optional(S.String),
@@ -3688,7 +3612,7 @@ function __c12(j: number): any {
       ).annotate({
         identifier: "SeriesSeriesItemSeriesSubscriptionReleaseInfoNextReleaseInfo",
       });
-    case 4:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           releaseNumber: S.optional(S.String),
@@ -3699,24 +3623,24 @@ function __c12(j: number): any {
       ).annotate({
         identifier: "SeriesSeriesItemSeriesSubscriptionReleaseInfoCurrentReleaseInfo",
       });
-    case 5:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           cancelTime: S.optional(S.String),
-          nextReleaseInfo: S.optional(__S(99, __c12, 3)),
-          currentReleaseInfo: S.optional(__S(100, __c12, 4)),
+          nextReleaseInfo: S.optional(__S(673, __c21, 1)),
+          currentReleaseInfo: S.optional(__S(674, __c21, 2)),
           seriesSubscriptionType: S.optional(S.String),
         }),
       ).annotate({
         identifier: "SeriesSeriesItemSeriesSubscriptionReleaseInfo",
       });
-    case 6:
+    case 4:
       return S.suspend(() =>
         S.Struct({
           seriesType: S.optional(S.String),
           seriesId: S.optional(S.String),
           bannerImageUrl: S.optional(S.String),
-          seriesSubscriptionReleaseInfo: S.optional(__S(101, __c12, 5)),
+          seriesSubscriptionReleaseInfo: S.optional(__S(675, __c21, 3)),
           seriesFormatType: S.optional(S.String),
           subscriptionId: S.optional(S.String),
           eligibleForSubscription: S.optional(S.Boolean),
@@ -3725,20 +3649,20 @@ function __c12(j: number): any {
           imageUrl: S.optional(S.String),
         }),
       ).annotate({ identifier: "SeriesSeriesItem" });
-    case 7:
-      return S.Array(__S(102, __c12, 6));
-  }
-}
-function __c13(j: number): any {
-  switch (j) {
-    case 0:
+    case 5:
+      return S.Array(__S(676, __c21, 4));
+    case 6:
       return S.suspend(() =>
         S.Struct({
-          series: S.optional(__S(103, __c12, 7)),
+          series: S.optional(__S(677, __c21, 5)),
           kind: S.optional(S.String),
         }),
       ).annotate({ identifier: "Series" });
-    case 1:
+  }
+}
+function __c22(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           page_token: S.optional(S.String.pipe(T.Query())),
@@ -3754,15 +3678,19 @@ function __c13(j: number): any {
       ).annotate({
         identifier: "GetSeriesMembershipRequest",
       });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          member: S.optional(__S(87, __c10, 7)),
+          member: S.optional(__S(608, __c19, 0)),
           kind: S.optional(S.String),
         }),
       ).annotate({ identifier: "Seriesmembership" });
-    case 3:
+  }
+}
+function __c23(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           country: S.optional(S.String.pipe(T.Query())),
@@ -3776,7 +3704,11 @@ function __c13(j: number): any {
       ).annotate({
         identifier: "GetUserSettingsMyconfigRequest",
       });
-    case 4:
+  }
+}
+function __c24(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           opted_state: S.optional(S.String),
@@ -3784,34 +3716,34 @@ function __c13(j: number): any {
       ).annotate({
         identifier: "UsersettingsNotificationPriceDrop",
       });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          priceDrop: S.optional(__S(108, __c13, 4)),
-          moreFromAuthors: S.optional(__S(108, __c13, 4)),
-          rewardExpirations: S.optional(__S(108, __c13, 4)),
-          moreFromSeries: S.optional(__S(108, __c13, 4)),
-          matchMyInterests: S.optional(__S(108, __c13, 4)),
+          priceDrop: S.optional(__S(768, __c24, 0)),
+          moreFromAuthors: S.optional(__S(768, __c24, 0)),
+          rewardExpirations: S.optional(__S(768, __c24, 0)),
+          moreFromSeries: S.optional(__S(768, __c24, 0)),
+          matchMyInterests: S.optional(__S(768, __c24, 0)),
         }),
       ).annotate({ identifier: "UsersettingsNotification" });
-    case 6:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           isEnabled: S.optional(S.Boolean),
           folderName: S.optional(S.String),
         }),
       ).annotate({ identifier: "UsersettingsNotesExport" });
-    case 7:
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          notification: S.optional(__S(109, __c13, 5)),
-          notesExport: S.optional(__S(110, __c13, 6)),
+          notification: S.optional(__S(769, __c24, 1)),
+          notesExport: S.optional(__S(770, __c24, 2)),
           kind: S.optional(S.String),
         }),
       ).annotate({ identifier: "Usersettings" });
   }
 }
-function __c14(j: number): any {
+function __c25(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3831,68 +3763,18 @@ function __c14(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetVolumesRequest" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          allowedCharacterCount: S.optional(S.Number),
-          limitType: S.optional(S.String),
-          remainingCharacterCount: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "AnnotationLayerSummary" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          cfiRange: S.optional(__S(41, __c5, 1)),
-          gbImageRange: S.optional(__S(41, __c5, 1)),
-          imageCfiRange: S.optional(__S(41, __c5, 1)),
-          gbTextRange: S.optional(__S(41, __c5, 1)),
-          contentVersion: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "AnnotationClientVersionRanges",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          cfiRange: S.optional(__S(41, __c5, 1)),
-          contentVersion: S.optional(S.String),
-          gbImageRange: S.optional(__S(41, __c5, 1)),
-          imageCfiRange: S.optional(__S(41, __c5, 1)),
-          gbTextRange: S.optional(__S(41, __c5, 1)),
-        }),
-      ).annotate({
-        identifier: "AnnotationCurrentVersionRanges",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          updated: S.optional(S.String),
-          id: S.optional(S.String),
-          selfLink: S.optional(S.String),
-          pageIds: S.optional(__S(15, __c1, 7)),
-          kind: S.optional(S.String),
-          layerId: S.optional(S.String),
-          layerSummary: S.optional(__S(113, __c14, 1)),
-          clientVersionRanges: S.optional(__S(114, __c14, 2)),
-          currentVersionRanges: S.optional(__S(115, __c14, 3)),
-          data: S.optional(S.String),
-          afterSelectedText: S.optional(S.String),
-          selectedText: S.optional(S.String),
-          highlightStyle: S.optional(S.String),
-          created: S.optional(S.String),
-          deleted: S.optional(S.Boolean),
-          volumeId: S.optional(S.String),
-          beforeSelectedText: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Annotation" });
-    case 5:
+  }
+}
+function __c26(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           annotationId: S.optional(S.String.pipe(T.Query())),
           showOnlySummaryInResponse: S.optional(S.Boolean.pipe(T.Query())),
           country: S.optional(S.String.pipe(T.Query())),
           source: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(116, __c14, 4).pipe(T.HttpBody())),
+          body: S.optional(__S(867, __c27, 3).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -3903,7 +3785,69 @@ function __c14(j: number): any {
       ).annotate({
         identifier: "InsertMylibraryAnnotationsRequest",
       });
-    case 6:
+  }
+}
+function __c27(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          allowedCharacterCount: S.optional(S.Number),
+          limitType: S.optional(S.String),
+          remainingCharacterCount: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "AnnotationLayerSummary" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          cfiRange: S.optional(__S(288, __c9, 0)),
+          gbImageRange: S.optional(__S(288, __c9, 0)),
+          imageCfiRange: S.optional(__S(288, __c9, 0)),
+          gbTextRange: S.optional(__S(288, __c9, 0)),
+          contentVersion: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "AnnotationClientVersionRanges",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          cfiRange: S.optional(__S(288, __c9, 0)),
+          contentVersion: S.optional(S.String),
+          gbImageRange: S.optional(__S(288, __c9, 0)),
+          imageCfiRange: S.optional(__S(288, __c9, 0)),
+          gbTextRange: S.optional(__S(288, __c9, 0)),
+        }),
+      ).annotate({
+        identifier: "AnnotationCurrentVersionRanges",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          updated: S.optional(S.String),
+          id: S.optional(S.String),
+          selfLink: S.optional(S.String),
+          pageIds: S.optional(__S(160, __c5, 0)),
+          kind: S.optional(S.String),
+          layerId: S.optional(S.String),
+          layerSummary: S.optional(__S(864, __c27, 0)),
+          clientVersionRanges: S.optional(__S(865, __c27, 1)),
+          currentVersionRanges: S.optional(__S(866, __c27, 2)),
+          data: S.optional(S.String),
+          afterSelectedText: S.optional(S.String),
+          selectedText: S.optional(S.String),
+          highlightStyle: S.optional(S.String),
+          created: S.optional(S.String),
+          deleted: S.optional(S.Boolean),
+          volumeId: S.optional(S.String),
+          beforeSelectedText: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Annotation" });
+  }
+}
+function __c28(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           userId: S.String.pipe(T.Label()),
@@ -3916,20 +3860,24 @@ function __c14(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ListBookshelvesRequest" });
-    case 7:
-      return S.Array(__S(10, __c1, 2));
   }
 }
-function __c15(j: number): any {
+function __c29(j: number): any {
   switch (j) {
     case 0:
+      return S.Array(__S(64, __c2, 0));
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          items: S.optional(__S(119, __c14, 7)),
+          items: S.optional(__S(928, __c29, 0)),
           kind: S.optional(S.String),
         }),
       ).annotate({ identifier: "Bookshelves" });
-    case 1:
+  }
+}
+function __c30(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           showPreorders: S.optional(S.Boolean.pipe(T.Query())),
@@ -3948,15 +3896,23 @@ function __c15(j: number): any {
       ).annotate({
         identifier: "ListBookshelvesVolumesRequest",
       });
-    case 2:
+  }
+}
+function __c31(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           totalItems: S.optional(S.Number),
           kind: S.optional(S.String),
-          items: S.optional(__S(87, __c10, 7)),
+          items: S.optional(__S(608, __c19, 0)),
         }),
       ).annotate({ identifier: "Volumes" });
-    case 3:
+  }
+}
+function __c32(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           locale: S.optional(S.String.pipe(T.Query())),
@@ -3970,7 +3926,7 @@ function __c15(j: number): any {
       ).annotate({
         identifier: "ListCategoriesOnboardingRequest",
       });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           categoryId: S.optional(S.String),
@@ -3978,19 +3934,23 @@ function __c15(j: number): any {
           name: S.optional(S.String),
         }),
       ).annotate({ identifier: "CategoryItemsItem" });
-    case 5:
-      return S.Array(__S(124, __c15, 4));
-    case 6:
+    case 2:
+      return S.Array(__S(1025, __c32, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
           kind: S.optional(S.String),
-          items: S.optional(__S(125, __c15, 5)),
+          items: S.optional(__S(1026, __c32, 2)),
         }),
       ).annotate({ identifier: "Category" });
-    case 7:
+  }
+}
+function __c33(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          categoryId: S.optional(__S(15, __c1, 7).pipe(T.Query())),
+          categoryId: S.optional(__S(160, __c5, 0).pipe(T.Query())),
           locale: S.optional(S.String.pipe(T.Query())),
           pageToken: S.optional(S.String.pipe(T.Query())),
           maxAllowedMaturityRating: S.optional(S.String.pipe(T.Query())),
@@ -4005,19 +3965,19 @@ function __c15(j: number): any {
       ).annotate({
         identifier: "ListCategoryVolumesOnboardingRequest",
       });
-  }
-}
-function __c16(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          items: __S(87, __c10, 7),
+          items: __S(608, __c19, 0),
           kind: S.optional(S.String),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "Volume2" });
-    case 1:
+  }
+}
+function __c34(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           contentVersion: S.optional(S.String.pipe(T.Query())),
@@ -4033,17 +3993,21 @@ function __c16(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ListLayersRequest" });
+    case 1:
+      return S.Array(__S(192, __c6, 0));
     case 2:
-      return S.Array(__S(16, __c2, 0));
-    case 3:
       return S.suspend(() =>
         S.Struct({
           totalItems: S.optional(S.Number),
           kind: S.optional(S.String),
-          items: S.optional(__S(130, __c16, 2)),
+          items: S.optional(__S(1089, __c34, 1)),
         }),
       ).annotate({ identifier: "Layersummaries" });
-    case 4:
+  }
+}
+function __c35(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           w: S.optional(S.Number.pipe(T.Query())),
@@ -4057,7 +4021,7 @@ function __c16(j: number): any {
           layerId: S.String.pipe(T.Label()),
           contentVersion: S.String.pipe(T.Query()),
           updatedMax: S.optional(S.String.pipe(T.Query())),
-          annotationDataId: S.optional(__S(15, __c1, 7).pipe(T.Query())),
+          annotationDataId: S.optional(__S(160, __c5, 0).pipe(T.Query())),
           source: S.optional(S.String.pipe(T.Query())),
         }).pipe(
           T.Http({
@@ -4069,7 +4033,7 @@ function __c16(j: number): any {
       ).annotate({
         identifier: "ListLayersAnnotationDataRequest",
       });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           previewImageUrl: S.optional(S.String),
@@ -4079,7 +4043,7 @@ function __c16(j: number): any {
           snippet: S.optional(S.String),
         }),
       ).annotate({ identifier: "GeolayerdataCommon" });
-    case 6:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           latitude: S.optional(S.Number),
@@ -4088,7 +4052,7 @@ function __c16(j: number): any {
       ).annotate({
         identifier: "GeolayerdataGeoViewportLo",
       });
-    case 7:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           longitude: S.optional(S.Number),
@@ -4097,39 +4061,35 @@ function __c16(j: number): any {
       ).annotate({
         identifier: "GeolayerdataGeoViewportHi",
       });
-  }
-}
-function __c17(j: number): any {
-  switch (j) {
-    case 0:
+    case 4:
       return S.suspend(() =>
         S.Struct({
-          lo: S.optional(__S(134, __c16, 6)),
-          hi: S.optional(__S(135, __c16, 7)),
+          lo: S.optional(__S(1122, __c35, 2)),
+          hi: S.optional(__S(1123, __c35, 3)),
         }),
       ).annotate({ identifier: "GeolayerdataGeoViewport" });
-    case 1:
+    case 5:
       return S.suspend(() =>
         S.Struct({
-          boundary: S.optional(__S(15, __c1, 7)),
+          boundary: S.optional(__S(160, __c5, 0)),
           mapType: S.optional(S.String),
           longitude: S.optional(S.Number),
           countryCode: S.optional(S.String),
           zoom: S.optional(S.Number),
           cachePolicy: S.optional(S.String),
-          viewport: S.optional(__S(136, __c17, 0)),
+          viewport: S.optional(__S(1124, __c35, 4)),
           latitude: S.optional(S.Number),
         }),
       ).annotate({ identifier: "GeolayerdataGeo" });
-    case 2:
+    case 6:
       return S.suspend(() =>
         S.Struct({
           kind: S.optional(S.String),
-          common: S.optional(__S(133, __c16, 5)),
-          geo: S.optional(__S(137, __c17, 1)),
+          common: S.optional(__S(1121, __c35, 1)),
+          geo: S.optional(__S(1125, __c35, 5)),
         }),
       ).annotate({ identifier: "Geolayerdata" });
-    case 3:
+    case 7:
       return S.suspend(() =>
         S.Struct({
           volumeId: S.optional(S.String),
@@ -4137,24 +4097,28 @@ function __c17(j: number): any {
           layerId: S.optional(S.String),
           encodedData: S.optional(S.String),
           kind: S.optional(S.String),
-          data: S.optional(__S(138, __c17, 2)),
+          data: S.optional(__S(1126, __c35, 6)),
           updated: S.optional(S.String),
           annotationType: S.optional(S.String),
           selfLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "GeoAnnotationdata" });
-    case 4:
-      return S.Array(__S(139, __c17, 3));
-    case 5:
+    case 8:
+      return S.Array(__S(1127, __c35, 7));
+    case 9:
       return S.suspend(() =>
         S.Struct({
-          items: __S(140, __c17, 4),
+          items: __S(1128, __c35, 8),
           kind: S.optional(S.String),
           nextPageToken: S.optional(S.String),
           totalItems: S.optional(S.Number),
         }),
       ).annotate({ identifier: "Annotationsdata" });
-    case 6:
+  }
+}
+function __c36(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           startOffset: S.optional(S.String.pipe(T.Query())),
@@ -4182,30 +4146,30 @@ function __c17(j: number): any {
       ).annotate({
         identifier: "ListLayersVolumeAnnotationsRequest",
       });
-    case 7:
-      return S.Array(__S(43, __c5, 3));
-  }
-}
-function __c18(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
+      return S.Array(__S(321, __c10, 1));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          items: __S(143, __c17, 7),
+          items: __S(1153, __c36, 1),
           kind: S.optional(S.String),
           nextPageToken: S.optional(S.String),
           totalItems: S.optional(S.Number),
           version: S.optional(S.String),
         }),
       ).annotate({ identifier: "Volumeannotations" });
-    case 1:
+  }
+}
+function __c37(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           contentVersion: S.optional(S.String.pipe(T.Query())),
           updatedMax: S.optional(S.String.pipe(T.Query())),
           showDeleted: S.optional(S.Boolean.pipe(T.Query())),
           pageToken: S.optional(S.String.pipe(T.Query())),
-          layerIds: S.optional(__S(15, __c1, 7).pipe(T.Query())),
+          layerIds: S.optional(__S(160, __c5, 0).pipe(T.Query())),
           layerId: S.optional(S.String.pipe(T.Query())),
           maxResults: S.optional(S.Number.pipe(T.Query())),
           updatedMin: S.optional(S.String.pipe(T.Query())),
@@ -4221,18 +4185,22 @@ function __c18(j: number): any {
       ).annotate({
         identifier: "ListMylibraryAnnotationsRequest",
       });
+    case 1:
+      return S.Array(__S(867, __c27, 3));
     case 2:
-      return S.Array(__S(116, __c14, 4));
-    case 3:
       return S.suspend(() =>
         S.Struct({
-          items: __S(146, __c18, 2),
+          items: __S(1185, __c37, 1),
           kind: S.optional(S.String),
           totalItems: S.optional(S.Number),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "Annotations" });
-    case 4:
+  }
+}
+function __c38(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           source: S.optional(S.String.pipe(T.Query())),
@@ -4246,7 +4214,11 @@ function __c18(j: number): any {
       ).annotate({
         identifier: "ListMylibraryBookshelvesRequest",
       });
-    case 5:
+  }
+}
+function __c39(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           maxResults: S.optional(S.Number.pipe(T.Query())),
@@ -4267,7 +4239,11 @@ function __c18(j: number): any {
       ).annotate({
         identifier: "ListMylibraryBookshelvesVolumesRequest",
       });
-    case 6:
+  }
+}
+function __c40(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           cpksver: S.String.pipe(T.Query()),
@@ -4281,7 +4257,7 @@ function __c18(j: number): any {
       ).annotate({
         identifier: "ListOfflineMetadataDictionaryRequest",
       });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           version: S.optional(S.String),
@@ -4291,20 +4267,20 @@ function __c18(j: number): any {
           size: S.optional(S.String),
         }),
       ).annotate({ identifier: "MetadataItemsItem" });
-  }
-}
-function __c19(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(151, __c18, 7));
-    case 1:
+    case 2:
+      return S.Array(__S(1281, __c40, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
           kind: S.optional(S.String),
-          items: S.optional(__S(152, __c19, 0)),
+          items: S.optional(__S(1282, __c40, 2)),
         }),
       ).annotate({ identifier: "Metadata" });
-    case 2:
+  }
+}
+function __c41(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           q: S.String.pipe(T.Query()),
@@ -4329,7 +4305,11 @@ function __c19(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ListVolumesRequest" });
-    case 3:
+  }
+}
+function __c42(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           locale: S.optional(S.String.pipe(T.Query())),
@@ -4347,13 +4327,15 @@ function __c19(j: number): any {
       ).annotate({
         identifier: "ListVolumesAssociatedRequest",
       });
-    case 4:
-      return S.Array(S.String);
-    case 5:
+  }
+}
+function __c43(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          processingState: S.optional(__S(156, __c19, 4).pipe(T.Query())),
-          acquireMethod: S.optional(__S(156, __c19, 4).pipe(T.Query())),
+          processingState: S.optional(__S(1408, __c44, 0).pipe(T.Query())),
+          acquireMethod: S.optional(__S(1408, __c44, 0).pipe(T.Query())),
           startIndex: S.optional(S.Number.pipe(T.Query())),
           maxResults: S.optional(S.Number.pipe(T.Query())),
           locale: S.optional(S.String.pipe(T.Query())),
@@ -4369,7 +4351,48 @@ function __c19(j: number): any {
       ).annotate({
         identifier: "ListVolumesMybooksRequest",
       });
-    case 6:
+  }
+}
+function __c44(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c45(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          manufacturer: S.optional(S.String.pipe(T.Query())),
+          model: S.optional(S.String.pipe(T.Query())),
+          volumeId: S.optional(S.String.pipe(T.Query())),
+          device: S.optional(S.String.pipe(T.Query())),
+          serial: S.optional(S.String.pipe(T.Query())),
+          offerId: S.optional(S.String.pipe(T.Query())),
+          product: S.optional(S.String.pipe(T.Query())),
+          androidId: S.optional(S.String.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "books/v1/promooffer/accept",
+            baseUrl: "https://books.googleapis.com/",
+          }),
+        ),
+      ).annotate({ identifier: "AcceptPromoofferRequest" });
+  }
+}
+function __c46(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "Empty",
+      });
+  }
+}
+function __c47(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           locale: S.optional(S.String.pipe(T.Query())),
@@ -4385,14 +4408,18 @@ function __c19(j: number): any {
       ).annotate({
         identifier: "ListVolumesRecommendedRequest",
       });
-    case 7:
+  }
+}
+function __c48(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          processingState: S.optional(__S(156, __c19, 4).pipe(T.Query())),
+          processingState: S.optional(__S(1408, __c44, 0).pipe(T.Query())),
           startIndex: S.optional(S.Number.pipe(T.Query())),
           locale: S.optional(S.String.pipe(T.Query())),
           maxResults: S.optional(S.Number.pipe(T.Query())),
-          volumeId: S.optional(__S(15, __c1, 7).pipe(T.Query())),
+          volumeId: S.optional(__S(160, __c5, 0).pipe(T.Query())),
           source: S.optional(S.String.pipe(T.Query())),
         }).pipe(
           T.Http({
@@ -4406,7 +4433,7 @@ function __c19(j: number): any {
       });
   }
 }
-function __c20(j: number): any {
+function __c49(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4425,7 +4452,11 @@ function __c20(j: number): any {
       ).annotate({
         identifier: "MoveVolumeMylibraryBookshelvesRequest",
       });
-    case 1:
+  }
+}
+function __c50(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           source: S.optional(S.String.pipe(T.Query())),
@@ -4442,7 +4473,7 @@ function __c20(j: number): any {
       ).annotate({
         identifier: "RateVolumesRecommendedRequest",
       });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           consistency_token: S.optional(S.String),
@@ -4450,13 +4481,17 @@ function __c20(j: number): any {
       ).annotate({
         identifier: "BooksVolumesRecommendedRateResponse",
       });
-    case 3:
+  }
+}
+function __c51(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           locale: S.optional(S.String.pipe(T.Query())),
           cpksver: S.String.pipe(T.Query()),
           source: S.optional(S.String.pipe(T.Query())),
-          volumeIds: __S(15, __c1, 7).pipe(T.Query()),
+          volumeIds: __S(160, __c5, 0).pipe(T.Query()),
         }).pipe(
           T.Http({
             method: "POST",
@@ -4467,16 +4502,20 @@ function __c20(j: number): any {
       ).annotate({
         identifier: "ReleaseDownloadAccessMyconfigRequest",
       });
-    case 4:
-      return S.Array(__S(82, __c10, 2));
-    case 5:
+    case 1:
+      return S.Array(__S(512, __c16, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          downloadAccessList: S.optional(__S(164, __c20, 4)),
+          downloadAccessList: S.optional(__S(1633, __c51, 1)),
           kind: S.optional(S.String),
         }),
       ).annotate({ identifier: "DownloadAccesses" });
-    case 6:
+  }
+}
+function __c52(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           source: S.optional(S.String.pipe(T.Query())),
@@ -4493,7 +4532,11 @@ function __c20(j: number): any {
       ).annotate({
         identifier: "RemoveVolumeMylibraryBookshelvesRequest",
       });
-    case 7:
+  }
+}
+function __c53(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           cpksver: S.String.pipe(T.Query()),
@@ -4512,11 +4555,7 @@ function __c20(j: number): any {
       ).annotate({
         identifier: "RequestAccessMyconfigRequest",
       });
-  }
-}
-function __c21(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           timeWindowSeconds: S.optional(S.Number),
@@ -4534,15 +4573,19 @@ function __c21(j: number): any {
       ).annotate({
         identifier: "ConcurrentAccessRestriction",
       });
-    case 1:
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          downloadAccess: S.optional(__S(82, __c10, 2)),
-          concurrentAccess: S.optional(__S(168, __c21, 0)),
+          downloadAccess: S.optional(__S(512, __c16, 0)),
+          concurrentAccess: S.optional(__S(1697, __c53, 1)),
           kind: S.optional(S.String),
         }),
       ).annotate({ identifier: "RequestAccessData" });
-    case 2:
+  }
+}
+function __c54(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           source: S.optional(S.String.pipe(T.Query())),
@@ -4562,7 +4605,11 @@ function __c21(j: number): any {
       ).annotate({
         identifier: "SetPositionMylibraryReadingpositionsRequest",
       });
-    case 3:
+  }
+}
+function __c55(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           volumeId: S.optional(S.String.pipe(T.Query())),
@@ -4578,10 +4625,14 @@ function __c21(j: number): any {
       ).annotate({
         identifier: "ShareFamilysharingRequest",
       });
-    case 4:
+  }
+}
+function __c56(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          layerIds: __S(15, __c1, 7).pipe(T.Query()),
+          layerIds: __S(160, __c5, 0).pipe(T.Query()),
           source: S.optional(S.String.pipe(T.Query())),
           volumeId: S.String.pipe(T.Query()),
         }).pipe(
@@ -4594,7 +4645,7 @@ function __c21(j: number): any {
       ).annotate({
         identifier: "SummaryMylibraryAnnotationsRequest",
       });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           allowedCharacterCount: S.optional(S.Number),
@@ -4606,18 +4657,54 @@ function __c21(j: number): any {
       ).annotate({
         identifier: "AnnotationsSummaryLayersItem",
       });
-    case 6:
-      return S.Array(__S(173, __c21, 5));
-    case 7:
+    case 2:
+      return S.Array(__S(1793, __c56, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
           kind: S.optional(S.String),
-          layers: S.optional(__S(174, __c21, 6)),
+          layers: S.optional(__S(1794, __c56, 2)),
         }),
       ).annotate({ identifier: "AnnotationsSummary" });
   }
 }
-function __c22(j: number): any {
+function __c57(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          upload_client_token: S.optional(S.String.pipe(T.Query())),
+          mime_type: S.optional(S.String.pipe(T.Query())),
+          name: S.optional(S.String.pipe(T.Query())),
+          drive_document_id: S.optional(S.String.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "books/v1/cloudloading/addBook",
+            baseUrl: "https://books.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "AddBookCloudloadingRequest",
+      });
+  }
+}
+function __c58(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          volumeId: S.optional(S.String),
+          author: S.optional(S.String),
+          title: S.optional(S.String),
+          processingState: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "BooksCloudloadingResource",
+      });
+  }
+}
+function __c59(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4627,8 +4714,8 @@ function __c22(j: number): any {
           nonce: S.String.pipe(T.Query()),
           source: S.String.pipe(T.Query()),
           showPreorders: S.optional(S.Boolean.pipe(T.Query())),
-          volumeIds: S.optional(__S(15, __c1, 7).pipe(T.Query())),
-          features: S.optional(__S(156, __c19, 4).pipe(T.Query())),
+          volumeIds: S.optional(__S(160, __c5, 0).pipe(T.Query())),
+          features: S.optional(__S(1408, __c44, 0).pipe(T.Query())),
           includeNonComicsSeries: S.optional(S.Boolean.pipe(T.Query())),
         }).pipe(
           T.Http({
@@ -4640,7 +4727,11 @@ function __c22(j: number): any {
       ).annotate({
         identifier: "SyncVolumeLicensesMyconfigRequest",
       });
-    case 1:
+  }
+}
+function __c60(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           source: S.optional(S.String.pipe(T.Query())),
@@ -4656,10 +4747,14 @@ function __c22(j: number): any {
       ).annotate({
         identifier: "UnshareFamilysharingRequest",
       });
-    case 2:
+  }
+}
+function __c61(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          body: S.optional(__S(3, __c0, 3).pipe(T.HttpBody())),
+          body: S.optional(__S(1856, __c58, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -4670,12 +4765,16 @@ function __c22(j: number): any {
       ).annotate({
         identifier: "UpdateBookCloudloadingRequest",
       });
-    case 3:
+  }
+}
+function __c62(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           source: S.optional(S.String.pipe(T.Query())),
           annotationId: S.String.pipe(T.Label()),
-          body: S.optional(__S(116, __c14, 4).pipe(T.HttpBody())),
+          body: S.optional(__S(867, __c27, 3).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -4686,10 +4785,14 @@ function __c22(j: number): any {
       ).annotate({
         identifier: "UpdateMylibraryAnnotationsRequest",
       });
-    case 4:
+  }
+}
+function __c63(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          body: S.optional(__S(111, __c13, 7).pipe(T.HttpBody())),
+          body: S.optional(__S(771, __c24, 3).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -4702,7 +4805,83 @@ function __c22(j: number): any {
       });
   }
 }
-
+function __c64(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          reason: S.optional(S.String.pipe(T.Query())),
+          shelf: S.String.pipe(T.Label()),
+          volumeId: S.String.pipe(T.Query()),
+          source: S.optional(S.String.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "books/v1/mylibrary/bookshelves/{shelf}/addVolume",
+            baseUrl: "https://books.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "AddVolumeMylibraryBookshelvesRequest",
+      });
+  }
+}
+function __c65(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          source: S.optional(S.String.pipe(T.Query())),
+          shelf: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "books/v1/mylibrary/bookshelves/{shelf}/clearVolumes",
+            baseUrl: "https://books.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "ClearVolumesMylibraryBookshelvesRequest",
+      });
+  }
+}
+function __c66(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          volumeId: S.String.pipe(T.Query()),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "books/v1/cloudloading/deleteBook",
+            baseUrl: "https://books.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteBookCloudloadingRequest",
+      });
+  }
+}
+function __c67(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          annotationId: S.String.pipe(T.Label()),
+          source: S.optional(S.String.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "books/v1/mylibrary/annotations/{annotationId}",
+            baseUrl: "https://books.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteMylibraryAnnotationsRequest",
+      });
+  }
+}
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

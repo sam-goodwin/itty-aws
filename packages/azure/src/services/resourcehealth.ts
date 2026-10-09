@@ -915,9 +915,9 @@ export const EventFetchBilllingCommunicationDetailsBySubscriptionIdAndTrackingId
     0,
   ) as any as S.Schema<EventFetchBilllingCommunicationDetailsBySubscriptionIdAndTrackingIdRequest>,
   output: __S(
-    20,
-    __c2,
-    4,
+    1,
+    __c0,
+    1,
   ) as any as S.Schema<EventFetchBilllingCommunicationDetailsBySubscriptionIdAndTrackingIdResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -932,11 +932,15 @@ export const EventFetchDetailsBySubscriptionIdAndTrackingId: API.OperationMethod
   EventFetchDetailsBySubscriptionIdAndTrackingIdError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(21, __c2, 5) as any as S.Schema<EventFetchDetailsBySubscriptionIdAndTrackingIdRequest>,
+  input: __S(
+    128,
+    __c4,
+    0,
+  ) as any as S.Schema<EventFetchDetailsBySubscriptionIdAndTrackingIdRequest>,
   output: __S(
-    22,
-    __c2,
-    6,
+    160,
+    __c5,
+    0,
   ) as any as S.Schema<EventFetchDetailsBySubscriptionIdAndTrackingIdResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -951,8 +955,8 @@ export const EventFetchDetailsByTenantIdAndTrackingId: API.OperationMethod<
   EventFetchDetailsByTenantIdAndTrackingIdError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(23, __c2, 7) as any as S.Schema<EventFetchDetailsByTenantIdAndTrackingIdRequest>,
-  output: __S(22, __c2, 6) as any as S.Schema<EventFetchDetailsByTenantIdAndTrackingIdResponse>,
+  input: __S(640, __c20, 0) as any as S.Schema<EventFetchDetailsByTenantIdAndTrackingIdRequest>,
+  output: __S(160, __c5, 0) as any as S.Schema<EventFetchDetailsByTenantIdAndTrackingIdResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -966,8 +970,8 @@ export const EventGetBySubscriptionIdAndTrackingId: API.OperationMethod<
   EventGetBySubscriptionIdAndTrackingIdError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(24, __c3, 0) as any as S.Schema<EventGetBySubscriptionIdAndTrackingIdRequest>,
-  output: __S(22, __c2, 6) as any as S.Schema<EventGetBySubscriptionIdAndTrackingIdResponse>,
+  input: __S(864, __c27, 0) as any as S.Schema<EventGetBySubscriptionIdAndTrackingIdRequest>,
+  output: __S(160, __c5, 0) as any as S.Schema<EventGetBySubscriptionIdAndTrackingIdResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -981,8 +985,8 @@ export const EventGetByTenantIdAndTrackingId: API.OperationMethod<
   EventGetByTenantIdAndTrackingIdError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(25, __c3, 1) as any as S.Schema<EventGetByTenantIdAndTrackingIdRequest>,
-  output: __S(22, __c2, 6) as any as S.Schema<EventGetByTenantIdAndTrackingIdResponse>,
+  input: __S(896, __c28, 0) as any as S.Schema<EventGetByTenantIdAndTrackingIdRequest>,
+  output: __S(160, __c5, 0) as any as S.Schema<EventGetByTenantIdAndTrackingIdResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -996,8 +1000,8 @@ export const GetAvailabilityStatusByResource: API.OperationMethod<
   GetAvailabilityStatusByResourceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(26, __c3, 2) as any as S.Schema<GetAvailabilityStatusByResourceRequest>,
-  output: __S(35, __c4, 3) as any as S.Schema<GetAvailabilityStatusByResourceResponse>,
+  input: __S(928, __c29, 0) as any as S.Schema<GetAvailabilityStatusByResourceRequest>,
+  output: __S(960, __c30, 0) as any as S.Schema<GetAvailabilityStatusByResourceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1011,8 +1015,8 @@ export const GetChildAvailabilityStatusByResource: API.OperationMethod<
   GetChildAvailabilityStatusByResourceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(36, __c4, 4) as any as S.Schema<GetChildAvailabilityStatusByResourceRequest>,
-  output: __S(35, __c4, 3) as any as S.Schema<GetChildAvailabilityStatusByResourceResponse>,
+  input: __S(1024, __c32, 0) as any as S.Schema<GetChildAvailabilityStatusByResourceRequest>,
+  output: __S(960, __c30, 0) as any as S.Schema<GetChildAvailabilityStatusByResourceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1026,8 +1030,8 @@ export const GetEmergingIssue: API.OperationMethod<
   GetEmergingIssueError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(37, __c4, 5) as any as S.Schema<GetEmergingIssueRequest>,
-  output: __S(47, __c5, 7) as any as S.Schema<GetEmergingIssueResponse>,
+  input: __S(1056, __c33, 0) as any as S.Schema<GetEmergingIssueRequest>,
+  output: __S(1097, __c34, 9) as any as S.Schema<GetEmergingIssueResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1041,8 +1045,8 @@ export const GetImpactedResource: API.OperationMethod<
   GetImpactedResourceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(48, __c6, 0) as any as S.Schema<GetImpactedResourceRequest>,
-  output: __S(52, __c6, 4) as any as S.Schema<GetImpactedResourceResponse>,
+  input: __S(1120, __c35, 0) as any as S.Schema<GetImpactedResourceRequest>,
+  output: __S(1152, __c36, 0) as any as S.Schema<GetImpactedResourceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1056,8 +1060,8 @@ export const GetImpactedResourceByTenantId: API.OperationMethod<
   GetImpactedResourceByTenantIdError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(53, __c6, 5) as any as S.Schema<GetImpactedResourceByTenantIdRequest>,
-  output: __S(52, __c6, 4) as any as S.Schema<GetImpactedResourceByTenantIdResponse>,
+  input: __S(1216, __c38, 0) as any as S.Schema<GetImpactedResourceByTenantIdRequest>,
+  output: __S(1152, __c36, 0) as any as S.Schema<GetImpactedResourceByTenantIdResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1071,8 +1075,8 @@ export const GetMetadataEntity: API.OperationMethod<
   GetMetadataEntityError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(54, __c6, 6) as any as S.Schema<GetMetadataEntityRequest>,
-  output: __S(59, __c7, 3) as any as S.Schema<GetMetadataEntityResponse>,
+  input: __S(192, __c6, 0) as any as S.Schema<GetMetadataEntityRequest>,
+  output: __S(193, __c6, 1) as any as S.Schema<GetMetadataEntityResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1087,11 +1091,11 @@ export const ImpactedResourcesListBySubscriptionIdAndEventId: API.OperationMetho
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    60,
-    __c7,
-    4,
+    256,
+    __c8,
+    0,
   ) as any as S.Schema<ImpactedResourcesListBySubscriptionIdAndEventIdRequest>,
-  output: __S(63, __c7, 7) as any as S.Schema<EventImpactedResourceListResult>,
+  output: __S(290, __c9, 2) as any as S.Schema<EventImpactedResourceListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1105,8 +1109,8 @@ export const ImpactedResourcesListByTenantIdAndEventId: API.OperationMethod<
   ImpactedResourcesListByTenantIdAndEventIdError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(64, __c8, 0) as any as S.Schema<ImpactedResourcesListByTenantIdAndEventIdRequest>,
-  output: __S(63, __c7, 7) as any as S.Schema<EventImpactedResourceListResult>,
+  input: __S(320, __c10, 0) as any as S.Schema<ImpactedResourcesListByTenantIdAndEventIdRequest>,
+  output: __S(290, __c9, 2) as any as S.Schema<EventImpactedResourceListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1120,8 +1124,8 @@ export const ListAvailabilityStatusByResourceGroup: API.OperationMethod<
   ListAvailabilityStatusByResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(65, __c8, 1) as any as S.Schema<ListAvailabilityStatusByResourceGroupRequest>,
-  output: __S(68, __c8, 4) as any as S.Schema<AvailabilityStatusListResult>,
+  input: __S(352, __c11, 0) as any as S.Schema<ListAvailabilityStatusByResourceGroupRequest>,
+  output: __S(386, __c12, 2) as any as S.Schema<AvailabilityStatusListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1135,8 +1139,8 @@ export const ListAvailabilityStatusBySubscriptionId: API.OperationMethod<
   ListAvailabilityStatusBySubscriptionIdError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(69, __c8, 5) as any as S.Schema<ListAvailabilityStatusBySubscriptionIdRequest>,
-  output: __S(68, __c8, 4) as any as S.Schema<AvailabilityStatusListResult>,
+  input: __S(416, __c13, 0) as any as S.Schema<ListAvailabilityStatusBySubscriptionIdRequest>,
+  output: __S(386, __c12, 2) as any as S.Schema<AvailabilityStatusListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1150,8 +1154,8 @@ export const ListAvailabilityStatuses: API.OperationMethod<
   ListAvailabilityStatusesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(70, __c8, 6) as any as S.Schema<ListAvailabilityStatusesRequest>,
-  output: __S(68, __c8, 4) as any as S.Schema<AvailabilityStatusListResult>,
+  input: __S(448, __c14, 0) as any as S.Schema<ListAvailabilityStatusesRequest>,
+  output: __S(386, __c12, 2) as any as S.Schema<AvailabilityStatusListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1165,8 +1169,8 @@ export const ListChildAvailabilityStatuses: API.OperationMethod<
   ListChildAvailabilityStatusesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(71, __c8, 7) as any as S.Schema<ListChildAvailabilityStatusesRequest>,
-  output: __S(68, __c8, 4) as any as S.Schema<AvailabilityStatusListResult>,
+  input: __S(480, __c15, 0) as any as S.Schema<ListChildAvailabilityStatusesRequest>,
+  output: __S(386, __c12, 2) as any as S.Schema<AvailabilityStatusListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1180,8 +1184,8 @@ export const ListChildResources: API.OperationMethod<
   ListChildResourcesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(72, __c9, 0) as any as S.Schema<ListChildResourcesRequest>,
-  output: __S(68, __c8, 4) as any as S.Schema<AvailabilityStatusListResult>,
+  input: __S(512, __c16, 0) as any as S.Schema<ListChildResourcesRequest>,
+  output: __S(386, __c12, 2) as any as S.Schema<AvailabilityStatusListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1195,8 +1199,8 @@ export const ListEmergingIssues: API.OperationMethod<
   ListEmergingIssuesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(73, __c9, 1) as any as S.Schema<ListEmergingIssuesRequest>,
-  output: __S(75, __c9, 3) as any as S.Schema<EmergingIssueListResult>,
+  input: __S(544, __c17, 0) as any as S.Schema<ListEmergingIssuesRequest>,
+  output: __S(546, __c17, 2) as any as S.Schema<EmergingIssueListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1210,8 +1214,8 @@ export const ListEventBySingleResource: API.OperationMethod<
   ListEventBySingleResourceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(76, __c9, 4) as any as S.Schema<ListEventBySingleResourceRequest>,
-  output: __S(79, __c9, 7) as any as S.Schema<Events>,
+  input: __S(576, __c18, 0) as any as S.Schema<ListEventBySingleResourceRequest>,
+  output: __S(610, __c19, 2) as any as S.Schema<Events>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1225,8 +1229,8 @@ export const ListEventBySubscriptionId: API.OperationMethod<
   ListEventBySubscriptionIdError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(80, __c10, 0) as any as S.Schema<ListEventBySubscriptionIdRequest>,
-  output: __S(79, __c9, 7) as any as S.Schema<Events>,
+  input: __S(672, __c21, 0) as any as S.Schema<ListEventBySubscriptionIdRequest>,
+  output: __S(610, __c19, 2) as any as S.Schema<Events>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1240,8 +1244,8 @@ export const ListEventByTenantId: API.OperationMethod<
   ListEventByTenantIdError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(81, __c10, 1) as any as S.Schema<ListEventByTenantIdRequest>,
-  output: __S(79, __c9, 7) as any as S.Schema<Events>,
+  input: __S(704, __c22, 0) as any as S.Schema<ListEventByTenantIdRequest>,
+  output: __S(610, __c19, 2) as any as S.Schema<Events>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1255,8 +1259,8 @@ export const ListMetadata: API.OperationMethod<
   ListMetadataError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(82, __c10, 2) as any as S.Schema<ListMetadataRequest>,
-  output: __S(85, __c10, 5) as any as S.Schema<MetadataEntityListResult>,
+  input: __S(736, __c23, 0) as any as S.Schema<ListMetadataRequest>,
+  output: __S(739, __c23, 3) as any as S.Schema<MetadataEntityListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1270,8 +1274,8 @@ export const ListOperations: API.OperationMethod<
   ListOperationsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(86, __c10, 6) as any as S.Schema<ListOperationsRequest>,
-  output: __S(90, __c11, 2) as any as S.Schema<OperationListResult>,
+  input: __S(768, __c24, 0) as any as S.Schema<ListOperationsRequest>,
+  output: __S(772, __c24, 4) as any as S.Schema<OperationListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1286,11 +1290,11 @@ export const SecurityAdvisoryImpactedResourcesListBySubscriptionIdAndEventId: AP
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    91,
-    __c11,
-    3,
+    800,
+    __c25,
+    0,
   ) as any as S.Schema<SecurityAdvisoryImpactedResourcesListBySubscriptionIdAndEventIdRequest>,
-  output: __S(63, __c7, 7) as any as S.Schema<EventImpactedResourceListResult>,
+  output: __S(290, __c9, 2) as any as S.Schema<EventImpactedResourceListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1305,11 +1309,11 @@ export const SecurityAdvisoryImpactedResourcesListByTenantIdAndEventId: API.Oper
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    92,
-    __c11,
-    4,
+    832,
+    __c26,
+    0,
   ) as any as S.Schema<SecurityAdvisoryImpactedResourcesListByTenantIdAndEventIdRequest>,
-  output: __S(63, __c7, 7) as any as S.Schema<EventImpactedResourceListResult>,
+  output: __S(290, __c9, 2) as any as S.Schema<EventImpactedResourceListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1337,15 +1341,26 @@ function __c0(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          createdBy: S.optional(S.String),
-          createdByType: S.optional(S.String),
-          createdAt: S.optional(S.String),
-          lastModifiedBy: S.optional(S.String),
-          lastModifiedByType: S.optional(S.String),
-          lastModifiedAt: S.optional(S.String),
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(96, __c3, 0)),
+          properties: S.optional(__S(80, __c2, 16)),
         }),
-      ).annotate({ identifier: "SystemData" });
-    case 2:
+      ).annotate({
+        identifier: "EventFetchBilllingCommunicationDetailsBySubscriptionIdAndTrackingIdResponse",
+      });
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           articleContent: S.optional(S.String),
@@ -1353,65 +1368,59 @@ function __c0(j: number): any {
           parameters: S.optional(S.Unknown),
         }),
       ).annotate({ identifier: "EventPropertiesArticle" });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           value: S.optional(S.String),
           localizedValue: S.optional(S.String),
         }),
       ).annotate({ identifier: "LinkDisplayText" });
-    case 4:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           type: S.optional(S.String),
-          displayText: S.optional(__S(3, __c0, 3)),
+          displayText: S.optional(__S(65, __c2, 1)),
           extensionName: S.optional(S.String),
           bladeName: S.optional(S.String),
           parameters: S.optional(S.Unknown),
         }),
       ).annotate({ identifier: "Link" });
-    case 5:
-      return S.Array(__S(4, __c0, 4));
-    case 6:
-      return S.Array(S.String);
-    case 7:
+    case 3:
+      return S.Array(__S(66, __c2, 2));
+    case 4:
       return S.suspend(() =>
         S.Struct({
           summary: S.optional(S.String),
           updateDateTime: S.optional(S.String),
-          eventTags: S.optional(__S(6, __c0, 6)),
+          eventTags: S.optional(__S(32, __c1, 0)),
         }),
       ).annotate({ identifier: "Update" });
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(7, __c0, 7));
-    case 1:
+    case 5:
+      return S.Array(__S(68, __c2, 4));
+    case 6:
       return S.suspend(() =>
         S.Struct({
           impactedRegion: S.optional(S.String),
           status: S.optional(S.String),
-          impactedSubscriptions: S.optional(__S(6, __c0, 6)),
-          impactedTenants: S.optional(__S(6, __c0, 6)),
+          impactedSubscriptions: S.optional(__S(32, __c1, 0)),
+          impactedTenants: S.optional(__S(32, __c1, 0)),
           lastUpdateTime: S.optional(S.String),
-          updates: S.optional(__S(8, __c1, 0)),
+          updates: S.optional(__S(69, __c2, 5)),
         }),
       ).annotate({ identifier: "ImpactedServiceRegion" });
-    case 2:
-      return S.Array(__S(9, __c1, 1));
-    case 3:
+    case 7:
+      return S.Array(__S(70, __c2, 6));
+    case 8:
       return S.suspend(() =>
         S.Struct({
           impactedService: S.optional(S.String),
           impactedServiceGuid: S.optional(S.String),
-          impactedRegions: S.optional(__S(10, __c1, 2)),
+          impactedRegions: S.optional(__S(71, __c2, 7)),
         }),
       ).annotate({ identifier: "Impact" });
-    case 4:
-      return S.Array(__S(11, __c1, 3));
-    case 5:
+    case 9:
+      return S.Array(__S(72, __c2, 8));
+    case 10:
       return S.suspend(() =>
         S.Struct({
           groupId: S.optional(S.Number),
@@ -1420,23 +1429,19 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "EventPropertiesRecommendedActionsActionsItem",
       });
-    case 6:
-      return S.Array(__S(13, __c1, 5));
-    case 7:
+    case 11:
+      return S.Array(__S(74, __c2, 10));
+    case 12:
       return S.suspend(() =>
         S.Struct({
           message: S.optional(S.String),
-          actions: S.optional(__S(14, __c1, 6)),
+          actions: S.optional(__S(75, __c2, 11)),
           localeCode: S.optional(S.String),
         }),
       ).annotate({
         identifier: "EventPropertiesRecommendedActions",
       });
-  }
-}
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
+    case 13:
       return S.suspend(() =>
         S.Struct({
           question: S.optional(S.String),
@@ -1444,9 +1449,9 @@ function __c2(j: number): any {
           localeCode: S.optional(S.String),
         }),
       ).annotate({ identifier: "Faq" });
-    case 1:
-      return S.Array(__S(16, __c2, 0));
-    case 2:
+    case 14:
+      return S.Array(__S(77, __c2, 13));
+    case 15:
       return S.suspend(() =>
         S.Struct({
           message: S.optional(S.String),
@@ -1454,7 +1459,7 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "EventPropertiesAdditionalInformation",
       });
-    case 3:
+    case 16:
       return S.suspend(() =>
         S.Struct({
           eventType: S.optional(S.String),
@@ -1469,13 +1474,13 @@ function __c2(j: number): any {
           isEventSensitive: S.optional(S.Boolean),
           externalIncidentId: S.optional(S.String),
           reason: S.optional(S.String),
-          article: S.optional(__S(2, __c0, 2)),
-          links: S.optional(__S(5, __c0, 5)),
+          article: S.optional(__S(64, __c2, 0)),
+          links: S.optional(__S(67, __c2, 3)),
           impactStartTime: S.optional(S.String),
           impactMitigationTime: S.optional(S.String),
-          impact: S.optional(__S(12, __c1, 4)),
-          recommendedActions: S.optional(__S(15, __c1, 7)),
-          faqs: S.optional(__S(17, __c2, 1)),
+          impact: S.optional(__S(73, __c2, 9)),
+          recommendedActions: S.optional(__S(76, __c2, 12)),
+          faqs: S.optional(__S(78, __c2, 14)),
           isHIR: S.optional(S.Boolean),
           enableMicrosoftSupport: S.optional(S.Boolean),
           description: S.optional(S.String),
@@ -1484,29 +1489,36 @@ function __c2(j: number): any {
           priority: S.optional(S.Number),
           lastUpdateTime: S.optional(S.String),
           hirStage: S.optional(S.String),
-          additionalInformation: S.optional(__S(18, __c2, 2)),
+          additionalInformation: S.optional(__S(79, __c2, 15)),
           duration: S.optional(S.Number),
           impactType: S.optional(S.String),
-          eventTags: S.optional(__S(6, __c0, 6)),
+          eventTags: S.optional(__S(32, __c1, 0)),
           newRate: S.optional(S.Number),
           oldRate: S.optional(S.Number),
           currencyType: S.optional(S.String),
           billingId: S.optional(S.String),
         }),
       ).annotate({ identifier: "EventProperties" });
-    case 4:
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(1, __c0, 1)),
-          properties: S.optional(__S(19, __c2, 3)),
+          createdBy: S.optional(S.String),
+          createdByType: S.optional(S.String),
+          createdAt: S.optional(S.String),
+          lastModifiedBy: S.optional(S.String),
+          lastModifiedByType: S.optional(S.String),
+          lastModifiedAt: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "EventFetchBilllingCommunicationDetailsBySubscriptionIdAndTrackingIdResponse",
-      });
-    case 5:
+      ).annotate({ identifier: "SystemData" });
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -1522,19 +1534,352 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "EventFetchDetailsBySubscriptionIdAndTrackingIdRequest",
       });
-    case 6:
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(1, __c0, 1)),
-          properties: S.optional(__S(19, __c2, 3)),
+          systemData: S.optional(__S(96, __c3, 0)),
+          properties: S.optional(__S(80, __c2, 16)),
         }),
       ).annotate({
         identifier: "EventFetchDetailsBySubscriptionIdAndTrackingIdResponse",
       });
-    case 7:
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/providers/Microsoft.ResourceHealth/metadata/{name}",
+            code: 200,
+            apiVersion: "2025-05-01",
+          }),
+        ),
+      ).annotate({ identifier: "GetMetadataEntityRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(96, __c3, 0)),
+          properties: S.optional(__S(227, __c7, 3)),
+        }),
+      ).annotate({
+        identifier: "GetMetadataEntityResponse",
+      });
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          previousId: S.optional(S.String),
+          serviceGuid: S.optional(S.String),
+          displayName: S.optional(S.String),
+          resourceTypes: S.optional(__S(32, __c1, 0)),
+          priority: S.optional(S.Number),
+        }),
+      ).annotate({
+        identifier: "MetadataSupportedValueDetail",
+      });
+    case 2:
+      return S.Array(__S(225, __c7, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          displayName: S.optional(S.String),
+          dependsOn: S.optional(__S(32, __c1, 0)),
+          applicableScenarios: S.optional(__S(224, __c7, 0)),
+          supportedValues: S.optional(__S(226, __c7, 2)),
+        }),
+      ).annotate({ identifier: "MetadataEntityProperties" });
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          eventTrackingId: S.String.pipe(T.Label()),
+          _filter: S.optional(S.String.pipe(T.Query("$filter"))),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/providers/Microsoft.ResourceHealth/events/{eventTrackingId}/impactedResources",
+            code: 200,
+            apiVersion: "2025-05-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "ImpactedResourcesListBySubscriptionIdAndEventIdRequest",
+      });
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(96, __c3, 0)),
+          properties: S.optional(__S(1186, __c37, 2)),
+        }),
+      ).annotate({ identifier: "EventImpactedResource" });
+    case 1:
+      return S.Array(__S(288, __c9, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          value: __S(289, __c9, 1),
+          nextLink: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "EventImpactedResourceListResult",
+      });
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          eventTrackingId: S.String.pipe(T.Label()),
+          _filter: S.optional(S.String.pipe(T.Query("$filter"))),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/providers/Microsoft.ResourceHealth/events/{eventTrackingId}/impactedResources",
+            code: 200,
+            apiVersion: "2025-05-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "ImpactedResourcesListByTenantIdAndEventIdRequest",
+      });
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          _filter: S.optional(S.String.pipe(T.Query("$filter"))),
+          _expand: S.optional(S.String.pipe(T.Query("$expand"))),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ResourceHealth/availabilityStatuses",
+            code: 200,
+            apiVersion: "2025-05-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListAvailabilityStatusByResourceGroupRequest",
+      });
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          location: S.optional(S.String),
+          properties: S.optional(__S(999, __c31, 7)),
+        }),
+      ).annotate({ identifier: "AvailabilityStatus" });
+    case 1:
+      return S.Array(__S(384, __c12, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          value: __S(385, __c12, 1),
+          nextLink: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "AvailabilityStatusListResult",
+      });
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          _filter: S.optional(S.String.pipe(T.Query("$filter"))),
+          _expand: S.optional(S.String.pipe(T.Query("$expand"))),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/providers/Microsoft.ResourceHealth/availabilityStatuses",
+            code: 200,
+            apiVersion: "2025-05-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListAvailabilityStatusBySubscriptionIdRequest",
+      });
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          resourceUri: S.String.pipe(T.Label()),
+          _filter: S.optional(S.String.pipe(T.Query("$filter"))),
+          _expand: S.optional(S.String.pipe(T.Query("$expand"))),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/{resourceUri+}/providers/Microsoft.ResourceHealth/availabilityStatuses",
+            code: 200,
+            apiVersion: "2025-05-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListAvailabilityStatusesRequest",
+      });
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          resourceUri: S.String.pipe(T.Label()),
+          _filter: S.optional(S.String.pipe(T.Query("$filter"))),
+          _expand: S.optional(S.String.pipe(T.Query("$expand"))),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/{resourceUri+}/providers/Microsoft.ResourceHealth/childAvailabilityStatuses",
+            code: 200,
+            apiVersion: "2025-05-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListChildAvailabilityStatusesRequest",
+      });
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          resourceUri: S.String.pipe(T.Label()),
+          _filter: S.optional(S.String.pipe(T.Query("$filter"))),
+          _expand: S.optional(S.String.pipe(T.Query("$expand"))),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/{resourceUri+}/providers/Microsoft.ResourceHealth/childResources",
+            code: 200,
+            apiVersion: "2025-05-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListChildResourcesRequest",
+      });
+  }
+}
+function __c17(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({}).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/providers/Microsoft.ResourceHealth/emergingIssues",
+            code: 200,
+            apiVersion: "2025-05-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListEmergingIssuesRequest",
+      });
+    case 1:
+      return S.Array(__S(1097, __c34, 9));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          value: S.optional(__S(545, __c17, 1)),
+          nextLink: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "EmergingIssueListResult" });
+  }
+}
+function __c18(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          resourceUri: S.String.pipe(T.Label()),
+          _filter: S.optional(S.String.pipe(T.Query("$filter"))),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/{resourceUri+}/providers/Microsoft.ResourceHealth/events",
+            code: 200,
+            apiVersion: "2025-05-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListEventBySingleResourceRequest",
+      });
+  }
+}
+function __c19(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(96, __c3, 0)),
+          properties: S.optional(__S(80, __c2, 16)),
+        }),
+      ).annotate({ identifier: "Event" });
+    case 1:
+      return S.Array(__S(608, __c19, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          value: __S(609, __c19, 1),
+          nextLink: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Events" });
+  }
+}
+function __c20(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           eventTrackingId: S.String.pipe(T.Label()),
@@ -1551,7 +1896,162 @@ function __c2(j: number): any {
       });
   }
 }
-function __c3(j: number): any {
+function __c21(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          _filter: S.optional(S.String.pipe(T.Query("$filter"))),
+          queryStartTime: S.optional(S.String.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/providers/Microsoft.ResourceHealth/events",
+            code: 200,
+            apiVersion: "2025-05-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListEventBySubscriptionIdRequest",
+      });
+  }
+}
+function __c22(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          _filter: S.optional(S.String.pipe(T.Query("$filter"))),
+          queryStartTime: S.optional(S.String.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/providers/Microsoft.ResourceHealth/events",
+            code: 200,
+            apiVersion: "2025-05-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListEventByTenantIdRequest",
+      });
+  }
+}
+function __c23(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({}).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/providers/Microsoft.ResourceHealth/metadata",
+            code: 200,
+            apiVersion: "2025-05-01",
+          }),
+        ),
+      ).annotate({ identifier: "ListMetadataRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(96, __c3, 0)),
+          properties: S.optional(__S(227, __c7, 3)),
+        }),
+      ).annotate({ identifier: "MetadataEntity" });
+    case 2:
+      return S.Array(__S(737, __c23, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          value: S.optional(__S(738, __c23, 2)),
+          nextLink: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "MetadataEntityListResult" });
+  }
+}
+function __c24(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({}).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/providers/Microsoft.ResourceHealth/operations",
+            code: 200,
+            apiVersion: "2025-05-01",
+          }),
+        ),
+      ).annotate({ identifier: "ListOperationsRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          provider: S.optional(S.String),
+          resource: S.optional(S.String),
+          operation: S.optional(S.String),
+          description: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "OperationDisplay" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.optional(S.String),
+          display: S.optional(__S(769, __c24, 1)),
+        }),
+      ).annotate({ identifier: "Operation" });
+    case 3:
+      return S.Array(__S(770, __c24, 2));
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          value: __S(771, __c24, 3),
+        }),
+      ).annotate({ identifier: "OperationListResult" });
+  }
+}
+function __c25(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          eventTrackingId: S.String.pipe(T.Label()),
+          _filter: S.optional(S.String.pipe(T.Query("$filter"))),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/subscriptions/{subscriptionId}/providers/Microsoft.ResourceHealth/events/{eventTrackingId}/listSecurityAdvisoryImpactedResources",
+            code: 200,
+            apiVersion: "2025-05-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "SecurityAdvisoryImpactedResourcesListBySubscriptionIdAndEventIdRequest",
+      });
+  }
+}
+function __c26(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          eventTrackingId: S.String.pipe(T.Label()),
+          _filter: S.optional(S.String.pipe(T.Query("$filter"))),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/providers/Microsoft.ResourceHealth/events/{eventTrackingId}/listSecurityAdvisoryImpactedResources",
+            code: 200,
+            apiVersion: "2025-05-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "SecurityAdvisoryImpactedResourcesListByTenantIdAndEventIdRequest",
+      });
+  }
+}
+function __c27(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1571,7 +2071,11 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "EventGetBySubscriptionIdAndTrackingIdRequest",
       });
-    case 1:
+  }
+}
+function __c28(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           eventTrackingId: S.String.pipe(T.Label()),
@@ -1588,7 +2092,11 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "EventGetByTenantIdAndTrackingIdRequest",
       });
-    case 2:
+  }
+}
+function __c29(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           resourceUri: S.String.pipe(T.Label()),
@@ -1605,7 +2113,27 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "GetAvailabilityStatusByResourceRequest",
       });
-    case 3:
+  }
+}
+function __c30(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          location: S.optional(S.String),
+          properties: S.optional(__S(999, __c31, 7)),
+        }),
+      ).annotate({
+        identifier: "GetAvailabilityStatusByResourceResponse",
+      });
+  }
+}
+function __c31(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           unavailableOccuredTime: S.optional(S.String),
@@ -1615,7 +2143,7 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "AvailabilityStatusPropertiesRecentlyResolved",
       });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           action: S.optional(S.String),
@@ -1624,9 +2152,9 @@ function __c3(j: number): any {
           actionUrlText: S.optional(S.String),
         }),
       ).annotate({ identifier: "RecommendedAction" });
-    case 5:
-      return S.Array(__S(28, __c3, 4));
-    case 6:
+    case 2:
+      return S.Array(__S(993, __c31, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
           value: S.optional(S.String),
@@ -1634,7 +2162,7 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "ServiceImpactingEventStatus",
       });
-    case 7:
+    case 4:
       return S.suspend(() =>
         S.Struct({
           title: S.optional(S.String),
@@ -1645,23 +2173,19 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "ServiceImpactingEventIncidentProperties",
       });
-  }
-}
-function __c4(j: number): any {
-  switch (j) {
-    case 0:
+    case 5:
       return S.suspend(() =>
         S.Struct({
           eventStartTime: S.optional(S.String),
           eventStatusLastModifiedTime: S.optional(S.String),
           correlationId: S.optional(S.String),
-          status: S.optional(__S(30, __c3, 6)),
-          incidentProperties: S.optional(__S(31, __c3, 7)),
+          status: S.optional(__S(995, __c31, 3)),
+          incidentProperties: S.optional(__S(996, __c31, 4)),
         }),
       ).annotate({ identifier: "ServiceImpactingEvent" });
-    case 1:
-      return S.Array(__S(32, __c4, 0));
-    case 2:
+    case 6:
+      return S.Array(__S(997, __c31, 5));
+    case 7:
       return S.suspend(() =>
         S.Struct({
           availabilityState: S.optional(S.String),
@@ -1681,26 +2205,18 @@ function __c4(j: number): any {
           occuredTime: S.optional(S.String),
           reasonChronicity: S.optional(S.String),
           reportedTime: S.optional(S.String),
-          recentlyResolved: S.optional(__S(27, __c3, 3)),
-          recommendedActions: S.optional(__S(29, __c3, 5)),
-          serviceImpactingEvents: S.optional(__S(33, __c4, 1)),
+          recentlyResolved: S.optional(__S(992, __c31, 0)),
+          recommendedActions: S.optional(__S(994, __c31, 2)),
+          serviceImpactingEvents: S.optional(__S(998, __c31, 6)),
         }),
       ).annotate({
         identifier: "AvailabilityStatusProperties",
       });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          location: S.optional(S.String),
-          properties: S.optional(__S(34, __c4, 2)),
-        }),
-      ).annotate({
-        identifier: "GetAvailabilityStatusByResourceResponse",
-      });
-    case 4:
+  }
+}
+function __c32(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           resourceUri: S.String.pipe(T.Label()),
@@ -1717,7 +2233,11 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "GetChildAvailabilityStatusByResourceRequest",
       });
-    case 5:
+  }
+}
+function __c33(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           issueName: S.String.pipe(T.Label()),
@@ -1730,7 +2250,11 @@ function __c4(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetEmergingIssueRequest" });
-    case 6:
+  }
+}
+function __c34(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           title: S.optional(S.String),
@@ -1739,32 +2263,28 @@ function __c4(j: number): any {
           lastModifiedTime: S.optional(S.String),
         }),
       ).annotate({ identifier: "StatusBanner" });
-    case 7:
-      return S.Array(__S(38, __c4, 6));
-  }
-}
-function __c5(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
+      return S.Array(__S(1088, __c34, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
         }),
       ).annotate({ identifier: "ImpactedRegion" });
-    case 1:
-      return S.Array(__S(40, __c5, 0));
-    case 2:
+    case 3:
+      return S.Array(__S(1090, __c34, 2));
+    case 4:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
-          regions: S.optional(__S(41, __c5, 1)),
+          regions: S.optional(__S(1091, __c34, 3)),
         }),
       ).annotate({ identifier: "EmergingIssueImpact" });
-    case 3:
-      return S.Array(__S(42, __c5, 2));
-    case 4:
+    case 5:
+      return S.Array(__S(1092, __c34, 4));
+    case 6:
       return S.suspend(() =>
         S.Struct({
           title: S.optional(S.String),
@@ -1776,32 +2296,32 @@ function __c5(j: number): any {
           stage: S.optional(S.String),
           published: S.optional(S.Boolean),
           lastModifiedTime: S.optional(S.String),
-          impacts: S.optional(__S(43, __c5, 3)),
+          impacts: S.optional(__S(1093, __c34, 5)),
         }),
       ).annotate({ identifier: "StatusActiveEvent" });
-    case 5:
-      return S.Array(__S(44, __c5, 4));
-    case 6:
+    case 7:
+      return S.Array(__S(1094, __c34, 6));
+    case 8:
       return S.suspend(() =>
         S.Struct({
           refreshTimestamp: S.optional(S.String),
-          statusBanners: S.optional(__S(39, __c4, 7)),
-          statusActiveEvents: S.optional(__S(45, __c5, 5)),
+          statusBanners: S.optional(__S(1089, __c34, 1)),
+          statusActiveEvents: S.optional(__S(1095, __c34, 7)),
         }),
       ).annotate({ identifier: "EmergingIssue" });
-    case 7:
+    case 9:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(1, __c0, 1)),
-          properties: S.optional(__S(46, __c5, 6)),
+          systemData: S.optional(__S(96, __c3, 0)),
+          properties: S.optional(__S(1096, __c34, 8)),
         }),
       ).annotate({ identifier: "GetEmergingIssueResponse" });
   }
 }
-function __c6(j: number): any {
+function __c35(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1820,39 +2340,51 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "GetImpactedResourceRequest",
       });
-    case 1:
+  }
+}
+function __c36(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(96, __c3, 0)),
+          properties: S.optional(__S(1186, __c37, 2)),
+        }),
+      ).annotate({
+        identifier: "GetImpactedResourceResponse",
+      });
+  }
+}
+function __c37(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           key: S.optional(S.String),
           value: S.optional(S.String),
         }),
       ).annotate({ identifier: "KeyValueItem" });
+    case 1:
+      return S.Array(__S(1184, __c37, 0));
     case 2:
-      return S.Array(__S(49, __c6, 1));
-    case 3:
       return S.suspend(() =>
         S.Struct({
           targetResourceType: S.optional(S.String),
           targetResourceId: S.optional(S.String),
           targetRegion: S.optional(S.String),
-          info: S.optional(__S(50, __c6, 2)),
+          info: S.optional(__S(1185, __c37, 1)),
         }),
       ).annotate({
         identifier: "EventImpactedResourceProperties",
       });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(1, __c0, 1)),
-          properties: S.optional(__S(51, __c6, 3)),
-        }),
-      ).annotate({
-        identifier: "GetImpactedResourceResponse",
-      });
-    case 5:
+  }
+}
+function __c38(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           eventTrackingId: S.String.pipe(T.Label()),
@@ -1868,429 +2400,8 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "GetImpactedResourceByTenantIdRequest",
       });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/providers/Microsoft.ResourceHealth/metadata/{name}",
-            code: 200,
-            apiVersion: "2025-05-01",
-          }),
-        ),
-      ).annotate({ identifier: "GetMetadataEntityRequest" });
-    case 7:
-      return S.Array(S.String);
   }
 }
-function __c7(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          previousId: S.optional(S.String),
-          serviceGuid: S.optional(S.String),
-          displayName: S.optional(S.String),
-          resourceTypes: S.optional(__S(6, __c0, 6)),
-          priority: S.optional(S.Number),
-        }),
-      ).annotate({
-        identifier: "MetadataSupportedValueDetail",
-      });
-    case 1:
-      return S.Array(__S(56, __c7, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          displayName: S.optional(S.String),
-          dependsOn: S.optional(__S(6, __c0, 6)),
-          applicableScenarios: S.optional(__S(55, __c6, 7)),
-          supportedValues: S.optional(__S(57, __c7, 1)),
-        }),
-      ).annotate({ identifier: "MetadataEntityProperties" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(1, __c0, 1)),
-          properties: S.optional(__S(58, __c7, 2)),
-        }),
-      ).annotate({
-        identifier: "GetMetadataEntityResponse",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          eventTrackingId: S.String.pipe(T.Label()),
-          _filter: S.optional(S.String.pipe(T.Query("$filter"))),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/providers/Microsoft.ResourceHealth/events/{eventTrackingId}/impactedResources",
-            code: 200,
-            apiVersion: "2025-05-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "ImpactedResourcesListBySubscriptionIdAndEventIdRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(1, __c0, 1)),
-          properties: S.optional(__S(51, __c6, 3)),
-        }),
-      ).annotate({ identifier: "EventImpactedResource" });
-    case 6:
-      return S.Array(__S(61, __c7, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          value: __S(62, __c7, 6),
-          nextLink: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "EventImpactedResourceListResult",
-      });
-  }
-}
-function __c8(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          eventTrackingId: S.String.pipe(T.Label()),
-          _filter: S.optional(S.String.pipe(T.Query("$filter"))),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/providers/Microsoft.ResourceHealth/events/{eventTrackingId}/impactedResources",
-            code: 200,
-            apiVersion: "2025-05-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "ImpactedResourcesListByTenantIdAndEventIdRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          _filter: S.optional(S.String.pipe(T.Query("$filter"))),
-          _expand: S.optional(S.String.pipe(T.Query("$expand"))),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ResourceHealth/availabilityStatuses",
-            code: 200,
-            apiVersion: "2025-05-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListAvailabilityStatusByResourceGroupRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          location: S.optional(S.String),
-          properties: S.optional(__S(34, __c4, 2)),
-        }),
-      ).annotate({ identifier: "AvailabilityStatus" });
-    case 3:
-      return S.Array(__S(66, __c8, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          value: __S(67, __c8, 3),
-          nextLink: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "AvailabilityStatusListResult",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          _filter: S.optional(S.String.pipe(T.Query("$filter"))),
-          _expand: S.optional(S.String.pipe(T.Query("$expand"))),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/providers/Microsoft.ResourceHealth/availabilityStatuses",
-            code: 200,
-            apiVersion: "2025-05-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListAvailabilityStatusBySubscriptionIdRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          resourceUri: S.String.pipe(T.Label()),
-          _filter: S.optional(S.String.pipe(T.Query("$filter"))),
-          _expand: S.optional(S.String.pipe(T.Query("$expand"))),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/{resourceUri+}/providers/Microsoft.ResourceHealth/availabilityStatuses",
-            code: 200,
-            apiVersion: "2025-05-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListAvailabilityStatusesRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          resourceUri: S.String.pipe(T.Label()),
-          _filter: S.optional(S.String.pipe(T.Query("$filter"))),
-          _expand: S.optional(S.String.pipe(T.Query("$expand"))),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/{resourceUri+}/providers/Microsoft.ResourceHealth/childAvailabilityStatuses",
-            code: 200,
-            apiVersion: "2025-05-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListChildAvailabilityStatusesRequest",
-      });
-  }
-}
-function __c9(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          resourceUri: S.String.pipe(T.Label()),
-          _filter: S.optional(S.String.pipe(T.Query("$filter"))),
-          _expand: S.optional(S.String.pipe(T.Query("$expand"))),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/{resourceUri+}/providers/Microsoft.ResourceHealth/childResources",
-            code: 200,
-            apiVersion: "2025-05-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListChildResourcesRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({}).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/providers/Microsoft.ResourceHealth/emergingIssues",
-            code: 200,
-            apiVersion: "2025-05-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListEmergingIssuesRequest",
-      });
-    case 2:
-      return S.Array(__S(47, __c5, 7));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          value: S.optional(__S(74, __c9, 2)),
-          nextLink: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "EmergingIssueListResult" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          resourceUri: S.String.pipe(T.Label()),
-          _filter: S.optional(S.String.pipe(T.Query("$filter"))),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/{resourceUri+}/providers/Microsoft.ResourceHealth/events",
-            code: 200,
-            apiVersion: "2025-05-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListEventBySingleResourceRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(1, __c0, 1)),
-          properties: S.optional(__S(19, __c2, 3)),
-        }),
-      ).annotate({ identifier: "Event" });
-    case 6:
-      return S.Array(__S(77, __c9, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          value: __S(78, __c9, 6),
-          nextLink: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Events" });
-  }
-}
-function __c10(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          _filter: S.optional(S.String.pipe(T.Query("$filter"))),
-          queryStartTime: S.optional(S.String.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/providers/Microsoft.ResourceHealth/events",
-            code: 200,
-            apiVersion: "2025-05-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListEventBySubscriptionIdRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          _filter: S.optional(S.String.pipe(T.Query("$filter"))),
-          queryStartTime: S.optional(S.String.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/providers/Microsoft.ResourceHealth/events",
-            code: 200,
-            apiVersion: "2025-05-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListEventByTenantIdRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({}).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/providers/Microsoft.ResourceHealth/metadata",
-            code: 200,
-            apiVersion: "2025-05-01",
-          }),
-        ),
-      ).annotate({ identifier: "ListMetadataRequest" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(1, __c0, 1)),
-          properties: S.optional(__S(58, __c7, 2)),
-        }),
-      ).annotate({ identifier: "MetadataEntity" });
-    case 4:
-      return S.Array(__S(83, __c10, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          value: S.optional(__S(84, __c10, 4)),
-          nextLink: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "MetadataEntityListResult" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({}).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/providers/Microsoft.ResourceHealth/operations",
-            code: 200,
-            apiVersion: "2025-05-01",
-          }),
-        ),
-      ).annotate({ identifier: "ListOperationsRequest" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          provider: S.optional(S.String),
-          resource: S.optional(S.String),
-          operation: S.optional(S.String),
-          description: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "OperationDisplay" });
-  }
-}
-function __c11(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.optional(S.String),
-          display: S.optional(__S(87, __c10, 7)),
-        }),
-      ).annotate({ identifier: "Operation" });
-    case 1:
-      return S.Array(__S(88, __c11, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          value: __S(89, __c11, 1),
-        }),
-      ).annotate({ identifier: "OperationListResult" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          eventTrackingId: S.String.pipe(T.Label()),
-          _filter: S.optional(S.String.pipe(T.Query("$filter"))),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/subscriptions/{subscriptionId}/providers/Microsoft.ResourceHealth/events/{eventTrackingId}/listSecurityAdvisoryImpactedResources",
-            code: 200,
-            apiVersion: "2025-05-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "SecurityAdvisoryImpactedResourcesListBySubscriptionIdAndEventIdRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          eventTrackingId: S.String.pipe(T.Label()),
-          _filter: S.optional(S.String.pipe(T.Query("$filter"))),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/providers/Microsoft.ResourceHealth/events/{eventTrackingId}/listSecurityAdvisoryImpactedResources",
-            code: 200,
-            apiVersion: "2025-05-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "SecurityAdvisoryImpactedResourcesListByTenantIdAndEventIdRequest",
-      });
-  }
-}
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

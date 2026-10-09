@@ -173,11 +173,11 @@ export const getFoldersLocationsAccessPolicySimulationsOperations: API.Operation
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    0,
-    __c0,
+    28,
+    __c7,
     0,
   ) as any as S.Schema<GetFoldersLocationsAccessPolicySimulationsOperationsRequest>,
-  output: __S(4, __c0, 4) as any as S.Schema<GoogleLongrunningOperation>,
+  output: __S(35, __c8, 3) as any as S.Schema<GoogleLongrunningOperation>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -195,11 +195,11 @@ export const getFoldersLocationsOrgPolicyViolationsPreviewsOperations: API.Opera
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    5,
-    __c0,
-    5,
+    36,
+    __c9,
+    0,
   ) as any as S.Schema<GetFoldersLocationsOrgPolicyViolationsPreviewsOperationsRequest>,
-  output: __S(4, __c0, 4) as any as S.Schema<GoogleLongrunningOperation>,
+  output: __S(35, __c8, 3) as any as S.Schema<GoogleLongrunningOperation>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -213,8 +213,8 @@ export const getFoldersLocationsReplaysOperations: API.OperationMethod<
   GetFoldersLocationsReplaysOperationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(6, __c0, 6) as any as S.Schema<GetFoldersLocationsReplaysOperationsRequest>,
-  output: __S(4, __c0, 4) as any as S.Schema<GoogleLongrunningOperation>,
+  input: __S(40, __c10, 0) as any as S.Schema<GetFoldersLocationsReplaysOperationsRequest>,
+  output: __S(35, __c8, 3) as any as S.Schema<GoogleLongrunningOperation>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -228,8 +228,8 @@ export const getOperations: API.OperationMethod<
   GetOperationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(7, __c0, 7) as any as S.Schema<GetOperationsRequest>,
-  output: __S(4, __c0, 4) as any as S.Schema<GoogleLongrunningOperation>,
+  input: __S(44, __c11, 0) as any as S.Schema<GetOperationsRequest>,
+  output: __S(35, __c8, 3) as any as S.Schema<GoogleLongrunningOperation>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -247,11 +247,11 @@ export const getOrganizationsLocationsAccessPolicySimulationsOperations: API.Ope
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    8,
-    __c1,
+    48,
+    __c12,
     0,
   ) as any as S.Schema<GetOrganizationsLocationsAccessPolicySimulationsOperationsRequest>,
-  output: __S(4, __c0, 4) as any as S.Schema<GoogleLongrunningOperation>,
+  output: __S(35, __c8, 3) as any as S.Schema<GoogleLongrunningOperation>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -269,11 +269,11 @@ export const getOrganizationsLocationsOrgPolicyViolationsPreviewsOperations: API
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    9,
-    __c1,
-    1,
+    52,
+    __c13,
+    0,
   ) as any as S.Schema<GetOrganizationsLocationsOrgPolicyViolationsPreviewsOperationsRequest>,
-  output: __S(4, __c0, 4) as any as S.Schema<GoogleLongrunningOperation>,
+  output: __S(35, __c8, 3) as any as S.Schema<GoogleLongrunningOperation>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -287,8 +287,8 @@ export const getOrganizationsLocationsReplaysOperations: API.OperationMethod<
   GetOrganizationsLocationsReplaysOperationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(10, __c1, 2) as any as S.Schema<GetOrganizationsLocationsReplaysOperationsRequest>,
-  output: __S(4, __c0, 4) as any as S.Schema<GoogleLongrunningOperation>,
+  input: __S(56, __c14, 0) as any as S.Schema<GetOrganizationsLocationsReplaysOperationsRequest>,
+  output: __S(35, __c8, 3) as any as S.Schema<GoogleLongrunningOperation>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -306,11 +306,11 @@ export const getProjectsLocationsAccessPolicySimulationsOperations: API.Operatio
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    11,
-    __c1,
-    3,
+    60,
+    __c15,
+    0,
   ) as any as S.Schema<GetProjectsLocationsAccessPolicySimulationsOperationsRequest>,
-  output: __S(4, __c0, 4) as any as S.Schema<GoogleLongrunningOperation>,
+  output: __S(35, __c8, 3) as any as S.Schema<GoogleLongrunningOperation>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -328,11 +328,11 @@ export const getProjectsLocationsOrgPolicyViolationsPreviewsOperations: API.Oper
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    12,
-    __c1,
-    4,
+    0,
+    __c0,
+    0,
   ) as any as S.Schema<GetProjectsLocationsOrgPolicyViolationsPreviewsOperationsRequest>,
-  output: __S(4, __c0, 4) as any as S.Schema<GoogleLongrunningOperation>,
+  output: __S(35, __c8, 3) as any as S.Schema<GoogleLongrunningOperation>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -346,8 +346,8 @@ export const getProjectsLocationsReplaysOperations: API.OperationMethod<
   GetProjectsLocationsReplaysOperationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(13, __c1, 5) as any as S.Schema<GetProjectsLocationsReplaysOperationsRequest>,
-  output: __S(4, __c0, 4) as any as S.Schema<GoogleLongrunningOperation>,
+  input: __S(4, __c1, 0) as any as S.Schema<GetProjectsLocationsReplaysOperationsRequest>,
+  output: __S(35, __c8, 3) as any as S.Schema<GoogleLongrunningOperation>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -362,8 +362,8 @@ export const listFoldersLocationsReplaysOperations: API.PaginatedOperationMethod
   GcpOpContext,
   GoogleLongrunningListOperationsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(14, __c1, 6) as any as S.Schema<ListFoldersLocationsReplaysOperationsRequest>,
-  output: __S(17, __c2, 1) as any as S.Schema<GoogleLongrunningListOperationsResponse>,
+  input: __S(8, __c2, 0) as any as S.Schema<ListFoldersLocationsReplaysOperationsRequest>,
+  output: __S(14, __c3, 2) as any as S.Schema<GoogleLongrunningListOperationsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -379,8 +379,8 @@ export const listOperations: API.PaginatedOperationMethod<
   GcpOpContext,
   GoogleLongrunningListOperationsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(18, __c2, 2) as any as S.Schema<ListOperationsRequest>,
-  output: __S(17, __c2, 1) as any as S.Schema<GoogleLongrunningListOperationsResponse>,
+  input: __S(16, __c4, 0) as any as S.Schema<ListOperationsRequest>,
+  output: __S(14, __c3, 2) as any as S.Schema<GoogleLongrunningListOperationsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -396,8 +396,8 @@ export const listOrganizationsLocationsReplaysOperations: API.PaginatedOperation
   GcpOpContext,
   GoogleLongrunningListOperationsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(19, __c2, 3) as any as S.Schema<ListOrganizationsLocationsReplaysOperationsRequest>,
-  output: __S(17, __c2, 1) as any as S.Schema<GoogleLongrunningListOperationsResponse>,
+  input: __S(20, __c5, 0) as any as S.Schema<ListOrganizationsLocationsReplaysOperationsRequest>,
+  output: __S(14, __c3, 2) as any as S.Schema<GoogleLongrunningListOperationsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -413,8 +413,8 @@ export const listProjectsLocationsReplaysOperations: API.PaginatedOperationMetho
   GcpOpContext,
   GoogleLongrunningListOperationsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(20, __c2, 4) as any as S.Schema<ListProjectsLocationsReplaysOperationsRequest>,
-  output: __S(17, __c2, 1) as any as S.Schema<GoogleLongrunningListOperationsResponse>,
+  input: __S(24, __c6, 0) as any as S.Schema<ListProjectsLocationsReplaysOperationsRequest>,
+  output: __S(14, __c3, 2) as any as S.Schema<GoogleLongrunningListOperationsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -436,72 +436,8 @@ function __c0(j: number): any {
           }),
         ),
       ).annotate({
-        identifier: "GetFoldersLocationsAccessPolicySimulationsOperationsRequest",
+        identifier: "GetProjectsLocationsOrgPolicyViolationsPreviewsOperationsRequest",
       });
-    case 1:
-      return S.Record(S.String, S.Unknown);
-    case 2:
-      return S.Array(__S(1, __c0, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          message: S.optional(S.String),
-          details: S.optional(__S(2, __c0, 2)),
-          code: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "GoogleRpcStatus" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          metadata: S.optional(__S(1, __c0, 1)),
-          error: S.optional(__S(3, __c0, 3)),
-          done: S.optional(S.Boolean),
-          name: S.optional(S.String),
-          response: S.optional(__S(1, __c0, 1)),
-        }),
-      ).annotate({
-        identifier: "GoogleLongrunningOperation",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v1alpha/{+name}",
-            baseUrl: "https://policysimulator.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetFoldersLocationsOrgPolicyViolationsPreviewsOperationsRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v1alpha/{+name}",
-            baseUrl: "https://policysimulator.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetFoldersLocationsReplaysOperationsRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v1alpha/{+name}",
-            baseUrl: "https://policysimulator.googleapis.com/",
-          }),
-        ),
-      ).annotate({ identifier: "GetOperationsRequest" });
   }
 }
 function __c1(j: number): any {
@@ -518,79 +454,13 @@ function __c1(j: number): any {
           }),
         ),
       ).annotate({
-        identifier: "GetOrganizationsLocationsAccessPolicySimulationsOperationsRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v1alpha/{+name}",
-            baseUrl: "https://policysimulator.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetOrganizationsLocationsOrgPolicyViolationsPreviewsOperationsRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v1alpha/{+name}",
-            baseUrl: "https://policysimulator.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetOrganizationsLocationsReplaysOperationsRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v1alpha/{+name}",
-            baseUrl: "https://policysimulator.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetProjectsLocationsAccessPolicySimulationsOperationsRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v1alpha/{+name}",
-            baseUrl: "https://policysimulator.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetProjectsLocationsOrgPolicyViolationsPreviewsOperationsRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v1alpha/{+name}",
-            baseUrl: "https://policysimulator.googleapis.com/",
-          }),
-        ),
-      ).annotate({
         identifier: "GetProjectsLocationsReplaysOperationsRequest",
       });
-    case 6:
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           filter: S.optional(S.String.pipe(T.Query())),
@@ -608,25 +478,29 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "ListFoldersLocationsReplaysOperationsRequest",
       });
-    case 7:
-      return S.Array(S.String);
   }
 }
-function __c2(j: number): any {
+function __c3(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(4, __c0, 4));
+      return S.Array(S.String);
     case 1:
+      return S.Array(__S(35, __c8, 3));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          unreachable: S.optional(__S(15, __c1, 7)),
+          unreachable: S.optional(__S(12, __c3, 0)),
           nextPageToken: S.optional(S.String),
-          operations: S.optional(__S(16, __c2, 0)),
+          operations: S.optional(__S(13, __c3, 1)),
         }),
       ).annotate({
         identifier: "GoogleLongrunningListOperationsResponse",
       });
-    case 2:
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           pageToken: S.optional(S.String.pipe(T.Query())),
@@ -642,7 +516,11 @@ function __c2(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ListOperationsRequest" });
-    case 3:
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           returnPartialSuccess: S.optional(S.Boolean.pipe(T.Query())),
@@ -660,7 +538,11 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "ListOrganizationsLocationsReplaysOperationsRequest",
       });
-    case 4:
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           pageToken: S.optional(S.String.pipe(T.Query())),
@@ -680,7 +562,176 @@ function __c2(j: number): any {
       });
   }
 }
-
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v1alpha/{+name}",
+            baseUrl: "https://policysimulator.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetFoldersLocationsAccessPolicySimulationsOperationsRequest",
+      });
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, S.Unknown);
+    case 1:
+      return S.Array(__S(32, __c8, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          message: S.optional(S.String),
+          details: S.optional(__S(33, __c8, 1)),
+          code: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "GoogleRpcStatus" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          metadata: S.optional(__S(32, __c8, 0)),
+          error: S.optional(__S(34, __c8, 2)),
+          done: S.optional(S.Boolean),
+          name: S.optional(S.String),
+          response: S.optional(__S(32, __c8, 0)),
+        }),
+      ).annotate({
+        identifier: "GoogleLongrunningOperation",
+      });
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v1alpha/{+name}",
+            baseUrl: "https://policysimulator.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetFoldersLocationsOrgPolicyViolationsPreviewsOperationsRequest",
+      });
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v1alpha/{+name}",
+            baseUrl: "https://policysimulator.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetFoldersLocationsReplaysOperationsRequest",
+      });
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v1alpha/{+name}",
+            baseUrl: "https://policysimulator.googleapis.com/",
+          }),
+        ),
+      ).annotate({ identifier: "GetOperationsRequest" });
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v1alpha/{+name}",
+            baseUrl: "https://policysimulator.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetOrganizationsLocationsAccessPolicySimulationsOperationsRequest",
+      });
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v1alpha/{+name}",
+            baseUrl: "https://policysimulator.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetOrganizationsLocationsOrgPolicyViolationsPreviewsOperationsRequest",
+      });
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v1alpha/{+name}",
+            baseUrl: "https://policysimulator.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetOrganizationsLocationsReplaysOperationsRequest",
+      });
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v1alpha/{+name}",
+            baseUrl: "https://policysimulator.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetProjectsLocationsAccessPolicySimulationsOperationsRequest",
+      });
+  }
+}
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

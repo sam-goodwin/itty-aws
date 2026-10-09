@@ -456,8 +456,8 @@ export const createFoldersPolicies: API.OperationMethod<
   CreateFoldersPoliciesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(9, __c1, 1) as any as S.Schema<CreateFoldersPoliciesRequest>,
-  output: __S(8, __c1, 0) as any as S.Schema<GoogleCloudOrgpolicyV2Policy>,
+  input: __S(352, __c22, 0) as any as S.Schema<CreateFoldersPoliciesRequest>,
+  output: __S(391, __c24, 7) as any as S.Schema<GoogleCloudOrgpolicyV2Policy>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -476,8 +476,8 @@ export const createOrganizationsCustomConstraints: API.OperationMethod<
   CreateOrganizationsCustomConstraintsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(12, __c1, 4) as any as S.Schema<CreateOrganizationsCustomConstraintsRequest>,
-  output: __S(11, __c1, 3) as any as S.Schema<GoogleCloudOrgpolicyV2CustomConstraint>,
+  input: __S(400, __c25, 0) as any as S.Schema<CreateOrganizationsCustomConstraintsRequest>,
+  output: __S(417, __c26, 1) as any as S.Schema<GoogleCloudOrgpolicyV2CustomConstraint>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -496,8 +496,8 @@ export const createOrganizationsPolicies: API.OperationMethod<
   CreateOrganizationsPoliciesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(13, __c1, 5) as any as S.Schema<CreateOrganizationsPoliciesRequest>,
-  output: __S(8, __c1, 0) as any as S.Schema<GoogleCloudOrgpolicyV2Policy>,
+  input: __S(432, __c27, 0) as any as S.Schema<CreateOrganizationsPoliciesRequest>,
+  output: __S(391, __c24, 7) as any as S.Schema<GoogleCloudOrgpolicyV2Policy>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -511,8 +511,8 @@ export const createProjectsPolicies: API.OperationMethod<
   CreateProjectsPoliciesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(14, __c1, 6) as any as S.Schema<CreateProjectsPoliciesRequest>,
-  output: __S(8, __c1, 0) as any as S.Schema<GoogleCloudOrgpolicyV2Policy>,
+  input: __S(448, __c28, 0) as any as S.Schema<CreateProjectsPoliciesRequest>,
+  output: __S(391, __c24, 7) as any as S.Schema<GoogleCloudOrgpolicyV2Policy>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -526,8 +526,8 @@ export const deleteFoldersPolicies: API.OperationMethod<
   DeleteFoldersPoliciesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(15, __c1, 7) as any as S.Schema<DeleteFoldersPoliciesRequest>,
-  output: __S(16, __c2, 0) as any as S.Schema<GoogleProtobufEmpty>,
+  input: __S(464, __c29, 0) as any as S.Schema<DeleteFoldersPoliciesRequest>,
+  output: __S(480, __c30, 0) as any as S.Schema<GoogleProtobufEmpty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -546,8 +546,8 @@ export const deleteOrganizationsCustomConstraints: API.OperationMethod<
   DeleteOrganizationsCustomConstraintsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(17, __c2, 1) as any as S.Schema<DeleteOrganizationsCustomConstraintsRequest>,
-  output: __S(16, __c2, 0) as any as S.Schema<GoogleProtobufEmpty>,
+  input: __S(496, __c31, 0) as any as S.Schema<DeleteOrganizationsCustomConstraintsRequest>,
+  output: __S(480, __c30, 0) as any as S.Schema<GoogleProtobufEmpty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -566,8 +566,8 @@ export const deleteOrganizationsPolicies: API.OperationMethod<
   DeleteOrganizationsPoliciesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(18, __c2, 2) as any as S.Schema<DeleteOrganizationsPoliciesRequest>,
-  output: __S(16, __c2, 0) as any as S.Schema<GoogleProtobufEmpty>,
+  input: __S(0, __c0, 0) as any as S.Schema<DeleteOrganizationsPoliciesRequest>,
+  output: __S(480, __c30, 0) as any as S.Schema<GoogleProtobufEmpty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -581,8 +581,8 @@ export const deleteProjectsPolicies: API.OperationMethod<
   DeleteProjectsPoliciesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(19, __c2, 3) as any as S.Schema<DeleteProjectsPoliciesRequest>,
-  output: __S(16, __c2, 0) as any as S.Schema<GoogleProtobufEmpty>,
+  input: __S(16, __c1, 0) as any as S.Schema<DeleteProjectsPoliciesRequest>,
+  output: __S(480, __c30, 0) as any as S.Schema<GoogleProtobufEmpty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -596,8 +596,8 @@ export const getEffectivePolicyFoldersPolicies: API.OperationMethod<
   GetEffectivePolicyFoldersPoliciesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(20, __c2, 4) as any as S.Schema<GetEffectivePolicyFoldersPoliciesRequest>,
-  output: __S(8, __c1, 0) as any as S.Schema<GoogleCloudOrgpolicyV2Policy>,
+  input: __S(32, __c2, 0) as any as S.Schema<GetEffectivePolicyFoldersPoliciesRequest>,
+  output: __S(391, __c24, 7) as any as S.Schema<GoogleCloudOrgpolicyV2Policy>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -611,8 +611,8 @@ export const getEffectivePolicyOrganizationsPolicies: API.OperationMethod<
   GetEffectivePolicyOrganizationsPoliciesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(21, __c2, 5) as any as S.Schema<GetEffectivePolicyOrganizationsPoliciesRequest>,
-  output: __S(8, __c1, 0) as any as S.Schema<GoogleCloudOrgpolicyV2Policy>,
+  input: __S(48, __c3, 0) as any as S.Schema<GetEffectivePolicyOrganizationsPoliciesRequest>,
+  output: __S(391, __c24, 7) as any as S.Schema<GoogleCloudOrgpolicyV2Policy>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -626,8 +626,8 @@ export const getEffectivePolicyProjectsPolicies: API.OperationMethod<
   GetEffectivePolicyProjectsPoliciesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(22, __c2, 6) as any as S.Schema<GetEffectivePolicyProjectsPoliciesRequest>,
-  output: __S(8, __c1, 0) as any as S.Schema<GoogleCloudOrgpolicyV2Policy>,
+  input: __S(64, __c4, 0) as any as S.Schema<GetEffectivePolicyProjectsPoliciesRequest>,
+  output: __S(391, __c24, 7) as any as S.Schema<GoogleCloudOrgpolicyV2Policy>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -641,8 +641,8 @@ export const getFoldersPolicies: API.OperationMethod<
   GetFoldersPoliciesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(23, __c2, 7) as any as S.Schema<GetFoldersPoliciesRequest>,
-  output: __S(8, __c1, 0) as any as S.Schema<GoogleCloudOrgpolicyV2Policy>,
+  input: __S(80, __c5, 0) as any as S.Schema<GetFoldersPoliciesRequest>,
+  output: __S(391, __c24, 7) as any as S.Schema<GoogleCloudOrgpolicyV2Policy>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -656,8 +656,8 @@ export const getOrganizationsCustomConstraints: API.OperationMethod<
   GetOrganizationsCustomConstraintsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(24, __c3, 0) as any as S.Schema<GetOrganizationsCustomConstraintsRequest>,
-  output: __S(11, __c1, 3) as any as S.Schema<GoogleCloudOrgpolicyV2CustomConstraint>,
+  input: __S(96, __c6, 0) as any as S.Schema<GetOrganizationsCustomConstraintsRequest>,
+  output: __S(417, __c26, 1) as any as S.Schema<GoogleCloudOrgpolicyV2CustomConstraint>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -671,8 +671,8 @@ export const getOrganizationsPolicies: API.OperationMethod<
   GetOrganizationsPoliciesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(25, __c3, 1) as any as S.Schema<GetOrganizationsPoliciesRequest>,
-  output: __S(8, __c1, 0) as any as S.Schema<GoogleCloudOrgpolicyV2Policy>,
+  input: __S(112, __c7, 0) as any as S.Schema<GetOrganizationsPoliciesRequest>,
+  output: __S(391, __c24, 7) as any as S.Schema<GoogleCloudOrgpolicyV2Policy>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -686,8 +686,8 @@ export const getProjectsPolicies: API.OperationMethod<
   GetProjectsPoliciesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(26, __c3, 2) as any as S.Schema<GetProjectsPoliciesRequest>,
-  output: __S(8, __c1, 0) as any as S.Schema<GoogleCloudOrgpolicyV2Policy>,
+  input: __S(128, __c8, 0) as any as S.Schema<GetProjectsPoliciesRequest>,
+  output: __S(391, __c24, 7) as any as S.Schema<GoogleCloudOrgpolicyV2Policy>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -702,8 +702,8 @@ export const listFoldersConstraints: API.PaginatedOperationMethod<
   GcpOpContext,
   GoogleCloudOrgpolicyV2ListConstraintsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(27, __c3, 3) as any as S.Schema<ListFoldersConstraintsRequest>,
-  output: __S(37, __c4, 5) as any as S.Schema<GoogleCloudOrgpolicyV2ListConstraintsResponse>,
+  input: __S(144, __c9, 0) as any as S.Schema<ListFoldersConstraintsRequest>,
+  output: __S(169, __c10, 9) as any as S.Schema<GoogleCloudOrgpolicyV2ListConstraintsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -719,8 +719,8 @@ export const listFoldersPolicies: API.PaginatedOperationMethod<
   GcpOpContext,
   GoogleCloudOrgpolicyV2ListPoliciesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(38, __c4, 6) as any as S.Schema<ListFoldersPoliciesRequest>,
-  output: __S(40, __c5, 0) as any as S.Schema<GoogleCloudOrgpolicyV2ListPoliciesResponse>,
+  input: __S(176, __c11, 0) as any as S.Schema<ListFoldersPoliciesRequest>,
+  output: __S(193, __c12, 1) as any as S.Schema<GoogleCloudOrgpolicyV2ListPoliciesResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -736,8 +736,8 @@ export const listOrganizationsConstraints: API.PaginatedOperationMethod<
   GcpOpContext,
   GoogleCloudOrgpolicyV2ListConstraintsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(41, __c5, 1) as any as S.Schema<ListOrganizationsConstraintsRequest>,
-  output: __S(37, __c4, 5) as any as S.Schema<GoogleCloudOrgpolicyV2ListConstraintsResponse>,
+  input: __S(208, __c13, 0) as any as S.Schema<ListOrganizationsConstraintsRequest>,
+  output: __S(169, __c10, 9) as any as S.Schema<GoogleCloudOrgpolicyV2ListConstraintsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -753,8 +753,12 @@ export const listOrganizationsCustomConstraints: API.PaginatedOperationMethod<
   GcpOpContext,
   GoogleCloudOrgpolicyV2ListCustomConstraintsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(42, __c5, 2) as any as S.Schema<ListOrganizationsCustomConstraintsRequest>,
-  output: __S(44, __c5, 4) as any as S.Schema<GoogleCloudOrgpolicyV2ListCustomConstraintsResponse>,
+  input: __S(224, __c14, 0) as any as S.Schema<ListOrganizationsCustomConstraintsRequest>,
+  output: __S(
+    226,
+    __c14,
+    2,
+  ) as any as S.Schema<GoogleCloudOrgpolicyV2ListCustomConstraintsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -770,8 +774,8 @@ export const listOrganizationsPolicies: API.PaginatedOperationMethod<
   GcpOpContext,
   GoogleCloudOrgpolicyV2ListPoliciesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(45, __c5, 5) as any as S.Schema<ListOrganizationsPoliciesRequest>,
-  output: __S(40, __c5, 0) as any as S.Schema<GoogleCloudOrgpolicyV2ListPoliciesResponse>,
+  input: __S(240, __c15, 0) as any as S.Schema<ListOrganizationsPoliciesRequest>,
+  output: __S(193, __c12, 1) as any as S.Schema<GoogleCloudOrgpolicyV2ListPoliciesResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -787,8 +791,8 @@ export const listProjectsConstraints: API.PaginatedOperationMethod<
   GcpOpContext,
   GoogleCloudOrgpolicyV2ListConstraintsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(46, __c5, 6) as any as S.Schema<ListProjectsConstraintsRequest>,
-  output: __S(37, __c4, 5) as any as S.Schema<GoogleCloudOrgpolicyV2ListConstraintsResponse>,
+  input: __S(256, __c16, 0) as any as S.Schema<ListProjectsConstraintsRequest>,
+  output: __S(169, __c10, 9) as any as S.Schema<GoogleCloudOrgpolicyV2ListConstraintsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -804,8 +808,8 @@ export const listProjectsPolicies: API.PaginatedOperationMethod<
   GcpOpContext,
   GoogleCloudOrgpolicyV2ListPoliciesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(47, __c5, 7) as any as S.Schema<ListProjectsPoliciesRequest>,
-  output: __S(40, __c5, 0) as any as S.Schema<GoogleCloudOrgpolicyV2ListPoliciesResponse>,
+  input: __S(272, __c17, 0) as any as S.Schema<ListProjectsPoliciesRequest>,
+  output: __S(193, __c12, 1) as any as S.Schema<GoogleCloudOrgpolicyV2ListPoliciesResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -820,8 +824,8 @@ export const patchFoldersPolicies: API.OperationMethod<
   PatchFoldersPoliciesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(48, __c6, 0) as any as S.Schema<PatchFoldersPoliciesRequest>,
-  output: __S(8, __c1, 0) as any as S.Schema<GoogleCloudOrgpolicyV2Policy>,
+  input: __S(288, __c18, 0) as any as S.Schema<PatchFoldersPoliciesRequest>,
+  output: __S(391, __c24, 7) as any as S.Schema<GoogleCloudOrgpolicyV2Policy>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -840,8 +844,8 @@ export const patchOrganizationsCustomConstraints: API.OperationMethod<
   PatchOrganizationsCustomConstraintsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(49, __c6, 1) as any as S.Schema<PatchOrganizationsCustomConstraintsRequest>,
-  output: __S(11, __c1, 3) as any as S.Schema<GoogleCloudOrgpolicyV2CustomConstraint>,
+  input: __S(304, __c19, 0) as any as S.Schema<PatchOrganizationsCustomConstraintsRequest>,
+  output: __S(417, __c26, 1) as any as S.Schema<GoogleCloudOrgpolicyV2CustomConstraint>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -860,8 +864,8 @@ export const patchOrganizationsPolicies: API.OperationMethod<
   PatchOrganizationsPoliciesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(50, __c6, 2) as any as S.Schema<PatchOrganizationsPoliciesRequest>,
-  output: __S(8, __c1, 0) as any as S.Schema<GoogleCloudOrgpolicyV2Policy>,
+  input: __S(320, __c20, 0) as any as S.Schema<PatchOrganizationsPoliciesRequest>,
+  output: __S(391, __c24, 7) as any as S.Schema<GoogleCloudOrgpolicyV2Policy>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -875,8 +879,8 @@ export const patchProjectsPolicies: API.OperationMethod<
   PatchProjectsPoliciesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(51, __c6, 3) as any as S.Schema<PatchProjectsPoliciesRequest>,
-  output: __S(8, __c1, 0) as any as S.Schema<GoogleCloudOrgpolicyV2Policy>,
+  input: __S(336, __c21, 0) as any as S.Schema<PatchProjectsPoliciesRequest>,
+  output: __S(391, __c24, 7) as any as S.Schema<GoogleCloudOrgpolicyV2Policy>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -886,194 +890,6 @@ export const patchProjectsPolicies: API.OperationMethod<
 function __c0(j: number): any {
   switch (j) {
     case 0:
-      return S.Record(S.String, S.Unknown);
-    case 1:
-      return S.Array(S.String);
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          deniedValues: S.optional(__S(1, __c0, 1)),
-          allowedValues: S.optional(__S(1, __c0, 1)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudOrgpolicyV2PolicySpecPolicyRuleStringValues",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          description: S.optional(S.String),
-          location: S.optional(S.String),
-          expression: S.optional(S.String),
-          title: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "GoogleTypeExpr" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          denyAll: S.optional(S.Boolean),
-          parameters: S.optional(__S(0, __c0, 0)),
-          allowAll: S.optional(S.Boolean),
-          enforce: S.optional(S.Boolean),
-          values: S.optional(__S(2, __c0, 2)),
-          condition: S.optional(__S(3, __c0, 3)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudOrgpolicyV2PolicySpecPolicyRule",
-      });
-    case 5:
-      return S.Array(__S(4, __c0, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          updateTime: S.optional(S.String),
-          rules: S.optional(__S(5, __c0, 5)),
-          inheritFromParent: S.optional(S.Boolean),
-          etag: S.optional(S.String),
-          reset: S.optional(S.Boolean),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudOrgpolicyV2PolicySpec",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          spec: S.optional(__S(6, __c0, 6)),
-          launch: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudOrgpolicyV2AlternatePolicySpec",
-      });
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          dryRunSpec: S.optional(__S(6, __c0, 6)),
-          name: S.optional(S.String),
-          spec: S.optional(__S(6, __c0, 6)),
-          alternate: S.optional(__S(7, __c0, 7)),
-          etag: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudOrgpolicyV2Policy",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(8, __c1, 0).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v2/{+parent}/policies",
-            baseUrl: "https://orgpolicy.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateFoldersPoliciesRequest",
-      });
-    case 2:
-      return S.Array(S.String);
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          actionType: S.optional(S.String),
-          methodTypes: S.optional(__S(10, __c1, 2)),
-          description: S.optional(S.String),
-          name: S.optional(S.String),
-          updateTime: S.optional(S.String),
-          resourceTypes: S.optional(__S(1, __c0, 1)),
-          condition: S.optional(S.String),
-          displayName: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudOrgpolicyV2CustomConstraint",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(11, __c1, 3).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v2/{+parent}/customConstraints",
-            baseUrl: "https://orgpolicy.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateOrganizationsCustomConstraintsRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(8, __c1, 0).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v2/{+parent}/policies",
-            baseUrl: "https://orgpolicy.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateOrganizationsPoliciesRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(8, __c1, 0).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v2/{+parent}/policies",
-            baseUrl: "https://orgpolicy.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateProjectsPoliciesRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-          etag: S.optional(S.String.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "v2/{+name}",
-            baseUrl: "https://orgpolicy.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteFoldersPoliciesRequest",
-      });
-  }
-}
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "GoogleProtobufEmpty",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "v2/{+name}",
-            baseUrl: "https://orgpolicy.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteOrganizationsCustomConstraintsRequest",
-      });
-    case 2:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -1088,7 +904,11 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "DeleteOrganizationsPoliciesRequest",
       });
-    case 3:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -1103,7 +923,11 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "DeleteProjectsPoliciesRequest",
       });
-    case 4:
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -1117,7 +941,11 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "GetEffectivePolicyFoldersPoliciesRequest",
       });
-    case 5:
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -1131,7 +959,11 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "GetEffectivePolicyOrganizationsPoliciesRequest",
       });
-    case 6:
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -1145,7 +977,11 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "GetEffectivePolicyProjectsPoliciesRequest",
       });
-    case 7:
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -1161,7 +997,7 @@ function __c2(j: number): any {
       });
   }
 }
-function __c3(j: number): any {
+function __c6(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1177,7 +1013,11 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "GetOrganizationsCustomConstraintsRequest",
       });
-    case 1:
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -1191,7 +1031,11 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "GetOrganizationsPoliciesRequest",
       });
-    case 2:
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -1205,7 +1049,11 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "GetProjectsPoliciesRequest",
       });
-    case 3:
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
@@ -1221,9 +1069,13 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "ListFoldersConstraintsRequest",
       });
-    case 4:
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
       return S.Array(S.String);
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           description: S.optional(S.String),
@@ -1231,11 +1083,11 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "GoogleCloudOrgpolicyV2ConstraintCustomConstraintDefinitionParameterMetadata",
       });
-    case 6:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           type: S.optional(S.String),
-          metadata: S.optional(__S(29, __c3, 5)),
+          metadata: S.optional(__S(161, __c10, 1)),
           item: S.optional(S.String),
           defaultValue: S.optional(S.Unknown),
           validValuesExpr: S.optional(S.String),
@@ -1243,33 +1095,29 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "GoogleCloudOrgpolicyV2ConstraintCustomConstraintDefinitionParameter",
       });
-    case 7:
-      return S.Record(S.String, __S(30, __c3, 6));
-  }
-}
-function __c4(j: number): any {
-  switch (j) {
-    case 0:
+    case 3:
+      return S.Record(S.String, __S(162, __c10, 2));
+    case 4:
       return S.suspend(() =>
         S.Struct({
-          methodTypes: S.optional(__S(28, __c3, 4)),
+          methodTypes: S.optional(__S(160, __c10, 0)),
           actionType: S.optional(S.String),
-          parameters: S.optional(__S(31, __c3, 7)),
-          resourceTypes: S.optional(__S(1, __c0, 1)),
+          parameters: S.optional(__S(163, __c10, 3)),
+          resourceTypes: S.optional(__S(368, __c23, 0)),
           condition: S.optional(S.String),
         }),
       ).annotate({
         identifier: "GoogleCloudOrgpolicyV2ConstraintCustomConstraintDefinition",
       });
-    case 1:
+    case 5:
       return S.suspend(() =>
         S.Struct({
-          customConstraintDefinition: S.optional(__S(32, __c4, 0)),
+          customConstraintDefinition: S.optional(__S(164, __c10, 4)),
         }),
       ).annotate({
         identifier: "GoogleCloudOrgpolicyV2ConstraintBooleanConstraint",
       });
-    case 2:
+    case 6:
       return S.suspend(() =>
         S.Struct({
           supportsUnder: S.optional(S.Boolean),
@@ -1278,34 +1126,38 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "GoogleCloudOrgpolicyV2ConstraintListConstraint",
       });
-    case 3:
+    case 7:
       return S.suspend(() =>
         S.Struct({
           supportsDryRun: S.optional(S.Boolean),
           constraintDefault: S.optional(S.String),
           displayName: S.optional(S.String),
           supportsSimulation: S.optional(S.Boolean),
-          booleanConstraint: S.optional(__S(33, __c4, 1)),
+          booleanConstraint: S.optional(__S(165, __c10, 5)),
           description: S.optional(S.String),
           name: S.optional(S.String),
           equivalentConstraint: S.optional(S.String),
-          listConstraint: S.optional(__S(34, __c4, 2)),
+          listConstraint: S.optional(__S(166, __c10, 6)),
         }),
       ).annotate({
         identifier: "GoogleCloudOrgpolicyV2Constraint",
       });
-    case 4:
-      return S.Array(__S(35, __c4, 3));
-    case 5:
+    case 8:
+      return S.Array(__S(167, __c10, 7));
+    case 9:
       return S.suspend(() =>
         S.Struct({
-          constraints: S.optional(__S(36, __c4, 4)),
+          constraints: S.optional(__S(168, __c10, 8)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({
         identifier: "GoogleCloudOrgpolicyV2ListConstraintsResponse",
       });
-    case 6:
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -1321,22 +1173,26 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "ListFoldersPoliciesRequest",
       });
-    case 7:
-      return S.Array(__S(8, __c1, 0));
   }
 }
-function __c5(j: number): any {
+function __c12(j: number): any {
   switch (j) {
     case 0:
+      return S.Array(__S(391, __c24, 7));
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          policies: S.optional(__S(39, __c4, 7)),
+          policies: S.optional(__S(192, __c12, 0)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({
         identifier: "GoogleCloudOrgpolicyV2ListPoliciesResponse",
       });
-    case 1:
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
@@ -1352,7 +1208,11 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "ListOrganizationsConstraintsRequest",
       });
-    case 2:
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -1368,18 +1228,22 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "ListOrganizationsCustomConstraintsRequest",
       });
-    case 3:
-      return S.Array(__S(11, __c1, 3));
-    case 4:
+    case 1:
+      return S.Array(__S(417, __c26, 1));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          customConstraints: S.optional(__S(43, __c5, 3)),
+          customConstraints: S.optional(__S(225, __c14, 1)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({
         identifier: "GoogleCloudOrgpolicyV2ListCustomConstraintsResponse",
       });
-    case 5:
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           pageToken: S.optional(S.String.pipe(T.Query())),
@@ -1395,7 +1259,11 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "ListOrganizationsPoliciesRequest",
       });
-    case 6:
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           pageToken: S.optional(S.String.pipe(T.Query())),
@@ -1411,7 +1279,11 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "ListProjectsConstraintsRequest",
       });
-    case 7:
+  }
+}
+function __c17(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -1429,14 +1301,14 @@ function __c5(j: number): any {
       });
   }
 }
-function __c6(j: number): any {
+function __c18(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
           updateMask: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(8, __c1, 0).pipe(T.HttpBody())),
+          body: S.optional(__S(391, __c24, 7).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -1447,11 +1319,15 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "PatchFoldersPoliciesRequest",
       });
-    case 1:
+  }
+}
+function __c19(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(11, __c1, 3).pipe(T.HttpBody())),
+          body: S.optional(__S(417, __c26, 1).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -1462,12 +1338,16 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "PatchOrganizationsCustomConstraintsRequest",
       });
-    case 2:
+  }
+}
+function __c20(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
           updateMask: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(8, __c1, 0).pipe(T.HttpBody())),
+          body: S.optional(__S(391, __c24, 7).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -1478,12 +1358,16 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "PatchOrganizationsPoliciesRequest",
       });
-    case 3:
+  }
+}
+function __c21(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           updateMask: S.optional(S.String.pipe(T.Query())),
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(8, __c1, 0).pipe(T.HttpBody())),
+          body: S.optional(__S(391, __c24, 7).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -1496,7 +1380,226 @@ function __c6(j: number): any {
       });
   }
 }
-
+function __c22(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          parent: S.String.pipe(T.Label()),
+          body: S.optional(__S(391, __c24, 7).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v2/{+parent}/policies",
+            baseUrl: "https://orgpolicy.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateFoldersPoliciesRequest",
+      });
+  }
+}
+function __c23(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c24(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, S.Unknown);
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          deniedValues: S.optional(__S(368, __c23, 0)),
+          allowedValues: S.optional(__S(368, __c23, 0)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudOrgpolicyV2PolicySpecPolicyRuleStringValues",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          description: S.optional(S.String),
+          location: S.optional(S.String),
+          expression: S.optional(S.String),
+          title: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "GoogleTypeExpr" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          denyAll: S.optional(S.Boolean),
+          parameters: S.optional(__S(384, __c24, 0)),
+          allowAll: S.optional(S.Boolean),
+          enforce: S.optional(S.Boolean),
+          values: S.optional(__S(385, __c24, 1)),
+          condition: S.optional(__S(386, __c24, 2)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudOrgpolicyV2PolicySpecPolicyRule",
+      });
+    case 4:
+      return S.Array(__S(387, __c24, 3));
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          updateTime: S.optional(S.String),
+          rules: S.optional(__S(388, __c24, 4)),
+          inheritFromParent: S.optional(S.Boolean),
+          etag: S.optional(S.String),
+          reset: S.optional(S.Boolean),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudOrgpolicyV2PolicySpec",
+      });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          spec: S.optional(__S(389, __c24, 5)),
+          launch: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudOrgpolicyV2AlternatePolicySpec",
+      });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          dryRunSpec: S.optional(__S(389, __c24, 5)),
+          name: S.optional(S.String),
+          spec: S.optional(__S(389, __c24, 5)),
+          alternate: S.optional(__S(390, __c24, 6)),
+          etag: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudOrgpolicyV2Policy",
+      });
+  }
+}
+function __c25(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          parent: S.String.pipe(T.Label()),
+          body: S.optional(__S(417, __c26, 1).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v2/{+parent}/customConstraints",
+            baseUrl: "https://orgpolicy.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateOrganizationsCustomConstraintsRequest",
+      });
+  }
+}
+function __c26(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          actionType: S.optional(S.String),
+          methodTypes: S.optional(__S(416, __c26, 0)),
+          description: S.optional(S.String),
+          name: S.optional(S.String),
+          updateTime: S.optional(S.String),
+          resourceTypes: S.optional(__S(368, __c23, 0)),
+          condition: S.optional(S.String),
+          displayName: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudOrgpolicyV2CustomConstraint",
+      });
+  }
+}
+function __c27(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          parent: S.String.pipe(T.Label()),
+          body: S.optional(__S(391, __c24, 7).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v2/{+parent}/policies",
+            baseUrl: "https://orgpolicy.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateOrganizationsPoliciesRequest",
+      });
+  }
+}
+function __c28(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          parent: S.String.pipe(T.Label()),
+          body: S.optional(__S(391, __c24, 7).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v2/{+parent}/policies",
+            baseUrl: "https://orgpolicy.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateProjectsPoliciesRequest",
+      });
+  }
+}
+function __c29(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+          etag: S.optional(S.String.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "v2/{+name}",
+            baseUrl: "https://orgpolicy.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteFoldersPoliciesRequest",
+      });
+  }
+}
+function __c30(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "GoogleProtobufEmpty",
+      });
+  }
+}
+function __c31(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "v2/{+name}",
+            baseUrl: "https://orgpolicy.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteOrganizationsCustomConstraintsRequest",
+      });
+  }
+}
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

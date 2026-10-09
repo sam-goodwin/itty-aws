@@ -108,7 +108,7 @@ export const getRobot: API.OperationMethod<
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(0, __c0, 0) as any as S.Schema<GetRobotRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<GetRobotResponse>,
+  output: __S(4, __c0, 4) as any as S.Schema<GetRobotResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -122,8 +122,8 @@ export const robotsBulkGet: API.OperationMethod<
   RobotsBulkGetError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(6, __c0, 6) as any as S.Schema<RobotsBulkGetRequest>,
-  output: __S(12, __c1, 4) as any as S.Schema<RobotsBulkGetResponse>,
+  input: __S(16, __c2, 0) as any as S.Schema<RobotsBulkGetRequest>,
+  output: __S(22, __c2, 6) as any as S.Schema<RobotsBulkGetResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -140,8 +140,6 @@ function __c0(j: number): any {
         }).pipe(T.Http({ method: "GET", uri: "/zones/{zone_id}/ai-audit/robots", code: 200 })),
       ).annotate({ identifier: "GetRobotRequest" });
     case 1:
-      return S.Array(S.String);
-    case 2:
       return S.suspend(() =>
         S.Struct({
           aiInput: S.optional(S.NullOr(S.String).pipe(T.Body("ai-input"))),
@@ -151,37 +149,47 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "GetRobotResponseUserAgentsValueContentSignals",
       });
-    case 3:
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          allow: __S(1, __c0, 1),
-          disallow: __S(1, __c0, 1),
-          contentSignals: S.optional(S.NullOr(__S(2, __c0, 2))),
+          allow: __S(8, __c1, 0),
+          disallow: __S(8, __c1, 0),
+          contentSignals: S.optional(S.NullOr(__S(1, __c0, 1))),
           crawlDelay: S.optional(S.NullOr(S.Number)),
         }),
       ).annotate({
         identifier: "GetRobotResponseUserAgentsValue",
       });
+    case 3:
+      return S.Record(S.String, __S(2, __c0, 2));
     case 4:
-      return S.Record(S.String, __S(3, __c0, 3));
-    case 5:
       return S.suspend(() =>
         S.Struct({
-          userAgents: __S(4, __c0, 4),
-          sitemaps: S.optional(S.NullOr(__S(1, __c0, 1))),
+          userAgents: __S(3, __c0, 3),
+          sitemaps: S.optional(S.NullOr(__S(8, __c1, 0))),
           status: S.optional(S.NullOr(S.Number)),
         }),
       ).annotate({ identifier: "GetRobotResponse" });
-    case 6:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           zoneId: S.String.pipe(T.Label("zone_id")),
-          body: __S(1, __c0, 1).pipe(T.HttpBody()),
+          body: __S(8, __c1, 0).pipe(T.HttpBody()),
         }).pipe(
           T.Http({ method: "POST", uri: "/zones/{zone_id}/ai-audit/robots/bulk", code: 200 }),
         ),
       ).annotate({ identifier: "RobotsBulkGetRequest" });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           aiInput: S.optional(S.NullOr(S.String).pipe(T.Body("ai-input"))),
@@ -191,40 +199,35 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "RobotsBulkGetResultValueUserAgentsValueContentSignals",
       });
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          allow: __S(1, __c0, 1),
-          disallow: __S(1, __c0, 1),
-          contentSignals: S.optional(S.NullOr(__S(7, __c0, 7))),
+          allow: __S(8, __c1, 0),
+          disallow: __S(8, __c1, 0),
+          contentSignals: S.optional(S.NullOr(__S(17, __c2, 1))),
           crawlDelay: S.optional(S.NullOr(S.Number)),
         }),
       ).annotate({
         identifier: "RobotsBulkGetResultValueUserAgentsValue",
       });
-    case 1:
-      return S.Record(S.String, __S(8, __c1, 0));
-    case 2:
+    case 3:
+      return S.Record(S.String, __S(18, __c2, 2));
+    case 4:
       return S.suspend(() =>
         S.Struct({
-          userAgents: __S(9, __c1, 1),
-          sitemaps: S.optional(S.NullOr(__S(1, __c0, 1))),
+          userAgents: __S(19, __c2, 3),
+          sitemaps: S.optional(S.NullOr(__S(8, __c1, 0))),
           status: S.optional(S.NullOr(S.Number)),
         }),
       ).annotate({ identifier: "RobotsBulkGetResultValue" });
-    case 3:
-      return S.Record(S.String, __S(10, __c1, 2));
-    case 4:
-      return S.suspend(() => __S(11, __c1, 3).pipe(T.EnvelopePayloadRoot())).annotate({
+    case 5:
+      return S.Record(S.String, __S(20, __c2, 4));
+    case 6:
+      return S.suspend(() => __S(21, __c2, 5).pipe(T.EnvelopePayloadRoot())).annotate({
         identifier: "RobotsBulkGetResponse",
       });
   }
 }
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

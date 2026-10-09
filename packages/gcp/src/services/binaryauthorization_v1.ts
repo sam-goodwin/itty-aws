@@ -709,8 +709,8 @@ export const createProjectsAttestors: API.OperationMethod<
   CreateProjectsAttestorsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(5, __c0, 5) as any as S.Schema<CreateProjectsAttestorsRequest>,
-  output: __S(4, __c0, 4) as any as S.Schema<Attestor>,
+  input: __S(576, __c18, 0) as any as S.Schema<CreateProjectsAttestorsRequest>,
+  output: __S(611, __c19, 3) as any as S.Schema<Attestor>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -729,8 +729,8 @@ export const createProjectsPlatformsPolicies: API.OperationMethod<
   CreateProjectsPlatformsPoliciesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(33, __c4, 1) as any as S.Schema<CreateProjectsPlatformsPoliciesRequest>,
-  output: __S(32, __c4, 0) as any as S.Schema<PlatformPolicy>,
+  input: __S(672, __c21, 0) as any as S.Schema<CreateProjectsPlatformsPoliciesRequest>,
+  output: __S(728, __c22, 24) as any as S.Schema<PlatformPolicy>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -749,8 +749,8 @@ export const deleteProjectsAttestors: API.OperationMethod<
   DeleteProjectsAttestorsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(34, __c4, 2) as any as S.Schema<DeleteProjectsAttestorsRequest>,
-  output: __S(35, __c4, 3) as any as S.Schema<Empty>,
+  input: __S(800, __c25, 0) as any as S.Schema<DeleteProjectsAttestorsRequest>,
+  output: __S(832, __c26, 0) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -769,8 +769,8 @@ export const deleteProjectsPlatformsPolicies: API.OperationMethod<
   DeleteProjectsPlatformsPoliciesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(36, __c4, 4) as any as S.Schema<DeleteProjectsPlatformsPoliciesRequest>,
-  output: __S(35, __c4, 3) as any as S.Schema<Empty>,
+  input: __S(864, __c27, 0) as any as S.Schema<DeleteProjectsPlatformsPoliciesRequest>,
+  output: __S(832, __c26, 0) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -789,8 +789,8 @@ export const evaluateProjectsPlatformsGkePolicies: API.OperationMethod<
   EvaluateProjectsPlatformsGkePoliciesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(39, __c4, 7) as any as S.Schema<EvaluateProjectsPlatformsGkePoliciesRequest>,
-  output: __S(50, __c6, 2) as any as S.Schema<EvaluateGkePolicyResponse>,
+  input: __S(898, __c28, 2) as any as S.Schema<EvaluateProjectsPlatformsGkePoliciesRequest>,
+  output: __S(909, __c28, 13) as any as S.Schema<EvaluateGkePolicyResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -804,8 +804,8 @@ export const getIamPolicyProjectsAttestors: API.OperationMethod<
   GetIamPolicyProjectsAttestorsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(51, __c6, 3) as any as S.Schema<GetIamPolicyProjectsAttestorsRequest>,
-  output: __S(55, __c6, 7) as any as S.Schema<IamPolicy>,
+  input: __S(928, __c29, 0) as any as S.Schema<GetIamPolicyProjectsAttestorsRequest>,
+  output: __S(963, __c30, 3) as any as S.Schema<IamPolicy>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -819,8 +819,8 @@ export const getIamPolicyProjectsPolicy: API.OperationMethod<
   GetIamPolicyProjectsPolicyError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(56, __c7, 0) as any as S.Schema<GetIamPolicyProjectsPolicyRequest>,
-  output: __S(55, __c6, 7) as any as S.Schema<IamPolicy>,
+  input: __S(0, __c0, 0) as any as S.Schema<GetIamPolicyProjectsPolicyRequest>,
+  output: __S(963, __c30, 3) as any as S.Schema<IamPolicy>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -834,8 +834,8 @@ export const getPolicyProjects: API.OperationMethod<
   GetPolicyProjectsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(57, __c7, 1) as any as S.Schema<GetPolicyProjectsRequest>,
-  output: __S(62, __c7, 6) as any as S.Schema<Policy>,
+  input: __S(32, __c1, 0) as any as S.Schema<GetPolicyProjectsRequest>,
+  output: __S(68, __c2, 4) as any as S.Schema<Policy>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -849,8 +849,8 @@ export const getPolicySystempolicy: API.OperationMethod<
   GetPolicySystempolicyError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(63, __c7, 7) as any as S.Schema<GetPolicySystempolicyRequest>,
-  output: __S(62, __c7, 6) as any as S.Schema<Policy>,
+  input: __S(96, __c3, 0) as any as S.Schema<GetPolicySystempolicyRequest>,
+  output: __S(68, __c2, 4) as any as S.Schema<Policy>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -864,8 +864,8 @@ export const getProjectsAttestors: API.OperationMethod<
   GetProjectsAttestorsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(64, __c8, 0) as any as S.Schema<GetProjectsAttestorsRequest>,
-  output: __S(4, __c0, 4) as any as S.Schema<Attestor>,
+  input: __S(128, __c4, 0) as any as S.Schema<GetProjectsAttestorsRequest>,
+  output: __S(611, __c19, 3) as any as S.Schema<Attestor>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -879,8 +879,8 @@ export const getProjectsPlatformsPolicies: API.OperationMethod<
   GetProjectsPlatformsPoliciesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(65, __c8, 1) as any as S.Schema<GetProjectsPlatformsPoliciesRequest>,
-  output: __S(32, __c4, 0) as any as S.Schema<PlatformPolicy>,
+  input: __S(160, __c5, 0) as any as S.Schema<GetProjectsPlatformsPoliciesRequest>,
+  output: __S(728, __c22, 24) as any as S.Schema<PlatformPolicy>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -895,8 +895,8 @@ export const listProjectsAttestors: API.PaginatedOperationMethod<
   GcpOpContext,
   ListAttestorsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(66, __c8, 2) as any as S.Schema<ListProjectsAttestorsRequest>,
-  output: __S(68, __c8, 4) as any as S.Schema<ListAttestorsResponse>,
+  input: __S(192, __c6, 0) as any as S.Schema<ListProjectsAttestorsRequest>,
+  output: __S(194, __c6, 2) as any as S.Schema<ListAttestorsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -912,8 +912,8 @@ export const listProjectsPlatformsPolicies: API.PaginatedOperationMethod<
   GcpOpContext,
   ListPlatformPoliciesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(69, __c8, 5) as any as S.Schema<ListProjectsPlatformsPoliciesRequest>,
-  output: __S(71, __c8, 7) as any as S.Schema<ListPlatformPoliciesResponse>,
+  input: __S(224, __c7, 0) as any as S.Schema<ListProjectsPlatformsPoliciesRequest>,
+  output: __S(226, __c7, 2) as any as S.Schema<ListPlatformPoliciesResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -933,8 +933,12 @@ export const replacePlatformPolicyProjectsPlatformsPolicies: API.OperationMethod
   ReplacePlatformPolicyProjectsPlatformsPoliciesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(72, __c9, 0) as any as S.Schema<ReplacePlatformPolicyProjectsPlatformsPoliciesRequest>,
-  output: __S(32, __c4, 0) as any as S.Schema<PlatformPolicy>,
+  input: __S(
+    256,
+    __c8,
+    0,
+  ) as any as S.Schema<ReplacePlatformPolicyProjectsPlatformsPoliciesRequest>,
+  output: __S(728, __c22, 24) as any as S.Schema<PlatformPolicy>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -953,8 +957,8 @@ export const setIamPolicyProjectsAttestors: API.OperationMethod<
   SetIamPolicyProjectsAttestorsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(74, __c9, 2) as any as S.Schema<SetIamPolicyProjectsAttestorsRequest>,
-  output: __S(55, __c6, 7) as any as S.Schema<IamPolicy>,
+  input: __S(288, __c9, 0) as any as S.Schema<SetIamPolicyProjectsAttestorsRequest>,
+  output: __S(963, __c30, 3) as any as S.Schema<IamPolicy>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -973,8 +977,8 @@ export const setIamPolicyProjectsPolicy: API.OperationMethod<
   SetIamPolicyProjectsPolicyError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(75, __c9, 3) as any as S.Schema<SetIamPolicyProjectsPolicyRequest>,
-  output: __S(55, __c6, 7) as any as S.Schema<IamPolicy>,
+  input: __S(352, __c11, 0) as any as S.Schema<SetIamPolicyProjectsPolicyRequest>,
+  output: __S(963, __c30, 3) as any as S.Schema<IamPolicy>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -993,8 +997,8 @@ export const testIamPermissionsProjectsAttestors: API.OperationMethod<
   TestIamPermissionsProjectsAttestorsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(77, __c9, 5) as any as S.Schema<TestIamPermissionsProjectsAttestorsRequest>,
-  output: __S(76, __c9, 4) as any as S.Schema<TestIamPermissionsResponse>,
+  input: __S(384, __c12, 0) as any as S.Schema<TestIamPermissionsProjectsAttestorsRequest>,
+  output: __S(416, __c13, 0) as any as S.Schema<TestIamPermissionsResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1013,8 +1017,8 @@ export const testIamPermissionsProjectsPolicy: API.OperationMethod<
   TestIamPermissionsProjectsPolicyError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(78, __c9, 6) as any as S.Schema<TestIamPermissionsProjectsPolicyRequest>,
-  output: __S(76, __c9, 4) as any as S.Schema<TestIamPermissionsResponse>,
+  input: __S(448, __c14, 0) as any as S.Schema<TestIamPermissionsProjectsPolicyRequest>,
+  output: __S(416, __c13, 0) as any as S.Schema<TestIamPermissionsResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1028,8 +1032,8 @@ export const updatePolicyProjects: API.OperationMethod<
   UpdatePolicyProjectsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(79, __c9, 7) as any as S.Schema<UpdatePolicyProjectsRequest>,
-  output: __S(62, __c7, 6) as any as S.Schema<Policy>,
+  input: __S(480, __c15, 0) as any as S.Schema<UpdatePolicyProjectsRequest>,
+  output: __S(68, __c2, 4) as any as S.Schema<Policy>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1048,8 +1052,8 @@ export const updateProjectsAttestors: API.OperationMethod<
   UpdateProjectsAttestorsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(80, __c10, 0) as any as S.Schema<UpdateProjectsAttestorsRequest>,
-  output: __S(4, __c0, 4) as any as S.Schema<Attestor>,
+  input: __S(512, __c16, 0) as any as S.Schema<UpdateProjectsAttestorsRequest>,
+  output: __S(611, __c19, 3) as any as S.Schema<Attestor>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1069,11 +1073,11 @@ export const validateAttestationOccurrenceProjectsAttestors: API.OperationMethod
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    87,
-    __c10,
-    7,
+    550,
+    __c17,
+    6,
   ) as any as S.Schema<ValidateAttestationOccurrenceProjectsAttestorsRequest>,
-  output: __S(88, __c11, 0) as any as S.Schema<ValidateAttestationOccurrenceResponse>,
+  output: __S(551, __c17, 7) as any as S.Schema<ValidateAttestationOccurrenceResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1081,436 +1085,6 @@ export const validateAttestationOccurrenceProjectsAttestors: API.OperationMethod
 
 // Schema builders: each runs one schema initializer, on that schema's first use.
 function __c0(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          publicKeyPem: S.optional(S.String),
-          signatureAlgorithm: S.optional(S.String),
-          keyId: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "PkixPublicKey" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          asciiArmoredPgpPublicKey: S.optional(S.String),
-          id: S.optional(S.String),
-          pkixPublicKey: S.optional(__S(0, __c0, 0)),
-          comment: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "AttestorPublicKey" });
-    case 2:
-      return S.Array(__S(1, __c0, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          noteReference: S.optional(S.String),
-          delegationServiceAccountEmail: S.optional(S.String),
-          publicKeys: S.optional(__S(2, __c0, 2)),
-        }),
-      ).annotate({ identifier: "UserOwnedGrafeasNote" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          updateTime: S.optional(S.String),
-          userOwnedGrafeasNote: S.optional(__S(3, __c0, 3)),
-          etag: S.optional(S.String),
-          description: S.optional(S.String),
-          name: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Attestor" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          parent: S.String.pipe(T.Label()),
-          attestorId: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(4, __c0, 4).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/{+parent}/attestors",
-            baseUrl: "https://binaryauthorization.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateProjectsAttestorsRequest",
-      });
-    case 6:
-      return S.Array(S.String);
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          allowPattern: S.optional(__S(6, __c0, 6)),
-        }),
-      ).annotate({ identifier: "ImageAllowlist" });
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          kubernetesNamespace: S.optional(S.String),
-          kubernetesServiceAccount: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Scope" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          maximumFixableSeverity: S.optional(S.String),
-          blockedCves: S.optional(__S(6, __c0, 6)),
-          maximumUnfixableSeverity: S.optional(S.String),
-          allowedCves: S.optional(__S(6, __c0, 6)),
-          containerAnalysisVulnerabilityProjects: S.optional(__S(6, __c0, 6)),
-        }),
-      ).annotate({ identifier: "VulnerabilityCheck" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          maxUploadAgeDays: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "ImageFreshnessCheck" });
-    case 3:
-      return S.Array(__S(0, __c0, 0));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          pkixPublicKeys: S.optional(__S(11, __c1, 3)),
-        }),
-      ).annotate({ identifier: "PkixPublicKeySet" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          pkixPublicKeySet: S.optional(__S(12, __c1, 4)),
-          displayName: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "AttestationAuthenticator" });
-    case 6:
-      return S.Array(__S(13, __c1, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          attestationAuthenticators: S.optional(__S(14, __c1, 6)),
-          containerAnalysisAttestationProjects: S.optional(__S(6, __c0, 6)),
-        }),
-      ).annotate({
-        identifier: "SimpleSigningAttestationCheck",
-      });
-  }
-}
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          containerAnalysisAttestationProjects: S.optional(__S(6, __c0, 6)),
-        }),
-      ).annotate({ identifier: "AttestationSource" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          attestationSource: S.optional(__S(16, __c2, 0)),
-          trustedSourceRepoPatterns: S.optional(__S(6, __c0, 6)),
-          customConstraints: S.optional(S.String),
-          configBasedBuildRequired: S.optional(S.Boolean),
-          trustedBuilder: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "VerificationRule" });
-    case 2:
-      return S.Array(__S(17, __c2, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          rules: S.optional(__S(18, __c2, 2)),
-        }),
-      ).annotate({ identifier: "SlsaCheck" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          publicKeyPem: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "SigstorePublicKey" });
-    case 5:
-      return S.Array(__S(20, __c2, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          publicKeys: S.optional(__S(21, __c2, 5)),
-        }),
-      ).annotate({ identifier: "SigstorePublicKeySet" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          publicKeySet: S.optional(__S(22, __c2, 6)),
-          displayName: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "SigstoreAuthority" });
-  }
-}
-function __c3(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(23, __c2, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          sigstoreAuthorities: S.optional(__S(24, __c3, 0)),
-        }),
-      ).annotate({ identifier: "SigstoreSignatureCheck" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          trustedDirPatterns: S.optional(__S(6, __c0, 6)),
-        }),
-      ).annotate({ identifier: "TrustedDirectoryCheck" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          vulnerabilityCheck: S.optional(__S(9, __c1, 1)),
-          imageFreshnessCheck: S.optional(__S(10, __c1, 2)),
-          simpleSigningAttestationCheck: S.optional(__S(15, __c1, 7)),
-          alwaysDeny: S.optional(S.Boolean),
-          slsaCheck: S.optional(__S(19, __c2, 3)),
-          sigstoreSignatureCheck: S.optional(__S(25, __c3, 1)),
-          displayName: S.optional(S.String),
-          imageAllowlist: S.optional(__S(7, __c0, 7)),
-          trustedDirectoryCheck: S.optional(__S(26, __c3, 2)),
-        }),
-      ).annotate({ identifier: "Check" });
-    case 4:
-      return S.Array(__S(27, __c3, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          scope: S.optional(__S(8, __c1, 0)),
-          imageAllowlist: S.optional(__S(7, __c0, 7)),
-          displayName: S.optional(S.String),
-          checks: S.optional(__S(28, __c3, 4)),
-        }),
-      ).annotate({ identifier: "CheckSet" });
-    case 6:
-      return S.Array(__S(29, __c3, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          imageAllowlist: S.optional(__S(7, __c0, 7)),
-          checkSets: S.optional(__S(30, __c3, 6)),
-        }),
-      ).annotate({ identifier: "GkePolicy" });
-  }
-}
-function __c4(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.optional(S.String),
-          description: S.optional(S.String),
-          gkePolicy: S.optional(__S(31, __c3, 7)),
-          etag: S.optional(S.String),
-          updateTime: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "PlatformPolicy" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          policyId: S.optional(S.String.pipe(T.Query())),
-          parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(32, __c4, 0).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/{+parent}/policies",
-            baseUrl: "https://binaryauthorization.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateProjectsPlatformsPoliciesRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "v1/{+name}",
-            baseUrl: "https://binaryauthorization.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteProjectsAttestorsRequest",
-      });
-    case 3:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "Empty",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-          etag: S.optional(S.String.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "v1/{+name}",
-            baseUrl: "https://binaryauthorization.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteProjectsPlatformsPoliciesRequest",
-      });
-    case 5:
-      return S.Record(S.String, S.Unknown);
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          resource: S.optional(__S(37, __c4, 5)),
-        }),
-      ).annotate({ identifier: "EvaluateGkePolicyRequest" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-          body: S.optional(__S(38, __c4, 6).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/{+name}:evaluate",
-            baseUrl: "https://binaryauthorization.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "EvaluateProjectsPlatformsGkePoliciesRequest",
-      });
-  }
-}
-function __c5(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          matchedPattern: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "AllowlistResult" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          verdict: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "EvaluationResult" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          explanation: S.optional(S.String),
-          evaluationResult: S.optional(__S(41, __c5, 1)),
-          allowlistResult: S.optional(__S(40, __c5, 0)),
-          type: S.optional(S.String),
-          index: S.optional(S.String),
-          displayName: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "CheckResult" });
-    case 3:
-      return S.Array(__S(42, __c5, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          results: S.optional(__S(43, __c5, 3)),
-        }),
-      ).annotate({ identifier: "CheckResults" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          index: S.optional(S.String),
-          allowlistResult: S.optional(__S(40, __c5, 0)),
-          explanation: S.optional(S.String),
-          displayName: S.optional(S.String),
-          scope: S.optional(__S(8, __c1, 0)),
-          checkResults: S.optional(__S(44, __c5, 4)),
-        }),
-      ).annotate({ identifier: "CheckSetResult" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          verdict: S.optional(S.String),
-          imageUri: S.optional(S.String),
-          allowlistResult: S.optional(__S(40, __c5, 0)),
-          explanation: S.optional(S.String),
-          checkSetResult: S.optional(__S(45, __c5, 5)),
-        }),
-      ).annotate({ identifier: "ImageResult" });
-    case 7:
-      return S.Array(__S(46, __c5, 6));
-  }
-}
-function __c6(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          imageResults: S.optional(__S(47, __c5, 7)),
-          podName: S.optional(S.String),
-          verdict: S.optional(S.String),
-          kubernetesNamespace: S.optional(S.String),
-          kubernetesServiceAccount: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "PodResult" });
-    case 1:
-      return S.Array(__S(48, __c6, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          verdict: S.optional(S.String),
-          results: S.optional(__S(49, __c6, 1)),
-        }),
-      ).annotate({
-        identifier: "EvaluateGkePolicyResponse",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          "options.requestedPolicyVersion": S.optional(S.Number.pipe(T.Query())),
-          resource: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v1/{+resource}:getIamPolicy",
-            baseUrl: "https://binaryauthorization.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetIamPolicyProjectsAttestorsRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          location: S.optional(S.String),
-          title: S.optional(S.String),
-          description: S.optional(S.String),
-          expression: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Expr" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          members: S.optional(__S(6, __c0, 6)),
-          condition: S.optional(__S(52, __c6, 4)),
-          role: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Binding" });
-    case 6:
-      return S.Array(__S(53, __c6, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          version: S.optional(S.Number),
-          etag: S.optional(S.String),
-          bindings: S.optional(__S(54, __c6, 6)),
-        }),
-      ).annotate({ identifier: "IamPolicy" });
-  }
-}
-function __c7(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1527,7 +1101,11 @@ function __c7(j: number): any {
       ).annotate({
         identifier: "GetIamPolicyProjectsPolicyRequest",
       });
-    case 1:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -1539,17 +1117,21 @@ function __c7(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetPolicyProjectsRequest" });
-    case 2:
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           evaluationMode: S.optional(S.String),
-          requireAttestationsBy: S.optional(__S(6, __c0, 6)),
+          requireAttestationsBy: S.optional(__S(768, __c24, 0)),
           enforcementMode: S.optional(S.String),
         }),
       ).annotate({ identifier: "AdmissionRule" });
-    case 3:
-      return S.Record(S.String, __S(58, __c7, 2));
-    case 4:
+    case 1:
+      return S.Record(S.String, __S(64, __c2, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           namePattern: S.optional(S.String),
@@ -1557,25 +1139,29 @@ function __c7(j: number): any {
       ).annotate({
         identifier: "AdmissionWhitelistPattern",
       });
-    case 5:
-      return S.Array(__S(60, __c7, 4));
-    case 6:
+    case 3:
+      return S.Array(__S(66, __c2, 2));
+    case 4:
       return S.suspend(() =>
         S.Struct({
-          clusterAdmissionRules: S.optional(__S(59, __c7, 3)),
+          clusterAdmissionRules: S.optional(__S(65, __c2, 1)),
           globalPolicyEvaluationMode: S.optional(S.String),
-          kubernetesNamespaceAdmissionRules: S.optional(__S(59, __c7, 3)),
-          kubernetesServiceAccountAdmissionRules: S.optional(__S(59, __c7, 3)),
-          admissionWhitelistPatterns: S.optional(__S(61, __c7, 5)),
+          kubernetesNamespaceAdmissionRules: S.optional(__S(65, __c2, 1)),
+          kubernetesServiceAccountAdmissionRules: S.optional(__S(65, __c2, 1)),
+          admissionWhitelistPatterns: S.optional(__S(67, __c2, 3)),
           description: S.optional(S.String),
           updateTime: S.optional(S.String),
-          istioServiceIdentityAdmissionRules: S.optional(__S(59, __c7, 3)),
+          istioServiceIdentityAdmissionRules: S.optional(__S(65, __c2, 1)),
           name: S.optional(S.String),
-          defaultAdmissionRule: S.optional(__S(58, __c7, 2)),
+          defaultAdmissionRule: S.optional(__S(64, __c2, 0)),
           etag: S.optional(S.String),
         }),
       ).annotate({ identifier: "Policy" });
-    case 7:
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -1591,7 +1177,7 @@ function __c7(j: number): any {
       });
   }
 }
-function __c8(j: number): any {
+function __c4(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1607,7 +1193,11 @@ function __c8(j: number): any {
       ).annotate({
         identifier: "GetProjectsAttestorsRequest",
       });
-    case 1:
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -1621,7 +1211,11 @@ function __c8(j: number): any {
       ).annotate({
         identifier: "GetProjectsPlatformsPoliciesRequest",
       });
-    case 2:
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           pageToken: S.optional(S.String.pipe(T.Query())),
@@ -1637,16 +1231,20 @@ function __c8(j: number): any {
       ).annotate({
         identifier: "ListProjectsAttestorsRequest",
       });
-    case 3:
-      return S.Array(__S(4, __c0, 4));
-    case 4:
+    case 1:
+      return S.Array(__S(611, __c19, 3));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          attestors: S.optional(__S(67, __c8, 3)),
+          attestors: S.optional(__S(193, __c6, 1)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListAttestorsResponse" });
-    case 5:
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
@@ -1662,12 +1260,12 @@ function __c8(j: number): any {
       ).annotate({
         identifier: "ListProjectsPlatformsPoliciesRequest",
       });
-    case 6:
-      return S.Array(__S(32, __c4, 0));
-    case 7:
+    case 1:
+      return S.Array(__S(728, __c22, 24));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          platformPolicies: S.optional(__S(70, __c8, 6)),
+          platformPolicies: S.optional(__S(225, __c7, 1)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({
@@ -1675,13 +1273,13 @@ function __c8(j: number): any {
       });
   }
 }
-function __c9(j: number): any {
+function __c8(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(32, __c4, 0).pipe(T.HttpBody())),
+          body: S.optional(__S(728, __c22, 24).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -1692,17 +1290,15 @@ function __c9(j: number): any {
       ).annotate({
         identifier: "ReplacePlatformPolicyProjectsPlatformsPoliciesRequest",
       });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          policy: S.optional(__S(55, __c6, 7)),
-        }),
-      ).annotate({ identifier: "SetIamPolicyRequest" });
-    case 2:
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           resource: S.String.pipe(T.Label()),
-          body: S.optional(__S(73, __c9, 1).pipe(T.HttpBody())),
+          body: S.optional(__S(320, __c10, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -1713,11 +1309,25 @@ function __c9(j: number): any {
       ).annotate({
         identifier: "SetIamPolicyProjectsAttestorsRequest",
       });
-    case 3:
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          policy: S.optional(__S(963, __c30, 3)),
+        }),
+      ).annotate({ identifier: "SetIamPolicyRequest" });
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           resource: S.String.pipe(T.Label()),
-          body: S.optional(__S(73, __c9, 1).pipe(T.HttpBody())),
+          body: S.optional(__S(320, __c10, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -1728,19 +1338,15 @@ function __c9(j: number): any {
       ).annotate({
         identifier: "SetIamPolicyProjectsPolicyRequest",
       });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          permissions: S.optional(__S(6, __c0, 6)),
-        }),
-      ).annotate({
-        identifier: "TestIamPermissionsRequest",
-      });
-    case 5:
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           resource: S.String.pipe(T.Label()),
-          body: S.optional(__S(76, __c9, 4).pipe(T.HttpBody())),
+          body: S.optional(__S(416, __c13, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -1751,11 +1357,27 @@ function __c9(j: number): any {
       ).annotate({
         identifier: "TestIamPermissionsProjectsAttestorsRequest",
       });
-    case 6:
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          permissions: S.optional(__S(768, __c24, 0)),
+        }),
+      ).annotate({
+        identifier: "TestIamPermissionsRequest",
+      });
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           resource: S.String.pipe(T.Label()),
-          body: S.optional(__S(76, __c9, 4).pipe(T.HttpBody())),
+          body: S.optional(__S(416, __c13, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -1766,11 +1388,15 @@ function __c9(j: number): any {
       ).annotate({
         identifier: "TestIamPermissionsProjectsPolicyRequest",
       });
-    case 7:
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(62, __c7, 6).pipe(T.HttpBody())),
+          body: S.optional(__S(68, __c2, 4).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -1783,13 +1409,13 @@ function __c9(j: number): any {
       });
   }
 }
-function __c10(j: number): any {
+function __c16(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(4, __c0, 4).pipe(T.HttpBody())),
+          body: S.optional(__S(611, __c19, 3).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -1800,46 +1426,50 @@ function __c10(j: number): any {
       ).annotate({
         identifier: "UpdateProjectsAttestorsRequest",
       });
-    case 1:
+  }
+}
+function __c17(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           signature: S.optional(S.String),
           publicKeyId: S.optional(S.String),
         }),
       ).annotate({ identifier: "Signature" });
+    case 1:
+      return S.Array(__S(544, __c17, 0));
     case 2:
-      return S.Array(__S(81, __c10, 1));
-    case 3:
       return S.suspend(() =>
         S.Struct({
           compactJwt: S.optional(S.String),
         }),
       ).annotate({ identifier: "Jwt" });
+    case 3:
+      return S.Array(__S(546, __c17, 2));
     case 4:
-      return S.Array(__S(83, __c10, 3));
-    case 5:
       return S.suspend(() =>
         S.Struct({
-          signatures: S.optional(__S(82, __c10, 2)),
-          jwts: S.optional(__S(84, __c10, 4)),
+          signatures: S.optional(__S(545, __c17, 1)),
+          jwts: S.optional(__S(547, __c17, 3)),
           serializedPayload: S.optional(S.String),
         }),
       ).annotate({ identifier: "AttestationOccurrence" });
-    case 6:
+    case 5:
       return S.suspend(() =>
         S.Struct({
-          attestation: S.optional(__S(85, __c10, 5)),
+          attestation: S.optional(__S(548, __c17, 4)),
           occurrenceResourceUri: S.optional(S.String),
           occurrenceNote: S.optional(S.String),
         }),
       ).annotate({
         identifier: "ValidateAttestationOccurrenceRequest",
       });
-    case 7:
+    case 6:
       return S.suspend(() =>
         S.Struct({
           attestor: S.String.pipe(T.Label()),
-          body: S.optional(__S(86, __c10, 6).pipe(T.HttpBody())),
+          body: S.optional(__S(549, __c17, 5).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -1850,11 +1480,7 @@ function __c10(j: number): any {
       ).annotate({
         identifier: "ValidateAttestationOccurrenceProjectsAttestorsRequest",
       });
-  }
-}
-function __c11(j: number): any {
-  switch (j) {
-    case 0:
+    case 7:
       return S.suspend(() =>
         S.Struct({
           result: S.optional(S.String),
@@ -1865,7 +1491,460 @@ function __c11(j: number): any {
       });
   }
 }
-
+function __c18(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          parent: S.String.pipe(T.Label()),
+          attestorId: S.optional(S.String.pipe(T.Query())),
+          body: S.optional(__S(611, __c19, 3).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/{+parent}/attestors",
+            baseUrl: "https://binaryauthorization.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateProjectsAttestorsRequest",
+      });
+  }
+}
+function __c19(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          asciiArmoredPgpPublicKey: S.optional(S.String),
+          id: S.optional(S.String),
+          pkixPublicKey: S.optional(__S(640, __c20, 0)),
+          comment: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "AttestorPublicKey" });
+    case 1:
+      return S.Array(__S(608, __c19, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          noteReference: S.optional(S.String),
+          delegationServiceAccountEmail: S.optional(S.String),
+          publicKeys: S.optional(__S(609, __c19, 1)),
+        }),
+      ).annotate({ identifier: "UserOwnedGrafeasNote" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          updateTime: S.optional(S.String),
+          userOwnedGrafeasNote: S.optional(__S(610, __c19, 2)),
+          etag: S.optional(S.String),
+          description: S.optional(S.String),
+          name: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Attestor" });
+  }
+}
+function __c20(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          publicKeyPem: S.optional(S.String),
+          signatureAlgorithm: S.optional(S.String),
+          keyId: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "PkixPublicKey" });
+  }
+}
+function __c21(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          policyId: S.optional(S.String.pipe(T.Query())),
+          parent: S.String.pipe(T.Label()),
+          body: S.optional(__S(728, __c22, 24).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/{+parent}/policies",
+            baseUrl: "https://binaryauthorization.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateProjectsPlatformsPoliciesRequest",
+      });
+  }
+}
+function __c22(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          allowPattern: S.optional(__S(768, __c24, 0)),
+        }),
+      ).annotate({ identifier: "ImageAllowlist" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          maximumFixableSeverity: S.optional(S.String),
+          blockedCves: S.optional(__S(768, __c24, 0)),
+          maximumUnfixableSeverity: S.optional(S.String),
+          allowedCves: S.optional(__S(768, __c24, 0)),
+          containerAnalysisVulnerabilityProjects: S.optional(__S(768, __c24, 0)),
+        }),
+      ).annotate({ identifier: "VulnerabilityCheck" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          maxUploadAgeDays: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "ImageFreshnessCheck" });
+    case 3:
+      return S.Array(__S(640, __c20, 0));
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          pkixPublicKeys: S.optional(__S(707, __c22, 3)),
+        }),
+      ).annotate({ identifier: "PkixPublicKeySet" });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          pkixPublicKeySet: S.optional(__S(708, __c22, 4)),
+          displayName: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "AttestationAuthenticator" });
+    case 6:
+      return S.Array(__S(709, __c22, 5));
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          attestationAuthenticators: S.optional(__S(710, __c22, 6)),
+          containerAnalysisAttestationProjects: S.optional(__S(768, __c24, 0)),
+        }),
+      ).annotate({
+        identifier: "SimpleSigningAttestationCheck",
+      });
+    case 8:
+      return S.suspend(() =>
+        S.Struct({
+          containerAnalysisAttestationProjects: S.optional(__S(768, __c24, 0)),
+        }),
+      ).annotate({ identifier: "AttestationSource" });
+    case 9:
+      return S.suspend(() =>
+        S.Struct({
+          attestationSource: S.optional(__S(712, __c22, 8)),
+          trustedSourceRepoPatterns: S.optional(__S(768, __c24, 0)),
+          customConstraints: S.optional(S.String),
+          configBasedBuildRequired: S.optional(S.Boolean),
+          trustedBuilder: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "VerificationRule" });
+    case 10:
+      return S.Array(__S(713, __c22, 9));
+    case 11:
+      return S.suspend(() =>
+        S.Struct({
+          rules: S.optional(__S(714, __c22, 10)),
+        }),
+      ).annotate({ identifier: "SlsaCheck" });
+    case 12:
+      return S.suspend(() =>
+        S.Struct({
+          publicKeyPem: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "SigstorePublicKey" });
+    case 13:
+      return S.Array(__S(716, __c22, 12));
+    case 14:
+      return S.suspend(() =>
+        S.Struct({
+          publicKeys: S.optional(__S(717, __c22, 13)),
+        }),
+      ).annotate({ identifier: "SigstorePublicKeySet" });
+    case 15:
+      return S.suspend(() =>
+        S.Struct({
+          publicKeySet: S.optional(__S(718, __c22, 14)),
+          displayName: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "SigstoreAuthority" });
+    case 16:
+      return S.Array(__S(719, __c22, 15));
+    case 17:
+      return S.suspend(() =>
+        S.Struct({
+          sigstoreAuthorities: S.optional(__S(720, __c22, 16)),
+        }),
+      ).annotate({ identifier: "SigstoreSignatureCheck" });
+    case 18:
+      return S.suspend(() =>
+        S.Struct({
+          trustedDirPatterns: S.optional(__S(768, __c24, 0)),
+        }),
+      ).annotate({ identifier: "TrustedDirectoryCheck" });
+    case 19:
+      return S.suspend(() =>
+        S.Struct({
+          vulnerabilityCheck: S.optional(__S(705, __c22, 1)),
+          imageFreshnessCheck: S.optional(__S(706, __c22, 2)),
+          simpleSigningAttestationCheck: S.optional(__S(711, __c22, 7)),
+          alwaysDeny: S.optional(S.Boolean),
+          slsaCheck: S.optional(__S(715, __c22, 11)),
+          sigstoreSignatureCheck: S.optional(__S(721, __c22, 17)),
+          displayName: S.optional(S.String),
+          imageAllowlist: S.optional(__S(704, __c22, 0)),
+          trustedDirectoryCheck: S.optional(__S(722, __c22, 18)),
+        }),
+      ).annotate({ identifier: "Check" });
+    case 20:
+      return S.Array(__S(723, __c22, 19));
+    case 21:
+      return S.suspend(() =>
+        S.Struct({
+          scope: S.optional(__S(736, __c23, 0)),
+          imageAllowlist: S.optional(__S(704, __c22, 0)),
+          displayName: S.optional(S.String),
+          checks: S.optional(__S(724, __c22, 20)),
+        }),
+      ).annotate({ identifier: "CheckSet" });
+    case 22:
+      return S.Array(__S(725, __c22, 21));
+    case 23:
+      return S.suspend(() =>
+        S.Struct({
+          imageAllowlist: S.optional(__S(704, __c22, 0)),
+          checkSets: S.optional(__S(726, __c22, 22)),
+        }),
+      ).annotate({ identifier: "GkePolicy" });
+    case 24:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.optional(S.String),
+          description: S.optional(S.String),
+          gkePolicy: S.optional(__S(727, __c22, 23)),
+          etag: S.optional(S.String),
+          updateTime: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "PlatformPolicy" });
+  }
+}
+function __c23(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          kubernetesNamespace: S.optional(S.String),
+          kubernetesServiceAccount: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Scope" });
+  }
+}
+function __c24(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c25(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "v1/{+name}",
+            baseUrl: "https://binaryauthorization.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteProjectsAttestorsRequest",
+      });
+  }
+}
+function __c26(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "Empty",
+      });
+  }
+}
+function __c27(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+          etag: S.optional(S.String.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "v1/{+name}",
+            baseUrl: "https://binaryauthorization.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteProjectsPlatformsPoliciesRequest",
+      });
+  }
+}
+function __c28(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, S.Unknown);
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          resource: S.optional(__S(896, __c28, 0)),
+        }),
+      ).annotate({ identifier: "EvaluateGkePolicyRequest" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+          body: S.optional(__S(897, __c28, 1).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/{+name}:evaluate",
+            baseUrl: "https://binaryauthorization.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "EvaluateProjectsPlatformsGkePoliciesRequest",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          matchedPattern: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "AllowlistResult" });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          verdict: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "EvaluationResult" });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          explanation: S.optional(S.String),
+          evaluationResult: S.optional(__S(900, __c28, 4)),
+          allowlistResult: S.optional(__S(899, __c28, 3)),
+          type: S.optional(S.String),
+          index: S.optional(S.String),
+          displayName: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "CheckResult" });
+    case 6:
+      return S.Array(__S(901, __c28, 5));
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          results: S.optional(__S(902, __c28, 6)),
+        }),
+      ).annotate({ identifier: "CheckResults" });
+    case 8:
+      return S.suspend(() =>
+        S.Struct({
+          index: S.optional(S.String),
+          allowlistResult: S.optional(__S(899, __c28, 3)),
+          explanation: S.optional(S.String),
+          displayName: S.optional(S.String),
+          scope: S.optional(__S(736, __c23, 0)),
+          checkResults: S.optional(__S(903, __c28, 7)),
+        }),
+      ).annotate({ identifier: "CheckSetResult" });
+    case 9:
+      return S.suspend(() =>
+        S.Struct({
+          verdict: S.optional(S.String),
+          imageUri: S.optional(S.String),
+          allowlistResult: S.optional(__S(899, __c28, 3)),
+          explanation: S.optional(S.String),
+          checkSetResult: S.optional(__S(904, __c28, 8)),
+        }),
+      ).annotate({ identifier: "ImageResult" });
+    case 10:
+      return S.Array(__S(905, __c28, 9));
+    case 11:
+      return S.suspend(() =>
+        S.Struct({
+          imageResults: S.optional(__S(906, __c28, 10)),
+          podName: S.optional(S.String),
+          verdict: S.optional(S.String),
+          kubernetesNamespace: S.optional(S.String),
+          kubernetesServiceAccount: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "PodResult" });
+    case 12:
+      return S.Array(__S(907, __c28, 11));
+    case 13:
+      return S.suspend(() =>
+        S.Struct({
+          verdict: S.optional(S.String),
+          results: S.optional(__S(908, __c28, 12)),
+        }),
+      ).annotate({
+        identifier: "EvaluateGkePolicyResponse",
+      });
+  }
+}
+function __c29(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          "options.requestedPolicyVersion": S.optional(S.Number.pipe(T.Query())),
+          resource: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v1/{+resource}:getIamPolicy",
+            baseUrl: "https://binaryauthorization.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetIamPolicyProjectsAttestorsRequest",
+      });
+  }
+}
+function __c30(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          location: S.optional(S.String),
+          title: S.optional(S.String),
+          description: S.optional(S.String),
+          expression: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Expr" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          members: S.optional(__S(768, __c24, 0)),
+          condition: S.optional(__S(960, __c30, 0)),
+          role: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Binding" });
+    case 2:
+      return S.Array(__S(961, __c30, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          version: S.optional(S.Number),
+          etag: S.optional(S.String),
+          bindings: S.optional(__S(962, __c30, 2)),
+        }),
+      ).annotate({ identifier: "IamPolicy" });
+  }
+}
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

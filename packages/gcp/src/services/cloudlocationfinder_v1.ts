@@ -165,7 +165,7 @@ export const getProjectsLocations: API.OperationMethod<
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(0, __c0, 0) as any as S.Schema<GetProjectsLocationsRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<Location>,
+  output: __S(6, __c1, 2) as any as S.Schema<Location>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -179,8 +179,8 @@ export const getProjectsLocationsCloudLocations: API.OperationMethod<
   GetProjectsLocationsCloudLocationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(4, __c0, 4) as any as S.Schema<GetProjectsLocationsCloudLocationsRequest>,
-  output: __S(6, __c0, 6) as any as S.Schema<CloudLocation>,
+  input: __S(8, __c2, 0) as any as S.Schema<GetProjectsLocationsCloudLocationsRequest>,
+  output: __S(13, __c3, 1) as any as S.Schema<CloudLocation>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -195,8 +195,8 @@ export const listProjectsLocations: API.PaginatedOperationMethod<
   GcpOpContext,
   ListLocationsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(8, __c1, 0) as any as S.Schema<ListProjectsLocationsRequest>,
-  output: __S(10, __c1, 2) as any as S.Schema<ListLocationsResponse>,
+  input: __S(17, __c4, 1) as any as S.Schema<ListProjectsLocationsRequest>,
+  output: __S(19, __c4, 3) as any as S.Schema<ListLocationsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -212,8 +212,8 @@ export const listProjectsLocationsCloudLocations: API.PaginatedOperationMethod<
   GcpOpContext,
   ListCloudLocationsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(11, __c1, 3) as any as S.Schema<ListProjectsLocationsCloudLocationsRequest>,
-  output: __S(13, __c1, 5) as any as S.Schema<ListCloudLocationsResponse>,
+  input: __S(20, __c5, 0) as any as S.Schema<ListProjectsLocationsCloudLocationsRequest>,
+  output: __S(21, __c5, 1) as any as S.Schema<ListCloudLocationsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -229,8 +229,8 @@ export const searchProjectsLocationsCloudLocations: API.PaginatedOperationMethod
   GcpOpContext,
   SearchCloudLocationsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(14, __c1, 6) as any as S.Schema<SearchProjectsLocationsCloudLocationsRequest>,
-  output: __S(15, __c1, 7) as any as S.Schema<SearchCloudLocationsResponse>,
+  input: __S(28, __c7, 0) as any as S.Schema<SearchProjectsLocationsCloudLocationsRequest>,
+  output: __S(29, __c7, 1) as any as S.Schema<SearchCloudLocationsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -254,21 +254,29 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "GetProjectsLocationsRequest",
       });
-    case 1:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
       return S.Record(S.String, S.Unknown);
-    case 2:
+    case 1:
       return S.Record(S.String, S.String);
-    case 3:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           displayName: S.optional(S.String),
-          metadata: S.optional(__S(1, __c0, 1)),
+          metadata: S.optional(__S(4, __c1, 0)),
           name: S.optional(S.String),
-          labels: S.optional(__S(2, __c0, 2)),
+          labels: S.optional(__S(5, __c1, 1)),
           locationId: S.optional(S.String),
         }),
       ).annotate({ identifier: "Location" });
-    case 4:
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -282,13 +290,17 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "GetProjectsLocationsCloudLocationsRequest",
       });
-    case 5:
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           zoneType: S.optional(S.String),
         }),
       ).annotate({ identifier: "GcpAttributes" });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           cloudProvider: S.optional(S.String),
@@ -297,24 +309,24 @@ function __c0(j: number): any {
           cloudLocationType: S.optional(S.String),
           carbonFreeEnergyPercentage: S.optional(S.Number),
           displayName: S.optional(S.String),
-          gcpAttributes: S.optional(__S(5, __c0, 5)),
+          gcpAttributes: S.optional(__S(12, __c3, 0)),
           name: S.optional(S.String),
         }),
       ).annotate({ identifier: "CloudLocation" });
-    case 7:
-      return S.Array(S.String);
   }
 }
-function __c1(j: number): any {
+function __c4(j: number): any {
   switch (j) {
     case 0:
+      return S.Array(S.String);
+    case 1:
       return S.suspend(() =>
         S.Struct({
           pageToken: S.optional(S.String.pipe(T.Query())),
           name: S.String.pipe(T.Label()),
           filter: S.optional(S.String.pipe(T.Query())),
           pageSize: S.optional(S.Number.pipe(T.Query())),
-          extraLocationTypes: S.optional(__S(7, __c0, 7).pipe(T.Query())),
+          extraLocationTypes: S.optional(__S(16, __c4, 0).pipe(T.Query())),
         }).pipe(
           T.Http({
             method: "GET",
@@ -325,16 +337,20 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "ListProjectsLocationsRequest",
       });
-    case 1:
-      return S.Array(__S(3, __c0, 3));
     case 2:
+      return S.Array(__S(6, __c1, 2));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          locations: S.optional(__S(9, __c1, 1)),
+          locations: S.optional(__S(18, __c4, 2)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListLocationsResponse" });
-    case 3:
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -351,18 +367,26 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "ListProjectsLocationsCloudLocationsRequest",
       });
-    case 4:
-      return S.Array(__S(6, __c0, 6));
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          cloudLocations: S.optional(__S(12, __c1, 4)),
+          cloudLocations: S.optional(__S(24, __c6, 0)),
         }),
       ).annotate({
         identifier: "ListCloudLocationsResponse",
       });
-    case 6:
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(13, __c3, 1));
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -380,10 +404,10 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "SearchProjectsLocationsCloudLocationsRequest",
       });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          cloudLocations: S.optional(__S(12, __c1, 4)),
+          cloudLocations: S.optional(__S(24, __c6, 0)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({
@@ -391,7 +415,6 @@ function __c1(j: number): any {
       });
   }
 }
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

@@ -3604,7 +3604,7 @@ export const confirmHostingWebTermination: API.OperationMethod<
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(0, __c0, 0) as any as S.Schema<ConfirmHostingWebTerminationRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<ConfirmHostingWebTerminationResponse>,
+  output: __S(16, __c1, 0) as any as S.Schema<ConfirmHostingWebTerminationResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -3618,8 +3618,8 @@ export const copyHostingWebDatabase: API.OperationMethod<
   CopyHostingWebDatabaseError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2, __c0, 2) as any as S.Schema<CopyHostingWebDatabaseRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<HostingWebDatabaseCopy>,
+  input: __S(32, __c2, 0) as any as S.Schema<CopyHostingWebDatabaseRequest>,
+  output: __S(48, __c3, 0) as any as S.Schema<HostingWebDatabaseCopy>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -3633,8 +3633,8 @@ export const copyHostingWebDatabaseRestore: API.OperationMethod<
   CopyHostingWebDatabaseRestoreError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(4, __c0, 4) as any as S.Schema<CopyHostingWebDatabaseRestoreRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<HostingWebTask>,
+  input: __S(1456, __c91, 0) as any as S.Schema<CopyHostingWebDatabaseRestoreRequest>,
+  output: __S(1472, __c92, 0) as any as S.Schema<HostingWebTask>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -3648,8 +3648,8 @@ export const createHostingWebAttachedDomain: API.OperationMethod<
   CreateHostingWebAttachedDomainError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(6, __c0, 6) as any as S.Schema<CreateHostingWebAttachedDomainRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<HostingWebPublicTask>,
+  input: __S(1648, __c103, 0) as any as S.Schema<CreateHostingWebAttachedDomainRequest>,
+  output: __S(1664, __c104, 0) as any as S.Schema<HostingWebPublicTask>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -3663,8 +3663,8 @@ export const createHostingWebAttachedDomainSsl: API.OperationMethod<
   CreateHostingWebAttachedDomainSslError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(8, __c1, 0) as any as S.Schema<CreateHostingWebAttachedDomainSslRequest>,
-  output: __S(9, __c1, 1) as any as S.Schema<HostingWebSSL>,
+  input: __S(1840, __c115, 0) as any as S.Schema<CreateHostingWebAttachedDomainSslRequest>,
+  output: __S(1856, __c116, 0) as any as S.Schema<HostingWebSSL>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -3678,8 +3678,8 @@ export const createHostingWebCdnDomainOption: API.OperationMethod<
   CreateHostingWebCdnDomainOptionError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(12, __c1, 4) as any as S.Schema<CreateHostingWebCdnDomainOptionRequest>,
-  output: __S(14, __c1, 6) as any as S.Schema<CdnDomainOption>,
+  input: __S(2048, __c128, 0) as any as S.Schema<CreateHostingWebCdnDomainOptionRequest>,
+  output: __S(2082, __c130, 2) as any as S.Schema<CdnDomainOption>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -3693,8 +3693,8 @@ export const createHostingWebCdnServiceInfosUpdate: API.OperationMethod<
   CreateHostingWebCdnServiceInfosUpdateError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(16, __c2, 0) as any as S.Schema<CreateHostingWebCdnServiceInfosUpdateRequest>,
-  output: __S(17, __c2, 1) as any as S.Schema<CreateHostingWebCdnServiceInfosUpdateResponse>,
+  input: __S(2304, __c144, 0) as any as S.Schema<CreateHostingWebCdnServiceInfosUpdateRequest>,
+  output: __S(2336, __c146, 0) as any as S.Schema<CreateHostingWebCdnServiceInfosUpdateResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -3708,8 +3708,8 @@ export const createHostingWebChangeContact: API.OperationMethod<
   CreateHostingWebChangeContactError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(18, __c2, 2) as any as S.Schema<CreateHostingWebChangeContactRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<CreateHostingWebChangeContactResponse>,
+  input: __S(2512, __c157, 0) as any as S.Schema<CreateHostingWebChangeContactRequest>,
+  output: __S(2528, __c158, 0) as any as S.Schema<CreateHostingWebChangeContactResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -3723,8 +3723,8 @@ export const createHostingWebCron: API.OperationMethod<
   CreateHostingWebCronError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(21, __c2, 5) as any as S.Schema<CreateHostingWebCronRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<HostingWebPublicTask>,
+  input: __S(2736, __c171, 0) as any as S.Schema<CreateHostingWebCronRequest>,
+  output: __S(1664, __c104, 0) as any as S.Schema<HostingWebPublicTask>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -3738,8 +3738,8 @@ export const createHostingWebDatabase: API.OperationMethod<
   CreateHostingWebDatabaseError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(22, __c2, 6) as any as S.Schema<CreateHostingWebDatabaseRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<HostingWebTask>,
+  input: __S(2960, __c185, 0) as any as S.Schema<CreateHostingWebDatabaseRequest>,
+  output: __S(1472, __c92, 0) as any as S.Schema<HostingWebTask>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -3753,8 +3753,8 @@ export const createHostingWebDatabaseChangePassword: API.OperationMethod<
   CreateHostingWebDatabaseChangePasswordError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(23, __c2, 7) as any as S.Schema<CreateHostingWebDatabaseChangePasswordRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<HostingWebTask>,
+  input: __S(64, __c4, 0) as any as S.Schema<CreateHostingWebDatabaseChangePasswordRequest>,
+  output: __S(1472, __c92, 0) as any as S.Schema<HostingWebTask>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -3768,8 +3768,8 @@ export const createHostingWebDatabaseDump: API.OperationMethod<
   CreateHostingWebDatabaseDumpError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(24, __c3, 0) as any as S.Schema<CreateHostingWebDatabaseDumpRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<HostingWebTask>,
+  input: __S(256, __c16, 0) as any as S.Schema<CreateHostingWebDatabaseDumpRequest>,
+  output: __S(1472, __c92, 0) as any as S.Schema<HostingWebTask>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -3783,8 +3783,8 @@ export const createHostingWebDatabaseRequest2: API.OperationMethod<
   CreateHostingWebDatabaseRequest2Error,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(25, __c3, 1) as any as S.Schema<CreateHostingWebDatabaseRequestRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<HostingWebTask>,
+  input: __S(448, __c28, 0) as any as S.Schema<CreateHostingWebDatabaseRequestRequest>,
+  output: __S(1472, __c92, 0) as any as S.Schema<HostingWebTask>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -3798,8 +3798,8 @@ export const createHostingWebEmailRequest: API.OperationMethod<
   CreateHostingWebEmailRequestError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(26, __c3, 2) as any as S.Schema<CreateHostingWebEmailRequestRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<CreateHostingWebEmailRequestResponse>,
+  input: __S(624, __c39, 0) as any as S.Schema<CreateHostingWebEmailRequestRequest>,
+  output: __S(16, __c1, 0) as any as S.Schema<CreateHostingWebEmailRequestResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -3812,8 +3812,8 @@ export const createHostingWebEnvVar: API.OperationMethod<
   CreateHostingWebEnvVarError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(27, __c3, 3) as any as S.Schema<CreateHostingWebEnvVarRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<HostingWebPublicTask>,
+  input: __S(800, __c50, 0) as any as S.Schema<CreateHostingWebEnvVarRequest>,
+  output: __S(1664, __c104, 0) as any as S.Schema<HostingWebPublicTask>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -3828,14 +3828,14 @@ export const createHostingWebExtraSqlPersoServiceInfosUpdate: API.OperationMetho
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    28,
-    __c3,
-    4,
+    976,
+    __c61,
+    0,
   ) as any as S.Schema<CreateHostingWebExtraSqlPersoServiceInfosUpdateRequest>,
   output: __S(
-    17,
-    __c2,
-    1,
+    2336,
+    __c146,
+    0,
   ) as any as S.Schema<CreateHostingWebExtraSqlPersoServiceInfosUpdateResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
@@ -3850,8 +3850,8 @@ export const createHostingWebKeySsh: API.OperationMethod<
   CreateHostingWebKeySshError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(29, __c3, 5) as any as S.Schema<CreateHostingWebKeySshRequest>,
-  output: __S(30, __c3, 6) as any as S.Schema<HostingWebKey>,
+  input: __S(1152, __c72, 0) as any as S.Schema<CreateHostingWebKeySshRequest>,
+  output: __S(1168, __c73, 0) as any as S.Schema<HostingWebKey>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -3866,14 +3866,14 @@ export const createHostingWebLocalSeoLocationServiceInfosUpdate: API.OperationMe
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    31,
-    __c3,
-    7,
+    1344,
+    __c84,
+    0,
   ) as any as S.Schema<CreateHostingWebLocalSeoLocationServiceInfosUpdateRequest>,
   output: __S(
-    32,
-    __c4,
-    0,
+    1345,
+    __c84,
+    1,
   ) as any as S.Schema<CreateHostingWebLocalSeoLocationServiceInfosUpdateResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
@@ -3888,8 +3888,8 @@ export const createHostingWebLocalSeoVisibilityCheck: API.OperationMethod<
   CreateHostingWebLocalSeoVisibilityCheckError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(33, __c4, 1) as any as S.Schema<CreateHostingWebLocalSeoVisibilityCheckRequest>,
-  output: __S(35, __c4, 3) as any as S.Schema<HostingWebLocalSeoVisibilityCheckResponse>,
+  input: __S(1408, __c88, 0) as any as S.Schema<CreateHostingWebLocalSeoVisibilityCheckRequest>,
+  output: __S(1410, __c88, 2) as any as S.Schema<HostingWebLocalSeoVisibilityCheckResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -3903,8 +3903,8 @@ export const createHostingWebModule: API.OperationMethod<
   CreateHostingWebModuleError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(38, __c4, 6) as any as S.Schema<CreateHostingWebModuleRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<HostingWebTask>,
+  input: __S(1424, __c89, 0) as any as S.Schema<CreateHostingWebModuleRequest>,
+  output: __S(1472, __c92, 0) as any as S.Schema<HostingWebTask>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -3918,8 +3918,8 @@ export const createHostingWebModuleUpgrade: API.OperationMethod<
   CreateHostingWebModuleUpgradeError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(39, __c4, 7) as any as S.Schema<CreateHostingWebModuleUpgradeRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<HostingWebTask>,
+  input: __S(1488, __c93, 0) as any as S.Schema<CreateHostingWebModuleUpgradeRequest>,
+  output: __S(1472, __c92, 0) as any as S.Schema<HostingWebTask>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -3933,8 +3933,12 @@ export const createHostingWebOvhConfigChangeConfiguration: API.OperationMethod<
   CreateHostingWebOvhConfigChangeConfigurationError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(40, __c5, 0) as any as S.Schema<CreateHostingWebOvhConfigChangeConfigurationRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<HostingWebTask>,
+  input: __S(
+    1504,
+    __c94,
+    0,
+  ) as any as S.Schema<CreateHostingWebOvhConfigChangeConfigurationRequest>,
+  output: __S(1472, __c92, 0) as any as S.Schema<HostingWebTask>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -3948,8 +3952,8 @@ export const createHostingWebOvhConfigRefresh: API.OperationMethod<
   CreateHostingWebOvhConfigRefreshError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(41, __c5, 1) as any as S.Schema<CreateHostingWebOvhConfigRefreshRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<HostingWebTask>,
+  input: __S(1520, __c95, 0) as any as S.Schema<CreateHostingWebOvhConfigRefreshRequest>,
+  output: __S(1472, __c92, 0) as any as S.Schema<HostingWebTask>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -3963,8 +3967,8 @@ export const createHostingWebOvhConfigRollback: API.OperationMethod<
   CreateHostingWebOvhConfigRollbackError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(42, __c5, 2) as any as S.Schema<CreateHostingWebOvhConfigRollbackRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<HostingWebTask>,
+  input: __S(1536, __c96, 0) as any as S.Schema<CreateHostingWebOvhConfigRollbackRequest>,
+  output: __S(1472, __c92, 0) as any as S.Schema<HostingWebTask>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -3978,8 +3982,8 @@ export const createHostingWebOwnLogUserLog: API.OperationMethod<
   CreateHostingWebOwnLogUserLogError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(43, __c5, 3) as any as S.Schema<CreateHostingWebOwnLogUserLogRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<CreateHostingWebOwnLogUserLogResponse>,
+  input: __S(1552, __c97, 0) as any as S.Schema<CreateHostingWebOwnLogUserLogRequest>,
+  output: __S(16, __c1, 0) as any as S.Schema<CreateHostingWebOwnLogUserLogResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -3993,8 +3997,8 @@ export const createHostingWebOwnLogUserLogChangePassword: API.OperationMethod<
   CreateHostingWebOwnLogUserLogChangePasswordError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(44, __c5, 4) as any as S.Schema<CreateHostingWebOwnLogUserLogChangePasswordRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<CreateHostingWebOwnLogUserLogChangePasswordResponse>,
+  input: __S(1568, __c98, 0) as any as S.Schema<CreateHostingWebOwnLogUserLogChangePasswordRequest>,
+  output: __S(16, __c1, 0) as any as S.Schema<CreateHostingWebOwnLogUserLogChangePasswordResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -4008,8 +4012,8 @@ export const createHostingWebRequest: API.OperationMethod<
   CreateHostingWebRequestError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(45, __c5, 5) as any as S.Schema<CreateHostingWebRequestRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<HostingWebTask>,
+  input: __S(1584, __c99, 0) as any as S.Schema<CreateHostingWebRequestRequest>,
+  output: __S(1472, __c92, 0) as any as S.Schema<HostingWebTask>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -4023,8 +4027,8 @@ export const createHostingWebRequestBoost: API.OperationMethod<
   CreateHostingWebRequestBoostError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(46, __c5, 6) as any as S.Schema<CreateHostingWebRequestBoostRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<HostingWebPublicTask>,
+  input: __S(1600, __c100, 0) as any as S.Schema<CreateHostingWebRequestBoostRequest>,
+  output: __S(1664, __c104, 0) as any as S.Schema<HostingWebPublicTask>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -4038,8 +4042,8 @@ export const createHostingWebRuntime: API.OperationMethod<
   CreateHostingWebRuntimeError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(47, __c5, 7) as any as S.Schema<CreateHostingWebRuntimeRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<HostingWebTask>,
+  input: __S(1616, __c101, 0) as any as S.Schema<CreateHostingWebRuntimeRequest>,
+  output: __S(1472, __c92, 0) as any as S.Schema<HostingWebTask>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -4053,8 +4057,8 @@ export const createHostingWebUser: API.OperationMethod<
   CreateHostingWebUserError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(48, __c6, 0) as any as S.Schema<CreateHostingWebUserRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<HostingWebTask>,
+  input: __S(1632, __c102, 0) as any as S.Schema<CreateHostingWebUserRequest>,
+  output: __S(1472, __c92, 0) as any as S.Schema<HostingWebTask>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -4068,8 +4072,8 @@ export const createHostingWebUserChangePassword: API.OperationMethod<
   CreateHostingWebUserChangePasswordError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(49, __c6, 1) as any as S.Schema<CreateHostingWebUserChangePasswordRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<HostingWebTask>,
+  input: __S(1680, __c105, 0) as any as S.Schema<CreateHostingWebUserChangePasswordRequest>,
+  output: __S(1472, __c92, 0) as any as S.Schema<HostingWebTask>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -4083,8 +4087,8 @@ export const createHostingWebWebsite: API.OperationMethod<
   CreateHostingWebWebsiteError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(50, __c6, 2) as any as S.Schema<CreateHostingWebWebsiteRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<HostingWebPublicTask>,
+  input: __S(1696, __c106, 0) as any as S.Schema<CreateHostingWebWebsiteRequest>,
+  output: __S(1664, __c104, 0) as any as S.Schema<HostingWebPublicTask>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -4098,8 +4102,8 @@ export const deleteHostingWebAttachedDomain: API.OperationMethod<
   DeleteHostingWebAttachedDomainError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(51, __c6, 3) as any as S.Schema<DeleteHostingWebAttachedDomainRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<HostingWebPublicTask>,
+  input: __S(1712, __c107, 0) as any as S.Schema<DeleteHostingWebAttachedDomainRequest>,
+  output: __S(1664, __c104, 0) as any as S.Schema<HostingWebPublicTask>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -4113,8 +4117,8 @@ export const deleteHostingWebAttachedDomainSsl: API.OperationMethod<
   DeleteHostingWebAttachedDomainSslError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(52, __c6, 4) as any as S.Schema<DeleteHostingWebAttachedDomainSslRequest>,
-  output: __S(9, __c1, 1) as any as S.Schema<HostingWebSSL>,
+  input: __S(1728, __c108, 0) as any as S.Schema<DeleteHostingWebAttachedDomainSslRequest>,
+  output: __S(1856, __c116, 0) as any as S.Schema<HostingWebSSL>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -4128,8 +4132,8 @@ export const deleteHostingWebCdnDomainOption: API.OperationMethod<
   DeleteHostingWebCdnDomainOptionError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(53, __c6, 5) as any as S.Schema<DeleteHostingWebCdnDomainOptionRequest>,
-  output: __S(17, __c2, 1) as any as S.Schema<DeleteHostingWebCdnDomainOptionResponse>,
+  input: __S(1744, __c109, 0) as any as S.Schema<DeleteHostingWebCdnDomainOptionRequest>,
+  output: __S(2336, __c146, 0) as any as S.Schema<DeleteHostingWebCdnDomainOptionResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -4143,8 +4147,8 @@ export const deleteHostingWebCron: API.OperationMethod<
   DeleteHostingWebCronError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(54, __c6, 6) as any as S.Schema<DeleteHostingWebCronRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<HostingWebPublicTask>,
+  input: __S(1760, __c110, 0) as any as S.Schema<DeleteHostingWebCronRequest>,
+  output: __S(1664, __c104, 0) as any as S.Schema<HostingWebPublicTask>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -4158,8 +4162,8 @@ export const deleteHostingWebDatabase: API.OperationMethod<
   DeleteHostingWebDatabaseError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(55, __c6, 7) as any as S.Schema<DeleteHostingWebDatabaseRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<HostingWebTask>,
+  input: __S(1776, __c111, 0) as any as S.Schema<DeleteHostingWebDatabaseRequest>,
+  output: __S(1472, __c92, 0) as any as S.Schema<HostingWebTask>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -4173,8 +4177,8 @@ export const deleteHostingWebDatabaseCopy: API.OperationMethod<
   DeleteHostingWebDatabaseCopyError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(56, __c7, 0) as any as S.Schema<DeleteHostingWebDatabaseCopyRequest>,
-  output: __S(17, __c2, 1) as any as S.Schema<DeleteHostingWebDatabaseCopyResponse>,
+  input: __S(1792, __c112, 0) as any as S.Schema<DeleteHostingWebDatabaseCopyRequest>,
+  output: __S(2336, __c146, 0) as any as S.Schema<DeleteHostingWebDatabaseCopyResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -4188,8 +4192,8 @@ export const deleteHostingWebDatabaseDump: API.OperationMethod<
   DeleteHostingWebDatabaseDumpError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(57, __c7, 1) as any as S.Schema<DeleteHostingWebDatabaseDumpRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<HostingWebTask>,
+  input: __S(1808, __c113, 0) as any as S.Schema<DeleteHostingWebDatabaseDumpRequest>,
+  output: __S(1472, __c92, 0) as any as S.Schema<HostingWebTask>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -4203,8 +4207,8 @@ export const deleteHostingWebDump: API.OperationMethod<
   DeleteHostingWebDumpError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(58, __c7, 2) as any as S.Schema<DeleteHostingWebDumpRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<HostingWebTask>,
+  input: __S(1824, __c114, 0) as any as S.Schema<DeleteHostingWebDumpRequest>,
+  output: __S(1472, __c92, 0) as any as S.Schema<HostingWebTask>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -4217,8 +4221,8 @@ export const deleteHostingWebEnvVar: API.OperationMethod<
   DeleteHostingWebEnvVarError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(59, __c7, 3) as any as S.Schema<DeleteHostingWebEnvVarRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<HostingWebPublicTask>,
+  input: __S(1872, __c117, 0) as any as S.Schema<DeleteHostingWebEnvVarRequest>,
+  output: __S(1664, __c104, 0) as any as S.Schema<HostingWebPublicTask>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -4232,8 +4236,8 @@ export const deleteHostingWebModule: API.OperationMethod<
   DeleteHostingWebModuleError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(60, __c7, 4) as any as S.Schema<DeleteHostingWebModuleRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<HostingWebTask>,
+  input: __S(1888, __c118, 0) as any as S.Schema<DeleteHostingWebModuleRequest>,
+  output: __S(1472, __c92, 0) as any as S.Schema<HostingWebTask>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -4247,8 +4251,8 @@ export const deleteHostingWebOwnLogUserLog: API.OperationMethod<
   DeleteHostingWebOwnLogUserLogError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(61, __c7, 5) as any as S.Schema<DeleteHostingWebOwnLogUserLogRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<DeleteHostingWebOwnLogUserLogResponse>,
+  input: __S(1904, __c119, 0) as any as S.Schema<DeleteHostingWebOwnLogUserLogRequest>,
+  output: __S(16, __c1, 0) as any as S.Schema<DeleteHostingWebOwnLogUserLogResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -4262,8 +4266,8 @@ export const deleteHostingWebRuntime: API.OperationMethod<
   DeleteHostingWebRuntimeError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(62, __c7, 6) as any as S.Schema<DeleteHostingWebRuntimeRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<HostingWebTask>,
+  input: __S(1920, __c120, 0) as any as S.Schema<DeleteHostingWebRuntimeRequest>,
+  output: __S(1472, __c92, 0) as any as S.Schema<HostingWebTask>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -4277,8 +4281,8 @@ export const deleteHostingWebUser: API.OperationMethod<
   DeleteHostingWebUserError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(63, __c7, 7) as any as S.Schema<DeleteHostingWebUserRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<HostingWebTask>,
+  input: __S(1936, __c121, 0) as any as S.Schema<DeleteHostingWebUserRequest>,
+  output: __S(1472, __c92, 0) as any as S.Schema<HostingWebTask>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -4292,8 +4296,8 @@ export const deleteHostingWebWebsite: API.OperationMethod<
   DeleteHostingWebWebsiteError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(64, __c8, 0) as any as S.Schema<DeleteHostingWebWebsiteRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<HostingWebPublicTask>,
+  input: __S(1952, __c122, 0) as any as S.Schema<DeleteHostingWebWebsiteRequest>,
+  output: __S(1664, __c104, 0) as any as S.Schema<HostingWebPublicTask>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -4307,8 +4311,8 @@ export const deployHostingWebWebsite: API.OperationMethod<
   DeployHostingWebWebsiteError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(65, __c8, 1) as any as S.Schema<DeployHostingWebWebsiteRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<HostingWebPublicTask>,
+  input: __S(1968, __c123, 0) as any as S.Schema<DeployHostingWebWebsiteRequest>,
+  output: __S(1664, __c104, 0) as any as S.Schema<HostingWebPublicTask>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -4322,8 +4326,8 @@ export const getHostingWeb: API.OperationMethod<
   GetHostingWebError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(66, __c8, 2) as any as S.Schema<GetHostingWebRequest>,
-  output: __S(79, __c9, 7) as any as S.Schema<HostingWebServiceWithIAM>,
+  input: __S(1984, __c124, 0) as any as S.Schema<GetHostingWebRequest>,
+  output: __S(1996, __c124, 12) as any as S.Schema<HostingWebServiceWithIAM>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -4337,8 +4341,8 @@ export const getHostingWebAttachedDomain: API.OperationMethod<
   GetHostingWebAttachedDomainError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(80, __c10, 0) as any as S.Schema<GetHostingWebAttachedDomainRequest>,
-  output: __S(83, __c10, 3) as any as S.Schema<HostingWebAttachedDomainPublicAttachedDomain>,
+  input: __S(2016, __c126, 0) as any as S.Schema<GetHostingWebAttachedDomainRequest>,
+  output: __S(2019, __c126, 3) as any as S.Schema<HostingWebAttachedDomainPublicAttachedDomain>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -4352,8 +4356,8 @@ export const getHostingWebAttachedDomainDigStatus: API.OperationMethod<
   GetHostingWebAttachedDomainDigStatusError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(84, __c10, 4) as any as S.Schema<GetHostingWebAttachedDomainDigStatusRequest>,
-  output: __S(88, __c11, 0) as any as S.Schema<HostingWebAttachedDomainDigStatus>,
+  input: __S(2032, __c127, 0) as any as S.Schema<GetHostingWebAttachedDomainDigStatusRequest>,
+  output: __S(2036, __c127, 4) as any as S.Schema<HostingWebAttachedDomainDigStatus>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -4367,8 +4371,8 @@ export const getHostingWebAttachedDomainSsl: API.OperationMethod<
   GetHostingWebAttachedDomainSslError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(89, __c11, 1) as any as S.Schema<GetHostingWebAttachedDomainSslRequest>,
-  output: __S(9, __c1, 1) as any as S.Schema<HostingWebSSL>,
+  input: __S(2096, __c131, 0) as any as S.Schema<GetHostingWebAttachedDomainSslRequest>,
+  output: __S(1856, __c116, 0) as any as S.Schema<HostingWebSSL>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -4382,8 +4386,8 @@ export const getHostingWebBoostHistory: API.OperationMethod<
   GetHostingWebBoostHistoryError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(90, __c11, 2) as any as S.Schema<GetHostingWebBoostHistoryRequest>,
-  output: __S(91, __c11, 3) as any as S.Schema<HostingWebBoostHistory>,
+  input: __S(2112, __c132, 0) as any as S.Schema<GetHostingWebBoostHistoryRequest>,
+  output: __S(2113, __c132, 1) as any as S.Schema<HostingWebBoostHistory>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -4397,8 +4401,8 @@ export const getHostingWebCdn: API.OperationMethod<
   GetHostingWebCdnError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(92, __c11, 4) as any as S.Schema<GetHostingWebCdnRequest>,
-  output: __S(93, __c11, 5) as any as S.Schema<HostingWebCDN>,
+  input: __S(2128, __c133, 0) as any as S.Schema<GetHostingWebCdnRequest>,
+  output: __S(2129, __c133, 1) as any as S.Schema<HostingWebCDN>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -4412,8 +4416,8 @@ export const getHostingWebCdnDomain: API.OperationMethod<
   GetHostingWebCdnDomainError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(94, __c11, 6) as any as S.Schema<GetHostingWebCdnDomainRequest>,
-  output: __S(95, __c11, 7) as any as S.Schema<CdnDomain>,
+  input: __S(2144, __c134, 0) as any as S.Schema<GetHostingWebCdnDomainRequest>,
+  output: __S(2160, __c135, 0) as any as S.Schema<CdnDomain>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -4427,8 +4431,8 @@ export const getHostingWebCdnDomainLogs: API.OperationMethod<
   GetHostingWebCdnDomainLogsError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(96, __c12, 0) as any as S.Schema<GetHostingWebCdnDomainLogsRequest>,
-  output: __S(97, __c12, 1) as any as S.Schema<CdnLogs>,
+  input: __S(2176, __c136, 0) as any as S.Schema<GetHostingWebCdnDomainLogsRequest>,
+  output: __S(2177, __c136, 1) as any as S.Schema<CdnLogs>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -4442,8 +4446,8 @@ export const getHostingWebCdnDomainOption: API.OperationMethod<
   GetHostingWebCdnDomainOptionError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(98, __c12, 2) as any as S.Schema<GetHostingWebCdnDomainOptionRequest>,
-  output: __S(14, __c1, 6) as any as S.Schema<CdnDomainOption>,
+  input: __S(2192, __c137, 0) as any as S.Schema<GetHostingWebCdnDomainOptionRequest>,
+  output: __S(2082, __c130, 2) as any as S.Schema<CdnDomainOption>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -4457,8 +4461,8 @@ export const getHostingWebCdnOperation: API.OperationMethod<
   GetHostingWebCdnOperationError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(99, __c12, 3) as any as S.Schema<GetHostingWebCdnOperationRequest>,
-  output: __S(101, __c12, 5) as any as S.Schema<CdnOperation>,
+  input: __S(2208, __c138, 0) as any as S.Schema<GetHostingWebCdnOperationRequest>,
+  output: __S(2225, __c139, 1) as any as S.Schema<CdnOperation>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -4472,8 +4476,8 @@ export const getHostingWebCdnServiceInfos: API.OperationMethod<
   GetHostingWebCdnServiceInfosError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(102, __c12, 6) as any as S.Schema<GetHostingWebCdnServiceInfosRequest>,
-  output: __S(103, __c12, 7) as any as S.Schema<ServicesService>,
+  input: __S(2240, __c140, 0) as any as S.Schema<GetHostingWebCdnServiceInfosRequest>,
+  output: __S(2256, __c141, 0) as any as S.Schema<ServicesService>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -4487,8 +4491,8 @@ export const getHostingWebConfiguration: API.OperationMethod<
   GetHostingWebConfigurationError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(104, __c13, 0) as any as S.Schema<GetHostingWebConfigurationRequest>,
-  output: __S(105, __c13, 1) as any as S.Schema<HostingWebConfiguration>,
+  input: __S(2272, __c142, 0) as any as S.Schema<GetHostingWebConfigurationRequest>,
+  output: __S(2273, __c142, 1) as any as S.Schema<HostingWebConfiguration>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -4502,8 +4506,8 @@ export const getHostingWebCron: API.OperationMethod<
   GetHostingWebCronError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(106, __c13, 2) as any as S.Schema<GetHostingWebCronRequest>,
-  output: __S(107, __c13, 3) as any as S.Schema<HostingWebCron>,
+  input: __S(2288, __c143, 0) as any as S.Schema<GetHostingWebCronRequest>,
+  output: __S(2289, __c143, 1) as any as S.Schema<HostingWebCron>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -4517,8 +4521,8 @@ export const getHostingWebDatabase: API.OperationMethod<
   GetHostingWebDatabaseError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(108, __c13, 4) as any as S.Schema<GetHostingWebDatabaseRequest>,
-  output: __S(109, __c13, 5) as any as S.Schema<HostingWebDatabase>,
+  input: __S(2352, __c147, 0) as any as S.Schema<GetHostingWebDatabaseRequest>,
+  output: __S(2353, __c147, 1) as any as S.Schema<HostingWebDatabase>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -4532,8 +4536,8 @@ export const getHostingWebDatabaseCapabilities: API.OperationMethod<
   GetHostingWebDatabaseCapabilitiesError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(110, __c13, 6) as any as S.Schema<GetHostingWebDatabaseCapabilitiesRequest>,
-  output: __S(111, __c13, 7) as any as S.Schema<HostingWebDatabaseDatabaseCapabilities>,
+  input: __S(2368, __c148, 0) as any as S.Schema<GetHostingWebDatabaseCapabilitiesRequest>,
+  output: __S(2369, __c148, 1) as any as S.Schema<HostingWebDatabaseDatabaseCapabilities>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -4547,8 +4551,8 @@ export const getHostingWebDatabaseCopy: API.OperationMethod<
   GetHostingWebDatabaseCopyError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(112, __c14, 0) as any as S.Schema<GetHostingWebDatabaseCopyRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<HostingWebDatabaseCopy>,
+  input: __S(2384, __c149, 0) as any as S.Schema<GetHostingWebDatabaseCopyRequest>,
+  output: __S(48, __c3, 0) as any as S.Schema<HostingWebDatabaseCopy>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -4562,8 +4566,8 @@ export const getHostingWebDatabaseDump: API.OperationMethod<
   GetHostingWebDatabaseDumpError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(113, __c14, 1) as any as S.Schema<GetHostingWebDatabaseDumpRequest>,
-  output: __S(114, __c14, 2) as any as S.Schema<HostingWebDatabaseDump>,
+  input: __S(2400, __c150, 0) as any as S.Schema<GetHostingWebDatabaseDumpRequest>,
+  output: __S(2401, __c150, 1) as any as S.Schema<HostingWebDatabaseDump>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -4577,8 +4581,8 @@ export const getHostingWebDump: API.OperationMethod<
   GetHostingWebDumpError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(115, __c14, 3) as any as S.Schema<GetHostingWebDumpRequest>,
-  output: __S(116, __c14, 4) as any as S.Schema<HostingWebDump>,
+  input: __S(2416, __c151, 0) as any as S.Schema<GetHostingWebDumpRequest>,
+  output: __S(2417, __c151, 1) as any as S.Schema<HostingWebDump>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -4592,8 +4596,8 @@ export const getHostingWebEmail: API.OperationMethod<
   GetHostingWebEmailError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(117, __c14, 5) as any as S.Schema<GetHostingWebEmailRequest>,
-  output: __S(118, __c14, 6) as any as S.Schema<HostingWebEmail>,
+  input: __S(2432, __c152, 0) as any as S.Schema<GetHostingWebEmailRequest>,
+  output: __S(2433, __c152, 1) as any as S.Schema<HostingWebEmail>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -4607,8 +4611,8 @@ export const getHostingWebEmailOption: API.OperationMethod<
   GetHostingWebEmailOptionError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(119, __c14, 7) as any as S.Schema<GetHostingWebEmailOptionRequest>,
-  output: __S(120, __c15, 0) as any as S.Schema<HostingWebEmailoption>,
+  input: __S(2448, __c153, 0) as any as S.Schema<GetHostingWebEmailOptionRequest>,
+  output: __S(2449, __c153, 1) as any as S.Schema<HostingWebEmailoption>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -4622,8 +4626,8 @@ export const getHostingWebEmailOptionServiceInfos: API.OperationMethod<
   GetHostingWebEmailOptionServiceInfosError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(121, __c15, 1) as any as S.Schema<GetHostingWebEmailOptionServiceInfosRequest>,
-  output: __S(103, __c12, 7) as any as S.Schema<ServicesService>,
+  input: __S(2464, __c154, 0) as any as S.Schema<GetHostingWebEmailOptionServiceInfosRequest>,
+  output: __S(2256, __c141, 0) as any as S.Schema<ServicesService>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -4636,8 +4640,8 @@ export const getHostingWebEnvVar: API.OperationMethod<
   GetHostingWebEnvVarError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(122, __c15, 2) as any as S.Schema<GetHostingWebEnvVarRequest>,
-  output: __S(123, __c15, 3) as any as S.Schema<HostingWebEnvVar>,
+  input: __S(2480, __c155, 0) as any as S.Schema<GetHostingWebEnvVarRequest>,
+  output: __S(2481, __c155, 1) as any as S.Schema<HostingWebEnvVar>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -4651,8 +4655,8 @@ export const getHostingWebExtraSqlPerso: API.OperationMethod<
   GetHostingWebExtraSqlPersoError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(124, __c15, 4) as any as S.Schema<GetHostingWebExtraSqlPersoRequest>,
-  output: __S(125, __c15, 5) as any as S.Schema<HostingWebExtrasqlperso>,
+  input: __S(2496, __c156, 0) as any as S.Schema<GetHostingWebExtraSqlPersoRequest>,
+  output: __S(2497, __c156, 1) as any as S.Schema<HostingWebExtrasqlperso>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -4666,8 +4670,8 @@ export const getHostingWebExtraSqlPersoServiceInfos: API.OperationMethod<
   GetHostingWebExtraSqlPersoServiceInfosError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(126, __c15, 6) as any as S.Schema<GetHostingWebExtraSqlPersoServiceInfosRequest>,
-  output: __S(103, __c12, 7) as any as S.Schema<ServicesService>,
+  input: __S(2560, __c160, 0) as any as S.Schema<GetHostingWebExtraSqlPersoServiceInfosRequest>,
+  output: __S(2256, __c141, 0) as any as S.Schema<ServicesService>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -4681,8 +4685,8 @@ export const getHostingWebIndy: API.OperationMethod<
   GetHostingWebIndyError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(127, __c15, 7) as any as S.Schema<GetHostingWebIndyRequest>,
-  output: __S(128, __c16, 0) as any as S.Schema<HostingWebIndy>,
+  input: __S(2576, __c161, 0) as any as S.Schema<GetHostingWebIndyRequest>,
+  output: __S(2577, __c161, 1) as any as S.Schema<HostingWebIndy>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -4696,8 +4700,8 @@ export const getHostingWebKeySsh: API.OperationMethod<
   GetHostingWebKeySshError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(129, __c16, 1) as any as S.Schema<GetHostingWebKeySshRequest>,
-  output: __S(30, __c3, 6) as any as S.Schema<HostingWebKey>,
+  input: __S(2592, __c162, 0) as any as S.Schema<GetHostingWebKeySshRequest>,
+  output: __S(1168, __c73, 0) as any as S.Schema<HostingWebKey>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -4711,8 +4715,8 @@ export const getHostingWebLocalSeoAccount: API.OperationMethod<
   GetHostingWebLocalSeoAccountError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(130, __c16, 2) as any as S.Schema<GetHostingWebLocalSeoAccountRequest>,
-  output: __S(131, __c16, 3) as any as S.Schema<HostingWebLocalSeoAccount>,
+  input: __S(2608, __c163, 0) as any as S.Schema<GetHostingWebLocalSeoAccountRequest>,
+  output: __S(2609, __c163, 1) as any as S.Schema<HostingWebLocalSeoAccount>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -4726,8 +4730,8 @@ export const getHostingWebLocalSeoEmailAvailability: API.OperationMethod<
   GetHostingWebLocalSeoEmailAvailabilityError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(132, __c16, 4) as any as S.Schema<GetHostingWebLocalSeoEmailAvailabilityRequest>,
-  output: __S(133, __c16, 5) as any as S.Schema<HostingWebLocalSeoEmailAvailability>,
+  input: __S(2624, __c164, 0) as any as S.Schema<GetHostingWebLocalSeoEmailAvailabilityRequest>,
+  output: __S(2640, __c165, 0) as any as S.Schema<HostingWebLocalSeoEmailAvailability>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -4741,8 +4745,8 @@ export const getHostingWebLocalSeoEmailAvailability2: API.OperationMethod<
   GetHostingWebLocalSeoEmailAvailability2Error,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(134, __c16, 6) as any as S.Schema<GetHostingWebLocalSeoEmailAvailabilityRequest2>,
-  output: __S(133, __c16, 5) as any as S.Schema<HostingWebLocalSeoEmailAvailability>,
+  input: __S(2656, __c166, 0) as any as S.Schema<GetHostingWebLocalSeoEmailAvailabilityRequest2>,
+  output: __S(2640, __c165, 0) as any as S.Schema<HostingWebLocalSeoEmailAvailability>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -4756,8 +4760,8 @@ export const getHostingWebLocalSeoLocation: API.OperationMethod<
   GetHostingWebLocalSeoLocationError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(135, __c16, 7) as any as S.Schema<GetHostingWebLocalSeoLocationRequest>,
-  output: __S(136, __c17, 0) as any as S.Schema<HostingWebLocalSeoLocation>,
+  input: __S(2672, __c167, 0) as any as S.Schema<GetHostingWebLocalSeoLocationRequest>,
+  output: __S(2673, __c167, 1) as any as S.Schema<HostingWebLocalSeoLocation>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -4771,8 +4775,8 @@ export const getHostingWebLocalSeoLocationServiceInfos: API.OperationMethod<
   GetHostingWebLocalSeoLocationServiceInfosError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(137, __c17, 1) as any as S.Schema<GetHostingWebLocalSeoLocationServiceInfosRequest>,
-  output: __S(103, __c12, 7) as any as S.Schema<ServicesService>,
+  input: __S(2688, __c168, 0) as any as S.Schema<GetHostingWebLocalSeoLocationServiceInfosRequest>,
+  output: __S(2256, __c141, 0) as any as S.Schema<ServicesService>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -4786,8 +4790,8 @@ export const getHostingWebMetricsToken: API.OperationMethod<
   GetHostingWebMetricsTokenError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(138, __c17, 2) as any as S.Schema<GetHostingWebMetricsTokenRequest>,
-  output: __S(139, __c17, 3) as any as S.Schema<HostingWebMetricsToken>,
+  input: __S(2704, __c169, 0) as any as S.Schema<GetHostingWebMetricsTokenRequest>,
+  output: __S(2705, __c169, 1) as any as S.Schema<HostingWebMetricsToken>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -4801,8 +4805,8 @@ export const getHostingWebModule: API.OperationMethod<
   GetHostingWebModuleError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(140, __c17, 4) as any as S.Schema<GetHostingWebModuleRequest>,
-  output: __S(141, __c17, 5) as any as S.Schema<HostingWebModule>,
+  input: __S(2720, __c170, 0) as any as S.Schema<GetHostingWebModuleRequest>,
+  output: __S(2721, __c170, 1) as any as S.Schema<HostingWebModule>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -4816,8 +4820,8 @@ export const getHostingWebModuleList: API.OperationMethod<
   GetHostingWebModuleListError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(142, __c17, 6) as any as S.Schema<GetHostingWebModuleListRequest>,
-  output: __S(145, __c18, 1) as any as S.Schema<HostingWebModuleList>,
+  input: __S(2752, __c172, 0) as any as S.Schema<GetHostingWebModuleListRequest>,
+  output: __S(2754, __c172, 2) as any as S.Schema<HostingWebModuleList>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -4831,8 +4835,8 @@ export const getHostingWebOfferCapabilities: API.OperationMethod<
   GetHostingWebOfferCapabilitiesError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(146, __c18, 2) as any as S.Schema<GetHostingWebOfferCapabilitiesRequest>,
-  output: __S(152, __c19, 0) as any as S.Schema<HostingWebCapabilities>,
+  input: __S(2784, __c174, 0) as any as S.Schema<GetHostingWebOfferCapabilitiesRequest>,
+  output: __S(2788, __c174, 4) as any as S.Schema<HostingWebCapabilities>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -4846,8 +4850,8 @@ export const getHostingWebOvhConfig: API.OperationMethod<
   GetHostingWebOvhConfigError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(153, __c19, 1) as any as S.Schema<GetHostingWebOvhConfigRequest>,
-  output: __S(154, __c19, 2) as any as S.Schema<HostingWebOvhConfig>,
+  input: __S(2832, __c177, 0) as any as S.Schema<GetHostingWebOvhConfigRequest>,
+  output: __S(2833, __c177, 1) as any as S.Schema<HostingWebOvhConfig>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -4861,8 +4865,8 @@ export const getHostingWebOvhConfigRecommendedValues: API.OperationMethod<
   GetHostingWebOvhConfigRecommendedValuesError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(155, __c19, 3) as any as S.Schema<GetHostingWebOvhConfigRecommendedValuesRequest>,
-  output: __S(156, __c19, 4) as any as S.Schema<HostingWebOvhConfigRecommendedValues>,
+  input: __S(2848, __c178, 0) as any as S.Schema<GetHostingWebOvhConfigRecommendedValuesRequest>,
+  output: __S(2849, __c178, 1) as any as S.Schema<HostingWebOvhConfigRecommendedValues>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -4876,8 +4880,8 @@ export const getHostingWebOwnLog: API.OperationMethod<
   GetHostingWebOwnLogError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(157, __c19, 5) as any as S.Schema<GetHostingWebOwnLogRequest>,
-  output: __S(158, __c19, 6) as any as S.Schema<HostingWebOwnLogs>,
+  input: __S(2864, __c179, 0) as any as S.Schema<GetHostingWebOwnLogRequest>,
+  output: __S(2865, __c179, 1) as any as S.Schema<HostingWebOwnLogs>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -4891,8 +4895,8 @@ export const getHostingWebOwnLogUserLog: API.OperationMethod<
   GetHostingWebOwnLogUserLogError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(159, __c19, 7) as any as S.Schema<GetHostingWebOwnLogUserLogRequest>,
-  output: __S(160, __c20, 0) as any as S.Schema<HostingWebUserLogs>,
+  input: __S(2880, __c180, 0) as any as S.Schema<GetHostingWebOwnLogUserLogRequest>,
+  output: __S(2881, __c180, 1) as any as S.Schema<HostingWebUserLogs>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -4906,8 +4910,8 @@ export const getHostingWebRuntime: API.OperationMethod<
   GetHostingWebRuntimeError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(161, __c20, 1) as any as S.Schema<GetHostingWebRuntimeRequest>,
-  output: __S(162, __c20, 2) as any as S.Schema<HostingWebRuntime>,
+  input: __S(2896, __c181, 0) as any as S.Schema<GetHostingWebRuntimeRequest>,
+  output: __S(2897, __c181, 1) as any as S.Schema<HostingWebRuntime>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -4921,8 +4925,8 @@ export const getHostingWebServiceInfos: API.OperationMethod<
   GetHostingWebServiceInfosError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(163, __c20, 3) as any as S.Schema<GetHostingWebServiceInfosRequest>,
-  output: __S(103, __c12, 7) as any as S.Schema<ServicesService>,
+  input: __S(2912, __c182, 0) as any as S.Schema<GetHostingWebServiceInfosRequest>,
+  output: __S(2256, __c141, 0) as any as S.Schema<ServicesService>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -4936,8 +4940,8 @@ export const getHostingWebTask: API.OperationMethod<
   GetHostingWebTaskError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(164, __c20, 4) as any as S.Schema<GetHostingWebTaskRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<HostingWebPublicTask>,
+  input: __S(2928, __c183, 0) as any as S.Schema<GetHostingWebTaskRequest>,
+  output: __S(1664, __c104, 0) as any as S.Schema<HostingWebPublicTask>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -4951,8 +4955,8 @@ export const getHostingWebToken: API.OperationMethod<
   GetHostingWebTokenError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(165, __c20, 5) as any as S.Schema<GetHostingWebTokenRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<GetHostingWebTokenResponse>,
+  input: __S(2944, __c184, 0) as any as S.Schema<GetHostingWebTokenRequest>,
+  output: __S(16, __c1, 0) as any as S.Schema<GetHostingWebTokenResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -4966,8 +4970,8 @@ export const getHostingWebUser: API.OperationMethod<
   GetHostingWebUserError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(166, __c20, 6) as any as S.Schema<GetHostingWebUserRequest>,
-  output: __S(169, __c21, 1) as any as S.Schema<HostingWebUser>,
+  input: __S(2976, __c186, 0) as any as S.Schema<GetHostingWebUserRequest>,
+  output: __S(2979, __c186, 3) as any as S.Schema<HostingWebUser>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -4981,8 +4985,8 @@ export const getHostingWebUserLogsToken: API.OperationMethod<
   GetHostingWebUserLogsTokenError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(170, __c21, 2) as any as S.Schema<GetHostingWebUserLogsTokenRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<GetHostingWebUserLogsTokenResponse>,
+  input: __S(2992, __c187, 0) as any as S.Schema<GetHostingWebUserLogsTokenRequest>,
+  output: __S(16, __c1, 0) as any as S.Schema<GetHostingWebUserLogsTokenResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -4996,8 +5000,8 @@ export const getHostingWebVcsWebhooks: API.OperationMethod<
   GetHostingWebVcsWebhooksError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(171, __c21, 3) as any as S.Schema<GetHostingWebVcsWebhooksRequest>,
-  output: __S(172, __c21, 4) as any as S.Schema<HostingWebVcsWebhooks>,
+  input: __S(3008, __c188, 0) as any as S.Schema<GetHostingWebVcsWebhooksRequest>,
+  output: __S(3009, __c188, 1) as any as S.Schema<HostingWebVcsWebhooks>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -5011,8 +5015,8 @@ export const getHostingWebWebsite: API.OperationMethod<
   GetHostingWebWebsiteError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(173, __c21, 5) as any as S.Schema<GetHostingWebWebsiteRequest>,
-  output: __S(176, __c22, 0) as any as S.Schema<HostingWebWebsite>,
+  input: __S(3024, __c189, 0) as any as S.Schema<GetHostingWebWebsiteRequest>,
+  output: __S(3042, __c190, 2) as any as S.Schema<HostingWebWebsite>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -5026,8 +5030,8 @@ export const getHostingWebWebsiteCreationCapabilities: API.OperationMethod<
   GetHostingWebWebsiteCreationCapabilitiesError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(177, __c22, 1) as any as S.Schema<GetHostingWebWebsiteCreationCapabilitiesRequest>,
-  output: __S(178, __c22, 2) as any as S.Schema<HostingWebWebsiteCreationCapabilities>,
+  input: __S(3056, __c191, 0) as any as S.Schema<GetHostingWebWebsiteCreationCapabilitiesRequest>,
+  output: __S(3057, __c191, 1) as any as S.Schema<HostingWebWebsiteCreationCapabilities>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -5041,8 +5045,8 @@ export const getHostingWebWebsiteDeployment: API.OperationMethod<
   GetHostingWebWebsiteDeploymentError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(179, __c22, 3) as any as S.Schema<GetHostingWebWebsiteDeploymentRequest>,
-  output: __S(180, __c22, 4) as any as S.Schema<HostingWebWebsiteDeployment>,
+  input: __S(3072, __c192, 0) as any as S.Schema<GetHostingWebWebsiteDeploymentRequest>,
+  output: __S(3073, __c192, 1) as any as S.Schema<HostingWebWebsiteDeployment>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -5056,8 +5060,8 @@ export const importHostingWebDatabase: API.OperationMethod<
   ImportHostingWebDatabaseError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(181, __c22, 5) as any as S.Schema<ImportHostingWebDatabaseRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<HostingWebTask>,
+  input: __S(3088, __c193, 0) as any as S.Schema<ImportHostingWebDatabaseRequest>,
+  output: __S(1472, __c92, 0) as any as S.Schema<HostingWebTask>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -5071,8 +5075,8 @@ export const listHostingWeb: API.OperationMethod<
   ListHostingWebError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(185, __c23, 1) as any as S.Schema<ListHostingWebRequest>,
-  output: __S(186, __c23, 2) as any as S.Schema<ListHostingWebResponse>,
+  input: __S(3106, __c194, 2) as any as S.Schema<ListHostingWebRequest>,
+  output: __S(3107, __c194, 3) as any as S.Schema<ListHostingWebResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -5086,8 +5090,8 @@ export const listHostingWebAttachedDomain: API.OperationMethod<
   ListHostingWebAttachedDomainError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(187, __c23, 3) as any as S.Schema<ListHostingWebAttachedDomainRequest>,
-  output: __S(188, __c23, 4) as any as S.Schema<ListHostingWebAttachedDomainResponse>,
+  input: __S(3136, __c196, 0) as any as S.Schema<ListHostingWebAttachedDomainRequest>,
+  output: __S(3152, __c197, 0) as any as S.Schema<ListHostingWebAttachedDomainResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -5101,8 +5105,8 @@ export const listHostingWebAttachedDomain2: API.OperationMethod<
   ListHostingWebAttachedDomain2Error,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(189, __c23, 5) as any as S.Schema<ListHostingWebAttachedDomainRequest2>,
-  output: __S(188, __c23, 4) as any as S.Schema<ListHostingWebAttachedDomainResponse2>,
+  input: __S(3168, __c198, 0) as any as S.Schema<ListHostingWebAttachedDomainRequest2>,
+  output: __S(3152, __c197, 0) as any as S.Schema<ListHostingWebAttachedDomainResponse2>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -5116,8 +5120,8 @@ export const listHostingWebAvailableConfigurations: API.OperationMethod<
   ListHostingWebAvailableConfigurationsError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(190, __c23, 6) as any as S.Schema<ListHostingWebAvailableConfigurationsRequest>,
-  output: __S(191, __c23, 7) as any as S.Schema<ListHostingWebAvailableConfigurationsResponse>,
+  input: __S(80, __c5, 0) as any as S.Schema<ListHostingWebAvailableConfigurationsRequest>,
+  output: __S(96, __c6, 0) as any as S.Schema<ListHostingWebAvailableConfigurationsResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -5131,8 +5135,8 @@ export const listHostingWebAvailableOffer: API.OperationMethod<
   ListHostingWebAvailableOfferError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(192, __c24, 0) as any as S.Schema<ListHostingWebAvailableOfferRequest>,
-  output: __S(191, __c23, 7) as any as S.Schema<ListHostingWebAvailableOfferResponse>,
+  input: __S(112, __c7, 0) as any as S.Schema<ListHostingWebAvailableOfferRequest>,
+  output: __S(96, __c6, 0) as any as S.Schema<ListHostingWebAvailableOfferResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -5146,8 +5150,8 @@ export const listHostingWebBoostHistory: API.OperationMethod<
   ListHostingWebBoostHistoryError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(193, __c24, 1) as any as S.Schema<ListHostingWebBoostHistoryRequest>,
-  output: __S(188, __c23, 4) as any as S.Schema<ListHostingWebBoostHistoryResponse>,
+  input: __S(128, __c8, 0) as any as S.Schema<ListHostingWebBoostHistoryRequest>,
+  output: __S(3152, __c197, 0) as any as S.Schema<ListHostingWebBoostHistoryResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -5161,8 +5165,8 @@ export const listHostingWebCdnAvailableOptions: API.OperationMethod<
   ListHostingWebCdnAvailableOptionsError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(194, __c24, 2) as any as S.Schema<ListHostingWebCdnAvailableOptionsRequest>,
-  output: __S(199, __c24, 7) as any as S.Schema<ListHostingWebCdnAvailableOptionsResponse>,
+  input: __S(144, __c9, 0) as any as S.Schema<ListHostingWebCdnAvailableOptionsRequest>,
+  output: __S(149, __c9, 5) as any as S.Schema<ListHostingWebCdnAvailableOptionsResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -5176,8 +5180,8 @@ export const listHostingWebCdnDomain: API.OperationMethod<
   ListHostingWebCdnDomainError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(200, __c25, 0) as any as S.Schema<ListHostingWebCdnDomainRequest>,
-  output: __S(202, __c25, 2) as any as S.Schema<ListHostingWebCdnDomainResponse>,
+  input: __S(160, __c10, 0) as any as S.Schema<ListHostingWebCdnDomainRequest>,
+  output: __S(162, __c10, 2) as any as S.Schema<ListHostingWebCdnDomainResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -5191,8 +5195,8 @@ export const listHostingWebCdnDomainOption: API.OperationMethod<
   ListHostingWebCdnDomainOptionError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(203, __c25, 3) as any as S.Schema<ListHostingWebCdnDomainOptionRequest>,
-  output: __S(205, __c25, 5) as any as S.Schema<ListHostingWebCdnDomainOptionResponse>,
+  input: __S(176, __c11, 0) as any as S.Schema<ListHostingWebCdnDomainOptionRequest>,
+  output: __S(178, __c11, 2) as any as S.Schema<ListHostingWebCdnDomainOptionResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -5206,8 +5210,8 @@ export const listHostingWebCdnOperation: API.OperationMethod<
   ListHostingWebCdnOperationError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(206, __c25, 6) as any as S.Schema<ListHostingWebCdnOperationRequest>,
-  output: __S(208, __c26, 0) as any as S.Schema<ListHostingWebCdnOperationResponse>,
+  input: __S(192, __c12, 0) as any as S.Schema<ListHostingWebCdnOperationRequest>,
+  output: __S(194, __c12, 2) as any as S.Schema<ListHostingWebCdnOperationResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -5221,8 +5225,8 @@ export const listHostingWebCron: API.OperationMethod<
   ListHostingWebCronError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(209, __c26, 1) as any as S.Schema<ListHostingWebCronRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<ListHostingWebCronResponse>,
+  input: __S(208, __c13, 0) as any as S.Schema<ListHostingWebCronRequest>,
+  output: __S(2528, __c158, 0) as any as S.Schema<ListHostingWebCronResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -5236,8 +5240,8 @@ export const listHostingWebCronAvailableLanguage: API.OperationMethod<
   ListHostingWebCronAvailableLanguageError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(210, __c26, 2) as any as S.Schema<ListHostingWebCronAvailableLanguageRequest>,
-  output: __S(191, __c23, 7) as any as S.Schema<ListHostingWebCronAvailableLanguageResponse>,
+  input: __S(224, __c14, 0) as any as S.Schema<ListHostingWebCronAvailableLanguageRequest>,
+  output: __S(96, __c6, 0) as any as S.Schema<ListHostingWebCronAvailableLanguageResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -5251,8 +5255,8 @@ export const listHostingWebDatabase: API.OperationMethod<
   ListHostingWebDatabaseError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(211, __c26, 3) as any as S.Schema<ListHostingWebDatabaseRequest>,
-  output: __S(188, __c23, 4) as any as S.Schema<ListHostingWebDatabaseResponse>,
+  input: __S(240, __c15, 0) as any as S.Schema<ListHostingWebDatabaseRequest>,
+  output: __S(3152, __c197, 0) as any as S.Schema<ListHostingWebDatabaseResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -5266,8 +5270,8 @@ export const listHostingWebDatabaseAvailableType: API.OperationMethod<
   ListHostingWebDatabaseAvailableTypeError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(212, __c26, 4) as any as S.Schema<ListHostingWebDatabaseAvailableTypeRequest>,
-  output: __S(213, __c26, 5) as any as S.Schema<ListHostingWebDatabaseAvailableTypeResponse>,
+  input: __S(272, __c17, 0) as any as S.Schema<ListHostingWebDatabaseAvailableTypeRequest>,
+  output: __S(273, __c17, 1) as any as S.Schema<ListHostingWebDatabaseAvailableTypeResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -5281,8 +5285,8 @@ export const listHostingWebDatabaseAvailableVersion: API.OperationMethod<
   ListHostingWebDatabaseAvailableVersionError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(214, __c26, 6) as any as S.Schema<ListHostingWebDatabaseAvailableVersionRequest>,
-  output: __S(215, __c26, 7) as any as S.Schema<HostingWebDatabaseAvailableVersionStruct>,
+  input: __S(288, __c18, 0) as any as S.Schema<ListHostingWebDatabaseAvailableVersionRequest>,
+  output: __S(289, __c18, 1) as any as S.Schema<HostingWebDatabaseAvailableVersionStruct>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -5296,8 +5300,8 @@ export const listHostingWebDatabaseCopy: API.OperationMethod<
   ListHostingWebDatabaseCopyError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(216, __c27, 0) as any as S.Schema<ListHostingWebDatabaseCopyRequest>,
-  output: __S(188, __c23, 4) as any as S.Schema<ListHostingWebDatabaseCopyResponse>,
+  input: __S(304, __c19, 0) as any as S.Schema<ListHostingWebDatabaseCopyRequest>,
+  output: __S(3152, __c197, 0) as any as S.Schema<ListHostingWebDatabaseCopyResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -5311,8 +5315,8 @@ export const listHostingWebDatabaseCreationCapabilities: API.OperationMethod<
   ListHostingWebDatabaseCreationCapabilitiesError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(217, __c27, 1) as any as S.Schema<ListHostingWebDatabaseCreationCapabilitiesRequest>,
-  output: __S(218, __c27, 2) as any as S.Schema<ListHostingWebDatabaseCreationCapabilitiesResponse>,
+  input: __S(320, __c20, 0) as any as S.Schema<ListHostingWebDatabaseCreationCapabilitiesRequest>,
+  output: __S(321, __c20, 1) as any as S.Schema<ListHostingWebDatabaseCreationCapabilitiesResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -5326,8 +5330,8 @@ export const listHostingWebDatabaseDump: API.OperationMethod<
   ListHostingWebDatabaseDumpError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(219, __c27, 3) as any as S.Schema<ListHostingWebDatabaseDumpRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<ListHostingWebDatabaseDumpResponse>,
+  input: __S(336, __c21, 0) as any as S.Schema<ListHostingWebDatabaseDumpRequest>,
+  output: __S(2528, __c158, 0) as any as S.Schema<ListHostingWebDatabaseDumpResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -5341,8 +5345,8 @@ export const listHostingWebDatabaseStatistics: API.OperationMethod<
   ListHostingWebDatabaseStatisticsError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(220, __c27, 4) as any as S.Schema<ListHostingWebDatabaseStatisticsRequest>,
-  output: __S(225, __c28, 1) as any as S.Schema<ListHostingWebDatabaseStatisticsResponse>,
+  input: __S(352, __c22, 0) as any as S.Schema<ListHostingWebDatabaseStatisticsRequest>,
+  output: __S(372, __c23, 4) as any as S.Schema<ListHostingWebDatabaseStatisticsResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -5356,8 +5360,8 @@ export const listHostingWebDump: API.OperationMethod<
   ListHostingWebDumpError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(226, __c28, 2) as any as S.Schema<ListHostingWebDumpRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<ListHostingWebDumpResponse>,
+  input: __S(384, __c24, 0) as any as S.Schema<ListHostingWebDumpRequest>,
+  output: __S(2528, __c158, 0) as any as S.Schema<ListHostingWebDumpResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -5371,8 +5375,8 @@ export const listHostingWebEmailBounces: API.OperationMethod<
   ListHostingWebEmailBouncesError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(227, __c28, 3) as any as S.Schema<ListHostingWebEmailBouncesRequest>,
-  output: __S(230, __c28, 6) as any as S.Schema<ListHostingWebEmailBouncesResponse>,
+  input: __S(400, __c25, 0) as any as S.Schema<ListHostingWebEmailBouncesRequest>,
+  output: __S(403, __c25, 3) as any as S.Schema<ListHostingWebEmailBouncesResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -5386,8 +5390,8 @@ export const listHostingWebEmailOption: API.OperationMethod<
   ListHostingWebEmailOptionError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(231, __c28, 7) as any as S.Schema<ListHostingWebEmailOptionRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<ListHostingWebEmailOptionResponse>,
+  input: __S(416, __c26, 0) as any as S.Schema<ListHostingWebEmailOptionRequest>,
+  output: __S(2528, __c158, 0) as any as S.Schema<ListHostingWebEmailOptionResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -5401,8 +5405,8 @@ export const listHostingWebEmailVolumes: API.OperationMethod<
   ListHostingWebEmailVolumesError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(232, __c29, 0) as any as S.Schema<ListHostingWebEmailVolumesRequest>,
-  output: __S(235, __c29, 3) as any as S.Schema<ListHostingWebEmailVolumesResponse>,
+  input: __S(432, __c27, 0) as any as S.Schema<ListHostingWebEmailVolumesRequest>,
+  output: __S(435, __c27, 3) as any as S.Schema<ListHostingWebEmailVolumesResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -5415,8 +5419,8 @@ export const listHostingWebEnvVar: API.OperationMethod<
   ListHostingWebEnvVarError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(236, __c29, 4) as any as S.Schema<ListHostingWebEnvVarRequest>,
-  output: __S(188, __c23, 4) as any as S.Schema<ListHostingWebEnvVarResponse>,
+  input: __S(464, __c29, 0) as any as S.Schema<ListHostingWebEnvVarRequest>,
+  output: __S(3152, __c197, 0) as any as S.Schema<ListHostingWebEnvVarResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -5430,8 +5434,8 @@ export const listHostingWebExtraSqlPerso: API.OperationMethod<
   ListHostingWebExtraSqlPersoError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(237, __c29, 5) as any as S.Schema<ListHostingWebExtraSqlPersoRequest>,
-  output: __S(188, __c23, 4) as any as S.Schema<ListHostingWebExtraSqlPersoResponse>,
+  input: __S(480, __c30, 0) as any as S.Schema<ListHostingWebExtraSqlPersoRequest>,
+  output: __S(3152, __c197, 0) as any as S.Schema<ListHostingWebExtraSqlPersoResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -5445,8 +5449,8 @@ export const listHostingWebExtraSqlPersoDatabases: API.OperationMethod<
   ListHostingWebExtraSqlPersoDatabasesError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(238, __c29, 6) as any as S.Schema<ListHostingWebExtraSqlPersoDatabasesRequest>,
-  output: __S(188, __c23, 4) as any as S.Schema<ListHostingWebExtraSqlPersoDatabasesResponse>,
+  input: __S(496, __c31, 0) as any as S.Schema<ListHostingWebExtraSqlPersoDatabasesRequest>,
+  output: __S(3152, __c197, 0) as any as S.Schema<ListHostingWebExtraSqlPersoDatabasesResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -5460,8 +5464,8 @@ export const listHostingWebFreedom: API.OperationMethod<
   ListHostingWebFreedomError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(239, __c29, 7) as any as S.Schema<ListHostingWebFreedomRequest>,
-  output: __S(188, __c23, 4) as any as S.Schema<ListHostingWebFreedomResponse>,
+  input: __S(512, __c32, 0) as any as S.Schema<ListHostingWebFreedomRequest>,
+  output: __S(3152, __c197, 0) as any as S.Schema<ListHostingWebFreedomResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -5475,8 +5479,8 @@ export const listHostingWebIncident: API.OperationMethod<
   ListHostingWebIncidentError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(240, __c30, 0) as any as S.Schema<ListHostingWebIncidentRequest>,
-  output: __S(188, __c23, 4) as any as S.Schema<ListHostingWebIncidentResponse>,
+  input: __S(528, __c33, 0) as any as S.Schema<ListHostingWebIncidentRequest>,
+  output: __S(3152, __c197, 0) as any as S.Schema<ListHostingWebIncidentResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -5490,8 +5494,8 @@ export const listHostingWebIndy: API.OperationMethod<
   ListHostingWebIndyError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(241, __c30, 1) as any as S.Schema<ListHostingWebIndyRequest>,
-  output: __S(188, __c23, 4) as any as S.Schema<ListHostingWebIndyResponse>,
+  input: __S(544, __c34, 0) as any as S.Schema<ListHostingWebIndyRequest>,
+  output: __S(3152, __c197, 0) as any as S.Schema<ListHostingWebIndyResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -5505,8 +5509,8 @@ export const listHostingWebLocalSeoAccount: API.OperationMethod<
   ListHostingWebLocalSeoAccountError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(242, __c30, 2) as any as S.Schema<ListHostingWebLocalSeoAccountRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<ListHostingWebLocalSeoAccountResponse>,
+  input: __S(560, __c35, 0) as any as S.Schema<ListHostingWebLocalSeoAccountRequest>,
+  output: __S(2528, __c158, 0) as any as S.Schema<ListHostingWebLocalSeoAccountResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -5520,8 +5524,8 @@ export const listHostingWebLocalSeoDirectoriesList: API.OperationMethod<
   ListHostingWebLocalSeoDirectoriesListError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(243, __c30, 3) as any as S.Schema<ListHostingWebLocalSeoDirectoriesListRequest>,
-  output: __S(246, __c30, 6) as any as S.Schema<HostingWebLocalSeoDirectoriesList>,
+  input: __S(576, __c36, 0) as any as S.Schema<ListHostingWebLocalSeoDirectoriesListRequest>,
+  output: __S(579, __c36, 3) as any as S.Schema<HostingWebLocalSeoDirectoriesList>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -5535,8 +5539,8 @@ export const listHostingWebLocalSeoLocation: API.OperationMethod<
   ListHostingWebLocalSeoLocationError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(247, __c30, 7) as any as S.Schema<ListHostingWebLocalSeoLocationRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<ListHostingWebLocalSeoLocationResponse>,
+  input: __S(592, __c37, 0) as any as S.Schema<ListHostingWebLocalSeoLocationRequest>,
+  output: __S(2528, __c158, 0) as any as S.Schema<ListHostingWebLocalSeoLocationResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -5550,10 +5554,10 @@ export const listHostingWebLocalSeoVisibilityCheckResult: API.OperationMethod<
   ListHostingWebLocalSeoVisibilityCheckResultError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(248, __c31, 0) as any as S.Schema<ListHostingWebLocalSeoVisibilityCheckResultRequest>,
+  input: __S(608, __c38, 0) as any as S.Schema<ListHostingWebLocalSeoVisibilityCheckResultRequest>,
   output: __S(
-    251,
-    __c31,
+    611,
+    __c38,
     3,
   ) as any as S.Schema<ListHostingWebLocalSeoVisibilityCheckResultResponse>,
   errors: [UnknownOvhError],
@@ -5569,8 +5573,8 @@ export const listHostingWebModule: API.OperationMethod<
   ListHostingWebModuleError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(252, __c31, 4) as any as S.Schema<ListHostingWebModuleRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<ListHostingWebModuleResponse>,
+  input: __S(640, __c40, 0) as any as S.Schema<ListHostingWebModuleRequest>,
+  output: __S(2528, __c158, 0) as any as S.Schema<ListHostingWebModuleResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -5584,8 +5588,8 @@ export const listHostingWebModuleList: API.OperationMethod<
   ListHostingWebModuleListError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(253, __c31, 5) as any as S.Schema<ListHostingWebModuleListRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<ListHostingWebModuleListResponse>,
+  input: __S(656, __c41, 0) as any as S.Schema<ListHostingWebModuleListRequest>,
+  output: __S(2528, __c158, 0) as any as S.Schema<ListHostingWebModuleListResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -5599,8 +5603,8 @@ export const listHostingWebOvhConfig: API.OperationMethod<
   ListHostingWebOvhConfigError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(254, __c31, 6) as any as S.Schema<ListHostingWebOvhConfigRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<ListHostingWebOvhConfigResponse>,
+  input: __S(672, __c42, 0) as any as S.Schema<ListHostingWebOvhConfigRequest>,
+  output: __S(2528, __c158, 0) as any as S.Schema<ListHostingWebOvhConfigResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -5614,8 +5618,8 @@ export const listHostingWebOvhConfigCapabilities: API.OperationMethod<
   ListHostingWebOvhConfigCapabilitiesError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(255, __c31, 7) as any as S.Schema<ListHostingWebOvhConfigCapabilitiesRequest>,
-  output: __S(258, __c32, 2) as any as S.Schema<ListHostingWebOvhConfigCapabilitiesResponse>,
+  input: __S(688, __c43, 0) as any as S.Schema<ListHostingWebOvhConfigCapabilitiesRequest>,
+  output: __S(691, __c43, 3) as any as S.Schema<ListHostingWebOvhConfigCapabilitiesResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -5629,8 +5633,8 @@ export const listHostingWebOwnLogs: API.OperationMethod<
   ListHostingWebOwnLogsError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(259, __c32, 3) as any as S.Schema<ListHostingWebOwnLogsRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<ListHostingWebOwnLogsResponse>,
+  input: __S(704, __c44, 0) as any as S.Schema<ListHostingWebOwnLogsRequest>,
+  output: __S(2528, __c158, 0) as any as S.Schema<ListHostingWebOwnLogsResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -5644,8 +5648,8 @@ export const listHostingWebOwnLogUserLogs: API.OperationMethod<
   ListHostingWebOwnLogUserLogsError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(260, __c32, 4) as any as S.Schema<ListHostingWebOwnLogUserLogsRequest>,
-  output: __S(188, __c23, 4) as any as S.Schema<ListHostingWebOwnLogUserLogsResponse>,
+  input: __S(720, __c45, 0) as any as S.Schema<ListHostingWebOwnLogUserLogsRequest>,
+  output: __S(3152, __c197, 0) as any as S.Schema<ListHostingWebOwnLogUserLogsResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -5660,14 +5664,14 @@ export const listHostingWebPrivateDatabaseCreationCapabilities: API.OperationMet
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    261,
-    __c32,
-    5,
+    736,
+    __c46,
+    0,
   ) as any as S.Schema<ListHostingWebPrivateDatabaseCreationCapabilitiesRequest>,
   output: __S(
-    263,
-    __c32,
-    7,
+    738,
+    __c46,
+    2,
   ) as any as S.Schema<ListHostingWebPrivateDatabaseCreationCapabilitiesResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
@@ -5682,8 +5686,8 @@ export const listHostingWebPrivateDatabases: API.OperationMethod<
   ListHostingWebPrivateDatabasesError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(264, __c33, 0) as any as S.Schema<ListHostingWebPrivateDatabasesRequest>,
-  output: __S(188, __c23, 4) as any as S.Schema<ListHostingWebPrivateDatabasesResponse>,
+  input: __S(752, __c47, 0) as any as S.Schema<ListHostingWebPrivateDatabasesRequest>,
+  output: __S(3152, __c197, 0) as any as S.Schema<ListHostingWebPrivateDatabasesResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -5697,8 +5701,8 @@ export const listHostingWebRuntime: API.OperationMethod<
   ListHostingWebRuntimeError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(265, __c33, 1) as any as S.Schema<ListHostingWebRuntimeRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<ListHostingWebRuntimeResponse>,
+  input: __S(768, __c48, 0) as any as S.Schema<ListHostingWebRuntimeRequest>,
+  output: __S(2528, __c158, 0) as any as S.Schema<ListHostingWebRuntimeResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -5712,8 +5716,8 @@ export const listHostingWebRuntimeAttachedDomains: API.OperationMethod<
   ListHostingWebRuntimeAttachedDomainsError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(266, __c33, 2) as any as S.Schema<ListHostingWebRuntimeAttachedDomainsRequest>,
-  output: __S(188, __c23, 4) as any as S.Schema<ListHostingWebRuntimeAttachedDomainsResponse>,
+  input: __S(784, __c49, 0) as any as S.Schema<ListHostingWebRuntimeAttachedDomainsRequest>,
+  output: __S(3152, __c197, 0) as any as S.Schema<ListHostingWebRuntimeAttachedDomainsResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -5727,8 +5731,8 @@ export const listHostingWebRuntimeAvailableTypes: API.OperationMethod<
   ListHostingWebRuntimeAvailableTypesError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(267, __c33, 3) as any as S.Schema<ListHostingWebRuntimeAvailableTypesRequest>,
-  output: __S(191, __c23, 7) as any as S.Schema<ListHostingWebRuntimeAvailableTypesResponse>,
+  input: __S(816, __c51, 0) as any as S.Schema<ListHostingWebRuntimeAvailableTypesRequest>,
+  output: __S(96, __c6, 0) as any as S.Schema<ListHostingWebRuntimeAvailableTypesResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -5742,8 +5746,8 @@ export const listHostingWebStatistics: API.OperationMethod<
   ListHostingWebStatisticsError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(268, __c33, 4) as any as S.Schema<ListHostingWebStatisticsRequest>,
-  output: __S(225, __c28, 1) as any as S.Schema<ListHostingWebStatisticsResponse>,
+  input: __S(832, __c52, 0) as any as S.Schema<ListHostingWebStatisticsRequest>,
+  output: __S(372, __c23, 4) as any as S.Schema<ListHostingWebStatisticsResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -5757,8 +5761,8 @@ export const listHostingWebTasks: API.OperationMethod<
   ListHostingWebTasksError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(269, __c33, 5) as any as S.Schema<ListHostingWebTasksRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<ListHostingWebTasksResponse>,
+  input: __S(848, __c53, 0) as any as S.Schema<ListHostingWebTasksRequest>,
+  output: __S(2528, __c158, 0) as any as S.Schema<ListHostingWebTasksResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -5772,8 +5776,8 @@ export const listHostingWebUser: API.OperationMethod<
   ListHostingWebUserError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(270, __c33, 6) as any as S.Schema<ListHostingWebUserRequest>,
-  output: __S(188, __c23, 4) as any as S.Schema<ListHostingWebUserResponse>,
+  input: __S(864, __c54, 0) as any as S.Schema<ListHostingWebUserRequest>,
+  output: __S(3152, __c197, 0) as any as S.Schema<ListHostingWebUserResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -5787,8 +5791,8 @@ export const listHostingWebVcsSupported: API.OperationMethod<
   ListHostingWebVcsSupportedError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(271, __c33, 7) as any as S.Schema<ListHostingWebVcsSupportedRequest>,
-  output: __S(191, __c23, 7) as any as S.Schema<ListHostingWebVcsSupportedResponse>,
+  input: __S(880, __c55, 0) as any as S.Schema<ListHostingWebVcsSupportedRequest>,
+  output: __S(96, __c6, 0) as any as S.Schema<ListHostingWebVcsSupportedResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -5802,8 +5806,8 @@ export const listHostingWebWebsite: API.OperationMethod<
   ListHostingWebWebsiteError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(272, __c34, 0) as any as S.Schema<ListHostingWebWebsiteRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<ListHostingWebWebsiteResponse>,
+  input: __S(896, __c56, 0) as any as S.Schema<ListHostingWebWebsiteRequest>,
+  output: __S(2528, __c158, 0) as any as S.Schema<ListHostingWebWebsiteResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -5817,8 +5821,8 @@ export const listHostingWebWebsiteDeployment: API.OperationMethod<
   ListHostingWebWebsiteDeploymentError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(273, __c34, 1) as any as S.Schema<ListHostingWebWebsiteDeploymentRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<ListHostingWebWebsiteDeploymentResponse>,
+  input: __S(912, __c57, 0) as any as S.Schema<ListHostingWebWebsiteDeploymentRequest>,
+  output: __S(2528, __c158, 0) as any as S.Schema<ListHostingWebWebsiteDeploymentResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -5832,8 +5836,8 @@ export const listHostingWebWebsiteDeploymentLogs: API.OperationMethod<
   ListHostingWebWebsiteDeploymentLogsError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(274, __c34, 2) as any as S.Schema<ListHostingWebWebsiteDeploymentLogsRequest>,
-  output: __S(277, __c34, 5) as any as S.Schema<ListHostingWebWebsiteDeploymentLogsResponse>,
+  input: __S(928, __c58, 0) as any as S.Schema<ListHostingWebWebsiteDeploymentLogsRequest>,
+  output: __S(931, __c58, 3) as any as S.Schema<ListHostingWebWebsiteDeploymentLogsResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -5847,8 +5851,8 @@ export const loginHostingWebLocalSeoAccount: API.OperationMethod<
   LoginHostingWebLocalSeoAccountError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(278, __c34, 6) as any as S.Schema<LoginHostingWebLocalSeoAccountRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<LoginHostingWebLocalSeoAccountResponse>,
+  input: __S(944, __c59, 0) as any as S.Schema<LoginHostingWebLocalSeoAccountRequest>,
+  output: __S(16, __c1, 0) as any as S.Schema<LoginHostingWebLocalSeoAccountResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -5862,8 +5866,8 @@ export const purgeHostingWebAttachedDomainCache: API.OperationMethod<
   PurgeHostingWebAttachedDomainCacheError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(279, __c34, 7) as any as S.Schema<PurgeHostingWebAttachedDomainCacheRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<HostingWebTask>,
+  input: __S(960, __c60, 0) as any as S.Schema<PurgeHostingWebAttachedDomainCacheRequest>,
+  output: __S(1472, __c92, 0) as any as S.Schema<HostingWebTask>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -5877,8 +5881,8 @@ export const purgeHostingWebCdnDomain: API.OperationMethod<
   PurgeHostingWebCdnDomainError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(280, __c35, 0) as any as S.Schema<PurgeHostingWebCdnDomainRequest>,
-  output: __S(101, __c12, 5) as any as S.Schema<CdnOperation>,
+  input: __S(992, __c62, 0) as any as S.Schema<PurgeHostingWebCdnDomainRequest>,
+  output: __S(2225, __c139, 1) as any as S.Schema<CdnOperation>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -5892,8 +5896,8 @@ export const putHostingWeb: API.OperationMethod<
   PutHostingWebError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(281, __c35, 1) as any as S.Schema<PutHostingWebRequest>,
-  output: __S(182, __c22, 6) as any as S.Schema<PutHostingWebResponse>,
+  input: __S(1008, __c63, 0) as any as S.Schema<PutHostingWebRequest>,
+  output: __S(3120, __c195, 0) as any as S.Schema<PutHostingWebResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -5907,8 +5911,8 @@ export const putHostingWebAttachedDomain: API.OperationMethod<
   PutHostingWebAttachedDomainError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(282, __c35, 2) as any as S.Schema<PutHostingWebAttachedDomainRequest>,
-  output: __S(17, __c2, 1) as any as S.Schema<PutHostingWebAttachedDomainResponse>,
+  input: __S(1024, __c64, 0) as any as S.Schema<PutHostingWebAttachedDomainRequest>,
+  output: __S(2336, __c146, 0) as any as S.Schema<PutHostingWebAttachedDomainResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -5922,8 +5926,8 @@ export const putHostingWebCdnDomainOption: API.OperationMethod<
   PutHostingWebCdnDomainOptionError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(283, __c35, 3) as any as S.Schema<PutHostingWebCdnDomainOptionRequest>,
-  output: __S(14, __c1, 6) as any as S.Schema<CdnDomainOption>,
+  input: __S(1040, __c65, 0) as any as S.Schema<PutHostingWebCdnDomainOptionRequest>,
+  output: __S(2082, __c130, 2) as any as S.Schema<CdnDomainOption>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -5937,8 +5941,8 @@ export const putHostingWebConfiguration: API.OperationMethod<
   PutHostingWebConfigurationError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(284, __c35, 4) as any as S.Schema<PutHostingWebConfigurationRequest>,
-  output: __S(17, __c2, 1) as any as S.Schema<PutHostingWebConfigurationResponse>,
+  input: __S(1056, __c66, 0) as any as S.Schema<PutHostingWebConfigurationRequest>,
+  output: __S(2336, __c146, 0) as any as S.Schema<PutHostingWebConfigurationResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -5952,8 +5956,8 @@ export const putHostingWebCron: API.OperationMethod<
   PutHostingWebCronError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(285, __c35, 5) as any as S.Schema<PutHostingWebCronRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<PutHostingWebCronResponse>,
+  input: __S(1072, __c67, 0) as any as S.Schema<PutHostingWebCronRequest>,
+  output: __S(16, __c1, 0) as any as S.Schema<PutHostingWebCronResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -5967,8 +5971,8 @@ export const putHostingWebEmail: API.OperationMethod<
   PutHostingWebEmailError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(286, __c35, 6) as any as S.Schema<PutHostingWebEmailRequest>,
-  output: __S(182, __c22, 6) as any as S.Schema<PutHostingWebEmailResponse>,
+  input: __S(1088, __c68, 0) as any as S.Schema<PutHostingWebEmailRequest>,
+  output: __S(3120, __c195, 0) as any as S.Schema<PutHostingWebEmailResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -5981,8 +5985,8 @@ export const putHostingWebEnvVar: API.OperationMethod<
   PutHostingWebEnvVarError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(287, __c35, 7) as any as S.Schema<PutHostingWebEnvVarRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<HostingWebPublicTask>,
+  input: __S(1104, __c69, 0) as any as S.Schema<PutHostingWebEnvVarRequest>,
+  output: __S(1664, __c104, 0) as any as S.Schema<HostingWebPublicTask>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -5996,8 +6000,8 @@ export const putHostingWebOwnLogUserLog: API.OperationMethod<
   PutHostingWebOwnLogUserLogError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(288, __c36, 0) as any as S.Schema<PutHostingWebOwnLogUserLogRequest>,
-  output: __S(17, __c2, 1) as any as S.Schema<PutHostingWebOwnLogUserLogResponse>,
+  input: __S(1120, __c70, 0) as any as S.Schema<PutHostingWebOwnLogUserLogRequest>,
+  output: __S(2336, __c146, 0) as any as S.Schema<PutHostingWebOwnLogUserLogResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -6011,8 +6015,8 @@ export const putHostingWebRuntime: API.OperationMethod<
   PutHostingWebRuntimeError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(289, __c36, 1) as any as S.Schema<PutHostingWebRuntimeRequest>,
-  output: __S(182, __c22, 6) as any as S.Schema<PutHostingWebRuntimeResponse>,
+  input: __S(1136, __c71, 0) as any as S.Schema<PutHostingWebRuntimeRequest>,
+  output: __S(3120, __c195, 0) as any as S.Schema<PutHostingWebRuntimeResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -6026,8 +6030,8 @@ export const putHostingWebServiceInfos: API.OperationMethod<
   PutHostingWebServiceInfosError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(290, __c36, 2) as any as S.Schema<PutHostingWebServiceInfosRequest>,
-  output: __S(17, __c2, 1) as any as S.Schema<PutHostingWebServiceInfosResponse>,
+  input: __S(1184, __c74, 0) as any as S.Schema<PutHostingWebServiceInfosRequest>,
+  output: __S(2336, __c146, 0) as any as S.Schema<PutHostingWebServiceInfosResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -6041,8 +6045,8 @@ export const putHostingWebUser: API.OperationMethod<
   PutHostingWebUserError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(291, __c36, 3) as any as S.Schema<PutHostingWebUserRequest>,
-  output: __S(182, __c22, 6) as any as S.Schema<PutHostingWebUserResponse>,
+  input: __S(1200, __c75, 0) as any as S.Schema<PutHostingWebUserRequest>,
+  output: __S(3120, __c195, 0) as any as S.Schema<PutHostingWebUserResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -6056,8 +6060,8 @@ export const putHostingWebWebsite: API.OperationMethod<
   PutHostingWebWebsiteError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(292, __c36, 4) as any as S.Schema<PutHostingWebWebsiteRequest>,
-  output: __S(176, __c22, 0) as any as S.Schema<HostingWebWebsite>,
+  input: __S(1216, __c76, 0) as any as S.Schema<PutHostingWebWebsiteRequest>,
+  output: __S(3042, __c190, 2) as any as S.Schema<HostingWebWebsite>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -6071,8 +6075,8 @@ export const refreshHostingWebCdnDomain: API.OperationMethod<
   RefreshHostingWebCdnDomainError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(293, __c36, 5) as any as S.Schema<RefreshHostingWebCdnDomainRequest>,
-  output: __S(101, __c12, 5) as any as S.Schema<CdnOperation>,
+  input: __S(1232, __c77, 0) as any as S.Schema<RefreshHostingWebCdnDomainRequest>,
+  output: __S(2225, __c139, 1) as any as S.Schema<CdnOperation>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -6086,8 +6090,8 @@ export const restartHostingWebAttachedDomain: API.OperationMethod<
   RestartHostingWebAttachedDomainError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(294, __c36, 6) as any as S.Schema<RestartHostingWebAttachedDomainRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<HostingWebTask>,
+  input: __S(1248, __c78, 0) as any as S.Schema<RestartHostingWebAttachedDomainRequest>,
+  output: __S(1472, __c92, 0) as any as S.Schema<HostingWebTask>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -6101,8 +6105,8 @@ export const restoreHostingWebDatabase: API.OperationMethod<
   RestoreHostingWebDatabaseError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(295, __c36, 7) as any as S.Schema<RestoreHostingWebDatabaseRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<HostingWebTask>,
+  input: __S(1264, __c79, 0) as any as S.Schema<RestoreHostingWebDatabaseRequest>,
+  output: __S(1472, __c92, 0) as any as S.Schema<HostingWebTask>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -6116,8 +6120,8 @@ export const restoreHostingWebDatabaseDump: API.OperationMethod<
   RestoreHostingWebDatabaseDumpError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(296, __c37, 0) as any as S.Schema<RestoreHostingWebDatabaseDumpRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<HostingWebTask>,
+  input: __S(1280, __c80, 0) as any as S.Schema<RestoreHostingWebDatabaseDumpRequest>,
+  output: __S(1472, __c92, 0) as any as S.Schema<HostingWebTask>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -6131,8 +6135,8 @@ export const restoreHostingWebSnapshot: API.OperationMethod<
   RestoreHostingWebSnapshotError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(297, __c37, 1) as any as S.Schema<RestoreHostingWebSnapshotRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<HostingWebTask>,
+  input: __S(1296, __c81, 0) as any as S.Schema<RestoreHostingWebSnapshotRequest>,
+  output: __S(1472, __c92, 0) as any as S.Schema<HostingWebTask>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -6146,8 +6150,8 @@ export const terminateHostingWeb: API.OperationMethod<
   TerminateHostingWebError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(298, __c37, 2) as any as S.Schema<TerminateHostingWebRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<TerminateHostingWebResponse>,
+  input: __S(1312, __c82, 0) as any as S.Schema<TerminateHostingWebRequest>,
+  output: __S(16, __c1, 0) as any as S.Schema<TerminateHostingWebResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -6161,8 +6165,8 @@ export const terminateHostingWebCdn: API.OperationMethod<
   TerminateHostingWebCdnError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(299, __c37, 3) as any as S.Schema<TerminateHostingWebCdnRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<TerminateHostingWebCdnResponse>,
+  input: __S(1328, __c83, 0) as any as S.Schema<TerminateHostingWebCdnRequest>,
+  output: __S(16, __c1, 0) as any as S.Schema<TerminateHostingWebCdnResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -6176,8 +6180,8 @@ export const terminateHostingWebEmailOption: API.OperationMethod<
   TerminateHostingWebEmailOptionError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(300, __c37, 4) as any as S.Schema<TerminateHostingWebEmailOptionRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<TerminateHostingWebEmailOptionResponse>,
+  input: __S(1360, __c85, 0) as any as S.Schema<TerminateHostingWebEmailOptionRequest>,
+  output: __S(16, __c1, 0) as any as S.Schema<TerminateHostingWebEmailOptionResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -6191,8 +6195,8 @@ export const terminateHostingWebExtraSqlPerso: API.OperationMethod<
   TerminateHostingWebExtraSqlPersoError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(301, __c37, 5) as any as S.Schema<TerminateHostingWebExtraSqlPersoRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<TerminateHostingWebExtraSqlPersoResponse>,
+  input: __S(1376, __c86, 0) as any as S.Schema<TerminateHostingWebExtraSqlPersoRequest>,
+  output: __S(16, __c1, 0) as any as S.Schema<TerminateHostingWebExtraSqlPersoResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -6206,8 +6210,8 @@ export const terminateHostingWebLocalSeoLocation: API.OperationMethod<
   TerminateHostingWebLocalSeoLocationError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(302, __c37, 6) as any as S.Schema<TerminateHostingWebLocalSeoLocationRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<TerminateHostingWebLocalSeoLocationResponse>,
+  input: __S(1392, __c87, 0) as any as S.Schema<TerminateHostingWebLocalSeoLocationRequest>,
+  output: __S(16, __c1, 0) as any as S.Schema<TerminateHostingWebLocalSeoLocationResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -6234,11 +6238,19 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "ConfirmHostingWebTerminationRequest",
       });
-    case 1:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() => S.String.pipe(T.RawResponseRoot())).annotate({
         identifier: "ConfirmHostingWebTerminationResponse",
       });
-    case 2:
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           serviceName: S.String.pipe(T.Label()),
@@ -6253,7 +6265,11 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "CopyHostingWebDatabaseRequest",
       });
-    case 3:
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           creationDate: S.optional(S.String),
@@ -6263,233 +6279,11 @@ function __c0(j: number): any {
           status: S.optional(S.String),
         }),
       ).annotate({ identifier: "HostingWebDatabaseCopy" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          serviceName: S.String.pipe(T.Label()),
-          name: S.String.pipe(T.Label()),
-          copyId: S.String,
-          flushDatabase: S.optional(S.Boolean),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/hosting/web/{serviceName}/database/{name}/copyRestore",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "CopyHostingWebDatabaseRestoreRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          doneDate: S.optional(S.NullOr(S.String)),
-          function: S.optional(S.String),
-          id: S.optional(S.Number),
-          lastUpdate: S.optional(S.NullOr(S.String)),
-          objectId: S.optional(S.NullOr(S.String)),
-          objectType: S.optional(S.NullOr(S.String)),
-          startDate: S.optional(S.String),
-          status: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "HostingWebTask" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          serviceName: S.String.pipe(T.Label()),
-          bypassDNSConfiguration: S.optional(S.NullOr(S.Boolean)),
-          cdn: S.optional(S.NullOr(S.String)),
-          domain: S.optional(S.NullOr(S.String)),
-          firewall: S.optional(S.NullOr(S.String)),
-          ipLocation: S.optional(S.NullOr(S.String)),
-          ownLog: S.optional(S.NullOr(S.String)),
-          path: S.optional(S.NullOr(S.String)),
-          runtimeId: S.optional(S.NullOr(S.Number)),
-          ssl: S.optional(S.NullOr(S.Boolean)),
-        }).pipe(
-          T.Http({ method: "POST", uri: "/hosting/web/{serviceName}/attachedDomain", code: 200 }),
-        ),
-      ).annotate({
-        identifier: "CreateHostingWebAttachedDomainRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          doneDate: S.optional(S.NullOr(S.String)),
-          function: S.optional(S.String),
-          id: S.optional(S.Number),
-          lastUpdate: S.optional(S.NullOr(S.String)),
-          objectId: S.optional(S.NullOr(S.String)),
-          objectType: S.optional(S.NullOr(S.String)),
-          startDate: S.optional(S.String),
-          status: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "HostingWebPublicTask" });
   }
 }
-function __c1(j: number): any {
+function __c4(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() =>
-        S.Struct({
-          serviceName: S.String.pipe(T.Label()),
-          domain: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/hosting/web/{serviceName}/attachedDomain/{domain}/ssl",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateHostingWebAttachedDomainSslRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          isReportable: S.optional(S.Boolean),
-          provider: S.optional(S.String),
-          regenerable: S.optional(S.Boolean),
-          status: S.optional(S.String),
-          taskId: S.optional(S.NullOr(S.Number)),
-          type: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "HostingWebSSL" });
-    case 2:
-      return S.Array(S.String);
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          destination: S.optional(S.NullOr(S.String)),
-          followUri: S.optional(S.NullOr(S.Boolean)),
-          origins: S.optional(S.NullOr(S.String)),
-          patternType: S.optional(S.NullOr(S.String)),
-          priority: S.optional(S.NullOr(S.Number)),
-          queryParameters: S.optional(S.NullOr(S.String)),
-          resources: S.optional(S.NullOr(__S(10, __c1, 2))),
-          statusCode: S.optional(S.NullOr(S.Number)),
-          ttl: S.optional(S.NullOr(S.Number)),
-        }),
-      ).annotate({ identifier: "CdnDomainOptionConfig" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          serviceName: S.String.pipe(T.Label()),
-          domainName: S.String.pipe(T.Label()),
-          config: S.optional(S.NullOr(__S(11, __c1, 3))),
-          enabled: S.Boolean,
-          name: S.String,
-          pattern: S.optional(S.NullOr(S.String)),
-          type: S.String,
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/hosting/web/{serviceName}/cdn/domain/{domainName}/option",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateHostingWebCdnDomainOptionRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          quota: S.optional(S.NullOr(S.Number)),
-          usage: S.optional(S.NullOr(S.Number)),
-        }),
-      ).annotate({ identifier: "CdnDomainOptionExtra" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          config: S.optional(S.NullOr(__S(11, __c1, 3))),
-          enabled: S.Boolean,
-          extra: S.optional(S.NullOr(__S(13, __c1, 5))),
-          name: S.optional(S.String),
-          pattern: S.optional(S.NullOr(S.String)),
-          type: S.String,
-        }),
-      ).annotate({ identifier: "CdnDomainOption" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          automatic: S.optional(S.Boolean),
-          deleteAtExpiration: S.optional(S.Boolean),
-          forced: S.optional(S.Boolean),
-          manualPayment: S.optional(S.NullOr(S.Boolean)),
-          period: S.optional(S.NullOr(S.Number)),
-        }),
-      ).annotate({ identifier: "ServiceRenewType" });
-  }
-}
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          serviceName: S.String.pipe(T.Label()),
-          renew: __S(15, __c1, 7),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/hosting/web/{serviceName}/cdn/serviceInfosUpdate",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateHostingWebCdnServiceInfosUpdateRequest",
-      });
-    case 1:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "CreateHostingWebCdnServiceInfosUpdateResponse",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          serviceName: S.String.pipe(T.Label()),
-          contactAdmin: S.optional(S.String),
-          contactBilling: S.optional(S.String),
-          contactTech: S.optional(S.String),
-        }).pipe(
-          T.Http({ method: "POST", uri: "/hosting/web/{serviceName}/changeContact", code: 200 }),
-        ),
-      ).annotate({
-        identifier: "CreateHostingWebChangeContactRequest",
-      });
-    case 3:
-      return S.Array(S.Number);
-    case 4:
-      return S.suspend(() => __S(19, __c2, 3).pipe(T.RawResponseRoot())).annotate({
-        identifier: "CreateHostingWebChangeContactResponse",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          serviceName: S.String.pipe(T.Label()),
-          command: S.String,
-          description: S.optional(S.NullOr(S.String)),
-          email: S.optional(S.NullOr(S.String)),
-          frequency: S.String,
-          language: S.String,
-          status: S.optional(S.String),
-        }).pipe(T.Http({ method: "POST", uri: "/hosting/web/{serviceName}/cron", code: 200 })),
-      ).annotate({
-        identifier: "CreateHostingWebCronRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          serviceName: S.String.pipe(T.Label()),
-          capabilitie: S.String,
-          password: S.optional(S.String.pipe(T.SensitiveValue({}))),
-          quota: S.optional(S.Number),
-          type: S.String,
-          user: S.String,
-          version: S.optional(S.String),
-        }).pipe(T.Http({ method: "POST", uri: "/hosting/web/{serviceName}/database", code: 200 })),
-      ).annotate({
-        identifier: "CreateHostingWebDatabaseRequest",
-      });
-    case 7:
       return S.suspend(() =>
         S.Struct({
           serviceName: S.String.pipe(T.Label()),
@@ -6507,7 +6301,236 @@ function __c2(j: number): any {
       });
   }
 }
-function __c3(j: number): any {
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          serviceName: S.String.pipe(T.Label()),
+          language: S.optional(S.String.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/hosting/web/{serviceName}/availableConfigurations",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "ListHostingWebAvailableConfigurationsRequest",
+      });
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => __S(2768, __c173, 0).pipe(T.RawResponseRoot())).annotate({
+        identifier: "ListHostingWebAvailableConfigurationsResponse",
+      });
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          domain: S.String.pipe(T.Query()),
+        }).pipe(T.Http({ method: "GET", uri: "/hosting/web/availableOffer", code: 200 })),
+      ).annotate({
+        identifier: "ListHostingWebAvailableOfferRequest",
+      });
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          serviceName: S.String.pipe(T.Label()),
+          date: S.optional(S.String.pipe(T.Query())),
+        }).pipe(
+          T.Http({ method: "GET", uri: "/hosting/web/{serviceName}/boostHistory", code: 200 }),
+        ),
+      ).annotate({
+        identifier: "ListHostingWebBoostHistoryRequest",
+      });
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          serviceName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/hosting/web/{serviceName}/cdn/availableOptions",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "ListHostingWebCdnAvailableOptionsRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          length: S.optional(S.NullOr(S.Number)),
+          maximum: S.optional(S.NullOr(S.Number)),
+          message: S.optional(S.NullOr(S.String)),
+          minimum: S.optional(S.NullOr(S.Number)),
+          type: S.optional(S.NullOr(S.String)),
+        }),
+      ).annotate({
+        identifier: "CdnAvailableOptionsConfigConstraints",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          destination: S.optional(S.NullOr(__S(145, __c9, 1))),
+          followUri: S.optional(S.NullOr(__S(145, __c9, 1))),
+          origins: S.optional(S.NullOr(__S(145, __c9, 1))),
+          patternType: S.optional(S.NullOr(__S(145, __c9, 1))),
+          priority: S.optional(S.NullOr(__S(145, __c9, 1))),
+          queryParameters: S.optional(S.NullOr(__S(145, __c9, 1))),
+          resources: S.optional(S.NullOr(__S(145, __c9, 1))),
+          statusCode: S.optional(S.NullOr(__S(145, __c9, 1))),
+          ttl: S.optional(S.NullOr(__S(145, __c9, 1))),
+        }),
+      ).annotate({
+        identifier: "CdnAvailableOptionsConfig",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          category: S.optional(S.NullOr(S.String)),
+          config: S.optional(S.NullOr(__S(146, __c9, 2))),
+          maxItems: S.optional(S.Number),
+          type: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "CdnAvailableOptions" });
+    case 4:
+      return S.Array(__S(147, __c9, 3));
+    case 5:
+      return S.suspend(() => __S(148, __c9, 4).pipe(T.RawResponseRoot())).annotate({
+        identifier: "ListHostingWebCdnAvailableOptionsResponse",
+      });
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          serviceName: S.String.pipe(T.Label()),
+        }).pipe(T.Http({ method: "GET", uri: "/hosting/web/{serviceName}/cdn/domain", code: 200 })),
+      ).annotate({
+        identifier: "ListHostingWebCdnDomainRequest",
+      });
+    case 1:
+      return S.Array(__S(2160, __c135, 0));
+    case 2:
+      return S.suspend(() => __S(161, __c10, 1).pipe(T.RawResponseRoot())).annotate({
+        identifier: "ListHostingWebCdnDomainResponse",
+      });
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          serviceName: S.String.pipe(T.Label()),
+          domainName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/hosting/web/{serviceName}/cdn/domain/{domainName}/option",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "ListHostingWebCdnDomainOptionRequest",
+      });
+    case 1:
+      return S.Array(__S(2082, __c130, 2));
+    case 2:
+      return S.suspend(() => __S(177, __c11, 1).pipe(T.RawResponseRoot())).annotate({
+        identifier: "ListHostingWebCdnDomainOptionResponse",
+      });
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          serviceName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({ method: "GET", uri: "/hosting/web/{serviceName}/cdn/operation", code: 200 }),
+        ),
+      ).annotate({
+        identifier: "ListHostingWebCdnOperationRequest",
+      });
+    case 1:
+      return S.Array(__S(2225, __c139, 1));
+    case 2:
+      return S.suspend(() => __S(193, __c12, 1).pipe(T.RawResponseRoot())).annotate({
+        identifier: "ListHostingWebCdnOperationResponse",
+      });
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          serviceName: S.String.pipe(T.Label()),
+          command: S.optional(S.String.pipe(T.Query())),
+          description: S.optional(S.String.pipe(T.Query())),
+          email: S.optional(S.String.pipe(T.Query())),
+          language: S.optional(S.String.pipe(T.Query())),
+        }).pipe(T.Http({ method: "GET", uri: "/hosting/web/{serviceName}/cron", code: 200 })),
+      ).annotate({
+        identifier: "ListHostingWebCronRequest",
+      });
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          serviceName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/hosting/web/{serviceName}/cronAvailableLanguage",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "ListHostingWebCronAvailableLanguageRequest",
+      });
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          serviceName: S.String.pipe(T.Label()),
+          mode: S.optional(S.String.pipe(T.Query())),
+          name: S.optional(S.String.pipe(T.Query())),
+          server: S.optional(S.String.pipe(T.Query())),
+          type: S.optional(S.String.pipe(T.Query())),
+          user: S.optional(S.String.pipe(T.Query())),
+        }).pipe(T.Http({ method: "GET", uri: "/hosting/web/{serviceName}/database", code: 200 })),
+      ).annotate({
+        identifier: "ListHostingWebDatabaseRequest",
+      });
+  }
+}
+function __c16(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -6526,2175 +6549,11 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "CreateHostingWebDatabaseDumpRequest",
       });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          serviceName: S.String.pipe(T.Label()),
-          name: S.String.pipe(T.Label()),
-          action: S.String,
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/hosting/web/{serviceName}/database/{name}/request",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateHostingWebDatabaseRequestRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          serviceName: S.String.pipe(T.Label()),
-          action: S.String,
-        }).pipe(
-          T.Http({ method: "POST", uri: "/hosting/web/{serviceName}/email/request", code: 200 }),
-        ),
-      ).annotate({
-        identifier: "CreateHostingWebEmailRequestRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          serviceName: S.String.pipe(T.Label()),
-          key: S.String,
-          type: S.String,
-          value: S.String,
-        }).pipe(T.Http({ method: "POST", uri: "/hosting/web/{serviceName}/envVar", code: 200 })),
-      ).annotate({
-        identifier: "CreateHostingWebEnvVarRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          serviceName: S.String.pipe(T.Label()),
-          name: S.String.pipe(T.Label()),
-          renew: __S(15, __c1, 7),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/hosting/web/{serviceName}/extraSqlPerso/{name}/serviceInfosUpdate",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateHostingWebExtraSqlPersoServiceInfosUpdateRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          serviceName: S.String.pipe(T.Label()),
-        }).pipe(T.Http({ method: "POST", uri: "/hosting/web/{serviceName}/key/ssh", code: 200 })),
-      ).annotate({
-        identifier: "CreateHostingWebKeySshRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          publicKey: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "HostingWebKey" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          serviceName: S.String.pipe(T.Label()),
-          id: S.Number.pipe(T.Label()),
-          renew: __S(15, __c1, 7),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/hosting/web/{serviceName}/localSeo/location/{id}/serviceInfosUpdate",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateHostingWebLocalSeoLocationServiceInfosUpdateRequest",
-      });
-  }
-}
-function __c4(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "CreateHostingWebLocalSeoLocationServiceInfosUpdateResponse",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          country: S.String,
-          name: S.String,
-          street: S.String,
-          zip: S.String,
-        }).pipe(
-          T.Http({ method: "POST", uri: "/hosting/web/localSeo/visibilityCheck", code: 200 }),
-        ),
-      ).annotate({
-        identifier: "CreateHostingWebLocalSeoVisibilityCheckRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          city: S.optional(S.String),
-          country: S.optional(S.String),
-          id: S.optional(S.Number),
-          name: S.optional(S.String),
-          province: S.optional(S.NullOr(S.String)),
-          street: S.optional(S.String),
-          streetNo: S.optional(S.String),
-          token: S.optional(S.String),
-          zip: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "HostingWebLocalSeoSearchData",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          alreadyManaged: S.optional(S.NullOr(S.Boolean)),
-          searchData: S.optional(__S(34, __c4, 2)),
-        }),
-      ).annotate({
-        identifier: "HostingWebLocalSeoVisibilityCheckResponse",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.optional(S.NullOr(S.String)),
-          password: S.optional(S.NullOr(S.String).pipe(T.SensitiveValue({}))),
-          port: S.optional(S.NullOr(S.Number)),
-          prefix: S.optional(S.NullOr(S.String)),
-          server: S.optional(S.NullOr(S.String)),
-          type: S.optional(S.String),
-          user: S.optional(S.NullOr(S.String)),
-        }),
-      ).annotate({
-        identifier: "HostingWebModuleDependencyType",
-      });
-    case 5:
-      return S.Array(__S(36, __c4, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          serviceName: S.String.pipe(T.Label()),
-          adminName: S.optional(S.String),
-          adminPassword: S.optional(S.String.pipe(T.SensitiveValue({}))),
-          dependencies: S.optional(__S(37, __c4, 5)),
-          domain: S.optional(S.String),
-          language: S.optional(S.String),
-          moduleId: S.Number,
-          path: S.optional(S.String),
-        }).pipe(T.Http({ method: "POST", uri: "/hosting/web/{serviceName}/module", code: 200 })),
-      ).annotate({
-        identifier: "CreateHostingWebModuleRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          serviceName: S.String.pipe(T.Label()),
-          id: S.Number.pipe(T.Label()),
-          moduleId: S.Number,
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/hosting/web/{serviceName}/module/{id}/upgrade",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateHostingWebModuleUpgradeRequest",
-      });
-  }
-}
-function __c5(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          serviceName: S.String.pipe(T.Label()),
-          id: S.Number.pipe(T.Label()),
-          container: S.optional(S.String),
-          engineName: S.optional(S.String),
-          engineVersion: S.optional(S.String),
-          environment: S.optional(S.String),
-          httpFirewall: S.optional(S.String),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/hosting/web/{serviceName}/ovhConfig/{id}/changeConfiguration",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateHostingWebOvhConfigChangeConfigurationRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          serviceName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({ method: "POST", uri: "/hosting/web/{serviceName}/ovhConfigRefresh", code: 200 }),
-        ),
-      ).annotate({
-        identifier: "CreateHostingWebOvhConfigRefreshRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          serviceName: S.String.pipe(T.Label()),
-          id: S.Number.pipe(T.Label()),
-          rollbackId: S.Number,
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/hosting/web/{serviceName}/ovhConfig/{id}/rollback",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateHostingWebOvhConfigRollbackRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          serviceName: S.String.pipe(T.Label()),
-          id: S.Number.pipe(T.Label()),
-          description: S.String,
-          login: S.String,
-          ownLogsId: S.optional(S.Number),
-          password: S.String.pipe(T.SensitiveValue({})),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/hosting/web/{serviceName}/ownLogs/{id}/userLogs",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateHostingWebOwnLogUserLogRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          serviceName: S.String.pipe(T.Label()),
-          id: S.Number.pipe(T.Label()),
-          login: S.String.pipe(T.Label()),
-          password: S.String.pipe(T.SensitiveValue({})),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/hosting/web/{serviceName}/ownLogs/{id}/userLogs/{login}/changePassword",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateHostingWebOwnLogUserLogChangePasswordRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          serviceName: S.String.pipe(T.Label()),
-          action: S.String,
-        }).pipe(T.Http({ method: "POST", uri: "/hosting/web/{serviceName}/request", code: 200 })),
-      ).annotate({
-        identifier: "CreateHostingWebRequestRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          serviceName: S.String.pipe(T.Label()),
-          offer: S.optional(S.NullOr(S.String)),
-        }).pipe(
-          T.Http({ method: "POST", uri: "/hosting/web/{serviceName}/requestBoost", code: 200 }),
-        ),
-      ).annotate({
-        identifier: "CreateHostingWebRequestBoostRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          serviceName: S.String.pipe(T.Label()),
-          appBootstrap: S.optional(S.String),
-          appEnv: S.optional(S.String),
-          attachedDomains: S.optional(__S(10, __c1, 2)),
-          isDefault: S.optional(S.Boolean),
-          name: S.optional(S.String),
-          publicDir: S.optional(S.String),
-          type: S.optional(S.String),
-        }).pipe(T.Http({ method: "POST", uri: "/hosting/web/{serviceName}/runtime", code: 200 })),
-      ).annotate({
-        identifier: "CreateHostingWebRuntimeRequest",
-      });
-  }
-}
-function __c6(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          serviceName: S.String.pipe(T.Label()),
-          home: S.String,
-          login: S.String,
-          password: S.String.pipe(T.SensitiveValue({})),
-          sshState: S.optional(S.String),
-        }).pipe(T.Http({ method: "POST", uri: "/hosting/web/{serviceName}/user", code: 200 })),
-      ).annotate({
-        identifier: "CreateHostingWebUserRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          serviceName: S.String.pipe(T.Label()),
-          login: S.String.pipe(T.Label()),
-          password: S.String.pipe(T.SensitiveValue({})),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/hosting/web/{serviceName}/user/{login}/changePassword",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateHostingWebUserChangePasswordRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          serviceName: S.String.pipe(T.Label()),
-          path: S.String,
-          vcsBranch: S.String,
-          vcsUrl: S.String,
-        }).pipe(T.Http({ method: "POST", uri: "/hosting/web/{serviceName}/website", code: 200 })),
-      ).annotate({
-        identifier: "CreateHostingWebWebsiteRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          serviceName: S.String.pipe(T.Label()),
-          domain: S.String.pipe(T.Label()),
-          bypassDNSConfiguration: S.optional(S.Boolean.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/hosting/web/{serviceName}/attachedDomain/{domain}",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteHostingWebAttachedDomainRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          serviceName: S.String.pipe(T.Label()),
-          domain: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/hosting/web/{serviceName}/attachedDomain/{domain}/ssl",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteHostingWebAttachedDomainSslRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          serviceName: S.String.pipe(T.Label()),
-          domainName: S.String.pipe(T.Label()),
-          optionName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/hosting/web/{serviceName}/cdn/domain/{domainName}/option/{optionName}",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteHostingWebCdnDomainOptionRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          serviceName: S.String.pipe(T.Label()),
-          id: S.Number.pipe(T.Label()),
-        }).pipe(
-          T.Http({ method: "DELETE", uri: "/hosting/web/{serviceName}/cron/{id}", code: 200 }),
-        ),
-      ).annotate({
-        identifier: "DeleteHostingWebCronRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          serviceName: S.String.pipe(T.Label()),
-          name: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/hosting/web/{serviceName}/database/{name}",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteHostingWebDatabaseRequest",
-      });
-  }
-}
-function __c7(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          serviceName: S.String.pipe(T.Label()),
-          name: S.String.pipe(T.Label()),
-          id: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/hosting/web/{serviceName}/database/{name}/copy/{id}",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteHostingWebDatabaseCopyRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          serviceName: S.String.pipe(T.Label()),
-          name: S.String.pipe(T.Label()),
-          id: S.Number.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/hosting/web/{serviceName}/database/{name}/dump/{id}",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteHostingWebDatabaseDumpRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          serviceName: S.String.pipe(T.Label()),
-          id: S.Number.pipe(T.Label()),
-        }).pipe(
-          T.Http({ method: "DELETE", uri: "/hosting/web/{serviceName}/dump/{id}", code: 200 }),
-        ),
-      ).annotate({
-        identifier: "DeleteHostingWebDumpRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          serviceName: S.String.pipe(T.Label()),
-          key: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({ method: "DELETE", uri: "/hosting/web/{serviceName}/envVar/{key}", code: 200 }),
-        ),
-      ).annotate({
-        identifier: "DeleteHostingWebEnvVarRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          serviceName: S.String.pipe(T.Label()),
-          id: S.Number.pipe(T.Label()),
-        }).pipe(
-          T.Http({ method: "DELETE", uri: "/hosting/web/{serviceName}/module/{id}", code: 200 }),
-        ),
-      ).annotate({
-        identifier: "DeleteHostingWebModuleRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          serviceName: S.String.pipe(T.Label()),
-          id: S.Number.pipe(T.Label()),
-          login: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/hosting/web/{serviceName}/ownLogs/{id}/userLogs/{login}",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteHostingWebOwnLogUserLogRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          serviceName: S.String.pipe(T.Label()),
-          id: S.Number.pipe(T.Label()),
-        }).pipe(
-          T.Http({ method: "DELETE", uri: "/hosting/web/{serviceName}/runtime/{id}", code: 200 }),
-        ),
-      ).annotate({
-        identifier: "DeleteHostingWebRuntimeRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          serviceName: S.String.pipe(T.Label()),
-          login: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({ method: "DELETE", uri: "/hosting/web/{serviceName}/user/{login}", code: 200 }),
-        ),
-      ).annotate({
-        identifier: "DeleteHostingWebUserRequest",
-      });
-  }
-}
-function __c8(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          serviceName: S.String.pipe(T.Label()),
-          id: S.Number.pipe(T.Label()),
-          deleteFiles: S.Boolean.pipe(T.Query()),
-        }).pipe(
-          T.Http({ method: "DELETE", uri: "/hosting/web/{serviceName}/website/{id}", code: 200 }),
-        ),
-      ).annotate({
-        identifier: "DeleteHostingWebWebsiteRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          serviceName: S.String.pipe(T.Label()),
-          id: S.Number.pipe(T.Label()),
-          reset: S.optional(S.Boolean),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/hosting/web/{serviceName}/website/{id}/deploy",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "DeployHostingWebWebsiteRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          serviceName: S.String.pipe(T.Label()),
-        }).pipe(T.Http({ method: "GET", uri: "/hosting/web/{serviceName}", code: 200 })),
-      ).annotate({ identifier: "GetHostingWebRequest" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          currencyCode: S.optional(S.String),
-          priceInUcents: S.optional(S.NullOr(S.Number)),
-          text: S.optional(S.String),
-          value: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "OrderPrice" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          offer: S.optional(S.String),
-          price: S.optional(__S(67, __c8, 3)),
-        }),
-      ).annotate({
-        identifier: "HostingWebAvailableOfferStruct",
-      });
-    case 5:
-      return S.Array(__S(68, __c8, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          country: S.optional(S.String),
-          ip: S.optional(S.NullOr(S.String)),
-          ipv6: S.optional(S.NullOr(S.String)),
-        }),
-      ).annotate({ identifier: "HostingWebCountriesIp" });
-    case 7:
-      return S.Array(__S(70, __c8, 6));
-  }
-}
-function __c9(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Record(S.String, S.String);
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          displayName: S.optional(S.NullOr(S.String)),
-          id: S.optional(S.String),
-          tags: S.optional(S.NullOr(__S(72, __c9, 0))),
-          urn: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "IamResourceMetadata" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          support: S.optional(S.String),
-          version: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "HostingWebPhpVersion" });
-    case 3:
-      return S.Array(__S(74, __c9, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          unit: S.optional(S.String),
-          value: S.optional(S.Number),
-        }),
-      ).annotate({
-        identifier: "ComplexTypeUnitAndValueDouble",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          port: S.optional(S.Number),
-          url: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "HostingWebAddress" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          ftp: S.optional(__S(77, __c9, 5)),
-          http: S.optional(__S(77, __c9, 5)),
-          ssh: S.optional(__S(77, __c9, 5)),
-        }),
-      ).annotate({ identifier: "HostingWebServiceAccess" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          availableBoostOffer: S.optional(__S(69, __c8, 5)),
-          boostOffer: S.optional(S.NullOr(S.String)),
-          cluster: S.optional(S.String),
-          clusterIp: S.optional(S.NullOr(S.String)),
-          clusterIpv6: S.optional(S.NullOr(S.String)),
-          countriesIp: S.optional(S.NullOr(__S(71, __c8, 7))),
-          datacenter: S.optional(S.String),
-          defaultAttachedDomain: S.optional(S.NullOr(S.String)),
-          displayName: S.optional(S.String),
-          filer: S.optional(S.NullOr(S.String)),
-          hasCdn: S.optional(S.NullOr(S.Boolean)),
-          hasHostedSsl: S.optional(S.NullOr(S.Boolean)),
-          home: S.optional(S.String),
-          hostingIp: S.optional(S.NullOr(S.String)),
-          hostingIpv6: S.optional(S.NullOr(S.String)),
-          iam: S.optional(S.NullOr(__S(73, __c9, 1))),
-          lastOvhConfigScan: S.optional(S.NullOr(S.String)),
-          multipleSSL: S.optional(S.Boolean),
-          offer: S.optional(S.String),
-          operatingSystem: S.optional(S.String),
-          phpVersions: S.optional(__S(75, __c9, 3)),
-          primaryLogin: S.optional(S.String),
-          quotaSize: S.optional(__S(76, __c9, 4)),
-          quotaUsed: S.optional(S.NullOr(__S(76, __c9, 4))),
-          recommendedOffer: S.optional(S.NullOr(S.String)),
-          resourceType: S.optional(S.String),
-          serviceManagementAccess: S.optional(__S(78, __c9, 6)),
-          serviceName: S.optional(S.String),
-          state: S.optional(S.String),
-          token: S.optional(S.NullOr(S.String)),
-          trafficQuotaSize: S.optional(S.NullOr(__S(76, __c9, 4))),
-          trafficQuotaUsed: S.optional(S.NullOr(__S(76, __c9, 4))),
-          updates: S.optional(__S(10, __c1, 2)),
-        }),
-      ).annotate({ identifier: "HostingWebServiceWithIAM" });
-  }
-}
-function __c10(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          serviceName: S.String.pipe(T.Label()),
-          domain: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/hosting/web/{serviceName}/attachedDomain/{domain}",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "GetHostingWebAttachedDomainRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          description: S.optional(S.String),
-          href: S.optional(S.String),
-          key: S.optional(S.String),
-          method: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "HostingWebAttachedDomainCapabilities",
-      });
-    case 2:
-      return S.Array(__S(81, __c10, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          capabilities: S.optional(__S(82, __c10, 2)),
-          cdn: S.optional(S.String),
-          domain: S.optional(S.String),
-          firewall: S.optional(S.String),
-          ipLocation: S.optional(S.NullOr(S.String)),
-          isFlushable: S.optional(S.Boolean),
-          ownLog: S.optional(S.NullOr(S.String)),
-          path: S.optional(S.String),
-          runtimeId: S.optional(S.NullOr(S.Number)),
-          ssl: S.optional(S.NullOr(S.Boolean)),
-          status: S.optional(S.String),
-          taskId: S.optional(S.NullOr(S.Number)),
-          vcsStatus: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "HostingWebAttachedDomainPublicAttachedDomain",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          serviceName: S.String.pipe(T.Label()),
-          domain: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/hosting/web/{serviceName}/attachedDomain/{domain}/digStatus",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "GetHostingWebAttachedDomainDigStatusRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          recommendedIpV4: S.optional(__S(10, __c1, 2)),
-          recommendedIpV6: S.optional(__S(10, __c1, 2)),
-        }),
-      ).annotate({
-        identifier: "HostingWebAttachedDomainRecommendedIps",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          dnsConfigured: S.optional(S.Boolean),
-          isOvhIp: S.optional(S.Boolean),
-          type: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "HostingWebAttachedDomainRecordStatus",
-      });
-    case 7:
-      return S.Record(S.String, __S(86, __c10, 6));
-  }
-}
-function __c11(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          domain: S.optional(S.String),
-          recommendedIps: S.optional(__S(85, __c10, 5)),
-          records: S.optional(__S(87, __c10, 7)),
-        }),
-      ).annotate({
-        identifier: "HostingWebAttachedDomainDigStatus",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          serviceName: S.String.pipe(T.Label()),
-          domain: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/hosting/web/{serviceName}/attachedDomain/{domain}/ssl",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "GetHostingWebAttachedDomainSslRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          serviceName: S.String.pipe(T.Label()),
-          date: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/hosting/web/{serviceName}/boostHistory/{date}",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "GetHostingWebBoostHistoryRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          accountId: S.optional(S.String),
-          boostOffer: S.optional(S.NullOr(S.String)),
-          date: S.optional(S.String),
-          offer: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "HostingWebBoostHistory" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          serviceName: S.String.pipe(T.Label()),
-        }).pipe(T.Http({ method: "GET", uri: "/hosting/web/{serviceName}/cdn", code: 200 })),
-      ).annotate({ identifier: "GetHostingWebCdnRequest" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          domain: S.optional(S.String),
-          free: S.optional(S.Boolean),
-          status: S.optional(S.String),
-          taskId: S.optional(S.NullOr(S.Number)),
-          type: S.optional(S.String),
-          version: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "HostingWebCDN" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          serviceName: S.String.pipe(T.Label()),
-          domainName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/hosting/web/{serviceName}/cdn/domain/{domainName}",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "GetHostingWebCdnDomainRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          creationDate: S.optional(S.String),
-          name: S.optional(S.String),
-          needRefresh: S.optional(S.Boolean),
-          status: S.optional(S.String),
-          updatedDate: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "CdnDomain" });
-  }
-}
-function __c12(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          serviceName: S.String.pipe(T.Label()),
-          domainName: S.String.pipe(T.Label()),
-          date: S.optional(S.String.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/hosting/web/{serviceName}/cdn/domain/{domainName}/logs",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "GetHostingWebCdnDomainLogsRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          url: S.optional(S.String),
-          validity: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "CdnLogs" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          serviceName: S.String.pipe(T.Label()),
-          domainName: S.String.pipe(T.Label()),
-          optionName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/hosting/web/{serviceName}/cdn/domain/{domainName}/option/{optionName}",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "GetHostingWebCdnDomainOptionRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          serviceName: S.String.pipe(T.Label()),
-          id: S.Number.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/hosting/web/{serviceName}/cdn/operation/{id}",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "GetHostingWebCdnOperationRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          anycastIp: S.optional(S.NullOr(S.String)),
-          cluster: S.optional(S.NullOr(S.String)),
-          date: S.optional(S.NullOr(S.String)),
-          domainName: S.optional(S.NullOr(S.String)),
-          fingerprint: S.optional(S.NullOr(S.String)),
-          offer: S.optional(S.NullOr(S.String)),
-          pattern: S.optional(S.NullOr(S.String)),
-          service: S.optional(S.NullOr(S.String)),
-          sslId: S.optional(S.NullOr(S.Number)),
-        }),
-      ).annotate({ identifier: "CdnOperationParameter" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          comment: S.optional(S.NullOr(S.String)),
-          creationDate: S.optional(S.String),
-          function: S.optional(S.String),
-          id: S.optional(S.Number),
-          parameter: S.optional(__S(100, __c12, 4)),
-          service: S.optional(S.String),
-          status: S.optional(S.String),
-          todoDate: S.optional(S.String),
-          updatedDate: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "CdnOperation" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          serviceName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({ method: "GET", uri: "/hosting/web/{serviceName}/cdn/serviceInfos", code: 200 }),
-        ),
-      ).annotate({
-        identifier: "GetHostingWebCdnServiceInfosRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          canDeleteAtExpiration: S.optional(S.Boolean),
-          contactAdmin: S.optional(S.String),
-          contactBilling: S.optional(S.String),
-          contactTech: S.optional(S.String),
-          creation: S.optional(S.String),
-          domain: S.optional(S.String),
-          engagedUpTo: S.optional(S.NullOr(S.String)),
-          expiration: S.optional(S.String),
-          possibleRenewPeriod: S.optional(S.NullOr(__S(19, __c2, 3))),
-          renew: S.optional(S.NullOr(__S(15, __c1, 7))),
-          renewalType: S.optional(S.String),
-          serviceId: S.optional(S.Number),
-          status: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ServicesService" });
-  }
-}
-function __c13(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          serviceName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({ method: "GET", uri: "/hosting/web/{serviceName}/configuration", code: 200 }),
-        ),
-      ).annotate({
-        identifier: "GetHostingWebConfigurationRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          appEnv: S.optional(S.String),
-          entryPoint: S.optional(S.NullOr(S.String)),
-          id: S.optional(S.Number),
-          language: S.optional(S.String),
-          publicDir: S.optional(S.NullOr(S.String)),
-          status: S.optional(S.String),
-          version: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "HostingWebConfiguration" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          serviceName: S.String.pipe(T.Label()),
-          id: S.Number.pipe(T.Label()),
-        }).pipe(T.Http({ method: "GET", uri: "/hosting/web/{serviceName}/cron/{id}", code: 200 })),
-      ).annotate({ identifier: "GetHostingWebCronRequest" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          command: S.String,
-          description: S.optional(S.NullOr(S.String)),
-          email: S.optional(S.NullOr(S.String)),
-          frequency: S.String,
-          id: S.optional(S.Number),
-          language: S.String,
-          state: S.optional(S.String),
-          status: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "HostingWebCron" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          serviceName: S.String.pipe(T.Label()),
-          name: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({ method: "GET", uri: "/hosting/web/{serviceName}/database/{name}", code: 200 }),
-        ),
-      ).annotate({
-        identifier: "GetHostingWebDatabaseRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          databaseServiceDeprecated: S.optional(S.Boolean),
-          databaseType: S.optional(S.NullOr(S.String)),
-          dumps: S.optional(S.Number),
-          guiURL: S.optional(S.NullOr(S.String)),
-          lastCheck: S.optional(S.NullOr(S.String)),
-          mode: S.optional(S.String),
-          name: S.optional(S.String),
-          port: S.optional(S.Number),
-          quotaSize: S.optional(__S(76, __c9, 4)),
-          quotaUsed: S.optional(__S(76, __c9, 4)),
-          server: S.optional(S.NullOr(S.String)),
-          state: S.optional(S.String),
-          status: S.optional(S.String),
-          taskId: S.optional(S.NullOr(S.Number)),
-          type: S.optional(S.String),
-          user: S.optional(S.String),
-          version: S.optional(S.String),
-          versionSupport: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "HostingWebDatabase" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          serviceName: S.String.pipe(T.Label()),
-          name: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/hosting/web/{serviceName}/database/{name}/capabilities",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "GetHostingWebDatabaseCapabilitiesRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          changePassword: S.optional(S.Boolean),
-          changeRight: S.optional(S.Boolean),
-          delete: S.optional(S.Boolean),
-          dump: S.optional(S.Boolean),
-          getQuota: S.optional(S.Boolean),
-          getRight: S.optional(S.Boolean),
-          guiURL: S.optional(S.String),
-          optimize: S.optional(S.Boolean),
-          restore: S.optional(S.Boolean),
-        }),
-      ).annotate({
-        identifier: "HostingWebDatabaseDatabaseCapabilities",
-      });
-  }
-}
-function __c14(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          serviceName: S.String.pipe(T.Label()),
-          name: S.String.pipe(T.Label()),
-          id: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/hosting/web/{serviceName}/database/{name}/copy/{id}",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "GetHostingWebDatabaseCopyRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          serviceName: S.String.pipe(T.Label()),
-          name: S.String.pipe(T.Label()),
-          id: S.Number.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/hosting/web/{serviceName}/database/{name}/dump/{id}",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "GetHostingWebDatabaseDumpRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          creationDate: S.optional(S.String),
-          deletionDate: S.optional(S.String),
-          id: S.optional(S.Number),
-          status: S.optional(S.String),
-          taskId: S.optional(S.NullOr(S.Number)),
-          type: S.optional(S.String),
-          url: S.optional(S.NullOr(S.String)),
-        }),
-      ).annotate({ identifier: "HostingWebDatabaseDump" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          serviceName: S.String.pipe(T.Label()),
-          id: S.Number.pipe(T.Label()),
-        }).pipe(T.Http({ method: "GET", uri: "/hosting/web/{serviceName}/dump/{id}", code: 200 })),
-      ).annotate({ identifier: "GetHostingWebDumpRequest" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          creationDate: S.optional(S.String),
-          databaseName: S.optional(S.String),
-          deletionDate: S.optional(S.String),
-          id: S.optional(S.Number),
-          orphan: S.optional(S.Boolean),
-          status: S.optional(S.String),
-          taskId: S.optional(S.NullOr(S.Number)),
-          type: S.optional(S.String),
-          url: S.optional(S.NullOr(S.String)),
-        }),
-      ).annotate({ identifier: "HostingWebDump" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          serviceName: S.String.pipe(T.Label()),
-        }).pipe(T.Http({ method: "GET", uri: "/hosting/web/{serviceName}/email", code: 200 })),
-      ).annotate({
-        identifier: "GetHostingWebEmailRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          bounce: S.optional(S.Number),
-          email: S.optional(S.NullOr(S.String)),
-          maxPerDay: S.optional(S.Number),
-          sent: S.optional(S.Number),
-          sentToday: S.optional(S.Number),
-          state: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "HostingWebEmail" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          serviceName: S.String.pipe(T.Label()),
-          id: S.Number.pipe(T.Label()),
-        }).pipe(
-          T.Http({ method: "GET", uri: "/hosting/web/{serviceName}/emailOption/{id}", code: 200 }),
-        ),
-      ).annotate({
-        identifier: "GetHostingWebEmailOptionRequest",
-      });
-  }
-}
-function __c15(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          creationDate: S.optional(S.String),
-          domain: S.optional(S.String),
-          id: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "HostingWebEmailoption" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          serviceName: S.String.pipe(T.Label()),
-          id: S.Number.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/hosting/web/{serviceName}/emailOption/{id}/serviceInfos",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "GetHostingWebEmailOptionServiceInfosRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          serviceName: S.String.pipe(T.Label()),
-          key: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({ method: "GET", uri: "/hosting/web/{serviceName}/envVar/{key}", code: 200 }),
-        ),
-      ).annotate({
-        identifier: "GetHostingWebEnvVarRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          key: S.optional(S.String),
-          status: S.optional(S.String),
-          taskId: S.optional(S.NullOr(S.Number)),
-          type: S.optional(S.String),
-          value: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "HostingWebEnvVar" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          serviceName: S.String.pipe(T.Label()),
-          name: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/hosting/web/{serviceName}/extraSqlPerso/{name}",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "GetHostingWebExtraSqlPersoRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          database: S.optional(S.Number),
-          name: S.optional(S.String),
-          size: S.optional(__S(76, __c9, 4)),
-          status: S.optional(S.String),
-          taskId: S.optional(S.NullOr(S.Number)),
-          usage: S.optional(__S(10, __c1, 2)),
-        }),
-      ).annotate({ identifier: "HostingWebExtrasqlperso" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          serviceName: S.String.pipe(T.Label()),
-          name: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/hosting/web/{serviceName}/extraSqlPerso/{name}/serviceInfos",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "GetHostingWebExtraSqlPersoServiceInfosRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          serviceName: S.String.pipe(T.Label()),
-          login: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({ method: "GET", uri: "/hosting/web/{serviceName}/indy/{login}", code: 200 }),
-        ),
-      ).annotate({ identifier: "GetHostingWebIndyRequest" });
-  }
-}
-function __c16(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          attachedDomains: S.optional(__S(10, __c1, 2)),
-          home: S.optional(S.String),
-          login: S.optional(S.String),
-          state: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "HostingWebIndy" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          serviceName: S.String.pipe(T.Label()),
-        }).pipe(T.Http({ method: "GET", uri: "/hosting/web/{serviceName}/key/ssh", code: 200 })),
-      ).annotate({
-        identifier: "GetHostingWebKeySshRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          serviceName: S.String.pipe(T.Label()),
-          id: S.Number.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/hosting/web/{serviceName}/localSeo/account/{id}",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "GetHostingWebLocalSeoAccountRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          creationDate: S.optional(S.String),
-          email: S.optional(S.String),
-          id: S.optional(S.Number),
-          lastUpdate: S.optional(S.String),
-          status: S.optional(S.String),
-          taskId: S.optional(S.NullOr(S.Number)),
-        }),
-      ).annotate({
-        identifier: "HostingWebLocalSeoAccount",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          email: S.String.pipe(T.Query()),
-        }).pipe(
-          T.Http({ method: "GET", uri: "/hosting/web/localSeo/emailAvailability", code: 200 }),
-        ),
-      ).annotate({
-        identifier: "GetHostingWebLocalSeoEmailAvailabilityRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          availability: S.optional(S.String),
-          serviceName: S.optional(S.NullOr(S.String)),
-        }),
-      ).annotate({
-        identifier: "HostingWebLocalSeoEmailAvailability",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          serviceName: S.String.pipe(T.Label()),
-          email: S.String.pipe(T.Query()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/hosting/web/{serviceName}/localSeo/emailAvailability",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "GetHostingWebLocalSeoEmailAvailabilityRequest2",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          serviceName: S.String.pipe(T.Label()),
-          id: S.Number.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/hosting/web/{serviceName}/localSeo/location/{id}",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "GetHostingWebLocalSeoLocationRequest",
-      });
   }
 }
 function __c17(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() =>
-        S.Struct({
-          accountId: S.optional(S.NullOr(S.Number)),
-          address: S.optional(S.NullOr(S.String)),
-          country: S.optional(S.String),
-          creationDate: S.optional(S.String),
-          id: S.optional(S.Number),
-          lastUpdate: S.optional(S.String),
-          name: S.optional(S.NullOr(S.String)),
-          offer: S.optional(S.String),
-          status: S.optional(S.String),
-          taskId: S.optional(S.NullOr(S.Number)),
-        }),
-      ).annotate({
-        identifier: "HostingWebLocalSeoLocation",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          serviceName: S.String.pipe(T.Label()),
-          id: S.Number.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/hosting/web/{serviceName}/localSeo/location/{id}/serviceInfos",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "GetHostingWebLocalSeoLocationServiceInfosRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          serviceName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({ method: "GET", uri: "/hosting/web/{serviceName}/metricsToken", code: 200 }),
-        ),
-      ).annotate({
-        identifier: "GetHostingWebMetricsTokenRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          endpoint: S.optional(S.String),
-          expiry: S.optional(S.String),
-          token: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "HostingWebMetricsToken" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          serviceName: S.String.pipe(T.Label()),
-          id: S.Number.pipe(T.Label()),
-        }).pipe(
-          T.Http({ method: "GET", uri: "/hosting/web/{serviceName}/module/{id}", code: 200 }),
-        ),
-      ).annotate({
-        identifier: "GetHostingWebModuleRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          adminFolder: S.optional(S.String),
-          adminName: S.optional(S.String),
-          creationDate: S.optional(S.String),
-          dependencies: S.optional(__S(37, __c4, 5)),
-          id: S.optional(S.Number),
-          language: S.optional(S.String),
-          lastUpdate: S.optional(S.String),
-          moduleId: S.optional(S.Number),
-          path: S.optional(S.String),
-          status: S.optional(S.String),
-          targetUrl: S.optional(S.String),
-          taskId: S.optional(S.NullOr(S.Number)),
-        }),
-      ).annotate({ identifier: "HostingWebModule" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.Number.pipe(T.Label()),
-        }).pipe(T.Http({ method: "GET", uri: "/hosting/web/moduleList/{id}", code: 200 })),
-      ).annotate({
-        identifier: "GetHostingWebModuleListRequest",
-      });
-    case 7:
-      return S.Array(S.String);
-  }
-}
-function __c18(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          unit: S.optional(S.String),
-          value: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "ComplexTypeUnitAndValueString",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          active: S.optional(S.Boolean),
-          adminNameType: S.optional(S.String),
-          author: S.optional(S.String),
-          branch: S.optional(S.String),
-          id: S.optional(S.Number),
-          keywords: S.optional(__S(10, __c1, 2)),
-          language: S.optional(__S(143, __c17, 7)),
-          languageRequirement: S.optional(__S(144, __c18, 0)),
-          latest: S.optional(S.Boolean),
-          name: S.optional(S.String),
-          size: S.optional(__S(76, __c9, 4)),
-          upgradeFrom: S.optional(__S(19, __c2, 3)),
-          version: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "HostingWebModuleList" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          offer: S.String.pipe(T.Query()),
-        }).pipe(T.Http({ method: "GET", uri: "/hosting/web/offerCapabilities", code: 200 })),
-      ).annotate({
-        identifier: "GetHostingWebOfferCapabilitiesRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          available: S.optional(S.Number),
-          engines: S.optional(__S(143, __c17, 7)),
-          isolation: S.optional(S.String),
-          quota: S.optional(__S(76, __c9, 4)),
-          type: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "HostingWebDatabaseCreationDatabaseCapabilities",
-      });
-    case 4:
-      return S.Array(__S(147, __c18, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          type: S.optional(S.String),
-          unit: S.optional(S.String),
-          value: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "HostingWebDiskType" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          available: S.optional(S.Number),
-          quota: S.optional(__S(76, __c9, 4)),
-        }),
-      ).annotate({
-        identifier: "HostingWebCreationEmailCapabilities",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          nodejs: S.optional(__S(143, __c17, 7)),
-          php: S.optional(__S(143, __c17, 7)),
-          python: S.optional(__S(143, __c17, 7)),
-          ruby: S.optional(__S(143, __c17, 7)),
-        }),
-      ).annotate({
-        identifier: "HostingWebCronLanguageAvailable",
-      });
-  }
-}
-function __c19(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          attachedDomains: S.optional(S.Number),
-          crontab: S.optional(S.Boolean),
-          databaseEngines: S.optional(S.Number),
-          databases: S.optional(__S(148, __c18, 4)),
-          disk: S.optional(S.NullOr(__S(149, __c18, 5))),
-          emails: S.optional(__S(150, __c18, 6)),
-          envVars: S.optional(S.Number),
-          extraUsers: S.optional(S.Number),
-          filesBrowser: S.optional(S.Boolean),
-          highlight: S.optional(S.NullOr(S.String)),
-          languages: S.optional(__S(151, __c18, 7)),
-          moduleOneClick: S.optional(S.Boolean),
-          privateDatabases: S.optional(__S(148, __c18, 4)),
-          runtimes: S.optional(S.Number),
-          sitesRecommended: S.optional(S.NullOr(S.Number)),
-          ssh: S.optional(S.Boolean),
-          traffic: S.optional(S.NullOr(__S(76, __c9, 4))),
-        }),
-      ).annotate({ identifier: "HostingWebCapabilities" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          serviceName: S.String.pipe(T.Label()),
-          id: S.Number.pipe(T.Label()),
-        }).pipe(
-          T.Http({ method: "GET", uri: "/hosting/web/{serviceName}/ovhConfig/{id}", code: 200 }),
-        ),
-      ).annotate({
-        identifier: "GetHostingWebOvhConfigRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          container: S.optional(S.String),
-          creationDate: S.optional(S.String),
-          engineName: S.optional(S.String),
-          engineVersion: S.optional(S.String),
-          environment: S.optional(S.String),
-          fileExist: S.optional(S.Boolean),
-          historical: S.optional(S.NullOr(S.Boolean)),
-          httpFirewall: S.optional(S.String),
-          id: S.optional(S.Number),
-          path: S.optional(S.NullOr(S.String)),
-          status: S.optional(S.String),
-          taskId: S.optional(S.NullOr(S.Number)),
-        }),
-      ).annotate({ identifier: "HostingWebOvhConfig" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          serviceName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/hosting/web/{serviceName}/ovhConfigRecommendedValues",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "GetHostingWebOvhConfigRecommendedValuesRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          container: S.optional(S.String),
-          engineName: S.optional(S.String),
-          engineVersion: S.optional(S.String),
-          environment: S.optional(S.String),
-          httpFirewall: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "HostingWebOvhConfigRecommendedValues",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          serviceName: S.String.pipe(T.Label()),
-          id: S.Number.pipe(T.Label()),
-        }).pipe(
-          T.Http({ method: "GET", uri: "/hosting/web/{serviceName}/ownLogs/{id}", code: 200 }),
-        ),
-      ).annotate({
-        identifier: "GetHostingWebOwnLogRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          fqdn: S.optional(S.String),
-          id: S.optional(S.Number),
-          logs: S.optional(S.String),
-          stats: S.optional(S.String),
-          status: S.optional(S.String),
-          taskId: S.optional(S.NullOr(S.Number)),
-        }),
-      ).annotate({ identifier: "HostingWebOwnLogs" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          serviceName: S.String.pipe(T.Label()),
-          id: S.Number.pipe(T.Label()),
-          login: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/hosting/web/{serviceName}/ownLogs/{id}/userLogs/{login}",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "GetHostingWebOwnLogUserLogRequest",
-      });
-  }
-}
-function __c20(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          creationDate: S.optional(S.String),
-          description: S.optional(S.NullOr(S.String)),
-          login: S.optional(S.String),
-          ownLogsId: S.optional(S.NullOr(S.Number)),
-          status: S.optional(S.String),
-          taskId: S.optional(S.NullOr(S.Number)),
-        }),
-      ).annotate({ identifier: "HostingWebUserLogs" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          serviceName: S.String.pipe(T.Label()),
-          id: S.Number.pipe(T.Label()),
-        }).pipe(
-          T.Http({ method: "GET", uri: "/hosting/web/{serviceName}/runtime/{id}", code: 200 }),
-        ),
-      ).annotate({
-        identifier: "GetHostingWebRuntimeRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          appBootstrap: S.optional(S.NullOr(S.String)),
-          appEnv: S.optional(S.String),
-          creationDate: S.optional(S.String),
-          id: S.optional(S.Number),
-          isDefault: S.optional(S.Boolean),
-          isDeletable: S.optional(S.Boolean),
-          lastUpdate: S.optional(S.String),
-          name: S.optional(S.NullOr(S.String)),
-          publicDir: S.optional(S.NullOr(S.String)),
-          status: S.optional(S.String),
-          taskId: S.optional(S.NullOr(S.Number)),
-          type: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "HostingWebRuntime" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          serviceName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({ method: "GET", uri: "/hosting/web/{serviceName}/serviceInfos", code: 200 }),
-        ),
-      ).annotate({
-        identifier: "GetHostingWebServiceInfosRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          serviceName: S.String.pipe(T.Label()),
-          id: S.Number.pipe(T.Label()),
-        }).pipe(T.Http({ method: "GET", uri: "/hosting/web/{serviceName}/tasks/{id}", code: 200 })),
-      ).annotate({ identifier: "GetHostingWebTaskRequest" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          serviceName: S.String.pipe(T.Label()),
-        }).pipe(T.Http({ method: "GET", uri: "/hosting/web/{serviceName}/token", code: 200 })),
-      ).annotate({
-        identifier: "GetHostingWebTokenRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          serviceName: S.String.pipe(T.Label()),
-          login: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({ method: "GET", uri: "/hosting/web/{serviceName}/user/{login}", code: 200 }),
-        ),
-      ).annotate({ identifier: "GetHostingWebUserRequest" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          port: S.optional(S.Number),
-          url: S.optional(S.String),
-          user: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "HostingWebUserCredentials",
-      });
-  }
-}
-function __c21(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          ftp: S.optional(__S(167, __c20, 7)),
-          ssh: S.optional(__S(167, __c20, 7)),
-        }),
-      ).annotate({
-        identifier: "HostingWebUserServiceCredentials",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          home: S.optional(S.String),
-          isPrimaryAccount: S.optional(S.Boolean),
-          login: S.optional(S.String),
-          serviceManagementCredentials: S.optional(__S(168, __c21, 0)),
-          sshState: S.optional(S.String),
-          state: S.optional(S.String),
-          status: S.optional(S.String),
-          taskId: S.optional(S.NullOr(S.Number)),
-        }),
-      ).annotate({ identifier: "HostingWebUser" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          serviceName: S.String.pipe(T.Label()),
-          attachedDomain: S.optional(S.String.pipe(T.Query())),
-          remoteCheck: S.optional(S.Boolean.pipe(T.Query())),
-          ttl: S.optional(S.Number.pipe(T.Query())),
-        }).pipe(
-          T.Http({ method: "GET", uri: "/hosting/web/{serviceName}/userLogsToken", code: 200 }),
-        ),
-      ).annotate({
-        identifier: "GetHostingWebUserLogsTokenRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          serviceName: S.String.pipe(T.Label()),
-          path: S.String.pipe(T.Query()),
-          vcs: S.String.pipe(T.Query()),
-        }).pipe(
-          T.Http({ method: "GET", uri: "/hosting/web/{serviceName}/vcs/webhooks", code: 200 }),
-        ),
-      ).annotate({
-        identifier: "GetHostingWebVcsWebhooksRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          push: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "HostingWebVcsWebhooks" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          serviceName: S.String.pipe(T.Label()),
-          id: S.Number.pipe(T.Label()),
-        }).pipe(
-          T.Http({ method: "GET", uri: "/hosting/web/{serviceName}/website/{id}", code: 200 }),
-        ),
-      ).annotate({
-        identifier: "GetHostingWebWebsiteRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          cdn: S.optional(S.Boolean),
-          fqdn: S.optional(S.String),
-          ssl: S.optional(S.Boolean),
-        }),
-      ).annotate({ identifier: "HostingWebWebsiteDomain" });
-    case 7:
-      return S.Array(__S(174, __c21, 6));
-  }
-}
-function __c22(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          domains: S.optional(__S(175, __c21, 7)),
-          hostingDisplayName: S.optional(S.String),
-          hostingServiceName: S.optional(S.String),
-          id: S.optional(S.Number),
-          name: S.optional(S.NullOr(S.String)),
-          path: S.optional(S.String),
-          status: S.optional(S.String),
-          vcsBranch: S.optional(S.String),
-          vcsUrl: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "HostingWebWebsite" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          serviceName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/hosting/web/{serviceName}/websiteCreationCapabilities",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "GetHostingWebWebsiteCreationCapabilitiesRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          allowedWebsites: S.optional(S.Number),
-          existingWebsites: S.optional(S.Number),
-        }),
-      ).annotate({
-        identifier: "HostingWebWebsiteCreationCapabilities",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          serviceName: S.String.pipe(T.Label()),
-          id: S.Number.pipe(T.Label()),
-          deploymentId: S.Number.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/hosting/web/{serviceName}/website/{id}/deployment/{deploymentId}",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "GetHostingWebWebsiteDeploymentRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          date: S.optional(S.String),
-          id: S.optional(S.Number),
-          reset: S.optional(S.Boolean),
-          source: S.optional(S.String),
-          status: S.optional(S.String),
-          vcsBranch: S.optional(S.String),
-          vcsCommitId: S.optional(S.NullOr(S.String)),
-          vcsCommitMessage: S.optional(S.NullOr(S.String)),
-          websiteId: S.optional(S.Number),
-        }),
-      ).annotate({
-        identifier: "HostingWebWebsiteDeployment",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          serviceName: S.String.pipe(T.Label()),
-          name: S.String.pipe(T.Label()),
-          documentId: S.String,
-          flushDatabase: S.optional(S.Boolean),
-          sendEmail: S.optional(S.Boolean),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/hosting/web/{serviceName}/database/{name}/import",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "ImportHostingWebDatabaseRequest",
-      });
-    case 6:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "IamResourceTagFilterInput",
-      });
-    case 7:
-      return S.Array(__S(182, __c22, 6));
-  }
-}
-function __c23(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Record(S.String, __S(183, __c22, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          iamTags: S.optional(__S(184, __c23, 0).pipe(T.Query())),
-        }).pipe(T.Http({ method: "GET", uri: "/hosting/web", code: 200 })),
-      ).annotate({ identifier: "ListHostingWebRequest" });
-    case 2:
-      return S.suspend(() => __S(10, __c1, 2).pipe(T.RawResponseRoot())).annotate({
-        identifier: "ListHostingWebResponse",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          domain: S.String.pipe(T.Query()),
-        }).pipe(T.Http({ method: "GET", uri: "/hosting/web/attachedDomain", code: 200 })),
-      ).annotate({
-        identifier: "ListHostingWebAttachedDomainRequest",
-      });
-    case 4:
-      return S.suspend(() => __S(10, __c1, 2).pipe(T.RawResponseRoot())).annotate({
-        identifier: "ListHostingWebAttachedDomainResponse",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          serviceName: S.String.pipe(T.Label()),
-          domain: S.optional(S.String.pipe(T.Query())),
-          path: S.optional(S.String.pipe(T.Query())),
-        }).pipe(
-          T.Http({ method: "GET", uri: "/hosting/web/{serviceName}/attachedDomain", code: 200 }),
-        ),
-      ).annotate({
-        identifier: "ListHostingWebAttachedDomainRequest2",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          serviceName: S.String.pipe(T.Label()),
-          language: S.optional(S.String.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/hosting/web/{serviceName}/availableConfigurations",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "ListHostingWebAvailableConfigurationsRequest",
-      });
-    case 7:
-      return S.suspend(() => __S(143, __c17, 7).pipe(T.RawResponseRoot())).annotate({
-        identifier: "ListHostingWebAvailableConfigurationsResponse",
-      });
-  }
-}
-function __c24(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          domain: S.String.pipe(T.Query()),
-        }).pipe(T.Http({ method: "GET", uri: "/hosting/web/availableOffer", code: 200 })),
-      ).annotate({
-        identifier: "ListHostingWebAvailableOfferRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          serviceName: S.String.pipe(T.Label()),
-          date: S.optional(S.String.pipe(T.Query())),
-        }).pipe(
-          T.Http({ method: "GET", uri: "/hosting/web/{serviceName}/boostHistory", code: 200 }),
-        ),
-      ).annotate({
-        identifier: "ListHostingWebBoostHistoryRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          serviceName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/hosting/web/{serviceName}/cdn/availableOptions",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "ListHostingWebCdnAvailableOptionsRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          length: S.optional(S.NullOr(S.Number)),
-          maximum: S.optional(S.NullOr(S.Number)),
-          message: S.optional(S.NullOr(S.String)),
-          minimum: S.optional(S.NullOr(S.Number)),
-          type: S.optional(S.NullOr(S.String)),
-        }),
-      ).annotate({
-        identifier: "CdnAvailableOptionsConfigConstraints",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          destination: S.optional(S.NullOr(__S(195, __c24, 3))),
-          followUri: S.optional(S.NullOr(__S(195, __c24, 3))),
-          origins: S.optional(S.NullOr(__S(195, __c24, 3))),
-          patternType: S.optional(S.NullOr(__S(195, __c24, 3))),
-          priority: S.optional(S.NullOr(__S(195, __c24, 3))),
-          queryParameters: S.optional(S.NullOr(__S(195, __c24, 3))),
-          resources: S.optional(S.NullOr(__S(195, __c24, 3))),
-          statusCode: S.optional(S.NullOr(__S(195, __c24, 3))),
-          ttl: S.optional(S.NullOr(__S(195, __c24, 3))),
-        }),
-      ).annotate({
-        identifier: "CdnAvailableOptionsConfig",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          category: S.optional(S.NullOr(S.String)),
-          config: S.optional(S.NullOr(__S(196, __c24, 4))),
-          maxItems: S.optional(S.Number),
-          type: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "CdnAvailableOptions" });
-    case 6:
-      return S.Array(__S(197, __c24, 5));
-    case 7:
-      return S.suspend(() => __S(198, __c24, 6).pipe(T.RawResponseRoot())).annotate({
-        identifier: "ListHostingWebCdnAvailableOptionsResponse",
-      });
-  }
-}
-function __c25(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          serviceName: S.String.pipe(T.Label()),
-        }).pipe(T.Http({ method: "GET", uri: "/hosting/web/{serviceName}/cdn/domain", code: 200 })),
-      ).annotate({
-        identifier: "ListHostingWebCdnDomainRequest",
-      });
-    case 1:
-      return S.Array(__S(95, __c11, 7));
-    case 2:
-      return S.suspend(() => __S(201, __c25, 1).pipe(T.RawResponseRoot())).annotate({
-        identifier: "ListHostingWebCdnDomainResponse",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          serviceName: S.String.pipe(T.Label()),
-          domainName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/hosting/web/{serviceName}/cdn/domain/{domainName}/option",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "ListHostingWebCdnDomainOptionRequest",
-      });
-    case 4:
-      return S.Array(__S(14, __c1, 6));
-    case 5:
-      return S.suspend(() => __S(204, __c25, 4).pipe(T.RawResponseRoot())).annotate({
-        identifier: "ListHostingWebCdnDomainOptionResponse",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          serviceName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({ method: "GET", uri: "/hosting/web/{serviceName}/cdn/operation", code: 200 }),
-        ),
-      ).annotate({
-        identifier: "ListHostingWebCdnOperationRequest",
-      });
-    case 7:
-      return S.Array(__S(101, __c12, 5));
-  }
-}
-function __c26(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() => __S(207, __c25, 7).pipe(T.RawResponseRoot())).annotate({
-        identifier: "ListHostingWebCdnOperationResponse",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          serviceName: S.String.pipe(T.Label()),
-          command: S.optional(S.String.pipe(T.Query())),
-          description: S.optional(S.String.pipe(T.Query())),
-          email: S.optional(S.String.pipe(T.Query())),
-          language: S.optional(S.String.pipe(T.Query())),
-        }).pipe(T.Http({ method: "GET", uri: "/hosting/web/{serviceName}/cron", code: 200 })),
-      ).annotate({
-        identifier: "ListHostingWebCronRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          serviceName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/hosting/web/{serviceName}/cronAvailableLanguage",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "ListHostingWebCronAvailableLanguageRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          serviceName: S.String.pipe(T.Label()),
-          mode: S.optional(S.String.pipe(T.Query())),
-          name: S.optional(S.String.pipe(T.Query())),
-          server: S.optional(S.String.pipe(T.Query())),
-          type: S.optional(S.String.pipe(T.Query())),
-          user: S.optional(S.String.pipe(T.Query())),
-        }).pipe(T.Http({ method: "GET", uri: "/hosting/web/{serviceName}/database", code: 200 })),
-      ).annotate({
-        identifier: "ListHostingWebDatabaseRequest",
-      });
-    case 4:
       return S.suspend(() =>
         S.Struct({
           serviceName: S.String.pipe(T.Label()),
@@ -8708,11 +6567,15 @@ function __c26(j: number): any {
       ).annotate({
         identifier: "ListHostingWebDatabaseAvailableTypeRequest",
       });
-    case 5:
-      return S.suspend(() => __S(143, __c17, 7).pipe(T.RawResponseRoot())).annotate({
+    case 1:
+      return S.suspend(() => __S(2768, __c173, 0).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListHostingWebDatabaseAvailableTypeResponse",
       });
-    case 6:
+  }
+}
+function __c18(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           serviceName: S.String.pipe(T.Label()),
@@ -8727,18 +6590,18 @@ function __c26(j: number): any {
       ).annotate({
         identifier: "ListHostingWebDatabaseAvailableVersionRequest",
       });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           default: S.optional(S.String),
-          list: S.optional(__S(143, __c17, 7)),
+          list: S.optional(__S(2768, __c173, 0)),
         }),
       ).annotate({
         identifier: "HostingWebDatabaseAvailableVersionStruct",
       });
   }
 }
-function __c27(j: number): any {
+function __c19(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -8755,7 +6618,11 @@ function __c27(j: number): any {
       ).annotate({
         identifier: "ListHostingWebDatabaseCopyRequest",
       });
-    case 1:
+  }
+}
+function __c20(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           serviceName: S.String.pipe(T.Label()),
@@ -8769,11 +6636,15 @@ function __c27(j: number): any {
       ).annotate({
         identifier: "ListHostingWebDatabaseCreationCapabilitiesRequest",
       });
-    case 2:
-      return S.suspend(() => __S(148, __c18, 4).pipe(T.RawResponseRoot())).annotate({
+    case 1:
+      return S.suspend(() => __S(2800, __c175, 0).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListHostingWebDatabaseCreationCapabilitiesResponse",
       });
-    case 3:
+  }
+}
+function __c21(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           serviceName: S.String.pipe(T.Label()),
@@ -8793,7 +6664,11 @@ function __c27(j: number): any {
       ).annotate({
         identifier: "ListHostingWebDatabaseDumpRequest",
       });
-    case 4:
+  }
+}
+function __c22(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           serviceName: S.String.pipe(T.Label()),
@@ -8810,7 +6685,11 @@ function __c27(j: number): any {
       ).annotate({
         identifier: "ListHostingWebDatabaseStatisticsRequest",
       });
-    case 5:
+  }
+}
+function __c23(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           timestamp: S.optional(S.Number),
@@ -8819,29 +6698,29 @@ function __c27(j: number): any {
       ).annotate({
         identifier: "ComplexTypeChartTimestampValue",
       });
-    case 6:
-      return S.Array(__S(221, __c27, 5));
-    case 7:
+    case 1:
+      return S.Array(__S(368, __c23, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           serieName: S.optional(S.String),
           unit: S.optional(S.String),
-          values: S.optional(__S(222, __c27, 6)),
+          values: S.optional(__S(369, __c23, 1)),
         }),
       ).annotate({
         identifier: "ComplexTypeChartSerieComplexTypeChartTimestampValue",
       });
-  }
-}
-function __c28(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(223, __c27, 7));
-    case 1:
-      return S.suspend(() => __S(224, __c28, 0).pipe(T.RawResponseRoot())).annotate({
+    case 3:
+      return S.Array(__S(370, __c23, 2));
+    case 4:
+      return S.suspend(() => __S(371, __c23, 3).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListHostingWebDatabaseStatisticsResponse",
       });
-    case 2:
+  }
+}
+function __c24(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           serviceName: S.String.pipe(T.Label()),
@@ -8855,7 +6734,11 @@ function __c28(j: number): any {
       ).annotate({
         identifier: "ListHostingWebDumpRequest",
       });
-    case 3:
+  }
+}
+function __c25(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           serviceName: S.String.pipe(T.Label()),
@@ -8866,7 +6749,7 @@ function __c28(j: number): any {
       ).annotate({
         identifier: "ListHostingWebEmailBouncesRequest",
       });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           date: S.optional(S.String),
@@ -8874,13 +6757,17 @@ function __c28(j: number): any {
           to: S.optional(S.NullOr(S.String)),
         }),
       ).annotate({ identifier: "HostingWebMailBounce" });
-    case 5:
-      return S.Array(__S(228, __c28, 4));
-    case 6:
-      return S.suspend(() => __S(229, __c28, 5).pipe(T.RawResponseRoot())).annotate({
+    case 2:
+      return S.Array(__S(401, __c25, 1));
+    case 3:
+      return S.suspend(() => __S(402, __c25, 2).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListHostingWebEmailBouncesResponse",
       });
-    case 7:
+  }
+}
+function __c26(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           serviceName: S.String.pipe(T.Label()),
@@ -8892,7 +6779,7 @@ function __c28(j: number): any {
       });
   }
 }
-function __c29(j: number): any {
+function __c27(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -8914,12 +6801,36 @@ function __c29(j: number): any {
         identifier: "HostingWebMailVolumeHistory",
       });
     case 2:
-      return S.Array(__S(233, __c29, 1));
+      return S.Array(__S(433, __c27, 1));
     case 3:
-      return S.suspend(() => __S(234, __c29, 2).pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() => __S(434, __c27, 2).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListHostingWebEmailVolumesResponse",
       });
-    case 4:
+  }
+}
+function __c28(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          serviceName: S.String.pipe(T.Label()),
+          name: S.String.pipe(T.Label()),
+          action: S.String,
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/hosting/web/{serviceName}/database/{name}/request",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateHostingWebDatabaseRequestRequest",
+      });
+  }
+}
+function __c29(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           serviceName: S.String.pipe(T.Label()),
@@ -8928,7 +6839,11 @@ function __c29(j: number): any {
       ).annotate({
         identifier: "ListHostingWebEnvVarRequest",
       });
-    case 5:
+  }
+}
+function __c30(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           serviceName: S.String.pipe(T.Label()),
@@ -8938,7 +6853,11 @@ function __c29(j: number): any {
       ).annotate({
         identifier: "ListHostingWebExtraSqlPersoRequest",
       });
-    case 6:
+  }
+}
+function __c31(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           serviceName: S.String.pipe(T.Label()),
@@ -8953,7 +6872,11 @@ function __c29(j: number): any {
       ).annotate({
         identifier: "ListHostingWebExtraSqlPersoDatabasesRequest",
       });
-    case 7:
+  }
+}
+function __c32(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           serviceName: S.String.pipe(T.Label()),
@@ -8964,7 +6887,7 @@ function __c29(j: number): any {
       });
   }
 }
-function __c30(j: number): any {
+function __c33(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -8972,7 +6895,11 @@ function __c30(j: number): any {
       ).annotate({
         identifier: "ListHostingWebIncidentRequest",
       });
-    case 1:
+  }
+}
+function __c34(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           serviceName: S.String.pipe(T.Label()),
@@ -8981,7 +6908,11 @@ function __c30(j: number): any {
       ).annotate({
         identifier: "ListHostingWebIndyRequest",
       });
-    case 2:
+  }
+}
+function __c35(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           serviceName: S.String.pipe(T.Label()),
@@ -8992,7 +6923,11 @@ function __c30(j: number): any {
       ).annotate({
         identifier: "ListHostingWebLocalSeoAccountRequest",
       });
-    case 3:
+  }
+}
+function __c36(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           country: S.String.pipe(T.Query()),
@@ -9001,7 +6936,7 @@ function __c30(j: number): any {
       ).annotate({
         identifier: "ListHostingWebLocalSeoDirectoriesListRequest",
       });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           code: S.optional(S.String),
@@ -9010,19 +6945,23 @@ function __c30(j: number): any {
       ).annotate({
         identifier: "HostingWebLocalSeoDirectory",
       });
-    case 5:
-      return S.Array(__S(244, __c30, 4));
-    case 6:
+    case 2:
+      return S.Array(__S(577, __c36, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          navigationSystems: S.optional(__S(245, __c30, 5)),
-          searchEngines: S.optional(__S(245, __c30, 5)),
-          socialNetworks: S.optional(__S(245, __c30, 5)),
+          navigationSystems: S.optional(__S(578, __c36, 2)),
+          searchEngines: S.optional(__S(578, __c36, 2)),
+          socialNetworks: S.optional(__S(578, __c36, 2)),
         }),
       ).annotate({
         identifier: "HostingWebLocalSeoDirectoriesList",
       });
-    case 7:
+  }
+}
+function __c37(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           serviceName: S.String.pipe(T.Label()),
@@ -9034,7 +6973,7 @@ function __c30(j: number): any {
       });
   }
 }
-function __c31(j: number): any {
+function __c38(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -9086,12 +7025,31 @@ function __c31(j: number): any {
         identifier: "HostingWebLocalSeoVisibilityCheckResultResponse",
       });
     case 2:
-      return S.Array(__S(249, __c31, 1));
+      return S.Array(__S(609, __c38, 1));
     case 3:
-      return S.suspend(() => __S(250, __c31, 2).pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() => __S(610, __c38, 2).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListHostingWebLocalSeoVisibilityCheckResultResponse",
       });
-    case 4:
+  }
+}
+function __c39(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          serviceName: S.String.pipe(T.Label()),
+          action: S.String,
+        }).pipe(
+          T.Http({ method: "POST", uri: "/hosting/web/{serviceName}/email/request", code: 200 }),
+        ),
+      ).annotate({
+        identifier: "CreateHostingWebEmailRequestRequest",
+      });
+  }
+}
+function __c40(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           serviceName: S.String.pipe(T.Label()),
@@ -9099,7 +7057,11 @@ function __c31(j: number): any {
       ).annotate({
         identifier: "ListHostingWebModuleRequest",
       });
-    case 5:
+  }
+}
+function __c41(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           active: S.optional(S.Boolean.pipe(T.Query())),
@@ -9109,7 +7071,11 @@ function __c31(j: number): any {
       ).annotate({
         identifier: "ListHostingWebModuleListRequest",
       });
-    case 6:
+  }
+}
+function __c42(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           serviceName: S.String.pipe(T.Label()),
@@ -9119,7 +7085,11 @@ function __c31(j: number): any {
       ).annotate({
         identifier: "ListHostingWebOvhConfigRequest",
       });
-    case 7:
+  }
+}
+function __c43(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           serviceName: S.String.pipe(T.Label()),
@@ -9133,26 +7103,26 @@ function __c31(j: number): any {
       ).annotate({
         identifier: "ListHostingWebOvhConfigCapabilitiesRequest",
       });
-  }
-}
-function __c32(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          containerImage: S.optional(__S(10, __c1, 2)),
+          containerImage: S.optional(__S(2064, __c129, 0)),
           version: S.optional(S.String),
         }),
       ).annotate({
         identifier: "HostingWebOvhConfigCapabilities",
       });
-    case 1:
-      return S.Array(__S(256, __c32, 0));
     case 2:
-      return S.suspend(() => __S(257, __c32, 1).pipe(T.RawResponseRoot())).annotate({
+      return S.Array(__S(689, __c43, 1));
+    case 3:
+      return S.suspend(() => __S(690, __c43, 2).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListHostingWebOvhConfigCapabilitiesResponse",
       });
-    case 3:
+  }
+}
+function __c44(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           serviceName: S.String.pipe(T.Label()),
@@ -9161,7 +7131,11 @@ function __c32(j: number): any {
       ).annotate({
         identifier: "ListHostingWebOwnLogsRequest",
       });
-    case 4:
+  }
+}
+function __c45(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           serviceName: S.String.pipe(T.Label()),
@@ -9177,7 +7151,11 @@ function __c32(j: number): any {
       ).annotate({
         identifier: "ListHostingWebOwnLogUserLogsRequest",
       });
-    case 5:
+  }
+}
+function __c46(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           serviceName: S.String.pipe(T.Label()),
@@ -9191,15 +7169,15 @@ function __c32(j: number): any {
       ).annotate({
         identifier: "ListHostingWebPrivateDatabaseCreationCapabilitiesRequest",
       });
-    case 6:
-      return S.Array(__S(147, __c18, 3));
-    case 7:
-      return S.suspend(() => __S(262, __c32, 6).pipe(T.RawResponseRoot())).annotate({
+    case 1:
+      return S.Array(__S(2816, __c176, 0));
+    case 2:
+      return S.suspend(() => __S(737, __c46, 1).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListHostingWebPrivateDatabaseCreationCapabilitiesResponse",
       });
   }
 }
-function __c33(j: number): any {
+function __c47(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -9211,7 +7189,11 @@ function __c33(j: number): any {
       ).annotate({
         identifier: "ListHostingWebPrivateDatabasesRequest",
       });
-    case 1:
+  }
+}
+function __c48(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           serviceName: S.String.pipe(T.Label()),
@@ -9221,7 +7203,11 @@ function __c33(j: number): any {
       ).annotate({
         identifier: "ListHostingWebRuntimeRequest",
       });
-    case 2:
+  }
+}
+function __c49(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           serviceName: S.String.pipe(T.Label()),
@@ -9236,7 +7222,26 @@ function __c33(j: number): any {
       ).annotate({
         identifier: "ListHostingWebRuntimeAttachedDomainsRequest",
       });
-    case 3:
+  }
+}
+function __c50(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          serviceName: S.String.pipe(T.Label()),
+          key: S.String,
+          type: S.String,
+          value: S.String,
+        }).pipe(T.Http({ method: "POST", uri: "/hosting/web/{serviceName}/envVar", code: 200 })),
+      ).annotate({
+        identifier: "CreateHostingWebEnvVarRequest",
+      });
+  }
+}
+function __c51(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           serviceName: S.String.pipe(T.Label()),
@@ -9251,7 +7256,11 @@ function __c33(j: number): any {
       ).annotate({
         identifier: "ListHostingWebRuntimeAvailableTypesRequest",
       });
-    case 4:
+  }
+}
+function __c52(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           serviceName: S.String.pipe(T.Label()),
@@ -9261,7 +7270,11 @@ function __c33(j: number): any {
       ).annotate({
         identifier: "ListHostingWebStatisticsRequest",
       });
-    case 5:
+  }
+}
+function __c53(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           serviceName: S.String.pipe(T.Label()),
@@ -9271,7 +7284,11 @@ function __c33(j: number): any {
       ).annotate({
         identifier: "ListHostingWebTasksRequest",
       });
-    case 6:
+  }
+}
+function __c54(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           serviceName: S.String.pipe(T.Label()),
@@ -9281,7 +7298,11 @@ function __c33(j: number): any {
       ).annotate({
         identifier: "ListHostingWebUserRequest",
       });
-    case 7:
+  }
+}
+function __c55(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({}).pipe(T.Http({ method: "GET", uri: "/hosting/web/vcs/supported", code: 200 })),
       ).annotate({
@@ -9289,7 +7310,7 @@ function __c33(j: number): any {
       });
   }
 }
-function __c34(j: number): any {
+function __c56(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -9300,7 +7321,11 @@ function __c34(j: number): any {
       ).annotate({
         identifier: "ListHostingWebWebsiteRequest",
       });
-    case 1:
+  }
+}
+function __c57(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           serviceName: S.String.pipe(T.Label()),
@@ -9315,7 +7340,11 @@ function __c34(j: number): any {
       ).annotate({
         identifier: "ListHostingWebWebsiteDeploymentRequest",
       });
-    case 2:
+  }
+}
+function __c58(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           serviceName: S.String.pipe(T.Label()),
@@ -9331,7 +7360,7 @@ function __c34(j: number): any {
       ).annotate({
         identifier: "ListHostingWebWebsiteDeploymentLogsRequest",
       });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           date: S.optional(S.String),
@@ -9340,13 +7369,17 @@ function __c34(j: number): any {
       ).annotate({
         identifier: "HostingWebWebsiteDeploymentLogsMessage",
       });
-    case 4:
-      return S.Array(__S(275, __c34, 3));
-    case 5:
-      return S.suspend(() => __S(276, __c34, 4).pipe(T.RawResponseRoot())).annotate({
+    case 2:
+      return S.Array(__S(929, __c58, 1));
+    case 3:
+      return S.suspend(() => __S(930, __c58, 2).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListHostingWebWebsiteDeploymentLogsResponse",
       });
-    case 6:
+  }
+}
+function __c59(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           serviceName: S.String.pipe(T.Label()),
@@ -9361,7 +7394,11 @@ function __c34(j: number): any {
       ).annotate({
         identifier: "LoginHostingWebLocalSeoAccountRequest",
       });
-    case 7:
+  }
+}
+function __c60(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           serviceName: S.String.pipe(T.Label()),
@@ -9378,7 +7415,27 @@ function __c34(j: number): any {
       });
   }
 }
-function __c35(j: number): any {
+function __c61(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          serviceName: S.String.pipe(T.Label()),
+          name: S.String.pipe(T.Label()),
+          renew: __S(2320, __c145, 0),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/hosting/web/{serviceName}/extraSqlPerso/{name}/serviceInfosUpdate",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateHostingWebExtraSqlPersoServiceInfosUpdateRequest",
+      });
+  }
+}
+function __c62(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -9397,14 +7454,22 @@ function __c35(j: number): any {
       ).annotate({
         identifier: "PurgeHostingWebCdnDomainRequest",
       });
-    case 1:
+  }
+}
+function __c63(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           serviceName: S.String.pipe(T.Label()),
           displayName: S.optional(S.String),
         }).pipe(T.Http({ method: "PUT", uri: "/hosting/web/{serviceName}", code: 200 })),
       ).annotate({ identifier: "PutHostingWebRequest" });
-    case 2:
+  }
+}
+function __c64(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           serviceName: S.String.pipe(T.Label()),
@@ -9427,15 +7492,19 @@ function __c35(j: number): any {
       ).annotate({
         identifier: "PutHostingWebAttachedDomainRequest",
       });
-    case 3:
+  }
+}
+function __c65(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           serviceName: S.String.pipe(T.Label()),
           domainName: S.String.pipe(T.Label()),
           optionName: S.String.pipe(T.Label()),
-          config: S.optional(S.NullOr(__S(11, __c1, 3))),
+          config: S.optional(S.NullOr(__S(2080, __c130, 0))),
           enabled: S.Boolean,
-          extra: S.optional(S.NullOr(__S(13, __c1, 5))),
+          extra: S.optional(S.NullOr(__S(2081, __c130, 1))),
           pattern: S.optional(S.NullOr(S.String)),
           type: S.String,
         }).pipe(
@@ -9448,7 +7517,11 @@ function __c35(j: number): any {
       ).annotate({
         identifier: "PutHostingWebCdnDomainOptionRequest",
       });
-    case 4:
+  }
+}
+function __c66(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           serviceName: S.String.pipe(T.Label()),
@@ -9463,7 +7536,11 @@ function __c35(j: number): any {
       ).annotate({
         identifier: "PutHostingWebConfigurationRequest",
       });
-    case 5:
+  }
+}
+function __c67(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           serviceName: S.String.pipe(T.Label()),
@@ -9476,7 +7553,11 @@ function __c35(j: number): any {
           status: S.optional(S.String),
         }).pipe(T.Http({ method: "PUT", uri: "/hosting/web/{serviceName}/cron/{id}", code: 200 })),
       ).annotate({ identifier: "PutHostingWebCronRequest" });
-    case 6:
+  }
+}
+function __c68(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           serviceName: S.String.pipe(T.Label()),
@@ -9485,7 +7566,11 @@ function __c35(j: number): any {
       ).annotate({
         identifier: "PutHostingWebEmailRequest",
       });
-    case 7:
+  }
+}
+function __c69(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           serviceName: S.String.pipe(T.Label()),
@@ -9499,7 +7584,7 @@ function __c35(j: number): any {
       });
   }
 }
-function __c36(j: number): any {
+function __c70(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -9518,7 +7603,11 @@ function __c36(j: number): any {
       ).annotate({
         identifier: "PutHostingWebOwnLogUserLogRequest",
       });
-    case 1:
+  }
+}
+function __c71(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           serviceName: S.String.pipe(T.Label()),
@@ -9535,18 +7624,48 @@ function __c36(j: number): any {
       ).annotate({
         identifier: "PutHostingWebRuntimeRequest",
       });
-    case 2:
+  }
+}
+function __c72(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           serviceName: S.String.pipe(T.Label()),
-          renew: S.optional(S.NullOr(__S(15, __c1, 7))),
+        }).pipe(T.Http({ method: "POST", uri: "/hosting/web/{serviceName}/key/ssh", code: 200 })),
+      ).annotate({
+        identifier: "CreateHostingWebKeySshRequest",
+      });
+  }
+}
+function __c73(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          publicKey: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "HostingWebKey" });
+  }
+}
+function __c74(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          serviceName: S.String.pipe(T.Label()),
+          renew: S.optional(S.NullOr(__S(2320, __c145, 0))),
         }).pipe(
           T.Http({ method: "PUT", uri: "/hosting/web/{serviceName}/serviceInfos", code: 200 }),
         ),
       ).annotate({
         identifier: "PutHostingWebServiceInfosRequest",
       });
-    case 3:
+  }
+}
+function __c75(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           serviceName: S.String.pipe(T.Label()),
@@ -9558,7 +7677,11 @@ function __c36(j: number): any {
           T.Http({ method: "PUT", uri: "/hosting/web/{serviceName}/user/{login}", code: 200 }),
         ),
       ).annotate({ identifier: "PutHostingWebUserRequest" });
-    case 4:
+  }
+}
+function __c76(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           serviceName: S.String.pipe(T.Label()),
@@ -9570,7 +7693,11 @@ function __c36(j: number): any {
       ).annotate({
         identifier: "PutHostingWebWebsiteRequest",
       });
-    case 5:
+  }
+}
+function __c77(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           serviceName: S.String.pipe(T.Label()),
@@ -9585,7 +7712,11 @@ function __c36(j: number): any {
       ).annotate({
         identifier: "RefreshHostingWebCdnDomainRequest",
       });
-    case 6:
+  }
+}
+function __c78(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           serviceName: S.String.pipe(T.Label()),
@@ -9600,7 +7731,11 @@ function __c36(j: number): any {
       ).annotate({
         identifier: "RestartHostingWebAttachedDomainRequest",
       });
-    case 7:
+  }
+}
+function __c79(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           serviceName: S.String.pipe(T.Label()),
@@ -9619,7 +7754,7 @@ function __c36(j: number): any {
       });
   }
 }
-function __c37(j: number): any {
+function __c80(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -9637,7 +7772,11 @@ function __c37(j: number): any {
       ).annotate({
         identifier: "RestoreHostingWebDatabaseDumpRequest",
       });
-    case 1:
+  }
+}
+function __c81(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           serviceName: S.String.pipe(T.Label()),
@@ -9648,7 +7787,11 @@ function __c37(j: number): any {
       ).annotate({
         identifier: "RestoreHostingWebSnapshotRequest",
       });
-    case 2:
+  }
+}
+function __c82(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           serviceName: S.String.pipe(T.Label()),
@@ -9656,7 +7799,11 @@ function __c37(j: number): any {
       ).annotate({
         identifier: "TerminateHostingWebRequest",
       });
-    case 3:
+  }
+}
+function __c83(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           serviceName: S.String.pipe(T.Label()),
@@ -9666,7 +7813,35 @@ function __c37(j: number): any {
       ).annotate({
         identifier: "TerminateHostingWebCdnRequest",
       });
-    case 4:
+  }
+}
+function __c84(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          serviceName: S.String.pipe(T.Label()),
+          id: S.Number.pipe(T.Label()),
+          renew: __S(2320, __c145, 0),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/hosting/web/{serviceName}/localSeo/location/{id}/serviceInfosUpdate",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateHostingWebLocalSeoLocationServiceInfosUpdateRequest",
+      });
+    case 1:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "CreateHostingWebLocalSeoLocationServiceInfosUpdateResponse",
+      });
+  }
+}
+function __c85(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           serviceName: S.String.pipe(T.Label()),
@@ -9681,7 +7856,11 @@ function __c37(j: number): any {
       ).annotate({
         identifier: "TerminateHostingWebEmailOptionRequest",
       });
-    case 5:
+  }
+}
+function __c86(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           serviceName: S.String.pipe(T.Label()),
@@ -9696,7 +7875,11 @@ function __c37(j: number): any {
       ).annotate({
         identifier: "TerminateHostingWebExtraSqlPersoRequest",
       });
-    case 6:
+  }
+}
+function __c87(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           serviceName: S.String.pipe(T.Label()),
@@ -9713,7 +7896,2471 @@ function __c37(j: number): any {
       });
   }
 }
-
+function __c88(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          country: S.String,
+          name: S.String,
+          street: S.String,
+          zip: S.String,
+        }).pipe(
+          T.Http({ method: "POST", uri: "/hosting/web/localSeo/visibilityCheck", code: 200 }),
+        ),
+      ).annotate({
+        identifier: "CreateHostingWebLocalSeoVisibilityCheckRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          city: S.optional(S.String),
+          country: S.optional(S.String),
+          id: S.optional(S.Number),
+          name: S.optional(S.String),
+          province: S.optional(S.NullOr(S.String)),
+          street: S.optional(S.String),
+          streetNo: S.optional(S.String),
+          token: S.optional(S.String),
+          zip: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "HostingWebLocalSeoSearchData",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          alreadyManaged: S.optional(S.NullOr(S.Boolean)),
+          searchData: S.optional(__S(1409, __c88, 1)),
+        }),
+      ).annotate({
+        identifier: "HostingWebLocalSeoVisibilityCheckResponse",
+      });
+  }
+}
+function __c89(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          serviceName: S.String.pipe(T.Label()),
+          adminName: S.optional(S.String),
+          adminPassword: S.optional(S.String.pipe(T.SensitiveValue({}))),
+          dependencies: S.optional(__S(1441, __c90, 1)),
+          domain: S.optional(S.String),
+          language: S.optional(S.String),
+          moduleId: S.Number,
+          path: S.optional(S.String),
+        }).pipe(T.Http({ method: "POST", uri: "/hosting/web/{serviceName}/module", code: 200 })),
+      ).annotate({
+        identifier: "CreateHostingWebModuleRequest",
+      });
+  }
+}
+function __c90(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.optional(S.NullOr(S.String)),
+          password: S.optional(S.NullOr(S.String).pipe(T.SensitiveValue({}))),
+          port: S.optional(S.NullOr(S.Number)),
+          prefix: S.optional(S.NullOr(S.String)),
+          server: S.optional(S.NullOr(S.String)),
+          type: S.optional(S.String),
+          user: S.optional(S.NullOr(S.String)),
+        }),
+      ).annotate({
+        identifier: "HostingWebModuleDependencyType",
+      });
+    case 1:
+      return S.Array(__S(1440, __c90, 0));
+  }
+}
+function __c91(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          serviceName: S.String.pipe(T.Label()),
+          name: S.String.pipe(T.Label()),
+          copyId: S.String,
+          flushDatabase: S.optional(S.Boolean),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/hosting/web/{serviceName}/database/{name}/copyRestore",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "CopyHostingWebDatabaseRestoreRequest",
+      });
+  }
+}
+function __c92(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          doneDate: S.optional(S.NullOr(S.String)),
+          function: S.optional(S.String),
+          id: S.optional(S.Number),
+          lastUpdate: S.optional(S.NullOr(S.String)),
+          objectId: S.optional(S.NullOr(S.String)),
+          objectType: S.optional(S.NullOr(S.String)),
+          startDate: S.optional(S.String),
+          status: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "HostingWebTask" });
+  }
+}
+function __c93(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          serviceName: S.String.pipe(T.Label()),
+          id: S.Number.pipe(T.Label()),
+          moduleId: S.Number,
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/hosting/web/{serviceName}/module/{id}/upgrade",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateHostingWebModuleUpgradeRequest",
+      });
+  }
+}
+function __c94(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          serviceName: S.String.pipe(T.Label()),
+          id: S.Number.pipe(T.Label()),
+          container: S.optional(S.String),
+          engineName: S.optional(S.String),
+          engineVersion: S.optional(S.String),
+          environment: S.optional(S.String),
+          httpFirewall: S.optional(S.String),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/hosting/web/{serviceName}/ovhConfig/{id}/changeConfiguration",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateHostingWebOvhConfigChangeConfigurationRequest",
+      });
+  }
+}
+function __c95(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          serviceName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({ method: "POST", uri: "/hosting/web/{serviceName}/ovhConfigRefresh", code: 200 }),
+        ),
+      ).annotate({
+        identifier: "CreateHostingWebOvhConfigRefreshRequest",
+      });
+  }
+}
+function __c96(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          serviceName: S.String.pipe(T.Label()),
+          id: S.Number.pipe(T.Label()),
+          rollbackId: S.Number,
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/hosting/web/{serviceName}/ovhConfig/{id}/rollback",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateHostingWebOvhConfigRollbackRequest",
+      });
+  }
+}
+function __c97(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          serviceName: S.String.pipe(T.Label()),
+          id: S.Number.pipe(T.Label()),
+          description: S.String,
+          login: S.String,
+          ownLogsId: S.optional(S.Number),
+          password: S.String.pipe(T.SensitiveValue({})),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/hosting/web/{serviceName}/ownLogs/{id}/userLogs",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateHostingWebOwnLogUserLogRequest",
+      });
+  }
+}
+function __c98(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          serviceName: S.String.pipe(T.Label()),
+          id: S.Number.pipe(T.Label()),
+          login: S.String.pipe(T.Label()),
+          password: S.String.pipe(T.SensitiveValue({})),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/hosting/web/{serviceName}/ownLogs/{id}/userLogs/{login}/changePassword",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateHostingWebOwnLogUserLogChangePasswordRequest",
+      });
+  }
+}
+function __c99(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          serviceName: S.String.pipe(T.Label()),
+          action: S.String,
+        }).pipe(T.Http({ method: "POST", uri: "/hosting/web/{serviceName}/request", code: 200 })),
+      ).annotate({
+        identifier: "CreateHostingWebRequestRequest",
+      });
+  }
+}
+function __c100(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          serviceName: S.String.pipe(T.Label()),
+          offer: S.optional(S.NullOr(S.String)),
+        }).pipe(
+          T.Http({ method: "POST", uri: "/hosting/web/{serviceName}/requestBoost", code: 200 }),
+        ),
+      ).annotate({
+        identifier: "CreateHostingWebRequestBoostRequest",
+      });
+  }
+}
+function __c101(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          serviceName: S.String.pipe(T.Label()),
+          appBootstrap: S.optional(S.String),
+          appEnv: S.optional(S.String),
+          attachedDomains: S.optional(__S(2064, __c129, 0)),
+          isDefault: S.optional(S.Boolean),
+          name: S.optional(S.String),
+          publicDir: S.optional(S.String),
+          type: S.optional(S.String),
+        }).pipe(T.Http({ method: "POST", uri: "/hosting/web/{serviceName}/runtime", code: 200 })),
+      ).annotate({
+        identifier: "CreateHostingWebRuntimeRequest",
+      });
+  }
+}
+function __c102(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          serviceName: S.String.pipe(T.Label()),
+          home: S.String,
+          login: S.String,
+          password: S.String.pipe(T.SensitiveValue({})),
+          sshState: S.optional(S.String),
+        }).pipe(T.Http({ method: "POST", uri: "/hosting/web/{serviceName}/user", code: 200 })),
+      ).annotate({
+        identifier: "CreateHostingWebUserRequest",
+      });
+  }
+}
+function __c103(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          serviceName: S.String.pipe(T.Label()),
+          bypassDNSConfiguration: S.optional(S.NullOr(S.Boolean)),
+          cdn: S.optional(S.NullOr(S.String)),
+          domain: S.optional(S.NullOr(S.String)),
+          firewall: S.optional(S.NullOr(S.String)),
+          ipLocation: S.optional(S.NullOr(S.String)),
+          ownLog: S.optional(S.NullOr(S.String)),
+          path: S.optional(S.NullOr(S.String)),
+          runtimeId: S.optional(S.NullOr(S.Number)),
+          ssl: S.optional(S.NullOr(S.Boolean)),
+        }).pipe(
+          T.Http({ method: "POST", uri: "/hosting/web/{serviceName}/attachedDomain", code: 200 }),
+        ),
+      ).annotate({
+        identifier: "CreateHostingWebAttachedDomainRequest",
+      });
+  }
+}
+function __c104(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          doneDate: S.optional(S.NullOr(S.String)),
+          function: S.optional(S.String),
+          id: S.optional(S.Number),
+          lastUpdate: S.optional(S.NullOr(S.String)),
+          objectId: S.optional(S.NullOr(S.String)),
+          objectType: S.optional(S.NullOr(S.String)),
+          startDate: S.optional(S.String),
+          status: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "HostingWebPublicTask" });
+  }
+}
+function __c105(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          serviceName: S.String.pipe(T.Label()),
+          login: S.String.pipe(T.Label()),
+          password: S.String.pipe(T.SensitiveValue({})),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/hosting/web/{serviceName}/user/{login}/changePassword",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateHostingWebUserChangePasswordRequest",
+      });
+  }
+}
+function __c106(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          serviceName: S.String.pipe(T.Label()),
+          path: S.String,
+          vcsBranch: S.String,
+          vcsUrl: S.String,
+        }).pipe(T.Http({ method: "POST", uri: "/hosting/web/{serviceName}/website", code: 200 })),
+      ).annotate({
+        identifier: "CreateHostingWebWebsiteRequest",
+      });
+  }
+}
+function __c107(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          serviceName: S.String.pipe(T.Label()),
+          domain: S.String.pipe(T.Label()),
+          bypassDNSConfiguration: S.optional(S.Boolean.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/hosting/web/{serviceName}/attachedDomain/{domain}",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteHostingWebAttachedDomainRequest",
+      });
+  }
+}
+function __c108(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          serviceName: S.String.pipe(T.Label()),
+          domain: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/hosting/web/{serviceName}/attachedDomain/{domain}/ssl",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteHostingWebAttachedDomainSslRequest",
+      });
+  }
+}
+function __c109(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          serviceName: S.String.pipe(T.Label()),
+          domainName: S.String.pipe(T.Label()),
+          optionName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/hosting/web/{serviceName}/cdn/domain/{domainName}/option/{optionName}",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteHostingWebCdnDomainOptionRequest",
+      });
+  }
+}
+function __c110(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          serviceName: S.String.pipe(T.Label()),
+          id: S.Number.pipe(T.Label()),
+        }).pipe(
+          T.Http({ method: "DELETE", uri: "/hosting/web/{serviceName}/cron/{id}", code: 200 }),
+        ),
+      ).annotate({
+        identifier: "DeleteHostingWebCronRequest",
+      });
+  }
+}
+function __c111(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          serviceName: S.String.pipe(T.Label()),
+          name: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/hosting/web/{serviceName}/database/{name}",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteHostingWebDatabaseRequest",
+      });
+  }
+}
+function __c112(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          serviceName: S.String.pipe(T.Label()),
+          name: S.String.pipe(T.Label()),
+          id: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/hosting/web/{serviceName}/database/{name}/copy/{id}",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteHostingWebDatabaseCopyRequest",
+      });
+  }
+}
+function __c113(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          serviceName: S.String.pipe(T.Label()),
+          name: S.String.pipe(T.Label()),
+          id: S.Number.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/hosting/web/{serviceName}/database/{name}/dump/{id}",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteHostingWebDatabaseDumpRequest",
+      });
+  }
+}
+function __c114(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          serviceName: S.String.pipe(T.Label()),
+          id: S.Number.pipe(T.Label()),
+        }).pipe(
+          T.Http({ method: "DELETE", uri: "/hosting/web/{serviceName}/dump/{id}", code: 200 }),
+        ),
+      ).annotate({
+        identifier: "DeleteHostingWebDumpRequest",
+      });
+  }
+}
+function __c115(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          serviceName: S.String.pipe(T.Label()),
+          domain: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/hosting/web/{serviceName}/attachedDomain/{domain}/ssl",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateHostingWebAttachedDomainSslRequest",
+      });
+  }
+}
+function __c116(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          isReportable: S.optional(S.Boolean),
+          provider: S.optional(S.String),
+          regenerable: S.optional(S.Boolean),
+          status: S.optional(S.String),
+          taskId: S.optional(S.NullOr(S.Number)),
+          type: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "HostingWebSSL" });
+  }
+}
+function __c117(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          serviceName: S.String.pipe(T.Label()),
+          key: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({ method: "DELETE", uri: "/hosting/web/{serviceName}/envVar/{key}", code: 200 }),
+        ),
+      ).annotate({
+        identifier: "DeleteHostingWebEnvVarRequest",
+      });
+  }
+}
+function __c118(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          serviceName: S.String.pipe(T.Label()),
+          id: S.Number.pipe(T.Label()),
+        }).pipe(
+          T.Http({ method: "DELETE", uri: "/hosting/web/{serviceName}/module/{id}", code: 200 }),
+        ),
+      ).annotate({
+        identifier: "DeleteHostingWebModuleRequest",
+      });
+  }
+}
+function __c119(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          serviceName: S.String.pipe(T.Label()),
+          id: S.Number.pipe(T.Label()),
+          login: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/hosting/web/{serviceName}/ownLogs/{id}/userLogs/{login}",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteHostingWebOwnLogUserLogRequest",
+      });
+  }
+}
+function __c120(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          serviceName: S.String.pipe(T.Label()),
+          id: S.Number.pipe(T.Label()),
+        }).pipe(
+          T.Http({ method: "DELETE", uri: "/hosting/web/{serviceName}/runtime/{id}", code: 200 }),
+        ),
+      ).annotate({
+        identifier: "DeleteHostingWebRuntimeRequest",
+      });
+  }
+}
+function __c121(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          serviceName: S.String.pipe(T.Label()),
+          login: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({ method: "DELETE", uri: "/hosting/web/{serviceName}/user/{login}", code: 200 }),
+        ),
+      ).annotate({
+        identifier: "DeleteHostingWebUserRequest",
+      });
+  }
+}
+function __c122(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          serviceName: S.String.pipe(T.Label()),
+          id: S.Number.pipe(T.Label()),
+          deleteFiles: S.Boolean.pipe(T.Query()),
+        }).pipe(
+          T.Http({ method: "DELETE", uri: "/hosting/web/{serviceName}/website/{id}", code: 200 }),
+        ),
+      ).annotate({
+        identifier: "DeleteHostingWebWebsiteRequest",
+      });
+  }
+}
+function __c123(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          serviceName: S.String.pipe(T.Label()),
+          id: S.Number.pipe(T.Label()),
+          reset: S.optional(S.Boolean),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/hosting/web/{serviceName}/website/{id}/deploy",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "DeployHostingWebWebsiteRequest",
+      });
+  }
+}
+function __c124(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          serviceName: S.String.pipe(T.Label()),
+        }).pipe(T.Http({ method: "GET", uri: "/hosting/web/{serviceName}", code: 200 })),
+      ).annotate({ identifier: "GetHostingWebRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          currencyCode: S.optional(S.String),
+          priceInUcents: S.optional(S.NullOr(S.Number)),
+          text: S.optional(S.String),
+          value: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "OrderPrice" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          offer: S.optional(S.String),
+          price: S.optional(__S(1985, __c124, 1)),
+        }),
+      ).annotate({
+        identifier: "HostingWebAvailableOfferStruct",
+      });
+    case 3:
+      return S.Array(__S(1986, __c124, 2));
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          country: S.optional(S.String),
+          ip: S.optional(S.NullOr(S.String)),
+          ipv6: S.optional(S.NullOr(S.String)),
+        }),
+      ).annotate({ identifier: "HostingWebCountriesIp" });
+    case 5:
+      return S.Array(__S(1988, __c124, 4));
+    case 6:
+      return S.Record(S.String, S.String);
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          displayName: S.optional(S.NullOr(S.String)),
+          id: S.optional(S.String),
+          tags: S.optional(S.NullOr(__S(1990, __c124, 6))),
+          urn: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "IamResourceMetadata" });
+    case 8:
+      return S.suspend(() =>
+        S.Struct({
+          support: S.optional(S.String),
+          version: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "HostingWebPhpVersion" });
+    case 9:
+      return S.Array(__S(1992, __c124, 8));
+    case 10:
+      return S.suspend(() =>
+        S.Struct({
+          port: S.optional(S.Number),
+          url: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "HostingWebAddress" });
+    case 11:
+      return S.suspend(() =>
+        S.Struct({
+          ftp: S.optional(__S(1994, __c124, 10)),
+          http: S.optional(__S(1994, __c124, 10)),
+          ssh: S.optional(__S(1994, __c124, 10)),
+        }),
+      ).annotate({ identifier: "HostingWebServiceAccess" });
+    case 12:
+      return S.suspend(() =>
+        S.Struct({
+          availableBoostOffer: S.optional(__S(1987, __c124, 3)),
+          boostOffer: S.optional(S.NullOr(S.String)),
+          cluster: S.optional(S.String),
+          clusterIp: S.optional(S.NullOr(S.String)),
+          clusterIpv6: S.optional(S.NullOr(S.String)),
+          countriesIp: S.optional(S.NullOr(__S(1989, __c124, 5))),
+          datacenter: S.optional(S.String),
+          defaultAttachedDomain: S.optional(S.NullOr(S.String)),
+          displayName: S.optional(S.String),
+          filer: S.optional(S.NullOr(S.String)),
+          hasCdn: S.optional(S.NullOr(S.Boolean)),
+          hasHostedSsl: S.optional(S.NullOr(S.Boolean)),
+          home: S.optional(S.String),
+          hostingIp: S.optional(S.NullOr(S.String)),
+          hostingIpv6: S.optional(S.NullOr(S.String)),
+          iam: S.optional(S.NullOr(__S(1991, __c124, 7))),
+          lastOvhConfigScan: S.optional(S.NullOr(S.String)),
+          multipleSSL: S.optional(S.Boolean),
+          offer: S.optional(S.String),
+          operatingSystem: S.optional(S.String),
+          phpVersions: S.optional(__S(1993, __c124, 9)),
+          primaryLogin: S.optional(S.String),
+          quotaSize: S.optional(__S(2000, __c125, 0)),
+          quotaUsed: S.optional(S.NullOr(__S(2000, __c125, 0))),
+          recommendedOffer: S.optional(S.NullOr(S.String)),
+          resourceType: S.optional(S.String),
+          serviceManagementAccess: S.optional(__S(1995, __c124, 11)),
+          serviceName: S.optional(S.String),
+          state: S.optional(S.String),
+          token: S.optional(S.NullOr(S.String)),
+          trafficQuotaSize: S.optional(S.NullOr(__S(2000, __c125, 0))),
+          trafficQuotaUsed: S.optional(S.NullOr(__S(2000, __c125, 0))),
+          updates: S.optional(__S(2064, __c129, 0)),
+        }),
+      ).annotate({ identifier: "HostingWebServiceWithIAM" });
+  }
+}
+function __c125(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          unit: S.optional(S.String),
+          value: S.optional(S.Number),
+        }),
+      ).annotate({
+        identifier: "ComplexTypeUnitAndValueDouble",
+      });
+  }
+}
+function __c126(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          serviceName: S.String.pipe(T.Label()),
+          domain: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/hosting/web/{serviceName}/attachedDomain/{domain}",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "GetHostingWebAttachedDomainRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          description: S.optional(S.String),
+          href: S.optional(S.String),
+          key: S.optional(S.String),
+          method: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "HostingWebAttachedDomainCapabilities",
+      });
+    case 2:
+      return S.Array(__S(2017, __c126, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          capabilities: S.optional(__S(2018, __c126, 2)),
+          cdn: S.optional(S.String),
+          domain: S.optional(S.String),
+          firewall: S.optional(S.String),
+          ipLocation: S.optional(S.NullOr(S.String)),
+          isFlushable: S.optional(S.Boolean),
+          ownLog: S.optional(S.NullOr(S.String)),
+          path: S.optional(S.String),
+          runtimeId: S.optional(S.NullOr(S.Number)),
+          ssl: S.optional(S.NullOr(S.Boolean)),
+          status: S.optional(S.String),
+          taskId: S.optional(S.NullOr(S.Number)),
+          vcsStatus: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "HostingWebAttachedDomainPublicAttachedDomain",
+      });
+  }
+}
+function __c127(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          serviceName: S.String.pipe(T.Label()),
+          domain: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/hosting/web/{serviceName}/attachedDomain/{domain}/digStatus",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "GetHostingWebAttachedDomainDigStatusRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          recommendedIpV4: S.optional(__S(2064, __c129, 0)),
+          recommendedIpV6: S.optional(__S(2064, __c129, 0)),
+        }),
+      ).annotate({
+        identifier: "HostingWebAttachedDomainRecommendedIps",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          dnsConfigured: S.optional(S.Boolean),
+          isOvhIp: S.optional(S.Boolean),
+          type: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "HostingWebAttachedDomainRecordStatus",
+      });
+    case 3:
+      return S.Record(S.String, __S(2034, __c127, 2));
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          domain: S.optional(S.String),
+          recommendedIps: S.optional(__S(2033, __c127, 1)),
+          records: S.optional(__S(2035, __c127, 3)),
+        }),
+      ).annotate({
+        identifier: "HostingWebAttachedDomainDigStatus",
+      });
+  }
+}
+function __c128(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          serviceName: S.String.pipe(T.Label()),
+          domainName: S.String.pipe(T.Label()),
+          config: S.optional(S.NullOr(__S(2080, __c130, 0))),
+          enabled: S.Boolean,
+          name: S.String,
+          pattern: S.optional(S.NullOr(S.String)),
+          type: S.String,
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/hosting/web/{serviceName}/cdn/domain/{domainName}/option",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateHostingWebCdnDomainOptionRequest",
+      });
+  }
+}
+function __c129(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c130(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          destination: S.optional(S.NullOr(S.String)),
+          followUri: S.optional(S.NullOr(S.Boolean)),
+          origins: S.optional(S.NullOr(S.String)),
+          patternType: S.optional(S.NullOr(S.String)),
+          priority: S.optional(S.NullOr(S.Number)),
+          queryParameters: S.optional(S.NullOr(S.String)),
+          resources: S.optional(S.NullOr(__S(2064, __c129, 0))),
+          statusCode: S.optional(S.NullOr(S.Number)),
+          ttl: S.optional(S.NullOr(S.Number)),
+        }),
+      ).annotate({ identifier: "CdnDomainOptionConfig" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          quota: S.optional(S.NullOr(S.Number)),
+          usage: S.optional(S.NullOr(S.Number)),
+        }),
+      ).annotate({ identifier: "CdnDomainOptionExtra" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          config: S.optional(S.NullOr(__S(2080, __c130, 0))),
+          enabled: S.Boolean,
+          extra: S.optional(S.NullOr(__S(2081, __c130, 1))),
+          name: S.optional(S.String),
+          pattern: S.optional(S.NullOr(S.String)),
+          type: S.String,
+        }),
+      ).annotate({ identifier: "CdnDomainOption" });
+  }
+}
+function __c131(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          serviceName: S.String.pipe(T.Label()),
+          domain: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/hosting/web/{serviceName}/attachedDomain/{domain}/ssl",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "GetHostingWebAttachedDomainSslRequest",
+      });
+  }
+}
+function __c132(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          serviceName: S.String.pipe(T.Label()),
+          date: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/hosting/web/{serviceName}/boostHistory/{date}",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "GetHostingWebBoostHistoryRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          accountId: S.optional(S.String),
+          boostOffer: S.optional(S.NullOr(S.String)),
+          date: S.optional(S.String),
+          offer: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "HostingWebBoostHistory" });
+  }
+}
+function __c133(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          serviceName: S.String.pipe(T.Label()),
+        }).pipe(T.Http({ method: "GET", uri: "/hosting/web/{serviceName}/cdn", code: 200 })),
+      ).annotate({ identifier: "GetHostingWebCdnRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          domain: S.optional(S.String),
+          free: S.optional(S.Boolean),
+          status: S.optional(S.String),
+          taskId: S.optional(S.NullOr(S.Number)),
+          type: S.optional(S.String),
+          version: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "HostingWebCDN" });
+  }
+}
+function __c134(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          serviceName: S.String.pipe(T.Label()),
+          domainName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/hosting/web/{serviceName}/cdn/domain/{domainName}",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "GetHostingWebCdnDomainRequest",
+      });
+  }
+}
+function __c135(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          creationDate: S.optional(S.String),
+          name: S.optional(S.String),
+          needRefresh: S.optional(S.Boolean),
+          status: S.optional(S.String),
+          updatedDate: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "CdnDomain" });
+  }
+}
+function __c136(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          serviceName: S.String.pipe(T.Label()),
+          domainName: S.String.pipe(T.Label()),
+          date: S.optional(S.String.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/hosting/web/{serviceName}/cdn/domain/{domainName}/logs",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "GetHostingWebCdnDomainLogsRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          url: S.optional(S.String),
+          validity: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "CdnLogs" });
+  }
+}
+function __c137(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          serviceName: S.String.pipe(T.Label()),
+          domainName: S.String.pipe(T.Label()),
+          optionName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/hosting/web/{serviceName}/cdn/domain/{domainName}/option/{optionName}",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "GetHostingWebCdnDomainOptionRequest",
+      });
+  }
+}
+function __c138(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          serviceName: S.String.pipe(T.Label()),
+          id: S.Number.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/hosting/web/{serviceName}/cdn/operation/{id}",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "GetHostingWebCdnOperationRequest",
+      });
+  }
+}
+function __c139(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          anycastIp: S.optional(S.NullOr(S.String)),
+          cluster: S.optional(S.NullOr(S.String)),
+          date: S.optional(S.NullOr(S.String)),
+          domainName: S.optional(S.NullOr(S.String)),
+          fingerprint: S.optional(S.NullOr(S.String)),
+          offer: S.optional(S.NullOr(S.String)),
+          pattern: S.optional(S.NullOr(S.String)),
+          service: S.optional(S.NullOr(S.String)),
+          sslId: S.optional(S.NullOr(S.Number)),
+        }),
+      ).annotate({ identifier: "CdnOperationParameter" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          comment: S.optional(S.NullOr(S.String)),
+          creationDate: S.optional(S.String),
+          function: S.optional(S.String),
+          id: S.optional(S.Number),
+          parameter: S.optional(__S(2224, __c139, 0)),
+          service: S.optional(S.String),
+          status: S.optional(S.String),
+          todoDate: S.optional(S.String),
+          updatedDate: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "CdnOperation" });
+  }
+}
+function __c140(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          serviceName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({ method: "GET", uri: "/hosting/web/{serviceName}/cdn/serviceInfos", code: 200 }),
+        ),
+      ).annotate({
+        identifier: "GetHostingWebCdnServiceInfosRequest",
+      });
+  }
+}
+function __c141(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          canDeleteAtExpiration: S.optional(S.Boolean),
+          contactAdmin: S.optional(S.String),
+          contactBilling: S.optional(S.String),
+          contactTech: S.optional(S.String),
+          creation: S.optional(S.String),
+          domain: S.optional(S.String),
+          engagedUpTo: S.optional(S.NullOr(S.String)),
+          expiration: S.optional(S.String),
+          possibleRenewPeriod: S.optional(S.NullOr(__S(2544, __c159, 0))),
+          renew: S.optional(S.NullOr(__S(2320, __c145, 0))),
+          renewalType: S.optional(S.String),
+          serviceId: S.optional(S.Number),
+          status: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ServicesService" });
+  }
+}
+function __c142(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          serviceName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({ method: "GET", uri: "/hosting/web/{serviceName}/configuration", code: 200 }),
+        ),
+      ).annotate({
+        identifier: "GetHostingWebConfigurationRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          appEnv: S.optional(S.String),
+          entryPoint: S.optional(S.NullOr(S.String)),
+          id: S.optional(S.Number),
+          language: S.optional(S.String),
+          publicDir: S.optional(S.NullOr(S.String)),
+          status: S.optional(S.String),
+          version: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "HostingWebConfiguration" });
+  }
+}
+function __c143(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          serviceName: S.String.pipe(T.Label()),
+          id: S.Number.pipe(T.Label()),
+        }).pipe(T.Http({ method: "GET", uri: "/hosting/web/{serviceName}/cron/{id}", code: 200 })),
+      ).annotate({ identifier: "GetHostingWebCronRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          command: S.String,
+          description: S.optional(S.NullOr(S.String)),
+          email: S.optional(S.NullOr(S.String)),
+          frequency: S.String,
+          id: S.optional(S.Number),
+          language: S.String,
+          state: S.optional(S.String),
+          status: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "HostingWebCron" });
+  }
+}
+function __c144(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          serviceName: S.String.pipe(T.Label()),
+          renew: __S(2320, __c145, 0),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/hosting/web/{serviceName}/cdn/serviceInfosUpdate",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateHostingWebCdnServiceInfosUpdateRequest",
+      });
+  }
+}
+function __c145(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          automatic: S.optional(S.Boolean),
+          deleteAtExpiration: S.optional(S.Boolean),
+          forced: S.optional(S.Boolean),
+          manualPayment: S.optional(S.NullOr(S.Boolean)),
+          period: S.optional(S.NullOr(S.Number)),
+        }),
+      ).annotate({ identifier: "ServiceRenewType" });
+  }
+}
+function __c146(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "CreateHostingWebCdnServiceInfosUpdateResponse",
+      });
+  }
+}
+function __c147(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          serviceName: S.String.pipe(T.Label()),
+          name: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({ method: "GET", uri: "/hosting/web/{serviceName}/database/{name}", code: 200 }),
+        ),
+      ).annotate({
+        identifier: "GetHostingWebDatabaseRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          databaseServiceDeprecated: S.optional(S.Boolean),
+          databaseType: S.optional(S.NullOr(S.String)),
+          dumps: S.optional(S.Number),
+          guiURL: S.optional(S.NullOr(S.String)),
+          lastCheck: S.optional(S.NullOr(S.String)),
+          mode: S.optional(S.String),
+          name: S.optional(S.String),
+          port: S.optional(S.Number),
+          quotaSize: S.optional(__S(2000, __c125, 0)),
+          quotaUsed: S.optional(__S(2000, __c125, 0)),
+          server: S.optional(S.NullOr(S.String)),
+          state: S.optional(S.String),
+          status: S.optional(S.String),
+          taskId: S.optional(S.NullOr(S.Number)),
+          type: S.optional(S.String),
+          user: S.optional(S.String),
+          version: S.optional(S.String),
+          versionSupport: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "HostingWebDatabase" });
+  }
+}
+function __c148(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          serviceName: S.String.pipe(T.Label()),
+          name: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/hosting/web/{serviceName}/database/{name}/capabilities",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "GetHostingWebDatabaseCapabilitiesRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          changePassword: S.optional(S.Boolean),
+          changeRight: S.optional(S.Boolean),
+          delete: S.optional(S.Boolean),
+          dump: S.optional(S.Boolean),
+          getQuota: S.optional(S.Boolean),
+          getRight: S.optional(S.Boolean),
+          guiURL: S.optional(S.String),
+          optimize: S.optional(S.Boolean),
+          restore: S.optional(S.Boolean),
+        }),
+      ).annotate({
+        identifier: "HostingWebDatabaseDatabaseCapabilities",
+      });
+  }
+}
+function __c149(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          serviceName: S.String.pipe(T.Label()),
+          name: S.String.pipe(T.Label()),
+          id: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/hosting/web/{serviceName}/database/{name}/copy/{id}",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "GetHostingWebDatabaseCopyRequest",
+      });
+  }
+}
+function __c150(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          serviceName: S.String.pipe(T.Label()),
+          name: S.String.pipe(T.Label()),
+          id: S.Number.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/hosting/web/{serviceName}/database/{name}/dump/{id}",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "GetHostingWebDatabaseDumpRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          creationDate: S.optional(S.String),
+          deletionDate: S.optional(S.String),
+          id: S.optional(S.Number),
+          status: S.optional(S.String),
+          taskId: S.optional(S.NullOr(S.Number)),
+          type: S.optional(S.String),
+          url: S.optional(S.NullOr(S.String)),
+        }),
+      ).annotate({ identifier: "HostingWebDatabaseDump" });
+  }
+}
+function __c151(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          serviceName: S.String.pipe(T.Label()),
+          id: S.Number.pipe(T.Label()),
+        }).pipe(T.Http({ method: "GET", uri: "/hosting/web/{serviceName}/dump/{id}", code: 200 })),
+      ).annotate({ identifier: "GetHostingWebDumpRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          creationDate: S.optional(S.String),
+          databaseName: S.optional(S.String),
+          deletionDate: S.optional(S.String),
+          id: S.optional(S.Number),
+          orphan: S.optional(S.Boolean),
+          status: S.optional(S.String),
+          taskId: S.optional(S.NullOr(S.Number)),
+          type: S.optional(S.String),
+          url: S.optional(S.NullOr(S.String)),
+        }),
+      ).annotate({ identifier: "HostingWebDump" });
+  }
+}
+function __c152(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          serviceName: S.String.pipe(T.Label()),
+        }).pipe(T.Http({ method: "GET", uri: "/hosting/web/{serviceName}/email", code: 200 })),
+      ).annotate({
+        identifier: "GetHostingWebEmailRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          bounce: S.optional(S.Number),
+          email: S.optional(S.NullOr(S.String)),
+          maxPerDay: S.optional(S.Number),
+          sent: S.optional(S.Number),
+          sentToday: S.optional(S.Number),
+          state: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "HostingWebEmail" });
+  }
+}
+function __c153(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          serviceName: S.String.pipe(T.Label()),
+          id: S.Number.pipe(T.Label()),
+        }).pipe(
+          T.Http({ method: "GET", uri: "/hosting/web/{serviceName}/emailOption/{id}", code: 200 }),
+        ),
+      ).annotate({
+        identifier: "GetHostingWebEmailOptionRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          creationDate: S.optional(S.String),
+          domain: S.optional(S.String),
+          id: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "HostingWebEmailoption" });
+  }
+}
+function __c154(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          serviceName: S.String.pipe(T.Label()),
+          id: S.Number.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/hosting/web/{serviceName}/emailOption/{id}/serviceInfos",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "GetHostingWebEmailOptionServiceInfosRequest",
+      });
+  }
+}
+function __c155(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          serviceName: S.String.pipe(T.Label()),
+          key: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({ method: "GET", uri: "/hosting/web/{serviceName}/envVar/{key}", code: 200 }),
+        ),
+      ).annotate({
+        identifier: "GetHostingWebEnvVarRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          key: S.optional(S.String),
+          status: S.optional(S.String),
+          taskId: S.optional(S.NullOr(S.Number)),
+          type: S.optional(S.String),
+          value: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "HostingWebEnvVar" });
+  }
+}
+function __c156(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          serviceName: S.String.pipe(T.Label()),
+          name: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/hosting/web/{serviceName}/extraSqlPerso/{name}",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "GetHostingWebExtraSqlPersoRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          database: S.optional(S.Number),
+          name: S.optional(S.String),
+          size: S.optional(__S(2000, __c125, 0)),
+          status: S.optional(S.String),
+          taskId: S.optional(S.NullOr(S.Number)),
+          usage: S.optional(__S(2064, __c129, 0)),
+        }),
+      ).annotate({ identifier: "HostingWebExtrasqlperso" });
+  }
+}
+function __c157(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          serviceName: S.String.pipe(T.Label()),
+          contactAdmin: S.optional(S.String),
+          contactBilling: S.optional(S.String),
+          contactTech: S.optional(S.String),
+        }).pipe(
+          T.Http({ method: "POST", uri: "/hosting/web/{serviceName}/changeContact", code: 200 }),
+        ),
+      ).annotate({
+        identifier: "CreateHostingWebChangeContactRequest",
+      });
+  }
+}
+function __c158(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => __S(2544, __c159, 0).pipe(T.RawResponseRoot())).annotate({
+        identifier: "CreateHostingWebChangeContactResponse",
+      });
+  }
+}
+function __c159(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.Number);
+  }
+}
+function __c160(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          serviceName: S.String.pipe(T.Label()),
+          name: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/hosting/web/{serviceName}/extraSqlPerso/{name}/serviceInfos",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "GetHostingWebExtraSqlPersoServiceInfosRequest",
+      });
+  }
+}
+function __c161(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          serviceName: S.String.pipe(T.Label()),
+          login: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({ method: "GET", uri: "/hosting/web/{serviceName}/indy/{login}", code: 200 }),
+        ),
+      ).annotate({ identifier: "GetHostingWebIndyRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          attachedDomains: S.optional(__S(2064, __c129, 0)),
+          home: S.optional(S.String),
+          login: S.optional(S.String),
+          state: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "HostingWebIndy" });
+  }
+}
+function __c162(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          serviceName: S.String.pipe(T.Label()),
+        }).pipe(T.Http({ method: "GET", uri: "/hosting/web/{serviceName}/key/ssh", code: 200 })),
+      ).annotate({
+        identifier: "GetHostingWebKeySshRequest",
+      });
+  }
+}
+function __c163(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          serviceName: S.String.pipe(T.Label()),
+          id: S.Number.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/hosting/web/{serviceName}/localSeo/account/{id}",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "GetHostingWebLocalSeoAccountRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          creationDate: S.optional(S.String),
+          email: S.optional(S.String),
+          id: S.optional(S.Number),
+          lastUpdate: S.optional(S.String),
+          status: S.optional(S.String),
+          taskId: S.optional(S.NullOr(S.Number)),
+        }),
+      ).annotate({
+        identifier: "HostingWebLocalSeoAccount",
+      });
+  }
+}
+function __c164(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          email: S.String.pipe(T.Query()),
+        }).pipe(
+          T.Http({ method: "GET", uri: "/hosting/web/localSeo/emailAvailability", code: 200 }),
+        ),
+      ).annotate({
+        identifier: "GetHostingWebLocalSeoEmailAvailabilityRequest",
+      });
+  }
+}
+function __c165(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          availability: S.optional(S.String),
+          serviceName: S.optional(S.NullOr(S.String)),
+        }),
+      ).annotate({
+        identifier: "HostingWebLocalSeoEmailAvailability",
+      });
+  }
+}
+function __c166(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          serviceName: S.String.pipe(T.Label()),
+          email: S.String.pipe(T.Query()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/hosting/web/{serviceName}/localSeo/emailAvailability",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "GetHostingWebLocalSeoEmailAvailabilityRequest2",
+      });
+  }
+}
+function __c167(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          serviceName: S.String.pipe(T.Label()),
+          id: S.Number.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/hosting/web/{serviceName}/localSeo/location/{id}",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "GetHostingWebLocalSeoLocationRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          accountId: S.optional(S.NullOr(S.Number)),
+          address: S.optional(S.NullOr(S.String)),
+          country: S.optional(S.String),
+          creationDate: S.optional(S.String),
+          id: S.optional(S.Number),
+          lastUpdate: S.optional(S.String),
+          name: S.optional(S.NullOr(S.String)),
+          offer: S.optional(S.String),
+          status: S.optional(S.String),
+          taskId: S.optional(S.NullOr(S.Number)),
+        }),
+      ).annotate({
+        identifier: "HostingWebLocalSeoLocation",
+      });
+  }
+}
+function __c168(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          serviceName: S.String.pipe(T.Label()),
+          id: S.Number.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/hosting/web/{serviceName}/localSeo/location/{id}/serviceInfos",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "GetHostingWebLocalSeoLocationServiceInfosRequest",
+      });
+  }
+}
+function __c169(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          serviceName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({ method: "GET", uri: "/hosting/web/{serviceName}/metricsToken", code: 200 }),
+        ),
+      ).annotate({
+        identifier: "GetHostingWebMetricsTokenRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          endpoint: S.optional(S.String),
+          expiry: S.optional(S.String),
+          token: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "HostingWebMetricsToken" });
+  }
+}
+function __c170(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          serviceName: S.String.pipe(T.Label()),
+          id: S.Number.pipe(T.Label()),
+        }).pipe(
+          T.Http({ method: "GET", uri: "/hosting/web/{serviceName}/module/{id}", code: 200 }),
+        ),
+      ).annotate({
+        identifier: "GetHostingWebModuleRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          adminFolder: S.optional(S.String),
+          adminName: S.optional(S.String),
+          creationDate: S.optional(S.String),
+          dependencies: S.optional(__S(1441, __c90, 1)),
+          id: S.optional(S.Number),
+          language: S.optional(S.String),
+          lastUpdate: S.optional(S.String),
+          moduleId: S.optional(S.Number),
+          path: S.optional(S.String),
+          status: S.optional(S.String),
+          targetUrl: S.optional(S.String),
+          taskId: S.optional(S.NullOr(S.Number)),
+        }),
+      ).annotate({ identifier: "HostingWebModule" });
+  }
+}
+function __c171(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          serviceName: S.String.pipe(T.Label()),
+          command: S.String,
+          description: S.optional(S.NullOr(S.String)),
+          email: S.optional(S.NullOr(S.String)),
+          frequency: S.String,
+          language: S.String,
+          status: S.optional(S.String),
+        }).pipe(T.Http({ method: "POST", uri: "/hosting/web/{serviceName}/cron", code: 200 })),
+      ).annotate({
+        identifier: "CreateHostingWebCronRequest",
+      });
+  }
+}
+function __c172(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.Number.pipe(T.Label()),
+        }).pipe(T.Http({ method: "GET", uri: "/hosting/web/moduleList/{id}", code: 200 })),
+      ).annotate({
+        identifier: "GetHostingWebModuleListRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          unit: S.optional(S.String),
+          value: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "ComplexTypeUnitAndValueString",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          active: S.optional(S.Boolean),
+          adminNameType: S.optional(S.String),
+          author: S.optional(S.String),
+          branch: S.optional(S.String),
+          id: S.optional(S.Number),
+          keywords: S.optional(__S(2064, __c129, 0)),
+          language: S.optional(__S(2768, __c173, 0)),
+          languageRequirement: S.optional(__S(2753, __c172, 1)),
+          latest: S.optional(S.Boolean),
+          name: S.optional(S.String),
+          size: S.optional(__S(2000, __c125, 0)),
+          upgradeFrom: S.optional(__S(2544, __c159, 0)),
+          version: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "HostingWebModuleList" });
+  }
+}
+function __c173(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c174(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          offer: S.String.pipe(T.Query()),
+        }).pipe(T.Http({ method: "GET", uri: "/hosting/web/offerCapabilities", code: 200 })),
+      ).annotate({
+        identifier: "GetHostingWebOfferCapabilitiesRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          type: S.optional(S.String),
+          unit: S.optional(S.String),
+          value: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "HostingWebDiskType" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          available: S.optional(S.Number),
+          quota: S.optional(__S(2000, __c125, 0)),
+        }),
+      ).annotate({
+        identifier: "HostingWebCreationEmailCapabilities",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          nodejs: S.optional(__S(2768, __c173, 0)),
+          php: S.optional(__S(2768, __c173, 0)),
+          python: S.optional(__S(2768, __c173, 0)),
+          ruby: S.optional(__S(2768, __c173, 0)),
+        }),
+      ).annotate({
+        identifier: "HostingWebCronLanguageAvailable",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          attachedDomains: S.optional(S.Number),
+          crontab: S.optional(S.Boolean),
+          databaseEngines: S.optional(S.Number),
+          databases: S.optional(__S(2800, __c175, 0)),
+          disk: S.optional(S.NullOr(__S(2785, __c174, 1))),
+          emails: S.optional(__S(2786, __c174, 2)),
+          envVars: S.optional(S.Number),
+          extraUsers: S.optional(S.Number),
+          filesBrowser: S.optional(S.Boolean),
+          highlight: S.optional(S.NullOr(S.String)),
+          languages: S.optional(__S(2787, __c174, 3)),
+          moduleOneClick: S.optional(S.Boolean),
+          privateDatabases: S.optional(__S(2800, __c175, 0)),
+          runtimes: S.optional(S.Number),
+          sitesRecommended: S.optional(S.NullOr(S.Number)),
+          ssh: S.optional(S.Boolean),
+          traffic: S.optional(S.NullOr(__S(2000, __c125, 0))),
+        }),
+      ).annotate({ identifier: "HostingWebCapabilities" });
+  }
+}
+function __c175(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(2816, __c176, 0));
+  }
+}
+function __c176(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          available: S.optional(S.Number),
+          engines: S.optional(__S(2768, __c173, 0)),
+          isolation: S.optional(S.String),
+          quota: S.optional(__S(2000, __c125, 0)),
+          type: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "HostingWebDatabaseCreationDatabaseCapabilities",
+      });
+  }
+}
+function __c177(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          serviceName: S.String.pipe(T.Label()),
+          id: S.Number.pipe(T.Label()),
+        }).pipe(
+          T.Http({ method: "GET", uri: "/hosting/web/{serviceName}/ovhConfig/{id}", code: 200 }),
+        ),
+      ).annotate({
+        identifier: "GetHostingWebOvhConfigRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          container: S.optional(S.String),
+          creationDate: S.optional(S.String),
+          engineName: S.optional(S.String),
+          engineVersion: S.optional(S.String),
+          environment: S.optional(S.String),
+          fileExist: S.optional(S.Boolean),
+          historical: S.optional(S.NullOr(S.Boolean)),
+          httpFirewall: S.optional(S.String),
+          id: S.optional(S.Number),
+          path: S.optional(S.NullOr(S.String)),
+          status: S.optional(S.String),
+          taskId: S.optional(S.NullOr(S.Number)),
+        }),
+      ).annotate({ identifier: "HostingWebOvhConfig" });
+  }
+}
+function __c178(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          serviceName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/hosting/web/{serviceName}/ovhConfigRecommendedValues",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "GetHostingWebOvhConfigRecommendedValuesRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          container: S.optional(S.String),
+          engineName: S.optional(S.String),
+          engineVersion: S.optional(S.String),
+          environment: S.optional(S.String),
+          httpFirewall: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "HostingWebOvhConfigRecommendedValues",
+      });
+  }
+}
+function __c179(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          serviceName: S.String.pipe(T.Label()),
+          id: S.Number.pipe(T.Label()),
+        }).pipe(
+          T.Http({ method: "GET", uri: "/hosting/web/{serviceName}/ownLogs/{id}", code: 200 }),
+        ),
+      ).annotate({
+        identifier: "GetHostingWebOwnLogRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          fqdn: S.optional(S.String),
+          id: S.optional(S.Number),
+          logs: S.optional(S.String),
+          stats: S.optional(S.String),
+          status: S.optional(S.String),
+          taskId: S.optional(S.NullOr(S.Number)),
+        }),
+      ).annotate({ identifier: "HostingWebOwnLogs" });
+  }
+}
+function __c180(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          serviceName: S.String.pipe(T.Label()),
+          id: S.Number.pipe(T.Label()),
+          login: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/hosting/web/{serviceName}/ownLogs/{id}/userLogs/{login}",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "GetHostingWebOwnLogUserLogRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          creationDate: S.optional(S.String),
+          description: S.optional(S.NullOr(S.String)),
+          login: S.optional(S.String),
+          ownLogsId: S.optional(S.NullOr(S.Number)),
+          status: S.optional(S.String),
+          taskId: S.optional(S.NullOr(S.Number)),
+        }),
+      ).annotate({ identifier: "HostingWebUserLogs" });
+  }
+}
+function __c181(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          serviceName: S.String.pipe(T.Label()),
+          id: S.Number.pipe(T.Label()),
+        }).pipe(
+          T.Http({ method: "GET", uri: "/hosting/web/{serviceName}/runtime/{id}", code: 200 }),
+        ),
+      ).annotate({
+        identifier: "GetHostingWebRuntimeRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          appBootstrap: S.optional(S.NullOr(S.String)),
+          appEnv: S.optional(S.String),
+          creationDate: S.optional(S.String),
+          id: S.optional(S.Number),
+          isDefault: S.optional(S.Boolean),
+          isDeletable: S.optional(S.Boolean),
+          lastUpdate: S.optional(S.String),
+          name: S.optional(S.NullOr(S.String)),
+          publicDir: S.optional(S.NullOr(S.String)),
+          status: S.optional(S.String),
+          taskId: S.optional(S.NullOr(S.Number)),
+          type: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "HostingWebRuntime" });
+  }
+}
+function __c182(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          serviceName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({ method: "GET", uri: "/hosting/web/{serviceName}/serviceInfos", code: 200 }),
+        ),
+      ).annotate({
+        identifier: "GetHostingWebServiceInfosRequest",
+      });
+  }
+}
+function __c183(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          serviceName: S.String.pipe(T.Label()),
+          id: S.Number.pipe(T.Label()),
+        }).pipe(T.Http({ method: "GET", uri: "/hosting/web/{serviceName}/tasks/{id}", code: 200 })),
+      ).annotate({ identifier: "GetHostingWebTaskRequest" });
+  }
+}
+function __c184(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          serviceName: S.String.pipe(T.Label()),
+        }).pipe(T.Http({ method: "GET", uri: "/hosting/web/{serviceName}/token", code: 200 })),
+      ).annotate({
+        identifier: "GetHostingWebTokenRequest",
+      });
+  }
+}
+function __c185(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          serviceName: S.String.pipe(T.Label()),
+          capabilitie: S.String,
+          password: S.optional(S.String.pipe(T.SensitiveValue({}))),
+          quota: S.optional(S.Number),
+          type: S.String,
+          user: S.String,
+          version: S.optional(S.String),
+        }).pipe(T.Http({ method: "POST", uri: "/hosting/web/{serviceName}/database", code: 200 })),
+      ).annotate({
+        identifier: "CreateHostingWebDatabaseRequest",
+      });
+  }
+}
+function __c186(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          serviceName: S.String.pipe(T.Label()),
+          login: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({ method: "GET", uri: "/hosting/web/{serviceName}/user/{login}", code: 200 }),
+        ),
+      ).annotate({ identifier: "GetHostingWebUserRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          port: S.optional(S.Number),
+          url: S.optional(S.String),
+          user: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "HostingWebUserCredentials",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          ftp: S.optional(__S(2977, __c186, 1)),
+          ssh: S.optional(__S(2977, __c186, 1)),
+        }),
+      ).annotate({
+        identifier: "HostingWebUserServiceCredentials",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          home: S.optional(S.String),
+          isPrimaryAccount: S.optional(S.Boolean),
+          login: S.optional(S.String),
+          serviceManagementCredentials: S.optional(__S(2978, __c186, 2)),
+          sshState: S.optional(S.String),
+          state: S.optional(S.String),
+          status: S.optional(S.String),
+          taskId: S.optional(S.NullOr(S.Number)),
+        }),
+      ).annotate({ identifier: "HostingWebUser" });
+  }
+}
+function __c187(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          serviceName: S.String.pipe(T.Label()),
+          attachedDomain: S.optional(S.String.pipe(T.Query())),
+          remoteCheck: S.optional(S.Boolean.pipe(T.Query())),
+          ttl: S.optional(S.Number.pipe(T.Query())),
+        }).pipe(
+          T.Http({ method: "GET", uri: "/hosting/web/{serviceName}/userLogsToken", code: 200 }),
+        ),
+      ).annotate({
+        identifier: "GetHostingWebUserLogsTokenRequest",
+      });
+  }
+}
+function __c188(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          serviceName: S.String.pipe(T.Label()),
+          path: S.String.pipe(T.Query()),
+          vcs: S.String.pipe(T.Query()),
+        }).pipe(
+          T.Http({ method: "GET", uri: "/hosting/web/{serviceName}/vcs/webhooks", code: 200 }),
+        ),
+      ).annotate({
+        identifier: "GetHostingWebVcsWebhooksRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          push: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "HostingWebVcsWebhooks" });
+  }
+}
+function __c189(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          serviceName: S.String.pipe(T.Label()),
+          id: S.Number.pipe(T.Label()),
+        }).pipe(
+          T.Http({ method: "GET", uri: "/hosting/web/{serviceName}/website/{id}", code: 200 }),
+        ),
+      ).annotate({
+        identifier: "GetHostingWebWebsiteRequest",
+      });
+  }
+}
+function __c190(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          cdn: S.optional(S.Boolean),
+          fqdn: S.optional(S.String),
+          ssl: S.optional(S.Boolean),
+        }),
+      ).annotate({ identifier: "HostingWebWebsiteDomain" });
+    case 1:
+      return S.Array(__S(3040, __c190, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          domains: S.optional(__S(3041, __c190, 1)),
+          hostingDisplayName: S.optional(S.String),
+          hostingServiceName: S.optional(S.String),
+          id: S.optional(S.Number),
+          name: S.optional(S.NullOr(S.String)),
+          path: S.optional(S.String),
+          status: S.optional(S.String),
+          vcsBranch: S.optional(S.String),
+          vcsUrl: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "HostingWebWebsite" });
+  }
+}
+function __c191(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          serviceName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/hosting/web/{serviceName}/websiteCreationCapabilities",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "GetHostingWebWebsiteCreationCapabilitiesRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          allowedWebsites: S.optional(S.Number),
+          existingWebsites: S.optional(S.Number),
+        }),
+      ).annotate({
+        identifier: "HostingWebWebsiteCreationCapabilities",
+      });
+  }
+}
+function __c192(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          serviceName: S.String.pipe(T.Label()),
+          id: S.Number.pipe(T.Label()),
+          deploymentId: S.Number.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/hosting/web/{serviceName}/website/{id}/deployment/{deploymentId}",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "GetHostingWebWebsiteDeploymentRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          date: S.optional(S.String),
+          id: S.optional(S.Number),
+          reset: S.optional(S.Boolean),
+          source: S.optional(S.String),
+          status: S.optional(S.String),
+          vcsBranch: S.optional(S.String),
+          vcsCommitId: S.optional(S.NullOr(S.String)),
+          vcsCommitMessage: S.optional(S.NullOr(S.String)),
+          websiteId: S.optional(S.Number),
+        }),
+      ).annotate({
+        identifier: "HostingWebWebsiteDeployment",
+      });
+  }
+}
+function __c193(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          serviceName: S.String.pipe(T.Label()),
+          name: S.String.pipe(T.Label()),
+          documentId: S.String,
+          flushDatabase: S.optional(S.Boolean),
+          sendEmail: S.optional(S.Boolean),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/hosting/web/{serviceName}/database/{name}/import",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "ImportHostingWebDatabaseRequest",
+      });
+  }
+}
+function __c194(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(3120, __c195, 0));
+    case 1:
+      return S.Record(S.String, __S(3104, __c194, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          iamTags: S.optional(__S(3105, __c194, 1).pipe(T.Query())),
+        }).pipe(T.Http({ method: "GET", uri: "/hosting/web", code: 200 })),
+      ).annotate({ identifier: "ListHostingWebRequest" });
+    case 3:
+      return S.suspend(() => __S(2064, __c129, 0).pipe(T.RawResponseRoot())).annotate({
+        identifier: "ListHostingWebResponse",
+      });
+  }
+}
+function __c195(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "IamResourceTagFilterInput",
+      });
+  }
+}
+function __c196(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          domain: S.String.pipe(T.Query()),
+        }).pipe(T.Http({ method: "GET", uri: "/hosting/web/attachedDomain", code: 200 })),
+      ).annotate({
+        identifier: "ListHostingWebAttachedDomainRequest",
+      });
+  }
+}
+function __c197(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => __S(2064, __c129, 0).pipe(T.RawResponseRoot())).annotate({
+        identifier: "ListHostingWebAttachedDomainResponse",
+      });
+  }
+}
+function __c198(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          serviceName: S.String.pipe(T.Label()),
+          domain: S.optional(S.String.pipe(T.Query())),
+          path: S.optional(S.String.pipe(T.Query())),
+        }).pipe(
+          T.Http({ method: "GET", uri: "/hosting/web/{serviceName}/attachedDomain", code: 200 }),
+        ),
+      ).annotate({
+        identifier: "ListHostingWebAttachedDomainRequest2",
+      });
+  }
+}
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

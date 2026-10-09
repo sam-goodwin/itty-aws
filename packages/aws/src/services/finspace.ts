@@ -1287,8 +1287,8 @@ export const createEnvironment: API.OperationMethod<
   CreateEnvironmentError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(5, __c0, 5) as any as S.Schema<CreateEnvironmentRequest>,
-  output: __S(6, __c0, 6) as any as S.Schema<CreateEnvironmentResponse>,
+  input: __S(1, __c0, 1) as any as S.Schema<CreateEnvironmentRequest>,
+  output: __S(2, __c0, 2) as any as S.Schema<CreateEnvironmentResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1320,8 +1320,8 @@ export const createKxChangeset: API.OperationMethod<
   CreateKxChangesetError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(9, __c1, 1) as any as S.Schema<CreateKxChangesetRequest>,
-  output: __S(11, __c1, 3) as any as S.Schema<CreateKxChangesetResponse>,
+  input: __S(32, __c4, 0) as any as S.Schema<CreateKxChangesetRequest>,
+  output: __S(33, __c4, 1) as any as S.Schema<CreateKxChangesetResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1354,8 +1354,8 @@ export const createKxCluster: API.OperationMethod<
   CreateKxClusterError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(30, __c3, 6) as any as S.Schema<CreateKxClusterRequest>,
-  output: __S(33, __c4, 1) as any as S.Schema<CreateKxClusterResponse>,
+  input: __S(48, __c6, 0) as any as S.Schema<CreateKxClusterRequest>,
+  output: __S(49, __c6, 1) as any as S.Schema<CreateKxClusterResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1389,8 +1389,8 @@ export const createKxDatabase: API.OperationMethod<
   CreateKxDatabaseError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(34, __c4, 2) as any as S.Schema<CreateKxDatabaseRequest>,
-  output: __S(35, __c4, 3) as any as S.Schema<CreateKxDatabaseResponse>,
+  input: __S(96, __c12, 0) as any as S.Schema<CreateKxDatabaseRequest>,
+  output: __S(97, __c12, 1) as any as S.Schema<CreateKxDatabaseResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1425,8 +1425,8 @@ export const createKxDataview: API.OperationMethod<
   CreateKxDataviewError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(36, __c4, 4) as any as S.Schema<CreateKxDataviewRequest>,
-  output: __S(37, __c4, 5) as any as S.Schema<CreateKxDataviewResponse>,
+  input: __S(104, __c13, 0) as any as S.Schema<CreateKxDataviewRequest>,
+  output: __S(105, __c13, 1) as any as S.Schema<CreateKxDataviewResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1460,8 +1460,8 @@ export const createKxEnvironment: API.OperationMethod<
   CreateKxEnvironmentError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(38, __c4, 6) as any as S.Schema<CreateKxEnvironmentRequest>,
-  output: __S(39, __c4, 7) as any as S.Schema<CreateKxEnvironmentResponse>,
+  input: __S(112, __c14, 0) as any as S.Schema<CreateKxEnvironmentRequest>,
+  output: __S(113, __c14, 1) as any as S.Schema<CreateKxEnvironmentResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1494,8 +1494,8 @@ export const createKxScalingGroup: API.OperationMethod<
   CreateKxScalingGroupError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(40, __c5, 0) as any as S.Schema<CreateKxScalingGroupRequest>,
-  output: __S(41, __c5, 1) as any as S.Schema<CreateKxScalingGroupResponse>,
+  input: __S(120, __c15, 0) as any as S.Schema<CreateKxScalingGroupRequest>,
+  output: __S(121, __c15, 1) as any as S.Schema<CreateKxScalingGroupResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1529,8 +1529,8 @@ export const createKxUser: API.OperationMethod<
   CreateKxUserError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(42, __c5, 2) as any as S.Schema<CreateKxUserRequest>,
-  output: __S(43, __c5, 3) as any as S.Schema<CreateKxUserResponse>,
+  input: __S(128, __c16, 0) as any as S.Schema<CreateKxUserRequest>,
+  output: __S(136, __c17, 0) as any as S.Schema<CreateKxUserResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1565,8 +1565,8 @@ export const createKxVolume: API.OperationMethod<
   CreateKxVolumeError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(45, __c5, 5) as any as S.Schema<CreateKxVolumeRequest>,
-  output: __S(46, __c5, 6) as any as S.Schema<CreateKxVolumeResponse>,
+  input: __S(144, __c18, 0) as any as S.Schema<CreateKxVolumeRequest>,
+  output: __S(145, __c18, 1) as any as S.Schema<CreateKxVolumeResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1598,8 +1598,8 @@ export const deleteEnvironment: API.OperationMethod<
   DeleteEnvironmentError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(47, __c5, 7) as any as S.Schema<DeleteEnvironmentRequest>,
-  output: __S(48, __c6, 0) as any as S.Schema<DeleteEnvironmentResponse>,
+  input: __S(160, __c20, 0) as any as S.Schema<DeleteEnvironmentRequest>,
+  output: __S(168, __c21, 0) as any as S.Schema<DeleteEnvironmentResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1630,8 +1630,8 @@ export const deleteKxCluster: API.OperationMethod<
   DeleteKxClusterError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(49, __c6, 1) as any as S.Schema<DeleteKxClusterRequest>,
-  output: __S(48, __c6, 0) as any as S.Schema<DeleteKxClusterResponse>,
+  input: __S(176, __c22, 0) as any as S.Schema<DeleteKxClusterRequest>,
+  output: __S(168, __c21, 0) as any as S.Schema<DeleteKxClusterResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1662,8 +1662,8 @@ export const deleteKxClusterNode: API.OperationMethod<
   DeleteKxClusterNodeError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(50, __c6, 2) as any as S.Schema<DeleteKxClusterNodeRequest>,
-  output: __S(48, __c6, 0) as any as S.Schema<DeleteKxClusterNodeResponse>,
+  input: __S(184, __c23, 0) as any as S.Schema<DeleteKxClusterNodeRequest>,
+  output: __S(168, __c21, 0) as any as S.Schema<DeleteKxClusterNodeResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1693,8 +1693,8 @@ export const deleteKxDatabase: API.OperationMethod<
   DeleteKxDatabaseError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(51, __c6, 3) as any as S.Schema<DeleteKxDatabaseRequest>,
-  output: __S(48, __c6, 0) as any as S.Schema<DeleteKxDatabaseResponse>,
+  input: __S(192, __c24, 0) as any as S.Schema<DeleteKxDatabaseRequest>,
+  output: __S(168, __c21, 0) as any as S.Schema<DeleteKxDatabaseResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1725,8 +1725,8 @@ export const deleteKxDataview: API.OperationMethod<
   DeleteKxDataviewError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(52, __c6, 4) as any as S.Schema<DeleteKxDataviewRequest>,
-  output: __S(48, __c6, 0) as any as S.Schema<DeleteKxDataviewResponse>,
+  input: __S(200, __c25, 0) as any as S.Schema<DeleteKxDataviewRequest>,
+  output: __S(168, __c21, 0) as any as S.Schema<DeleteKxDataviewResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1757,8 +1757,8 @@ export const deleteKxEnvironment: API.OperationMethod<
   DeleteKxEnvironmentError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(53, __c6, 5) as any as S.Schema<DeleteKxEnvironmentRequest>,
-  output: __S(48, __c6, 0) as any as S.Schema<DeleteKxEnvironmentResponse>,
+  input: __S(208, __c26, 0) as any as S.Schema<DeleteKxEnvironmentRequest>,
+  output: __S(168, __c21, 0) as any as S.Schema<DeleteKxEnvironmentResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1790,8 +1790,8 @@ export const deleteKxScalingGroup: API.OperationMethod<
   DeleteKxScalingGroupError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(54, __c6, 6) as any as S.Schema<DeleteKxScalingGroupRequest>,
-  output: __S(48, __c6, 0) as any as S.Schema<DeleteKxScalingGroupResponse>,
+  input: __S(216, __c27, 0) as any as S.Schema<DeleteKxScalingGroupRequest>,
+  output: __S(168, __c21, 0) as any as S.Schema<DeleteKxScalingGroupResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1823,8 +1823,8 @@ export const deleteKxUser: API.OperationMethod<
   DeleteKxUserError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(55, __c6, 7) as any as S.Schema<DeleteKxUserRequest>,
-  output: __S(48, __c6, 0) as any as S.Schema<DeleteKxUserResponse>,
+  input: __S(224, __c28, 0) as any as S.Schema<DeleteKxUserRequest>,
+  output: __S(168, __c21, 0) as any as S.Schema<DeleteKxUserResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1856,8 +1856,8 @@ export const deleteKxVolume: API.OperationMethod<
   DeleteKxVolumeError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(56, __c7, 0) as any as S.Schema<DeleteKxVolumeRequest>,
-  output: __S(48, __c6, 0) as any as S.Schema<DeleteKxVolumeResponse>,
+  input: __S(232, __c29, 0) as any as S.Schema<DeleteKxVolumeRequest>,
+  output: __S(168, __c21, 0) as any as S.Schema<DeleteKxVolumeResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1887,8 +1887,8 @@ export const getEnvironment: API.OperationMethod<
   GetEnvironmentError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(57, __c7, 1) as any as S.Schema<GetEnvironmentRequest>,
-  output: __S(59, __c7, 3) as any as S.Schema<GetEnvironmentResponse>,
+  input: __S(240, __c30, 0) as any as S.Schema<GetEnvironmentRequest>,
+  output: __S(241, __c30, 1) as any as S.Schema<GetEnvironmentResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1916,8 +1916,8 @@ export const getKxChangeset: API.OperationMethod<
   GetKxChangesetError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(60, __c7, 4) as any as S.Schema<GetKxChangesetRequest>,
-  output: __S(61, __c7, 5) as any as S.Schema<GetKxChangesetResponse>,
+  input: __S(256, __c32, 0) as any as S.Schema<GetKxChangesetRequest>,
+  output: __S(257, __c32, 1) as any as S.Schema<GetKxChangesetResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1948,8 +1948,8 @@ export const getKxCluster: API.OperationMethod<
   GetKxClusterError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(62, __c7, 6) as any as S.Schema<GetKxClusterRequest>,
-  output: __S(63, __c7, 7) as any as S.Schema<GetKxClusterResponse>,
+  input: __S(264, __c33, 0) as any as S.Schema<GetKxClusterRequest>,
+  output: __S(265, __c33, 1) as any as S.Schema<GetKxClusterResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1980,8 +1980,8 @@ export const getKxConnectionString: API.OperationMethod<
   GetKxConnectionStringError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(64, __c8, 0) as any as S.Schema<GetKxConnectionStringRequest>,
-  output: __S(65, __c8, 1) as any as S.Schema<GetKxConnectionStringResponse>,
+  input: __S(272, __c34, 0) as any as S.Schema<GetKxConnectionStringRequest>,
+  output: __S(273, __c34, 1) as any as S.Schema<GetKxConnectionStringResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -2010,8 +2010,8 @@ export const getKxDatabase: API.OperationMethod<
   GetKxDatabaseError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(66, __c8, 2) as any as S.Schema<GetKxDatabaseRequest>,
-  output: __S(67, __c8, 3) as any as S.Schema<GetKxDatabaseResponse>,
+  input: __S(280, __c35, 0) as any as S.Schema<GetKxDatabaseRequest>,
+  output: __S(281, __c35, 1) as any as S.Schema<GetKxDatabaseResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -2040,8 +2040,8 @@ export const getKxDataview: API.OperationMethod<
   GetKxDataviewError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(68, __c8, 4) as any as S.Schema<GetKxDataviewRequest>,
-  output: __S(71, __c8, 7) as any as S.Schema<GetKxDataviewResponse>,
+  input: __S(288, __c36, 0) as any as S.Schema<GetKxDataviewRequest>,
+  output: __S(289, __c36, 1) as any as S.Schema<GetKxDataviewResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -2070,8 +2070,8 @@ export const getKxEnvironment: API.OperationMethod<
   GetKxEnvironmentError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(72, __c9, 0) as any as S.Schema<GetKxEnvironmentRequest>,
-  output: __S(80, __c10, 0) as any as S.Schema<GetKxEnvironmentResponse>,
+  input: __S(304, __c38, 0) as any as S.Schema<GetKxEnvironmentRequest>,
+  output: __S(312, __c39, 0) as any as S.Schema<GetKxEnvironmentResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -2102,8 +2102,8 @@ export const getKxScalingGroup: API.OperationMethod<
   GetKxScalingGroupError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(81, __c10, 1) as any as S.Schema<GetKxScalingGroupRequest>,
-  output: __S(82, __c10, 2) as any as S.Schema<GetKxScalingGroupResponse>,
+  input: __S(328, __c41, 0) as any as S.Schema<GetKxScalingGroupRequest>,
+  output: __S(329, __c41, 1) as any as S.Schema<GetKxScalingGroupResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -2134,8 +2134,8 @@ export const getKxUser: API.OperationMethod<
   GetKxUserError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(83, __c10, 3) as any as S.Schema<GetKxUserRequest>,
-  output: __S(43, __c5, 3) as any as S.Schema<GetKxUserResponse>,
+  input: __S(336, __c42, 0) as any as S.Schema<GetKxUserRequest>,
+  output: __S(136, __c17, 0) as any as S.Schema<GetKxUserResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -2166,8 +2166,8 @@ export const getKxVolume: API.OperationMethod<
   GetKxVolumeError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(84, __c10, 4) as any as S.Schema<GetKxVolumeRequest>,
-  output: __S(87, __c10, 7) as any as S.Schema<GetKxVolumeResponse>,
+  input: __S(344, __c43, 0) as any as S.Schema<GetKxVolumeRequest>,
+  output: __S(345, __c43, 1) as any as S.Schema<GetKxVolumeResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -2196,8 +2196,8 @@ export const listEnvironments: API.OperationMethod<
   ListEnvironmentsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(88, __c11, 0) as any as S.Schema<ListEnvironmentsRequest>,
-  output: __S(90, __c11, 2) as any as S.Schema<ListEnvironmentsResponse>,
+  input: __S(360, __c45, 0) as any as S.Schema<ListEnvironmentsRequest>,
+  output: __S(362, __c45, 2) as any as S.Schema<ListEnvironmentsResponse>,
   errors: [AccessDeniedException, InternalServerException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2221,8 +2221,8 @@ export const listKxChangesets: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(91, __c11, 3) as any as S.Schema<ListKxChangesetsRequest>,
-  output: __S(94, __c11, 6) as any as S.Schema<ListKxChangesetsResponse>,
+  input: __S(368, __c46, 0) as any as S.Schema<ListKxChangesetsRequest>,
+  output: __S(371, __c46, 3) as any as S.Schema<ListKxChangesetsResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -2258,8 +2258,8 @@ export const listKxClusterNodes: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(95, __c11, 7) as any as S.Schema<ListKxClusterNodesRequest>,
-  output: __S(98, __c12, 2) as any as S.Schema<ListKxClusterNodesResponse>,
+  input: __S(376, __c47, 0) as any as S.Schema<ListKxClusterNodesRequest>,
+  output: __S(379, __c47, 3) as any as S.Schema<ListKxClusterNodesResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -2296,8 +2296,8 @@ export const listKxClusters: API.OperationMethod<
   ListKxClustersError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(99, __c12, 3) as any as S.Schema<ListKxClustersRequest>,
-  output: __S(102, __c12, 6) as any as S.Schema<ListKxClustersResponse>,
+  input: __S(384, __c48, 0) as any as S.Schema<ListKxClustersRequest>,
+  output: __S(387, __c48, 3) as any as S.Schema<ListKxClustersResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -2329,8 +2329,8 @@ export const listKxDatabases: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(103, __c12, 7) as any as S.Schema<ListKxDatabasesRequest>,
-  output: __S(106, __c13, 2) as any as S.Schema<ListKxDatabasesResponse>,
+  input: __S(392, __c49, 0) as any as S.Schema<ListKxDatabasesRequest>,
+  output: __S(395, __c49, 3) as any as S.Schema<ListKxDatabasesResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -2365,8 +2365,8 @@ export const listKxDataviews: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(107, __c13, 3) as any as S.Schema<ListKxDataviewsRequest>,
-  output: __S(110, __c13, 6) as any as S.Schema<ListKxDataviewsResponse>,
+  input: __S(400, __c50, 0) as any as S.Schema<ListKxDataviewsRequest>,
+  output: __S(403, __c50, 3) as any as S.Schema<ListKxDataviewsResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -2399,8 +2399,8 @@ export const listKxEnvironments: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   KxEnvironment
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(111, __c13, 7) as any as S.Schema<ListKxEnvironmentsRequest>,
-  output: __S(113, __c14, 1) as any as S.Schema<ListKxEnvironmentsResponse>,
+  input: __S(408, __c51, 0) as any as S.Schema<ListKxEnvironmentsRequest>,
+  output: __S(410, __c51, 2) as any as S.Schema<ListKxEnvironmentsResponse>,
   errors: [AccessDeniedException, InternalServerException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2432,8 +2432,8 @@ export const listKxScalingGroups: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(114, __c14, 2) as any as S.Schema<ListKxScalingGroupsRequest>,
-  output: __S(117, __c14, 5) as any as S.Schema<ListKxScalingGroupsResponse>,
+  input: __S(416, __c52, 0) as any as S.Schema<ListKxScalingGroupsRequest>,
+  output: __S(419, __c52, 3) as any as S.Schema<ListKxScalingGroupsResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -2469,8 +2469,8 @@ export const listKxUsers: API.OperationMethod<
   ListKxUsersError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(118, __c14, 6) as any as S.Schema<ListKxUsersRequest>,
-  output: __S(121, __c15, 1) as any as S.Schema<ListKxUsersResponse>,
+  input: __S(424, __c53, 0) as any as S.Schema<ListKxUsersRequest>,
+  output: __S(427, __c53, 3) as any as S.Schema<ListKxUsersResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -2501,8 +2501,8 @@ export const listKxVolumes: API.OperationMethod<
   ListKxVolumesError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(122, __c15, 2) as any as S.Schema<ListKxVolumesRequest>,
-  output: __S(125, __c15, 5) as any as S.Schema<ListKxVolumesResponse>,
+  input: __S(432, __c54, 0) as any as S.Schema<ListKxVolumesRequest>,
+  output: __S(435, __c54, 3) as any as S.Schema<ListKxVolumesResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -2531,8 +2531,8 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(126, __c15, 6) as any as S.Schema<ListTagsForResourceRequest>,
-  output: __S(127, __c15, 7) as any as S.Schema<ListTagsForResourceResponse>,
+  input: __S(440, __c55, 0) as any as S.Schema<ListTagsForResourceRequest>,
+  output: __S(441, __c55, 1) as any as S.Schema<ListTagsForResourceResponse>,
   errors: [InternalServerException, InvalidRequestException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2553,8 +2553,8 @@ export const tagResource: API.OperationMethod<
   TagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(128, __c16, 0) as any as S.Schema<TagResourceRequest>,
-  output: __S(48, __c6, 0) as any as S.Schema<TagResourceResponse>,
+  input: __S(448, __c56, 0) as any as S.Schema<TagResourceRequest>,
+  output: __S(168, __c21, 0) as any as S.Schema<TagResourceResponse>,
   errors: [InternalServerException, InvalidRequestException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2575,8 +2575,8 @@ export const untagResource: API.OperationMethod<
   UntagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(129, __c16, 1) as any as S.Schema<UntagResourceRequest>,
-  output: __S(48, __c6, 0) as any as S.Schema<UntagResourceResponse>,
+  input: __S(456, __c57, 0) as any as S.Schema<UntagResourceRequest>,
+  output: __S(168, __c21, 0) as any as S.Schema<UntagResourceResponse>,
   errors: [InternalServerException, InvalidRequestException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2599,8 +2599,8 @@ export const updateEnvironment: API.OperationMethod<
   UpdateEnvironmentError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(130, __c16, 2) as any as S.Schema<UpdateEnvironmentRequest>,
-  output: __S(131, __c16, 3) as any as S.Schema<UpdateEnvironmentResponse>,
+  input: __S(464, __c58, 0) as any as S.Schema<UpdateEnvironmentRequest>,
+  output: __S(465, __c58, 1) as any as S.Schema<UpdateEnvironmentResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -2632,8 +2632,8 @@ export const updateKxClusterCodeConfiguration: API.OperationMethod<
   UpdateKxClusterCodeConfigurationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(133, __c16, 5) as any as S.Schema<UpdateKxClusterCodeConfigurationRequest>,
-  output: __S(134, __c16, 6) as any as S.Schema<UpdateKxClusterCodeConfigurationResponse>,
+  input: __S(472, __c59, 0) as any as S.Schema<UpdateKxClusterCodeConfigurationRequest>,
+  output: __S(481, __c60, 1) as any as S.Schema<UpdateKxClusterCodeConfigurationResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -2668,8 +2668,8 @@ export const updateKxClusterDatabases: API.OperationMethod<
   UpdateKxClusterDatabasesError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(135, __c16, 7) as any as S.Schema<UpdateKxClusterDatabasesRequest>,
-  output: __S(134, __c16, 6) as any as S.Schema<UpdateKxClusterDatabasesResponse>,
+  input: __S(488, __c61, 0) as any as S.Schema<UpdateKxClusterDatabasesRequest>,
+  output: __S(481, __c60, 1) as any as S.Schema<UpdateKxClusterDatabasesResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -2701,8 +2701,8 @@ export const updateKxDatabase: API.OperationMethod<
   UpdateKxDatabaseError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(136, __c17, 0) as any as S.Schema<UpdateKxDatabaseRequest>,
-  output: __S(137, __c17, 1) as any as S.Schema<UpdateKxDatabaseResponse>,
+  input: __S(496, __c62, 0) as any as S.Schema<UpdateKxDatabaseRequest>,
+  output: __S(497, __c62, 1) as any as S.Schema<UpdateKxDatabaseResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -2734,8 +2734,8 @@ export const updateKxDataview: API.OperationMethod<
   UpdateKxDataviewError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(138, __c17, 2) as any as S.Schema<UpdateKxDataviewRequest>,
-  output: __S(139, __c17, 3) as any as S.Schema<UpdateKxDataviewResponse>,
+  input: __S(504, __c63, 0) as any as S.Schema<UpdateKxDataviewRequest>,
+  output: __S(505, __c63, 1) as any as S.Schema<UpdateKxDataviewResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -2767,8 +2767,8 @@ export const updateKxEnvironment: API.OperationMethod<
   UpdateKxEnvironmentError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(140, __c17, 4) as any as S.Schema<UpdateKxEnvironmentRequest>,
-  output: __S(141, __c17, 5) as any as S.Schema<UpdateKxEnvironmentResponse>,
+  input: __S(512, __c64, 0) as any as S.Schema<UpdateKxEnvironmentRequest>,
+  output: __S(520, __c65, 0) as any as S.Schema<UpdateKxEnvironmentResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -2801,8 +2801,8 @@ export const updateKxEnvironmentNetwork: API.OperationMethod<
   UpdateKxEnvironmentNetworkError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(142, __c17, 6) as any as S.Schema<UpdateKxEnvironmentNetworkRequest>,
-  output: __S(141, __c17, 5) as any as S.Schema<UpdateKxEnvironmentNetworkResponse>,
+  input: __S(528, __c66, 0) as any as S.Schema<UpdateKxEnvironmentNetworkRequest>,
+  output: __S(520, __c65, 0) as any as S.Schema<UpdateKxEnvironmentNetworkResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -2834,8 +2834,8 @@ export const updateKxUser: API.OperationMethod<
   UpdateKxUserError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(143, __c17, 7) as any as S.Schema<UpdateKxUserRequest>,
-  output: __S(43, __c5, 3) as any as S.Schema<UpdateKxUserResponse>,
+  input: __S(536, __c67, 0) as any as S.Schema<UpdateKxUserRequest>,
+  output: __S(136, __c17, 0) as any as S.Schema<UpdateKxUserResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -2869,8 +2869,8 @@ export const updateKxVolume: API.OperationMethod<
   UpdateKxVolumeError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(144, __c18, 0) as any as S.Schema<UpdateKxVolumeRequest>,
-  output: __S(145, __c18, 1) as any as S.Schema<UpdateKxVolumeResponse>,
+  input: __S(544, __c68, 0) as any as S.Schema<UpdateKxVolumeRequest>,
+  output: __S(545, __c68, 1) as any as S.Schema<UpdateKxVolumeResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -2889,42 +2889,25 @@ export const updateKxVolume: API.OperationMethod<
 function __c0(j: number): any {
   switch (j) {
     case 0:
-      return S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
-    case 1:
-      return S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          samlMetadataDocument: S.optional(S.String),
-          samlMetadataURL: S.optional(S.String),
-          applicationCallBackURL: S.optional(S.String),
-          federationURN: S.optional(S.String),
-          federationProviderName: S.optional(S.String),
-          attributeMap: S.optional(__S(1, __c0, 1)),
-        }),
-      ).annotate({ identifier: "FederationParameters" });
-    case 3:
       return S.suspend(() =>
         S.Struct({ emailAddress: SensitiveString, firstName: S.String, lastName: S.String }),
       ).annotate({ identifier: "SuperuserParameters" });
-    case 4:
-      return S.Array(S.String);
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           name: S.String,
           description: S.optional(S.String),
           kmsKeyId: S.optional(S.String),
-          tags: S.optional(__S(0, __c0, 0)),
+          tags: S.optional(__S(8, __c1, 0)),
           federationMode: S.optional(S.String),
-          federationParameters: S.optional(__S(2, __c0, 2)),
-          superuserParameters: S.optional(__S(3, __c0, 3)),
-          dataBundles: S.optional(__S(4, __c0, 4)),
+          federationParameters: S.optional(__S(25, __c3, 1)),
+          superuserParameters: S.optional(__S(0, __c0, 0)),
+          dataBundles: S.optional(__S(16, __c2, 0)),
         }).pipe(
           T.all(T.Http({ method: "POST", uri: "/environment" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "CreateEnvironmentRequest" });
-    case 6:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           environmentId: S.optional(S.String),
@@ -2934,22 +2917,45 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "CreateEnvironmentResponse",
       });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({ changeType: S.String, s3Path: S.optional(S.String), dbPath: S.String }),
-      ).annotate({ identifier: "ChangeRequest" });
   }
 }
 function __c1(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(7, __c0, 7));
+      return S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
     case 1:
+      return S.suspend(() =>
+        S.Struct({
+          samlMetadataDocument: S.optional(S.String),
+          samlMetadataURL: S.optional(S.String),
+          applicationCallBackURL: S.optional(S.String),
+          federationURN: S.optional(S.String),
+          federationProviderName: S.optional(S.String),
+          attributeMap: S.optional(__S(24, __c3, 0)),
+        }),
+      ).annotate({ identifier: "FederationParameters" });
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           environmentId: S.String.pipe(T.HttpLabel("environmentId")),
           databaseName: S.String.pipe(T.HttpLabel("databaseName")),
-          changeRequests: __S(8, __c1, 0),
+          changeRequests: __S(41, __c5, 1),
           clientToken: S.String.pipe(T.IdempotencyToken()),
         }).pipe(
           T.all(
@@ -2965,174 +2971,63 @@ function __c1(j: number): any {
           ),
         ),
       ).annotate({ identifier: "CreateKxChangesetRequest" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({ errorMessage: S.optional(S.String), errorType: S.optional(S.String) }),
-      ).annotate({ identifier: "ErrorInfo" });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           changesetId: S.optional(S.String),
           databaseName: S.optional(S.String),
           environmentId: S.optional(S.String),
-          changeRequests: S.optional(__S(8, __c1, 0)),
+          changeRequests: S.optional(__S(41, __c5, 1)),
           createdTimestamp: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           lastModifiedTimestamp: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           status: S.optional(S.String),
-          errorInfo: S.optional(__S(10, __c1, 2)),
+          errorInfo: S.optional(__S(42, __c5, 2)),
         }),
       ).annotate({
         identifier: "CreateKxChangesetResponse",
       });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({ tickerplantLogVolumes: S.optional(__S(4, __c0, 4)) }),
-      ).annotate({
-        identifier: "TickerplantLogConfiguration",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          cacheType: S.String,
-          dbPaths: __S(4, __c0, 4),
-          dataviewName: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "KxDatabaseCacheConfiguration",
-      });
-    case 6:
-      return S.Array(__S(13, __c1, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          dbPaths: __S(4, __c0, 4),
-          volumeName: S.String,
-          onDemand: S.optional(S.Boolean),
-        }),
-      ).annotate({
-        identifier: "KxDataviewSegmentConfiguration",
-      });
   }
 }
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(15, __c1, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          dataviewName: S.optional(S.String),
-          dataviewVersionId: S.optional(S.String),
-          changesetId: S.optional(S.String),
-          segmentConfigurations: S.optional(__S(16, __c2, 0)),
-        }),
-      ).annotate({ identifier: "KxDataviewConfiguration" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          databaseName: S.String,
-          cacheConfigurations: S.optional(__S(14, __c1, 6)),
-          changesetId: S.optional(S.String),
-          dataviewName: S.optional(S.String),
-          dataviewConfiguration: S.optional(__S(17, __c2, 1)),
-        }),
-      ).annotate({ identifier: "KxDatabaseConfiguration" });
-    case 3:
-      return S.Array(__S(18, __c2, 2));
-    case 4:
-      return S.suspend(() => S.Struct({ type: S.String, size: S.Number })).annotate({
-        identifier: "KxCacheStorageConfiguration",
-      });
-    case 5:
-      return S.Array(__S(20, __c2, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          minNodeCount: S.optional(S.Number),
-          maxNodeCount: S.optional(S.Number),
-          autoScalingMetric: S.optional(S.String),
-          metricTarget: S.optional(S.Number),
-          scaleInCooldownSeconds: S.optional(S.Number),
-          scaleOutCooldownSeconds: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "AutoScalingConfiguration" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({ nodeType: S.optional(S.String), nodeCount: S.optional(S.Number) }),
-      ).annotate({ identifier: "CapacityConfiguration" });
-  }
-}
-function __c3(j: number): any {
+function __c5(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({
-          vpcId: S.optional(S.String),
-          securityGroupIds: S.optional(__S(4, __c0, 4)),
-          subnetIds: S.optional(__S(4, __c0, 4)),
-          ipAddressType: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "VpcConfiguration" });
+        S.Struct({ changeType: S.String, s3Path: S.optional(S.String), dbPath: S.String }),
+      ).annotate({ identifier: "ChangeRequest" });
     case 1:
-      return S.suspend(() =>
-        S.Struct({ key: S.optional(S.String), value: S.optional(S.String) }),
-      ).annotate({ identifier: "KxCommandLineArgument" });
+      return S.Array(__S(40, __c5, 0));
     case 2:
-      return S.Array(__S(25, __c3, 1));
-    case 3:
       return S.suspend(() =>
-        S.Struct({
-          s3Bucket: S.optional(S.String),
-          s3Key: S.optional(S.String),
-          s3ObjectVersion: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "CodeConfiguration" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          type: S.optional(S.String),
-          size: S.optional(S.Number),
-          volumeName: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "KxSavedownStorageConfiguration",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          scalingGroupName: S.String,
-          memoryLimit: S.optional(S.Number),
-          memoryReservation: S.Number,
-          nodeCount: S.Number,
-          cpu: S.optional(S.Number),
-        }),
-      ).annotate({
-        identifier: "KxScalingGroupConfiguration",
-      });
-    case 6:
+        S.Struct({ errorMessage: S.optional(S.String), errorType: S.optional(S.String) }),
+      ).annotate({ identifier: "ErrorInfo" });
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
           environmentId: S.String.pipe(T.HttpLabel("environmentId")),
           clusterName: S.String,
           clusterType: S.String,
-          tickerplantLogConfiguration: S.optional(__S(12, __c1, 4)),
-          databases: S.optional(__S(19, __c2, 3)),
-          cacheStorageConfigurations: S.optional(__S(21, __c2, 5)),
-          autoScalingConfiguration: S.optional(__S(22, __c2, 6)),
+          tickerplantLogConfiguration: S.optional(__S(64, __c8, 0)),
+          databases: S.optional(__S(92, __c11, 4)),
+          cacheStorageConfigurations: S.optional(__S(66, __c8, 2)),
+          autoScalingConfiguration: S.optional(__S(67, __c8, 3)),
           clusterDescription: S.optional(S.String),
-          capacityConfiguration: S.optional(__S(23, __c2, 7)),
+          capacityConfiguration: S.optional(__S(68, __c8, 4)),
           releaseLabel: S.String,
-          vpcConfiguration: __S(24, __c3, 0),
+          vpcConfiguration: __S(69, __c8, 5),
           initializationScript: S.optional(S.String),
-          commandLineArguments: S.optional(__S(26, __c3, 2)),
-          code: S.optional(__S(27, __c3, 3)),
+          commandLineArguments: S.optional(__S(81, __c10, 1)),
+          code: S.optional(__S(82, __c10, 2)),
           executionRole: S.optional(S.String),
-          savedownStorageConfiguration: S.optional(__S(28, __c3, 4)),
+          savedownStorageConfiguration: S.optional(__S(70, __c8, 6)),
           azMode: S.String,
           availabilityZoneId: S.optional(S.String),
-          tags: S.optional(__S(0, __c0, 0)),
-          scalingGroupConfiguration: S.optional(__S(29, __c3, 5)),
+          tags: S.optional(__S(8, __c1, 0)),
+          scalingGroupConfiguration: S.optional(__S(71, __c8, 7)),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/kx/environments/{environmentId}/clusters" }),
@@ -3144,16 +3039,6 @@ function __c3(j: number): any {
           ),
         ),
       ).annotate({ identifier: "CreateKxClusterRequest" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({ volumeName: S.optional(S.String), volumeType: S.optional(S.String) }),
-      ).annotate({ identifier: "Volume" });
-  }
-}
-function __c4(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(31, __c3, 7));
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -3162,34 +3047,181 @@ function __c4(j: number): any {
           statusReason: S.optional(S.String),
           clusterName: S.optional(S.String),
           clusterType: S.optional(S.String),
-          tickerplantLogConfiguration: S.optional(__S(12, __c1, 4)),
-          volumes: S.optional(__S(32, __c4, 0)),
-          databases: S.optional(__S(19, __c2, 3)),
-          cacheStorageConfigurations: S.optional(__S(21, __c2, 5)),
-          autoScalingConfiguration: S.optional(__S(22, __c2, 6)),
+          tickerplantLogConfiguration: S.optional(__S(64, __c8, 0)),
+          volumes: S.optional(__S(73, __c9, 1)),
+          databases: S.optional(__S(92, __c11, 4)),
+          cacheStorageConfigurations: S.optional(__S(66, __c8, 2)),
+          autoScalingConfiguration: S.optional(__S(67, __c8, 3)),
           clusterDescription: S.optional(S.String),
-          capacityConfiguration: S.optional(__S(23, __c2, 7)),
+          capacityConfiguration: S.optional(__S(68, __c8, 4)),
           releaseLabel: S.optional(S.String),
-          vpcConfiguration: S.optional(__S(24, __c3, 0)),
+          vpcConfiguration: S.optional(__S(69, __c8, 5)),
           initializationScript: S.optional(S.String),
-          commandLineArguments: S.optional(__S(26, __c3, 2)),
-          code: S.optional(__S(27, __c3, 3)),
+          commandLineArguments: S.optional(__S(81, __c10, 1)),
+          code: S.optional(__S(82, __c10, 2)),
           executionRole: S.optional(S.String),
           lastModifiedTimestamp: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          savedownStorageConfiguration: S.optional(__S(28, __c3, 4)),
+          savedownStorageConfiguration: S.optional(__S(70, __c8, 6)),
           azMode: S.optional(S.String),
           availabilityZoneId: S.optional(S.String),
           createdTimestamp: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          scalingGroupConfiguration: S.optional(__S(29, __c3, 5)),
+          scalingGroupConfiguration: S.optional(__S(71, __c8, 7)),
         }),
       ).annotate({ identifier: "CreateKxClusterResponse" });
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          dbPaths: __S(16, __c2, 0),
+          volumeName: S.String,
+          onDemand: S.optional(S.Boolean),
+        }),
+      ).annotate({
+        identifier: "KxDataviewSegmentConfiguration",
+      });
+    case 1:
+      return S.Array(__S(56, __c7, 0));
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ tickerplantLogVolumes: S.optional(__S(16, __c2, 0)) }),
+      ).annotate({
+        identifier: "TickerplantLogConfiguration",
+      });
+    case 1:
+      return S.suspend(() => S.Struct({ type: S.String, size: S.Number })).annotate({
+        identifier: "KxCacheStorageConfiguration",
+      });
     case 2:
+      return S.Array(__S(65, __c8, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          minNodeCount: S.optional(S.Number),
+          maxNodeCount: S.optional(S.Number),
+          autoScalingMetric: S.optional(S.String),
+          metricTarget: S.optional(S.Number),
+          scaleInCooldownSeconds: S.optional(S.Number),
+          scaleOutCooldownSeconds: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "AutoScalingConfiguration" });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({ nodeType: S.optional(S.String), nodeCount: S.optional(S.Number) }),
+      ).annotate({ identifier: "CapacityConfiguration" });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          vpcId: S.optional(S.String),
+          securityGroupIds: S.optional(__S(16, __c2, 0)),
+          subnetIds: S.optional(__S(16, __c2, 0)),
+          ipAddressType: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "VpcConfiguration" });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          type: S.optional(S.String),
+          size: S.optional(S.Number),
+          volumeName: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "KxSavedownStorageConfiguration",
+      });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          scalingGroupName: S.String,
+          memoryLimit: S.optional(S.Number),
+          memoryReservation: S.Number,
+          nodeCount: S.Number,
+          cpu: S.optional(S.Number),
+        }),
+      ).annotate({
+        identifier: "KxScalingGroupConfiguration",
+      });
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ volumeName: S.optional(S.String), volumeType: S.optional(S.String) }),
+      ).annotate({ identifier: "Volume" });
+    case 1:
+      return S.Array(__S(72, __c9, 0));
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ key: S.optional(S.String), value: S.optional(S.String) }),
+      ).annotate({ identifier: "KxCommandLineArgument" });
+    case 1:
+      return S.Array(__S(80, __c10, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          s3Bucket: S.optional(S.String),
+          s3Key: S.optional(S.String),
+          s3ObjectVersion: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "CodeConfiguration" });
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          cacheType: S.String,
+          dbPaths: __S(16, __c2, 0),
+          dataviewName: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "KxDatabaseCacheConfiguration",
+      });
+    case 1:
+      return S.Array(__S(88, __c11, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          dataviewName: S.optional(S.String),
+          dataviewVersionId: S.optional(S.String),
+          changesetId: S.optional(S.String),
+          segmentConfigurations: S.optional(__S(57, __c7, 1)),
+        }),
+      ).annotate({ identifier: "KxDataviewConfiguration" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          databaseName: S.String,
+          cacheConfigurations: S.optional(__S(89, __c11, 1)),
+          changesetId: S.optional(S.String),
+          dataviewName: S.optional(S.String),
+          dataviewConfiguration: S.optional(__S(90, __c11, 2)),
+        }),
+      ).annotate({ identifier: "KxDatabaseConfiguration" });
+    case 4:
+      return S.Array(__S(91, __c11, 3));
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           environmentId: S.String.pipe(T.HttpLabel("environmentId")),
           databaseName: S.String,
           description: S.optional(S.String),
-          tags: S.optional(__S(0, __c0, 0)),
+          tags: S.optional(__S(8, __c1, 0)),
           clientToken: S.String.pipe(T.IdempotencyToken()),
         }).pipe(
           T.all(
@@ -3202,7 +3234,7 @@ function __c4(j: number): any {
           ),
         ),
       ).annotate({ identifier: "CreateKxDatabaseRequest" });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           databaseName: S.optional(S.String),
@@ -3213,7 +3245,11 @@ function __c4(j: number): any {
           lastModifiedTimestamp: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
         }),
       ).annotate({ identifier: "CreateKxDatabaseResponse" });
-    case 4:
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           environmentId: S.String.pipe(T.HttpLabel("environmentId")),
@@ -3222,11 +3258,11 @@ function __c4(j: number): any {
           azMode: S.String,
           availabilityZoneId: S.optional(S.String),
           changesetId: S.optional(S.String),
-          segmentConfigurations: S.optional(__S(16, __c2, 0)),
+          segmentConfigurations: S.optional(__S(57, __c7, 1)),
           autoUpdate: S.optional(S.Boolean),
           readWrite: S.optional(S.Boolean),
           description: S.optional(S.String),
-          tags: S.optional(__S(0, __c0, 0)),
+          tags: S.optional(__S(8, __c1, 0)),
           clientToken: S.String.pipe(T.IdempotencyToken()),
         }).pipe(
           T.all(
@@ -3242,7 +3278,7 @@ function __c4(j: number): any {
           ),
         ),
       ).annotate({ identifier: "CreateKxDataviewRequest" });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           dataviewName: S.optional(S.String),
@@ -3251,7 +3287,7 @@ function __c4(j: number): any {
           azMode: S.optional(S.String),
           availabilityZoneId: S.optional(S.String),
           changesetId: S.optional(S.String),
-          segmentConfigurations: S.optional(__S(16, __c2, 0)),
+          segmentConfigurations: S.optional(__S(57, __c7, 1)),
           description: S.optional(S.String),
           autoUpdate: S.optional(S.Boolean),
           readWrite: S.optional(S.Boolean),
@@ -3260,13 +3296,17 @@ function __c4(j: number): any {
           status: S.optional(S.String),
         }),
       ).annotate({ identifier: "CreateKxDataviewResponse" });
-    case 6:
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String,
           description: S.optional(S.String),
           kmsKeyId: S.String,
-          tags: S.optional(__S(0, __c0, 0)),
+          tags: S.optional(__S(8, __c1, 0)),
           clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
         }).pipe(
           T.all(T.Http({ method: "POST", uri: "/kx/environments" }), svc, auth, proto, ver, rules),
@@ -3274,7 +3314,7 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "CreateKxEnvironmentRequest",
       });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
@@ -3290,7 +3330,7 @@ function __c4(j: number): any {
       });
   }
 }
-function __c5(j: number): any {
+function __c15(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3300,7 +3340,7 @@ function __c5(j: number): any {
           scalingGroupName: S.String,
           hostType: S.String,
           availabilityZoneId: S.String,
-          tags: S.optional(__S(0, __c0, 0)),
+          tags: S.optional(__S(8, __c1, 0)),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/kx/environments/{environmentId}/scalingGroups" }),
@@ -3328,13 +3368,17 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "CreateKxScalingGroupResponse",
       });
-    case 2:
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           environmentId: S.String.pipe(T.HttpLabel("environmentId")),
           userName: S.String,
           iamRole: S.String,
-          tags: S.optional(__S(0, __c0, 0)),
+          tags: S.optional(__S(8, __c1, 0)),
           clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
         }).pipe(
           T.all(
@@ -3347,7 +3391,11 @@ function __c5(j: number): any {
           ),
         ),
       ).annotate({ identifier: "CreateKxUserRequest" });
-    case 3:
+  }
+}
+function __c17(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           userName: S.optional(S.String),
@@ -3356,11 +3404,11 @@ function __c5(j: number): any {
           iamRole: S.optional(S.String),
         }),
       ).annotate({ identifier: "CreateKxUserResponse" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({ type: S.optional(S.String), size: S.optional(S.Number) }),
-      ).annotate({ identifier: "KxNAS1Configuration" });
-    case 5:
+  }
+}
+function __c18(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
@@ -3368,10 +3416,10 @@ function __c5(j: number): any {
           volumeType: S.String,
           volumeName: S.String,
           description: S.optional(S.String),
-          nas1Configuration: S.optional(__S(44, __c5, 4)),
+          nas1Configuration: S.optional(__S(152, __c19, 0)),
           azMode: S.String,
-          availabilityZoneIds: __S(4, __c0, 4),
-          tags: S.optional(__S(0, __c0, 0)),
+          availabilityZoneIds: __S(16, __c2, 0),
+          tags: S.optional(__S(8, __c1, 0)),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/kx/environments/{environmentId}/kxvolumes" }),
@@ -3383,23 +3431,35 @@ function __c5(j: number): any {
           ),
         ),
       ).annotate({ identifier: "CreateKxVolumeRequest" });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           environmentId: S.optional(S.String),
           volumeName: S.optional(S.String),
           volumeType: S.optional(S.String),
           volumeArn: S.optional(S.String),
-          nas1Configuration: S.optional(__S(44, __c5, 4)),
+          nas1Configuration: S.optional(__S(152, __c19, 0)),
           status: S.optional(S.String),
           statusReason: S.optional(S.String),
           azMode: S.optional(S.String),
           description: S.optional(S.String),
-          availabilityZoneIds: S.optional(__S(4, __c0, 4)),
+          availabilityZoneIds: S.optional(__S(16, __c2, 0)),
           createdTimestamp: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
         }),
       ).annotate({ identifier: "CreateKxVolumeResponse" });
-    case 7:
+  }
+}
+function __c19(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ type: S.optional(S.String), size: S.optional(S.Number) }),
+      ).annotate({ identifier: "KxNAS1Configuration" });
+  }
+}
+function __c20(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ environmentId: S.String.pipe(T.HttpLabel("environmentId")) }).pipe(
           T.all(
@@ -3414,13 +3474,17 @@ function __c5(j: number): any {
       ).annotate({ identifier: "DeleteEnvironmentRequest" });
   }
 }
-function __c6(j: number): any {
+function __c21(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "DeleteEnvironmentResponse",
       });
-    case 1:
+  }
+}
+function __c22(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           environmentId: S.String.pipe(T.HttpLabel("environmentId")),
@@ -3440,7 +3504,11 @@ function __c6(j: number): any {
           ),
         ),
       ).annotate({ identifier: "DeleteKxClusterRequest" });
-    case 2:
+  }
+}
+function __c23(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           environmentId: S.String.pipe(T.HttpLabel("environmentId")),
@@ -3462,7 +3530,11 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "DeleteKxClusterNodeRequest",
       });
-    case 3:
+  }
+}
+function __c24(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           environmentId: S.String.pipe(T.HttpLabel("environmentId")),
@@ -3482,7 +3554,11 @@ function __c6(j: number): any {
           ),
         ),
       ).annotate({ identifier: "DeleteKxDatabaseRequest" });
-    case 4:
+  }
+}
+function __c25(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           environmentId: S.String.pipe(T.HttpLabel("environmentId")),
@@ -3503,7 +3579,11 @@ function __c6(j: number): any {
           ),
         ),
       ).annotate({ identifier: "DeleteKxDataviewRequest" });
-    case 5:
+  }
+}
+function __c26(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           environmentId: S.String.pipe(T.HttpLabel("environmentId")),
@@ -3521,7 +3601,11 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "DeleteKxEnvironmentRequest",
       });
-    case 6:
+  }
+}
+function __c27(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           environmentId: S.String.pipe(T.HttpLabel("environmentId")),
@@ -3543,7 +3627,11 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "DeleteKxScalingGroupRequest",
       });
-    case 7:
+  }
+}
+function __c28(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           userName: S.String.pipe(T.HttpLabel("userName")),
@@ -3562,7 +3650,7 @@ function __c6(j: number): any {
       ).annotate({ identifier: "DeleteKxUserRequest" });
   }
 }
-function __c7(j: number): any {
+function __c29(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3584,7 +3672,11 @@ function __c7(j: number): any {
           ),
         ),
       ).annotate({ identifier: "DeleteKxVolumeRequest" });
-    case 1:
+  }
+}
+function __c30(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ environmentId: S.String.pipe(T.HttpLabel("environmentId")) }).pipe(
           T.all(
@@ -3597,7 +3689,15 @@ function __c7(j: number): any {
           ),
         ),
       ).annotate({ identifier: "GetEnvironmentRequest" });
-    case 2:
+    case 1:
+      return S.suspend(() => S.Struct({ environment: S.optional(__S(248, __c31, 0)) })).annotate({
+        identifier: "GetEnvironmentResponse",
+      });
+  }
+}
+function __c31(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
@@ -3611,14 +3711,14 @@ function __c7(j: number): any {
           kmsKeyId: S.optional(S.String),
           dedicatedServiceAccountId: S.optional(S.String),
           federationMode: S.optional(S.String),
-          federationParameters: S.optional(__S(2, __c0, 2)),
+          federationParameters: S.optional(__S(25, __c3, 1)),
         }),
       ).annotate({ identifier: "Environment" });
-    case 3:
-      return S.suspend(() => S.Struct({ environment: S.optional(__S(58, __c7, 2)) })).annotate({
-        identifier: "GetEnvironmentResponse",
-      });
-    case 4:
+  }
+}
+function __c32(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           environmentId: S.String.pipe(T.HttpLabel("environmentId")),
@@ -3638,21 +3738,25 @@ function __c7(j: number): any {
           ),
         ),
       ).annotate({ identifier: "GetKxChangesetRequest" });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           changesetId: S.optional(S.String),
           databaseName: S.optional(S.String),
           environmentId: S.optional(S.String),
-          changeRequests: S.optional(__S(8, __c1, 0)),
+          changeRequests: S.optional(__S(41, __c5, 1)),
           createdTimestamp: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           activeFromTimestamp: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           lastModifiedTimestamp: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           status: S.optional(S.String),
-          errorInfo: S.optional(__S(10, __c1, 2)),
+          errorInfo: S.optional(__S(42, __c5, 2)),
         }),
       ).annotate({ identifier: "GetKxChangesetResponse" });
-    case 6:
+  }
+}
+function __c33(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           environmentId: S.String.pipe(T.HttpLabel("environmentId")),
@@ -3671,37 +3775,37 @@ function __c7(j: number): any {
           ),
         ),
       ).annotate({ identifier: "GetKxClusterRequest" });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           status: S.optional(S.String),
           statusReason: S.optional(S.String),
           clusterName: S.optional(S.String),
           clusterType: S.optional(S.String),
-          tickerplantLogConfiguration: S.optional(__S(12, __c1, 4)),
-          volumes: S.optional(__S(32, __c4, 0)),
-          databases: S.optional(__S(19, __c2, 3)),
-          cacheStorageConfigurations: S.optional(__S(21, __c2, 5)),
-          autoScalingConfiguration: S.optional(__S(22, __c2, 6)),
+          tickerplantLogConfiguration: S.optional(__S(64, __c8, 0)),
+          volumes: S.optional(__S(73, __c9, 1)),
+          databases: S.optional(__S(92, __c11, 4)),
+          cacheStorageConfigurations: S.optional(__S(66, __c8, 2)),
+          autoScalingConfiguration: S.optional(__S(67, __c8, 3)),
           clusterDescription: S.optional(S.String),
-          capacityConfiguration: S.optional(__S(23, __c2, 7)),
+          capacityConfiguration: S.optional(__S(68, __c8, 4)),
           releaseLabel: S.optional(S.String),
-          vpcConfiguration: S.optional(__S(24, __c3, 0)),
+          vpcConfiguration: S.optional(__S(69, __c8, 5)),
           initializationScript: S.optional(S.String),
-          commandLineArguments: S.optional(__S(26, __c3, 2)),
-          code: S.optional(__S(27, __c3, 3)),
+          commandLineArguments: S.optional(__S(81, __c10, 1)),
+          code: S.optional(__S(82, __c10, 2)),
           executionRole: S.optional(S.String),
           lastModifiedTimestamp: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          savedownStorageConfiguration: S.optional(__S(28, __c3, 4)),
+          savedownStorageConfiguration: S.optional(__S(70, __c8, 6)),
           azMode: S.optional(S.String),
           availabilityZoneId: S.optional(S.String),
           createdTimestamp: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          scalingGroupConfiguration: S.optional(__S(29, __c3, 5)),
+          scalingGroupConfiguration: S.optional(__S(71, __c8, 7)),
         }),
       ).annotate({ identifier: "GetKxClusterResponse" });
   }
 }
-function __c8(j: number): any {
+function __c34(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3728,7 +3832,11 @@ function __c8(j: number): any {
       ).annotate({
         identifier: "GetKxConnectionStringResponse",
       });
-    case 2:
+  }
+}
+function __c35(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           environmentId: S.String.pipe(T.HttpLabel("environmentId")),
@@ -3747,7 +3855,7 @@ function __c8(j: number): any {
           ),
         ),
       ).annotate({ identifier: "GetKxDatabaseRequest" });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           databaseName: S.optional(S.String),
@@ -3762,7 +3870,11 @@ function __c8(j: number): any {
           numFiles: S.optional(S.Number),
         }),
       ).annotate({ identifier: "GetKxDatabaseResponse" });
-    case 4:
+  }
+}
+function __c36(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           environmentId: S.String.pipe(T.HttpLabel("environmentId")),
@@ -3782,19 +3894,7 @@ function __c8(j: number): any {
           ),
         ),
       ).annotate({ identifier: "GetKxDataviewRequest" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          changesetId: S.optional(S.String),
-          segmentConfigurations: S.optional(__S(16, __c2, 0)),
-          attachedClusters: S.optional(__S(4, __c0, 4)),
-          createdTimestamp: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          versionId: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "KxDataviewActiveVersion" });
-    case 6:
-      return S.Array(__S(69, __c8, 5));
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           databaseName: S.optional(S.String),
@@ -3802,8 +3902,8 @@ function __c8(j: number): any {
           azMode: S.optional(S.String),
           availabilityZoneId: S.optional(S.String),
           changesetId: S.optional(S.String),
-          segmentConfigurations: S.optional(__S(16, __c2, 0)),
-          activeVersions: S.optional(__S(70, __c8, 6)),
+          segmentConfigurations: S.optional(__S(57, __c7, 1)),
+          activeVersions: S.optional(__S(297, __c37, 1)),
           description: S.optional(S.String),
           autoUpdate: S.optional(S.Boolean),
           readWrite: S.optional(S.Boolean),
@@ -3816,7 +3916,23 @@ function __c8(j: number): any {
       ).annotate({ identifier: "GetKxDataviewResponse" });
   }
 }
-function __c9(j: number): any {
+function __c37(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          changesetId: S.optional(S.String),
+          segmentConfigurations: S.optional(__S(57, __c7, 1)),
+          attachedClusters: S.optional(__S(16, __c2, 0)),
+          createdTimestamp: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          versionId: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "KxDataviewActiveVersion" });
+    case 1:
+      return S.Array(__S(296, __c37, 0));
+  }
+}
+function __c38(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3831,46 +3947,9 @@ function __c9(j: number): any {
           ),
         ),
       ).annotate({ identifier: "GetKxEnvironmentRequest" });
-    case 1:
-      return S.suspend(() => S.Struct({ from: S.Number, to: S.Number })).annotate({
-        identifier: "PortRange",
-      });
-    case 2:
-      return S.suspend(() => S.Struct({ type: S.Number, code: S.Number })).annotate({
-        identifier: "IcmpTypeCode",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          ruleNumber: S.Number,
-          protocol: S.String,
-          ruleAction: S.String,
-          portRange: S.optional(__S(73, __c9, 1)),
-          icmpTypeCode: S.optional(__S(74, __c9, 2)),
-          cidrBlock: S.String,
-        }),
-      ).annotate({ identifier: "NetworkACLEntry" });
-    case 4:
-      return S.Array(__S(75, __c9, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          transitGatewayID: S.String,
-          routableCIDRSpace: S.String,
-          attachmentNetworkAclConfiguration: S.optional(__S(76, __c9, 4)),
-        }),
-      ).annotate({
-        identifier: "TransitGatewayConfiguration",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({ customDNSServerName: S.String, customDNSServerIP: S.String }),
-      ).annotate({ identifier: "CustomDNSServer" });
-    case 7:
-      return S.Array(__S(78, __c9, 6));
   }
 }
-function __c10(j: number): any {
+function __c39(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3886,15 +3965,60 @@ function __c10(j: number): any {
           environmentArn: S.optional(S.String),
           kmsKeyId: S.optional(S.String),
           dedicatedServiceAccountId: S.optional(S.String),
-          transitGatewayConfiguration: S.optional(__S(77, __c9, 5)),
-          customDNSConfiguration: S.optional(__S(79, __c9, 7)),
+          transitGatewayConfiguration: S.optional(__S(324, __c40, 4)),
+          customDNSConfiguration: S.optional(__S(326, __c40, 6)),
           creationTimestamp: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           updateTimestamp: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          availabilityZoneIds: S.optional(__S(4, __c0, 4)),
+          availabilityZoneIds: S.optional(__S(16, __c2, 0)),
           certificateAuthorityArn: S.optional(S.String),
         }),
       ).annotate({ identifier: "GetKxEnvironmentResponse" });
+  }
+}
+function __c40(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({ from: S.Number, to: S.Number })).annotate({
+        identifier: "PortRange",
+      });
     case 1:
+      return S.suspend(() => S.Struct({ type: S.Number, code: S.Number })).annotate({
+        identifier: "IcmpTypeCode",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          ruleNumber: S.Number,
+          protocol: S.String,
+          ruleAction: S.String,
+          portRange: S.optional(__S(320, __c40, 0)),
+          icmpTypeCode: S.optional(__S(321, __c40, 1)),
+          cidrBlock: S.String,
+        }),
+      ).annotate({ identifier: "NetworkACLEntry" });
+    case 3:
+      return S.Array(__S(322, __c40, 2));
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          transitGatewayID: S.String,
+          routableCIDRSpace: S.String,
+          attachmentNetworkAclConfiguration: S.optional(__S(323, __c40, 3)),
+        }),
+      ).annotate({
+        identifier: "TransitGatewayConfiguration",
+      });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({ customDNSServerName: S.String, customDNSServerIP: S.String }),
+      ).annotate({ identifier: "CustomDNSServer" });
+    case 6:
+      return S.Array(__S(325, __c40, 5));
+  }
+}
+function __c41(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           environmentId: S.String.pipe(T.HttpLabel("environmentId")),
@@ -3913,13 +4037,13 @@ function __c10(j: number): any {
           ),
         ),
       ).annotate({ identifier: "GetKxScalingGroupRequest" });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           scalingGroupName: S.optional(S.String),
           scalingGroupArn: S.optional(S.String),
           hostType: S.optional(S.String),
-          clusters: S.optional(__S(4, __c0, 4)),
+          clusters: S.optional(__S(16, __c2, 0)),
           availabilityZoneId: S.optional(S.String),
           status: S.optional(S.String),
           statusReason: S.optional(S.String),
@@ -3929,7 +4053,11 @@ function __c10(j: number): any {
       ).annotate({
         identifier: "GetKxScalingGroupResponse",
       });
-    case 3:
+  }
+}
+function __c42(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           userName: S.String.pipe(T.HttpLabel("userName")),
@@ -3945,7 +4073,11 @@ function __c10(j: number): any {
           ),
         ),
       ).annotate({ identifier: "GetKxUserRequest" });
-    case 4:
+  }
+}
+function __c43(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           environmentId: S.String.pipe(T.HttpLabel("environmentId")),
@@ -3964,7 +4096,29 @@ function __c10(j: number): any {
           ),
         ),
       ).annotate({ identifier: "GetKxVolumeRequest" });
-    case 5:
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          environmentId: S.optional(S.String),
+          volumeName: S.optional(S.String),
+          volumeType: S.optional(S.String),
+          volumeArn: S.optional(S.String),
+          nas1Configuration: S.optional(__S(152, __c19, 0)),
+          status: S.optional(S.String),
+          statusReason: S.optional(S.String),
+          createdTimestamp: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          description: S.optional(S.String),
+          azMode: S.optional(S.String),
+          availabilityZoneIds: S.optional(__S(16, __c2, 0)),
+          lastModifiedTimestamp: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          attachedClusters: S.optional(__S(353, __c44, 1)),
+        }),
+      ).annotate({ identifier: "GetKxVolumeResponse" });
+  }
+}
+function __c44(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           clusterName: S.optional(S.String),
@@ -3972,29 +4126,11 @@ function __c10(j: number): any {
           clusterStatus: S.optional(S.String),
         }),
       ).annotate({ identifier: "KxAttachedCluster" });
-    case 6:
-      return S.Array(__S(85, __c10, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          environmentId: S.optional(S.String),
-          volumeName: S.optional(S.String),
-          volumeType: S.optional(S.String),
-          volumeArn: S.optional(S.String),
-          nas1Configuration: S.optional(__S(44, __c5, 4)),
-          status: S.optional(S.String),
-          statusReason: S.optional(S.String),
-          createdTimestamp: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          description: S.optional(S.String),
-          azMode: S.optional(S.String),
-          availabilityZoneIds: S.optional(__S(4, __c0, 4)),
-          lastModifiedTimestamp: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          attachedClusters: S.optional(__S(86, __c10, 6)),
-        }),
-      ).annotate({ identifier: "GetKxVolumeResponse" });
+    case 1:
+      return S.Array(__S(352, __c44, 0));
   }
 }
-function __c11(j: number): any {
+function __c45(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4006,12 +4142,16 @@ function __c11(j: number): any {
         ),
       ).annotate({ identifier: "ListEnvironmentsRequest" });
     case 1:
-      return S.Array(__S(58, __c7, 2));
+      return S.Array(__S(248, __c31, 0));
     case 2:
       return S.suspend(() =>
-        S.Struct({ environments: S.optional(__S(89, __c11, 1)), nextToken: S.optional(S.String) }),
+        S.Struct({ environments: S.optional(__S(361, __c45, 1)), nextToken: S.optional(S.String) }),
       ).annotate({ identifier: "ListEnvironmentsResponse" });
-    case 3:
+  }
+}
+function __c46(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           environmentId: S.String.pipe(T.HttpLabel("environmentId")),
@@ -4032,7 +4172,7 @@ function __c11(j: number): any {
           ),
         ),
       ).annotate({ identifier: "ListKxChangesetsRequest" });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           changesetId: S.optional(S.String),
@@ -4042,13 +4182,17 @@ function __c11(j: number): any {
           status: S.optional(S.String),
         }),
       ).annotate({ identifier: "KxChangesetListEntry" });
-    case 5:
-      return S.Array(__S(92, __c11, 4));
-    case 6:
+    case 2:
+      return S.Array(__S(369, __c46, 1));
+    case 3:
       return S.suspend(() =>
-        S.Struct({ kxChangesets: S.optional(__S(93, __c11, 5)), nextToken: S.optional(S.String) }),
+        S.Struct({ kxChangesets: S.optional(__S(370, __c46, 2)), nextToken: S.optional(S.String) }),
       ).annotate({ identifier: "ListKxChangesetsResponse" });
-    case 7:
+  }
+}
+function __c47(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           environmentId: S.String.pipe(T.HttpLabel("environmentId")),
@@ -4071,11 +4215,7 @@ function __c11(j: number): any {
       ).annotate({
         identifier: "ListKxClusterNodesRequest",
       });
-  }
-}
-function __c12(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           nodeId: S.optional(S.String),
@@ -4084,15 +4224,19 @@ function __c12(j: number): any {
           status: S.optional(S.String),
         }),
       ).annotate({ identifier: "KxNode" });
-    case 1:
-      return S.Array(__S(96, __c12, 0));
     case 2:
+      return S.Array(__S(377, __c47, 1));
+    case 3:
       return S.suspend(() =>
-        S.Struct({ nodes: S.optional(__S(97, __c12, 1)), nextToken: S.optional(S.String) }),
+        S.Struct({ nodes: S.optional(__S(378, __c47, 2)), nextToken: S.optional(S.String) }),
       ).annotate({
         identifier: "ListKxClusterNodesResponse",
       });
-    case 3:
+  }
+}
+function __c48(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           environmentId: S.String.pipe(T.HttpLabel("environmentId")),
@@ -4110,7 +4254,7 @@ function __c12(j: number): any {
           ),
         ),
       ).annotate({ identifier: "ListKxClustersRequest" });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           status: S.optional(S.String),
@@ -4119,7 +4263,7 @@ function __c12(j: number): any {
           clusterType: S.optional(S.String),
           clusterDescription: S.optional(S.String),
           releaseLabel: S.optional(S.String),
-          volumes: S.optional(__S(32, __c4, 0)),
+          volumes: S.optional(__S(73, __c9, 1)),
           initializationScript: S.optional(S.String),
           executionRole: S.optional(S.String),
           azMode: S.optional(S.String),
@@ -4128,16 +4272,20 @@ function __c12(j: number): any {
           createdTimestamp: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
         }),
       ).annotate({ identifier: "KxCluster" });
-    case 5:
-      return S.Array(__S(100, __c12, 4));
-    case 6:
+    case 2:
+      return S.Array(__S(385, __c48, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          kxClusterSummaries: S.optional(__S(101, __c12, 5)),
+          kxClusterSummaries: S.optional(__S(386, __c48, 2)),
           nextToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListKxClustersResponse" });
-    case 7:
+  }
+}
+function __c49(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           environmentId: S.String.pipe(T.HttpLabel("environmentId")),
@@ -4154,11 +4302,7 @@ function __c12(j: number): any {
           ),
         ),
       ).annotate({ identifier: "ListKxDatabasesRequest" });
-  }
-}
-function __c13(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           databaseName: S.optional(S.String),
@@ -4166,13 +4310,17 @@ function __c13(j: number): any {
           lastModifiedTimestamp: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
         }),
       ).annotate({ identifier: "KxDatabaseListEntry" });
-    case 1:
-      return S.Array(__S(104, __c13, 0));
     case 2:
-      return S.suspend(() =>
-        S.Struct({ kxDatabases: S.optional(__S(105, __c13, 1)), nextToken: S.optional(S.String) }),
-      ).annotate({ identifier: "ListKxDatabasesResponse" });
+      return S.Array(__S(393, __c49, 1));
     case 3:
+      return S.suspend(() =>
+        S.Struct({ kxDatabases: S.optional(__S(394, __c49, 2)), nextToken: S.optional(S.String) }),
+      ).annotate({ identifier: "ListKxDatabasesResponse" });
+  }
+}
+function __c50(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           environmentId: S.String.pipe(T.HttpLabel("environmentId")),
@@ -4193,7 +4341,7 @@ function __c13(j: number): any {
           ),
         ),
       ).annotate({ identifier: "ListKxDataviewsRequest" });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           environmentId: S.optional(S.String),
@@ -4202,8 +4350,8 @@ function __c13(j: number): any {
           azMode: S.optional(S.String),
           availabilityZoneId: S.optional(S.String),
           changesetId: S.optional(S.String),
-          segmentConfigurations: S.optional(__S(16, __c2, 0)),
-          activeVersions: S.optional(__S(70, __c8, 6)),
+          segmentConfigurations: S.optional(__S(57, __c7, 1)),
+          activeVersions: S.optional(__S(297, __c37, 1)),
           status: S.optional(S.String),
           description: S.optional(S.String),
           autoUpdate: S.optional(S.Boolean),
@@ -4213,13 +4361,17 @@ function __c13(j: number): any {
           statusReason: S.optional(S.String),
         }),
       ).annotate({ identifier: "KxDataviewListEntry" });
-    case 5:
-      return S.Array(__S(108, __c13, 4));
-    case 6:
+    case 2:
+      return S.Array(__S(401, __c50, 1));
+    case 3:
       return S.suspend(() =>
-        S.Struct({ kxDataviews: S.optional(__S(109, __c13, 5)), nextToken: S.optional(S.String) }),
+        S.Struct({ kxDataviews: S.optional(__S(402, __c50, 2)), nextToken: S.optional(S.String) }),
       ).annotate({ identifier: "ListKxDataviewsResponse" });
-    case 7:
+  }
+}
+function __c51(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
@@ -4230,19 +4382,19 @@ function __c13(j: number): any {
       ).annotate({
         identifier: "ListKxEnvironmentsRequest",
       });
-  }
-}
-function __c14(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(80, __c10, 0));
     case 1:
+      return S.Array(__S(312, __c39, 0));
+    case 2:
       return S.suspend(() =>
-        S.Struct({ environments: S.optional(__S(112, __c14, 0)), nextToken: S.optional(S.String) }),
+        S.Struct({ environments: S.optional(__S(409, __c51, 1)), nextToken: S.optional(S.String) }),
       ).annotate({
         identifier: "ListKxEnvironmentsResponse",
       });
-    case 2:
+  }
+}
+function __c52(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           environmentId: S.String.pipe(T.HttpLabel("environmentId")),
@@ -4261,12 +4413,12 @@ function __c14(j: number): any {
       ).annotate({
         identifier: "ListKxScalingGroupsRequest",
       });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           scalingGroupName: S.optional(S.String),
           hostType: S.optional(S.String),
-          clusters: S.optional(__S(4, __c0, 4)),
+          clusters: S.optional(__S(16, __c2, 0)),
           availabilityZoneId: S.optional(S.String),
           status: S.optional(S.String),
           statusReason: S.optional(S.String),
@@ -4274,18 +4426,22 @@ function __c14(j: number): any {
           createdTimestamp: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
         }),
       ).annotate({ identifier: "KxScalingGroup" });
-    case 4:
-      return S.Array(__S(115, __c14, 3));
-    case 5:
+    case 2:
+      return S.Array(__S(417, __c52, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          scalingGroups: S.optional(__S(116, __c14, 4)),
+          scalingGroups: S.optional(__S(418, __c52, 2)),
           nextToken: S.optional(S.String),
         }),
       ).annotate({
         identifier: "ListKxScalingGroupsResponse",
       });
-    case 6:
+  }
+}
+function __c53(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           environmentId: S.String.pipe(T.HttpLabel("environmentId")),
@@ -4302,7 +4458,7 @@ function __c14(j: number): any {
           ),
         ),
       ).annotate({ identifier: "ListKxUsersRequest" });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           userArn: S.optional(S.String),
@@ -4312,17 +4468,17 @@ function __c14(j: number): any {
           updateTimestamp: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
         }),
       ).annotate({ identifier: "KxUser" });
+    case 2:
+      return S.Array(__S(425, __c53, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({ users: S.optional(__S(426, __c53, 2)), nextToken: S.optional(S.String) }),
+      ).annotate({ identifier: "ListKxUsersResponse" });
   }
 }
-function __c15(j: number): any {
+function __c54(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(119, __c14, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({ users: S.optional(__S(120, __c15, 0)), nextToken: S.optional(S.String) }),
-      ).annotate({ identifier: "ListKxUsersResponse" });
-    case 2:
       return S.suspend(() =>
         S.Struct({
           environmentId: S.String.pipe(T.HttpLabel("environmentId")),
@@ -4340,7 +4496,7 @@ function __c15(j: number): any {
           ),
         ),
       ).annotate({ identifier: "ListKxVolumesRequest" });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           volumeName: S.optional(S.String),
@@ -4349,21 +4505,25 @@ function __c15(j: number): any {
           description: S.optional(S.String),
           statusReason: S.optional(S.String),
           azMode: S.optional(S.String),
-          availabilityZoneIds: S.optional(__S(4, __c0, 4)),
+          availabilityZoneIds: S.optional(__S(16, __c2, 0)),
           createdTimestamp: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           lastModifiedTimestamp: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
         }),
       ).annotate({ identifier: "KxVolume" });
-    case 4:
-      return S.Array(__S(123, __c15, 3));
-    case 5:
+    case 2:
+      return S.Array(__S(433, __c54, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          kxVolumeSummaries: S.optional(__S(124, __c15, 4)),
+          kxVolumeSummaries: S.optional(__S(434, __c54, 2)),
           nextToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListKxVolumesResponse" });
-    case 6:
+  }
+}
+function __c55(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ resourceArn: S.String.pipe(T.HttpLabel("resourceArn")) }).pipe(
           T.all(
@@ -4378,19 +4538,19 @@ function __c15(j: number): any {
       ).annotate({
         identifier: "ListTagsForResourceRequest",
       });
-    case 7:
-      return S.suspend(() => S.Struct({ tags: S.optional(__S(0, __c0, 0)) })).annotate({
+    case 1:
+      return S.suspend(() => S.Struct({ tags: S.optional(__S(8, __c1, 0)) })).annotate({
         identifier: "ListTagsForResourceResponse",
       });
   }
 }
-function __c16(j: number): any {
+function __c56(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           resourceArn: S.String.pipe(T.HttpLabel("resourceArn")),
-          tags: __S(0, __c0, 0),
+          tags: __S(8, __c1, 0),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/tags/{resourceArn}" }),
@@ -4402,11 +4562,15 @@ function __c16(j: number): any {
           ),
         ),
       ).annotate({ identifier: "TagResourceRequest" });
-    case 1:
+  }
+}
+function __c57(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           resourceArn: S.String.pipe(T.HttpLabel("resourceArn")),
-          tagKeys: __S(4, __c0, 4).pipe(T.HttpQuery("tagKeys")),
+          tagKeys: __S(16, __c2, 0).pipe(T.HttpQuery("tagKeys")),
         }).pipe(
           T.all(
             T.Http({ method: "DELETE", uri: "/tags/{resourceArn}" }),
@@ -4418,14 +4582,18 @@ function __c16(j: number): any {
           ),
         ),
       ).annotate({ identifier: "UntagResourceRequest" });
-    case 2:
+  }
+}
+function __c58(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           environmentId: S.String.pipe(T.HttpLabel("environmentId")),
           name: S.optional(S.String),
           description: S.optional(S.String),
           federationMode: S.optional(S.String),
-          federationParameters: S.optional(__S(2, __c0, 2)),
+          federationParameters: S.optional(__S(25, __c3, 1)),
         }).pipe(
           T.all(
             T.Http({ method: "PUT", uri: "/environment/{environmentId}" }),
@@ -4437,24 +4605,24 @@ function __c16(j: number): any {
           ),
         ),
       ).annotate({ identifier: "UpdateEnvironmentRequest" });
-    case 3:
-      return S.suspend(() => S.Struct({ environment: S.optional(__S(58, __c7, 2)) })).annotate({
+    case 1:
+      return S.suspend(() => S.Struct({ environment: S.optional(__S(248, __c31, 0)) })).annotate({
         identifier: "UpdateEnvironmentResponse",
       });
-    case 4:
-      return S.suspend(() => S.Struct({ deploymentStrategy: S.String })).annotate({
-        identifier: "KxClusterCodeDeploymentConfiguration",
-      });
-    case 5:
+  }
+}
+function __c59(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           environmentId: S.String.pipe(T.HttpLabel("environmentId")),
           clusterName: S.String.pipe(T.HttpLabel("clusterName")),
           clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-          code: __S(27, __c3, 3),
+          code: __S(82, __c10, 2),
           initializationScript: S.optional(S.String),
-          commandLineArguments: S.optional(__S(26, __c3, 2)),
-          deploymentConfiguration: S.optional(__S(132, __c16, 4)),
+          commandLineArguments: S.optional(__S(81, __c10, 1)),
+          deploymentConfiguration: S.optional(__S(480, __c60, 0)),
         }).pipe(
           T.all(
             T.Http({
@@ -4471,18 +4639,30 @@ function __c16(j: number): any {
       ).annotate({
         identifier: "UpdateKxClusterCodeConfigurationRequest",
       });
-    case 6:
+  }
+}
+function __c60(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({ deploymentStrategy: S.String })).annotate({
+        identifier: "KxClusterCodeDeploymentConfiguration",
+      });
+    case 1:
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "UpdateKxClusterCodeConfigurationResponse",
       });
-    case 7:
+  }
+}
+function __c61(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           environmentId: S.String.pipe(T.HttpLabel("environmentId")),
           clusterName: S.String.pipe(T.HttpLabel("clusterName")),
           clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-          databases: __S(19, __c2, 3),
-          deploymentConfiguration: S.optional(__S(132, __c16, 4)),
+          databases: __S(92, __c11, 4),
+          deploymentConfiguration: S.optional(__S(480, __c60, 0)),
         }).pipe(
           T.all(
             T.Http({
@@ -4501,7 +4681,7 @@ function __c16(j: number): any {
       });
   }
 }
-function __c17(j: number): any {
+function __c62(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4533,7 +4713,11 @@ function __c17(j: number): any {
           lastModifiedTimestamp: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
         }),
       ).annotate({ identifier: "UpdateKxDatabaseResponse" });
-    case 2:
+  }
+}
+function __c63(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           environmentId: S.String.pipe(T.HttpLabel("environmentId")),
@@ -4541,7 +4725,7 @@ function __c17(j: number): any {
           dataviewName: S.String.pipe(T.HttpLabel("dataviewName")),
           description: S.optional(S.String),
           changesetId: S.optional(S.String),
-          segmentConfigurations: S.optional(__S(16, __c2, 0)),
+          segmentConfigurations: S.optional(__S(57, __c7, 1)),
           clientToken: S.String.pipe(T.IdempotencyToken()),
         }).pipe(
           T.all(
@@ -4557,7 +4741,7 @@ function __c17(j: number): any {
           ),
         ),
       ).annotate({ identifier: "UpdateKxDataviewRequest" });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           environmentId: S.optional(S.String),
@@ -4566,8 +4750,8 @@ function __c17(j: number): any {
           azMode: S.optional(S.String),
           availabilityZoneId: S.optional(S.String),
           changesetId: S.optional(S.String),
-          segmentConfigurations: S.optional(__S(16, __c2, 0)),
-          activeVersions: S.optional(__S(70, __c8, 6)),
+          segmentConfigurations: S.optional(__S(57, __c7, 1)),
+          activeVersions: S.optional(__S(297, __c37, 1)),
           status: S.optional(S.String),
           autoUpdate: S.optional(S.Boolean),
           readWrite: S.optional(S.Boolean),
@@ -4576,7 +4760,11 @@ function __c17(j: number): any {
           lastModifiedTimestamp: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
         }),
       ).annotate({ identifier: "UpdateKxDataviewResponse" });
-    case 4:
+  }
+}
+function __c64(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           environmentId: S.String.pipe(T.HttpLabel("environmentId")),
@@ -4596,7 +4784,11 @@ function __c17(j: number): any {
       ).annotate({
         identifier: "UpdateKxEnvironmentRequest",
       });
-    case 5:
+  }
+}
+function __c65(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
@@ -4610,21 +4802,25 @@ function __c17(j: number): any {
           environmentArn: S.optional(S.String),
           kmsKeyId: S.optional(S.String),
           dedicatedServiceAccountId: S.optional(S.String),
-          transitGatewayConfiguration: S.optional(__S(77, __c9, 5)),
-          customDNSConfiguration: S.optional(__S(79, __c9, 7)),
+          transitGatewayConfiguration: S.optional(__S(324, __c40, 4)),
+          customDNSConfiguration: S.optional(__S(326, __c40, 6)),
           creationTimestamp: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           updateTimestamp: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          availabilityZoneIds: S.optional(__S(4, __c0, 4)),
+          availabilityZoneIds: S.optional(__S(16, __c2, 0)),
         }),
       ).annotate({
         identifier: "UpdateKxEnvironmentResponse",
       });
-    case 6:
+  }
+}
+function __c66(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           environmentId: S.String.pipe(T.HttpLabel("environmentId")),
-          transitGatewayConfiguration: S.optional(__S(77, __c9, 5)),
-          customDNSConfiguration: S.optional(__S(79, __c9, 7)),
+          transitGatewayConfiguration: S.optional(__S(324, __c40, 4)),
+          customDNSConfiguration: S.optional(__S(326, __c40, 6)),
           clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
         }).pipe(
           T.all(
@@ -4639,7 +4835,11 @@ function __c17(j: number): any {
       ).annotate({
         identifier: "UpdateKxEnvironmentNetworkRequest",
       });
-    case 7:
+  }
+}
+function __c67(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           environmentId: S.String.pipe(T.HttpLabel("environmentId")),
@@ -4659,7 +4859,7 @@ function __c17(j: number): any {
       ).annotate({ identifier: "UpdateKxUserRequest" });
   }
 }
-function __c18(j: number): any {
+function __c68(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4668,7 +4868,7 @@ function __c18(j: number): any {
           volumeName: S.String.pipe(T.HttpLabel("volumeName")),
           description: S.optional(S.String),
           clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-          nas1Configuration: S.optional(__S(44, __c5, 4)),
+          nas1Configuration: S.optional(__S(152, __c19, 0)),
         }).pipe(
           T.all(
             T.Http({
@@ -4690,20 +4890,19 @@ function __c18(j: number): any {
           volumeName: S.optional(S.String),
           volumeType: S.optional(S.String),
           volumeArn: S.optional(S.String),
-          nas1Configuration: S.optional(__S(44, __c5, 4)),
+          nas1Configuration: S.optional(__S(152, __c19, 0)),
           status: S.optional(S.String),
           description: S.optional(S.String),
           statusReason: S.optional(S.String),
           createdTimestamp: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           azMode: S.optional(S.String),
-          availabilityZoneIds: S.optional(__S(4, __c0, 4)),
+          availabilityZoneIds: S.optional(__S(16, __c2, 0)),
           lastModifiedTimestamp: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          attachedClusters: S.optional(__S(86, __c10, 6)),
+          attachedClusters: S.optional(__S(353, __c44, 1)),
         }),
       ).annotate({ identifier: "UpdateKxVolumeResponse" });
   }
 }
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

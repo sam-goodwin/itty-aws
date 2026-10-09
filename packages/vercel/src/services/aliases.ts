@@ -538,8 +538,8 @@ export const assignAlias: API.OperationMethod<
   AssignAliasError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(0, __c0, 0) as any as S.Schema<AssignAliasRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<AssignAliasResponse>,
+  input: __S(8, __c1, 0) as any as S.Schema<AssignAliasRequest>,
+  output: __S(9, __c1, 1) as any as S.Schema<AssignAliasResponse>,
   errors: [BadRequest, PaymentRequired, Forbidden, NotFound, Conflict],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -553,8 +553,8 @@ export const deleteAlias: API.OperationMethod<
   DeleteAliasError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2, __c0, 2) as any as S.Schema<DeleteAliasRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<DeleteAliasResponse>,
+  input: __S(16, __c2, 0) as any as S.Schema<DeleteAliasRequest>,
+  output: __S(17, __c2, 1) as any as S.Schema<DeleteAliasResponse>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -568,8 +568,8 @@ export const getAlias: API.OperationMethod<
   GetAliasError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(4, __c0, 4) as any as S.Schema<GetAliasRequest>,
-  output: __S(10, __c1, 2) as any as S.Schema<GetAliasResponse>,
+  input: __S(24, __c3, 0) as any as S.Schema<GetAliasRequest>,
+  output: __S(27, __c3, 3) as any as S.Schema<GetAliasResponse>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -583,8 +583,8 @@ export const listAliases: API.OperationMethod<
   ListAliasesError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(11, __c1, 3) as any as S.Schema<ListAliasesRequest>,
-  output: __S(17, __c2, 1) as any as S.Schema<ListAliasesResponse>,
+  input: __S(40, __c5, 0) as any as S.Schema<ListAliasesRequest>,
+  output: __S(46, __c5, 6) as any as S.Schema<ListAliasesResponse>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -598,8 +598,8 @@ export const listDeploymentAliases: API.OperationMethod<
   ListDeploymentAliasesError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(18, __c2, 2) as any as S.Schema<ListDeploymentAliasesRequest>,
-  output: __S(22, __c2, 6) as any as S.Schema<ListDeploymentAliasesResponse>,
+  input: __S(48, __c6, 0) as any as S.Schema<ListDeploymentAliasesRequest>,
+  output: __S(52, __c6, 4) as any as S.Schema<ListDeploymentAliasesResponse>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -618,8 +618,8 @@ export const patchUrlProtectionBypass: API.OperationMethod<
   PatchUrlProtectionBypassError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(23, __c2, 7) as any as S.Schema<PatchUrlProtectionBypassRequest>,
-  output: __S(25, __c3, 1) as any as S.Schema<PatchUrlProtectionBypassResponse>,
+  input: __S(0, __c0, 0) as any as S.Schema<PatchUrlProtectionBypassRequest>,
+  output: __S(2, __c0, 2) as any as S.Schema<PatchUrlProtectionBypassResponse>,
   errors: [BadRequest, Forbidden, NotFound, Conflict],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -627,6 +627,27 @@ export const patchUrlProtectionBypass: API.OperationMethod<
 
 // Schema builders: each runs one schema initializer, on that schema's first use.
 function __c0(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String.pipe(T.Label()),
+          teamId: S.optional(S.String.pipe(T.Query())),
+          slug: S.optional(S.String.pipe(T.Query())),
+          body: S.optional(S.Unknown.pipe(T.HttpBody())),
+        }).pipe(T.Http({ method: "PATCH", uri: "/aliases/{id}/protection-bypass", code: 200 })),
+      ).annotate({
+        identifier: "PatchUrlProtectionBypassRequest",
+      });
+    case 1:
+      return S.Record(S.String, S.Unknown);
+    case 2:
+      return S.suspend(() => __S(1, __c0, 1).pipe(T.RawResponseRoot())).annotate({
+        identifier: "PatchUrlProtectionBypassResponse",
+      });
+  }
+}
+function __c1(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -647,7 +668,11 @@ function __c0(j: number): any {
           uid: S.String,
         }),
       ).annotate({ identifier: "AssignAliasResponse" });
-    case 2:
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           aliasId: S.String.pipe(T.Label()),
@@ -655,13 +680,17 @@ function __c0(j: number): any {
           slug: S.optional(S.String.pipe(T.Query())),
         }).pipe(T.Http({ method: "DELETE", uri: "/v2/aliases/{aliasId}", code: 200 })),
       ).annotate({ identifier: "DeleteAliasRequest" });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           status: S.String,
         }),
       ).annotate({ identifier: "DeleteAliasResponse" });
-    case 4:
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           idOrAlias: S.String.pipe(T.Label()),
@@ -673,7 +702,41 @@ function __c0(j: number): any {
           slug: S.optional(S.String.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/v4/aliases/{idOrAlias}", code: 200 })),
       ).annotate({ identifier: "GetAliasRequest" });
-    case 5:
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          applications: S.Unknown,
+          defaultApp: __S(34, __c4, 2),
+        }),
+      ).annotate({
+        identifier: "GetAliasResponseMicrofrontends",
+      });
+    case 2:
+      return S.Record(S.String, S.Unknown);
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          alias: S.String,
+          created: S.String,
+          createdAt: S.optional(S.NullOr(S.Number)),
+          creator: S.optional(__S(32, __c4, 0)),
+          deletedAt: S.optional(S.NullOr(S.Number)),
+          deployment: S.optional(__S(33, __c4, 1)),
+          deploymentId: S.NullOr(S.String),
+          microfrontends: S.optional(__S(25, __c3, 1)),
+          projectId: S.NullOr(S.String),
+          protectionBypass: S.optional(__S(26, __c3, 2)),
+          redirect: S.optional(S.NullOr(S.String)),
+          redirectStatusCode: S.optional(S.NullOr(S.Number)),
+          uid: S.String,
+          updatedAt: S.optional(S.NullOr(S.Number)),
+        }),
+      ).annotate({ identifier: "GetAliasResponse" });
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           email: S.optional(S.String),
@@ -681,7 +744,7 @@ function __c0(j: number): any {
           username: S.optional(S.String),
         }),
       ).annotate({ identifier: "GetAliasResponseCreator" });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
@@ -691,7 +754,7 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "GetAliasResponseDeployment",
       });
-    case 7:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           projectId: S.String,
@@ -701,39 +764,9 @@ function __c0(j: number): any {
       });
   }
 }
-function __c1(j: number): any {
+function __c5(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() =>
-        S.Struct({
-          applications: S.Unknown,
-          defaultApp: __S(7, __c0, 7),
-        }),
-      ).annotate({
-        identifier: "GetAliasResponseMicrofrontends",
-      });
-    case 1:
-      return S.Record(S.String, S.Unknown);
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          alias: S.String,
-          created: S.String,
-          createdAt: S.optional(S.NullOr(S.Number)),
-          creator: S.optional(__S(5, __c0, 5)),
-          deletedAt: S.optional(S.NullOr(S.Number)),
-          deployment: S.optional(__S(6, __c0, 6)),
-          deploymentId: S.NullOr(S.String),
-          microfrontends: S.optional(__S(8, __c1, 0)),
-          projectId: S.NullOr(S.String),
-          protectionBypass: S.optional(__S(9, __c1, 1)),
-          redirect: S.optional(S.NullOr(S.String)),
-          redirectStatusCode: S.optional(S.NullOr(S.Number)),
-          uid: S.String,
-          updatedAt: S.optional(S.NullOr(S.Number)),
-        }),
-      ).annotate({ identifier: "GetAliasResponse" });
-    case 3:
       return S.suspend(() =>
         S.Struct({
           domain: S.optional(S.Unknown.pipe(T.Query())),
@@ -747,30 +780,30 @@ function __c1(j: number): any {
           slug: S.optional(S.String.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/v4/aliases", code: 200 })),
       ).annotate({ identifier: "ListAliasesRequest" });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           applications: S.Unknown,
-          defaultApp: __S(7, __c0, 7),
+          defaultApp: __S(34, __c4, 2),
         }),
       ).annotate({
         identifier: "ListAliasesResponseAliasesItemMicrofrontends",
       });
-    case 5:
+    case 2:
       return S.Record(S.String, S.Unknown);
-    case 6:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           alias: S.String,
           created: S.String,
           createdAt: S.optional(S.Number),
-          creator: S.optional(__S(5, __c0, 5)),
+          creator: S.optional(__S(32, __c4, 0)),
           deletedAt: S.optional(S.NullOr(S.Number)),
-          deployment: S.optional(__S(6, __c0, 6)),
+          deployment: S.optional(__S(33, __c4, 1)),
           deploymentId: S.NullOr(S.String),
-          microfrontends: S.optional(__S(12, __c1, 4)),
+          microfrontends: S.optional(__S(41, __c5, 1)),
           projectId: S.NullOr(S.String),
-          protectionBypass: S.optional(__S(13, __c1, 5)),
+          protectionBypass: S.optional(__S(42, __c5, 2)),
           redirect: S.optional(S.NullOr(S.String)),
           redirectStatusCode: S.optional(S.NullOr(S.Number)),
           uid: S.String,
@@ -779,13 +812,9 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "ListAliasesResponseAliasesItem",
       });
-    case 7:
-      return S.Array(__S(14, __c1, 6));
-  }
-}
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
+    case 4:
+      return S.Array(__S(43, __c5, 3));
+    case 5:
       return S.suspend(() =>
         S.Struct({
           count: S.Number,
@@ -793,14 +822,18 @@ function __c2(j: number): any {
           prev: S.NullOr(S.Number),
         }),
       ).annotate({ identifier: "Pagination" });
-    case 1:
+    case 6:
       return S.suspend(() =>
         S.Struct({
-          aliases: __S(15, __c1, 7),
-          pagination: __S(16, __c2, 0),
+          aliases: __S(44, __c5, 4),
+          pagination: __S(45, __c5, 5),
         }),
       ).annotate({ identifier: "ListAliasesResponse" });
-    case 2:
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.String.pipe(T.Label()),
@@ -810,54 +843,32 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "ListDeploymentAliasesRequest",
       });
-    case 3:
+    case 1:
       return S.Record(S.String, S.Unknown);
-    case 4:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           alias: S.String,
           created: S.String,
-          protectionBypass: S.optional(__S(19, __c2, 3)),
+          protectionBypass: S.optional(__S(49, __c6, 1)),
           redirect: S.optional(S.NullOr(S.String)),
           uid: S.String,
         }),
       ).annotate({
         identifier: "ListDeploymentAliasesResponseAliasesItem",
       });
-    case 5:
-      return S.Array(__S(20, __c2, 4));
-    case 6:
+    case 3:
+      return S.Array(__S(50, __c6, 2));
+    case 4:
       return S.suspend(() =>
         S.Struct({
-          aliases: __S(21, __c2, 5),
+          aliases: __S(51, __c6, 3),
         }),
       ).annotate({
         identifier: "ListDeploymentAliasesResponse",
       });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String.pipe(T.Label()),
-          teamId: S.optional(S.String.pipe(T.Query())),
-          slug: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(S.Unknown.pipe(T.HttpBody())),
-        }).pipe(T.Http({ method: "PATCH", uri: "/aliases/{id}/protection-bypass", code: 200 })),
-      ).annotate({
-        identifier: "PatchUrlProtectionBypassRequest",
-      });
   }
 }
-function __c3(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Record(S.String, S.Unknown);
-    case 1:
-      return S.suspend(() => __S(24, __c3, 0).pipe(T.RawResponseRoot())).annotate({
-        identifier: "PatchUrlProtectionBypassResponse",
-      });
-  }
-}
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

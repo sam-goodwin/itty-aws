@@ -3065,7 +3065,7 @@ export const CancelDatabaseMigrationsSqlDb: API.OperationMethod<
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(0, __c0, 0) as any as S.Schema<CancelDatabaseMigrationsSqlDbRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<CancelDatabaseMigrationsSqlDbResponse>,
+  output: __S(16, __c1, 0) as any as S.Schema<CancelDatabaseMigrationsSqlDbResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3079,8 +3079,8 @@ export const CancelDatabaseMigrationsSqlMi: API.OperationMethod<
   CancelDatabaseMigrationsSqlMiError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2, __c0, 2) as any as S.Schema<CancelDatabaseMigrationsSqlMiRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<CancelDatabaseMigrationsSqlMiResponse>,
+  input: __S(32, __c2, 0) as any as S.Schema<CancelDatabaseMigrationsSqlMiRequest>,
+  output: __S(16, __c1, 0) as any as S.Schema<CancelDatabaseMigrationsSqlMiResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3094,8 +3094,8 @@ export const CancelDatabaseMigrationsSqlVm: API.OperationMethod<
   CancelDatabaseMigrationsSqlVmError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3, __c0, 3) as any as S.Schema<CancelDatabaseMigrationsSqlVmRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<CancelDatabaseMigrationsSqlVmResponse>,
+  input: __S(288, __c18, 0) as any as S.Schema<CancelDatabaseMigrationsSqlVmRequest>,
+  output: __S(16, __c1, 0) as any as S.Schema<CancelDatabaseMigrationsSqlVmResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3109,8 +3109,8 @@ export const CancelServiceTask: API.OperationMethod<
   CancelServiceTaskError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(4, __c0, 4) as any as S.Schema<CancelServiceTaskRequest>,
-  output: __S(15, __c1, 7) as any as S.Schema<CancelServiceTaskResponse>,
+  input: __S(496, __c31, 0) as any as S.Schema<CancelServiceTaskRequest>,
+  output: __S(576, __c36, 0) as any as S.Schema<CancelServiceTaskResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3124,8 +3124,8 @@ export const CancelTask: API.OperationMethod<
   CancelTaskError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(16, __c2, 0) as any as S.Schema<CancelTaskRequest>,
-  output: __S(17, __c2, 1) as any as S.Schema<CancelTaskResponse>,
+  input: __S(880, __c55, 0) as any as S.Schema<CancelTaskRequest>,
+  output: __S(896, __c56, 0) as any as S.Schema<CancelTaskResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3139,8 +3139,8 @@ export const CheckServiceChildrenNameAvailability: API.OperationMethod<
   CheckServiceChildrenNameAvailabilityError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(18, __c2, 2) as any as S.Schema<CheckServiceChildrenNameAvailabilityRequest>,
-  output: __S(19, __c2, 3) as any as S.Schema<CheckServiceChildrenNameAvailabilityResponse>,
+  input: __S(1136, __c71, 0) as any as S.Schema<CheckServiceChildrenNameAvailabilityRequest>,
+  output: __S(1152, __c72, 0) as any as S.Schema<CheckServiceChildrenNameAvailabilityResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3154,8 +3154,8 @@ export const CheckServiceNameAvailability: API.OperationMethod<
   CheckServiceNameAvailabilityError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(20, __c2, 4) as any as S.Schema<CheckServiceNameAvailabilityRequest>,
-  output: __S(19, __c2, 3) as any as S.Schema<CheckServiceNameAvailabilityResponse>,
+  input: __S(1376, __c86, 0) as any as S.Schema<CheckServiceNameAvailabilityRequest>,
+  output: __S(1152, __c72, 0) as any as S.Schema<CheckServiceNameAvailabilityResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3169,8 +3169,8 @@ export const CheckServiceStatus: API.OperationMethod<
   CheckServiceStatusError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(21, __c2, 5) as any as S.Schema<CheckServiceStatusRequest>,
-  output: __S(23, __c2, 7) as any as S.Schema<CheckServiceStatusResponse>,
+  input: __S(1616, __c101, 0) as any as S.Schema<CheckServiceStatusRequest>,
+  output: __S(1617, __c101, 1) as any as S.Schema<CheckServiceStatusResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3184,11 +3184,15 @@ export const CreateDatabaseMigrationsMongoToCosmosDbRUMongo: API.OperationMethod
   CreateDatabaseMigrationsMongoToCosmosDbRUMongoError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(28, __c3, 4) as any as S.Schema<CreateDatabaseMigrationsMongoToCosmosDbRUMongoRequest>,
+  input: __S(
+    1808,
+    __c113,
+    0,
+  ) as any as S.Schema<CreateDatabaseMigrationsMongoToCosmosDbRUMongoRequest>,
   output: __S(
-    34,
-    __c4,
-    2,
+    1824,
+    __c114,
+    0,
   ) as any as S.Schema<CreateDatabaseMigrationsMongoToCosmosDbRUMongoResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -3204,14 +3208,14 @@ export const CreateDatabaseMigrationsMongoToCosmosDbvCoreMongo: API.OperationMet
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    35,
-    __c4,
-    3,
+    1904,
+    __c119,
+    0,
   ) as any as S.Schema<CreateDatabaseMigrationsMongoToCosmosDbvCoreMongoRequest>,
   output: __S(
-    36,
-    __c4,
-    4,
+    1905,
+    __c119,
+    1,
   ) as any as S.Schema<CreateDatabaseMigrationsMongoToCosmosDbvCoreMongoResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -3226,8 +3230,8 @@ export const DatabaseMigrationsSqlDbCreateOrUpdate: API.OperationMethod<
   DatabaseMigrationsSqlDbCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(39, __c4, 7) as any as S.Schema<DatabaseMigrationsSqlDbCreateOrUpdateRequest>,
-  output: __S(45, __c5, 5) as any as S.Schema<DatabaseMigrationsSqlDbCreateOrUpdateResponse>,
+  input: __S(49, __c3, 1) as any as S.Schema<DatabaseMigrationsSqlDbCreateOrUpdateRequest>,
+  output: __S(85, __c5, 5) as any as S.Schema<DatabaseMigrationsSqlDbCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3241,8 +3245,8 @@ export const DatabaseMigrationsSqlMiCreateOrUpdate: API.OperationMethod<
   DatabaseMigrationsSqlMiCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(56, __c7, 0) as any as S.Schema<DatabaseMigrationsSqlMiCreateOrUpdateRequest>,
-  output: __S(69, __c8, 5) as any as S.Schema<DatabaseMigrationsSqlMiCreateOrUpdateResponse>,
+  input: __S(96, __c6, 0) as any as S.Schema<DatabaseMigrationsSqlMiCreateOrUpdateRequest>,
+  output: __S(143, __c8, 15) as any as S.Schema<DatabaseMigrationsSqlMiCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3256,8 +3260,8 @@ export const DatabaseMigrationsSqlMiCutover: API.OperationMethod<
   DatabaseMigrationsSqlMiCutoverError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(70, __c8, 6) as any as S.Schema<DatabaseMigrationsSqlMiCutoverRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<DatabaseMigrationsSqlMiCutoverResponse>,
+  input: __S(160, __c10, 0) as any as S.Schema<DatabaseMigrationsSqlMiCutoverRequest>,
+  output: __S(16, __c1, 0) as any as S.Schema<DatabaseMigrationsSqlMiCutoverResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3271,8 +3275,8 @@ export const DatabaseMigrationsSqlVmCreateOrUpdate: API.OperationMethod<
   DatabaseMigrationsSqlVmCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(71, __c8, 7) as any as S.Schema<DatabaseMigrationsSqlVmCreateOrUpdateRequest>,
-  output: __S(69, __c8, 5) as any as S.Schema<DatabaseMigrationsSqlVmCreateOrUpdateResponse>,
+  input: __S(176, __c11, 0) as any as S.Schema<DatabaseMigrationsSqlVmCreateOrUpdateRequest>,
+  output: __S(143, __c8, 15) as any as S.Schema<DatabaseMigrationsSqlVmCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3286,8 +3290,8 @@ export const DatabaseMigrationsSqlVmCutover: API.OperationMethod<
   DatabaseMigrationsSqlVmCutoverError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(72, __c9, 0) as any as S.Schema<DatabaseMigrationsSqlVmCutoverRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<DatabaseMigrationsSqlVmCutoverResponse>,
+  input: __S(192, __c12, 0) as any as S.Schema<DatabaseMigrationsSqlVmCutoverRequest>,
+  output: __S(16, __c1, 0) as any as S.Schema<DatabaseMigrationsSqlVmCutoverResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3301,11 +3305,15 @@ export const DeleteDatabaseMigrationsMongoToCosmosDbRUMongo: API.OperationMethod
   DeleteDatabaseMigrationsMongoToCosmosDbRUMongoError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(73, __c9, 1) as any as S.Schema<DeleteDatabaseMigrationsMongoToCosmosDbRUMongoRequest>,
+  input: __S(
+    208,
+    __c13,
+    0,
+  ) as any as S.Schema<DeleteDatabaseMigrationsMongoToCosmosDbRUMongoRequest>,
   output: __S(
-    1,
-    __c0,
-    1,
+    16,
+    __c1,
+    0,
   ) as any as S.Schema<DeleteDatabaseMigrationsMongoToCosmosDbRUMongoResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -3321,14 +3329,14 @@ export const DeleteDatabaseMigrationsMongoToCosmosDbvCoreMongo: API.OperationMet
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    74,
-    __c9,
-    2,
+    224,
+    __c14,
+    0,
   ) as any as S.Schema<DeleteDatabaseMigrationsMongoToCosmosDbvCoreMongoRequest>,
   output: __S(
-    75,
-    __c9,
-    3,
+    225,
+    __c14,
+    1,
   ) as any as S.Schema<DeleteDatabaseMigrationsMongoToCosmosDbvCoreMongoResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -3343,8 +3351,8 @@ export const DeleteDatabaseMigrationsSqlDb: API.OperationMethod<
   DeleteDatabaseMigrationsSqlDbError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(76, __c9, 4) as any as S.Schema<DeleteDatabaseMigrationsSqlDbRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<DeleteDatabaseMigrationsSqlDbResponse>,
+  input: __S(240, __c15, 0) as any as S.Schema<DeleteDatabaseMigrationsSqlDbRequest>,
+  output: __S(16, __c1, 0) as any as S.Schema<DeleteDatabaseMigrationsSqlDbResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3358,8 +3366,8 @@ export const DeleteDatabaseMigrationsSqlMi: API.OperationMethod<
   DeleteDatabaseMigrationsSqlMiError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(77, __c9, 5) as any as S.Schema<DeleteDatabaseMigrationsSqlMiRequest>,
-  output: __S(69, __c8, 5) as any as S.Schema<DeleteDatabaseMigrationsSqlMiResponse>,
+  input: __S(256, __c16, 0) as any as S.Schema<DeleteDatabaseMigrationsSqlMiRequest>,
+  output: __S(143, __c8, 15) as any as S.Schema<DeleteDatabaseMigrationsSqlMiResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3373,8 +3381,8 @@ export const DeleteDatabaseMigrationsSqlVm: API.OperationMethod<
   DeleteDatabaseMigrationsSqlVmError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(78, __c9, 6) as any as S.Schema<DeleteDatabaseMigrationsSqlVmRequest>,
-  output: __S(69, __c8, 5) as any as S.Schema<DeleteDatabaseMigrationsSqlVmResponse>,
+  input: __S(272, __c17, 0) as any as S.Schema<DeleteDatabaseMigrationsSqlVmRequest>,
+  output: __S(143, __c8, 15) as any as S.Schema<DeleteDatabaseMigrationsSqlVmResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3388,8 +3396,8 @@ export const DeleteFile: API.OperationMethod<
   DeleteFileError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(79, __c9, 7) as any as S.Schema<DeleteFileRequest>,
-  output: __S(47, __c5, 7) as any as S.Schema<DeleteFileResponse>,
+  input: __S(304, __c19, 0) as any as S.Schema<DeleteFileRequest>,
+  output: __S(144, __c9, 0) as any as S.Schema<DeleteFileResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3403,8 +3411,8 @@ export const DeleteMigrationService: API.OperationMethod<
   DeleteMigrationServiceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(80, __c10, 0) as any as S.Schema<DeleteMigrationServiceRequest>,
-  output: __S(47, __c5, 7) as any as S.Schema<DeleteMigrationServiceResponse>,
+  input: __S(320, __c20, 0) as any as S.Schema<DeleteMigrationServiceRequest>,
+  output: __S(144, __c9, 0) as any as S.Schema<DeleteMigrationServiceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3418,8 +3426,8 @@ export const DeleteProject: API.OperationMethod<
   DeleteProjectError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(81, __c10, 1) as any as S.Schema<DeleteProjectRequest>,
-  output: __S(47, __c5, 7) as any as S.Schema<DeleteProjectResponse>,
+  input: __S(336, __c21, 0) as any as S.Schema<DeleteProjectRequest>,
+  output: __S(144, __c9, 0) as any as S.Schema<DeleteProjectResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3433,8 +3441,8 @@ export const DeleteService: API.OperationMethod<
   DeleteServiceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(82, __c10, 2) as any as S.Schema<DeleteServiceRequest>,
-  output: __S(47, __c5, 7) as any as S.Schema<DeleteServiceResponse>,
+  input: __S(352, __c22, 0) as any as S.Schema<DeleteServiceRequest>,
+  output: __S(144, __c9, 0) as any as S.Schema<DeleteServiceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3448,8 +3456,8 @@ export const DeleteServiceTask: API.OperationMethod<
   DeleteServiceTaskError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(83, __c10, 3) as any as S.Schema<DeleteServiceTaskRequest>,
-  output: __S(47, __c5, 7) as any as S.Schema<DeleteServiceTaskResponse>,
+  input: __S(368, __c23, 0) as any as S.Schema<DeleteServiceTaskRequest>,
+  output: __S(144, __c9, 0) as any as S.Schema<DeleteServiceTaskResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3463,8 +3471,8 @@ export const DeleteSqlMigrationService: API.OperationMethod<
   DeleteSqlMigrationServiceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(84, __c10, 4) as any as S.Schema<DeleteSqlMigrationServiceRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<DeleteSqlMigrationServiceResponse>,
+  input: __S(384, __c24, 0) as any as S.Schema<DeleteSqlMigrationServiceRequest>,
+  output: __S(16, __c1, 0) as any as S.Schema<DeleteSqlMigrationServiceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3478,8 +3486,8 @@ export const DeleteSqlMigrationServiceNode: API.OperationMethod<
   DeleteSqlMigrationServiceNodeError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(85, __c10, 5) as any as S.Schema<DeleteSqlMigrationServiceNodeRequest>,
-  output: __S(86, __c10, 6) as any as S.Schema<DeleteNode>,
+  input: __S(400, __c25, 0) as any as S.Schema<DeleteSqlMigrationServiceNodeRequest>,
+  output: __S(401, __c25, 1) as any as S.Schema<DeleteNode>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3493,8 +3501,8 @@ export const DeleteTask: API.OperationMethod<
   DeleteTaskError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(87, __c10, 7) as any as S.Schema<DeleteTaskRequest>,
-  output: __S(47, __c5, 7) as any as S.Schema<DeleteTaskResponse>,
+  input: __S(416, __c26, 0) as any as S.Schema<DeleteTaskRequest>,
+  output: __S(144, __c9, 0) as any as S.Schema<DeleteTaskResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3508,8 +3516,8 @@ export const FilesCreateOrUpdate: API.OperationMethod<
   FilesCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(89, __c11, 1) as any as S.Schema<FilesCreateOrUpdateRequest>,
-  output: __S(91, __c11, 3) as any as S.Schema<FilesCreateOrUpdateResponse>,
+  input: __S(432, __c27, 0) as any as S.Schema<FilesCreateOrUpdateRequest>,
+  output: __S(433, __c27, 1) as any as S.Schema<FilesCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3523,8 +3531,12 @@ export const GetDatabaseMigrationsMongoToCosmosDbRUMongo: API.OperationMethod<
   GetDatabaseMigrationsMongoToCosmosDbRUMongoError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(92, __c11, 4) as any as S.Schema<GetDatabaseMigrationsMongoToCosmosDbRUMongoRequest>,
-  output: __S(34, __c4, 2) as any as S.Schema<GetDatabaseMigrationsMongoToCosmosDbRUMongoResponse>,
+  input: __S(480, __c30, 0) as any as S.Schema<GetDatabaseMigrationsMongoToCosmosDbRUMongoRequest>,
+  output: __S(
+    1824,
+    __c114,
+    0,
+  ) as any as S.Schema<GetDatabaseMigrationsMongoToCosmosDbRUMongoResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3539,11 +3551,11 @@ export const GetDatabaseMigrationsMongoToCosmosDbRUMongoForScope: API.OperationM
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    93,
-    __c11,
-    5,
+    592,
+    __c37,
+    0,
   ) as any as S.Schema<GetDatabaseMigrationsMongoToCosmosDbRUMongoForScopeRequest>,
-  output: __S(95, __c11, 7) as any as S.Schema<DatabaseMigrationCosmosDbMongoListResult>,
+  output: __S(609, __c38, 1) as any as S.Schema<DatabaseMigrationCosmosDbMongoListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3558,14 +3570,14 @@ export const GetDatabaseMigrationsMongoToCosmosDbvCoreMongo: API.OperationMethod
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    96,
-    __c12,
+    624,
+    __c39,
     0,
   ) as any as S.Schema<GetDatabaseMigrationsMongoToCosmosDbvCoreMongoRequest>,
   output: __S(
-    34,
-    __c4,
-    2,
+    1824,
+    __c114,
+    0,
   ) as any as S.Schema<GetDatabaseMigrationsMongoToCosmosDbvCoreMongoResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -3581,11 +3593,11 @@ export const GetDatabaseMigrationsMongoToCosmosDbvCoreMongoForScope: API.Operati
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    97,
-    __c12,
-    1,
+    640,
+    __c40,
+    0,
   ) as any as S.Schema<GetDatabaseMigrationsMongoToCosmosDbvCoreMongoForScopeRequest>,
-  output: __S(95, __c11, 7) as any as S.Schema<DatabaseMigrationCosmosDbMongoListResult>,
+  output: __S(609, __c38, 1) as any as S.Schema<DatabaseMigrationCosmosDbMongoListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3599,8 +3611,8 @@ export const GetDatabaseMigrationsSqlDb: API.OperationMethod<
   GetDatabaseMigrationsSqlDbError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(98, __c12, 2) as any as S.Schema<GetDatabaseMigrationsSqlDbRequest>,
-  output: __S(45, __c5, 5) as any as S.Schema<GetDatabaseMigrationsSqlDbResponse>,
+  input: __S(656, __c41, 0) as any as S.Schema<GetDatabaseMigrationsSqlDbRequest>,
+  output: __S(85, __c5, 5) as any as S.Schema<GetDatabaseMigrationsSqlDbResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3614,8 +3626,8 @@ export const GetDatabaseMigrationsSqlMi: API.OperationMethod<
   GetDatabaseMigrationsSqlMiError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(99, __c12, 3) as any as S.Schema<GetDatabaseMigrationsSqlMiRequest>,
-  output: __S(69, __c8, 5) as any as S.Schema<GetDatabaseMigrationsSqlMiResponse>,
+  input: __S(672, __c42, 0) as any as S.Schema<GetDatabaseMigrationsSqlMiRequest>,
+  output: __S(143, __c8, 15) as any as S.Schema<GetDatabaseMigrationsSqlMiResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3629,8 +3641,8 @@ export const GetDatabaseMigrationsSqlVm: API.OperationMethod<
   GetDatabaseMigrationsSqlVmError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(100, __c12, 4) as any as S.Schema<GetDatabaseMigrationsSqlVmRequest>,
-  output: __S(69, __c8, 5) as any as S.Schema<GetDatabaseMigrationsSqlVmResponse>,
+  input: __S(688, __c43, 0) as any as S.Schema<GetDatabaseMigrationsSqlVmRequest>,
+  output: __S(143, __c8, 15) as any as S.Schema<GetDatabaseMigrationsSqlVmResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3644,8 +3656,8 @@ export const GetFile: API.OperationMethod<
   GetFileError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(101, __c12, 5) as any as S.Schema<GetFileRequest>,
-  output: __S(102, __c12, 6) as any as S.Schema<GetFileResponse>,
+  input: __S(704, __c44, 0) as any as S.Schema<GetFileRequest>,
+  output: __S(720, __c45, 0) as any as S.Schema<GetFileResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3659,8 +3671,8 @@ export const GetMigrationService: API.OperationMethod<
   GetMigrationServiceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(103, __c12, 7) as any as S.Schema<GetMigrationServiceRequest>,
-  output: __S(105, __c13, 1) as any as S.Schema<GetMigrationServiceResponse>,
+  input: __S(736, __c46, 0) as any as S.Schema<GetMigrationServiceRequest>,
+  output: __S(768, __c48, 0) as any as S.Schema<GetMigrationServiceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3674,8 +3686,8 @@ export const GetProject: API.OperationMethod<
   GetProjectError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(106, __c13, 2) as any as S.Schema<GetProjectRequest>,
-  output: __S(112, __c14, 0) as any as S.Schema<GetProjectResponse>,
+  input: __S(784, __c49, 0) as any as S.Schema<GetProjectRequest>,
+  output: __S(816, __c51, 0) as any as S.Schema<GetProjectResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3689,8 +3701,8 @@ export const GetService: API.OperationMethod<
   GetServiceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(113, __c14, 1) as any as S.Schema<GetServiceRequest>,
-  output: __S(116, __c14, 4) as any as S.Schema<GetServiceResponse>,
+  input: __S(832, __c52, 0) as any as S.Schema<GetServiceRequest>,
+  output: __S(864, __c54, 0) as any as S.Schema<GetServiceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3704,8 +3716,8 @@ export const GetServiceTask: API.OperationMethod<
   GetServiceTaskError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(117, __c14, 5) as any as S.Schema<GetServiceTaskRequest>,
-  output: __S(17, __c2, 1) as any as S.Schema<GetServiceTaskResponse>,
+  input: __S(912, __c57, 0) as any as S.Schema<GetServiceTaskRequest>,
+  output: __S(896, __c56, 0) as any as S.Schema<GetServiceTaskResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3719,8 +3731,8 @@ export const GetSqlMigrationService: API.OperationMethod<
   GetSqlMigrationServiceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(118, __c14, 6) as any as S.Schema<GetSqlMigrationServiceRequest>,
-  output: __S(120, __c15, 0) as any as S.Schema<GetSqlMigrationServiceResponse>,
+  input: __S(928, __c58, 0) as any as S.Schema<GetSqlMigrationServiceRequest>,
+  output: __S(960, __c60, 0) as any as S.Schema<GetSqlMigrationServiceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3734,8 +3746,8 @@ export const GetTask: API.OperationMethod<
   GetTaskError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(121, __c15, 1) as any as S.Schema<GetTaskRequest>,
-  output: __S(17, __c2, 1) as any as S.Schema<GetTaskResponse>,
+  input: __S(976, __c61, 0) as any as S.Schema<GetTaskRequest>,
+  output: __S(896, __c56, 0) as any as S.Schema<GetTaskResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3749,8 +3761,8 @@ export const ListFiles: API.OperationMethod<
   ListFilesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(122, __c15, 2) as any as S.Schema<ListFilesRequest>,
-  output: __S(124, __c15, 4) as any as S.Schema<ListFilesResponse>,
+  input: __S(992, __c62, 0) as any as S.Schema<ListFilesRequest>,
+  output: __S(994, __c62, 2) as any as S.Schema<ListFilesResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3764,8 +3776,8 @@ export const ListMigrationServiceByResourceGroup: API.OperationMethod<
   ListMigrationServiceByResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(125, __c15, 5) as any as S.Schema<ListMigrationServiceByResourceGroupRequest>,
-  output: __S(128, __c16, 0) as any as S.Schema<MigrationServiceListResult>,
+  input: __S(1008, __c63, 0) as any as S.Schema<ListMigrationServiceByResourceGroupRequest>,
+  output: __S(1026, __c64, 2) as any as S.Schema<MigrationServiceListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3779,8 +3791,8 @@ export const ListMigrationServiceBySubscription: API.OperationMethod<
   ListMigrationServiceBySubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(129, __c16, 1) as any as S.Schema<ListMigrationServiceBySubscriptionRequest>,
-  output: __S(128, __c16, 0) as any as S.Schema<MigrationServiceListResult>,
+  input: __S(1040, __c65, 0) as any as S.Schema<ListMigrationServiceBySubscriptionRequest>,
+  output: __S(1026, __c64, 2) as any as S.Schema<MigrationServiceListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3794,8 +3806,8 @@ export const ListMigrationServiceMigrations: API.OperationMethod<
   ListMigrationServiceMigrationsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(130, __c16, 2) as any as S.Schema<ListMigrationServiceMigrationsRequest>,
-  output: __S(134, __c16, 6) as any as S.Schema<DatabaseMigrationBaseListResult>,
+  input: __S(1056, __c66, 0) as any as S.Schema<ListMigrationServiceMigrationsRequest>,
+  output: __S(1060, __c66, 4) as any as S.Schema<DatabaseMigrationBaseListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3809,8 +3821,8 @@ export const ListOperations: API.OperationMethod<
   ListOperationsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(135, __c16, 7) as any as S.Schema<ListOperationsRequest>,
-  output: __S(140, __c17, 4) as any as S.Schema<OperationListResult>,
+  input: __S(1072, __c67, 0) as any as S.Schema<ListOperationsRequest>,
+  output: __S(1076, __c67, 4) as any as S.Schema<OperationListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3824,8 +3836,8 @@ export const ListProjects: API.OperationMethod<
   ListProjectsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(141, __c17, 5) as any as S.Schema<ListProjectsRequest>,
-  output: __S(143, __c17, 7) as any as S.Schema<ListProjectsResponse>,
+  input: __S(1104, __c69, 0) as any as S.Schema<ListProjectsRequest>,
+  output: __S(1106, __c69, 2) as any as S.Schema<ListProjectsResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3839,8 +3851,8 @@ export const ListResourceSkusSkus: API.OperationMethod<
   ListResourceSkusSkusError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(144, __c18, 0) as any as S.Schema<ListResourceSkusSkusRequest>,
-  output: __S(154, __c19, 2) as any as S.Schema<ListResourceSkusSkusResponse>,
+  input: __S(1120, __c70, 0) as any as S.Schema<ListResourceSkusSkusRequest>,
+  output: __S(1130, __c70, 10) as any as S.Schema<ListResourceSkusSkusResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3854,8 +3866,8 @@ export const ListServiceByResourceGroup: API.OperationMethod<
   ListServiceByResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(155, __c19, 3) as any as S.Schema<ListServiceByResourceGroupRequest>,
-  output: __S(157, __c19, 5) as any as S.Schema<ListServiceByResourceGroupResponse>,
+  input: __S(1168, __c73, 0) as any as S.Schema<ListServiceByResourceGroupRequest>,
+  output: __S(1169, __c73, 1) as any as S.Schema<ListServiceByResourceGroupResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3869,8 +3881,8 @@ export const ListServices: API.OperationMethod<
   ListServicesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(158, __c19, 6) as any as S.Schema<ListServicesRequest>,
-  output: __S(159, __c19, 7) as any as S.Schema<ListServicesResponse>,
+  input: __S(1200, __c75, 0) as any as S.Schema<ListServicesRequest>,
+  output: __S(1201, __c75, 1) as any as S.Schema<ListServicesResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3884,8 +3896,8 @@ export const ListServiceSkus: API.OperationMethod<
   ListServiceSkusError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(160, __c20, 0) as any as S.Schema<ListServiceSkusRequest>,
-  output: __S(165, __c20, 5) as any as S.Schema<ListServiceSkusResponse>,
+  input: __S(1216, __c76, 0) as any as S.Schema<ListServiceSkusRequest>,
+  output: __S(1221, __c76, 5) as any as S.Schema<ListServiceSkusResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3899,8 +3911,8 @@ export const ListServiceTasks: API.OperationMethod<
   ListServiceTasksError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(166, __c20, 6) as any as S.Schema<ListServiceTasksRequest>,
-  output: __S(168, __c21, 0) as any as S.Schema<ListServiceTasksResponse>,
+  input: __S(1232, __c77, 0) as any as S.Schema<ListServiceTasksRequest>,
+  output: __S(1249, __c78, 1) as any as S.Schema<ListServiceTasksResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3914,8 +3926,8 @@ export const ListSqlMigrationServiceAuthKeys: API.OperationMethod<
   ListSqlMigrationServiceAuthKeysError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(169, __c21, 1) as any as S.Schema<ListSqlMigrationServiceAuthKeysRequest>,
-  output: __S(170, __c21, 2) as any as S.Schema<AuthenticationKeys>,
+  input: __S(1264, __c79, 0) as any as S.Schema<ListSqlMigrationServiceAuthKeysRequest>,
+  output: __S(1265, __c79, 1) as any as S.Schema<AuthenticationKeys>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3929,8 +3941,8 @@ export const ListSqlMigrationServiceByResourceGroup: API.OperationMethod<
   ListSqlMigrationServiceByResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(171, __c21, 3) as any as S.Schema<ListSqlMigrationServiceByResourceGroupRequest>,
-  output: __S(174, __c21, 6) as any as S.Schema<SqlMigrationListResult>,
+  input: __S(1280, __c80, 0) as any as S.Schema<ListSqlMigrationServiceByResourceGroupRequest>,
+  output: __S(1298, __c81, 2) as any as S.Schema<SqlMigrationListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3944,8 +3956,8 @@ export const ListSqlMigrationServiceBySubscription: API.OperationMethod<
   ListSqlMigrationServiceBySubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(175, __c21, 7) as any as S.Schema<ListSqlMigrationServiceBySubscriptionRequest>,
-  output: __S(174, __c21, 6) as any as S.Schema<SqlMigrationListResult>,
+  input: __S(1312, __c82, 0) as any as S.Schema<ListSqlMigrationServiceBySubscriptionRequest>,
+  output: __S(1298, __c81, 2) as any as S.Schema<SqlMigrationListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3959,8 +3971,8 @@ export const ListSqlMigrationServiceMigrations: API.OperationMethod<
   ListSqlMigrationServiceMigrationsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(176, __c22, 0) as any as S.Schema<ListSqlMigrationServiceMigrationsRequest>,
-  output: __S(180, __c22, 4) as any as S.Schema<DatabaseMigrationListResult>,
+  input: __S(1328, __c83, 0) as any as S.Schema<ListSqlMigrationServiceMigrationsRequest>,
+  output: __S(1332, __c83, 4) as any as S.Schema<DatabaseMigrationListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3974,8 +3986,8 @@ export const ListSqlMigrationServiceMonitoringData: API.OperationMethod<
   ListSqlMigrationServiceMonitoringDataError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(181, __c22, 5) as any as S.Schema<ListSqlMigrationServiceMonitoringDataRequest>,
-  output: __S(184, __c23, 0) as any as S.Schema<IntegrationRuntimeMonitoringData>,
+  input: __S(1344, __c84, 0) as any as S.Schema<ListSqlMigrationServiceMonitoringDataRequest>,
+  output: __S(1347, __c84, 3) as any as S.Schema<IntegrationRuntimeMonitoringData>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3989,8 +4001,8 @@ export const ListTasks: API.OperationMethod<
   ListTasksError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(185, __c23, 1) as any as S.Schema<ListTasksRequest>,
-  output: __S(168, __c21, 0) as any as S.Schema<ListTasksResponse>,
+  input: __S(1360, __c85, 0) as any as S.Schema<ListTasksRequest>,
+  output: __S(1249, __c78, 1) as any as S.Schema<ListTasksResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4004,8 +4016,8 @@ export const ListUsages: API.OperationMethod<
   ListUsagesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(186, __c23, 2) as any as S.Schema<ListUsagesRequest>,
-  output: __S(190, __c23, 6) as any as S.Schema<ListUsagesResponse>,
+  input: __S(1392, __c87, 0) as any as S.Schema<ListUsagesRequest>,
+  output: __S(1396, __c87, 4) as any as S.Schema<ListUsagesResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4019,8 +4031,8 @@ export const MigrationServicesCreateOrUpdate: API.OperationMethod<
   MigrationServicesCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(191, __c23, 7) as any as S.Schema<MigrationServicesCreateOrUpdateRequest>,
-  output: __S(105, __c13, 1) as any as S.Schema<MigrationServicesCreateOrUpdateResponse>,
+  input: __S(1408, __c88, 0) as any as S.Schema<MigrationServicesCreateOrUpdateRequest>,
+  output: __S(768, __c48, 0) as any as S.Schema<MigrationServicesCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4034,8 +4046,8 @@ export const ProjectsCreateOrUpdate: API.OperationMethod<
   ProjectsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(193, __c24, 1) as any as S.Schema<ProjectsCreateOrUpdateRequest>,
-  output: __S(194, __c24, 2) as any as S.Schema<ProjectsCreateOrUpdateResponse>,
+  input: __S(1424, __c89, 0) as any as S.Schema<ProjectsCreateOrUpdateRequest>,
+  output: __S(1425, __c89, 1) as any as S.Schema<ProjectsCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4049,8 +4061,8 @@ export const ReadFile: API.OperationMethod<
   ReadFileError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(195, __c24, 3) as any as S.Schema<ReadFileRequest>,
-  output: __S(196, __c24, 4) as any as S.Schema<ReadFileResponse>,
+  input: __S(1456, __c91, 0) as any as S.Schema<ReadFileRequest>,
+  output: __S(1472, __c92, 0) as any as S.Schema<ReadFileResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4064,8 +4076,8 @@ export const ReadFileWrite: API.OperationMethod<
   ReadFileWriteError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(197, __c24, 5) as any as S.Schema<ReadFileWriteRequest>,
-  output: __S(196, __c24, 4) as any as S.Schema<ReadFileWriteResponse>,
+  input: __S(1488, __c93, 0) as any as S.Schema<ReadFileWriteRequest>,
+  output: __S(1472, __c92, 0) as any as S.Schema<ReadFileWriteResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4079,8 +4091,8 @@ export const RegenerateSqlMigrationServiceAuthKeys: API.OperationMethod<
   RegenerateSqlMigrationServiceAuthKeysError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(198, __c24, 6) as any as S.Schema<RegenerateSqlMigrationServiceAuthKeysRequest>,
-  output: __S(199, __c24, 7) as any as S.Schema<RegenAuthKeys>,
+  input: __S(1504, __c94, 0) as any as S.Schema<RegenerateSqlMigrationServiceAuthKeysRequest>,
+  output: __S(1505, __c94, 1) as any as S.Schema<RegenAuthKeys>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4094,8 +4106,8 @@ export const RetryDatabaseMigrationsSqlDb: API.OperationMethod<
   RetryDatabaseMigrationsSqlDbError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(200, __c25, 0) as any as S.Schema<RetryDatabaseMigrationsSqlDbRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<RetryDatabaseMigrationsSqlDbResponse>,
+  input: __S(1520, __c95, 0) as any as S.Schema<RetryDatabaseMigrationsSqlDbRequest>,
+  output: __S(16, __c1, 0) as any as S.Schema<RetryDatabaseMigrationsSqlDbResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4109,8 +4121,8 @@ export const ServicesCreateOrUpdate: API.OperationMethod<
   ServicesCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(202, __c25, 2) as any as S.Schema<ServicesCreateOrUpdateRequest>,
-  output: __S(203, __c25, 3) as any as S.Schema<ServicesCreateOrUpdateResponse>,
+  input: __S(1536, __c96, 0) as any as S.Schema<ServicesCreateOrUpdateRequest>,
+  output: __S(1537, __c96, 1) as any as S.Schema<ServicesCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4124,8 +4136,8 @@ export const ServiceTasksCreateOrUpdate: API.OperationMethod<
   ServiceTasksCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(205, __c25, 5) as any as S.Schema<ServiceTasksCreateOrUpdateRequest>,
-  output: __S(15, __c1, 7) as any as S.Schema<ServiceTasksCreateOrUpdateResponse>,
+  input: __S(1568, __c98, 0) as any as S.Schema<ServiceTasksCreateOrUpdateRequest>,
+  output: __S(576, __c36, 0) as any as S.Schema<ServiceTasksCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4139,8 +4151,8 @@ export const SqlMigrationServicesCreateOrUpdate: API.OperationMethod<
   SqlMigrationServicesCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(206, __c25, 6) as any as S.Schema<SqlMigrationServicesCreateOrUpdateRequest>,
-  output: __S(120, __c15, 0) as any as S.Schema<SqlMigrationServicesCreateOrUpdateResponse>,
+  input: __S(1600, __c100, 0) as any as S.Schema<SqlMigrationServicesCreateOrUpdateRequest>,
+  output: __S(960, __c60, 0) as any as S.Schema<SqlMigrationServicesCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4154,8 +4166,8 @@ export const StartService: API.OperationMethod<
   StartServiceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(207, __c25, 7) as any as S.Schema<StartServiceRequest>,
-  output: __S(47, __c5, 7) as any as S.Schema<StartServiceResponse>,
+  input: __S(1648, __c103, 0) as any as S.Schema<StartServiceRequest>,
+  output: __S(144, __c9, 0) as any as S.Schema<StartServiceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4169,8 +4181,8 @@ export const StopService: API.OperationMethod<
   StopServiceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(208, __c26, 0) as any as S.Schema<StopServiceRequest>,
-  output: __S(47, __c5, 7) as any as S.Schema<StopServiceResponse>,
+  input: __S(1664, __c104, 0) as any as S.Schema<StopServiceRequest>,
+  output: __S(144, __c9, 0) as any as S.Schema<StopServiceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4184,8 +4196,8 @@ export const TasksCommand: API.OperationMethod<
   TasksCommandError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(209, __c26, 1) as any as S.Schema<TasksCommandRequest>,
-  output: __S(210, __c26, 2) as any as S.Schema<TasksCommandResponse>,
+  input: __S(1680, __c105, 0) as any as S.Schema<TasksCommandRequest>,
+  output: __S(1681, __c105, 1) as any as S.Schema<TasksCommandResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4199,8 +4211,8 @@ export const TasksCreateOrUpdate: API.OperationMethod<
   TasksCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(211, __c26, 3) as any as S.Schema<TasksCreateOrUpdateRequest>,
-  output: __S(15, __c1, 7) as any as S.Schema<TasksCreateOrUpdateResponse>,
+  input: __S(1696, __c106, 0) as any as S.Schema<TasksCreateOrUpdateRequest>,
+  output: __S(576, __c36, 0) as any as S.Schema<TasksCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4214,8 +4226,8 @@ export const UpdateFile: API.OperationMethod<
   UpdateFileError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(212, __c26, 4) as any as S.Schema<UpdateFileRequest>,
-  output: __S(102, __c12, 6) as any as S.Schema<UpdateFileResponse>,
+  input: __S(1712, __c107, 0) as any as S.Schema<UpdateFileRequest>,
+  output: __S(720, __c45, 0) as any as S.Schema<UpdateFileResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4229,8 +4241,8 @@ export const UpdateMigrationService: API.OperationMethod<
   UpdateMigrationServiceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(213, __c26, 5) as any as S.Schema<UpdateMigrationServiceRequest>,
-  output: __S(105, __c13, 1) as any as S.Schema<UpdateMigrationServiceResponse>,
+  input: __S(1728, __c108, 0) as any as S.Schema<UpdateMigrationServiceRequest>,
+  output: __S(768, __c48, 0) as any as S.Schema<UpdateMigrationServiceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4244,8 +4256,8 @@ export const UpdateProject: API.OperationMethod<
   UpdateProjectError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(214, __c26, 6) as any as S.Schema<UpdateProjectRequest>,
-  output: __S(112, __c14, 0) as any as S.Schema<UpdateProjectResponse>,
+  input: __S(1744, __c109, 0) as any as S.Schema<UpdateProjectRequest>,
+  output: __S(816, __c51, 0) as any as S.Schema<UpdateProjectResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4259,8 +4271,8 @@ export const UpdateService: API.OperationMethod<
   UpdateServiceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(215, __c26, 7) as any as S.Schema<UpdateServiceRequest>,
-  output: __S(116, __c14, 4) as any as S.Schema<UpdateServiceResponse>,
+  input: __S(1760, __c110, 0) as any as S.Schema<UpdateServiceRequest>,
+  output: __S(864, __c54, 0) as any as S.Schema<UpdateServiceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4274,8 +4286,8 @@ export const UpdateServiceTask: API.OperationMethod<
   UpdateServiceTaskError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(216, __c27, 0) as any as S.Schema<UpdateServiceTaskRequest>,
-  output: __S(15, __c1, 7) as any as S.Schema<UpdateServiceTaskResponse>,
+  input: __S(1776, __c111, 0) as any as S.Schema<UpdateServiceTaskRequest>,
+  output: __S(576, __c36, 0) as any as S.Schema<UpdateServiceTaskResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4289,8 +4301,8 @@ export const UpdateSqlMigrationService: API.OperationMethod<
   UpdateSqlMigrationServiceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(217, __c27, 1) as any as S.Schema<UpdateSqlMigrationServiceRequest>,
-  output: __S(120, __c15, 0) as any as S.Schema<UpdateSqlMigrationServiceResponse>,
+  input: __S(1792, __c112, 0) as any as S.Schema<UpdateSqlMigrationServiceRequest>,
+  output: __S(960, __c60, 0) as any as S.Schema<UpdateSqlMigrationServiceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4304,8 +4316,8 @@ export const UpdateTask: API.OperationMethod<
   UpdateTaskError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(218, __c27, 2) as any as S.Schema<UpdateTaskRequest>,
-  output: __S(17, __c2, 1) as any as S.Schema<UpdateTaskResponse>,
+  input: __S(1888, __c118, 0) as any as S.Schema<UpdateTaskRequest>,
+  output: __S(896, __c56, 0) as any as S.Schema<UpdateTaskResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4333,11 +4345,19 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "CancelDatabaseMigrationsSqlDbRequest",
       });
-    case 1:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "CancelDatabaseMigrationsSqlDbResponse",
       });
-    case 2:
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -4356,227 +4376,6 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "CancelDatabaseMigrationsSqlMiRequest",
       });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          sqlVirtualMachineName: S.String.pipe(T.Label()),
-          targetDbName: S.String.pipe(T.Label()),
-          migrationOperationId: S.optional(S.String),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.SqlVirtualMachine/sqlVirtualMachines/{sqlVirtualMachineName}/providers/Microsoft.DataMigration/databaseMigrations/{targetDbName}/cancel",
-            code: 200,
-            apiVersion: "2025-06-30",
-          }),
-        ),
-      ).annotate({
-        identifier: "CancelDatabaseMigrationsSqlVmRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          groupName: S.String.pipe(T.Label()),
-          serviceName: S.String.pipe(T.Label()),
-          taskName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{groupName}/providers/Microsoft.DataMigration/services/{serviceName}/serviceTasks/{taskName}/cancel",
-            code: 200,
-            apiVersion: "2025-06-30",
-          }),
-        ),
-      ).annotate({ identifier: "CancelServiceTaskRequest" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          createdBy: S.optional(S.String),
-          createdByType: S.optional(S.String),
-          createdAt: S.optional(S.String),
-          lastModifiedBy: S.optional(S.String),
-          lastModifiedByType: S.optional(S.String),
-          lastModifiedAt: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "SystemData" });
-    case 6:
-      return S.Array(/*@__PURE__*/ S.suspend(() => __S(7, __c0, 7)));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          code: S.optional(S.String),
-          message: S.optional(S.String),
-          details: S.optional(__S(6, __c0, 6)),
-        }),
-      ).annotate({ identifier: "ODataError" });
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(7, __c0, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          code: S.optional(S.String),
-          message: S.optional(S.String),
-          details: S.optional(__S(8, __c1, 0)),
-        }),
-      ).annotate({
-        identifier: "ProjectTaskPropertiesErrorsItem",
-      });
-    case 2:
-      return S.Array(__S(9, __c1, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          commandType: S.String,
-          errors: S.optional(__S(10, __c1, 2)),
-          state: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "ProjectTaskPropertiesCommandsItem",
-      });
-    case 4:
-      return S.Array(__S(11, __c1, 3));
-    case 5:
-      return S.Record(S.String, S.String);
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          taskType: S.String,
-          errors: S.optional(__S(10, __c1, 2)),
-          state: S.optional(S.String),
-          commands: S.optional(__S(12, __c1, 4)),
-          clientData: S.optional(__S(13, __c1, 5)),
-        }),
-      ).annotate({ identifier: "ProjectTaskProperties" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(5, __c0, 5)),
-          etag: S.optional(S.String),
-          properties: S.optional(__S(14, __c1, 6)),
-        }),
-      ).annotate({
-        identifier: "CancelServiceTaskResponse",
-      });
-  }
-}
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          groupName: S.String.pipe(T.Label()),
-          serviceName: S.String.pipe(T.Label()),
-          projectName: S.String.pipe(T.Label()),
-          taskName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{groupName}/providers/Microsoft.DataMigration/services/{serviceName}/projects/{projectName}/tasks/{taskName}/cancel",
-            code: 200,
-            apiVersion: "2025-06-30",
-          }),
-        ),
-      ).annotate({ identifier: "CancelTaskRequest" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(5, __c0, 5)),
-          etag: S.optional(S.String),
-          properties: S.optional(__S(14, __c1, 6)),
-        }),
-      ).annotate({ identifier: "CancelTaskResponse" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          groupName: S.String.pipe(T.Label()),
-          serviceName: S.String.pipe(T.Label()),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{groupName}/providers/Microsoft.DataMigration/services/{serviceName}/checkNameAvailability",
-            code: 200,
-            apiVersion: "2025-06-30",
-          }),
-        ),
-      ).annotate({
-        identifier: "CheckServiceChildrenNameAvailabilityRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          nameAvailable: S.optional(S.Boolean),
-          reason: S.optional(S.String),
-          message: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "CheckServiceChildrenNameAvailabilityResponse",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          location: S.String.pipe(T.Label()),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/subscriptions/{subscriptionId}/providers/Microsoft.DataMigration/locations/{location}/checkNameAvailability",
-            code: 200,
-            apiVersion: "2025-06-30",
-          }),
-        ),
-      ).annotate({
-        identifier: "CheckServiceNameAvailabilityRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          groupName: S.String.pipe(T.Label()),
-          serviceName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{groupName}/providers/Microsoft.DataMigration/services/{serviceName}/checkStatus",
-            code: 200,
-            apiVersion: "2025-06-30",
-          }),
-        ),
-      ).annotate({
-        identifier: "CheckServiceStatusRequest",
-      });
-    case 6:
-      return S.Array(S.String);
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          agentVersion: S.optional(S.String),
-          agentConfiguration: S.optional(S.Unknown),
-          status: S.optional(S.String),
-          vmSize: S.optional(S.String),
-          supportedTaskTypes: S.optional(__S(22, __c2, 6)),
-        }),
-      ).annotate({
-        identifier: "CheckServiceStatusResponse",
-      });
   }
 }
 function __c3(j: number): any {
@@ -4584,197 +4383,28 @@ function __c3(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          host: S.optional(S.String),
-          port: S.optional(S.Number),
-          userName: S.optional(S.String),
-          password: S.optional(S.String.pipe(T.SensitiveValue({}))),
-          useSsl: S.optional(S.Boolean),
-          connectionString: S.optional(S.String.pipe(T.SensitiveValue({}))),
-        }),
-      ).annotate({
-        identifier: "MongoConnectionInformation",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          sourceDatabase: S.optional(S.String),
-          sourceCollection: S.optional(S.String),
-          targetDatabase: S.optional(S.String),
-          targetCollection: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "MongoMigrationCollectionInput",
-      });
-    case 2:
-      return S.Array(__S(25, __c3, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
           kind: S.String,
           scope: S.optional(S.String),
           migrationService: S.optional(S.String),
           migrationOperationId: S.optional(S.String),
           provisioningError: S.optional(S.String),
-          sourceMongoConnection: S.optional(__S(24, __c3, 0)),
-          targetMongoConnection: S.optional(__S(24, __c3, 0)),
-          collectionList: S.optional(__S(26, __c3, 2)),
-        }),
-      ).annotate({
-        identifier: "DatabaseMigrationPropertiesCosmosDbMongoInput",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          targetResourceName: S.String.pipe(T.Label()),
-          migrationName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(27, __c3, 3)),
-        }).pipe(
-          T.Http({
-            method: "PUT",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{targetResourceName}/providers/Microsoft.DataMigration/databaseMigrations/{migrationName}",
-            code: 200,
-            apiVersion: "2025-06-30",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateDatabaseMigrationsMongoToCosmosDbRUMongoRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          code: S.optional(S.String),
-          message: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ErrorInfo" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          migrationStatus: S.optional(S.String),
-          migrationError: S.optional(S.String),
-          sourceDocumentCount: S.optional(S.Number),
-          processedDocumentCount: S.optional(S.Number),
-          durationInSeconds: S.optional(S.Number),
-        }),
-      ).annotate({
-        identifier: "MongoMigrationProgressDetails",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          sourceDatabase: S.optional(S.String),
-          sourceCollection: S.optional(S.String),
-          targetDatabase: S.optional(S.String),
-          targetCollection: S.optional(S.String),
-          migrationProgressDetails: S.optional(__S(30, __c3, 6)),
-        }),
-      ).annotate({ identifier: "MongoMigrationCollection" });
-  }
-}
-function __c4(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(31, __c3, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          kind: S.String,
-          scope: S.optional(S.String),
-          provisioningState: S.optional(S.String),
-          migrationStatus: S.optional(S.String),
-          startedOn: S.optional(S.String),
-          endedOn: S.optional(S.String),
-          migrationService: S.optional(S.String),
-          migrationOperationId: S.optional(S.String),
-          migrationFailureError: S.optional(__S(29, __c3, 5)),
-          provisioningError: S.optional(S.String),
-          sourceMongoConnection: S.optional(__S(24, __c3, 0)),
-          targetMongoConnection: S.optional(__S(24, __c3, 0)),
-          collectionList: S.optional(__S(32, __c4, 0)),
-        }),
-      ).annotate({
-        identifier: "DatabaseMigrationPropertiesCosmosDbMongo",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(5, __c0, 5)),
-          properties: S.optional(__S(33, __c4, 1)),
-        }),
-      ).annotate({
-        identifier: "CreateDatabaseMigrationsMongoToCosmosDbRUMongoResponse",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          targetResourceName: S.String.pipe(T.Label()),
-          migrationName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(27, __c3, 3)),
-        }).pipe(
-          T.Http({
-            method: "PUT",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/mongoClusters/{targetResourceName}/providers/Microsoft.DataMigration/databaseMigrations/{migrationName}",
-            code: 200,
-            apiVersion: "2025-06-30",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateDatabaseMigrationsMongoToCosmosDbvCoreMongoRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(5, __c0, 5)),
-          properties: S.optional(__S(33, __c4, 1)),
-        }),
-      ).annotate({
-        identifier: "CreateDatabaseMigrationsMongoToCosmosDbvCoreMongoResponse",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          dataSource: S.optional(S.String),
-          authentication: S.optional(S.String),
-          userName: S.optional(S.String),
-          password: S.optional(S.String.pipe(T.SensitiveValue({}))),
-          encryptConnection: S.optional(S.Boolean),
-          trustServerCertificate: S.optional(S.Boolean),
-        }),
-      ).annotate({ identifier: "SqlConnectionInformation" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          kind: S.String,
-          scope: S.optional(S.String),
-          migrationService: S.optional(S.String),
-          migrationOperationId: S.optional(S.String),
-          provisioningError: S.optional(S.String),
-          sourceSqlConnection: S.optional(__S(37, __c4, 5)),
+          sourceSqlConnection: S.optional(__S(64, __c4, 0)),
           sourceDatabaseName: S.optional(S.String),
           targetDatabaseCollation: S.optional(S.String),
-          targetSqlConnection: S.optional(__S(37, __c4, 5)),
-          tableList: S.optional(__S(22, __c2, 6)),
+          targetSqlConnection: S.optional(__S(64, __c4, 0)),
+          tableList: S.optional(__S(1632, __c102, 0)),
         }),
       ).annotate({
         identifier: "DatabaseMigrationPropertiesSqlDbInput",
       });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           sqlDbInstanceName: S.String.pipe(T.Label()),
           targetDbName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(38, __c4, 6)),
+          properties: S.optional(__S(48, __c3, 0)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -4786,6 +4416,21 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "DatabaseMigrationsSqlDbCreateOrUpdateRequest",
       });
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          dataSource: S.optional(S.String),
+          authentication: S.optional(S.String),
+          userName: S.optional(S.String),
+          password: S.optional(S.String.pipe(T.SensitiveValue({}))),
+          encryptConnection: S.optional(S.Boolean),
+          trustServerCertificate: S.optional(S.Boolean),
+        }),
+      ).annotate({ identifier: "SqlConnectionInformation" });
   }
 }
 function __c5(j: number): any {
@@ -4807,13 +4452,13 @@ function __c5(j: number): any {
         }),
       ).annotate({ identifier: "CopyProgressDetails" });
     case 1:
-      return S.Array(__S(40, __c5, 0));
+      return S.Array(__S(80, __c5, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
           migrationState: S.optional(S.String),
-          sqlDataCopyErrors: S.optional(__S(22, __c2, 6)),
-          listOfCopyProgressDetails: S.optional(__S(41, __c5, 1)),
+          sqlDataCopyErrors: S.optional(__S(1632, __c102, 0)),
+          listOfCopyProgressDetails: S.optional(__S(81, __c5, 1)),
         }),
       ).annotate({
         identifier: "SqlDbMigrationStatusDetails",
@@ -4837,16 +4482,16 @@ function __c5(j: number): any {
           endedOn: S.optional(S.String),
           migrationService: S.optional(S.String),
           migrationOperationId: S.optional(S.String),
-          migrationFailureError: S.optional(__S(29, __c3, 5)),
+          migrationFailureError: S.optional(__S(1856, __c116, 0)),
           provisioningError: S.optional(S.String),
-          sourceSqlConnection: S.optional(__S(37, __c4, 5)),
+          sourceSqlConnection: S.optional(__S(64, __c4, 0)),
           sourceDatabaseName: S.optional(S.String),
           sourceServerName: S.optional(S.String),
           targetDatabaseCollation: S.optional(S.String),
-          migrationStatusDetails: S.optional(__S(42, __c5, 2)),
-          targetSqlConnection: S.optional(__S(37, __c4, 5)),
-          offlineConfiguration: S.optional(__S(43, __c5, 3)),
-          tableList: S.optional(__S(22, __c2, 6)),
+          migrationStatusDetails: S.optional(__S(82, __c5, 2)),
+          targetSqlConnection: S.optional(__S(64, __c4, 0)),
+          offlineConfiguration: S.optional(__S(83, __c5, 3)),
+          tableList: S.optional(__S(1632, __c102, 0)),
         }),
       ).annotate({
         identifier: "DatabaseMigrationPropertiesSqlDb",
@@ -4857,95 +4502,15 @@ function __c5(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(5, __c0, 5)),
-          properties: S.optional(__S(44, __c5, 4)),
+          systemData: S.optional(__S(560, __c35, 0)),
+          properties: S.optional(__S(84, __c5, 4)),
         }),
       ).annotate({
         identifier: "DatabaseMigrationsSqlDbCreateOrUpdateResponse",
       });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          path: S.optional(S.String),
-          username: S.optional(S.String),
-          password: S.optional(S.String.pipe(T.SensitiveValue({}))),
-        }),
-      ).annotate({ identifier: "SqlFileShare" });
-    case 7:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "UserAssignedIdentityInput",
-      });
   }
 }
 function __c6(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Record(S.String, /*@__PURE__*/ S.NullOr(__S(47, __c5, 7)));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          type: S.String,
-          userAssignedIdentities: S.optional(__S(48, __c6, 0)),
-        }),
-      ).annotate({ identifier: "AzureBlobInputIdentity" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          authType: S.optional(S.String),
-          identity: S.optional(__S(49, __c6, 1)),
-          storageAccountResourceId: S.optional(S.String),
-          accountKey: S.optional(S.String),
-          blobContainerName: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "AzureBlobInput" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          fileShare: S.optional(__S(46, __c5, 6)),
-          azureBlob: S.optional(__S(50, __c6, 2)),
-        }),
-      ).annotate({ identifier: "SourceLocationInput" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          storageAccountResourceId: S.optional(S.String),
-          accountKey: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "TargetLocation" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          sourceLocation: S.optional(__S(51, __c6, 3)),
-          targetLocation: S.optional(__S(52, __c6, 4)),
-        }),
-      ).annotate({ identifier: "BackupConfigurationInput" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          offline: S.optional(S.Boolean),
-          lastBackupName: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "OfflineConfiguration" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          kind: S.String,
-          scope: S.optional(S.String),
-          migrationService: S.optional(S.String),
-          migrationOperationId: S.optional(S.String),
-          provisioningError: S.optional(S.String),
-          sourceSqlConnection: S.optional(__S(37, __c4, 5)),
-          sourceDatabaseName: S.optional(S.String),
-          targetDatabaseCollation: S.optional(S.String),
-          backupConfiguration: S.optional(__S(53, __c6, 5)),
-          offlineConfiguration: S.optional(__S(54, __c6, 6)),
-        }),
-      ).annotate({
-        identifier: "DatabaseMigrationPropertiesSqlMiInput",
-      });
-  }
-}
-function __c7(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4954,7 +4519,7 @@ function __c7(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           managedInstanceName: S.String.pipe(T.Label()),
           targetDbName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(55, __c6, 7)),
+          properties: S.optional(__S(117, __c7, 5)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -4966,7 +4531,87 @@ function __c7(j: number): any {
       ).annotate({
         identifier: "DatabaseMigrationsSqlMiCreateOrUpdateRequest",
       });
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, /*@__PURE__*/ S.NullOr(__S(144, __c9, 0)));
     case 1:
+      return S.suspend(() =>
+        S.Struct({
+          type: S.String,
+          userAssignedIdentities: S.optional(__S(112, __c7, 0)),
+        }),
+      ).annotate({ identifier: "AzureBlobInputIdentity" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          authType: S.optional(S.String),
+          identity: S.optional(__S(113, __c7, 1)),
+          storageAccountResourceId: S.optional(S.String),
+          accountKey: S.optional(S.String),
+          blobContainerName: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "AzureBlobInput" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          fileShare: S.optional(__S(128, __c8, 0)),
+          azureBlob: S.optional(__S(114, __c7, 2)),
+        }),
+      ).annotate({ identifier: "SourceLocationInput" });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          sourceLocation: S.optional(__S(115, __c7, 3)),
+          targetLocation: S.optional(__S(129, __c8, 1)),
+        }),
+      ).annotate({ identifier: "BackupConfigurationInput" });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          kind: S.String,
+          scope: S.optional(S.String),
+          migrationService: S.optional(S.String),
+          migrationOperationId: S.optional(S.String),
+          provisioningError: S.optional(S.String),
+          sourceSqlConnection: S.optional(__S(64, __c4, 0)),
+          sourceDatabaseName: S.optional(S.String),
+          targetDatabaseCollation: S.optional(S.String),
+          backupConfiguration: S.optional(__S(116, __c7, 4)),
+          offlineConfiguration: S.optional(__S(130, __c8, 2)),
+        }),
+      ).annotate({
+        identifier: "DatabaseMigrationPropertiesSqlMiInput",
+      });
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          path: S.optional(S.String),
+          username: S.optional(S.String),
+          password: S.optional(S.String.pipe(T.SensitiveValue({}))),
+        }),
+      ).annotate({ identifier: "SqlFileShare" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          storageAccountResourceId: S.optional(S.String),
+          accountKey: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "TargetLocation" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          offline: S.optional(S.Boolean),
+          lastBackupName: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "OfflineConfiguration" });
+    case 3:
       return S.suspend(() =>
         S.Struct({
           fileName: S.optional(S.String),
@@ -4979,92 +4624,88 @@ function __c7(j: number): any {
           familySequenceNumber: S.optional(S.Number),
         }),
       ).annotate({ identifier: "SqlBackupFileInfo" });
-    case 2:
-      return S.Array(__S(57, __c7, 1));
-    case 3:
+    case 4:
+      return S.Array(__S(131, __c8, 3));
+    case 5:
       return S.suspend(() =>
         S.Struct({
           backupSetId: S.optional(S.String),
           firstLSN: S.optional(S.String),
           lastLSN: S.optional(S.String),
           backupType: S.optional(S.String),
-          listOfBackupFiles: S.optional(__S(58, __c7, 2)),
+          listOfBackupFiles: S.optional(__S(132, __c8, 4)),
           backupStartDate: S.optional(S.String),
           backupFinishDate: S.optional(S.String),
           isBackupRestored: S.optional(S.Boolean),
           hasBackupChecksums: S.optional(S.Boolean),
           familyCount: S.optional(S.Number),
-          ignoreReasons: S.optional(__S(22, __c2, 6)),
+          ignoreReasons: S.optional(__S(1632, __c102, 0)),
         }),
       ).annotate({ identifier: "SqlBackupSetInfo" });
-    case 4:
-      return S.Array(__S(59, __c7, 3));
-    case 5:
+    case 6:
+      return S.Array(__S(133, __c8, 5));
+    case 7:
       return S.suspend(() =>
         S.Struct({
           migrationState: S.optional(S.String),
-          fullBackupSetInfo: S.optional(__S(59, __c7, 3)),
-          lastRestoredBackupSetInfo: S.optional(__S(59, __c7, 3)),
-          activeBackupSets: S.optional(__S(60, __c7, 4)),
-          invalidFiles: S.optional(__S(22, __c2, 6)),
+          fullBackupSetInfo: S.optional(__S(133, __c8, 5)),
+          lastRestoredBackupSetInfo: S.optional(__S(133, __c8, 5)),
+          activeBackupSets: S.optional(__S(134, __c8, 6)),
+          invalidFiles: S.optional(__S(1632, __c102, 0)),
           blobContainerName: S.optional(S.String),
           isFullBackupRestored: S.optional(S.Boolean),
           restoreBlockingReason: S.optional(S.String),
           completeRestoreErrorMessage: S.optional(S.String),
-          fileUploadBlockingErrors: S.optional(__S(22, __c2, 6)),
+          fileUploadBlockingErrors: S.optional(__S(1632, __c102, 0)),
           currentRestoringFilename: S.optional(S.String),
           lastRestoredFilename: S.optional(S.String),
           pendingLogBackupsCount: S.optional(S.Number),
         }),
       ).annotate({ identifier: "MigrationStatusDetails" });
-    case 6:
+    case 8:
       return S.suspend(() =>
         S.Struct({
           principalId: S.optional(S.String),
           clientId: S.optional(S.String),
         }),
       ).annotate({ identifier: "UserAssignedIdentity" });
-    case 7:
-      return S.Record(S.String, /*@__PURE__*/ S.NullOr(__S(62, __c7, 6)));
-  }
-}
-function __c8(j: number): any {
-  switch (j) {
-    case 0:
+    case 9:
+      return S.Record(S.String, /*@__PURE__*/ S.NullOr(__S(136, __c8, 8)));
+    case 10:
       return S.suspend(() =>
         S.Struct({
           principalId: S.optional(S.String),
           tenantId: S.optional(S.String),
           type: S.String,
-          userAssignedIdentities: S.optional(__S(63, __c7, 7)),
+          userAssignedIdentities: S.optional(__S(137, __c8, 9)),
         }),
       ).annotate({ identifier: "AzureBlobIdentity" });
-    case 1:
+    case 11:
       return S.suspend(() =>
         S.Struct({
           authType: S.optional(S.String),
-          identity: S.optional(__S(64, __c8, 0)),
+          identity: S.optional(__S(138, __c8, 10)),
           storageAccountResourceId: S.optional(S.String),
           accountKey: S.optional(S.String),
           blobContainerName: S.optional(S.String),
         }),
       ).annotate({ identifier: "AzureBlob" });
-    case 2:
+    case 12:
       return S.suspend(() =>
         S.Struct({
-          fileShare: S.optional(__S(46, __c5, 6)),
-          azureBlob: S.optional(__S(65, __c8, 1)),
+          fileShare: S.optional(__S(128, __c8, 0)),
+          azureBlob: S.optional(__S(139, __c8, 11)),
           fileStorageType: S.optional(S.String),
         }),
       ).annotate({ identifier: "SourceLocation" });
-    case 3:
+    case 13:
       return S.suspend(() =>
         S.Struct({
-          sourceLocation: S.optional(__S(66, __c8, 2)),
-          targetLocation: S.optional(__S(52, __c6, 4)),
+          sourceLocation: S.optional(__S(140, __c8, 12)),
+          targetLocation: S.optional(__S(129, __c8, 1)),
         }),
       ).annotate({ identifier: "BackupConfiguration" });
-    case 4:
+    case 14:
       return S.suspend(() =>
         S.Struct({
           kind: S.String,
@@ -5075,32 +4716,44 @@ function __c8(j: number): any {
           endedOn: S.optional(S.String),
           migrationService: S.optional(S.String),
           migrationOperationId: S.optional(S.String),
-          migrationFailureError: S.optional(__S(29, __c3, 5)),
+          migrationFailureError: S.optional(__S(1856, __c116, 0)),
           provisioningError: S.optional(S.String),
-          sourceSqlConnection: S.optional(__S(37, __c4, 5)),
+          sourceSqlConnection: S.optional(__S(64, __c4, 0)),
           sourceDatabaseName: S.optional(S.String),
           sourceServerName: S.optional(S.String),
           targetDatabaseCollation: S.optional(S.String),
-          migrationStatusDetails: S.optional(__S(61, __c7, 5)),
-          backupConfiguration: S.optional(__S(67, __c8, 3)),
-          offlineConfiguration: S.optional(__S(54, __c6, 6)),
+          migrationStatusDetails: S.optional(__S(135, __c8, 7)),
+          backupConfiguration: S.optional(__S(141, __c8, 13)),
+          offlineConfiguration: S.optional(__S(130, __c8, 2)),
         }),
       ).annotate({
         identifier: "DatabaseMigrationPropertiesSqlMi",
       });
-    case 5:
+    case 15:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(5, __c0, 5)),
-          properties: S.optional(__S(68, __c8, 4)),
+          systemData: S.optional(__S(560, __c35, 0)),
+          properties: S.optional(__S(142, __c8, 14)),
         }),
       ).annotate({
         identifier: "DatabaseMigrationsSqlMiCreateOrUpdateResponse",
       });
-    case 6:
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "UserAssignedIdentityInput",
+      });
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -5119,14 +4772,18 @@ function __c8(j: number): any {
       ).annotate({
         identifier: "DatabaseMigrationsSqlMiCutoverRequest",
       });
-    case 7:
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           sqlVirtualMachineName: S.String.pipe(T.Label()),
           targetDbName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(55, __c6, 7)),
+          properties: S.optional(__S(117, __c7, 5)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -5140,7 +4797,7 @@ function __c8(j: number): any {
       });
   }
 }
-function __c9(j: number): any {
+function __c12(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5161,7 +4818,11 @@ function __c9(j: number): any {
       ).annotate({
         identifier: "DatabaseMigrationsSqlVmCutoverRequest",
       });
-    case 1:
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -5180,7 +4841,11 @@ function __c9(j: number): any {
       ).annotate({
         identifier: "DeleteDatabaseMigrationsMongoToCosmosDbRUMongoRequest",
       });
-    case 2:
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -5199,11 +4864,15 @@ function __c9(j: number): any {
       ).annotate({
         identifier: "DeleteDatabaseMigrationsMongoToCosmosDbvCoreMongoRequest",
       });
-    case 3:
+    case 1:
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "DeleteDatabaseMigrationsMongoToCosmosDbvCoreMongoResponse",
       });
-    case 4:
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -5222,7 +4891,11 @@ function __c9(j: number): any {
       ).annotate({
         identifier: "DeleteDatabaseMigrationsSqlDbRequest",
       });
-    case 5:
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -5241,7 +4914,11 @@ function __c9(j: number): any {
       ).annotate({
         identifier: "DeleteDatabaseMigrationsSqlMiRequest",
       });
-    case 6:
+  }
+}
+function __c17(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -5260,7 +4937,34 @@ function __c9(j: number): any {
       ).annotate({
         identifier: "DeleteDatabaseMigrationsSqlVmRequest",
       });
-    case 7:
+  }
+}
+function __c18(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          sqlVirtualMachineName: S.String.pipe(T.Label()),
+          targetDbName: S.String.pipe(T.Label()),
+          migrationOperationId: S.optional(S.String),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.SqlVirtualMachine/sqlVirtualMachines/{sqlVirtualMachineName}/providers/Microsoft.DataMigration/databaseMigrations/{targetDbName}/cancel",
+            code: 200,
+            apiVersion: "2025-06-30",
+          }),
+        ),
+      ).annotate({
+        identifier: "CancelDatabaseMigrationsSqlVmRequest",
+      });
+  }
+}
+function __c19(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -5279,7 +4983,7 @@ function __c9(j: number): any {
       ).annotate({ identifier: "DeleteFileRequest" });
   }
 }
-function __c10(j: number): any {
+function __c20(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5298,7 +5002,11 @@ function __c10(j: number): any {
       ).annotate({
         identifier: "DeleteMigrationServiceRequest",
       });
-    case 1:
+  }
+}
+function __c21(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -5315,7 +5023,11 @@ function __c10(j: number): any {
           }),
         ),
       ).annotate({ identifier: "DeleteProjectRequest" });
-    case 2:
+  }
+}
+function __c22(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -5331,7 +5043,11 @@ function __c10(j: number): any {
           }),
         ),
       ).annotate({ identifier: "DeleteServiceRequest" });
-    case 3:
+  }
+}
+function __c23(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -5348,7 +5064,11 @@ function __c10(j: number): any {
           }),
         ),
       ).annotate({ identifier: "DeleteServiceTaskRequest" });
-    case 4:
+  }
+}
+function __c24(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -5365,7 +5085,11 @@ function __c10(j: number): any {
       ).annotate({
         identifier: "DeleteSqlMigrationServiceRequest",
       });
-    case 5:
+  }
+}
+function __c25(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -5384,14 +5108,18 @@ function __c10(j: number): any {
       ).annotate({
         identifier: "DeleteSqlMigrationServiceNodeRequest",
       });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           nodeName: S.optional(S.String),
           integrationRuntimeName: S.optional(S.String),
         }),
       ).annotate({ identifier: "DeleteNode" });
-    case 7:
+  }
+}
+function __c26(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -5411,19 +5139,9 @@ function __c10(j: number): any {
       ).annotate({ identifier: "DeleteTaskRequest" });
   }
 }
-function __c11(j: number): any {
+function __c27(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() =>
-        S.Struct({
-          extension: S.optional(S.String),
-          filePath: S.optional(S.String),
-          mediaType: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "ProjectFilePropertiesInput",
-      });
-    case 1:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -5432,7 +5150,7 @@ function __c11(j: number): any {
           projectName: S.String.pipe(T.Label()),
           fileName: S.String.pipe(T.Label()),
           etag: S.optional(S.String),
-          properties: S.optional(__S(88, __c11, 0)),
+          properties: S.optional(__S(464, __c29, 0)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -5444,7 +5162,24 @@ function __c11(j: number): any {
       ).annotate({
         identifier: "FilesCreateOrUpdateRequest",
       });
-    case 2:
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(560, __c35, 0)),
+          etag: S.optional(S.String),
+          properties: S.optional(__S(448, __c28, 0)),
+        }),
+      ).annotate({
+        identifier: "FilesCreateOrUpdateResponse",
+      });
+  }
+}
+function __c28(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           extension: S.optional(S.String),
@@ -5454,20 +5189,25 @@ function __c11(j: number): any {
           size: S.optional(S.Number),
         }),
       ).annotate({ identifier: "ProjectFileProperties" });
-    case 3:
+  }
+}
+function __c29(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(5, __c0, 5)),
-          etag: S.optional(S.String),
-          properties: S.optional(__S(90, __c11, 2)),
+          extension: S.optional(S.String),
+          filePath: S.optional(S.String),
+          mediaType: S.optional(S.String),
         }),
       ).annotate({
-        identifier: "FilesCreateOrUpdateResponse",
+        identifier: "ProjectFilePropertiesInput",
       });
-    case 4:
+  }
+}
+function __c30(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -5485,7 +5225,123 @@ function __c11(j: number): any {
       ).annotate({
         identifier: "GetDatabaseMigrationsMongoToCosmosDbRUMongoRequest",
       });
-    case 5:
+  }
+}
+function __c31(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          groupName: S.String.pipe(T.Label()),
+          serviceName: S.String.pipe(T.Label()),
+          taskName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{groupName}/providers/Microsoft.DataMigration/services/{serviceName}/serviceTasks/{taskName}/cancel",
+            code: 200,
+            apiVersion: "2025-06-30",
+          }),
+        ),
+      ).annotate({ identifier: "CancelServiceTaskRequest" });
+  }
+}
+function __c32(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, S.String);
+  }
+}
+function __c33(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(/*@__PURE__*/ S.suspend(() => __S(529, __c33, 1)));
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          code: S.optional(S.String),
+          message: S.optional(S.String),
+          details: S.optional(__S(528, __c33, 0)),
+        }),
+      ).annotate({ identifier: "ODataError" });
+    case 2:
+      return S.Array(__S(529, __c33, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          code: S.optional(S.String),
+          message: S.optional(S.String),
+          details: S.optional(__S(530, __c33, 2)),
+        }),
+      ).annotate({
+        identifier: "ProjectTaskPropertiesErrorsItem",
+      });
+    case 4:
+      return S.Array(__S(531, __c33, 3));
+  }
+}
+function __c34(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          commandType: S.String,
+          errors: S.optional(__S(532, __c33, 4)),
+          state: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "ProjectTaskPropertiesCommandsItem",
+      });
+    case 1:
+      return S.Array(__S(544, __c34, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          taskType: S.String,
+          errors: S.optional(__S(532, __c33, 4)),
+          state: S.optional(S.String),
+          commands: S.optional(__S(545, __c34, 1)),
+          clientData: S.optional(__S(512, __c32, 0)),
+        }),
+      ).annotate({ identifier: "ProjectTaskProperties" });
+  }
+}
+function __c35(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          createdBy: S.optional(S.String),
+          createdByType: S.optional(S.String),
+          createdAt: S.optional(S.String),
+          lastModifiedBy: S.optional(S.String),
+          lastModifiedByType: S.optional(S.String),
+          lastModifiedAt: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "SystemData" });
+  }
+}
+function __c36(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(560, __c35, 0)),
+          etag: S.optional(S.String),
+          properties: S.optional(__S(546, __c34, 2)),
+        }),
+      ).annotate({
+        identifier: "CancelServiceTaskResponse",
+      });
+  }
+}
+function __c37(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -5502,12 +5358,16 @@ function __c11(j: number): any {
       ).annotate({
         identifier: "GetDatabaseMigrationsMongoToCosmosDbRUMongoForScopeRequest",
       });
-    case 6:
-      return S.Array(__S(34, __c4, 2));
-    case 7:
+  }
+}
+function __c38(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(1824, __c114, 0));
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(94, __c11, 6)),
+          value: S.optional(__S(608, __c38, 0)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
@@ -5515,7 +5375,7 @@ function __c11(j: number): any {
       });
   }
 }
-function __c12(j: number): any {
+function __c39(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5535,7 +5395,11 @@ function __c12(j: number): any {
       ).annotate({
         identifier: "GetDatabaseMigrationsMongoToCosmosDbvCoreMongoRequest",
       });
-    case 1:
+  }
+}
+function __c40(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -5552,7 +5416,11 @@ function __c12(j: number): any {
       ).annotate({
         identifier: "GetDatabaseMigrationsMongoToCosmosDbvCoreMongoForScopeRequest",
       });
-    case 2:
+  }
+}
+function __c41(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -5572,7 +5440,11 @@ function __c12(j: number): any {
       ).annotate({
         identifier: "GetDatabaseMigrationsSqlDbRequest",
       });
-    case 3:
+  }
+}
+function __c42(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -5592,7 +5464,11 @@ function __c12(j: number): any {
       ).annotate({
         identifier: "GetDatabaseMigrationsSqlMiRequest",
       });
-    case 4:
+  }
+}
+function __c43(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -5612,7 +5488,11 @@ function __c12(j: number): any {
       ).annotate({
         identifier: "GetDatabaseMigrationsSqlVmRequest",
       });
-    case 5:
+  }
+}
+function __c44(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -5629,18 +5509,26 @@ function __c12(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetFileRequest" });
-    case 6:
+  }
+}
+function __c45(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(5, __c0, 5)),
+          systemData: S.optional(__S(560, __c35, 0)),
           etag: S.optional(S.String),
-          properties: S.optional(__S(90, __c11, 2)),
+          properties: S.optional(__S(448, __c28, 0)),
         }),
       ).annotate({ identifier: "GetFileResponse" });
-    case 7:
+  }
+}
+function __c46(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -5659,7 +5547,7 @@ function __c12(j: number): any {
       });
   }
 }
-function __c13(j: number): any {
+function __c47(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5670,21 +5558,29 @@ function __c13(j: number): any {
       ).annotate({
         identifier: "MigrationServiceProperties",
       });
-    case 1:
+  }
+}
+function __c48(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(5, __c0, 5)),
-          tags: S.optional(__S(13, __c1, 5)),
+          systemData: S.optional(__S(560, __c35, 0)),
+          tags: S.optional(__S(512, __c32, 0)),
           location: S.String,
-          properties: S.optional(__S(104, __c13, 0)),
+          properties: S.optional(__S(752, __c47, 0)),
         }),
       ).annotate({
         identifier: "GetMigrationServiceResponse",
       });
-    case 2:
+  }
+}
+function __c49(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -5700,7 +5596,11 @@ function __c13(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetProjectRequest" });
-    case 3:
+  }
+}
+function __c50(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           applicationId: S.optional(S.String),
@@ -5711,7 +5611,7 @@ function __c13(j: number): any {
       ).annotate({
         identifier: "ProjectPropertiesAzureAuthenticationInfo",
       });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           type: S.String,
@@ -5721,30 +5621,30 @@ function __c13(j: number): any {
       ).annotate({
         identifier: "ProjectPropertiesSourceConnectionInfo",
       });
-    case 5:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           sourceDatabaseName: S.String,
         }),
       ).annotate({ identifier: "DatabaseInfo" });
-    case 6:
-      return S.Array(__S(109, __c13, 5));
-    case 7:
+    case 3:
+      return S.Array(__S(802, __c50, 2));
+    case 4:
       return S.suspend(() =>
         S.Struct({
           sourcePlatform: S.String,
-          azureAuthenticationInfo: S.optional(__S(107, __c13, 3)),
+          azureAuthenticationInfo: S.optional(__S(800, __c50, 0)),
           targetPlatform: S.String,
           creationTime: S.optional(S.String),
-          sourceConnectionInfo: S.optional(__S(108, __c13, 4)),
-          targetConnectionInfo: S.optional(__S(108, __c13, 4)),
-          databasesInfo: S.optional(__S(110, __c13, 6)),
+          sourceConnectionInfo: S.optional(__S(801, __c50, 1)),
+          targetConnectionInfo: S.optional(__S(801, __c50, 1)),
+          databasesInfo: S.optional(__S(803, __c50, 3)),
           provisioningState: S.optional(S.String),
         }),
       ).annotate({ identifier: "ProjectProperties" });
   }
 }
-function __c14(j: number): any {
+function __c51(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5752,14 +5652,18 @@ function __c14(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(5, __c0, 5)),
-          tags: S.optional(__S(13, __c1, 5)),
+          systemData: S.optional(__S(560, __c35, 0)),
+          tags: S.optional(__S(512, __c32, 0)),
           location: S.String,
-          properties: S.optional(__S(111, __c13, 7)),
+          properties: S.optional(__S(804, __c50, 4)),
           etag: S.optional(S.String),
         }),
       ).annotate({ identifier: "GetProjectResponse" });
-    case 1:
+  }
+}
+function __c52(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -5774,7 +5678,11 @@ function __c14(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetServiceRequest" });
-    case 2:
+  }
+}
+function __c53(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           provisioningState: S.optional(S.String),
@@ -5787,7 +5695,7 @@ function __c14(j: number): any {
       ).annotate({
         identifier: "DataMigrationServiceProperties",
       });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
@@ -5797,22 +5705,66 @@ function __c14(j: number): any {
           capacity: S.optional(S.Number),
         }),
       ).annotate({ identifier: "ServiceSku" });
-    case 4:
+  }
+}
+function __c54(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(5, __c0, 5)),
-          tags: S.optional(__S(13, __c1, 5)),
+          systemData: S.optional(__S(560, __c35, 0)),
+          tags: S.optional(__S(512, __c32, 0)),
           location: S.String,
           etag: S.optional(S.String),
           kind: S.optional(S.String),
-          properties: S.optional(__S(114, __c14, 2)),
-          sku: S.optional(__S(115, __c14, 3)),
+          properties: S.optional(__S(848, __c53, 0)),
+          sku: S.optional(__S(849, __c53, 1)),
         }),
       ).annotate({ identifier: "GetServiceResponse" });
-    case 5:
+  }
+}
+function __c55(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          groupName: S.String.pipe(T.Label()),
+          serviceName: S.String.pipe(T.Label()),
+          projectName: S.String.pipe(T.Label()),
+          taskName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{groupName}/providers/Microsoft.DataMigration/services/{serviceName}/projects/{projectName}/tasks/{taskName}/cancel",
+            code: 200,
+            apiVersion: "2025-06-30",
+          }),
+        ),
+      ).annotate({ identifier: "CancelTaskRequest" });
+  }
+}
+function __c56(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(560, __c35, 0)),
+          etag: S.optional(S.String),
+          properties: S.optional(__S(546, __c34, 2)),
+        }),
+      ).annotate({ identifier: "CancelTaskResponse" });
+  }
+}
+function __c57(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -5829,7 +5781,11 @@ function __c14(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetServiceTaskRequest" });
-    case 6:
+  }
+}
+function __c58(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -5846,7 +5802,11 @@ function __c14(j: number): any {
       ).annotate({
         identifier: "GetSqlMigrationServiceRequest",
       });
-    case 7:
+  }
+}
+function __c59(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           provisioningState: S.optional(S.String),
@@ -5857,7 +5817,7 @@ function __c14(j: number): any {
       });
   }
 }
-function __c15(j: number): any {
+function __c60(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5865,15 +5825,19 @@ function __c15(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(5, __c0, 5)),
-          tags: S.optional(__S(13, __c1, 5)),
+          systemData: S.optional(__S(560, __c35, 0)),
+          tags: S.optional(__S(512, __c32, 0)),
           location: S.String,
-          properties: S.optional(__S(119, __c14, 7)),
+          properties: S.optional(__S(944, __c59, 0)),
         }),
       ).annotate({
         identifier: "GetSqlMigrationServiceResponse",
       });
-    case 1:
+  }
+}
+function __c61(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -5891,7 +5855,11 @@ function __c15(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetTaskRequest" });
-    case 2:
+  }
+}
+function __c62(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -5907,16 +5875,20 @@ function __c15(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ListFilesRequest" });
-    case 3:
-      return S.Array(__S(102, __c12, 6));
-    case 4:
+    case 1:
+      return S.Array(__S(720, __c45, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(123, __c15, 3)),
+          value: S.optional(__S(993, __c62, 1)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListFilesResponse" });
-    case 5:
+  }
+}
+function __c63(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -5932,34 +5904,38 @@ function __c15(j: number): any {
       ).annotate({
         identifier: "ListMigrationServiceByResourceGroupRequest",
       });
-    case 6:
+  }
+}
+function __c64(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(5, __c0, 5)),
-          tags: S.optional(__S(13, __c1, 5)),
+          systemData: S.optional(__S(560, __c35, 0)),
+          tags: S.optional(__S(512, __c32, 0)),
           location: S.String,
-          properties: S.optional(__S(104, __c13, 0)),
+          properties: S.optional(__S(752, __c47, 0)),
         }),
       ).annotate({ identifier: "MigrationService" });
-    case 7:
-      return S.Array(__S(126, __c15, 6));
-  }
-}
-function __c16(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
+      return S.Array(__S(1024, __c64, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(127, __c15, 7)),
+          value: S.optional(__S(1025, __c64, 1)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
         identifier: "MigrationServiceListResult",
       });
-    case 1:
+  }
+}
+function __c65(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -5974,7 +5950,11 @@ function __c16(j: number): any {
       ).annotate({
         identifier: "ListMigrationServiceBySubscriptionRequest",
       });
-    case 2:
+  }
+}
+function __c66(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -5991,7 +5971,7 @@ function __c16(j: number): any {
       ).annotate({
         identifier: "ListMigrationServiceMigrationsRequest",
       });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           kind: S.String,
@@ -6002,34 +5982,38 @@ function __c16(j: number): any {
           endedOn: S.optional(S.String),
           migrationService: S.optional(S.String),
           migrationOperationId: S.optional(S.String),
-          migrationFailureError: S.optional(__S(29, __c3, 5)),
+          migrationFailureError: S.optional(__S(1856, __c116, 0)),
           provisioningError: S.optional(S.String),
         }),
       ).annotate({
         identifier: "DatabaseMigrationBaseProperties",
       });
-    case 4:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(5, __c0, 5)),
-          properties: S.optional(__S(131, __c16, 3)),
+          systemData: S.optional(__S(560, __c35, 0)),
+          properties: S.optional(__S(1057, __c66, 1)),
         }),
       ).annotate({ identifier: "DatabaseMigrationBase" });
-    case 5:
-      return S.Array(__S(132, __c16, 4));
-    case 6:
+    case 3:
+      return S.Array(__S(1058, __c66, 2));
+    case 4:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(133, __c16, 5)),
+          value: S.optional(__S(1059, __c66, 3)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
         identifier: "DatabaseMigrationBaseListResult",
       });
-    case 7:
+  }
+}
+function __c67(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({}).pipe(
           T.Http({
@@ -6040,11 +6024,7 @@ function __c16(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ListOperationsRequest" });
-  }
-}
-function __c17(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           provider: S.optional(S.String),
@@ -6055,28 +6035,36 @@ function __c17(j: number): any {
       ).annotate({
         identifier: "OperationsDisplayDefinition",
       });
-    case 1:
-      return S.Record(S.String, S.Unknown);
     case 2:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
           isDataAction: S.optional(S.Boolean),
-          display: S.optional(__S(136, __c17, 0)),
+          display: S.optional(__S(1073, __c67, 1)),
           origin: S.optional(S.String),
-          properties: S.optional(__S(137, __c17, 1)),
+          properties: S.optional(__S(1088, __c68, 0)),
         }),
       ).annotate({ identifier: "OperationsDefinition" });
     case 3:
-      return S.Array(__S(138, __c17, 2));
+      return S.Array(__S(1074, __c67, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(139, __c17, 3)),
+          value: S.optional(__S(1075, __c67, 3)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "OperationListResult" });
-    case 5:
+  }
+}
+function __c68(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, S.Unknown);
+  }
+}
+function __c69(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -6091,18 +6079,18 @@ function __c17(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ListProjectsRequest" });
-    case 6:
-      return S.Array(__S(112, __c14, 0));
-    case 7:
+    case 1:
+      return S.Array(__S(816, __c51, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(142, __c17, 6)),
+          value: S.optional(__S(1105, __c69, 1)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListProjectsResponse" });
   }
 }
-function __c18(j: number): any {
+function __c70(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -6137,7 +6125,7 @@ function __c18(j: number): any {
         }),
       ).annotate({ identifier: "ResourceSkuCosts" });
     case 3:
-      return S.Array(__S(146, __c18, 2));
+      return S.Array(__S(1122, __c70, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
@@ -6146,22 +6134,18 @@ function __c18(j: number): any {
         }),
       ).annotate({ identifier: "ResourceSkuCapabilities" });
     case 5:
-      return S.Array(__S(148, __c18, 4));
+      return S.Array(__S(1124, __c70, 4));
     case 6:
       return S.suspend(() =>
         S.Struct({
           type: S.optional(S.String),
-          values: S.optional(__S(22, __c2, 6)),
+          values: S.optional(__S(1632, __c102, 0)),
           reasonCode: S.optional(S.String),
         }),
       ).annotate({ identifier: "ResourceSkuRestrictions" });
     case 7:
-      return S.Array(__S(150, __c18, 6));
-  }
-}
-function __c19(j: number): any {
-  switch (j) {
-    case 0:
+      return S.Array(__S(1126, __c70, 6));
+    case 8:
       return S.suspend(() =>
         S.Struct({
           resourceType: S.optional(S.String),
@@ -6170,26 +6154,67 @@ function __c19(j: number): any {
           size: S.optional(S.String),
           family: S.optional(S.String),
           kind: S.optional(S.String),
-          capacity: S.optional(__S(145, __c18, 1)),
-          locations: S.optional(__S(22, __c2, 6)),
-          apiVersions: S.optional(__S(22, __c2, 6)),
-          costs: S.optional(__S(147, __c18, 3)),
-          capabilities: S.optional(__S(149, __c18, 5)),
-          restrictions: S.optional(__S(151, __c18, 7)),
+          capacity: S.optional(__S(1121, __c70, 1)),
+          locations: S.optional(__S(1632, __c102, 0)),
+          apiVersions: S.optional(__S(1632, __c102, 0)),
+          costs: S.optional(__S(1123, __c70, 3)),
+          capabilities: S.optional(__S(1125, __c70, 5)),
+          restrictions: S.optional(__S(1127, __c70, 7)),
         }),
       ).annotate({ identifier: "ResourceSku" });
-    case 1:
-      return S.Array(__S(152, __c19, 0));
-    case 2:
+    case 9:
+      return S.Array(__S(1128, __c70, 8));
+    case 10:
       return S.suspend(() =>
         S.Struct({
-          value: __S(153, __c19, 1),
+          value: __S(1129, __c70, 9),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
         identifier: "ListResourceSkusSkusResponse",
       });
-    case 3:
+  }
+}
+function __c71(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          groupName: S.String.pipe(T.Label()),
+          serviceName: S.String.pipe(T.Label()),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{groupName}/providers/Microsoft.DataMigration/services/{serviceName}/checkNameAvailability",
+            code: 200,
+            apiVersion: "2025-06-30",
+          }),
+        ),
+      ).annotate({
+        identifier: "CheckServiceChildrenNameAvailabilityRequest",
+      });
+  }
+}
+function __c72(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          nameAvailable: S.optional(S.Boolean),
+          reason: S.optional(S.String),
+          message: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "CheckServiceChildrenNameAvailabilityResponse",
+      });
+  }
+}
+function __c73(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -6205,18 +6230,26 @@ function __c19(j: number): any {
       ).annotate({
         identifier: "ListServiceByResourceGroupRequest",
       });
-    case 4:
-      return S.Array(__S(116, __c14, 4));
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(156, __c19, 4)),
+          value: S.optional(__S(1184, __c74, 0)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
         identifier: "ListServiceByResourceGroupResponse",
       });
-    case 6:
+  }
+}
+function __c74(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(864, __c54, 0));
+  }
+}
+function __c75(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -6229,16 +6262,16 @@ function __c19(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ListServicesRequest" });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(156, __c19, 4)),
+          value: S.optional(__S(1184, __c74, 0)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListServicesResponse" });
   }
 }
-function __c20(j: number): any {
+function __c76(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -6279,20 +6312,24 @@ function __c20(j: number): any {
       return S.suspend(() =>
         S.Struct({
           resourceType: S.optional(S.String),
-          sku: S.optional(__S(161, __c20, 1)),
-          capacity: S.optional(__S(162, __c20, 2)),
+          sku: S.optional(__S(1217, __c76, 1)),
+          capacity: S.optional(__S(1218, __c76, 2)),
         }),
       ).annotate({ identifier: "AvailableServiceSku" });
     case 4:
-      return S.Array(__S(163, __c20, 3));
+      return S.Array(__S(1219, __c76, 3));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(164, __c20, 4)),
+          value: S.optional(__S(1220, __c76, 4)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListServiceSkusResponse" });
-    case 6:
+  }
+}
+function __c77(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -6308,20 +6345,24 @@ function __c20(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ListServiceTasksRequest" });
-    case 7:
-      return S.Array(__S(17, __c2, 1));
   }
 }
-function __c21(j: number): any {
+function __c78(j: number): any {
   switch (j) {
     case 0:
+      return S.Array(__S(896, __c56, 0));
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(167, __c20, 7)),
+          value: S.optional(__S(1248, __c78, 0)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListServiceTasksResponse" });
-    case 1:
+  }
+}
+function __c79(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -6338,14 +6379,18 @@ function __c21(j: number): any {
       ).annotate({
         identifier: "ListSqlMigrationServiceAuthKeysRequest",
       });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           authKey1: S.optional(S.String),
           authKey2: S.optional(S.String),
         }),
       ).annotate({ identifier: "AuthenticationKeys" });
-    case 3:
+  }
+}
+function __c80(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -6361,28 +6406,36 @@ function __c21(j: number): any {
       ).annotate({
         identifier: "ListSqlMigrationServiceByResourceGroupRequest",
       });
-    case 4:
+  }
+}
+function __c81(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(5, __c0, 5)),
-          tags: S.optional(__S(13, __c1, 5)),
+          systemData: S.optional(__S(560, __c35, 0)),
+          tags: S.optional(__S(512, __c32, 0)),
           location: S.String,
-          properties: S.optional(__S(119, __c14, 7)),
+          properties: S.optional(__S(944, __c59, 0)),
         }),
       ).annotate({ identifier: "SqlMigrationService" });
-    case 5:
-      return S.Array(__S(172, __c21, 4));
-    case 6:
+    case 1:
+      return S.Array(__S(1296, __c81, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(173, __c21, 5)),
+          value: S.optional(__S(1297, __c81, 1)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "SqlMigrationListResult" });
-    case 7:
+  }
+}
+function __c82(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -6399,7 +6452,7 @@ function __c21(j: number): any {
       });
   }
 }
-function __c22(j: number): any {
+function __c83(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -6429,9 +6482,9 @@ function __c22(j: number): any {
           endedOn: S.optional(S.String),
           migrationService: S.optional(S.String),
           migrationOperationId: S.optional(S.String),
-          migrationFailureError: S.optional(__S(29, __c3, 5)),
+          migrationFailureError: S.optional(__S(1856, __c116, 0)),
           provisioningError: S.optional(S.String),
-          sourceSqlConnection: S.optional(__S(37, __c4, 5)),
+          sourceSqlConnection: S.optional(__S(64, __c4, 0)),
           sourceDatabaseName: S.optional(S.String),
           sourceServerName: S.optional(S.String),
           targetDatabaseCollation: S.optional(S.String),
@@ -6445,22 +6498,26 @@ function __c22(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(5, __c0, 5)),
-          properties: S.optional(__S(177, __c22, 1)),
+          systemData: S.optional(__S(560, __c35, 0)),
+          properties: S.optional(__S(1329, __c83, 1)),
         }),
       ).annotate({ identifier: "DatabaseMigration" });
     case 3:
-      return S.Array(__S(178, __c22, 2));
+      return S.Array(__S(1330, __c83, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(179, __c22, 3)),
+          value: S.optional(__S(1331, __c83, 3)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
         identifier: "DatabaseMigrationListResult",
       });
-    case 5:
+  }
+}
+function __c84(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -6477,10 +6534,10 @@ function __c22(j: number): any {
       ).annotate({
         identifier: "ListSqlMigrationServiceMonitoringDataRequest",
       });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          additionalProperties: S.optional(__S(137, __c17, 1)),
+          additionalProperties: S.optional(__S(1088, __c68, 0)),
           nodeName: S.optional(S.String),
           availableMemoryInMB: S.optional(S.Number),
           cpuUtilization: S.optional(S.Number),
@@ -6491,22 +6548,22 @@ function __c22(j: number): any {
           receivedBytes: S.optional(S.Number),
         }),
       ).annotate({ identifier: "NodeMonitoringData" });
-    case 7:
-      return S.Array(__S(182, __c22, 6));
-  }
-}
-function __c23(j: number): any {
-  switch (j) {
-    case 0:
+    case 2:
+      return S.Array(__S(1345, __c84, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
-          nodes: S.optional(__S(183, __c22, 7)),
+          nodes: S.optional(__S(1346, __c84, 2)),
         }),
       ).annotate({
         identifier: "IntegrationRuntimeMonitoringData",
       });
-    case 1:
+  }
+}
+function __c85(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -6523,7 +6580,33 @@ function __c23(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ListTasksRequest" });
-    case 2:
+  }
+}
+function __c86(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          location: S.String.pipe(T.Label()),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/subscriptions/{subscriptionId}/providers/Microsoft.DataMigration/locations/{location}/checkNameAvailability",
+            code: 200,
+            apiVersion: "2025-06-30",
+          }),
+        ),
+      ).annotate({
+        identifier: "CheckServiceNameAvailabilityRequest",
+      });
+  }
+}
+function __c87(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -6537,41 +6620,45 @@ function __c23(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ListUsagesRequest" });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           localizedValue: S.optional(S.String),
           value: S.optional(S.String),
         }),
       ).annotate({ identifier: "QuotaName" });
-    case 4:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           currentValue: S.optional(S.Number),
           id: S.optional(S.String),
           limit: S.optional(S.Number),
-          name: S.optional(__S(187, __c23, 3)),
+          name: S.optional(__S(1393, __c87, 1)),
           unit: S.optional(S.String),
         }),
       ).annotate({ identifier: "Quota" });
-    case 5:
-      return S.Array(__S(188, __c23, 4));
-    case 6:
+    case 3:
+      return S.Array(__S(1394, __c87, 2));
+    case 4:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(189, __c23, 5)),
+          value: S.optional(__S(1395, __c87, 3)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListUsagesResponse" });
-    case 7:
+  }
+}
+function __c88(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           migrationServiceName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(13, __c1, 5)),
+          tags: S.optional(__S(512, __c32, 0)),
           location: S.String,
-          properties: S.optional(__S(47, __c5, 7)),
+          properties: S.optional(__S(144, __c9, 0)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -6585,29 +6672,18 @@ function __c23(j: number): any {
       });
   }
 }
-function __c24(j: number): any {
+function __c89(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() =>
-        S.Struct({
-          sourcePlatform: S.String,
-          azureAuthenticationInfo: S.optional(__S(107, __c13, 3)),
-          targetPlatform: S.String,
-          sourceConnectionInfo: S.optional(__S(108, __c13, 4)),
-          targetConnectionInfo: S.optional(__S(108, __c13, 4)),
-          databasesInfo: S.optional(__S(110, __c13, 6)),
-        }),
-      ).annotate({ identifier: "ProjectPropertiesInput" });
-    case 1:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           groupName: S.String.pipe(T.Label()),
           serviceName: S.String.pipe(T.Label()),
           projectName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(13, __c1, 5)),
+          tags: S.optional(__S(512, __c32, 0)),
           location: S.String,
-          properties: S.optional(__S(192, __c24, 0)),
+          properties: S.optional(__S(1440, __c90, 0)),
           etag: S.optional(S.String),
         }).pipe(
           T.Http({
@@ -6620,22 +6696,41 @@ function __c24(j: number): any {
       ).annotate({
         identifier: "ProjectsCreateOrUpdateRequest",
       });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(5, __c0, 5)),
-          tags: S.optional(__S(13, __c1, 5)),
+          systemData: S.optional(__S(560, __c35, 0)),
+          tags: S.optional(__S(512, __c32, 0)),
           location: S.String,
-          properties: S.optional(__S(111, __c13, 7)),
+          properties: S.optional(__S(804, __c50, 4)),
           etag: S.optional(S.String),
         }),
       ).annotate({
         identifier: "ProjectsCreateOrUpdateResponse",
       });
-    case 3:
+  }
+}
+function __c90(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          sourcePlatform: S.String,
+          azureAuthenticationInfo: S.optional(__S(800, __c50, 0)),
+          targetPlatform: S.String,
+          sourceConnectionInfo: S.optional(__S(801, __c50, 1)),
+          targetConnectionInfo: S.optional(__S(801, __c50, 1)),
+          databasesInfo: S.optional(__S(803, __c50, 3)),
+        }),
+      ).annotate({ identifier: "ProjectPropertiesInput" });
+  }
+}
+function __c91(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -6652,14 +6747,22 @@ function __c24(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ReadFileRequest" });
-    case 4:
+  }
+}
+function __c92(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           uri: S.optional(S.String),
-          headers: S.optional(__S(13, __c1, 5)),
+          headers: S.optional(__S(512, __c32, 0)),
         }),
       ).annotate({ identifier: "ReadFileResponse" });
-    case 5:
+  }
+}
+function __c93(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -6676,7 +6779,11 @@ function __c24(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ReadFileWriteRequest" });
-    case 6:
+  }
+}
+function __c94(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -6696,7 +6803,7 @@ function __c24(j: number): any {
       ).annotate({
         identifier: "RegenerateSqlMigrationServiceAuthKeysRequest",
       });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           keyName: S.optional(S.String),
@@ -6706,7 +6813,7 @@ function __c24(j: number): any {
       ).annotate({ identifier: "RegenAuthKeys" });
   }
 }
-function __c25(j: number): any {
+function __c95(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -6727,30 +6834,22 @@ function __c25(j: number): any {
       ).annotate({
         identifier: "RetryDatabaseMigrationsSqlDbRequest",
       });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          publicKey: S.optional(S.String),
-          virtualSubnetId: S.optional(S.String),
-          virtualNicId: S.optional(S.String),
-          autoStopDelay: S.optional(S.String),
-          deleteResourcesOnStop: S.optional(S.Boolean),
-        }),
-      ).annotate({
-        identifier: "DataMigrationServicePropertiesInput",
-      });
-    case 2:
+  }
+}
+function __c96(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           groupName: S.String.pipe(T.Label()),
           serviceName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(13, __c1, 5)),
+          tags: S.optional(__S(512, __c32, 0)),
           location: S.String,
           etag: S.optional(S.String),
           kind: S.optional(S.String),
-          properties: S.optional(__S(201, __c25, 1)),
-          sku: S.optional(__S(115, __c14, 3)),
+          properties: S.optional(__S(1552, __c97, 0)),
+          sku: S.optional(__S(849, __c53, 1)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -6762,33 +6861,44 @@ function __c25(j: number): any {
       ).annotate({
         identifier: "ServicesCreateOrUpdateRequest",
       });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(5, __c0, 5)),
-          tags: S.optional(__S(13, __c1, 5)),
+          systemData: S.optional(__S(560, __c35, 0)),
+          tags: S.optional(__S(512, __c32, 0)),
           location: S.String,
           etag: S.optional(S.String),
           kind: S.optional(S.String),
-          properties: S.optional(__S(114, __c14, 2)),
-          sku: S.optional(__S(115, __c14, 3)),
+          properties: S.optional(__S(848, __c53, 0)),
+          sku: S.optional(__S(849, __c53, 1)),
         }),
       ).annotate({
         identifier: "ServicesCreateOrUpdateResponse",
       });
-    case 4:
+  }
+}
+function __c97(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          taskType: S.String,
-          clientData: S.optional(__S(13, __c1, 5)),
+          publicKey: S.optional(S.String),
+          virtualSubnetId: S.optional(S.String),
+          virtualNicId: S.optional(S.String),
+          autoStopDelay: S.optional(S.String),
+          deleteResourcesOnStop: S.optional(S.Boolean),
         }),
       ).annotate({
-        identifier: "ProjectTaskPropertiesInput",
+        identifier: "DataMigrationServicePropertiesInput",
       });
-    case 5:
+  }
+}
+function __c98(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -6796,7 +6906,7 @@ function __c25(j: number): any {
           serviceName: S.String.pipe(T.Label()),
           taskName: S.String.pipe(T.Label()),
           etag: S.optional(S.String),
-          properties: S.optional(__S(204, __c25, 4)),
+          properties: S.optional(__S(1584, __c99, 0)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -6808,15 +6918,32 @@ function __c25(j: number): any {
       ).annotate({
         identifier: "ServiceTasksCreateOrUpdateRequest",
       });
-    case 6:
+  }
+}
+function __c99(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          taskType: S.String,
+          clientData: S.optional(__S(512, __c32, 0)),
+        }),
+      ).annotate({
+        identifier: "ProjectTaskPropertiesInput",
+      });
+  }
+}
+function __c100(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           sqlMigrationServiceName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(13, __c1, 5)),
+          tags: S.optional(__S(512, __c32, 0)),
           location: S.String,
-          properties: S.optional(__S(47, __c5, 7)),
+          properties: S.optional(__S(144, __c9, 0)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -6828,7 +6955,50 @@ function __c25(j: number): any {
       ).annotate({
         identifier: "SqlMigrationServicesCreateOrUpdateRequest",
       });
-    case 7:
+  }
+}
+function __c101(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          groupName: S.String.pipe(T.Label()),
+          serviceName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{groupName}/providers/Microsoft.DataMigration/services/{serviceName}/checkStatus",
+            code: 200,
+            apiVersion: "2025-06-30",
+          }),
+        ),
+      ).annotate({
+        identifier: "CheckServiceStatusRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          agentVersion: S.optional(S.String),
+          agentConfiguration: S.optional(S.Unknown),
+          status: S.optional(S.String),
+          vmSize: S.optional(S.String),
+          supportedTaskTypes: S.optional(__S(1632, __c102, 0)),
+        }),
+      ).annotate({
+        identifier: "CheckServiceStatusResponse",
+      });
+  }
+}
+function __c102(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c103(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -6845,7 +7015,7 @@ function __c25(j: number): any {
       ).annotate({ identifier: "StartServiceRequest" });
   }
 }
-function __c26(j: number): any {
+function __c104(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -6862,7 +7032,11 @@ function __c26(j: number): any {
           }),
         ),
       ).annotate({ identifier: "StopServiceRequest" });
-    case 1:
+  }
+}
+function __c105(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -6880,15 +7054,19 @@ function __c26(j: number): any {
           }),
         ),
       ).annotate({ identifier: "TasksCommandRequest" });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           commandType: S.String,
-          errors: S.optional(__S(10, __c1, 2)),
+          errors: S.optional(__S(532, __c33, 4)),
           state: S.optional(S.String),
         }),
       ).annotate({ identifier: "TasksCommandResponse" });
-    case 3:
+  }
+}
+function __c106(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -6897,7 +7075,7 @@ function __c26(j: number): any {
           projectName: S.String.pipe(T.Label()),
           taskName: S.String.pipe(T.Label()),
           etag: S.optional(S.String),
-          properties: S.optional(__S(204, __c25, 4)),
+          properties: S.optional(__S(1584, __c99, 0)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -6909,7 +7087,11 @@ function __c26(j: number): any {
       ).annotate({
         identifier: "TasksCreateOrUpdateRequest",
       });
-    case 4:
+  }
+}
+function __c107(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -6918,7 +7100,7 @@ function __c26(j: number): any {
           projectName: S.String.pipe(T.Label()),
           fileName: S.String.pipe(T.Label()),
           etag: S.optional(S.String),
-          properties: S.optional(__S(88, __c11, 0)),
+          properties: S.optional(__S(464, __c29, 0)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -6928,13 +7110,17 @@ function __c26(j: number): any {
           }),
         ),
       ).annotate({ identifier: "UpdateFileRequest" });
-    case 5:
+  }
+}
+function __c108(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           migrationServiceName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(13, __c1, 5)),
+          tags: S.optional(__S(512, __c32, 0)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -6946,16 +7132,20 @@ function __c26(j: number): any {
       ).annotate({
         identifier: "UpdateMigrationServiceRequest",
       });
-    case 6:
+  }
+}
+function __c109(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           groupName: S.String.pipe(T.Label()),
           serviceName: S.String.pipe(T.Label()),
           projectName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(13, __c1, 5)),
+          tags: S.optional(__S(512, __c32, 0)),
           location: S.String,
-          properties: S.optional(__S(192, __c24, 0)),
+          properties: S.optional(__S(1440, __c90, 0)),
           etag: S.optional(S.String),
         }).pipe(
           T.Http({
@@ -6966,18 +7156,22 @@ function __c26(j: number): any {
           }),
         ),
       ).annotate({ identifier: "UpdateProjectRequest" });
-    case 7:
+  }
+}
+function __c110(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           groupName: S.String.pipe(T.Label()),
           serviceName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(13, __c1, 5)),
+          tags: S.optional(__S(512, __c32, 0)),
           location: S.String,
           etag: S.optional(S.String),
           kind: S.optional(S.String),
-          properties: S.optional(__S(201, __c25, 1)),
-          sku: S.optional(__S(115, __c14, 3)),
+          properties: S.optional(__S(1552, __c97, 0)),
+          sku: S.optional(__S(849, __c53, 1)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -6989,7 +7183,7 @@ function __c26(j: number): any {
       ).annotate({ identifier: "UpdateServiceRequest" });
   }
 }
-function __c27(j: number): any {
+function __c111(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -6999,7 +7193,7 @@ function __c27(j: number): any {
           serviceName: S.String.pipe(T.Label()),
           taskName: S.String.pipe(T.Label()),
           etag: S.optional(S.String),
-          properties: S.optional(__S(204, __c25, 4)),
+          properties: S.optional(__S(1584, __c99, 0)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -7009,13 +7203,17 @@ function __c27(j: number): any {
           }),
         ),
       ).annotate({ identifier: "UpdateServiceTaskRequest" });
-    case 1:
+  }
+}
+function __c112(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           sqlMigrationServiceName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(13, __c1, 5)),
+          tags: S.optional(__S(512, __c32, 0)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -7027,7 +7225,154 @@ function __c27(j: number): any {
       ).annotate({
         identifier: "UpdateSqlMigrationServiceRequest",
       });
+  }
+}
+function __c113(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          targetResourceName: S.String.pipe(T.Label()),
+          migrationName: S.String.pipe(T.Label()),
+          properties: S.optional(__S(1842, __c115, 2)),
+        }).pipe(
+          T.Http({
+            method: "PUT",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{targetResourceName}/providers/Microsoft.DataMigration/databaseMigrations/{migrationName}",
+            code: 200,
+            apiVersion: "2025-06-30",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateDatabaseMigrationsMongoToCosmosDbRUMongoRequest",
+      });
+  }
+}
+function __c114(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(560, __c35, 0)),
+          properties: S.optional(__S(1876, __c117, 4)),
+        }),
+      ).annotate({
+        identifier: "CreateDatabaseMigrationsMongoToCosmosDbRUMongoResponse",
+      });
+  }
+}
+function __c115(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          sourceDatabase: S.optional(S.String),
+          sourceCollection: S.optional(S.String),
+          targetDatabase: S.optional(S.String),
+          targetCollection: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "MongoMigrationCollectionInput",
+      });
+    case 1:
+      return S.Array(__S(1840, __c115, 0));
     case 2:
+      return S.suspend(() =>
+        S.Struct({
+          kind: S.String,
+          scope: S.optional(S.String),
+          migrationService: S.optional(S.String),
+          migrationOperationId: S.optional(S.String),
+          provisioningError: S.optional(S.String),
+          sourceMongoConnection: S.optional(__S(1872, __c117, 0)),
+          targetMongoConnection: S.optional(__S(1872, __c117, 0)),
+          collectionList: S.optional(__S(1841, __c115, 1)),
+        }),
+      ).annotate({
+        identifier: "DatabaseMigrationPropertiesCosmosDbMongoInput",
+      });
+  }
+}
+function __c116(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          code: S.optional(S.String),
+          message: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ErrorInfo" });
+  }
+}
+function __c117(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          host: S.optional(S.String),
+          port: S.optional(S.Number),
+          userName: S.optional(S.String),
+          password: S.optional(S.String.pipe(T.SensitiveValue({}))),
+          useSsl: S.optional(S.Boolean),
+          connectionString: S.optional(S.String.pipe(T.SensitiveValue({}))),
+        }),
+      ).annotate({
+        identifier: "MongoConnectionInformation",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          migrationStatus: S.optional(S.String),
+          migrationError: S.optional(S.String),
+          sourceDocumentCount: S.optional(S.Number),
+          processedDocumentCount: S.optional(S.Number),
+          durationInSeconds: S.optional(S.Number),
+        }),
+      ).annotate({
+        identifier: "MongoMigrationProgressDetails",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          sourceDatabase: S.optional(S.String),
+          sourceCollection: S.optional(S.String),
+          targetDatabase: S.optional(S.String),
+          targetCollection: S.optional(S.String),
+          migrationProgressDetails: S.optional(__S(1873, __c117, 1)),
+        }),
+      ).annotate({ identifier: "MongoMigrationCollection" });
+    case 3:
+      return S.Array(__S(1874, __c117, 2));
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          kind: S.String,
+          scope: S.optional(S.String),
+          provisioningState: S.optional(S.String),
+          migrationStatus: S.optional(S.String),
+          startedOn: S.optional(S.String),
+          endedOn: S.optional(S.String),
+          migrationService: S.optional(S.String),
+          migrationOperationId: S.optional(S.String),
+          migrationFailureError: S.optional(__S(1856, __c116, 0)),
+          provisioningError: S.optional(S.String),
+          sourceMongoConnection: S.optional(__S(1872, __c117, 0)),
+          targetMongoConnection: S.optional(__S(1872, __c117, 0)),
+          collectionList: S.optional(__S(1875, __c117, 3)),
+        }),
+      ).annotate({
+        identifier: "DatabaseMigrationPropertiesCosmosDbMongo",
+      });
+  }
+}
+function __c118(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -7036,7 +7381,7 @@ function __c27(j: number): any {
           projectName: S.String.pipe(T.Label()),
           taskName: S.String.pipe(T.Label()),
           etag: S.optional(S.String),
-          properties: S.optional(__S(204, __c25, 4)),
+          properties: S.optional(__S(1584, __c99, 0)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -7048,7 +7393,41 @@ function __c27(j: number): any {
       ).annotate({ identifier: "UpdateTaskRequest" });
   }
 }
-
+function __c119(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          targetResourceName: S.String.pipe(T.Label()),
+          migrationName: S.String.pipe(T.Label()),
+          properties: S.optional(__S(1842, __c115, 2)),
+        }).pipe(
+          T.Http({
+            method: "PUT",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/mongoClusters/{targetResourceName}/providers/Microsoft.DataMigration/databaseMigrations/{migrationName}",
+            code: 200,
+            apiVersion: "2025-06-30",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateDatabaseMigrationsMongoToCosmosDbvCoreMongoRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(560, __c35, 0)),
+          properties: S.optional(__S(1876, __c117, 4)),
+        }),
+      ).annotate({
+        identifier: "CreateDatabaseMigrationsMongoToCosmosDbvCoreMongoResponse",
+      });
+  }
+}
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

@@ -149,7 +149,7 @@ export const getCert: API.OperationMethod<
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(0, __c0, 0) as any as S.Schema<GetCertRequest>,
-  output: __S(2, __c0, 2) as any as S.Schema<GetCertResponse>,
+  output: __S(16, __c2, 0) as any as S.Schema<GetCertResponse>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -163,8 +163,8 @@ export const getCerts: API.OperationMethod<
   GetCertsError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3, __c0, 3) as any as S.Schema<GetCertsRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<GetCertsResponse>,
+  input: __S(24, __c3, 0) as any as S.Schema<GetCertsRequest>,
+  output: __S(28, __c3, 4) as any as S.Schema<GetCertsResponse>,
   errors: [BadRequest, Forbidden],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -178,8 +178,8 @@ export const issueCert: API.OperationMethod<
   IssueCertError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(8, __c1, 0) as any as S.Schema<IssueCertRequest>,
-  output: __S(2, __c0, 2) as any as S.Schema<IssueCertResponse>,
+  input: __S(32, __c4, 0) as any as S.Schema<IssueCertRequest>,
+  output: __S(16, __c2, 0) as any as S.Schema<IssueCertResponse>,
   errors: [BadRequest, PaymentRequired, Forbidden, NotFound],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -193,8 +193,8 @@ export const removeCert: API.OperationMethod<
   RemoveCertError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(9, __c1, 1) as any as S.Schema<RemoveCertRequest>,
-  output: __S(10, __c1, 2) as any as S.Schema<RemoveCertResponse>,
+  input: __S(40, __c5, 0) as any as S.Schema<RemoveCertRequest>,
+  output: __S(41, __c5, 1) as any as S.Schema<RemoveCertResponse>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -208,8 +208,8 @@ export const uploadCert: API.OperationMethod<
   UploadCertError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(11, __c1, 3) as any as S.Schema<UploadCertRequest>,
-  output: __S(2, __c0, 2) as any as S.Schema<UploadCertResponse>,
+  input: __S(48, __c6, 0) as any as S.Schema<UploadCertRequest>,
+  output: __S(16, __c2, 0) as any as S.Schema<UploadCertResponse>,
   errors: [BadRequest, PaymentRequired, Forbidden, NotFound],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -226,30 +226,42 @@ function __c0(j: number): any {
           slug: S.optional(S.String.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/v8/certs/{id}", code: 200 })),
       ).annotate({ identifier: "GetCertRequest" });
-    case 1:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
       return S.Array(S.String);
-    case 2:
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           autoRenew: S.Boolean,
-          cns: __S(1, __c0, 1),
+          cns: __S(8, __c1, 0),
           createdAt: S.Number,
           expiresAt: S.Number,
           id: S.String,
         }),
       ).annotate({ identifier: "GetCertResponse" });
-    case 3:
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           teamId: S.optional(S.String.pipe(T.Query())),
           slug: S.optional(S.String.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/v8/certs", code: 200 })),
       ).annotate({ identifier: "GetCertsRequest" });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           autoRenew: S.Boolean,
-          cns: __S(1, __c0, 1),
+          cns: __S(8, __c1, 0),
           createdAt: S.Number,
           expiresAt: S.Number,
           id: S.String,
@@ -257,9 +269,9 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "GetCertsResponseCertsItem",
       });
-    case 5:
-      return S.Array(__S(4, __c0, 4));
-    case 6:
+    case 2:
+      return S.Array(__S(25, __c3, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
           count: S.Number,
@@ -267,26 +279,30 @@ function __c0(j: number): any {
           prev: S.NullOr(S.Number),
         }),
       ).annotate({ identifier: "Pagination" });
-    case 7:
+    case 4:
       return S.suspend(() =>
         S.Struct({
-          certs: __S(5, __c0, 5),
-          pagination: __S(6, __c0, 6),
+          certs: __S(26, __c3, 2),
+          pagination: __S(27, __c3, 3),
         }),
       ).annotate({ identifier: "GetCertsResponse" });
   }
 }
-function __c1(j: number): any {
+function __c4(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           teamId: S.optional(S.String.pipe(T.Query())),
           slug: S.optional(S.String.pipe(T.Query())),
-          cns: S.optional(__S(1, __c0, 1)),
+          cns: S.optional(__S(8, __c1, 0)),
         }).pipe(T.Http({ method: "POST", uri: "/v8/certs", code: 200 })),
       ).annotate({ identifier: "IssueCertRequest" });
-    case 1:
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.String.pipe(T.Label()),
@@ -294,11 +310,15 @@ function __c1(j: number): any {
           slug: S.optional(S.String.pipe(T.Query())),
         }).pipe(T.Http({ method: "DELETE", uri: "/v8/certs/{id}", code: 200 })),
       ).annotate({ identifier: "RemoveCertRequest" });
-    case 2:
+    case 1:
       return S.suspend(() => S.Unknown.pipe(T.RawResponseRoot())).annotate({
         identifier: "RemoveCertResponse",
       });
-    case 3:
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           teamId: S.optional(S.String.pipe(T.Query())),
@@ -311,7 +331,6 @@ function __c1(j: number): any {
       ).annotate({ identifier: "UploadCertRequest" });
   }
 }
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

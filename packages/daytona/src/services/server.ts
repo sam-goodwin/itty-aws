@@ -39,7 +39,7 @@ export const initialize: API.OperationMethod<
   DaytonaOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(0, __c0, 0) as any as S.Schema<InitializeRequest>,
-  output: __S(2, __c0, 2) as any as S.Schema<InitializeResponse>,
+  output: __S(3, __c1, 1) as any as S.Schema<InitializeResponse>,
   errors: [UnknownDaytonaError],
   protocol: DaytonaProtocol,
   retry: Retry.Retry,
@@ -53,8 +53,8 @@ export const updateEnv: API.OperationMethod<
   UpdateEnvError,
   DaytonaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(4, __c0, 4) as any as S.Schema<UpdateEnvRequest>,
-  output: __S(2, __c0, 2) as any as S.Schema<UpdateEnvResponse>,
+  input: __S(5, __c2, 1) as any as S.Schema<UpdateEnvRequest>,
+  output: __S(3, __c1, 1) as any as S.Schema<UpdateEnvResponse>,
   errors: [UnknownDaytonaError],
   protocol: DaytonaProtocol,
   retry: Retry.Retry,
@@ -69,25 +69,32 @@ function __c0(j: number): any {
           token: S.String,
         }).pipe(T.Http({ method: "POST", uri: "/init", code: 200 })),
       ).annotate({ identifier: "InitializeRequest" });
-    case 1:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
       return S.Record(S.String, S.String);
-    case 2:
-      return S.suspend(() => __S(1, __c0, 1).pipe(T.RawResponseRoot())).annotate({
+    case 1:
+      return S.suspend(() => __S(2, __c1, 0).pipe(T.RawResponseRoot())).annotate({
         identifier: "InitializeResponse",
       });
-    case 3:
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
       return S.Array(S.String);
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          set: S.optional(__S(1, __c0, 1)),
-          unset: S.optional(__S(3, __c0, 3)),
+          set: S.optional(__S(2, __c1, 0)),
+          unset: S.optional(__S(4, __c2, 0)),
           unsetValuePrefix: S.optional(S.String),
         }).pipe(T.Http({ method: "POST", uri: "/env", code: 200 })),
       ).annotate({ identifier: "UpdateEnvRequest" });
   }
 }
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

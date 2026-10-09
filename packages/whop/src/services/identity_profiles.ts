@@ -314,7 +314,7 @@ export const getIdentityProfile: API.OperationMethod<
   WhopOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(0, __c0, 0) as any as S.Schema<GetIdentityProfileRequest>,
-  output: __S(6, __c0, 6) as any as S.Schema<IdentityProfile>,
+  output: __S(11, __c2, 3) as any as S.Schema<IdentityProfile>,
   errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity],
   protocol: WhopProtocol,
   retry: Retry.Retry,
@@ -335,8 +335,8 @@ export const listIdentityProfile: API.PaginatedOperationMethod<
   IdentityProfileListItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(7, __c0, 7) as any as S.Schema<ListIdentityProfileRequest>,
-    output: __S(10, __c1, 2) as any as S.Schema<ListIdentityProfileResponse>,
+    input: __S(12, __c3, 0) as any as S.Schema<ListIdentityProfileRequest>,
+    output: __S(14, __c3, 2) as any as S.Schema<ListIdentityProfileResponse>,
     errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity],
     protocol: WhopProtocol,
     retry: Retry.Retry,
@@ -367,8 +367,8 @@ export const listVerificationsIdentityProfile: API.PaginatedOperationMethod<
   IdentityProfileVerificationsItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(11, __c1, 3) as any as S.Schema<ListVerificationsIdentityProfileRequest>,
-    output: __S(12, __c1, 4) as any as S.Schema<ListVerificationsIdentityProfileResponse>,
+    input: __S(20, __c5, 0) as any as S.Schema<ListVerificationsIdentityProfileRequest>,
+    output: __S(21, __c5, 1) as any as S.Schema<ListVerificationsIdentityProfileResponse>,
     errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity],
     protocol: WhopProtocol,
     retry: Retry.Retry,
@@ -397,8 +397,8 @@ export const unlinkIdentityProfile: API.OperationMethod<
   UnlinkIdentityProfileError,
   WhopOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(13, __c1, 5) as any as S.Schema<UnlinkIdentityProfileRequest>,
-  output: __S(6, __c0, 6) as any as S.Schema<IdentityProfile>,
+  input: __S(24, __c6, 0) as any as S.Schema<UnlinkIdentityProfileRequest>,
+  output: __S(11, __c2, 3) as any as S.Schema<IdentityProfile>,
   errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity],
   protocol: WhopProtocol,
   retry: Retry.Retry,
@@ -415,31 +415,11 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "GetIdentityProfileRequest",
       });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          city: S.NullOr(S.String),
-          country: S.NullOr(S.String),
-          line1: S.NullOr(S.String),
-          line2: S.NullOr(S.String),
-          postal_code: S.NullOr(S.String),
-          state: S.NullOr(S.String),
-        }),
-      ).annotate({
-        identifier: "IdentityProfileBusinessAddress",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String,
-          title: S.String,
-        }),
-      ).annotate({
-        identifier: "IdentityProfileLinkedCompaniesItem",
-      });
-    case 3:
-      return S.Array(__S(2, __c0, 2));
-    case 4:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           created_at: S.String,
@@ -452,12 +432,40 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "IdentityProfileVerificationsItem",
       });
-    case 5:
-      return S.Array(__S(4, __c0, 4));
-    case 6:
+    case 1:
+      return S.Array(__S(4, __c1, 0));
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          business_address: S.NullOr(__S(1, __c0, 1)),
+          city: S.NullOr(S.String),
+          country: S.NullOr(S.String),
+          line1: S.NullOr(S.String),
+          line2: S.NullOr(S.String),
+          postal_code: S.NullOr(S.String),
+          state: S.NullOr(S.String),
+        }),
+      ).annotate({
+        identifier: "IdentityProfileBusinessAddress",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          title: S.String,
+        }),
+      ).annotate({
+        identifier: "IdentityProfileLinkedCompaniesItem",
+      });
+    case 2:
+      return S.Array(__S(9, __c2, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          business_address: S.NullOr(__S(8, __c2, 0)),
           business_name: S.NullOr(S.String),
           business_structure: S.NullOr(S.String),
           country: S.NullOr(S.String),
@@ -467,18 +475,22 @@ function __c0(j: number): any {
           first_name: S.NullOr(S.String),
           id: S.String,
           last_name: S.NullOr(S.String),
-          linked_companies: __S(3, __c0, 3),
+          linked_companies: __S(10, __c2, 2),
           payout_status: S.String,
           payouts_enabled: S.Boolean,
-          personal_address: S.NullOr(__S(1, __c0, 1)),
+          personal_address: S.NullOr(__S(8, __c2, 0)),
           phone: S.NullOr(S.String),
           profile_type: S.String,
           status: S.String,
           updated_at: S.String,
-          verifications: __S(5, __c0, 5),
+          verifications: __S(5, __c1, 1),
         }),
       ).annotate({ identifier: "IdentityProfile" });
-    case 7:
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           after: S.optional(S.String.pipe(T.Query())),
@@ -492,13 +504,22 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "ListIdentityProfileRequest",
       });
+    case 1:
+      return S.Array(__S(11, __c2, 3));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          data: __S(13, __c3, 1),
+          page_info: __S(16, __c4, 0),
+        }),
+      ).annotate({
+        identifier: "ListIdentityProfileResponse",
+      });
   }
 }
-function __c1(j: number): any {
+function __c4(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(6, __c0, 6));
-    case 1:
       return S.suspend(() =>
         S.Struct({
           end_cursor: S.NullOr(S.String),
@@ -507,16 +528,11 @@ function __c1(j: number): any {
           start_cursor: S.NullOr(S.String),
         }),
       ).annotate({ identifier: "PageInfo" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          data: __S(8, __c1, 0),
-          page_info: __S(9, __c1, 1),
-        }),
-      ).annotate({
-        identifier: "ListIdentityProfileResponse",
-      });
-    case 3:
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.String.pipe(T.Label()),
@@ -528,16 +544,20 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "ListVerificationsIdentityProfileRequest",
       });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          data: __S(5, __c0, 5),
-          page_info: __S(9, __c1, 1),
+          data: __S(5, __c1, 1),
+          page_info: __S(16, __c4, 0),
         }),
       ).annotate({
         identifier: "ListVerificationsIdentityProfileResponse",
       });
-    case 5:
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.String.pipe(T.Label()),
@@ -548,7 +568,6 @@ function __c1(j: number): any {
       });
   }
 }
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

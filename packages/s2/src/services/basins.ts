@@ -134,8 +134,8 @@ export const createBasin: API.OperationMethod<
   CreateBasinError,
   S2OpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(4, __c0, 4) as any as S.Schema<CreateBasinRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<BasinInfo>,
+  input: __S(0, __c0, 0) as any as S.Schema<CreateBasinRequest>,
+  output: __S(8, __c2, 0) as any as S.Schema<BasinInfo>,
   errors: [UnknownS2Error],
   protocol: S2Protocol,
   retry: Retry.Retry,
@@ -149,8 +149,8 @@ export const deleteBasin: API.OperationMethod<
   DeleteBasinError,
   S2OpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(6, __c0, 6) as any as S.Schema<DeleteBasinRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<DeleteBasinResponse>,
+  input: __S(12, __c3, 0) as any as S.Schema<DeleteBasinRequest>,
+  output: __S(13, __c3, 1) as any as S.Schema<DeleteBasinResponse>,
   errors: [UnknownS2Error],
   protocol: S2Protocol,
   retry: Retry.Retry,
@@ -164,8 +164,8 @@ export const ensureBasin: API.OperationMethod<
   EnsureBasinError,
   S2OpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(9, __c1, 1) as any as S.Schema<EnsureBasinRequest2>,
-  output: __S(5, __c0, 5) as any as S.Schema<BasinInfo>,
+  input: __S(17, __c4, 1) as any as S.Schema<EnsureBasinRequest2>,
+  output: __S(8, __c2, 0) as any as S.Schema<BasinInfo>,
   errors: [UnknownS2Error],
   protocol: S2Protocol,
   retry: Retry.Retry,
@@ -179,8 +179,8 @@ export const getBasinConfig: API.OperationMethod<
   GetBasinConfigError,
   S2OpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(10, __c1, 2) as any as S.Schema<GetBasinConfigRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<BasinConfig>,
+  input: __S(20, __c5, 0) as any as S.Schema<GetBasinConfigRequest>,
+  output: __S(7, __c1, 3) as any as S.Schema<BasinConfig>,
   errors: [UnknownS2Error],
   protocol: S2Protocol,
   retry: Retry.Retry,
@@ -196,8 +196,8 @@ export const listBasins: API.PaginatedOperationMethod<
   BasinInfo
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(11, __c1, 3) as any as S.Schema<ListBasinsRequest>,
-    output: __S(13, __c1, 5) as any as S.Schema<ListBasinsResponse>,
+    input: __S(24, __c6, 0) as any as S.Schema<ListBasinsRequest>,
+    output: __S(26, __c6, 2) as any as S.Schema<ListBasinsResponse>,
     errors: [UnknownS2Error],
     protocol: S2Protocol,
     retry: Retry.Retry,
@@ -220,8 +220,8 @@ export const reconfigureBasin: API.OperationMethod<
   ReconfigureBasinError,
   S2OpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(17, __c2, 1) as any as S.Schema<ReconfigureBasinRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<BasinConfig>,
+  input: __S(31, __c7, 3) as any as S.Schema<ReconfigureBasinRequest>,
+  output: __S(7, __c1, 3) as any as S.Schema<BasinConfig>,
   errors: [UnknownS2Error],
   protocol: S2Protocol,
   retry: Retry.Retry,
@@ -229,6 +229,19 @@ export const reconfigureBasin: API.OperationMethod<
 
 // Schema builders: each runs one schema initializer, on that schema's first use.
 function __c0(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          s2RequestToken: S.optional(S.String.pipe(T.Header("s2-request-token"))),
+          basin: S.String,
+          config: S.optional(S.NullOr(__S(7, __c1, 3))),
+          location: S.optional(S.NullOr(S.String)),
+        }).pipe(T.Http({ method: "POST", uri: "/basins", code: 200 })),
+      ).annotate({ identifier: "CreateBasinRequest" });
+  }
+}
+function __c1(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -246,10 +259,10 @@ function __c0(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          delete_on_empty: S.optional(S.NullOr(__S(0, __c0, 0))),
+          delete_on_empty: S.optional(S.NullOr(__S(4, __c1, 0))),
           retention_policy: S.optional(S.NullOr(S.Unknown)),
           storage_class: S.optional(S.NullOr(S.String)),
-          timestamping: S.optional(S.NullOr(__S(1, __c0, 1))),
+          timestamping: S.optional(S.NullOr(__S(5, __c1, 1))),
         }),
       ).annotate({ identifier: "StreamConfig" });
     case 3:
@@ -257,20 +270,15 @@ function __c0(j: number): any {
         S.Struct({
           create_stream_on_append: S.optional(S.Boolean),
           create_stream_on_read: S.optional(S.Boolean),
-          default_stream_config: S.optional(S.NullOr(__S(2, __c0, 2))),
+          default_stream_config: S.optional(S.NullOr(__S(6, __c1, 2))),
           stream_cipher: S.optional(S.NullOr(S.String)),
         }),
       ).annotate({ identifier: "BasinConfig" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          s2RequestToken: S.optional(S.String.pipe(T.Header("s2-request-token"))),
-          basin: S.String,
-          config: S.optional(S.NullOr(__S(3, __c0, 3))),
-          location: S.optional(S.NullOr(S.String)),
-        }).pipe(T.Http({ method: "POST", uri: "/basins", code: 200 })),
-      ).annotate({ identifier: "CreateBasinRequest" });
-    case 5:
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           created_at: S.String,
@@ -279,24 +287,28 @@ function __c0(j: number): any {
           name: S.String,
         }),
       ).annotate({ identifier: "BasinInfo" });
-    case 6:
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           basin: S.String.pipe(T.Label()),
         }).pipe(T.Http({ method: "DELETE", uri: "/basins/{basin}", code: 200 })),
       ).annotate({ identifier: "DeleteBasinRequest" });
-    case 7:
+    case 1:
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "DeleteBasinResponse",
       });
   }
 }
-function __c1(j: number): any {
+function __c4(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          config: S.optional(S.NullOr(__S(3, __c0, 3))),
+          config: S.optional(S.NullOr(__S(7, __c1, 3))),
           location: S.optional(S.NullOr(S.String)),
         }),
       ).annotate({ identifier: "EnsureBasinRequest" });
@@ -304,16 +316,24 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           basin: S.String.pipe(T.Label()),
-          body: S.optional(S.NullOr(__S(8, __c1, 0)).pipe(T.HttpBody())),
+          body: S.optional(S.NullOr(__S(16, __c4, 0)).pipe(T.HttpBody())),
         }).pipe(T.Http({ method: "PUT", uri: "/basins/{basin}", code: 200 })),
       ).annotate({ identifier: "EnsureBasinRequest2" });
-    case 2:
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           basin: S.String.pipe(T.Label()),
         }).pipe(T.Http({ method: "GET", uri: "/basins/{basin}", code: 200 })),
       ).annotate({ identifier: "GetBasinConfigRequest" });
-    case 3:
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           prefix: S.optional(S.String.pipe(T.Query())),
@@ -321,16 +341,20 @@ function __c1(j: number): any {
           limit: S.optional(S.Number.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/basins", code: 200 })),
       ).annotate({ identifier: "ListBasinsRequest" });
-    case 4:
-      return S.Array(__S(5, __c0, 5));
-    case 5:
+    case 1:
+      return S.Array(__S(8, __c2, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          basins: __S(12, __c1, 4),
+          basins: __S(25, __c6, 1),
           has_more: S.Boolean,
         }),
       ).annotate({ identifier: "ListBasinsResponse" });
-    case 6:
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           min_age_secs: S.optional(S.NullOr(S.Number)),
@@ -338,7 +362,7 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "DeleteOnEmptyReconfiguration",
       });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           mode: S.optional(S.NullOr(S.String)),
@@ -347,32 +371,27 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "TimestampingReconfiguration",
       });
-  }
-}
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          delete_on_empty: S.optional(S.NullOr(__S(14, __c1, 6))),
+          delete_on_empty: S.optional(S.NullOr(__S(28, __c7, 0))),
           retention_policy: S.optional(S.NullOr(S.Unknown)),
           storage_class: S.optional(S.NullOr(S.String)),
-          timestamping: S.optional(S.NullOr(__S(15, __c1, 7))),
+          timestamping: S.optional(S.NullOr(__S(29, __c7, 1))),
         }),
       ).annotate({ identifier: "StreamReconfiguration" });
-    case 1:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           basin: S.String.pipe(T.Label()),
           create_stream_on_append: S.optional(S.NullOr(S.Boolean)),
           create_stream_on_read: S.optional(S.NullOr(S.Boolean)),
-          default_stream_config: S.optional(S.NullOr(__S(16, __c2, 0))),
+          default_stream_config: S.optional(S.NullOr(__S(30, __c7, 2))),
           stream_cipher: S.optional(S.NullOr(S.String)),
         }).pipe(T.Http({ method: "PATCH", uri: "/basins/{basin}", code: 200 })),
       ).annotate({ identifier: "ReconfigureBasinRequest" });
   }
 }
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

@@ -5986,8 +5986,8 @@ export const BigDataPoolsCreateOrUpdate: API.OperationMethod<
   BigDataPoolsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(9, __c1, 1) as any as S.Schema<BigDataPoolsCreateOrUpdateRequest>,
-  output: __S(15, __c1, 7) as any as S.Schema<BigDataPoolsCreateOrUpdateResponse>,
+  input: __S(5, __c0, 5) as any as S.Schema<BigDataPoolsCreateOrUpdateRequest>,
+  output: __S(32, __c2, 0) as any as S.Schema<BigDataPoolsCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6001,8 +6001,8 @@ export const CheckOperationNameAvailability: API.OperationMethod<
   CheckOperationNameAvailabilityError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(16, __c2, 0) as any as S.Schema<CheckOperationNameAvailabilityRequest>,
-  output: __S(17, __c2, 1) as any as S.Schema<CheckNameAvailabilityResponse>,
+  input: __S(80, __c5, 0) as any as S.Schema<CheckOperationNameAvailabilityRequest>,
+  output: __S(81, __c5, 1) as any as S.Schema<CheckNameAvailabilityResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6016,8 +6016,8 @@ export const CreateAzureADOnlyAuthentication: API.OperationMethod<
   CreateAzureADOnlyAuthenticationError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(19, __c2, 3) as any as S.Schema<CreateAzureADOnlyAuthenticationRequest>,
-  output: __S(21, __c2, 5) as any as S.Schema<CreateAzureADOnlyAuthenticationResponse>,
+  input: __S(1665, __c104, 1) as any as S.Schema<CreateAzureADOnlyAuthenticationRequest>,
+  output: __S(1681, __c105, 1) as any as S.Schema<CreateAzureADOnlyAuthenticationResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6031,8 +6031,8 @@ export const CreateIntegrationRuntime: API.OperationMethod<
   CreateIntegrationRuntimeError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(23, __c2, 7) as any as S.Schema<CreateIntegrationRuntimeRequest>,
-  output: __S(24, __c3, 0) as any as S.Schema<CreateIntegrationRuntimeResponse>,
+  input: __S(1936, __c121, 0) as any as S.Schema<CreateIntegrationRuntimeRequest>,
+  output: __S(1953, __c122, 1) as any as S.Schema<CreateIntegrationRuntimeResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6046,8 +6046,8 @@ export const CreatePrivateEndpointConnection: API.OperationMethod<
   CreatePrivateEndpointConnectionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(28, __c3, 4) as any as S.Schema<CreatePrivateEndpointConnectionRequest>,
-  output: __S(32, __c4, 0) as any as S.Schema<CreatePrivateEndpointConnectionResponse>,
+  input: __S(2192, __c137, 0) as any as S.Schema<CreatePrivateEndpointConnectionRequest>,
+  output: __S(2256, __c141, 0) as any as S.Schema<CreatePrivateEndpointConnectionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6061,8 +6061,8 @@ export const CreateSqlPool: API.OperationMethod<
   CreateSqlPoolError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(35, __c4, 3) as any as S.Schema<CreateSqlPoolRequest>,
-  output: __S(37, __c4, 5) as any as S.Schema<CreateSqlPoolResponse>,
+  input: __S(2496, __c156, 0) as any as S.Schema<CreateSqlPoolRequest>,
+  output: __S(2512, __c157, 0) as any as S.Schema<CreateSqlPoolResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6076,8 +6076,8 @@ export const CreateSqlPoolRestorePoint: API.OperationMethod<
   CreateSqlPoolRestorePointError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(38, __c4, 6) as any as S.Schema<CreateSqlPoolRestorePointRequest>,
-  output: __S(40, __c5, 0) as any as S.Schema<CreateSqlPoolRestorePointResponse>,
+  input: __S(2880, __c180, 0) as any as S.Schema<CreateSqlPoolRestorePointRequest>,
+  output: __S(2896, __c181, 0) as any as S.Schema<CreateSqlPoolRestorePointResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6091,8 +6091,8 @@ export const DataMaskingPoliciesCreateOrUpdate: API.OperationMethod<
   DataMaskingPoliciesCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(42, __c5, 2) as any as S.Schema<DataMaskingPoliciesCreateOrUpdateRequest>,
-  output: __S(44, __c5, 4) as any as S.Schema<DataMaskingPoliciesCreateOrUpdateResponse>,
+  input: __S(3233, __c202, 1) as any as S.Schema<DataMaskingPoliciesCreateOrUpdateRequest>,
+  output: __S(3249, __c203, 1) as any as S.Schema<DataMaskingPoliciesCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6106,8 +6106,8 @@ export const DataMaskingRulesCreateOrUpdate: API.OperationMethod<
   DataMaskingRulesCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(46, __c5, 6) as any as S.Schema<DataMaskingRulesCreateOrUpdateRequest>,
-  output: __S(48, __c6, 0) as any as S.Schema<DataMaskingRulesCreateOrUpdateResponse>,
+  input: __S(3617, __c226, 1) as any as S.Schema<DataMaskingRulesCreateOrUpdateRequest>,
+  output: __S(3632, __c227, 0) as any as S.Schema<DataMaskingRulesCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6121,8 +6121,8 @@ export const DeleteBigDataPool: API.OperationMethod<
   DeleteBigDataPoolError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(49, __c6, 1) as any as S.Schema<DeleteBigDataPoolRequest>,
-  output: __S(15, __c1, 7) as any as S.Schema<DeleteBigDataPoolResponse>,
+  input: __S(3936, __c246, 0) as any as S.Schema<DeleteBigDataPoolRequest>,
+  output: __S(32, __c2, 0) as any as S.Schema<DeleteBigDataPoolResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6136,8 +6136,8 @@ export const DeleteIntegrationRuntime: API.OperationMethod<
   DeleteIntegrationRuntimeError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(50, __c6, 2) as any as S.Schema<DeleteIntegrationRuntimeRequest>,
-  output: __S(51, __c6, 3) as any as S.Schema<DeleteIntegrationRuntimeResponse>,
+  input: __S(96, __c6, 0) as any as S.Schema<DeleteIntegrationRuntimeRequest>,
+  output: __S(112, __c7, 0) as any as S.Schema<DeleteIntegrationRuntimeResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6151,8 +6151,8 @@ export const DeleteIntegrationRuntimeNode: API.OperationMethod<
   DeleteIntegrationRuntimeNodeError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(52, __c6, 4) as any as S.Schema<DeleteIntegrationRuntimeNodeRequest>,
-  output: __S(51, __c6, 3) as any as S.Schema<DeleteIntegrationRuntimeNodeResponse>,
+  input: __S(320, __c20, 0) as any as S.Schema<DeleteIntegrationRuntimeNodeRequest>,
+  output: __S(112, __c7, 0) as any as S.Schema<DeleteIntegrationRuntimeNodeResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6166,8 +6166,8 @@ export const DeleteIpFirewallRule: API.OperationMethod<
   DeleteIpFirewallRuleError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(53, __c6, 5) as any as S.Schema<DeleteIpFirewallRuleRequest>,
-  output: __S(55, __c6, 7) as any as S.Schema<DeleteIpFirewallRuleResponse>,
+  input: __S(528, __c33, 0) as any as S.Schema<DeleteIpFirewallRuleRequest>,
+  output: __S(544, __c34, 0) as any as S.Schema<DeleteIpFirewallRuleResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6181,8 +6181,8 @@ export const DeleteKey: API.OperationMethod<
   DeleteKeyError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(56, __c7, 0) as any as S.Schema<DeleteKeyRequest>,
-  output: __S(58, __c7, 2) as any as S.Schema<DeleteKeyResponse>,
+  input: __S(768, __c48, 0) as any as S.Schema<DeleteKeyRequest>,
+  output: __S(800, __c50, 0) as any as S.Schema<DeleteKeyResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6196,8 +6196,8 @@ export const DeletePrivateEndpointConnection: API.OperationMethod<
   DeletePrivateEndpointConnectionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(59, __c7, 3) as any as S.Schema<DeletePrivateEndpointConnectionRequest>,
-  output: __S(51, __c6, 3) as any as S.Schema<DeletePrivateEndpointConnectionResponse>,
+  input: __S(976, __c61, 0) as any as S.Schema<DeletePrivateEndpointConnectionRequest>,
+  output: __S(112, __c7, 0) as any as S.Schema<DeletePrivateEndpointConnectionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6211,8 +6211,8 @@ export const DeletePrivateLinkHub: API.OperationMethod<
   DeletePrivateLinkHubError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(60, __c7, 4) as any as S.Schema<DeletePrivateLinkHubRequest>,
-  output: __S(25, __c3, 1) as any as S.Schema<DeletePrivateLinkHubResponse>,
+  input: __S(1168, __c73, 0) as any as S.Schema<DeletePrivateLinkHubRequest>,
+  output: __S(2208, __c138, 0) as any as S.Schema<DeletePrivateLinkHubResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6226,8 +6226,8 @@ export const DeleteSqlPool: API.OperationMethod<
   DeleteSqlPoolError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(61, __c7, 5) as any as S.Schema<DeleteSqlPoolRequest>,
-  output: __S(37, __c4, 5) as any as S.Schema<DeleteSqlPoolResponse>,
+  input: __S(1344, __c84, 0) as any as S.Schema<DeleteSqlPoolRequest>,
+  output: __S(2512, __c157, 0) as any as S.Schema<DeleteSqlPoolResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6241,8 +6241,8 @@ export const DeleteSqlPoolRestorePoint: API.OperationMethod<
   DeleteSqlPoolRestorePointError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(62, __c7, 6) as any as S.Schema<DeleteSqlPoolRestorePointRequest>,
-  output: __S(51, __c6, 3) as any as S.Schema<DeleteSqlPoolRestorePointResponse>,
+  input: __S(1536, __c96, 0) as any as S.Schema<DeleteSqlPoolRestorePointRequest>,
+  output: __S(112, __c7, 0) as any as S.Schema<DeleteSqlPoolRestorePointResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6256,8 +6256,8 @@ export const DeleteSqlPoolSensitivityLabel: API.OperationMethod<
   DeleteSqlPoolSensitivityLabelError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(63, __c7, 7) as any as S.Schema<DeleteSqlPoolSensitivityLabelRequest>,
-  output: __S(51, __c6, 3) as any as S.Schema<DeleteSqlPoolSensitivityLabelResponse>,
+  input: __S(1632, __c102, 0) as any as S.Schema<DeleteSqlPoolSensitivityLabelRequest>,
+  output: __S(112, __c7, 0) as any as S.Schema<DeleteSqlPoolSensitivityLabelResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6271,8 +6271,8 @@ export const DeleteSqlPoolVulnerabilityAssessment: API.OperationMethod<
   DeleteSqlPoolVulnerabilityAssessmentError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(64, __c8, 0) as any as S.Schema<DeleteSqlPoolVulnerabilityAssessmentRequest>,
-  output: __S(51, __c6, 3) as any as S.Schema<DeleteSqlPoolVulnerabilityAssessmentResponse>,
+  input: __S(1648, __c103, 0) as any as S.Schema<DeleteSqlPoolVulnerabilityAssessmentRequest>,
+  output: __S(112, __c7, 0) as any as S.Schema<DeleteSqlPoolVulnerabilityAssessmentResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6287,14 +6287,14 @@ export const DeleteSqlPoolVulnerabilityAssessmentRuleBaseline: API.OperationMeth
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    65,
-    __c8,
-    1,
+    1696,
+    __c106,
+    0,
   ) as any as S.Schema<DeleteSqlPoolVulnerabilityAssessmentRuleBaselineRequest>,
   output: __S(
-    66,
-    __c8,
-    2,
+    1697,
+    __c106,
+    1,
   ) as any as S.Schema<DeleteSqlPoolVulnerabilityAssessmentRuleBaselineResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -6309,8 +6309,8 @@ export const DeleteSqlPoolWorkloadClassifier: API.OperationMethod<
   DeleteSqlPoolWorkloadClassifierError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(67, __c8, 3) as any as S.Schema<DeleteSqlPoolWorkloadClassifierRequest>,
-  output: __S(51, __c6, 3) as any as S.Schema<DeleteSqlPoolWorkloadClassifierResponse>,
+  input: __S(1712, __c107, 0) as any as S.Schema<DeleteSqlPoolWorkloadClassifierRequest>,
+  output: __S(112, __c7, 0) as any as S.Schema<DeleteSqlPoolWorkloadClassifierResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6324,8 +6324,8 @@ export const DeleteSqlPoolWorkloadGroup: API.OperationMethod<
   DeleteSqlPoolWorkloadGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(68, __c8, 4) as any as S.Schema<DeleteSqlPoolWorkloadGroupRequest>,
-  output: __S(51, __c6, 3) as any as S.Schema<DeleteSqlPoolWorkloadGroupResponse>,
+  input: __S(1728, __c108, 0) as any as S.Schema<DeleteSqlPoolWorkloadGroupRequest>,
+  output: __S(112, __c7, 0) as any as S.Schema<DeleteSqlPoolWorkloadGroupResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6339,8 +6339,8 @@ export const DeleteWorkspace: API.OperationMethod<
   DeleteWorkspaceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(69, __c8, 5) as any as S.Schema<DeleteWorkspaceRequest>,
-  output: __S(87, __c10, 7) as any as S.Schema<DeleteWorkspaceResponse>,
+  input: __S(1744, __c109, 0) as any as S.Schema<DeleteWorkspaceRequest>,
+  output: __S(1792, __c112, 0) as any as S.Schema<DeleteWorkspaceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6354,8 +6354,8 @@ export const DeleteWorkspaceAadAdmin: API.OperationMethod<
   DeleteWorkspaceAadAdminError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(88, __c11, 0) as any as S.Schema<DeleteWorkspaceAadAdminRequest>,
-  output: __S(89, __c11, 1) as any as S.Schema<DeleteWorkspaceAadAdminResponse>,
+  input: __S(1824, __c114, 0) as any as S.Schema<DeleteWorkspaceAadAdminRequest>,
+  output: __S(1825, __c114, 1) as any as S.Schema<DeleteWorkspaceAadAdminResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6370,14 +6370,14 @@ export const DeleteWorkspaceManagedSqlServerVulnerabilityAssessment: API.Operati
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    90,
-    __c11,
-    2,
+    1840,
+    __c115,
+    0,
   ) as any as S.Schema<DeleteWorkspaceManagedSqlServerVulnerabilityAssessmentRequest>,
   output: __S(
-    91,
-    __c11,
-    3,
+    1856,
+    __c116,
+    0,
   ) as any as S.Schema<DeleteWorkspaceManagedSqlServerVulnerabilityAssessmentResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -6392,8 +6392,8 @@ export const DeleteWorkspaceSqlAadAdmin: API.OperationMethod<
   DeleteWorkspaceSqlAadAdminError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(92, __c11, 4) as any as S.Schema<DeleteWorkspaceSqlAadAdminRequest>,
-  output: __S(51, __c6, 3) as any as S.Schema<DeleteWorkspaceSqlAadAdminResponse>,
+  input: __S(1872, __c117, 0) as any as S.Schema<DeleteWorkspaceSqlAadAdminRequest>,
+  output: __S(112, __c7, 0) as any as S.Schema<DeleteWorkspaceSqlAadAdminResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6407,8 +6407,8 @@ export const DisableIntegrationRuntimeInteractiveQuery: API.OperationMethod<
   DisableIntegrationRuntimeInteractiveQueryError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(93, __c11, 5) as any as S.Schema<DisableIntegrationRuntimeInteractiveQueryRequest>,
-  output: __S(51, __c6, 3) as any as S.Schema<DisableIntegrationRuntimeInteractiveQueryResponse>,
+  input: __S(1888, __c118, 0) as any as S.Schema<DisableIntegrationRuntimeInteractiveQueryRequest>,
+  output: __S(112, __c7, 0) as any as S.Schema<DisableIntegrationRuntimeInteractiveQueryResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6422,8 +6422,16 @@ export const DisableSqlPoolSensitivityLabelRecommendation: API.OperationMethod<
   DisableSqlPoolSensitivityLabelRecommendationError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(94, __c11, 6) as any as S.Schema<DisableSqlPoolSensitivityLabelRecommendationRequest>,
-  output: __S(51, __c6, 3) as any as S.Schema<DisableSqlPoolSensitivityLabelRecommendationResponse>,
+  input: __S(
+    1904,
+    __c119,
+    0,
+  ) as any as S.Schema<DisableSqlPoolSensitivityLabelRecommendationRequest>,
+  output: __S(
+    112,
+    __c7,
+    0,
+  ) as any as S.Schema<DisableSqlPoolSensitivityLabelRecommendationResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6437,8 +6445,8 @@ export const EnableIntegrationRuntimeInteractiveQuery: API.OperationMethod<
   EnableIntegrationRuntimeInteractiveQueryError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(95, __c11, 7) as any as S.Schema<EnableIntegrationRuntimeInteractiveQueryRequest>,
-  output: __S(51, __c6, 3) as any as S.Schema<EnableIntegrationRuntimeInteractiveQueryResponse>,
+  input: __S(1920, __c120, 0) as any as S.Schema<EnableIntegrationRuntimeInteractiveQueryRequest>,
+  output: __S(112, __c7, 0) as any as S.Schema<EnableIntegrationRuntimeInteractiveQueryResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6452,8 +6460,12 @@ export const EnableSqlPoolSensitivityLabelRecommendation: API.OperationMethod<
   EnableSqlPoolSensitivityLabelRecommendationError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(96, __c12, 0) as any as S.Schema<EnableSqlPoolSensitivityLabelRecommendationRequest>,
-  output: __S(51, __c6, 3) as any as S.Schema<EnableSqlPoolSensitivityLabelRecommendationResponse>,
+  input: __S(
+    1968,
+    __c123,
+    0,
+  ) as any as S.Schema<EnableSqlPoolSensitivityLabelRecommendationRequest>,
+  output: __S(112, __c7, 0) as any as S.Schema<EnableSqlPoolSensitivityLabelRecommendationResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6467,8 +6479,8 @@ export const ExportSqlPoolVulnerabilityAssessmentScan: API.OperationMethod<
   ExportSqlPoolVulnerabilityAssessmentScanError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(97, __c12, 1) as any as S.Schema<ExportSqlPoolVulnerabilityAssessmentScanRequest>,
-  output: __S(99, __c12, 3) as any as S.Schema<ExportSqlPoolVulnerabilityAssessmentScanResponse>,
+  input: __S(1984, __c124, 0) as any as S.Schema<ExportSqlPoolVulnerabilityAssessmentScanRequest>,
+  output: __S(1986, __c124, 2) as any as S.Schema<ExportSqlPoolVulnerabilityAssessmentScanResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6483,14 +6495,14 @@ export const ExtendedSqlPoolBlobAuditingPoliciesCreateOrUpdate: API.OperationMet
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    102,
-    __c12,
-    6,
+    2000,
+    __c125,
+    0,
   ) as any as S.Schema<ExtendedSqlPoolBlobAuditingPoliciesCreateOrUpdateRequest>,
   output: __S(
-    103,
-    __c12,
-    7,
+    2001,
+    __c125,
+    1,
   ) as any as S.Schema<ExtendedSqlPoolBlobAuditingPoliciesCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -6505,8 +6517,8 @@ export const GetAzureADOnlyAuthentication: API.OperationMethod<
   GetAzureADOnlyAuthenticationError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(104, __c13, 0) as any as S.Schema<GetAzureADOnlyAuthenticationRequest>,
-  output: __S(21, __c2, 5) as any as S.Schema<GetAzureADOnlyAuthenticationResponse>,
+  input: __S(2048, __c128, 0) as any as S.Schema<GetAzureADOnlyAuthenticationRequest>,
+  output: __S(1681, __c105, 1) as any as S.Schema<GetAzureADOnlyAuthenticationResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6520,8 +6532,8 @@ export const GetBigDataPool: API.OperationMethod<
   GetBigDataPoolError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(105, __c13, 1) as any as S.Schema<GetBigDataPoolRequest>,
-  output: __S(106, __c13, 2) as any as S.Schema<GetBigDataPoolResponse>,
+  input: __S(2064, __c129, 0) as any as S.Schema<GetBigDataPoolRequest>,
+  output: __S(2080, __c130, 0) as any as S.Schema<GetBigDataPoolResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6535,8 +6547,8 @@ export const GetDataMaskingPolicy: API.OperationMethod<
   GetDataMaskingPolicyError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(107, __c13, 3) as any as S.Schema<GetDataMaskingPolicyRequest>,
-  output: __S(44, __c5, 4) as any as S.Schema<GetDataMaskingPolicyResponse>,
+  input: __S(2096, __c131, 0) as any as S.Schema<GetDataMaskingPolicyRequest>,
+  output: __S(3249, __c203, 1) as any as S.Schema<GetDataMaskingPolicyResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6550,8 +6562,8 @@ export const GetDataMaskingRule: API.OperationMethod<
   GetDataMaskingRuleError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(108, __c13, 4) as any as S.Schema<GetDataMaskingRuleRequest>,
-  output: __S(48, __c6, 0) as any as S.Schema<GetDataMaskingRuleResponse>,
+  input: __S(2112, __c132, 0) as any as S.Schema<GetDataMaskingRuleRequest>,
+  output: __S(3632, __c227, 0) as any as S.Schema<GetDataMaskingRuleResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6565,8 +6577,8 @@ export const GetExtendedSqlPoolBlobAuditingPolicy: API.OperationMethod<
   GetExtendedSqlPoolBlobAuditingPolicyError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(109, __c13, 5) as any as S.Schema<GetExtendedSqlPoolBlobAuditingPolicyRequest>,
-  output: __S(110, __c13, 6) as any as S.Schema<GetExtendedSqlPoolBlobAuditingPolicyResponse>,
+  input: __S(2128, __c133, 0) as any as S.Schema<GetExtendedSqlPoolBlobAuditingPolicyRequest>,
+  output: __S(2144, __c134, 0) as any as S.Schema<GetExtendedSqlPoolBlobAuditingPolicyResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6580,8 +6592,8 @@ export const GetIntegrationRuntime: API.OperationMethod<
   GetIntegrationRuntimeError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(111, __c13, 7) as any as S.Schema<GetIntegrationRuntimeRequest>,
-  output: __S(24, __c3, 0) as any as S.Schema<GetIntegrationRuntimeResponse>,
+  input: __S(2160, __c135, 0) as any as S.Schema<GetIntegrationRuntimeRequest>,
+  output: __S(1953, __c122, 1) as any as S.Schema<GetIntegrationRuntimeResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6595,8 +6607,8 @@ export const GetIntegrationRuntimeConnectionInfos: API.OperationMethod<
   GetIntegrationRuntimeConnectionInfosError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(112, __c14, 0) as any as S.Schema<GetIntegrationRuntimeConnectionInfosRequest>,
-  output: __S(113, __c14, 1) as any as S.Schema<IntegrationRuntimeConnectionInfo>,
+  input: __S(2176, __c136, 0) as any as S.Schema<GetIntegrationRuntimeConnectionInfosRequest>,
+  output: __S(2177, __c136, 1) as any as S.Schema<IntegrationRuntimeConnectionInfo>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6610,8 +6622,8 @@ export const GetIntegrationRuntimeNode: API.OperationMethod<
   GetIntegrationRuntimeNodeError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(114, __c14, 2) as any as S.Schema<GetIntegrationRuntimeNodeRequest>,
-  output: __S(115, __c14, 3) as any as S.Schema<SelfHostedIntegrationRuntimeNode>,
+  input: __S(2272, __c142, 0) as any as S.Schema<GetIntegrationRuntimeNodeRequest>,
+  output: __S(2288, __c143, 0) as any as S.Schema<SelfHostedIntegrationRuntimeNode>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6625,8 +6637,8 @@ export const GetIntegrationRuntimeNodeIpAddress: API.OperationMethod<
   GetIntegrationRuntimeNodeIpAddressError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(116, __c14, 4) as any as S.Schema<GetIntegrationRuntimeNodeIpAddressRequest>,
-  output: __S(117, __c14, 5) as any as S.Schema<IntegrationRuntimeNodeIpAddress>,
+  input: __S(2304, __c144, 0) as any as S.Schema<GetIntegrationRuntimeNodeIpAddressRequest>,
+  output: __S(2305, __c144, 1) as any as S.Schema<IntegrationRuntimeNodeIpAddress>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6640,8 +6652,8 @@ export const GetIntegrationRuntimeStatus: API.OperationMethod<
   GetIntegrationRuntimeStatusError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(118, __c14, 6) as any as S.Schema<GetIntegrationRuntimeStatusRequest>,
-  output: __S(120, __c15, 0) as any as S.Schema<IntegrationRuntimeStatusResponse>,
+  input: __S(2320, __c145, 0) as any as S.Schema<GetIntegrationRuntimeStatusRequest>,
+  output: __S(2337, __c146, 1) as any as S.Schema<IntegrationRuntimeStatusResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6655,8 +6667,8 @@ export const GetIpFirewallRule: API.OperationMethod<
   GetIpFirewallRuleError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(121, __c15, 1) as any as S.Schema<GetIpFirewallRuleRequest>,
-  output: __S(55, __c6, 7) as any as S.Schema<GetIpFirewallRuleResponse>,
+  input: __S(2352, __c147, 0) as any as S.Schema<GetIpFirewallRuleRequest>,
+  output: __S(544, __c34, 0) as any as S.Schema<GetIpFirewallRuleResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6670,8 +6682,8 @@ export const GetKey: API.OperationMethod<
   GetKeyError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(122, __c15, 2) as any as S.Schema<GetKeyRequest>,
-  output: __S(58, __c7, 2) as any as S.Schema<GetKeyResponse>,
+  input: __S(2368, __c148, 0) as any as S.Schema<GetKeyRequest>,
+  output: __S(800, __c50, 0) as any as S.Schema<GetKeyResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6685,8 +6697,8 @@ export const GetLibrary: API.OperationMethod<
   GetLibraryError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(123, __c15, 3) as any as S.Schema<GetLibraryRequest>,
-  output: __S(124, __c15, 4) as any as S.Schema<GetLibraryResponse>,
+  input: __S(2384, __c149, 0) as any as S.Schema<GetLibraryRequest>,
+  output: __S(2400, __c150, 0) as any as S.Schema<GetLibraryResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6700,8 +6712,8 @@ export const GetOperationAzureAsyncHeaderResult: API.OperationMethod<
   GetOperationAzureAsyncHeaderResultError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(125, __c15, 5) as any as S.Schema<GetOperationAzureAsyncHeaderResultRequest>,
-  output: __S(133, __c16, 5) as any as S.Schema<GetOperationAzureAsyncHeaderResultResponse>,
+  input: __S(2416, __c151, 0) as any as S.Schema<GetOperationAzureAsyncHeaderResultRequest>,
+  output: __S(2424, __c151, 8) as any as S.Schema<GetOperationAzureAsyncHeaderResultResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6715,8 +6727,8 @@ export const GetOperationLocationHeaderResult: API.OperationMethod<
   GetOperationLocationHeaderResultError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(134, __c16, 6) as any as S.Schema<GetOperationLocationHeaderResultRequest>,
-  output: __S(51, __c6, 3) as any as S.Schema<GetOperationLocationHeaderResultResponse>,
+  input: __S(2432, __c152, 0) as any as S.Schema<GetOperationLocationHeaderResultRequest>,
+  output: __S(112, __c7, 0) as any as S.Schema<GetOperationLocationHeaderResultResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6730,8 +6742,8 @@ export const GetPrivateEndpointConnection: API.OperationMethod<
   GetPrivateEndpointConnectionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(135, __c16, 7) as any as S.Schema<GetPrivateEndpointConnectionRequest>,
-  output: __S(32, __c4, 0) as any as S.Schema<GetPrivateEndpointConnectionResponse>,
+  input: __S(2448, __c153, 0) as any as S.Schema<GetPrivateEndpointConnectionRequest>,
+  output: __S(2256, __c141, 0) as any as S.Schema<GetPrivateEndpointConnectionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6745,11 +6757,15 @@ export const GetPrivateEndpointConnectionsPrivateLinkHub: API.OperationMethod<
   GetPrivateEndpointConnectionsPrivateLinkHubError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(136, __c17, 0) as any as S.Schema<GetPrivateEndpointConnectionsPrivateLinkHubRequest>,
+  input: __S(
+    2464,
+    __c154,
+    0,
+  ) as any as S.Schema<GetPrivateEndpointConnectionsPrivateLinkHubRequest>,
   output: __S(
-    137,
-    __c17,
-    1,
+    2480,
+    __c155,
+    0,
   ) as any as S.Schema<GetPrivateEndpointConnectionsPrivateLinkHubResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -6764,8 +6780,8 @@ export const GetPrivateLinkHub: API.OperationMethod<
   GetPrivateLinkHubError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(138, __c17, 2) as any as S.Schema<GetPrivateLinkHubRequest>,
-  output: __S(142, __c17, 6) as any as S.Schema<GetPrivateLinkHubResponse>,
+  input: __S(2560, __c160, 0) as any as S.Schema<GetPrivateLinkHubRequest>,
+  output: __S(2592, __c162, 0) as any as S.Schema<GetPrivateLinkHubResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6779,8 +6795,8 @@ export const GetPrivateLinkHubPrivateLinkResource: API.OperationMethod<
   GetPrivateLinkHubPrivateLinkResourceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(143, __c17, 7) as any as S.Schema<GetPrivateLinkHubPrivateLinkResourceRequest>,
-  output: __S(145, __c18, 1) as any as S.Schema<GetPrivateLinkHubPrivateLinkResourceResponse>,
+  input: __S(2608, __c163, 0) as any as S.Schema<GetPrivateLinkHubPrivateLinkResourceRequest>,
+  output: __S(2624, __c164, 0) as any as S.Schema<GetPrivateLinkHubPrivateLinkResourceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6794,8 +6810,8 @@ export const GetPrivateLinkResource: API.OperationMethod<
   GetPrivateLinkResourceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(146, __c18, 2) as any as S.Schema<GetPrivateLinkResourceRequest>,
-  output: __S(145, __c18, 1) as any as S.Schema<GetPrivateLinkResourceResponse>,
+  input: __S(2656, __c166, 0) as any as S.Schema<GetPrivateLinkResourceRequest>,
+  output: __S(2624, __c164, 0) as any as S.Schema<GetPrivateLinkResourceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6809,8 +6825,8 @@ export const GetRestorableDroppedSqlPool: API.OperationMethod<
   GetRestorableDroppedSqlPoolError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(147, __c18, 3) as any as S.Schema<GetRestorableDroppedSqlPoolRequest>,
-  output: __S(149, __c18, 5) as any as S.Schema<GetRestorableDroppedSqlPoolResponse>,
+  input: __S(2672, __c167, 0) as any as S.Schema<GetRestorableDroppedSqlPoolRequest>,
+  output: __S(2673, __c167, 1) as any as S.Schema<GetRestorableDroppedSqlPoolResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6824,8 +6840,8 @@ export const GetSqlPool: API.OperationMethod<
   GetSqlPoolError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(150, __c18, 6) as any as S.Schema<GetSqlPoolRequest>,
-  output: __S(37, __c4, 5) as any as S.Schema<GetSqlPoolResponse>,
+  input: __S(2704, __c169, 0) as any as S.Schema<GetSqlPoolRequest>,
+  output: __S(2512, __c157, 0) as any as S.Schema<GetSqlPoolResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6839,8 +6855,8 @@ export const GetSqlPoolBlobAuditingPolicy: API.OperationMethod<
   GetSqlPoolBlobAuditingPolicyError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(151, __c18, 7) as any as S.Schema<GetSqlPoolBlobAuditingPolicyRequest>,
-  output: __S(153, __c19, 1) as any as S.Schema<GetSqlPoolBlobAuditingPolicyResponse>,
+  input: __S(2720, __c170, 0) as any as S.Schema<GetSqlPoolBlobAuditingPolicyRequest>,
+  output: __S(2737, __c171, 1) as any as S.Schema<GetSqlPoolBlobAuditingPolicyResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6854,8 +6870,8 @@ export const GetSqlPoolColumn: API.OperationMethod<
   GetSqlPoolColumnError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(154, __c19, 2) as any as S.Schema<GetSqlPoolColumnRequest>,
-  output: __S(156, __c19, 4) as any as S.Schema<GetSqlPoolColumnResponse>,
+  input: __S(2752, __c172, 0) as any as S.Schema<GetSqlPoolColumnRequest>,
+  output: __S(2769, __c173, 1) as any as S.Schema<GetSqlPoolColumnResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6869,8 +6885,8 @@ export const GetSqlPoolDataWarehouseUserActivity: API.OperationMethod<
   GetSqlPoolDataWarehouseUserActivityError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(157, __c19, 5) as any as S.Schema<GetSqlPoolDataWarehouseUserActivityRequest>,
-  output: __S(159, __c19, 7) as any as S.Schema<GetSqlPoolDataWarehouseUserActivityResponse>,
+  input: __S(2784, __c174, 0) as any as S.Schema<GetSqlPoolDataWarehouseUserActivityRequest>,
+  output: __S(2786, __c174, 2) as any as S.Schema<GetSqlPoolDataWarehouseUserActivityResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6884,8 +6900,8 @@ export const GetSqlPoolGeoBackupPolicy: API.OperationMethod<
   GetSqlPoolGeoBackupPolicyError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(160, __c20, 0) as any as S.Schema<GetSqlPoolGeoBackupPolicyRequest>,
-  output: __S(162, __c20, 2) as any as S.Schema<GetSqlPoolGeoBackupPolicyResponse>,
+  input: __S(2800, __c175, 0) as any as S.Schema<GetSqlPoolGeoBackupPolicyRequest>,
+  output: __S(2832, __c177, 0) as any as S.Schema<GetSqlPoolGeoBackupPolicyResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6899,8 +6915,8 @@ export const GetSqlPoolMaintenanceWindowOption: API.OperationMethod<
   GetSqlPoolMaintenanceWindowOptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(163, __c20, 3) as any as S.Schema<GetSqlPoolMaintenanceWindowOptionRequest>,
-  output: __S(167, __c20, 7) as any as S.Schema<GetSqlPoolMaintenanceWindowOptionResponse>,
+  input: __S(2848, __c178, 0) as any as S.Schema<GetSqlPoolMaintenanceWindowOptionRequest>,
+  output: __S(2850, __c178, 2) as any as S.Schema<GetSqlPoolMaintenanceWindowOptionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6914,8 +6930,8 @@ export const GetSqlPoolMaintenanceWindows: API.OperationMethod<
   GetSqlPoolMaintenanceWindowsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(168, __c21, 0) as any as S.Schema<GetSqlPoolMaintenanceWindowsRequest>,
-  output: __S(170, __c21, 2) as any as S.Schema<GetSqlPoolMaintenanceWindowsResponse>,
+  input: __S(2928, __c183, 0) as any as S.Schema<GetSqlPoolMaintenanceWindowsRequest>,
+  output: __S(2929, __c183, 1) as any as S.Schema<GetSqlPoolMaintenanceWindowsResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6930,14 +6946,14 @@ export const GetSqlPoolOperationResultLocationHeaderResult: API.OperationMethod<
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    171,
-    __c21,
-    3,
+    2960,
+    __c185,
+    0,
   ) as any as S.Schema<GetSqlPoolOperationResultLocationHeaderResultRequest>,
   output: __S(
-    172,
-    __c21,
-    4,
+    2961,
+    __c185,
+    1,
   ) as any as S.Schema<GetSqlPoolOperationResultLocationHeaderResultResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -6952,8 +6968,8 @@ export const GetSqlPoolReplicationLinkByName: API.OperationMethod<
   GetSqlPoolReplicationLinkByNameError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(173, __c21, 5) as any as S.Schema<GetSqlPoolReplicationLinkByNameRequest>,
-  output: __S(175, __c21, 7) as any as S.Schema<GetSqlPoolReplicationLinkByNameResponse>,
+  input: __S(2976, __c186, 0) as any as S.Schema<GetSqlPoolReplicationLinkByNameRequest>,
+  output: __S(2977, __c186, 1) as any as S.Schema<GetSqlPoolReplicationLinkByNameResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6967,8 +6983,8 @@ export const GetSqlPoolRestorePoint: API.OperationMethod<
   GetSqlPoolRestorePointError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(176, __c22, 0) as any as S.Schema<GetSqlPoolRestorePointRequest>,
-  output: __S(40, __c5, 0) as any as S.Schema<GetSqlPoolRestorePointResponse>,
+  input: __S(3008, __c188, 0) as any as S.Schema<GetSqlPoolRestorePointRequest>,
+  output: __S(2896, __c181, 0) as any as S.Schema<GetSqlPoolRestorePointResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6982,8 +6998,8 @@ export const GetSqlPoolSchema: API.OperationMethod<
   GetSqlPoolSchemaError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(177, __c22, 1) as any as S.Schema<GetSqlPoolSchemaRequest>,
-  output: __S(178, __c22, 2) as any as S.Schema<GetSqlPoolSchemaResponse>,
+  input: __S(3024, __c189, 0) as any as S.Schema<GetSqlPoolSchemaRequest>,
+  output: __S(3040, __c190, 0) as any as S.Schema<GetSqlPoolSchemaResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6997,8 +7013,8 @@ export const GetSqlPoolSecurityAlertPolicy: API.OperationMethod<
   GetSqlPoolSecurityAlertPolicyError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(179, __c22, 3) as any as S.Schema<GetSqlPoolSecurityAlertPolicyRequest>,
-  output: __S(181, __c22, 5) as any as S.Schema<GetSqlPoolSecurityAlertPolicyResponse>,
+  input: __S(3056, __c191, 0) as any as S.Schema<GetSqlPoolSecurityAlertPolicyRequest>,
+  output: __S(3073, __c192, 1) as any as S.Schema<GetSqlPoolSecurityAlertPolicyResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7012,8 +7028,8 @@ export const GetSqlPoolSensitivityLabel: API.OperationMethod<
   GetSqlPoolSensitivityLabelError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(182, __c22, 6) as any as S.Schema<GetSqlPoolSensitivityLabelRequest>,
-  output: __S(184, __c23, 0) as any as S.Schema<GetSqlPoolSensitivityLabelResponse>,
+  input: __S(3088, __c193, 0) as any as S.Schema<GetSqlPoolSensitivityLabelRequest>,
+  output: __S(3120, __c195, 0) as any as S.Schema<GetSqlPoolSensitivityLabelResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7027,8 +7043,8 @@ export const GetSqlPoolTable: API.OperationMethod<
   GetSqlPoolTableError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(185, __c23, 1) as any as S.Schema<GetSqlPoolTableRequest>,
-  output: __S(178, __c22, 2) as any as S.Schema<GetSqlPoolTableResponse>,
+  input: __S(3136, __c196, 0) as any as S.Schema<GetSqlPoolTableRequest>,
+  output: __S(3040, __c190, 0) as any as S.Schema<GetSqlPoolTableResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7042,8 +7058,8 @@ export const GetSqlPoolTransparentDataEncryption: API.OperationMethod<
   GetSqlPoolTransparentDataEncryptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(186, __c23, 2) as any as S.Schema<GetSqlPoolTransparentDataEncryptionRequest>,
-  output: __S(188, __c23, 4) as any as S.Schema<GetSqlPoolTransparentDataEncryptionResponse>,
+  input: __S(3152, __c197, 0) as any as S.Schema<GetSqlPoolTransparentDataEncryptionRequest>,
+  output: __S(3169, __c198, 1) as any as S.Schema<GetSqlPoolTransparentDataEncryptionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7057,8 +7073,8 @@ export const GetSqlPoolVulnerabilityAssessment: API.OperationMethod<
   GetSqlPoolVulnerabilityAssessmentError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(189, __c23, 5) as any as S.Schema<GetSqlPoolVulnerabilityAssessmentRequest>,
-  output: __S(192, __c24, 0) as any as S.Schema<GetSqlPoolVulnerabilityAssessmentResponse>,
+  input: __S(3184, __c199, 0) as any as S.Schema<GetSqlPoolVulnerabilityAssessmentRequest>,
+  output: __S(3201, __c200, 1) as any as S.Schema<GetSqlPoolVulnerabilityAssessmentResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7073,14 +7089,14 @@ export const GetSqlPoolVulnerabilityAssessmentRuleBaseline: API.OperationMethod<
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    193,
-    __c24,
-    1,
+    3264,
+    __c204,
+    0,
   ) as any as S.Schema<GetSqlPoolVulnerabilityAssessmentRuleBaselineRequest>,
   output: __S(
-    197,
-    __c24,
-    5,
+    3265,
+    __c204,
+    1,
   ) as any as S.Schema<GetSqlPoolVulnerabilityAssessmentRuleBaselineResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -7095,8 +7111,8 @@ export const GetSqlPoolVulnerabilityAssessmentScan: API.OperationMethod<
   GetSqlPoolVulnerabilityAssessmentScanError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(198, __c24, 6) as any as S.Schema<GetSqlPoolVulnerabilityAssessmentScanRequest>,
-  output: __S(202, __c25, 2) as any as S.Schema<GetSqlPoolVulnerabilityAssessmentScanResponse>,
+  input: __S(3296, __c206, 0) as any as S.Schema<GetSqlPoolVulnerabilityAssessmentScanRequest>,
+  output: __S(3315, __c207, 3) as any as S.Schema<GetSqlPoolVulnerabilityAssessmentScanResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7110,8 +7126,8 @@ export const GetSqlPoolWorkloadClassifier: API.OperationMethod<
   GetSqlPoolWorkloadClassifierError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(203, __c25, 3) as any as S.Schema<GetSqlPoolWorkloadClassifierRequest>,
-  output: __S(205, __c25, 5) as any as S.Schema<GetSqlPoolWorkloadClassifierResponse>,
+  input: __S(3328, __c208, 0) as any as S.Schema<GetSqlPoolWorkloadClassifierRequest>,
+  output: __S(3360, __c210, 0) as any as S.Schema<GetSqlPoolWorkloadClassifierResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7125,8 +7141,8 @@ export const GetSqlPoolWorkloadGroup: API.OperationMethod<
   GetSqlPoolWorkloadGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(206, __c25, 6) as any as S.Schema<GetSqlPoolWorkloadGroupRequest>,
-  output: __S(208, __c26, 0) as any as S.Schema<GetSqlPoolWorkloadGroupResponse>,
+  input: __S(3376, __c211, 0) as any as S.Schema<GetSqlPoolWorkloadGroupRequest>,
+  output: __S(3408, __c213, 0) as any as S.Schema<GetSqlPoolWorkloadGroupResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7140,8 +7156,8 @@ export const GetWorkspace: API.OperationMethod<
   GetWorkspaceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(209, __c26, 1) as any as S.Schema<GetWorkspaceRequest>,
-  output: __S(87, __c10, 7) as any as S.Schema<GetWorkspaceResponse>,
+  input: __S(3424, __c214, 0) as any as S.Schema<GetWorkspaceRequest>,
+  output: __S(1792, __c112, 0) as any as S.Schema<GetWorkspaceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7155,8 +7171,8 @@ export const GetWorkspaceAadAdmin: API.OperationMethod<
   GetWorkspaceAadAdminError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(210, __c26, 2) as any as S.Schema<GetWorkspaceAadAdminRequest>,
-  output: __S(212, __c26, 4) as any as S.Schema<GetWorkspaceAadAdminResponse>,
+  input: __S(3440, __c215, 0) as any as S.Schema<GetWorkspaceAadAdminRequest>,
+  output: __S(3457, __c216, 1) as any as S.Schema<GetWorkspaceAadAdminResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7171,14 +7187,14 @@ export const GetWorkspaceManagedIdentitySqlControlSettings: API.OperationMethod<
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    213,
-    __c26,
-    5,
+    3472,
+    __c217,
+    0,
   ) as any as S.Schema<GetWorkspaceManagedIdentitySqlControlSettingsRequest>,
   output: __S(
-    216,
-    __c27,
-    0,
+    3473,
+    __c217,
+    1,
   ) as any as S.Schema<GetWorkspaceManagedIdentitySqlControlSettingsResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -7194,14 +7210,14 @@ export const GetWorkspaceManagedSqlServerBlobAuditingPolicy: API.OperationMethod
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    217,
-    __c27,
-    1,
+    3504,
+    __c219,
+    0,
   ) as any as S.Schema<GetWorkspaceManagedSqlServerBlobAuditingPolicyRequest>,
   output: __S(
-    219,
-    __c27,
-    3,
+    3505,
+    __c219,
+    1,
   ) as any as S.Schema<GetWorkspaceManagedSqlServerBlobAuditingPolicyResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -7217,14 +7233,14 @@ export const GetWorkspaceManagedSqlServerDedicatedSQLMinimalTlsSettings: API.Ope
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    220,
-    __c27,
-    4,
+    3536,
+    __c221,
+    0,
   ) as any as S.Schema<GetWorkspaceManagedSqlServerDedicatedSQLMinimalTlsSettingsRequest>,
   output: __S(
-    222,
-    __c27,
-    6,
+    3568,
+    __c223,
+    0,
   ) as any as S.Schema<GetWorkspaceManagedSqlServerDedicatedSQLMinimalTlsSettingsResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -7240,13 +7256,13 @@ export const GetWorkspaceManagedSqlServerEncryptionProtector: API.OperationMetho
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    223,
-    __c27,
-    7,
+    3584,
+    __c224,
+    0,
   ) as any as S.Schema<GetWorkspaceManagedSqlServerEncryptionProtectorRequest>,
   output: __S(
-    225,
-    __c28,
+    3585,
+    __c224,
     1,
   ) as any as S.Schema<GetWorkspaceManagedSqlServerEncryptionProtectorResponse>,
   errors: [UnknownAzureError],
@@ -7263,14 +7279,14 @@ export const GetWorkspaceManagedSqlServerExtendedBlobAuditingPolicy: API.Operati
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    226,
-    __c28,
-    2,
+    3664,
+    __c229,
+    0,
   ) as any as S.Schema<GetWorkspaceManagedSqlServerExtendedBlobAuditingPolicyRequest>,
   output: __S(
-    228,
-    __c28,
-    4,
+    3696,
+    __c231,
+    0,
   ) as any as S.Schema<GetWorkspaceManagedSqlServerExtendedBlobAuditingPolicyResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -7286,14 +7302,14 @@ export const GetWorkspaceManagedSqlServerRecoverableSqlPool: API.OperationMethod
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    229,
-    __c28,
-    5,
+    3712,
+    __c232,
+    0,
   ) as any as S.Schema<GetWorkspaceManagedSqlServerRecoverableSqlPoolRequest>,
   output: __S(
-    231,
-    __c28,
-    7,
+    3713,
+    __c232,
+    1,
   ) as any as S.Schema<GetWorkspaceManagedSqlServerRecoverableSqlPoolResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -7309,14 +7325,14 @@ export const GetWorkspaceManagedSqlServerSecurityAlertPolicy: API.OperationMetho
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    232,
-    __c29,
+    3744,
+    __c234,
     0,
   ) as any as S.Schema<GetWorkspaceManagedSqlServerSecurityAlertPolicyRequest>,
   output: __S(
-    234,
-    __c29,
-    2,
+    3760,
+    __c235,
+    0,
   ) as any as S.Schema<GetWorkspaceManagedSqlServerSecurityAlertPolicyResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -7332,14 +7348,14 @@ export const GetWorkspaceManagedSqlServerVulnerabilityAssessment: API.OperationM
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    235,
-    __c29,
-    3,
+    3792,
+    __c237,
+    0,
   ) as any as S.Schema<GetWorkspaceManagedSqlServerVulnerabilityAssessmentRequest>,
   output: __S(
-    237,
-    __c29,
-    5,
+    3793,
+    __c237,
+    1,
   ) as any as S.Schema<GetWorkspaceManagedSqlServerVulnerabilityAssessmentResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -7354,8 +7370,8 @@ export const GetWorkspaceSqlAadAdmin: API.OperationMethod<
   GetWorkspaceSqlAadAdminError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(238, __c29, 6) as any as S.Schema<GetWorkspaceSqlAadAdminRequest>,
-  output: __S(212, __c26, 4) as any as S.Schema<GetWorkspaceSqlAadAdminResponse>,
+  input: __S(3824, __c239, 0) as any as S.Schema<GetWorkspaceSqlAadAdminRequest>,
+  output: __S(3457, __c216, 1) as any as S.Schema<GetWorkspaceSqlAadAdminResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7369,8 +7385,8 @@ export const IntegrationRuntimesUpgrade: API.OperationMethod<
   IntegrationRuntimesUpgradeError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(239, __c29, 7) as any as S.Schema<IntegrationRuntimesUpgradeRequest>,
-  output: __S(51, __c6, 3) as any as S.Schema<IntegrationRuntimesUpgradeResponse>,
+  input: __S(3840, __c240, 0) as any as S.Schema<IntegrationRuntimesUpgradeRequest>,
+  output: __S(112, __c7, 0) as any as S.Schema<IntegrationRuntimesUpgradeResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7384,8 +7400,8 @@ export const IpFirewallRulesCreateOrUpdate: API.OperationMethod<
   IpFirewallRulesCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(241, __c30, 1) as any as S.Schema<IpFirewallRulesCreateOrUpdateRequest>,
-  output: __S(55, __c6, 7) as any as S.Schema<IpFirewallRulesCreateOrUpdateResponse>,
+  input: __S(3856, __c241, 0) as any as S.Schema<IpFirewallRulesCreateOrUpdateRequest>,
+  output: __S(544, __c34, 0) as any as S.Schema<IpFirewallRulesCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7399,8 +7415,8 @@ export const KeysCreateOrUpdate: API.OperationMethod<
   KeysCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(242, __c30, 2) as any as S.Schema<KeysCreateOrUpdateRequest>,
-  output: __S(243, __c30, 3) as any as S.Schema<KeysCreateOrUpdateResponse>,
+  input: __S(3888, __c243, 0) as any as S.Schema<KeysCreateOrUpdateRequest>,
+  output: __S(3889, __c243, 1) as any as S.Schema<KeysCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7414,8 +7430,8 @@ export const ListAzureADOnlyAuthentications: API.OperationMethod<
   ListAzureADOnlyAuthenticationsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(244, __c30, 4) as any as S.Schema<ListAzureADOnlyAuthenticationsRequest>,
-  output: __S(246, __c30, 6) as any as S.Schema<AzureADOnlyAuthenticationListResult>,
+  input: __S(3904, __c244, 0) as any as S.Schema<ListAzureADOnlyAuthenticationsRequest>,
+  output: __S(3906, __c244, 2) as any as S.Schema<AzureADOnlyAuthenticationListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7429,8 +7445,8 @@ export const ListBigDataPoolByWorkspace: API.OperationMethod<
   ListBigDataPoolByWorkspaceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(247, __c30, 7) as any as S.Schema<ListBigDataPoolByWorkspaceRequest>,
-  output: __S(249, __c31, 1) as any as S.Schema<BigDataPoolResourceInfoListResult>,
+  input: __S(3920, __c245, 0) as any as S.Schema<ListBigDataPoolByWorkspaceRequest>,
+  output: __S(3922, __c245, 2) as any as S.Schema<BigDataPoolResourceInfoListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7444,8 +7460,8 @@ export const ListDataMaskingRuleBySqlPool: API.OperationMethod<
   ListDataMaskingRuleBySqlPoolError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(250, __c31, 2) as any as S.Schema<ListDataMaskingRuleBySqlPoolRequest>,
-  output: __S(253, __c31, 5) as any as S.Schema<DataMaskingRuleListResult>,
+  input: __S(3952, __c247, 0) as any as S.Schema<ListDataMaskingRuleBySqlPoolRequest>,
+  output: __S(3955, __c247, 3) as any as S.Schema<DataMaskingRuleListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7460,11 +7476,11 @@ export const ListExtendedSqlPoolBlobAuditingPolicyBySqlPool: API.OperationMethod
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    254,
-    __c31,
-    6,
+    3968,
+    __c248,
+    0,
   ) as any as S.Schema<ListExtendedSqlPoolBlobAuditingPolicyBySqlPoolRequest>,
-  output: __S(256, __c32, 0) as any as S.Schema<ExtendedSqlPoolBlobAuditingPolicyListResult>,
+  output: __S(3970, __c248, 2) as any as S.Schema<ExtendedSqlPoolBlobAuditingPolicyListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7478,8 +7494,8 @@ export const ListIntegrationRuntimeAuthKeys: API.OperationMethod<
   ListIntegrationRuntimeAuthKeysError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(257, __c32, 1) as any as S.Schema<ListIntegrationRuntimeAuthKeysRequest>,
-  output: __S(258, __c32, 2) as any as S.Schema<IntegrationRuntimeAuthKeys>,
+  input: __S(3984, __c249, 0) as any as S.Schema<ListIntegrationRuntimeAuthKeysRequest>,
+  output: __S(4000, __c250, 0) as any as S.Schema<IntegrationRuntimeAuthKeys>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7493,8 +7509,8 @@ export const ListIntegrationRuntimeByWorkspace: API.OperationMethod<
   ListIntegrationRuntimeByWorkspaceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(259, __c32, 3) as any as S.Schema<ListIntegrationRuntimeByWorkspaceRequest>,
-  output: __S(261, __c32, 5) as any as S.Schema<IntegrationRuntimeListResponse>,
+  input: __S(4016, __c251, 0) as any as S.Schema<ListIntegrationRuntimeByWorkspaceRequest>,
+  output: __S(4018, __c251, 2) as any as S.Schema<IntegrationRuntimeListResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7508,8 +7524,8 @@ export const ListIntegrationRuntimeMonitoringData: API.OperationMethod<
   ListIntegrationRuntimeMonitoringDataError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(262, __c32, 6) as any as S.Schema<ListIntegrationRuntimeMonitoringDataRequest>,
-  output: __S(265, __c33, 1) as any as S.Schema<IntegrationRuntimeMonitoringData>,
+  input: __S(4032, __c252, 0) as any as S.Schema<ListIntegrationRuntimeMonitoringDataRequest>,
+  output: __S(4035, __c252, 3) as any as S.Schema<IntegrationRuntimeMonitoringData>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7523,8 +7539,8 @@ export const ListIntegrationRuntimeObjectMetadata: API.OperationMethod<
   ListIntegrationRuntimeObjectMetadataError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(266, __c33, 2) as any as S.Schema<ListIntegrationRuntimeObjectMetadataRequest>,
-  output: __S(269, __c33, 5) as any as S.Schema<SsisObjectMetadataListResponse>,
+  input: __S(4048, __c253, 0) as any as S.Schema<ListIntegrationRuntimeObjectMetadataRequest>,
+  output: __S(4051, __c253, 3) as any as S.Schema<SsisObjectMetadataListResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7539,14 +7555,14 @@ export const ListIntegrationRuntimeOutboundNetworkDependenciesEndpoints: API.Ope
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    270,
-    __c33,
-    6,
+    4064,
+    __c254,
+    0,
   ) as any as S.Schema<ListIntegrationRuntimeOutboundNetworkDependenciesEndpointsRequest>,
   output: __S(
-    277,
-    __c34,
-    5,
+    4071,
+    __c254,
+    7,
   ) as any as S.Schema<IntegrationRuntimeOutboundNetworkDependenciesEndpointsResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -7561,8 +7577,8 @@ export const ListIpFirewallRuleByWorkspace: API.OperationMethod<
   ListIpFirewallRuleByWorkspaceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(278, __c34, 6) as any as S.Schema<ListIpFirewallRuleByWorkspaceRequest>,
-  output: __S(281, __c35, 1) as any as S.Schema<IpFirewallRuleInfoListResult>,
+  input: __S(4080, __c255, 0) as any as S.Schema<ListIpFirewallRuleByWorkspaceRequest>,
+  output: __S(4083, __c255, 3) as any as S.Schema<IpFirewallRuleInfoListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7576,8 +7592,8 @@ export const ListKeyByWorkspace: API.OperationMethod<
   ListKeyByWorkspaceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(282, __c35, 2) as any as S.Schema<ListKeyByWorkspaceRequest>,
-  output: __S(284, __c35, 4) as any as S.Schema<KeyInfoListResult>,
+  input: __S(4096, __c256, 0) as any as S.Schema<ListKeyByWorkspaceRequest>,
+  output: __S(4098, __c256, 2) as any as S.Schema<KeyInfoListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7591,8 +7607,8 @@ export const ListLibraryByWorkspace: API.OperationMethod<
   ListLibraryByWorkspaceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(285, __c35, 5) as any as S.Schema<ListLibraryByWorkspaceRequest>,
-  output: __S(287, __c35, 7) as any as S.Schema<LibraryListResponse>,
+  input: __S(4112, __c257, 0) as any as S.Schema<ListLibraryByWorkspaceRequest>,
+  output: __S(4114, __c257, 2) as any as S.Schema<LibraryListResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7606,8 +7622,8 @@ export const ListOperations: API.OperationMethod<
   ListOperationsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(288, __c36, 0) as any as S.Schema<ListOperationsRequest>,
-  output: __S(300, __c37, 4) as any as S.Schema<ListOperationsResponse>,
+  input: __S(128, __c8, 0) as any as S.Schema<ListOperationsRequest>,
+  output: __S(140, __c8, 12) as any as S.Schema<ListOperationsResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7621,8 +7637,8 @@ export const ListPrivateEndpointConnections: API.OperationMethod<
   ListPrivateEndpointConnectionsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(301, __c37, 5) as any as S.Schema<ListPrivateEndpointConnectionsRequest>,
-  output: __S(302, __c37, 6) as any as S.Schema<ListPrivateEndpointConnectionsResponse>,
+  input: __S(144, __c9, 0) as any as S.Schema<ListPrivateEndpointConnectionsRequest>,
+  output: __S(145, __c9, 1) as any as S.Schema<ListPrivateEndpointConnectionsResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7636,11 +7652,11 @@ export const ListPrivateEndpointConnectionsPrivateLinkHub: API.OperationMethod<
   ListPrivateEndpointConnectionsPrivateLinkHubError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(303, __c37, 7) as any as S.Schema<ListPrivateEndpointConnectionsPrivateLinkHubRequest>,
+  input: __S(160, __c10, 0) as any as S.Schema<ListPrivateEndpointConnectionsPrivateLinkHubRequest>,
   output: __S(
-    305,
-    __c38,
-    1,
+    162,
+    __c10,
+    2,
   ) as any as S.Schema<ListPrivateEndpointConnectionsPrivateLinkHubResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -7655,8 +7671,8 @@ export const ListPrivateLinkHubByResourceGroup: API.OperationMethod<
   ListPrivateLinkHubByResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(306, __c38, 2) as any as S.Schema<ListPrivateLinkHubByResourceGroupRequest>,
-  output: __S(309, __c38, 5) as any as S.Schema<PrivateLinkHubInfoListResult>,
+  input: __S(176, __c11, 0) as any as S.Schema<ListPrivateLinkHubByResourceGroupRequest>,
+  output: __S(194, __c12, 2) as any as S.Schema<PrivateLinkHubInfoListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7670,8 +7686,8 @@ export const ListPrivateLinkHubPrivateLinkResources: API.OperationMethod<
   ListPrivateLinkHubPrivateLinkResourcesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(310, __c38, 6) as any as S.Schema<ListPrivateLinkHubPrivateLinkResourcesRequest>,
-  output: __S(313, __c39, 1) as any as S.Schema<PrivateLinkResourceListResult>,
+  input: __S(208, __c13, 0) as any as S.Schema<ListPrivateLinkHubPrivateLinkResourcesRequest>,
+  output: __S(226, __c14, 2) as any as S.Schema<PrivateLinkResourceListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7685,8 +7701,8 @@ export const ListPrivateLinkHubs: API.OperationMethod<
   ListPrivateLinkHubsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(314, __c39, 2) as any as S.Schema<ListPrivateLinkHubsRequest>,
-  output: __S(309, __c38, 5) as any as S.Schema<PrivateLinkHubInfoListResult>,
+  input: __S(240, __c15, 0) as any as S.Schema<ListPrivateLinkHubsRequest>,
+  output: __S(194, __c12, 2) as any as S.Schema<PrivateLinkHubInfoListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7700,8 +7716,8 @@ export const ListPrivateLinkResources: API.OperationMethod<
   ListPrivateLinkResourcesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(315, __c39, 3) as any as S.Schema<ListPrivateLinkResourcesRequest>,
-  output: __S(313, __c39, 1) as any as S.Schema<PrivateLinkResourceListResult>,
+  input: __S(256, __c16, 0) as any as S.Schema<ListPrivateLinkResourcesRequest>,
+  output: __S(226, __c14, 2) as any as S.Schema<PrivateLinkResourceListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7715,8 +7731,8 @@ export const ListRestorableDroppedSqlPoolByWorkspace: API.OperationMethod<
   ListRestorableDroppedSqlPoolByWorkspaceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(316, __c39, 4) as any as S.Schema<ListRestorableDroppedSqlPoolByWorkspaceRequest>,
-  output: __S(319, __c39, 7) as any as S.Schema<RestorableDroppedSqlPoolListResult>,
+  input: __S(272, __c17, 0) as any as S.Schema<ListRestorableDroppedSqlPoolByWorkspaceRequest>,
+  output: __S(275, __c17, 3) as any as S.Schema<RestorableDroppedSqlPoolListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7730,8 +7746,8 @@ export const ListSqlPoolBlobAuditingPolicyBySqlPool: API.OperationMethod<
   ListSqlPoolBlobAuditingPolicyBySqlPoolError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(320, __c40, 0) as any as S.Schema<ListSqlPoolBlobAuditingPolicyBySqlPoolRequest>,
-  output: __S(322, __c40, 2) as any as S.Schema<SqlPoolBlobAuditingPolicyListResult>,
+  input: __S(288, __c18, 0) as any as S.Schema<ListSqlPoolBlobAuditingPolicyBySqlPoolRequest>,
+  output: __S(290, __c18, 2) as any as S.Schema<SqlPoolBlobAuditingPolicyListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7745,8 +7761,8 @@ export const ListSqlPoolByWorkspace: API.OperationMethod<
   ListSqlPoolByWorkspaceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(323, __c40, 3) as any as S.Schema<ListSqlPoolByWorkspaceRequest>,
-  output: __S(325, __c40, 5) as any as S.Schema<SqlPoolInfoListResult>,
+  input: __S(304, __c19, 0) as any as S.Schema<ListSqlPoolByWorkspaceRequest>,
+  output: __S(306, __c19, 2) as any as S.Schema<SqlPoolInfoListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7760,8 +7776,8 @@ export const ListSqlPoolGeoBackupPolicies: API.OperationMethod<
   ListSqlPoolGeoBackupPoliciesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(326, __c40, 6) as any as S.Schema<ListSqlPoolGeoBackupPoliciesRequest>,
-  output: __S(329, __c41, 1) as any as S.Schema<GeoBackupPolicyListResult>,
+  input: __S(336, __c21, 0) as any as S.Schema<ListSqlPoolGeoBackupPoliciesRequest>,
+  output: __S(339, __c21, 3) as any as S.Schema<GeoBackupPolicyListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7775,11 +7791,11 @@ export const ListSqlPoolOperations: API.OperationMethod<
   ListSqlPoolOperationsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(330, __c41, 2) as any as S.Schema<ListSqlPoolOperationsRequest>,
+  input: __S(352, __c22, 0) as any as S.Schema<ListSqlPoolOperationsRequest>,
   output: __S(
-    334,
-    __c41,
-    6,
+    356,
+    __c22,
+    4,
   ) as any as S.Schema<SqlPoolBlobAuditingPolicySqlPoolOperationListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -7794,8 +7810,8 @@ export const ListSqlPoolReplicationLinks: API.OperationMethod<
   ListSqlPoolReplicationLinksError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(335, __c41, 7) as any as S.Schema<ListSqlPoolReplicationLinksRequest>,
-  output: __S(338, __c42, 2) as any as S.Schema<ReplicationLinkListResult>,
+  input: __S(368, __c23, 0) as any as S.Schema<ListSqlPoolReplicationLinksRequest>,
+  output: __S(371, __c23, 3) as any as S.Schema<ReplicationLinkListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7809,8 +7825,8 @@ export const ListSqlPoolRestorePoints: API.OperationMethod<
   ListSqlPoolRestorePointsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(339, __c42, 3) as any as S.Schema<ListSqlPoolRestorePointsRequest>,
-  output: __S(342, __c42, 6) as any as S.Schema<RestorePointListResult>,
+  input: __S(384, __c24, 0) as any as S.Schema<ListSqlPoolRestorePointsRequest>,
+  output: __S(387, __c24, 3) as any as S.Schema<RestorePointListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7824,8 +7840,8 @@ export const ListSqlPoolSchemas: API.OperationMethod<
   ListSqlPoolSchemasError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(343, __c42, 7) as any as S.Schema<ListSqlPoolSchemasRequest>,
-  output: __S(345, __c43, 1) as any as S.Schema<SqlPoolSchemaListResult>,
+  input: __S(400, __c25, 0) as any as S.Schema<ListSqlPoolSchemasRequest>,
+  output: __S(417, __c26, 1) as any as S.Schema<SqlPoolSchemaListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7839,8 +7855,8 @@ export const ListSqlPoolSecurityAlertPolicies2: API.OperationMethod<
   ListSqlPoolSecurityAlertPolicies2Error,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(346, __c43, 2) as any as S.Schema<ListSqlPoolSecurityAlertPoliciesRequest>,
-  output: __S(348, __c43, 4) as any as S.Schema<ListSqlPoolSecurityAlertPolicies>,
+  input: __S(432, __c27, 0) as any as S.Schema<ListSqlPoolSecurityAlertPoliciesRequest>,
+  output: __S(434, __c27, 2) as any as S.Schema<ListSqlPoolSecurityAlertPolicies>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7854,8 +7870,8 @@ export const ListSqlPoolSensitivityLabelCurrent: API.OperationMethod<
   ListSqlPoolSensitivityLabelCurrentError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(349, __c43, 5) as any as S.Schema<ListSqlPoolSensitivityLabelCurrentRequest>,
-  output: __S(352, __c44, 0) as any as S.Schema<SensitivityLabelListResult>,
+  input: __S(448, __c28, 0) as any as S.Schema<ListSqlPoolSensitivityLabelCurrentRequest>,
+  output: __S(466, __c29, 2) as any as S.Schema<SensitivityLabelListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7869,8 +7885,8 @@ export const ListSqlPoolSensitivityLabelRecommended: API.OperationMethod<
   ListSqlPoolSensitivityLabelRecommendedError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(353, __c44, 1) as any as S.Schema<ListSqlPoolSensitivityLabelRecommendedRequest>,
-  output: __S(352, __c44, 0) as any as S.Schema<SensitivityLabelListResult>,
+  input: __S(480, __c30, 0) as any as S.Schema<ListSqlPoolSensitivityLabelRecommendedRequest>,
+  output: __S(466, __c29, 2) as any as S.Schema<SensitivityLabelListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7884,8 +7900,8 @@ export const ListSqlPoolTableBySchema: API.OperationMethod<
   ListSqlPoolTableBySchemaError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(354, __c44, 2) as any as S.Schema<ListSqlPoolTableBySchemaRequest>,
-  output: __S(345, __c43, 1) as any as S.Schema<SqlPoolTableListResult>,
+  input: __S(496, __c31, 0) as any as S.Schema<ListSqlPoolTableBySchemaRequest>,
+  output: __S(417, __c26, 1) as any as S.Schema<SqlPoolTableListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7899,8 +7915,8 @@ export const ListSqlPoolTableColumnByTableName: API.OperationMethod<
   ListSqlPoolTableColumnByTableNameError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(355, __c44, 3) as any as S.Schema<ListSqlPoolTableColumnByTableNameRequest>,
-  output: __S(357, __c44, 5) as any as S.Schema<SqlPoolColumnListResult>,
+  input: __S(512, __c32, 0) as any as S.Schema<ListSqlPoolTableColumnByTableNameRequest>,
+  output: __S(514, __c32, 2) as any as S.Schema<SqlPoolColumnListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7914,8 +7930,8 @@ export const ListSqlPoolTransparentDataEncryptions: API.OperationMethod<
   ListSqlPoolTransparentDataEncryptionsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(358, __c44, 6) as any as S.Schema<ListSqlPoolTransparentDataEncryptionsRequest>,
-  output: __S(360, __c45, 0) as any as S.Schema<TransparentDataEncryptionListResult>,
+  input: __S(576, __c36, 0) as any as S.Schema<ListSqlPoolTransparentDataEncryptionsRequest>,
+  output: __S(578, __c36, 2) as any as S.Schema<TransparentDataEncryptionListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7929,8 +7945,8 @@ export const ListSqlPoolUsages: API.OperationMethod<
   ListSqlPoolUsagesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(361, __c45, 1) as any as S.Schema<ListSqlPoolUsagesRequest>,
-  output: __S(364, __c45, 4) as any as S.Schema<SqlPoolUsageListResult>,
+  input: __S(592, __c37, 0) as any as S.Schema<ListSqlPoolUsagesRequest>,
+  output: __S(610, __c38, 2) as any as S.Schema<SqlPoolUsageListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7944,8 +7960,8 @@ export const ListSqlPoolVulnerabilityAssessments: API.OperationMethod<
   ListSqlPoolVulnerabilityAssessmentsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(365, __c45, 5) as any as S.Schema<ListSqlPoolVulnerabilityAssessmentsRequest>,
-  output: __S(367, __c45, 7) as any as S.Schema<SqlPoolVulnerabilityAssessmentListResult>,
+  input: __S(624, __c39, 0) as any as S.Schema<ListSqlPoolVulnerabilityAssessmentsRequest>,
+  output: __S(626, __c39, 2) as any as S.Schema<SqlPoolVulnerabilityAssessmentListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7959,8 +7975,8 @@ export const ListSqlPoolVulnerabilityAssessmentScans: API.OperationMethod<
   ListSqlPoolVulnerabilityAssessmentScansError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(368, __c46, 0) as any as S.Schema<ListSqlPoolVulnerabilityAssessmentScansRequest>,
-  output: __S(370, __c46, 2) as any as S.Schema<VulnerabilityAssessmentScanRecordListResult>,
+  input: __S(640, __c40, 0) as any as S.Schema<ListSqlPoolVulnerabilityAssessmentScansRequest>,
+  output: __S(642, __c40, 2) as any as S.Schema<VulnerabilityAssessmentScanRecordListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7974,8 +7990,8 @@ export const ListSqlPoolWorkloadClassifier: API.OperationMethod<
   ListSqlPoolWorkloadClassifierError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(371, __c46, 3) as any as S.Schema<ListSqlPoolWorkloadClassifierRequest>,
-  output: __S(374, __c46, 6) as any as S.Schema<WorkloadClassifierListResult>,
+  input: __S(656, __c41, 0) as any as S.Schema<ListSqlPoolWorkloadClassifierRequest>,
+  output: __S(659, __c41, 3) as any as S.Schema<WorkloadClassifierListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7989,8 +8005,8 @@ export const ListSqlPoolWorkloadGroup: API.OperationMethod<
   ListSqlPoolWorkloadGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(375, __c46, 7) as any as S.Schema<ListSqlPoolWorkloadGroupRequest>,
-  output: __S(378, __c47, 2) as any as S.Schema<WorkloadGroupListResult>,
+  input: __S(672, __c42, 0) as any as S.Schema<ListSqlPoolWorkloadGroupRequest>,
+  output: __S(675, __c42, 3) as any as S.Schema<WorkloadGroupListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8004,8 +8020,8 @@ export const ListWorkspaceByResourceGroup: API.OperationMethod<
   ListWorkspaceByResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(379, __c47, 3) as any as S.Schema<ListWorkspaceByResourceGroupRequest>,
-  output: __S(381, __c47, 5) as any as S.Schema<WorkspaceInfoListResult>,
+  input: __S(688, __c43, 0) as any as S.Schema<ListWorkspaceByResourceGroupRequest>,
+  output: __S(705, __c44, 1) as any as S.Schema<WorkspaceInfoListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8020,11 +8036,11 @@ export const ListWorkspaceManagedSqlServerBlobAuditingPolicyByWorkspace: API.Ope
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    382,
-    __c47,
-    6,
+    720,
+    __c45,
+    0,
   ) as any as S.Schema<ListWorkspaceManagedSqlServerBlobAuditingPolicyByWorkspaceRequest>,
-  output: __S(385, __c48, 1) as any as S.Schema<ServerBlobAuditingPolicyListResult>,
+  output: __S(723, __c45, 3) as any as S.Schema<ServerBlobAuditingPolicyListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8039,11 +8055,11 @@ export const ListWorkspaceManagedSqlServerDedicatedSQLMinimalTlsSettings: API.Op
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    386,
-    __c48,
-    2,
+    736,
+    __c46,
+    0,
   ) as any as S.Schema<ListWorkspaceManagedSqlServerDedicatedSQLMinimalTlsSettingsRequest>,
-  output: __S(389, __c48, 5) as any as S.Schema<DedicatedSQLminimalTlsSettingsListResult>,
+  output: __S(739, __c46, 3) as any as S.Schema<DedicatedSQLminimalTlsSettingsListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8058,11 +8074,11 @@ export const ListWorkspaceManagedSqlServerEncryptionProtector: API.OperationMeth
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    390,
-    __c48,
-    6,
+    752,
+    __c47,
+    0,
   ) as any as S.Schema<ListWorkspaceManagedSqlServerEncryptionProtectorRequest>,
-  output: __S(393, __c49, 1) as any as S.Schema<EncryptionProtectorListResult>,
+  output: __S(755, __c47, 3) as any as S.Schema<EncryptionProtectorListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8077,11 +8093,11 @@ export const ListWorkspaceManagedSqlServerExtendedBlobAuditingPolicyByWorkspace:
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    394,
-    __c49,
-    2,
+    816,
+    __c51,
+    0,
   ) as any as S.Schema<ListWorkspaceManagedSqlServerExtendedBlobAuditingPolicyByWorkspaceRequest>,
-  output: __S(397, __c49, 5) as any as S.Schema<ExtendedServerBlobAuditingPolicyListResult>,
+  output: __S(819, __c51, 3) as any as S.Schema<ExtendedServerBlobAuditingPolicyListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8096,11 +8112,11 @@ export const ListWorkspaceManagedSqlServerRecoverableSqlPools: API.OperationMeth
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    398,
-    __c49,
-    6,
+    832,
+    __c52,
+    0,
   ) as any as S.Schema<ListWorkspaceManagedSqlServerRecoverableSqlPoolsRequest>,
-  output: __S(401, __c50, 1) as any as S.Schema<RecoverableSqlPoolListResult>,
+  output: __S(835, __c52, 3) as any as S.Schema<RecoverableSqlPoolListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8115,11 +8131,11 @@ export const ListWorkspaceManagedSqlServerSecurityAlertPolicy: API.OperationMeth
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    402,
-    __c50,
-    2,
+    848,
+    __c53,
+    0,
   ) as any as S.Schema<ListWorkspaceManagedSqlServerSecurityAlertPolicyRequest>,
-  output: __S(404, __c50, 4) as any as S.Schema<ServerSecurityAlertPolicyListResult>,
+  output: __S(850, __c53, 2) as any as S.Schema<ServerSecurityAlertPolicyListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8133,8 +8149,8 @@ export const ListWorkspaceManagedSqlServerUsages: API.OperationMethod<
   ListWorkspaceManagedSqlServerUsagesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(405, __c50, 5) as any as S.Schema<ListWorkspaceManagedSqlServerUsagesRequest>,
-  output: __S(364, __c45, 4) as any as S.Schema<ServerUsageListResult>,
+  input: __S(864, __c54, 0) as any as S.Schema<ListWorkspaceManagedSqlServerUsagesRequest>,
+  output: __S(610, __c38, 2) as any as S.Schema<ServerUsageListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8149,11 +8165,11 @@ export const ListWorkspaceManagedSqlServerVulnerabilityAssessments: API.Operatio
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    406,
-    __c50,
-    6,
+    880,
+    __c55,
+    0,
   ) as any as S.Schema<ListWorkspaceManagedSqlServerVulnerabilityAssessmentsRequest>,
-  output: __S(409, __c51, 1) as any as S.Schema<ServerVulnerabilityAssessmentListResult>,
+  output: __S(883, __c55, 3) as any as S.Schema<ServerVulnerabilityAssessmentListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8167,8 +8183,8 @@ export const ListWorkspaces: API.OperationMethod<
   ListWorkspacesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(410, __c51, 2) as any as S.Schema<ListWorkspacesRequest>,
-  output: __S(381, __c47, 5) as any as S.Schema<WorkspaceInfoListResult>,
+  input: __S(896, __c56, 0) as any as S.Schema<ListWorkspacesRequest>,
+  output: __S(705, __c44, 1) as any as S.Schema<WorkspaceInfoListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8182,8 +8198,8 @@ export const PauseSqlPool: API.OperationMethod<
   PauseSqlPoolError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(411, __c51, 3) as any as S.Schema<PauseSqlPoolRequest>,
-  output: __S(37, __c4, 5) as any as S.Schema<PauseSqlPoolResponse>,
+  input: __S(912, __c57, 0) as any as S.Schema<PauseSqlPoolRequest>,
+  output: __S(2512, __c157, 0) as any as S.Schema<PauseSqlPoolResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8197,8 +8213,8 @@ export const PrivateLinkHubsCreateOrUpdate: API.OperationMethod<
   PrivateLinkHubsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(413, __c51, 5) as any as S.Schema<PrivateLinkHubsCreateOrUpdateRequest>,
-  output: __S(142, __c17, 6) as any as S.Schema<PrivateLinkHubsCreateOrUpdateResponse>,
+  input: __S(929, __c58, 1) as any as S.Schema<PrivateLinkHubsCreateOrUpdateRequest>,
+  output: __S(2592, __c162, 0) as any as S.Schema<PrivateLinkHubsCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8212,8 +8228,8 @@ export const RefreshIntegrationRuntimeObjectMetadata: API.OperationMethod<
   RefreshIntegrationRuntimeObjectMetadataError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(414, __c51, 6) as any as S.Schema<RefreshIntegrationRuntimeObjectMetadataRequest>,
-  output: __S(415, __c51, 7) as any as S.Schema<SsisObjectMetadataStatusResponse>,
+  input: __S(944, __c59, 0) as any as S.Schema<RefreshIntegrationRuntimeObjectMetadataRequest>,
+  output: __S(945, __c59, 1) as any as S.Schema<SsisObjectMetadataStatusResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8227,8 +8243,8 @@ export const RegenerateIntegrationRuntimeAuthKey: API.OperationMethod<
   RegenerateIntegrationRuntimeAuthKeyError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(416, __c52, 0) as any as S.Schema<RegenerateIntegrationRuntimeAuthKeyRequest>,
-  output: __S(258, __c32, 2) as any as S.Schema<IntegrationRuntimeAuthKeys>,
+  input: __S(960, __c60, 0) as any as S.Schema<RegenerateIntegrationRuntimeAuthKeyRequest>,
+  output: __S(4000, __c250, 0) as any as S.Schema<IntegrationRuntimeAuthKeys>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8242,8 +8258,8 @@ export const ReplaceIpFirewallRuleAll: API.OperationMethod<
   ReplaceIpFirewallRuleAllError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(418, __c52, 2) as any as S.Schema<ReplaceIpFirewallRuleAllRequest>,
-  output: __S(419, __c52, 3) as any as S.Schema<ReplaceAllFirewallRulesOperationResponse>,
+  input: __S(993, __c62, 1) as any as S.Schema<ReplaceIpFirewallRuleAllRequest>,
+  output: __S(994, __c62, 2) as any as S.Schema<ReplaceAllFirewallRulesOperationResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8257,8 +8273,8 @@ export const ResumeSqlPool: API.OperationMethod<
   ResumeSqlPoolError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(420, __c52, 4) as any as S.Schema<ResumeSqlPoolRequest>,
-  output: __S(37, __c4, 5) as any as S.Schema<ResumeSqlPoolResponse>,
+  input: __S(1008, __c63, 0) as any as S.Schema<ResumeSqlPoolRequest>,
+  output: __S(2512, __c157, 0) as any as S.Schema<ResumeSqlPoolResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8272,8 +8288,12 @@ export const SqlPoolBlobAuditingPoliciesCreateOrUpdate: API.OperationMethod<
   SqlPoolBlobAuditingPoliciesCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(421, __c52, 5) as any as S.Schema<SqlPoolBlobAuditingPoliciesCreateOrUpdateRequest>,
-  output: __S(153, __c19, 1) as any as S.Schema<SqlPoolBlobAuditingPoliciesCreateOrUpdateResponse>,
+  input: __S(1024, __c64, 0) as any as S.Schema<SqlPoolBlobAuditingPoliciesCreateOrUpdateRequest>,
+  output: __S(
+    2737,
+    __c171,
+    1,
+  ) as any as S.Schema<SqlPoolBlobAuditingPoliciesCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8287,8 +8307,8 @@ export const SqlPoolGeoBackupPoliciesCreateOrUpdate: API.OperationMethod<
   SqlPoolGeoBackupPoliciesCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(423, __c52, 7) as any as S.Schema<SqlPoolGeoBackupPoliciesCreateOrUpdateRequest>,
-  output: __S(162, __c20, 2) as any as S.Schema<SqlPoolGeoBackupPoliciesCreateOrUpdateResponse>,
+  input: __S(1041, __c65, 1) as any as S.Schema<SqlPoolGeoBackupPoliciesCreateOrUpdateRequest>,
+  output: __S(2832, __c177, 0) as any as S.Schema<SqlPoolGeoBackupPoliciesCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8302,8 +8322,8 @@ export const SqlPoolMaintenanceWindowsCreateOrUpdate: API.OperationMethod<
   SqlPoolMaintenanceWindowsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(424, __c53, 0) as any as S.Schema<SqlPoolMaintenanceWindowsCreateOrUpdateRequest>,
-  output: __S(51, __c6, 3) as any as S.Schema<SqlPoolMaintenanceWindowsCreateOrUpdateResponse>,
+  input: __S(1056, __c66, 0) as any as S.Schema<SqlPoolMaintenanceWindowsCreateOrUpdateRequest>,
+  output: __S(112, __c7, 0) as any as S.Schema<SqlPoolMaintenanceWindowsCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8317,8 +8337,12 @@ export const SqlPoolSecurityAlertPoliciesCreateOrUpdate: API.OperationMethod<
   SqlPoolSecurityAlertPoliciesCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(426, __c53, 2) as any as S.Schema<SqlPoolSecurityAlertPoliciesCreateOrUpdateRequest>,
-  output: __S(181, __c22, 5) as any as S.Schema<SqlPoolSecurityAlertPoliciesCreateOrUpdateResponse>,
+  input: __S(1073, __c67, 1) as any as S.Schema<SqlPoolSecurityAlertPoliciesCreateOrUpdateRequest>,
+  output: __S(
+    3073,
+    __c192,
+    1,
+  ) as any as S.Schema<SqlPoolSecurityAlertPoliciesCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8332,8 +8356,8 @@ export const SqlPoolSensitivityLabelsCreateOrUpdate: API.OperationMethod<
   SqlPoolSensitivityLabelsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(428, __c53, 4) as any as S.Schema<SqlPoolSensitivityLabelsCreateOrUpdateRequest>,
-  output: __S(184, __c23, 0) as any as S.Schema<SqlPoolSensitivityLabelsCreateOrUpdateResponse>,
+  input: __S(1088, __c68, 0) as any as S.Schema<SqlPoolSensitivityLabelsCreateOrUpdateRequest>,
+  output: __S(3120, __c195, 0) as any as S.Schema<SqlPoolSensitivityLabelsCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8348,14 +8372,14 @@ export const SqlPoolTransparentDataEncryptionsCreateOrUpdate: API.OperationMetho
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    429,
-    __c53,
-    5,
+    1120,
+    __c70,
+    0,
   ) as any as S.Schema<SqlPoolTransparentDataEncryptionsCreateOrUpdateRequest>,
   output: __S(
-    188,
-    __c23,
-    4,
+    3169,
+    __c198,
+    1,
   ) as any as S.Schema<SqlPoolTransparentDataEncryptionsCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -8371,14 +8395,14 @@ export const SqlPoolVulnerabilityAssessmentRuleBaselinesCreateOrUpdate: API.Oper
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    430,
-    __c53,
-    6,
+    1136,
+    __c71,
+    0,
   ) as any as S.Schema<SqlPoolVulnerabilityAssessmentRuleBaselinesCreateOrUpdateRequest>,
   output: __S(
-    431,
-    __c53,
-    7,
+    1137,
+    __c71,
+    1,
   ) as any as S.Schema<SqlPoolVulnerabilityAssessmentRuleBaselinesCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -8394,14 +8418,14 @@ export const SqlPoolVulnerabilityAssessmentScansInitiateScan: API.OperationMetho
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    432,
-    __c54,
+    1152,
+    __c72,
     0,
   ) as any as S.Schema<SqlPoolVulnerabilityAssessmentScansInitiateScanRequest>,
   output: __S(
-    51,
-    __c6,
-    3,
+    112,
+    __c7,
+    0,
   ) as any as S.Schema<SqlPoolVulnerabilityAssessmentScansInitiateScanResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -8417,14 +8441,14 @@ export const SqlPoolVulnerabilityAssessmentsCreateOrUpdate: API.OperationMethod<
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    433,
-    __c54,
-    1,
+    1184,
+    __c74,
+    0,
   ) as any as S.Schema<SqlPoolVulnerabilityAssessmentsCreateOrUpdateRequest>,
   output: __S(
-    192,
-    __c24,
-    0,
+    3201,
+    __c200,
+    1,
   ) as any as S.Schema<SqlPoolVulnerabilityAssessmentsCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -8439,8 +8463,8 @@ export const SqlPoolWorkloadClassifierCreateOrUpdate: API.OperationMethod<
   SqlPoolWorkloadClassifierCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(434, __c54, 2) as any as S.Schema<SqlPoolWorkloadClassifierCreateOrUpdateRequest>,
-  output: __S(205, __c25, 5) as any as S.Schema<SqlPoolWorkloadClassifierCreateOrUpdateResponse>,
+  input: __S(1200, __c75, 0) as any as S.Schema<SqlPoolWorkloadClassifierCreateOrUpdateRequest>,
+  output: __S(3360, __c210, 0) as any as S.Schema<SqlPoolWorkloadClassifierCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8454,8 +8478,8 @@ export const SqlPoolWorkloadGroupCreateOrUpdate: API.OperationMethod<
   SqlPoolWorkloadGroupCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(435, __c54, 3) as any as S.Schema<SqlPoolWorkloadGroupCreateOrUpdateRequest>,
-  output: __S(208, __c26, 0) as any as S.Schema<SqlPoolWorkloadGroupCreateOrUpdateResponse>,
+  input: __S(1216, __c76, 0) as any as S.Schema<SqlPoolWorkloadGroupCreateOrUpdateRequest>,
+  output: __S(3408, __c213, 0) as any as S.Schema<SqlPoolWorkloadGroupCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8469,8 +8493,8 @@ export const StartIntegrationRuntime: API.OperationMethod<
   StartIntegrationRuntimeError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(436, __c54, 4) as any as S.Schema<StartIntegrationRuntimeRequest>,
-  output: __S(120, __c15, 0) as any as S.Schema<IntegrationRuntimeStatusResponse>,
+  input: __S(1232, __c77, 0) as any as S.Schema<StartIntegrationRuntimeRequest>,
+  output: __S(2337, __c146, 1) as any as S.Schema<IntegrationRuntimeStatusResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8484,8 +8508,8 @@ export const StopIntegrationRuntime: API.OperationMethod<
   StopIntegrationRuntimeError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(437, __c54, 5) as any as S.Schema<StopIntegrationRuntimeRequest>,
-  output: __S(25, __c3, 1) as any as S.Schema<StopIntegrationRuntimeResponse>,
+  input: __S(1248, __c78, 0) as any as S.Schema<StopIntegrationRuntimeRequest>,
+  output: __S(2208, __c138, 0) as any as S.Schema<StopIntegrationRuntimeResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8499,8 +8523,8 @@ export const SyncIntegrationRuntimeCredentials: API.OperationMethod<
   SyncIntegrationRuntimeCredentialsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(438, __c54, 6) as any as S.Schema<SyncIntegrationRuntimeCredentialsRequest>,
-  output: __S(51, __c6, 3) as any as S.Schema<SyncIntegrationRuntimeCredentialsResponse>,
+  input: __S(1264, __c79, 0) as any as S.Schema<SyncIntegrationRuntimeCredentialsRequest>,
+  output: __S(112, __c7, 0) as any as S.Schema<SyncIntegrationRuntimeCredentialsResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8514,8 +8538,8 @@ export const UpdateBigDataPool: API.OperationMethod<
   UpdateBigDataPoolError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(439, __c54, 7) as any as S.Schema<UpdateBigDataPoolRequest>,
-  output: __S(15, __c1, 7) as any as S.Schema<UpdateBigDataPoolResponse>,
+  input: __S(1280, __c80, 0) as any as S.Schema<UpdateBigDataPoolRequest>,
+  output: __S(32, __c2, 0) as any as S.Schema<UpdateBigDataPoolResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8529,8 +8553,8 @@ export const UpdateIntegrationRuntime: API.OperationMethod<
   UpdateIntegrationRuntimeError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(440, __c55, 0) as any as S.Schema<UpdateIntegrationRuntimeRequest>,
-  output: __S(24, __c3, 0) as any as S.Schema<UpdateIntegrationRuntimeResponse>,
+  input: __S(1296, __c81, 0) as any as S.Schema<UpdateIntegrationRuntimeRequest>,
+  output: __S(1953, __c122, 1) as any as S.Schema<UpdateIntegrationRuntimeResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8544,8 +8568,8 @@ export const UpdateIntegrationRuntimeNode: API.OperationMethod<
   UpdateIntegrationRuntimeNodeError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(441, __c55, 1) as any as S.Schema<UpdateIntegrationRuntimeNodeRequest>,
-  output: __S(115, __c14, 3) as any as S.Schema<SelfHostedIntegrationRuntimeNode>,
+  input: __S(1312, __c82, 0) as any as S.Schema<UpdateIntegrationRuntimeNodeRequest>,
+  output: __S(2288, __c143, 0) as any as S.Schema<SelfHostedIntegrationRuntimeNode>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8559,8 +8583,8 @@ export const UpdatePrivateLinkHub: API.OperationMethod<
   UpdatePrivateLinkHubError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(442, __c55, 2) as any as S.Schema<UpdatePrivateLinkHubRequest>,
-  output: __S(142, __c17, 6) as any as S.Schema<UpdatePrivateLinkHubResponse>,
+  input: __S(1328, __c83, 0) as any as S.Schema<UpdatePrivateLinkHubRequest>,
+  output: __S(2592, __c162, 0) as any as S.Schema<UpdatePrivateLinkHubResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8574,8 +8598,8 @@ export const UpdateSqlPool: API.OperationMethod<
   UpdateSqlPoolError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(443, __c55, 3) as any as S.Schema<UpdateSqlPoolRequest>,
-  output: __S(37, __c4, 5) as any as S.Schema<UpdateSqlPoolResponse>,
+  input: __S(1360, __c85, 0) as any as S.Schema<UpdateSqlPoolRequest>,
+  output: __S(2512, __c157, 0) as any as S.Schema<UpdateSqlPoolResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8589,8 +8613,8 @@ export const UpdateSqlPoolRecommendedSensitivityLabel: API.OperationMethod<
   UpdateSqlPoolRecommendedSensitivityLabelError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(447, __c55, 7) as any as S.Schema<UpdateSqlPoolRecommendedSensitivityLabelRequest>,
-  output: __S(51, __c6, 3) as any as S.Schema<UpdateSqlPoolRecommendedSensitivityLabelResponse>,
+  input: __S(1379, __c86, 3) as any as S.Schema<UpdateSqlPoolRecommendedSensitivityLabelRequest>,
+  output: __S(112, __c7, 0) as any as S.Schema<UpdateSqlPoolRecommendedSensitivityLabelResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8604,8 +8628,8 @@ export const UpdateSqlPoolSensitivityLabel: API.OperationMethod<
   UpdateSqlPoolSensitivityLabelError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(452, __c56, 4) as any as S.Schema<UpdateSqlPoolSensitivityLabelRequest>,
-  output: __S(51, __c6, 3) as any as S.Schema<UpdateSqlPoolSensitivityLabelResponse>,
+  input: __S(1396, __c87, 4) as any as S.Schema<UpdateSqlPoolSensitivityLabelRequest>,
+  output: __S(112, __c7, 0) as any as S.Schema<UpdateSqlPoolSensitivityLabelResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8619,8 +8643,8 @@ export const UpdateWorkspace: API.OperationMethod<
   UpdateWorkspaceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(458, __c57, 2) as any as S.Schema<UpdateWorkspaceRequest>,
-  output: __S(87, __c10, 7) as any as S.Schema<UpdateWorkspaceResponse>,
+  input: __S(1409, __c88, 1) as any as S.Schema<UpdateWorkspaceRequest>,
+  output: __S(1792, __c112, 0) as any as S.Schema<UpdateWorkspaceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8635,14 +8659,14 @@ export const UpdateWorkspaceManagedSqlServerDedicatedSQLMinimalTlsSettings: API.
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    459,
-    __c57,
-    3,
+    1440,
+    __c90,
+    0,
   ) as any as S.Schema<UpdateWorkspaceManagedSqlServerDedicatedSQLMinimalTlsSettingsRequest>,
   output: __S(
-    222,
-    __c27,
-    6,
+    3568,
+    __c223,
+    0,
   ) as any as S.Schema<UpdateWorkspaceManagedSqlServerDedicatedSQLMinimalTlsSettingsResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -8657,8 +8681,8 @@ export const WorkspaceAadAdminsCreateOrUpdate: API.OperationMethod<
   WorkspaceAadAdminsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(460, __c57, 4) as any as S.Schema<WorkspaceAadAdminsCreateOrUpdateRequest>,
-  output: __S(212, __c26, 4) as any as S.Schema<WorkspaceAadAdminsCreateOrUpdateResponse>,
+  input: __S(1456, __c91, 0) as any as S.Schema<WorkspaceAadAdminsCreateOrUpdateRequest>,
+  output: __S(3457, __c216, 1) as any as S.Schema<WorkspaceAadAdminsCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8673,14 +8697,14 @@ export const WorkspaceManagedIdentitySqlControlSettingsCreateOrUpdate: API.Opera
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    463,
-    __c57,
-    7,
+    1474,
+    __c92,
+    2,
   ) as any as S.Schema<WorkspaceManagedIdentitySqlControlSettingsCreateOrUpdateRequest>,
   output: __S(
-    464,
-    __c58,
-    0,
+    1475,
+    __c92,
+    3,
   ) as any as S.Schema<WorkspaceManagedIdentitySqlControlSettingsCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -8696,14 +8720,14 @@ export const WorkspaceManagedSqlServerBlobAuditingPoliciesCreateOrUpdate: API.Op
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    465,
-    __c58,
-    1,
+    1488,
+    __c93,
+    0,
   ) as any as S.Schema<WorkspaceManagedSqlServerBlobAuditingPoliciesCreateOrUpdateRequest>,
   output: __S(
-    466,
-    __c58,
-    2,
+    1489,
+    __c93,
+    1,
   ) as any as S.Schema<WorkspaceManagedSqlServerBlobAuditingPoliciesCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -8719,14 +8743,14 @@ export const WorkspaceManagedSqlServerEncryptionProtectorCreateOrUpdate: API.Ope
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    468,
-    __c58,
-    4,
+    1505,
+    __c94,
+    1,
   ) as any as S.Schema<WorkspaceManagedSqlServerEncryptionProtectorCreateOrUpdateRequest>,
   output: __S(
-    469,
-    __c58,
-    5,
+    1506,
+    __c94,
+    2,
   ) as any as S.Schema<WorkspaceManagedSqlServerEncryptionProtectorCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -8742,14 +8766,14 @@ export const WorkspaceManagedSqlServerEncryptionProtectorRevalidate: API.Operati
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    470,
-    __c58,
-    6,
+    1520,
+    __c95,
+    0,
   ) as any as S.Schema<WorkspaceManagedSqlServerEncryptionProtectorRevalidateRequest>,
   output: __S(
-    91,
-    __c11,
-    3,
+    1856,
+    __c116,
+    0,
   ) as any as S.Schema<WorkspaceManagedSqlServerEncryptionProtectorRevalidateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -8765,14 +8789,14 @@ export const WorkspaceManagedSqlServerExtendedBlobAuditingPoliciesCreateOrUpdate
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    471,
-    __c58,
-    7,
+    1552,
+    __c97,
+    0,
   ) as any as S.Schema<WorkspaceManagedSqlServerExtendedBlobAuditingPoliciesCreateOrUpdateRequest>,
   output: __S(
-    228,
-    __c28,
-    4,
+    3696,
+    __c231,
+    0,
   ) as any as S.Schema<WorkspaceManagedSqlServerExtendedBlobAuditingPoliciesCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -8788,13 +8812,13 @@ export const WorkspaceManagedSqlServerSecurityAlertPolicyCreateOrUpdate: API.Ope
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    473,
-    __c59,
+    1569,
+    __c98,
     1,
   ) as any as S.Schema<WorkspaceManagedSqlServerSecurityAlertPolicyCreateOrUpdateRequest>,
   output: __S(
-    474,
-    __c59,
+    1570,
+    __c98,
     2,
   ) as any as S.Schema<WorkspaceManagedSqlServerSecurityAlertPolicyCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
@@ -8811,14 +8835,14 @@ export const WorkspaceManagedSqlServerVulnerabilityAssessmentsCreateOrUpdate: AP
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    475,
-    __c59,
-    3,
+    1584,
+    __c99,
+    0,
   ) as any as S.Schema<WorkspaceManagedSqlServerVulnerabilityAssessmentsCreateOrUpdateRequest>,
   output: __S(
-    476,
-    __c59,
-    4,
+    1585,
+    __c99,
+    1,
   ) as any as S.Schema<WorkspaceManagedSqlServerVulnerabilityAssessmentsCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -8833,8 +8857,8 @@ export const WorkspacesCreateOrUpdate: API.OperationMethod<
   WorkspacesCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(480, __c60, 0) as any as S.Schema<WorkspacesCreateOrUpdateRequest>,
-  output: __S(481, __c60, 1) as any as S.Schema<WorkspacesCreateOrUpdateResponse>,
+  input: __S(1603, __c100, 3) as any as S.Schema<WorkspacesCreateOrUpdateRequest>,
+  output: __S(1604, __c100, 4) as any as S.Schema<WorkspacesCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8848,8 +8872,8 @@ export const WorkspaceSqlAadAdminsCreateOrUpdate: API.OperationMethod<
   WorkspaceSqlAadAdminsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(482, __c60, 2) as any as S.Schema<WorkspaceSqlAadAdminsCreateOrUpdateRequest>,
-  output: __S(212, __c26, 4) as any as S.Schema<WorkspaceSqlAadAdminsCreateOrUpdateResponse>,
+  input: __S(1616, __c101, 0) as any as S.Schema<WorkspaceSqlAadAdminsCreateOrUpdateRequest>,
+  output: __S(3457, __c216, 1) as any as S.Schema<WorkspaceSqlAadAdminsCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8859,40 +8883,13 @@ export const WorkspaceSqlAadAdminsCreateOrUpdate: API.OperationMethod<
 function __c0(j: number): any {
   switch (j) {
     case 0:
-      return S.Record(S.String, S.String);
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          minNodeCount: S.optional(S.Number),
-          enabled: S.optional(S.Boolean),
-          maxNodeCount: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "AutoScaleProperties" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          delayInMinutes: S.optional(S.Number),
-          enabled: S.optional(S.Boolean),
-        }),
-      ).annotate({ identifier: "AutoPauseProperties" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          enabled: S.optional(S.Boolean),
-          minExecutors: S.optional(S.Number),
-          maxExecutors: S.optional(S.Number),
-        }),
-      ).annotate({
-        identifier: "DynamicExecutorAllocation",
-      });
-    case 4:
       return S.suspend(() =>
         S.Struct({
           content: S.optional(S.String),
           filename: S.optional(S.String),
         }),
       ).annotate({ identifier: "LibraryRequirementsInput" });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
@@ -8903,9 +8900,9 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "BigDataPoolResourcePropertiesInputCustomLibrariesItem",
       });
-    case 6:
-      return S.Array(__S(5, __c0, 5));
-    case 7:
+    case 2:
+      return S.Array(__S(1, __c0, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
           content: S.optional(S.String),
@@ -8915,26 +8912,22 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "SparkConfigPropertiesInput",
       });
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
+    case 4:
       return S.suspend(() =>
         S.Struct({
           provisioningState: S.optional(S.String),
-          autoScale: S.optional(__S(1, __c0, 1)),
-          autoPause: S.optional(__S(2, __c0, 2)),
+          autoScale: S.optional(__S(64, __c4, 0)),
+          autoPause: S.optional(__S(65, __c4, 1)),
           isComputeIsolationEnabled: S.optional(S.Boolean),
           isAutotuneEnabled: S.optional(S.Boolean),
           sessionLevelPackagesEnabled: S.optional(S.Boolean),
           cacheSize: S.optional(S.Number),
-          dynamicExecutorAllocation: S.optional(__S(3, __c0, 3)),
+          dynamicExecutorAllocation: S.optional(__S(66, __c4, 2)),
           sparkEventsFolder: S.optional(S.String),
           nodeCount: S.optional(S.Number),
-          libraryRequirements: S.optional(__S(4, __c0, 4)),
-          customLibraries: S.optional(__S(6, __c0, 6)),
-          sparkConfigProperties: S.optional(__S(7, __c0, 7)),
+          libraryRequirements: S.optional(__S(0, __c0, 0)),
+          customLibraries: S.optional(__S(2, __c0, 2)),
+          sparkConfigProperties: S.optional(__S(3, __c0, 3)),
           sparkVersion: S.optional(S.String),
           defaultSparkLogFolder: S.optional(S.String),
           nodeSize: S.optional(S.String),
@@ -8943,7 +8936,7 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "BigDataPoolResourcePropertiesInput",
       });
-    case 1:
+    case 5:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -8951,9 +8944,9 @@ function __c1(j: number): any {
           workspaceName: S.String.pipe(T.Label()),
           bigDataPoolName: S.String.pipe(T.Label()),
           force: S.optional(S.Boolean.pipe(T.Query())),
-          tags: S.optional(__S(0, __c0, 0)),
+          tags: S.optional(__S(16, __c1, 0)),
           location: S.String,
-          properties: S.optional(__S(8, __c1, 0)),
+          properties: S.optional(__S(4, __c0, 4)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -8965,15 +8958,34 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "BigDataPoolsCreateOrUpdateRequest",
       });
-    case 2:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, S.String);
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          time: S.optional(S.String),
-          content: S.optional(S.String),
-          filename: S.optional(S.String),
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          tags: S.optional(__S(16, __c1, 0)),
+          location: S.String,
+          properties: S.optional(__S(70, __c4, 6)),
         }),
-      ).annotate({ identifier: "LibraryRequirements" });
-    case 3:
+      ).annotate({
+        identifier: "BigDataPoolsCreateOrUpdateResponse",
+      });
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
@@ -8987,8 +8999,45 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "BigDataPoolResourcePropertiesCustomLibrariesItem",
       });
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          minNodeCount: S.optional(S.Number),
+          enabled: S.optional(S.Boolean),
+          maxNodeCount: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "AutoScaleProperties" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          delayInMinutes: S.optional(S.Number),
+          enabled: S.optional(S.Boolean),
+        }),
+      ).annotate({ identifier: "AutoPauseProperties" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          enabled: S.optional(S.Boolean),
+          minExecutors: S.optional(S.Number),
+          maxExecutors: S.optional(S.Number),
+        }),
+      ).annotate({
+        identifier: "DynamicExecutorAllocation",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          time: S.optional(S.String),
+          content: S.optional(S.String),
+          filename: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "LibraryRequirements" });
     case 4:
-      return S.Array(__S(11, __c1, 3));
+      return S.Array(__S(48, __c3, 0));
     case 5:
       return S.suspend(() =>
         S.Struct({
@@ -9002,19 +9051,19 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           provisioningState: S.optional(S.String),
-          autoScale: S.optional(__S(1, __c0, 1)),
+          autoScale: S.optional(__S(64, __c4, 0)),
           creationDate: S.optional(S.String),
-          autoPause: S.optional(__S(2, __c0, 2)),
+          autoPause: S.optional(__S(65, __c4, 1)),
           isComputeIsolationEnabled: S.optional(S.Boolean),
           isAutotuneEnabled: S.optional(S.Boolean),
           sessionLevelPackagesEnabled: S.optional(S.Boolean),
           cacheSize: S.optional(S.Number),
-          dynamicExecutorAllocation: S.optional(__S(3, __c0, 3)),
+          dynamicExecutorAllocation: S.optional(__S(66, __c4, 2)),
           sparkEventsFolder: S.optional(S.String),
           nodeCount: S.optional(S.Number),
-          libraryRequirements: S.optional(__S(10, __c1, 2)),
-          customLibraries: S.optional(__S(12, __c1, 4)),
-          sparkConfigProperties: S.optional(__S(13, __c1, 5)),
+          libraryRequirements: S.optional(__S(67, __c4, 3)),
+          customLibraries: S.optional(__S(68, __c4, 4)),
+          sparkConfigProperties: S.optional(__S(69, __c4, 5)),
           sparkVersion: S.optional(S.String),
           defaultSparkLogFolder: S.optional(S.String),
           nodeSize: S.optional(S.String),
@@ -9024,22 +9073,9 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "BigDataPoolResourceProperties",
       });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          tags: S.optional(__S(0, __c0, 0)),
-          location: S.String,
-          properties: S.optional(__S(14, __c1, 6)),
-        }),
-      ).annotate({
-        identifier: "BigDataPoolsCreateOrUpdateResponse",
-      });
   }
 }
-function __c2(j: number): any {
+function __c5(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -9069,445 +9105,11 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "CheckNameAvailabilityResponse",
       });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          azureADOnlyAuthentication: S.Boolean,
-        }),
-      ).annotate({
-        identifier: "AzureADOnlyAuthenticationPropertiesInput",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          workspaceName: S.String.pipe(T.Label()),
-          azureADOnlyAuthenticationName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(18, __c2, 2)),
-        }).pipe(
-          T.Http({
-            method: "PUT",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/azureADOnlyAuthentications/{azureADOnlyAuthenticationName}",
-            code: 200,
-            apiVersion: "2021-06-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateAzureADOnlyAuthenticationRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          azureADOnlyAuthentication: S.Boolean,
-          state: S.optional(S.String),
-          creationDate: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "AzureADOnlyAuthenticationProperties",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          properties: S.optional(__S(20, __c2, 4)),
-        }),
-      ).annotate({
-        identifier: "CreateAzureADOnlyAuthenticationResponse",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          type: S.String,
-          description: S.optional(S.String),
-          typeProperties: S.optional(S.Unknown),
-          managedVirtualNetwork: S.optional(S.Unknown),
-          state: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "IntegrationRuntime" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          workspaceName: S.String.pipe(T.Label()),
-          integrationRuntimeName: S.String.pipe(T.Label()),
-          properties: __S(22, __c2, 6),
-        }).pipe(
-          T.Http({
-            method: "PUT",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/integrationRuntimes/{integrationRuntimeName}",
-            code: 200,
-            apiVersion: "2021-06-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateIntegrationRuntimeRequest",
-      });
-  }
-}
-function __c3(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          etag: S.optional(S.String),
-          properties: __S(22, __c2, 6),
-        }),
-      ).annotate({
-        identifier: "CreateIntegrationRuntimeResponse",
-      });
-    case 1:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "PrivateEndpointInput",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          status: S.optional(S.String),
-          description: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "PrivateLinkServiceConnectionStateInput",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          privateEndpoint: S.optional(__S(25, __c3, 1)),
-          privateLinkServiceConnectionState: S.optional(__S(26, __c3, 2)),
-        }),
-      ).annotate({
-        identifier: "PrivateEndpointConnectionPropertiesInput",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          workspaceName: S.String.pipe(T.Label()),
-          privateEndpointConnectionName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(27, __c3, 3)),
-        }).pipe(
-          T.Http({
-            method: "PUT",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/privateEndpointConnections/{privateEndpointConnectionName}",
-            code: 200,
-            apiVersion: "2021-06-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreatePrivateEndpointConnectionRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "PrivateEndpoint" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          status: S.optional(S.String),
-          description: S.optional(S.String),
-          actionsRequired: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "PrivateLinkServiceConnectionState",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          privateEndpoint: S.optional(__S(29, __c3, 5)),
-          privateLinkServiceConnectionState: S.optional(__S(30, __c3, 6)),
-          provisioningState: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "PrivateEndpointConnectionProperties",
-      });
-  }
-}
-function __c4(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          properties: S.optional(__S(31, __c3, 7)),
-        }),
-      ).annotate({
-        identifier: "CreatePrivateEndpointConnectionResponse",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          tier: S.optional(S.String),
-          name: S.optional(S.String),
-          capacity: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "Sku" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          maxSizeBytes: S.optional(S.Number),
-          collation: S.optional(S.String),
-          sourceDatabaseId: S.optional(S.String),
-          recoverableDatabaseId: S.optional(S.String),
-          provisioningState: S.optional(S.String),
-          restorePointInTime: S.optional(S.String),
-          createMode: S.optional(S.String),
-          storageAccountType: S.optional(S.String),
-          sourceDatabaseDeletionDate: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "SqlPoolResourcePropertiesInput",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          workspaceName: S.String.pipe(T.Label()),
-          sqlPoolName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(0, __c0, 0)),
-          location: S.String,
-          sku: S.optional(__S(33, __c4, 1)),
-          properties: S.optional(__S(34, __c4, 2)),
-        }).pipe(
-          T.Http({
-            method: "PUT",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/sqlPools/{sqlPoolName}",
-            code: 200,
-            apiVersion: "2021-06-01",
-          }),
-        ),
-      ).annotate({ identifier: "CreateSqlPoolRequest" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          maxSizeBytes: S.optional(S.Number),
-          collation: S.optional(S.String),
-          sourceDatabaseId: S.optional(S.String),
-          recoverableDatabaseId: S.optional(S.String),
-          provisioningState: S.optional(S.String),
-          status: S.optional(S.String),
-          restorePointInTime: S.optional(S.String),
-          createMode: S.optional(S.String),
-          creationDate: S.optional(S.String),
-          storageAccountType: S.optional(S.String),
-          sourceDatabaseDeletionDate: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "SqlPoolResourceProperties",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          tags: S.optional(__S(0, __c0, 0)),
-          location: S.String,
-          sku: S.optional(__S(33, __c4, 1)),
-          properties: S.optional(__S(36, __c4, 4)),
-        }),
-      ).annotate({ identifier: "CreateSqlPoolResponse" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          workspaceName: S.String.pipe(T.Label()),
-          sqlPoolName: S.String.pipe(T.Label()),
-          restorePointLabel: S.String,
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/sqlPools/{sqlPoolName}/restorePoints",
-            code: 200,
-            apiVersion: "2021-06-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateSqlPoolRestorePointRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          restorePointType: S.optional(S.String),
-          earliestRestoreDate: S.optional(S.String),
-          restorePointCreationDate: S.optional(S.String),
-          restorePointLabel: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "RestorePointProperties" });
-  }
-}
-function __c5(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          location: S.optional(S.String),
-          properties: S.optional(__S(39, __c4, 7)),
-        }),
-      ).annotate({
-        identifier: "CreateSqlPoolRestorePointResponse",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          dataMaskingState: S.String,
-          exemptPrincipals: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "DataMaskingPolicyPropertiesInput",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          workspaceName: S.String.pipe(T.Label()),
-          sqlPoolName: S.String.pipe(T.Label()),
-          dataMaskingPolicyName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(41, __c5, 1)),
-        }).pipe(
-          T.Http({
-            method: "PUT",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/sqlPools/{sqlPoolName}/dataMaskingPolicies/{dataMaskingPolicyName}",
-            code: 200,
-            apiVersion: "2021-06-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "DataMaskingPoliciesCreateOrUpdateRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          dataMaskingState: S.String,
-          exemptPrincipals: S.optional(S.String),
-          applicationPrincipals: S.optional(S.String),
-          maskingLevel: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "DataMaskingPolicyProperties",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          properties: S.optional(__S(43, __c5, 3)),
-          location: S.optional(S.String),
-          kind: S.optional(S.String),
-          managedBy: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "DataMaskingPoliciesCreateOrUpdateResponse",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          aliasName: S.optional(S.String),
-          ruleState: S.optional(S.String),
-          schemaName: S.String,
-          tableName: S.String,
-          columnName: S.String,
-          maskingFunction: S.String,
-          numberFrom: S.optional(S.String),
-          numberTo: S.optional(S.String),
-          prefixSize: S.optional(S.String),
-          suffixSize: S.optional(S.String),
-          replacementString: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "DataMaskingRulePropertiesInput",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          workspaceName: S.String.pipe(T.Label()),
-          sqlPoolName: S.String.pipe(T.Label()),
-          dataMaskingPolicyName: S.String.pipe(T.Label()),
-          dataMaskingRuleName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(45, __c5, 5)),
-        }).pipe(
-          T.Http({
-            method: "PUT",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/sqlPools/{sqlPoolName}/dataMaskingPolicies/{dataMaskingPolicyName}/rules/{dataMaskingRuleName}",
-            code: 200,
-            apiVersion: "2021-06-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "DataMaskingRulesCreateOrUpdateRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          aliasName: S.optional(S.String),
-          ruleState: S.optional(S.String),
-          schemaName: S.String,
-          tableName: S.String,
-          columnName: S.String,
-          maskingFunction: S.String,
-          numberFrom: S.optional(S.String),
-          numberTo: S.optional(S.String),
-          prefixSize: S.optional(S.String),
-          suffixSize: S.optional(S.String),
-          replacementString: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "DataMaskingRuleProperties",
-      });
   }
 }
 function __c6(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          properties: S.optional(__S(47, __c5, 7)),
-          location: S.optional(S.String),
-          kind: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "DataMaskingRulesCreateOrUpdateResponse",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          workspaceName: S.String.pipe(T.Label()),
-          bigDataPoolName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/bigDataPools/{bigDataPoolName}",
-            code: 200,
-            apiVersion: "2021-06-01",
-          }),
-        ),
-      ).annotate({ identifier: "DeleteBigDataPoolRequest" });
-    case 2:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -9525,3087 +9127,17 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "DeleteIntegrationRuntimeRequest",
       });
-    case 3:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "DeleteIntegrationRuntimeResponse",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          workspaceName: S.String.pipe(T.Label()),
-          integrationRuntimeName: S.String.pipe(T.Label()),
-          nodeName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/integrationRuntimes/{integrationRuntimeName}/nodes/{nodeName}",
-            code: 200,
-            apiVersion: "2021-06-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteIntegrationRuntimeNodeRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          workspaceName: S.String.pipe(T.Label()),
-          ruleName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/firewallRules/{ruleName}",
-            code: 200,
-            apiVersion: "2021-06-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteIpFirewallRuleRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          endIpAddress: S.optional(S.String),
-          provisioningState: S.optional(S.String),
-          startIpAddress: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "IpFirewallRuleProperties" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          properties: S.optional(__S(54, __c6, 6)),
-        }),
-      ).annotate({
-        identifier: "DeleteIpFirewallRuleResponse",
-      });
   }
 }
 function __c7(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          workspaceName: S.String.pipe(T.Label()),
-          keyName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/keys/{keyName}",
-            code: 200,
-            apiVersion: "2021-06-01",
-          }),
-        ),
-      ).annotate({ identifier: "DeleteKeyRequest" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          isActiveCMK: S.optional(S.Boolean),
-          keyVaultUrl: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "KeyProperties" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          properties: S.optional(__S(57, __c7, 1)),
-        }),
-      ).annotate({ identifier: "DeleteKeyResponse" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          workspaceName: S.String.pipe(T.Label()),
-          privateEndpointConnectionName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/privateEndpointConnections/{privateEndpointConnectionName}",
-            code: 200,
-            apiVersion: "2021-06-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeletePrivateEndpointConnectionRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          privateLinkHubName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/privateLinkHubs/{privateLinkHubName}",
-            code: 200,
-            apiVersion: "2021-06-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeletePrivateLinkHubRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          workspaceName: S.String.pipe(T.Label()),
-          sqlPoolName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/sqlPools/{sqlPoolName}",
-            code: 200,
-            apiVersion: "2021-06-01",
-          }),
-        ),
-      ).annotate({ identifier: "DeleteSqlPoolRequest" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          workspaceName: S.String.pipe(T.Label()),
-          sqlPoolName: S.String.pipe(T.Label()),
-          restorePointName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/sqlPools/{sqlPoolName}/restorePoints/{restorePointName}",
-            code: 200,
-            apiVersion: "2021-06-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteSqlPoolRestorePointRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          workspaceName: S.String.pipe(T.Label()),
-          sqlPoolName: S.String.pipe(T.Label()),
-          schemaName: S.String.pipe(T.Label()),
-          tableName: S.String.pipe(T.Label()),
-          columnName: S.String.pipe(T.Label()),
-          sensitivityLabelSource: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/sqlPools/{sqlPoolName}/schemas/{schemaName}/tables/{tableName}/columns/{columnName}/sensitivityLabels/{sensitivityLabelSource}",
-            code: 200,
-            apiVersion: "2021-06-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteSqlPoolSensitivityLabelRequest",
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "DeleteIntegrationRuntimeResponse",
       });
   }
 }
 function __c8(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          workspaceName: S.String.pipe(T.Label()),
-          sqlPoolName: S.String.pipe(T.Label()),
-          vulnerabilityAssessmentName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/sqlPools/{sqlPoolName}/vulnerabilityAssessments/{vulnerabilityAssessmentName}",
-            code: 200,
-            apiVersion: "2021-06-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteSqlPoolVulnerabilityAssessmentRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          workspaceName: S.String.pipe(T.Label()),
-          sqlPoolName: S.String.pipe(T.Label()),
-          vulnerabilityAssessmentName: S.String.pipe(T.Label()),
-          ruleId: S.String.pipe(T.Label()),
-          baselineName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/sqlPools/{sqlPoolName}/vulnerabilityAssessments/{vulnerabilityAssessmentName}/rules/{ruleId}/baselines/{baselineName}",
-            code: 200,
-            apiVersion: "2021-06-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteSqlPoolVulnerabilityAssessmentRuleBaselineRequest",
-      });
-    case 2:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "DeleteSqlPoolVulnerabilityAssessmentRuleBaselineResponse",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          workspaceName: S.String.pipe(T.Label()),
-          sqlPoolName: S.String.pipe(T.Label()),
-          workloadGroupName: S.String.pipe(T.Label()),
-          workloadClassifierName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/sqlPools/{sqlPoolName}/workloadGroups/{workloadGroupName}/workloadClassifiers/{workloadClassifierName}",
-            code: 200,
-            apiVersion: "2021-06-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteSqlPoolWorkloadClassifierRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          workspaceName: S.String.pipe(T.Label()),
-          sqlPoolName: S.String.pipe(T.Label()),
-          workloadGroupName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/sqlPools/{sqlPoolName}/workloadGroups/{workloadGroupName}",
-            code: 200,
-            apiVersion: "2021-06-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteSqlPoolWorkloadGroupRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          workspaceName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}",
-            code: 200,
-            apiVersion: "2021-06-01",
-          }),
-        ),
-      ).annotate({ identifier: "DeleteWorkspaceRequest" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          accountUrl: S.optional(S.String),
-          filesystem: S.optional(S.String),
-          resourceId: S.optional(S.String),
-          createManagedPrivateEndpoint: S.optional(S.Boolean),
-        }),
-      ).annotate({
-        identifier: "DataLakeStorageAccountDetails",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          computeSubnetId: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "VirtualNetworkProfile" });
-  }
-}
-function __c9(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(32, __c4, 0));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.optional(S.String),
-          keyVaultUrl: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "WorkspaceKeyDetails" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          userAssignedIdentity: S.optional(S.String),
-          useSystemAssignedIdentity: S.optional(S.Unknown),
-        }),
-      ).annotate({ identifier: "KekIdentityProperties" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          status: S.optional(S.String),
-          key: S.optional(__S(73, __c9, 1)),
-          kekIdentity: S.optional(__S(74, __c9, 2)),
-        }),
-      ).annotate({
-        identifier: "CustomerManagedKeyDetails",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          doubleEncryptionEnabled: S.optional(S.Boolean),
-          cmk: S.optional(__S(75, __c9, 3)),
-        }),
-      ).annotate({ identifier: "EncryptionDetails" });
-    case 5:
-      return S.Array(S.String);
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          preventDataExfiltration: S.optional(S.Boolean),
-          linkedAccessCheckOnTargetResource: S.optional(S.Boolean),
-          allowedAadTenantIdsForLinking: S.optional(__S(77, __c9, 5)),
-        }),
-      ).annotate({
-        identifier: "ManagedVirtualNetworkSettings",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          type: S.optional(S.String),
-          hostName: S.optional(S.String),
-          accountName: S.optional(S.String),
-          projectName: S.optional(S.String),
-          repositoryName: S.optional(S.String),
-          collaborationBranch: S.optional(S.String),
-          rootFolder: S.optional(S.String),
-          lastCommitId: S.optional(S.String),
-          tenantId: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "WorkspaceRepositoryConfiguration",
-      });
-  }
-}
-function __c10(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          purviewResourceId: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "PurviewConfiguration" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          initialWorkspaceAdminObjectId: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "CspWorkspaceAdminProperties",
-      });
-    case 2:
-      return S.Record(S.String, S.Unknown);
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          defaultDataLakeStorage: S.optional(__S(70, __c8, 6)),
-          sqlAdministratorLoginPassword: S.optional(S.String.pipe(T.SensitiveValue({}))),
-          managedResourceGroupName: S.optional(S.String),
-          provisioningState: S.optional(S.String),
-          sqlAdministratorLogin: S.optional(S.String),
-          virtualNetworkProfile: S.optional(__S(71, __c8, 7)),
-          connectivityEndpoints: S.optional(__S(0, __c0, 0)),
-          managedVirtualNetwork: S.optional(S.String),
-          privateEndpointConnections: S.optional(__S(72, __c9, 0)),
-          encryption: S.optional(__S(76, __c9, 4)),
-          workspaceUID: S.optional(S.String),
-          extraProperties: S.optional(S.Unknown),
-          managedVirtualNetworkSettings: S.optional(__S(78, __c9, 6)),
-          workspaceRepositoryConfiguration: S.optional(__S(79, __c9, 7)),
-          purviewConfiguration: S.optional(__S(80, __c10, 0)),
-          adlaResourceId: S.optional(S.String),
-          publicNetworkAccess: S.optional(S.String),
-          cspWorkspaceAdminProperties: S.optional(__S(81, __c10, 1)),
-          settings: S.optional(__S(82, __c10, 2)),
-          azureADOnlyAuthentication: S.optional(S.Boolean),
-          trustedServiceBypassEnabled: S.optional(S.Boolean),
-        }),
-      ).annotate({ identifier: "WorkspaceProperties" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          clientId: S.optional(S.NullOr(S.String)),
-          principalId: S.optional(S.NullOr(S.String)),
-        }),
-      ).annotate({
-        identifier: "UserAssignedManagedIdentity",
-      });
-    case 5:
-      return S.Record(S.String, __S(84, __c10, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          principalId: S.optional(S.String),
-          tenantId: S.optional(S.String),
-          type: S.optional(S.String),
-          userAssignedIdentities: S.optional(__S(85, __c10, 5)),
-        }),
-      ).annotate({ identifier: "ManagedIdentity" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          tags: S.optional(__S(0, __c0, 0)),
-          location: S.String,
-          properties: S.optional(__S(83, __c10, 3)),
-          identity: S.optional(__S(86, __c10, 6)),
-        }),
-      ).annotate({ identifier: "DeleteWorkspaceResponse" });
-  }
-}
-function __c11(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          workspaceName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/administrators/activeDirectory",
-            code: 200,
-            apiVersion: "2021-06-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteWorkspaceAadAdminRequest",
-      });
-    case 1:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "DeleteWorkspaceAadAdminResponse",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          workspaceName: S.String.pipe(T.Label()),
-          vulnerabilityAssessmentName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/vulnerabilityAssessments/{vulnerabilityAssessmentName}",
-            code: 200,
-            apiVersion: "2021-06-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteWorkspaceManagedSqlServerVulnerabilityAssessmentRequest",
-      });
-    case 3:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "DeleteWorkspaceManagedSqlServerVulnerabilityAssessmentResponse",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          workspaceName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/sqlAdministrators/activeDirectory",
-            code: 200,
-            apiVersion: "2021-06-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteWorkspaceSqlAadAdminRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          workspaceName: S.String.pipe(T.Label()),
-          integrationRuntimeName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/integrationRuntimes/{integrationRuntimeName}/disableInteractiveQuery",
-            code: 200,
-            apiVersion: "2021-06-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "DisableIntegrationRuntimeInteractiveQueryRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          workspaceName: S.String.pipe(T.Label()),
-          sqlPoolName: S.String.pipe(T.Label()),
-          schemaName: S.String.pipe(T.Label()),
-          tableName: S.String.pipe(T.Label()),
-          columnName: S.String.pipe(T.Label()),
-          sensitivityLabelSource: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/sqlPools/{sqlPoolName}/schemas/{schemaName}/tables/{tableName}/columns/{columnName}/sensitivityLabels/{sensitivityLabelSource}/disable",
-            code: 200,
-            apiVersion: "2021-06-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "DisableSqlPoolSensitivityLabelRecommendationRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          workspaceName: S.String.pipe(T.Label()),
-          integrationRuntimeName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/integrationRuntimes/{integrationRuntimeName}/enableInteractiveQuery",
-            code: 200,
-            apiVersion: "2021-06-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "EnableIntegrationRuntimeInteractiveQueryRequest",
-      });
-  }
-}
-function __c12(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          workspaceName: S.String.pipe(T.Label()),
-          sqlPoolName: S.String.pipe(T.Label()),
-          schemaName: S.String.pipe(T.Label()),
-          tableName: S.String.pipe(T.Label()),
-          columnName: S.String.pipe(T.Label()),
-          sensitivityLabelSource: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/sqlPools/{sqlPoolName}/schemas/{schemaName}/tables/{tableName}/columns/{columnName}/sensitivityLabels/{sensitivityLabelSource}/enable",
-            code: 200,
-            apiVersion: "2021-06-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "EnableSqlPoolSensitivityLabelRecommendationRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          workspaceName: S.String.pipe(T.Label()),
-          sqlPoolName: S.String.pipe(T.Label()),
-          vulnerabilityAssessmentName: S.String.pipe(T.Label()),
-          scanId: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/sqlPools/{sqlPoolName}/vulnerabilityAssessments/{vulnerabilityAssessmentName}/scans/{scanId}/export",
-            code: 200,
-            apiVersion: "2021-06-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "ExportSqlPoolVulnerabilityAssessmentScanRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          exportedReportLocation: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "SqlPoolVulnerabilityAssessmentScanExportProperties",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          properties: S.optional(__S(98, __c12, 2)),
-        }),
-      ).annotate({
-        identifier: "ExportSqlPoolVulnerabilityAssessmentScanResponse",
-      });
-    case 4:
-      return S.Array(S.String);
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          predicateExpression: S.optional(S.String),
-          state: S.String,
-          storageEndpoint: S.optional(S.String),
-          storageAccountAccessKey: S.optional(S.String),
-          retentionDays: S.optional(S.Number),
-          auditActionsAndGroups: S.optional(__S(100, __c12, 4)),
-          storageAccountSubscriptionId: S.optional(S.String),
-          isStorageSecondaryKeyInUse: S.optional(S.Boolean),
-          isAzureMonitorTargetEnabled: S.optional(S.Boolean),
-          queueDelayMs: S.optional(S.Number),
-        }),
-      ).annotate({
-        identifier: "ExtendedSqlPoolBlobAuditingPolicyProperties",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          workspaceName: S.String.pipe(T.Label()),
-          sqlPoolName: S.String.pipe(T.Label()),
-          blobAuditingPolicyName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(101, __c12, 5)),
-        }).pipe(
-          T.Http({
-            method: "PUT",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/sqlPools/{sqlPoolName}/extendedAuditingSettings/{blobAuditingPolicyName}",
-            code: 200,
-            apiVersion: "2021-06-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "ExtendedSqlPoolBlobAuditingPoliciesCreateOrUpdateRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          properties: S.optional(__S(101, __c12, 5)),
-        }),
-      ).annotate({
-        identifier: "ExtendedSqlPoolBlobAuditingPoliciesCreateOrUpdateResponse",
-      });
-  }
-}
-function __c13(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          workspaceName: S.String.pipe(T.Label()),
-          azureADOnlyAuthenticationName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/azureADOnlyAuthentications/{azureADOnlyAuthenticationName}",
-            code: 200,
-            apiVersion: "2021-06-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetAzureADOnlyAuthenticationRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          workspaceName: S.String.pipe(T.Label()),
-          bigDataPoolName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/bigDataPools/{bigDataPoolName}",
-            code: 200,
-            apiVersion: "2021-06-01",
-          }),
-        ),
-      ).annotate({ identifier: "GetBigDataPoolRequest" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          tags: S.optional(__S(0, __c0, 0)),
-          location: S.String,
-          properties: S.optional(__S(14, __c1, 6)),
-        }),
-      ).annotate({ identifier: "GetBigDataPoolResponse" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          workspaceName: S.String.pipe(T.Label()),
-          sqlPoolName: S.String.pipe(T.Label()),
-          dataMaskingPolicyName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/sqlPools/{sqlPoolName}/dataMaskingPolicies/{dataMaskingPolicyName}",
-            code: 200,
-            apiVersion: "2021-06-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetDataMaskingPolicyRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          workspaceName: S.String.pipe(T.Label()),
-          sqlPoolName: S.String.pipe(T.Label()),
-          dataMaskingPolicyName: S.String.pipe(T.Label()),
-          dataMaskingRuleName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/sqlPools/{sqlPoolName}/dataMaskingPolicies/{dataMaskingPolicyName}/rules/{dataMaskingRuleName}",
-            code: 200,
-            apiVersion: "2021-06-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetDataMaskingRuleRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          workspaceName: S.String.pipe(T.Label()),
-          sqlPoolName: S.String.pipe(T.Label()),
-          blobAuditingPolicyName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/sqlPools/{sqlPoolName}/extendedAuditingSettings/{blobAuditingPolicyName}",
-            code: 200,
-            apiVersion: "2021-06-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetExtendedSqlPoolBlobAuditingPolicyRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          properties: S.optional(__S(101, __c12, 5)),
-        }),
-      ).annotate({
-        identifier: "GetExtendedSqlPoolBlobAuditingPolicyResponse",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          workspaceName: S.String.pipe(T.Label()),
-          integrationRuntimeName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/integrationRuntimes/{integrationRuntimeName}",
-            code: 200,
-            apiVersion: "2021-06-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetIntegrationRuntimeRequest",
-      });
-  }
-}
-function __c14(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          workspaceName: S.String.pipe(T.Label()),
-          integrationRuntimeName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/integrationRuntimes/{integrationRuntimeName}/getConnectionInfo",
-            code: 200,
-            apiVersion: "2021-06-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetIntegrationRuntimeConnectionInfosRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          serviceToken: S.optional(S.String),
-          identityCertThumbprint: S.optional(S.String),
-          hostServiceUri: S.optional(S.String),
-          version: S.optional(S.String),
-          publicKey: S.optional(S.String),
-          isIdentityCertExprired: S.optional(S.Boolean),
-        }),
-      ).annotate({
-        identifier: "IntegrationRuntimeConnectionInfo",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          workspaceName: S.String.pipe(T.Label()),
-          integrationRuntimeName: S.String.pipe(T.Label()),
-          nodeName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/integrationRuntimes/{integrationRuntimeName}/nodes/{nodeName}",
-            code: 200,
-            apiVersion: "2021-06-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetIntegrationRuntimeNodeRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          nodeName: S.optional(S.String),
-          machineName: S.optional(S.String),
-          hostServiceUri: S.optional(S.String),
-          status: S.optional(S.String),
-          capabilities: S.optional(__S(0, __c0, 0)),
-          versionStatus: S.optional(S.String),
-          version: S.optional(S.String),
-          registerTime: S.optional(S.String),
-          lastConnectTime: S.optional(S.String),
-          expiryTime: S.optional(S.String),
-          lastStartTime: S.optional(S.String),
-          lastStopTime: S.optional(S.String),
-          lastUpdateResult: S.optional(S.String),
-          lastStartUpdateTime: S.optional(S.String),
-          lastEndUpdateTime: S.optional(S.String),
-          isActiveDispatcher: S.optional(S.Boolean),
-          concurrentJobsLimit: S.optional(S.Number),
-          maxConcurrentJobs: S.optional(S.Number),
-        }),
-      ).annotate({
-        identifier: "SelfHostedIntegrationRuntimeNode",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          workspaceName: S.String.pipe(T.Label()),
-          integrationRuntimeName: S.String.pipe(T.Label()),
-          nodeName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/integrationRuntimes/{integrationRuntimeName}/nodes/{nodeName}/ipAddress",
-            code: 200,
-            apiVersion: "2021-06-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetIntegrationRuntimeNodeIpAddressRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          ipAddress: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "IntegrationRuntimeNodeIpAddress",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          workspaceName: S.String.pipe(T.Label()),
-          integrationRuntimeName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/integrationRuntimes/{integrationRuntimeName}/getStatus",
-            code: 200,
-            apiVersion: "2021-06-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetIntegrationRuntimeStatusRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          type: S.String,
-          dataFactoryName: S.optional(S.String),
-          state: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "IntegrationRuntimeStatus" });
-  }
-}
-function __c15(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.optional(S.String),
-          properties: __S(119, __c14, 7),
-        }),
-      ).annotate({
-        identifier: "IntegrationRuntimeStatusResponse",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          workspaceName: S.String.pipe(T.Label()),
-          ruleName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/firewallRules/{ruleName}",
-            code: 200,
-            apiVersion: "2021-06-01",
-          }),
-        ),
-      ).annotate({ identifier: "GetIpFirewallRuleRequest" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          workspaceName: S.String.pipe(T.Label()),
-          keyName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/keys/{keyName}",
-            code: 200,
-            apiVersion: "2021-06-01",
-          }),
-        ),
-      ).annotate({ identifier: "GetKeyRequest" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          workspaceName: S.String.pipe(T.Label()),
-          libraryName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/libraries/{libraryName}",
-            code: 200,
-            apiVersion: "2021-06-01",
-          }),
-        ),
-      ).annotate({ identifier: "GetLibraryRequest" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          etag: S.optional(S.String),
-          properties: __S(11, __c1, 3),
-        }),
-      ).annotate({ identifier: "GetLibraryResponse" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          workspaceName: S.String.pipe(T.Label()),
-          operationId: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/operationStatuses/{operationId}",
-            code: 200,
-            apiVersion: "2021-06-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetOperationAzureAsyncHeaderResultRequest",
-      });
-    case 6:
-      return S.Array(/*@__PURE__*/ S.suspend(() => __S(129, __c16, 1)));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          type: S.optional(S.String),
-          info: S.optional(S.Unknown),
-        }),
-      ).annotate({ identifier: "ErrorAdditionalInfo" });
-  }
-}
-function __c16(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(127, __c15, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          code: S.optional(S.String),
-          message: S.optional(S.String),
-          target: S.optional(S.String),
-          details: S.optional(__S(126, __c15, 6)),
-          additionalInfo: S.optional(__S(128, __c16, 0)),
-        }),
-      ).annotate({ identifier: "ErrorDetail" });
-    case 2:
-      return S.Array(__S(129, __c16, 1));
-    case 3:
-      return S.Array(__S(127, __c15, 7));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          code: S.optional(S.String),
-          message: S.optional(S.String),
-          target: S.optional(S.String),
-          details: S.optional(__S(130, __c16, 2)),
-          additionalInfo: S.optional(__S(131, __c16, 3)),
-        }),
-      ).annotate({
-        identifier: "GetOperationAzureAsyncHeaderResultResponseError",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          status: S.optional(S.String),
-          properties: S.optional(S.Unknown),
-          error: S.optional(__S(132, __c16, 4)),
-          startTime: S.optional(S.String),
-          endTime: S.optional(S.String),
-          percentComplete: S.optional(S.Number),
-        }),
-      ).annotate({
-        identifier: "GetOperationAzureAsyncHeaderResultResponse",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          workspaceName: S.String.pipe(T.Label()),
-          operationId: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/operationResults/{operationId}",
-            code: 200,
-            apiVersion: "2021-06-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetOperationLocationHeaderResultRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          workspaceName: S.String.pipe(T.Label()),
-          privateEndpointConnectionName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/privateEndpointConnections/{privateEndpointConnectionName}",
-            code: 200,
-            apiVersion: "2021-06-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetPrivateEndpointConnectionRequest",
-      });
-  }
-}
-function __c17(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          privateLinkHubName: S.String.pipe(T.Label()),
-          privateEndpointConnectionName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/privateLinkHubs/{privateLinkHubName}/privateEndpointConnections/{privateEndpointConnectionName}",
-            code: 200,
-            apiVersion: "2021-06-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetPrivateEndpointConnectionsPrivateLinkHubRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          properties: S.optional(__S(31, __c3, 7)),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GetPrivateEndpointConnectionsPrivateLinkHubResponse",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          privateLinkHubName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/privateLinkHubs/{privateLinkHubName}",
-            code: 200,
-            apiVersion: "2021-06-01",
-          }),
-        ),
-      ).annotate({ identifier: "GetPrivateLinkHubRequest" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          properties: S.optional(__S(31, __c3, 7)),
-        }),
-      ).annotate({
-        identifier: "PrivateEndpointConnectionForPrivateLinkHubBasic",
-      });
-    case 4:
-      return S.Array(__S(139, __c17, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          provisioningState: S.optional(S.String),
-          privateEndpointConnections: S.optional(__S(140, __c17, 4)),
-        }),
-      ).annotate({ identifier: "PrivateLinkHubProperties" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          tags: S.optional(__S(0, __c0, 0)),
-          location: S.String,
-          properties: S.optional(__S(141, __c17, 5)),
-        }),
-      ).annotate({
-        identifier: "GetPrivateLinkHubResponse",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          privateLinkHubName: S.String.pipe(T.Label()),
-          privateLinkResourceName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/privateLinkHubs/{privateLinkHubName}/privateLinkResources/{privateLinkResourceName}",
-            code: 200,
-            apiVersion: "2021-06-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetPrivateLinkHubPrivateLinkResourceRequest",
-      });
-  }
-}
-function __c18(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          groupId: S.optional(S.String),
-          requiredMembers: S.optional(__S(77, __c9, 5)),
-          requiredZoneNames: S.optional(__S(77, __c9, 5)),
-        }),
-      ).annotate({
-        identifier: "PrivateLinkResourceProperties",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          properties: S.optional(__S(144, __c18, 0)),
-        }),
-      ).annotate({
-        identifier: "GetPrivateLinkHubPrivateLinkResourceResponse",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          workspaceName: S.String.pipe(T.Label()),
-          privateLinkResourceName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/privateLinkResources/{privateLinkResourceName}",
-            code: 200,
-            apiVersion: "2021-06-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetPrivateLinkResourceRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          workspaceName: S.String.pipe(T.Label()),
-          restorableDroppedSqlPoolId: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/restorableDroppedSqlPools/{restorableDroppedSqlPoolId}",
-            code: 200,
-            apiVersion: "2021-06-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetRestorableDroppedSqlPoolRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          databaseName: S.optional(S.String),
-          edition: S.optional(S.String),
-          maxSizeBytes: S.optional(S.String),
-          serviceLevelObjective: S.optional(S.String),
-          elasticPoolName: S.optional(S.String),
-          creationDate: S.optional(S.String),
-          deletionDate: S.optional(S.String),
-          earliestRestoreDate: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "RestorableDroppedSqlPoolProperties",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          location: S.optional(S.String),
-          properties: S.optional(__S(148, __c18, 4)),
-        }),
-      ).annotate({
-        identifier: "GetRestorableDroppedSqlPoolResponse",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          workspaceName: S.String.pipe(T.Label()),
-          sqlPoolName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/sqlPools/{sqlPoolName}",
-            code: 200,
-            apiVersion: "2021-06-01",
-          }),
-        ),
-      ).annotate({ identifier: "GetSqlPoolRequest" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          workspaceName: S.String.pipe(T.Label()),
-          sqlPoolName: S.String.pipe(T.Label()),
-          blobAuditingPolicyName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/sqlPools/{sqlPoolName}/auditingSettings/{blobAuditingPolicyName}",
-            code: 200,
-            apiVersion: "2021-06-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetSqlPoolBlobAuditingPolicyRequest",
-      });
-  }
-}
-function __c19(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          state: S.String,
-          storageEndpoint: S.optional(S.String),
-          storageAccountAccessKey: S.optional(S.String),
-          retentionDays: S.optional(S.Number),
-          auditActionsAndGroups: S.optional(__S(77, __c9, 5)),
-          storageAccountSubscriptionId: S.optional(S.String),
-          isStorageSecondaryKeyInUse: S.optional(S.Boolean),
-          isAzureMonitorTargetEnabled: S.optional(S.Boolean),
-        }),
-      ).annotate({
-        identifier: "SqlPoolBlobAuditingPolicyProperties",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          kind: S.optional(S.String),
-          properties: S.optional(__S(152, __c19, 0)),
-        }),
-      ).annotate({
-        identifier: "GetSqlPoolBlobAuditingPolicyResponse",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          workspaceName: S.String.pipe(T.Label()),
-          sqlPoolName: S.String.pipe(T.Label()),
-          schemaName: S.String.pipe(T.Label()),
-          tableName: S.String.pipe(T.Label()),
-          columnName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/sqlPools/{sqlPoolName}/schemas/{schemaName}/tables/{tableName}/columns/{columnName}",
-            code: 200,
-            apiVersion: "2021-06-01",
-          }),
-        ),
-      ).annotate({ identifier: "GetSqlPoolColumnRequest" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          columnType: S.optional(S.String),
-          isComputed: S.optional(S.Boolean),
-        }),
-      ).annotate({ identifier: "SqlPoolColumnProperties" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          properties: S.optional(__S(155, __c19, 3)),
-        }),
-      ).annotate({ identifier: "GetSqlPoolColumnResponse" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          workspaceName: S.String.pipe(T.Label()),
-          sqlPoolName: S.String.pipe(T.Label()),
-          dataWarehouseUserActivityName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/sqlPools/{sqlPoolName}/dataWarehouseUserActivities/{dataWarehouseUserActivityName}",
-            code: 200,
-            apiVersion: "2021-06-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetSqlPoolDataWarehouseUserActivityRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          activeQueriesCount: S.optional(S.Number),
-        }),
-      ).annotate({
-        identifier: "DataWarehouseUserActivitiesProperties",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          properties: S.optional(__S(158, __c19, 6)),
-        }),
-      ).annotate({
-        identifier: "GetSqlPoolDataWarehouseUserActivityResponse",
-      });
-  }
-}
-function __c20(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          workspaceName: S.String.pipe(T.Label()),
-          sqlPoolName: S.String.pipe(T.Label()),
-          geoBackupPolicyName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/sqlPools/{sqlPoolName}/geoBackupPolicies/{geoBackupPolicyName}",
-            code: 200,
-            apiVersion: "2021-06-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetSqlPoolGeoBackupPolicyRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          state: S.String,
-          storageType: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GeoBackupPolicyProperties",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          properties: __S(161, __c20, 1),
-          kind: S.optional(S.String),
-          location: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GetSqlPoolGeoBackupPolicyResponse",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          workspaceName: S.String.pipe(T.Label()),
-          sqlPoolName: S.String.pipe(T.Label()),
-          maintenanceWindowOptionsName: S.String.pipe(T.Query()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/sqlPools/{sqlPoolName}/maintenanceWindowOptions/current",
-            code: 200,
-            apiVersion: "2021-06-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetSqlPoolMaintenanceWindowOptionRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          dayOfWeek: S.optional(S.String),
-          startTime: S.optional(S.String),
-          duration: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "MaintenanceWindowTimeRange",
-      });
-    case 5:
-      return S.Array(__S(164, __c20, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          isEnabled: S.optional(S.Boolean),
-          maintenanceWindowCycles: S.optional(__S(165, __c20, 5)),
-          minDurationInMinutes: S.optional(S.Number),
-          defaultDurationInMinutes: S.optional(S.Number),
-          minCycles: S.optional(S.Number),
-          timeGranularityInMinutes: S.optional(S.Number),
-          allowMultipleMaintenanceWindowsPerCycle: S.optional(S.Boolean),
-        }),
-      ).annotate({
-        identifier: "MaintenanceWindowOptionsProperties",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          properties: S.optional(__S(166, __c20, 6)),
-        }),
-      ).annotate({
-        identifier: "GetSqlPoolMaintenanceWindowOptionResponse",
-      });
-  }
-}
-function __c21(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          workspaceName: S.String.pipe(T.Label()),
-          sqlPoolName: S.String.pipe(T.Label()),
-          maintenanceWindowName: S.String.pipe(T.Query()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/sqlPools/{sqlPoolName}/maintenancewindows/current",
-            code: 200,
-            apiVersion: "2021-06-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetSqlPoolMaintenanceWindowsRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          timeRanges: S.optional(__S(165, __c20, 5)),
-        }),
-      ).annotate({
-        identifier: "MaintenanceWindowsProperties",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          properties: S.optional(__S(169, __c21, 1)),
-        }),
-      ).annotate({
-        identifier: "GetSqlPoolMaintenanceWindowsResponse",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          workspaceName: S.String.pipe(T.Label()),
-          sqlPoolName: S.String.pipe(T.Label()),
-          operationId: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/sqlPools/{sqlPoolName}/operationResults/{operationId}",
-            code: 200,
-            apiVersion: "2021-06-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetSqlPoolOperationResultLocationHeaderResultRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          tags: S.optional(__S(0, __c0, 0)),
-          location: S.String,
-          sku: S.optional(__S(33, __c4, 1)),
-          properties: S.optional(__S(36, __c4, 4)),
-        }),
-      ).annotate({
-        identifier: "GetSqlPoolOperationResultLocationHeaderResultResponse",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          workspaceName: S.String.pipe(T.Label()),
-          sqlPoolName: S.String.pipe(T.Label()),
-          linkId: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/sqlPools/{sqlPoolName}/replicationLinks/{linkId}",
-            code: 200,
-            apiVersion: "2021-06-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetSqlPoolReplicationLinkByNameRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          isTerminationAllowed: S.optional(S.Boolean),
-          replicationMode: S.optional(S.String),
-          partnerServer: S.optional(S.String),
-          partnerDatabase: S.optional(S.String),
-          partnerLocation: S.optional(S.String),
-          role: S.optional(S.String),
-          partnerRole: S.optional(S.String),
-          startTime: S.optional(S.String),
-          percentComplete: S.optional(S.Number),
-          replicationState: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "ReplicationLinkProperties",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          location: S.optional(S.String),
-          properties: S.optional(__S(174, __c21, 6)),
-        }),
-      ).annotate({
-        identifier: "GetSqlPoolReplicationLinkByNameResponse",
-      });
-  }
-}
-function __c22(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          workspaceName: S.String.pipe(T.Label()),
-          sqlPoolName: S.String.pipe(T.Label()),
-          restorePointName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/sqlPools/{sqlPoolName}/restorePoints/{restorePointName}",
-            code: 200,
-            apiVersion: "2021-06-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetSqlPoolRestorePointRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          workspaceName: S.String.pipe(T.Label()),
-          sqlPoolName: S.String.pipe(T.Label()),
-          schemaName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/sqlPools/{sqlPoolName}/schemas/{schemaName}",
-            code: 200,
-            apiVersion: "2021-06-01",
-          }),
-        ),
-      ).annotate({ identifier: "GetSqlPoolSchemaRequest" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "GetSqlPoolSchemaResponse" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          workspaceName: S.String.pipe(T.Label()),
-          sqlPoolName: S.String.pipe(T.Label()),
-          securityAlertPolicyName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/sqlPools/{sqlPoolName}/securityAlertPolicies/{securityAlertPolicyName}",
-            code: 200,
-            apiVersion: "2021-06-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetSqlPoolSecurityAlertPolicyRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          state: S.String,
-          disabledAlerts: S.optional(__S(77, __c9, 5)),
-          emailAddresses: S.optional(__S(77, __c9, 5)),
-          emailAccountAdmins: S.optional(S.Boolean),
-          storageEndpoint: S.optional(S.String),
-          storageAccountAccessKey: S.optional(S.String),
-          retentionDays: S.optional(S.Number),
-          creationTime: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "SecurityAlertPolicyProperties",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          properties: S.optional(__S(180, __c22, 4)),
-        }),
-      ).annotate({
-        identifier: "GetSqlPoolSecurityAlertPolicyResponse",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          workspaceName: S.String.pipe(T.Label()),
-          sqlPoolName: S.String.pipe(T.Label()),
-          schemaName: S.String.pipe(T.Label()),
-          tableName: S.String.pipe(T.Label()),
-          columnName: S.String.pipe(T.Label()),
-          sensitivityLabelSource: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/sqlPools/{sqlPoolName}/schemas/{schemaName}/tables/{tableName}/columns/{columnName}/sensitivityLabels/{sensitivityLabelSource}",
-            code: 200,
-            apiVersion: "2021-06-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetSqlPoolSensitivityLabelRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          schemaName: S.optional(S.String),
-          tableName: S.optional(S.String),
-          columnName: S.optional(S.String),
-          labelName: S.optional(S.String),
-          labelId: S.optional(S.String),
-          informationType: S.optional(S.String),
-          informationTypeId: S.optional(S.String),
-          isDisabled: S.optional(S.Boolean),
-          rank: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "SensitivityLabelProperties",
-      });
-  }
-}
-function __c23(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          properties: S.optional(__S(183, __c22, 7)),
-          managedBy: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GetSqlPoolSensitivityLabelResponse",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          workspaceName: S.String.pipe(T.Label()),
-          sqlPoolName: S.String.pipe(T.Label()),
-          schemaName: S.String.pipe(T.Label()),
-          tableName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/sqlPools/{sqlPoolName}/schemas/{schemaName}/tables/{tableName}",
-            code: 200,
-            apiVersion: "2021-06-01",
-          }),
-        ),
-      ).annotate({ identifier: "GetSqlPoolTableRequest" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          workspaceName: S.String.pipe(T.Label()),
-          sqlPoolName: S.String.pipe(T.Label()),
-          transparentDataEncryptionName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/sqlPools/{sqlPoolName}/transparentDataEncryption/{transparentDataEncryptionName}",
-            code: 200,
-            apiVersion: "2021-06-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetSqlPoolTransparentDataEncryptionRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          status: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "TransparentDataEncryptionProperties",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          location: S.optional(S.String),
-          properties: S.optional(__S(187, __c23, 3)),
-        }),
-      ).annotate({
-        identifier: "GetSqlPoolTransparentDataEncryptionResponse",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          workspaceName: S.String.pipe(T.Label()),
-          sqlPoolName: S.String.pipe(T.Label()),
-          vulnerabilityAssessmentName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/sqlPools/{sqlPoolName}/vulnerabilityAssessments/{vulnerabilityAssessmentName}",
-            code: 200,
-            apiVersion: "2021-06-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetSqlPoolVulnerabilityAssessmentRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          isEnabled: S.optional(S.Boolean),
-          emailSubscriptionAdmins: S.optional(S.Boolean),
-          emails: S.optional(__S(77, __c9, 5)),
-        }),
-      ).annotate({
-        identifier: "VulnerabilityAssessmentRecurringScansProperties",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          storageContainerPath: S.optional(S.String),
-          storageContainerSasKey: S.optional(S.String),
-          storageAccountAccessKey: S.optional(S.String),
-          recurringScans: S.optional(__S(190, __c23, 6)),
-        }),
-      ).annotate({
-        identifier: "SqlPoolVulnerabilityAssessmentProperties",
-      });
-  }
-}
-function __c24(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          properties: S.optional(__S(191, __c23, 7)),
-        }),
-      ).annotate({
-        identifier: "GetSqlPoolVulnerabilityAssessmentResponse",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          workspaceName: S.String.pipe(T.Label()),
-          sqlPoolName: S.String.pipe(T.Label()),
-          vulnerabilityAssessmentName: S.String.pipe(T.Label()),
-          ruleId: S.String.pipe(T.Label()),
-          baselineName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/sqlPools/{sqlPoolName}/vulnerabilityAssessments/{vulnerabilityAssessmentName}/rules/{ruleId}/baselines/{baselineName}",
-            code: 200,
-            apiVersion: "2021-06-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetSqlPoolVulnerabilityAssessmentRuleBaselineRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          result: __S(77, __c9, 5),
-        }),
-      ).annotate({
-        identifier: "SqlPoolVulnerabilityAssessmentRuleBaselineItem",
-      });
-    case 3:
-      return S.Array(__S(194, __c24, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          baselineResults: __S(195, __c24, 3),
-        }),
-      ).annotate({
-        identifier: "SqlPoolVulnerabilityAssessmentRuleBaselineProperties",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          properties: S.optional(__S(196, __c24, 4)),
-        }),
-      ).annotate({
-        identifier: "GetSqlPoolVulnerabilityAssessmentRuleBaselineResponse",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          workspaceName: S.String.pipe(T.Label()),
-          sqlPoolName: S.String.pipe(T.Label()),
-          vulnerabilityAssessmentName: S.String.pipe(T.Label()),
-          scanId: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/sqlPools/{sqlPoolName}/vulnerabilityAssessments/{vulnerabilityAssessmentName}/scans/{scanId}",
-            code: 200,
-            apiVersion: "2021-06-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetSqlPoolVulnerabilityAssessmentScanRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          code: S.optional(S.String),
-          message: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "VulnerabilityAssessmentScanError",
-      });
-  }
-}
-function __c25(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(199, __c24, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          scanId: S.optional(S.String),
-          triggerType: S.optional(S.String),
-          state: S.optional(S.String),
-          startTime: S.optional(S.String),
-          endTime: S.optional(S.String),
-          errors: S.optional(__S(200, __c25, 0)),
-          storageContainerPath: S.optional(S.String),
-          numberOfFailedSecurityChecks: S.optional(S.Number),
-        }),
-      ).annotate({
-        identifier: "VulnerabilityAssessmentScanRecordProperties",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          properties: S.optional(__S(201, __c25, 1)),
-        }),
-      ).annotate({
-        identifier: "GetSqlPoolVulnerabilityAssessmentScanResponse",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          workspaceName: S.String.pipe(T.Label()),
-          sqlPoolName: S.String.pipe(T.Label()),
-          workloadGroupName: S.String.pipe(T.Label()),
-          workloadClassifierName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/sqlPools/{sqlPoolName}/workloadGroups/{workloadGroupName}/workloadClassifiers/{workloadClassifierName}",
-            code: 200,
-            apiVersion: "2021-06-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetSqlPoolWorkloadClassifierRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          memberName: S.String,
-          label: S.optional(S.String),
-          context: S.optional(S.String),
-          startTime: S.optional(S.String),
-          endTime: S.optional(S.String),
-          importance: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "WorkloadClassifierProperties",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          properties: S.optional(__S(204, __c25, 4)),
-        }),
-      ).annotate({
-        identifier: "GetSqlPoolWorkloadClassifierResponse",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          workspaceName: S.String.pipe(T.Label()),
-          sqlPoolName: S.String.pipe(T.Label()),
-          workloadGroupName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/sqlPools/{sqlPoolName}/workloadGroups/{workloadGroupName}",
-            code: 200,
-            apiVersion: "2021-06-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetSqlPoolWorkloadGroupRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          minResourcePercent: S.Number,
-          maxResourcePercent: S.Number,
-          minResourcePercentPerRequest: S.Number,
-          maxResourcePercentPerRequest: S.optional(S.Number),
-          importance: S.optional(S.String),
-          queryExecutionTimeout: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "WorkloadGroupProperties" });
-  }
-}
-function __c26(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          properties: S.optional(__S(207, __c25, 7)),
-        }),
-      ).annotate({
-        identifier: "GetSqlPoolWorkloadGroupResponse",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          workspaceName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}",
-            code: 200,
-            apiVersion: "2021-06-01",
-          }),
-        ),
-      ).annotate({ identifier: "GetWorkspaceRequest" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          workspaceName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/administrators/activeDirectory",
-            code: 200,
-            apiVersion: "2021-06-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetWorkspaceAadAdminRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          tenantId: S.optional(S.String),
-          login: S.optional(S.String),
-          administratorType: S.optional(S.String),
-          sid: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "AadAdminProperties" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          properties: S.optional(__S(211, __c26, 3)),
-        }),
-      ).annotate({
-        identifier: "GetWorkspaceAadAdminResponse",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          workspaceName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/managedIdentitySqlControlSettings/default",
-            code: 200,
-            apiVersion: "2021-06-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetWorkspaceManagedIdentitySqlControlSettingsRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          desiredState: S.optional(S.String),
-          actualState: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier:
-          "GetWorkspaceManagedIdentitySqlControlSettingsResponsePropertiesGrantSqlControlToManagedIdentity",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          grantSqlControlToManagedIdentity: S.optional(__S(214, __c26, 6)),
-        }),
-      ).annotate({
-        identifier: "GetWorkspaceManagedIdentitySqlControlSettingsResponseProperties",
-      });
-  }
-}
-function __c27(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          properties: S.optional(__S(215, __c26, 7)),
-        }),
-      ).annotate({
-        identifier: "GetWorkspaceManagedIdentitySqlControlSettingsResponse",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          workspaceName: S.String.pipe(T.Label()),
-          blobAuditingPolicyName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/auditingSettings/{blobAuditingPolicyName}",
-            code: 200,
-            apiVersion: "2021-06-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetWorkspaceManagedSqlServerBlobAuditingPolicyRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          state: S.String,
-          storageEndpoint: S.optional(S.String),
-          storageAccountAccessKey: S.optional(S.String),
-          retentionDays: S.optional(S.Number),
-          auditActionsAndGroups: S.optional(__S(77, __c9, 5)),
-          storageAccountSubscriptionId: S.optional(S.String),
-          isStorageSecondaryKeyInUse: S.optional(S.Boolean),
-          isAzureMonitorTargetEnabled: S.optional(S.Boolean),
-          queueDelayMs: S.optional(S.Number),
-          isDevopsAuditEnabled: S.optional(S.Boolean),
-        }),
-      ).annotate({
-        identifier: "ServerBlobAuditingPolicyProperties",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          properties: S.optional(__S(218, __c27, 2)),
-        }),
-      ).annotate({
-        identifier: "GetWorkspaceManagedSqlServerBlobAuditingPolicyResponse",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          workspaceName: S.String.pipe(T.Label()),
-          dedicatedSQLminimalTlsSettingsName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/dedicatedSQLminimalTlsSettings/{dedicatedSQLminimalTlsSettingsName}",
-            code: 200,
-            apiVersion: "2021-06-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetWorkspaceManagedSqlServerDedicatedSQLMinimalTlsSettingsRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          minimalTlsVersion: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "DedicatedSQLminimalTlsSettingsProperties",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          location: S.optional(S.String),
-          properties: S.optional(__S(221, __c27, 5)),
-        }),
-      ).annotate({
-        identifier: "GetWorkspaceManagedSqlServerDedicatedSQLMinimalTlsSettingsResponse",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          workspaceName: S.String.pipe(T.Label()),
-          encryptionProtectorName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/encryptionProtector/{encryptionProtectorName}",
-            code: 200,
-            apiVersion: "2021-06-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetWorkspaceManagedSqlServerEncryptionProtectorRequest",
-      });
-  }
-}
-function __c28(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          subregion: S.optional(S.String),
-          serverKeyName: S.optional(S.String),
-          serverKeyType: S.String,
-          uri: S.optional(S.String),
-          thumbprint: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "EncryptionProtectorProperties",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          kind: S.optional(S.String),
-          location: S.optional(S.String),
-          properties: S.optional(__S(224, __c28, 0)),
-        }),
-      ).annotate({
-        identifier: "GetWorkspaceManagedSqlServerEncryptionProtectorResponse",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          workspaceName: S.String.pipe(T.Label()),
-          blobAuditingPolicyName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/extendedAuditingSettings/{blobAuditingPolicyName}",
-            code: 200,
-            apiVersion: "2021-06-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetWorkspaceManagedSqlServerExtendedBlobAuditingPolicyRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          predicateExpression: S.optional(S.String),
-          state: S.String,
-          storageEndpoint: S.optional(S.String),
-          storageAccountAccessKey: S.optional(S.String),
-          retentionDays: S.optional(S.Number),
-          auditActionsAndGroups: S.optional(__S(100, __c12, 4)),
-          storageAccountSubscriptionId: S.optional(S.String),
-          isStorageSecondaryKeyInUse: S.optional(S.Boolean),
-          isAzureMonitorTargetEnabled: S.optional(S.Boolean),
-          queueDelayMs: S.optional(S.Number),
-          isDevopsAuditEnabled: S.optional(S.Boolean),
-        }),
-      ).annotate({
-        identifier: "ExtendedServerBlobAuditingPolicyProperties",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          properties: S.optional(__S(227, __c28, 3)),
-        }),
-      ).annotate({
-        identifier: "GetWorkspaceManagedSqlServerExtendedBlobAuditingPolicyResponse",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          workspaceName: S.String.pipe(T.Label()),
-          sqlPoolName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/recoverableSqlPools/{sqlPoolName}",
-            code: 200,
-            apiVersion: "2021-06-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetWorkspaceManagedSqlServerRecoverableSqlPoolRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          edition: S.optional(S.String),
-          serviceLevelObjective: S.optional(S.String),
-          elasticPoolName: S.optional(S.String),
-          lastAvailableBackupDate: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "RecoverableSqlPoolProperties",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          properties: S.optional(__S(230, __c28, 6)),
-        }),
-      ).annotate({
-        identifier: "GetWorkspaceManagedSqlServerRecoverableSqlPoolResponse",
-      });
-  }
-}
-function __c29(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          workspaceName: S.String.pipe(T.Label()),
-          securityAlertPolicyName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/securityAlertPolicies/{securityAlertPolicyName}",
-            code: 200,
-            apiVersion: "2021-06-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetWorkspaceManagedSqlServerSecurityAlertPolicyRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          state: S.String,
-          disabledAlerts: S.optional(__S(77, __c9, 5)),
-          emailAddresses: S.optional(__S(77, __c9, 5)),
-          emailAccountAdmins: S.optional(S.Boolean),
-          storageEndpoint: S.optional(S.String),
-          storageAccountAccessKey: S.optional(S.String),
-          retentionDays: S.optional(S.Number),
-          creationTime: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "ServerSecurityAlertPolicyProperties",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          properties: S.optional(__S(233, __c29, 1)),
-        }),
-      ).annotate({
-        identifier: "GetWorkspaceManagedSqlServerSecurityAlertPolicyResponse",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          workspaceName: S.String.pipe(T.Label()),
-          vulnerabilityAssessmentName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/vulnerabilityAssessments/{vulnerabilityAssessmentName}",
-            code: 200,
-            apiVersion: "2021-06-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetWorkspaceManagedSqlServerVulnerabilityAssessmentRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          storageContainerPath: S.String,
-          storageContainerSasKey: S.optional(S.String),
-          storageAccountAccessKey: S.optional(S.String),
-          recurringScans: S.optional(__S(190, __c23, 6)),
-        }),
-      ).annotate({
-        identifier: "ServerVulnerabilityAssessmentProperties",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          properties: S.optional(__S(236, __c29, 4)),
-        }),
-      ).annotate({
-        identifier: "GetWorkspaceManagedSqlServerVulnerabilityAssessmentResponse",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          workspaceName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/sqlAdministrators/activeDirectory",
-            code: 200,
-            apiVersion: "2021-06-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetWorkspaceSqlAadAdminRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          workspaceName: S.String.pipe(T.Label()),
-          integrationRuntimeName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/integrationRuntimes/{integrationRuntimeName}/upgrade",
-            code: 200,
-            apiVersion: "2021-06-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "IntegrationRuntimesUpgradeRequest",
-      });
-  }
-}
-function __c30(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          endIpAddress: S.optional(S.String),
-          startIpAddress: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "IpFirewallRulePropertiesInput",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          workspaceName: S.String.pipe(T.Label()),
-          ruleName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(240, __c30, 0)),
-        }).pipe(
-          T.Http({
-            method: "PUT",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/firewallRules/{ruleName}",
-            code: 200,
-            apiVersion: "2021-06-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "IpFirewallRulesCreateOrUpdateRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          workspaceName: S.String.pipe(T.Label()),
-          keyName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(57, __c7, 1)),
-        }).pipe(
-          T.Http({
-            method: "PUT",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/keys/{keyName}",
-            code: 200,
-            apiVersion: "2021-06-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "KeysCreateOrUpdateRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          properties: S.optional(__S(57, __c7, 1)),
-        }),
-      ).annotate({
-        identifier: "KeysCreateOrUpdateResponse",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          workspaceName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/azureADOnlyAuthentications",
-            code: 200,
-            apiVersion: "2021-06-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListAzureADOnlyAuthenticationsRequest",
-      });
-    case 5:
-      return S.Array(__S(21, __c2, 5));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          value: S.optional(__S(245, __c30, 5)),
-          nextLink: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "AzureADOnlyAuthenticationListResult",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          workspaceName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/bigDataPools",
-            code: 200,
-            apiVersion: "2021-06-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListBigDataPoolByWorkspaceRequest",
-      });
-  }
-}
-function __c31(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(106, __c13, 2));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          nextLink: S.optional(S.String),
-          value: S.optional(__S(248, __c31, 0)),
-        }),
-      ).annotate({
-        identifier: "BigDataPoolResourceInfoListResult",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          workspaceName: S.String.pipe(T.Label()),
-          sqlPoolName: S.String.pipe(T.Label()),
-          dataMaskingPolicyName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/sqlPools/{sqlPoolName}/dataMaskingPolicies/{dataMaskingPolicyName}/rules",
-            code: 200,
-            apiVersion: "2021-06-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListDataMaskingRuleBySqlPoolRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          properties: S.optional(__S(47, __c5, 7)),
-          location: S.optional(S.String),
-          kind: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "DataMaskingRule" });
-    case 4:
-      return S.Array(__S(251, __c31, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          value: S.optional(__S(252, __c31, 4)),
-        }),
-      ).annotate({
-        identifier: "DataMaskingRuleListResult",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          workspaceName: S.String.pipe(T.Label()),
-          sqlPoolName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/sqlPools/{sqlPoolName}/extendedAuditingSettings",
-            code: 200,
-            apiVersion: "2021-06-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListExtendedSqlPoolBlobAuditingPolicyBySqlPoolRequest",
-      });
-    case 7:
-      return S.Array(__S(110, __c13, 6));
-  }
-}
-function __c32(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          value: S.optional(__S(255, __c31, 7)),
-          nextLink: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "ExtendedSqlPoolBlobAuditingPolicyListResult",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          workspaceName: S.String.pipe(T.Label()),
-          integrationRuntimeName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/integrationRuntimes/{integrationRuntimeName}/listAuthKeys",
-            code: 200,
-            apiVersion: "2021-06-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListIntegrationRuntimeAuthKeysRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          authKey1: S.optional(S.String),
-          authKey2: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "IntegrationRuntimeAuthKeys",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          workspaceName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/integrationRuntimes",
-            code: 200,
-            apiVersion: "2021-06-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListIntegrationRuntimeByWorkspaceRequest",
-      });
-    case 4:
-      return S.Array(__S(24, __c3, 0));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          value: __S(260, __c32, 4),
-          nextLink: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "IntegrationRuntimeListResponse",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          workspaceName: S.String.pipe(T.Label()),
-          integrationRuntimeName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/integrationRuntimes/{integrationRuntimeName}/monitoringData",
-            code: 200,
-            apiVersion: "2021-06-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListIntegrationRuntimeMonitoringDataRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          nodeName: S.optional(S.String),
-          availableMemoryInMB: S.optional(S.Number),
-          cpuUtilization: S.optional(S.Number),
-          concurrentJobsLimit: S.optional(S.Number),
-          concurrentJobsRunning: S.optional(S.Number),
-          maxConcurrentJobs: S.optional(S.Number),
-          sentBytes: S.optional(S.Number),
-          receivedBytes: S.optional(S.Number),
-        }),
-      ).annotate({
-        identifier: "IntegrationRuntimeNodeMonitoringData",
-      });
-  }
-}
-function __c33(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(263, __c32, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.optional(S.String),
-          nodes: S.optional(__S(264, __c33, 0)),
-        }),
-      ).annotate({
-        identifier: "IntegrationRuntimeMonitoringData",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          workspaceName: S.String.pipe(T.Label()),
-          integrationRuntimeName: S.String.pipe(T.Label()),
-          metadataPath: S.optional(S.String),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/integrationRuntimes/{integrationRuntimeName}/getObjectMetadata",
-            code: 200,
-            apiVersion: "2021-06-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListIntegrationRuntimeObjectMetadataRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          type: S.String,
-          id: S.optional(S.Number),
-          name: S.optional(S.String),
-          description: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "SsisObjectMetadata" });
-    case 4:
-      return S.Array(__S(267, __c33, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          value: S.optional(__S(268, __c33, 4)),
-          nextLink: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "SsisObjectMetadataListResponse",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          workspaceName: S.String.pipe(T.Label()),
-          integrationRuntimeName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/integrationRuntimes/{integrationRuntimeName}/outboundNetworkDependenciesEndpoints",
-            code: 200,
-            apiVersion: "2021-06-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListIntegrationRuntimeOutboundNetworkDependenciesEndpointsRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          port: S.optional(S.Number),
-        }),
-      ).annotate({
-        identifier: "IntegrationRuntimeOutboundNetworkDependenciesEndpointDetails",
-      });
-  }
-}
-function __c34(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(271, __c33, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          domainName: S.optional(S.String),
-          endpointDetails: S.optional(__S(272, __c34, 0)),
-        }),
-      ).annotate({
-        identifier: "IntegrationRuntimeOutboundNetworkDependenciesEndpoint",
-      });
-    case 2:
-      return S.Array(__S(273, __c34, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          category: S.optional(S.String),
-          endpoints: S.optional(__S(274, __c34, 2)),
-        }),
-      ).annotate({
-        identifier: "IntegrationRuntimeOutboundNetworkDependenciesCategoryEndpoint",
-      });
-    case 4:
-      return S.Array(__S(275, __c34, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          value: S.optional(__S(276, __c34, 4)),
-        }),
-      ).annotate({
-        identifier: "IntegrationRuntimeOutboundNetworkDependenciesEndpointsResponse",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          workspaceName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/firewallRules",
-            code: 200,
-            apiVersion: "2021-06-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListIpFirewallRuleByWorkspaceRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          properties: S.optional(__S(54, __c6, 6)),
-        }),
-      ).annotate({ identifier: "IpFirewallRuleInfo" });
-  }
-}
-function __c35(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(279, __c34, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          nextLink: S.optional(S.String),
-          value: S.optional(__S(280, __c35, 0)),
-        }),
-      ).annotate({
-        identifier: "IpFirewallRuleInfoListResult",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          workspaceName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/keys",
-            code: 200,
-            apiVersion: "2021-06-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListKeyByWorkspaceRequest",
-      });
-    case 3:
-      return S.Array(__S(58, __c7, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          nextLink: S.optional(S.String),
-          value: S.optional(__S(283, __c35, 3)),
-        }),
-      ).annotate({ identifier: "KeyInfoListResult" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          workspaceName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/libraries",
-            code: 200,
-            apiVersion: "2021-06-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListLibraryByWorkspaceRequest",
-      });
-    case 6:
-      return S.Array(__S(124, __c15, 4));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          value: __S(286, __c35, 6),
-          nextLink: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "LibraryListResponse" });
-  }
-}
-function __c36(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -12640,7 +9172,7 @@ function __c36(j: number): any {
         identifier: "OperationMetaMetricDimensionSpecification",
       });
     case 3:
-      return S.Array(__S(290, __c36, 2));
+      return S.Array(__S(130, __c8, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
@@ -12652,7 +9184,7 @@ function __c36(j: number): any {
           sourceMdmAccount: S.optional(S.String),
           enableRegionalMdmAccount: S.optional(S.Boolean),
           unit: S.optional(S.String),
-          dimensions: S.optional(__S(291, __c36, 3)),
+          dimensions: S.optional(__S(131, __c8, 3)),
           supportsInstanceLevelAggregation: S.optional(S.Boolean),
           metricFilterPattern: S.optional(S.String),
         }),
@@ -12660,7 +9192,7 @@ function __c36(j: number): any {
         identifier: "OperationMetaMetricSpecification",
       });
     case 5:
-      return S.Array(__S(292, __c36, 4));
+      return S.Array(__S(132, __c8, 4));
     case 6:
       return S.suspend(() =>
         S.Struct({
@@ -12672,45 +9204,45 @@ function __c36(j: number): any {
         identifier: "OperationMetaLogSpecification",
       });
     case 7:
-      return S.Array(__S(294, __c36, 6));
-  }
-}
-function __c37(j: number): any {
-  switch (j) {
-    case 0:
+      return S.Array(__S(134, __c8, 6));
+    case 8:
       return S.suspend(() =>
         S.Struct({
-          metricSpecifications: S.optional(__S(293, __c36, 5)),
-          logSpecifications: S.optional(__S(295, __c36, 7)),
+          metricSpecifications: S.optional(__S(133, __c8, 5)),
+          logSpecifications: S.optional(__S(135, __c8, 7)),
         }),
       ).annotate({
         identifier: "OperationMetaServiceSpecification",
       });
-    case 1:
+    case 9:
       return S.suspend(() =>
         S.Struct({
-          serviceSpecification: S.optional(__S(296, __c37, 0)),
+          serviceSpecification: S.optional(__S(136, __c8, 8)),
         }),
       ).annotate({
         identifier: "OperationMetaPropertyInfo",
       });
-    case 2:
+    case 10:
       return S.suspend(() =>
         S.Struct({
-          display: S.optional(__S(289, __c36, 1)),
+          display: S.optional(__S(129, __c8, 1)),
           isDataAction: S.optional(S.String),
           name: S.optional(S.String),
-          properties: S.optional(__S(297, __c37, 1)),
+          properties: S.optional(__S(137, __c8, 9)),
           origin: S.optional(S.String),
         }),
       ).annotate({ identifier: "AvailableRpOperation" });
-    case 3:
-      return S.Array(__S(298, __c37, 2));
-    case 4:
-      return S.suspend(() => __S(299, __c37, 3).pipe(T.RawResponseRoot())).annotate({
+    case 11:
+      return S.Array(__S(138, __c8, 10));
+    case 12:
+      return S.suspend(() => __S(139, __c8, 11).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListOperationsResponse",
       });
-    case 5:
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -12727,16 +9259,20 @@ function __c37(j: number): any {
       ).annotate({
         identifier: "ListPrivateEndpointConnectionsRequest",
       });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(72, __c9, 0)),
+          value: S.optional(__S(1776, __c111, 0)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
         identifier: "ListPrivateEndpointConnectionsResponse",
       });
-    case 7:
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -12753,22 +9289,22 @@ function __c37(j: number): any {
       ).annotate({
         identifier: "ListPrivateEndpointConnectionsPrivateLinkHubRequest",
       });
-  }
-}
-function __c38(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(137, __c17, 1));
     case 1:
+      return S.Array(__S(2480, __c155, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(304, __c38, 0)),
+          value: S.optional(__S(161, __c10, 1)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
         identifier: "ListPrivateEndpointConnectionsPrivateLinkHubResponse",
       });
-    case 2:
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -12784,29 +9320,37 @@ function __c38(j: number): any {
       ).annotate({
         identifier: "ListPrivateLinkHubByResourceGroupRequest",
       });
-    case 3:
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          tags: S.optional(__S(0, __c0, 0)),
+          tags: S.optional(__S(16, __c1, 0)),
           location: S.String,
-          properties: S.optional(__S(141, __c17, 5)),
+          properties: S.optional(__S(2578, __c161, 2)),
         }),
       ).annotate({ identifier: "PrivateLinkHub" });
-    case 4:
-      return S.Array(__S(307, __c38, 3));
-    case 5:
+    case 1:
+      return S.Array(__S(192, __c12, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           nextLink: S.optional(S.String),
-          value: S.optional(__S(308, __c38, 4)),
+          value: S.optional(__S(193, __c12, 1)),
         }),
       ).annotate({
         identifier: "PrivateLinkHubInfoListResult",
       });
-    case 6:
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -12823,31 +9367,35 @@ function __c38(j: number): any {
       ).annotate({
         identifier: "ListPrivateLinkHubPrivateLinkResourcesRequest",
       });
-    case 7:
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          properties: S.optional(__S(144, __c18, 0)),
+          properties: S.optional(__S(2640, __c165, 0)),
         }),
       ).annotate({ identifier: "PrivateLinkResource" });
-  }
-}
-function __c39(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(311, __c38, 7));
     case 1:
+      return S.Array(__S(224, __c14, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(312, __c39, 0)),
+          value: S.optional(__S(225, __c14, 1)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
         identifier: "PrivateLinkResourceListResult",
       });
-    case 2:
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -12862,7 +9410,11 @@ function __c39(j: number): any {
       ).annotate({
         identifier: "ListPrivateLinkHubsRequest",
       });
-    case 3:
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -12879,7 +9431,11 @@ function __c39(j: number): any {
       ).annotate({
         identifier: "ListPrivateLinkResourcesRequest",
       });
-    case 4:
+  }
+}
+function __c17(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -12896,29 +9452,29 @@ function __c39(j: number): any {
       ).annotate({
         identifier: "ListRestorableDroppedSqlPoolByWorkspaceRequest",
       });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
           location: S.optional(S.String),
-          properties: S.optional(__S(148, __c18, 4)),
+          properties: S.optional(__S(2688, __c168, 0)),
         }),
       ).annotate({ identifier: "RestorableDroppedSqlPool" });
-    case 6:
-      return S.Array(__S(317, __c39, 5));
-    case 7:
+    case 2:
+      return S.Array(__S(273, __c17, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          value: __S(318, __c39, 6),
+          value: __S(274, __c17, 2),
         }),
       ).annotate({
         identifier: "RestorableDroppedSqlPoolListResult",
       });
   }
 }
-function __c40(j: number): any {
+function __c18(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -12939,17 +9495,21 @@ function __c40(j: number): any {
         identifier: "ListSqlPoolBlobAuditingPolicyBySqlPoolRequest",
       });
     case 1:
-      return S.Array(__S(153, __c19, 1));
+      return S.Array(__S(2737, __c171, 1));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(321, __c40, 1)),
+          value: S.optional(__S(289, __c18, 1)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
         identifier: "SqlPoolBlobAuditingPolicyListResult",
       });
-    case 3:
+  }
+}
+function __c19(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -12966,16 +9526,43 @@ function __c40(j: number): any {
       ).annotate({
         identifier: "ListSqlPoolByWorkspaceRequest",
       });
-    case 4:
-      return S.Array(__S(37, __c4, 5));
-    case 5:
+    case 1:
+      return S.Array(__S(2512, __c157, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           nextLink: S.optional(S.String),
-          value: S.optional(__S(324, __c40, 4)),
+          value: S.optional(__S(305, __c19, 1)),
         }),
       ).annotate({ identifier: "SqlPoolInfoListResult" });
-    case 6:
+  }
+}
+function __c20(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          workspaceName: S.String.pipe(T.Label()),
+          integrationRuntimeName: S.String.pipe(T.Label()),
+          nodeName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/integrationRuntimes/{integrationRuntimeName}/nodes/{nodeName}",
+            code: 200,
+            apiVersion: "2021-06-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteIntegrationRuntimeNodeRequest",
+      });
+  }
+}
+function __c21(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -12993,32 +9580,32 @@ function __c40(j: number): any {
       ).annotate({
         identifier: "ListSqlPoolGeoBackupPoliciesRequest",
       });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          properties: __S(161, __c20, 1),
+          properties: __S(2816, __c176, 0),
           kind: S.optional(S.String),
           location: S.optional(S.String),
         }),
       ).annotate({ identifier: "GeoBackupPolicy" });
-  }
-}
-function __c41(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(327, __c40, 7));
-    case 1:
+    case 2:
+      return S.Array(__S(337, __c21, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(328, __c41, 0)),
+          value: S.optional(__S(338, __c21, 2)),
         }),
       ).annotate({
         identifier: "GeoBackupPolicyListResult",
       });
-    case 2:
+  }
+}
+function __c22(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -13036,7 +9623,7 @@ function __c41(j: number): any {
       ).annotate({
         identifier: "ListSqlPoolOperationsRequest",
       });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           databaseName: S.optional(S.String),
@@ -13057,27 +9644,31 @@ function __c41(j: number): any {
       ).annotate({
         identifier: "SqlPoolOperationProperties",
       });
-    case 4:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          properties: S.optional(__S(331, __c41, 3)),
+          properties: S.optional(__S(353, __c22, 1)),
         }),
       ).annotate({ identifier: "SqlPoolOperation" });
-    case 5:
-      return S.Array(__S(332, __c41, 4));
-    case 6:
+    case 3:
+      return S.Array(__S(354, __c22, 2));
+    case 4:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(333, __c41, 5)),
+          value: S.optional(__S(355, __c22, 3)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
         identifier: "SqlPoolBlobAuditingPolicySqlPoolOperationListResult",
       });
-    case 7:
+  }
+}
+function __c23(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -13095,32 +9686,32 @@ function __c41(j: number): any {
       ).annotate({
         identifier: "ListSqlPoolReplicationLinksRequest",
       });
-  }
-}
-function __c42(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
           location: S.optional(S.String),
-          properties: S.optional(__S(174, __c21, 6)),
+          properties: S.optional(__S(2992, __c187, 0)),
         }),
       ).annotate({ identifier: "ReplicationLink" });
-    case 1:
-      return S.Array(__S(336, __c42, 0));
     case 2:
+      return S.Array(__S(369, __c23, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(337, __c42, 1)),
+          value: S.optional(__S(370, __c23, 2)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
         identifier: "ReplicationLinkListResult",
       });
-    case 3:
+  }
+}
+function __c24(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -13138,26 +9729,30 @@ function __c42(j: number): any {
       ).annotate({
         identifier: "ListSqlPoolRestorePointsRequest",
       });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
           location: S.optional(S.String),
-          properties: S.optional(__S(39, __c4, 7)),
+          properties: S.optional(__S(2912, __c182, 0)),
         }),
       ).annotate({ identifier: "RestorePoint" });
-    case 5:
-      return S.Array(__S(340, __c42, 4));
-    case 6:
+    case 2:
+      return S.Array(__S(385, __c24, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(341, __c42, 5)),
+          value: S.optional(__S(386, __c24, 2)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "RestorePointListResult" });
-    case 7:
+  }
+}
+function __c25(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -13178,18 +9773,22 @@ function __c42(j: number): any {
       });
   }
 }
-function __c43(j: number): any {
+function __c26(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(178, __c22, 2));
+      return S.Array(__S(3040, __c190, 0));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(344, __c43, 0)),
+          value: S.optional(__S(416, __c26, 0)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "SqlPoolSchemaListResult" });
-    case 2:
+  }
+}
+function __c27(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -13207,18 +9806,22 @@ function __c43(j: number): any {
       ).annotate({
         identifier: "ListSqlPoolSecurityAlertPoliciesRequest",
       });
-    case 3:
-      return S.Array(__S(181, __c22, 5));
-    case 4:
+    case 1:
+      return S.Array(__S(3073, __c192, 1));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(347, __c43, 3)),
+          value: S.optional(__S(433, __c27, 1)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
         identifier: "ListSqlPoolSecurityAlertPolicies",
       });
-    case 5:
+  }
+}
+function __c28(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -13237,32 +9840,36 @@ function __c43(j: number): any {
       ).annotate({
         identifier: "ListSqlPoolSensitivityLabelCurrentRequest",
       });
-    case 6:
+  }
+}
+function __c29(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          properties: S.optional(__S(183, __c22, 7)),
+          properties: S.optional(__S(3104, __c194, 0)),
           managedBy: S.optional(S.String),
         }),
       ).annotate({ identifier: "SensitivityLabel" });
-    case 7:
-      return S.Array(__S(350, __c43, 6));
-  }
-}
-function __c44(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
+      return S.Array(__S(464, __c29, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(351, __c43, 7)),
+          value: S.optional(__S(465, __c29, 1)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
         identifier: "SensitivityLabelListResult",
       });
-    case 1:
+  }
+}
+function __c30(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -13283,7 +9890,11 @@ function __c44(j: number): any {
       ).annotate({
         identifier: "ListSqlPoolSensitivityLabelRecommendedRequest",
       });
-    case 2:
+  }
+}
+function __c31(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -13303,7 +9914,11 @@ function __c44(j: number): any {
       ).annotate({
         identifier: "ListSqlPoolTableBySchemaRequest",
       });
-    case 3:
+  }
+}
+function __c32(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -13324,16 +9939,69 @@ function __c44(j: number): any {
       ).annotate({
         identifier: "ListSqlPoolTableColumnByTableNameRequest",
       });
-    case 4:
-      return S.Array(__S(156, __c19, 4));
-    case 5:
+    case 1:
+      return S.Array(__S(2769, __c173, 1));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(356, __c44, 4)),
+          value: S.optional(__S(513, __c32, 1)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "SqlPoolColumnListResult" });
-    case 6:
+  }
+}
+function __c33(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          workspaceName: S.String.pipe(T.Label()),
+          ruleName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/firewallRules/{ruleName}",
+            code: 200,
+            apiVersion: "2021-06-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteIpFirewallRuleRequest",
+      });
+  }
+}
+function __c34(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          properties: S.optional(__S(560, __c35, 0)),
+        }),
+      ).annotate({
+        identifier: "DeleteIpFirewallRuleResponse",
+      });
+  }
+}
+function __c35(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          endIpAddress: S.optional(S.String),
+          provisioningState: S.optional(S.String),
+          startIpAddress: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "IpFirewallRuleProperties" });
+  }
+}
+function __c36(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -13351,22 +10019,22 @@ function __c44(j: number): any {
       ).annotate({
         identifier: "ListSqlPoolTransparentDataEncryptionsRequest",
       });
-    case 7:
-      return S.Array(__S(188, __c23, 4));
-  }
-}
-function __c45(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
+      return S.Array(__S(3169, __c198, 1));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(359, __c44, 7)),
+          value: S.optional(__S(577, __c36, 1)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
         identifier: "TransparentDataEncryptionListResult",
       });
-    case 1:
+  }
+}
+function __c37(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -13382,7 +10050,11 @@ function __c45(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ListSqlPoolUsagesRequest" });
-    case 2:
+  }
+}
+function __c38(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
@@ -13394,16 +10066,20 @@ function __c45(j: number): any {
           nextResetTime: S.optional(S.String),
         }),
       ).annotate({ identifier: "SqlPoolUsage" });
-    case 3:
-      return S.Array(__S(362, __c45, 2));
-    case 4:
+    case 1:
+      return S.Array(__S(608, __c38, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          value: __S(363, __c45, 3),
+          value: __S(609, __c38, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "SqlPoolUsageListResult" });
-    case 5:
+  }
+}
+function __c39(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -13421,12 +10097,12 @@ function __c45(j: number): any {
       ).annotate({
         identifier: "ListSqlPoolVulnerabilityAssessmentsRequest",
       });
-    case 6:
-      return S.Array(__S(192, __c24, 0));
-    case 7:
+    case 1:
+      return S.Array(__S(3201, __c200, 1));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(366, __c45, 6)),
+          value: S.optional(__S(625, __c39, 1)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
@@ -13434,7 +10110,7 @@ function __c45(j: number): any {
       });
   }
 }
-function __c46(j: number): any {
+function __c40(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -13456,17 +10132,21 @@ function __c46(j: number): any {
         identifier: "ListSqlPoolVulnerabilityAssessmentScansRequest",
       });
     case 1:
-      return S.Array(__S(202, __c25, 2));
+      return S.Array(__S(3315, __c207, 3));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(369, __c46, 1)),
+          value: S.optional(__S(641, __c40, 1)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
         identifier: "VulnerabilityAssessmentScanRecordListResult",
       });
-    case 3:
+  }
+}
+function __c41(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -13485,27 +10165,31 @@ function __c46(j: number): any {
       ).annotate({
         identifier: "ListSqlPoolWorkloadClassifierRequest",
       });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          properties: S.optional(__S(204, __c25, 4)),
+          properties: S.optional(__S(3344, __c209, 0)),
         }),
       ).annotate({ identifier: "WorkloadClassifier" });
-    case 5:
-      return S.Array(__S(372, __c46, 4));
-    case 6:
+    case 2:
+      return S.Array(__S(657, __c41, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(373, __c46, 5)),
+          value: S.optional(__S(658, __c41, 2)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
         identifier: "WorkloadClassifierListResult",
       });
-    case 7:
+  }
+}
+function __c42(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -13523,29 +10207,29 @@ function __c46(j: number): any {
       ).annotate({
         identifier: "ListSqlPoolWorkloadGroupRequest",
       });
-  }
-}
-function __c47(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          properties: S.optional(__S(207, __c25, 7)),
+          properties: S.optional(__S(3392, __c212, 0)),
         }),
       ).annotate({ identifier: "WorkloadGroup" });
-    case 1:
-      return S.Array(__S(376, __c47, 0));
     case 2:
+      return S.Array(__S(673, __c42, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(377, __c47, 1)),
+          value: S.optional(__S(674, __c42, 2)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "WorkloadGroupListResult" });
-    case 3:
+  }
+}
+function __c43(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -13561,16 +10245,24 @@ function __c47(j: number): any {
       ).annotate({
         identifier: "ListWorkspaceByResourceGroupRequest",
       });
-    case 4:
-      return S.Array(__S(87, __c10, 7));
-    case 5:
+  }
+}
+function __c44(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(1792, __c112, 0));
+    case 1:
       return S.suspend(() =>
         S.Struct({
           nextLink: S.optional(S.String),
-          value: S.optional(__S(380, __c47, 4)),
+          value: S.optional(__S(704, __c44, 0)),
         }),
       ).annotate({ identifier: "WorkspaceInfoListResult" });
-    case 6:
+  }
+}
+function __c45(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -13587,31 +10279,31 @@ function __c47(j: number): any {
       ).annotate({
         identifier: "ListWorkspaceManagedSqlServerBlobAuditingPolicyByWorkspaceRequest",
       });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          properties: S.optional(__S(218, __c27, 2)),
+          properties: S.optional(__S(3520, __c220, 0)),
         }),
       ).annotate({ identifier: "ServerBlobAuditingPolicy" });
-  }
-}
-function __c48(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(383, __c47, 7));
-    case 1:
+    case 2:
+      return S.Array(__S(721, __c45, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(384, __c48, 0)),
+          value: S.optional(__S(722, __c45, 2)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
         identifier: "ServerBlobAuditingPolicyListResult",
       });
-    case 2:
+  }
+}
+function __c46(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -13628,30 +10320,34 @@ function __c48(j: number): any {
       ).annotate({
         identifier: "ListWorkspaceManagedSqlServerDedicatedSQLMinimalTlsSettingsRequest",
       });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
           location: S.optional(S.String),
-          properties: S.optional(__S(221, __c27, 5)),
+          properties: S.optional(__S(3552, __c222, 0)),
         }),
       ).annotate({
         identifier: "DedicatedSQLminimalTlsSettings",
       });
-    case 4:
-      return S.Array(__S(387, __c48, 3));
-    case 5:
+    case 2:
+      return S.Array(__S(737, __c46, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(388, __c48, 4)),
+          value: S.optional(__S(738, __c46, 2)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
         identifier: "DedicatedSQLminimalTlsSettingsListResult",
       });
-    case 6:
+  }
+}
+function __c47(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -13668,7 +10364,7 @@ function __c48(j: number): any {
       ).annotate({
         identifier: "ListWorkspaceManagedSqlServerEncryptionProtectorRequest",
       });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
@@ -13676,25 +10372,69 @@ function __c48(j: number): any {
           type: S.optional(S.String),
           kind: S.optional(S.String),
           location: S.optional(S.String),
-          properties: S.optional(__S(224, __c28, 0)),
+          properties: S.optional(__S(3600, __c225, 0)),
         }),
       ).annotate({ identifier: "EncryptionProtector" });
-  }
-}
-function __c49(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(391, __c48, 7));
-    case 1:
+    case 2:
+      return S.Array(__S(753, __c47, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(392, __c49, 0)),
+          value: S.optional(__S(754, __c47, 2)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
         identifier: "EncryptionProtectorListResult",
       });
-    case 2:
+  }
+}
+function __c48(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          workspaceName: S.String.pipe(T.Label()),
+          keyName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/keys/{keyName}",
+            code: 200,
+            apiVersion: "2021-06-01",
+          }),
+        ),
+      ).annotate({ identifier: "DeleteKeyRequest" });
+  }
+}
+function __c49(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          isActiveCMK: S.optional(S.Boolean),
+          keyVaultUrl: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "KeyProperties" });
+  }
+}
+function __c50(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          properties: S.optional(__S(784, __c49, 0)),
+        }),
+      ).annotate({ identifier: "DeleteKeyResponse" });
+  }
+}
+function __c51(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -13711,29 +10451,33 @@ function __c49(j: number): any {
       ).annotate({
         identifier: "ListWorkspaceManagedSqlServerExtendedBlobAuditingPolicyByWorkspaceRequest",
       });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          properties: S.optional(__S(227, __c28, 3)),
+          properties: S.optional(__S(3680, __c230, 0)),
         }),
       ).annotate({
         identifier: "ExtendedServerBlobAuditingPolicy",
       });
-    case 4:
-      return S.Array(__S(395, __c49, 3));
-    case 5:
+    case 2:
+      return S.Array(__S(817, __c51, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(396, __c49, 4)),
+          value: S.optional(__S(818, __c51, 2)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
         identifier: "ExtendedServerBlobAuditingPolicyListResult",
       });
-    case 6:
+  }
+}
+function __c52(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -13750,31 +10494,31 @@ function __c49(j: number): any {
       ).annotate({
         identifier: "ListWorkspaceManagedSqlServerRecoverableSqlPoolsRequest",
       });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          properties: S.optional(__S(230, __c28, 6)),
+          properties: S.optional(__S(3728, __c233, 0)),
         }),
       ).annotate({ identifier: "RecoverableSqlPool" });
-  }
-}
-function __c50(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(399, __c49, 7));
-    case 1:
+    case 2:
+      return S.Array(__S(833, __c52, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(400, __c50, 0)),
+          value: S.optional(__S(834, __c52, 2)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
         identifier: "RecoverableSqlPoolListResult",
       });
-    case 2:
+  }
+}
+function __c53(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -13791,18 +10535,22 @@ function __c50(j: number): any {
       ).annotate({
         identifier: "ListWorkspaceManagedSqlServerSecurityAlertPolicyRequest",
       });
-    case 3:
-      return S.Array(__S(234, __c29, 2));
-    case 4:
+    case 1:
+      return S.Array(__S(3760, __c235, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(403, __c50, 3)),
+          value: S.optional(__S(849, __c53, 1)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
         identifier: "ServerSecurityAlertPolicyListResult",
       });
-    case 5:
+  }
+}
+function __c54(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -13819,7 +10567,11 @@ function __c50(j: number): any {
       ).annotate({
         identifier: "ListWorkspaceManagedSqlServerUsagesRequest",
       });
-    case 6:
+  }
+}
+function __c55(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -13836,33 +10588,33 @@ function __c50(j: number): any {
       ).annotate({
         identifier: "ListWorkspaceManagedSqlServerVulnerabilityAssessmentsRequest",
       });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          properties: S.optional(__S(236, __c29, 4)),
+          properties: S.optional(__S(3808, __c238, 0)),
         }),
       ).annotate({
         identifier: "ServerVulnerabilityAssessment",
       });
-  }
-}
-function __c51(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(407, __c50, 7));
-    case 1:
+    case 2:
+      return S.Array(__S(881, __c55, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(408, __c51, 0)),
+          value: S.optional(__S(882, __c55, 2)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
         identifier: "ServerVulnerabilityAssessmentListResult",
       });
-    case 2:
+  }
+}
+function __c56(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -13875,7 +10627,11 @@ function __c51(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ListWorkspacesRequest" });
-    case 3:
+  }
+}
+function __c57(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -13891,7 +10647,11 @@ function __c51(j: number): any {
           }),
         ),
       ).annotate({ identifier: "PauseSqlPoolRequest" });
-    case 4:
+  }
+}
+function __c58(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           provisioningState: S.optional(S.String),
@@ -13899,15 +10659,15 @@ function __c51(j: number): any {
       ).annotate({
         identifier: "PrivateLinkHubPropertiesInput",
       });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           privateLinkHubName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(0, __c0, 0)),
+          tags: S.optional(__S(16, __c1, 0)),
           location: S.String,
-          properties: S.optional(__S(412, __c51, 4)),
+          properties: S.optional(__S(928, __c58, 0)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -13919,7 +10679,11 @@ function __c51(j: number): any {
       ).annotate({
         identifier: "PrivateLinkHubsCreateOrUpdateRequest",
       });
-    case 6:
+  }
+}
+function __c59(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -13937,7 +10701,7 @@ function __c51(j: number): any {
       ).annotate({
         identifier: "RefreshIntegrationRuntimeObjectMetadataRequest",
       });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           status: S.optional(S.String),
@@ -13950,7 +10714,7 @@ function __c51(j: number): any {
       });
   }
 }
-function __c52(j: number): any {
+function __c60(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -13971,15 +10735,41 @@ function __c52(j: number): any {
       ).annotate({
         identifier: "RegenerateIntegrationRuntimeAuthKeyRequest",
       });
-    case 1:
-      return S.Record(S.String, __S(240, __c30, 0));
-    case 2:
+  }
+}
+function __c61(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           workspaceName: S.String.pipe(T.Label()),
-          ipFirewallRules: S.optional(__S(417, __c52, 1)),
+          privateEndpointConnectionName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/privateEndpointConnections/{privateEndpointConnectionName}",
+            code: 200,
+            apiVersion: "2021-06-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeletePrivateEndpointConnectionRequest",
+      });
+  }
+}
+function __c62(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, __S(3872, __c242, 0));
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          workspaceName: S.String.pipe(T.Label()),
+          ipFirewallRules: S.optional(__S(992, __c62, 0)),
         }).pipe(
           T.Http({
             method: "POST",
@@ -13991,7 +10781,7 @@ function __c52(j: number): any {
       ).annotate({
         identifier: "ReplaceIpFirewallRuleAllRequest",
       });
-    case 3:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           operationId: S.optional(S.String),
@@ -13999,7 +10789,11 @@ function __c52(j: number): any {
       ).annotate({
         identifier: "ReplaceAllFirewallRulesOperationResponse",
       });
-    case 4:
+  }
+}
+function __c63(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -14015,7 +10809,11 @@ function __c52(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ResumeSqlPoolRequest" });
-    case 5:
+  }
+}
+function __c64(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -14023,7 +10821,7 @@ function __c52(j: number): any {
           workspaceName: S.String.pipe(T.Label()),
           sqlPoolName: S.String.pipe(T.Label()),
           blobAuditingPolicyName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(152, __c19, 0)),
+          properties: S.optional(__S(2736, __c171, 0)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -14035,7 +10833,11 @@ function __c52(j: number): any {
       ).annotate({
         identifier: "SqlPoolBlobAuditingPoliciesCreateOrUpdateRequest",
       });
-    case 6:
+  }
+}
+function __c65(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           state: S.String,
@@ -14043,7 +10845,7 @@ function __c52(j: number): any {
       ).annotate({
         identifier: "GeoBackupPolicyPropertiesInput",
       });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -14051,7 +10853,7 @@ function __c52(j: number): any {
           workspaceName: S.String.pipe(T.Label()),
           sqlPoolName: S.String.pipe(T.Label()),
           geoBackupPolicyName: S.String.pipe(T.Label()),
-          properties: __S(422, __c52, 6),
+          properties: __S(1040, __c65, 0),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -14065,7 +10867,7 @@ function __c52(j: number): any {
       });
   }
 }
-function __c53(j: number): any {
+function __c66(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -14075,7 +10877,7 @@ function __c53(j: number): any {
           workspaceName: S.String.pipe(T.Label()),
           sqlPoolName: S.String.pipe(T.Label()),
           maintenanceWindowName: S.String.pipe(T.Query()),
-          properties: S.optional(__S(169, __c21, 1)),
+          properties: S.optional(__S(2944, __c184, 0)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -14087,12 +10889,16 @@ function __c53(j: number): any {
       ).annotate({
         identifier: "SqlPoolMaintenanceWindowsCreateOrUpdateRequest",
       });
-    case 1:
+  }
+}
+function __c67(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           state: S.String,
-          disabledAlerts: S.optional(__S(77, __c9, 5)),
-          emailAddresses: S.optional(__S(77, __c9, 5)),
+          disabledAlerts: S.optional(__S(1760, __c110, 0)),
+          emailAddresses: S.optional(__S(1760, __c110, 0)),
           emailAccountAdmins: S.optional(S.Boolean),
           storageEndpoint: S.optional(S.String),
           storageAccountAccessKey: S.optional(S.String),
@@ -14101,7 +10907,7 @@ function __c53(j: number): any {
       ).annotate({
         identifier: "SecurityAlertPolicyPropertiesInput",
       });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -14109,7 +10915,7 @@ function __c53(j: number): any {
           workspaceName: S.String.pipe(T.Label()),
           sqlPoolName: S.String.pipe(T.Label()),
           securityAlertPolicyName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(425, __c53, 1)),
+          properties: S.optional(__S(1072, __c67, 0)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -14121,19 +10927,11 @@ function __c53(j: number): any {
       ).annotate({
         identifier: "SqlPoolSecurityAlertPoliciesCreateOrUpdateRequest",
       });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          labelName: S.optional(S.String),
-          labelId: S.optional(S.String),
-          informationType: S.optional(S.String),
-          informationTypeId: S.optional(S.String),
-          rank: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "SensitivityLabelPropertiesInput",
-      });
-    case 4:
+  }
+}
+function __c68(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -14144,7 +10942,7 @@ function __c53(j: number): any {
           tableName: S.String.pipe(T.Label()),
           columnName: S.String.pipe(T.Label()),
           sensitivityLabelSource: S.String.pipe(T.Label()),
-          properties: S.optional(__S(427, __c53, 3)),
+          properties: S.optional(__S(1104, __c69, 0)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -14156,7 +10954,27 @@ function __c53(j: number): any {
       ).annotate({
         identifier: "SqlPoolSensitivityLabelsCreateOrUpdateRequest",
       });
-    case 5:
+  }
+}
+function __c69(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          labelName: S.optional(S.String),
+          labelId: S.optional(S.String),
+          informationType: S.optional(S.String),
+          informationTypeId: S.optional(S.String),
+          rank: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "SensitivityLabelPropertiesInput",
+      });
+  }
+}
+function __c70(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -14164,7 +10982,7 @@ function __c53(j: number): any {
           workspaceName: S.String.pipe(T.Label()),
           sqlPoolName: S.String.pipe(T.Label()),
           transparentDataEncryptionName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(187, __c23, 3)),
+          properties: S.optional(__S(3168, __c198, 0)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -14176,7 +10994,11 @@ function __c53(j: number): any {
       ).annotate({
         identifier: "SqlPoolTransparentDataEncryptionsCreateOrUpdateRequest",
       });
-    case 6:
+  }
+}
+function __c71(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -14186,7 +11008,7 @@ function __c53(j: number): any {
           vulnerabilityAssessmentName: S.String.pipe(T.Label()),
           ruleId: S.String.pipe(T.Label()),
           baselineName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(196, __c24, 4)),
+          properties: S.optional(__S(3282, __c205, 2)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -14198,20 +11020,20 @@ function __c53(j: number): any {
       ).annotate({
         identifier: "SqlPoolVulnerabilityAssessmentRuleBaselinesCreateOrUpdateRequest",
       });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          properties: S.optional(__S(196, __c24, 4)),
+          properties: S.optional(__S(3282, __c205, 2)),
         }),
       ).annotate({
         identifier: "SqlPoolVulnerabilityAssessmentRuleBaselinesCreateOrUpdateResponse",
       });
   }
 }
-function __c54(j: number): any {
+function __c72(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -14233,7 +11055,32 @@ function __c54(j: number): any {
       ).annotate({
         identifier: "SqlPoolVulnerabilityAssessmentScansInitiateScanRequest",
       });
-    case 1:
+  }
+}
+function __c73(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          privateLinkHubName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/privateLinkHubs/{privateLinkHubName}",
+            code: 200,
+            apiVersion: "2021-06-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeletePrivateLinkHubRequest",
+      });
+  }
+}
+function __c74(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -14241,7 +11088,7 @@ function __c54(j: number): any {
           workspaceName: S.String.pipe(T.Label()),
           sqlPoolName: S.String.pipe(T.Label()),
           vulnerabilityAssessmentName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(191, __c23, 7)),
+          properties: S.optional(__S(3200, __c200, 0)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -14253,7 +11100,11 @@ function __c54(j: number): any {
       ).annotate({
         identifier: "SqlPoolVulnerabilityAssessmentsCreateOrUpdateRequest",
       });
-    case 2:
+  }
+}
+function __c75(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -14262,7 +11113,7 @@ function __c54(j: number): any {
           sqlPoolName: S.String.pipe(T.Label()),
           workloadGroupName: S.String.pipe(T.Label()),
           workloadClassifierName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(204, __c25, 4)),
+          properties: S.optional(__S(3344, __c209, 0)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -14274,7 +11125,11 @@ function __c54(j: number): any {
       ).annotate({
         identifier: "SqlPoolWorkloadClassifierCreateOrUpdateRequest",
       });
-    case 3:
+  }
+}
+function __c76(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -14282,7 +11137,7 @@ function __c54(j: number): any {
           workspaceName: S.String.pipe(T.Label()),
           sqlPoolName: S.String.pipe(T.Label()),
           workloadGroupName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(207, __c25, 7)),
+          properties: S.optional(__S(3392, __c212, 0)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -14294,7 +11149,11 @@ function __c54(j: number): any {
       ).annotate({
         identifier: "SqlPoolWorkloadGroupCreateOrUpdateRequest",
       });
-    case 4:
+  }
+}
+function __c77(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -14312,7 +11171,11 @@ function __c54(j: number): any {
       ).annotate({
         identifier: "StartIntegrationRuntimeRequest",
       });
-    case 5:
+  }
+}
+function __c78(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -14330,7 +11193,11 @@ function __c54(j: number): any {
       ).annotate({
         identifier: "StopIntegrationRuntimeRequest",
       });
-    case 6:
+  }
+}
+function __c79(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -14348,14 +11215,18 @@ function __c54(j: number): any {
       ).annotate({
         identifier: "SyncIntegrationRuntimeCredentialsRequest",
       });
-    case 7:
+  }
+}
+function __c80(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           workspaceName: S.String.pipe(T.Label()),
           bigDataPoolName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(0, __c0, 0)),
+          tags: S.optional(__S(16, __c1, 0)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -14367,7 +11238,7 @@ function __c54(j: number): any {
       ).annotate({ identifier: "UpdateBigDataPoolRequest" });
   }
 }
-function __c55(j: number): any {
+function __c81(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -14389,7 +11260,11 @@ function __c55(j: number): any {
       ).annotate({
         identifier: "UpdateIntegrationRuntimeRequest",
       });
-    case 1:
+  }
+}
+function __c82(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -14409,13 +11284,17 @@ function __c55(j: number): any {
       ).annotate({
         identifier: "UpdateIntegrationRuntimeNodeRequest",
       });
-    case 2:
+  }
+}
+function __c83(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           privateLinkHubName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(0, __c0, 0)),
+          tags: S.optional(__S(16, __c1, 0)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -14427,17 +11306,41 @@ function __c55(j: number): any {
       ).annotate({
         identifier: "UpdatePrivateLinkHubRequest",
       });
-    case 3:
+  }
+}
+function __c84(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           workspaceName: S.String.pipe(T.Label()),
           sqlPoolName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(0, __c0, 0)),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/sqlPools/{sqlPoolName}",
+            code: 200,
+            apiVersion: "2021-06-01",
+          }),
+        ),
+      ).annotate({ identifier: "DeleteSqlPoolRequest" });
+  }
+}
+function __c85(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          workspaceName: S.String.pipe(T.Label()),
+          sqlPoolName: S.String.pipe(T.Label()),
+          tags: S.optional(__S(16, __c1, 0)),
           location: S.optional(S.String),
-          sku: S.optional(__S(33, __c4, 1)),
-          properties: S.optional(__S(34, __c4, 2)),
+          sku: S.optional(__S(2528, __c158, 0)),
+          properties: S.optional(__S(2544, __c159, 0)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -14447,7 +11350,11 @@ function __c55(j: number): any {
           }),
         ),
       ).annotate({ identifier: "UpdateSqlPoolRequest" });
-    case 4:
+  }
+}
+function __c86(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           op: S.String,
@@ -14458,24 +11365,24 @@ function __c55(j: number): any {
       ).annotate({
         identifier: "RecommendedSensitivityLabelUpdateProperties",
       });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          properties: S.optional(__S(444, __c55, 4)),
+          properties: S.optional(__S(1376, __c86, 0)),
         }),
       ).annotate({
         identifier: "RecommendedSensitivityLabelUpdateInput",
       });
-    case 6:
-      return S.Array(__S(445, __c55, 5));
-    case 7:
+    case 2:
+      return S.Array(__S(1377, __c86, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           workspaceName: S.String.pipe(T.Label()),
           sqlPoolName: S.String.pipe(T.Label()),
-          operations: S.optional(__S(446, __c55, 6)),
+          operations: S.optional(__S(1378, __c86, 2)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -14489,12 +11396,12 @@ function __c55(j: number): any {
       });
   }
 }
-function __c56(j: number): any {
+function __c87(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          properties: S.optional(__S(427, __c53, 3)),
+          properties: S.optional(__S(1104, __c69, 0)),
         }),
       ).annotate({ identifier: "SensitivityLabelInput" });
     case 1:
@@ -14504,7 +11411,7 @@ function __c56(j: number): any {
           schema: S.String,
           table: S.String,
           column: S.String,
-          sensitivityLabel: S.optional(__S(448, __c56, 0)),
+          sensitivityLabel: S.optional(__S(1392, __c87, 0)),
         }),
       ).annotate({
         identifier: "SensitivityLabelUpdatePropertiesInput",
@@ -14512,13 +11419,13 @@ function __c56(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          properties: S.optional(__S(449, __c56, 1)),
+          properties: S.optional(__S(1393, __c87, 1)),
         }),
       ).annotate({
         identifier: "SensitivityLabelUpdateInput",
       });
     case 3:
-      return S.Array(__S(450, __c56, 2));
+      return S.Array(__S(1394, __c87, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
@@ -14526,7 +11433,7 @@ function __c56(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           workspaceName: S.String.pipe(T.Label()),
           sqlPoolName: S.String.pipe(T.Label()),
-          operations: S.optional(__S(451, __c56, 3)),
+          operations: S.optional(__S(1395, __c87, 3)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -14538,56 +11445,32 @@ function __c56(j: number): any {
       ).annotate({
         identifier: "UpdateSqlPoolSensitivityLabelRequest",
       });
-    case 5:
-      return S.Record(S.String, __S(25, __c3, 1));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          type: S.optional(S.String),
-          userAssignedIdentities: S.optional(__S(453, __c56, 5)),
-        }),
-      ).annotate({ identifier: "ManagedIdentityInput" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          key: S.optional(__S(73, __c9, 1)),
-          kekIdentity: S.optional(__S(74, __c9, 2)),
-        }),
-      ).annotate({
-        identifier: "CustomerManagedKeyDetailsInput",
-      });
   }
 }
-function __c57(j: number): any {
+function __c88(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          cmk: S.optional(__S(455, __c56, 7)),
-        }),
-      ).annotate({ identifier: "EncryptionDetailsInput" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
           sqlAdministratorLoginPassword: S.optional(S.String.pipe(T.SensitiveValue({}))),
-          managedVirtualNetworkSettings: S.optional(__S(78, __c9, 6)),
-          workspaceRepositoryConfiguration: S.optional(__S(79, __c9, 7)),
-          purviewConfiguration: S.optional(__S(80, __c10, 0)),
-          encryption: S.optional(__S(456, __c57, 0)),
+          managedVirtualNetworkSettings: S.optional(__S(1814, __c113, 6)),
+          workspaceRepositoryConfiguration: S.optional(__S(1815, __c113, 7)),
+          purviewConfiguration: S.optional(__S(1816, __c113, 8)),
+          encryption: S.optional(__S(1427, __c89, 3)),
           publicNetworkAccess: S.optional(S.String),
         }),
       ).annotate({
         identifier: "WorkspacePatchPropertiesInput",
       });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           workspaceName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(0, __c0, 0)),
-          identity: S.optional(__S(454, __c56, 6)),
-          properties: S.optional(__S(457, __c57, 1)),
+          tags: S.optional(__S(16, __c1, 0)),
+          identity: S.optional(__S(1425, __c89, 1)),
+          properties: S.optional(__S(1408, __c88, 0)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -14597,14 +11480,46 @@ function __c57(j: number): any {
           }),
         ),
       ).annotate({ identifier: "UpdateWorkspaceRequest" });
+  }
+}
+function __c89(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, __S(2208, __c138, 0));
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          type: S.optional(S.String),
+          userAssignedIdentities: S.optional(__S(1424, __c89, 0)),
+        }),
+      ).annotate({ identifier: "ManagedIdentityInput" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          key: S.optional(__S(1810, __c113, 2)),
+          kekIdentity: S.optional(__S(1811, __c113, 3)),
+        }),
+      ).annotate({
+        identifier: "CustomerManagedKeyDetailsInput",
+      });
     case 3:
+      return S.suspend(() =>
+        S.Struct({
+          cmk: S.optional(__S(1426, __c89, 2)),
+        }),
+      ).annotate({ identifier: "EncryptionDetailsInput" });
+  }
+}
+function __c90(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           workspaceName: S.String.pipe(T.Label()),
           dedicatedSQLminimalTlsSettingsName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(221, __c27, 5)),
+          properties: S.optional(__S(3552, __c222, 0)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -14616,13 +11531,17 @@ function __c57(j: number): any {
       ).annotate({
         identifier: "UpdateWorkspaceManagedSqlServerDedicatedSQLMinimalTlsSettingsRequest",
       });
-    case 4:
+  }
+}
+function __c91(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           workspaceName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(211, __c26, 3)),
+          properties: S.optional(__S(3456, __c216, 0)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -14634,7 +11553,11 @@ function __c57(j: number): any {
       ).annotate({
         identifier: "WorkspaceAadAdminsCreateOrUpdateRequest",
       });
-    case 5:
+  }
+}
+function __c92(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           desiredState: S.optional(S.String),
@@ -14643,21 +11566,21 @@ function __c57(j: number): any {
         identifier:
           "WorkspaceManagedIdentitySqlControlSettingsCreateOrUpdateRequestPropertiesGrantSqlControlToManagedIdentity",
       });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          grantSqlControlToManagedIdentity: S.optional(__S(461, __c57, 5)),
+          grantSqlControlToManagedIdentity: S.optional(__S(1472, __c92, 0)),
         }),
       ).annotate({
         identifier: "WorkspaceManagedIdentitySqlControlSettingsCreateOrUpdateRequestProperties",
       });
-    case 7:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           workspaceName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(462, __c57, 6)),
+          properties: S.optional(__S(1473, __c92, 1)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -14669,29 +11592,29 @@ function __c57(j: number): any {
       ).annotate({
         identifier: "WorkspaceManagedIdentitySqlControlSettingsCreateOrUpdateRequest",
       });
-  }
-}
-function __c58(j: number): any {
-  switch (j) {
-    case 0:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          properties: S.optional(__S(215, __c26, 7)),
+          properties: S.optional(__S(3489, __c218, 1)),
         }),
       ).annotate({
         identifier: "WorkspaceManagedIdentitySqlControlSettingsCreateOrUpdateResponse",
       });
-    case 1:
+  }
+}
+function __c93(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           workspaceName: S.String.pipe(T.Label()),
           blobAuditingPolicyName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(218, __c27, 2)),
+          properties: S.optional(__S(3520, __c220, 0)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -14703,18 +11626,22 @@ function __c58(j: number): any {
       ).annotate({
         identifier: "WorkspaceManagedSqlServerBlobAuditingPoliciesCreateOrUpdateRequest",
       });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          properties: S.optional(__S(218, __c27, 2)),
+          properties: S.optional(__S(3520, __c220, 0)),
         }),
       ).annotate({
         identifier: "WorkspaceManagedSqlServerBlobAuditingPoliciesCreateOrUpdateResponse",
       });
-    case 3:
+  }
+}
+function __c94(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           serverKeyName: S.optional(S.String),
@@ -14723,14 +11650,14 @@ function __c58(j: number): any {
       ).annotate({
         identifier: "EncryptionProtectorPropertiesInput",
       });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           workspaceName: S.String.pipe(T.Label()),
           encryptionProtectorName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(467, __c58, 3)),
+          properties: S.optional(__S(1504, __c94, 0)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -14742,7 +11669,7 @@ function __c58(j: number): any {
       ).annotate({
         identifier: "WorkspaceManagedSqlServerEncryptionProtectorCreateOrUpdateRequest",
       });
-    case 5:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
@@ -14750,12 +11677,16 @@ function __c58(j: number): any {
           type: S.optional(S.String),
           kind: S.optional(S.String),
           location: S.optional(S.String),
-          properties: S.optional(__S(224, __c28, 0)),
+          properties: S.optional(__S(3600, __c225, 0)),
         }),
       ).annotate({
         identifier: "WorkspaceManagedSqlServerEncryptionProtectorCreateOrUpdateResponse",
       });
-    case 6:
+  }
+}
+function __c95(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -14773,14 +11704,41 @@ function __c58(j: number): any {
       ).annotate({
         identifier: "WorkspaceManagedSqlServerEncryptionProtectorRevalidateRequest",
       });
-    case 7:
+  }
+}
+function __c96(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          workspaceName: S.String.pipe(T.Label()),
+          sqlPoolName: S.String.pipe(T.Label()),
+          restorePointName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/sqlPools/{sqlPoolName}/restorePoints/{restorePointName}",
+            code: 200,
+            apiVersion: "2021-06-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteSqlPoolRestorePointRequest",
+      });
+  }
+}
+function __c97(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           workspaceName: S.String.pipe(T.Label()),
           blobAuditingPolicyName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(227, __c28, 3)),
+          properties: S.optional(__S(3680, __c230, 0)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -14794,14 +11752,14 @@ function __c58(j: number): any {
       });
   }
 }
-function __c59(j: number): any {
+function __c98(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           state: S.String,
-          disabledAlerts: S.optional(__S(77, __c9, 5)),
-          emailAddresses: S.optional(__S(77, __c9, 5)),
+          disabledAlerts: S.optional(__S(1760, __c110, 0)),
+          emailAddresses: S.optional(__S(1760, __c110, 0)),
           emailAccountAdmins: S.optional(S.Boolean),
           storageEndpoint: S.optional(S.String),
           storageAccountAccessKey: S.optional(S.String),
@@ -14817,7 +11775,7 @@ function __c59(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           workspaceName: S.String.pipe(T.Label()),
           securityAlertPolicyName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(472, __c59, 0)),
+          properties: S.optional(__S(1568, __c98, 0)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -14835,19 +11793,23 @@ function __c59(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          properties: S.optional(__S(233, __c29, 1)),
+          properties: S.optional(__S(3776, __c236, 0)),
         }),
       ).annotate({
         identifier: "WorkspaceManagedSqlServerSecurityAlertPolicyCreateOrUpdateResponse",
       });
-    case 3:
+  }
+}
+function __c99(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           workspaceName: S.String.pipe(T.Label()),
           vulnerabilityAssessmentName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(236, __c29, 4)),
+          properties: S.optional(__S(3808, __c238, 0)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -14859,61 +11821,61 @@ function __c59(j: number): any {
       ).annotate({
         identifier: "WorkspaceManagedSqlServerVulnerabilityAssessmentsCreateOrUpdateRequest",
       });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          properties: S.optional(__S(236, __c29, 4)),
+          properties: S.optional(__S(3808, __c238, 0)),
         }),
       ).annotate({
         identifier: "WorkspaceManagedSqlServerVulnerabilityAssessmentsCreateOrUpdateResponse",
       });
-    case 5:
+  }
+}
+function __c100(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          properties: S.optional(__S(27, __c3, 3)),
+          properties: S.optional(__S(2225, __c139, 1)),
         }),
       ).annotate({
         identifier: "WorkspacePropertiesInputPrivateEndpointConnectionsItem",
       });
-    case 6:
-      return S.Array(__S(477, __c59, 5));
-    case 7:
+    case 1:
+      return S.Array(__S(1600, __c100, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          defaultDataLakeStorage: S.optional(__S(70, __c8, 6)),
+          defaultDataLakeStorage: S.optional(__S(1808, __c113, 0)),
           sqlAdministratorLoginPassword: S.optional(S.String.pipe(T.SensitiveValue({}))),
           managedResourceGroupName: S.optional(S.String),
           sqlAdministratorLogin: S.optional(S.String),
-          virtualNetworkProfile: S.optional(__S(71, __c8, 7)),
+          virtualNetworkProfile: S.optional(__S(1809, __c113, 1)),
           managedVirtualNetwork: S.optional(S.String),
-          privateEndpointConnections: S.optional(__S(478, __c59, 6)),
-          encryption: S.optional(__S(456, __c57, 0)),
-          managedVirtualNetworkSettings: S.optional(__S(78, __c9, 6)),
-          workspaceRepositoryConfiguration: S.optional(__S(79, __c9, 7)),
-          purviewConfiguration: S.optional(__S(80, __c10, 0)),
+          privateEndpointConnections: S.optional(__S(1601, __c100, 1)),
+          encryption: S.optional(__S(1427, __c89, 3)),
+          managedVirtualNetworkSettings: S.optional(__S(1814, __c113, 6)),
+          workspaceRepositoryConfiguration: S.optional(__S(1815, __c113, 7)),
+          purviewConfiguration: S.optional(__S(1816, __c113, 8)),
           publicNetworkAccess: S.optional(S.String),
-          cspWorkspaceAdminProperties: S.optional(__S(81, __c10, 1)),
+          cspWorkspaceAdminProperties: S.optional(__S(1817, __c113, 9)),
           azureADOnlyAuthentication: S.optional(S.Boolean),
           trustedServiceBypassEnabled: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "WorkspacePropertiesInput" });
-  }
-}
-function __c60(j: number): any {
-  switch (j) {
-    case 0:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           workspaceName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(0, __c0, 0)),
+          tags: S.optional(__S(16, __c1, 0)),
           location: S.String,
-          properties: S.optional(__S(479, __c59, 7)),
-          identity: S.optional(__S(454, __c56, 6)),
+          properties: S.optional(__S(1602, __c100, 2)),
+          identity: S.optional(__S(1425, __c89, 1)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -14925,27 +11887,31 @@ function __c60(j: number): any {
       ).annotate({
         identifier: "WorkspacesCreateOrUpdateRequest",
       });
-    case 1:
+    case 4:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          tags: S.optional(__S(0, __c0, 0)),
+          tags: S.optional(__S(16, __c1, 0)),
           location: S.String,
-          properties: S.optional(__S(83, __c10, 3)),
-          identity: S.optional(__S(86, __c10, 6)),
+          properties: S.optional(__S(1819, __c113, 11)),
+          identity: S.optional(__S(1822, __c113, 14)),
         }),
       ).annotate({
         identifier: "WorkspacesCreateOrUpdateResponse",
       });
-    case 2:
+  }
+}
+function __c101(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           workspaceName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(211, __c26, 3)),
+          properties: S.optional(__S(3456, __c216, 0)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -14959,7 +11925,3852 @@ function __c60(j: number): any {
       });
   }
 }
-
+function __c102(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          workspaceName: S.String.pipe(T.Label()),
+          sqlPoolName: S.String.pipe(T.Label()),
+          schemaName: S.String.pipe(T.Label()),
+          tableName: S.String.pipe(T.Label()),
+          columnName: S.String.pipe(T.Label()),
+          sensitivityLabelSource: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/sqlPools/{sqlPoolName}/schemas/{schemaName}/tables/{tableName}/columns/{columnName}/sensitivityLabels/{sensitivityLabelSource}",
+            code: 200,
+            apiVersion: "2021-06-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteSqlPoolSensitivityLabelRequest",
+      });
+  }
+}
+function __c103(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          workspaceName: S.String.pipe(T.Label()),
+          sqlPoolName: S.String.pipe(T.Label()),
+          vulnerabilityAssessmentName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/sqlPools/{sqlPoolName}/vulnerabilityAssessments/{vulnerabilityAssessmentName}",
+            code: 200,
+            apiVersion: "2021-06-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteSqlPoolVulnerabilityAssessmentRequest",
+      });
+  }
+}
+function __c104(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          azureADOnlyAuthentication: S.Boolean,
+        }),
+      ).annotate({
+        identifier: "AzureADOnlyAuthenticationPropertiesInput",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          workspaceName: S.String.pipe(T.Label()),
+          azureADOnlyAuthenticationName: S.String.pipe(T.Label()),
+          properties: S.optional(__S(1664, __c104, 0)),
+        }).pipe(
+          T.Http({
+            method: "PUT",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/azureADOnlyAuthentications/{azureADOnlyAuthenticationName}",
+            code: 200,
+            apiVersion: "2021-06-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateAzureADOnlyAuthenticationRequest",
+      });
+  }
+}
+function __c105(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          azureADOnlyAuthentication: S.Boolean,
+          state: S.optional(S.String),
+          creationDate: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "AzureADOnlyAuthenticationProperties",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          properties: S.optional(__S(1680, __c105, 0)),
+        }),
+      ).annotate({
+        identifier: "CreateAzureADOnlyAuthenticationResponse",
+      });
+  }
+}
+function __c106(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          workspaceName: S.String.pipe(T.Label()),
+          sqlPoolName: S.String.pipe(T.Label()),
+          vulnerabilityAssessmentName: S.String.pipe(T.Label()),
+          ruleId: S.String.pipe(T.Label()),
+          baselineName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/sqlPools/{sqlPoolName}/vulnerabilityAssessments/{vulnerabilityAssessmentName}/rules/{ruleId}/baselines/{baselineName}",
+            code: 200,
+            apiVersion: "2021-06-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteSqlPoolVulnerabilityAssessmentRuleBaselineRequest",
+      });
+    case 1:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "DeleteSqlPoolVulnerabilityAssessmentRuleBaselineResponse",
+      });
+  }
+}
+function __c107(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          workspaceName: S.String.pipe(T.Label()),
+          sqlPoolName: S.String.pipe(T.Label()),
+          workloadGroupName: S.String.pipe(T.Label()),
+          workloadClassifierName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/sqlPools/{sqlPoolName}/workloadGroups/{workloadGroupName}/workloadClassifiers/{workloadClassifierName}",
+            code: 200,
+            apiVersion: "2021-06-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteSqlPoolWorkloadClassifierRequest",
+      });
+  }
+}
+function __c108(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          workspaceName: S.String.pipe(T.Label()),
+          sqlPoolName: S.String.pipe(T.Label()),
+          workloadGroupName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/sqlPools/{sqlPoolName}/workloadGroups/{workloadGroupName}",
+            code: 200,
+            apiVersion: "2021-06-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteSqlPoolWorkloadGroupRequest",
+      });
+  }
+}
+function __c109(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          workspaceName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}",
+            code: 200,
+            apiVersion: "2021-06-01",
+          }),
+        ),
+      ).annotate({ identifier: "DeleteWorkspaceRequest" });
+  }
+}
+function __c110(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c111(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(2256, __c141, 0));
+  }
+}
+function __c112(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          tags: S.optional(__S(16, __c1, 0)),
+          location: S.String,
+          properties: S.optional(__S(1819, __c113, 11)),
+          identity: S.optional(__S(1822, __c113, 14)),
+        }),
+      ).annotate({ identifier: "DeleteWorkspaceResponse" });
+  }
+}
+function __c113(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          accountUrl: S.optional(S.String),
+          filesystem: S.optional(S.String),
+          resourceId: S.optional(S.String),
+          createManagedPrivateEndpoint: S.optional(S.Boolean),
+        }),
+      ).annotate({
+        identifier: "DataLakeStorageAccountDetails",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          computeSubnetId: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "VirtualNetworkProfile" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.optional(S.String),
+          keyVaultUrl: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "WorkspaceKeyDetails" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          userAssignedIdentity: S.optional(S.String),
+          useSystemAssignedIdentity: S.optional(S.Unknown),
+        }),
+      ).annotate({ identifier: "KekIdentityProperties" });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          status: S.optional(S.String),
+          key: S.optional(__S(1810, __c113, 2)),
+          kekIdentity: S.optional(__S(1811, __c113, 3)),
+        }),
+      ).annotate({
+        identifier: "CustomerManagedKeyDetails",
+      });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          doubleEncryptionEnabled: S.optional(S.Boolean),
+          cmk: S.optional(__S(1812, __c113, 4)),
+        }),
+      ).annotate({ identifier: "EncryptionDetails" });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          preventDataExfiltration: S.optional(S.Boolean),
+          linkedAccessCheckOnTargetResource: S.optional(S.Boolean),
+          allowedAadTenantIdsForLinking: S.optional(__S(1760, __c110, 0)),
+        }),
+      ).annotate({
+        identifier: "ManagedVirtualNetworkSettings",
+      });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          type: S.optional(S.String),
+          hostName: S.optional(S.String),
+          accountName: S.optional(S.String),
+          projectName: S.optional(S.String),
+          repositoryName: S.optional(S.String),
+          collaborationBranch: S.optional(S.String),
+          rootFolder: S.optional(S.String),
+          lastCommitId: S.optional(S.String),
+          tenantId: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "WorkspaceRepositoryConfiguration",
+      });
+    case 8:
+      return S.suspend(() =>
+        S.Struct({
+          purviewResourceId: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "PurviewConfiguration" });
+    case 9:
+      return S.suspend(() =>
+        S.Struct({
+          initialWorkspaceAdminObjectId: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "CspWorkspaceAdminProperties",
+      });
+    case 10:
+      return S.Record(S.String, S.Unknown);
+    case 11:
+      return S.suspend(() =>
+        S.Struct({
+          defaultDataLakeStorage: S.optional(__S(1808, __c113, 0)),
+          sqlAdministratorLoginPassword: S.optional(S.String.pipe(T.SensitiveValue({}))),
+          managedResourceGroupName: S.optional(S.String),
+          provisioningState: S.optional(S.String),
+          sqlAdministratorLogin: S.optional(S.String),
+          virtualNetworkProfile: S.optional(__S(1809, __c113, 1)),
+          connectivityEndpoints: S.optional(__S(16, __c1, 0)),
+          managedVirtualNetwork: S.optional(S.String),
+          privateEndpointConnections: S.optional(__S(1776, __c111, 0)),
+          encryption: S.optional(__S(1813, __c113, 5)),
+          workspaceUID: S.optional(S.String),
+          extraProperties: S.optional(S.Unknown),
+          managedVirtualNetworkSettings: S.optional(__S(1814, __c113, 6)),
+          workspaceRepositoryConfiguration: S.optional(__S(1815, __c113, 7)),
+          purviewConfiguration: S.optional(__S(1816, __c113, 8)),
+          adlaResourceId: S.optional(S.String),
+          publicNetworkAccess: S.optional(S.String),
+          cspWorkspaceAdminProperties: S.optional(__S(1817, __c113, 9)),
+          settings: S.optional(__S(1818, __c113, 10)),
+          azureADOnlyAuthentication: S.optional(S.Boolean),
+          trustedServiceBypassEnabled: S.optional(S.Boolean),
+        }),
+      ).annotate({ identifier: "WorkspaceProperties" });
+    case 12:
+      return S.suspend(() =>
+        S.Struct({
+          clientId: S.optional(S.NullOr(S.String)),
+          principalId: S.optional(S.NullOr(S.String)),
+        }),
+      ).annotate({
+        identifier: "UserAssignedManagedIdentity",
+      });
+    case 13:
+      return S.Record(S.String, __S(1820, __c113, 12));
+    case 14:
+      return S.suspend(() =>
+        S.Struct({
+          principalId: S.optional(S.String),
+          tenantId: S.optional(S.String),
+          type: S.optional(S.String),
+          userAssignedIdentities: S.optional(__S(1821, __c113, 13)),
+        }),
+      ).annotate({ identifier: "ManagedIdentity" });
+  }
+}
+function __c114(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          workspaceName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/administrators/activeDirectory",
+            code: 200,
+            apiVersion: "2021-06-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteWorkspaceAadAdminRequest",
+      });
+    case 1:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "DeleteWorkspaceAadAdminResponse",
+      });
+  }
+}
+function __c115(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          workspaceName: S.String.pipe(T.Label()),
+          vulnerabilityAssessmentName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/vulnerabilityAssessments/{vulnerabilityAssessmentName}",
+            code: 200,
+            apiVersion: "2021-06-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteWorkspaceManagedSqlServerVulnerabilityAssessmentRequest",
+      });
+  }
+}
+function __c116(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "DeleteWorkspaceManagedSqlServerVulnerabilityAssessmentResponse",
+      });
+  }
+}
+function __c117(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          workspaceName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/sqlAdministrators/activeDirectory",
+            code: 200,
+            apiVersion: "2021-06-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteWorkspaceSqlAadAdminRequest",
+      });
+  }
+}
+function __c118(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          workspaceName: S.String.pipe(T.Label()),
+          integrationRuntimeName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/integrationRuntimes/{integrationRuntimeName}/disableInteractiveQuery",
+            code: 200,
+            apiVersion: "2021-06-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "DisableIntegrationRuntimeInteractiveQueryRequest",
+      });
+  }
+}
+function __c119(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          workspaceName: S.String.pipe(T.Label()),
+          sqlPoolName: S.String.pipe(T.Label()),
+          schemaName: S.String.pipe(T.Label()),
+          tableName: S.String.pipe(T.Label()),
+          columnName: S.String.pipe(T.Label()),
+          sensitivityLabelSource: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/sqlPools/{sqlPoolName}/schemas/{schemaName}/tables/{tableName}/columns/{columnName}/sensitivityLabels/{sensitivityLabelSource}/disable",
+            code: 200,
+            apiVersion: "2021-06-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "DisableSqlPoolSensitivityLabelRecommendationRequest",
+      });
+  }
+}
+function __c120(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          workspaceName: S.String.pipe(T.Label()),
+          integrationRuntimeName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/integrationRuntimes/{integrationRuntimeName}/enableInteractiveQuery",
+            code: 200,
+            apiVersion: "2021-06-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "EnableIntegrationRuntimeInteractiveQueryRequest",
+      });
+  }
+}
+function __c121(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          workspaceName: S.String.pipe(T.Label()),
+          integrationRuntimeName: S.String.pipe(T.Label()),
+          properties: __S(1952, __c122, 0),
+        }).pipe(
+          T.Http({
+            method: "PUT",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/integrationRuntimes/{integrationRuntimeName}",
+            code: 200,
+            apiVersion: "2021-06-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateIntegrationRuntimeRequest",
+      });
+  }
+}
+function __c122(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          type: S.String,
+          description: S.optional(S.String),
+          typeProperties: S.optional(S.Unknown),
+          managedVirtualNetwork: S.optional(S.Unknown),
+          state: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "IntegrationRuntime" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          etag: S.optional(S.String),
+          properties: __S(1952, __c122, 0),
+        }),
+      ).annotate({
+        identifier: "CreateIntegrationRuntimeResponse",
+      });
+  }
+}
+function __c123(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          workspaceName: S.String.pipe(T.Label()),
+          sqlPoolName: S.String.pipe(T.Label()),
+          schemaName: S.String.pipe(T.Label()),
+          tableName: S.String.pipe(T.Label()),
+          columnName: S.String.pipe(T.Label()),
+          sensitivityLabelSource: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/sqlPools/{sqlPoolName}/schemas/{schemaName}/tables/{tableName}/columns/{columnName}/sensitivityLabels/{sensitivityLabelSource}/enable",
+            code: 200,
+            apiVersion: "2021-06-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "EnableSqlPoolSensitivityLabelRecommendationRequest",
+      });
+  }
+}
+function __c124(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          workspaceName: S.String.pipe(T.Label()),
+          sqlPoolName: S.String.pipe(T.Label()),
+          vulnerabilityAssessmentName: S.String.pipe(T.Label()),
+          scanId: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/sqlPools/{sqlPoolName}/vulnerabilityAssessments/{vulnerabilityAssessmentName}/scans/{scanId}/export",
+            code: 200,
+            apiVersion: "2021-06-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "ExportSqlPoolVulnerabilityAssessmentScanRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          exportedReportLocation: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "SqlPoolVulnerabilityAssessmentScanExportProperties",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          properties: S.optional(__S(1985, __c124, 1)),
+        }),
+      ).annotate({
+        identifier: "ExportSqlPoolVulnerabilityAssessmentScanResponse",
+      });
+  }
+}
+function __c125(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          workspaceName: S.String.pipe(T.Label()),
+          sqlPoolName: S.String.pipe(T.Label()),
+          blobAuditingPolicyName: S.String.pipe(T.Label()),
+          properties: S.optional(__S(2032, __c127, 0)),
+        }).pipe(
+          T.Http({
+            method: "PUT",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/sqlPools/{sqlPoolName}/extendedAuditingSettings/{blobAuditingPolicyName}",
+            code: 200,
+            apiVersion: "2021-06-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "ExtendedSqlPoolBlobAuditingPoliciesCreateOrUpdateRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          properties: S.optional(__S(2032, __c127, 0)),
+        }),
+      ).annotate({
+        identifier: "ExtendedSqlPoolBlobAuditingPoliciesCreateOrUpdateResponse",
+      });
+  }
+}
+function __c126(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c127(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          predicateExpression: S.optional(S.String),
+          state: S.String,
+          storageEndpoint: S.optional(S.String),
+          storageAccountAccessKey: S.optional(S.String),
+          retentionDays: S.optional(S.Number),
+          auditActionsAndGroups: S.optional(__S(2016, __c126, 0)),
+          storageAccountSubscriptionId: S.optional(S.String),
+          isStorageSecondaryKeyInUse: S.optional(S.Boolean),
+          isAzureMonitorTargetEnabled: S.optional(S.Boolean),
+          queueDelayMs: S.optional(S.Number),
+        }),
+      ).annotate({
+        identifier: "ExtendedSqlPoolBlobAuditingPolicyProperties",
+      });
+  }
+}
+function __c128(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          workspaceName: S.String.pipe(T.Label()),
+          azureADOnlyAuthenticationName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/azureADOnlyAuthentications/{azureADOnlyAuthenticationName}",
+            code: 200,
+            apiVersion: "2021-06-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetAzureADOnlyAuthenticationRequest",
+      });
+  }
+}
+function __c129(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          workspaceName: S.String.pipe(T.Label()),
+          bigDataPoolName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/bigDataPools/{bigDataPoolName}",
+            code: 200,
+            apiVersion: "2021-06-01",
+          }),
+        ),
+      ).annotate({ identifier: "GetBigDataPoolRequest" });
+  }
+}
+function __c130(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          tags: S.optional(__S(16, __c1, 0)),
+          location: S.String,
+          properties: S.optional(__S(70, __c4, 6)),
+        }),
+      ).annotate({ identifier: "GetBigDataPoolResponse" });
+  }
+}
+function __c131(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          workspaceName: S.String.pipe(T.Label()),
+          sqlPoolName: S.String.pipe(T.Label()),
+          dataMaskingPolicyName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/sqlPools/{sqlPoolName}/dataMaskingPolicies/{dataMaskingPolicyName}",
+            code: 200,
+            apiVersion: "2021-06-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetDataMaskingPolicyRequest",
+      });
+  }
+}
+function __c132(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          workspaceName: S.String.pipe(T.Label()),
+          sqlPoolName: S.String.pipe(T.Label()),
+          dataMaskingPolicyName: S.String.pipe(T.Label()),
+          dataMaskingRuleName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/sqlPools/{sqlPoolName}/dataMaskingPolicies/{dataMaskingPolicyName}/rules/{dataMaskingRuleName}",
+            code: 200,
+            apiVersion: "2021-06-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetDataMaskingRuleRequest",
+      });
+  }
+}
+function __c133(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          workspaceName: S.String.pipe(T.Label()),
+          sqlPoolName: S.String.pipe(T.Label()),
+          blobAuditingPolicyName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/sqlPools/{sqlPoolName}/extendedAuditingSettings/{blobAuditingPolicyName}",
+            code: 200,
+            apiVersion: "2021-06-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetExtendedSqlPoolBlobAuditingPolicyRequest",
+      });
+  }
+}
+function __c134(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          properties: S.optional(__S(2032, __c127, 0)),
+        }),
+      ).annotate({
+        identifier: "GetExtendedSqlPoolBlobAuditingPolicyResponse",
+      });
+  }
+}
+function __c135(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          workspaceName: S.String.pipe(T.Label()),
+          integrationRuntimeName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/integrationRuntimes/{integrationRuntimeName}",
+            code: 200,
+            apiVersion: "2021-06-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetIntegrationRuntimeRequest",
+      });
+  }
+}
+function __c136(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          workspaceName: S.String.pipe(T.Label()),
+          integrationRuntimeName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/integrationRuntimes/{integrationRuntimeName}/getConnectionInfo",
+            code: 200,
+            apiVersion: "2021-06-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetIntegrationRuntimeConnectionInfosRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          serviceToken: S.optional(S.String),
+          identityCertThumbprint: S.optional(S.String),
+          hostServiceUri: S.optional(S.String),
+          version: S.optional(S.String),
+          publicKey: S.optional(S.String),
+          isIdentityCertExprired: S.optional(S.Boolean),
+        }),
+      ).annotate({
+        identifier: "IntegrationRuntimeConnectionInfo",
+      });
+  }
+}
+function __c137(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          workspaceName: S.String.pipe(T.Label()),
+          privateEndpointConnectionName: S.String.pipe(T.Label()),
+          properties: S.optional(__S(2225, __c139, 1)),
+        }).pipe(
+          T.Http({
+            method: "PUT",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/privateEndpointConnections/{privateEndpointConnectionName}",
+            code: 200,
+            apiVersion: "2021-06-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreatePrivateEndpointConnectionRequest",
+      });
+  }
+}
+function __c138(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "PrivateEndpointInput",
+      });
+  }
+}
+function __c139(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          status: S.optional(S.String),
+          description: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "PrivateLinkServiceConnectionStateInput",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          privateEndpoint: S.optional(__S(2208, __c138, 0)),
+          privateLinkServiceConnectionState: S.optional(__S(2224, __c139, 0)),
+        }),
+      ).annotate({
+        identifier: "PrivateEndpointConnectionPropertiesInput",
+      });
+  }
+}
+function __c140(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "PrivateEndpoint" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          status: S.optional(S.String),
+          description: S.optional(S.String),
+          actionsRequired: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "PrivateLinkServiceConnectionState",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          privateEndpoint: S.optional(__S(2240, __c140, 0)),
+          privateLinkServiceConnectionState: S.optional(__S(2241, __c140, 1)),
+          provisioningState: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "PrivateEndpointConnectionProperties",
+      });
+  }
+}
+function __c141(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          properties: S.optional(__S(2242, __c140, 2)),
+        }),
+      ).annotate({
+        identifier: "CreatePrivateEndpointConnectionResponse",
+      });
+  }
+}
+function __c142(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          workspaceName: S.String.pipe(T.Label()),
+          integrationRuntimeName: S.String.pipe(T.Label()),
+          nodeName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/integrationRuntimes/{integrationRuntimeName}/nodes/{nodeName}",
+            code: 200,
+            apiVersion: "2021-06-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetIntegrationRuntimeNodeRequest",
+      });
+  }
+}
+function __c143(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          nodeName: S.optional(S.String),
+          machineName: S.optional(S.String),
+          hostServiceUri: S.optional(S.String),
+          status: S.optional(S.String),
+          capabilities: S.optional(__S(16, __c1, 0)),
+          versionStatus: S.optional(S.String),
+          version: S.optional(S.String),
+          registerTime: S.optional(S.String),
+          lastConnectTime: S.optional(S.String),
+          expiryTime: S.optional(S.String),
+          lastStartTime: S.optional(S.String),
+          lastStopTime: S.optional(S.String),
+          lastUpdateResult: S.optional(S.String),
+          lastStartUpdateTime: S.optional(S.String),
+          lastEndUpdateTime: S.optional(S.String),
+          isActiveDispatcher: S.optional(S.Boolean),
+          concurrentJobsLimit: S.optional(S.Number),
+          maxConcurrentJobs: S.optional(S.Number),
+        }),
+      ).annotate({
+        identifier: "SelfHostedIntegrationRuntimeNode",
+      });
+  }
+}
+function __c144(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          workspaceName: S.String.pipe(T.Label()),
+          integrationRuntimeName: S.String.pipe(T.Label()),
+          nodeName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/integrationRuntimes/{integrationRuntimeName}/nodes/{nodeName}/ipAddress",
+            code: 200,
+            apiVersion: "2021-06-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetIntegrationRuntimeNodeIpAddressRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          ipAddress: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "IntegrationRuntimeNodeIpAddress",
+      });
+  }
+}
+function __c145(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          workspaceName: S.String.pipe(T.Label()),
+          integrationRuntimeName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/integrationRuntimes/{integrationRuntimeName}/getStatus",
+            code: 200,
+            apiVersion: "2021-06-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetIntegrationRuntimeStatusRequest",
+      });
+  }
+}
+function __c146(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          type: S.String,
+          dataFactoryName: S.optional(S.String),
+          state: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "IntegrationRuntimeStatus" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.optional(S.String),
+          properties: __S(2336, __c146, 0),
+        }),
+      ).annotate({
+        identifier: "IntegrationRuntimeStatusResponse",
+      });
+  }
+}
+function __c147(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          workspaceName: S.String.pipe(T.Label()),
+          ruleName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/firewallRules/{ruleName}",
+            code: 200,
+            apiVersion: "2021-06-01",
+          }),
+        ),
+      ).annotate({ identifier: "GetIpFirewallRuleRequest" });
+  }
+}
+function __c148(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          workspaceName: S.String.pipe(T.Label()),
+          keyName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/keys/{keyName}",
+            code: 200,
+            apiVersion: "2021-06-01",
+          }),
+        ),
+      ).annotate({ identifier: "GetKeyRequest" });
+  }
+}
+function __c149(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          workspaceName: S.String.pipe(T.Label()),
+          libraryName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/libraries/{libraryName}",
+            code: 200,
+            apiVersion: "2021-06-01",
+          }),
+        ),
+      ).annotate({ identifier: "GetLibraryRequest" });
+  }
+}
+function __c150(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          etag: S.optional(S.String),
+          properties: __S(48, __c3, 0),
+        }),
+      ).annotate({ identifier: "GetLibraryResponse" });
+  }
+}
+function __c151(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          workspaceName: S.String.pipe(T.Label()),
+          operationId: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/operationStatuses/{operationId}",
+            code: 200,
+            apiVersion: "2021-06-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetOperationAzureAsyncHeaderResultRequest",
+      });
+    case 1:
+      return S.Array(/*@__PURE__*/ S.suspend(() => __S(2420, __c151, 4)));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          type: S.optional(S.String),
+          info: S.optional(S.Unknown),
+        }),
+      ).annotate({ identifier: "ErrorAdditionalInfo" });
+    case 3:
+      return S.Array(__S(2418, __c151, 2));
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          code: S.optional(S.String),
+          message: S.optional(S.String),
+          target: S.optional(S.String),
+          details: S.optional(__S(2417, __c151, 1)),
+          additionalInfo: S.optional(__S(2419, __c151, 3)),
+        }),
+      ).annotate({ identifier: "ErrorDetail" });
+    case 5:
+      return S.Array(__S(2420, __c151, 4));
+    case 6:
+      return S.Array(__S(2418, __c151, 2));
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          code: S.optional(S.String),
+          message: S.optional(S.String),
+          target: S.optional(S.String),
+          details: S.optional(__S(2421, __c151, 5)),
+          additionalInfo: S.optional(__S(2422, __c151, 6)),
+        }),
+      ).annotate({
+        identifier: "GetOperationAzureAsyncHeaderResultResponseError",
+      });
+    case 8:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          status: S.optional(S.String),
+          properties: S.optional(S.Unknown),
+          error: S.optional(__S(2423, __c151, 7)),
+          startTime: S.optional(S.String),
+          endTime: S.optional(S.String),
+          percentComplete: S.optional(S.Number),
+        }),
+      ).annotate({
+        identifier: "GetOperationAzureAsyncHeaderResultResponse",
+      });
+  }
+}
+function __c152(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          workspaceName: S.String.pipe(T.Label()),
+          operationId: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/operationResults/{operationId}",
+            code: 200,
+            apiVersion: "2021-06-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetOperationLocationHeaderResultRequest",
+      });
+  }
+}
+function __c153(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          workspaceName: S.String.pipe(T.Label()),
+          privateEndpointConnectionName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/privateEndpointConnections/{privateEndpointConnectionName}",
+            code: 200,
+            apiVersion: "2021-06-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetPrivateEndpointConnectionRequest",
+      });
+  }
+}
+function __c154(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          privateLinkHubName: S.String.pipe(T.Label()),
+          privateEndpointConnectionName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/privateLinkHubs/{privateLinkHubName}/privateEndpointConnections/{privateEndpointConnectionName}",
+            code: 200,
+            apiVersion: "2021-06-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetPrivateEndpointConnectionsPrivateLinkHubRequest",
+      });
+  }
+}
+function __c155(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          properties: S.optional(__S(2242, __c140, 2)),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GetPrivateEndpointConnectionsPrivateLinkHubResponse",
+      });
+  }
+}
+function __c156(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          workspaceName: S.String.pipe(T.Label()),
+          sqlPoolName: S.String.pipe(T.Label()),
+          tags: S.optional(__S(16, __c1, 0)),
+          location: S.String,
+          sku: S.optional(__S(2528, __c158, 0)),
+          properties: S.optional(__S(2544, __c159, 0)),
+        }).pipe(
+          T.Http({
+            method: "PUT",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/sqlPools/{sqlPoolName}",
+            code: 200,
+            apiVersion: "2021-06-01",
+          }),
+        ),
+      ).annotate({ identifier: "CreateSqlPoolRequest" });
+  }
+}
+function __c157(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          tags: S.optional(__S(16, __c1, 0)),
+          location: S.String,
+          sku: S.optional(__S(2528, __c158, 0)),
+          properties: S.optional(__S(2529, __c158, 1)),
+        }),
+      ).annotate({ identifier: "CreateSqlPoolResponse" });
+  }
+}
+function __c158(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          tier: S.optional(S.String),
+          name: S.optional(S.String),
+          capacity: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "Sku" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          maxSizeBytes: S.optional(S.Number),
+          collation: S.optional(S.String),
+          sourceDatabaseId: S.optional(S.String),
+          recoverableDatabaseId: S.optional(S.String),
+          provisioningState: S.optional(S.String),
+          status: S.optional(S.String),
+          restorePointInTime: S.optional(S.String),
+          createMode: S.optional(S.String),
+          creationDate: S.optional(S.String),
+          storageAccountType: S.optional(S.String),
+          sourceDatabaseDeletionDate: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "SqlPoolResourceProperties",
+      });
+  }
+}
+function __c159(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          maxSizeBytes: S.optional(S.Number),
+          collation: S.optional(S.String),
+          sourceDatabaseId: S.optional(S.String),
+          recoverableDatabaseId: S.optional(S.String),
+          provisioningState: S.optional(S.String),
+          restorePointInTime: S.optional(S.String),
+          createMode: S.optional(S.String),
+          storageAccountType: S.optional(S.String),
+          sourceDatabaseDeletionDate: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "SqlPoolResourcePropertiesInput",
+      });
+  }
+}
+function __c160(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          privateLinkHubName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/privateLinkHubs/{privateLinkHubName}",
+            code: 200,
+            apiVersion: "2021-06-01",
+          }),
+        ),
+      ).annotate({ identifier: "GetPrivateLinkHubRequest" });
+  }
+}
+function __c161(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          properties: S.optional(__S(2242, __c140, 2)),
+        }),
+      ).annotate({
+        identifier: "PrivateEndpointConnectionForPrivateLinkHubBasic",
+      });
+    case 1:
+      return S.Array(__S(2576, __c161, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          provisioningState: S.optional(S.String),
+          privateEndpointConnections: S.optional(__S(2577, __c161, 1)),
+        }),
+      ).annotate({ identifier: "PrivateLinkHubProperties" });
+  }
+}
+function __c162(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          tags: S.optional(__S(16, __c1, 0)),
+          location: S.String,
+          properties: S.optional(__S(2578, __c161, 2)),
+        }),
+      ).annotate({
+        identifier: "GetPrivateLinkHubResponse",
+      });
+  }
+}
+function __c163(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          privateLinkHubName: S.String.pipe(T.Label()),
+          privateLinkResourceName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/privateLinkHubs/{privateLinkHubName}/privateLinkResources/{privateLinkResourceName}",
+            code: 200,
+            apiVersion: "2021-06-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetPrivateLinkHubPrivateLinkResourceRequest",
+      });
+  }
+}
+function __c164(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          properties: S.optional(__S(2640, __c165, 0)),
+        }),
+      ).annotate({
+        identifier: "GetPrivateLinkHubPrivateLinkResourceResponse",
+      });
+  }
+}
+function __c165(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          groupId: S.optional(S.String),
+          requiredMembers: S.optional(__S(1760, __c110, 0)),
+          requiredZoneNames: S.optional(__S(1760, __c110, 0)),
+        }),
+      ).annotate({
+        identifier: "PrivateLinkResourceProperties",
+      });
+  }
+}
+function __c166(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          workspaceName: S.String.pipe(T.Label()),
+          privateLinkResourceName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/privateLinkResources/{privateLinkResourceName}",
+            code: 200,
+            apiVersion: "2021-06-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetPrivateLinkResourceRequest",
+      });
+  }
+}
+function __c167(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          workspaceName: S.String.pipe(T.Label()),
+          restorableDroppedSqlPoolId: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/restorableDroppedSqlPools/{restorableDroppedSqlPoolId}",
+            code: 200,
+            apiVersion: "2021-06-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetRestorableDroppedSqlPoolRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          location: S.optional(S.String),
+          properties: S.optional(__S(2688, __c168, 0)),
+        }),
+      ).annotate({
+        identifier: "GetRestorableDroppedSqlPoolResponse",
+      });
+  }
+}
+function __c168(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          databaseName: S.optional(S.String),
+          edition: S.optional(S.String),
+          maxSizeBytes: S.optional(S.String),
+          serviceLevelObjective: S.optional(S.String),
+          elasticPoolName: S.optional(S.String),
+          creationDate: S.optional(S.String),
+          deletionDate: S.optional(S.String),
+          earliestRestoreDate: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "RestorableDroppedSqlPoolProperties",
+      });
+  }
+}
+function __c169(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          workspaceName: S.String.pipe(T.Label()),
+          sqlPoolName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/sqlPools/{sqlPoolName}",
+            code: 200,
+            apiVersion: "2021-06-01",
+          }),
+        ),
+      ).annotate({ identifier: "GetSqlPoolRequest" });
+  }
+}
+function __c170(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          workspaceName: S.String.pipe(T.Label()),
+          sqlPoolName: S.String.pipe(T.Label()),
+          blobAuditingPolicyName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/sqlPools/{sqlPoolName}/auditingSettings/{blobAuditingPolicyName}",
+            code: 200,
+            apiVersion: "2021-06-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetSqlPoolBlobAuditingPolicyRequest",
+      });
+  }
+}
+function __c171(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          state: S.String,
+          storageEndpoint: S.optional(S.String),
+          storageAccountAccessKey: S.optional(S.String),
+          retentionDays: S.optional(S.Number),
+          auditActionsAndGroups: S.optional(__S(1760, __c110, 0)),
+          storageAccountSubscriptionId: S.optional(S.String),
+          isStorageSecondaryKeyInUse: S.optional(S.Boolean),
+          isAzureMonitorTargetEnabled: S.optional(S.Boolean),
+        }),
+      ).annotate({
+        identifier: "SqlPoolBlobAuditingPolicyProperties",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          kind: S.optional(S.String),
+          properties: S.optional(__S(2736, __c171, 0)),
+        }),
+      ).annotate({
+        identifier: "GetSqlPoolBlobAuditingPolicyResponse",
+      });
+  }
+}
+function __c172(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          workspaceName: S.String.pipe(T.Label()),
+          sqlPoolName: S.String.pipe(T.Label()),
+          schemaName: S.String.pipe(T.Label()),
+          tableName: S.String.pipe(T.Label()),
+          columnName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/sqlPools/{sqlPoolName}/schemas/{schemaName}/tables/{tableName}/columns/{columnName}",
+            code: 200,
+            apiVersion: "2021-06-01",
+          }),
+        ),
+      ).annotate({ identifier: "GetSqlPoolColumnRequest" });
+  }
+}
+function __c173(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          columnType: S.optional(S.String),
+          isComputed: S.optional(S.Boolean),
+        }),
+      ).annotate({ identifier: "SqlPoolColumnProperties" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          properties: S.optional(__S(2768, __c173, 0)),
+        }),
+      ).annotate({ identifier: "GetSqlPoolColumnResponse" });
+  }
+}
+function __c174(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          workspaceName: S.String.pipe(T.Label()),
+          sqlPoolName: S.String.pipe(T.Label()),
+          dataWarehouseUserActivityName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/sqlPools/{sqlPoolName}/dataWarehouseUserActivities/{dataWarehouseUserActivityName}",
+            code: 200,
+            apiVersion: "2021-06-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetSqlPoolDataWarehouseUserActivityRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          activeQueriesCount: S.optional(S.Number),
+        }),
+      ).annotate({
+        identifier: "DataWarehouseUserActivitiesProperties",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          properties: S.optional(__S(2785, __c174, 1)),
+        }),
+      ).annotate({
+        identifier: "GetSqlPoolDataWarehouseUserActivityResponse",
+      });
+  }
+}
+function __c175(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          workspaceName: S.String.pipe(T.Label()),
+          sqlPoolName: S.String.pipe(T.Label()),
+          geoBackupPolicyName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/sqlPools/{sqlPoolName}/geoBackupPolicies/{geoBackupPolicyName}",
+            code: 200,
+            apiVersion: "2021-06-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetSqlPoolGeoBackupPolicyRequest",
+      });
+  }
+}
+function __c176(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          state: S.String,
+          storageType: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GeoBackupPolicyProperties",
+      });
+  }
+}
+function __c177(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          properties: __S(2816, __c176, 0),
+          kind: S.optional(S.String),
+          location: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GetSqlPoolGeoBackupPolicyResponse",
+      });
+  }
+}
+function __c178(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          workspaceName: S.String.pipe(T.Label()),
+          sqlPoolName: S.String.pipe(T.Label()),
+          maintenanceWindowOptionsName: S.String.pipe(T.Query()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/sqlPools/{sqlPoolName}/maintenanceWindowOptions/current",
+            code: 200,
+            apiVersion: "2021-06-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetSqlPoolMaintenanceWindowOptionRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          isEnabled: S.optional(S.Boolean),
+          maintenanceWindowCycles: S.optional(__S(2865, __c179, 1)),
+          minDurationInMinutes: S.optional(S.Number),
+          defaultDurationInMinutes: S.optional(S.Number),
+          minCycles: S.optional(S.Number),
+          timeGranularityInMinutes: S.optional(S.Number),
+          allowMultipleMaintenanceWindowsPerCycle: S.optional(S.Boolean),
+        }),
+      ).annotate({
+        identifier: "MaintenanceWindowOptionsProperties",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          properties: S.optional(__S(2849, __c178, 1)),
+        }),
+      ).annotate({
+        identifier: "GetSqlPoolMaintenanceWindowOptionResponse",
+      });
+  }
+}
+function __c179(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          dayOfWeek: S.optional(S.String),
+          startTime: S.optional(S.String),
+          duration: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "MaintenanceWindowTimeRange",
+      });
+    case 1:
+      return S.Array(__S(2864, __c179, 0));
+  }
+}
+function __c180(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          workspaceName: S.String.pipe(T.Label()),
+          sqlPoolName: S.String.pipe(T.Label()),
+          restorePointLabel: S.String,
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/sqlPools/{sqlPoolName}/restorePoints",
+            code: 200,
+            apiVersion: "2021-06-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateSqlPoolRestorePointRequest",
+      });
+  }
+}
+function __c181(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          location: S.optional(S.String),
+          properties: S.optional(__S(2912, __c182, 0)),
+        }),
+      ).annotate({
+        identifier: "CreateSqlPoolRestorePointResponse",
+      });
+  }
+}
+function __c182(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          restorePointType: S.optional(S.String),
+          earliestRestoreDate: S.optional(S.String),
+          restorePointCreationDate: S.optional(S.String),
+          restorePointLabel: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "RestorePointProperties" });
+  }
+}
+function __c183(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          workspaceName: S.String.pipe(T.Label()),
+          sqlPoolName: S.String.pipe(T.Label()),
+          maintenanceWindowName: S.String.pipe(T.Query()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/sqlPools/{sqlPoolName}/maintenancewindows/current",
+            code: 200,
+            apiVersion: "2021-06-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetSqlPoolMaintenanceWindowsRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          properties: S.optional(__S(2944, __c184, 0)),
+        }),
+      ).annotate({
+        identifier: "GetSqlPoolMaintenanceWindowsResponse",
+      });
+  }
+}
+function __c184(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          timeRanges: S.optional(__S(2865, __c179, 1)),
+        }),
+      ).annotate({
+        identifier: "MaintenanceWindowsProperties",
+      });
+  }
+}
+function __c185(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          workspaceName: S.String.pipe(T.Label()),
+          sqlPoolName: S.String.pipe(T.Label()),
+          operationId: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/sqlPools/{sqlPoolName}/operationResults/{operationId}",
+            code: 200,
+            apiVersion: "2021-06-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetSqlPoolOperationResultLocationHeaderResultRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          tags: S.optional(__S(16, __c1, 0)),
+          location: S.String,
+          sku: S.optional(__S(2528, __c158, 0)),
+          properties: S.optional(__S(2529, __c158, 1)),
+        }),
+      ).annotate({
+        identifier: "GetSqlPoolOperationResultLocationHeaderResultResponse",
+      });
+  }
+}
+function __c186(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          workspaceName: S.String.pipe(T.Label()),
+          sqlPoolName: S.String.pipe(T.Label()),
+          linkId: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/sqlPools/{sqlPoolName}/replicationLinks/{linkId}",
+            code: 200,
+            apiVersion: "2021-06-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetSqlPoolReplicationLinkByNameRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          location: S.optional(S.String),
+          properties: S.optional(__S(2992, __c187, 0)),
+        }),
+      ).annotate({
+        identifier: "GetSqlPoolReplicationLinkByNameResponse",
+      });
+  }
+}
+function __c187(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          isTerminationAllowed: S.optional(S.Boolean),
+          replicationMode: S.optional(S.String),
+          partnerServer: S.optional(S.String),
+          partnerDatabase: S.optional(S.String),
+          partnerLocation: S.optional(S.String),
+          role: S.optional(S.String),
+          partnerRole: S.optional(S.String),
+          startTime: S.optional(S.String),
+          percentComplete: S.optional(S.Number),
+          replicationState: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "ReplicationLinkProperties",
+      });
+  }
+}
+function __c188(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          workspaceName: S.String.pipe(T.Label()),
+          sqlPoolName: S.String.pipe(T.Label()),
+          restorePointName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/sqlPools/{sqlPoolName}/restorePoints/{restorePointName}",
+            code: 200,
+            apiVersion: "2021-06-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetSqlPoolRestorePointRequest",
+      });
+  }
+}
+function __c189(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          workspaceName: S.String.pipe(T.Label()),
+          sqlPoolName: S.String.pipe(T.Label()),
+          schemaName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/sqlPools/{sqlPoolName}/schemas/{schemaName}",
+            code: 200,
+            apiVersion: "2021-06-01",
+          }),
+        ),
+      ).annotate({ identifier: "GetSqlPoolSchemaRequest" });
+  }
+}
+function __c190(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "GetSqlPoolSchemaResponse" });
+  }
+}
+function __c191(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          workspaceName: S.String.pipe(T.Label()),
+          sqlPoolName: S.String.pipe(T.Label()),
+          securityAlertPolicyName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/sqlPools/{sqlPoolName}/securityAlertPolicies/{securityAlertPolicyName}",
+            code: 200,
+            apiVersion: "2021-06-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetSqlPoolSecurityAlertPolicyRequest",
+      });
+  }
+}
+function __c192(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          state: S.String,
+          disabledAlerts: S.optional(__S(1760, __c110, 0)),
+          emailAddresses: S.optional(__S(1760, __c110, 0)),
+          emailAccountAdmins: S.optional(S.Boolean),
+          storageEndpoint: S.optional(S.String),
+          storageAccountAccessKey: S.optional(S.String),
+          retentionDays: S.optional(S.Number),
+          creationTime: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "SecurityAlertPolicyProperties",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          properties: S.optional(__S(3072, __c192, 0)),
+        }),
+      ).annotate({
+        identifier: "GetSqlPoolSecurityAlertPolicyResponse",
+      });
+  }
+}
+function __c193(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          workspaceName: S.String.pipe(T.Label()),
+          sqlPoolName: S.String.pipe(T.Label()),
+          schemaName: S.String.pipe(T.Label()),
+          tableName: S.String.pipe(T.Label()),
+          columnName: S.String.pipe(T.Label()),
+          sensitivityLabelSource: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/sqlPools/{sqlPoolName}/schemas/{schemaName}/tables/{tableName}/columns/{columnName}/sensitivityLabels/{sensitivityLabelSource}",
+            code: 200,
+            apiVersion: "2021-06-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetSqlPoolSensitivityLabelRequest",
+      });
+  }
+}
+function __c194(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          schemaName: S.optional(S.String),
+          tableName: S.optional(S.String),
+          columnName: S.optional(S.String),
+          labelName: S.optional(S.String),
+          labelId: S.optional(S.String),
+          informationType: S.optional(S.String),
+          informationTypeId: S.optional(S.String),
+          isDisabled: S.optional(S.Boolean),
+          rank: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "SensitivityLabelProperties",
+      });
+  }
+}
+function __c195(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          properties: S.optional(__S(3104, __c194, 0)),
+          managedBy: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GetSqlPoolSensitivityLabelResponse",
+      });
+  }
+}
+function __c196(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          workspaceName: S.String.pipe(T.Label()),
+          sqlPoolName: S.String.pipe(T.Label()),
+          schemaName: S.String.pipe(T.Label()),
+          tableName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/sqlPools/{sqlPoolName}/schemas/{schemaName}/tables/{tableName}",
+            code: 200,
+            apiVersion: "2021-06-01",
+          }),
+        ),
+      ).annotate({ identifier: "GetSqlPoolTableRequest" });
+  }
+}
+function __c197(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          workspaceName: S.String.pipe(T.Label()),
+          sqlPoolName: S.String.pipe(T.Label()),
+          transparentDataEncryptionName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/sqlPools/{sqlPoolName}/transparentDataEncryption/{transparentDataEncryptionName}",
+            code: 200,
+            apiVersion: "2021-06-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetSqlPoolTransparentDataEncryptionRequest",
+      });
+  }
+}
+function __c198(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          status: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "TransparentDataEncryptionProperties",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          location: S.optional(S.String),
+          properties: S.optional(__S(3168, __c198, 0)),
+        }),
+      ).annotate({
+        identifier: "GetSqlPoolTransparentDataEncryptionResponse",
+      });
+  }
+}
+function __c199(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          workspaceName: S.String.pipe(T.Label()),
+          sqlPoolName: S.String.pipe(T.Label()),
+          vulnerabilityAssessmentName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/sqlPools/{sqlPoolName}/vulnerabilityAssessments/{vulnerabilityAssessmentName}",
+            code: 200,
+            apiVersion: "2021-06-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetSqlPoolVulnerabilityAssessmentRequest",
+      });
+  }
+}
+function __c200(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          storageContainerPath: S.optional(S.String),
+          storageContainerSasKey: S.optional(S.String),
+          storageAccountAccessKey: S.optional(S.String),
+          recurringScans: S.optional(__S(3216, __c201, 0)),
+        }),
+      ).annotate({
+        identifier: "SqlPoolVulnerabilityAssessmentProperties",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          properties: S.optional(__S(3200, __c200, 0)),
+        }),
+      ).annotate({
+        identifier: "GetSqlPoolVulnerabilityAssessmentResponse",
+      });
+  }
+}
+function __c201(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          isEnabled: S.optional(S.Boolean),
+          emailSubscriptionAdmins: S.optional(S.Boolean),
+          emails: S.optional(__S(1760, __c110, 0)),
+        }),
+      ).annotate({
+        identifier: "VulnerabilityAssessmentRecurringScansProperties",
+      });
+  }
+}
+function __c202(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          dataMaskingState: S.String,
+          exemptPrincipals: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "DataMaskingPolicyPropertiesInput",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          workspaceName: S.String.pipe(T.Label()),
+          sqlPoolName: S.String.pipe(T.Label()),
+          dataMaskingPolicyName: S.String.pipe(T.Label()),
+          properties: S.optional(__S(3232, __c202, 0)),
+        }).pipe(
+          T.Http({
+            method: "PUT",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/sqlPools/{sqlPoolName}/dataMaskingPolicies/{dataMaskingPolicyName}",
+            code: 200,
+            apiVersion: "2021-06-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "DataMaskingPoliciesCreateOrUpdateRequest",
+      });
+  }
+}
+function __c203(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          dataMaskingState: S.String,
+          exemptPrincipals: S.optional(S.String),
+          applicationPrincipals: S.optional(S.String),
+          maskingLevel: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "DataMaskingPolicyProperties",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          properties: S.optional(__S(3248, __c203, 0)),
+          location: S.optional(S.String),
+          kind: S.optional(S.String),
+          managedBy: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "DataMaskingPoliciesCreateOrUpdateResponse",
+      });
+  }
+}
+function __c204(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          workspaceName: S.String.pipe(T.Label()),
+          sqlPoolName: S.String.pipe(T.Label()),
+          vulnerabilityAssessmentName: S.String.pipe(T.Label()),
+          ruleId: S.String.pipe(T.Label()),
+          baselineName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/sqlPools/{sqlPoolName}/vulnerabilityAssessments/{vulnerabilityAssessmentName}/rules/{ruleId}/baselines/{baselineName}",
+            code: 200,
+            apiVersion: "2021-06-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetSqlPoolVulnerabilityAssessmentRuleBaselineRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          properties: S.optional(__S(3282, __c205, 2)),
+        }),
+      ).annotate({
+        identifier: "GetSqlPoolVulnerabilityAssessmentRuleBaselineResponse",
+      });
+  }
+}
+function __c205(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          result: __S(1760, __c110, 0),
+        }),
+      ).annotate({
+        identifier: "SqlPoolVulnerabilityAssessmentRuleBaselineItem",
+      });
+    case 1:
+      return S.Array(__S(3280, __c205, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          baselineResults: __S(3281, __c205, 1),
+        }),
+      ).annotate({
+        identifier: "SqlPoolVulnerabilityAssessmentRuleBaselineProperties",
+      });
+  }
+}
+function __c206(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          workspaceName: S.String.pipe(T.Label()),
+          sqlPoolName: S.String.pipe(T.Label()),
+          vulnerabilityAssessmentName: S.String.pipe(T.Label()),
+          scanId: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/sqlPools/{sqlPoolName}/vulnerabilityAssessments/{vulnerabilityAssessmentName}/scans/{scanId}",
+            code: 200,
+            apiVersion: "2021-06-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetSqlPoolVulnerabilityAssessmentScanRequest",
+      });
+  }
+}
+function __c207(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          code: S.optional(S.String),
+          message: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "VulnerabilityAssessmentScanError",
+      });
+    case 1:
+      return S.Array(__S(3312, __c207, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          scanId: S.optional(S.String),
+          triggerType: S.optional(S.String),
+          state: S.optional(S.String),
+          startTime: S.optional(S.String),
+          endTime: S.optional(S.String),
+          errors: S.optional(__S(3313, __c207, 1)),
+          storageContainerPath: S.optional(S.String),
+          numberOfFailedSecurityChecks: S.optional(S.Number),
+        }),
+      ).annotate({
+        identifier: "VulnerabilityAssessmentScanRecordProperties",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          properties: S.optional(__S(3314, __c207, 2)),
+        }),
+      ).annotate({
+        identifier: "GetSqlPoolVulnerabilityAssessmentScanResponse",
+      });
+  }
+}
+function __c208(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          workspaceName: S.String.pipe(T.Label()),
+          sqlPoolName: S.String.pipe(T.Label()),
+          workloadGroupName: S.String.pipe(T.Label()),
+          workloadClassifierName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/sqlPools/{sqlPoolName}/workloadGroups/{workloadGroupName}/workloadClassifiers/{workloadClassifierName}",
+            code: 200,
+            apiVersion: "2021-06-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetSqlPoolWorkloadClassifierRequest",
+      });
+  }
+}
+function __c209(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          memberName: S.String,
+          label: S.optional(S.String),
+          context: S.optional(S.String),
+          startTime: S.optional(S.String),
+          endTime: S.optional(S.String),
+          importance: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "WorkloadClassifierProperties",
+      });
+  }
+}
+function __c210(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          properties: S.optional(__S(3344, __c209, 0)),
+        }),
+      ).annotate({
+        identifier: "GetSqlPoolWorkloadClassifierResponse",
+      });
+  }
+}
+function __c211(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          workspaceName: S.String.pipe(T.Label()),
+          sqlPoolName: S.String.pipe(T.Label()),
+          workloadGroupName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/sqlPools/{sqlPoolName}/workloadGroups/{workloadGroupName}",
+            code: 200,
+            apiVersion: "2021-06-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetSqlPoolWorkloadGroupRequest",
+      });
+  }
+}
+function __c212(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          minResourcePercent: S.Number,
+          maxResourcePercent: S.Number,
+          minResourcePercentPerRequest: S.Number,
+          maxResourcePercentPerRequest: S.optional(S.Number),
+          importance: S.optional(S.String),
+          queryExecutionTimeout: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "WorkloadGroupProperties" });
+  }
+}
+function __c213(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          properties: S.optional(__S(3392, __c212, 0)),
+        }),
+      ).annotate({
+        identifier: "GetSqlPoolWorkloadGroupResponse",
+      });
+  }
+}
+function __c214(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          workspaceName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}",
+            code: 200,
+            apiVersion: "2021-06-01",
+          }),
+        ),
+      ).annotate({ identifier: "GetWorkspaceRequest" });
+  }
+}
+function __c215(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          workspaceName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/administrators/activeDirectory",
+            code: 200,
+            apiVersion: "2021-06-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetWorkspaceAadAdminRequest",
+      });
+  }
+}
+function __c216(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          tenantId: S.optional(S.String),
+          login: S.optional(S.String),
+          administratorType: S.optional(S.String),
+          sid: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "AadAdminProperties" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          properties: S.optional(__S(3456, __c216, 0)),
+        }),
+      ).annotate({
+        identifier: "GetWorkspaceAadAdminResponse",
+      });
+  }
+}
+function __c217(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          workspaceName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/managedIdentitySqlControlSettings/default",
+            code: 200,
+            apiVersion: "2021-06-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetWorkspaceManagedIdentitySqlControlSettingsRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          properties: S.optional(__S(3489, __c218, 1)),
+        }),
+      ).annotate({
+        identifier: "GetWorkspaceManagedIdentitySqlControlSettingsResponse",
+      });
+  }
+}
+function __c218(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          desiredState: S.optional(S.String),
+          actualState: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier:
+          "GetWorkspaceManagedIdentitySqlControlSettingsResponsePropertiesGrantSqlControlToManagedIdentity",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          grantSqlControlToManagedIdentity: S.optional(__S(3488, __c218, 0)),
+        }),
+      ).annotate({
+        identifier: "GetWorkspaceManagedIdentitySqlControlSettingsResponseProperties",
+      });
+  }
+}
+function __c219(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          workspaceName: S.String.pipe(T.Label()),
+          blobAuditingPolicyName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/auditingSettings/{blobAuditingPolicyName}",
+            code: 200,
+            apiVersion: "2021-06-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetWorkspaceManagedSqlServerBlobAuditingPolicyRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          properties: S.optional(__S(3520, __c220, 0)),
+        }),
+      ).annotate({
+        identifier: "GetWorkspaceManagedSqlServerBlobAuditingPolicyResponse",
+      });
+  }
+}
+function __c220(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          state: S.String,
+          storageEndpoint: S.optional(S.String),
+          storageAccountAccessKey: S.optional(S.String),
+          retentionDays: S.optional(S.Number),
+          auditActionsAndGroups: S.optional(__S(1760, __c110, 0)),
+          storageAccountSubscriptionId: S.optional(S.String),
+          isStorageSecondaryKeyInUse: S.optional(S.Boolean),
+          isAzureMonitorTargetEnabled: S.optional(S.Boolean),
+          queueDelayMs: S.optional(S.Number),
+          isDevopsAuditEnabled: S.optional(S.Boolean),
+        }),
+      ).annotate({
+        identifier: "ServerBlobAuditingPolicyProperties",
+      });
+  }
+}
+function __c221(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          workspaceName: S.String.pipe(T.Label()),
+          dedicatedSQLminimalTlsSettingsName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/dedicatedSQLminimalTlsSettings/{dedicatedSQLminimalTlsSettingsName}",
+            code: 200,
+            apiVersion: "2021-06-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetWorkspaceManagedSqlServerDedicatedSQLMinimalTlsSettingsRequest",
+      });
+  }
+}
+function __c222(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          minimalTlsVersion: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "DedicatedSQLminimalTlsSettingsProperties",
+      });
+  }
+}
+function __c223(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          location: S.optional(S.String),
+          properties: S.optional(__S(3552, __c222, 0)),
+        }),
+      ).annotate({
+        identifier: "GetWorkspaceManagedSqlServerDedicatedSQLMinimalTlsSettingsResponse",
+      });
+  }
+}
+function __c224(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          workspaceName: S.String.pipe(T.Label()),
+          encryptionProtectorName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/encryptionProtector/{encryptionProtectorName}",
+            code: 200,
+            apiVersion: "2021-06-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetWorkspaceManagedSqlServerEncryptionProtectorRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          kind: S.optional(S.String),
+          location: S.optional(S.String),
+          properties: S.optional(__S(3600, __c225, 0)),
+        }),
+      ).annotate({
+        identifier: "GetWorkspaceManagedSqlServerEncryptionProtectorResponse",
+      });
+  }
+}
+function __c225(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subregion: S.optional(S.String),
+          serverKeyName: S.optional(S.String),
+          serverKeyType: S.String,
+          uri: S.optional(S.String),
+          thumbprint: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "EncryptionProtectorProperties",
+      });
+  }
+}
+function __c226(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          aliasName: S.optional(S.String),
+          ruleState: S.optional(S.String),
+          schemaName: S.String,
+          tableName: S.String,
+          columnName: S.String,
+          maskingFunction: S.String,
+          numberFrom: S.optional(S.String),
+          numberTo: S.optional(S.String),
+          prefixSize: S.optional(S.String),
+          suffixSize: S.optional(S.String),
+          replacementString: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "DataMaskingRulePropertiesInput",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          workspaceName: S.String.pipe(T.Label()),
+          sqlPoolName: S.String.pipe(T.Label()),
+          dataMaskingPolicyName: S.String.pipe(T.Label()),
+          dataMaskingRuleName: S.String.pipe(T.Label()),
+          properties: S.optional(__S(3616, __c226, 0)),
+        }).pipe(
+          T.Http({
+            method: "PUT",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/sqlPools/{sqlPoolName}/dataMaskingPolicies/{dataMaskingPolicyName}/rules/{dataMaskingRuleName}",
+            code: 200,
+            apiVersion: "2021-06-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "DataMaskingRulesCreateOrUpdateRequest",
+      });
+  }
+}
+function __c227(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          properties: S.optional(__S(3648, __c228, 0)),
+          location: S.optional(S.String),
+          kind: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "DataMaskingRulesCreateOrUpdateResponse",
+      });
+  }
+}
+function __c228(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          aliasName: S.optional(S.String),
+          ruleState: S.optional(S.String),
+          schemaName: S.String,
+          tableName: S.String,
+          columnName: S.String,
+          maskingFunction: S.String,
+          numberFrom: S.optional(S.String),
+          numberTo: S.optional(S.String),
+          prefixSize: S.optional(S.String),
+          suffixSize: S.optional(S.String),
+          replacementString: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "DataMaskingRuleProperties",
+      });
+  }
+}
+function __c229(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          workspaceName: S.String.pipe(T.Label()),
+          blobAuditingPolicyName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/extendedAuditingSettings/{blobAuditingPolicyName}",
+            code: 200,
+            apiVersion: "2021-06-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetWorkspaceManagedSqlServerExtendedBlobAuditingPolicyRequest",
+      });
+  }
+}
+function __c230(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          predicateExpression: S.optional(S.String),
+          state: S.String,
+          storageEndpoint: S.optional(S.String),
+          storageAccountAccessKey: S.optional(S.String),
+          retentionDays: S.optional(S.Number),
+          auditActionsAndGroups: S.optional(__S(2016, __c126, 0)),
+          storageAccountSubscriptionId: S.optional(S.String),
+          isStorageSecondaryKeyInUse: S.optional(S.Boolean),
+          isAzureMonitorTargetEnabled: S.optional(S.Boolean),
+          queueDelayMs: S.optional(S.Number),
+          isDevopsAuditEnabled: S.optional(S.Boolean),
+        }),
+      ).annotate({
+        identifier: "ExtendedServerBlobAuditingPolicyProperties",
+      });
+  }
+}
+function __c231(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          properties: S.optional(__S(3680, __c230, 0)),
+        }),
+      ).annotate({
+        identifier: "GetWorkspaceManagedSqlServerExtendedBlobAuditingPolicyResponse",
+      });
+  }
+}
+function __c232(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          workspaceName: S.String.pipe(T.Label()),
+          sqlPoolName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/recoverableSqlPools/{sqlPoolName}",
+            code: 200,
+            apiVersion: "2021-06-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetWorkspaceManagedSqlServerRecoverableSqlPoolRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          properties: S.optional(__S(3728, __c233, 0)),
+        }),
+      ).annotate({
+        identifier: "GetWorkspaceManagedSqlServerRecoverableSqlPoolResponse",
+      });
+  }
+}
+function __c233(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          edition: S.optional(S.String),
+          serviceLevelObjective: S.optional(S.String),
+          elasticPoolName: S.optional(S.String),
+          lastAvailableBackupDate: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "RecoverableSqlPoolProperties",
+      });
+  }
+}
+function __c234(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          workspaceName: S.String.pipe(T.Label()),
+          securityAlertPolicyName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/securityAlertPolicies/{securityAlertPolicyName}",
+            code: 200,
+            apiVersion: "2021-06-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetWorkspaceManagedSqlServerSecurityAlertPolicyRequest",
+      });
+  }
+}
+function __c235(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          properties: S.optional(__S(3776, __c236, 0)),
+        }),
+      ).annotate({
+        identifier: "GetWorkspaceManagedSqlServerSecurityAlertPolicyResponse",
+      });
+  }
+}
+function __c236(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          state: S.String,
+          disabledAlerts: S.optional(__S(1760, __c110, 0)),
+          emailAddresses: S.optional(__S(1760, __c110, 0)),
+          emailAccountAdmins: S.optional(S.Boolean),
+          storageEndpoint: S.optional(S.String),
+          storageAccountAccessKey: S.optional(S.String),
+          retentionDays: S.optional(S.Number),
+          creationTime: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "ServerSecurityAlertPolicyProperties",
+      });
+  }
+}
+function __c237(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          workspaceName: S.String.pipe(T.Label()),
+          vulnerabilityAssessmentName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/vulnerabilityAssessments/{vulnerabilityAssessmentName}",
+            code: 200,
+            apiVersion: "2021-06-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetWorkspaceManagedSqlServerVulnerabilityAssessmentRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          properties: S.optional(__S(3808, __c238, 0)),
+        }),
+      ).annotate({
+        identifier: "GetWorkspaceManagedSqlServerVulnerabilityAssessmentResponse",
+      });
+  }
+}
+function __c238(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          storageContainerPath: S.String,
+          storageContainerSasKey: S.optional(S.String),
+          storageAccountAccessKey: S.optional(S.String),
+          recurringScans: S.optional(__S(3216, __c201, 0)),
+        }),
+      ).annotate({
+        identifier: "ServerVulnerabilityAssessmentProperties",
+      });
+  }
+}
+function __c239(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          workspaceName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/sqlAdministrators/activeDirectory",
+            code: 200,
+            apiVersion: "2021-06-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetWorkspaceSqlAadAdminRequest",
+      });
+  }
+}
+function __c240(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          workspaceName: S.String.pipe(T.Label()),
+          integrationRuntimeName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/integrationRuntimes/{integrationRuntimeName}/upgrade",
+            code: 200,
+            apiVersion: "2021-06-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "IntegrationRuntimesUpgradeRequest",
+      });
+  }
+}
+function __c241(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          workspaceName: S.String.pipe(T.Label()),
+          ruleName: S.String.pipe(T.Label()),
+          properties: S.optional(__S(3872, __c242, 0)),
+        }).pipe(
+          T.Http({
+            method: "PUT",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/firewallRules/{ruleName}",
+            code: 200,
+            apiVersion: "2021-06-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "IpFirewallRulesCreateOrUpdateRequest",
+      });
+  }
+}
+function __c242(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          endIpAddress: S.optional(S.String),
+          startIpAddress: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "IpFirewallRulePropertiesInput",
+      });
+  }
+}
+function __c243(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          workspaceName: S.String.pipe(T.Label()),
+          keyName: S.String.pipe(T.Label()),
+          properties: S.optional(__S(784, __c49, 0)),
+        }).pipe(
+          T.Http({
+            method: "PUT",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/keys/{keyName}",
+            code: 200,
+            apiVersion: "2021-06-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "KeysCreateOrUpdateRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          properties: S.optional(__S(784, __c49, 0)),
+        }),
+      ).annotate({
+        identifier: "KeysCreateOrUpdateResponse",
+      });
+  }
+}
+function __c244(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          workspaceName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/azureADOnlyAuthentications",
+            code: 200,
+            apiVersion: "2021-06-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListAzureADOnlyAuthenticationsRequest",
+      });
+    case 1:
+      return S.Array(__S(1681, __c105, 1));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          value: S.optional(__S(3905, __c244, 1)),
+          nextLink: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "AzureADOnlyAuthenticationListResult",
+      });
+  }
+}
+function __c245(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          workspaceName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/bigDataPools",
+            code: 200,
+            apiVersion: "2021-06-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListBigDataPoolByWorkspaceRequest",
+      });
+    case 1:
+      return S.Array(__S(2080, __c130, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          nextLink: S.optional(S.String),
+          value: S.optional(__S(3921, __c245, 1)),
+        }),
+      ).annotate({
+        identifier: "BigDataPoolResourceInfoListResult",
+      });
+  }
+}
+function __c246(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          workspaceName: S.String.pipe(T.Label()),
+          bigDataPoolName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/bigDataPools/{bigDataPoolName}",
+            code: 200,
+            apiVersion: "2021-06-01",
+          }),
+        ),
+      ).annotate({ identifier: "DeleteBigDataPoolRequest" });
+  }
+}
+function __c247(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          workspaceName: S.String.pipe(T.Label()),
+          sqlPoolName: S.String.pipe(T.Label()),
+          dataMaskingPolicyName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/sqlPools/{sqlPoolName}/dataMaskingPolicies/{dataMaskingPolicyName}/rules",
+            code: 200,
+            apiVersion: "2021-06-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListDataMaskingRuleBySqlPoolRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          properties: S.optional(__S(3648, __c228, 0)),
+          location: S.optional(S.String),
+          kind: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "DataMaskingRule" });
+    case 2:
+      return S.Array(__S(3953, __c247, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          value: S.optional(__S(3954, __c247, 2)),
+        }),
+      ).annotate({
+        identifier: "DataMaskingRuleListResult",
+      });
+  }
+}
+function __c248(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          workspaceName: S.String.pipe(T.Label()),
+          sqlPoolName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/sqlPools/{sqlPoolName}/extendedAuditingSettings",
+            code: 200,
+            apiVersion: "2021-06-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListExtendedSqlPoolBlobAuditingPolicyBySqlPoolRequest",
+      });
+    case 1:
+      return S.Array(__S(2144, __c134, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          value: S.optional(__S(3969, __c248, 1)),
+          nextLink: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "ExtendedSqlPoolBlobAuditingPolicyListResult",
+      });
+  }
+}
+function __c249(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          workspaceName: S.String.pipe(T.Label()),
+          integrationRuntimeName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/integrationRuntimes/{integrationRuntimeName}/listAuthKeys",
+            code: 200,
+            apiVersion: "2021-06-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListIntegrationRuntimeAuthKeysRequest",
+      });
+  }
+}
+function __c250(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          authKey1: S.optional(S.String),
+          authKey2: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "IntegrationRuntimeAuthKeys",
+      });
+  }
+}
+function __c251(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          workspaceName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/integrationRuntimes",
+            code: 200,
+            apiVersion: "2021-06-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListIntegrationRuntimeByWorkspaceRequest",
+      });
+    case 1:
+      return S.Array(__S(1953, __c122, 1));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          value: __S(4017, __c251, 1),
+          nextLink: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "IntegrationRuntimeListResponse",
+      });
+  }
+}
+function __c252(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          workspaceName: S.String.pipe(T.Label()),
+          integrationRuntimeName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/integrationRuntimes/{integrationRuntimeName}/monitoringData",
+            code: 200,
+            apiVersion: "2021-06-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListIntegrationRuntimeMonitoringDataRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          nodeName: S.optional(S.String),
+          availableMemoryInMB: S.optional(S.Number),
+          cpuUtilization: S.optional(S.Number),
+          concurrentJobsLimit: S.optional(S.Number),
+          concurrentJobsRunning: S.optional(S.Number),
+          maxConcurrentJobs: S.optional(S.Number),
+          sentBytes: S.optional(S.Number),
+          receivedBytes: S.optional(S.Number),
+        }),
+      ).annotate({
+        identifier: "IntegrationRuntimeNodeMonitoringData",
+      });
+    case 2:
+      return S.Array(__S(4033, __c252, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.optional(S.String),
+          nodes: S.optional(__S(4034, __c252, 2)),
+        }),
+      ).annotate({
+        identifier: "IntegrationRuntimeMonitoringData",
+      });
+  }
+}
+function __c253(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          workspaceName: S.String.pipe(T.Label()),
+          integrationRuntimeName: S.String.pipe(T.Label()),
+          metadataPath: S.optional(S.String),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/integrationRuntimes/{integrationRuntimeName}/getObjectMetadata",
+            code: 200,
+            apiVersion: "2021-06-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListIntegrationRuntimeObjectMetadataRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          type: S.String,
+          id: S.optional(S.Number),
+          name: S.optional(S.String),
+          description: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "SsisObjectMetadata" });
+    case 2:
+      return S.Array(__S(4049, __c253, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          value: S.optional(__S(4050, __c253, 2)),
+          nextLink: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "SsisObjectMetadataListResponse",
+      });
+  }
+}
+function __c254(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          workspaceName: S.String.pipe(T.Label()),
+          integrationRuntimeName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/integrationRuntimes/{integrationRuntimeName}/outboundNetworkDependenciesEndpoints",
+            code: 200,
+            apiVersion: "2021-06-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListIntegrationRuntimeOutboundNetworkDependenciesEndpointsRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          port: S.optional(S.Number),
+        }),
+      ).annotate({
+        identifier: "IntegrationRuntimeOutboundNetworkDependenciesEndpointDetails",
+      });
+    case 2:
+      return S.Array(__S(4065, __c254, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          domainName: S.optional(S.String),
+          endpointDetails: S.optional(__S(4066, __c254, 2)),
+        }),
+      ).annotate({
+        identifier: "IntegrationRuntimeOutboundNetworkDependenciesEndpoint",
+      });
+    case 4:
+      return S.Array(__S(4067, __c254, 3));
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          category: S.optional(S.String),
+          endpoints: S.optional(__S(4068, __c254, 4)),
+        }),
+      ).annotate({
+        identifier: "IntegrationRuntimeOutboundNetworkDependenciesCategoryEndpoint",
+      });
+    case 6:
+      return S.Array(__S(4069, __c254, 5));
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          value: S.optional(__S(4070, __c254, 6)),
+        }),
+      ).annotate({
+        identifier: "IntegrationRuntimeOutboundNetworkDependenciesEndpointsResponse",
+      });
+  }
+}
+function __c255(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          workspaceName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/firewallRules",
+            code: 200,
+            apiVersion: "2021-06-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListIpFirewallRuleByWorkspaceRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          properties: S.optional(__S(560, __c35, 0)),
+        }),
+      ).annotate({ identifier: "IpFirewallRuleInfo" });
+    case 2:
+      return S.Array(__S(4081, __c255, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          nextLink: S.optional(S.String),
+          value: S.optional(__S(4082, __c255, 2)),
+        }),
+      ).annotate({
+        identifier: "IpFirewallRuleInfoListResult",
+      });
+  }
+}
+function __c256(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          workspaceName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/keys",
+            code: 200,
+            apiVersion: "2021-06-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListKeyByWorkspaceRequest",
+      });
+    case 1:
+      return S.Array(__S(800, __c50, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          nextLink: S.optional(S.String),
+          value: S.optional(__S(4097, __c256, 1)),
+        }),
+      ).annotate({ identifier: "KeyInfoListResult" });
+  }
+}
+function __c257(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          workspaceName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/libraries",
+            code: 200,
+            apiVersion: "2021-06-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListLibraryByWorkspaceRequest",
+      });
+    case 1:
+      return S.Array(__S(2400, __c150, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          value: __S(4113, __c257, 1),
+          nextLink: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "LibraryListResponse" });
+  }
+}
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

@@ -714,7 +714,7 @@ export const getCustomerUsageReports: API.PaginatedOperationMethod<
   UsageReports
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(0, __c0, 0) as any as S.Schema<GetCustomerUsageReportsRequest>,
-  output: __S(12, __c1, 4) as any as S.Schema<UsageReports>,
+  output: __S(43, __c1, 11) as any as S.Schema<UsageReports>,
   errors: [NotFound, Forbidden, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -730,8 +730,8 @@ export const getEntityUsageReports: API.PaginatedOperationMethod<
   GoogleWorkspaceOpContext,
   UsageReports
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(13, __c1, 5) as any as S.Schema<GetEntityUsageReportsRequest>,
-  output: __S(12, __c1, 4) as any as S.Schema<UsageReports>,
+  input: __S(64, __c2, 0) as any as S.Schema<GetEntityUsageReportsRequest>,
+  output: __S(43, __c1, 11) as any as S.Schema<UsageReports>,
   errors: [NotFound, Forbidden, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -747,8 +747,8 @@ export const getUserUsageReport: API.PaginatedOperationMethod<
   GoogleWorkspaceOpContext,
   UsageReports
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(14, __c1, 6) as any as S.Schema<GetUserUsageReportRequest>,
-  output: __S(12, __c1, 4) as any as S.Schema<UsageReports>,
+  input: __S(96, __c3, 0) as any as S.Schema<GetUserUsageReportRequest>,
+  output: __S(43, __c1, 11) as any as S.Schema<UsageReports>,
   errors: [NotFound, Forbidden, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -764,8 +764,8 @@ export const listActivities: API.PaginatedOperationMethod<
   GoogleWorkspaceOpContext,
   Activity
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(15, __c1, 7) as any as S.Schema<ListActivitiesRequest>,
-  output: __S(62, __c7, 6) as any as S.Schema<Activities>,
+  input: __S(128, __c4, 0) as any as S.Schema<ListActivitiesRequest>,
+  output: __S(175, __c5, 15) as any as S.Schema<Activities>,
   errors: [NotFound, Forbidden, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -785,8 +785,8 @@ export const stopChannels: API.OperationMethod<
   StopChannelsError,
   GoogleWorkspaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(65, __c8, 1) as any as S.Schema<StopChannelsRequest>,
-  output: __S(66, __c8, 2) as any as S.Schema<StopChannelsResponse>,
+  input: __S(192, __c6, 0) as any as S.Schema<StopChannelsRequest>,
+  output: __S(193, __c6, 1) as any as S.Schema<StopChannelsResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -805,8 +805,8 @@ export const watchActivities: API.OperationMethod<
   WatchActivitiesError,
   GoogleWorkspaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(67, __c8, 3) as any as S.Schema<WatchActivitiesRequest>,
-  output: __S(64, __c8, 0) as any as S.Schema<Channel>,
+  input: __S(256, __c8, 0) as any as S.Schema<WatchActivitiesRequest>,
+  output: __S(225, __c7, 1) as any as S.Schema<Channel>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -832,15 +832,19 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "GetCustomerUsageReportsRequest",
       });
-    case 1:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
       return S.Record(S.String, S.Unknown);
+    case 1:
+      return S.Array(__S(32, __c1, 0));
     case 2:
-      return S.Array(__S(1, __c0, 1));
-    case 3:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
-          msgValue: S.optional(__S(2, __c0, 2)),
+          msgValue: S.optional(__S(33, __c1, 1)),
           intValue: S.optional(S.String),
           stringValue: S.optional(S.String),
           datetimeValue: S.optional(S.String),
@@ -849,9 +853,9 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "UsageReportParametersItem",
       });
+    case 3:
+      return S.Array(__S(34, __c1, 2));
     case 4:
-      return S.Array(__S(3, __c0, 3));
-    case 5:
       return S.suspend(() =>
         S.Struct({
           entityId: S.optional(S.String),
@@ -861,23 +865,19 @@ function __c0(j: number): any {
           profileId: S.optional(S.String),
         }),
       ).annotate({ identifier: "UsageReportEntity" });
-    case 6:
+    case 5:
       return S.suspend(() =>
         S.Struct({
           kind: S.optional(S.String),
           date: S.optional(S.String),
           etag: S.optional(S.String),
-          parameters: S.optional(__S(4, __c0, 4)),
-          entity: S.optional(__S(5, __c0, 5)),
+          parameters: S.optional(__S(35, __c1, 3)),
+          entity: S.optional(__S(36, __c1, 4)),
         }),
       ).annotate({ identifier: "UsageReport" });
+    case 6:
+      return S.Array(__S(37, __c1, 5));
     case 7:
-      return S.Array(__S(6, __c0, 6));
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
       return S.suspend(() =>
         S.Struct({
           value: S.optional(S.String),
@@ -886,29 +886,33 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "UsageReportsWarningsItemDataItem",
       });
-    case 1:
-      return S.Array(__S(8, __c1, 0));
-    case 2:
+    case 8:
+      return S.Array(__S(39, __c1, 7));
+    case 9:
       return S.suspend(() =>
         S.Struct({
           code: S.optional(S.String),
-          data: S.optional(__S(9, __c1, 1)),
+          data: S.optional(__S(40, __c1, 8)),
           message: S.optional(S.String),
         }),
       ).annotate({ identifier: "UsageReportsWarningsItem" });
-    case 3:
-      return S.Array(__S(10, __c1, 2));
-    case 4:
+    case 10:
+      return S.Array(__S(41, __c1, 9));
+    case 11:
       return S.suspend(() =>
         S.Struct({
           kind: S.optional(S.String),
           etag: S.optional(S.String),
           nextPageToken: S.optional(S.String),
-          usageReports: S.optional(__S(7, __c0, 7)),
-          warnings: S.optional(__S(11, __c1, 3)),
+          usageReports: S.optional(__S(38, __c1, 6)),
+          warnings: S.optional(__S(42, __c1, 10)),
         }),
       ).annotate({ identifier: "UsageReports" });
-    case 5:
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           entityType: S.String.pipe(T.Label()),
@@ -929,7 +933,11 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "GetEntityUsageReportsRequest",
       });
-    case 6:
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           filters: S.optional(S.String.pipe(T.Query())),
@@ -951,7 +959,11 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "GetUserUsageReportRequest",
       });
-    case 7:
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           statusFilter: S.optional(S.String.pipe(T.Query())),
@@ -981,11 +993,7 @@ function __c1(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ListActivitiesRequest" });
-  }
-}
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           badged: S.optional(S.Boolean),
@@ -993,7 +1001,7 @@ function __c2(j: number): any {
           id: S.optional(S.String),
         }),
       ).annotate({ identifier: "FieldValueSelectionValue" });
-    case 1:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           month: S.optional(S.Number),
@@ -1001,143 +1009,135 @@ function __c2(j: number): any {
           year: S.optional(S.Number),
         }),
       ).annotate({ identifier: "Admin_Date" });
-    case 2:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           reasonType: S.optional(S.String),
         }),
       ).annotate({ identifier: "Reason" });
-    case 3:
+    case 4:
       return S.suspend(() =>
         S.Struct({
           email: S.optional(S.String),
         }),
       ).annotate({ identifier: "FieldValueUserValue" });
-    case 4:
-      return S.Array(__S(19, __c2, 3));
     case 5:
+      return S.Array(__S(132, __c4, 4));
+    case 6:
       return S.suspend(() =>
         S.Struct({
-          values: S.optional(__S(20, __c2, 4)),
+          values: S.optional(__S(133, __c4, 5)),
         }),
       ).annotate({ identifier: "FieldValueUserListValue" });
-    case 6:
-      return S.Array(S.String);
     case 7:
+      return S.Array(S.String);
+    case 8:
       return S.suspend(() =>
         S.Struct({
-          values: S.optional(__S(22, __c2, 6)),
+          values: S.optional(__S(135, __c4, 7)),
         }),
       ).annotate({ identifier: "FieldValueTextListValue" });
-  }
-}
-function __c3(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(16, __c2, 0));
-    case 1:
+    case 9:
+      return S.Array(__S(129, __c4, 1));
+    case 10:
       return S.suspend(() =>
         S.Struct({
-          values: S.optional(__S(24, __c3, 0)),
+          values: S.optional(__S(137, __c4, 9)),
         }),
       ).annotate({
         identifier: "FieldValueSelectionListValue",
       });
-    case 2:
+    case 11:
       return S.suspend(() =>
         S.Struct({
-          selectionValue: S.optional(__S(16, __c2, 0)),
-          dateValue: S.optional(__S(17, __c2, 1)),
+          selectionValue: S.optional(__S(129, __c4, 1)),
+          dateValue: S.optional(__S(130, __c4, 2)),
           id: S.optional(S.String),
-          reason: S.optional(__S(18, __c2, 2)),
+          reason: S.optional(__S(131, __c4, 3)),
           longTextValue: S.optional(S.String),
           type: S.optional(S.String),
           unsetValue: S.optional(S.Boolean),
           integerValue: S.optional(S.String),
           textValue: S.optional(S.String),
-          userValue: S.optional(__S(19, __c2, 3)),
-          userListValue: S.optional(__S(21, __c2, 5)),
-          textListValue: S.optional(__S(23, __c2, 7)),
+          userValue: S.optional(__S(132, __c4, 4)),
+          userListValue: S.optional(__S(134, __c4, 6)),
+          textListValue: S.optional(__S(136, __c4, 8)),
           displayName: S.optional(S.String),
-          selectionListValue: S.optional(__S(25, __c3, 1)),
+          selectionListValue: S.optional(__S(138, __c4, 10)),
         }),
       ).annotate({ identifier: "FieldValue" });
-    case 3:
-      return S.Array(__S(26, __c3, 2));
-    case 4:
+    case 12:
+      return S.Array(__S(139, __c4, 11));
+    case 13:
       return S.suspend(() =>
         S.Struct({
-          fieldValues: S.optional(__S(27, __c3, 3)),
+          fieldValues: S.optional(__S(140, __c4, 12)),
           id: S.optional(S.String),
           title: S.optional(S.String),
-          reason: S.optional(__S(18, __c2, 2)),
+          reason: S.optional(__S(131, __c4, 3)),
         }),
       ).annotate({ identifier: "AppliedLabel" });
-    case 5:
-      return S.Array(__S(28, __c3, 4));
-    case 6:
+    case 14:
+      return S.Array(__S(141, __c4, 13));
+    case 15:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           groupEmail: S.optional(S.String),
         }),
       ).annotate({ identifier: "GroupIdentity" });
-    case 7:
+    case 16:
       return S.suspend(() =>
         S.Struct({
           sharedDriveName: S.optional(S.String),
           id: S.optional(S.String),
         }),
       ).annotate({ identifier: "SharedDriveIdentity" });
-  }
-}
-function __c4(j: number): any {
-  switch (j) {
-    case 0:
+    case 17:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
         }),
       ).annotate({ identifier: "CustomerIdentity" });
-    case 1:
+    case 18:
       return S.suspend(() =>
         S.Struct({
           userEmail: S.optional(S.String),
           id: S.optional(S.String),
         }),
       ).annotate({ identifier: "UserIdentity" });
-    case 2:
+    case 19:
       return S.suspend(() =>
         S.Struct({
-          groupIdentity: S.optional(__S(30, __c3, 6)),
-          sharedDriveIdentity: S.optional(__S(31, __c3, 7)),
-          customerIdentity: S.optional(__S(32, __c4, 0)),
-          userIdentity: S.optional(__S(33, __c4, 1)),
+          groupIdentity: S.optional(__S(143, __c4, 15)),
+          sharedDriveIdentity: S.optional(__S(144, __c4, 16)),
+          customerIdentity: S.optional(__S(145, __c4, 17)),
+          userIdentity: S.optional(__S(146, __c4, 18)),
         }),
       ).annotate({ identifier: "OwnerIdentity" });
-    case 3:
-      return S.Array(__S(34, __c4, 2));
-    case 4:
+    case 20:
+      return S.Array(__S(147, __c4, 19));
+    case 21:
       return S.suspend(() =>
         S.Struct({
           ownerType: S.optional(S.String),
-          ownerIdentity: S.optional(__S(35, __c4, 3)),
+          ownerIdentity: S.optional(__S(148, __c4, 20)),
         }),
       ).annotate({ identifier: "OwnerDetails" });
-    case 5:
+    case 22:
       return S.suspend(() =>
         S.Struct({
-          appliedLabels: S.optional(__S(29, __c3, 5)),
-          ownerDetails: S.optional(__S(36, __c4, 4)),
+          appliedLabels: S.optional(__S(142, __c4, 14)),
+          ownerDetails: S.optional(__S(149, __c4, 21)),
           title: S.optional(S.String),
           relation: S.optional(S.String),
           type: S.optional(S.String),
           id: S.optional(S.String),
         }),
       ).annotate({ identifier: "ResourceDetails" });
-    case 6:
-      return S.Array(__S(37, __c4, 5));
-    case 7:
+    case 23:
+      return S.Array(__S(150, __c4, 22));
+    case 24:
       return S.suspend(() =>
         S.Struct({
           time: S.optional(S.String),
@@ -1146,11 +1146,7 @@ function __c4(j: number): any {
           applicationName: S.optional(S.String),
         }),
       ).annotate({ identifier: "ActivityId" });
-  }
-}
-function __c5(j: number): any {
-  switch (j) {
-    case 0:
+    case 25:
       return S.suspend(() =>
         S.Struct({
           impersonation: S.optional(S.Boolean),
@@ -1160,7 +1156,7 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "ActivityActorApplicationInfo",
       });
-    case 1:
+    case 26:
       return S.suspend(() =>
         S.Struct({
           email: S.optional(S.String),
@@ -1168,27 +1164,27 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "AgentAttributionInfoAgentOwner",
       });
-    case 2:
+    case 27:
       return S.suspend(() =>
         S.Struct({
           agentName: S.optional(S.String),
-          agentOwner: S.optional(__S(41, __c5, 1)),
+          agentOwner: S.optional(__S(154, __c4, 26)),
           agentId: S.optional(S.String),
           agentType: S.optional(S.String),
         }),
       ).annotate({ identifier: "AgentAttributionInfo" });
-    case 3:
+    case 28:
       return S.suspend(() =>
         S.Struct({
           callerType: S.optional(S.String),
-          applicationInfo: S.optional(__S(40, __c5, 0)),
-          agentAttributionInfo: S.optional(__S(42, __c5, 2)),
+          applicationInfo: S.optional(__S(153, __c4, 25)),
+          agentAttributionInfo: S.optional(__S(155, __c4, 27)),
           profileId: S.optional(S.String),
           email: S.optional(S.String),
           key: S.optional(S.String),
         }),
       ).annotate({ identifier: "ActivityActor" });
-    case 4:
+    case 29:
       return S.suspend(() =>
         S.Struct({
           deviceOsVersion: S.optional(S.String),
@@ -1196,87 +1192,83 @@ function __c5(j: number): any {
           deviceId: S.optional(S.String),
         }),
       ).annotate({ identifier: "ActivityUserDeviceInfo" });
-    case 5:
+    case 30:
       return S.Array(S.Number);
-    case 6:
+    case 31:
       return S.suspend(() =>
         S.Struct({
           subdivisionCode: S.optional(S.String),
           regionCode: S.optional(S.String),
-          ipAsn: S.optional(__S(45, __c5, 5)),
+          ipAsn: S.optional(__S(158, __c4, 30)),
         }),
       ).annotate({ identifier: "ActivityNetworkInfo" });
-    case 7:
-      return S.Array(S.Boolean);
   }
 }
-function __c6(j: number): any {
+function __c5(j: number): any {
   switch (j) {
     case 0:
+      return S.Array(S.Boolean);
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          multiBoolValue: S.optional(__S(47, __c5, 7)),
+          multiBoolValue: S.optional(__S(160, __c5, 0)),
           boolValue: S.optional(S.Boolean),
           intValue: S.optional(S.String),
           value: S.optional(S.String),
-          multiValue: S.optional(__S(22, __c2, 6)),
+          multiValue: S.optional(__S(135, __c4, 7)),
           name: S.optional(S.String),
-          multiIntValue: S.optional(__S(22, __c2, 6)),
+          multiIntValue: S.optional(__S(135, __c4, 7)),
         }),
       ).annotate({ identifier: "NestedParameter" });
-    case 1:
-      return S.Array(__S(48, __c6, 0));
     case 2:
+      return S.Array(__S(161, __c5, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          parameter: S.optional(__S(49, __c6, 1)),
+          parameter: S.optional(__S(162, __c5, 2)),
         }),
       ).annotate({
         identifier: "ActivityEventsItemParametersItemMultiMessageValueItem",
       });
-    case 3:
-      return S.Array(__S(50, __c6, 2));
     case 4:
+      return S.Array(__S(163, __c5, 3));
+    case 5:
       return S.suspend(() =>
         S.Struct({
-          multiIntValue: S.optional(__S(22, __c2, 6)),
-          multiMessageValue: S.optional(__S(51, __c6, 3)),
+          multiIntValue: S.optional(__S(135, __c4, 7)),
+          multiMessageValue: S.optional(__S(164, __c5, 4)),
           intValue: S.optional(S.String),
           boolValue: S.optional(S.Boolean),
           value: S.optional(S.String),
-          messageValue: S.optional(__S(50, __c6, 2)),
-          multiValue: S.optional(__S(22, __c2, 6)),
+          messageValue: S.optional(__S(163, __c5, 3)),
+          multiValue: S.optional(__S(135, __c4, 7)),
           name: S.optional(S.String),
         }),
       ).annotate({
         identifier: "ActivityEventsItemParametersItem",
       });
-    case 5:
-      return S.Array(__S(52, __c6, 4));
     case 6:
-      return S.Array(__S(50, __c6, 2));
+      return S.Array(__S(165, __c5, 5));
     case 7:
+      return S.Array(__S(163, __c5, 3));
+    case 8:
       return S.suspend(() =>
         S.Struct({
-          messageValue: S.optional(__S(50, __c6, 2)),
+          messageValue: S.optional(__S(163, __c5, 3)),
           intValue: S.optional(S.String),
-          multiIntValue: S.optional(__S(22, __c2, 6)),
-          multiValue: S.optional(__S(22, __c2, 6)),
+          multiIntValue: S.optional(__S(135, __c4, 7)),
+          multiValue: S.optional(__S(135, __c4, 7)),
           value: S.optional(S.String),
-          multiMessageValue: S.optional(__S(54, __c6, 6)),
+          multiMessageValue: S.optional(__S(167, __c5, 7)),
           name: S.optional(S.String),
           boolValue: S.optional(S.Boolean),
         }),
       ).annotate({
         identifier: "ActivityEventsItemSensitiveParametersItem",
       });
-  }
-}
-function __c7(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(55, __c6, 7));
-    case 1:
+    case 9:
+      return S.Array(__S(168, __c5, 8));
+    case 10:
       return S.suspend(() =>
         S.Struct({
           httpStatusCode: S.optional(S.Number),
@@ -1285,71 +1277,54 @@ function __c7(j: number): any {
           errorCode: S.optional(S.String),
         }),
       ).annotate({ identifier: "ActivityEventsStatus" });
-    case 2:
+    case 11:
       return S.suspend(() =>
         S.Struct({
           type: S.optional(S.String),
-          parameters: S.optional(__S(53, __c6, 5)),
-          sensitiveParameters: S.optional(__S(56, __c7, 0)),
+          parameters: S.optional(__S(166, __c5, 6)),
+          sensitiveParameters: S.optional(__S(169, __c5, 9)),
           name: S.optional(S.String),
-          resourceIds: S.optional(__S(22, __c2, 6)),
-          status: S.optional(__S(57, __c7, 1)),
+          resourceIds: S.optional(__S(135, __c4, 7)),
+          status: S.optional(__S(170, __c5, 10)),
         }),
       ).annotate({ identifier: "ActivityEventsItem" });
-    case 3:
-      return S.Array(__S(58, __c7, 2));
-    case 4:
+    case 12:
+      return S.Array(__S(171, __c5, 11));
+    case 13:
       return S.suspend(() =>
         S.Struct({
-          resourceDetails: S.optional(__S(38, __c4, 6)),
-          id: S.optional(__S(39, __c4, 7)),
-          actor: S.optional(__S(43, __c5, 3)),
+          resourceDetails: S.optional(__S(151, __c4, 23)),
+          id: S.optional(__S(152, __c4, 24)),
+          actor: S.optional(__S(156, __c4, 28)),
           kind: S.optional(S.String),
           etag: S.optional(S.String),
-          userDeviceInfo: S.optional(__S(44, __c5, 4)),
-          networkInfo: S.optional(__S(46, __c5, 6)),
+          userDeviceInfo: S.optional(__S(157, __c4, 29)),
+          networkInfo: S.optional(__S(159, __c4, 31)),
           ownerDomain: S.optional(S.String),
-          events: S.optional(__S(59, __c7, 3)),
+          events: S.optional(__S(172, __c5, 12)),
           ipAddress: S.optional(S.String),
           isAgenticAction: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "Activity" });
-    case 5:
-      return S.Array(__S(60, __c7, 4));
-    case 6:
+    case 14:
+      return S.Array(__S(173, __c5, 13));
+    case 15:
       return S.suspend(() =>
         S.Struct({
-          items: __S(61, __c7, 5),
+          items: __S(174, __c5, 14),
           kind: S.optional(S.String),
           etag: S.optional(S.String),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "Activities" });
-    case 7:
-      return S.Record(S.String, S.String);
   }
 }
-function __c8(j: number): any {
+function __c6(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          address: S.optional(S.String),
-          kind: S.optional(S.String),
-          resourceUri: S.optional(S.String),
-          resourceId: S.optional(S.String),
-          params: S.optional(__S(63, __c7, 7)),
-          token: S.optional(S.String),
-          type: S.optional(S.String),
-          expiration: S.optional(S.String),
-          id: S.optional(S.String),
-          payload: S.optional(S.Boolean),
-        }),
-      ).annotate({ identifier: "Channel" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          body: S.optional(__S(64, __c8, 0).pipe(T.HttpBody())),
+          body: S.optional(__S(225, __c7, 1).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -1358,11 +1333,36 @@ function __c8(j: number): any {
           }),
         ),
       ).annotate({ identifier: "StopChannelsRequest" });
-    case 2:
+    case 1:
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "StopChannelsResponse",
       });
-    case 3:
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, S.String);
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          address: S.optional(S.String),
+          kind: S.optional(S.String),
+          resourceUri: S.optional(S.String),
+          resourceId: S.optional(S.String),
+          params: S.optional(__S(224, __c7, 0)),
+          token: S.optional(S.String),
+          type: S.optional(S.String),
+          expiration: S.optional(S.String),
+          id: S.optional(S.String),
+          payload: S.optional(S.Boolean),
+        }),
+      ).annotate({ identifier: "Channel" });
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           eventName: S.optional(S.String.pipe(T.Query())),
@@ -1377,7 +1377,7 @@ function __c8(j: number): any {
           maxResults: S.optional(S.Number.pipe(T.Query())),
           filters: S.optional(S.String.pipe(T.Query())),
           orgUnitID: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(64, __c8, 0).pipe(T.HttpBody())),
+          body: S.optional(__S(225, __c7, 1).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -1388,7 +1388,6 @@ function __c8(j: number): any {
       ).annotate({ identifier: "WatchActivitiesRequest" });
   }
 }
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

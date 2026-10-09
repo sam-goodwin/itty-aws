@@ -87,7 +87,7 @@ export const createEvaluationDirectory: API.OperationMethod<
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(0, __c0, 0) as any as S.Schema<CreateEvaluationDirectoryRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<EvaluationDirectory>,
+  output: __S(6, __c1, 2) as any as S.Schema<EvaluationDirectory>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -100,8 +100,8 @@ export const evaluationDirectoriesDestroy: API.OperationMethod<
   EvaluationDirectoriesDestroyError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(4, __c0, 4) as any as S.Schema<EvaluationDirectoriesDestroyRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<EvaluationDirectoriesDestroyResponse>,
+  input: __S(8, __c2, 0) as any as S.Schema<EvaluationDirectoriesDestroyRequest>,
+  output: __S(9, __c2, 1) as any as S.Schema<EvaluationDirectoriesDestroyResponse>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -114,8 +114,8 @@ export const getEvaluationDirectory: API.OperationMethod<
   GetEvaluationDirectoryError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(6, __c0, 6) as any as S.Schema<GetEvaluationDirectoryRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<EvaluationDirectory>,
+  input: __S(12, __c3, 0) as any as S.Schema<GetEvaluationDirectoryRequest>,
+  output: __S(6, __c1, 2) as any as S.Schema<EvaluationDirectory>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -128,8 +128,8 @@ export const listEvaluationDirectories: API.OperationMethod<
   ListEvaluationDirectoriesError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(7, __c0, 7) as any as S.Schema<ListEvaluationDirectoriesRequest>,
-  output: __S(9, __c1, 1) as any as S.Schema<ListEvaluationDirectoriesResponse>,
+  input: __S(16, __c4, 0) as any as S.Schema<ListEvaluationDirectoriesRequest>,
+  output: __S(18, __c4, 2) as any as S.Schema<ListEvaluationDirectoriesResponse>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -142,8 +142,8 @@ export const updateEvaluationDirectoriesPartial: API.OperationMethod<
   UpdateEvaluationDirectoriesPartialError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(10, __c1, 2) as any as S.Schema<UpdateEvaluationDirectoriesPartialRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<EvaluationDirectory>,
+  input: __S(20, __c5, 0) as any as S.Schema<UpdateEvaluationDirectoriesPartialRequest>,
+  output: __S(6, __c1, 2) as any as S.Schema<EvaluationDirectory>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -167,9 +167,13 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "CreateEvaluationDirectoryRequest",
       });
-    case 1:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
       return S.Record(S.String, S.Unknown);
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.Number),
@@ -179,22 +183,26 @@ function __c0(j: number): any {
           last_name: S.optional(S.String),
           email: S.optional(S.String),
           is_email_verified: S.optional(S.NullOr(S.Boolean)),
-          hedgehog_config: S.optional(S.NullOr(__S(1, __c0, 1))),
+          hedgehog_config: S.optional(S.NullOr(__S(4, __c1, 0))),
           role_at_organization: S.optional(S.NullOr(S.Unknown)),
         }),
       ).annotate({ identifier: "UserBasic" });
-    case 3:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
           name: S.String,
           created_at: S.String,
           updated_at: S.NullOr(S.String),
-          created_by: S.NullOr(__S(2, __c0, 2)),
+          created_by: S.NullOr(__S(5, __c1, 1)),
           evaluation_count: S.Number,
         }),
       ).annotate({ identifier: "EvaluationDirectory" });
-    case 4:
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -209,11 +217,15 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "EvaluationDirectoriesDestroyRequest",
       });
-    case 5:
+    case 1:
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "EvaluationDirectoriesDestroyResponse",
       });
-    case 6:
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -228,7 +240,11 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "GetEvaluationDirectoryRequest",
       });
-    case 7:
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -242,17 +258,17 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "ListEvaluationDirectoriesRequest",
       });
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(3, __c0, 3));
     case 1:
-      return S.suspend(() => __S(8, __c1, 0).pipe(T.RawResponseRoot())).annotate({
+      return S.Array(__S(6, __c1, 2));
+    case 2:
+      return S.suspend(() => __S(17, __c4, 1).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListEvaluationDirectoriesResponse",
       });
-    case 2:
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -270,7 +286,6 @@ function __c1(j: number): any {
       });
   }
 }
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

@@ -260,7 +260,7 @@ export const createEndpointHealthcheck: API.OperationMethod<
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(0, __c0, 0) as any as S.Schema<CreateEndpointHealthcheckRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<CreateEndpointHealthcheckResponse>,
+  output: __S(16, __c1, 0) as any as S.Schema<CreateEndpointHealthcheckResponse>,
   errors: [InvalidHealthcheckEndpoint, Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -276,8 +276,8 @@ export const createTraceroute: API.PaginatedOperationMethod<
   TraceroutesCreateResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(4, __c0, 4) as any as S.Schema<CreateTracerouteRequest>,
-    output: __S(15, __c1, 7) as any as S.Schema<CreateTracerouteResponse>,
+    input: __S(34, __c2, 2) as any as S.Schema<CreateTracerouteRequest>,
+    output: __S(45, __c2, 13) as any as S.Schema<CreateTracerouteResponse>,
     errors: [CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
     retry: Retry.Retry,
@@ -297,8 +297,8 @@ export const deleteEndpointHealthcheck: API.OperationMethod<
   DeleteEndpointHealthcheckError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(16, __c2, 0) as any as S.Schema<DeleteEndpointHealthcheckRequest>,
-  output: __S(17, __c2, 1) as any as S.Schema<DeleteEndpointHealthcheckResponse>,
+  input: __S(48, __c3, 0) as any as S.Schema<DeleteEndpointHealthcheckRequest>,
+  output: __S(49, __c3, 1) as any as S.Schema<DeleteEndpointHealthcheckResponse>,
   errors: [EndpointHealthcheckNotFound, Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -315,8 +315,8 @@ export const getEndpointHealthcheck: API.OperationMethod<
   GetEndpointHealthcheckError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(18, __c2, 2) as any as S.Schema<GetEndpointHealthcheckRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<GetEndpointHealthcheckResponse>,
+  input: __S(64, __c4, 0) as any as S.Schema<GetEndpointHealthcheckRequest>,
+  output: __S(16, __c1, 0) as any as S.Schema<GetEndpointHealthcheckResponse>,
   errors: [EndpointHealthcheckNotFound, Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -330,8 +330,8 @@ export const listEndpointHealthchecks: API.OperationMethod<
   ListEndpointHealthchecksError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(19, __c2, 3) as any as S.Schema<ListEndpointHealthchecksRequest>,
-  output: __S(22, __c2, 6) as any as S.Schema<ListEndpointHealthchecksResponse>,
+  input: __S(80, __c5, 0) as any as S.Schema<ListEndpointHealthchecksRequest>,
+  output: __S(83, __c5, 3) as any as S.Schema<ListEndpointHealthchecksResponse>,
   errors: [Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -349,8 +349,8 @@ export const updateEndpointHealthcheck: API.OperationMethod<
   UpdateEndpointHealthcheckError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(23, __c2, 7) as any as S.Schema<UpdateEndpointHealthcheckRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<UpdateEndpointHealthcheckResponse>,
+  input: __S(96, __c6, 0) as any as S.Schema<UpdateEndpointHealthcheckRequest>,
+  output: __S(16, __c1, 0) as any as S.Schema<UpdateEndpointHealthcheckResponse>,
   errors: [
     EndpointHealthcheckNotFound,
     InvalidHealthcheckEndpoint,
@@ -384,7 +384,11 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "CreateEndpointHealthcheckRequest",
       });
-    case 1:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           checkType: S.String.pipe(T.Body("check_type")),
@@ -395,9 +399,13 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "CreateEndpointHealthcheckResponse",
       });
-    case 2:
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
       return S.Array(S.String);
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           maxTtl: S.optional(S.Number.pipe(T.Body("max_ttl"))),
@@ -409,13 +417,13 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "TraceroutesCreateRequestOptions",
       });
-    case 4:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
-          targets: __S(2, __c0, 2),
-          colos: S.optional(__S(2, __c0, 2)),
-          options: S.optional(__S(3, __c0, 3)),
+          targets: __S(32, __c2, 0),
+          colos: S.optional(__S(32, __c2, 0)),
+          options: S.optional(__S(33, __c2, 1)),
         })
           .pipe(
             T.Http({
@@ -426,7 +434,7 @@ function __c0(j: number): any {
           )
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "CreateTracerouteRequest" });
-    case 5:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           city: S.optional(S.NullOr(S.String)),
@@ -435,14 +443,14 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "TraceroutesCreateResultItemColosItemColo",
       });
-    case 6:
+    case 4:
       return S.Array(S.String);
-    case 7:
+    case 5:
       return S.suspend(() =>
         S.Struct({
           asn: S.optional(S.NullOr(S.String)),
           ip: S.optional(S.NullOr(S.String)),
-          labels: S.optional(S.NullOr(__S(6, __c0, 6))),
+          labels: S.optional(S.NullOr(__S(36, __c2, 4))),
           maxRttMs: S.optional(S.NullOr(S.Number).pipe(T.Body("max_rtt_ms"))),
           meanRttMs: S.optional(S.NullOr(S.Number).pipe(T.Body("mean_rtt_ms"))),
           minRttMs: S.optional(S.NullOr(S.Number).pipe(T.Body("min_rtt_ms"))),
@@ -453,16 +461,12 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "TraceroutesCreateResultItemColosItemHopsItemNodesItem",
       });
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(7, __c0, 7));
-    case 1:
+    case 6:
+      return S.Array(__S(37, __c2, 5));
+    case 7:
       return S.suspend(() =>
         S.Struct({
-          nodes: S.optional(S.NullOr(__S(8, __c1, 0))),
+          nodes: S.optional(S.NullOr(__S(38, __c2, 6))),
           packetsLost: S.optional(S.NullOr(S.Number).pipe(T.Body("packets_lost"))),
           packetsSent: S.optional(S.NullOr(S.Number).pipe(T.Body("packets_sent"))),
           packetsTtl: S.optional(S.NullOr(S.Number).pipe(T.Body("packets_ttl"))),
@@ -470,43 +474,43 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "TraceroutesCreateResultItemColosItemHopsItem",
       });
-    case 2:
-      return S.Array(__S(9, __c1, 1));
-    case 3:
+    case 8:
+      return S.Array(__S(39, __c2, 7));
+    case 9:
       return S.suspend(() =>
         S.Struct({
-          colo: S.optional(S.NullOr(__S(5, __c0, 5))),
+          colo: S.optional(S.NullOr(__S(35, __c2, 3))),
           error: S.optional(S.NullOr(S.String)),
-          hops: S.optional(S.NullOr(__S(10, __c1, 2))),
+          hops: S.optional(S.NullOr(__S(40, __c2, 8))),
           targetSummary: S.optional(S.NullOr(S.Unknown).pipe(T.Body("target_summary"))),
           tracerouteTimeMs: S.optional(S.NullOr(S.Number).pipe(T.Body("traceroute_time_ms"))),
         }),
       ).annotate({
         identifier: "TraceroutesCreateResultItemColosItem",
       });
-    case 4:
-      return S.Array(__S(11, __c1, 3));
-    case 5:
+    case 10:
+      return S.Array(__S(41, __c2, 9));
+    case 11:
       return S.suspend(() =>
         S.Struct({
-          colos: S.optional(S.NullOr(__S(12, __c1, 4))),
+          colos: S.optional(S.NullOr(__S(42, __c2, 10))),
           target: S.optional(S.NullOr(S.String)),
         }),
       ).annotate({
         identifier: "TraceroutesCreateResultItem",
       });
-    case 6:
-      return S.Array(__S(13, __c1, 5));
-    case 7:
+    case 12:
+      return S.Array(__S(43, __c2, 11));
+    case 13:
       return S.suspend(() =>
         S.Struct({
-          result: __S(14, __c1, 6).pipe(T.EnvelopePayload()),
+          result: __S(44, __c2, 12).pipe(T.EnvelopePayload()),
           resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "CreateTracerouteResponse" });
   }
 }
-function __c2(j: number): any {
+function __c3(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -529,7 +533,11 @@ function __c2(j: number): any {
       return S.suspend(() => S.Struct({}).pipe(T.KeyDictionary(KEY_DICTIONARY))).annotate({
         identifier: "DeleteEndpointHealthcheckResponse",
       });
-    case 2:
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -546,7 +554,11 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "GetEndpointHealthcheckRequest",
       });
-    case 3:
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -562,7 +574,7 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "ListEndpointHealthchecksRequest",
       });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           checkType: S.String.pipe(T.Body("check_type")),
@@ -573,15 +585,19 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "ListEndpointHealthchecksItem",
       });
-    case 5:
-      return S.Array(__S(20, __c2, 4));
-    case 6:
+    case 2:
+      return S.Array(__S(81, __c5, 1));
+    case 3:
       return S.suspend(() =>
-        __S(21, __c2, 5).pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
+        __S(82, __c5, 2).pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({
         identifier: "ListEndpointHealthchecksResponse",
       });
-    case 7:
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -603,7 +619,6 @@ function __c2(j: number): any {
       });
   }
 }
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

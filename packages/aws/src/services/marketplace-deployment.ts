@@ -188,8 +188,8 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(0, __c0, 0) as any as S.Schema<ListTagsForResourceRequest>,
-  output: __S(2, __c0, 2) as any as S.Schema<ListTagsForResourceResponse>,
+  input: __S(4, __c1, 0) as any as S.Schema<ListTagsForResourceRequest>,
+  output: __S(5, __c1, 1) as any as S.Schema<ListTagsForResourceResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -220,8 +220,8 @@ export const putDeploymentParameter: API.OperationMethod<
   PutDeploymentParameterError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(4, __c0, 4) as any as S.Schema<PutDeploymentParameterRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<PutDeploymentParameterResponse>,
+  input: __S(13, __c3, 1) as any as S.Schema<PutDeploymentParameterRequest>,
+  output: __S(14, __c3, 2) as any as S.Schema<PutDeploymentParameterResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -253,8 +253,8 @@ export const tagResource: API.OperationMethod<
   TagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(6, __c0, 6) as any as S.Schema<TagResourceRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<TagResourceResponse>,
+  input: __S(16, __c4, 0) as any as S.Schema<TagResourceRequest>,
+  output: __S(20, __c5, 0) as any as S.Schema<TagResourceResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -285,8 +285,8 @@ export const untagResource: API.OperationMethod<
   UntagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(9, __c1, 1) as any as S.Schema<UntagResourceRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<UntagResourceResponse>,
+  input: __S(1, __c0, 1) as any as S.Schema<UntagResourceRequest>,
+  output: __S(20, __c5, 0) as any as S.Schema<UntagResourceResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -304,6 +304,28 @@ export const untagResource: API.OperationMethod<
 function __c0(j: number): any {
   switch (j) {
     case 0:
+      return S.Array(S.String);
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          resourceArn: S.String.pipe(T.HttpLabel("resourceArn")),
+          tagKeys: __S(0, __c0, 0).pipe(T.HttpQuery("tagKeys")),
+        }).pipe(
+          T.all(
+            T.Http({ method: "DELETE", uri: "/tags/{resourceArn}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "UntagResourceRequest" });
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ resourceArn: S.String.pipe(T.HttpLabel("resourceArn")) }).pipe(
           T.all(
@@ -319,23 +341,31 @@ function __c0(j: number): any {
         identifier: "ListTagsForResourceRequest",
       });
     case 1:
-      return S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
-    case 2:
-      return S.suspend(() => S.Struct({ tags: S.optional(__S(1, __c0, 1)) })).annotate({
+      return S.suspend(() => S.Struct({ tags: S.optional(__S(8, __c2, 0)) })).annotate({
         identifier: "ListTagsForResourceResponse",
       });
-    case 3:
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() => S.Struct({ name: S.String, secretString: SensitiveString })).annotate({
         identifier: "DeploymentParameterInput",
       });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           catalog: S.String.pipe(T.HttpLabel("catalog")),
           productId: S.String.pipe(T.HttpLabel("productId")),
           agreementId: S.String,
-          deploymentParameter: __S(3, __c0, 3),
-          tags: S.optional(__S(1, __c0, 1)),
+          deploymentParameter: __S(12, __c3, 0),
+          tags: S.optional(__S(8, __c2, 0)),
           expirationDate: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
           clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
         }).pipe(
@@ -354,22 +384,26 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "PutDeploymentParameterRequest",
       });
-    case 5:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           resourceArn: S.String,
           agreementId: S.String,
           deploymentParameterId: S.String,
-          tags: S.optional(__S(1, __c0, 1)),
+          tags: S.optional(__S(8, __c2, 0)),
         }),
       ).annotate({
         identifier: "PutDeploymentParameterResponse",
       });
-    case 6:
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           resourceArn: S.String.pipe(T.HttpLabel("resourceArn")),
-          tags: S.optional(__S(1, __c0, 1)),
+          tags: S.optional(__S(8, __c2, 0)),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/tags/{resourceArn}" }),
@@ -381,35 +415,16 @@ function __c0(j: number): any {
           ),
         ),
       ).annotate({ identifier: "TagResourceRequest" });
-    case 7:
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "TagResourceResponse",
       });
   }
 }
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(S.String);
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          resourceArn: S.String.pipe(T.HttpLabel("resourceArn")),
-          tagKeys: __S(8, __c1, 0).pipe(T.HttpQuery("tagKeys")),
-        }).pipe(
-          T.all(
-            T.Http({ method: "DELETE", uri: "/tags/{resourceArn}" }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({ identifier: "UntagResourceRequest" });
-  }
-}
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

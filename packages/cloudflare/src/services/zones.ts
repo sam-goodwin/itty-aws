@@ -6144,8 +6144,8 @@ export const createEnvironment: API.OperationMethod<
   CreateEnvironmentError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3, __c0, 3) as any as S.Schema<CreateEnvironmentRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<CreateEnvironmentResponse>,
+  input: __S(0, __c0, 0) as any as S.Schema<CreateEnvironmentRequest>,
+  output: __S(16, __c2, 0) as any as S.Schema<CreateEnvironmentResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -6163,8 +6163,8 @@ export const createHold: API.OperationMethod<
   CreateHoldError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(8, __c1, 0) as any as S.Schema<CreateHoldRequest>,
-  output: __S(9, __c1, 1) as any as S.Schema<CreateHoldResponse>,
+  input: __S(32, __c4, 0) as any as S.Schema<CreateHoldRequest>,
+  output: __S(40, __c5, 0) as any as S.Schema<CreateHoldResponse>,
   errors: [
     ZoneHoldsRequireEnterprise,
     InvalidZoneIdentifier,
@@ -6184,8 +6184,8 @@ export const createSubscription: API.OperationMethod<
   CreateSubscriptionError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(12, __c1, 4) as any as S.Schema<CreateSubscriptionRequest>,
-  output: __S(14, __c1, 6) as any as S.Schema<CreateSubscriptionResponse>,
+  input: __S(49, __c6, 1) as any as S.Schema<CreateSubscriptionRequest>,
+  output: __S(51, __c6, 3) as any as S.Schema<CreateSubscriptionResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -6205,8 +6205,8 @@ export const createZone: API.OperationMethod<
   CreateZoneError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(16, __c2, 0) as any as S.Schema<CreateZoneRequest>,
-  output: __S(22, __c2, 6) as any as S.Schema<CreateZoneResponse>,
+  input: __S(65, __c8, 1) as any as S.Schema<CreateZoneRequest>,
+  output: __S(66, __c8, 2) as any as S.Schema<CreateZoneResponse>,
   errors: [
     ZoneAlreadyExists,
     ZoneCreationBlocked,
@@ -6228,8 +6228,8 @@ export const deleteEnvironment: API.OperationMethod<
   DeleteEnvironmentError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(23, __c2, 7) as any as S.Schema<DeleteEnvironmentRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<DeleteEnvironmentResponse>,
+  input: __S(80, __c10, 0) as any as S.Schema<DeleteEnvironmentRequest>,
+  output: __S(16, __c2, 0) as any as S.Schema<DeleteEnvironmentResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -6243,8 +6243,8 @@ export const deleteHold: API.OperationMethod<
   DeleteHoldError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(24, __c3, 0) as any as S.Schema<DeleteHoldRequest>,
-  output: __S(9, __c1, 1) as any as S.Schema<DeleteHoldResponse>,
+  input: __S(88, __c11, 0) as any as S.Schema<DeleteHoldRequest>,
+  output: __S(40, __c5, 0) as any as S.Schema<DeleteHoldResponse>,
   errors: [InvalidZoneIdentifier, Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -6258,8 +6258,8 @@ export const deleteObservabilityTracingRule: API.OperationMethod<
   DeleteObservabilityTracingRuleError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(25, __c3, 1) as any as S.Schema<DeleteObservabilityTracingRuleRequest>,
-  output: __S(29, __c3, 5) as any as S.Schema<DeleteObservabilityTracingRuleResponse>,
+  input: __S(96, __c12, 0) as any as S.Schema<DeleteObservabilityTracingRuleRequest>,
+  output: __S(107, __c13, 3) as any as S.Schema<DeleteObservabilityTracingRuleResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -6273,8 +6273,8 @@ export const deleteObservabilityTracingSettings: API.OperationMethod<
   DeleteObservabilityTracingSettingsError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(30, __c3, 6) as any as S.Schema<DeleteObservabilityTracingSettingsRequest>,
-  output: __S(31, __c3, 7) as any as S.Schema<DeleteObservabilityTracingSettingsResponse>,
+  input: __S(112, __c14, 0) as any as S.Schema<DeleteObservabilityTracingSettingsRequest>,
+  output: __S(113, __c14, 1) as any as S.Schema<DeleteObservabilityTracingSettingsResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -6288,8 +6288,8 @@ export const deleteZone: API.OperationMethod<
   DeleteZoneError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(32, __c4, 0) as any as S.Schema<DeleteZoneRequest>,
-  output: __S(33, __c4, 1) as any as S.Schema<DeleteZoneResponse>,
+  input: __S(120, __c15, 0) as any as S.Schema<DeleteZoneRequest>,
+  output: __S(121, __c15, 1) as any as S.Schema<DeleteZoneResponse>,
   errors: [InvalidZoneIdentifier, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -6303,8 +6303,8 @@ export const editNel: API.OperationMethod<
   EditNelError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(35, __c4, 3) as any as S.Schema<EditNelRequest>,
-  output: __S(36, __c4, 4) as any as S.Schema<EditNelResponse>,
+  input: __S(128, __c16, 0) as any as S.Schema<EditNelRequest>,
+  output: __S(137, __c17, 1) as any as S.Schema<EditNelResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -6318,8 +6318,8 @@ export const editTransformationsAllowedOrigin: API.OperationMethod<
   EditTransformationsAllowedOriginError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(37, __c4, 5) as any as S.Schema<EditTransformationsAllowedOriginRequest>,
-  output: __S(38, __c4, 6) as any as S.Schema<EditTransformationsAllowedOriginResponse>,
+  input: __S(144, __c18, 0) as any as S.Schema<EditTransformationsAllowedOriginRequest>,
+  output: __S(152, __c19, 0) as any as S.Schema<EditTransformationsAllowedOriginResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -6333,8 +6333,8 @@ export const editTransformationsC2pa: API.OperationMethod<
   EditTransformationsC2paError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(39, __c4, 7) as any as S.Schema<EditTransformationsC2paRequest>,
-  output: __S(38, __c4, 6) as any as S.Schema<EditTransformationsC2paResponse>,
+  input: __S(160, __c20, 0) as any as S.Schema<EditTransformationsC2paRequest>,
+  output: __S(152, __c19, 0) as any as S.Schema<EditTransformationsC2paResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -6348,8 +6348,8 @@ export const getCtAlerting: API.OperationMethod<
   GetCtAlertingError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(40, __c5, 0) as any as S.Schema<GetCtAlertingRequest>,
-  output: __S(41, __c5, 1) as any as S.Schema<GetCtAlertingResponse>,
+  input: __S(168, __c21, 0) as any as S.Schema<GetCtAlertingRequest>,
+  output: __S(176, __c22, 0) as any as S.Schema<GetCtAlertingResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -6363,8 +6363,8 @@ export const getCustomNameserver: API.OperationMethod<
   GetCustomNameserverError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(42, __c5, 2) as any as S.Schema<GetCustomNameserverRequest>,
-  output: __S(43, __c5, 3) as any as S.Schema<GetCustomNameserverResponse>,
+  input: __S(184, __c23, 0) as any as S.Schema<GetCustomNameserverRequest>,
+  output: __S(185, __c23, 1) as any as S.Schema<GetCustomNameserverResponse>,
   errors: [InvalidZoneIdentifier, Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -6378,8 +6378,8 @@ export const getHold: API.OperationMethod<
   GetHoldError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(44, __c5, 4) as any as S.Schema<GetHoldRequest>,
-  output: __S(9, __c1, 1) as any as S.Schema<GetHoldResponse>,
+  input: __S(192, __c24, 0) as any as S.Schema<GetHoldRequest>,
+  output: __S(40, __c5, 0) as any as S.Schema<GetHoldResponse>,
   errors: [InvalidZoneIdentifier, Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -6393,8 +6393,8 @@ export const getNel: API.OperationMethod<
   GetNelError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(45, __c5, 5) as any as S.Schema<GetNelRequest>,
-  output: __S(36, __c4, 4) as any as S.Schema<GetNelResponse>,
+  input: __S(200, __c25, 0) as any as S.Schema<GetNelRequest>,
+  output: __S(137, __c17, 1) as any as S.Schema<GetNelResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -6408,8 +6408,8 @@ export const getObservabilityTracingRule: API.OperationMethod<
   GetObservabilityTracingRuleError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(46, __c5, 6) as any as S.Schema<GetObservabilityTracingRuleRequest>,
-  output: __S(29, __c3, 5) as any as S.Schema<GetObservabilityTracingRuleResponse>,
+  input: __S(208, __c26, 0) as any as S.Schema<GetObservabilityTracingRuleRequest>,
+  output: __S(107, __c13, 3) as any as S.Schema<GetObservabilityTracingRuleResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -6423,8 +6423,8 @@ export const getObservabilityTracingSettings: API.OperationMethod<
   GetObservabilityTracingSettingsError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(47, __c5, 7) as any as S.Schema<GetObservabilityTracingSettingsRequest>,
-  output: __S(48, __c6, 0) as any as S.Schema<GetObservabilityTracingSettingsResponse>,
+  input: __S(216, __c27, 0) as any as S.Schema<GetObservabilityTracingSettingsRequest>,
+  output: __S(217, __c27, 1) as any as S.Schema<GetObservabilityTracingSettingsResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -6438,8 +6438,8 @@ export const getPlan: API.OperationMethod<
   GetPlanError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(49, __c6, 1) as any as S.Schema<GetPlanRequest>,
-  output: __S(50, __c6, 2) as any as S.Schema<GetPlanResponse>,
+  input: __S(224, __c28, 0) as any as S.Schema<GetPlanRequest>,
+  output: __S(225, __c28, 1) as any as S.Schema<GetPlanResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -6455,8 +6455,8 @@ export const getRatePlan: API.PaginatedOperationMethod<
   RatePlansGetResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(51, __c6, 3) as any as S.Schema<GetRatePlanRequest>,
-    output: __S(56, __c7, 0) as any as S.Schema<GetRatePlanResponse>,
+    input: __S(232, __c29, 0) as any as S.Schema<GetRatePlanRequest>,
+    output: __S(237, __c29, 5) as any as S.Schema<GetRatePlanResponse>,
     errors: [CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
     retry: Retry.Retry,
@@ -6473,8 +6473,8 @@ export const getSetting: API.OperationMethod<
   GetSettingError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(57, __c7, 1) as any as S.Schema<GetSettingRequest>,
-  output: __S(59, __c7, 3) as any as S.Schema<GetSettingResponse>,
+  input: __S(240, __c30, 0) as any as S.Schema<GetSettingRequest>,
+  output: __S(242, __c30, 2) as any as S.Schema<GetSettingResponse>,
   errors: [InvalidZoneIdentifier, Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -6488,8 +6488,8 @@ export const getSubscription: API.OperationMethod<
   GetSubscriptionError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(60, __c7, 4) as any as S.Schema<GetSubscriptionRequest>,
-  output: __S(62, __c7, 6) as any as S.Schema<GetSubscriptionResponse>,
+  input: __S(248, __c31, 0) as any as S.Schema<GetSubscriptionRequest>,
+  output: __S(250, __c31, 2) as any as S.Schema<GetSubscriptionResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -6503,8 +6503,8 @@ export const getTransformationsAllowedOrigin: API.OperationMethod<
   GetTransformationsAllowedOriginError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(63, __c7, 7) as any as S.Schema<GetTransformationsAllowedOriginRequest>,
-  output: __S(38, __c4, 6) as any as S.Schema<GetTransformationsAllowedOriginResponse>,
+  input: __S(256, __c32, 0) as any as S.Schema<GetTransformationsAllowedOriginRequest>,
+  output: __S(152, __c19, 0) as any as S.Schema<GetTransformationsAllowedOriginResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -6518,8 +6518,8 @@ export const getTransformationsC2pa: API.OperationMethod<
   GetTransformationsC2paError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(64, __c8, 0) as any as S.Schema<GetTransformationsC2paRequest>,
-  output: __S(38, __c4, 6) as any as S.Schema<GetTransformationsC2paResponse>,
+  input: __S(264, __c33, 0) as any as S.Schema<GetTransformationsC2paRequest>,
+  output: __S(152, __c19, 0) as any as S.Schema<GetTransformationsC2paResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -6533,8 +6533,8 @@ export const getZone: API.OperationMethod<
   GetZoneError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(65, __c8, 1) as any as S.Schema<GetZoneRequest>,
-  output: __S(66, __c8, 2) as any as S.Schema<GetZoneResponse>,
+  input: __S(272, __c34, 0) as any as S.Schema<GetZoneRequest>,
+  output: __S(273, __c34, 1) as any as S.Schema<GetZoneResponse>,
   errors: [InvalidZoneIdentifier, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -6548,8 +6548,8 @@ export const listEntitlements: API.OperationMethod<
   ListEntitlementsError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(67, __c8, 3) as any as S.Schema<ListEntitlementsRequest>,
-  output: __S(73, __c9, 1) as any as S.Schema<ListEntitlementsResponse>,
+  input: __S(280, __c35, 0) as any as S.Schema<ListEntitlementsRequest>,
+  output: __S(286, __c35, 6) as any as S.Schema<ListEntitlementsResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -6563,8 +6563,8 @@ export const listEnvironments: API.OperationMethod<
   ListEnvironmentsError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(74, __c9, 2) as any as S.Schema<ListEnvironmentsRequest>,
-  output: __S(75, __c9, 3) as any as S.Schema<ListEnvironmentsResponse>,
+  input: __S(288, __c36, 0) as any as S.Schema<ListEnvironmentsRequest>,
+  output: __S(296, __c37, 0) as any as S.Schema<ListEnvironmentsResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -6580,8 +6580,8 @@ export const listPlans: API.PaginatedOperationMethod<
   PlansListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(76, __c9, 4) as any as S.Schema<ListPlansRequest>,
-    output: __S(79, __c9, 7) as any as S.Schema<ListPlansResponse>,
+    input: __S(304, __c38, 0) as any as S.Schema<ListPlansRequest>,
+    output: __S(307, __c38, 3) as any as S.Schema<ListPlansResponse>,
     errors: [CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
     retry: Retry.Retry,
@@ -6598,8 +6598,8 @@ export const listSettings: API.OperationMethod<
   ListSettingsError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(80, __c10, 0) as any as S.Schema<ListSettingsRequest>,
-  output: __S(83, __c10, 3) as any as S.Schema<ListSettingsResponse>,
+  input: __S(312, __c39, 0) as any as S.Schema<ListSettingsRequest>,
+  output: __S(315, __c39, 3) as any as S.Schema<ListSettingsResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -6615,8 +6615,8 @@ export const listZones: API.PaginatedOperationMethod<
   ListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(86, __c10, 6) as any as S.Schema<ListZonesRequest>,
-    output: __S(89, __c11, 1) as any as S.Schema<ListZonesResponse>,
+    input: __S(322, __c40, 2) as any as S.Schema<ListZonesRequest>,
+    output: __S(325, __c40, 5) as any as S.Schema<ListZonesResponse>,
     errors: [CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
     retry: Retry.Retry,
@@ -6639,8 +6639,8 @@ export const patchCtAlerting: API.OperationMethod<
   PatchCtAlertingError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(90, __c11, 2) as any as S.Schema<PatchCtAlertingRequest>,
-  output: __S(41, __c5, 1) as any as S.Schema<PatchCtAlertingResponse>,
+  input: __S(328, __c41, 0) as any as S.Schema<PatchCtAlertingRequest>,
+  output: __S(176, __c22, 0) as any as S.Schema<PatchCtAlertingResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -6654,8 +6654,8 @@ export const patchEnvironment: API.OperationMethod<
   PatchEnvironmentError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(91, __c11, 3) as any as S.Schema<PatchEnvironmentRequest>,
-  output: __S(75, __c9, 3) as any as S.Schema<PatchEnvironmentResponse>,
+  input: __S(336, __c42, 0) as any as S.Schema<PatchEnvironmentRequest>,
+  output: __S(296, __c37, 0) as any as S.Schema<PatchEnvironmentResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -6674,8 +6674,8 @@ export const patchHold: API.OperationMethod<
   PatchHoldError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(92, __c11, 4) as any as S.Schema<PatchHoldRequest>,
-  output: __S(9, __c1, 1) as any as S.Schema<PatchHoldResponse>,
+  input: __S(344, __c43, 0) as any as S.Schema<PatchHoldRequest>,
+  output: __S(40, __c5, 0) as any as S.Schema<PatchHoldResponse>,
   errors: [
     ZoneHoldNotFound,
     ZoneHoldsRequireEnterprise,
@@ -6696,8 +6696,8 @@ export const patchSetting: API.OperationMethod<
   PatchSettingError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(93, __c11, 5) as any as S.Schema<PatchSettingRequest>,
-  output: __S(95, __c11, 7) as any as S.Schema<PatchSettingResponse>,
+  input: __S(352, __c44, 0) as any as S.Schema<PatchSettingRequest>,
+  output: __S(354, __c44, 2) as any as S.Schema<PatchSettingResponse>,
   errors: [InvalidZoneIdentifier, Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -6711,8 +6711,8 @@ export const patchZone: API.OperationMethod<
   PatchZoneError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(96, __c12, 0) as any as S.Schema<PatchZoneRequest>,
-  output: __S(97, __c12, 1) as any as S.Schema<PatchZoneResponse>,
+  input: __S(360, __c45, 0) as any as S.Schema<PatchZoneRequest>,
+  output: __S(361, __c45, 1) as any as S.Schema<PatchZoneResponse>,
   errors: [InvalidZoneIdentifier, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -6732,8 +6732,8 @@ export const putCustomNameserver: API.PaginatedOperationMethod<
   string
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(98, __c12, 2) as any as S.Schema<PutCustomNameserverRequest>,
-    output: __S(99, __c12, 3) as any as S.Schema<PutCustomNameserverResponse>,
+    input: __S(368, __c46, 0) as any as S.Schema<PutCustomNameserverRequest>,
+    output: __S(369, __c46, 1) as any as S.Schema<PutCustomNameserverResponse>,
     errors: [
       InvalidZoneIdentifier,
       CustomNameserverSetNotFound,
@@ -6756,8 +6756,8 @@ export const rollbackEnvironment: API.OperationMethod<
   RollbackEnvironmentError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(100, __c12, 4) as any as S.Schema<RollbackEnvironmentRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<RollbackEnvironmentResponse>,
+  input: __S(376, __c47, 0) as any as S.Schema<RollbackEnvironmentRequest>,
+  output: __S(16, __c2, 0) as any as S.Schema<RollbackEnvironmentResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -6771,8 +6771,8 @@ export const settingsBulkEdit: API.OperationMethod<
   SettingsBulkEditError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(103, __c12, 7) as any as S.Schema<SettingsBulkEditRequest>,
-  output: __S(106, __c13, 2) as any as S.Schema<SettingsBulkEditResponse>,
+  input: __S(386, __c48, 2) as any as S.Schema<SettingsBulkEditRequest>,
+  output: __S(389, __c48, 5) as any as S.Schema<SettingsBulkEditResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -6786,8 +6786,8 @@ export const triggerActivationCheck: API.OperationMethod<
   TriggerActivationCheckError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(107, __c13, 3) as any as S.Schema<TriggerActivationCheckRequest>,
-  output: __S(108, __c13, 4) as any as S.Schema<TriggerActivationCheckResponse>,
+  input: __S(392, __c49, 0) as any as S.Schema<TriggerActivationCheckRequest>,
+  output: __S(393, __c49, 1) as any as S.Schema<TriggerActivationCheckResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -6801,8 +6801,8 @@ export const updateEnvironment: API.OperationMethod<
   UpdateEnvironmentError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(109, __c13, 5) as any as S.Schema<UpdateEnvironmentRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<UpdateEnvironmentResponse>,
+  input: __S(400, __c50, 0) as any as S.Schema<UpdateEnvironmentRequest>,
+  output: __S(16, __c2, 0) as any as S.Schema<UpdateEnvironmentResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -6816,8 +6816,8 @@ export const updateObservabilityTracingRule: API.OperationMethod<
   UpdateObservabilityTracingRuleError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(110, __c13, 6) as any as S.Schema<UpdateObservabilityTracingRuleRequest>,
-  output: __S(29, __c3, 5) as any as S.Schema<UpdateObservabilityTracingRuleResponse>,
+  input: __S(408, __c51, 0) as any as S.Schema<UpdateObservabilityTracingRuleRequest>,
+  output: __S(107, __c13, 3) as any as S.Schema<UpdateObservabilityTracingRuleResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -6831,8 +6831,8 @@ export const updateObservabilityTracingSettings: API.OperationMethod<
   UpdateObservabilityTracingSettingsError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(111, __c13, 7) as any as S.Schema<UpdateObservabilityTracingSettingsRequest>,
-  output: __S(112, __c14, 0) as any as S.Schema<UpdateObservabilityTracingSettingsResponse>,
+  input: __S(416, __c52, 0) as any as S.Schema<UpdateObservabilityTracingSettingsRequest>,
+  output: __S(417, __c52, 1) as any as S.Schema<UpdateObservabilityTracingSettingsResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -6846,8 +6846,8 @@ export const updateSubscription: API.OperationMethod<
   UpdateSubscriptionError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(114, __c14, 2) as any as S.Schema<UpdateSubscriptionRequest>,
-  output: __S(116, __c14, 4) as any as S.Schema<UpdateSubscriptionResponse>,
+  input: __S(425, __c53, 1) as any as S.Schema<UpdateSubscriptionRequest>,
+  output: __S(427, __c53, 3) as any as S.Schema<UpdateSubscriptionResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -6855,6 +6855,60 @@ export const updateSubscription: API.OperationMethod<
 
 // Schema builders: each runs one schema initializer, on that schema's first use.
 function __c0(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          zoneId: S.String.pipe(T.Label("zone_id")),
+          environments: __S(26, __c3, 2),
+        })
+          .pipe(T.Http({ method: "POST", uri: "/zones/{zone_id}/environments", code: 200 }))
+          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({ identifier: "CreateEnvironmentRequest" });
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          after: S.optional(S.NullOr(S.String)),
+          before: S.optional(S.NullOr(S.String)),
+        }),
+      ).annotate({
+        identifier: "EnvironmentsCreateResponseEnvironmentsItemPosition",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          expression: S.String,
+          lockedOnDeployment: S.Boolean.pipe(T.Body("locked_on_deployment")),
+          name: S.String,
+          position: __S(8, __c1, 0),
+          ref: S.String,
+          version: S.Number,
+          httpApplicationId: S.optional(S.NullOr(S.String).pipe(T.Body("http_application_id"))),
+        }),
+      ).annotate({
+        identifier: "EnvironmentsCreateResponseEnvironmentsItem",
+      });
+    case 2:
+      return S.Array(__S(9, __c1, 1));
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          environments: __S(10, __c1, 2),
+        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({
+        identifier: "CreateEnvironmentResponse",
+      });
+  }
+}
+function __c3(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -6871,7 +6925,7 @@ function __c0(j: number): any {
           expression: S.String,
           lockedOnDeployment: S.Boolean.pipe(T.Body("locked_on_deployment")),
           name: S.String,
-          position: __S(0, __c0, 0),
+          position: __S(24, __c3, 0),
           ref: S.String,
           version: S.Number,
           httpApplicationId: S.optional(S.String.pipe(T.Body("http_application_id"))),
@@ -6880,52 +6934,10 @@ function __c0(j: number): any {
         identifier: "EnvironmentsCreateRequestEnvironmentsItem",
       });
     case 2:
-      return S.Array(__S(1, __c0, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          zoneId: S.String.pipe(T.Label("zone_id")),
-          environments: __S(2, __c0, 2),
-        })
-          .pipe(T.Http({ method: "POST", uri: "/zones/{zone_id}/environments", code: 200 }))
-          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({ identifier: "CreateEnvironmentRequest" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          after: S.optional(S.NullOr(S.String)),
-          before: S.optional(S.NullOr(S.String)),
-        }),
-      ).annotate({
-        identifier: "EnvironmentsCreateResponseEnvironmentsItemPosition",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          expression: S.String,
-          lockedOnDeployment: S.Boolean.pipe(T.Body("locked_on_deployment")),
-          name: S.String,
-          position: __S(4, __c0, 4),
-          ref: S.String,
-          version: S.Number,
-          httpApplicationId: S.optional(S.NullOr(S.String).pipe(T.Body("http_application_id"))),
-        }),
-      ).annotate({
-        identifier: "EnvironmentsCreateResponseEnvironmentsItem",
-      });
-    case 6:
-      return S.Array(__S(5, __c0, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          environments: __S(6, __c0, 6),
-        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({
-        identifier: "CreateEnvironmentResponse",
-      });
+      return S.Array(__S(25, __c3, 1));
   }
 }
-function __c1(j: number): any {
+function __c4(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -6936,7 +6948,11 @@ function __c1(j: number): any {
           .pipe(T.Http({ method: "POST", uri: "/zones/{zone_id}/hold", code: 200 }))
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "CreateHoldRequest" });
-    case 1:
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           hold: S.optional(S.NullOr(S.Boolean)),
@@ -6944,9 +6960,11 @@ function __c1(j: number): any {
           includeSubdomains: S.optional(S.NullOr(S.Unknown).pipe(T.Body("include_subdomains"))),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "CreateHoldResponse" });
-    case 2:
-      return S.Array(S.String);
-    case 3:
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
@@ -6955,24 +6973,24 @@ function __c1(j: number): any {
           isContract: S.optional(S.Boolean.pipe(T.Body("is_contract"))),
           publicName: S.optional(S.String.pipe(T.Body("public_name"))),
           scope: S.optional(S.String),
-          sets: S.optional(__S(10, __c1, 2)),
+          sets: S.optional(__S(56, __c7, 0)),
         }),
       ).annotate({
         identifier: "SubscriptionsCreateRequestRatePlan",
       });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           zoneId: S.String.pipe(T.Label("zone_id")),
           frequency: S.optional(S.String),
-          ratePlan: S.optional(__S(11, __c1, 3).pipe(T.Body("rate_plan"))),
+          ratePlan: S.optional(__S(48, __c6, 0).pipe(T.Body("rate_plan"))),
         })
           .pipe(T.Http({ method: "POST", uri: "/zones/{zone_id}/subscription", code: 200 }))
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({
         identifier: "CreateSubscriptionRequest",
       });
-    case 5:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.NullOr(S.String)),
@@ -6981,12 +6999,12 @@ function __c1(j: number): any {
           isContract: S.optional(S.NullOr(S.Boolean).pipe(T.Body("is_contract"))),
           publicName: S.optional(S.NullOr(S.String).pipe(T.Body("public_name"))),
           scope: S.optional(S.NullOr(S.String)),
-          sets: S.optional(S.NullOr(__S(10, __c1, 2))),
+          sets: S.optional(S.NullOr(__S(56, __c7, 0))),
         }),
       ).annotate({
         identifier: "SubscriptionsCreateResponseRatePlan",
       });
-    case 6:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.NullOr(S.String)),
@@ -6995,40 +7013,80 @@ function __c1(j: number): any {
           currentPeriodStart: S.optional(S.NullOr(S.String).pipe(T.Body("current_period_start"))),
           frequency: S.optional(S.NullOr(S.String)),
           price: S.optional(S.NullOr(S.Number)),
-          ratePlan: S.optional(S.NullOr(__S(13, __c1, 5)).pipe(T.Body("rate_plan"))),
+          ratePlan: S.optional(S.NullOr(__S(50, __c6, 2)).pipe(T.Body("rate_plan"))),
           state: S.optional(S.NullOr(S.String)),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({
         identifier: "CreateSubscriptionResponse",
       });
-    case 7:
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
         }),
       ).annotate({ identifier: "CreateRequestAccount" });
-  }
-}
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          account: __S(15, __c1, 7),
+          account: __S(64, __c8, 0),
           name: S.String,
           type: S.optional(S.String),
         })
           .pipe(T.Http({ method: "POST", uri: "/zones", code: 200 }))
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "CreateZoneRequest" });
-    case 1:
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          account: __S(72, __c9, 0),
+          activatedOn: S.String.pipe(T.Body("activated_on")),
+          createdOn: S.String.pipe(T.Body("created_on")),
+          developmentMode: S.Number.pipe(T.Body("development_mode")),
+          meta: __S(73, __c9, 1),
+          modifiedOn: S.String.pipe(T.Body("modified_on")),
+          name: S.String,
+          nameServers: __S(56, __c7, 0).pipe(T.Body("name_servers")),
+          originalDnshost: S.String.pipe(T.Body("original_dnshost")),
+          originalNameServers: __S(56, __c7, 0).pipe(T.Body("original_name_servers")),
+          originalRegistrar: S.String.pipe(T.Body("original_registrar")),
+          owner: __S(74, __c9, 2),
+          plan: __S(75, __c9, 3),
+          cnameSuffix: S.optional(S.NullOr(S.String).pipe(T.Body("cname_suffix"))),
+          paused: S.optional(S.NullOr(S.Boolean)),
+          permissions: S.optional(S.NullOr(__S(56, __c7, 0))),
+          status: S.optional(S.NullOr(S.String)),
+          tenant: S.optional(S.NullOr(__S(72, __c9, 0))),
+          tenantUnit: S.optional(S.NullOr(__S(76, __c9, 4)).pipe(T.Body("tenant_unit"))),
+          type: S.optional(S.NullOr(S.String)),
+          vanityNameServers: S.optional(
+            S.NullOr(__S(56, __c7, 0)).pipe(T.Body("vanity_name_servers")),
+          ),
+          verificationKey: S.optional(S.NullOr(S.String).pipe(T.Body("verification_key"))),
+        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({ identifier: "CreateZoneResponse" });
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.NullOr(S.String)),
           name: S.optional(S.NullOr(S.String)),
         }),
       ).annotate({ identifier: "CreateResponseAccount" });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           cdnOnly: S.optional(S.NullOr(S.Boolean).pipe(T.Body("cdn_only"))),
@@ -7042,7 +7100,7 @@ function __c2(j: number): any {
           step: S.optional(S.NullOr(S.Number)),
         }),
       ).annotate({ identifier: "CreateResponseMeta" });
-    case 3:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.NullOr(S.String)),
@@ -7050,7 +7108,7 @@ function __c2(j: number): any {
           type: S.optional(S.NullOr(S.String)),
         }),
       ).annotate({ identifier: "CreateResponseOwner" });
-    case 4:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.NullOr(S.String)),
@@ -7065,43 +7123,17 @@ function __c2(j: number): any {
           price: S.optional(S.NullOr(S.Number)),
         }),
       ).annotate({ identifier: "CreateResponsePlan" });
-    case 5:
+    case 4:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.NullOr(S.String)),
         }),
       ).annotate({ identifier: "CreateResponseTenantUnit" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String,
-          account: __S(17, __c2, 1),
-          activatedOn: S.String.pipe(T.Body("activated_on")),
-          createdOn: S.String.pipe(T.Body("created_on")),
-          developmentMode: S.Number.pipe(T.Body("development_mode")),
-          meta: __S(18, __c2, 2),
-          modifiedOn: S.String.pipe(T.Body("modified_on")),
-          name: S.String,
-          nameServers: __S(10, __c1, 2).pipe(T.Body("name_servers")),
-          originalDnshost: S.String.pipe(T.Body("original_dnshost")),
-          originalNameServers: __S(10, __c1, 2).pipe(T.Body("original_name_servers")),
-          originalRegistrar: S.String.pipe(T.Body("original_registrar")),
-          owner: __S(19, __c2, 3),
-          plan: __S(20, __c2, 4),
-          cnameSuffix: S.optional(S.NullOr(S.String).pipe(T.Body("cname_suffix"))),
-          paused: S.optional(S.NullOr(S.Boolean)),
-          permissions: S.optional(S.NullOr(__S(10, __c1, 2))),
-          status: S.optional(S.NullOr(S.String)),
-          tenant: S.optional(S.NullOr(__S(17, __c2, 1))),
-          tenantUnit: S.optional(S.NullOr(__S(21, __c2, 5)).pipe(T.Body("tenant_unit"))),
-          type: S.optional(S.NullOr(S.String)),
-          vanityNameServers: S.optional(
-            S.NullOr(__S(10, __c1, 2)).pipe(T.Body("vanity_name_servers")),
-          ),
-          verificationKey: S.optional(S.NullOr(S.String).pipe(T.Body("verification_key"))),
-        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({ identifier: "CreateZoneResponse" });
-    case 7:
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           zoneId: S.String.pipe(T.Label("zone_id")),
@@ -7118,7 +7150,7 @@ function __c2(j: number): any {
       ).annotate({ identifier: "DeleteEnvironmentRequest" });
   }
 }
-function __c3(j: number): any {
+function __c11(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -7129,7 +7161,11 @@ function __c3(j: number): any {
           .pipe(T.Http({ method: "DELETE", uri: "/zones/{zone_id}/hold", code: 200 }))
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "DeleteHoldRequest" });
-    case 1:
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           zoneId: S.String.pipe(T.Label("zone_id")),
@@ -7145,7 +7181,11 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "DeleteObservabilityTracingRuleRequest",
       });
-    case 2:
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           samplingRatio: S.Number.pipe(T.Body("sampling_ratio")),
@@ -7153,11 +7193,11 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "DeleteObservabilityTracingRuleResponseRulesItemActionParameters",
       });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           action: S.String,
-          actionParameters: __S(26, __c3, 2).pipe(T.Body("action_parameters")),
+          actionParameters: __S(104, __c13, 0).pipe(T.Body("action_parameters")),
           description: S.String,
           enabled: S.Boolean,
           expression: S.String,
@@ -7165,17 +7205,21 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "DeleteObservabilityTracingRuleResponseRulesItem",
       });
-    case 4:
-      return S.Array(__S(27, __c3, 3));
-    case 5:
+    case 2:
+      return S.Array(__S(105, __c13, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          rules: __S(28, __c3, 4),
+          rules: __S(106, __c13, 2),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({
         identifier: "DeleteObservabilityTracingRuleResponse",
       });
-    case 6:
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           zoneId: S.String.pipe(T.Label("zone_id")),
@@ -7191,10 +7235,10 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "DeleteObservabilityTracingSettingsRequest",
       });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          destinations: __S(10, __c1, 2),
+          destinations: __S(56, __c7, 0),
           enabled: S.Boolean,
           forwardContext: S.Boolean.pipe(T.Body("forward_context")),
           persist: S.Boolean,
@@ -7206,7 +7250,7 @@ function __c3(j: number): any {
       });
   }
 }
-function __c4(j: number): any {
+function __c15(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -7222,31 +7266,43 @@ function __c4(j: number): any {
           id: S.String,
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "DeleteZoneResponse" });
-    case 2:
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          zoneId: S.String.pipe(T.Label("zone_id")),
+          value: __S(136, __c17, 0),
+        })
+          .pipe(T.Http({ method: "PATCH", uri: "/zones/{zone_id}/settings/nel", code: 200 }))
+          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({ identifier: "EditNelRequest" });
+  }
+}
+function __c17(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           enabled: S.Boolean,
         }),
       ).annotate({ identifier: "EditNelRequestValue" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          zoneId: S.String.pipe(T.Label("zone_id")),
-          value: __S(34, __c4, 2),
-        })
-          .pipe(T.Http({ method: "PATCH", uri: "/zones/{zone_id}/settings/nel", code: 200 }))
-          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({ identifier: "EditNelRequest" });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
           editable: S.Boolean,
           modifiedOn: S.String.pipe(T.Body("modified_on")),
-          value: __S(34, __c4, 2),
+          value: __S(136, __c17, 0),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "EditNelResponse" });
-    case 5:
+  }
+}
+function __c18(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           zoneId: S.String.pipe(T.Label("zone_id")),
@@ -7263,7 +7319,11 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "EditTransformationsAllowedOriginRequest",
       });
-    case 6:
+  }
+}
+function __c19(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.NullOr(S.String)),
@@ -7274,7 +7334,11 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "EditTransformationsAllowedOriginResponse",
       });
-    case 7:
+  }
+}
+function __c20(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           zoneId: S.String.pipe(T.Label("zone_id")),
@@ -7293,7 +7357,7 @@ function __c4(j: number): any {
       });
   }
 }
-function __c5(j: number): any {
+function __c21(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -7303,14 +7367,22 @@ function __c5(j: number): any {
           .pipe(T.Http({ method: "GET", uri: "/zones/{zone_id}/ct/alerting", code: 200 }))
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "GetCtAlertingRequest" });
-    case 1:
+  }
+}
+function __c22(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           enabled: S.Boolean,
-          emails: S.optional(S.NullOr(__S(10, __c1, 2))),
+          emails: S.optional(S.NullOr(__S(56, __c7, 0))),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "GetCtAlertingResponse" });
-    case 2:
+  }
+}
+function __c23(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           zoneId: S.String.pipe(T.Label("zone_id")),
@@ -7320,7 +7392,7 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "GetCustomNameserverRequest",
       });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           enabled: S.optional(S.NullOr(S.Boolean)),
@@ -7329,7 +7401,11 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "GetCustomNameserverResponse",
       });
-    case 4:
+  }
+}
+function __c24(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           zoneId: S.String.pipe(T.Label("zone_id")),
@@ -7337,7 +7413,11 @@ function __c5(j: number): any {
           .pipe(T.Http({ method: "GET", uri: "/zones/{zone_id}/hold", code: 200 }))
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "GetHoldRequest" });
-    case 5:
+  }
+}
+function __c25(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           zoneId: S.String.pipe(T.Label("zone_id")),
@@ -7345,7 +7425,11 @@ function __c5(j: number): any {
           .pipe(T.Http({ method: "GET", uri: "/zones/{zone_id}/settings/nel", code: 200 }))
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "GetNelRequest" });
-    case 6:
+  }
+}
+function __c26(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           zoneId: S.String.pipe(T.Label("zone_id")),
@@ -7361,7 +7445,11 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "GetObservabilityTracingRuleRequest",
       });
-    case 7:
+  }
+}
+function __c27(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           zoneId: S.String.pipe(T.Label("zone_id")),
@@ -7377,14 +7465,10 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "GetObservabilityTracingSettingsRequest",
       });
-  }
-}
-function __c6(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          destinations: __S(10, __c1, 2),
+          destinations: __S(56, __c7, 0),
           enabled: S.Boolean,
           forwardContext: S.Boolean.pipe(T.Body("forward_context")),
           persist: S.Boolean,
@@ -7394,7 +7478,11 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "GetObservabilityTracingSettingsResponse",
       });
-    case 1:
+  }
+}
+function __c28(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           zoneId: S.String.pipe(T.Label("zone_id")),
@@ -7409,7 +7497,7 @@ function __c6(j: number): any {
           )
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "GetPlanRequest" });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.NullOr(S.String)),
@@ -7423,7 +7511,11 @@ function __c6(j: number): any {
           price: S.optional(S.NullOr(S.Number)),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "GetPlanResponse" });
-    case 3:
+  }
+}
+function __c29(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           zoneId: S.String.pipe(T.Label("zone_id")),
@@ -7431,7 +7523,7 @@ function __c6(j: number): any {
           .pipe(T.Http({ method: "GET", uri: "/zones/{zone_id}/available_rate_plans", code: 200 }))
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "GetRatePlanRequest" });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           default: S.optional(S.NullOr(S.Number)),
@@ -7441,33 +7533,33 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "RatePlansGetResultItemComponentsItem",
       });
-    case 5:
-      return S.Array(__S(52, __c6, 4));
-    case 6:
+    case 2:
+      return S.Array(__S(233, __c29, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.NullOr(S.String)),
-          components: S.optional(S.NullOr(__S(53, __c6, 5))),
+          components: S.optional(S.NullOr(__S(234, __c29, 2))),
           currency: S.optional(S.NullOr(S.String)),
           duration: S.optional(S.NullOr(S.Number)),
           frequency: S.optional(S.NullOr(S.String)),
           name: S.optional(S.NullOr(S.String)),
         }),
       ).annotate({ identifier: "RatePlansGetResultItem" });
-    case 7:
-      return S.Array(__S(54, __c6, 6));
-  }
-}
-function __c7(j: number): any {
-  switch (j) {
-    case 0:
+    case 4:
+      return S.Array(__S(235, __c29, 3));
+    case 5:
       return S.suspend(() =>
         S.Struct({
-          result: __S(55, __c6, 7).pipe(T.EnvelopePayload()),
+          result: __S(236, __c29, 4).pipe(T.EnvelopePayload()),
           resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "GetRatePlanResponse" });
-    case 1:
+  }
+}
+function __c30(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           zoneId: S.String.pipe(T.Label("zone_id")),
@@ -7476,7 +7568,7 @@ function __c7(j: number): any {
           .pipe(T.Http({ method: "GET", uri: "/zones/{zone_id}/settings/{setting_id}", code: 200 }))
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "GetSettingRequest" });
-    case 2:
+    case 1:
       return S.Unknown.pipe(
         /*@__PURE__*/ T.UnionCases(
           [
@@ -7620,11 +7712,15 @@ function __c7(j: number): any {
           },
         ),
       );
-    case 3:
+    case 2:
       return S.suspend(() =>
-        __S(58, __c7, 2).pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
+        __S(241, __c30, 1).pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "GetSettingResponse" });
-    case 4:
+  }
+}
+function __c31(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           zoneId: S.String.pipe(T.Label("zone_id")),
@@ -7632,7 +7728,7 @@ function __c7(j: number): any {
           .pipe(T.Http({ method: "GET", uri: "/zones/{zone_id}/subscription", code: 200 }))
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "GetSubscriptionRequest" });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.NullOr(S.String)),
@@ -7641,12 +7737,12 @@ function __c7(j: number): any {
           isContract: S.optional(S.NullOr(S.Boolean).pipe(T.Body("is_contract"))),
           publicName: S.optional(S.NullOr(S.String).pipe(T.Body("public_name"))),
           scope: S.optional(S.NullOr(S.String)),
-          sets: S.optional(S.NullOr(__S(10, __c1, 2))),
+          sets: S.optional(S.NullOr(__S(56, __c7, 0))),
         }),
       ).annotate({
         identifier: "SubscriptionsGetResponseRatePlan",
       });
-    case 6:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.NullOr(S.String)),
@@ -7655,11 +7751,15 @@ function __c7(j: number): any {
           currentPeriodStart: S.optional(S.NullOr(S.String).pipe(T.Body("current_period_start"))),
           frequency: S.optional(S.NullOr(S.String)),
           price: S.optional(S.NullOr(S.Number)),
-          ratePlan: S.optional(S.NullOr(__S(61, __c7, 5)).pipe(T.Body("rate_plan"))),
+          ratePlan: S.optional(S.NullOr(__S(249, __c31, 1)).pipe(T.Body("rate_plan"))),
           state: S.optional(S.NullOr(S.String)),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "GetSubscriptionResponse" });
-    case 7:
+  }
+}
+function __c32(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           zoneId: S.String.pipe(T.Label("zone_id")),
@@ -7677,7 +7777,7 @@ function __c7(j: number): any {
       });
   }
 }
-function __c8(j: number): any {
+function __c33(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -7695,7 +7795,11 @@ function __c8(j: number): any {
       ).annotate({
         identifier: "GetTransformationsC2paRequest",
       });
-    case 1:
+  }
+}
+function __c34(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           zoneId: S.String.pipe(T.Label("zone_id")),
@@ -7703,37 +7807,41 @@ function __c8(j: number): any {
           .pipe(T.Http({ method: "GET", uri: "/zones/{zone_id}", code: 200 }))
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "GetZoneRequest" });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
-          account: __S(17, __c2, 1),
+          account: __S(72, __c9, 0),
           activatedOn: S.String.pipe(T.Body("activated_on")),
           createdOn: S.String.pipe(T.Body("created_on")),
           developmentMode: S.Number.pipe(T.Body("development_mode")),
-          meta: __S(18, __c2, 2),
+          meta: __S(73, __c9, 1),
           modifiedOn: S.String.pipe(T.Body("modified_on")),
           name: S.String,
-          nameServers: __S(10, __c1, 2).pipe(T.Body("name_servers")),
+          nameServers: __S(56, __c7, 0).pipe(T.Body("name_servers")),
           originalDnshost: S.String.pipe(T.Body("original_dnshost")),
-          originalNameServers: __S(10, __c1, 2).pipe(T.Body("original_name_servers")),
+          originalNameServers: __S(56, __c7, 0).pipe(T.Body("original_name_servers")),
           originalRegistrar: S.String.pipe(T.Body("original_registrar")),
-          owner: __S(19, __c2, 3),
-          plan: __S(20, __c2, 4),
+          owner: __S(74, __c9, 2),
+          plan: __S(75, __c9, 3),
           cnameSuffix: S.optional(S.NullOr(S.String).pipe(T.Body("cname_suffix"))),
           paused: S.optional(S.NullOr(S.Boolean)),
-          permissions: S.optional(S.NullOr(__S(10, __c1, 2))),
+          permissions: S.optional(S.NullOr(__S(56, __c7, 0))),
           status: S.optional(S.NullOr(S.String)),
-          tenant: S.optional(S.NullOr(__S(17, __c2, 1))),
-          tenantUnit: S.optional(S.NullOr(__S(21, __c2, 5)).pipe(T.Body("tenant_unit"))),
+          tenant: S.optional(S.NullOr(__S(72, __c9, 0))),
+          tenantUnit: S.optional(S.NullOr(__S(76, __c9, 4)).pipe(T.Body("tenant_unit"))),
           type: S.optional(S.NullOr(S.String)),
           vanityNameServers: S.optional(
-            S.NullOr(__S(10, __c1, 2)).pipe(T.Body("vanity_name_servers")),
+            S.NullOr(__S(56, __c7, 0)).pipe(T.Body("vanity_name_servers")),
           ),
           verificationKey: S.optional(S.NullOr(S.String).pipe(T.Body("verification_key"))),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "GetZoneResponse" });
-    case 3:
+  }
+}
+function __c35(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           zoneId: S.String.pipe(T.Label("zone_id")),
@@ -7741,18 +7849,18 @@ function __c8(j: number): any {
           .pipe(T.Http({ method: "GET", uri: "/zones/{zone_id}/entitlements", code: 200 }))
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "ListEntitlementsRequest" });
-    case 4:
+    case 1:
       return S.Unknown.pipe(/*@__PURE__*/ T.UnionCases([[], [], [], [], ["max", "min"]]));
-    case 5:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           type: S.String,
-          value: __S(68, __c8, 4),
+          value: __S(281, __c35, 1),
         }),
       ).annotate({
         identifier: "ListEntitlementsResultItemAllocation",
       });
-    case 6:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           id: S.Number,
@@ -7763,30 +7871,30 @@ function __c8(j: number): any {
       ).annotate({
         identifier: "ListEntitlementsResultItemFeature",
       });
-    case 7:
+    case 4:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
-          allocation: __S(69, __c8, 5),
+          allocation: __S(282, __c35, 2),
           createdDate: S.String.pipe(T.Body("created_date")),
           deletedDate: S.String.pipe(T.Body("deleted_date")),
           editedDate: S.String.pipe(T.Body("edited_date")),
-          feature: __S(70, __c8, 6),
+          feature: __S(283, __c35, 3),
         }),
       ).annotate({
         identifier: "ListEntitlementsResultItem",
       });
+    case 5:
+      return S.Array(__S(284, __c35, 4));
+    case 6:
+      return S.suspend(() =>
+        __S(285, __c35, 5).pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({ identifier: "ListEntitlementsResponse" });
   }
 }
-function __c9(j: number): any {
+function __c36(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(71, __c8, 7));
-    case 1:
-      return S.suspend(() =>
-        __S(72, __c9, 0).pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({ identifier: "ListEntitlementsResponse" });
-    case 2:
       return S.suspend(() =>
         S.Struct({
           zoneId: S.String.pipe(T.Label("zone_id")),
@@ -7794,13 +7902,21 @@ function __c9(j: number): any {
           .pipe(T.Http({ method: "GET", uri: "/zones/{zone_id}/environments", code: 200 }))
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "ListEnvironmentsRequest" });
-    case 3:
+  }
+}
+function __c37(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          environments: __S(6, __c0, 6),
+          environments: __S(10, __c1, 2),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "ListEnvironmentsResponse" });
-    case 4:
+  }
+}
+function __c38(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           zoneId: S.String.pipe(T.Label("zone_id")),
@@ -7808,7 +7924,7 @@ function __c9(j: number): any {
           .pipe(T.Http({ method: "GET", uri: "/zones/{zone_id}/available_plans", code: 200 }))
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "ListPlansRequest" });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.NullOr(S.String)),
@@ -7822,18 +7938,18 @@ function __c9(j: number): any {
           price: S.optional(S.NullOr(S.Number)),
         }),
       ).annotate({ identifier: "PlansListResultItem" });
-    case 6:
-      return S.Array(__S(77, __c9, 5));
-    case 7:
+    case 2:
+      return S.Array(__S(305, __c38, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          result: __S(78, __c9, 6).pipe(T.EnvelopePayload()),
+          result: __S(306, __c38, 2).pipe(T.EnvelopePayload()),
           resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "ListPlansResponse" });
   }
 }
-function __c10(j: number): any {
+function __c39(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -7986,24 +8102,28 @@ function __c10(j: number): any {
         ),
       );
     case 2:
-      return S.Array(__S(81, __c10, 1));
+      return S.Array(__S(313, __c39, 1));
     case 3:
       return S.suspend(() =>
-        __S(82, __c10, 2).pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
+        __S(314, __c39, 2).pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "ListSettingsResponse" });
-    case 4:
+  }
+}
+function __c40(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListRequestAccount" });
-    case 5:
+    case 1:
       return S.Array(S.String);
-    case 6:
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          account: S.optional(__S(84, __c10, 4).pipe(T.DeepQuery("account"))),
+          account: S.optional(__S(320, __c40, 0).pipe(T.DeepQuery("account"))),
           direction: S.optional(S.String.pipe(T.Query())),
           match: S.optional(S.String.pipe(T.Query())),
           name: S.optional(S.String.pipe(T.Query())),
@@ -8011,74 +8131,82 @@ function __c10(j: number): any {
           page: S.optional(S.Number.pipe(T.Query())),
           perPage: S.optional(S.Number.pipe(T.Query("per_page"))),
           status: S.optional(S.String.pipe(T.Query())),
-          type: S.optional(__S(85, __c10, 5).pipe(T.Query())),
+          type: S.optional(__S(321, __c40, 1).pipe(T.Query())),
         })
           .pipe(T.Http({ method: "GET", uri: "/zones", code: 200 }))
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "ListZonesRequest" });
-    case 7:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
-          account: __S(17, __c2, 1),
+          account: __S(72, __c9, 0),
           activatedOn: S.String.pipe(T.Body("activated_on")),
           createdOn: S.String.pipe(T.Body("created_on")),
           developmentMode: S.Number.pipe(T.Body("development_mode")),
-          meta: __S(18, __c2, 2),
+          meta: __S(73, __c9, 1),
           modifiedOn: S.String.pipe(T.Body("modified_on")),
           name: S.String,
-          nameServers: __S(10, __c1, 2).pipe(T.Body("name_servers")),
+          nameServers: __S(56, __c7, 0).pipe(T.Body("name_servers")),
           originalDnshost: S.String.pipe(T.Body("original_dnshost")),
-          originalNameServers: __S(10, __c1, 2).pipe(T.Body("original_name_servers")),
+          originalNameServers: __S(56, __c7, 0).pipe(T.Body("original_name_servers")),
           originalRegistrar: S.String.pipe(T.Body("original_registrar")),
-          owner: __S(19, __c2, 3),
-          plan: __S(20, __c2, 4),
+          owner: __S(74, __c9, 2),
+          plan: __S(75, __c9, 3),
           cnameSuffix: S.optional(S.NullOr(S.String).pipe(T.Body("cname_suffix"))),
           paused: S.optional(S.NullOr(S.Boolean)),
-          permissions: S.optional(S.NullOr(__S(10, __c1, 2))),
+          permissions: S.optional(S.NullOr(__S(56, __c7, 0))),
           status: S.optional(S.NullOr(S.String)),
-          tenant: S.optional(S.NullOr(__S(17, __c2, 1))),
-          tenantUnit: S.optional(S.NullOr(__S(21, __c2, 5)).pipe(T.Body("tenant_unit"))),
+          tenant: S.optional(S.NullOr(__S(72, __c9, 0))),
+          tenantUnit: S.optional(S.NullOr(__S(76, __c9, 4)).pipe(T.Body("tenant_unit"))),
           type: S.optional(S.NullOr(S.String)),
           vanityNameServers: S.optional(
-            S.NullOr(__S(10, __c1, 2)).pipe(T.Body("vanity_name_servers")),
+            S.NullOr(__S(56, __c7, 0)).pipe(T.Body("vanity_name_servers")),
           ),
           verificationKey: S.optional(S.NullOr(S.String).pipe(T.Body("verification_key"))),
         }),
       ).annotate({ identifier: "ListResultItem" });
-  }
-}
-function __c11(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(87, __c10, 7));
-    case 1:
+    case 4:
+      return S.Array(__S(323, __c40, 3));
+    case 5:
       return S.suspend(() =>
         S.Struct({
-          result: __S(88, __c11, 0).pipe(T.EnvelopePayload()),
+          result: __S(324, __c40, 4).pipe(T.EnvelopePayload()),
           resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "ListZonesResponse" });
-    case 2:
+  }
+}
+function __c41(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           zoneId: S.String.pipe(T.Label("zone_id")),
           enabled: S.Boolean,
-          emails: S.optional(__S(10, __c1, 2)),
+          emails: S.optional(__S(56, __c7, 0)),
         })
           .pipe(T.Http({ method: "PATCH", uri: "/zones/{zone_id}/ct/alerting", code: 200 }))
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "PatchCtAlertingRequest" });
-    case 3:
+  }
+}
+function __c42(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           zoneId: S.String.pipe(T.Label("zone_id")),
-          environments: __S(2, __c0, 2),
+          environments: __S(26, __c3, 2),
         })
           .pipe(T.Http({ method: "PATCH", uri: "/zones/{zone_id}/environments", code: 200 }))
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "PatchEnvironmentRequest" });
-    case 4:
+  }
+}
+function __c43(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           zoneId: S.String.pipe(T.Label("zone_id")),
@@ -8088,7 +8216,11 @@ function __c11(j: number): any {
           .pipe(T.Http({ method: "PATCH", uri: "/zones/{zone_id}/hold", code: 200 }))
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "PatchHoldRequest" });
-    case 5:
+  }
+}
+function __c44(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           zoneId: S.String.pipe(T.Label("zone_id")),
@@ -8101,7 +8233,7 @@ function __c11(j: number): any {
           )
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "PatchSettingRequest" });
-    case 6:
+    case 1:
       return S.Unknown.pipe(
         /*@__PURE__*/ T.UnionCases(
           [
@@ -8245,13 +8377,13 @@ function __c11(j: number): any {
           },
         ),
       );
-    case 7:
+    case 2:
       return S.suspend(() =>
-        __S(94, __c11, 6).pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
+        __S(353, __c44, 1).pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "PatchSettingResponse" });
   }
 }
-function __c12(j: number): any {
+function __c45(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -8259,7 +8391,7 @@ function __c12(j: number): any {
           zoneId: S.String.pipe(T.Label("zone_id")),
           paused: S.optional(S.Boolean),
           type: S.optional(S.String),
-          vanityNameServers: S.optional(__S(10, __c1, 2).pipe(T.Body("vanity_name_servers"))),
+          vanityNameServers: S.optional(__S(56, __c7, 0).pipe(T.Body("vanity_name_servers"))),
         })
           .pipe(T.Http({ method: "PATCH", uri: "/zones/{zone_id}", code: 200 }))
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
@@ -8268,33 +8400,37 @@ function __c12(j: number): any {
       return S.suspend(() =>
         S.Struct({
           id: S.String,
-          account: __S(17, __c2, 1),
+          account: __S(72, __c9, 0),
           activatedOn: S.String.pipe(T.Body("activated_on")),
           createdOn: S.String.pipe(T.Body("created_on")),
           developmentMode: S.Number.pipe(T.Body("development_mode")),
-          meta: __S(18, __c2, 2),
+          meta: __S(73, __c9, 1),
           modifiedOn: S.String.pipe(T.Body("modified_on")),
           name: S.String,
-          nameServers: __S(10, __c1, 2).pipe(T.Body("name_servers")),
+          nameServers: __S(56, __c7, 0).pipe(T.Body("name_servers")),
           originalDnshost: S.String.pipe(T.Body("original_dnshost")),
-          originalNameServers: __S(10, __c1, 2).pipe(T.Body("original_name_servers")),
+          originalNameServers: __S(56, __c7, 0).pipe(T.Body("original_name_servers")),
           originalRegistrar: S.String.pipe(T.Body("original_registrar")),
-          owner: __S(19, __c2, 3),
-          plan: __S(20, __c2, 4),
+          owner: __S(74, __c9, 2),
+          plan: __S(75, __c9, 3),
           cnameSuffix: S.optional(S.NullOr(S.String).pipe(T.Body("cname_suffix"))),
           paused: S.optional(S.NullOr(S.Boolean)),
-          permissions: S.optional(S.NullOr(__S(10, __c1, 2))),
+          permissions: S.optional(S.NullOr(__S(56, __c7, 0))),
           status: S.optional(S.NullOr(S.String)),
-          tenant: S.optional(S.NullOr(__S(17, __c2, 1))),
-          tenantUnit: S.optional(S.NullOr(__S(21, __c2, 5)).pipe(T.Body("tenant_unit"))),
+          tenant: S.optional(S.NullOr(__S(72, __c9, 0))),
+          tenantUnit: S.optional(S.NullOr(__S(76, __c9, 4)).pipe(T.Body("tenant_unit"))),
           type: S.optional(S.NullOr(S.String)),
           vanityNameServers: S.optional(
-            S.NullOr(__S(10, __c1, 2)).pipe(T.Body("vanity_name_servers")),
+            S.NullOr(__S(56, __c7, 0)).pipe(T.Body("vanity_name_servers")),
           ),
           verificationKey: S.optional(S.NullOr(S.String).pipe(T.Body("verification_key"))),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "PatchZoneResponse" });
-    case 2:
+  }
+}
+function __c46(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           zoneId: S.String.pipe(T.Label("zone_id")),
@@ -8306,16 +8442,20 @@ function __c12(j: number): any {
       ).annotate({
         identifier: "PutCustomNameserverRequest",
       });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          result: __S(10, __c1, 2).pipe(T.EnvelopePayload()),
+          result: __S(56, __c7, 0).pipe(T.EnvelopePayload()),
           resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({
         identifier: "PutCustomNameserverResponse",
       });
-    case 4:
+  }
+}
+function __c47(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           zoneId: S.String.pipe(T.Label("zone_id")),
@@ -8332,7 +8472,11 @@ function __c12(j: number): any {
       ).annotate({
         identifier: "RollbackEnvironmentRequest",
       });
-    case 5:
+  }
+}
+function __c48(j: number): any {
+  switch (j) {
+    case 0:
       return S.Unknown.pipe(
         /*@__PURE__*/ T.UnionCases(
           [
@@ -8470,22 +8614,18 @@ function __c12(j: number): any {
           },
         ),
       );
-    case 6:
-      return S.Array(__S(101, __c12, 5));
-    case 7:
+    case 1:
+      return S.Array(__S(384, __c48, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           zoneId: S.String.pipe(T.Label("zone_id")),
-          body: __S(102, __c12, 6).pipe(T.HttpBody()),
+          body: __S(385, __c48, 1).pipe(T.HttpBody()),
         })
           .pipe(T.Http({ method: "PATCH", uri: "/zones/{zone_id}/settings", code: 200 }))
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "SettingsBulkEditRequest" });
-  }
-}
-function __c13(j: number): any {
-  switch (j) {
-    case 0:
+    case 3:
       return S.Unknown.pipe(
         /*@__PURE__*/ T.UnionCases(
           [
@@ -8627,13 +8767,17 @@ function __c13(j: number): any {
           },
         ),
       );
-    case 1:
-      return S.Array(__S(104, __c13, 0));
-    case 2:
+    case 4:
+      return S.Array(__S(387, __c48, 3));
+    case 5:
       return S.suspend(() =>
-        __S(105, __c13, 1).pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
+        __S(388, __c48, 4).pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "SettingsBulkEditResponse" });
-    case 3:
+  }
+}
+function __c49(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           zoneId: S.String.pipe(T.Label("zone_id")),
@@ -8643,7 +8787,7 @@ function __c13(j: number): any {
       ).annotate({
         identifier: "TriggerActivationCheckRequest",
       });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.NullOr(S.String)),
@@ -8651,20 +8795,28 @@ function __c13(j: number): any {
       ).annotate({
         identifier: "TriggerActivationCheckResponse",
       });
-    case 5:
+  }
+}
+function __c50(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           zoneId: S.String.pipe(T.Label("zone_id")),
-          environments: __S(2, __c0, 2),
+          environments: __S(26, __c3, 2),
         })
           .pipe(T.Http({ method: "PUT", uri: "/zones/{zone_id}/environments", code: 200 }))
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "UpdateEnvironmentRequest" });
-    case 6:
+  }
+}
+function __c51(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           zoneId: S.String.pipe(T.Label("zone_id")),
-          rules: __S(28, __c3, 4),
+          rules: __S(106, __c13, 2),
         })
           .pipe(
             T.Http({
@@ -8677,11 +8829,15 @@ function __c13(j: number): any {
       ).annotate({
         identifier: "UpdateObservabilityTracingRuleRequest",
       });
-    case 7:
+  }
+}
+function __c52(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           zoneId: S.String.pipe(T.Label("zone_id")),
-          destinations: S.optional(__S(10, __c1, 2)),
+          destinations: S.optional(__S(56, __c7, 0)),
           enabled: S.optional(S.Boolean),
           forwardContext: S.optional(S.Boolean.pipe(T.Body("forward_context"))),
           persist: S.optional(S.Boolean),
@@ -8699,14 +8855,10 @@ function __c13(j: number): any {
       ).annotate({
         identifier: "UpdateObservabilityTracingSettingsRequest",
       });
-  }
-}
-function __c14(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          destinations: __S(10, __c1, 2),
+          destinations: __S(56, __c7, 0),
           enabled: S.Boolean,
           forwardContext: S.Boolean.pipe(T.Body("forward_context")),
           persist: S.Boolean,
@@ -8716,7 +8868,11 @@ function __c14(j: number): any {
       ).annotate({
         identifier: "UpdateObservabilityTracingSettingsResponse",
       });
-    case 1:
+  }
+}
+function __c53(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
@@ -8725,24 +8881,24 @@ function __c14(j: number): any {
           isContract: S.optional(S.Boolean.pipe(T.Body("is_contract"))),
           publicName: S.optional(S.String.pipe(T.Body("public_name"))),
           scope: S.optional(S.String),
-          sets: S.optional(__S(10, __c1, 2)),
+          sets: S.optional(__S(56, __c7, 0)),
         }),
       ).annotate({
         identifier: "SubscriptionsUpdateRequestRatePlan",
       });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           zoneId: S.String.pipe(T.Label("zone_id")),
           frequency: S.optional(S.String),
-          ratePlan: S.optional(__S(113, __c14, 1).pipe(T.Body("rate_plan"))),
+          ratePlan: S.optional(__S(424, __c53, 0).pipe(T.Body("rate_plan"))),
         })
           .pipe(T.Http({ method: "PUT", uri: "/zones/{zone_id}/subscription", code: 200 }))
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({
         identifier: "UpdateSubscriptionRequest",
       });
-    case 3:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.NullOr(S.String)),
@@ -8751,12 +8907,12 @@ function __c14(j: number): any {
           isContract: S.optional(S.NullOr(S.Boolean).pipe(T.Body("is_contract"))),
           publicName: S.optional(S.NullOr(S.String).pipe(T.Body("public_name"))),
           scope: S.optional(S.NullOr(S.String)),
-          sets: S.optional(S.NullOr(__S(10, __c1, 2))),
+          sets: S.optional(S.NullOr(__S(56, __c7, 0))),
         }),
       ).annotate({
         identifier: "SubscriptionsUpdateResponseRatePlan",
       });
-    case 4:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.NullOr(S.String)),
@@ -8765,7 +8921,7 @@ function __c14(j: number): any {
           currentPeriodStart: S.optional(S.NullOr(S.String).pipe(T.Body("current_period_start"))),
           frequency: S.optional(S.NullOr(S.String)),
           price: S.optional(S.NullOr(S.Number)),
-          ratePlan: S.optional(S.NullOr(__S(115, __c14, 3)).pipe(T.Body("rate_plan"))),
+          ratePlan: S.optional(S.NullOr(__S(426, __c53, 2)).pipe(T.Body("rate_plan"))),
           state: S.optional(S.NullOr(S.String)),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({
@@ -8773,7 +8929,6 @@ function __c14(j: number): any {
       });
   }
 }
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

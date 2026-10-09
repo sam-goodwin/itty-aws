@@ -701,7 +701,7 @@ export const searchAccountsReports: API.OperationMethod<
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(1, __c0, 1) as any as S.Schema<SearchAccountsReportsRequest>,
-  output: __S(25, __c3, 1) as any as S.Schema<SearchResponse>,
+  output: __S(25, __c0, 25) as any as S.Schema<SearchResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -820,11 +820,7 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "PriceCompetitivenessProductView",
       });
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
+    case 8:
       return S.suspend(() =>
         S.Struct({
           week: S.optional(__S(2, __c0, 2)),
@@ -858,7 +854,7 @@ function __c1(j: number): any {
           title: S.optional(S.String),
         }),
       ).annotate({ identifier: "ProductPerformanceView" });
-    case 1:
+    case 9:
       return S.suspend(() =>
         S.Struct({
           date: S.optional(__S(2, __c0, 2)),
@@ -870,7 +866,7 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "NonProductPerformanceView",
       });
-    case 2:
+    case 10:
       return S.suspend(() =>
         S.Struct({
           productTypeL5: S.optional(S.String),
@@ -895,9 +891,9 @@ function __c1(j: number): any {
           productTypeL2: S.optional(S.String),
         }),
       ).annotate({ identifier: "PriceInsightsProductView" });
-    case 3:
+    case 11:
       return S.Array(S.String);
-    case 4:
+    case 12:
       return S.suspend(() =>
         S.Struct({
           previousRelativeDemand: S.optional(S.String),
@@ -906,7 +902,7 @@ function __c1(j: number): any {
           categoryL4: S.optional(S.String),
           categoryL5: S.optional(S.String),
           categoryL1: S.optional(S.String),
-          variantGtins: S.optional(__S(11, __c1, 3)),
+          variantGtins: S.optional(__S(11, __c0, 11)),
           title: S.optional(S.String),
           categoryL3: S.optional(S.String),
           relativeDemand: S.optional(S.String),
@@ -923,7 +919,7 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "BestSellersProductClusterView",
       });
-    case 5:
+    case 13:
       return S.suspend(() =>
         S.Struct({
           reportDate: S.optional(__S(2, __c0, 2)),
@@ -938,60 +934,56 @@ function __c1(j: number): any {
           brand: S.optional(S.String),
         }),
       ).annotate({ identifier: "BestSellersBrandView" });
-    case 6:
+    case 14:
       return S.suspend(() =>
         S.Struct({
-          disapprovedCountries: S.optional(__S(11, __c1, 3)),
-          approvedCountries: S.optional(__S(11, __c1, 3)),
-          pendingCountries: S.optional(__S(11, __c1, 3)),
+          disapprovedCountries: S.optional(__S(11, __c0, 11)),
+          approvedCountries: S.optional(__S(11, __c0, 11)),
+          pendingCountries: S.optional(__S(11, __c0, 11)),
           reportingContext: S.optional(S.String),
         }),
       ).annotate({
         identifier: "StatusPerReportingContext",
       });
-    case 7:
-      return S.Array(__S(14, __c1, 6));
-  }
-}
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
+    case 15:
+      return S.Array(__S(14, __c0, 14));
+    case 16:
       return S.suspend(() =>
         S.Struct({
           canonicalAttribute: S.optional(S.String),
           code: S.optional(S.String),
         }),
       ).annotate({ identifier: "ItemIssueType" });
-    case 1:
+    case 17:
       return S.suspend(() =>
         S.Struct({
-          demotedCountries: S.optional(__S(11, __c1, 3)),
-          disapprovedCountries: S.optional(__S(11, __c1, 3)),
+          demotedCountries: S.optional(__S(11, __c0, 11)),
+          disapprovedCountries: S.optional(__S(11, __c0, 11)),
           reportingContext: S.optional(S.String),
         }),
       ).annotate({
         identifier: "IssueSeverityPerReportingContext",
       });
-    case 2:
-      return S.Array(__S(17, __c2, 1));
-    case 3:
+    case 18:
+      return S.Array(__S(17, __c0, 17));
+    case 19:
       return S.suspend(() =>
         S.Struct({
           aggregatedSeverity: S.optional(S.String),
-          severityPerReportingContext: S.optional(__S(18, __c2, 2)),
+          severityPerReportingContext: S.optional(__S(18, __c0, 18)),
         }),
       ).annotate({ identifier: "ItemIssueSeverity" });
-    case 4:
+    case 20:
       return S.suspend(() =>
         S.Struct({
-          type: S.optional(__S(16, __c2, 0)),
+          type: S.optional(__S(16, __c0, 16)),
           resolution: S.optional(S.String),
-          severity: S.optional(__S(19, __c2, 3)),
+          severity: S.optional(__S(19, __c0, 19)),
         }),
       ).annotate({ identifier: "ItemIssue" });
-    case 5:
-      return S.Array(__S(20, __c2, 4));
-    case 6:
+    case 21:
+      return S.Array(__S(20, __c0, 20));
+    case 22:
       return S.suspend(() =>
         S.Struct({
           offerId: S.optional(S.String),
@@ -1001,13 +993,13 @@ function __c2(j: number): any {
           productTypeL1: S.optional(S.String),
           reportingContext: S.optional(S.String),
           shippingLabel: S.optional(S.String),
-          statusPerReportingContext: S.optional(__S(15, __c1, 7)),
+          statusPerReportingContext: S.optional(__S(15, __c0, 15)),
           productTypeL3: S.optional(S.String),
           clickPotentialRank: S.optional(S.String),
           thumbnailLink: S.optional(S.String),
           categoryL4: S.optional(S.String),
           itemGroupId: S.optional(S.String),
-          gtin: S.optional(__S(11, __c1, 3)),
+          gtin: S.optional(__S(11, __c0, 11)),
           creationTime: S.optional(S.String),
           aggregatedReportingContextStatus: S.optional(S.String),
           productTypeL2: S.optional(S.String),
@@ -1020,7 +1012,7 @@ function __c2(j: number): any {
           id: S.optional(S.String),
           languageCode: S.optional(S.String),
           channel: S.optional(S.String),
-          itemIssues: S.optional(__S(21, __c2, 5)),
+          itemIssues: S.optional(__S(21, __c0, 21)),
           condition: S.optional(S.String),
           productTypeL5: S.optional(S.String),
           clickPotential: S.optional(S.String),
@@ -1028,37 +1020,32 @@ function __c2(j: number): any {
           categoryL5: S.optional(S.String),
         }),
       ).annotate({ identifier: "ProductView" });
-    case 7:
+    case 23:
       return S.suspend(() =>
         S.Struct({
           competitiveVisibilityCompetitorView: S.optional(__S(3, __c0, 3)),
           competitiveVisibilityBenchmarkView: S.optional(__S(4, __c0, 4)),
           competitiveVisibilityTopMerchantView: S.optional(__S(5, __c0, 5)),
           priceCompetitivenessProductView: S.optional(__S(7, __c0, 7)),
-          productPerformanceView: S.optional(__S(8, __c1, 0)),
-          nonProductPerformanceView: S.optional(__S(9, __c1, 1)),
-          priceInsightsProductView: S.optional(__S(10, __c1, 2)),
-          bestSellersProductClusterView: S.optional(__S(12, __c1, 4)),
-          bestSellersBrandView: S.optional(__S(13, __c1, 5)),
-          productView: S.optional(__S(22, __c2, 6)),
+          productPerformanceView: S.optional(__S(8, __c0, 8)),
+          nonProductPerformanceView: S.optional(__S(9, __c0, 9)),
+          priceInsightsProductView: S.optional(__S(10, __c0, 10)),
+          bestSellersProductClusterView: S.optional(__S(12, __c0, 12)),
+          bestSellersBrandView: S.optional(__S(13, __c0, 13)),
+          productView: S.optional(__S(22, __c0, 22)),
         }),
       ).annotate({ identifier: "ReportRow" });
-  }
-}
-function __c3(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(23, __c2, 7));
-    case 1:
+    case 24:
+      return S.Array(__S(23, __c0, 23));
+    case 25:
       return S.suspend(() =>
         S.Struct({
-          results: S.optional(__S(24, __c3, 0)),
+          results: S.optional(__S(24, __c0, 24)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "SearchResponse" });
   }
 }
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

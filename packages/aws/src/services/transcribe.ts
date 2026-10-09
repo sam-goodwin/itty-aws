@@ -1191,8 +1191,8 @@ export const createCallAnalyticsCategory: API.OperationMethod<
   CreateCallAnalyticsCategoryError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(12, __c1, 4) as any as S.Schema<CreateCallAnalyticsCategoryRequest>,
-  output: __S(14, __c1, 6) as any as S.Schema<CreateCallAnalyticsCategoryResponse>,
+  input: __S(848, __c53, 0) as any as S.Schema<CreateCallAnalyticsCategoryRequest>,
+  output: __S(896, __c56, 0) as any as S.Schema<CreateCallAnalyticsCategoryResponse>,
   errors: [
     BadRequestException,
     ConflictException,
@@ -1230,8 +1230,8 @@ export const createLanguageModel: API.OperationMethod<
   CreateLanguageModelError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(18, __c2, 2) as any as S.Schema<CreateLanguageModelRequest>,
-  output: __S(19, __c2, 3) as any as S.Schema<CreateLanguageModelResponse>,
+  input: __S(944, __c59, 0) as any as S.Schema<CreateLanguageModelRequest>,
+  output: __S(945, __c59, 1) as any as S.Schema<CreateLanguageModelResponse>,
   errors: [
     BadRequestException,
     ConflictException,
@@ -1273,8 +1273,8 @@ export const createMedicalVocabulary: API.OperationMethod<
   CreateMedicalVocabularyError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(20, __c2, 4) as any as S.Schema<CreateMedicalVocabularyRequest>,
-  output: __S(21, __c2, 5) as any as S.Schema<CreateMedicalVocabularyResponse>,
+  input: __S(1008, __c63, 0) as any as S.Schema<CreateMedicalVocabularyRequest>,
+  output: __S(1009, __c63, 1) as any as S.Schema<CreateMedicalVocabularyResponse>,
   errors: [
     BadRequestException,
     ConflictException,
@@ -1314,8 +1314,8 @@ export const createVocabulary: API.OperationMethod<
   CreateVocabularyError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(22, __c2, 6) as any as S.Schema<CreateVocabularyRequest>,
-  output: __S(23, __c2, 7) as any as S.Schema<CreateVocabularyResponse>,
+  input: __S(1024, __c64, 0) as any as S.Schema<CreateVocabularyRequest>,
+  output: __S(1025, __c64, 1) as any as S.Schema<CreateVocabularyResponse>,
   errors: [
     BadRequestException,
     ConflictException,
@@ -1354,8 +1354,8 @@ export const createVocabularyFilter: API.OperationMethod<
   CreateVocabularyFilterError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(24, __c3, 0) as any as S.Schema<CreateVocabularyFilterRequest>,
-  output: __S(25, __c3, 1) as any as S.Schema<CreateVocabularyFilterResponse>,
+  input: __S(1040, __c65, 0) as any as S.Schema<CreateVocabularyFilterRequest>,
+  output: __S(1056, __c66, 0) as any as S.Schema<CreateVocabularyFilterResponse>,
   errors: [
     BadRequestException,
     ConflictException,
@@ -1384,8 +1384,8 @@ export const deleteCallAnalyticsCategory: API.OperationMethod<
   DeleteCallAnalyticsCategoryError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(26, __c3, 2) as any as S.Schema<DeleteCallAnalyticsCategoryRequest>,
-  output: __S(27, __c3, 3) as any as S.Schema<DeleteCallAnalyticsCategoryResponse>,
+  input: __S(0, __c0, 0) as any as S.Schema<DeleteCallAnalyticsCategoryRequest>,
+  output: __S(16, __c1, 0) as any as S.Schema<DeleteCallAnalyticsCategoryResponse>,
   errors: [
     BadRequestException,
     InternalFailureException,
@@ -1413,8 +1413,8 @@ export const deleteCallAnalyticsJob: API.OperationMethod<
   DeleteCallAnalyticsJobError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(28, __c3, 4) as any as S.Schema<DeleteCallAnalyticsJobRequest>,
-  output: __S(29, __c3, 5) as any as S.Schema<DeleteCallAnalyticsJobResponse>,
+  input: __S(32, __c2, 0) as any as S.Schema<DeleteCallAnalyticsJobRequest>,
+  output: __S(48, __c3, 0) as any as S.Schema<DeleteCallAnalyticsJobResponse>,
   errors: [BadRequestException, InternalFailureException, LimitExceededException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1437,8 +1437,8 @@ export const deleteLanguageModel: API.OperationMethod<
   DeleteLanguageModelError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(30, __c3, 6) as any as S.Schema<DeleteLanguageModelRequest>,
-  output: __S(29, __c3, 5) as any as S.Schema<DeleteLanguageModelResponse>,
+  input: __S(64, __c4, 0) as any as S.Schema<DeleteLanguageModelRequest>,
+  output: __S(48, __c3, 0) as any as S.Schema<DeleteLanguageModelResponse>,
   errors: [BadRequestException, InternalFailureException, LimitExceededException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1461,8 +1461,8 @@ export const deleteMedicalScribeJob: API.OperationMethod<
   DeleteMedicalScribeJobError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(31, __c3, 7) as any as S.Schema<DeleteMedicalScribeJobRequest>,
-  output: __S(29, __c3, 5) as any as S.Schema<DeleteMedicalScribeJobResponse>,
+  input: __S(80, __c5, 0) as any as S.Schema<DeleteMedicalScribeJobRequest>,
+  output: __S(48, __c3, 0) as any as S.Schema<DeleteMedicalScribeJobResponse>,
   errors: [BadRequestException, InternalFailureException, LimitExceededException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1485,8 +1485,8 @@ export const deleteMedicalTranscriptionJob: API.OperationMethod<
   DeleteMedicalTranscriptionJobError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(32, __c4, 0) as any as S.Schema<DeleteMedicalTranscriptionJobRequest>,
-  output: __S(27, __c3, 3) as any as S.Schema<DeleteMedicalTranscriptionJobResponse>,
+  input: __S(96, __c6, 0) as any as S.Schema<DeleteMedicalTranscriptionJobRequest>,
+  output: __S(16, __c1, 0) as any as S.Schema<DeleteMedicalTranscriptionJobResponse>,
   errors: [BadRequestException, InternalFailureException, LimitExceededException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1510,8 +1510,8 @@ export const deleteMedicalVocabulary: API.OperationMethod<
   DeleteMedicalVocabularyError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(33, __c4, 1) as any as S.Schema<DeleteMedicalVocabularyRequest>,
-  output: __S(34, __c4, 2) as any as S.Schema<DeleteMedicalVocabularyResponse>,
+  input: __S(112, __c7, 0) as any as S.Schema<DeleteMedicalVocabularyRequest>,
+  output: __S(113, __c7, 1) as any as S.Schema<DeleteMedicalVocabularyResponse>,
   errors: [
     BadRequestException,
     InternalFailureException,
@@ -1539,8 +1539,8 @@ export const deleteTranscriptionJob: API.OperationMethod<
   DeleteTranscriptionJobError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(35, __c4, 3) as any as S.Schema<DeleteTranscriptionJobRequest>,
-  output: __S(29, __c3, 5) as any as S.Schema<DeleteTranscriptionJobResponse>,
+  input: __S(128, __c8, 0) as any as S.Schema<DeleteTranscriptionJobRequest>,
+  output: __S(48, __c3, 0) as any as S.Schema<DeleteTranscriptionJobResponse>,
   errors: [BadRequestException, InternalFailureException, LimitExceededException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1564,8 +1564,8 @@ export const deleteVocabulary: API.OperationMethod<
   DeleteVocabularyError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(36, __c4, 4) as any as S.Schema<DeleteVocabularyRequest>,
-  output: __S(29, __c3, 5) as any as S.Schema<DeleteVocabularyResponse>,
+  input: __S(144, __c9, 0) as any as S.Schema<DeleteVocabularyRequest>,
+  output: __S(48, __c3, 0) as any as S.Schema<DeleteVocabularyResponse>,
   errors: [
     BadRequestException,
     InternalFailureException,
@@ -1594,8 +1594,8 @@ export const deleteVocabularyFilter: API.OperationMethod<
   DeleteVocabularyFilterError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(37, __c4, 5) as any as S.Schema<DeleteVocabularyFilterRequest>,
-  output: __S(29, __c3, 5) as any as S.Schema<DeleteVocabularyFilterResponse>,
+  input: __S(160, __c10, 0) as any as S.Schema<DeleteVocabularyFilterRequest>,
+  output: __S(48, __c3, 0) as any as S.Schema<DeleteVocabularyFilterResponse>,
   errors: [
     BadRequestException,
     InternalFailureException,
@@ -1630,8 +1630,8 @@ export const describeLanguageModel: API.OperationMethod<
   DescribeLanguageModelError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(38, __c4, 6) as any as S.Schema<DescribeLanguageModelRequest>,
-  output: __S(40, __c5, 0) as any as S.Schema<DescribeLanguageModelResponse>,
+  input: __S(176, __c11, 0) as any as S.Schema<DescribeLanguageModelRequest>,
+  output: __S(177, __c11, 1) as any as S.Schema<DescribeLanguageModelResponse>,
   errors: [
     BadRequestException,
     InternalFailureException,
@@ -1660,8 +1660,8 @@ export const getCallAnalyticsCategory: API.OperationMethod<
   GetCallAnalyticsCategoryError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(41, __c5, 1) as any as S.Schema<GetCallAnalyticsCategoryRequest>,
-  output: __S(14, __c1, 6) as any as S.Schema<GetCallAnalyticsCategoryResponse>,
+  input: __S(208, __c13, 0) as any as S.Schema<GetCallAnalyticsCategoryRequest>,
+  output: __S(896, __c56, 0) as any as S.Schema<GetCallAnalyticsCategoryResponse>,
   errors: [
     BadRequestException,
     InternalFailureException,
@@ -1703,8 +1703,8 @@ export const getCallAnalyticsJob: API.OperationMethod<
   GetCallAnalyticsJobError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(42, __c5, 2) as any as S.Schema<GetCallAnalyticsJobRequest>,
-  output: __S(56, __c7, 0) as any as S.Schema<GetCallAnalyticsJobResponse>,
+  input: __S(224, __c14, 0) as any as S.Schema<GetCallAnalyticsJobRequest>,
+  output: __S(309, __c19, 5) as any as S.Schema<GetCallAnalyticsJobResponse>,
   errors: [
     BadRequestException,
     InternalFailureException,
@@ -1740,8 +1740,8 @@ export const getMedicalScribeJob: API.OperationMethod<
   GetMedicalScribeJobError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(57, __c7, 1) as any as S.Schema<GetMedicalScribeJobRequest>,
-  output: __S(64, __c8, 0) as any as S.Schema<GetMedicalScribeJobResponse>,
+  input: __S(320, __c20, 0) as any as S.Schema<GetMedicalScribeJobRequest>,
+  output: __S(342, __c21, 6) as any as S.Schema<GetMedicalScribeJobResponse>,
   errors: [
     BadRequestException,
     InternalFailureException,
@@ -1777,8 +1777,8 @@ export const getMedicalTranscriptionJob: API.OperationMethod<
   GetMedicalTranscriptionJobError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(65, __c8, 1) as any as S.Schema<GetMedicalTranscriptionJobRequest>,
-  output: __S(69, __c8, 5) as any as S.Schema<GetMedicalTranscriptionJobResponse>,
+  input: __S(352, __c22, 0) as any as S.Schema<GetMedicalTranscriptionJobRequest>,
+  output: __S(371, __c23, 3) as any as S.Schema<GetMedicalTranscriptionJobResponse>,
   errors: [
     BadRequestException,
     InternalFailureException,
@@ -1812,8 +1812,8 @@ export const getMedicalVocabulary: API.OperationMethod<
   GetMedicalVocabularyError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(70, __c8, 6) as any as S.Schema<GetMedicalVocabularyRequest>,
-  output: __S(71, __c8, 7) as any as S.Schema<GetMedicalVocabularyResponse>,
+  input: __S(384, __c24, 0) as any as S.Schema<GetMedicalVocabularyRequest>,
+  output: __S(385, __c24, 1) as any as S.Schema<GetMedicalVocabularyResponse>,
   errors: [
     BadRequestException,
     InternalFailureException,
@@ -1852,8 +1852,8 @@ export const getTranscriptionJob: API.OperationMethod<
   GetTranscriptionJobError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(72, __c9, 0) as any as S.Schema<GetTranscriptionJobRequest>,
-  output: __S(82, __c10, 2) as any as S.Schema<GetTranscriptionJobResponse>,
+  input: __S(400, __c25, 0) as any as S.Schema<GetTranscriptionJobRequest>,
+  output: __S(436, __c27, 4) as any as S.Schema<GetTranscriptionJobResponse>,
   errors: [
     BadRequestException,
     InternalFailureException,
@@ -1888,8 +1888,8 @@ export const getVocabulary: API.OperationMethod<
   GetVocabularyError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(83, __c10, 3) as any as S.Schema<GetVocabularyRequest>,
-  output: __S(84, __c10, 4) as any as S.Schema<GetVocabularyResponse>,
+  input: __S(448, __c28, 0) as any as S.Schema<GetVocabularyRequest>,
+  output: __S(449, __c28, 1) as any as S.Schema<GetVocabularyResponse>,
   errors: [
     BadRequestException,
     InternalFailureException,
@@ -1918,8 +1918,8 @@ export const getVocabularyFilter: API.OperationMethod<
   GetVocabularyFilterError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(85, __c10, 5) as any as S.Schema<GetVocabularyFilterRequest>,
-  output: __S(86, __c10, 6) as any as S.Schema<GetVocabularyFilterResponse>,
+  input: __S(464, __c29, 0) as any as S.Schema<GetVocabularyFilterRequest>,
+  output: __S(465, __c29, 1) as any as S.Schema<GetVocabularyFilterResponse>,
   errors: [
     BadRequestException,
     InternalFailureException,
@@ -1949,8 +1949,8 @@ export const listCallAnalyticsCategories: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(87, __c10, 7) as any as S.Schema<ListCallAnalyticsCategoriesRequest>,
-  output: __S(89, __c11, 1) as any as S.Schema<ListCallAnalyticsCategoriesResponse>,
+  input: __S(480, __c30, 0) as any as S.Schema<ListCallAnalyticsCategoriesRequest>,
+  output: __S(482, __c30, 2) as any as S.Schema<ListCallAnalyticsCategoriesResponse>,
   errors: [BadRequestException, InternalFailureException, LimitExceededException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1980,8 +1980,8 @@ export const listCallAnalyticsJobs: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(90, __c11, 2) as any as S.Schema<ListCallAnalyticsJobsRequest>,
-  output: __S(93, __c11, 5) as any as S.Schema<ListCallAnalyticsJobsResponse>,
+  input: __S(496, __c31, 0) as any as S.Schema<ListCallAnalyticsJobsRequest>,
+  output: __S(499, __c31, 3) as any as S.Schema<ListCallAnalyticsJobsResponse>,
   errors: [BadRequestException, InternalFailureException, LimitExceededException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2011,8 +2011,8 @@ export const listLanguageModels: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(94, __c11, 6) as any as S.Schema<ListLanguageModelsRequest>,
-  output: __S(96, __c12, 0) as any as S.Schema<ListLanguageModelsResponse>,
+  input: __S(512, __c32, 0) as any as S.Schema<ListLanguageModelsRequest>,
+  output: __S(514, __c32, 2) as any as S.Schema<ListLanguageModelsResponse>,
   errors: [BadRequestException, InternalFailureException, LimitExceededException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2042,8 +2042,8 @@ export const listMedicalScribeJobs: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(97, __c12, 1) as any as S.Schema<ListMedicalScribeJobsRequest>,
-  output: __S(100, __c12, 4) as any as S.Schema<ListMedicalScribeJobsResponse>,
+  input: __S(528, __c33, 0) as any as S.Schema<ListMedicalScribeJobsRequest>,
+  output: __S(531, __c33, 3) as any as S.Schema<ListMedicalScribeJobsResponse>,
   errors: [BadRequestException, InternalFailureException, LimitExceededException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2073,8 +2073,8 @@ export const listMedicalTranscriptionJobs: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(101, __c12, 5) as any as S.Schema<ListMedicalTranscriptionJobsRequest>,
-  output: __S(104, __c13, 0) as any as S.Schema<ListMedicalTranscriptionJobsResponse>,
+  input: __S(544, __c34, 0) as any as S.Schema<ListMedicalTranscriptionJobsRequest>,
+  output: __S(547, __c34, 3) as any as S.Schema<ListMedicalTranscriptionJobsResponse>,
   errors: [BadRequestException, InternalFailureException, LimitExceededException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2104,8 +2104,8 @@ export const listMedicalVocabularies: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(105, __c13, 1) as any as S.Schema<ListMedicalVocabulariesRequest>,
-  output: __S(108, __c13, 4) as any as S.Schema<ListMedicalVocabulariesResponse>,
+  input: __S(560, __c35, 0) as any as S.Schema<ListMedicalVocabulariesRequest>,
+  output: __S(561, __c35, 1) as any as S.Schema<ListMedicalVocabulariesResponse>,
   errors: [BadRequestException, InternalFailureException, LimitExceededException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2136,8 +2136,8 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(109, __c13, 5) as any as S.Schema<ListTagsForResourceRequest>,
-  output: __S(110, __c13, 6) as any as S.Schema<ListTagsForResourceResponse>,
+  input: __S(608, __c38, 0) as any as S.Schema<ListTagsForResourceRequest>,
+  output: __S(609, __c38, 1) as any as S.Schema<ListTagsForResourceResponse>,
   errors: [
     BadRequestException,
     InternalFailureException,
@@ -2167,8 +2167,8 @@ export const listTranscriptionJobs: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(111, __c13, 7) as any as S.Schema<ListTranscriptionJobsRequest>,
-  output: __S(114, __c14, 2) as any as S.Schema<ListTranscriptionJobsResponse>,
+  input: __S(624, __c39, 0) as any as S.Schema<ListTranscriptionJobsRequest>,
+  output: __S(627, __c39, 3) as any as S.Schema<ListTranscriptionJobsResponse>,
   errors: [BadRequestException, InternalFailureException, LimitExceededException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2198,8 +2198,8 @@ export const listVocabularies: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(115, __c14, 3) as any as S.Schema<ListVocabulariesRequest>,
-  output: __S(116, __c14, 4) as any as S.Schema<ListVocabulariesResponse>,
+  input: __S(640, __c40, 0) as any as S.Schema<ListVocabulariesRequest>,
+  output: __S(641, __c40, 1) as any as S.Schema<ListVocabulariesResponse>,
   errors: [BadRequestException, InternalFailureException, LimitExceededException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2229,8 +2229,8 @@ export const listVocabularyFilters: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(117, __c14, 5) as any as S.Schema<ListVocabularyFiltersRequest>,
-  output: __S(120, __c15, 0) as any as S.Schema<ListVocabularyFiltersResponse>,
+  input: __S(656, __c41, 0) as any as S.Schema<ListVocabularyFiltersRequest>,
+  output: __S(659, __c41, 3) as any as S.Schema<ListVocabularyFiltersResponse>,
   errors: [BadRequestException, InternalFailureException, LimitExceededException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2299,8 +2299,8 @@ export const startCallAnalyticsJob: API.OperationMethod<
   StartCallAnalyticsJobError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(121, __c15, 1) as any as S.Schema<StartCallAnalyticsJobRequest>,
-  output: __S(56, __c7, 0) as any as S.Schema<StartCallAnalyticsJobResponse>,
+  input: __S(672, __c42, 0) as any as S.Schema<StartCallAnalyticsJobRequest>,
+  output: __S(309, __c19, 5) as any as S.Schema<StartCallAnalyticsJobResponse>,
   errors: [
     BadRequestException,
     ConflictException,
@@ -2358,8 +2358,8 @@ export const startMedicalScribeJob: API.OperationMethod<
   StartMedicalScribeJobError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(124, __c15, 4) as any as S.Schema<StartMedicalScribeJobRequest>,
-  output: __S(64, __c8, 0) as any as S.Schema<StartMedicalScribeJobResponse>,
+  input: __S(690, __c43, 2) as any as S.Schema<StartMedicalScribeJobRequest>,
+  output: __S(342, __c21, 6) as any as S.Schema<StartMedicalScribeJobResponse>,
   errors: [
     BadRequestException,
     ConflictException,
@@ -2421,8 +2421,8 @@ export const startMedicalTranscriptionJob: API.OperationMethod<
   StartMedicalTranscriptionJobError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(125, __c15, 5) as any as S.Schema<StartMedicalTranscriptionJobRequest>,
-  output: __S(69, __c8, 5) as any as S.Schema<StartMedicalTranscriptionJobResponse>,
+  input: __S(704, __c44, 0) as any as S.Schema<StartMedicalTranscriptionJobRequest>,
+  output: __S(371, __c23, 3) as any as S.Schema<StartMedicalTranscriptionJobResponse>,
   errors: [
     BadRequestException,
     ConflictException,
@@ -2476,8 +2476,8 @@ export const startTranscriptionJob: API.OperationMethod<
   StartTranscriptionJobError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(127, __c15, 7) as any as S.Schema<StartTranscriptionJobRequest>,
-  output: __S(82, __c10, 2) as any as S.Schema<StartTranscriptionJobResponse>,
+  input: __S(721, __c45, 1) as any as S.Schema<StartTranscriptionJobRequest>,
+  output: __S(436, __c27, 4) as any as S.Schema<StartTranscriptionJobResponse>,
   errors: [
     BadRequestException,
     ConflictException,
@@ -2509,8 +2509,8 @@ export const tagResource: API.OperationMethod<
   TagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(128, __c16, 0) as any as S.Schema<TagResourceRequest>,
-  output: __S(29, __c3, 5) as any as S.Schema<TagResourceResponse>,
+  input: __S(736, __c46, 0) as any as S.Schema<TagResourceRequest>,
+  output: __S(48, __c3, 0) as any as S.Schema<TagResourceResponse>,
   errors: [
     BadRequestException,
     ConflictException,
@@ -2542,8 +2542,8 @@ export const untagResource: API.OperationMethod<
   UntagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(129, __c16, 1) as any as S.Schema<UntagResourceRequest>,
-  output: __S(29, __c3, 5) as any as S.Schema<UntagResourceResponse>,
+  input: __S(752, __c47, 0) as any as S.Schema<UntagResourceRequest>,
+  output: __S(48, __c3, 0) as any as S.Schema<UntagResourceResponse>,
   errors: [
     BadRequestException,
     ConflictException,
@@ -2577,8 +2577,8 @@ export const updateCallAnalyticsCategory: API.OperationMethod<
   UpdateCallAnalyticsCategoryError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(130, __c16, 2) as any as S.Schema<UpdateCallAnalyticsCategoryRequest>,
-  output: __S(14, __c1, 6) as any as S.Schema<UpdateCallAnalyticsCategoryResponse>,
+  input: __S(768, __c48, 0) as any as S.Schema<UpdateCallAnalyticsCategoryRequest>,
+  output: __S(896, __c56, 0) as any as S.Schema<UpdateCallAnalyticsCategoryResponse>,
   errors: [
     BadRequestException,
     ConflictException,
@@ -2617,8 +2617,8 @@ export const updateLanguageModel: API.OperationMethod<
   UpdateLanguageModelError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(131, __c16, 3) as any as S.Schema<UpdateLanguageModelRequest>,
-  output: __S(132, __c16, 4) as any as S.Schema<UpdateLanguageModelResponse>,
+  input: __S(784, __c49, 0) as any as S.Schema<UpdateLanguageModelRequest>,
+  output: __S(785, __c49, 1) as any as S.Schema<UpdateLanguageModelResponse>,
   errors: [
     BadRequestException,
     ConflictException,
@@ -2649,8 +2649,8 @@ export const updateMedicalVocabulary: API.OperationMethod<
   UpdateMedicalVocabularyError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(133, __c16, 5) as any as S.Schema<UpdateMedicalVocabularyRequest>,
-  output: __S(134, __c16, 6) as any as S.Schema<UpdateMedicalVocabularyResponse>,
+  input: __S(800, __c50, 0) as any as S.Schema<UpdateMedicalVocabularyRequest>,
+  output: __S(801, __c50, 1) as any as S.Schema<UpdateMedicalVocabularyResponse>,
   errors: [
     BadRequestException,
     ConflictException,
@@ -2685,8 +2685,8 @@ export const updateVocabulary: API.OperationMethod<
   UpdateVocabularyError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(135, __c16, 7) as any as S.Schema<UpdateVocabularyRequest>,
-  output: __S(106, __c13, 2) as any as S.Schema<UpdateVocabularyResponse>,
+  input: __S(816, __c51, 0) as any as S.Schema<UpdateVocabularyRequest>,
+  output: __S(592, __c37, 0) as any as S.Schema<UpdateVocabularyResponse>,
   errors: [
     BadRequestException,
     ConflictException,
@@ -2720,8 +2720,8 @@ export const updateVocabularyFilter: API.OperationMethod<
   UpdateVocabularyFilterError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(136, __c17, 0) as any as S.Schema<UpdateVocabularyFilterRequest>,
-  output: __S(25, __c3, 1) as any as S.Schema<UpdateVocabularyFilterResponse>,
+  input: __S(832, __c52, 0) as any as S.Schema<UpdateVocabularyFilterRequest>,
+  output: __S(1056, __c66, 0) as any as S.Schema<UpdateVocabularyFilterResponse>,
   errors: [
     BadRequestException,
     ConflictException,
@@ -2736,6 +2736,1483 @@ export const updateVocabularyFilter: API.OperationMethod<
 
 // Schema builders: each runs one schema initializer, on that schema's first use.
 function __c0(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ CategoryName: S.String.pipe(T.HttpLabel("CategoryName")) }).pipe(
+          T.all(
+            T.Http({ method: "DELETE", uri: "/callanalyticscategories/{CategoryName}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "DeleteCallAnalyticsCategoryRequest",
+      });
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "DeleteCallAnalyticsCategoryResponse",
+      });
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ CallAnalyticsJobName: S.String.pipe(T.HttpLabel("CallAnalyticsJobName")) }).pipe(
+          T.all(
+            T.Http({ method: "DELETE", uri: "/callanalyticsjobs/{CallAnalyticsJobName}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "DeleteCallAnalyticsJobRequest",
+      });
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "DeleteCallAnalyticsJobResponse",
+      });
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ ModelName: S.String.pipe(T.HttpLabel("ModelName")) }).pipe(
+          T.all(
+            T.Http({ method: "DELETE", uri: "/languagemodels/{ModelName}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "DeleteLanguageModelRequest",
+      });
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ MedicalScribeJobName: S.String.pipe(T.HttpLabel("MedicalScribeJobName")) }).pipe(
+          T.all(
+            T.Http({ method: "DELETE", uri: "/medicalscribejobs/{MedicalScribeJobName}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "DeleteMedicalScribeJobRequest",
+      });
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          MedicalTranscriptionJobName: S.String.pipe(T.HttpLabel("MedicalTranscriptionJobName")),
+        }).pipe(
+          T.all(
+            T.Http({
+              method: "DELETE",
+              uri: "/medicaltranscriptionjobs/{MedicalTranscriptionJobName}",
+            }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "DeleteMedicalTranscriptionJobRequest",
+      });
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ VocabularyName: S.String.pipe(T.HttpLabel("VocabularyName")) }).pipe(
+          T.all(
+            T.Http({ method: "DELETE", uri: "/medicalvocabularies/{VocabularyName}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "DeleteMedicalVocabularyRequest",
+      });
+    case 1:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "DeleteMedicalVocabularyResponse",
+      });
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ TranscriptionJobName: S.String.pipe(T.HttpLabel("TranscriptionJobName")) }).pipe(
+          T.all(
+            T.Http({ method: "DELETE", uri: "/transcriptionjobs/{TranscriptionJobName}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "DeleteTranscriptionJobRequest",
+      });
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ VocabularyName: S.String.pipe(T.HttpLabel("VocabularyName")) }).pipe(
+          T.all(
+            T.Http({ method: "DELETE", uri: "/vocabularies/{VocabularyName}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "DeleteVocabularyRequest" });
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ VocabularyFilterName: S.String.pipe(T.HttpLabel("VocabularyFilterName")) }).pipe(
+          T.all(
+            T.Http({ method: "DELETE", uri: "/vocabularyFilters/{VocabularyFilterName}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "DeleteVocabularyFilterRequest",
+      });
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ ModelName: S.String.pipe(T.HttpLabel("ModelName")) }).pipe(
+          T.all(
+            T.Http({ method: "GET", uri: "/languagemodels/{ModelName}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "DescribeLanguageModelRequest",
+      });
+    case 1:
+      return S.suspend(() => S.Struct({ LanguageModel: S.optional(__S(192, __c12, 0)) })).annotate({
+        identifier: "DescribeLanguageModelResponse",
+      });
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          ModelName: S.optional(S.String),
+          CreateTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          LastModifiedTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          LanguageCode: S.optional(S.String),
+          BaseModelName: S.optional(S.String),
+          ModelStatus: S.optional(S.String),
+          UpgradeAvailability: S.optional(S.Boolean),
+          FailureReason: S.optional(S.String),
+          InputDataConfig: S.optional(__S(960, __c60, 0)),
+          EncryptionConfiguration: S.optional(__S(992, __c62, 0)),
+        }),
+      ).annotate({ identifier: "LanguageModel" });
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ CategoryName: S.String.pipe(T.HttpLabel("CategoryName")) }).pipe(
+          T.all(
+            T.Http({ method: "GET", uri: "/callanalyticscategories/{CategoryName}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "GetCallAnalyticsCategoryRequest",
+      });
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ CallAnalyticsJobName: S.String.pipe(T.HttpLabel("CallAnalyticsJobName")) }).pipe(
+          T.all(
+            T.Http({ method: "GET", uri: "/callanalyticsjobs/{CallAnalyticsJobName}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "GetCallAnalyticsJobRequest",
+      });
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          MediaFileUri: S.optional(S.String),
+          RedactedMediaFileUri: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Media" });
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          RedactionType: S.String,
+          RedactionOutput: S.String,
+          PiiEntityTypes: S.optional(__S(864, __c54, 0)),
+        }),
+      ).annotate({ identifier: "ContentRedaction" });
+  }
+}
+function __c17(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          TranscriptFileUri: S.optional(S.String),
+          RedactedTranscriptFileUri: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Transcript" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          VocabularyName: S.optional(S.String),
+          VocabularyFilterName: S.optional(S.String),
+          LanguageModelName: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "LanguageIdSettings" });
+    case 2:
+      return S.Record(S.String, /*@__PURE__*/ __S(273, __c17, 1).pipe(S.optional));
+  }
+}
+function __c18(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          Feature: S.optional(S.String),
+          ReasonCode: S.optional(S.String),
+          Message: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "CallAnalyticsSkippedFeature",
+      });
+    case 1:
+      return S.Array(__S(288, __c18, 0));
+    case 2:
+      return S.suspend(() => S.Struct({ Skipped: S.optional(__S(289, __c18, 1)) })).annotate({
+        identifier: "CallAnalyticsJobDetails",
+      });
+  }
+}
+function __c19(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({ GenerateAbstractiveSummary: S.Boolean })).annotate({
+        identifier: "Summarization",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          VocabularyName: S.optional(S.String),
+          VocabularyFilterName: S.optional(S.String),
+          VocabularyFilterMethod: S.optional(S.String),
+          LanguageModelName: S.optional(S.String),
+          ContentRedaction: S.optional(__S(256, __c16, 0)),
+          LanguageOptions: S.optional(__S(864, __c54, 0)),
+          LanguageIdSettings: S.optional(__S(274, __c17, 2)),
+          Summarization: S.optional(__S(304, __c19, 0)),
+        }),
+      ).annotate({ identifier: "CallAnalyticsJobSettings" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({ ChannelId: S.optional(S.Number), ParticipantRole: S.optional(S.String) }),
+      ).annotate({ identifier: "ChannelDefinition" });
+    case 3:
+      return S.Array(__S(306, __c19, 2));
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          CallAnalyticsJobName: S.optional(S.String),
+          CallAnalyticsJobStatus: S.optional(S.String),
+          CallAnalyticsJobDetails: S.optional(__S(290, __c18, 2)),
+          LanguageCode: S.optional(S.String),
+          MediaSampleRateHertz: S.optional(S.Number),
+          MediaFormat: S.optional(S.String),
+          Media: S.optional(__S(240, __c15, 0)),
+          Transcript: S.optional(__S(272, __c17, 0)),
+          StartTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          CreationTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          CompletionTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          FailureReason: S.optional(S.String),
+          DataAccessRoleArn: S.optional(S.String),
+          IdentifiedLanguageScore: S.optional(S.Number),
+          Settings: S.optional(__S(305, __c19, 1)),
+          ChannelDefinitions: S.optional(__S(307, __c19, 3)),
+          Tags: S.optional(__S(913, __c57, 1)),
+        }),
+      ).annotate({ identifier: "CallAnalyticsJob" });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({ CallAnalyticsJob: S.optional(__S(308, __c19, 4)) }),
+      ).annotate({
+        identifier: "GetCallAnalyticsJobResponse",
+      });
+  }
+}
+function __c20(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ MedicalScribeJobName: S.String.pipe(T.HttpLabel("MedicalScribeJobName")) }).pipe(
+          T.all(
+            T.Http({ method: "GET", uri: "/medicalscribejobs/{MedicalScribeJobName}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "GetMedicalScribeJobRequest",
+      });
+  }
+}
+function __c21(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ TranscriptFileUri: S.String, ClinicalDocumentUri: S.String }),
+      ).annotate({ identifier: "MedicalScribeOutput" });
+    case 1:
+      return S.suspend(() => S.Struct({ NoteTemplate: S.optional(S.String) })).annotate({
+        identifier: "ClinicalNoteGenerationSettings",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          ShowSpeakerLabels: S.optional(S.Boolean),
+          MaxSpeakerLabels: S.optional(S.Number),
+          ChannelIdentification: S.optional(S.Boolean),
+          VocabularyName: S.optional(S.String),
+          VocabularyFilterName: S.optional(S.String),
+          VocabularyFilterMethod: S.optional(S.String),
+          ClinicalNoteGenerationSettings: S.optional(__S(337, __c21, 1)),
+        }),
+      ).annotate({ identifier: "MedicalScribeSettings" });
+    case 3:
+      return S.suspend(() => S.Struct({ ChannelId: S.Number, ParticipantRole: S.String })).annotate(
+        {
+          identifier: "MedicalScribeChannelDefinition",
+        },
+      );
+    case 4:
+      return S.Array(__S(339, __c21, 3));
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          MedicalScribeJobName: S.optional(S.String),
+          MedicalScribeJobStatus: S.optional(S.String),
+          LanguageCode: S.optional(S.String),
+          Media: S.optional(__S(240, __c15, 0)),
+          MedicalScribeOutput: S.optional(__S(336, __c21, 0)),
+          StartTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          CreationTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          CompletionTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          FailureReason: S.optional(S.String),
+          Settings: S.optional(__S(338, __c21, 2)),
+          DataAccessRoleArn: S.optional(S.String),
+          ChannelDefinitions: S.optional(__S(340, __c21, 4)),
+          MedicalScribeContextProvided: S.optional(S.Boolean),
+          Tags: S.optional(__S(913, __c57, 1)),
+        }),
+      ).annotate({ identifier: "MedicalScribeJob" });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({ MedicalScribeJob: S.optional(__S(341, __c21, 5)) }),
+      ).annotate({
+        identifier: "GetMedicalScribeJobResponse",
+      });
+  }
+}
+function __c22(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          MedicalTranscriptionJobName: S.String.pipe(T.HttpLabel("MedicalTranscriptionJobName")),
+        }).pipe(
+          T.all(
+            T.Http({
+              method: "GET",
+              uri: "/medicaltranscriptionjobs/{MedicalTranscriptionJobName}",
+            }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "GetMedicalTranscriptionJobRequest",
+      });
+  }
+}
+function __c23(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({ TranscriptFileUri: S.optional(S.String) })).annotate({
+        identifier: "MedicalTranscript",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          ShowSpeakerLabels: S.optional(S.Boolean),
+          MaxSpeakerLabels: S.optional(S.Number),
+          ChannelIdentification: S.optional(S.Boolean),
+          ShowAlternatives: S.optional(S.Boolean),
+          MaxAlternatives: S.optional(S.Number),
+          VocabularyName: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "MedicalTranscriptionSetting",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          MedicalTranscriptionJobName: S.optional(S.String),
+          TranscriptionJobStatus: S.optional(S.String),
+          LanguageCode: S.optional(S.String),
+          MediaSampleRateHertz: S.optional(S.Number),
+          MediaFormat: S.optional(S.String),
+          Media: S.optional(__S(240, __c15, 0)),
+          Transcript: S.optional(__S(368, __c23, 0)),
+          StartTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          CreationTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          CompletionTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          FailureReason: S.optional(S.String),
+          Settings: S.optional(__S(369, __c23, 1)),
+          ContentIdentificationType: S.optional(S.String),
+          Specialty: S.optional(S.String),
+          Type: S.optional(S.String),
+          Tags: S.optional(__S(913, __c57, 1)),
+        }),
+      ).annotate({ identifier: "MedicalTranscriptionJob" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({ MedicalTranscriptionJob: S.optional(__S(370, __c23, 2)) }),
+      ).annotate({
+        identifier: "GetMedicalTranscriptionJobResponse",
+      });
+  }
+}
+function __c24(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ VocabularyName: S.String.pipe(T.HttpLabel("VocabularyName")) }).pipe(
+          T.all(
+            T.Http({ method: "GET", uri: "/medicalvocabularies/{VocabularyName}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "GetMedicalVocabularyRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          VocabularyName: S.optional(S.String),
+          LanguageCode: S.optional(S.String),
+          VocabularyState: S.optional(S.String),
+          LastModifiedTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          FailureReason: S.optional(S.String),
+          DownloadUri: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GetMedicalVocabularyResponse",
+      });
+  }
+}
+function __c25(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ TranscriptionJobName: S.String.pipe(T.HttpLabel("TranscriptionJobName")) }).pipe(
+          T.all(
+            T.Http({ method: "GET", uri: "/transcriptionjobs/{TranscriptionJobName}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "GetTranscriptionJobRequest",
+      });
+  }
+}
+function __c26(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({ LanguageModelName: S.optional(S.String) })).annotate({
+        identifier: "ModelSettings",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({ LanguageCode: S.optional(S.String), DurationInSeconds: S.optional(S.Number) }),
+      ).annotate({ identifier: "LanguageCodeItem" });
+    case 2:
+      return S.Array(__S(417, __c26, 1));
+    case 3:
+      return S.suspend(() => S.Struct({ ToxicityCategories: __S(864, __c54, 0) })).annotate({
+        identifier: "ToxicityDetectionSettings",
+      });
+    case 4:
+      return S.Array(__S(419, __c26, 3));
+  }
+}
+function __c27(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          VocabularyName: S.optional(S.String),
+          ShowSpeakerLabels: S.optional(S.Boolean),
+          MaxSpeakerLabels: S.optional(S.Number),
+          ChannelIdentification: S.optional(S.Boolean),
+          ShowAlternatives: S.optional(S.Boolean),
+          MaxAlternatives: S.optional(S.Number),
+          VocabularyFilterName: S.optional(S.String),
+          VocabularyFilterMethod: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Settings" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          AllowDeferredExecution: S.optional(S.Boolean),
+          DataAccessRoleArn: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "JobExecutionSettings" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          Formats: S.optional(__S(864, __c54, 0)),
+          SubtitleFileUris: S.optional(__S(928, __c58, 0)),
+          OutputStartIndex: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "SubtitlesOutput" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          TranscriptionJobName: S.optional(S.String),
+          TranscriptionJobStatus: S.optional(S.String),
+          LanguageCode: S.optional(S.String),
+          MediaSampleRateHertz: S.optional(S.Number),
+          MediaFormat: S.optional(S.String),
+          Media: S.optional(__S(240, __c15, 0)),
+          Transcript: S.optional(__S(272, __c17, 0)),
+          StartTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          CreationTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          CompletionTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          FailureReason: S.optional(S.String),
+          Settings: S.optional(__S(432, __c27, 0)),
+          ModelSettings: S.optional(__S(416, __c26, 0)),
+          JobExecutionSettings: S.optional(__S(433, __c27, 1)),
+          ContentRedaction: S.optional(__S(256, __c16, 0)),
+          IdentifyLanguage: S.optional(S.Boolean),
+          IdentifyMultipleLanguages: S.optional(S.Boolean),
+          LanguageOptions: S.optional(__S(864, __c54, 0)),
+          IdentifiedLanguageScore: S.optional(S.Number),
+          LanguageCodes: S.optional(__S(418, __c26, 2)),
+          Tags: S.optional(__S(913, __c57, 1)),
+          Subtitles: S.optional(__S(434, __c27, 2)),
+          LanguageIdSettings: S.optional(__S(274, __c17, 2)),
+          ToxicityDetection: S.optional(__S(420, __c26, 4)),
+        }),
+      ).annotate({ identifier: "TranscriptionJob" });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({ TranscriptionJob: S.optional(__S(435, __c27, 3)) }),
+      ).annotate({
+        identifier: "GetTranscriptionJobResponse",
+      });
+  }
+}
+function __c28(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ VocabularyName: S.String.pipe(T.HttpLabel("VocabularyName")) }).pipe(
+          T.all(
+            T.Http({ method: "GET", uri: "/vocabularies/{VocabularyName}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "GetVocabularyRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          VocabularyName: S.optional(S.String),
+          LanguageCode: S.optional(S.String),
+          VocabularyState: S.optional(S.String),
+          LastModifiedTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          FailureReason: S.optional(S.String),
+          DownloadUri: S.optional(S.String),
+          DataAccessRoleArn: S.optional(S.String),
+          EncryptionConfiguration: S.optional(__S(992, __c62, 0)),
+        }),
+      ).annotate({ identifier: "GetVocabularyResponse" });
+  }
+}
+function __c29(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ VocabularyFilterName: S.String.pipe(T.HttpLabel("VocabularyFilterName")) }).pipe(
+          T.all(
+            T.Http({ method: "GET", uri: "/vocabularyFilters/{VocabularyFilterName}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "GetVocabularyFilterRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          VocabularyFilterName: S.optional(S.String),
+          LanguageCode: S.optional(S.String),
+          LastModifiedTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          DownloadUri: S.optional(S.String),
+          DataAccessRoleArn: S.optional(S.String),
+          EncryptionConfiguration: S.optional(__S(992, __c62, 0)),
+        }),
+      ).annotate({
+        identifier: "GetVocabularyFilterResponse",
+      });
+  }
+}
+function __c30(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          NextToken: S.optional(S.String).pipe(T.HttpQuery("NextToken")),
+          MaxResults: S.optional(S.Number).pipe(T.HttpQuery("MaxResults")),
+        }).pipe(
+          T.all(
+            T.Http({ method: "GET", uri: "/callanalyticscategories" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "ListCallAnalyticsCategoriesRequest",
+      });
+    case 1:
+      return S.Array(__S(888, __c55, 8));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({ NextToken: S.optional(S.String), Categories: S.optional(__S(481, __c30, 1)) }),
+      ).annotate({
+        identifier: "ListCallAnalyticsCategoriesResponse",
+      });
+  }
+}
+function __c31(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          Status: S.optional(S.String).pipe(T.HttpQuery("Status")),
+          JobNameContains: S.optional(S.String).pipe(T.HttpQuery("JobNameContains")),
+          NextToken: S.optional(S.String).pipe(T.HttpQuery("NextToken")),
+          MaxResults: S.optional(S.Number).pipe(T.HttpQuery("MaxResults")),
+        }).pipe(
+          T.all(T.Http({ method: "GET", uri: "/callanalyticsjobs" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({
+        identifier: "ListCallAnalyticsJobsRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          CallAnalyticsJobName: S.optional(S.String),
+          CreationTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          StartTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          CompletionTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          LanguageCode: S.optional(S.String),
+          CallAnalyticsJobStatus: S.optional(S.String),
+          CallAnalyticsJobDetails: S.optional(__S(290, __c18, 2)),
+          FailureReason: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "CallAnalyticsJobSummary" });
+    case 2:
+      return S.Array(__S(497, __c31, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          Status: S.optional(S.String),
+          NextToken: S.optional(S.String),
+          CallAnalyticsJobSummaries: S.optional(__S(498, __c31, 2)),
+        }),
+      ).annotate({
+        identifier: "ListCallAnalyticsJobsResponse",
+      });
+  }
+}
+function __c32(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          StatusEquals: S.optional(S.String).pipe(T.HttpQuery("         StatusEquals")),
+          NameContains: S.optional(S.String).pipe(T.HttpQuery("NameContains")),
+          NextToken: S.optional(S.String).pipe(T.HttpQuery("NextToken")),
+          MaxResults: S.optional(S.Number).pipe(T.HttpQuery("MaxResults")),
+        }).pipe(
+          T.all(T.Http({ method: "GET", uri: "/languagemodels" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({
+        identifier: "ListLanguageModelsRequest",
+      });
+    case 1:
+      return S.Array(__S(192, __c12, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({ NextToken: S.optional(S.String), Models: S.optional(__S(513, __c32, 1)) }),
+      ).annotate({
+        identifier: "ListLanguageModelsResponse",
+      });
+  }
+}
+function __c33(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          Status: S.optional(S.String).pipe(T.HttpQuery("Status")),
+          JobNameContains: S.optional(S.String).pipe(T.HttpQuery("JobNameContains")),
+          NextToken: S.optional(S.String).pipe(T.HttpQuery("NextToken")),
+          MaxResults: S.optional(S.Number).pipe(T.HttpQuery("MaxResults")),
+        }).pipe(
+          T.all(T.Http({ method: "GET", uri: "/medicalscribejobs" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({
+        identifier: "ListMedicalScribeJobsRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          MedicalScribeJobName: S.optional(S.String),
+          CreationTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          StartTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          CompletionTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          LanguageCode: S.optional(S.String),
+          MedicalScribeJobStatus: S.optional(S.String),
+          FailureReason: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "MedicalScribeJobSummary" });
+    case 2:
+      return S.Array(__S(529, __c33, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          Status: S.optional(S.String),
+          NextToken: S.optional(S.String),
+          MedicalScribeJobSummaries: S.optional(__S(530, __c33, 2)),
+        }),
+      ).annotate({
+        identifier: "ListMedicalScribeJobsResponse",
+      });
+  }
+}
+function __c34(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          Status: S.optional(S.String).pipe(T.HttpQuery("Status")),
+          JobNameContains: S.optional(S.String).pipe(T.HttpQuery("JobNameContains")),
+          NextToken: S.optional(S.String).pipe(T.HttpQuery("NextToken")),
+          MaxResults: S.optional(S.Number).pipe(T.HttpQuery("MaxResults")),
+        }).pipe(
+          T.all(
+            T.Http({ method: "GET", uri: "/medicaltranscriptionjobs" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "ListMedicalTranscriptionJobsRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          MedicalTranscriptionJobName: S.optional(S.String),
+          CreationTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          StartTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          CompletionTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          LanguageCode: S.optional(S.String),
+          TranscriptionJobStatus: S.optional(S.String),
+          FailureReason: S.optional(S.String),
+          OutputLocationType: S.optional(S.String),
+          Specialty: S.optional(S.String),
+          ContentIdentificationType: S.optional(S.String),
+          Type: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "MedicalTranscriptionJobSummary",
+      });
+    case 2:
+      return S.Array(__S(545, __c34, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          Status: S.optional(S.String),
+          NextToken: S.optional(S.String),
+          MedicalTranscriptionJobSummaries: S.optional(__S(546, __c34, 2)),
+        }),
+      ).annotate({
+        identifier: "ListMedicalTranscriptionJobsResponse",
+      });
+  }
+}
+function __c35(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          NextToken: S.optional(S.String).pipe(T.HttpQuery("NextToken")),
+          MaxResults: S.optional(S.Number).pipe(T.HttpQuery("MaxResults")),
+          StateEquals: S.optional(S.String).pipe(T.HttpQuery("StateEquals")),
+          NameContains: S.optional(S.String).pipe(T.HttpQuery("NameContains")),
+        }).pipe(
+          T.all(
+            T.Http({ method: "GET", uri: "/medicalvocabularies" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "ListMedicalVocabulariesRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          Status: S.optional(S.String),
+          NextToken: S.optional(S.String),
+          Vocabularies: S.optional(__S(576, __c36, 0)),
+        }),
+      ).annotate({
+        identifier: "ListMedicalVocabulariesResponse",
+      });
+  }
+}
+function __c36(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(592, __c37, 0));
+  }
+}
+function __c37(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          VocabularyName: S.optional(S.String),
+          LanguageCode: S.optional(S.String),
+          LastModifiedTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          VocabularyState: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "VocabularyInfo" });
+  }
+}
+function __c38(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ ResourceArn: S.String.pipe(T.HttpLabel("ResourceArn")) }).pipe(
+          T.all(
+            T.Http({ method: "GET", uri: "/tags/{ResourceArn}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "ListTagsForResourceRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({ ResourceArn: S.optional(S.String), Tags: S.optional(__S(913, __c57, 1)) }),
+      ).annotate({
+        identifier: "ListTagsForResourceResponse",
+      });
+  }
+}
+function __c39(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          Status: S.optional(S.String).pipe(T.HttpQuery("Status")),
+          JobNameContains: S.optional(S.String).pipe(T.HttpQuery("JobNameContains")),
+          NextToken: S.optional(S.String).pipe(T.HttpQuery("NextToken")),
+          MaxResults: S.optional(S.Number).pipe(T.HttpQuery("MaxResults")),
+        }).pipe(
+          T.all(T.Http({ method: "GET", uri: "/transcriptionjobs" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({
+        identifier: "ListTranscriptionJobsRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          TranscriptionJobName: S.optional(S.String),
+          CreationTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          StartTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          CompletionTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          LanguageCode: S.optional(S.String),
+          TranscriptionJobStatus: S.optional(S.String),
+          FailureReason: S.optional(S.String),
+          OutputLocationType: S.optional(S.String),
+          ContentRedaction: S.optional(__S(256, __c16, 0)),
+          ModelSettings: S.optional(__S(416, __c26, 0)),
+          IdentifyLanguage: S.optional(S.Boolean),
+          IdentifyMultipleLanguages: S.optional(S.Boolean),
+          IdentifiedLanguageScore: S.optional(S.Number),
+          LanguageCodes: S.optional(__S(418, __c26, 2)),
+          ToxicityDetection: S.optional(__S(420, __c26, 4)),
+        }),
+      ).annotate({ identifier: "TranscriptionJobSummary" });
+    case 2:
+      return S.Array(__S(625, __c39, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          Status: S.optional(S.String),
+          NextToken: S.optional(S.String),
+          TranscriptionJobSummaries: S.optional(__S(626, __c39, 2)),
+        }),
+      ).annotate({
+        identifier: "ListTranscriptionJobsResponse",
+      });
+  }
+}
+function __c40(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          NextToken: S.optional(S.String).pipe(T.HttpQuery("NextToken")),
+          MaxResults: S.optional(S.Number).pipe(T.HttpQuery("MaxResults")),
+          StateEquals: S.optional(S.String).pipe(T.HttpQuery("StateEquals")),
+          NameContains: S.optional(S.String).pipe(T.HttpQuery("NameContains")),
+        }).pipe(
+          T.all(T.Http({ method: "GET", uri: "/vocabularies" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "ListVocabulariesRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          Status: S.optional(S.String),
+          NextToken: S.optional(S.String),
+          Vocabularies: S.optional(__S(576, __c36, 0)),
+        }),
+      ).annotate({ identifier: "ListVocabulariesResponse" });
+  }
+}
+function __c41(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          NextToken: S.optional(S.String).pipe(T.HttpQuery("NextToken")),
+          MaxResults: S.optional(S.Number).pipe(T.HttpQuery("MaxResults")),
+          NameContains: S.optional(S.String).pipe(T.HttpQuery("NameContains")),
+        }).pipe(
+          T.all(T.Http({ method: "GET", uri: "/vocabularyFilters" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({
+        identifier: "ListVocabularyFiltersRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          VocabularyFilterName: S.optional(S.String),
+          LanguageCode: S.optional(S.String),
+          LastModifiedTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+        }),
+      ).annotate({ identifier: "VocabularyFilterInfo" });
+    case 2:
+      return S.Array(__S(657, __c41, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          NextToken: S.optional(S.String),
+          VocabularyFilters: S.optional(__S(658, __c41, 2)),
+        }),
+      ).annotate({
+        identifier: "ListVocabularyFiltersResponse",
+      });
+  }
+}
+function __c42(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          CallAnalyticsJobName: S.String.pipe(T.HttpLabel("CallAnalyticsJobName")),
+          Media: __S(240, __c15, 0),
+          OutputLocation: S.optional(S.String),
+          OutputEncryptionKMSKeyId: S.optional(S.String),
+          DataAccessRoleArn: S.optional(S.String),
+          Settings: S.optional(__S(305, __c19, 1)),
+          Tags: S.optional(__S(913, __c57, 1)),
+          ChannelDefinitions: S.optional(__S(307, __c19, 3)),
+        }).pipe(
+          T.all(
+            T.Http({ method: "PUT", uri: "/callanalyticsjobs/{CallAnalyticsJobName}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "StartCallAnalyticsJobRequest",
+      });
+  }
+}
+function __c43(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({ Pronouns: S.optional(S.String) })).annotate({
+        identifier: "MedicalScribePatientContext",
+      });
+    case 1:
+      return S.suspend(() => S.Struct({ PatientContext: S.optional(__S(688, __c43, 0)) })).annotate(
+        { identifier: "MedicalScribeContext" },
+      );
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          MedicalScribeJobName: S.String.pipe(T.HttpLabel("MedicalScribeJobName")),
+          Media: __S(240, __c15, 0),
+          OutputBucketName: S.String,
+          OutputEncryptionKMSKeyId: S.optional(S.String),
+          KMSEncryptionContext: S.optional(__S(976, __c61, 0)),
+          DataAccessRoleArn: S.String,
+          Settings: __S(338, __c21, 2),
+          ChannelDefinitions: S.optional(__S(340, __c21, 4)),
+          Tags: S.optional(__S(913, __c57, 1)),
+          MedicalScribeContext: S.optional(__S(689, __c43, 1)),
+        }).pipe(
+          T.all(
+            T.Http({ method: "PUT", uri: "/medicalscribejobs/{MedicalScribeJobName}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "StartMedicalScribeJobRequest",
+      });
+  }
+}
+function __c44(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          MedicalTranscriptionJobName: S.String.pipe(T.HttpLabel("MedicalTranscriptionJobName")),
+          LanguageCode: S.String,
+          MediaSampleRateHertz: S.optional(S.Number),
+          MediaFormat: S.optional(S.String),
+          Media: __S(240, __c15, 0),
+          OutputBucketName: S.String,
+          OutputKey: S.optional(S.String),
+          OutputEncryptionKMSKeyId: S.optional(S.String),
+          KMSEncryptionContext: S.optional(__S(976, __c61, 0)),
+          Settings: S.optional(__S(369, __c23, 1)),
+          ContentIdentificationType: S.optional(S.String),
+          Specialty: S.String,
+          Type: S.String,
+          Tags: S.optional(__S(913, __c57, 1)),
+        }).pipe(
+          T.all(
+            T.Http({
+              method: "PUT",
+              uri: "/medicaltranscriptionjobs/{MedicalTranscriptionJobName}",
+            }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "StartMedicalTranscriptionJobRequest",
+      });
+  }
+}
+function __c45(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          Formats: S.optional(__S(864, __c54, 0)),
+          OutputStartIndex: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "Subtitles" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          TranscriptionJobName: S.String.pipe(T.HttpLabel("TranscriptionJobName")),
+          LanguageCode: S.optional(S.String),
+          MediaSampleRateHertz: S.optional(S.Number),
+          MediaFormat: S.optional(S.String),
+          Media: __S(240, __c15, 0),
+          OutputBucketName: S.optional(S.String),
+          OutputKey: S.optional(S.String),
+          OutputEncryptionKMSKeyId: S.optional(S.String),
+          KMSEncryptionContext: S.optional(__S(976, __c61, 0)),
+          Settings: S.optional(__S(432, __c27, 0)),
+          ModelSettings: S.optional(__S(416, __c26, 0)),
+          JobExecutionSettings: S.optional(__S(433, __c27, 1)),
+          ContentRedaction: S.optional(__S(256, __c16, 0)),
+          IdentifyLanguage: S.optional(S.Boolean),
+          IdentifyMultipleLanguages: S.optional(S.Boolean),
+          LanguageOptions: S.optional(__S(864, __c54, 0)),
+          Subtitles: S.optional(__S(720, __c45, 0)),
+          Tags: S.optional(__S(913, __c57, 1)),
+          LanguageIdSettings: S.optional(__S(274, __c17, 2)),
+          ToxicityDetection: S.optional(__S(420, __c26, 4)),
+        }).pipe(
+          T.all(
+            T.Http({ method: "PUT", uri: "/transcriptionjobs/{TranscriptionJobName}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "StartTranscriptionJobRequest",
+      });
+  }
+}
+function __c46(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          ResourceArn: S.String.pipe(T.HttpLabel("ResourceArn")),
+          Tags: __S(913, __c57, 1),
+        }).pipe(
+          T.all(
+            T.Http({ method: "PUT", uri: "/tags/{ResourceArn}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "TagResourceRequest" });
+  }
+}
+function __c47(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          ResourceArn: S.String.pipe(T.HttpLabel("ResourceArn")),
+          TagKeys: __S(928, __c58, 0).pipe(T.HttpQuery("tagKeys")),
+        }).pipe(
+          T.all(
+            T.Http({ method: "DELETE", uri: "/tags/{ResourceArn}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "UntagResourceRequest" });
+  }
+}
+function __c48(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          CategoryName: S.String.pipe(T.HttpLabel("CategoryName")),
+          Rules: __S(887, __c55, 7),
+          InputType: S.optional(S.String),
+        }).pipe(
+          T.all(
+            T.Http({ method: "PATCH", uri: "/callanalyticscategories/{CategoryName}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "UpdateCallAnalyticsCategoryRequest",
+      });
+  }
+}
+function __c49(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          ModelName: S.String.pipe(T.HttpLabel("ModelName")),
+          DataAccessRoleArn: S.optional(S.String),
+          EncryptionConfiguration: S.optional(__S(992, __c62, 0)),
+        }).pipe(
+          T.all(
+            T.Http({ method: "PATCH", uri: "/languagemodels/{ModelName}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "UpdateLanguageModelRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          ModelName: S.optional(S.String),
+          ModelStatus: S.optional(S.String),
+          LastModifiedTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+        }),
+      ).annotate({
+        identifier: "UpdateLanguageModelResponse",
+      });
+  }
+}
+function __c50(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          VocabularyName: S.String.pipe(T.HttpLabel("VocabularyName")),
+          LanguageCode: S.String,
+          VocabularyFileUri: S.String,
+        }).pipe(
+          T.all(
+            T.Http({ method: "PATCH", uri: "/medicalvocabularies/{VocabularyName}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "UpdateMedicalVocabularyRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          VocabularyName: S.optional(S.String),
+          LanguageCode: S.optional(S.String),
+          LastModifiedTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          VocabularyState: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "UpdateMedicalVocabularyResponse",
+      });
+  }
+}
+function __c51(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          VocabularyName: S.String.pipe(T.HttpLabel("VocabularyName")),
+          LanguageCode: S.String,
+          Phrases: S.optional(__S(928, __c58, 0)),
+          VocabularyFileUri: S.optional(S.String),
+          DataAccessRoleArn: S.optional(S.String),
+          EncryptionConfiguration: S.optional(__S(992, __c62, 0)),
+        }).pipe(
+          T.all(
+            T.Http({ method: "PATCH", uri: "/vocabularies/{VocabularyName}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "UpdateVocabularyRequest" });
+  }
+}
+function __c52(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          VocabularyFilterName: S.String.pipe(T.HttpLabel("VocabularyFilterName")),
+          Words: S.optional(__S(928, __c58, 0)),
+          VocabularyFilterFileUri: S.optional(S.String),
+          DataAccessRoleArn: S.optional(S.String),
+          EncryptionConfiguration: S.optional(__S(992, __c62, 0)),
+        }).pipe(
+          T.all(
+            T.Http({ method: "PUT", uri: "/vocabularyFilters/{VocabularyFilterName}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "UpdateVocabularyFilterRequest",
+      });
+  }
+}
+function __c53(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          CategoryName: S.String.pipe(T.HttpLabel("CategoryName")),
+          Rules: __S(887, __c55, 7),
+          Tags: S.optional(__S(913, __c57, 1)),
+          InputType: S.optional(S.String),
+        }).pipe(
+          T.all(
+            T.Http({ method: "PUT", uri: "/callanalyticscategories/{CategoryName}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "CreateCallAnalyticsCategoryRequest",
+      });
+  }
+}
+function __c54(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c55(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2759,8 +4236,8 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           Threshold: S.optional(S.Number),
-          AbsoluteTimeRange: S.optional(__S(0, __c0, 0)),
-          RelativeTimeRange: S.optional(__S(1, __c0, 1)),
+          AbsoluteTimeRange: S.optional(__S(880, __c55, 0)),
+          RelativeTimeRange: S.optional(__S(881, __c55, 1)),
           Negate: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "NonTalkTimeFilter" });
@@ -2769,119 +4246,91 @@ function __c0(j: number): any {
         S.Struct({
           Threshold: S.optional(S.Number),
           ParticipantRole: S.optional(S.String),
-          AbsoluteTimeRange: S.optional(__S(0, __c0, 0)),
-          RelativeTimeRange: S.optional(__S(1, __c0, 1)),
+          AbsoluteTimeRange: S.optional(__S(880, __c55, 0)),
+          RelativeTimeRange: S.optional(__S(881, __c55, 1)),
           Negate: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "InterruptionFilter" });
     case 4:
-      return S.Array(S.String);
-    case 5:
       return S.suspend(() =>
         S.Struct({
           TranscriptFilterType: S.String,
-          AbsoluteTimeRange: S.optional(__S(0, __c0, 0)),
-          RelativeTimeRange: S.optional(__S(1, __c0, 1)),
+          AbsoluteTimeRange: S.optional(__S(880, __c55, 0)),
+          RelativeTimeRange: S.optional(__S(881, __c55, 1)),
           ParticipantRole: S.optional(S.String),
           Negate: S.optional(S.Boolean),
-          Targets: __S(4, __c0, 4),
+          Targets: __S(928, __c58, 0),
         }),
       ).annotate({ identifier: "TranscriptFilter" });
-    case 6:
-      return S.Array(S.String);
-    case 7:
+    case 5:
       return S.suspend(() =>
         S.Struct({
-          Sentiments: __S(6, __c0, 6),
-          AbsoluteTimeRange: S.optional(__S(0, __c0, 0)),
-          RelativeTimeRange: S.optional(__S(1, __c0, 1)),
+          Sentiments: __S(864, __c54, 0),
+          AbsoluteTimeRange: S.optional(__S(880, __c55, 0)),
+          RelativeTimeRange: S.optional(__S(881, __c55, 1)),
           ParticipantRole: S.optional(S.String),
           Negate: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "SentimentFilter" });
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
+    case 6:
       return S.Union([
-        /*@__PURE__*/ S.Struct({ NonTalkTimeFilter: __S(2, __c0, 2) }),
-        /*@__PURE__*/ S.Struct({ InterruptionFilter: __S(3, __c0, 3) }),
-        /*@__PURE__*/ S.Struct({ TranscriptFilter: __S(5, __c0, 5) }),
-        /*@__PURE__*/ S.Struct({ SentimentFilter: __S(7, __c0, 7) }),
+        /*@__PURE__*/ S.Struct({ NonTalkTimeFilter: __S(882, __c55, 2) }),
+        /*@__PURE__*/ S.Struct({ InterruptionFilter: __S(883, __c55, 3) }),
+        /*@__PURE__*/ S.Struct({ TranscriptFilter: __S(884, __c55, 4) }),
+        /*@__PURE__*/ S.Struct({ SentimentFilter: __S(885, __c55, 5) }),
       ]);
-    case 1:
-      return S.Array(__S(8, __c1, 0));
-    case 2:
-      return S.suspend(() => S.Struct({ Key: S.String, Value: S.String })).annotate({
-        identifier: "Tag",
-      });
-    case 3:
-      return S.Array(__S(10, __c1, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          CategoryName: S.String.pipe(T.HttpLabel("CategoryName")),
-          Rules: __S(9, __c1, 1),
-          Tags: S.optional(__S(11, __c1, 3)),
-          InputType: S.optional(S.String),
-        }).pipe(
-          T.all(
-            T.Http({ method: "PUT", uri: "/callanalyticscategories/{CategoryName}" }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({
-        identifier: "CreateCallAnalyticsCategoryRequest",
-      });
-    case 5:
+    case 7:
+      return S.Array(__S(886, __c55, 6));
+    case 8:
       return S.suspend(() =>
         S.Struct({
           CategoryName: S.optional(S.String),
-          Rules: S.optional(__S(9, __c1, 1)),
+          Rules: S.optional(__S(887, __c55, 7)),
           CreateTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           LastUpdateTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          Tags: S.optional(__S(11, __c1, 3)),
+          Tags: S.optional(__S(913, __c57, 1)),
           InputType: S.optional(S.String),
         }),
       ).annotate({ identifier: "CategoryProperties" });
-    case 6:
+  }
+}
+function __c56(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
-        S.Struct({ CategoryProperties: S.optional(__S(13, __c1, 5)) }),
+        S.Struct({ CategoryProperties: S.optional(__S(888, __c55, 8)) }),
       ).annotate({
         identifier: "CreateCallAnalyticsCategoryResponse",
       });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          S3Uri: S.String,
-          TuningDataS3Uri: S.optional(S.String),
-          DataAccessRoleArn: S.String,
-        }),
-      ).annotate({ identifier: "InputDataConfig" });
   }
 }
-function __c2(j: number): any {
+function __c57(j: number): any {
   switch (j) {
     case 0:
-      return S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
+      return S.suspend(() => S.Struct({ Key: S.String, Value: S.String })).annotate({
+        identifier: "Tag",
+      });
     case 1:
-      return S.suspend(() =>
-        S.Struct({ KMSEncryptionContext: S.optional(__S(16, __c2, 0)), KMSKey: S.String }),
-      ).annotate({ identifier: "EncryptionConfiguration" });
-    case 2:
+      return S.Array(__S(912, __c57, 0));
+  }
+}
+function __c58(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c59(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           LanguageCode: S.String,
           BaseModelName: S.String,
           ModelName: S.String.pipe(T.HttpLabel("ModelName")),
-          InputDataConfig: __S(15, __c1, 7),
-          EncryptionConfiguration: S.optional(__S(17, __c2, 1)),
-          Tags: S.optional(__S(11, __c1, 3)),
+          InputDataConfig: __S(960, __c60, 0),
+          EncryptionConfiguration: S.optional(__S(992, __c62, 0)),
+          Tags: S.optional(__S(913, __c57, 1)),
         }).pipe(
           T.all(
             T.Http({ method: "PUT", uri: "/languagemodels/{ModelName}" }),
@@ -2895,25 +4344,55 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "CreateLanguageModelRequest",
       });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           LanguageCode: S.optional(S.String),
           BaseModelName: S.optional(S.String),
           ModelName: S.optional(S.String),
-          InputDataConfig: S.optional(__S(15, __c1, 7)),
+          InputDataConfig: S.optional(__S(960, __c60, 0)),
           ModelStatus: S.optional(S.String),
         }),
       ).annotate({
         identifier: "CreateLanguageModelResponse",
       });
-    case 4:
+  }
+}
+function __c60(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          S3Uri: S.String,
+          TuningDataS3Uri: S.optional(S.String),
+          DataAccessRoleArn: S.String,
+        }),
+      ).annotate({ identifier: "InputDataConfig" });
+  }
+}
+function __c61(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
+  }
+}
+function __c62(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ KMSEncryptionContext: S.optional(__S(976, __c61, 0)), KMSKey: S.String }),
+      ).annotate({ identifier: "EncryptionConfiguration" });
+  }
+}
+function __c63(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           VocabularyName: S.String.pipe(T.HttpLabel("VocabularyName")),
           LanguageCode: S.String,
           VocabularyFileUri: S.String,
-          Tags: S.optional(__S(11, __c1, 3)),
+          Tags: S.optional(__S(913, __c57, 1)),
         }).pipe(
           T.all(
             T.Http({ method: "PUT", uri: "/medicalvocabularies/{VocabularyName}" }),
@@ -2927,7 +4406,7 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "CreateMedicalVocabularyRequest",
       });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           VocabularyName: S.optional(S.String),
@@ -2939,16 +4418,20 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "CreateMedicalVocabularyResponse",
       });
-    case 6:
+  }
+}
+function __c64(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           VocabularyName: S.String.pipe(T.HttpLabel("VocabularyName")),
           LanguageCode: S.String,
-          Phrases: S.optional(__S(4, __c0, 4)),
+          Phrases: S.optional(__S(928, __c58, 0)),
           VocabularyFileUri: S.optional(S.String),
-          Tags: S.optional(__S(11, __c1, 3)),
+          Tags: S.optional(__S(913, __c57, 1)),
           DataAccessRoleArn: S.optional(S.String),
-          EncryptionConfiguration: S.optional(__S(17, __c2, 1)),
+          EncryptionConfiguration: S.optional(__S(992, __c62, 0)),
         }).pipe(
           T.all(
             T.Http({ method: "PUT", uri: "/vocabularies/{VocabularyName}" }),
@@ -2960,7 +4443,7 @@ function __c2(j: number): any {
           ),
         ),
       ).annotate({ identifier: "CreateVocabularyRequest" });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           VocabularyName: S.optional(S.String),
@@ -2972,18 +4455,18 @@ function __c2(j: number): any {
       ).annotate({ identifier: "CreateVocabularyResponse" });
   }
 }
-function __c3(j: number): any {
+function __c65(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           VocabularyFilterName: S.String.pipe(T.HttpLabel("VocabularyFilterName")),
           LanguageCode: S.String,
-          Words: S.optional(__S(4, __c0, 4)),
+          Words: S.optional(__S(928, __c58, 0)),
           VocabularyFilterFileUri: S.optional(S.String),
-          Tags: S.optional(__S(11, __c1, 3)),
+          Tags: S.optional(__S(913, __c57, 1)),
           DataAccessRoleArn: S.optional(S.String),
-          EncryptionConfiguration: S.optional(__S(17, __c2, 1)),
+          EncryptionConfiguration: S.optional(__S(992, __c62, 0)),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/vocabularyFilters/{VocabularyFilterName}" }),
@@ -2997,7 +4480,11 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "CreateVocabularyFilterRequest",
       });
-    case 1:
+  }
+}
+function __c66(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           VocabularyFilterName: S.optional(S.String),
@@ -3007,1303 +4494,8 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "CreateVocabularyFilterResponse",
       });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({ CategoryName: S.String.pipe(T.HttpLabel("CategoryName")) }).pipe(
-          T.all(
-            T.Http({ method: "DELETE", uri: "/callanalyticscategories/{CategoryName}" }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({
-        identifier: "DeleteCallAnalyticsCategoryRequest",
-      });
-    case 3:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "DeleteCallAnalyticsCategoryResponse",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({ CallAnalyticsJobName: S.String.pipe(T.HttpLabel("CallAnalyticsJobName")) }).pipe(
-          T.all(
-            T.Http({ method: "DELETE", uri: "/callanalyticsjobs/{CallAnalyticsJobName}" }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({
-        identifier: "DeleteCallAnalyticsJobRequest",
-      });
-    case 5:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "DeleteCallAnalyticsJobResponse",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({ ModelName: S.String.pipe(T.HttpLabel("ModelName")) }).pipe(
-          T.all(
-            T.Http({ method: "DELETE", uri: "/languagemodels/{ModelName}" }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({
-        identifier: "DeleteLanguageModelRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({ MedicalScribeJobName: S.String.pipe(T.HttpLabel("MedicalScribeJobName")) }).pipe(
-          T.all(
-            T.Http({ method: "DELETE", uri: "/medicalscribejobs/{MedicalScribeJobName}" }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({
-        identifier: "DeleteMedicalScribeJobRequest",
-      });
   }
 }
-function __c4(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          MedicalTranscriptionJobName: S.String.pipe(T.HttpLabel("MedicalTranscriptionJobName")),
-        }).pipe(
-          T.all(
-            T.Http({
-              method: "DELETE",
-              uri: "/medicaltranscriptionjobs/{MedicalTranscriptionJobName}",
-            }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({
-        identifier: "DeleteMedicalTranscriptionJobRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({ VocabularyName: S.String.pipe(T.HttpLabel("VocabularyName")) }).pipe(
-          T.all(
-            T.Http({ method: "DELETE", uri: "/medicalvocabularies/{VocabularyName}" }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({
-        identifier: "DeleteMedicalVocabularyRequest",
-      });
-    case 2:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "DeleteMedicalVocabularyResponse",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({ TranscriptionJobName: S.String.pipe(T.HttpLabel("TranscriptionJobName")) }).pipe(
-          T.all(
-            T.Http({ method: "DELETE", uri: "/transcriptionjobs/{TranscriptionJobName}" }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({
-        identifier: "DeleteTranscriptionJobRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({ VocabularyName: S.String.pipe(T.HttpLabel("VocabularyName")) }).pipe(
-          T.all(
-            T.Http({ method: "DELETE", uri: "/vocabularies/{VocabularyName}" }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({ identifier: "DeleteVocabularyRequest" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({ VocabularyFilterName: S.String.pipe(T.HttpLabel("VocabularyFilterName")) }).pipe(
-          T.all(
-            T.Http({ method: "DELETE", uri: "/vocabularyFilters/{VocabularyFilterName}" }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({
-        identifier: "DeleteVocabularyFilterRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({ ModelName: S.String.pipe(T.HttpLabel("ModelName")) }).pipe(
-          T.all(
-            T.Http({ method: "GET", uri: "/languagemodels/{ModelName}" }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({
-        identifier: "DescribeLanguageModelRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          ModelName: S.optional(S.String),
-          CreateTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          LastModifiedTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          LanguageCode: S.optional(S.String),
-          BaseModelName: S.optional(S.String),
-          ModelStatus: S.optional(S.String),
-          UpgradeAvailability: S.optional(S.Boolean),
-          FailureReason: S.optional(S.String),
-          InputDataConfig: S.optional(__S(15, __c1, 7)),
-          EncryptionConfiguration: S.optional(__S(17, __c2, 1)),
-        }),
-      ).annotate({ identifier: "LanguageModel" });
-  }
-}
-function __c5(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() => S.Struct({ LanguageModel: S.optional(__S(39, __c4, 7)) })).annotate({
-        identifier: "DescribeLanguageModelResponse",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({ CategoryName: S.String.pipe(T.HttpLabel("CategoryName")) }).pipe(
-          T.all(
-            T.Http({ method: "GET", uri: "/callanalyticscategories/{CategoryName}" }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({
-        identifier: "GetCallAnalyticsCategoryRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({ CallAnalyticsJobName: S.String.pipe(T.HttpLabel("CallAnalyticsJobName")) }).pipe(
-          T.all(
-            T.Http({ method: "GET", uri: "/callanalyticsjobs/{CallAnalyticsJobName}" }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({
-        identifier: "GetCallAnalyticsJobRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          Feature: S.optional(S.String),
-          ReasonCode: S.optional(S.String),
-          Message: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "CallAnalyticsSkippedFeature",
-      });
-    case 4:
-      return S.Array(__S(43, __c5, 3));
-    case 5:
-      return S.suspend(() => S.Struct({ Skipped: S.optional(__S(44, __c5, 4)) })).annotate({
-        identifier: "CallAnalyticsJobDetails",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          MediaFileUri: S.optional(S.String),
-          RedactedMediaFileUri: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Media" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          TranscriptFileUri: S.optional(S.String),
-          RedactedTranscriptFileUri: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Transcript" });
-  }
-}
-function __c6(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          RedactionType: S.String,
-          RedactionOutput: S.String,
-          PiiEntityTypes: S.optional(__S(6, __c0, 6)),
-        }),
-      ).annotate({ identifier: "ContentRedaction" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          VocabularyName: S.optional(S.String),
-          VocabularyFilterName: S.optional(S.String),
-          LanguageModelName: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "LanguageIdSettings" });
-    case 2:
-      return S.Record(S.String, /*@__PURE__*/ __S(49, __c6, 1).pipe(S.optional));
-    case 3:
-      return S.suspend(() => S.Struct({ GenerateAbstractiveSummary: S.Boolean })).annotate({
-        identifier: "Summarization",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          VocabularyName: S.optional(S.String),
-          VocabularyFilterName: S.optional(S.String),
-          VocabularyFilterMethod: S.optional(S.String),
-          LanguageModelName: S.optional(S.String),
-          ContentRedaction: S.optional(__S(48, __c6, 0)),
-          LanguageOptions: S.optional(__S(6, __c0, 6)),
-          LanguageIdSettings: S.optional(__S(50, __c6, 2)),
-          Summarization: S.optional(__S(51, __c6, 3)),
-        }),
-      ).annotate({ identifier: "CallAnalyticsJobSettings" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({ ChannelId: S.optional(S.Number), ParticipantRole: S.optional(S.String) }),
-      ).annotate({ identifier: "ChannelDefinition" });
-    case 6:
-      return S.Array(__S(53, __c6, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          CallAnalyticsJobName: S.optional(S.String),
-          CallAnalyticsJobStatus: S.optional(S.String),
-          CallAnalyticsJobDetails: S.optional(__S(45, __c5, 5)),
-          LanguageCode: S.optional(S.String),
-          MediaSampleRateHertz: S.optional(S.Number),
-          MediaFormat: S.optional(S.String),
-          Media: S.optional(__S(46, __c5, 6)),
-          Transcript: S.optional(__S(47, __c5, 7)),
-          StartTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          CreationTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          CompletionTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          FailureReason: S.optional(S.String),
-          DataAccessRoleArn: S.optional(S.String),
-          IdentifiedLanguageScore: S.optional(S.Number),
-          Settings: S.optional(__S(52, __c6, 4)),
-          ChannelDefinitions: S.optional(__S(54, __c6, 6)),
-          Tags: S.optional(__S(11, __c1, 3)),
-        }),
-      ).annotate({ identifier: "CallAnalyticsJob" });
-  }
-}
-function __c7(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() => S.Struct({ CallAnalyticsJob: S.optional(__S(55, __c6, 7)) })).annotate(
-        {
-          identifier: "GetCallAnalyticsJobResponse",
-        },
-      );
-    case 1:
-      return S.suspend(() =>
-        S.Struct({ MedicalScribeJobName: S.String.pipe(T.HttpLabel("MedicalScribeJobName")) }).pipe(
-          T.all(
-            T.Http({ method: "GET", uri: "/medicalscribejobs/{MedicalScribeJobName}" }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({
-        identifier: "GetMedicalScribeJobRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({ TranscriptFileUri: S.String, ClinicalDocumentUri: S.String }),
-      ).annotate({ identifier: "MedicalScribeOutput" });
-    case 3:
-      return S.suspend(() => S.Struct({ NoteTemplate: S.optional(S.String) })).annotate({
-        identifier: "ClinicalNoteGenerationSettings",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          ShowSpeakerLabels: S.optional(S.Boolean),
-          MaxSpeakerLabels: S.optional(S.Number),
-          ChannelIdentification: S.optional(S.Boolean),
-          VocabularyName: S.optional(S.String),
-          VocabularyFilterName: S.optional(S.String),
-          VocabularyFilterMethod: S.optional(S.String),
-          ClinicalNoteGenerationSettings: S.optional(__S(59, __c7, 3)),
-        }),
-      ).annotate({ identifier: "MedicalScribeSettings" });
-    case 5:
-      return S.suspend(() => S.Struct({ ChannelId: S.Number, ParticipantRole: S.String })).annotate(
-        {
-          identifier: "MedicalScribeChannelDefinition",
-        },
-      );
-    case 6:
-      return S.Array(__S(61, __c7, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          MedicalScribeJobName: S.optional(S.String),
-          MedicalScribeJobStatus: S.optional(S.String),
-          LanguageCode: S.optional(S.String),
-          Media: S.optional(__S(46, __c5, 6)),
-          MedicalScribeOutput: S.optional(__S(58, __c7, 2)),
-          StartTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          CreationTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          CompletionTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          FailureReason: S.optional(S.String),
-          Settings: S.optional(__S(60, __c7, 4)),
-          DataAccessRoleArn: S.optional(S.String),
-          ChannelDefinitions: S.optional(__S(62, __c7, 6)),
-          MedicalScribeContextProvided: S.optional(S.Boolean),
-          Tags: S.optional(__S(11, __c1, 3)),
-        }),
-      ).annotate({ identifier: "MedicalScribeJob" });
-  }
-}
-function __c8(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() => S.Struct({ MedicalScribeJob: S.optional(__S(63, __c7, 7)) })).annotate(
-        {
-          identifier: "GetMedicalScribeJobResponse",
-        },
-      );
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          MedicalTranscriptionJobName: S.String.pipe(T.HttpLabel("MedicalTranscriptionJobName")),
-        }).pipe(
-          T.all(
-            T.Http({
-              method: "GET",
-              uri: "/medicaltranscriptionjobs/{MedicalTranscriptionJobName}",
-            }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({
-        identifier: "GetMedicalTranscriptionJobRequest",
-      });
-    case 2:
-      return S.suspend(() => S.Struct({ TranscriptFileUri: S.optional(S.String) })).annotate({
-        identifier: "MedicalTranscript",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          ShowSpeakerLabels: S.optional(S.Boolean),
-          MaxSpeakerLabels: S.optional(S.Number),
-          ChannelIdentification: S.optional(S.Boolean),
-          ShowAlternatives: S.optional(S.Boolean),
-          MaxAlternatives: S.optional(S.Number),
-          VocabularyName: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "MedicalTranscriptionSetting",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          MedicalTranscriptionJobName: S.optional(S.String),
-          TranscriptionJobStatus: S.optional(S.String),
-          LanguageCode: S.optional(S.String),
-          MediaSampleRateHertz: S.optional(S.Number),
-          MediaFormat: S.optional(S.String),
-          Media: S.optional(__S(46, __c5, 6)),
-          Transcript: S.optional(__S(66, __c8, 2)),
-          StartTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          CreationTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          CompletionTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          FailureReason: S.optional(S.String),
-          Settings: S.optional(__S(67, __c8, 3)),
-          ContentIdentificationType: S.optional(S.String),
-          Specialty: S.optional(S.String),
-          Type: S.optional(S.String),
-          Tags: S.optional(__S(11, __c1, 3)),
-        }),
-      ).annotate({ identifier: "MedicalTranscriptionJob" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({ MedicalTranscriptionJob: S.optional(__S(68, __c8, 4)) }),
-      ).annotate({
-        identifier: "GetMedicalTranscriptionJobResponse",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({ VocabularyName: S.String.pipe(T.HttpLabel("VocabularyName")) }).pipe(
-          T.all(
-            T.Http({ method: "GET", uri: "/medicalvocabularies/{VocabularyName}" }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({
-        identifier: "GetMedicalVocabularyRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          VocabularyName: S.optional(S.String),
-          LanguageCode: S.optional(S.String),
-          VocabularyState: S.optional(S.String),
-          LastModifiedTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          FailureReason: S.optional(S.String),
-          DownloadUri: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GetMedicalVocabularyResponse",
-      });
-  }
-}
-function __c9(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({ TranscriptionJobName: S.String.pipe(T.HttpLabel("TranscriptionJobName")) }).pipe(
-          T.all(
-            T.Http({ method: "GET", uri: "/transcriptionjobs/{TranscriptionJobName}" }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({
-        identifier: "GetTranscriptionJobRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          VocabularyName: S.optional(S.String),
-          ShowSpeakerLabels: S.optional(S.Boolean),
-          MaxSpeakerLabels: S.optional(S.Number),
-          ChannelIdentification: S.optional(S.Boolean),
-          ShowAlternatives: S.optional(S.Boolean),
-          MaxAlternatives: S.optional(S.Number),
-          VocabularyFilterName: S.optional(S.String),
-          VocabularyFilterMethod: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Settings" });
-    case 2:
-      return S.suspend(() => S.Struct({ LanguageModelName: S.optional(S.String) })).annotate({
-        identifier: "ModelSettings",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          AllowDeferredExecution: S.optional(S.Boolean),
-          DataAccessRoleArn: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "JobExecutionSettings" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          LanguageCode: S.optional(S.String),
-          DurationInSeconds: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "LanguageCodeItem" });
-    case 5:
-      return S.Array(__S(76, __c9, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          Formats: S.optional(__S(6, __c0, 6)),
-          SubtitleFileUris: S.optional(__S(4, __c0, 4)),
-          OutputStartIndex: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "SubtitlesOutput" });
-    case 7:
-      return S.suspend(() => S.Struct({ ToxicityCategories: __S(6, __c0, 6) })).annotate({
-        identifier: "ToxicityDetectionSettings",
-      });
-  }
-}
-function __c10(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(79, __c9, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          TranscriptionJobName: S.optional(S.String),
-          TranscriptionJobStatus: S.optional(S.String),
-          LanguageCode: S.optional(S.String),
-          MediaSampleRateHertz: S.optional(S.Number),
-          MediaFormat: S.optional(S.String),
-          Media: S.optional(__S(46, __c5, 6)),
-          Transcript: S.optional(__S(47, __c5, 7)),
-          StartTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          CreationTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          CompletionTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          FailureReason: S.optional(S.String),
-          Settings: S.optional(__S(73, __c9, 1)),
-          ModelSettings: S.optional(__S(74, __c9, 2)),
-          JobExecutionSettings: S.optional(__S(75, __c9, 3)),
-          ContentRedaction: S.optional(__S(48, __c6, 0)),
-          IdentifyLanguage: S.optional(S.Boolean),
-          IdentifyMultipleLanguages: S.optional(S.Boolean),
-          LanguageOptions: S.optional(__S(6, __c0, 6)),
-          IdentifiedLanguageScore: S.optional(S.Number),
-          LanguageCodes: S.optional(__S(77, __c9, 5)),
-          Tags: S.optional(__S(11, __c1, 3)),
-          Subtitles: S.optional(__S(78, __c9, 6)),
-          LanguageIdSettings: S.optional(__S(50, __c6, 2)),
-          ToxicityDetection: S.optional(__S(80, __c10, 0)),
-        }),
-      ).annotate({ identifier: "TranscriptionJob" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({ TranscriptionJob: S.optional(__S(81, __c10, 1)) }),
-      ).annotate({
-        identifier: "GetTranscriptionJobResponse",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({ VocabularyName: S.String.pipe(T.HttpLabel("VocabularyName")) }).pipe(
-          T.all(
-            T.Http({ method: "GET", uri: "/vocabularies/{VocabularyName}" }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({ identifier: "GetVocabularyRequest" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          VocabularyName: S.optional(S.String),
-          LanguageCode: S.optional(S.String),
-          VocabularyState: S.optional(S.String),
-          LastModifiedTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          FailureReason: S.optional(S.String),
-          DownloadUri: S.optional(S.String),
-          DataAccessRoleArn: S.optional(S.String),
-          EncryptionConfiguration: S.optional(__S(17, __c2, 1)),
-        }),
-      ).annotate({ identifier: "GetVocabularyResponse" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({ VocabularyFilterName: S.String.pipe(T.HttpLabel("VocabularyFilterName")) }).pipe(
-          T.all(
-            T.Http({ method: "GET", uri: "/vocabularyFilters/{VocabularyFilterName}" }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({
-        identifier: "GetVocabularyFilterRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          VocabularyFilterName: S.optional(S.String),
-          LanguageCode: S.optional(S.String),
-          LastModifiedTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          DownloadUri: S.optional(S.String),
-          DataAccessRoleArn: S.optional(S.String),
-          EncryptionConfiguration: S.optional(__S(17, __c2, 1)),
-        }),
-      ).annotate({
-        identifier: "GetVocabularyFilterResponse",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          NextToken: S.optional(S.String).pipe(T.HttpQuery("NextToken")),
-          MaxResults: S.optional(S.Number).pipe(T.HttpQuery("MaxResults")),
-        }).pipe(
-          T.all(
-            T.Http({ method: "GET", uri: "/callanalyticscategories" }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({
-        identifier: "ListCallAnalyticsCategoriesRequest",
-      });
-  }
-}
-function __c11(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(13, __c1, 5));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          NextToken: S.optional(S.String),
-          Categories: S.optional(__S(88, __c11, 0)),
-        }),
-      ).annotate({
-        identifier: "ListCallAnalyticsCategoriesResponse",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          Status: S.optional(S.String).pipe(T.HttpQuery("Status")),
-          JobNameContains: S.optional(S.String).pipe(T.HttpQuery("JobNameContains")),
-          NextToken: S.optional(S.String).pipe(T.HttpQuery("NextToken")),
-          MaxResults: S.optional(S.Number).pipe(T.HttpQuery("MaxResults")),
-        }).pipe(
-          T.all(T.Http({ method: "GET", uri: "/callanalyticsjobs" }), svc, auth, proto, ver, rules),
-        ),
-      ).annotate({
-        identifier: "ListCallAnalyticsJobsRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          CallAnalyticsJobName: S.optional(S.String),
-          CreationTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          StartTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          CompletionTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          LanguageCode: S.optional(S.String),
-          CallAnalyticsJobStatus: S.optional(S.String),
-          CallAnalyticsJobDetails: S.optional(__S(45, __c5, 5)),
-          FailureReason: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "CallAnalyticsJobSummary" });
-    case 4:
-      return S.Array(__S(91, __c11, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          Status: S.optional(S.String),
-          NextToken: S.optional(S.String),
-          CallAnalyticsJobSummaries: S.optional(__S(92, __c11, 4)),
-        }),
-      ).annotate({
-        identifier: "ListCallAnalyticsJobsResponse",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          StatusEquals: S.optional(S.String).pipe(T.HttpQuery("         StatusEquals")),
-          NameContains: S.optional(S.String).pipe(T.HttpQuery("NameContains")),
-          NextToken: S.optional(S.String).pipe(T.HttpQuery("NextToken")),
-          MaxResults: S.optional(S.Number).pipe(T.HttpQuery("MaxResults")),
-        }).pipe(
-          T.all(T.Http({ method: "GET", uri: "/languagemodels" }), svc, auth, proto, ver, rules),
-        ),
-      ).annotate({
-        identifier: "ListLanguageModelsRequest",
-      });
-    case 7:
-      return S.Array(__S(39, __c4, 7));
-  }
-}
-function __c12(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({ NextToken: S.optional(S.String), Models: S.optional(__S(95, __c11, 7)) }),
-      ).annotate({
-        identifier: "ListLanguageModelsResponse",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          Status: S.optional(S.String).pipe(T.HttpQuery("Status")),
-          JobNameContains: S.optional(S.String).pipe(T.HttpQuery("JobNameContains")),
-          NextToken: S.optional(S.String).pipe(T.HttpQuery("NextToken")),
-          MaxResults: S.optional(S.Number).pipe(T.HttpQuery("MaxResults")),
-        }).pipe(
-          T.all(T.Http({ method: "GET", uri: "/medicalscribejobs" }), svc, auth, proto, ver, rules),
-        ),
-      ).annotate({
-        identifier: "ListMedicalScribeJobsRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          MedicalScribeJobName: S.optional(S.String),
-          CreationTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          StartTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          CompletionTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          LanguageCode: S.optional(S.String),
-          MedicalScribeJobStatus: S.optional(S.String),
-          FailureReason: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "MedicalScribeJobSummary" });
-    case 3:
-      return S.Array(__S(98, __c12, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          Status: S.optional(S.String),
-          NextToken: S.optional(S.String),
-          MedicalScribeJobSummaries: S.optional(__S(99, __c12, 3)),
-        }),
-      ).annotate({
-        identifier: "ListMedicalScribeJobsResponse",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          Status: S.optional(S.String).pipe(T.HttpQuery("Status")),
-          JobNameContains: S.optional(S.String).pipe(T.HttpQuery("JobNameContains")),
-          NextToken: S.optional(S.String).pipe(T.HttpQuery("NextToken")),
-          MaxResults: S.optional(S.Number).pipe(T.HttpQuery("MaxResults")),
-        }).pipe(
-          T.all(
-            T.Http({ method: "GET", uri: "/medicaltranscriptionjobs" }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({
-        identifier: "ListMedicalTranscriptionJobsRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          MedicalTranscriptionJobName: S.optional(S.String),
-          CreationTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          StartTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          CompletionTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          LanguageCode: S.optional(S.String),
-          TranscriptionJobStatus: S.optional(S.String),
-          FailureReason: S.optional(S.String),
-          OutputLocationType: S.optional(S.String),
-          Specialty: S.optional(S.String),
-          ContentIdentificationType: S.optional(S.String),
-          Type: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "MedicalTranscriptionJobSummary",
-      });
-    case 7:
-      return S.Array(__S(102, __c12, 6));
-  }
-}
-function __c13(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          Status: S.optional(S.String),
-          NextToken: S.optional(S.String),
-          MedicalTranscriptionJobSummaries: S.optional(__S(103, __c12, 7)),
-        }),
-      ).annotate({
-        identifier: "ListMedicalTranscriptionJobsResponse",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          NextToken: S.optional(S.String).pipe(T.HttpQuery("NextToken")),
-          MaxResults: S.optional(S.Number).pipe(T.HttpQuery("MaxResults")),
-          StateEquals: S.optional(S.String).pipe(T.HttpQuery("StateEquals")),
-          NameContains: S.optional(S.String).pipe(T.HttpQuery("NameContains")),
-        }).pipe(
-          T.all(
-            T.Http({ method: "GET", uri: "/medicalvocabularies" }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({
-        identifier: "ListMedicalVocabulariesRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          VocabularyName: S.optional(S.String),
-          LanguageCode: S.optional(S.String),
-          LastModifiedTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          VocabularyState: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "VocabularyInfo" });
-    case 3:
-      return S.Array(__S(106, __c13, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          Status: S.optional(S.String),
-          NextToken: S.optional(S.String),
-          Vocabularies: S.optional(__S(107, __c13, 3)),
-        }),
-      ).annotate({
-        identifier: "ListMedicalVocabulariesResponse",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({ ResourceArn: S.String.pipe(T.HttpLabel("ResourceArn")) }).pipe(
-          T.all(
-            T.Http({ method: "GET", uri: "/tags/{ResourceArn}" }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({
-        identifier: "ListTagsForResourceRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({ ResourceArn: S.optional(S.String), Tags: S.optional(__S(11, __c1, 3)) }),
-      ).annotate({
-        identifier: "ListTagsForResourceResponse",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          Status: S.optional(S.String).pipe(T.HttpQuery("Status")),
-          JobNameContains: S.optional(S.String).pipe(T.HttpQuery("JobNameContains")),
-          NextToken: S.optional(S.String).pipe(T.HttpQuery("NextToken")),
-          MaxResults: S.optional(S.Number).pipe(T.HttpQuery("MaxResults")),
-        }).pipe(
-          T.all(T.Http({ method: "GET", uri: "/transcriptionjobs" }), svc, auth, proto, ver, rules),
-        ),
-      ).annotate({
-        identifier: "ListTranscriptionJobsRequest",
-      });
-  }
-}
-function __c14(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          TranscriptionJobName: S.optional(S.String),
-          CreationTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          StartTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          CompletionTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          LanguageCode: S.optional(S.String),
-          TranscriptionJobStatus: S.optional(S.String),
-          FailureReason: S.optional(S.String),
-          OutputLocationType: S.optional(S.String),
-          ContentRedaction: S.optional(__S(48, __c6, 0)),
-          ModelSettings: S.optional(__S(74, __c9, 2)),
-          IdentifyLanguage: S.optional(S.Boolean),
-          IdentifyMultipleLanguages: S.optional(S.Boolean),
-          IdentifiedLanguageScore: S.optional(S.Number),
-          LanguageCodes: S.optional(__S(77, __c9, 5)),
-          ToxicityDetection: S.optional(__S(80, __c10, 0)),
-        }),
-      ).annotate({ identifier: "TranscriptionJobSummary" });
-    case 1:
-      return S.Array(__S(112, __c14, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          Status: S.optional(S.String),
-          NextToken: S.optional(S.String),
-          TranscriptionJobSummaries: S.optional(__S(113, __c14, 1)),
-        }),
-      ).annotate({
-        identifier: "ListTranscriptionJobsResponse",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          NextToken: S.optional(S.String).pipe(T.HttpQuery("NextToken")),
-          MaxResults: S.optional(S.Number).pipe(T.HttpQuery("MaxResults")),
-          StateEquals: S.optional(S.String).pipe(T.HttpQuery("StateEquals")),
-          NameContains: S.optional(S.String).pipe(T.HttpQuery("NameContains")),
-        }).pipe(
-          T.all(T.Http({ method: "GET", uri: "/vocabularies" }), svc, auth, proto, ver, rules),
-        ),
-      ).annotate({ identifier: "ListVocabulariesRequest" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          Status: S.optional(S.String),
-          NextToken: S.optional(S.String),
-          Vocabularies: S.optional(__S(107, __c13, 3)),
-        }),
-      ).annotate({ identifier: "ListVocabulariesResponse" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          NextToken: S.optional(S.String).pipe(T.HttpQuery("NextToken")),
-          MaxResults: S.optional(S.Number).pipe(T.HttpQuery("MaxResults")),
-          NameContains: S.optional(S.String).pipe(T.HttpQuery("NameContains")),
-        }).pipe(
-          T.all(T.Http({ method: "GET", uri: "/vocabularyFilters" }), svc, auth, proto, ver, rules),
-        ),
-      ).annotate({
-        identifier: "ListVocabularyFiltersRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          VocabularyFilterName: S.optional(S.String),
-          LanguageCode: S.optional(S.String),
-          LastModifiedTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-        }),
-      ).annotate({ identifier: "VocabularyFilterInfo" });
-    case 7:
-      return S.Array(__S(118, __c14, 6));
-  }
-}
-function __c15(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          NextToken: S.optional(S.String),
-          VocabularyFilters: S.optional(__S(119, __c14, 7)),
-        }),
-      ).annotate({
-        identifier: "ListVocabularyFiltersResponse",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          CallAnalyticsJobName: S.String.pipe(T.HttpLabel("CallAnalyticsJobName")),
-          Media: __S(46, __c5, 6),
-          OutputLocation: S.optional(S.String),
-          OutputEncryptionKMSKeyId: S.optional(S.String),
-          DataAccessRoleArn: S.optional(S.String),
-          Settings: S.optional(__S(52, __c6, 4)),
-          Tags: S.optional(__S(11, __c1, 3)),
-          ChannelDefinitions: S.optional(__S(54, __c6, 6)),
-        }).pipe(
-          T.all(
-            T.Http({ method: "PUT", uri: "/callanalyticsjobs/{CallAnalyticsJobName}" }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({
-        identifier: "StartCallAnalyticsJobRequest",
-      });
-    case 2:
-      return S.suspend(() => S.Struct({ Pronouns: S.optional(S.String) })).annotate({
-        identifier: "MedicalScribePatientContext",
-      });
-    case 3:
-      return S.suspend(() => S.Struct({ PatientContext: S.optional(__S(122, __c15, 2)) })).annotate(
-        { identifier: "MedicalScribeContext" },
-      );
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          MedicalScribeJobName: S.String.pipe(T.HttpLabel("MedicalScribeJobName")),
-          Media: __S(46, __c5, 6),
-          OutputBucketName: S.String,
-          OutputEncryptionKMSKeyId: S.optional(S.String),
-          KMSEncryptionContext: S.optional(__S(16, __c2, 0)),
-          DataAccessRoleArn: S.String,
-          Settings: __S(60, __c7, 4),
-          ChannelDefinitions: S.optional(__S(62, __c7, 6)),
-          Tags: S.optional(__S(11, __c1, 3)),
-          MedicalScribeContext: S.optional(__S(123, __c15, 3)),
-        }).pipe(
-          T.all(
-            T.Http({ method: "PUT", uri: "/medicalscribejobs/{MedicalScribeJobName}" }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({
-        identifier: "StartMedicalScribeJobRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          MedicalTranscriptionJobName: S.String.pipe(T.HttpLabel("MedicalTranscriptionJobName")),
-          LanguageCode: S.String,
-          MediaSampleRateHertz: S.optional(S.Number),
-          MediaFormat: S.optional(S.String),
-          Media: __S(46, __c5, 6),
-          OutputBucketName: S.String,
-          OutputKey: S.optional(S.String),
-          OutputEncryptionKMSKeyId: S.optional(S.String),
-          KMSEncryptionContext: S.optional(__S(16, __c2, 0)),
-          Settings: S.optional(__S(67, __c8, 3)),
-          ContentIdentificationType: S.optional(S.String),
-          Specialty: S.String,
-          Type: S.String,
-          Tags: S.optional(__S(11, __c1, 3)),
-        }).pipe(
-          T.all(
-            T.Http({
-              method: "PUT",
-              uri: "/medicaltranscriptionjobs/{MedicalTranscriptionJobName}",
-            }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({
-        identifier: "StartMedicalTranscriptionJobRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({ Formats: S.optional(__S(6, __c0, 6)), OutputStartIndex: S.optional(S.Number) }),
-      ).annotate({ identifier: "Subtitles" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          TranscriptionJobName: S.String.pipe(T.HttpLabel("TranscriptionJobName")),
-          LanguageCode: S.optional(S.String),
-          MediaSampleRateHertz: S.optional(S.Number),
-          MediaFormat: S.optional(S.String),
-          Media: __S(46, __c5, 6),
-          OutputBucketName: S.optional(S.String),
-          OutputKey: S.optional(S.String),
-          OutputEncryptionKMSKeyId: S.optional(S.String),
-          KMSEncryptionContext: S.optional(__S(16, __c2, 0)),
-          Settings: S.optional(__S(73, __c9, 1)),
-          ModelSettings: S.optional(__S(74, __c9, 2)),
-          JobExecutionSettings: S.optional(__S(75, __c9, 3)),
-          ContentRedaction: S.optional(__S(48, __c6, 0)),
-          IdentifyLanguage: S.optional(S.Boolean),
-          IdentifyMultipleLanguages: S.optional(S.Boolean),
-          LanguageOptions: S.optional(__S(6, __c0, 6)),
-          Subtitles: S.optional(__S(126, __c15, 6)),
-          Tags: S.optional(__S(11, __c1, 3)),
-          LanguageIdSettings: S.optional(__S(50, __c6, 2)),
-          ToxicityDetection: S.optional(__S(80, __c10, 0)),
-        }).pipe(
-          T.all(
-            T.Http({ method: "PUT", uri: "/transcriptionjobs/{TranscriptionJobName}" }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({
-        identifier: "StartTranscriptionJobRequest",
-      });
-  }
-}
-function __c16(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          ResourceArn: S.String.pipe(T.HttpLabel("ResourceArn")),
-          Tags: __S(11, __c1, 3),
-        }).pipe(
-          T.all(
-            T.Http({ method: "PUT", uri: "/tags/{ResourceArn}" }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({ identifier: "TagResourceRequest" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          ResourceArn: S.String.pipe(T.HttpLabel("ResourceArn")),
-          TagKeys: __S(4, __c0, 4).pipe(T.HttpQuery("tagKeys")),
-        }).pipe(
-          T.all(
-            T.Http({ method: "DELETE", uri: "/tags/{ResourceArn}" }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({ identifier: "UntagResourceRequest" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          CategoryName: S.String.pipe(T.HttpLabel("CategoryName")),
-          Rules: __S(9, __c1, 1),
-          InputType: S.optional(S.String),
-        }).pipe(
-          T.all(
-            T.Http({ method: "PATCH", uri: "/callanalyticscategories/{CategoryName}" }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({
-        identifier: "UpdateCallAnalyticsCategoryRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          ModelName: S.String.pipe(T.HttpLabel("ModelName")),
-          DataAccessRoleArn: S.optional(S.String),
-          EncryptionConfiguration: S.optional(__S(17, __c2, 1)),
-        }).pipe(
-          T.all(
-            T.Http({ method: "PATCH", uri: "/languagemodels/{ModelName}" }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({
-        identifier: "UpdateLanguageModelRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          ModelName: S.optional(S.String),
-          ModelStatus: S.optional(S.String),
-          LastModifiedTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-        }),
-      ).annotate({
-        identifier: "UpdateLanguageModelResponse",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          VocabularyName: S.String.pipe(T.HttpLabel("VocabularyName")),
-          LanguageCode: S.String,
-          VocabularyFileUri: S.String,
-        }).pipe(
-          T.all(
-            T.Http({ method: "PATCH", uri: "/medicalvocabularies/{VocabularyName}" }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({
-        identifier: "UpdateMedicalVocabularyRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          VocabularyName: S.optional(S.String),
-          LanguageCode: S.optional(S.String),
-          LastModifiedTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          VocabularyState: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "UpdateMedicalVocabularyResponse",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          VocabularyName: S.String.pipe(T.HttpLabel("VocabularyName")),
-          LanguageCode: S.String,
-          Phrases: S.optional(__S(4, __c0, 4)),
-          VocabularyFileUri: S.optional(S.String),
-          DataAccessRoleArn: S.optional(S.String),
-          EncryptionConfiguration: S.optional(__S(17, __c2, 1)),
-        }).pipe(
-          T.all(
-            T.Http({ method: "PATCH", uri: "/vocabularies/{VocabularyName}" }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({ identifier: "UpdateVocabularyRequest" });
-  }
-}
-function __c17(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          VocabularyFilterName: S.String.pipe(T.HttpLabel("VocabularyFilterName")),
-          Words: S.optional(__S(4, __c0, 4)),
-          VocabularyFilterFileUri: S.optional(S.String),
-          DataAccessRoleArn: S.optional(S.String),
-          EncryptionConfiguration: S.optional(__S(17, __c2, 1)),
-        }).pipe(
-          T.all(
-            T.Http({ method: "PUT", uri: "/vocabularyFilters/{VocabularyFilterName}" }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({
-        identifier: "UpdateVocabularyFilterRequest",
-      });
-  }
-}
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

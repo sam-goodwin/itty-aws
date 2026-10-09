@@ -363,7 +363,7 @@ export const deleteConnection: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(0, __c0, 0) as any as S.Schema<DeleteConnectionRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<DeleteConnectionResponse>,
+  output: __S(4, __c1, 0) as any as S.Schema<DeleteConnectionResponse>,
   errors: [
     ForbiddenException,
     InternalFailureException,
@@ -400,8 +400,8 @@ export const deleteThingShadow: API.OperationMethod<
   DeleteThingShadowError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2, __c0, 2) as any as S.Schema<DeleteThingShadowRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<DeleteThingShadowResponse>,
+  input: __S(8, __c2, 0) as any as S.Schema<DeleteThingShadowRequest>,
+  output: __S(9, __c2, 1) as any as S.Schema<DeleteThingShadowResponse>,
   errors: [
     InternalFailureException,
     InvalidRequestException,
@@ -436,8 +436,8 @@ export const getConnection: API.OperationMethod<
   GetConnectionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(4, __c0, 4) as any as S.Schema<GetConnectionRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<GetConnectionResponse>,
+  input: __S(12, __c3, 0) as any as S.Schema<GetConnectionRequest>,
+  output: __S(13, __c3, 1) as any as S.Schema<GetConnectionResponse>,
   errors: [
     ForbiddenException,
     InternalFailureException,
@@ -478,8 +478,8 @@ export const getRetainedMessage: API.OperationMethod<
   GetRetainedMessageError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(6, __c0, 6) as any as S.Schema<GetRetainedMessageRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<GetRetainedMessageResponse>,
+  input: __S(16, __c4, 0) as any as S.Schema<GetRetainedMessageRequest>,
+  output: __S(17, __c4, 1) as any as S.Schema<GetRetainedMessageResponse>,
   errors: [
     InternalFailureException,
     InvalidRequestException,
@@ -520,8 +520,8 @@ export const getThingShadow: API.OperationMethod<
   GetThingShadowError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(8, __c1, 0) as any as S.Schema<GetThingShadowRequest>,
-  output: __S(9, __c1, 1) as any as S.Schema<GetThingShadowResponse>,
+  input: __S(20, __c5, 0) as any as S.Schema<GetThingShadowRequest>,
+  output: __S(21, __c5, 1) as any as S.Schema<GetThingShadowResponse>,
   errors: [
     InternalFailureException,
     InvalidRequestException,
@@ -559,8 +559,8 @@ export const listNamedShadowsForThing: API.OperationMethod<
   ListNamedShadowsForThingError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(10, __c1, 2) as any as S.Schema<ListNamedShadowsForThingRequest>,
-  output: __S(12, __c1, 4) as any as S.Schema<ListNamedShadowsForThingResponse>,
+  input: __S(24, __c6, 0) as any as S.Schema<ListNamedShadowsForThingRequest>,
+  output: __S(26, __c6, 2) as any as S.Schema<ListNamedShadowsForThingResponse>,
   errors: [
     InternalFailureException,
     InvalidRequestException,
@@ -608,8 +608,8 @@ export const listRetainedMessages: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   RetainedMessageSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(13, __c1, 5) as any as S.Schema<ListRetainedMessagesRequest>,
-  output: __S(16, __c2, 0) as any as S.Schema<ListRetainedMessagesResponse>,
+  input: __S(28, __c7, 0) as any as S.Schema<ListRetainedMessagesRequest>,
+  output: __S(31, __c7, 3) as any as S.Schema<ListRetainedMessagesResponse>,
   errors: [
     InternalFailureException,
     InvalidRequestException,
@@ -649,8 +649,8 @@ export const listSubscriptions: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   SubscriptionSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(17, __c2, 1) as any as S.Schema<ListSubscriptionsRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<ListSubscriptionsResponse>,
+  input: __S(32, __c8, 0) as any as S.Schema<ListSubscriptionsRequest>,
+  output: __S(35, __c8, 3) as any as S.Schema<ListSubscriptionsResponse>,
   errors: [
     ForbiddenException,
     InternalFailureException,
@@ -695,8 +695,8 @@ export const publish: API.OperationMethod<
   PublishError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(21, __c2, 5) as any as S.Schema<PublishRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<PublishResponse>,
+  input: __S(36, __c9, 0) as any as S.Schema<PublishRequest>,
+  output: __S(4, __c1, 0) as any as S.Schema<PublishResponse>,
   errors: [
     InternalFailureException,
     InvalidRequestException,
@@ -737,8 +737,8 @@ export const sendDirectMessage: API.OperationMethod<
   SendDirectMessageError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(22, __c2, 6) as any as S.Schema<SendDirectMessageRequest>,
-  output: __S(23, __c2, 7) as any as S.Schema<SendDirectMessageResponse>,
+  input: __S(40, __c10, 0) as any as S.Schema<SendDirectMessageRequest>,
+  output: __S(41, __c10, 1) as any as S.Schema<SendDirectMessageResponse>,
   errors: [
     ForbiddenException,
     GatewayTimeoutException,
@@ -780,8 +780,8 @@ export const updateThingShadow: API.OperationMethod<
   UpdateThingShadowError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(24, __c3, 0) as any as S.Schema<UpdateThingShadowRequest>,
-  output: __S(25, __c3, 1) as any as S.Schema<UpdateThingShadowResponse>,
+  input: __S(44, __c11, 0) as any as S.Schema<UpdateThingShadowRequest>,
+  output: __S(45, __c11, 1) as any as S.Schema<UpdateThingShadowResponse>,
   errors: [
     ConflictException,
     InternalFailureException,
@@ -819,11 +819,19 @@ function __c0(j: number): any {
           ),
         ),
       ).annotate({ identifier: "DeleteConnectionRequest" });
-    case 1:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "DeleteConnectionResponse",
       });
-    case 2:
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           thingName: S.String.pipe(T.HttpLabel("thingName")),
@@ -839,13 +847,17 @@ function __c0(j: number): any {
           ),
         ),
       ).annotate({ identifier: "DeleteThingShadowRequest" });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({ payload: T.StreamingOutput.pipe(T.HttpPayload()) }),
       ).annotate({
         identifier: "DeleteThingShadowResponse",
       });
-    case 4:
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           clientId: S.String.pipe(T.HttpLabel("clientId")),
@@ -863,7 +875,7 @@ function __c0(j: number): any {
           ),
         ),
       ).annotate({ identifier: "GetConnectionRequest" });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           connected: S.optional(S.Boolean),
@@ -882,7 +894,11 @@ function __c0(j: number): any {
           vpcEndpointId: S.optional(S.String),
         }),
       ).annotate({ identifier: "GetConnectionResponse" });
-    case 6:
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ topic: S.String.pipe(T.HttpLabel("topic")) }).pipe(
           T.all(
@@ -897,7 +913,7 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "GetRetainedMessageRequest",
       });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           topic: S.optional(S.String),
@@ -911,7 +927,7 @@ function __c0(j: number): any {
       });
   }
 }
-function __c1(j: number): any {
+function __c5(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -933,7 +949,11 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({ payload: S.optional(T.StreamingOutput).pipe(T.HttpPayload()) }),
       ).annotate({ identifier: "GetThingShadowResponse" });
-    case 2:
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           thingName: S.String.pipe(T.HttpLabel("thingName")),
@@ -955,19 +975,23 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "ListNamedShadowsForThingRequest",
       });
-    case 3:
+    case 1:
       return S.Array(S.String);
-    case 4:
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          results: S.optional(__S(11, __c1, 3)),
+          results: S.optional(__S(25, __c6, 1)),
           nextToken: S.optional(S.String),
           timestamp: S.optional(S.Number),
         }),
       ).annotate({
         identifier: "ListNamedShadowsForThingResponse",
       });
-    case 5:
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
@@ -978,7 +1002,7 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "ListRetainedMessagesRequest",
       });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           topic: S.optional(S.String),
@@ -987,22 +1011,19 @@ function __c1(j: number): any {
           lastModifiedTime: S.optional(S.Number),
         }),
       ).annotate({ identifier: "RetainedMessageSummary" });
-    case 7:
-      return S.Array(__S(14, __c1, 6));
-  }
-}
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
+    case 2:
+      return S.Array(__S(29, __c7, 1));
+    case 3:
       return S.suspend(() =>
-        S.Struct({
-          retainedTopics: S.optional(__S(15, __c1, 7)),
-          nextToken: S.optional(S.String),
-        }),
+        S.Struct({ retainedTopics: S.optional(__S(30, __c7, 2)), nextToken: S.optional(S.String) }),
       ).annotate({
         identifier: "ListRetainedMessagesResponse",
       });
-    case 1:
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           clientId: S.String.pipe(T.HttpLabel("clientId")),
@@ -1019,19 +1040,23 @@ function __c2(j: number): any {
           ),
         ),
       ).annotate({ identifier: "ListSubscriptionsRequest" });
-    case 2:
+    case 1:
       return S.suspend(() => S.Struct({ topicFilter: S.String, qos: S.Number })).annotate({
         identifier: "SubscriptionSummary",
       });
+    case 2:
+      return S.Array(__S(33, __c8, 1));
     case 3:
-      return S.Array(__S(18, __c2, 2));
-    case 4:
       return S.suspend(() =>
-        S.Struct({ subscriptions: S.optional(__S(19, __c2, 3)), nextToken: S.optional(S.String) }),
+        S.Struct({ subscriptions: S.optional(__S(34, __c8, 2)), nextToken: S.optional(S.String) }),
       ).annotate({
         identifier: "ListSubscriptionsResponse",
       });
-    case 5:
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           topic: S.String.pipe(T.HttpLabel("topic")),
@@ -1050,7 +1075,11 @@ function __c2(j: number): any {
           T.all(T.Http({ method: "POST", uri: "/topics/{topic}" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "PublishRequest" });
-    case 6:
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           clientId: S.String.pipe(T.HttpLabel("clientId")),
@@ -1076,7 +1105,7 @@ function __c2(j: number): any {
           ),
         ),
       ).annotate({ identifier: "SendDirectMessageRequest" });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({ message: S.optional(S.String), traceId: S.optional(S.String) }),
       ).annotate({
@@ -1084,7 +1113,7 @@ function __c2(j: number): any {
       });
   }
 }
-function __c3(j: number): any {
+function __c11(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1111,7 +1140,6 @@ function __c3(j: number): any {
       });
   }
 }
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

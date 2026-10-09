@@ -1811,7 +1811,7 @@ export const abortVpsSnapshot: API.OperationMethod<
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(0, __c0, 0) as any as S.Schema<AbortVpsSnapshotRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<AbortVpsSnapshotResponse>,
+  output: __S(8, __c1, 0) as any as S.Schema<AbortVpsSnapshotResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1825,8 +1825,8 @@ export const confirmVpsTermination: API.OperationMethod<
   ConfirmVpsTerminationError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2, __c0, 2) as any as S.Schema<ConfirmVpsTerminationRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<ConfirmVpsTerminationResponse>,
+  input: __S(16, __c2, 0) as any as S.Schema<ConfirmVpsTerminationRequest>,
+  output: __S(17, __c2, 1) as any as S.Schema<ConfirmVpsTerminationResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1840,8 +1840,8 @@ export const createVpsAutomatedBackupReschedule: API.OperationMethod<
   CreateVpsAutomatedBackupRescheduleError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(4, __c0, 4) as any as S.Schema<CreateVpsAutomatedBackupRescheduleRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<VpsTask>,
+  input: __S(120, __c15, 0) as any as S.Schema<CreateVpsAutomatedBackupRescheduleRequest>,
+  output: __S(128, __c16, 0) as any as S.Schema<VpsTask>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1855,8 +1855,8 @@ export const createVpsBackupftpAccess: API.OperationMethod<
   CreateVpsBackupftpAccessError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(6, __c0, 6) as any as S.Schema<CreateVpsBackupftpAccessRequest>,
-  output: __S(9, __c1, 1) as any as S.Schema<DedicatedServerTask>,
+  input: __S(256, __c32, 0) as any as S.Schema<CreateVpsBackupftpAccessRequest>,
+  output: __S(266, __c33, 2) as any as S.Schema<DedicatedServerTask>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1870,8 +1870,8 @@ export const createVpsBackupftpPassword: API.OperationMethod<
   CreateVpsBackupftpPasswordError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(10, __c1, 2) as any as S.Schema<CreateVpsBackupftpPasswordRequest>,
-  output: __S(9, __c1, 1) as any as S.Schema<DedicatedServerTask>,
+  input: __S(368, __c46, 0) as any as S.Schema<CreateVpsBackupftpPasswordRequest>,
+  output: __S(266, __c33, 2) as any as S.Schema<DedicatedServerTask>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1885,8 +1885,8 @@ export const createVpsChangeContact: API.OperationMethod<
   CreateVpsChangeContactError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(11, __c1, 3) as any as S.Schema<CreateVpsChangeContactRequest>,
-  output: __S(13, __c1, 5) as any as S.Schema<CreateVpsChangeContactResponse>,
+  input: __S(480, __c60, 0) as any as S.Schema<CreateVpsChangeContactRequest>,
+  output: __S(488, __c61, 0) as any as S.Schema<CreateVpsChangeContactResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1900,8 +1900,8 @@ export const createVpsMigration2018: API.OperationMethod<
   CreateVpsMigration2018Error,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(14, __c1, 6) as any as S.Schema<CreateVpsMigration2018Request>,
-  output: __S(5, __c0, 5) as any as S.Schema<VpsTask>,
+  input: __S(592, __c74, 0) as any as S.Schema<CreateVpsMigration2018Request>,
+  output: __S(128, __c16, 0) as any as S.Schema<VpsTask>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1915,8 +1915,8 @@ export const createVpsOpenConsoleAccess: API.OperationMethod<
   CreateVpsOpenConsoleAccessError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(15, __c1, 7) as any as S.Schema<CreateVpsOpenConsoleAccessRequest>,
-  output: __S(16, __c2, 0) as any as S.Schema<VpsVnc>,
+  input: __S(680, __c85, 0) as any as S.Schema<CreateVpsOpenConsoleAccessRequest>,
+  output: __S(681, __c85, 1) as any as S.Schema<VpsVnc>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1930,8 +1930,8 @@ export const createVpsReinstall: API.OperationMethod<
   CreateVpsReinstallError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(18, __c2, 2) as any as S.Schema<CreateVpsReinstallRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<VpsTask>,
+  input: __S(768, __c96, 0) as any as S.Schema<CreateVpsReinstallRequest>,
+  output: __S(128, __c16, 0) as any as S.Schema<VpsTask>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1945,8 +1945,8 @@ export const createVpsSecondaryDnsDomain: API.OperationMethod<
   CreateVpsSecondaryDnsDomainError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(19, __c2, 3) as any as S.Schema<CreateVpsSecondaryDnsDomainRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<CreateVpsSecondaryDnsDomainResponse>,
+  input: __S(816, __c102, 0) as any as S.Schema<CreateVpsSecondaryDnsDomainRequest>,
+  output: __S(824, __c103, 0) as any as S.Schema<CreateVpsSecondaryDnsDomainResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1960,8 +1960,8 @@ export const createVpsSnapshot: API.OperationMethod<
   CreateVpsSnapshotError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(21, __c2, 5) as any as S.Schema<CreateVpsSnapshotRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<VpsTask>,
+  input: __S(24, __c3, 0) as any as S.Schema<CreateVpsSnapshotRequest>,
+  output: __S(128, __c16, 0) as any as S.Schema<VpsTask>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1975,8 +1975,8 @@ export const createVpsSnapshotRevert: API.OperationMethod<
   CreateVpsSnapshotRevertError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(22, __c2, 6) as any as S.Schema<CreateVpsSnapshotRevertRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<VpsTask>,
+  input: __S(32, __c4, 0) as any as S.Schema<CreateVpsSnapshotRevertRequest>,
+  output: __S(128, __c16, 0) as any as S.Schema<VpsTask>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1990,8 +1990,8 @@ export const deleteVpsBackupftpAccess: API.OperationMethod<
   DeleteVpsBackupftpAccessError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(23, __c2, 7) as any as S.Schema<DeleteVpsBackupftpAccessRequest>,
-  output: __S(9, __c1, 1) as any as S.Schema<DedicatedServerTask>,
+  input: __S(40, __c5, 0) as any as S.Schema<DeleteVpsBackupftpAccessRequest>,
+  output: __S(266, __c33, 2) as any as S.Schema<DedicatedServerTask>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -2005,8 +2005,8 @@ export const deleteVpsIps: API.OperationMethod<
   DeleteVpsIpsError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(24, __c3, 0) as any as S.Schema<DeleteVpsIpsRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<DeleteVpsIpsResponse>,
+  input: __S(48, __c6, 0) as any as S.Schema<DeleteVpsIpsRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<DeleteVpsIpsResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -2020,8 +2020,8 @@ export const deleteVpsSecondaryDnsDomain: API.OperationMethod<
   DeleteVpsSecondaryDnsDomainError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(25, __c3, 1) as any as S.Schema<DeleteVpsSecondaryDnsDomainRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<DeleteVpsSecondaryDnsDomainResponse>,
+  input: __S(56, __c7, 0) as any as S.Schema<DeleteVpsSecondaryDnsDomainRequest>,
+  output: __S(824, __c103, 0) as any as S.Schema<DeleteVpsSecondaryDnsDomainResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -2035,8 +2035,8 @@ export const deleteVpsSnapshot: API.OperationMethod<
   DeleteVpsSnapshotError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(26, __c3, 2) as any as S.Schema<DeleteVpsSnapshotRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<VpsTask>,
+  input: __S(64, __c8, 0) as any as S.Schema<DeleteVpsSnapshotRequest>,
+  output: __S(128, __c16, 0) as any as S.Schema<VpsTask>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -2050,8 +2050,8 @@ export const deleteVpsVeeamRestoredBackup: API.OperationMethod<
   DeleteVpsVeeamRestoredBackupError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(27, __c3, 3) as any as S.Schema<DeleteVpsVeeamRestoredBackupRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<VpsTask>,
+  input: __S(72, __c9, 0) as any as S.Schema<DeleteVpsVeeamRestoredBackupRequest>,
+  output: __S(128, __c16, 0) as any as S.Schema<VpsTask>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -2065,8 +2065,8 @@ export const detachVpsAutomatedBackupBackup: API.OperationMethod<
   DetachVpsAutomatedBackupBackupError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(28, __c3, 4) as any as S.Schema<DetachVpsAutomatedBackupBackupRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<VpsTask>,
+  input: __S(80, __c10, 0) as any as S.Schema<DetachVpsAutomatedBackupBackupRequest>,
+  output: __S(128, __c16, 0) as any as S.Schema<VpsTask>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -2076,8 +2076,8 @@ export type GetVpsError = OvhOpError;
 /** Get this object properties */
 export const getVps: API.OperationMethod<GetVpsRequest, VpsVPSWithIAM, GetVpsError, OvhOpContext> =
   /*@__PURE__*/ API.make(() => ({
-    input: __S(29, __c3, 5) as any as S.Schema<GetVpsRequest>,
-    output: __S(34, __c4, 2) as any as S.Schema<VpsVPSWithIAM>,
+    input: __S(88, __c11, 0) as any as S.Schema<GetVpsRequest>,
+    output: __S(91, __c11, 3) as any as S.Schema<VpsVPSWithIAM>,
     errors: [UnknownOvhError],
     protocol: OvhProtocol,
     retry: Retry.Retry,
@@ -2091,8 +2091,8 @@ export const getVpsAutomatedBackup: API.OperationMethod<
   GetVpsAutomatedBackupError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(35, __c4, 3) as any as S.Schema<GetVpsAutomatedBackupRequest>,
-  output: __S(36, __c4, 4) as any as S.Schema<VpsAutomatedBackup>,
+  input: __S(112, __c14, 0) as any as S.Schema<GetVpsAutomatedBackupRequest>,
+  output: __S(113, __c14, 1) as any as S.Schema<VpsAutomatedBackup>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -2106,8 +2106,8 @@ export const getVpsBackupftp: API.OperationMethod<
   GetVpsBackupftpError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(37, __c4, 5) as any as S.Schema<GetVpsBackupftpRequest>,
-  output: __S(39, __c4, 7) as any as S.Schema<VpsBackupFtp>,
+  input: __S(136, __c17, 0) as any as S.Schema<GetVpsBackupftpRequest>,
+  output: __S(137, __c17, 1) as any as S.Schema<VpsBackupFtp>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -2121,8 +2121,8 @@ export const getVpsBackupftpAccess: API.OperationMethod<
   GetVpsBackupftpAccessError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(40, __c5, 0) as any as S.Schema<GetVpsBackupftpAccessRequest>,
-  output: __S(41, __c5, 1) as any as S.Schema<DedicatedServerBackupFtpAcl>,
+  input: __S(152, __c19, 0) as any as S.Schema<GetVpsBackupftpAccessRequest>,
+  output: __S(153, __c19, 1) as any as S.Schema<DedicatedServerBackupFtpAcl>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -2136,8 +2136,8 @@ export const getVpsConsoleUrl: API.OperationMethod<
   GetVpsConsoleUrlError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(42, __c5, 2) as any as S.Schema<GetVpsConsoleUrlRequest>,
-  output: __S(43, __c5, 3) as any as S.Schema<GetVpsConsoleUrlResponse>,
+  input: __S(160, __c20, 0) as any as S.Schema<GetVpsConsoleUrlRequest>,
+  output: __S(168, __c21, 0) as any as S.Schema<GetVpsConsoleUrlResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -2151,8 +2151,8 @@ export const getVpsDatacenter: API.OperationMethod<
   GetVpsDatacenterError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(44, __c5, 4) as any as S.Schema<GetVpsDatacenterRequest>,
-  output: __S(45, __c5, 5) as any as S.Schema<VpsDatacenter>,
+  input: __S(176, __c22, 0) as any as S.Schema<GetVpsDatacenterRequest>,
+  output: __S(177, __c22, 1) as any as S.Schema<VpsDatacenter>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -2166,8 +2166,8 @@ export const getVpsDisk: API.OperationMethod<
   GetVpsDiskError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(46, __c5, 6) as any as S.Schema<GetVpsDiskRequest>,
-  output: __S(47, __c5, 7) as any as S.Schema<VpsDisk>,
+  input: __S(184, __c23, 0) as any as S.Schema<GetVpsDiskRequest>,
+  output: __S(185, __c23, 1) as any as S.Schema<VpsDisk>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -2181,8 +2181,8 @@ export const getVpsDiskUse: API.OperationMethod<
   GetVpsDiskUseError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(48, __c6, 0) as any as S.Schema<GetVpsDiskUseRequest>,
-  output: __S(38, __c4, 6) as any as S.Schema<ComplexTypeUnitAndValueDouble>,
+  input: __S(192, __c24, 0) as any as S.Schema<GetVpsDiskUseRequest>,
+  output: __S(144, __c18, 0) as any as S.Schema<ComplexTypeUnitAndValueDouble>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -2196,8 +2196,8 @@ export const getVpsDistribution: API.OperationMethod<
   GetVpsDistributionError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(49, __c6, 1) as any as S.Schema<GetVpsDistributionRequest>,
-  output: __S(50, __c6, 2) as any as S.Schema<VpsTemplate>,
+  input: __S(200, __c25, 0) as any as S.Schema<GetVpsDistributionRequest>,
+  output: __S(208, __c26, 0) as any as S.Schema<VpsTemplate>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -2211,8 +2211,8 @@ export const getVpsDistributionSoftware: API.OperationMethod<
   GetVpsDistributionSoftwareError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(51, __c6, 3) as any as S.Schema<GetVpsDistributionSoftwareRequest>,
-  output: __S(52, __c6, 4) as any as S.Schema<VpsSoftware>,
+  input: __S(216, __c27, 0) as any as S.Schema<GetVpsDistributionSoftwareRequest>,
+  output: __S(224, __c28, 0) as any as S.Schema<VpsSoftware>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -2226,8 +2226,8 @@ export const getVpsImageAvailable: API.OperationMethod<
   GetVpsImageAvailableError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(53, __c6, 5) as any as S.Schema<GetVpsImageAvailableRequest>,
-  output: __S(54, __c6, 6) as any as S.Schema<VpsImage>,
+  input: __S(232, __c29, 0) as any as S.Schema<GetVpsImageAvailableRequest>,
+  output: __S(240, __c30, 0) as any as S.Schema<VpsImage>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -2241,8 +2241,8 @@ export const getVpsImageCurrent: API.OperationMethod<
   GetVpsImageCurrentError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(55, __c6, 7) as any as S.Schema<GetVpsImageCurrentRequest>,
-  output: __S(54, __c6, 6) as any as S.Schema<VpsImage>,
+  input: __S(248, __c31, 0) as any as S.Schema<GetVpsImageCurrentRequest>,
+  output: __S(240, __c30, 0) as any as S.Schema<VpsImage>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -2252,8 +2252,8 @@ export type GetVpsIpsError = OvhOpError;
 /** Get this object properties */
 export const getVpsIps: API.OperationMethod<GetVpsIpsRequest, VpsIp, GetVpsIpsError, OvhOpContext> =
   /*@__PURE__*/ API.make(() => ({
-    input: __S(56, __c7, 0) as any as S.Schema<GetVpsIpsRequest>,
-    output: __S(57, __c7, 1) as any as S.Schema<VpsIp>,
+    input: __S(272, __c34, 0) as any as S.Schema<GetVpsIpsRequest>,
+    output: __S(273, __c34, 1) as any as S.Schema<VpsIp>,
     errors: [UnknownOvhError],
     protocol: OvhProtocol,
     retry: Retry.Retry,
@@ -2267,8 +2267,8 @@ export const getVpsOption: API.OperationMethod<
   GetVpsOptionError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(58, __c7, 2) as any as S.Schema<GetVpsOptionRequest>,
-  output: __S(59, __c7, 3) as any as S.Schema<VpsOption>,
+  input: __S(280, __c35, 0) as any as S.Schema<GetVpsOptionRequest>,
+  output: __S(281, __c35, 1) as any as S.Schema<VpsOption>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -2282,8 +2282,8 @@ export const getVpsSecondaryDnsDomain: API.OperationMethod<
   GetVpsSecondaryDnsDomainError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(60, __c7, 4) as any as S.Schema<GetVpsSecondaryDnsDomainRequest>,
-  output: __S(61, __c7, 5) as any as S.Schema<SecondaryDnsSecondaryDNS>,
+  input: __S(288, __c36, 0) as any as S.Schema<GetVpsSecondaryDnsDomainRequest>,
+  output: __S(289, __c36, 1) as any as S.Schema<SecondaryDnsSecondaryDNS>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -2297,8 +2297,8 @@ export const getVpsSecondaryDnsDomainDnsServer: API.OperationMethod<
   GetVpsSecondaryDnsDomainDnsServerError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(62, __c7, 6) as any as S.Schema<GetVpsSecondaryDnsDomainDnsServerRequest>,
-  output: __S(63, __c7, 7) as any as S.Schema<SecondaryDnsSecondaryDNSNameServer>,
+  input: __S(296, __c37, 0) as any as S.Schema<GetVpsSecondaryDnsDomainDnsServerRequest>,
+  output: __S(304, __c38, 0) as any as S.Schema<SecondaryDnsSecondaryDNSNameServer>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -2312,8 +2312,8 @@ export const getVpsSecondaryDnsNameServerAvailable: API.OperationMethod<
   GetVpsSecondaryDnsNameServerAvailableError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(64, __c8, 0) as any as S.Schema<GetVpsSecondaryDnsNameServerAvailableRequest>,
-  output: __S(63, __c7, 7) as any as S.Schema<SecondaryDnsSecondaryDNSNameServer>,
+  input: __S(312, __c39, 0) as any as S.Schema<GetVpsSecondaryDnsNameServerAvailableRequest>,
+  output: __S(304, __c38, 0) as any as S.Schema<SecondaryDnsSecondaryDNSNameServer>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -2327,8 +2327,8 @@ export const getVpsServiceInfos: API.OperationMethod<
   GetVpsServiceInfosError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(65, __c8, 1) as any as S.Schema<GetVpsServiceInfosRequest>,
-  output: __S(67, __c8, 3) as any as S.Schema<ServicesService>,
+  input: __S(320, __c40, 0) as any as S.Schema<GetVpsServiceInfosRequest>,
+  output: __S(321, __c40, 1) as any as S.Schema<ServicesService>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -2342,8 +2342,8 @@ export const getVpsSnapshot: API.OperationMethod<
   GetVpsSnapshotError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(68, __c8, 4) as any as S.Schema<GetVpsSnapshotRequest>,
-  output: __S(69, __c8, 5) as any as S.Schema<VpsSnapshot>,
+  input: __S(336, __c42, 0) as any as S.Schema<GetVpsSnapshotRequest>,
+  output: __S(337, __c42, 1) as any as S.Schema<VpsSnapshot>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -2357,8 +2357,8 @@ export const getVpsSnapshotDownload: API.OperationMethod<
   GetVpsSnapshotDownloadError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(70, __c8, 6) as any as S.Schema<GetVpsSnapshotDownloadRequest>,
-  output: __S(71, __c8, 7) as any as S.Schema<VpsDownloadSnapshotURL>,
+  input: __S(344, __c43, 0) as any as S.Schema<GetVpsSnapshotDownloadRequest>,
+  output: __S(345, __c43, 1) as any as S.Schema<VpsDownloadSnapshotURL>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -2372,8 +2372,8 @@ export const getVpsStatus: API.OperationMethod<
   GetVpsStatusError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(72, __c9, 0) as any as S.Schema<GetVpsStatusRequest>,
-  output: __S(74, __c9, 2) as any as S.Schema<VpsIpServiceStatus>,
+  input: __S(352, __c44, 0) as any as S.Schema<GetVpsStatusRequest>,
+  output: __S(354, __c44, 2) as any as S.Schema<VpsIpServiceStatus>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -2387,8 +2387,8 @@ export const getVpsTask: API.OperationMethod<
   GetVpsTaskError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(75, __c9, 3) as any as S.Schema<GetVpsTaskRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<VpsTask>,
+  input: __S(360, __c45, 0) as any as S.Schema<GetVpsTaskRequest>,
+  output: __S(128, __c16, 0) as any as S.Schema<VpsTask>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -2402,8 +2402,8 @@ export const getVpsTemplate: API.OperationMethod<
   GetVpsTemplateError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(76, __c9, 4) as any as S.Schema<GetVpsTemplateRequest>,
-  output: __S(50, __c6, 2) as any as S.Schema<VpsTemplate>,
+  input: __S(376, __c47, 0) as any as S.Schema<GetVpsTemplateRequest>,
+  output: __S(208, __c26, 0) as any as S.Schema<VpsTemplate>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -2417,8 +2417,8 @@ export const getVpsTemplateSoftware: API.OperationMethod<
   GetVpsTemplateSoftwareError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(77, __c9, 5) as any as S.Schema<GetVpsTemplateSoftwareRequest>,
-  output: __S(52, __c6, 4) as any as S.Schema<VpsSoftware>,
+  input: __S(384, __c48, 0) as any as S.Schema<GetVpsTemplateSoftwareRequest>,
+  output: __S(224, __c28, 0) as any as S.Schema<VpsSoftware>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -2432,8 +2432,8 @@ export const getVpsVeeam: API.OperationMethod<
   GetVpsVeeamError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(78, __c9, 6) as any as S.Schema<GetVpsVeeamRequest>,
-  output: __S(79, __c9, 7) as any as S.Schema<VpsVeeam>,
+  input: __S(392, __c49, 0) as any as S.Schema<GetVpsVeeamRequest>,
+  output: __S(393, __c49, 1) as any as S.Schema<VpsVeeam>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -2447,8 +2447,8 @@ export const getVpsVeeamRestoredBackup: API.OperationMethod<
   GetVpsVeeamRestoredBackupError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(80, __c10, 0) as any as S.Schema<GetVpsVeeamRestoredBackupRequest>,
-  output: __S(82, __c10, 2) as any as S.Schema<VpsVeeamRestoredBackup>,
+  input: __S(400, __c50, 0) as any as S.Schema<GetVpsVeeamRestoredBackupRequest>,
+  output: __S(402, __c50, 2) as any as S.Schema<VpsVeeamRestoredBackup>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -2462,8 +2462,8 @@ export const getVpsVeeamRestorePoint: API.OperationMethod<
   GetVpsVeeamRestorePointError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(83, __c10, 3) as any as S.Schema<GetVpsVeeamRestorePointRequest>,
-  output: __S(84, __c10, 4) as any as S.Schema<VpsVeeamRestorePoint>,
+  input: __S(408, __c51, 0) as any as S.Schema<GetVpsVeeamRestorePointRequest>,
+  output: __S(409, __c51, 1) as any as S.Schema<VpsVeeamRestorePoint>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -2477,8 +2477,8 @@ export const getVpsVersion: API.OperationMethod<
   GetVpsVersionError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(85, __c10, 5) as any as S.Schema<GetVpsVersionRequest>,
-  output: __S(86, __c10, 6) as any as S.Schema<VpsVpsBillingVersion>,
+  input: __S(416, __c52, 0) as any as S.Schema<GetVpsVersionRequest>,
+  output: __S(417, __c52, 1) as any as S.Schema<VpsVpsBillingVersion>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -2492,8 +2492,8 @@ export const listVps: API.OperationMethod<
   ListVpsError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(89, __c11, 1) as any as S.Schema<ListVpsRequest>,
-  output: __S(90, __c11, 2) as any as S.Schema<ListVpsResponse>,
+  input: __S(426, __c53, 2) as any as S.Schema<ListVpsRequest>,
+  output: __S(432, __c54, 0) as any as S.Schema<ListVpsResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -2507,8 +2507,8 @@ export const listVpsAutomatedBackupAttachedBackup: API.OperationMethod<
   ListVpsAutomatedBackupAttachedBackupError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(91, __c11, 3) as any as S.Schema<ListVpsAutomatedBackupAttachedBackupRequest>,
-  output: __S(95, __c11, 7) as any as S.Schema<ListVpsAutomatedBackupAttachedBackupResponse>,
+  input: __S(440, __c55, 0) as any as S.Schema<ListVpsAutomatedBackupAttachedBackupRequest>,
+  output: __S(444, __c55, 4) as any as S.Schema<ListVpsAutomatedBackupAttachedBackupResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -2522,8 +2522,8 @@ export const listVpsAutomatedBackupRestorePoints: API.OperationMethod<
   ListVpsAutomatedBackupRestorePointsError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(96, __c12, 0) as any as S.Schema<ListVpsAutomatedBackupRestorePointsRequest>,
-  output: __S(97, __c12, 1) as any as S.Schema<ListVpsAutomatedBackupRestorePointsResponse>,
+  input: __S(448, __c56, 0) as any as S.Schema<ListVpsAutomatedBackupRestorePointsRequest>,
+  output: __S(456, __c57, 0) as any as S.Schema<ListVpsAutomatedBackupRestorePointsResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -2537,8 +2537,8 @@ export const listVpsAvailableUpgrade: API.OperationMethod<
   ListVpsAvailableUpgradeError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(98, __c12, 2) as any as S.Schema<ListVpsAvailableUpgradeRequest>,
-  output: __S(100, __c12, 4) as any as S.Schema<ListVpsAvailableUpgradeResponse>,
+  input: __S(464, __c58, 0) as any as S.Schema<ListVpsAvailableUpgradeRequest>,
+  output: __S(465, __c58, 1) as any as S.Schema<ListVpsAvailableUpgradeResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -2552,8 +2552,8 @@ export const listVpsBackupftpAccess: API.OperationMethod<
   ListVpsBackupftpAccessError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(101, __c12, 5) as any as S.Schema<ListVpsBackupftpAccessRequest>,
-  output: __S(97, __c12, 1) as any as S.Schema<ListVpsBackupftpAccessResponse>,
+  input: __S(504, __c63, 0) as any as S.Schema<ListVpsBackupftpAccessRequest>,
+  output: __S(456, __c57, 0) as any as S.Schema<ListVpsBackupftpAccessResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -2567,8 +2567,8 @@ export const listVpsBackupftpAuthorizableBlocks: API.OperationMethod<
   ListVpsBackupftpAuthorizableBlocksError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(102, __c12, 6) as any as S.Schema<ListVpsBackupftpAuthorizableBlocksRequest>,
-  output: __S(97, __c12, 1) as any as S.Schema<ListVpsBackupftpAuthorizableBlocksResponse>,
+  input: __S(512, __c64, 0) as any as S.Schema<ListVpsBackupftpAuthorizableBlocksRequest>,
+  output: __S(456, __c57, 0) as any as S.Schema<ListVpsBackupftpAuthorizableBlocksResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -2582,8 +2582,8 @@ export const listVpsDatacenter: API.OperationMethod<
   ListVpsDatacenterError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(103, __c12, 7) as any as S.Schema<ListVpsDatacenterRequest>,
-  output: __S(97, __c12, 1) as any as S.Schema<ListVpsDatacenterResponse>,
+  input: __S(520, __c65, 0) as any as S.Schema<ListVpsDatacenterRequest>,
+  output: __S(456, __c57, 0) as any as S.Schema<ListVpsDatacenterResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -2597,8 +2597,8 @@ export const listVpsDiskMonitoring: API.OperationMethod<
   ListVpsDiskMonitoringError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(104, __c13, 0) as any as S.Schema<ListVpsDiskMonitoringRequest>,
-  output: __S(107, __c13, 3) as any as S.Schema<ComplexTypeUnitAndValuesVpsVpsTimestampValue>,
+  input: __S(528, __c66, 0) as any as S.Schema<ListVpsDiskMonitoringRequest>,
+  output: __S(531, __c66, 3) as any as S.Schema<ComplexTypeUnitAndValuesVpsVpsTimestampValue>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -2612,8 +2612,8 @@ export const listVpsDisks: API.OperationMethod<
   ListVpsDisksError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(108, __c13, 4) as any as S.Schema<ListVpsDisksRequest>,
-  output: __S(109, __c13, 5) as any as S.Schema<ListVpsDisksResponse>,
+  input: __S(536, __c67, 0) as any as S.Schema<ListVpsDisksRequest>,
+  output: __S(544, __c68, 0) as any as S.Schema<ListVpsDisksResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -2627,8 +2627,8 @@ export const listVpsDistributionSoftware: API.OperationMethod<
   ListVpsDistributionSoftwareError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(110, __c13, 6) as any as S.Schema<ListVpsDistributionSoftwareRequest>,
-  output: __S(13, __c1, 5) as any as S.Schema<ListVpsDistributionSoftwareResponse>,
+  input: __S(552, __c69, 0) as any as S.Schema<ListVpsDistributionSoftwareRequest>,
+  output: __S(488, __c61, 0) as any as S.Schema<ListVpsDistributionSoftwareResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -2642,8 +2642,8 @@ export const listVpsImageAvailable: API.OperationMethod<
   ListVpsImageAvailableError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(111, __c13, 7) as any as S.Schema<ListVpsImageAvailableRequest>,
-  output: __S(97, __c12, 1) as any as S.Schema<ListVpsImageAvailableResponse>,
+  input: __S(560, __c70, 0) as any as S.Schema<ListVpsImageAvailableRequest>,
+  output: __S(456, __c57, 0) as any as S.Schema<ListVpsImageAvailableResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -2657,8 +2657,8 @@ export const listVpsIpCountryAvailable: API.OperationMethod<
   ListVpsIpCountryAvailableError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(112, __c14, 0) as any as S.Schema<ListVpsIpCountryAvailableRequest>,
-  output: __S(113, __c14, 1) as any as S.Schema<ListVpsIpCountryAvailableResponse>,
+  input: __S(568, __c71, 0) as any as S.Schema<ListVpsIpCountryAvailableRequest>,
+  output: __S(569, __c71, 1) as any as S.Schema<ListVpsIpCountryAvailableResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -2672,8 +2672,8 @@ export const listVpsIps: API.OperationMethod<
   ListVpsIpsError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(114, __c14, 2) as any as S.Schema<ListVpsIpsRequest>,
-  output: __S(90, __c11, 2) as any as S.Schema<ListVpsIpsResponse>,
+  input: __S(576, __c72, 0) as any as S.Schema<ListVpsIpsRequest>,
+  output: __S(432, __c54, 0) as any as S.Schema<ListVpsIpsResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -2687,8 +2687,8 @@ export const listVpsMigration2018: API.OperationMethod<
   ListVpsMigration2018Error,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(115, __c14, 3) as any as S.Schema<ListVpsMigration2018Request>,
-  output: __S(122, __c15, 2) as any as S.Schema<VpsMigrationVPS2018to2020>,
+  input: __S(584, __c73, 0) as any as S.Schema<ListVpsMigration2018Request>,
+  output: __S(591, __c73, 7) as any as S.Schema<VpsMigrationVPS2018to2020>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -2702,8 +2702,8 @@ export const listVpsModels: API.OperationMethod<
   ListVpsModelsError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(123, __c15, 3) as any as S.Schema<ListVpsModelsRequest>,
-  output: __S(124, __c15, 4) as any as S.Schema<ListVpsModelsResponse>,
+  input: __S(600, __c75, 0) as any as S.Schema<ListVpsModelsRequest>,
+  output: __S(601, __c75, 1) as any as S.Schema<ListVpsModelsResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -2717,8 +2717,8 @@ export const listVpsOption: API.OperationMethod<
   ListVpsOptionError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(125, __c15, 5) as any as S.Schema<ListVpsOptionRequest>,
-  output: __S(126, __c15, 6) as any as S.Schema<ListVpsOptionResponse>,
+  input: __S(608, __c76, 0) as any as S.Schema<ListVpsOptionRequest>,
+  output: __S(609, __c76, 1) as any as S.Schema<ListVpsOptionResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -2732,8 +2732,8 @@ export const listVpsOrderRuleDatacenter: API.OperationMethod<
   ListVpsOrderRuleDatacenterError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(127, __c15, 7) as any as S.Schema<ListVpsOrderRuleDatacenterRequest>,
-  output: __S(130, __c16, 2) as any as S.Schema<VpsOrderRuleDatacenters>,
+  input: __S(616, __c77, 0) as any as S.Schema<ListVpsOrderRuleDatacenterRequest>,
+  output: __S(619, __c77, 3) as any as S.Schema<VpsOrderRuleDatacenters>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -2747,8 +2747,8 @@ export const listVpsOrderRuleOsChoices: API.OperationMethod<
   ListVpsOrderRuleOsChoicesError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(131, __c16, 3) as any as S.Schema<ListVpsOrderRuleOsChoicesRequest>,
-  output: __S(134, __c16, 6) as any as S.Schema<VpsOrderRuleOSChoices>,
+  input: __S(624, __c78, 0) as any as S.Schema<ListVpsOrderRuleOsChoicesRequest>,
+  output: __S(627, __c78, 3) as any as S.Schema<VpsOrderRuleOSChoices>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -2762,8 +2762,8 @@ export const listVpsSecondaryDnsDomains: API.OperationMethod<
   ListVpsSecondaryDnsDomainsError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(135, __c16, 7) as any as S.Schema<ListVpsSecondaryDnsDomainsRequest>,
-  output: __S(97, __c12, 1) as any as S.Schema<ListVpsSecondaryDnsDomainsResponse>,
+  input: __S(632, __c79, 0) as any as S.Schema<ListVpsSecondaryDnsDomainsRequest>,
+  output: __S(456, __c57, 0) as any as S.Schema<ListVpsSecondaryDnsDomainsResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -2777,8 +2777,8 @@ export const listVpsTasks: API.OperationMethod<
   ListVpsTasksError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(136, __c17, 0) as any as S.Schema<ListVpsTasksRequest>,
-  output: __S(109, __c13, 5) as any as S.Schema<ListVpsTasksResponse>,
+  input: __S(640, __c80, 0) as any as S.Schema<ListVpsTasksRequest>,
+  output: __S(544, __c68, 0) as any as S.Schema<ListVpsTasksResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -2792,8 +2792,8 @@ export const listVpsTemplates: API.OperationMethod<
   ListVpsTemplatesError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(137, __c17, 1) as any as S.Schema<ListVpsTemplatesRequest>,
-  output: __S(109, __c13, 5) as any as S.Schema<ListVpsTemplatesResponse>,
+  input: __S(648, __c81, 0) as any as S.Schema<ListVpsTemplatesRequest>,
+  output: __S(544, __c68, 0) as any as S.Schema<ListVpsTemplatesResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -2807,8 +2807,8 @@ export const listVpsTemplateSoftware: API.OperationMethod<
   ListVpsTemplateSoftwareError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(138, __c17, 2) as any as S.Schema<ListVpsTemplateSoftwareRequest>,
-  output: __S(13, __c1, 5) as any as S.Schema<ListVpsTemplateSoftwareResponse>,
+  input: __S(656, __c82, 0) as any as S.Schema<ListVpsTemplateSoftwareRequest>,
+  output: __S(488, __c61, 0) as any as S.Schema<ListVpsTemplateSoftwareResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -2822,8 +2822,8 @@ export const listVpsVeeamRestorePoints: API.OperationMethod<
   ListVpsVeeamRestorePointsError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(139, __c17, 3) as any as S.Schema<ListVpsVeeamRestorePointsRequest>,
-  output: __S(13, __c1, 5) as any as S.Schema<ListVpsVeeamRestorePointsResponse>,
+  input: __S(664, __c83, 0) as any as S.Schema<ListVpsVeeamRestorePointsRequest>,
+  output: __S(488, __c61, 0) as any as S.Schema<ListVpsVeeamRestorePointsResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -2833,8 +2833,8 @@ export type PutVpsError = OvhOpError;
 /** Alter this object properties */
 export const putVps: API.OperationMethod<PutVpsRequest, PutVpsResponse, PutVpsError, OvhOpContext> =
   /*@__PURE__*/ API.make(() => ({
-    input: __S(140, __c17, 4) as any as S.Schema<PutVpsRequest>,
-    output: __S(1, __c0, 1) as any as S.Schema<PutVpsResponse>,
+    input: __S(672, __c84, 0) as any as S.Schema<PutVpsRequest>,
+    output: __S(8, __c1, 0) as any as S.Schema<PutVpsResponse>,
     errors: [UnknownOvhError],
     protocol: OvhProtocol,
     retry: Retry.Retry,
@@ -2848,8 +2848,8 @@ export const putVpsBackupftpAccess: API.OperationMethod<
   PutVpsBackupftpAccessError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(141, __c17, 5) as any as S.Schema<PutVpsBackupftpAccessRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<PutVpsBackupftpAccessResponse>,
+  input: __S(688, __c86, 0) as any as S.Schema<PutVpsBackupftpAccessRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<PutVpsBackupftpAccessResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -2863,8 +2863,8 @@ export const putVpsDisk: API.OperationMethod<
   PutVpsDiskError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(142, __c17, 6) as any as S.Schema<PutVpsDiskRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<PutVpsDiskResponse>,
+  input: __S(696, __c87, 0) as any as S.Schema<PutVpsDiskRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<PutVpsDiskResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -2878,8 +2878,8 @@ export const putVpsIps: API.OperationMethod<
   PutVpsIpsError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(143, __c17, 7) as any as S.Schema<PutVpsIpsRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<PutVpsIpsResponse>,
+  input: __S(704, __c88, 0) as any as S.Schema<PutVpsIpsRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<PutVpsIpsResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -2893,8 +2893,8 @@ export const putVpsSecondaryDnsDomain: API.OperationMethod<
   PutVpsSecondaryDnsDomainError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(144, __c18, 0) as any as S.Schema<PutVpsSecondaryDnsDomainRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<PutVpsSecondaryDnsDomainResponse>,
+  input: __S(712, __c89, 0) as any as S.Schema<PutVpsSecondaryDnsDomainRequest>,
+  output: __S(824, __c103, 0) as any as S.Schema<PutVpsSecondaryDnsDomainResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -2908,8 +2908,8 @@ export const putVpsServiceInfos: API.OperationMethod<
   PutVpsServiceInfosError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(145, __c18, 1) as any as S.Schema<PutVpsServiceInfosRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<PutVpsServiceInfosResponse>,
+  input: __S(720, __c90, 0) as any as S.Schema<PutVpsServiceInfosRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<PutVpsServiceInfosResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -2923,8 +2923,8 @@ export const putVpsSnapshot: API.OperationMethod<
   PutVpsSnapshotError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(146, __c18, 2) as any as S.Schema<PutVpsSnapshotRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<PutVpsSnapshotResponse>,
+  input: __S(728, __c91, 0) as any as S.Schema<PutVpsSnapshotRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<PutVpsSnapshotResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -2938,8 +2938,8 @@ export const rebootVps: API.OperationMethod<
   RebootVpsError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(147, __c18, 3) as any as S.Schema<RebootVpsRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<VpsTask>,
+  input: __S(736, __c92, 0) as any as S.Schema<RebootVpsRequest>,
+  output: __S(128, __c16, 0) as any as S.Schema<VpsTask>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -2953,8 +2953,8 @@ export const rebuildVps: API.OperationMethod<
   RebuildVpsError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(148, __c18, 4) as any as S.Schema<RebuildVpsRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<VpsTask>,
+  input: __S(744, __c93, 0) as any as S.Schema<RebuildVpsRequest>,
+  output: __S(128, __c16, 0) as any as S.Schema<VpsTask>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -2968,8 +2968,8 @@ export const restoreVpsAutomatedBackup: API.OperationMethod<
   RestoreVpsAutomatedBackupError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(149, __c18, 5) as any as S.Schema<RestoreVpsAutomatedBackupRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<VpsTask>,
+  input: __S(752, __c94, 0) as any as S.Schema<RestoreVpsAutomatedBackupRequest>,
+  output: __S(128, __c16, 0) as any as S.Schema<VpsTask>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -2983,8 +2983,8 @@ export const restoreVpsVeeamRestorePoint: API.OperationMethod<
   RestoreVpsVeeamRestorePointError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(150, __c18, 6) as any as S.Schema<RestoreVpsVeeamRestorePointRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<VpsTask>,
+  input: __S(760, __c95, 0) as any as S.Schema<RestoreVpsVeeamRestorePointRequest>,
+  output: __S(128, __c16, 0) as any as S.Schema<VpsTask>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -2998,8 +2998,8 @@ export const setVpsPassword: API.OperationMethod<
   SetVpsPasswordError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(151, __c18, 7) as any as S.Schema<SetVpsPasswordRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<VpsTask>,
+  input: __S(784, __c98, 0) as any as S.Schema<SetVpsPasswordRequest>,
+  output: __S(128, __c16, 0) as any as S.Schema<VpsTask>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -3009,8 +3009,8 @@ export type StartVpsError = OvhOpError;
 /** Request the machine to start */
 export const startVps: API.OperationMethod<StartVpsRequest, VpsTask, StartVpsError, OvhOpContext> =
   /*@__PURE__*/ API.make(() => ({
-    input: __S(152, __c19, 0) as any as S.Schema<StartVpsRequest>,
-    output: __S(5, __c0, 5) as any as S.Schema<VpsTask>,
+    input: __S(792, __c99, 0) as any as S.Schema<StartVpsRequest>,
+    output: __S(128, __c16, 0) as any as S.Schema<VpsTask>,
     errors: [UnknownOvhError],
     protocol: OvhProtocol,
     retry: Retry.Retry,
@@ -3020,8 +3020,8 @@ export type StopVpsError = OvhOpError;
 /** Request the machine to stop */
 export const stopVps: API.OperationMethod<StopVpsRequest, VpsTask, StopVpsError, OvhOpContext> =
   /*@__PURE__*/ API.make(() => ({
-    input: __S(153, __c19, 1) as any as S.Schema<StopVpsRequest>,
-    output: __S(5, __c0, 5) as any as S.Schema<VpsTask>,
+    input: __S(800, __c100, 0) as any as S.Schema<StopVpsRequest>,
+    output: __S(128, __c16, 0) as any as S.Schema<VpsTask>,
     errors: [UnknownOvhError],
     protocol: OvhProtocol,
     retry: Retry.Retry,
@@ -3035,8 +3035,8 @@ export const terminateVps: API.OperationMethod<
   TerminateVpsError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(154, __c19, 2) as any as S.Schema<TerminateVpsRequest>,
-  output: __S(43, __c5, 3) as any as S.Schema<TerminateVpsResponse>,
+  input: __S(808, __c101, 0) as any as S.Schema<TerminateVpsRequest>,
+  output: __S(168, __c21, 0) as any as S.Schema<TerminateVpsResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -3051,11 +3051,19 @@ function __c0(j: number): any {
           serviceName: S.String.pipe(T.Label()),
         }).pipe(T.Http({ method: "POST", uri: "/vps/{serviceName}/abortSnapshot", code: 200 })),
       ).annotate({ identifier: "AbortVpsSnapshotRequest" });
-    case 1:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "AbortVpsSnapshotResponse",
       });
-    case 2:
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           serviceName: S.String.pipe(T.Label()),
@@ -3069,176 +3077,26 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "ConfirmVpsTerminationRequest",
       });
-    case 3:
+    case 1:
       return S.suspend(() => S.String.pipe(T.RawResponseRoot())).annotate({
         identifier: "ConfirmVpsTerminationResponse",
       });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          serviceName: S.String.pipe(T.Label()),
-          schedule: S.String,
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/vps/{serviceName}/automatedBackup/reschedule",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateVpsAutomatedBackupRescheduleRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          date: S.optional(S.String),
-          id: S.optional(S.Number),
-          progress: S.optional(S.Number),
-          state: S.optional(S.String),
-          type: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "VpsTask" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          serviceName: S.String.pipe(T.Label()),
-          cifs: S.Boolean,
-          ftp: S.optional(S.Boolean),
-          ipBlock: S.String,
-          nfs: S.Boolean,
-        }).pipe(T.Http({ method: "POST", uri: "/vps/{serviceName}/backupftp/access", code: 200 })),
-      ).annotate({
-        identifier: "CreateVpsBackupftpAccessRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          key: S.optional(S.NullOr(S.String)),
-          value: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "ComplexTypeSafeKeyValueCanBeNullString",
-      });
   }
 }
-function __c1(j: number): any {
+function __c3(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(7, __c0, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          comment: S.optional(S.NullOr(S.String)),
-          doneDate: S.optional(S.NullOr(S.String)),
-          function: S.optional(S.String),
-          lastUpdate: S.optional(S.NullOr(S.String)),
-          needSchedule: S.optional(S.Boolean),
-          note: S.optional(S.NullOr(S.String)),
-          plannedInterventionId: S.optional(S.NullOr(S.Number)),
-          startDate: S.optional(S.String),
-          status: S.optional(S.String),
-          tags: S.optional(S.NullOr(__S(8, __c1, 0))),
-          taskId: S.optional(S.Number),
-          ticketReference: S.optional(S.NullOr(S.String)),
-        }),
-      ).annotate({ identifier: "DedicatedServerTask" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          serviceName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({ method: "POST", uri: "/vps/{serviceName}/backupftp/password", code: 200 }),
-        ),
-      ).annotate({
-        identifier: "CreateVpsBackupftpPasswordRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          serviceName: S.String.pipe(T.Label()),
-          contactAdmin: S.optional(S.String),
-          contactBilling: S.optional(S.String),
-          contactTech: S.optional(S.String),
-        }).pipe(T.Http({ method: "POST", uri: "/vps/{serviceName}/changeContact", code: 200 })),
-      ).annotate({
-        identifier: "CreateVpsChangeContactRequest",
-      });
-    case 4:
-      return S.Array(S.Number);
-    case 5:
-      return S.suspend(() => __S(12, __c1, 4).pipe(T.RawResponseRoot())).annotate({
-        identifier: "CreateVpsChangeContactResponse",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          serviceName: S.String.pipe(T.Label()),
-          newPlan: S.String,
-        }).pipe(T.Http({ method: "POST", uri: "/vps/{serviceName}/migration2018", code: 200 })),
-      ).annotate({
-        identifier: "CreateVpsMigration2018Request",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          serviceName: S.String.pipe(T.Label()),
-          protocol: S.optional(S.String),
-        }).pipe(T.Http({ method: "POST", uri: "/vps/{serviceName}/openConsoleAccess", code: 200 })),
-      ).annotate({
-        identifier: "CreateVpsOpenConsoleAccessRequest",
-      });
-  }
-}
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          host: S.optional(S.String),
-          password: S.optional(S.String.pipe(T.SensitiveValue({}))),
-          port: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "VpsVnc" });
-    case 1:
-      return S.Array(S.String);
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          serviceName: S.String.pipe(T.Label()),
-          doNotSendPassword: S.optional(S.Boolean),
-          language: S.optional(S.String),
-          publicSshKey: S.optional(S.String),
-          softwareId: S.optional(__S(12, __c1, 4)),
-          sshKey: S.optional(__S(17, __c2, 1)),
-          templateId: S.Number,
-        }).pipe(T.Http({ method: "POST", uri: "/vps/{serviceName}/reinstall", code: 200 })),
-      ).annotate({
-        identifier: "CreateVpsReinstallRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          serviceName: S.String.pipe(T.Label()),
-          domain: S.String,
-          ip: S.optional(S.String),
-        }).pipe(
-          T.Http({ method: "POST", uri: "/vps/{serviceName}/secondaryDnsDomains", code: 200 }),
-        ),
-      ).annotate({
-        identifier: "CreateVpsSecondaryDnsDomainRequest",
-      });
-    case 4:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "CreateVpsSecondaryDnsDomainResponse",
-      });
-    case 5:
       return S.suspend(() =>
         S.Struct({
           serviceName: S.String.pipe(T.Label()),
           description: S.optional(S.String),
         }).pipe(T.Http({ method: "POST", uri: "/vps/{serviceName}/createSnapshot", code: 200 })),
       ).annotate({ identifier: "CreateVpsSnapshotRequest" });
-    case 6:
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           serviceName: S.String.pipe(T.Label()),
@@ -3246,7 +3104,11 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "CreateVpsSnapshotRevertRequest",
       });
-    case 7:
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           serviceName: S.String.pipe(T.Label()),
@@ -3263,7 +3125,7 @@ function __c2(j: number): any {
       });
   }
 }
-function __c3(j: number): any {
+function __c6(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3272,7 +3134,11 @@ function __c3(j: number): any {
           ipAddress: S.String.pipe(T.Label()),
         }).pipe(T.Http({ method: "DELETE", uri: "/vps/{serviceName}/ips/{ipAddress}", code: 200 })),
       ).annotate({ identifier: "DeleteVpsIpsRequest" });
-    case 1:
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           serviceName: S.String.pipe(T.Label()),
@@ -3287,13 +3153,21 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "DeleteVpsSecondaryDnsDomainRequest",
       });
-    case 2:
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           serviceName: S.String.pipe(T.Label()),
         }).pipe(T.Http({ method: "DELETE", uri: "/vps/{serviceName}/snapshot", code: 200 })),
       ).annotate({ identifier: "DeleteVpsSnapshotRequest" });
-    case 3:
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           serviceName: S.String.pipe(T.Label()),
@@ -3303,7 +3177,11 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "DeleteVpsVeeamRestoredBackupRequest",
       });
-    case 4:
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           serviceName: S.String.pipe(T.Label()),
@@ -3318,53 +3196,37 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "DetachVpsAutomatedBackupBackupRequest",
       });
-    case 5:
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           serviceName: S.String.pipe(T.Label()),
         }).pipe(T.Http({ method: "GET", uri: "/vps/{serviceName}", code: 200 })),
       ).annotate({ identifier: "GetVpsRequest" });
-    case 6:
+    case 1:
       return S.Record(S.String, S.String);
-    case 7:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           displayName: S.optional(S.NullOr(S.String)),
           id: S.optional(S.String),
-          tags: S.optional(S.NullOr(__S(30, __c3, 6))),
+          tags: S.optional(S.NullOr(__S(89, __c11, 1))),
           urn: S.optional(S.String),
         }),
       ).annotate({ identifier: "IamResourceMetadata" });
-  }
-}
-function __c4(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(S.String);
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          availableOptions: S.optional(__S(32, __c4, 0)),
-          datacenter: S.optional(__S(17, __c2, 1)),
-          disk: S.optional(S.Number),
-          maximumAdditionnalIp: S.optional(S.Number),
-          memory: S.optional(S.Number),
-          name: S.optional(S.String),
-          offer: S.optional(S.String),
-          vcore: S.optional(S.Number),
-          version: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "VpsModel" });
-    case 2:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           cluster: S.optional(S.String),
           displayName: S.optional(S.NullOr(S.String)),
-          iam: S.optional(S.NullOr(__S(31, __c3, 7))),
+          iam: S.optional(S.NullOr(__S(90, __c11, 2))),
           keymap: S.optional(S.NullOr(S.String)),
           memoryLimit: S.optional(S.Number),
-          model: S.optional(__S(33, __c4, 1)),
-          monitoringIpBlocks: S.optional(__S(17, __c2, 1)),
+          model: S.optional(__S(104, __c13, 0)),
+          monitoringIpBlocks: S.optional(__S(776, __c97, 0)),
           name: S.optional(S.String),
           netbootMode: S.optional(S.String),
           offerType: S.optional(S.String),
@@ -3375,7 +3237,35 @@ function __c4(j: number): any {
           zoneType: S.optional(S.String),
         }),
       ).annotate({ identifier: "VpsVPSWithIAM" });
-    case 3:
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          availableOptions: S.optional(__S(96, __c12, 0)),
+          datacenter: S.optional(__S(776, __c97, 0)),
+          disk: S.optional(S.Number),
+          maximumAdditionnalIp: S.optional(S.Number),
+          memory: S.optional(S.Number),
+          name: S.optional(S.String),
+          offer: S.optional(S.String),
+          vcore: S.optional(S.Number),
+          version: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "VpsModel" });
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           serviceName: S.String.pipe(T.Label()),
@@ -3383,20 +3273,71 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "GetVpsAutomatedBackupRequest",
       });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           schedule: S.optional(S.NullOr(S.String)),
           state: S.optional(S.String),
         }),
       ).annotate({ identifier: "VpsAutomatedBackup" });
-    case 5:
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          serviceName: S.String.pipe(T.Label()),
+          schedule: S.String,
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/vps/{serviceName}/automatedBackup/reschedule",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateVpsAutomatedBackupRescheduleRequest",
+      });
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          date: S.optional(S.String),
+          id: S.optional(S.Number),
+          progress: S.optional(S.Number),
+          state: S.optional(S.String),
+          type: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "VpsTask" });
+  }
+}
+function __c17(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           serviceName: S.String.pipe(T.Label()),
         }).pipe(T.Http({ method: "GET", uri: "/vps/{serviceName}/backupftp", code: 200 })),
       ).annotate({ identifier: "GetVpsBackupftpRequest" });
-    case 6:
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          ftpBackupName: S.optional(S.String),
+          quota: S.optional(S.NullOr(__S(144, __c18, 0))),
+          readOnlyDate: S.optional(S.NullOr(S.String)),
+          type: S.optional(S.String),
+          usage: S.optional(S.NullOr(__S(144, __c18, 0))),
+        }),
+      ).annotate({ identifier: "VpsBackupFtp" });
+  }
+}
+function __c18(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           unit: S.optional(S.String),
@@ -3405,19 +3346,9 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "ComplexTypeUnitAndValueLong",
       });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          ftpBackupName: S.optional(S.String),
-          quota: S.optional(S.NullOr(__S(38, __c4, 6))),
-          readOnlyDate: S.optional(S.NullOr(S.String)),
-          type: S.optional(S.String),
-          usage: S.optional(S.NullOr(__S(38, __c4, 6))),
-        }),
-      ).annotate({ identifier: "VpsBackupFtp" });
   }
 }
-function __c5(j: number): any {
+function __c19(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3447,23 +3378,35 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "DedicatedServerBackupFtpAcl",
       });
-    case 2:
+  }
+}
+function __c20(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           serviceName: S.String.pipe(T.Label()),
         }).pipe(T.Http({ method: "POST", uri: "/vps/{serviceName}/getConsoleUrl", code: 200 })),
       ).annotate({ identifier: "GetVpsConsoleUrlRequest" });
-    case 3:
+  }
+}
+function __c21(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() => S.String.pipe(T.RawResponseRoot())).annotate({
         identifier: "GetVpsConsoleUrlResponse",
       });
-    case 4:
+  }
+}
+function __c22(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           serviceName: S.String.pipe(T.Label()),
         }).pipe(T.Http({ method: "GET", uri: "/vps/{serviceName}/datacenter", code: 200 })),
       ).annotate({ identifier: "GetVpsDatacenterRequest" });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           country: S.optional(S.String),
@@ -3471,14 +3414,18 @@ function __c5(j: number): any {
           name: S.optional(S.String),
         }),
       ).annotate({ identifier: "VpsDatacenter" });
-    case 6:
+  }
+}
+function __c23(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           serviceName: S.String.pipe(T.Label()),
           id: S.Number.pipe(T.Label()),
         }).pipe(T.Http({ method: "GET", uri: "/vps/{serviceName}/disks/{id}", code: 200 })),
       ).annotate({ identifier: "GetVpsDiskRequest" });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           bandwidthLimit: S.optional(S.Number),
@@ -3493,7 +3440,7 @@ function __c5(j: number): any {
       ).annotate({ identifier: "VpsDisk" });
   }
 }
-function __c6(j: number): any {
+function __c24(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3503,7 +3450,11 @@ function __c6(j: number): any {
           type: S.String.pipe(T.Query()),
         }).pipe(T.Http({ method: "GET", uri: "/vps/{serviceName}/disks/{id}/use", code: 200 })),
       ).annotate({ identifier: "GetVpsDiskUseRequest" });
-    case 1:
+  }
+}
+function __c25(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           serviceName: S.String.pipe(T.Label()),
@@ -3511,10 +3462,14 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "GetVpsDistributionRequest",
       });
-    case 2:
+  }
+}
+function __c26(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          availableLanguage: S.optional(__S(17, __c2, 1)),
+          availableLanguage: S.optional(__S(776, __c97, 0)),
           bitFormat: S.optional(S.Number),
           distribution: S.optional(S.String),
           id: S.optional(S.Number),
@@ -3522,7 +3477,11 @@ function __c6(j: number): any {
           name: S.optional(S.String),
         }),
       ).annotate({ identifier: "VpsTemplate" });
-    case 3:
+  }
+}
+function __c27(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           serviceName: S.String.pipe(T.Label()),
@@ -3537,7 +3496,11 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "GetVpsDistributionSoftwareRequest",
       });
-    case 4:
+  }
+}
+function __c28(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.Number),
@@ -3546,7 +3509,11 @@ function __c6(j: number): any {
           type: S.optional(S.String),
         }),
       ).annotate({ identifier: "VpsSoftware" });
-    case 5:
+  }
+}
+function __c29(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           serviceName: S.String.pipe(T.Label()),
@@ -3557,14 +3524,22 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "GetVpsImageAvailableRequest",
       });
-    case 6:
+  }
+}
+function __c30(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
         }),
       ).annotate({ identifier: "VpsImage" });
-    case 7:
+  }
+}
+function __c31(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           serviceName: S.String.pipe(T.Label()),
@@ -3574,7 +3549,55 @@ function __c6(j: number): any {
       });
   }
 }
-function __c7(j: number): any {
+function __c32(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          serviceName: S.String.pipe(T.Label()),
+          cifs: S.Boolean,
+          ftp: S.optional(S.Boolean),
+          ipBlock: S.String,
+          nfs: S.Boolean,
+        }).pipe(T.Http({ method: "POST", uri: "/vps/{serviceName}/backupftp/access", code: 200 })),
+      ).annotate({
+        identifier: "CreateVpsBackupftpAccessRequest",
+      });
+  }
+}
+function __c33(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          key: S.optional(S.NullOr(S.String)),
+          value: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "ComplexTypeSafeKeyValueCanBeNullString",
+      });
+    case 1:
+      return S.Array(__S(264, __c33, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          comment: S.optional(S.NullOr(S.String)),
+          doneDate: S.optional(S.NullOr(S.String)),
+          function: S.optional(S.String),
+          lastUpdate: S.optional(S.NullOr(S.String)),
+          needSchedule: S.optional(S.Boolean),
+          note: S.optional(S.NullOr(S.String)),
+          plannedInterventionId: S.optional(S.NullOr(S.Number)),
+          startDate: S.optional(S.String),
+          status: S.optional(S.String),
+          tags: S.optional(S.NullOr(__S(265, __c33, 1))),
+          taskId: S.optional(S.Number),
+          ticketReference: S.optional(S.NullOr(S.String)),
+        }),
+      ).annotate({ identifier: "DedicatedServerTask" });
+  }
+}
+function __c34(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3595,21 +3618,29 @@ function __c7(j: number): any {
           version: S.optional(S.String),
         }),
       ).annotate({ identifier: "VpsIp" });
-    case 2:
+  }
+}
+function __c35(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           serviceName: S.String.pipe(T.Label()),
           option: S.String.pipe(T.Label()),
         }).pipe(T.Http({ method: "GET", uri: "/vps/{serviceName}/option/{option}", code: 200 })),
       ).annotate({ identifier: "GetVpsOptionRequest" });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           option: S.optional(S.String),
           state: S.optional(S.String),
         }),
       ).annotate({ identifier: "VpsOption" });
-    case 4:
+  }
+}
+function __c36(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           serviceName: S.String.pipe(T.Label()),
@@ -3624,7 +3655,7 @@ function __c7(j: number): any {
       ).annotate({
         identifier: "GetVpsSecondaryDnsDomainRequest",
       });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           creationDate: S.optional(S.String),
@@ -3633,7 +3664,11 @@ function __c7(j: number): any {
           ipMaster: S.optional(S.String),
         }),
       ).annotate({ identifier: "SecondaryDnsSecondaryDNS" });
-    case 6:
+  }
+}
+function __c37(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           serviceName: S.String.pipe(T.Label()),
@@ -3648,7 +3683,11 @@ function __c7(j: number): any {
       ).annotate({
         identifier: "GetVpsSecondaryDnsDomainDnsServerRequest",
       });
-    case 7:
+  }
+}
+function __c38(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           hostname: S.optional(S.String),
@@ -3660,7 +3699,7 @@ function __c7(j: number): any {
       });
   }
 }
-function __c8(j: number): any {
+function __c39(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3676,7 +3715,11 @@ function __c8(j: number): any {
       ).annotate({
         identifier: "GetVpsSecondaryDnsNameServerAvailableRequest",
       });
-    case 1:
+  }
+}
+function __c40(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           serviceName: S.String.pipe(T.Label()),
@@ -3684,17 +3727,7 @@ function __c8(j: number): any {
       ).annotate({
         identifier: "GetVpsServiceInfosRequest",
       });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          automatic: S.optional(S.Boolean),
-          deleteAtExpiration: S.optional(S.Boolean),
-          forced: S.optional(S.Boolean),
-          manualPayment: S.optional(S.NullOr(S.Boolean)),
-          period: S.optional(S.NullOr(S.Number)),
-        }),
-      ).annotate({ identifier: "ServiceRenewType" });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           canDeleteAtExpiration: S.optional(S.Boolean),
@@ -3705,20 +3738,38 @@ function __c8(j: number): any {
           domain: S.optional(S.String),
           engagedUpTo: S.optional(S.NullOr(S.String)),
           expiration: S.optional(S.String),
-          possibleRenewPeriod: S.optional(S.NullOr(__S(12, __c1, 4))),
-          renew: S.optional(S.NullOr(__S(66, __c8, 2))),
+          possibleRenewPeriod: S.optional(S.NullOr(__S(496, __c62, 0))),
+          renew: S.optional(S.NullOr(__S(328, __c41, 0))),
           renewalType: S.optional(S.String),
           serviceId: S.optional(S.Number),
           status: S.optional(S.String),
         }),
       ).annotate({ identifier: "ServicesService" });
-    case 4:
+  }
+}
+function __c41(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          automatic: S.optional(S.Boolean),
+          deleteAtExpiration: S.optional(S.Boolean),
+          forced: S.optional(S.Boolean),
+          manualPayment: S.optional(S.NullOr(S.Boolean)),
+          period: S.optional(S.NullOr(S.Number)),
+        }),
+      ).annotate({ identifier: "ServiceRenewType" });
+  }
+}
+function __c42(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           serviceName: S.String.pipe(T.Label()),
         }).pipe(T.Http({ method: "GET", uri: "/vps/{serviceName}/snapshot", code: 200 })),
       ).annotate({ identifier: "GetVpsSnapshotRequest" });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           creationDate: S.optional(S.String),
@@ -3727,7 +3778,11 @@ function __c8(j: number): any {
           region: S.optional(S.NullOr(S.String)),
         }),
       ).annotate({ identifier: "VpsSnapshot" });
-    case 6:
+  }
+}
+function __c43(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           serviceName: S.String.pipe(T.Label()),
@@ -3735,7 +3790,7 @@ function __c8(j: number): any {
       ).annotate({
         identifier: "GetVpsSnapshotDownloadRequest",
       });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           size: S.optional(S.Number),
@@ -3744,7 +3799,7 @@ function __c8(j: number): any {
       ).annotate({ identifier: "VpsDownloadSnapshotURL" });
   }
 }
-function __c9(j: number): any {
+function __c44(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3764,30 +3819,56 @@ function __c9(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          dns: S.optional(__S(73, __c9, 1)),
-          http: S.optional(__S(73, __c9, 1)),
-          https: S.optional(__S(73, __c9, 1)),
+          dns: S.optional(__S(353, __c44, 1)),
+          http: S.optional(__S(353, __c44, 1)),
+          https: S.optional(__S(353, __c44, 1)),
           ping: S.optional(S.String),
-          smtp: S.optional(__S(73, __c9, 1)),
-          ssh: S.optional(__S(73, __c9, 1)),
+          smtp: S.optional(__S(353, __c44, 1)),
+          ssh: S.optional(__S(353, __c44, 1)),
           tools: S.optional(S.NullOr(S.String)),
         }),
       ).annotate({ identifier: "VpsIpServiceStatus" });
-    case 3:
+  }
+}
+function __c45(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           serviceName: S.String.pipe(T.Label()),
           id: S.Number.pipe(T.Label()),
         }).pipe(T.Http({ method: "GET", uri: "/vps/{serviceName}/tasks/{id}", code: 200 })),
       ).annotate({ identifier: "GetVpsTaskRequest" });
-    case 4:
+  }
+}
+function __c46(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          serviceName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({ method: "POST", uri: "/vps/{serviceName}/backupftp/password", code: 200 }),
+        ),
+      ).annotate({
+        identifier: "CreateVpsBackupftpPasswordRequest",
+      });
+  }
+}
+function __c47(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           serviceName: S.String.pipe(T.Label()),
           id: S.Number.pipe(T.Label()),
         }).pipe(T.Http({ method: "GET", uri: "/vps/{serviceName}/templates/{id}", code: 200 })),
       ).annotate({ identifier: "GetVpsTemplateRequest" });
-    case 5:
+  }
+}
+function __c48(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           serviceName: S.String.pipe(T.Label()),
@@ -3803,13 +3884,17 @@ function __c9(j: number): any {
       ).annotate({
         identifier: "GetVpsTemplateSoftwareRequest",
       });
-    case 6:
+  }
+}
+function __c49(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           serviceName: S.String.pipe(T.Label()),
         }).pipe(T.Http({ method: "GET", uri: "/vps/{serviceName}/veeam", code: 200 })),
       ).annotate({ identifier: "GetVpsVeeamRequest" });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           backup: S.optional(S.Boolean),
@@ -3817,7 +3902,7 @@ function __c9(j: number): any {
       ).annotate({ identifier: "VpsVeeam" });
   }
 }
-function __c10(j: number): any {
+function __c50(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3839,12 +3924,16 @@ function __c10(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          accessInfos: S.optional(__S(81, __c10, 1)),
+          accessInfos: S.optional(__S(401, __c50, 1)),
           restorePointId: S.optional(S.Number),
           state: S.optional(S.String),
         }),
       ).annotate({ identifier: "VpsVeeamRestoredBackup" });
-    case 3:
+  }
+}
+function __c51(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           serviceName: S.String.pipe(T.Label()),
@@ -3855,44 +3944,56 @@ function __c10(j: number): any {
       ).annotate({
         identifier: "GetVpsVeeamRestorePointRequest",
       });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           creationTime: S.optional(S.String),
           id: S.optional(S.Number),
         }),
       ).annotate({ identifier: "VpsVeeamRestorePoint" });
-    case 5:
+  }
+}
+function __c52(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           serviceName: S.String.pipe(T.Label()),
         }).pipe(T.Http({ method: "GET", uri: "/vps/{serviceName}/version", code: 200 })),
       ).annotate({ identifier: "GetVpsVersionRequest" });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           version: S.optional(S.Number),
         }),
       ).annotate({ identifier: "VpsVpsBillingVersion" });
-    case 7:
-      return S.Array(__S(1, __c0, 1));
   }
 }
-function __c11(j: number): any {
+function __c53(j: number): any {
   switch (j) {
     case 0:
-      return S.Record(S.String, __S(87, __c10, 7));
+      return S.Array(__S(8, __c1, 0));
     case 1:
+      return S.Record(S.String, __S(424, __c53, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          iamTags: S.optional(__S(88, __c11, 0).pipe(T.Query())),
+          iamTags: S.optional(__S(425, __c53, 1).pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/vps", code: 200 })),
       ).annotate({ identifier: "ListVpsRequest" });
-    case 2:
-      return S.suspend(() => __S(17, __c2, 1).pipe(T.RawResponseRoot())).annotate({
+  }
+}
+function __c54(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => __S(776, __c97, 0).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListVpsResponse",
       });
-    case 3:
+  }
+}
+function __c55(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           serviceName: S.String.pipe(T.Label()),
@@ -3906,7 +4007,7 @@ function __c11(j: number): any {
       ).annotate({
         identifier: "ListVpsAutomatedBackupAttachedBackupRequest",
       });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           additionalDisk: S.optional(S.NullOr(S.String)),
@@ -3916,24 +4017,24 @@ function __c11(j: number): any {
       ).annotate({
         identifier: "VpsAutomatedBackupAttachedInfos",
       });
-    case 5:
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          access: S.optional(__S(92, __c11, 4)),
+          access: S.optional(__S(441, __c55, 1)),
           restorePoint: S.optional(S.String),
         }),
       ).annotate({
         identifier: "VpsAutomatedBackupAttached",
       });
-    case 6:
-      return S.Array(__S(93, __c11, 5));
-    case 7:
-      return S.suspend(() => __S(94, __c11, 6).pipe(T.RawResponseRoot())).annotate({
+    case 3:
+      return S.Array(__S(442, __c55, 2));
+    case 4:
+      return S.suspend(() => __S(443, __c55, 3).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListVpsAutomatedBackupAttachedBackupResponse",
       });
   }
 }
-function __c12(j: number): any {
+function __c56(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3950,11 +4051,19 @@ function __c12(j: number): any {
       ).annotate({
         identifier: "ListVpsAutomatedBackupRestorePointsRequest",
       });
-    case 1:
-      return S.suspend(() => __S(17, __c2, 1).pipe(T.RawResponseRoot())).annotate({
+  }
+}
+function __c57(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => __S(776, __c97, 0).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListVpsAutomatedBackupRestorePointsResponse",
       });
-    case 2:
+  }
+}
+function __c58(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           serviceName: S.String.pipe(T.Label()),
@@ -3962,13 +4071,50 @@ function __c12(j: number): any {
       ).annotate({
         identifier: "ListVpsAvailableUpgradeRequest",
       });
-    case 3:
-      return S.Array(__S(33, __c4, 1));
-    case 4:
-      return S.suspend(() => __S(99, __c12, 3).pipe(T.RawResponseRoot())).annotate({
+    case 1:
+      return S.suspend(() => __S(472, __c59, 0).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListVpsAvailableUpgradeResponse",
       });
-    case 5:
+  }
+}
+function __c59(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(104, __c13, 0));
+  }
+}
+function __c60(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          serviceName: S.String.pipe(T.Label()),
+          contactAdmin: S.optional(S.String),
+          contactBilling: S.optional(S.String),
+          contactTech: S.optional(S.String),
+        }).pipe(T.Http({ method: "POST", uri: "/vps/{serviceName}/changeContact", code: 200 })),
+      ).annotate({
+        identifier: "CreateVpsChangeContactRequest",
+      });
+  }
+}
+function __c61(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => __S(496, __c62, 0).pipe(T.RawResponseRoot())).annotate({
+        identifier: "CreateVpsChangeContactResponse",
+      });
+  }
+}
+function __c62(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.Number);
+  }
+}
+function __c63(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           serviceName: S.String.pipe(T.Label()),
@@ -3976,7 +4122,11 @@ function __c12(j: number): any {
       ).annotate({
         identifier: "ListVpsBackupftpAccessRequest",
       });
-    case 6:
+  }
+}
+function __c64(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           serviceName: S.String.pipe(T.Label()),
@@ -3990,7 +4140,11 @@ function __c12(j: number): any {
       ).annotate({
         identifier: "ListVpsBackupftpAuthorizableBlocksRequest",
       });
-    case 7:
+  }
+}
+function __c65(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           country: S.optional(S.String.pipe(T.Query())),
@@ -3998,7 +4152,7 @@ function __c12(j: number): any {
       ).annotate({ identifier: "ListVpsDatacenterRequest" });
   }
 }
-function __c13(j: number): any {
+function __c66(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4021,27 +4175,39 @@ function __c13(j: number): any {
         }),
       ).annotate({ identifier: "VpsVpsTimestampValue" });
     case 2:
-      return S.Array(__S(105, __c13, 1));
+      return S.Array(__S(529, __c66, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
           unit: S.optional(S.String),
-          values: S.optional(__S(106, __c13, 2)),
+          values: S.optional(__S(530, __c66, 2)),
         }),
       ).annotate({
         identifier: "ComplexTypeUnitAndValuesVpsVpsTimestampValue",
       });
-    case 4:
+  }
+}
+function __c67(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           serviceName: S.String.pipe(T.Label()),
         }).pipe(T.Http({ method: "GET", uri: "/vps/{serviceName}/disks", code: 200 })),
       ).annotate({ identifier: "ListVpsDisksRequest" });
-    case 5:
-      return S.suspend(() => __S(12, __c1, 4).pipe(T.RawResponseRoot())).annotate({
+  }
+}
+function __c68(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => __S(496, __c62, 0).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListVpsDisksResponse",
       });
-    case 6:
+  }
+}
+function __c69(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           serviceName: S.String.pipe(T.Label()),
@@ -4051,7 +4217,11 @@ function __c13(j: number): any {
       ).annotate({
         identifier: "ListVpsDistributionSoftwareRequest",
       });
-    case 7:
+  }
+}
+function __c70(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           serviceName: S.String.pipe(T.Label()),
@@ -4061,7 +4231,7 @@ function __c13(j: number): any {
       });
   }
 }
-function __c14(j: number): any {
+function __c71(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4072,16 +4242,24 @@ function __c14(j: number): any {
         identifier: "ListVpsIpCountryAvailableRequest",
       });
     case 1:
-      return S.suspend(() => __S(32, __c4, 0).pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() => __S(96, __c12, 0).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListVpsIpCountryAvailableResponse",
       });
-    case 2:
+  }
+}
+function __c72(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           serviceName: S.String.pipe(T.Label()),
         }).pipe(T.Http({ method: "GET", uri: "/vps/{serviceName}/ips", code: 200 })),
       ).annotate({ identifier: "ListVpsIpsRequest" });
-    case 3:
+  }
+}
+function __c73(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           serviceName: S.String.pipe(T.Label()),
@@ -4089,7 +4267,7 @@ function __c14(j: number): any {
       ).annotate({
         identifier: "ListVpsMigration2018Request",
       });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           currentPlan: S.optional(S.String),
@@ -4099,70 +4277,91 @@ function __c14(j: number): any {
       ).annotate({
         identifier: "VpsMigrationOptionOptionMapping2016",
       });
-    case 5:
-      return S.Array(__S(116, __c14, 4));
-    case 6:
+    case 2:
+      return S.Array(__S(585, __c73, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
           currentPlan: S.optional(S.String),
           newPlan: S.optional(S.String),
-          options: S.optional(__S(117, __c14, 5)),
+          options: S.optional(__S(586, __c73, 2)),
           product: S.optional(S.String),
         }),
       ).annotate({
         identifier: "VpsMigrationOptionMapping2016",
       });
-    case 7:
-      return S.Array(__S(118, __c14, 6));
-  }
-}
-function __c15(j: number): any {
-  switch (j) {
-    case 0:
+    case 4:
+      return S.Array(__S(587, __c73, 3));
+    case 5:
       return S.suspend(() =>
         S.Struct({
           currentPlan: S.optional(S.String),
           newPlan: S.optional(S.String),
-          options: S.optional(__S(119, __c14, 7)),
+          options: S.optional(__S(588, __c73, 4)),
           product: S.optional(S.String),
         }),
       ).annotate({
         identifier: "VpsMigrationVPS2018to2020Plan",
       });
-    case 1:
-      return S.Array(__S(120, __c15, 0));
-    case 2:
+    case 6:
+      return S.Array(__S(589, __c73, 5));
+    case 7:
       return S.suspend(() =>
         S.Struct({
           datacenter: S.optional(S.String),
           date: S.optional(S.NullOr(S.String)),
-          plans: S.optional(__S(121, __c15, 1)),
+          plans: S.optional(__S(590, __c73, 6)),
           status: S.optional(S.String),
         }),
       ).annotate({
         identifier: "VpsMigrationVPS2018to2020",
       });
-    case 3:
+  }
+}
+function __c74(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          serviceName: S.String.pipe(T.Label()),
+          newPlan: S.String,
+        }).pipe(T.Http({ method: "POST", uri: "/vps/{serviceName}/migration2018", code: 200 })),
+      ).annotate({
+        identifier: "CreateVpsMigration2018Request",
+      });
+  }
+}
+function __c75(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           serviceName: S.String.pipe(T.Label()),
         }).pipe(T.Http({ method: "GET", uri: "/vps/{serviceName}/models", code: 200 })),
       ).annotate({ identifier: "ListVpsModelsRequest" });
-    case 4:
-      return S.suspend(() => __S(99, __c12, 3).pipe(T.RawResponseRoot())).annotate({
+    case 1:
+      return S.suspend(() => __S(472, __c59, 0).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListVpsModelsResponse",
       });
-    case 5:
+  }
+}
+function __c76(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           serviceName: S.String.pipe(T.Label()),
         }).pipe(T.Http({ method: "GET", uri: "/vps/{serviceName}/option", code: 200 })),
       ).annotate({ identifier: "ListVpsOptionRequest" });
-    case 6:
-      return S.suspend(() => __S(32, __c4, 0).pipe(T.RawResponseRoot())).annotate({
+    case 1:
+      return S.suspend(() => __S(96, __c12, 0).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListVpsOptionResponse",
       });
-    case 7:
+  }
+}
+function __c77(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           os: S.optional(S.String.pipe(T.Query())),
@@ -4172,26 +4371,26 @@ function __c15(j: number): any {
       ).annotate({
         identifier: "ListVpsOrderRuleDatacenterRequest",
       });
-  }
-}
-function __c16(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           datacenter: S.optional(S.String),
           status: S.optional(S.String),
         }),
       ).annotate({ identifier: "VpsOrderRuleDatacenter" });
-    case 1:
-      return S.Array(__S(128, __c16, 0));
     case 2:
+      return S.Array(__S(617, __c77, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          datacenters: S.optional(__S(129, __c16, 1)),
+          datacenters: S.optional(__S(618, __c77, 2)),
         }),
       ).annotate({ identifier: "VpsOrderRuleDatacenters" });
-    case 3:
+  }
+}
+function __c78(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           datacenter: S.String.pipe(T.Query()),
@@ -4200,22 +4399,26 @@ function __c16(j: number): any {
       ).annotate({
         identifier: "ListVpsOrderRuleOsChoicesRequest",
       });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
           status: S.optional(S.String),
         }),
       ).annotate({ identifier: "VpsOrderRuleOSChoice" });
-    case 5:
-      return S.Array(__S(132, __c16, 4));
-    case 6:
+    case 2:
+      return S.Array(__S(625, __c78, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          choices: S.optional(__S(133, __c16, 5)),
+          choices: S.optional(__S(626, __c78, 2)),
         }),
       ).annotate({ identifier: "VpsOrderRuleOSChoices" });
-    case 7:
+  }
+}
+function __c79(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           serviceName: S.String.pipe(T.Label()),
@@ -4227,7 +4430,7 @@ function __c16(j: number): any {
       });
   }
 }
-function __c17(j: number): any {
+function __c80(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4237,13 +4440,21 @@ function __c17(j: number): any {
           type: S.optional(S.String.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/vps/{serviceName}/tasks", code: 200 })),
       ).annotate({ identifier: "ListVpsTasksRequest" });
-    case 1:
+  }
+}
+function __c81(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           serviceName: S.String.pipe(T.Label()),
         }).pipe(T.Http({ method: "GET", uri: "/vps/{serviceName}/templates", code: 200 })),
       ).annotate({ identifier: "ListVpsTemplatesRequest" });
-    case 2:
+  }
+}
+function __c82(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           serviceName: S.String.pipe(T.Label()),
@@ -4254,7 +4465,11 @@ function __c17(j: number): any {
       ).annotate({
         identifier: "ListVpsTemplateSoftwareRequest",
       });
-    case 3:
+  }
+}
+function __c83(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           serviceName: S.String.pipe(T.Label()),
@@ -4265,7 +4480,11 @@ function __c17(j: number): any {
       ).annotate({
         identifier: "ListVpsVeeamRestorePointsRequest",
       });
-    case 4:
+  }
+}
+function __c84(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           serviceName: S.String.pipe(T.Label()),
@@ -4275,7 +4494,32 @@ function __c17(j: number): any {
           slaMonitoring: S.optional(S.NullOr(S.Boolean)),
         }).pipe(T.Http({ method: "PUT", uri: "/vps/{serviceName}", code: 200 })),
       ).annotate({ identifier: "PutVpsRequest" });
-    case 5:
+  }
+}
+function __c85(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          serviceName: S.String.pipe(T.Label()),
+          protocol: S.optional(S.String),
+        }).pipe(T.Http({ method: "POST", uri: "/vps/{serviceName}/openConsoleAccess", code: 200 })),
+      ).annotate({
+        identifier: "CreateVpsOpenConsoleAccessRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          host: S.optional(S.String),
+          password: S.optional(S.String.pipe(T.SensitiveValue({}))),
+          port: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "VpsVnc" });
+  }
+}
+function __c86(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           serviceName: S.String.pipe(T.Label()),
@@ -4293,7 +4537,11 @@ function __c17(j: number): any {
       ).annotate({
         identifier: "PutVpsBackupftpAccessRequest",
       });
-    case 6:
+  }
+}
+function __c87(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           serviceName: S.String.pipe(T.Label()),
@@ -4302,7 +4550,11 @@ function __c17(j: number): any {
           monitoring: S.optional(S.NullOr(S.Boolean)),
         }).pipe(T.Http({ method: "PUT", uri: "/vps/{serviceName}/disks/{id}", code: 200 })),
       ).annotate({ identifier: "PutVpsDiskRequest" });
-    case 7:
+  }
+}
+function __c88(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           serviceName: S.String.pipe(T.Label()),
@@ -4312,7 +4564,7 @@ function __c17(j: number): any {
       ).annotate({ identifier: "PutVpsIpsRequest" });
   }
 }
-function __c18(j: number): any {
+function __c89(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4330,29 +4582,45 @@ function __c18(j: number): any {
       ).annotate({
         identifier: "PutVpsSecondaryDnsDomainRequest",
       });
-    case 1:
+  }
+}
+function __c90(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           serviceName: S.String.pipe(T.Label()),
-          renew: S.optional(S.NullOr(__S(66, __c8, 2))),
+          renew: S.optional(S.NullOr(__S(328, __c41, 0))),
         }).pipe(T.Http({ method: "PUT", uri: "/vps/{serviceName}/serviceInfos", code: 200 })),
       ).annotate({
         identifier: "PutVpsServiceInfosRequest",
       });
-    case 2:
+  }
+}
+function __c91(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           serviceName: S.String.pipe(T.Label()),
           description: S.optional(S.String),
         }).pipe(T.Http({ method: "PUT", uri: "/vps/{serviceName}/snapshot", code: 200 })),
       ).annotate({ identifier: "PutVpsSnapshotRequest" });
-    case 3:
+  }
+}
+function __c92(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           serviceName: S.String.pipe(T.Label()),
         }).pipe(T.Http({ method: "POST", uri: "/vps/{serviceName}/reboot", code: 200 })),
       ).annotate({ identifier: "RebootVpsRequest" });
-    case 4:
+  }
+}
+function __c93(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           serviceName: S.String.pipe(T.Label()),
@@ -4363,7 +4631,11 @@ function __c18(j: number): any {
           sshKey: S.optional(S.String),
         }).pipe(T.Http({ method: "POST", uri: "/vps/{serviceName}/rebuild", code: 200 })),
       ).annotate({ identifier: "RebuildVpsRequest" });
-    case 5:
+  }
+}
+function __c94(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           serviceName: S.String.pipe(T.Label()),
@@ -4376,7 +4648,11 @@ function __c18(j: number): any {
       ).annotate({
         identifier: "RestoreVpsAutomatedBackupRequest",
       });
-    case 6:
+  }
+}
+function __c95(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           serviceName: S.String.pipe(T.Label()),
@@ -4394,7 +4670,35 @@ function __c18(j: number): any {
       ).annotate({
         identifier: "RestoreVpsVeeamRestorePointRequest",
       });
-    case 7:
+  }
+}
+function __c96(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          serviceName: S.String.pipe(T.Label()),
+          doNotSendPassword: S.optional(S.Boolean),
+          language: S.optional(S.String),
+          publicSshKey: S.optional(S.String),
+          softwareId: S.optional(__S(496, __c62, 0)),
+          sshKey: S.optional(__S(776, __c97, 0)),
+          templateId: S.Number,
+        }).pipe(T.Http({ method: "POST", uri: "/vps/{serviceName}/reinstall", code: 200 })),
+      ).annotate({
+        identifier: "CreateVpsReinstallRequest",
+      });
+  }
+}
+function __c97(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c98(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           serviceName: S.String.pipe(T.Label()),
@@ -4402,7 +4706,7 @@ function __c18(j: number): any {
       ).annotate({ identifier: "SetVpsPasswordRequest" });
   }
 }
-function __c19(j: number): any {
+function __c99(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4410,13 +4714,21 @@ function __c19(j: number): any {
           serviceName: S.String.pipe(T.Label()),
         }).pipe(T.Http({ method: "POST", uri: "/vps/{serviceName}/start", code: 200 })),
       ).annotate({ identifier: "StartVpsRequest" });
-    case 1:
+  }
+}
+function __c100(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           serviceName: S.String.pipe(T.Label()),
         }).pipe(T.Http({ method: "POST", uri: "/vps/{serviceName}/stop", code: 200 })),
       ).annotate({ identifier: "StopVpsRequest" });
-    case 2:
+  }
+}
+function __c101(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           serviceName: S.String.pipe(T.Label()),
@@ -4424,7 +4736,30 @@ function __c19(j: number): any {
       ).annotate({ identifier: "TerminateVpsRequest" });
   }
 }
-
+function __c102(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          serviceName: S.String.pipe(T.Label()),
+          domain: S.String,
+          ip: S.optional(S.String),
+        }).pipe(
+          T.Http({ method: "POST", uri: "/vps/{serviceName}/secondaryDnsDomains", code: 200 }),
+        ),
+      ).annotate({
+        identifier: "CreateVpsSecondaryDnsDomainRequest",
+      });
+  }
+}
+function __c103(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "CreateVpsSecondaryDnsDomainResponse",
+      });
+  }
+}
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

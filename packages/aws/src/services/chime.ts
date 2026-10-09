@@ -954,7 +954,7 @@ export const associatePhoneNumberWithUser: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(0, __c0, 0) as any as S.Schema<AssociatePhoneNumberWithUserRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<AssociatePhoneNumberWithUserResponse>,
+  output: __S(8, __c1, 0) as any as S.Schema<AssociatePhoneNumberWithUserResponse>,
   errors: [
     AccessDeniedException,
     BadRequestException,
@@ -988,8 +988,8 @@ export const associateSigninDelegateGroupsWithAccount: API.OperationMethod<
   AssociateSigninDelegateGroupsWithAccountError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(4, __c0, 4) as any as S.Schema<AssociateSigninDelegateGroupsWithAccountRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<AssociateSigninDelegateGroupsWithAccountResponse>,
+  input: __S(16, __c2, 0) as any as S.Schema<AssociateSigninDelegateGroupsWithAccountRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<AssociateSigninDelegateGroupsWithAccountResponse>,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -1023,8 +1023,8 @@ export const batchCreateRoomMembership: API.OperationMethod<
   BatchCreateRoomMembershipError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(7, __c0, 7) as any as S.Schema<BatchCreateRoomMembershipRequest>,
-  output: __S(10, __c1, 2) as any as S.Schema<BatchCreateRoomMembershipResponse>,
+  input: __S(34, __c4, 2) as any as S.Schema<BatchCreateRoomMembershipRequest>,
+  output: __S(37, __c4, 5) as any as S.Schema<BatchCreateRoomMembershipResponse>,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -1061,8 +1061,8 @@ export const batchDeletePhoneNumber: API.OperationMethod<
   BatchDeletePhoneNumberError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(12, __c1, 4) as any as S.Schema<BatchDeletePhoneNumberRequest>,
-  output: __S(15, __c1, 7) as any as S.Schema<BatchDeletePhoneNumberResponse>,
+  input: __S(40, __c5, 0) as any as S.Schema<BatchDeletePhoneNumberRequest>,
+  output: __S(58, __c7, 2) as any as S.Schema<BatchDeletePhoneNumberResponse>,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -1109,8 +1109,8 @@ export const batchSuspendUser: API.OperationMethod<
   BatchSuspendUserError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(16, __c2, 0) as any as S.Schema<BatchSuspendUserRequest>,
-  output: __S(19, __c2, 3) as any as S.Schema<BatchSuspendUserResponse>,
+  input: __S(64, __c8, 0) as any as S.Schema<BatchSuspendUserRequest>,
+  output: __S(80, __c10, 0) as any as S.Schema<BatchSuspendUserResponse>,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -1152,8 +1152,8 @@ export const batchUnsuspendUser: API.OperationMethod<
   BatchUnsuspendUserError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(20, __c2, 4) as any as S.Schema<BatchUnsuspendUserRequest>,
-  output: __S(21, __c2, 5) as any as S.Schema<BatchUnsuspendUserResponse>,
+  input: __S(88, __c11, 0) as any as S.Schema<BatchUnsuspendUserRequest>,
+  output: __S(89, __c11, 1) as any as S.Schema<BatchUnsuspendUserResponse>,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -1190,8 +1190,8 @@ export const batchUpdatePhoneNumber: API.OperationMethod<
   BatchUpdatePhoneNumberError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(24, __c3, 0) as any as S.Schema<BatchUpdatePhoneNumberRequest>,
-  output: __S(15, __c1, 7) as any as S.Schema<BatchUpdatePhoneNumberResponse>,
+  input: __S(98, __c12, 2) as any as S.Schema<BatchUpdatePhoneNumberRequest>,
+  output: __S(58, __c7, 2) as any as S.Schema<BatchUpdatePhoneNumberResponse>,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -1224,8 +1224,8 @@ export const batchUpdateUser: API.OperationMethod<
   BatchUpdateUserError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(28, __c3, 4) as any as S.Schema<BatchUpdateUserRequest>,
-  output: __S(19, __c2, 3) as any as S.Schema<BatchUpdateUserResponse>,
+  input: __S(106, __c13, 2) as any as S.Schema<BatchUpdateUserRequest>,
+  output: __S(80, __c10, 0) as any as S.Schema<BatchUpdateUserResponse>,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -1261,8 +1261,8 @@ export const createAccount: API.OperationMethod<
   CreateAccountError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(29, __c3, 5) as any as S.Schema<CreateAccountRequest>,
-  output: __S(32, __c4, 0) as any as S.Schema<CreateAccountResponse>,
+  input: __S(120, __c15, 0) as any as S.Schema<CreateAccountRequest>,
+  output: __S(144, __c18, 0) as any as S.Schema<CreateAccountResponse>,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -1296,8 +1296,8 @@ export const createBot: API.OperationMethod<
   CreateBotError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(33, __c4, 1) as any as S.Schema<CreateBotRequest>,
-  output: __S(35, __c4, 3) as any as S.Schema<CreateBotResponse>,
+  input: __S(152, __c19, 0) as any as S.Schema<CreateBotRequest>,
+  output: __S(168, __c21, 0) as any as S.Schema<CreateBotResponse>,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -1338,8 +1338,8 @@ export const createMeetingDialOut: API.OperationMethod<
   CreateMeetingDialOutError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(36, __c4, 4) as any as S.Schema<CreateMeetingDialOutRequest>,
-  output: __S(37, __c4, 5) as any as S.Schema<CreateMeetingDialOutResponse>,
+  input: __S(176, __c22, 0) as any as S.Schema<CreateMeetingDialOutRequest>,
+  output: __S(177, __c22, 1) as any as S.Schema<CreateMeetingDialOutResponse>,
   errors: [
     AccessDeniedException,
     BadRequestException,
@@ -1375,8 +1375,8 @@ export const createPhoneNumberOrder: API.OperationMethod<
   CreatePhoneNumberOrderError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(39, __c4, 7) as any as S.Schema<CreatePhoneNumberOrderRequest>,
-  output: __S(43, __c5, 3) as any as S.Schema<CreatePhoneNumberOrderResponse>,
+  input: __S(184, __c23, 0) as any as S.Schema<CreatePhoneNumberOrderRequest>,
+  output: __S(192, __c24, 0) as any as S.Schema<CreatePhoneNumberOrderResponse>,
   errors: [
     AccessDeniedException,
     BadRequestException,
@@ -1411,8 +1411,8 @@ export const createRoom: API.OperationMethod<
   CreateRoomError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(44, __c5, 4) as any as S.Schema<CreateRoomRequest>,
-  output: __S(46, __c5, 6) as any as S.Schema<CreateRoomResponse>,
+  input: __S(216, __c27, 0) as any as S.Schema<CreateRoomRequest>,
+  output: __S(232, __c29, 0) as any as S.Schema<CreateRoomResponse>,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -1448,8 +1448,8 @@ export const createRoomMembership: API.OperationMethod<
   CreateRoomMembershipError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(47, __c5, 7) as any as S.Schema<CreateRoomMembershipRequest>,
-  output: __S(50, __c6, 2) as any as S.Schema<CreateRoomMembershipResponse>,
+  input: __S(240, __c30, 0) as any as S.Schema<CreateRoomMembershipRequest>,
+  output: __S(256, __c32, 0) as any as S.Schema<CreateRoomMembershipResponse>,
   errors: [
     BadRequestException,
     ConflictException,
@@ -1485,8 +1485,8 @@ export const createUser: API.OperationMethod<
   CreateUserError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(51, __c6, 3) as any as S.Schema<CreateUserRequest>,
-  output: __S(53, __c6, 5) as any as S.Schema<CreateUserResponse>,
+  input: __S(264, __c33, 0) as any as S.Schema<CreateUserRequest>,
+  output: __S(280, __c35, 0) as any as S.Schema<CreateUserResponse>,
   errors: [
     BadRequestException,
     ConflictException,
@@ -1534,8 +1534,8 @@ export const deleteAccount: API.OperationMethod<
   DeleteAccountError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(54, __c6, 6) as any as S.Schema<DeleteAccountRequest>,
-  output: __S(55, __c6, 7) as any as S.Schema<DeleteAccountResponse>,
+  input: __S(288, __c36, 0) as any as S.Schema<DeleteAccountRequest>,
+  output: __S(296, __c37, 0) as any as S.Schema<DeleteAccountResponse>,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -1568,8 +1568,8 @@ export const deleteEventsConfiguration: API.OperationMethod<
   DeleteEventsConfigurationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(56, __c7, 0) as any as S.Schema<DeleteEventsConfigurationRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<DeleteEventsConfigurationResponse>,
+  input: __S(304, __c38, 0) as any as S.Schema<DeleteEventsConfigurationRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<DeleteEventsConfigurationResponse>,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -1607,8 +1607,8 @@ export const deletePhoneNumber: API.OperationMethod<
   DeletePhoneNumberError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(57, __c7, 1) as any as S.Schema<DeletePhoneNumberRequest>,
-  output: __S(55, __c6, 7) as any as S.Schema<DeletePhoneNumberResponse>,
+  input: __S(312, __c39, 0) as any as S.Schema<DeletePhoneNumberRequest>,
+  output: __S(296, __c37, 0) as any as S.Schema<DeletePhoneNumberResponse>,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -1641,8 +1641,8 @@ export const deleteRoom: API.OperationMethod<
   DeleteRoomError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(58, __c7, 2) as any as S.Schema<DeleteRoomRequest>,
-  output: __S(55, __c6, 7) as any as S.Schema<DeleteRoomResponse>,
+  input: __S(320, __c40, 0) as any as S.Schema<DeleteRoomRequest>,
+  output: __S(296, __c37, 0) as any as S.Schema<DeleteRoomResponse>,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -1675,8 +1675,8 @@ export const deleteRoomMembership: API.OperationMethod<
   DeleteRoomMembershipError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(59, __c7, 3) as any as S.Schema<DeleteRoomMembershipRequest>,
-  output: __S(55, __c6, 7) as any as S.Schema<DeleteRoomMembershipResponse>,
+  input: __S(328, __c41, 0) as any as S.Schema<DeleteRoomMembershipRequest>,
+  output: __S(296, __c37, 0) as any as S.Schema<DeleteRoomMembershipResponse>,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -1709,8 +1709,8 @@ export const disassociatePhoneNumberFromUser: API.OperationMethod<
   DisassociatePhoneNumberFromUserError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(60, __c7, 4) as any as S.Schema<DisassociatePhoneNumberFromUserRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<DisassociatePhoneNumberFromUserResponse>,
+  input: __S(336, __c42, 0) as any as S.Schema<DisassociatePhoneNumberFromUserRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<DisassociatePhoneNumberFromUserResponse>,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -1743,8 +1743,8 @@ export const disassociateSigninDelegateGroupsFromAccount: API.OperationMethod<
   DisassociateSigninDelegateGroupsFromAccountError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(61, __c7, 5) as any as S.Schema<DisassociateSigninDelegateGroupsFromAccountRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<DisassociateSigninDelegateGroupsFromAccountResponse>,
+  input: __S(344, __c43, 0) as any as S.Schema<DisassociateSigninDelegateGroupsFromAccountRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<DisassociateSigninDelegateGroupsFromAccountResponse>,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -1778,8 +1778,8 @@ export const getAccount: API.OperationMethod<
   GetAccountError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(62, __c7, 6) as any as S.Schema<GetAccountRequest>,
-  output: __S(32, __c4, 0) as any as S.Schema<GetAccountResponse>,
+  input: __S(352, __c44, 0) as any as S.Schema<GetAccountRequest>,
+  output: __S(144, __c18, 0) as any as S.Schema<GetAccountResponse>,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -1814,8 +1814,8 @@ export const getAccountSettings: API.OperationMethod<
   GetAccountSettingsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(63, __c7, 7) as any as S.Schema<GetAccountSettingsRequest>,
-  output: __S(65, __c8, 1) as any as S.Schema<GetAccountSettingsResponse>,
+  input: __S(360, __c45, 0) as any as S.Schema<GetAccountSettingsRequest>,
+  output: __S(361, __c45, 1) as any as S.Schema<GetAccountSettingsResponse>,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -1848,8 +1848,8 @@ export const getBot: API.OperationMethod<
   GetBotError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(66, __c8, 2) as any as S.Schema<GetBotRequest>,
-  output: __S(35, __c4, 3) as any as S.Schema<GetBotResponse>,
+  input: __S(376, __c47, 0) as any as S.Schema<GetBotRequest>,
+  output: __S(168, __c21, 0) as any as S.Schema<GetBotResponse>,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -1882,8 +1882,8 @@ export const getEventsConfiguration: API.OperationMethod<
   GetEventsConfigurationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(67, __c8, 3) as any as S.Schema<GetEventsConfigurationRequest>,
-  output: __S(69, __c8, 5) as any as S.Schema<GetEventsConfigurationResponse>,
+  input: __S(384, __c48, 0) as any as S.Schema<GetEventsConfigurationRequest>,
+  output: __S(393, __c49, 1) as any as S.Schema<GetEventsConfigurationResponse>,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -1916,8 +1916,8 @@ export const getGlobalSettings: API.OperationMethod<
   GetGlobalSettingsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(70, __c8, 6) as any as S.Schema<GetGlobalSettingsRequest>,
-  output: __S(72, __c9, 0) as any as S.Schema<GetGlobalSettingsResponse>,
+  input: __S(400, __c50, 0) as any as S.Schema<GetGlobalSettingsRequest>,
+  output: __S(401, __c50, 1) as any as S.Schema<GetGlobalSettingsResponse>,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -1949,8 +1949,8 @@ export const getPhoneNumber: API.OperationMethod<
   GetPhoneNumberError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(73, __c9, 1) as any as S.Schema<GetPhoneNumberRequest>,
-  output: __S(78, __c9, 6) as any as S.Schema<GetPhoneNumberResponse>,
+  input: __S(416, __c52, 0) as any as S.Schema<GetPhoneNumberRequest>,
+  output: __S(417, __c52, 1) as any as S.Schema<GetPhoneNumberResponse>,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -1984,8 +1984,8 @@ export const getPhoneNumberOrder: API.OperationMethod<
   GetPhoneNumberOrderError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(79, __c9, 7) as any as S.Schema<GetPhoneNumberOrderRequest>,
-  output: __S(43, __c5, 3) as any as S.Schema<GetPhoneNumberOrderResponse>,
+  input: __S(432, __c54, 0) as any as S.Schema<GetPhoneNumberOrderRequest>,
+  output: __S(192, __c24, 0) as any as S.Schema<GetPhoneNumberOrderResponse>,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -2017,8 +2017,8 @@ export const getPhoneNumberSettings: API.OperationMethod<
   GetPhoneNumberSettingsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(80, __c10, 0) as any as S.Schema<GetPhoneNumberSettingsRequest>,
-  output: __S(81, __c10, 1) as any as S.Schema<GetPhoneNumberSettingsResponse>,
+  input: __S(440, __c55, 0) as any as S.Schema<GetPhoneNumberSettingsRequest>,
+  output: __S(441, __c55, 1) as any as S.Schema<GetPhoneNumberSettingsResponse>,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -2051,8 +2051,8 @@ export const getRetentionSettings: API.OperationMethod<
   GetRetentionSettingsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(82, __c10, 2) as any as S.Schema<GetRetentionSettingsRequest>,
-  output: __S(86, __c10, 6) as any as S.Schema<GetRetentionSettingsResponse>,
+  input: __S(448, __c56, 0) as any as S.Schema<GetRetentionSettingsRequest>,
+  output: __S(459, __c57, 3) as any as S.Schema<GetRetentionSettingsResponse>,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -2085,8 +2085,8 @@ export const getRoom: API.OperationMethod<
   GetRoomError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(87, __c10, 7) as any as S.Schema<GetRoomRequest>,
-  output: __S(46, __c5, 6) as any as S.Schema<GetRoomResponse>,
+  input: __S(464, __c58, 0) as any as S.Schema<GetRoomRequest>,
+  output: __S(232, __c29, 0) as any as S.Schema<GetRoomResponse>,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -2122,8 +2122,8 @@ export const getUser: API.OperationMethod<
   GetUserError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(88, __c11, 0) as any as S.Schema<GetUserRequest>,
-  output: __S(53, __c6, 5) as any as S.Schema<GetUserResponse>,
+  input: __S(472, __c59, 0) as any as S.Schema<GetUserRequest>,
+  output: __S(280, __c35, 0) as any as S.Schema<GetUserResponse>,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -2156,8 +2156,8 @@ export const getUserSettings: API.OperationMethod<
   GetUserSettingsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(89, __c11, 1) as any as S.Schema<GetUserSettingsRequest>,
-  output: __S(92, __c11, 4) as any as S.Schema<GetUserSettingsResponse>,
+  input: __S(480, __c60, 0) as any as S.Schema<GetUserSettingsRequest>,
+  output: __S(481, __c60, 1) as any as S.Schema<GetUserSettingsResponse>,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -2192,8 +2192,8 @@ export const inviteUsers: API.OperationMethod<
   InviteUsersError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(93, __c11, 5) as any as S.Schema<InviteUsersRequest>,
-  output: __S(96, __c12, 0) as any as S.Schema<InviteUsersResponse>,
+  input: __S(496, __c62, 0) as any as S.Schema<InviteUsersRequest>,
+  output: __S(499, __c62, 3) as any as S.Schema<InviteUsersResponse>,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -2229,8 +2229,8 @@ export const listAccounts: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(97, __c12, 1) as any as S.Schema<ListAccountsRequest>,
-  output: __S(99, __c12, 3) as any as S.Schema<ListAccountsResponse>,
+  input: __S(504, __c63, 0) as any as S.Schema<ListAccountsRequest>,
+  output: __S(506, __c63, 2) as any as S.Schema<ListAccountsResponse>,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -2269,8 +2269,8 @@ export const listBots: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(100, __c12, 4) as any as S.Schema<ListBotsRequest>,
-  output: __S(102, __c12, 6) as any as S.Schema<ListBotsResponse>,
+  input: __S(512, __c64, 0) as any as S.Schema<ListBotsRequest>,
+  output: __S(514, __c64, 2) as any as S.Schema<ListBotsResponse>,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -2308,8 +2308,8 @@ export const listPhoneNumberOrders: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(103, __c12, 7) as any as S.Schema<ListPhoneNumberOrdersRequest>,
-  output: __S(105, __c13, 1) as any as S.Schema<ListPhoneNumberOrdersResponse>,
+  input: __S(520, __c65, 0) as any as S.Schema<ListPhoneNumberOrdersRequest>,
+  output: __S(522, __c65, 2) as any as S.Schema<ListPhoneNumberOrdersResponse>,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -2347,8 +2347,8 @@ export const listPhoneNumbers: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(106, __c13, 2) as any as S.Schema<ListPhoneNumbersRequest>,
-  output: __S(108, __c13, 4) as any as S.Schema<ListPhoneNumbersResponse>,
+  input: __S(528, __c66, 0) as any as S.Schema<ListPhoneNumbersRequest>,
+  output: __S(530, __c66, 2) as any as S.Schema<ListPhoneNumbersResponse>,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -2388,8 +2388,8 @@ export const listRoomMemberships: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(109, __c13, 5) as any as S.Schema<ListRoomMembershipsRequest>,
-  output: __S(111, __c13, 7) as any as S.Schema<ListRoomMembershipsResponse>,
+  input: __S(536, __c67, 0) as any as S.Schema<ListRoomMembershipsRequest>,
+  output: __S(538, __c67, 2) as any as S.Schema<ListRoomMembershipsResponse>,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -2428,8 +2428,8 @@ export const listRooms: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(112, __c14, 0) as any as S.Schema<ListRoomsRequest>,
-  output: __S(114, __c14, 2) as any as S.Schema<ListRoomsResponse>,
+  input: __S(544, __c68, 0) as any as S.Schema<ListRoomsRequest>,
+  output: __S(546, __c68, 2) as any as S.Schema<ListRoomsResponse>,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -2467,8 +2467,8 @@ export const listSupportedPhoneNumberCountries: API.OperationMethod<
   ListSupportedPhoneNumberCountriesError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(115, __c14, 3) as any as S.Schema<ListSupportedPhoneNumberCountriesRequest>,
-  output: __S(118, __c14, 6) as any as S.Schema<ListSupportedPhoneNumberCountriesResponse>,
+  input: __S(552, __c69, 0) as any as S.Schema<ListSupportedPhoneNumberCountriesRequest>,
+  output: __S(555, __c69, 3) as any as S.Schema<ListSupportedPhoneNumberCountriesResponse>,
   errors: [
     AccessDeniedException,
     BadRequestException,
@@ -2503,8 +2503,8 @@ export const listUsers: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(119, __c14, 7) as any as S.Schema<ListUsersRequest>,
-  output: __S(121, __c15, 1) as any as S.Schema<ListUsersResponse>,
+  input: __S(560, __c70, 0) as any as S.Schema<ListUsersRequest>,
+  output: __S(562, __c70, 2) as any as S.Schema<ListUsersResponse>,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -2542,8 +2542,8 @@ export const logoutUser: API.OperationMethod<
   LogoutUserError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(122, __c15, 2) as any as S.Schema<LogoutUserRequest>,
-  output: __S(55, __c6, 7) as any as S.Schema<LogoutUserResponse>,
+  input: __S(568, __c71, 0) as any as S.Schema<LogoutUserRequest>,
+  output: __S(296, __c37, 0) as any as S.Schema<LogoutUserResponse>,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -2578,8 +2578,8 @@ export const putEventsConfiguration: API.OperationMethod<
   PutEventsConfigurationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(123, __c15, 3) as any as S.Schema<PutEventsConfigurationRequest>,
-  output: __S(69, __c8, 5) as any as S.Schema<PutEventsConfigurationResponse>,
+  input: __S(576, __c72, 0) as any as S.Schema<PutEventsConfigurationRequest>,
+  output: __S(393, __c49, 1) as any as S.Schema<PutEventsConfigurationResponse>,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -2623,8 +2623,8 @@ export const putRetentionSettings: API.OperationMethod<
   PutRetentionSettingsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(124, __c15, 4) as any as S.Schema<PutRetentionSettingsRequest>,
-  output: __S(86, __c10, 6) as any as S.Schema<PutRetentionSettingsResponse>,
+  input: __S(584, __c73, 0) as any as S.Schema<PutRetentionSettingsRequest>,
+  output: __S(459, __c57, 3) as any as S.Schema<PutRetentionSettingsResponse>,
   errors: [
     BadRequestException,
     ConflictException,
@@ -2658,8 +2658,8 @@ export const redactConversationMessage: API.OperationMethod<
   RedactConversationMessageError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(125, __c15, 5) as any as S.Schema<RedactConversationMessageRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<RedactConversationMessageResponse>,
+  input: __S(592, __c74, 0) as any as S.Schema<RedactConversationMessageRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<RedactConversationMessageResponse>,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -2692,8 +2692,8 @@ export const redactRoomMessage: API.OperationMethod<
   RedactRoomMessageError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(126, __c15, 6) as any as S.Schema<RedactRoomMessageRequest>,
-  output: __S(55, __c6, 7) as any as S.Schema<RedactRoomMessageResponse>,
+  input: __S(600, __c75, 0) as any as S.Schema<RedactRoomMessageRequest>,
+  output: __S(296, __c37, 0) as any as S.Schema<RedactRoomMessageResponse>,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -2726,8 +2726,8 @@ export const regenerateSecurityToken: API.OperationMethod<
   RegenerateSecurityTokenError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(127, __c15, 7) as any as S.Schema<RegenerateSecurityTokenRequest>,
-  output: __S(128, __c16, 0) as any as S.Schema<RegenerateSecurityTokenResponse>,
+  input: __S(608, __c76, 0) as any as S.Schema<RegenerateSecurityTokenRequest>,
+  output: __S(609, __c76, 1) as any as S.Schema<RegenerateSecurityTokenResponse>,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -2761,8 +2761,8 @@ export const resetPersonalPIN: API.OperationMethod<
   ResetPersonalPINError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(129, __c16, 1) as any as S.Schema<ResetPersonalPINRequest>,
-  output: __S(53, __c6, 5) as any as S.Schema<ResetPersonalPINResponse>,
+  input: __S(616, __c77, 0) as any as S.Schema<ResetPersonalPINRequest>,
+  output: __S(280, __c35, 0) as any as S.Schema<ResetPersonalPINResponse>,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -2797,8 +2797,8 @@ export const restorePhoneNumber: API.OperationMethod<
   RestorePhoneNumberError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(130, __c16, 2) as any as S.Schema<RestorePhoneNumberRequest>,
-  output: __S(131, __c16, 3) as any as S.Schema<RestorePhoneNumberResponse>,
+  input: __S(624, __c78, 0) as any as S.Schema<RestorePhoneNumberRequest>,
+  output: __S(632, __c79, 0) as any as S.Schema<RestorePhoneNumberResponse>,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -2837,8 +2837,8 @@ export const searchAvailablePhoneNumbers: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(132, __c16, 4) as any as S.Schema<SearchAvailablePhoneNumbersRequest>,
-  output: __S(133, __c16, 5) as any as S.Schema<SearchAvailablePhoneNumbersResponse>,
+  input: __S(640, __c80, 0) as any as S.Schema<SearchAvailablePhoneNumbersRequest>,
+  output: __S(641, __c80, 1) as any as S.Schema<SearchAvailablePhoneNumbersResponse>,
   errors: [
     AccessDeniedException,
     BadRequestException,
@@ -2876,8 +2876,8 @@ export const updateAccount: API.OperationMethod<
   UpdateAccountError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(134, __c16, 6) as any as S.Schema<UpdateAccountRequest>,
-  output: __S(32, __c4, 0) as any as S.Schema<UpdateAccountResponse>,
+  input: __S(648, __c81, 0) as any as S.Schema<UpdateAccountRequest>,
+  output: __S(144, __c18, 0) as any as S.Schema<UpdateAccountResponse>,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -2915,8 +2915,8 @@ export const updateAccountSettings: API.OperationMethod<
   UpdateAccountSettingsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(135, __c16, 7) as any as S.Schema<UpdateAccountSettingsRequest>,
-  output: __S(55, __c6, 7) as any as S.Schema<UpdateAccountSettingsResponse>,
+  input: __S(656, __c82, 0) as any as S.Schema<UpdateAccountSettingsRequest>,
+  output: __S(296, __c37, 0) as any as S.Schema<UpdateAccountSettingsResponse>,
   errors: [
     BadRequestException,
     ConflictException,
@@ -2950,8 +2950,8 @@ export const updateBot: API.OperationMethod<
   UpdateBotError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(136, __c17, 0) as any as S.Schema<UpdateBotRequest>,
-  output: __S(35, __c4, 3) as any as S.Schema<UpdateBotResponse>,
+  input: __S(664, __c83, 0) as any as S.Schema<UpdateBotRequest>,
+  output: __S(168, __c21, 0) as any as S.Schema<UpdateBotResponse>,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -2983,8 +2983,8 @@ export const updateGlobalSettings: API.OperationMethod<
   UpdateGlobalSettingsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(137, __c17, 1) as any as S.Schema<UpdateGlobalSettingsRequest>,
-  output: __S(55, __c6, 7) as any as S.Schema<UpdateGlobalSettingsResponse>,
+  input: __S(672, __c84, 0) as any as S.Schema<UpdateGlobalSettingsRequest>,
+  output: __S(296, __c37, 0) as any as S.Schema<UpdateGlobalSettingsResponse>,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -3021,8 +3021,8 @@ export const updatePhoneNumber: API.OperationMethod<
   UpdatePhoneNumberError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(138, __c17, 2) as any as S.Schema<UpdatePhoneNumberRequest>,
-  output: __S(131, __c16, 3) as any as S.Schema<UpdatePhoneNumberResponse>,
+  input: __S(680, __c85, 0) as any as S.Schema<UpdatePhoneNumberRequest>,
+  output: __S(632, __c79, 0) as any as S.Schema<UpdatePhoneNumberResponse>,
   errors: [
     BadRequestException,
     ConflictException,
@@ -3057,8 +3057,8 @@ export const updatePhoneNumberSettings: API.OperationMethod<
   UpdatePhoneNumberSettingsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(139, __c17, 3) as any as S.Schema<UpdatePhoneNumberSettingsRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<UpdatePhoneNumberSettingsResponse>,
+  input: __S(688, __c86, 0) as any as S.Schema<UpdatePhoneNumberSettingsRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<UpdatePhoneNumberSettingsResponse>,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -3090,8 +3090,8 @@ export const updateRoom: API.OperationMethod<
   UpdateRoomError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(140, __c17, 4) as any as S.Schema<UpdateRoomRequest>,
-  output: __S(46, __c5, 6) as any as S.Schema<UpdateRoomResponse>,
+  input: __S(696, __c87, 0) as any as S.Schema<UpdateRoomRequest>,
+  output: __S(232, __c29, 0) as any as S.Schema<UpdateRoomResponse>,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -3127,8 +3127,8 @@ export const updateRoomMembership: API.OperationMethod<
   UpdateRoomMembershipError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(141, __c17, 5) as any as S.Schema<UpdateRoomMembershipRequest>,
-  output: __S(50, __c6, 2) as any as S.Schema<UpdateRoomMembershipResponse>,
+  input: __S(704, __c88, 0) as any as S.Schema<UpdateRoomMembershipRequest>,
+  output: __S(256, __c32, 0) as any as S.Schema<UpdateRoomMembershipResponse>,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -3161,8 +3161,8 @@ export const updateUser: API.OperationMethod<
   UpdateUserError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(142, __c17, 6) as any as S.Schema<UpdateUserRequest>,
-  output: __S(53, __c6, 5) as any as S.Schema<UpdateUserResponse>,
+  input: __S(712, __c89, 0) as any as S.Schema<UpdateUserRequest>,
+  output: __S(280, __c35, 0) as any as S.Schema<UpdateUserResponse>,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -3195,8 +3195,8 @@ export const updateUserSettings: API.OperationMethod<
   UpdateUserSettingsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(143, __c17, 7) as any as S.Schema<UpdateUserSettingsRequest>,
-  output: __S(55, __c6, 7) as any as S.Schema<UpdateUserSettingsResponse>,
+  input: __S(720, __c90, 0) as any as S.Schema<UpdateUserSettingsRequest>,
+  output: __S(296, __c37, 0) as any as S.Schema<UpdateUserSettingsResponse>,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -3236,21 +3236,23 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "AssociatePhoneNumberWithUserRequest",
       });
-    case 1:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "AssociatePhoneNumberWithUserResponse",
       });
-    case 2:
-      return S.suspend(() => S.Struct({ GroupName: S.optional(S.String) })).annotate({
-        identifier: "SigninDelegateGroup",
-      });
-    case 3:
-      return S.Array(__S(2, __c0, 2));
-    case 4:
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           AccountId: S.String.pipe(T.HttpLabel("AccountId")),
-          SigninDelegateGroups: __S(3, __c0, 3),
+          SigninDelegateGroups: __S(25, __c3, 1),
         }).pipe(
           T.all(
             T.Http({
@@ -3267,18 +3269,32 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "AssociateSigninDelegateGroupsWithAccountRequest",
       });
-    case 5:
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({ GroupName: S.optional(S.String) })).annotate({
+        identifier: "SigninDelegateGroup",
+      });
+    case 1:
+      return S.Array(__S(24, __c3, 0));
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ MemberId: S.optional(S.String), Role: S.optional(S.String) }),
       ).annotate({ identifier: "MembershipItem" });
-    case 6:
-      return S.Array(__S(5, __c0, 5));
-    case 7:
+    case 1:
+      return S.Array(__S(32, __c4, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           AccountId: S.String.pipe(T.HttpLabel("AccountId")),
           RoomId: S.String.pipe(T.HttpLabel("RoomId")),
-          MembershipItemList: __S(6, __c0, 6),
+          MembershipItemList: __S(33, __c4, 1),
         }).pipe(
           T.all(
             T.Http({
@@ -3295,11 +3311,7 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "BatchCreateRoomMembershipRequest",
       });
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           MemberId: S.optional(S.String),
@@ -3307,17 +3319,19 @@ function __c1(j: number): any {
           ErrorMessage: S.optional(S.String),
         }),
       ).annotate({ identifier: "MemberError" });
-    case 1:
-      return S.Array(__S(8, __c1, 0));
-    case 2:
-      return S.suspend(() => S.Struct({ Errors: S.optional(__S(9, __c1, 1)) })).annotate({
+    case 4:
+      return S.Array(__S(35, __c4, 3));
+    case 5:
+      return S.suspend(() => S.Struct({ Errors: S.optional(__S(36, __c4, 4)) })).annotate({
         identifier: "BatchCreateRoomMembershipResponse",
       });
-    case 3:
-      return S.Array(S.String);
-    case 4:
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
-        S.Struct({ PhoneNumberIds: __S(11, __c1, 3) }).pipe(
+        S.Struct({ PhoneNumberIds: __S(48, __c6, 0) }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/phone-numbers?operation=batch-delete" }),
             svc,
@@ -3330,7 +3344,17 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "BatchDeletePhoneNumberRequest",
       });
-    case 5:
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           PhoneNumberId: S.optional(S.String),
@@ -3338,23 +3362,23 @@ function __c1(j: number): any {
           ErrorMessage: S.optional(S.String),
         }),
       ).annotate({ identifier: "PhoneNumberError" });
-    case 6:
-      return S.Array(__S(13, __c1, 5));
-    case 7:
+    case 1:
+      return S.Array(__S(56, __c7, 0));
+    case 2:
       return S.suspend(() =>
-        S.Struct({ PhoneNumberErrors: S.optional(__S(14, __c1, 6)) }),
+        S.Struct({ PhoneNumberErrors: S.optional(__S(57, __c7, 1)) }),
       ).annotate({
         identifier: "BatchDeletePhoneNumberResponse",
       });
   }
 }
-function __c2(j: number): any {
+function __c8(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           AccountId: S.String.pipe(T.HttpLabel("AccountId")),
-          UserIdList: __S(11, __c1, 3),
+          UserIdList: __S(48, __c6, 0),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/accounts/{AccountId}/users?operation=suspend" }),
@@ -3366,7 +3390,11 @@ function __c2(j: number): any {
           ),
         ),
       ).annotate({ identifier: "BatchSuspendUserRequest" });
-    case 1:
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           UserId: S.optional(S.String),
@@ -3374,17 +3402,25 @@ function __c2(j: number): any {
           ErrorMessage: S.optional(S.String),
         }),
       ).annotate({ identifier: "UserError" });
-    case 2:
-      return S.Array(__S(17, __c2, 1));
-    case 3:
-      return S.suspend(() => S.Struct({ UserErrors: S.optional(__S(18, __c2, 2)) })).annotate({
+    case 1:
+      return S.Array(__S(72, __c9, 0));
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({ UserErrors: S.optional(__S(73, __c9, 1)) })).annotate({
         identifier: "BatchSuspendUserResponse",
       });
-    case 4:
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           AccountId: S.String.pipe(T.HttpLabel("AccountId")),
-          UserIdList: __S(11, __c1, 3),
+          UserIdList: __S(48, __c6, 0),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/accounts/{AccountId}/users?operation=unsuspend" }),
@@ -3398,11 +3434,15 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "BatchUnsuspendUserRequest",
       });
-    case 5:
-      return S.suspend(() => S.Struct({ UserErrors: S.optional(__S(18, __c2, 2)) })).annotate({
+    case 1:
+      return S.suspend(() => S.Struct({ UserErrors: S.optional(__S(73, __c9, 1)) })).annotate({
         identifier: "BatchUnsuspendUserResponse",
       });
-    case 6:
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           PhoneNumberId: S.String,
@@ -3412,15 +3452,11 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "UpdatePhoneNumberRequestItem",
       });
-    case 7:
-      return S.Array(__S(22, __c2, 6));
-  }
-}
-function __c3(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
+      return S.Array(__S(96, __c12, 0));
+    case 2:
       return S.suspend(() =>
-        S.Struct({ UpdatePhoneNumberRequestItems: __S(23, __c2, 7) }).pipe(
+        S.Struct({ UpdatePhoneNumberRequestItems: __S(97, __c12, 1) }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/phone-numbers?operation=batch-update" }),
             svc,
@@ -3433,29 +3469,26 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "BatchUpdatePhoneNumberRequest",
       });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          IsAlexaForBusinessEnabled: S.optional(S.Boolean),
-          AlexaForBusinessRoomArn: S.optional(SensitiveString),
-        }),
-      ).annotate({ identifier: "AlexaForBusinessMetadata" });
-    case 2:
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           UserId: S.String,
           LicenseType: S.optional(S.String),
           UserType: S.optional(S.String),
-          AlexaForBusinessMetadata: S.optional(__S(25, __c3, 1)),
+          AlexaForBusinessMetadata: S.optional(__S(112, __c14, 0)),
         }),
       ).annotate({ identifier: "UpdateUserRequestItem" });
-    case 3:
-      return S.Array(__S(26, __c3, 2));
-    case 4:
+    case 1:
+      return S.Array(__S(104, __c13, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           AccountId: S.String.pipe(T.HttpLabel("AccountId")),
-          UpdateUserRequestItems: __S(27, __c3, 3),
+          UpdateUserRequestItems: __S(105, __c13, 1),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/accounts/{AccountId}/users" }),
@@ -3467,15 +3500,38 @@ function __c3(j: number): any {
           ),
         ),
       ).annotate({ identifier: "BatchUpdateUserRequest" });
-    case 5:
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          IsAlexaForBusinessEnabled: S.optional(S.Boolean),
+          AlexaForBusinessRoomArn: S.optional(SensitiveString),
+        }),
+      ).annotate({ identifier: "AlexaForBusinessMetadata" });
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ Name: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/accounts" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "CreateAccountRequest" });
-    case 6:
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
       return S.Array(S.String);
-    case 7:
+  }
+}
+function __c17(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           AwsAccountId: S.String,
@@ -3484,20 +3540,24 @@ function __c3(j: number): any {
           AccountType: S.optional(S.String),
           CreatedTimestamp: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
           DefaultLicense: S.optional(S.String),
-          SupportedLicenses: S.optional(__S(30, __c3, 6)),
+          SupportedLicenses: S.optional(__S(128, __c16, 0)),
           AccountStatus: S.optional(S.String),
-          SigninDelegateGroups: S.optional(__S(3, __c0, 3)),
+          SigninDelegateGroups: S.optional(__S(25, __c3, 1)),
         }),
       ).annotate({ identifier: "Account" });
   }
 }
-function __c4(j: number): any {
+function __c18(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => S.Struct({ Account: S.optional(__S(31, __c3, 7)) })).annotate({
+      return S.suspend(() => S.Struct({ Account: S.optional(__S(136, __c17, 0)) })).annotate({
         identifier: "CreateAccountResponse",
       });
-    case 1:
+  }
+}
+function __c19(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           AccountId: S.String.pipe(T.HttpLabel("AccountId")),
@@ -3514,7 +3574,11 @@ function __c4(j: number): any {
           ),
         ),
       ).annotate({ identifier: "CreateBotRequest" });
-    case 2:
+  }
+}
+function __c20(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           BotId: S.optional(S.String),
@@ -3528,11 +3592,19 @@ function __c4(j: number): any {
           SecurityToken: S.optional(SensitiveString),
         }),
       ).annotate({ identifier: "Bot" });
-    case 3:
-      return S.suspend(() => S.Struct({ Bot: S.optional(__S(34, __c4, 2)) })).annotate({
+  }
+}
+function __c21(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({ Bot: S.optional(__S(160, __c20, 0)) })).annotate({
         identifier: "CreateBotResponse",
       });
-    case 4:
+  }
+}
+function __c22(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           MeetingId: S.String.pipe(T.HttpLabel("MeetingId")),
@@ -3552,18 +3624,17 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "CreateMeetingDialOutRequest",
       });
-    case 5:
+    case 1:
       return S.suspend(() => S.Struct({ TransactionId: S.optional(S.String) })).annotate({
         identifier: "CreateMeetingDialOutResponse",
       });
-    case 6:
-      return S.Array(SensitiveString);
-    case 7:
+  }
+}
+function __c23(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
-        S.Struct({
-          ProductType: S.String,
-          E164PhoneNumbers: __S(38, __c4, 6),
-        }).pipe(
+        S.Struct({ ProductType: S.String, E164PhoneNumbers: __S(208, __c26, 0) }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/phone-number-orders" }),
             svc,
@@ -3578,7 +3649,17 @@ function __c4(j: number): any {
       });
   }
 }
-function __c5(j: number): any {
+function __c24(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ PhoneNumberOrder: S.optional(__S(202, __c25, 2)) }),
+      ).annotate({
+        identifier: "CreatePhoneNumberOrderResponse",
+      });
+  }
+}
+function __c25(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3588,25 +3669,29 @@ function __c5(j: number): any {
         }),
       ).annotate({ identifier: "OrderedPhoneNumber" });
     case 1:
-      return S.Array(__S(40, __c5, 0));
+      return S.Array(__S(200, __c25, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
           PhoneNumberOrderId: S.optional(S.String),
           ProductType: S.optional(S.String),
           Status: S.optional(S.String),
-          OrderedPhoneNumbers: S.optional(__S(41, __c5, 1)),
+          OrderedPhoneNumbers: S.optional(__S(201, __c25, 1)),
           CreatedTimestamp: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
           UpdatedTimestamp: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
         }),
       ).annotate({ identifier: "PhoneNumberOrder" });
-    case 3:
-      return S.suspend(() => S.Struct({ PhoneNumberOrder: S.optional(__S(42, __c5, 2)) })).annotate(
-        {
-          identifier: "CreatePhoneNumberOrderResponse",
-        },
-      );
-    case 4:
+  }
+}
+function __c26(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(SensitiveString);
+  }
+}
+function __c27(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           AccountId: S.String.pipe(T.HttpLabel("AccountId")),
@@ -3623,7 +3708,11 @@ function __c5(j: number): any {
           ),
         ),
       ).annotate({ identifier: "CreateRoomRequest" });
-    case 5:
+  }
+}
+function __c28(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           RoomId: S.optional(S.String),
@@ -3634,11 +3723,19 @@ function __c5(j: number): any {
           UpdatedTimestamp: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
         }),
       ).annotate({ identifier: "Room" });
-    case 6:
-      return S.suspend(() => S.Struct({ Room: S.optional(__S(45, __c5, 5)) })).annotate({
+  }
+}
+function __c29(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({ Room: S.optional(__S(224, __c28, 0)) })).annotate({
         identifier: "CreateRoomResponse",
       });
-    case 7:
+  }
+}
+function __c30(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           AccountId: S.String.pipe(T.HttpLabel("AccountId")),
@@ -3660,7 +3757,7 @@ function __c5(j: number): any {
       });
   }
 }
-function __c6(j: number): any {
+function __c31(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3676,17 +3773,27 @@ function __c6(j: number): any {
       return S.suspend(() =>
         S.Struct({
           RoomId: S.optional(S.String),
-          Member: S.optional(__S(48, __c6, 0)),
+          Member: S.optional(__S(248, __c31, 0)),
           Role: S.optional(S.String),
           InvitedBy: S.optional(S.String),
           UpdatedTimestamp: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
         }),
       ).annotate({ identifier: "RoomMembership" });
-    case 2:
-      return S.suspend(() => S.Struct({ RoomMembership: S.optional(__S(49, __c6, 1)) })).annotate({
-        identifier: "CreateRoomMembershipResponse",
-      });
-    case 3:
+  }
+}
+function __c32(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({ RoomMembership: S.optional(__S(249, __c31, 1)) })).annotate(
+        {
+          identifier: "CreateRoomMembershipResponse",
+        },
+      );
+  }
+}
+function __c33(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           AccountId: S.String.pipe(T.HttpLabel("AccountId")),
@@ -3704,7 +3811,11 @@ function __c6(j: number): any {
           ),
         ),
       ).annotate({ identifier: "CreateUserRequest" });
-    case 4:
+  }
+}
+function __c34(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           UserId: S.String,
@@ -3718,15 +3829,23 @@ function __c6(j: number): any {
           UserInvitationStatus: S.optional(S.String),
           RegisteredOn: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
           InvitedOn: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-          AlexaForBusinessMetadata: S.optional(__S(25, __c3, 1)),
+          AlexaForBusinessMetadata: S.optional(__S(112, __c14, 0)),
           PersonalPIN: S.optional(S.String),
         }),
       ).annotate({ identifier: "User" });
-    case 5:
-      return S.suspend(() => S.Struct({ User: S.optional(__S(52, __c6, 4)) })).annotate({
+  }
+}
+function __c35(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({ User: S.optional(__S(272, __c34, 0)) })).annotate({
         identifier: "CreateUserResponse",
       });
-    case 6:
+  }
+}
+function __c36(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ AccountId: S.String.pipe(T.HttpLabel("AccountId")) }).pipe(
           T.all(
@@ -3739,13 +3858,17 @@ function __c6(j: number): any {
           ),
         ),
       ).annotate({ identifier: "DeleteAccountRequest" });
-    case 7:
+  }
+}
+function __c37(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "DeleteAccountResponse",
       });
   }
 }
-function __c7(j: number): any {
+function __c38(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3768,7 +3891,11 @@ function __c7(j: number): any {
       ).annotate({
         identifier: "DeleteEventsConfigurationRequest",
       });
-    case 1:
+  }
+}
+function __c39(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ PhoneNumberId: S.String.pipe(T.HttpLabel("PhoneNumberId")) }).pipe(
           T.all(
@@ -3781,7 +3908,11 @@ function __c7(j: number): any {
           ),
         ),
       ).annotate({ identifier: "DeletePhoneNumberRequest" });
-    case 2:
+  }
+}
+function __c40(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           AccountId: S.String.pipe(T.HttpLabel("AccountId")),
@@ -3797,7 +3928,11 @@ function __c7(j: number): any {
           ),
         ),
       ).annotate({ identifier: "DeleteRoomRequest" });
-    case 3:
+  }
+}
+function __c41(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           AccountId: S.String.pipe(T.HttpLabel("AccountId")),
@@ -3819,7 +3954,11 @@ function __c7(j: number): any {
       ).annotate({
         identifier: "DeleteRoomMembershipRequest",
       });
-    case 4:
+  }
+}
+function __c42(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           AccountId: S.String.pipe(T.HttpLabel("AccountId")),
@@ -3840,11 +3979,15 @@ function __c7(j: number): any {
       ).annotate({
         identifier: "DisassociatePhoneNumberFromUserRequest",
       });
-    case 5:
+  }
+}
+function __c43(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           AccountId: S.String.pipe(T.HttpLabel("AccountId")),
-          GroupNames: __S(11, __c1, 3),
+          GroupNames: __S(48, __c6, 0),
         }).pipe(
           T.all(
             T.Http({
@@ -3861,7 +4004,11 @@ function __c7(j: number): any {
       ).annotate({
         identifier: "DisassociateSigninDelegateGroupsFromAccountRequest",
       });
-    case 6:
+  }
+}
+function __c44(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ AccountId: S.String.pipe(T.HttpLabel("AccountId")) }).pipe(
           T.all(
@@ -3874,7 +4021,11 @@ function __c7(j: number): any {
           ),
         ),
       ).annotate({ identifier: "GetAccountRequest" });
-    case 7:
+  }
+}
+function __c45(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ AccountId: S.String.pipe(T.HttpLabel("AccountId")) }).pipe(
           T.all(
@@ -3889,9 +4040,15 @@ function __c7(j: number): any {
       ).annotate({
         identifier: "GetAccountSettingsRequest",
       });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({ AccountSettings: S.optional(__S(368, __c46, 0)) }),
+      ).annotate({
+        identifier: "GetAccountSettingsResponse",
+      });
   }
 }
-function __c8(j: number): any {
+function __c46(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3900,11 +4057,11 @@ function __c8(j: number): any {
           EnableDialOut: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "AccountSettings" });
-    case 1:
-      return S.suspend(() => S.Struct({ AccountSettings: S.optional(__S(64, __c8, 0)) })).annotate({
-        identifier: "GetAccountSettingsResponse",
-      });
-    case 2:
+  }
+}
+function __c47(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           AccountId: S.String.pipe(T.HttpLabel("AccountId")),
@@ -3920,7 +4077,11 @@ function __c8(j: number): any {
           ),
         ),
       ).annotate({ identifier: "GetBotRequest" });
-    case 3:
+  }
+}
+function __c48(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           AccountId: S.String.pipe(T.HttpLabel("AccountId")),
@@ -3941,7 +4102,11 @@ function __c8(j: number): any {
       ).annotate({
         identifier: "GetEventsConfigurationRequest",
       });
-    case 4:
+  }
+}
+function __c49(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           BotId: S.optional(S.String),
@@ -3949,36 +4114,44 @@ function __c8(j: number): any {
           LambdaFunctionArn: S.optional(SensitiveString),
         }),
       ).annotate({ identifier: "EventsConfiguration" });
-    case 5:
+    case 1:
       return S.suspend(() =>
-        S.Struct({ EventsConfiguration: S.optional(__S(68, __c8, 4)) }),
+        S.Struct({ EventsConfiguration: S.optional(__S(392, __c49, 0)) }),
       ).annotate({
         identifier: "GetEventsConfigurationResponse",
       });
-    case 6:
+  }
+}
+function __c50(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({}).pipe(
           T.all(T.Http({ method: "GET", uri: "/settings" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "GetGlobalSettingsRequest" });
-    case 7:
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          BusinessCalling: S.optional(__S(408, __c51, 0)),
+          VoiceConnector: S.optional(__S(408, __c51, 0)),
+        }),
+      ).annotate({
+        identifier: "GetGlobalSettingsResponse",
+      });
+  }
+}
+function __c51(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() => S.Struct({ CdrBucket: S.optional(S.String) })).annotate({
         identifier: "BusinessCallingSettings",
       });
   }
 }
-function __c9(j: number): any {
+function __c52(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() =>
-        S.Struct({
-          BusinessCalling: S.optional(__S(71, __c8, 7)),
-          VoiceConnector: S.optional(__S(71, __c8, 7)),
-        }),
-      ).annotate({
-        identifier: "GetGlobalSettingsResponse",
-      });
-    case 1:
       return S.suspend(() =>
         S.Struct({ PhoneNumberId: S.String.pipe(T.HttpLabel("PhoneNumberId")) }).pipe(
           T.all(
@@ -3991,7 +4164,15 @@ function __c9(j: number): any {
           ),
         ),
       ).annotate({ identifier: "GetPhoneNumberRequest" });
-    case 2:
+    case 1:
+      return S.suspend(() => S.Struct({ PhoneNumber: S.optional(__S(427, __c53, 3)) })).annotate({
+        identifier: "GetPhoneNumberResponse",
+      });
+  }
+}
+function __c53(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           InboundCall: S.optional(S.Boolean),
@@ -4002,7 +4183,7 @@ function __c9(j: number): any {
           OutboundMMS: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "PhoneNumberCapabilities" });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           Value: S.optional(S.String),
@@ -4010,9 +4191,9 @@ function __c9(j: number): any {
           AssociatedTimestamp: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
         }),
       ).annotate({ identifier: "PhoneNumberAssociation" });
-    case 4:
-      return S.Array(__S(75, __c9, 3));
-    case 5:
+    case 2:
+      return S.Array(__S(425, __c53, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
           PhoneNumberId: S.optional(S.String),
@@ -4021,8 +4202,8 @@ function __c9(j: number): any {
           Type: S.optional(S.String),
           ProductType: S.optional(S.String),
           Status: S.optional(S.String),
-          Capabilities: S.optional(__S(74, __c9, 2)),
-          Associations: S.optional(__S(76, __c9, 4)),
+          Capabilities: S.optional(__S(424, __c53, 0)),
+          Associations: S.optional(__S(426, __c53, 2)),
           CallingName: S.optional(SensitiveString),
           CallingNameStatus: S.optional(S.String),
           CreatedTimestamp: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
@@ -4030,11 +4211,11 @@ function __c9(j: number): any {
           DeletionTimestamp: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
         }),
       ).annotate({ identifier: "PhoneNumber" });
-    case 6:
-      return S.suspend(() => S.Struct({ PhoneNumber: S.optional(__S(77, __c9, 5)) })).annotate({
-        identifier: "GetPhoneNumberResponse",
-      });
-    case 7:
+  }
+}
+function __c54(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ PhoneNumberOrderId: S.String.pipe(T.HttpLabel("PhoneNumberOrderId")) }).pipe(
           T.all(
@@ -4051,7 +4232,7 @@ function __c9(j: number): any {
       });
   }
 }
-function __c10(j: number): any {
+function __c55(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4079,7 +4260,11 @@ function __c10(j: number): any {
       ).annotate({
         identifier: "GetPhoneNumberSettingsResponse",
       });
-    case 2:
+  }
+}
+function __c56(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ AccountId: S.String.pipe(T.HttpLabel("AccountId")) }).pipe(
           T.all(
@@ -4094,25 +4279,29 @@ function __c10(j: number): any {
       ).annotate({
         identifier: "GetRetentionSettingsRequest",
       });
-    case 3:
+  }
+}
+function __c57(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() => S.Struct({ RetentionDays: S.optional(S.Number) })).annotate({
         identifier: "RoomRetentionSettings",
       });
-    case 4:
+    case 1:
       return S.suspend(() => S.Struct({ RetentionDays: S.optional(S.Number) })).annotate({
         identifier: "ConversationRetentionSettings",
       });
-    case 5:
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          RoomRetentionSettings: S.optional(__S(83, __c10, 3)),
-          ConversationRetentionSettings: S.optional(__S(84, __c10, 4)),
+          RoomRetentionSettings: S.optional(__S(456, __c57, 0)),
+          ConversationRetentionSettings: S.optional(__S(457, __c57, 1)),
         }),
       ).annotate({ identifier: "RetentionSettings" });
-    case 6:
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          RetentionSettings: S.optional(__S(85, __c10, 5)),
+          RetentionSettings: S.optional(__S(458, __c57, 2)),
           InitiateDeletionTimestamp: S.optional(
             T.DateFromString.pipe(T.TimestampFormat("date-time")),
           ),
@@ -4120,7 +4309,11 @@ function __c10(j: number): any {
       ).annotate({
         identifier: "GetRetentionSettingsResponse",
       });
-    case 7:
+  }
+}
+function __c58(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           AccountId: S.String.pipe(T.HttpLabel("AccountId")),
@@ -4138,7 +4331,7 @@ function __c10(j: number): any {
       ).annotate({ identifier: "GetRoomRequest" });
   }
 }
-function __c11(j: number): any {
+function __c59(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4156,7 +4349,11 @@ function __c11(j: number): any {
           ),
         ),
       ).annotate({ identifier: "GetUserRequest" });
-    case 1:
+  }
+}
+function __c60(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           AccountId: S.String.pipe(T.HttpLabel("AccountId")),
@@ -4172,23 +4369,31 @@ function __c11(j: number): any {
           ),
         ),
       ).annotate({ identifier: "GetUserSettingsRequest" });
-    case 2:
+    case 1:
+      return S.suspend(() => S.Struct({ UserSettings: S.optional(__S(489, __c61, 1)) })).annotate({
+        identifier: "GetUserSettingsResponse",
+      });
+  }
+}
+function __c61(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ InboundCalling: S.Boolean, OutboundCalling: S.Boolean, SMS: S.Boolean }),
       ).annotate({ identifier: "TelephonySettings" });
-    case 3:
-      return S.suspend(() => S.Struct({ Telephony: __S(90, __c11, 2) })).annotate({
+    case 1:
+      return S.suspend(() => S.Struct({ Telephony: __S(488, __c61, 0) })).annotate({
         identifier: "UserSettings",
       });
-    case 4:
-      return S.suspend(() => S.Struct({ UserSettings: S.optional(__S(91, __c11, 3)) })).annotate({
-        identifier: "GetUserSettingsResponse",
-      });
-    case 5:
+  }
+}
+function __c62(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           AccountId: S.String.pipe(T.HttpLabel("AccountId")),
-          UserEmailList: __S(38, __c4, 6),
+          UserEmailList: __S(208, __c26, 0),
           UserType: S.optional(S.String),
         }).pipe(
           T.all(
@@ -4201,7 +4406,7 @@ function __c11(j: number): any {
           ),
         ),
       ).annotate({ identifier: "InviteUsersRequest" });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           InviteId: S.optional(S.String),
@@ -4210,17 +4415,17 @@ function __c11(j: number): any {
           EmailStatus: S.optional(S.String),
         }),
       ).annotate({ identifier: "Invite" });
-    case 7:
-      return S.Array(__S(94, __c11, 6));
-  }
-}
-function __c12(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() => S.Struct({ Invites: S.optional(__S(95, __c11, 7)) })).annotate({
+    case 2:
+      return S.Array(__S(497, __c62, 1));
+    case 3:
+      return S.suspend(() => S.Struct({ Invites: S.optional(__S(498, __c62, 2)) })).annotate({
         identifier: "InviteUsersResponse",
       });
-    case 1:
+  }
+}
+function __c63(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           Name: S.optional(S.String).pipe(T.HttpQuery("name")),
@@ -4229,13 +4434,17 @@ function __c12(j: number): any {
           MaxResults: S.optional(S.Number).pipe(T.HttpQuery("max-results")),
         }).pipe(T.all(T.Http({ method: "GET", uri: "/accounts" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "ListAccountsRequest" });
+    case 1:
+      return S.Array(__S(136, __c17, 0));
     case 2:
-      return S.Array(__S(31, __c3, 7));
-    case 3:
       return S.suspend(() =>
-        S.Struct({ Accounts: S.optional(__S(98, __c12, 2)), NextToken: S.optional(S.String) }),
+        S.Struct({ Accounts: S.optional(__S(505, __c63, 1)), NextToken: S.optional(S.String) }),
       ).annotate({ identifier: "ListAccountsResponse" });
-    case 4:
+  }
+}
+function __c64(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           AccountId: S.String.pipe(T.HttpLabel("AccountId")),
@@ -4252,13 +4461,17 @@ function __c12(j: number): any {
           ),
         ),
       ).annotate({ identifier: "ListBotsRequest" });
-    case 5:
-      return S.Array(__S(34, __c4, 2));
-    case 6:
+    case 1:
+      return S.Array(__S(160, __c20, 0));
+    case 2:
       return S.suspend(() =>
-        S.Struct({ Bots: S.optional(__S(101, __c12, 5)), NextToken: S.optional(S.String) }),
+        S.Struct({ Bots: S.optional(__S(513, __c64, 1)), NextToken: S.optional(S.String) }),
       ).annotate({ identifier: "ListBotsResponse" });
-    case 7:
+  }
+}
+function __c65(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           NextToken: S.optional(S.String).pipe(T.HttpQuery("next-token")),
@@ -4276,22 +4489,22 @@ function __c12(j: number): any {
       ).annotate({
         identifier: "ListPhoneNumberOrdersRequest",
       });
-  }
-}
-function __c13(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(42, __c5, 2));
     case 1:
+      return S.Array(__S(202, __c25, 2));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          PhoneNumberOrders: S.optional(__S(104, __c13, 0)),
+          PhoneNumberOrders: S.optional(__S(521, __c65, 1)),
           NextToken: S.optional(S.String),
         }),
       ).annotate({
         identifier: "ListPhoneNumberOrdersResponse",
       });
-    case 2:
+  }
+}
+function __c66(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           Status: S.optional(S.String).pipe(T.HttpQuery("status")),
@@ -4304,13 +4517,17 @@ function __c13(j: number): any {
           T.all(T.Http({ method: "GET", uri: "/phone-numbers" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "ListPhoneNumbersRequest" });
-    case 3:
-      return S.Array(__S(77, __c9, 5));
-    case 4:
+    case 1:
+      return S.Array(__S(427, __c53, 3));
+    case 2:
       return S.suspend(() =>
-        S.Struct({ PhoneNumbers: S.optional(__S(107, __c13, 3)), NextToken: S.optional(S.String) }),
+        S.Struct({ PhoneNumbers: S.optional(__S(529, __c66, 1)), NextToken: S.optional(S.String) }),
       ).annotate({ identifier: "ListPhoneNumbersResponse" });
-    case 5:
+  }
+}
+function __c67(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           AccountId: S.String.pipe(T.HttpLabel("AccountId")),
@@ -4330,12 +4547,12 @@ function __c13(j: number): any {
       ).annotate({
         identifier: "ListRoomMembershipsRequest",
       });
-    case 6:
-      return S.Array(__S(49, __c6, 1));
-    case 7:
+    case 1:
+      return S.Array(__S(249, __c31, 1));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          RoomMemberships: S.optional(__S(110, __c13, 6)),
+          RoomMemberships: S.optional(__S(537, __c67, 1)),
           NextToken: S.optional(S.String),
         }),
       ).annotate({
@@ -4343,7 +4560,7 @@ function __c13(j: number): any {
       });
   }
 }
-function __c14(j: number): any {
+function __c68(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4364,12 +4581,16 @@ function __c14(j: number): any {
         ),
       ).annotate({ identifier: "ListRoomsRequest" });
     case 1:
-      return S.Array(__S(45, __c5, 5));
+      return S.Array(__S(224, __c28, 0));
     case 2:
       return S.suspend(() =>
-        S.Struct({ Rooms: S.optional(__S(113, __c14, 1)), NextToken: S.optional(S.String) }),
+        S.Struct({ Rooms: S.optional(__S(545, __c68, 1)), NextToken: S.optional(S.String) }),
       ).annotate({ identifier: "ListRoomsResponse" });
-    case 3:
+  }
+}
+function __c69(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ ProductType: S.String.pipe(T.HttpQuery("product-type")) }).pipe(
           T.all(
@@ -4384,22 +4605,26 @@ function __c14(j: number): any {
       ).annotate({
         identifier: "ListSupportedPhoneNumberCountriesRequest",
       });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           CountryCode: S.optional(S.String),
-          SupportedPhoneNumberTypes: S.optional(__S(30, __c3, 6)),
+          SupportedPhoneNumberTypes: S.optional(__S(128, __c16, 0)),
         }),
       ).annotate({ identifier: "PhoneNumberCountry" });
-    case 5:
-      return S.Array(__S(116, __c14, 4));
-    case 6:
+    case 2:
+      return S.Array(__S(553, __c69, 1));
+    case 3:
       return S.suspend(() =>
-        S.Struct({ PhoneNumberCountries: S.optional(__S(117, __c14, 5)) }),
+        S.Struct({ PhoneNumberCountries: S.optional(__S(554, __c69, 2)) }),
       ).annotate({
         identifier: "ListSupportedPhoneNumberCountriesResponse",
       });
-    case 7:
+  }
+}
+function __c70(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           AccountId: S.String.pipe(T.HttpLabel("AccountId")),
@@ -4418,17 +4643,17 @@ function __c14(j: number): any {
           ),
         ),
       ).annotate({ identifier: "ListUsersRequest" });
+    case 1:
+      return S.Array(__S(272, __c34, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({ Users: S.optional(__S(561, __c70, 1)), NextToken: S.optional(S.String) }),
+      ).annotate({ identifier: "ListUsersResponse" });
   }
 }
-function __c15(j: number): any {
+function __c71(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(52, __c6, 4));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({ Users: S.optional(__S(120, __c15, 0)), NextToken: S.optional(S.String) }),
-      ).annotate({ identifier: "ListUsersResponse" });
-    case 2:
       return S.suspend(() =>
         S.Struct({
           AccountId: S.String.pipe(T.HttpLabel("AccountId")),
@@ -4447,7 +4672,11 @@ function __c15(j: number): any {
           ),
         ),
       ).annotate({ identifier: "LogoutUserRequest" });
-    case 3:
+  }
+}
+function __c72(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           AccountId: S.String.pipe(T.HttpLabel("AccountId")),
@@ -4470,11 +4699,15 @@ function __c15(j: number): any {
       ).annotate({
         identifier: "PutEventsConfigurationRequest",
       });
-    case 4:
+  }
+}
+function __c73(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           AccountId: S.String.pipe(T.HttpLabel("AccountId")),
-          RetentionSettings: __S(85, __c10, 5),
+          RetentionSettings: __S(458, __c57, 2),
         }).pipe(
           T.all(
             T.Http({ method: "PUT", uri: "/accounts/{AccountId}/retention-settings" }),
@@ -4488,7 +4721,11 @@ function __c15(j: number): any {
       ).annotate({
         identifier: "PutRetentionSettingsRequest",
       });
-    case 5:
+  }
+}
+function __c74(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           AccountId: S.String.pipe(T.HttpLabel("AccountId")),
@@ -4510,7 +4747,11 @@ function __c15(j: number): any {
       ).annotate({
         identifier: "RedactConversationMessageRequest",
       });
-    case 6:
+  }
+}
+function __c75(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           AccountId: S.String.pipe(T.HttpLabel("AccountId")),
@@ -4530,7 +4771,11 @@ function __c15(j: number): any {
           ),
         ),
       ).annotate({ identifier: "RedactRoomMessageRequest" });
-    case 7:
+  }
+}
+function __c76(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           AccountId: S.String.pipe(T.HttpLabel("AccountId")),
@@ -4551,15 +4796,15 @@ function __c15(j: number): any {
       ).annotate({
         identifier: "RegenerateSecurityTokenRequest",
       });
-  }
-}
-function __c16(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() => S.Struct({ Bot: S.optional(__S(34, __c4, 2)) })).annotate({
+    case 1:
+      return S.suspend(() => S.Struct({ Bot: S.optional(__S(160, __c20, 0)) })).annotate({
         identifier: "RegenerateSecurityTokenResponse",
       });
-    case 1:
+  }
+}
+function __c77(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           AccountId: S.String.pipe(T.HttpLabel("AccountId")),
@@ -4578,7 +4823,11 @@ function __c16(j: number): any {
           ),
         ),
       ).annotate({ identifier: "ResetPersonalPINRequest" });
-    case 2:
+  }
+}
+function __c78(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ PhoneNumberId: S.String.pipe(T.HttpLabel("PhoneNumberId")) }).pipe(
           T.all(
@@ -4593,11 +4842,19 @@ function __c16(j: number): any {
       ).annotate({
         identifier: "RestorePhoneNumberRequest",
       });
-    case 3:
-      return S.suspend(() => S.Struct({ PhoneNumber: S.optional(__S(77, __c9, 5)) })).annotate({
+  }
+}
+function __c79(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({ PhoneNumber: S.optional(__S(427, __c53, 3)) })).annotate({
         identifier: "RestorePhoneNumberResponse",
       });
-    case 4:
+  }
+}
+function __c80(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           AreaCode: S.optional(S.String).pipe(T.HttpQuery("area-code")),
@@ -4621,16 +4878,20 @@ function __c16(j: number): any {
       ).annotate({
         identifier: "SearchAvailablePhoneNumbersRequest",
       });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          E164PhoneNumbers: S.optional(__S(38, __c4, 6)),
+          E164PhoneNumbers: S.optional(__S(208, __c26, 0)),
           NextToken: S.optional(S.String),
         }),
       ).annotate({
         identifier: "SearchAvailablePhoneNumbersResponse",
       });
-    case 6:
+  }
+}
+function __c81(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           AccountId: S.String.pipe(T.HttpLabel("AccountId")),
@@ -4647,11 +4908,15 @@ function __c16(j: number): any {
           ),
         ),
       ).annotate({ identifier: "UpdateAccountRequest" });
-    case 7:
+  }
+}
+function __c82(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           AccountId: S.String.pipe(T.HttpLabel("AccountId")),
-          AccountSettings: __S(64, __c8, 0),
+          AccountSettings: __S(368, __c46, 0),
         }).pipe(
           T.all(
             T.Http({ method: "PUT", uri: "/accounts/{AccountId}/settings" }),
@@ -4667,7 +4932,7 @@ function __c16(j: number): any {
       });
   }
 }
-function __c17(j: number): any {
+function __c83(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4686,16 +4951,24 @@ function __c17(j: number): any {
           ),
         ),
       ).annotate({ identifier: "UpdateBotRequest" });
-    case 1:
+  }
+}
+function __c84(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          BusinessCalling: S.optional(__S(71, __c8, 7)),
-          VoiceConnector: S.optional(__S(71, __c8, 7)),
+          BusinessCalling: S.optional(__S(408, __c51, 0)),
+          VoiceConnector: S.optional(__S(408, __c51, 0)),
         }).pipe(T.all(T.Http({ method: "PUT", uri: "/settings" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "UpdateGlobalSettingsRequest",
       });
-    case 2:
+  }
+}
+function __c85(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           PhoneNumberId: S.String.pipe(T.HttpLabel("PhoneNumberId")),
@@ -4712,7 +4985,11 @@ function __c17(j: number): any {
           ),
         ),
       ).annotate({ identifier: "UpdatePhoneNumberRequest" });
-    case 3:
+  }
+}
+function __c86(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ CallingName: SensitiveString }).pipe(
           T.all(
@@ -4727,7 +5004,11 @@ function __c17(j: number): any {
       ).annotate({
         identifier: "UpdatePhoneNumberSettingsRequest",
       });
-    case 4:
+  }
+}
+function __c87(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           AccountId: S.String.pipe(T.HttpLabel("AccountId")),
@@ -4744,7 +5025,11 @@ function __c17(j: number): any {
           ),
         ),
       ).annotate({ identifier: "UpdateRoomRequest" });
-    case 5:
+  }
+}
+function __c88(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           AccountId: S.String.pipe(T.HttpLabel("AccountId")),
@@ -4767,14 +5052,18 @@ function __c17(j: number): any {
       ).annotate({
         identifier: "UpdateRoomMembershipRequest",
       });
-    case 6:
+  }
+}
+function __c89(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           AccountId: S.String.pipe(T.HttpLabel("AccountId")),
           UserId: S.String.pipe(T.HttpLabel("UserId")),
           LicenseType: S.optional(S.String),
           UserType: S.optional(S.String),
-          AlexaForBusinessMetadata: S.optional(__S(25, __c3, 1)),
+          AlexaForBusinessMetadata: S.optional(__S(112, __c14, 0)),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/accounts/{AccountId}/users/{UserId}" }),
@@ -4786,12 +5075,16 @@ function __c17(j: number): any {
           ),
         ),
       ).annotate({ identifier: "UpdateUserRequest" });
-    case 7:
+  }
+}
+function __c90(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           AccountId: S.String.pipe(T.HttpLabel("AccountId")),
           UserId: S.String.pipe(T.HttpLabel("UserId")),
-          UserSettings: __S(91, __c11, 3),
+          UserSettings: __S(489, __c61, 1),
         }).pipe(
           T.all(
             T.Http({ method: "PUT", uri: "/accounts/{AccountId}/users/{UserId}/settings" }),
@@ -4807,7 +5100,6 @@ function __c17(j: number): any {
       });
   }
 }
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

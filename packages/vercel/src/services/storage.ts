@@ -430,7 +430,7 @@ export const createStorageStoresBlob: API.OperationMethod<
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(0, __c0, 0) as any as S.Schema<CreateStorageStoresBlobRequest>,
-  output: __S(11, __c1, 3) as any as S.Schema<CreateStorageStoresBlobResponse>,
+  output: __S(7, __c0, 7) as any as S.Schema<CreateStorageStoresBlobResponse>,
   errors: [BadRequest, PaymentRequired, Forbidden, NotFound, Conflict],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -449,8 +449,8 @@ export const deleteStorageStoresBlob: API.OperationMethod<
   DeleteStorageStoresBlobError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(12, __c1, 4) as any as S.Schema<DeleteStorageStoresBlobRequest>,
-  output: __S(13, __c1, 5) as any as S.Schema<DeleteStorageStoresBlobResponse>,
+  input: __S(16, __c2, 0) as any as S.Schema<DeleteStorageStoresBlobRequest>,
+  output: __S(17, __c2, 1) as any as S.Schema<DeleteStorageStoresBlobResponse>,
   errors: [BadRequest, Forbidden, NotFound, Conflict],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -464,8 +464,8 @@ export const getStorageStore: API.OperationMethod<
   GetStorageStoreError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(14, __c1, 6) as any as S.Schema<GetStorageStoreRequest>,
-  output: __S(21, __c2, 5) as any as S.Schema<GetStorageStoreResponse>,
+  input: __S(24, __c3, 0) as any as S.Schema<GetStorageStoreRequest>,
+  output: __S(31, __c3, 7) as any as S.Schema<GetStorageStoreResponse>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -486,58 +486,38 @@ function __c0(j: number): any {
         identifier: "CreateStorageStoresBlobRequest",
       });
     case 1:
-      return S.Array(S.String);
-    case 2:
       return S.suspend(() =>
         S.Struct({
-          owners: S.optional(__S(1, __c0, 1)),
+          owners: S.optional(__S(8, __c1, 0)),
           providers: S.Unknown,
-          repos: S.optional(__S(1, __c0, 1)),
+          repos: S.optional(__S(8, __c1, 0)),
         }),
       ).annotate({
         identifier: "CreateStorageStoresBlobResponseStoreProjectFilterGit",
       });
-    case 3:
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          git: S.optional(__S(2, __c0, 2)),
+          git: S.optional(__S(1, __c0, 1)),
         }),
       ).annotate({
         identifier: "CreateStorageStoresBlobResponseStoreProjectFilter",
       });
-    case 4:
-      return S.Array(S.String);
-    case 5:
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          environments: __S(4, __c0, 4),
-          slug: S.String,
-        }),
-      ).annotate({
-        identifier:
-          "CreateStorageStoresBlobResponseStoreProjectsMetadataItemDeploymentsActionsItem",
-      });
-    case 6:
-      return S.Array(__S(5, __c0, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          actions: __S(6, __c0, 6),
+          actions: __S(11, __c1, 3),
           required: S.Boolean,
         }),
       ).annotate({
         identifier: "CreateStorageStoresBlobResponseStoreProjectsMetadataItemDeployments",
       });
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
+    case 4:
       return S.suspend(() =>
         S.Struct({
-          deployments: S.optional(__S(7, __c0, 7)),
-          environments: __S(4, __c0, 4),
-          environmentVariables: __S(4, __c0, 4),
+          deployments: S.optional(__S(3, __c0, 3)),
+          environments: __S(9, __c1, 1),
+          environmentVariables: __S(9, __c1, 1),
           envVarPrefix: S.NullOr(S.String),
           framework: S.optional(S.NullOr(S.String)),
           id: S.String,
@@ -549,13 +529,13 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "CreateStorageStoresBlobResponseStoreProjectsMetadataItem",
       });
-    case 1:
-      return S.Array(__S(8, __c1, 0));
-    case 2:
+    case 5:
+      return S.Array(__S(4, __c0, 4));
+    case 6:
       return S.suspend(() =>
         S.Struct({
-          projectFilter: S.optional(__S(3, __c0, 3)),
-          projectsMetadata: __S(9, __c1, 1),
+          projectFilter: S.optional(__S(2, __c0, 2)),
+          projectsMetadata: __S(5, __c0, 5),
           status: S.NullOr(S.String),
           totalConnectedProjects: S.optional(S.Number),
           usageQuotaExceeded: S.Boolean,
@@ -570,48 +550,34 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "CreateStorageStoresBlobResponseStore",
       });
-    case 3:
+    case 7:
       return S.suspend(() =>
         S.Struct({
-          store: S.NullOr(__S(10, __c1, 2)),
+          store: S.NullOr(__S(6, __c0, 6)),
         }),
       ).annotate({
         identifier: "CreateStorageStoresBlobResponse",
       });
-    case 4:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+    case 1:
+      return S.Array(S.String);
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          id: S.String.pipe(T.Label()),
-        }).pipe(T.Http({ method: "DELETE", uri: "/storage/stores/blob/{id}", code: 200 })),
-      ).annotate({
-        identifier: "DeleteStorageStoresBlobRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String,
+          environments: __S(9, __c1, 1),
+          slug: S.String,
         }),
       ).annotate({
-        identifier: "DeleteStorageStoresBlobResponse",
+        identifier:
+          "CreateStorageStoresBlobResponseStoreProjectsMetadataItemDeploymentsActionsItem",
       });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String.pipe(T.Label()),
-          skip_metadata: S.optional(S.Boolean.pipe(T.Query("skip-metadata"))),
-          include_guides: S.optional(S.Boolean.pipe(T.Query("include-guides"))),
-        }).pipe(T.Http({ method: "GET", uri: "/storage/stores/{id}", code: 200 })),
-      ).annotate({ identifier: "GetStorageStoreRequest" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          owners: S.optional(__S(1, __c0, 1)),
-          providers: S.Unknown,
-          repos: S.optional(__S(1, __c0, 1)),
-        }),
-      ).annotate({
-        identifier: "GetStorageStoreResponseStoreProjectFilterGit",
-      });
+    case 3:
+      return S.Array(__S(10, __c1, 2));
   }
 }
 function __c2(j: number): any {
@@ -619,26 +585,64 @@ function __c2(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          git: S.optional(__S(15, __c1, 7)),
-        }),
+          id: S.String.pipe(T.Label()),
+        }).pipe(T.Http({ method: "DELETE", uri: "/storage/stores/blob/{id}", code: 200 })),
       ).annotate({
-        identifier: "GetStorageStoreResponseStoreProjectFilter",
+        identifier: "DeleteStorageStoresBlobRequest",
       });
     case 1:
       return S.suspend(() =>
         S.Struct({
-          actions: __S(6, __c0, 6),
+          id: S.String,
+        }),
+      ).annotate({
+        identifier: "DeleteStorageStoresBlobResponse",
+      });
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String.pipe(T.Label()),
+          skip_metadata: S.optional(S.Boolean.pipe(T.Query("skip-metadata"))),
+          include_guides: S.optional(S.Boolean.pipe(T.Query("include-guides"))),
+        }).pipe(T.Http({ method: "GET", uri: "/storage/stores/{id}", code: 200 })),
+      ).annotate({ identifier: "GetStorageStoreRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          owners: S.optional(__S(8, __c1, 0)),
+          providers: S.Unknown,
+          repos: S.optional(__S(8, __c1, 0)),
+        }),
+      ).annotate({
+        identifier: "GetStorageStoreResponseStoreProjectFilterGit",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          git: S.optional(__S(25, __c3, 1)),
+        }),
+      ).annotate({
+        identifier: "GetStorageStoreResponseStoreProjectFilter",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          actions: __S(11, __c1, 3),
           required: S.Boolean,
         }),
       ).annotate({
         identifier: "GetStorageStoreResponseStoreProjectsMetadataItemDeployments",
       });
-    case 2:
+    case 4:
       return S.suspend(() =>
         S.Struct({
-          deployments: S.optional(__S(17, __c2, 1)),
-          environments: __S(4, __c0, 4),
-          environmentVariables: __S(4, __c0, 4),
+          deployments: S.optional(__S(27, __c3, 3)),
+          environments: __S(9, __c1, 1),
+          environmentVariables: __S(9, __c1, 1),
           envVarPrefix: S.NullOr(S.String),
           framework: S.optional(S.NullOr(S.String)),
           id: S.String,
@@ -650,13 +654,13 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "GetStorageStoreResponseStoreProjectsMetadataItem",
       });
-    case 3:
-      return S.Array(__S(18, __c2, 2));
-    case 4:
+    case 5:
+      return S.Array(__S(28, __c3, 4));
+    case 6:
       return S.suspend(() =>
         S.Struct({
-          projectFilter: S.optional(__S(16, __c2, 0)),
-          projectsMetadata: __S(19, __c2, 3),
+          projectFilter: S.optional(__S(26, __c3, 2)),
+          projectsMetadata: __S(29, __c3, 5),
           status: S.NullOr(S.String),
           totalConnectedProjects: S.optional(S.Number),
           usageQuotaExceeded: S.Boolean,
@@ -664,15 +668,14 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "GetStorageStoreResponseStore",
       });
-    case 5:
+    case 7:
       return S.suspend(() =>
         S.Struct({
-          store: __S(20, __c2, 4),
+          store: __S(30, __c3, 6),
         }),
       ).annotate({ identifier: "GetStorageStoreResponse" });
   }
 }
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

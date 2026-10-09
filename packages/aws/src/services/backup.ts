@@ -2276,7 +2276,7 @@ export const associateBackupVaultMpaApprovalTeam: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(0, __c0, 0) as any as S.Schema<AssociateBackupVaultMpaApprovalTeamInput>,
-  output: __S(1, __c0, 1) as any as S.Schema<AssociateBackupVaultMpaApprovalTeamResponse>,
+  output: __S(8, __c1, 0) as any as S.Schema<AssociateBackupVaultMpaApprovalTeamResponse>,
   errors: [
     InvalidParameterValueException,
     InvalidRequestException,
@@ -2306,8 +2306,8 @@ export const cancelLegalHold: API.OperationMethod<
   CancelLegalHoldError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2, __c0, 2) as any as S.Schema<CancelLegalHoldInput>,
-  output: __S(3, __c0, 3) as any as S.Schema<CancelLegalHoldOutput>,
+  input: __S(96, __c12, 0) as any as S.Schema<CancelLegalHoldInput>,
+  output: __S(104, __c13, 0) as any as S.Schema<CancelLegalHoldOutput>,
   errors: [
     InvalidParameterValueException,
     InvalidResourceStateException,
@@ -2344,8 +2344,8 @@ export const createBackupAccessPoint: API.OperationMethod<
   CreateBackupAccessPointError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(6, __c0, 6) as any as S.Schema<CreateBackupAccessPointRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<CreateBackupAccessPointResponse>,
+  input: __S(192, __c24, 0) as any as S.Schema<CreateBackupAccessPointRequest>,
+  output: __S(193, __c24, 1) as any as S.Schema<CreateBackupAccessPointResponse>,
   errors: [
     AlreadyExistsException,
     ConflictException,
@@ -2382,8 +2382,8 @@ export const createBackupPlan: API.OperationMethod<
   CreateBackupPlanError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(23, __c2, 7) as any as S.Schema<CreateBackupPlanInput>,
-  output: __S(24, __c3, 0) as any as S.Schema<CreateBackupPlanOutput>,
+  input: __S(256, __c32, 0) as any as S.Schema<CreateBackupPlanInput>,
+  output: __S(257, __c32, 1) as any as S.Schema<CreateBackupPlanOutput>,
   errors: [
     AlreadyExistsException,
     InvalidParameterValueException,
@@ -2413,8 +2413,8 @@ export const createBackupSelection: API.OperationMethod<
   CreateBackupSelectionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(31, __c3, 7) as any as S.Schema<CreateBackupSelectionInput>,
-  output: __S(32, __c4, 0) as any as S.Schema<CreateBackupSelectionOutput>,
+  input: __S(304, __c38, 0) as any as S.Schema<CreateBackupSelectionInput>,
+  output: __S(305, __c38, 1) as any as S.Schema<CreateBackupSelectionOutput>,
   errors: [
     AlreadyExistsException,
     InvalidParameterValueException,
@@ -2448,8 +2448,8 @@ export const createBackupVault: API.OperationMethod<
   CreateBackupVaultError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(33, __c4, 1) as any as S.Schema<CreateBackupVaultInput>,
-  output: __S(34, __c4, 2) as any as S.Schema<CreateBackupVaultOutput>,
+  input: __S(320, __c40, 0) as any as S.Schema<CreateBackupVaultInput>,
+  output: __S(321, __c40, 1) as any as S.Schema<CreateBackupVaultOutput>,
   errors: [
     AlreadyExistsException,
     InvalidParameterValueException,
@@ -2481,8 +2481,8 @@ export const createFramework: API.OperationMethod<
   CreateFrameworkError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(40, __c5, 0) as any as S.Schema<CreateFrameworkInput>,
-  output: __S(41, __c5, 1) as any as S.Schema<CreateFrameworkOutput>,
+  input: __S(328, __c41, 0) as any as S.Schema<CreateFrameworkInput>,
+  output: __S(329, __c41, 1) as any as S.Schema<CreateFrameworkOutput>,
   errors: [
     AlreadyExistsException,
     InvalidParameterValueException,
@@ -2513,8 +2513,8 @@ export const createLegalHold: API.OperationMethod<
   CreateLegalHoldError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(44, __c5, 4) as any as S.Schema<CreateLegalHoldInput>,
-  output: __S(45, __c5, 5) as any as S.Schema<CreateLegalHoldOutput>,
+  input: __S(344, __c43, 0) as any as S.Schema<CreateLegalHoldInput>,
+  output: __S(345, __c43, 1) as any as S.Schema<CreateLegalHoldOutput>,
   errors: [
     InvalidParameterValueException,
     LimitExceededException,
@@ -2550,8 +2550,8 @@ export const createLogicallyAirGappedBackupVault: API.OperationMethod<
   CreateLogicallyAirGappedBackupVaultError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(46, __c5, 6) as any as S.Schema<CreateLogicallyAirGappedBackupVaultInput>,
-  output: __S(47, __c5, 7) as any as S.Schema<CreateLogicallyAirGappedBackupVaultOutput>,
+  input: __S(360, __c45, 0) as any as S.Schema<CreateLogicallyAirGappedBackupVaultInput>,
+  output: __S(361, __c45, 1) as any as S.Schema<CreateLogicallyAirGappedBackupVaultOutput>,
   errors: [
     AlreadyExistsException,
     InvalidParameterValueException,
@@ -2585,8 +2585,8 @@ export const createReportPlan: API.OperationMethod<
   CreateReportPlanError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(50, __c6, 2) as any as S.Schema<CreateReportPlanInput>,
-  output: __S(51, __c6, 3) as any as S.Schema<CreateReportPlanOutput>,
+  input: __S(368, __c46, 0) as any as S.Schema<CreateReportPlanInput>,
+  output: __S(376, __c47, 0) as any as S.Schema<CreateReportPlanOutput>,
   errors: [
     AlreadyExistsException,
     InvalidParameterValueException,
@@ -2617,8 +2617,8 @@ export const createRestoreAccessBackupVault: API.OperationMethod<
   CreateRestoreAccessBackupVaultError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(52, __c6, 4) as any as S.Schema<CreateRestoreAccessBackupVaultInput>,
-  output: __S(53, __c6, 5) as any as S.Schema<CreateRestoreAccessBackupVaultOutput>,
+  input: __S(392, __c49, 0) as any as S.Schema<CreateRestoreAccessBackupVaultInput>,
+  output: __S(393, __c49, 1) as any as S.Schema<CreateRestoreAccessBackupVaultOutput>,
   errors: [
     AlreadyExistsException,
     InvalidParameterValueException,
@@ -2654,8 +2654,8 @@ export const createRestoreTestingPlan: API.OperationMethod<
   CreateRestoreTestingPlanError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(57, __c7, 1) as any as S.Schema<CreateRestoreTestingPlanInput>,
-  output: __S(58, __c7, 2) as any as S.Schema<CreateRestoreTestingPlanOutput>,
+  input: __S(401, __c50, 1) as any as S.Schema<CreateRestoreTestingPlanInput>,
+  output: __S(402, __c50, 2) as any as S.Schema<CreateRestoreTestingPlanOutput>,
   errors: [
     AlreadyExistsException,
     ConflictException,
@@ -2705,8 +2705,8 @@ export const createRestoreTestingSelection: API.OperationMethod<
   CreateRestoreTestingSelectionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(63, __c7, 7) as any as S.Schema<CreateRestoreTestingSelectionInput>,
-  output: __S(64, __c8, 0) as any as S.Schema<CreateRestoreTestingSelectionOutput>,
+  input: __S(417, __c52, 1) as any as S.Schema<CreateRestoreTestingSelectionInput>,
+  output: __S(418, __c52, 2) as any as S.Schema<CreateRestoreTestingSelectionOutput>,
   errors: [
     AlreadyExistsException,
     InvalidParameterValueException,
@@ -2741,8 +2741,8 @@ export const createTieringConfiguration: API.OperationMethod<
   CreateTieringConfigurationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(68, __c8, 4) as any as S.Schema<CreateTieringConfigurationInput>,
-  output: __S(69, __c8, 5) as any as S.Schema<CreateTieringConfigurationOutput>,
+  input: __S(433, __c54, 1) as any as S.Schema<CreateTieringConfigurationInput>,
+  output: __S(434, __c54, 2) as any as S.Schema<CreateTieringConfigurationOutput>,
   errors: [
     AlreadyExistsException,
     ConflictException,
@@ -2776,8 +2776,8 @@ export const deleteBackupAccessPoint: API.OperationMethod<
   DeleteBackupAccessPointError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(70, __c8, 6) as any as S.Schema<DeleteBackupAccessPointInput>,
-  output: __S(71, __c8, 7) as any as S.Schema<DeleteBackupAccessPointResponse>,
+  input: __S(448, __c56, 0) as any as S.Schema<DeleteBackupAccessPointInput>,
+  output: __S(449, __c56, 1) as any as S.Schema<DeleteBackupAccessPointResponse>,
   errors: [
     InvalidParameterValueException,
     InvalidRequestException,
@@ -2808,8 +2808,8 @@ export const deleteBackupPlan: API.OperationMethod<
   DeleteBackupPlanError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(72, __c9, 0) as any as S.Schema<DeleteBackupPlanInput>,
-  output: __S(73, __c9, 1) as any as S.Schema<DeleteBackupPlanOutput>,
+  input: __S(456, __c57, 0) as any as S.Schema<DeleteBackupPlanInput>,
+  output: __S(457, __c57, 1) as any as S.Schema<DeleteBackupPlanOutput>,
   errors: [
     InvalidParameterValueException,
     InvalidRequestException,
@@ -2838,8 +2838,8 @@ export const deleteBackupSelection: API.OperationMethod<
   DeleteBackupSelectionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(74, __c9, 2) as any as S.Schema<DeleteBackupSelectionInput>,
-  output: __S(3, __c0, 3) as any as S.Schema<DeleteBackupSelectionResponse>,
+  input: __S(464, __c58, 0) as any as S.Schema<DeleteBackupSelectionInput>,
+  output: __S(104, __c13, 0) as any as S.Schema<DeleteBackupSelectionResponse>,
   errors: [
     InvalidParameterValueException,
     MissingParameterValueException,
@@ -2868,8 +2868,8 @@ export const deleteBackupVault: API.OperationMethod<
   DeleteBackupVaultError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(75, __c9, 3) as any as S.Schema<DeleteBackupVaultInput>,
-  output: __S(3, __c0, 3) as any as S.Schema<DeleteBackupVaultResponse>,
+  input: __S(472, __c59, 0) as any as S.Schema<DeleteBackupVaultInput>,
+  output: __S(104, __c13, 0) as any as S.Schema<DeleteBackupVaultResponse>,
   errors: [
     InvalidParameterValueException,
     InvalidRequestException,
@@ -2897,8 +2897,8 @@ export const deleteBackupVaultAccessPolicy: API.OperationMethod<
   DeleteBackupVaultAccessPolicyError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(76, __c9, 4) as any as S.Schema<DeleteBackupVaultAccessPolicyInput>,
-  output: __S(1, __c0, 1) as any as S.Schema<DeleteBackupVaultAccessPolicyResponse>,
+  input: __S(480, __c60, 0) as any as S.Schema<DeleteBackupVaultAccessPolicyInput>,
+  output: __S(8, __c1, 0) as any as S.Schema<DeleteBackupVaultAccessPolicyResponse>,
   errors: [
     InvalidParameterValueException,
     MissingParameterValueException,
@@ -2932,8 +2932,8 @@ export const deleteBackupVaultLockConfiguration: API.OperationMethod<
   DeleteBackupVaultLockConfigurationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(77, __c9, 5) as any as S.Schema<DeleteBackupVaultLockConfigurationInput>,
-  output: __S(1, __c0, 1) as any as S.Schema<DeleteBackupVaultLockConfigurationResponse>,
+  input: __S(488, __c61, 0) as any as S.Schema<DeleteBackupVaultLockConfigurationInput>,
+  output: __S(8, __c1, 0) as any as S.Schema<DeleteBackupVaultLockConfigurationResponse>,
   errors: [
     InvalidParameterValueException,
     InvalidRequestException,
@@ -2961,8 +2961,8 @@ export const deleteBackupVaultNotifications: API.OperationMethod<
   DeleteBackupVaultNotificationsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(78, __c9, 6) as any as S.Schema<DeleteBackupVaultNotificationsInput>,
-  output: __S(1, __c0, 1) as any as S.Schema<DeleteBackupVaultNotificationsResponse>,
+  input: __S(496, __c62, 0) as any as S.Schema<DeleteBackupVaultNotificationsInput>,
+  output: __S(8, __c1, 0) as any as S.Schema<DeleteBackupVaultNotificationsResponse>,
   errors: [
     InvalidParameterValueException,
     MissingParameterValueException,
@@ -2990,8 +2990,8 @@ export const deleteFramework: API.OperationMethod<
   DeleteFrameworkError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(79, __c9, 7) as any as S.Schema<DeleteFrameworkInput>,
-  output: __S(3, __c0, 3) as any as S.Schema<DeleteFrameworkResponse>,
+  input: __S(504, __c63, 0) as any as S.Schema<DeleteFrameworkInput>,
+  output: __S(104, __c13, 0) as any as S.Schema<DeleteFrameworkResponse>,
   errors: [
     ConflictException,
     InvalidParameterValueException,
@@ -3036,8 +3036,8 @@ export const deleteRecoveryPoint: API.OperationMethod<
   DeleteRecoveryPointError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(80, __c10, 0) as any as S.Schema<DeleteRecoveryPointInput>,
-  output: __S(3, __c0, 3) as any as S.Schema<DeleteRecoveryPointResponse>,
+  input: __S(512, __c64, 0) as any as S.Schema<DeleteRecoveryPointInput>,
+  output: __S(104, __c13, 0) as any as S.Schema<DeleteRecoveryPointResponse>,
   errors: [
     InvalidParameterValueException,
     InvalidRequestException,
@@ -3067,8 +3067,8 @@ export const deleteReportPlan: API.OperationMethod<
   DeleteReportPlanError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(81, __c10, 1) as any as S.Schema<DeleteReportPlanInput>,
-  output: __S(3, __c0, 3) as any as S.Schema<DeleteReportPlanResponse>,
+  input: __S(520, __c65, 0) as any as S.Schema<DeleteReportPlanInput>,
+  output: __S(104, __c13, 0) as any as S.Schema<DeleteReportPlanResponse>,
   errors: [
     ConflictException,
     InvalidParameterValueException,
@@ -3097,8 +3097,8 @@ export const deleteRestoreTestingPlan: API.OperationMethod<
   DeleteRestoreTestingPlanError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(82, __c10, 2) as any as S.Schema<DeleteRestoreTestingPlanInput>,
-  output: __S(1, __c0, 1) as any as S.Schema<DeleteRestoreTestingPlanResponse>,
+  input: __S(528, __c66, 0) as any as S.Schema<DeleteRestoreTestingPlanInput>,
+  output: __S(8, __c1, 0) as any as S.Schema<DeleteRestoreTestingPlanResponse>,
   errors: [InvalidRequestException, ServiceUnavailableException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3122,8 +3122,8 @@ export const deleteRestoreTestingSelection: API.OperationMethod<
   DeleteRestoreTestingSelectionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(83, __c10, 3) as any as S.Schema<DeleteRestoreTestingSelectionInput>,
-  output: __S(1, __c0, 1) as any as S.Schema<DeleteRestoreTestingSelectionResponse>,
+  input: __S(536, __c67, 0) as any as S.Schema<DeleteRestoreTestingSelectionInput>,
+  output: __S(8, __c1, 0) as any as S.Schema<DeleteRestoreTestingSelectionResponse>,
   errors: [ResourceNotFoundException, ServiceUnavailableException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3145,8 +3145,8 @@ export const deleteTieringConfiguration: API.OperationMethod<
   DeleteTieringConfigurationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(84, __c10, 4) as any as S.Schema<DeleteTieringConfigurationInput>,
-  output: __S(1, __c0, 1) as any as S.Schema<DeleteTieringConfigurationOutput>,
+  input: __S(544, __c68, 0) as any as S.Schema<DeleteTieringConfigurationInput>,
+  output: __S(8, __c1, 0) as any as S.Schema<DeleteTieringConfigurationOutput>,
   errors: [
     InvalidParameterValueException,
     MissingParameterValueException,
@@ -3178,8 +3178,8 @@ export const describeBackupAccessPoint: API.OperationMethod<
   DescribeBackupAccessPointError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(85, __c10, 5) as any as S.Schema<DescribeBackupAccessPointInput>,
-  output: __S(86, __c10, 6) as any as S.Schema<DescribeBackupAccessPointResponse>,
+  input: __S(552, __c69, 0) as any as S.Schema<DescribeBackupAccessPointInput>,
+  output: __S(553, __c69, 1) as any as S.Schema<DescribeBackupAccessPointResponse>,
   errors: [
     InvalidParameterValueException,
     InvalidRequestException,
@@ -3208,8 +3208,8 @@ export const describeBackupJob: API.OperationMethod<
   DescribeBackupJobError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(87, __c10, 7) as any as S.Schema<DescribeBackupJobInput>,
-  output: __S(90, __c11, 2) as any as S.Schema<DescribeBackupJobOutput>,
+  input: __S(560, __c70, 0) as any as S.Schema<DescribeBackupJobInput>,
+  output: __S(561, __c70, 1) as any as S.Schema<DescribeBackupJobOutput>,
   errors: [
     DependencyFailureException,
     InvalidParameterValueException,
@@ -3237,8 +3237,8 @@ export const describeBackupVault: API.OperationMethod<
   DescribeBackupVaultError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(91, __c11, 3) as any as S.Schema<DescribeBackupVaultInput>,
-  output: __S(93, __c11, 5) as any as S.Schema<DescribeBackupVaultOutput>,
+  input: __S(584, __c73, 0) as any as S.Schema<DescribeBackupVaultInput>,
+  output: __S(586, __c73, 2) as any as S.Schema<DescribeBackupVaultOutput>,
   errors: [
     InvalidParameterValueException,
     MissingParameterValueException,
@@ -3265,8 +3265,8 @@ export const describeCopyJob: API.OperationMethod<
   DescribeCopyJobError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(94, __c11, 6) as any as S.Schema<DescribeCopyJobInput>,
-  output: __S(96, __c12, 0) as any as S.Schema<DescribeCopyJobOutput>,
+  input: __S(592, __c74, 0) as any as S.Schema<DescribeCopyJobInput>,
+  output: __S(593, __c74, 1) as any as S.Schema<DescribeCopyJobOutput>,
   errors: [
     InvalidParameterValueException,
     MissingParameterValueException,
@@ -3293,8 +3293,8 @@ export const describeFramework: API.OperationMethod<
   DescribeFrameworkError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(97, __c12, 1) as any as S.Schema<DescribeFrameworkInput>,
-  output: __S(98, __c12, 2) as any as S.Schema<DescribeFrameworkOutput>,
+  input: __S(608, __c76, 0) as any as S.Schema<DescribeFrameworkInput>,
+  output: __S(609, __c76, 1) as any as S.Schema<DescribeFrameworkOutput>,
   errors: [
     InvalidParameterValueException,
     MissingParameterValueException,
@@ -3319,8 +3319,8 @@ export const describeGlobalSettings: API.OperationMethod<
   DescribeGlobalSettingsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(99, __c12, 3) as any as S.Schema<DescribeGlobalSettingsInput>,
-  output: __S(100, __c12, 4) as any as S.Schema<DescribeGlobalSettingsOutput>,
+  input: __S(616, __c77, 0) as any as S.Schema<DescribeGlobalSettingsInput>,
+  output: __S(617, __c77, 1) as any as S.Schema<DescribeGlobalSettingsOutput>,
   errors: [InvalidRequestException, ServiceUnavailableException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3344,8 +3344,8 @@ export const describeProtectedResource: API.OperationMethod<
   DescribeProtectedResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(101, __c12, 5) as any as S.Schema<DescribeProtectedResourceInput>,
-  output: __S(102, __c12, 6) as any as S.Schema<DescribeProtectedResourceOutput>,
+  input: __S(624, __c78, 0) as any as S.Schema<DescribeProtectedResourceInput>,
+  output: __S(625, __c78, 1) as any as S.Schema<DescribeProtectedResourceOutput>,
   errors: [
     InvalidParameterValueException,
     MissingParameterValueException,
@@ -3373,8 +3373,8 @@ export const describeRecoveryPoint: API.OperationMethod<
   DescribeRecoveryPointError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(103, __c12, 7) as any as S.Schema<DescribeRecoveryPointInput>,
-  output: __S(108, __c13, 4) as any as S.Schema<DescribeRecoveryPointOutput>,
+  input: __S(632, __c79, 0) as any as S.Schema<DescribeRecoveryPointInput>,
+  output: __S(635, __c79, 3) as any as S.Schema<DescribeRecoveryPointOutput>,
   errors: [
     InvalidParameterValueException,
     MissingParameterValueException,
@@ -3400,8 +3400,8 @@ export const describeRegionSettings: API.OperationMethod<
   DescribeRegionSettingsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(109, __c13, 5) as any as S.Schema<DescribeRegionSettingsInput>,
-  output: __S(111, __c13, 7) as any as S.Schema<DescribeRegionSettingsOutput>,
+  input: __S(656, __c82, 0) as any as S.Schema<DescribeRegionSettingsInput>,
+  output: __S(657, __c82, 1) as any as S.Schema<DescribeRegionSettingsOutput>,
   errors: [ServiceUnavailableException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3423,8 +3423,8 @@ export const describeReportJob: API.OperationMethod<
   DescribeReportJobError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(112, __c14, 0) as any as S.Schema<DescribeReportJobInput>,
-  output: __S(115, __c14, 3) as any as S.Schema<DescribeReportJobOutput>,
+  input: __S(672, __c84, 0) as any as S.Schema<DescribeReportJobInput>,
+  output: __S(673, __c84, 1) as any as S.Schema<DescribeReportJobOutput>,
   errors: [MissingParameterValueException, ResourceNotFoundException, ServiceUnavailableException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3446,8 +3446,8 @@ export const describeReportPlan: API.OperationMethod<
   DescribeReportPlanError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(116, __c14, 4) as any as S.Schema<DescribeReportPlanInput>,
-  output: __S(118, __c14, 6) as any as S.Schema<DescribeReportPlanOutput>,
+  input: __S(688, __c86, 0) as any as S.Schema<DescribeReportPlanInput>,
+  output: __S(689, __c86, 1) as any as S.Schema<DescribeReportPlanOutput>,
   errors: [
     InvalidParameterValueException,
     MissingParameterValueException,
@@ -3475,8 +3475,8 @@ export const describeRestoreJob: API.OperationMethod<
   DescribeRestoreJobError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(119, __c14, 7) as any as S.Schema<DescribeRestoreJobInput>,
-  output: __S(121, __c15, 1) as any as S.Schema<DescribeRestoreJobOutput>,
+  input: __S(704, __c88, 0) as any as S.Schema<DescribeRestoreJobInput>,
+  output: __S(705, __c88, 1) as any as S.Schema<DescribeRestoreJobOutput>,
   errors: [
     DependencyFailureException,
     InvalidParameterValueException,
@@ -3504,8 +3504,8 @@ export const describeScanJob: API.OperationMethod<
   DescribeScanJobError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(122, __c15, 2) as any as S.Schema<DescribeScanJobInput>,
-  output: __S(125, __c15, 5) as any as S.Schema<DescribeScanJobOutput>,
+  input: __S(720, __c90, 0) as any as S.Schema<DescribeScanJobInput>,
+  output: __S(721, __c90, 1) as any as S.Schema<DescribeScanJobOutput>,
   errors: [
     InvalidParameterValueException,
     MissingParameterValueException,
@@ -3533,8 +3533,8 @@ export const disassociateBackupVaultMpaApprovalTeam: API.OperationMethod<
   DisassociateBackupVaultMpaApprovalTeamError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(126, __c15, 6) as any as S.Schema<DisassociateBackupVaultMpaApprovalTeamInput>,
-  output: __S(1, __c0, 1) as any as S.Schema<DisassociateBackupVaultMpaApprovalTeamResponse>,
+  input: __S(744, __c93, 0) as any as S.Schema<DisassociateBackupVaultMpaApprovalTeamInput>,
+  output: __S(8, __c1, 0) as any as S.Schema<DisassociateBackupVaultMpaApprovalTeamResponse>,
   errors: [
     InvalidParameterValueException,
     InvalidRequestException,
@@ -3568,8 +3568,8 @@ export const disassociateRecoveryPoint: API.OperationMethod<
   DisassociateRecoveryPointError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(127, __c15, 7) as any as S.Schema<DisassociateRecoveryPointInput>,
-  output: __S(1, __c0, 1) as any as S.Schema<DisassociateRecoveryPointResponse>,
+  input: __S(752, __c94, 0) as any as S.Schema<DisassociateRecoveryPointInput>,
+  output: __S(8, __c1, 0) as any as S.Schema<DisassociateRecoveryPointResponse>,
   errors: [
     InvalidParameterValueException,
     InvalidRequestException,
@@ -3600,8 +3600,8 @@ export const disassociateRecoveryPointFromParent: API.OperationMethod<
   DisassociateRecoveryPointFromParentError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(128, __c16, 0) as any as S.Schema<DisassociateRecoveryPointFromParentInput>,
-  output: __S(1, __c0, 1) as any as S.Schema<DisassociateRecoveryPointFromParentResponse>,
+  input: __S(760, __c95, 0) as any as S.Schema<DisassociateRecoveryPointFromParentInput>,
+  output: __S(8, __c1, 0) as any as S.Schema<DisassociateRecoveryPointFromParentResponse>,
   errors: [
     InvalidParameterValueException,
     InvalidRequestException,
@@ -3629,8 +3629,8 @@ export const exportBackupPlanTemplate: API.OperationMethod<
   ExportBackupPlanTemplateError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(129, __c16, 1) as any as S.Schema<ExportBackupPlanTemplateInput>,
-  output: __S(130, __c16, 2) as any as S.Schema<ExportBackupPlanTemplateOutput>,
+  input: __S(768, __c96, 0) as any as S.Schema<ExportBackupPlanTemplateInput>,
+  output: __S(769, __c96, 1) as any as S.Schema<ExportBackupPlanTemplateOutput>,
   errors: [
     InvalidParameterValueException,
     MissingParameterValueException,
@@ -3658,8 +3658,8 @@ export const getBackupPlan: API.OperationMethod<
   GetBackupPlanError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(131, __c16, 3) as any as S.Schema<GetBackupPlanInput>,
-  output: __S(137, __c17, 1) as any as S.Schema<GetBackupPlanOutput>,
+  input: __S(776, __c97, 0) as any as S.Schema<GetBackupPlanInput>,
+  output: __S(779, __c97, 3) as any as S.Schema<GetBackupPlanOutput>,
   errors: [
     InvalidParameterValueException,
     MissingParameterValueException,
@@ -3687,8 +3687,8 @@ export const getBackupPlanFromJSON: API.OperationMethod<
   GetBackupPlanFromJSONError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(138, __c17, 2) as any as S.Schema<GetBackupPlanFromJSONInput>,
-  output: __S(139, __c17, 3) as any as S.Schema<GetBackupPlanFromJSONOutput>,
+  input: __S(792, __c99, 0) as any as S.Schema<GetBackupPlanFromJSONInput>,
+  output: __S(793, __c99, 1) as any as S.Schema<GetBackupPlanFromJSONOutput>,
   errors: [
     InvalidParameterValueException,
     InvalidRequestException,
@@ -3716,8 +3716,8 @@ export const getBackupPlanFromTemplate: API.OperationMethod<
   GetBackupPlanFromTemplateError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(140, __c17, 4) as any as S.Schema<GetBackupPlanFromTemplateInput>,
-  output: __S(141, __c17, 5) as any as S.Schema<GetBackupPlanFromTemplateOutput>,
+  input: __S(800, __c100, 0) as any as S.Schema<GetBackupPlanFromTemplateInput>,
+  output: __S(801, __c100, 1) as any as S.Schema<GetBackupPlanFromTemplateOutput>,
   errors: [
     InvalidParameterValueException,
     MissingParameterValueException,
@@ -3745,8 +3745,8 @@ export const getBackupSelection: API.OperationMethod<
   GetBackupSelectionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(142, __c17, 6) as any as S.Schema<GetBackupSelectionInput>,
-  output: __S(143, __c17, 7) as any as S.Schema<GetBackupSelectionOutput>,
+  input: __S(808, __c101, 0) as any as S.Schema<GetBackupSelectionInput>,
+  output: __S(809, __c101, 1) as any as S.Schema<GetBackupSelectionOutput>,
   errors: [
     InvalidParameterValueException,
     MissingParameterValueException,
@@ -3774,8 +3774,8 @@ export const getBackupVaultAccessPolicy: API.OperationMethod<
   GetBackupVaultAccessPolicyError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(144, __c18, 0) as any as S.Schema<GetBackupVaultAccessPolicyInput>,
-  output: __S(145, __c18, 1) as any as S.Schema<GetBackupVaultAccessPolicyOutput>,
+  input: __S(816, __c102, 0) as any as S.Schema<GetBackupVaultAccessPolicyInput>,
+  output: __S(817, __c102, 1) as any as S.Schema<GetBackupVaultAccessPolicyOutput>,
   errors: [
     InvalidParameterValueException,
     MissingParameterValueException,
@@ -3802,8 +3802,8 @@ export const getBackupVaultNotifications: API.OperationMethod<
   GetBackupVaultNotificationsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(146, __c18, 2) as any as S.Schema<GetBackupVaultNotificationsInput>,
-  output: __S(147, __c18, 3) as any as S.Schema<GetBackupVaultNotificationsOutput>,
+  input: __S(824, __c103, 0) as any as S.Schema<GetBackupVaultNotificationsInput>,
+  output: __S(825, __c103, 1) as any as S.Schema<GetBackupVaultNotificationsOutput>,
   errors: [
     InvalidParameterValueException,
     MissingParameterValueException,
@@ -3831,8 +3831,8 @@ export const getLegalHold: API.OperationMethod<
   GetLegalHoldError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(148, __c18, 4) as any as S.Schema<GetLegalHoldInput>,
-  output: __S(149, __c18, 5) as any as S.Schema<GetLegalHoldOutput>,
+  input: __S(832, __c104, 0) as any as S.Schema<GetLegalHoldInput>,
+  output: __S(833, __c104, 1) as any as S.Schema<GetLegalHoldOutput>,
   errors: [
     InvalidParameterValueException,
     MissingParameterValueException,
@@ -3859,8 +3859,8 @@ export const getPITRMalwareScanResults: API.OperationMethod<
   GetPITRMalwareScanResultsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(150, __c18, 6) as any as S.Schema<GetPITRMalwareScanResultsInput>,
-  output: __S(151, __c18, 7) as any as S.Schema<GetPITRMalwareScanResultsOutput>,
+  input: __S(840, __c105, 0) as any as S.Schema<GetPITRMalwareScanResultsInput>,
+  output: __S(841, __c105, 1) as any as S.Schema<GetPITRMalwareScanResultsOutput>,
   errors: [
     InvalidParameterValueException,
     MissingParameterValueException,
@@ -3888,8 +3888,8 @@ export const getRecoveryPointIndexDetails: API.OperationMethod<
   GetRecoveryPointIndexDetailsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(152, __c19, 0) as any as S.Schema<GetRecoveryPointIndexDetailsInput>,
-  output: __S(153, __c19, 1) as any as S.Schema<GetRecoveryPointIndexDetailsOutput>,
+  input: __S(848, __c106, 0) as any as S.Schema<GetRecoveryPointIndexDetailsInput>,
+  output: __S(849, __c106, 1) as any as S.Schema<GetRecoveryPointIndexDetailsOutput>,
   errors: [
     InvalidParameterValueException,
     MissingParameterValueException,
@@ -3916,8 +3916,8 @@ export const getRecoveryPointRestoreMetadata: API.OperationMethod<
   GetRecoveryPointRestoreMetadataError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(154, __c19, 2) as any as S.Schema<GetRecoveryPointRestoreMetadataInput>,
-  output: __S(155, __c19, 3) as any as S.Schema<GetRecoveryPointRestoreMetadataOutput>,
+  input: __S(856, __c107, 0) as any as S.Schema<GetRecoveryPointRestoreMetadataInput>,
+  output: __S(857, __c107, 1) as any as S.Schema<GetRecoveryPointRestoreMetadataOutput>,
   errors: [
     InvalidParameterValueException,
     MissingParameterValueException,
@@ -3944,8 +3944,8 @@ export const getRestoreJobMetadata: API.OperationMethod<
   GetRestoreJobMetadataError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(156, __c19, 4) as any as S.Schema<GetRestoreJobMetadataInput>,
-  output: __S(157, __c19, 5) as any as S.Schema<GetRestoreJobMetadataOutput>,
+  input: __S(864, __c108, 0) as any as S.Schema<GetRestoreJobMetadataInput>,
+  output: __S(865, __c108, 1) as any as S.Schema<GetRestoreJobMetadataOutput>,
   errors: [
     InvalidParameterValueException,
     MissingParameterValueException,
@@ -3975,8 +3975,8 @@ export const getRestoreTestingInferredMetadata: API.OperationMethod<
   GetRestoreTestingInferredMetadataError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(158, __c19, 6) as any as S.Schema<GetRestoreTestingInferredMetadataInput>,
-  output: __S(159, __c19, 7) as any as S.Schema<GetRestoreTestingInferredMetadataOutput>,
+  input: __S(872, __c109, 0) as any as S.Schema<GetRestoreTestingInferredMetadataInput>,
+  output: __S(873, __c109, 1) as any as S.Schema<GetRestoreTestingInferredMetadataOutput>,
   errors: [
     InvalidParameterValueException,
     MissingParameterValueException,
@@ -4003,8 +4003,8 @@ export const getRestoreTestingPlan: API.OperationMethod<
   GetRestoreTestingPlanError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(160, __c20, 0) as any as S.Schema<GetRestoreTestingPlanInput>,
-  output: __S(162, __c20, 2) as any as S.Schema<GetRestoreTestingPlanOutput>,
+  input: __S(880, __c110, 0) as any as S.Schema<GetRestoreTestingPlanInput>,
+  output: __S(882, __c110, 2) as any as S.Schema<GetRestoreTestingPlanOutput>,
   errors: [ResourceNotFoundException, ServiceUnavailableException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -4025,8 +4025,8 @@ export const getRestoreTestingSelection: API.OperationMethod<
   GetRestoreTestingSelectionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(163, __c20, 3) as any as S.Schema<GetRestoreTestingSelectionInput>,
-  output: __S(165, __c20, 5) as any as S.Schema<GetRestoreTestingSelectionOutput>,
+  input: __S(888, __c111, 0) as any as S.Schema<GetRestoreTestingSelectionInput>,
+  output: __S(890, __c111, 2) as any as S.Schema<GetRestoreTestingSelectionOutput>,
   errors: [ResourceNotFoundException, ServiceUnavailableException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -4043,8 +4043,8 @@ export const getSupportedResourceTypes: API.OperationMethod<
   GetSupportedResourceTypesError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(166, __c20, 6) as any as S.Schema<GetSupportedResourceTypesRequest>,
-  output: __S(167, __c20, 7) as any as S.Schema<GetSupportedResourceTypesOutput>,
+  input: __S(896, __c112, 0) as any as S.Schema<GetSupportedResourceTypesRequest>,
+  output: __S(897, __c112, 1) as any as S.Schema<GetSupportedResourceTypesOutput>,
   errors: [ServiceUnavailableException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -4068,8 +4068,8 @@ export const getTieringConfiguration: API.OperationMethod<
   GetTieringConfigurationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(168, __c21, 0) as any as S.Schema<GetTieringConfigurationInput>,
-  output: __S(170, __c21, 2) as any as S.Schema<GetTieringConfigurationOutput>,
+  input: __S(904, __c113, 0) as any as S.Schema<GetTieringConfigurationInput>,
+  output: __S(906, __c113, 2) as any as S.Schema<GetTieringConfigurationOutput>,
   errors: [
     InvalidParameterValueException,
     MissingParameterValueException,
@@ -4095,8 +4095,8 @@ export const listBackupAccessPoints: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   ListAccessPointsMember
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(171, __c21, 3) as any as S.Schema<ListBackupAccessPointsRequest>,
-  output: __S(174, __c21, 6) as any as S.Schema<ListBackupAccessPointsResponse>,
+  input: __S(912, __c114, 0) as any as S.Schema<ListBackupAccessPointsRequest>,
+  output: __S(922, __c115, 2) as any as S.Schema<ListBackupAccessPointsResponse>,
   errors: [InvalidParameterValueException, ServiceUnavailableException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -4126,8 +4126,8 @@ export const listBackupAccessPointsByRecoveryPoint: API.PaginatedOperationMethod
   Credentials | HttpClient.HttpClient,
   ListAccessPointsMember
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(175, __c21, 7) as any as S.Schema<ListBackupAccessPointsByRecoveryPointRequest>,
-  output: __S(174, __c21, 6) as any as S.Schema<ListBackupAccessPointsByRecoveryPointResponse>,
+  input: __S(928, __c116, 0) as any as S.Schema<ListBackupAccessPointsByRecoveryPointRequest>,
+  output: __S(922, __c115, 2) as any as S.Schema<ListBackupAccessPointsByRecoveryPointResponse>,
   errors: [InvalidParameterValueException, ServiceUnavailableException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -4155,8 +4155,8 @@ export const listBackupAccessPointsByResource: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   ListAccessPointsMember
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(176, __c22, 0) as any as S.Schema<ListBackupAccessPointsByResourceRequest>,
-  output: __S(174, __c21, 6) as any as S.Schema<ListBackupAccessPointsByResourceResponse>,
+  input: __S(936, __c117, 0) as any as S.Schema<ListBackupAccessPointsByResourceRequest>,
+  output: __S(922, __c115, 2) as any as S.Schema<ListBackupAccessPointsByResourceResponse>,
   errors: [InvalidParameterValueException, ServiceUnavailableException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -4184,8 +4184,8 @@ export const listBackupJobs: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   BackupJob
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(177, __c22, 1) as any as S.Schema<ListBackupJobsInput>,
-  output: __S(180, __c22, 4) as any as S.Schema<ListBackupJobsOutput>,
+  input: __S(944, __c118, 0) as any as S.Schema<ListBackupJobsInput>,
+  output: __S(947, __c118, 3) as any as S.Schema<ListBackupJobsOutput>,
   errors: [InvalidParameterValueException, ServiceUnavailableException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -4220,8 +4220,8 @@ export const listBackupJobSummaries: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(181, __c22, 5) as any as S.Schema<ListBackupJobSummariesInput>,
-  output: __S(184, __c23, 0) as any as S.Schema<ListBackupJobSummariesOutput>,
+  input: __S(952, __c119, 0) as any as S.Schema<ListBackupJobSummariesInput>,
+  output: __S(953, __c119, 1) as any as S.Schema<ListBackupJobSummariesOutput>,
   errors: [InvalidParameterValueException, ServiceUnavailableException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -4249,8 +4249,8 @@ export const listBackupPlans: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   BackupPlansListMember
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(185, __c23, 1) as any as S.Schema<ListBackupPlansInput>,
-  output: __S(188, __c23, 4) as any as S.Schema<ListBackupPlansOutput>,
+  input: __S(968, __c121, 0) as any as S.Schema<ListBackupPlansInput>,
+  output: __S(969, __c121, 1) as any as S.Schema<ListBackupPlansOutput>,
   errors: [
     InvalidParameterValueException,
     MissingParameterValueException,
@@ -4284,8 +4284,8 @@ export const listBackupPlanTemplates: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   BackupPlanTemplatesListMember
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(189, __c23, 5) as any as S.Schema<ListBackupPlanTemplatesInput>,
-  output: __S(192, __c24, 0) as any as S.Schema<ListBackupPlanTemplatesOutput>,
+  input: __S(984, __c123, 0) as any as S.Schema<ListBackupPlanTemplatesInput>,
+  output: __S(987, __c123, 3) as any as S.Schema<ListBackupPlanTemplatesOutput>,
   errors: [
     InvalidParameterValueException,
     MissingParameterValueException,
@@ -4320,8 +4320,8 @@ export const listBackupPlanVersions: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   BackupPlansListMember
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(193, __c24, 1) as any as S.Schema<ListBackupPlanVersionsInput>,
-  output: __S(194, __c24, 2) as any as S.Schema<ListBackupPlanVersionsOutput>,
+  input: __S(992, __c124, 0) as any as S.Schema<ListBackupPlanVersionsInput>,
+  output: __S(993, __c124, 1) as any as S.Schema<ListBackupPlanVersionsOutput>,
   errors: [
     InvalidParameterValueException,
     MissingParameterValueException,
@@ -4356,8 +4356,8 @@ export const listBackupSelections: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   BackupSelectionsListMember
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(195, __c24, 3) as any as S.Schema<ListBackupSelectionsInput>,
-  output: __S(198, __c24, 6) as any as S.Schema<ListBackupSelectionsOutput>,
+  input: __S(1000, __c125, 0) as any as S.Schema<ListBackupSelectionsInput>,
+  output: __S(1003, __c125, 3) as any as S.Schema<ListBackupSelectionsOutput>,
   errors: [
     InvalidParameterValueException,
     MissingParameterValueException,
@@ -4392,8 +4392,8 @@ export const listBackupVaults: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   BackupVaultListMember
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(199, __c24, 7) as any as S.Schema<ListBackupVaultsInput>,
-  output: __S(202, __c25, 2) as any as S.Schema<ListBackupVaultsOutput>,
+  input: __S(1008, __c126, 0) as any as S.Schema<ListBackupVaultsInput>,
+  output: __S(1011, __c126, 3) as any as S.Schema<ListBackupVaultsOutput>,
   errors: [
     InvalidParameterValueException,
     MissingParameterValueException,
@@ -4425,8 +4425,8 @@ export const listCopyJobs: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   CopyJob
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(203, __c25, 3) as any as S.Schema<ListCopyJobsInput>,
-  output: __S(205, __c25, 5) as any as S.Schema<ListCopyJobsOutput>,
+  input: __S(1016, __c127, 0) as any as S.Schema<ListCopyJobsInput>,
+  output: __S(1018, __c127, 2) as any as S.Schema<ListCopyJobsOutput>,
   errors: [InvalidParameterValueException, ServiceUnavailableException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -4461,8 +4461,8 @@ export const listCopyJobSummaries: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(206, __c25, 6) as any as S.Schema<ListCopyJobSummariesInput>,
-  output: __S(207, __c25, 7) as any as S.Schema<ListCopyJobSummariesOutput>,
+  input: __S(1024, __c128, 0) as any as S.Schema<ListCopyJobSummariesInput>,
+  output: __S(1025, __c128, 1) as any as S.Schema<ListCopyJobSummariesOutput>,
   errors: [InvalidParameterValueException, ServiceUnavailableException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -4488,8 +4488,8 @@ export const listFrameworks: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(208, __c26, 0) as any as S.Schema<ListFrameworksInput>,
-  output: __S(211, __c26, 3) as any as S.Schema<ListFrameworksOutput>,
+  input: __S(1032, __c129, 0) as any as S.Schema<ListFrameworksInput>,
+  output: __S(1035, __c129, 3) as any as S.Schema<ListFrameworksOutput>,
   errors: [InvalidParameterValueException, ServiceUnavailableException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -4521,8 +4521,8 @@ export const listIndexedRecoveryPoints: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   IndexedRecoveryPoint
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(212, __c26, 4) as any as S.Schema<ListIndexedRecoveryPointsInput>,
-  output: __S(215, __c26, 7) as any as S.Schema<ListIndexedRecoveryPointsOutput>,
+  input: __S(1040, __c130, 0) as any as S.Schema<ListIndexedRecoveryPointsInput>,
+  output: __S(1043, __c130, 3) as any as S.Schema<ListIndexedRecoveryPointsOutput>,
   errors: [InvalidParameterValueException, ResourceNotFoundException, ServiceUnavailableException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -4549,8 +4549,8 @@ export const listLegalHolds: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   LegalHold
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(216, __c27, 0) as any as S.Schema<ListLegalHoldsInput>,
-  output: __S(219, __c27, 3) as any as S.Schema<ListLegalHoldsOutput>,
+  input: __S(1048, __c131, 0) as any as S.Schema<ListLegalHoldsInput>,
+  output: __S(1051, __c131, 3) as any as S.Schema<ListLegalHoldsOutput>,
   errors: [InvalidParameterValueException, ServiceUnavailableException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -4580,8 +4580,8 @@ export const listProtectedResources: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   ProtectedResource
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(220, __c27, 4) as any as S.Schema<ListProtectedResourcesInput>,
-  output: __S(223, __c27, 7) as any as S.Schema<ListProtectedResourcesOutput>,
+  input: __S(1056, __c132, 0) as any as S.Schema<ListProtectedResourcesInput>,
+  output: __S(1066, __c133, 2) as any as S.Schema<ListProtectedResourcesOutput>,
   errors: [InvalidParameterValueException, ServiceUnavailableException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -4609,8 +4609,8 @@ export const listProtectedResourcesByBackupVault: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   ProtectedResource
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(224, __c28, 0) as any as S.Schema<ListProtectedResourcesByBackupVaultInput>,
-  output: __S(223, __c27, 7) as any as S.Schema<ListProtectedResourcesByBackupVaultOutput>,
+  input: __S(1072, __c134, 0) as any as S.Schema<ListProtectedResourcesByBackupVaultInput>,
+  output: __S(1066, __c133, 2) as any as S.Schema<ListProtectedResourcesByBackupVaultOutput>,
   errors: [InvalidParameterValueException, ResourceNotFoundException, ServiceUnavailableException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -4639,8 +4639,8 @@ export const listRecoveryPointsByBackupVault: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   RecoveryPointByBackupVault
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(225, __c28, 1) as any as S.Schema<ListRecoveryPointsByBackupVaultInput>,
-  output: __S(229, __c28, 5) as any as S.Schema<ListRecoveryPointsByBackupVaultOutput>,
+  input: __S(1080, __c135, 0) as any as S.Schema<ListRecoveryPointsByBackupVaultInput>,
+  output: __S(1083, __c135, 3) as any as S.Schema<ListRecoveryPointsByBackupVaultOutput>,
   errors: [
     InvalidParameterValueException,
     MissingParameterValueException,
@@ -4674,8 +4674,8 @@ export const listRecoveryPointsByLegalHold: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   RecoveryPointMember
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(230, __c28, 6) as any as S.Schema<ListRecoveryPointsByLegalHoldInput>,
-  output: __S(233, __c29, 1) as any as S.Schema<ListRecoveryPointsByLegalHoldOutput>,
+  input: __S(1096, __c137, 0) as any as S.Schema<ListRecoveryPointsByLegalHoldInput>,
+  output: __S(1099, __c137, 3) as any as S.Schema<ListRecoveryPointsByLegalHoldOutput>,
   errors: [
     InvalidParameterValueException,
     MissingParameterValueException,
@@ -4712,8 +4712,8 @@ export const listRecoveryPointsByResource: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   RecoveryPointByResource
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(234, __c29, 2) as any as S.Schema<ListRecoveryPointsByResourceInput>,
-  output: __S(237, __c29, 5) as any as S.Schema<ListRecoveryPointsByResourceOutput>,
+  input: __S(1104, __c138, 0) as any as S.Schema<ListRecoveryPointsByResourceInput>,
+  output: __S(1107, __c138, 3) as any as S.Schema<ListRecoveryPointsByResourceOutput>,
   errors: [
     InvalidParameterValueException,
     MissingParameterValueException,
@@ -4746,8 +4746,8 @@ export const listReportJobs: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(238, __c29, 6) as any as S.Schema<ListReportJobsInput>,
-  output: __S(240, __c30, 0) as any as S.Schema<ListReportJobsOutput>,
+  input: __S(1112, __c139, 0) as any as S.Schema<ListReportJobsInput>,
+  output: __S(1114, __c139, 2) as any as S.Schema<ListReportJobsOutput>,
   errors: [InvalidParameterValueException, ResourceNotFoundException, ServiceUnavailableException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -4774,8 +4774,8 @@ export const listReportPlans: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(241, __c30, 1) as any as S.Schema<ListReportPlansInput>,
-  output: __S(243, __c30, 3) as any as S.Schema<ListReportPlansOutput>,
+  input: __S(1120, __c140, 0) as any as S.Schema<ListReportPlansInput>,
+  output: __S(1122, __c140, 2) as any as S.Schema<ListReportPlansOutput>,
   errors: [InvalidParameterValueException, ServiceUnavailableException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -4803,8 +4803,8 @@ export const listRestoreAccessBackupVaults: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   RestoreAccessBackupVaultListMember
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(244, __c30, 4) as any as S.Schema<ListRestoreAccessBackupVaultsInput>,
-  output: __S(248, __c31, 0) as any as S.Schema<ListRestoreAccessBackupVaultsOutput>,
+  input: __S(1128, __c141, 0) as any as S.Schema<ListRestoreAccessBackupVaultsInput>,
+  output: __S(1132, __c141, 4) as any as S.Schema<ListRestoreAccessBackupVaultsOutput>,
   errors: [
     InvalidParameterValueException,
     MissingParameterValueException,
@@ -4839,8 +4839,8 @@ export const listRestoreJobs: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   RestoreJobsListMember
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(249, __c31, 1) as any as S.Schema<ListRestoreJobsInput>,
-  output: __S(252, __c31, 4) as any as S.Schema<ListRestoreJobsOutput>,
+  input: __S(1136, __c142, 0) as any as S.Schema<ListRestoreJobsInput>,
+  output: __S(1137, __c142, 1) as any as S.Schema<ListRestoreJobsOutput>,
   errors: [
     InvalidParameterValueException,
     MissingParameterValueException,
@@ -4879,8 +4879,8 @@ export const listRestoreJobsByProtectedResource: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   RestoreJobsListMember
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(253, __c31, 5) as any as S.Schema<ListRestoreJobsByProtectedResourceInput>,
-  output: __S(254, __c31, 6) as any as S.Schema<ListRestoreJobsByProtectedResourceOutput>,
+  input: __S(1152, __c144, 0) as any as S.Schema<ListRestoreJobsByProtectedResourceInput>,
+  output: __S(1153, __c144, 1) as any as S.Schema<ListRestoreJobsByProtectedResourceOutput>,
   errors: [
     InvalidParameterValueException,
     MissingParameterValueException,
@@ -4920,8 +4920,8 @@ export const listRestoreJobSummaries: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(255, __c31, 7) as any as S.Schema<ListRestoreJobSummariesInput>,
-  output: __S(258, __c32, 2) as any as S.Schema<ListRestoreJobSummariesOutput>,
+  input: __S(1160, __c145, 0) as any as S.Schema<ListRestoreJobSummariesInput>,
+  output: __S(1163, __c145, 3) as any as S.Schema<ListRestoreJobSummariesOutput>,
   errors: [InvalidParameterValueException, ServiceUnavailableException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -4947,8 +4947,8 @@ export const listRestoreTestingPlans: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   RestoreTestingPlanForList
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(259, __c32, 3) as any as S.Schema<ListRestoreTestingPlansInput>,
-  output: __S(262, __c32, 6) as any as S.Schema<ListRestoreTestingPlansOutput>,
+  input: __S(1168, __c146, 0) as any as S.Schema<ListRestoreTestingPlansInput>,
+  output: __S(1171, __c146, 3) as any as S.Schema<ListRestoreTestingPlansOutput>,
   errors: [InvalidParameterValueException, ServiceUnavailableException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -4977,8 +4977,8 @@ export const listRestoreTestingSelections: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   RestoreTestingSelectionForList
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(263, __c32, 7) as any as S.Schema<ListRestoreTestingSelectionsInput>,
-  output: __S(266, __c33, 2) as any as S.Schema<ListRestoreTestingSelectionsOutput>,
+  input: __S(1176, __c147, 0) as any as S.Schema<ListRestoreTestingSelectionsInput>,
+  output: __S(1179, __c147, 3) as any as S.Schema<ListRestoreTestingSelectionsOutput>,
   errors: [InvalidParameterValueException, ResourceNotFoundException, ServiceUnavailableException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -5005,8 +5005,8 @@ export const listScanJobs: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   ScanJob
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(267, __c33, 3) as any as S.Schema<ListScanJobsInput>,
-  output: __S(270, __c33, 6) as any as S.Schema<ListScanJobsOutput>,
+  input: __S(1184, __c148, 0) as any as S.Schema<ListScanJobsInput>,
+  output: __S(1187, __c148, 3) as any as S.Schema<ListScanJobsOutput>,
   errors: [InvalidParameterValueException, ServiceUnavailableException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -5033,8 +5033,8 @@ export const listScanJobSummaries: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   ScanJobSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(271, __c33, 7) as any as S.Schema<ListScanJobSummariesInput>,
-  output: __S(274, __c34, 2) as any as S.Schema<ListScanJobSummariesOutput>,
+  input: __S(1192, __c149, 0) as any as S.Schema<ListScanJobSummariesInput>,
+  output: __S(1195, __c149, 3) as any as S.Schema<ListScanJobSummariesOutput>,
   errors: [InvalidParameterValueException, ServiceUnavailableException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -5077,8 +5077,8 @@ export const listTags: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(275, __c34, 3) as any as S.Schema<ListTagsInput>,
-  output: __S(276, __c34, 4) as any as S.Schema<ListTagsOutput>,
+  input: __S(16, __c2, 0) as any as S.Schema<ListTagsInput>,
+  output: __S(17, __c2, 1) as any as S.Schema<ListTagsOutput>,
   errors: [
     InvalidParameterValueException,
     MissingParameterValueException,
@@ -5109,8 +5109,8 @@ export const listTieringConfigurations: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   TieringConfigurationsListMember
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(277, __c34, 5) as any as S.Schema<ListTieringConfigurationsInput>,
-  output: __S(280, __c35, 0) as any as S.Schema<ListTieringConfigurationsOutput>,
+  input: __S(24, __c3, 0) as any as S.Schema<ListTieringConfigurationsInput>,
+  output: __S(27, __c3, 3) as any as S.Schema<ListTieringConfigurationsOutput>,
   errors: [InvalidParameterValueException, ServiceUnavailableException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -5140,8 +5140,8 @@ export const putBackupVaultAccessPolicy: API.OperationMethod<
   PutBackupVaultAccessPolicyError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(281, __c35, 1) as any as S.Schema<PutBackupVaultAccessPolicyInput>,
-  output: __S(1, __c0, 1) as any as S.Schema<PutBackupVaultAccessPolicyResponse>,
+  input: __S(32, __c4, 0) as any as S.Schema<PutBackupVaultAccessPolicyInput>,
+  output: __S(8, __c1, 0) as any as S.Schema<PutBackupVaultAccessPolicyResponse>,
   errors: [
     InvalidParameterValueException,
     MissingParameterValueException,
@@ -5181,8 +5181,8 @@ export const putBackupVaultLockConfiguration: API.OperationMethod<
   PutBackupVaultLockConfigurationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(282, __c35, 2) as any as S.Schema<PutBackupVaultLockConfigurationInput>,
-  output: __S(1, __c0, 1) as any as S.Schema<PutBackupVaultLockConfigurationResponse>,
+  input: __S(40, __c5, 0) as any as S.Schema<PutBackupVaultLockConfigurationInput>,
+  output: __S(8, __c1, 0) as any as S.Schema<PutBackupVaultLockConfigurationResponse>,
   errors: [
     InvalidParameterValueException,
     InvalidRequestException,
@@ -5210,8 +5210,8 @@ export const putBackupVaultNotifications: API.OperationMethod<
   PutBackupVaultNotificationsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(283, __c35, 3) as any as S.Schema<PutBackupVaultNotificationsInput>,
-  output: __S(1, __c0, 1) as any as S.Schema<PutBackupVaultNotificationsResponse>,
+  input: __S(48, __c6, 0) as any as S.Schema<PutBackupVaultNotificationsInput>,
+  output: __S(8, __c1, 0) as any as S.Schema<PutBackupVaultNotificationsResponse>,
   errors: [
     InvalidParameterValueException,
     MissingParameterValueException,
@@ -5243,8 +5243,8 @@ export const putRestoreValidationResult: API.OperationMethod<
   PutRestoreValidationResultError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(284, __c35, 4) as any as S.Schema<PutRestoreValidationResultInput>,
-  output: __S(1, __c0, 1) as any as S.Schema<PutRestoreValidationResultResponse>,
+  input: __S(56, __c7, 0) as any as S.Schema<PutRestoreValidationResultInput>,
+  output: __S(8, __c1, 0) as any as S.Schema<PutRestoreValidationResultResponse>,
   errors: [
     InvalidParameterValueException,
     InvalidRequestException,
@@ -5273,8 +5273,8 @@ export const revokeRestoreAccessBackupVault: API.OperationMethod<
   RevokeRestoreAccessBackupVaultError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(285, __c35, 5) as any as S.Schema<RevokeRestoreAccessBackupVaultInput>,
-  output: __S(1, __c0, 1) as any as S.Schema<RevokeRestoreAccessBackupVaultResponse>,
+  input: __S(64, __c8, 0) as any as S.Schema<RevokeRestoreAccessBackupVaultInput>,
+  output: __S(8, __c1, 0) as any as S.Schema<RevokeRestoreAccessBackupVaultResponse>,
   errors: [
     InvalidParameterValueException,
     InvalidRequestException,
@@ -5304,8 +5304,8 @@ export const startBackupJob: API.OperationMethod<
   StartBackupJobError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(286, __c35, 6) as any as S.Schema<StartBackupJobInput>,
-  output: __S(287, __c35, 7) as any as S.Schema<StartBackupJobOutput>,
+  input: __S(72, __c9, 0) as any as S.Schema<StartBackupJobInput>,
+  output: __S(73, __c9, 1) as any as S.Schema<StartBackupJobOutput>,
   errors: [
     InvalidParameterValueException,
     InvalidRequestException,
@@ -5342,8 +5342,8 @@ export const startCopyJob: API.OperationMethod<
   StartCopyJobError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(288, __c36, 0) as any as S.Schema<StartCopyJobInput>,
-  output: __S(289, __c36, 1) as any as S.Schema<StartCopyJobOutput>,
+  input: __S(80, __c10, 0) as any as S.Schema<StartCopyJobInput>,
+  output: __S(81, __c10, 1) as any as S.Schema<StartCopyJobOutput>,
   errors: [
     InvalidParameterValueException,
     InvalidRequestException,
@@ -5372,8 +5372,8 @@ export const startReportJob: API.OperationMethod<
   StartReportJobError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(290, __c36, 2) as any as S.Schema<StartReportJobInput>,
-  output: __S(291, __c36, 3) as any as S.Schema<StartReportJobOutput>,
+  input: __S(88, __c11, 0) as any as S.Schema<StartReportJobInput>,
+  output: __S(89, __c11, 1) as any as S.Schema<StartReportJobOutput>,
   errors: [
     InvalidParameterValueException,
     MissingParameterValueException,
@@ -5401,8 +5401,8 @@ export const startRestoreJob: API.OperationMethod<
   StartRestoreJobError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(292, __c36, 4) as any as S.Schema<StartRestoreJobInput>,
-  output: __S(293, __c36, 5) as any as S.Schema<StartRestoreJobOutput>,
+  input: __S(112, __c14, 0) as any as S.Schema<StartRestoreJobInput>,
+  output: __S(113, __c14, 1) as any as S.Schema<StartRestoreJobOutput>,
   errors: [
     InvalidParameterValueException,
     InvalidRequestException,
@@ -5432,8 +5432,8 @@ export const startScanJob: API.OperationMethod<
   StartScanJobError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(294, __c36, 6) as any as S.Schema<StartScanJobInput>,
-  output: __S(295, __c36, 7) as any as S.Schema<StartScanJobOutput>,
+  input: __S(120, __c15, 0) as any as S.Schema<StartScanJobInput>,
+  output: __S(121, __c15, 1) as any as S.Schema<StartScanJobOutput>,
   errors: [
     InvalidParameterValueException,
     InvalidRequestException,
@@ -5483,8 +5483,8 @@ export const stopBackupJob: API.OperationMethod<
   StopBackupJobError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(296, __c37, 0) as any as S.Schema<StopBackupJobInput>,
-  output: __S(3, __c0, 3) as any as S.Schema<StopBackupJobResponse>,
+  input: __S(128, __c16, 0) as any as S.Schema<StopBackupJobInput>,
+  output: __S(104, __c13, 0) as any as S.Schema<StopBackupJobResponse>,
   errors: [
     InvalidParameterValueException,
     InvalidRequestException,
@@ -5513,8 +5513,8 @@ export const tagResource: API.OperationMethod<
   TagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(297, __c37, 1) as any as S.Schema<TagResourceInput>,
-  output: __S(3, __c0, 3) as any as S.Schema<TagResourceResponse>,
+  input: __S(136, __c17, 0) as any as S.Schema<TagResourceInput>,
+  output: __S(104, __c13, 0) as any as S.Schema<TagResourceResponse>,
   errors: [
     InvalidParameterValueException,
     LimitExceededException,
@@ -5547,8 +5547,8 @@ export const untagResource: API.OperationMethod<
   UntagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(298, __c37, 2) as any as S.Schema<UntagResourceInput>,
-  output: __S(3, __c0, 3) as any as S.Schema<UntagResourceResponse>,
+  input: __S(144, __c18, 0) as any as S.Schema<UntagResourceInput>,
+  output: __S(104, __c13, 0) as any as S.Schema<UntagResourceResponse>,
   errors: [
     InvalidParameterValueException,
     MissingParameterValueException,
@@ -5575,8 +5575,8 @@ export const updateBackupPlan: API.OperationMethod<
   UpdateBackupPlanError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(299, __c37, 3) as any as S.Schema<UpdateBackupPlanInput>,
-  output: __S(300, __c37, 4) as any as S.Schema<UpdateBackupPlanOutput>,
+  input: __S(152, __c19, 0) as any as S.Schema<UpdateBackupPlanInput>,
+  output: __S(153, __c19, 1) as any as S.Schema<UpdateBackupPlanOutput>,
   errors: [
     InvalidParameterValueException,
     MissingParameterValueException,
@@ -5606,8 +5606,8 @@ export const updateFramework: API.OperationMethod<
   UpdateFrameworkError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(301, __c37, 5) as any as S.Schema<UpdateFrameworkInput>,
-  output: __S(302, __c37, 6) as any as S.Schema<UpdateFrameworkOutput>,
+  input: __S(160, __c20, 0) as any as S.Schema<UpdateFrameworkInput>,
+  output: __S(161, __c20, 1) as any as S.Schema<UpdateFrameworkOutput>,
   errors: [
     AlreadyExistsException,
     ConflictException,
@@ -5637,8 +5637,8 @@ export const updateGlobalSettings: API.OperationMethod<
   UpdateGlobalSettingsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(303, __c37, 7) as any as S.Schema<UpdateGlobalSettingsInput>,
-  output: __S(3, __c0, 3) as any as S.Schema<UpdateGlobalSettingsResponse>,
+  input: __S(168, __c21, 0) as any as S.Schema<UpdateGlobalSettingsInput>,
+  output: __S(104, __c13, 0) as any as S.Schema<UpdateGlobalSettingsResponse>,
   errors: [
     InvalidParameterValueException,
     InvalidRequestException,
@@ -5668,8 +5668,8 @@ export const updateRecoveryPointIndexSettings: API.OperationMethod<
   UpdateRecoveryPointIndexSettingsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(304, __c38, 0) as any as S.Schema<UpdateRecoveryPointIndexSettingsInput>,
-  output: __S(305, __c38, 1) as any as S.Schema<UpdateRecoveryPointIndexSettingsOutput>,
+  input: __S(176, __c22, 0) as any as S.Schema<UpdateRecoveryPointIndexSettingsInput>,
+  output: __S(177, __c22, 1) as any as S.Schema<UpdateRecoveryPointIndexSettingsOutput>,
   errors: [
     InvalidParameterValueException,
     InvalidRequestException,
@@ -5716,8 +5716,8 @@ export const updateRecoveryPointLifecycle: API.OperationMethod<
   UpdateRecoveryPointLifecycleError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(306, __c38, 2) as any as S.Schema<UpdateRecoveryPointLifecycleInput>,
-  output: __S(307, __c38, 3) as any as S.Schema<UpdateRecoveryPointLifecycleOutput>,
+  input: __S(184, __c23, 0) as any as S.Schema<UpdateRecoveryPointLifecycleInput>,
+  output: __S(185, __c23, 1) as any as S.Schema<UpdateRecoveryPointLifecycleOutput>,
   errors: [
     InvalidParameterValueException,
     InvalidRequestException,
@@ -5748,8 +5748,8 @@ export const updateRegionSettings: API.OperationMethod<
   UpdateRegionSettingsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(308, __c38, 4) as any as S.Schema<UpdateRegionSettingsInput>,
-  output: __S(3, __c0, 3) as any as S.Schema<UpdateRegionSettingsResponse>,
+  input: __S(216, __c27, 0) as any as S.Schema<UpdateRegionSettingsInput>,
+  output: __S(104, __c13, 0) as any as S.Schema<UpdateRegionSettingsResponse>,
   errors: [
     InvalidParameterValueException,
     MissingParameterValueException,
@@ -5776,8 +5776,8 @@ export const updateReportPlan: API.OperationMethod<
   UpdateReportPlanError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(309, __c38, 5) as any as S.Schema<UpdateReportPlanInput>,
-  output: __S(51, __c6, 3) as any as S.Schema<UpdateReportPlanOutput>,
+  input: __S(224, __c28, 0) as any as S.Schema<UpdateReportPlanInput>,
+  output: __S(376, __c47, 0) as any as S.Schema<UpdateReportPlanOutput>,
   errors: [
     ConflictException,
     InvalidParameterValueException,
@@ -5820,8 +5820,8 @@ export const updateRestoreTestingPlan: API.OperationMethod<
   UpdateRestoreTestingPlanError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(311, __c38, 7) as any as S.Schema<UpdateRestoreTestingPlanInput>,
-  output: __S(312, __c39, 0) as any as S.Schema<UpdateRestoreTestingPlanOutput>,
+  input: __S(233, __c29, 1) as any as S.Schema<UpdateRestoreTestingPlanInput>,
+  output: __S(234, __c29, 2) as any as S.Schema<UpdateRestoreTestingPlanOutput>,
   errors: [
     ConflictException,
     InvalidParameterValueException,
@@ -5855,8 +5855,8 @@ export const updateRestoreTestingSelection: API.OperationMethod<
   UpdateRestoreTestingSelectionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(314, __c39, 2) as any as S.Schema<UpdateRestoreTestingSelectionInput>,
-  output: __S(315, __c39, 3) as any as S.Schema<UpdateRestoreTestingSelectionOutput>,
+  input: __S(241, __c30, 1) as any as S.Schema<UpdateRestoreTestingSelectionInput>,
+  output: __S(242, __c30, 2) as any as S.Schema<UpdateRestoreTestingSelectionOutput>,
   errors: [
     ConflictException,
     InvalidParameterValueException,
@@ -5897,8 +5897,8 @@ export const updateTieringConfiguration: API.OperationMethod<
   UpdateTieringConfigurationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(317, __c39, 5) as any as S.Schema<UpdateTieringConfigurationInput>,
-  output: __S(318, __c39, 6) as any as S.Schema<UpdateTieringConfigurationOutput>,
+  input: __S(249, __c31, 1) as any as S.Schema<UpdateTieringConfigurationInput>,
+  output: __S(250, __c31, 2) as any as S.Schema<UpdateTieringConfigurationOutput>,
   errors: [
     AlreadyExistsException,
     ConflictException,
@@ -5935,11 +5935,288 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "AssociateBackupVaultMpaApprovalTeamInput",
       });
-    case 1:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "AssociateBackupVaultMpaApprovalTeamResponse",
       });
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          ResourceArn: S.String.pipe(T.HttpLabel("ResourceArn")),
+          NextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
+          MaxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
+        }).pipe(
+          T.all(
+            T.Http({ method: "GET", uri: "/tags/{ResourceArn}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "ListTagsInput" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({ NextToken: S.optional(S.String), Tags: S.optional(__S(200, __c25, 0)) }),
+      ).annotate({ identifier: "ListTagsOutput" });
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          MaxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
+          NextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
+        }).pipe(
+          T.all(
+            T.Http({ method: "GET", uri: "/tiering-configurations" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "ListTieringConfigurationsInput",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          TieringConfigurationArn: S.optional(S.String),
+          TieringConfigurationName: S.optional(S.String),
+          BackupVaultName: S.optional(S.String),
+          CreationTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          LastUpdatedTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+        }),
+      ).annotate({
+        identifier: "TieringConfigurationsListMember",
+      });
     case 2:
+      return S.Array(__S(25, __c3, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          TieringConfigurations: S.optional(__S(26, __c3, 2)),
+          NextToken: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "ListTieringConfigurationsOutput",
+      });
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          BackupVaultName: S.String.pipe(T.HttpLabel("BackupVaultName")),
+          Policy: S.optional(S.String),
+        }).pipe(
+          T.all(
+            T.Http({ method: "PUT", uri: "/backup-vaults/{BackupVaultName}/access-policy" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "PutBackupVaultAccessPolicyInput",
+      });
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          BackupVaultName: S.String.pipe(T.HttpLabel("BackupVaultName")),
+          MinRetentionDays: S.optional(S.Number),
+          MaxRetentionDays: S.optional(S.Number),
+          ChangeableForDays: S.optional(S.Number),
+        }).pipe(
+          T.all(
+            T.Http({ method: "PUT", uri: "/backup-vaults/{BackupVaultName}/vault-lock" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "PutBackupVaultLockConfigurationInput",
+      });
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          BackupVaultName: S.String.pipe(T.HttpLabel("BackupVaultName")),
+          SNSTopicArn: S.String,
+          BackupVaultEvents: __S(640, __c80, 0),
+        }).pipe(
+          T.all(
+            T.Http({
+              method: "PUT",
+              uri: "/backup-vaults/{BackupVaultName}/notification-configuration",
+            }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "PutBackupVaultNotificationsInput",
+      });
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          RestoreJobId: S.String.pipe(T.HttpLabel("RestoreJobId")),
+          ValidationStatus: S.String,
+          ValidationStatusMessage: S.optional(S.String),
+        }).pipe(
+          T.all(
+            T.Http({ method: "PUT", uri: "/restore-jobs/{RestoreJobId}/validations" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "PutRestoreValidationResultInput",
+      });
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          BackupVaultName: S.String.pipe(T.HttpLabel("BackupVaultName")),
+          RestoreAccessBackupVaultArn: S.String.pipe(T.HttpLabel("RestoreAccessBackupVaultArn")),
+          RequesterComment: S.optional(SensitiveString).pipe(T.HttpQuery("requesterComment")),
+        }).pipe(
+          T.all(
+            T.Http({
+              method: "DELETE",
+              uri: "/logically-air-gapped-backup-vaults/{BackupVaultName}/restore-access-backup-vaults/{RestoreAccessBackupVaultArn}",
+            }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "RevokeRestoreAccessBackupVaultInput",
+      });
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          BackupVaultName: S.String,
+          LogicallyAirGappedBackupVaultArn: S.optional(S.String),
+          ResourceArn: S.String,
+          IamRoleArn: S.String,
+          IdempotencyToken: S.optional(S.String).pipe(T.IdempotencyToken()),
+          StartWindowMinutes: S.optional(S.Number),
+          CompleteWindowMinutes: S.optional(S.Number),
+          Lifecycle: S.optional(__S(280, __c35, 0)),
+          RecoveryPointTags: S.optional(__S(200, __c25, 0)),
+          BackupOptions: S.optional(__S(208, __c26, 0)),
+          Index: S.optional(S.String),
+        }).pipe(
+          T.all(T.Http({ method: "PUT", uri: "/backup-jobs" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "StartBackupJobInput" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          BackupJobId: S.optional(S.String),
+          RecoveryPointArn: S.optional(S.String),
+          CreationDate: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          IsParent: S.optional(S.Boolean),
+        }),
+      ).annotate({ identifier: "StartBackupJobOutput" });
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          RecoveryPointArn: S.String,
+          SourceBackupVaultName: S.String,
+          DestinationBackupVaultArn: S.String,
+          IamRoleArn: S.String,
+          IdempotencyToken: S.optional(S.String).pipe(T.IdempotencyToken()),
+          Lifecycle: S.optional(__S(280, __c35, 0)),
+        }).pipe(T.all(T.Http({ method: "PUT", uri: "/copy-jobs" }), svc, auth, proto, ver, rules)),
+      ).annotate({ identifier: "StartCopyJobInput" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          CopyJobId: S.optional(S.String),
+          CreationDate: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          IsParent: S.optional(S.Boolean),
+        }),
+      ).annotate({ identifier: "StartCopyJobOutput" });
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          ReportPlanName: S.String.pipe(T.HttpLabel("ReportPlanName")),
+          IdempotencyToken: S.optional(S.String).pipe(T.IdempotencyToken()),
+        }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/audit/report-jobs/{ReportPlanName}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "StartReportJobInput" });
+    case 1:
+      return S.suspend(() => S.Struct({ ReportJobId: S.optional(S.String) })).annotate({
+        identifier: "StartReportJobOutput",
+      });
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           LegalHoldId: S.String.pipe(T.HttpLabel("LegalHoldId")),
@@ -5956,22 +6233,277 @@ function __c0(j: number): any {
           ),
         ),
       ).annotate({ identifier: "CancelLegalHoldInput" });
-    case 3:
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "CancelLegalHoldOutput",
       });
-    case 4:
-      return S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
-    case 5:
-      return S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
-    case 6:
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          AccessPointMetadata: S.optional(__S(4, __c0, 4)),
+          RecoveryPointArn: S.String,
+          Metadata: __S(200, __c25, 0),
+          IamRoleArn: S.optional(S.String),
+          IdempotencyToken: S.optional(S.String).pipe(T.IdempotencyToken()),
+          ResourceType: S.optional(S.String),
+          CopySourceTagsToRestoredResource: S.optional(S.Boolean),
+        }).pipe(
+          T.all(T.Http({ method: "PUT", uri: "/restore-jobs" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "StartRestoreJobInput" });
+    case 1:
+      return S.suspend(() => S.Struct({ RestoreJobId: S.optional(S.String) })).annotate({
+        identifier: "StartRestoreJobOutput",
+      });
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          BackupVaultName: S.String,
+          ContinuousScanEndTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          IamRoleArn: S.String,
+          IdempotencyToken: S.optional(S.String),
+          MalwareScanner: S.String,
+          RecoveryPointArn: S.String,
+          ScanBaseRecoveryPointArn: S.optional(S.String),
+          ScanMode: S.String,
+          ScannerRoleArn: S.String,
+        }).pipe(T.all(T.Http({ method: "PUT", uri: "/scan/job" }), svc, auth, proto, ver, rules)),
+      ).annotate({ identifier: "StartScanJobInput" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          CreationDate: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+          ScanJobId: S.String,
+        }),
+      ).annotate({ identifier: "StartScanJobOutput" });
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ BackupJobId: S.String.pipe(T.HttpLabel("BackupJobId")) }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/backup-jobs/{BackupJobId}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "StopBackupJobInput" });
+  }
+}
+function __c17(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          ResourceArn: S.String.pipe(T.HttpLabel("ResourceArn")),
+          Tags: __S(200, __c25, 0),
+        }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/tags/{ResourceArn}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "TagResourceInput" });
+  }
+}
+function __c18(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          ResourceArn: S.String.pipe(T.HttpLabel("ResourceArn")),
+          TagKeyList: __S(272, __c34, 0),
+        }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/untag/{ResourceArn}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "UntagResourceInput" });
+  }
+}
+function __c19(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          BackupPlanId: S.String.pipe(T.HttpLabel("BackupPlanId")),
+          BackupPlan: __S(266, __c33, 2),
+        }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/backup/plans/{BackupPlanId}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "UpdateBackupPlanInput" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          BackupPlanId: S.optional(S.String),
+          BackupPlanArn: S.optional(S.String),
+          CreationDate: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          VersionId: S.optional(S.String),
+          AdvancedBackupSettings: S.optional(__S(297, __c37, 1)),
+          ScanSettings: S.optional(__S(295, __c36, 7)),
+        }),
+      ).annotate({ identifier: "UpdateBackupPlanOutput" });
+  }
+}
+function __c20(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          FrameworkName: S.String.pipe(T.HttpLabel("FrameworkName")),
+          FrameworkDescription: S.optional(S.String),
+          FrameworkControls: S.optional(__S(340, __c42, 4)),
+          IdempotencyToken: S.optional(S.String).pipe(T.IdempotencyToken()),
+        }).pipe(
+          T.all(
+            T.Http({ method: "PUT", uri: "/audit/frameworks/{FrameworkName}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "UpdateFrameworkInput" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          FrameworkName: S.optional(S.String),
+          FrameworkArn: S.optional(S.String),
+          CreationTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+        }),
+      ).annotate({ identifier: "UpdateFrameworkOutput" });
+  }
+}
+function __c21(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ GlobalSettings: S.optional(__S(208, __c26, 0)) }).pipe(
+          T.all(T.Http({ method: "PUT", uri: "/global-settings" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({
+        identifier: "UpdateGlobalSettingsInput",
+      });
+  }
+}
+function __c22(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          BackupVaultName: S.String.pipe(T.HttpLabel("BackupVaultName")),
+          RecoveryPointArn: S.String.pipe(T.HttpLabel("RecoveryPointArn")),
+          IamRoleArn: S.optional(S.String),
+          Index: S.String,
+        }).pipe(
+          T.all(
+            T.Http({
+              method: "POST",
+              uri: "/backup-vaults/{BackupVaultName}/recovery-points/{RecoveryPointArn}/index",
+            }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "UpdateRecoveryPointIndexSettingsInput",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          BackupVaultName: S.optional(S.String),
+          RecoveryPointArn: S.optional(S.String),
+          IndexStatus: S.optional(S.String),
+          Index: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "UpdateRecoveryPointIndexSettingsOutput",
+      });
+  }
+}
+function __c23(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          BackupVaultName: S.String.pipe(T.HttpLabel("BackupVaultName")),
+          RecoveryPointArn: S.String.pipe(T.HttpLabel("RecoveryPointArn")),
+          Lifecycle: S.optional(__S(280, __c35, 0)),
+        }).pipe(
+          T.all(
+            T.Http({
+              method: "POST",
+              uri: "/backup-vaults/{BackupVaultName}/recovery-points/{RecoveryPointArn}",
+            }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "UpdateRecoveryPointLifecycleInput",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          BackupVaultArn: S.optional(S.String),
+          RecoveryPointArn: S.optional(S.String),
+          Lifecycle: S.optional(__S(280, __c35, 0)),
+          CalculatedLifecycle: S.optional(__S(648, __c81, 0)),
+        }),
+      ).annotate({
+        identifier: "UpdateRecoveryPointLifecycleOutput",
+      });
+  }
+}
+function __c24(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          AccessPointMetadata: S.optional(__S(208, __c26, 0)),
           AccessPointPolicy: S.optional(S.String),
           Name: S.String,
           RecoveryPointArn: S.String,
-          Tags: S.optional(__S(5, __c0, 5)),
+          Tags: S.optional(__S(200, __c25, 0)),
         }).pipe(
           T.all(
             T.Http({ method: "PUT", uri: "/backup-access-point/create" }),
@@ -5985,46 +6517,220 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "CreateBackupAccessPointRequest",
       });
-    case 7:
+    case 1:
       return S.suspend(() => S.Struct({ AccessPointArn: S.String, Status: S.String })).annotate({
         identifier: "CreateBackupAccessPointResponse",
       });
   }
 }
-function __c1(j: number): any {
+function __c25(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
+  }
+}
+function __c26(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
+  }
+}
+function __c27(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          MoveToColdStorageAfterDays: S.optional(S.Number),
-          DeleteAfterDays: S.optional(S.Number),
-          OptInToArchiveForSupportedResources: S.optional(S.Boolean),
-          DeleteAfterEvent: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Lifecycle" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({ Lifecycle: S.optional(__S(8, __c1, 0)), DestinationBackupVaultArn: S.String }),
-      ).annotate({ identifier: "CopyAction" });
-    case 2:
-      return S.Array(__S(9, __c1, 1));
-    case 3:
-      return S.Array(S.String);
-    case 4:
-      return S.suspend(() => S.Struct({ ResourceTypes: S.optional(__S(11, __c1, 3)) })).annotate({
-        identifier: "IndexAction",
+          ResourceTypeOptInPreference: S.optional(__S(664, __c83, 0)),
+          ResourceTypeManagementPreference: S.optional(__S(664, __c83, 0)),
+        }).pipe(
+          T.all(T.Http({ method: "PUT", uri: "/account-settings" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({
+        identifier: "UpdateRegionSettingsInput",
       });
-    case 5:
-      return S.Array(__S(12, __c1, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({ MalwareScanner: S.optional(S.String), ScanMode: S.optional(S.String) }),
-      ).annotate({ identifier: "ScanAction" });
-    case 7:
-      return S.Array(__S(14, __c1, 6));
   }
 }
-function __c2(j: number): any {
+function __c28(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          ReportPlanName: S.String.pipe(T.HttpLabel("ReportPlanName")),
+          ReportPlanDescription: S.optional(S.String),
+          ReportDeliveryChannel: S.optional(__S(384, __c48, 0)),
+          ReportSetting: S.optional(__S(385, __c48, 1)),
+          IdempotencyToken: S.optional(S.String).pipe(T.IdempotencyToken()),
+        }).pipe(
+          T.all(
+            T.Http({ method: "PUT", uri: "/audit/report-plans/{ReportPlanName}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "UpdateReportPlanInput" });
+  }
+}
+function __c29(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          RecoveryPointSelection: S.optional(__S(409, __c51, 1)),
+          ScheduleExpression: S.optional(S.String),
+          ScheduleExpressionTimezone: S.optional(S.String),
+          StartWindowHours: S.optional(S.Number),
+        }),
+      ).annotate({
+        identifier: "RestoreTestingPlanForUpdate",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          RestoreTestingPlan: __S(232, __c29, 0),
+          RestoreTestingPlanName: S.String.pipe(T.HttpLabel("RestoreTestingPlanName")),
+        }).pipe(
+          T.all(
+            T.Http({ method: "PUT", uri: "/restore-testing/plans/{RestoreTestingPlanName}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "UpdateRestoreTestingPlanInput",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          CreationTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+          RestoreTestingPlanArn: S.String,
+          RestoreTestingPlanName: S.String,
+          UpdateTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+        }),
+      ).annotate({
+        identifier: "UpdateRestoreTestingPlanOutput",
+      });
+  }
+}
+function __c30(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          IamRoleArn: S.optional(S.String),
+          ProtectedResourceArns: S.optional(__S(272, __c34, 0)),
+          ProtectedResourceConditions: S.optional(__S(426, __c53, 2)),
+          RestoreMetadataOverrides: S.optional(__S(208, __c26, 0)),
+          ValidationWindowHours: S.optional(S.Number),
+        }),
+      ).annotate({
+        identifier: "RestoreTestingSelectionForUpdate",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          RestoreTestingPlanName: S.String.pipe(T.HttpLabel("RestoreTestingPlanName")),
+          RestoreTestingSelection: __S(240, __c30, 0),
+          RestoreTestingSelectionName: S.String.pipe(T.HttpLabel("RestoreTestingSelectionName")),
+        }).pipe(
+          T.all(
+            T.Http({
+              method: "PUT",
+              uri: "/restore-testing/plans/{RestoreTestingPlanName}/selections/{RestoreTestingSelectionName}",
+            }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "UpdateRestoreTestingSelectionInput",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          CreationTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+          RestoreTestingPlanArn: S.String,
+          RestoreTestingPlanName: S.String,
+          RestoreTestingSelectionName: S.String,
+          UpdateTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+        }),
+      ).annotate({
+        identifier: "UpdateRestoreTestingSelectionOutput",
+      });
+  }
+}
+function __c31(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ ResourceSelection: __S(441, __c55, 1), BackupVaultName: S.String }),
+      ).annotate({
+        identifier: "TieringConfigurationInputForUpdate",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          TieringConfigurationName: S.String.pipe(T.HttpLabel("TieringConfigurationName")),
+          TieringConfiguration: __S(248, __c31, 0),
+        }).pipe(
+          T.all(
+            T.Http({ method: "PUT", uri: "/tiering-configurations/{TieringConfigurationName}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "UpdateTieringConfigurationInput",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          TieringConfigurationArn: S.optional(S.String),
+          TieringConfigurationName: S.optional(S.String),
+          CreationTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          LastUpdatedTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+        }),
+      ).annotate({
+        identifier: "UpdateTieringConfigurationOutput",
+      });
+  }
+}
+function __c32(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          BackupPlan: __S(266, __c33, 2),
+          BackupPlanTags: S.optional(__S(200, __c25, 0)),
+          CreatorRequestId: S.optional(S.String).pipe(T.IdempotencyToken()),
+        }).pipe(
+          T.all(T.Http({ method: "PUT", uri: "/backup/plans" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "CreateBackupPlanInput" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          BackupPlanId: S.optional(S.String),
+          BackupPlanArn: S.optional(S.String),
+          CreationDate: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          VersionId: S.optional(S.String),
+          AdvancedBackupSettings: S.optional(__S(297, __c37, 1)),
+        }),
+      ).annotate({ identifier: "CreateBackupPlanOutput" });
+  }
+}
+function __c33(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -6035,110 +6741,102 @@ function __c2(j: number): any {
           ScheduleExpression: S.optional(S.String),
           StartWindowMinutes: S.optional(S.Number),
           CompletionWindowMinutes: S.optional(S.Number),
-          Lifecycle: S.optional(__S(8, __c1, 0)),
-          RecoveryPointTags: S.optional(__S(5, __c0, 5)),
-          CopyActions: S.optional(__S(10, __c1, 2)),
+          Lifecycle: S.optional(__S(280, __c35, 0)),
+          RecoveryPointTags: S.optional(__S(200, __c25, 0)),
+          CopyActions: S.optional(__S(289, __c36, 1)),
           EnableContinuousBackup: S.optional(S.Boolean),
           ScheduleExpressionTimezone: S.optional(S.String),
-          IndexActions: S.optional(__S(13, __c1, 5)),
-          ScanActions: S.optional(__S(15, __c1, 7)),
+          IndexActions: S.optional(__S(291, __c36, 3)),
+          ScanActions: S.optional(__S(293, __c36, 5)),
         }),
       ).annotate({ identifier: "BackupRuleInput" });
     case 1:
-      return S.Array(__S(16, __c2, 0));
+      return S.Array(__S(264, __c33, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          ResourceType: S.optional(S.String),
-          BackupOptions: S.optional(__S(4, __c0, 4)),
-        }),
-      ).annotate({ identifier: "AdvancedBackupSetting" });
-    case 3:
-      return S.Array(__S(18, __c2, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          MalwareScanner: S.optional(S.String),
-          ResourceTypes: S.optional(__S(11, __c1, 3)),
-          ScannerRoleArn: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ScanSetting" });
-    case 5:
-      return S.Array(__S(20, __c2, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
           BackupPlanName: S.String,
-          Rules: __S(17, __c2, 1),
-          AdvancedBackupSettings: S.optional(__S(19, __c2, 3)),
-          ScanSettings: S.optional(__S(21, __c2, 5)),
+          Rules: __S(265, __c33, 1),
+          AdvancedBackupSettings: S.optional(__S(297, __c37, 1)),
+          ScanSettings: S.optional(__S(295, __c36, 7)),
         }),
       ).annotate({ identifier: "BackupPlanInput" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          BackupPlan: __S(22, __c2, 6),
-          BackupPlanTags: S.optional(__S(5, __c0, 5)),
-          CreatorRequestId: S.optional(S.String).pipe(T.IdempotencyToken()),
-        }).pipe(
-          T.all(T.Http({ method: "PUT", uri: "/backup/plans" }), svc, auth, proto, ver, rules),
-        ),
-      ).annotate({ identifier: "CreateBackupPlanInput" });
   }
 }
-function __c3(j: number): any {
+function __c34(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c35(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          BackupPlanId: S.optional(S.String),
-          BackupPlanArn: S.optional(S.String),
-          CreationDate: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          VersionId: S.optional(S.String),
-          AdvancedBackupSettings: S.optional(__S(19, __c2, 3)),
+          MoveToColdStorageAfterDays: S.optional(S.Number),
+          DeleteAfterDays: S.optional(S.Number),
+          OptInToArchiveForSupportedResources: S.optional(S.Boolean),
+          DeleteAfterEvent: S.optional(S.String),
         }),
-      ).annotate({ identifier: "CreateBackupPlanOutput" });
+      ).annotate({ identifier: "Lifecycle" });
+  }
+}
+function __c36(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          Lifecycle: S.optional(__S(280, __c35, 0)),
+          DestinationBackupVaultArn: S.String,
+        }),
+      ).annotate({ identifier: "CopyAction" });
     case 1:
-      return S.suspend(() =>
-        S.Struct({
-          ConditionType: S.String,
-          ConditionKey: S.String,
-          ConditionValue: S.String,
-        }),
-      ).annotate({ identifier: "Condition" });
+      return S.Array(__S(288, __c36, 0));
     case 2:
-      return S.Array(__S(25, __c3, 1));
+      return S.suspend(() => S.Struct({ ResourceTypes: S.optional(__S(272, __c34, 0)) })).annotate({
+        identifier: "IndexAction",
+      });
     case 3:
-      return S.suspend(() =>
-        S.Struct({ ConditionKey: S.optional(S.String), ConditionValue: S.optional(S.String) }),
-      ).annotate({ identifier: "ConditionParameter" });
+      return S.Array(__S(290, __c36, 2));
     case 4:
-      return S.Array(__S(27, __c3, 3));
-    case 5:
       return S.suspend(() =>
-        S.Struct({
-          StringEquals: S.optional(__S(28, __c3, 4)),
-          StringNotEquals: S.optional(__S(28, __c3, 4)),
-          StringLike: S.optional(__S(28, __c3, 4)),
-          StringNotLike: S.optional(__S(28, __c3, 4)),
-        }),
-      ).annotate({ identifier: "Conditions" });
+        S.Struct({ MalwareScanner: S.optional(S.String), ScanMode: S.optional(S.String) }),
+      ).annotate({ identifier: "ScanAction" });
+    case 5:
+      return S.Array(__S(292, __c36, 4));
     case 6:
       return S.suspend(() =>
         S.Struct({
-          SelectionName: S.String,
-          IamRoleArn: S.String,
-          Resources: S.optional(__S(11, __c1, 3)),
-          ListOfTags: S.optional(__S(26, __c3, 2)),
-          NotResources: S.optional(__S(11, __c1, 3)),
-          Conditions: S.optional(__S(29, __c3, 5)),
+          MalwareScanner: S.optional(S.String),
+          ResourceTypes: S.optional(__S(272, __c34, 0)),
+          ScannerRoleArn: S.optional(S.String),
         }),
-      ).annotate({ identifier: "BackupSelection" });
+      ).annotate({ identifier: "ScanSetting" });
     case 7:
+      return S.Array(__S(294, __c36, 6));
+  }
+}
+function __c37(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          ResourceType: S.optional(S.String),
+          BackupOptions: S.optional(__S(208, __c26, 0)),
+        }),
+      ).annotate({ identifier: "AdvancedBackupSetting" });
+    case 1:
+      return S.Array(__S(296, __c37, 0));
+  }
+}
+function __c38(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           BackupPlanId: S.String.pipe(T.HttpLabel("BackupPlanId")),
-          BackupSelection: __S(30, __c3, 6),
+          BackupSelection: __S(317, __c39, 5),
           CreatorRequestId: S.optional(S.String).pipe(T.IdempotencyToken()),
         }).pipe(
           T.all(
@@ -6153,11 +6851,7 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "CreateBackupSelectionInput",
       });
-  }
-}
-function __c4(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           SelectionId: S.optional(S.String),
@@ -6167,11 +6861,51 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "CreateBackupSelectionOutput",
       });
+  }
+}
+function __c39(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ ConditionType: S.String, ConditionKey: S.String, ConditionValue: S.String }),
+      ).annotate({ identifier: "Condition" });
     case 1:
+      return S.Array(__S(312, __c39, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({ ConditionKey: S.optional(S.String), ConditionValue: S.optional(S.String) }),
+      ).annotate({ identifier: "ConditionParameter" });
+    case 3:
+      return S.Array(__S(314, __c39, 2));
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          StringEquals: S.optional(__S(315, __c39, 3)),
+          StringNotEquals: S.optional(__S(315, __c39, 3)),
+          StringLike: S.optional(__S(315, __c39, 3)),
+          StringNotLike: S.optional(__S(315, __c39, 3)),
+        }),
+      ).annotate({ identifier: "Conditions" });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          SelectionName: S.String,
+          IamRoleArn: S.String,
+          Resources: S.optional(__S(272, __c34, 0)),
+          ListOfTags: S.optional(__S(313, __c39, 1)),
+          NotResources: S.optional(__S(272, __c34, 0)),
+          Conditions: S.optional(__S(316, __c39, 4)),
+        }),
+      ).annotate({ identifier: "BackupSelection" });
+  }
+}
+function __c40(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           BackupVaultName: S.String.pipe(T.HttpLabel("BackupVaultName")),
-          BackupVaultTags: S.optional(__S(5, __c0, 5)),
+          BackupVaultTags: S.optional(__S(200, __c25, 0)),
           EncryptionKeyArn: S.optional(S.String),
           CreatorRequestId: S.optional(S.String).pipe(T.IdempotencyToken()),
         }).pipe(
@@ -6185,7 +6919,7 @@ function __c4(j: number): any {
           ),
         ),
       ).annotate({ identifier: "CreateBackupVaultInput" });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           BackupVaultName: S.optional(S.String),
@@ -6193,42 +6927,18 @@ function __c4(j: number): any {
           CreationDate: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
         }),
       ).annotate({ identifier: "CreateBackupVaultOutput" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({ ParameterName: S.optional(S.String), ParameterValue: S.optional(S.String) }),
-      ).annotate({ identifier: "ControlInputParameter" });
-    case 4:
-      return S.Array(__S(35, __c4, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          ComplianceResourceIds: S.optional(__S(11, __c1, 3)),
-          ComplianceResourceTypes: S.optional(__S(11, __c1, 3)),
-          Tags: S.optional(__S(5, __c0, 5)),
-        }),
-      ).annotate({ identifier: "ControlScope" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          ControlName: S.String,
-          ControlInputParameters: S.optional(__S(36, __c4, 4)),
-          ControlScope: S.optional(__S(37, __c4, 5)),
-        }),
-      ).annotate({ identifier: "FrameworkControl" });
-    case 7:
-      return S.Array(__S(38, __c4, 6));
   }
 }
-function __c5(j: number): any {
+function __c41(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           FrameworkName: S.String,
           FrameworkDescription: S.optional(S.String),
-          FrameworkControls: __S(39, __c4, 7),
+          FrameworkControls: __S(340, __c42, 4),
           IdempotencyToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-          FrameworkTags: S.optional(__S(5, __c0, 5)),
+          FrameworkTags: S.optional(__S(200, __c25, 0)),
         }).pipe(
           T.all(T.Http({ method: "POST", uri: "/audit/frameworks" }), svc, auth, proto, ver, rules),
         ),
@@ -6237,34 +6947,51 @@ function __c5(j: number): any {
       return S.suspend(() =>
         S.Struct({ FrameworkName: S.optional(S.String), FrameworkArn: S.optional(S.String) }),
       ).annotate({ identifier: "CreateFrameworkOutput" });
+  }
+}
+function __c42(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ ParameterName: S.optional(S.String), ParameterValue: S.optional(S.String) }),
+      ).annotate({ identifier: "ControlInputParameter" });
+    case 1:
+      return S.Array(__S(336, __c42, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          FromDate: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-          ToDate: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+          ComplianceResourceIds: S.optional(__S(272, __c34, 0)),
+          ComplianceResourceTypes: S.optional(__S(272, __c34, 0)),
+          Tags: S.optional(__S(200, __c25, 0)),
         }),
-      ).annotate({ identifier: "DateRange" });
+      ).annotate({ identifier: "ControlScope" });
     case 3:
       return S.suspend(() =>
         S.Struct({
-          VaultNames: S.optional(__S(11, __c1, 3)),
-          ResourceIdentifiers: S.optional(__S(11, __c1, 3)),
-          DateRange: S.optional(__S(42, __c5, 2)),
+          ControlName: S.String,
+          ControlInputParameters: S.optional(__S(337, __c42, 1)),
+          ControlScope: S.optional(__S(338, __c42, 2)),
         }),
-      ).annotate({ identifier: "RecoveryPointSelection" });
+      ).annotate({ identifier: "FrameworkControl" });
     case 4:
+      return S.Array(__S(339, __c42, 3));
+  }
+}
+function __c43(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           Title: S.String,
           Description: S.String,
           IdempotencyToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-          RecoveryPointSelection: S.optional(__S(43, __c5, 3)),
-          Tags: S.optional(__S(5, __c0, 5)),
+          RecoveryPointSelection: S.optional(__S(353, __c44, 1)),
+          Tags: S.optional(__S(200, __c25, 0)),
         }).pipe(
           T.all(T.Http({ method: "POST", uri: "/legal-holds" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "CreateLegalHoldInput" });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           Title: S.optional(S.String),
@@ -6273,14 +7000,37 @@ function __c5(j: number): any {
           LegalHoldId: S.optional(S.String),
           LegalHoldArn: S.optional(S.String),
           CreationDate: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          RecoveryPointSelection: S.optional(__S(43, __c5, 3)),
+          RecoveryPointSelection: S.optional(__S(353, __c44, 1)),
         }),
       ).annotate({ identifier: "CreateLegalHoldOutput" });
-    case 6:
+  }
+}
+function __c44(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          FromDate: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+          ToDate: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+        }),
+      ).annotate({ identifier: "DateRange" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          VaultNames: S.optional(__S(272, __c34, 0)),
+          ResourceIdentifiers: S.optional(__S(272, __c34, 0)),
+          DateRange: S.optional(__S(352, __c44, 0)),
+        }),
+      ).annotate({ identifier: "RecoveryPointSelection" });
+  }
+}
+function __c45(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           BackupVaultName: S.String.pipe(T.HttpLabel("BackupVaultName")),
-          BackupVaultTags: S.optional(__S(5, __c0, 5)),
+          BackupVaultTags: S.optional(__S(200, __c25, 0)),
           CreatorRequestId: S.optional(S.String).pipe(T.IdempotencyToken()),
           MinRetentionDays: S.Number,
           MaxRetentionDays: S.Number,
@@ -6298,7 +7048,7 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "CreateLogicallyAirGappedBackupVaultInput",
       });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           BackupVaultName: S.optional(S.String),
@@ -6311,35 +7061,16 @@ function __c5(j: number): any {
       });
   }
 }
-function __c6(j: number): any {
+function __c46(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          S3BucketName: S.String,
-          S3KeyPrefix: S.optional(S.String),
-          Formats: S.optional(__S(11, __c1, 3)),
-        }),
-      ).annotate({ identifier: "ReportDeliveryChannel" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          ReportTemplate: S.String,
-          FrameworkArns: S.optional(__S(11, __c1, 3)),
-          NumberOfFrameworks: S.optional(S.Number),
-          Accounts: S.optional(__S(11, __c1, 3)),
-          OrganizationUnits: S.optional(__S(11, __c1, 3)),
-          Regions: S.optional(__S(11, __c1, 3)),
-        }),
-      ).annotate({ identifier: "ReportSetting" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
           ReportPlanName: S.String,
           ReportPlanDescription: S.optional(S.String),
-          ReportDeliveryChannel: __S(48, __c6, 0),
-          ReportSetting: __S(49, __c6, 1),
-          ReportPlanTags: S.optional(__S(5, __c0, 5)),
+          ReportDeliveryChannel: __S(384, __c48, 0),
+          ReportSetting: __S(385, __c48, 1),
+          ReportPlanTags: S.optional(__S(200, __c25, 0)),
           IdempotencyToken: S.optional(S.String).pipe(T.IdempotencyToken()),
         }).pipe(
           T.all(
@@ -6352,7 +7083,11 @@ function __c6(j: number): any {
           ),
         ),
       ).annotate({ identifier: "CreateReportPlanInput" });
-    case 3:
+  }
+}
+function __c47(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           ReportPlanName: S.optional(S.String),
@@ -6360,12 +7095,39 @@ function __c6(j: number): any {
           CreationTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
         }),
       ).annotate({ identifier: "CreateReportPlanOutput" });
-    case 4:
+  }
+}
+function __c48(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          S3BucketName: S.String,
+          S3KeyPrefix: S.optional(S.String),
+          Formats: S.optional(__S(272, __c34, 0)),
+        }),
+      ).annotate({ identifier: "ReportDeliveryChannel" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          ReportTemplate: S.String,
+          FrameworkArns: S.optional(__S(272, __c34, 0)),
+          NumberOfFrameworks: S.optional(S.Number),
+          Accounts: S.optional(__S(272, __c34, 0)),
+          OrganizationUnits: S.optional(__S(272, __c34, 0)),
+          Regions: S.optional(__S(272, __c34, 0)),
+        }),
+      ).annotate({ identifier: "ReportSetting" });
+  }
+}
+function __c49(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           SourceBackupVaultArn: S.String,
           BackupVaultName: S.optional(S.String),
-          BackupVaultTags: S.optional(__S(5, __c0, 5)),
+          BackupVaultTags: S.optional(__S(200, __c25, 0)),
           CreatorRequestId: S.optional(S.String).pipe(T.IdempotencyToken()),
           RequesterComment: S.optional(SensitiveString),
         }).pipe(
@@ -6381,7 +7143,7 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "CreateRestoreAccessBackupVaultInput",
       });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           RestoreAccessBackupVaultArn: S.optional(S.String),
@@ -6392,28 +7154,14 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "CreateRestoreAccessBackupVaultOutput",
       });
-    case 6:
-      return S.Array(S.String);
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          Algorithm: S.optional(S.String),
-          ExcludeVaults: S.optional(__S(11, __c1, 3)),
-          IncludeVaults: S.optional(__S(11, __c1, 3)),
-          RecoveryPointTypes: S.optional(__S(54, __c6, 6)),
-          SelectionWindowDays: S.optional(S.Number),
-        }),
-      ).annotate({
-        identifier: "RestoreTestingRecoveryPointSelection",
-      });
   }
 }
-function __c7(j: number): any {
+function __c50(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          RecoveryPointSelection: __S(55, __c6, 7),
+          RecoveryPointSelection: __S(409, __c51, 1),
           RestoreTestingPlanName: S.String,
           ScheduleExpression: S.String,
           ScheduleExpressionTimezone: S.optional(S.String),
@@ -6426,8 +7174,8 @@ function __c7(j: number): any {
       return S.suspend(() =>
         S.Struct({
           CreatorRequestId: S.optional(S.String),
-          RestoreTestingPlan: __S(56, __c7, 0),
-          Tags: S.optional(__S(4, __c0, 4)),
+          RestoreTestingPlan: __S(400, __c50, 0),
+          Tags: S.optional(__S(208, __c26, 0)),
         }).pipe(
           T.all(
             T.Http({ method: "PUT", uri: "/restore-testing/plans" }),
@@ -6451,41 +7199,48 @@ function __c7(j: number): any {
       ).annotate({
         identifier: "CreateRestoreTestingPlanOutput",
       });
-    case 3:
-      return S.suspend(() => S.Struct({ Key: S.String, Value: S.String })).annotate({
-        identifier: "KeyValue",
-      });
-    case 4:
-      return S.Array(__S(59, __c7, 3));
-    case 5:
+  }
+}
+function __c51(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          StringEquals: S.optional(__S(60, __c7, 4)),
-          StringNotEquals: S.optional(__S(60, __c7, 4)),
+          Algorithm: S.optional(S.String),
+          ExcludeVaults: S.optional(__S(272, __c34, 0)),
+          IncludeVaults: S.optional(__S(272, __c34, 0)),
+          RecoveryPointTypes: S.optional(__S(408, __c51, 0)),
+          SelectionWindowDays: S.optional(S.Number),
         }),
       ).annotate({
-        identifier: "ProtectedResourceConditions",
+        identifier: "RestoreTestingRecoveryPointSelection",
       });
-    case 6:
+  }
+}
+function __c52(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           IamRoleArn: S.String,
-          ProtectedResourceArns: S.optional(__S(11, __c1, 3)),
-          ProtectedResourceConditions: S.optional(__S(61, __c7, 5)),
+          ProtectedResourceArns: S.optional(__S(272, __c34, 0)),
+          ProtectedResourceConditions: S.optional(__S(426, __c53, 2)),
           ProtectedResourceType: S.String,
-          RestoreMetadataOverrides: S.optional(__S(4, __c0, 4)),
+          RestoreMetadataOverrides: S.optional(__S(208, __c26, 0)),
           RestoreTestingSelectionName: S.String,
           ValidationWindowHours: S.optional(S.Number),
         }),
       ).annotate({
         identifier: "RestoreTestingSelectionForCreate",
       });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           CreatorRequestId: S.optional(S.String),
           RestoreTestingPlanName: S.String.pipe(T.HttpLabel("RestoreTestingPlanName")),
-          RestoreTestingSelection: __S(62, __c7, 6),
+          RestoreTestingSelection: __S(416, __c52, 0),
         }).pipe(
           T.all(
             T.Http({
@@ -6502,11 +7257,7 @@ function __c7(j: number): any {
       ).annotate({
         identifier: "CreateRestoreTestingSelectionInput",
       });
-  }
-}
-function __c8(j: number): any {
-  switch (j) {
-    case 0:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           CreationTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
@@ -6517,31 +7268,44 @@ function __c8(j: number): any {
       ).annotate({
         identifier: "CreateRestoreTestingSelectionOutput",
       });
+  }
+}
+function __c53(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({ Key: S.String, Value: S.String })).annotate({
+        identifier: "KeyValue",
+      });
     case 1:
+      return S.Array(__S(424, __c53, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          Resources: __S(11, __c1, 3),
-          TieringDownSettingsInDays: S.Number,
-          ResourceType: S.String,
+          StringEquals: S.optional(__S(425, __c53, 1)),
+          StringNotEquals: S.optional(__S(425, __c53, 1)),
         }),
-      ).annotate({ identifier: "ResourceSelection" });
-    case 2:
-      return S.Array(__S(65, __c8, 1));
-    case 3:
+      ).annotate({
+        identifier: "ProtectedResourceConditions",
+      });
+  }
+}
+function __c54(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           TieringConfigurationName: S.String,
           BackupVaultName: S.String,
-          ResourceSelection: __S(66, __c8, 2),
+          ResourceSelection: __S(441, __c55, 1),
         }),
       ).annotate({
         identifier: "TieringConfigurationInputForCreate",
       });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          TieringConfiguration: __S(67, __c8, 3),
-          TieringConfigurationTags: S.optional(__S(5, __c0, 5)),
+          TieringConfiguration: __S(432, __c54, 0),
+          TieringConfigurationTags: S.optional(__S(200, __c25, 0)),
           CreatorRequestId: S.optional(S.String).pipe(T.IdempotencyToken()),
         }).pipe(
           T.all(
@@ -6556,7 +7320,7 @@ function __c8(j: number): any {
       ).annotate({
         identifier: "CreateTieringConfigurationInput",
       });
-    case 5:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           TieringConfigurationArn: S.optional(S.String),
@@ -6566,7 +7330,25 @@ function __c8(j: number): any {
       ).annotate({
         identifier: "CreateTieringConfigurationOutput",
       });
-    case 6:
+  }
+}
+function __c55(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          Resources: __S(272, __c34, 0),
+          TieringDownSettingsInDays: S.Number,
+          ResourceType: S.String,
+        }),
+      ).annotate({ identifier: "ResourceSelection" });
+    case 1:
+      return S.Array(__S(440, __c55, 0));
+  }
+}
+function __c56(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ AccessPointArn: S.String.pipe(T.HttpLabel("AccessPointArn")) }).pipe(
           T.all(
@@ -6581,13 +7363,13 @@ function __c8(j: number): any {
       ).annotate({
         identifier: "DeleteBackupAccessPointInput",
       });
-    case 7:
+    case 1:
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "DeleteBackupAccessPointResponse",
       });
   }
 }
-function __c9(j: number): any {
+function __c57(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -6611,7 +7393,11 @@ function __c9(j: number): any {
           VersionId: S.optional(S.String),
         }),
       ).annotate({ identifier: "DeleteBackupPlanOutput" });
-    case 2:
+  }
+}
+function __c58(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           BackupPlanId: S.String.pipe(T.HttpLabel("BackupPlanId")),
@@ -6632,7 +7418,11 @@ function __c9(j: number): any {
       ).annotate({
         identifier: "DeleteBackupSelectionInput",
       });
-    case 3:
+  }
+}
+function __c59(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ BackupVaultName: S.String.pipe(T.HttpLabel("BackupVaultName")) }).pipe(
           T.all(
@@ -6645,7 +7435,11 @@ function __c9(j: number): any {
           ),
         ),
       ).annotate({ identifier: "DeleteBackupVaultInput" });
-    case 4:
+  }
+}
+function __c60(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ BackupVaultName: S.String.pipe(T.HttpLabel("BackupVaultName")) }).pipe(
           T.all(
@@ -6660,7 +7454,11 @@ function __c9(j: number): any {
       ).annotate({
         identifier: "DeleteBackupVaultAccessPolicyInput",
       });
-    case 5:
+  }
+}
+function __c61(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ BackupVaultName: S.String.pipe(T.HttpLabel("BackupVaultName")) }).pipe(
           T.all(
@@ -6675,7 +7473,11 @@ function __c9(j: number): any {
       ).annotate({
         identifier: "DeleteBackupVaultLockConfigurationInput",
       });
-    case 6:
+  }
+}
+function __c62(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ BackupVaultName: S.String.pipe(T.HttpLabel("BackupVaultName")) }).pipe(
           T.all(
@@ -6693,7 +7495,11 @@ function __c9(j: number): any {
       ).annotate({
         identifier: "DeleteBackupVaultNotificationsInput",
       });
-    case 7:
+  }
+}
+function __c63(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ FrameworkName: S.String.pipe(T.HttpLabel("FrameworkName")) }).pipe(
           T.all(
@@ -6708,7 +7514,7 @@ function __c9(j: number): any {
       ).annotate({ identifier: "DeleteFrameworkInput" });
   }
 }
-function __c10(j: number): any {
+function __c64(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -6729,7 +7535,11 @@ function __c10(j: number): any {
           ),
         ),
       ).annotate({ identifier: "DeleteRecoveryPointInput" });
-    case 1:
+  }
+}
+function __c65(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ ReportPlanName: S.String.pipe(T.HttpLabel("ReportPlanName")) }).pipe(
           T.all(
@@ -6742,7 +7552,11 @@ function __c10(j: number): any {
           ),
         ),
       ).annotate({ identifier: "DeleteReportPlanInput" });
-    case 2:
+  }
+}
+function __c66(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           RestoreTestingPlanName: S.String.pipe(T.HttpLabel("RestoreTestingPlanName")),
@@ -6759,7 +7573,11 @@ function __c10(j: number): any {
       ).annotate({
         identifier: "DeleteRestoreTestingPlanInput",
       });
-    case 3:
+  }
+}
+function __c67(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           RestoreTestingPlanName: S.String.pipe(T.HttpLabel("RestoreTestingPlanName")),
@@ -6780,7 +7598,11 @@ function __c10(j: number): any {
       ).annotate({
         identifier: "DeleteRestoreTestingSelectionInput",
       });
-    case 4:
+  }
+}
+function __c68(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           TieringConfigurationName: S.String.pipe(T.HttpLabel("TieringConfigurationName")),
@@ -6797,7 +7619,11 @@ function __c10(j: number): any {
       ).annotate({
         identifier: "DeleteTieringConfigurationInput",
       });
-    case 5:
+  }
+}
+function __c69(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ AccessPointArn: S.String.pipe(T.HttpLabel("AccessPointArn")) }).pipe(
           T.all(
@@ -6812,11 +7638,11 @@ function __c10(j: number): any {
       ).annotate({
         identifier: "DescribeBackupAccessPointInput",
       });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           AccessPointArn: S.String,
-          AccessPointMetadata: S.optional(__S(4, __c0, 4)),
+          AccessPointMetadata: S.optional(__S(208, __c26, 0)),
           BackupVaultArn: S.optional(S.String),
           BackupVaultName: S.String,
           CreationTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
@@ -6830,7 +7656,11 @@ function __c10(j: number): any {
       ).annotate({
         identifier: "DescribeBackupAccessPointResponse",
       });
-    case 7:
+  }
+}
+function __c70(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ BackupJobId: S.String.pipe(T.HttpLabel("BackupJobId")) }).pipe(
           T.all(
@@ -6843,32 +7673,13 @@ function __c10(j: number): any {
           ),
         ),
       ).annotate({ identifier: "DescribeBackupJobInput" });
-  }
-}
-function __c11(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          BackupPlanId: S.optional(S.String),
-          BackupPlanArn: S.optional(S.String),
-          BackupPlanName: S.optional(S.String),
-          BackupPlanVersion: S.optional(S.String),
-          BackupRuleId: S.optional(S.String),
-          BackupRuleName: S.optional(S.String),
-          BackupRuleCron: S.optional(S.String),
-          BackupRuleTimezone: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "RecoveryPointCreator" });
     case 1:
-      return S.Record(S.String, /*@__PURE__*/ S.Number.pipe(S.optional));
-    case 2:
       return S.suspend(() =>
         S.Struct({
           AccountId: S.optional(S.String),
           BackupJobId: S.optional(S.String),
           BackupVaultName: S.optional(S.String),
-          RecoveryPointLifecycle: S.optional(__S(8, __c1, 0)),
+          RecoveryPointLifecycle: S.optional(__S(280, __c35, 0)),
           BackupVaultArn: S.optional(S.String),
           VaultType: S.optional(S.String),
           VaultLockState: S.optional(S.String),
@@ -6883,23 +7694,50 @@ function __c11(j: number): any {
           PercentDone: S.optional(S.String),
           BackupSizeInBytes: S.optional(S.Number),
           IamRoleArn: S.optional(S.String),
-          CreatedBy: S.optional(__S(88, __c11, 0)),
+          CreatedBy: S.optional(__S(568, __c71, 0)),
           ResourceType: S.optional(S.String),
           BytesTransferred: S.optional(S.Number),
           ExpectedCompletionDate: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           StartBy: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          BackupOptions: S.optional(__S(4, __c0, 4)),
+          BackupOptions: S.optional(__S(208, __c26, 0)),
           BackupType: S.optional(S.String),
           ParentJobId: S.optional(S.String),
           IsParent: S.optional(S.Boolean),
           NumberOfChildJobs: S.optional(S.Number),
-          ChildJobsInState: S.optional(__S(89, __c11, 1)),
+          ChildJobsInState: S.optional(__S(576, __c72, 0)),
           ResourceName: S.optional(S.String),
           InitiationDate: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           MessageCategory: S.optional(S.String),
         }),
       ).annotate({ identifier: "DescribeBackupJobOutput" });
-    case 3:
+  }
+}
+function __c71(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          BackupPlanId: S.optional(S.String),
+          BackupPlanArn: S.optional(S.String),
+          BackupPlanName: S.optional(S.String),
+          BackupPlanVersion: S.optional(S.String),
+          BackupRuleId: S.optional(S.String),
+          BackupRuleName: S.optional(S.String),
+          BackupRuleCron: S.optional(S.String),
+          BackupRuleTimezone: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "RecoveryPointCreator" });
+  }
+}
+function __c72(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, /*@__PURE__*/ S.Number.pipe(S.optional));
+  }
+}
+function __c73(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           BackupVaultName: S.String.pipe(T.HttpLabel("BackupVaultName")),
@@ -6915,7 +7753,7 @@ function __c11(j: number): any {
           ),
         ),
       ).annotate({ identifier: "DescribeBackupVaultInput" });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           MpaSessionArn: S.optional(S.String),
@@ -6927,7 +7765,7 @@ function __c11(j: number): any {
       ).annotate({
         identifier: "LatestMpaApprovalTeamUpdate",
       });
-    case 5:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           BackupVaultName: S.optional(S.String),
@@ -6945,13 +7783,17 @@ function __c11(j: number): any {
           SourceBackupVaultArn: S.optional(S.String),
           MpaApprovalTeamArn: S.optional(S.String),
           MpaSessionArn: S.optional(S.String),
-          LatestMpaApprovalTeamUpdate: S.optional(__S(92, __c11, 4)),
+          LatestMpaApprovalTeamUpdate: S.optional(__S(585, __c73, 1)),
           EncryptionKeyType: S.optional(S.String),
         }),
       ).annotate({
         identifier: "DescribeBackupVaultOutput",
       });
-    case 6:
+  }
+}
+function __c74(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ CopyJobId: S.String.pipe(T.HttpLabel("CopyJobId")) }).pipe(
           T.all(
@@ -6964,7 +7806,15 @@ function __c11(j: number): any {
           ),
         ),
       ).annotate({ identifier: "DescribeCopyJobInput" });
-    case 7:
+    case 1:
+      return S.suspend(() => S.Struct({ CopyJob: S.optional(__S(600, __c75, 0)) })).annotate({
+        identifier: "DescribeCopyJobOutput",
+      });
+  }
+}
+function __c75(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           AccountId: S.optional(S.String),
@@ -6976,7 +7826,7 @@ function __c11(j: number): any {
           DestinationVaultLockState: S.optional(S.String),
           DestinationRecoveryPointArn: S.optional(S.String),
           DestinationEncryptionKeyArn: S.optional(S.String),
-          DestinationRecoveryPointLifecycle: S.optional(__S(8, __c1, 0)),
+          DestinationRecoveryPointLifecycle: S.optional(__S(280, __c35, 0)),
           ResourceArn: S.optional(S.String),
           CreationDate: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           CompletionDate: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
@@ -6984,27 +7834,23 @@ function __c11(j: number): any {
           StatusMessage: S.optional(S.String),
           BackupSizeInBytes: S.optional(S.Number),
           IamRoleArn: S.optional(S.String),
-          CreatedBy: S.optional(__S(88, __c11, 0)),
+          CreatedBy: S.optional(__S(568, __c71, 0)),
           CreatedByBackupJobId: S.optional(S.String),
           ResourceType: S.optional(S.String),
           ParentJobId: S.optional(S.String),
           IsParent: S.optional(S.Boolean),
           CompositeMemberIdentifier: S.optional(S.String),
           NumberOfChildJobs: S.optional(S.Number),
-          ChildJobsInState: S.optional(__S(89, __c11, 1)),
+          ChildJobsInState: S.optional(__S(576, __c72, 0)),
           ResourceName: S.optional(S.String),
           MessageCategory: S.optional(S.String),
         }),
       ).annotate({ identifier: "CopyJob" });
   }
 }
-function __c12(j: number): any {
+function __c76(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => S.Struct({ CopyJob: S.optional(__S(95, __c11, 7)) })).annotate({
-        identifier: "DescribeCopyJobOutput",
-      });
-    case 1:
       return S.suspend(() =>
         S.Struct({ FrameworkName: S.String.pipe(T.HttpLabel("FrameworkName")) }).pipe(
           T.all(
@@ -7017,20 +7863,24 @@ function __c12(j: number): any {
           ),
         ),
       ).annotate({ identifier: "DescribeFrameworkInput" });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           FrameworkName: S.optional(S.String),
           FrameworkArn: S.optional(S.String),
           FrameworkDescription: S.optional(S.String),
-          FrameworkControls: S.optional(__S(39, __c4, 7)),
+          FrameworkControls: S.optional(__S(340, __c42, 4)),
           CreationTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           DeploymentStatus: S.optional(S.String),
           FrameworkStatus: S.optional(S.String),
           IdempotencyToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "DescribeFrameworkOutput" });
-    case 3:
+  }
+}
+function __c77(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({}).pipe(
           T.all(T.Http({ method: "GET", uri: "/global-settings" }), svc, auth, proto, ver, rules),
@@ -7038,16 +7888,20 @@ function __c12(j: number): any {
       ).annotate({
         identifier: "DescribeGlobalSettingsInput",
       });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          GlobalSettings: S.optional(__S(4, __c0, 4)),
+          GlobalSettings: S.optional(__S(208, __c26, 0)),
           LastUpdateTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
         }),
       ).annotate({
         identifier: "DescribeGlobalSettingsOutput",
       });
-    case 5:
+  }
+}
+function __c78(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ ResourceArn: S.String.pipe(T.HttpLabel("ResourceArn")) }).pipe(
           T.all(
@@ -7062,7 +7916,7 @@ function __c12(j: number): any {
       ).annotate({
         identifier: "DescribeProtectedResourceInput",
       });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           ResourceArn: S.optional(S.String),
@@ -7080,7 +7934,11 @@ function __c12(j: number): any {
       ).annotate({
         identifier: "DescribeProtectedResourceOutput",
       });
-    case 7:
+  }
+}
+function __c79(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           BackupVaultName: S.String.pipe(T.HttpLabel("BackupVaultName")),
@@ -7102,31 +7960,18 @@ function __c12(j: number): any {
       ).annotate({
         identifier: "DescribeRecoveryPointInput",
       });
-  }
-}
-function __c13(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          MoveToColdStorageAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          DeleteAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-        }),
-      ).annotate({ identifier: "CalculatedLifecycle" });
     case 1:
-      return S.Array(S.String);
-    case 2:
       return S.suspend(() =>
         S.Struct({
           MalwareScanner: S.optional(S.String),
           ScanJobState: S.optional(S.String),
           LastScanTimestamp: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          Findings: S.optional(__S(105, __c13, 1)),
+          Findings: S.optional(__S(640, __c80, 0)),
         }),
       ).annotate({ identifier: "ScanResult" });
+    case 2:
+      return S.Array(__S(633, __c79, 1));
     case 3:
-      return S.Array(__S(106, __c13, 2));
-    case 4:
       return S.suspend(() =>
         S.Struct({
           RecoveryPointArn: S.optional(S.String),
@@ -7135,7 +7980,7 @@ function __c13(j: number): any {
           SourceBackupVaultArn: S.optional(S.String),
           ResourceArn: S.optional(S.String),
           ResourceType: S.optional(S.String),
-          CreatedBy: S.optional(__S(88, __c11, 0)),
+          CreatedBy: S.optional(__S(568, __c71, 0)),
           IamRoleArn: S.optional(S.String),
           Status: S.optional(S.String),
           StatusMessage: S.optional(S.String),
@@ -7143,8 +7988,8 @@ function __c13(j: number): any {
           InitiationDate: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           CompletionDate: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           BackupSizeInBytes: S.optional(S.Number),
-          CalculatedLifecycle: S.optional(__S(104, __c13, 0)),
-          Lifecycle: S.optional(__S(8, __c1, 0)),
+          CalculatedLifecycle: S.optional(__S(648, __c81, 0)),
+          Lifecycle: S.optional(__S(280, __c35, 0)),
           EncryptionKeyArn: S.optional(S.String),
           IsEncrypted: S.optional(S.Boolean),
           StorageClass: S.optional(S.String),
@@ -7157,12 +8002,33 @@ function __c13(j: number): any {
           IndexStatus: S.optional(S.String),
           IndexStatusMessage: S.optional(S.String),
           EncryptionKeyType: S.optional(S.String),
-          ScanResults: S.optional(__S(107, __c13, 3)),
+          ScanResults: S.optional(__S(634, __c79, 2)),
         }),
       ).annotate({
         identifier: "DescribeRecoveryPointOutput",
       });
-    case 5:
+  }
+}
+function __c80(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c81(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          MoveToColdStorageAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          DeleteAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+        }),
+      ).annotate({ identifier: "CalculatedLifecycle" });
+  }
+}
+function __c82(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({}).pipe(
           T.all(T.Http({ method: "GET", uri: "/account-settings" }), svc, auth, proto, ver, rules),
@@ -7170,20 +8036,24 @@ function __c13(j: number): any {
       ).annotate({
         identifier: "DescribeRegionSettingsInput",
       });
-    case 6:
-      return S.Record(S.String, /*@__PURE__*/ S.Boolean.pipe(S.optional));
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          ResourceTypeOptInPreference: S.optional(__S(110, __c13, 6)),
-          ResourceTypeManagementPreference: S.optional(__S(110, __c13, 6)),
+          ResourceTypeOptInPreference: S.optional(__S(664, __c83, 0)),
+          ResourceTypeManagementPreference: S.optional(__S(664, __c83, 0)),
         }),
       ).annotate({
         identifier: "DescribeRegionSettingsOutput",
       });
   }
 }
-function __c14(j: number): any {
+function __c83(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, /*@__PURE__*/ S.Boolean.pipe(S.optional));
+  }
+}
+function __c84(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -7199,10 +8069,18 @@ function __c14(j: number): any {
         ),
       ).annotate({ identifier: "DescribeReportJobInput" });
     case 1:
+      return S.suspend(() => S.Struct({ ReportJob: S.optional(__S(681, __c85, 1)) })).annotate({
+        identifier: "DescribeReportJobOutput",
+      });
+  }
+}
+function __c85(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
-        S.Struct({ S3BucketName: S.optional(S.String), S3Keys: S.optional(__S(11, __c1, 3)) }),
+        S.Struct({ S3BucketName: S.optional(S.String), S3Keys: S.optional(__S(272, __c34, 0)) }),
       ).annotate({ identifier: "ReportDestination" });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           ReportJobId: S.optional(S.String),
@@ -7212,14 +8090,14 @@ function __c14(j: number): any {
           CompletionTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           Status: S.optional(S.String),
           StatusMessage: S.optional(S.String),
-          ReportDestination: S.optional(__S(113, __c14, 1)),
+          ReportDestination: S.optional(__S(680, __c85, 0)),
         }),
       ).annotate({ identifier: "ReportJob" });
-    case 3:
-      return S.suspend(() => S.Struct({ ReportJob: S.optional(__S(114, __c14, 2)) })).annotate({
-        identifier: "DescribeReportJobOutput",
-      });
-    case 4:
+  }
+}
+function __c86(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ ReportPlanName: S.String.pipe(T.HttpLabel("ReportPlanName")) }).pipe(
           T.all(
@@ -7232,25 +8110,33 @@ function __c14(j: number): any {
           ),
         ),
       ).annotate({ identifier: "DescribeReportPlanInput" });
-    case 5:
+    case 1:
+      return S.suspend(() => S.Struct({ ReportPlan: S.optional(__S(696, __c87, 0)) })).annotate({
+        identifier: "DescribeReportPlanOutput",
+      });
+  }
+}
+function __c87(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           ReportPlanArn: S.optional(S.String),
           ReportPlanName: S.optional(S.String),
           ReportPlanDescription: S.optional(S.String),
-          ReportSetting: S.optional(__S(49, __c6, 1)),
-          ReportDeliveryChannel: S.optional(__S(48, __c6, 0)),
+          ReportSetting: S.optional(__S(385, __c48, 1)),
+          ReportDeliveryChannel: S.optional(__S(384, __c48, 0)),
           DeploymentStatus: S.optional(S.String),
           CreationTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           LastAttemptedExecutionTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           LastSuccessfulExecutionTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
         }),
       ).annotate({ identifier: "ReportPlan" });
-    case 6:
-      return S.suspend(() => S.Struct({ ReportPlan: S.optional(__S(117, __c14, 5)) })).annotate({
-        identifier: "DescribeReportPlanOutput",
-      });
-    case 7:
+  }
+}
+function __c88(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ RestoreJobId: S.String.pipe(T.HttpLabel("RestoreJobId")) }).pipe(
           T.all(
@@ -7263,14 +8149,6 @@ function __c14(j: number): any {
           ),
         ),
       ).annotate({ identifier: "DescribeRestoreJobInput" });
-  }
-}
-function __c15(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() => S.Struct({ RestoreTestingPlanArn: S.optional(S.String) })).annotate({
-        identifier: "RestoreJobCreator",
-      });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -7290,7 +8168,7 @@ function __c15(j: number): any {
           CreatedResourceArn: S.optional(S.String),
           ResourceType: S.optional(S.String),
           RecoveryPointCreationDate: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          CreatedBy: S.optional(__S(120, __c15, 0)),
+          CreatedBy: S.optional(__S(712, __c89, 0)),
           ValidationStatus: S.optional(S.String),
           ValidationStatusMessage: S.optional(S.String),
           DeletionStatus: S.optional(S.String),
@@ -7299,7 +8177,19 @@ function __c15(j: number): any {
           ParentJobId: S.optional(S.String),
         }),
       ).annotate({ identifier: "DescribeRestoreJobOutput" });
-    case 2:
+  }
+}
+function __c89(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({ RestoreTestingPlanArn: S.optional(S.String) })).annotate({
+        identifier: "RestoreJobCreator",
+      });
+  }
+}
+function __c90(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ ScanJobId: S.String.pipe(T.HttpLabel("ScanJobId")) }).pipe(
           T.all(
@@ -7312,20 +8202,7 @@ function __c15(j: number): any {
           ),
         ),
       ).annotate({ identifier: "DescribeScanJobInput" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          BackupPlanArn: S.String,
-          BackupPlanId: S.String,
-          BackupPlanVersion: S.String,
-          BackupRuleId: S.String,
-        }),
-      ).annotate({ identifier: "ScanJobCreator" });
-    case 4:
-      return S.suspend(() => S.Struct({ ScanResultStatus: S.String })).annotate({
-        identifier: "ScanResultInfo",
-      });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           AccountId: S.String,
@@ -7334,7 +8211,7 @@ function __c15(j: number): any {
           CompletionDate: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           ContinuousScanEndTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           ContinuousScanStartTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          CreatedBy: __S(123, __c15, 3),
+          CreatedBy: __S(736, __c92, 0),
           CreationDate: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
           IamRoleArn: S.String,
           MalwareScanner: S.String,
@@ -7346,13 +8223,38 @@ function __c15(j: number): any {
           ScanId: S.optional(S.String),
           ScanJobId: S.String,
           ScanMode: S.String,
-          ScanResult: S.optional(__S(124, __c15, 4)),
+          ScanResult: S.optional(__S(728, __c91, 0)),
           ScannerRoleArn: S.String,
           State: S.String,
           StatusMessage: S.optional(S.String),
         }),
       ).annotate({ identifier: "DescribeScanJobOutput" });
-    case 6:
+  }
+}
+function __c91(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({ ScanResultStatus: S.String })).annotate({
+        identifier: "ScanResultInfo",
+      });
+  }
+}
+function __c92(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          BackupPlanArn: S.String,
+          BackupPlanId: S.String,
+          BackupPlanVersion: S.String,
+          BackupRuleId: S.String,
+        }),
+      ).annotate({ identifier: "ScanJobCreator" });
+  }
+}
+function __c93(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           BackupVaultName: S.String.pipe(T.HttpLabel("BackupVaultName")),
@@ -7373,7 +8275,11 @@ function __c15(j: number): any {
       ).annotate({
         identifier: "DisassociateBackupVaultMpaApprovalTeamInput",
       });
-    case 7:
+  }
+}
+function __c94(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           BackupVaultName: S.String.pipe(T.HttpLabel("BackupVaultName")),
@@ -7396,7 +8302,7 @@ function __c15(j: number): any {
       });
   }
 }
-function __c16(j: number): any {
+function __c95(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -7419,7 +8325,11 @@ function __c16(j: number): any {
       ).annotate({
         identifier: "DisassociateRecoveryPointFromParentInput",
       });
-    case 1:
+  }
+}
+function __c96(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ BackupPlanId: S.String.pipe(T.HttpLabel("BackupPlanId")) }).pipe(
           T.all(
@@ -7434,11 +8344,15 @@ function __c16(j: number): any {
       ).annotate({
         identifier: "ExportBackupPlanTemplateInput",
       });
-    case 2:
+    case 1:
       return S.suspend(() => S.Struct({ BackupPlanTemplateJson: S.optional(S.String) })).annotate({
         identifier: "ExportBackupPlanTemplateOutput",
       });
-    case 3:
+  }
+}
+function __c97(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           BackupPlanId: S.String.pipe(T.HttpLabel("BackupPlanId")),
@@ -7457,37 +8371,7 @@ function __c16(j: number): any {
           ),
         ),
       ).annotate({ identifier: "GetBackupPlanInput" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          RuleName: S.String,
-          TargetBackupVaultName: S.String,
-          TargetLogicallyAirGappedBackupVaultArn: S.optional(S.String),
-          ScheduleExpression: S.optional(S.String),
-          StartWindowMinutes: S.optional(S.Number),
-          CompletionWindowMinutes: S.optional(S.Number),
-          Lifecycle: S.optional(__S(8, __c1, 0)),
-          RecoveryPointTags: S.optional(__S(5, __c0, 5)),
-          RuleId: S.optional(S.String),
-          CopyActions: S.optional(__S(10, __c1, 2)),
-          EnableContinuousBackup: S.optional(S.Boolean),
-          ScheduleExpressionTimezone: S.optional(S.String),
-          IndexActions: S.optional(__S(13, __c1, 5)),
-          ScanActions: S.optional(__S(15, __c1, 7)),
-        }),
-      ).annotate({ identifier: "BackupRule" });
-    case 5:
-      return S.Array(__S(132, __c16, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          BackupPlanName: S.String,
-          Rules: __S(133, __c16, 5),
-          AdvancedBackupSettings: S.optional(__S(19, __c2, 3)),
-          ScanSettings: S.optional(__S(21, __c2, 5)),
-        }),
-      ).annotate({ identifier: "BackupPlan" });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           ExecutionTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
@@ -7497,16 +8381,12 @@ function __c16(j: number): any {
       ).annotate({
         identifier: "ScheduledPlanExecutionMember",
       });
-  }
-}
-function __c17(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(135, __c16, 7));
-    case 1:
+    case 2:
+      return S.Array(__S(777, __c97, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          BackupPlan: S.optional(__S(134, __c16, 6)),
+          BackupPlan: S.optional(__S(786, __c98, 2)),
           BackupPlanId: S.optional(S.String),
           BackupPlanArn: S.optional(S.String),
           VersionId: S.optional(S.String),
@@ -7514,11 +8394,49 @@ function __c17(j: number): any {
           CreationDate: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           DeletionDate: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           LastExecutionDate: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          AdvancedBackupSettings: S.optional(__S(19, __c2, 3)),
-          ScheduledRunsPreview: S.optional(__S(136, __c17, 0)),
+          AdvancedBackupSettings: S.optional(__S(297, __c37, 1)),
+          ScheduledRunsPreview: S.optional(__S(778, __c97, 2)),
         }),
       ).annotate({ identifier: "GetBackupPlanOutput" });
+  }
+}
+function __c98(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          RuleName: S.String,
+          TargetBackupVaultName: S.String,
+          TargetLogicallyAirGappedBackupVaultArn: S.optional(S.String),
+          ScheduleExpression: S.optional(S.String),
+          StartWindowMinutes: S.optional(S.Number),
+          CompletionWindowMinutes: S.optional(S.Number),
+          Lifecycle: S.optional(__S(280, __c35, 0)),
+          RecoveryPointTags: S.optional(__S(200, __c25, 0)),
+          RuleId: S.optional(S.String),
+          CopyActions: S.optional(__S(289, __c36, 1)),
+          EnableContinuousBackup: S.optional(S.Boolean),
+          ScheduleExpressionTimezone: S.optional(S.String),
+          IndexActions: S.optional(__S(291, __c36, 3)),
+          ScanActions: S.optional(__S(293, __c36, 5)),
+        }),
+      ).annotate({ identifier: "BackupRule" });
+    case 1:
+      return S.Array(__S(784, __c98, 0));
     case 2:
+      return S.suspend(() =>
+        S.Struct({
+          BackupPlanName: S.String,
+          Rules: __S(785, __c98, 1),
+          AdvancedBackupSettings: S.optional(__S(297, __c37, 1)),
+          ScanSettings: S.optional(__S(295, __c36, 7)),
+        }),
+      ).annotate({ identifier: "BackupPlan" });
+  }
+}
+function __c99(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ BackupPlanTemplateJson: S.String }).pipe(
           T.all(
@@ -7533,11 +8451,15 @@ function __c17(j: number): any {
       ).annotate({
         identifier: "GetBackupPlanFromJSONInput",
       });
-    case 3:
-      return S.suspend(() => S.Struct({ BackupPlan: S.optional(__S(134, __c16, 6)) })).annotate({
+    case 1:
+      return S.suspend(() => S.Struct({ BackupPlan: S.optional(__S(786, __c98, 2)) })).annotate({
         identifier: "GetBackupPlanFromJSONOutput",
       });
-    case 4:
+  }
+}
+function __c100(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ BackupPlanTemplateId: S.String.pipe(T.HttpLabel("BackupPlanTemplateId")) }).pipe(
           T.all(
@@ -7552,13 +8474,17 @@ function __c17(j: number): any {
       ).annotate({
         identifier: "GetBackupPlanFromTemplateInput",
       });
-    case 5:
+    case 1:
       return S.suspend(() =>
-        S.Struct({ BackupPlanDocument: S.optional(__S(134, __c16, 6)) }),
+        S.Struct({ BackupPlanDocument: S.optional(__S(786, __c98, 2)) }),
       ).annotate({
         identifier: "GetBackupPlanFromTemplateOutput",
       });
-    case 6:
+  }
+}
+function __c101(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           BackupPlanId: S.String.pipe(T.HttpLabel("BackupPlanId")),
@@ -7574,10 +8500,10 @@ function __c17(j: number): any {
           ),
         ),
       ).annotate({ identifier: "GetBackupSelectionInput" });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          BackupSelection: S.optional(__S(30, __c3, 6)),
+          BackupSelection: S.optional(__S(317, __c39, 5)),
           SelectionId: S.optional(S.String),
           BackupPlanId: S.optional(S.String),
           CreationDate: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
@@ -7586,7 +8512,7 @@ function __c17(j: number): any {
       ).annotate({ identifier: "GetBackupSelectionOutput" });
   }
 }
-function __c18(j: number): any {
+function __c102(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -7613,7 +8539,11 @@ function __c18(j: number): any {
       ).annotate({
         identifier: "GetBackupVaultAccessPolicyOutput",
       });
-    case 2:
+  }
+}
+function __c103(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ BackupVaultName: S.String.pipe(T.HttpLabel("BackupVaultName")) }).pipe(
           T.all(
@@ -7631,18 +8561,22 @@ function __c18(j: number): any {
       ).annotate({
         identifier: "GetBackupVaultNotificationsInput",
       });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           BackupVaultName: S.optional(S.String),
           BackupVaultArn: S.optional(S.String),
           SNSTopicArn: S.optional(S.String),
-          BackupVaultEvents: S.optional(__S(105, __c13, 1)),
+          BackupVaultEvents: S.optional(__S(640, __c80, 0)),
         }),
       ).annotate({
         identifier: "GetBackupVaultNotificationsOutput",
       });
-    case 4:
+  }
+}
+function __c104(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ LegalHoldId: S.String.pipe(T.HttpLabel("LegalHoldId")) }).pipe(
           T.all(
@@ -7655,7 +8589,7 @@ function __c18(j: number): any {
           ),
         ),
       ).annotate({ identifier: "GetLegalHoldInput" });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           Title: S.optional(S.String),
@@ -7667,10 +8601,14 @@ function __c18(j: number): any {
           CreationDate: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           CancellationDate: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           RetainRecordUntil: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          RecoveryPointSelection: S.optional(__S(43, __c5, 3)),
+          RecoveryPointSelection: S.optional(__S(353, __c44, 1)),
         }),
       ).annotate({ identifier: "GetLegalHoldOutput" });
-    case 6:
+  }
+}
+function __c105(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           RecoveryPointArn: S.String.pipe(T.HttpQuery("RecoveryPointArn")),
@@ -7692,11 +8630,11 @@ function __c18(j: number): any {
       ).annotate({
         identifier: "GetPITRMalwareScanResultsInput",
       });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           ScanEndTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-          ScanResult: __S(124, __c15, 4),
+          ScanResult: __S(728, __c91, 0),
           LastScanJobTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           ScanId: S.optional(S.String),
           ScanMode: S.optional(S.String),
@@ -7706,7 +8644,7 @@ function __c18(j: number): any {
       });
   }
 }
-function __c19(j: number): any {
+function __c106(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -7745,7 +8683,11 @@ function __c19(j: number): any {
       ).annotate({
         identifier: "GetRecoveryPointIndexDetailsOutput",
       });
-    case 2:
+  }
+}
+function __c107(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           BackupVaultName: S.String.pipe(T.HttpLabel("BackupVaultName")),
@@ -7767,18 +8709,22 @@ function __c19(j: number): any {
       ).annotate({
         identifier: "GetRecoveryPointRestoreMetadataInput",
       });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           BackupVaultArn: S.optional(S.String),
           RecoveryPointArn: S.optional(S.String),
-          RestoreMetadata: S.optional(__S(5, __c0, 5)),
+          RestoreMetadata: S.optional(__S(200, __c25, 0)),
           ResourceType: S.optional(S.String),
         }),
       ).annotate({
         identifier: "GetRecoveryPointRestoreMetadataOutput",
       });
-    case 4:
+  }
+}
+function __c108(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ RestoreJobId: S.String.pipe(T.HttpLabel("RestoreJobId")) }).pipe(
           T.all(
@@ -7793,13 +8739,17 @@ function __c19(j: number): any {
       ).annotate({
         identifier: "GetRestoreJobMetadataInput",
       });
-    case 5:
+    case 1:
       return S.suspend(() =>
-        S.Struct({ RestoreJobId: S.optional(S.String), Metadata: S.optional(__S(5, __c0, 5)) }),
+        S.Struct({ RestoreJobId: S.optional(S.String), Metadata: S.optional(__S(200, __c25, 0)) }),
       ).annotate({
         identifier: "GetRestoreJobMetadataOutput",
       });
-    case 6:
+  }
+}
+function __c109(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           BackupVaultAccountId: S.optional(S.String).pipe(T.HttpQuery("BackupVaultAccountId")),
@@ -7818,13 +8768,13 @@ function __c19(j: number): any {
       ).annotate({
         identifier: "GetRestoreTestingInferredMetadataInput",
       });
-    case 7:
-      return S.suspend(() => S.Struct({ InferredMetadata: __S(5, __c0, 5) })).annotate({
+    case 1:
+      return S.suspend(() => S.Struct({ InferredMetadata: __S(200, __c25, 0) })).annotate({
         identifier: "GetRestoreTestingInferredMetadataOutput",
       });
   }
 }
-function __c20(j: number): any {
+function __c110(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -7850,7 +8800,7 @@ function __c20(j: number): any {
           CreatorRequestId: S.optional(S.String),
           LastExecutionTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           LastUpdateTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          RecoveryPointSelection: __S(55, __c6, 7),
+          RecoveryPointSelection: __S(409, __c51, 1),
           RestoreTestingPlanArn: S.String,
           RestoreTestingPlanName: S.String,
           ScheduleExpression: S.String,
@@ -7859,10 +8809,14 @@ function __c20(j: number): any {
         }),
       ).annotate({ identifier: "RestoreTestingPlanForGet" });
     case 2:
-      return S.suspend(() => S.Struct({ RestoreTestingPlan: __S(161, __c20, 1) })).annotate({
+      return S.suspend(() => S.Struct({ RestoreTestingPlan: __S(881, __c110, 1) })).annotate({
         identifier: "GetRestoreTestingPlanOutput",
       });
-    case 3:
+  }
+}
+function __c111(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           RestoreTestingPlanName: S.String.pipe(T.HttpLabel("RestoreTestingPlanName")),
@@ -7883,16 +8837,16 @@ function __c20(j: number): any {
       ).annotate({
         identifier: "GetRestoreTestingSelectionInput",
       });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           CreationTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
           CreatorRequestId: S.optional(S.String),
           IamRoleArn: S.String,
-          ProtectedResourceArns: S.optional(__S(11, __c1, 3)),
-          ProtectedResourceConditions: S.optional(__S(61, __c7, 5)),
+          ProtectedResourceArns: S.optional(__S(272, __c34, 0)),
+          ProtectedResourceConditions: S.optional(__S(426, __c53, 2)),
           ProtectedResourceType: S.String,
-          RestoreMetadataOverrides: S.optional(__S(4, __c0, 4)),
+          RestoreMetadataOverrides: S.optional(__S(208, __c26, 0)),
           RestoreTestingPlanName: S.String,
           RestoreTestingSelectionName: S.String,
           ValidationWindowHours: S.optional(S.Number),
@@ -7900,11 +8854,15 @@ function __c20(j: number): any {
       ).annotate({
         identifier: "RestoreTestingSelectionForGet",
       });
-    case 5:
-      return S.suspend(() => S.Struct({ RestoreTestingSelection: __S(164, __c20, 4) })).annotate({
+    case 2:
+      return S.suspend(() => S.Struct({ RestoreTestingSelection: __S(889, __c111, 1) })).annotate({
         identifier: "GetRestoreTestingSelectionOutput",
       });
-    case 6:
+  }
+}
+function __c112(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({}).pipe(
           T.all(
@@ -7919,13 +8877,13 @@ function __c20(j: number): any {
       ).annotate({
         identifier: "GetSupportedResourceTypesRequest",
       });
-    case 7:
-      return S.suspend(() => S.Struct({ ResourceTypes: S.optional(__S(11, __c1, 3)) })).annotate({
+    case 1:
+      return S.suspend(() => S.Struct({ ResourceTypes: S.optional(__S(272, __c34, 0)) })).annotate({
         identifier: "GetSupportedResourceTypesOutput",
       });
   }
 }
-function __c21(j: number): any {
+function __c113(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -7950,7 +8908,7 @@ function __c21(j: number): any {
           TieringConfigurationName: S.String,
           TieringConfigurationArn: S.optional(S.String),
           BackupVaultName: S.String,
-          ResourceSelection: __S(66, __c8, 2),
+          ResourceSelection: __S(441, __c55, 1),
           CreatorRequestId: S.optional(S.String),
           CreationTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           LastUpdatedTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
@@ -7958,11 +8916,15 @@ function __c21(j: number): any {
       ).annotate({ identifier: "TieringConfiguration" });
     case 2:
       return S.suspend(() =>
-        S.Struct({ TieringConfiguration: S.optional(__S(169, __c21, 1)) }),
+        S.Struct({ TieringConfiguration: S.optional(__S(905, __c113, 1)) }),
       ).annotate({
         identifier: "GetTieringConfigurationOutput",
       });
-    case 3:
+  }
+}
+function __c114(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           MaxResults: S.optional(S.Number).pipe(T.HttpQuery("MaxResults")),
@@ -7980,11 +8942,15 @@ function __c21(j: number): any {
       ).annotate({
         identifier: "ListBackupAccessPointsRequest",
       });
-    case 4:
+  }
+}
+function __c115(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           AccessPointArn: S.String,
-          AccessPointMetadata: __S(4, __c0, 4),
+          AccessPointMetadata: __S(208, __c26, 0),
           BackupVaultArn: S.optional(S.String),
           BackupVaultName: S.String,
           CreationTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
@@ -7996,15 +8962,19 @@ function __c21(j: number): any {
           StatusMessage: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListAccessPointsMember" });
-    case 5:
-      return S.Array(__S(172, __c21, 4));
-    case 6:
+    case 1:
+      return S.Array(__S(920, __c115, 0));
+    case 2:
       return S.suspend(() =>
-        S.Struct({ BackupAccessPoints: __S(173, __c21, 5), NextToken: S.optional(S.String) }),
+        S.Struct({ BackupAccessPoints: __S(921, __c115, 1), NextToken: S.optional(S.String) }),
       ).annotate({
         identifier: "ListBackupAccessPointsResponse",
       });
-    case 7:
+  }
+}
+function __c116(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           MaxResults: S.optional(S.Number).pipe(T.HttpQuery("MaxResults")),
@@ -8028,7 +8998,7 @@ function __c21(j: number): any {
       });
   }
 }
-function __c22(j: number): any {
+function __c117(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -8049,7 +9019,11 @@ function __c22(j: number): any {
       ).annotate({
         identifier: "ListBackupAccessPointsByResourceRequest",
       });
-    case 1:
+  }
+}
+function __c118(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           NextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
@@ -8077,7 +9051,7 @@ function __c22(j: number): any {
           T.all(T.Http({ method: "GET", uri: "/backup-jobs" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "ListBackupJobsInput" });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           AccountId: S.optional(S.String),
@@ -8087,7 +9061,7 @@ function __c22(j: number): any {
           VaultType: S.optional(S.String),
           VaultLockState: S.optional(S.String),
           RecoveryPointArn: S.optional(S.String),
-          RecoveryPointLifecycle: S.optional(__S(8, __c1, 0)),
+          RecoveryPointLifecycle: S.optional(__S(280, __c35, 0)),
           EncryptionKeyArn: S.optional(S.String),
           IsEncrypted: S.optional(S.Boolean),
           ResourceArn: S.optional(S.String),
@@ -8098,12 +9072,12 @@ function __c22(j: number): any {
           PercentDone: S.optional(S.String),
           BackupSizeInBytes: S.optional(S.Number),
           IamRoleArn: S.optional(S.String),
-          CreatedBy: S.optional(__S(88, __c11, 0)),
+          CreatedBy: S.optional(__S(568, __c71, 0)),
           ExpectedCompletionDate: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           StartBy: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           ResourceType: S.optional(S.String),
           BytesTransferred: S.optional(S.Number),
-          BackupOptions: S.optional(__S(4, __c0, 4)),
+          BackupOptions: S.optional(__S(208, __c26, 0)),
           BackupType: S.optional(S.String),
           ParentJobId: S.optional(S.String),
           IsParent: S.optional(S.Boolean),
@@ -8112,13 +9086,17 @@ function __c22(j: number): any {
           MessageCategory: S.optional(S.String),
         }),
       ).annotate({ identifier: "BackupJob" });
+    case 2:
+      return S.Array(__S(945, __c118, 1));
     case 3:
-      return S.Array(__S(178, __c22, 2));
-    case 4:
       return S.suspend(() =>
-        S.Struct({ BackupJobs: S.optional(__S(179, __c22, 3)), NextToken: S.optional(S.String) }),
+        S.Struct({ BackupJobs: S.optional(__S(946, __c118, 2)), NextToken: S.optional(S.String) }),
       ).annotate({ identifier: "ListBackupJobsOutput" });
-    case 5:
+  }
+}
+function __c119(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           AccountId: S.optional(S.String).pipe(T.HttpQuery("AccountId")),
@@ -8141,7 +9119,21 @@ function __c22(j: number): any {
       ).annotate({
         identifier: "ListBackupJobSummariesInput",
       });
-    case 6:
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          BackupJobSummaries: S.optional(__S(961, __c120, 1)),
+          AggregationPeriod: S.optional(S.String),
+          NextToken: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "ListBackupJobSummariesOutput",
+      });
+  }
+}
+function __c120(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           Region: S.optional(S.String),
@@ -8154,23 +9146,13 @@ function __c22(j: number): any {
           EndTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
         }),
       ).annotate({ identifier: "BackupJobSummary" });
-    case 7:
-      return S.Array(__S(182, __c22, 6));
+    case 1:
+      return S.Array(__S(960, __c120, 0));
   }
 }
-function __c23(j: number): any {
+function __c121(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() =>
-        S.Struct({
-          BackupJobSummaries: S.optional(__S(183, __c22, 7)),
-          AggregationPeriod: S.optional(S.String),
-          NextToken: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "ListBackupJobSummariesOutput",
-      });
-    case 1:
       return S.suspend(() =>
         S.Struct({
           NextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
@@ -8180,7 +9162,18 @@ function __c23(j: number): any {
           T.all(T.Http({ method: "GET", uri: "/backup/plans" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "ListBackupPlansInput" });
-    case 2:
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          NextToken: S.optional(S.String),
+          BackupPlansList: S.optional(__S(977, __c122, 1)),
+        }),
+      ).annotate({ identifier: "ListBackupPlansOutput" });
+  }
+}
+function __c122(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           BackupPlanArn: S.optional(S.String),
@@ -8191,19 +9184,16 @@ function __c23(j: number): any {
           BackupPlanName: S.optional(S.String),
           CreatorRequestId: S.optional(S.String),
           LastExecutionDate: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          AdvancedBackupSettings: S.optional(__S(19, __c2, 3)),
+          AdvancedBackupSettings: S.optional(__S(297, __c37, 1)),
         }),
       ).annotate({ identifier: "BackupPlansListMember" });
-    case 3:
-      return S.Array(__S(186, __c23, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          NextToken: S.optional(S.String),
-          BackupPlansList: S.optional(__S(187, __c23, 3)),
-        }),
-      ).annotate({ identifier: "ListBackupPlansOutput" });
-    case 5:
+    case 1:
+      return S.Array(__S(976, __c122, 0));
+  }
+}
+function __c123(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           NextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
@@ -8221,7 +9211,7 @@ function __c23(j: number): any {
       ).annotate({
         identifier: "ListBackupPlanTemplatesInput",
       });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           BackupPlanTemplateId: S.optional(S.String),
@@ -8230,22 +9220,22 @@ function __c23(j: number): any {
       ).annotate({
         identifier: "BackupPlanTemplatesListMember",
       });
-    case 7:
-      return S.Array(__S(190, __c23, 6));
-  }
-}
-function __c24(j: number): any {
-  switch (j) {
-    case 0:
+    case 2:
+      return S.Array(__S(985, __c123, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
           NextToken: S.optional(S.String),
-          BackupPlanTemplatesList: S.optional(__S(191, __c23, 7)),
+          BackupPlanTemplatesList: S.optional(__S(986, __c123, 2)),
         }),
       ).annotate({
         identifier: "ListBackupPlanTemplatesOutput",
       });
-    case 1:
+  }
+}
+function __c124(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           BackupPlanId: S.String.pipe(T.HttpLabel("BackupPlanId")),
@@ -8264,16 +9254,20 @@ function __c24(j: number): any {
       ).annotate({
         identifier: "ListBackupPlanVersionsInput",
       });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           NextToken: S.optional(S.String),
-          BackupPlanVersionsList: S.optional(__S(187, __c23, 3)),
+          BackupPlanVersionsList: S.optional(__S(977, __c122, 1)),
         }),
       ).annotate({
         identifier: "ListBackupPlanVersionsOutput",
       });
-    case 3:
+  }
+}
+function __c125(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           BackupPlanId: S.String.pipe(T.HttpLabel("BackupPlanId")),
@@ -8292,7 +9286,7 @@ function __c24(j: number): any {
       ).annotate({
         identifier: "ListBackupSelectionsInput",
       });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           SelectionId: S.optional(S.String),
@@ -8305,18 +9299,22 @@ function __c24(j: number): any {
       ).annotate({
         identifier: "BackupSelectionsListMember",
       });
-    case 5:
-      return S.Array(__S(196, __c24, 4));
-    case 6:
+    case 2:
+      return S.Array(__S(1001, __c125, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
           NextToken: S.optional(S.String),
-          BackupSelectionsList: S.optional(__S(197, __c24, 5)),
+          BackupSelectionsList: S.optional(__S(1002, __c125, 2)),
         }),
       ).annotate({
         identifier: "ListBackupSelectionsOutput",
       });
-    case 7:
+  }
+}
+function __c126(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           ByVaultType: S.optional(S.String).pipe(T.HttpQuery("vaultType")),
@@ -8327,11 +9325,7 @@ function __c24(j: number): any {
           T.all(T.Http({ method: "GET", uri: "/backup-vaults" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "ListBackupVaultsInput" });
-  }
-}
-function __c25(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           BackupVaultName: S.optional(S.String),
@@ -8349,16 +9343,20 @@ function __c25(j: number): any {
           EncryptionKeyType: S.optional(S.String),
         }),
       ).annotate({ identifier: "BackupVaultListMember" });
-    case 1:
-      return S.Array(__S(200, __c25, 0));
     case 2:
+      return S.Array(__S(1009, __c126, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          BackupVaultList: S.optional(__S(201, __c25, 1)),
+          BackupVaultList: S.optional(__S(1010, __c126, 2)),
           NextToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListBackupVaultsOutput" });
-    case 3:
+  }
+}
+function __c127(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           NextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
@@ -8387,13 +9385,17 @@ function __c25(j: number): any {
           ),
         }).pipe(T.all(T.Http({ method: "GET", uri: "/copy-jobs" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "ListCopyJobsInput" });
-    case 4:
-      return S.Array(__S(95, __c11, 7));
-    case 5:
+    case 1:
+      return S.Array(__S(600, __c75, 0));
+    case 2:
       return S.suspend(() =>
-        S.Struct({ CopyJobs: S.optional(__S(204, __c25, 4)), NextToken: S.optional(S.String) }),
+        S.Struct({ CopyJobs: S.optional(__S(1017, __c127, 1)), NextToken: S.optional(S.String) }),
       ).annotate({ identifier: "ListCopyJobsOutput" });
-    case 6:
+  }
+}
+function __c128(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           AccountId: S.optional(S.String).pipe(T.HttpQuery("AccountId")),
@@ -8416,10 +9418,10 @@ function __c25(j: number): any {
       ).annotate({
         identifier: "ListCopyJobSummariesInput",
       });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          CopyJobSummaries: S.optional(__S(183, __c22, 7)),
+          CopyJobSummaries: S.optional(__S(961, __c120, 1)),
           AggregationPeriod: S.optional(S.String),
           NextToken: S.optional(S.String),
         }),
@@ -8428,7 +9430,7 @@ function __c25(j: number): any {
       });
   }
 }
-function __c26(j: number): any {
+function __c129(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -8451,12 +9453,16 @@ function __c26(j: number): any {
         }),
       ).annotate({ identifier: "Framework" });
     case 2:
-      return S.Array(__S(209, __c26, 1));
+      return S.Array(__S(1033, __c129, 1));
     case 3:
       return S.suspend(() =>
-        S.Struct({ Frameworks: S.optional(__S(210, __c26, 2)), NextToken: S.optional(S.String) }),
+        S.Struct({ Frameworks: S.optional(__S(1034, __c129, 2)), NextToken: S.optional(S.String) }),
       ).annotate({ identifier: "ListFrameworksOutput" });
-    case 4:
+  }
+}
+function __c130(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           NextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
@@ -8483,7 +9489,7 @@ function __c26(j: number): any {
       ).annotate({
         identifier: "ListIndexedRecoveryPointsInput",
       });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           RecoveryPointArn: S.optional(S.String),
@@ -8497,12 +9503,12 @@ function __c26(j: number): any {
           BackupVaultArn: S.optional(S.String),
         }),
       ).annotate({ identifier: "IndexedRecoveryPoint" });
-    case 6:
-      return S.Array(__S(213, __c26, 5));
-    case 7:
+    case 2:
+      return S.Array(__S(1041, __c130, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          IndexedRecoveryPoints: S.optional(__S(214, __c26, 6)),
+          IndexedRecoveryPoints: S.optional(__S(1042, __c130, 2)),
           NextToken: S.optional(S.String),
         }),
       ).annotate({
@@ -8510,7 +9516,7 @@ function __c26(j: number): any {
       });
   }
 }
-function __c27(j: number): any {
+function __c131(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -8534,12 +9540,16 @@ function __c27(j: number): any {
         }),
       ).annotate({ identifier: "LegalHold" });
     case 2:
-      return S.Array(__S(217, __c27, 1));
+      return S.Array(__S(1049, __c131, 1));
     case 3:
       return S.suspend(() =>
-        S.Struct({ NextToken: S.optional(S.String), LegalHolds: S.optional(__S(218, __c27, 2)) }),
+        S.Struct({ NextToken: S.optional(S.String), LegalHolds: S.optional(__S(1050, __c131, 2)) }),
       ).annotate({ identifier: "ListLegalHoldsOutput" });
-    case 4:
+  }
+}
+function __c132(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           NextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
@@ -8548,7 +9558,11 @@ function __c27(j: number): any {
       ).annotate({
         identifier: "ListProtectedResourcesInput",
       });
-    case 5:
+  }
+}
+function __c133(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           ResourceArn: S.optional(S.String),
@@ -8559,17 +9573,17 @@ function __c27(j: number): any {
           LastRecoveryPointArn: S.optional(S.String),
         }),
       ).annotate({ identifier: "ProtectedResource" });
-    case 6:
-      return S.Array(__S(221, __c27, 5));
-    case 7:
+    case 1:
+      return S.Array(__S(1064, __c133, 0));
+    case 2:
       return S.suspend(() =>
-        S.Struct({ Results: S.optional(__S(222, __c27, 6)), NextToken: S.optional(S.String) }),
+        S.Struct({ Results: S.optional(__S(1065, __c133, 1)), NextToken: S.optional(S.String) }),
       ).annotate({
         identifier: "ListProtectedResourcesOutput",
       });
   }
 }
-function __c28(j: number): any {
+function __c134(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -8591,7 +9605,11 @@ function __c28(j: number): any {
       ).annotate({
         identifier: "ListProtectedResourcesByBackupVaultInput",
       });
-    case 1:
+  }
+}
+function __c135(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           BackupVaultName: S.String.pipe(T.HttpLabel("BackupVaultName")),
@@ -8623,15 +9641,7 @@ function __c28(j: number): any {
       ).annotate({
         identifier: "ListRecoveryPointsByBackupVaultInput",
       });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          FailedScan: S.optional(S.Boolean),
-          Findings: S.optional(__S(105, __c13, 1)),
-          LastComputed: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-        }),
-      ).annotate({ identifier: "AggregatedScanResult" });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           RecoveryPointArn: S.optional(S.String),
@@ -8640,7 +9650,7 @@ function __c28(j: number): any {
           SourceBackupVaultArn: S.optional(S.String),
           ResourceArn: S.optional(S.String),
           ResourceType: S.optional(S.String),
-          CreatedBy: S.optional(__S(88, __c11, 0)),
+          CreatedBy: S.optional(__S(568, __c71, 0)),
           IamRoleArn: S.optional(S.String),
           Status: S.optional(S.String),
           StatusMessage: S.optional(S.String),
@@ -8648,8 +9658,8 @@ function __c28(j: number): any {
           InitiationDate: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           CompletionDate: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           BackupSizeInBytes: S.optional(S.Number),
-          CalculatedLifecycle: S.optional(__S(104, __c13, 0)),
-          Lifecycle: S.optional(__S(8, __c1, 0)),
+          CalculatedLifecycle: S.optional(__S(648, __c81, 0)),
+          Lifecycle: S.optional(__S(280, __c35, 0)),
           EncryptionKeyArn: S.optional(S.String),
           IsEncrypted: S.optional(S.Boolean),
           LastRestoreTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
@@ -8661,23 +9671,39 @@ function __c28(j: number): any {
           IndexStatus: S.optional(S.String),
           IndexStatusMessage: S.optional(S.String),
           EncryptionKeyType: S.optional(S.String),
-          AggregatedScanResult: S.optional(__S(226, __c28, 2)),
+          AggregatedScanResult: S.optional(__S(1088, __c136, 0)),
         }),
       ).annotate({
         identifier: "RecoveryPointByBackupVault",
       });
-    case 4:
-      return S.Array(__S(227, __c28, 3));
-    case 5:
+    case 2:
+      return S.Array(__S(1081, __c135, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
           NextToken: S.optional(S.String),
-          RecoveryPoints: S.optional(__S(228, __c28, 4)),
+          RecoveryPoints: S.optional(__S(1082, __c135, 2)),
         }),
       ).annotate({
         identifier: "ListRecoveryPointsByBackupVaultOutput",
       });
-    case 6:
+  }
+}
+function __c136(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          FailedScan: S.optional(S.Boolean),
+          Findings: S.optional(__S(640, __c80, 0)),
+          LastComputed: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+        }),
+      ).annotate({ identifier: "AggregatedScanResult" });
+  }
+}
+function __c137(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           LegalHoldId: S.String.pipe(T.HttpLabel("LegalHoldId")),
@@ -8696,7 +9722,7 @@ function __c28(j: number): any {
       ).annotate({
         identifier: "ListRecoveryPointsByLegalHoldInput",
       });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           RecoveryPointArn: S.optional(S.String),
@@ -8705,22 +9731,22 @@ function __c28(j: number): any {
           BackupVaultName: S.optional(S.String),
         }),
       ).annotate({ identifier: "RecoveryPointMember" });
-  }
-}
-function __c29(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(231, __c28, 7));
-    case 1:
+    case 2:
+      return S.Array(__S(1097, __c137, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          RecoveryPoints: S.optional(__S(232, __c29, 0)),
+          RecoveryPoints: S.optional(__S(1098, __c137, 2)),
           NextToken: S.optional(S.String),
         }),
       ).annotate({
         identifier: "ListRecoveryPointsByLegalHoldOutput",
       });
-    case 2:
+  }
+}
+function __c138(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           ResourceArn: S.String.pipe(T.HttpLabel("ResourceArn")),
@@ -8740,7 +9766,7 @@ function __c29(j: number): any {
       ).annotate({
         identifier: "ListRecoveryPointsByResourceInput",
       });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           RecoveryPointArn: S.optional(S.String),
@@ -8757,21 +9783,25 @@ function __c29(j: number): any {
           IndexStatus: S.optional(S.String),
           IndexStatusMessage: S.optional(S.String),
           EncryptionKeyType: S.optional(S.String),
-          AggregatedScanResult: S.optional(__S(226, __c28, 2)),
+          AggregatedScanResult: S.optional(__S(1088, __c136, 0)),
         }),
       ).annotate({ identifier: "RecoveryPointByResource" });
-    case 4:
-      return S.Array(__S(235, __c29, 3));
-    case 5:
+    case 2:
+      return S.Array(__S(1105, __c138, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
           NextToken: S.optional(S.String),
-          RecoveryPoints: S.optional(__S(236, __c29, 4)),
+          RecoveryPoints: S.optional(__S(1106, __c138, 2)),
         }),
       ).annotate({
         identifier: "ListRecoveryPointsByResourceOutput",
       });
-    case 6:
+  }
+}
+function __c139(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           ByReportPlanName: S.optional(S.String).pipe(T.HttpQuery("ReportPlanName")),
@@ -8788,17 +9818,17 @@ function __c29(j: number): any {
           T.all(T.Http({ method: "GET", uri: "/audit/report-jobs" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "ListReportJobsInput" });
-    case 7:
-      return S.Array(__S(114, __c14, 2));
+    case 1:
+      return S.Array(__S(681, __c85, 1));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({ ReportJobs: S.optional(__S(1113, __c139, 1)), NextToken: S.optional(S.String) }),
+      ).annotate({ identifier: "ListReportJobsOutput" });
   }
 }
-function __c30(j: number): any {
+function __c140(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() =>
-        S.Struct({ ReportJobs: S.optional(__S(239, __c29, 7)), NextToken: S.optional(S.String) }),
-      ).annotate({ identifier: "ListReportJobsOutput" });
-    case 1:
       return S.suspend(() =>
         S.Struct({
           MaxResults: S.optional(S.Number).pipe(T.HttpQuery("MaxResults")),
@@ -8814,13 +9844,20 @@ function __c30(j: number): any {
           ),
         ),
       ).annotate({ identifier: "ListReportPlansInput" });
+    case 1:
+      return S.Array(__S(696, __c87, 0));
     case 2:
-      return S.Array(__S(117, __c14, 5));
-    case 3:
       return S.suspend(() =>
-        S.Struct({ ReportPlans: S.optional(__S(242, __c30, 2)), NextToken: S.optional(S.String) }),
+        S.Struct({
+          ReportPlans: S.optional(__S(1121, __c140, 1)),
+          NextToken: S.optional(S.String),
+        }),
       ).annotate({ identifier: "ListReportPlansOutput" });
-    case 4:
+  }
+}
+function __c141(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           BackupVaultName: S.String.pipe(T.HttpLabel("BackupVaultName")),
@@ -8842,7 +9879,7 @@ function __c30(j: number): any {
       ).annotate({
         identifier: "ListRestoreAccessBackupVaultsInput",
       });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           MpaSessionArn: S.optional(S.String),
@@ -8852,34 +9889,34 @@ function __c30(j: number): any {
           ExpiryDate: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
         }),
       ).annotate({ identifier: "LatestRevokeRequest" });
-    case 6:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           RestoreAccessBackupVaultArn: S.optional(S.String),
           CreationDate: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           ApprovalDate: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           VaultState: S.optional(S.String),
-          LatestRevokeRequest: S.optional(__S(245, __c30, 5)),
+          LatestRevokeRequest: S.optional(__S(1129, __c141, 1)),
         }),
       ).annotate({
         identifier: "RestoreAccessBackupVaultListMember",
       });
-    case 7:
-      return S.Array(__S(246, __c30, 6));
-  }
-}
-function __c31(j: number): any {
-  switch (j) {
-    case 0:
+    case 3:
+      return S.Array(__S(1130, __c141, 2));
+    case 4:
       return S.suspend(() =>
         S.Struct({
           NextToken: S.optional(S.String),
-          RestoreAccessBackupVaults: S.optional(__S(247, __c30, 7)),
+          RestoreAccessBackupVaults: S.optional(__S(1131, __c141, 3)),
         }),
       ).annotate({
         identifier: "ListRestoreAccessBackupVaultsOutput",
       });
-    case 1:
+  }
+}
+function __c142(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           NextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
@@ -8905,7 +9942,18 @@ function __c31(j: number): any {
           T.all(T.Http({ method: "GET", uri: "/restore-jobs" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "ListRestoreJobsInput" });
-    case 2:
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          RestoreJobs: S.optional(__S(1145, __c143, 1)),
+          NextToken: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ListRestoreJobsOutput" });
+  }
+}
+function __c143(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           AccountId: S.optional(S.String),
@@ -8926,20 +9974,20 @@ function __c31(j: number): any {
           RecoveryPointCreationDate: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           IsParent: S.optional(S.Boolean),
           ParentJobId: S.optional(S.String),
-          CreatedBy: S.optional(__S(120, __c15, 0)),
+          CreatedBy: S.optional(__S(712, __c89, 0)),
           ValidationStatus: S.optional(S.String),
           ValidationStatusMessage: S.optional(S.String),
           DeletionStatus: S.optional(S.String),
           DeletionStatusMessage: S.optional(S.String),
         }),
       ).annotate({ identifier: "RestoreJobsListMember" });
-    case 3:
-      return S.Array(__S(250, __c31, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({ RestoreJobs: S.optional(__S(251, __c31, 3)), NextToken: S.optional(S.String) }),
-      ).annotate({ identifier: "ListRestoreJobsOutput" });
-    case 5:
+    case 1:
+      return S.Array(__S(1144, __c143, 0));
+  }
+}
+function __c144(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           ResourceArn: S.String.pipe(T.HttpLabel("ResourceArn")),
@@ -8965,13 +10013,20 @@ function __c31(j: number): any {
       ).annotate({
         identifier: "ListRestoreJobsByProtectedResourceInput",
       });
-    case 6:
+    case 1:
       return S.suspend(() =>
-        S.Struct({ RestoreJobs: S.optional(__S(251, __c31, 3)), NextToken: S.optional(S.String) }),
+        S.Struct({
+          RestoreJobs: S.optional(__S(1145, __c143, 1)),
+          NextToken: S.optional(S.String),
+        }),
       ).annotate({
         identifier: "ListRestoreJobsByProtectedResourceOutput",
       });
-    case 7:
+  }
+}
+function __c145(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           AccountId: S.optional(S.String).pipe(T.HttpQuery("AccountId")),
@@ -8993,11 +10048,7 @@ function __c31(j: number): any {
       ).annotate({
         identifier: "ListRestoreJobSummariesInput",
       });
-  }
-}
-function __c32(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           Region: S.optional(S.String),
@@ -9009,19 +10060,23 @@ function __c32(j: number): any {
           EndTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
         }),
       ).annotate({ identifier: "RestoreJobSummary" });
-    case 1:
-      return S.Array(__S(256, __c32, 0));
     case 2:
+      return S.Array(__S(1161, __c145, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          RestoreJobSummaries: S.optional(__S(257, __c32, 1)),
+          RestoreJobSummaries: S.optional(__S(1162, __c145, 2)),
           AggregationPeriod: S.optional(S.String),
           NextToken: S.optional(S.String),
         }),
       ).annotate({
         identifier: "ListRestoreJobSummariesOutput",
       });
-    case 3:
+  }
+}
+function __c146(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           MaxResults: S.optional(S.Number).pipe(T.HttpQuery("MaxResults")),
@@ -9039,7 +10094,7 @@ function __c32(j: number): any {
       ).annotate({
         identifier: "ListRestoreTestingPlansInput",
       });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           CreationTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
@@ -9054,15 +10109,19 @@ function __c32(j: number): any {
       ).annotate({
         identifier: "RestoreTestingPlanForList",
       });
-    case 5:
-      return S.Array(__S(260, __c32, 4));
-    case 6:
+    case 2:
+      return S.Array(__S(1169, __c146, 1));
+    case 3:
       return S.suspend(() =>
-        S.Struct({ NextToken: S.optional(S.String), RestoreTestingPlans: __S(261, __c32, 5) }),
+        S.Struct({ NextToken: S.optional(S.String), RestoreTestingPlans: __S(1170, __c146, 2) }),
       ).annotate({
         identifier: "ListRestoreTestingPlansOutput",
       });
-    case 7:
+  }
+}
+function __c147(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           MaxResults: S.optional(S.Number).pipe(T.HttpQuery("MaxResults")),
@@ -9084,11 +10143,7 @@ function __c32(j: number): any {
       ).annotate({
         identifier: "ListRestoreTestingSelectionsInput",
       });
-  }
-}
-function __c33(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           CreationTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
@@ -9101,18 +10156,22 @@ function __c33(j: number): any {
       ).annotate({
         identifier: "RestoreTestingSelectionForList",
       });
-    case 1:
-      return S.Array(__S(264, __c33, 0));
     case 2:
+      return S.Array(__S(1177, __c147, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
           NextToken: S.optional(S.String),
-          RestoreTestingSelections: __S(265, __c33, 1),
+          RestoreTestingSelections: __S(1178, __c147, 2),
         }),
       ).annotate({
         identifier: "ListRestoreTestingSelectionsOutput",
       });
-    case 3:
+  }
+}
+function __c148(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           ByAccountId: S.optional(S.String).pipe(T.HttpQuery("ByAccountId")),
@@ -9133,7 +10192,7 @@ function __c33(j: number): any {
           NextToken: S.optional(S.String).pipe(T.HttpQuery("NextToken")),
         }).pipe(T.all(T.Http({ method: "GET", uri: "/scan/jobs" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "ListScanJobsInput" });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           AccountId: S.String,
@@ -9142,7 +10201,7 @@ function __c33(j: number): any {
           CompletionDate: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           ContinuousScanEndTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           ContinuousScanStartTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          CreatedBy: __S(123, __c15, 3),
+          CreatedBy: __S(736, __c92, 0),
           CreationDate: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
           IamRoleArn: S.String,
           MalwareScanner: S.String,
@@ -9154,19 +10213,23 @@ function __c33(j: number): any {
           ScanId: S.optional(S.String),
           ScanJobId: S.String,
           ScanMode: S.String,
-          ScanResult: S.optional(__S(124, __c15, 4)),
+          ScanResult: S.optional(__S(728, __c91, 0)),
           ScannerRoleArn: S.String,
           State: S.optional(S.String),
           StatusMessage: S.optional(S.String),
         }),
       ).annotate({ identifier: "ScanJob" });
-    case 5:
-      return S.Array(__S(268, __c33, 4));
-    case 6:
+    case 2:
+      return S.Array(__S(1185, __c148, 1));
+    case 3:
       return S.suspend(() =>
-        S.Struct({ NextToken: S.optional(S.String), ScanJobs: __S(269, __c33, 5) }),
+        S.Struct({ NextToken: S.optional(S.String), ScanJobs: __S(1186, __c148, 2) }),
       ).annotate({ identifier: "ListScanJobsOutput" });
-    case 7:
+  }
+}
+function __c149(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           AccountId: S.optional(S.String).pipe(T.HttpQuery("AccountId")),
@@ -9190,11 +10253,7 @@ function __c33(j: number): any {
       ).annotate({
         identifier: "ListScanJobSummariesInput",
       });
-  }
-}
-function __c34(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           Region: S.optional(S.String),
@@ -9208,632 +10267,20 @@ function __c34(j: number): any {
           ScanResultStatus: S.optional(S.String),
         }),
       ).annotate({ identifier: "ScanJobSummary" });
-    case 1:
-      return S.Array(__S(272, __c34, 0));
     case 2:
+      return S.Array(__S(1193, __c149, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          ScanJobSummaries: S.optional(__S(273, __c34, 1)),
+          ScanJobSummaries: S.optional(__S(1194, __c149, 2)),
           AggregationPeriod: S.optional(S.String),
           NextToken: S.optional(S.String),
         }),
       ).annotate({
         identifier: "ListScanJobSummariesOutput",
       });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          ResourceArn: S.String.pipe(T.HttpLabel("ResourceArn")),
-          NextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
-          MaxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
-        }).pipe(
-          T.all(
-            T.Http({ method: "GET", uri: "/tags/{ResourceArn}" }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({ identifier: "ListTagsInput" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({ NextToken: S.optional(S.String), Tags: S.optional(__S(5, __c0, 5)) }),
-      ).annotate({ identifier: "ListTagsOutput" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          MaxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
-          NextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
-        }).pipe(
-          T.all(
-            T.Http({ method: "GET", uri: "/tiering-configurations" }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({
-        identifier: "ListTieringConfigurationsInput",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          TieringConfigurationArn: S.optional(S.String),
-          TieringConfigurationName: S.optional(S.String),
-          BackupVaultName: S.optional(S.String),
-          CreationTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          LastUpdatedTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-        }),
-      ).annotate({
-        identifier: "TieringConfigurationsListMember",
-      });
-    case 7:
-      return S.Array(__S(278, __c34, 6));
   }
 }
-function __c35(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          TieringConfigurations: S.optional(__S(279, __c34, 7)),
-          NextToken: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "ListTieringConfigurationsOutput",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          BackupVaultName: S.String.pipe(T.HttpLabel("BackupVaultName")),
-          Policy: S.optional(S.String),
-        }).pipe(
-          T.all(
-            T.Http({ method: "PUT", uri: "/backup-vaults/{BackupVaultName}/access-policy" }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({
-        identifier: "PutBackupVaultAccessPolicyInput",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          BackupVaultName: S.String.pipe(T.HttpLabel("BackupVaultName")),
-          MinRetentionDays: S.optional(S.Number),
-          MaxRetentionDays: S.optional(S.Number),
-          ChangeableForDays: S.optional(S.Number),
-        }).pipe(
-          T.all(
-            T.Http({ method: "PUT", uri: "/backup-vaults/{BackupVaultName}/vault-lock" }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({
-        identifier: "PutBackupVaultLockConfigurationInput",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          BackupVaultName: S.String.pipe(T.HttpLabel("BackupVaultName")),
-          SNSTopicArn: S.String,
-          BackupVaultEvents: __S(105, __c13, 1),
-        }).pipe(
-          T.all(
-            T.Http({
-              method: "PUT",
-              uri: "/backup-vaults/{BackupVaultName}/notification-configuration",
-            }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({
-        identifier: "PutBackupVaultNotificationsInput",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          RestoreJobId: S.String.pipe(T.HttpLabel("RestoreJobId")),
-          ValidationStatus: S.String,
-          ValidationStatusMessage: S.optional(S.String),
-        }).pipe(
-          T.all(
-            T.Http({ method: "PUT", uri: "/restore-jobs/{RestoreJobId}/validations" }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({
-        identifier: "PutRestoreValidationResultInput",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          BackupVaultName: S.String.pipe(T.HttpLabel("BackupVaultName")),
-          RestoreAccessBackupVaultArn: S.String.pipe(T.HttpLabel("RestoreAccessBackupVaultArn")),
-          RequesterComment: S.optional(SensitiveString).pipe(T.HttpQuery("requesterComment")),
-        }).pipe(
-          T.all(
-            T.Http({
-              method: "DELETE",
-              uri: "/logically-air-gapped-backup-vaults/{BackupVaultName}/restore-access-backup-vaults/{RestoreAccessBackupVaultArn}",
-            }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({
-        identifier: "RevokeRestoreAccessBackupVaultInput",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          BackupVaultName: S.String,
-          LogicallyAirGappedBackupVaultArn: S.optional(S.String),
-          ResourceArn: S.String,
-          IamRoleArn: S.String,
-          IdempotencyToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-          StartWindowMinutes: S.optional(S.Number),
-          CompleteWindowMinutes: S.optional(S.Number),
-          Lifecycle: S.optional(__S(8, __c1, 0)),
-          RecoveryPointTags: S.optional(__S(5, __c0, 5)),
-          BackupOptions: S.optional(__S(4, __c0, 4)),
-          Index: S.optional(S.String),
-        }).pipe(
-          T.all(T.Http({ method: "PUT", uri: "/backup-jobs" }), svc, auth, proto, ver, rules),
-        ),
-      ).annotate({ identifier: "StartBackupJobInput" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          BackupJobId: S.optional(S.String),
-          RecoveryPointArn: S.optional(S.String),
-          CreationDate: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          IsParent: S.optional(S.Boolean),
-        }),
-      ).annotate({ identifier: "StartBackupJobOutput" });
-  }
-}
-function __c36(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          RecoveryPointArn: S.String,
-          SourceBackupVaultName: S.String,
-          DestinationBackupVaultArn: S.String,
-          IamRoleArn: S.String,
-          IdempotencyToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-          Lifecycle: S.optional(__S(8, __c1, 0)),
-        }).pipe(T.all(T.Http({ method: "PUT", uri: "/copy-jobs" }), svc, auth, proto, ver, rules)),
-      ).annotate({ identifier: "StartCopyJobInput" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          CopyJobId: S.optional(S.String),
-          CreationDate: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          IsParent: S.optional(S.Boolean),
-        }),
-      ).annotate({ identifier: "StartCopyJobOutput" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          ReportPlanName: S.String.pipe(T.HttpLabel("ReportPlanName")),
-          IdempotencyToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-        }).pipe(
-          T.all(
-            T.Http({ method: "POST", uri: "/audit/report-jobs/{ReportPlanName}" }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({ identifier: "StartReportJobInput" });
-    case 3:
-      return S.suspend(() => S.Struct({ ReportJobId: S.optional(S.String) })).annotate({
-        identifier: "StartReportJobOutput",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          RecoveryPointArn: S.String,
-          Metadata: __S(5, __c0, 5),
-          IamRoleArn: S.optional(S.String),
-          IdempotencyToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-          ResourceType: S.optional(S.String),
-          CopySourceTagsToRestoredResource: S.optional(S.Boolean),
-        }).pipe(
-          T.all(T.Http({ method: "PUT", uri: "/restore-jobs" }), svc, auth, proto, ver, rules),
-        ),
-      ).annotate({ identifier: "StartRestoreJobInput" });
-    case 5:
-      return S.suspend(() => S.Struct({ RestoreJobId: S.optional(S.String) })).annotate({
-        identifier: "StartRestoreJobOutput",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          BackupVaultName: S.String,
-          ContinuousScanEndTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          IamRoleArn: S.String,
-          IdempotencyToken: S.optional(S.String),
-          MalwareScanner: S.String,
-          RecoveryPointArn: S.String,
-          ScanBaseRecoveryPointArn: S.optional(S.String),
-          ScanMode: S.String,
-          ScannerRoleArn: S.String,
-        }).pipe(T.all(T.Http({ method: "PUT", uri: "/scan/job" }), svc, auth, proto, ver, rules)),
-      ).annotate({ identifier: "StartScanJobInput" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          CreationDate: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-          ScanJobId: S.String,
-        }),
-      ).annotate({ identifier: "StartScanJobOutput" });
-  }
-}
-function __c37(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({ BackupJobId: S.String.pipe(T.HttpLabel("BackupJobId")) }).pipe(
-          T.all(
-            T.Http({ method: "POST", uri: "/backup-jobs/{BackupJobId}" }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({ identifier: "StopBackupJobInput" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          ResourceArn: S.String.pipe(T.HttpLabel("ResourceArn")),
-          Tags: __S(5, __c0, 5),
-        }).pipe(
-          T.all(
-            T.Http({ method: "POST", uri: "/tags/{ResourceArn}" }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({ identifier: "TagResourceInput" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          ResourceArn: S.String.pipe(T.HttpLabel("ResourceArn")),
-          TagKeyList: __S(11, __c1, 3),
-        }).pipe(
-          T.all(
-            T.Http({ method: "POST", uri: "/untag/{ResourceArn}" }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({ identifier: "UntagResourceInput" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          BackupPlanId: S.String.pipe(T.HttpLabel("BackupPlanId")),
-          BackupPlan: __S(22, __c2, 6),
-        }).pipe(
-          T.all(
-            T.Http({ method: "POST", uri: "/backup/plans/{BackupPlanId}" }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({ identifier: "UpdateBackupPlanInput" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          BackupPlanId: S.optional(S.String),
-          BackupPlanArn: S.optional(S.String),
-          CreationDate: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          VersionId: S.optional(S.String),
-          AdvancedBackupSettings: S.optional(__S(19, __c2, 3)),
-          ScanSettings: S.optional(__S(21, __c2, 5)),
-        }),
-      ).annotate({ identifier: "UpdateBackupPlanOutput" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          FrameworkName: S.String.pipe(T.HttpLabel("FrameworkName")),
-          FrameworkDescription: S.optional(S.String),
-          FrameworkControls: S.optional(__S(39, __c4, 7)),
-          IdempotencyToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-        }).pipe(
-          T.all(
-            T.Http({ method: "PUT", uri: "/audit/frameworks/{FrameworkName}" }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({ identifier: "UpdateFrameworkInput" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          FrameworkName: S.optional(S.String),
-          FrameworkArn: S.optional(S.String),
-          CreationTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-        }),
-      ).annotate({ identifier: "UpdateFrameworkOutput" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({ GlobalSettings: S.optional(__S(4, __c0, 4)) }).pipe(
-          T.all(T.Http({ method: "PUT", uri: "/global-settings" }), svc, auth, proto, ver, rules),
-        ),
-      ).annotate({
-        identifier: "UpdateGlobalSettingsInput",
-      });
-  }
-}
-function __c38(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          BackupVaultName: S.String.pipe(T.HttpLabel("BackupVaultName")),
-          RecoveryPointArn: S.String.pipe(T.HttpLabel("RecoveryPointArn")),
-          IamRoleArn: S.optional(S.String),
-          Index: S.String,
-        }).pipe(
-          T.all(
-            T.Http({
-              method: "POST",
-              uri: "/backup-vaults/{BackupVaultName}/recovery-points/{RecoveryPointArn}/index",
-            }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({
-        identifier: "UpdateRecoveryPointIndexSettingsInput",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          BackupVaultName: S.optional(S.String),
-          RecoveryPointArn: S.optional(S.String),
-          IndexStatus: S.optional(S.String),
-          Index: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "UpdateRecoveryPointIndexSettingsOutput",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          BackupVaultName: S.String.pipe(T.HttpLabel("BackupVaultName")),
-          RecoveryPointArn: S.String.pipe(T.HttpLabel("RecoveryPointArn")),
-          Lifecycle: S.optional(__S(8, __c1, 0)),
-        }).pipe(
-          T.all(
-            T.Http({
-              method: "POST",
-              uri: "/backup-vaults/{BackupVaultName}/recovery-points/{RecoveryPointArn}",
-            }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({
-        identifier: "UpdateRecoveryPointLifecycleInput",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          BackupVaultArn: S.optional(S.String),
-          RecoveryPointArn: S.optional(S.String),
-          Lifecycle: S.optional(__S(8, __c1, 0)),
-          CalculatedLifecycle: S.optional(__S(104, __c13, 0)),
-        }),
-      ).annotate({
-        identifier: "UpdateRecoveryPointLifecycleOutput",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          ResourceTypeOptInPreference: S.optional(__S(110, __c13, 6)),
-          ResourceTypeManagementPreference: S.optional(__S(110, __c13, 6)),
-        }).pipe(
-          T.all(T.Http({ method: "PUT", uri: "/account-settings" }), svc, auth, proto, ver, rules),
-        ),
-      ).annotate({
-        identifier: "UpdateRegionSettingsInput",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          ReportPlanName: S.String.pipe(T.HttpLabel("ReportPlanName")),
-          ReportPlanDescription: S.optional(S.String),
-          ReportDeliveryChannel: S.optional(__S(48, __c6, 0)),
-          ReportSetting: S.optional(__S(49, __c6, 1)),
-          IdempotencyToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-        }).pipe(
-          T.all(
-            T.Http({ method: "PUT", uri: "/audit/report-plans/{ReportPlanName}" }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({ identifier: "UpdateReportPlanInput" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          RecoveryPointSelection: S.optional(__S(55, __c6, 7)),
-          ScheduleExpression: S.optional(S.String),
-          ScheduleExpressionTimezone: S.optional(S.String),
-          StartWindowHours: S.optional(S.Number),
-        }),
-      ).annotate({
-        identifier: "RestoreTestingPlanForUpdate",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          RestoreTestingPlan: __S(310, __c38, 6),
-          RestoreTestingPlanName: S.String.pipe(T.HttpLabel("RestoreTestingPlanName")),
-        }).pipe(
-          T.all(
-            T.Http({ method: "PUT", uri: "/restore-testing/plans/{RestoreTestingPlanName}" }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({
-        identifier: "UpdateRestoreTestingPlanInput",
-      });
-  }
-}
-function __c39(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          CreationTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-          RestoreTestingPlanArn: S.String,
-          RestoreTestingPlanName: S.String,
-          UpdateTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-        }),
-      ).annotate({
-        identifier: "UpdateRestoreTestingPlanOutput",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          IamRoleArn: S.optional(S.String),
-          ProtectedResourceArns: S.optional(__S(11, __c1, 3)),
-          ProtectedResourceConditions: S.optional(__S(61, __c7, 5)),
-          RestoreMetadataOverrides: S.optional(__S(4, __c0, 4)),
-          ValidationWindowHours: S.optional(S.Number),
-        }),
-      ).annotate({
-        identifier: "RestoreTestingSelectionForUpdate",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          RestoreTestingPlanName: S.String.pipe(T.HttpLabel("RestoreTestingPlanName")),
-          RestoreTestingSelection: __S(313, __c39, 1),
-          RestoreTestingSelectionName: S.String.pipe(T.HttpLabel("RestoreTestingSelectionName")),
-        }).pipe(
-          T.all(
-            T.Http({
-              method: "PUT",
-              uri: "/restore-testing/plans/{RestoreTestingPlanName}/selections/{RestoreTestingSelectionName}",
-            }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({
-        identifier: "UpdateRestoreTestingSelectionInput",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          CreationTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-          RestoreTestingPlanArn: S.String,
-          RestoreTestingPlanName: S.String,
-          RestoreTestingSelectionName: S.String,
-          UpdateTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-        }),
-      ).annotate({
-        identifier: "UpdateRestoreTestingSelectionOutput",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({ ResourceSelection: __S(66, __c8, 2), BackupVaultName: S.String }),
-      ).annotate({
-        identifier: "TieringConfigurationInputForUpdate",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          TieringConfigurationName: S.String.pipe(T.HttpLabel("TieringConfigurationName")),
-          TieringConfiguration: __S(316, __c39, 4),
-        }).pipe(
-          T.all(
-            T.Http({ method: "PUT", uri: "/tiering-configurations/{TieringConfigurationName}" }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({
-        identifier: "UpdateTieringConfigurationInput",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          TieringConfigurationArn: S.optional(S.String),
-          TieringConfigurationName: S.optional(S.String),
-          CreationTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          LastUpdatedTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-        }),
-      ).annotate({
-        identifier: "UpdateTieringConfigurationOutput",
-      });
-  }
-}
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

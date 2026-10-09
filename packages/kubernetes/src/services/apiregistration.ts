@@ -610,11 +610,11 @@ export const createApiregistrationV1APIService: API.OperationMethod<
   CreateApiregistrationV1APIServiceError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(12, __c1, 4) as any as S.Schema<CreateApiregistrationV1APIServiceRequest>,
+  input: __S(128, __c8, 0) as any as S.Schema<CreateApiregistrationV1APIServiceRequest>,
   output: __S(
-    13,
-    __c1,
-    5,
+    171,
+    __c10,
+    11,
   ) as any as S.Schema<IoK8sKubeAggregatorPkgApisApiregistrationV1APIService>,
   errors: [Conflict, UnprocessableEntity, UnknownKubernetesError],
   protocol: KubernetesProtocol,
@@ -629,8 +629,8 @@ export const deleteApiregistrationV1APIService: API.OperationMethod<
   DeleteApiregistrationV1APIServiceError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(15, __c1, 7) as any as S.Schema<DeleteApiregistrationV1APIServiceRequest>,
-  output: __S(21, __c2, 5) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1Status>,
+  input: __S(176, __c11, 0) as any as S.Schema<DeleteApiregistrationV1APIServiceRequest>,
+  output: __S(196, __c12, 4) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1Status>,
   errors: [NotFound, Conflict, UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -644,8 +644,8 @@ export const deleteApiregistrationV1CollectionAPIService: API.OperationMethod<
   DeleteApiregistrationV1CollectionAPIServiceError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(22, __c2, 6) as any as S.Schema<DeleteApiregistrationV1CollectionAPIServiceRequest>,
-  output: __S(21, __c2, 5) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1Status>,
+  input: __S(224, __c14, 0) as any as S.Schema<DeleteApiregistrationV1CollectionAPIServiceRequest>,
+  output: __S(196, __c12, 4) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1Status>,
   errors: [UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -659,8 +659,8 @@ export const getApiregistrationAPIGroup: API.OperationMethod<
   GetApiregistrationAPIGroupError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(23, __c2, 7) as any as S.Schema<GetApiregistrationAPIGroupRequest>,
-  output: __S(28, __c3, 4) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1APIGroup>,
+  input: __S(240, __c15, 0) as any as S.Schema<GetApiregistrationAPIGroupRequest>,
+  output: __S(245, __c15, 5) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1APIGroup>,
   errors: [UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -674,8 +674,8 @@ export const getApiregistrationV1APIResources: API.OperationMethod<
   GetApiregistrationV1APIResourcesError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(29, __c3, 5) as any as S.Schema<GetApiregistrationV1APIResourcesRequest>,
-  output: __S(32, __c4, 0) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1APIResourceList>,
+  input: __S(256, __c16, 0) as any as S.Schema<GetApiregistrationV1APIResourcesRequest>,
+  output: __S(259, __c16, 3) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1APIResourceList>,
   errors: [UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -689,11 +689,11 @@ export const listApiregistrationV1APIService: API.OperationMethod<
   ListApiregistrationV1APIServiceError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(33, __c4, 1) as any as S.Schema<ListApiregistrationV1APIServiceRequest>,
+  input: __S(272, __c17, 0) as any as S.Schema<ListApiregistrationV1APIServiceRequest>,
   output: __S(
-    35,
-    __c4,
-    3,
+    274,
+    __c17,
+    2,
   ) as any as S.Schema<IoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceList>,
   errors: [UnknownKubernetesError],
   protocol: KubernetesProtocol,
@@ -712,11 +712,11 @@ export const patchApiregistrationV1APIService: API.OperationMethod<
   PatchApiregistrationV1APIServiceError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(36, __c4, 4) as any as S.Schema<PatchApiregistrationV1APIServiceRequest>,
+  input: __S(288, __c18, 0) as any as S.Schema<PatchApiregistrationV1APIServiceRequest>,
   output: __S(
-    13,
-    __c1,
-    5,
+    171,
+    __c10,
+    11,
   ) as any as S.Schema<IoK8sKubeAggregatorPkgApisApiregistrationV1APIService>,
   errors: [NotFound, Conflict, UnprocessableEntity, UnknownKubernetesError],
   protocol: KubernetesProtocol,
@@ -735,11 +735,11 @@ export const patchApiregistrationV1APIServiceStatus: API.OperationMethod<
   PatchApiregistrationV1APIServiceStatusError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(37, __c4, 5) as any as S.Schema<PatchApiregistrationV1APIServiceStatusRequest>,
+  input: __S(0, __c0, 0) as any as S.Schema<PatchApiregistrationV1APIServiceStatusRequest>,
   output: __S(
-    13,
-    __c1,
-    5,
+    171,
+    __c10,
+    11,
   ) as any as S.Schema<IoK8sKubeAggregatorPkgApisApiregistrationV1APIService>,
   errors: [NotFound, Conflict, UnprocessableEntity, UnknownKubernetesError],
   protocol: KubernetesProtocol,
@@ -754,11 +754,11 @@ export const readApiregistrationV1APIService: API.OperationMethod<
   ReadApiregistrationV1APIServiceError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(38, __c4, 6) as any as S.Schema<ReadApiregistrationV1APIServiceRequest>,
+  input: __S(16, __c1, 0) as any as S.Schema<ReadApiregistrationV1APIServiceRequest>,
   output: __S(
-    13,
-    __c1,
-    5,
+    171,
+    __c10,
+    11,
   ) as any as S.Schema<IoK8sKubeAggregatorPkgApisApiregistrationV1APIService>,
   errors: [NotFound, UnknownKubernetesError],
   protocol: KubernetesProtocol,
@@ -773,11 +773,11 @@ export const readApiregistrationV1APIServiceStatus: API.OperationMethod<
   ReadApiregistrationV1APIServiceStatusError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(39, __c4, 7) as any as S.Schema<ReadApiregistrationV1APIServiceStatusRequest>,
+  input: __S(32, __c2, 0) as any as S.Schema<ReadApiregistrationV1APIServiceStatusRequest>,
   output: __S(
-    13,
-    __c1,
-    5,
+    171,
+    __c10,
+    11,
   ) as any as S.Schema<IoK8sKubeAggregatorPkgApisApiregistrationV1APIService>,
   errors: [NotFound, UnknownKubernetesError],
   protocol: KubernetesProtocol,
@@ -796,11 +796,11 @@ export const replaceApiregistrationV1APIService: API.OperationMethod<
   ReplaceApiregistrationV1APIServiceError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(40, __c5, 0) as any as S.Schema<ReplaceApiregistrationV1APIServiceRequest>,
+  input: __S(48, __c3, 0) as any as S.Schema<ReplaceApiregistrationV1APIServiceRequest>,
   output: __S(
-    13,
-    __c1,
-    5,
+    171,
+    __c10,
+    11,
   ) as any as S.Schema<IoK8sKubeAggregatorPkgApisApiregistrationV1APIService>,
   errors: [NotFound, Conflict, UnprocessableEntity, UnknownKubernetesError],
   protocol: KubernetesProtocol,
@@ -819,11 +819,11 @@ export const replaceApiregistrationV1APIServiceStatus: API.OperationMethod<
   ReplaceApiregistrationV1APIServiceStatusError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(41, __c5, 1) as any as S.Schema<ReplaceApiregistrationV1APIServiceStatusRequest>,
+  input: __S(64, __c4, 0) as any as S.Schema<ReplaceApiregistrationV1APIServiceStatusRequest>,
   output: __S(
-    13,
-    __c1,
-    5,
+    171,
+    __c10,
+    11,
   ) as any as S.Schema<IoK8sKubeAggregatorPkgApisApiregistrationV1APIService>,
   errors: [NotFound, Conflict, UnprocessableEntity, UnknownKubernetesError],
   protocol: KubernetesProtocol,
@@ -838,8 +838,8 @@ export const watchApiregistrationV1APIService: API.OperationMethod<
   WatchApiregistrationV1APIServiceError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(42, __c5, 2) as any as S.Schema<WatchApiregistrationV1APIServiceRequest>,
-  output: __S(43, __c5, 3) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1WatchEvent>,
+  input: __S(80, __c5, 0) as any as S.Schema<WatchApiregistrationV1APIServiceRequest>,
+  output: __S(96, __c6, 0) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1WatchEvent>,
   errors: [UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -853,8 +853,8 @@ export const watchApiregistrationV1APIServiceList: API.OperationMethod<
   WatchApiregistrationV1APIServiceListError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(44, __c5, 4) as any as S.Schema<WatchApiregistrationV1APIServiceListRequest>,
-  output: __S(43, __c5, 3) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1WatchEvent>,
+  input: __S(112, __c7, 0) as any as S.Schema<WatchApiregistrationV1APIServiceListRequest>,
+  output: __S(96, __c6, 0) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1WatchEvent>,
   errors: [UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -864,412 +864,6 @@ export const watchApiregistrationV1APIServiceList: API.OperationMethod<
 function __c0(j: number): any {
   switch (j) {
     case 0:
-      return S.Record(S.String, S.String);
-    case 1:
-      return S.Array(S.String);
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          apiVersion: S.optional(S.String),
-          fieldsType: S.optional(S.String),
-          fieldsV1: S.optional(S.Unknown),
-          manager: S.optional(S.String),
-          operation: S.optional(S.String),
-          subresource: S.optional(S.String),
-          time: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "IoK8sApimachineryPkgApisMetaV1ManagedFieldsEntry",
-      });
-    case 3:
-      return S.Array(__S(2, __c0, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          apiVersion: S.String,
-          blockOwnerDeletion: S.optional(S.Boolean),
-          controller: S.optional(S.Boolean),
-          kind: S.String,
-          name: S.String,
-          uid: S.String,
-        }),
-      ).annotate({
-        identifier: "IoK8sApimachineryPkgApisMetaV1OwnerReference",
-      });
-    case 5:
-      return S.Array(__S(4, __c0, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          annotations: S.optional(__S(0, __c0, 0)),
-          creationTimestamp: S.optional(S.String),
-          deletionGracePeriodSeconds: S.optional(S.Number),
-          deletionTimestamp: S.optional(S.String),
-          finalizers: S.optional(__S(1, __c0, 1)),
-          generateName: S.optional(S.String),
-          generation: S.optional(S.Number),
-          labels: S.optional(__S(0, __c0, 0)),
-          managedFields: S.optional(__S(3, __c0, 3)),
-          name: S.optional(S.String),
-          namespace: S.optional(S.String),
-          ownerReferences: S.optional(__S(5, __c0, 5)),
-          resourceVersion: S.optional(S.String),
-          selfLink: S.optional(S.String),
-          uid: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "IoK8sApimachineryPkgApisMetaV1ObjectMeta",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.optional(S.String),
-          namespace: S.optional(S.String),
-          port: S.optional(S.Number),
-        }),
-      ).annotate({
-        identifier: "IoK8sKubeAggregatorPkgApisApiregistrationV1ServiceReference",
-      });
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          caBundle: S.optional(S.String),
-          group: S.optional(S.String),
-          groupPriorityMinimum: S.Number,
-          insecureSkipTLSVerify: S.optional(S.Boolean),
-          service: S.optional(__S(7, __c0, 7)),
-          version: S.optional(S.String),
-          versionPriority: S.Number,
-        }),
-      ).annotate({
-        identifier: "IoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceSpec",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          lastTransitionTime: S.optional(S.String),
-          message: S.optional(S.String),
-          reason: S.optional(S.String),
-          status: S.String,
-          type: S.String,
-        }),
-      ).annotate({
-        identifier: "IoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceCondition",
-      });
-    case 2:
-      return S.Array(__S(9, __c1, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          conditions: S.optional(__S(10, __c1, 2)),
-        }),
-      ).annotate({
-        identifier: "IoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceStatus",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          pretty: S.optional(S.String.pipe(T.Query())),
-          dryRun: S.optional(S.String.pipe(T.Query())),
-          fieldManager: S.optional(S.String.pipe(T.Query())),
-          fieldValidation: S.optional(S.String.pipe(T.Query())),
-          apiVersion: S.optional(S.String),
-          kind: S.optional(S.String),
-          metadata: S.optional(__S(6, __c0, 6)),
-          spec: S.optional(__S(8, __c1, 0)),
-          status: S.optional(__S(11, __c1, 3)),
-        }).pipe(
-          T.Http({ method: "POST", uri: "/apis/apiregistration.k8s.io/v1/apiservices", code: 200 }),
-        ),
-      ).annotate({
-        identifier: "CreateApiregistrationV1APIServiceRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          apiVersion: S.optional(S.String),
-          kind: S.optional(S.String),
-          metadata: S.optional(__S(6, __c0, 6)),
-          spec: S.optional(__S(8, __c1, 0)),
-          status: S.optional(__S(11, __c1, 3)),
-        }),
-      ).annotate({
-        identifier: "IoK8sKubeAggregatorPkgApisApiregistrationV1APIService",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          resourceVersion: S.optional(S.String),
-          uid: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "IoK8sApimachineryPkgApisMetaV1Preconditions",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-          pretty: S.optional(S.String.pipe(T.Query())),
-          dryRun: S.optional(S.String.pipe(T.Query())),
-          gracePeriodSeconds: S.optional(S.Number.pipe(T.Query())),
-          ignoreStoreReadErrorWithClusterBreakingPotential: S.optional(S.Boolean.pipe(T.Query())),
-          orphanDependents: S.optional(S.Boolean.pipe(T.Query())),
-          propagationPolicy: S.optional(S.String.pipe(T.Query())),
-          apiVersion: S.optional(S.String),
-          kind: S.optional(S.String),
-          preconditions: S.optional(__S(14, __c1, 6)),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/apis/apiregistration.k8s.io/v1/apiservices/{name}",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteApiregistrationV1APIServiceRequest",
-      });
-  }
-}
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          field: S.optional(S.String),
-          message: S.optional(S.String),
-          reason: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "IoK8sApimachineryPkgApisMetaV1StatusCause",
-      });
-    case 1:
-      return S.Array(__S(16, __c2, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          causes: S.optional(__S(17, __c2, 1)),
-          group: S.optional(S.String),
-          kind: S.optional(S.String),
-          name: S.optional(S.String),
-          retryAfterSeconds: S.optional(S.Number),
-          uid: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "IoK8sApimachineryPkgApisMetaV1StatusDetails",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          selector: S.String,
-        }),
-      ).annotate({
-        identifier: "IoK8sApimachineryPkgApisMetaV1ShardInfo",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          continue: S.optional(S.String),
-          remainingItemCount: S.optional(S.Number),
-          resourceVersion: S.optional(S.String),
-          selfLink: S.optional(S.String),
-          shardInfo: S.optional(__S(19, __c2, 3)),
-        }),
-      ).annotate({
-        identifier: "IoK8sApimachineryPkgApisMetaV1ListMeta",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          apiVersion: S.optional(S.String),
-          code: S.optional(S.Number),
-          details: S.optional(__S(18, __c2, 2)),
-          kind: S.optional(S.String),
-          message: S.optional(S.String),
-          metadata: S.optional(__S(20, __c2, 4)),
-          reason: S.optional(S.String),
-          status: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "IoK8sApimachineryPkgApisMetaV1Status",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          pretty: S.optional(S.String.pipe(T.Query())),
-          continue: S.optional(S.String.pipe(T.Query())),
-          dryRun: S.optional(S.String.pipe(T.Query())),
-          fieldSelector: S.optional(S.String.pipe(T.Query())),
-          gracePeriodSeconds: S.optional(S.Number.pipe(T.Query())),
-          ignoreStoreReadErrorWithClusterBreakingPotential: S.optional(S.Boolean.pipe(T.Query())),
-          labelSelector: S.optional(S.String.pipe(T.Query())),
-          limit: S.optional(S.Number.pipe(T.Query())),
-          orphanDependents: S.optional(S.Boolean.pipe(T.Query())),
-          propagationPolicy: S.optional(S.String.pipe(T.Query())),
-          resourceVersion: S.optional(S.String.pipe(T.Query())),
-          resourceVersionMatch: S.optional(S.String.pipe(T.Query())),
-          sendInitialEvents: S.optional(S.Boolean.pipe(T.Query())),
-          shardSelector: S.optional(S.String.pipe(T.Query())),
-          timeoutSeconds: S.optional(S.Number.pipe(T.Query())),
-          apiVersion: S.optional(S.String),
-          kind: S.optional(S.String),
-          preconditions: S.optional(__S(14, __c1, 6)),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/apis/apiregistration.k8s.io/v1/apiservices",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteApiregistrationV1CollectionAPIServiceRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({}).pipe(
-          T.Http({ method: "GET", uri: "/apis/apiregistration.k8s.io/", code: 200 }),
-        ),
-      ).annotate({
-        identifier: "GetApiregistrationAPIGroupRequest",
-      });
-  }
-}
-function __c3(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          groupVersion: S.String,
-          version: S.String,
-        }),
-      ).annotate({
-        identifier: "IoK8sApimachineryPkgApisMetaV1GroupVersionForDiscovery",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          clientCIDR: S.String,
-          serverAddress: S.String,
-        }),
-      ).annotate({
-        identifier: "IoK8sApimachineryPkgApisMetaV1ServerAddressByClientCIDR",
-      });
-    case 2:
-      return S.Array(__S(25, __c3, 1));
-    case 3:
-      return S.Array(__S(24, __c3, 0));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          apiVersion: S.optional(S.String),
-          kind: S.optional(S.String),
-          name: S.String,
-          preferredVersion: S.optional(__S(24, __c3, 0)),
-          serverAddressByClientCIDRs: S.optional(__S(26, __c3, 2)),
-          versions: __S(27, __c3, 3),
-        }),
-      ).annotate({
-        identifier: "IoK8sApimachineryPkgApisMetaV1APIGroup",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({}).pipe(
-          T.Http({ method: "GET", uri: "/apis/apiregistration.k8s.io/v1/", code: 200 }),
-        ),
-      ).annotate({
-        identifier: "GetApiregistrationV1APIResourcesRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          categories: S.optional(__S(1, __c0, 1)),
-          group: S.optional(S.String),
-          kind: S.String,
-          name: S.String,
-          namespaced: S.Boolean,
-          shortNames: S.optional(__S(1, __c0, 1)),
-          singularName: S.String,
-          storageVersionHash: S.optional(S.String),
-          verbs: __S(1, __c0, 1),
-          version: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "IoK8sApimachineryPkgApisMetaV1APIResource",
-      });
-    case 7:
-      return S.Array(__S(30, __c3, 6));
-  }
-}
-function __c4(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          apiVersion: S.optional(S.String),
-          groupVersion: S.String,
-          kind: S.optional(S.String),
-          resources: __S(31, __c3, 7),
-        }),
-      ).annotate({
-        identifier: "IoK8sApimachineryPkgApisMetaV1APIResourceList",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          pretty: S.optional(S.String.pipe(T.Query())),
-          allowWatchBookmarks: S.optional(S.Boolean.pipe(T.Query())),
-          continue: S.optional(S.String.pipe(T.Query())),
-          fieldSelector: S.optional(S.String.pipe(T.Query())),
-          labelSelector: S.optional(S.String.pipe(T.Query())),
-          limit: S.optional(S.Number.pipe(T.Query())),
-          resourceVersion: S.optional(S.String.pipe(T.Query())),
-          resourceVersionMatch: S.optional(S.String.pipe(T.Query())),
-          sendInitialEvents: S.optional(S.Boolean.pipe(T.Query())),
-          shardSelector: S.optional(S.String.pipe(T.Query())),
-          timeoutSeconds: S.optional(S.Number.pipe(T.Query())),
-          watch: S.optional(S.Boolean.pipe(T.Query())),
-        }).pipe(
-          T.Http({ method: "GET", uri: "/apis/apiregistration.k8s.io/v1/apiservices", code: 200 }),
-        ),
-      ).annotate({
-        identifier: "ListApiregistrationV1APIServiceRequest",
-      });
-    case 2:
-      return S.Array(__S(13, __c1, 5));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          apiVersion: S.optional(S.String),
-          items: __S(34, __c4, 2),
-          kind: S.optional(S.String),
-          metadata: S.optional(__S(20, __c2, 4)),
-        }),
-      ).annotate({
-        identifier: "IoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceList",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-          pretty: S.optional(S.String.pipe(T.Query())),
-          dryRun: S.optional(S.String.pipe(T.Query())),
-          fieldManager: S.optional(S.String.pipe(T.Query())),
-          fieldValidation: S.optional(S.String.pipe(T.Query())),
-          force: S.optional(S.Boolean.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "PATCH",
-            uri: "/apis/apiregistration.k8s.io/v1/apiservices/{name}",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "PatchApiregistrationV1APIServiceRequest",
-      });
-    case 5:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -1288,7 +882,11 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "PatchApiregistrationV1APIServiceStatusRequest",
       });
-    case 6:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -1303,7 +901,11 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "ReadApiregistrationV1APIServiceRequest",
       });
-    case 7:
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -1320,7 +922,7 @@ function __c4(j: number): any {
       });
   }
 }
-function __c5(j: number): any {
+function __c3(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1332,9 +934,9 @@ function __c5(j: number): any {
           fieldValidation: S.optional(S.String.pipe(T.Query())),
           apiVersion: S.optional(S.String),
           kind: S.optional(S.String),
-          metadata: S.optional(__S(6, __c0, 6)),
-          spec: S.optional(__S(8, __c1, 0)),
-          status: S.optional(__S(11, __c1, 3)),
+          metadata: S.optional(__S(165, __c10, 5)),
+          spec: S.optional(__S(167, __c10, 7)),
+          status: S.optional(__S(170, __c10, 10)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -1345,7 +947,11 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "ReplaceApiregistrationV1APIServiceRequest",
       });
-    case 1:
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -1355,9 +961,9 @@ function __c5(j: number): any {
           fieldValidation: S.optional(S.String.pipe(T.Query())),
           apiVersion: S.optional(S.String),
           kind: S.optional(S.String),
-          metadata: S.optional(__S(6, __c0, 6)),
-          spec: S.optional(__S(8, __c1, 0)),
-          status: S.optional(__S(11, __c1, 3)),
+          metadata: S.optional(__S(165, __c10, 5)),
+          spec: S.optional(__S(167, __c10, 7)),
+          status: S.optional(__S(170, __c10, 10)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -1368,7 +974,11 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "ReplaceApiregistrationV1APIServiceStatusRequest",
       });
-    case 2:
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -1394,7 +1004,11 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "WatchApiregistrationV1APIServiceRequest",
       });
-    case 3:
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           object: S.Unknown,
@@ -1403,7 +1017,11 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "IoK8sApimachineryPkgApisMetaV1WatchEvent",
       });
-    case 4:
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           allowWatchBookmarks: S.optional(S.Boolean.pipe(T.Query())),
@@ -1430,7 +1048,440 @@ function __c5(j: number): any {
       });
   }
 }
-
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          pretty: S.optional(S.String.pipe(T.Query())),
+          dryRun: S.optional(S.String.pipe(T.Query())),
+          fieldManager: S.optional(S.String.pipe(T.Query())),
+          fieldValidation: S.optional(S.String.pipe(T.Query())),
+          apiVersion: S.optional(S.String),
+          kind: S.optional(S.String),
+          metadata: S.optional(__S(165, __c10, 5)),
+          spec: S.optional(__S(167, __c10, 7)),
+          status: S.optional(__S(170, __c10, 10)),
+        }).pipe(
+          T.Http({ method: "POST", uri: "/apis/apiregistration.k8s.io/v1/apiservices", code: 200 }),
+        ),
+      ).annotate({
+        identifier: "CreateApiregistrationV1APIServiceRequest",
+      });
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, S.String);
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          apiVersion: S.optional(S.String),
+          fieldsType: S.optional(S.String),
+          fieldsV1: S.optional(S.Unknown),
+          manager: S.optional(S.String),
+          operation: S.optional(S.String),
+          subresource: S.optional(S.String),
+          time: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "IoK8sApimachineryPkgApisMetaV1ManagedFieldsEntry",
+      });
+    case 2:
+      return S.Array(__S(161, __c10, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          apiVersion: S.String,
+          blockOwnerDeletion: S.optional(S.Boolean),
+          controller: S.optional(S.Boolean),
+          kind: S.String,
+          name: S.String,
+          uid: S.String,
+        }),
+      ).annotate({
+        identifier: "IoK8sApimachineryPkgApisMetaV1OwnerReference",
+      });
+    case 4:
+      return S.Array(__S(163, __c10, 3));
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          annotations: S.optional(__S(160, __c10, 0)),
+          creationTimestamp: S.optional(S.String),
+          deletionGracePeriodSeconds: S.optional(S.Number),
+          deletionTimestamp: S.optional(S.String),
+          finalizers: S.optional(__S(144, __c9, 0)),
+          generateName: S.optional(S.String),
+          generation: S.optional(S.Number),
+          labels: S.optional(__S(160, __c10, 0)),
+          managedFields: S.optional(__S(162, __c10, 2)),
+          name: S.optional(S.String),
+          namespace: S.optional(S.String),
+          ownerReferences: S.optional(__S(164, __c10, 4)),
+          resourceVersion: S.optional(S.String),
+          selfLink: S.optional(S.String),
+          uid: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "IoK8sApimachineryPkgApisMetaV1ObjectMeta",
+      });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.optional(S.String),
+          namespace: S.optional(S.String),
+          port: S.optional(S.Number),
+        }),
+      ).annotate({
+        identifier: "IoK8sKubeAggregatorPkgApisApiregistrationV1ServiceReference",
+      });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          caBundle: S.optional(S.String),
+          group: S.optional(S.String),
+          groupPriorityMinimum: S.Number,
+          insecureSkipTLSVerify: S.optional(S.Boolean),
+          service: S.optional(__S(166, __c10, 6)),
+          version: S.optional(S.String),
+          versionPriority: S.Number,
+        }),
+      ).annotate({
+        identifier: "IoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceSpec",
+      });
+    case 8:
+      return S.suspend(() =>
+        S.Struct({
+          lastTransitionTime: S.optional(S.String),
+          message: S.optional(S.String),
+          reason: S.optional(S.String),
+          status: S.String,
+          type: S.String,
+        }),
+      ).annotate({
+        identifier: "IoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceCondition",
+      });
+    case 9:
+      return S.Array(__S(168, __c10, 8));
+    case 10:
+      return S.suspend(() =>
+        S.Struct({
+          conditions: S.optional(__S(169, __c10, 9)),
+        }),
+      ).annotate({
+        identifier: "IoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceStatus",
+      });
+    case 11:
+      return S.suspend(() =>
+        S.Struct({
+          apiVersion: S.optional(S.String),
+          kind: S.optional(S.String),
+          metadata: S.optional(__S(165, __c10, 5)),
+          spec: S.optional(__S(167, __c10, 7)),
+          status: S.optional(__S(170, __c10, 10)),
+        }),
+      ).annotate({
+        identifier: "IoK8sKubeAggregatorPkgApisApiregistrationV1APIService",
+      });
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+          pretty: S.optional(S.String.pipe(T.Query())),
+          dryRun: S.optional(S.String.pipe(T.Query())),
+          gracePeriodSeconds: S.optional(S.Number.pipe(T.Query())),
+          ignoreStoreReadErrorWithClusterBreakingPotential: S.optional(S.Boolean.pipe(T.Query())),
+          orphanDependents: S.optional(S.Boolean.pipe(T.Query())),
+          propagationPolicy: S.optional(S.String.pipe(T.Query())),
+          apiVersion: S.optional(S.String),
+          kind: S.optional(S.String),
+          preconditions: S.optional(__S(192, __c12, 0)),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/apis/apiregistration.k8s.io/v1/apiservices/{name}",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteApiregistrationV1APIServiceRequest",
+      });
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          resourceVersion: S.optional(S.String),
+          uid: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "IoK8sApimachineryPkgApisMetaV1Preconditions",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          field: S.optional(S.String),
+          message: S.optional(S.String),
+          reason: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "IoK8sApimachineryPkgApisMetaV1StatusCause",
+      });
+    case 2:
+      return S.Array(__S(193, __c12, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          causes: S.optional(__S(194, __c12, 2)),
+          group: S.optional(S.String),
+          kind: S.optional(S.String),
+          name: S.optional(S.String),
+          retryAfterSeconds: S.optional(S.Number),
+          uid: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "IoK8sApimachineryPkgApisMetaV1StatusDetails",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          apiVersion: S.optional(S.String),
+          code: S.optional(S.Number),
+          details: S.optional(__S(195, __c12, 3)),
+          kind: S.optional(S.String),
+          message: S.optional(S.String),
+          metadata: S.optional(__S(209, __c13, 1)),
+          reason: S.optional(S.String),
+          status: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "IoK8sApimachineryPkgApisMetaV1Status",
+      });
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          selector: S.String,
+        }),
+      ).annotate({
+        identifier: "IoK8sApimachineryPkgApisMetaV1ShardInfo",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          continue: S.optional(S.String),
+          remainingItemCount: S.optional(S.Number),
+          resourceVersion: S.optional(S.String),
+          selfLink: S.optional(S.String),
+          shardInfo: S.optional(__S(208, __c13, 0)),
+        }),
+      ).annotate({
+        identifier: "IoK8sApimachineryPkgApisMetaV1ListMeta",
+      });
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          pretty: S.optional(S.String.pipe(T.Query())),
+          continue: S.optional(S.String.pipe(T.Query())),
+          dryRun: S.optional(S.String.pipe(T.Query())),
+          fieldSelector: S.optional(S.String.pipe(T.Query())),
+          gracePeriodSeconds: S.optional(S.Number.pipe(T.Query())),
+          ignoreStoreReadErrorWithClusterBreakingPotential: S.optional(S.Boolean.pipe(T.Query())),
+          labelSelector: S.optional(S.String.pipe(T.Query())),
+          limit: S.optional(S.Number.pipe(T.Query())),
+          orphanDependents: S.optional(S.Boolean.pipe(T.Query())),
+          propagationPolicy: S.optional(S.String.pipe(T.Query())),
+          resourceVersion: S.optional(S.String.pipe(T.Query())),
+          resourceVersionMatch: S.optional(S.String.pipe(T.Query())),
+          sendInitialEvents: S.optional(S.Boolean.pipe(T.Query())),
+          shardSelector: S.optional(S.String.pipe(T.Query())),
+          timeoutSeconds: S.optional(S.Number.pipe(T.Query())),
+          apiVersion: S.optional(S.String),
+          kind: S.optional(S.String),
+          preconditions: S.optional(__S(192, __c12, 0)),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/apis/apiregistration.k8s.io/v1/apiservices",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteApiregistrationV1CollectionAPIServiceRequest",
+      });
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({}).pipe(
+          T.Http({ method: "GET", uri: "/apis/apiregistration.k8s.io/", code: 200 }),
+        ),
+      ).annotate({
+        identifier: "GetApiregistrationAPIGroupRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          groupVersion: S.String,
+          version: S.String,
+        }),
+      ).annotate({
+        identifier: "IoK8sApimachineryPkgApisMetaV1GroupVersionForDiscovery",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          clientCIDR: S.String,
+          serverAddress: S.String,
+        }),
+      ).annotate({
+        identifier: "IoK8sApimachineryPkgApisMetaV1ServerAddressByClientCIDR",
+      });
+    case 3:
+      return S.Array(__S(242, __c15, 2));
+    case 4:
+      return S.Array(__S(241, __c15, 1));
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          apiVersion: S.optional(S.String),
+          kind: S.optional(S.String),
+          name: S.String,
+          preferredVersion: S.optional(__S(241, __c15, 1)),
+          serverAddressByClientCIDRs: S.optional(__S(243, __c15, 3)),
+          versions: __S(244, __c15, 4),
+        }),
+      ).annotate({
+        identifier: "IoK8sApimachineryPkgApisMetaV1APIGroup",
+      });
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({}).pipe(
+          T.Http({ method: "GET", uri: "/apis/apiregistration.k8s.io/v1/", code: 200 }),
+        ),
+      ).annotate({
+        identifier: "GetApiregistrationV1APIResourcesRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          categories: S.optional(__S(144, __c9, 0)),
+          group: S.optional(S.String),
+          kind: S.String,
+          name: S.String,
+          namespaced: S.Boolean,
+          shortNames: S.optional(__S(144, __c9, 0)),
+          singularName: S.String,
+          storageVersionHash: S.optional(S.String),
+          verbs: __S(144, __c9, 0),
+          version: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "IoK8sApimachineryPkgApisMetaV1APIResource",
+      });
+    case 2:
+      return S.Array(__S(257, __c16, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          apiVersion: S.optional(S.String),
+          groupVersion: S.String,
+          kind: S.optional(S.String),
+          resources: __S(258, __c16, 2),
+        }),
+      ).annotate({
+        identifier: "IoK8sApimachineryPkgApisMetaV1APIResourceList",
+      });
+  }
+}
+function __c17(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          pretty: S.optional(S.String.pipe(T.Query())),
+          allowWatchBookmarks: S.optional(S.Boolean.pipe(T.Query())),
+          continue: S.optional(S.String.pipe(T.Query())),
+          fieldSelector: S.optional(S.String.pipe(T.Query())),
+          labelSelector: S.optional(S.String.pipe(T.Query())),
+          limit: S.optional(S.Number.pipe(T.Query())),
+          resourceVersion: S.optional(S.String.pipe(T.Query())),
+          resourceVersionMatch: S.optional(S.String.pipe(T.Query())),
+          sendInitialEvents: S.optional(S.Boolean.pipe(T.Query())),
+          shardSelector: S.optional(S.String.pipe(T.Query())),
+          timeoutSeconds: S.optional(S.Number.pipe(T.Query())),
+          watch: S.optional(S.Boolean.pipe(T.Query())),
+        }).pipe(
+          T.Http({ method: "GET", uri: "/apis/apiregistration.k8s.io/v1/apiservices", code: 200 }),
+        ),
+      ).annotate({
+        identifier: "ListApiregistrationV1APIServiceRequest",
+      });
+    case 1:
+      return S.Array(__S(171, __c10, 11));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          apiVersion: S.optional(S.String),
+          items: __S(273, __c17, 1),
+          kind: S.optional(S.String),
+          metadata: S.optional(__S(209, __c13, 1)),
+        }),
+      ).annotate({
+        identifier: "IoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceList",
+      });
+  }
+}
+function __c18(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+          pretty: S.optional(S.String.pipe(T.Query())),
+          dryRun: S.optional(S.String.pipe(T.Query())),
+          fieldManager: S.optional(S.String.pipe(T.Query())),
+          fieldValidation: S.optional(S.String.pipe(T.Query())),
+          force: S.optional(S.Boolean.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "PATCH",
+            uri: "/apis/apiregistration.k8s.io/v1/apiservices/{name}",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "PatchApiregistrationV1APIServiceRequest",
+      });
+  }
+}
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

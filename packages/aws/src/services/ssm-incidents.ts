@@ -677,8 +677,8 @@ export const batchGetIncidentFindings: API.OperationMethod<
   BatchGetIncidentFindingsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1, __c0, 1) as any as S.Schema<BatchGetIncidentFindingsInput>,
-  output: __S(9, __c1, 1) as any as S.Schema<BatchGetIncidentFindingsOutput>,
+  input: __S(608, __c38, 0) as any as S.Schema<BatchGetIncidentFindingsInput>,
+  output: __S(616, __c38, 8) as any as S.Schema<BatchGetIncidentFindingsOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -710,8 +710,8 @@ export const createReplicationSet: API.OperationMethod<
   CreateReplicationSetError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(13, __c1, 5) as any as S.Schema<CreateReplicationSetInput>,
-  output: __S(14, __c1, 6) as any as S.Schema<CreateReplicationSetOutput>,
+  input: __S(642, __c40, 2) as any as S.Schema<CreateReplicationSetInput>,
+  output: __S(643, __c40, 3) as any as S.Schema<CreateReplicationSetOutput>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -745,8 +745,8 @@ export const createResponsePlan: API.OperationMethod<
   CreateResponsePlanError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(30, __c3, 6) as any as S.Schema<CreateResponsePlanInput>,
-  output: __S(31, __c3, 7) as any as S.Schema<CreateResponsePlanOutput>,
+  input: __S(0, __c0, 0) as any as S.Schema<CreateResponsePlanInput>,
+  output: __S(1, __c0, 1) as any as S.Schema<CreateResponsePlanOutput>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -780,8 +780,8 @@ export const createTimelineEvent: API.OperationMethod<
   CreateTimelineEventError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(34, __c4, 2) as any as S.Schema<CreateTimelineEventInput>,
-  output: __S(35, __c4, 3) as any as S.Schema<CreateTimelineEventOutput>,
+  input: __S(80, __c5, 0) as any as S.Schema<CreateTimelineEventInput>,
+  output: __S(81, __c5, 1) as any as S.Schema<CreateTimelineEventOutput>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -810,8 +810,8 @@ export const deleteIncidentRecord: API.OperationMethod<
   DeleteIncidentRecordError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(36, __c4, 4) as any as S.Schema<DeleteIncidentRecordInput>,
-  output: __S(18, __c2, 2) as any as S.Schema<DeleteIncidentRecordOutput>,
+  input: __S(112, __c7, 0) as any as S.Schema<DeleteIncidentRecordInput>,
+  output: __S(16, __c1, 0) as any as S.Schema<DeleteIncidentRecordOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -840,8 +840,8 @@ export const deleteReplicationSet: API.OperationMethod<
   DeleteReplicationSetError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(37, __c4, 5) as any as S.Schema<DeleteReplicationSetInput>,
-  output: __S(18, __c2, 2) as any as S.Schema<DeleteReplicationSetOutput>,
+  input: __S(128, __c8, 0) as any as S.Schema<DeleteReplicationSetInput>,
+  output: __S(16, __c1, 0) as any as S.Schema<DeleteReplicationSetOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -871,8 +871,8 @@ export const deleteResourcePolicy: API.OperationMethod<
   DeleteResourcePolicyError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(38, __c4, 6) as any as S.Schema<DeleteResourcePolicyInput>,
-  output: __S(18, __c2, 2) as any as S.Schema<DeleteResourcePolicyOutput>,
+  input: __S(144, __c9, 0) as any as S.Schema<DeleteResourcePolicyInput>,
+  output: __S(16, __c1, 0) as any as S.Schema<DeleteResourcePolicyOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -901,8 +901,8 @@ export const deleteResponsePlan: API.OperationMethod<
   DeleteResponsePlanError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(39, __c4, 7) as any as S.Schema<DeleteResponsePlanInput>,
-  output: __S(18, __c2, 2) as any as S.Schema<DeleteResponsePlanOutput>,
+  input: __S(160, __c10, 0) as any as S.Schema<DeleteResponsePlanInput>,
+  output: __S(16, __c1, 0) as any as S.Schema<DeleteResponsePlanOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -929,8 +929,8 @@ export const deleteTimelineEvent: API.OperationMethod<
   DeleteTimelineEventError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(40, __c5, 0) as any as S.Schema<DeleteTimelineEventInput>,
-  output: __S(18, __c2, 2) as any as S.Schema<DeleteTimelineEventOutput>,
+  input: __S(176, __c11, 0) as any as S.Schema<DeleteTimelineEventInput>,
+  output: __S(16, __c1, 0) as any as S.Schema<DeleteTimelineEventOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -958,8 +958,8 @@ export const getIncidentRecord: API.OperationMethod<
   GetIncidentRecordError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(41, __c5, 1) as any as S.Schema<GetIncidentRecordInput>,
-  output: __S(46, __c5, 6) as any as S.Schema<GetIncidentRecordOutput>,
+  input: __S(192, __c12, 0) as any as S.Schema<GetIncidentRecordInput>,
+  output: __S(196, __c12, 4) as any as S.Schema<GetIncidentRecordOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -988,8 +988,8 @@ export const getReplicationSet: API.OperationMethod<
   GetReplicationSetError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(47, __c5, 7) as any as S.Schema<GetReplicationSetInput>,
-  output: __S(51, __c6, 3) as any as S.Schema<GetReplicationSetOutput>,
+  input: __S(224, __c14, 0) as any as S.Schema<GetReplicationSetInput>,
+  output: __S(228, __c14, 4) as any as S.Schema<GetReplicationSetOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1019,8 +1019,8 @@ export const getResourcePolicies: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   ResourcePolicy
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(52, __c6, 4) as any as S.Schema<GetResourcePoliciesInput>,
-  output: __S(55, __c6, 7) as any as S.Schema<GetResourcePoliciesOutput>,
+  input: __S(240, __c15, 0) as any as S.Schema<GetResourcePoliciesInput>,
+  output: __S(243, __c15, 3) as any as S.Schema<GetResourcePoliciesOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1055,8 +1055,8 @@ export const getResponsePlan: API.OperationMethod<
   GetResponsePlanError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(56, __c7, 0) as any as S.Schema<GetResponsePlanInput>,
-  output: __S(57, __c7, 1) as any as S.Schema<GetResponsePlanOutput>,
+  input: __S(256, __c16, 0) as any as S.Schema<GetResponsePlanInput>,
+  output: __S(257, __c16, 1) as any as S.Schema<GetResponsePlanOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1085,8 +1085,8 @@ export const getTimelineEvent: API.OperationMethod<
   GetTimelineEventError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(58, __c7, 2) as any as S.Schema<GetTimelineEventInput>,
-  output: __S(60, __c7, 4) as any as S.Schema<GetTimelineEventOutput>,
+  input: __S(272, __c17, 0) as any as S.Schema<GetTimelineEventInput>,
+  output: __S(274, __c17, 2) as any as S.Schema<GetTimelineEventOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1119,8 +1119,8 @@ export const listIncidentFindings: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   FindingSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(61, __c7, 5) as any as S.Schema<ListIncidentFindingsInput>,
-  output: __S(64, __c8, 0) as any as S.Schema<ListIncidentFindingsOutput>,
+  input: __S(288, __c18, 0) as any as S.Schema<ListIncidentFindingsInput>,
+  output: __S(291, __c18, 3) as any as S.Schema<ListIncidentFindingsOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1156,8 +1156,8 @@ export const listIncidentRecords: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   IncidentRecordSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(70, __c8, 6) as any as S.Schema<ListIncidentRecordsInput>,
-  output: __S(73, __c9, 1) as any as S.Schema<ListIncidentRecordsOutput>,
+  input: __S(304, __c19, 0) as any as S.Schema<ListIncidentRecordsInput>,
+  output: __S(307, __c19, 3) as any as S.Schema<ListIncidentRecordsOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1191,8 +1191,8 @@ export const listRelatedItems: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   RelatedItem
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(74, __c9, 2) as any as S.Schema<ListRelatedItemsInput>,
-  output: __S(80, __c10, 0) as any as S.Schema<ListRelatedItemsOutput>,
+  input: __S(336, __c21, 0) as any as S.Schema<ListRelatedItemsInput>,
+  output: __S(337, __c21, 1) as any as S.Schema<ListRelatedItemsOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1226,8 +1226,8 @@ export const listReplicationSets: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   Arn
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(81, __c10, 1) as any as S.Schema<ListReplicationSetsInput>,
-  output: __S(82, __c10, 2) as any as S.Schema<ListReplicationSetsOutput>,
+  input: __S(384, __c24, 0) as any as S.Schema<ListReplicationSetsInput>,
+  output: __S(385, __c24, 1) as any as S.Schema<ListReplicationSetsOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1261,8 +1261,8 @@ export const listResponsePlans: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   ResponsePlanSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(83, __c10, 3) as any as S.Schema<ListResponsePlansInput>,
-  output: __S(86, __c10, 6) as any as S.Schema<ListResponsePlansOutput>,
+  input: __S(400, __c25, 0) as any as S.Schema<ListResponsePlansInput>,
+  output: __S(403, __c25, 3) as any as S.Schema<ListResponsePlansOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1296,8 +1296,8 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(87, __c10, 7) as any as S.Schema<ListTagsForResourceRequest>,
-  output: __S(88, __c11, 0) as any as S.Schema<ListTagsForResourceResponse>,
+  input: __S(416, __c26, 0) as any as S.Schema<ListTagsForResourceRequest>,
+  output: __S(417, __c26, 1) as any as S.Schema<ListTagsForResourceResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1326,8 +1326,8 @@ export const listTimelineEvents: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   EventSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(89, __c11, 1) as any as S.Schema<ListTimelineEventsInput>,
-  output: __S(92, __c11, 4) as any as S.Schema<ListTimelineEventsOutput>,
+  input: __S(432, __c27, 0) as any as S.Schema<ListTimelineEventsInput>,
+  output: __S(435, __c27, 3) as any as S.Schema<ListTimelineEventsOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1363,8 +1363,8 @@ export const putResourcePolicy: API.OperationMethod<
   PutResourcePolicyError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(93, __c11, 5) as any as S.Schema<PutResourcePolicyInput>,
-  output: __S(94, __c11, 6) as any as S.Schema<PutResourcePolicyOutput>,
+  input: __S(448, __c28, 0) as any as S.Schema<PutResourcePolicyInput>,
+  output: __S(449, __c28, 1) as any as S.Schema<PutResourcePolicyOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1395,8 +1395,8 @@ export const startIncident: API.OperationMethod<
   StartIncidentError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(96, __c12, 0) as any as S.Schema<StartIncidentInput>,
-  output: __S(97, __c12, 1) as any as S.Schema<StartIncidentOutput>,
+  input: __S(465, __c29, 1) as any as S.Schema<StartIncidentInput>,
+  output: __S(466, __c29, 2) as any as S.Schema<StartIncidentOutput>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1428,8 +1428,8 @@ export const tagResource: API.OperationMethod<
   TagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(98, __c12, 2) as any as S.Schema<TagResourceRequest>,
-  output: __S(18, __c2, 2) as any as S.Schema<TagResourceResponse>,
+  input: __S(480, __c30, 0) as any as S.Schema<TagResourceRequest>,
+  output: __S(16, __c1, 0) as any as S.Schema<TagResourceResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1461,8 +1461,8 @@ export const untagResource: API.OperationMethod<
   UntagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(99, __c12, 3) as any as S.Schema<UntagResourceRequest>,
-  output: __S(18, __c2, 2) as any as S.Schema<UntagResourceResponse>,
+  input: __S(496, __c31, 0) as any as S.Schema<UntagResourceRequest>,
+  output: __S(16, __c1, 0) as any as S.Schema<UntagResourceResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1493,8 +1493,8 @@ export const updateDeletionProtection: API.OperationMethod<
   UpdateDeletionProtectionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(100, __c12, 4) as any as S.Schema<UpdateDeletionProtectionInput>,
-  output: __S(18, __c2, 2) as any as S.Schema<UpdateDeletionProtectionOutput>,
+  input: __S(512, __c32, 0) as any as S.Schema<UpdateDeletionProtectionInput>,
+  output: __S(16, __c1, 0) as any as S.Schema<UpdateDeletionProtectionOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1526,8 +1526,8 @@ export const updateIncidentRecord: API.OperationMethod<
   UpdateIncidentRecordError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(101, __c12, 5) as any as S.Schema<UpdateIncidentRecordInput>,
-  output: __S(18, __c2, 2) as any as S.Schema<UpdateIncidentRecordOutput>,
+  input: __S(528, __c33, 0) as any as S.Schema<UpdateIncidentRecordInput>,
+  output: __S(16, __c1, 0) as any as S.Schema<UpdateIncidentRecordOutput>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1558,8 +1558,8 @@ export const updateRelatedItems: API.OperationMethod<
   UpdateRelatedItemsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(103, __c12, 7) as any as S.Schema<UpdateRelatedItemsInput>,
-  output: __S(18, __c2, 2) as any as S.Schema<UpdateRelatedItemsOutput>,
+  input: __S(545, __c34, 1) as any as S.Schema<UpdateRelatedItemsInput>,
+  output: __S(16, __c1, 0) as any as S.Schema<UpdateRelatedItemsOutput>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1590,8 +1590,8 @@ export const updateReplicationSet: API.OperationMethod<
   UpdateReplicationSetError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(108, __c13, 4) as any as S.Schema<UpdateReplicationSetInput>,
-  output: __S(18, __c2, 2) as any as S.Schema<UpdateReplicationSetOutput>,
+  input: __S(564, __c35, 4) as any as S.Schema<UpdateReplicationSetInput>,
+  output: __S(16, __c1, 0) as any as S.Schema<UpdateReplicationSetOutput>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1622,8 +1622,8 @@ export const updateResponsePlan: API.OperationMethod<
   UpdateResponsePlanError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(110, __c13, 6) as any as S.Schema<UpdateResponsePlanInput>,
-  output: __S(18, __c2, 2) as any as S.Schema<UpdateResponsePlanOutput>,
+  input: __S(577, __c36, 1) as any as S.Schema<UpdateResponsePlanInput>,
+  output: __S(16, __c1, 0) as any as S.Schema<UpdateResponsePlanOutput>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1654,8 +1654,8 @@ export const updateTimelineEvent: API.OperationMethod<
   UpdateTimelineEventError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(111, __c13, 7) as any as S.Schema<UpdateTimelineEventInput>,
-  output: __S(18, __c2, 2) as any as S.Schema<UpdateTimelineEventOutput>,
+  input: __S(592, __c37, 0) as any as S.Schema<UpdateTimelineEventInput>,
+  output: __S(16, __c1, 0) as any as S.Schema<UpdateTimelineEventOutput>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1673,187 +1673,17 @@ export const updateTimelineEvent: API.OperationMethod<
 function __c0(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(S.String);
-    case 1:
-      return S.suspend(() =>
-        S.Struct({ incidentRecordArn: S.String, findingIds: __S(0, __c0, 0) }).pipe(
-          T.all(
-            T.Http({ method: "POST", uri: "/batchGetIncidentFindings" }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({
-        identifier: "BatchGetIncidentFindingsInput",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          startTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-          endTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          deploymentGroupArn: S.String,
-          deploymentId: S.String,
-        }),
-      ).annotate({ identifier: "CodeDeployDeployment" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          startTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-          endTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          stackArn: S.String,
-        }),
-      ).annotate({
-        identifier: "CloudFormationStackUpdate",
-      });
-    case 4:
-      return S.Union([
-        /*@__PURE__*/ S.Struct({ codeDeployDeployment: __S(2, __c0, 2) }),
-        /*@__PURE__*/ S.Struct({ cloudFormationStackUpdate: __S(3, __c0, 3) }),
-      ]);
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String,
-          creationTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-          lastModifiedTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-          details: S.optional(__S(4, __c0, 4)),
-        }),
-      ).annotate({ identifier: "Finding" });
-    case 6:
-      return S.Array(__S(5, __c0, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({ findingId: S.String, code: S.String, message: S.String }),
-      ).annotate({
-        identifier: "BatchGetIncidentFindingsError",
-      });
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(7, __c0, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({ findings: __S(6, __c0, 6), errors: __S(8, __c1, 0) }),
-      ).annotate({
-        identifier: "BatchGetIncidentFindingsOutput",
-      });
-    case 2:
-      return S.suspend(() => S.Struct({ sseKmsKeyId: S.optional(S.String) })).annotate({
-        identifier: "RegionMapInputValue",
-      });
-    case 3:
-      return S.Record(S.String, /*@__PURE__*/ __S(10, __c1, 2).pipe(S.optional));
-    case 4:
-      return S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          regions: __S(11, __c1, 3),
-          clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-          tags: S.optional(__S(12, __c1, 4)),
-        }).pipe(
-          T.all(
-            T.Http({ method: "POST", uri: "/createReplicationSet" }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({
-        identifier: "CreateReplicationSetInput",
-      });
-    case 6:
-      return S.suspend(() => S.Struct({ arn: S.String })).annotate({
-        identifier: "CreateReplicationSetOutput",
-      });
-    case 7:
-      return S.Union([/*@__PURE__*/ S.Struct({ snsTopicArn: S.String })]);
-  }
-}
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(15, __c1, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          title: S.String,
-          impact: S.Number,
-          summary: S.optional(S.String),
-          dedupeString: S.optional(S.String),
-          notificationTargets: S.optional(__S(16, __c2, 0)),
-          incidentTags: S.optional(__S(12, __c1, 4)),
-        }),
-      ).annotate({ identifier: "IncidentTemplate" });
-    case 2:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "EmptyChatChannel",
-      });
-    case 3:
-      return S.Union([
-        /*@__PURE__*/ S.Struct({ empty: __S(18, __c2, 2) }),
-        /*@__PURE__*/ S.Struct({ chatbotSns: __S(0, __c0, 0) }),
-      ]);
-    case 4:
-      return S.Record(S.String, /*@__PURE__*/ __S(0, __c0, 0).pipe(S.optional));
-    case 5:
-      return S.Union([/*@__PURE__*/ S.Struct({ variable: S.String })]);
-    case 6:
-      return S.Record(S.String, /*@__PURE__*/ __S(21, __c2, 5).pipe(S.optional));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          roleArn: S.String,
-          documentName: S.String,
-          documentVersion: S.optional(S.String),
-          targetAccount: S.optional(S.String),
-          parameters: S.optional(__S(20, __c2, 4)),
-          dynamicParameters: S.optional(__S(22, __c2, 6)),
-        }),
-      ).annotate({ identifier: "SsmAutomation" });
-  }
-}
-function __c3(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Union([/*@__PURE__*/ S.Struct({ ssmAutomation: __S(23, __c2, 7) })]);
-    case 1:
-      return S.Array(__S(24, __c3, 0));
-    case 2:
-      return S.suspend(() => S.Struct({ serviceId: S.String })).annotate({
-        identifier: "PagerDutyIncidentConfiguration",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String,
-          secretId: S.String,
-          pagerDutyIncidentConfiguration: __S(26, __c3, 2),
-        }),
-      ).annotate({ identifier: "PagerDutyConfiguration" });
-    case 4:
-      return S.Union([/*@__PURE__*/ S.Struct({ pagerDutyConfiguration: __S(27, __c3, 3) })]);
-    case 5:
-      return S.Array(__S(28, __c3, 4));
-    case 6:
       return S.suspend(() =>
         S.Struct({
           clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
           name: S.String,
           displayName: S.optional(S.String),
-          incidentTemplate: __S(17, __c2, 1),
-          chatChannel: S.optional(__S(19, __c2, 3)),
-          engagements: S.optional(__S(0, __c0, 0)),
-          actions: S.optional(__S(25, __c3, 1)),
-          tags: S.optional(__S(12, __c1, 4)),
-          integrations: S.optional(__S(29, __c3, 5)),
+          incidentTemplate: __S(48, __c3, 0),
+          chatChannel: S.optional(__S(34, __c2, 2)),
+          engagements: S.optional(__S(624, __c39, 0)),
+          actions: S.optional(__S(69, __c4, 5)),
+          tags: S.optional(__S(656, __c41, 0)),
+          integrations: S.optional(__S(73, __c4, 9)),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/createResponsePlan" }),
@@ -1865,22 +1695,92 @@ function __c3(j: number): any {
           ),
         ),
       ).annotate({ identifier: "CreateResponsePlanInput" });
-    case 7:
+    case 1:
       return S.suspend(() => S.Struct({ arn: S.String })).annotate({
         identifier: "CreateResponsePlanOutput",
       });
   }
 }
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "EmptyChatChannel",
+      });
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Union([/*@__PURE__*/ S.Struct({ snsTopicArn: S.String })]);
+    case 1:
+      return S.Array(__S(32, __c2, 0));
+    case 2:
+      return S.Union([
+        /*@__PURE__*/ S.Struct({ empty: __S(16, __c1, 0) }),
+        /*@__PURE__*/ S.Struct({ chatbotSns: __S(624, __c39, 0) }),
+      ]);
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          title: S.String,
+          impact: S.Number,
+          summary: S.optional(S.String),
+          dedupeString: S.optional(S.String),
+          notificationTargets: S.optional(__S(33, __c2, 1)),
+          incidentTags: S.optional(__S(656, __c41, 0)),
+        }),
+      ).annotate({ identifier: "IncidentTemplate" });
+  }
+}
 function __c4(j: number): any {
   switch (j) {
     case 0:
-      return S.Union([
-        /*@__PURE__*/ S.Struct({ resource: S.String }),
-        /*@__PURE__*/ S.Struct({ relatedItemId: S.String }),
-      ]);
+      return S.Record(S.String, /*@__PURE__*/ __S(624, __c39, 0).pipe(S.optional));
     case 1:
-      return S.Array(__S(32, __c4, 0));
+      return S.Union([/*@__PURE__*/ S.Struct({ variable: S.String })]);
     case 2:
+      return S.Record(S.String, /*@__PURE__*/ __S(65, __c4, 1).pipe(S.optional));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          roleArn: S.String,
+          documentName: S.String,
+          documentVersion: S.optional(S.String),
+          targetAccount: S.optional(S.String),
+          parameters: S.optional(__S(64, __c4, 0)),
+          dynamicParameters: S.optional(__S(66, __c4, 2)),
+        }),
+      ).annotate({ identifier: "SsmAutomation" });
+    case 4:
+      return S.Union([/*@__PURE__*/ S.Struct({ ssmAutomation: __S(67, __c4, 3) })]);
+    case 5:
+      return S.Array(__S(68, __c4, 4));
+    case 6:
+      return S.suspend(() => S.Struct({ serviceId: S.String })).annotate({
+        identifier: "PagerDutyIncidentConfiguration",
+      });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String,
+          secretId: S.String,
+          pagerDutyIncidentConfiguration: __S(70, __c4, 6),
+        }),
+      ).annotate({ identifier: "PagerDutyConfiguration" });
+    case 8:
+      return S.Union([/*@__PURE__*/ S.Struct({ pagerDutyConfiguration: __S(71, __c4, 7) })]);
+    case 9:
+      return S.Array(__S(72, __c4, 8));
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
@@ -1888,7 +1788,7 @@ function __c4(j: number): any {
           eventTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
           eventType: S.String,
           eventData: S.String,
-          eventReferences: S.optional(__S(33, __c4, 1)),
+          eventReferences: S.optional(__S(97, __c6, 1)),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/createTimelineEvent" }),
@@ -1900,13 +1800,28 @@ function __c4(j: number): any {
           ),
         ),
       ).annotate({ identifier: "CreateTimelineEventInput" });
-    case 3:
+    case 1:
       return S.suspend(() => S.Struct({ incidentRecordArn: S.String, eventId: S.String })).annotate(
         {
           identifier: "CreateTimelineEventOutput",
         },
       );
-    case 4:
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Union([
+        /*@__PURE__*/ S.Struct({ resource: S.String }),
+        /*@__PURE__*/ S.Struct({ relatedItemId: S.String }),
+      ]);
+    case 1:
+      return S.Array(__S(96, __c6, 0));
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ arn: S.String }).pipe(
           T.all(
@@ -1921,7 +1836,11 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "DeleteIncidentRecordInput",
       });
-    case 5:
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ arn: S.String.pipe(T.HttpQuery("arn")) }).pipe(
           T.all(
@@ -1936,7 +1855,11 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "DeleteReplicationSetInput",
       });
-    case 6:
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ resourceArn: S.String, policyId: S.String }).pipe(
           T.all(
@@ -1951,7 +1874,11 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "DeleteResourcePolicyInput",
       });
-    case 7:
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ arn: S.String }).pipe(
           T.all(
@@ -1966,7 +1893,7 @@ function __c4(j: number): any {
       ).annotate({ identifier: "DeleteResponsePlanInput" });
   }
 }
-function __c5(j: number): any {
+function __c11(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1981,26 +1908,21 @@ function __c5(j: number): any {
           ),
         ),
       ).annotate({ identifier: "DeleteTimelineEventInput" });
-    case 1:
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ arn: S.String.pipe(T.HttpQuery("arn")) }).pipe(
           T.all(T.Http({ method: "GET", uri: "/getIncidentRecord" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "GetIncidentRecordInput" });
-    case 2:
+    case 1:
       return S.Union([/*@__PURE__*/ S.Struct({ ssmExecutionArn: S.String })]);
+    case 2:
+      return S.Array(__S(193, __c12, 1));
     case 3:
-      return S.Array(__S(42, __c5, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          createdBy: S.String,
-          invokedBy: S.optional(S.String),
-          resourceArn: S.optional(S.String),
-          source: S.String,
-        }),
-      ).annotate({ identifier: "IncidentRecordSource" });
-    case 5:
       return S.suspend(() =>
         S.Struct({
           arn: S.String,
@@ -2012,28 +1934,41 @@ function __c5(j: number): any {
           resolvedTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           lastModifiedTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
           lastModifiedBy: S.String,
-          automationExecutions: S.optional(__S(43, __c5, 3)),
-          incidentRecordSource: __S(44, __c5, 4),
+          automationExecutions: S.optional(__S(194, __c12, 2)),
+          incidentRecordSource: __S(208, __c13, 0),
           dedupeString: S.String,
-          chatChannel: S.optional(__S(19, __c2, 3)),
-          notificationTargets: S.optional(__S(16, __c2, 0)),
+          chatChannel: S.optional(__S(34, __c2, 2)),
+          notificationTargets: S.optional(__S(33, __c2, 1)),
         }),
       ).annotate({ identifier: "IncidentRecord" });
-    case 6:
-      return S.suspend(() => S.Struct({ incidentRecord: __S(45, __c5, 5) })).annotate({
+    case 4:
+      return S.suspend(() => S.Struct({ incidentRecord: __S(195, __c12, 3) })).annotate({
         identifier: "GetIncidentRecordOutput",
       });
-    case 7:
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          createdBy: S.String,
+          invokedBy: S.optional(S.String),
+          resourceArn: S.optional(S.String),
+          source: S.String,
+        }),
+      ).annotate({ identifier: "IncidentRecordSource" });
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ arn: S.String.pipe(T.HttpQuery("arn")) }).pipe(
           T.all(T.Http({ method: "GET", uri: "/getReplicationSet" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "GetReplicationSetInput" });
-  }
-}
-function __c6(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           sseKmsKeyId: S.optional(S.String),
@@ -2042,13 +1977,13 @@ function __c6(j: number): any {
           statusUpdateDateTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
         }),
       ).annotate({ identifier: "RegionInfo" });
-    case 1:
-      return S.Record(S.String, /*@__PURE__*/ __S(48, __c6, 0).pipe(S.optional));
     case 2:
+      return S.Record(S.String, /*@__PURE__*/ __S(225, __c14, 1).pipe(S.optional));
+    case 3:
       return S.suspend(() =>
         S.Struct({
           arn: S.optional(S.String),
-          regionMap: __S(49, __c6, 1),
+          regionMap: __S(226, __c14, 2),
           status: S.String,
           deletionProtected: S.Boolean,
           createdTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
@@ -2057,11 +1992,15 @@ function __c6(j: number): any {
           lastModifiedBy: S.String,
         }),
       ).annotate({ identifier: "ReplicationSet" });
-    case 3:
-      return S.suspend(() => S.Struct({ replicationSet: __S(50, __c6, 2) })).annotate({
+    case 4:
+      return S.suspend(() => S.Struct({ replicationSet: __S(227, __c14, 3) })).annotate({
         identifier: "GetReplicationSetOutput",
       });
-    case 4:
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           resourceArn: S.String.pipe(T.HttpQuery("resourceArn")),
@@ -2078,7 +2017,7 @@ function __c6(j: number): any {
           ),
         ),
       ).annotate({ identifier: "GetResourcePoliciesInput" });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           policyDocument: S.String,
@@ -2086,17 +2025,17 @@ function __c6(j: number): any {
           ramResourceShareRegion: S.String,
         }),
       ).annotate({ identifier: "ResourcePolicy" });
-    case 6:
-      return S.Array(__S(53, __c6, 5));
-    case 7:
+    case 2:
+      return S.Array(__S(241, __c15, 1));
+    case 3:
       return S.suspend(() =>
-        S.Struct({ resourcePolicies: __S(54, __c6, 6), nextToken: S.optional(S.String) }),
+        S.Struct({ resourcePolicies: __S(242, __c15, 2), nextToken: S.optional(S.String) }),
       ).annotate({
         identifier: "GetResourcePoliciesOutput",
       });
   }
 }
-function __c7(j: number): any {
+function __c16(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2110,14 +2049,18 @@ function __c7(j: number): any {
           arn: S.String,
           name: S.String,
           displayName: S.optional(S.String),
-          incidentTemplate: __S(17, __c2, 1),
-          chatChannel: S.optional(__S(19, __c2, 3)),
-          engagements: S.optional(__S(0, __c0, 0)),
-          actions: S.optional(__S(25, __c3, 1)),
-          integrations: S.optional(__S(29, __c3, 5)),
+          incidentTemplate: __S(48, __c3, 0),
+          chatChannel: S.optional(__S(34, __c2, 2)),
+          engagements: S.optional(__S(624, __c39, 0)),
+          actions: S.optional(__S(69, __c4, 5)),
+          integrations: S.optional(__S(73, __c4, 9)),
         }),
       ).annotate({ identifier: "GetResponsePlanOutput" });
-    case 2:
+  }
+}
+function __c17(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           incidentRecordArn: S.String.pipe(T.HttpQuery("incidentRecordArn")),
@@ -2126,7 +2069,7 @@ function __c7(j: number): any {
           T.all(T.Http({ method: "GET", uri: "/getTimelineEvent" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "GetTimelineEventInput" });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           incidentRecordArn: S.String,
@@ -2135,14 +2078,18 @@ function __c7(j: number): any {
           eventUpdatedTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
           eventType: S.String,
           eventData: S.String,
-          eventReferences: S.optional(__S(33, __c4, 1)),
+          eventReferences: S.optional(__S(97, __c6, 1)),
         }),
       ).annotate({ identifier: "TimelineEvent" });
-    case 4:
-      return S.suspend(() => S.Struct({ event: __S(59, __c7, 3) })).annotate({
+    case 2:
+      return S.suspend(() => S.Struct({ event: __S(273, __c17, 1) })).annotate({
         identifier: "GetTimelineEventOutput",
       });
-    case 5:
+  }
+}
+function __c18(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           incidentRecordArn: S.String,
@@ -2161,52 +2108,29 @@ function __c7(j: number): any {
       ).annotate({
         identifier: "ListIncidentFindingsInput",
       });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
           lastModifiedTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
         }),
       ).annotate({ identifier: "FindingSummary" });
-    case 7:
-      return S.Array(__S(62, __c7, 6));
-  }
-}
-function __c8(j: number): any {
-  switch (j) {
-    case 0:
+    case 2:
+      return S.Array(__S(289, __c18, 1));
+    case 3:
       return S.suspend(() =>
-        S.Struct({ findings: __S(63, __c7, 7), nextToken: S.optional(S.String) }),
+        S.Struct({ findings: __S(290, __c18, 2), nextToken: S.optional(S.String) }),
       ).annotate({
         identifier: "ListIncidentFindingsOutput",
       });
-    case 1:
-      return S.Array(S.Number);
-    case 2:
-      return S.Union([
-        /*@__PURE__*/ S.Struct({ stringValues: __S(0, __c0, 0) }),
-        /*@__PURE__*/ S.Struct({ integerValues: __S(65, __c8, 1) }),
-      ]);
-    case 3:
-      return S.Union([
-        /*@__PURE__*/ S.Struct({
-          before: /*@__PURE__*/ S.Date.pipe(/*@__PURE__*/ T.TimestampFormat("epoch-seconds")),
-        }),
-        /*@__PURE__*/ S.Struct({
-          after: /*@__PURE__*/ S.Date.pipe(/*@__PURE__*/ T.TimestampFormat("epoch-seconds")),
-        }),
-        /*@__PURE__*/ S.Struct({ equals: __S(66, __c8, 2) }),
-      ]);
-    case 4:
-      return S.suspend(() => S.Struct({ key: S.String, condition: __S(67, __c8, 3) })).annotate({
-        identifier: "Filter",
-      });
-    case 5:
-      return S.Array(__S(68, __c8, 4));
-    case 6:
+  }
+}
+function __c19(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          filters: S.optional(__S(69, __c8, 5)),
+          filters: S.optional(__S(324, __c20, 4)),
           maxResults: S.optional(S.Number),
           nextToken: S.optional(S.String),
         }).pipe(
@@ -2220,7 +2144,7 @@ function __c8(j: number): any {
           ),
         ),
       ).annotate({ identifier: "ListIncidentRecordsInput" });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           arn: S.String,
@@ -2229,25 +2153,49 @@ function __c8(j: number): any {
           impact: S.Number,
           creationTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
           resolvedTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          incidentRecordSource: __S(44, __c5, 4),
+          incidentRecordSource: __S(208, __c13, 0),
         }),
       ).annotate({ identifier: "IncidentRecordSummary" });
-  }
-}
-function __c9(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(71, __c8, 7));
-    case 1:
+    case 2:
+      return S.Array(__S(305, __c19, 1));
+    case 3:
       return S.suspend(() =>
-        S.Struct({
-          incidentRecordSummaries: __S(72, __c9, 0),
-          nextToken: S.optional(S.String),
-        }),
+        S.Struct({ incidentRecordSummaries: __S(306, __c19, 2), nextToken: S.optional(S.String) }),
       ).annotate({
         identifier: "ListIncidentRecordsOutput",
       });
+  }
+}
+function __c20(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.Number);
+    case 1:
+      return S.Union([
+        /*@__PURE__*/ S.Struct({ stringValues: __S(624, __c39, 0) }),
+        /*@__PURE__*/ S.Struct({ integerValues: __S(320, __c20, 0) }),
+      ]);
     case 2:
+      return S.Union([
+        /*@__PURE__*/ S.Struct({
+          before: /*@__PURE__*/ S.Date.pipe(/*@__PURE__*/ T.TimestampFormat("epoch-seconds")),
+        }),
+        /*@__PURE__*/ S.Struct({
+          after: /*@__PURE__*/ S.Date.pipe(/*@__PURE__*/ T.TimestampFormat("epoch-seconds")),
+        }),
+        /*@__PURE__*/ S.Struct({ equals: __S(321, __c20, 1) }),
+      ]);
+    case 3:
+      return S.suspend(() => S.Struct({ key: S.String, condition: __S(322, __c20, 2) })).annotate({
+        identifier: "Filter",
+      });
+    case 4:
+      return S.Array(__S(323, __c20, 3));
+  }
+}
+function __c21(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           incidentRecordArn: S.String,
@@ -2257,7 +2205,21 @@ function __c9(j: number): any {
           T.all(T.Http({ method: "POST", uri: "/listRelatedItems" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "ListRelatedItemsInput" });
-    case 3:
+    case 1:
+      return S.suspend(() =>
+        S.Struct({ relatedItems: __S(352, __c22, 0), nextToken: S.optional(S.String) }),
+      ).annotate({ identifier: "ListRelatedItemsOutput" });
+  }
+}
+function __c22(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(371, __c23, 3));
+  }
+}
+function __c23(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
@@ -2265,36 +2227,30 @@ function __c9(j: number): any {
           secretId: S.optional(S.String),
         }),
       ).annotate({ identifier: "PagerDutyIncidentDetail" });
-    case 4:
+    case 1:
       return S.Union([
         /*@__PURE__*/ S.Struct({ arn: S.String }),
         /*@__PURE__*/ S.Struct({ url: S.String }),
         /*@__PURE__*/ S.Struct({ metricDefinition: S.String }),
-        /*@__PURE__*/ S.Struct({ pagerDutyIncidentDetail: __S(75, __c9, 3) }),
+        /*@__PURE__*/ S.Struct({ pagerDutyIncidentDetail: __S(368, __c23, 0) }),
       ]);
-    case 5:
-      return S.suspend(() => S.Struct({ value: __S(76, __c9, 4), type: S.String })).annotate({
+    case 2:
+      return S.suspend(() => S.Struct({ value: __S(369, __c23, 1), type: S.String })).annotate({
         identifier: "ItemIdentifier",
       });
-    case 6:
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          identifier: __S(77, __c9, 5),
+          identifier: __S(370, __c23, 2),
           title: S.optional(S.String),
           generatedId: S.optional(S.String),
         }),
       ).annotate({ identifier: "RelatedItem" });
-    case 7:
-      return S.Array(__S(78, __c9, 6));
   }
 }
-function __c10(j: number): any {
+function __c24(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() =>
-        S.Struct({ relatedItems: __S(79, __c9, 7), nextToken: S.optional(S.String) }),
-      ).annotate({ identifier: "ListRelatedItemsOutput" });
-    case 1:
       return S.suspend(() =>
         S.Struct({ maxResults: S.optional(S.Number), nextToken: S.optional(S.String) }).pipe(
           T.all(
@@ -2307,13 +2263,17 @@ function __c10(j: number): any {
           ),
         ),
       ).annotate({ identifier: "ListReplicationSetsInput" });
-    case 2:
+    case 1:
       return S.suspend(() =>
-        S.Struct({ replicationSetArns: __S(0, __c0, 0), nextToken: S.optional(S.String) }),
+        S.Struct({ replicationSetArns: __S(624, __c39, 0), nextToken: S.optional(S.String) }),
       ).annotate({
         identifier: "ListReplicationSetsOutput",
       });
-    case 3:
+  }
+}
+function __c25(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ maxResults: S.optional(S.Number), nextToken: S.optional(S.String) }).pipe(
           T.all(
@@ -2326,20 +2286,21 @@ function __c10(j: number): any {
           ),
         ),
       ).annotate({ identifier: "ListResponsePlansInput" });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({ arn: S.String, name: S.String, displayName: S.optional(S.String) }),
       ).annotate({ identifier: "ResponsePlanSummary" });
-    case 5:
-      return S.Array(__S(84, __c10, 4));
-    case 6:
+    case 2:
+      return S.Array(__S(401, __c25, 1));
+    case 3:
       return S.suspend(() =>
-        S.Struct({
-          responsePlanSummaries: __S(85, __c10, 5),
-          nextToken: S.optional(S.String),
-        }),
+        S.Struct({ responsePlanSummaries: __S(402, __c25, 2), nextToken: S.optional(S.String) }),
       ).annotate({ identifier: "ListResponsePlansOutput" });
-    case 7:
+  }
+}
+function __c26(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ resourceArn: S.String.pipe(T.HttpLabel("resourceArn")) }).pipe(
           T.all(
@@ -2354,19 +2315,19 @@ function __c10(j: number): any {
       ).annotate({
         identifier: "ListTagsForResourceRequest",
       });
-  }
-}
-function __c11(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() => S.Struct({ tags: __S(12, __c1, 4) })).annotate({
+    case 1:
+      return S.suspend(() => S.Struct({ tags: __S(656, __c41, 0) })).annotate({
         identifier: "ListTagsForResourceResponse",
       });
-    case 1:
+  }
+}
+function __c27(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           incidentRecordArn: S.String,
-          filters: S.optional(__S(69, __c8, 5)),
+          filters: S.optional(__S(324, __c20, 4)),
           sortBy: S.optional(S.String),
           sortOrder: S.optional(S.String),
           maxResults: S.optional(S.Number),
@@ -2382,7 +2343,7 @@ function __c11(j: number): any {
           ),
         ),
       ).annotate({ identifier: "ListTimelineEventsInput" });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           incidentRecordArn: S.String,
@@ -2390,16 +2351,20 @@ function __c11(j: number): any {
           eventTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
           eventUpdatedTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
           eventType: S.String,
-          eventReferences: S.optional(__S(33, __c4, 1)),
+          eventReferences: S.optional(__S(97, __c6, 1)),
         }),
       ).annotate({ identifier: "EventSummary" });
+    case 2:
+      return S.Array(__S(433, __c27, 1));
     case 3:
-      return S.Array(__S(90, __c11, 2));
-    case 4:
       return S.suspend(() =>
-        S.Struct({ eventSummaries: __S(91, __c11, 3), nextToken: S.optional(S.String) }),
+        S.Struct({ eventSummaries: __S(434, __c27, 2), nextToken: S.optional(S.String) }),
       ).annotate({ identifier: "ListTimelineEventsOutput" });
-    case 5:
+  }
+}
+function __c28(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ resourceArn: S.String, policy: S.String }).pipe(
           T.all(
@@ -2412,11 +2377,15 @@ function __c11(j: number): any {
           ),
         ),
       ).annotate({ identifier: "PutResourcePolicyInput" });
-    case 6:
+    case 1:
       return S.suspend(() => S.Struct({ policyId: S.String })).annotate({
         identifier: "PutResourcePolicyOutput",
       });
-    case 7:
+  }
+}
+function __c29(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           source: S.String,
@@ -2425,32 +2394,32 @@ function __c11(j: number): any {
           rawData: S.optional(S.String),
         }),
       ).annotate({ identifier: "TriggerDetails" });
-  }
-}
-function __c12(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
           responsePlanArn: S.String,
           title: S.optional(S.String),
           impact: S.optional(S.Number),
-          triggerDetails: S.optional(__S(95, __c11, 7)),
-          relatedItems: S.optional(__S(79, __c9, 7)),
+          triggerDetails: S.optional(__S(464, __c29, 0)),
+          relatedItems: S.optional(__S(352, __c22, 0)),
         }).pipe(
           T.all(T.Http({ method: "POST", uri: "/startIncident" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "StartIncidentInput" });
-    case 1:
+    case 2:
       return S.suspend(() => S.Struct({ incidentRecordArn: S.String })).annotate({
         identifier: "StartIncidentOutput",
       });
-    case 2:
+  }
+}
+function __c30(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           resourceArn: S.String.pipe(T.HttpLabel("resourceArn")),
-          tags: __S(12, __c1, 4),
+          tags: __S(656, __c41, 0),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/tags/{resourceArn}" }),
@@ -2462,11 +2431,15 @@ function __c12(j: number): any {
           ),
         ),
       ).annotate({ identifier: "TagResourceRequest" });
-    case 3:
+  }
+}
+function __c31(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           resourceArn: S.String.pipe(T.HttpLabel("resourceArn")),
-          tagKeys: __S(0, __c0, 0).pipe(T.HttpQuery("tagKeys")),
+          tagKeys: __S(624, __c39, 0).pipe(T.HttpQuery("tagKeys")),
         }).pipe(
           T.all(
             T.Http({ method: "DELETE", uri: "/tags/{resourceArn}" }),
@@ -2478,7 +2451,11 @@ function __c12(j: number): any {
           ),
         ),
       ).annotate({ identifier: "UntagResourceRequest" });
-    case 4:
+  }
+}
+function __c32(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           arn: S.String,
@@ -2497,7 +2474,11 @@ function __c12(j: number): any {
       ).annotate({
         identifier: "UpdateDeletionProtectionInput",
       });
-    case 5:
+  }
+}
+function __c33(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
@@ -2506,8 +2487,8 @@ function __c12(j: number): any {
           summary: S.optional(S.String),
           impact: S.optional(S.Number),
           status: S.optional(S.String),
-          chatChannel: S.optional(__S(19, __c2, 3)),
-          notificationTargets: S.optional(__S(16, __c2, 0)),
+          chatChannel: S.optional(__S(34, __c2, 2)),
+          notificationTargets: S.optional(__S(33, __c2, 1)),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/updateIncidentRecord" }),
@@ -2521,17 +2502,21 @@ function __c12(j: number): any {
       ).annotate({
         identifier: "UpdateIncidentRecordInput",
       });
-    case 6:
+  }
+}
+function __c34(j: number): any {
+  switch (j) {
+    case 0:
       return S.Union([
-        /*@__PURE__*/ S.Struct({ itemToAdd: __S(78, __c9, 6) }),
-        /*@__PURE__*/ S.Struct({ itemToRemove: __S(77, __c9, 5) }),
+        /*@__PURE__*/ S.Struct({ itemToAdd: __S(371, __c23, 3) }),
+        /*@__PURE__*/ S.Struct({ itemToRemove: __S(370, __c23, 2) }),
       ]);
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
           incidentRecordArn: S.String,
-          relatedItemsUpdate: __S(102, __c12, 6),
+          relatedItemsUpdate: __S(544, __c34, 0),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/updateRelatedItems" }),
@@ -2545,7 +2530,7 @@ function __c12(j: number): any {
       ).annotate({ identifier: "UpdateRelatedItemsInput" });
   }
 }
-function __c13(j: number): any {
+function __c35(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2557,16 +2542,16 @@ function __c13(j: number): any {
       });
     case 2:
       return S.Union([
-        /*@__PURE__*/ S.Struct({ addRegionAction: __S(104, __c13, 0) }),
-        /*@__PURE__*/ S.Struct({ deleteRegionAction: __S(105, __c13, 1) }),
+        /*@__PURE__*/ S.Struct({ addRegionAction: __S(560, __c35, 0) }),
+        /*@__PURE__*/ S.Struct({ deleteRegionAction: __S(561, __c35, 1) }),
       ]);
     case 3:
-      return S.Array(__S(106, __c13, 2));
+      return S.Array(__S(562, __c35, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
           arn: S.String,
-          actions: __S(107, __c13, 3),
+          actions: __S(563, __c35, 3),
           clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
         }).pipe(
           T.all(
@@ -2581,9 +2566,13 @@ function __c13(j: number): any {
       ).annotate({
         identifier: "UpdateReplicationSetInput",
       });
-    case 5:
+  }
+}
+function __c36(j: number): any {
+  switch (j) {
+    case 0:
       return S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
@@ -2593,12 +2582,12 @@ function __c13(j: number): any {
           incidentTemplateImpact: S.optional(S.Number),
           incidentTemplateSummary: S.optional(S.String),
           incidentTemplateDedupeString: S.optional(S.String),
-          incidentTemplateNotificationTargets: S.optional(__S(16, __c2, 0)),
-          chatChannel: S.optional(__S(19, __c2, 3)),
-          engagements: S.optional(__S(0, __c0, 0)),
-          actions: S.optional(__S(25, __c3, 1)),
-          incidentTemplateTags: S.optional(__S(109, __c13, 5)),
-          integrations: S.optional(__S(29, __c3, 5)),
+          incidentTemplateNotificationTargets: S.optional(__S(33, __c2, 1)),
+          chatChannel: S.optional(__S(34, __c2, 2)),
+          engagements: S.optional(__S(624, __c39, 0)),
+          actions: S.optional(__S(69, __c4, 5)),
+          incidentTemplateTags: S.optional(__S(576, __c36, 0)),
+          integrations: S.optional(__S(73, __c4, 9)),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/updateResponsePlan" }),
@@ -2610,7 +2599,11 @@ function __c13(j: number): any {
           ),
         ),
       ).annotate({ identifier: "UpdateResponsePlanInput" });
-    case 7:
+  }
+}
+function __c37(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
@@ -2619,7 +2612,7 @@ function __c13(j: number): any {
           eventTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           eventType: S.optional(S.String),
           eventData: S.optional(S.String),
-          eventReferences: S.optional(__S(33, __c4, 1)),
+          eventReferences: S.optional(__S(97, __c6, 1)),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/updateTimelineEvent" }),
@@ -2633,7 +2626,119 @@ function __c13(j: number): any {
       ).annotate({ identifier: "UpdateTimelineEventInput" });
   }
 }
-
+function __c38(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ incidentRecordArn: S.String, findingIds: __S(624, __c39, 0) }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/batchGetIncidentFindings" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "BatchGetIncidentFindingsInput",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          startTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+          endTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          deploymentGroupArn: S.String,
+          deploymentId: S.String,
+        }),
+      ).annotate({ identifier: "CodeDeployDeployment" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          startTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+          endTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          stackArn: S.String,
+        }),
+      ).annotate({
+        identifier: "CloudFormationStackUpdate",
+      });
+    case 3:
+      return S.Union([
+        /*@__PURE__*/ S.Struct({ codeDeployDeployment: __S(609, __c38, 1) }),
+        /*@__PURE__*/ S.Struct({ cloudFormationStackUpdate: __S(610, __c38, 2) }),
+      ]);
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          creationTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+          lastModifiedTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+          details: S.optional(__S(611, __c38, 3)),
+        }),
+      ).annotate({ identifier: "Finding" });
+    case 5:
+      return S.Array(__S(612, __c38, 4));
+    case 6:
+      return S.suspend(() =>
+        S.Struct({ findingId: S.String, code: S.String, message: S.String }),
+      ).annotate({
+        identifier: "BatchGetIncidentFindingsError",
+      });
+    case 7:
+      return S.Array(__S(614, __c38, 6));
+    case 8:
+      return S.suspend(() =>
+        S.Struct({ findings: __S(613, __c38, 5), errors: __S(615, __c38, 7) }),
+      ).annotate({
+        identifier: "BatchGetIncidentFindingsOutput",
+      });
+  }
+}
+function __c39(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c40(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({ sseKmsKeyId: S.optional(S.String) })).annotate({
+        identifier: "RegionMapInputValue",
+      });
+    case 1:
+      return S.Record(S.String, /*@__PURE__*/ __S(640, __c40, 0).pipe(S.optional));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          regions: __S(641, __c40, 1),
+          clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
+          tags: S.optional(__S(656, __c41, 0)),
+        }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/createReplicationSet" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "CreateReplicationSetInput",
+      });
+    case 3:
+      return S.suspend(() => S.Struct({ arn: S.String })).annotate({
+        identifier: "CreateReplicationSetOutput",
+      });
+  }
+}
+function __c41(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
+  }
+}
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

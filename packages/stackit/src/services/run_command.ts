@@ -163,8 +163,8 @@ export const getCommand: API.OperationMethod<
   GetCommandError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3, __c0, 3) as any as S.Schema<GetCommandRequest>,
-  output: __S(4, __c0, 4) as any as S.Schema<CommandDetails>,
+  input: __S(8, __c1, 0) as any as S.Schema<GetCommandRequest>,
+  output: __S(9, __c1, 1) as any as S.Schema<CommandDetails>,
   errors: [BadRequest, NotFound, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -178,8 +178,8 @@ export const getCommandTemplate: API.OperationMethod<
   GetCommandTemplateError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(5, __c0, 5) as any as S.Schema<GetCommandTemplateRequest>,
-  output: __S(10, __c1, 2) as any as S.Schema<CommandTemplateSchema>,
+  input: __S(16, __c2, 0) as any as S.Schema<GetCommandTemplateRequest>,
+  output: __S(20, __c2, 4) as any as S.Schema<CommandTemplateSchema>,
   errors: [BadRequest, NotFound, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -193,8 +193,8 @@ export const listCommands: API.OperationMethod<
   ListCommandsError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(11, __c1, 3) as any as S.Schema<ListCommandsRequest>,
-  output: __S(14, __c1, 6) as any as S.Schema<GetCommandsResponse>,
+  input: __S(32, __c4, 0) as any as S.Schema<ListCommandsRequest>,
+  output: __S(35, __c4, 3) as any as S.Schema<GetCommandsResponse>,
   errors: [BadRequest, NotFound, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -208,8 +208,8 @@ export const listCommandTemplates: API.OperationMethod<
   ListCommandTemplatesError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(15, __c1, 7) as any as S.Schema<ListCommandTemplatesRequest>,
-  output: __S(18, __c2, 2) as any as S.Schema<CommandTemplateResponse>,
+  input: __S(40, __c5, 0) as any as S.Schema<ListCommandTemplatesRequest>,
+  output: __S(43, __c5, 3) as any as S.Schema<CommandTemplateResponse>,
   errors: [BadRequest, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -243,7 +243,11 @@ function __c0(j: number): any {
           id: S.optional(S.Number),
         }),
       ).annotate({ identifier: "NewCommandResponse" });
-    case 3:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.Label()),
@@ -259,7 +263,7 @@ function __c0(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetCommandRequest" });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           commandTemplateName: S.optional(S.String),
@@ -273,7 +277,11 @@ function __c0(j: number): any {
           status: S.optional(S.String),
         }),
       ).annotate({ identifier: "CommandDetails" });
-    case 5:
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.Label()),
@@ -291,9 +299,7 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "GetCommandTemplateRequest",
       });
-    case 6:
-      return S.Array(S.String);
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           default: S.optional(S.String),
@@ -305,38 +311,44 @@ function __c0(j: number): any {
           type: S.optional(S.String),
         }),
       ).annotate({ identifier: "Field" });
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          ConfirmPassword: S.optional(__S(7, __c0, 7)),
-          Password: S.optional(__S(7, __c0, 7)),
-          Script: S.optional(__S(7, __c0, 7)),
-          Username: S.optional(__S(7, __c0, 7)),
-          required: S.optional(__S(6, __c0, 6)),
+          ConfirmPassword: S.optional(__S(17, __c2, 1)),
+          Password: S.optional(__S(17, __c2, 1)),
+          Script: S.optional(__S(17, __c2, 1)),
+          Username: S.optional(__S(17, __c2, 1)),
+          required: S.optional(__S(24, __c3, 0)),
           type: S.optional(S.String),
         }),
       ).annotate({ identifier: "Properties" });
-    case 1:
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          properties: S.optional(__S(8, __c1, 0)),
+          properties: S.optional(__S(18, __c2, 2)),
         }),
       ).annotate({ identifier: "ParametersSchema" });
-    case 2:
+    case 4:
       return S.suspend(() =>
         S.Struct({
           description: S.optional(S.String),
           name: S.optional(S.String),
-          osType: S.optional(__S(6, __c0, 6)),
-          parametersSchema: S.optional(__S(9, __c1, 1)),
+          osType: S.optional(__S(24, __c3, 0)),
+          parametersSchema: S.optional(__S(19, __c2, 3)),
           title: S.optional(S.String),
         }),
       ).annotate({ identifier: "CommandTemplateSchema" });
-    case 3:
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.Label()),
@@ -351,7 +363,7 @@ function __c1(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ListCommandsRequest" });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           commandTemplateName: S.optional(S.String),
@@ -362,15 +374,19 @@ function __c1(j: number): any {
           status: S.optional(S.String),
         }),
       ).annotate({ identifier: "Commands" });
-    case 5:
-      return S.Array(__S(12, __c1, 4));
-    case 6:
+    case 2:
+      return S.Array(__S(33, __c4, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          items: S.optional(__S(13, __c1, 5)),
+          items: S.optional(__S(34, __c4, 2)),
         }),
       ).annotate({ identifier: "GetCommandsResponse" });
-    case 7:
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           osType: S.optional(S.String.pipe(T.Query())),
@@ -385,29 +401,24 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "ListCommandTemplatesRequest",
       });
-  }
-}
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
-          osType: S.optional(__S(6, __c0, 6)),
+          osType: S.optional(__S(24, __c3, 0)),
           title: S.optional(S.String),
         }),
       ).annotate({ identifier: "CommandTemplate" });
-    case 1:
-      return S.Array(__S(16, __c2, 0));
     case 2:
+      return S.Array(__S(41, __c5, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          items: S.optional(__S(17, __c2, 1)),
+          items: S.optional(__S(42, __c5, 2)),
         }),
       ).annotate({ identifier: "CommandTemplateResponse" });
   }
 }
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

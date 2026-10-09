@@ -187,8 +187,8 @@ export const generateAccessTokenProjectsServiceAccounts: API.OperationMethod<
   GenerateAccessTokenProjectsServiceAccountsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2, __c0, 2) as any as S.Schema<GenerateAccessTokenProjectsServiceAccountsRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<GenerateAccessTokenResponse>,
+  input: __S(5, __c1, 1) as any as S.Schema<GenerateAccessTokenProjectsServiceAccountsRequest>,
+  output: __S(6, __c1, 2) as any as S.Schema<GenerateAccessTokenResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -207,8 +207,8 @@ export const generateIdTokenProjectsServiceAccounts: API.OperationMethod<
   GenerateIdTokenProjectsServiceAccountsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(5, __c0, 5) as any as S.Schema<GenerateIdTokenProjectsServiceAccountsRequest>,
-  output: __S(6, __c0, 6) as any as S.Schema<GenerateIdTokenResponse>,
+  input: __S(13, __c3, 1) as any as S.Schema<GenerateIdTokenProjectsServiceAccountsRequest>,
+  output: __S(14, __c3, 2) as any as S.Schema<GenerateIdTokenResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -222,8 +222,8 @@ export const getAllowedLocationsLocationsWorkforcePools: API.OperationMethod<
   GetAllowedLocationsLocationsWorkforcePoolsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(7, __c0, 7) as any as S.Schema<GetAllowedLocationsLocationsWorkforcePoolsRequest>,
-  output: __S(8, __c1, 0) as any as S.Schema<WorkforcePoolAllowedLocations>,
+  input: __S(16, __c4, 0) as any as S.Schema<GetAllowedLocationsLocationsWorkforcePoolsRequest>,
+  output: __S(20, __c5, 0) as any as S.Schema<WorkforcePoolAllowedLocations>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -241,11 +241,11 @@ export const getAllowedLocationsProjectsLocationsWorkloadIdentityPools: API.Oper
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    9,
-    __c1,
-    1,
+    24,
+    __c6,
+    0,
   ) as any as S.Schema<GetAllowedLocationsProjectsLocationsWorkloadIdentityPoolsRequest>,
-  output: __S(8, __c1, 0) as any as S.Schema<WorkloadIdentityPoolAllowedLocations>,
+  output: __S(20, __c5, 0) as any as S.Schema<WorkloadIdentityPoolAllowedLocations>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -259,8 +259,8 @@ export const getAllowedLocationsProjectsServiceAccounts: API.OperationMethod<
   GetAllowedLocationsProjectsServiceAccountsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(10, __c1, 2) as any as S.Schema<GetAllowedLocationsProjectsServiceAccountsRequest>,
-  output: __S(11, __c1, 3) as any as S.Schema<ServiceAccountAllowedLocations>,
+  input: __S(28, __c7, 0) as any as S.Schema<GetAllowedLocationsProjectsServiceAccountsRequest>,
+  output: __S(29, __c7, 1) as any as S.Schema<ServiceAccountAllowedLocations>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -279,8 +279,8 @@ export const signBlobProjectsServiceAccounts: API.OperationMethod<
   SignBlobProjectsServiceAccountsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(13, __c1, 5) as any as S.Schema<SignBlobProjectsServiceAccountsRequest>,
-  output: __S(14, __c1, 6) as any as S.Schema<SignBlobResponse>,
+  input: __S(32, __c8, 0) as any as S.Schema<SignBlobProjectsServiceAccountsRequest>,
+  output: __S(33, __c8, 1) as any as S.Schema<SignBlobResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -299,8 +299,8 @@ export const signJwtProjectsServiceAccounts: API.OperationMethod<
   SignJwtProjectsServiceAccountsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(15, __c1, 7) as any as S.Schema<SignJwtProjectsServiceAccountsRequest>,
-  output: __S(16, __c2, 0) as any as S.Schema<SignJwtResponse>,
+  input: __S(0, __c0, 0) as any as S.Schema<SignJwtProjectsServiceAccountsRequest>,
+  output: __S(1, __c0, 1) as any as S.Schema<SignJwtResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -310,22 +310,46 @@ export const signJwtProjectsServiceAccounts: API.OperationMethod<
 function __c0(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(S.String);
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+          body: S.optional(__S(36, __c9, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/{+name}:signJwt",
+            baseUrl: "https://iamcredentials.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "SignJwtProjectsServiceAccountsRequest",
+      });
     case 1:
       return S.suspend(() =>
         S.Struct({
-          scope: S.optional(__S(0, __c0, 0)),
+          signedJwt: S.optional(S.String),
+          keyId: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "SignJwtResponse" });
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          scope: S.optional(__S(8, __c2, 0)),
           lifetime: S.optional(S.String),
-          delegates: S.optional(__S(0, __c0, 0)),
+          delegates: S.optional(__S(8, __c2, 0)),
         }),
       ).annotate({
         identifier: "GenerateAccessTokenRequest",
       });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(1, __c0, 1).pipe(T.HttpBody())),
+          body: S.optional(__S(4, __c1, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -336,7 +360,7 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "GenerateAccessTokenProjectsServiceAccountsRequest",
       });
-    case 3:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           accessToken: S.optional(S.String),
@@ -345,20 +369,30 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "GenerateAccessTokenResponse",
       });
-    case 4:
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           audience: S.optional(S.String),
           includeEmail: S.optional(S.Boolean),
-          delegates: S.optional(__S(0, __c0, 0)),
+          delegates: S.optional(__S(8, __c2, 0)),
           organizationNumberIncluded: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "GenerateIdTokenRequest" });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(4, __c0, 4).pipe(T.HttpBody())),
+          body: S.optional(__S(12, __c3, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -369,13 +403,17 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "GenerateIdTokenProjectsServiceAccountsRequest",
       });
-    case 6:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           token: S.optional(S.String),
         }),
       ).annotate({ identifier: "GenerateIdTokenResponse" });
-    case 7:
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -391,18 +429,22 @@ function __c0(j: number): any {
       });
   }
 }
-function __c1(j: number): any {
+function __c5(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           encodedLocations: S.optional(S.String),
-          locations: S.optional(__S(0, __c0, 0)),
+          locations: S.optional(__S(8, __c2, 0)),
         }),
       ).annotate({
         identifier: "WorkforcePoolAllowedLocations",
       });
-    case 1:
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -416,7 +458,11 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "GetAllowedLocationsProjectsLocationsWorkloadIdentityPoolsRequest",
       });
-    case 2:
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -430,27 +476,24 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "GetAllowedLocationsProjectsServiceAccountsRequest",
       });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          locations: S.optional(__S(0, __c0, 0)),
+          locations: S.optional(__S(8, __c2, 0)),
           encodedLocations: S.optional(S.String),
         }),
       ).annotate({
         identifier: "ServiceAccountAllowedLocations",
       });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          delegates: S.optional(__S(0, __c0, 0)),
-          payload: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "SignBlobRequest" });
-    case 5:
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(12, __c1, 4).pipe(T.HttpBody())),
+          body: S.optional(__S(36, __c9, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -461,42 +504,26 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "SignBlobProjectsServiceAccountsRequest",
       });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           keyId: S.optional(S.String),
           signedBlob: S.optional(S.String),
         }),
       ).annotate({ identifier: "SignBlobResponse" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-          body: S.optional(__S(12, __c1, 4).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/{+name}:signJwt",
-            baseUrl: "https://iamcredentials.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "SignJwtProjectsServiceAccountsRequest",
-      });
   }
 }
-function __c2(j: number): any {
+function __c9(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          signedJwt: S.optional(S.String),
-          keyId: S.optional(S.String),
+          delegates: S.optional(__S(8, __c2, 0)),
+          payload: S.optional(S.String),
         }),
-      ).annotate({ identifier: "SignJwtResponse" });
+      ).annotate({ identifier: "SignBlobRequest" });
   }
 }
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

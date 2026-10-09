@@ -1048,8 +1048,8 @@ export const cloneProjectsSitesVersions: API.OperationMethod<
   CloneProjectsSitesVersionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3, __c0, 3) as any as S.Schema<CloneProjectsSitesVersionsRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<Operation>,
+  input: __S(528, __c33, 0) as any as S.Schema<CloneProjectsSitesVersionsRequest>,
+  output: __S(592, __c37, 0) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1063,8 +1063,8 @@ export const cloneSitesVersions: API.OperationMethod<
   CloneSitesVersionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(8, __c1, 0) as any as S.Schema<CloneSitesVersionsRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<Operation>,
+  input: __S(832, __c52, 0) as any as S.Schema<CloneSitesVersionsRequest>,
+  output: __S(592, __c37, 0) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1078,8 +1078,8 @@ export const createProjectsSites: API.OperationMethod<
   CreateProjectsSitesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(11, __c1, 3) as any as S.Schema<CreateProjectsSitesRequest>,
-  output: __S(10, __c1, 2) as any as S.Schema<Site>,
+  input: __S(1024, __c64, 0) as any as S.Schema<CreateProjectsSitesRequest>,
+  output: __S(1040, __c65, 0) as any as S.Schema<Site>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1098,8 +1098,8 @@ export const createProjectsSitesChannels: API.OperationMethod<
   CreateProjectsSitesChannelsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(25, __c3, 1) as any as S.Schema<CreateProjectsSitesChannelsRequest>,
-  output: __S(24, __c3, 0) as any as S.Schema<Channel>,
+  input: __S(1248, __c78, 0) as any as S.Schema<CreateProjectsSitesChannelsRequest>,
+  output: __S(1264, __c79, 0) as any as S.Schema<Channel>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1118,8 +1118,8 @@ export const createProjectsSitesChannelsReleases: API.OperationMethod<
   CreateProjectsSitesChannelsReleasesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(26, __c3, 2) as any as S.Schema<CreateProjectsSitesChannelsReleasesRequest>,
-  output: __S(23, __c2, 7) as any as S.Schema<Release>,
+  input: __S(1312, __c82, 0) as any as S.Schema<CreateProjectsSitesChannelsReleasesRequest>,
+  output: __S(1296, __c81, 0) as any as S.Schema<Release>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1138,8 +1138,8 @@ export const createProjectsSitesCustomDomains: API.OperationMethod<
   CreateProjectsSitesCustomDomainsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(37, __c4, 5) as any as S.Schema<CreateProjectsSitesCustomDomainsRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<Operation>,
+  input: __S(1328, __c83, 0) as any as S.Schema<CreateProjectsSitesCustomDomainsRequest>,
+  output: __S(592, __c37, 0) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1158,8 +1158,8 @@ export const createProjectsSitesDomains: API.OperationMethod<
   CreateProjectsSitesDomainsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(43, __c5, 3) as any as S.Schema<CreateProjectsSitesDomainsRequest>,
-  output: __S(42, __c5, 2) as any as S.Schema<Domain>,
+  input: __S(0, __c0, 0) as any as S.Schema<CreateProjectsSitesDomainsRequest>,
+  output: __S(20, __c1, 4) as any as S.Schema<Domain>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1178,8 +1178,8 @@ export const createProjectsSitesReleases: API.OperationMethod<
   CreateProjectsSitesReleasesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(44, __c5, 4) as any as S.Schema<CreateProjectsSitesReleasesRequest>,
-  output: __S(23, __c2, 7) as any as S.Schema<Release>,
+  input: __S(32, __c2, 0) as any as S.Schema<CreateProjectsSitesReleasesRequest>,
+  output: __S(1296, __c81, 0) as any as S.Schema<Release>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1198,8 +1198,8 @@ export const createProjectsSitesVersions: API.OperationMethod<
   CreateProjectsSitesVersionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(45, __c5, 5) as any as S.Schema<CreateProjectsSitesVersionsRequest>,
-  output: __S(22, __c2, 6) as any as S.Schema<Version>,
+  input: __S(48, __c3, 0) as any as S.Schema<CreateProjectsSitesVersionsRequest>,
+  output: __S(1290, __c80, 10) as any as S.Schema<Version>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1213,8 +1213,8 @@ export const createSitesChannels: API.OperationMethod<
   CreateSitesChannelsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(46, __c5, 6) as any as S.Schema<CreateSitesChannelsRequest>,
-  output: __S(24, __c3, 0) as any as S.Schema<Channel>,
+  input: __S(64, __c4, 0) as any as S.Schema<CreateSitesChannelsRequest>,
+  output: __S(1264, __c79, 0) as any as S.Schema<Channel>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1233,8 +1233,8 @@ export const createSitesChannelsReleases: API.OperationMethod<
   CreateSitesChannelsReleasesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(47, __c5, 7) as any as S.Schema<CreateSitesChannelsReleasesRequest>,
-  output: __S(23, __c2, 7) as any as S.Schema<Release>,
+  input: __S(80, __c5, 0) as any as S.Schema<CreateSitesChannelsReleasesRequest>,
+  output: __S(1296, __c81, 0) as any as S.Schema<Release>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1248,8 +1248,8 @@ export const createSitesDomains: API.OperationMethod<
   CreateSitesDomainsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(48, __c6, 0) as any as S.Schema<CreateSitesDomainsRequest>,
-  output: __S(42, __c5, 2) as any as S.Schema<Domain>,
+  input: __S(96, __c6, 0) as any as S.Schema<CreateSitesDomainsRequest>,
+  output: __S(20, __c1, 4) as any as S.Schema<Domain>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1263,8 +1263,8 @@ export const createSitesReleases: API.OperationMethod<
   CreateSitesReleasesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(49, __c6, 1) as any as S.Schema<CreateSitesReleasesRequest>,
-  output: __S(23, __c2, 7) as any as S.Schema<Release>,
+  input: __S(112, __c7, 0) as any as S.Schema<CreateSitesReleasesRequest>,
+  output: __S(1296, __c81, 0) as any as S.Schema<Release>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1278,8 +1278,8 @@ export const createSitesVersions: API.OperationMethod<
   CreateSitesVersionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(50, __c6, 2) as any as S.Schema<CreateSitesVersionsRequest>,
-  output: __S(22, __c2, 6) as any as S.Schema<Version>,
+  input: __S(128, __c8, 0) as any as S.Schema<CreateSitesVersionsRequest>,
+  output: __S(1290, __c80, 10) as any as S.Schema<Version>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1293,8 +1293,8 @@ export const deleteProjectsSites: API.OperationMethod<
   DeleteProjectsSitesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(51, __c6, 3) as any as S.Schema<DeleteProjectsSitesRequest>,
-  output: __S(52, __c6, 4) as any as S.Schema<Empty>,
+  input: __S(144, __c9, 0) as any as S.Schema<DeleteProjectsSitesRequest>,
+  output: __S(160, __c10, 0) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1313,8 +1313,8 @@ export const deleteProjectsSitesChannels: API.OperationMethod<
   DeleteProjectsSitesChannelsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(53, __c6, 5) as any as S.Schema<DeleteProjectsSitesChannelsRequest>,
-  output: __S(52, __c6, 4) as any as S.Schema<Empty>,
+  input: __S(176, __c11, 0) as any as S.Schema<DeleteProjectsSitesChannelsRequest>,
+  output: __S(160, __c10, 0) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1333,8 +1333,8 @@ export const deleteProjectsSitesCustomDomains: API.OperationMethod<
   DeleteProjectsSitesCustomDomainsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(54, __c6, 6) as any as S.Schema<DeleteProjectsSitesCustomDomainsRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<Operation>,
+  input: __S(192, __c12, 0) as any as S.Schema<DeleteProjectsSitesCustomDomainsRequest>,
+  output: __S(592, __c37, 0) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1353,8 +1353,8 @@ export const deleteProjectsSitesDomains: API.OperationMethod<
   DeleteProjectsSitesDomainsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(55, __c6, 7) as any as S.Schema<DeleteProjectsSitesDomainsRequest>,
-  output: __S(52, __c6, 4) as any as S.Schema<Empty>,
+  input: __S(208, __c13, 0) as any as S.Schema<DeleteProjectsSitesDomainsRequest>,
+  output: __S(160, __c10, 0) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1373,8 +1373,8 @@ export const deleteProjectsSitesVersions: API.OperationMethod<
   DeleteProjectsSitesVersionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(56, __c7, 0) as any as S.Schema<DeleteProjectsSitesVersionsRequest>,
-  output: __S(52, __c6, 4) as any as S.Schema<Empty>,
+  input: __S(224, __c14, 0) as any as S.Schema<DeleteProjectsSitesVersionsRequest>,
+  output: __S(160, __c10, 0) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1388,8 +1388,8 @@ export const deleteSitesChannels: API.OperationMethod<
   DeleteSitesChannelsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(57, __c7, 1) as any as S.Schema<DeleteSitesChannelsRequest>,
-  output: __S(52, __c6, 4) as any as S.Schema<Empty>,
+  input: __S(240, __c15, 0) as any as S.Schema<DeleteSitesChannelsRequest>,
+  output: __S(160, __c10, 0) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1403,8 +1403,8 @@ export const deleteSitesDomains: API.OperationMethod<
   DeleteSitesDomainsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(58, __c7, 2) as any as S.Schema<DeleteSitesDomainsRequest>,
-  output: __S(52, __c6, 4) as any as S.Schema<Empty>,
+  input: __S(256, __c16, 0) as any as S.Schema<DeleteSitesDomainsRequest>,
+  output: __S(160, __c10, 0) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1418,8 +1418,8 @@ export const deleteSitesVersions: API.OperationMethod<
   DeleteSitesVersionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(59, __c7, 3) as any as S.Schema<DeleteSitesVersionsRequest>,
-  output: __S(52, __c6, 4) as any as S.Schema<Empty>,
+  input: __S(272, __c17, 0) as any as S.Schema<DeleteSitesVersionsRequest>,
+  output: __S(160, __c10, 0) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1433,8 +1433,8 @@ export const getConfigProjectsSites: API.OperationMethod<
   GetConfigProjectsSitesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(60, __c7, 4) as any as S.Schema<GetConfigProjectsSitesRequest>,
-  output: __S(61, __c7, 5) as any as S.Schema<SiteConfig>,
+  input: __S(288, __c18, 0) as any as S.Schema<GetConfigProjectsSitesRequest>,
+  output: __S(304, __c19, 0) as any as S.Schema<SiteConfig>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1448,8 +1448,8 @@ export const getConfigSites: API.OperationMethod<
   GetConfigSitesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(62, __c7, 6) as any as S.Schema<GetConfigSitesRequest>,
-  output: __S(61, __c7, 5) as any as S.Schema<SiteConfig>,
+  input: __S(320, __c20, 0) as any as S.Schema<GetConfigSitesRequest>,
+  output: __S(304, __c19, 0) as any as S.Schema<SiteConfig>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1463,8 +1463,8 @@ export const getProjectsOperations: API.OperationMethod<
   GetProjectsOperationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(63, __c7, 7) as any as S.Schema<GetProjectsOperationsRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<Operation>,
+  input: __S(336, __c21, 0) as any as S.Schema<GetProjectsOperationsRequest>,
+  output: __S(592, __c37, 0) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1478,8 +1478,8 @@ export const getProjectsSites: API.OperationMethod<
   GetProjectsSitesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(64, __c8, 0) as any as S.Schema<GetProjectsSitesRequest>,
-  output: __S(10, __c1, 2) as any as S.Schema<Site>,
+  input: __S(352, __c22, 0) as any as S.Schema<GetProjectsSitesRequest>,
+  output: __S(1040, __c65, 0) as any as S.Schema<Site>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1493,8 +1493,8 @@ export const getProjectsSitesChannels: API.OperationMethod<
   GetProjectsSitesChannelsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(65, __c8, 1) as any as S.Schema<GetProjectsSitesChannelsRequest>,
-  output: __S(24, __c3, 0) as any as S.Schema<Channel>,
+  input: __S(368, __c23, 0) as any as S.Schema<GetProjectsSitesChannelsRequest>,
+  output: __S(1264, __c79, 0) as any as S.Schema<Channel>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1508,8 +1508,8 @@ export const getProjectsSitesChannelsReleases: API.OperationMethod<
   GetProjectsSitesChannelsReleasesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(66, __c8, 2) as any as S.Schema<GetProjectsSitesChannelsReleasesRequest>,
-  output: __S(23, __c2, 7) as any as S.Schema<Release>,
+  input: __S(384, __c24, 0) as any as S.Schema<GetProjectsSitesChannelsReleasesRequest>,
+  output: __S(1296, __c81, 0) as any as S.Schema<Release>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1523,8 +1523,8 @@ export const getProjectsSitesCustomDomains: API.OperationMethod<
   GetProjectsSitesCustomDomainsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(67, __c8, 3) as any as S.Schema<GetProjectsSitesCustomDomainsRequest>,
-  output: __S(36, __c4, 4) as any as S.Schema<CustomDomain>,
+  input: __S(400, __c25, 0) as any as S.Schema<GetProjectsSitesCustomDomainsRequest>,
+  output: __S(1353, __c84, 9) as any as S.Schema<CustomDomain>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1538,8 +1538,8 @@ export const getProjectsSitesCustomDomainsOperations: API.OperationMethod<
   GetProjectsSitesCustomDomainsOperationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(68, __c8, 4) as any as S.Schema<GetProjectsSitesCustomDomainsOperationsRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<Operation>,
+  input: __S(416, __c26, 0) as any as S.Schema<GetProjectsSitesCustomDomainsOperationsRequest>,
+  output: __S(592, __c37, 0) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1553,8 +1553,8 @@ export const getProjectsSitesDomains: API.OperationMethod<
   GetProjectsSitesDomainsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(69, __c8, 5) as any as S.Schema<GetProjectsSitesDomainsRequest>,
-  output: __S(42, __c5, 2) as any as S.Schema<Domain>,
+  input: __S(432, __c27, 0) as any as S.Schema<GetProjectsSitesDomainsRequest>,
+  output: __S(20, __c1, 4) as any as S.Schema<Domain>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1568,8 +1568,8 @@ export const getProjectsSitesReleases: API.OperationMethod<
   GetProjectsSitesReleasesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(70, __c8, 6) as any as S.Schema<GetProjectsSitesReleasesRequest>,
-  output: __S(23, __c2, 7) as any as S.Schema<Release>,
+  input: __S(448, __c28, 0) as any as S.Schema<GetProjectsSitesReleasesRequest>,
+  output: __S(1296, __c81, 0) as any as S.Schema<Release>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1583,8 +1583,8 @@ export const getProjectsSitesVersions: API.OperationMethod<
   GetProjectsSitesVersionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(71, __c8, 7) as any as S.Schema<GetProjectsSitesVersionsRequest>,
-  output: __S(22, __c2, 6) as any as S.Schema<Version>,
+  input: __S(464, __c29, 0) as any as S.Schema<GetProjectsSitesVersionsRequest>,
+  output: __S(1290, __c80, 10) as any as S.Schema<Version>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1598,8 +1598,8 @@ export const getSitesChannels: API.OperationMethod<
   GetSitesChannelsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(72, __c9, 0) as any as S.Schema<GetSitesChannelsRequest>,
-  output: __S(24, __c3, 0) as any as S.Schema<Channel>,
+  input: __S(480, __c30, 0) as any as S.Schema<GetSitesChannelsRequest>,
+  output: __S(1264, __c79, 0) as any as S.Schema<Channel>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1613,8 +1613,8 @@ export const getSitesChannelsReleases: API.OperationMethod<
   GetSitesChannelsReleasesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(73, __c9, 1) as any as S.Schema<GetSitesChannelsReleasesRequest>,
-  output: __S(23, __c2, 7) as any as S.Schema<Release>,
+  input: __S(496, __c31, 0) as any as S.Schema<GetSitesChannelsReleasesRequest>,
+  output: __S(1296, __c81, 0) as any as S.Schema<Release>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1628,8 +1628,8 @@ export const getSitesDomains: API.OperationMethod<
   GetSitesDomainsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(74, __c9, 2) as any as S.Schema<GetSitesDomainsRequest>,
-  output: __S(42, __c5, 2) as any as S.Schema<Domain>,
+  input: __S(512, __c32, 0) as any as S.Schema<GetSitesDomainsRequest>,
+  output: __S(20, __c1, 4) as any as S.Schema<Domain>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1643,8 +1643,8 @@ export const getSitesReleases: API.OperationMethod<
   GetSitesReleasesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(75, __c9, 3) as any as S.Schema<GetSitesReleasesRequest>,
-  output: __S(23, __c2, 7) as any as S.Schema<Release>,
+  input: __S(608, __c38, 0) as any as S.Schema<GetSitesReleasesRequest>,
+  output: __S(1296, __c81, 0) as any as S.Schema<Release>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1658,8 +1658,8 @@ export const getSitesVersions: API.OperationMethod<
   GetSitesVersionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(76, __c9, 4) as any as S.Schema<GetSitesVersionsRequest>,
-  output: __S(22, __c2, 6) as any as S.Schema<Version>,
+  input: __S(624, __c39, 0) as any as S.Schema<GetSitesVersionsRequest>,
+  output: __S(1290, __c80, 10) as any as S.Schema<Version>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1674,8 +1674,8 @@ export const listProjectsSites: API.PaginatedOperationMethod<
   GcpOpContext,
   ListSitesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(77, __c9, 5) as any as S.Schema<ListProjectsSitesRequest>,
-  output: __S(79, __c9, 7) as any as S.Schema<ListSitesResponse>,
+  input: __S(640, __c40, 0) as any as S.Schema<ListProjectsSitesRequest>,
+  output: __S(642, __c40, 2) as any as S.Schema<ListSitesResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1691,8 +1691,8 @@ export const listProjectsSitesChannels: API.PaginatedOperationMethod<
   GcpOpContext,
   ListChannelsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(80, __c10, 0) as any as S.Schema<ListProjectsSitesChannelsRequest>,
-  output: __S(82, __c10, 2) as any as S.Schema<ListChannelsResponse>,
+  input: __S(656, __c41, 0) as any as S.Schema<ListProjectsSitesChannelsRequest>,
+  output: __S(673, __c42, 1) as any as S.Schema<ListChannelsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1708,8 +1708,8 @@ export const listProjectsSitesChannelsReleases: API.PaginatedOperationMethod<
   GcpOpContext,
   ListReleasesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(83, __c10, 3) as any as S.Schema<ListProjectsSitesChannelsReleasesRequest>,
-  output: __S(85, __c10, 5) as any as S.Schema<ListReleasesResponse>,
+  input: __S(688, __c43, 0) as any as S.Schema<ListProjectsSitesChannelsReleasesRequest>,
+  output: __S(705, __c44, 1) as any as S.Schema<ListReleasesResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1725,8 +1725,8 @@ export const listProjectsSitesCustomDomains: API.PaginatedOperationMethod<
   GcpOpContext,
   ListCustomDomainsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(86, __c10, 6) as any as S.Schema<ListProjectsSitesCustomDomainsRequest>,
-  output: __S(88, __c11, 0) as any as S.Schema<ListCustomDomainsResponse>,
+  input: __S(720, __c45, 0) as any as S.Schema<ListProjectsSitesCustomDomainsRequest>,
+  output: __S(722, __c45, 2) as any as S.Schema<ListCustomDomainsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1742,8 +1742,8 @@ export const listProjectsSitesCustomDomainsOperations: API.PaginatedOperationMet
   GcpOpContext,
   ListOperationsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(89, __c11, 1) as any as S.Schema<ListProjectsSitesCustomDomainsOperationsRequest>,
-  output: __S(91, __c11, 3) as any as S.Schema<ListOperationsResponse>,
+  input: __S(736, __c46, 0) as any as S.Schema<ListProjectsSitesCustomDomainsOperationsRequest>,
+  output: __S(738, __c46, 2) as any as S.Schema<ListOperationsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1759,8 +1759,8 @@ export const listProjectsSitesDomains: API.PaginatedOperationMethod<
   GcpOpContext,
   ListDomainsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(92, __c11, 4) as any as S.Schema<ListProjectsSitesDomainsRequest>,
-  output: __S(94, __c11, 6) as any as S.Schema<ListDomainsResponse>,
+  input: __S(752, __c47, 0) as any as S.Schema<ListProjectsSitesDomainsRequest>,
+  output: __S(769, __c48, 1) as any as S.Schema<ListDomainsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1776,8 +1776,8 @@ export const listProjectsSitesReleases: API.PaginatedOperationMethod<
   GcpOpContext,
   ListReleasesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(95, __c11, 7) as any as S.Schema<ListProjectsSitesReleasesRequest>,
-  output: __S(85, __c10, 5) as any as S.Schema<ListReleasesResponse>,
+  input: __S(784, __c49, 0) as any as S.Schema<ListProjectsSitesReleasesRequest>,
+  output: __S(705, __c44, 1) as any as S.Schema<ListReleasesResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1793,8 +1793,8 @@ export const listProjectsSitesVersions: API.PaginatedOperationMethod<
   GcpOpContext,
   ListVersionsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(96, __c12, 0) as any as S.Schema<ListProjectsSitesVersionsRequest>,
-  output: __S(98, __c12, 2) as any as S.Schema<ListVersionsResponse>,
+  input: __S(800, __c50, 0) as any as S.Schema<ListProjectsSitesVersionsRequest>,
+  output: __S(817, __c51, 1) as any as S.Schema<ListVersionsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1810,8 +1810,8 @@ export const listProjectsSitesVersionsFiles: API.PaginatedOperationMethod<
   GcpOpContext,
   ListVersionFilesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(99, __c12, 3) as any as S.Schema<ListProjectsSitesVersionsFilesRequest>,
-  output: __S(102, __c12, 6) as any as S.Schema<ListVersionFilesResponse>,
+  input: __S(848, __c53, 0) as any as S.Schema<ListProjectsSitesVersionsFilesRequest>,
+  output: __S(866, __c54, 2) as any as S.Schema<ListVersionFilesResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1827,8 +1827,8 @@ export const listSitesChannels: API.PaginatedOperationMethod<
   GcpOpContext,
   ListChannelsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(103, __c12, 7) as any as S.Schema<ListSitesChannelsRequest>,
-  output: __S(82, __c10, 2) as any as S.Schema<ListChannelsResponse>,
+  input: __S(880, __c55, 0) as any as S.Schema<ListSitesChannelsRequest>,
+  output: __S(673, __c42, 1) as any as S.Schema<ListChannelsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1844,8 +1844,8 @@ export const listSitesChannelsReleases: API.PaginatedOperationMethod<
   GcpOpContext,
   ListReleasesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(104, __c13, 0) as any as S.Schema<ListSitesChannelsReleasesRequest>,
-  output: __S(85, __c10, 5) as any as S.Schema<ListReleasesResponse>,
+  input: __S(896, __c56, 0) as any as S.Schema<ListSitesChannelsReleasesRequest>,
+  output: __S(705, __c44, 1) as any as S.Schema<ListReleasesResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1861,8 +1861,8 @@ export const listSitesDomains: API.PaginatedOperationMethod<
   GcpOpContext,
   ListDomainsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(105, __c13, 1) as any as S.Schema<ListSitesDomainsRequest>,
-  output: __S(94, __c11, 6) as any as S.Schema<ListDomainsResponse>,
+  input: __S(912, __c57, 0) as any as S.Schema<ListSitesDomainsRequest>,
+  output: __S(769, __c48, 1) as any as S.Schema<ListDomainsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1878,8 +1878,8 @@ export const listSitesReleases: API.PaginatedOperationMethod<
   GcpOpContext,
   ListReleasesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(106, __c13, 2) as any as S.Schema<ListSitesReleasesRequest>,
-  output: __S(85, __c10, 5) as any as S.Schema<ListReleasesResponse>,
+  input: __S(928, __c58, 0) as any as S.Schema<ListSitesReleasesRequest>,
+  output: __S(705, __c44, 1) as any as S.Schema<ListReleasesResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1895,8 +1895,8 @@ export const listSitesVersions: API.PaginatedOperationMethod<
   GcpOpContext,
   ListVersionsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(107, __c13, 3) as any as S.Schema<ListSitesVersionsRequest>,
-  output: __S(98, __c12, 2) as any as S.Schema<ListVersionsResponse>,
+  input: __S(944, __c59, 0) as any as S.Schema<ListSitesVersionsRequest>,
+  output: __S(817, __c51, 1) as any as S.Schema<ListVersionsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1912,8 +1912,8 @@ export const listSitesVersionsFiles: API.PaginatedOperationMethod<
   GcpOpContext,
   ListVersionFilesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(108, __c13, 4) as any as S.Schema<ListSitesVersionsFilesRequest>,
-  output: __S(102, __c12, 6) as any as S.Schema<ListVersionFilesResponse>,
+  input: __S(960, __c60, 0) as any as S.Schema<ListSitesVersionsFilesRequest>,
+  output: __S(866, __c54, 2) as any as S.Schema<ListVersionFilesResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1928,8 +1928,8 @@ export const patchProjectsSites: API.OperationMethod<
   PatchProjectsSitesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(109, __c13, 5) as any as S.Schema<PatchProjectsSitesRequest>,
-  output: __S(10, __c1, 2) as any as S.Schema<Site>,
+  input: __S(976, __c61, 0) as any as S.Schema<PatchProjectsSitesRequest>,
+  output: __S(1040, __c65, 0) as any as S.Schema<Site>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1948,8 +1948,8 @@ export const patchProjectsSitesChannels: API.OperationMethod<
   PatchProjectsSitesChannelsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(110, __c13, 6) as any as S.Schema<PatchProjectsSitesChannelsRequest>,
-  output: __S(24, __c3, 0) as any as S.Schema<Channel>,
+  input: __S(992, __c62, 0) as any as S.Schema<PatchProjectsSitesChannelsRequest>,
+  output: __S(1264, __c79, 0) as any as S.Schema<Channel>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1968,8 +1968,8 @@ export const patchProjectsSitesCustomDomains: API.OperationMethod<
   PatchProjectsSitesCustomDomainsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(111, __c13, 7) as any as S.Schema<PatchProjectsSitesCustomDomainsRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<Operation>,
+  input: __S(1008, __c63, 0) as any as S.Schema<PatchProjectsSitesCustomDomainsRequest>,
+  output: __S(592, __c37, 0) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1988,8 +1988,8 @@ export const patchProjectsSitesVersions: API.OperationMethod<
   PatchProjectsSitesVersionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(112, __c14, 0) as any as S.Schema<PatchProjectsSitesVersionsRequest>,
-  output: __S(22, __c2, 6) as any as S.Schema<Version>,
+  input: __S(1072, __c67, 0) as any as S.Schema<PatchProjectsSitesVersionsRequest>,
+  output: __S(1290, __c80, 10) as any as S.Schema<Version>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2003,8 +2003,8 @@ export const patchSitesChannels: API.OperationMethod<
   PatchSitesChannelsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(113, __c14, 1) as any as S.Schema<PatchSitesChannelsRequest>,
-  output: __S(24, __c3, 0) as any as S.Schema<Channel>,
+  input: __S(1088, __c68, 0) as any as S.Schema<PatchSitesChannelsRequest>,
+  output: __S(1264, __c79, 0) as any as S.Schema<Channel>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2018,8 +2018,8 @@ export const patchSitesVersions: API.OperationMethod<
   PatchSitesVersionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(114, __c14, 2) as any as S.Schema<PatchSitesVersionsRequest>,
-  output: __S(22, __c2, 6) as any as S.Schema<Version>,
+  input: __S(1104, __c69, 0) as any as S.Schema<PatchSitesVersionsRequest>,
+  output: __S(1290, __c80, 10) as any as S.Schema<Version>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2038,8 +2038,8 @@ export const populateFilesProjectsSitesVersions: API.OperationMethod<
   PopulateFilesProjectsSitesVersionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(116, __c14, 4) as any as S.Schema<PopulateFilesProjectsSitesVersionsRequest>,
-  output: __S(117, __c14, 5) as any as S.Schema<PopulateVersionFilesResponse>,
+  input: __S(1120, __c70, 0) as any as S.Schema<PopulateFilesProjectsSitesVersionsRequest>,
+  output: __S(1137, __c71, 1) as any as S.Schema<PopulateVersionFilesResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2058,8 +2058,8 @@ export const populateFilesSitesVersions: API.OperationMethod<
   PopulateFilesSitesVersionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(118, __c14, 6) as any as S.Schema<PopulateFilesSitesVersionsRequest>,
-  output: __S(117, __c14, 5) as any as S.Schema<PopulateVersionFilesResponse>,
+  input: __S(1152, __c72, 0) as any as S.Schema<PopulateFilesSitesVersionsRequest>,
+  output: __S(1137, __c71, 1) as any as S.Schema<PopulateVersionFilesResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2078,8 +2078,8 @@ export const undeleteProjectsSitesCustomDomains: API.OperationMethod<
   UndeleteProjectsSitesCustomDomainsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(120, __c15, 0) as any as S.Schema<UndeleteProjectsSitesCustomDomainsRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<Operation>,
+  input: __S(1169, __c73, 1) as any as S.Schema<UndeleteProjectsSitesCustomDomainsRequest>,
+  output: __S(592, __c37, 0) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2098,8 +2098,8 @@ export const updateConfigProjectsSites: API.OperationMethod<
   UpdateConfigProjectsSitesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(121, __c15, 1) as any as S.Schema<UpdateConfigProjectsSitesRequest>,
-  output: __S(61, __c7, 5) as any as S.Schema<SiteConfig>,
+  input: __S(1184, __c74, 0) as any as S.Schema<UpdateConfigProjectsSitesRequest>,
+  output: __S(304, __c19, 0) as any as S.Schema<SiteConfig>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2113,8 +2113,8 @@ export const updateConfigSites: API.OperationMethod<
   UpdateConfigSitesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(122, __c15, 2) as any as S.Schema<UpdateConfigSitesRequest>,
-  output: __S(61, __c7, 5) as any as S.Schema<SiteConfig>,
+  input: __S(1200, __c75, 0) as any as S.Schema<UpdateConfigSitesRequest>,
+  output: __S(304, __c19, 0) as any as S.Schema<SiteConfig>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2133,8 +2133,8 @@ export const updateProjectsSitesDomains: API.OperationMethod<
   UpdateProjectsSitesDomainsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(123, __c15, 3) as any as S.Schema<UpdateProjectsSitesDomainsRequest>,
-  output: __S(42, __c5, 2) as any as S.Schema<Domain>,
+  input: __S(1216, __c76, 0) as any as S.Schema<UpdateProjectsSitesDomainsRequest>,
+  output: __S(20, __c1, 4) as any as S.Schema<Domain>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2148,8 +2148,8 @@ export const updateSitesDomains: API.OperationMethod<
   UpdateSitesDomainsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(124, __c15, 4) as any as S.Schema<UpdateSitesDomainsRequest>,
-  output: __S(42, __c5, 2) as any as S.Schema<Domain>,
+  input: __S(1232, __c77, 0) as any as S.Schema<UpdateSitesDomainsRequest>,
+  output: __S(20, __c1, 4) as any as S.Schema<Domain>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2159,412 +2159,10 @@ export const updateSitesDomains: API.OperationMethod<
 function __c0(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(S.String);
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          regexes: S.optional(__S(0, __c0, 0)),
-        }),
-      ).annotate({ identifier: "PathFilter" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          sourceVersion: S.optional(S.String),
-          include: S.optional(__S(1, __c0, 1)),
-          exclude: S.optional(__S(1, __c0, 1)),
-          finalize: S.optional(S.Boolean),
-        }),
-      ).annotate({ identifier: "CloneVersionRequest" });
-    case 3:
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(2, __c0, 2).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1beta1/{+parent}/versions:clone",
-            baseUrl: "https://firebasehosting.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "CloneProjectsSitesVersionsRequest",
-      });
-    case 4:
-      return S.Record(S.String, S.Unknown);
-    case 5:
-      return S.Array(__S(4, __c0, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          details: S.optional(__S(5, __c0, 5)),
-          code: S.optional(S.Number),
-          message: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Status" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          response: S.optional(__S(4, __c0, 4)),
-          name: S.optional(S.String),
-          error: S.optional(__S(6, __c0, 6)),
-          metadata: S.optional(__S(4, __c0, 4)),
-          done: S.optional(S.Boolean),
-        }),
-      ).annotate({ identifier: "Operation" });
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(2, __c0, 2).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1beta1/{+parent}/versions:clone",
-            baseUrl: "https://firebasehosting.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "CloneSitesVersionsRequest",
-      });
-    case 1:
-      return S.Record(S.String, S.String);
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          type: S.optional(S.String),
-          name: S.optional(S.String),
-          appId: S.optional(S.String),
-          defaultUrl: S.optional(S.String),
-          labels: S.optional(__S(9, __c1, 1)),
-        }),
-      ).annotate({ identifier: "Site" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          validateOnly: S.optional(S.Boolean.pipe(T.Query())),
-          parent: S.String.pipe(T.Label()),
-          siteId: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(10, __c1, 2).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1beta1/{+parent}/sites",
-            baseUrl: "https://firebasehosting.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateProjectsSitesRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          imageUrl: S.optional(S.String),
-          email: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ActingUser" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          root: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "I18nConfig" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          regex: S.optional(S.String),
-          location: S.optional(S.String),
-          glob: S.optional(S.String),
-          statusCode: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "Redirect" });
-    case 7:
-      return S.Array(__S(14, __c1, 6));
-  }
-}
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          headers: S.optional(__S(9, __c1, 1)),
-          glob: S.optional(S.String),
-          regex: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Header" });
-    case 1:
-      return S.Array(__S(16, __c2, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          region: S.optional(S.String),
-          serviceId: S.optional(S.String),
-          tag: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "CloudRunRewrite" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          glob: S.optional(S.String),
-          function: S.optional(S.String),
-          functionRegion: S.optional(S.String),
-          path: S.optional(S.String),
-          run: S.optional(__S(18, __c2, 2)),
-          regex: S.optional(S.String),
-          dynamicLinks: S.optional(S.Boolean),
-        }),
-      ).annotate({ identifier: "Rewrite" });
-    case 4:
-      return S.Array(__S(19, __c2, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          trailingSlashBehavior: S.optional(S.String),
-          i18n: S.optional(__S(13, __c1, 5)),
-          redirects: S.optional(__S(15, __c1, 7)),
-          headers: S.optional(__S(17, __c2, 1)),
-          rewrites: S.optional(__S(20, __c2, 4)),
-          appAssociation: S.optional(S.String),
-          cleanUrls: S.optional(S.Boolean),
-        }),
-      ).annotate({ identifier: "ServingConfig" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          finalizeUser: S.optional(__S(12, __c1, 4)),
-          createTime: S.optional(S.String),
-          finalizeTime: S.optional(S.String),
-          labels: S.optional(__S(9, __c1, 1)),
-          name: S.optional(S.String),
-          config: S.optional(__S(21, __c2, 5)),
-          deleteUser: S.optional(__S(12, __c1, 4)),
-          status: S.optional(S.String),
-          versionBytes: S.optional(S.String),
-          deleteTime: S.optional(S.String),
-          fileCount: S.optional(S.String),
-          createUser: S.optional(__S(12, __c1, 4)),
-        }),
-      ).annotate({ identifier: "Version" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          releaseTime: S.optional(S.String),
-          version: S.optional(__S(22, __c2, 6)),
-          releaseUser: S.optional(__S(12, __c1, 4)),
-          message: S.optional(S.String),
-          type: S.optional(S.String),
-          name: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Release" });
-  }
-}
-function __c3(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          updateTime: S.optional(S.String),
-          expireTime: S.optional(S.String),
-          labels: S.optional(__S(9, __c1, 1)),
-          createTime: S.optional(S.String),
-          name: S.optional(S.String),
-          retainedReleaseCount: S.optional(S.Number),
-          url: S.optional(S.String),
-          release: S.optional(__S(23, __c2, 7)),
-          ttl: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Channel" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          channelId: S.optional(S.String.pipe(T.Query())),
-          parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(24, __c3, 0).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1beta1/{+parent}/channels",
-            baseUrl: "https://firebasehosting.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateProjectsSitesChannelsRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          parent: S.String.pipe(T.Label()),
-          versionName: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(23, __c2, 7).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1beta1/{+parent}/releases",
-            baseUrl: "https://firebasehosting.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateProjectsSitesChannelsReleasesRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          rdata: S.optional(S.String),
-          type: S.optional(S.String),
-          requiredAction: S.optional(S.String),
-          domainName: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "DnsRecord" });
-    case 4:
-      return S.Array(__S(27, __c3, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          domainName: S.optional(S.String),
-          checkError: S.optional(__S(6, __c0, 6)),
-          records: S.optional(__S(28, __c3, 4)),
-        }),
-      ).annotate({ identifier: "DnsRecordSet" });
-    case 6:
-      return S.Array(__S(29, __c3, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          discovered: S.optional(__S(30, __c3, 6)),
-          checkTime: S.optional(S.String),
-          desired: S.optional(__S(30, __c3, 6)),
-        }),
-      ).annotate({ identifier: "DnsUpdates" });
-  }
-}
-function __c4(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(6, __c0, 6));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          path: S.optional(S.String),
-          desired: S.optional(S.String),
-          checkError: S.optional(__S(6, __c0, 6)),
-          lastCheckTime: S.optional(S.String),
-          discovered: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "HttpUpdate" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          dns: S.optional(__S(31, __c3, 7)),
-          http: S.optional(__S(33, __c4, 1)),
-        }),
-      ).annotate({ identifier: "CertVerification" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          issues: S.optional(__S(32, __c4, 0)),
-          expireTime: S.optional(S.String),
-          state: S.optional(S.String),
-          createTime: S.optional(S.String),
-          verification: S.optional(__S(34, __c4, 2)),
-          type: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Certificate" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          requiredDnsUpdates: S.optional(__S(31, __c3, 7)),
-          issues: S.optional(__S(32, __c4, 0)),
-          labels: S.optional(__S(9, __c1, 1)),
-          expireTime: S.optional(S.String),
-          updateTime: S.optional(S.String),
-          name: S.optional(S.String),
-          hostState: S.optional(S.String),
-          ownershipState: S.optional(S.String),
-          deleteTime: S.optional(S.String),
-          reconciling: S.optional(S.Boolean),
-          certPreference: S.optional(S.String),
-          annotations: S.optional(__S(9, __c1, 1)),
-          redirectTarget: S.optional(S.String),
-          etag: S.optional(S.String),
-          cert: S.optional(__S(35, __c4, 3)),
-          createTime: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "CustomDomain" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          customDomainId: S.optional(S.String.pipe(T.Query())),
-          validateOnly: S.optional(S.Boolean.pipe(T.Query())),
-          parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(36, __c4, 4).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1beta1/{+parent}/customDomains",
-            baseUrl: "https://firebasehosting.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateProjectsSitesCustomDomainsRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          path: S.optional(S.String),
-          token: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "CertHttpChallenge" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          domainName: S.optional(S.String),
-          token: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "CertDnsChallenge" });
-  }
-}
-function __c5(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          dnsFetchTime: S.optional(S.String),
-          certChallengeHttp: S.optional(__S(38, __c4, 6)),
-          certStatus: S.optional(S.String),
-          discoveredIps: S.optional(__S(0, __c0, 0)),
-          expectedIps: S.optional(__S(0, __c0, 0)),
-          certChallengeDns: S.optional(__S(39, __c4, 7)),
-          dnsStatus: S.optional(S.String),
-          certChallengeDiscoveredTxt: S.optional(__S(0, __c0, 0)),
-        }),
-      ).annotate({ identifier: "DomainProvisioning" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          domainName: S.optional(S.String),
-          type: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "DomainRedirect" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          status: S.optional(S.String),
-          site: S.optional(S.String),
-          provisioning: S.optional(__S(40, __c5, 0)),
-          updateTime: S.optional(S.String),
-          domainRedirect: S.optional(__S(41, __c5, 1)),
-          domainName: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Domain" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(42, __c5, 2).pipe(T.HttpBody())),
+          body: S.optional(__S(20, __c1, 4).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -2575,12 +2173,65 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "CreateProjectsSitesDomainsRequest",
       });
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          path: S.optional(S.String),
+          token: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "CertHttpChallenge" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          domainName: S.optional(S.String),
+          token: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "CertDnsChallenge" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          dnsFetchTime: S.optional(S.String),
+          certChallengeHttp: S.optional(__S(16, __c1, 0)),
+          certStatus: S.optional(S.String),
+          discoveredIps: S.optional(__S(560, __c35, 0)),
+          expectedIps: S.optional(__S(560, __c35, 0)),
+          certChallengeDns: S.optional(__S(17, __c1, 1)),
+          dnsStatus: S.optional(S.String),
+          certChallengeDiscoveredTxt: S.optional(__S(560, __c35, 0)),
+        }),
+      ).annotate({ identifier: "DomainProvisioning" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          domainName: S.optional(S.String),
+          type: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "DomainRedirect" });
     case 4:
+      return S.suspend(() =>
+        S.Struct({
+          status: S.optional(S.String),
+          site: S.optional(S.String),
+          provisioning: S.optional(__S(18, __c1, 2)),
+          updateTime: S.optional(S.String),
+          domainRedirect: S.optional(__S(19, __c1, 3)),
+          domainName: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Domain" });
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
           versionName: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(23, __c2, 7).pipe(T.HttpBody())),
+          body: S.optional(__S(1296, __c81, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -2591,13 +2242,17 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "CreateProjectsSitesReleasesRequest",
       });
-    case 5:
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           sizeBytes: S.optional(S.String.pipe(T.Query())),
           parent: S.String.pipe(T.Label()),
           versionId: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(22, __c2, 6).pipe(T.HttpBody())),
+          body: S.optional(__S(1290, __c80, 10).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -2608,12 +2263,16 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "CreateProjectsSitesVersionsRequest",
       });
-    case 6:
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
           channelId: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(24, __c3, 0).pipe(T.HttpBody())),
+          body: S.optional(__S(1264, __c79, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -2624,12 +2283,16 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "CreateSitesChannelsRequest",
       });
-    case 7:
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           versionName: S.optional(S.String.pipe(T.Query())),
           parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(23, __c2, 7).pipe(T.HttpBody())),
+          body: S.optional(__S(1296, __c81, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -2648,7 +2311,7 @@ function __c6(j: number): any {
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(42, __c5, 2).pipe(T.HttpBody())),
+          body: S.optional(__S(20, __c1, 4).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -2659,12 +2322,16 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "CreateSitesDomainsRequest",
       });
-    case 1:
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
           versionName: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(23, __c2, 7).pipe(T.HttpBody())),
+          body: S.optional(__S(1296, __c81, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -2675,13 +2342,17 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "CreateSitesReleasesRequest",
       });
-    case 2:
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           versionId: S.optional(S.String.pipe(T.Query())),
           parent: S.String.pipe(T.Label()),
           sizeBytes: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(22, __c2, 6).pipe(T.HttpBody())),
+          body: S.optional(__S(1290, __c80, 10).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -2692,7 +2363,11 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "CreateSitesVersionsRequest",
       });
-    case 3:
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -2706,11 +2381,19 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "DeleteProjectsSitesRequest",
       });
-    case 4:
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "Empty",
       });
-    case 5:
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -2724,7 +2407,11 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "DeleteProjectsSitesChannelsRequest",
       });
-    case 6:
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           allowMissing: S.optional(S.Boolean.pipe(T.Query())),
@@ -2741,7 +2428,11 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "DeleteProjectsSitesCustomDomainsRequest",
       });
-    case 7:
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -2757,7 +2448,7 @@ function __c6(j: number): any {
       });
   }
 }
-function __c7(j: number): any {
+function __c14(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2773,7 +2464,11 @@ function __c7(j: number): any {
       ).annotate({
         identifier: "DeleteProjectsSitesVersionsRequest",
       });
-    case 1:
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -2787,7 +2482,11 @@ function __c7(j: number): any {
       ).annotate({
         identifier: "DeleteSitesChannelsRequest",
       });
-    case 2:
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -2801,7 +2500,11 @@ function __c7(j: number): any {
       ).annotate({
         identifier: "DeleteSitesDomainsRequest",
       });
-    case 3:
+  }
+}
+function __c17(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -2815,7 +2518,11 @@ function __c7(j: number): any {
       ).annotate({
         identifier: "DeleteSitesVersionsRequest",
       });
-    case 4:
+  }
+}
+function __c18(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -2829,14 +2536,22 @@ function __c7(j: number): any {
       ).annotate({
         identifier: "GetConfigProjectsSitesRequest",
       });
-    case 5:
+  }
+}
+function __c19(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           maxVersions: S.optional(S.String),
           cloudLoggingEnabled: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "SiteConfig" });
-    case 6:
+  }
+}
+function __c20(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -2848,7 +2563,11 @@ function __c7(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetConfigSitesRequest" });
-    case 7:
+  }
+}
+function __c21(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -2864,7 +2583,7 @@ function __c7(j: number): any {
       });
   }
 }
-function __c8(j: number): any {
+function __c22(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2878,7 +2597,11 @@ function __c8(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetProjectsSitesRequest" });
-    case 1:
+  }
+}
+function __c23(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -2892,7 +2615,11 @@ function __c8(j: number): any {
       ).annotate({
         identifier: "GetProjectsSitesChannelsRequest",
       });
-    case 2:
+  }
+}
+function __c24(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -2906,7 +2633,11 @@ function __c8(j: number): any {
       ).annotate({
         identifier: "GetProjectsSitesChannelsReleasesRequest",
       });
-    case 3:
+  }
+}
+function __c25(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -2920,7 +2651,11 @@ function __c8(j: number): any {
       ).annotate({
         identifier: "GetProjectsSitesCustomDomainsRequest",
       });
-    case 4:
+  }
+}
+function __c26(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -2934,7 +2669,11 @@ function __c8(j: number): any {
       ).annotate({
         identifier: "GetProjectsSitesCustomDomainsOperationsRequest",
       });
-    case 5:
+  }
+}
+function __c27(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -2948,7 +2687,11 @@ function __c8(j: number): any {
       ).annotate({
         identifier: "GetProjectsSitesDomainsRequest",
       });
-    case 6:
+  }
+}
+function __c28(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -2962,7 +2705,11 @@ function __c8(j: number): any {
       ).annotate({
         identifier: "GetProjectsSitesReleasesRequest",
       });
-    case 7:
+  }
+}
+function __c29(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -2978,7 +2725,7 @@ function __c8(j: number): any {
       });
   }
 }
-function __c9(j: number): any {
+function __c30(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2992,7 +2739,11 @@ function __c9(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetSitesChannelsRequest" });
-    case 1:
+  }
+}
+function __c31(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -3006,7 +2757,11 @@ function __c9(j: number): any {
       ).annotate({
         identifier: "GetSitesChannelsReleasesRequest",
       });
-    case 2:
+  }
+}
+function __c32(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -3018,7 +2773,85 @@ function __c9(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetSitesDomainsRequest" });
-    case 3:
+  }
+}
+function __c33(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          parent: S.String.pipe(T.Label()),
+          body: S.optional(__S(545, __c34, 1).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1beta1/{+parent}/versions:clone",
+            baseUrl: "https://firebasehosting.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "CloneProjectsSitesVersionsRequest",
+      });
+  }
+}
+function __c34(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          regexes: S.optional(__S(560, __c35, 0)),
+        }),
+      ).annotate({ identifier: "PathFilter" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          sourceVersion: S.optional(S.String),
+          include: S.optional(__S(544, __c34, 0)),
+          exclude: S.optional(__S(544, __c34, 0)),
+          finalize: S.optional(S.Boolean),
+        }),
+      ).annotate({ identifier: "CloneVersionRequest" });
+  }
+}
+function __c35(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c36(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, S.Unknown);
+    case 1:
+      return S.Array(__S(576, __c36, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          details: S.optional(__S(577, __c36, 1)),
+          code: S.optional(S.Number),
+          message: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Status" });
+  }
+}
+function __c37(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          response: S.optional(__S(576, __c36, 0)),
+          name: S.optional(S.String),
+          error: S.optional(__S(578, __c36, 2)),
+          metadata: S.optional(__S(576, __c36, 0)),
+          done: S.optional(S.Boolean),
+        }),
+      ).annotate({ identifier: "Operation" });
+  }
+}
+function __c38(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -3030,7 +2863,11 @@ function __c9(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetSitesReleasesRequest" });
-    case 4:
+  }
+}
+function __c39(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -3042,7 +2879,11 @@ function __c9(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetSitesVersionsRequest" });
-    case 5:
+  }
+}
+function __c40(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -3056,18 +2897,18 @@ function __c9(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ListProjectsSitesRequest" });
-    case 6:
-      return S.Array(__S(10, __c1, 2));
-    case 7:
+    case 1:
+      return S.Array(__S(1040, __c65, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          sites: S.optional(__S(78, __c9, 6)),
+          sites: S.optional(__S(641, __c40, 1)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListSitesResponse" });
   }
 }
-function __c10(j: number): any {
+function __c41(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3085,16 +2926,24 @@ function __c10(j: number): any {
       ).annotate({
         identifier: "ListProjectsSitesChannelsRequest",
       });
+  }
+}
+function __c42(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(1264, __c79, 0));
     case 1:
-      return S.Array(__S(24, __c3, 0));
-    case 2:
       return S.suspend(() =>
         S.Struct({
-          channels: S.optional(__S(81, __c10, 1)),
+          channels: S.optional(__S(672, __c42, 0)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListChannelsResponse" });
-    case 3:
+  }
+}
+function __c43(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           pageToken: S.optional(S.String.pipe(T.Query())),
@@ -3110,16 +2959,24 @@ function __c10(j: number): any {
       ).annotate({
         identifier: "ListProjectsSitesChannelsReleasesRequest",
       });
-    case 4:
-      return S.Array(__S(23, __c2, 7));
-    case 5:
+  }
+}
+function __c44(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(1296, __c81, 0));
+    case 1:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          releases: S.optional(__S(84, __c10, 4)),
+          releases: S.optional(__S(704, __c44, 0)),
         }),
       ).annotate({ identifier: "ListReleasesResponse" });
-    case 6:
+  }
+}
+function __c45(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           pageToken: S.optional(S.String.pipe(T.Query())),
@@ -3136,22 +2993,22 @@ function __c10(j: number): any {
       ).annotate({
         identifier: "ListProjectsSitesCustomDomainsRequest",
       });
-    case 7:
-      return S.Array(__S(36, __c4, 4));
-  }
-}
-function __c11(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
+      return S.Array(__S(1353, __c84, 9));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          customDomains: S.optional(__S(87, __c10, 7)),
+          customDomains: S.optional(__S(721, __c45, 1)),
         }),
       ).annotate({
         identifier: "ListCustomDomainsResponse",
       });
-    case 1:
+  }
+}
+function __c46(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -3169,17 +3026,21 @@ function __c11(j: number): any {
       ).annotate({
         identifier: "ListProjectsSitesCustomDomainsOperationsRequest",
       });
+    case 1:
+      return S.Array(__S(592, __c37, 0));
     case 2:
-      return S.Array(__S(7, __c0, 7));
-    case 3:
       return S.suspend(() =>
         S.Struct({
-          unreachable: S.optional(__S(0, __c0, 0)),
+          unreachable: S.optional(__S(560, __c35, 0)),
           nextPageToken: S.optional(S.String),
-          operations: S.optional(__S(90, __c11, 2)),
+          operations: S.optional(__S(737, __c46, 1)),
         }),
       ).annotate({ identifier: "ListOperationsResponse" });
-    case 4:
+  }
+}
+function __c47(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           pageToken: S.optional(S.String.pipe(T.Query())),
@@ -3195,16 +3056,24 @@ function __c11(j: number): any {
       ).annotate({
         identifier: "ListProjectsSitesDomainsRequest",
       });
-    case 5:
-      return S.Array(__S(42, __c5, 2));
-    case 6:
+  }
+}
+function __c48(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(20, __c1, 4));
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          domains: S.optional(__S(93, __c11, 5)),
+          domains: S.optional(__S(768, __c48, 0)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListDomainsResponse" });
-    case 7:
+  }
+}
+function __c49(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           pageToken: S.optional(S.String.pipe(T.Query())),
@@ -3222,7 +3091,7 @@ function __c11(j: number): any {
       });
   }
 }
-function __c12(j: number): any {
+function __c50(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3241,16 +3110,43 @@ function __c12(j: number): any {
       ).annotate({
         identifier: "ListProjectsSitesVersionsRequest",
       });
+  }
+}
+function __c51(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(1290, __c80, 10));
     case 1:
-      return S.Array(__S(22, __c2, 6));
-    case 2:
       return S.suspend(() =>
         S.Struct({
-          versions: S.optional(__S(97, __c12, 1)),
+          versions: S.optional(__S(816, __c51, 0)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListVersionsResponse" });
-    case 3:
+  }
+}
+function __c52(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          parent: S.String.pipe(T.Label()),
+          body: S.optional(__S(545, __c34, 1).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1beta1/{+parent}/versions:clone",
+            baseUrl: "https://firebasehosting.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "CloneSitesVersionsRequest",
+      });
+  }
+}
+function __c53(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           pageToken: S.optional(S.String.pipe(T.Query())),
@@ -3267,7 +3163,11 @@ function __c12(j: number): any {
       ).annotate({
         identifier: "ListProjectsSitesVersionsFilesRequest",
       });
-    case 4:
+  }
+}
+function __c54(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           path: S.optional(S.String),
@@ -3275,16 +3175,20 @@ function __c12(j: number): any {
           status: S.optional(S.String),
         }),
       ).annotate({ identifier: "VersionFile" });
-    case 5:
-      return S.Array(__S(100, __c12, 4));
-    case 6:
+    case 1:
+      return S.Array(__S(864, __c54, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          files: S.optional(__S(101, __c12, 5)),
+          files: S.optional(__S(865, __c54, 1)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListVersionFilesResponse" });
-    case 7:
+  }
+}
+function __c55(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           pageToken: S.optional(S.String.pipe(T.Query())),
@@ -3300,7 +3204,7 @@ function __c12(j: number): any {
       ).annotate({ identifier: "ListSitesChannelsRequest" });
   }
 }
-function __c13(j: number): any {
+function __c56(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3318,7 +3222,11 @@ function __c13(j: number): any {
       ).annotate({
         identifier: "ListSitesChannelsReleasesRequest",
       });
-    case 1:
+  }
+}
+function __c57(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           pageToken: S.optional(S.String.pipe(T.Query())),
@@ -3332,7 +3240,11 @@ function __c13(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ListSitesDomainsRequest" });
-    case 2:
+  }
+}
+function __c58(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -3346,7 +3258,11 @@ function __c13(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ListSitesReleasesRequest" });
-    case 3:
+  }
+}
+function __c59(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           filter: S.optional(S.String.pipe(T.Query())),
@@ -3361,7 +3277,11 @@ function __c13(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ListSitesVersionsRequest" });
-    case 4:
+  }
+}
+function __c60(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -3378,12 +3298,16 @@ function __c13(j: number): any {
       ).annotate({
         identifier: "ListSitesVersionsFilesRequest",
       });
-    case 5:
+  }
+}
+function __c61(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           updateMask: S.optional(S.String.pipe(T.Query())),
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(10, __c1, 2).pipe(T.HttpBody())),
+          body: S.optional(__S(1040, __c65, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -3394,12 +3318,16 @@ function __c13(j: number): any {
       ).annotate({
         identifier: "PatchProjectsSitesRequest",
       });
-    case 6:
+  }
+}
+function __c62(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           updateMask: S.optional(S.String.pipe(T.Query())),
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(24, __c3, 0).pipe(T.HttpBody())),
+          body: S.optional(__S(1264, __c79, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -3410,14 +3338,18 @@ function __c13(j: number): any {
       ).annotate({
         identifier: "PatchProjectsSitesChannelsRequest",
       });
-    case 7:
+  }
+}
+function __c63(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
           updateMask: S.optional(S.String.pipe(T.Query())),
           allowMissing: S.optional(S.Boolean.pipe(T.Query())),
           validateOnly: S.optional(S.Boolean.pipe(T.Query())),
-          body: S.optional(__S(36, __c4, 4).pipe(T.HttpBody())),
+          body: S.optional(__S(1353, __c84, 9).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -3430,14 +3362,55 @@ function __c13(j: number): any {
       });
   }
 }
-function __c14(j: number): any {
+function __c64(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          validateOnly: S.optional(S.Boolean.pipe(T.Query())),
+          parent: S.String.pipe(T.Label()),
+          siteId: S.optional(S.String.pipe(T.Query())),
+          body: S.optional(__S(1040, __c65, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1beta1/{+parent}/sites",
+            baseUrl: "https://firebasehosting.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateProjectsSitesRequest",
+      });
+  }
+}
+function __c65(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          type: S.optional(S.String),
+          name: S.optional(S.String),
+          appId: S.optional(S.String),
+          defaultUrl: S.optional(S.String),
+          labels: S.optional(__S(1056, __c66, 0)),
+        }),
+      ).annotate({ identifier: "Site" });
+  }
+}
+function __c66(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, S.String);
+  }
+}
+function __c67(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
           updateMask: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(22, __c2, 6).pipe(T.HttpBody())),
+          body: S.optional(__S(1290, __c80, 10).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -3448,12 +3421,16 @@ function __c14(j: number): any {
       ).annotate({
         identifier: "PatchProjectsSitesVersionsRequest",
       });
-    case 1:
+  }
+}
+function __c68(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           updateMask: S.optional(S.String.pipe(T.Query())),
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(24, __c3, 0).pipe(T.HttpBody())),
+          body: S.optional(__S(1264, __c79, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -3464,12 +3441,16 @@ function __c14(j: number): any {
       ).annotate({
         identifier: "PatchSitesChannelsRequest",
       });
-    case 2:
+  }
+}
+function __c69(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
           updateMask: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(22, __c2, 6).pipe(T.HttpBody())),
+          body: S.optional(__S(1290, __c80, 10).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -3480,19 +3461,15 @@ function __c14(j: number): any {
       ).annotate({
         identifier: "PatchSitesVersionsRequest",
       });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          files: S.optional(__S(9, __c1, 1)),
-        }),
-      ).annotate({
-        identifier: "PopulateVersionFilesRequest",
-      });
-    case 4:
+  }
+}
+function __c70(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(115, __c14, 3).pipe(T.HttpBody())),
+          body: S.optional(__S(1136, __c71, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -3503,20 +3480,36 @@ function __c14(j: number): any {
       ).annotate({
         identifier: "PopulateFilesProjectsSitesVersionsRequest",
       });
-    case 5:
+  }
+}
+function __c71(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          files: S.optional(__S(1056, __c66, 0)),
+        }),
+      ).annotate({
+        identifier: "PopulateVersionFilesRequest",
+      });
+    case 1:
       return S.suspend(() =>
         S.Struct({
           uploadUrl: S.optional(S.String),
-          uploadRequiredHashes: S.optional(__S(0, __c0, 0)),
+          uploadRequiredHashes: S.optional(__S(560, __c35, 0)),
         }),
       ).annotate({
         identifier: "PopulateVersionFilesResponse",
       });
-    case 6:
+  }
+}
+function __c72(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(115, __c14, 3).pipe(T.HttpBody())),
+          body: S.optional(__S(1136, __c71, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -3527,7 +3520,11 @@ function __c14(j: number): any {
       ).annotate({
         identifier: "PopulateFilesSitesVersionsRequest",
       });
-    case 7:
+  }
+}
+function __c73(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           validateOnly: S.optional(S.Boolean),
@@ -3536,15 +3533,11 @@ function __c14(j: number): any {
       ).annotate({
         identifier: "UndeleteCustomDomainRequest",
       });
-  }
-}
-function __c15(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(119, __c14, 7).pipe(T.HttpBody())),
+          body: S.optional(__S(1168, __c73, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -3555,12 +3548,16 @@ function __c15(j: number): any {
       ).annotate({
         identifier: "UndeleteProjectsSitesCustomDomainsRequest",
       });
-    case 1:
+  }
+}
+function __c74(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           updateMask: S.optional(S.String.pipe(T.Query())),
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(61, __c7, 5).pipe(T.HttpBody())),
+          body: S.optional(__S(304, __c19, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -3571,12 +3568,16 @@ function __c15(j: number): any {
       ).annotate({
         identifier: "UpdateConfigProjectsSitesRequest",
       });
-    case 2:
+  }
+}
+function __c75(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           updateMask: S.optional(S.String.pipe(T.Query())),
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(61, __c7, 5).pipe(T.HttpBody())),
+          body: S.optional(__S(304, __c19, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -3585,11 +3586,15 @@ function __c15(j: number): any {
           }),
         ),
       ).annotate({ identifier: "UpdateConfigSitesRequest" });
-    case 3:
+  }
+}
+function __c76(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(42, __c5, 2).pipe(T.HttpBody())),
+          body: S.optional(__S(20, __c1, 4).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -3600,11 +3605,15 @@ function __c15(j: number): any {
       ).annotate({
         identifier: "UpdateProjectsSitesDomainsRequest",
       });
-    case 4:
+  }
+}
+function __c77(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(42, __c5, 2).pipe(T.HttpBody())),
+          body: S.optional(__S(20, __c1, 4).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -3617,7 +3626,273 @@ function __c15(j: number): any {
       });
   }
 }
-
+function __c78(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          channelId: S.optional(S.String.pipe(T.Query())),
+          parent: S.String.pipe(T.Label()),
+          body: S.optional(__S(1264, __c79, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1beta1/{+parent}/channels",
+            baseUrl: "https://firebasehosting.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateProjectsSitesChannelsRequest",
+      });
+  }
+}
+function __c79(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          updateTime: S.optional(S.String),
+          expireTime: S.optional(S.String),
+          labels: S.optional(__S(1056, __c66, 0)),
+          createTime: S.optional(S.String),
+          name: S.optional(S.String),
+          retainedReleaseCount: S.optional(S.Number),
+          url: S.optional(S.String),
+          release: S.optional(__S(1296, __c81, 0)),
+          ttl: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Channel" });
+  }
+}
+function __c80(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          imageUrl: S.optional(S.String),
+          email: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ActingUser" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          root: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "I18nConfig" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          regex: S.optional(S.String),
+          location: S.optional(S.String),
+          glob: S.optional(S.String),
+          statusCode: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "Redirect" });
+    case 3:
+      return S.Array(__S(1282, __c80, 2));
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          headers: S.optional(__S(1056, __c66, 0)),
+          glob: S.optional(S.String),
+          regex: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Header" });
+    case 5:
+      return S.Array(__S(1284, __c80, 4));
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          region: S.optional(S.String),
+          serviceId: S.optional(S.String),
+          tag: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "CloudRunRewrite" });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          glob: S.optional(S.String),
+          function: S.optional(S.String),
+          functionRegion: S.optional(S.String),
+          path: S.optional(S.String),
+          run: S.optional(__S(1286, __c80, 6)),
+          regex: S.optional(S.String),
+          dynamicLinks: S.optional(S.Boolean),
+        }),
+      ).annotate({ identifier: "Rewrite" });
+    case 8:
+      return S.Array(__S(1287, __c80, 7));
+    case 9:
+      return S.suspend(() =>
+        S.Struct({
+          trailingSlashBehavior: S.optional(S.String),
+          i18n: S.optional(__S(1281, __c80, 1)),
+          redirects: S.optional(__S(1283, __c80, 3)),
+          headers: S.optional(__S(1285, __c80, 5)),
+          rewrites: S.optional(__S(1288, __c80, 8)),
+          appAssociation: S.optional(S.String),
+          cleanUrls: S.optional(S.Boolean),
+        }),
+      ).annotate({ identifier: "ServingConfig" });
+    case 10:
+      return S.suspend(() =>
+        S.Struct({
+          finalizeUser: S.optional(__S(1280, __c80, 0)),
+          createTime: S.optional(S.String),
+          finalizeTime: S.optional(S.String),
+          labels: S.optional(__S(1056, __c66, 0)),
+          name: S.optional(S.String),
+          config: S.optional(__S(1289, __c80, 9)),
+          deleteUser: S.optional(__S(1280, __c80, 0)),
+          status: S.optional(S.String),
+          versionBytes: S.optional(S.String),
+          deleteTime: S.optional(S.String),
+          fileCount: S.optional(S.String),
+          createUser: S.optional(__S(1280, __c80, 0)),
+        }),
+      ).annotate({ identifier: "Version" });
+  }
+}
+function __c81(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          releaseTime: S.optional(S.String),
+          version: S.optional(__S(1290, __c80, 10)),
+          releaseUser: S.optional(__S(1280, __c80, 0)),
+          message: S.optional(S.String),
+          type: S.optional(S.String),
+          name: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Release" });
+  }
+}
+function __c82(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          parent: S.String.pipe(T.Label()),
+          versionName: S.optional(S.String.pipe(T.Query())),
+          body: S.optional(__S(1296, __c81, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1beta1/{+parent}/releases",
+            baseUrl: "https://firebasehosting.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateProjectsSitesChannelsReleasesRequest",
+      });
+  }
+}
+function __c83(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          customDomainId: S.optional(S.String.pipe(T.Query())),
+          validateOnly: S.optional(S.Boolean.pipe(T.Query())),
+          parent: S.String.pipe(T.Label()),
+          body: S.optional(__S(1353, __c84, 9).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1beta1/{+parent}/customDomains",
+            baseUrl: "https://firebasehosting.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateProjectsSitesCustomDomainsRequest",
+      });
+  }
+}
+function __c84(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          rdata: S.optional(S.String),
+          type: S.optional(S.String),
+          requiredAction: S.optional(S.String),
+          domainName: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "DnsRecord" });
+    case 1:
+      return S.Array(__S(1344, __c84, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          domainName: S.optional(S.String),
+          checkError: S.optional(__S(578, __c36, 2)),
+          records: S.optional(__S(1345, __c84, 1)),
+        }),
+      ).annotate({ identifier: "DnsRecordSet" });
+    case 3:
+      return S.Array(__S(1346, __c84, 2));
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          discovered: S.optional(__S(1347, __c84, 3)),
+          checkTime: S.optional(S.String),
+          desired: S.optional(__S(1347, __c84, 3)),
+        }),
+      ).annotate({ identifier: "DnsUpdates" });
+    case 5:
+      return S.Array(__S(578, __c36, 2));
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          path: S.optional(S.String),
+          desired: S.optional(S.String),
+          checkError: S.optional(__S(578, __c36, 2)),
+          lastCheckTime: S.optional(S.String),
+          discovered: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "HttpUpdate" });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          dns: S.optional(__S(1348, __c84, 4)),
+          http: S.optional(__S(1350, __c84, 6)),
+        }),
+      ).annotate({ identifier: "CertVerification" });
+    case 8:
+      return S.suspend(() =>
+        S.Struct({
+          issues: S.optional(__S(1349, __c84, 5)),
+          expireTime: S.optional(S.String),
+          state: S.optional(S.String),
+          createTime: S.optional(S.String),
+          verification: S.optional(__S(1351, __c84, 7)),
+          type: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Certificate" });
+    case 9:
+      return S.suspend(() =>
+        S.Struct({
+          requiredDnsUpdates: S.optional(__S(1348, __c84, 4)),
+          issues: S.optional(__S(1349, __c84, 5)),
+          labels: S.optional(__S(1056, __c66, 0)),
+          expireTime: S.optional(S.String),
+          updateTime: S.optional(S.String),
+          name: S.optional(S.String),
+          hostState: S.optional(S.String),
+          ownershipState: S.optional(S.String),
+          deleteTime: S.optional(S.String),
+          reconciling: S.optional(S.Boolean),
+          certPreference: S.optional(S.String),
+          annotations: S.optional(__S(1056, __c66, 0)),
+          redirectTarget: S.optional(S.String),
+          etag: S.optional(S.String),
+          cert: S.optional(__S(1352, __c84, 8)),
+          createTime: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "CustomDomain" });
+  }
+}
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

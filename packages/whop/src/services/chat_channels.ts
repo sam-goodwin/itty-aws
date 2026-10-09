@@ -166,7 +166,7 @@ export const getChatChannel: API.OperationMethod<
   WhopOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(0, __c0, 0) as any as S.Schema<GetChatChannelRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<ChatChannel>,
+  output: __S(6, __c1, 2) as any as S.Schema<ChatChannel>,
   errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity],
   protocol: WhopProtocol,
   retry: Retry.Retry,
@@ -187,8 +187,8 @@ export const listChatChannel: API.PaginatedOperationMethod<
   ChatChannelListItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(4, __c0, 4) as any as S.Schema<ListChatChannelRequest>,
-    output: __S(7, __c0, 7) as any as S.Schema<ListChatChannelResponse>,
+    input: __S(8, __c2, 0) as any as S.Schema<ListChatChannelRequest>,
+    output: __S(11, __c2, 3) as any as S.Schema<ListChatChannelResponse>,
     errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity],
     protocol: WhopProtocol,
     retry: Retry.Retry,
@@ -217,8 +217,8 @@ export const updateChatChannel: API.OperationMethod<
   UpdateChatChannelError,
   WhopOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(8, __c1, 0) as any as S.Schema<UpdateChatChannelRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<ChatChannel>,
+  input: __S(12, __c3, 0) as any as S.Schema<UpdateChatChannelRequest>,
+  output: __S(6, __c1, 2) as any as S.Schema<ChatChannel>,
   errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity],
   protocol: WhopProtocol,
   retry: Retry.Retry,
@@ -233,29 +233,37 @@ function __c0(j: number): any {
           id: S.String.pipe(T.Label()),
         }).pipe(T.Http({ method: "GET", uri: "/chat_channels/{id}", code: 200 })),
       ).annotate({ identifier: "GetChatChannelRequest" });
-    case 1:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
       return S.Array(S.String);
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
           name: S.String,
         }),
       ).annotate({ identifier: "ChatChannelExperience" });
-    case 3:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           ban_media: S.Boolean,
           ban_urls: S.Boolean,
-          banned_words: __S(1, __c0, 1),
-          experience: __S(2, __c0, 2),
+          banned_words: __S(4, __c1, 0),
+          experience: __S(5, __c1, 1),
           id: S.String,
           user_posts_cooldown_seconds: S.NullOr(S.Number),
           who_can_post: S.String,
           who_can_react: S.String,
         }),
       ).annotate({ identifier: "ChatChannel" });
-    case 4:
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           after: S.optional(S.String.pipe(T.Query())),
@@ -266,9 +274,9 @@ function __c0(j: number): any {
           account_id: S.String.pipe(T.Query()),
         }).pipe(T.Http({ method: "GET", uri: "/chat_channels", code: 200 })),
       ).annotate({ identifier: "ListChatChannelRequest" });
-    case 5:
-      return S.Array(__S(3, __c0, 3));
-    case 6:
+    case 1:
+      return S.Array(__S(6, __c1, 2));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           end_cursor: S.NullOr(S.String),
@@ -277,16 +285,16 @@ function __c0(j: number): any {
           start_cursor: S.NullOr(S.String),
         }),
       ).annotate({ identifier: "PageInfo" });
-    case 7:
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          data: __S(5, __c0, 5),
-          page_info: __S(6, __c0, 6),
+          data: __S(9, __c2, 1),
+          page_info: __S(10, __c2, 2),
         }),
       ).annotate({ identifier: "ListChatChannelResponse" });
   }
 }
-function __c1(j: number): any {
+function __c3(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -294,7 +302,7 @@ function __c1(j: number): any {
           id: S.String.pipe(T.Label()),
           ban_media: S.optional(S.NullOr(S.Boolean)),
           ban_urls: S.optional(S.NullOr(S.Boolean)),
-          banned_words: S.optional(S.NullOr(__S(1, __c0, 1))),
+          banned_words: S.optional(S.NullOr(__S(4, __c1, 0))),
           user_posts_cooldown_seconds: S.optional(S.NullOr(S.Number)),
           who_can_post: S.optional(S.NullOr(S.String)),
           who_can_react: S.optional(S.NullOr(S.String)),
@@ -302,7 +310,6 @@ function __c1(j: number): any {
       ).annotate({ identifier: "UpdateChatChannelRequest" });
   }
 }
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

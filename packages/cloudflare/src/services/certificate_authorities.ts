@@ -62,7 +62,7 @@ export const getHostnameAssociation: API.OperationMethod<
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(0, __c0, 0) as any as S.Schema<GetHostnameAssociationRequest>,
-  output: __S(2, __c0, 2) as any as S.Schema<GetHostnameAssociationResponse>,
+  output: __S(3, __c1, 1) as any as S.Schema<GetHostnameAssociationResponse>,
   errors: [Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -76,8 +76,8 @@ export const putHostnameAssociation: API.OperationMethod<
   PutHostnameAssociationError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3, __c0, 3) as any as S.Schema<PutHostnameAssociationRequest>,
-  output: __S(2, __c0, 2) as any as S.Schema<PutHostnameAssociationResponse>,
+  input: __S(4, __c2, 0) as any as S.Schema<PutHostnameAssociationRequest>,
+  output: __S(3, __c1, 1) as any as S.Schema<PutHostnameAssociationResponse>,
   errors: [Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -103,21 +103,29 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "GetHostnameAssociationRequest",
       });
-    case 1:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
       return S.Array(S.String);
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          hostnames: S.optional(S.NullOr(__S(1, __c0, 1))),
+          hostnames: S.optional(S.NullOr(__S(2, __c1, 0))),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({
         identifier: "GetHostnameAssociationResponse",
       });
-    case 3:
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           zoneId: S.String.pipe(T.Label("zone_id")),
-          hostnames: S.optional(__S(1, __c0, 1)),
+          hostnames: S.optional(__S(2, __c1, 0)),
           mtlsCertificateId: S.optional(S.String.pipe(T.Body("mtls_certificate_id"))),
         })
           .pipe(
@@ -133,7 +141,6 @@ function __c0(j: number): any {
       });
   }
 }
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

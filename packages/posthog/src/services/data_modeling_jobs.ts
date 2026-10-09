@@ -85,7 +85,7 @@ export const getDataModelingJob: API.OperationMethod<
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(0, __c0, 0) as any as S.Schema<GetDataModelingJobRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<DataModelingJob>,
+  output: __S(4, __c1, 0) as any as S.Schema<DataModelingJob>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -99,8 +99,8 @@ export const getDataModelingJobsRecent: API.OperationMethod<
   GetDataModelingJobsRecentError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2, __c0, 2) as any as S.Schema<GetDataModelingJobsRecentRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<DataModelingJob>,
+  input: __S(8, __c2, 0) as any as S.Schema<GetDataModelingJobsRecentRequest>,
+  output: __S(4, __c1, 0) as any as S.Schema<DataModelingJob>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -114,8 +114,8 @@ export const getDataModelingJobsRunning: API.OperationMethod<
   GetDataModelingJobsRunningError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3, __c0, 3) as any as S.Schema<GetDataModelingJobsRunningRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<DataModelingJob>,
+  input: __S(12, __c3, 0) as any as S.Schema<GetDataModelingJobsRunningRequest>,
+  output: __S(4, __c1, 0) as any as S.Schema<DataModelingJob>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -129,8 +129,8 @@ export const listDataModelingJobs: API.OperationMethod<
   ListDataModelingJobsError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(4, __c0, 4) as any as S.Schema<ListDataModelingJobsRequest>,
-  output: __S(6, __c0, 6) as any as S.Schema<PaginatedDataModelingJobList>,
+  input: __S(16, __c4, 0) as any as S.Schema<ListDataModelingJobsRequest>,
+  output: __S(18, __c4, 2) as any as S.Schema<PaginatedDataModelingJobList>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -154,7 +154,11 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "GetDataModelingJobRequest",
       });
-    case 1:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
@@ -172,7 +176,11 @@ function __c0(j: number): any {
           rows_expected: S.NullOr(S.Number),
         }),
       ).annotate({ identifier: "DataModelingJob" });
-    case 2:
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -186,7 +194,11 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "GetDataModelingJobsRecentRequest",
       });
-    case 3:
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -200,7 +212,11 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "GetDataModelingJobsRunningRequest",
       });
-    case 4:
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -218,22 +234,21 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "ListDataModelingJobsRequest",
       });
-    case 5:
-      return S.Array(__S(1, __c0, 1));
-    case 6:
+    case 1:
+      return S.Array(__S(4, __c1, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           count: S.Number,
           next: S.optional(S.NullOr(S.String)),
           previous: S.optional(S.NullOr(S.String)),
-          results: __S(5, __c0, 5),
+          results: __S(17, __c4, 1),
         }),
       ).annotate({
         identifier: "PaginatedDataModelingJobList",
       });
   }
 }
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

@@ -213,8 +213,8 @@ export const searchFiles: API.OperationMethod<
   SearchFilesError,
   SlackOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2, __c0, 2) as any as S.Schema<SearchFilesRequest>,
-  output: __S(9, __c1, 1) as any as S.Schema<SearchFilesResponse>,
+  input: __S(8, __c1, 0) as any as S.Schema<SearchFilesRequest>,
+  output: __S(12, __c1, 4) as any as S.Schema<SearchFilesResponse>,
   errors: [SlackError, SlackRateLimited],
   protocol: SlackProtocol,
   retry: Retry.Retry,
@@ -228,8 +228,8 @@ export const searchMessages: API.OperationMethod<
   SearchMessagesError,
   SlackOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(10, __c1, 2) as any as S.Schema<SearchMessagesRequest>,
-  output: __S(15, __c1, 7) as any as S.Schema<SearchMessagesResponse>,
+  input: __S(24, __c3, 0) as any as S.Schema<SearchMessagesRequest>,
+  output: __S(29, __c3, 5) as any as S.Schema<SearchMessagesResponse>,
   errors: [SlackError, SlackRateLimited],
   protocol: SlackProtocol,
   retry: Retry.Retry,
@@ -261,7 +261,11 @@ function __c0(j: number): any {
           query: S.optional(S.String),
         }),
       ).annotate({ identifier: "SearchAllResponse" });
-    case 2:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           count: S.optional(S.Number.pipe(T.Query())),
@@ -273,13 +277,11 @@ function __c0(j: number): any {
           team_id: S.optional(S.String.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/search.files", code: 200 })),
       ).annotate({ identifier: "SearchFilesRequest" });
-    case 3:
-      return S.Array(S.String);
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           last: S.optional(S.Number),
-          warnings: S.optional(__S(3, __c0, 3)),
+          warnings: S.optional(__S(16, __c2, 0)),
           total_count: S.optional(S.Number),
           page_count: S.optional(S.Number),
           per_page: S.optional(S.Number),
@@ -289,53 +291,59 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "SearchFilesResponseFilesPagination",
       });
-    case 5:
-      return S.Array(S.Unknown);
-    case 6:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           count: S.optional(S.Number),
           pages: S.optional(S.Number),
           total: S.optional(S.Number),
           page: S.optional(S.Number),
-          warnings: S.optional(__S(3, __c0, 3)),
+          warnings: S.optional(__S(16, __c2, 0)),
         }),
       ).annotate({
         identifier: "SearchFilesResponseFilesPaging",
       });
-    case 7:
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          pagination: S.optional(__S(4, __c0, 4)),
-          matches: S.optional(__S(5, __c0, 5)),
-          paging: S.optional(__S(6, __c0, 6)),
+          pagination: S.optional(__S(9, __c1, 1)),
+          matches: S.optional(__S(17, __c2, 1)),
+          paging: S.optional(__S(10, __c1, 2)),
           all_stop_words: S.optional(S.Boolean),
           total: S.optional(S.Number),
           query_too_long: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "SearchFilesResponseFiles" });
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Record(S.String, S.Unknown);
-    case 1:
+    case 4:
       return S.suspend(() =>
         S.Struct({
           ok: S.Boolean,
-          files: S.optional(__S(7, __c0, 7)),
+          files: S.optional(__S(11, __c1, 3)),
           callstack: S.optional(S.String),
-          users: S.optional(__S(8, __c1, 0)),
-          teams: S.optional(__S(8, __c1, 0)),
-          channels: S.optional(__S(8, __c1, 0)),
-          ims: S.optional(__S(8, __c1, 0)),
-          groups: S.optional(__S(8, __c1, 0)),
+          users: S.optional(__S(18, __c2, 2)),
+          teams: S.optional(__S(18, __c2, 2)),
+          channels: S.optional(__S(18, __c2, 2)),
+          ims: S.optional(__S(18, __c2, 2)),
+          groups: S.optional(__S(18, __c2, 2)),
           query: S.optional(S.String),
           ignored_exclude_bots_pref: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "SearchFilesResponse" });
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+    case 1:
+      return S.Array(S.Unknown);
     case 2:
+      return S.Record(S.String, S.Unknown);
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           count: S.optional(S.Number.pipe(T.Query())),
@@ -348,11 +356,11 @@ function __c1(j: number): any {
           team_id: S.optional(S.String.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/search.messages", code: 200 })),
       ).annotate({ identifier: "SearchMessagesRequest" });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           last: S.optional(S.Number),
-          warnings: S.optional(__S(3, __c0, 3)),
+          warnings: S.optional(__S(16, __c2, 0)),
           total_count: S.optional(S.Number),
           page_count: S.optional(S.Number),
           per_page: S.optional(S.Number),
@@ -363,32 +371,32 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "SearchMessagesResponseMessagesPagination",
       });
-    case 4:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           count: S.optional(S.Number),
           total: S.optional(S.Number),
           pages: S.optional(S.Number),
           page: S.optional(S.Number),
-          warnings: S.optional(__S(3, __c0, 3)),
+          warnings: S.optional(__S(16, __c2, 0)),
           next_cursor: S.optional(S.String),
         }),
       ).annotate({
         identifier: "SearchMessagesResponseMessagesPaging",
       });
-    case 5:
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          matches: S.optional(__S(5, __c0, 5)),
-          pagination: S.optional(__S(11, __c1, 3)),
+          matches: S.optional(__S(17, __c2, 1)),
+          pagination: S.optional(__S(25, __c3, 1)),
           total: S.optional(S.Number),
           all_stop_words: S.optional(S.Boolean),
-          paging: S.optional(__S(12, __c1, 4)),
+          paging: S.optional(__S(26, __c3, 2)),
         }),
       ).annotate({
         identifier: "SearchMessagesResponseMessages",
       });
-    case 6:
+    case 4:
       return S.suspend(() =>
         S.Struct({
           next_cursor: S.optional(S.String),
@@ -396,24 +404,23 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "SearchMessagesResponseResponseMetadata",
       });
-    case 7:
+    case 5:
       return S.suspend(() =>
         S.Struct({
           ok: S.Boolean,
           callstack: S.optional(S.String),
-          users: S.optional(__S(8, __c1, 0)),
-          messages: S.optional(__S(13, __c1, 5)),
+          users: S.optional(__S(18, __c2, 2)),
+          messages: S.optional(__S(27, __c3, 3)),
           show_feedback: S.optional(S.Boolean),
-          teams: S.optional(__S(8, __c1, 0)),
+          teams: S.optional(__S(18, __c2, 2)),
           query: S.optional(S.String),
-          bots: S.optional(__S(8, __c1, 0)),
+          bots: S.optional(__S(18, __c2, 2)),
           ignored_exclude_bots_pref: S.optional(S.Boolean),
-          response_metadata: S.optional(__S(14, __c1, 6)),
+          response_metadata: S.optional(__S(28, __c3, 4)),
         }),
       ).annotate({ identifier: "SearchMessagesResponse" });
   }
 }
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

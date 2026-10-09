@@ -807,8 +807,8 @@ export const createMember: API.OperationMethod<
   CreateMemberError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2, __c0, 2) as any as S.Schema<CreateMemberRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<CreateMemberResponse>,
+  input: __S(146, __c9, 2) as any as S.Schema<CreateMemberRequest>,
+  output: __S(147, __c9, 3) as any as S.Schema<CreateMemberResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -822,8 +822,8 @@ export const createOrganization: API.OperationMethod<
   CreateOrganizationError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(8, __c1, 0) as any as S.Schema<CreateOrganizationRequest>,
-  output: __S(13, __c1, 5) as any as S.Schema<CreateOrganizationResponse>,
+  input: __S(176, __c11, 0) as any as S.Schema<CreateOrganizationRequest>,
+  output: __S(193, __c12, 1) as any as S.Schema<CreateOrganizationResponse>,
   errors: [Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -837,8 +837,8 @@ export const deleteMember: API.OperationMethod<
   DeleteMemberError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(14, __c1, 6) as any as S.Schema<DeleteMemberRequest>,
-  output: __S(15, __c1, 7) as any as S.Schema<DeleteMemberResponse>,
+  input: __S(240, __c15, 0) as any as S.Schema<DeleteMemberRequest>,
+  output: __S(241, __c15, 1) as any as S.Schema<DeleteMemberResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -852,8 +852,8 @@ export const deleteOrganization: API.OperationMethod<
   DeleteOrganizationError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(16, __c2, 0) as any as S.Schema<DeleteOrganizationRequest>,
-  output: __S(17, __c2, 1) as any as S.Schema<DeleteOrganizationResponse>,
+  input: __S(256, __c16, 0) as any as S.Schema<DeleteOrganizationRequest>,
+  output: __S(257, __c16, 1) as any as S.Schema<DeleteOrganizationResponse>,
   errors: [OrganizationNotFound, Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -867,8 +867,8 @@ export const getBillingUsage: API.OperationMethod<
   GetBillingUsageError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(18, __c2, 2) as any as S.Schema<GetBillingUsageRequest>,
-  output: __S(23, __c2, 7) as any as S.Schema<GetBillingUsageResponse>,
+  input: __S(272, __c17, 0) as any as S.Schema<GetBillingUsageRequest>,
+  output: __S(277, __c17, 5) as any as S.Schema<GetBillingUsageResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -882,8 +882,8 @@ export const getMember: API.OperationMethod<
   GetMemberError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(24, __c3, 0) as any as S.Schema<GetMemberRequest>,
-  output: __S(25, __c3, 1) as any as S.Schema<GetMemberResponse>,
+  input: __S(288, __c18, 0) as any as S.Schema<GetMemberRequest>,
+  output: __S(289, __c18, 1) as any as S.Schema<GetMemberResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -897,8 +897,8 @@ export const getOrganization: API.OperationMethod<
   GetOrganizationError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(26, __c3, 2) as any as S.Schema<GetOrganizationRequest>,
-  output: __S(27, __c3, 3) as any as S.Schema<GetOrganizationResponse>,
+  input: __S(304, __c19, 0) as any as S.Schema<GetOrganizationRequest>,
+  output: __S(305, __c19, 1) as any as S.Schema<GetOrganizationResponse>,
   errors: [OrganizationNotFound, Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -912,8 +912,8 @@ export const getOrganizationAccount: API.OperationMethod<
   GetOrganizationAccountError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(29, __c3, 5) as any as S.Schema<GetOrganizationAccountRequest>,
-  output: __S(34, __c4, 2) as any as S.Schema<GetOrganizationAccountResponse>,
+  input: __S(321, __c20, 1) as any as S.Schema<GetOrganizationAccountRequest>,
+  output: __S(326, __c20, 6) as any as S.Schema<GetOrganizationAccountResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -927,8 +927,8 @@ export const getOrganizationProfile: API.OperationMethod<
   GetOrganizationProfileError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(35, __c4, 3) as any as S.Schema<GetOrganizationProfileRequest>,
-  output: __S(36, __c4, 4) as any as S.Schema<GetOrganizationProfileResponse>,
+  input: __S(0, __c0, 0) as any as S.Schema<GetOrganizationProfileRequest>,
+  output: __S(1, __c0, 1) as any as S.Schema<GetOrganizationProfileResponse>,
   errors: [OrganizationNotFound, Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -944,8 +944,8 @@ export const listLogAudits: API.PaginatedOperationMethod<
   LogsAuditListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(43, __c5, 3) as any as S.Schema<ListLogAuditsRequest>,
-    output: __S(51, __c6, 3) as any as S.Schema<ListLogAuditsResponse>,
+    input: __S(21, __c1, 5) as any as S.Schema<ListLogAuditsRequest>,
+    output: __S(24, __c1, 8) as any as S.Schema<ListLogAuditsResponse>,
     errors: [CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
     retry: Retry.Retry,
@@ -967,8 +967,8 @@ export const listMembers: API.OperationMethod<
   ListMembersError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(53, __c6, 5) as any as S.Schema<ListMembersRequest>,
-  output: __S(56, __c7, 0) as any as S.Schema<ListMembersResponse>,
+  input: __S(65, __c4, 1) as any as S.Schema<ListMembersRequest>,
+  output: __S(68, __c4, 4) as any as S.Schema<ListMembersResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -984,8 +984,8 @@ export const listOrganizations: API.PaginatedOperationMethod<
   ListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(60, __c7, 4) as any as S.Schema<ListOrganizationsRequest>,
-    output: __S(63, __c7, 7) as any as S.Schema<ListOrganizationsResponse>,
+    input: __S(83, __c5, 3) as any as S.Schema<ListOrganizationsRequest>,
+    output: __S(86, __c5, 6) as any as S.Schema<ListOrganizationsResponse>,
     errors: [Forbidden, CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
     retry: Retry.Retry,
@@ -1002,8 +1002,8 @@ export const logsAuditHistory: API.OperationMethod<
   LogsAuditHistoryError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(64, __c8, 0) as any as S.Schema<LogsAuditHistoryRequest>,
-  output: __S(67, __c8, 3) as any as S.Schema<LogsAuditHistoryResponse>,
+  input: __S(96, __c6, 0) as any as S.Schema<LogsAuditHistoryRequest>,
+  output: __S(99, __c6, 3) as any as S.Schema<LogsAuditHistoryResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -1017,8 +1017,8 @@ export const putOrganizationProfile: API.OperationMethod<
   PutOrganizationProfileError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(68, __c8, 4) as any as S.Schema<PutOrganizationProfileRequest>,
-  output: __S(69, __c8, 5) as any as S.Schema<PutOrganizationProfileResponse>,
+  input: __S(112, __c7, 0) as any as S.Schema<PutOrganizationProfileRequest>,
+  output: __S(113, __c7, 1) as any as S.Schema<PutOrganizationProfileResponse>,
   errors: [OrganizationNotFound, Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -1032,8 +1032,8 @@ export const updateOrganization: API.OperationMethod<
   UpdateOrganizationError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(70, __c8, 6) as any as S.Schema<UpdateOrganizationRequest>,
-  output: __S(13, __c1, 5) as any as S.Schema<UpdateOrganizationResponse>,
+  input: __S(128, __c8, 0) as any as S.Schema<UpdateOrganizationRequest>,
+  output: __S(193, __c12, 1) as any as S.Schema<UpdateOrganizationResponse>,
   errors: [OrganizationNotFound, Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -1041,6 +1041,413 @@ export const updateOrganization: API.OperationMethod<
 
 // Schema builders: each runs one schema initializer, on that schema's first use.
 function __c0(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          organizationId: S.String.pipe(T.Label("organization_id")),
+        })
+          .pipe(
+            T.Http({ method: "GET", uri: "/organizations/{organization_id}/profile", code: 200 }),
+          )
+          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({
+        identifier: "GetOrganizationProfileRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          businessAddress: S.String.pipe(T.Body("business_address")),
+          businessEmail: S.String.pipe(T.Body("business_email")),
+          businessName: S.String.pipe(T.Body("business_name")),
+          businessPhone: S.String.pipe(T.Body("business_phone")),
+          externalMetadata: S.String.pipe(T.Body("external_metadata")),
+        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({
+        identifier: "GetOrganizationProfileResponse",
+      });
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          not: S.optional(__S(208, __c13, 0)),
+        }),
+      ).annotate({ identifier: "LogsAuditListRequestId" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          not: S.optional(__S(32, __c2, 0)),
+        }),
+      ).annotate({
+        identifier: "LogsAuditListRequestActionResult",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          not: S.optional(__S(208, __c13, 0)),
+        }),
+      ).annotate({
+        identifier: "LogsAuditListRequestActorEmail",
+      });
+    case 3:
+      return S.Array(S.Number);
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          not: S.optional(__S(19, __c1, 3)),
+        }),
+      ).annotate({
+        identifier: "LogsAuditListRequestRawStatusCode",
+      });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          organizationId: S.String.pipe(T.Label("organization_id")),
+          before: S.String.pipe(T.Query()),
+          since: S.String.pipe(T.Query()),
+          id: S.optional(__S(16, __c1, 0).pipe(T.DeepQuery("id"))),
+          actionResult: S.optional(
+            __S(17, __c1, 1).pipe(T.Body("action_result"), T.DeepQuery("action_result")),
+          ),
+          actionType: S.optional(
+            __S(17, __c1, 1).pipe(T.Body("action_type"), T.DeepQuery("action_type")),
+          ),
+          actorContext: S.optional(
+            __S(17, __c1, 1).pipe(T.Body("actor_context"), T.DeepQuery("actor_context")),
+          ),
+          actorEmail: S.optional(
+            __S(18, __c1, 2).pipe(T.Body("actor_email"), T.DeepQuery("actor_email")),
+          ),
+          actorId: S.optional(__S(18, __c1, 2).pipe(T.Body("actor_id"), T.DeepQuery("actor_id"))),
+          actorIpAddress: S.optional(
+            __S(18, __c1, 2).pipe(T.Body("actor_ip_address"), T.DeepQuery("actor_ip_address")),
+          ),
+          actorTokenId: S.optional(
+            __S(18, __c1, 2).pipe(T.Body("actor_token_id"), T.DeepQuery("actor_token_id")),
+          ),
+          actorTokenName: S.optional(
+            __S(18, __c1, 2).pipe(T.Body("actor_token_name"), T.DeepQuery("actor_token_name")),
+          ),
+          actorType: S.optional(
+            __S(17, __c1, 1).pipe(T.Body("actor_type"), T.DeepQuery("actor_type")),
+          ),
+          cursor: S.optional(S.String.pipe(T.Query())),
+          direction: S.optional(S.String.pipe(T.Query())),
+          limit: S.optional(S.Number.pipe(T.Query())),
+          rawCfRayId: S.optional(
+            __S(18, __c1, 2).pipe(T.Body("raw_cf_ray_id"), T.DeepQuery("raw_cf_ray_id")),
+          ),
+          rawMethod: S.optional(
+            __S(18, __c1, 2).pipe(T.Body("raw_method"), T.DeepQuery("raw_method")),
+          ),
+          rawStatusCode: S.optional(
+            __S(20, __c1, 4).pipe(T.Body("raw_status_code"), T.DeepQuery("raw_status_code")),
+          ),
+          rawUri: S.optional(__S(18, __c1, 2).pipe(T.Body("raw_uri"), T.DeepQuery("raw_uri"))),
+          resourceId: S.optional(
+            __S(18, __c1, 2).pipe(T.Body("resource_id"), T.DeepQuery("resource_id")),
+          ),
+          resourceProduct: S.optional(
+            __S(18, __c1, 2).pipe(T.Body("resource_product"), T.DeepQuery("resource_product")),
+          ),
+          resourceScope: S.optional(
+            __S(17, __c1, 1).pipe(T.Body("resource_scope"), T.DeepQuery("resource_scope")),
+          ),
+          resourceType: S.optional(
+            __S(18, __c1, 2).pipe(T.Body("resource_type"), T.DeepQuery("resource_type")),
+          ),
+        })
+          .pipe(
+            T.Http({
+              method: "GET",
+              uri: "/organizations/{organization_id}/logs/audit",
+              code: 200,
+            }),
+          )
+          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({ identifier: "ListLogAuditsRequest" });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.NullOr(S.String)),
+          action: S.optional(S.NullOr(__S(48, __c3, 0))),
+          actor: S.optional(S.NullOr(__S(49, __c3, 1))),
+          organization: S.optional(S.NullOr(__S(50, __c3, 2))),
+          raw: S.optional(S.NullOr(__S(51, __c3, 3))),
+          resource: S.optional(S.NullOr(__S(52, __c3, 4))),
+        }),
+      ).annotate({ identifier: "LogsAuditListResultItem" });
+    case 7:
+      return S.Array(__S(22, __c1, 6));
+    case 8:
+      return S.suspend(() =>
+        S.Struct({
+          result: __S(23, __c1, 7).pipe(T.EnvelopePayload()),
+          resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
+        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({ identifier: "ListLogAuditsResponse" });
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          description: S.optional(S.NullOr(S.String)),
+          result: S.optional(S.NullOr(S.String)),
+          time: S.optional(S.NullOr(S.String)),
+          type: S.optional(S.NullOr(S.String)),
+        }),
+      ).annotate({
+        identifier: "LogsAuditListResultItemAction",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.NullOr(S.String)),
+          context: S.optional(S.NullOr(S.String)),
+          email: S.optional(S.NullOr(S.String)),
+          ipAddress: S.optional(S.NullOr(S.String).pipe(T.Body("ip_address"))),
+          tokenId: S.optional(S.NullOr(S.String).pipe(T.Body("token_id"))),
+          tokenName: S.optional(S.NullOr(S.String).pipe(T.Body("token_name"))),
+          type: S.optional(S.NullOr(S.String)),
+        }),
+      ).annotate({
+        identifier: "LogsAuditListResultItemActor",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.NullOr(S.String)),
+        }),
+      ).annotate({
+        identifier: "LogsAuditListResultItemOrganization",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          cfRayId: S.optional(S.NullOr(S.String).pipe(T.Body("cf_ray_id"))),
+          method: S.optional(S.NullOr(S.String)),
+          statusCode: S.optional(S.NullOr(S.Number).pipe(T.Body("status_code"))),
+          uri: S.optional(S.NullOr(S.String)),
+          userAgent: S.optional(S.NullOr(S.String).pipe(T.Body("user_agent"))),
+        }),
+      ).annotate({
+        identifier: "LogsAuditListResultItemRaw",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.NullOr(S.String)),
+          product: S.optional(S.NullOr(S.String)),
+          request: S.optional(S.NullOr(S.Unknown)),
+          response: S.optional(S.NullOr(S.Unknown)),
+          scope: S.optional(S.NullOr(S.Unknown)),
+          type: S.optional(S.NullOr(S.String)),
+        }),
+      ).annotate({
+        identifier: "LogsAuditListResultItemResource",
+      });
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          email: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ListMembersRequestUser" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          organizationId: S.String.pipe(T.Label("organization_id")),
+          pageSize: S.optional(S.Number.pipe(T.Query("page_size"))),
+          pageToken: S.optional(S.String.pipe(T.Query("page_token"))),
+          status: S.optional(__S(32, __c2, 0).pipe(T.Query())),
+          user: S.optional(__S(64, __c4, 0).pipe(T.DeepQuery("user"))),
+        })
+          .pipe(
+            T.Http({ method: "GET", uri: "/organizations/{organization_id}/members", code: 200 }),
+          )
+          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({ identifier: "ListMembersRequest" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          createTime: S.String.pipe(T.Body("create_time")),
+          meta: __S(160, __c10, 0),
+          status: S.String,
+          updateTime: S.String.pipe(T.Body("update_time")),
+          user: __S(161, __c10, 1),
+        }),
+      ).annotate({ identifier: "ListMembersResultItem" });
+    case 3:
+      return S.Array(__S(66, __c4, 2));
+    case 4:
+      return S.suspend(() =>
+        __S(67, __c4, 3).pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({ identifier: "ListMembersResponse" });
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          account: S.optional(S.String),
+          organization: S.optional(S.String),
+          user: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ListRequestContaining" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          contains: S.optional(S.String),
+          endsWith: S.optional(S.String),
+          startsWith: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ListRequestName" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ListRequestParent" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(__S(208, __c13, 0).pipe(T.Query())),
+          containing: S.optional(__S(80, __c5, 0).pipe(T.DeepQuery("containing"))),
+          name: S.optional(__S(81, __c5, 1).pipe(T.DeepQuery("name"))),
+          pageSize: S.optional(S.Number.pipe(T.Query("page_size"))),
+          pageToken: S.optional(S.String.pipe(T.Query("page_token"))),
+          parent: S.optional(__S(82, __c5, 2).pipe(T.DeepQuery("parent"))),
+        })
+          .pipe(T.Http({ method: "GET", uri: "/organizations", code: 200 }))
+          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({ identifier: "ListOrganizationsRequest" });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          createTime: S.String.pipe(T.Body("create_time")),
+          meta: __S(226, __c14, 2),
+          name: S.String,
+          parent: S.optional(S.NullOr(__S(227, __c14, 3))),
+          profile: S.optional(S.NullOr(__S(224, __c14, 0))),
+        }),
+      ).annotate({ identifier: "ListResultItem" });
+    case 5:
+      return S.Array(__S(84, __c5, 4));
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          result: __S(85, __c5, 5).pipe(T.EnvelopePayload()),
+          resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
+        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({
+        identifier: "ListOrganizationsResponse",
+      });
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          organizationId: S.String.pipe(T.Label("organization_id")),
+          id: S.String.pipe(T.Label()),
+          actionTime: S.String.pipe(T.Query("action_time")),
+          before: S.String.pipe(T.Query()),
+          since: S.String.pipe(T.Query()),
+          cursor: S.optional(S.String.pipe(T.Query())),
+          direction: S.optional(S.String.pipe(T.Query())),
+          limit: S.optional(S.Number.pipe(T.Query())),
+        })
+          .pipe(
+            T.Http({
+              method: "GET",
+              uri: "/organizations/{organization_id}/logs/audit/{id}/history",
+              code: 200,
+            }),
+          )
+          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({ identifier: "LogsAuditHistoryRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.NullOr(S.String)),
+          action: S.optional(S.NullOr(__S(48, __c3, 0))),
+          actor: S.optional(S.NullOr(__S(49, __c3, 1))),
+          organization: S.optional(S.NullOr(__S(50, __c3, 2))),
+          raw: S.optional(S.NullOr(__S(51, __c3, 3))),
+          resource: S.optional(S.NullOr(__S(52, __c3, 4))),
+        }),
+      ).annotate({
+        identifier: "LogsAuditHistoryResultItem",
+      });
+    case 2:
+      return S.Array(__S(97, __c6, 1));
+    case 3:
+      return S.suspend(() =>
+        __S(98, __c6, 2).pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({ identifier: "LogsAuditHistoryResponse" });
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          organizationId: S.String.pipe(T.Label("organization_id")),
+          businessAddress: S.String.pipe(T.Body("business_address")),
+          businessEmail: S.String.pipe(T.Body("business_email")),
+          businessName: S.String.pipe(T.Body("business_name")),
+          businessPhone: S.String.pipe(T.Body("business_phone")),
+          externalMetadata: S.String.pipe(T.Body("external_metadata")),
+        })
+          .pipe(
+            T.Http({ method: "PUT", uri: "/organizations/{organization_id}/profile", code: 200 }),
+          )
+          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({
+        identifier: "PutOrganizationProfileRequest",
+      });
+    case 1:
+      return S.suspend(() => S.Struct({}).pipe(T.KeyDictionary(KEY_DICTIONARY))).annotate({
+        identifier: "PutOrganizationProfileResponse",
+      });
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          organizationId: S.String.pipe(T.Label("organization_id")),
+          name: S.String,
+          parent: S.optional(__S(192, __c12, 0)),
+          profile: S.optional(__S(224, __c14, 0)),
+        })
+          .pipe(T.Http({ method: "PUT", uri: "/organizations/{organization_id}", code: 200 }))
+          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({
+        identifier: "UpdateOrganizationRequest",
+      });
+  }
+}
+function __c9(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1053,7 +1460,7 @@ function __c0(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          user: __S(0, __c0, 0),
+          user: __S(144, __c9, 0),
           status: S.optional(S.String),
         }),
       ).annotate({
@@ -1063,7 +1470,7 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           organizationId: S.String.pipe(T.Label("organization_id")),
-          member: __S(1, __c0, 1),
+          member: __S(145, __c9, 1),
         })
           .pipe(
             T.Http({ method: "POST", uri: "/organizations/{organization_id}/members", code: 200 }),
@@ -1071,8 +1478,23 @@ function __c0(j: number): any {
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "CreateMemberRequest" });
     case 3:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          createTime: S.String.pipe(T.Body("create_time")),
+          meta: __S(160, __c10, 0),
+          status: S.String,
+          updateTime: S.String.pipe(T.Body("update_time")),
+          user: __S(161, __c10, 1),
+        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({ identifier: "CreateMemberResponse" });
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
       return S.Record(S.String, S.Unknown);
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
@@ -1083,25 +1505,57 @@ function __c0(j: number): any {
           ),
         }),
       ).annotate({ identifier: "CreateMemberResponseUser" });
-    case 5:
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          id: S.String,
-          createTime: S.String.pipe(T.Body("create_time")),
-          meta: __S(3, __c0, 3),
-          status: S.String,
-          updateTime: S.String.pipe(T.Body("update_time")),
-          user: __S(4, __c0, 4),
-        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({ identifier: "CreateMemberResponse" });
-    case 6:
+          name: S.String,
+          parent: S.optional(__S(192, __c12, 0)),
+          profile: S.optional(__S(224, __c14, 0)),
+        })
+          .pipe(T.Http({ method: "POST", uri: "/organizations", code: 200 }))
+          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({
+        identifier: "CreateOrganizationRequest",
+      });
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
           name: S.optional(S.String),
         }),
       ).annotate({ identifier: "CreateRequestParent" });
-    case 7:
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          createTime: S.String.pipe(T.Body("create_time")),
+          meta: __S(226, __c14, 2),
+          name: S.String,
+          parent: S.optional(S.NullOr(__S(227, __c14, 3))),
+          profile: S.optional(S.NullOr(__S(224, __c14, 0))),
+        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({
+        identifier: "CreateOrganizationResponse",
+      });
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           businessAddress: S.String.pipe(T.Body("business_address")),
@@ -1111,25 +1565,7 @@ function __c0(j: number): any {
           externalMetadata: S.String.pipe(T.Body("external_metadata")),
         }),
       ).annotate({ identifier: "CreateRequestProfile" });
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String,
-          parent: S.optional(__S(6, __c0, 6)),
-          profile: S.optional(__S(7, __c0, 7)),
-        })
-          .pipe(T.Http({ method: "POST", uri: "/organizations", code: 200 }))
-          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({
-        identifier: "CreateOrganizationRequest",
-      });
     case 1:
-      return S.Array(S.String);
-    case 2:
       return S.suspend(() =>
         S.Struct({
           accountCreation: S.String.pipe(T.Body("account_creation")),
@@ -1146,35 +1582,26 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "CreateResponseMetaTenantFlags",
       });
-    case 3:
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          hierarchyTags: S.optional(S.NullOr(__S(9, __c1, 1)).pipe(T.Body("hierarchy_tags"))),
+          hierarchyTags: S.optional(S.NullOr(__S(208, __c13, 0)).pipe(T.Body("hierarchy_tags"))),
           managedBy: S.optional(S.NullOr(S.String).pipe(T.Body("managed_by"))),
-          tenantFlags: S.optional(S.NullOr(__S(10, __c1, 2)).pipe(T.Body("tenant_flags"))),
+          tenantFlags: S.optional(S.NullOr(__S(225, __c14, 1)).pipe(T.Body("tenant_flags"))),
         }),
       ).annotate({ identifier: "CreateResponseMeta" });
-    case 4:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
           name: S.String,
         }),
       ).annotate({ identifier: "CreateResponseParent" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String,
-          createTime: S.String.pipe(T.Body("create_time")),
-          meta: __S(11, __c1, 3),
-          name: S.String,
-          parent: S.optional(S.NullOr(__S(12, __c1, 4))),
-          profile: S.optional(S.NullOr(__S(7, __c0, 7))),
-        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({
-        identifier: "CreateOrganizationResponse",
-      });
-    case 6:
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           organizationId: S.String.pipe(T.Label("organization_id")),
@@ -1189,13 +1616,13 @@ function __c1(j: number): any {
           )
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "DeleteMemberRequest" });
-    case 7:
+    case 1:
       return S.suspend(() => S.Struct({}).pipe(T.KeyDictionary(KEY_DICTIONARY))).annotate({
         identifier: "DeleteMemberResponse",
       });
   }
 }
-function __c2(j: number): any {
+function __c16(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1215,7 +1642,11 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "DeleteOrganizationResponse",
       });
-    case 2:
+  }
+}
+function __c17(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           organizationId: S.String.pipe(T.Label("organization_id")),
@@ -1231,11 +1662,11 @@ function __c2(j: number): any {
           )
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "GetBillingUsageRequest" });
-    case 3:
+    case 1:
       return S.Unknown.pipe(/*@__PURE__*/ T.UnionCases([[], []]));
-    case 4:
-      return S.Record(S.String, __S(19, __c2, 3));
-    case 5:
+    case 2:
+      return S.Record(S.String, __S(273, __c17, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
           chargeCategory: S.String.pipe(T.Body("ChargeCategory")),
@@ -1267,7 +1698,7 @@ function __c2(j: number): any {
           regionName: S.optional(S.NullOr(S.String).pipe(T.Body("RegionName"))),
           subAccountId: S.optional(S.NullOr(S.String).pipe(T.Body("SubAccountId"))),
           subAccountName: S.optional(S.NullOr(S.String).pipe(T.Body("SubAccountName"))),
-          tags: S.optional(S.NullOr(__S(20, __c2, 4)).pipe(T.Body("Tags"))),
+          tags: S.optional(S.NullOr(__S(274, __c17, 2)).pipe(T.Body("Tags"))),
           xBillableMetricName: S.optional(S.NullOr(S.String).pipe(T.Body("x_BillableMetricName"))),
           xProductCategoryName: S.optional(
             S.NullOr(S.String).pipe(T.Body("x_ProductCategoryName")),
@@ -1280,15 +1711,15 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "BillingUsageGetResultItem",
       });
-    case 6:
-      return S.Array(__S(21, __c2, 5));
-    case 7:
+    case 4:
+      return S.Array(__S(275, __c17, 3));
+    case 5:
       return S.suspend(() =>
-        __S(22, __c2, 6).pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
+        __S(276, __c17, 4).pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "GetBillingUsageResponse" });
   }
 }
-function __c3(j: number): any {
+function __c18(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1310,13 +1741,17 @@ function __c3(j: number): any {
         S.Struct({
           id: S.String,
           createTime: S.String.pipe(T.Body("create_time")),
-          meta: __S(3, __c0, 3),
+          meta: __S(160, __c10, 0),
           status: S.String,
           updateTime: S.String.pipe(T.Body("update_time")),
-          user: __S(4, __c0, 4),
+          user: __S(161, __c10, 1),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "GetMemberResponse" });
-    case 2:
+  }
+}
+function __c19(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           organizationId: S.String.pipe(T.Label("organization_id")),
@@ -1324,18 +1759,22 @@ function __c3(j: number): any {
           .pipe(T.Http({ method: "GET", uri: "/organizations/{organization_id}", code: 200 }))
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "GetOrganizationRequest" });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
           createTime: S.String.pipe(T.Body("create_time")),
-          meta: __S(11, __c1, 3),
+          meta: __S(226, __c14, 2),
           name: S.String,
-          parent: S.optional(S.NullOr(__S(12, __c1, 4))),
-          profile: S.optional(S.NullOr(__S(7, __c0, 7))),
+          parent: S.optional(S.NullOr(__S(227, __c14, 3))),
+          profile: S.optional(S.NullOr(__S(224, __c14, 0))),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "GetOrganizationResponse" });
-    case 4:
+  }
+}
+function __c20(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           contains: S.optional(S.String),
@@ -1345,17 +1784,17 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "GetOrganizationAccountRequestAccountPubname",
       });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           organizationId: S.String.pipe(T.Label("organization_id")),
           accountPubname: S.optional(
-            __S(28, __c3, 4).pipe(T.Body("account_pubname"), T.DeepQuery("account_pubname")),
+            __S(320, __c20, 0).pipe(T.Body("account_pubname"), T.DeepQuery("account_pubname")),
           ),
           direction: S.optional(S.String.pipe(T.Query())),
           includeTags: S.optional(S.Boolean.pipe(T.Query("include_tags"))),
           includeTotal: S.optional(S.Boolean.pipe(T.Query("include_total"))),
-          name: S.optional(__S(28, __c3, 4).pipe(T.DeepQuery("name"))),
+          name: S.optional(__S(320, __c20, 0).pipe(T.DeepQuery("name"))),
           orderBy: S.optional(S.String.pipe(T.Query("order_by"))),
           pageSize: S.optional(S.Number.pipe(T.Query("page_size"))),
           pageToken: S.optional(S.String.pipe(T.Query("page_token"))),
@@ -1367,7 +1806,7 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "GetOrganizationAccountRequest",
       });
-    case 6:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           abuseContactEmail: S.String.pipe(T.Body("abuse_contact_email")),
@@ -1380,423 +1819,31 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "GetOrganizationAccountResultItemSettings",
       });
-    case 7:
+    case 3:
       return S.Record(S.String, S.String);
-  }
-}
-function __c4(j: number): any {
-  switch (j) {
-    case 0:
+    case 4:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
           createdOn: S.String.pipe(T.Body("created_on")),
           name: S.String,
-          settings: __S(30, __c3, 6),
+          settings: __S(322, __c20, 2),
           type: S.String,
-          tags: S.optional(S.NullOr(__S(31, __c3, 7))),
+          tags: S.optional(S.NullOr(__S(323, __c20, 3))),
         }),
       ).annotate({
         identifier: "GetOrganizationAccountResultItem",
       });
-    case 1:
-      return S.Array(__S(32, __c4, 0));
-    case 2:
+    case 5:
+      return S.Array(__S(324, __c20, 4));
+    case 6:
       return S.suspend(() =>
-        __S(33, __c4, 1).pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
+        __S(325, __c20, 5).pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({
         identifier: "GetOrganizationAccountResponse",
       });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          organizationId: S.String.pipe(T.Label("organization_id")),
-        })
-          .pipe(
-            T.Http({ method: "GET", uri: "/organizations/{organization_id}/profile", code: 200 }),
-          )
-          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({
-        identifier: "GetOrganizationProfileRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          businessAddress: S.String.pipe(T.Body("business_address")),
-          businessEmail: S.String.pipe(T.Body("business_email")),
-          businessName: S.String.pipe(T.Body("business_name")),
-          businessPhone: S.String.pipe(T.Body("business_phone")),
-          externalMetadata: S.String.pipe(T.Body("external_metadata")),
-        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({
-        identifier: "GetOrganizationProfileResponse",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          not: S.optional(__S(9, __c1, 1)),
-        }),
-      ).annotate({ identifier: "LogsAuditListRequestId" });
-    case 6:
-      return S.Array(S.String);
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          not: S.optional(__S(38, __c4, 6)),
-        }),
-      ).annotate({
-        identifier: "LogsAuditListRequestActionResult",
-      });
   }
 }
-function __c5(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          not: S.optional(__S(9, __c1, 1)),
-        }),
-      ).annotate({
-        identifier: "LogsAuditListRequestActorEmail",
-      });
-    case 1:
-      return S.Array(S.Number);
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          not: S.optional(__S(41, __c5, 1)),
-        }),
-      ).annotate({
-        identifier: "LogsAuditListRequestRawStatusCode",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          organizationId: S.String.pipe(T.Label("organization_id")),
-          before: S.String.pipe(T.Query()),
-          since: S.String.pipe(T.Query()),
-          id: S.optional(__S(37, __c4, 5).pipe(T.DeepQuery("id"))),
-          actionResult: S.optional(
-            __S(39, __c4, 7).pipe(T.Body("action_result"), T.DeepQuery("action_result")),
-          ),
-          actionType: S.optional(
-            __S(39, __c4, 7).pipe(T.Body("action_type"), T.DeepQuery("action_type")),
-          ),
-          actorContext: S.optional(
-            __S(39, __c4, 7).pipe(T.Body("actor_context"), T.DeepQuery("actor_context")),
-          ),
-          actorEmail: S.optional(
-            __S(40, __c5, 0).pipe(T.Body("actor_email"), T.DeepQuery("actor_email")),
-          ),
-          actorId: S.optional(__S(40, __c5, 0).pipe(T.Body("actor_id"), T.DeepQuery("actor_id"))),
-          actorIpAddress: S.optional(
-            __S(40, __c5, 0).pipe(T.Body("actor_ip_address"), T.DeepQuery("actor_ip_address")),
-          ),
-          actorTokenId: S.optional(
-            __S(40, __c5, 0).pipe(T.Body("actor_token_id"), T.DeepQuery("actor_token_id")),
-          ),
-          actorTokenName: S.optional(
-            __S(40, __c5, 0).pipe(T.Body("actor_token_name"), T.DeepQuery("actor_token_name")),
-          ),
-          actorType: S.optional(
-            __S(39, __c4, 7).pipe(T.Body("actor_type"), T.DeepQuery("actor_type")),
-          ),
-          cursor: S.optional(S.String.pipe(T.Query())),
-          direction: S.optional(S.String.pipe(T.Query())),
-          limit: S.optional(S.Number.pipe(T.Query())),
-          rawCfRayId: S.optional(
-            __S(40, __c5, 0).pipe(T.Body("raw_cf_ray_id"), T.DeepQuery("raw_cf_ray_id")),
-          ),
-          rawMethod: S.optional(
-            __S(40, __c5, 0).pipe(T.Body("raw_method"), T.DeepQuery("raw_method")),
-          ),
-          rawStatusCode: S.optional(
-            __S(42, __c5, 2).pipe(T.Body("raw_status_code"), T.DeepQuery("raw_status_code")),
-          ),
-          rawUri: S.optional(__S(40, __c5, 0).pipe(T.Body("raw_uri"), T.DeepQuery("raw_uri"))),
-          resourceId: S.optional(
-            __S(40, __c5, 0).pipe(T.Body("resource_id"), T.DeepQuery("resource_id")),
-          ),
-          resourceProduct: S.optional(
-            __S(40, __c5, 0).pipe(T.Body("resource_product"), T.DeepQuery("resource_product")),
-          ),
-          resourceScope: S.optional(
-            __S(39, __c4, 7).pipe(T.Body("resource_scope"), T.DeepQuery("resource_scope")),
-          ),
-          resourceType: S.optional(
-            __S(40, __c5, 0).pipe(T.Body("resource_type"), T.DeepQuery("resource_type")),
-          ),
-        })
-          .pipe(
-            T.Http({
-              method: "GET",
-              uri: "/organizations/{organization_id}/logs/audit",
-              code: 200,
-            }),
-          )
-          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({ identifier: "ListLogAuditsRequest" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          description: S.optional(S.NullOr(S.String)),
-          result: S.optional(S.NullOr(S.String)),
-          time: S.optional(S.NullOr(S.String)),
-          type: S.optional(S.NullOr(S.String)),
-        }),
-      ).annotate({
-        identifier: "LogsAuditListResultItemAction",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.NullOr(S.String)),
-          context: S.optional(S.NullOr(S.String)),
-          email: S.optional(S.NullOr(S.String)),
-          ipAddress: S.optional(S.NullOr(S.String).pipe(T.Body("ip_address"))),
-          tokenId: S.optional(S.NullOr(S.String).pipe(T.Body("token_id"))),
-          tokenName: S.optional(S.NullOr(S.String).pipe(T.Body("token_name"))),
-          type: S.optional(S.NullOr(S.String)),
-        }),
-      ).annotate({
-        identifier: "LogsAuditListResultItemActor",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.NullOr(S.String)),
-        }),
-      ).annotate({
-        identifier: "LogsAuditListResultItemOrganization",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          cfRayId: S.optional(S.NullOr(S.String).pipe(T.Body("cf_ray_id"))),
-          method: S.optional(S.NullOr(S.String)),
-          statusCode: S.optional(S.NullOr(S.Number).pipe(T.Body("status_code"))),
-          uri: S.optional(S.NullOr(S.String)),
-          userAgent: S.optional(S.NullOr(S.String).pipe(T.Body("user_agent"))),
-        }),
-      ).annotate({
-        identifier: "LogsAuditListResultItemRaw",
-      });
-  }
-}
-function __c6(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.NullOr(S.String)),
-          product: S.optional(S.NullOr(S.String)),
-          request: S.optional(S.NullOr(S.Unknown)),
-          response: S.optional(S.NullOr(S.Unknown)),
-          scope: S.optional(S.NullOr(S.Unknown)),
-          type: S.optional(S.NullOr(S.String)),
-        }),
-      ).annotate({
-        identifier: "LogsAuditListResultItemResource",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.NullOr(S.String)),
-          action: S.optional(S.NullOr(__S(44, __c5, 4))),
-          actor: S.optional(S.NullOr(__S(45, __c5, 5))),
-          organization: S.optional(S.NullOr(__S(46, __c5, 6))),
-          raw: S.optional(S.NullOr(__S(47, __c5, 7))),
-          resource: S.optional(S.NullOr(__S(48, __c6, 0))),
-        }),
-      ).annotate({ identifier: "LogsAuditListResultItem" });
-    case 2:
-      return S.Array(__S(49, __c6, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          result: __S(50, __c6, 2).pipe(T.EnvelopePayload()),
-          resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
-        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({ identifier: "ListLogAuditsResponse" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          email: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ListMembersRequestUser" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          organizationId: S.String.pipe(T.Label("organization_id")),
-          pageSize: S.optional(S.Number.pipe(T.Query("page_size"))),
-          pageToken: S.optional(S.String.pipe(T.Query("page_token"))),
-          status: S.optional(__S(38, __c4, 6).pipe(T.Query())),
-          user: S.optional(__S(52, __c6, 4).pipe(T.DeepQuery("user"))),
-        })
-          .pipe(
-            T.Http({ method: "GET", uri: "/organizations/{organization_id}/members", code: 200 }),
-          )
-          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({ identifier: "ListMembersRequest" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String,
-          createTime: S.String.pipe(T.Body("create_time")),
-          meta: __S(3, __c0, 3),
-          status: S.String,
-          updateTime: S.String.pipe(T.Body("update_time")),
-          user: __S(4, __c0, 4),
-        }),
-      ).annotate({ identifier: "ListMembersResultItem" });
-    case 7:
-      return S.Array(__S(54, __c6, 6));
-  }
-}
-function __c7(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        __S(55, __c6, 7).pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({ identifier: "ListMembersResponse" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          account: S.optional(S.String),
-          organization: S.optional(S.String),
-          user: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ListRequestContaining" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          contains: S.optional(S.String),
-          endsWith: S.optional(S.String),
-          startsWith: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ListRequestName" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ListRequestParent" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(__S(9, __c1, 1).pipe(T.Query())),
-          containing: S.optional(__S(57, __c7, 1).pipe(T.DeepQuery("containing"))),
-          name: S.optional(__S(58, __c7, 2).pipe(T.DeepQuery("name"))),
-          pageSize: S.optional(S.Number.pipe(T.Query("page_size"))),
-          pageToken: S.optional(S.String.pipe(T.Query("page_token"))),
-          parent: S.optional(__S(59, __c7, 3).pipe(T.DeepQuery("parent"))),
-        })
-          .pipe(T.Http({ method: "GET", uri: "/organizations", code: 200 }))
-          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({ identifier: "ListOrganizationsRequest" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String,
-          createTime: S.String.pipe(T.Body("create_time")),
-          meta: __S(11, __c1, 3),
-          name: S.String,
-          parent: S.optional(S.NullOr(__S(12, __c1, 4))),
-          profile: S.optional(S.NullOr(__S(7, __c0, 7))),
-        }),
-      ).annotate({ identifier: "ListResultItem" });
-    case 6:
-      return S.Array(__S(61, __c7, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          result: __S(62, __c7, 6).pipe(T.EnvelopePayload()),
-          resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
-        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({
-        identifier: "ListOrganizationsResponse",
-      });
-  }
-}
-function __c8(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          organizationId: S.String.pipe(T.Label("organization_id")),
-          id: S.String.pipe(T.Label()),
-          actionTime: S.String.pipe(T.Query("action_time")),
-          before: S.String.pipe(T.Query()),
-          since: S.String.pipe(T.Query()),
-          cursor: S.optional(S.String.pipe(T.Query())),
-          direction: S.optional(S.String.pipe(T.Query())),
-          limit: S.optional(S.Number.pipe(T.Query())),
-        })
-          .pipe(
-            T.Http({
-              method: "GET",
-              uri: "/organizations/{organization_id}/logs/audit/{id}/history",
-              code: 200,
-            }),
-          )
-          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({ identifier: "LogsAuditHistoryRequest" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.NullOr(S.String)),
-          action: S.optional(S.NullOr(__S(44, __c5, 4))),
-          actor: S.optional(S.NullOr(__S(45, __c5, 5))),
-          organization: S.optional(S.NullOr(__S(46, __c5, 6))),
-          raw: S.optional(S.NullOr(__S(47, __c5, 7))),
-          resource: S.optional(S.NullOr(__S(48, __c6, 0))),
-        }),
-      ).annotate({
-        identifier: "LogsAuditHistoryResultItem",
-      });
-    case 2:
-      return S.Array(__S(65, __c8, 1));
-    case 3:
-      return S.suspend(() =>
-        __S(66, __c8, 2).pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({ identifier: "LogsAuditHistoryResponse" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          organizationId: S.String.pipe(T.Label("organization_id")),
-          businessAddress: S.String.pipe(T.Body("business_address")),
-          businessEmail: S.String.pipe(T.Body("business_email")),
-          businessName: S.String.pipe(T.Body("business_name")),
-          businessPhone: S.String.pipe(T.Body("business_phone")),
-          externalMetadata: S.String.pipe(T.Body("external_metadata")),
-        })
-          .pipe(
-            T.Http({ method: "PUT", uri: "/organizations/{organization_id}/profile", code: 200 }),
-          )
-          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({
-        identifier: "PutOrganizationProfileRequest",
-      });
-    case 5:
-      return S.suspend(() => S.Struct({}).pipe(T.KeyDictionary(KEY_DICTIONARY))).annotate({
-        identifier: "PutOrganizationProfileResponse",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          organizationId: S.String.pipe(T.Label("organization_id")),
-          name: S.String,
-          parent: S.optional(__S(6, __c0, 6)),
-          profile: S.optional(__S(7, __c0, 7)),
-        })
-          .pipe(T.Http({ method: "PUT", uri: "/organizations/{organization_id}", code: 200 }))
-          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({
-        identifier: "UpdateOrganizationRequest",
-      });
-  }
-}
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

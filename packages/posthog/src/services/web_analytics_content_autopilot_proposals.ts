@@ -229,7 +229,7 @@ export const getWebAnalyticsContentAutopilotProposal: API.OperationMethod<
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(0, __c0, 0) as any as S.Schema<GetWebAnalyticsContentAutopilotProposalRequest>,
-  output: __S(15, __c1, 7) as any as S.Schema<ContentAutopilotProposal>,
+  output: __S(10, __c0, 10) as any as S.Schema<ContentAutopilotProposal>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -242,8 +242,8 @@ export const listWebAnalyticsContentAutopilotProposals: API.OperationMethod<
   ListWebAnalyticsContentAutopilotProposalsError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(16, __c2, 0) as any as S.Schema<ListWebAnalyticsContentAutopilotProposalsRequest>,
-  output: __S(19, __c2, 3) as any as S.Schema<PaginatedContentAutopilotProposalListList>,
+  input: __S(32, __c2, 0) as any as S.Schema<ListWebAnalyticsContentAutopilotProposalsRequest>,
+  output: __S(35, __c2, 3) as any as S.Schema<PaginatedContentAutopilotProposalListList>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -270,15 +270,108 @@ function __c0(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
+          key: S.String,
+          value: S.String,
+        }),
+      ).annotate({
+        identifier: "ContentAutopilotFrontmatterEntry",
+      });
+    case 2:
+      return S.Array(__S(1, __c0, 1));
+    case 3:
+      return S.Array(S.String);
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          file_path: S.String,
+          title: S.String,
+          description: S.String,
+          slug: S.String,
+          frontmatter: __S(2, __c0, 2),
+          internal_links: __S(3, __c0, 3),
+          source_notes: __S(3, __c0, 3),
+          json_ld: S.optional(S.String),
+          llms_txt_line: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ContentAutopilotPackage" });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String,
+          url: S.String,
+        }),
+      ).annotate({
+        identifier: "ContentAutopilotBriefCompetitor",
+      });
+    case 6:
+      return S.Array(__S(5, __c0, 5));
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          intent: S.optional(S.String),
+          audience: S.optional(S.String),
+          recommended_type: S.optional(S.String),
+          target_page: S.optional(S.String),
+          site_pages_to_read: S.optional(__S(3, __c0, 3)),
+          competitors_to_research: S.optional(__S(6, __c0, 6)),
+          working_title: S.optional(S.String),
+          outline: S.optional(__S(3, __c0, 3)),
+          questions_to_answer: S.optional(__S(3, __c0, 3)),
+          competitor_coverage: S.optional(__S(3, __c0, 3)),
+          engine_answer_summary: S.optional(S.String),
+          disambiguation: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ContentAutopilotBrief" });
+    case 8:
+      return S.suspend(() =>
+        S.Struct({
+          claim: S.String,
+          source_url: S.String,
+          quote: S.String,
+          kind: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "ContentAutopilotSourceLedgerEntry",
+      });
+    case 9:
+      return S.Array(__S(8, __c0, 8));
+    case 10:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          run_id: S.String,
+          proposal_type: S.String,
+          lifecycle_status: S.String,
+          title: S.String,
+          target_query: S.String,
+          target_url: S.String,
+          evidence: __S(17, __c1, 1),
+          validation_report: __S(20, __c1, 4),
+          content_package: __S(4, __c0, 4),
+          original_markdown: S.String,
+          proposed_markdown: S.String,
+          brief: __S(7, __c0, 7),
+          source_ledger: __S(9, __c0, 9),
+          created_at: S.String,
+          updated_at: S.String,
+        }),
+      ).annotate({ identifier: "ContentAutopilotProposal" });
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
           opportunity_kind: S.String,
           explanation: S.String,
           page_url: S.optional(S.String),
           query: S.optional(S.String),
         }),
       ).annotate({ identifier: "ContentAutopilotEvidence" });
+    case 1:
+      return S.Array(__S(16, __c1, 0));
     case 2:
-      return S.Array(__S(1, __c0, 1));
-    case 3:
       return S.suspend(() =>
         S.Struct({
           check_key: S.String,
@@ -290,110 +383,17 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "ContentAutopilotValidationCheck",
       });
+    case 3:
+      return S.Array(__S(18, __c1, 2));
     case 4:
-      return S.Array(__S(3, __c0, 3));
-    case 5:
       return S.suspend(() =>
         S.Struct({
           passed: S.Boolean,
-          checks: __S(4, __c0, 4),
+          checks: __S(19, __c1, 3),
         }),
       ).annotate({
         identifier: "ContentAutopilotValidationReport",
       });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          key: S.String,
-          value: S.String,
-        }),
-      ).annotate({
-        identifier: "ContentAutopilotFrontmatterEntry",
-      });
-    case 7:
-      return S.Array(__S(6, __c0, 6));
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(S.String);
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          file_path: S.String,
-          title: S.String,
-          description: S.String,
-          slug: S.String,
-          frontmatter: __S(7, __c0, 7),
-          internal_links: __S(8, __c1, 0),
-          source_notes: __S(8, __c1, 0),
-          json_ld: S.optional(S.String),
-          llms_txt_line: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ContentAutopilotPackage" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String,
-          url: S.String,
-        }),
-      ).annotate({
-        identifier: "ContentAutopilotBriefCompetitor",
-      });
-    case 3:
-      return S.Array(__S(10, __c1, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          intent: S.optional(S.String),
-          audience: S.optional(S.String),
-          recommended_type: S.optional(S.String),
-          target_page: S.optional(S.String),
-          site_pages_to_read: S.optional(__S(8, __c1, 0)),
-          competitors_to_research: S.optional(__S(11, __c1, 3)),
-          working_title: S.optional(S.String),
-          outline: S.optional(__S(8, __c1, 0)),
-          questions_to_answer: S.optional(__S(8, __c1, 0)),
-          competitor_coverage: S.optional(__S(8, __c1, 0)),
-          engine_answer_summary: S.optional(S.String),
-          disambiguation: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ContentAutopilotBrief" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          claim: S.String,
-          source_url: S.String,
-          quote: S.String,
-          kind: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "ContentAutopilotSourceLedgerEntry",
-      });
-    case 6:
-      return S.Array(__S(13, __c1, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String,
-          run_id: S.String,
-          proposal_type: S.String,
-          lifecycle_status: S.String,
-          title: S.String,
-          target_query: S.String,
-          target_url: S.String,
-          evidence: __S(2, __c0, 2),
-          validation_report: __S(5, __c0, 5),
-          content_package: __S(9, __c1, 1),
-          original_markdown: S.String,
-          proposed_markdown: S.String,
-          brief: __S(12, __c1, 4),
-          source_ledger: __S(14, __c1, 6),
-          created_at: S.String,
-          updated_at: S.String,
-        }),
-      ).annotate({ identifier: "ContentAutopilotProposal" });
   }
 }
 function __c2(j: number): any {
@@ -425,8 +425,8 @@ function __c2(j: number): any {
           lifecycle_status: S.String,
           title: S.String,
           target_query: S.String,
-          evidence: __S(2, __c0, 2),
-          validation_report: __S(5, __c0, 5),
+          evidence: __S(17, __c1, 1),
+          validation_report: __S(20, __c1, 4),
           file_path: S.String,
           created_at: S.String,
           updated_at: S.String,
@@ -435,21 +435,20 @@ function __c2(j: number): any {
         identifier: "ContentAutopilotProposalList",
       });
     case 2:
-      return S.Array(__S(17, __c2, 1));
+      return S.Array(__S(33, __c2, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
           count: S.Number,
           next: S.optional(S.NullOr(S.String)),
           previous: S.optional(S.NullOr(S.String)),
-          results: __S(18, __c2, 2),
+          results: __S(34, __c2, 2),
         }),
       ).annotate({
         identifier: "PaginatedContentAutopilotProposalListList",
       });
   }
 }
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

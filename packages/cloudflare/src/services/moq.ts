@@ -308,7 +308,7 @@ export const createRelay: API.OperationMethod<
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(0, __c0, 0) as any as S.Schema<CreateRelayRequest>,
-  output: __S(10, __c1, 2) as any as S.Schema<CreateRelayResponse>,
+  output: __S(1, __c0, 1) as any as S.Schema<CreateRelayResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -322,8 +322,8 @@ export const createRelaysToken: API.OperationMethod<
   CreateRelaysTokenError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(12, __c1, 4) as any as S.Schema<CreateRelaysTokenRequest>,
-  output: __S(17, __c2, 1) as any as S.Schema<CreateRelaysTokenResponse>,
+  input: __S(41, __c5, 1) as any as S.Schema<CreateRelaysTokenRequest>,
+  output: __S(46, __c5, 6) as any as S.Schema<CreateRelaysTokenResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -337,8 +337,8 @@ export const deleteRelay: API.OperationMethod<
   DeleteRelayError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(18, __c2, 2) as any as S.Schema<DeleteRelayRequest>,
-  output: __S(19, __c2, 3) as any as S.Schema<DeleteRelayResponse>,
+  input: __S(48, __c6, 0) as any as S.Schema<DeleteRelayRequest>,
+  output: __S(49, __c6, 1) as any as S.Schema<DeleteRelayResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -352,8 +352,8 @@ export const deleteRelaysToken: API.OperationMethod<
   DeleteRelaysTokenError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(20, __c2, 4) as any as S.Schema<DeleteRelaysTokenRequest>,
-  output: __S(21, __c2, 5) as any as S.Schema<DeleteRelaysTokenResponse>,
+  input: __S(56, __c7, 0) as any as S.Schema<DeleteRelaysTokenRequest>,
+  output: __S(57, __c7, 1) as any as S.Schema<DeleteRelaysTokenResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -367,8 +367,8 @@ export const getRelay: API.OperationMethod<
   GetRelayError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(22, __c2, 6) as any as S.Schema<GetRelayRequest>,
-  output: __S(24, __c3, 0) as any as S.Schema<GetRelayResponse>,
+  input: __S(64, __c8, 0) as any as S.Schema<GetRelayRequest>,
+  output: __S(66, __c8, 2) as any as S.Schema<GetRelayResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -384,8 +384,8 @@ export const listRelays: API.PaginatedOperationMethod<
   RelaysListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(25, __c3, 1) as any as S.Schema<ListRelaysRequest>,
-    output: __S(28, __c3, 4) as any as S.Schema<ListRelaysResponse>,
+    input: __S(72, __c9, 0) as any as S.Schema<ListRelaysRequest>,
+    output: __S(75, __c9, 3) as any as S.Schema<ListRelaysResponse>,
     errors: [CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
     retry: Retry.Retry,
@@ -402,8 +402,8 @@ export const listRelaysTokens: API.OperationMethod<
   ListRelaysTokensError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(29, __c3, 5) as any as S.Schema<ListRelaysTokensRequest>,
-  output: __S(30, __c3, 6) as any as S.Schema<ListRelaysTokensResponse>,
+  input: __S(80, __c10, 0) as any as S.Schema<ListRelaysTokensRequest>,
+  output: __S(81, __c10, 1) as any as S.Schema<ListRelaysTokensResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -417,8 +417,8 @@ export const rotateRelayToken: API.OperationMethod<
   RotateRelayTokenError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(31, __c3, 7) as any as S.Schema<RotateRelayTokenRequest>,
-  output: __S(32, __c4, 0) as any as S.Schema<RotateRelayTokenResponse>,
+  input: __S(88, __c11, 0) as any as S.Schema<RotateRelayTokenRequest>,
+  output: __S(89, __c11, 1) as any as S.Schema<RotateRelayTokenResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -432,8 +432,8 @@ export const updateRelay: API.OperationMethod<
   UpdateRelayError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(35, __c4, 3) as any as S.Schema<UpdateRelayRequest>,
-  output: __S(36, __c4, 4) as any as S.Schema<UpdateRelayResponse>,
+  input: __S(98, __c12, 2) as any as S.Schema<UpdateRelayRequest>,
+  output: __S(99, __c12, 3) as any as S.Schema<UpdateRelayResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -454,82 +454,98 @@ function __c0(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
+          config: __S(32, __c4, 0),
+          created: S.String,
+          issuers: __S(27, __c3, 3),
+          modified: S.String,
+          name: S.String,
+          uid: S.String,
+        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({ identifier: "CreateRelayResponse" });
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
           url: S.String,
         }),
       ).annotate({
         identifier: "RelaysCreateResponseConfigUpstreamsUpstreamsItem",
       });
+    case 1:
+      return S.Array(__S(16, __c2, 0));
     case 2:
-      return S.Array(__S(1, __c0, 1));
-    case 3:
       return S.suspend(() =>
         S.Struct({
           enabled: S.optional(S.NullOr(S.Boolean)),
-          upstreams: S.optional(S.NullOr(__S(2, __c0, 2))),
+          upstreams: S.optional(S.NullOr(__S(17, __c2, 1))),
         }),
       ).annotate({
         identifier: "RelaysCreateResponseConfigUpstreams",
       });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          upstreams: S.optional(S.NullOr(__S(3, __c0, 3))),
-        }),
-      ).annotate({
-        identifier: "RelaysCreateResponseConfig",
-      });
-    case 5:
-      return S.Array(S.String);
-    case 6:
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           created: S.String,
           expires: S.String,
           jti: S.String,
-          operations: __S(5, __c0, 5),
+          operations: __S(8, __c1, 0),
           label: S.optional(S.NullOr(S.String)),
           secret: S.optional(S.NullOr(S.String)),
         }),
       ).annotate({
         identifier: "RelaysCreateResponseIssuersItemCloudflareTokensItem",
       });
-    case 7:
-      return S.Array(__S(6, __c0, 6));
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
+      return S.Array(__S(24, __c3, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          cloudflareTokens: __S(7, __c0, 7).pipe(T.Body("cloudflare_tokens")),
+          cloudflareTokens: __S(25, __c3, 1).pipe(T.Body("cloudflare_tokens")),
           issuer: S.String,
           type: S.String,
         }),
       ).annotate({
         identifier: "RelaysCreateResponseIssuersItem",
       });
-    case 1:
-      return S.Array(__S(8, __c1, 0));
-    case 2:
+    case 3:
+      return S.Array(__S(26, __c3, 2));
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          config: __S(4, __c0, 4),
-          created: S.String,
-          issuers: __S(9, __c1, 1),
-          modified: S.String,
-          name: S.String,
-          uid: S.String,
-        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({ identifier: "CreateRelayResponse" });
-    case 3:
+          upstreams: S.optional(S.NullOr(__S(18, __c2, 2))),
+        }),
+      ).annotate({
+        identifier: "RelaysCreateResponseConfig",
+      });
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
       return S.Array(S.String);
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
           relayId: S.String.pipe(T.Label("relay_id")),
-          operations: __S(11, __c1, 3),
+          operations: __S(40, __c5, 0),
           expires: S.optional(S.String),
           label: S.optional(S.String),
         })
@@ -542,46 +558,46 @@ function __c1(j: number): any {
           )
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "CreateRelaysTokenRequest" });
-    case 5:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           created: S.String,
           expires: S.String,
           jti: S.String,
-          operations: __S(5, __c0, 5),
+          operations: __S(8, __c1, 0),
           label: S.optional(S.NullOr(S.String)),
           secret: S.optional(S.NullOr(S.String)),
         }),
       ).annotate({
         identifier: "CreateRelaysTokenResponseIssuersItemCloudflareTokensItem",
       });
-    case 6:
-      return S.Array(__S(13, __c1, 5));
-    case 7:
+    case 3:
+      return S.Array(__S(42, __c5, 2));
+    case 4:
       return S.suspend(() =>
         S.Struct({
-          cloudflareTokens: __S(14, __c1, 6).pipe(T.Body("cloudflare_tokens")),
+          cloudflareTokens: __S(43, __c5, 3).pipe(T.Body("cloudflare_tokens")),
           issuer: S.String,
           type: S.String,
         }),
       ).annotate({
         identifier: "CreateRelaysTokenResponseIssuersItem",
       });
-  }
-}
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(15, __c1, 7));
-    case 1:
+    case 5:
+      return S.Array(__S(44, __c5, 4));
+    case 6:
       return S.suspend(() =>
         S.Struct({
-          issuers: __S(16, __c2, 0),
+          issuers: __S(45, __c5, 5),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({
         identifier: "CreateRelaysTokenResponse",
       });
-    case 2:
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -596,11 +612,15 @@ function __c2(j: number): any {
           )
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "DeleteRelayRequest" });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Unknown.pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "DeleteRelayResponse" });
-    case 4:
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -616,11 +636,15 @@ function __c2(j: number): any {
           )
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "DeleteRelaysTokenRequest" });
-    case 5:
+    case 1:
       return S.suspend(() => S.Struct({}).pipe(T.KeyDictionary(KEY_DICTIONARY))).annotate({
         identifier: "DeleteRelaysTokenResponse",
       });
-    case 6:
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -635,20 +659,16 @@ function __c2(j: number): any {
           )
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "GetRelayRequest" });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          upstreams: S.optional(S.NullOr(__S(3, __c0, 3))),
+          upstreams: S.optional(S.NullOr(__S(18, __c2, 2))),
         }),
       ).annotate({ identifier: "RelaysGetResponseConfig" });
-  }
-}
-function __c3(j: number): any {
-  switch (j) {
-    case 0:
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          config: __S(23, __c2, 7),
+          config: __S(65, __c8, 1),
           created: S.String,
           modified: S.String,
           name: S.String,
@@ -656,7 +676,11 @@ function __c3(j: number): any {
           status: S.optional(S.NullOr(S.String)),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "GetRelayResponse" });
-    case 1:
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -668,7 +692,7 @@ function __c3(j: number): any {
           .pipe(T.Http({ method: "GET", uri: "/accounts/{account_id}/moq/relays", code: 200 }))
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "ListRelaysRequest" });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           created: S.String,
@@ -677,16 +701,20 @@ function __c3(j: number): any {
           uid: S.String,
         }),
       ).annotate({ identifier: "RelaysListResultItem" });
+    case 2:
+      return S.Array(__S(73, __c9, 1));
     case 3:
-      return S.Array(__S(26, __c3, 2));
-    case 4:
       return S.suspend(() =>
         S.Struct({
-          result: __S(27, __c3, 3).pipe(T.EnvelopePayload()),
+          result: __S(74, __c9, 2).pipe(T.EnvelopePayload()),
           resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "ListRelaysResponse" });
-    case 5:
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -701,13 +729,17 @@ function __c3(j: number): any {
           )
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "ListRelaysTokensRequest" });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          issuers: __S(9, __c1, 1),
+          issuers: __S(27, __c3, 3),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "ListRelaysTokensResponse" });
-    case 7:
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -723,40 +755,40 @@ function __c3(j: number): any {
           )
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "RotateRelayTokenRequest" });
-  }
-}
-function __c4(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           token: S.String,
           type: S.String,
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "RotateRelayTokenResponse" });
-    case 1:
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           enabled: S.optional(S.Boolean),
-          upstreams: S.optional(__S(2, __c0, 2)),
+          upstreams: S.optional(__S(17, __c2, 1)),
         }),
       ).annotate({
         identifier: "RelaysUpdateRequestConfigUpstreams",
       });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          upstreams: S.optional(__S(33, __c4, 1)),
+          upstreams: S.optional(__S(96, __c12, 0)),
         }),
       ).annotate({
         identifier: "RelaysUpdateRequestConfig",
       });
-    case 3:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
           relayId: S.String.pipe(T.Label("relay_id")),
-          config: S.optional(__S(34, __c4, 2)),
+          config: S.optional(__S(97, __c12, 1)),
           name: S.optional(S.String),
         })
           .pipe(
@@ -768,10 +800,10 @@ function __c4(j: number): any {
           )
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "UpdateRelayRequest" });
-    case 4:
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          config: __S(4, __c0, 4),
+          config: __S(32, __c4, 0),
           created: S.String,
           modified: S.String,
           name: S.String,
@@ -781,7 +813,6 @@ function __c4(j: number): any {
       ).annotate({ identifier: "UpdateRelayResponse" });
   }
 }
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

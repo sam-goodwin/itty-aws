@@ -1275,8 +1275,8 @@ export const createPageTest: API.OperationMethod<
   CreatePageTestError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(0, __c0, 0) as any as S.Schema<CreatePageTestRequest>,
-  output: __S(4, __c0, 4) as any as S.Schema<CreatePageTestResponse>,
+  input: __S(32, __c4, 0) as any as S.Schema<CreatePageTestRequest>,
+  output: __S(56, __c7, 0) as any as S.Schema<CreatePageTestResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -1294,8 +1294,8 @@ export const createSchedule: API.OperationMethod<
   CreateScheduleError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(5, __c0, 5) as any as S.Schema<CreateScheduleRequest>,
-  output: __S(8, __c1, 0) as any as S.Schema<CreateScheduleResponse>,
+  input: __S(64, __c8, 0) as any as S.Schema<CreateScheduleRequest>,
+  output: __S(66, __c8, 2) as any as S.Schema<CreateScheduleResponse>,
   errors: [
     TestScheduleAlreadyExists,
     TestScheduleQuotaReached,
@@ -1315,8 +1315,8 @@ export const deletePageTest: API.OperationMethod<
   DeletePageTestError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(9, __c1, 1) as any as S.Schema<DeletePageTestRequest>,
-  output: __S(10, __c1, 2) as any as S.Schema<DeletePageTestResponse>,
+  input: __S(80, __c10, 0) as any as S.Schema<DeletePageTestRequest>,
+  output: __S(88, __c11, 0) as any as S.Schema<DeletePageTestResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -1330,8 +1330,8 @@ export const deleteSchedule: API.OperationMethod<
   DeleteScheduleError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(11, __c1, 3) as any as S.Schema<DeleteScheduleRequest>,
-  output: __S(10, __c1, 2) as any as S.Schema<DeleteScheduleResponse>,
+  input: __S(96, __c12, 0) as any as S.Schema<DeleteScheduleRequest>,
+  output: __S(88, __c11, 0) as any as S.Schema<DeleteScheduleResponse>,
   errors: [TestScheduleNotFound, Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -1345,8 +1345,8 @@ export const getPageTest: API.OperationMethod<
   GetPageTestError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(12, __c1, 4) as any as S.Schema<GetPageTestRequest>,
-  output: __S(4, __c0, 4) as any as S.Schema<GetPageTestResponse>,
+  input: __S(104, __c13, 0) as any as S.Schema<GetPageTestRequest>,
+  output: __S(56, __c7, 0) as any as S.Schema<GetPageTestResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -1360,8 +1360,8 @@ export const getSchedule: API.OperationMethod<
   GetScheduleError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(13, __c1, 5) as any as S.Schema<GetScheduleRequest>,
-  output: __S(14, __c1, 6) as any as S.Schema<GetScheduleResponse>,
+  input: __S(112, __c14, 0) as any as S.Schema<GetScheduleRequest>,
+  output: __S(113, __c14, 1) as any as S.Schema<GetScheduleResponse>,
   errors: [TestScheduleNotFound, Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -1375,8 +1375,8 @@ export const listAvailabilities: API.OperationMethod<
   ListAvailabilitiesError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(15, __c1, 7) as any as S.Schema<ListAvailabilitiesRequest>,
-  output: __S(21, __c2, 5) as any as S.Schema<ListAvailabilitiesResponse>,
+  input: __S(0, __c0, 0) as any as S.Schema<ListAvailabilitiesRequest>,
+  output: __S(6, __c0, 6) as any as S.Schema<ListAvailabilitiesResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -1392,8 +1392,8 @@ export const listPages: API.PaginatedOperationMethod<
   PagesListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(22, __c2, 6) as any as S.Schema<ListPagesRequest>,
-    output: __S(26, __c3, 2) as any as S.Schema<ListPagesResponse>,
+    input: __S(8, __c1, 0) as any as S.Schema<ListPagesRequest>,
+    output: __S(12, __c1, 4) as any as S.Schema<ListPagesResponse>,
     errors: [CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
     retry: Retry.Retry,
@@ -1412,8 +1412,8 @@ export const listPageTests: API.PaginatedOperationMethod<
   PagesTestsListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(27, __c3, 3) as any as S.Schema<ListPageTestsRequest>,
-    output: __S(30, __c3, 6) as any as S.Schema<ListPageTestsResponse>,
+    input: __S(16, __c2, 0) as any as S.Schema<ListPageTestsRequest>,
+    output: __S(19, __c2, 3) as any as S.Schema<ListPageTestsResponse>,
     errors: [CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
     retry: Retry.Retry,
@@ -1436,8 +1436,8 @@ export const trendPage: API.OperationMethod<
   TrendPageError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(31, __c3, 7) as any as S.Schema<TrendPageRequest>,
-  output: __S(33, __c4, 1) as any as S.Schema<TrendPageResponse>,
+  input: __S(24, __c3, 0) as any as S.Schema<TrendPageRequest>,
+  output: __S(26, __c3, 2) as any as S.Schema<TrendPageResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -1450,194 +1450,6 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           zoneId: S.String.pipe(T.Label("zone_id")),
-          url: S.String.pipe(T.Label()),
-          region: S.optional(S.String),
-        })
-          .pipe(
-            T.Http({
-              method: "POST",
-              uri: "/zones/{zone_id}/speed_api/pages/{url}/tests",
-              code: 200,
-            }),
-          )
-          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({ identifier: "CreatePageTestRequest" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          code: S.optional(S.NullOr(S.String)),
-          detail: S.optional(S.NullOr(S.String)),
-          finalDisplayedUrl: S.optional(S.NullOr(S.String)),
-        }),
-      ).annotate({
-        identifier: "PagesTestsCreateResponseDesktopReportError",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          cls: S.optional(S.NullOr(S.Number)),
-          deviceType: S.optional(S.NullOr(S.String)),
-          error: S.optional(S.NullOr(__S(1, __c0, 1))),
-          fcp: S.optional(S.NullOr(S.Number)),
-          jsonReportUrl: S.optional(S.NullOr(S.String)),
-          lcp: S.optional(S.NullOr(S.Number)),
-          performanceScore: S.optional(S.NullOr(S.Number)),
-          si: S.optional(S.NullOr(S.Number)),
-          state: S.optional(S.NullOr(S.String)),
-          tbt: S.optional(S.NullOr(S.Number)),
-          ttfb: S.optional(S.NullOr(S.Number)),
-          tti: S.optional(S.NullOr(S.Number)),
-        }),
-      ).annotate({
-        identifier: "PagesTestsCreateResponseDesktopReport",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          label: S.optional(S.NullOr(S.String)),
-          value: S.optional(S.NullOr(S.String)),
-        }),
-      ).annotate({
-        identifier: "PagesTestsCreateResponseRegion",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.NullOr(S.String)),
-          date: S.optional(S.NullOr(S.String)),
-          desktopReport: S.optional(S.NullOr(__S(2, __c0, 2))),
-          mobileReport: S.optional(S.NullOr(__S(2, __c0, 2))),
-          region: S.optional(S.NullOr(__S(3, __c0, 3))),
-          scheduleFrequency: S.optional(S.NullOr(S.String)),
-          url: S.optional(S.NullOr(S.String)),
-        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({ identifier: "CreatePageTestResponse" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          zoneId: S.String.pipe(T.Label("zone_id")),
-          url: S.String.pipe(T.Label()),
-          frequency: S.optional(S.String.pipe(T.Query())),
-          region: S.optional(S.String.pipe(T.Query())),
-        })
-          .pipe(
-            T.Http({ method: "POST", uri: "/zones/{zone_id}/speed_api/schedule/{url}", code: 200 }),
-          )
-          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({ identifier: "CreateScheduleRequest" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          frequency: S.optional(S.NullOr(S.String)),
-          region: S.optional(S.NullOr(S.String)),
-          url: S.optional(S.NullOr(S.String)),
-        }),
-      ).annotate({
-        identifier: "ScheduleCreateResponseSchedule",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.NullOr(S.String)),
-          date: S.optional(S.NullOr(S.String)),
-          desktopReport: S.optional(S.NullOr(__S(2, __c0, 2))),
-          mobileReport: S.optional(S.NullOr(__S(2, __c0, 2))),
-          region: S.optional(S.NullOr(__S(3, __c0, 3))),
-          scheduleFrequency: S.optional(S.NullOr(S.String)),
-          url: S.optional(S.NullOr(S.String)),
-        }),
-      ).annotate({
-        identifier: "ScheduleCreateResponseTest",
-      });
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          schedule: S.optional(S.NullOr(__S(6, __c0, 6))),
-          test: S.optional(S.NullOr(__S(7, __c0, 7))),
-        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({ identifier: "CreateScheduleResponse" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          zoneId: S.String.pipe(T.Label("zone_id")),
-          url: S.String.pipe(T.Label()),
-          region: S.optional(S.String.pipe(T.Query())),
-        })
-          .pipe(
-            T.Http({
-              method: "DELETE",
-              uri: "/zones/{zone_id}/speed_api/pages/{url}/tests",
-              code: 200,
-            }),
-          )
-          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({ identifier: "DeletePageTestRequest" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          count: S.optional(S.NullOr(S.Number)),
-        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({ identifier: "DeletePageTestResponse" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          zoneId: S.String.pipe(T.Label("zone_id")),
-          url: S.String.pipe(T.Label()),
-          region: S.optional(S.String.pipe(T.Query())),
-        })
-          .pipe(
-            T.Http({
-              method: "DELETE",
-              uri: "/zones/{zone_id}/speed_api/schedule/{url}",
-              code: 200,
-            }),
-          )
-          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({ identifier: "DeleteScheduleRequest" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          zoneId: S.String.pipe(T.Label("zone_id")),
-          url: S.String.pipe(T.Label()),
-          testId: S.String.pipe(T.Label("test_id")),
-        })
-          .pipe(
-            T.Http({
-              method: "GET",
-              uri: "/zones/{zone_id}/speed_api/pages/{url}/tests/{test_id}",
-              code: 200,
-            }),
-          )
-          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({ identifier: "GetPageTestRequest" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          zoneId: S.String.pipe(T.Label("zone_id")),
-          url: S.String.pipe(T.Label()),
-          region: S.optional(S.String.pipe(T.Query())),
-        })
-          .pipe(
-            T.Http({ method: "GET", uri: "/zones/{zone_id}/speed_api/schedule/{url}", code: 200 }),
-          )
-          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({ identifier: "GetScheduleRequest" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          frequency: S.optional(S.NullOr(S.String)),
-          region: S.optional(S.NullOr(S.String)),
-          url: S.optional(S.NullOr(S.String)),
-        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({ identifier: "GetScheduleResponse" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          zoneId: S.String.pipe(T.Label("zone_id")),
         })
           .pipe(
             T.Http({ method: "GET", uri: "/zones/{zone_id}/speed_api/availabilities", code: 200 }),
@@ -1646,11 +1458,7 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "ListAvailabilitiesRequest",
       });
-  }
-}
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           business: S.optional(S.NullOr(S.Number)),
@@ -1661,50 +1469,54 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "AvailabilitiesListResponseQuotaQuotasPerPlanValue",
       });
-    case 1:
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(S.NullOr(__S(16, __c2, 0))),
+          value: S.optional(S.NullOr(__S(1, __c0, 1))),
         }),
       ).annotate({
         identifier: "AvailabilitiesListResponseQuotaQuotasPerPlan",
       });
-    case 2:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           plan: S.optional(S.NullOr(S.String)),
-          quotasPerPlan: S.optional(S.NullOr(__S(17, __c2, 1))),
+          quotasPerPlan: S.optional(S.NullOr(__S(2, __c0, 2))),
           remainingSchedules: S.optional(S.NullOr(S.Number)),
           remainingTests: S.optional(S.NullOr(S.Number)),
-          scheduleQuotasPerPlan: S.optional(S.NullOr(__S(17, __c2, 1))),
+          scheduleQuotasPerPlan: S.optional(S.NullOr(__S(2, __c0, 2))),
         }),
       ).annotate({
         identifier: "AvailabilitiesListResponseQuota",
       });
-    case 3:
-      return S.Array(__S(3, __c0, 3));
     case 4:
+      return S.Array(__S(40, __c5, 0));
+    case 5:
       return S.suspend(() =>
         S.Struct({
-          business: S.optional(S.NullOr(__S(19, __c2, 3))),
-          enterprise: S.optional(S.NullOr(__S(19, __c2, 3))),
-          free: S.optional(S.NullOr(__S(19, __c2, 3))),
-          pro: S.optional(S.NullOr(__S(19, __c2, 3))),
+          business: S.optional(S.NullOr(__S(4, __c0, 4))),
+          enterprise: S.optional(S.NullOr(__S(4, __c0, 4))),
+          free: S.optional(S.NullOr(__S(4, __c0, 4))),
+          pro: S.optional(S.NullOr(__S(4, __c0, 4))),
         }),
       ).annotate({
         identifier: "AvailabilitiesListResponseRegionsPerPlan",
       });
-    case 5:
+    case 6:
       return S.suspend(() =>
         S.Struct({
-          quota: S.optional(S.NullOr(__S(18, __c2, 2))),
-          regions: S.optional(S.NullOr(__S(19, __c2, 3))),
-          regionsPerPlan: S.optional(S.NullOr(__S(20, __c2, 4))),
+          quota: S.optional(S.NullOr(__S(3, __c0, 3))),
+          regions: S.optional(S.NullOr(__S(4, __c0, 4))),
+          regionsPerPlan: S.optional(S.NullOr(__S(5, __c0, 5))),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({
         identifier: "ListAvailabilitiesResponse",
       });
-    case 6:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           zoneId: S.String.pipe(T.Label("zone_id")),
@@ -1712,31 +1524,31 @@ function __c2(j: number): any {
           .pipe(T.Http({ method: "GET", uri: "/zones/{zone_id}/speed_api/pages", code: 200 }))
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "ListPagesRequest" });
-    case 7:
-      return S.Array(__S(7, __c0, 7));
-  }
-}
-function __c3(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          region: S.optional(S.NullOr(__S(3, __c0, 3))),
-          scheduleFrequency: S.optional(S.NullOr(S.String)),
-          tests: S.optional(S.NullOr(__S(23, __c2, 7))),
-          url: S.optional(S.NullOr(S.String)),
-        }),
-      ).annotate({ identifier: "PagesListResultItem" });
     case 1:
-      return S.Array(__S(24, __c3, 0));
+      return S.Array(__S(72, __c9, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          result: __S(25, __c3, 1).pipe(T.EnvelopePayload()),
+          region: S.optional(S.NullOr(__S(40, __c5, 0))),
+          scheduleFrequency: S.optional(S.NullOr(S.String)),
+          tests: S.optional(S.NullOr(__S(9, __c1, 1))),
+          url: S.optional(S.NullOr(S.String)),
+        }),
+      ).annotate({ identifier: "PagesListResultItem" });
+    case 3:
+      return S.Array(__S(10, __c1, 2));
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          result: __S(11, __c1, 3).pipe(T.EnvelopePayload()),
           resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "ListPagesResponse" });
-    case 3:
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           zoneId: S.String.pipe(T.Label("zone_id")),
@@ -1754,28 +1566,32 @@ function __c3(j: number): any {
           )
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "ListPageTestsRequest" });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.NullOr(S.String)),
           date: S.optional(S.NullOr(S.String)),
-          desktopReport: S.optional(S.NullOr(__S(2, __c0, 2))),
-          mobileReport: S.optional(S.NullOr(__S(2, __c0, 2))),
-          region: S.optional(S.NullOr(__S(3, __c0, 3))),
+          desktopReport: S.optional(S.NullOr(__S(49, __c6, 1))),
+          mobileReport: S.optional(S.NullOr(__S(49, __c6, 1))),
+          region: S.optional(S.NullOr(__S(40, __c5, 0))),
           scheduleFrequency: S.optional(S.NullOr(S.String)),
           url: S.optional(S.NullOr(S.String)),
         }),
       ).annotate({ identifier: "PagesTestsListResultItem" });
-    case 5:
-      return S.Array(__S(28, __c3, 4));
-    case 6:
+    case 2:
+      return S.Array(__S(17, __c2, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          result: __S(29, __c3, 5).pipe(T.EnvelopePayload()),
+          result: __S(18, __c2, 2).pipe(T.EnvelopePayload()),
           resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "ListPageTestsResponse" });
-    case 7:
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           zoneId: S.String.pipe(T.Label("zone_id")),
@@ -1796,28 +1612,251 @@ function __c3(j: number): any {
           )
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "TrendPageRequest" });
+    case 1:
+      return S.Array(S.Number);
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          cls: S.optional(S.NullOr(__S(25, __c3, 1))),
+          fcp: S.optional(S.NullOr(__S(25, __c3, 1))),
+          lcp: S.optional(S.NullOr(__S(25, __c3, 1))),
+          performanceScore: S.optional(S.NullOr(__S(25, __c3, 1))),
+          si: S.optional(S.NullOr(__S(25, __c3, 1))),
+          tbt: S.optional(S.NullOr(__S(25, __c3, 1))),
+          ttfb: S.optional(S.NullOr(__S(25, __c3, 1))),
+          tti: S.optional(S.NullOr(__S(25, __c3, 1))),
+        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({ identifier: "TrendPageResponse" });
   }
 }
 function __c4(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(S.Number);
+      return S.suspend(() =>
+        S.Struct({
+          zoneId: S.String.pipe(T.Label("zone_id")),
+          url: S.String.pipe(T.Label()),
+          region: S.optional(S.String),
+        })
+          .pipe(
+            T.Http({
+              method: "POST",
+              uri: "/zones/{zone_id}/speed_api/pages/{url}/tests",
+              code: 200,
+            }),
+          )
+          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({ identifier: "CreatePageTestRequest" });
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          label: S.optional(S.NullOr(S.String)),
+          value: S.optional(S.NullOr(S.String)),
+        }),
+      ).annotate({
+        identifier: "PagesTestsCreateResponseRegion",
+      });
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          code: S.optional(S.NullOr(S.String)),
+          detail: S.optional(S.NullOr(S.String)),
+          finalDisplayedUrl: S.optional(S.NullOr(S.String)),
+        }),
+      ).annotate({
+        identifier: "PagesTestsCreateResponseDesktopReportError",
+      });
     case 1:
       return S.suspend(() =>
         S.Struct({
-          cls: S.optional(S.NullOr(__S(32, __c4, 0))),
-          fcp: S.optional(S.NullOr(__S(32, __c4, 0))),
-          lcp: S.optional(S.NullOr(__S(32, __c4, 0))),
-          performanceScore: S.optional(S.NullOr(__S(32, __c4, 0))),
-          si: S.optional(S.NullOr(__S(32, __c4, 0))),
-          tbt: S.optional(S.NullOr(__S(32, __c4, 0))),
-          ttfb: S.optional(S.NullOr(__S(32, __c4, 0))),
-          tti: S.optional(S.NullOr(__S(32, __c4, 0))),
-        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({ identifier: "TrendPageResponse" });
+          cls: S.optional(S.NullOr(S.Number)),
+          deviceType: S.optional(S.NullOr(S.String)),
+          error: S.optional(S.NullOr(__S(48, __c6, 0))),
+          fcp: S.optional(S.NullOr(S.Number)),
+          jsonReportUrl: S.optional(S.NullOr(S.String)),
+          lcp: S.optional(S.NullOr(S.Number)),
+          performanceScore: S.optional(S.NullOr(S.Number)),
+          si: S.optional(S.NullOr(S.Number)),
+          state: S.optional(S.NullOr(S.String)),
+          tbt: S.optional(S.NullOr(S.Number)),
+          ttfb: S.optional(S.NullOr(S.Number)),
+          tti: S.optional(S.NullOr(S.Number)),
+        }),
+      ).annotate({
+        identifier: "PagesTestsCreateResponseDesktopReport",
+      });
   }
 }
-
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.NullOr(S.String)),
+          date: S.optional(S.NullOr(S.String)),
+          desktopReport: S.optional(S.NullOr(__S(49, __c6, 1))),
+          mobileReport: S.optional(S.NullOr(__S(49, __c6, 1))),
+          region: S.optional(S.NullOr(__S(40, __c5, 0))),
+          scheduleFrequency: S.optional(S.NullOr(S.String)),
+          url: S.optional(S.NullOr(S.String)),
+        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({ identifier: "CreatePageTestResponse" });
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          zoneId: S.String.pipe(T.Label("zone_id")),
+          url: S.String.pipe(T.Label()),
+          frequency: S.optional(S.String.pipe(T.Query())),
+          region: S.optional(S.String.pipe(T.Query())),
+        })
+          .pipe(
+            T.Http({ method: "POST", uri: "/zones/{zone_id}/speed_api/schedule/{url}", code: 200 }),
+          )
+          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({ identifier: "CreateScheduleRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          frequency: S.optional(S.NullOr(S.String)),
+          region: S.optional(S.NullOr(S.String)),
+          url: S.optional(S.NullOr(S.String)),
+        }),
+      ).annotate({
+        identifier: "ScheduleCreateResponseSchedule",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          schedule: S.optional(S.NullOr(__S(65, __c8, 1))),
+          test: S.optional(S.NullOr(__S(72, __c9, 0))),
+        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({ identifier: "CreateScheduleResponse" });
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.NullOr(S.String)),
+          date: S.optional(S.NullOr(S.String)),
+          desktopReport: S.optional(S.NullOr(__S(49, __c6, 1))),
+          mobileReport: S.optional(S.NullOr(__S(49, __c6, 1))),
+          region: S.optional(S.NullOr(__S(40, __c5, 0))),
+          scheduleFrequency: S.optional(S.NullOr(S.String)),
+          url: S.optional(S.NullOr(S.String)),
+        }),
+      ).annotate({
+        identifier: "ScheduleCreateResponseTest",
+      });
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          zoneId: S.String.pipe(T.Label("zone_id")),
+          url: S.String.pipe(T.Label()),
+          region: S.optional(S.String.pipe(T.Query())),
+        })
+          .pipe(
+            T.Http({
+              method: "DELETE",
+              uri: "/zones/{zone_id}/speed_api/pages/{url}/tests",
+              code: 200,
+            }),
+          )
+          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({ identifier: "DeletePageTestRequest" });
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          count: S.optional(S.NullOr(S.Number)),
+        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({ identifier: "DeletePageTestResponse" });
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          zoneId: S.String.pipe(T.Label("zone_id")),
+          url: S.String.pipe(T.Label()),
+          region: S.optional(S.String.pipe(T.Query())),
+        })
+          .pipe(
+            T.Http({
+              method: "DELETE",
+              uri: "/zones/{zone_id}/speed_api/schedule/{url}",
+              code: 200,
+            }),
+          )
+          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({ identifier: "DeleteScheduleRequest" });
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          zoneId: S.String.pipe(T.Label("zone_id")),
+          url: S.String.pipe(T.Label()),
+          testId: S.String.pipe(T.Label("test_id")),
+        })
+          .pipe(
+            T.Http({
+              method: "GET",
+              uri: "/zones/{zone_id}/speed_api/pages/{url}/tests/{test_id}",
+              code: 200,
+            }),
+          )
+          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({ identifier: "GetPageTestRequest" });
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          zoneId: S.String.pipe(T.Label("zone_id")),
+          url: S.String.pipe(T.Label()),
+          region: S.optional(S.String.pipe(T.Query())),
+        })
+          .pipe(
+            T.Http({ method: "GET", uri: "/zones/{zone_id}/speed_api/schedule/{url}", code: 200 }),
+          )
+          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({ identifier: "GetScheduleRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          frequency: S.optional(S.NullOr(S.String)),
+          region: S.optional(S.NullOr(S.String)),
+          url: S.optional(S.NullOr(S.String)),
+        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({ identifier: "GetScheduleResponse" });
+  }
+}
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

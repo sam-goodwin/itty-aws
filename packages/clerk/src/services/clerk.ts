@@ -6070,8 +6070,8 @@ export const addDomain: API.OperationMethod<
   AddDomainError,
   ClerkOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(0, __c0, 0) as any as S.Schema<AddDomainRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<Domain>,
+  input: __S(7968, __c249, 0) as any as S.Schema<AddDomainRequest>,
+  output: __S(8004, __c250, 4) as any as S.Schema<Domain>,
   errors: [BadRequest, Forbidden, UnprocessableEntity, UnknownClerkError],
   protocol: ClerkProtocol,
   retry: Retry.Retry,
@@ -6090,8 +6090,8 @@ export const addRolesToRoleSet: API.OperationMethod<
   AddRolesToRoleSetError,
   ClerkOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(7, __c0, 7) as any as S.Schema<AddRolesToRoleSetRequest>,
-  output: __S(12, __c1, 4) as any as S.Schema<RoleSet>,
+  input: __S(8576, __c268, 0) as any as S.Schema<AddRolesToRoleSetRequest>,
+  output: __S(8675, __c271, 3) as any as S.Schema<RoleSet>,
   errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity, UnknownClerkError],
   protocol: ClerkProtocol,
   retry: Retry.Retry,
@@ -6111,8 +6111,8 @@ export const adjustOrganizationBillingCreditBalance: API.OperationMethod<
   AdjustOrganizationBillingCreditBalanceError,
   ClerkOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(13, __c1, 5) as any as S.Schema<AdjustOrganizationBillingCreditBalanceRequest>,
-  output: __S(15, __c1, 7) as any as S.Schema<CommerceCreditLedgerResponse>,
+  input: __S(9088, __c284, 0) as any as S.Schema<AdjustOrganizationBillingCreditBalanceRequest>,
+  output: __S(9120, __c285, 0) as any as S.Schema<CommerceCreditLedgerResponse>,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnprocessableEntity, UnknownClerkError],
   protocol: ClerkProtocol,
   retry: Retry.Retry,
@@ -6132,8 +6132,8 @@ export const adjustUserBillingCreditBalance: API.OperationMethod<
   AdjustUserBillingCreditBalanceError,
   ClerkOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(16, __c2, 0) as any as S.Schema<AdjustUserBillingCreditBalanceRequest>,
-  output: __S(15, __c1, 7) as any as S.Schema<CommerceCreditLedgerResponse>,
+  input: __S(9504, __c297, 0) as any as S.Schema<AdjustUserBillingCreditBalanceRequest>,
+  output: __S(9120, __c285, 0) as any as S.Schema<CommerceCreditLedgerResponse>,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnprocessableEntity, UnknownClerkError],
   protocol: ClerkProtocol,
   retry: Retry.Retry,
@@ -6153,8 +6153,8 @@ export const applyBillingSubscriptionItemDiscount: API.OperationMethod<
   ApplyBillingSubscriptionItemDiscountError,
   ClerkOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(17, __c2, 1) as any as S.Schema<ApplyBillingSubscriptionItemDiscountRequest>,
-  output: __S(18, __c2, 2) as any as S.Schema<CommerceDiscountRedemptionResponse>,
+  input: __S(9888, __c309, 0) as any as S.Schema<ApplyBillingSubscriptionItemDiscountRequest>,
+  output: __S(9920, __c310, 0) as any as S.Schema<CommerceDiscountRedemptionResponse>,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnprocessableEntity, UnknownClerkError],
   protocol: ClerkProtocol,
   retry: Retry.Retry,
@@ -6172,8 +6172,8 @@ export const assignPermissionToOrganizationRole: API.OperationMethod<
   AssignPermissionToOrganizationRoleError,
   ClerkOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(19, __c2, 3) as any as S.Schema<AssignPermissionToOrganizationRoleRequest>,
-  output: __S(22, __c2, 6) as any as S.Schema<Role>,
+  input: __S(0, __c0, 0) as any as S.Schema<AssignPermissionToOrganizationRoleRequest>,
+  output: __S(96, __c3, 0) as any as S.Schema<Role>,
   errors: [Forbidden, NotFound, Conflict, UnknownClerkError],
   protocol: ClerkProtocol,
   retry: Retry.Retry,
@@ -6187,8 +6187,8 @@ export const attemptEmailAddressVerification: API.OperationMethod<
   AttemptEmailAddressVerificationError,
   ClerkOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(23, __c2, 7) as any as S.Schema<AttemptEmailAddressVerificationRequest>,
-  output: __S(24, __c3, 0) as any as S.Schema<AttemptEmailAddressVerificationResponse>,
+  input: __S(576, __c18, 0) as any as S.Schema<AttemptEmailAddressVerificationRequest>,
+  output: __S(608, __c19, 0) as any as S.Schema<AttemptEmailAddressVerificationResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownClerkError],
   protocol: ClerkProtocol,
   retry: Retry.Retry,
@@ -6207,8 +6207,8 @@ export const attemptPhoneNumberVerification: API.OperationMethod<
   AttemptPhoneNumberVerificationError,
   ClerkOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(25, __c3, 1) as any as S.Schema<AttemptPhoneNumberVerificationRequest>,
-  output: __S(24, __c3, 0) as any as S.Schema<AttemptPhoneNumberVerificationResponse>,
+  input: __S(1088, __c34, 0) as any as S.Schema<AttemptPhoneNumberVerificationRequest>,
+  output: __S(608, __c19, 0) as any as S.Schema<AttemptPhoneNumberVerificationResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity, UnknownClerkError],
   protocol: ClerkProtocol,
   retry: Retry.Retry,
@@ -6218,8 +6218,8 @@ export type BanUserError = ClerkOpError;
 /** Ban a user Marks the given user as banned, which means that all their sessions are revoked and they are not allowed to sign in again. */
 export const banUser: API.OperationMethod<BanUserRequest, User, BanUserError, ClerkOpContext> =
   /*@__PURE__*/ API.make(() => ({
-    input: __S(26, __c3, 2) as any as S.Schema<BanUserRequest>,
-    output: __S(53, __c6, 5) as any as S.Schema<User>,
+    input: __S(1536, __c48, 0) as any as S.Schema<BanUserRequest>,
+    output: __S(1809, __c56, 17) as any as S.Schema<User>,
     errors: [UnknownClerkError],
     protocol: ClerkProtocol,
     retry: Retry.Retry,
@@ -6233,8 +6233,8 @@ export const banUser2: API.OperationMethod<
   BanUser2Error,
   ClerkOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(54, __c6, 6) as any as S.Schema<BanUserRequest2>,
-  output: __S(56, __c7, 0) as any as S.Schema<BanUserResponse>,
+  input: __S(2176, __c68, 0) as any as S.Schema<BanUserRequest2>,
+  output: __S(2209, __c69, 1) as any as S.Schema<BanUserResponse>,
   errors: [BadRequest, UnknownClerkError],
   protocol: ClerkProtocol,
   retry: Retry.Retry,
@@ -6253,8 +6253,8 @@ export const cancelCommerceSubscriptionItem: API.OperationMethod<
   CancelCommerceSubscriptionItemError,
   ClerkOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(57, __c7, 1) as any as S.Schema<CancelCommerceSubscriptionItemRequest>,
-  output: __S(86, __c10, 6) as any as S.Schema<CommerceSubscriptionItem>,
+  input: __S(2656, __c83, 0) as any as S.Schema<CancelCommerceSubscriptionItemRequest>,
+  output: __S(2721, __c85, 1) as any as S.Schema<CommerceSubscriptionItem>,
   errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity, UnknownClerkError],
   protocol: ClerkProtocol,
   retry: Retry.Retry,
@@ -6272,8 +6272,8 @@ export const changeProductionInstanceDomain: API.OperationMethod<
   ChangeProductionInstanceDomainError,
   ClerkOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(87, __c10, 7) as any as S.Schema<ChangeProductionInstanceDomainRequest>,
-  output: __S(88, __c11, 0) as any as S.Schema<ChangeProductionInstanceDomainResponse>,
+  input: __S(3200, __c100, 0) as any as S.Schema<ChangeProductionInstanceDomainRequest>,
+  output: __S(3232, __c101, 0) as any as S.Schema<ChangeProductionInstanceDomainResponse>,
   errors: [BadRequest, Forbidden, UnprocessableEntity, UnknownClerkError],
   protocol: ClerkProtocol,
   retry: Retry.Retry,
@@ -6287,8 +6287,8 @@ export const createActorToken: API.OperationMethod<
   CreateActorTokenError,
   ClerkOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(90, __c11, 2) as any as S.Schema<CreateActorTokenRequest>,
-  output: __S(91, __c11, 3) as any as S.Schema<ActorToken>,
+  input: __S(3649, __c114, 1) as any as S.Schema<CreateActorTokenRequest>,
+  output: __S(3680, __c115, 0) as any as S.Schema<ActorToken>,
   errors: [BadRequest, Forbidden, UnprocessableEntity, UnknownClerkError],
   protocol: ClerkProtocol,
   retry: Retry.Retry,
@@ -6302,8 +6302,8 @@ export const createAdminPortalLinkToken: API.OperationMethod<
   CreateAdminPortalLinkTokenError,
   ClerkOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(92, __c11, 4) as any as S.Schema<CreateAdminPortalLinkTokenRequest>,
-  output: __S(93, __c11, 5) as any as S.Schema<CreateAdminPortalLinkTokenResponse>,
+  input: __S(4032, __c126, 0) as any as S.Schema<CreateAdminPortalLinkTokenRequest>,
+  output: __S(4033, __c126, 1) as any as S.Schema<CreateAdminPortalLinkTokenResponse>,
   errors: [BadRequest, Forbidden, Conflict, UnknownClerkError],
   protocol: ClerkProtocol,
   retry: Retry.Retry,
@@ -6317,8 +6317,8 @@ export const createAgentTask: API.OperationMethod<
   CreateAgentTaskError,
   ClerkOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(95, __c11, 7) as any as S.Schema<CreateAgentTaskRequest>,
-  output: __S(96, __c12, 0) as any as S.Schema<AgentTask>,
+  input: __S(4385, __c137, 1) as any as S.Schema<CreateAgentTaskRequest>,
+  output: __S(4416, __c138, 0) as any as S.Schema<AgentTask>,
   errors: [BadRequest, NotFound, UnprocessableEntity, UnknownClerkError],
   protocol: ClerkProtocol,
   retry: Retry.Retry,
@@ -6332,8 +6332,8 @@ export const createAllowlistIdentifier: API.OperationMethod<
   CreateAllowlistIdentifierError,
   ClerkOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(97, __c12, 1) as any as S.Schema<CreateAllowlistIdentifierRequest>,
-  output: __S(98, __c12, 2) as any as S.Schema<AllowlistIdentifier>,
+  input: __S(4768, __c149, 0) as any as S.Schema<CreateAllowlistIdentifierRequest>,
+  output: __S(4800, __c150, 0) as any as S.Schema<AllowlistIdentifier>,
   errors: [BadRequest, UnprocessableEntity, UnknownClerkError],
   protocol: ClerkProtocol,
   retry: Retry.Retry,
@@ -6347,8 +6347,8 @@ export const createApiKey: API.OperationMethod<
   CreateApiKeyError,
   ClerkOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(99, __c12, 3) as any as S.Schema<CreateApiKeyRequest>,
-  output: __S(100, __c12, 4) as any as S.Schema<CreateApiKeyResponse>,
+  input: __S(5184, __c162, 0) as any as S.Schema<CreateApiKeyRequest>,
+  output: __S(5185, __c162, 1) as any as S.Schema<CreateApiKeyResponse>,
   errors: [BadRequest, Conflict, UnknownClerkError],
   protocol: ClerkProtocol,
   retry: Retry.Retry,
@@ -6362,8 +6362,8 @@ export const createBillingPrice: API.OperationMethod<
   CreateBillingPriceError,
   ClerkOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(101, __c12, 5) as any as S.Schema<CreateBillingPriceRequest>,
-  output: __S(102, __c12, 6) as any as S.Schema<BillingPriceResponse>,
+  input: __S(5536, __c173, 0) as any as S.Schema<CreateBillingPriceRequest>,
+  output: __S(5568, __c174, 0) as any as S.Schema<BillingPriceResponse>,
   errors: [BadRequest, NotFound, UnprocessableEntity, UnknownClerkError],
   protocol: ClerkProtocol,
   retry: Retry.Retry,
@@ -6383,8 +6383,8 @@ export const createBillingPriceTransition: API.OperationMethod<
   CreateBillingPriceTransitionError,
   ClerkOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(103, __c12, 7) as any as S.Schema<CreateBillingPriceTransitionRequest>,
-  output: __S(111, __c13, 7) as any as S.Schema<CommercePriceTransitionResponse>,
+  input: __S(5920, __c185, 0) as any as S.Schema<CreateBillingPriceTransitionRequest>,
+  output: __S(5922, __c185, 2) as any as S.Schema<CommercePriceTransitionResponse>,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnprocessableEntity, UnknownClerkError],
   protocol: ClerkProtocol,
   retry: Retry.Retry,
@@ -6398,8 +6398,8 @@ export const createBlocklistIdentifier: API.OperationMethod<
   CreateBlocklistIdentifierError,
   ClerkOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(112, __c14, 0) as any as S.Schema<CreateBlocklistIdentifierRequest>,
-  output: __S(113, __c14, 1) as any as S.Schema<BlocklistIdentifier>,
+  input: __S(6304, __c197, 0) as any as S.Schema<CreateBlocklistIdentifierRequest>,
+  output: __S(6336, __c198, 0) as any as S.Schema<BlocklistIdentifier>,
   errors: [BadRequest, UnprocessableEntity, UnknownClerkError],
   protocol: ClerkProtocol,
   retry: Retry.Retry,
@@ -6413,8 +6413,8 @@ export const createBulkInvitations: API.OperationMethod<
   CreateBulkInvitationsError,
   ClerkOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(116, __c14, 4) as any as S.Schema<CreateBulkInvitationsRequest>,
-  output: __S(119, __c14, 7) as any as S.Schema<CreateBulkInvitationsResponse>,
+  input: __S(6530, __c204, 2) as any as S.Schema<CreateBulkInvitationsRequest>,
+  output: __S(6531, __c204, 3) as any as S.Schema<CreateBulkInvitationsResponse>,
   errors: [BadRequest, UnprocessableEntity, UnknownClerkError],
   protocol: ClerkProtocol,
   retry: Retry.Retry,
@@ -6428,8 +6428,8 @@ export const createBulkWaitlistEntries: API.OperationMethod<
   CreateBulkWaitlistEntriesError,
   ClerkOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(122, __c15, 2) as any as S.Schema<CreateBulkWaitlistEntriesRequest>,
-  output: __S(125, __c15, 5) as any as S.Schema<CreateBulkWaitlistEntriesResponse>,
+  input: __S(6626, __c207, 2) as any as S.Schema<CreateBulkWaitlistEntriesRequest>,
+  output: __S(6627, __c207, 3) as any as S.Schema<CreateBulkWaitlistEntriesResponse>,
   errors: [BadRequest, UnprocessableEntity, UnknownClerkError],
   protocol: ClerkProtocol,
   retry: Retry.Retry,
@@ -6443,8 +6443,8 @@ export const createDirectory: API.OperationMethod<
   CreateDirectoryError,
   ClerkOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(128, __c16, 0) as any as S.Schema<CreateDirectoryRequest>,
-  output: __S(131, __c16, 3) as any as S.Schema<Directory>,
+  input: __S(6722, __c210, 2) as any as S.Schema<CreateDirectoryRequest>,
+  output: __S(6752, __c211, 0) as any as S.Schema<Directory>,
   errors: [BadRequest, Forbidden, UnprocessableEntity, UnknownClerkError],
   protocol: ClerkProtocol,
   retry: Retry.Retry,
@@ -6463,8 +6463,8 @@ export const createDirectoryGroupRoleMapping: API.OperationMethod<
   CreateDirectoryGroupRoleMappingError,
   ClerkOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(132, __c16, 4) as any as S.Schema<CreateDirectoryGroupRoleMappingRequest>,
-  output: __S(133, __c16, 5) as any as S.Schema<DirectoryGroupRoleMapping>,
+  input: __S(6816, __c213, 0) as any as S.Schema<CreateDirectoryGroupRoleMappingRequest>,
+  output: __S(6848, __c214, 0) as any as S.Schema<DirectoryGroupRoleMapping>,
   errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity, UnknownClerkError],
   protocol: ClerkProtocol,
   retry: Retry.Retry,
@@ -6484,8 +6484,8 @@ export const createEmailAddress: API.OperationMethod<
   CreateEmailAddressError,
   ClerkOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(134, __c16, 6) as any as S.Schema<CreateEmailAddressRequest>,
-  output: __S(30, __c3, 6) as any as S.Schema<EmailAddress>,
+  input: __S(6880, __c215, 0) as any as S.Schema<CreateEmailAddressRequest>,
+  output: __S(1632, __c51, 0) as any as S.Schema<EmailAddress>,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnprocessableEntity, UnknownClerkError],
   protocol: ClerkProtocol,
   retry: Retry.Retry,
@@ -6504,8 +6504,8 @@ export const createEnterpriseConnection: API.OperationMethod<
   CreateEnterpriseConnectionError,
   ClerkOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(141, __c17, 5) as any as S.Schema<CreateEnterpriseConnectionRequest>,
-  output: __S(146, __c18, 2) as any as S.Schema<EnterpriseConnection>,
+  input: __S(6913, __c216, 1) as any as S.Schema<CreateEnterpriseConnectionRequest>,
+  output: __S(6951, __c217, 7) as any as S.Schema<EnterpriseConnection>,
   errors: [Forbidden, NotFound, Conflict, UnprocessableEntity, UnknownClerkError],
   protocol: ClerkProtocol,
   retry: Retry.Retry,
@@ -6519,8 +6519,8 @@ export const createEnterpriseConnectionTestRun: API.OperationMethod<
   CreateEnterpriseConnectionTestRunError,
   ClerkOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(147, __c18, 3) as any as S.Schema<CreateEnterpriseConnectionTestRunRequest>,
-  output: __S(148, __c18, 4) as any as S.Schema<EnterpriseConnectionTestRunResponse>,
+  input: __S(7008, __c219, 0) as any as S.Schema<CreateEnterpriseConnectionTestRunRequest>,
+  output: __S(7009, __c219, 1) as any as S.Schema<EnterpriseConnectionTestRunResponse>,
   errors: [Forbidden, NotFound, UnknownClerkError],
   protocol: ClerkProtocol,
   retry: Retry.Retry,
@@ -6534,8 +6534,8 @@ export const createInvitation: API.OperationMethod<
   CreateInvitationError,
   ClerkOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(149, __c18, 5) as any as S.Schema<CreateInvitationRequest>,
-  output: __S(117, __c14, 5) as any as S.Schema<Invitation>,
+  input: __S(7040, __c220, 0) as any as S.Schema<CreateInvitationRequest>,
+  output: __S(6592, __c206, 0) as any as S.Schema<Invitation>,
   errors: [BadRequest, UnprocessableEntity, UnknownClerkError],
   protocol: ClerkProtocol,
   retry: Retry.Retry,
@@ -6549,8 +6549,8 @@ export const createJWTTemplate: API.OperationMethod<
   CreateJWTTemplateError,
   ClerkOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(150, __c18, 6) as any as S.Schema<CreateJWTTemplateRequest>,
-  output: __S(151, __c18, 7) as any as S.Schema<JWTTemplate>,
+  input: __S(7072, __c221, 0) as any as S.Schema<CreateJWTTemplateRequest>,
+  output: __S(7104, __c222, 0) as any as S.Schema<JWTTemplate>,
   errors: [BadRequest, UnprocessableEntity, UnknownClerkError],
   protocol: ClerkProtocol,
   retry: Retry.Retry,
@@ -6564,8 +6564,8 @@ export const createM2MToken: API.OperationMethod<
   CreateM2MTokenError,
   ClerkOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(152, __c19, 0) as any as S.Schema<CreateM2MTokenRequest>,
-  output: __S(153, __c19, 1) as any as S.Schema<CreateM2MTokenResponse>,
+  input: __S(7136, __c223, 0) as any as S.Schema<CreateM2MTokenRequest>,
+  output: __S(7137, __c223, 1) as any as S.Schema<CreateM2MTokenResponse>,
   errors: [BadRequest, Conflict, UnknownClerkError],
   protocol: ClerkProtocol,
   retry: Retry.Retry,
@@ -6579,8 +6579,8 @@ export const createMachine: API.OperationMethod<
   CreateMachineError,
   ClerkOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(154, __c19, 2) as any as S.Schema<CreateMachineRequest>,
-  output: __S(157, __c19, 5) as any as S.Schema<CreateMachineResponse>,
+  input: __S(7168, __c224, 0) as any as S.Schema<CreateMachineRequest>,
+  output: __S(7169, __c224, 1) as any as S.Schema<CreateMachineResponse>,
   errors: [BadRequest, Forbidden, UnprocessableEntity, UnknownClerkError],
   protocol: ClerkProtocol,
   retry: Retry.Retry,
@@ -6600,8 +6600,8 @@ export const createMachineScope: API.OperationMethod<
   CreateMachineScopeError,
   ClerkOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(158, __c19, 6) as any as S.Schema<CreateMachineScopeRequest>,
-  output: __S(159, __c19, 7) as any as S.Schema<MachineScope>,
+  input: __S(7232, __c226, 0) as any as S.Schema<CreateMachineScopeRequest>,
+  output: __S(7233, __c226, 1) as any as S.Schema<MachineScope>,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnprocessableEntity, UnknownClerkError],
   protocol: ClerkProtocol,
   retry: Retry.Retry,
@@ -6619,8 +6619,8 @@ export const createOAuthApplication: API.OperationMethod<
   CreateOAuthApplicationError,
   ClerkOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(160, __c20, 0) as any as S.Schema<CreateOAuthApplicationRequest>,
-  output: __S(161, __c20, 1) as any as S.Schema<CreateOAuthApplicationResponse>,
+  input: __S(7264, __c227, 0) as any as S.Schema<CreateOAuthApplicationRequest>,
+  output: __S(7265, __c227, 1) as any as S.Schema<CreateOAuthApplicationResponse>,
   errors: [BadRequest, Forbidden, UnprocessableEntity, UnknownClerkError],
   protocol: ClerkProtocol,
   retry: Retry.Retry,
@@ -6634,8 +6634,8 @@ export const createOrganization: API.OperationMethod<
   CreateOrganizationError,
   ClerkOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(162, __c20, 2) as any as S.Schema<CreateOrganizationRequest>,
-  output: __S(45, __c5, 5) as any as S.Schema<Organization>,
+  input: __S(7296, __c228, 0) as any as S.Schema<CreateOrganizationRequest>,
+  output: __S(1664, __c52, 0) as any as S.Schema<Organization>,
   errors: [BadRequest, Forbidden, UnprocessableEntity, UnknownClerkError],
   protocol: ClerkProtocol,
   retry: Retry.Retry,
@@ -6654,8 +6654,8 @@ export const createOrganizationDomain: API.OperationMethod<
   CreateOrganizationDomainError,
   ClerkOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(163, __c20, 3) as any as S.Schema<CreateOrganizationDomainRequest>,
-  output: __S(166, __c20, 6) as any as S.Schema<OrganizationDomain>,
+  input: __S(7328, __c229, 0) as any as S.Schema<CreateOrganizationDomainRequest>,
+  output: __S(7393, __c231, 1) as any as S.Schema<OrganizationDomain>,
   errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity, UnknownClerkError],
   protocol: ClerkProtocol,
   retry: Retry.Retry,
@@ -6674,8 +6674,8 @@ export const createOrganizationInvitation: API.OperationMethod<
   CreateOrganizationInvitationError,
   ClerkOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(167, __c20, 7) as any as S.Schema<CreateOrganizationInvitationRequest>,
-  output: __S(169, __c21, 1) as any as S.Schema<OrganizationInvitation>,
+  input: __S(7424, __c232, 0) as any as S.Schema<CreateOrganizationInvitationRequest>,
+  output: __S(7488, __c234, 0) as any as S.Schema<OrganizationInvitation>,
   errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity, UnknownClerkError],
   protocol: ClerkProtocol,
   retry: Retry.Retry,
@@ -6694,8 +6694,8 @@ export const createOrganizationInvitationBulk: API.OperationMethod<
   CreateOrganizationInvitationBulkError,
   ClerkOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(173, __c21, 5) as any as S.Schema<CreateOrganizationInvitationBulkRequest>,
-  output: __S(175, __c21, 7) as any as S.Schema<OrganizationInvitations>,
+  input: __S(7522, __c235, 2) as any as S.Schema<CreateOrganizationInvitationBulkRequest>,
+  output: __S(7585, __c237, 1) as any as S.Schema<OrganizationInvitations>,
   errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity, UnknownClerkError],
   protocol: ClerkProtocol,
   retry: Retry.Retry,
@@ -6714,8 +6714,8 @@ export const createOrganizationMembership: API.OperationMethod<
   CreateOrganizationMembershipError,
   ClerkOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(176, __c22, 0) as any as S.Schema<CreateOrganizationMembershipRequest>,
-  output: __S(47, __c5, 7) as any as S.Schema<OrganizationMembership>,
+  input: __S(7616, __c238, 0) as any as S.Schema<CreateOrganizationMembershipRequest>,
+  output: __S(1697, __c53, 1) as any as S.Schema<OrganizationMembership>,
   errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity, UnknownClerkError],
   protocol: ClerkProtocol,
   retry: Retry.Retry,
@@ -6733,8 +6733,8 @@ export const createOrganizationPermission: API.OperationMethod<
   CreateOrganizationPermissionError,
   ClerkOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(177, __c22, 1) as any as S.Schema<CreateOrganizationPermissionRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<Permission>,
+  input: __S(7648, __c239, 0) as any as S.Schema<CreateOrganizationPermissionRequest>,
+  output: __S(32, __c1, 0) as any as S.Schema<Permission>,
   errors: [BadRequest, NotFound, UnprocessableEntity, UnknownClerkError],
   protocol: ClerkProtocol,
   retry: Retry.Retry,
@@ -6753,8 +6753,8 @@ export const createOrganizationRole: API.OperationMethod<
   CreateOrganizationRoleError,
   ClerkOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(178, __c22, 2) as any as S.Schema<CreateOrganizationRoleRequest>,
-  output: __S(22, __c2, 6) as any as S.Schema<Role>,
+  input: __S(7680, __c240, 0) as any as S.Schema<CreateOrganizationRoleRequest>,
+  output: __S(96, __c3, 0) as any as S.Schema<Role>,
   errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity, UnknownClerkError],
   protocol: ClerkProtocol,
   retry: Retry.Retry,
@@ -6773,8 +6773,8 @@ export const createPhoneNumber: API.OperationMethod<
   CreatePhoneNumberError,
   ClerkOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(179, __c22, 3) as any as S.Schema<CreatePhoneNumberRequest>,
-  output: __S(32, __c4, 0) as any as S.Schema<PhoneNumber>,
+  input: __S(7712, __c241, 0) as any as S.Schema<CreatePhoneNumberRequest>,
+  output: __S(1728, __c54, 0) as any as S.Schema<PhoneNumber>,
   errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity, UnknownClerkError],
   protocol: ClerkProtocol,
   retry: Retry.Retry,
@@ -6788,8 +6788,8 @@ export const createRedirectURL: API.OperationMethod<
   CreateRedirectURLError,
   ClerkOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(180, __c22, 4) as any as S.Schema<CreateRedirectURLRequest>,
-  output: __S(181, __c22, 5) as any as S.Schema<RedirectURL>,
+  input: __S(7744, __c242, 0) as any as S.Schema<CreateRedirectURLRequest>,
+  output: __S(7776, __c243, 0) as any as S.Schema<RedirectURL>,
   errors: [BadRequest, UnprocessableEntity, UnknownClerkError],
   protocol: ClerkProtocol,
   retry: Retry.Retry,
@@ -6808,8 +6808,8 @@ export const createRoleSet: API.OperationMethod<
   CreateRoleSetError,
   ClerkOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(182, __c22, 6) as any as S.Schema<CreateRoleSetRequest>,
-  output: __S(12, __c1, 4) as any as S.Schema<RoleSet>,
+  input: __S(7808, __c244, 0) as any as S.Schema<CreateRoleSetRequest>,
+  output: __S(8675, __c271, 3) as any as S.Schema<RoleSet>,
   errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity, UnknownClerkError],
   protocol: ClerkProtocol,
   retry: Retry.Retry,
@@ -6823,8 +6823,8 @@ export const createSCIMDirectory: API.OperationMethod<
   CreateSCIMDirectoryError,
   ClerkOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(185, __c23, 1) as any as S.Schema<CreateSCIMDirectoryRequest>,
-  output: __S(186, __c23, 2) as any as S.Schema<SCIMDirectory>,
+  input: __S(7842, __c245, 2) as any as S.Schema<CreateSCIMDirectoryRequest>,
+  output: __S(7872, __c246, 0) as any as S.Schema<SCIMDirectory>,
   errors: [BadRequest, Forbidden, UnprocessableEntity, UnknownClerkError],
   protocol: ClerkProtocol,
   retry: Retry.Retry,
@@ -6843,8 +6843,8 @@ export const createSCIMGroupRoleMapping: API.OperationMethod<
   CreateSCIMGroupRoleMappingError,
   ClerkOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(187, __c23, 3) as any as S.Schema<CreateSCIMGroupRoleMappingRequest>,
-  output: __S(188, __c23, 4) as any as S.Schema<SCIMGroupRoleMapping>,
+  input: __S(7904, __c247, 0) as any as S.Schema<CreateSCIMGroupRoleMappingRequest>,
+  output: __S(7936, __c248, 0) as any as S.Schema<SCIMGroupRoleMapping>,
   errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity, UnknownClerkError],
   protocol: ClerkProtocol,
   retry: Retry.Retry,
@@ -6858,8 +6858,8 @@ export const createSession: API.OperationMethod<
   CreateSessionError,
   ClerkOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(189, __c23, 5) as any as S.Schema<CreateSessionRequest>,
-  output: __S(193, __c24, 1) as any as S.Schema<Session>,
+  input: __S(8032, __c251, 0) as any as S.Schema<CreateSessionRequest>,
+  output: __S(8067, __c252, 3) as any as S.Schema<Session>,
   errors: [BadRequest, NotFound, UnprocessableEntity, UnknownClerkError],
   protocol: ClerkProtocol,
   retry: Retry.Retry,
@@ -6873,8 +6873,8 @@ export const createSessionToken: API.OperationMethod<
   CreateSessionTokenError,
   ClerkOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(194, __c24, 2) as any as S.Schema<CreateSessionTokenRequest>,
-  output: __S(195, __c24, 3) as any as S.Schema<CreateSessionTokenResponse>,
+  input: __S(8096, __c253, 0) as any as S.Schema<CreateSessionTokenRequest>,
+  output: __S(8128, __c254, 0) as any as S.Schema<CreateSessionTokenResponse>,
   errors: [NotFound, UnknownClerkError],
   protocol: ClerkProtocol,
   retry: Retry.Retry,
@@ -6888,8 +6888,8 @@ export const createSessionTokenFromTemplate: API.OperationMethod<
   CreateSessionTokenFromTemplateError,
   ClerkOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(196, __c24, 4) as any as S.Schema<CreateSessionTokenFromTemplateRequest>,
-  output: __S(195, __c24, 3) as any as S.Schema<CreateSessionTokenFromTemplateResponse>,
+  input: __S(8160, __c255, 0) as any as S.Schema<CreateSessionTokenFromTemplateRequest>,
+  output: __S(8128, __c254, 0) as any as S.Schema<CreateSessionTokenFromTemplateResponse>,
   errors: [NotFound, UnknownClerkError],
   protocol: ClerkProtocol,
   retry: Retry.Retry,
@@ -6903,8 +6903,8 @@ export const createSignInToken: API.OperationMethod<
   CreateSignInTokenError,
   ClerkOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(197, __c24, 5) as any as S.Schema<CreateSignInTokenRequest>,
-  output: __S(198, __c24, 6) as any as S.Schema<SignInToken>,
+  input: __S(8192, __c256, 0) as any as S.Schema<CreateSignInTokenRequest>,
+  output: __S(8224, __c257, 0) as any as S.Schema<SignInToken>,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownClerkError],
   protocol: ClerkProtocol,
   retry: Retry.Retry,
@@ -6922,8 +6922,8 @@ export const createSSOBypassAllowlistUser: API.OperationMethod<
   CreateSSOBypassAllowlistUserError,
   ClerkOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(199, __c24, 7) as any as S.Schema<CreateSSOBypassAllowlistUserRequest>,
-  output: __S(201, __c25, 1) as any as S.Schema<SSOBypassAllowlistUser>,
+  input: __S(8256, __c258, 0) as any as S.Schema<CreateSSOBypassAllowlistUserRequest>,
+  output: __S(8289, __c259, 1) as any as S.Schema<SSOBypassAllowlistUser>,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownClerkError],
   protocol: ClerkProtocol,
   retry: Retry.Retry,
@@ -6937,8 +6937,8 @@ export const createSvixApp: API.OperationMethod<
   CreateSvixAppError,
   ClerkOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(202, __c25, 2) as any as S.Schema<CreateSvixAppRequest>,
-  output: __S(203, __c25, 3) as any as S.Schema<SvixURL>,
+  input: __S(8320, __c260, 0) as any as S.Schema<CreateSvixAppRequest>,
+  output: __S(8352, __c261, 0) as any as S.Schema<SvixURL>,
   errors: [BadRequest, UnknownClerkError],
   protocol: ClerkProtocol,
   retry: Retry.Retry,
@@ -6952,8 +6952,8 @@ export const createTestingToken: API.OperationMethod<
   CreateTestingTokenError,
   ClerkOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(204, __c25, 4) as any as S.Schema<CreateTestingTokenRequest>,
-  output: __S(205, __c25, 5) as any as S.Schema<TestingToken>,
+  input: __S(8384, __c262, 0) as any as S.Schema<CreateTestingTokenRequest>,
+  output: __S(8385, __c262, 1) as any as S.Schema<TestingToken>,
   errors: [UnknownClerkError],
   protocol: ClerkProtocol,
   retry: Retry.Retry,
@@ -6967,8 +6967,8 @@ export const createUser: API.OperationMethod<
   CreateUserError,
   ClerkOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(207, __c25, 7) as any as S.Schema<CreateUserRequest>,
-  output: __S(53, __c6, 5) as any as S.Schema<User>,
+  input: __S(8416, __c263, 0) as any as S.Schema<CreateUserRequest>,
+  output: __S(1809, __c56, 17) as any as S.Schema<User>,
   errors: [BadRequest, Forbidden, UnprocessableEntity, UnknownClerkError],
   protocol: ClerkProtocol,
   retry: Retry.Retry,
@@ -6982,8 +6982,8 @@ export const createWaitlistEntry: API.OperationMethod<
   CreateWaitlistEntryError,
   ClerkOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(208, __c26, 0) as any as S.Schema<CreateWaitlistEntryRequest>,
-  output: __S(123, __c15, 3) as any as S.Schema<WaitlistEntry>,
+  input: __S(8480, __c265, 0) as any as S.Schema<CreateWaitlistEntryRequest>,
+  output: __S(6688, __c209, 0) as any as S.Schema<WaitlistEntry>,
   errors: [BadRequest, UnprocessableEntity, UnknownClerkError],
   protocol: ClerkProtocol,
   retry: Retry.Retry,
@@ -6997,8 +6997,8 @@ export const deleteAllowlistIdentifier: API.OperationMethod<
   DeleteAllowlistIdentifierError,
   ClerkOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(209, __c26, 1) as any as S.Schema<DeleteAllowlistIdentifierRequest>,
-  output: __S(210, __c26, 2) as any as S.Schema<DeletedObject>,
+  input: __S(8512, __c266, 0) as any as S.Schema<DeleteAllowlistIdentifierRequest>,
+  output: __S(8544, __c267, 0) as any as S.Schema<DeletedObject>,
   errors: [NotFound, UnknownClerkError],
   protocol: ClerkProtocol,
   retry: Retry.Retry,
@@ -7012,8 +7012,8 @@ export const deleteApiKey: API.OperationMethod<
   DeleteApiKeyError,
   ClerkOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(211, __c26, 3) as any as S.Schema<DeleteApiKeyRequest>,
-  output: __S(212, __c26, 4) as any as S.Schema<DeleteApiKeyResponse>,
+  input: __S(8704, __c272, 0) as any as S.Schema<DeleteApiKeyRequest>,
+  output: __S(8705, __c272, 1) as any as S.Schema<DeleteApiKeyResponse>,
   errors: [BadRequest, NotFound, UnknownClerkError],
   protocol: ClerkProtocol,
   retry: Retry.Retry,
@@ -7027,8 +7027,8 @@ export const deleteBackupCode: API.OperationMethod<
   DeleteBackupCodeError,
   ClerkOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(213, __c26, 5) as any as S.Schema<DeleteBackupCodeRequest>,
-  output: __S(214, __c26, 6) as any as S.Schema<DeleteBackupCodeResponse>,
+  input: __S(8736, __c273, 0) as any as S.Schema<DeleteBackupCodeRequest>,
+  output: __S(8768, __c274, 0) as any as S.Schema<DeleteBackupCodeResponse>,
   errors: [NotFound, UnknownClerkError],
   protocol: ClerkProtocol,
   retry: Retry.Retry,
@@ -7042,8 +7042,8 @@ export const deleteBlocklistIdentifier: API.OperationMethod<
   DeleteBlocklistIdentifierError,
   ClerkOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(215, __c26, 7) as any as S.Schema<DeleteBlocklistIdentifierRequest>,
-  output: __S(210, __c26, 2) as any as S.Schema<DeletedObject>,
+  input: __S(8800, __c275, 0) as any as S.Schema<DeleteBlocklistIdentifierRequest>,
+  output: __S(8544, __c267, 0) as any as S.Schema<DeletedObject>,
   errors: [NotFound, UnknownClerkError],
   protocol: ClerkProtocol,
   retry: Retry.Retry,
@@ -7057,8 +7057,8 @@ export const deleteDirectory: API.OperationMethod<
   DeleteDirectoryError,
   ClerkOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(216, __c27, 0) as any as S.Schema<DeleteDirectoryRequest>,
-  output: __S(210, __c26, 2) as any as S.Schema<DeletedObject>,
+  input: __S(8832, __c276, 0) as any as S.Schema<DeleteDirectoryRequest>,
+  output: __S(8544, __c267, 0) as any as S.Schema<DeletedObject>,
   errors: [Forbidden, NotFound, UnknownClerkError],
   protocol: ClerkProtocol,
   retry: Retry.Retry,
@@ -7072,8 +7072,8 @@ export const deleteDirectoryGroupRoleMapping: API.OperationMethod<
   DeleteDirectoryGroupRoleMappingError,
   ClerkOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(217, __c27, 1) as any as S.Schema<DeleteDirectoryGroupRoleMappingRequest>,
-  output: __S(218, __c27, 2) as any as S.Schema<DeleteDirectoryGroupRoleMappingResponse>,
+  input: __S(8864, __c277, 0) as any as S.Schema<DeleteDirectoryGroupRoleMappingRequest>,
+  output: __S(8896, __c278, 0) as any as S.Schema<DeleteDirectoryGroupRoleMappingResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownClerkError],
   protocol: ClerkProtocol,
   retry: Retry.Retry,
@@ -7087,8 +7087,8 @@ export const deleteDomain: API.OperationMethod<
   DeleteDomainError,
   ClerkOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(219, __c27, 3) as any as S.Schema<DeleteDomainRequest>,
-  output: __S(210, __c26, 2) as any as S.Schema<DeletedObject>,
+  input: __S(8928, __c279, 0) as any as S.Schema<DeleteDomainRequest>,
+  output: __S(8544, __c267, 0) as any as S.Schema<DeletedObject>,
   errors: [Forbidden, NotFound, UnknownClerkError],
   protocol: ClerkProtocol,
   retry: Retry.Retry,
@@ -7102,8 +7102,8 @@ export const deleteEmailAddress: API.OperationMethod<
   DeleteEmailAddressError,
   ClerkOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(220, __c27, 4) as any as S.Schema<DeleteEmailAddressRequest>,
-  output: __S(210, __c26, 2) as any as S.Schema<DeletedObject>,
+  input: __S(8960, __c280, 0) as any as S.Schema<DeleteEmailAddressRequest>,
+  output: __S(8544, __c267, 0) as any as S.Schema<DeletedObject>,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnknownClerkError],
   protocol: ClerkProtocol,
   retry: Retry.Retry,
@@ -7117,8 +7117,8 @@ export const deleteEnterpriseConnection: API.OperationMethod<
   DeleteEnterpriseConnectionError,
   ClerkOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(221, __c27, 5) as any as S.Schema<DeleteEnterpriseConnectionRequest>,
-  output: __S(210, __c26, 2) as any as S.Schema<DeletedObject>,
+  input: __S(8992, __c281, 0) as any as S.Schema<DeleteEnterpriseConnectionRequest>,
+  output: __S(8544, __c267, 0) as any as S.Schema<DeletedObject>,
   errors: [Forbidden, NotFound, UnknownClerkError],
   protocol: ClerkProtocol,
   retry: Retry.Retry,
@@ -7132,8 +7132,8 @@ export const deleteExternalAccount: API.OperationMethod<
   DeleteExternalAccountError,
   ClerkOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(222, __c27, 6) as any as S.Schema<DeleteExternalAccountRequest>,
-  output: __S(210, __c26, 2) as any as S.Schema<DeletedObject>,
+  input: __S(9024, __c282, 0) as any as S.Schema<DeleteExternalAccountRequest>,
+  output: __S(8544, __c267, 0) as any as S.Schema<DeletedObject>,
   errors: [BadRequest, Forbidden, NotFound, UnknownClerkError],
   protocol: ClerkProtocol,
   retry: Retry.Retry,
@@ -7147,8 +7147,8 @@ export const deleteInvitation: API.OperationMethod<
   DeleteInvitationError,
   ClerkOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(223, __c27, 7) as any as S.Schema<DeleteInvitationRequest>,
-  output: __S(210, __c26, 2) as any as S.Schema<DeletedObject>,
+  input: __S(9056, __c283, 0) as any as S.Schema<DeleteInvitationRequest>,
+  output: __S(8544, __c267, 0) as any as S.Schema<DeletedObject>,
   errors: [NotFound, UnknownClerkError],
   protocol: ClerkProtocol,
   retry: Retry.Retry,
@@ -7162,8 +7162,8 @@ export const deleteJWTTemplate: API.OperationMethod<
   DeleteJWTTemplateError,
   ClerkOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(224, __c28, 0) as any as S.Schema<DeleteJWTTemplateRequest>,
-  output: __S(210, __c26, 2) as any as S.Schema<DeletedObject>,
+  input: __S(9184, __c287, 0) as any as S.Schema<DeleteJWTTemplateRequest>,
+  output: __S(8544, __c267, 0) as any as S.Schema<DeletedObject>,
   errors: [Forbidden, NotFound, UnknownClerkError],
   protocol: ClerkProtocol,
   retry: Retry.Retry,
@@ -7182,8 +7182,8 @@ export const deleteMachine: API.OperationMethod<
   DeleteMachineError,
   ClerkOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(225, __c28, 1) as any as S.Schema<DeleteMachineRequest>,
-  output: __S(226, __c28, 2) as any as S.Schema<DeleteMachineResponse>,
+  input: __S(9216, __c288, 0) as any as S.Schema<DeleteMachineRequest>,
+  output: __S(9217, __c288, 1) as any as S.Schema<DeleteMachineResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity, UnknownClerkError],
   protocol: ClerkProtocol,
   retry: Retry.Retry,
@@ -7202,8 +7202,8 @@ export const deleteMachineScope: API.OperationMethod<
   DeleteMachineScopeError,
   ClerkOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(227, __c28, 3) as any as S.Schema<DeleteMachineScopeRequest>,
-  output: __S(228, __c28, 4) as any as S.Schema<DeleteMachineScopeResponse>,
+  input: __S(9248, __c289, 0) as any as S.Schema<DeleteMachineScopeRequest>,
+  output: __S(9249, __c289, 1) as any as S.Schema<DeleteMachineScopeResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity, UnknownClerkError],
   protocol: ClerkProtocol,
   retry: Retry.Retry,
@@ -7217,8 +7217,8 @@ export const deleteOAuthApplication: API.OperationMethod<
   DeleteOAuthApplicationError,
   ClerkOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(229, __c28, 5) as any as S.Schema<DeleteOAuthApplicationRequest>,
-  output: __S(210, __c26, 2) as any as S.Schema<DeletedObject>,
+  input: __S(9280, __c290, 0) as any as S.Schema<DeleteOAuthApplicationRequest>,
+  output: __S(8544, __c267, 0) as any as S.Schema<DeletedObject>,
   errors: [Forbidden, NotFound, UnknownClerkError],
   protocol: ClerkProtocol,
   retry: Retry.Retry,
@@ -7232,8 +7232,8 @@ export const deleteOrganization: API.OperationMethod<
   DeleteOrganizationError,
   ClerkOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(230, __c28, 6) as any as S.Schema<DeleteOrganizationRequest>,
-  output: __S(210, __c26, 2) as any as S.Schema<DeletedObject>,
+  input: __S(9312, __c291, 0) as any as S.Schema<DeleteOrganizationRequest>,
+  output: __S(8544, __c267, 0) as any as S.Schema<DeletedObject>,
   errors: [NotFound, UnknownClerkError],
   protocol: ClerkProtocol,
   retry: Retry.Retry,
@@ -7247,8 +7247,8 @@ export const deleteOrganizationDomain: API.OperationMethod<
   DeleteOrganizationDomainError,
   ClerkOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(231, __c28, 7) as any as S.Schema<DeleteOrganizationDomainRequest>,
-  output: __S(210, __c26, 2) as any as S.Schema<DeletedObject>,
+  input: __S(9344, __c292, 0) as any as S.Schema<DeleteOrganizationDomainRequest>,
+  output: __S(8544, __c267, 0) as any as S.Schema<DeletedObject>,
   errors: [BadRequest, Forbidden, NotFound, UnknownClerkError],
   protocol: ClerkProtocol,
   retry: Retry.Retry,
@@ -7262,8 +7262,8 @@ export const deleteOrganizationLogo: API.OperationMethod<
   DeleteOrganizationLogoError,
   ClerkOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(232, __c29, 0) as any as S.Schema<DeleteOrganizationLogoRequest>,
-  output: __S(45, __c5, 5) as any as S.Schema<Organization>,
+  input: __S(9376, __c293, 0) as any as S.Schema<DeleteOrganizationLogoRequest>,
+  output: __S(1664, __c52, 0) as any as S.Schema<Organization>,
   errors: [NotFound, UnknownClerkError],
   protocol: ClerkProtocol,
   retry: Retry.Retry,
@@ -7277,8 +7277,8 @@ export const deleteOrganizationMembership: API.OperationMethod<
   DeleteOrganizationMembershipError,
   ClerkOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(233, __c29, 1) as any as S.Schema<DeleteOrganizationMembershipRequest>,
-  output: __S(47, __c5, 7) as any as S.Schema<OrganizationMembership>,
+  input: __S(9408, __c294, 0) as any as S.Schema<DeleteOrganizationMembershipRequest>,
+  output: __S(1697, __c53, 1) as any as S.Schema<OrganizationMembership>,
   errors: [NotFound, UnprocessableEntity, UnknownClerkError],
   protocol: ClerkProtocol,
   retry: Retry.Retry,
@@ -7292,8 +7292,8 @@ export const deleteOrganizationPermission: API.OperationMethod<
   DeleteOrganizationPermissionError,
   ClerkOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(234, __c29, 2) as any as S.Schema<DeleteOrganizationPermissionRequest>,
-  output: __S(210, __c26, 2) as any as S.Schema<DeletedObject>,
+  input: __S(9440, __c295, 0) as any as S.Schema<DeleteOrganizationPermissionRequest>,
+  output: __S(8544, __c267, 0) as any as S.Schema<DeletedObject>,
   errors: [Forbidden, NotFound, UnknownClerkError],
   protocol: ClerkProtocol,
   retry: Retry.Retry,
@@ -7307,8 +7307,8 @@ export const deleteOrganizationRole: API.OperationMethod<
   DeleteOrganizationRoleError,
   ClerkOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(235, __c29, 3) as any as S.Schema<DeleteOrganizationRoleRequest>,
-  output: __S(210, __c26, 2) as any as S.Schema<DeletedObject>,
+  input: __S(9472, __c296, 0) as any as S.Schema<DeleteOrganizationRoleRequest>,
+  output: __S(8544, __c267, 0) as any as S.Schema<DeletedObject>,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownClerkError],
   protocol: ClerkProtocol,
   retry: Retry.Retry,
@@ -7322,8 +7322,8 @@ export const deletePhoneNumber: API.OperationMethod<
   DeletePhoneNumberError,
   ClerkOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(236, __c29, 4) as any as S.Schema<DeletePhoneNumberRequest>,
-  output: __S(210, __c26, 2) as any as S.Schema<DeletedObject>,
+  input: __S(9536, __c298, 0) as any as S.Schema<DeletePhoneNumberRequest>,
+  output: __S(8544, __c267, 0) as any as S.Schema<DeletedObject>,
   errors: [BadRequest, Forbidden, NotFound, UnknownClerkError],
   protocol: ClerkProtocol,
   retry: Retry.Retry,
@@ -7337,8 +7337,8 @@ export const deleteRedirectURL: API.OperationMethod<
   DeleteRedirectURLError,
   ClerkOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(237, __c29, 5) as any as S.Schema<DeleteRedirectURLRequest>,
-  output: __S(210, __c26, 2) as any as S.Schema<DeletedObject>,
+  input: __S(9568, __c299, 0) as any as S.Schema<DeleteRedirectURLRequest>,
+  output: __S(8544, __c267, 0) as any as S.Schema<DeletedObject>,
   errors: [NotFound, UnknownClerkError],
   protocol: ClerkProtocol,
   retry: Retry.Retry,
@@ -7352,8 +7352,8 @@ export const deleteSCIMDirectory: API.OperationMethod<
   DeleteSCIMDirectoryError,
   ClerkOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(238, __c29, 6) as any as S.Schema<DeleteSCIMDirectoryRequest>,
-  output: __S(210, __c26, 2) as any as S.Schema<DeletedObject>,
+  input: __S(9600, __c300, 0) as any as S.Schema<DeleteSCIMDirectoryRequest>,
+  output: __S(8544, __c267, 0) as any as S.Schema<DeletedObject>,
   errors: [Forbidden, NotFound, UnknownClerkError],
   protocol: ClerkProtocol,
   retry: Retry.Retry,
@@ -7367,8 +7367,8 @@ export const deleteSCIMGroupRoleMapping: API.OperationMethod<
   DeleteSCIMGroupRoleMappingError,
   ClerkOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(239, __c29, 7) as any as S.Schema<DeleteSCIMGroupRoleMappingRequest>,
-  output: __S(218, __c27, 2) as any as S.Schema<DeleteSCIMGroupRoleMappingResponse>,
+  input: __S(9632, __c301, 0) as any as S.Schema<DeleteSCIMGroupRoleMappingRequest>,
+  output: __S(8896, __c278, 0) as any as S.Schema<DeleteSCIMGroupRoleMappingResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownClerkError],
   protocol: ClerkProtocol,
   retry: Retry.Retry,
@@ -7382,8 +7382,8 @@ export const deleteSSOBypassAllowlistUser: API.OperationMethod<
   DeleteSSOBypassAllowlistUserError,
   ClerkOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(240, __c30, 0) as any as S.Schema<DeleteSSOBypassAllowlistUserRequest>,
-  output: __S(210, __c26, 2) as any as S.Schema<DeletedObject>,
+  input: __S(9664, __c302, 0) as any as S.Schema<DeleteSSOBypassAllowlistUserRequest>,
+  output: __S(8544, __c267, 0) as any as S.Schema<DeletedObject>,
   errors: [Forbidden, NotFound, UnknownClerkError],
   protocol: ClerkProtocol,
   retry: Retry.Retry,
@@ -7397,8 +7397,8 @@ export const deleteSvixApp: API.OperationMethod<
   DeleteSvixAppError,
   ClerkOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(241, __c30, 1) as any as S.Schema<DeleteSvixAppRequest>,
-  output: __S(242, __c30, 2) as any as S.Schema<DeleteSvixAppResponse>,
+  input: __S(9696, __c303, 0) as any as S.Schema<DeleteSvixAppRequest>,
+  output: __S(9728, __c304, 0) as any as S.Schema<DeleteSvixAppResponse>,
   errors: [BadRequest, UnknownClerkError],
   protocol: ClerkProtocol,
   retry: Retry.Retry,
@@ -7412,8 +7412,8 @@ export const deleteTOTP: API.OperationMethod<
   DeleteTOTPError,
   ClerkOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(243, __c30, 3) as any as S.Schema<DeleteTOTPRequest>,
-  output: __S(214, __c26, 6) as any as S.Schema<DeleteTOTPResponse>,
+  input: __S(9760, __c305, 0) as any as S.Schema<DeleteTOTPRequest>,
+  output: __S(8768, __c274, 0) as any as S.Schema<DeleteTOTPResponse>,
   errors: [NotFound, UnknownClerkError],
   protocol: ClerkProtocol,
   retry: Retry.Retry,
@@ -7427,8 +7427,8 @@ export const deleteUser: API.OperationMethod<
   DeleteUserError,
   ClerkOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(244, __c30, 4) as any as S.Schema<DeleteUserRequest>,
-  output: __S(210, __c26, 2) as any as S.Schema<DeletedObject>,
+  input: __S(9792, __c306, 0) as any as S.Schema<DeleteUserRequest>,
+  output: __S(8544, __c267, 0) as any as S.Schema<DeletedObject>,
   errors: [BadRequest, NotFound, UnknownClerkError],
   protocol: ClerkProtocol,
   retry: Retry.Retry,
@@ -7442,8 +7442,8 @@ export const deleteUserPasskey: API.OperationMethod<
   DeleteUserPasskeyError,
   ClerkOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(245, __c30, 5) as any as S.Schema<DeleteUserPasskeyRequest>,
-  output: __S(210, __c26, 2) as any as S.Schema<DeletedObject>,
+  input: __S(9824, __c307, 0) as any as S.Schema<DeleteUserPasskeyRequest>,
+  output: __S(8544, __c267, 0) as any as S.Schema<DeletedObject>,
   errors: [Forbidden, NotFound, UnknownClerkError],
   protocol: ClerkProtocol,
   retry: Retry.Retry,
@@ -7457,8 +7457,8 @@ export const deleteUserProfileImage: API.OperationMethod<
   DeleteUserProfileImageError,
   ClerkOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(246, __c30, 6) as any as S.Schema<DeleteUserProfileImageRequest>,
-  output: __S(53, __c6, 5) as any as S.Schema<User>,
+  input: __S(9856, __c308, 0) as any as S.Schema<DeleteUserProfileImageRequest>,
+  output: __S(1809, __c56, 17) as any as S.Schema<User>,
   errors: [NotFound, UnknownClerkError],
   protocol: ClerkProtocol,
   retry: Retry.Retry,
@@ -7472,8 +7472,8 @@ export const deleteUserWeb3Wallet: API.OperationMethod<
   DeleteUserWeb3WalletError,
   ClerkOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(247, __c30, 7) as any as S.Schema<DeleteUserWeb3WalletRequest>,
-  output: __S(210, __c26, 2) as any as S.Schema<DeletedObject>,
+  input: __S(9952, __c311, 0) as any as S.Schema<DeleteUserWeb3WalletRequest>,
+  output: __S(8544, __c267, 0) as any as S.Schema<DeletedObject>,
   errors: [BadRequest, Forbidden, NotFound, UnknownClerkError],
   protocol: ClerkProtocol,
   retry: Retry.Retry,
@@ -7492,8 +7492,8 @@ export const deleteWaitlistEntry: API.OperationMethod<
   DeleteWaitlistEntryError,
   ClerkOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(248, __c31, 0) as any as S.Schema<DeleteWaitlistEntryRequest>,
-  output: __S(210, __c26, 2) as any as S.Schema<DeletedObject>,
+  input: __S(9984, __c312, 0) as any as S.Schema<DeleteWaitlistEntryRequest>,
+  output: __S(8544, __c267, 0) as any as S.Schema<DeletedObject>,
   errors: [BadRequest, NotFound, Conflict, UnprocessableEntity, UnknownClerkError],
   protocol: ClerkProtocol,
   retry: Retry.Retry,
@@ -7507,8 +7507,8 @@ export const disableMFA: API.OperationMethod<
   DisableMFAError,
   ClerkOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(249, __c31, 1) as any as S.Schema<DisableMFARequest>,
-  output: __S(214, __c26, 6) as any as S.Schema<DisableMFAResponse>,
+  input: __S(10016, __c313, 0) as any as S.Schema<DisableMFARequest>,
+  output: __S(8768, __c274, 0) as any as S.Schema<DisableMFAResponse>,
   errors: [NotFound, UnknownClerkError],
   protocol: ClerkProtocol,
   retry: Retry.Retry,
@@ -7527,8 +7527,8 @@ export const extendBillingSubscriptionItemFreeTrial: API.OperationMethod<
   ExtendBillingSubscriptionItemFreeTrialError,
   ClerkOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(250, __c31, 2) as any as S.Schema<ExtendBillingSubscriptionItemFreeTrialRequest>,
-  output: __S(109, __c13, 5) as any as S.Schema<CommerceSubscriptionItem2>,
+  input: __S(10048, __c314, 0) as any as S.Schema<ExtendBillingSubscriptionItemFreeTrialRequest>,
+  output: __S(5957, __c186, 5) as any as S.Schema<CommerceSubscriptionItem2>,
   errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity, UnknownClerkError],
   protocol: ClerkProtocol,
   retry: Retry.Retry,
@@ -7542,8 +7542,8 @@ export const generateSvixAuthURL: API.OperationMethod<
   GenerateSvixAuthURLError,
   ClerkOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(251, __c31, 3) as any as S.Schema<GenerateSvixAuthURLRequest>,
-  output: __S(203, __c25, 3) as any as S.Schema<SvixURL>,
+  input: __S(10080, __c315, 0) as any as S.Schema<GenerateSvixAuthURLRequest>,
+  output: __S(8352, __c261, 0) as any as S.Schema<SvixURL>,
   errors: [BadRequest, UnknownClerkError],
   protocol: ClerkProtocol,
   retry: Retry.Retry,
@@ -7557,8 +7557,8 @@ export const getApiKey: API.OperationMethod<
   GetApiKeyError,
   ClerkOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(252, __c31, 4) as any as S.Schema<GetApiKeyRequest>,
-  output: __S(253, __c31, 5) as any as S.Schema<GetApiKeyResponse>,
+  input: __S(10112, __c316, 0) as any as S.Schema<GetApiKeyRequest>,
+  output: __S(10113, __c316, 1) as any as S.Schema<GetApiKeyResponse>,
   errors: [BadRequest, NotFound, UnknownClerkError],
   protocol: ClerkProtocol,
   retry: Retry.Retry,
@@ -7572,8 +7572,8 @@ export const getApiKeys: API.OperationMethod<
   GetApiKeysError,
   ClerkOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(254, __c31, 6) as any as S.Schema<GetApiKeysRequest>,
-  output: __S(257, __c32, 1) as any as S.Schema<GetApiKeysResponse>,
+  input: __S(10144, __c317, 0) as any as S.Schema<GetApiKeysRequest>,
+  output: __S(10147, __c317, 3) as any as S.Schema<GetApiKeysResponse>,
   errors: [BadRequest, NotFound, UnknownClerkError],
   protocol: ClerkProtocol,
   retry: Retry.Retry,
@@ -7587,8 +7587,8 @@ export const getApiKeySecret: API.OperationMethod<
   GetApiKeySecretError,
   ClerkOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(258, __c32, 2) as any as S.Schema<GetApiKeySecretRequest>,
-  output: __S(259, __c32, 3) as any as S.Schema<GetApiKeySecretResponse>,
+  input: __S(10176, __c318, 0) as any as S.Schema<GetApiKeySecretRequest>,
+  output: __S(10177, __c318, 1) as any as S.Schema<GetApiKeySecretResponse>,
   errors: [BadRequest, NotFound, UnknownClerkError],
   protocol: ClerkProtocol,
   retry: Retry.Retry,
@@ -7602,8 +7602,8 @@ export const getBillingPriceList: API.OperationMethod<
   GetBillingPriceListError,
   ClerkOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(260, __c32, 4) as any as S.Schema<GetBillingPriceListRequest>,
-  output: __S(262, __c32, 6) as any as S.Schema<PaginatedBillingPriceResponse>,
+  input: __S(10208, __c319, 0) as any as S.Schema<GetBillingPriceListRequest>,
+  output: __S(10210, __c319, 2) as any as S.Schema<PaginatedBillingPriceResponse>,
   errors: [BadRequest, NotFound, UnprocessableEntity, UnknownClerkError],
   protocol: ClerkProtocol,
   retry: Retry.Retry,
@@ -7617,8 +7617,8 @@ export const getBillingStatement: API.OperationMethod<
   GetBillingStatementError,
   ClerkOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(263, __c32, 7) as any as S.Schema<GetBillingStatementRequest>,
-  output: __S(269, __c33, 5) as any as S.Schema<BillingStatement>,
+  input: __S(10240, __c320, 0) as any as S.Schema<GetBillingStatementRequest>,
+  output: __S(10275, __c321, 3) as any as S.Schema<BillingStatement>,
   errors: [BadRequest, NotFound, UnprocessableEntity, UnknownClerkError],
   protocol: ClerkProtocol,
   retry: Retry.Retry,
@@ -7632,8 +7632,8 @@ export const getBillingStatementList: API.OperationMethod<
   GetBillingStatementListError,
   ClerkOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(270, __c33, 6) as any as S.Schema<GetBillingStatementListRequest>,
-  output: __S(272, __c34, 0) as any as S.Schema<PaginatedBillingStatementResponse>,
+  input: __S(128, __c4, 0) as any as S.Schema<GetBillingStatementListRequest>,
+  output: __S(130, __c4, 2) as any as S.Schema<PaginatedBillingStatementResponse>,
   errors: [BadRequest, UnprocessableEntity, UnknownClerkError],
   protocol: ClerkProtocol,
   retry: Retry.Retry,
@@ -7651,8 +7651,8 @@ export const getBillingStatementPaymentAttempts: API.OperationMethod<
   GetBillingStatementPaymentAttemptsError,
   ClerkOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(273, __c34, 1) as any as S.Schema<GetBillingStatementPaymentAttemptsRequest>,
-  output: __S(274, __c34, 2) as any as S.Schema<PaginatedBillingPaymentAttemptResponse>,
+  input: __S(160, __c5, 0) as any as S.Schema<GetBillingStatementPaymentAttemptsRequest>,
+  output: __S(161, __c5, 1) as any as S.Schema<PaginatedBillingPaymentAttemptResponse>,
   errors: [BadRequest, NotFound, UnprocessableEntity, UnknownClerkError],
   protocol: ClerkProtocol,
   retry: Retry.Retry,
@@ -7666,8 +7666,8 @@ export const getClient: API.OperationMethod<
   GetClientError,
   ClerkOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(275, __c34, 3) as any as S.Schema<GetClientRequest>,
-  output: __S(277, __c34, 5) as any as S.Schema<Client>,
+  input: __S(192, __c6, 0) as any as S.Schema<GetClientRequest>,
+  output: __S(256, __c8, 0) as any as S.Schema<Client>,
   errors: [BadRequest, NotFound, UnknownClerkError],
   protocol: ClerkProtocol,
   retry: Retry.Retry,
@@ -7681,8 +7681,8 @@ export const getCommercePlanList: API.OperationMethod<
   GetCommercePlanListError,
   ClerkOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(278, __c34, 6) as any as S.Schema<GetCommercePlanListRequest>,
-  output: __S(280, __c35, 0) as any as S.Schema<PaginatedCommercePlanResponse>,
+  input: __S(288, __c9, 0) as any as S.Schema<GetCommercePlanListRequest>,
+  output: __S(290, __c9, 2) as any as S.Schema<PaginatedCommercePlanResponse>,
   errors: [BadRequest, UnprocessableEntity, UnknownClerkError],
   protocol: ClerkProtocol,
   retry: Retry.Retry,
@@ -7696,8 +7696,8 @@ export const getCommerceSubscriptionItemList: API.OperationMethod<
   GetCommerceSubscriptionItemListError,
   ClerkOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(281, __c35, 1) as any as S.Schema<GetCommerceSubscriptionItemListRequest>,
-  output: __S(283, __c35, 3) as any as S.Schema<PaginatedCommerceSubscriptionItemResponse>,
+  input: __S(320, __c10, 0) as any as S.Schema<GetCommerceSubscriptionItemListRequest>,
+  output: __S(321, __c10, 1) as any as S.Schema<PaginatedCommerceSubscriptionItemResponse>,
   errors: [BadRequest, UnprocessableEntity, UnknownClerkError],
   protocol: ClerkProtocol,
   retry: Retry.Retry,
@@ -7711,8 +7711,8 @@ export const getDirectory: API.OperationMethod<
   GetDirectoryError,
   ClerkOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(284, __c35, 4) as any as S.Schema<GetDirectoryRequest>,
-  output: __S(131, __c16, 3) as any as S.Schema<Directory>,
+  input: __S(384, __c12, 0) as any as S.Schema<GetDirectoryRequest>,
+  output: __S(6752, __c211, 0) as any as S.Schema<Directory>,
   errors: [Forbidden, NotFound, UnknownClerkError],
   protocol: ClerkProtocol,
   retry: Retry.Retry,
@@ -7726,8 +7726,8 @@ export const getEmailAddress: API.OperationMethod<
   GetEmailAddressError,
   ClerkOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(285, __c35, 5) as any as S.Schema<GetEmailAddressRequest>,
-  output: __S(30, __c3, 6) as any as S.Schema<EmailAddress>,
+  input: __S(416, __c13, 0) as any as S.Schema<GetEmailAddressRequest>,
+  output: __S(1632, __c51, 0) as any as S.Schema<EmailAddress>,
   errors: [BadRequest, Forbidden, NotFound, UnknownClerkError],
   protocol: ClerkProtocol,
   retry: Retry.Retry,
@@ -7741,8 +7741,8 @@ export const getEnterpriseConnection: API.OperationMethod<
   GetEnterpriseConnectionError,
   ClerkOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(286, __c35, 6) as any as S.Schema<GetEnterpriseConnectionRequest>,
-  output: __S(146, __c18, 2) as any as S.Schema<EnterpriseConnection>,
+  input: __S(448, __c14, 0) as any as S.Schema<GetEnterpriseConnectionRequest>,
+  output: __S(6951, __c217, 7) as any as S.Schema<EnterpriseConnection>,
   errors: [Forbidden, NotFound, UnknownClerkError],
   protocol: ClerkProtocol,
   retry: Retry.Retry,
@@ -7756,8 +7756,8 @@ export const getInstance: API.OperationMethod<
   GetInstanceError,
   ClerkOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(287, __c35, 7) as any as S.Schema<GetInstanceRequest>,
-  output: __S(288, __c36, 0) as any as S.Schema<Instance>,
+  input: __S(480, __c15, 0) as any as S.Schema<GetInstanceRequest>,
+  output: __S(481, __c15, 1) as any as S.Schema<Instance>,
   errors: [UnknownClerkError],
   protocol: ClerkProtocol,
   retry: Retry.Retry,
@@ -7771,8 +7771,8 @@ export const getInstanceCommunication: API.OperationMethod<
   GetInstanceCommunicationError,
   ClerkOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(289, __c36, 1) as any as S.Schema<GetInstanceCommunicationRequest>,
-  output: __S(290, __c36, 2) as any as S.Schema<InstanceCommunication>,
+  input: __S(512, __c16, 0) as any as S.Schema<GetInstanceCommunicationRequest>,
+  output: __S(544, __c17, 0) as any as S.Schema<InstanceCommunication>,
   errors: [UnknownClerkError],
   protocol: ClerkProtocol,
   retry: Retry.Retry,
@@ -7786,8 +7786,8 @@ export const getInstanceOAuthApplicationSettings: API.OperationMethod<
   GetInstanceOAuthApplicationSettingsError,
   ClerkOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(291, __c36, 3) as any as S.Schema<GetInstanceOAuthApplicationSettingsRequest>,
-  output: __S(292, __c36, 4) as any as S.Schema<OAuthApplicationSettings>,
+  input: __S(640, __c20, 0) as any as S.Schema<GetInstanceOAuthApplicationSettingsRequest>,
+  output: __S(672, __c21, 0) as any as S.Schema<OAuthApplicationSettings>,
   errors: [UnknownClerkError],
   protocol: ClerkProtocol,
   retry: Retry.Retry,
@@ -7801,8 +7801,8 @@ export const getInstanceOrganizationSettings: API.OperationMethod<
   GetInstanceOrganizationSettingsError,
   ClerkOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(293, __c36, 5) as any as S.Schema<GetInstanceOrganizationSettingsRequest>,
-  output: __S(294, __c36, 6) as any as S.Schema<OrganizationSettings>,
+  input: __S(704, __c22, 0) as any as S.Schema<GetInstanceOrganizationSettingsRequest>,
+  output: __S(736, __c23, 0) as any as S.Schema<OrganizationSettings>,
   errors: [NotFound, UnprocessableEntity, UnknownClerkError],
   protocol: ClerkProtocol,
   retry: Retry.Retry,
@@ -7816,8 +7816,8 @@ export const getInstanceProtect: API.OperationMethod<
   GetInstanceProtectError,
   ClerkOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(295, __c36, 7) as any as S.Schema<GetInstanceProtectRequest>,
-  output: __S(296, __c37, 0) as any as S.Schema<InstanceProtect>,
+  input: __S(768, __c24, 0) as any as S.Schema<GetInstanceProtectRequest>,
+  output: __S(800, __c25, 0) as any as S.Schema<InstanceProtect>,
   errors: [UnknownClerkError],
   protocol: ClerkProtocol,
   retry: Retry.Retry,
@@ -7831,8 +7831,8 @@ export const getInterstitial: API.OperationMethod<
   GetInterstitialError,
   ClerkOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(297, __c37, 1) as any as S.Schema<GetInterstitialRequest>,
-  output: __S(242, __c30, 2) as any as S.Schema<GetInterstitialResponse>,
+  input: __S(832, __c26, 0) as any as S.Schema<GetInterstitialRequest>,
+  output: __S(9728, __c304, 0) as any as S.Schema<GetInterstitialResponse>,
   errors: [BadRequest, UnknownClerkError],
   protocol: ClerkProtocol,
   retry: Retry.Retry,
@@ -7842,8 +7842,8 @@ export type GetJWKSError = ClerkOpError;
 /** Retrieve the JSON Web Key Set of the instance Retrieve the JSON Web Key Set of the instance */
 export const getJWKS: API.OperationMethod<GetJWKSRequest, JWKS, GetJWKSError, ClerkOpContext> =
   /*@__PURE__*/ API.make(() => ({
-    input: __S(298, __c37, 2) as any as S.Schema<GetJWKSRequest>,
-    output: __S(300, __c37, 4) as any as S.Schema<JWKS>,
+    input: __S(864, __c27, 0) as any as S.Schema<GetJWKSRequest>,
+    output: __S(866, __c27, 2) as any as S.Schema<JWKS>,
     errors: [UnknownClerkError],
     protocol: ClerkProtocol,
     retry: Retry.Retry,
@@ -7857,8 +7857,8 @@ export const getJWTTemplate: API.OperationMethod<
   GetJWTTemplateError,
   ClerkOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(301, __c37, 5) as any as S.Schema<GetJWTTemplateRequest>,
-  output: __S(151, __c18, 7) as any as S.Schema<JWTTemplate>,
+  input: __S(896, __c28, 0) as any as S.Schema<GetJWTTemplateRequest>,
+  output: __S(7104, __c222, 0) as any as S.Schema<JWTTemplate>,
   errors: [NotFound, UnknownClerkError],
   protocol: ClerkProtocol,
   retry: Retry.Retry,
@@ -7872,8 +7872,8 @@ export const getM2MTokens: API.OperationMethod<
   GetM2MTokensError,
   ClerkOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(302, __c37, 6) as any as S.Schema<GetM2MTokensRequest>,
-  output: __S(305, __c38, 1) as any as S.Schema<GetM2MTokensResponse>,
+  input: __S(928, __c29, 0) as any as S.Schema<GetM2MTokensRequest>,
+  output: __S(931, __c29, 3) as any as S.Schema<GetM2MTokensResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownClerkError],
   protocol: ClerkProtocol,
   retry: Retry.Retry,
@@ -7892,8 +7892,8 @@ export const getMachine: API.OperationMethod<
   GetMachineError,
   ClerkOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(306, __c38, 2) as any as S.Schema<GetMachineRequest>,
-  output: __S(307, __c38, 3) as any as S.Schema<GetMachineResponse>,
+  input: __S(960, __c30, 0) as any as S.Schema<GetMachineRequest>,
+  output: __S(961, __c30, 1) as any as S.Schema<GetMachineResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity, UnknownClerkError],
   protocol: ClerkProtocol,
   retry: Retry.Retry,
@@ -7907,8 +7907,8 @@ export const getMachineSecretKey: API.OperationMethod<
   GetMachineSecretKeyError,
   ClerkOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(308, __c38, 4) as any as S.Schema<GetMachineSecretKeyRequest>,
-  output: __S(309, __c38, 5) as any as S.Schema<GetMachineSecretKeyResponse>,
+  input: __S(992, __c31, 0) as any as S.Schema<GetMachineSecretKeyRequest>,
+  output: __S(1024, __c32, 0) as any as S.Schema<GetMachineSecretKeyResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownClerkError],
   protocol: ClerkProtocol,
   retry: Retry.Retry,
@@ -7922,8 +7922,8 @@ export const getOAuthAccessToken: API.OperationMethod<
   GetOAuthAccessTokenError,
   ClerkOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(310, __c38, 6) as any as S.Schema<GetOAuthAccessTokenRequest>,
-  output: __S(313, __c39, 1) as any as S.Schema<GetOAuthAccessTokenResponse>,
+  input: __S(1056, __c33, 0) as any as S.Schema<GetOAuthAccessTokenRequest>,
+  output: __S(1059, __c33, 3) as any as S.Schema<GetOAuthAccessTokenResponse>,
   errors: [BadRequest, NotFound, UnprocessableEntity, UnknownClerkError],
   protocol: ClerkProtocol,
   retry: Retry.Retry,
@@ -7937,8 +7937,8 @@ export const getOAuthApplication: API.OperationMethod<
   GetOAuthApplicationError,
   ClerkOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(314, __c39, 2) as any as S.Schema<GetOAuthApplicationRequest>,
-  output: __S(315, __c39, 3) as any as S.Schema<OAuthApplication>,
+  input: __S(1120, __c35, 0) as any as S.Schema<GetOAuthApplicationRequest>,
+  output: __S(1152, __c36, 0) as any as S.Schema<OAuthApplication>,
   errors: [Forbidden, NotFound, UnknownClerkError],
   protocol: ClerkProtocol,
   retry: Retry.Retry,
@@ -7952,8 +7952,8 @@ export const getOrganization: API.OperationMethod<
   GetOrganizationError,
   ClerkOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(316, __c39, 4) as any as S.Schema<GetOrganizationRequest>,
-  output: __S(45, __c5, 5) as any as S.Schema<Organization>,
+  input: __S(1184, __c37, 0) as any as S.Schema<GetOrganizationRequest>,
+  output: __S(1664, __c52, 0) as any as S.Schema<Organization>,
   errors: [Forbidden, NotFound, UnknownClerkError],
   protocol: ClerkProtocol,
   retry: Retry.Retry,
@@ -7972,8 +7972,8 @@ export const getOrganizationBillingCreditBalance: API.OperationMethod<
   GetOrganizationBillingCreditBalanceError,
   ClerkOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(317, __c39, 5) as any as S.Schema<GetOrganizationBillingCreditBalanceRequest>,
-  output: __S(318, __c39, 6) as any as S.Schema<CommerceCreditBalanceResponse>,
+  input: __S(1216, __c38, 0) as any as S.Schema<GetOrganizationBillingCreditBalanceRequest>,
+  output: __S(1248, __c39, 0) as any as S.Schema<CommerceCreditBalanceResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity, UnknownClerkError],
   protocol: ClerkProtocol,
   retry: Retry.Retry,
@@ -7992,8 +7992,8 @@ export const getOrganizationBillingSubscription: API.OperationMethod<
   GetOrganizationBillingSubscriptionError,
   ClerkOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(319, __c39, 7) as any as S.Schema<GetOrganizationBillingSubscriptionRequest>,
-  output: __S(321, __c40, 1) as any as S.Schema<CommerceSubscription>,
+  input: __S(1280, __c40, 0) as any as S.Schema<GetOrganizationBillingSubscriptionRequest>,
+  output: __S(1313, __c41, 1) as any as S.Schema<CommerceSubscription>,
   errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity, UnknownClerkError],
   protocol: ClerkProtocol,
   retry: Retry.Retry,
@@ -8007,8 +8007,8 @@ export const getOrganizationInvitation: API.OperationMethod<
   GetOrganizationInvitationError,
   ClerkOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(322, __c40, 2) as any as S.Schema<GetOrganizationInvitationRequest>,
-  output: __S(169, __c21, 1) as any as S.Schema<OrganizationInvitation>,
+  input: __S(1344, __c42, 0) as any as S.Schema<GetOrganizationInvitationRequest>,
+  output: __S(7488, __c234, 0) as any as S.Schema<OrganizationInvitation>,
   errors: [BadRequest, Forbidden, NotFound, UnknownClerkError],
   protocol: ClerkProtocol,
   retry: Retry.Retry,
@@ -8022,8 +8022,8 @@ export const getOrganizationPermission: API.OperationMethod<
   GetOrganizationPermissionError,
   ClerkOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(323, __c40, 3) as any as S.Schema<GetOrganizationPermissionRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<Permission>,
+  input: __S(1376, __c43, 0) as any as S.Schema<GetOrganizationPermissionRequest>,
+  output: __S(32, __c1, 0) as any as S.Schema<Permission>,
   errors: [NotFound, UnknownClerkError],
   protocol: ClerkProtocol,
   retry: Retry.Retry,
@@ -8037,8 +8037,8 @@ export const getOrganizationRole: API.OperationMethod<
   GetOrganizationRoleError,
   ClerkOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(324, __c40, 4) as any as S.Schema<GetOrganizationRoleRequest>,
-  output: __S(22, __c2, 6) as any as S.Schema<Role>,
+  input: __S(1408, __c44, 0) as any as S.Schema<GetOrganizationRoleRequest>,
+  output: __S(96, __c3, 0) as any as S.Schema<Role>,
   errors: [Forbidden, NotFound, UnknownClerkError],
   protocol: ClerkProtocol,
   retry: Retry.Retry,
@@ -8052,8 +8052,8 @@ export const getPhoneNumber: API.OperationMethod<
   GetPhoneNumberError,
   ClerkOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(325, __c40, 5) as any as S.Schema<GetPhoneNumberRequest>,
-  output: __S(32, __c4, 0) as any as S.Schema<PhoneNumber>,
+  input: __S(1440, __c45, 0) as any as S.Schema<GetPhoneNumberRequest>,
+  output: __S(1728, __c54, 0) as any as S.Schema<PhoneNumber>,
   errors: [BadRequest, Forbidden, NotFound, UnknownClerkError],
   protocol: ClerkProtocol,
   retry: Retry.Retry,
@@ -8067,8 +8067,8 @@ export const getRedirectURL: API.OperationMethod<
   GetRedirectURLError,
   ClerkOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(326, __c40, 6) as any as S.Schema<GetRedirectURLRequest>,
-  output: __S(181, __c22, 5) as any as S.Schema<RedirectURL>,
+  input: __S(1472, __c46, 0) as any as S.Schema<GetRedirectURLRequest>,
+  output: __S(7776, __c243, 0) as any as S.Schema<RedirectURL>,
   errors: [NotFound, UnknownClerkError],
   protocol: ClerkProtocol,
   retry: Retry.Retry,
@@ -8082,8 +8082,8 @@ export const getReverification: API.OperationMethod<
   GetReverificationError,
   ClerkOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(327, __c40, 7) as any as S.Schema<GetReverificationRequest>,
-  output: __S(328, __c41, 0) as any as S.Schema<Reverification>,
+  input: __S(1504, __c47, 0) as any as S.Schema<GetReverificationRequest>,
+  output: __S(1505, __c47, 1) as any as S.Schema<Reverification>,
   errors: [BadRequest, NotFound, UnknownClerkError],
   protocol: ClerkProtocol,
   retry: Retry.Retry,
@@ -8097,8 +8097,8 @@ export const getRoleSet: API.OperationMethod<
   GetRoleSetError,
   ClerkOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(329, __c41, 1) as any as S.Schema<GetRoleSetRequest>,
-  output: __S(12, __c1, 4) as any as S.Schema<RoleSet>,
+  input: __S(1824, __c57, 0) as any as S.Schema<GetRoleSetRequest>,
+  output: __S(8675, __c271, 3) as any as S.Schema<RoleSet>,
   errors: [Forbidden, NotFound, UnknownClerkError],
   protocol: ClerkProtocol,
   retry: Retry.Retry,
@@ -8112,8 +8112,8 @@ export const getSCIMDirectory: API.OperationMethod<
   GetSCIMDirectoryError,
   ClerkOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(330, __c41, 2) as any as S.Schema<GetSCIMDirectoryRequest>,
-  output: __S(186, __c23, 2) as any as S.Schema<SCIMDirectory>,
+  input: __S(1856, __c58, 0) as any as S.Schema<GetSCIMDirectoryRequest>,
+  output: __S(7872, __c246, 0) as any as S.Schema<SCIMDirectory>,
   errors: [Forbidden, NotFound, UnknownClerkError],
   protocol: ClerkProtocol,
   retry: Retry.Retry,
@@ -8127,8 +8127,8 @@ export const getSession: API.OperationMethod<
   GetSessionError,
   ClerkOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(331, __c41, 3) as any as S.Schema<GetSessionRequest>,
-  output: __S(193, __c24, 1) as any as S.Schema<Session>,
+  input: __S(1888, __c59, 0) as any as S.Schema<GetSessionRequest>,
+  output: __S(8067, __c252, 3) as any as S.Schema<Session>,
   errors: [BadRequest, NotFound, UnknownClerkError],
   protocol: ClerkProtocol,
   retry: Retry.Retry,
@@ -8142,8 +8142,8 @@ export const getSessionList: API.OperationMethod<
   GetSessionListError,
   ClerkOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(332, __c41, 4) as any as S.Schema<GetSessionListRequest>,
-  output: __S(333, __c41, 5) as any as S.Schema<GetSessionListResponse>,
+  input: __S(1920, __c60, 0) as any as S.Schema<GetSessionListRequest>,
+  output: __S(1921, __c60, 1) as any as S.Schema<GetSessionListResponse>,
   errors: [BadRequest, UnprocessableEntity, UnknownClerkError],
   protocol: ClerkProtocol,
   retry: Retry.Retry,
@@ -8157,8 +8157,8 @@ export const getSignUp: API.OperationMethod<
   GetSignUpError,
   ClerkOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(334, __c41, 6) as any as S.Schema<GetSignUpRequest>,
-  output: __S(337, __c42, 1) as any as S.Schema<SignUp>,
+  input: __S(1952, __c61, 0) as any as S.Schema<GetSignUpRequest>,
+  output: __S(1986, __c62, 2) as any as S.Schema<SignUp>,
   errors: [Forbidden, UnknownClerkError],
   protocol: ClerkProtocol,
   retry: Retry.Retry,
@@ -8168,8 +8168,8 @@ export type GetUserError = BadRequest | NotFound | ClerkOpError;
 /** Retrieve a user Retrieve the details of a user */
 export const getUser: API.OperationMethod<GetUserRequest, User, GetUserError, ClerkOpContext> =
   /*@__PURE__*/ API.make(() => ({
-    input: __S(338, __c42, 2) as any as S.Schema<GetUserRequest>,
-    output: __S(53, __c6, 5) as any as S.Schema<User>,
+    input: __S(2016, __c63, 0) as any as S.Schema<GetUserRequest>,
+    output: __S(1809, __c56, 17) as any as S.Schema<User>,
     errors: [BadRequest, NotFound, UnknownClerkError],
     protocol: ClerkProtocol,
     retry: Retry.Retry,
@@ -8188,8 +8188,8 @@ export const getUserBillingCreditBalance: API.OperationMethod<
   GetUserBillingCreditBalanceError,
   ClerkOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(339, __c42, 3) as any as S.Schema<GetUserBillingCreditBalanceRequest>,
-  output: __S(318, __c39, 6) as any as S.Schema<CommerceCreditBalanceResponse>,
+  input: __S(2048, __c64, 0) as any as S.Schema<GetUserBillingCreditBalanceRequest>,
+  output: __S(1248, __c39, 0) as any as S.Schema<CommerceCreditBalanceResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity, UnknownClerkError],
   protocol: ClerkProtocol,
   retry: Retry.Retry,
@@ -8208,8 +8208,8 @@ export const getUserBillingSubscription: API.OperationMethod<
   GetUserBillingSubscriptionError,
   ClerkOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(340, __c42, 4) as any as S.Schema<GetUserBillingSubscriptionRequest>,
-  output: __S(321, __c40, 1) as any as S.Schema<CommerceSubscription>,
+  input: __S(2080, __c65, 0) as any as S.Schema<GetUserBillingSubscriptionRequest>,
+  output: __S(1313, __c41, 1) as any as S.Schema<CommerceSubscription>,
   errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity, UnknownClerkError],
   protocol: ClerkProtocol,
   retry: Retry.Retry,
@@ -8223,8 +8223,8 @@ export const getUserList: API.OperationMethod<
   GetUserListError,
   ClerkOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(341, __c42, 5) as any as S.Schema<GetUserListRequest>,
-  output: __S(56, __c7, 0) as any as S.Schema<GetUserListResponse>,
+  input: __S(2112, __c66, 0) as any as S.Schema<GetUserListRequest>,
+  output: __S(2209, __c69, 1) as any as S.Schema<GetUserListResponse>,
   errors: [BadRequest, UnprocessableEntity, UnknownClerkError],
   protocol: ClerkProtocol,
   retry: Retry.Retry,
@@ -8238,8 +8238,8 @@ export const getUsersCount: API.OperationMethod<
   GetUsersCountError,
   ClerkOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(342, __c42, 6) as any as S.Schema<GetUsersCountRequest>,
-  output: __S(343, __c42, 7) as any as S.Schema<TotalCount>,
+  input: __S(2144, __c67, 0) as any as S.Schema<GetUsersCountRequest>,
+  output: __S(2145, __c67, 1) as any as S.Schema<TotalCount>,
   errors: [UnprocessableEntity, UnknownClerkError],
   protocol: ClerkProtocol,
   retry: Retry.Retry,
@@ -8256,8 +8256,8 @@ export const instanceGetOrganizationMemberships: API.OperationMethod<
   InstanceGetOrganizationMembershipsError,
   ClerkOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(344, __c43, 0) as any as S.Schema<InstanceGetOrganizationMembershipsRequest>,
-  output: __S(345, __c43, 1) as any as S.Schema<OrganizationMemberships>,
+  input: __S(2240, __c70, 0) as any as S.Schema<InstanceGetOrganizationMembershipsRequest>,
+  output: __S(2272, __c71, 0) as any as S.Schema<OrganizationMemberships>,
   errors: [BadRequest, UnprocessableEntity, UnknownClerkError],
   protocol: ClerkProtocol,
   retry: Retry.Retry,
@@ -8276,8 +8276,8 @@ export const inviteWaitlistEntry: API.OperationMethod<
   InviteWaitlistEntryError,
   ClerkOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(346, __c43, 2) as any as S.Schema<InviteWaitlistEntryRequest>,
-  output: __S(123, __c15, 3) as any as S.Schema<WaitlistEntry>,
+  input: __S(2304, __c72, 0) as any as S.Schema<InviteWaitlistEntryRequest>,
+  output: __S(6688, __c209, 0) as any as S.Schema<WaitlistEntry>,
   errors: [BadRequest, NotFound, Conflict, UnprocessableEntity, UnknownClerkError],
   protocol: ClerkProtocol,
   retry: Retry.Retry,
@@ -8291,8 +8291,8 @@ export const listAllOrganizationDomains: API.OperationMethod<
   ListAllOrganizationDomainsError,
   ClerkOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(347, __c43, 3) as any as S.Schema<ListAllOrganizationDomainsRequest>,
-  output: __S(349, __c43, 5) as any as S.Schema<OrganizationDomains>,
+  input: __S(2336, __c73, 0) as any as S.Schema<ListAllOrganizationDomainsRequest>,
+  output: __S(2369, __c74, 1) as any as S.Schema<OrganizationDomains>,
   errors: [Forbidden, UnprocessableEntity, UnknownClerkError],
   protocol: ClerkProtocol,
   retry: Retry.Retry,
@@ -8306,8 +8306,8 @@ export const listAllowlistIdentifiers: API.OperationMethod<
   ListAllowlistIdentifiersError,
   ClerkOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(350, __c43, 6) as any as S.Schema<ListAllowlistIdentifiersRequest>,
-  output: __S(352, __c44, 0) as any as S.Schema<ListAllowlistIdentifiersResponse>,
+  input: __S(2400, __c75, 0) as any as S.Schema<ListAllowlistIdentifiersRequest>,
+  output: __S(2402, __c75, 2) as any as S.Schema<ListAllowlistIdentifiersResponse>,
   errors: [UnknownClerkError],
   protocol: ClerkProtocol,
   retry: Retry.Retry,
@@ -8321,8 +8321,8 @@ export const listBlocklistIdentifiers: API.OperationMethod<
   ListBlocklistIdentifiersError,
   ClerkOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(353, __c44, 1) as any as S.Schema<ListBlocklistIdentifiersRequest>,
-  output: __S(355, __c44, 3) as any as S.Schema<BlocklistIdentifiers>,
+  input: __S(2432, __c76, 0) as any as S.Schema<ListBlocklistIdentifiersRequest>,
+  output: __S(2434, __c76, 2) as any as S.Schema<BlocklistIdentifiers>,
   errors: [UnknownClerkError],
   protocol: ClerkProtocol,
   retry: Retry.Retry,
@@ -8336,8 +8336,8 @@ export const listDirectories: API.OperationMethod<
   ListDirectoriesError,
   ClerkOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(356, __c44, 4) as any as S.Schema<ListDirectoriesRequest>,
-  output: __S(358, __c44, 6) as any as S.Schema<ListDirectoriesResponse>,
+  input: __S(2464, __c77, 0) as any as S.Schema<ListDirectoriesRequest>,
+  output: __S(2466, __c77, 2) as any as S.Schema<ListDirectoriesResponse>,
   errors: [Forbidden, UnknownClerkError],
   protocol: ClerkProtocol,
   retry: Retry.Retry,
@@ -8351,8 +8351,8 @@ export const listDirectoryGroupRoleMappings: API.OperationMethod<
   ListDirectoryGroupRoleMappingsError,
   ClerkOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(359, __c44, 7) as any as S.Schema<ListDirectoryGroupRoleMappingsRequest>,
-  output: __S(361, __c45, 1) as any as S.Schema<ListDirectoryGroupRoleMappingsResponse>,
+  input: __S(2496, __c78, 0) as any as S.Schema<ListDirectoryGroupRoleMappingsRequest>,
+  output: __S(2529, __c79, 1) as any as S.Schema<ListDirectoryGroupRoleMappingsResponse>,
   errors: [Forbidden, NotFound, UnknownClerkError],
   protocol: ClerkProtocol,
   retry: Retry.Retry,
@@ -8366,8 +8366,8 @@ export const listDomains: API.OperationMethod<
   ListDomainsError,
   ClerkOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(362, __c45, 2) as any as S.Schema<ListDomainsRequest>,
-  output: __S(364, __c45, 4) as any as S.Schema<Domains>,
+  input: __S(2560, __c80, 0) as any as S.Schema<ListDomainsRequest>,
+  output: __S(2562, __c80, 2) as any as S.Schema<Domains>,
   errors: [UnknownClerkError],
   protocol: ClerkProtocol,
   retry: Retry.Retry,
@@ -8381,8 +8381,8 @@ export const listEnterpriseConnections: API.OperationMethod<
   ListEnterpriseConnectionsError,
   ClerkOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(365, __c45, 5) as any as S.Schema<ListEnterpriseConnectionsRequest>,
-  output: __S(367, __c45, 7) as any as S.Schema<EnterpriseConnections>,
+  input: __S(2592, __c81, 0) as any as S.Schema<ListEnterpriseConnectionsRequest>,
+  output: __S(2594, __c81, 2) as any as S.Schema<EnterpriseConnections>,
   errors: [Forbidden, UnprocessableEntity, UnknownClerkError],
   protocol: ClerkProtocol,
   retry: Retry.Retry,
@@ -8400,8 +8400,8 @@ export const listEnterpriseConnectionTestRuns: API.OperationMethod<
   ListEnterpriseConnectionTestRunsError,
   ClerkOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(368, __c46, 0) as any as S.Schema<ListEnterpriseConnectionTestRunsRequest>,
-  output: __S(376, __c47, 0) as any as S.Schema<EnterpriseConnectionTestRuns>,
+  input: __S(2624, __c82, 0) as any as S.Schema<ListEnterpriseConnectionTestRunsRequest>,
+  output: __S(2632, __c82, 8) as any as S.Schema<EnterpriseConnectionTestRuns>,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownClerkError],
   protocol: ClerkProtocol,
   retry: Retry.Retry,
@@ -8419,8 +8419,8 @@ export const listInstanceOrganizationInvitations: API.OperationMethod<
   ListInstanceOrganizationInvitationsError,
   ClerkOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(377, __c47, 1) as any as S.Schema<ListInstanceOrganizationInvitationsRequest>,
-  output: __S(380, __c47, 4) as any as S.Schema<OrganizationInvitationsWithPublicOrganizationData>,
+  input: __S(2848, __c89, 0) as any as S.Schema<ListInstanceOrganizationInvitationsRequest>,
+  output: __S(2882, __c90, 2) as any as S.Schema<OrganizationInvitationsWithPublicOrganizationData>,
   errors: [BadRequest, NotFound, UnprocessableEntity, UnknownClerkError],
   protocol: ClerkProtocol,
   retry: Retry.Retry,
@@ -8434,8 +8434,8 @@ export const listInvitations: API.OperationMethod<
   ListInvitationsError,
   ClerkOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(381, __c47, 5) as any as S.Schema<ListInvitationsRequest>,
-  output: __S(382, __c47, 6) as any as S.Schema<ListInvitationsResponse>,
+  input: __S(2912, __c91, 0) as any as S.Schema<ListInvitationsRequest>,
+  output: __S(2913, __c91, 1) as any as S.Schema<ListInvitationsResponse>,
   errors: [UnknownClerkError],
   protocol: ClerkProtocol,
   retry: Retry.Retry,
@@ -8449,8 +8449,8 @@ export const listJWTTemplates: API.OperationMethod<
   ListJWTTemplatesError,
   ClerkOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(383, __c47, 7) as any as S.Schema<ListJWTTemplatesRequest>,
-  output: __S(385, __c48, 1) as any as S.Schema<ListJWTTemplatesResponse>,
+  input: __S(2944, __c92, 0) as any as S.Schema<ListJWTTemplatesRequest>,
+  output: __S(2946, __c92, 2) as any as S.Schema<ListJWTTemplatesResponse>,
   errors: [UnknownClerkError],
   protocol: ClerkProtocol,
   retry: Retry.Retry,
@@ -8464,8 +8464,8 @@ export const listMachines: API.OperationMethod<
   ListMachinesError,
   ClerkOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(386, __c48, 2) as any as S.Schema<ListMachinesRequest>,
-  output: __S(389, __c48, 5) as any as S.Schema<ListMachinesResponse>,
+  input: __S(2976, __c93, 0) as any as S.Schema<ListMachinesRequest>,
+  output: __S(2979, __c93, 3) as any as S.Schema<ListMachinesResponse>,
   errors: [BadRequest, Forbidden, UnprocessableEntity, UnknownClerkError],
   protocol: ClerkProtocol,
   retry: Retry.Retry,
@@ -8483,8 +8483,8 @@ export const listOAuthApplications: API.OperationMethod<
   ListOAuthApplicationsError,
   ClerkOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(390, __c48, 6) as any as S.Schema<ListOAuthApplicationsRequest>,
-  output: __S(392, __c49, 0) as any as S.Schema<OAuthApplications>,
+  input: __S(3008, __c94, 0) as any as S.Schema<ListOAuthApplicationsRequest>,
+  output: __S(3010, __c94, 2) as any as S.Schema<OAuthApplications>,
   errors: [BadRequest, Forbidden, UnprocessableEntity, UnknownClerkError],
   protocol: ClerkProtocol,
   retry: Retry.Retry,
@@ -8498,8 +8498,8 @@ export const listOrganizationDomains: API.OperationMethod<
   ListOrganizationDomainsError,
   ClerkOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(393, __c49, 1) as any as S.Schema<ListOrganizationDomainsRequest>,
-  output: __S(349, __c43, 5) as any as S.Schema<OrganizationDomains>,
+  input: __S(3040, __c95, 0) as any as S.Schema<ListOrganizationDomainsRequest>,
+  output: __S(2369, __c74, 1) as any as S.Schema<OrganizationDomains>,
   errors: [UnprocessableEntity, UnknownClerkError],
   protocol: ClerkProtocol,
   retry: Retry.Retry,
@@ -8517,8 +8517,8 @@ export const listOrganizationInvitations: API.OperationMethod<
   ListOrganizationInvitationsError,
   ClerkOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(394, __c49, 2) as any as S.Schema<ListOrganizationInvitationsRequest>,
-  output: __S(175, __c21, 7) as any as S.Schema<OrganizationInvitations>,
+  input: __S(3072, __c96, 0) as any as S.Schema<ListOrganizationInvitationsRequest>,
+  output: __S(7585, __c237, 1) as any as S.Schema<OrganizationInvitations>,
   errors: [BadRequest, NotFound, UnprocessableEntity, UnknownClerkError],
   protocol: ClerkProtocol,
   retry: Retry.Retry,
@@ -8532,8 +8532,8 @@ export const listOrganizationMemberships: API.OperationMethod<
   ListOrganizationMembershipsError,
   ClerkOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(395, __c49, 3) as any as S.Schema<ListOrganizationMembershipsRequest>,
-  output: __S(345, __c43, 1) as any as S.Schema<OrganizationMemberships>,
+  input: __S(3104, __c97, 0) as any as S.Schema<ListOrganizationMembershipsRequest>,
+  output: __S(2272, __c71, 0) as any as S.Schema<OrganizationMemberships>,
   errors: [UnprocessableEntity, UnknownClerkError],
   protocol: ClerkProtocol,
   retry: Retry.Retry,
@@ -8547,8 +8547,8 @@ export const listOrganizationPermissions: API.OperationMethod<
   ListOrganizationPermissionsError,
   ClerkOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(396, __c49, 4) as any as S.Schema<ListOrganizationPermissionsRequest>,
-  output: __S(397, __c49, 5) as any as S.Schema<Permissions>,
+  input: __S(3136, __c98, 0) as any as S.Schema<ListOrganizationPermissionsRequest>,
+  output: __S(3137, __c98, 1) as any as S.Schema<Permissions>,
   errors: [UnprocessableEntity, UnknownClerkError],
   protocol: ClerkProtocol,
   retry: Retry.Retry,
@@ -8566,8 +8566,8 @@ export const listOrganizationRoles: API.OperationMethod<
   ListOrganizationRolesError,
   ClerkOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(398, __c49, 6) as any as S.Schema<ListOrganizationRolesRequest>,
-  output: __S(400, __c50, 0) as any as S.Schema<Roles>,
+  input: __S(3168, __c99, 0) as any as S.Schema<ListOrganizationRolesRequest>,
+  output: __S(3170, __c99, 2) as any as S.Schema<Roles>,
   errors: [BadRequest, Forbidden, UnprocessableEntity, UnknownClerkError],
   protocol: ClerkProtocol,
   retry: Retry.Retry,
@@ -8581,8 +8581,8 @@ export const listOrganizations: API.OperationMethod<
   ListOrganizationsError,
   ClerkOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(401, __c50, 1) as any as S.Schema<ListOrganizationsRequest>,
-  output: __S(403, __c50, 3) as any as S.Schema<Organizations>,
+  input: __S(3264, __c102, 0) as any as S.Schema<ListOrganizationsRequest>,
+  output: __S(3266, __c102, 2) as any as S.Schema<Organizations>,
   errors: [BadRequest, Forbidden, UnprocessableEntity, UnknownClerkError],
   protocol: ClerkProtocol,
   retry: Retry.Retry,
@@ -8596,8 +8596,8 @@ export const listRedirectURLs: API.OperationMethod<
   ListRedirectURLsError,
   ClerkOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(404, __c50, 4) as any as S.Schema<ListRedirectURLsRequest>,
-  output: __S(406, __c50, 6) as any as S.Schema<ListRedirectURLsResponse>,
+  input: __S(3296, __c103, 0) as any as S.Schema<ListRedirectURLsRequest>,
+  output: __S(3298, __c103, 2) as any as S.Schema<ListRedirectURLsResponse>,
   errors: [UnknownClerkError],
   protocol: ClerkProtocol,
   retry: Retry.Retry,
@@ -8611,8 +8611,8 @@ export const listRoleSets: API.OperationMethod<
   ListRoleSetsError,
   ClerkOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(407, __c50, 7) as any as S.Schema<ListRoleSetsRequest>,
-  output: __S(409, __c51, 1) as any as S.Schema<RoleSets>,
+  input: __S(3328, __c104, 0) as any as S.Schema<ListRoleSetsRequest>,
+  output: __S(3330, __c104, 2) as any as S.Schema<RoleSets>,
   errors: [BadRequest, Forbidden, UnprocessableEntity, UnknownClerkError],
   protocol: ClerkProtocol,
   retry: Retry.Retry,
@@ -8626,8 +8626,8 @@ export const listSCIMDirectories: API.OperationMethod<
   ListSCIMDirectoriesError,
   ClerkOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(410, __c51, 2) as any as S.Schema<ListSCIMDirectoriesRequest>,
-  output: __S(412, __c51, 4) as any as S.Schema<ListSCIMDirectoriesResponse>,
+  input: __S(3360, __c105, 0) as any as S.Schema<ListSCIMDirectoriesRequest>,
+  output: __S(3362, __c105, 2) as any as S.Schema<ListSCIMDirectoriesResponse>,
   errors: [Forbidden, UnknownClerkError],
   protocol: ClerkProtocol,
   retry: Retry.Retry,
@@ -8641,8 +8641,8 @@ export const listSCIMGroupRoleMappings: API.OperationMethod<
   ListSCIMGroupRoleMappingsError,
   ClerkOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(413, __c51, 5) as any as S.Schema<ListSCIMGroupRoleMappingsRequest>,
-  output: __S(415, __c51, 7) as any as S.Schema<ListSCIMGroupRoleMappingsResponse>,
+  input: __S(3392, __c106, 0) as any as S.Schema<ListSCIMGroupRoleMappingsRequest>,
+  output: __S(3425, __c107, 1) as any as S.Schema<ListSCIMGroupRoleMappingsResponse>,
   errors: [Forbidden, NotFound, UnknownClerkError],
   protocol: ClerkProtocol,
   retry: Retry.Retry,
@@ -8656,8 +8656,8 @@ export const listSSOBypassAllowlistUsers: API.OperationMethod<
   ListSSOBypassAllowlistUsersError,
   ClerkOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(416, __c52, 0) as any as S.Schema<ListSSOBypassAllowlistUsersRequest>,
-  output: __S(418, __c52, 2) as any as S.Schema<ListSSOBypassAllowlistUsersResponse>,
+  input: __S(3456, __c108, 0) as any as S.Schema<ListSSOBypassAllowlistUsersRequest>,
+  output: __S(3458, __c108, 2) as any as S.Schema<ListSSOBypassAllowlistUsersResponse>,
   errors: [Forbidden, NotFound, UnknownClerkError],
   protocol: ClerkProtocol,
   retry: Retry.Retry,
@@ -8671,8 +8671,8 @@ export const listUserBiometricCredentials: API.OperationMethod<
   ListUserBiometricCredentialsError,
   ClerkOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(419, __c52, 3) as any as S.Schema<ListUserBiometricCredentialsRequest>,
-  output: __S(422, __c52, 6) as any as S.Schema<ListUserBiometricCredentialsResponse>,
+  input: __S(3488, __c109, 0) as any as S.Schema<ListUserBiometricCredentialsRequest>,
+  output: __S(3490, __c109, 2) as any as S.Schema<ListUserBiometricCredentialsResponse>,
   errors: [Forbidden, NotFound, UnknownClerkError],
   protocol: ClerkProtocol,
   retry: Retry.Retry,
@@ -8686,8 +8686,8 @@ export const listWaitlistEntries: API.OperationMethod<
   ListWaitlistEntriesError,
   ClerkOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(423, __c52, 7) as any as S.Schema<ListWaitlistEntriesRequest>,
-  output: __S(424, __c53, 0) as any as S.Schema<ListWaitlistEntriesResponse>,
+  input: __S(3552, __c111, 0) as any as S.Schema<ListWaitlistEntriesRequest>,
+  output: __S(3553, __c111, 1) as any as S.Schema<ListWaitlistEntriesResponse>,
   errors: [UnknownClerkError],
   protocol: ClerkProtocol,
   retry: Retry.Retry,
@@ -8697,8 +8697,8 @@ export type LockUserError = Forbidden | ClerkOpError;
 /** Lock a user Marks the given user as locked, which means they are not allowed to sign in again until the lock expires. Lock duration can be configured in the instance's restrictions settings. */
 export const lockUser: API.OperationMethod<LockUserRequest, User, LockUserError, ClerkOpContext> =
   /*@__PURE__*/ API.make(() => ({
-    input: __S(425, __c53, 1) as any as S.Schema<LockUserRequest>,
-    output: __S(53, __c6, 5) as any as S.Schema<User>,
+    input: __S(3584, __c112, 0) as any as S.Schema<LockUserRequest>,
+    output: __S(1809, __c56, 17) as any as S.Schema<User>,
     errors: [Forbidden, UnknownClerkError],
     protocol: ClerkProtocol,
     retry: Retry.Retry,
@@ -8716,8 +8716,8 @@ export const mergeOrganizationMetadata: API.OperationMethod<
   MergeOrganizationMetadataError,
   ClerkOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(426, __c53, 2) as any as S.Schema<MergeOrganizationMetadataRequest>,
-  output: __S(45, __c5, 5) as any as S.Schema<Organization>,
+  input: __S(3616, __c113, 0) as any as S.Schema<MergeOrganizationMetadataRequest>,
+  output: __S(1664, __c52, 0) as any as S.Schema<Organization>,
   errors: [BadRequest, NotFound, UnprocessableEntity, UnknownClerkError],
   protocol: ClerkProtocol,
   retry: Retry.Retry,
@@ -8731,8 +8731,8 @@ export const prepareEmailAddressVerification: API.OperationMethod<
   PrepareEmailAddressVerificationError,
   ClerkOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(427, __c53, 3) as any as S.Schema<PrepareEmailAddressVerificationRequest>,
-  output: __S(24, __c3, 0) as any as S.Schema<PrepareEmailAddressVerificationResponse>,
+  input: __S(3712, __c116, 0) as any as S.Schema<PrepareEmailAddressVerificationRequest>,
+  output: __S(608, __c19, 0) as any as S.Schema<PrepareEmailAddressVerificationResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownClerkError],
   protocol: ClerkProtocol,
   retry: Retry.Retry,
@@ -8746,8 +8746,8 @@ export const preparePhoneNumberVerification: API.OperationMethod<
   PreparePhoneNumberVerificationError,
   ClerkOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(428, __c53, 4) as any as S.Schema<PreparePhoneNumberVerificationRequest>,
-  output: __S(24, __c3, 0) as any as S.Schema<PreparePhoneNumberVerificationResponse>,
+  input: __S(3744, __c117, 0) as any as S.Schema<PreparePhoneNumberVerificationRequest>,
+  output: __S(608, __c19, 0) as any as S.Schema<PreparePhoneNumberVerificationResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownClerkError],
   protocol: ClerkProtocol,
   retry: Retry.Retry,
@@ -8761,8 +8761,8 @@ export const refreshSession: API.OperationMethod<
   RefreshSessionError,
   ClerkOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(429, __c53, 5) as any as S.Schema<RefreshSessionRequest>,
-  output: __S(430, __c53, 6) as any as S.Schema<RefreshSessionResponse>,
+  input: __S(3776, __c118, 0) as any as S.Schema<RefreshSessionRequest>,
+  output: __S(3777, __c118, 1) as any as S.Schema<RefreshSessionResponse>,
   errors: [BadRequest, UnknownClerkError],
   protocol: ClerkProtocol,
   retry: Retry.Retry,
@@ -8781,8 +8781,8 @@ export const rejectWaitlistEntry: API.OperationMethod<
   RejectWaitlistEntryError,
   ClerkOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(431, __c53, 7) as any as S.Schema<RejectWaitlistEntryRequest>,
-  output: __S(123, __c15, 3) as any as S.Schema<WaitlistEntry>,
+  input: __S(3808, __c119, 0) as any as S.Schema<RejectWaitlistEntryRequest>,
+  output: __S(6688, __c209, 0) as any as S.Schema<WaitlistEntry>,
   errors: [BadRequest, NotFound, Conflict, UnprocessableEntity, UnknownClerkError],
   protocol: ClerkProtocol,
   retry: Retry.Retry,
@@ -8802,8 +8802,8 @@ export const removeBillingSubscriptionItemDiscount: API.OperationMethod<
   RemoveBillingSubscriptionItemDiscountError,
   ClerkOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(432, __c54, 0) as any as S.Schema<RemoveBillingSubscriptionItemDiscountRequest>,
-  output: __S(18, __c2, 2) as any as S.Schema<CommerceDiscountRedemptionResponse>,
+  input: __S(3840, __c120, 0) as any as S.Schema<RemoveBillingSubscriptionItemDiscountRequest>,
+  output: __S(9920, __c310, 0) as any as S.Schema<CommerceDiscountRedemptionResponse>,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnprocessableEntity, UnknownClerkError],
   protocol: ClerkProtocol,
   retry: Retry.Retry,
@@ -8821,8 +8821,8 @@ export const removePermissionFromOrganizationRole: API.OperationMethod<
   RemovePermissionFromOrganizationRoleError,
   ClerkOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(433, __c54, 1) as any as S.Schema<RemovePermissionFromOrganizationRoleRequest>,
-  output: __S(22, __c2, 6) as any as S.Schema<Role>,
+  input: __S(3872, __c121, 0) as any as S.Schema<RemovePermissionFromOrganizationRoleRequest>,
+  output: __S(96, __c3, 0) as any as S.Schema<Role>,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownClerkError],
   protocol: ClerkProtocol,
   retry: Retry.Retry,
@@ -8836,8 +8836,8 @@ export const removeUserPassword: API.OperationMethod<
   RemoveUserPasswordError,
   ClerkOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(434, __c54, 2) as any as S.Schema<RemoveUserPasswordRequest>,
-  output: __S(53, __c6, 5) as any as S.Schema<User>,
+  input: __S(3904, __c122, 0) as any as S.Schema<RemoveUserPasswordRequest>,
+  output: __S(1809, __c56, 17) as any as S.Schema<User>,
   errors: [BadRequest, Forbidden, NotFound, UnknownClerkError],
   protocol: ClerkProtocol,
   retry: Retry.Retry,
@@ -8856,8 +8856,8 @@ export const replaceDirectoryGroupRoleMappings: API.OperationMethod<
   ReplaceDirectoryGroupRoleMappingsError,
   ClerkOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(437, __c54, 5) as any as S.Schema<ReplaceDirectoryGroupRoleMappingsRequest>,
-  output: __S(361, __c45, 1) as any as S.Schema<ReplaceDirectoryGroupRoleMappingsResponse>,
+  input: __S(3938, __c123, 2) as any as S.Schema<ReplaceDirectoryGroupRoleMappingsRequest>,
+  output: __S(2529, __c79, 1) as any as S.Schema<ReplaceDirectoryGroupRoleMappingsResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity, UnknownClerkError],
   protocol: ClerkProtocol,
   retry: Retry.Retry,
@@ -8875,8 +8875,8 @@ export const replaceOrganizationMetadata: API.OperationMethod<
   ReplaceOrganizationMetadataError,
   ClerkOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(438, __c54, 6) as any as S.Schema<ReplaceOrganizationMetadataRequest>,
-  output: __S(45, __c5, 5) as any as S.Schema<Organization>,
+  input: __S(3968, __c124, 0) as any as S.Schema<ReplaceOrganizationMetadataRequest>,
+  output: __S(1664, __c52, 0) as any as S.Schema<Organization>,
   errors: [BadRequest, NotFound, UnprocessableEntity, UnknownClerkError],
   protocol: ClerkProtocol,
   retry: Retry.Retry,
@@ -8895,8 +8895,8 @@ export const replaceRoleInRoleSet: API.OperationMethod<
   ReplaceRoleInRoleSetError,
   ClerkOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(439, __c54, 7) as any as S.Schema<ReplaceRoleInRoleSetRequest>,
-  output: __S(12, __c1, 4) as any as S.Schema<RoleSet>,
+  input: __S(4000, __c125, 0) as any as S.Schema<ReplaceRoleInRoleSetRequest>,
+  output: __S(8675, __c271, 3) as any as S.Schema<RoleSet>,
   errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity, UnknownClerkError],
   protocol: ClerkProtocol,
   retry: Retry.Retry,
@@ -8915,8 +8915,8 @@ export const replaceRoleSet: API.OperationMethod<
   ReplaceRoleSetError,
   ClerkOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(440, __c55, 0) as any as S.Schema<ReplaceRoleSetRequest>,
-  output: __S(210, __c26, 2) as any as S.Schema<DeletedObject>,
+  input: __S(4064, __c127, 0) as any as S.Schema<ReplaceRoleSetRequest>,
+  output: __S(8544, __c267, 0) as any as S.Schema<DeletedObject>,
   errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity, UnknownClerkError],
   protocol: ClerkProtocol,
   retry: Retry.Retry,
@@ -8935,8 +8935,8 @@ export const replaceSCIMGroupRoleMappings: API.OperationMethod<
   ReplaceSCIMGroupRoleMappingsError,
   ClerkOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(443, __c55, 3) as any as S.Schema<ReplaceSCIMGroupRoleMappingsRequest>,
-  output: __S(415, __c51, 7) as any as S.Schema<ReplaceSCIMGroupRoleMappingsResponse>,
+  input: __S(4098, __c128, 2) as any as S.Schema<ReplaceSCIMGroupRoleMappingsRequest>,
+  output: __S(3425, __c107, 1) as any as S.Schema<ReplaceSCIMGroupRoleMappingsResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity, UnknownClerkError],
   protocol: ClerkProtocol,
   retry: Retry.Retry,
@@ -8955,8 +8955,8 @@ export const replaceUserEmailAddress: API.OperationMethod<
   ReplaceUserEmailAddressError,
   ClerkOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(444, __c55, 4) as any as S.Schema<ReplaceUserEmailAddressRequest>,
-  output: __S(30, __c3, 6) as any as S.Schema<EmailAddress>,
+  input: __S(4128, __c129, 0) as any as S.Schema<ReplaceUserEmailAddressRequest>,
+  output: __S(1632, __c51, 0) as any as S.Schema<EmailAddress>,
   errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity, UnknownClerkError],
   protocol: ClerkProtocol,
   retry: Retry.Retry,
@@ -8970,8 +8970,8 @@ export const replaceUserMetadata: API.OperationMethod<
   ReplaceUserMetadataError,
   ClerkOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(445, __c55, 5) as any as S.Schema<ReplaceUserMetadataRequest>,
-  output: __S(53, __c6, 5) as any as S.Schema<User>,
+  input: __S(4160, __c130, 0) as any as S.Schema<ReplaceUserMetadataRequest>,
+  output: __S(1809, __c56, 17) as any as S.Schema<User>,
   errors: [BadRequest, NotFound, UnprocessableEntity, UnknownClerkError],
   protocol: ClerkProtocol,
   retry: Retry.Retry,
@@ -8990,8 +8990,8 @@ export const replaceUserPhoneNumber: API.OperationMethod<
   ReplaceUserPhoneNumberError,
   ClerkOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(446, __c55, 6) as any as S.Schema<ReplaceUserPhoneNumberRequest>,
-  output: __S(32, __c4, 0) as any as S.Schema<PhoneNumber>,
+  input: __S(4192, __c131, 0) as any as S.Schema<ReplaceUserPhoneNumberRequest>,
+  output: __S(1728, __c54, 0) as any as S.Schema<PhoneNumber>,
   errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity, UnknownClerkError],
   protocol: ClerkProtocol,
   retry: Retry.Retry,
@@ -9005,8 +9005,8 @@ export const revokeActorToken: API.OperationMethod<
   RevokeActorTokenError,
   ClerkOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(447, __c55, 7) as any as S.Schema<RevokeActorTokenRequest>,
-  output: __S(91, __c11, 3) as any as S.Schema<ActorToken>,
+  input: __S(4224, __c132, 0) as any as S.Schema<RevokeActorTokenRequest>,
+  output: __S(3680, __c115, 0) as any as S.Schema<ActorToken>,
   errors: [BadRequest, NotFound, UnknownClerkError],
   protocol: ClerkProtocol,
   retry: Retry.Retry,
@@ -9020,8 +9020,8 @@ export const revokeAdminPortalLinkToken: API.OperationMethod<
   RevokeAdminPortalLinkTokenError,
   ClerkOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(448, __c56, 0) as any as S.Schema<RevokeAdminPortalLinkTokenRequest>,
-  output: __S(449, __c56, 1) as any as S.Schema<RevokeAdminPortalLinkTokenResponse>,
+  input: __S(4256, __c133, 0) as any as S.Schema<RevokeAdminPortalLinkTokenRequest>,
+  output: __S(4257, __c133, 1) as any as S.Schema<RevokeAdminPortalLinkTokenResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownClerkError],
   protocol: ClerkProtocol,
   retry: Retry.Retry,
@@ -9035,8 +9035,8 @@ export const revokeAgentTask: API.OperationMethod<
   RevokeAgentTaskError,
   ClerkOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(450, __c56, 2) as any as S.Schema<RevokeAgentTaskRequest>,
-  output: __S(96, __c12, 0) as any as S.Schema<AgentTask>,
+  input: __S(4288, __c134, 0) as any as S.Schema<RevokeAgentTaskRequest>,
+  output: __S(4416, __c138, 0) as any as S.Schema<AgentTask>,
   errors: [BadRequest, NotFound, UnknownClerkError],
   protocol: ClerkProtocol,
   retry: Retry.Retry,
@@ -9050,8 +9050,8 @@ export const revokeApiKey: API.OperationMethod<
   RevokeApiKeyError,
   ClerkOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(451, __c56, 3) as any as S.Schema<RevokeApiKeyRequest>,
-  output: __S(452, __c56, 4) as any as S.Schema<RevokeApiKeyResponse>,
+  input: __S(4320, __c135, 0) as any as S.Schema<RevokeApiKeyRequest>,
+  output: __S(4321, __c135, 1) as any as S.Schema<RevokeApiKeyResponse>,
   errors: [BadRequest, NotFound, UnknownClerkError],
   protocol: ClerkProtocol,
   retry: Retry.Retry,
@@ -9065,8 +9065,8 @@ export const revokeInvitation: API.OperationMethod<
   RevokeInvitationError,
   ClerkOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(453, __c56, 5) as any as S.Schema<RevokeInvitationRequest>,
-  output: __S(454, __c56, 6) as any as S.Schema<RevokeInvitationResponse>,
+  input: __S(4352, __c136, 0) as any as S.Schema<RevokeInvitationRequest>,
+  output: __S(4353, __c136, 1) as any as S.Schema<RevokeInvitationResponse>,
   errors: [BadRequest, NotFound, UnknownClerkError],
   protocol: ClerkProtocol,
   retry: Retry.Retry,
@@ -9080,8 +9080,8 @@ export const revokeM2MToken: API.OperationMethod<
   RevokeM2MTokenError,
   ClerkOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(455, __c56, 7) as any as S.Schema<RevokeM2MTokenRequest>,
-  output: __S(456, __c57, 0) as any as S.Schema<RevokeM2MTokenResponse>,
+  input: __S(4448, __c139, 0) as any as S.Schema<RevokeM2MTokenRequest>,
+  output: __S(4449, __c139, 1) as any as S.Schema<RevokeM2MTokenResponse>,
   errors: [BadRequest, NotFound, UnknownClerkError],
   protocol: ClerkProtocol,
   retry: Retry.Retry,
@@ -9100,8 +9100,8 @@ export const revokeOAuthApplicationToken: API.OperationMethod<
   RevokeOAuthApplicationTokenError,
   ClerkOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(457, __c57, 1) as any as S.Schema<RevokeOAuthApplicationTokenRequest>,
-  output: __S(88, __c11, 0) as any as S.Schema<RevokeOAuthApplicationTokenResponse>,
+  input: __S(4480, __c140, 0) as any as S.Schema<RevokeOAuthApplicationTokenRequest>,
+  output: __S(3232, __c101, 0) as any as S.Schema<RevokeOAuthApplicationTokenResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity, UnknownClerkError],
   protocol: ClerkProtocol,
   retry: Retry.Retry,
@@ -9115,8 +9115,8 @@ export const revokeOrganizationInvitation: API.OperationMethod<
   RevokeOrganizationInvitationError,
   ClerkOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(458, __c57, 2) as any as S.Schema<RevokeOrganizationInvitationRequest>,
-  output: __S(169, __c21, 1) as any as S.Schema<OrganizationInvitation>,
+  input: __S(4512, __c141, 0) as any as S.Schema<RevokeOrganizationInvitationRequest>,
+  output: __S(7488, __c234, 0) as any as S.Schema<OrganizationInvitation>,
   errors: [BadRequest, Forbidden, NotFound, UnknownClerkError],
   protocol: ClerkProtocol,
   retry: Retry.Retry,
@@ -9130,8 +9130,8 @@ export const revokeSession: API.OperationMethod<
   RevokeSessionError,
   ClerkOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(459, __c57, 3) as any as S.Schema<RevokeSessionRequest>,
-  output: __S(193, __c24, 1) as any as S.Schema<Session>,
+  input: __S(4544, __c142, 0) as any as S.Schema<RevokeSessionRequest>,
+  output: __S(8067, __c252, 3) as any as S.Schema<Session>,
   errors: [BadRequest, NotFound, UnknownClerkError],
   protocol: ClerkProtocol,
   retry: Retry.Retry,
@@ -9145,8 +9145,8 @@ export const revokeSignInToken: API.OperationMethod<
   RevokeSignInTokenError,
   ClerkOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(460, __c57, 4) as any as S.Schema<RevokeSignInTokenRequest>,
-  output: __S(198, __c24, 6) as any as S.Schema<SignInToken>,
+  input: __S(4576, __c143, 0) as any as S.Schema<RevokeSignInTokenRequest>,
+  output: __S(8224, __c257, 0) as any as S.Schema<SignInToken>,
   errors: [BadRequest, NotFound, UnknownClerkError],
   protocol: ClerkProtocol,
   retry: Retry.Retry,
@@ -9160,8 +9160,8 @@ export const revokeUserBiometricCredential: API.OperationMethod<
   RevokeUserBiometricCredentialError,
   ClerkOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(461, __c57, 5) as any as S.Schema<RevokeUserBiometricCredentialRequest>,
-  output: __S(420, __c52, 4) as any as S.Schema<BiometricCredential>,
+  input: __S(4608, __c144, 0) as any as S.Schema<RevokeUserBiometricCredentialRequest>,
+  output: __S(3520, __c110, 0) as any as S.Schema<BiometricCredential>,
   errors: [Forbidden, NotFound, UnknownClerkError],
   protocol: ClerkProtocol,
   retry: Retry.Retry,
@@ -9175,8 +9175,8 @@ export const rotateDirectoryAPIKey: API.OperationMethod<
   RotateDirectoryAPIKeyError,
   ClerkOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(462, __c57, 6) as any as S.Schema<RotateDirectoryAPIKeyRequest>,
-  output: __S(131, __c16, 3) as any as S.Schema<Directory>,
+  input: __S(4640, __c145, 0) as any as S.Schema<RotateDirectoryAPIKeyRequest>,
+  output: __S(6752, __c211, 0) as any as S.Schema<Directory>,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownClerkError],
   protocol: ClerkProtocol,
   retry: Retry.Retry,
@@ -9195,8 +9195,8 @@ export const rotateMachineSecretKey: API.OperationMethod<
   RotateMachineSecretKeyError,
   ClerkOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(463, __c57, 7) as any as S.Schema<RotateMachineSecretKeyRequest>,
-  output: __S(309, __c38, 5) as any as S.Schema<RotateMachineSecretKeyResponse>,
+  input: __S(4672, __c146, 0) as any as S.Schema<RotateMachineSecretKeyRequest>,
+  output: __S(1024, __c32, 0) as any as S.Schema<RotateMachineSecretKeyResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity, UnknownClerkError],
   protocol: ClerkProtocol,
   retry: Retry.Retry,
@@ -9210,8 +9210,8 @@ export const rotateOAuthApplicationSecret: API.OperationMethod<
   RotateOAuthApplicationSecretError,
   ClerkOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(464, __c58, 0) as any as S.Schema<RotateOAuthApplicationSecretRequest>,
-  output: __S(465, __c58, 1) as any as S.Schema<RotateOAuthApplicationSecretResponse>,
+  input: __S(4704, __c147, 0) as any as S.Schema<RotateOAuthApplicationSecretRequest>,
+  output: __S(4705, __c147, 1) as any as S.Schema<RotateOAuthApplicationSecretResponse>,
   errors: [Forbidden, NotFound, UnknownClerkError],
   protocol: ClerkProtocol,
   retry: Retry.Retry,
@@ -9229,8 +9229,8 @@ export const rotateSCIMDirectoryAPIKey: API.OperationMethod<
   RotateSCIMDirectoryAPIKeyError,
   ClerkOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(466, __c58, 2) as any as S.Schema<RotateSCIMDirectoryAPIKeyRequest>,
-  output: __S(186, __c23, 2) as any as S.Schema<SCIMDirectory>,
+  input: __S(4736, __c148, 0) as any as S.Schema<RotateSCIMDirectoryAPIKeyRequest>,
+  output: __S(7872, __c246, 0) as any as S.Schema<SCIMDirectory>,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownClerkError],
   protocol: ClerkProtocol,
   retry: Retry.Retry,
@@ -9249,8 +9249,8 @@ export const setUserPasswordCompromised: API.OperationMethod<
   SetUserPasswordCompromisedError,
   ClerkOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(467, __c58, 3) as any as S.Schema<SetUserPasswordCompromisedRequest>,
-  output: __S(53, __c6, 5) as any as S.Schema<User>,
+  input: __S(4832, __c151, 0) as any as S.Schema<SetUserPasswordCompromisedRequest>,
+  output: __S(1809, __c56, 17) as any as S.Schema<User>,
   errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity, UnknownClerkError],
   protocol: ClerkProtocol,
   retry: Retry.Retry,
@@ -9264,8 +9264,8 @@ export const setUserProfileImage: API.OperationMethod<
   SetUserProfileImageError,
   ClerkOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(468, __c58, 4) as any as S.Schema<SetUserProfileImageRequest>,
-  output: __S(53, __c6, 5) as any as S.Schema<User>,
+  input: __S(4864, __c152, 0) as any as S.Schema<SetUserProfileImageRequest>,
+  output: __S(1809, __c56, 17) as any as S.Schema<User>,
   errors: [BadRequest, NotFound, UnknownClerkError],
   protocol: ClerkProtocol,
   retry: Retry.Retry,
@@ -9279,8 +9279,8 @@ export const unbanUser: API.OperationMethod<
   UnbanUserError,
   ClerkOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(469, __c58, 5) as any as S.Schema<UnbanUserRequest>,
-  output: __S(53, __c6, 5) as any as S.Schema<User>,
+  input: __S(4896, __c153, 0) as any as S.Schema<UnbanUserRequest>,
+  output: __S(1809, __c56, 17) as any as S.Schema<User>,
   errors: [UnknownClerkError],
   protocol: ClerkProtocol,
   retry: Retry.Retry,
@@ -9294,8 +9294,8 @@ export const unbanUser2: API.OperationMethod<
   UnbanUser2Error,
   ClerkOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(470, __c58, 6) as any as S.Schema<UnbanUserRequest2>,
-  output: __S(56, __c7, 0) as any as S.Schema<UnbanUserResponse>,
+  input: __S(4928, __c154, 0) as any as S.Schema<UnbanUserRequest2>,
+  output: __S(2209, __c69, 1) as any as S.Schema<UnbanUserResponse>,
   errors: [BadRequest, UnknownClerkError],
   protocol: ClerkProtocol,
   retry: Retry.Retry,
@@ -9309,8 +9309,8 @@ export const unlockUser: API.OperationMethod<
   UnlockUserError,
   ClerkOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(471, __c58, 7) as any as S.Schema<UnlockUserRequest>,
-  output: __S(53, __c6, 5) as any as S.Schema<User>,
+  input: __S(4960, __c155, 0) as any as S.Schema<UnlockUserRequest>,
+  output: __S(1809, __c56, 17) as any as S.Schema<User>,
   errors: [Forbidden, UnknownClerkError],
   protocol: ClerkProtocol,
   retry: Retry.Retry,
@@ -9329,8 +9329,8 @@ export const unsetUserPasswordCompromised: API.OperationMethod<
   UnsetUserPasswordCompromisedError,
   ClerkOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(472, __c59, 0) as any as S.Schema<UnsetUserPasswordCompromisedRequest>,
-  output: __S(53, __c6, 5) as any as S.Schema<User>,
+  input: __S(4992, __c156, 0) as any as S.Schema<UnsetUserPasswordCompromisedRequest>,
+  output: __S(1809, __c56, 17) as any as S.Schema<User>,
   errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity, UnknownClerkError],
   protocol: ClerkProtocol,
   retry: Retry.Retry,
@@ -9344,8 +9344,8 @@ export const updateApiKey: API.OperationMethod<
   UpdateApiKeyError,
   ClerkOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(473, __c59, 1) as any as S.Schema<UpdateApiKeyRequest>,
-  output: __S(474, __c59, 2) as any as S.Schema<UpdateApiKeyResponse>,
+  input: __S(5024, __c157, 0) as any as S.Schema<UpdateApiKeyRequest>,
+  output: __S(5025, __c157, 1) as any as S.Schema<UpdateApiKeyResponse>,
   errors: [BadRequest, NotFound, UnknownClerkError],
   protocol: ClerkProtocol,
   retry: Retry.Retry,
@@ -9364,8 +9364,8 @@ export const updateDirectory: API.OperationMethod<
   UpdateDirectoryError,
   ClerkOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(476, __c59, 4) as any as S.Schema<UpdateDirectoryRequest>,
-  output: __S(131, __c16, 3) as any as S.Schema<Directory>,
+  input: __S(5056, __c158, 0) as any as S.Schema<UpdateDirectoryRequest>,
+  output: __S(6752, __c211, 0) as any as S.Schema<Directory>,
   errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity, UnknownClerkError],
   protocol: ClerkProtocol,
   retry: Retry.Retry,
@@ -9384,8 +9384,8 @@ export const updateDomain: API.OperationMethod<
   UpdateDomainError,
   ClerkOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(477, __c59, 5) as any as S.Schema<UpdateDomainRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<Domain>,
+  input: __S(5120, __c160, 0) as any as S.Schema<UpdateDomainRequest>,
+  output: __S(8004, __c250, 4) as any as S.Schema<Domain>,
   errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity, UnknownClerkError],
   protocol: ClerkProtocol,
   retry: Retry.Retry,
@@ -9399,8 +9399,8 @@ export const updateEmailAddress: API.OperationMethod<
   UpdateEmailAddressError,
   ClerkOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(478, __c59, 6) as any as S.Schema<UpdateEmailAddressRequest>,
-  output: __S(30, __c3, 6) as any as S.Schema<EmailAddress>,
+  input: __S(5152, __c161, 0) as any as S.Schema<UpdateEmailAddressRequest>,
+  output: __S(1632, __c51, 0) as any as S.Schema<EmailAddress>,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnknownClerkError],
   protocol: ClerkProtocol,
   retry: Retry.Retry,
@@ -9419,8 +9419,8 @@ export const updateEnterpriseConnection: API.OperationMethod<
   UpdateEnterpriseConnectionError,
   ClerkOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(480, __c60, 0) as any as S.Schema<UpdateEnterpriseConnectionRequest>,
-  output: __S(146, __c18, 2) as any as S.Schema<EnterpriseConnection>,
+  input: __S(5217, __c163, 1) as any as S.Schema<UpdateEnterpriseConnectionRequest>,
+  output: __S(6951, __c217, 7) as any as S.Schema<EnterpriseConnection>,
   errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity, UnknownClerkError],
   protocol: ClerkProtocol,
   retry: Retry.Retry,
@@ -9434,8 +9434,8 @@ export const updateInstance: API.OperationMethod<
   UpdateInstanceError,
   ClerkOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(481, __c60, 1) as any as S.Schema<UpdateInstanceRequest>,
-  output: __S(242, __c30, 2) as any as S.Schema<UpdateInstanceResponse>,
+  input: __S(5248, __c164, 0) as any as S.Schema<UpdateInstanceRequest>,
+  output: __S(9728, __c304, 0) as any as S.Schema<UpdateInstanceResponse>,
   errors: [UnprocessableEntity, UnknownClerkError],
   protocol: ClerkProtocol,
   retry: Retry.Retry,
@@ -9449,8 +9449,8 @@ export const updateInstanceAuthConfig: API.OperationMethod<
   UpdateInstanceAuthConfigError,
   ClerkOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(482, __c60, 2) as any as S.Schema<UpdateInstanceAuthConfigRequest>,
-  output: __S(483, __c60, 3) as any as S.Schema<UpdateInstanceAuthConfigResponse>,
+  input: __S(5280, __c165, 0) as any as S.Schema<UpdateInstanceAuthConfigRequest>,
+  output: __S(5281, __c165, 1) as any as S.Schema<UpdateInstanceAuthConfigResponse>,
   errors: [UnprocessableEntity, UnknownClerkError],
   protocol: ClerkProtocol,
   retry: Retry.Retry,
@@ -9464,8 +9464,8 @@ export const updateInstanceCommunication: API.OperationMethod<
   UpdateInstanceCommunicationError,
   ClerkOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(484, __c60, 4) as any as S.Schema<UpdateInstanceCommunicationRequest>,
-  output: __S(290, __c36, 2) as any as S.Schema<InstanceCommunication>,
+  input: __S(5312, __c166, 0) as any as S.Schema<UpdateInstanceCommunicationRequest>,
+  output: __S(544, __c17, 0) as any as S.Schema<InstanceCommunication>,
   errors: [UnprocessableEntity, UnknownClerkError],
   protocol: ClerkProtocol,
   retry: Retry.Retry,
@@ -9479,8 +9479,8 @@ export const updateInstanceOAuthApplicationSettings: API.OperationMethod<
   UpdateInstanceOAuthApplicationSettingsError,
   ClerkOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(485, __c60, 5) as any as S.Schema<UpdateInstanceOAuthApplicationSettingsRequest>,
-  output: __S(292, __c36, 4) as any as S.Schema<OAuthApplicationSettings>,
+  input: __S(5344, __c167, 0) as any as S.Schema<UpdateInstanceOAuthApplicationSettingsRequest>,
+  output: __S(672, __c21, 0) as any as S.Schema<OAuthApplicationSettings>,
   errors: [UnprocessableEntity, UnknownClerkError],
   protocol: ClerkProtocol,
   retry: Retry.Retry,
@@ -9499,8 +9499,8 @@ export const updateInstanceOrganizationSettings: API.OperationMethod<
   UpdateInstanceOrganizationSettingsError,
   ClerkOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(487, __c60, 7) as any as S.Schema<UpdateInstanceOrganizationSettingsRequest>,
-  output: __S(294, __c36, 6) as any as S.Schema<OrganizationSettings>,
+  input: __S(5377, __c168, 1) as any as S.Schema<UpdateInstanceOrganizationSettingsRequest>,
+  output: __S(736, __c23, 0) as any as S.Schema<OrganizationSettings>,
   errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity, UnknownClerkError],
   protocol: ClerkProtocol,
   retry: Retry.Retry,
@@ -9514,8 +9514,8 @@ export const updateInstanceProtect: API.OperationMethod<
   UpdateInstanceProtectError,
   ClerkOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(488, __c61, 0) as any as S.Schema<UpdateInstanceProtectRequest>,
-  output: __S(296, __c37, 0) as any as S.Schema<InstanceProtect>,
+  input: __S(5408, __c169, 0) as any as S.Schema<UpdateInstanceProtectRequest>,
+  output: __S(800, __c25, 0) as any as S.Schema<InstanceProtect>,
   errors: [UnprocessableEntity, UnknownClerkError],
   protocol: ClerkProtocol,
   retry: Retry.Retry,
@@ -9529,8 +9529,8 @@ export const updateInstanceRestrictions: API.OperationMethod<
   UpdateInstanceRestrictionsError,
   ClerkOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(489, __c61, 1) as any as S.Schema<UpdateInstanceRestrictionsRequest>,
-  output: __S(490, __c61, 2) as any as S.Schema<InstanceRestrictions>,
+  input: __S(5440, __c170, 0) as any as S.Schema<UpdateInstanceRestrictionsRequest>,
+  output: __S(5441, __c170, 1) as any as S.Schema<InstanceRestrictions>,
   errors: [UnprocessableEntity, UnknownClerkError],
   protocol: ClerkProtocol,
   retry: Retry.Retry,
@@ -9544,8 +9544,8 @@ export const updateJWTTemplate: API.OperationMethod<
   UpdateJWTTemplateError,
   ClerkOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(491, __c61, 3) as any as S.Schema<UpdateJWTTemplateRequest>,
-  output: __S(151, __c18, 7) as any as S.Schema<JWTTemplate>,
+  input: __S(5472, __c171, 0) as any as S.Schema<UpdateJWTTemplateRequest>,
+  output: __S(7104, __c222, 0) as any as S.Schema<JWTTemplate>,
   errors: [BadRequest, UnprocessableEntity, UnknownClerkError],
   protocol: ClerkProtocol,
   retry: Retry.Retry,
@@ -9564,8 +9564,8 @@ export const updateMachine: API.OperationMethod<
   UpdateMachineError,
   ClerkOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(492, __c61, 4) as any as S.Schema<UpdateMachineRequest>,
-  output: __S(493, __c61, 5) as any as S.Schema<UpdateMachineResponse>,
+  input: __S(5504, __c172, 0) as any as S.Schema<UpdateMachineRequest>,
+  output: __S(5505, __c172, 1) as any as S.Schema<UpdateMachineResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity, UnknownClerkError],
   protocol: ClerkProtocol,
   retry: Retry.Retry,
@@ -9584,8 +9584,8 @@ export const updateOAuthApplication: API.OperationMethod<
   UpdateOAuthApplicationError,
   ClerkOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(494, __c61, 6) as any as S.Schema<UpdateOAuthApplicationRequest>,
-  output: __S(315, __c39, 3) as any as S.Schema<OAuthApplication>,
+  input: __S(5600, __c175, 0) as any as S.Schema<UpdateOAuthApplicationRequest>,
+  output: __S(1152, __c36, 0) as any as S.Schema<OAuthApplication>,
   errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity, UnknownClerkError],
   protocol: ClerkProtocol,
   retry: Retry.Retry,
@@ -9604,8 +9604,8 @@ export const updateOrganization: API.OperationMethod<
   UpdateOrganizationError,
   ClerkOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(495, __c61, 7) as any as S.Schema<UpdateOrganizationRequest>,
-  output: __S(45, __c5, 5) as any as S.Schema<Organization>,
+  input: __S(5632, __c176, 0) as any as S.Schema<UpdateOrganizationRequest>,
+  output: __S(1664, __c52, 0) as any as S.Schema<Organization>,
   errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity, UnknownClerkError],
   protocol: ClerkProtocol,
   retry: Retry.Retry,
@@ -9624,8 +9624,8 @@ export const updateOrganizationDomain: API.OperationMethod<
   UpdateOrganizationDomainError,
   ClerkOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(496, __c62, 0) as any as S.Schema<UpdateOrganizationDomainRequest>,
-  output: __S(166, __c20, 6) as any as S.Schema<OrganizationDomain>,
+  input: __S(5664, __c177, 0) as any as S.Schema<UpdateOrganizationDomainRequest>,
+  output: __S(7393, __c231, 1) as any as S.Schema<OrganizationDomain>,
   errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity, UnknownClerkError],
   protocol: ClerkProtocol,
   retry: Retry.Retry,
@@ -9639,8 +9639,8 @@ export const updateOrganizationMembership: API.OperationMethod<
   UpdateOrganizationMembershipError,
   ClerkOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(497, __c62, 1) as any as S.Schema<UpdateOrganizationMembershipRequest>,
-  output: __S(47, __c5, 7) as any as S.Schema<OrganizationMembership>,
+  input: __S(5696, __c178, 0) as any as S.Schema<UpdateOrganizationMembershipRequest>,
+  output: __S(1697, __c53, 1) as any as S.Schema<OrganizationMembership>,
   errors: [NotFound, UnprocessableEntity, UnknownClerkError],
   protocol: ClerkProtocol,
   retry: Retry.Retry,
@@ -9658,8 +9658,8 @@ export const updateOrganizationMembershipMetadata: API.OperationMethod<
   UpdateOrganizationMembershipMetadataError,
   ClerkOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(498, __c62, 2) as any as S.Schema<UpdateOrganizationMembershipMetadataRequest>,
-  output: __S(47, __c5, 7) as any as S.Schema<OrganizationMembership>,
+  input: __S(5728, __c179, 0) as any as S.Schema<UpdateOrganizationMembershipMetadataRequest>,
+  output: __S(1697, __c53, 1) as any as S.Schema<OrganizationMembership>,
   errors: [BadRequest, NotFound, UnprocessableEntity, UnknownClerkError],
   protocol: ClerkProtocol,
   retry: Retry.Retry,
@@ -9678,8 +9678,8 @@ export const updateOrganizationPermission: API.OperationMethod<
   UpdateOrganizationPermissionError,
   ClerkOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(499, __c62, 3) as any as S.Schema<UpdateOrganizationPermissionRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<Permission>,
+  input: __S(5760, __c180, 0) as any as S.Schema<UpdateOrganizationPermissionRequest>,
+  output: __S(32, __c1, 0) as any as S.Schema<Permission>,
   errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity, UnknownClerkError],
   protocol: ClerkProtocol,
   retry: Retry.Retry,
@@ -9698,8 +9698,8 @@ export const updateOrganizationRole: API.OperationMethod<
   UpdateOrganizationRoleError,
   ClerkOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(500, __c62, 4) as any as S.Schema<UpdateOrganizationRoleRequest>,
-  output: __S(22, __c2, 6) as any as S.Schema<Role>,
+  input: __S(5792, __c181, 0) as any as S.Schema<UpdateOrganizationRoleRequest>,
+  output: __S(96, __c3, 0) as any as S.Schema<Role>,
   errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity, UnknownClerkError],
   protocol: ClerkProtocol,
   retry: Retry.Retry,
@@ -9713,8 +9713,8 @@ export const updatePhoneNumber: API.OperationMethod<
   UpdatePhoneNumberError,
   ClerkOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(501, __c62, 5) as any as S.Schema<UpdatePhoneNumberRequest>,
-  output: __S(32, __c4, 0) as any as S.Schema<PhoneNumber>,
+  input: __S(5824, __c182, 0) as any as S.Schema<UpdatePhoneNumberRequest>,
+  output: __S(1728, __c54, 0) as any as S.Schema<PhoneNumber>,
   errors: [BadRequest, Forbidden, NotFound, UnknownClerkError],
   protocol: ClerkProtocol,
   retry: Retry.Retry,
@@ -9733,8 +9733,8 @@ export const updateRoleSet: API.OperationMethod<
   UpdateRoleSetError,
   ClerkOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(502, __c62, 6) as any as S.Schema<UpdateRoleSetRequest>,
-  output: __S(12, __c1, 4) as any as S.Schema<RoleSet>,
+  input: __S(5856, __c183, 0) as any as S.Schema<UpdateRoleSetRequest>,
+  output: __S(8675, __c271, 3) as any as S.Schema<RoleSet>,
   errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity, UnknownClerkError],
   protocol: ClerkProtocol,
   retry: Retry.Retry,
@@ -9753,8 +9753,8 @@ export const updateSCIMDirectory: API.OperationMethod<
   UpdateSCIMDirectoryError,
   ClerkOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(503, __c62, 7) as any as S.Schema<UpdateSCIMDirectoryRequest>,
-  output: __S(186, __c23, 2) as any as S.Schema<SCIMDirectory>,
+  input: __S(5888, __c184, 0) as any as S.Schema<UpdateSCIMDirectoryRequest>,
+  output: __S(7872, __c246, 0) as any as S.Schema<SCIMDirectory>,
   errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity, UnknownClerkError],
   protocol: ClerkProtocol,
   retry: Retry.Retry,
@@ -9768,8 +9768,8 @@ export const updateSignUp: API.OperationMethod<
   UpdateSignUpError,
   ClerkOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(504, __c63, 0) as any as S.Schema<UpdateSignUpRequest>,
-  output: __S(337, __c42, 1) as any as S.Schema<SignUp>,
+  input: __S(5984, __c187, 0) as any as S.Schema<UpdateSignUpRequest>,
+  output: __S(1986, __c62, 2) as any as S.Schema<SignUp>,
   errors: [Forbidden, UnknownClerkError],
   protocol: ClerkProtocol,
   retry: Retry.Retry,
@@ -9783,8 +9783,8 @@ export const updateUser: API.OperationMethod<
   UpdateUserError,
   ClerkOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(505, __c63, 1) as any as S.Schema<UpdateUserRequest>,
-  output: __S(53, __c6, 5) as any as S.Schema<User>,
+  input: __S(6016, __c188, 0) as any as S.Schema<UpdateUserRequest>,
+  output: __S(1809, __c56, 17) as any as S.Schema<User>,
   errors: [BadRequest, NotFound, Conflict, UnprocessableEntity, UnknownClerkError],
   protocol: ClerkProtocol,
   retry: Retry.Retry,
@@ -9798,8 +9798,8 @@ export const updateUserMetadata: API.OperationMethod<
   UpdateUserMetadataError,
   ClerkOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(506, __c63, 2) as any as S.Schema<UpdateUserMetadataRequest>,
-  output: __S(53, __c6, 5) as any as S.Schema<User>,
+  input: __S(6048, __c189, 0) as any as S.Schema<UpdateUserMetadataRequest>,
+  output: __S(1809, __c56, 17) as any as S.Schema<User>,
   errors: [BadRequest, NotFound, UnprocessableEntity, UnknownClerkError],
   protocol: ClerkProtocol,
   retry: Retry.Retry,
@@ -9813,8 +9813,8 @@ export const uploadOAuthApplicationLogo: API.OperationMethod<
   UploadOAuthApplicationLogoError,
   ClerkOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(507, __c63, 3) as any as S.Schema<UploadOAuthApplicationLogoRequest>,
-  output: __S(315, __c39, 3) as any as S.Schema<OAuthApplication>,
+  input: __S(6080, __c190, 0) as any as S.Schema<UploadOAuthApplicationLogoRequest>,
+  output: __S(1152, __c36, 0) as any as S.Schema<OAuthApplication>,
   errors: [BadRequest, Forbidden, NotFound, UnknownClerkError],
   protocol: ClerkProtocol,
   retry: Retry.Retry,
@@ -9828,8 +9828,8 @@ export const uploadOrganizationLogo: API.OperationMethod<
   UploadOrganizationLogoError,
   ClerkOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(508, __c63, 4) as any as S.Schema<UploadOrganizationLogoRequest>,
-  output: __S(509, __c63, 5) as any as S.Schema<UploadOrganizationLogoResponse>,
+  input: __S(6112, __c191, 0) as any as S.Schema<UploadOrganizationLogoRequest>,
+  output: __S(6113, __c191, 1) as any as S.Schema<UploadOrganizationLogoResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownClerkError],
   protocol: ClerkProtocol,
   retry: Retry.Retry,
@@ -9843,8 +9843,8 @@ export const usersGetOrganizationInvitations: API.OperationMethod<
   UsersGetOrganizationInvitationsError,
   ClerkOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(510, __c63, 6) as any as S.Schema<UsersGetOrganizationInvitationsRequest>,
-  output: __S(380, __c47, 4) as any as S.Schema<OrganizationInvitationsWithPublicOrganizationData>,
+  input: __S(6144, __c192, 0) as any as S.Schema<UsersGetOrganizationInvitationsRequest>,
+  output: __S(2882, __c90, 2) as any as S.Schema<OrganizationInvitationsWithPublicOrganizationData>,
   errors: [BadRequest, Forbidden, NotFound, UnknownClerkError],
   protocol: ClerkProtocol,
   retry: Retry.Retry,
@@ -9858,8 +9858,8 @@ export const usersGetOrganizationMemberships: API.OperationMethod<
   UsersGetOrganizationMembershipsError,
   ClerkOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(511, __c63, 7) as any as S.Schema<UsersGetOrganizationMembershipsRequest>,
-  output: __S(345, __c43, 1) as any as S.Schema<OrganizationMemberships>,
+  input: __S(6176, __c193, 0) as any as S.Schema<UsersGetOrganizationMembershipsRequest>,
+  output: __S(2272, __c71, 0) as any as S.Schema<OrganizationMemberships>,
   errors: [Forbidden, UnknownClerkError],
   protocol: ClerkProtocol,
   retry: Retry.Retry,
@@ -9873,8 +9873,8 @@ export const verifyApiKey: API.OperationMethod<
   VerifyApiKeyError,
   ClerkOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(512, __c64, 0) as any as S.Schema<VerifyApiKeyRequest>,
-  output: __S(513, __c64, 1) as any as S.Schema<VerifyApiKeyResponse>,
+  input: __S(6208, __c194, 0) as any as S.Schema<VerifyApiKeyRequest>,
+  output: __S(6209, __c194, 1) as any as S.Schema<VerifyApiKeyResponse>,
   errors: [BadRequest, NotFound, UnknownClerkError],
   protocol: ClerkProtocol,
   retry: Retry.Retry,
@@ -9888,8 +9888,8 @@ export const verifyClient: API.OperationMethod<
   VerifyClientError,
   ClerkOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(514, __c64, 2) as any as S.Schema<VerifyClientRequest>,
-  output: __S(277, __c34, 5) as any as S.Schema<Client>,
+  input: __S(6240, __c195, 0) as any as S.Schema<VerifyClientRequest>,
+  output: __S(256, __c8, 0) as any as S.Schema<Client>,
   errors: [BadRequest, NotFound, UnknownClerkError],
   protocol: ClerkProtocol,
   retry: Retry.Retry,
@@ -9903,8 +9903,8 @@ export const verifyDomainProxy: API.OperationMethod<
   VerifyDomainProxyError,
   ClerkOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(515, __c64, 3) as any as S.Schema<VerifyDomainProxyRequest>,
-  output: __S(516, __c64, 4) as any as S.Schema<ProxyCheck>,
+  input: __S(6272, __c196, 0) as any as S.Schema<VerifyDomainProxyRequest>,
+  output: __S(6273, __c196, 1) as any as S.Schema<ProxyCheck>,
   errors: [BadRequest, UnprocessableEntity, UnknownClerkError],
   protocol: ClerkProtocol,
   retry: Retry.Retry,
@@ -9918,8 +9918,8 @@ export const verifyM2MToken: API.OperationMethod<
   VerifyM2MTokenError,
   ClerkOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(517, __c64, 5) as any as S.Schema<VerifyM2MTokenRequest>,
-  output: __S(518, __c64, 6) as any as S.Schema<VerifyM2MTokenResponse>,
+  input: __S(6368, __c199, 0) as any as S.Schema<VerifyM2MTokenRequest>,
+  output: __S(6369, __c199, 1) as any as S.Schema<VerifyM2MTokenResponse>,
   errors: [BadRequest, NotFound, UnknownClerkError],
   protocol: ClerkProtocol,
   retry: Retry.Retry,
@@ -9933,8 +9933,8 @@ export const verifyOAuthAccessToken: API.OperationMethod<
   VerifyOAuthAccessTokenError,
   ClerkOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(519, __c64, 7) as any as S.Schema<VerifyOAuthAccessTokenRequest>,
-  output: __S(520, __c65, 0) as any as S.Schema<VerifyOAuthAccessTokenResponse>,
+  input: __S(6400, __c200, 0) as any as S.Schema<VerifyOAuthAccessTokenRequest>,
+  output: __S(6401, __c200, 1) as any as S.Schema<VerifyOAuthAccessTokenResponse>,
   errors: [BadRequest, NotFound, UnknownClerkError],
   protocol: ClerkProtocol,
   retry: Retry.Retry,
@@ -9948,8 +9948,8 @@ export const verifyOrganizationDomainOwnership: API.OperationMethod<
   VerifyOrganizationDomainOwnershipError,
   ClerkOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(521, __c65, 1) as any as S.Schema<VerifyOrganizationDomainOwnershipRequest>,
-  output: __S(166, __c20, 6) as any as S.Schema<OrganizationDomain>,
+  input: __S(6432, __c201, 0) as any as S.Schema<VerifyOrganizationDomainOwnershipRequest>,
+  output: __S(7393, __c231, 1) as any as S.Schema<OrganizationDomain>,
   errors: [Forbidden, NotFound, UnknownClerkError],
   protocol: ClerkProtocol,
   retry: Retry.Retry,
@@ -9963,8 +9963,8 @@ export const verifyPassword: API.OperationMethod<
   VerifyPasswordError,
   ClerkOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(522, __c65, 2) as any as S.Schema<VerifyPasswordRequest>,
-  output: __S(523, __c65, 3) as any as S.Schema<VerifyPasswordResponse>,
+  input: __S(6464, __c202, 0) as any as S.Schema<VerifyPasswordRequest>,
+  output: __S(6465, __c202, 1) as any as S.Schema<VerifyPasswordResponse>,
   errors: [BadRequest, NotFound, UnprocessableEntity, UnknownClerkError],
   protocol: ClerkProtocol,
   retry: Retry.Retry,
@@ -9978,8 +9978,8 @@ export const verifyTOTP: API.OperationMethod<
   VerifyTOTPError,
   ClerkOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(524, __c65, 4) as any as S.Schema<VerifyTOTPRequest>,
-  output: __S(525, __c65, 5) as any as S.Schema<VerifyTOTPResponse>,
+  input: __S(6496, __c203, 0) as any as S.Schema<VerifyTOTPRequest>,
+  output: __S(6497, __c203, 1) as any as S.Schema<VerifyTOTPResponse>,
   errors: [BadRequest, NotFound, UnprocessableEntity, UnknownClerkError],
   protocol: ClerkProtocol,
   retry: Retry.Retry,
@@ -9989,220 +9989,6 @@ export const verifyTOTP: API.OperationMethod<
 function __c0(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String,
-          is_satellite: S.Boolean,
-          proxy_url: S.optional(S.NullOr(S.String)),
-        }).pipe(T.Http({ method: "POST", uri: "/domains", code: 200 })),
-      ).annotate({ identifier: "AddDomainRequest" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          host: S.String,
-          value: S.String,
-          required: S.Boolean,
-        }),
-      ).annotate({ identifier: "CNameTarget" });
-    case 2:
-      return S.Array(__S(1, __c0, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          host: S.String,
-          value: S.String,
-          record_type: S.String,
-          automation_disposition: S.optional(S.String),
-          required: S.Boolean,
-        }),
-      ).annotate({ identifier: "DNSTarget" });
-    case 4:
-      return S.Array(__S(3, __c0, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          object: S.String,
-          id: S.String,
-          name: S.String,
-          is_satellite: S.Boolean,
-          frontend_api_url: S.String,
-          accounts_portal_url: S.optional(S.NullOr(S.String)),
-          proxy_url: S.optional(S.NullOr(S.String)),
-          development_origin: S.String,
-          cname_targets: S.optional(S.NullOr(__S(2, __c0, 2))),
-          dns_targets: S.optional(S.NullOr(__S(4, __c0, 4))),
-        }),
-      ).annotate({ identifier: "Domain" });
-    case 6:
-      return S.Array(S.String);
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          role_set_key_or_id: S.String.pipe(T.Label()),
-          role_keys: __S(6, __c0, 6),
-          default_role_key: S.optional(S.String),
-          creator_role_key: S.optional(S.String),
-        }).pipe(
-          T.Http({ method: "POST", uri: "/role_sets/{role_set_key_or_id}/roles", code: 200 }),
-        ),
-      ).annotate({ identifier: "AddRolesToRoleSetRequest" });
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          object: S.String,
-          id: S.String,
-          name: S.String,
-          key: S.String,
-          description: S.NullOr(S.String),
-          members_count: S.optional(S.NullOr(S.Number)),
-          has_members: S.optional(S.NullOr(S.Boolean)),
-          created_at: S.Number,
-          updated_at: S.Number,
-        }),
-      ).annotate({ identifier: "RoleSetItem" });
-    case 1:
-      return S.Array(__S(8, __c1, 0));
-    case 2:
-      return S.Record(S.String, S.String);
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          object: S.String,
-          id: S.String,
-          organization_id: S.optional(S.NullOr(S.String)),
-          instance_id: S.String,
-          source_role_set_id: S.String,
-          dest_role_set_id: S.optional(S.NullOr(S.String)),
-          trigger_type: S.String,
-          status: S.String,
-          migrated_members: S.Number,
-          mappings: S.optional(S.NullOr(__S(10, __c1, 2))),
-          started_at: S.optional(S.NullOr(S.Number)),
-          completed_at: S.optional(S.NullOr(S.Number)),
-          created_at: S.Number,
-          updated_at: S.Number,
-        }),
-      ).annotate({ identifier: "RoleSetMigration" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          object: S.String,
-          id: S.String,
-          name: S.String,
-          key: S.String,
-          description: S.NullOr(S.String),
-          roles: __S(9, __c1, 1),
-          default_role: S.optional(S.NullOr(__S(8, __c1, 0))),
-          creator_role: S.optional(S.NullOr(__S(8, __c1, 0))),
-          type: S.String,
-          role_set_migration: S.optional(S.NullOr(__S(11, __c1, 3))),
-          created_at: S.Number,
-          updated_at: S.Number,
-        }),
-      ).annotate({ identifier: "RoleSet" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          organization_id: S.String.pipe(T.Label()),
-          amount: S.Number,
-          action: S.String,
-          currency: S.optional(S.String),
-          idempotency_key: S.String,
-          note: S.optional(S.String),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/organizations/{organization_id}/billing/credits",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "AdjustOrganizationBillingCreditBalanceRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          amount: S.Number,
-          amount_formatted: S.String,
-          currency: S.String,
-          currency_symbol: S.String,
-        }),
-      ).annotate({ identifier: "CommerceMoneyResponse" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          object: S.String,
-          id: S.String,
-          payer_id: S.String,
-          amount: __S(14, __c1, 6),
-          source_type: S.String,
-          source_id: S.String,
-          note: S.optional(S.NullOr(S.String)),
-          created_at: S.String,
-        }),
-      ).annotate({
-        identifier: "CommerceCreditLedgerResponse",
-      });
-  }
-}
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          user_id: S.String.pipe(T.Label()),
-          amount: S.Number,
-          action: S.String,
-          currency: S.optional(S.String),
-          idempotency_key: S.String,
-          note: S.optional(S.String),
-        }).pipe(T.Http({ method: "POST", uri: "/users/{user_id}/billing/credits", code: 200 })),
-      ).annotate({
-        identifier: "AdjustUserBillingCreditBalanceRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          subscription_item_id: S.String.pipe(T.Label()),
-          discount_id: S.String,
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/billing/subscription_items/{subscription_item_id}/discounts",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "ApplyBillingSubscriptionItemDiscountRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          object: S.String,
-          id: S.String,
-          subscription_item_id: S.String,
-          discount_id: S.String,
-          name: S.optional(S.String),
-          source: S.String,
-          promo_code: S.optional(S.String),
-          effect: S.optional(S.String),
-          percent_off: S.optional(S.NullOr(S.Number)),
-          amount_off: S.optional(S.NullOr(__S(14, __c1, 6))),
-          amount: S.optional(S.NullOr(__S(14, __c1, 6))),
-          cycles_remaining: S.NullOr(S.Number),
-          cycles_applied: S.Number,
-          status: S.optional(S.String),
-          redeemed_at: S.Number,
-          redeemed_by: S.NullOr(S.String),
-        }),
-      ).annotate({
-        identifier: "CommerceDiscountRedemptionResponse",
-      });
-    case 3:
       return S.suspend(() =>
         S.Struct({
           organization_role_id: S.String.pipe(T.Label()),
@@ -10217,7 +10003,11 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "AssignPermissionToOrganizationRoleRequest",
       });
-    case 4:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           object: S.String,
@@ -10230,9 +10020,17 @@ function __c2(j: number): any {
           updated_at: S.Number,
         }),
       ).annotate({ identifier: "Permission" });
-    case 5:
-      return S.Array(__S(20, __c2, 4));
-    case 6:
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(32, __c1, 0));
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           object: S.String,
@@ -10241,12 +10039,245 @@ function __c2(j: number): any {
           key: S.String,
           description: S.NullOr(S.String),
           is_creator_eligible: S.Boolean,
-          permissions: __S(21, __c2, 5),
+          permissions: __S(64, __c2, 0),
           created_at: S.Number,
           updated_at: S.Number,
         }),
       ).annotate({ identifier: "Role" });
-    case 7:
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          paginated: S.optional(S.Boolean.pipe(T.Query())),
+          limit: S.optional(S.Number.pipe(T.Query())),
+          offset: S.optional(S.Number.pipe(T.Query())),
+        }).pipe(T.Http({ method: "GET", uri: "/billing/statements", code: 200 })),
+      ).annotate({
+        identifier: "GetBillingStatementListRequest",
+      });
+    case 1:
+      return S.Array(__S(10275, __c321, 3));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          data: __S(129, __c4, 1),
+          total_count: S.Number,
+        }),
+      ).annotate({
+        identifier: "PaginatedBillingStatementResponse",
+      });
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          statementID: S.String.pipe(T.Label()),
+          paginated: S.optional(S.Boolean.pipe(T.Query())),
+          limit: S.optional(S.Number.pipe(T.Query())),
+          offset: S.optional(S.Number.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/billing/statements/{statementID}/payment_attempts",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "GetBillingStatementPaymentAttemptsRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          data: __S(10305, __c322, 1),
+          total_count: S.Number,
+        }),
+      ).annotate({
+        identifier: "PaginatedBillingPaymentAttemptResponse",
+      });
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          client_id: S.String.pipe(T.Label()),
+        }).pipe(T.Http({ method: "GET", uri: "/clients/{client_id}", code: 200 })),
+      ).annotate({ identifier: "GetClientRequest" });
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(8067, __c252, 3));
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          object: S.String,
+          id: S.String,
+          session_ids: __S(8608, __c269, 0),
+          sessions: __S(224, __c7, 0),
+          sign_in_id: S.NullOr(S.String),
+          sign_up_id: S.NullOr(S.String),
+          last_active_session_id: S.NullOr(S.String),
+          last_authentication_strategy: S.NullOr(S.String),
+          updated_at: S.Number,
+          created_at: S.Number,
+        }),
+      ).annotate({ identifier: "Client" });
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          paginated: S.optional(S.Boolean.pipe(T.Query())),
+          limit: S.optional(S.Number.pipe(T.Query())),
+          offset: S.optional(S.Number.pipe(T.Query())),
+          payer_type: S.optional(S.String.pipe(T.Query())),
+        }).pipe(T.Http({ method: "GET", uri: "/billing/plans", code: 200 })),
+      ).annotate({
+        identifier: "GetCommercePlanListRequest",
+      });
+    case 1:
+      return S.Array(__S(2694, __c84, 6));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          data: __S(289, __c9, 1),
+          total_count: S.Number,
+        }),
+      ).annotate({
+        identifier: "PaginatedCommercePlanResponse",
+      });
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          paginated: S.optional(S.Boolean.pipe(T.Query())),
+          limit: S.optional(S.Number.pipe(T.Query())),
+          offset: S.optional(S.Number.pipe(T.Query())),
+          status: S.optional(S.String.pipe(T.Query())),
+          payer_type: S.optional(S.String.pipe(T.Query())),
+          plan_id: S.optional(S.String.pipe(T.Query())),
+          include_free: S.optional(S.Boolean.pipe(T.Query())),
+          query: S.optional(S.String.pipe(T.Query())),
+        }).pipe(T.Http({ method: "GET", uri: "/billing/subscription_items", code: 200 })),
+      ).annotate({
+        identifier: "GetCommerceSubscriptionItemListRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          data: __S(352, __c11, 0),
+          total_count: S.Number,
+        }),
+      ).annotate({
+        identifier: "PaginatedCommerceSubscriptionItemResponse",
+      });
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(2721, __c85, 1));
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          directory_id: S.String.pipe(T.Label()),
+        }).pipe(T.Http({ method: "GET", uri: "/directories/{directory_id}", code: 200 })),
+      ).annotate({ identifier: "GetDirectoryRequest" });
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          email_address_id: S.String.pipe(T.Label()),
+        }).pipe(T.Http({ method: "GET", uri: "/email_addresses/{email_address_id}", code: 200 })),
+      ).annotate({ identifier: "GetEmailAddressRequest" });
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          enterprise_connection_id: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/enterprise_connections/{enterprise_connection_id}",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "GetEnterpriseConnectionRequest",
+      });
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({}).pipe(T.Http({ method: "GET", uri: "/instance", code: 200 })),
+      ).annotate({ identifier: "GetInstanceRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          object: S.String,
+          id: S.String,
+          environment_type: S.String,
+          allowed_origins: S.NullOr(__S(8608, __c269, 0)),
+          allowed_subdomains: __S(8608, __c269, 0),
+          subdomain_allowlist_enabled: S.Boolean,
+          workspace_id: S.NullOr(S.String),
+        }),
+      ).annotate({ identifier: "Instance" });
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({}).pipe(T.Http({ method: "GET", uri: "/instance/communication", code: 200 })),
+      ).annotate({
+        identifier: "GetInstanceCommunicationRequest",
+      });
+  }
+}
+function __c17(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          object: S.String,
+          blocked_country_codes: __S(8608, __c269, 0),
+        }),
+      ).annotate({ identifier: "InstanceCommunication" });
+  }
+}
+function __c18(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           email_address_id: S.String.pipe(T.Label()),
@@ -10264,7 +10295,7 @@ function __c2(j: number): any {
       });
   }
 }
-function __c3(j: number): any {
+function __c19(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -10280,7 +10311,277 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "AttemptEmailAddressVerificationResponse",
       });
+  }
+}
+function __c20(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({}).pipe(
+          T.Http({ method: "GET", uri: "/instance/oauth_application_settings", code: 200 }),
+        ),
+      ).annotate({
+        identifier: "GetInstanceOAuthApplicationSettingsRequest",
+      });
+  }
+}
+function __c21(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          object: S.String,
+          dynamic_oauth_client_registration: S.Boolean,
+          default_scopes: S.NullOr(__S(8608, __c269, 0)),
+          oauth_jwt_access_tokens: S.Boolean,
+          aud_claim_enabled: S.Boolean,
+          pkce_required: S.Boolean,
+          client_id_metadata_documents_advertised: S.Boolean,
+          client_id_metadata_documents_only_allow_pre_registered_clients: S.Boolean,
+          client_id_metadata_documents_block_implicitly_allowed_clients: S.Boolean,
+        }),
+      ).annotate({ identifier: "OAuthApplicationSettings" });
+  }
+}
+function __c22(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({}).pipe(
+          T.Http({ method: "GET", uri: "/instance/organization_settings", code: 200 }),
+        ),
+      ).annotate({
+        identifier: "GetInstanceOrganizationSettingsRequest",
+      });
+  }
+}
+function __c23(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          object: S.String,
+          enabled: S.Boolean,
+          max_allowed_memberships: S.Number,
+          max_allowed_roles: S.Number,
+          max_role_sets_allowed: S.optional(S.Number),
+          max_allowed_domains: S.Number,
+          max_allowed_permissions: S.optional(S.Number),
+          creator_role: S.String,
+          admin_delete_enabled: S.Boolean,
+          domains_enabled: S.Boolean,
+          slug_disabled: S.optional(S.Boolean),
+          domains_enrollment_modes: __S(8448, __c264, 0),
+          domains_default_role: S.String,
+          initial_role_set_key: S.optional(S.NullOr(S.String)),
+        }),
+      ).annotate({ identifier: "OrganizationSettings" });
+  }
+}
+function __c24(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({}).pipe(T.Http({ method: "GET", uri: "/instance/protect", code: 200 })),
+      ).annotate({
+        identifier: "GetInstanceProtectRequest",
+      });
+  }
+}
+function __c25(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          object: S.String,
+          rules_enabled: S.Boolean,
+          specter_enabled: S.Boolean,
+          checks_bypassed: S.Boolean,
+          checks_verified: S.Boolean,
+          checks_exempt: S.Boolean,
+        }),
+      ).annotate({ identifier: "InstanceProtect" });
+  }
+}
+function __c26(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          frontendApi: S.optional(S.String.pipe(T.Query())),
+          frontend_api: S.optional(S.String.pipe(T.Query())),
+          publishable_key: S.optional(S.String.pipe(T.Query())),
+          proxy_url: S.optional(S.String.pipe(T.Query())),
+          domain: S.optional(S.String.pipe(T.Query())),
+          sign_in_url: S.optional(S.String.pipe(T.Query())),
+          use_domain_for_script: S.optional(S.Boolean.pipe(T.Query())),
+        }).pipe(T.Http({ method: "GET", uri: "/public/interstitial", code: 200 })),
+      ).annotate({ identifier: "GetInterstitialRequest" });
+  }
+}
+function __c27(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({}).pipe(T.Http({ method: "GET", uri: "/jwks", code: 200 })),
+      ).annotate({ identifier: "GetJWKSRequest" });
     case 1:
+      return S.Array(S.Unknown);
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          keys: S.optional(__S(865, __c27, 1)),
+        }),
+      ).annotate({ identifier: "JWKS" });
+  }
+}
+function __c28(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          template_id: S.String.pipe(T.Label()),
+        }).pipe(T.Http({ method: "GET", uri: "/jwt_templates/{template_id}", code: 200 })),
+      ).annotate({ identifier: "GetJWTTemplateRequest" });
+  }
+}
+function __c29(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subject: S.String.pipe(T.Query()),
+          revoked: S.optional(S.Boolean.pipe(T.Query())),
+          expired: S.optional(S.Boolean.pipe(T.Query())),
+          limit: S.optional(S.Number.pipe(T.Query())),
+          offset: S.optional(S.Number.pipe(T.Query())),
+        }).pipe(T.Http({ method: "GET", uri: "/m2m_tokens", code: 200 })),
+      ).annotate({ identifier: "GetM2MTokensRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          object: S.String,
+          id: S.String,
+          subject: S.String,
+          claims: S.optional(S.NullOr(S.Unknown)),
+          scopes: S.optional(__S(8608, __c269, 0)),
+          revoked: S.Boolean,
+          revocation_reason: S.NullOr(S.String),
+          expired: S.Boolean,
+          expiration: S.NullOr(S.Number),
+          last_used_at: S.NullOr(S.Number),
+          created_at: S.Number,
+          updated_at: S.Number,
+        }),
+      ).annotate({
+        identifier: "GetM2MTokensResponseM2mTokensItem",
+      });
+    case 2:
+      return S.Array(__S(929, __c29, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          m2m_tokens: __S(930, __c29, 2),
+          total_count: S.Number,
+        }),
+      ).annotate({ identifier: "GetM2MTokensResponse" });
+  }
+}
+function __c30(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          machine_id: S.String.pipe(T.Label()),
+        }).pipe(T.Http({ method: "GET", uri: "/machines/{machine_id}", code: 200 })),
+      ).annotate({ identifier: "GetMachineRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          object: S.String,
+          id: S.String,
+          name: S.String,
+          instance_id: S.String,
+          created_at: S.Number,
+          updated_at: S.Number,
+          default_token_ttl: S.optional(S.Number),
+          scoped_machines: __S(7201, __c225, 1),
+        }),
+      ).annotate({ identifier: "GetMachineResponse" });
+  }
+}
+function __c31(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          machine_id: S.String.pipe(T.Label()),
+        }).pipe(T.Http({ method: "GET", uri: "/machines/{machine_id}/secret_key", code: 200 })),
+      ).annotate({
+        identifier: "GetMachineSecretKeyRequest",
+      });
+  }
+}
+function __c32(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          object: S.String,
+          secret: S.String.pipe(T.SensitiveValue({})),
+        }),
+      ).annotate({
+        identifier: "GetMachineSecretKeyResponse",
+      });
+  }
+}
+function __c33(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          user_id: S.String.pipe(T.Label()),
+          provider: S.String.pipe(T.Label()),
+          paginated: S.optional(S.Boolean.pipe(T.Query())),
+          limit: S.optional(S.Number.pipe(T.Query())),
+          offset: S.optional(S.Number.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/users/{user_id}/oauth_access_tokens/{provider}",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "GetOAuthAccessTokenRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          object: S.String,
+          external_account_id: S.String,
+          provider_user_id: S.String,
+          token: S.String,
+          expires_at: S.NullOr(S.Number),
+          provider: S.String,
+          public_metadata: __S(1568, __c49, 0),
+          label: S.NullOr(S.String),
+          scopes: S.optional(__S(8608, __c269, 0)),
+          id_token: S.optional(S.String),
+          token_secret: S.optional(S.String.pipe(T.SensitiveValue({}))),
+        }),
+      ).annotate({ identifier: "OAuthAccessTokenItem" });
+    case 2:
+      return S.Array(__S(1057, __c33, 1));
+    case 3:
+      return S.suspend(() => __S(1058, __c33, 2).pipe(T.RawResponseRoot())).annotate({
+        identifier: "GetOAuthAccessTokenResponse",
+      });
+  }
+}
+function __c34(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           phone_number_id: S.String.pipe(T.Label()),
@@ -10296,24 +10597,277 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "AttemptPhoneNumberVerificationRequest",
       });
-    case 2:
+  }
+}
+function __c35(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          oauth_application_id: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({ method: "GET", uri: "/oauth_applications/{oauth_application_id}", code: 200 }),
+        ),
+      ).annotate({
+        identifier: "GetOAuthApplicationRequest",
+      });
+  }
+}
+function __c36(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          object: S.String,
+          id: S.String,
+          instance_id: S.String,
+          name: S.String,
+          client_id: S.String,
+          client_uri: S.NullOr(S.String),
+          client_image_url: S.NullOr(S.String),
+          dynamically_registered: S.Boolean,
+          consent_screen_enabled: S.Boolean,
+          pkce_required: S.Boolean,
+          device_authorization_grant_enabled: S.Boolean,
+          public: S.Boolean,
+          scopes: S.String,
+          redirect_uris: __S(8608, __c269, 0),
+          callback_url: S.String,
+          authorize_url: S.String,
+          token_fetch_url: S.String,
+          user_info_url: S.String,
+          discovery_url: S.String,
+          token_introspection_url: S.String,
+          created_at: S.Number,
+          updated_at: S.Number,
+        }),
+      ).annotate({ identifier: "OAuthApplication" });
+  }
+}
+function __c37(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          organization_id: S.String.pipe(T.Label()),
+          include_members_count: S.optional(S.Boolean.pipe(T.Query())),
+          include_missing_member_with_elevated_permissions: S.optional(S.Boolean.pipe(T.Query())),
+        }).pipe(T.Http({ method: "GET", uri: "/organizations/{organization_id}", code: 200 })),
+      ).annotate({ identifier: "GetOrganizationRequest" });
+  }
+}
+function __c38(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          organization_id: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/organizations/{organization_id}/billing/credits",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "GetOrganizationBillingCreditBalanceRequest",
+      });
+  }
+}
+function __c39(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          object: S.String,
+          balance: S.NullOr(__S(9152, __c286, 0)),
+        }),
+      ).annotate({
+        identifier: "CommerceCreditBalanceResponse",
+      });
+  }
+}
+function __c40(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          organization_id: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/organizations/{organization_id}/billing/subscription",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "GetOrganizationBillingSubscriptionRequest",
+      });
+  }
+}
+function __c41(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          date: S.Number,
+          amount: __S(9152, __c286, 0),
+          per_unit_totals: S.optional(__S(2821, __c88, 5)),
+          totals: S.optional(S.NullOr(__S(2823, __c88, 7))),
+        }),
+      ).annotate({
+        identifier: "CommerceSubscriptionNextPayment",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          object: S.String,
+          id: S.String,
+          instance_id: S.String,
+          status: S.String,
+          payer_id: S.String,
+          created_at: S.Number,
+          updated_at: S.Number,
+          active_at: S.NullOr(S.Number),
+          past_due_at: S.NullOr(S.Number),
+          subscription_items: __S(352, __c11, 0),
+          next_payment: S.optional(__S(1312, __c41, 0)),
+          eligible_for_free_trial: S.optional(S.Boolean),
+        }),
+      ).annotate({ identifier: "CommerceSubscription" });
+  }
+}
+function __c42(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          organization_id: S.String.pipe(T.Label()),
+          invitation_id: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/organizations/{organization_id}/invitations/{invitation_id}",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "GetOrganizationInvitationRequest",
+      });
+  }
+}
+function __c43(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          permission_id: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({ method: "GET", uri: "/organization_permissions/{permission_id}", code: 200 }),
+        ),
+      ).annotate({
+        identifier: "GetOrganizationPermissionRequest",
+      });
+  }
+}
+function __c44(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          organization_role_id: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({ method: "GET", uri: "/organization_roles/{organization_role_id}", code: 200 }),
+        ),
+      ).annotate({
+        identifier: "GetOrganizationRoleRequest",
+      });
+  }
+}
+function __c45(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          phone_number_id: S.String.pipe(T.Label()),
+        }).pipe(T.Http({ method: "GET", uri: "/phone_numbers/{phone_number_id}", code: 200 })),
+      ).annotate({ identifier: "GetPhoneNumberRequest" });
+  }
+}
+function __c46(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String.pipe(T.Label()),
+        }).pipe(T.Http({ method: "GET", uri: "/redirect_urls/{id}", code: 200 })),
+      ).annotate({ identifier: "GetRedirectURLRequest" });
+  }
+}
+function __c47(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          session_id: S.String.pipe(T.Label()),
+          reverification_id: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/sessions/{session_id}/reverifications/{reverification_id}",
+            code: 200,
+          }),
+        ),
+      ).annotate({ identifier: "GetReverificationRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          object: S.String,
+          id: S.String,
+          session_id: S.String,
+          user_id: S.String,
+          level: S.String,
+          status: S.String,
+          first_factor_verified_at: S.NullOr(S.Number),
+          second_factor_verified_at: S.NullOr(S.Number),
+          created_at: S.Number,
+          updated_at: S.Number,
+        }),
+      ).annotate({ identifier: "Reverification" });
+  }
+}
+function __c48(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           user_id: S.String.pipe(T.Label()),
         }).pipe(T.Http({ method: "POST", uri: "/users/{user_id}/ban", code: 200 })),
       ).annotate({ identifier: "BanUserRequest" });
-    case 3:
+  }
+}
+function __c49(j: number): any {
+  switch (j) {
+    case 0:
       return S.Record(S.String, S.Unknown);
-    case 4:
+  }
+}
+function __c50(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           type: S.String,
           id: S.String,
         }),
       ).annotate({ identifier: "IdentificationLink" });
-    case 5:
-      return S.Array(__S(28, __c3, 4));
-    case 6:
+    case 1:
+      return S.Array(__S(1600, __c50, 0));
+  }
+}
+function __c51(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
@@ -10321,17 +10875,80 @@ function __c3(j: number): any {
           email_address: S.String,
           reserved: S.Boolean,
           verification: S.NullOr(S.Unknown),
-          linked_to: __S(29, __c3, 5),
+          linked_to: __S(1601, __c50, 1),
           matches_sso_connection: S.optional(S.Boolean),
           created_at: S.Number,
           updated_at: S.Number,
         }),
       ).annotate({ identifier: "EmailAddress" });
-    case 7:
-      return S.Array(__S(30, __c3, 6));
   }
 }
-function __c4(j: number): any {
+function __c52(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          object: S.String,
+          id: S.String,
+          name: S.String,
+          slug: S.String,
+          image_url: S.optional(S.String),
+          has_image: S.Boolean,
+          members_count: S.optional(S.Number),
+          missing_member_with_elevated_permissions: S.optional(S.Boolean),
+          pending_invitations_count: S.optional(S.Number),
+          max_allowed_memberships: S.Number,
+          admin_delete_enabled: S.Boolean,
+          self_serve_sso_enabled: S.optional(S.NullOr(S.Boolean)),
+          public_metadata: __S(1568, __c49, 0),
+          private_metadata: S.optional(__S(1568, __c49, 0)),
+          created_by: S.optional(S.String),
+          created_at: S.Number,
+          updated_at: S.Number,
+          last_active_at: S.optional(S.Number),
+          role_set_key: S.optional(S.NullOr(S.String)),
+        }),
+      ).annotate({ identifier: "Organization" });
+  }
+}
+function __c53(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          user_id: S.String,
+          first_name: S.NullOr(S.String),
+          last_name: S.NullOr(S.String),
+          profile_image_url: S.NullOr(S.String),
+          image_url: S.String,
+          has_image: S.Boolean,
+          identifier: S.optional(S.NullOr(S.String)),
+          username: S.optional(S.NullOr(S.String)),
+          banned: S.optional(S.Boolean),
+          deprovisioned: S.optional(S.Boolean),
+        }),
+      ).annotate({
+        identifier: "OrganizationMembershipPublicUserData",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          object: S.String,
+          role: S.String,
+          role_name: S.optional(S.String),
+          permissions: __S(8608, __c269, 0),
+          public_metadata: __S(1568, __c49, 0),
+          private_metadata: S.optional(__S(1568, __c49, 0)),
+          organization: __S(1664, __c52, 0),
+          public_user_data: S.optional(__S(1696, __c53, 0)),
+          created_at: S.Number,
+          updated_at: S.Number,
+        }),
+      ).annotate({ identifier: "OrganizationMembership" });
+  }
+}
+function __c54(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -10343,14 +10960,26 @@ function __c4(j: number): any {
           default_second_factor: S.optional(S.Boolean),
           reserved: S.Boolean,
           verification: S.NullOr(S.Unknown),
-          linked_to: __S(29, __c3, 5),
-          backup_codes: S.optional(S.NullOr(__S(6, __c0, 6))),
+          linked_to: __S(1601, __c50, 1),
+          backup_codes: S.optional(S.NullOr(__S(8608, __c269, 0))),
           created_at: S.Number,
           updated_at: S.Number,
         }),
       ).annotate({ identifier: "PhoneNumber" });
+  }
+}
+function __c55(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(1697, __c53, 1));
+  }
+}
+function __c56(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(1632, __c51, 0));
     case 1:
-      return S.Array(__S(32, __c4, 0));
+      return S.Array(__S(1728, __c54, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -10363,7 +10992,7 @@ function __c4(j: number): any {
         }),
       ).annotate({ identifier: "Web3Wallet" });
     case 3:
-      return S.Array(__S(34, __c4, 2));
+      return S.Array(__S(1794, __c56, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
@@ -10384,11 +11013,11 @@ function __c4(j: number): any {
           object: S.String,
           name: S.String,
           last_used_at: S.Number,
-          verification: S.NullOr(__S(36, __c4, 4)),
+          verification: S.NullOr(__S(1796, __c56, 4)),
         }),
       ).annotate({ identifier: "Passkey" });
     case 6:
-      return S.Array(__S(37, __c4, 5));
+      return S.Array(__S(1797, __c56, 5));
     case 7:
       return S.suspend(() =>
         S.Struct({
@@ -10406,7 +11035,7 @@ function __c4(j: number): any {
           image_url: S.optional(S.NullOr(S.String)),
           username: S.optional(S.NullOr(S.String)),
           phone_number: S.optional(S.NullOr(S.String)),
-          public_metadata: __S(27, __c3, 3),
+          public_metadata: __S(1568, __c49, 0),
           label: S.optional(S.NullOr(S.String)),
           created_at: S.Number,
           updated_at: S.Number,
@@ -10415,13 +11044,9 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "ExternalAccountWithVerification",
       });
-  }
-}
-function __c5(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(39, __c4, 7));
-    case 1:
+    case 8:
+      return S.Array(__S(1799, __c56, 7));
+    case 9:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
@@ -10433,14 +11058,14 @@ function __c5(j: number): any {
           last_name: S.optional(S.NullOr(S.String)),
           provider_user_id: S.optional(S.NullOr(S.String)),
           last_authenticated_at: S.optional(S.NullOr(S.Number)),
-          public_metadata: S.optional(__S(27, __c3, 3)),
+          public_metadata: S.optional(__S(1568, __c49, 0)),
           verification: S.NullOr(S.Unknown),
           saml_connection: S.optional(S.NullOr(S.Unknown)),
         }),
       ).annotate({ identifier: "SAMLAccount" });
-    case 2:
-      return S.Array(__S(41, __c5, 1));
-    case 3:
+    case 10:
+      return S.Array(__S(1801, __c56, 9));
+    case 11:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
@@ -10453,78 +11078,15 @@ function __c5(j: number): any {
           last_name: S.optional(S.NullOr(S.String)),
           provider_user_id: S.optional(S.NullOr(S.String)),
           enterprise_connection_id: S.optional(S.NullOr(S.String)),
-          public_metadata: S.optional(__S(27, __c3, 3)),
+          public_metadata: S.optional(__S(1568, __c49, 0)),
           verification: S.NullOr(S.Unknown),
           enterprise_connection: S.optional(S.NullOr(S.Unknown)),
           last_authenticated_at: S.optional(S.NullOr(S.Number)),
         }),
       ).annotate({ identifier: "EnterpriseAccount" });
-    case 4:
-      return S.Array(__S(43, __c5, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          object: S.String,
-          id: S.String,
-          name: S.String,
-          slug: S.String,
-          image_url: S.optional(S.String),
-          has_image: S.Boolean,
-          members_count: S.optional(S.Number),
-          missing_member_with_elevated_permissions: S.optional(S.Boolean),
-          pending_invitations_count: S.optional(S.Number),
-          max_allowed_memberships: S.Number,
-          admin_delete_enabled: S.Boolean,
-          self_serve_sso_enabled: S.optional(S.NullOr(S.Boolean)),
-          public_metadata: __S(27, __c3, 3),
-          private_metadata: S.optional(__S(27, __c3, 3)),
-          created_by: S.optional(S.String),
-          created_at: S.Number,
-          updated_at: S.Number,
-          last_active_at: S.optional(S.Number),
-          role_set_key: S.optional(S.NullOr(S.String)),
-        }),
-      ).annotate({ identifier: "Organization" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          user_id: S.String,
-          first_name: S.NullOr(S.String),
-          last_name: S.NullOr(S.String),
-          profile_image_url: S.NullOr(S.String),
-          image_url: S.String,
-          has_image: S.Boolean,
-          identifier: S.optional(S.NullOr(S.String)),
-          username: S.optional(S.NullOr(S.String)),
-          banned: S.optional(S.Boolean),
-          deprovisioned: S.optional(S.Boolean),
-        }),
-      ).annotate({
-        identifier: "OrganizationMembershipPublicUserData",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String,
-          object: S.String,
-          role: S.String,
-          role_name: S.optional(S.String),
-          permissions: __S(6, __c0, 6),
-          public_metadata: __S(27, __c3, 3),
-          private_metadata: S.optional(__S(27, __c3, 3)),
-          organization: __S(45, __c5, 5),
-          public_user_data: S.optional(__S(46, __c5, 6)),
-          created_at: S.Number,
-          updated_at: S.Number,
-        }),
-      ).annotate({ identifier: "OrganizationMembership" });
-  }
-}
-function __c6(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(47, __c5, 7));
-    case 1:
+    case 12:
+      return S.Array(__S(1803, __c56, 11));
+    case 13:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
@@ -10533,24 +11095,24 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "SCIMUserMetadataGroupsItem",
       });
-    case 2:
-      return S.Array(__S(49, __c6, 1));
-    case 3:
+    case 14:
+      return S.Array(__S(1805, __c56, 13));
+    case 15:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
           directory_name: S.String,
           provider: S.String,
           enterprise_connection_id: S.NullOr(S.String),
-          groups: S.optional(__S(50, __c6, 2)),
+          groups: S.optional(__S(1806, __c56, 14)),
           directory_id: S.String,
           directory_enabled: S.Boolean,
           external_id: S.NullOr(S.String),
         }),
       ).annotate({ identifier: "SCIMUserMetadata" });
-    case 4:
-      return S.Array(__S(51, __c6, 3));
-    case 5:
+    case 16:
+      return S.Array(__S(1807, __c56, 15));
+    case 17:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
@@ -10567,13 +11129,13 @@ function __c6(j: number): any {
           profile_image_url: S.optional(S.String),
           image_url: S.optional(S.String),
           has_image: S.Boolean,
-          public_metadata: __S(27, __c3, 3),
-          private_metadata: S.optional(S.NullOr(__S(27, __c3, 3))),
-          unsafe_metadata: S.optional(__S(27, __c3, 3)),
-          email_addresses: __S(31, __c3, 7),
-          phone_numbers: __S(33, __c4, 1),
-          web3_wallets: __S(35, __c4, 3),
-          passkeys: __S(38, __c4, 6),
+          public_metadata: __S(1568, __c49, 0),
+          private_metadata: S.optional(S.NullOr(__S(1568, __c49, 0))),
+          unsafe_metadata: S.optional(__S(1568, __c49, 0)),
+          email_addresses: __S(1792, __c56, 0),
+          phone_numbers: __S(1793, __c56, 1),
+          web3_wallets: __S(1795, __c56, 3),
+          passkeys: __S(1798, __c56, 6),
           password_enabled: S.Boolean,
           two_factor_enabled: S.Boolean,
           totp_enabled: S.Boolean,
@@ -10581,10 +11143,10 @@ function __c6(j: number): any {
           mfa_enabled_at: S.NullOr(S.Number),
           mfa_disabled_at: S.NullOr(S.Number),
           password_last_updated_at: S.optional(S.NullOr(S.Number)),
-          external_accounts: __S(40, __c5, 0),
-          saml_accounts: __S(42, __c5, 2),
-          enterprise_accounts: __S(44, __c5, 4),
-          organization_memberships: S.optional(__S(48, __c6, 0)),
+          external_accounts: __S(1800, __c56, 8),
+          saml_accounts: __S(1802, __c56, 10),
+          enterprise_accounts: __S(1804, __c56, 12),
+          organization_memberships: S.optional(__S(1760, __c55, 0)),
           last_sign_in_at: S.NullOr(S.Number),
           banned: S.Boolean,
           locked: S.Boolean,
@@ -10599,28 +11161,553 @@ function __c6(j: number): any {
           last_active_at: S.NullOr(S.Number),
           legal_accepted_at: S.NullOr(S.Number),
           bypass_client_trust: S.optional(S.Boolean),
-          directories: S.optional(__S(52, __c6, 4)),
-          directory: S.optional(__S(51, __c6, 3)),
-          scim: S.optional(S.NullOr(__S(51, __c6, 3))),
+          directories: S.optional(__S(1808, __c56, 16)),
+          directory: S.optional(__S(1807, __c56, 15)),
+          scim: S.optional(S.NullOr(__S(1807, __c56, 15))),
         }),
       ).annotate({ identifier: "User" });
+  }
+}
+function __c57(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          role_set_key_or_id: S.String.pipe(T.Label()),
+        }).pipe(T.Http({ method: "GET", uri: "/role_sets/{role_set_key_or_id}", code: 200 })),
+      ).annotate({ identifier: "GetRoleSetRequest" });
+  }
+}
+function __c58(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          scim_directory_id: S.String.pipe(T.Label()),
+        }).pipe(T.Http({ method: "GET", uri: "/scim_directories/{scim_directory_id}", code: 200 })),
+      ).annotate({ identifier: "GetSCIMDirectoryRequest" });
+  }
+}
+function __c59(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          session_id: S.String.pipe(T.Label()),
+        }).pipe(T.Http({ method: "GET", uri: "/sessions/{session_id}", code: 200 })),
+      ).annotate({ identifier: "GetSessionRequest" });
+  }
+}
+function __c60(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          client_id: S.optional(S.String.pipe(T.Query())),
+          user_id: S.optional(S.String.pipe(T.Query())),
+          status: S.optional(S.String.pipe(T.Query())),
+          paginated: S.optional(S.Boolean.pipe(T.Query())),
+          limit: S.optional(S.Number.pipe(T.Query())),
+          offset: S.optional(S.Number.pipe(T.Query())),
+        }).pipe(T.Http({ method: "GET", uri: "/sessions", code: 200 })),
+      ).annotate({ identifier: "GetSessionListRequest" });
+    case 1:
+      return S.suspend(() => __S(224, __c7, 0).pipe(T.RawResponseRoot())).annotate({
+        identifier: "GetSessionListResponse",
+      });
+  }
+}
+function __c61(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String.pipe(T.Label()),
+        }).pipe(T.Http({ method: "GET", uri: "/sign_ups/{id}", code: 200 })),
+      ).annotate({ identifier: "GetSignUpRequest" });
+  }
+}
+function __c62(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          next_action: S.optional(S.String),
+          supported_strategies: S.optional(__S(8608, __c269, 0)),
+        }),
+      ).annotate({ identifier: "SignUpVerification" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          email_address: S.NullOr(__S(1984, __c62, 0)),
+          phone_number: S.NullOr(__S(1984, __c62, 0)),
+          web3_wallet: S.NullOr(__S(1984, __c62, 0)),
+          external_account: S.NullOr(S.Unknown),
+        }),
+      ).annotate({ identifier: "SignUpVerifications" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          object: S.String,
+          id: S.String,
+          status: S.String,
+          required_fields: __S(8608, __c269, 0),
+          optional_fields: __S(8608, __c269, 0),
+          missing_fields: __S(8608, __c269, 0),
+          unverified_fields: __S(8608, __c269, 0),
+          verifications: __S(1985, __c62, 1),
+          username: S.NullOr(S.String),
+          email_address: S.NullOr(S.String),
+          phone_number: S.NullOr(S.String),
+          web3_wallet: S.NullOr(S.String),
+          password_enabled: S.Boolean,
+          first_name: S.NullOr(S.String),
+          last_name: S.NullOr(S.String),
+          unsafe_metadata: S.optional(__S(1568, __c49, 0)),
+          public_metadata: S.optional(__S(1568, __c49, 0)),
+          custom_action: S.Boolean,
+          external_id: S.NullOr(S.String),
+          created_session_id: S.NullOr(S.String),
+          created_user_id: S.NullOr(S.String),
+          abandon_at: S.Number,
+          legal_accepted_at: S.NullOr(S.Number),
+          timezone: S.optional(S.NullOr(S.String)),
+          locale: S.optional(S.NullOr(S.String)),
+          external_account: S.optional(S.Unknown),
+        }),
+      ).annotate({ identifier: "SignUp" });
+  }
+}
+function __c63(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          user_id: S.String.pipe(T.Label()),
+        }).pipe(T.Http({ method: "GET", uri: "/users/{user_id}", code: 200 })),
+      ).annotate({ identifier: "GetUserRequest" });
+  }
+}
+function __c64(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          user_id: S.String.pipe(T.Label()),
+        }).pipe(T.Http({ method: "GET", uri: "/users/{user_id}/billing/credits", code: 200 })),
+      ).annotate({
+        identifier: "GetUserBillingCreditBalanceRequest",
+      });
+  }
+}
+function __c65(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          user_id: S.String.pipe(T.Label()),
+        }).pipe(T.Http({ method: "GET", uri: "/users/{user_id}/billing/subscription", code: 200 })),
+      ).annotate({
+        identifier: "GetUserBillingSubscriptionRequest",
+      });
+  }
+}
+function __c66(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          email_address: S.optional(__S(8608, __c269, 0).pipe(T.Query())),
+          phone_number: S.optional(__S(8608, __c269, 0).pipe(T.Query())),
+          external_id: S.optional(__S(8608, __c269, 0).pipe(T.Query())),
+          username: S.optional(__S(8608, __c269, 0).pipe(T.Query())),
+          web3_wallet: S.optional(__S(8608, __c269, 0).pipe(T.Query())),
+          user_id: S.optional(__S(8608, __c269, 0).pipe(T.Query())),
+          organization_id: S.optional(__S(8608, __c269, 0).pipe(T.Query())),
+          query: S.optional(S.String.pipe(T.Query())),
+          email_address_query: S.optional(S.String.pipe(T.Query())),
+          phone_number_query: S.optional(S.String.pipe(T.Query())),
+          username_query: S.optional(S.String.pipe(T.Query())),
+          name_query: S.optional(S.String.pipe(T.Query())),
+          banned: S.optional(S.Boolean.pipe(T.Query())),
+          last_active_at_before: S.optional(S.Number.pipe(T.Query())),
+          last_active_at_after: S.optional(S.Number.pipe(T.Query())),
+          last_active_at_since: S.optional(S.Number.pipe(T.Query())),
+          created_at_before: S.optional(S.Number.pipe(T.Query())),
+          created_at_after: S.optional(S.Number.pipe(T.Query())),
+          last_sign_in_at_before: S.optional(S.Number.pipe(T.Query())),
+          last_sign_in_at_after: S.optional(S.Number.pipe(T.Query())),
+          provider: S.optional(S.String.pipe(T.Query())),
+          provider_user_id: S.optional(__S(8608, __c269, 0).pipe(T.Query())),
+          limit: S.optional(S.Number.pipe(T.Query())),
+          offset: S.optional(S.Number.pipe(T.Query())),
+          starting_after: S.optional(S.String.pipe(T.Query())),
+          order_by: S.optional(S.String.pipe(T.Query())),
+        }).pipe(T.Http({ method: "GET", uri: "/users", code: 200 })),
+      ).annotate({ identifier: "GetUserListRequest" });
+  }
+}
+function __c67(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          email_address: S.optional(__S(8608, __c269, 0).pipe(T.Query())),
+          phone_number: S.optional(__S(8608, __c269, 0).pipe(T.Query())),
+          external_id: S.optional(__S(8608, __c269, 0).pipe(T.Query())),
+          username: S.optional(__S(8608, __c269, 0).pipe(T.Query())),
+          web3_wallet: S.optional(__S(8608, __c269, 0).pipe(T.Query())),
+          user_id: S.optional(__S(8608, __c269, 0).pipe(T.Query())),
+          organization_id: S.optional(__S(8608, __c269, 0).pipe(T.Query())),
+          query: S.optional(S.String.pipe(T.Query())),
+          email_address_query: S.optional(S.String.pipe(T.Query())),
+          phone_number_query: S.optional(S.String.pipe(T.Query())),
+          username_query: S.optional(S.String.pipe(T.Query())),
+          name_query: S.optional(S.String.pipe(T.Query())),
+          banned: S.optional(S.Boolean.pipe(T.Query())),
+          last_active_at_before: S.optional(S.Number.pipe(T.Query())),
+          last_active_at_after: S.optional(S.Number.pipe(T.Query())),
+          last_active_at_since: S.optional(S.Number.pipe(T.Query())),
+          created_at_before: S.optional(S.Number.pipe(T.Query())),
+          created_at_after: S.optional(S.Number.pipe(T.Query())),
+          last_sign_in_at_before: S.optional(S.Number.pipe(T.Query())),
+          last_sign_in_at_after: S.optional(S.Number.pipe(T.Query())),
+          provider: S.optional(S.String.pipe(T.Query())),
+          provider_user_id: S.optional(__S(8608, __c269, 0).pipe(T.Query())),
+        }).pipe(T.Http({ method: "GET", uri: "/users/count", code: 200 })),
+      ).annotate({ identifier: "GetUsersCountRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          object: S.String,
+          total_count: S.Number,
+        }),
+      ).annotate({ identifier: "TotalCount" });
+  }
+}
+function __c68(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          user_ids: __S(8608, __c269, 0),
+        }).pipe(T.Http({ method: "POST", uri: "/users/ban", code: 200 })),
+      ).annotate({ identifier: "BanUserRequest2" });
+  }
+}
+function __c69(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(1809, __c56, 17));
+    case 1:
+      return S.suspend(() => __S(2208, __c69, 0).pipe(T.RawResponseRoot())).annotate({
+        identifier: "BanUserResponse",
+      });
+  }
+}
+function __c70(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          order_by: S.optional(S.String.pipe(T.Query())),
+          limit: S.optional(S.Number.pipe(T.Query())),
+          offset: S.optional(S.Number.pipe(T.Query())),
+        }).pipe(T.Http({ method: "GET", uri: "/organization_memberships", code: 200 })),
+      ).annotate({
+        identifier: "InstanceGetOrganizationMembershipsRequest",
+      });
+  }
+}
+function __c71(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          data: __S(1760, __c55, 0),
+          total_count: S.Number,
+        }),
+      ).annotate({ identifier: "OrganizationMemberships" });
+  }
+}
+function __c72(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          waitlist_entry_id: S.String.pipe(T.Label()),
+          ignore_existing: S.optional(S.NullOr(S.Boolean)),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/waitlist_entries/{waitlist_entry_id}/invite",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "InviteWaitlistEntryRequest",
+      });
+  }
+}
+function __c73(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          organization_id: S.optional(S.String.pipe(T.Query())),
+          verified: S.optional(S.Boolean.pipe(T.Query(), T.StringEncoded())),
+          enrollment_mode: S.optional(__S(8448, __c264, 0).pipe(T.Query())),
+          query: S.optional(S.String.pipe(T.Query())),
+          domains: S.optional(__S(8608, __c269, 0).pipe(T.Query())),
+          order_by: S.optional(S.String.pipe(T.Query())),
+          offset: S.optional(S.Number.pipe(T.Query())),
+          limit: S.optional(S.Number.pipe(T.Query())),
+        }).pipe(T.Http({ method: "GET", uri: "/organization_domains", code: 200 })),
+      ).annotate({
+        identifier: "ListAllOrganizationDomainsRequest",
+      });
+  }
+}
+function __c74(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(7393, __c231, 1));
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          data: __S(2368, __c74, 0),
+          total_count: S.Number,
+        }),
+      ).annotate({ identifier: "OrganizationDomains" });
+  }
+}
+function __c75(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          paginated: S.optional(S.Boolean.pipe(T.Query())),
+          limit: S.optional(S.Number.pipe(T.Query())),
+          offset: S.optional(S.Number.pipe(T.Query())),
+        }).pipe(T.Http({ method: "GET", uri: "/allowlist_identifiers", code: 200 })),
+      ).annotate({
+        identifier: "ListAllowlistIdentifiersRequest",
+      });
+    case 1:
+      return S.Array(__S(4800, __c150, 0));
+    case 2:
+      return S.suspend(() => __S(2401, __c75, 1).pipe(T.RawResponseRoot())).annotate({
+        identifier: "ListAllowlistIdentifiersResponse",
+      });
+  }
+}
+function __c76(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({}).pipe(T.Http({ method: "GET", uri: "/blocklist_identifiers", code: 200 })),
+      ).annotate({
+        identifier: "ListBlocklistIdentifiersRequest",
+      });
+    case 1:
+      return S.Array(__S(6336, __c198, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          data: __S(2433, __c76, 1),
+          total_count: S.Number,
+        }),
+      ).annotate({ identifier: "BlocklistIdentifiers" });
+  }
+}
+function __c77(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          limit: S.optional(S.Number.pipe(T.Query())),
+          offset: S.optional(S.Number.pipe(T.Query())),
+        }).pipe(T.Http({ method: "GET", uri: "/directories", code: 200 })),
+      ).annotate({ identifier: "ListDirectoriesRequest" });
+    case 1:
+      return S.Array(__S(6752, __c211, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          data: __S(2465, __c77, 1),
+          total_count: S.Number,
+        }),
+      ).annotate({ identifier: "ListDirectoriesResponse" });
+  }
+}
+function __c78(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          directory_id: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/directories/{directory_id}/group_role_mappings",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "ListDirectoryGroupRoleMappingsRequest",
+      });
+  }
+}
+function __c79(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(6848, __c214, 0));
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          data: __S(2528, __c79, 0),
+          total_count: S.Number,
+        }),
+      ).annotate({
+        identifier: "ListDirectoryGroupRoleMappingsResponse",
+      });
+  }
+}
+function __c80(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({}).pipe(T.Http({ method: "GET", uri: "/domains", code: 200 })),
+      ).annotate({ identifier: "ListDomainsRequest" });
+    case 1:
+      return S.Array(__S(8004, __c250, 4));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          data: __S(2561, __c80, 1),
+          total_count: S.Number,
+        }),
+      ).annotate({ identifier: "Domains" });
+  }
+}
+function __c81(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          limit: S.optional(S.Number.pipe(T.Query())),
+          offset: S.optional(S.Number.pipe(T.Query())),
+          organization_id: S.optional(S.String.pipe(T.Query())),
+          active: S.optional(S.Boolean.pipe(T.Query())),
+        }).pipe(T.Http({ method: "GET", uri: "/enterprise_connections", code: 200 })),
+      ).annotate({
+        identifier: "ListEnterpriseConnectionsRequest",
+      });
+    case 1:
+      return S.Array(__S(6951, __c217, 7));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          data: __S(2593, __c81, 1),
+          total_count: S.Number,
+        }),
+      ).annotate({ identifier: "EnterpriseConnections" });
+  }
+}
+function __c82(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          enterprise_connection_id: S.String.pipe(T.Label()),
+          status: S.optional(__S(8448, __c264, 0).pipe(T.Query())),
+          limit: S.optional(S.Number.pipe(T.Query())),
+          offset: S.optional(S.Number.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/enterprise_connections/{enterprise_connection_id}/test_runs",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "ListEnterpriseConnectionTestRunsRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          email_address: S.optional(S.String),
+          first_name: S.optional(S.String),
+          last_name: S.optional(S.String),
+          user_id: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "EnterpriseConnectionTestRunParsedUserInfo",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          level: S.String,
+          code: S.optional(S.String),
+          short_message: S.optional(S.String),
+          message: S.String,
+        }),
+      ).annotate({
+        identifier: "EnterpriseConnectionTestRunLogsItem",
+      });
+    case 3:
+      return S.Array(__S(2626, __c82, 2));
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          saml_request: S.optional(S.String),
+          saml_response: S.optional(S.String),
+          relay_state: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "EnterpriseConnectionTestRunSaml",
+      });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          id_token: S.optional(S.String),
+          access_token: S.optional(S.String.pipe(T.SensitiveValue({}))),
+          user_info: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "EnterpriseConnectionTestRunOauth",
+      });
     case 6:
       return S.suspend(() =>
         S.Struct({
-          user_ids: __S(6, __c0, 6),
-        }).pipe(T.Http({ method: "POST", uri: "/users/ban", code: 200 })),
-      ).annotate({ identifier: "BanUserRequest2" });
+          id: S.String,
+          status: S.String,
+          connection_type: S.String,
+          parsed_user_info: S.optional(S.NullOr(__S(2625, __c82, 1))),
+          logs: S.optional(__S(2627, __c82, 3)),
+          saml: S.optional(S.NullOr(__S(2628, __c82, 4))),
+          oauth: S.optional(S.NullOr(__S(2629, __c82, 5))),
+          created_at: S.Number,
+        }),
+      ).annotate({
+        identifier: "EnterpriseConnectionTestRun",
+      });
     case 7:
-      return S.Array(__S(53, __c6, 5));
+      return S.Array(__S(2630, __c82, 6));
+    case 8:
+      return S.suspend(() =>
+        S.Struct({
+          data: __S(2631, __c82, 7),
+          total_count: S.Number,
+        }),
+      ).annotate({
+        identifier: "EnterpriseConnectionTestRuns",
+      });
   }
 }
-function __c7(j: number): any {
+function __c83(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => __S(55, __c6, 7).pipe(T.RawResponseRoot())).annotate({
-        identifier: "BanUserResponse",
-      });
-    case 1:
       return S.suspend(() =>
         S.Struct({
           subscription_item_id: S.String.pipe(T.Label()),
@@ -10635,44 +11722,11 @@ function __c7(j: number): any {
       ).annotate({
         identifier: "CancelCommerceSubscriptionItemRequest",
       });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          amount: S.optional(S.NullOr(__S(14, __c1, 6))),
-          cycle_remaining_percent: S.optional(S.Number),
-        }),
-      ).annotate({
-        identifier: "CommerceSubscriptionCreditResponse",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          amount: __S(14, __c1, 6),
-          cycle_days_remaining: S.Number,
-          cycle_days_total: S.Number,
-          cycle_remaining_percent: S.Number,
-        }),
-      ).annotate({
-        identifier: "CommerceProrationCreditDetailResponse",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          remaining_balance: __S(14, __c1, 6),
-          applied_amount: __S(14, __c1, 6),
-        }),
-      ).annotate({
-        identifier: "CommercePayerCreditResponse",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          proration: S.NullOr(__S(59, __c7, 3)),
-          payer: S.NullOr(__S(60, __c7, 4)),
-          total: __S(14, __c1, 6),
-        }),
-      ).annotate({ identifier: "CommerceCreditsResponse" });
-    case 6:
+  }
+}
+function __c84(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           object: S.String,
@@ -10683,43 +11737,39 @@ function __c7(j: number): any {
           avatar_url: S.NullOr(S.String),
         }),
       ).annotate({ identifier: "FeatureResponse" });
-    case 7:
-      return S.Array(__S(62, __c7, 6));
-  }
-}
-function __c8(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
+      return S.Array(__S(2688, __c84, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           starts_at_block: S.Number,
           ends_after_block: S.optional(S.NullOr(S.Number)),
-          fee_per_block: __S(14, __c1, 6),
+          fee_per_block: __S(9152, __c286, 0),
         }),
       ).annotate({
         identifier: "CommercePlanUnitPriceTier",
       });
-    case 1:
-      return S.Array(__S(64, __c8, 0));
-    case 2:
+    case 3:
+      return S.Array(__S(2690, __c84, 2));
+    case 4:
       return S.suspend(() =>
         S.Struct({
           name: S.String,
           block_size: S.Number,
-          tiers: __S(65, __c8, 1),
+          tiers: __S(2691, __c84, 3),
         }),
       ).annotate({ identifier: "CommercePlanUnitPrice" });
-    case 3:
-      return S.Array(__S(66, __c8, 2));
-    case 4:
+    case 5:
+      return S.Array(__S(2692, __c84, 4));
+    case 6:
       return S.suspend(() =>
         S.Struct({
           object: S.String,
           id: S.String,
           name: S.String,
-          fee: S.NullOr(__S(14, __c1, 6)),
-          annual_monthly_fee: S.NullOr(__S(14, __c1, 6)),
-          annual_fee: S.NullOr(__S(14, __c1, 6)),
+          fee: S.NullOr(__S(9152, __c286, 0)),
+          annual_monthly_fee: S.NullOr(__S(9152, __c286, 0)),
+          annual_fee: S.NullOr(__S(9152, __c286, 0)),
           description: S.NullOr(S.String),
           product_id: S.String,
           is_default: S.Boolean,
@@ -10729,13 +11779,169 @@ function __c8(j: number): any {
           for_payer_type: S.String,
           slug: S.String,
           avatar_url: S.NullOr(S.String),
-          features: S.optional(__S(63, __c7, 7)),
+          features: S.optional(__S(2689, __c84, 1)),
           free_trial_enabled: S.Boolean,
           free_trial_days: S.NullOr(S.Number),
-          unit_prices: S.optional(__S(67, __c8, 3)),
+          unit_prices: S.optional(__S(2693, __c84, 5)),
         }),
       ).annotate({ identifier: "CommercePlan" });
+  }
+}
+function __c85(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          quantity: S.NullOr(S.Number),
+          tiers: S.optional(__S(2819, __c88, 3)),
+        }),
+      ).annotate({
+        identifier: "CommerceSubscriptionItemSeatsResponse",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          object: S.String,
+          id: S.String,
+          instance_id: S.String,
+          status: S.String,
+          credit: S.optional(__S(2752, __c86, 0)),
+          credits: S.optional(S.NullOr(__S(2786, __c87, 2))),
+          plan_id: S.NullOr(S.String),
+          price_id: S.optional(S.String),
+          plan: S.optional(S.NullOr(__S(2694, __c84, 6))),
+          plan_period: S.String,
+          payment_method: S.optional(__S(2816, __c88, 0)),
+          lifetime_paid: S.optional(__S(9152, __c286, 0)),
+          next_payment: S.optional(S.NullOr(__S(2759, __c86, 7))),
+          payer_id: S.String,
+          payer: S.optional(__S(2817, __c88, 1)),
+          is_free_trial: S.Boolean,
+          period_start: S.Number,
+          period_end: S.NullOr(S.Number),
+          proration_date: S.optional(S.String),
+          canceled_at: S.NullOr(S.Number),
+          past_due_at: S.NullOr(S.Number),
+          ended_at: S.NullOr(S.Number),
+          created_at: S.optional(S.Number),
+          updated_at: S.optional(S.Number),
+          seats: S.optional(S.NullOr(__S(2720, __c85, 0))),
+          totals: S.optional(S.NullOr(__S(2823, __c88, 7))),
+        }),
+      ).annotate({ identifier: "CommerceSubscriptionItem" });
+  }
+}
+function __c86(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          amount: S.optional(S.NullOr(__S(9152, __c286, 0))),
+          cycle_remaining_percent: S.optional(S.Number),
+        }),
+      ).annotate({
+        identifier: "CommerceSubscriptionCreditResponse",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          quantity: S.optional(S.NullOr(S.Number)),
+          fee_per_block: __S(9152, __c286, 0),
+          total: __S(9152, __c286, 0),
+        }),
+      ).annotate({ identifier: "CommercePerUnitTotalTier" });
+    case 2:
+      return S.Array(__S(2753, __c86, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String,
+          block_size: S.Number,
+          tiers: __S(2754, __c86, 2),
+        }),
+      ).annotate({ identifier: "CommercePerUnitTotal" });
+    case 4:
+      return S.Array(__S(2755, __c86, 3));
     case 5:
+      return S.suspend(() =>
+        S.Struct({
+          proration: S.NullOr(__S(2787, __c87, 3)),
+          total: __S(9152, __c286, 0),
+        }),
+      ).annotate({
+        identifier: "CommerceDiscountsResponse",
+      });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          subtotal: __S(9152, __c286, 0),
+          base_fee: __S(9152, __c286, 0),
+          tax_total: __S(9152, __c286, 0),
+          grand_total: __S(9152, __c286, 0),
+          per_unit_totals: S.optional(__S(2756, __c86, 4)),
+          credits: S.optional(S.NullOr(__S(2786, __c87, 2))),
+          discounts: S.optional(S.NullOr(__S(2757, __c86, 5))),
+        }),
+      ).annotate({ identifier: "CommerceTotalsResponse" });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          amount: S.optional(S.NullOr(__S(9152, __c286, 0))),
+          date: S.optional(S.NullOr(S.Number)),
+          per_unit_totals: S.optional(__S(2756, __c86, 4)),
+          totals: S.optional(S.NullOr(__S(2758, __c86, 6))),
+        }),
+      ).annotate({
+        identifier: "CommerceSubscriptionItemNextPaymentResponse",
+      });
+  }
+}
+function __c87(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          amount: __S(9152, __c286, 0),
+          cycle_days_remaining: S.Number,
+          cycle_days_total: S.Number,
+          cycle_remaining_percent: S.Number,
+        }),
+      ).annotate({
+        identifier: "CommerceProrationCreditDetailResponse",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          remaining_balance: __S(9152, __c286, 0),
+          applied_amount: __S(9152, __c286, 0),
+        }),
+      ).annotate({
+        identifier: "CommercePayerCreditResponse",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          proration: S.NullOr(__S(2784, __c87, 0)),
+          payer: S.NullOr(__S(2785, __c87, 1)),
+          total: __S(9152, __c286, 0),
+        }),
+      ).annotate({ identifier: "CommerceCreditsResponse" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          amount: __S(9152, __c286, 0),
+          cycle_days_passed: S.Number,
+          cycle_days_total: S.Number,
+          cycle_passed_percent: S.Number,
+        }),
+      ).annotate({
+        identifier: "CommerceProrationDiscountResponse",
+      });
+  }
+}
+function __c88(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           object: S.String,
@@ -10759,74 +11965,7 @@ function __c8(j: number): any {
       ).annotate({
         identifier: "CommercePaymentMethodResponse",
       });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          quantity: S.optional(S.NullOr(S.Number)),
-          fee_per_block: __S(14, __c1, 6),
-          total: __S(14, __c1, 6),
-        }),
-      ).annotate({ identifier: "CommercePerUnitTotalTier" });
-    case 7:
-      return S.Array(__S(70, __c8, 6));
-  }
-}
-function __c9(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String,
-          block_size: S.Number,
-          tiers: __S(71, __c8, 7),
-        }),
-      ).annotate({ identifier: "CommercePerUnitTotal" });
     case 1:
-      return S.Array(__S(72, __c9, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          amount: __S(14, __c1, 6),
-          cycle_days_passed: S.Number,
-          cycle_days_total: S.Number,
-          cycle_passed_percent: S.Number,
-        }),
-      ).annotate({
-        identifier: "CommerceProrationDiscountResponse",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          proration: S.NullOr(__S(74, __c9, 2)),
-          total: __S(14, __c1, 6),
-        }),
-      ).annotate({
-        identifier: "CommerceDiscountsResponse",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          subtotal: __S(14, __c1, 6),
-          base_fee: __S(14, __c1, 6),
-          tax_total: __S(14, __c1, 6),
-          grand_total: __S(14, __c1, 6),
-          per_unit_totals: S.optional(__S(73, __c9, 1)),
-          credits: S.optional(S.NullOr(__S(61, __c7, 5))),
-          discounts: S.optional(S.NullOr(__S(75, __c9, 3))),
-        }),
-      ).annotate({ identifier: "CommerceTotalsResponse" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          amount: S.optional(S.NullOr(__S(14, __c1, 6))),
-          date: S.optional(S.NullOr(S.Number)),
-          per_unit_totals: S.optional(__S(73, __c9, 1)),
-          totals: S.optional(S.NullOr(__S(76, __c9, 4))),
-        }),
-      ).annotate({
-        identifier: "CommerceSubscriptionItemNextPaymentResponse",
-      });
-    case 6:
       return S.suspend(() =>
         S.Struct({
           object: S.String,
@@ -10839,97 +11978,322 @@ function __c9(j: number): any {
           organization_id: S.optional(S.NullOr(S.String)),
           organization_name: S.optional(S.NullOr(S.String)),
           image_url: S.optional(S.String),
-          credits_balance: S.optional(__S(14, __c1, 6)),
+          credits_balance: S.optional(__S(9152, __c286, 0)),
           created_at: S.optional(S.Number),
           updated_at: S.optional(S.Number),
         }),
       ).annotate({ identifier: "CommercePayerResponse" });
-    case 7:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           quantity: S.optional(S.NullOr(S.Number)),
-          fee_per_block: __S(14, __c1, 6),
-          total: __S(14, __c1, 6),
+          fee_per_block: __S(9152, __c286, 0),
+          total: __S(9152, __c286, 0),
         }),
       ).annotate({
         identifier: "CommercePerUnitTotalTier2",
       });
-  }
-}
-function __c10(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(79, __c9, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          quantity: S.NullOr(S.Number),
-          tiers: S.optional(__S(80, __c10, 0)),
-        }),
-      ).annotate({
-        identifier: "CommerceSubscriptionItemSeatsResponse",
-      });
-    case 2:
+    case 3:
+      return S.Array(__S(2818, __c88, 2));
+    case 4:
       return S.suspend(() =>
         S.Struct({
           name: S.String,
           block_size: S.Number,
-          tiers: __S(80, __c10, 0),
+          tiers: __S(2819, __c88, 3),
         }),
       ).annotate({ identifier: "CommercePerUnitTotal2" });
-    case 3:
-      return S.Array(__S(82, __c10, 2));
-    case 4:
+    case 5:
+      return S.Array(__S(2820, __c88, 4));
+    case 6:
       return S.suspend(() =>
         S.Struct({
-          proration: S.NullOr(__S(74, __c9, 2)),
-          total: __S(14, __c1, 6),
+          proration: S.NullOr(__S(2787, __c87, 3)),
+          total: __S(9152, __c286, 0),
         }),
       ).annotate({ identifier: "BillingDiscountsResponse" });
-    case 5:
+    case 7:
       return S.suspend(() =>
         S.Struct({
-          subtotal: __S(14, __c1, 6),
-          base_fee: __S(14, __c1, 6),
-          tax_total: __S(14, __c1, 6),
-          grand_total: __S(14, __c1, 6),
-          per_unit_totals: S.optional(__S(83, __c10, 3)),
-          credits: S.optional(S.NullOr(__S(61, __c7, 5))),
-          discounts: S.optional(S.NullOr(__S(84, __c10, 4))),
+          subtotal: __S(9152, __c286, 0),
+          base_fee: __S(9152, __c286, 0),
+          tax_total: __S(9152, __c286, 0),
+          grand_total: __S(9152, __c286, 0),
+          per_unit_totals: S.optional(__S(2821, __c88, 5)),
+          credits: S.optional(S.NullOr(__S(2786, __c87, 2))),
+          discounts: S.optional(S.NullOr(__S(2822, __c88, 6))),
         }),
       ).annotate({ identifier: "CommerceTotalsResponse2" });
-    case 6:
+  }
+}
+function __c89(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          order_by: S.optional(S.String.pipe(T.Query())),
+          status: S.optional(S.String.pipe(T.Query())),
+          query: S.optional(S.String.pipe(T.Query())),
+          limit: S.optional(S.Number.pipe(T.Query())),
+          offset: S.optional(S.Number.pipe(T.Query())),
+        }).pipe(T.Http({ method: "GET", uri: "/organization_invitations", code: 200 })),
+      ).annotate({
+        identifier: "ListInstanceOrganizationInvitationsRequest",
+      });
+  }
+}
+function __c90(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           object: S.String,
           id: S.String,
-          instance_id: S.String,
-          status: S.String,
-          credit: S.optional(__S(58, __c7, 2)),
-          credits: S.optional(S.NullOr(__S(61, __c7, 5))),
-          plan_id: S.NullOr(S.String),
-          price_id: S.optional(S.String),
-          plan: S.optional(S.NullOr(__S(68, __c8, 4))),
-          plan_period: S.String,
-          payment_method: S.optional(__S(69, __c8, 5)),
-          lifetime_paid: S.optional(__S(14, __c1, 6)),
-          next_payment: S.optional(S.NullOr(__S(77, __c9, 5))),
-          payer_id: S.String,
-          payer: S.optional(__S(78, __c9, 6)),
-          is_free_trial: S.Boolean,
-          period_start: S.Number,
-          period_end: S.NullOr(S.Number),
-          proration_date: S.optional(S.String),
-          canceled_at: S.NullOr(S.Number),
-          past_due_at: S.NullOr(S.Number),
-          ended_at: S.NullOr(S.Number),
-          created_at: S.optional(S.Number),
-          updated_at: S.optional(S.Number),
-          seats: S.optional(S.NullOr(__S(81, __c10, 1))),
-          totals: S.optional(S.NullOr(__S(85, __c10, 5))),
+          email_address: S.String,
+          role: S.String,
+          role_name: S.String,
+          organization_id: S.optional(S.String),
+          inviter_id: S.NullOr(S.String),
+          public_inviter_data: S.NullOr(__S(7456, __c233, 0)),
+          status: S.optional(S.String),
+          public_metadata: __S(7552, __c236, 0),
+          private_metadata: S.optional(__S(7552, __c236, 0)),
+          url: S.NullOr(S.String),
+          expires_at: S.NullOr(S.Number),
+          created_at: S.Number,
+          updated_at: S.Number,
+          public_organization_data: S.optional(__S(7360, __c230, 0)),
         }),
-      ).annotate({ identifier: "CommerceSubscriptionItem" });
-    case 7:
+      ).annotate({
+        identifier: "OrganizationInvitationWithPublicOrganizationData",
+      });
+    case 1:
+      return S.Array(__S(2880, __c90, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          data: __S(2881, __c90, 1),
+          total_count: S.Number,
+        }),
+      ).annotate({
+        identifier: "OrganizationInvitationsWithPublicOrganizationData",
+      });
+  }
+}
+function __c91(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          status: S.optional(S.String.pipe(T.Query())),
+          query: S.optional(S.String.pipe(T.Query())),
+          order_by: S.optional(S.String.pipe(T.Query())),
+          paginated: S.optional(S.Boolean.pipe(T.Query())),
+          limit: S.optional(S.Number.pipe(T.Query())),
+          offset: S.optional(S.Number.pipe(T.Query())),
+        }).pipe(T.Http({ method: "GET", uri: "/invitations", code: 200 })),
+      ).annotate({ identifier: "ListInvitationsRequest" });
+    case 1:
+      return S.suspend(() => __S(6560, __c205, 0).pipe(T.RawResponseRoot())).annotate({
+        identifier: "ListInvitationsResponse",
+      });
+  }
+}
+function __c92(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          paginated: S.optional(S.Boolean.pipe(T.Query())),
+          limit: S.optional(S.Number.pipe(T.Query())),
+          offset: S.optional(S.Number.pipe(T.Query())),
+        }).pipe(T.Http({ method: "GET", uri: "/jwt_templates", code: 200 })),
+      ).annotate({ identifier: "ListJWTTemplatesRequest" });
+    case 1:
+      return S.Array(__S(7104, __c222, 0));
+    case 2:
+      return S.suspend(() => __S(2945, __c92, 1).pipe(T.RawResponseRoot())).annotate({
+        identifier: "ListJWTTemplatesResponse",
+      });
+  }
+}
+function __c93(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          limit: S.optional(S.Number.pipe(T.Query())),
+          offset: S.optional(S.Number.pipe(T.Query())),
+          query: S.optional(S.String.pipe(T.Query())),
+          order_by: S.optional(S.String.pipe(T.Query())),
+        }).pipe(T.Http({ method: "GET", uri: "/machines", code: 200 })),
+      ).annotate({ identifier: "ListMachinesRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          object: S.String,
+          id: S.String,
+          name: S.String,
+          instance_id: S.String,
+          created_at: S.Number,
+          updated_at: S.Number,
+          default_token_ttl: S.optional(S.Number),
+          scoped_machines: __S(7201, __c225, 1),
+        }),
+      ).annotate({ identifier: "Machine" });
+    case 2:
+      return S.Array(__S(2977, __c93, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          data: __S(2978, __c93, 2),
+          total_count: S.Number,
+        }),
+      ).annotate({ identifier: "ListMachinesResponse" });
+  }
+}
+function __c94(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          limit: S.optional(S.Number.pipe(T.Query())),
+          offset: S.optional(S.Number.pipe(T.Query())),
+          order_by: S.optional(S.String.pipe(T.Query())),
+          name_query: S.optional(S.String.pipe(T.Query())),
+        }).pipe(T.Http({ method: "GET", uri: "/oauth_applications", code: 200 })),
+      ).annotate({
+        identifier: "ListOAuthApplicationsRequest",
+      });
+    case 1:
+      return S.Array(__S(1152, __c36, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          data: __S(3009, __c94, 1),
+          total_count: S.Number,
+        }),
+      ).annotate({ identifier: "OAuthApplications" });
+  }
+}
+function __c95(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          organization_id: S.String.pipe(T.Label()),
+          verified: S.optional(S.String.pipe(T.Query())),
+          enrollment_mode: S.optional(S.String.pipe(T.Query())),
+          limit: S.optional(S.Number.pipe(T.Query())),
+          offset: S.optional(S.Number.pipe(T.Query())),
+        }).pipe(
+          T.Http({ method: "GET", uri: "/organizations/{organization_id}/domains", code: 200 }),
+        ),
+      ).annotate({
+        identifier: "ListOrganizationDomainsRequest",
+      });
+  }
+}
+function __c96(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          organization_id: S.String.pipe(T.Label()),
+          status: S.optional(S.String.pipe(T.Query())),
+          email_address: S.optional(S.String.pipe(T.Query())),
+          order_by: S.optional(S.String.pipe(T.Query())),
+          limit: S.optional(S.Number.pipe(T.Query())),
+          offset: S.optional(S.Number.pipe(T.Query())),
+        }).pipe(
+          T.Http({ method: "GET", uri: "/organizations/{organization_id}/invitations", code: 200 }),
+        ),
+      ).annotate({
+        identifier: "ListOrganizationInvitationsRequest",
+      });
+  }
+}
+function __c97(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          organization_id: S.String.pipe(T.Label()),
+          order_by: S.optional(S.String.pipe(T.Query())),
+          user_id: S.optional(__S(8608, __c269, 0).pipe(T.Query())),
+          email_address: S.optional(__S(8608, __c269, 0).pipe(T.Query())),
+          phone_number: S.optional(__S(8608, __c269, 0).pipe(T.Query())),
+          username: S.optional(__S(8608, __c269, 0).pipe(T.Query())),
+          web3_wallet: S.optional(__S(8608, __c269, 0).pipe(T.Query())),
+          role: S.optional(__S(8608, __c269, 0).pipe(T.Query())),
+          query: S.optional(S.String.pipe(T.Query())),
+          email_address_query: S.optional(S.String.pipe(T.Query())),
+          phone_number_query: S.optional(S.String.pipe(T.Query())),
+          username_query: S.optional(S.String.pipe(T.Query())),
+          name_query: S.optional(S.String.pipe(T.Query())),
+          last_active_at_before: S.optional(S.Number.pipe(T.Query())),
+          last_active_at_after: S.optional(S.Number.pipe(T.Query())),
+          created_at_before: S.optional(S.Number.pipe(T.Query())),
+          created_at_after: S.optional(S.Number.pipe(T.Query())),
+          limit: S.optional(S.Number.pipe(T.Query())),
+          offset: S.optional(S.Number.pipe(T.Query())),
+        }).pipe(
+          T.Http({ method: "GET", uri: "/organizations/{organization_id}/memberships", code: 200 }),
+        ),
+      ).annotate({
+        identifier: "ListOrganizationMembershipsRequest",
+      });
+  }
+}
+function __c98(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          query: S.optional(S.String.pipe(T.Query())),
+          order_by: S.optional(S.String.pipe(T.Query())),
+          limit: S.optional(S.Number.pipe(T.Query())),
+          offset: S.optional(S.Number.pipe(T.Query())),
+        }).pipe(T.Http({ method: "GET", uri: "/organization_permissions", code: 200 })),
+      ).annotate({
+        identifier: "ListOrganizationPermissionsRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          data: __S(64, __c2, 0),
+          total_count: S.Number,
+        }),
+      ).annotate({ identifier: "Permissions" });
+  }
+}
+function __c99(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          query: S.optional(S.String.pipe(T.Query())),
+          order_by: S.optional(S.String.pipe(T.Query())),
+          limit: S.optional(S.Number.pipe(T.Query())),
+          offset: S.optional(S.Number.pipe(T.Query())),
+        }).pipe(T.Http({ method: "GET", uri: "/organization_roles", code: 200 })),
+      ).annotate({
+        identifier: "ListOrganizationRolesRequest",
+      });
+    case 1:
+      return S.Array(__S(96, __c3, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          data: __S(3169, __c99, 1),
+          total_count: S.Number,
+        }),
+      ).annotate({ identifier: "Roles" });
+  }
+}
+function __c100(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           home_url: S.optional(S.String),
@@ -10940,13 +12304,254 @@ function __c10(j: number): any {
       });
   }
 }
-function __c11(j: number): any {
+function __c101(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "ChangeProductionInstanceDomainResponse",
       });
+  }
+}
+function __c102(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          include_members_count: S.optional(S.Boolean.pipe(T.Query())),
+          include_missing_member_with_elevated_permissions: S.optional(S.Boolean.pipe(T.Query())),
+          query: S.optional(S.String.pipe(T.Query())),
+          user_id: S.optional(__S(8608, __c269, 0).pipe(T.Query())),
+          organization_id: S.optional(__S(8608, __c269, 0).pipe(T.Query())),
+          order_by: S.optional(S.String.pipe(T.Query())),
+          limit: S.optional(S.Number.pipe(T.Query())),
+          offset: S.optional(S.Number.pipe(T.Query())),
+        }).pipe(T.Http({ method: "GET", uri: "/organizations", code: 200 })),
+      ).annotate({ identifier: "ListOrganizationsRequest" });
     case 1:
+      return S.Array(__S(1664, __c52, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          data: __S(3265, __c102, 1),
+          total_count: S.Number,
+        }),
+      ).annotate({ identifier: "Organizations" });
+  }
+}
+function __c103(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          paginated: S.optional(S.Boolean.pipe(T.Query())),
+          limit: S.optional(S.Number.pipe(T.Query())),
+          offset: S.optional(S.Number.pipe(T.Query())),
+        }).pipe(T.Http({ method: "GET", uri: "/redirect_urls", code: 200 })),
+      ).annotate({ identifier: "ListRedirectURLsRequest" });
+    case 1:
+      return S.Array(__S(7776, __c243, 0));
+    case 2:
+      return S.suspend(() => __S(3297, __c103, 1).pipe(T.RawResponseRoot())).annotate({
+        identifier: "ListRedirectURLsResponse",
+      });
+  }
+}
+function __c104(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          query: S.optional(S.String.pipe(T.Query())),
+          order_by: S.optional(S.String.pipe(T.Query())),
+          limit: S.optional(S.Number.pipe(T.Query())),
+          offset: S.optional(S.Number.pipe(T.Query())),
+        }).pipe(T.Http({ method: "GET", uri: "/role_sets", code: 200 })),
+      ).annotate({ identifier: "ListRoleSetsRequest" });
+    case 1:
+      return S.Array(__S(8675, __c271, 3));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          data: __S(3329, __c104, 1),
+          total_count: S.Number,
+        }),
+      ).annotate({ identifier: "RoleSets" });
+  }
+}
+function __c105(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          limit: S.optional(S.Number.pipe(T.Query())),
+          offset: S.optional(S.Number.pipe(T.Query())),
+        }).pipe(T.Http({ method: "GET", uri: "/scim_directories", code: 200 })),
+      ).annotate({
+        identifier: "ListSCIMDirectoriesRequest",
+      });
+    case 1:
+      return S.Array(__S(7872, __c246, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          data: __S(3361, __c105, 1),
+          total_count: S.Number,
+        }),
+      ).annotate({
+        identifier: "ListSCIMDirectoriesResponse",
+      });
+  }
+}
+function __c106(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          scim_directory_id: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/scim_directories/{scim_directory_id}/group_role_mappings",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "ListSCIMGroupRoleMappingsRequest",
+      });
+  }
+}
+function __c107(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(7936, __c248, 0));
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          data: __S(3424, __c107, 0),
+          total_count: S.Number,
+        }),
+      ).annotate({
+        identifier: "ListSCIMGroupRoleMappingsResponse",
+      });
+  }
+}
+function __c108(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          enterprise_connection_id: S.optional(S.String.pipe(T.Query())),
+        }).pipe(T.Http({ method: "GET", uri: "/sso_bypass_allowlist_users", code: 200 })),
+      ).annotate({
+        identifier: "ListSSOBypassAllowlistUsersRequest",
+      });
+    case 1:
+      return S.Array(__S(8289, __c259, 1));
+    case 2:
+      return S.suspend(() => __S(3457, __c108, 1).pipe(T.RawResponseRoot())).annotate({
+        identifier: "ListSSOBypassAllowlistUsersResponse",
+      });
+  }
+}
+function __c109(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          user_id: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({ method: "GET", uri: "/users/{user_id}/biometric_credentials", code: 200 }),
+        ),
+      ).annotate({
+        identifier: "ListUserBiometricCredentialsRequest",
+      });
+    case 1:
+      return S.Array(__S(3520, __c110, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          data: __S(3489, __c109, 1),
+          total_count: S.Number,
+        }),
+      ).annotate({
+        identifier: "ListUserBiometricCredentialsResponse",
+      });
+  }
+}
+function __c110(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          object: S.String,
+          id: S.String,
+          platform: S.String,
+          app_identifier: S.String,
+          name: S.optional(S.NullOr(S.String)),
+          algorithm: S.String,
+          status: S.String,
+          created_at: S.Number,
+          updated_at: S.Number,
+          last_used_at: S.optional(S.NullOr(S.Number)),
+          revoked_at: S.optional(S.NullOr(S.Number)),
+        }),
+      ).annotate({ identifier: "BiometricCredential" });
+  }
+}
+function __c111(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          limit: S.optional(S.Number.pipe(T.Query())),
+          offset: S.optional(S.Number.pipe(T.Query())),
+          query: S.optional(S.String.pipe(T.Query())),
+          status: S.optional(S.String.pipe(T.Query())),
+          order_by: S.optional(S.String.pipe(T.Query())),
+        }).pipe(T.Http({ method: "GET", uri: "/waitlist_entries", code: 200 })),
+      ).annotate({
+        identifier: "ListWaitlistEntriesRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          data: __S(6656, __c208, 0),
+          total_count: S.Number,
+        }),
+      ).annotate({
+        identifier: "ListWaitlistEntriesResponse",
+      });
+  }
+}
+function __c112(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          user_id: S.String.pipe(T.Label()),
+        }).pipe(T.Http({ method: "POST", uri: "/users/{user_id}/lock", code: 200 })),
+      ).annotate({ identifier: "LockUserRequest" });
+  }
+}
+function __c113(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          organization_id: S.String.pipe(T.Label()),
+          public_metadata: S.optional(__S(1568, __c49, 0)),
+          private_metadata: S.optional(__S(1568, __c49, 0)),
+        }).pipe(
+          T.Http({ method: "PATCH", uri: "/organizations/{organization_id}/metadata", code: 200 }),
+        ),
+      ).annotate({
+        identifier: "MergeOrganizationMetadataRequest",
+      });
+  }
+}
+function __c114(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           sub: S.String,
@@ -10954,16 +12559,20 @@ function __c11(j: number): any {
       ).annotate({
         identifier: "CreateActorTokenRequestActor",
       });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           user_id: S.String,
-          actor: __S(89, __c11, 1),
+          actor: __S(3648, __c114, 0),
           expires_in_seconds: S.optional(S.Number),
           session_max_duration_in_seconds: S.optional(S.Number),
         }).pipe(T.Http({ method: "POST", uri: "/actor_tokens", code: 200 })),
       ).annotate({ identifier: "CreateActorTokenRequest" });
-    case 3:
+  }
+}
+function __c115(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           object: S.String,
@@ -10977,18 +12586,214 @@ function __c11(j: number): any {
           updated_at: S.Number,
         }),
       ).annotate({ identifier: "ActorToken" });
-    case 4:
+  }
+}
+function __c116(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          email_address_id: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/email_addresses/{email_address_id}/prepare_verification",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "PrepareEmailAddressVerificationRequest",
+      });
+  }
+}
+function __c117(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          phone_number_id: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/phone_numbers/{phone_number_id}/prepare_verification",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "PreparePhoneNumberVerificationRequest",
+      });
+  }
+}
+function __c118(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          session_id: S.String.pipe(T.Label()),
+          expired_token: S.String,
+          refresh_token: S.String.pipe(T.SensitiveValue({})),
+          request_origin: S.String,
+          request_headers: S.optional(S.NullOr(__S(1568, __c49, 0))),
+          format: S.optional(S.NullOr(S.String)),
+          request_originating_ip: S.optional(S.NullOr(S.String)),
+        }).pipe(T.Http({ method: "POST", uri: "/sessions/{session_id}/refresh", code: 200 })),
+      ).annotate({ identifier: "RefreshSessionRequest" });
+    case 1:
+      return S.suspend(() => S.Unknown.pipe(T.RawResponseRoot())).annotate({
+        identifier: "RefreshSessionResponse",
+      });
+  }
+}
+function __c119(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          waitlist_entry_id: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/waitlist_entries/{waitlist_entry_id}/reject",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "RejectWaitlistEntryRequest",
+      });
+  }
+}
+function __c120(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscription_item_id: S.String.pipe(T.Label()),
+          discount_id: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/billing/subscription_items/{subscription_item_id}/discounts/{discount_id}",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "RemoveBillingSubscriptionItemDiscountRequest",
+      });
+  }
+}
+function __c121(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          organization_role_id: S.String.pipe(T.Label()),
+          permission_id: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/organization_roles/{organization_role_id}/permissions/{permission_id}",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "RemovePermissionFromOrganizationRoleRequest",
+      });
+  }
+}
+function __c122(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          user_id: S.String.pipe(T.Label()),
+          sign_out_of_other_sessions: S.optional(S.Boolean),
+        }).pipe(T.Http({ method: "POST", uri: "/users/{user_id}/remove_password", code: 200 })),
+      ).annotate({
+        identifier: "RemoveUserPasswordRequest",
+      });
+  }
+}
+function __c123(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          directory_group_id: S.optional(S.String),
+          scim_group_id: S.optional(S.String),
+          role_id: S.String,
+        }),
+      ).annotate({
+        identifier: "ReplaceDirectoryGroupRoleMappingsRequestMappingsItem",
+      });
+    case 1:
+      return S.Array(__S(3936, __c123, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          directory_id: S.String.pipe(T.Label()),
+          mappings: __S(3937, __c123, 1),
+        }).pipe(
+          T.Http({
+            method: "PUT",
+            uri: "/directories/{directory_id}/group_role_mappings",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "ReplaceDirectoryGroupRoleMappingsRequest",
+      });
+  }
+}
+function __c124(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          organization_id: S.String.pipe(T.Label()),
+          public_metadata: S.optional(__S(1568, __c49, 0)),
+          private_metadata: S.optional(__S(1568, __c49, 0)),
+        }).pipe(
+          T.Http({ method: "PUT", uri: "/organizations/{organization_id}/metadata", code: 200 }),
+        ),
+      ).annotate({
+        identifier: "ReplaceOrganizationMetadataRequest",
+      });
+  }
+}
+function __c125(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          role_set_key_or_id: S.String.pipe(T.Label()),
+          role_key: S.String,
+          to_role_key: S.String,
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/role_sets/{role_set_key_or_id}/roles/replace",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "ReplaceRoleInRoleSetRequest",
+      });
+  }
+}
+function __c126(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           organization_id: S.optional(S.String),
           it_contact_id: S.optional(S.String),
-          scopes: S.optional(__S(6, __c0, 6)),
+          scopes: S.optional(__S(8608, __c269, 0)),
           seconds_until_expiration: S.optional(S.Number),
         }).pipe(T.Http({ method: "POST", uri: "/admin_portal_link_tokens", code: 200 })),
       ).annotate({
         identifier: "CreateAdminPortalLinkTokenRequest",
       });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           object: S.String,
@@ -10997,7 +12802,7 @@ function __c11(j: number): any {
           instance_id: S.String,
           organization_id: S.NullOr(S.String),
           it_contact_id: S.NullOr(S.String),
-          scopes: S.NullOr(__S(6, __c0, 6)),
+          scopes: S.NullOr(__S(8608, __c269, 0)),
           token: S.String,
           revoked: S.Boolean,
           revocation_reason: S.NullOr(S.String),
@@ -11009,7 +12814,217 @@ function __c11(j: number): any {
       ).annotate({
         identifier: "CreateAdminPortalLinkTokenResponse",
       });
-    case 6:
+  }
+}
+function __c127(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          role_set_key_or_id: S.String.pipe(T.Label()),
+          dest_role_set_key: S.String,
+          reassignment_mappings: S.optional(__S(8640, __c270, 0)),
+        }).pipe(
+          T.Http({ method: "POST", uri: "/role_sets/{role_set_key_or_id}/replace", code: 200 }),
+        ),
+      ).annotate({ identifier: "ReplaceRoleSetRequest" });
+  }
+}
+function __c128(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          scim_group_id: S.String,
+          role_id: S.String,
+        }),
+      ).annotate({
+        identifier: "ReplaceSCIMGroupRoleMappingsRequestMappingsItem",
+      });
+    case 1:
+      return S.Array(__S(4096, __c128, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          scim_directory_id: S.String.pipe(T.Label()),
+          mappings: __S(4097, __c128, 1),
+        }).pipe(
+          T.Http({
+            method: "PUT",
+            uri: "/scim_directories/{scim_directory_id}/group_role_mappings",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "ReplaceSCIMGroupRoleMappingsRequest",
+      });
+  }
+}
+function __c129(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          user_id: S.String.pipe(T.Label()),
+          email_address: S.String,
+          identification_status: S.optional(S.String),
+          notify_primary_email_address_changed: S.optional(S.NullOr(S.Boolean)),
+        }).pipe(T.Http({ method: "PUT", uri: "/users/{user_id}/email_address", code: 200 })),
+      ).annotate({
+        identifier: "ReplaceUserEmailAddressRequest",
+      });
+  }
+}
+function __c130(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          user_id: S.String.pipe(T.Label()),
+          public_metadata: S.optional(__S(1568, __c49, 0)),
+          private_metadata: S.optional(__S(1568, __c49, 0)),
+          unsafe_metadata: S.optional(__S(1568, __c49, 0)),
+        }).pipe(T.Http({ method: "PUT", uri: "/users/{user_id}/metadata", code: 200 })),
+      ).annotate({
+        identifier: "ReplaceUserMetadataRequest",
+      });
+  }
+}
+function __c131(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          user_id: S.String.pipe(T.Label()),
+          phone_number: S.String,
+          identification_status: S.optional(S.String),
+        }).pipe(T.Http({ method: "PUT", uri: "/users/{user_id}/phone_number", code: 200 })),
+      ).annotate({
+        identifier: "ReplaceUserPhoneNumberRequest",
+      });
+  }
+}
+function __c132(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          actor_token_id: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({ method: "POST", uri: "/actor_tokens/{actor_token_id}/revoke", code: 200 }),
+        ),
+      ).annotate({ identifier: "RevokeActorTokenRequest" });
+  }
+}
+function __c133(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          adminPortalLinkTokenID: S.String.pipe(T.Label()),
+          revocation_reason: S.optional(S.NullOr(S.String)),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/admin_portal_link_tokens/{adminPortalLinkTokenID}/revoke",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "RevokeAdminPortalLinkTokenRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          object: S.String,
+          id: S.String,
+          admin_portal_link_id: S.String,
+          instance_id: S.String,
+          organization_id: S.NullOr(S.String),
+          it_contact_id: S.NullOr(S.String),
+          scopes: S.NullOr(__S(8608, __c269, 0)),
+          revoked: S.Boolean,
+          revocation_reason: S.NullOr(S.String),
+          expired: S.Boolean,
+          expiration: S.NullOr(S.Number),
+          created_at: S.Number,
+          updated_at: S.Number,
+        }),
+      ).annotate({
+        identifier: "RevokeAdminPortalLinkTokenResponse",
+      });
+  }
+}
+function __c134(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          agent_task_id: S.String.pipe(T.Label()),
+        }).pipe(T.Http({ method: "POST", uri: "/agents/tasks/{agent_task_id}/revoke", code: 200 })),
+      ).annotate({ identifier: "RevokeAgentTaskRequest" });
+  }
+}
+function __c135(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          apiKeyID: S.String.pipe(T.Label()),
+          revocation_reason: S.optional(S.NullOr(S.String)),
+        }).pipe(T.Http({ method: "POST", uri: "/api_keys/{apiKeyID}/revoke", code: 200 })),
+      ).annotate({ identifier: "RevokeApiKeyRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          object: S.String,
+          id: S.String,
+          type: S.String,
+          subject: S.String,
+          name: S.String,
+          description: S.optional(S.NullOr(S.String)),
+          claims: S.NullOr(S.Unknown),
+          scopes: __S(8608, __c269, 0),
+          revoked: S.Boolean,
+          revocation_reason: S.NullOr(S.String),
+          expired: S.Boolean,
+          expiration: S.NullOr(S.Number),
+          created_by: S.NullOr(S.String),
+          last_used_at: S.NullOr(S.Number),
+          created_at: S.Number,
+          updated_at: S.Number,
+        }),
+      ).annotate({ identifier: "RevokeApiKeyResponse" });
+  }
+}
+function __c136(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          invitation_id: S.String.pipe(T.Label()),
+        }).pipe(T.Http({ method: "POST", uri: "/invitations/{invitation_id}/revoke", code: 200 })),
+      ).annotate({ identifier: "RevokeInvitationRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          object: S.String,
+          id: S.String,
+          email_address: S.String,
+          public_metadata: __S(1568, __c49, 0),
+          revoked: S.optional(S.Boolean),
+          status: S.String,
+          url: S.optional(S.String),
+          expires_at: S.optional(S.NullOr(S.Number)),
+          created_at: S.Number,
+          updated_at: S.Number,
+        }),
+      ).annotate({ identifier: "RevokeInvitationResponse" });
+  }
+}
+function __c137(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           user_id: S.optional(S.String),
@@ -11018,10 +13033,10 @@ function __c11(j: number): any {
       ).annotate({
         identifier: "CreateAgentTaskRequestOnBehalfOf",
       });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          on_behalf_of: __S(94, __c11, 6),
+          on_behalf_of: __S(4384, __c137, 0),
           permissions: S.String,
           agent_name: S.String,
           task_description: S.String,
@@ -11031,7 +13046,7 @@ function __c11(j: number): any {
       ).annotate({ identifier: "CreateAgentTaskRequest" });
   }
 }
-function __c12(j: number): any {
+function __c138(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -11043,7 +13058,214 @@ function __c12(j: number): any {
           url: S.optional(S.String),
         }),
       ).annotate({ identifier: "AgentTask" });
+  }
+}
+function __c139(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          m2m_token_id: S.String.pipe(T.Label()),
+          revocation_reason: S.optional(S.NullOr(S.String)),
+        }).pipe(T.Http({ method: "POST", uri: "/m2m_tokens/{m2m_token_id}/revoke", code: 200 })),
+      ).annotate({ identifier: "RevokeM2MTokenRequest" });
     case 1:
+      return S.suspend(() =>
+        S.Struct({
+          object: S.String,
+          id: S.String,
+          subject: S.String,
+          claims: S.optional(S.NullOr(S.Unknown)),
+          scopes: S.optional(__S(8608, __c269, 0)),
+          revoked: S.Boolean,
+          revocation_reason: S.NullOr(S.String),
+          expired: S.Boolean,
+          expiration: S.NullOr(S.Number),
+          last_used_at: S.NullOr(S.Number),
+          created_at: S.Number,
+          updated_at: S.Number,
+        }),
+      ).annotate({ identifier: "RevokeM2MTokenResponse" });
+  }
+}
+function __c140(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          oauth_application_id: S.String.pipe(T.Label()),
+          token: S.String,
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/oauth_applications/{oauth_application_id}/revoke_token",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "RevokeOAuthApplicationTokenRequest",
+      });
+  }
+}
+function __c141(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          organization_id: S.String.pipe(T.Label()),
+          invitation_id: S.String.pipe(T.Label()),
+          requesting_user_id: S.optional(S.NullOr(S.String)),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/organizations/{organization_id}/invitations/{invitation_id}/revoke",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "RevokeOrganizationInvitationRequest",
+      });
+  }
+}
+function __c142(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          session_id: S.String.pipe(T.Label()),
+        }).pipe(T.Http({ method: "POST", uri: "/sessions/{session_id}/revoke", code: 200 })),
+      ).annotate({ identifier: "RevokeSessionRequest" });
+  }
+}
+function __c143(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          sign_in_token_id: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({ method: "POST", uri: "/sign_in_tokens/{sign_in_token_id}/revoke", code: 200 }),
+        ),
+      ).annotate({ identifier: "RevokeSignInTokenRequest" });
+  }
+}
+function __c144(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          user_id: S.String.pipe(T.Label()),
+          biometric_credential_id: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/users/{user_id}/biometric_credentials/{biometric_credential_id}",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "RevokeUserBiometricCredentialRequest",
+      });
+  }
+}
+function __c145(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          directory_id: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({ method: "POST", uri: "/directories/{directory_id}/rotate_api_key", code: 200 }),
+        ),
+      ).annotate({
+        identifier: "RotateDirectoryAPIKeyRequest",
+      });
+  }
+}
+function __c146(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          machine_id: S.String.pipe(T.Label()),
+          previous_token_ttl: S.Number,
+        }).pipe(
+          T.Http({ method: "POST", uri: "/machines/{machine_id}/secret_key/rotate", code: 200 }),
+        ),
+      ).annotate({
+        identifier: "RotateMachineSecretKeyRequest",
+      });
+  }
+}
+function __c147(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          oauth_application_id: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/oauth_applications/{oauth_application_id}/rotate_secret",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "RotateOAuthApplicationSecretRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          object: S.String,
+          id: S.String,
+          instance_id: S.String,
+          name: S.String,
+          client_id: S.String,
+          client_uri: S.NullOr(S.String),
+          client_image_url: S.NullOr(S.String),
+          dynamically_registered: S.Boolean,
+          consent_screen_enabled: S.Boolean,
+          pkce_required: S.Boolean,
+          device_authorization_grant_enabled: S.Boolean,
+          public: S.Boolean,
+          scopes: S.String,
+          redirect_uris: __S(8608, __c269, 0),
+          callback_url: S.String,
+          authorize_url: S.String,
+          token_fetch_url: S.String,
+          user_info_url: S.String,
+          discovery_url: S.String,
+          token_introspection_url: S.String,
+          created_at: S.Number,
+          updated_at: S.Number,
+          client_secret: S.optional(S.String.pipe(T.SensitiveValue({}))),
+        }),
+      ).annotate({
+        identifier: "RotateOAuthApplicationSecretResponse",
+      });
+  }
+}
+function __c148(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          scim_directory_id: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/scim_directories/{scim_directory_id}/rotate_api_key",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "RotateSCIMDirectoryAPIKeyRequest",
+      });
+  }
+}
+function __c149(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           identifier: S.String,
@@ -11052,7 +13274,11 @@ function __c12(j: number): any {
       ).annotate({
         identifier: "CreateAllowlistIdentifierRequest",
       });
-    case 2:
+  }
+}
+function __c150(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           object: S.optional(S.String),
@@ -11065,20 +13291,101 @@ function __c12(j: number): any {
           updated_at: S.optional(S.Number),
         }),
       ).annotate({ identifier: "AllowlistIdentifier" });
-    case 3:
+  }
+}
+function __c151(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          type: S.optional(S.String),
-          name: S.String,
-          description: S.optional(S.NullOr(S.String)),
-          subject: S.String,
+          user_id: S.String.pipe(T.Label()),
+          revoke_all_sessions: S.optional(S.NullOr(S.Boolean)),
+        }).pipe(
+          T.Http({ method: "POST", uri: "/users/{user_id}/password/set_compromised", code: 200 }),
+        ),
+      ).annotate({
+        identifier: "SetUserPasswordCompromisedRequest",
+      });
+  }
+}
+function __c152(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          user_id: S.String.pipe(T.Label()),
+          file: S.optional(S.String),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/users/{user_id}/profile_image",
+            code: 200,
+            contentType: "multipart",
+          }),
+        ),
+      ).annotate({
+        identifier: "SetUserProfileImageRequest",
+      });
+  }
+}
+function __c153(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          user_id: S.String.pipe(T.Label()),
+        }).pipe(T.Http({ method: "POST", uri: "/users/{user_id}/unban", code: 200 })),
+      ).annotate({ identifier: "UnbanUserRequest" });
+  }
+}
+function __c154(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          user_ids: __S(8608, __c269, 0),
+        }).pipe(T.Http({ method: "POST", uri: "/users/unban", code: 200 })),
+      ).annotate({ identifier: "UnbanUserRequest2" });
+  }
+}
+function __c155(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          user_id: S.String.pipe(T.Label()),
+        }).pipe(T.Http({ method: "POST", uri: "/users/{user_id}/unlock", code: 200 })),
+      ).annotate({ identifier: "UnlockUserRequest" });
+  }
+}
+function __c156(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          user_id: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({ method: "POST", uri: "/users/{user_id}/password/unset_compromised", code: 200 }),
+        ),
+      ).annotate({
+        identifier: "UnsetUserPasswordCompromisedRequest",
+      });
+  }
+}
+function __c157(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          apiKeyID: S.String.pipe(T.Label()),
           claims: S.optional(S.NullOr(S.Unknown)),
-          scopes: S.optional(__S(6, __c0, 6)),
-          created_by: S.optional(S.NullOr(S.String)),
+          scopes: S.optional(__S(8608, __c269, 0)),
+          description: S.optional(S.NullOr(S.String)),
+          subject: S.optional(S.String),
           seconds_until_expiration: S.optional(S.NullOr(S.Number)),
-        }).pipe(T.Http({ method: "POST", uri: "/api_keys", code: 200 })),
-      ).annotate({ identifier: "CreateApiKeyRequest" });
-    case 4:
+        }).pipe(T.Http({ method: "PATCH", uri: "/api_keys/{apiKeyID}", code: 200 })),
+      ).annotate({ identifier: "UpdateApiKeyRequest" });
+    case 1:
       return S.suspend(() =>
         S.Struct({
           object: S.String,
@@ -11088,7 +13395,94 @@ function __c12(j: number): any {
           name: S.String,
           description: S.optional(S.NullOr(S.String)),
           claims: S.NullOr(S.Unknown),
-          scopes: __S(6, __c0, 6),
+          scopes: __S(8608, __c269, 0),
+          revoked: S.Boolean,
+          revocation_reason: S.NullOr(S.String),
+          expired: S.Boolean,
+          expiration: S.NullOr(S.Number),
+          created_by: S.NullOr(S.String),
+          last_used_at: S.NullOr(S.Number),
+          created_at: S.Number,
+          updated_at: S.Number,
+        }),
+      ).annotate({ identifier: "UpdateApiKeyResponse" });
+  }
+}
+function __c158(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          directory_id: S.String.pipe(T.Label()),
+          name: S.optional(S.String),
+          enabled: S.optional(S.Boolean),
+          provider: S.optional(S.String),
+          attribute_mapping: S.optional(__S(5088, __c159, 0)),
+          group_role_mapping_enabled: S.optional(S.Boolean),
+        }).pipe(T.Http({ method: "PATCH", uri: "/directories/{directory_id}", code: 200 })),
+      ).annotate({ identifier: "UpdateDirectoryRequest" });
+  }
+}
+function __c159(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, /*@__PURE__*/ S.NullOr(S.String));
+  }
+}
+function __c160(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          domain_id: S.String.pipe(T.Label()),
+          name: S.optional(S.NullOr(S.String)),
+          proxy_url: S.optional(S.NullOr(S.String)),
+          is_secondary: S.optional(S.NullOr(S.Boolean)),
+        }).pipe(T.Http({ method: "PATCH", uri: "/domains/{domain_id}", code: 200 })),
+      ).annotate({ identifier: "UpdateDomainRequest" });
+  }
+}
+function __c161(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          email_address_id: S.String.pipe(T.Label()),
+          verified: S.optional(S.NullOr(S.Boolean)),
+          primary: S.optional(S.NullOr(S.Boolean)),
+          notify_primary_email_address_changed: S.optional(S.NullOr(S.Boolean)),
+        }).pipe(T.Http({ method: "PATCH", uri: "/email_addresses/{email_address_id}", code: 200 })),
+      ).annotate({
+        identifier: "UpdateEmailAddressRequest",
+      });
+  }
+}
+function __c162(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          type: S.optional(S.String),
+          name: S.String,
+          description: S.optional(S.NullOr(S.String)),
+          subject: S.String,
+          claims: S.optional(S.NullOr(S.Unknown)),
+          scopes: S.optional(__S(8608, __c269, 0)),
+          created_by: S.optional(S.NullOr(S.String)),
+          seconds_until_expiration: S.optional(S.NullOr(S.Number)),
+        }).pipe(T.Http({ method: "POST", uri: "/api_keys", code: 200 })),
+      ).annotate({ identifier: "CreateApiKeyRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          object: S.String,
+          id: S.String,
+          type: S.String,
+          subject: S.String,
+          name: S.String,
+          description: S.optional(S.NullOr(S.String)),
+          claims: S.NullOr(S.Unknown),
+          scopes: __S(8608, __c269, 0),
           secret: S.String.pipe(T.SensitiveValue({})),
           revoked: S.Boolean,
           revocation_reason: S.NullOr(S.String),
@@ -11100,7 +13494,246 @@ function __c12(j: number): any {
           updated_at: S.Number,
         }),
       ).annotate({ identifier: "CreateApiKeyResponse" });
-    case 5:
+  }
+}
+function __c163(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.optional(S.NullOr(S.String)),
+          idp_entity_id: S.optional(S.NullOr(S.String)),
+          idp_sso_url: S.optional(S.NullOr(S.String)),
+          idp_certificate: S.optional(S.NullOr(S.String)),
+          idp_certificates: S.optional(__S(8608, __c269, 0)),
+          idp_metadata_url: S.optional(S.NullOr(S.String)),
+          idp_metadata: S.optional(S.NullOr(S.String)),
+          attribute_mapping: S.optional(S.NullOr(__S(6976, __c218, 0))),
+          allow_subdomains: S.optional(S.NullOr(S.Boolean)),
+          allow_idp_initiated: S.optional(S.NullOr(S.Boolean)),
+          force_authn: S.optional(S.NullOr(S.Boolean)),
+          login_hint: S.optional(S.NullOr(__S(6944, __c217, 0))),
+        }),
+      ).annotate({
+        identifier: "UpdateEnterpriseConnectionRequestSaml",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          enterprise_connection_id: S.String.pipe(T.Label()),
+          name: S.optional(S.NullOr(S.String)),
+          domains: S.optional(S.NullOr(__S(8608, __c269, 0))),
+          active: S.optional(S.NullOr(S.Boolean)),
+          sync_user_attributes: S.optional(S.NullOr(S.Boolean)),
+          disable_additional_identifications: S.optional(S.NullOr(S.Boolean)),
+          allow_organization_account_linking: S.optional(S.NullOr(S.Boolean)),
+          organization_id: S.optional(S.NullOr(S.String)),
+          saml: S.optional(S.NullOr(__S(5216, __c163, 0))),
+          oidc: S.optional(S.NullOr(__S(6977, __c218, 1))),
+          custom_attributes: S.optional(S.NullOr(__S(6946, __c217, 2))),
+        }).pipe(
+          T.Http({
+            method: "PATCH",
+            uri: "/enterprise_connections/{enterprise_connection_id}",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "UpdateEnterpriseConnectionRequest",
+      });
+  }
+}
+function __c164(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          test_mode: S.optional(S.NullOr(S.Boolean)),
+          hibp: S.optional(S.NullOr(S.Boolean)),
+          support_email: S.optional(S.NullOr(S.String)),
+          clerk_js_version: S.optional(S.NullOr(S.String)),
+          development_origin: S.optional(S.NullOr(S.String)),
+          allowed_origins: S.optional(S.NullOr(__S(8608, __c269, 0))),
+          allowed_subdomains: S.optional(S.NullOr(__S(8608, __c269, 0))),
+          subdomain_allowlist_enabled: S.optional(S.NullOr(S.Boolean)),
+          cookieless_dev: S.optional(S.NullOr(S.Boolean)),
+          url_based_session_syncing: S.optional(S.NullOr(S.Boolean)),
+          preferred_sign_in_strategy_when_password_required: S.optional(S.NullOr(S.String)),
+        }).pipe(T.Http({ method: "PATCH", uri: "/instance", code: 200 })),
+      ).annotate({ identifier: "UpdateInstanceRequest" });
+  }
+}
+function __c165(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          restricted_to_allowlist: S.optional(S.NullOr(S.Boolean)),
+          from_email_address: S.optional(S.NullOr(S.String)),
+          progressive_sign_up: S.optional(S.NullOr(S.Boolean)),
+          test_mode: S.optional(S.NullOr(S.Boolean)),
+        }).pipe(T.Http({ method: "PATCH", uri: "/beta_features/instance_settings", code: 200 })),
+      ).annotate({
+        identifier: "UpdateInstanceAuthConfigRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          object: S.optional(S.String),
+          id: S.optional(S.String),
+          restricted_to_allowlist: S.optional(S.Boolean),
+          from_email_address: S.optional(S.String),
+          progressive_sign_up: S.optional(S.Boolean),
+          enhanced_email_deliverability: S.optional(S.Boolean),
+        }),
+      ).annotate({
+        identifier: "UpdateInstanceAuthConfigResponse",
+      });
+  }
+}
+function __c166(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          blocked_country_codes: S.optional(S.NullOr(__S(8608, __c269, 0))),
+        }).pipe(T.Http({ method: "PATCH", uri: "/instance/communication", code: 200 })),
+      ).annotate({
+        identifier: "UpdateInstanceCommunicationRequest",
+      });
+  }
+}
+function __c167(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          dynamic_oauth_client_registration: S.optional(S.NullOr(S.Boolean)),
+          default_scopes: S.optional(S.NullOr(__S(8608, __c269, 0))),
+          oauth_jwt_access_tokens: S.optional(S.NullOr(S.Boolean)),
+          aud_claim_enabled: S.optional(S.NullOr(S.Boolean)),
+          pkce_required: S.optional(S.NullOr(S.Boolean)),
+          client_id_metadata_documents_advertised: S.optional(S.NullOr(S.Boolean)),
+          client_id_metadata_documents_only_allow_pre_registered_clients: S.optional(
+            S.NullOr(S.Boolean),
+          ),
+          client_id_metadata_documents_block_implicitly_allowed_clients: S.optional(
+            S.NullOr(S.Boolean),
+          ),
+        }).pipe(
+          T.Http({ method: "PATCH", uri: "/instance/oauth_application_settings", code: 200 }),
+        ),
+      ).annotate({
+        identifier: "UpdateInstanceOAuthApplicationSettingsRequest",
+      });
+  }
+}
+function __c168(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          enabled: S.optional(S.NullOr(S.Boolean)),
+          max_allowed_memberships: S.optional(S.NullOr(S.Number)),
+          admin_delete_enabled: S.optional(S.NullOr(S.Boolean)),
+          domains_enabled: S.optional(S.NullOr(S.Boolean)),
+          slug_disabled: S.optional(S.NullOr(S.Boolean)),
+          domains_enrollment_modes: S.optional(__S(5376, __c168, 0)),
+          creator_role_id: S.optional(S.NullOr(S.String)),
+          domains_default_role_id: S.optional(S.NullOr(S.String)),
+        }).pipe(T.Http({ method: "PATCH", uri: "/instance/organization_settings", code: 200 })),
+      ).annotate({
+        identifier: "UpdateInstanceOrganizationSettingsRequest",
+      });
+  }
+}
+function __c169(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          rules_enabled: S.optional(S.NullOr(S.Boolean)),
+          specter_enabled: S.optional(S.NullOr(S.Boolean)),
+        }).pipe(T.Http({ method: "PATCH", uri: "/instance/protect", code: 200 })),
+      ).annotate({
+        identifier: "UpdateInstanceProtectRequest",
+      });
+  }
+}
+function __c170(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          allowlist: S.optional(S.NullOr(S.Boolean)),
+          blocklist: S.optional(S.NullOr(S.Boolean)),
+          allowlist_blocklist_disabled_on_sign_in: S.optional(S.NullOr(S.Boolean)),
+          block_email_subaddresses: S.optional(S.NullOr(S.Boolean)),
+          block_disposable_email_domains: S.optional(S.NullOr(S.Boolean)),
+        }).pipe(T.Http({ method: "PATCH", uri: "/instance/restrictions", code: 200 })),
+      ).annotate({
+        identifier: "UpdateInstanceRestrictionsRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          object: S.String,
+          allowlist: S.Boolean,
+          blocklist: S.Boolean,
+          allowlist_blocklist_disabled_on_sign_in: S.Boolean,
+          block_email_subaddresses: S.Boolean,
+          block_disposable_email_domains: S.Boolean,
+        }),
+      ).annotate({ identifier: "InstanceRestrictions" });
+  }
+}
+function __c171(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          template_id: S.String.pipe(T.Label()),
+          name: S.String,
+          claims: S.Unknown,
+          lifetime: S.optional(S.NullOr(S.Number)),
+          allowed_clock_skew: S.optional(S.NullOr(S.Number)),
+          custom_signing_key: S.optional(S.Boolean),
+          signing_algorithm: S.optional(S.NullOr(S.String)),
+          signing_key: S.optional(S.NullOr(S.String)),
+        }).pipe(T.Http({ method: "PATCH", uri: "/jwt_templates/{template_id}", code: 200 })),
+      ).annotate({ identifier: "UpdateJWTTemplateRequest" });
+  }
+}
+function __c172(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          machine_id: S.String.pipe(T.Label()),
+          name: S.optional(S.String),
+          default_token_ttl: S.optional(S.Number),
+        }).pipe(T.Http({ method: "PATCH", uri: "/machines/{machine_id}", code: 200 })),
+      ).annotate({ identifier: "UpdateMachineRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          object: S.String,
+          id: S.String,
+          name: S.String,
+          instance_id: S.String,
+          created_at: S.Number,
+          updated_at: S.Number,
+          default_token_ttl: S.optional(S.Number),
+          scoped_machines: __S(7201, __c225, 1),
+        }),
+      ).annotate({ identifier: "UpdateMachineResponse" });
+  }
+}
+function __c173(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           plan_id: S.String,
@@ -11113,7 +13746,11 @@ function __c12(j: number): any {
       ).annotate({
         identifier: "CreateBillingPriceRequest",
       });
-    case 6:
+  }
+}
+function __c174(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           object: S.String,
@@ -11124,15 +13761,206 @@ function __c12(j: number): any {
           currency_symbol: S.String,
           amount: S.Number,
           annual_monthly_amount: S.Number,
-          fee: S.NullOr(__S(14, __c1, 6)),
-          annual_monthly_fee: S.NullOr(__S(14, __c1, 6)),
+          fee: S.NullOr(__S(9152, __c286, 0)),
+          annual_monthly_fee: S.NullOr(__S(9152, __c286, 0)),
           description: S.optional(S.NullOr(S.String)),
           is_default: S.Boolean,
           created_at: S.Number,
           supported_billing_periods: S.String,
         }),
       ).annotate({ identifier: "BillingPriceResponse" });
-    case 7:
+  }
+}
+function __c175(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          oauth_application_id: S.String.pipe(T.Label()),
+          name: S.optional(S.NullOr(S.String)),
+          redirect_uris: S.optional(S.NullOr(__S(8608, __c269, 0))),
+          callback_url: S.optional(S.NullOr(S.String)),
+          scopes: S.optional(S.NullOr(S.String)),
+          consent_screen_enabled: S.optional(S.NullOr(S.Boolean)),
+          pkce_required: S.optional(S.NullOr(S.Boolean)),
+          device_authorization_grant_enabled: S.optional(S.NullOr(S.Boolean)),
+          public: S.optional(S.NullOr(S.Boolean)),
+        }).pipe(
+          T.Http({ method: "PATCH", uri: "/oauth_applications/{oauth_application_id}", code: 200 }),
+        ),
+      ).annotate({
+        identifier: "UpdateOAuthApplicationRequest",
+      });
+  }
+}
+function __c176(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          organization_id: S.String.pipe(T.Label()),
+          name: S.optional(S.NullOr(S.String)),
+          slug: S.optional(S.NullOr(S.String)),
+          max_allowed_memberships: S.optional(S.NullOr(S.Number)),
+          admin_delete_enabled: S.optional(S.NullOr(S.Boolean)),
+          self_serve_sso_enabled: S.optional(S.NullOr(S.Boolean)),
+          created_at: S.optional(S.NullOr(S.String)),
+          role_set_key: S.optional(S.NullOr(S.String)),
+          reassignment_mappings: S.optional(S.NullOr(__S(8640, __c270, 0))),
+        }).pipe(T.Http({ method: "PATCH", uri: "/organizations/{organization_id}", code: 200 })),
+      ).annotate({
+        identifier: "UpdateOrganizationRequest",
+      });
+  }
+}
+function __c177(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          organization_id: S.String.pipe(T.Label()),
+          domain_id: S.String.pipe(T.Label()),
+          enrollment_mode: S.optional(S.NullOr(S.String)),
+          verified: S.optional(S.NullOr(S.Boolean)),
+        }).pipe(
+          T.Http({
+            method: "PATCH",
+            uri: "/organizations/{organization_id}/domains/{domain_id}",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "UpdateOrganizationDomainRequest",
+      });
+  }
+}
+function __c178(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          organization_id: S.String.pipe(T.Label()),
+          user_id: S.String.pipe(T.Label()),
+          role: S.String,
+        }).pipe(
+          T.Http({
+            method: "PATCH",
+            uri: "/organizations/{organization_id}/memberships/{user_id}",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "UpdateOrganizationMembershipRequest",
+      });
+  }
+}
+function __c179(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          organization_id: S.String.pipe(T.Label()),
+          user_id: S.String.pipe(T.Label()),
+          public_metadata: S.optional(__S(1568, __c49, 0)),
+          private_metadata: S.optional(__S(1568, __c49, 0)),
+        }).pipe(
+          T.Http({
+            method: "PATCH",
+            uri: "/organizations/{organization_id}/memberships/{user_id}/metadata",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "UpdateOrganizationMembershipMetadataRequest",
+      });
+  }
+}
+function __c180(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          permission_id: S.String.pipe(T.Label()),
+          name: S.optional(S.String),
+          key: S.optional(S.String),
+          description: S.optional(S.String),
+        }).pipe(
+          T.Http({ method: "PATCH", uri: "/organization_permissions/{permission_id}", code: 200 }),
+        ),
+      ).annotate({
+        identifier: "UpdateOrganizationPermissionRequest",
+      });
+  }
+}
+function __c181(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          organization_role_id: S.String.pipe(T.Label()),
+          name: S.optional(S.NullOr(S.String)),
+          key: S.optional(S.NullOr(S.String)),
+          description: S.optional(S.NullOr(S.String)),
+          permissions: S.optional(S.NullOr(__S(8608, __c269, 0))),
+        }).pipe(
+          T.Http({ method: "PATCH", uri: "/organization_roles/{organization_role_id}", code: 200 }),
+        ),
+      ).annotate({
+        identifier: "UpdateOrganizationRoleRequest",
+      });
+  }
+}
+function __c182(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          phone_number_id: S.String.pipe(T.Label()),
+          verified: S.optional(S.NullOr(S.Boolean)),
+          primary: S.optional(S.NullOr(S.Boolean)),
+          reserved_for_second_factor: S.optional(S.NullOr(S.Boolean)),
+        }).pipe(T.Http({ method: "PATCH", uri: "/phone_numbers/{phone_number_id}", code: 200 })),
+      ).annotate({ identifier: "UpdatePhoneNumberRequest" });
+  }
+}
+function __c183(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          role_set_key_or_id: S.String.pipe(T.Label()),
+          name: S.optional(S.NullOr(S.String)),
+          key: S.optional(S.NullOr(S.String)),
+          description: S.optional(S.NullOr(S.String)),
+          type: S.optional(S.NullOr(S.String)),
+          default_role_key: S.optional(S.NullOr(S.String)),
+          creator_role_key: S.optional(S.NullOr(S.String)),
+        }).pipe(T.Http({ method: "PATCH", uri: "/role_sets/{role_set_key_or_id}", code: 200 })),
+      ).annotate({ identifier: "UpdateRoleSetRequest" });
+  }
+}
+function __c184(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          scim_directory_id: S.String.pipe(T.Label()),
+          name: S.optional(S.String),
+          enabled: S.optional(S.Boolean),
+          provider: S.optional(S.String),
+          attribute_mapping: S.optional(__S(5088, __c159, 0)),
+          group_role_mapping_enabled: S.optional(S.Boolean),
+        }).pipe(
+          T.Http({ method: "PATCH", uri: "/scim_directories/{scim_directory_id}", code: 200 }),
+        ),
+      ).annotate({
+        identifier: "UpdateSCIMDirectoryRequest",
+      });
+  }
+}
+function __c185(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscription_item_id: S.String.pipe(T.Label()),
@@ -11148,9 +13976,35 @@ function __c12(j: number): any {
       ).annotate({
         identifier: "CreateBillingPriceTransitionRequest",
       });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          previous_plan: __S(5954, __c186, 2),
+          previous_price: __S(5568, __c174, 0),
+          effective_at: S.Number,
+          effective_mode: S.String,
+          next_billing_date: S.optional(S.NullOr(S.Number)),
+          charged_immediately: S.Boolean,
+          immediate_charge: S.optional(S.NullOr(__S(9152, __c286, 0))),
+          previous_subscription_item_status: S.String,
+          previous_subscription_item_id: S.String,
+        }),
+      ).annotate({
+        identifier: "CommercePriceTransitionDetails",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          object: S.String,
+          subscription_item: __S(5957, __c186, 5),
+          transition: __S(5921, __c185, 1),
+        }),
+      ).annotate({
+        identifier: "CommercePriceTransitionResponse",
+      });
   }
 }
-function __c13(j: number): any {
+function __c186(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -11164,16 +14018,16 @@ function __c13(j: number): any {
         }),
       ).annotate({ identifier: "FeatureResponse2" });
     case 1:
-      return S.Array(__S(104, __c13, 0));
+      return S.Array(__S(5952, __c186, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
           object: S.String,
           id: S.String,
           name: S.String,
-          fee: S.NullOr(__S(14, __c1, 6)),
-          annual_monthly_fee: S.NullOr(__S(14, __c1, 6)),
-          annual_fee: S.NullOr(__S(14, __c1, 6)),
+          fee: S.NullOr(__S(9152, __c286, 0)),
+          annual_monthly_fee: S.NullOr(__S(9152, __c286, 0)),
+          annual_fee: S.NullOr(__S(9152, __c286, 0)),
           amount: S.Number,
           amount_formatted: S.String,
           annual_monthly_amount: S.Number,
@@ -11188,13 +14042,13 @@ function __c13(j: number): any {
           is_recurring: S.Boolean,
           publicly_visible: S.Boolean,
           has_base_fee: S.Boolean,
-          payer_type: __S(6, __c0, 6),
+          payer_type: __S(8608, __c269, 0),
           for_payer_type: S.String,
           slug: S.String,
           avatar_url: S.String,
           period: S.optional(S.String),
           interval: S.optional(S.Number),
-          features: __S(105, __c13, 1),
+          features: __S(5953, __c186, 1),
           free_trial_enabled: S.optional(S.Boolean),
           free_trial_days: S.optional(S.NullOr(S.Number)),
         }),
@@ -11236,7 +14090,7 @@ function __c13(j: number): any {
           organization_id: S.optional(S.String),
           organization_name: S.optional(S.String),
           image_url: S.String,
-          credits_balance: S.optional(__S(14, __c1, 6)),
+          credits_balance: S.optional(__S(9152, __c286, 0)),
           created_at: S.Number,
           updated_at: S.Number,
         }),
@@ -11248,19 +14102,19 @@ function __c13(j: number): any {
           id: S.String,
           instance_id: S.String,
           status: S.String,
-          credit: S.optional(S.NullOr(__S(58, __c7, 2))),
+          credit: S.optional(S.NullOr(__S(2752, __c86, 0))),
           plan_id: S.String,
           price_id: S.optional(S.String),
-          plan: S.NullOr(__S(106, __c13, 2)),
+          plan: S.NullOr(__S(5954, __c186, 2)),
           plan_period: S.String,
           payment_source_id: S.String,
-          payment_source: S.optional(S.NullOr(__S(107, __c13, 3))),
-          lifetime_paid: S.optional(S.NullOr(__S(14, __c1, 6))),
-          amount: S.optional(S.NullOr(__S(14, __c1, 6))),
-          next_invoice: S.optional(S.NullOr(__S(77, __c9, 5))),
-          next_payment: S.optional(S.NullOr(__S(77, __c9, 5))),
+          payment_source: S.optional(S.NullOr(__S(5955, __c186, 3))),
+          lifetime_paid: S.optional(S.NullOr(__S(9152, __c286, 0))),
+          amount: S.optional(S.NullOr(__S(9152, __c286, 0))),
+          next_invoice: S.optional(S.NullOr(__S(2759, __c86, 7))),
+          next_payment: S.optional(S.NullOr(__S(2759, __c86, 7))),
           payer_id: S.String,
-          payer: S.optional(S.NullOr(__S(108, __c13, 4))),
+          payer: S.optional(S.NullOr(__S(5956, __c186, 4))),
           is_free_trial: S.Boolean,
           period_start: S.optional(S.NullOr(S.Number)),
           period_end: S.optional(S.NullOr(S.Number)),
@@ -11274,35 +14128,238 @@ function __c13(j: number): any {
       ).annotate({
         identifier: "CommerceSubscriptionItem2",
       });
-    case 6:
+  }
+}
+function __c187(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          previous_plan: __S(106, __c13, 2),
-          previous_price: __S(102, __c12, 6),
-          effective_at: S.Number,
-          effective_mode: S.String,
-          next_billing_date: S.optional(S.NullOr(S.Number)),
-          charged_immediately: S.Boolean,
-          immediate_charge: S.optional(S.NullOr(__S(14, __c1, 6))),
-          previous_subscription_item_status: S.String,
-          previous_subscription_item_id: S.String,
-        }),
-      ).annotate({
-        identifier: "CommercePriceTransitionDetails",
-      });
-    case 7:
+          id: S.String.pipe(T.Label()),
+          external_id: S.optional(S.NullOr(S.String)),
+          custom_action: S.optional(S.NullOr(S.Boolean)),
+        }).pipe(T.Http({ method: "PATCH", uri: "/sign_ups/{id}", code: 200 })),
+      ).annotate({ identifier: "UpdateSignUpRequest" });
+  }
+}
+function __c188(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          object: S.String,
-          subscription_item: __S(109, __c13, 5),
-          transition: __S(110, __c13, 6),
-        }),
+          user_id: S.String.pipe(T.Label()),
+          external_id: S.optional(S.NullOr(S.String)),
+          first_name: S.optional(S.NullOr(S.String)),
+          last_name: S.optional(S.NullOr(S.String)),
+          locale: S.optional(S.NullOr(S.String)),
+          timezone: S.optional(S.NullOr(S.String)),
+          primary_email_address_id: S.optional(S.NullOr(S.String)),
+          notify_primary_email_address_changed: S.optional(S.NullOr(S.Boolean)),
+          primary_phone_number_id: S.optional(S.NullOr(S.String)),
+          primary_web3_wallet_id: S.optional(S.NullOr(S.String)),
+          username: S.optional(S.NullOr(S.String)),
+          profile_image_id: S.optional(S.NullOr(S.String)),
+          password: S.optional(S.NullOr(S.String).pipe(T.SensitiveValue({}))),
+          password_digest: S.optional(S.String.pipe(T.SensitiveValue({}))),
+          password_hasher: S.optional(S.String.pipe(T.SensitiveValue({}))),
+          skip_password_checks: S.optional(S.NullOr(S.Boolean)),
+          sign_out_of_other_sessions: S.optional(S.NullOr(S.Boolean)),
+          totp_secret: S.optional(S.NullOr(S.String).pipe(T.SensitiveValue({}))),
+          backup_codes: S.optional(__S(8608, __c269, 0)),
+          delete_self_enabled: S.optional(S.NullOr(S.Boolean)),
+          create_organization_enabled: S.optional(S.NullOr(S.Boolean)),
+          legal_accepted_at: S.optional(S.NullOr(S.String)),
+          skip_legal_checks: S.optional(S.NullOr(S.Boolean)),
+          create_organizations_limit: S.optional(S.NullOr(S.Number)),
+          created_at: S.optional(S.NullOr(S.String)),
+          bypass_client_trust: S.optional(S.NullOr(S.Boolean)),
+        }).pipe(T.Http({ method: "PATCH", uri: "/users/{user_id}", code: 200 })),
+      ).annotate({ identifier: "UpdateUserRequest" });
+  }
+}
+function __c189(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          user_id: S.String.pipe(T.Label()),
+          public_metadata: S.optional(__S(1568, __c49, 0)),
+          private_metadata: S.optional(__S(1568, __c49, 0)),
+          unsafe_metadata: S.optional(__S(1568, __c49, 0)),
+        }).pipe(T.Http({ method: "PATCH", uri: "/users/{user_id}/metadata", code: 200 })),
       ).annotate({
-        identifier: "CommercePriceTransitionResponse",
+        identifier: "UpdateUserMetadataRequest",
       });
   }
 }
-function __c14(j: number): any {
+function __c190(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          oauth_application_id: S.String.pipe(T.Label()),
+          uploader_user_id: S.optional(S.String),
+          file: S.String,
+        }).pipe(
+          T.Http({
+            method: "PUT",
+            uri: "/oauth_applications/{oauth_application_id}/logo",
+            code: 200,
+            contentType: "multipart",
+          }),
+        ),
+      ).annotate({
+        identifier: "UploadOAuthApplicationLogoRequest",
+      });
+  }
+}
+function __c191(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          organization_id: S.String.pipe(T.Label()),
+          uploader_user_id: S.optional(S.String),
+          file: S.String,
+        }).pipe(
+          T.Http({
+            method: "PUT",
+            uri: "/organizations/{organization_id}/logo",
+            code: 200,
+            contentType: "multipart",
+          }),
+        ),
+      ).annotate({
+        identifier: "UploadOrganizationLogoRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          object: S.String,
+          id: S.String,
+          name: S.String,
+          slug: S.String,
+          image_url: S.String,
+          has_image: S.Boolean,
+          members_count: S.optional(S.Number),
+          missing_member_with_elevated_permissions: S.optional(S.Boolean),
+          pending_invitations_count: S.optional(S.Number),
+          max_allowed_memberships: S.Number,
+          admin_delete_enabled: S.Boolean,
+          self_serve_sso_enabled: S.optional(S.NullOr(S.Boolean)),
+          public_metadata: __S(1568, __c49, 0),
+          private_metadata: S.optional(__S(1568, __c49, 0)),
+          created_by: S.optional(S.String),
+          created_at: S.Number,
+          updated_at: S.Number,
+          last_active_at: S.optional(S.Number),
+          role_set_key: S.optional(S.NullOr(S.String)),
+          logo_url: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "UploadOrganizationLogoResponse",
+      });
+  }
+}
+function __c192(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          user_id: S.String.pipe(T.Label()),
+          limit: S.optional(S.Number.pipe(T.Query())),
+          offset: S.optional(S.Number.pipe(T.Query())),
+          status: S.optional(S.String.pipe(T.Query())),
+        }).pipe(
+          T.Http({ method: "GET", uri: "/users/{user_id}/organization_invitations", code: 200 }),
+        ),
+      ).annotate({
+        identifier: "UsersGetOrganizationInvitationsRequest",
+      });
+  }
+}
+function __c193(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          user_id: S.String.pipe(T.Label()),
+          limit: S.optional(S.Number.pipe(T.Query())),
+          offset: S.optional(S.Number.pipe(T.Query())),
+        }).pipe(
+          T.Http({ method: "GET", uri: "/users/{user_id}/organization_memberships", code: 200 }),
+        ),
+      ).annotate({
+        identifier: "UsersGetOrganizationMembershipsRequest",
+      });
+  }
+}
+function __c194(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          secret: S.String.pipe(T.SensitiveValue({})),
+        }).pipe(T.Http({ method: "POST", uri: "/api_keys/verify", code: 200 })),
+      ).annotate({ identifier: "VerifyApiKeyRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          object: S.String,
+          id: S.String,
+          type: S.String,
+          subject: S.String,
+          name: S.String,
+          description: S.optional(S.NullOr(S.String)),
+          claims: S.NullOr(S.Unknown),
+          scopes: __S(8608, __c269, 0),
+          revoked: S.Boolean,
+          revocation_reason: S.NullOr(S.String),
+          expired: S.Boolean,
+          expiration: S.NullOr(S.Number),
+          created_by: S.NullOr(S.String),
+          last_used_at: S.NullOr(S.Number),
+          created_at: S.Number,
+          updated_at: S.Number,
+        }),
+      ).annotate({ identifier: "VerifyApiKeyResponse" });
+  }
+}
+function __c195(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          token: S.String,
+        }).pipe(T.Http({ method: "POST", uri: "/clients/verify", code: 200 })),
+      ).annotate({ identifier: "VerifyClientRequest" });
+  }
+}
+function __c196(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          domain_id: S.optional(S.String),
+          proxy_url: S.optional(S.String),
+        }).pipe(T.Http({ method: "POST", uri: "/proxy_checks", code: 200 })),
+      ).annotate({ identifier: "VerifyDomainProxyRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          object: S.String,
+          id: S.String,
+          domain_id: S.String,
+          last_run_at: S.NullOr(S.Number),
+          proxy_url: S.String,
+          successful: S.Boolean,
+          created_at: S.Number,
+          updated_at: S.Number,
+        }),
+      ).annotate({ identifier: "ProxyCheck" });
+  }
+}
+function __c197(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -11312,7 +14369,11 @@ function __c14(j: number): any {
       ).annotate({
         identifier: "CreateBlocklistIdentifierRequest",
       });
-    case 1:
+  }
+}
+function __c198(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           object: S.optional(S.String),
@@ -11324,11 +14385,115 @@ function __c14(j: number): any {
           updated_at: S.optional(S.Number),
         }),
       ).annotate({ identifier: "BlocklistIdentifier" });
-    case 2:
+  }
+}
+function __c199(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          token: S.String,
+        }).pipe(T.Http({ method: "POST", uri: "/m2m_tokens/verify", code: 200 })),
+      ).annotate({ identifier: "VerifyM2MTokenRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          object: S.String,
+          id: S.String,
+          subject: S.String,
+          claims: S.optional(S.NullOr(S.Unknown)),
+          scopes: S.optional(__S(8608, __c269, 0)),
+          revoked: S.Boolean,
+          revocation_reason: S.NullOr(S.String),
+          expired: S.Boolean,
+          expiration: S.NullOr(S.Number),
+          last_used_at: S.NullOr(S.Number),
+          created_at: S.Number,
+          updated_at: S.Number,
+        }),
+      ).annotate({ identifier: "VerifyM2MTokenResponse" });
+  }
+}
+function __c200(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          access_token: S.optional(S.String.pipe(T.SensitiveValue({}))),
+          secret: S.optional(S.String.pipe(T.SensitiveValue({}))),
+        }).pipe(
+          T.Http({ method: "POST", uri: "/oauth_applications/access_tokens/verify", code: 200 }),
+        ),
+      ).annotate({
+        identifier: "VerifyOAuthAccessTokenRequest",
+      });
+    case 1:
+      return S.suspend(() => S.Unknown.pipe(T.RawResponseRoot())).annotate({
+        identifier: "VerifyOAuthAccessTokenResponse",
+      });
+  }
+}
+function __c201(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          organization_id: S.String.pipe(T.Label()),
+          domain_id: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/organizations/{organization_id}/domains/{domain_id}/verify_ownership",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "VerifyOrganizationDomainOwnershipRequest",
+      });
+  }
+}
+function __c202(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          user_id: S.String.pipe(T.Label()),
+          password: S.String.pipe(T.SensitiveValue({})),
+        }).pipe(T.Http({ method: "POST", uri: "/users/{user_id}/verify_password", code: 200 })),
+      ).annotate({ identifier: "VerifyPasswordRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          verified: S.optional(S.Boolean),
+        }),
+      ).annotate({ identifier: "VerifyPasswordResponse" });
+  }
+}
+function __c203(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          user_id: S.String.pipe(T.Label()),
+          code: S.String,
+        }).pipe(T.Http({ method: "POST", uri: "/users/{user_id}/verify_totp", code: 200 })),
+      ).annotate({ identifier: "VerifyTOTPRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          verified: S.optional(S.Boolean),
+          code_type: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "VerifyTOTPResponse" });
+  }
+}
+function __c204(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           email_address: S.String,
-          public_metadata: S.optional(S.NullOr(__S(27, __c3, 3))),
+          public_metadata: S.optional(S.NullOr(__S(1568, __c49, 0))),
           redirect_url: S.optional(S.NullOr(S.String)),
           notify: S.optional(S.NullOr(S.Boolean)),
           ignore_existing: S.optional(S.NullOr(S.Boolean)),
@@ -11338,23 +14503,37 @@ function __c14(j: number): any {
       ).annotate({
         identifier: "CreateBulkInvitationsRequestBodyItem",
       });
-    case 3:
-      return S.Array(__S(114, __c14, 2));
-    case 4:
+    case 1:
+      return S.Array(__S(6528, __c204, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          body: S.optional(__S(115, __c14, 3).pipe(T.HttpBody())),
+          body: S.optional(__S(6529, __c204, 1).pipe(T.HttpBody())),
         }).pipe(T.Http({ method: "POST", uri: "/invitations/bulk", code: 200 })),
       ).annotate({
         identifier: "CreateBulkInvitationsRequest",
       });
-    case 5:
+    case 3:
+      return S.suspend(() => __S(6560, __c205, 0).pipe(T.RawResponseRoot())).annotate({
+        identifier: "CreateBulkInvitationsResponse",
+      });
+  }
+}
+function __c205(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(6592, __c206, 0));
+  }
+}
+function __c206(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           object: S.String,
           id: S.String,
           email_address: S.String,
-          public_metadata: __S(27, __c3, 3),
+          public_metadata: __S(1568, __c49, 0),
           revoked: S.optional(S.Boolean),
           status: S.String,
           url: S.optional(S.String),
@@ -11363,15 +14542,9 @@ function __c14(j: number): any {
           updated_at: S.Number,
         }),
       ).annotate({ identifier: "Invitation" });
-    case 6:
-      return S.Array(__S(117, __c14, 5));
-    case 7:
-      return S.suspend(() => __S(118, __c14, 6).pipe(T.RawResponseRoot())).annotate({
-        identifier: "CreateBulkInvitationsResponse",
-      });
   }
 }
-function __c15(j: number): any {
+function __c207(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -11383,16 +14556,30 @@ function __c15(j: number): any {
         identifier: "CreateBulkWaitlistEntriesRequestBodyItem",
       });
     case 1:
-      return S.Array(__S(120, __c15, 0));
+      return S.Array(__S(6624, __c207, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          body: S.optional(__S(121, __c15, 1).pipe(T.HttpBody())),
+          body: S.optional(__S(6625, __c207, 1).pipe(T.HttpBody())),
         }).pipe(T.Http({ method: "POST", uri: "/waitlist_entries/bulk", code: 200 })),
       ).annotate({
         identifier: "CreateBulkWaitlistEntriesRequest",
       });
     case 3:
+      return S.suspend(() => __S(6656, __c208, 0).pipe(T.RawResponseRoot())).annotate({
+        identifier: "CreateBulkWaitlistEntriesResponse",
+      });
+  }
+}
+function __c208(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(6688, __c209, 0));
+  }
+}
+function __c209(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           object: S.String,
@@ -11402,16 +14589,14 @@ function __c15(j: number): any {
           is_locked: S.optional(S.Boolean),
           created_at: S.Number,
           updated_at: S.Number,
-          invitation: S.optional(S.NullOr(__S(117, __c14, 5))),
+          invitation: S.optional(S.NullOr(__S(6592, __c206, 0))),
         }),
       ).annotate({ identifier: "WaitlistEntry" });
-    case 4:
-      return S.Array(__S(123, __c15, 3));
-    case 5:
-      return S.suspend(() => __S(124, __c15, 4).pipe(T.RawResponseRoot())).annotate({
-        identifier: "CreateBulkWaitlistEntriesResponse",
-      });
-    case 6:
+  }
+}
+function __c210(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           directory_group_id: S.optional(S.String),
@@ -11424,22 +14609,44 @@ function __c15(j: number): any {
       ).annotate({
         identifier: "CreateDirectoryRequestGroupRoleMappingsItem",
       });
-    case 7:
-      return S.Array(__S(126, __c15, 6));
-  }
-}
-function __c16(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
+      return S.Array(__S(6720, __c210, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           enterprise_connection_id: S.String,
           name: S.optional(S.String),
           provider: S.String,
-          group_role_mappings: S.optional(__S(127, __c15, 7)),
+          group_role_mappings: S.optional(__S(6721, __c210, 1)),
         }).pipe(T.Http({ method: "POST", uri: "/directories", code: 200 })),
       ).annotate({ identifier: "CreateDirectoryRequest" });
-    case 1:
+  }
+}
+function __c211(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          object: S.String,
+          id: S.String,
+          name: S.String,
+          enterprise_connection_id: S.optional(S.NullOr(S.String)),
+          endpoint_url: S.String,
+          provider: S.String,
+          enabled: S.Boolean,
+          group_role_mapping_enabled: S.Boolean,
+          attribute_mapping: __S(8640, __c270, 0),
+          custom_attributes: S.optional(__S(6785, __c212, 1)),
+          api_key: S.optional(S.NullOr(S.String).pipe(T.SensitiveValue({}))),
+          created_at: S.Number,
+          updated_at: S.Number,
+        }),
+      ).annotate({ identifier: "Directory" });
+  }
+}
+function __c212(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
@@ -11452,27 +14659,13 @@ function __c16(j: number): any {
       ).annotate({
         identifier: "DirectoryCustomAttributesItem",
       });
-    case 2:
-      return S.Array(__S(129, __c16, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          object: S.String,
-          id: S.String,
-          name: S.String,
-          enterprise_connection_id: S.optional(S.NullOr(S.String)),
-          endpoint_url: S.String,
-          provider: S.String,
-          enabled: S.Boolean,
-          group_role_mapping_enabled: S.Boolean,
-          attribute_mapping: __S(10, __c1, 2),
-          custom_attributes: S.optional(__S(130, __c16, 2)),
-          api_key: S.optional(S.NullOr(S.String).pipe(T.SensitiveValue({}))),
-          created_at: S.Number,
-          updated_at: S.Number,
-        }),
-      ).annotate({ identifier: "Directory" });
-    case 4:
+    case 1:
+      return S.Array(__S(6784, __c212, 0));
+  }
+}
+function __c213(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           directory_id: S.String.pipe(T.Label()),
@@ -11490,7 +14683,11 @@ function __c16(j: number): any {
       ).annotate({
         identifier: "CreateDirectoryGroupRoleMappingRequest",
       });
-    case 5:
+  }
+}
+function __c214(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           object: S.String,
@@ -11501,7 +14698,7 @@ function __c16(j: number): any {
           scim_group_id: S.String,
           directory_group_display_name: S.String,
           scim_group_display_name: S.String,
-          role: S.optional(__S(22, __c2, 6)),
+          role: S.optional(__S(96, __c3, 0)),
           precedence: S.Number,
           created_at: S.Number,
           updated_at: S.Number,
@@ -11509,7 +14706,11 @@ function __c16(j: number): any {
       ).annotate({
         identifier: "DirectoryGroupRoleMapping",
       });
-    case 6:
+  }
+}
+function __c215(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           user_id: S.String,
@@ -11521,20 +14722,47 @@ function __c16(j: number): any {
       ).annotate({
         identifier: "CreateEmailAddressRequest",
       });
-    case 7:
+  }
+}
+function __c216(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          user_id: S.optional(S.NullOr(S.String)),
-          email_address: S.optional(S.NullOr(S.String)),
-          first_name: S.optional(S.NullOr(S.String)),
-          last_name: S.optional(S.NullOr(S.String)),
+          idp_entity_id: S.optional(S.NullOr(S.String)),
+          idp_sso_url: S.optional(S.NullOr(S.String)),
+          idp_certificate: S.optional(S.NullOr(S.String)),
+          idp_certificates: S.optional(__S(8608, __c269, 0)),
+          idp_metadata_url: S.optional(S.NullOr(S.String)),
+          idp_metadata: S.optional(S.NullOr(S.String)),
+          attribute_mapping: S.optional(S.NullOr(__S(6976, __c218, 0))),
+          allow_subdomains: S.optional(S.NullOr(S.Boolean)),
+          allow_idp_initiated: S.optional(S.NullOr(S.Boolean)),
+          force_authn: S.optional(S.NullOr(S.Boolean)),
+          login_hint: S.optional(S.NullOr(__S(6944, __c217, 0))),
         }),
       ).annotate({
-        identifier: "CreateEnterpriseConnectionRequestSamlAttributeMapping",
+        identifier: "CreateEnterpriseConnectionRequestSaml",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String,
+          provider: S.String,
+          domains: __S(8608, __c269, 0),
+          organization_id: S.optional(S.NullOr(S.String)),
+          allow_organization_account_linking: S.optional(S.NullOr(S.Boolean)),
+          active: S.optional(S.NullOr(S.Boolean)),
+          saml: S.optional(S.NullOr(__S(6912, __c216, 0))),
+          oidc: S.optional(S.NullOr(__S(6977, __c218, 1))),
+          custom_attributes: S.optional(__S(6946, __c217, 2)),
+        }).pipe(T.Http({ method: "POST", uri: "/enterprise_connections", code: 200 })),
+      ).annotate({
+        identifier: "CreateEnterpriseConnectionRequest",
       });
   }
 }
-function __c17(j: number): any {
+function __c217(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -11548,38 +14776,6 @@ function __c17(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          idp_entity_id: S.optional(S.NullOr(S.String)),
-          idp_sso_url: S.optional(S.NullOr(S.String)),
-          idp_certificate: S.optional(S.NullOr(S.String)),
-          idp_certificates: S.optional(__S(6, __c0, 6)),
-          idp_metadata_url: S.optional(S.NullOr(S.String)),
-          idp_metadata: S.optional(S.NullOr(S.String)),
-          attribute_mapping: S.optional(S.NullOr(__S(135, __c16, 7))),
-          allow_subdomains: S.optional(S.NullOr(S.Boolean)),
-          allow_idp_initiated: S.optional(S.NullOr(S.Boolean)),
-          force_authn: S.optional(S.NullOr(S.Boolean)),
-          login_hint: S.optional(S.NullOr(__S(136, __c17, 0))),
-        }),
-      ).annotate({
-        identifier: "CreateEnterpriseConnectionRequestSaml",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          client_id: S.optional(S.NullOr(S.String)),
-          client_secret: S.optional(S.NullOr(S.String).pipe(T.SensitiveValue({}))),
-          discovery_url: S.optional(S.NullOr(S.String)),
-          auth_url: S.optional(S.NullOr(S.String)),
-          token_url: S.optional(S.NullOr(S.String)),
-          user_info_url: S.optional(S.NullOr(S.String)),
-          requires_pkce: S.optional(S.NullOr(S.Boolean)),
-        }),
-      ).annotate({
-        identifier: "CreateEnterpriseConnectionRequestOidc",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
           name: S.String,
           key: S.String,
           sso_path: S.optional(S.String),
@@ -11590,25 +14786,9 @@ function __c17(j: number): any {
       ).annotate({
         identifier: "CreateEnterpriseConnectionRequestCustomAttributesItem",
       });
-    case 4:
-      return S.Array(__S(139, __c17, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String,
-          provider: S.String,
-          domains: __S(6, __c0, 6),
-          organization_id: S.optional(S.NullOr(S.String)),
-          allow_organization_account_linking: S.optional(S.NullOr(S.Boolean)),
-          active: S.optional(S.NullOr(S.Boolean)),
-          saml: S.optional(S.NullOr(__S(137, __c17, 1))),
-          oidc: S.optional(S.NullOr(__S(138, __c17, 2))),
-          custom_attributes: S.optional(__S(140, __c17, 4)),
-        }).pipe(T.Http({ method: "POST", uri: "/enterprise_connections", code: 200 })),
-      ).annotate({
-        identifier: "CreateEnterpriseConnectionRequest",
-      });
-    case 6:
+    case 2:
+      return S.Array(__S(6945, __c217, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
           certificate: S.String,
@@ -11618,13 +14798,9 @@ function __c17(j: number): any {
       ).annotate({
         identifier: "EnterpriseConnectionSamlConnectionIdpCertificatesItem",
       });
-    case 7:
-      return S.Array(__S(142, __c17, 6));
-  }
-}
-function __c18(j: number): any {
-  switch (j) {
-    case 0:
+    case 4:
+      return S.Array(__S(6947, __c217, 3));
+    case 5:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
@@ -11634,7 +14810,7 @@ function __c18(j: number): any {
           idp_certificate: S.optional(S.NullOr(S.String)),
           idp_certificate_issued_at: S.optional(S.NullOr(S.Number)),
           idp_certificate_expires_at: S.optional(S.NullOr(S.Number)),
-          idp_certificates: S.optional(__S(143, __c17, 7)),
+          idp_certificates: S.optional(__S(6948, __c217, 4)),
           idp_metadata_url: S.optional(S.NullOr(S.String)),
           acs_url: S.optional(S.NullOr(S.String)),
           sp_entity_id: S.optional(S.NullOr(S.String)),
@@ -11643,12 +14819,12 @@ function __c18(j: number): any {
           allow_idp_initiated: S.optional(S.Boolean),
           allow_subdomains: S.optional(S.Boolean),
           force_authn: S.optional(S.Boolean),
-          login_hint: S.optional(__S(136, __c17, 0)),
+          login_hint: S.optional(__S(6944, __c217, 0)),
         }),
       ).annotate({
         identifier: "EnterpriseConnectionSamlConnection",
       });
-    case 1:
+    case 6:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
@@ -11667,7 +14843,7 @@ function __c18(j: number): any {
       ).annotate({
         identifier: "EnterpriseConnectionOauthConfig",
       });
-    case 2:
+    case 7:
       return S.suspend(() =>
         S.Struct({
           object: S.String,
@@ -11676,19 +14852,52 @@ function __c18(j: number): any {
           provider: S.String,
           logo_public_url: S.optional(S.NullOr(S.String)),
           active: S.Boolean,
-          domains: __S(6, __c0, 6),
+          domains: __S(8608, __c269, 0),
           organization_id: S.optional(S.NullOr(S.String)),
           sync_user_attributes: S.optional(S.Boolean),
           disable_additional_identifications: S.optional(S.Boolean),
           allow_organization_account_linking: S.optional(S.Boolean),
-          custom_attributes: S.optional(__S(140, __c17, 4)),
-          saml_connection: S.optional(S.NullOr(__S(144, __c18, 0))),
-          oauth_config: S.optional(S.NullOr(__S(145, __c18, 1))),
+          custom_attributes: S.optional(__S(6946, __c217, 2)),
+          saml_connection: S.optional(S.NullOr(__S(6949, __c217, 5))),
+          oauth_config: S.optional(S.NullOr(__S(6950, __c217, 6))),
           created_at: S.Number,
           updated_at: S.Number,
         }),
       ).annotate({ identifier: "EnterpriseConnection" });
-    case 3:
+  }
+}
+function __c218(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          user_id: S.optional(S.NullOr(S.String)),
+          email_address: S.optional(S.NullOr(S.String)),
+          first_name: S.optional(S.NullOr(S.String)),
+          last_name: S.optional(S.NullOr(S.String)),
+        }),
+      ).annotate({
+        identifier: "CreateEnterpriseConnectionRequestSamlAttributeMapping",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          client_id: S.optional(S.NullOr(S.String)),
+          client_secret: S.optional(S.NullOr(S.String).pipe(T.SensitiveValue({}))),
+          discovery_url: S.optional(S.NullOr(S.String)),
+          auth_url: S.optional(S.NullOr(S.String)),
+          token_url: S.optional(S.NullOr(S.String)),
+          user_info_url: S.optional(S.NullOr(S.String)),
+          requires_pkce: S.optional(S.NullOr(S.Boolean)),
+        }),
+      ).annotate({
+        identifier: "CreateEnterpriseConnectionRequestOidc",
+      });
+  }
+}
+function __c219(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           enterprise_connection_id: S.String.pipe(T.Label()),
@@ -11702,7 +14911,7 @@ function __c18(j: number): any {
       ).annotate({
         identifier: "CreateEnterpriseConnectionTestRunRequest",
       });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           url: S.String,
@@ -11710,11 +14919,15 @@ function __c18(j: number): any {
       ).annotate({
         identifier: "EnterpriseConnectionTestRunResponse",
       });
-    case 5:
+  }
+}
+function __c220(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           email_address: S.String,
-          public_metadata: S.optional(__S(27, __c3, 3)),
+          public_metadata: S.optional(__S(1568, __c49, 0)),
           redirect_url: S.optional(S.String),
           notify: S.optional(S.NullOr(S.Boolean)),
           ignore_existing: S.optional(S.NullOr(S.Boolean)),
@@ -11722,7 +14935,11 @@ function __c18(j: number): any {
           template_slug: S.optional(S.String),
         }).pipe(T.Http({ method: "POST", uri: "/invitations", code: 200 })),
       ).annotate({ identifier: "CreateInvitationRequest" });
-    case 6:
+  }
+}
+function __c221(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String,
@@ -11734,7 +14951,11 @@ function __c18(j: number): any {
           signing_key: S.optional(S.NullOr(S.String)),
         }).pipe(T.Http({ method: "POST", uri: "/jwt_templates", code: 200 })),
       ).annotate({ identifier: "CreateJWTTemplateRequest" });
-    case 7:
+  }
+}
+function __c222(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           object: S.String,
@@ -11751,7 +14972,7 @@ function __c18(j: number): any {
       ).annotate({ identifier: "JWTTemplate" });
   }
 }
-function __c19(j: number): any {
+function __c223(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -11769,7 +14990,7 @@ function __c19(j: number): any {
           id: S.String,
           subject: S.String,
           claims: S.optional(S.NullOr(S.Unknown)),
-          scopes: S.optional(__S(6, __c0, 6)),
+          scopes: S.optional(__S(8608, __c269, 0)),
           token: S.String,
           revoked: S.Boolean,
           revocation_reason: S.NullOr(S.String),
@@ -11780,15 +15001,37 @@ function __c19(j: number): any {
           updated_at: S.Number,
         }),
       ).annotate({ identifier: "CreateM2MTokenResponse" });
-    case 2:
+  }
+}
+function __c224(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String,
-          scoped_machines: S.optional(__S(6, __c0, 6)),
+          scoped_machines: S.optional(__S(8608, __c269, 0)),
           default_token_ttl: S.optional(S.Number),
         }).pipe(T.Http({ method: "POST", uri: "/machines", code: 200 })),
       ).annotate({ identifier: "CreateMachineRequest" });
-    case 3:
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          object: S.String,
+          id: S.String,
+          name: S.String,
+          instance_id: S.String,
+          created_at: S.Number,
+          updated_at: S.Number,
+          default_token_ttl: S.optional(S.Number),
+          scoped_machines: __S(7201, __c225, 1),
+          secret_key: S.String.pipe(T.SensitiveValue({})),
+        }),
+      ).annotate({ identifier: "CreateMachineResponse" });
+  }
+}
+function __c225(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           object: S.String,
@@ -11802,23 +15045,13 @@ function __c19(j: number): any {
       ).annotate({
         identifier: "MachineWithoutScopedMachines",
       });
-    case 4:
-      return S.Array(__S(155, __c19, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          object: S.String,
-          id: S.String,
-          name: S.String,
-          instance_id: S.String,
-          created_at: S.Number,
-          updated_at: S.Number,
-          default_token_ttl: S.optional(S.Number),
-          scoped_machines: __S(156, __c19, 4),
-          secret_key: S.String.pipe(T.SensitiveValue({})),
-        }),
-      ).annotate({ identifier: "CreateMachineResponse" });
-    case 6:
+    case 1:
+      return S.Array(__S(7200, __c225, 0));
+  }
+}
+function __c226(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           machine_id: S.String.pipe(T.Label()),
@@ -11827,7 +15060,7 @@ function __c19(j: number): any {
       ).annotate({
         identifier: "CreateMachineScopeRequest",
       });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           object: S.String,
@@ -11838,13 +15071,13 @@ function __c19(j: number): any {
       ).annotate({ identifier: "MachineScope" });
   }
 }
-function __c20(j: number): any {
+function __c227(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String,
-          redirect_uris: S.optional(S.NullOr(__S(6, __c0, 6))),
+          redirect_uris: S.optional(S.NullOr(__S(8608, __c269, 0))),
           callback_url: S.optional(S.NullOr(S.String)),
           scopes: S.optional(S.NullOr(S.String)),
           consent_screen_enabled: S.optional(S.NullOr(S.Boolean)),
@@ -11871,7 +15104,7 @@ function __c20(j: number): any {
           device_authorization_grant_enabled: S.Boolean,
           public: S.Boolean,
           scopes: S.String,
-          redirect_uris: __S(6, __c0, 6),
+          redirect_uris: __S(8608, __c269, 0),
           callback_url: S.String,
           authorize_url: S.String,
           token_fetch_url: S.String,
@@ -11885,13 +15118,17 @@ function __c20(j: number): any {
       ).annotate({
         identifier: "CreateOAuthApplicationResponse",
       });
-    case 2:
+  }
+}
+function __c228(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String,
           created_by: S.optional(S.NullOr(S.String)),
-          private_metadata: S.optional(S.NullOr(__S(27, __c3, 3))),
-          public_metadata: S.optional(S.NullOr(__S(27, __c3, 3))),
+          private_metadata: S.optional(S.NullOr(__S(1568, __c49, 0))),
+          public_metadata: S.optional(S.NullOr(__S(1568, __c49, 0))),
           slug: S.optional(S.NullOr(S.String)),
           max_allowed_memberships: S.optional(S.NullOr(S.Number)),
           created_at: S.optional(S.NullOr(S.String)),
@@ -11900,7 +15137,11 @@ function __c20(j: number): any {
       ).annotate({
         identifier: "CreateOrganizationRequest",
       });
-    case 3:
+  }
+}
+function __c229(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           organization_id: S.String.pipe(T.Label()),
@@ -11913,19 +15154,11 @@ function __c20(j: number): any {
       ).annotate({
         identifier: "CreateOrganizationDomainRequest",
       });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          status: S.String,
-          strategy: S.String,
-          attempts: S.NullOr(S.Number),
-          expire_at: S.NullOr(S.Number),
-          verified_at: S.NullOr(S.Number),
-        }),
-      ).annotate({
-        identifier: "OrganizationDomainVerification",
-      });
-    case 5:
+  }
+}
+function __c230(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
@@ -11937,7 +15170,23 @@ function __c20(j: number): any {
       ).annotate({
         identifier: "OrganizationInvitationPublicOrganizationData",
       });
-    case 6:
+  }
+}
+function __c231(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          status: S.String,
+          strategy: S.String,
+          attempts: S.NullOr(S.Number),
+          expire_at: S.NullOr(S.Number),
+          verified_at: S.NullOr(S.Number),
+        }),
+      ).annotate({
+        identifier: "OrganizationDomainVerification",
+      });
+    case 1:
       return S.suspend(() =>
         S.Struct({
           object: S.String,
@@ -11946,25 +15195,29 @@ function __c20(j: number): any {
           name: S.String,
           enrollment_mode: S.String,
           affiliation_email_address: S.NullOr(S.String),
-          affiliation_verification: S.NullOr(__S(164, __c20, 4)),
-          ownership_verification: S.NullOr(__S(164, __c20, 4)),
-          verification: S.NullOr(__S(164, __c20, 4)),
+          affiliation_verification: S.NullOr(__S(7392, __c231, 0)),
+          ownership_verification: S.NullOr(__S(7392, __c231, 0)),
+          verification: S.NullOr(__S(7392, __c231, 0)),
           total_pending_invitations: S.Number,
           total_pending_suggestions: S.Number,
-          public_organization_data: S.optional(S.NullOr(__S(165, __c20, 5))),
+          public_organization_data: S.optional(S.NullOr(__S(7360, __c230, 0))),
           created_at: S.Number,
           updated_at: S.Number,
         }),
       ).annotate({ identifier: "OrganizationDomain" });
-    case 7:
+  }
+}
+function __c232(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           organization_id: S.String.pipe(T.Label()),
           email_address: S.String,
           inviter_user_id: S.optional(S.NullOr(S.String)),
           role: S.String,
-          public_metadata: S.optional(S.NullOr(__S(27, __c3, 3))),
-          private_metadata: S.optional(S.NullOr(__S(27, __c3, 3))),
+          public_metadata: S.optional(S.NullOr(__S(1568, __c49, 0))),
+          private_metadata: S.optional(S.NullOr(__S(1568, __c49, 0))),
           redirect_url: S.optional(S.NullOr(S.String)),
           expires_in_days: S.optional(S.NullOr(S.Number)),
           notify: S.optional(S.NullOr(S.Boolean)),
@@ -11980,7 +15233,7 @@ function __c20(j: number): any {
       });
   }
 }
-function __c21(j: number): any {
+function __c233(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -11995,7 +15248,11 @@ function __c21(j: number): any {
       ).annotate({
         identifier: "OrganizationInvitationPublicUserData",
       });
-    case 1:
+  }
+}
+function __c234(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           object: S.String,
@@ -12005,26 +15262,28 @@ function __c21(j: number): any {
           role_name: S.String,
           organization_id: S.optional(S.String),
           inviter_id: S.NullOr(S.String),
-          public_inviter_data: S.NullOr(__S(168, __c21, 0)),
+          public_inviter_data: S.NullOr(__S(7456, __c233, 0)),
           status: S.optional(S.String),
-          public_metadata: __S(27, __c3, 3),
-          private_metadata: S.optional(__S(27, __c3, 3)),
+          public_metadata: __S(1568, __c49, 0),
+          private_metadata: S.optional(__S(1568, __c49, 0)),
           url: S.NullOr(S.String),
           expires_at: S.NullOr(S.Number),
           created_at: S.Number,
           updated_at: S.Number,
         }),
       ).annotate({ identifier: "OrganizationInvitation" });
-    case 2:
-      return S.Record(S.String, S.Unknown);
-    case 3:
+  }
+}
+function __c235(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           email_address: S.String,
           inviter_user_id: S.optional(S.NullOr(S.String)),
           role: S.String,
-          public_metadata: S.optional(S.NullOr(__S(170, __c21, 2))),
-          private_metadata: S.optional(S.NullOr(__S(170, __c21, 2))),
+          public_metadata: S.optional(S.NullOr(__S(7552, __c236, 0))),
+          private_metadata: S.optional(S.NullOr(__S(7552, __c236, 0))),
           redirect_url: S.optional(S.NullOr(S.String)),
           expires_in_days: S.optional(S.NullOr(S.Number)),
           notify: S.optional(S.NullOr(S.Boolean)),
@@ -12032,13 +15291,13 @@ function __c21(j: number): any {
       ).annotate({
         identifier: "CreateOrganizationInvitationBulkRequestBodyItem",
       });
-    case 4:
-      return S.Array(__S(171, __c21, 3));
-    case 5:
+    case 1:
+      return S.Array(__S(7520, __c235, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           organization_id: S.String.pipe(T.Label()),
-          body: __S(172, __c21, 4).pipe(T.HttpBody()),
+          body: __S(7521, __c235, 1).pipe(T.HttpBody()),
         }).pipe(
           T.Http({
             method: "POST",
@@ -12049,18 +15308,28 @@ function __c21(j: number): any {
       ).annotate({
         identifier: "CreateOrganizationInvitationBulkRequest",
       });
-    case 6:
-      return S.Array(__S(169, __c21, 1));
-    case 7:
+  }
+}
+function __c236(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, S.Unknown);
+  }
+}
+function __c237(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(7488, __c234, 0));
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          data: __S(174, __c21, 6),
+          data: __S(7584, __c237, 0),
           total_count: S.Number,
         }),
       ).annotate({ identifier: "OrganizationInvitations" });
   }
 }
-function __c22(j: number): any {
+function __c238(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -12068,8 +15337,8 @@ function __c22(j: number): any {
           organization_id: S.String.pipe(T.Label()),
           user_id: S.String,
           role: S.String,
-          public_metadata: S.optional(S.NullOr(__S(27, __c3, 3))),
-          private_metadata: S.optional(S.NullOr(__S(27, __c3, 3))),
+          public_metadata: S.optional(S.NullOr(__S(1568, __c49, 0))),
+          private_metadata: S.optional(S.NullOr(__S(1568, __c49, 0))),
         }).pipe(
           T.Http({
             method: "POST",
@@ -12080,7 +15349,11 @@ function __c22(j: number): any {
       ).annotate({
         identifier: "CreateOrganizationMembershipRequest",
       });
-    case 1:
+  }
+}
+function __c239(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String,
@@ -12090,19 +15363,27 @@ function __c22(j: number): any {
       ).annotate({
         identifier: "CreateOrganizationPermissionRequest",
       });
-    case 2:
+  }
+}
+function __c240(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String,
           key: S.String,
           description: S.optional(S.NullOr(S.String)),
-          permissions: S.optional(S.NullOr(__S(6, __c0, 6))),
+          permissions: S.optional(S.NullOr(__S(8608, __c269, 0))),
           include_in_initial_role_set: S.optional(S.NullOr(S.Boolean)),
         }).pipe(T.Http({ method: "POST", uri: "/organization_roles", code: 200 })),
       ).annotate({
         identifier: "CreateOrganizationRoleRequest",
       });
-    case 3:
+  }
+}
+function __c241(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           user_id: S.String,
@@ -12112,13 +15393,21 @@ function __c22(j: number): any {
           reserved_for_second_factor: S.optional(S.NullOr(S.Boolean)),
         }).pipe(T.Http({ method: "POST", uri: "/phone_numbers", code: 200 })),
       ).annotate({ identifier: "CreatePhoneNumberRequest" });
-    case 4:
+  }
+}
+function __c242(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           url: S.String,
         }).pipe(T.Http({ method: "POST", uri: "/redirect_urls", code: 200 })),
       ).annotate({ identifier: "CreateRedirectURLRequest" });
-    case 5:
+  }
+}
+function __c243(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           object: S.String,
@@ -12128,7 +15417,11 @@ function __c22(j: number): any {
           updated_at: S.Number,
         }),
       ).annotate({ identifier: "RedirectURL" });
-    case 6:
+  }
+}
+function __c244(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String,
@@ -12137,10 +15430,14 @@ function __c22(j: number): any {
           default_role_key: S.String,
           creator_role_key: S.String,
           type: S.optional(S.String),
-          roles: __S(6, __c0, 6),
+          roles: __S(8608, __c269, 0),
         }).pipe(T.Http({ method: "POST", uri: "/role_sets", code: 200 })),
       ).annotate({ identifier: "CreateRoleSetRequest" });
-    case 7:
+  }
+}
+function __c245(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           scim_group_id: S.String,
@@ -12151,24 +15448,24 @@ function __c22(j: number): any {
       ).annotate({
         identifier: "CreateSCIMDirectoryRequestGroupRoleMappingsItem",
       });
-  }
-}
-function __c23(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(183, __c22, 7));
     case 1:
+      return S.Array(__S(7840, __c245, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           enterprise_connection_id: S.String,
           name: S.optional(S.String),
           provider: S.String,
-          group_role_mappings: S.optional(__S(184, __c23, 0)),
+          group_role_mappings: S.optional(__S(7841, __c245, 1)),
         }).pipe(T.Http({ method: "POST", uri: "/scim_directories", code: 200 })),
       ).annotate({
         identifier: "CreateSCIMDirectoryRequest",
       });
-    case 2:
+  }
+}
+function __c246(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           object: S.String,
@@ -12179,14 +15476,18 @@ function __c23(j: number): any {
           provider: S.String,
           enabled: S.Boolean,
           group_role_mapping_enabled: S.Boolean,
-          attribute_mapping: __S(10, __c1, 2),
-          custom_attributes: S.optional(__S(130, __c16, 2)),
+          attribute_mapping: __S(8640, __c270, 0),
+          custom_attributes: S.optional(__S(6785, __c212, 1)),
           api_key: S.optional(S.NullOr(S.String).pipe(T.SensitiveValue({}))),
           created_at: S.Number,
           updated_at: S.Number,
         }),
       ).annotate({ identifier: "SCIMDirectory" });
-    case 3:
+  }
+}
+function __c247(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           scim_directory_id: S.String.pipe(T.Label()),
@@ -12203,7 +15504,11 @@ function __c23(j: number): any {
       ).annotate({
         identifier: "CreateSCIMGroupRoleMappingRequest",
       });
-    case 4:
+  }
+}
+function __c248(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           object: S.String,
@@ -12214,20 +15519,81 @@ function __c23(j: number): any {
           directory_group_id: S.String,
           scim_group_display_name: S.String,
           directory_group_display_name: S.String,
-          role: S.optional(__S(22, __c2, 6)),
+          role: S.optional(__S(96, __c3, 0)),
           precedence: S.Number,
           created_at: S.Number,
           updated_at: S.Number,
         }),
       ).annotate({ identifier: "SCIMGroupRoleMapping" });
-    case 5:
+  }
+}
+function __c249(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String,
+          is_satellite: S.Boolean,
+          proxy_url: S.optional(S.NullOr(S.String)),
+        }).pipe(T.Http({ method: "POST", uri: "/domains", code: 200 })),
+      ).annotate({ identifier: "AddDomainRequest" });
+  }
+}
+function __c250(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          host: S.String,
+          value: S.String,
+          required: S.Boolean,
+        }),
+      ).annotate({ identifier: "CNameTarget" });
+    case 1:
+      return S.Array(__S(8000, __c250, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          host: S.String,
+          value: S.String,
+          record_type: S.String,
+          automation_disposition: S.optional(S.String),
+          required: S.Boolean,
+        }),
+      ).annotate({ identifier: "DNSTarget" });
+    case 3:
+      return S.Array(__S(8002, __c250, 2));
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          object: S.String,
+          id: S.String,
+          name: S.String,
+          is_satellite: S.Boolean,
+          frontend_api_url: S.String,
+          accounts_portal_url: S.optional(S.NullOr(S.String)),
+          proxy_url: S.optional(S.NullOr(S.String)),
+          development_origin: S.String,
+          cname_targets: S.optional(S.NullOr(__S(8001, __c250, 1))),
+          dns_targets: S.optional(S.NullOr(__S(8003, __c250, 3))),
+        }),
+      ).annotate({ identifier: "Domain" });
+  }
+}
+function __c251(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           user_id: S.String,
           active_organization_id: S.optional(S.String),
         }).pipe(T.Http({ method: "POST", uri: "/sessions", code: 200 })),
       ).annotate({ identifier: "CreateSessionRequest" });
-    case 6:
+  }
+}
+function __c252(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           object: S.String,
@@ -12241,19 +15607,15 @@ function __c23(j: number): any {
           country: S.optional(S.String),
         }),
       ).annotate({ identifier: "SessionActivityResponse" });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           key: S.String,
         }),
       ).annotate({ identifier: "SessionTask" });
-  }
-}
-function __c24(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(191, __c23, 7));
-    case 1:
+    case 2:
+      return S.Array(__S(8065, __c252, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
           object: S.String,
@@ -12264,15 +15626,19 @@ function __c24(j: number): any {
           status: S.String,
           last_active_organization_id: S.optional(S.NullOr(S.String)),
           last_active_at: S.Number,
-          latest_activity: S.optional(S.NullOr(__S(190, __c23, 6))),
+          latest_activity: S.optional(S.NullOr(__S(8064, __c252, 0))),
           expire_at: S.Number,
           abandon_at: S.Number,
           updated_at: S.Number,
           created_at: S.Number,
-          tasks: S.optional(S.NullOr(__S(192, __c24, 0))),
+          tasks: S.optional(S.NullOr(__S(8066, __c252, 2))),
         }),
       ).annotate({ identifier: "Session" });
-    case 2:
+  }
+}
+function __c253(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           session_id: S.String.pipe(T.Label()),
@@ -12281,7 +15647,11 @@ function __c24(j: number): any {
       ).annotate({
         identifier: "CreateSessionTokenRequest",
       });
-    case 3:
+  }
+}
+function __c254(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           object: S.optional(S.String),
@@ -12290,7 +15660,11 @@ function __c24(j: number): any {
       ).annotate({
         identifier: "CreateSessionTokenResponse",
       });
-    case 4:
+  }
+}
+function __c255(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           session_id: S.String.pipe(T.Label()),
@@ -12306,7 +15680,11 @@ function __c24(j: number): any {
       ).annotate({
         identifier: "CreateSessionTokenFromTemplateRequest",
       });
-    case 5:
+  }
+}
+function __c256(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           user_id: S.String,
@@ -12314,7 +15692,11 @@ function __c24(j: number): any {
           expires_in_seconds: S.optional(S.NullOr(S.Number)),
         }).pipe(T.Http({ method: "POST", uri: "/sign_in_tokens", code: 200 })),
       ).annotate({ identifier: "CreateSignInTokenRequest" });
-    case 6:
+  }
+}
+function __c257(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           object: S.String,
@@ -12327,7 +15709,11 @@ function __c24(j: number): any {
           updated_at: S.Number,
         }),
       ).annotate({ identifier: "SignInToken" });
-    case 7:
+  }
+}
+function __c258(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           user_id: S.String,
@@ -12337,7 +15723,7 @@ function __c24(j: number): any {
       });
   }
 }
-function __c25(j: number): any {
+function __c259(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -12358,28 +15744,40 @@ function __c25(j: number): any {
         S.Struct({
           object: S.String,
           user_id: S.String,
-          public_user_data: __S(200, __c25, 0),
+          public_user_data: __S(8288, __c259, 0),
           created_at: S.Number,
           updated_at: S.Number,
         }),
       ).annotate({ identifier: "SSOBypassAllowlistUser" });
-    case 2:
+  }
+}
+function __c260(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({}).pipe(T.Http({ method: "POST", uri: "/webhooks/svix", code: 200 })),
       ).annotate({ identifier: "CreateSvixAppRequest" });
-    case 3:
+  }
+}
+function __c261(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           svix_url: S.String,
         }),
       ).annotate({ identifier: "SvixURL" });
-    case 4:
+  }
+}
+function __c262(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({}).pipe(T.Http({ method: "POST", uri: "/testing_tokens", code: 200 })),
       ).annotate({
         identifier: "CreateTestingTokenRequest",
       });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           object: S.String,
@@ -12387,9 +15785,11 @@ function __c25(j: number): any {
           expires_at: S.Number,
         }),
       ).annotate({ identifier: "TestingToken" });
-    case 6:
-      return S.Array(S.String);
-    case 7:
+  }
+}
+function __c263(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           external_id: S.optional(S.NullOr(S.String)),
@@ -12397,11 +15797,11 @@ function __c25(j: number): any {
           last_name: S.optional(S.NullOr(S.String)),
           locale: S.optional(S.NullOr(S.String)),
           timezone: S.optional(S.NullOr(S.String)),
-          email_address: S.optional(__S(6, __c0, 6)),
-          email_address_identification_status: S.optional(__S(206, __c25, 6)),
-          phone_number: S.optional(__S(6, __c0, 6)),
-          phone_number_identification_status: S.optional(__S(206, __c25, 6)),
-          web3_wallet: S.optional(__S(6, __c0, 6)),
+          email_address: S.optional(__S(8608, __c269, 0)),
+          email_address_identification_status: S.optional(__S(8448, __c264, 0)),
+          phone_number: S.optional(__S(8608, __c269, 0)),
+          phone_number_identification_status: S.optional(__S(8448, __c264, 0)),
+          web3_wallet: S.optional(__S(8608, __c269, 0)),
           username: S.optional(S.NullOr(S.String)),
           password: S.optional(S.NullOr(S.String).pipe(T.SensitiveValue({}))),
           password_digest: S.optional(S.NullOr(S.String).pipe(T.SensitiveValue({}))),
@@ -12410,10 +15810,10 @@ function __c25(j: number): any {
           skip_password_requirement: S.optional(S.NullOr(S.Boolean)),
           skip_restriction_checks: S.optional(S.NullOr(S.Boolean)),
           totp_secret: S.optional(S.NullOr(S.String).pipe(T.SensitiveValue({}))),
-          backup_codes: S.optional(__S(6, __c0, 6)),
-          public_metadata: S.optional(__S(27, __c3, 3)),
-          private_metadata: S.optional(__S(27, __c3, 3)),
-          unsafe_metadata: S.optional(__S(27, __c3, 3)),
+          backup_codes: S.optional(__S(8608, __c269, 0)),
+          public_metadata: S.optional(__S(1568, __c49, 0)),
+          private_metadata: S.optional(__S(1568, __c49, 0)),
+          unsafe_metadata: S.optional(__S(1568, __c49, 0)),
           delete_self_enabled: S.optional(S.NullOr(S.Boolean)),
           legal_accepted_at: S.optional(S.NullOr(S.String)),
           skip_legal_checks: S.optional(S.NullOr(S.Boolean)),
@@ -12428,7 +15828,13 @@ function __c25(j: number): any {
       ).annotate({ identifier: "CreateUserRequest" });
   }
 }
-function __c26(j: number): any {
+function __c264(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c265(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -12439,7 +15845,11 @@ function __c26(j: number): any {
       ).annotate({
         identifier: "CreateWaitlistEntryRequest",
       });
-    case 1:
+  }
+}
+function __c266(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           identifier_id: S.String.pipe(T.Label()),
@@ -12449,7 +15859,11 @@ function __c26(j: number): any {
       ).annotate({
         identifier: "DeleteAllowlistIdentifierRequest",
       });
-    case 2:
+  }
+}
+function __c267(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           object: S.String,
@@ -12459,13 +15873,100 @@ function __c26(j: number): any {
           external_id: S.optional(S.String),
         }),
       ).annotate({ identifier: "DeletedObject" });
+  }
+}
+function __c268(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          role_set_key_or_id: S.String.pipe(T.Label()),
+          role_keys: __S(8608, __c269, 0),
+          default_role_key: S.optional(S.String),
+          creator_role_key: S.optional(S.String),
+        }).pipe(
+          T.Http({ method: "POST", uri: "/role_sets/{role_set_key_or_id}/roles", code: 200 }),
+        ),
+      ).annotate({ identifier: "AddRolesToRoleSetRequest" });
+  }
+}
+function __c269(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c270(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, S.String);
+  }
+}
+function __c271(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          object: S.String,
+          id: S.String,
+          name: S.String,
+          key: S.String,
+          description: S.NullOr(S.String),
+          members_count: S.optional(S.NullOr(S.Number)),
+          has_members: S.optional(S.NullOr(S.Boolean)),
+          created_at: S.Number,
+          updated_at: S.Number,
+        }),
+      ).annotate({ identifier: "RoleSetItem" });
+    case 1:
+      return S.Array(__S(8672, __c271, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          object: S.String,
+          id: S.String,
+          organization_id: S.optional(S.NullOr(S.String)),
+          instance_id: S.String,
+          source_role_set_id: S.String,
+          dest_role_set_id: S.optional(S.NullOr(S.String)),
+          trigger_type: S.String,
+          status: S.String,
+          migrated_members: S.Number,
+          mappings: S.optional(S.NullOr(__S(8640, __c270, 0))),
+          started_at: S.optional(S.NullOr(S.Number)),
+          completed_at: S.optional(S.NullOr(S.Number)),
+          created_at: S.Number,
+          updated_at: S.Number,
+        }),
+      ).annotate({ identifier: "RoleSetMigration" });
     case 3:
+      return S.suspend(() =>
+        S.Struct({
+          object: S.String,
+          id: S.String,
+          name: S.String,
+          key: S.String,
+          description: S.NullOr(S.String),
+          roles: __S(8673, __c271, 1),
+          default_role: S.optional(S.NullOr(__S(8672, __c271, 0))),
+          creator_role: S.optional(S.NullOr(__S(8672, __c271, 0))),
+          type: S.String,
+          role_set_migration: S.optional(S.NullOr(__S(8674, __c271, 2))),
+          created_at: S.Number,
+          updated_at: S.Number,
+        }),
+      ).annotate({ identifier: "RoleSet" });
+  }
+}
+function __c272(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           apiKeyID: S.String.pipe(T.Label()),
         }).pipe(T.Http({ method: "DELETE", uri: "/api_keys/{apiKeyID}", code: 200 })),
       ).annotate({ identifier: "DeleteApiKeyRequest" });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
@@ -12473,19 +15974,31 @@ function __c26(j: number): any {
           deleted: S.Boolean,
         }),
       ).annotate({ identifier: "DeleteApiKeyResponse" });
-    case 5:
+  }
+}
+function __c273(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           user_id: S.String.pipe(T.Label()),
         }).pipe(T.Http({ method: "DELETE", uri: "/users/{user_id}/backup_code", code: 200 })),
       ).annotate({ identifier: "DeleteBackupCodeRequest" });
-    case 6:
+  }
+}
+function __c274(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           user_id: S.optional(S.String),
         }),
       ).annotate({ identifier: "DeleteBackupCodeResponse" });
-    case 7:
+  }
+}
+function __c275(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           identifier_id: S.String.pipe(T.Label()),
@@ -12497,7 +16010,7 @@ function __c26(j: number): any {
       });
   }
 }
-function __c27(j: number): any {
+function __c276(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -12505,7 +16018,11 @@ function __c27(j: number): any {
           directory_id: S.String.pipe(T.Label()),
         }).pipe(T.Http({ method: "DELETE", uri: "/directories/{directory_id}", code: 200 })),
       ).annotate({ identifier: "DeleteDirectoryRequest" });
-    case 1:
+  }
+}
+function __c277(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           directory_id: S.String.pipe(T.Label()),
@@ -12520,7 +16037,11 @@ function __c27(j: number): any {
       ).annotate({
         identifier: "DeleteDirectoryGroupRoleMappingRequest",
       });
-    case 2:
+  }
+}
+function __c278(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           object: S.String,
@@ -12530,13 +16051,21 @@ function __c27(j: number): any {
       ).annotate({
         identifier: "DeleteDirectoryGroupRoleMappingResponse",
       });
-    case 3:
+  }
+}
+function __c279(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           domain_id: S.String.pipe(T.Label()),
         }).pipe(T.Http({ method: "DELETE", uri: "/domains/{domain_id}", code: 200 })),
       ).annotate({ identifier: "DeleteDomainRequest" });
-    case 4:
+  }
+}
+function __c280(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           email_address_id: S.String.pipe(T.Label()),
@@ -12546,7 +16075,11 @@ function __c27(j: number): any {
       ).annotate({
         identifier: "DeleteEmailAddressRequest",
       });
-    case 5:
+  }
+}
+function __c281(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           enterprise_connection_id: S.String.pipe(T.Label()),
@@ -12560,7 +16093,11 @@ function __c27(j: number): any {
       ).annotate({
         identifier: "DeleteEnterpriseConnectionRequest",
       });
-    case 6:
+  }
+}
+function __c282(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           user_id: S.String.pipe(T.Label()),
@@ -12575,7 +16112,11 @@ function __c27(j: number): any {
       ).annotate({
         identifier: "DeleteExternalAccountRequest",
       });
-    case 7:
+  }
+}
+function __c283(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           invitation_id: S.String.pipe(T.Label()),
@@ -12583,7 +16124,62 @@ function __c27(j: number): any {
       ).annotate({ identifier: "DeleteInvitationRequest" });
   }
 }
-function __c28(j: number): any {
+function __c284(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          organization_id: S.String.pipe(T.Label()),
+          amount: S.Number,
+          action: S.String,
+          currency: S.optional(S.String),
+          idempotency_key: S.String,
+          note: S.optional(S.String),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/organizations/{organization_id}/billing/credits",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "AdjustOrganizationBillingCreditBalanceRequest",
+      });
+  }
+}
+function __c285(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          object: S.String,
+          id: S.String,
+          payer_id: S.String,
+          amount: __S(9152, __c286, 0),
+          source_type: S.String,
+          source_id: S.String,
+          note: S.optional(S.NullOr(S.String)),
+          created_at: S.String,
+        }),
+      ).annotate({
+        identifier: "CommerceCreditLedgerResponse",
+      });
+  }
+}
+function __c286(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          amount: S.Number,
+          amount_formatted: S.String,
+          currency: S.String,
+          currency_symbol: S.String,
+        }),
+      ).annotate({ identifier: "CommerceMoneyResponse" });
+  }
+}
+function __c287(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -12591,13 +16187,17 @@ function __c28(j: number): any {
           template_id: S.String.pipe(T.Label()),
         }).pipe(T.Http({ method: "DELETE", uri: "/jwt_templates/{template_id}", code: 200 })),
       ).annotate({ identifier: "DeleteJWTTemplateRequest" });
-    case 1:
+  }
+}
+function __c288(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           machine_id: S.String.pipe(T.Label()),
         }).pipe(T.Http({ method: "DELETE", uri: "/machines/{machine_id}", code: 200 })),
       ).annotate({ identifier: "DeleteMachineRequest" });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           object: S.String,
@@ -12605,7 +16205,11 @@ function __c28(j: number): any {
           deleted: S.Boolean,
         }),
       ).annotate({ identifier: "DeleteMachineResponse" });
-    case 3:
+  }
+}
+function __c289(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           machine_id: S.String.pipe(T.Label()),
@@ -12620,7 +16224,7 @@ function __c28(j: number): any {
       ).annotate({
         identifier: "DeleteMachineScopeRequest",
       });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           object: S.String,
@@ -12631,7 +16235,11 @@ function __c28(j: number): any {
       ).annotate({
         identifier: "DeleteMachineScopeResponse",
       });
-    case 5:
+  }
+}
+function __c290(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           oauth_application_id: S.String.pipe(T.Label()),
@@ -12645,7 +16253,11 @@ function __c28(j: number): any {
       ).annotate({
         identifier: "DeleteOAuthApplicationRequest",
       });
-    case 6:
+  }
+}
+function __c291(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           organization_id: S.String.pipe(T.Label()),
@@ -12653,7 +16265,11 @@ function __c28(j: number): any {
       ).annotate({
         identifier: "DeleteOrganizationRequest",
       });
-    case 7:
+  }
+}
+function __c292(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           organization_id: S.String.pipe(T.Label()),
@@ -12670,7 +16286,7 @@ function __c28(j: number): any {
       });
   }
 }
-function __c29(j: number): any {
+function __c293(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -12682,7 +16298,11 @@ function __c29(j: number): any {
       ).annotate({
         identifier: "DeleteOrganizationLogoRequest",
       });
-    case 1:
+  }
+}
+function __c294(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           organization_id: S.String.pipe(T.Label()),
@@ -12697,7 +16317,11 @@ function __c29(j: number): any {
       ).annotate({
         identifier: "DeleteOrganizationMembershipRequest",
       });
-    case 2:
+  }
+}
+function __c295(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           permission_id: S.String.pipe(T.Label()),
@@ -12707,7 +16331,11 @@ function __c29(j: number): any {
       ).annotate({
         identifier: "DeleteOrganizationPermissionRequest",
       });
-    case 3:
+  }
+}
+function __c296(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           organization_role_id: S.String.pipe(T.Label()),
@@ -12721,19 +16349,48 @@ function __c29(j: number): any {
       ).annotate({
         identifier: "DeleteOrganizationRoleRequest",
       });
-    case 4:
+  }
+}
+function __c297(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          user_id: S.String.pipe(T.Label()),
+          amount: S.Number,
+          action: S.String,
+          currency: S.optional(S.String),
+          idempotency_key: S.String,
+          note: S.optional(S.String),
+        }).pipe(T.Http({ method: "POST", uri: "/users/{user_id}/billing/credits", code: 200 })),
+      ).annotate({
+        identifier: "AdjustUserBillingCreditBalanceRequest",
+      });
+  }
+}
+function __c298(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           phone_number_id: S.String.pipe(T.Label()),
         }).pipe(T.Http({ method: "DELETE", uri: "/phone_numbers/{phone_number_id}", code: 200 })),
       ).annotate({ identifier: "DeletePhoneNumberRequest" });
-    case 5:
+  }
+}
+function __c299(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.String.pipe(T.Label()),
         }).pipe(T.Http({ method: "DELETE", uri: "/redirect_urls/{id}", code: 200 })),
       ).annotate({ identifier: "DeleteRedirectURLRequest" });
-    case 6:
+  }
+}
+function __c300(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           scim_directory_id: S.String.pipe(T.Label()),
@@ -12743,7 +16400,11 @@ function __c29(j: number): any {
       ).annotate({
         identifier: "DeleteSCIMDirectoryRequest",
       });
-    case 7:
+  }
+}
+function __c301(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           scim_directory_id: S.String.pipe(T.Label()),
@@ -12760,7 +16421,7 @@ function __c29(j: number): any {
       });
   }
 }
-function __c30(j: number): any {
+function __c302(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -12772,27 +16433,47 @@ function __c30(j: number): any {
       ).annotate({
         identifier: "DeleteSSOBypassAllowlistUserRequest",
       });
-    case 1:
+  }
+}
+function __c303(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({}).pipe(T.Http({ method: "DELETE", uri: "/webhooks/svix", code: 200 })),
       ).annotate({ identifier: "DeleteSvixAppRequest" });
-    case 2:
+  }
+}
+function __c304(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "DeleteSvixAppResponse",
       });
-    case 3:
+  }
+}
+function __c305(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           user_id: S.String.pipe(T.Label()),
         }).pipe(T.Http({ method: "DELETE", uri: "/users/{user_id}/totp", code: 200 })),
       ).annotate({ identifier: "DeleteTOTPRequest" });
-    case 4:
+  }
+}
+function __c306(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           user_id: S.String.pipe(T.Label()),
         }).pipe(T.Http({ method: "DELETE", uri: "/users/{user_id}", code: 200 })),
       ).annotate({ identifier: "DeleteUserRequest" });
-    case 5:
+  }
+}
+function __c307(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           user_id: S.String.pipe(T.Label()),
@@ -12805,7 +16486,11 @@ function __c30(j: number): any {
           }),
         ),
       ).annotate({ identifier: "DeleteUserPasskeyRequest" });
-    case 6:
+  }
+}
+function __c308(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           user_id: S.String.pipe(T.Label()),
@@ -12813,7 +16498,57 @@ function __c30(j: number): any {
       ).annotate({
         identifier: "DeleteUserProfileImageRequest",
       });
-    case 7:
+  }
+}
+function __c309(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscription_item_id: S.String.pipe(T.Label()),
+          discount_id: S.String,
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/billing/subscription_items/{subscription_item_id}/discounts",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "ApplyBillingSubscriptionItemDiscountRequest",
+      });
+  }
+}
+function __c310(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          object: S.String,
+          id: S.String,
+          subscription_item_id: S.String,
+          discount_id: S.String,
+          name: S.optional(S.String),
+          source: S.String,
+          promo_code: S.optional(S.String),
+          effect: S.optional(S.String),
+          percent_off: S.optional(S.NullOr(S.Number)),
+          amount_off: S.optional(S.NullOr(__S(9152, __c286, 0))),
+          amount: S.optional(S.NullOr(__S(9152, __c286, 0))),
+          cycles_remaining: S.NullOr(S.Number),
+          cycles_applied: S.Number,
+          status: S.optional(S.String),
+          redeemed_at: S.Number,
+          redeemed_by: S.NullOr(S.String),
+        }),
+      ).annotate({
+        identifier: "CommerceDiscountRedemptionResponse",
+      });
+  }
+}
+function __c311(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           user_id: S.String.pipe(T.Label()),
@@ -12830,7 +16565,7 @@ function __c30(j: number): any {
       });
   }
 }
-function __c31(j: number): any {
+function __c312(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -12842,13 +16577,21 @@ function __c31(j: number): any {
       ).annotate({
         identifier: "DeleteWaitlistEntryRequest",
       });
-    case 1:
+  }
+}
+function __c313(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           user_id: S.String.pipe(T.Label()),
         }).pipe(T.Http({ method: "DELETE", uri: "/users/{user_id}/mfa", code: 200 })),
       ).annotate({ identifier: "DisableMFARequest" });
-    case 2:
+  }
+}
+function __c314(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscription_item_id: S.String.pipe(T.Label()),
@@ -12863,19 +16606,27 @@ function __c31(j: number): any {
       ).annotate({
         identifier: "ExtendBillingSubscriptionItemFreeTrialRequest",
       });
-    case 3:
+  }
+}
+function __c315(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({}).pipe(T.Http({ method: "POST", uri: "/webhooks/svix_url", code: 200 })),
       ).annotate({
         identifier: "GenerateSvixAuthURLRequest",
       });
-    case 4:
+  }
+}
+function __c316(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           apiKeyID: S.String.pipe(T.Label()),
         }).pipe(T.Http({ method: "GET", uri: "/api_keys/{apiKeyID}", code: 200 })),
       ).annotate({ identifier: "GetApiKeyRequest" });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           object: S.String,
@@ -12885,7 +16636,7 @@ function __c31(j: number): any {
           name: S.String,
           description: S.optional(S.NullOr(S.String)),
           claims: S.NullOr(S.Unknown),
-          scopes: __S(6, __c0, 6),
+          scopes: __S(8608, __c269, 0),
           revoked: S.Boolean,
           revocation_reason: S.NullOr(S.String),
           expired: S.Boolean,
@@ -12896,7 +16647,11 @@ function __c31(j: number): any {
           updated_at: S.Number,
         }),
       ).annotate({ identifier: "GetApiKeyResponse" });
-    case 6:
+  }
+}
+function __c317(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           type: S.optional(S.String.pipe(T.Query())),
@@ -12907,7 +16662,7 @@ function __c31(j: number): any {
           query: S.optional(S.String.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/api_keys", code: 200 })),
       ).annotate({ identifier: "GetApiKeysRequest" });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           object: S.String,
@@ -12917,7 +16672,7 @@ function __c31(j: number): any {
           name: S.String,
           description: S.optional(S.NullOr(S.String)),
           claims: S.NullOr(S.Unknown),
-          scopes: __S(6, __c0, 6),
+          scopes: __S(8608, __c269, 0),
           revoked: S.Boolean,
           revocation_reason: S.NullOr(S.String),
           expired: S.Boolean,
@@ -12930,32 +16685,36 @@ function __c31(j: number): any {
       ).annotate({
         identifier: "GetApiKeysResponseDataItem",
       });
-  }
-}
-function __c32(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(255, __c31, 7));
-    case 1:
+    case 2:
+      return S.Array(__S(10145, __c317, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          data: __S(256, __c32, 0),
+          data: __S(10146, __c317, 2),
           total_count: S.Number,
         }),
       ).annotate({ identifier: "GetApiKeysResponse" });
-    case 2:
+  }
+}
+function __c318(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           apiKeyID: S.String.pipe(T.Label()),
         }).pipe(T.Http({ method: "GET", uri: "/api_keys/{apiKeyID}/secret", code: 200 })),
       ).annotate({ identifier: "GetApiKeySecretRequest" });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           secret: S.String.pipe(T.SensitiveValue({})),
         }),
       ).annotate({ identifier: "GetApiKeySecretResponse" });
-    case 4:
+  }
+}
+function __c319(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           paginated: S.optional(S.Boolean.pipe(T.Query())),
@@ -12966,18 +16725,22 @@ function __c32(j: number): any {
       ).annotate({
         identifier: "GetBillingPriceListRequest",
       });
-    case 5:
-      return S.Array(__S(102, __c12, 6));
-    case 6:
+    case 1:
+      return S.Array(__S(5568, __c174, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          data: __S(261, __c32, 5),
+          data: __S(10209, __c319, 1),
           total_count: S.Number,
         }),
       ).annotate({
         identifier: "PaginatedBillingPriceResponse",
       });
-    case 7:
+  }
+}
+function __c320(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           statementID: S.String.pipe(T.Label()),
@@ -12987,18 +16750,47 @@ function __c32(j: number): any {
       });
   }
 }
-function __c33(j: number): any {
+function __c321(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          grand_total: __S(14, __c1, 6),
-          subtotal: __S(14, __c1, 6),
-          base_fee: __S(14, __c1, 6),
-          tax_total: __S(14, __c1, 6),
+          grand_total: __S(9152, __c286, 0),
+          subtotal: __S(9152, __c286, 0),
+          base_fee: __S(9152, __c286, 0),
+          tax_total: __S(9152, __c286, 0),
         }),
       ).annotate({ identifier: "BillingStatementTotals" });
     case 1:
+      return S.suspend(() =>
+        S.Struct({
+          object: S.String,
+          timestamp: S.Number,
+          items: __S(10305, __c322, 1),
+        }),
+      ).annotate({
+        identifier: "BillingStatementGroupsItem",
+      });
+    case 2:
+      return S.Array(__S(10273, __c321, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          object: S.String,
+          id: S.String,
+          instance_id: S.String,
+          timestamp: S.Number,
+          payer: __S(2817, __c88, 1),
+          status: S.String,
+          totals: __S(10272, __c321, 0),
+          groups: __S(10274, __c321, 2),
+        }),
+      ).annotate({ identifier: "BillingStatement" });
+  }
+}
+function __c322(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           object: S.String,
@@ -13009,13 +16801,13 @@ function __c33(j: number): any {
           payee_id: S.String,
           payee: S.Unknown,
           payer_id: S.String,
-          payer: __S(78, __c9, 6),
+          payer: __S(2817, __c88, 1),
           subscription_item_id: S.optional(S.String),
           subscription_item: S.optional(S.Unknown),
-          amount: __S(14, __c1, 6),
-          totals: S.optional(S.NullOr(__S(85, __c10, 5))),
+          amount: __S(9152, __c286, 0),
+          totals: S.optional(S.NullOr(__S(2823, __c88, 7))),
           payment_method_id: S.String,
-          payment_method: __S(69, __c8, 5),
+          payment_method: __S(2816, __c88, 0),
           statement_id: S.String,
           gateway_external_id: S.NullOr(S.String),
           gateway_external_url: S.NullOr(S.String),
@@ -13026,2775 +16818,10 @@ function __c33(j: number): any {
           updated_at: S.Number,
         }),
       ).annotate({ identifier: "BillingPaymentAttempt" });
-    case 2:
-      return S.Array(__S(265, __c33, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          object: S.String,
-          timestamp: S.Number,
-          items: __S(266, __c33, 2),
-        }),
-      ).annotate({
-        identifier: "BillingStatementGroupsItem",
-      });
-    case 4:
-      return S.Array(__S(267, __c33, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          object: S.String,
-          id: S.String,
-          instance_id: S.String,
-          timestamp: S.Number,
-          payer: __S(78, __c9, 6),
-          status: S.String,
-          totals: __S(264, __c33, 0),
-          groups: __S(268, __c33, 4),
-        }),
-      ).annotate({ identifier: "BillingStatement" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          paginated: S.optional(S.Boolean.pipe(T.Query())),
-          limit: S.optional(S.Number.pipe(T.Query())),
-          offset: S.optional(S.Number.pipe(T.Query())),
-        }).pipe(T.Http({ method: "GET", uri: "/billing/statements", code: 200 })),
-      ).annotate({
-        identifier: "GetBillingStatementListRequest",
-      });
-    case 7:
-      return S.Array(__S(269, __c33, 5));
-  }
-}
-function __c34(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          data: __S(271, __c33, 7),
-          total_count: S.Number,
-        }),
-      ).annotate({
-        identifier: "PaginatedBillingStatementResponse",
-      });
     case 1:
-      return S.suspend(() =>
-        S.Struct({
-          statementID: S.String.pipe(T.Label()),
-          paginated: S.optional(S.Boolean.pipe(T.Query())),
-          limit: S.optional(S.Number.pipe(T.Query())),
-          offset: S.optional(S.Number.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/billing/statements/{statementID}/payment_attempts",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "GetBillingStatementPaymentAttemptsRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          data: __S(266, __c33, 2),
-          total_count: S.Number,
-        }),
-      ).annotate({
-        identifier: "PaginatedBillingPaymentAttemptResponse",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          client_id: S.String.pipe(T.Label()),
-        }).pipe(T.Http({ method: "GET", uri: "/clients/{client_id}", code: 200 })),
-      ).annotate({ identifier: "GetClientRequest" });
-    case 4:
-      return S.Array(__S(193, __c24, 1));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          object: S.String,
-          id: S.String,
-          session_ids: __S(6, __c0, 6),
-          sessions: __S(276, __c34, 4),
-          sign_in_id: S.NullOr(S.String),
-          sign_up_id: S.NullOr(S.String),
-          last_active_session_id: S.NullOr(S.String),
-          last_authentication_strategy: S.NullOr(S.String),
-          updated_at: S.Number,
-          created_at: S.Number,
-        }),
-      ).annotate({ identifier: "Client" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          paginated: S.optional(S.Boolean.pipe(T.Query())),
-          limit: S.optional(S.Number.pipe(T.Query())),
-          offset: S.optional(S.Number.pipe(T.Query())),
-          payer_type: S.optional(S.String.pipe(T.Query())),
-        }).pipe(T.Http({ method: "GET", uri: "/billing/plans", code: 200 })),
-      ).annotate({
-        identifier: "GetCommercePlanListRequest",
-      });
-    case 7:
-      return S.Array(__S(68, __c8, 4));
+      return S.Array(__S(10304, __c322, 0));
   }
 }
-function __c35(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          data: __S(279, __c34, 7),
-          total_count: S.Number,
-        }),
-      ).annotate({
-        identifier: "PaginatedCommercePlanResponse",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          paginated: S.optional(S.Boolean.pipe(T.Query())),
-          limit: S.optional(S.Number.pipe(T.Query())),
-          offset: S.optional(S.Number.pipe(T.Query())),
-          status: S.optional(S.String.pipe(T.Query())),
-          payer_type: S.optional(S.String.pipe(T.Query())),
-          plan_id: S.optional(S.String.pipe(T.Query())),
-          include_free: S.optional(S.Boolean.pipe(T.Query())),
-          query: S.optional(S.String.pipe(T.Query())),
-        }).pipe(T.Http({ method: "GET", uri: "/billing/subscription_items", code: 200 })),
-      ).annotate({
-        identifier: "GetCommerceSubscriptionItemListRequest",
-      });
-    case 2:
-      return S.Array(__S(86, __c10, 6));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          data: __S(282, __c35, 2),
-          total_count: S.Number,
-        }),
-      ).annotate({
-        identifier: "PaginatedCommerceSubscriptionItemResponse",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          directory_id: S.String.pipe(T.Label()),
-        }).pipe(T.Http({ method: "GET", uri: "/directories/{directory_id}", code: 200 })),
-      ).annotate({ identifier: "GetDirectoryRequest" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          email_address_id: S.String.pipe(T.Label()),
-        }).pipe(T.Http({ method: "GET", uri: "/email_addresses/{email_address_id}", code: 200 })),
-      ).annotate({ identifier: "GetEmailAddressRequest" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          enterprise_connection_id: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/enterprise_connections/{enterprise_connection_id}",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "GetEnterpriseConnectionRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({}).pipe(T.Http({ method: "GET", uri: "/instance", code: 200 })),
-      ).annotate({ identifier: "GetInstanceRequest" });
-  }
-}
-function __c36(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          object: S.String,
-          id: S.String,
-          environment_type: S.String,
-          allowed_origins: S.NullOr(__S(6, __c0, 6)),
-          allowed_subdomains: __S(6, __c0, 6),
-          subdomain_allowlist_enabled: S.Boolean,
-          workspace_id: S.NullOr(S.String),
-        }),
-      ).annotate({ identifier: "Instance" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({}).pipe(T.Http({ method: "GET", uri: "/instance/communication", code: 200 })),
-      ).annotate({
-        identifier: "GetInstanceCommunicationRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          object: S.String,
-          blocked_country_codes: __S(6, __c0, 6),
-        }),
-      ).annotate({ identifier: "InstanceCommunication" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({}).pipe(
-          T.Http({ method: "GET", uri: "/instance/oauth_application_settings", code: 200 }),
-        ),
-      ).annotate({
-        identifier: "GetInstanceOAuthApplicationSettingsRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          object: S.String,
-          dynamic_oauth_client_registration: S.Boolean,
-          default_scopes: S.NullOr(__S(6, __c0, 6)),
-          oauth_jwt_access_tokens: S.Boolean,
-          aud_claim_enabled: S.Boolean,
-          pkce_required: S.Boolean,
-          client_id_metadata_documents_advertised: S.Boolean,
-          client_id_metadata_documents_only_allow_pre_registered_clients: S.Boolean,
-          client_id_metadata_documents_block_implicitly_allowed_clients: S.Boolean,
-        }),
-      ).annotate({ identifier: "OAuthApplicationSettings" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({}).pipe(
-          T.Http({ method: "GET", uri: "/instance/organization_settings", code: 200 }),
-        ),
-      ).annotate({
-        identifier: "GetInstanceOrganizationSettingsRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          object: S.String,
-          enabled: S.Boolean,
-          max_allowed_memberships: S.Number,
-          max_allowed_roles: S.Number,
-          max_role_sets_allowed: S.optional(S.Number),
-          max_allowed_domains: S.Number,
-          max_allowed_permissions: S.optional(S.Number),
-          creator_role: S.String,
-          admin_delete_enabled: S.Boolean,
-          domains_enabled: S.Boolean,
-          slug_disabled: S.optional(S.Boolean),
-          domains_enrollment_modes: __S(206, __c25, 6),
-          domains_default_role: S.String,
-          initial_role_set_key: S.optional(S.NullOr(S.String)),
-        }),
-      ).annotate({ identifier: "OrganizationSettings" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({}).pipe(T.Http({ method: "GET", uri: "/instance/protect", code: 200 })),
-      ).annotate({
-        identifier: "GetInstanceProtectRequest",
-      });
-  }
-}
-function __c37(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          object: S.String,
-          rules_enabled: S.Boolean,
-          specter_enabled: S.Boolean,
-          checks_bypassed: S.Boolean,
-          checks_verified: S.Boolean,
-          checks_exempt: S.Boolean,
-        }),
-      ).annotate({ identifier: "InstanceProtect" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          frontendApi: S.optional(S.String.pipe(T.Query())),
-          frontend_api: S.optional(S.String.pipe(T.Query())),
-          publishable_key: S.optional(S.String.pipe(T.Query())),
-          proxy_url: S.optional(S.String.pipe(T.Query())),
-          domain: S.optional(S.String.pipe(T.Query())),
-          sign_in_url: S.optional(S.String.pipe(T.Query())),
-          use_domain_for_script: S.optional(S.Boolean.pipe(T.Query())),
-        }).pipe(T.Http({ method: "GET", uri: "/public/interstitial", code: 200 })),
-      ).annotate({ identifier: "GetInterstitialRequest" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({}).pipe(T.Http({ method: "GET", uri: "/jwks", code: 200 })),
-      ).annotate({ identifier: "GetJWKSRequest" });
-    case 3:
-      return S.Array(S.Unknown);
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          keys: S.optional(__S(299, __c37, 3)),
-        }),
-      ).annotate({ identifier: "JWKS" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          template_id: S.String.pipe(T.Label()),
-        }).pipe(T.Http({ method: "GET", uri: "/jwt_templates/{template_id}", code: 200 })),
-      ).annotate({ identifier: "GetJWTTemplateRequest" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          subject: S.String.pipe(T.Query()),
-          revoked: S.optional(S.Boolean.pipe(T.Query())),
-          expired: S.optional(S.Boolean.pipe(T.Query())),
-          limit: S.optional(S.Number.pipe(T.Query())),
-          offset: S.optional(S.Number.pipe(T.Query())),
-        }).pipe(T.Http({ method: "GET", uri: "/m2m_tokens", code: 200 })),
-      ).annotate({ identifier: "GetM2MTokensRequest" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          object: S.String,
-          id: S.String,
-          subject: S.String,
-          claims: S.optional(S.NullOr(S.Unknown)),
-          scopes: S.optional(__S(6, __c0, 6)),
-          revoked: S.Boolean,
-          revocation_reason: S.NullOr(S.String),
-          expired: S.Boolean,
-          expiration: S.NullOr(S.Number),
-          last_used_at: S.NullOr(S.Number),
-          created_at: S.Number,
-          updated_at: S.Number,
-        }),
-      ).annotate({
-        identifier: "GetM2MTokensResponseM2mTokensItem",
-      });
-  }
-}
-function __c38(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(303, __c37, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          m2m_tokens: __S(304, __c38, 0),
-          total_count: S.Number,
-        }),
-      ).annotate({ identifier: "GetM2MTokensResponse" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          machine_id: S.String.pipe(T.Label()),
-        }).pipe(T.Http({ method: "GET", uri: "/machines/{machine_id}", code: 200 })),
-      ).annotate({ identifier: "GetMachineRequest" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          object: S.String,
-          id: S.String,
-          name: S.String,
-          instance_id: S.String,
-          created_at: S.Number,
-          updated_at: S.Number,
-          default_token_ttl: S.optional(S.Number),
-          scoped_machines: __S(156, __c19, 4),
-        }),
-      ).annotate({ identifier: "GetMachineResponse" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          machine_id: S.String.pipe(T.Label()),
-        }).pipe(T.Http({ method: "GET", uri: "/machines/{machine_id}/secret_key", code: 200 })),
-      ).annotate({
-        identifier: "GetMachineSecretKeyRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          object: S.String,
-          secret: S.String.pipe(T.SensitiveValue({})),
-        }),
-      ).annotate({
-        identifier: "GetMachineSecretKeyResponse",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          user_id: S.String.pipe(T.Label()),
-          provider: S.String.pipe(T.Label()),
-          paginated: S.optional(S.Boolean.pipe(T.Query())),
-          limit: S.optional(S.Number.pipe(T.Query())),
-          offset: S.optional(S.Number.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/users/{user_id}/oauth_access_tokens/{provider}",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "GetOAuthAccessTokenRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          object: S.String,
-          external_account_id: S.String,
-          provider_user_id: S.String,
-          token: S.String,
-          expires_at: S.NullOr(S.Number),
-          provider: S.String,
-          public_metadata: __S(27, __c3, 3),
-          label: S.NullOr(S.String),
-          scopes: S.optional(__S(6, __c0, 6)),
-          id_token: S.optional(S.String),
-          token_secret: S.optional(S.String.pipe(T.SensitiveValue({}))),
-        }),
-      ).annotate({ identifier: "OAuthAccessTokenItem" });
-  }
-}
-function __c39(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(311, __c38, 7));
-    case 1:
-      return S.suspend(() => __S(312, __c39, 0).pipe(T.RawResponseRoot())).annotate({
-        identifier: "GetOAuthAccessTokenResponse",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          oauth_application_id: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({ method: "GET", uri: "/oauth_applications/{oauth_application_id}", code: 200 }),
-        ),
-      ).annotate({
-        identifier: "GetOAuthApplicationRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          object: S.String,
-          id: S.String,
-          instance_id: S.String,
-          name: S.String,
-          client_id: S.String,
-          client_uri: S.NullOr(S.String),
-          client_image_url: S.NullOr(S.String),
-          dynamically_registered: S.Boolean,
-          consent_screen_enabled: S.Boolean,
-          pkce_required: S.Boolean,
-          device_authorization_grant_enabled: S.Boolean,
-          public: S.Boolean,
-          scopes: S.String,
-          redirect_uris: __S(6, __c0, 6),
-          callback_url: S.String,
-          authorize_url: S.String,
-          token_fetch_url: S.String,
-          user_info_url: S.String,
-          discovery_url: S.String,
-          token_introspection_url: S.String,
-          created_at: S.Number,
-          updated_at: S.Number,
-        }),
-      ).annotate({ identifier: "OAuthApplication" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          organization_id: S.String.pipe(T.Label()),
-          include_members_count: S.optional(S.Boolean.pipe(T.Query())),
-          include_missing_member_with_elevated_permissions: S.optional(S.Boolean.pipe(T.Query())),
-        }).pipe(T.Http({ method: "GET", uri: "/organizations/{organization_id}", code: 200 })),
-      ).annotate({ identifier: "GetOrganizationRequest" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          organization_id: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/organizations/{organization_id}/billing/credits",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "GetOrganizationBillingCreditBalanceRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          object: S.String,
-          balance: S.NullOr(__S(14, __c1, 6)),
-        }),
-      ).annotate({
-        identifier: "CommerceCreditBalanceResponse",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          organization_id: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/organizations/{organization_id}/billing/subscription",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "GetOrganizationBillingSubscriptionRequest",
-      });
-  }
-}
-function __c40(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          date: S.Number,
-          amount: __S(14, __c1, 6),
-          per_unit_totals: S.optional(__S(83, __c10, 3)),
-          totals: S.optional(S.NullOr(__S(85, __c10, 5))),
-        }),
-      ).annotate({
-        identifier: "CommerceSubscriptionNextPayment",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          object: S.String,
-          id: S.String,
-          instance_id: S.String,
-          status: S.String,
-          payer_id: S.String,
-          created_at: S.Number,
-          updated_at: S.Number,
-          active_at: S.NullOr(S.Number),
-          past_due_at: S.NullOr(S.Number),
-          subscription_items: __S(282, __c35, 2),
-          next_payment: S.optional(__S(320, __c40, 0)),
-          eligible_for_free_trial: S.optional(S.Boolean),
-        }),
-      ).annotate({ identifier: "CommerceSubscription" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          organization_id: S.String.pipe(T.Label()),
-          invitation_id: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/organizations/{organization_id}/invitations/{invitation_id}",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "GetOrganizationInvitationRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          permission_id: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({ method: "GET", uri: "/organization_permissions/{permission_id}", code: 200 }),
-        ),
-      ).annotate({
-        identifier: "GetOrganizationPermissionRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          organization_role_id: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({ method: "GET", uri: "/organization_roles/{organization_role_id}", code: 200 }),
-        ),
-      ).annotate({
-        identifier: "GetOrganizationRoleRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          phone_number_id: S.String.pipe(T.Label()),
-        }).pipe(T.Http({ method: "GET", uri: "/phone_numbers/{phone_number_id}", code: 200 })),
-      ).annotate({ identifier: "GetPhoneNumberRequest" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String.pipe(T.Label()),
-        }).pipe(T.Http({ method: "GET", uri: "/redirect_urls/{id}", code: 200 })),
-      ).annotate({ identifier: "GetRedirectURLRequest" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          session_id: S.String.pipe(T.Label()),
-          reverification_id: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/sessions/{session_id}/reverifications/{reverification_id}",
-            code: 200,
-          }),
-        ),
-      ).annotate({ identifier: "GetReverificationRequest" });
-  }
-}
-function __c41(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          object: S.String,
-          id: S.String,
-          session_id: S.String,
-          user_id: S.String,
-          level: S.String,
-          status: S.String,
-          first_factor_verified_at: S.NullOr(S.Number),
-          second_factor_verified_at: S.NullOr(S.Number),
-          created_at: S.Number,
-          updated_at: S.Number,
-        }),
-      ).annotate({ identifier: "Reverification" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          role_set_key_or_id: S.String.pipe(T.Label()),
-        }).pipe(T.Http({ method: "GET", uri: "/role_sets/{role_set_key_or_id}", code: 200 })),
-      ).annotate({ identifier: "GetRoleSetRequest" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          scim_directory_id: S.String.pipe(T.Label()),
-        }).pipe(T.Http({ method: "GET", uri: "/scim_directories/{scim_directory_id}", code: 200 })),
-      ).annotate({ identifier: "GetSCIMDirectoryRequest" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          session_id: S.String.pipe(T.Label()),
-        }).pipe(T.Http({ method: "GET", uri: "/sessions/{session_id}", code: 200 })),
-      ).annotate({ identifier: "GetSessionRequest" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          client_id: S.optional(S.String.pipe(T.Query())),
-          user_id: S.optional(S.String.pipe(T.Query())),
-          status: S.optional(S.String.pipe(T.Query())),
-          paginated: S.optional(S.Boolean.pipe(T.Query())),
-          limit: S.optional(S.Number.pipe(T.Query())),
-          offset: S.optional(S.Number.pipe(T.Query())),
-        }).pipe(T.Http({ method: "GET", uri: "/sessions", code: 200 })),
-      ).annotate({ identifier: "GetSessionListRequest" });
-    case 5:
-      return S.suspend(() => __S(276, __c34, 4).pipe(T.RawResponseRoot())).annotate({
-        identifier: "GetSessionListResponse",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String.pipe(T.Label()),
-        }).pipe(T.Http({ method: "GET", uri: "/sign_ups/{id}", code: 200 })),
-      ).annotate({ identifier: "GetSignUpRequest" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          next_action: S.optional(S.String),
-          supported_strategies: S.optional(__S(6, __c0, 6)),
-        }),
-      ).annotate({ identifier: "SignUpVerification" });
-  }
-}
-function __c42(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          email_address: S.NullOr(__S(335, __c41, 7)),
-          phone_number: S.NullOr(__S(335, __c41, 7)),
-          web3_wallet: S.NullOr(__S(335, __c41, 7)),
-          external_account: S.NullOr(S.Unknown),
-        }),
-      ).annotate({ identifier: "SignUpVerifications" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          object: S.String,
-          id: S.String,
-          status: S.String,
-          required_fields: __S(6, __c0, 6),
-          optional_fields: __S(6, __c0, 6),
-          missing_fields: __S(6, __c0, 6),
-          unverified_fields: __S(6, __c0, 6),
-          verifications: __S(336, __c42, 0),
-          username: S.NullOr(S.String),
-          email_address: S.NullOr(S.String),
-          phone_number: S.NullOr(S.String),
-          web3_wallet: S.NullOr(S.String),
-          password_enabled: S.Boolean,
-          first_name: S.NullOr(S.String),
-          last_name: S.NullOr(S.String),
-          unsafe_metadata: S.optional(__S(27, __c3, 3)),
-          public_metadata: S.optional(__S(27, __c3, 3)),
-          custom_action: S.Boolean,
-          external_id: S.NullOr(S.String),
-          created_session_id: S.NullOr(S.String),
-          created_user_id: S.NullOr(S.String),
-          abandon_at: S.Number,
-          legal_accepted_at: S.NullOr(S.Number),
-          timezone: S.optional(S.NullOr(S.String)),
-          locale: S.optional(S.NullOr(S.String)),
-          external_account: S.optional(S.Unknown),
-        }),
-      ).annotate({ identifier: "SignUp" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          user_id: S.String.pipe(T.Label()),
-        }).pipe(T.Http({ method: "GET", uri: "/users/{user_id}", code: 200 })),
-      ).annotate({ identifier: "GetUserRequest" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          user_id: S.String.pipe(T.Label()),
-        }).pipe(T.Http({ method: "GET", uri: "/users/{user_id}/billing/credits", code: 200 })),
-      ).annotate({
-        identifier: "GetUserBillingCreditBalanceRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          user_id: S.String.pipe(T.Label()),
-        }).pipe(T.Http({ method: "GET", uri: "/users/{user_id}/billing/subscription", code: 200 })),
-      ).annotate({
-        identifier: "GetUserBillingSubscriptionRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          email_address: S.optional(__S(6, __c0, 6).pipe(T.Query())),
-          phone_number: S.optional(__S(6, __c0, 6).pipe(T.Query())),
-          external_id: S.optional(__S(6, __c0, 6).pipe(T.Query())),
-          username: S.optional(__S(6, __c0, 6).pipe(T.Query())),
-          web3_wallet: S.optional(__S(6, __c0, 6).pipe(T.Query())),
-          user_id: S.optional(__S(6, __c0, 6).pipe(T.Query())),
-          organization_id: S.optional(__S(6, __c0, 6).pipe(T.Query())),
-          query: S.optional(S.String.pipe(T.Query())),
-          email_address_query: S.optional(S.String.pipe(T.Query())),
-          phone_number_query: S.optional(S.String.pipe(T.Query())),
-          username_query: S.optional(S.String.pipe(T.Query())),
-          name_query: S.optional(S.String.pipe(T.Query())),
-          banned: S.optional(S.Boolean.pipe(T.Query())),
-          last_active_at_before: S.optional(S.Number.pipe(T.Query())),
-          last_active_at_after: S.optional(S.Number.pipe(T.Query())),
-          last_active_at_since: S.optional(S.Number.pipe(T.Query())),
-          created_at_before: S.optional(S.Number.pipe(T.Query())),
-          created_at_after: S.optional(S.Number.pipe(T.Query())),
-          last_sign_in_at_before: S.optional(S.Number.pipe(T.Query())),
-          last_sign_in_at_after: S.optional(S.Number.pipe(T.Query())),
-          provider: S.optional(S.String.pipe(T.Query())),
-          provider_user_id: S.optional(__S(6, __c0, 6).pipe(T.Query())),
-          limit: S.optional(S.Number.pipe(T.Query())),
-          offset: S.optional(S.Number.pipe(T.Query())),
-          starting_after: S.optional(S.String.pipe(T.Query())),
-          order_by: S.optional(S.String.pipe(T.Query())),
-        }).pipe(T.Http({ method: "GET", uri: "/users", code: 200 })),
-      ).annotate({ identifier: "GetUserListRequest" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          email_address: S.optional(__S(6, __c0, 6).pipe(T.Query())),
-          phone_number: S.optional(__S(6, __c0, 6).pipe(T.Query())),
-          external_id: S.optional(__S(6, __c0, 6).pipe(T.Query())),
-          username: S.optional(__S(6, __c0, 6).pipe(T.Query())),
-          web3_wallet: S.optional(__S(6, __c0, 6).pipe(T.Query())),
-          user_id: S.optional(__S(6, __c0, 6).pipe(T.Query())),
-          organization_id: S.optional(__S(6, __c0, 6).pipe(T.Query())),
-          query: S.optional(S.String.pipe(T.Query())),
-          email_address_query: S.optional(S.String.pipe(T.Query())),
-          phone_number_query: S.optional(S.String.pipe(T.Query())),
-          username_query: S.optional(S.String.pipe(T.Query())),
-          name_query: S.optional(S.String.pipe(T.Query())),
-          banned: S.optional(S.Boolean.pipe(T.Query())),
-          last_active_at_before: S.optional(S.Number.pipe(T.Query())),
-          last_active_at_after: S.optional(S.Number.pipe(T.Query())),
-          last_active_at_since: S.optional(S.Number.pipe(T.Query())),
-          created_at_before: S.optional(S.Number.pipe(T.Query())),
-          created_at_after: S.optional(S.Number.pipe(T.Query())),
-          last_sign_in_at_before: S.optional(S.Number.pipe(T.Query())),
-          last_sign_in_at_after: S.optional(S.Number.pipe(T.Query())),
-          provider: S.optional(S.String.pipe(T.Query())),
-          provider_user_id: S.optional(__S(6, __c0, 6).pipe(T.Query())),
-        }).pipe(T.Http({ method: "GET", uri: "/users/count", code: 200 })),
-      ).annotate({ identifier: "GetUsersCountRequest" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          object: S.String,
-          total_count: S.Number,
-        }),
-      ).annotate({ identifier: "TotalCount" });
-  }
-}
-function __c43(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          order_by: S.optional(S.String.pipe(T.Query())),
-          limit: S.optional(S.Number.pipe(T.Query())),
-          offset: S.optional(S.Number.pipe(T.Query())),
-        }).pipe(T.Http({ method: "GET", uri: "/organization_memberships", code: 200 })),
-      ).annotate({
-        identifier: "InstanceGetOrganizationMembershipsRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          data: __S(48, __c6, 0),
-          total_count: S.Number,
-        }),
-      ).annotate({ identifier: "OrganizationMemberships" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          waitlist_entry_id: S.String.pipe(T.Label()),
-          ignore_existing: S.optional(S.NullOr(S.Boolean)),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/waitlist_entries/{waitlist_entry_id}/invite",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "InviteWaitlistEntryRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          organization_id: S.optional(S.String.pipe(T.Query())),
-          verified: S.optional(S.Boolean.pipe(T.Query(), T.StringEncoded())),
-          enrollment_mode: S.optional(__S(206, __c25, 6).pipe(T.Query())),
-          query: S.optional(S.String.pipe(T.Query())),
-          domains: S.optional(__S(6, __c0, 6).pipe(T.Query())),
-          order_by: S.optional(S.String.pipe(T.Query())),
-          offset: S.optional(S.Number.pipe(T.Query())),
-          limit: S.optional(S.Number.pipe(T.Query())),
-        }).pipe(T.Http({ method: "GET", uri: "/organization_domains", code: 200 })),
-      ).annotate({
-        identifier: "ListAllOrganizationDomainsRequest",
-      });
-    case 4:
-      return S.Array(__S(166, __c20, 6));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          data: __S(348, __c43, 4),
-          total_count: S.Number,
-        }),
-      ).annotate({ identifier: "OrganizationDomains" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          paginated: S.optional(S.Boolean.pipe(T.Query())),
-          limit: S.optional(S.Number.pipe(T.Query())),
-          offset: S.optional(S.Number.pipe(T.Query())),
-        }).pipe(T.Http({ method: "GET", uri: "/allowlist_identifiers", code: 200 })),
-      ).annotate({
-        identifier: "ListAllowlistIdentifiersRequest",
-      });
-    case 7:
-      return S.Array(__S(98, __c12, 2));
-  }
-}
-function __c44(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() => __S(351, __c43, 7).pipe(T.RawResponseRoot())).annotate({
-        identifier: "ListAllowlistIdentifiersResponse",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({}).pipe(T.Http({ method: "GET", uri: "/blocklist_identifiers", code: 200 })),
-      ).annotate({
-        identifier: "ListBlocklistIdentifiersRequest",
-      });
-    case 2:
-      return S.Array(__S(113, __c14, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          data: __S(354, __c44, 2),
-          total_count: S.Number,
-        }),
-      ).annotate({ identifier: "BlocklistIdentifiers" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          limit: S.optional(S.Number.pipe(T.Query())),
-          offset: S.optional(S.Number.pipe(T.Query())),
-        }).pipe(T.Http({ method: "GET", uri: "/directories", code: 200 })),
-      ).annotate({ identifier: "ListDirectoriesRequest" });
-    case 5:
-      return S.Array(__S(131, __c16, 3));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          data: __S(357, __c44, 5),
-          total_count: S.Number,
-        }),
-      ).annotate({ identifier: "ListDirectoriesResponse" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          directory_id: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/directories/{directory_id}/group_role_mappings",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "ListDirectoryGroupRoleMappingsRequest",
-      });
-  }
-}
-function __c45(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(133, __c16, 5));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          data: __S(360, __c45, 0),
-          total_count: S.Number,
-        }),
-      ).annotate({
-        identifier: "ListDirectoryGroupRoleMappingsResponse",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({}).pipe(T.Http({ method: "GET", uri: "/domains", code: 200 })),
-      ).annotate({ identifier: "ListDomainsRequest" });
-    case 3:
-      return S.Array(__S(5, __c0, 5));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          data: __S(363, __c45, 3),
-          total_count: S.Number,
-        }),
-      ).annotate({ identifier: "Domains" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          limit: S.optional(S.Number.pipe(T.Query())),
-          offset: S.optional(S.Number.pipe(T.Query())),
-          organization_id: S.optional(S.String.pipe(T.Query())),
-          active: S.optional(S.Boolean.pipe(T.Query())),
-        }).pipe(T.Http({ method: "GET", uri: "/enterprise_connections", code: 200 })),
-      ).annotate({
-        identifier: "ListEnterpriseConnectionsRequest",
-      });
-    case 6:
-      return S.Array(__S(146, __c18, 2));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          data: __S(366, __c45, 6),
-          total_count: S.Number,
-        }),
-      ).annotate({ identifier: "EnterpriseConnections" });
-  }
-}
-function __c46(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          enterprise_connection_id: S.String.pipe(T.Label()),
-          status: S.optional(__S(206, __c25, 6).pipe(T.Query())),
-          limit: S.optional(S.Number.pipe(T.Query())),
-          offset: S.optional(S.Number.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/enterprise_connections/{enterprise_connection_id}/test_runs",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "ListEnterpriseConnectionTestRunsRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          email_address: S.optional(S.String),
-          first_name: S.optional(S.String),
-          last_name: S.optional(S.String),
-          user_id: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "EnterpriseConnectionTestRunParsedUserInfo",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          level: S.String,
-          code: S.optional(S.String),
-          short_message: S.optional(S.String),
-          message: S.String,
-        }),
-      ).annotate({
-        identifier: "EnterpriseConnectionTestRunLogsItem",
-      });
-    case 3:
-      return S.Array(__S(370, __c46, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          saml_request: S.optional(S.String),
-          saml_response: S.optional(S.String),
-          relay_state: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "EnterpriseConnectionTestRunSaml",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          id_token: S.optional(S.String),
-          access_token: S.optional(S.String.pipe(T.SensitiveValue({}))),
-          user_info: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "EnterpriseConnectionTestRunOauth",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String,
-          status: S.String,
-          connection_type: S.String,
-          parsed_user_info: S.optional(S.NullOr(__S(369, __c46, 1))),
-          logs: S.optional(__S(371, __c46, 3)),
-          saml: S.optional(S.NullOr(__S(372, __c46, 4))),
-          oauth: S.optional(S.NullOr(__S(373, __c46, 5))),
-          created_at: S.Number,
-        }),
-      ).annotate({
-        identifier: "EnterpriseConnectionTestRun",
-      });
-    case 7:
-      return S.Array(__S(374, __c46, 6));
-  }
-}
-function __c47(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          data: __S(375, __c46, 7),
-          total_count: S.Number,
-        }),
-      ).annotate({
-        identifier: "EnterpriseConnectionTestRuns",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          order_by: S.optional(S.String.pipe(T.Query())),
-          status: S.optional(S.String.pipe(T.Query())),
-          query: S.optional(S.String.pipe(T.Query())),
-          limit: S.optional(S.Number.pipe(T.Query())),
-          offset: S.optional(S.Number.pipe(T.Query())),
-        }).pipe(T.Http({ method: "GET", uri: "/organization_invitations", code: 200 })),
-      ).annotate({
-        identifier: "ListInstanceOrganizationInvitationsRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          object: S.String,
-          id: S.String,
-          email_address: S.String,
-          role: S.String,
-          role_name: S.String,
-          organization_id: S.optional(S.String),
-          inviter_id: S.NullOr(S.String),
-          public_inviter_data: S.NullOr(__S(168, __c21, 0)),
-          status: S.optional(S.String),
-          public_metadata: __S(170, __c21, 2),
-          private_metadata: S.optional(__S(170, __c21, 2)),
-          url: S.NullOr(S.String),
-          expires_at: S.NullOr(S.Number),
-          created_at: S.Number,
-          updated_at: S.Number,
-          public_organization_data: S.optional(__S(165, __c20, 5)),
-        }),
-      ).annotate({
-        identifier: "OrganizationInvitationWithPublicOrganizationData",
-      });
-    case 3:
-      return S.Array(__S(378, __c47, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          data: __S(379, __c47, 3),
-          total_count: S.Number,
-        }),
-      ).annotate({
-        identifier: "OrganizationInvitationsWithPublicOrganizationData",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          status: S.optional(S.String.pipe(T.Query())),
-          query: S.optional(S.String.pipe(T.Query())),
-          order_by: S.optional(S.String.pipe(T.Query())),
-          paginated: S.optional(S.Boolean.pipe(T.Query())),
-          limit: S.optional(S.Number.pipe(T.Query())),
-          offset: S.optional(S.Number.pipe(T.Query())),
-        }).pipe(T.Http({ method: "GET", uri: "/invitations", code: 200 })),
-      ).annotate({ identifier: "ListInvitationsRequest" });
-    case 6:
-      return S.suspend(() => __S(118, __c14, 6).pipe(T.RawResponseRoot())).annotate({
-        identifier: "ListInvitationsResponse",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          paginated: S.optional(S.Boolean.pipe(T.Query())),
-          limit: S.optional(S.Number.pipe(T.Query())),
-          offset: S.optional(S.Number.pipe(T.Query())),
-        }).pipe(T.Http({ method: "GET", uri: "/jwt_templates", code: 200 })),
-      ).annotate({ identifier: "ListJWTTemplatesRequest" });
-  }
-}
-function __c48(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(151, __c18, 7));
-    case 1:
-      return S.suspend(() => __S(384, __c48, 0).pipe(T.RawResponseRoot())).annotate({
-        identifier: "ListJWTTemplatesResponse",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          limit: S.optional(S.Number.pipe(T.Query())),
-          offset: S.optional(S.Number.pipe(T.Query())),
-          query: S.optional(S.String.pipe(T.Query())),
-          order_by: S.optional(S.String.pipe(T.Query())),
-        }).pipe(T.Http({ method: "GET", uri: "/machines", code: 200 })),
-      ).annotate({ identifier: "ListMachinesRequest" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          object: S.String,
-          id: S.String,
-          name: S.String,
-          instance_id: S.String,
-          created_at: S.Number,
-          updated_at: S.Number,
-          default_token_ttl: S.optional(S.Number),
-          scoped_machines: __S(156, __c19, 4),
-        }),
-      ).annotate({ identifier: "Machine" });
-    case 4:
-      return S.Array(__S(387, __c48, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          data: __S(388, __c48, 4),
-          total_count: S.Number,
-        }),
-      ).annotate({ identifier: "ListMachinesResponse" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          limit: S.optional(S.Number.pipe(T.Query())),
-          offset: S.optional(S.Number.pipe(T.Query())),
-          order_by: S.optional(S.String.pipe(T.Query())),
-          name_query: S.optional(S.String.pipe(T.Query())),
-        }).pipe(T.Http({ method: "GET", uri: "/oauth_applications", code: 200 })),
-      ).annotate({
-        identifier: "ListOAuthApplicationsRequest",
-      });
-    case 7:
-      return S.Array(__S(315, __c39, 3));
-  }
-}
-function __c49(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          data: __S(391, __c48, 7),
-          total_count: S.Number,
-        }),
-      ).annotate({ identifier: "OAuthApplications" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          organization_id: S.String.pipe(T.Label()),
-          verified: S.optional(S.String.pipe(T.Query())),
-          enrollment_mode: S.optional(S.String.pipe(T.Query())),
-          limit: S.optional(S.Number.pipe(T.Query())),
-          offset: S.optional(S.Number.pipe(T.Query())),
-        }).pipe(
-          T.Http({ method: "GET", uri: "/organizations/{organization_id}/domains", code: 200 }),
-        ),
-      ).annotate({
-        identifier: "ListOrganizationDomainsRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          organization_id: S.String.pipe(T.Label()),
-          status: S.optional(S.String.pipe(T.Query())),
-          email_address: S.optional(S.String.pipe(T.Query())),
-          order_by: S.optional(S.String.pipe(T.Query())),
-          limit: S.optional(S.Number.pipe(T.Query())),
-          offset: S.optional(S.Number.pipe(T.Query())),
-        }).pipe(
-          T.Http({ method: "GET", uri: "/organizations/{organization_id}/invitations", code: 200 }),
-        ),
-      ).annotate({
-        identifier: "ListOrganizationInvitationsRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          organization_id: S.String.pipe(T.Label()),
-          order_by: S.optional(S.String.pipe(T.Query())),
-          user_id: S.optional(__S(6, __c0, 6).pipe(T.Query())),
-          email_address: S.optional(__S(6, __c0, 6).pipe(T.Query())),
-          phone_number: S.optional(__S(6, __c0, 6).pipe(T.Query())),
-          username: S.optional(__S(6, __c0, 6).pipe(T.Query())),
-          web3_wallet: S.optional(__S(6, __c0, 6).pipe(T.Query())),
-          role: S.optional(__S(6, __c0, 6).pipe(T.Query())),
-          query: S.optional(S.String.pipe(T.Query())),
-          email_address_query: S.optional(S.String.pipe(T.Query())),
-          phone_number_query: S.optional(S.String.pipe(T.Query())),
-          username_query: S.optional(S.String.pipe(T.Query())),
-          name_query: S.optional(S.String.pipe(T.Query())),
-          last_active_at_before: S.optional(S.Number.pipe(T.Query())),
-          last_active_at_after: S.optional(S.Number.pipe(T.Query())),
-          created_at_before: S.optional(S.Number.pipe(T.Query())),
-          created_at_after: S.optional(S.Number.pipe(T.Query())),
-          limit: S.optional(S.Number.pipe(T.Query())),
-          offset: S.optional(S.Number.pipe(T.Query())),
-        }).pipe(
-          T.Http({ method: "GET", uri: "/organizations/{organization_id}/memberships", code: 200 }),
-        ),
-      ).annotate({
-        identifier: "ListOrganizationMembershipsRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          query: S.optional(S.String.pipe(T.Query())),
-          order_by: S.optional(S.String.pipe(T.Query())),
-          limit: S.optional(S.Number.pipe(T.Query())),
-          offset: S.optional(S.Number.pipe(T.Query())),
-        }).pipe(T.Http({ method: "GET", uri: "/organization_permissions", code: 200 })),
-      ).annotate({
-        identifier: "ListOrganizationPermissionsRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          data: __S(21, __c2, 5),
-          total_count: S.Number,
-        }),
-      ).annotate({ identifier: "Permissions" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          query: S.optional(S.String.pipe(T.Query())),
-          order_by: S.optional(S.String.pipe(T.Query())),
-          limit: S.optional(S.Number.pipe(T.Query())),
-          offset: S.optional(S.Number.pipe(T.Query())),
-        }).pipe(T.Http({ method: "GET", uri: "/organization_roles", code: 200 })),
-      ).annotate({
-        identifier: "ListOrganizationRolesRequest",
-      });
-    case 7:
-      return S.Array(__S(22, __c2, 6));
-  }
-}
-function __c50(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          data: __S(399, __c49, 7),
-          total_count: S.Number,
-        }),
-      ).annotate({ identifier: "Roles" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          include_members_count: S.optional(S.Boolean.pipe(T.Query())),
-          include_missing_member_with_elevated_permissions: S.optional(S.Boolean.pipe(T.Query())),
-          query: S.optional(S.String.pipe(T.Query())),
-          user_id: S.optional(__S(6, __c0, 6).pipe(T.Query())),
-          organization_id: S.optional(__S(6, __c0, 6).pipe(T.Query())),
-          order_by: S.optional(S.String.pipe(T.Query())),
-          limit: S.optional(S.Number.pipe(T.Query())),
-          offset: S.optional(S.Number.pipe(T.Query())),
-        }).pipe(T.Http({ method: "GET", uri: "/organizations", code: 200 })),
-      ).annotate({ identifier: "ListOrganizationsRequest" });
-    case 2:
-      return S.Array(__S(45, __c5, 5));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          data: __S(402, __c50, 2),
-          total_count: S.Number,
-        }),
-      ).annotate({ identifier: "Organizations" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          paginated: S.optional(S.Boolean.pipe(T.Query())),
-          limit: S.optional(S.Number.pipe(T.Query())),
-          offset: S.optional(S.Number.pipe(T.Query())),
-        }).pipe(T.Http({ method: "GET", uri: "/redirect_urls", code: 200 })),
-      ).annotate({ identifier: "ListRedirectURLsRequest" });
-    case 5:
-      return S.Array(__S(181, __c22, 5));
-    case 6:
-      return S.suspend(() => __S(405, __c50, 5).pipe(T.RawResponseRoot())).annotate({
-        identifier: "ListRedirectURLsResponse",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          query: S.optional(S.String.pipe(T.Query())),
-          order_by: S.optional(S.String.pipe(T.Query())),
-          limit: S.optional(S.Number.pipe(T.Query())),
-          offset: S.optional(S.Number.pipe(T.Query())),
-        }).pipe(T.Http({ method: "GET", uri: "/role_sets", code: 200 })),
-      ).annotate({ identifier: "ListRoleSetsRequest" });
-  }
-}
-function __c51(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(12, __c1, 4));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          data: __S(408, __c51, 0),
-          total_count: S.Number,
-        }),
-      ).annotate({ identifier: "RoleSets" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          limit: S.optional(S.Number.pipe(T.Query())),
-          offset: S.optional(S.Number.pipe(T.Query())),
-        }).pipe(T.Http({ method: "GET", uri: "/scim_directories", code: 200 })),
-      ).annotate({
-        identifier: "ListSCIMDirectoriesRequest",
-      });
-    case 3:
-      return S.Array(__S(186, __c23, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          data: __S(411, __c51, 3),
-          total_count: S.Number,
-        }),
-      ).annotate({
-        identifier: "ListSCIMDirectoriesResponse",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          scim_directory_id: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/scim_directories/{scim_directory_id}/group_role_mappings",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "ListSCIMGroupRoleMappingsRequest",
-      });
-    case 6:
-      return S.Array(__S(188, __c23, 4));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          data: __S(414, __c51, 6),
-          total_count: S.Number,
-        }),
-      ).annotate({
-        identifier: "ListSCIMGroupRoleMappingsResponse",
-      });
-  }
-}
-function __c52(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          enterprise_connection_id: S.optional(S.String.pipe(T.Query())),
-        }).pipe(T.Http({ method: "GET", uri: "/sso_bypass_allowlist_users", code: 200 })),
-      ).annotate({
-        identifier: "ListSSOBypassAllowlistUsersRequest",
-      });
-    case 1:
-      return S.Array(__S(201, __c25, 1));
-    case 2:
-      return S.suspend(() => __S(417, __c52, 1).pipe(T.RawResponseRoot())).annotate({
-        identifier: "ListSSOBypassAllowlistUsersResponse",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          user_id: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({ method: "GET", uri: "/users/{user_id}/biometric_credentials", code: 200 }),
-        ),
-      ).annotate({
-        identifier: "ListUserBiometricCredentialsRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          object: S.String,
-          id: S.String,
-          platform: S.String,
-          app_identifier: S.String,
-          name: S.optional(S.NullOr(S.String)),
-          algorithm: S.String,
-          status: S.String,
-          created_at: S.Number,
-          updated_at: S.Number,
-          last_used_at: S.optional(S.NullOr(S.Number)),
-          revoked_at: S.optional(S.NullOr(S.Number)),
-        }),
-      ).annotate({ identifier: "BiometricCredential" });
-    case 5:
-      return S.Array(__S(420, __c52, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          data: __S(421, __c52, 5),
-          total_count: S.Number,
-        }),
-      ).annotate({
-        identifier: "ListUserBiometricCredentialsResponse",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          limit: S.optional(S.Number.pipe(T.Query())),
-          offset: S.optional(S.Number.pipe(T.Query())),
-          query: S.optional(S.String.pipe(T.Query())),
-          status: S.optional(S.String.pipe(T.Query())),
-          order_by: S.optional(S.String.pipe(T.Query())),
-        }).pipe(T.Http({ method: "GET", uri: "/waitlist_entries", code: 200 })),
-      ).annotate({
-        identifier: "ListWaitlistEntriesRequest",
-      });
-  }
-}
-function __c53(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          data: __S(124, __c15, 4),
-          total_count: S.Number,
-        }),
-      ).annotate({
-        identifier: "ListWaitlistEntriesResponse",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          user_id: S.String.pipe(T.Label()),
-        }).pipe(T.Http({ method: "POST", uri: "/users/{user_id}/lock", code: 200 })),
-      ).annotate({ identifier: "LockUserRequest" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          organization_id: S.String.pipe(T.Label()),
-          public_metadata: S.optional(__S(27, __c3, 3)),
-          private_metadata: S.optional(__S(27, __c3, 3)),
-        }).pipe(
-          T.Http({ method: "PATCH", uri: "/organizations/{organization_id}/metadata", code: 200 }),
-        ),
-      ).annotate({
-        identifier: "MergeOrganizationMetadataRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          email_address_id: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/email_addresses/{email_address_id}/prepare_verification",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "PrepareEmailAddressVerificationRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          phone_number_id: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/phone_numbers/{phone_number_id}/prepare_verification",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "PreparePhoneNumberVerificationRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          session_id: S.String.pipe(T.Label()),
-          expired_token: S.String,
-          refresh_token: S.String.pipe(T.SensitiveValue({})),
-          request_origin: S.String,
-          request_headers: S.optional(S.NullOr(__S(27, __c3, 3))),
-          format: S.optional(S.NullOr(S.String)),
-          request_originating_ip: S.optional(S.NullOr(S.String)),
-        }).pipe(T.Http({ method: "POST", uri: "/sessions/{session_id}/refresh", code: 200 })),
-      ).annotate({ identifier: "RefreshSessionRequest" });
-    case 6:
-      return S.suspend(() => S.Unknown.pipe(T.RawResponseRoot())).annotate({
-        identifier: "RefreshSessionResponse",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          waitlist_entry_id: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/waitlist_entries/{waitlist_entry_id}/reject",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "RejectWaitlistEntryRequest",
-      });
-  }
-}
-function __c54(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          subscription_item_id: S.String.pipe(T.Label()),
-          discount_id: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/billing/subscription_items/{subscription_item_id}/discounts/{discount_id}",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "RemoveBillingSubscriptionItemDiscountRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          organization_role_id: S.String.pipe(T.Label()),
-          permission_id: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/organization_roles/{organization_role_id}/permissions/{permission_id}",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "RemovePermissionFromOrganizationRoleRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          user_id: S.String.pipe(T.Label()),
-          sign_out_of_other_sessions: S.optional(S.Boolean),
-        }).pipe(T.Http({ method: "POST", uri: "/users/{user_id}/remove_password", code: 200 })),
-      ).annotate({
-        identifier: "RemoveUserPasswordRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          directory_group_id: S.optional(S.String),
-          scim_group_id: S.optional(S.String),
-          role_id: S.String,
-        }),
-      ).annotate({
-        identifier: "ReplaceDirectoryGroupRoleMappingsRequestMappingsItem",
-      });
-    case 4:
-      return S.Array(__S(435, __c54, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          directory_id: S.String.pipe(T.Label()),
-          mappings: __S(436, __c54, 4),
-        }).pipe(
-          T.Http({
-            method: "PUT",
-            uri: "/directories/{directory_id}/group_role_mappings",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "ReplaceDirectoryGroupRoleMappingsRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          organization_id: S.String.pipe(T.Label()),
-          public_metadata: S.optional(__S(27, __c3, 3)),
-          private_metadata: S.optional(__S(27, __c3, 3)),
-        }).pipe(
-          T.Http({ method: "PUT", uri: "/organizations/{organization_id}/metadata", code: 200 }),
-        ),
-      ).annotate({
-        identifier: "ReplaceOrganizationMetadataRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          role_set_key_or_id: S.String.pipe(T.Label()),
-          role_key: S.String,
-          to_role_key: S.String,
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/role_sets/{role_set_key_or_id}/roles/replace",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "ReplaceRoleInRoleSetRequest",
-      });
-  }
-}
-function __c55(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          role_set_key_or_id: S.String.pipe(T.Label()),
-          dest_role_set_key: S.String,
-          reassignment_mappings: S.optional(__S(10, __c1, 2)),
-        }).pipe(
-          T.Http({ method: "POST", uri: "/role_sets/{role_set_key_or_id}/replace", code: 200 }),
-        ),
-      ).annotate({ identifier: "ReplaceRoleSetRequest" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          scim_group_id: S.String,
-          role_id: S.String,
-        }),
-      ).annotate({
-        identifier: "ReplaceSCIMGroupRoleMappingsRequestMappingsItem",
-      });
-    case 2:
-      return S.Array(__S(441, __c55, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          scim_directory_id: S.String.pipe(T.Label()),
-          mappings: __S(442, __c55, 2),
-        }).pipe(
-          T.Http({
-            method: "PUT",
-            uri: "/scim_directories/{scim_directory_id}/group_role_mappings",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "ReplaceSCIMGroupRoleMappingsRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          user_id: S.String.pipe(T.Label()),
-          email_address: S.String,
-          identification_status: S.optional(S.String),
-          notify_primary_email_address_changed: S.optional(S.NullOr(S.Boolean)),
-        }).pipe(T.Http({ method: "PUT", uri: "/users/{user_id}/email_address", code: 200 })),
-      ).annotate({
-        identifier: "ReplaceUserEmailAddressRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          user_id: S.String.pipe(T.Label()),
-          public_metadata: S.optional(__S(27, __c3, 3)),
-          private_metadata: S.optional(__S(27, __c3, 3)),
-          unsafe_metadata: S.optional(__S(27, __c3, 3)),
-        }).pipe(T.Http({ method: "PUT", uri: "/users/{user_id}/metadata", code: 200 })),
-      ).annotate({
-        identifier: "ReplaceUserMetadataRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          user_id: S.String.pipe(T.Label()),
-          phone_number: S.String,
-          identification_status: S.optional(S.String),
-        }).pipe(T.Http({ method: "PUT", uri: "/users/{user_id}/phone_number", code: 200 })),
-      ).annotate({
-        identifier: "ReplaceUserPhoneNumberRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          actor_token_id: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({ method: "POST", uri: "/actor_tokens/{actor_token_id}/revoke", code: 200 }),
-        ),
-      ).annotate({ identifier: "RevokeActorTokenRequest" });
-  }
-}
-function __c56(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          adminPortalLinkTokenID: S.String.pipe(T.Label()),
-          revocation_reason: S.optional(S.NullOr(S.String)),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/admin_portal_link_tokens/{adminPortalLinkTokenID}/revoke",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "RevokeAdminPortalLinkTokenRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          object: S.String,
-          id: S.String,
-          admin_portal_link_id: S.String,
-          instance_id: S.String,
-          organization_id: S.NullOr(S.String),
-          it_contact_id: S.NullOr(S.String),
-          scopes: S.NullOr(__S(6, __c0, 6)),
-          revoked: S.Boolean,
-          revocation_reason: S.NullOr(S.String),
-          expired: S.Boolean,
-          expiration: S.NullOr(S.Number),
-          created_at: S.Number,
-          updated_at: S.Number,
-        }),
-      ).annotate({
-        identifier: "RevokeAdminPortalLinkTokenResponse",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          agent_task_id: S.String.pipe(T.Label()),
-        }).pipe(T.Http({ method: "POST", uri: "/agents/tasks/{agent_task_id}/revoke", code: 200 })),
-      ).annotate({ identifier: "RevokeAgentTaskRequest" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          apiKeyID: S.String.pipe(T.Label()),
-          revocation_reason: S.optional(S.NullOr(S.String)),
-        }).pipe(T.Http({ method: "POST", uri: "/api_keys/{apiKeyID}/revoke", code: 200 })),
-      ).annotate({ identifier: "RevokeApiKeyRequest" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          object: S.String,
-          id: S.String,
-          type: S.String,
-          subject: S.String,
-          name: S.String,
-          description: S.optional(S.NullOr(S.String)),
-          claims: S.NullOr(S.Unknown),
-          scopes: __S(6, __c0, 6),
-          revoked: S.Boolean,
-          revocation_reason: S.NullOr(S.String),
-          expired: S.Boolean,
-          expiration: S.NullOr(S.Number),
-          created_by: S.NullOr(S.String),
-          last_used_at: S.NullOr(S.Number),
-          created_at: S.Number,
-          updated_at: S.Number,
-        }),
-      ).annotate({ identifier: "RevokeApiKeyResponse" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          invitation_id: S.String.pipe(T.Label()),
-        }).pipe(T.Http({ method: "POST", uri: "/invitations/{invitation_id}/revoke", code: 200 })),
-      ).annotate({ identifier: "RevokeInvitationRequest" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          object: S.String,
-          id: S.String,
-          email_address: S.String,
-          public_metadata: __S(27, __c3, 3),
-          revoked: S.optional(S.Boolean),
-          status: S.String,
-          url: S.optional(S.String),
-          expires_at: S.optional(S.NullOr(S.Number)),
-          created_at: S.Number,
-          updated_at: S.Number,
-        }),
-      ).annotate({ identifier: "RevokeInvitationResponse" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          m2m_token_id: S.String.pipe(T.Label()),
-          revocation_reason: S.optional(S.NullOr(S.String)),
-        }).pipe(T.Http({ method: "POST", uri: "/m2m_tokens/{m2m_token_id}/revoke", code: 200 })),
-      ).annotate({ identifier: "RevokeM2MTokenRequest" });
-  }
-}
-function __c57(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          object: S.String,
-          id: S.String,
-          subject: S.String,
-          claims: S.optional(S.NullOr(S.Unknown)),
-          scopes: S.optional(__S(6, __c0, 6)),
-          revoked: S.Boolean,
-          revocation_reason: S.NullOr(S.String),
-          expired: S.Boolean,
-          expiration: S.NullOr(S.Number),
-          last_used_at: S.NullOr(S.Number),
-          created_at: S.Number,
-          updated_at: S.Number,
-        }),
-      ).annotate({ identifier: "RevokeM2MTokenResponse" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          oauth_application_id: S.String.pipe(T.Label()),
-          token: S.String,
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/oauth_applications/{oauth_application_id}/revoke_token",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "RevokeOAuthApplicationTokenRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          organization_id: S.String.pipe(T.Label()),
-          invitation_id: S.String.pipe(T.Label()),
-          requesting_user_id: S.optional(S.NullOr(S.String)),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/organizations/{organization_id}/invitations/{invitation_id}/revoke",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "RevokeOrganizationInvitationRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          session_id: S.String.pipe(T.Label()),
-        }).pipe(T.Http({ method: "POST", uri: "/sessions/{session_id}/revoke", code: 200 })),
-      ).annotate({ identifier: "RevokeSessionRequest" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          sign_in_token_id: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({ method: "POST", uri: "/sign_in_tokens/{sign_in_token_id}/revoke", code: 200 }),
-        ),
-      ).annotate({ identifier: "RevokeSignInTokenRequest" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          user_id: S.String.pipe(T.Label()),
-          biometric_credential_id: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/users/{user_id}/biometric_credentials/{biometric_credential_id}",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "RevokeUserBiometricCredentialRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          directory_id: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({ method: "POST", uri: "/directories/{directory_id}/rotate_api_key", code: 200 }),
-        ),
-      ).annotate({
-        identifier: "RotateDirectoryAPIKeyRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          machine_id: S.String.pipe(T.Label()),
-          previous_token_ttl: S.Number,
-        }).pipe(
-          T.Http({ method: "POST", uri: "/machines/{machine_id}/secret_key/rotate", code: 200 }),
-        ),
-      ).annotate({
-        identifier: "RotateMachineSecretKeyRequest",
-      });
-  }
-}
-function __c58(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          oauth_application_id: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/oauth_applications/{oauth_application_id}/rotate_secret",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "RotateOAuthApplicationSecretRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          object: S.String,
-          id: S.String,
-          instance_id: S.String,
-          name: S.String,
-          client_id: S.String,
-          client_uri: S.NullOr(S.String),
-          client_image_url: S.NullOr(S.String),
-          dynamically_registered: S.Boolean,
-          consent_screen_enabled: S.Boolean,
-          pkce_required: S.Boolean,
-          device_authorization_grant_enabled: S.Boolean,
-          public: S.Boolean,
-          scopes: S.String,
-          redirect_uris: __S(6, __c0, 6),
-          callback_url: S.String,
-          authorize_url: S.String,
-          token_fetch_url: S.String,
-          user_info_url: S.String,
-          discovery_url: S.String,
-          token_introspection_url: S.String,
-          created_at: S.Number,
-          updated_at: S.Number,
-          client_secret: S.optional(S.String.pipe(T.SensitiveValue({}))),
-        }),
-      ).annotate({
-        identifier: "RotateOAuthApplicationSecretResponse",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          scim_directory_id: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/scim_directories/{scim_directory_id}/rotate_api_key",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "RotateSCIMDirectoryAPIKeyRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          user_id: S.String.pipe(T.Label()),
-          revoke_all_sessions: S.optional(S.NullOr(S.Boolean)),
-        }).pipe(
-          T.Http({ method: "POST", uri: "/users/{user_id}/password/set_compromised", code: 200 }),
-        ),
-      ).annotate({
-        identifier: "SetUserPasswordCompromisedRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          user_id: S.String.pipe(T.Label()),
-          file: S.optional(S.String),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/users/{user_id}/profile_image",
-            code: 200,
-            contentType: "multipart",
-          }),
-        ),
-      ).annotate({
-        identifier: "SetUserProfileImageRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          user_id: S.String.pipe(T.Label()),
-        }).pipe(T.Http({ method: "POST", uri: "/users/{user_id}/unban", code: 200 })),
-      ).annotate({ identifier: "UnbanUserRequest" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          user_ids: __S(6, __c0, 6),
-        }).pipe(T.Http({ method: "POST", uri: "/users/unban", code: 200 })),
-      ).annotate({ identifier: "UnbanUserRequest2" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          user_id: S.String.pipe(T.Label()),
-        }).pipe(T.Http({ method: "POST", uri: "/users/{user_id}/unlock", code: 200 })),
-      ).annotate({ identifier: "UnlockUserRequest" });
-  }
-}
-function __c59(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          user_id: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({ method: "POST", uri: "/users/{user_id}/password/unset_compromised", code: 200 }),
-        ),
-      ).annotate({
-        identifier: "UnsetUserPasswordCompromisedRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          apiKeyID: S.String.pipe(T.Label()),
-          claims: S.optional(S.NullOr(S.Unknown)),
-          scopes: S.optional(__S(6, __c0, 6)),
-          description: S.optional(S.NullOr(S.String)),
-          subject: S.optional(S.String),
-          seconds_until_expiration: S.optional(S.NullOr(S.Number)),
-        }).pipe(T.Http({ method: "PATCH", uri: "/api_keys/{apiKeyID}", code: 200 })),
-      ).annotate({ identifier: "UpdateApiKeyRequest" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          object: S.String,
-          id: S.String,
-          type: S.String,
-          subject: S.String,
-          name: S.String,
-          description: S.optional(S.NullOr(S.String)),
-          claims: S.NullOr(S.Unknown),
-          scopes: __S(6, __c0, 6),
-          revoked: S.Boolean,
-          revocation_reason: S.NullOr(S.String),
-          expired: S.Boolean,
-          expiration: S.NullOr(S.Number),
-          created_by: S.NullOr(S.String),
-          last_used_at: S.NullOr(S.Number),
-          created_at: S.Number,
-          updated_at: S.Number,
-        }),
-      ).annotate({ identifier: "UpdateApiKeyResponse" });
-    case 3:
-      return S.Record(S.String, /*@__PURE__*/ S.NullOr(S.String));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          directory_id: S.String.pipe(T.Label()),
-          name: S.optional(S.String),
-          enabled: S.optional(S.Boolean),
-          provider: S.optional(S.String),
-          attribute_mapping: S.optional(__S(475, __c59, 3)),
-          group_role_mapping_enabled: S.optional(S.Boolean),
-        }).pipe(T.Http({ method: "PATCH", uri: "/directories/{directory_id}", code: 200 })),
-      ).annotate({ identifier: "UpdateDirectoryRequest" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          domain_id: S.String.pipe(T.Label()),
-          name: S.optional(S.NullOr(S.String)),
-          proxy_url: S.optional(S.NullOr(S.String)),
-          is_secondary: S.optional(S.NullOr(S.Boolean)),
-        }).pipe(T.Http({ method: "PATCH", uri: "/domains/{domain_id}", code: 200 })),
-      ).annotate({ identifier: "UpdateDomainRequest" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          email_address_id: S.String.pipe(T.Label()),
-          verified: S.optional(S.NullOr(S.Boolean)),
-          primary: S.optional(S.NullOr(S.Boolean)),
-          notify_primary_email_address_changed: S.optional(S.NullOr(S.Boolean)),
-        }).pipe(T.Http({ method: "PATCH", uri: "/email_addresses/{email_address_id}", code: 200 })),
-      ).annotate({
-        identifier: "UpdateEmailAddressRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.optional(S.NullOr(S.String)),
-          idp_entity_id: S.optional(S.NullOr(S.String)),
-          idp_sso_url: S.optional(S.NullOr(S.String)),
-          idp_certificate: S.optional(S.NullOr(S.String)),
-          idp_certificates: S.optional(__S(6, __c0, 6)),
-          idp_metadata_url: S.optional(S.NullOr(S.String)),
-          idp_metadata: S.optional(S.NullOr(S.String)),
-          attribute_mapping: S.optional(S.NullOr(__S(135, __c16, 7))),
-          allow_subdomains: S.optional(S.NullOr(S.Boolean)),
-          allow_idp_initiated: S.optional(S.NullOr(S.Boolean)),
-          force_authn: S.optional(S.NullOr(S.Boolean)),
-          login_hint: S.optional(S.NullOr(__S(136, __c17, 0))),
-        }),
-      ).annotate({
-        identifier: "UpdateEnterpriseConnectionRequestSaml",
-      });
-  }
-}
-function __c60(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          enterprise_connection_id: S.String.pipe(T.Label()),
-          name: S.optional(S.NullOr(S.String)),
-          domains: S.optional(S.NullOr(__S(6, __c0, 6))),
-          active: S.optional(S.NullOr(S.Boolean)),
-          sync_user_attributes: S.optional(S.NullOr(S.Boolean)),
-          disable_additional_identifications: S.optional(S.NullOr(S.Boolean)),
-          allow_organization_account_linking: S.optional(S.NullOr(S.Boolean)),
-          organization_id: S.optional(S.NullOr(S.String)),
-          saml: S.optional(S.NullOr(__S(479, __c59, 7))),
-          oidc: S.optional(S.NullOr(__S(138, __c17, 2))),
-          custom_attributes: S.optional(S.NullOr(__S(140, __c17, 4))),
-        }).pipe(
-          T.Http({
-            method: "PATCH",
-            uri: "/enterprise_connections/{enterprise_connection_id}",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "UpdateEnterpriseConnectionRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          test_mode: S.optional(S.NullOr(S.Boolean)),
-          hibp: S.optional(S.NullOr(S.Boolean)),
-          support_email: S.optional(S.NullOr(S.String)),
-          clerk_js_version: S.optional(S.NullOr(S.String)),
-          development_origin: S.optional(S.NullOr(S.String)),
-          allowed_origins: S.optional(S.NullOr(__S(6, __c0, 6))),
-          allowed_subdomains: S.optional(S.NullOr(__S(6, __c0, 6))),
-          subdomain_allowlist_enabled: S.optional(S.NullOr(S.Boolean)),
-          cookieless_dev: S.optional(S.NullOr(S.Boolean)),
-          url_based_session_syncing: S.optional(S.NullOr(S.Boolean)),
-          preferred_sign_in_strategy_when_password_required: S.optional(S.NullOr(S.String)),
-        }).pipe(T.Http({ method: "PATCH", uri: "/instance", code: 200 })),
-      ).annotate({ identifier: "UpdateInstanceRequest" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          restricted_to_allowlist: S.optional(S.NullOr(S.Boolean)),
-          from_email_address: S.optional(S.NullOr(S.String)),
-          progressive_sign_up: S.optional(S.NullOr(S.Boolean)),
-          test_mode: S.optional(S.NullOr(S.Boolean)),
-        }).pipe(T.Http({ method: "PATCH", uri: "/beta_features/instance_settings", code: 200 })),
-      ).annotate({
-        identifier: "UpdateInstanceAuthConfigRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          object: S.optional(S.String),
-          id: S.optional(S.String),
-          restricted_to_allowlist: S.optional(S.Boolean),
-          from_email_address: S.optional(S.String),
-          progressive_sign_up: S.optional(S.Boolean),
-          enhanced_email_deliverability: S.optional(S.Boolean),
-        }),
-      ).annotate({
-        identifier: "UpdateInstanceAuthConfigResponse",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          blocked_country_codes: S.optional(S.NullOr(__S(6, __c0, 6))),
-        }).pipe(T.Http({ method: "PATCH", uri: "/instance/communication", code: 200 })),
-      ).annotate({
-        identifier: "UpdateInstanceCommunicationRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          dynamic_oauth_client_registration: S.optional(S.NullOr(S.Boolean)),
-          default_scopes: S.optional(S.NullOr(__S(6, __c0, 6))),
-          oauth_jwt_access_tokens: S.optional(S.NullOr(S.Boolean)),
-          aud_claim_enabled: S.optional(S.NullOr(S.Boolean)),
-          pkce_required: S.optional(S.NullOr(S.Boolean)),
-          client_id_metadata_documents_advertised: S.optional(S.NullOr(S.Boolean)),
-          client_id_metadata_documents_only_allow_pre_registered_clients: S.optional(
-            S.NullOr(S.Boolean),
-          ),
-          client_id_metadata_documents_block_implicitly_allowed_clients: S.optional(
-            S.NullOr(S.Boolean),
-          ),
-        }).pipe(
-          T.Http({ method: "PATCH", uri: "/instance/oauth_application_settings", code: 200 }),
-        ),
-      ).annotate({
-        identifier: "UpdateInstanceOAuthApplicationSettingsRequest",
-      });
-    case 6:
-      return S.Array(S.String);
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          enabled: S.optional(S.NullOr(S.Boolean)),
-          max_allowed_memberships: S.optional(S.NullOr(S.Number)),
-          admin_delete_enabled: S.optional(S.NullOr(S.Boolean)),
-          domains_enabled: S.optional(S.NullOr(S.Boolean)),
-          slug_disabled: S.optional(S.NullOr(S.Boolean)),
-          domains_enrollment_modes: S.optional(__S(486, __c60, 6)),
-          creator_role_id: S.optional(S.NullOr(S.String)),
-          domains_default_role_id: S.optional(S.NullOr(S.String)),
-        }).pipe(T.Http({ method: "PATCH", uri: "/instance/organization_settings", code: 200 })),
-      ).annotate({
-        identifier: "UpdateInstanceOrganizationSettingsRequest",
-      });
-  }
-}
-function __c61(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          rules_enabled: S.optional(S.NullOr(S.Boolean)),
-          specter_enabled: S.optional(S.NullOr(S.Boolean)),
-        }).pipe(T.Http({ method: "PATCH", uri: "/instance/protect", code: 200 })),
-      ).annotate({
-        identifier: "UpdateInstanceProtectRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          allowlist: S.optional(S.NullOr(S.Boolean)),
-          blocklist: S.optional(S.NullOr(S.Boolean)),
-          allowlist_blocklist_disabled_on_sign_in: S.optional(S.NullOr(S.Boolean)),
-          block_email_subaddresses: S.optional(S.NullOr(S.Boolean)),
-          block_disposable_email_domains: S.optional(S.NullOr(S.Boolean)),
-        }).pipe(T.Http({ method: "PATCH", uri: "/instance/restrictions", code: 200 })),
-      ).annotate({
-        identifier: "UpdateInstanceRestrictionsRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          object: S.String,
-          allowlist: S.Boolean,
-          blocklist: S.Boolean,
-          allowlist_blocklist_disabled_on_sign_in: S.Boolean,
-          block_email_subaddresses: S.Boolean,
-          block_disposable_email_domains: S.Boolean,
-        }),
-      ).annotate({ identifier: "InstanceRestrictions" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          template_id: S.String.pipe(T.Label()),
-          name: S.String,
-          claims: S.Unknown,
-          lifetime: S.optional(S.NullOr(S.Number)),
-          allowed_clock_skew: S.optional(S.NullOr(S.Number)),
-          custom_signing_key: S.optional(S.Boolean),
-          signing_algorithm: S.optional(S.NullOr(S.String)),
-          signing_key: S.optional(S.NullOr(S.String)),
-        }).pipe(T.Http({ method: "PATCH", uri: "/jwt_templates/{template_id}", code: 200 })),
-      ).annotate({ identifier: "UpdateJWTTemplateRequest" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          machine_id: S.String.pipe(T.Label()),
-          name: S.optional(S.String),
-          default_token_ttl: S.optional(S.Number),
-        }).pipe(T.Http({ method: "PATCH", uri: "/machines/{machine_id}", code: 200 })),
-      ).annotate({ identifier: "UpdateMachineRequest" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          object: S.String,
-          id: S.String,
-          name: S.String,
-          instance_id: S.String,
-          created_at: S.Number,
-          updated_at: S.Number,
-          default_token_ttl: S.optional(S.Number),
-          scoped_machines: __S(156, __c19, 4),
-        }),
-      ).annotate({ identifier: "UpdateMachineResponse" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          oauth_application_id: S.String.pipe(T.Label()),
-          name: S.optional(S.NullOr(S.String)),
-          redirect_uris: S.optional(S.NullOr(__S(6, __c0, 6))),
-          callback_url: S.optional(S.NullOr(S.String)),
-          scopes: S.optional(S.NullOr(S.String)),
-          consent_screen_enabled: S.optional(S.NullOr(S.Boolean)),
-          pkce_required: S.optional(S.NullOr(S.Boolean)),
-          device_authorization_grant_enabled: S.optional(S.NullOr(S.Boolean)),
-          public: S.optional(S.NullOr(S.Boolean)),
-        }).pipe(
-          T.Http({ method: "PATCH", uri: "/oauth_applications/{oauth_application_id}", code: 200 }),
-        ),
-      ).annotate({
-        identifier: "UpdateOAuthApplicationRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          organization_id: S.String.pipe(T.Label()),
-          name: S.optional(S.NullOr(S.String)),
-          slug: S.optional(S.NullOr(S.String)),
-          max_allowed_memberships: S.optional(S.NullOr(S.Number)),
-          admin_delete_enabled: S.optional(S.NullOr(S.Boolean)),
-          self_serve_sso_enabled: S.optional(S.NullOr(S.Boolean)),
-          created_at: S.optional(S.NullOr(S.String)),
-          role_set_key: S.optional(S.NullOr(S.String)),
-          reassignment_mappings: S.optional(S.NullOr(__S(10, __c1, 2))),
-        }).pipe(T.Http({ method: "PATCH", uri: "/organizations/{organization_id}", code: 200 })),
-      ).annotate({
-        identifier: "UpdateOrganizationRequest",
-      });
-  }
-}
-function __c62(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          organization_id: S.String.pipe(T.Label()),
-          domain_id: S.String.pipe(T.Label()),
-          enrollment_mode: S.optional(S.NullOr(S.String)),
-          verified: S.optional(S.NullOr(S.Boolean)),
-        }).pipe(
-          T.Http({
-            method: "PATCH",
-            uri: "/organizations/{organization_id}/domains/{domain_id}",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "UpdateOrganizationDomainRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          organization_id: S.String.pipe(T.Label()),
-          user_id: S.String.pipe(T.Label()),
-          role: S.String,
-        }).pipe(
-          T.Http({
-            method: "PATCH",
-            uri: "/organizations/{organization_id}/memberships/{user_id}",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "UpdateOrganizationMembershipRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          organization_id: S.String.pipe(T.Label()),
-          user_id: S.String.pipe(T.Label()),
-          public_metadata: S.optional(__S(27, __c3, 3)),
-          private_metadata: S.optional(__S(27, __c3, 3)),
-        }).pipe(
-          T.Http({
-            method: "PATCH",
-            uri: "/organizations/{organization_id}/memberships/{user_id}/metadata",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "UpdateOrganizationMembershipMetadataRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          permission_id: S.String.pipe(T.Label()),
-          name: S.optional(S.String),
-          key: S.optional(S.String),
-          description: S.optional(S.String),
-        }).pipe(
-          T.Http({ method: "PATCH", uri: "/organization_permissions/{permission_id}", code: 200 }),
-        ),
-      ).annotate({
-        identifier: "UpdateOrganizationPermissionRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          organization_role_id: S.String.pipe(T.Label()),
-          name: S.optional(S.NullOr(S.String)),
-          key: S.optional(S.NullOr(S.String)),
-          description: S.optional(S.NullOr(S.String)),
-          permissions: S.optional(S.NullOr(__S(6, __c0, 6))),
-        }).pipe(
-          T.Http({ method: "PATCH", uri: "/organization_roles/{organization_role_id}", code: 200 }),
-        ),
-      ).annotate({
-        identifier: "UpdateOrganizationRoleRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          phone_number_id: S.String.pipe(T.Label()),
-          verified: S.optional(S.NullOr(S.Boolean)),
-          primary: S.optional(S.NullOr(S.Boolean)),
-          reserved_for_second_factor: S.optional(S.NullOr(S.Boolean)),
-        }).pipe(T.Http({ method: "PATCH", uri: "/phone_numbers/{phone_number_id}", code: 200 })),
-      ).annotate({ identifier: "UpdatePhoneNumberRequest" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          role_set_key_or_id: S.String.pipe(T.Label()),
-          name: S.optional(S.NullOr(S.String)),
-          key: S.optional(S.NullOr(S.String)),
-          description: S.optional(S.NullOr(S.String)),
-          type: S.optional(S.NullOr(S.String)),
-          default_role_key: S.optional(S.NullOr(S.String)),
-          creator_role_key: S.optional(S.NullOr(S.String)),
-        }).pipe(T.Http({ method: "PATCH", uri: "/role_sets/{role_set_key_or_id}", code: 200 })),
-      ).annotate({ identifier: "UpdateRoleSetRequest" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          scim_directory_id: S.String.pipe(T.Label()),
-          name: S.optional(S.String),
-          enabled: S.optional(S.Boolean),
-          provider: S.optional(S.String),
-          attribute_mapping: S.optional(__S(475, __c59, 3)),
-          group_role_mapping_enabled: S.optional(S.Boolean),
-        }).pipe(
-          T.Http({ method: "PATCH", uri: "/scim_directories/{scim_directory_id}", code: 200 }),
-        ),
-      ).annotate({
-        identifier: "UpdateSCIMDirectoryRequest",
-      });
-  }
-}
-function __c63(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String.pipe(T.Label()),
-          external_id: S.optional(S.NullOr(S.String)),
-          custom_action: S.optional(S.NullOr(S.Boolean)),
-        }).pipe(T.Http({ method: "PATCH", uri: "/sign_ups/{id}", code: 200 })),
-      ).annotate({ identifier: "UpdateSignUpRequest" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          user_id: S.String.pipe(T.Label()),
-          external_id: S.optional(S.NullOr(S.String)),
-          first_name: S.optional(S.NullOr(S.String)),
-          last_name: S.optional(S.NullOr(S.String)),
-          locale: S.optional(S.NullOr(S.String)),
-          timezone: S.optional(S.NullOr(S.String)),
-          primary_email_address_id: S.optional(S.NullOr(S.String)),
-          notify_primary_email_address_changed: S.optional(S.NullOr(S.Boolean)),
-          primary_phone_number_id: S.optional(S.NullOr(S.String)),
-          primary_web3_wallet_id: S.optional(S.NullOr(S.String)),
-          username: S.optional(S.NullOr(S.String)),
-          profile_image_id: S.optional(S.NullOr(S.String)),
-          password: S.optional(S.NullOr(S.String).pipe(T.SensitiveValue({}))),
-          password_digest: S.optional(S.String.pipe(T.SensitiveValue({}))),
-          password_hasher: S.optional(S.String.pipe(T.SensitiveValue({}))),
-          skip_password_checks: S.optional(S.NullOr(S.Boolean)),
-          sign_out_of_other_sessions: S.optional(S.NullOr(S.Boolean)),
-          totp_secret: S.optional(S.NullOr(S.String).pipe(T.SensitiveValue({}))),
-          backup_codes: S.optional(__S(6, __c0, 6)),
-          delete_self_enabled: S.optional(S.NullOr(S.Boolean)),
-          create_organization_enabled: S.optional(S.NullOr(S.Boolean)),
-          legal_accepted_at: S.optional(S.NullOr(S.String)),
-          skip_legal_checks: S.optional(S.NullOr(S.Boolean)),
-          create_organizations_limit: S.optional(S.NullOr(S.Number)),
-          created_at: S.optional(S.NullOr(S.String)),
-          bypass_client_trust: S.optional(S.NullOr(S.Boolean)),
-        }).pipe(T.Http({ method: "PATCH", uri: "/users/{user_id}", code: 200 })),
-      ).annotate({ identifier: "UpdateUserRequest" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          user_id: S.String.pipe(T.Label()),
-          public_metadata: S.optional(__S(27, __c3, 3)),
-          private_metadata: S.optional(__S(27, __c3, 3)),
-          unsafe_metadata: S.optional(__S(27, __c3, 3)),
-        }).pipe(T.Http({ method: "PATCH", uri: "/users/{user_id}/metadata", code: 200 })),
-      ).annotate({
-        identifier: "UpdateUserMetadataRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          oauth_application_id: S.String.pipe(T.Label()),
-          uploader_user_id: S.optional(S.String),
-          file: S.String,
-        }).pipe(
-          T.Http({
-            method: "PUT",
-            uri: "/oauth_applications/{oauth_application_id}/logo",
-            code: 200,
-            contentType: "multipart",
-          }),
-        ),
-      ).annotate({
-        identifier: "UploadOAuthApplicationLogoRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          organization_id: S.String.pipe(T.Label()),
-          uploader_user_id: S.optional(S.String),
-          file: S.String,
-        }).pipe(
-          T.Http({
-            method: "PUT",
-            uri: "/organizations/{organization_id}/logo",
-            code: 200,
-            contentType: "multipart",
-          }),
-        ),
-      ).annotate({
-        identifier: "UploadOrganizationLogoRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          object: S.String,
-          id: S.String,
-          name: S.String,
-          slug: S.String,
-          image_url: S.String,
-          has_image: S.Boolean,
-          members_count: S.optional(S.Number),
-          missing_member_with_elevated_permissions: S.optional(S.Boolean),
-          pending_invitations_count: S.optional(S.Number),
-          max_allowed_memberships: S.Number,
-          admin_delete_enabled: S.Boolean,
-          self_serve_sso_enabled: S.optional(S.NullOr(S.Boolean)),
-          public_metadata: __S(27, __c3, 3),
-          private_metadata: S.optional(__S(27, __c3, 3)),
-          created_by: S.optional(S.String),
-          created_at: S.Number,
-          updated_at: S.Number,
-          last_active_at: S.optional(S.Number),
-          role_set_key: S.optional(S.NullOr(S.String)),
-          logo_url: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "UploadOrganizationLogoResponse",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          user_id: S.String.pipe(T.Label()),
-          limit: S.optional(S.Number.pipe(T.Query())),
-          offset: S.optional(S.Number.pipe(T.Query())),
-          status: S.optional(S.String.pipe(T.Query())),
-        }).pipe(
-          T.Http({ method: "GET", uri: "/users/{user_id}/organization_invitations", code: 200 }),
-        ),
-      ).annotate({
-        identifier: "UsersGetOrganizationInvitationsRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          user_id: S.String.pipe(T.Label()),
-          limit: S.optional(S.Number.pipe(T.Query())),
-          offset: S.optional(S.Number.pipe(T.Query())),
-        }).pipe(
-          T.Http({ method: "GET", uri: "/users/{user_id}/organization_memberships", code: 200 }),
-        ),
-      ).annotate({
-        identifier: "UsersGetOrganizationMembershipsRequest",
-      });
-  }
-}
-function __c64(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          secret: S.String.pipe(T.SensitiveValue({})),
-        }).pipe(T.Http({ method: "POST", uri: "/api_keys/verify", code: 200 })),
-      ).annotate({ identifier: "VerifyApiKeyRequest" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          object: S.String,
-          id: S.String,
-          type: S.String,
-          subject: S.String,
-          name: S.String,
-          description: S.optional(S.NullOr(S.String)),
-          claims: S.NullOr(S.Unknown),
-          scopes: __S(6, __c0, 6),
-          revoked: S.Boolean,
-          revocation_reason: S.NullOr(S.String),
-          expired: S.Boolean,
-          expiration: S.NullOr(S.Number),
-          created_by: S.NullOr(S.String),
-          last_used_at: S.NullOr(S.Number),
-          created_at: S.Number,
-          updated_at: S.Number,
-        }),
-      ).annotate({ identifier: "VerifyApiKeyResponse" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          token: S.String,
-        }).pipe(T.Http({ method: "POST", uri: "/clients/verify", code: 200 })),
-      ).annotate({ identifier: "VerifyClientRequest" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          domain_id: S.optional(S.String),
-          proxy_url: S.optional(S.String),
-        }).pipe(T.Http({ method: "POST", uri: "/proxy_checks", code: 200 })),
-      ).annotate({ identifier: "VerifyDomainProxyRequest" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          object: S.String,
-          id: S.String,
-          domain_id: S.String,
-          last_run_at: S.NullOr(S.Number),
-          proxy_url: S.String,
-          successful: S.Boolean,
-          created_at: S.Number,
-          updated_at: S.Number,
-        }),
-      ).annotate({ identifier: "ProxyCheck" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          token: S.String,
-        }).pipe(T.Http({ method: "POST", uri: "/m2m_tokens/verify", code: 200 })),
-      ).annotate({ identifier: "VerifyM2MTokenRequest" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          object: S.String,
-          id: S.String,
-          subject: S.String,
-          claims: S.optional(S.NullOr(S.Unknown)),
-          scopes: S.optional(__S(6, __c0, 6)),
-          revoked: S.Boolean,
-          revocation_reason: S.NullOr(S.String),
-          expired: S.Boolean,
-          expiration: S.NullOr(S.Number),
-          last_used_at: S.NullOr(S.Number),
-          created_at: S.Number,
-          updated_at: S.Number,
-        }),
-      ).annotate({ identifier: "VerifyM2MTokenResponse" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          access_token: S.optional(S.String.pipe(T.SensitiveValue({}))),
-          secret: S.optional(S.String.pipe(T.SensitiveValue({}))),
-        }).pipe(
-          T.Http({ method: "POST", uri: "/oauth_applications/access_tokens/verify", code: 200 }),
-        ),
-      ).annotate({
-        identifier: "VerifyOAuthAccessTokenRequest",
-      });
-  }
-}
-function __c65(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() => S.Unknown.pipe(T.RawResponseRoot())).annotate({
-        identifier: "VerifyOAuthAccessTokenResponse",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          organization_id: S.String.pipe(T.Label()),
-          domain_id: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/organizations/{organization_id}/domains/{domain_id}/verify_ownership",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "VerifyOrganizationDomainOwnershipRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          user_id: S.String.pipe(T.Label()),
-          password: S.String.pipe(T.SensitiveValue({})),
-        }).pipe(T.Http({ method: "POST", uri: "/users/{user_id}/verify_password", code: 200 })),
-      ).annotate({ identifier: "VerifyPasswordRequest" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          verified: S.optional(S.Boolean),
-        }),
-      ).annotate({ identifier: "VerifyPasswordResponse" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          user_id: S.String.pipe(T.Label()),
-          code: S.String,
-        }).pipe(T.Http({ method: "POST", uri: "/users/{user_id}/verify_totp", code: 200 })),
-      ).annotate({ identifier: "VerifyTOTPRequest" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          verified: S.optional(S.Boolean),
-          code_type: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "VerifyTOTPResponse" });
-  }
-}
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

@@ -629,8 +629,8 @@ export const createDatabase: API.OperationMethod<
   CreateDatabaseError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1, __c0, 1) as any as S.Schema<CreateDatabaseRequest>,
-  output: __S(2, __c0, 2) as any as S.Schema<CreateDatabaseResponse>,
+  input: __S(112, __c14, 0) as any as S.Schema<CreateDatabaseRequest>,
+  output: __S(121, __c15, 1) as any as S.Schema<CreateDatabaseResponse>,
   errors: [
     InvalidObjectIdentifier,
     InvalidProperty,
@@ -654,8 +654,8 @@ export const deleteDatabase: API.OperationMethod<
   DeleteDatabaseError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3, __c0, 3) as any as S.Schema<DeleteDatabaseRequest>,
-  output: __S(4, __c0, 4) as any as S.Schema<DeleteDatabaseResponse>,
+  input: __S(0, __c0, 0) as any as S.Schema<DeleteDatabaseRequest>,
+  output: __S(1, __c0, 1) as any as S.Schema<DeleteDatabaseResponse>,
   errors: [
     InvalidObjectIdentifier,
     DatabaseNotFound,
@@ -679,8 +679,8 @@ export const exportDatabase: API.OperationMethod<
   ExportDatabaseError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(7, __c0, 7) as any as S.Schema<ExportDatabaseRequest>,
-  output: __S(9, __c1, 1) as any as S.Schema<ExportDatabaseResponse>,
+  input: __S(9, __c1, 1) as any as S.Schema<ExportDatabaseRequest>,
+  output: __S(11, __c1, 3) as any as S.Schema<ExportDatabaseResponse>,
   errors: [
     InvalidObjectIdentifier,
     InvalidRequest,
@@ -705,8 +705,8 @@ export const getBookmarkDatabaseTimeTravel: API.OperationMethod<
   GetBookmarkDatabaseTimeTravelError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(10, __c1, 2) as any as S.Schema<GetBookmarkDatabaseTimeTravelRequest>,
-  output: __S(11, __c1, 3) as any as S.Schema<GetBookmarkDatabaseTimeTravelResponse>,
+  input: __S(24, __c3, 0) as any as S.Schema<GetBookmarkDatabaseTimeTravelRequest>,
+  output: __S(25, __c3, 1) as any as S.Schema<GetBookmarkDatabaseTimeTravelResponse>,
   errors: [
     InvalidObjectIdentifier,
     NoHistoryAvailable,
@@ -731,8 +731,8 @@ export const getDatabase: API.OperationMethod<
   GetDatabaseError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(13, __c1, 5) as any as S.Schema<GetDatabaseRequest>,
-  output: __S(2, __c0, 2) as any as S.Schema<GetDatabaseResponse>,
+  input: __S(33, __c4, 1) as any as S.Schema<GetDatabaseRequest>,
+  output: __S(121, __c15, 1) as any as S.Schema<GetDatabaseResponse>,
   errors: [
     InvalidObjectIdentifier,
     DatabaseNotFound,
@@ -752,8 +752,8 @@ export const importDatabase: API.OperationMethod<
   ImportDatabaseError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(14, __c1, 6) as any as S.Schema<ImportDatabaseRequest>,
-  output: __S(18, __c2, 2) as any as S.Schema<ImportDatabaseResponse>,
+  input: __S(40, __c5, 0) as any as S.Schema<ImportDatabaseRequest>,
+  output: __S(42, __c5, 2) as any as S.Schema<ImportDatabaseResponse>,
   errors: [InvalidObjectIdentifier, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -769,8 +769,8 @@ export const listDatabases: API.PaginatedOperationMethod<
   DatabaseListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(19, __c2, 3) as any as S.Schema<ListDatabasesRequest>,
-    output: __S(22, __c2, 6) as any as S.Schema<ListDatabasesResponse>,
+    input: __S(56, __c7, 0) as any as S.Schema<ListDatabasesRequest>,
+    output: __S(59, __c7, 3) as any as S.Schema<ListDatabasesResponse>,
     errors: [CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
     retry: Retry.Retry,
@@ -797,8 +797,8 @@ export const patchDatabase: API.OperationMethod<
   PatchDatabaseError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(23, __c2, 7) as any as S.Schema<PatchDatabaseRequest>,
-  output: __S(2, __c0, 2) as any as S.Schema<PatchDatabaseResponse>,
+  input: __S(64, __c8, 0) as any as S.Schema<PatchDatabaseRequest>,
+  output: __S(121, __c15, 1) as any as S.Schema<PatchDatabaseResponse>,
   errors: [
     InvalidObjectIdentifier,
     InternalError,
@@ -820,8 +820,8 @@ export const queryDatabase: API.PaginatedOperationMethod<
   DatabaseQueryResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(27, __c3, 3) as any as S.Schema<QueryDatabaseRequest>,
-    output: __S(30, __c3, 6) as any as S.Schema<QueryDatabaseResponse>,
+    input: __S(72, __c9, 0) as any as S.Schema<QueryDatabaseRequest>,
+    output: __S(75, __c9, 3) as any as S.Schema<QueryDatabaseResponse>,
     errors: [CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
     retry: Retry.Retry,
@@ -840,8 +840,8 @@ export const rawDatabase: API.PaginatedOperationMethod<
   DatabaseRawResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(31, __c3, 7) as any as S.Schema<RawDatabaseRequest>,
-    output: __S(35, __c4, 3) as any as S.Schema<RawDatabaseResponse>,
+    input: __S(88, __c11, 0) as any as S.Schema<RawDatabaseRequest>,
+    output: __S(92, __c11, 4) as any as S.Schema<RawDatabaseResponse>,
     errors: [CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
     retry: Retry.Retry,
@@ -863,8 +863,8 @@ export const restoreDatabaseTimeTravel: API.OperationMethod<
   RestoreDatabaseTimeTravelError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(36, __c4, 4) as any as S.Schema<RestoreDatabaseTimeTravelRequest>,
-  output: __S(37, __c4, 5) as any as S.Schema<RestoreDatabaseTimeTravelResponse>,
+  input: __S(96, __c12, 0) as any as S.Schema<RestoreDatabaseTimeTravelRequest>,
+  output: __S(97, __c12, 1) as any as S.Schema<RestoreDatabaseTimeTravelResponse>,
   errors: [
     InvalidObjectIdentifier,
     NoHistoryAvailable,
@@ -889,8 +889,8 @@ export const updateDatabase: API.OperationMethod<
   UpdateDatabaseError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(38, __c4, 6) as any as S.Schema<UpdateDatabaseRequest>,
-  output: __S(2, __c0, 2) as any as S.Schema<UpdateDatabaseResponse>,
+  input: __S(104, __c13, 0) as any as S.Schema<UpdateDatabaseRequest>,
+  output: __S(121, __c15, 1) as any as S.Schema<UpdateDatabaseResponse>,
   errors: [
     InvalidObjectIdentifier,
     InternalError,
@@ -908,39 +908,6 @@ function __c0(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          mode: S.String,
-        }),
-      ).annotate({
-        identifier: "DatabaseCreateRequestReadReplication",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          accountId: S.String.pipe(T.Label("account_id")),
-          name: S.String,
-          jurisdiction: S.optional(S.String),
-          primaryLocationHint: S.optional(S.String.pipe(T.Body("primary_location_hint"))),
-          readReplication: S.optional(__S(0, __c0, 0).pipe(T.Body("read_replication"))),
-        })
-          .pipe(T.Http({ method: "POST", uri: "/accounts/{account_id}/d1/database", code: 200 }))
-          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({ identifier: "CreateDatabaseRequest" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          createdAt: S.optional(S.NullOr(S.String).pipe(T.Body("created_at"))),
-          fileSize: S.optional(S.NullOr(S.Number).pipe(T.Body("file_size"))),
-          jurisdiction: S.optional(S.NullOr(S.String)),
-          name: S.optional(S.NullOr(S.String)),
-          numTables: S.optional(S.NullOr(S.Number).pipe(T.Body("num_tables"))),
-          readReplication: S.optional(S.NullOr(__S(0, __c0, 0)).pipe(T.Body("read_replication"))),
-          uuid: S.optional(S.NullOr(S.String)),
-          version: S.optional(S.NullOr(S.String)),
-        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({ identifier: "CreateDatabaseResponse" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
           databaseId: S.String.pipe(T.Label("database_id")),
         })
@@ -953,30 +920,32 @@ function __c0(j: number): any {
           )
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "DeleteDatabaseRequest" });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Unknown.pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "DeleteDatabaseResponse" });
-    case 5:
-      return S.Array(S.String);
-    case 6:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           noData: S.optional(S.Boolean.pipe(T.Body("no_data"))),
           noSchema: S.optional(S.Boolean.pipe(T.Body("no_schema"))),
-          tables: S.optional(__S(5, __c0, 5)),
+          tables: S.optional(__S(16, __c2, 0)),
         }),
       ).annotate({
         identifier: "DatabaseExportRequestDumpOptions",
       });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
           databaseId: S.String.pipe(T.Label("database_id")),
           outputFormat: S.String.pipe(T.Body("output_format")),
           currentBookmark: S.optional(S.String.pipe(T.Body("current_bookmark"))),
-          dumpOptions: S.optional(__S(6, __c0, 6).pipe(T.Body("dump_options"))),
+          dumpOptions: S.optional(__S(8, __c1, 0).pipe(T.Body("dump_options"))),
         })
           .pipe(
             T.Http({
@@ -987,11 +956,7 @@ function __c0(j: number): any {
           )
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "ExportDatabaseRequest" });
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           filename: S.optional(S.NullOr(S.String)),
@@ -1000,19 +965,29 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "DatabaseExportResponseResult",
       });
-    case 1:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           atBookmark: S.optional(S.NullOr(S.String).pipe(T.Body("at_bookmark"))),
           error: S.optional(S.NullOr(S.String)),
-          messages: S.optional(S.NullOr(__S(5, __c0, 5))),
-          result: S.optional(S.NullOr(__S(8, __c1, 0))),
+          messages: S.optional(S.NullOr(__S(16, __c2, 0))),
+          result: S.optional(S.NullOr(__S(10, __c1, 2))),
           status: S.optional(S.NullOr(S.String)),
           success: S.optional(S.NullOr(S.Boolean)),
           type: S.optional(S.NullOr(S.String)),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "ExportDatabaseResponse" });
-    case 2:
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -1030,7 +1005,7 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "GetBookmarkDatabaseTimeTravelRequest",
       });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           bookmark: S.optional(S.NullOr(S.String)),
@@ -1038,14 +1013,18 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "GetBookmarkDatabaseTimeTravelResponse",
       });
-    case 4:
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
       return S.Array(S.String);
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
           databaseId: S.String.pipe(T.Label("database_id")),
-          fields: S.optional(__S(12, __c1, 4).pipe(T.Query())),
+          fields: S.optional(__S(32, __c4, 0).pipe(T.Query())),
         })
           .pipe(
             T.Http({
@@ -1056,7 +1035,11 @@ function __c1(j: number): any {
           )
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "GetDatabaseRequest" });
-    case 6:
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -1075,7 +1058,35 @@ function __c1(j: number): any {
           )
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "ImportDatabaseRequest" });
-    case 7:
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          finalBookmark: S.optional(S.NullOr(S.String).pipe(T.Body("final_bookmark"))),
+          meta: S.optional(S.NullOr(__S(49, __c6, 1))),
+          numQueries: S.optional(S.NullOr(S.Number).pipe(T.Body("num_queries"))),
+        }),
+      ).annotate({
+        identifier: "DatabaseImportResponseResult",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          atBookmark: S.optional(S.NullOr(S.String).pipe(T.Body("at_bookmark"))),
+          error: S.optional(S.NullOr(S.String)),
+          filename: S.optional(S.NullOr(S.String)),
+          messages: S.optional(S.NullOr(__S(16, __c2, 0))),
+          result: S.optional(S.NullOr(__S(41, __c5, 1))),
+          status: S.optional(S.NullOr(S.String)),
+          success: S.optional(S.NullOr(S.Boolean)),
+          type: S.optional(S.NullOr(S.String)),
+          uploadUrl: S.optional(S.NullOr(S.String).pipe(T.Body("upload_url"))),
+        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({ identifier: "ImportDatabaseResponse" });
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           sqlDurationMs: S.optional(S.NullOr(S.Number).pipe(T.Body("sql_duration_ms"))),
@@ -1083,11 +1094,7 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "DatabaseImportResponseResultMetaTimings",
       });
-  }
-}
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           changedDb: S.optional(S.NullOr(S.Boolean).pipe(T.Body("changed_db"))),
@@ -1100,36 +1107,16 @@ function __c2(j: number): any {
           servedByPrimary: S.optional(S.NullOr(S.Boolean).pipe(T.Body("served_by_primary"))),
           servedByRegion: S.optional(S.NullOr(S.String).pipe(T.Body("served_by_region"))),
           sizeAfter: S.optional(S.NullOr(S.Number).pipe(T.Body("size_after"))),
-          timings: S.optional(S.NullOr(__S(15, __c1, 7))),
+          timings: S.optional(S.NullOr(__S(48, __c6, 0))),
         }),
       ).annotate({
         identifier: "DatabaseImportResponseResultMeta",
       });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          finalBookmark: S.optional(S.NullOr(S.String).pipe(T.Body("final_bookmark"))),
-          meta: S.optional(S.NullOr(__S(16, __c2, 0))),
-          numQueries: S.optional(S.NullOr(S.Number).pipe(T.Body("num_queries"))),
-        }),
-      ).annotate({
-        identifier: "DatabaseImportResponseResult",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          atBookmark: S.optional(S.NullOr(S.String).pipe(T.Body("at_bookmark"))),
-          error: S.optional(S.NullOr(S.String)),
-          filename: S.optional(S.NullOr(S.String)),
-          messages: S.optional(S.NullOr(__S(5, __c0, 5))),
-          result: S.optional(S.NullOr(__S(17, __c2, 1))),
-          status: S.optional(S.NullOr(S.String)),
-          success: S.optional(S.NullOr(S.Boolean)),
-          type: S.optional(S.NullOr(S.String)),
-          uploadUrl: S.optional(S.NullOr(S.String).pipe(T.Body("upload_url"))),
-        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({ identifier: "ImportDatabaseResponse" });
-    case 3:
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -1140,7 +1127,7 @@ function __c2(j: number): any {
           .pipe(T.Http({ method: "GET", uri: "/accounts/{account_id}/d1/database", code: 200 }))
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "ListDatabasesRequest" });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           createdAt: S.optional(S.NullOr(S.String).pipe(T.Body("created_at"))),
@@ -1150,21 +1137,25 @@ function __c2(j: number): any {
           version: S.optional(S.NullOr(S.String)),
         }),
       ).annotate({ identifier: "DatabaseListResultItem" });
-    case 5:
-      return S.Array(__S(20, __c2, 4));
-    case 6:
+    case 2:
+      return S.Array(__S(57, __c7, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          result: __S(21, __c2, 5).pipe(T.EnvelopePayload()),
+          result: __S(58, __c7, 2).pipe(T.EnvelopePayload()),
           resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "ListDatabasesResponse" });
-    case 7:
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
           databaseId: S.String.pipe(T.Label("database_id")),
-          readReplication: S.optional(__S(0, __c0, 0).pipe(T.Body("read_replication"))),
+          readReplication: S.optional(__S(120, __c15, 0).pipe(T.Body("read_replication"))),
         })
           .pipe(
             T.Http({
@@ -1177,29 +1168,16 @@ function __c2(j: number): any {
       ).annotate({ identifier: "PatchDatabaseRequest" });
   }
 }
-function __c3(j: number): any {
+function __c9(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(S.Unknown);
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          sql: S.String,
-          params: S.optional(__S(24, __c3, 0)),
-        }),
-      ).annotate({
-        identifier: "DatabaseQueryRequestBatchItem",
-      });
-    case 2:
-      return S.Array(__S(25, __c3, 1));
-    case 3:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
           databaseId: S.String.pipe(T.Label("database_id")),
           sql: S.optional(S.String),
-          params: S.optional(__S(24, __c3, 0)),
-          batch: S.optional(__S(26, __c3, 2)),
+          params: S.optional(__S(80, __c10, 0)),
+          batch: S.optional(__S(82, __c10, 2)),
         })
           .pipe(
             T.Http({
@@ -1210,31 +1188,52 @@ function __c3(j: number): any {
           )
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "QueryDatabaseRequest" });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          meta: S.optional(S.NullOr(__S(16, __c2, 0))),
-          results: S.optional(S.NullOr(__S(24, __c3, 0))),
+          meta: S.optional(S.NullOr(__S(49, __c6, 1))),
+          results: S.optional(S.NullOr(__S(80, __c10, 0))),
           success: S.optional(S.NullOr(S.Boolean)),
         }),
       ).annotate({ identifier: "DatabaseQueryResultItem" });
-    case 5:
-      return S.Array(__S(28, __c3, 4));
-    case 6:
+    case 2:
+      return S.Array(__S(73, __c9, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          result: __S(29, __c3, 5).pipe(T.EnvelopePayload()),
+          result: __S(74, __c9, 2).pipe(T.EnvelopePayload()),
           resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "QueryDatabaseResponse" });
-    case 7:
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.Unknown);
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          sql: S.String,
+          params: S.optional(__S(80, __c10, 0)),
+        }),
+      ).annotate({
+        identifier: "DatabaseQueryRequestBatchItem",
+      });
+    case 2:
+      return S.Array(__S(81, __c10, 1));
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
           databaseId: S.String.pipe(T.Label("database_id")),
           sql: S.optional(S.String),
-          params: S.optional(__S(24, __c3, 0)),
-          batch: S.optional(__S(26, __c3, 2)),
+          params: S.optional(__S(80, __c10, 0)),
+          batch: S.optional(__S(82, __c10, 2)),
         })
           .pipe(
             T.Http({
@@ -1245,37 +1244,37 @@ function __c3(j: number): any {
           )
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "RawDatabaseRequest" });
-  }
-}
-function __c4(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          columns: S.optional(S.NullOr(__S(5, __c0, 5))),
-          rows: S.optional(S.NullOr(__S(24, __c3, 0))),
+          columns: S.optional(S.NullOr(__S(16, __c2, 0))),
+          rows: S.optional(S.NullOr(__S(80, __c10, 0))),
         }),
       ).annotate({
         identifier: "DatabaseRawResultItemResults",
       });
-    case 1:
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          meta: S.optional(S.NullOr(__S(16, __c2, 0))),
-          results: S.optional(S.NullOr(__S(32, __c4, 0))),
+          meta: S.optional(S.NullOr(__S(49, __c6, 1))),
+          results: S.optional(S.NullOr(__S(89, __c11, 1))),
           success: S.optional(S.NullOr(S.Boolean)),
         }),
       ).annotate({ identifier: "DatabaseRawResultItem" });
-    case 2:
-      return S.Array(__S(33, __c4, 1));
     case 3:
+      return S.Array(__S(90, __c11, 2));
+    case 4:
       return S.suspend(() =>
         S.Struct({
-          result: __S(34, __c4, 2).pipe(T.EnvelopePayload()),
+          result: __S(91, __c11, 3).pipe(T.EnvelopePayload()),
           resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "RawDatabaseResponse" });
-    case 4:
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -1294,7 +1293,7 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "RestoreDatabaseTimeTravelRequest",
       });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           bookmark: S.optional(S.NullOr(S.String)),
@@ -1304,12 +1303,16 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "RestoreDatabaseTimeTravelResponse",
       });
-    case 6:
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
           databaseId: S.String.pipe(T.Label("database_id")),
-          readReplication: __S(0, __c0, 0).pipe(T.Body("read_replication")),
+          readReplication: __S(120, __c15, 0).pipe(T.Body("read_replication")),
         })
           .pipe(
             T.Http({
@@ -1322,7 +1325,49 @@ function __c4(j: number): any {
       ).annotate({ identifier: "UpdateDatabaseRequest" });
   }
 }
-
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          accountId: S.String.pipe(T.Label("account_id")),
+          name: S.String,
+          jurisdiction: S.optional(S.String),
+          primaryLocationHint: S.optional(S.String.pipe(T.Body("primary_location_hint"))),
+          readReplication: S.optional(__S(120, __c15, 0).pipe(T.Body("read_replication"))),
+        })
+          .pipe(T.Http({ method: "POST", uri: "/accounts/{account_id}/d1/database", code: 200 }))
+          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({ identifier: "CreateDatabaseRequest" });
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          mode: S.String,
+        }),
+      ).annotate({
+        identifier: "DatabaseCreateRequestReadReplication",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          createdAt: S.optional(S.NullOr(S.String).pipe(T.Body("created_at"))),
+          fileSize: S.optional(S.NullOr(S.Number).pipe(T.Body("file_size"))),
+          jurisdiction: S.optional(S.NullOr(S.String)),
+          name: S.optional(S.NullOr(S.String)),
+          numTables: S.optional(S.NullOr(S.Number).pipe(T.Body("num_tables"))),
+          readReplication: S.optional(
+            S.NullOr(__S(120, __c15, 0)).pipe(T.Body("read_replication")),
+          ),
+          uuid: S.optional(S.NullOr(S.String)),
+          version: S.optional(S.NullOr(S.String)),
+        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({ identifier: "CreateDatabaseResponse" });
+  }
+}
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

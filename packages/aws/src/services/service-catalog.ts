@@ -1697,8 +1697,8 @@ export const acceptPortfolioShare: API.OperationMethod<
   AcceptPortfolioShareError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(0, __c0, 0) as any as S.Schema<AcceptPortfolioShareInput>,
-  output: __S(1, __c0, 1) as any as S.Schema<AcceptPortfolioShareOutput>,
+  input: __S(1936, __c121, 0) as any as S.Schema<AcceptPortfolioShareInput>,
+  output: __S(1952, __c122, 0) as any as S.Schema<AcceptPortfolioShareOutput>,
   errors: [InvalidParametersException, LimitExceededException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1720,8 +1720,8 @@ export const associateBudgetWithResource: API.OperationMethod<
   AssociateBudgetWithResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2, __c0, 2) as any as S.Schema<AssociateBudgetWithResourceInput>,
-  output: __S(3, __c0, 3) as any as S.Schema<AssociateBudgetWithResourceOutput>,
+  input: __S(0, __c0, 0) as any as S.Schema<AssociateBudgetWithResourceInput>,
+  output: __S(16, __c1, 0) as any as S.Schema<AssociateBudgetWithResourceOutput>,
   errors: [
     DuplicateResourceException,
     InvalidParametersException,
@@ -1763,8 +1763,8 @@ export const associatePrincipalWithPortfolio: API.OperationMethod<
   AssociatePrincipalWithPortfolioError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(4, __c0, 4) as any as S.Schema<AssociatePrincipalWithPortfolioInput>,
-  output: __S(3, __c0, 3) as any as S.Schema<AssociatePrincipalWithPortfolioOutput>,
+  input: __S(32, __c2, 0) as any as S.Schema<AssociatePrincipalWithPortfolioInput>,
+  output: __S(16, __c1, 0) as any as S.Schema<AssociatePrincipalWithPortfolioOutput>,
   errors: [InvalidParametersException, LimitExceededException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1787,8 +1787,8 @@ export const associateProductWithPortfolio: API.OperationMethod<
   AssociateProductWithPortfolioError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(5, __c0, 5) as any as S.Schema<AssociateProductWithPortfolioInput>,
-  output: __S(3, __c0, 3) as any as S.Schema<AssociateProductWithPortfolioOutput>,
+  input: __S(48, __c3, 0) as any as S.Schema<AssociateProductWithPortfolioInput>,
+  output: __S(16, __c1, 0) as any as S.Schema<AssociateProductWithPortfolioOutput>,
   errors: [InvalidParametersException, LimitExceededException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1810,8 +1810,8 @@ export const associateServiceActionWithProvisioningArtifact: API.OperationMethod
   AssociateServiceActionWithProvisioningArtifactError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(6, __c0, 6) as any as S.Schema<AssociateServiceActionWithProvisioningArtifactInput>,
-  output: __S(3, __c0, 3) as any as S.Schema<AssociateServiceActionWithProvisioningArtifactOutput>,
+  input: __S(64, __c4, 0) as any as S.Schema<AssociateServiceActionWithProvisioningArtifactInput>,
+  output: __S(16, __c1, 0) as any as S.Schema<AssociateServiceActionWithProvisioningArtifactOutput>,
   errors: [
     DuplicateResourceException,
     InvalidParametersException,
@@ -1840,8 +1840,8 @@ export const associateTagOptionWithResource: API.OperationMethod<
   AssociateTagOptionWithResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(7, __c0, 7) as any as S.Schema<AssociateTagOptionWithResourceInput>,
-  output: __S(3, __c0, 3) as any as S.Schema<AssociateTagOptionWithResourceOutput>,
+  input: __S(80, __c5, 0) as any as S.Schema<AssociateTagOptionWithResourceInput>,
+  output: __S(16, __c1, 0) as any as S.Schema<AssociateTagOptionWithResourceOutput>,
   errors: [
     DuplicateResourceException,
     InvalidParametersException,
@@ -1868,14 +1868,14 @@ export const batchAssociateServiceActionWithProvisioningArtifact: API.OperationM
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    10,
-    __c1,
-    2,
+    96,
+    __c6,
+    0,
   ) as any as S.Schema<BatchAssociateServiceActionWithProvisioningArtifactInput>,
   output: __S(
-    13,
-    __c1,
-    5,
+    116,
+    __c7,
+    4,
   ) as any as S.Schema<BatchAssociateServiceActionWithProvisioningArtifactOutput>,
   errors: [InvalidParametersException],
   protocol: AwsProtocol,
@@ -1896,14 +1896,14 @@ export const batchDisassociateServiceActionFromProvisioningArtifact: API.Operati
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    14,
-    __c1,
-    6,
+    128,
+    __c8,
+    0,
   ) as any as S.Schema<BatchDisassociateServiceActionFromProvisioningArtifactInput>,
   output: __S(
-    13,
-    __c1,
-    5,
+    116,
+    __c7,
+    4,
   ) as any as S.Schema<BatchDisassociateServiceActionFromProvisioningArtifactOutput>,
   errors: [InvalidParametersException],
   protocol: AwsProtocol,
@@ -1932,8 +1932,8 @@ export const copyProduct: API.OperationMethod<
   CopyProductError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(18, __c2, 2) as any as S.Schema<CopyProductInput>,
-  output: __S(19, __c2, 3) as any as S.Schema<CopyProductOutput>,
+  input: __S(145, __c9, 1) as any as S.Schema<CopyProductInput>,
+  output: __S(146, __c9, 2) as any as S.Schema<CopyProductOutput>,
   errors: [InvalidParametersException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1957,8 +1957,8 @@ export const createConstraint: API.OperationMethod<
   CreateConstraintError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(20, __c2, 4) as any as S.Schema<CreateConstraintInput>,
-  output: __S(22, __c2, 6) as any as S.Schema<CreateConstraintOutput>,
+  input: __S(192, __c12, 0) as any as S.Schema<CreateConstraintInput>,
+  output: __S(224, __c14, 0) as any as S.Schema<CreateConstraintOutput>,
   errors: [
     DuplicateResourceException,
     InvalidParametersException,
@@ -1986,8 +1986,8 @@ export const createPortfolio: API.OperationMethod<
   CreatePortfolioError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(25, __c3, 1) as any as S.Schema<CreatePortfolioInput>,
-  output: __S(27, __c3, 3) as any as S.Schema<CreatePortfolioOutput>,
+  input: __S(240, __c15, 0) as any as S.Schema<CreatePortfolioInput>,
+  output: __S(288, __c18, 0) as any as S.Schema<CreatePortfolioOutput>,
   errors: [InvalidParametersException, LimitExceededException, TagOptionNotMigratedException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2030,8 +2030,8 @@ export const createPortfolioShare: API.OperationMethod<
   CreatePortfolioShareError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(29, __c3, 5) as any as S.Schema<CreatePortfolioShareInput>,
-  output: __S(30, __c3, 6) as any as S.Schema<CreatePortfolioShareOutput>,
+  input: __S(304, __c19, 0) as any as S.Schema<CreatePortfolioShareInput>,
+  output: __S(320, __c20, 0) as any as S.Schema<CreatePortfolioShareOutput>,
   errors: [
     InvalidParametersException,
     InvalidStateException,
@@ -2065,8 +2065,8 @@ export const createProduct: API.OperationMethod<
   CreateProductError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(36, __c4, 4) as any as S.Schema<CreateProductInput>,
-  output: __S(42, __c5, 2) as any as S.Schema<CreateProductOutput>,
+  input: __S(352, __c22, 0) as any as S.Schema<CreateProductInput>,
+  output: __S(353, __c22, 1) as any as S.Schema<CreateProductOutput>,
   errors: [InvalidParametersException, LimitExceededException, TagOptionNotMigratedException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2097,8 +2097,8 @@ export const createProvisionedProductPlan: API.OperationMethod<
   CreateProvisionedProductPlanError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(46, __c5, 6) as any as S.Schema<CreateProvisionedProductPlanInput>,
-  output: __S(47, __c5, 7) as any as S.Schema<CreateProvisionedProductPlanOutput>,
+  input: __S(464, __c29, 0) as any as S.Schema<CreateProvisionedProductPlanInput>,
+  output: __S(465, __c29, 1) as any as S.Schema<CreateProvisionedProductPlanOutput>,
   errors: [InvalidParametersException, InvalidStateException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2125,8 +2125,8 @@ export const createProvisioningArtifact: API.OperationMethod<
   CreateProvisioningArtifactError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(48, __c6, 0) as any as S.Schema<CreateProvisioningArtifactInput>,
-  output: __S(49, __c6, 1) as any as S.Schema<CreateProvisioningArtifactOutput>,
+  input: __S(512, __c32, 0) as any as S.Schema<CreateProvisioningArtifactInput>,
+  output: __S(528, __c33, 0) as any as S.Schema<CreateProvisioningArtifactOutput>,
   errors: [InvalidParametersException, LimitExceededException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2146,8 +2146,8 @@ export const createServiceAction: API.OperationMethod<
   CreateServiceActionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(50, __c6, 2) as any as S.Schema<CreateServiceActionInput>,
-  output: __S(53, __c6, 5) as any as S.Schema<CreateServiceActionOutput>,
+  input: __S(544, __c34, 0) as any as S.Schema<CreateServiceActionInput>,
+  output: __S(577, __c36, 1) as any as S.Schema<CreateServiceActionOutput>,
   errors: [InvalidParametersException, LimitExceededException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2168,8 +2168,8 @@ export const createTagOption: API.OperationMethod<
   CreateTagOptionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(54, __c6, 6) as any as S.Schema<CreateTagOptionInput>,
-  output: __S(56, __c7, 0) as any as S.Schema<CreateTagOptionOutput>,
+  input: __S(592, __c37, 0) as any as S.Schema<CreateTagOptionInput>,
+  output: __S(624, __c39, 0) as any as S.Schema<CreateTagOptionOutput>,
   errors: [DuplicateResourceException, LimitExceededException, TagOptionNotMigratedException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2191,8 +2191,8 @@ export const deleteConstraint: API.OperationMethod<
   DeleteConstraintError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(57, __c7, 1) as any as S.Schema<DeleteConstraintInput>,
-  output: __S(1, __c0, 1) as any as S.Schema<DeleteConstraintOutput>,
+  input: __S(640, __c40, 0) as any as S.Schema<DeleteConstraintInput>,
+  output: __S(1952, __c122, 0) as any as S.Schema<DeleteConstraintOutput>,
   errors: [InvalidParametersException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2219,8 +2219,8 @@ export const deletePortfolio: API.OperationMethod<
   DeletePortfolioError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(58, __c7, 2) as any as S.Schema<DeletePortfolioInput>,
-  output: __S(1, __c0, 1) as any as S.Schema<DeletePortfolioOutput>,
+  input: __S(656, __c41, 0) as any as S.Schema<DeletePortfolioInput>,
+  output: __S(1952, __c122, 0) as any as S.Schema<DeletePortfolioOutput>,
   errors: [
     InvalidParametersException,
     ResourceInUseException,
@@ -2251,8 +2251,8 @@ export const deletePortfolioShare: API.OperationMethod<
   DeletePortfolioShareError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(59, __c7, 3) as any as S.Schema<DeletePortfolioShareInput>,
-  output: __S(30, __c3, 6) as any as S.Schema<DeletePortfolioShareOutput>,
+  input: __S(672, __c42, 0) as any as S.Schema<DeletePortfolioShareInput>,
+  output: __S(320, __c20, 0) as any as S.Schema<DeletePortfolioShareOutput>,
   errors: [
     InvalidParametersException,
     InvalidStateException,
@@ -2283,8 +2283,8 @@ export const deleteProduct: API.OperationMethod<
   DeleteProductError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(60, __c7, 4) as any as S.Schema<DeleteProductInput>,
-  output: __S(1, __c0, 1) as any as S.Schema<DeleteProductOutput>,
+  input: __S(688, __c43, 0) as any as S.Schema<DeleteProductInput>,
+  output: __S(1952, __c122, 0) as any as S.Schema<DeleteProductOutput>,
   errors: [
     InvalidParametersException,
     ResourceInUseException,
@@ -2309,8 +2309,8 @@ export const deleteProvisionedProductPlan: API.OperationMethod<
   DeleteProvisionedProductPlanError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(61, __c7, 5) as any as S.Schema<DeleteProvisionedProductPlanInput>,
-  output: __S(3, __c0, 3) as any as S.Schema<DeleteProvisionedProductPlanOutput>,
+  input: __S(704, __c44, 0) as any as S.Schema<DeleteProvisionedProductPlanInput>,
+  output: __S(16, __c1, 0) as any as S.Schema<DeleteProvisionedProductPlanOutput>,
   errors: [InvalidParametersException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2335,8 +2335,8 @@ export const deleteProvisioningArtifact: API.OperationMethod<
   DeleteProvisioningArtifactError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(62, __c7, 6) as any as S.Schema<DeleteProvisioningArtifactInput>,
-  output: __S(3, __c0, 3) as any as S.Schema<DeleteProvisioningArtifactOutput>,
+  input: __S(720, __c45, 0) as any as S.Schema<DeleteProvisioningArtifactInput>,
+  output: __S(16, __c1, 0) as any as S.Schema<DeleteProvisioningArtifactOutput>,
   errors: [InvalidParametersException, ResourceInUseException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2357,8 +2357,8 @@ export const deleteServiceAction: API.OperationMethod<
   DeleteServiceActionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(63, __c7, 7) as any as S.Schema<DeleteServiceActionInput>,
-  output: __S(1, __c0, 1) as any as S.Schema<DeleteServiceActionOutput>,
+  input: __S(736, __c46, 0) as any as S.Schema<DeleteServiceActionInput>,
+  output: __S(1952, __c122, 0) as any as S.Schema<DeleteServiceActionOutput>,
   errors: [InvalidParametersException, ResourceInUseException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2381,8 +2381,8 @@ export const deleteTagOption: API.OperationMethod<
   DeleteTagOptionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(64, __c8, 0) as any as S.Schema<DeleteTagOptionInput>,
-  output: __S(1, __c0, 1) as any as S.Schema<DeleteTagOptionOutput>,
+  input: __S(752, __c47, 0) as any as S.Schema<DeleteTagOptionInput>,
+  output: __S(1952, __c122, 0) as any as S.Schema<DeleteTagOptionOutput>,
   errors: [ResourceInUseException, ResourceNotFoundException, TagOptionNotMigratedException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2399,8 +2399,8 @@ export const describeConstraint: API.OperationMethod<
   DescribeConstraintError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(65, __c8, 1) as any as S.Schema<DescribeConstraintInput>,
-  output: __S(22, __c2, 6) as any as S.Schema<DescribeConstraintOutput>,
+  input: __S(768, __c48, 0) as any as S.Schema<DescribeConstraintInput>,
+  output: __S(224, __c14, 0) as any as S.Schema<DescribeConstraintOutput>,
   errors: [ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2417,8 +2417,8 @@ export const describeCopyProductStatus: API.OperationMethod<
   DescribeCopyProductStatusError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(66, __c8, 2) as any as S.Schema<DescribeCopyProductStatusInput>,
-  output: __S(67, __c8, 3) as any as S.Schema<DescribeCopyProductStatusOutput>,
+  input: __S(784, __c49, 0) as any as S.Schema<DescribeCopyProductStatusInput>,
+  output: __S(785, __c49, 1) as any as S.Schema<DescribeCopyProductStatusOutput>,
   errors: [ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2437,8 +2437,8 @@ export const describePortfolio: API.OperationMethod<
   DescribePortfolioError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(68, __c8, 4) as any as S.Schema<DescribePortfolioInput>,
-  output: __S(72, __c9, 0) as any as S.Schema<DescribePortfolioOutput>,
+  input: __S(800, __c50, 0) as any as S.Schema<DescribePortfolioInput>,
+  output: __S(801, __c50, 1) as any as S.Schema<DescribePortfolioOutput>,
   errors: [ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2465,8 +2465,8 @@ export const describePortfolioShares: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(73, __c9, 1) as any as S.Schema<DescribePortfolioSharesInput>,
-  output: __S(76, __c9, 4) as any as S.Schema<DescribePortfolioSharesOutput>,
+  input: __S(848, __c53, 0) as any as S.Schema<DescribePortfolioSharesInput>,
+  output: __S(851, __c53, 3) as any as S.Schema<DescribePortfolioSharesOutput>,
   errors: [InvalidParametersException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2493,8 +2493,8 @@ export const describePortfolioShareStatus: API.OperationMethod<
   DescribePortfolioShareStatusError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(77, __c9, 5) as any as S.Schema<DescribePortfolioShareStatusInput>,
-  output: __S(81, __c10, 1) as any as S.Schema<DescribePortfolioShareStatusOutput>,
+  input: __S(864, __c54, 0) as any as S.Schema<DescribePortfolioShareStatusInput>,
+  output: __S(868, __c54, 4) as any as S.Schema<DescribePortfolioShareStatusOutput>,
   errors: [InvalidParametersException, OperationNotSupportedException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2520,8 +2520,8 @@ export const describeProduct: API.OperationMethod<
   DescribeProductError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(82, __c10, 2) as any as S.Schema<DescribeProductInput>,
-  output: __S(87, __c10, 7) as any as S.Schema<DescribeProductOutput>,
+  input: __S(880, __c55, 0) as any as S.Schema<DescribeProductInput>,
+  output: __S(883, __c55, 3) as any as S.Schema<DescribeProductOutput>,
   errors: [InvalidParametersException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2541,8 +2541,8 @@ export const describeProductAsAdmin: API.OperationMethod<
   DescribeProductAsAdminError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(88, __c11, 0) as any as S.Schema<DescribeProductAsAdminInput>,
-  output: __S(91, __c11, 3) as any as S.Schema<DescribeProductAsAdminOutput>,
+  input: __S(928, __c58, 0) as any as S.Schema<DescribeProductAsAdminInput>,
+  output: __S(931, __c58, 3) as any as S.Schema<DescribeProductAsAdminOutput>,
   errors: [InvalidParametersException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2562,8 +2562,8 @@ export const describeProductView: API.OperationMethod<
   DescribeProductViewError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(92, __c11, 4) as any as S.Schema<DescribeProductViewInput>,
-  output: __S(93, __c11, 5) as any as S.Schema<DescribeProductViewOutput>,
+  input: __S(944, __c59, 0) as any as S.Schema<DescribeProductViewInput>,
+  output: __S(945, __c59, 1) as any as S.Schema<DescribeProductViewOutput>,
   errors: [InvalidParametersException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2583,8 +2583,8 @@ export const describeProvisionedProduct: API.OperationMethod<
   DescribeProvisionedProductError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(94, __c11, 6) as any as S.Schema<DescribeProvisionedProductInput>,
-  output: __S(98, __c12, 2) as any as S.Schema<DescribeProvisionedProductOutput>,
+  input: __S(960, __c60, 0) as any as S.Schema<DescribeProvisionedProductInput>,
+  output: __S(963, __c60, 3) as any as S.Schema<DescribeProvisionedProductOutput>,
   errors: [InvalidParametersException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2604,8 +2604,8 @@ export const describeProvisionedProductPlan: API.OperationMethod<
   DescribeProvisionedProductPlanError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(99, __c12, 3) as any as S.Schema<DescribeProvisionedProductPlanInput>,
-  output: __S(106, __c13, 2) as any as S.Schema<DescribeProvisionedProductPlanOutput>,
+  input: __S(992, __c62, 0) as any as S.Schema<DescribeProvisionedProductPlanInput>,
+  output: __S(999, __c62, 7) as any as S.Schema<DescribeProvisionedProductPlanOutput>,
   errors: [InvalidParametersException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2625,8 +2625,8 @@ export const describeProvisioningArtifact: API.OperationMethod<
   DescribeProvisioningArtifactError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(107, __c13, 3) as any as S.Schema<DescribeProvisioningArtifactInput>,
-  output: __S(111, __c13, 7) as any as S.Schema<DescribeProvisioningArtifactOutput>,
+  input: __S(1008, __c63, 0) as any as S.Schema<DescribeProvisioningArtifactInput>,
+  output: __S(1009, __c63, 1) as any as S.Schema<DescribeProvisioningArtifactOutput>,
   errors: [InvalidParametersException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2654,8 +2654,8 @@ export const describeProvisioningParameters: API.OperationMethod<
   DescribeProvisioningParametersError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(112, __c14, 0) as any as S.Schema<DescribeProvisioningParametersInput>,
-  output: __S(122, __c15, 2) as any as S.Schema<DescribeProvisioningParametersOutput>,
+  input: __S(1040, __c65, 0) as any as S.Schema<DescribeProvisioningParametersInput>,
+  output: __S(1048, __c65, 8) as any as S.Schema<DescribeProvisioningParametersOutput>,
   errors: [InvalidParametersException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2679,8 +2679,8 @@ export const describeRecord: API.OperationMethod<
   DescribeRecordError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(123, __c15, 3) as any as S.Schema<DescribeRecordInput>,
-  output: __S(131, __c16, 3) as any as S.Schema<DescribeRecordOutput>,
+  input: __S(1072, __c67, 0) as any as S.Schema<DescribeRecordInput>,
+  output: __S(1073, __c67, 1) as any as S.Schema<DescribeRecordOutput>,
   errors: [ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2697,8 +2697,8 @@ export const describeServiceAction: API.OperationMethod<
   DescribeServiceActionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(132, __c16, 4) as any as S.Schema<DescribeServiceActionInput>,
-  output: __S(53, __c6, 5) as any as S.Schema<DescribeServiceActionOutput>,
+  input: __S(1120, __c70, 0) as any as S.Schema<DescribeServiceActionInput>,
+  output: __S(577, __c36, 1) as any as S.Schema<DescribeServiceActionOutput>,
   errors: [ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2718,8 +2718,8 @@ export const describeServiceActionExecutionParameters: API.OperationMethod<
   DescribeServiceActionExecutionParametersError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(133, __c16, 5) as any as S.Schema<DescribeServiceActionExecutionParametersInput>,
-  output: __S(136, __c17, 0) as any as S.Schema<DescribeServiceActionExecutionParametersOutput>,
+  input: __S(1136, __c71, 0) as any as S.Schema<DescribeServiceActionExecutionParametersInput>,
+  output: __S(1139, __c71, 3) as any as S.Schema<DescribeServiceActionExecutionParametersOutput>,
   errors: [InvalidParametersException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2739,8 +2739,8 @@ export const describeTagOption: API.OperationMethod<
   DescribeTagOptionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(137, __c17, 1) as any as S.Schema<DescribeTagOptionInput>,
-  output: __S(56, __c7, 0) as any as S.Schema<DescribeTagOptionOutput>,
+  input: __S(1152, __c72, 0) as any as S.Schema<DescribeTagOptionInput>,
+  output: __S(624, __c39, 0) as any as S.Schema<DescribeTagOptionOutput>,
   errors: [ResourceNotFoundException, TagOptionNotMigratedException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2774,8 +2774,8 @@ export const disableAWSOrganizationsAccess: API.OperationMethod<
   DisableAWSOrganizationsAccessError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(138, __c17, 2) as any as S.Schema<DisableAWSOrganizationsAccessInput>,
-  output: __S(3, __c0, 3) as any as S.Schema<DisableAWSOrganizationsAccessOutput>,
+  input: __S(1168, __c73, 0) as any as S.Schema<DisableAWSOrganizationsAccessInput>,
+  output: __S(16, __c1, 0) as any as S.Schema<DisableAWSOrganizationsAccessOutput>,
   errors: [InvalidStateException, OperationNotSupportedException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2792,8 +2792,8 @@ export const disassociateBudgetFromResource: API.OperationMethod<
   DisassociateBudgetFromResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(139, __c17, 3) as any as S.Schema<DisassociateBudgetFromResourceInput>,
-  output: __S(3, __c0, 3) as any as S.Schema<DisassociateBudgetFromResourceOutput>,
+  input: __S(1184, __c74, 0) as any as S.Schema<DisassociateBudgetFromResourceInput>,
+  output: __S(16, __c1, 0) as any as S.Schema<DisassociateBudgetFromResourceOutput>,
   errors: [ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2832,8 +2832,8 @@ export const disassociatePrincipalFromPortfolio: API.OperationMethod<
   DisassociatePrincipalFromPortfolioError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(140, __c17, 4) as any as S.Schema<DisassociatePrincipalFromPortfolioInput>,
-  output: __S(3, __c0, 3) as any as S.Schema<DisassociatePrincipalFromPortfolioOutput>,
+  input: __S(1200, __c75, 0) as any as S.Schema<DisassociatePrincipalFromPortfolioInput>,
+  output: __S(16, __c1, 0) as any as S.Schema<DisassociatePrincipalFromPortfolioOutput>,
   errors: [InvalidParametersException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2856,8 +2856,8 @@ export const disassociateProductFromPortfolio: API.OperationMethod<
   DisassociateProductFromPortfolioError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(141, __c17, 5) as any as S.Schema<DisassociateProductFromPortfolioInput>,
-  output: __S(3, __c0, 3) as any as S.Schema<DisassociateProductFromPortfolioOutput>,
+  input: __S(1216, __c76, 0) as any as S.Schema<DisassociateProductFromPortfolioInput>,
+  output: __S(16, __c1, 0) as any as S.Schema<DisassociateProductFromPortfolioOutput>,
   errors: [InvalidParametersException, ResourceInUseException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2878,14 +2878,14 @@ export const disassociateServiceActionFromProvisioningArtifact: API.OperationMet
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    142,
-    __c17,
-    6,
+    1232,
+    __c77,
+    0,
   ) as any as S.Schema<DisassociateServiceActionFromProvisioningArtifactInput>,
   output: __S(
-    3,
-    __c0,
-    3,
+    16,
+    __c1,
+    0,
   ) as any as S.Schema<DisassociateServiceActionFromProvisioningArtifactOutput>,
   errors: [InvalidParametersException, ResourceNotFoundException],
   protocol: AwsProtocol,
@@ -2906,8 +2906,8 @@ export const disassociateTagOptionFromResource: API.OperationMethod<
   DisassociateTagOptionFromResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(143, __c17, 7) as any as S.Schema<DisassociateTagOptionFromResourceInput>,
-  output: __S(3, __c0, 3) as any as S.Schema<DisassociateTagOptionFromResourceOutput>,
+  input: __S(1248, __c78, 0) as any as S.Schema<DisassociateTagOptionFromResourceInput>,
+  output: __S(16, __c1, 0) as any as S.Schema<DisassociateTagOptionFromResourceOutput>,
   errors: [ResourceNotFoundException, TagOptionNotMigratedException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2941,8 +2941,8 @@ export const enableAWSOrganizationsAccess: API.OperationMethod<
   EnableAWSOrganizationsAccessError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(144, __c18, 0) as any as S.Schema<EnableAWSOrganizationsAccessInput>,
-  output: __S(3, __c0, 3) as any as S.Schema<EnableAWSOrganizationsAccessOutput>,
+  input: __S(1264, __c79, 0) as any as S.Schema<EnableAWSOrganizationsAccessInput>,
+  output: __S(16, __c1, 0) as any as S.Schema<EnableAWSOrganizationsAccessOutput>,
   errors: [InvalidStateException, OperationNotSupportedException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2963,8 +2963,8 @@ export const executeProvisionedProductPlan: API.OperationMethod<
   ExecuteProvisionedProductPlanError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(145, __c18, 1) as any as S.Schema<ExecuteProvisionedProductPlanInput>,
-  output: __S(146, __c18, 2) as any as S.Schema<ExecuteProvisionedProductPlanOutput>,
+  input: __S(1280, __c80, 0) as any as S.Schema<ExecuteProvisionedProductPlanInput>,
+  output: __S(1296, __c81, 0) as any as S.Schema<ExecuteProvisionedProductPlanOutput>,
   errors: [InvalidParametersException, InvalidStateException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2986,8 +2986,8 @@ export const executeProvisionedProductServiceAction: API.OperationMethod<
   ExecuteProvisionedProductServiceActionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(148, __c18, 4) as any as S.Schema<ExecuteProvisionedProductServiceActionInput>,
-  output: __S(146, __c18, 2) as any as S.Schema<ExecuteProvisionedProductServiceActionOutput>,
+  input: __S(1313, __c82, 1) as any as S.Schema<ExecuteProvisionedProductServiceActionInput>,
+  output: __S(1296, __c81, 0) as any as S.Schema<ExecuteProvisionedProductServiceActionOutput>,
   errors: [
     InvalidParametersException,
     InvalidStateException,
@@ -3013,8 +3013,8 @@ export const getAWSOrganizationsAccessStatus: API.OperationMethod<
   GetAWSOrganizationsAccessStatusError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(149, __c18, 5) as any as S.Schema<GetAWSOrganizationsAccessStatusInput>,
-  output: __S(150, __c18, 6) as any as S.Schema<GetAWSOrganizationsAccessStatusOutput>,
+  input: __S(1328, __c83, 0) as any as S.Schema<GetAWSOrganizationsAccessStatusInput>,
+  output: __S(1329, __c83, 1) as any as S.Schema<GetAWSOrganizationsAccessStatusOutput>,
   errors: [OperationNotSupportedException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3035,8 +3035,8 @@ export const getProvisionedProductOutputs: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(151, __c18, 7) as any as S.Schema<GetProvisionedProductOutputsInput>,
-  output: __S(152, __c19, 0) as any as S.Schema<GetProvisionedProductOutputsOutput>,
+  input: __S(1344, __c84, 0) as any as S.Schema<GetProvisionedProductOutputsInput>,
+  output: __S(1345, __c84, 1) as any as S.Schema<GetProvisionedProductOutputsOutput>,
   errors: [InvalidParametersException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3088,8 +3088,8 @@ export const importAsProvisionedProduct: API.OperationMethod<
   ImportAsProvisionedProductError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(153, __c19, 1) as any as S.Schema<ImportAsProvisionedProductInput>,
-  output: __S(146, __c18, 2) as any as S.Schema<ImportAsProvisionedProductOutput>,
+  input: __S(1360, __c85, 0) as any as S.Schema<ImportAsProvisionedProductInput>,
+  output: __S(1296, __c81, 0) as any as S.Schema<ImportAsProvisionedProductOutput>,
   errors: [
     DuplicateResourceException,
     InvalidParametersException,
@@ -3117,8 +3117,8 @@ export const listAcceptedPortfolioShares: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(154, __c19, 2) as any as S.Schema<ListAcceptedPortfolioSharesInput>,
-  output: __S(156, __c19, 4) as any as S.Schema<ListAcceptedPortfolioSharesOutput>,
+  input: __S(1376, __c86, 0) as any as S.Schema<ListAcceptedPortfolioSharesInput>,
+  output: __S(1408, __c88, 0) as any as S.Schema<ListAcceptedPortfolioSharesOutput>,
   errors: [InvalidParametersException, OperationNotSupportedException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3144,8 +3144,8 @@ export const listBudgetsForResource: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(157, __c19, 5) as any as S.Schema<ListBudgetsForResourceInput>,
-  output: __S(158, __c19, 6) as any as S.Schema<ListBudgetsForResourceOutput>,
+  input: __S(1424, __c89, 0) as any as S.Schema<ListBudgetsForResourceInput>,
+  output: __S(1425, __c89, 1) as any as S.Schema<ListBudgetsForResourceOutput>,
   errors: [InvalidParametersException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3171,8 +3171,8 @@ export const listConstraintsForPortfolio: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(159, __c19, 7) as any as S.Schema<ListConstraintsForPortfolioInput>,
-  output: __S(161, __c20, 1) as any as S.Schema<ListConstraintsForPortfolioOutput>,
+  input: __S(1440, __c90, 0) as any as S.Schema<ListConstraintsForPortfolioInput>,
+  output: __S(1442, __c90, 2) as any as S.Schema<ListConstraintsForPortfolioOutput>,
   errors: [InvalidParametersException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3218,8 +3218,8 @@ export const listLaunchPaths: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(162, __c20, 2) as any as S.Schema<ListLaunchPathsInput>,
-  output: __S(165, __c20, 5) as any as S.Schema<ListLaunchPathsOutput>,
+  input: __S(1456, __c91, 0) as any as S.Schema<ListLaunchPathsInput>,
+  output: __S(1459, __c91, 3) as any as S.Schema<ListLaunchPathsOutput>,
   errors: [InvalidParametersException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3250,8 +3250,8 @@ export const listOrganizationPortfolioAccess: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(166, __c20, 6) as any as S.Schema<ListOrganizationPortfolioAccessInput>,
-  output: __S(168, __c21, 0) as any as S.Schema<ListOrganizationPortfolioAccessOutput>,
+  input: __S(1472, __c92, 0) as any as S.Schema<ListOrganizationPortfolioAccessInput>,
+  output: __S(1474, __c92, 2) as any as S.Schema<ListOrganizationPortfolioAccessOutput>,
   errors: [InvalidParametersException, OperationNotSupportedException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3279,8 +3279,8 @@ export const listPortfolioAccess: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(169, __c21, 1) as any as S.Schema<ListPortfolioAccessInput>,
-  output: __S(170, __c21, 2) as any as S.Schema<ListPortfolioAccessOutput>,
+  input: __S(1488, __c93, 0) as any as S.Schema<ListPortfolioAccessInput>,
+  output: __S(1489, __c93, 1) as any as S.Schema<ListPortfolioAccessOutput>,
   errors: [InvalidParametersException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3303,8 +3303,8 @@ export const listPortfolios: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(171, __c21, 3) as any as S.Schema<ListPortfoliosInput>,
-  output: __S(172, __c21, 4) as any as S.Schema<ListPortfoliosOutput>,
+  input: __S(1504, __c94, 0) as any as S.Schema<ListPortfoliosInput>,
+  output: __S(1505, __c94, 1) as any as S.Schema<ListPortfoliosOutput>,
   errors: [InvalidParametersException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3330,8 +3330,8 @@ export const listPortfoliosForProduct: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(173, __c21, 5) as any as S.Schema<ListPortfoliosForProductInput>,
-  output: __S(156, __c19, 4) as any as S.Schema<ListPortfoliosForProductOutput>,
+  input: __S(1520, __c95, 0) as any as S.Schema<ListPortfoliosForProductInput>,
+  output: __S(1408, __c88, 0) as any as S.Schema<ListPortfoliosForProductOutput>,
   errors: [InvalidParametersException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3357,8 +3357,8 @@ export const listPrincipalsForPortfolio: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(174, __c21, 6) as any as S.Schema<ListPrincipalsForPortfolioInput>,
-  output: __S(177, __c22, 1) as any as S.Schema<ListPrincipalsForPortfolioOutput>,
+  input: __S(1536, __c96, 0) as any as S.Schema<ListPrincipalsForPortfolioInput>,
+  output: __S(1539, __c96, 3) as any as S.Schema<ListPrincipalsForPortfolioOutput>,
   errors: [InvalidParametersException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3383,8 +3383,8 @@ export const listProvisionedProductPlans: API.OperationMethod<
   ListProvisionedProductPlansError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(179, __c22, 3) as any as S.Schema<ListProvisionedProductPlansInput>,
-  output: __S(182, __c22, 6) as any as S.Schema<ListProvisionedProductPlansOutput>,
+  input: __S(1552, __c97, 0) as any as S.Schema<ListProvisionedProductPlansInput>,
+  output: __S(1555, __c97, 3) as any as S.Schema<ListProvisionedProductPlansOutput>,
   errors: [InvalidParametersException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3404,8 +3404,8 @@ export const listProvisioningArtifacts: API.OperationMethod<
   ListProvisioningArtifactsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(183, __c22, 7) as any as S.Schema<ListProvisioningArtifactsInput>,
-  output: __S(185, __c23, 1) as any as S.Schema<ListProvisioningArtifactsOutput>,
+  input: __S(1584, __c99, 0) as any as S.Schema<ListProvisioningArtifactsInput>,
+  output: __S(1586, __c99, 2) as any as S.Schema<ListProvisioningArtifactsOutput>,
   errors: [InvalidParametersException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3426,8 +3426,8 @@ export const listProvisioningArtifactsForServiceAction: API.PaginatedOperationMe
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(186, __c23, 2) as any as S.Schema<ListProvisioningArtifactsForServiceActionInput>,
-  output: __S(189, __c23, 5) as any as S.Schema<ListProvisioningArtifactsForServiceActionOutput>,
+  input: __S(1600, __c100, 0) as any as S.Schema<ListProvisioningArtifactsForServiceActionInput>,
+  output: __S(1603, __c100, 3) as any as S.Schema<ListProvisioningArtifactsForServiceActionOutput>,
   errors: [InvalidParametersException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3449,8 +3449,8 @@ export const listRecordHistory: API.OperationMethod<
   ListRecordHistoryError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(191, __c23, 7) as any as S.Schema<ListRecordHistoryInput>,
-  output: __S(193, __c24, 1) as any as S.Schema<ListRecordHistoryOutput>,
+  input: __S(1616, __c101, 0) as any as S.Schema<ListRecordHistoryInput>,
+  output: __S(1618, __c101, 2) as any as S.Schema<ListRecordHistoryOutput>,
   errors: [InvalidParametersException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3472,8 +3472,8 @@ export const listResourcesForTagOption: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(194, __c24, 2) as any as S.Schema<ListResourcesForTagOptionInput>,
-  output: __S(197, __c24, 5) as any as S.Schema<ListResourcesForTagOptionOutput>,
+  input: __S(1648, __c103, 0) as any as S.Schema<ListResourcesForTagOptionInput>,
+  output: __S(1651, __c103, 3) as any as S.Schema<ListResourcesForTagOptionOutput>,
   errors: [InvalidParametersException, ResourceNotFoundException, TagOptionNotMigratedException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3492,8 +3492,8 @@ export const listServiceActions: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(198, __c24, 6) as any as S.Schema<ListServiceActionsInput>,
-  output: __S(200, __c25, 0) as any as S.Schema<ListServiceActionsOutput>,
+  input: __S(1664, __c104, 0) as any as S.Schema<ListServiceActionsInput>,
+  output: __S(1665, __c104, 1) as any as S.Schema<ListServiceActionsOutput>,
   errors: [InvalidParametersException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3519,8 +3519,8 @@ export const listServiceActionsForProvisioningArtifact: API.PaginatedOperationMe
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(201, __c25, 1) as any as S.Schema<ListServiceActionsForProvisioningArtifactInput>,
-  output: __S(202, __c25, 2) as any as S.Schema<ListServiceActionsForProvisioningArtifactOutput>,
+  input: __S(1696, __c106, 0) as any as S.Schema<ListServiceActionsForProvisioningArtifactInput>,
+  output: __S(1697, __c106, 1) as any as S.Schema<ListServiceActionsForProvisioningArtifactOutput>,
   errors: [InvalidParametersException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3545,8 +3545,8 @@ export const listStackInstancesForProvisionedProduct: API.OperationMethod<
   ListStackInstancesForProvisionedProductError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(203, __c25, 3) as any as S.Schema<ListStackInstancesForProvisionedProductInput>,
-  output: __S(206, __c25, 6) as any as S.Schema<ListStackInstancesForProvisionedProductOutput>,
+  input: __S(1712, __c107, 0) as any as S.Schema<ListStackInstancesForProvisionedProductInput>,
+  output: __S(1715, __c107, 3) as any as S.Schema<ListStackInstancesForProvisionedProductOutput>,
   errors: [InvalidParametersException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3567,8 +3567,8 @@ export const listTagOptions: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(208, __c26, 0) as any as S.Schema<ListTagOptionsInput>,
-  output: __S(209, __c26, 1) as any as S.Schema<ListTagOptionsOutput>,
+  input: __S(1729, __c108, 1) as any as S.Schema<ListTagOptionsInput>,
+  output: __S(1730, __c108, 2) as any as S.Schema<ListTagOptionsOutput>,
   errors: [InvalidParametersException, TagOptionNotMigratedException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3590,8 +3590,8 @@ export const notifyProvisionProductEngineWorkflowResult: API.OperationMethod<
   NotifyProvisionProductEngineWorkflowResultError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(211, __c26, 3) as any as S.Schema<NotifyProvisionProductEngineWorkflowResultInput>,
-  output: __S(3, __c0, 3) as any as S.Schema<NotifyProvisionProductEngineWorkflowResultOutput>,
+  input: __S(1745, __c109, 1) as any as S.Schema<NotifyProvisionProductEngineWorkflowResultInput>,
+  output: __S(16, __c1, 0) as any as S.Schema<NotifyProvisionProductEngineWorkflowResultOutput>,
   errors: [InvalidParametersException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3613,14 +3613,14 @@ export const notifyTerminateProvisionedProductEngineWorkflowResult: API.Operatio
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    212,
-    __c26,
-    4,
+    1760,
+    __c110,
+    0,
   ) as any as S.Schema<NotifyTerminateProvisionedProductEngineWorkflowResultInput>,
   output: __S(
-    213,
-    __c26,
-    5,
+    1776,
+    __c111,
+    0,
   ) as any as S.Schema<NotifyTerminateProvisionedProductEngineWorkflowResultOutput>,
   errors: [InvalidParametersException, ResourceNotFoundException],
   protocol: AwsProtocol,
@@ -3643,14 +3643,14 @@ export const notifyUpdateProvisionedProductEngineWorkflowResult: API.OperationMe
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    214,
-    __c26,
-    6,
+    1792,
+    __c112,
+    0,
   ) as any as S.Schema<NotifyUpdateProvisionedProductEngineWorkflowResultInput>,
   output: __S(
-    213,
-    __c26,
-    5,
+    1776,
+    __c111,
+    0,
   ) as any as S.Schema<NotifyUpdateProvisionedProductEngineWorkflowResultOutput>,
   errors: [InvalidParametersException, ResourceNotFoundException],
   protocol: AwsProtocol,
@@ -3701,8 +3701,8 @@ export const provisionProduct: API.OperationMethod<
   ProvisionProductError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(216, __c27, 0) as any as S.Schema<ProvisionProductInput>,
-  output: __S(217, __c27, 1) as any as S.Schema<ProvisionProductOutput>,
+  input: __S(1809, __c113, 1) as any as S.Schema<ProvisionProductInput>,
+  output: __S(1810, __c113, 2) as any as S.Schema<ProvisionProductOutput>,
   errors: [DuplicateResourceException, InvalidParametersException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3719,8 +3719,8 @@ export const rejectPortfolioShare: API.OperationMethod<
   RejectPortfolioShareError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(218, __c27, 2) as any as S.Schema<RejectPortfolioShareInput>,
-  output: __S(1, __c0, 1) as any as S.Schema<RejectPortfolioShareOutput>,
+  input: __S(1824, __c114, 0) as any as S.Schema<RejectPortfolioShareInput>,
+  output: __S(1952, __c122, 0) as any as S.Schema<RejectPortfolioShareOutput>,
   errors: [ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3739,8 +3739,8 @@ export const scanProvisionedProducts: API.OperationMethod<
   ScanProvisionedProductsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(219, __c27, 3) as any as S.Schema<ScanProvisionedProductsInput>,
-  output: __S(221, __c27, 5) as any as S.Schema<ScanProvisionedProductsOutput>,
+  input: __S(1840, __c115, 0) as any as S.Schema<ScanProvisionedProductsInput>,
+  output: __S(1842, __c115, 2) as any as S.Schema<ScanProvisionedProductsOutput>,
   errors: [InvalidParametersException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3758,8 +3758,8 @@ export const searchProducts: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(223, __c27, 7) as any as S.Schema<SearchProductsInput>,
-  output: __S(228, __c28, 4) as any as S.Schema<SearchProductsOutput>,
+  input: __S(1856, __c116, 0) as any as S.Schema<SearchProductsInput>,
+  output: __S(1861, __c116, 5) as any as S.Schema<SearchProductsOutput>,
   errors: [InvalidParametersException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3785,8 +3785,8 @@ export const searchProductsAsAdmin: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(229, __c28, 5) as any as S.Schema<SearchProductsAsAdminInput>,
-  output: __S(231, __c28, 7) as any as S.Schema<SearchProductsAsAdminOutput>,
+  input: __S(1888, __c118, 0) as any as S.Schema<SearchProductsAsAdminInput>,
+  output: __S(1890, __c118, 2) as any as S.Schema<SearchProductsAsAdminOutput>,
   errors: [InvalidParametersException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3809,8 +3809,8 @@ export const searchProvisionedProducts: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(233, __c29, 1) as any as S.Schema<SearchProvisionedProductsInput>,
-  output: __S(236, __c29, 4) as any as S.Schema<SearchProvisionedProductsOutput>,
+  input: __S(1905, __c119, 1) as any as S.Schema<SearchProvisionedProductsInput>,
+  output: __S(1908, __c119, 4) as any as S.Schema<SearchProvisionedProductsOutput>,
   errors: [InvalidParametersException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3836,8 +3836,8 @@ export const terminateProvisionedProduct: API.OperationMethod<
   TerminateProvisionedProductError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(237, __c29, 5) as any as S.Schema<TerminateProvisionedProductInput>,
-  output: __S(146, __c18, 2) as any as S.Schema<TerminateProvisionedProductOutput>,
+  input: __S(1920, __c120, 0) as any as S.Schema<TerminateProvisionedProductInput>,
+  output: __S(1296, __c81, 0) as any as S.Schema<TerminateProvisionedProductOutput>,
   errors: [ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3857,8 +3857,8 @@ export const updateConstraint: API.OperationMethod<
   UpdateConstraintError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(238, __c29, 6) as any as S.Schema<UpdateConstraintInput>,
-  output: __S(22, __c2, 6) as any as S.Schema<UpdateConstraintOutput>,
+  input: __S(1968, __c123, 0) as any as S.Schema<UpdateConstraintInput>,
+  output: __S(224, __c14, 0) as any as S.Schema<UpdateConstraintOutput>,
   errors: [InvalidParametersException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3882,8 +3882,8 @@ export const updatePortfolio: API.OperationMethod<
   UpdatePortfolioError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(239, __c29, 7) as any as S.Schema<UpdatePortfolioInput>,
-  output: __S(27, __c3, 3) as any as S.Schema<UpdatePortfolioOutput>,
+  input: __S(1984, __c124, 0) as any as S.Schema<UpdatePortfolioInput>,
+  output: __S(288, __c18, 0) as any as S.Schema<UpdatePortfolioOutput>,
   errors: [
     InvalidParametersException,
     LimitExceededException,
@@ -3928,8 +3928,8 @@ export const updatePortfolioShare: API.OperationMethod<
   UpdatePortfolioShareError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(240, __c30, 0) as any as S.Schema<UpdatePortfolioShareInput>,
-  output: __S(241, __c30, 1) as any as S.Schema<UpdatePortfolioShareOutput>,
+  input: __S(2000, __c125, 0) as any as S.Schema<UpdatePortfolioShareInput>,
+  output: __S(2001, __c125, 1) as any as S.Schema<UpdatePortfolioShareOutput>,
   errors: [
     InvalidParametersException,
     InvalidStateException,
@@ -3955,8 +3955,8 @@ export const updateProduct: API.OperationMethod<
   UpdateProductError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(242, __c30, 2) as any as S.Schema<UpdateProductInput>,
-  output: __S(243, __c30, 3) as any as S.Schema<UpdateProductOutput>,
+  input: __S(2016, __c126, 0) as any as S.Schema<UpdateProductInput>,
+  output: __S(2017, __c126, 1) as any as S.Schema<UpdateProductOutput>,
   errors: [InvalidParametersException, ResourceNotFoundException, TagOptionNotMigratedException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3982,8 +3982,8 @@ export const updateProvisionedProduct: API.OperationMethod<
   UpdateProvisionedProductError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(245, __c30, 5) as any as S.Schema<UpdateProvisionedProductInput>,
-  output: __S(146, __c18, 2) as any as S.Schema<UpdateProvisionedProductOutput>,
+  input: __S(2033, __c127, 1) as any as S.Schema<UpdateProvisionedProductInput>,
+  output: __S(1296, __c81, 0) as any as S.Schema<UpdateProvisionedProductOutput>,
   errors: [InvalidParametersException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -4004,8 +4004,8 @@ export const updateProvisionedProductProperties: API.OperationMethod<
   UpdateProvisionedProductPropertiesError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(246, __c30, 6) as any as S.Schema<UpdateProvisionedProductPropertiesInput>,
-  output: __S(247, __c30, 7) as any as S.Schema<UpdateProvisionedProductPropertiesOutput>,
+  input: __S(2048, __c128, 0) as any as S.Schema<UpdateProvisionedProductPropertiesInput>,
+  output: __S(2049, __c128, 1) as any as S.Schema<UpdateProvisionedProductPropertiesOutput>,
   errors: [InvalidParametersException, InvalidStateException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -4027,8 +4027,8 @@ export const updateProvisioningArtifact: API.OperationMethod<
   UpdateProvisioningArtifactError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(248, __c31, 0) as any as S.Schema<UpdateProvisioningArtifactInput>,
-  output: __S(49, __c6, 1) as any as S.Schema<UpdateProvisioningArtifactOutput>,
+  input: __S(2064, __c129, 0) as any as S.Schema<UpdateProvisioningArtifactInput>,
+  output: __S(528, __c33, 0) as any as S.Schema<UpdateProvisioningArtifactOutput>,
   errors: [InvalidParametersException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -4048,8 +4048,8 @@ export const updateServiceAction: API.OperationMethod<
   UpdateServiceActionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(249, __c31, 1) as any as S.Schema<UpdateServiceActionInput>,
-  output: __S(53, __c6, 5) as any as S.Schema<UpdateServiceActionOutput>,
+  input: __S(2080, __c130, 0) as any as S.Schema<UpdateServiceActionInput>,
+  output: __S(577, __c36, 1) as any as S.Schema<UpdateServiceActionOutput>,
   errors: [InvalidParametersException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -4071,8 +4071,8 @@ export const updateTagOption: API.OperationMethod<
   UpdateTagOptionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(250, __c31, 2) as any as S.Schema<UpdateTagOptionInput>,
-  output: __S(56, __c7, 0) as any as S.Schema<UpdateTagOptionOutput>,
+  input: __S(2096, __c131, 0) as any as S.Schema<UpdateTagOptionInput>,
+  output: __S(624, __c39, 0) as any as S.Schema<UpdateTagOptionOutput>,
   errors: [
     DuplicateResourceException,
     InvalidParametersException,
@@ -4089,31 +4089,25 @@ function __c0(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({
-          AcceptLanguage: S.optional(S.String),
-          PortfolioId: S.String,
-          PortfolioShareType: S.optional(S.String),
-        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "AcceptPortfolioShareInput",
-      });
-    case 1:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "AcceptPortfolioShareOutput",
-      });
-    case 2:
-      return S.suspend(() =>
         S.Struct({ BudgetName: S.String, ResourceId: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({
         identifier: "AssociateBudgetWithResourceInput",
       });
-    case 3:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "AssociateBudgetWithResourceOutput",
       });
-    case 4:
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           AcceptLanguage: S.optional(S.String),
@@ -4124,7 +4118,11 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "AssociatePrincipalWithPortfolioInput",
       });
-    case 5:
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           AcceptLanguage: S.optional(S.String),
@@ -4135,7 +4133,11 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "AssociateProductWithPortfolioInput",
       });
-    case 6:
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           ProductId: S.String,
@@ -4147,7 +4149,11 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "AssociateServiceActionWithProvisioningArtifactInput",
       });
-    case 7:
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ ResourceId: S.String, TagOptionId: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
@@ -4157,7 +4163,20 @@ function __c0(j: number): any {
       });
   }
 }
-function __c1(j: number): any {
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          ServiceActionAssociations: __S(113, __c7, 1),
+          AcceptLanguage: S.optional(S.String),
+        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({
+        identifier: "BatchAssociateServiceActionWithProvisioningArtifactInput",
+      });
+  }
+}
+function __c7(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4168,17 +4187,8 @@ function __c1(j: number): any {
         }),
       ).annotate({ identifier: "ServiceActionAssociation" });
     case 1:
-      return S.Array(__S(8, __c1, 0));
+      return S.Array(__S(112, __c7, 0));
     case 2:
-      return S.suspend(() =>
-        S.Struct({
-          ServiceActionAssociations: __S(9, __c1, 1),
-          AcceptLanguage: S.optional(S.String),
-        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "BatchAssociateServiceActionWithProvisioningArtifactInput",
-      });
-    case 3:
       return S.suspend(() =>
         S.Struct({
           ServiceActionId: S.optional(S.String),
@@ -4190,50 +4200,66 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "FailedServiceActionAssociation",
       });
+    case 3:
+      return S.Array(__S(114, __c7, 2));
     case 4:
-      return S.Array(__S(11, __c1, 3));
-    case 5:
       return S.suspend(() =>
-        S.Struct({ FailedServiceActionAssociations: S.optional(__S(12, __c1, 4)) }),
+        S.Struct({ FailedServiceActionAssociations: S.optional(__S(115, __c7, 3)) }),
       ).annotate({
         identifier: "BatchAssociateServiceActionWithProvisioningArtifactOutput",
       });
-    case 6:
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          ServiceActionAssociations: __S(9, __c1, 1),
+          ServiceActionAssociations: __S(113, __c7, 1),
           AcceptLanguage: S.optional(S.String),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "BatchDisassociateServiceActionFromProvisioningArtifactInput",
       });
-    case 7:
-      return S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
   }
 }
-function __c2(j: number): any {
+function __c9(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(15, __c1, 7));
+      return S.Array(__S(160, __c10, 0));
     case 1:
-      return S.Array(S.String);
-    case 2:
       return S.suspend(() =>
         S.Struct({
           AcceptLanguage: S.optional(S.String),
           SourceProductArn: S.String,
           TargetProductId: S.optional(S.String),
           TargetProductName: S.optional(S.String),
-          SourceProvisioningArtifactIdentifiers: S.optional(__S(16, __c2, 0)),
-          CopyOptions: S.optional(__S(17, __c2, 1)),
+          SourceProvisioningArtifactIdentifiers: S.optional(__S(144, __c9, 0)),
+          CopyOptions: S.optional(__S(176, __c11, 0)),
           IdempotencyToken: S.String.pipe(T.IdempotencyToken()),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "CopyProductInput" });
-    case 3:
+    case 2:
       return S.suspend(() => S.Struct({ CopyProductToken: S.optional(S.String) })).annotate({
         identifier: "CopyProductOutput",
       });
-    case 4:
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           AcceptLanguage: S.optional(S.String),
@@ -4245,7 +4271,11 @@ function __c2(j: number): any {
           IdempotencyToken: S.String.pipe(T.IdempotencyToken()),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "CreateConstraintInput" });
-    case 5:
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           ConstraintId: S.optional(S.String),
@@ -4256,36 +4286,48 @@ function __c2(j: number): any {
           PortfolioId: S.optional(S.String),
         }),
       ).annotate({ identifier: "ConstraintDetail" });
-    case 6:
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          ConstraintDetail: S.optional(__S(21, __c2, 5)),
+          ConstraintDetail: S.optional(__S(208, __c13, 0)),
           ConstraintParameters: S.optional(S.String),
           Status: S.optional(S.String),
         }),
       ).annotate({ identifier: "CreateConstraintOutput" });
-    case 7:
-      return S.suspend(() => S.Struct({ Key: S.String, Value: S.String })).annotate({
-        identifier: "Tag",
-      });
   }
 }
-function __c3(j: number): any {
+function __c15(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(23, __c2, 7));
-    case 1:
       return S.suspend(() =>
         S.Struct({
           AcceptLanguage: S.optional(S.String),
           DisplayName: S.String,
           Description: S.optional(S.String),
           ProviderName: S.String,
-          Tags: S.optional(__S(24, __c3, 0)),
+          Tags: S.optional(__S(257, __c16, 1)),
           IdempotencyToken: S.String.pipe(T.IdempotencyToken()),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "CreatePortfolioInput" });
-    case 2:
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({ Key: S.String, Value: S.String })).annotate({
+        identifier: "Tag",
+      });
+    case 1:
+      return S.Array(__S(256, __c16, 0));
+  }
+}
+function __c17(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           Id: S.optional(S.String),
@@ -4296,73 +4338,55 @@ function __c3(j: number): any {
           ProviderName: S.optional(S.String),
         }),
       ).annotate({ identifier: "PortfolioDetail" });
-    case 3:
+  }
+}
+function __c18(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          PortfolioDetail: S.optional(__S(26, __c3, 2)),
-          Tags: S.optional(__S(24, __c3, 0)),
+          PortfolioDetail: S.optional(__S(272, __c17, 0)),
+          Tags: S.optional(__S(257, __c16, 1)),
         }),
       ).annotate({ identifier: "CreatePortfolioOutput" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({ Type: S.optional(S.String), Value: S.optional(S.String) }),
-      ).annotate({ identifier: "OrganizationNode" });
-    case 5:
+  }
+}
+function __c19(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           AcceptLanguage: S.optional(S.String),
           PortfolioId: S.String,
           AccountId: S.optional(S.String),
-          OrganizationNode: S.optional(__S(28, __c3, 4)),
+          OrganizationNode: S.optional(__S(336, __c21, 0)),
           ShareTagOptions: S.optional(S.Boolean),
           SharePrincipals: S.optional(S.Boolean),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "CreatePortfolioShareInput",
       });
-    case 6:
+  }
+}
+function __c20(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() => S.Struct({ PortfolioShareToken: S.optional(S.String) })).annotate({
         identifier: "CreatePortfolioShareOutput",
       });
-    case 7:
-      return S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
   }
 }
-function __c4(j: number): any {
+function __c21(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({
-          Name: S.optional(S.String),
-          Description: S.optional(S.String),
-          Info: S.optional(__S(31, __c3, 7)),
-          Type: S.optional(S.String),
-          DisableTemplateValidation: S.optional(S.Boolean),
-        }),
-      ).annotate({
-        identifier: "ProvisioningArtifactProperties",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          ConnectionArn: S.String,
-          Repository: S.String,
-          Branch: S.String,
-          ArtifactPath: S.String,
-        }),
-      ).annotate({ identifier: "CodeStarParameters" });
-    case 2:
-      return S.suspend(() => S.Struct({ CodeStar: S.optional(__S(33, __c4, 1)) })).annotate({
-        identifier: "SourceConnectionParameters",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          Type: S.optional(S.String),
-          ConnectionParameters: __S(34, __c4, 2),
-        }),
-      ).annotate({ identifier: "SourceConnection" });
-    case 4:
+        S.Struct({ Type: S.optional(S.String), Value: S.optional(S.String) }),
+      ).annotate({ identifier: "OrganizationNode" });
+  }
+}
+function __c22(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           AcceptLanguage: S.optional(S.String),
@@ -4374,13 +4398,66 @@ function __c4(j: number): any {
           SupportEmail: S.optional(S.String),
           SupportUrl: S.optional(S.String),
           ProductType: S.String,
-          Tags: S.optional(__S(24, __c3, 0)),
-          ProvisioningArtifactParameters: S.optional(__S(32, __c4, 0)),
+          Tags: S.optional(__S(257, __c16, 1)),
+          ProvisioningArtifactParameters: S.optional(__S(368, __c23, 0)),
           IdempotencyToken: S.String.pipe(T.IdempotencyToken()),
-          SourceConnection: S.optional(__S(35, __c4, 3)),
+          SourceConnection: S.optional(__S(448, __c28, 0)),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "CreateProductInput" });
-    case 5:
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          ProductViewDetail: S.optional(__S(436, __c27, 4)),
+          ProvisioningArtifactDetail: S.optional(__S(400, __c25, 0)),
+          Tags: S.optional(__S(257, __c16, 1)),
+        }),
+      ).annotate({ identifier: "CreateProductOutput" });
+  }
+}
+function __c23(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          Name: S.optional(S.String),
+          Description: S.optional(S.String),
+          Info: S.optional(__S(384, __c24, 0)),
+          Type: S.optional(S.String),
+          DisableTemplateValidation: S.optional(S.Boolean),
+        }),
+      ).annotate({
+        identifier: "ProvisioningArtifactProperties",
+      });
+  }
+}
+function __c24(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
+  }
+}
+function __c25(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          Id: S.optional(S.String),
+          Name: S.optional(S.String),
+          Description: S.optional(S.String),
+          Type: S.optional(S.String),
+          CreatedTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          Active: S.optional(S.Boolean),
+          Guidance: S.optional(S.String),
+          SourceRevision: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "ProvisioningArtifactDetail",
+      });
+  }
+}
+function __c26(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           Id: S.optional(S.String),
@@ -4396,7 +4473,24 @@ function __c4(j: number): any {
           SupportUrl: S.optional(S.String),
         }),
       ).annotate({ identifier: "ProductViewSummary" });
-    case 6:
+  }
+}
+function __c27(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          ConnectionArn: S.String,
+          Repository: S.String,
+          Branch: S.String,
+          ArtifactPath: S.String,
+        }),
+      ).annotate({ identifier: "CodeStarParameters" });
+    case 1:
+      return S.suspend(() => S.Struct({ CodeStar: S.optional(__S(432, __c27, 0)) })).annotate({
+        identifier: "SourceConnectionParameters",
+      });
+    case 2:
       return S.suspend(() =>
         S.Struct({
           LastSyncTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
@@ -4406,84 +4500,55 @@ function __c4(j: number): any {
           LastSuccessfulSyncProvisioningArtifactId: S.optional(S.String),
         }),
       ).annotate({ identifier: "LastSync" });
-    case 7:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           Type: S.optional(S.String),
-          ConnectionParameters: S.optional(__S(34, __c4, 2)),
-          LastSync: S.optional(__S(38, __c4, 6)),
+          ConnectionParameters: S.optional(__S(433, __c27, 1)),
+          LastSync: S.optional(__S(434, __c27, 2)),
         }),
       ).annotate({ identifier: "SourceConnectionDetail" });
-  }
-}
-function __c5(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          ProductViewSummary: S.optional(__S(37, __c4, 5)),
-          Status: S.optional(S.String),
-          ProductARN: S.optional(S.String),
-          CreatedTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          SourceConnection: S.optional(__S(39, __c4, 7)),
-        }),
-      ).annotate({ identifier: "ProductViewDetail" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          Id: S.optional(S.String),
-          Name: S.optional(S.String),
-          Description: S.optional(S.String),
-          Type: S.optional(S.String),
-          CreatedTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          Active: S.optional(S.Boolean),
-          Guidance: S.optional(S.String),
-          SourceRevision: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "ProvisioningArtifactDetail",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          ProductViewDetail: S.optional(__S(40, __c5, 0)),
-          ProvisioningArtifactDetail: S.optional(__S(41, __c5, 1)),
-          Tags: S.optional(__S(24, __c3, 0)),
-        }),
-      ).annotate({ identifier: "CreateProductOutput" });
-    case 3:
-      return S.Array(S.String);
     case 4:
       return S.suspend(() =>
         S.Struct({
-          Key: S.optional(S.String),
-          Value: S.optional(S.String),
-          UsePreviousValue: S.optional(S.Boolean),
+          ProductViewSummary: S.optional(__S(416, __c26, 0)),
+          Status: S.optional(S.String),
+          ProductARN: S.optional(S.String),
+          CreatedTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          SourceConnection: S.optional(__S(435, __c27, 3)),
         }),
-      ).annotate({
-        identifier: "UpdateProvisioningParameter",
-      });
-    case 5:
-      return S.Array(__S(44, __c5, 4));
-    case 6:
+      ).annotate({ identifier: "ProductViewDetail" });
+  }
+}
+function __c28(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ Type: S.optional(S.String), ConnectionParameters: __S(433, __c27, 1) }),
+      ).annotate({ identifier: "SourceConnection" });
+  }
+}
+function __c29(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           AcceptLanguage: S.optional(S.String),
           PlanName: S.String,
           PlanType: S.String,
-          NotificationArns: S.optional(__S(43, __c5, 3)),
+          NotificationArns: S.optional(__S(480, __c30, 0)),
           PathId: S.optional(S.String),
           ProductId: S.String,
           ProvisionedProductName: S.String,
           ProvisioningArtifactId: S.String,
-          ProvisioningParameters: S.optional(__S(45, __c5, 5)),
+          ProvisioningParameters: S.optional(__S(497, __c31, 1)),
           IdempotencyToken: S.String.pipe(T.IdempotencyToken()),
-          Tags: S.optional(__S(24, __c3, 0)),
+          Tags: S.optional(__S(257, __c16, 1)),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "CreateProvisionedProductPlanInput",
       });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           PlanName: S.optional(S.String),
@@ -4497,41 +4562,75 @@ function __c5(j: number): any {
       });
   }
 }
-function __c6(j: number): any {
+function __c30(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c31(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          Key: S.optional(S.String),
+          Value: S.optional(S.String),
+          UsePreviousValue: S.optional(S.Boolean),
+        }),
+      ).annotate({
+        identifier: "UpdateProvisioningParameter",
+      });
+    case 1:
+      return S.Array(__S(496, __c31, 0));
+  }
+}
+function __c32(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           AcceptLanguage: S.optional(S.String),
           ProductId: S.String,
-          Parameters: __S(32, __c4, 0),
+          Parameters: __S(368, __c23, 0),
           IdempotencyToken: S.String.pipe(T.IdempotencyToken()),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "CreateProvisioningArtifactInput",
       });
-    case 1:
+  }
+}
+function __c33(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          ProvisioningArtifactDetail: S.optional(__S(41, __c5, 1)),
-          Info: S.optional(__S(31, __c3, 7)),
+          ProvisioningArtifactDetail: S.optional(__S(400, __c25, 0)),
+          Info: S.optional(__S(384, __c24, 0)),
           Status: S.optional(S.String),
         }),
       ).annotate({
         identifier: "CreateProvisioningArtifactOutput",
       });
-    case 2:
+  }
+}
+function __c34(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           Name: S.String,
           DefinitionType: S.String,
-          Definition: __S(15, __c1, 7),
+          Definition: __S(160, __c10, 0),
           Description: S.optional(S.String),
           AcceptLanguage: S.optional(S.String),
           IdempotencyToken: S.String.pipe(T.IdempotencyToken()),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "CreateServiceActionInput" });
-    case 3:
+  }
+}
+function __c35(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           Id: S.optional(S.String),
@@ -4540,26 +4639,38 @@ function __c6(j: number): any {
           DefinitionType: S.optional(S.String),
         }),
       ).annotate({ identifier: "ServiceActionSummary" });
-    case 4:
+  }
+}
+function __c36(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          ServiceActionSummary: S.optional(__S(51, __c6, 3)),
-          Definition: S.optional(__S(15, __c1, 7)),
+          ServiceActionSummary: S.optional(__S(560, __c35, 0)),
+          Definition: S.optional(__S(160, __c10, 0)),
         }),
       ).annotate({ identifier: "ServiceActionDetail" });
-    case 5:
+    case 1:
       return S.suspend(() =>
-        S.Struct({ ServiceActionDetail: S.optional(__S(52, __c6, 4)) }),
+        S.Struct({ ServiceActionDetail: S.optional(__S(576, __c36, 0)) }),
       ).annotate({
         identifier: "CreateServiceActionOutput",
       });
-    case 6:
+  }
+}
+function __c37(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ Key: S.String, Value: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "CreateTagOptionInput" });
-    case 7:
+  }
+}
+function __c38(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           Key: S.optional(S.String),
@@ -4571,42 +4682,62 @@ function __c6(j: number): any {
       ).annotate({ identifier: "TagOptionDetail" });
   }
 }
-function __c7(j: number): any {
+function __c39(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => S.Struct({ TagOptionDetail: S.optional(__S(55, __c6, 7)) })).annotate({
-        identifier: "CreateTagOptionOutput",
-      });
-    case 1:
+      return S.suspend(() =>
+        S.Struct({ TagOptionDetail: S.optional(__S(608, __c38, 0)) }),
+      ).annotate({ identifier: "CreateTagOptionOutput" });
+  }
+}
+function __c40(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ AcceptLanguage: S.optional(S.String), Id: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "DeleteConstraintInput" });
-    case 2:
+  }
+}
+function __c41(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ AcceptLanguage: S.optional(S.String), Id: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "DeletePortfolioInput" });
-    case 3:
+  }
+}
+function __c42(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           AcceptLanguage: S.optional(S.String),
           PortfolioId: S.String,
           AccountId: S.optional(S.String),
-          OrganizationNode: S.optional(__S(28, __c3, 4)),
+          OrganizationNode: S.optional(__S(336, __c21, 0)),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "DeletePortfolioShareInput",
       });
-    case 4:
+  }
+}
+function __c43(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ AcceptLanguage: S.optional(S.String), Id: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "DeleteProductInput" });
-    case 5:
+  }
+}
+function __c44(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           AcceptLanguage: S.optional(S.String),
@@ -4616,7 +4747,11 @@ function __c7(j: number): any {
       ).annotate({
         identifier: "DeleteProvisionedProductPlanInput",
       });
-    case 6:
+  }
+}
+function __c45(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           AcceptLanguage: S.optional(S.String),
@@ -4626,7 +4761,11 @@ function __c7(j: number): any {
       ).annotate({
         identifier: "DeleteProvisioningArtifactInput",
       });
-    case 7:
+  }
+}
+function __c46(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           Id: S.String,
@@ -4636,7 +4775,7 @@ function __c7(j: number): any {
       ).annotate({ identifier: "DeleteServiceActionInput" });
   }
 }
-function __c8(j: number): any {
+function __c47(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4644,13 +4783,21 @@ function __c8(j: number): any {
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "DeleteTagOptionInput" });
-    case 1:
+  }
+}
+function __c48(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ AcceptLanguage: S.optional(S.String), Id: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "DescribeConstraintInput" });
-    case 2:
+  }
+}
+function __c49(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ AcceptLanguage: S.optional(S.String), CopyProductToken: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
@@ -4658,7 +4805,7 @@ function __c8(j: number): any {
       ).annotate({
         identifier: "DescribeCopyProductStatusInput",
       });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           CopyProductStatus: S.optional(S.String),
@@ -4668,34 +4815,46 @@ function __c8(j: number): any {
       ).annotate({
         identifier: "DescribeCopyProductStatusOutput",
       });
-    case 4:
+  }
+}
+function __c50(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ AcceptLanguage: S.optional(S.String), Id: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "DescribePortfolioInput" });
-    case 5:
-      return S.Array(__S(55, __c6, 7));
-    case 6:
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          PortfolioDetail: S.optional(__S(272, __c17, 0)),
+          Tags: S.optional(__S(257, __c16, 1)),
+          TagOptions: S.optional(__S(832, __c52, 0)),
+          Budgets: S.optional(__S(817, __c51, 1)),
+        }),
+      ).annotate({ identifier: "DescribePortfolioOutput" });
+  }
+}
+function __c51(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() => S.Struct({ BudgetName: S.optional(S.String) })).annotate({
         identifier: "BudgetDetail",
       });
-    case 7:
-      return S.Array(__S(70, __c8, 6));
+    case 1:
+      return S.Array(__S(816, __c51, 0));
   }
 }
-function __c9(j: number): any {
+function __c52(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() =>
-        S.Struct({
-          PortfolioDetail: S.optional(__S(26, __c3, 2)),
-          Tags: S.optional(__S(24, __c3, 0)),
-          TagOptions: S.optional(__S(69, __c8, 5)),
-          Budgets: S.optional(__S(71, __c8, 7)),
-        }),
-      ).annotate({ identifier: "DescribePortfolioOutput" });
-    case 1:
+      return S.Array(__S(608, __c38, 0));
+  }
+}
+function __c53(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           PortfolioId: S.String,
@@ -4706,7 +4865,7 @@ function __c9(j: number): any {
       ).annotate({
         identifier: "DescribePortfolioSharesInput",
       });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           PrincipalId: S.optional(S.String),
@@ -4716,18 +4875,22 @@ function __c9(j: number): any {
           SharePrincipals: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "PortfolioShareDetail" });
+    case 2:
+      return S.Array(__S(849, __c53, 1));
     case 3:
-      return S.Array(__S(74, __c9, 2));
-    case 4:
       return S.suspend(() =>
         S.Struct({
           NextPageToken: S.optional(S.String),
-          PortfolioShareDetails: S.optional(__S(75, __c9, 3)),
+          PortfolioShareDetails: S.optional(__S(850, __c53, 2)),
         }),
       ).annotate({
         identifier: "DescribePortfolioSharesOutput",
       });
-    case 5:
+  }
+}
+function __c54(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ PortfolioShareToken: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
@@ -4735,40 +4898,40 @@ function __c9(j: number): any {
       ).annotate({
         identifier: "DescribePortfolioShareStatusInput",
       });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          Accounts: S.optional(__S(43, __c5, 3)),
+          Accounts: S.optional(__S(480, __c30, 0)),
           Message: S.optional(S.String),
           Error: S.optional(S.String),
         }),
       ).annotate({ identifier: "ShareError" });
-    case 7:
-      return S.Array(__S(78, __c9, 6));
-  }
-}
-function __c10(j: number): any {
-  switch (j) {
-    case 0:
+    case 2:
+      return S.Array(__S(865, __c54, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          SuccessfulShares: S.optional(__S(43, __c5, 3)),
-          ShareErrors: S.optional(__S(79, __c9, 7)),
+          SuccessfulShares: S.optional(__S(480, __c30, 0)),
+          ShareErrors: S.optional(__S(866, __c54, 2)),
         }),
       ).annotate({ identifier: "ShareDetails" });
-    case 1:
+    case 4:
       return S.suspend(() =>
         S.Struct({
           PortfolioShareToken: S.optional(S.String),
           PortfolioId: S.optional(S.String),
           OrganizationNodeValue: S.optional(S.String),
           Status: S.optional(S.String),
-          ShareDetails: S.optional(__S(80, __c10, 0)),
+          ShareDetails: S.optional(__S(867, __c54, 3)),
         }),
       ).annotate({
         identifier: "DescribePortfolioShareStatusOutput",
       });
-    case 2:
+  }
+}
+function __c55(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           AcceptLanguage: S.optional(S.String),
@@ -4776,7 +4939,32 @@ function __c10(j: number): any {
           Name: S.optional(S.String),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "DescribeProductInput" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({ Id: S.optional(S.String), Name: S.optional(S.String) }),
+      ).annotate({ identifier: "LaunchPath" });
+    case 2:
+      return S.Array(__S(881, __c55, 1));
     case 3:
+      return S.suspend(() =>
+        S.Struct({
+          ProductViewSummary: S.optional(__S(416, __c26, 0)),
+          ProvisioningArtifacts: S.optional(__S(896, __c56, 0)),
+          Budgets: S.optional(__S(817, __c51, 1)),
+          LaunchPaths: S.optional(__S(882, __c55, 2)),
+        }),
+      ).annotate({ identifier: "DescribeProductOutput" });
+  }
+}
+function __c56(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(912, __c57, 0));
+  }
+}
+function __c57(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           Id: S.optional(S.String),
@@ -4786,26 +4974,9 @@ function __c10(j: number): any {
           Guidance: S.optional(S.String),
         }),
       ).annotate({ identifier: "ProvisioningArtifact" });
-    case 4:
-      return S.Array(__S(83, __c10, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({ Id: S.optional(S.String), Name: S.optional(S.String) }),
-      ).annotate({ identifier: "LaunchPath" });
-    case 6:
-      return S.Array(__S(85, __c10, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          ProductViewSummary: S.optional(__S(37, __c4, 5)),
-          ProvisioningArtifacts: S.optional(__S(84, __c10, 4)),
-          Budgets: S.optional(__S(71, __c8, 7)),
-          LaunchPaths: S.optional(__S(86, __c10, 6)),
-        }),
-      ).annotate({ identifier: "DescribeProductOutput" });
   }
 }
-function __c11(j: number): any {
+function __c58(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4825,41 +4996,49 @@ function __c11(j: number): any {
           Name: S.optional(S.String),
           Description: S.optional(S.String),
           CreatedTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          ProvisioningArtifactMetadata: S.optional(__S(31, __c3, 7)),
+          ProvisioningArtifactMetadata: S.optional(__S(384, __c24, 0)),
         }),
       ).annotate({
         identifier: "ProvisioningArtifactSummary",
       });
     case 2:
-      return S.Array(__S(89, __c11, 1));
+      return S.Array(__S(929, __c58, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          ProductViewDetail: S.optional(__S(40, __c5, 0)),
-          ProvisioningArtifactSummaries: S.optional(__S(90, __c11, 2)),
-          Tags: S.optional(__S(24, __c3, 0)),
-          TagOptions: S.optional(__S(69, __c8, 5)),
-          Budgets: S.optional(__S(71, __c8, 7)),
+          ProductViewDetail: S.optional(__S(436, __c27, 4)),
+          ProvisioningArtifactSummaries: S.optional(__S(930, __c58, 2)),
+          Tags: S.optional(__S(257, __c16, 1)),
+          TagOptions: S.optional(__S(832, __c52, 0)),
+          Budgets: S.optional(__S(817, __c51, 1)),
         }),
       ).annotate({
         identifier: "DescribeProductAsAdminOutput",
       });
-    case 4:
+  }
+}
+function __c59(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ AcceptLanguage: S.optional(S.String), Id: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "DescribeProductViewInput" });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          ProductViewSummary: S.optional(__S(37, __c4, 5)),
-          ProvisioningArtifacts: S.optional(__S(84, __c10, 4)),
+          ProductViewSummary: S.optional(__S(416, __c26, 0)),
+          ProvisioningArtifacts: S.optional(__S(896, __c56, 0)),
         }),
       ).annotate({
         identifier: "DescribeProductViewOutput",
       });
-    case 6:
+  }
+}
+function __c60(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           AcceptLanguage: S.optional(S.String),
@@ -4869,7 +5048,26 @@ function __c11(j: number): any {
       ).annotate({
         identifier: "DescribeProvisionedProductInput",
       });
-    case 7:
+    case 1:
+      return S.suspend(() => S.Struct({ Name: S.optional(S.String) })).annotate({
+        identifier: "CloudWatchDashboard",
+      });
+    case 2:
+      return S.Array(__S(961, __c60, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          ProvisionedProductDetail: S.optional(__S(976, __c61, 0)),
+          CloudWatchDashboards: S.optional(__S(962, __c60, 2)),
+        }),
+      ).annotate({
+        identifier: "DescribeProvisionedProductOutput",
+      });
+  }
+}
+function __c61(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           Name: S.optional(S.String),
@@ -4890,24 +5088,9 @@ function __c11(j: number): any {
       ).annotate({ identifier: "ProvisionedProductDetail" });
   }
 }
-function __c12(j: number): any {
+function __c62(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => S.Struct({ Name: S.optional(S.String) })).annotate({
-        identifier: "CloudWatchDashboard",
-      });
-    case 1:
-      return S.Array(__S(96, __c12, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          ProvisionedProductDetail: S.optional(__S(95, __c11, 7)),
-          CloudWatchDashboards: S.optional(__S(97, __c12, 1)),
-        }),
-      ).annotate({
-        identifier: "DescribeProvisionedProductOutput",
-      });
-    case 3:
       return S.suspend(() =>
         S.Struct({
           AcceptLanguage: S.optional(S.String),
@@ -4918,7 +5101,7 @@ function __c12(j: number): any {
       ).annotate({
         identifier: "DescribeProvisionedProductPlanInput",
       });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           CreatedTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
@@ -4932,15 +5115,15 @@ function __c12(j: number): any {
           ProvisioningArtifactId: S.optional(S.String),
           Status: S.optional(S.String),
           UpdatedTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          NotificationArns: S.optional(__S(43, __c5, 3)),
-          ProvisioningParameters: S.optional(__S(45, __c5, 5)),
-          Tags: S.optional(__S(24, __c3, 0)),
+          NotificationArns: S.optional(__S(480, __c30, 0)),
+          ProvisioningParameters: S.optional(__S(497, __c31, 1)),
+          Tags: S.optional(__S(257, __c16, 1)),
           StatusMessage: S.optional(S.String),
         }),
       ).annotate({
         identifier: "ProvisionedProductPlanDetails",
       });
-    case 5:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           Attribute: S.optional(S.String),
@@ -4948,21 +5131,17 @@ function __c12(j: number): any {
           RequiresRecreation: S.optional(S.String),
         }),
       ).annotate({ identifier: "ResourceTargetDefinition" });
-    case 6:
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          Target: S.optional(__S(101, __c12, 5)),
+          Target: S.optional(__S(994, __c62, 2)),
           Evaluation: S.optional(S.String),
           CausingEntity: S.optional(S.String),
         }),
       ).annotate({ identifier: "ResourceChangeDetail" });
-    case 7:
-      return S.Array(__S(102, __c12, 6));
-  }
-}
-function __c13(j: number): any {
-  switch (j) {
-    case 0:
+    case 4:
+      return S.Array(__S(995, __c62, 3));
+    case 5:
       return S.suspend(() =>
         S.Struct({
           Action: S.optional(S.String),
@@ -4970,23 +5149,27 @@ function __c13(j: number): any {
           PhysicalResourceId: S.optional(S.String),
           ResourceType: S.optional(S.String),
           Replacement: S.optional(S.String),
-          Scope: S.optional(__S(17, __c2, 1)),
-          Details: S.optional(__S(103, __c12, 7)),
+          Scope: S.optional(__S(176, __c11, 0)),
+          Details: S.optional(__S(996, __c62, 4)),
         }),
       ).annotate({ identifier: "ResourceChange" });
-    case 1:
-      return S.Array(__S(104, __c13, 0));
-    case 2:
+    case 6:
+      return S.Array(__S(997, __c62, 5));
+    case 7:
       return S.suspend(() =>
         S.Struct({
-          ProvisionedProductPlanDetails: S.optional(__S(100, __c12, 4)),
-          ResourceChanges: S.optional(__S(105, __c13, 1)),
+          ProvisionedProductPlanDetails: S.optional(__S(993, __c62, 1)),
+          ResourceChanges: S.optional(__S(998, __c62, 6)),
           NextPageToken: S.optional(S.String),
         }),
       ).annotate({
         identifier: "DescribeProvisionedProductPlanOutput",
       });
-    case 3:
+  }
+}
+function __c63(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           AcceptLanguage: S.optional(S.String),
@@ -5000,10 +5183,25 @@ function __c13(j: number): any {
       ).annotate({
         identifier: "DescribeProvisioningArtifactInput",
       });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          AllowedValues: S.optional(__S(43, __c5, 3)),
+          ProvisioningArtifactDetail: S.optional(__S(400, __c25, 0)),
+          Info: S.optional(__S(384, __c24, 0)),
+          Status: S.optional(S.String),
+          ProvisioningArtifactParameters: S.optional(__S(1026, __c64, 2)),
+        }),
+      ).annotate({
+        identifier: "DescribeProvisioningArtifactOutput",
+      });
+  }
+}
+function __c64(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          AllowedValues: S.optional(__S(480, __c30, 0)),
           AllowedPattern: S.optional(S.String),
           ConstraintDescription: S.optional(S.String),
           MaxLength: S.optional(S.String),
@@ -5012,7 +5210,7 @@ function __c13(j: number): any {
           MinValue: S.optional(S.String),
         }),
       ).annotate({ identifier: "ParameterConstraints" });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           ParameterKey: S.optional(S.String),
@@ -5020,27 +5218,16 @@ function __c13(j: number): any {
           ParameterType: S.optional(S.String),
           IsNoEcho: S.optional(S.Boolean),
           Description: S.optional(S.String),
-          ParameterConstraints: S.optional(__S(108, __c13, 4)),
+          ParameterConstraints: S.optional(__S(1024, __c64, 0)),
         }),
       ).annotate({
         identifier: "ProvisioningArtifactParameter",
       });
-    case 6:
-      return S.Array(__S(109, __c13, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          ProvisioningArtifactDetail: S.optional(__S(41, __c5, 1)),
-          Info: S.optional(__S(31, __c3, 7)),
-          Status: S.optional(S.String),
-          ProvisioningArtifactParameters: S.optional(__S(110, __c13, 6)),
-        }),
-      ).annotate({
-        identifier: "DescribeProvisioningArtifactOutput",
-      });
+    case 2:
+      return S.Array(__S(1025, __c64, 1));
   }
 }
-function __c14(j: number): any {
+function __c65(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5058,58 +5245,62 @@ function __c14(j: number): any {
       });
     case 1:
       return S.suspend(() =>
-        S.Struct({ Type: S.optional(S.String), Description: S.optional(S.String) }),
-      ).annotate({ identifier: "ConstraintSummary" });
-    case 2:
-      return S.Array(__S(113, __c14, 1));
-    case 3:
-      return S.suspend(() =>
         S.Struct({ Type: S.optional(S.String), Value: S.optional(S.String) }),
       ).annotate({ identifier: "UsageInstruction" });
+    case 2:
+      return S.Array(__S(1041, __c65, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({ Key: S.optional(S.String), Values: S.optional(__S(480, __c30, 0)) }),
+      ).annotate({ identifier: "TagOptionSummary" });
     case 4:
-      return S.Array(__S(115, __c14, 3));
+      return S.Array(__S(1043, __c65, 3));
     case 5:
       return S.suspend(() =>
-        S.Struct({ Key: S.optional(S.String), Values: S.optional(__S(43, __c5, 3)) }),
-      ).annotate({ identifier: "TagOptionSummary" });
-    case 6:
-      return S.Array(__S(117, __c14, 5));
-    case 7:
-      return S.suspend(() =>
         S.Struct({
-          StackSetAccounts: S.optional(__S(43, __c5, 3)),
-          StackSetRegions: S.optional(__S(43, __c5, 3)),
+          StackSetAccounts: S.optional(__S(480, __c30, 0)),
+          StackSetRegions: S.optional(__S(480, __c30, 0)),
         }),
       ).annotate({
         identifier: "ProvisioningArtifactPreferences",
       });
-  }
-}
-function __c15(j: number): any {
-  switch (j) {
-    case 0:
+    case 6:
       return S.suspend(() =>
         S.Struct({ Key: S.optional(S.String), Description: S.optional(S.String) }),
       ).annotate({
         identifier: "ProvisioningArtifactOutput",
       });
-    case 1:
-      return S.Array(__S(120, __c15, 0));
-    case 2:
+    case 7:
+      return S.Array(__S(1046, __c65, 6));
+    case 8:
       return S.suspend(() =>
         S.Struct({
-          ProvisioningArtifactParameters: S.optional(__S(110, __c13, 6)),
-          ConstraintSummaries: S.optional(__S(114, __c14, 2)),
-          UsageInstructions: S.optional(__S(116, __c14, 4)),
-          TagOptions: S.optional(__S(118, __c14, 6)),
-          ProvisioningArtifactPreferences: S.optional(__S(119, __c14, 7)),
-          ProvisioningArtifactOutputs: S.optional(__S(121, __c15, 1)),
-          ProvisioningArtifactOutputKeys: S.optional(__S(121, __c15, 1)),
+          ProvisioningArtifactParameters: S.optional(__S(1026, __c64, 2)),
+          ConstraintSummaries: S.optional(__S(1057, __c66, 1)),
+          UsageInstructions: S.optional(__S(1042, __c65, 2)),
+          TagOptions: S.optional(__S(1044, __c65, 4)),
+          ProvisioningArtifactPreferences: S.optional(__S(1045, __c65, 5)),
+          ProvisioningArtifactOutputs: S.optional(__S(1047, __c65, 7)),
+          ProvisioningArtifactOutputKeys: S.optional(__S(1047, __c65, 7)),
         }),
       ).annotate({
         identifier: "DescribeProvisioningParametersOutput",
       });
-    case 3:
+  }
+}
+function __c66(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ Type: S.optional(S.String), Description: S.optional(S.String) }),
+      ).annotate({ identifier: "ConstraintSummary" });
+    case 1:
+      return S.Array(__S(1056, __c66, 0));
+  }
+}
+function __c67(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           AcceptLanguage: S.optional(S.String),
@@ -5118,23 +5309,31 @@ function __c15(j: number): any {
           PageSize: S.optional(S.Number),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "DescribeRecordInput" });
-    case 4:
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          RecordDetail: S.optional(__S(1092, __c68, 4)),
+          RecordOutputs: S.optional(__S(1105, __c69, 1)),
+          NextPageToken: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "DescribeRecordOutput" });
+  }
+}
+function __c68(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ Code: S.optional(S.String), Description: S.optional(S.String) }),
       ).annotate({ identifier: "RecordError" });
-    case 5:
-      return S.Array(__S(124, __c15, 4));
-    case 6:
+    case 1:
+      return S.Array(__S(1088, __c68, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({ Key: S.optional(S.String), Value: S.optional(S.String) }),
       ).annotate({ identifier: "RecordTag" });
-    case 7:
-      return S.Array(__S(126, __c15, 6));
-  }
-}
-function __c16(j: number): any {
-  switch (j) {
-    case 0:
+    case 3:
+      return S.Array(__S(1090, __c68, 2));
+    case 4:
       return S.suspend(() =>
         S.Struct({
           RecordId: S.optional(S.String),
@@ -5148,12 +5347,16 @@ function __c16(j: number): any {
           ProductId: S.optional(S.String),
           ProvisioningArtifactId: S.optional(S.String),
           PathId: S.optional(S.String),
-          RecordErrors: S.optional(__S(125, __c15, 5)),
-          RecordTags: S.optional(__S(127, __c15, 7)),
+          RecordErrors: S.optional(__S(1089, __c68, 1)),
+          RecordTags: S.optional(__S(1091, __c68, 3)),
           LaunchRoleArn: S.optional(S.String),
         }),
       ).annotate({ identifier: "RecordDetail" });
-    case 1:
+  }
+}
+function __c69(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           OutputKey: S.optional(S.String),
@@ -5161,17 +5364,13 @@ function __c16(j: number): any {
           Description: S.optional(S.String),
         }),
       ).annotate({ identifier: "RecordOutput" });
-    case 2:
-      return S.Array(__S(129, __c16, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          RecordDetail: S.optional(__S(128, __c16, 0)),
-          RecordOutputs: S.optional(__S(130, __c16, 2)),
-          NextPageToken: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "DescribeRecordOutput" });
-    case 4:
+    case 1:
+      return S.Array(__S(1104, __c69, 0));
+  }
+}
+function __c70(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ Id: S.String, AcceptLanguage: S.optional(S.String) }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
@@ -5179,7 +5378,11 @@ function __c16(j: number): any {
       ).annotate({
         identifier: "DescribeServiceActionInput",
       });
-    case 5:
+  }
+}
+function __c71(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           ProvisionedProductId: S.String,
@@ -5189,33 +5392,37 @@ function __c16(j: number): any {
       ).annotate({
         identifier: "DescribeServiceActionExecutionParametersInput",
       });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           Name: S.optional(S.String),
           Type: S.optional(S.String),
-          DefaultValues: S.optional(__S(43, __c5, 3)),
+          DefaultValues: S.optional(__S(480, __c30, 0)),
         }),
       ).annotate({ identifier: "ExecutionParameter" });
-    case 7:
-      return S.Array(__S(134, __c16, 6));
-  }
-}
-function __c17(j: number): any {
-  switch (j) {
-    case 0:
+    case 2:
+      return S.Array(__S(1137, __c71, 1));
+    case 3:
       return S.suspend(() =>
-        S.Struct({ ServiceActionParameters: S.optional(__S(135, __c16, 7)) }),
+        S.Struct({ ServiceActionParameters: S.optional(__S(1138, __c71, 2)) }),
       ).annotate({
         identifier: "DescribeServiceActionExecutionParametersOutput",
       });
-    case 1:
+  }
+}
+function __c72(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ Id: S.String.pipe(T.HttpQuery("id")) }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "DescribeTagOptionInput" });
-    case 2:
+  }
+}
+function __c73(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({}).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
@@ -5223,7 +5430,11 @@ function __c17(j: number): any {
       ).annotate({
         identifier: "DisableAWSOrganizationsAccessInput",
       });
-    case 3:
+  }
+}
+function __c74(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ BudgetName: S.String, ResourceId: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
@@ -5231,7 +5442,11 @@ function __c17(j: number): any {
       ).annotate({
         identifier: "DisassociateBudgetFromResourceInput",
       });
-    case 4:
+  }
+}
+function __c75(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           AcceptLanguage: S.optional(S.String),
@@ -5242,7 +5457,11 @@ function __c17(j: number): any {
       ).annotate({
         identifier: "DisassociatePrincipalFromPortfolioInput",
       });
-    case 5:
+  }
+}
+function __c76(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           AcceptLanguage: S.optional(S.String),
@@ -5252,7 +5471,11 @@ function __c17(j: number): any {
       ).annotate({
         identifier: "DisassociateProductFromPortfolioInput",
       });
-    case 6:
+  }
+}
+function __c77(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           ProductId: S.String,
@@ -5264,7 +5487,11 @@ function __c17(j: number): any {
       ).annotate({
         identifier: "DisassociateServiceActionFromProvisioningArtifactInput",
       });
-    case 7:
+  }
+}
+function __c78(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           ResourceId: S.String.pipe(T.HttpQuery("resourceId")),
@@ -5275,7 +5502,7 @@ function __c17(j: number): any {
       });
   }
 }
-function __c18(j: number): any {
+function __c79(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5285,7 +5512,11 @@ function __c18(j: number): any {
       ).annotate({
         identifier: "EnableAWSOrganizationsAccessInput",
       });
-    case 1:
+  }
+}
+function __c80(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           AcceptLanguage: S.optional(S.String),
@@ -5295,25 +5526,37 @@ function __c18(j: number): any {
       ).annotate({
         identifier: "ExecuteProvisionedProductPlanInput",
       });
-    case 2:
-      return S.suspend(() => S.Struct({ RecordDetail: S.optional(__S(128, __c16, 0)) })).annotate({
+  }
+}
+function __c81(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({ RecordDetail: S.optional(__S(1092, __c68, 4)) })).annotate({
         identifier: "ExecuteProvisionedProductPlanOutput",
       });
-    case 3:
-      return S.Record(S.String, /*@__PURE__*/ __S(43, __c5, 3).pipe(S.optional));
-    case 4:
+  }
+}
+function __c82(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, /*@__PURE__*/ __S(480, __c30, 0).pipe(S.optional));
+    case 1:
       return S.suspend(() =>
         S.Struct({
           ProvisionedProductId: S.String,
           ServiceActionId: S.String,
           ExecuteToken: S.String.pipe(T.IdempotencyToken()),
           AcceptLanguage: S.optional(S.String),
-          Parameters: S.optional(__S(147, __c18, 3)),
+          Parameters: S.optional(__S(1312, __c82, 0)),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "ExecuteProvisionedProductServiceActionInput",
       });
-    case 5:
+  }
+}
+function __c83(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({}).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
@@ -5321,34 +5564,38 @@ function __c18(j: number): any {
       ).annotate({
         identifier: "GetAWSOrganizationsAccessStatusInput",
       });
-    case 6:
+    case 1:
       return S.suspend(() => S.Struct({ AccessStatus: S.optional(S.String) })).annotate({
         identifier: "GetAWSOrganizationsAccessStatusOutput",
       });
-    case 7:
+  }
+}
+function __c84(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           AcceptLanguage: S.optional(S.String),
           ProvisionedProductId: S.optional(S.String),
           ProvisionedProductName: S.optional(S.String),
-          OutputKeys: S.optional(__S(43, __c5, 3)),
+          OutputKeys: S.optional(__S(480, __c30, 0)),
           PageSize: S.optional(S.Number),
           PageToken: S.optional(S.String),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "GetProvisionedProductOutputsInput",
       });
-  }
-}
-function __c19(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
-        S.Struct({ Outputs: S.optional(__S(130, __c16, 2)), NextPageToken: S.optional(S.String) }),
+        S.Struct({ Outputs: S.optional(__S(1105, __c69, 1)), NextPageToken: S.optional(S.String) }),
       ).annotate({
         identifier: "GetProvisionedProductOutputsOutput",
       });
-    case 1:
+  }
+}
+function __c85(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           AcceptLanguage: S.optional(S.String),
@@ -5361,7 +5608,11 @@ function __c19(j: number): any {
       ).annotate({
         identifier: "ImportAsProvisionedProductInput",
       });
-    case 2:
+  }
+}
+function __c86(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           AcceptLanguage: S.optional(S.String),
@@ -5372,18 +5623,30 @@ function __c19(j: number): any {
       ).annotate({
         identifier: "ListAcceptedPortfolioSharesInput",
       });
-    case 3:
-      return S.Array(__S(26, __c3, 2));
-    case 4:
+  }
+}
+function __c87(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(272, __c17, 0));
+  }
+}
+function __c88(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          PortfolioDetails: S.optional(__S(155, __c19, 3)),
+          PortfolioDetails: S.optional(__S(1392, __c87, 0)),
           NextPageToken: S.optional(S.String),
         }),
       ).annotate({
         identifier: "ListAcceptedPortfolioSharesOutput",
       });
-    case 5:
+  }
+}
+function __c89(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           AcceptLanguage: S.optional(S.String),
@@ -5394,13 +5657,17 @@ function __c19(j: number): any {
       ).annotate({
         identifier: "ListBudgetsForResourceInput",
       });
-    case 6:
+    case 1:
       return S.suspend(() =>
-        S.Struct({ Budgets: S.optional(__S(71, __c8, 7)), NextPageToken: S.optional(S.String) }),
+        S.Struct({ Budgets: S.optional(__S(817, __c51, 1)), NextPageToken: S.optional(S.String) }),
       ).annotate({
         identifier: "ListBudgetsForResourceOutput",
       });
-    case 7:
+  }
+}
+function __c90(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           AcceptLanguage: S.optional(S.String),
@@ -5412,22 +5679,22 @@ function __c19(j: number): any {
       ).annotate({
         identifier: "ListConstraintsForPortfolioInput",
       });
-  }
-}
-function __c20(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(21, __c2, 5));
     case 1:
+      return S.Array(__S(208, __c13, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          ConstraintDetails: S.optional(__S(160, __c20, 0)),
+          ConstraintDetails: S.optional(__S(1441, __c90, 1)),
           NextPageToken: S.optional(S.String),
         }),
       ).annotate({
         identifier: "ListConstraintsForPortfolioOutput",
       });
-    case 2:
+  }
+}
+function __c91(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           AcceptLanguage: S.optional(S.String),
@@ -5436,25 +5703,29 @@ function __c20(j: number): any {
           PageToken: S.optional(S.String),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "ListLaunchPathsInput" });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           Id: S.optional(S.String),
-          ConstraintSummaries: S.optional(__S(114, __c14, 2)),
-          Tags: S.optional(__S(24, __c3, 0)),
+          ConstraintSummaries: S.optional(__S(1057, __c66, 1)),
+          Tags: S.optional(__S(257, __c16, 1)),
           Name: S.optional(S.String),
         }),
       ).annotate({ identifier: "LaunchPathSummary" });
-    case 4:
-      return S.Array(__S(163, __c20, 3));
-    case 5:
+    case 2:
+      return S.Array(__S(1457, __c91, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          LaunchPathSummaries: S.optional(__S(164, __c20, 4)),
+          LaunchPathSummaries: S.optional(__S(1458, __c91, 2)),
           NextPageToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListLaunchPathsOutput" });
-    case 6:
+  }
+}
+function __c92(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           AcceptLanguage: S.optional(S.String),
@@ -5466,22 +5737,22 @@ function __c20(j: number): any {
       ).annotate({
         identifier: "ListOrganizationPortfolioAccessInput",
       });
-    case 7:
-      return S.Array(__S(28, __c3, 4));
-  }
-}
-function __c21(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
+      return S.Array(__S(336, __c21, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          OrganizationNodes: S.optional(__S(167, __c20, 7)),
+          OrganizationNodes: S.optional(__S(1473, __c92, 1)),
           NextPageToken: S.optional(S.String),
         }),
       ).annotate({
         identifier: "ListOrganizationPortfolioAccessOutput",
       });
-    case 1:
+  }
+}
+function __c93(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           AcceptLanguage: S.optional(S.String),
@@ -5491,13 +5762,20 @@ function __c21(j: number): any {
           PageSize: S.optional(S.Number),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "ListPortfolioAccessInput" });
-    case 2:
+    case 1:
       return S.suspend(() =>
-        S.Struct({ AccountIds: S.optional(__S(43, __c5, 3)), NextPageToken: S.optional(S.String) }),
+        S.Struct({
+          AccountIds: S.optional(__S(480, __c30, 0)),
+          NextPageToken: S.optional(S.String),
+        }),
       ).annotate({
         identifier: "ListPortfolioAccessOutput",
       });
-    case 3:
+  }
+}
+function __c94(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           AcceptLanguage: S.optional(S.String),
@@ -5505,14 +5783,18 @@ function __c21(j: number): any {
           PageSize: S.optional(S.Number),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "ListPortfoliosInput" });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          PortfolioDetails: S.optional(__S(155, __c19, 3)),
+          PortfolioDetails: S.optional(__S(1392, __c87, 0)),
           NextPageToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListPortfoliosOutput" });
-    case 5:
+  }
+}
+function __c95(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           AcceptLanguage: S.optional(S.String),
@@ -5523,7 +5805,11 @@ function __c21(j: number): any {
       ).annotate({
         identifier: "ListPortfoliosForProductInput",
       });
-    case 6:
+  }
+}
+function __c96(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           AcceptLanguage: S.optional(S.String),
@@ -5534,42 +5820,38 @@ function __c21(j: number): any {
       ).annotate({
         identifier: "ListPrincipalsForPortfolioInput",
       });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({ PrincipalARN: S.optional(S.String), PrincipalType: S.optional(S.String) }),
       ).annotate({ identifier: "Principal" });
-  }
-}
-function __c22(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(175, __c21, 7));
-    case 1:
+    case 2:
+      return S.Array(__S(1537, __c96, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          Principals: S.optional(__S(176, __c22, 0)),
+          Principals: S.optional(__S(1538, __c96, 2)),
           NextPageToken: S.optional(S.String),
         }),
       ).annotate({
         identifier: "ListPrincipalsForPortfolioOutput",
       });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({ Key: S.optional(S.String), Value: S.optional(S.String) }),
-      ).annotate({ identifier: "AccessLevelFilter" });
-    case 3:
+  }
+}
+function __c97(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           AcceptLanguage: S.optional(S.String),
           ProvisionProductId: S.optional(S.String),
           PageSize: S.optional(S.Number),
           PageToken: S.optional(S.String),
-          AccessLevelFilter: S.optional(__S(178, __c22, 2)),
+          AccessLevelFilter: S.optional(__S(1568, __c98, 0)),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "ListProvisionedProductPlansInput",
       });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           PlanName: S.optional(S.String),
@@ -5582,18 +5864,30 @@ function __c22(j: number): any {
       ).annotate({
         identifier: "ProvisionedProductPlanSummary",
       });
-    case 5:
-      return S.Array(__S(180, __c22, 4));
-    case 6:
+    case 2:
+      return S.Array(__S(1553, __c97, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          ProvisionedProductPlans: S.optional(__S(181, __c22, 5)),
+          ProvisionedProductPlans: S.optional(__S(1554, __c97, 2)),
           NextPageToken: S.optional(S.String),
         }),
       ).annotate({
         identifier: "ListProvisionedProductPlansOutput",
       });
-    case 7:
+  }
+}
+function __c98(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ Key: S.optional(S.String), Value: S.optional(S.String) }),
+      ).annotate({ identifier: "AccessLevelFilter" });
+  }
+}
+function __c99(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ AcceptLanguage: S.optional(S.String), ProductId: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
@@ -5601,22 +5895,22 @@ function __c22(j: number): any {
       ).annotate({
         identifier: "ListProvisioningArtifactsInput",
       });
-  }
-}
-function __c23(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(41, __c5, 1));
     case 1:
+      return S.Array(__S(400, __c25, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          ProvisioningArtifactDetails: S.optional(__S(184, __c23, 0)),
+          ProvisioningArtifactDetails: S.optional(__S(1585, __c99, 1)),
           NextPageToken: S.optional(S.String),
         }),
       ).annotate({
         identifier: "ListProvisioningArtifactsOutput",
       });
-    case 2:
+  }
+}
+function __c100(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           ServiceActionId: S.String,
@@ -5627,54 +5921,62 @@ function __c23(j: number): any {
       ).annotate({
         identifier: "ListProvisioningArtifactsForServiceActionInput",
       });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          ProductViewSummary: S.optional(__S(416, __c26, 0)),
+          ProvisioningArtifact: S.optional(__S(912, __c57, 0)),
+        }),
+      ).annotate({ identifier: "ProvisioningArtifactView" });
+    case 2:
+      return S.Array(__S(1601, __c100, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          ProductViewSummary: S.optional(__S(37, __c4, 5)),
-          ProvisioningArtifact: S.optional(__S(83, __c10, 3)),
-        }),
-      ).annotate({ identifier: "ProvisioningArtifactView" });
-    case 4:
-      return S.Array(__S(187, __c23, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          ProvisioningArtifactViews: S.optional(__S(188, __c23, 4)),
+          ProvisioningArtifactViews: S.optional(__S(1602, __c100, 2)),
           NextPageToken: S.optional(S.String),
         }),
       ).annotate({
         identifier: "ListProvisioningArtifactsForServiceActionOutput",
       });
-    case 6:
+  }
+}
+function __c101(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          AcceptLanguage: S.optional(S.String),
+          AccessLevelFilter: S.optional(__S(1568, __c98, 0)),
+          SearchFilter: S.optional(__S(1632, __c102, 0)),
+          PageSize: S.optional(S.Number),
+          PageToken: S.optional(S.String),
+        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({ identifier: "ListRecordHistoryInput" });
+    case 1:
+      return S.Array(__S(1092, __c68, 4));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          RecordDetails: S.optional(__S(1617, __c101, 1)),
+          NextPageToken: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ListRecordHistoryOutput" });
+  }
+}
+function __c102(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ Key: S.optional(S.String), Value: S.optional(S.String) }),
       ).annotate({
         identifier: "ListRecordHistorySearchFilter",
       });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          AcceptLanguage: S.optional(S.String),
-          AccessLevelFilter: S.optional(__S(178, __c22, 2)),
-          SearchFilter: S.optional(__S(190, __c23, 6)),
-          PageSize: S.optional(S.Number),
-          PageToken: S.optional(S.String),
-        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({ identifier: "ListRecordHistoryInput" });
   }
 }
-function __c24(j: number): any {
+function __c103(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(128, __c16, 0));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          RecordDetails: S.optional(__S(192, __c24, 0)),
-          NextPageToken: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ListRecordHistoryOutput" });
-    case 2:
       return S.suspend(() =>
         S.Struct({
           TagOptionId: S.String.pipe(T.HttpQuery("tagOptionId")),
@@ -5685,7 +5987,7 @@ function __c24(j: number): any {
       ).annotate({
         identifier: "ListResourcesForTagOptionInput",
       });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           Id: S.optional(S.String),
@@ -5695,18 +5997,22 @@ function __c24(j: number): any {
           CreatedTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
         }),
       ).annotate({ identifier: "ResourceDetail" });
-    case 4:
-      return S.Array(__S(195, __c24, 3));
-    case 5:
+    case 2:
+      return S.Array(__S(1649, __c103, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          ResourceDetails: S.optional(__S(196, __c24, 4)),
+          ResourceDetails: S.optional(__S(1650, __c103, 2)),
           PageToken: S.optional(S.String),
         }),
       ).annotate({
         identifier: "ListResourcesForTagOptionOutput",
       });
-    case 6:
+  }
+}
+function __c104(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           AcceptLanguage: S.optional(S.String),
@@ -5714,20 +6020,24 @@ function __c24(j: number): any {
           PageToken: S.optional(S.String),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "ListServiceActionsInput" });
-    case 7:
-      return S.Array(__S(51, __c6, 3));
-  }
-}
-function __c25(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          ServiceActionSummaries: S.optional(__S(199, __c24, 7)),
+          ServiceActionSummaries: S.optional(__S(1680, __c105, 0)),
           NextPageToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListServiceActionsOutput" });
-    case 1:
+  }
+}
+function __c105(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(560, __c35, 0));
+  }
+}
+function __c106(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           ProductId: S.String,
@@ -5739,16 +6049,20 @@ function __c25(j: number): any {
       ).annotate({
         identifier: "ListServiceActionsForProvisioningArtifactInput",
       });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          ServiceActionSummaries: S.optional(__S(199, __c24, 7)),
+          ServiceActionSummaries: S.optional(__S(1680, __c105, 0)),
           NextPageToken: S.optional(S.String),
         }),
       ).annotate({
         identifier: "ListServiceActionsForProvisioningArtifactOutput",
       });
-    case 3:
+  }
+}
+function __c107(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           AcceptLanguage: S.optional(S.String),
@@ -5759,7 +6073,7 @@ function __c25(j: number): any {
       ).annotate({
         identifier: "ListStackInstancesForProvisionedProductInput",
       });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           Account: S.optional(S.String),
@@ -5767,18 +6081,22 @@ function __c25(j: number): any {
           StackInstanceStatus: S.optional(S.String),
         }),
       ).annotate({ identifier: "StackInstance" });
-    case 5:
-      return S.Array(__S(204, __c25, 4));
-    case 6:
+    case 2:
+      return S.Array(__S(1713, __c107, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          StackInstances: S.optional(__S(205, __c25, 5)),
+          StackInstances: S.optional(__S(1714, __c107, 2)),
           NextPageToken: S.optional(S.String),
         }),
       ).annotate({
         identifier: "ListStackInstancesForProvisionedProductOutput",
       });
-    case 7:
+  }
+}
+function __c108(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           Key: S.optional(S.String),
@@ -5786,44 +6104,48 @@ function __c25(j: number): any {
           Active: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "ListTagOptionsFilters" });
-  }
-}
-function __c26(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          Filters: S.optional(__S(207, __c25, 7)),
+          Filters: S.optional(__S(1728, __c108, 0)),
           PageSize: S.optional(S.Number),
           PageToken: S.optional(S.String),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "ListTagOptionsInput" });
-    case 1:
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          TagOptionDetails: S.optional(__S(69, __c8, 5)),
+          TagOptionDetails: S.optional(__S(832, __c52, 0)),
           PageToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListTagOptionsOutput" });
-    case 2:
-      return S.suspend(() => S.Struct({ UniqueTag: S.optional(__S(190, __c23, 6)) })).annotate({
+  }
+}
+function __c109(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({ UniqueTag: S.optional(__S(1632, __c102, 0)) })).annotate({
         identifier: "EngineWorkflowResourceIdentifier",
       });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           WorkflowToken: S.String,
           RecordId: S.String,
           Status: S.String,
           FailureReason: S.optional(S.String),
-          ResourceIdentifier: S.optional(__S(210, __c26, 2)),
-          Outputs: S.optional(__S(130, __c16, 2)),
+          ResourceIdentifier: S.optional(__S(1744, __c109, 0)),
+          Outputs: S.optional(__S(1105, __c69, 1)),
           IdempotencyToken: S.String.pipe(T.IdempotencyToken()),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "NotifyProvisionProductEngineWorkflowResultInput",
       });
-    case 4:
+  }
+}
+function __c110(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           WorkflowToken: S.String,
@@ -5835,39 +6157,47 @@ function __c26(j: number): any {
       ).annotate({
         identifier: "NotifyTerminateProvisionedProductEngineWorkflowResultInput",
       });
-    case 5:
+  }
+}
+function __c111(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "NotifyTerminateProvisionedProductEngineWorkflowResultOutput",
       });
-    case 6:
+  }
+}
+function __c112(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           WorkflowToken: S.String,
           RecordId: S.String,
           Status: S.String,
           FailureReason: S.optional(S.String),
-          Outputs: S.optional(__S(130, __c16, 2)),
+          Outputs: S.optional(__S(1105, __c69, 1)),
           IdempotencyToken: S.String.pipe(T.IdempotencyToken()),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "NotifyUpdateProvisionedProductEngineWorkflowResultInput",
       });
-    case 7:
+  }
+}
+function __c113(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          StackSetAccounts: S.optional(__S(43, __c5, 3)),
-          StackSetRegions: S.optional(__S(43, __c5, 3)),
+          StackSetAccounts: S.optional(__S(480, __c30, 0)),
+          StackSetRegions: S.optional(__S(480, __c30, 0)),
           StackSetFailureToleranceCount: S.optional(S.Number),
           StackSetFailureTolerancePercentage: S.optional(S.Number),
           StackSetMaxConcurrencyCount: S.optional(S.Number),
           StackSetMaxConcurrencyPercentage: S.optional(S.Number),
         }),
       ).annotate({ identifier: "ProvisioningPreferences" });
-  }
-}
-function __c27(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           AcceptLanguage: S.optional(S.String),
@@ -5878,18 +6208,22 @@ function __c27(j: number): any {
           PathId: S.optional(S.String),
           PathName: S.optional(S.String),
           ProvisionedProductName: S.String,
-          ProvisioningParameters: S.optional(__S(127, __c15, 7)),
-          ProvisioningPreferences: S.optional(__S(215, __c26, 7)),
-          Tags: S.optional(__S(24, __c3, 0)),
-          NotificationArns: S.optional(__S(43, __c5, 3)),
+          ProvisioningParameters: S.optional(__S(1091, __c68, 3)),
+          ProvisioningPreferences: S.optional(__S(1808, __c113, 0)),
+          Tags: S.optional(__S(257, __c16, 1)),
+          NotificationArns: S.optional(__S(480, __c30, 0)),
           ProvisionToken: S.String.pipe(T.IdempotencyToken()),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "ProvisionProductInput" });
-    case 1:
-      return S.suspend(() => S.Struct({ RecordDetail: S.optional(__S(128, __c16, 0)) })).annotate({
+    case 2:
+      return S.suspend(() => S.Struct({ RecordDetail: S.optional(__S(1092, __c68, 4)) })).annotate({
         identifier: "ProvisionProductOutput",
       });
-    case 2:
+  }
+}
+function __c114(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           AcceptLanguage: S.optional(S.String),
@@ -5899,71 +6233,83 @@ function __c27(j: number): any {
       ).annotate({
         identifier: "RejectPortfolioShareInput",
       });
-    case 3:
+  }
+}
+function __c115(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           AcceptLanguage: S.optional(S.String),
-          AccessLevelFilter: S.optional(__S(178, __c22, 2)),
+          AccessLevelFilter: S.optional(__S(1568, __c98, 0)),
           PageSize: S.optional(S.Number),
           PageToken: S.optional(S.String),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "ScanProvisionedProductsInput",
       });
-    case 4:
-      return S.Array(__S(95, __c11, 7));
-    case 5:
+    case 1:
+      return S.Array(__S(976, __c61, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          ProvisionedProducts: S.optional(__S(220, __c27, 4)),
+          ProvisionedProducts: S.optional(__S(1841, __c115, 1)),
           NextPageToken: S.optional(S.String),
         }),
       ).annotate({
         identifier: "ScanProvisionedProductsOutput",
       });
-    case 6:
-      return S.Record(S.String, /*@__PURE__*/ __S(43, __c5, 3).pipe(S.optional));
-    case 7:
+  }
+}
+function __c116(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           AcceptLanguage: S.optional(S.String),
-          Filters: S.optional(__S(222, __c27, 6)),
+          Filters: S.optional(__S(1872, __c117, 0)),
           PageSize: S.optional(S.Number),
           SortBy: S.optional(S.String),
           SortOrder: S.optional(S.String),
           PageToken: S.optional(S.String),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "SearchProductsInput" });
-  }
-}
-function __c28(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(37, __c4, 5));
     case 1:
+      return S.Array(__S(416, __c26, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({ Value: S.optional(S.String), ApproximateCount: S.optional(S.Number) }),
       ).annotate({
         identifier: "ProductViewAggregationValue",
       });
-    case 2:
-      return S.Array(__S(225, __c28, 1));
     case 3:
-      return S.Record(S.String, /*@__PURE__*/ __S(226, __c28, 2).pipe(S.optional));
+      return S.Array(__S(1858, __c116, 2));
     case 4:
+      return S.Record(S.String, /*@__PURE__*/ __S(1859, __c116, 3).pipe(S.optional));
+    case 5:
       return S.suspend(() =>
         S.Struct({
-          ProductViewSummaries: S.optional(__S(224, __c28, 0)),
-          ProductViewAggregations: S.optional(__S(227, __c28, 3)),
+          ProductViewSummaries: S.optional(__S(1857, __c116, 1)),
+          ProductViewAggregations: S.optional(__S(1860, __c116, 4)),
           NextPageToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "SearchProductsOutput" });
-    case 5:
+  }
+}
+function __c117(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, /*@__PURE__*/ __S(480, __c30, 0).pipe(S.optional));
+  }
+}
+function __c118(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           AcceptLanguage: S.optional(S.String),
           PortfolioId: S.optional(S.String),
-          Filters: S.optional(__S(222, __c27, 6)),
+          Filters: S.optional(__S(1872, __c117, 0)),
           SortBy: S.optional(S.String),
           SortOrder: S.optional(S.String),
           PageToken: S.optional(S.String),
@@ -5973,12 +6319,12 @@ function __c28(j: number): any {
       ).annotate({
         identifier: "SearchProductsAsAdminInput",
       });
-    case 6:
-      return S.Array(__S(40, __c5, 0));
-    case 7:
+    case 1:
+      return S.Array(__S(436, __c27, 4));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          ProductViewDetails: S.optional(__S(230, __c28, 6)),
+          ProductViewDetails: S.optional(__S(1889, __c118, 1)),
           NextPageToken: S.optional(S.String),
         }),
       ).annotate({
@@ -5986,16 +6332,16 @@ function __c28(j: number): any {
       });
   }
 }
-function __c29(j: number): any {
+function __c119(j: number): any {
   switch (j) {
     case 0:
-      return S.Record(S.String, /*@__PURE__*/ __S(43, __c5, 3).pipe(S.optional));
+      return S.Record(S.String, /*@__PURE__*/ __S(480, __c30, 0).pipe(S.optional));
     case 1:
       return S.suspend(() =>
         S.Struct({
           AcceptLanguage: S.optional(S.String),
-          AccessLevelFilter: S.optional(__S(178, __c22, 2)),
-          Filters: S.optional(__S(232, __c29, 0)),
+          AccessLevelFilter: S.optional(__S(1568, __c98, 0)),
+          Filters: S.optional(__S(1904, __c119, 0)),
           SortBy: S.optional(S.String),
           SortOrder: S.optional(S.String),
           PageSize: S.optional(S.Number),
@@ -6018,7 +6364,7 @@ function __c29(j: number): any {
           LastRecordId: S.optional(S.String),
           LastProvisioningRecordId: S.optional(S.String),
           LastSuccessfulProvisioningRecordId: S.optional(S.String),
-          Tags: S.optional(__S(24, __c3, 0)),
+          Tags: S.optional(__S(257, __c16, 1)),
           PhysicalId: S.optional(S.String),
           ProductId: S.optional(S.String),
           ProductName: S.optional(S.String),
@@ -6031,18 +6377,22 @@ function __c29(j: number): any {
         identifier: "ProvisionedProductAttribute",
       });
     case 3:
-      return S.Array(__S(234, __c29, 2));
+      return S.Array(__S(1906, __c119, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          ProvisionedProducts: S.optional(__S(235, __c29, 3)),
+          ProvisionedProducts: S.optional(__S(1907, __c119, 3)),
           TotalResultsCount: S.optional(S.Number),
           NextPageToken: S.optional(S.String),
         }),
       ).annotate({
         identifier: "SearchProvisionedProductsOutput",
       });
-    case 5:
+  }
+}
+function __c120(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           ProvisionedProductName: S.optional(S.String),
@@ -6055,7 +6405,33 @@ function __c29(j: number): any {
       ).annotate({
         identifier: "TerminateProvisionedProductInput",
       });
-    case 6:
+  }
+}
+function __c121(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          AcceptLanguage: S.optional(S.String),
+          PortfolioId: S.String,
+          PortfolioShareType: S.optional(S.String),
+        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({
+        identifier: "AcceptPortfolioShareInput",
+      });
+  }
+}
+function __c122(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "AcceptPortfolioShareOutput",
+      });
+  }
+}
+function __c123(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           AcceptLanguage: S.optional(S.String),
@@ -6064,7 +6440,11 @@ function __c29(j: number): any {
           Parameters: S.optional(S.String),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "UpdateConstraintInput" });
-    case 7:
+  }
+}
+function __c124(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           AcceptLanguage: S.optional(S.String),
@@ -6072,13 +6452,13 @@ function __c29(j: number): any {
           DisplayName: S.optional(S.String),
           Description: S.optional(S.String),
           ProviderName: S.optional(S.String),
-          AddTags: S.optional(__S(24, __c3, 0)),
-          RemoveTags: S.optional(__S(43, __c5, 3)),
+          AddTags: S.optional(__S(257, __c16, 1)),
+          RemoveTags: S.optional(__S(480, __c30, 0)),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "UpdatePortfolioInput" });
   }
 }
-function __c30(j: number): any {
+function __c125(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -6086,7 +6466,7 @@ function __c30(j: number): any {
           AcceptLanguage: S.optional(S.String),
           PortfolioId: S.String,
           AccountId: S.optional(S.String),
-          OrganizationNode: S.optional(__S(28, __c3, 4)),
+          OrganizationNode: S.optional(__S(336, __c21, 0)),
           ShareTagOptions: S.optional(S.Boolean),
           SharePrincipals: S.optional(S.Boolean),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
@@ -6099,7 +6479,11 @@ function __c30(j: number): any {
       ).annotate({
         identifier: "UpdatePortfolioShareOutput",
       });
-    case 2:
+  }
+}
+function __c126(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           AcceptLanguage: S.optional(S.String),
@@ -6111,23 +6495,27 @@ function __c30(j: number): any {
           SupportDescription: S.optional(S.String),
           SupportEmail: S.optional(S.String),
           SupportUrl: S.optional(S.String),
-          AddTags: S.optional(__S(24, __c3, 0)),
-          RemoveTags: S.optional(__S(43, __c5, 3)),
-          SourceConnection: S.optional(__S(35, __c4, 3)),
+          AddTags: S.optional(__S(257, __c16, 1)),
+          RemoveTags: S.optional(__S(480, __c30, 0)),
+          SourceConnection: S.optional(__S(448, __c28, 0)),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "UpdateProductInput" });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          ProductViewDetail: S.optional(__S(40, __c5, 0)),
-          Tags: S.optional(__S(24, __c3, 0)),
+          ProductViewDetail: S.optional(__S(436, __c27, 4)),
+          Tags: S.optional(__S(257, __c16, 1)),
         }),
       ).annotate({ identifier: "UpdateProductOutput" });
-    case 4:
+  }
+}
+function __c127(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          StackSetAccounts: S.optional(__S(43, __c5, 3)),
-          StackSetRegions: S.optional(__S(43, __c5, 3)),
+          StackSetAccounts: S.optional(__S(480, __c30, 0)),
+          StackSetRegions: S.optional(__S(480, __c30, 0)),
           StackSetFailureToleranceCount: S.optional(S.Number),
           StackSetFailureTolerancePercentage: S.optional(S.Number),
           StackSetMaxConcurrencyCount: S.optional(S.Number),
@@ -6137,7 +6525,7 @@ function __c30(j: number): any {
       ).annotate({
         identifier: "UpdateProvisioningPreferences",
       });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           AcceptLanguage: S.optional(S.String),
@@ -6149,30 +6537,34 @@ function __c30(j: number): any {
           ProvisioningArtifactName: S.optional(S.String),
           PathId: S.optional(S.String),
           PathName: S.optional(S.String),
-          ProvisioningParameters: S.optional(__S(45, __c5, 5)),
-          ProvisioningPreferences: S.optional(__S(244, __c30, 4)),
-          Tags: S.optional(__S(24, __c3, 0)),
+          ProvisioningParameters: S.optional(__S(497, __c31, 1)),
+          ProvisioningPreferences: S.optional(__S(2032, __c127, 0)),
+          Tags: S.optional(__S(257, __c16, 1)),
           UpdateToken: S.String.pipe(T.IdempotencyToken()),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "UpdateProvisionedProductInput",
       });
-    case 6:
+  }
+}
+function __c128(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           AcceptLanguage: S.optional(S.String),
           ProvisionedProductId: S.String,
-          ProvisionedProductProperties: __S(15, __c1, 7),
+          ProvisionedProductProperties: __S(160, __c10, 0),
           IdempotencyToken: S.String.pipe(T.IdempotencyToken()),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "UpdateProvisionedProductPropertiesInput",
       });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           ProvisionedProductId: S.optional(S.String),
-          ProvisionedProductProperties: S.optional(__S(15, __c1, 7)),
+          ProvisionedProductProperties: S.optional(__S(160, __c10, 0)),
           RecordId: S.optional(S.String),
           Status: S.optional(S.String),
         }),
@@ -6181,7 +6573,7 @@ function __c30(j: number): any {
       });
   }
 }
-function __c31(j: number): any {
+function __c129(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -6197,17 +6589,25 @@ function __c31(j: number): any {
       ).annotate({
         identifier: "UpdateProvisioningArtifactInput",
       });
-    case 1:
+  }
+}
+function __c130(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           Id: S.String,
           Name: S.optional(S.String),
-          Definition: S.optional(__S(15, __c1, 7)),
+          Definition: S.optional(__S(160, __c10, 0)),
           Description: S.optional(S.String),
           AcceptLanguage: S.optional(S.String),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "UpdateServiceActionInput" });
-    case 2:
+  }
+}
+function __c131(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ Id: S.String, Value: S.optional(S.String), Active: S.optional(S.Boolean) }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
@@ -6215,7 +6615,6 @@ function __c31(j: number): any {
       ).annotate({ identifier: "UpdateTagOptionInput" });
   }
 }
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

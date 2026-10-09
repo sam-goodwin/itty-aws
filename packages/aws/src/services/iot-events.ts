@@ -798,8 +798,8 @@ export const createAlarmModel: API.OperationMethod<
   CreateAlarmModelError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(36, __c4, 4) as any as S.Schema<CreateAlarmModelRequest>,
-  output: __S(37, __c4, 5) as any as S.Schema<CreateAlarmModelResponse>,
+  input: __S(1024, __c32, 0) as any as S.Schema<CreateAlarmModelRequest>,
+  output: __S(1152, __c36, 0) as any as S.Schema<CreateAlarmModelResponse>,
   errors: [
     InternalFailureException,
     InvalidRequestException,
@@ -832,8 +832,8 @@ export const createDetectorModel: API.OperationMethod<
   CreateDetectorModelError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(52, __c6, 4) as any as S.Schema<CreateDetectorModelRequest>,
-  output: __S(54, __c6, 6) as any as S.Schema<CreateDetectorModelResponse>,
+  input: __S(0, __c0, 0) as any as S.Schema<CreateDetectorModelRequest>,
+  output: __S(96, __c3, 0) as any as S.Schema<CreateDetectorModelResponse>,
   errors: [
     InternalFailureException,
     InvalidRequestException,
@@ -864,8 +864,8 @@ export const createInput: API.OperationMethod<
   CreateInputError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(58, __c7, 2) as any as S.Schema<CreateInputRequest>,
-  output: __S(60, __c7, 4) as any as S.Schema<CreateInputResponse>,
+  input: __S(128, __c4, 0) as any as S.Schema<CreateInputRequest>,
+  output: __S(192, __c6, 0) as any as S.Schema<CreateInputResponse>,
   errors: [
     InternalFailureException,
     InvalidRequestException,
@@ -896,8 +896,8 @@ export const deleteAlarmModel: API.OperationMethod<
   DeleteAlarmModelError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(61, __c7, 5) as any as S.Schema<DeleteAlarmModelRequest>,
-  output: __S(62, __c7, 6) as any as S.Schema<DeleteAlarmModelResponse>,
+  input: __S(224, __c7, 0) as any as S.Schema<DeleteAlarmModelRequest>,
+  output: __S(256, __c8, 0) as any as S.Schema<DeleteAlarmModelResponse>,
   errors: [
     InternalFailureException,
     InvalidRequestException,
@@ -929,8 +929,8 @@ export const deleteDetectorModel: API.OperationMethod<
   DeleteDetectorModelError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(63, __c7, 7) as any as S.Schema<DeleteDetectorModelRequest>,
-  output: __S(62, __c7, 6) as any as S.Schema<DeleteDetectorModelResponse>,
+  input: __S(288, __c9, 0) as any as S.Schema<DeleteDetectorModelRequest>,
+  output: __S(256, __c8, 0) as any as S.Schema<DeleteDetectorModelResponse>,
   errors: [
     InternalFailureException,
     InvalidRequestException,
@@ -961,8 +961,8 @@ export const deleteInput: API.OperationMethod<
   DeleteInputError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(64, __c8, 0) as any as S.Schema<DeleteInputRequest>,
-  output: __S(62, __c7, 6) as any as S.Schema<DeleteInputResponse>,
+  input: __S(320, __c10, 0) as any as S.Schema<DeleteInputRequest>,
+  output: __S(256, __c8, 0) as any as S.Schema<DeleteInputResponse>,
   errors: [
     InternalFailureException,
     InvalidRequestException,
@@ -993,8 +993,8 @@ export const describeAlarmModel: API.OperationMethod<
   DescribeAlarmModelError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(65, __c8, 1) as any as S.Schema<DescribeAlarmModelRequest>,
-  output: __S(66, __c8, 2) as any as S.Schema<DescribeAlarmModelResponse>,
+  input: __S(352, __c11, 0) as any as S.Schema<DescribeAlarmModelRequest>,
+  output: __S(353, __c11, 1) as any as S.Schema<DescribeAlarmModelResponse>,
   errors: [
     InternalFailureException,
     InvalidRequestException,
@@ -1024,8 +1024,8 @@ export const describeDetectorModel: API.OperationMethod<
   DescribeDetectorModelError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(67, __c8, 3) as any as S.Schema<DescribeDetectorModelRequest>,
-  output: __S(69, __c8, 5) as any as S.Schema<DescribeDetectorModelResponse>,
+  input: __S(384, __c12, 0) as any as S.Schema<DescribeDetectorModelRequest>,
+  output: __S(386, __c12, 2) as any as S.Schema<DescribeDetectorModelResponse>,
   errors: [
     InternalFailureException,
     InvalidRequestException,
@@ -1056,8 +1056,8 @@ export const describeDetectorModelAnalysis: API.OperationMethod<
   DescribeDetectorModelAnalysisError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(70, __c8, 6) as any as S.Schema<DescribeDetectorModelAnalysisRequest>,
-  output: __S(71, __c8, 7) as any as S.Schema<DescribeDetectorModelAnalysisResponse>,
+  input: __S(416, __c13, 0) as any as S.Schema<DescribeDetectorModelAnalysisRequest>,
+  output: __S(417, __c13, 1) as any as S.Schema<DescribeDetectorModelAnalysisResponse>,
   errors: [
     InternalFailureException,
     InvalidRequestException,
@@ -1086,8 +1086,8 @@ export const describeInput: API.OperationMethod<
   DescribeInputError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(72, __c9, 0) as any as S.Schema<DescribeInputRequest>,
-  output: __S(74, __c9, 2) as any as S.Schema<DescribeInputResponse>,
+  input: __S(448, __c14, 0) as any as S.Schema<DescribeInputRequest>,
+  output: __S(450, __c14, 2) as any as S.Schema<DescribeInputResponse>,
   errors: [
     InternalFailureException,
     InvalidRequestException,
@@ -1117,8 +1117,8 @@ export const describeLoggingOptions: API.OperationMethod<
   DescribeLoggingOptionsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(75, __c9, 3) as any as S.Schema<DescribeLoggingOptionsRequest>,
-  output: __S(79, __c9, 7) as any as S.Schema<DescribeLoggingOptionsResponse>,
+  input: __S(480, __c15, 0) as any as S.Schema<DescribeLoggingOptionsRequest>,
+  output: __S(481, __c15, 1) as any as S.Schema<DescribeLoggingOptionsResponse>,
   errors: [
     InternalFailureException,
     InvalidRequestException,
@@ -1150,8 +1150,8 @@ export const getDetectorModelAnalysisResults: API.OperationMethod<
   GetDetectorModelAnalysisResultsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(80, __c10, 0) as any as S.Schema<GetDetectorModelAnalysisResultsRequest>,
-  output: __S(85, __c10, 5) as any as S.Schema<GetDetectorModelAnalysisResultsResponse>,
+  input: __S(544, __c17, 0) as any as S.Schema<GetDetectorModelAnalysisResultsRequest>,
+  output: __S(549, __c17, 5) as any as S.Schema<GetDetectorModelAnalysisResultsResponse>,
   errors: [
     InternalFailureException,
     InvalidRequestException,
@@ -1180,8 +1180,8 @@ export const listAlarmModels: API.OperationMethod<
   ListAlarmModelsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(86, __c10, 6) as any as S.Schema<ListAlarmModelsRequest>,
-  output: __S(89, __c11, 1) as any as S.Schema<ListAlarmModelsResponse>,
+  input: __S(576, __c18, 0) as any as S.Schema<ListAlarmModelsRequest>,
+  output: __S(579, __c18, 3) as any as S.Schema<ListAlarmModelsResponse>,
   errors: [
     InternalFailureException,
     InvalidRequestException,
@@ -1210,8 +1210,8 @@ export const listAlarmModelVersions: API.OperationMethod<
   ListAlarmModelVersionsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(90, __c11, 2) as any as S.Schema<ListAlarmModelVersionsRequest>,
-  output: __S(93, __c11, 5) as any as S.Schema<ListAlarmModelVersionsResponse>,
+  input: __S(608, __c19, 0) as any as S.Schema<ListAlarmModelVersionsRequest>,
+  output: __S(611, __c19, 3) as any as S.Schema<ListAlarmModelVersionsResponse>,
   errors: [
     InternalFailureException,
     InvalidRequestException,
@@ -1240,8 +1240,8 @@ export const listDetectorModels: API.OperationMethod<
   ListDetectorModelsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(94, __c11, 6) as any as S.Schema<ListDetectorModelsRequest>,
-  output: __S(97, __c12, 1) as any as S.Schema<ListDetectorModelsResponse>,
+  input: __S(640, __c20, 0) as any as S.Schema<ListDetectorModelsRequest>,
+  output: __S(643, __c20, 3) as any as S.Schema<ListDetectorModelsResponse>,
   errors: [
     InternalFailureException,
     InvalidRequestException,
@@ -1270,8 +1270,8 @@ export const listDetectorModelVersions: API.OperationMethod<
   ListDetectorModelVersionsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(98, __c12, 2) as any as S.Schema<ListDetectorModelVersionsRequest>,
-  output: __S(101, __c12, 5) as any as S.Schema<ListDetectorModelVersionsResponse>,
+  input: __S(672, __c21, 0) as any as S.Schema<ListDetectorModelVersionsRequest>,
+  output: __S(675, __c21, 3) as any as S.Schema<ListDetectorModelVersionsResponse>,
   errors: [
     InternalFailureException,
     InvalidRequestException,
@@ -1300,8 +1300,8 @@ export const listInputRoutings: API.OperationMethod<
   ListInputRoutingsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(106, __c13, 2) as any as S.Schema<ListInputRoutingsRequest>,
-  output: __S(109, __c13, 5) as any as S.Schema<ListInputRoutingsResponse>,
+  input: __S(708, __c22, 4) as any as S.Schema<ListInputRoutingsRequest>,
+  output: __S(711, __c22, 7) as any as S.Schema<ListInputRoutingsResponse>,
   errors: [
     InternalFailureException,
     InvalidRequestException,
@@ -1329,8 +1329,8 @@ export const listInputs: API.OperationMethod<
   ListInputsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(110, __c13, 6) as any as S.Schema<ListInputsRequest>,
-  output: __S(113, __c14, 1) as any as S.Schema<ListInputsResponse>,
+  input: __S(736, __c23, 0) as any as S.Schema<ListInputsRequest>,
+  output: __S(739, __c23, 3) as any as S.Schema<ListInputsResponse>,
   errors: [
     InternalFailureException,
     InvalidRequestException,
@@ -1358,8 +1358,8 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(114, __c14, 2) as any as S.Schema<ListTagsForResourceRequest>,
-  output: __S(115, __c14, 3) as any as S.Schema<ListTagsForResourceResponse>,
+  input: __S(768, __c24, 0) as any as S.Schema<ListTagsForResourceRequest>,
+  output: __S(769, __c24, 1) as any as S.Schema<ListTagsForResourceResponse>,
   errors: [
     InternalFailureException,
     InvalidRequestException,
@@ -1394,8 +1394,8 @@ export const putLoggingOptions: API.OperationMethod<
   PutLoggingOptionsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(116, __c14, 4) as any as S.Schema<PutLoggingOptionsRequest>,
-  output: __S(62, __c7, 6) as any as S.Schema<PutLoggingOptionsResponse>,
+  input: __S(800, __c25, 0) as any as S.Schema<PutLoggingOptionsRequest>,
+  output: __S(256, __c8, 0) as any as S.Schema<PutLoggingOptionsResponse>,
   errors: [
     InternalFailureException,
     InvalidRequestException,
@@ -1427,8 +1427,8 @@ export const startDetectorModelAnalysis: API.OperationMethod<
   StartDetectorModelAnalysisError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(117, __c14, 5) as any as S.Schema<StartDetectorModelAnalysisRequest>,
-  output: __S(118, __c14, 6) as any as S.Schema<StartDetectorModelAnalysisResponse>,
+  input: __S(832, __c26, 0) as any as S.Schema<StartDetectorModelAnalysisRequest>,
+  output: __S(833, __c26, 1) as any as S.Schema<StartDetectorModelAnalysisResponse>,
   errors: [
     InternalFailureException,
     InvalidRequestException,
@@ -1459,8 +1459,8 @@ export const tagResource: API.OperationMethod<
   TagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(119, __c14, 7) as any as S.Schema<TagResourceRequest>,
-  output: __S(62, __c7, 6) as any as S.Schema<TagResourceResponse>,
+  input: __S(864, __c27, 0) as any as S.Schema<TagResourceRequest>,
+  output: __S(256, __c8, 0) as any as S.Schema<TagResourceResponse>,
   errors: [
     InternalFailureException,
     InvalidRequestException,
@@ -1490,8 +1490,8 @@ export const untagResource: API.OperationMethod<
   UntagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(121, __c15, 1) as any as S.Schema<UntagResourceRequest>,
-  output: __S(62, __c7, 6) as any as S.Schema<UntagResourceResponse>,
+  input: __S(897, __c28, 1) as any as S.Schema<UntagResourceRequest>,
+  output: __S(256, __c8, 0) as any as S.Schema<UntagResourceResponse>,
   errors: [
     InternalFailureException,
     InvalidRequestException,
@@ -1522,8 +1522,8 @@ export const updateAlarmModel: API.OperationMethod<
   UpdateAlarmModelError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(122, __c15, 2) as any as S.Schema<UpdateAlarmModelRequest>,
-  output: __S(37, __c4, 5) as any as S.Schema<UpdateAlarmModelResponse>,
+  input: __S(928, __c29, 0) as any as S.Schema<UpdateAlarmModelRequest>,
+  output: __S(1152, __c36, 0) as any as S.Schema<UpdateAlarmModelResponse>,
   errors: [
     InternalFailureException,
     InvalidRequestException,
@@ -1555,8 +1555,8 @@ export const updateDetectorModel: API.OperationMethod<
   UpdateDetectorModelError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(123, __c15, 3) as any as S.Schema<UpdateDetectorModelRequest>,
-  output: __S(54, __c6, 6) as any as S.Schema<UpdateDetectorModelResponse>,
+  input: __S(960, __c30, 0) as any as S.Schema<UpdateDetectorModelRequest>,
+  output: __S(96, __c3, 0) as any as S.Schema<UpdateDetectorModelResponse>,
   errors: [
     InternalFailureException,
     InvalidRequestException,
@@ -1587,8 +1587,8 @@ export const updateInput: API.OperationMethod<
   UpdateInputError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(124, __c15, 4) as any as S.Schema<UpdateInputRequest>,
-  output: __S(60, __c7, 4) as any as S.Schema<UpdateInputResponse>,
+  input: __S(992, __c31, 0) as any as S.Schema<UpdateInputRequest>,
+  output: __S(192, __c6, 0) as any as S.Schema<UpdateInputResponse>,
   errors: [
     InternalFailureException,
     InvalidRequestException,
@@ -1606,382 +1606,14 @@ export const updateInput: API.OperationMethod<
 function __c0(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => S.Struct({ key: S.String, value: S.String })).annotate({
-        identifier: "Tag",
-      });
-    case 1:
-      return S.Array(__S(0, __c0, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          inputProperty: S.String,
-          comparisonOperator: S.String,
-          threshold: S.String,
-        }),
-      ).annotate({ identifier: "SimpleRule" });
-    case 3:
-      return S.suspend(() => S.Struct({ simpleRule: S.optional(__S(2, __c0, 2)) })).annotate({
-        identifier: "AlarmRule",
-      });
-    case 4:
-      return S.suspend(() => S.Struct({ contentExpression: S.String, type: S.String })).annotate({
-        identifier: "Payload",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({ functionArn: S.String, payload: S.optional(__S(4, __c0, 4)) }),
-      ).annotate({ identifier: "LambdaAction" });
-    case 6:
-      return S.suspend(() => S.Struct({ lambdaAction: S.optional(__S(5, __c0, 5)) })).annotate({
-        identifier: "NotificationTargetActions",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({ identityStoreId: S.String, userId: S.optional(S.String) }),
-      ).annotate({ identifier: "SSOIdentity" });
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() => S.Struct({ ssoIdentity: S.optional(__S(7, __c0, 7)) })).annotate({
-        identifier: "RecipientDetail",
-      });
-    case 1:
-      return S.Array(__S(8, __c1, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          senderId: S.optional(S.String),
-          additionalMessage: S.optional(S.String),
-          recipients: __S(9, __c1, 1),
-        }),
-      ).annotate({
-        identifier: "SMSConfiguration",
-      });
-    case 3:
-      return S.Array(__S(10, __c1, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          subject: S.optional(S.String),
-          additionalMessage: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "EmailContent" });
-    case 5:
-      return S.suspend(() => S.Struct({ to: S.optional(__S(9, __c1, 1)) })).annotate({
-        identifier: "EmailRecipients",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          from: S.String,
-          content: S.optional(__S(12, __c1, 4)),
-          recipients: __S(13, __c1, 5),
-        }),
-      ).annotate({
-        identifier: "EmailConfiguration",
-      });
-    case 7:
-      return S.Array(__S(14, __c1, 6));
-  }
-}
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          action: __S(6, __c0, 6),
-          smsConfigurations: S.optional(__S(11, __c1, 3)),
-          emailConfigurations: S.optional(__S(15, __c1, 7)),
-        }),
-      ).annotate({
-        identifier: "NotificationAction",
-      });
-    case 1:
-      return S.Array(__S(16, __c2, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({ notificationActions: S.optional(__S(17, __c2, 1)) }),
-      ).annotate({
-        identifier: "AlarmNotification",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({ targetArn: S.String, payload: S.optional(__S(4, __c0, 4)) }),
-      ).annotate({
-        identifier: "SNSTopicPublishAction",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({ mqttTopic: S.String, payload: S.optional(__S(4, __c0, 4)) }),
-      ).annotate({
-        identifier: "IotTopicPublishAction",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({ inputName: S.String, payload: S.optional(__S(4, __c0, 4)) }),
-      ).annotate({
-        identifier: "IotEventsAction",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          queueUrl: S.String,
-          useBase64: S.optional(S.Boolean),
-          payload: S.optional(__S(4, __c0, 4)),
-        }),
-      ).annotate({ identifier: "SqsAction" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          deliveryStreamName: S.String,
-          separator: S.optional(S.String),
-          payload: S.optional(__S(4, __c0, 4)),
-        }),
-      ).annotate({ identifier: "FirehoseAction" });
-  }
-}
-function __c3(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          hashKeyType: S.optional(S.String),
-          hashKeyField: S.String,
-          hashKeyValue: S.String,
-          rangeKeyType: S.optional(S.String),
-          rangeKeyField: S.optional(S.String),
-          rangeKeyValue: S.optional(S.String),
-          operation: S.optional(S.String),
-          payloadField: S.optional(S.String),
-          tableName: S.String,
-          payload: S.optional(__S(4, __c0, 4)),
-        }),
-      ).annotate({ identifier: "DynamoDBAction" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({ tableName: S.String, payload: S.optional(__S(4, __c0, 4)) }),
-      ).annotate({
-        identifier: "DynamoDBv2Action",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          stringValue: S.optional(S.String),
-          integerValue: S.optional(S.String),
-          doubleValue: S.optional(S.String),
-          booleanValue: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "AssetPropertyVariant",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({ timeInSeconds: S.String, offsetInNanos: S.optional(S.String) }),
-      ).annotate({
-        identifier: "AssetPropertyTimestamp",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          value: S.optional(__S(26, __c3, 2)),
-          timestamp: S.optional(__S(27, __c3, 3)),
-          quality: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "AssetPropertyValue",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          entryId: S.optional(S.String),
-          assetId: S.optional(S.String),
-          propertyId: S.optional(S.String),
-          propertyAlias: S.optional(S.String),
-          propertyValue: S.optional(__S(28, __c3, 4)),
-        }),
-      ).annotate({
-        identifier: "IotSiteWiseAction",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          sns: S.optional(__S(19, __c2, 3)),
-          iotTopicPublish: S.optional(__S(20, __c2, 4)),
-          lambda: S.optional(__S(5, __c0, 5)),
-          iotEvents: S.optional(__S(21, __c2, 5)),
-          sqs: S.optional(__S(22, __c2, 6)),
-          firehose: S.optional(__S(23, __c2, 7)),
-          dynamoDB: S.optional(__S(24, __c3, 0)),
-          dynamoDBv2: S.optional(__S(25, __c3, 1)),
-          iotSiteWise: S.optional(__S(29, __c3, 5)),
-        }),
-      ).annotate({ identifier: "AlarmAction" });
-    case 7:
-      return S.Array(__S(30, __c3, 6));
-  }
-}
-function __c4(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() => S.Struct({ alarmActions: S.optional(__S(31, __c3, 7)) })).annotate({
-        identifier: "AlarmEventActions",
-      });
-    case 1:
-      return S.suspend(() => S.Struct({ disabledOnInitialization: S.Boolean })).annotate({
-        identifier: "InitializationConfiguration",
-      });
-    case 2:
-      return S.suspend(() => S.Struct({ enabled: S.Boolean })).annotate({
-        identifier: "AcknowledgeFlow",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          initializationConfiguration: S.optional(__S(33, __c4, 1)),
-          acknowledgeFlow: S.optional(__S(34, __c4, 2)),
-        }),
-      ).annotate({
-        identifier: "AlarmCapabilities",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          alarmModelName: S.String,
-          alarmModelDescription: S.optional(S.String),
-          roleArn: S.String,
-          tags: S.optional(__S(1, __c0, 1)),
-          key: S.optional(S.String),
-          severity: S.optional(S.Number),
-          alarmRule: __S(3, __c0, 3),
-          alarmNotification: S.optional(__S(18, __c2, 2)),
-          alarmEventActions: S.optional(__S(32, __c4, 0)),
-          alarmCapabilities: S.optional(__S(35, __c4, 3)),
-        }).pipe(
-          T.all(T.Http({ method: "POST", uri: "/alarm-models" }), svc, auth, proto, ver, rules),
-        ),
-      ).annotate({
-        identifier: "CreateAlarmModelRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          creationTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          alarmModelArn: S.optional(S.String),
-          alarmModelVersion: S.optional(S.String),
-          lastUpdateTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          status: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "CreateAlarmModelResponse",
-      });
-    case 6:
-      return S.suspend(() => S.Struct({ variableName: S.String, value: S.String })).annotate({
-        identifier: "SetVariableAction",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          timerName: S.String,
-          seconds: S.optional(S.Number),
-          durationExpression: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "SetTimerAction" });
-  }
-}
-function __c5(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() => S.Struct({ timerName: S.String })).annotate({
-        identifier: "ClearTimerAction",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          setVariable: S.optional(__S(38, __c4, 6)),
-          sns: S.optional(__S(19, __c2, 3)),
-          iotTopicPublish: S.optional(__S(20, __c2, 4)),
-          setTimer: S.optional(__S(39, __c4, 7)),
-          clearTimer: S.optional(__S(40, __c5, 0)),
-          resetTimer: S.optional(__S(40, __c5, 0)),
-          lambda: S.optional(__S(5, __c0, 5)),
-          iotEvents: S.optional(__S(21, __c2, 5)),
-          sqs: S.optional(__S(22, __c2, 6)),
-          firehose: S.optional(__S(23, __c2, 7)),
-          dynamoDB: S.optional(__S(24, __c3, 0)),
-          dynamoDBv2: S.optional(__S(25, __c3, 1)),
-          iotSiteWise: S.optional(__S(29, __c3, 5)),
-        }),
-      ).annotate({ identifier: "Action" });
-    case 2:
-      return S.Array(__S(41, __c5, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          eventName: S.String,
-          condition: S.optional(S.String),
-          actions: S.optional(__S(42, __c5, 2)),
-        }),
-      ).annotate({ identifier: "Event" });
-    case 4:
-      return S.Array(__S(43, __c5, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          eventName: S.String,
-          condition: S.String,
-          actions: S.optional(__S(42, __c5, 2)),
-          nextState: S.String,
-        }),
-      ).annotate({
-        identifier: "TransitionEvent",
-      });
-    case 6:
-      return S.Array(__S(45, __c5, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          events: S.optional(__S(44, __c5, 4)),
-          transitionEvents: S.optional(__S(46, __c5, 6)),
-        }),
-      ).annotate({
-        identifier: "OnInputLifecycle",
-      });
-  }
-}
-function __c6(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() => S.Struct({ events: S.optional(__S(44, __c5, 4)) })).annotate({
-        identifier: "OnEnterLifecycle",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          stateName: S.String,
-          onInput: S.optional(__S(47, __c5, 7)),
-          onEnter: S.optional(__S(48, __c6, 0)),
-          onExit: S.optional(__S(48, __c6, 0)),
-        }),
-      ).annotate({ identifier: "State" });
-    case 2:
-      return S.Array(__S(49, __c6, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({ states: __S(50, __c6, 2), initialStateName: S.String }),
-      ).annotate({
-        identifier: "DetectorModelDefinition",
-      });
-    case 4:
       return S.suspend(() =>
         S.Struct({
           detectorModelName: S.String,
-          detectorModelDefinition: __S(51, __c6, 3),
+          detectorModelDefinition: __S(45, __c1, 13),
           detectorModelDescription: S.optional(S.String),
           key: S.optional(S.String),
           roleArn: S.String,
-          tags: S.optional(__S(1, __c0, 1)),
+          tags: S.optional(__S(1057, __c33, 1)),
           evaluationMethod: S.optional(S.String),
         }).pipe(
           T.all(T.Http({ method: "POST", uri: "/detector-models" }), svc, auth, proto, ver, rules),
@@ -1989,7 +1621,104 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "CreateDetectorModelRequest",
       });
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({ variableName: S.String, value: S.String })).annotate({
+        identifier: "SetVariableAction",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          timerName: S.String,
+          seconds: S.optional(S.Number),
+          durationExpression: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "SetTimerAction" });
+    case 2:
+      return S.suspend(() => S.Struct({ timerName: S.String })).annotate({
+        identifier: "ClearTimerAction",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          setVariable: S.optional(__S(32, __c1, 0)),
+          sns: S.optional(__S(1090, __c34, 2)),
+          iotTopicPublish: S.optional(__S(1091, __c34, 3)),
+          setTimer: S.optional(__S(33, __c1, 1)),
+          clearTimer: S.optional(__S(34, __c1, 2)),
+          resetTimer: S.optional(__S(34, __c1, 2)),
+          lambda: S.optional(__S(1089, __c34, 1)),
+          iotEvents: S.optional(__S(1092, __c34, 4)),
+          sqs: S.optional(__S(1093, __c34, 5)),
+          firehose: S.optional(__S(1094, __c34, 6)),
+          dynamoDB: S.optional(__S(1095, __c34, 7)),
+          dynamoDBv2: S.optional(__S(1096, __c34, 8)),
+          iotSiteWise: S.optional(__S(1100, __c34, 12)),
+        }),
+      ).annotate({ identifier: "Action" });
+    case 4:
+      return S.Array(__S(35, __c1, 3));
     case 5:
+      return S.suspend(() =>
+        S.Struct({
+          eventName: S.String,
+          condition: S.optional(S.String),
+          actions: S.optional(__S(36, __c1, 4)),
+        }),
+      ).annotate({ identifier: "Event" });
+    case 6:
+      return S.Array(__S(37, __c1, 5));
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          eventName: S.String,
+          condition: S.String,
+          actions: S.optional(__S(36, __c1, 4)),
+          nextState: S.String,
+        }),
+      ).annotate({
+        identifier: "TransitionEvent",
+      });
+    case 8:
+      return S.Array(__S(39, __c1, 7));
+    case 9:
+      return S.suspend(() =>
+        S.Struct({
+          events: S.optional(__S(38, __c1, 6)),
+          transitionEvents: S.optional(__S(40, __c1, 8)),
+        }),
+      ).annotate({
+        identifier: "OnInputLifecycle",
+      });
+    case 10:
+      return S.suspend(() => S.Struct({ events: S.optional(__S(38, __c1, 6)) })).annotate({
+        identifier: "OnEnterLifecycle",
+      });
+    case 11:
+      return S.suspend(() =>
+        S.Struct({
+          stateName: S.String,
+          onInput: S.optional(__S(41, __c1, 9)),
+          onEnter: S.optional(__S(42, __c1, 10)),
+          onExit: S.optional(__S(42, __c1, 10)),
+        }),
+      ).annotate({ identifier: "State" });
+    case 12:
+      return S.Array(__S(43, __c1, 11));
+    case 13:
+      return S.suspend(() =>
+        S.Struct({ states: __S(44, __c1, 12), initialStateName: S.String }),
+      ).annotate({
+        identifier: "DetectorModelDefinition",
+      });
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           detectorModelName: S.optional(S.String),
@@ -2006,38 +1735,46 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "DetectorModelConfiguration",
       });
-    case 6:
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          detectorModelConfiguration: S.optional(__S(53, __c6, 5)),
+          detectorModelConfiguration: S.optional(__S(64, __c2, 0)),
         }),
       ).annotate({
         identifier: "CreateDetectorModelResponse",
       });
-    case 7:
-      return S.suspend(() => S.Struct({ jsonPath: S.String })).annotate({
-        identifier: "Attribute",
-      });
   }
 }
-function __c7(j: number): any {
+function __c4(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(55, __c6, 7));
-    case 1:
-      return S.suspend(() => S.Struct({ attributes: __S(56, __c7, 0) })).annotate({
-        identifier: "InputDefinition",
-      });
-    case 2:
       return S.suspend(() =>
         S.Struct({
           inputName: S.String,
           inputDescription: S.optional(S.String),
-          inputDefinition: __S(57, __c7, 1),
-          tags: S.optional(__S(1, __c0, 1)),
+          inputDefinition: __S(162, __c5, 2),
+          tags: S.optional(__S(1057, __c33, 1)),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/inputs" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "CreateInputRequest",
+      });
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({ jsonPath: S.String })).annotate({
+        identifier: "Attribute",
+      });
+    case 1:
+      return S.Array(__S(160, __c5, 0));
+    case 2:
+      return S.suspend(() => S.Struct({ attributes: __S(161, __c5, 1) })).annotate({
+        identifier: "InputDefinition",
       });
     case 3:
       return S.suspend(() =>
@@ -2052,13 +1789,21 @@ function __c7(j: number): any {
       ).annotate({
         identifier: "InputConfiguration",
       });
-    case 4:
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
-        S.Struct({ inputConfiguration: S.optional(__S(59, __c7, 3)) }),
+        S.Struct({ inputConfiguration: S.optional(__S(163, __c5, 3)) }),
       ).annotate({
         identifier: "CreateInputResponse",
       });
-    case 5:
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           alarmModelName: S.String.pipe(T.HttpLabel("alarmModelName")),
@@ -2075,11 +1820,19 @@ function __c7(j: number): any {
       ).annotate({
         identifier: "DeleteAlarmModelRequest",
       });
-    case 6:
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "DeleteAlarmModelResponse",
       });
-    case 7:
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           detectorModelName: S.String.pipe(T.HttpLabel("detectorModelName")),
@@ -2098,7 +1851,7 @@ function __c7(j: number): any {
       });
   }
 }
-function __c8(j: number): any {
+function __c10(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2115,7 +1868,11 @@ function __c8(j: number): any {
       ).annotate({
         identifier: "DeleteInputRequest",
       });
-    case 1:
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           alarmModelName: S.String.pipe(T.HttpLabel("alarmModelName")),
@@ -2133,7 +1890,7 @@ function __c8(j: number): any {
       ).annotate({
         identifier: "DescribeAlarmModelRequest",
       });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           creationTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
@@ -2147,15 +1904,19 @@ function __c8(j: number): any {
           roleArn: S.optional(S.String),
           key: S.optional(S.String),
           severity: S.optional(S.Number),
-          alarmRule: S.optional(__S(3, __c0, 3)),
-          alarmNotification: S.optional(__S(18, __c2, 2)),
-          alarmEventActions: S.optional(__S(32, __c4, 0)),
-          alarmCapabilities: S.optional(__S(35, __c4, 3)),
+          alarmRule: S.optional(__S(1121, __c35, 1)),
+          alarmNotification: S.optional(__S(1134, __c35, 14)),
+          alarmEventActions: S.optional(__S(1137, __c35, 17)),
+          alarmCapabilities: S.optional(__S(1140, __c35, 20)),
         }),
       ).annotate({
         identifier: "DescribeAlarmModelResponse",
       });
-    case 3:
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           detectorModelName: S.String.pipe(T.HttpLabel("detectorModelName")),
@@ -2173,18 +1934,22 @@ function __c8(j: number): any {
       ).annotate({
         identifier: "DescribeDetectorModelRequest",
       });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          detectorModelDefinition: S.optional(__S(51, __c6, 3)),
-          detectorModelConfiguration: S.optional(__S(53, __c6, 5)),
+          detectorModelDefinition: S.optional(__S(45, __c1, 13)),
+          detectorModelConfiguration: S.optional(__S(64, __c2, 0)),
         }),
       ).annotate({ identifier: "DetectorModel" });
-    case 5:
-      return S.suspend(() => S.Struct({ detectorModel: S.optional(__S(68, __c8, 4)) })).annotate({
+    case 2:
+      return S.suspend(() => S.Struct({ detectorModel: S.optional(__S(385, __c12, 1)) })).annotate({
         identifier: "DescribeDetectorModelResponse",
       });
-    case 6:
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ analysisId: S.String.pipe(T.HttpLabel("analysisId")) }).pipe(
           T.all(
@@ -2202,13 +1967,13 @@ function __c8(j: number): any {
       ).annotate({
         identifier: "DescribeDetectorModelAnalysisRequest",
       });
-    case 7:
+    case 1:
       return S.suspend(() => S.Struct({ status: S.optional(S.String) })).annotate({
         identifier: "DescribeDetectorModelAnalysisResponse",
       });
   }
 }
-function __c9(j: number): any {
+function __c14(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2228,15 +1993,19 @@ function __c9(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          inputConfiguration: S.optional(__S(59, __c7, 3)),
-          inputDefinition: S.optional(__S(57, __c7, 1)),
+          inputConfiguration: S.optional(__S(163, __c5, 3)),
+          inputDefinition: S.optional(__S(162, __c5, 2)),
         }),
       ).annotate({ identifier: "Input" });
     case 2:
-      return S.suspend(() => S.Struct({ input: S.optional(__S(73, __c9, 1)) })).annotate({
+      return S.suspend(() => S.Struct({ input: S.optional(__S(449, __c14, 1)) })).annotate({
         identifier: "DescribeInputResponse",
       });
-    case 3:
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({}).pipe(
           T.all(T.Http({ method: "GET", uri: "/logging" }), svc, auth, proto, ver, rules),
@@ -2244,30 +2013,36 @@ function __c9(j: number): any {
       ).annotate({
         identifier: "DescribeLoggingOptionsRequest",
       });
-    case 4:
+    case 1:
+      return S.suspend(() => S.Struct({ loggingOptions: S.optional(__S(514, __c16, 2)) })).annotate(
+        {
+          identifier: "DescribeLoggingOptionsResponse",
+        },
+      );
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ detectorModelName: S.String, keyValue: S.optional(S.String) }),
       ).annotate({
         identifier: "DetectorDebugOption",
       });
-    case 5:
-      return S.Array(__S(76, __c9, 4));
-    case 6:
+    case 1:
+      return S.Array(__S(512, __c16, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           roleArn: S.String,
           level: S.String,
           enabled: S.Boolean,
-          detectorDebugOptions: S.optional(__S(77, __c9, 5)),
+          detectorDebugOptions: S.optional(__S(513, __c16, 1)),
         }),
       ).annotate({ identifier: "LoggingOptions" });
-    case 7:
-      return S.suspend(() => S.Struct({ loggingOptions: S.optional(__S(78, __c9, 6)) })).annotate({
-        identifier: "DescribeLoggingOptionsResponse",
-      });
   }
 }
-function __c10(j: number): any {
+function __c17(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2296,28 +2071,32 @@ function __c10(j: number): any {
         identifier: "AnalysisResultLocation",
       });
     case 2:
-      return S.Array(__S(81, __c10, 1));
+      return S.Array(__S(545, __c17, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
           type: S.optional(S.String),
           level: S.optional(S.String),
           message: S.optional(S.String),
-          locations: S.optional(__S(82, __c10, 2)),
+          locations: S.optional(__S(546, __c17, 2)),
         }),
       ).annotate({ identifier: "AnalysisResult" });
     case 4:
-      return S.Array(__S(83, __c10, 3));
+      return S.Array(__S(547, __c17, 3));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          analysisResults: S.optional(__S(84, __c10, 4)),
+          analysisResults: S.optional(__S(548, __c17, 4)),
           nextToken: S.optional(S.String),
         }),
       ).annotate({
         identifier: "GetDetectorModelAnalysisResultsResponse",
       });
-    case 6:
+  }
+}
+function __c18(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
@@ -2328,7 +2107,7 @@ function __c10(j: number): any {
       ).annotate({
         identifier: "ListAlarmModelsRequest",
       });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           creationTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
@@ -2338,22 +2117,22 @@ function __c10(j: number): any {
       ).annotate({
         identifier: "AlarmModelSummary",
       });
-  }
-}
-function __c11(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(87, __c10, 7));
-    case 1:
+    case 2:
+      return S.Array(__S(577, __c18, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          alarmModelSummaries: S.optional(__S(88, __c11, 0)),
+          alarmModelSummaries: S.optional(__S(578, __c18, 2)),
           nextToken: S.optional(S.String),
         }),
       ).annotate({
         identifier: "ListAlarmModelsResponse",
       });
-    case 2:
+  }
+}
+function __c19(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           alarmModelName: S.String.pipe(T.HttpLabel("alarmModelName")),
@@ -2372,7 +2151,7 @@ function __c11(j: number): any {
       ).annotate({
         identifier: "ListAlarmModelVersionsRequest",
       });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           alarmModelName: S.optional(S.String),
@@ -2387,18 +2166,22 @@ function __c11(j: number): any {
       ).annotate({
         identifier: "AlarmModelVersionSummary",
       });
-    case 4:
-      return S.Array(__S(91, __c11, 3));
-    case 5:
+    case 2:
+      return S.Array(__S(609, __c19, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          alarmModelVersionSummaries: S.optional(__S(92, __c11, 4)),
+          alarmModelVersionSummaries: S.optional(__S(610, __c19, 2)),
           nextToken: S.optional(S.String),
         }),
       ).annotate({
         identifier: "ListAlarmModelVersionsResponse",
       });
-    case 6:
+  }
+}
+function __c20(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
@@ -2409,7 +2192,7 @@ function __c11(j: number): any {
       ).annotate({
         identifier: "ListDetectorModelsRequest",
       });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           detectorModelName: S.optional(S.String),
@@ -2419,22 +2202,22 @@ function __c11(j: number): any {
       ).annotate({
         identifier: "DetectorModelSummary",
       });
-  }
-}
-function __c12(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(95, __c11, 7));
-    case 1:
+    case 2:
+      return S.Array(__S(641, __c20, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          detectorModelSummaries: S.optional(__S(96, __c12, 0)),
+          detectorModelSummaries: S.optional(__S(642, __c20, 2)),
           nextToken: S.optional(S.String),
         }),
       ).annotate({
         identifier: "ListDetectorModelsResponse",
       });
-    case 2:
+  }
+}
+function __c21(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           detectorModelName: S.String.pipe(T.HttpLabel("detectorModelName")),
@@ -2456,7 +2239,7 @@ function __c12(j: number): any {
       ).annotate({
         identifier: "ListDetectorModelVersionsRequest",
       });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           detectorModelName: S.optional(S.String),
@@ -2471,50 +2254,50 @@ function __c12(j: number): any {
       ).annotate({
         identifier: "DetectorModelVersionSummary",
       });
-    case 4:
-      return S.Array(__S(99, __c12, 3));
-    case 5:
+    case 2:
+      return S.Array(__S(673, __c21, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          detectorModelVersionSummaries: S.optional(__S(100, __c12, 4)),
+          detectorModelVersionSummaries: S.optional(__S(674, __c21, 2)),
           nextToken: S.optional(S.String),
         }),
       ).annotate({
         identifier: "ListDetectorModelVersionsResponse",
       });
-    case 6:
+  }
+}
+function __c22(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() => S.Struct({ inputName: S.String })).annotate({
         identifier: "IotEventsInputIdentifier",
       });
-    case 7:
+    case 1:
       return S.suspend(() => S.Struct({ assetModelId: S.String, propertyId: S.String })).annotate({
         identifier: "IotSiteWiseAssetModelPropertyIdentifier",
-      });
-  }
-}
-function __c13(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          iotSiteWiseAssetModelPropertyIdentifier: S.optional(__S(103, __c12, 7)),
-        }),
-      ).annotate({
-        identifier: "IotSiteWiseInputIdentifier",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          iotEventsInputIdentifier: S.optional(__S(102, __c12, 6)),
-          iotSiteWiseInputIdentifier: S.optional(__S(104, __c13, 0)),
-        }),
-      ).annotate({
-        identifier: "InputIdentifier",
       });
     case 2:
       return S.suspend(() =>
         S.Struct({
-          inputIdentifier: __S(105, __c13, 1),
+          iotSiteWiseAssetModelPropertyIdentifier: S.optional(__S(705, __c22, 1)),
+        }),
+      ).annotate({
+        identifier: "IotSiteWiseInputIdentifier",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          iotEventsInputIdentifier: S.optional(__S(704, __c22, 0)),
+          iotSiteWiseInputIdentifier: S.optional(__S(706, __c22, 2)),
+        }),
+      ).annotate({
+        identifier: "InputIdentifier",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          inputIdentifier: __S(707, __c22, 3),
           maxResults: S.optional(S.Number),
           nextToken: S.optional(S.String),
         }).pipe(
@@ -2523,22 +2306,26 @@ function __c13(j: number): any {
       ).annotate({
         identifier: "ListInputRoutingsRequest",
       });
-    case 3:
+    case 5:
       return S.suspend(() =>
         S.Struct({ name: S.optional(S.String), arn: S.optional(S.String) }),
       ).annotate({ identifier: "RoutedResource" });
-    case 4:
-      return S.Array(__S(107, __c13, 3));
-    case 5:
+    case 6:
+      return S.Array(__S(709, __c22, 5));
+    case 7:
       return S.suspend(() =>
         S.Struct({
-          routedResources: S.optional(__S(108, __c13, 4)),
+          routedResources: S.optional(__S(710, __c22, 6)),
           nextToken: S.optional(S.String),
         }),
       ).annotate({
         identifier: "ListInputRoutingsResponse",
       });
-    case 6:
+  }
+}
+function __c23(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
@@ -2547,7 +2334,7 @@ function __c13(j: number): any {
       ).annotate({
         identifier: "ListInputsRequest",
       });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           inputName: S.optional(S.String),
@@ -2558,22 +2345,22 @@ function __c13(j: number): any {
           status: S.optional(S.String),
         }),
       ).annotate({ identifier: "InputSummary" });
-  }
-}
-function __c14(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(111, __c13, 7));
-    case 1:
+    case 2:
+      return S.Array(__S(737, __c23, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          inputSummaries: S.optional(__S(112, __c14, 0)),
+          inputSummaries: S.optional(__S(738, __c23, 2)),
           nextToken: S.optional(S.String),
         }),
       ).annotate({
         identifier: "ListInputsResponse",
       });
-    case 2:
+  }
+}
+function __c24(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ resourceArn: S.String.pipe(T.HttpQuery("resourceArn")) }).pipe(
           T.all(T.Http({ method: "GET", uri: "/tags" }), svc, auth, proto, ver, rules),
@@ -2581,21 +2368,29 @@ function __c14(j: number): any {
       ).annotate({
         identifier: "ListTagsForResourceRequest",
       });
-    case 3:
-      return S.suspend(() => S.Struct({ tags: S.optional(__S(1, __c0, 1)) })).annotate({
+    case 1:
+      return S.suspend(() => S.Struct({ tags: S.optional(__S(1057, __c33, 1)) })).annotate({
         identifier: "ListTagsForResourceResponse",
       });
-    case 4:
+  }
+}
+function __c25(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
-        S.Struct({ loggingOptions: __S(78, __c9, 6) }).pipe(
+        S.Struct({ loggingOptions: __S(514, __c16, 2) }).pipe(
           T.all(T.Http({ method: "PUT", uri: "/logging" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({
         identifier: "PutLoggingOptionsRequest",
       });
-    case 5:
+  }
+}
+function __c26(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
-        S.Struct({ detectorModelDefinition: __S(51, __c6, 3) }).pipe(
+        S.Struct({ detectorModelDefinition: __S(45, __c1, 13) }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/analysis/detector-models" }),
             svc,
@@ -2608,22 +2403,26 @@ function __c14(j: number): any {
       ).annotate({
         identifier: "StartDetectorModelAnalysisRequest",
       });
-    case 6:
+    case 1:
       return S.suspend(() => S.Struct({ analysisId: S.optional(S.String) })).annotate({
         identifier: "StartDetectorModelAnalysisResponse",
       });
-    case 7:
+  }
+}
+function __c27(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           resourceArn: S.String.pipe(T.HttpQuery("resourceArn")),
-          tags: __S(1, __c0, 1),
+          tags: __S(1057, __c33, 1),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/tags" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "TagResourceRequest",
       });
   }
 }
-function __c15(j: number): any {
+function __c28(j: number): any {
   switch (j) {
     case 0:
       return S.Array(S.String);
@@ -2631,22 +2430,26 @@ function __c15(j: number): any {
       return S.suspend(() =>
         S.Struct({
           resourceArn: S.String.pipe(T.HttpQuery("resourceArn")),
-          tagKeys: __S(120, __c15, 0).pipe(T.HttpQuery("tagKeys")),
+          tagKeys: __S(896, __c28, 0).pipe(T.HttpQuery("tagKeys")),
         }).pipe(T.all(T.Http({ method: "DELETE", uri: "/tags" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "UntagResourceRequest",
       });
-    case 2:
+  }
+}
+function __c29(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           alarmModelName: S.String.pipe(T.HttpLabel("alarmModelName")),
           alarmModelDescription: S.optional(S.String),
           roleArn: S.String,
           severity: S.optional(S.Number),
-          alarmRule: __S(3, __c0, 3),
-          alarmNotification: S.optional(__S(18, __c2, 2)),
-          alarmEventActions: S.optional(__S(32, __c4, 0)),
-          alarmCapabilities: S.optional(__S(35, __c4, 3)),
+          alarmRule: __S(1121, __c35, 1),
+          alarmNotification: S.optional(__S(1134, __c35, 14)),
+          alarmEventActions: S.optional(__S(1137, __c35, 17)),
+          alarmCapabilities: S.optional(__S(1140, __c35, 20)),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/alarm-models/{alarmModelName}" }),
@@ -2660,11 +2463,15 @@ function __c15(j: number): any {
       ).annotate({
         identifier: "UpdateAlarmModelRequest",
       });
-    case 3:
+  }
+}
+function __c30(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           detectorModelName: S.String.pipe(T.HttpLabel("detectorModelName")),
-          detectorModelDefinition: __S(51, __c6, 3),
+          detectorModelDefinition: __S(45, __c1, 13),
           detectorModelDescription: S.optional(S.String),
           roleArn: S.String,
           evaluationMethod: S.optional(S.String),
@@ -2681,12 +2488,16 @@ function __c15(j: number): any {
       ).annotate({
         identifier: "UpdateDetectorModelRequest",
       });
-    case 4:
+  }
+}
+function __c31(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           inputName: S.String.pipe(T.HttpLabel("inputName")),
           inputDescription: S.optional(S.String),
-          inputDefinition: __S(57, __c7, 1),
+          inputDefinition: __S(162, __c5, 2),
         }).pipe(
           T.all(
             T.Http({ method: "PUT", uri: "/inputs/{inputName}" }),
@@ -2702,7 +2513,283 @@ function __c15(j: number): any {
       });
   }
 }
-
+function __c32(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          alarmModelName: S.String,
+          alarmModelDescription: S.optional(S.String),
+          roleArn: S.String,
+          tags: S.optional(__S(1057, __c33, 1)),
+          key: S.optional(S.String),
+          severity: S.optional(S.Number),
+          alarmRule: __S(1121, __c35, 1),
+          alarmNotification: S.optional(__S(1134, __c35, 14)),
+          alarmEventActions: S.optional(__S(1137, __c35, 17)),
+          alarmCapabilities: S.optional(__S(1140, __c35, 20)),
+        }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/alarm-models" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({
+        identifier: "CreateAlarmModelRequest",
+      });
+  }
+}
+function __c33(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({ key: S.String, value: S.String })).annotate({
+        identifier: "Tag",
+      });
+    case 1:
+      return S.Array(__S(1056, __c33, 0));
+  }
+}
+function __c34(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({ contentExpression: S.String, type: S.String })).annotate({
+        identifier: "Payload",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({ functionArn: S.String, payload: S.optional(__S(1088, __c34, 0)) }),
+      ).annotate({ identifier: "LambdaAction" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({ targetArn: S.String, payload: S.optional(__S(1088, __c34, 0)) }),
+      ).annotate({
+        identifier: "SNSTopicPublishAction",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({ mqttTopic: S.String, payload: S.optional(__S(1088, __c34, 0)) }),
+      ).annotate({
+        identifier: "IotTopicPublishAction",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({ inputName: S.String, payload: S.optional(__S(1088, __c34, 0)) }),
+      ).annotate({
+        identifier: "IotEventsAction",
+      });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          queueUrl: S.String,
+          useBase64: S.optional(S.Boolean),
+          payload: S.optional(__S(1088, __c34, 0)),
+        }),
+      ).annotate({ identifier: "SqsAction" });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          deliveryStreamName: S.String,
+          separator: S.optional(S.String),
+          payload: S.optional(__S(1088, __c34, 0)),
+        }),
+      ).annotate({ identifier: "FirehoseAction" });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          hashKeyType: S.optional(S.String),
+          hashKeyField: S.String,
+          hashKeyValue: S.String,
+          rangeKeyType: S.optional(S.String),
+          rangeKeyField: S.optional(S.String),
+          rangeKeyValue: S.optional(S.String),
+          operation: S.optional(S.String),
+          payloadField: S.optional(S.String),
+          tableName: S.String,
+          payload: S.optional(__S(1088, __c34, 0)),
+        }),
+      ).annotate({ identifier: "DynamoDBAction" });
+    case 8:
+      return S.suspend(() =>
+        S.Struct({ tableName: S.String, payload: S.optional(__S(1088, __c34, 0)) }),
+      ).annotate({
+        identifier: "DynamoDBv2Action",
+      });
+    case 9:
+      return S.suspend(() =>
+        S.Struct({
+          stringValue: S.optional(S.String),
+          integerValue: S.optional(S.String),
+          doubleValue: S.optional(S.String),
+          booleanValue: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "AssetPropertyVariant",
+      });
+    case 10:
+      return S.suspend(() =>
+        S.Struct({ timeInSeconds: S.String, offsetInNanos: S.optional(S.String) }),
+      ).annotate({
+        identifier: "AssetPropertyTimestamp",
+      });
+    case 11:
+      return S.suspend(() =>
+        S.Struct({
+          value: S.optional(__S(1097, __c34, 9)),
+          timestamp: S.optional(__S(1098, __c34, 10)),
+          quality: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "AssetPropertyValue",
+      });
+    case 12:
+      return S.suspend(() =>
+        S.Struct({
+          entryId: S.optional(S.String),
+          assetId: S.optional(S.String),
+          propertyId: S.optional(S.String),
+          propertyAlias: S.optional(S.String),
+          propertyValue: S.optional(__S(1099, __c34, 11)),
+        }),
+      ).annotate({
+        identifier: "IotSiteWiseAction",
+      });
+  }
+}
+function __c35(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          inputProperty: S.String,
+          comparisonOperator: S.String,
+          threshold: S.String,
+        }),
+      ).annotate({ identifier: "SimpleRule" });
+    case 1:
+      return S.suspend(() => S.Struct({ simpleRule: S.optional(__S(1120, __c35, 0)) })).annotate({
+        identifier: "AlarmRule",
+      });
+    case 2:
+      return S.suspend(() => S.Struct({ lambdaAction: S.optional(__S(1089, __c34, 1)) })).annotate({
+        identifier: "NotificationTargetActions",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({ identityStoreId: S.String, userId: S.optional(S.String) }),
+      ).annotate({ identifier: "SSOIdentity" });
+    case 4:
+      return S.suspend(() => S.Struct({ ssoIdentity: S.optional(__S(1123, __c35, 3)) })).annotate({
+        identifier: "RecipientDetail",
+      });
+    case 5:
+      return S.Array(__S(1124, __c35, 4));
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          senderId: S.optional(S.String),
+          additionalMessage: S.optional(S.String),
+          recipients: __S(1125, __c35, 5),
+        }),
+      ).annotate({
+        identifier: "SMSConfiguration",
+      });
+    case 7:
+      return S.Array(__S(1126, __c35, 6));
+    case 8:
+      return S.suspend(() =>
+        S.Struct({
+          subject: S.optional(S.String),
+          additionalMessage: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "EmailContent" });
+    case 9:
+      return S.suspend(() => S.Struct({ to: S.optional(__S(1125, __c35, 5)) })).annotate({
+        identifier: "EmailRecipients",
+      });
+    case 10:
+      return S.suspend(() =>
+        S.Struct({
+          from: S.String,
+          content: S.optional(__S(1128, __c35, 8)),
+          recipients: __S(1129, __c35, 9),
+        }),
+      ).annotate({
+        identifier: "EmailConfiguration",
+      });
+    case 11:
+      return S.Array(__S(1130, __c35, 10));
+    case 12:
+      return S.suspend(() =>
+        S.Struct({
+          action: __S(1122, __c35, 2),
+          smsConfigurations: S.optional(__S(1127, __c35, 7)),
+          emailConfigurations: S.optional(__S(1131, __c35, 11)),
+        }),
+      ).annotate({
+        identifier: "NotificationAction",
+      });
+    case 13:
+      return S.Array(__S(1132, __c35, 12));
+    case 14:
+      return S.suspend(() =>
+        S.Struct({ notificationActions: S.optional(__S(1133, __c35, 13)) }),
+      ).annotate({
+        identifier: "AlarmNotification",
+      });
+    case 15:
+      return S.suspend(() =>
+        S.Struct({
+          sns: S.optional(__S(1090, __c34, 2)),
+          iotTopicPublish: S.optional(__S(1091, __c34, 3)),
+          lambda: S.optional(__S(1089, __c34, 1)),
+          iotEvents: S.optional(__S(1092, __c34, 4)),
+          sqs: S.optional(__S(1093, __c34, 5)),
+          firehose: S.optional(__S(1094, __c34, 6)),
+          dynamoDB: S.optional(__S(1095, __c34, 7)),
+          dynamoDBv2: S.optional(__S(1096, __c34, 8)),
+          iotSiteWise: S.optional(__S(1100, __c34, 12)),
+        }),
+      ).annotate({ identifier: "AlarmAction" });
+    case 16:
+      return S.Array(__S(1135, __c35, 15));
+    case 17:
+      return S.suspend(() => S.Struct({ alarmActions: S.optional(__S(1136, __c35, 16)) })).annotate(
+        {
+          identifier: "AlarmEventActions",
+        },
+      );
+    case 18:
+      return S.suspend(() => S.Struct({ disabledOnInitialization: S.Boolean })).annotate({
+        identifier: "InitializationConfiguration",
+      });
+    case 19:
+      return S.suspend(() => S.Struct({ enabled: S.Boolean })).annotate({
+        identifier: "AcknowledgeFlow",
+      });
+    case 20:
+      return S.suspend(() =>
+        S.Struct({
+          initializationConfiguration: S.optional(__S(1138, __c35, 18)),
+          acknowledgeFlow: S.optional(__S(1139, __c35, 19)),
+        }),
+      ).annotate({
+        identifier: "AlarmCapabilities",
+      });
+  }
+}
+function __c36(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          creationTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          alarmModelArn: S.optional(S.String),
+          alarmModelVersion: S.optional(S.String),
+          lastUpdateTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          status: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "CreateAlarmModelResponse",
+      });
+  }
+}
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

@@ -153,8 +153,8 @@ export const deleteAccess: API.OperationMethod<
   DeleteAccessError,
   SlackOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3, __c0, 3) as any as S.Schema<DeleteAccessRequest>,
-  output: __S(4, __c0, 4) as any as S.Schema<DeleteAccessResponse>,
+  input: __S(4, __c1, 0) as any as S.Schema<DeleteAccessRequest>,
+  output: __S(12, __c3, 0) as any as S.Schema<DeleteAccessResponse>,
   errors: [SlackError, SlackRateLimited],
   protocol: SlackProtocol,
   retry: Retry.Retry,
@@ -168,8 +168,8 @@ export const deleteCanvase: API.OperationMethod<
   DeleteCanvaseError,
   SlackOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(5, __c0, 5) as any as S.Schema<DeleteCanvaseRequest>,
-  output: __S(6, __c0, 6) as any as S.Schema<DeleteCanvaseResponse>,
+  input: __S(16, __c4, 0) as any as S.Schema<DeleteCanvaseRequest>,
+  output: __S(20, __c5, 0) as any as S.Schema<DeleteCanvaseResponse>,
   errors: [SlackError, SlackRateLimited],
   protocol: SlackProtocol,
   retry: Retry.Retry,
@@ -183,8 +183,8 @@ export const editCanvase: API.OperationMethod<
   EditCanvaseError,
   SlackOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(8, __c1, 0) as any as S.Schema<EditCanvaseRequest>,
-  output: __S(6, __c0, 6) as any as S.Schema<EditCanvaseResponse>,
+  input: __S(25, __c6, 1) as any as S.Schema<EditCanvaseRequest>,
+  output: __S(20, __c5, 0) as any as S.Schema<EditCanvaseResponse>,
   errors: [SlackError, SlackRateLimited],
   protocol: SlackProtocol,
   retry: Retry.Retry,
@@ -198,8 +198,8 @@ export const getContent: API.OperationMethod<
   GetContentError,
   SlackOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(9, __c1, 1) as any as S.Schema<GetContentRequest>,
-  output: __S(10, __c1, 2) as any as S.Schema<GetContentResponse>,
+  input: __S(28, __c7, 0) as any as S.Schema<GetContentRequest>,
+  output: __S(29, __c7, 1) as any as S.Schema<GetContentResponse>,
   errors: [SlackError, SlackRateLimited],
   protocol: SlackProtocol,
   retry: Retry.Retry,
@@ -213,8 +213,8 @@ export const lookupSection: API.OperationMethod<
   LookupSectionError,
   SlackOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(11, __c1, 3) as any as S.Schema<LookupSectionRequest>,
-  output: __S(14, __c1, 6) as any as S.Schema<LookupSectionResponse>,
+  input: __S(32, __c8, 0) as any as S.Schema<LookupSectionRequest>,
+  output: __S(35, __c8, 3) as any as S.Schema<LookupSectionResponse>,
   errors: [SlackError, SlackRateLimited],
   protocol: SlackProtocol,
   retry: Retry.Retry,
@@ -228,8 +228,8 @@ export const setAccess: API.OperationMethod<
   SetAccessError,
   SlackOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(15, __c1, 7) as any as S.Schema<SetAccessRequest>,
-  output: __S(4, __c0, 4) as any as S.Schema<SetAccessResponse>,
+  input: __S(36, __c9, 0) as any as S.Schema<SetAccessRequest>,
+  output: __S(12, __c3, 0) as any as S.Schema<SetAccessResponse>,
   errors: [SlackError, SlackRateLimited],
   protocol: SlackProtocol,
   retry: Retry.Retry,
@@ -253,38 +253,6 @@ function __c0(j: number): any {
           canvas_id: S.String,
         }),
       ).annotate({ identifier: "CreateCanvaseResponse" });
-    case 2:
-      return S.Array(S.String);
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          canvas_id: S.String,
-          channel_ids: S.optional(__S(2, __c0, 2)),
-          user_ids: S.optional(__S(2, __c0, 2)),
-        }).pipe(T.Http({ method: "POST", uri: "/canvases.access.delete", code: 200 })),
-      ).annotate({ identifier: "DeleteAccessRequest" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          ok: S.Boolean,
-          failed_to_update_channel_ids: S.optional(__S(2, __c0, 2)),
-          failed_to_update_user_ids: S.optional(__S(2, __c0, 2)),
-        }),
-      ).annotate({ identifier: "DeleteAccessResponse" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          canvas_id: S.String,
-        }).pipe(T.Http({ method: "POST", uri: "/canvases.delete", code: 200 })),
-      ).annotate({ identifier: "DeleteCanvaseRequest" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          ok: S.Boolean,
-        }),
-      ).annotate({ identifier: "DeleteCanvaseResponse" });
-    case 7:
-      return S.Array(S.Unknown);
   }
 }
 function __c1(j: number): any {
@@ -293,60 +261,123 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           canvas_id: S.String,
-          changes: __S(7, __c0, 7),
+          channel_ids: S.optional(__S(8, __c2, 0)),
+          user_ids: S.optional(__S(8, __c2, 0)),
+        }).pipe(T.Http({ method: "POST", uri: "/canvases.access.delete", code: 200 })),
+      ).annotate({ identifier: "DeleteAccessRequest" });
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          ok: S.Boolean,
+          failed_to_update_channel_ids: S.optional(__S(8, __c2, 0)),
+          failed_to_update_user_ids: S.optional(__S(8, __c2, 0)),
+        }),
+      ).annotate({ identifier: "DeleteAccessResponse" });
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          canvas_id: S.String,
+        }).pipe(T.Http({ method: "POST", uri: "/canvases.delete", code: 200 })),
+      ).annotate({ identifier: "DeleteCanvaseRequest" });
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          ok: S.Boolean,
+        }),
+      ).annotate({ identifier: "DeleteCanvaseResponse" });
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.Unknown);
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          canvas_id: S.String,
+          changes: __S(24, __c6, 0),
         }).pipe(T.Http({ method: "POST", uri: "/canvases.edit", code: 200 })),
       ).annotate({ identifier: "EditCanvaseRequest" });
-    case 1:
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           canvas_id: S.String,
           content_type: S.optional(S.String),
         }).pipe(T.Http({ method: "POST", uri: "/canvases.getContent", code: 200 })),
       ).annotate({ identifier: "GetContentRequest" });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           ok: S.Boolean,
           content: S.String,
         }),
       ).annotate({ identifier: "GetContentResponse" });
-    case 3:
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           canvas_id: S.String,
           criteria: S.Unknown,
         }).pipe(T.Http({ method: "POST", uri: "/canvases.sections.lookup", code: 200 })),
       ).annotate({ identifier: "LookupSectionRequest" });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
-          child_section_ids: S.optional(__S(2, __c0, 2)),
+          child_section_ids: S.optional(__S(8, __c2, 0)),
         }),
       ).annotate({
         identifier: "LookupSectionResponseSectionsItem",
       });
-    case 5:
-      return S.Array(__S(12, __c1, 4));
-    case 6:
+    case 2:
+      return S.Array(__S(33, __c8, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
           ok: S.Boolean,
-          sections: __S(13, __c1, 5),
+          sections: __S(34, __c8, 2),
         }),
       ).annotate({ identifier: "LookupSectionResponse" });
-    case 7:
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           canvas_id: S.String,
           access_level: S.String,
-          channel_ids: S.optional(__S(2, __c0, 2)),
-          user_ids: S.optional(__S(2, __c0, 2)),
+          channel_ids: S.optional(__S(8, __c2, 0)),
+          user_ids: S.optional(__S(8, __c2, 0)),
         }).pipe(T.Http({ method: "POST", uri: "/canvases.access.set", code: 200 })),
       ).annotate({ identifier: "SetAccessRequest" });
   }
 }
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

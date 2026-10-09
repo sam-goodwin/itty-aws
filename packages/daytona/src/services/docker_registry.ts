@@ -110,7 +110,7 @@ export const createRegistry: API.OperationMethod<
   DaytonaOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(0, __c0, 0) as any as S.Schema<CreateRegistryRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<DockerRegistry2>,
+  output: __S(4, __c1, 0) as any as S.Schema<DockerRegistry2>,
   errors: [UnknownDaytonaError],
   protocol: DaytonaProtocol,
   retry: Retry.Retry,
@@ -124,8 +124,8 @@ export const deleteRegistry: API.OperationMethod<
   DeleteRegistryError,
   DaytonaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2, __c0, 2) as any as S.Schema<DeleteRegistryRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<DeleteRegistryResponse>,
+  input: __S(8, __c2, 0) as any as S.Schema<DeleteRegistryRequest>,
+  output: __S(9, __c2, 1) as any as S.Schema<DeleteRegistryResponse>,
   errors: [UnknownDaytonaError],
   protocol: DaytonaProtocol,
   retry: Retry.Retry,
@@ -139,8 +139,8 @@ export const getRegistry: API.OperationMethod<
   GetRegistryError,
   DaytonaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(4, __c0, 4) as any as S.Schema<GetRegistryRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<DockerRegistry2>,
+  input: __S(12, __c3, 0) as any as S.Schema<GetRegistryRequest>,
+  output: __S(4, __c1, 0) as any as S.Schema<DockerRegistry2>,
   errors: [UnknownDaytonaError],
   protocol: DaytonaProtocol,
   retry: Retry.Retry,
@@ -154,8 +154,8 @@ export const getTransientPushAccess: API.OperationMethod<
   GetTransientPushAccessError,
   DaytonaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(5, __c0, 5) as any as S.Schema<GetTransientPushAccessRequest>,
-  output: __S(6, __c0, 6) as any as S.Schema<RegistryPushAccessDto>,
+  input: __S(16, __c4, 0) as any as S.Schema<GetTransientPushAccessRequest>,
+  output: __S(17, __c4, 1) as any as S.Schema<RegistryPushAccessDto>,
   errors: [UnknownDaytonaError],
   protocol: DaytonaProtocol,
   retry: Retry.Retry,
@@ -169,8 +169,8 @@ export const listRegistries: API.OperationMethod<
   ListRegistriesError,
   DaytonaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(7, __c0, 7) as any as S.Schema<ListRegistriesRequest>,
-  output: __S(9, __c1, 1) as any as S.Schema<ListRegistriesResponse>,
+  input: __S(20, __c5, 0) as any as S.Schema<ListRegistriesRequest>,
+  output: __S(22, __c5, 2) as any as S.Schema<ListRegistriesResponse>,
   errors: [UnknownDaytonaError],
   protocol: DaytonaProtocol,
   retry: Retry.Retry,
@@ -184,8 +184,8 @@ export const updateRegistry: API.OperationMethod<
   UpdateRegistryError,
   DaytonaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(10, __c1, 2) as any as S.Schema<UpdateRegistryRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<DockerRegistry2>,
+  input: __S(24, __c6, 0) as any as S.Schema<UpdateRegistryRequest>,
+  output: __S(4, __c1, 0) as any as S.Schema<DockerRegistry2>,
   errors: [UnknownDaytonaError],
   protocol: DaytonaProtocol,
   retry: Retry.Retry,
@@ -205,7 +205,11 @@ function __c0(j: number): any {
           project: S.optional(S.String),
         }).pipe(T.Http({ method: "POST", uri: "/docker-registry", code: 200 })),
       ).annotate({ identifier: "CreateRegistryRequest" });
-    case 1:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
@@ -218,25 +222,37 @@ function __c0(j: number): any {
           updatedAt: S.String,
         }),
       ).annotate({ identifier: "DockerRegistry2" });
-    case 2:
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.String.pipe(T.Label()),
           xDaytonaOrganizationID: S.optional(S.String.pipe(T.Header("X-Daytona-Organization-ID"))),
         }).pipe(T.Http({ method: "DELETE", uri: "/docker-registry/{id}", code: 200 })),
       ).annotate({ identifier: "DeleteRegistryRequest" });
-    case 3:
+    case 1:
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "DeleteRegistryResponse",
       });
-    case 4:
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.String.pipe(T.Label()),
           xDaytonaOrganizationID: S.optional(S.String.pipe(T.Header("X-Daytona-Organization-ID"))),
         }).pipe(T.Http({ method: "GET", uri: "/docker-registry/{id}", code: 200 })),
       ).annotate({ identifier: "GetRegistryRequest" });
-    case 5:
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           regionId: S.optional(S.String.pipe(T.Query())),
@@ -245,7 +261,7 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "GetTransientPushAccessRequest",
       });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           username: S.String,
@@ -256,23 +272,27 @@ function __c0(j: number): any {
           expiresAt: S.String,
         }),
       ).annotate({ identifier: "RegistryPushAccessDto" });
-    case 7:
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           xDaytonaOrganizationID: S.optional(S.String.pipe(T.Header("X-Daytona-Organization-ID"))),
         }).pipe(T.Http({ method: "GET", uri: "/docker-registry", code: 200 })),
       ).annotate({ identifier: "ListRegistriesRequest" });
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(1, __c0, 1));
     case 1:
-      return S.suspend(() => __S(8, __c1, 0).pipe(T.RawResponseRoot())).annotate({
+      return S.Array(__S(4, __c1, 0));
+    case 2:
+      return S.suspend(() => __S(21, __c5, 1).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListRegistriesResponse",
       });
-    case 2:
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.String.pipe(T.Label()),
@@ -286,7 +306,6 @@ function __c1(j: number): any {
       ).annotate({ identifier: "UpdateRegistryRequest" });
   }
 }
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

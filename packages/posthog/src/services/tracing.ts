@@ -1074,7 +1074,7 @@ export const createTracingRetentionRule: API.OperationMethod<
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(0, __c0, 0) as any as S.Schema<CreateTracingRetentionRuleRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<TracesRetentionRule>,
+  output: __S(8, __c1, 0) as any as S.Schema<TracesRetentionRule>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1088,8 +1088,8 @@ export const createTracingRetentionRulesReorder: API.OperationMethod<
   CreateTracingRetentionRulesReorderError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3, __c0, 3) as any as S.Schema<CreateTracingRetentionRulesReorderRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<PaginatedTracesRetentionRuleList>,
+  input: __S(16, __c2, 0) as any as S.Schema<CreateTracingRetentionRulesReorderRequest>,
+  output: __S(25, __c3, 1) as any as S.Schema<PaginatedTracesRetentionRuleList>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1103,8 +1103,8 @@ export const createTracingRetentionRulesSuggestName: API.OperationMethod<
   CreateTracingRetentionRulesSuggestNameError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(6, __c0, 6) as any as S.Schema<CreateTracingRetentionRulesSuggestNameRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<LogsRetentionRuleNameSuggestion>,
+  input: __S(136, __c17, 0) as any as S.Schema<CreateTracingRetentionRulesSuggestNameRequest>,
+  output: __S(137, __c17, 1) as any as S.Schema<LogsRetentionRuleNameSuggestion>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1117,8 +1117,8 @@ export const createTracingSpansAggregate: API.OperationMethod<
   CreateTracingSpansAggregateError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(13, __c1, 5) as any as S.Schema<CreateTracingSpansAggregateRequest>,
-  output: __S(16, __c2, 0) as any as S.Schema<TracingAggregationResponse>,
+  input: __S(233, __c29, 1) as any as S.Schema<CreateTracingSpansAggregateRequest>,
+  output: __S(236, __c29, 4) as any as S.Schema<TracingAggregationResponse>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1131,8 +1131,8 @@ export const createTracingSpansAttributeBreakdown: API.OperationMethod<
   CreateTracingSpansAttributeBreakdownError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(18, __c2, 2) as any as S.Schema<CreateTracingSpansAttributeBreakdownRequest>,
-  output: __S(21, __c2, 5) as any as S.Schema<TracingAttributeBreakdownResponse>,
+  input: __S(273, __c34, 1) as any as S.Schema<CreateTracingSpansAttributeBreakdownRequest>,
+  output: __S(276, __c34, 4) as any as S.Schema<TracingAttributeBreakdownResponse>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1145,8 +1145,8 @@ export const createTracingSpansCount: API.OperationMethod<
   CreateTracingSpansCountError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(24, __c3, 0) as any as S.Schema<CreateTracingSpansCountRequest>,
-  output: __S(25, __c3, 1) as any as S.Schema<TracingCountResponse>,
+  input: __S(280, __c35, 0) as any as S.Schema<CreateTracingSpansCountRequest>,
+  output: __S(281, __c35, 1) as any as S.Schema<TracingCountResponse>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1159,8 +1159,8 @@ export const createTracingSpansDurationHistogram: API.OperationMethod<
   CreateTracingSpansDurationHistogramError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(27, __c3, 3) as any as S.Schema<CreateTracingSpansDurationHistogramRequest>,
-  output: __S(30, __c3, 6) as any as S.Schema<TracingDurationHistogramResponse>,
+  input: __S(304, __c38, 0) as any as S.Schema<CreateTracingSpansDurationHistogramRequest>,
+  output: __S(307, __c38, 3) as any as S.Schema<TracingDurationHistogramResponse>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1174,8 +1174,8 @@ export const createTracingSpansErrorCount: API.OperationMethod<
   CreateTracingSpansErrorCountError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(31, __c3, 7) as any as S.Schema<CreateTracingSpansErrorCountRequest>,
-  output: __S(38, __c4, 6) as any as S.Schema<TracingErrorCountsResponse>,
+  input: __S(320, __c40, 0) as any as S.Schema<CreateTracingSpansErrorCountRequest>,
+  output: __S(327, __c40, 7) as any as S.Schema<TracingErrorCountsResponse>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1188,8 +1188,8 @@ export const createTracingSpansImpact: API.OperationMethod<
   CreateTracingSpansImpactError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(39, __c4, 7) as any as S.Schema<CreateTracingSpansImpactRequest>,
-  output: __S(42, __c5, 2) as any as S.Schema<TracingImpactResponse>,
+  input: __S(328, __c41, 0) as any as S.Schema<CreateTracingSpansImpactRequest>,
+  output: __S(331, __c41, 3) as any as S.Schema<TracingImpactResponse>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1202,8 +1202,8 @@ export const createTracingSpansLatencyHeatmap: API.OperationMethod<
   CreateTracingSpansLatencyHeatmapError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(43, __c5, 3) as any as S.Schema<CreateTracingSpansLatencyHeatmapRequest>,
-  output: __S(46, __c5, 6) as any as S.Schema<TracingLatencyHeatmapResponse>,
+  input: __S(336, __c42, 0) as any as S.Schema<CreateTracingSpansLatencyHeatmapRequest>,
+  output: __S(339, __c42, 3) as any as S.Schema<TracingLatencyHeatmapResponse>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1216,8 +1216,8 @@ export const createTracingSpansQuery: API.OperationMethod<
   CreateTracingSpansQueryError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(48, __c6, 0) as any as S.Schema<CreateTracingSpansQueryRequest>,
-  output: __S(52, __c6, 4) as any as S.Schema<TracingQueryResponse>,
+  input: __S(41, __c5, 1) as any as S.Schema<CreateTracingSpansQueryRequest>,
+  output: __S(44, __c5, 4) as any as S.Schema<TracingQueryResponse>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1230,8 +1230,8 @@ export const createTracingSpansSparkline: API.OperationMethod<
   CreateTracingSpansSparklineError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(53, __c6, 5) as any as S.Schema<CreateTracingSpansSparklineRequest>,
-  output: __S(56, __c7, 0) as any as S.Schema<TracingSparklineResponse>,
+  input: __S(56, __c7, 0) as any as S.Schema<CreateTracingSpansSparklineRequest>,
+  output: __S(59, __c7, 3) as any as S.Schema<TracingSparklineResponse>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1244,8 +1244,8 @@ export const createTracingSpansSymbolStat: API.OperationMethod<
   CreateTracingSpansSymbolStatError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(60, __c7, 4) as any as S.Schema<CreateTracingSpansSymbolStatRequest>,
-  output: __S(64, __c8, 0) as any as S.Schema<SymbolStatsResponse>,
+  input: __S(67, __c8, 3) as any as S.Schema<CreateTracingSpansSymbolStatRequest>,
+  output: __S(71, __c8, 7) as any as S.Schema<SymbolStatsResponse>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1258,8 +1258,8 @@ export const createTracingSpansTrace: API.OperationMethod<
   CreateTracingSpansTraceError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(65, __c8, 1) as any as S.Schema<CreateTracingSpansTraceRequest>,
-  output: __S(68, __c8, 4) as any as S.Schema<TracingTraceResponse>,
+  input: __S(72, __c9, 0) as any as S.Schema<CreateTracingSpansTraceRequest>,
+  output: __S(75, __c9, 3) as any as S.Schema<TracingTraceResponse>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1272,8 +1272,8 @@ export const createTracingSpansTree: API.OperationMethod<
   CreateTracingSpansTreeError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(70, __c8, 6) as any as S.Schema<CreateTracingSpansTreeRequest>,
-  output: __S(73, __c9, 1) as any as S.Schema<TracingTreeResponse>,
+  input: __S(81, __c10, 1) as any as S.Schema<CreateTracingSpansTreeRequest>,
+  output: __S(84, __c10, 4) as any as S.Schema<TracingTreeResponse>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1286,8 +1286,8 @@ export const createTracingView: API.OperationMethod<
   CreateTracingViewError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(75, __c9, 3) as any as S.Schema<CreateTracingViewRequest>,
-  output: __S(77, __c9, 5) as any as S.Schema<TracingView>,
+  input: __S(88, __c11, 0) as any as S.Schema<CreateTracingViewRequest>,
+  output: __S(98, __c12, 2) as any as S.Schema<TracingView>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1301,8 +1301,8 @@ export const getTracingRetentionRule: API.OperationMethod<
   GetTracingRetentionRuleError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(78, __c9, 6) as any as S.Schema<GetTracingRetentionRuleRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<TracesRetentionRule>,
+  input: __S(104, __c13, 0) as any as S.Schema<GetTracingRetentionRuleRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<TracesRetentionRule>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1315,8 +1315,8 @@ export const getTracingSpansAttribute: API.OperationMethod<
   GetTracingSpansAttributeError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(79, __c9, 7) as any as S.Schema<GetTracingSpansAttributeRequest>,
-  output: __S(82, __c10, 2) as any as S.Schema<TracingAttributesResponse>,
+  input: __S(112, __c14, 0) as any as S.Schema<GetTracingSpansAttributeRequest>,
+  output: __S(115, __c14, 3) as any as S.Schema<TracingAttributesResponse>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1329,8 +1329,8 @@ export const getTracingSpansHasSpan: API.OperationMethod<
   GetTracingSpansHasSpanError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(83, __c10, 3) as any as S.Schema<GetTracingSpansHasSpanRequest>,
-  output: __S(84, __c10, 4) as any as S.Schema<HasSpansResponse>,
+  input: __S(120, __c15, 0) as any as S.Schema<GetTracingSpansHasSpanRequest>,
+  output: __S(121, __c15, 1) as any as S.Schema<HasSpansResponse>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1343,8 +1343,8 @@ export const getTracingSpansServiceName: API.OperationMethod<
   GetTracingSpansServiceNameError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(85, __c10, 5) as any as S.Schema<GetTracingSpansServiceNameRequest>,
-  output: __S(88, __c11, 0) as any as S.Schema<TracingServiceNamesResponse>,
+  input: __S(128, __c16, 0) as any as S.Schema<GetTracingSpansServiceNameRequest>,
+  output: __S(131, __c16, 3) as any as S.Schema<TracingServiceNamesResponse>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1358,8 +1358,8 @@ export const getTracingSpansTraceAiEvent: API.OperationMethod<
   GetTracingSpansTraceAiEventError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(89, __c11, 1) as any as S.Schema<GetTracingSpansTraceAiEventRequest>,
-  output: __S(92, __c11, 4) as any as S.Schema<TracingTraceAiEventsResponse>,
+  input: __S(144, __c18, 0) as any as S.Schema<GetTracingSpansTraceAiEventRequest>,
+  output: __S(147, __c18, 3) as any as S.Schema<TracingTraceAiEventsResponse>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1372,8 +1372,8 @@ export const getTracingSpansValue: API.OperationMethod<
   GetTracingSpansValueError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(93, __c11, 5) as any as S.Schema<GetTracingSpansValueRequest>,
-  output: __S(94, __c11, 6) as any as S.Schema<GetTracingSpansValueResponse>,
+  input: __S(152, __c19, 0) as any as S.Schema<GetTracingSpansValueRequest>,
+  output: __S(160, __c20, 0) as any as S.Schema<GetTracingSpansValueResponse>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1386,8 +1386,8 @@ export const getTracingView: API.OperationMethod<
   GetTracingViewError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(95, __c11, 7) as any as S.Schema<GetTracingViewRequest>,
-  output: __S(77, __c9, 5) as any as S.Schema<TracingView>,
+  input: __S(168, __c21, 0) as any as S.Schema<GetTracingViewRequest>,
+  output: __S(98, __c12, 2) as any as S.Schema<TracingView>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1401,8 +1401,8 @@ export const listTracingRetentionRules: API.OperationMethod<
   ListTracingRetentionRulesError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(96, __c12, 0) as any as S.Schema<ListTracingRetentionRulesRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<PaginatedTracesRetentionRuleList>,
+  input: __S(176, __c22, 0) as any as S.Schema<ListTracingRetentionRulesRequest>,
+  output: __S(25, __c3, 1) as any as S.Schema<PaginatedTracesRetentionRuleList>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1415,8 +1415,8 @@ export const listTracingViews: API.OperationMethod<
   ListTracingViewsError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(97, __c12, 1) as any as S.Schema<ListTracingViewsRequest>,
-  output: __S(99, __c12, 3) as any as S.Schema<PaginatedTracingViewList>,
+  input: __S(184, __c23, 0) as any as S.Schema<ListTracingViewsRequest>,
+  output: __S(186, __c23, 2) as any as S.Schema<PaginatedTracingViewList>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1430,8 +1430,8 @@ export const tracingRetentionRulesDestroy: API.OperationMethod<
   TracingRetentionRulesDestroyError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(100, __c12, 4) as any as S.Schema<TracingRetentionRulesDestroyRequest>,
-  output: __S(101, __c12, 5) as any as S.Schema<TracingRetentionRulesDestroyResponse>,
+  input: __S(192, __c24, 0) as any as S.Schema<TracingRetentionRulesDestroyRequest>,
+  output: __S(193, __c24, 1) as any as S.Schema<TracingRetentionRulesDestroyResponse>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1444,8 +1444,8 @@ export const tracingViewsDestroy: API.OperationMethod<
   TracingViewsDestroyError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(102, __c12, 6) as any as S.Schema<TracingViewsDestroyRequest>,
-  output: __S(94, __c11, 6) as any as S.Schema<TracingViewsDestroyResponse>,
+  input: __S(200, __c25, 0) as any as S.Schema<TracingViewsDestroyRequest>,
+  output: __S(160, __c20, 0) as any as S.Schema<TracingViewsDestroyResponse>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1459,8 +1459,8 @@ export const updateTracingRetentionRule: API.OperationMethod<
   UpdateTracingRetentionRuleError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(103, __c12, 7) as any as S.Schema<UpdateTracingRetentionRuleRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<TracesRetentionRule>,
+  input: __S(208, __c26, 0) as any as S.Schema<UpdateTracingRetentionRuleRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<TracesRetentionRule>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1474,8 +1474,8 @@ export const updateTracingRetentionRulesPartial: API.OperationMethod<
   UpdateTracingRetentionRulesPartialError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(104, __c13, 0) as any as S.Schema<UpdateTracingRetentionRulesPartialRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<TracesRetentionRule>,
+  input: __S(216, __c27, 0) as any as S.Schema<UpdateTracingRetentionRulesPartialRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<TracesRetentionRule>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1488,8 +1488,8 @@ export const updateTracingView: API.OperationMethod<
   UpdateTracingViewError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(105, __c13, 1) as any as S.Schema<UpdateTracingViewRequest>,
-  output: __S(77, __c9, 5) as any as S.Schema<TracingView>,
+  input: __S(224, __c28, 0) as any as S.Schema<UpdateTracingViewRequest>,
+  output: __S(98, __c12, 2) as any as S.Schema<TracingView>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1502,8 +1502,8 @@ export const updateTracingViewsPartial: API.OperationMethod<
   UpdateTracingViewsPartialError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(106, __c13, 2) as any as S.Schema<UpdateTracingViewsPartialRequest>,
-  output: __S(77, __c9, 5) as any as S.Schema<TracingView>,
+  input: __S(264, __c33, 0) as any as S.Schema<UpdateTracingViewsPartialRequest>,
+  output: __S(98, __c12, 2) as any as S.Schema<TracingView>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1530,7 +1530,11 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "CreateTracingRetentionRuleRequest",
       });
-    case 1:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
@@ -1544,15 +1548,17 @@ function __c0(j: number): any {
           updated_at: S.NullOr(S.String),
         }),
       ).annotate({ identifier: "TracesRetentionRule" });
-    case 2:
-      return S.Array(S.String);
-    case 3:
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
           limit: S.optional(S.Number.pipe(T.Query())),
           offset: S.optional(S.Number.pipe(T.Query())),
-          ordered_ids: __S(2, __c0, 2),
+          ordered_ids: __S(32, __c4, 0),
         }).pipe(
           T.Http({
             method: "POST",
@@ -1563,350 +1569,29 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "CreateTracingRetentionRulesReorderRequest",
       });
-    case 4:
-      return S.Array(__S(1, __c0, 1));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          count: S.Number,
-          next: S.optional(S.NullOr(S.String)),
-          previous: S.optional(S.NullOr(S.String)),
-          results: __S(4, __c0, 4),
-        }),
-      ).annotate({
-        identifier: "PaginatedTracesRetentionRuleList",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          project_id: S.String.pipe(T.Label()),
-          retention_days: S.Number,
-          filter_group: S.Unknown,
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/api/projects/{project_id}/tracing/retention_rules/suggest_name/",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateTracingRetentionRulesSuggestNameRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String,
-        }),
-      ).annotate({
-        identifier: "LogsRetentionRuleNameSuggestion",
-      });
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          date_from: S.optional(S.NullOr(S.String)),
-          date_to: S.optional(S.NullOr(S.String)),
-        }),
-      ).annotate({ identifier: "TracingDateRange" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          compare: S.optional(S.Boolean),
-          compare_to: S.optional(S.NullOr(S.String)),
-        }),
-      ).annotate({ identifier: "CompareFilter" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          key: S.String,
-          type: S.String,
-          operator: S.String,
-          value: S.optional(S.Unknown),
-        }),
-      ).annotate({ identifier: "SpanPropertyFilter" });
-    case 3:
-      return S.Array(__S(10, __c1, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          dateRange: S.optional(__S(8, __c1, 0)),
-          compareFilter: S.optional(__S(9, __c1, 1)),
-          serviceNames: S.optional(__S(2, __c0, 2)),
-          filterGroup: S.optional(__S(11, __c1, 3)),
-          limit: S.optional(S.Number),
-          offset: S.optional(S.Number),
-          includeImpact: S.optional(S.Boolean),
-        }),
-      ).annotate({
-        identifier: "TracingAggregationQueryBody",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          project_id: S.String.pipe(T.Label()),
-          query: __S(12, __c1, 4),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/api/projects/{project_id}/tracing/spans/aggregate/",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateTracingSpansAggregateRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          service_name: S.String,
-          name: S.String,
-          count: S.Number,
-          total_duration_nano: S.Number,
-          avg_duration_nano: S.Number,
-          p50_duration_nano: S.Number,
-          p95_duration_nano: S.Number,
-          p99_duration_nano: S.Number,
-          p999_duration_nano: S.Number,
-          error_count: S.Number,
-          sessions: S.NullOr(S.Number),
-          users: S.NullOr(S.Number),
-          spans_with_session_id: S.NullOr(S.Number),
-          spans_with_distinct_id: S.NullOr(S.Number),
-        }),
-      ).annotate({ identifier: "AggregatedSpanRow" });
-    case 7:
-      return S.Array(__S(14, __c1, 6));
-  }
-}
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          results: __S(15, __c1, 7),
-          compare: S.NullOr(__S(15, __c1, 7)),
-          has_more: S.Boolean,
-          next_offset: S.NullOr(S.Number),
-        }),
-      ).annotate({
-        identifier: "TracingAggregationResponse",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          breakdownKey: S.String,
-          breakdownType: S.String,
-          excludeBreakdownFilter: S.optional(S.Boolean),
-          facetSearch: S.optional(S.String),
-          orderBy: S.optional(S.String),
-          dateRange: S.optional(__S(8, __c1, 0)),
-          compareFilter: S.optional(__S(9, __c1, 1)),
-          serviceNames: S.optional(__S(2, __c0, 2)),
-          filterGroup: S.optional(__S(11, __c1, 3)),
-        }),
-      ).annotate({
-        identifier: "TracingAttributeBreakdownQueryBody",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          project_id: S.String.pipe(T.Label()),
-          query: __S(17, __c2, 1),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/api/projects/{project_id}/tracing/spans/attribute-breakdown/",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateTracingSpansAttributeBreakdownRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          value: S.String,
-          count: S.Number,
-          error_count: S.Number,
-          p50_duration_nano: S.Number,
-          p95_duration_nano: S.Number,
-        }),
-      ).annotate({
-        identifier: "TracingAttributeBreakdownRow",
-      });
-    case 4:
-      return S.Array(__S(19, __c2, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          results: __S(20, __c2, 4),
-          compare: S.NullOr(__S(20, __c2, 4)),
-        }),
-      ).annotate({
-        identifier: "TracingAttributeBreakdownResponse",
-      });
-    case 6:
-      return S.Array(S.Number);
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          dateRange: S.optional(__S(8, __c1, 0)),
-          serviceNames: S.optional(__S(2, __c0, 2)),
-          statusCodes: S.optional(__S(22, __c2, 6)),
-          filterGroup: S.optional(S.Unknown),
-        }),
-      ).annotate({ identifier: "TracingCountBody" });
   }
 }
 function __c3(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() =>
-        S.Struct({
-          project_id: S.String.pipe(T.Label()),
-          query: __S(23, __c2, 7),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/api/projects/{project_id}/tracing/spans/count/",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateTracingSpansCountRequest",
-      });
+      return S.Array(__S(8, __c1, 0));
     case 1:
       return S.suspend(() =>
         S.Struct({
           count: S.Number,
-          traceCount: S.Number,
-        }),
-      ).annotate({ identifier: "TracingCountResponse" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          dateRange: S.optional(__S(8, __c1, 0)),
-          serviceNames: S.optional(__S(2, __c0, 2)),
-          statusCodes: S.optional(__S(22, __c2, 6)),
-          filterGroup: S.optional(__S(11, __c1, 3)),
-          rootSpans: S.optional(S.Boolean),
+          next: S.optional(S.NullOr(S.String)),
+          previous: S.optional(S.NullOr(S.String)),
+          results: __S(24, __c3, 0),
         }),
       ).annotate({
-        identifier: "TracingDurationHistogramQueryBody",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          project_id: S.String.pipe(T.Label()),
-          query: __S(26, __c3, 2),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/api/projects/{project_id}/tracing/spans/duration-histogram/",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateTracingSpansDurationHistogramRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          bucket_ns: S.Number,
-          service: S.String,
-          count: S.Number,
-        }),
-      ).annotate({
-        identifier: "TracingDurationHistogramRow",
-      });
-    case 5:
-      return S.Array(__S(28, __c3, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          results: __S(29, __c3, 5),
-        }),
-      ).annotate({
-        identifier: "TracingDurationHistogramResponse",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          project_id: S.String.pipe(T.Label()),
-          traceIds: S.optional(__S(2, __c0, 2)),
-          spanIds: S.optional(__S(2, __c0, 2)),
-          sessionIds: S.optional(__S(2, __c0, 2)),
-          dateFrom: S.String,
-          dateTo: S.String,
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/api/projects/{project_id}/tracing/spans/error-counts/",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateTracingSpansErrorCountRequest",
+        identifier: "PaginatedTracesRetentionRuleList",
       });
   }
 }
 function __c4(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() =>
-        S.Struct({
-          exceptions: S.Number,
-          trace_id: S.String,
-        }),
-      ).annotate({ identifier: "TracingTraceErrorCount" });
-    case 1:
-      return S.Array(__S(32, __c4, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          exceptions: S.Number,
-          span_id: S.String,
-        }),
-      ).annotate({ identifier: "TracingSpanErrorCount" });
-    case 3:
-      return S.Array(__S(34, __c4, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          exceptions: S.Number,
-          session_id: S.String,
-        }),
-      ).annotate({ identifier: "TracingSessionErrorCount" });
-    case 5:
-      return S.Array(__S(36, __c4, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          traceResults: __S(33, __c4, 1),
-          spanResults: __S(35, __c4, 3),
-          sessionResults: __S(37, __c4, 5),
-        }),
-      ).annotate({
-        identifier: "TracingErrorCountsResponse",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          project_id: S.String.pipe(T.Label()),
-          query: __S(23, __c2, 7),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/api/projects/{project_id}/tracing/spans/impact/",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateTracingSpansImpactRequest",
-      });
+      return S.Array(S.String);
   }
 }
 function __c5(j: number): any {
@@ -1914,68 +1599,12 @@ function __c5(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          value: S.String,
-          count: S.Number,
-        }),
-      ).annotate({ identifier: "TracingImpactTopValue" });
-    case 1:
-      return S.Array(__S(40, __c5, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          total: S.Number,
-          spansWithSessionId: S.Number,
-          sessions: S.Number,
-          spansWithDistinctId: S.Number,
-          users: S.Number,
-          topSessions: __S(41, __c5, 1),
-          topUsers: __S(41, __c5, 1),
-        }),
-      ).annotate({ identifier: "TracingImpactResponse" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          project_id: S.String.pipe(T.Label()),
-          query: __S(26, __c3, 2),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/api/projects/{project_id}/tracing/spans/latency-heatmap/",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateTracingSpansLatencyHeatmapRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          time: S.String,
-          bucket_ns: S.Number,
-          count: S.Number,
-        }),
-      ).annotate({
-        identifier: "TracingLatencyHeatmapCell",
-      });
-    case 5:
-      return S.Array(__S(44, __c5, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          results: __S(45, __c5, 5),
-        }),
-      ).annotate({
-        identifier: "TracingLatencyHeatmapResponse",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          dateRange: S.optional(__S(8, __c1, 0)),
-          serviceNames: S.optional(__S(2, __c0, 2)),
-          statusCodes: S.optional(__S(22, __c2, 6)),
+          dateRange: S.optional(__S(248, __c31, 0)),
+          serviceNames: S.optional(__S(32, __c4, 0)),
+          statusCodes: S.optional(__S(288, __c36, 0)),
           orderBy: S.optional(S.String),
           orderDirection: S.optional(S.String),
-          filterGroup: S.optional(__S(11, __c1, 3)),
+          filterGroup: S.optional(__S(257, __c32, 1)),
           traceId: S.optional(S.String),
           limit: S.optional(S.Number),
           after: S.optional(S.String),
@@ -1986,15 +1615,11 @@ function __c5(j: number): any {
           excludeAttributes: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "TracingQueryBody" });
-  }
-}
-function __c6(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
-          query: __S(47, __c5, 7),
+          query: __S(40, __c5, 0),
         }).pipe(
           T.Http({
             method: "POST",
@@ -2005,8 +1630,6 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "CreateTracingSpansQueryRequest",
       });
-    case 1:
-      return S.Record(S.String, S.String);
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -2025,25 +1648,35 @@ function __c6(j: number): any {
           matched_filter: S.Number,
           trace_start: S.String,
           trace_duration: S.Number,
-          attributes: __S(49, __c6, 1),
-          resource_attributes: __S(49, __c6, 1),
+          attributes: __S(48, __c6, 0),
+          resource_attributes: __S(48, __c6, 0),
         }),
       ).annotate({ identifier: "Span" });
     case 3:
-      return S.Array(__S(50, __c6, 2));
+      return S.Array(__S(42, __c5, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          results: __S(51, __c6, 3),
+          results: __S(43, __c5, 3),
           hasMore: S.Boolean,
           nextCursor: S.NullOr(S.String),
         }),
       ).annotate({ identifier: "TracingQueryResponse" });
-    case 5:
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, S.String);
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
-          query: __S(26, __c3, 2),
+          query: __S(312, __c39, 0),
         }).pipe(
           T.Http({
             method: "POST",
@@ -2054,7 +1687,7 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "CreateTracingSpansSparklineRequest",
       });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           time: S.String,
@@ -2062,19 +1695,19 @@ function __c6(j: number): any {
           count: S.Number,
         }),
       ).annotate({ identifier: "TracingSparklineRow" });
-    case 7:
-      return S.Array(__S(54, __c6, 6));
-  }
-}
-function __c7(j: number): any {
-  switch (j) {
-    case 0:
+    case 2:
+      return S.Array(__S(57, __c7, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          results: __S(55, __c6, 7),
+          results: __S(58, __c7, 2),
         }),
       ).annotate({ identifier: "TracingSparklineResponse" });
-    case 1:
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.NullOr(S.String)),
@@ -2082,21 +1715,21 @@ function __c7(j: number): any {
           endLine: S.Number,
         }),
       ).annotate({ identifier: "SymbolStatsSymbol" });
+    case 1:
+      return S.Array(__S(64, __c8, 0));
     case 2:
-      return S.Array(__S(57, __c7, 1));
-    case 3:
       return S.suspend(() =>
         S.Struct({
           filePath: S.String,
-          dateRange: S.optional(__S(8, __c1, 0)),
-          symbols: S.optional(__S(58, __c7, 2)),
+          dateRange: S.optional(__S(248, __c31, 0)),
+          symbols: S.optional(__S(65, __c8, 1)),
         }),
       ).annotate({ identifier: "SymbolStatsQueryBody" });
-    case 4:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
-          query: __S(59, __c7, 3),
+          query: __S(66, __c8, 2),
         }).pipe(
           T.Http({
             method: "POST",
@@ -2107,7 +1740,7 @@ function __c7(j: number): any {
       ).annotate({
         identifier: "CreateTracingSpansSymbolStatRequest",
       });
-    case 5:
+    case 4:
       return S.suspend(() =>
         S.Struct({
           count: S.Number,
@@ -2122,7 +1755,7 @@ function __c7(j: number): any {
           p99_busy_nano: S.Number,
         }),
       ).annotate({ identifier: "SymbolStatsPeriod" });
-    case 6:
+    case 5:
       return S.suspend(() =>
         S.Struct({
           count: S.Number,
@@ -2138,30 +1771,30 @@ function __c7(j: number): any {
           line: S.Number,
           name: S.optional(S.NullOr(S.String)),
           end_line: S.optional(S.NullOr(S.Number)),
-          previous: __S(61, __c7, 5),
+          previous: __S(68, __c8, 4),
           count_pct_change: S.NullOr(S.Number),
           p95_duration_pct_change: S.NullOr(S.Number),
         }),
       ).annotate({ identifier: "SymbolStatsRow" });
+    case 6:
+      return S.Array(__S(69, __c8, 5));
     case 7:
-      return S.Array(__S(62, __c7, 6));
+      return S.suspend(() =>
+        S.Struct({
+          results: __S(70, __c8, 6),
+          granularity: S.String,
+        }),
+      ).annotate({ identifier: "SymbolStatsResponse" });
   }
 }
-function __c8(j: number): any {
+function __c9(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          results: __S(63, __c7, 7),
-          granularity: S.String,
-        }),
-      ).annotate({ identifier: "SymbolStatsResponse" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
           project_id: S.String.pipe(T.Label()),
           trace_id: S.String.pipe(T.Label()),
-          dateRange: S.optional(__S(8, __c1, 0)),
+          dateRange: S.optional(__S(248, __c31, 0)),
           excludeAttributes: S.optional(S.Boolean),
           offset: S.optional(S.Number),
         }).pipe(
@@ -2174,7 +1807,7 @@ function __c8(j: number): any {
       ).annotate({
         identifier: "CreateTracingSpansTraceRequest",
       });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           uuid: S.String,
@@ -2192,37 +1825,41 @@ function __c8(j: number): any {
           matched_filter: S.Number,
           trace_start: S.String,
           trace_duration: S.Number,
-          attributes: __S(49, __c6, 1),
-          resource_attributes: __S(49, __c6, 1),
+          attributes: __S(48, __c6, 0),
+          resource_attributes: __S(48, __c6, 0),
           self_time_nano: S.Number,
         }),
       ).annotate({ identifier: "TraceSpan" });
+    case 2:
+      return S.Array(__S(73, __c9, 1));
     case 3:
-      return S.Array(__S(66, __c8, 2));
-    case 4:
       return S.suspend(() =>
         S.Struct({
-          results: __S(67, __c8, 3),
+          results: __S(74, __c9, 2),
           hasMore: S.Boolean,
           nextOffset: S.NullOr(S.Number),
         }),
       ).annotate({ identifier: "TracingTraceResponse" });
-    case 5:
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           spanName: S.String,
           serviceName: S.String,
-          dateRange: S.optional(__S(8, __c1, 0)),
-          compareFilter: S.optional(__S(9, __c1, 1)),
-          serviceNames: S.optional(__S(2, __c0, 2)),
-          filterGroup: S.optional(__S(11, __c1, 3)),
+          dateRange: S.optional(__S(248, __c31, 0)),
+          compareFilter: S.optional(__S(240, __c30, 0)),
+          serviceNames: S.optional(__S(32, __c4, 0)),
+          filterGroup: S.optional(__S(257, __c32, 1)),
         }),
       ).annotate({ identifier: "TracingTreeQueryBody" });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
-          query: __S(69, __c8, 5),
+          query: __S(80, __c10, 0),
         }).pipe(
           T.Http({
             method: "POST",
@@ -2233,7 +1870,7 @@ function __c8(j: number): any {
       ).annotate({
         identifier: "CreateTracingSpansTreeRequest",
       });
-    case 7:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           name: S.String,
@@ -2252,33 +1889,37 @@ function __c8(j: number): any {
           calls_per_parent_invocation: S.NullOr(S.Number),
         }),
       ).annotate({ identifier: "SpanTreeNode" });
-  }
-}
-function __c9(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(71, __c8, 7));
-    case 1:
+    case 3:
+      return S.Array(__S(82, __c10, 2));
+    case 4:
       return S.suspend(() =>
         S.Struct({
-          results: __S(72, __c9, 0),
-          compare: S.NullOr(__S(72, __c9, 0)),
+          results: __S(83, __c10, 3),
+          compare: S.NullOr(__S(83, __c10, 3)),
         }),
       ).annotate({ identifier: "TracingTreeResponse" });
-    case 2:
-      return S.Record(S.String, S.Unknown);
-    case 3:
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
           name: S.String,
-          filters: S.optional(__S(74, __c9, 2)),
+          filters: S.optional(__S(96, __c12, 0)),
           pinned: S.optional(S.Boolean),
         }).pipe(
           T.Http({ method: "POST", uri: "/api/projects/{project_id}/tracing/views/", code: 200 }),
         ),
       ).annotate({ identifier: "CreateTracingViewRequest" });
-    case 4:
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, S.Unknown);
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.Number),
@@ -2288,24 +1929,28 @@ function __c9(j: number): any {
           last_name: S.optional(S.String),
           email: S.optional(S.String),
           is_email_verified: S.optional(S.NullOr(S.Boolean)),
-          hedgehog_config: S.optional(S.NullOr(__S(74, __c9, 2))),
+          hedgehog_config: S.optional(S.NullOr(__S(96, __c12, 0))),
           role_at_organization: S.optional(S.NullOr(S.Unknown)),
         }),
       ).annotate({ identifier: "UserBasic" });
-    case 5:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
           short_id: S.String,
           name: S.String,
-          filters: S.optional(__S(74, __c9, 2)),
+          filters: S.optional(__S(96, __c12, 0)),
           pinned: S.optional(S.Boolean),
           created_at: S.String,
-          created_by: S.NullOr(__S(76, __c9, 4)),
+          created_by: S.NullOr(__S(97, __c12, 1)),
           updated_at: S.NullOr(S.String),
         }),
       ).annotate({ identifier: "TracingView" });
-    case 6:
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -2320,7 +1965,11 @@ function __c9(j: number): any {
       ).annotate({
         identifier: "GetTracingRetentionRuleRequest",
       });
-    case 7:
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -2339,11 +1988,7 @@ function __c9(j: number): any {
       ).annotate({
         identifier: "GetTracingSpansAttributeRequest",
       });
-  }
-}
-function __c10(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           name: S.String,
@@ -2352,18 +1997,22 @@ function __c10(j: number): any {
           matchedValue: S.optional(S.NullOr(S.String)),
         }),
       ).annotate({ identifier: "TracingAttributeEntry" });
-    case 1:
-      return S.Array(__S(80, __c10, 0));
     case 2:
+      return S.Array(__S(113, __c14, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          results: __S(81, __c10, 1),
+          results: __S(114, __c14, 2),
           count: S.Number,
         }),
       ).annotate({
         identifier: "TracingAttributesResponse",
       });
-    case 3:
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -2377,13 +2026,17 @@ function __c10(j: number): any {
       ).annotate({
         identifier: "GetTracingSpansHasSpanRequest",
       });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           hasSpans: S.Boolean,
         }),
       ).annotate({ identifier: "HasSpansResponse" });
-    case 5:
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -2399,27 +2052,55 @@ function __c10(j: number): any {
       ).annotate({
         identifier: "GetTracingSpansServiceNameRequest",
       });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           name: S.String,
         }),
       ).annotate({ identifier: "TracingServiceName" });
-    case 7:
-      return S.Array(__S(86, __c10, 6));
-  }
-}
-function __c11(j: number): any {
-  switch (j) {
-    case 0:
+    case 2:
+      return S.Array(__S(129, __c16, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          results: __S(87, __c10, 7),
+          results: __S(130, __c16, 2),
         }),
       ).annotate({
         identifier: "TracingServiceNamesResponse",
       });
+  }
+}
+function __c17(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          project_id: S.String.pipe(T.Label()),
+          retention_days: S.Number,
+          filter_group: S.Unknown,
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/api/projects/{project_id}/tracing/retention_rules/suggest_name/",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateTracingRetentionRulesSuggestNameRequest",
+      });
     case 1:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String,
+        }),
+      ).annotate({
+        identifier: "LogsRetentionRuleNameSuggestion",
+      });
+  }
+}
+function __c18(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -2434,7 +2115,7 @@ function __c11(j: number): any {
       ).annotate({
         identifier: "GetTracingSpansTraceAiEventRequest",
       });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           uuid: S.String,
@@ -2453,19 +2134,23 @@ function __c11(j: number): any {
           is_error: S.Boolean,
         }),
       ).annotate({ identifier: "TracingTraceAiEvent" });
+    case 2:
+      return S.Array(__S(145, __c18, 1));
     case 3:
-      return S.Array(__S(90, __c11, 2));
-    case 4:
       return S.suspend(() =>
         S.Struct({
-          results: __S(91, __c11, 3),
+          results: __S(146, __c18, 2),
           limit: S.Number,
           has_more: S.Boolean,
         }),
       ).annotate({
         identifier: "TracingTraceAiEventsResponse",
       });
-    case 5:
+  }
+}
+function __c19(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -2484,11 +2169,19 @@ function __c11(j: number): any {
       ).annotate({
         identifier: "GetTracingSpansValueRequest",
       });
-    case 6:
+  }
+}
+function __c20(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "GetTracingSpansValueResponse",
       });
-    case 7:
+  }
+}
+function __c21(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -2503,7 +2196,7 @@ function __c11(j: number): any {
       ).annotate({ identifier: "GetTracingViewRequest" });
   }
 }
-function __c12(j: number): any {
+function __c22(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2521,7 +2214,11 @@ function __c12(j: number): any {
       ).annotate({
         identifier: "ListTracingRetentionRulesRequest",
       });
-    case 1:
+  }
+}
+function __c23(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -2531,18 +2228,22 @@ function __c12(j: number): any {
           T.Http({ method: "GET", uri: "/api/projects/{project_id}/tracing/views/", code: 200 }),
         ),
       ).annotate({ identifier: "ListTracingViewsRequest" });
+    case 1:
+      return S.Array(__S(98, __c12, 2));
     case 2:
-      return S.Array(__S(77, __c9, 5));
-    case 3:
       return S.suspend(() =>
         S.Struct({
           count: S.Number,
           next: S.optional(S.NullOr(S.String)),
           previous: S.optional(S.NullOr(S.String)),
-          results: __S(98, __c12, 2),
+          results: __S(185, __c23, 1),
         }),
       ).annotate({ identifier: "PaginatedTracingViewList" });
-    case 4:
+  }
+}
+function __c24(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -2557,11 +2258,15 @@ function __c12(j: number): any {
       ).annotate({
         identifier: "TracingRetentionRulesDestroyRequest",
       });
-    case 5:
+    case 1:
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "TracingRetentionRulesDestroyResponse",
       });
-    case 6:
+  }
+}
+function __c25(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -2576,7 +2281,11 @@ function __c12(j: number): any {
       ).annotate({
         identifier: "TracingViewsDestroyRequest",
       });
-    case 7:
+  }
+}
+function __c26(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -2597,7 +2306,7 @@ function __c12(j: number): any {
       });
   }
 }
-function __c13(j: number): any {
+function __c27(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2618,13 +2327,17 @@ function __c13(j: number): any {
       ).annotate({
         identifier: "UpdateTracingRetentionRulesPartialRequest",
       });
-    case 1:
+  }
+}
+function __c28(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
           short_id: S.String.pipe(T.Label()),
           name: S.String,
-          filters: S.optional(__S(74, __c9, 2)),
+          filters: S.optional(__S(96, __c12, 0)),
           pinned: S.optional(S.Boolean),
         }).pipe(
           T.Http({
@@ -2634,13 +2347,119 @@ function __c13(j: number): any {
           }),
         ),
       ).annotate({ identifier: "UpdateTracingViewRequest" });
+  }
+}
+function __c29(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          dateRange: S.optional(__S(248, __c31, 0)),
+          compareFilter: S.optional(__S(240, __c30, 0)),
+          serviceNames: S.optional(__S(32, __c4, 0)),
+          filterGroup: S.optional(__S(257, __c32, 1)),
+          limit: S.optional(S.Number),
+          offset: S.optional(S.Number),
+          includeImpact: S.optional(S.Boolean),
+        }),
+      ).annotate({
+        identifier: "TracingAggregationQueryBody",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          project_id: S.String.pipe(T.Label()),
+          query: __S(232, __c29, 0),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/api/projects/{project_id}/tracing/spans/aggregate/",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateTracingSpansAggregateRequest",
+      });
     case 2:
+      return S.suspend(() =>
+        S.Struct({
+          service_name: S.String,
+          name: S.String,
+          count: S.Number,
+          total_duration_nano: S.Number,
+          avg_duration_nano: S.Number,
+          p50_duration_nano: S.Number,
+          p95_duration_nano: S.Number,
+          p99_duration_nano: S.Number,
+          p999_duration_nano: S.Number,
+          error_count: S.Number,
+          sessions: S.NullOr(S.Number),
+          users: S.NullOr(S.Number),
+          spans_with_session_id: S.NullOr(S.Number),
+          spans_with_distinct_id: S.NullOr(S.Number),
+        }),
+      ).annotate({ identifier: "AggregatedSpanRow" });
+    case 3:
+      return S.Array(__S(234, __c29, 2));
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          results: __S(235, __c29, 3),
+          compare: S.NullOr(__S(235, __c29, 3)),
+          has_more: S.Boolean,
+          next_offset: S.NullOr(S.Number),
+        }),
+      ).annotate({
+        identifier: "TracingAggregationResponse",
+      });
+  }
+}
+function __c30(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          compare: S.optional(S.Boolean),
+          compare_to: S.optional(S.NullOr(S.String)),
+        }),
+      ).annotate({ identifier: "CompareFilter" });
+  }
+}
+function __c31(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          date_from: S.optional(S.NullOr(S.String)),
+          date_to: S.optional(S.NullOr(S.String)),
+        }),
+      ).annotate({ identifier: "TracingDateRange" });
+  }
+}
+function __c32(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          key: S.String,
+          type: S.String,
+          operator: S.String,
+          value: S.optional(S.Unknown),
+        }),
+      ).annotate({ identifier: "SpanPropertyFilter" });
+    case 1:
+      return S.Array(__S(256, __c32, 0));
+  }
+}
+function __c33(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
           short_id: S.String.pipe(T.Label()),
           name: S.optional(S.String),
-          filters: S.optional(__S(74, __c9, 2)),
+          filters: S.optional(__S(96, __c12, 0)),
           pinned: S.optional(S.Boolean),
         }).pipe(
           T.Http({
@@ -2654,7 +2473,303 @@ function __c13(j: number): any {
       });
   }
 }
-
+function __c34(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          breakdownKey: S.String,
+          breakdownType: S.String,
+          excludeBreakdownFilter: S.optional(S.Boolean),
+          facetSearch: S.optional(S.String),
+          orderBy: S.optional(S.String),
+          dateRange: S.optional(__S(248, __c31, 0)),
+          compareFilter: S.optional(__S(240, __c30, 0)),
+          serviceNames: S.optional(__S(32, __c4, 0)),
+          filterGroup: S.optional(__S(257, __c32, 1)),
+        }),
+      ).annotate({
+        identifier: "TracingAttributeBreakdownQueryBody",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          project_id: S.String.pipe(T.Label()),
+          query: __S(272, __c34, 0),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/api/projects/{project_id}/tracing/spans/attribute-breakdown/",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateTracingSpansAttributeBreakdownRequest",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          value: S.String,
+          count: S.Number,
+          error_count: S.Number,
+          p50_duration_nano: S.Number,
+          p95_duration_nano: S.Number,
+        }),
+      ).annotate({
+        identifier: "TracingAttributeBreakdownRow",
+      });
+    case 3:
+      return S.Array(__S(274, __c34, 2));
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          results: __S(275, __c34, 3),
+          compare: S.NullOr(__S(275, __c34, 3)),
+        }),
+      ).annotate({
+        identifier: "TracingAttributeBreakdownResponse",
+      });
+  }
+}
+function __c35(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          project_id: S.String.pipe(T.Label()),
+          query: __S(296, __c37, 0),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/api/projects/{project_id}/tracing/spans/count/",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateTracingSpansCountRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          count: S.Number,
+          traceCount: S.Number,
+        }),
+      ).annotate({ identifier: "TracingCountResponse" });
+  }
+}
+function __c36(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.Number);
+  }
+}
+function __c37(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          dateRange: S.optional(__S(248, __c31, 0)),
+          serviceNames: S.optional(__S(32, __c4, 0)),
+          statusCodes: S.optional(__S(288, __c36, 0)),
+          filterGroup: S.optional(S.Unknown),
+        }),
+      ).annotate({ identifier: "TracingCountBody" });
+  }
+}
+function __c38(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          project_id: S.String.pipe(T.Label()),
+          query: __S(312, __c39, 0),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/api/projects/{project_id}/tracing/spans/duration-histogram/",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateTracingSpansDurationHistogramRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          bucket_ns: S.Number,
+          service: S.String,
+          count: S.Number,
+        }),
+      ).annotate({
+        identifier: "TracingDurationHistogramRow",
+      });
+    case 2:
+      return S.Array(__S(305, __c38, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          results: __S(306, __c38, 2),
+        }),
+      ).annotate({
+        identifier: "TracingDurationHistogramResponse",
+      });
+  }
+}
+function __c39(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          dateRange: S.optional(__S(248, __c31, 0)),
+          serviceNames: S.optional(__S(32, __c4, 0)),
+          statusCodes: S.optional(__S(288, __c36, 0)),
+          filterGroup: S.optional(__S(257, __c32, 1)),
+          rootSpans: S.optional(S.Boolean),
+        }),
+      ).annotate({
+        identifier: "TracingDurationHistogramQueryBody",
+      });
+  }
+}
+function __c40(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          project_id: S.String.pipe(T.Label()),
+          traceIds: S.optional(__S(32, __c4, 0)),
+          spanIds: S.optional(__S(32, __c4, 0)),
+          sessionIds: S.optional(__S(32, __c4, 0)),
+          dateFrom: S.String,
+          dateTo: S.String,
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/api/projects/{project_id}/tracing/spans/error-counts/",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateTracingSpansErrorCountRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          exceptions: S.Number,
+          trace_id: S.String,
+        }),
+      ).annotate({ identifier: "TracingTraceErrorCount" });
+    case 2:
+      return S.Array(__S(321, __c40, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          exceptions: S.Number,
+          span_id: S.String,
+        }),
+      ).annotate({ identifier: "TracingSpanErrorCount" });
+    case 4:
+      return S.Array(__S(323, __c40, 3));
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          exceptions: S.Number,
+          session_id: S.String,
+        }),
+      ).annotate({ identifier: "TracingSessionErrorCount" });
+    case 6:
+      return S.Array(__S(325, __c40, 5));
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          traceResults: __S(322, __c40, 2),
+          spanResults: __S(324, __c40, 4),
+          sessionResults: __S(326, __c40, 6),
+        }),
+      ).annotate({
+        identifier: "TracingErrorCountsResponse",
+      });
+  }
+}
+function __c41(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          project_id: S.String.pipe(T.Label()),
+          query: __S(296, __c37, 0),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/api/projects/{project_id}/tracing/spans/impact/",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateTracingSpansImpactRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          value: S.String,
+          count: S.Number,
+        }),
+      ).annotate({ identifier: "TracingImpactTopValue" });
+    case 2:
+      return S.Array(__S(329, __c41, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          total: S.Number,
+          spansWithSessionId: S.Number,
+          sessions: S.Number,
+          spansWithDistinctId: S.Number,
+          users: S.Number,
+          topSessions: __S(330, __c41, 2),
+          topUsers: __S(330, __c41, 2),
+        }),
+      ).annotate({ identifier: "TracingImpactResponse" });
+  }
+}
+function __c42(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          project_id: S.String.pipe(T.Label()),
+          query: __S(312, __c39, 0),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/api/projects/{project_id}/tracing/spans/latency-heatmap/",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateTracingSpansLatencyHeatmapRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          time: S.String,
+          bucket_ns: S.Number,
+          count: S.Number,
+        }),
+      ).annotate({
+        identifier: "TracingLatencyHeatmapCell",
+      });
+    case 2:
+      return S.Array(__S(337, __c42, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          results: __S(338, __c42, 2),
+        }),
+      ).annotate({
+        identifier: "TracingLatencyHeatmapResponse",
+      });
+  }
+}
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

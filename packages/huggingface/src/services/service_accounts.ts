@@ -273,8 +273,8 @@ export const createServiceAccountToken: API.OperationMethod<
   CreateServiceAccountTokenError,
   HuggingFaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(4, __c0, 4) as any as S.Schema<CreateServiceAccountTokenRequest>,
-  output: __S(6, __c0, 6) as any as S.Schema<CreateServiceAccountTokenResponse>,
+  input: __S(4, __c1, 0) as any as S.Schema<CreateServiceAccountTokenRequest>,
+  output: __S(6, __c1, 2) as any as S.Schema<CreateServiceAccountTokenResponse>,
   errors: [],
   protocol: HuggingFaceProtocol,
   retry: Retry.Retry,
@@ -288,8 +288,8 @@ export const deleteServiceAccount: API.OperationMethod<
   DeleteServiceAccountError,
   HuggingFaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(7, __c0, 7) as any as S.Schema<DeleteServiceAccountRequest>,
-  output: __S(8, __c1, 0) as any as S.Schema<DeleteServiceAccountResponse>,
+  input: __S(12, __c3, 0) as any as S.Schema<DeleteServiceAccountRequest>,
+  output: __S(16, __c4, 0) as any as S.Schema<DeleteServiceAccountResponse>,
   errors: [],
   protocol: HuggingFaceProtocol,
   retry: Retry.Retry,
@@ -303,8 +303,8 @@ export const deleteServiceAccountToken: API.OperationMethod<
   DeleteServiceAccountTokenError,
   HuggingFaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(9, __c1, 1) as any as S.Schema<DeleteServiceAccountTokenRequest>,
-  output: __S(8, __c1, 0) as any as S.Schema<DeleteServiceAccountTokenResponse>,
+  input: __S(20, __c5, 0) as any as S.Schema<DeleteServiceAccountTokenRequest>,
+  output: __S(16, __c4, 0) as any as S.Schema<DeleteServiceAccountTokenResponse>,
   errors: [],
   protocol: HuggingFaceProtocol,
   retry: Retry.Retry,
@@ -318,8 +318,8 @@ export const getServiceAccount: API.OperationMethod<
   GetServiceAccountError,
   HuggingFaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(10, __c1, 2) as any as S.Schema<GetServiceAccountRequest>,
-  output: __S(13, __c1, 5) as any as S.Schema<GetServiceAccountResponse>,
+  input: __S(24, __c6, 0) as any as S.Schema<GetServiceAccountRequest>,
+  output: __S(27, __c6, 3) as any as S.Schema<GetServiceAccountResponse>,
   errors: [],
   protocol: HuggingFaceProtocol,
   retry: Retry.Retry,
@@ -333,8 +333,8 @@ export const listServiceAccounts: API.OperationMethod<
   ListServiceAccountsError,
   HuggingFaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(14, __c1, 6) as any as S.Schema<ListServiceAccountsRequest>,
-  output: __S(17, __c2, 1) as any as S.Schema<ListServiceAccountsResponse>,
+  input: __S(28, __c7, 0) as any as S.Schema<ListServiceAccountsRequest>,
+  output: __S(31, __c7, 3) as any as S.Schema<ListServiceAccountsResponse>,
   errors: [],
   protocol: HuggingFaceProtocol,
   retry: Retry.Retry,
@@ -348,8 +348,8 @@ export const rotateServiceAccountToken: API.OperationMethod<
   RotateServiceAccountTokenError,
   HuggingFaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(18, __c2, 2) as any as S.Schema<RotateServiceAccountTokenRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<RotateServiceAccountTokenResponse>,
+  input: __S(32, __c8, 0) as any as S.Schema<RotateServiceAccountTokenRequest>,
+  output: __S(34, __c8, 2) as any as S.Schema<RotateServiceAccountTokenResponse>,
   errors: [],
   protocol: HuggingFaceProtocol,
   retry: Retry.Retry,
@@ -363,8 +363,8 @@ export const updateServiceAccountToken: API.OperationMethod<
   UpdateServiceAccountTokenError,
   HuggingFaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(21, __c2, 5) as any as S.Schema<UpdateServiceAccountTokenRequest>,
-  output: __S(22, __c2, 6) as any as S.Schema<UpdateServiceAccountTokenResponse>,
+  input: __S(36, __c9, 0) as any as S.Schema<UpdateServiceAccountTokenRequest>,
+  output: __S(37, __c9, 1) as any as S.Schema<UpdateServiceAccountTokenResponse>,
   errors: [],
   protocol: HuggingFaceProtocol,
   retry: Retry.Retry,
@@ -396,20 +396,20 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "CreateServiceAccountResponse",
       });
-    case 2:
-      return S.Array(S.String);
-    case 3:
-      return S.Array(S.String);
-    case 4:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
           serviceAccountId: S.String.pipe(T.Label()),
           displayName: S.optional(S.String),
-          permissions: S.optional(__S(2, __c0, 2)),
-          repoIds: S.optional(__S(3, __c0, 3)),
-          repoPermissions: S.optional(__S(2, __c0, 2)),
-          endpointPatterns: S.optional(__S(3, __c0, 3)),
+          permissions: S.optional(__S(8, __c2, 0)),
+          repoIds: S.optional(__S(9, __c2, 1)),
+          repoPermissions: S.optional(__S(8, __c2, 0)),
+          endpointPatterns: S.optional(__S(9, __c2, 1)),
           skipNetworkSecurity: S.optional(S.Boolean),
         }).pipe(
           T.Http({
@@ -421,31 +421,43 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "CreateServiceAccountTokenRequest",
       });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           _id: S.String,
           displayName: S.String,
           createdAt: S.String,
-          permissions: S.optional(__S(3, __c0, 3)),
-          repoIds: __S(3, __c0, 3),
-          repoPermissions: __S(3, __c0, 3),
-          endpointPatterns: __S(3, __c0, 3),
+          permissions: S.optional(__S(9, __c2, 1)),
+          repoIds: __S(9, __c2, 1),
+          repoPermissions: __S(9, __c2, 1),
+          endpointPatterns: __S(9, __c2, 1),
           skipNetworkSecurity: S.Boolean,
         }),
       ).annotate({
         identifier: "CreateServiceAccountTokenResponseTokenInfo",
       });
-    case 6:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           token: S.String,
-          tokenInfo: __S(5, __c0, 5),
+          tokenInfo: __S(5, __c1, 1),
         }),
       ).annotate({
         identifier: "CreateServiceAccountTokenResponse",
       });
-    case 7:
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+    case 1:
+      return S.Array(S.String);
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -462,13 +474,17 @@ function __c0(j: number): any {
       });
   }
 }
-function __c1(j: number): any {
+function __c4(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() => S.Unknown.pipe(T.RawResponseRoot())).annotate({
         identifier: "DeleteServiceAccountResponse",
       });
-    case 1:
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -484,7 +500,11 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "DeleteServiceAccountTokenRequest",
       });
-    case 2:
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -497,7 +517,7 @@ function __c1(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetServiceAccountRequest" });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           _id: S.String,
@@ -506,19 +526,19 @@ function __c1(j: number): any {
           lastUsedAt: S.optional(S.String),
           expiration: S.optional(S.String),
           role: S.String,
-          permissions: __S(2, __c0, 2),
-          repoIds: __S(3, __c0, 3),
-          repoPermissions: __S(2, __c0, 2),
-          endpointPatterns: __S(3, __c0, 3),
+          permissions: __S(8, __c2, 0),
+          repoIds: __S(9, __c2, 1),
+          repoPermissions: __S(8, __c2, 0),
+          endpointPatterns: __S(9, __c2, 1),
           last4: S.optional(S.String),
           skipNetworkSecurity: S.optional(S.Boolean),
         }),
       ).annotate({
         identifier: "GetServiceAccountResponseAccessTokensItem",
       });
-    case 4:
-      return S.Array(__S(11, __c1, 3));
-    case 5:
+    case 2:
+      return S.Array(__S(25, __c6, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
           _id: S.String,
@@ -527,12 +547,16 @@ function __c1(j: number): any {
           email: S.String,
           description: S.optional(S.String),
           createdAt: S.String,
-          accessTokens: S.optional(__S(12, __c1, 4)),
+          accessTokens: S.optional(__S(26, __c6, 2)),
         }),
       ).annotate({
         identifier: "GetServiceAccountResponse",
       });
-    case 6:
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -542,7 +566,7 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "ListServiceAccountsRequest",
       });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           _id: S.String,
@@ -555,17 +579,17 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "ListServiceAccountsResponseBodyItem",
       });
-  }
-}
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(15, __c1, 7));
-    case 1:
-      return S.suspend(() => __S(16, __c2, 0).pipe(T.RawResponseRoot())).annotate({
+    case 2:
+      return S.Array(__S(29, __c7, 1));
+    case 3:
+      return S.suspend(() => __S(30, __c7, 2).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListServiceAccountsResponse",
       });
-    case 2:
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -581,7 +605,7 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "RotateServiceAccountTokenRequest",
       });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           _id: S.String,
@@ -592,26 +616,30 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "RotateServiceAccountTokenResponseTokenInfo",
       });
-    case 4:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           token: S.String,
-          tokenInfo: __S(19, __c2, 3),
+          tokenInfo: __S(33, __c8, 1),
         }),
       ).annotate({
         identifier: "RotateServiceAccountTokenResponse",
       });
-    case 5:
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
           serviceAccountId: S.String.pipe(T.Label()),
           tokenId: S.String.pipe(T.Label()),
           displayName: S.optional(S.String),
-          permissions: S.optional(__S(2, __c0, 2)),
-          repoIds: S.optional(__S(3, __c0, 3)),
-          repoPermissions: S.optional(__S(2, __c0, 2)),
-          endpointPatterns: S.optional(__S(3, __c0, 3)),
+          permissions: S.optional(__S(8, __c2, 0)),
+          repoIds: S.optional(__S(9, __c2, 1)),
+          repoPermissions: S.optional(__S(8, __c2, 0)),
+          endpointPatterns: S.optional(__S(9, __c2, 1)),
           skipNetworkSecurity: S.optional(S.Boolean),
         }).pipe(
           T.Http({
@@ -623,15 +651,15 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "UpdateServiceAccountTokenRequest",
       });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           _id: S.String,
           displayName: S.String,
-          permissions: __S(3, __c0, 3),
-          repoIds: __S(3, __c0, 3),
-          repoPermissions: __S(3, __c0, 3),
-          endpointPatterns: __S(3, __c0, 3),
+          permissions: __S(9, __c2, 1),
+          repoIds: __S(9, __c2, 1),
+          repoPermissions: __S(9, __c2, 1),
+          endpointPatterns: __S(9, __c2, 1),
           skipNetworkSecurity: S.Boolean,
         }),
       ).annotate({
@@ -639,7 +667,6 @@ function __c2(j: number): any {
       });
   }
 }
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

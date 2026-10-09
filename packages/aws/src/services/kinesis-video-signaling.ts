@@ -216,8 +216,8 @@ export const sendAlexaOfferToMaster: API.OperationMethod<
   SendAlexaOfferToMasterError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(5, __c0, 5) as any as S.Schema<SendAlexaOfferToMasterRequest>,
-  output: __S(6, __c0, 6) as any as S.Schema<SendAlexaOfferToMasterResponse>,
+  input: __S(8, __c1, 0) as any as S.Schema<SendAlexaOfferToMasterRequest>,
+  output: __S(9, __c1, 1) as any as S.Schema<SendAlexaOfferToMasterResponse>,
   errors: [
     ClientLimitExceededException,
     InvalidArgumentException,
@@ -269,7 +269,11 @@ function __c0(j: number): any {
       return S.suspend(() => S.Struct({ IceServerList: S.optional(__S(3, __c0, 3)) })).annotate({
         identifier: "GetIceServerConfigResponse",
       });
-    case 5:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           ChannelARN: S.optional(S.String),
@@ -288,13 +292,12 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "SendAlexaOfferToMasterRequest",
       });
-    case 6:
+    case 1:
       return S.suspend(() => S.Struct({ Answer: S.optional(S.String) })).annotate({
         identifier: "SendAlexaOfferToMasterResponse",
       });
   }
 }
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

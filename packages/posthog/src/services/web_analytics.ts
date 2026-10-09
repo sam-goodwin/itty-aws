@@ -630,7 +630,7 @@ export const cancelWebAnalyticsContentAutopilotRun: API.OperationMethod<
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(0, __c0, 0) as any as S.Schema<CancelWebAnalyticsContentAutopilotRunRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<ContentAutopilotRun>,
+  output: __S(4, __c0, 4) as any as S.Schema<ContentAutopilotRun>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -644,8 +644,12 @@ export const dismissWebAnalyticsContentAutopilotOpportunity: API.OperationMethod
   DismissWebAnalyticsContentAutopilotOpportunityError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(6, __c0, 6) as any as S.Schema<DismissWebAnalyticsContentAutopilotOpportunityRequest>,
-  output: __S(12, __c1, 4) as any as S.Schema<ContentAutopilotOpportunity>,
+  input: __S(
+    112,
+    __c7,
+    0,
+  ) as any as S.Schema<DismissWebAnalyticsContentAutopilotOpportunityRequest>,
+  output: __S(147, __c9, 3) as any as S.Schema<ContentAutopilotOpportunity>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -659,8 +663,8 @@ export const editWebAnalyticsContentAutopilotProposal: API.OperationMethod<
   EditWebAnalyticsContentAutopilotProposalError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(16, __c2, 0) as any as S.Schema<EditWebAnalyticsContentAutopilotProposalRequest>,
-  output: __S(25, __c3, 1) as any as S.Schema<ContentAutopilotProposal>,
+  input: __S(160, __c10, 0) as any as S.Schema<EditWebAnalyticsContentAutopilotProposalRequest>,
+  output: __S(200, __c12, 8) as any as S.Schema<ContentAutopilotProposal>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -674,8 +678,8 @@ export const exportWebAnalyticsContentAutopilotProposal: API.OperationMethod<
   ExportWebAnalyticsContentAutopilotProposalError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(26, __c3, 2) as any as S.Schema<ExportWebAnalyticsContentAutopilotProposalRequest>,
-  output: __S(27, __c3, 3) as any as S.Schema<ContentAutopilotExportResponse>,
+  input: __S(208, __c13, 0) as any as S.Schema<ExportWebAnalyticsContentAutopilotProposalRequest>,
+  output: __S(209, __c13, 1) as any as S.Schema<ContentAutopilotExportResponse>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -689,8 +693,8 @@ export const fetchWebAnalyticsLlmsTxt: API.OperationMethod<
   FetchWebAnalyticsLlmsTxtError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(28, __c3, 4) as any as S.Schema<FetchWebAnalyticsLlmsTxtRequest>,
-  output: __S(29, __c3, 5) as any as S.Schema<LlmsTxtFetchResponse>,
+  input: __S(224, __c14, 0) as any as S.Schema<FetchWebAnalyticsLlmsTxtRequest>,
+  output: __S(225, __c14, 1) as any as S.Schema<LlmsTxtFetchResponse>,
   errors: [BadRequest],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -704,11 +708,15 @@ export const refreshWebAnalyticsContentAutopilotOpportunity: API.OperationMethod
   RefreshWebAnalyticsContentAutopilotOpportunityError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(30, __c3, 6) as any as S.Schema<RefreshWebAnalyticsContentAutopilotOpportunityRequest>,
-  output: __S(
-    32,
-    __c4,
+  input: __S(
+    240,
+    __c15,
     0,
+  ) as any as S.Schema<RefreshWebAnalyticsContentAutopilotOpportunityRequest>,
+  output: __S(
+    242,
+    __c15,
+    2,
   ) as any as S.Schema<RefreshWebAnalyticsContentAutopilotOpportunityResponse>,
   errors: [],
   protocol: PosthogProtocol,
@@ -723,11 +731,15 @@ export const regenerateWebAnalyticsContentAutopilotProposal: API.OperationMethod
   RegenerateWebAnalyticsContentAutopilotProposalError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(33, __c4, 1) as any as S.Schema<RegenerateWebAnalyticsContentAutopilotProposalRequest>,
+  input: __S(
+    256,
+    __c16,
+    0,
+  ) as any as S.Schema<RegenerateWebAnalyticsContentAutopilotProposalRequest>,
   output: __S(
-    34,
-    __c4,
-    2,
+    272,
+    __c17,
+    0,
   ) as any as S.Schema<RegenerateWebAnalyticsContentAutopilotProposalResponse>,
   errors: [],
   protocol: PosthogProtocol,
@@ -742,8 +754,8 @@ export const rejectWebAnalyticsContentAutopilotProposal: API.OperationMethod<
   RejectWebAnalyticsContentAutopilotProposalError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(35, __c4, 3) as any as S.Schema<RejectWebAnalyticsContentAutopilotProposalRequest>,
-  output: __S(25, __c3, 1) as any as S.Schema<ContentAutopilotProposal>,
+  input: __S(288, __c18, 0) as any as S.Schema<RejectWebAnalyticsContentAutopilotProposalRequest>,
+  output: __S(200, __c12, 8) as any as S.Schema<ContentAutopilotProposal>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -757,8 +769,8 @@ export const startWebAnalyticsContentAutopilotRun: API.OperationMethod<
   StartWebAnalyticsContentAutopilotRunError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(36, __c4, 4) as any as S.Schema<StartWebAnalyticsContentAutopilotRunRequest>,
-  output: __S(34, __c4, 2) as any as S.Schema<StartWebAnalyticsContentAutopilotRunResponse>,
+  input: __S(304, __c19, 0) as any as S.Schema<StartWebAnalyticsContentAutopilotRunRequest>,
+  output: __S(272, __c17, 0) as any as S.Schema<StartWebAnalyticsContentAutopilotRunResponse>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -772,11 +784,11 @@ export const webAnalyticsContentAutopilotOpportunitiesDraft: API.OperationMethod
   WebAnalyticsContentAutopilotOpportunitiesDraftError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(38, __c4, 6) as any as S.Schema<WebAnalyticsContentAutopilotOpportunitiesDraftRequest>,
+  input: __S(33, __c2, 1) as any as S.Schema<WebAnalyticsContentAutopilotOpportunitiesDraftRequest>,
   output: __S(
-    34,
-    __c4,
-    2,
+    272,
+    __c17,
+    0,
   ) as any as S.Schema<WebAnalyticsContentAutopilotOpportunitiesDraftResponse>,
   errors: [],
   protocol: PosthogProtocol,
@@ -791,8 +803,8 @@ export const webAnalyticsContentAutopilotProfilesDiscover: API.OperationMethod<
   WebAnalyticsContentAutopilotProfilesDiscoverError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(39, __c4, 7) as any as S.Schema<WebAnalyticsContentAutopilotProfilesDiscoverRequest>,
-  output: __S(40, __c5, 0) as any as S.Schema<ContentAutopilotSiteDiscoveryResponse>,
+  input: __S(48, __c3, 0) as any as S.Schema<WebAnalyticsContentAutopilotProfilesDiscoverRequest>,
+  output: __S(49, __c3, 1) as any as S.Schema<ContentAutopilotSiteDiscoveryResponse>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -806,8 +818,8 @@ export const webAnalyticsRecap: API.OperationMethod<
   WebAnalyticsRecapError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(41, __c5, 1) as any as S.Schema<WebAnalyticsRecapRequest>,
-  output: __S(55, __c6, 7) as any as S.Schema<WebAnalyticsRecapResponse>,
+  input: __S(64, __c4, 0) as any as S.Schema<WebAnalyticsRecapRequest>,
+  output: __S(68, __c4, 4) as any as S.Schema<WebAnalyticsRecapResponse>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -821,8 +833,8 @@ export const webAnalyticsWeeklyDigest: API.OperationMethod<
   WebAnalyticsWeeklyDigestError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(56, __c7, 0) as any as S.Schema<WebAnalyticsWeeklyDigestRequest>,
-  output: __S(57, __c7, 1) as any as S.Schema<WeeklyDigestResponse>,
+  input: __S(96, __c6, 0) as any as S.Schema<WebAnalyticsWeeklyDigestRequest>,
+  output: __S(97, __c6, 1) as any as S.Schema<WeeklyDigestResponse>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -847,386 +859,55 @@ function __c0(j: number): any {
         identifier: "CancelWebAnalyticsContentAutopilotRunRequest",
       });
     case 1:
-      return S.Array(S.String);
-    case 2:
       return S.suspend(() =>
         S.Struct({
           domain: S.optional(S.String),
           confidence: S.optional(S.String),
-          source_urls: S.optional(__S(1, __c0, 1)),
-          content_boundaries: S.optional(__S(1, __c0, 1)),
-          brand_rules: S.optional(__S(1, __c0, 1)),
+          source_urls: S.optional(__S(16, __c1, 0)),
+          content_boundaries: S.optional(__S(16, __c1, 0)),
+          brand_rules: S.optional(__S(16, __c1, 0)),
         }),
       ).annotate({ identifier: "ContentAutopilotSnapshot" });
-    case 3:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           error_code: S.String,
           message: S.String,
         }),
       ).annotate({ identifier: "ContentAutopilotError" });
+    case 3:
+      return S.Array(__S(2, __c0, 2));
     case 4:
-      return S.Array(__S(3, __c0, 3));
-    case 5:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
           profile_id: S.String,
           run_status: S.String,
-          input_snapshot: __S(2, __c0, 2),
-          errors: __S(4, __c0, 4),
+          input_snapshot: __S(1, __c0, 1),
+          errors: __S(3, __c0, 3),
           created_at: S.String,
           updated_at: S.String,
           completed_at: S.NullOr(S.String),
         }),
       ).annotate({ identifier: "ContentAutopilotRun" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          project_id: S.String.pipe(T.Label()),
-          id: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/api/projects/{project_id}/web_analytics_content_autopilot_opportunities/{id}/dismiss/",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "DismissWebAnalyticsContentAutopilotOpportunityRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          opportunity_kind: S.String,
-          explanation: S.String,
-          page_url: S.optional(S.String),
-          query: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ContentAutopilotEvidence" });
   }
 }
 function __c1(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(7, __c0, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          engine: S.String,
-          answer_text: S.String,
-          checked_at: S.String,
-        }),
-      ).annotate({
-        identifier: "ContentAutopilotEngineAnswer",
-      });
-    case 2:
-      return S.Array(__S(9, __c1, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          checks: S.Number,
-          cited_checks: S.Number,
-          mentioned_checks: S.optional(S.Number),
-          citation_rate: S.Number,
-          engines: __S(1, __c0, 1),
-          engines_not_citing: __S(1, __c0, 1),
-          competitor_urls: __S(1, __c0, 1),
-          competitor_domains: __S(1, __c0, 1),
-          engine_search_queries: __S(1, __c0, 1),
-          our_cited_urls: __S(1, __c0, 1),
-          latest_answers: __S(10, __c1, 2),
-          last_checked_at: S.String,
-        }),
-      ).annotate({
-        identifier: "ContentAutopilotCitationGap",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String,
-          profile_id: S.String,
-          run_id: S.NullOr(S.String),
-          proposal_id: S.NullOr(S.String),
-          kind: S.String,
-          title: S.String,
-          score: S.Number,
-          recommended_type: S.String,
-          target_url: S.String,
-          evidence: __S(8, __c1, 0),
-          gap: __S(11, __c1, 3),
-          status: S.String,
-          last_refreshed_at: S.String,
-          created_at: S.String,
-          updated_at: S.String,
-        }),
-      ).annotate({
-        identifier: "ContentAutopilotOpportunity",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          key: S.String,
-          value: S.String,
-        }),
-      ).annotate({
-        identifier: "ContentAutopilotFrontmatterEntry",
-      });
-    case 6:
-      return S.Array(__S(13, __c1, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          file_path: S.String,
-          title: S.String,
-          description: S.String,
-          slug: S.String,
-          frontmatter: __S(14, __c1, 6),
-          internal_links: __S(1, __c0, 1),
-          source_notes: __S(1, __c0, 1),
-          json_ld: S.optional(S.String),
-          llms_txt_line: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ContentAutopilotPackage" });
+      return S.Array(S.String);
   }
 }
 function __c2(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() =>
-        S.Struct({
-          project_id: S.String.pipe(T.Label()),
-          id: S.String.pipe(T.Label()),
-          proposed_markdown: S.String,
-          content_package: __S(15, __c1, 7),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/api/projects/{project_id}/web_analytics_content_autopilot_proposals/{id}/edit/",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "EditWebAnalyticsContentAutopilotProposalRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          check_key: S.String,
-          label: S.String,
-          passed: S.Boolean,
-          message: S.String,
-          blocking: S.Boolean,
-        }),
-      ).annotate({
-        identifier: "ContentAutopilotValidationCheck",
-      });
-    case 2:
-      return S.Array(__S(17, __c2, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          passed: S.Boolean,
-          checks: __S(18, __c2, 2),
-        }),
-      ).annotate({
-        identifier: "ContentAutopilotValidationReport",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String,
-          url: S.String,
-        }),
-      ).annotate({
-        identifier: "ContentAutopilotBriefCompetitor",
-      });
-    case 5:
-      return S.Array(__S(20, __c2, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          intent: S.optional(S.String),
-          audience: S.optional(S.String),
-          recommended_type: S.optional(S.String),
-          target_page: S.optional(S.String),
-          site_pages_to_read: S.optional(__S(1, __c0, 1)),
-          competitors_to_research: S.optional(__S(21, __c2, 5)),
-          working_title: S.optional(S.String),
-          outline: S.optional(__S(1, __c0, 1)),
-          questions_to_answer: S.optional(__S(1, __c0, 1)),
-          competitor_coverage: S.optional(__S(1, __c0, 1)),
-          engine_answer_summary: S.optional(S.String),
-          disambiguation: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ContentAutopilotBrief" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          claim: S.String,
-          source_url: S.String,
-          quote: S.String,
-          kind: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "ContentAutopilotSourceLedgerEntry",
-      });
-  }
-}
-function __c3(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(23, __c2, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String,
-          run_id: S.String,
-          proposal_type: S.String,
-          lifecycle_status: S.String,
-          title: S.String,
-          target_query: S.String,
-          target_url: S.String,
-          evidence: __S(8, __c1, 0),
-          validation_report: __S(19, __c2, 3),
-          content_package: __S(15, __c1, 7),
-          original_markdown: S.String,
-          proposed_markdown: S.String,
-          brief: __S(22, __c2, 6),
-          source_ledger: __S(24, __c3, 0),
-          created_at: S.String,
-          updated_at: S.String,
-        }),
-      ).annotate({ identifier: "ContentAutopilotProposal" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          project_id: S.String.pipe(T.Label()),
-          id: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/api/projects/{project_id}/web_analytics_content_autopilot_proposals/{id}/export/",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "ExportWebAnalyticsContentAutopilotProposalRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          filename: S.String,
-          markdown: S.String,
-          content_package: __S(15, __c1, 7),
-        }),
-      ).annotate({
-        identifier: "ContentAutopilotExportResponse",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          project_id: S.String.pipe(T.Label()),
-          url: S.String,
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/api/projects/{project_id}/web_analytics/llms_txt/",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "FetchWebAnalyticsLlmsTxtRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          content: S.String,
-          url: S.String,
-        }),
-      ).annotate({ identifier: "LlmsTxtFetchResponse" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          project_id: S.String.pipe(T.Label()),
-          profile_id: S.String,
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/api/projects/{project_id}/web_analytics_content_autopilot_opportunities/refresh/",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "RefreshWebAnalyticsContentAutopilotOpportunityRequest",
-      });
-    case 7:
-      return S.Array(__S(12, __c1, 4));
-  }
-}
-function __c4(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() => __S(31, __c3, 7).pipe(T.RawResponseRoot())).annotate({
-        identifier: "RefreshWebAnalyticsContentAutopilotOpportunityResponse",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          project_id: S.String.pipe(T.Label()),
-          id: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/api/projects/{project_id}/web_analytics_content_autopilot_proposals/{id}/regenerate/",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "RegenerateWebAnalyticsContentAutopilotProposalRequest",
-      });
-    case 2:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "RegenerateWebAnalyticsContentAutopilotProposalResponse",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          project_id: S.String.pipe(T.Label()),
-          id: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/api/projects/{project_id}/web_analytics_content_autopilot_proposals/{id}/reject/",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "RejectWebAnalyticsContentAutopilotProposalRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          project_id: S.String.pipe(T.Label()),
-          profile_id: S.String,
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/api/projects/{project_id}/web_analytics_content_autopilot_runs/start/",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "StartWebAnalyticsContentAutopilotRunRequest",
-      });
-    case 5:
       return S.Array(S.String);
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
           profile_id: S.String,
-          opportunity_ids: __S(37, __c4, 5),
+          opportunity_ids: __S(32, __c2, 0),
         }).pipe(
           T.Http({
             method: "POST",
@@ -1237,7 +918,11 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "WebAnalyticsContentAutopilotOpportunitiesDraftRequest",
       });
-    case 7:
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -1252,24 +937,24 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "WebAnalyticsContentAutopilotProfilesDiscoverRequest",
       });
-  }
-}
-function __c5(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           name: S.String,
           domain: S.String,
-          source_urls: __S(1, __c0, 1),
-          content_boundaries: __S(1, __c0, 1),
+          source_urls: __S(16, __c1, 0),
+          content_boundaries: __S(16, __c1, 0),
           sitemap_detected: S.Boolean,
-          warnings: __S(1, __c0, 1),
+          warnings: __S(16, __c1, 0),
         }),
       ).annotate({
         identifier: "ContentAutopilotSiteDiscoveryResponse",
       });
-    case 1:
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -1283,79 +968,7 @@ function __c5(j: number): any {
           }),
         ),
       ).annotate({ identifier: "WebAnalyticsRecapRequest" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          percent: S.optional(S.Number),
-          direction: S.optional(S.String),
-          color: S.optional(S.String),
-          text: S.optional(S.String),
-          long_text: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "WoWChange" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          current: S.optional(S.Number),
-          previous: S.optional(S.NullOr(S.Number)),
-          change: S.optional(S.NullOr(__S(42, __c5, 2))),
-        }),
-      ).annotate({ identifier: "NumericMetric" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          current: S.optional(S.String),
-          previous: S.optional(S.NullOr(S.String)),
-          change: S.optional(S.NullOr(__S(42, __c5, 2))),
-        }),
-      ).annotate({ identifier: "DurationMetric" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          host: S.optional(S.String),
-          path: S.optional(S.String),
-          visitors: S.optional(S.Number),
-          change: S.optional(S.NullOr(__S(42, __c5, 2))),
-        }),
-      ).annotate({ identifier: "TopPage" });
-    case 6:
-      return S.Array(__S(45, __c5, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.optional(S.String),
-          visitors: S.optional(S.Number),
-          change: S.optional(S.NullOr(__S(42, __c5, 2))),
-        }),
-      ).annotate({ identifier: "TopSource" });
-  }
-}
-function __c6(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(47, __c5, 7));
     case 1:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.optional(S.String),
-          conversions: S.optional(S.Number),
-          change: S.optional(S.NullOr(__S(42, __c5, 2))),
-        }),
-      ).annotate({ identifier: "Goal" });
-    case 2:
-      return S.Array(__S(49, __c6, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          data_status: S.String,
-          date_from: S.String,
-          date_to: S.String,
-          timezone: S.String,
-          filter_test_accounts: S.Boolean,
-          notes: __S(1, __c0, 1),
-        }),
-      ).annotate({ identifier: "DigestMetadata" });
-    case 4:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
@@ -1365,7 +978,7 @@ function __c6(j: number): any {
           color: S.String,
         }),
       ).annotate({ identifier: "RecapPersona" });
-    case 5:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
@@ -1375,23 +988,23 @@ function __c6(j: number): any {
           detail: S.String,
         }),
       ).annotate({ identifier: "RecapHighlight" });
-    case 6:
-      return S.Array(__S(53, __c6, 5));
-    case 7:
+    case 3:
+      return S.Array(__S(66, __c4, 2));
+    case 4:
       return S.suspend(() =>
         S.Struct({
-          visitors: __S(43, __c5, 3),
-          pageviews: __S(43, __c5, 3),
-          sessions: __S(43, __c5, 3),
-          bounce_rate: __S(43, __c5, 3),
-          avg_session_duration: __S(44, __c5, 4),
-          top_pages: __S(46, __c5, 6),
-          top_sources: __S(48, __c6, 0),
-          goals: __S(50, __c6, 2),
-          metadata: __S(51, __c6, 3),
+          visitors: __S(81, __c5, 1),
+          pageviews: __S(81, __c5, 1),
+          sessions: __S(81, __c5, 1),
+          bounce_rate: __S(81, __c5, 1),
+          avg_session_duration: __S(82, __c5, 2),
+          top_pages: __S(84, __c5, 4),
+          top_sources: __S(86, __c5, 6),
+          goals: __S(88, __c5, 8),
+          metadata: __S(89, __c5, 9),
           dashboard_url: S.String,
-          persona: __S(52, __c6, 4),
-          highlights: __S(54, __c6, 6),
+          persona: __S(65, __c4, 1),
+          highlights: __S(67, __c4, 3),
           period_label: S.String,
           period_start: S.String,
           period_end: S.String,
@@ -1403,7 +1016,79 @@ function __c6(j: number): any {
       });
   }
 }
-function __c7(j: number): any {
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          percent: S.optional(S.Number),
+          direction: S.optional(S.String),
+          color: S.optional(S.String),
+          text: S.optional(S.String),
+          long_text: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "WoWChange" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          current: S.optional(S.Number),
+          previous: S.optional(S.NullOr(S.Number)),
+          change: S.optional(S.NullOr(__S(80, __c5, 0))),
+        }),
+      ).annotate({ identifier: "NumericMetric" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          current: S.optional(S.String),
+          previous: S.optional(S.NullOr(S.String)),
+          change: S.optional(S.NullOr(__S(80, __c5, 0))),
+        }),
+      ).annotate({ identifier: "DurationMetric" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          host: S.optional(S.String),
+          path: S.optional(S.String),
+          visitors: S.optional(S.Number),
+          change: S.optional(S.NullOr(__S(80, __c5, 0))),
+        }),
+      ).annotate({ identifier: "TopPage" });
+    case 4:
+      return S.Array(__S(83, __c5, 3));
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.optional(S.String),
+          visitors: S.optional(S.Number),
+          change: S.optional(S.NullOr(__S(80, __c5, 0))),
+        }),
+      ).annotate({ identifier: "TopSource" });
+    case 6:
+      return S.Array(__S(85, __c5, 5));
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.optional(S.String),
+          conversions: S.optional(S.Number),
+          change: S.optional(S.NullOr(__S(80, __c5, 0))),
+        }),
+      ).annotate({ identifier: "Goal" });
+    case 8:
+      return S.Array(__S(87, __c5, 7));
+    case 9:
+      return S.suspend(() =>
+        S.Struct({
+          data_status: S.String,
+          date_from: S.String,
+          date_to: S.String,
+          timezone: S.String,
+          filter_test_accounts: S.Boolean,
+          notes: __S(16, __c1, 0),
+        }),
+      ).annotate({ identifier: "DigestMetadata" });
+  }
+}
+function __c6(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1424,21 +1109,395 @@ function __c7(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          visitors: S.optional(__S(43, __c5, 3)),
-          pageviews: S.optional(__S(43, __c5, 3)),
-          sessions: S.optional(__S(43, __c5, 3)),
-          bounce_rate: S.optional(__S(43, __c5, 3)),
-          avg_session_duration: S.optional(__S(44, __c5, 4)),
-          top_pages: S.optional(__S(46, __c5, 6)),
-          top_sources: S.optional(__S(48, __c6, 0)),
-          goals: S.optional(__S(50, __c6, 2)),
-          metadata: S.optional(__S(51, __c6, 3)),
+          visitors: S.optional(__S(81, __c5, 1)),
+          pageviews: S.optional(__S(81, __c5, 1)),
+          sessions: S.optional(__S(81, __c5, 1)),
+          bounce_rate: S.optional(__S(81, __c5, 1)),
+          avg_session_duration: S.optional(__S(82, __c5, 2)),
+          top_pages: S.optional(__S(84, __c5, 4)),
+          top_sources: S.optional(__S(86, __c5, 6)),
+          goals: S.optional(__S(88, __c5, 8)),
+          metadata: S.optional(__S(89, __c5, 9)),
           dashboard_url: S.optional(S.String),
         }),
       ).annotate({ identifier: "WeeklyDigestResponse" });
   }
 }
-
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          project_id: S.String.pipe(T.Label()),
+          id: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/api/projects/{project_id}/web_analytics_content_autopilot_opportunities/{id}/dismiss/",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "DismissWebAnalyticsContentAutopilotOpportunityRequest",
+      });
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          opportunity_kind: S.String,
+          explanation: S.String,
+          page_url: S.optional(S.String),
+          query: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ContentAutopilotEvidence" });
+    case 1:
+      return S.Array(__S(128, __c8, 0));
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          engine: S.String,
+          answer_text: S.String,
+          checked_at: S.String,
+        }),
+      ).annotate({
+        identifier: "ContentAutopilotEngineAnswer",
+      });
+    case 1:
+      return S.Array(__S(144, __c9, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          checks: S.Number,
+          cited_checks: S.Number,
+          mentioned_checks: S.optional(S.Number),
+          citation_rate: S.Number,
+          engines: __S(16, __c1, 0),
+          engines_not_citing: __S(16, __c1, 0),
+          competitor_urls: __S(16, __c1, 0),
+          competitor_domains: __S(16, __c1, 0),
+          engine_search_queries: __S(16, __c1, 0),
+          our_cited_urls: __S(16, __c1, 0),
+          latest_answers: __S(145, __c9, 1),
+          last_checked_at: S.String,
+        }),
+      ).annotate({
+        identifier: "ContentAutopilotCitationGap",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          profile_id: S.String,
+          run_id: S.NullOr(S.String),
+          proposal_id: S.NullOr(S.String),
+          kind: S.String,
+          title: S.String,
+          score: S.Number,
+          recommended_type: S.String,
+          target_url: S.String,
+          evidence: __S(129, __c8, 1),
+          gap: __S(146, __c9, 2),
+          status: S.String,
+          last_refreshed_at: S.String,
+          created_at: S.String,
+          updated_at: S.String,
+        }),
+      ).annotate({
+        identifier: "ContentAutopilotOpportunity",
+      });
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          project_id: S.String.pipe(T.Label()),
+          id: S.String.pipe(T.Label()),
+          proposed_markdown: S.String,
+          content_package: __S(178, __c11, 2),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/api/projects/{project_id}/web_analytics_content_autopilot_proposals/{id}/edit/",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "EditWebAnalyticsContentAutopilotProposalRequest",
+      });
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          key: S.String,
+          value: S.String,
+        }),
+      ).annotate({
+        identifier: "ContentAutopilotFrontmatterEntry",
+      });
+    case 1:
+      return S.Array(__S(176, __c11, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          file_path: S.String,
+          title: S.String,
+          description: S.String,
+          slug: S.String,
+          frontmatter: __S(177, __c11, 1),
+          internal_links: __S(16, __c1, 0),
+          source_notes: __S(16, __c1, 0),
+          json_ld: S.optional(S.String),
+          llms_txt_line: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ContentAutopilotPackage" });
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          check_key: S.String,
+          label: S.String,
+          passed: S.Boolean,
+          message: S.String,
+          blocking: S.Boolean,
+        }),
+      ).annotate({
+        identifier: "ContentAutopilotValidationCheck",
+      });
+    case 1:
+      return S.Array(__S(192, __c12, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          passed: S.Boolean,
+          checks: __S(193, __c12, 1),
+        }),
+      ).annotate({
+        identifier: "ContentAutopilotValidationReport",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String,
+          url: S.String,
+        }),
+      ).annotate({
+        identifier: "ContentAutopilotBriefCompetitor",
+      });
+    case 4:
+      return S.Array(__S(195, __c12, 3));
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          intent: S.optional(S.String),
+          audience: S.optional(S.String),
+          recommended_type: S.optional(S.String),
+          target_page: S.optional(S.String),
+          site_pages_to_read: S.optional(__S(16, __c1, 0)),
+          competitors_to_research: S.optional(__S(196, __c12, 4)),
+          working_title: S.optional(S.String),
+          outline: S.optional(__S(16, __c1, 0)),
+          questions_to_answer: S.optional(__S(16, __c1, 0)),
+          competitor_coverage: S.optional(__S(16, __c1, 0)),
+          engine_answer_summary: S.optional(S.String),
+          disambiguation: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ContentAutopilotBrief" });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          claim: S.String,
+          source_url: S.String,
+          quote: S.String,
+          kind: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "ContentAutopilotSourceLedgerEntry",
+      });
+    case 7:
+      return S.Array(__S(198, __c12, 6));
+    case 8:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          run_id: S.String,
+          proposal_type: S.String,
+          lifecycle_status: S.String,
+          title: S.String,
+          target_query: S.String,
+          target_url: S.String,
+          evidence: __S(129, __c8, 1),
+          validation_report: __S(194, __c12, 2),
+          content_package: __S(178, __c11, 2),
+          original_markdown: S.String,
+          proposed_markdown: S.String,
+          brief: __S(197, __c12, 5),
+          source_ledger: __S(199, __c12, 7),
+          created_at: S.String,
+          updated_at: S.String,
+        }),
+      ).annotate({ identifier: "ContentAutopilotProposal" });
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          project_id: S.String.pipe(T.Label()),
+          id: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/api/projects/{project_id}/web_analytics_content_autopilot_proposals/{id}/export/",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "ExportWebAnalyticsContentAutopilotProposalRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          filename: S.String,
+          markdown: S.String,
+          content_package: __S(178, __c11, 2),
+        }),
+      ).annotate({
+        identifier: "ContentAutopilotExportResponse",
+      });
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          project_id: S.String.pipe(T.Label()),
+          url: S.String,
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/api/projects/{project_id}/web_analytics/llms_txt/",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "FetchWebAnalyticsLlmsTxtRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          content: S.String,
+          url: S.String,
+        }),
+      ).annotate({ identifier: "LlmsTxtFetchResponse" });
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          project_id: S.String.pipe(T.Label()),
+          profile_id: S.String,
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/api/projects/{project_id}/web_analytics_content_autopilot_opportunities/refresh/",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "RefreshWebAnalyticsContentAutopilotOpportunityRequest",
+      });
+    case 1:
+      return S.Array(__S(147, __c9, 3));
+    case 2:
+      return S.suspend(() => __S(241, __c15, 1).pipe(T.RawResponseRoot())).annotate({
+        identifier: "RefreshWebAnalyticsContentAutopilotOpportunityResponse",
+      });
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          project_id: S.String.pipe(T.Label()),
+          id: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/api/projects/{project_id}/web_analytics_content_autopilot_proposals/{id}/regenerate/",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "RegenerateWebAnalyticsContentAutopilotProposalRequest",
+      });
+  }
+}
+function __c17(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "RegenerateWebAnalyticsContentAutopilotProposalResponse",
+      });
+  }
+}
+function __c18(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          project_id: S.String.pipe(T.Label()),
+          id: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/api/projects/{project_id}/web_analytics_content_autopilot_proposals/{id}/reject/",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "RejectWebAnalyticsContentAutopilotProposalRequest",
+      });
+  }
+}
+function __c19(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          project_id: S.String.pipe(T.Label()),
+          profile_id: S.String,
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/api/projects/{project_id}/web_analytics_content_autopilot_runs/start/",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "StartWebAnalyticsContentAutopilotRunRequest",
+      });
+  }
+}
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

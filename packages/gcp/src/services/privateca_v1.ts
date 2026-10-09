@@ -1219,11 +1219,11 @@ export const activateProjectsLocationsCaPoolsCertificateAuthorities: API.Operati
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    4,
-    __c0,
-    4,
+    545,
+    __c34,
+    1,
   ) as any as S.Schema<ActivateProjectsLocationsCaPoolsCertificateAuthoritiesRequest>,
-  output: __S(8, __c1, 0) as any as S.Schema<Operation>,
+  output: __S(594, __c37, 2) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1242,8 +1242,8 @@ export const cancelProjectsLocationsOperations: API.OperationMethod<
   CancelProjectsLocationsOperationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(10, __c1, 2) as any as S.Schema<CancelProjectsLocationsOperationsRequest>,
-  output: __S(9, __c1, 1) as any as S.Schema<Empty>,
+  input: __S(784, __c49, 0) as any as S.Schema<CancelProjectsLocationsOperationsRequest>,
+  output: __S(800, __c50, 0) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1262,8 +1262,8 @@ export const createProjectsLocationsCaPools: API.OperationMethod<
   CreateProjectsLocationsCaPoolsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(36, __c4, 4) as any as S.Schema<CreateProjectsLocationsCaPoolsRequest>,
-  output: __S(8, __c1, 0) as any as S.Schema<Operation>,
+  input: __S(816, __c51, 0) as any as S.Schema<CreateProjectsLocationsCaPoolsRequest>,
+  output: __S(594, __c37, 2) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1283,11 +1283,11 @@ export const createProjectsLocationsCaPoolsCertificateAuthorities: API.Operation
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    55,
-    __c6,
-    7,
+    912,
+    __c57,
+    0,
   ) as any as S.Schema<CreateProjectsLocationsCaPoolsCertificateAuthoritiesRequest>,
-  output: __S(8, __c1, 0) as any as S.Schema<Operation>,
+  output: __S(594, __c37, 2) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1306,8 +1306,8 @@ export const createProjectsLocationsCaPoolsCertificates: API.OperationMethod<
   CreateProjectsLocationsCaPoolsCertificatesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(58, __c7, 2) as any as S.Schema<CreateProjectsLocationsCaPoolsCertificatesRequest>,
-  output: __S(57, __c7, 1) as any as S.Schema<Certificate>,
+  input: __S(960, __c60, 0) as any as S.Schema<CreateProjectsLocationsCaPoolsCertificatesRequest>,
+  output: __S(977, __c61, 1) as any as S.Schema<Certificate>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1326,8 +1326,8 @@ export const createProjectsLocationsCertificateTemplates: API.OperationMethod<
   CreateProjectsLocationsCertificateTemplatesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(60, __c7, 4) as any as S.Schema<CreateProjectsLocationsCertificateTemplatesRequest>,
-  output: __S(8, __c1, 0) as any as S.Schema<Operation>,
+  input: __S(992, __c62, 0) as any as S.Schema<CreateProjectsLocationsCertificateTemplatesRequest>,
+  output: __S(594, __c37, 2) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1346,8 +1346,8 @@ export const deleteProjectsLocationsCaPools: API.OperationMethod<
   DeleteProjectsLocationsCaPoolsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(61, __c7, 5) as any as S.Schema<DeleteProjectsLocationsCaPoolsRequest>,
-  output: __S(8, __c1, 0) as any as S.Schema<Operation>,
+  input: __S(0, __c0, 0) as any as S.Schema<DeleteProjectsLocationsCaPoolsRequest>,
+  output: __S(594, __c37, 2) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1367,11 +1367,11 @@ export const deleteProjectsLocationsCaPoolsCertificateAuthorities: API.Operation
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    62,
-    __c7,
-    6,
+    16,
+    __c1,
+    0,
   ) as any as S.Schema<DeleteProjectsLocationsCaPoolsCertificateAuthoritiesRequest>,
-  output: __S(8, __c1, 0) as any as S.Schema<Operation>,
+  output: __S(594, __c37, 2) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1390,8 +1390,8 @@ export const deleteProjectsLocationsCertificateTemplates: API.OperationMethod<
   DeleteProjectsLocationsCertificateTemplatesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(63, __c7, 7) as any as S.Schema<DeleteProjectsLocationsCertificateTemplatesRequest>,
-  output: __S(8, __c1, 0) as any as S.Schema<Operation>,
+  input: __S(32, __c2, 0) as any as S.Schema<DeleteProjectsLocationsCertificateTemplatesRequest>,
+  output: __S(594, __c37, 2) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1410,8 +1410,8 @@ export const deleteProjectsLocationsOperations: API.OperationMethod<
   DeleteProjectsLocationsOperationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(64, __c8, 0) as any as S.Schema<DeleteProjectsLocationsOperationsRequest>,
-  output: __S(9, __c1, 1) as any as S.Schema<Empty>,
+  input: __S(48, __c3, 0) as any as S.Schema<DeleteProjectsLocationsOperationsRequest>,
+  output: __S(800, __c50, 0) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1431,11 +1431,11 @@ export const disableProjectsLocationsCaPoolsCertificateAuthorities: API.Operatio
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    66,
-    __c8,
-    2,
+    65,
+    __c4,
+    1,
   ) as any as S.Schema<DisableProjectsLocationsCaPoolsCertificateAuthoritiesRequest>,
-  output: __S(8, __c1, 0) as any as S.Schema<Operation>,
+  output: __S(594, __c37, 2) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1455,11 +1455,11 @@ export const enableProjectsLocationsCaPoolsCertificateAuthorities: API.Operation
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    68,
-    __c8,
-    4,
+    80,
+    __c5,
+    0,
   ) as any as S.Schema<EnableProjectsLocationsCaPoolsCertificateAuthoritiesRequest>,
-  output: __S(8, __c1, 0) as any as S.Schema<Operation>,
+  output: __S(594, __c37, 2) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1478,8 +1478,8 @@ export const fetchCaCertsProjectsLocationsCaPools: API.OperationMethod<
   FetchCaCertsProjectsLocationsCaPoolsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(69, __c8, 5) as any as S.Schema<FetchCaCertsProjectsLocationsCaPoolsRequest>,
-  output: __S(72, __c9, 0) as any as S.Schema<FetchCaCertsResponse>,
+  input: __S(112, __c7, 0) as any as S.Schema<FetchCaCertsProjectsLocationsCaPoolsRequest>,
+  output: __S(115, __c7, 3) as any as S.Schema<FetchCaCertsResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1497,11 +1497,11 @@ export const fetchProjectsLocationsCaPoolsCertificateAuthorities: API.OperationM
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    73,
-    __c9,
-    1,
+    128,
+    __c8,
+    0,
   ) as any as S.Schema<FetchProjectsLocationsCaPoolsCertificateAuthoritiesRequest>,
-  output: __S(74, __c9, 2) as any as S.Schema<FetchCertificateAuthorityCsrResponse>,
+  output: __S(129, __c8, 1) as any as S.Schema<FetchCertificateAuthorityCsrResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1515,8 +1515,8 @@ export const getIamPolicyProjectsLocationsCaPools: API.OperationMethod<
   GetIamPolicyProjectsLocationsCaPoolsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(75, __c9, 3) as any as S.Schema<GetIamPolicyProjectsLocationsCaPoolsRequest>,
-  output: __S(82, __c10, 2) as any as S.Schema<Policy>,
+  input: __S(144, __c9, 0) as any as S.Schema<GetIamPolicyProjectsLocationsCaPoolsRequest>,
+  output: __S(166, __c10, 6) as any as S.Schema<Policy>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1534,11 +1534,11 @@ export const getIamPolicyProjectsLocationsCaPoolsCertificateAuthoritiesCertifica
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    83,
-    __c10,
-    3,
+    176,
+    __c11,
+    0,
   ) as any as S.Schema<GetIamPolicyProjectsLocationsCaPoolsCertificateAuthoritiesCertificateRevocationListsRequest>,
-  output: __S(82, __c10, 2) as any as S.Schema<Policy>,
+  output: __S(166, __c10, 6) as any as S.Schema<Policy>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1556,11 +1556,11 @@ export const getIamPolicyProjectsLocationsCertificateTemplates: API.OperationMet
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    84,
-    __c10,
-    4,
+    192,
+    __c12,
+    0,
   ) as any as S.Schema<GetIamPolicyProjectsLocationsCertificateTemplatesRequest>,
-  output: __S(82, __c10, 2) as any as S.Schema<Policy>,
+  output: __S(166, __c10, 6) as any as S.Schema<Policy>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1574,8 +1574,8 @@ export const getProjectsLocations: API.OperationMethod<
   GetProjectsLocationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(85, __c10, 5) as any as S.Schema<GetProjectsLocationsRequest>,
-  output: __S(86, __c10, 6) as any as S.Schema<Location>,
+  input: __S(208, __c13, 0) as any as S.Schema<GetProjectsLocationsRequest>,
+  output: __S(224, __c14, 0) as any as S.Schema<Location>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1589,8 +1589,8 @@ export const getProjectsLocationsCaPools: API.OperationMethod<
   GetProjectsLocationsCaPoolsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(87, __c10, 7) as any as S.Schema<GetProjectsLocationsCaPoolsRequest>,
-  output: __S(35, __c4, 3) as any as S.Schema<CaPool>,
+  input: __S(240, __c15, 0) as any as S.Schema<GetProjectsLocationsCaPoolsRequest>,
+  output: __S(840, __c52, 8) as any as S.Schema<CaPool>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1608,11 +1608,11 @@ export const getProjectsLocationsCaPoolsCertificateAuthorities: API.OperationMet
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    88,
-    __c11,
+    256,
+    __c16,
     0,
   ) as any as S.Schema<GetProjectsLocationsCaPoolsCertificateAuthoritiesRequest>,
-  output: __S(54, __c6, 6) as any as S.Schema<CertificateAuthority>,
+  output: __S(932, __c58, 4) as any as S.Schema<CertificateAuthority>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1630,11 +1630,11 @@ export const getProjectsLocationsCaPoolsCertificateAuthoritiesCertificateRevocat
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    89,
-    __c11,
-    1,
+    272,
+    __c17,
+    0,
   ) as any as S.Schema<GetProjectsLocationsCaPoolsCertificateAuthoritiesCertificateRevocationListsRequest>,
-  output: __S(92, __c11, 4) as any as S.Schema<CertificateRevocationList>,
+  output: __S(290, __c18, 2) as any as S.Schema<CertificateRevocationList>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1648,8 +1648,8 @@ export const getProjectsLocationsCaPoolsCertificates: API.OperationMethod<
   GetProjectsLocationsCaPoolsCertificatesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(93, __c11, 5) as any as S.Schema<GetProjectsLocationsCaPoolsCertificatesRequest>,
-  output: __S(57, __c7, 1) as any as S.Schema<Certificate>,
+  input: __S(304, __c19, 0) as any as S.Schema<GetProjectsLocationsCaPoolsCertificatesRequest>,
+  output: __S(977, __c61, 1) as any as S.Schema<Certificate>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1663,8 +1663,8 @@ export const getProjectsLocationsCertificateTemplates: API.OperationMethod<
   GetProjectsLocationsCertificateTemplatesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(94, __c11, 6) as any as S.Schema<GetProjectsLocationsCertificateTemplatesRequest>,
-  output: __S(59, __c7, 3) as any as S.Schema<CertificateTemplate>,
+  input: __S(320, __c20, 0) as any as S.Schema<GetProjectsLocationsCertificateTemplatesRequest>,
+  output: __S(1008, __c63, 0) as any as S.Schema<CertificateTemplate>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1678,8 +1678,8 @@ export const getProjectsLocationsOperations: API.OperationMethod<
   GetProjectsLocationsOperationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(95, __c11, 7) as any as S.Schema<GetProjectsLocationsOperationsRequest>,
-  output: __S(8, __c1, 0) as any as S.Schema<Operation>,
+  input: __S(336, __c21, 0) as any as S.Schema<GetProjectsLocationsOperationsRequest>,
+  output: __S(594, __c37, 2) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1694,8 +1694,8 @@ export const listProjectsLocations: API.PaginatedOperationMethod<
   GcpOpContext,
   ListLocationsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(96, __c12, 0) as any as S.Schema<ListProjectsLocationsRequest>,
-  output: __S(98, __c12, 2) as any as S.Schema<ListLocationsResponse>,
+  input: __S(352, __c22, 0) as any as S.Schema<ListProjectsLocationsRequest>,
+  output: __S(354, __c22, 2) as any as S.Schema<ListLocationsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1711,8 +1711,8 @@ export const listProjectsLocationsCaPools: API.PaginatedOperationMethod<
   GcpOpContext,
   ListCaPoolsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(99, __c12, 3) as any as S.Schema<ListProjectsLocationsCaPoolsRequest>,
-  output: __S(101, __c12, 5) as any as S.Schema<ListCaPoolsResponse>,
+  input: __S(368, __c23, 0) as any as S.Schema<ListProjectsLocationsCaPoolsRequest>,
+  output: __S(370, __c23, 2) as any as S.Schema<ListCaPoolsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1732,11 +1732,11 @@ export const listProjectsLocationsCaPoolsCertificateAuthorities: API.PaginatedOp
   ListCertificateAuthoritiesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(
-    102,
-    __c12,
-    6,
+    384,
+    __c24,
+    0,
   ) as any as S.Schema<ListProjectsLocationsCaPoolsCertificateAuthoritiesRequest>,
-  output: __S(104, __c13, 0) as any as S.Schema<ListCertificateAuthoritiesResponse>,
+  output: __S(386, __c24, 2) as any as S.Schema<ListCertificateAuthoritiesResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1756,11 +1756,11 @@ export const listProjectsLocationsCaPoolsCertificateAuthoritiesCertificateRevoca
   ListCertificateRevocationListsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(
-    105,
-    __c13,
-    1,
+    400,
+    __c25,
+    0,
   ) as any as S.Schema<ListProjectsLocationsCaPoolsCertificateAuthoritiesCertificateRevocationListsRequest>,
-  output: __S(107, __c13, 3) as any as S.Schema<ListCertificateRevocationListsResponse>,
+  output: __S(402, __c25, 2) as any as S.Schema<ListCertificateRevocationListsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1776,8 +1776,8 @@ export const listProjectsLocationsCaPoolsCertificates: API.PaginatedOperationMet
   GcpOpContext,
   ListCertificatesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(108, __c13, 4) as any as S.Schema<ListProjectsLocationsCaPoolsCertificatesRequest>,
-  output: __S(110, __c13, 6) as any as S.Schema<ListCertificatesResponse>,
+  input: __S(416, __c26, 0) as any as S.Schema<ListProjectsLocationsCaPoolsCertificatesRequest>,
+  output: __S(418, __c26, 2) as any as S.Schema<ListCertificatesResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1793,8 +1793,8 @@ export const listProjectsLocationsCertificateTemplates: API.PaginatedOperationMe
   GcpOpContext,
   ListCertificateTemplatesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(111, __c13, 7) as any as S.Schema<ListProjectsLocationsCertificateTemplatesRequest>,
-  output: __S(113, __c14, 1) as any as S.Schema<ListCertificateTemplatesResponse>,
+  input: __S(432, __c27, 0) as any as S.Schema<ListProjectsLocationsCertificateTemplatesRequest>,
+  output: __S(434, __c27, 2) as any as S.Schema<ListCertificateTemplatesResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1810,8 +1810,8 @@ export const listProjectsLocationsOperations: API.PaginatedOperationMethod<
   GcpOpContext,
   ListOperationsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(114, __c14, 2) as any as S.Schema<ListProjectsLocationsOperationsRequest>,
-  output: __S(116, __c14, 4) as any as S.Schema<ListOperationsResponse>,
+  input: __S(448, __c28, 0) as any as S.Schema<ListProjectsLocationsOperationsRequest>,
+  output: __S(450, __c28, 2) as any as S.Schema<ListOperationsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1831,8 +1831,8 @@ export const patchProjectsLocationsCaPools: API.OperationMethod<
   PatchProjectsLocationsCaPoolsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(117, __c14, 5) as any as S.Schema<PatchProjectsLocationsCaPoolsRequest>,
-  output: __S(8, __c1, 0) as any as S.Schema<Operation>,
+  input: __S(464, __c29, 0) as any as S.Schema<PatchProjectsLocationsCaPoolsRequest>,
+  output: __S(594, __c37, 2) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1852,11 +1852,11 @@ export const patchProjectsLocationsCaPoolsCertificateAuthorities: API.OperationM
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    118,
-    __c14,
-    6,
+    480,
+    __c30,
+    0,
   ) as any as S.Schema<PatchProjectsLocationsCaPoolsCertificateAuthoritiesRequest>,
-  output: __S(8, __c1, 0) as any as S.Schema<Operation>,
+  output: __S(594, __c37, 2) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1876,11 +1876,11 @@ export const patchProjectsLocationsCaPoolsCertificateAuthoritiesCertificateRevoc
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    119,
-    __c14,
-    7,
+    496,
+    __c31,
+    0,
   ) as any as S.Schema<PatchProjectsLocationsCaPoolsCertificateAuthoritiesCertificateRevocationListsRequest>,
-  output: __S(8, __c1, 0) as any as S.Schema<Operation>,
+  output: __S(594, __c37, 2) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1899,8 +1899,8 @@ export const patchProjectsLocationsCaPoolsCertificates: API.OperationMethod<
   PatchProjectsLocationsCaPoolsCertificatesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(120, __c15, 0) as any as S.Schema<PatchProjectsLocationsCaPoolsCertificatesRequest>,
-  output: __S(57, __c7, 1) as any as S.Schema<Certificate>,
+  input: __S(512, __c32, 0) as any as S.Schema<PatchProjectsLocationsCaPoolsCertificatesRequest>,
+  output: __S(977, __c61, 1) as any as S.Schema<Certificate>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1919,8 +1919,8 @@ export const patchProjectsLocationsCertificateTemplates: API.OperationMethod<
   PatchProjectsLocationsCertificateTemplatesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(121, __c15, 1) as any as S.Schema<PatchProjectsLocationsCertificateTemplatesRequest>,
-  output: __S(8, __c1, 0) as any as S.Schema<Operation>,
+  input: __S(528, __c33, 0) as any as S.Schema<PatchProjectsLocationsCertificateTemplatesRequest>,
+  output: __S(594, __c37, 2) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1939,8 +1939,8 @@ export const revokeProjectsLocationsCaPoolsCertificates: API.OperationMethod<
   RevokeProjectsLocationsCaPoolsCertificatesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(123, __c15, 3) as any as S.Schema<RevokeProjectsLocationsCaPoolsCertificatesRequest>,
-  output: __S(57, __c7, 1) as any as S.Schema<Certificate>,
+  input: __S(625, __c39, 1) as any as S.Schema<RevokeProjectsLocationsCaPoolsCertificatesRequest>,
+  output: __S(977, __c61, 1) as any as S.Schema<Certificate>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1959,8 +1959,8 @@ export const setIamPolicyProjectsLocationsCaPools: API.OperationMethod<
   SetIamPolicyProjectsLocationsCaPoolsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(125, __c15, 5) as any as S.Schema<SetIamPolicyProjectsLocationsCaPoolsRequest>,
-  output: __S(82, __c10, 2) as any as S.Schema<Policy>,
+  input: __S(640, __c40, 0) as any as S.Schema<SetIamPolicyProjectsLocationsCaPoolsRequest>,
+  output: __S(166, __c10, 6) as any as S.Schema<Policy>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1980,11 +1980,11 @@ export const setIamPolicyProjectsLocationsCaPoolsCertificateAuthoritiesCertifica
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    126,
-    __c15,
-    6,
+    672,
+    __c42,
+    0,
   ) as any as S.Schema<SetIamPolicyProjectsLocationsCaPoolsCertificateAuthoritiesCertificateRevocationListsRequest>,
-  output: __S(82, __c10, 2) as any as S.Schema<Policy>,
+  output: __S(166, __c10, 6) as any as S.Schema<Policy>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2004,11 +2004,11 @@ export const setIamPolicyProjectsLocationsCertificateTemplates: API.OperationMet
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    127,
-    __c15,
-    7,
+    688,
+    __c43,
+    0,
   ) as any as S.Schema<SetIamPolicyProjectsLocationsCertificateTemplatesRequest>,
-  output: __S(82, __c10, 2) as any as S.Schema<Policy>,
+  output: __S(166, __c10, 6) as any as S.Schema<Policy>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2027,8 +2027,8 @@ export const testIamPermissionsProjectsLocationsCaPools: API.OperationMethod<
   TestIamPermissionsProjectsLocationsCaPoolsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(129, __c16, 1) as any as S.Schema<TestIamPermissionsProjectsLocationsCaPoolsRequest>,
-  output: __S(128, __c16, 0) as any as S.Schema<TestIamPermissionsResponse>,
+  input: __S(704, __c44, 0) as any as S.Schema<TestIamPermissionsProjectsLocationsCaPoolsRequest>,
+  output: __S(720, __c45, 0) as any as S.Schema<TestIamPermissionsResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2048,11 +2048,11 @@ export const testIamPermissionsProjectsLocationsCaPoolsCertificateAuthoritiesCer
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    130,
-    __c16,
-    2,
+    736,
+    __c46,
+    0,
   ) as any as S.Schema<TestIamPermissionsProjectsLocationsCaPoolsCertificateAuthoritiesCertificateRevocationListsRequest>,
-  output: __S(128, __c16, 0) as any as S.Schema<TestIamPermissionsResponse>,
+  output: __S(720, __c45, 0) as any as S.Schema<TestIamPermissionsResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2072,11 +2072,11 @@ export const testIamPermissionsProjectsLocationsCertificateTemplates: API.Operat
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    131,
-    __c16,
-    3,
+    752,
+    __c47,
+    0,
   ) as any as S.Schema<TestIamPermissionsProjectsLocationsCertificateTemplatesRequest>,
-  output: __S(128, __c16, 0) as any as S.Schema<TestIamPermissionsResponse>,
+  output: __S(720, __c45, 0) as any as S.Schema<TestIamPermissionsResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2096,11 +2096,11 @@ export const undeleteProjectsLocationsCaPoolsCertificateAuthorities: API.Operati
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    132,
-    __c16,
-    4,
+    768,
+    __c48,
+    0,
   ) as any as S.Schema<UndeleteProjectsLocationsCaPoolsCertificateAuthoritiesRequest>,
-  output: __S(8, __c1, 0) as any as S.Schema<Operation>,
+  output: __S(594, __c37, 2) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2110,562 +2110,6 @@ export const undeleteProjectsLocationsCaPoolsCertificateAuthorities: API.Operati
 function __c0(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(S.String);
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          pemCertificates: S.optional(__S(0, __c0, 0)),
-        }),
-      ).annotate({ identifier: "SubordinateConfigChain" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          certificateAuthority: S.optional(S.String),
-          pemIssuerChain: S.optional(__S(1, __c0, 1)),
-        }),
-      ).annotate({ identifier: "SubordinateConfig" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          subordinateConfig: S.optional(__S(2, __c0, 2)),
-          pemCaCertificate: S.optional(S.String),
-          requestId: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "ActivateCertificateAuthorityRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-          body: S.optional(__S(3, __c0, 3).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/{+name}:activate",
-            baseUrl: "https://privateca.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "ActivateProjectsLocationsCaPoolsCertificateAuthoritiesRequest",
-      });
-    case 5:
-      return S.Record(S.String, S.Unknown);
-    case 6:
-      return S.Array(__S(5, __c0, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          code: S.optional(S.Number),
-          message: S.optional(S.String),
-          details: S.optional(__S(6, __c0, 6)),
-        }),
-      ).annotate({ identifier: "Status" });
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          response: S.optional(__S(5, __c0, 5)),
-          name: S.optional(S.String),
-          metadata: S.optional(__S(5, __c0, 5)),
-          done: S.optional(S.Boolean),
-          error: S.optional(__S(7, __c0, 7)),
-        }),
-      ).annotate({ identifier: "Operation" });
-    case 1:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "CancelOperationRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-          body: S.optional(__S(9, __c1, 1).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/{+name}:cancel",
-            baseUrl: "https://privateca.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "CancelProjectsLocationsOperationsRequest",
-      });
-    case 3:
-      return S.Record(S.String, S.String);
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          cloudKmsKey: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "EncryptionSpec" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          encodingFormat: S.optional(S.String),
-          publishCaCert: S.optional(S.Boolean),
-          publishCrl: S.optional(S.Boolean),
-        }),
-      ).annotate({ identifier: "PublishingOptions" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          allowConfigBasedIssuance: S.optional(S.Boolean),
-          allowCsrBasedIssuance: S.optional(S.Boolean),
-        }),
-      ).annotate({ identifier: "IssuanceModes" });
-    case 7:
-      return S.Array(S.Number);
-  }
-}
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          objectIdPath: S.optional(__S(15, __c1, 7)),
-        }),
-      ).annotate({ identifier: "ObjectId" });
-    case 1:
-      return S.Array(__S(16, __c2, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          isCa: S.optional(S.Boolean),
-          maxIssuerPathLength: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "CaOptions" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          value: S.optional(S.String),
-          critical: S.optional(S.Boolean),
-          objectId: S.optional(__S(16, __c2, 0)),
-        }),
-      ).annotate({ identifier: "X509Extension" });
-    case 4:
-      return S.Array(__S(19, __c2, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          permittedIpRanges: S.optional(__S(0, __c0, 0)),
-          permittedUris: S.optional(__S(0, __c0, 0)),
-          permittedDnsNames: S.optional(__S(0, __c0, 0)),
-          excludedEmailAddresses: S.optional(__S(0, __c0, 0)),
-          excludedIpRanges: S.optional(__S(0, __c0, 0)),
-          excludedDnsNames: S.optional(__S(0, __c0, 0)),
-          permittedEmailAddresses: S.optional(__S(0, __c0, 0)),
-          critical: S.optional(S.Boolean),
-          excludedUris: S.optional(__S(0, __c0, 0)),
-        }),
-      ).annotate({ identifier: "NameConstraints" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          emailProtection: S.optional(S.Boolean),
-          serverAuth: S.optional(S.Boolean),
-          timeStamping: S.optional(S.Boolean),
-          codeSigning: S.optional(S.Boolean),
-          ocspSigning: S.optional(S.Boolean),
-          clientAuth: S.optional(S.Boolean),
-        }),
-      ).annotate({ identifier: "ExtendedKeyUsageOptions" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          crlSign: S.optional(S.Boolean),
-          dataEncipherment: S.optional(S.Boolean),
-          keyEncipherment: S.optional(S.Boolean),
-          encipherOnly: S.optional(S.Boolean),
-          digitalSignature: S.optional(S.Boolean),
-          certSign: S.optional(S.Boolean),
-          contentCommitment: S.optional(S.Boolean),
-          keyAgreement: S.optional(S.Boolean),
-          decipherOnly: S.optional(S.Boolean),
-        }),
-      ).annotate({ identifier: "KeyUsageOptions" });
-  }
-}
-function __c3(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          unknownExtendedKeyUsages: S.optional(__S(17, __c2, 1)),
-          extendedKeyUsage: S.optional(__S(22, __c2, 6)),
-          baseKeyUsage: S.optional(__S(23, __c2, 7)),
-        }),
-      ).annotate({ identifier: "KeyUsage" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          aiaOcspServers: S.optional(__S(0, __c0, 0)),
-          policyIds: S.optional(__S(17, __c2, 1)),
-          caOptions: S.optional(__S(18, __c2, 2)),
-          additionalExtensions: S.optional(__S(20, __c2, 4)),
-          nameConstraints: S.optional(__S(21, __c2, 5)),
-          keyUsage: S.optional(__S(24, __c3, 0)),
-        }),
-      ).annotate({ identifier: "X509Parameters" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          description: S.optional(S.String),
-          location: S.optional(S.String),
-          expression: S.optional(S.String),
-          title: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Expr" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          celExpression: S.optional(__S(26, __c3, 2)),
-          allowSubjectPassthrough: S.optional(S.Boolean),
-          allowSubjectAltNamesPassthrough: S.optional(S.Boolean),
-        }),
-      ).annotate({
-        identifier: "CertificateIdentityConstraints",
-      });
-    case 4:
-      return S.Array(S.String);
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          additionalExtensions: S.optional(__S(17, __c2, 1)),
-          knownExtensions: S.optional(__S(28, __c3, 4)),
-        }),
-      ).annotate({
-        identifier: "CertificateExtensionConstraints",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          signatureAlgorithm: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "EcKeyType" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          minModulusSize: S.optional(S.String),
-          maxModulusSize: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "RsaKeyType" });
-  }
-}
-function __c4(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          ellipticCurve: S.optional(__S(30, __c3, 6)),
-          rsa: S.optional(__S(31, __c3, 7)),
-        }),
-      ).annotate({ identifier: "AllowedKeyType" });
-    case 1:
-      return S.Array(__S(32, __c4, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          allowRequesterSpecifiedNotBeforeTime: S.optional(S.Boolean),
-          maximumLifetime: S.optional(S.String),
-          allowedIssuanceModes: S.optional(__S(14, __c1, 6)),
-          baselineValues: S.optional(__S(25, __c3, 1)),
-          identityConstraints: S.optional(__S(27, __c3, 3)),
-          passthroughExtensions: S.optional(__S(29, __c3, 5)),
-          allowedKeyTypes: S.optional(__S(33, __c4, 1)),
-          backdateDuration: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "IssuancePolicy" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          labels: S.optional(__S(11, __c1, 3)),
-          encryptionSpec: S.optional(__S(12, __c1, 4)),
-          publishingOptions: S.optional(__S(13, __c1, 5)),
-          name: S.optional(S.String),
-          tier: S.optional(S.String),
-          issuancePolicy: S.optional(__S(34, __c4, 2)),
-        }),
-      ).annotate({ identifier: "CaPool" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          caPoolId: S.optional(S.String.pipe(T.Query())),
-          requestId: S.optional(S.String.pipe(T.Query())),
-          parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(35, __c4, 3).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/{+parent}/caPools",
-            baseUrl: "https://privateca.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateProjectsLocationsCaPoolsRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          crlAccessUrls: S.optional(__S(0, __c0, 0)),
-          aiaIssuingCertificateUrls: S.optional(__S(0, __c0, 0)),
-        }),
-      ).annotate({ identifier: "UserDefinedAccessUrls" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          keyId: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "KeyId" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          key: S.optional(S.String),
-          format: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "PublicKey" });
-  }
-}
-function __c5(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          uris: S.optional(__S(0, __c0, 0)),
-          dnsNames: S.optional(__S(0, __c0, 0)),
-          emailAddresses: S.optional(__S(0, __c0, 0)),
-          customSans: S.optional(__S(20, __c2, 4)),
-          ipAddresses: S.optional(__S(0, __c0, 0)),
-        }),
-      ).annotate({ identifier: "SubjectAltNames" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          objectId: S.optional(__S(16, __c2, 0)),
-          type: S.optional(S.String),
-          value: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "AttributeTypeAndValue" });
-    case 2:
-      return S.Array(__S(41, __c5, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          attributes: S.optional(__S(42, __c5, 2)),
-        }),
-      ).annotate({
-        identifier: "RelativeDistinguishedName",
-      });
-    case 4:
-      return S.Array(__S(43, __c5, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          postalCode: S.optional(S.String),
-          province: S.optional(S.String),
-          locality: S.optional(S.String),
-          countryCode: S.optional(S.String),
-          organization: S.optional(S.String),
-          streetAddress: S.optional(S.String),
-          commonName: S.optional(S.String),
-          organizationalUnit: S.optional(S.String),
-          rdnSequence: S.optional(__S(44, __c5, 4)),
-        }),
-      ).annotate({ identifier: "Subject" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          notAfterTime: S.optional(S.String),
-          lifetime: S.optional(S.String),
-          subjectAltName: S.optional(__S(40, __c5, 0)),
-          notBeforeTime: S.optional(S.String),
-          hexSerialNumber: S.optional(S.String),
-          subject: S.optional(__S(45, __c5, 5)),
-        }),
-      ).annotate({ identifier: "SubjectDescription" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          sha256Hash: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "CertificateFingerprint" });
-  }
-}
-function __c6(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          authorityKeyId: S.optional(__S(38, __c4, 6)),
-          publicKey: S.optional(__S(39, __c4, 7)),
-          aiaIssuingCertificateUrls: S.optional(__S(0, __c0, 0)),
-          x509Description: S.optional(__S(25, __c3, 1)),
-          subjectDescription: S.optional(__S(46, __c5, 6)),
-          crlDistributionPoints: S.optional(__S(0, __c0, 0)),
-          certFingerprint: S.optional(__S(47, __c5, 7)),
-          subjectKeyId: S.optional(__S(38, __c4, 6)),
-          tbsCertificateDigest: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "CertificateDescription" });
-    case 1:
-      return S.Array(__S(48, __c6, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          cloudKmsKeyVersion: S.optional(S.String),
-          algorithm: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "KeyVersionSpec" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          subject: S.optional(__S(45, __c5, 5)),
-          subjectAltName: S.optional(__S(40, __c5, 0)),
-        }),
-      ).annotate({ identifier: "SubjectConfig" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          x509Config: S.optional(__S(25, __c3, 1)),
-          subjectConfig: S.optional(__S(51, __c6, 3)),
-          publicKey: S.optional(__S(39, __c4, 7)),
-          subjectKeyId: S.optional(__S(38, __c4, 6)),
-        }),
-      ).annotate({ identifier: "CertificateConfig" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          caCertificateAccessUrl: S.optional(S.String),
-          crlAccessUrls: S.optional(__S(0, __c0, 0)),
-        }),
-      ).annotate({ identifier: "AccessUrls" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          type: S.optional(S.String),
-          deleteTime: S.optional(S.String),
-          tier: S.optional(S.String),
-          satisfiesPzs: S.optional(S.Boolean),
-          lifetime: S.optional(S.String),
-          state: S.optional(S.String),
-          createTime: S.optional(S.String),
-          subordinateConfig: S.optional(__S(2, __c0, 2)),
-          userDefinedAccessUrls: S.optional(__S(37, __c4, 5)),
-          pemCaCertificates: S.optional(__S(0, __c0, 0)),
-          caCertificateDescriptions: S.optional(__S(49, __c6, 1)),
-          expireTime: S.optional(S.String),
-          keySpec: S.optional(__S(50, __c6, 2)),
-          satisfiesPzi: S.optional(S.Boolean),
-          config: S.optional(__S(52, __c6, 4)),
-          accessUrls: S.optional(__S(53, __c6, 5)),
-          labels: S.optional(__S(11, __c1, 3)),
-          gcsBucket: S.optional(S.String),
-          updateTime: S.optional(S.String),
-          name: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "CertificateAuthority" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          requestId: S.optional(S.String.pipe(T.Query())),
-          parent: S.String.pipe(T.Label()),
-          certificateAuthorityId: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(54, __c6, 6).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/{+parent}/certificateAuthorities",
-            baseUrl: "https://privateca.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateProjectsLocationsCaPoolsCertificateAuthoritiesRequest",
-      });
-  }
-}
-function __c7(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          revocationState: S.optional(S.String),
-          revocationTime: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "RevocationDetails" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          pemCertificateChain: S.optional(__S(0, __c0, 0)),
-          certificateDescription: S.optional(__S(48, __c6, 0)),
-          certificateTemplate: S.optional(S.String),
-          lifetime: S.optional(S.String),
-          requestedNotBeforeTime: S.optional(S.String),
-          issuerCertificateAuthority: S.optional(S.String),
-          pemCsr: S.optional(S.String),
-          subjectMode: S.optional(S.String),
-          updateTime: S.optional(S.String),
-          pemCertificate: S.optional(S.String),
-          labels: S.optional(__S(11, __c1, 3)),
-          name: S.optional(S.String),
-          config: S.optional(__S(52, __c6, 4)),
-          revocationDetails: S.optional(__S(56, __c7, 0)),
-          createTime: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Certificate" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          validateOnly: S.optional(S.Boolean.pipe(T.Query())),
-          issuingCertificateAuthorityId: S.optional(S.String.pipe(T.Query())),
-          parent: S.String.pipe(T.Label()),
-          requestId: S.optional(S.String.pipe(T.Query())),
-          certificateId: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(57, __c7, 1).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/{+parent}/certificates",
-            baseUrl: "https://privateca.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateProjectsLocationsCaPoolsCertificatesRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          maximumLifetime: S.optional(S.String),
-          predefinedValues: S.optional(__S(25, __c3, 1)),
-          labels: S.optional(__S(11, __c1, 3)),
-          passthroughExtensions: S.optional(__S(29, __c3, 5)),
-          description: S.optional(S.String),
-          identityConstraints: S.optional(__S(27, __c3, 3)),
-          createTime: S.optional(S.String),
-          name: S.optional(S.String),
-          updateTime: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "CertificateTemplate" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          certificateTemplateId: S.optional(S.String.pipe(T.Query())),
-          parent: S.String.pipe(T.Label()),
-          requestId: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(59, __c7, 3).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/{+parent}/certificateTemplates",
-            baseUrl: "https://privateca.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateProjectsLocationsCertificateTemplatesRequest",
-      });
-    case 5:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -2681,7 +2125,11 @@ function __c7(j: number): any {
       ).annotate({
         identifier: "DeleteProjectsLocationsCaPoolsRequest",
       });
-    case 6:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           skipGracePeriod: S.optional(S.Boolean.pipe(T.Query())),
@@ -2699,7 +2147,11 @@ function __c7(j: number): any {
       ).annotate({
         identifier: "DeleteProjectsLocationsCaPoolsCertificateAuthoritiesRequest",
       });
-    case 7:
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -2716,7 +2168,7 @@ function __c7(j: number): any {
       });
   }
 }
-function __c8(j: number): any {
+function __c3(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2732,7 +2184,11 @@ function __c8(j: number): any {
       ).annotate({
         identifier: "DeleteProjectsLocationsOperationsRequest",
       });
-    case 1:
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           ignoreDependentResources: S.optional(S.Boolean),
@@ -2741,11 +2197,11 @@ function __c8(j: number): any {
       ).annotate({
         identifier: "DisableCertificateAuthorityRequest",
       });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(65, __c8, 1).pipe(T.HttpBody())),
+          body: S.optional(__S(64, __c4, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -2756,19 +2212,15 @@ function __c8(j: number): any {
       ).annotate({
         identifier: "DisableProjectsLocationsCaPoolsCertificateAuthoritiesRequest",
       });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          requestId: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "EnableCertificateAuthorityRequest",
-      });
-    case 4:
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(67, __c8, 3).pipe(T.HttpBody())),
+          body: S.optional(__S(96, __c6, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -2779,11 +2231,27 @@ function __c8(j: number): any {
       ).annotate({
         identifier: "EnableProjectsLocationsCaPoolsCertificateAuthoritiesRequest",
       });
-    case 5:
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          requestId: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "EnableCertificateAuthorityRequest",
+      });
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           caPool: S.String.pipe(T.Label()),
-          body: S.optional(__S(67, __c8, 3).pipe(T.HttpBody())),
+          body: S.optional(__S(96, __c6, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -2794,25 +2262,25 @@ function __c8(j: number): any {
       ).annotate({
         identifier: "FetchCaCertsProjectsLocationsCaPoolsRequest",
       });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          certificates: S.optional(__S(0, __c0, 0)),
+          certificates: S.optional(__S(560, __c35, 0)),
         }),
       ).annotate({ identifier: "CertChain" });
-    case 7:
-      return S.Array(__S(70, __c8, 6));
-  }
-}
-function __c9(j: number): any {
-  switch (j) {
-    case 0:
+    case 2:
+      return S.Array(__S(113, __c7, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          caCerts: S.optional(__S(71, __c8, 7)),
+          caCerts: S.optional(__S(114, __c7, 2)),
         }),
       ).annotate({ identifier: "FetchCaCertsResponse" });
-    case 1:
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -2826,7 +2294,7 @@ function __c9(j: number): any {
       ).annotate({
         identifier: "FetchProjectsLocationsCaPoolsCertificateAuthoritiesRequest",
       });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           pemCsr: S.optional(S.String),
@@ -2834,7 +2302,11 @@ function __c9(j: number): any {
       ).annotate({
         identifier: "FetchCertificateAuthorityCsrResponse",
       });
-    case 3:
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           "options.requestedPolicyVersion": S.optional(S.Number.pipe(T.Query())),
@@ -2849,25 +2321,6 @@ function __c9(j: number): any {
       ).annotate({
         identifier: "GetIamPolicyProjectsLocationsCaPoolsRequest",
       });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          role: S.optional(S.String),
-          condition: S.optional(__S(26, __c3, 2)),
-          members: S.optional(__S(0, __c0, 0)),
-        }),
-      ).annotate({ identifier: "Binding" });
-    case 5:
-      return S.Array(__S(76, __c9, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          logType: S.optional(S.String),
-          exemptedMembers: S.optional(__S(0, __c0, 0)),
-        }),
-      ).annotate({ identifier: "AuditLogConfig" });
-    case 7:
-      return S.Array(__S(78, __c9, 6));
   }
 }
 function __c10(j: number): any {
@@ -2875,22 +2328,45 @@ function __c10(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          service: S.optional(S.String),
-          auditLogConfigs: S.optional(__S(79, __c9, 7)),
+          role: S.optional(S.String),
+          condition: S.optional(__S(880, __c55, 0)),
+          members: S.optional(__S(560, __c35, 0)),
         }),
-      ).annotate({ identifier: "AuditConfig" });
+      ).annotate({ identifier: "Binding" });
     case 1:
-      return S.Array(__S(80, __c10, 0));
+      return S.Array(__S(160, __c10, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
+          logType: S.optional(S.String),
+          exemptedMembers: S.optional(__S(560, __c35, 0)),
+        }),
+      ).annotate({ identifier: "AuditLogConfig" });
+    case 3:
+      return S.Array(__S(162, __c10, 2));
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          service: S.optional(S.String),
+          auditLogConfigs: S.optional(__S(163, __c10, 3)),
+        }),
+      ).annotate({ identifier: "AuditConfig" });
+    case 5:
+      return S.Array(__S(164, __c10, 4));
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
           version: S.optional(S.Number),
-          bindings: S.optional(__S(77, __c9, 5)),
-          auditConfigs: S.optional(__S(81, __c10, 1)),
+          bindings: S.optional(__S(161, __c10, 1)),
+          auditConfigs: S.optional(__S(165, __c10, 5)),
           etag: S.optional(S.String),
         }),
       ).annotate({ identifier: "Policy" });
-    case 3:
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           resource: S.String.pipe(T.Label()),
@@ -2906,7 +2382,11 @@ function __c10(j: number): any {
         identifier:
           "GetIamPolicyProjectsLocationsCaPoolsCertificateAuthoritiesCertificateRevocationListsRequest",
       });
-    case 4:
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           resource: S.String.pipe(T.Label()),
@@ -2921,7 +2401,11 @@ function __c10(j: number): any {
       ).annotate({
         identifier: "GetIamPolicyProjectsLocationsCertificateTemplatesRequest",
       });
-    case 5:
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -2935,17 +2419,25 @@ function __c10(j: number): any {
       ).annotate({
         identifier: "GetProjectsLocationsRequest",
       });
-    case 6:
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          labels: S.optional(__S(11, __c1, 3)),
+          labels: S.optional(__S(848, __c53, 0)),
           locationId: S.optional(S.String),
-          metadata: S.optional(__S(5, __c0, 5)),
+          metadata: S.optional(__S(576, __c36, 0)),
           name: S.optional(S.String),
           displayName: S.optional(S.String),
         }),
       ).annotate({ identifier: "Location" });
-    case 7:
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -2961,7 +2453,7 @@ function __c10(j: number): any {
       });
   }
 }
-function __c11(j: number): any {
+function __c16(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2977,7 +2469,11 @@ function __c11(j: number): any {
       ).annotate({
         identifier: "GetProjectsLocationsCaPoolsCertificateAuthoritiesRequest",
       });
-    case 1:
+  }
+}
+function __c17(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -2992,7 +2488,11 @@ function __c11(j: number): any {
         identifier:
           "GetProjectsLocationsCaPoolsCertificateAuthoritiesCertificateRevocationListsRequest",
       });
-    case 2:
+  }
+}
+function __c18(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           certificate: S.optional(S.String),
@@ -3000,9 +2500,9 @@ function __c11(j: number): any {
           revocationReason: S.optional(S.String),
         }),
       ).annotate({ identifier: "RevokedCertificate" });
-    case 3:
-      return S.Array(__S(90, __c11, 2));
-    case 4:
+    case 1:
+      return S.Array(__S(288, __c18, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           createTime: S.optional(S.String),
@@ -3010,16 +2510,20 @@ function __c11(j: number): any {
           sequenceNumber: S.optional(S.String),
           updateTime: S.optional(S.String),
           accessUrl: S.optional(S.String),
-          labels: S.optional(__S(11, __c1, 3)),
+          labels: S.optional(__S(848, __c53, 0)),
           revisionId: S.optional(S.String),
           name: S.optional(S.String),
           state: S.optional(S.String),
-          revokedCertificates: S.optional(__S(91, __c11, 3)),
+          revokedCertificates: S.optional(__S(289, __c18, 1)),
         }),
       ).annotate({
         identifier: "CertificateRevocationList",
       });
-    case 5:
+  }
+}
+function __c19(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -3033,7 +2537,11 @@ function __c11(j: number): any {
       ).annotate({
         identifier: "GetProjectsLocationsCaPoolsCertificatesRequest",
       });
-    case 6:
+  }
+}
+function __c20(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -3047,7 +2555,11 @@ function __c11(j: number): any {
       ).annotate({
         identifier: "GetProjectsLocationsCertificateTemplatesRequest",
       });
-    case 7:
+  }
+}
+function __c21(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -3063,7 +2575,7 @@ function __c11(j: number): any {
       });
   }
 }
-function __c12(j: number): any {
+function __c22(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3071,7 +2583,7 @@ function __c12(j: number): any {
           filter: S.optional(S.String.pipe(T.Query())),
           name: S.String.pipe(T.Label()),
           pageSize: S.optional(S.Number.pipe(T.Query())),
-          extraLocationTypes: S.optional(__S(0, __c0, 0).pipe(T.Query())),
+          extraLocationTypes: S.optional(__S(560, __c35, 0).pipe(T.Query())),
           pageToken: S.optional(S.String.pipe(T.Query())),
         }).pipe(
           T.Http({
@@ -3084,15 +2596,19 @@ function __c12(j: number): any {
         identifier: "ListProjectsLocationsRequest",
       });
     case 1:
-      return S.Array(__S(86, __c10, 6));
+      return S.Array(__S(224, __c14, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          locations: S.optional(__S(97, __c12, 1)),
+          locations: S.optional(__S(353, __c22, 1)),
         }),
       ).annotate({ identifier: "ListLocationsResponse" });
-    case 3:
+  }
+}
+function __c23(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -3110,17 +2626,21 @@ function __c12(j: number): any {
       ).annotate({
         identifier: "ListProjectsLocationsCaPoolsRequest",
       });
-    case 4:
-      return S.Array(__S(35, __c4, 3));
-    case 5:
+    case 1:
+      return S.Array(__S(840, __c52, 8));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          unreachable: S.optional(__S(0, __c0, 0)),
-          caPools: S.optional(__S(100, __c12, 4)),
+          unreachable: S.optional(__S(560, __c35, 0)),
+          caPools: S.optional(__S(369, __c23, 1)),
         }),
       ).annotate({ identifier: "ListCaPoolsResponse" });
-    case 6:
+  }
+}
+function __c24(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           filter: S.optional(S.String.pipe(T.Query())),
@@ -3138,23 +2658,23 @@ function __c12(j: number): any {
       ).annotate({
         identifier: "ListProjectsLocationsCaPoolsCertificateAuthoritiesRequest",
       });
-    case 7:
-      return S.Array(__S(54, __c6, 6));
-  }
-}
-function __c13(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
+      return S.Array(__S(932, __c58, 4));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          unreachable: S.optional(__S(0, __c0, 0)),
-          certificateAuthorities: S.optional(__S(103, __c12, 7)),
+          unreachable: S.optional(__S(560, __c35, 0)),
+          certificateAuthorities: S.optional(__S(385, __c24, 1)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({
         identifier: "ListCertificateAuthoritiesResponse",
       });
-    case 1:
+  }
+}
+function __c25(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           orderBy: S.optional(S.String.pipe(T.Query())),
@@ -3173,19 +2693,23 @@ function __c13(j: number): any {
         identifier:
           "ListProjectsLocationsCaPoolsCertificateAuthoritiesCertificateRevocationListsRequest",
       });
+    case 1:
+      return S.Array(__S(290, __c18, 2));
     case 2:
-      return S.Array(__S(92, __c11, 4));
-    case 3:
       return S.suspend(() =>
         S.Struct({
-          certificateRevocationLists: S.optional(__S(106, __c13, 2)),
+          certificateRevocationLists: S.optional(__S(401, __c25, 1)),
           nextPageToken: S.optional(S.String),
-          unreachable: S.optional(__S(0, __c0, 0)),
+          unreachable: S.optional(__S(560, __c35, 0)),
         }),
       ).annotate({
         identifier: "ListCertificateRevocationListsResponse",
       });
-    case 4:
+  }
+}
+function __c26(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           filter: S.optional(S.String.pipe(T.Query())),
@@ -3203,17 +2727,21 @@ function __c13(j: number): any {
       ).annotate({
         identifier: "ListProjectsLocationsCaPoolsCertificatesRequest",
       });
-    case 5:
-      return S.Array(__S(57, __c7, 1));
-    case 6:
+    case 1:
+      return S.Array(__S(977, __c61, 1));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          certificates: S.optional(__S(109, __c13, 5)),
-          unreachable: S.optional(__S(0, __c0, 0)),
+          certificates: S.optional(__S(417, __c26, 1)),
+          unreachable: S.optional(__S(560, __c35, 0)),
         }),
       ).annotate({ identifier: "ListCertificatesResponse" });
-    case 7:
+  }
+}
+function __c27(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           filter: S.optional(S.String.pipe(T.Query())),
@@ -3231,23 +2759,23 @@ function __c13(j: number): any {
       ).annotate({
         identifier: "ListProjectsLocationsCertificateTemplatesRequest",
       });
-  }
-}
-function __c14(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(59, __c7, 3));
     case 1:
+      return S.Array(__S(1008, __c63, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          unreachable: S.optional(__S(0, __c0, 0)),
-          certificateTemplates: S.optional(__S(112, __c14, 0)),
+          unreachable: S.optional(__S(560, __c35, 0)),
+          certificateTemplates: S.optional(__S(433, __c27, 1)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({
         identifier: "ListCertificateTemplatesResponse",
       });
-    case 2:
+  }
+}
+function __c28(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -3265,23 +2793,27 @@ function __c14(j: number): any {
       ).annotate({
         identifier: "ListProjectsLocationsOperationsRequest",
       });
-    case 3:
-      return S.Array(__S(8, __c1, 0));
-    case 4:
+    case 1:
+      return S.Array(__S(594, __c37, 2));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          unreachable: S.optional(__S(0, __c0, 0)),
+          unreachable: S.optional(__S(560, __c35, 0)),
           nextPageToken: S.optional(S.String),
-          operations: S.optional(__S(115, __c14, 3)),
+          operations: S.optional(__S(449, __c28, 1)),
         }),
       ).annotate({ identifier: "ListOperationsResponse" });
-    case 5:
+  }
+}
+function __c29(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           requestId: S.optional(S.String.pipe(T.Query())),
           updateMask: S.optional(S.String.pipe(T.Query())),
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(35, __c4, 3).pipe(T.HttpBody())),
+          body: S.optional(__S(840, __c52, 8).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -3292,13 +2824,17 @@ function __c14(j: number): any {
       ).annotate({
         identifier: "PatchProjectsLocationsCaPoolsRequest",
       });
-    case 6:
+  }
+}
+function __c30(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
           updateMask: S.optional(S.String.pipe(T.Query())),
           requestId: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(54, __c6, 6).pipe(T.HttpBody())),
+          body: S.optional(__S(932, __c58, 4).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -3309,13 +2845,17 @@ function __c14(j: number): any {
       ).annotate({
         identifier: "PatchProjectsLocationsCaPoolsCertificateAuthoritiesRequest",
       });
-    case 7:
+  }
+}
+function __c31(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           requestId: S.optional(S.String.pipe(T.Query())),
           name: S.String.pipe(T.Label()),
           updateMask: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(92, __c11, 4).pipe(T.HttpBody())),
+          body: S.optional(__S(290, __c18, 2).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -3329,7 +2869,7 @@ function __c14(j: number): any {
       });
   }
 }
-function __c15(j: number): any {
+function __c32(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3337,7 +2877,7 @@ function __c15(j: number): any {
           name: S.String.pipe(T.Label()),
           updateMask: S.optional(S.String.pipe(T.Query())),
           requestId: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(57, __c7, 1).pipe(T.HttpBody())),
+          body: S.optional(__S(977, __c61, 1).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -3348,13 +2888,17 @@ function __c15(j: number): any {
       ).annotate({
         identifier: "PatchProjectsLocationsCaPoolsCertificatesRequest",
       });
-    case 1:
+  }
+}
+function __c33(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
           requestId: S.optional(S.String.pipe(T.Query())),
           updateMask: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(59, __c7, 3).pipe(T.HttpBody())),
+          body: S.optional(__S(1008, __c63, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -3365,18 +2909,104 @@ function __c15(j: number): any {
       ).annotate({
         identifier: "PatchProjectsLocationsCertificateTemplatesRequest",
       });
+  }
+}
+function __c34(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subordinateConfig: S.optional(__S(609, __c38, 1)),
+          pemCaCertificate: S.optional(S.String),
+          requestId: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "ActivateCertificateAuthorityRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+          body: S.optional(__S(544, __c34, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/{+name}:activate",
+            baseUrl: "https://privateca.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "ActivateProjectsLocationsCaPoolsCertificateAuthoritiesRequest",
+      });
+  }
+}
+function __c35(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c36(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, S.Unknown);
+  }
+}
+function __c37(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(576, __c36, 0));
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          code: S.optional(S.Number),
+          message: S.optional(S.String),
+          details: S.optional(__S(592, __c37, 0)),
+        }),
+      ).annotate({ identifier: "Status" });
     case 2:
+      return S.suspend(() =>
+        S.Struct({
+          response: S.optional(__S(576, __c36, 0)),
+          name: S.optional(S.String),
+          metadata: S.optional(__S(576, __c36, 0)),
+          done: S.optional(S.Boolean),
+          error: S.optional(__S(593, __c37, 1)),
+        }),
+      ).annotate({ identifier: "Operation" });
+  }
+}
+function __c38(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          pemCertificates: S.optional(__S(560, __c35, 0)),
+        }),
+      ).annotate({ identifier: "SubordinateConfigChain" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          certificateAuthority: S.optional(S.String),
+          pemIssuerChain: S.optional(__S(608, __c38, 0)),
+        }),
+      ).annotate({ identifier: "SubordinateConfig" });
+  }
+}
+function __c39(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           reason: S.optional(S.String),
           requestId: S.optional(S.String),
         }),
       ).annotate({ identifier: "RevokeCertificateRequest" });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(122, __c15, 2).pipe(T.HttpBody())),
+          body: S.optional(__S(624, __c39, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -3387,18 +3017,15 @@ function __c15(j: number): any {
       ).annotate({
         identifier: "RevokeProjectsLocationsCaPoolsCertificatesRequest",
       });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          policy: S.optional(__S(82, __c10, 2)),
-          updateMask: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "SetIamPolicyRequest" });
-    case 5:
+  }
+}
+function __c40(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           resource: S.String.pipe(T.Label()),
-          body: S.optional(__S(124, __c15, 4).pipe(T.HttpBody())),
+          body: S.optional(__S(656, __c41, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -3409,11 +3036,26 @@ function __c15(j: number): any {
       ).annotate({
         identifier: "SetIamPolicyProjectsLocationsCaPoolsRequest",
       });
-    case 6:
+  }
+}
+function __c41(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          policy: S.optional(__S(166, __c10, 6)),
+          updateMask: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "SetIamPolicyRequest" });
+  }
+}
+function __c42(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           resource: S.String.pipe(T.Label()),
-          body: S.optional(__S(124, __c15, 4).pipe(T.HttpBody())),
+          body: S.optional(__S(656, __c41, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -3425,11 +3067,15 @@ function __c15(j: number): any {
         identifier:
           "SetIamPolicyProjectsLocationsCaPoolsCertificateAuthoritiesCertificateRevocationListsRequest",
       });
-    case 7:
+  }
+}
+function __c43(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           resource: S.String.pipe(T.Label()),
-          body: S.optional(__S(124, __c15, 4).pipe(T.HttpBody())),
+          body: S.optional(__S(656, __c41, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -3442,21 +3088,13 @@ function __c15(j: number): any {
       });
   }
 }
-function __c16(j: number): any {
+function __c44(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          permissions: S.optional(__S(0, __c0, 0)),
-        }),
-      ).annotate({
-        identifier: "TestIamPermissionsRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
           resource: S.String.pipe(T.Label()),
-          body: S.optional(__S(128, __c16, 0).pipe(T.HttpBody())),
+          body: S.optional(__S(720, __c45, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -3467,11 +3105,27 @@ function __c16(j: number): any {
       ).annotate({
         identifier: "TestIamPermissionsProjectsLocationsCaPoolsRequest",
       });
-    case 2:
+  }
+}
+function __c45(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          permissions: S.optional(__S(560, __c35, 0)),
+        }),
+      ).annotate({
+        identifier: "TestIamPermissionsRequest",
+      });
+  }
+}
+function __c46(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           resource: S.String.pipe(T.Label()),
-          body: S.optional(__S(128, __c16, 0).pipe(T.HttpBody())),
+          body: S.optional(__S(720, __c45, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -3483,11 +3137,15 @@ function __c16(j: number): any {
         identifier:
           "TestIamPermissionsProjectsLocationsCaPoolsCertificateAuthoritiesCertificateRevocationListsRequest",
       });
-    case 3:
+  }
+}
+function __c47(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           resource: S.String.pipe(T.Label()),
-          body: S.optional(__S(128, __c16, 0).pipe(T.HttpBody())),
+          body: S.optional(__S(720, __c45, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -3498,11 +3156,15 @@ function __c16(j: number): any {
       ).annotate({
         identifier: "TestIamPermissionsProjectsLocationsCertificateTemplatesRequest",
       });
-    case 4:
+  }
+}
+function __c48(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(67, __c8, 3).pipe(T.HttpBody())),
+          body: S.optional(__S(96, __c6, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -3515,7 +3177,532 @@ function __c16(j: number): any {
       });
   }
 }
-
+function __c49(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+          body: S.optional(__S(800, __c50, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/{+name}:cancel",
+            baseUrl: "https://privateca.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "CancelProjectsLocationsOperationsRequest",
+      });
+  }
+}
+function __c50(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "CancelOperationRequest",
+      });
+  }
+}
+function __c51(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          caPoolId: S.optional(S.String.pipe(T.Query())),
+          requestId: S.optional(S.String.pipe(T.Query())),
+          parent: S.String.pipe(T.Label()),
+          body: S.optional(__S(840, __c52, 8).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/{+parent}/caPools",
+            baseUrl: "https://privateca.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateProjectsLocationsCaPoolsRequest",
+      });
+  }
+}
+function __c52(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          cloudKmsKey: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "EncryptionSpec" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          encodingFormat: S.optional(S.String),
+          publishCaCert: S.optional(S.Boolean),
+          publishCrl: S.optional(S.Boolean),
+        }),
+      ).annotate({ identifier: "PublishingOptions" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          allowConfigBasedIssuance: S.optional(S.Boolean),
+          allowCsrBasedIssuance: S.optional(S.Boolean),
+        }),
+      ).annotate({ identifier: "IssuanceModes" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          signatureAlgorithm: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "EcKeyType" });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          minModulusSize: S.optional(S.String),
+          maxModulusSize: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "RsaKeyType" });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          ellipticCurve: S.optional(__S(835, __c52, 3)),
+          rsa: S.optional(__S(836, __c52, 4)),
+        }),
+      ).annotate({ identifier: "AllowedKeyType" });
+    case 6:
+      return S.Array(__S(837, __c52, 5));
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          allowRequesterSpecifiedNotBeforeTime: S.optional(S.Boolean),
+          maximumLifetime: S.optional(S.String),
+          allowedIssuanceModes: S.optional(__S(834, __c52, 2)),
+          baselineValues: S.optional(__S(874, __c54, 10)),
+          identityConstraints: S.optional(__S(896, __c56, 0)),
+          passthroughExtensions: S.optional(__S(898, __c56, 2)),
+          allowedKeyTypes: S.optional(__S(838, __c52, 6)),
+          backdateDuration: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "IssuancePolicy" });
+    case 8:
+      return S.suspend(() =>
+        S.Struct({
+          labels: S.optional(__S(848, __c53, 0)),
+          encryptionSpec: S.optional(__S(832, __c52, 0)),
+          publishingOptions: S.optional(__S(833, __c52, 1)),
+          name: S.optional(S.String),
+          tier: S.optional(S.String),
+          issuancePolicy: S.optional(__S(839, __c52, 7)),
+        }),
+      ).annotate({ identifier: "CaPool" });
+  }
+}
+function __c53(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, S.String);
+  }
+}
+function __c54(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.Number);
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          objectIdPath: S.optional(__S(864, __c54, 0)),
+        }),
+      ).annotate({ identifier: "ObjectId" });
+    case 2:
+      return S.Array(__S(865, __c54, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          isCa: S.optional(S.Boolean),
+          maxIssuerPathLength: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "CaOptions" });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          value: S.optional(S.String),
+          critical: S.optional(S.Boolean),
+          objectId: S.optional(__S(865, __c54, 1)),
+        }),
+      ).annotate({ identifier: "X509Extension" });
+    case 5:
+      return S.Array(__S(868, __c54, 4));
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          permittedIpRanges: S.optional(__S(560, __c35, 0)),
+          permittedUris: S.optional(__S(560, __c35, 0)),
+          permittedDnsNames: S.optional(__S(560, __c35, 0)),
+          excludedEmailAddresses: S.optional(__S(560, __c35, 0)),
+          excludedIpRanges: S.optional(__S(560, __c35, 0)),
+          excludedDnsNames: S.optional(__S(560, __c35, 0)),
+          permittedEmailAddresses: S.optional(__S(560, __c35, 0)),
+          critical: S.optional(S.Boolean),
+          excludedUris: S.optional(__S(560, __c35, 0)),
+        }),
+      ).annotate({ identifier: "NameConstraints" });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          emailProtection: S.optional(S.Boolean),
+          serverAuth: S.optional(S.Boolean),
+          timeStamping: S.optional(S.Boolean),
+          codeSigning: S.optional(S.Boolean),
+          ocspSigning: S.optional(S.Boolean),
+          clientAuth: S.optional(S.Boolean),
+        }),
+      ).annotate({ identifier: "ExtendedKeyUsageOptions" });
+    case 8:
+      return S.suspend(() =>
+        S.Struct({
+          crlSign: S.optional(S.Boolean),
+          dataEncipherment: S.optional(S.Boolean),
+          keyEncipherment: S.optional(S.Boolean),
+          encipherOnly: S.optional(S.Boolean),
+          digitalSignature: S.optional(S.Boolean),
+          certSign: S.optional(S.Boolean),
+          contentCommitment: S.optional(S.Boolean),
+          keyAgreement: S.optional(S.Boolean),
+          decipherOnly: S.optional(S.Boolean),
+        }),
+      ).annotate({ identifier: "KeyUsageOptions" });
+    case 9:
+      return S.suspend(() =>
+        S.Struct({
+          unknownExtendedKeyUsages: S.optional(__S(866, __c54, 2)),
+          extendedKeyUsage: S.optional(__S(871, __c54, 7)),
+          baseKeyUsage: S.optional(__S(872, __c54, 8)),
+        }),
+      ).annotate({ identifier: "KeyUsage" });
+    case 10:
+      return S.suspend(() =>
+        S.Struct({
+          aiaOcspServers: S.optional(__S(560, __c35, 0)),
+          policyIds: S.optional(__S(866, __c54, 2)),
+          caOptions: S.optional(__S(867, __c54, 3)),
+          additionalExtensions: S.optional(__S(869, __c54, 5)),
+          nameConstraints: S.optional(__S(870, __c54, 6)),
+          keyUsage: S.optional(__S(873, __c54, 9)),
+        }),
+      ).annotate({ identifier: "X509Parameters" });
+  }
+}
+function __c55(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          description: S.optional(S.String),
+          location: S.optional(S.String),
+          expression: S.optional(S.String),
+          title: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Expr" });
+  }
+}
+function __c56(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          celExpression: S.optional(__S(880, __c55, 0)),
+          allowSubjectPassthrough: S.optional(S.Boolean),
+          allowSubjectAltNamesPassthrough: S.optional(S.Boolean),
+        }),
+      ).annotate({
+        identifier: "CertificateIdentityConstraints",
+      });
+    case 1:
+      return S.Array(S.String);
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          additionalExtensions: S.optional(__S(866, __c54, 2)),
+          knownExtensions: S.optional(__S(897, __c56, 1)),
+        }),
+      ).annotate({
+        identifier: "CertificateExtensionConstraints",
+      });
+  }
+}
+function __c57(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          requestId: S.optional(S.String.pipe(T.Query())),
+          parent: S.String.pipe(T.Label()),
+          certificateAuthorityId: S.optional(S.String.pipe(T.Query())),
+          body: S.optional(__S(932, __c58, 4).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/{+parent}/certificateAuthorities",
+            baseUrl: "https://privateca.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateProjectsLocationsCaPoolsCertificateAuthoritiesRequest",
+      });
+  }
+}
+function __c58(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          crlAccessUrls: S.optional(__S(560, __c35, 0)),
+          aiaIssuingCertificateUrls: S.optional(__S(560, __c35, 0)),
+        }),
+      ).annotate({ identifier: "UserDefinedAccessUrls" });
+    case 1:
+      return S.Array(__S(954, __c59, 10));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          cloudKmsKeyVersion: S.optional(S.String),
+          algorithm: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "KeyVersionSpec" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          caCertificateAccessUrl: S.optional(S.String),
+          crlAccessUrls: S.optional(__S(560, __c35, 0)),
+        }),
+      ).annotate({ identifier: "AccessUrls" });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          type: S.optional(S.String),
+          deleteTime: S.optional(S.String),
+          tier: S.optional(S.String),
+          satisfiesPzs: S.optional(S.Boolean),
+          lifetime: S.optional(S.String),
+          state: S.optional(S.String),
+          createTime: S.optional(S.String),
+          subordinateConfig: S.optional(__S(609, __c38, 1)),
+          userDefinedAccessUrls: S.optional(__S(928, __c58, 0)),
+          pemCaCertificates: S.optional(__S(560, __c35, 0)),
+          caCertificateDescriptions: S.optional(__S(929, __c58, 1)),
+          expireTime: S.optional(S.String),
+          keySpec: S.optional(__S(930, __c58, 2)),
+          satisfiesPzi: S.optional(S.Boolean),
+          config: S.optional(__S(956, __c59, 12)),
+          accessUrls: S.optional(__S(931, __c58, 3)),
+          labels: S.optional(__S(848, __c53, 0)),
+          gcsBucket: S.optional(S.String),
+          updateTime: S.optional(S.String),
+          name: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "CertificateAuthority" });
+  }
+}
+function __c59(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          keyId: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "KeyId" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          key: S.optional(S.String),
+          format: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "PublicKey" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          uris: S.optional(__S(560, __c35, 0)),
+          dnsNames: S.optional(__S(560, __c35, 0)),
+          emailAddresses: S.optional(__S(560, __c35, 0)),
+          customSans: S.optional(__S(869, __c54, 5)),
+          ipAddresses: S.optional(__S(560, __c35, 0)),
+        }),
+      ).annotate({ identifier: "SubjectAltNames" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          objectId: S.optional(__S(865, __c54, 1)),
+          type: S.optional(S.String),
+          value: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "AttributeTypeAndValue" });
+    case 4:
+      return S.Array(__S(947, __c59, 3));
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          attributes: S.optional(__S(948, __c59, 4)),
+        }),
+      ).annotate({
+        identifier: "RelativeDistinguishedName",
+      });
+    case 6:
+      return S.Array(__S(949, __c59, 5));
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          postalCode: S.optional(S.String),
+          province: S.optional(S.String),
+          locality: S.optional(S.String),
+          countryCode: S.optional(S.String),
+          organization: S.optional(S.String),
+          streetAddress: S.optional(S.String),
+          commonName: S.optional(S.String),
+          organizationalUnit: S.optional(S.String),
+          rdnSequence: S.optional(__S(950, __c59, 6)),
+        }),
+      ).annotate({ identifier: "Subject" });
+    case 8:
+      return S.suspend(() =>
+        S.Struct({
+          notAfterTime: S.optional(S.String),
+          lifetime: S.optional(S.String),
+          subjectAltName: S.optional(__S(946, __c59, 2)),
+          notBeforeTime: S.optional(S.String),
+          hexSerialNumber: S.optional(S.String),
+          subject: S.optional(__S(951, __c59, 7)),
+        }),
+      ).annotate({ identifier: "SubjectDescription" });
+    case 9:
+      return S.suspend(() =>
+        S.Struct({
+          sha256Hash: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "CertificateFingerprint" });
+    case 10:
+      return S.suspend(() =>
+        S.Struct({
+          authorityKeyId: S.optional(__S(944, __c59, 0)),
+          publicKey: S.optional(__S(945, __c59, 1)),
+          aiaIssuingCertificateUrls: S.optional(__S(560, __c35, 0)),
+          x509Description: S.optional(__S(874, __c54, 10)),
+          subjectDescription: S.optional(__S(952, __c59, 8)),
+          crlDistributionPoints: S.optional(__S(560, __c35, 0)),
+          certFingerprint: S.optional(__S(953, __c59, 9)),
+          subjectKeyId: S.optional(__S(944, __c59, 0)),
+          tbsCertificateDigest: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "CertificateDescription" });
+    case 11:
+      return S.suspend(() =>
+        S.Struct({
+          subject: S.optional(__S(951, __c59, 7)),
+          subjectAltName: S.optional(__S(946, __c59, 2)),
+        }),
+      ).annotate({ identifier: "SubjectConfig" });
+    case 12:
+      return S.suspend(() =>
+        S.Struct({
+          x509Config: S.optional(__S(874, __c54, 10)),
+          subjectConfig: S.optional(__S(955, __c59, 11)),
+          publicKey: S.optional(__S(945, __c59, 1)),
+          subjectKeyId: S.optional(__S(944, __c59, 0)),
+        }),
+      ).annotate({ identifier: "CertificateConfig" });
+  }
+}
+function __c60(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          validateOnly: S.optional(S.Boolean.pipe(T.Query())),
+          issuingCertificateAuthorityId: S.optional(S.String.pipe(T.Query())),
+          parent: S.String.pipe(T.Label()),
+          requestId: S.optional(S.String.pipe(T.Query())),
+          certificateId: S.optional(S.String.pipe(T.Query())),
+          body: S.optional(__S(977, __c61, 1).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/{+parent}/certificates",
+            baseUrl: "https://privateca.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateProjectsLocationsCaPoolsCertificatesRequest",
+      });
+  }
+}
+function __c61(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          revocationState: S.optional(S.String),
+          revocationTime: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "RevocationDetails" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          pemCertificateChain: S.optional(__S(560, __c35, 0)),
+          certificateDescription: S.optional(__S(954, __c59, 10)),
+          certificateTemplate: S.optional(S.String),
+          lifetime: S.optional(S.String),
+          requestedNotBeforeTime: S.optional(S.String),
+          issuerCertificateAuthority: S.optional(S.String),
+          pemCsr: S.optional(S.String),
+          subjectMode: S.optional(S.String),
+          updateTime: S.optional(S.String),
+          pemCertificate: S.optional(S.String),
+          labels: S.optional(__S(848, __c53, 0)),
+          name: S.optional(S.String),
+          config: S.optional(__S(956, __c59, 12)),
+          revocationDetails: S.optional(__S(976, __c61, 0)),
+          createTime: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Certificate" });
+  }
+}
+function __c62(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          certificateTemplateId: S.optional(S.String.pipe(T.Query())),
+          parent: S.String.pipe(T.Label()),
+          requestId: S.optional(S.String.pipe(T.Query())),
+          body: S.optional(__S(1008, __c63, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/{+parent}/certificateTemplates",
+            baseUrl: "https://privateca.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateProjectsLocationsCertificateTemplatesRequest",
+      });
+  }
+}
+function __c63(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          maximumLifetime: S.optional(S.String),
+          predefinedValues: S.optional(__S(874, __c54, 10)),
+          labels: S.optional(__S(848, __c53, 0)),
+          passthroughExtensions: S.optional(__S(898, __c56, 2)),
+          description: S.optional(S.String),
+          identityConstraints: S.optional(__S(896, __c56, 0)),
+          createTime: S.optional(S.String),
+          name: S.optional(S.String),
+          updateTime: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "CertificateTemplate" });
+  }
+}
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

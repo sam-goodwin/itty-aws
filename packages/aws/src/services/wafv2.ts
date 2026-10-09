@@ -94,7 +94,7 @@ export class WAFFeatureNotIncludedInPricingPlanException
     {
       message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
       DisallowedFeatures: /*@__PURE__*/ S.optional(
-        /*@__PURE__*/ S.suspend(() => __S(272, __c34, 0)).annotate({
+        /*@__PURE__*/ S.suspend(() => __S(1217, __c38, 1)).annotate({
           identifier: "DisallowedFeatures",
         }),
       ),
@@ -2216,7 +2216,7 @@ export const associateWebACL: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(0, __c0, 0) as any as S.Schema<AssociateWebACLRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<AssociateWebACLResponse>,
+  output: __S(32, __c1, 0) as any as S.Schema<AssociateWebACLResponse>,
   errors: [
     WAFFeatureNotIncludedInPricingPlanException,
     WAFInternalErrorException,
@@ -2262,8 +2262,8 @@ export const checkCapacity: API.OperationMethod<
   CheckCapacityError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(83, __c10, 3) as any as S.Schema<CheckCapacityRequest>,
-  output: __S(84, __c10, 4) as any as S.Schema<CheckCapacityResponse>,
+  input: __S(64, __c2, 0) as any as S.Schema<CheckCapacityRequest>,
+  output: __S(65, __c2, 1) as any as S.Schema<CheckCapacityResponse>,
   errors: [
     WAFExpiredManagedRuleGroupVersionException,
     WAFInternalErrorException,
@@ -2302,8 +2302,8 @@ export const createAPIKey: API.OperationMethod<
   CreateAPIKeyError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(85, __c10, 5) as any as S.Schema<CreateAPIKeyRequest>,
-  output: __S(86, __c10, 6) as any as S.Schema<CreateAPIKeyResponse>,
+  input: __S(352, __c11, 0) as any as S.Schema<CreateAPIKeyRequest>,
+  output: __S(353, __c11, 1) as any as S.Schema<CreateAPIKeyResponse>,
   errors: [
     WAFInternalErrorException,
     WAFInvalidOperationException,
@@ -2337,8 +2337,8 @@ export const createIPSet: API.OperationMethod<
   CreateIPSetError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(89, __c11, 1) as any as S.Schema<CreateIPSetRequest>,
-  output: __S(91, __c11, 3) as any as S.Schema<CreateIPSetResponse>,
+  input: __S(384, __c12, 0) as any as S.Schema<CreateIPSetRequest>,
+  output: __S(480, __c15, 0) as any as S.Schema<CreateIPSetResponse>,
   errors: [
     WAFDuplicateItemException,
     WAFInternalErrorException,
@@ -2374,8 +2374,8 @@ export const createRegexPatternSet: API.OperationMethod<
   CreateRegexPatternSetError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(92, __c11, 4) as any as S.Schema<CreateRegexPatternSetRequest>,
-  output: __S(93, __c11, 5) as any as S.Schema<CreateRegexPatternSetResponse>,
+  input: __S(512, __c16, 0) as any as S.Schema<CreateRegexPatternSetRequest>,
+  output: __S(513, __c16, 1) as any as S.Schema<CreateRegexPatternSetResponse>,
   errors: [
     WAFDuplicateItemException,
     WAFInternalErrorException,
@@ -2415,8 +2415,8 @@ export const createRuleGroup: API.OperationMethod<
   CreateRuleGroupError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(102, __c12, 6) as any as S.Schema<CreateRuleGroupRequest>,
-  output: __S(91, __c11, 3) as any as S.Schema<CreateRuleGroupResponse>,
+  input: __S(544, __c17, 0) as any as S.Schema<CreateRuleGroupRequest>,
+  output: __S(480, __c15, 0) as any as S.Schema<CreateRuleGroupResponse>,
   errors: [
     WAFDuplicateItemException,
     WAFInternalErrorException,
@@ -2462,8 +2462,8 @@ export const createWebACL: API.OperationMethod<
   CreateWebACLError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(115, __c14, 3) as any as S.Schema<CreateWebACLRequest>,
-  output: __S(91, __c11, 3) as any as S.Schema<CreateWebACLResponse>,
+  input: __S(608, __c19, 0) as any as S.Schema<CreateWebACLRequest>,
+  output: __S(480, __c15, 0) as any as S.Schema<CreateWebACLResponse>,
   errors: [
     WAFConfigurationWarningException,
     WAFDuplicateItemException,
@@ -2503,8 +2503,8 @@ export const deleteAPIKey: API.OperationMethod<
   DeleteAPIKeyError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(116, __c14, 4) as any as S.Schema<DeleteAPIKeyRequest>,
-  output: __S(117, __c14, 5) as any as S.Schema<DeleteAPIKeyResponse>,
+  input: __S(672, __c21, 0) as any as S.Schema<DeleteAPIKeyRequest>,
+  output: __S(704, __c22, 0) as any as S.Schema<DeleteAPIKeyResponse>,
   errors: [
     WAFInternalErrorException,
     WAFInvalidOperationException,
@@ -2535,8 +2535,8 @@ export const deleteFirewallManagerRuleGroups: API.OperationMethod<
   DeleteFirewallManagerRuleGroupsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(118, __c14, 6) as any as S.Schema<DeleteFirewallManagerRuleGroupsRequest>,
-  output: __S(119, __c14, 7) as any as S.Schema<DeleteFirewallManagerRuleGroupsResponse>,
+  input: __S(736, __c23, 0) as any as S.Schema<DeleteFirewallManagerRuleGroupsRequest>,
+  output: __S(737, __c23, 1) as any as S.Schema<DeleteFirewallManagerRuleGroupsResponse>,
   errors: [
     WAFInternalErrorException,
     WAFInvalidOperationException,
@@ -2568,8 +2568,8 @@ export const deleteIPSet: API.OperationMethod<
   DeleteIPSetError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(120, __c15, 0) as any as S.Schema<DeleteIPSetRequest>,
-  output: __S(117, __c14, 5) as any as S.Schema<DeleteIPSetResponse>,
+  input: __S(768, __c24, 0) as any as S.Schema<DeleteIPSetRequest>,
+  output: __S(704, __c22, 0) as any as S.Schema<DeleteIPSetResponse>,
   errors: [
     WAFAssociatedItemException,
     WAFInternalErrorException,
@@ -2601,8 +2601,8 @@ export const deleteLoggingConfiguration: API.OperationMethod<
   DeleteLoggingConfigurationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(121, __c15, 1) as any as S.Schema<DeleteLoggingConfigurationRequest>,
-  output: __S(122, __c15, 2) as any as S.Schema<DeleteLoggingConfigurationResponse>,
+  input: __S(800, __c25, 0) as any as S.Schema<DeleteLoggingConfigurationRequest>,
+  output: __S(832, __c26, 0) as any as S.Schema<DeleteLoggingConfigurationResponse>,
   errors: [
     WAFInternalErrorException,
     WAFInvalidOperationException,
@@ -2631,8 +2631,8 @@ export const deletePermissionPolicy: API.OperationMethod<
   DeletePermissionPolicyError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(123, __c15, 3) as any as S.Schema<DeletePermissionPolicyRequest>,
-  output: __S(122, __c15, 2) as any as S.Schema<DeletePermissionPolicyResponse>,
+  input: __S(864, __c27, 0) as any as S.Schema<DeletePermissionPolicyRequest>,
+  output: __S(832, __c26, 0) as any as S.Schema<DeletePermissionPolicyResponse>,
   errors: [WAFInternalErrorException, WAFInvalidParameterException, WAFNonexistentItemException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2658,8 +2658,8 @@ export const deleteRegexPatternSet: API.OperationMethod<
   DeleteRegexPatternSetError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(124, __c15, 4) as any as S.Schema<DeleteRegexPatternSetRequest>,
-  output: __S(122, __c15, 2) as any as S.Schema<DeleteRegexPatternSetResponse>,
+  input: __S(896, __c28, 0) as any as S.Schema<DeleteRegexPatternSetRequest>,
+  output: __S(832, __c26, 0) as any as S.Schema<DeleteRegexPatternSetResponse>,
   errors: [
     WAFAssociatedItemException,
     WAFInternalErrorException,
@@ -2694,8 +2694,8 @@ export const deleteRuleGroup: API.OperationMethod<
   DeleteRuleGroupError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(125, __c15, 5) as any as S.Schema<DeleteRuleGroupRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<DeleteRuleGroupResponse>,
+  input: __S(928, __c29, 0) as any as S.Schema<DeleteRuleGroupRequest>,
+  output: __S(32, __c1, 0) as any as S.Schema<DeleteRuleGroupResponse>,
   errors: [
     WAFAssociatedItemException,
     WAFInternalErrorException,
@@ -2751,8 +2751,8 @@ export const deleteWebACL: API.OperationMethod<
   DeleteWebACLError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(126, __c15, 6) as any as S.Schema<DeleteWebACLRequest>,
-  output: __S(117, __c14, 5) as any as S.Schema<DeleteWebACLResponse>,
+  input: __S(960, __c30, 0) as any as S.Schema<DeleteWebACLRequest>,
+  output: __S(704, __c22, 0) as any as S.Schema<DeleteWebACLResponse>,
   errors: [
     WAFAssociatedItemException,
     WAFInternalErrorException,
@@ -2782,8 +2782,8 @@ export const describeAllManagedProducts: API.OperationMethod<
   DescribeAllManagedProductsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(127, __c15, 7) as any as S.Schema<DescribeAllManagedProductsRequest>,
-  output: __S(130, __c16, 2) as any as S.Schema<DescribeAllManagedProductsResponse>,
+  input: __S(992, __c31, 0) as any as S.Schema<DescribeAllManagedProductsRequest>,
+  output: __S(1026, __c32, 2) as any as S.Schema<DescribeAllManagedProductsResponse>,
   errors: [WAFInternalErrorException, WAFInvalidOperationException, WAFInvalidParameterException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2804,8 +2804,8 @@ export const describeManagedProductsByVendor: API.OperationMethod<
   DescribeManagedProductsByVendorError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(131, __c16, 3) as any as S.Schema<DescribeManagedProductsByVendorRequest>,
-  output: __S(130, __c16, 2) as any as S.Schema<DescribeManagedProductsByVendorResponse>,
+  input: __S(1056, __c33, 0) as any as S.Schema<DescribeManagedProductsByVendorRequest>,
+  output: __S(1026, __c32, 2) as any as S.Schema<DescribeManagedProductsByVendorResponse>,
   errors: [WAFInternalErrorException, WAFInvalidOperationException, WAFInvalidParameterException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2829,8 +2829,8 @@ export const describeManagedRuleGroup: API.OperationMethod<
   DescribeManagedRuleGroupError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(132, __c16, 4) as any as S.Schema<DescribeManagedRuleGroupRequest>,
-  output: __S(137, __c17, 1) as any as S.Schema<DescribeManagedRuleGroupResponse>,
+  input: __S(1088, __c34, 0) as any as S.Schema<DescribeManagedRuleGroupRequest>,
+  output: __S(1091, __c34, 3) as any as S.Schema<DescribeManagedRuleGroupResponse>,
   errors: [
     WAFExpiredManagedRuleGroupVersionException,
     WAFInternalErrorException,
@@ -2868,8 +2868,8 @@ export const disassociateWebACL: API.OperationMethod<
   DisassociateWebACLError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(138, __c17, 2) as any as S.Schema<DisassociateWebACLRequest>,
-  output: __S(122, __c15, 2) as any as S.Schema<DisassociateWebACLResponse>,
+  input: __S(1152, __c36, 0) as any as S.Schema<DisassociateWebACLRequest>,
+  output: __S(832, __c26, 0) as any as S.Schema<DisassociateWebACLResponse>,
   errors: [
     WAFInternalErrorException,
     WAFInvalidOperationException,
@@ -2900,8 +2900,8 @@ export const generateMobileSdkReleaseUrl: API.OperationMethod<
   GenerateMobileSdkReleaseUrlError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(139, __c17, 3) as any as S.Schema<GenerateMobileSdkReleaseUrlRequest>,
-  output: __S(140, __c17, 4) as any as S.Schema<GenerateMobileSdkReleaseUrlResponse>,
+  input: __S(1184, __c37, 0) as any as S.Schema<GenerateMobileSdkReleaseUrlRequest>,
+  output: __S(1185, __c37, 1) as any as S.Schema<GenerateMobileSdkReleaseUrlResponse>,
   errors: [
     WAFInternalErrorException,
     WAFInvalidOperationException,
@@ -2933,8 +2933,8 @@ export const getDecryptedAPIKey: API.OperationMethod<
   GetDecryptedAPIKeyError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(141, __c17, 5) as any as S.Schema<GetDecryptedAPIKeyRequest>,
-  output: __S(142, __c17, 6) as any as S.Schema<GetDecryptedAPIKeyResponse>,
+  input: __S(1248, __c39, 0) as any as S.Schema<GetDecryptedAPIKeyRequest>,
+  output: __S(1249, __c39, 1) as any as S.Schema<GetDecryptedAPIKeyResponse>,
   errors: [
     WAFInternalErrorException,
     WAFInvalidOperationException,
@@ -2962,8 +2962,8 @@ export const getIPSet: API.OperationMethod<
   GetIPSetError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(143, __c17, 7) as any as S.Schema<GetIPSetRequest>,
-  output: __S(145, __c18, 1) as any as S.Schema<GetIPSetResponse>,
+  input: __S(1280, __c40, 0) as any as S.Schema<GetIPSetRequest>,
+  output: __S(1282, __c40, 2) as any as S.Schema<GetIPSetResponse>,
   errors: [
     WAFInternalErrorException,
     WAFInvalidOperationException,
@@ -2990,8 +2990,8 @@ export const getLoggingConfiguration: API.OperationMethod<
   GetLoggingConfigurationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(146, __c18, 2) as any as S.Schema<GetLoggingConfigurationRequest>,
-  output: __S(156, __c19, 4) as any as S.Schema<GetLoggingConfigurationResponse>,
+  input: __S(1312, __c41, 0) as any as S.Schema<GetLoggingConfigurationRequest>,
+  output: __S(1376, __c43, 0) as any as S.Schema<GetLoggingConfigurationResponse>,
   errors: [
     WAFInternalErrorException,
     WAFInvalidOperationException,
@@ -3022,8 +3022,8 @@ export const getManagedRuleSet: API.OperationMethod<
   GetManagedRuleSetError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(157, __c19, 5) as any as S.Schema<GetManagedRuleSetRequest>,
-  output: __S(161, __c20, 1) as any as S.Schema<GetManagedRuleSetResponse>,
+  input: __S(1408, __c44, 0) as any as S.Schema<GetManagedRuleSetRequest>,
+  output: __S(1412, __c44, 4) as any as S.Schema<GetManagedRuleSetResponse>,
   errors: [
     WAFInternalErrorException,
     WAFInvalidOperationException,
@@ -3054,8 +3054,8 @@ export const getMobileSdkRelease: API.OperationMethod<
   GetMobileSdkReleaseError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(162, __c20, 2) as any as S.Schema<GetMobileSdkReleaseRequest>,
-  output: __S(164, __c20, 4) as any as S.Schema<GetMobileSdkReleaseResponse>,
+  input: __S(1440, __c45, 0) as any as S.Schema<GetMobileSdkReleaseRequest>,
+  output: __S(1442, __c45, 2) as any as S.Schema<GetMobileSdkReleaseResponse>,
   errors: [
     WAFInternalErrorException,
     WAFInvalidOperationException,
@@ -3083,8 +3083,8 @@ export const getPermissionPolicy: API.OperationMethod<
   GetPermissionPolicyError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(165, __c20, 5) as any as S.Schema<GetPermissionPolicyRequest>,
-  output: __S(166, __c20, 6) as any as S.Schema<GetPermissionPolicyResponse>,
+  input: __S(1472, __c46, 0) as any as S.Schema<GetPermissionPolicyRequest>,
+  output: __S(1473, __c46, 1) as any as S.Schema<GetPermissionPolicyResponse>,
   errors: [WAFInternalErrorException, WAFInvalidParameterException, WAFNonexistentItemException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3126,8 +3126,8 @@ export const getRateBasedStatementManagedKeys: API.OperationMethod<
   GetRateBasedStatementManagedKeysError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(167, __c20, 7) as any as S.Schema<GetRateBasedStatementManagedKeysRequest>,
-  output: __S(169, __c21, 1) as any as S.Schema<GetRateBasedStatementManagedKeysResponse>,
+  input: __S(1504, __c47, 0) as any as S.Schema<GetRateBasedStatementManagedKeysRequest>,
+  output: __S(1506, __c47, 2) as any as S.Schema<GetRateBasedStatementManagedKeysResponse>,
   errors: [
     WAFInternalErrorException,
     WAFInvalidOperationException,
@@ -3155,8 +3155,8 @@ export const getRegexPatternSet: API.OperationMethod<
   GetRegexPatternSetError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(170, __c21, 2) as any as S.Schema<GetRegexPatternSetRequest>,
-  output: __S(172, __c21, 4) as any as S.Schema<GetRegexPatternSetResponse>,
+  input: __S(1536, __c48, 0) as any as S.Schema<GetRegexPatternSetRequest>,
+  output: __S(1538, __c48, 2) as any as S.Schema<GetRegexPatternSetResponse>,
   errors: [
     WAFInternalErrorException,
     WAFInvalidOperationException,
@@ -3183,8 +3183,8 @@ export const getRevenueStatistics: API.OperationMethod<
   GetRevenueStatisticsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(176, __c22, 0) as any as S.Schema<GetRevenueStatisticsRequest>,
-  output: __S(181, __c22, 5) as any as S.Schema<GetRevenueStatisticsResponse>,
+  input: __S(1568, __c49, 0) as any as S.Schema<GetRevenueStatisticsRequest>,
+  output: __S(1573, __c49, 5) as any as S.Schema<GetRevenueStatisticsResponse>,
   errors: [
     WAFInternalErrorException,
     WAFInvalidOperationException,
@@ -3211,8 +3211,8 @@ export const getRevenueStatisticsSummary: API.OperationMethod<
   GetRevenueStatisticsSummaryError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(182, __c22, 6) as any as S.Schema<GetRevenueStatisticsSummaryRequest>,
-  output: __S(184, __c23, 0) as any as S.Schema<GetRevenueStatisticsSummaryResponse>,
+  input: __S(1664, __c52, 0) as any as S.Schema<GetRevenueStatisticsSummaryRequest>,
+  output: __S(1666, __c52, 2) as any as S.Schema<GetRevenueStatisticsSummaryResponse>,
   errors: [
     WAFInternalErrorException,
     WAFInvalidOperationException,
@@ -3239,8 +3239,8 @@ export const getRevenueStatisticsTimeSeries: API.OperationMethod<
   GetRevenueStatisticsTimeSeriesError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(185, __c23, 1) as any as S.Schema<GetRevenueStatisticsTimeSeriesRequest>,
-  output: __S(188, __c23, 4) as any as S.Schema<GetRevenueStatisticsTimeSeriesResponse>,
+  input: __S(1696, __c53, 0) as any as S.Schema<GetRevenueStatisticsTimeSeriesRequest>,
+  output: __S(1699, __c53, 3) as any as S.Schema<GetRevenueStatisticsTimeSeriesResponse>,
   errors: [
     WAFInternalErrorException,
     WAFInvalidOperationException,
@@ -3267,8 +3267,8 @@ export const getRuleGroup: API.OperationMethod<
   GetRuleGroupError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(189, __c23, 5) as any as S.Schema<GetRuleGroupRequest>,
-  output: __S(191, __c23, 7) as any as S.Schema<GetRuleGroupResponse>,
+  input: __S(1728, __c54, 0) as any as S.Schema<GetRuleGroupRequest>,
+  output: __S(1730, __c54, 2) as any as S.Schema<GetRuleGroupResponse>,
   errors: [
     WAFInternalErrorException,
     WAFInvalidOperationException,
@@ -3303,8 +3303,8 @@ export const getSampledRequests: API.OperationMethod<
   GetSampledRequestsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(192, __c24, 0) as any as S.Schema<GetSampledRequestsRequest>,
-  output: __S(199, __c24, 7) as any as S.Schema<GetSampledRequestsResponse>,
+  input: __S(1760, __c55, 0) as any as S.Schema<GetSampledRequestsRequest>,
+  output: __S(1767, __c55, 7) as any as S.Schema<GetSampledRequestsResponse>,
   errors: [WAFInternalErrorException, WAFInvalidParameterException, WAFNonexistentItemException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3329,8 +3329,8 @@ export const getTopPathStatisticsByTraffic: API.OperationMethod<
   GetTopPathStatisticsByTrafficError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(200, __c25, 0) as any as S.Schema<GetTopPathStatisticsByTrafficRequest>,
-  output: __S(206, __c25, 6) as any as S.Schema<GetTopPathStatisticsByTrafficResponse>,
+  input: __S(1792, __c56, 0) as any as S.Schema<GetTopPathStatisticsByTrafficRequest>,
+  output: __S(1798, __c56, 6) as any as S.Schema<GetTopPathStatisticsByTrafficResponse>,
   errors: [
     WAFFeatureNotIncludedInPricingPlanException,
     WAFInternalErrorException,
@@ -3358,8 +3358,8 @@ export const getWebACL: API.OperationMethod<
   GetWebACLError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(207, __c25, 7) as any as S.Schema<GetWebACLRequest>,
-  output: __S(212, __c26, 4) as any as S.Schema<GetWebACLResponse>,
+  input: __S(1824, __c57, 0) as any as S.Schema<GetWebACLRequest>,
+  output: __S(1825, __c57, 1) as any as S.Schema<GetWebACLResponse>,
   errors: [
     WAFInternalErrorException,
     WAFInvalidOperationException,
@@ -3399,8 +3399,8 @@ export const getWebACLForResource: API.OperationMethod<
   GetWebACLForResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(213, __c26, 5) as any as S.Schema<GetWebACLForResourceRequest>,
-  output: __S(214, __c26, 6) as any as S.Schema<GetWebACLForResourceResponse>,
+  input: __S(1888, __c59, 0) as any as S.Schema<GetWebACLForResourceRequest>,
+  output: __S(1889, __c59, 1) as any as S.Schema<GetWebACLForResourceResponse>,
   errors: [
     WAFInternalErrorException,
     WAFInvalidOperationException,
@@ -3432,8 +3432,8 @@ export const listAPIKeys: API.OperationMethod<
   ListAPIKeysError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(215, __c26, 7) as any as S.Schema<ListAPIKeysRequest>,
-  output: __S(218, __c27, 2) as any as S.Schema<ListAPIKeysResponse>,
+  input: __S(1920, __c60, 0) as any as S.Schema<ListAPIKeysRequest>,
+  output: __S(1923, __c60, 3) as any as S.Schema<ListAPIKeysResponse>,
   errors: [
     WAFInternalErrorException,
     WAFInvalidOperationException,
@@ -3461,8 +3461,8 @@ export const listAvailableManagedRuleGroups: API.OperationMethod<
   ListAvailableManagedRuleGroupsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(219, __c27, 3) as any as S.Schema<ListAvailableManagedRuleGroupsRequest>,
-  output: __S(222, __c27, 6) as any as S.Schema<ListAvailableManagedRuleGroupsResponse>,
+  input: __S(1952, __c61, 0) as any as S.Schema<ListAvailableManagedRuleGroupsRequest>,
+  output: __S(1955, __c61, 3) as any as S.Schema<ListAvailableManagedRuleGroupsResponse>,
   errors: [WAFInternalErrorException, WAFInvalidOperationException, WAFInvalidParameterException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3484,8 +3484,8 @@ export const listAvailableManagedRuleGroupVersions: API.OperationMethod<
   ListAvailableManagedRuleGroupVersionsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(223, __c27, 7) as any as S.Schema<ListAvailableManagedRuleGroupVersionsRequest>,
-  output: __S(226, __c28, 2) as any as S.Schema<ListAvailableManagedRuleGroupVersionsResponse>,
+  input: __S(1984, __c62, 0) as any as S.Schema<ListAvailableManagedRuleGroupVersionsRequest>,
+  output: __S(1987, __c62, 3) as any as S.Schema<ListAvailableManagedRuleGroupVersionsResponse>,
   errors: [
     WAFInternalErrorException,
     WAFInvalidOperationException,
@@ -3512,8 +3512,8 @@ export const listIPSets: API.OperationMethod<
   ListIPSetsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(227, __c28, 3) as any as S.Schema<ListIPSetsRequest>,
-  output: __S(229, __c28, 5) as any as S.Schema<ListIPSetsResponse>,
+  input: __S(2016, __c63, 0) as any as S.Schema<ListIPSetsRequest>,
+  output: __S(2017, __c63, 1) as any as S.Schema<ListIPSetsResponse>,
   errors: [WAFInternalErrorException, WAFInvalidOperationException, WAFInvalidParameterException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3534,8 +3534,8 @@ export const listLoggingConfigurations: API.OperationMethod<
   ListLoggingConfigurationsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(230, __c28, 6) as any as S.Schema<ListLoggingConfigurationsRequest>,
-  output: __S(232, __c29, 0) as any as S.Schema<ListLoggingConfigurationsResponse>,
+  input: __S(2080, __c65, 0) as any as S.Schema<ListLoggingConfigurationsRequest>,
+  output: __S(2082, __c65, 2) as any as S.Schema<ListLoggingConfigurationsResponse>,
   errors: [WAFInternalErrorException, WAFInvalidOperationException, WAFInvalidParameterException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3560,8 +3560,8 @@ export const listManagedRuleSets: API.OperationMethod<
   ListManagedRuleSetsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(233, __c29, 1) as any as S.Schema<ListManagedRuleSetsRequest>,
-  output: __S(236, __c29, 4) as any as S.Schema<ListManagedRuleSetsResponse>,
+  input: __S(2112, __c66, 0) as any as S.Schema<ListManagedRuleSetsRequest>,
+  output: __S(2115, __c66, 3) as any as S.Schema<ListManagedRuleSetsResponse>,
   errors: [WAFInternalErrorException, WAFInvalidOperationException, WAFInvalidParameterException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3586,8 +3586,8 @@ export const listMobileSdkReleases: API.OperationMethod<
   ListMobileSdkReleasesError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(237, __c29, 5) as any as S.Schema<ListMobileSdkReleasesRequest>,
-  output: __S(240, __c30, 0) as any as S.Schema<ListMobileSdkReleasesResponse>,
+  input: __S(2144, __c67, 0) as any as S.Schema<ListMobileSdkReleasesRequest>,
+  output: __S(2147, __c67, 3) as any as S.Schema<ListMobileSdkReleasesResponse>,
   errors: [WAFInternalErrorException, WAFInvalidOperationException, WAFInvalidParameterException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3609,8 +3609,8 @@ export const listRegexPatternSets: API.OperationMethod<
   ListRegexPatternSetsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(241, __c30, 1) as any as S.Schema<ListRegexPatternSetsRequest>,
-  output: __S(242, __c30, 2) as any as S.Schema<ListRegexPatternSetsResponse>,
+  input: __S(2176, __c68, 0) as any as S.Schema<ListRegexPatternSetsRequest>,
+  output: __S(2177, __c68, 1) as any as S.Schema<ListRegexPatternSetsResponse>,
   errors: [WAFInternalErrorException, WAFInvalidOperationException, WAFInvalidParameterException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3642,8 +3642,8 @@ export const listResourcesForWebACL: API.OperationMethod<
   ListResourcesForWebACLError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(243, __c30, 3) as any as S.Schema<ListResourcesForWebACLRequest>,
-  output: __S(244, __c30, 4) as any as S.Schema<ListResourcesForWebACLResponse>,
+  input: __S(2208, __c69, 0) as any as S.Schema<ListResourcesForWebACLRequest>,
+  output: __S(2209, __c69, 1) as any as S.Schema<ListResourcesForWebACLResponse>,
   errors: [
     WAFInternalErrorException,
     WAFInvalidOperationException,
@@ -3670,8 +3670,8 @@ export const listRuleGroups: API.OperationMethod<
   ListRuleGroupsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(245, __c30, 5) as any as S.Schema<ListRuleGroupsRequest>,
-  output: __S(246, __c30, 6) as any as S.Schema<ListRuleGroupsResponse>,
+  input: __S(2240, __c70, 0) as any as S.Schema<ListRuleGroupsRequest>,
+  output: __S(2241, __c70, 1) as any as S.Schema<ListRuleGroupsResponse>,
   errors: [WAFInternalErrorException, WAFInvalidOperationException, WAFInvalidParameterException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3693,8 +3693,8 @@ export const listSettlementRecords: API.OperationMethod<
   ListSettlementRecordsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(247, __c30, 7) as any as S.Schema<ListSettlementRecordsRequest>,
-  output: __S(250, __c31, 2) as any as S.Schema<ListSettlementRecordsResponse>,
+  input: __S(2272, __c71, 0) as any as S.Schema<ListSettlementRecordsRequest>,
+  output: __S(2275, __c71, 3) as any as S.Schema<ListSettlementRecordsResponse>,
   errors: [
     WAFInternalErrorException,
     WAFInvalidOperationException,
@@ -3731,8 +3731,8 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(251, __c31, 3) as any as S.Schema<ListTagsForResourceRequest>,
-  output: __S(253, __c31, 5) as any as S.Schema<ListTagsForResourceResponse>,
+  input: __S(2304, __c72, 0) as any as S.Schema<ListTagsForResourceRequest>,
+  output: __S(2306, __c72, 2) as any as S.Schema<ListTagsForResourceResponse>,
   errors: [
     WAFInternalErrorException,
     WAFInvalidOperationException,
@@ -3761,8 +3761,8 @@ export const listWebACLs: API.OperationMethod<
   ListWebACLsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(254, __c31, 6) as any as S.Schema<ListWebACLsRequest>,
-  output: __S(255, __c31, 7) as any as S.Schema<ListWebACLsResponse>,
+  input: __S(2336, __c73, 0) as any as S.Schema<ListWebACLsRequest>,
+  output: __S(2337, __c73, 1) as any as S.Schema<ListWebACLsResponse>,
   errors: [WAFInternalErrorException, WAFInvalidOperationException, WAFInvalidParameterException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3827,8 +3827,8 @@ export const putLoggingConfiguration: API.OperationMethod<
   PutLoggingConfigurationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(256, __c32, 0) as any as S.Schema<PutLoggingConfigurationRequest>,
-  output: __S(156, __c19, 4) as any as S.Schema<PutLoggingConfigurationResponse>,
+  input: __S(2368, __c74, 0) as any as S.Schema<PutLoggingConfigurationRequest>,
+  output: __S(1376, __c43, 0) as any as S.Schema<PutLoggingConfigurationResponse>,
   errors: [
     WAFFeatureNotIncludedInPricingPlanException,
     WAFInternalErrorException,
@@ -3874,8 +3874,8 @@ export const putManagedRuleSetVersions: API.OperationMethod<
   PutManagedRuleSetVersionsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(259, __c32, 3) as any as S.Schema<PutManagedRuleSetVersionsRequest>,
-  output: __S(260, __c32, 4) as any as S.Schema<PutManagedRuleSetVersionsResponse>,
+  input: __S(2402, __c75, 2) as any as S.Schema<PutManagedRuleSetVersionsRequest>,
+  output: __S(2432, __c76, 0) as any as S.Schema<PutManagedRuleSetVersionsResponse>,
   errors: [
     WAFInternalErrorException,
     WAFInvalidOperationException,
@@ -3919,8 +3919,8 @@ export const putPermissionPolicy: API.OperationMethod<
   PutPermissionPolicyError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(261, __c32, 5) as any as S.Schema<PutPermissionPolicyRequest>,
-  output: __S(122, __c15, 2) as any as S.Schema<PutPermissionPolicyResponse>,
+  input: __S(2464, __c77, 0) as any as S.Schema<PutPermissionPolicyRequest>,
+  output: __S(832, __c26, 0) as any as S.Schema<PutPermissionPolicyResponse>,
   errors: [
     WAFInternalErrorException,
     WAFInvalidParameterException,
@@ -3958,8 +3958,8 @@ export const tagResource: API.OperationMethod<
   TagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(262, __c32, 6) as any as S.Schema<TagResourceRequest>,
-  output: __S(117, __c14, 5) as any as S.Schema<TagResourceResponse>,
+  input: __S(2496, __c78, 0) as any as S.Schema<TagResourceRequest>,
+  output: __S(704, __c22, 0) as any as S.Schema<TagResourceResponse>,
   errors: [
     WAFInternalErrorException,
     WAFInvalidOperationException,
@@ -3994,8 +3994,8 @@ export const untagResource: API.OperationMethod<
   UntagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(263, __c32, 7) as any as S.Schema<UntagResourceRequest>,
-  output: __S(117, __c14, 5) as any as S.Schema<UntagResourceResponse>,
+  input: __S(2528, __c79, 0) as any as S.Schema<UntagResourceRequest>,
+  output: __S(704, __c22, 0) as any as S.Schema<UntagResourceResponse>,
   errors: [
     WAFInternalErrorException,
     WAFInvalidOperationException,
@@ -4051,8 +4051,8 @@ export const updateIPSet: API.OperationMethod<
   UpdateIPSetError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(264, __c33, 0) as any as S.Schema<UpdateIPSetRequest>,
-  output: __S(265, __c33, 1) as any as S.Schema<UpdateIPSetResponse>,
+  input: __S(2560, __c80, 0) as any as S.Schema<UpdateIPSetRequest>,
+  output: __S(2592, __c81, 0) as any as S.Schema<UpdateIPSetResponse>,
   errors: [
     WAFDuplicateItemException,
     WAFInternalErrorException,
@@ -4089,8 +4089,8 @@ export const updateManagedRuleSetVersionExpiryDate: API.OperationMethod<
   UpdateManagedRuleSetVersionExpiryDateError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(266, __c33, 2) as any as S.Schema<UpdateManagedRuleSetVersionExpiryDateRequest>,
-  output: __S(267, __c33, 3) as any as S.Schema<UpdateManagedRuleSetVersionExpiryDateResponse>,
+  input: __S(2624, __c82, 0) as any as S.Schema<UpdateManagedRuleSetVersionExpiryDateRequest>,
+  output: __S(2625, __c82, 1) as any as S.Schema<UpdateManagedRuleSetVersionExpiryDateResponse>,
   errors: [
     WAFInternalErrorException,
     WAFInvalidOperationException,
@@ -4145,8 +4145,8 @@ export const updateRegexPatternSet: API.OperationMethod<
   UpdateRegexPatternSetError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(268, __c33, 4) as any as S.Schema<UpdateRegexPatternSetRequest>,
-  output: __S(260, __c32, 4) as any as S.Schema<UpdateRegexPatternSetResponse>,
+  input: __S(2656, __c83, 0) as any as S.Schema<UpdateRegexPatternSetRequest>,
+  output: __S(2432, __c76, 0) as any as S.Schema<UpdateRegexPatternSetResponse>,
   errors: [
     WAFDuplicateItemException,
     WAFInternalErrorException,
@@ -4208,8 +4208,8 @@ export const updateRuleGroup: API.OperationMethod<
   UpdateRuleGroupError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(269, __c33, 5) as any as S.Schema<UpdateRuleGroupRequest>,
-  output: __S(265, __c33, 1) as any as S.Schema<UpdateRuleGroupResponse>,
+  input: __S(2688, __c84, 0) as any as S.Schema<UpdateRuleGroupRequest>,
+  output: __S(2592, __c81, 0) as any as S.Schema<UpdateRuleGroupResponse>,
   errors: [
     WAFConfigurationWarningException,
     WAFDuplicateItemException,
@@ -4278,8 +4278,8 @@ export const updateWebACL: API.OperationMethod<
   UpdateWebACLError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(270, __c33, 6) as any as S.Schema<UpdateWebACLRequest>,
-  output: __S(265, __c33, 1) as any as S.Schema<UpdateWebACLResponse>,
+  input: __S(2720, __c85, 0) as any as S.Schema<UpdateWebACLRequest>,
+  output: __S(2592, __c81, 0) as any as S.Schema<UpdateWebACLResponse>,
   errors: [
     WAFConfigurationWarningException,
     WAFDuplicateItemException,
@@ -4309,88 +4309,13 @@ function __c0(j: number): any {
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "AssociateWebACLRequest" });
-    case 1:
-      return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
-        identifier: "AssociateWebACLResponse",
-      });
-    case 2:
-      return S.suspend(() => S.Struct({ Name: S.String })).annotate({
-        identifier: "SingleHeader",
-      });
-    case 3:
-      return S.suspend(() => S.Struct({ Name: S.String })).annotate({
-        identifier: "SingleQueryArgument",
-      });
-    case 4:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "AllQueryArguments",
-      });
-    case 5:
-      return S.suspend(() => S.Struct({ OversizeHandling: S.optional(S.String) })).annotate({
-        identifier: "Body",
-      });
-    case 6:
-      return S.Array(S.String);
-    case 7:
-      return S.suspend(() =>
-        S.Struct({ All: S.optional(__S(4, __c0, 4)), IncludedPaths: S.optional(__S(6, __c0, 6)) }),
-      ).annotate({ identifier: "JsonMatchPattern" });
   }
 }
 function __c1(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() =>
-        S.Struct({
-          MatchPattern: __S(7, __c0, 7),
-          MatchScope: S.String,
-          InvalidFallbackBehavior: S.optional(S.String),
-          OversizeHandling: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "JsonBody" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          All: S.optional(__S(4, __c0, 4)),
-          IncludedHeaders: S.optional(__S(6, __c0, 6)),
-          ExcludedHeaders: S.optional(__S(6, __c0, 6)),
-        }),
-      ).annotate({ identifier: "HeaderMatchPattern" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          MatchPattern: __S(9, __c1, 1),
-          MatchScope: S.String,
-          OversizeHandling: S.String,
-        }),
-      ).annotate({ identifier: "Headers" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          All: S.optional(__S(4, __c0, 4)),
-          IncludedCookies: S.optional(__S(6, __c0, 6)),
-          ExcludedCookies: S.optional(__S(6, __c0, 6)),
-        }),
-      ).annotate({ identifier: "CookieMatchPattern" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          MatchPattern: __S(11, __c1, 3),
-          MatchScope: S.String,
-          OversizeHandling: S.String,
-        }),
-      ).annotate({ identifier: "Cookies" });
-    case 5:
-      return S.suspend(() => S.Struct({ OversizeHandling: S.String })).annotate({
-        identifier: "HeaderOrder",
-      });
-    case 6:
-      return S.suspend(() => S.Struct({ FallbackBehavior: S.String })).annotate({
-        identifier: "JA3Fingerprint",
-      });
-    case 7:
-      return S.suspend(() => S.Struct({ FallbackBehavior: S.optional(S.String) })).annotate({
-        identifier: "UriFragment",
+      return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
+        identifier: "AssociateWebACLResponse",
       });
   }
 }
@@ -4398,157 +4323,267 @@ function __c2(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({
-          SingleHeader: S.optional(__S(2, __c0, 2)),
-          SingleQueryArgument: S.optional(__S(3, __c0, 3)),
-          AllQueryArguments: S.optional(__S(4, __c0, 4)),
-          UriPath: S.optional(__S(4, __c0, 4)),
-          QueryString: S.optional(__S(4, __c0, 4)),
-          Body: S.optional(__S(5, __c0, 5)),
-          Method: S.optional(__S(4, __c0, 4)),
-          JsonBody: S.optional(__S(8, __c1, 0)),
-          Headers: S.optional(__S(10, __c1, 2)),
-          Cookies: S.optional(__S(12, __c1, 4)),
-          HeaderOrder: S.optional(__S(13, __c1, 5)),
-          JA3Fingerprint: S.optional(__S(14, __c1, 6)),
-          JA4Fingerprint: S.optional(__S(14, __c1, 6)),
-          UriFragment: S.optional(__S(15, __c1, 7)),
-        }),
-      ).annotate({ identifier: "FieldToMatch" });
+        S.Struct({ Scope: S.String, Rules: __S(342, __c10, 22) }).pipe(
+          T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "CheckCapacityRequest" });
     case 1:
-      return S.suspend(() => S.Struct({ Priority: S.Number, Type: S.String })).annotate({
-        identifier: "TextTransformation",
+      return S.suspend(() => S.Struct({ Capacity: S.optional(S.Number) }).pipe(ns)).annotate({
+        identifier: "CheckCapacityResponse",
       });
-    case 2:
-      return S.Array(__S(17, __c2, 1));
-    case 3:
-      return S.suspend(() => S.Struct({ Priority: S.Number, Type: S.String })).annotate({
-        identifier: "PreParseTextTransformation",
-      });
-    case 4:
-      return S.Array(__S(19, __c2, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          SearchString: T.Blob,
-          FieldToMatch: __S(16, __c2, 0),
-          TextTransformations: __S(18, __c2, 2),
-          PreParseTextTransformations: S.optional(__S(20, __c2, 4)),
-          PositionalConstraint: S.String,
-        }),
-      ).annotate({ identifier: "ByteMatchStatement" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          FieldToMatch: __S(16, __c2, 0),
-          TextTransformations: __S(18, __c2, 2),
-          PreParseTextTransformations: S.optional(__S(20, __c2, 4)),
-          SensitivityLevel: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "SqliMatchStatement" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          FieldToMatch: __S(16, __c2, 0),
-          TextTransformations: __S(18, __c2, 2),
-          PreParseTextTransformations: S.optional(__S(20, __c2, 4)),
-        }),
-      ).annotate({ identifier: "XssMatchStatement" });
   }
 }
 function __c3(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() =>
-        S.Struct({
-          FieldToMatch: __S(16, __c2, 0),
-          ComparisonOperator: S.String,
-          Size: S.Number,
-          TextTransformations: __S(18, __c2, 2),
-          PreParseTextTransformations: S.optional(__S(20, __c2, 4)),
-        }),
-      ).annotate({ identifier: "SizeConstraintStatement" });
-    case 1:
       return S.Array(S.String);
-    case 2:
-      return S.suspend(() =>
-        S.Struct({ HeaderName: S.String, FallbackBehavior: S.String }),
-      ).annotate({ identifier: "ForwardedIPConfig" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          CountryCodes: S.optional(__S(25, __c3, 1)),
-          ForwardedIPConfig: S.optional(__S(26, __c3, 2)),
-        }),
-      ).annotate({ identifier: "GeoMatchStatement" });
-    case 4:
-      return S.Array(__S(2, __c0, 2));
-    case 5:
-      return S.suspend(() => S.Struct({ Name: S.String, Value: S.String })).annotate({
-        identifier: "CustomHTTPHeader",
-      });
-    case 6:
-      return S.Array(__S(29, __c3, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          ResponseCode: S.Number,
-          CustomResponseBodyKey: S.optional(S.String),
-          ResponseHeaders: S.optional(__S(30, __c3, 6)),
-        }),
-      ).annotate({ identifier: "CustomResponse" });
   }
 }
 function __c4(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => S.Struct({ CustomResponse: S.optional(__S(31, __c3, 7)) })).annotate({
-        identifier: "BlockAction",
+      return S.suspend(() => S.Struct({ RegexString: S.optional(S.String) })).annotate({
+        identifier: "Regex",
       });
     case 1:
-      return S.suspend(() => S.Struct({ InsertHeaders: __S(30, __c3, 6) })).annotate({
-        identifier: "CustomRequestHandling",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({ CustomRequestHandling: S.optional(__S(33, __c4, 1)) }),
-      ).annotate({ identifier: "AllowAction" });
-    case 3:
-      return S.suspend(() => S.Struct({ PriceMultiplier: S.optional(S.String) })).annotate({
-        identifier: "MonetizeAction",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          Block: S.optional(__S(32, __c4, 0)),
-          Allow: S.optional(__S(34, __c4, 2)),
-          Count: S.optional(__S(34, __c4, 2)),
-          Captcha: S.optional(__S(34, __c4, 2)),
-          Challenge: S.optional(__S(34, __c4, 2)),
-          Monetize: S.optional(__S(35, __c4, 3)),
-        }),
-      ).annotate({ identifier: "RuleAction" });
-    case 5:
-      return S.suspend(() => S.Struct({ Name: S.String, ActionToUse: __S(36, __c4, 4) })).annotate({
-        identifier: "RuleActionOverride",
-      });
-    case 6:
-      return S.Array(__S(37, __c4, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          ARN: S.String,
-          ExcludedRules: S.optional(__S(28, __c3, 4)),
-          RuleActionOverrides: S.optional(__S(38, __c4, 6)),
-        }),
-      ).annotate({
-        identifier: "RuleGroupReferenceStatement",
-      });
+      return S.Array(__S(128, __c4, 0));
   }
 }
 function __c5(j: number): any {
   switch (j) {
     case 0:
+      return S.suspend(() => S.Struct({ Name: S.String, Value: S.String })).annotate({
+        identifier: "CustomHTTPHeader",
+      });
+    case 1:
+      return S.Array(__S(160, __c5, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          ResponseCode: S.Number,
+          CustomResponseBodyKey: S.optional(S.String),
+          ResponseHeaders: S.optional(__S(161, __c5, 1)),
+        }),
+      ).annotate({ identifier: "CustomResponse" });
+    case 3:
+      return S.suspend(() => S.Struct({ CustomResponse: S.optional(__S(162, __c5, 2)) })).annotate({
+        identifier: "BlockAction",
+      });
+    case 4:
+      return S.suspend(() => S.Struct({ InsertHeaders: __S(161, __c5, 1) })).annotate({
+        identifier: "CustomRequestHandling",
+      });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({ CustomRequestHandling: S.optional(__S(164, __c5, 4)) }),
+      ).annotate({ identifier: "AllowAction" });
+    case 6:
+      return S.suspend(() => S.Struct({ PriceMultiplier: S.optional(S.String) })).annotate({
+        identifier: "MonetizeAction",
+      });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          Block: S.optional(__S(163, __c5, 3)),
+          Allow: S.optional(__S(165, __c5, 5)),
+          Count: S.optional(__S(165, __c5, 5)),
+          Captcha: S.optional(__S(165, __c5, 5)),
+          Challenge: S.optional(__S(165, __c5, 5)),
+          Monetize: S.optional(__S(166, __c5, 6)),
+        }),
+      ).annotate({ identifier: "RuleAction" });
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({ Name: S.String })).annotate({
+        identifier: "SingleHeader",
+      });
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({ Name: S.String })).annotate({
+        identifier: "SingleQueryArgument",
+      });
+    case 1:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "AllQueryArguments",
+      });
+    case 2:
+      return S.suspend(() => S.Struct({ OversizeHandling: S.optional(S.String) })).annotate({
+        identifier: "Body",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          All: S.optional(__S(225, __c7, 1)),
+          IncludedPaths: S.optional(__S(96, __c3, 0)),
+        }),
+      ).annotate({ identifier: "JsonMatchPattern" });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          MatchPattern: __S(227, __c7, 3),
+          MatchScope: S.String,
+          InvalidFallbackBehavior: S.optional(S.String),
+          OversizeHandling: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "JsonBody" });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          All: S.optional(__S(225, __c7, 1)),
+          IncludedHeaders: S.optional(__S(96, __c3, 0)),
+          ExcludedHeaders: S.optional(__S(96, __c3, 0)),
+        }),
+      ).annotate({ identifier: "HeaderMatchPattern" });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          MatchPattern: __S(229, __c7, 5),
+          MatchScope: S.String,
+          OversizeHandling: S.String,
+        }),
+      ).annotate({ identifier: "Headers" });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          All: S.optional(__S(225, __c7, 1)),
+          IncludedCookies: S.optional(__S(96, __c3, 0)),
+          ExcludedCookies: S.optional(__S(96, __c3, 0)),
+        }),
+      ).annotate({ identifier: "CookieMatchPattern" });
+    case 8:
+      return S.suspend(() =>
+        S.Struct({
+          MatchPattern: __S(231, __c7, 7),
+          MatchScope: S.String,
+          OversizeHandling: S.String,
+        }),
+      ).annotate({ identifier: "Cookies" });
+    case 9:
+      return S.suspend(() => S.Struct({ OversizeHandling: S.String })).annotate({
+        identifier: "HeaderOrder",
+      });
+    case 10:
+      return S.suspend(() => S.Struct({ FallbackBehavior: S.String })).annotate({
+        identifier: "JA3Fingerprint",
+      });
+    case 11:
+      return S.suspend(() => S.Struct({ FallbackBehavior: S.optional(S.String) })).annotate({
+        identifier: "UriFragment",
+      });
+    case 12:
+      return S.suspend(() =>
+        S.Struct({
+          SingleHeader: S.optional(__S(192, __c6, 0)),
+          SingleQueryArgument: S.optional(__S(224, __c7, 0)),
+          AllQueryArguments: S.optional(__S(225, __c7, 1)),
+          UriPath: S.optional(__S(225, __c7, 1)),
+          QueryString: S.optional(__S(225, __c7, 1)),
+          Body: S.optional(__S(226, __c7, 2)),
+          Method: S.optional(__S(225, __c7, 1)),
+          JsonBody: S.optional(__S(228, __c7, 4)),
+          Headers: S.optional(__S(230, __c7, 6)),
+          Cookies: S.optional(__S(232, __c7, 8)),
+          HeaderOrder: S.optional(__S(233, __c7, 9)),
+          JA3Fingerprint: S.optional(__S(234, __c7, 10)),
+          JA4Fingerprint: S.optional(__S(234, __c7, 10)),
+          UriFragment: S.optional(__S(235, __c7, 11)),
+        }),
+      ).annotate({ identifier: "FieldToMatch" });
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(192, __c6, 0));
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({ Priority: S.Number, Type: S.String })).annotate({
+        identifier: "TextTransformation",
+      });
+    case 1:
+      return S.Array(__S(288, __c9, 0));
+    case 2:
+      return S.suspend(() => S.Struct({ Priority: S.Number, Type: S.String })).annotate({
+        identifier: "PreParseTextTransformation",
+      });
+    case 3:
+      return S.Array(__S(290, __c9, 2));
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          SearchString: T.Blob,
+          FieldToMatch: __S(236, __c7, 12),
+          TextTransformations: __S(289, __c9, 1),
+          PreParseTextTransformations: S.optional(__S(291, __c9, 3)),
+          PositionalConstraint: S.String,
+        }),
+      ).annotate({ identifier: "ByteMatchStatement" });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          FieldToMatch: __S(236, __c7, 12),
+          TextTransformations: __S(289, __c9, 1),
+          PreParseTextTransformations: S.optional(__S(291, __c9, 3)),
+          SensitivityLevel: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "SqliMatchStatement" });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          FieldToMatch: __S(236, __c7, 12),
+          TextTransformations: __S(289, __c9, 1),
+          PreParseTextTransformations: S.optional(__S(291, __c9, 3)),
+        }),
+      ).annotate({ identifier: "XssMatchStatement" });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          FieldToMatch: __S(236, __c7, 12),
+          ComparisonOperator: S.String,
+          Size: S.Number,
+          TextTransformations: __S(289, __c9, 1),
+          PreParseTextTransformations: S.optional(__S(291, __c9, 3)),
+        }),
+      ).annotate({ identifier: "SizeConstraintStatement" });
+    case 8:
+      return S.Array(S.String);
+    case 9:
+      return S.suspend(() =>
+        S.Struct({ HeaderName: S.String, FallbackBehavior: S.String }),
+      ).annotate({ identifier: "ForwardedIPConfig" });
+    case 10:
+      return S.suspend(() =>
+        S.Struct({
+          CountryCodes: S.optional(__S(296, __c9, 8)),
+          ForwardedIPConfig: S.optional(__S(297, __c9, 9)),
+        }),
+      ).annotate({ identifier: "GeoMatchStatement" });
+    case 11:
+      return S.suspend(() => S.Struct({ Name: S.String, ActionToUse: __S(167, __c5, 7) })).annotate(
+        { identifier: "RuleActionOverride" },
+      );
+    case 12:
+      return S.Array(__S(299, __c9, 11));
+    case 13:
+      return S.suspend(() =>
+        S.Struct({
+          ARN: S.String,
+          ExcludedRules: S.optional(__S(256, __c8, 0)),
+          RuleActionOverrides: S.optional(__S(300, __c9, 12)),
+        }),
+      ).annotate({
+        identifier: "RuleGroupReferenceStatement",
+      });
+    case 14:
       return S.suspend(() =>
         S.Struct({
           HeaderName: S.String,
@@ -4556,330 +4591,309 @@ function __c5(j: number): any {
           Position: S.String,
         }),
       ).annotate({ identifier: "IPSetForwardedIPConfig" });
-    case 1:
+    case 15:
       return S.suspend(() =>
-        S.Struct({ ARN: S.String, IPSetForwardedIPConfig: S.optional(__S(40, __c5, 0)) }),
+        S.Struct({ ARN: S.String, IPSetForwardedIPConfig: S.optional(__S(302, __c9, 14)) }),
       ).annotate({ identifier: "IPSetReferenceStatement" });
-    case 2:
+    case 16:
       return S.suspend(() =>
         S.Struct({
           ARN: S.String,
-          FieldToMatch: __S(16, __c2, 0),
-          TextTransformations: __S(18, __c2, 2),
-          PreParseTextTransformations: S.optional(__S(20, __c2, 4)),
+          FieldToMatch: __S(236, __c7, 12),
+          TextTransformations: __S(289, __c9, 1),
+          PreParseTextTransformations: S.optional(__S(291, __c9, 3)),
         }),
       ).annotate({
         identifier: "RegexPatternSetReferenceStatement",
       });
-    case 3:
+    case 17:
       return S.suspend(() =>
-        S.Struct({ Name: S.String, TextTransformations: __S(18, __c2, 2) }),
+        S.Struct({ Name: S.String, TextTransformations: __S(289, __c9, 1) }),
       ).annotate({ identifier: "RateLimitHeader" });
-    case 4:
-      return S.suspend(() => S.Struct({ TextTransformations: __S(18, __c2, 2) })).annotate({
+    case 18:
+      return S.suspend(() => S.Struct({ TextTransformations: __S(289, __c9, 1) })).annotate({
         identifier: "RateLimitQueryString",
       });
-    case 5:
+    case 19:
       return S.suspend(() => S.Struct({ Namespace: S.String })).annotate({
         identifier: "RateLimitLabelNamespace",
       });
-    case 6:
+    case 20:
       return S.suspend(() =>
         S.Struct({
-          Header: S.optional(__S(43, __c5, 3)),
-          Cookie: S.optional(__S(43, __c5, 3)),
-          QueryArgument: S.optional(__S(43, __c5, 3)),
-          QueryString: S.optional(__S(44, __c5, 4)),
-          HTTPMethod: S.optional(__S(4, __c0, 4)),
-          ForwardedIP: S.optional(__S(4, __c0, 4)),
-          IP: S.optional(__S(4, __c0, 4)),
-          LabelNamespace: S.optional(__S(45, __c5, 5)),
-          UriPath: S.optional(__S(44, __c5, 4)),
-          JA3Fingerprint: S.optional(__S(14, __c1, 6)),
-          JA4Fingerprint: S.optional(__S(14, __c1, 6)),
-          ASN: S.optional(__S(4, __c0, 4)),
+          Header: S.optional(__S(305, __c9, 17)),
+          Cookie: S.optional(__S(305, __c9, 17)),
+          QueryArgument: S.optional(__S(305, __c9, 17)),
+          QueryString: S.optional(__S(306, __c9, 18)),
+          HTTPMethod: S.optional(__S(225, __c7, 1)),
+          ForwardedIP: S.optional(__S(225, __c7, 1)),
+          IP: S.optional(__S(225, __c7, 1)),
+          LabelNamespace: S.optional(__S(307, __c9, 19)),
+          UriPath: S.optional(__S(306, __c9, 18)),
+          JA3Fingerprint: S.optional(__S(234, __c7, 10)),
+          JA4Fingerprint: S.optional(__S(234, __c7, 10)),
+          ASN: S.optional(__S(225, __c7, 1)),
         }),
       ).annotate({
         identifier: "RateBasedStatementCustomKey",
       });
-    case 7:
-      return S.Array(__S(46, __c5, 6));
-  }
-}
-function __c6(j: number): any {
-  switch (j) {
-    case 0:
+    case 21:
+      return S.Array(__S(308, __c9, 20));
+    case 22:
       return S.suspend(() =>
         S.Struct({
           Limit: S.Number,
           EvaluationWindowSec: S.optional(S.Number),
           AggregateKeyType: S.String,
           ScopeDownStatement: S.optional(
-            S.suspend((): S.Schema<Statement> => __S(76, __c9, 4)).annotate({
+            S.suspend((): S.Schema<Statement> => __S(336, __c10, 16)).annotate({
               identifier: "Statement",
             }),
           ),
-          ForwardedIPConfig: S.optional(__S(26, __c3, 2)),
-          CustomKeys: S.optional(__S(47, __c5, 7)),
+          ForwardedIPConfig: S.optional(__S(297, __c9, 9)),
+          CustomKeys: S.optional(__S(309, __c9, 21)),
         }),
       ).annotate({ identifier: "RateBasedStatement" });
-    case 1:
+    case 23:
       return S.Array(
-        /*@__PURE__*/ S.suspend((): S.Schema<Statement> => __S(76, __c9, 4)).annotate({
+        /*@__PURE__*/ S.suspend((): S.Schema<Statement> => __S(336, __c10, 16)).annotate({
           identifier: "Statement",
         }),
       );
-    case 2:
+    case 24:
       return S.suspend(() =>
         S.Struct({
-          Statements: S.suspend(() => __S(49, __c6, 1)).annotate({ identifier: "Statements" }),
+          Statements: S.suspend(() => __S(311, __c9, 23)).annotate({ identifier: "Statements" }),
         }),
       ).annotate({ identifier: "AndStatement" });
-    case 3:
+    case 25:
       return S.suspend(() =>
         S.Struct({
-          Statement: S.suspend((): S.Schema<Statement> => __S(76, __c9, 4)).annotate({
+          Statement: S.suspend((): S.Schema<Statement> => __S(336, __c10, 16)).annotate({
             identifier: "Statement",
           }),
         }),
       ).annotate({ identifier: "NotStatement" });
-    case 4:
+    case 26:
       return S.suspend(() => S.Struct({ Identifier: S.String })).annotate({
         identifier: "UsernameField",
       });
-    case 5:
+    case 27:
       return S.suspend(() =>
-        S.Struct({
-          InspectionLevel: S.String,
-          EnableMachineLearning: S.optional(S.Boolean),
-        }),
+        S.Struct({ InspectionLevel: S.String, EnableMachineLearning: S.optional(S.Boolean) }),
       ).annotate({
         identifier: "AWSManagedRulesBotControlRuleSet",
       });
-    case 6:
+    case 28:
       return S.suspend(() =>
         S.Struct({
           PayloadType: S.String,
-          UsernameField: __S(52, __c6, 4),
-          PasswordField: __S(52, __c6, 4),
+          UsernameField: __S(314, __c9, 26),
+          PasswordField: __S(314, __c9, 26),
         }),
       ).annotate({ identifier: "RequestInspection" });
-    case 7:
+    case 29:
       return S.Array(S.Number);
-  }
-}
-function __c7(j: number): any {
-  switch (j) {
-    case 0:
+    case 30:
       return S.suspend(() =>
         S.Struct({
-          SuccessCodes: __S(55, __c6, 7),
-          FailureCodes: __S(55, __c6, 7),
+          SuccessCodes: __S(317, __c9, 29),
+          FailureCodes: __S(317, __c9, 29),
         }),
       ).annotate({
         identifier: "ResponseInspectionStatusCode",
       });
-    case 1:
+    case 31:
       return S.suspend(() =>
         S.Struct({
           Name: S.String,
-          SuccessValues: __S(6, __c0, 6),
-          FailureValues: __S(6, __c0, 6),
+          SuccessValues: __S(96, __c3, 0),
+          FailureValues: __S(96, __c3, 0),
         }),
       ).annotate({ identifier: "ResponseInspectionHeader" });
-    case 2:
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          SuccessStrings: __S(6, __c0, 6),
-          FailureStrings: __S(6, __c0, 6),
+          SuccessStrings: __S(96, __c3, 0),
+          FailureStrings: __S(96, __c3, 0),
         }),
       ).annotate({
         identifier: "ResponseInspectionBodyContains",
       });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           Identifier: S.String,
-          SuccessValues: __S(6, __c0, 6),
-          FailureValues: __S(6, __c0, 6),
+          SuccessValues: __S(96, __c3, 0),
+          FailureValues: __S(96, __c3, 0),
         }),
       ).annotate({ identifier: "ResponseInspectionJson" });
-    case 4:
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          StatusCode: S.optional(__S(56, __c7, 0)),
-          Header: S.optional(__S(57, __c7, 1)),
-          BodyContains: S.optional(__S(58, __c7, 2)),
-          Json: S.optional(__S(59, __c7, 3)),
+          StatusCode: S.optional(__S(318, __c9, 30)),
+          Header: S.optional(__S(319, __c9, 31)),
+          BodyContains: S.optional(__S(320, __c10, 0)),
+          Json: S.optional(__S(321, __c10, 1)),
         }),
       ).annotate({ identifier: "ResponseInspection" });
-    case 5:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           LoginPath: S.String,
-          RequestInspection: S.optional(__S(54, __c6, 6)),
-          ResponseInspection: S.optional(__S(60, __c7, 4)),
+          RequestInspection: S.optional(__S(316, __c9, 28)),
+          ResponseInspection: S.optional(__S(322, __c10, 2)),
           EnableRegexInPath: S.optional(S.Boolean),
         }),
       ).annotate({
         identifier: "AWSManagedRulesATPRuleSet",
       });
-    case 6:
-      return S.Array(__S(52, __c6, 4));
-    case 7:
+    case 4:
+      return S.Array(__S(314, __c9, 26));
+    case 5:
       return S.suspend(() =>
         S.Struct({
           PayloadType: S.String,
-          UsernameField: S.optional(__S(52, __c6, 4)),
-          PasswordField: S.optional(__S(52, __c6, 4)),
-          EmailField: S.optional(__S(52, __c6, 4)),
-          PhoneNumberFields: S.optional(__S(62, __c7, 6)),
-          AddressFields: S.optional(__S(62, __c7, 6)),
+          UsernameField: S.optional(__S(314, __c9, 26)),
+          PasswordField: S.optional(__S(314, __c9, 26)),
+          EmailField: S.optional(__S(314, __c9, 26)),
+          PhoneNumberFields: S.optional(__S(324, __c10, 4)),
+          AddressFields: S.optional(__S(324, __c10, 4)),
         }),
       ).annotate({ identifier: "RequestInspectionACFP" });
-  }
-}
-function __c8(j: number): any {
-  switch (j) {
-    case 0:
+    case 6:
       return S.suspend(() =>
         S.Struct({
           CreationPath: S.String,
           RegistrationPagePath: S.String,
-          RequestInspection: __S(63, __c7, 7),
-          ResponseInspection: S.optional(__S(60, __c7, 4)),
+          RequestInspection: __S(325, __c10, 5),
+          ResponseInspection: S.optional(__S(322, __c10, 2)),
           EnableRegexInPath: S.optional(S.Boolean),
         }),
       ).annotate({
         identifier: "AWSManagedRulesACFPRuleSet",
       });
-    case 1:
-      return S.suspend(() => S.Struct({ RegexString: S.optional(S.String) })).annotate({
-        identifier: "Regex",
-      });
-    case 2:
-      return S.Array(__S(65, __c8, 1));
-    case 3:
+    case 7:
       return S.suspend(() =>
         S.Struct({
           UsageOfAction: S.String,
           Sensitivity: S.optional(S.String),
-          ExemptUriRegularExpressions: S.optional(__S(66, __c8, 2)),
+          ExemptUriRegularExpressions: S.optional(__S(129, __c4, 1)),
         }),
       ).annotate({ identifier: "ClientSideAction" });
-    case 4:
-      return S.suspend(() => S.Struct({ Challenge: __S(67, __c8, 3) })).annotate({
+    case 8:
+      return S.suspend(() => S.Struct({ Challenge: __S(327, __c10, 7) })).annotate({
         identifier: "ClientSideActionConfig",
       });
-    case 5:
+    case 9:
       return S.suspend(() =>
         S.Struct({
-          ClientSideActionConfig: __S(68, __c8, 4),
+          ClientSideActionConfig: __S(328, __c10, 8),
           SensitivityToBlock: S.optional(S.String),
         }),
       ).annotate({
         identifier: "AWSManagedRulesAntiDDoSRuleSet",
       });
-    case 6:
+    case 10:
       return S.suspend(() =>
         S.Struct({
           LoginPath: S.optional(S.String),
           PayloadType: S.optional(S.String),
-          UsernameField: S.optional(__S(52, __c6, 4)),
-          PasswordField: S.optional(__S(52, __c6, 4)),
-          AWSManagedRulesBotControlRuleSet: S.optional(__S(53, __c6, 5)),
-          AWSManagedRulesATPRuleSet: S.optional(__S(61, __c7, 5)),
-          AWSManagedRulesACFPRuleSet: S.optional(__S(64, __c8, 0)),
-          AWSManagedRulesAntiDDoSRuleSet: S.optional(__S(69, __c8, 5)),
+          UsernameField: S.optional(__S(314, __c9, 26)),
+          PasswordField: S.optional(__S(314, __c9, 26)),
+          AWSManagedRulesBotControlRuleSet: S.optional(__S(315, __c9, 27)),
+          AWSManagedRulesATPRuleSet: S.optional(__S(323, __c10, 3)),
+          AWSManagedRulesACFPRuleSet: S.optional(__S(326, __c10, 6)),
+          AWSManagedRulesAntiDDoSRuleSet: S.optional(__S(329, __c10, 9)),
         }),
       ).annotate({ identifier: "ManagedRuleGroupConfig" });
-    case 7:
-      return S.Array(__S(70, __c8, 6));
-  }
-}
-function __c9(j: number): any {
-  switch (j) {
-    case 0:
+    case 11:
+      return S.Array(__S(330, __c10, 10));
+    case 12:
       return S.suspend(() =>
         S.Struct({
           VendorName: S.String,
           Name: S.String,
           Version: S.optional(S.String),
-          ExcludedRules: S.optional(__S(28, __c3, 4)),
+          ExcludedRules: S.optional(__S(256, __c8, 0)),
           ScopeDownStatement: S.optional(
-            S.suspend((): S.Schema<Statement> => __S(76, __c9, 4)).annotate({
+            S.suspend((): S.Schema<Statement> => __S(336, __c10, 16)).annotate({
               identifier: "Statement",
             }),
           ),
-          ManagedRuleGroupConfigs: S.optional(__S(71, __c8, 7)),
-          RuleActionOverrides: S.optional(__S(38, __c4, 6)),
+          ManagedRuleGroupConfigs: S.optional(__S(331, __c10, 11)),
+          RuleActionOverrides: S.optional(__S(300, __c9, 12)),
         }),
       ).annotate({
         identifier: "ManagedRuleGroupStatement",
       });
-    case 1:
+    case 13:
       return S.suspend(() => S.Struct({ Scope: S.String, Key: S.String })).annotate({
         identifier: "LabelMatchStatement",
       });
-    case 2:
+    case 14:
       return S.suspend(() =>
         S.Struct({
           RegexString: S.String,
-          FieldToMatch: __S(16, __c2, 0),
-          TextTransformations: __S(18, __c2, 2),
-          PreParseTextTransformations: S.optional(__S(20, __c2, 4)),
+          FieldToMatch: __S(236, __c7, 12),
+          TextTransformations: __S(289, __c9, 1),
+          PreParseTextTransformations: S.optional(__S(291, __c9, 3)),
         }),
       ).annotate({ identifier: "RegexMatchStatement" });
-    case 3:
+    case 15:
       return S.suspend(() =>
-        S.Struct({ AsnList: __S(55, __c6, 7), ForwardedIPConfig: S.optional(__S(26, __c3, 2)) }),
+        S.Struct({ AsnList: __S(317, __c9, 29), ForwardedIPConfig: S.optional(__S(297, __c9, 9)) }),
       ).annotate({ identifier: "AsnMatchStatement" });
-    case 4:
+    case 16:
       return S.suspend(() =>
         S.Struct({
-          ByteMatchStatement: S.optional(__S(21, __c2, 5)),
-          SqliMatchStatement: S.optional(__S(22, __c2, 6)),
-          XssMatchStatement: S.optional(__S(23, __c2, 7)),
-          SizeConstraintStatement: S.optional(__S(24, __c3, 0)),
-          GeoMatchStatement: S.optional(__S(27, __c3, 3)),
-          RuleGroupReferenceStatement: S.optional(__S(39, __c4, 7)),
-          IPSetReferenceStatement: S.optional(__S(41, __c5, 1)),
-          RegexPatternSetReferenceStatement: S.optional(__S(42, __c5, 2)),
+          ByteMatchStatement: S.optional(__S(292, __c9, 4)),
+          SqliMatchStatement: S.optional(__S(293, __c9, 5)),
+          XssMatchStatement: S.optional(__S(294, __c9, 6)),
+          SizeConstraintStatement: S.optional(__S(295, __c9, 7)),
+          GeoMatchStatement: S.optional(__S(298, __c9, 10)),
+          RuleGroupReferenceStatement: S.optional(__S(301, __c9, 13)),
+          IPSetReferenceStatement: S.optional(__S(303, __c9, 15)),
+          RegexPatternSetReferenceStatement: S.optional(__S(304, __c9, 16)),
           RateBasedStatement: S.optional(
-            S.suspend((): S.Schema<RateBasedStatement> => __S(48, __c6, 0)).annotate({
+            S.suspend((): S.Schema<RateBasedStatement> => __S(310, __c9, 22)).annotate({
               identifier: "RateBasedStatement",
             }),
           ),
           AndStatement: S.optional(
-            S.suspend((): S.Schema<AndStatement> => __S(50, __c6, 2)).annotate({
+            S.suspend((): S.Schema<AndStatement> => __S(312, __c9, 24)).annotate({
               identifier: "AndStatement",
             }),
           ),
           OrStatement: S.optional(
-            S.suspend((): S.Schema<OrStatement> => __S(50, __c6, 2)).annotate({
+            S.suspend((): S.Schema<OrStatement> => __S(312, __c9, 24)).annotate({
               identifier: "OrStatement",
             }),
           ),
           NotStatement: S.optional(
-            S.suspend((): S.Schema<NotStatement> => __S(51, __c6, 3)).annotate({
+            S.suspend((): S.Schema<NotStatement> => __S(313, __c9, 25)).annotate({
               identifier: "NotStatement",
             }),
           ),
           ManagedRuleGroupStatement: S.optional(
-            S.suspend((): S.Schema<ManagedRuleGroupStatement> => __S(72, __c9, 0)).annotate({
+            S.suspend((): S.Schema<ManagedRuleGroupStatement> => __S(332, __c10, 12)).annotate({
               identifier: "ManagedRuleGroupStatement",
             }),
           ),
-          LabelMatchStatement: S.optional(__S(73, __c9, 1)),
-          RegexMatchStatement: S.optional(__S(74, __c9, 2)),
-          AsnMatchStatement: S.optional(__S(75, __c9, 3)),
+          LabelMatchStatement: S.optional(__S(333, __c10, 13)),
+          RegexMatchStatement: S.optional(__S(334, __c10, 14)),
+          AsnMatchStatement: S.optional(__S(335, __c10, 15)),
         }),
       ).annotate({ identifier: "Statement" });
-    case 5:
+    case 17:
       return S.suspend(() =>
-        S.Struct({ Count: S.optional(__S(34, __c4, 2)), None: S.optional(__S(4, __c0, 4)) }),
+        S.Struct({ Count: S.optional(__S(165, __c5, 5)), None: S.optional(__S(225, __c7, 1)) }),
       ).annotate({ identifier: "OverrideAction" });
-    case 6:
+    case 18:
       return S.suspend(() =>
         S.Struct({
           SampledRequestsEnabled: S.Boolean,
@@ -4887,76 +4901,74 @@ function __c9(j: number): any {
           MetricName: S.String,
         }),
       ).annotate({ identifier: "VisibilityConfig" });
-    case 7:
+    case 19:
       return S.suspend(() => S.Struct({ ImmunityTime: S.Number })).annotate({
         identifier: "ImmunityTimeProperty",
       });
-  }
-}
-function __c10(j: number): any {
-  switch (j) {
-    case 0:
+    case 20:
       return S.suspend(() =>
-        S.Struct({ ImmunityTimeProperty: S.optional(__S(79, __c9, 7)) }),
+        S.Struct({ ImmunityTimeProperty: S.optional(__S(339, __c10, 19)) }),
       ).annotate({ identifier: "CaptchaConfig" });
-    case 1:
+    case 21:
       return S.suspend(() =>
         S.Struct({
           Name: S.String,
           Priority: S.Number,
-          Statement: __S(76, __c9, 4),
-          Action: S.optional(__S(36, __c4, 4)),
-          OverrideAction: S.optional(__S(77, __c9, 5)),
-          RuleLabels: S.optional(__S(28, __c3, 4)),
-          VisibilityConfig: __S(78, __c9, 6),
-          CaptchaConfig: S.optional(__S(80, __c10, 0)),
-          ChallengeConfig: S.optional(__S(80, __c10, 0)),
+          Statement: __S(336, __c10, 16),
+          Action: S.optional(__S(167, __c5, 7)),
+          OverrideAction: S.optional(__S(337, __c10, 17)),
+          RuleLabels: S.optional(__S(256, __c8, 0)),
+          VisibilityConfig: __S(338, __c10, 18),
+          CaptchaConfig: S.optional(__S(340, __c10, 20)),
+          ChallengeConfig: S.optional(__S(340, __c10, 20)),
         }),
       ).annotate({ identifier: "Rule" });
-    case 2:
-      return S.Array(__S(81, __c10, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({ Scope: S.String, Rules: __S(82, __c10, 2) }).pipe(
-          T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-        ),
-      ).annotate({ identifier: "CheckCapacityRequest" });
-    case 4:
-      return S.suspend(() => S.Struct({ Capacity: S.optional(S.Number) }).pipe(ns)).annotate({
-        identifier: "CheckCapacityResponse",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({ Scope: S.String, TokenDomains: __S(6, __c0, 6) }).pipe(
-          T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-        ),
-      ).annotate({ identifier: "CreateAPIKeyRequest" });
-    case 6:
-      return S.suspend(() => S.Struct({ APIKey: S.optional(S.String) }).pipe(ns)).annotate({
-        identifier: "CreateAPIKeyResponse",
-      });
-    case 7:
-      return S.suspend(() => S.Struct({ Key: S.String, Value: S.String })).annotate({
-        identifier: "Tag",
-      });
+    case 22:
+      return S.Array(__S(341, __c10, 21));
   }
 }
 function __c11(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(87, __c10, 7));
+      return S.suspend(() =>
+        S.Struct({ Scope: S.String, TokenDomains: __S(96, __c3, 0) }).pipe(
+          T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "CreateAPIKeyRequest" });
     case 1:
+      return S.suspend(() => S.Struct({ APIKey: S.optional(S.String) }).pipe(ns)).annotate({
+        identifier: "CreateAPIKeyResponse",
+      });
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           Name: S.String,
           Scope: S.String,
           Description: S.optional(S.String),
           IPAddressVersion: S.String,
-          Addresses: __S(6, __c0, 6),
-          Tags: S.optional(__S(88, __c11, 0)),
+          Addresses: __S(96, __c3, 0),
+          Tags: S.optional(__S(417, __c13, 1)),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "CreateIPSetRequest" });
-    case 2:
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({ Key: S.String, Value: S.String })).annotate({
+        identifier: "Tag",
+      });
+    case 1:
+      return S.Array(__S(416, __c13, 0));
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           Name: S.optional(S.String),
@@ -4966,164 +4978,186 @@ function __c11(j: number): any {
           ARN: S.optional(S.String),
         }),
       ).annotate({ identifier: "IPSetSummary" });
-    case 3:
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
-        S.Struct({ Summary: S.optional(__S(90, __c11, 2)) }).pipe(ns),
-      ).annotate({
-        identifier: "CreateIPSetResponse",
-      });
-    case 4:
+        S.Struct({ Summary: S.optional(__S(448, __c14, 0)) }).pipe(ns),
+      ).annotate({ identifier: "CreateIPSetResponse" });
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           Name: S.String,
           Scope: S.String,
           Description: S.optional(S.String),
-          RegularExpressionList: __S(66, __c8, 2),
-          Tags: S.optional(__S(88, __c11, 0)),
+          RegularExpressionList: __S(129, __c4, 1),
+          Tags: S.optional(__S(417, __c13, 1)),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "CreateRegexPatternSetRequest",
       });
-    case 5:
+    case 1:
       return S.suspend(() =>
-        S.Struct({ Summary: S.optional(__S(90, __c11, 2)) }).pipe(ns),
+        S.Struct({ Summary: S.optional(__S(448, __c14, 0)) }).pipe(ns),
       ).annotate({
         identifier: "CreateRegexPatternSetResponse",
       });
-    case 6:
-      return S.suspend(() => S.Struct({ ContentType: S.String, Content: S.String })).annotate({
-        identifier: "CustomResponseBody",
-      });
-    case 7:
-      return S.Record(S.String, /*@__PURE__*/ __S(94, __c11, 6).pipe(S.optional));
   }
 }
-function __c12(j: number): any {
+function __c17(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => S.Struct({ Amount: S.String, Currency: S.String })).annotate({
-        identifier: "Price",
-      });
-    case 1:
-      return S.Array(__S(96, __c12, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({ Chain: S.String, WalletAddress: S.String, Prices: __S(97, __c12, 1) }),
-      ).annotate({ identifier: "PaymentNetwork" });
-    case 3:
-      return S.Array(__S(98, __c12, 2));
-    case 4:
-      return S.suspend(() => S.Struct({ PaymentNetworks: __S(99, __c12, 3) })).annotate({
-        identifier: "CryptoConfig",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          CryptoConfig: S.optional(__S(100, __c12, 4)),
-          CurrencyMode: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "MonetizationConfig" });
-    case 6:
       return S.suspend(() =>
         S.Struct({
           Name: S.String,
           Scope: S.String,
           Capacity: S.Number,
           Description: S.optional(S.String),
-          Rules: S.optional(__S(82, __c10, 2)),
-          VisibilityConfig: __S(78, __c9, 6),
-          Tags: S.optional(__S(88, __c11, 0)),
-          CustomResponseBodies: S.optional(__S(95, __c11, 7)),
-          MonetizationConfig: S.optional(__S(101, __c12, 5)),
+          Rules: S.optional(__S(342, __c10, 22)),
+          VisibilityConfig: __S(338, __c10, 18),
+          Tags: S.optional(__S(417, __c13, 1)),
+          CustomResponseBodies: S.optional(__S(577, __c18, 1)),
+          MonetizationConfig: S.optional(__S(583, __c18, 7)),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "CreateRuleGroupRequest" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({ Block: S.optional(__S(32, __c4, 0)), Allow: S.optional(__S(34, __c4, 2)) }),
-      ).annotate({ identifier: "DefaultAction" });
   }
 }
-function __c13(j: number): any {
+function __c18(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({ ContentType: S.String, Content: S.String })).annotate({
+        identifier: "CustomResponseBody",
+      });
+    case 1:
+      return S.Record(S.String, /*@__PURE__*/ __S(576, __c18, 0).pipe(S.optional));
+    case 2:
+      return S.suspend(() => S.Struct({ Amount: S.String, Currency: S.String })).annotate({
+        identifier: "Price",
+      });
+    case 3:
+      return S.Array(__S(578, __c18, 2));
+    case 4:
+      return S.suspend(() =>
+        S.Struct({ Chain: S.String, WalletAddress: S.String, Prices: __S(579, __c18, 3) }),
+      ).annotate({ identifier: "PaymentNetwork" });
+    case 5:
+      return S.Array(__S(580, __c18, 4));
+    case 6:
+      return S.suspend(() => S.Struct({ PaymentNetworks: __S(581, __c18, 5) })).annotate({
+        identifier: "CryptoConfig",
+      });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          CryptoConfig: S.optional(__S(582, __c18, 6)),
+          CurrencyMode: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "MonetizationConfig" });
+  }
+}
+function __c19(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({ FieldType: S.String, FieldKeys: S.optional(__S(6, __c0, 6)) }),
-      ).annotate({ identifier: "FieldToProtect" });
+        S.Struct({
+          Name: S.String,
+          Scope: S.String,
+          DefaultAction: __S(640, __c20, 0),
+          Description: S.optional(S.String),
+          Rules: S.optional(__S(342, __c10, 22)),
+          VisibilityConfig: __S(338, __c10, 18),
+          DataProtectionConfig: S.optional(__S(644, __c20, 4)),
+          Tags: S.optional(__S(417, __c13, 1)),
+          CustomResponseBodies: S.optional(__S(577, __c18, 1)),
+          CaptchaConfig: S.optional(__S(340, __c10, 20)),
+          ChallengeConfig: S.optional(__S(340, __c10, 20)),
+          TokenDomains: S.optional(__S(96, __c3, 0)),
+          AssociationConfig: S.optional(__S(647, __c20, 7)),
+          OnSourceDDoSProtectionConfig: S.optional(__S(648, __c20, 8)),
+          ApplicationConfig: S.optional(__S(651, __c20, 11)),
+          MonetizationConfig: S.optional(__S(583, __c18, 7)),
+        }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({ identifier: "CreateWebACLRequest" });
+  }
+}
+function __c20(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ Block: S.optional(__S(163, __c5, 3)), Allow: S.optional(__S(165, __c5, 5)) }),
+      ).annotate({ identifier: "DefaultAction" });
     case 1:
       return S.suspend(() =>
+        S.Struct({ FieldType: S.String, FieldKeys: S.optional(__S(96, __c3, 0)) }),
+      ).annotate({ identifier: "FieldToProtect" });
+    case 2:
+      return S.suspend(() =>
         S.Struct({
-          Field: __S(104, __c13, 0),
+          Field: __S(641, __c20, 1),
           Action: S.String,
           ExcludeRuleMatchDetails: S.optional(S.Boolean),
           ExcludeRateBasedDetails: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "DataProtection" });
-    case 2:
-      return S.Array(__S(105, __c13, 1));
     case 3:
-      return S.suspend(() => S.Struct({ DataProtections: __S(106, __c13, 2) })).annotate({
+      return S.Array(__S(642, __c20, 2));
+    case 4:
+      return S.suspend(() => S.Struct({ DataProtections: __S(643, __c20, 3) })).annotate({
         identifier: "DataProtectionConfig",
       });
-    case 4:
+    case 5:
       return S.suspend(() => S.Struct({ DefaultSizeInspectionLimit: S.String })).annotate({
         identifier: "RequestBodyAssociatedResourceTypeConfig",
       });
-    case 5:
-      return S.Record(S.String, /*@__PURE__*/ __S(108, __c13, 4).pipe(S.optional));
     case 6:
-      return S.suspend(() => S.Struct({ RequestBody: S.optional(__S(109, __c13, 5)) })).annotate({
+      return S.Record(S.String, /*@__PURE__*/ __S(645, __c20, 5).pipe(S.optional));
+    case 7:
+      return S.suspend(() => S.Struct({ RequestBody: S.optional(__S(646, __c20, 6)) })).annotate({
         identifier: "AssociationConfig",
       });
-    case 7:
+    case 8:
       return S.suspend(() => S.Struct({ ALBLowReputationMode: S.String })).annotate({
         identifier: "OnSourceDDoSProtectionConfig",
       });
-  }
-}
-function __c14(j: number): any {
-  switch (j) {
-    case 0:
+    case 9:
       return S.suspend(() =>
-        S.Struct({ Name: S.optional(S.String), Values: S.optional(__S(6, __c0, 6)) }),
+        S.Struct({ Name: S.optional(S.String), Values: S.optional(__S(96, __c3, 0)) }),
       ).annotate({ identifier: "ApplicationAttribute" });
-    case 1:
-      return S.Array(__S(112, __c14, 0));
-    case 2:
-      return S.suspend(() => S.Struct({ Attributes: S.optional(__S(113, __c14, 1)) })).annotate({
+    case 10:
+      return S.Array(__S(649, __c20, 9));
+    case 11:
+      return S.suspend(() => S.Struct({ Attributes: S.optional(__S(650, __c20, 10)) })).annotate({
         identifier: "ApplicationConfig",
       });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          Name: S.String,
-          Scope: S.String,
-          DefaultAction: __S(103, __c12, 7),
-          Description: S.optional(S.String),
-          Rules: S.optional(__S(82, __c10, 2)),
-          VisibilityConfig: __S(78, __c9, 6),
-          DataProtectionConfig: S.optional(__S(107, __c13, 3)),
-          Tags: S.optional(__S(88, __c11, 0)),
-          CustomResponseBodies: S.optional(__S(95, __c11, 7)),
-          CaptchaConfig: S.optional(__S(80, __c10, 0)),
-          ChallengeConfig: S.optional(__S(80, __c10, 0)),
-          TokenDomains: S.optional(__S(6, __c0, 6)),
-          AssociationConfig: S.optional(__S(110, __c13, 6)),
-          OnSourceDDoSProtectionConfig: S.optional(__S(111, __c13, 7)),
-          ApplicationConfig: S.optional(__S(114, __c14, 2)),
-          MonetizationConfig: S.optional(__S(101, __c12, 5)),
-        }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({ identifier: "CreateWebACLRequest" });
-    case 4:
+  }
+}
+function __c21(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ Scope: S.String, APIKey: S.String }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "DeleteAPIKeyRequest" });
-    case 5:
+  }
+}
+function __c22(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
         identifier: "DeleteAPIKeyResponse",
       });
-    case 6:
+  }
+}
+function __c23(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ WebACLArn: S.String, WebACLLockToken: S.String }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
@@ -5131,7 +5165,7 @@ function __c14(j: number): any {
       ).annotate({
         identifier: "DeleteFirewallManagerRuleGroupsRequest",
       });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({ NextWebACLLockToken: S.optional(S.String) }).pipe(ns),
       ).annotate({
@@ -5139,7 +5173,7 @@ function __c14(j: number): any {
       });
   }
 }
-function __c15(j: number): any {
+function __c24(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5147,7 +5181,11 @@ function __c15(j: number): any {
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "DeleteIPSetRequest" });
-    case 1:
+  }
+}
+function __c25(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           ResourceArn: S.String,
@@ -5157,11 +5195,19 @@ function __c15(j: number): any {
       ).annotate({
         identifier: "DeleteLoggingConfigurationRequest",
       });
-    case 2:
+  }
+}
+function __c26(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
         identifier: "DeleteLoggingConfigurationResponse",
       });
-    case 3:
+  }
+}
+function __c27(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ ResourceArn: S.String }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
@@ -5169,7 +5215,11 @@ function __c15(j: number): any {
       ).annotate({
         identifier: "DeletePermissionPolicyRequest",
       });
-    case 4:
+  }
+}
+function __c28(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ Name: S.String, Scope: S.String, Id: S.String, LockToken: S.String }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
@@ -5177,19 +5227,31 @@ function __c15(j: number): any {
       ).annotate({
         identifier: "DeleteRegexPatternSetRequest",
       });
-    case 5:
+  }
+}
+function __c29(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ Name: S.String, Scope: S.String, Id: S.String, LockToken: S.String }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "DeleteRuleGroupRequest" });
-    case 6:
+  }
+}
+function __c30(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ Name: S.String, Scope: S.String, Id: S.String, LockToken: S.String }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "DeleteWebACLRequest" });
-    case 7:
+  }
+}
+function __c31(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ Scope: S.String }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
@@ -5199,7 +5261,7 @@ function __c15(j: number): any {
       });
   }
 }
-function __c16(j: number): any {
+function __c32(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5216,14 +5278,18 @@ function __c16(j: number): any {
         }),
       ).annotate({ identifier: "ManagedProductDescriptor" });
     case 1:
-      return S.Array(__S(128, __c16, 0));
+      return S.Array(__S(1024, __c32, 0));
     case 2:
       return S.suspend(() =>
-        S.Struct({ ManagedProducts: S.optional(__S(129, __c16, 1)) }).pipe(ns),
+        S.Struct({ ManagedProducts: S.optional(__S(1025, __c32, 1)) }).pipe(ns),
       ).annotate({
         identifier: "DescribeAllManagedProductsResponse",
       });
-    case 3:
+  }
+}
+function __c33(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ VendorName: S.String, Scope: S.String }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
@@ -5231,7 +5297,11 @@ function __c16(j: number): any {
       ).annotate({
         identifier: "DescribeManagedProductsByVendorRequest",
       });
-    case 4:
+  }
+}
+function __c34(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           VendorName: S.String,
@@ -5242,37 +5312,41 @@ function __c16(j: number): any {
       ).annotate({
         identifier: "DescribeManagedRuleGroupRequest",
       });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({ Name: S.optional(S.String), Action: S.optional(__S(36, __c4, 4)) }),
-      ).annotate({ identifier: "RuleSummary" });
-    case 6:
-      return S.Array(__S(133, __c16, 5));
-    case 7:
-      return S.suspend(() => S.Struct({ Name: S.optional(S.String) })).annotate({
-        identifier: "LabelSummary",
-      });
-  }
-}
-function __c17(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(135, __c16, 7));
     case 1:
+      return S.suspend(() =>
+        S.Struct({ Name: S.optional(S.String), Action: S.optional(__S(167, __c5, 7)) }),
+      ).annotate({ identifier: "RuleSummary" });
+    case 2:
+      return S.Array(__S(1089, __c34, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
           VersionName: S.optional(S.String),
           SnsTopicArn: S.optional(S.String),
           Capacity: S.optional(S.Number),
-          Rules: S.optional(__S(134, __c16, 6)),
+          Rules: S.optional(__S(1090, __c34, 2)),
           LabelNamespace: S.optional(S.String),
-          AvailableLabels: S.optional(__S(136, __c17, 0)),
-          ConsumedLabels: S.optional(__S(136, __c17, 0)),
+          AvailableLabels: S.optional(__S(1121, __c35, 1)),
+          ConsumedLabels: S.optional(__S(1121, __c35, 1)),
         }).pipe(ns),
       ).annotate({
         identifier: "DescribeManagedRuleGroupResponse",
       });
-    case 2:
+  }
+}
+function __c35(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({ Name: S.optional(S.String) })).annotate({
+        identifier: "LabelSummary",
+      });
+    case 1:
+      return S.Array(__S(1120, __c35, 0));
+  }
+}
+function __c36(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ ResourceArn: S.String }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
@@ -5280,7 +5354,11 @@ function __c17(j: number): any {
       ).annotate({
         identifier: "DisassociateWebACLRequest",
       });
-    case 3:
+  }
+}
+function __c37(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ Platform: S.String, ReleaseVersion: S.String }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
@@ -5288,11 +5366,25 @@ function __c17(j: number): any {
       ).annotate({
         identifier: "GenerateMobileSdkReleaseUrlRequest",
       });
-    case 4:
+    case 1:
       return S.suspend(() => S.Struct({ Url: S.optional(S.String) }).pipe(ns)).annotate({
         identifier: "GenerateMobileSdkReleaseUrlResponse",
       });
-    case 5:
+  }
+}
+function __c38(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ Feature: S.optional(S.String), RequiredPricingPlan: S.optional(S.String) }),
+      ).annotate({ identifier: "DisallowedFeature" });
+    case 1:
+      return S.Array(__S(1216, __c38, 0));
+  }
+}
+function __c39(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ Scope: S.String, APIKey: S.String }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
@@ -5300,26 +5392,26 @@ function __c17(j: number): any {
       ).annotate({
         identifier: "GetDecryptedAPIKeyRequest",
       });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          TokenDomains: S.optional(__S(6, __c0, 6)),
+          TokenDomains: S.optional(__S(96, __c3, 0)),
           CreationTimestamp: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
         }).pipe(ns),
       ).annotate({
         identifier: "GetDecryptedAPIKeyResponse",
       });
-    case 7:
+  }
+}
+function __c40(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ Name: S.String, Scope: S.String, Id: S.String }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "GetIPSetRequest" });
-  }
-}
-function __c18(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           Name: S.String,
@@ -5327,16 +5419,20 @@ function __c18(j: number): any {
           ARN: S.String,
           Description: S.optional(S.String),
           IPAddressVersion: S.String,
-          Addresses: __S(6, __c0, 6),
+          Addresses: __S(96, __c3, 0),
         }),
       ).annotate({ identifier: "IPSet" });
-    case 1:
+    case 2:
       return S.suspend(() =>
-        S.Struct({ IPSet: S.optional(__S(144, __c18, 0)), LockToken: S.optional(S.String) }).pipe(
+        S.Struct({ IPSet: S.optional(__S(1281, __c40, 1)), LockToken: S.optional(S.String) }).pipe(
           ns,
         ),
       ).annotate({ identifier: "GetIPSetResponse" });
-    case 2:
+  }
+}
+function __c41(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           ResourceArn: S.String,
@@ -5346,68 +5442,72 @@ function __c18(j: number): any {
       ).annotate({
         identifier: "GetLoggingConfigurationRequest",
       });
-    case 3:
-      return S.Array(__S(16, __c2, 0));
-    case 4:
+  }
+}
+function __c42(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(236, __c7, 12));
+    case 1:
       return S.suspend(() => S.Struct({ Action: S.String })).annotate({
         identifier: "ActionCondition",
       });
-    case 5:
+    case 2:
       return S.suspend(() => S.Struct({ LabelName: S.String })).annotate({
         identifier: "LabelNameCondition",
       });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          ActionCondition: S.optional(__S(148, __c18, 4)),
-          LabelNameCondition: S.optional(__S(149, __c18, 5)),
-        }),
-      ).annotate({ identifier: "Condition" });
-    case 7:
-      return S.Array(__S(150, __c18, 6));
-  }
-}
-function __c19(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          Behavior: S.String,
-          Requirement: S.String,
-          Conditions: __S(151, __c18, 7),
-        }),
-      ).annotate({ identifier: "Filter" });
-    case 1:
-      return S.Array(__S(152, __c19, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({ Filters: __S(153, __c19, 1), DefaultBehavior: S.String }),
-      ).annotate({ identifier: "LoggingFilter" });
     case 3:
       return S.suspend(() =>
         S.Struct({
+          ActionCondition: S.optional(__S(1345, __c42, 1)),
+          LabelNameCondition: S.optional(__S(1346, __c42, 2)),
+        }),
+      ).annotate({ identifier: "Condition" });
+    case 4:
+      return S.Array(__S(1347, __c42, 3));
+    case 5:
+      return S.suspend(() =>
+        S.Struct({ Behavior: S.String, Requirement: S.String, Conditions: __S(1348, __c42, 4) }),
+      ).annotate({ identifier: "Filter" });
+    case 6:
+      return S.Array(__S(1349, __c42, 5));
+    case 7:
+      return S.suspend(() =>
+        S.Struct({ Filters: __S(1350, __c42, 6), DefaultBehavior: S.String }),
+      ).annotate({ identifier: "LoggingFilter" });
+    case 8:
+      return S.suspend(() =>
+        S.Struct({
           ResourceArn: S.String,
-          LogDestinationConfigs: __S(6, __c0, 6),
-          RedactedFields: S.optional(__S(147, __c18, 3)),
+          LogDestinationConfigs: __S(96, __c3, 0),
+          RedactedFields: S.optional(__S(1344, __c42, 0)),
           ManagedByFirewallManager: S.optional(S.Boolean),
-          LoggingFilter: S.optional(__S(154, __c19, 2)),
+          LoggingFilter: S.optional(__S(1351, __c42, 7)),
           LogType: S.optional(S.String),
           LogScope: S.optional(S.String),
         }),
       ).annotate({ identifier: "LoggingConfiguration" });
-    case 4:
+  }
+}
+function __c43(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
-        S.Struct({ LoggingConfiguration: S.optional(__S(155, __c19, 3)) }).pipe(ns),
+        S.Struct({ LoggingConfiguration: S.optional(__S(1352, __c42, 8)) }).pipe(ns),
       ).annotate({
         identifier: "GetLoggingConfigurationResponse",
       });
-    case 5:
+  }
+}
+function __c44(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ Name: S.String, Scope: S.String, Id: S.String }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "GetManagedRuleSetRequest" });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           AssociatedRuleGroupArn: S.optional(S.String),
@@ -5418,34 +5518,34 @@ function __c19(j: number): any {
           ExpiryTimestamp: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
         }),
       ).annotate({ identifier: "ManagedRuleSetVersion" });
-    case 7:
-      return S.Record(S.String, /*@__PURE__*/ __S(158, __c19, 6).pipe(S.optional));
-  }
-}
-function __c20(j: number): any {
-  switch (j) {
-    case 0:
+    case 2:
+      return S.Record(S.String, /*@__PURE__*/ __S(1409, __c44, 1).pipe(S.optional));
+    case 3:
       return S.suspend(() =>
         S.Struct({
           Name: S.String,
           Id: S.String,
           ARN: S.String,
           Description: S.optional(S.String),
-          PublishedVersions: S.optional(__S(159, __c19, 7)),
+          PublishedVersions: S.optional(__S(1410, __c44, 2)),
           RecommendedVersion: S.optional(S.String),
           LabelNamespace: S.optional(S.String),
         }),
       ).annotate({ identifier: "ManagedRuleSet" });
-    case 1:
+    case 4:
       return S.suspend(() =>
         S.Struct({
-          ManagedRuleSet: S.optional(__S(160, __c20, 0)),
+          ManagedRuleSet: S.optional(__S(1411, __c44, 3)),
           LockToken: S.optional(S.String),
         }).pipe(ns),
       ).annotate({
         identifier: "GetManagedRuleSetResponse",
       });
-    case 2:
+  }
+}
+function __c45(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ Platform: S.String, ReleaseVersion: S.String }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
@@ -5453,22 +5553,26 @@ function __c20(j: number): any {
       ).annotate({
         identifier: "GetMobileSdkReleaseRequest",
       });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           ReleaseVersion: S.optional(S.String),
           Timestamp: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           ReleaseNotes: S.optional(S.String),
-          Tags: S.optional(__S(88, __c11, 0)),
+          Tags: S.optional(__S(417, __c13, 1)),
         }),
       ).annotate({ identifier: "MobileSdkRelease" });
-    case 4:
+    case 2:
       return S.suspend(() =>
-        S.Struct({ MobileSdkRelease: S.optional(__S(163, __c20, 3)) }).pipe(ns),
+        S.Struct({ MobileSdkRelease: S.optional(__S(1441, __c45, 1)) }).pipe(ns),
       ).annotate({
         identifier: "GetMobileSdkReleaseResponse",
       });
-    case 5:
+  }
+}
+function __c46(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ ResourceArn: S.String }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
@@ -5476,11 +5580,15 @@ function __c20(j: number): any {
       ).annotate({
         identifier: "GetPermissionPolicyRequest",
       });
-    case 6:
+    case 1:
       return S.suspend(() => S.Struct({ Policy: S.optional(S.String) }).pipe(ns)).annotate({
         identifier: "GetPermissionPolicyResponse",
       });
-    case 7:
+  }
+}
+function __c47(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           Scope: S.String,
@@ -5492,29 +5600,29 @@ function __c20(j: number): any {
       ).annotate({
         identifier: "GetRateBasedStatementManagedKeysRequest",
       });
-  }
-}
-function __c21(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           IPAddressVersion: S.optional(S.String),
-          Addresses: S.optional(__S(6, __c0, 6)),
+          Addresses: S.optional(__S(96, __c3, 0)),
         }),
       ).annotate({
         identifier: "RateBasedStatementManagedKeysIPSet",
       });
-    case 1:
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          ManagedKeysIPV4: S.optional(__S(168, __c21, 0)),
-          ManagedKeysIPV6: S.optional(__S(168, __c21, 0)),
+          ManagedKeysIPV4: S.optional(__S(1505, __c47, 1)),
+          ManagedKeysIPV6: S.optional(__S(1505, __c47, 1)),
         }).pipe(ns),
       ).annotate({
         identifier: "GetRateBasedStatementManagedKeysResponse",
       });
-    case 2:
+  }
+}
+function __c48(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ Name: S.String, Scope: S.String, Id: S.String }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
@@ -5522,51 +5630,38 @@ function __c21(j: number): any {
       ).annotate({
         identifier: "GetRegexPatternSetRequest",
       });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           Name: S.optional(S.String),
           Id: S.optional(S.String),
           ARN: S.optional(S.String),
           Description: S.optional(S.String),
-          RegularExpressionList: S.optional(__S(66, __c8, 2)),
+          RegularExpressionList: S.optional(__S(129, __c4, 1)),
         }),
       ).annotate({ identifier: "RegexPatternSet" });
-    case 4:
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          RegexPatternSet: S.optional(__S(171, __c21, 3)),
+          RegexPatternSet: S.optional(__S(1537, __c48, 1)),
           LockToken: S.optional(S.String),
         }).pipe(ns),
       ).annotate({
         identifier: "GetRegexPatternSetResponse",
       });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          StartTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-          EndTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-        }),
-      ).annotate({ identifier: "TimeWindow" });
-    case 6:
-      return S.suspend(() => S.Struct({ Name: S.String, Values: __S(6, __c0, 6) })).annotate({
-        identifier: "MonetizationFilter",
-      });
-    case 7:
-      return S.Array(__S(174, __c21, 6));
   }
 }
-function __c22(j: number): any {
+function __c49(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           StatisticType: S.String,
-          TimeWindow: __S(173, __c21, 5),
+          TimeWindow: __S(1600, __c50, 0),
           Scope: S.String,
           Currency: S.String,
           GroupBy: S.optional(S.String),
-          Filters: S.optional(__S(175, __c21, 7)),
+          Filters: S.optional(__S(1633, __c51, 1)),
           NextMarker: S.optional(S.String),
           Limit: S.optional(S.Number),
           SortBy: S.optional(S.String),
@@ -5590,7 +5685,7 @@ function __c22(j: number): any {
         }),
       ).annotate({ identifier: "SourceStatistics" });
     case 2:
-      return S.Array(__S(177, __c22, 1));
+      return S.Array(__S(1569, __c49, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
@@ -5601,29 +5696,54 @@ function __c22(j: number): any {
         }),
       ).annotate({ identifier: "RevenuePathStatistics" });
     case 4:
-      return S.Array(__S(179, __c22, 3));
+      return S.Array(__S(1571, __c49, 3));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          SourceStatistics: S.optional(__S(178, __c22, 2)),
-          RevenuePathStatistics: S.optional(__S(180, __c22, 4)),
+          SourceStatistics: S.optional(__S(1570, __c49, 2)),
+          RevenuePathStatistics: S.optional(__S(1572, __c49, 4)),
           NextMarker: S.optional(S.String),
         }).pipe(ns),
       ).annotate({
         identifier: "GetRevenueStatisticsResponse",
       });
-    case 6:
+  }
+}
+function __c50(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          TimeWindow: __S(173, __c21, 5),
+          StartTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+          EndTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+        }),
+      ).annotate({ identifier: "TimeWindow" });
+  }
+}
+function __c51(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({ Name: S.String, Values: __S(96, __c3, 0) })).annotate({
+        identifier: "MonetizationFilter",
+      });
+    case 1:
+      return S.Array(__S(1632, __c51, 0));
+  }
+}
+function __c52(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          TimeWindow: __S(1600, __c50, 0),
           Scope: S.String,
           Currency: S.String,
-          Filters: S.optional(__S(175, __c21, 7)),
+          Filters: S.optional(__S(1633, __c51, 1)),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "GetRevenueStatisticsSummaryRequest",
       });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           TotalAmount: S.optional(S.String),
@@ -5634,33 +5754,33 @@ function __c22(j: number): any {
           TotalMonetizeServed: S.optional(S.Number),
         }),
       ).annotate({ identifier: "RevenueBreakdown" });
-  }
-}
-function __c23(j: number): any {
-  switch (j) {
-    case 0:
+    case 2:
       return S.suspend(() =>
-        S.Struct({ RevenueBreakdown: S.optional(__S(183, __c22, 7)) }).pipe(ns),
+        S.Struct({ RevenueBreakdown: S.optional(__S(1665, __c52, 1)) }).pipe(ns),
       ).annotate({
         identifier: "GetRevenueStatisticsSummaryResponse",
       });
-    case 1:
+  }
+}
+function __c53(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           StatisticType: S.String,
-          TimeWindow: __S(173, __c21, 5),
+          TimeWindow: __S(1600, __c50, 0),
           Scope: S.String,
           Interval: S.String,
           Currency: S.String,
           GroupBy: S.optional(S.String),
-          Filters: S.optional(__S(175, __c21, 7)),
+          Filters: S.optional(__S(1633, __c51, 1)),
           Limit: S.optional(S.Number),
           NextMarker: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "GetRevenueStatisticsTimeSeriesRequest",
       });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           Date: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
@@ -5672,18 +5792,22 @@ function __c23(j: number): any {
           GroupByValue: S.optional(S.String),
         }),
       ).annotate({ identifier: "DataPointEntry" });
+    case 2:
+      return S.Array(__S(1697, __c53, 1));
     case 3:
-      return S.Array(__S(186, __c23, 2));
-    case 4:
       return S.suspend(() =>
         S.Struct({
-          DataPoints: S.optional(__S(187, __c23, 3)),
+          DataPoints: S.optional(__S(1698, __c53, 2)),
           NextMarker: S.optional(S.String),
         }).pipe(ns),
       ).annotate({
         identifier: "GetRevenueStatisticsTimeSeriesResponse",
       });
-    case 5:
+  }
+}
+function __c54(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           Name: S.optional(S.String),
@@ -5692,7 +5816,7 @@ function __c23(j: number): any {
           ARN: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "GetRuleGroupRequest" });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           Name: S.String,
@@ -5700,25 +5824,25 @@ function __c23(j: number): any {
           Capacity: S.Number,
           ARN: S.String,
           Description: S.optional(S.String),
-          Rules: S.optional(__S(82, __c10, 2)),
-          VisibilityConfig: __S(78, __c9, 6),
+          Rules: S.optional(__S(342, __c10, 22)),
+          VisibilityConfig: __S(338, __c10, 18),
           LabelNamespace: S.optional(S.String),
-          CustomResponseBodies: S.optional(__S(95, __c11, 7)),
-          AvailableLabels: S.optional(__S(136, __c17, 0)),
-          ConsumedLabels: S.optional(__S(136, __c17, 0)),
-          MonetizationConfig: S.optional(__S(101, __c12, 5)),
+          CustomResponseBodies: S.optional(__S(577, __c18, 1)),
+          AvailableLabels: S.optional(__S(1121, __c35, 1)),
+          ConsumedLabels: S.optional(__S(1121, __c35, 1)),
+          MonetizationConfig: S.optional(__S(583, __c18, 7)),
         }),
       ).annotate({ identifier: "RuleGroup" });
-    case 7:
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          RuleGroup: S.optional(__S(190, __c23, 6)),
+          RuleGroup: S.optional(__S(1729, __c54, 1)),
           LockToken: S.optional(S.String),
         }).pipe(ns),
       ).annotate({ identifier: "GetRuleGroupResponse" });
   }
 }
-function __c24(j: number): any {
+function __c55(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5726,7 +5850,7 @@ function __c24(j: number): any {
           WebAclArn: S.String,
           RuleMetricName: S.String,
           Scope: S.String,
-          TimeWindow: __S(173, __c21, 5),
+          TimeWindow: __S(1600, __c50, 0),
           MaxItems: S.Number,
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
@@ -5737,7 +5861,7 @@ function __c24(j: number): any {
         S.Struct({ Name: S.optional(S.String), Value: S.optional(S.String) }),
       ).annotate({ identifier: "HTTPHeader" });
     case 2:
-      return S.Array(__S(193, __c24, 1));
+      return S.Array(__S(1761, __c55, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
@@ -5746,7 +5870,7 @@ function __c24(j: number): any {
           URI: S.optional(S.String),
           Method: S.optional(S.String),
           HTTPVersion: S.optional(S.String),
-          Headers: S.optional(__S(194, __c24, 2)),
+          Headers: S.optional(__S(1762, __c55, 2)),
         }),
       ).annotate({ identifier: "HTTPRequest" });
     case 4:
@@ -5760,34 +5884,34 @@ function __c24(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          Request: __S(195, __c24, 3),
+          Request: __S(1763, __c55, 3),
           Weight: S.Number,
           Timestamp: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           Action: S.optional(S.String),
           RuleNameWithinRuleGroup: S.optional(S.String),
-          RequestHeadersInserted: S.optional(__S(194, __c24, 2)),
+          RequestHeadersInserted: S.optional(__S(1762, __c55, 2)),
           ResponseCodeSent: S.optional(S.Number),
-          Labels: S.optional(__S(28, __c3, 4)),
-          CaptchaResponse: S.optional(__S(196, __c24, 4)),
-          ChallengeResponse: S.optional(__S(196, __c24, 4)),
+          Labels: S.optional(__S(256, __c8, 0)),
+          CaptchaResponse: S.optional(__S(1764, __c55, 4)),
+          ChallengeResponse: S.optional(__S(1764, __c55, 4)),
           OverriddenAction: S.optional(S.String),
         }),
       ).annotate({ identifier: "SampledHTTPRequest" });
     case 6:
-      return S.Array(__S(197, __c24, 5));
+      return S.Array(__S(1765, __c55, 5));
     case 7:
       return S.suspend(() =>
         S.Struct({
-          SampledRequests: S.optional(__S(198, __c24, 6)),
+          SampledRequests: S.optional(__S(1766, __c55, 6)),
           PopulationSize: S.optional(S.Number),
-          TimeWindow: S.optional(__S(173, __c21, 5)),
+          TimeWindow: S.optional(__S(1600, __c50, 0)),
         }).pipe(ns),
       ).annotate({
         identifier: "GetSampledRequestsResponse",
       });
   }
 }
-function __c25(j: number): any {
+function __c56(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5795,7 +5919,7 @@ function __c25(j: number): any {
           WebAclArn: S.String,
           Scope: S.String,
           UriPathPrefix: S.optional(S.String),
-          TimeWindow: __S(173, __c21, 5),
+          TimeWindow: __S(1600, __c50, 0),
           BotCategory: S.optional(S.String),
           BotOrganization: S.optional(S.String),
           BotName: S.optional(S.String),
@@ -5819,31 +5943,35 @@ function __c25(j: number): any {
         S.Struct({ BotName: S.String, RequestCount: S.Number, Percentage: S.Number }),
       ).annotate({ identifier: "BotStatistics" });
     case 3:
-      return S.Array(__S(202, __c25, 2));
+      return S.Array(__S(1794, __c56, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          Source: S.optional(__S(201, __c25, 1)),
+          Source: S.optional(__S(1793, __c56, 1)),
           Path: S.String,
           RequestCount: S.Number,
           Percentage: S.Number,
-          TopBots: S.optional(__S(203, __c25, 3)),
+          TopBots: S.optional(__S(1795, __c56, 3)),
         }),
       ).annotate({ identifier: "PathStatistics" });
     case 5:
-      return S.Array(__S(204, __c25, 4));
+      return S.Array(__S(1796, __c56, 4));
     case 6:
       return S.suspend(() =>
         S.Struct({
-          PathStatistics: __S(205, __c25, 5),
+          PathStatistics: __S(1797, __c56, 5),
           TotalRequestCount: S.Number,
           NextMarker: S.optional(S.String),
-          TopCategories: S.optional(__S(205, __c25, 5)),
+          TopCategories: S.optional(__S(1797, __c56, 5)),
         }).pipe(ns),
       ).annotate({
         identifier: "GetTopPathStatisticsByTrafficResponse",
       });
-    case 7:
+  }
+}
+function __c57(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           Name: S.optional(S.String),
@@ -5852,15 +5980,23 @@ function __c25(j: number): any {
           ARN: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "GetWebACLRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          WebACL: S.optional(__S(1859, __c58, 3)),
+          LockToken: S.optional(S.String),
+          ApplicationIntegrationURL: S.optional(S.String),
+        }).pipe(ns),
+      ).annotate({ identifier: "GetWebACLResponse" });
   }
 }
-function __c26(j: number): any {
+function __c58(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          ManagedRuleGroupStatement: S.optional(__S(72, __c9, 0)),
-          RuleGroupReferenceStatement: S.optional(__S(39, __c4, 7)),
+          ManagedRuleGroupStatement: S.optional(__S(332, __c10, 12)),
+          RuleGroupReferenceStatement: S.optional(__S(301, __c9, 13)),
         }),
       ).annotate({ identifier: "FirewallManagerStatement" });
     case 1:
@@ -5868,49 +6004,45 @@ function __c26(j: number): any {
         S.Struct({
           Name: S.String,
           Priority: S.Number,
-          FirewallManagerStatement: __S(208, __c26, 0),
-          OverrideAction: __S(77, __c9, 5),
-          VisibilityConfig: __S(78, __c9, 6),
+          FirewallManagerStatement: __S(1856, __c58, 0),
+          OverrideAction: __S(337, __c10, 17),
+          VisibilityConfig: __S(338, __c10, 18),
         }),
       ).annotate({ identifier: "FirewallManagerRuleGroup" });
     case 2:
-      return S.Array(__S(209, __c26, 1));
+      return S.Array(__S(1857, __c58, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
           Name: S.String,
           Id: S.String,
           ARN: S.String,
-          DefaultAction: __S(103, __c12, 7),
+          DefaultAction: __S(640, __c20, 0),
           Description: S.optional(S.String),
-          Rules: S.optional(__S(82, __c10, 2)),
-          VisibilityConfig: __S(78, __c9, 6),
-          DataProtectionConfig: S.optional(__S(107, __c13, 3)),
+          Rules: S.optional(__S(342, __c10, 22)),
+          VisibilityConfig: __S(338, __c10, 18),
+          DataProtectionConfig: S.optional(__S(644, __c20, 4)),
           Capacity: S.optional(S.Number),
-          PreProcessFirewallManagerRuleGroups: S.optional(__S(210, __c26, 2)),
-          PostProcessFirewallManagerRuleGroups: S.optional(__S(210, __c26, 2)),
+          PreProcessFirewallManagerRuleGroups: S.optional(__S(1858, __c58, 2)),
+          PostProcessFirewallManagerRuleGroups: S.optional(__S(1858, __c58, 2)),
           ManagedByFirewallManager: S.optional(S.Boolean),
           LabelNamespace: S.optional(S.String),
-          CustomResponseBodies: S.optional(__S(95, __c11, 7)),
-          CaptchaConfig: S.optional(__S(80, __c10, 0)),
-          ChallengeConfig: S.optional(__S(80, __c10, 0)),
-          TokenDomains: S.optional(__S(6, __c0, 6)),
-          AssociationConfig: S.optional(__S(110, __c13, 6)),
+          CustomResponseBodies: S.optional(__S(577, __c18, 1)),
+          CaptchaConfig: S.optional(__S(340, __c10, 20)),
+          ChallengeConfig: S.optional(__S(340, __c10, 20)),
+          TokenDomains: S.optional(__S(96, __c3, 0)),
+          AssociationConfig: S.optional(__S(647, __c20, 7)),
           RetrofittedByFirewallManager: S.optional(S.Boolean),
-          OnSourceDDoSProtectionConfig: S.optional(__S(111, __c13, 7)),
-          ApplicationConfig: S.optional(__S(114, __c14, 2)),
-          MonetizationConfig: S.optional(__S(101, __c12, 5)),
+          OnSourceDDoSProtectionConfig: S.optional(__S(648, __c20, 8)),
+          ApplicationConfig: S.optional(__S(651, __c20, 11)),
+          MonetizationConfig: S.optional(__S(583, __c18, 7)),
         }),
       ).annotate({ identifier: "WebACL" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          WebACL: S.optional(__S(211, __c26, 3)),
-          LockToken: S.optional(S.String),
-          ApplicationIntegrationURL: S.optional(S.String),
-        }).pipe(ns),
-      ).annotate({ identifier: "GetWebACLResponse" });
-    case 5:
+  }
+}
+function __c59(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ ResourceArn: S.String }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
@@ -5918,13 +6050,17 @@ function __c26(j: number): any {
       ).annotate({
         identifier: "GetWebACLForResourceRequest",
       });
-    case 6:
+    case 1:
       return S.suspend(() =>
-        S.Struct({ WebACL: S.optional(__S(211, __c26, 3)) }).pipe(ns),
+        S.Struct({ WebACL: S.optional(__S(1859, __c58, 3)) }).pipe(ns),
       ).annotate({
         identifier: "GetWebACLForResourceResponse",
       });
-    case 7:
+  }
+}
+function __c60(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           Scope: S.String,
@@ -5932,30 +6068,30 @@ function __c26(j: number): any {
           Limit: S.optional(S.Number),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "ListAPIKeysRequest" });
-  }
-}
-function __c27(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          TokenDomains: S.optional(__S(6, __c0, 6)),
+          TokenDomains: S.optional(__S(96, __c3, 0)),
           APIKey: S.optional(S.String),
           CreationTimestamp: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           Version: S.optional(S.Number),
         }),
       ).annotate({ identifier: "APIKeySummary" });
-    case 1:
-      return S.Array(__S(216, __c27, 0));
     case 2:
+      return S.Array(__S(1921, __c60, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
           NextMarker: S.optional(S.String),
-          APIKeySummaries: S.optional(__S(217, __c27, 1)),
+          APIKeySummaries: S.optional(__S(1922, __c60, 2)),
           ApplicationIntegrationURL: S.optional(S.String),
         }).pipe(ns),
       ).annotate({ identifier: "ListAPIKeysResponse" });
-    case 3:
+  }
+}
+function __c61(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           Scope: S.String,
@@ -5965,7 +6101,7 @@ function __c27(j: number): any {
       ).annotate({
         identifier: "ListAvailableManagedRuleGroupsRequest",
       });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           VendorName: S.optional(S.String),
@@ -5974,18 +6110,22 @@ function __c27(j: number): any {
           Description: S.optional(S.String),
         }),
       ).annotate({ identifier: "ManagedRuleGroupSummary" });
-    case 5:
-      return S.Array(__S(220, __c27, 4));
-    case 6:
+    case 2:
+      return S.Array(__S(1953, __c61, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
           NextMarker: S.optional(S.String),
-          ManagedRuleGroups: S.optional(__S(221, __c27, 5)),
+          ManagedRuleGroups: S.optional(__S(1954, __c61, 2)),
         }).pipe(ns),
       ).annotate({
         identifier: "ListAvailableManagedRuleGroupsResponse",
       });
-    case 7:
+  }
+}
+function __c62(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           VendorName: S.String,
@@ -5997,30 +6137,30 @@ function __c27(j: number): any {
       ).annotate({
         identifier: "ListAvailableManagedRuleGroupVersionsRequest",
       });
-  }
-}
-function __c28(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           Name: S.optional(S.String),
           LastUpdateTimestamp: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
         }),
       ).annotate({ identifier: "ManagedRuleGroupVersion" });
-    case 1:
-      return S.Array(__S(224, __c28, 0));
     case 2:
+      return S.Array(__S(1985, __c62, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
           NextMarker: S.optional(S.String),
-          Versions: S.optional(__S(225, __c28, 1)),
+          Versions: S.optional(__S(1986, __c62, 2)),
           CurrentDefaultVersion: S.optional(S.String),
         }).pipe(ns),
       ).annotate({
         identifier: "ListAvailableManagedRuleGroupVersionsResponse",
       });
-    case 3:
+  }
+}
+function __c63(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           Scope: S.String,
@@ -6028,15 +6168,24 @@ function __c28(j: number): any {
           Limit: S.optional(S.Number),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "ListIPSetsRequest" });
-    case 4:
-      return S.Array(__S(90, __c11, 2));
-    case 5:
+    case 1:
       return S.suspend(() =>
-        S.Struct({ NextMarker: S.optional(S.String), IPSets: S.optional(__S(228, __c28, 4)) }).pipe(
-          ns,
-        ),
+        S.Struct({
+          NextMarker: S.optional(S.String),
+          IPSets: S.optional(__S(2048, __c64, 0)),
+        }).pipe(ns),
       ).annotate({ identifier: "ListIPSetsResponse" });
-    case 6:
+  }
+}
+function __c64(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(448, __c14, 0));
+  }
+}
+function __c65(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           Scope: S.String,
@@ -6047,22 +6196,22 @@ function __c28(j: number): any {
       ).annotate({
         identifier: "ListLoggingConfigurationsRequest",
       });
-    case 7:
-      return S.Array(__S(155, __c19, 3));
-  }
-}
-function __c29(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
+      return S.Array(__S(1352, __c42, 8));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          LoggingConfigurations: S.optional(__S(231, __c28, 7)),
+          LoggingConfigurations: S.optional(__S(2081, __c65, 1)),
           NextMarker: S.optional(S.String),
         }).pipe(ns),
       ).annotate({
         identifier: "ListLoggingConfigurationsResponse",
       });
-    case 1:
+  }
+}
+function __c66(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           Scope: S.String,
@@ -6072,7 +6221,7 @@ function __c29(j: number): any {
       ).annotate({
         identifier: "ListManagedRuleSetsRequest",
       });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           Name: S.optional(S.String),
@@ -6083,18 +6232,22 @@ function __c29(j: number): any {
           LabelNamespace: S.optional(S.String),
         }),
       ).annotate({ identifier: "ManagedRuleSetSummary" });
+    case 2:
+      return S.Array(__S(2113, __c66, 1));
     case 3:
-      return S.Array(__S(234, __c29, 2));
-    case 4:
       return S.suspend(() =>
         S.Struct({
           NextMarker: S.optional(S.String),
-          ManagedRuleSets: S.optional(__S(235, __c29, 3)),
+          ManagedRuleSets: S.optional(__S(2114, __c66, 2)),
         }).pipe(ns),
       ).annotate({
         identifier: "ListManagedRuleSetsResponse",
       });
-    case 5:
+  }
+}
+function __c67(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           Platform: S.String,
@@ -6104,29 +6257,29 @@ function __c29(j: number): any {
       ).annotate({
         identifier: "ListMobileSdkReleasesRequest",
       });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           ReleaseVersion: S.optional(S.String),
           Timestamp: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
         }),
       ).annotate({ identifier: "ReleaseSummary" });
-    case 7:
-      return S.Array(__S(238, __c29, 6));
-  }
-}
-function __c30(j: number): any {
-  switch (j) {
-    case 0:
+    case 2:
+      return S.Array(__S(2145, __c67, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          ReleaseSummaries: S.optional(__S(239, __c29, 7)),
+          ReleaseSummaries: S.optional(__S(2146, __c67, 2)),
           NextMarker: S.optional(S.String),
         }).pipe(ns),
       ).annotate({
         identifier: "ListMobileSdkReleasesResponse",
       });
-    case 1:
+  }
+}
+function __c68(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           Scope: S.String,
@@ -6136,16 +6289,20 @@ function __c30(j: number): any {
       ).annotate({
         identifier: "ListRegexPatternSetsRequest",
       });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           NextMarker: S.optional(S.String),
-          RegexPatternSets: S.optional(__S(228, __c28, 4)),
+          RegexPatternSets: S.optional(__S(2048, __c64, 0)),
         }).pipe(ns),
       ).annotate({
         identifier: "ListRegexPatternSetsResponse",
       });
-    case 3:
+  }
+}
+function __c69(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ WebACLArn: S.String, ResourceType: S.optional(S.String) }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
@@ -6153,13 +6310,17 @@ function __c30(j: number): any {
       ).annotate({
         identifier: "ListResourcesForWebACLRequest",
       });
-    case 4:
+    case 1:
       return S.suspend(() =>
-        S.Struct({ ResourceArns: S.optional(__S(6, __c0, 6)) }).pipe(ns),
+        S.Struct({ ResourceArns: S.optional(__S(96, __c3, 0)) }).pipe(ns),
       ).annotate({
         identifier: "ListResourcesForWebACLResponse",
       });
-    case 5:
+  }
+}
+function __c70(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           Scope: S.String,
@@ -6167,20 +6328,24 @@ function __c30(j: number): any {
           Limit: S.optional(S.Number),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "ListRuleGroupsRequest" });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           NextMarker: S.optional(S.String),
-          RuleGroups: S.optional(__S(228, __c28, 4)),
+          RuleGroups: S.optional(__S(2048, __c64, 0)),
         }).pipe(ns),
       ).annotate({ identifier: "ListRuleGroupsResponse" });
-    case 7:
+  }
+}
+function __c71(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          TimeWindow: __S(173, __c21, 5),
+          TimeWindow: __S(1600, __c50, 0),
           Scope: S.String,
           Currency: S.String,
-          Filters: S.optional(__S(175, __c21, 7)),
+          Filters: S.optional(__S(1633, __c51, 1)),
           SortBy: S.optional(S.String),
           SortOrder: S.optional(S.String),
           Limit: S.optional(S.Number),
@@ -6189,11 +6354,7 @@ function __c30(j: number): any {
       ).annotate({
         identifier: "ListSettlementRecordsRequest",
       });
-  }
-}
-function __c31(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           Timestamp: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
@@ -6215,18 +6376,22 @@ function __c31(j: number): any {
           RequestTimestamp: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
         }),
       ).annotate({ identifier: "SettlementRecord" });
-    case 1:
-      return S.Array(__S(248, __c31, 0));
     case 2:
+      return S.Array(__S(2273, __c71, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          Settlements: S.optional(__S(249, __c31, 1)),
+          Settlements: S.optional(__S(2274, __c71, 2)),
           NextMarker: S.optional(S.String),
         }).pipe(ns),
       ).annotate({
         identifier: "ListSettlementRecordsResponse",
       });
-    case 3:
+  }
+}
+function __c72(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           NextMarker: S.optional(S.String),
@@ -6236,20 +6401,24 @@ function __c31(j: number): any {
       ).annotate({
         identifier: "ListTagsForResourceRequest",
       });
-    case 4:
+    case 1:
       return S.suspend(() =>
-        S.Struct({ ResourceARN: S.optional(S.String), TagList: S.optional(__S(88, __c11, 0)) }),
+        S.Struct({ ResourceARN: S.optional(S.String), TagList: S.optional(__S(417, __c13, 1)) }),
       ).annotate({ identifier: "TagInfoForResource" });
-    case 5:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           NextMarker: S.optional(S.String),
-          TagInfoForResource: S.optional(__S(252, __c31, 4)),
+          TagInfoForResource: S.optional(__S(2305, __c72, 1)),
         }).pipe(ns),
       ).annotate({
         identifier: "ListTagsForResourceResponse",
       });
-    case 6:
+  }
+}
+function __c73(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           Scope: S.String,
@@ -6257,35 +6426,39 @@ function __c31(j: number): any {
           Limit: S.optional(S.Number),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "ListWebACLsRequest" });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           NextMarker: S.optional(S.String),
-          WebACLs: S.optional(__S(228, __c28, 4)),
+          WebACLs: S.optional(__S(2048, __c64, 0)),
         }).pipe(ns),
       ).annotate({ identifier: "ListWebACLsResponse" });
   }
 }
-function __c32(j: number): any {
+function __c74(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({ LoggingConfiguration: __S(155, __c19, 3) }).pipe(
+        S.Struct({ LoggingConfiguration: __S(1352, __c42, 8) }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({
         identifier: "PutLoggingConfigurationRequest",
       });
-    case 1:
+  }
+}
+function __c75(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           AssociatedRuleGroupArn: S.optional(S.String),
           ForecastedLifetime: S.optional(S.Number),
         }),
       ).annotate({ identifier: "VersionToPublish" });
+    case 1:
+      return S.Record(S.String, /*@__PURE__*/ __S(2400, __c75, 0).pipe(S.optional));
     case 2:
-      return S.Record(S.String, /*@__PURE__*/ __S(257, __c32, 1).pipe(S.optional));
-    case 3:
       return S.suspend(() =>
         S.Struct({
           Name: S.String,
@@ -6293,16 +6466,24 @@ function __c32(j: number): any {
           Id: S.String,
           LockToken: S.String,
           RecommendedVersion: S.optional(S.String),
-          VersionsToPublish: S.optional(__S(258, __c32, 2)),
+          VersionsToPublish: S.optional(__S(2401, __c75, 1)),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "PutManagedRuleSetVersionsRequest",
       });
-    case 4:
+  }
+}
+function __c76(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() => S.Struct({ NextLockToken: S.optional(S.String) }).pipe(ns)).annotate({
         identifier: "PutManagedRuleSetVersionsResponse",
       });
-    case 5:
+  }
+}
+function __c77(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ ResourceArn: S.String, Policy: S.String }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
@@ -6310,21 +6491,29 @@ function __c32(j: number): any {
       ).annotate({
         identifier: "PutPermissionPolicyRequest",
       });
-    case 6:
+  }
+}
+function __c78(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
-        S.Struct({ ResourceARN: S.String, Tags: __S(88, __c11, 0) }).pipe(
+        S.Struct({ ResourceARN: S.String, Tags: __S(417, __c13, 1) }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "TagResourceRequest" });
-    case 7:
+  }
+}
+function __c79(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
-        S.Struct({ ResourceARN: S.String, TagKeys: __S(6, __c0, 6) }).pipe(
+        S.Struct({ ResourceARN: S.String, TagKeys: __S(96, __c3, 0) }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "UntagResourceRequest" });
   }
 }
-function __c33(j: number): any {
+function __c80(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -6333,15 +6522,23 @@ function __c33(j: number): any {
           Scope: S.String,
           Id: S.String,
           Description: S.optional(S.String),
-          Addresses: __S(6, __c0, 6),
+          Addresses: __S(96, __c3, 0),
           LockToken: S.String,
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "UpdateIPSetRequest" });
-    case 1:
+  }
+}
+function __c81(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() => S.Struct({ NextLockToken: S.optional(S.String) }).pipe(ns)).annotate({
         identifier: "UpdateIPSetResponse",
       });
-    case 2:
+  }
+}
+function __c82(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           Name: S.String,
@@ -6354,7 +6551,7 @@ function __c33(j: number): any {
       ).annotate({
         identifier: "UpdateManagedRuleSetVersionExpiryDateRequest",
       });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           ExpiringVersion: S.optional(S.String),
@@ -6364,68 +6561,69 @@ function __c33(j: number): any {
       ).annotate({
         identifier: "UpdateManagedRuleSetVersionExpiryDateResponse",
       });
-    case 4:
+  }
+}
+function __c83(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           Name: S.String,
           Scope: S.String,
           Id: S.String,
           Description: S.optional(S.String),
-          RegularExpressionList: __S(66, __c8, 2),
+          RegularExpressionList: __S(129, __c4, 1),
           LockToken: S.String,
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "UpdateRegexPatternSetRequest",
       });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          Name: S.String,
-          Scope: S.String,
-          Id: S.String,
-          Description: S.optional(S.String),
-          Rules: S.optional(__S(82, __c10, 2)),
-          VisibilityConfig: __S(78, __c9, 6),
-          LockToken: S.String,
-          CustomResponseBodies: S.optional(__S(95, __c11, 7)),
-          MonetizationConfig: S.optional(__S(101, __c12, 5)),
-        }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({ identifier: "UpdateRuleGroupRequest" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          Name: S.String,
-          Scope: S.String,
-          Id: S.String,
-          DefaultAction: __S(103, __c12, 7),
-          Description: S.optional(S.String),
-          Rules: S.optional(__S(82, __c10, 2)),
-          VisibilityConfig: __S(78, __c9, 6),
-          DataProtectionConfig: S.optional(__S(107, __c13, 3)),
-          LockToken: S.String,
-          CustomResponseBodies: S.optional(__S(95, __c11, 7)),
-          CaptchaConfig: S.optional(__S(80, __c10, 0)),
-          ChallengeConfig: S.optional(__S(80, __c10, 0)),
-          TokenDomains: S.optional(__S(6, __c0, 6)),
-          AssociationConfig: S.optional(__S(110, __c13, 6)),
-          OnSourceDDoSProtectionConfig: S.optional(__S(111, __c13, 7)),
-          ApplicationConfig: S.optional(__S(114, __c14, 2)),
-          MonetizationConfig: S.optional(__S(101, __c12, 5)),
-        }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({ identifier: "UpdateWebACLRequest" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({ Feature: S.optional(S.String), RequiredPricingPlan: S.optional(S.String) }),
-      ).annotate({ identifier: "DisallowedFeature" });
   }
 }
-function __c34(j: number): any {
+function __c84(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(271, __c33, 7));
+      return S.suspend(() =>
+        S.Struct({
+          Name: S.String,
+          Scope: S.String,
+          Id: S.String,
+          Description: S.optional(S.String),
+          Rules: S.optional(__S(342, __c10, 22)),
+          VisibilityConfig: __S(338, __c10, 18),
+          LockToken: S.String,
+          CustomResponseBodies: S.optional(__S(577, __c18, 1)),
+          MonetizationConfig: S.optional(__S(583, __c18, 7)),
+        }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({ identifier: "UpdateRuleGroupRequest" });
   }
 }
-
+function __c85(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          Name: S.String,
+          Scope: S.String,
+          Id: S.String,
+          DefaultAction: __S(640, __c20, 0),
+          Description: S.optional(S.String),
+          Rules: S.optional(__S(342, __c10, 22)),
+          VisibilityConfig: __S(338, __c10, 18),
+          DataProtectionConfig: S.optional(__S(644, __c20, 4)),
+          LockToken: S.String,
+          CustomResponseBodies: S.optional(__S(577, __c18, 1)),
+          CaptchaConfig: S.optional(__S(340, __c10, 20)),
+          ChallengeConfig: S.optional(__S(340, __c10, 20)),
+          TokenDomains: S.optional(__S(96, __c3, 0)),
+          AssociationConfig: S.optional(__S(647, __c20, 7)),
+          OnSourceDDoSProtectionConfig: S.optional(__S(648, __c20, 8)),
+          ApplicationConfig: S.optional(__S(651, __c20, 11)),
+          MonetizationConfig: S.optional(__S(583, __c18, 7)),
+        }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({ identifier: "UpdateWebACLRequest" });
+  }
+}
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

@@ -753,8 +753,8 @@ export const deleteSession: API.OperationMethod<
   DeleteSessionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(0, __c0, 0) as any as S.Schema<DeleteSessionRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<DeleteSessionResponse>,
+  input: __S(160, __c5, 0) as any as S.Schema<DeleteSessionRequest>,
+  output: __S(161, __c5, 1) as any as S.Schema<DeleteSessionResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -794,8 +794,8 @@ export const getSession: API.OperationMethod<
   GetSessionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2, __c0, 2) as any as S.Schema<GetSessionRequest>,
-  output: __S(33, __c4, 1) as any as S.Schema<GetSessionResponse>,
+  input: __S(192, __c6, 0) as any as S.Schema<GetSessionRequest>,
+  output: __S(193, __c6, 1) as any as S.Schema<GetSessionResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -829,8 +829,8 @@ export const putSession: API.OperationMethod<
   PutSessionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(34, __c4, 2) as any as S.Schema<PutSessionRequest>,
-  output: __S(35, __c4, 3) as any as S.Schema<PutSessionResponse>,
+  input: __S(0, __c0, 0) as any as S.Schema<PutSessionRequest>,
+  output: __S(1, __c0, 1) as any as S.Schema<PutSessionResponse>,
   errors: [
     AccessDeniedException,
     BadGatewayException,
@@ -890,8 +890,8 @@ export const recognizeText: API.OperationMethod<
   RecognizeTextError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(36, __c4, 4) as any as S.Schema<RecognizeTextRequest>,
-  output: __S(38, __c4, 6) as any as S.Schema<RecognizeTextResponse>,
+  input: __S(32, __c1, 0) as any as S.Schema<RecognizeTextRequest>,
+  output: __S(33, __c1, 1) as any as S.Schema<RecognizeTextResponse>,
   errors: [
     AccessDeniedException,
     BadGatewayException,
@@ -974,8 +974,8 @@ export const recognizeUtterance: API.OperationMethod<
   RecognizeUtteranceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(39, __c4, 7) as any as S.Schema<RecognizeUtteranceRequest>,
-  output: __S(40, __c5, 0) as any as S.Schema<RecognizeUtteranceResponse>,
+  input: __S(96, __c3, 0) as any as S.Schema<RecognizeUtteranceRequest>,
+  output: __S(97, __c3, 1) as any as S.Schema<RecognizeUtteranceResponse>,
   errors: [
     AccessDeniedException,
     BadGatewayException,
@@ -1050,8 +1050,8 @@ export const startConversation: API.OperationMethod<
   StartConversationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(47, __c5, 7) as any as S.Schema<StartConversationRequest>,
-  output: __S(55, __c6, 7) as any as S.Schema<StartConversationResponse>,
+  input: __S(134, __c4, 6) as any as S.Schema<StartConversationRequest>,
+  output: __S(142, __c4, 14) as any as S.Schema<StartConversationResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1073,264 +1073,9 @@ function __c0(j: number): any {
           botAliasId: S.String.pipe(T.HttpLabel("botAliasId")),
           localeId: S.String.pipe(T.HttpLabel("localeId")),
           sessionId: S.String.pipe(T.HttpLabel("sessionId")),
-        }).pipe(
-          T.all(
-            T.Http({
-              method: "DELETE",
-              uri: "/bots/{botId}/botAliases/{botAliasId}/botLocales/{localeId}/sessions/{sessionId}",
-            }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({ identifier: "DeleteSessionRequest" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          botId: S.optional(S.String),
-          botAliasId: S.optional(S.String),
-          localeId: S.optional(S.String),
-          sessionId: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "DeleteSessionResponse" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          botId: S.String.pipe(T.HttpLabel("botId")),
-          botAliasId: S.String.pipe(T.HttpLabel("botAliasId")),
-          localeId: S.String.pipe(T.HttpLabel("localeId")),
-          sessionId: S.String.pipe(T.HttpLabel("sessionId")),
-        }).pipe(
-          T.all(
-            T.Http({
-              method: "GET",
-              uri: "/bots/{botId}/botAliases/{botAliasId}/botLocales/{localeId}/sessions/{sessionId}",
-            }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({ identifier: "GetSessionRequest" });
-    case 3:
-      return S.suspend(() => S.Struct({ text: S.String, value: S.String })).annotate({
-        identifier: "Button",
-      });
-    case 4:
-      return S.Array(__S(3, __c0, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          title: S.String,
-          subtitle: S.optional(S.String),
-          imageUrl: S.optional(S.String),
-          buttons: S.optional(__S(4, __c0, 4)),
-        }),
-      ).annotate({ identifier: "ImageResponseCard" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          content: S.optional(SensitiveString),
-          contentType: S.String,
-          imageResponseCard: S.optional(__S(5, __c0, 5)),
-        }),
-      ).annotate({ identifier: "Message" });
-    case 7:
-      return S.Array(__S(6, __c0, 6));
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() => S.Struct({ score: S.optional(S.Number) })).annotate({
-        identifier: "ConfidenceScore",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          positive: S.optional(S.Number),
-          negative: S.optional(S.Number),
-          neutral: S.optional(S.Number),
-          mixed: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "SentimentScore" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          sentiment: S.optional(S.String),
-          sentimentScore: S.optional(__S(9, __c1, 1)),
-        }),
-      ).annotate({ identifier: "SentimentResponse" });
-    case 3:
-      return S.Array(S.String);
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          originalValue: S.optional(S.String),
-          interpretedValue: S.String,
-          resolvedValues: S.optional(__S(11, __c1, 3)),
-        }),
-      ).annotate({ identifier: "Value" });
-    case 5:
-      return S.Array(
-        /*@__PURE__*/ S.suspend((): S.Schema<Slot> => __S(14, __c1, 6)).annotate({
-          identifier: "Slot",
-        }),
-      );
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          value: S.optional(__S(12, __c1, 4)),
-          shape: S.optional(S.String),
-          values: S.optional(S.suspend(() => __S(13, __c1, 5)).annotate({ identifier: "Values" })),
-          subSlots: S.optional(S.suspend(() => __S(15, __c1, 7)).annotate({ identifier: "Slots" })),
-        }),
-      ).annotate({ identifier: "Slot" });
-    case 7:
-      return S.Record(
-        S.String,
-        /*@__PURE__*/ S.suspend((): S.Schema<Slot> => __S(14, __c1, 6))
-          .annotate({ identifier: "Slot" })
-          .pipe(S.optional),
-      );
-  }
-}
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String,
-          slots: S.optional(__S(15, __c1, 7)),
-          state: S.optional(S.String),
-          confirmationState: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Intent" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          nluConfidence: S.optional(__S(8, __c1, 0)),
-          sentimentResponse: S.optional(__S(10, __c1, 2)),
-          intent: S.optional(__S(16, __c2, 0)),
-          interpretationSource: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Interpretation" });
-    case 2:
-      return S.Array(__S(17, __c2, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String,
-          subSlotToElicit: S.optional(
-            S.suspend((): S.Schema<ElicitSubSlot> => __S(19, __c2, 3)).annotate({
-              identifier: "ElicitSubSlot",
-            }),
-          ),
-        }),
-      ).annotate({ identifier: "ElicitSubSlot" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          type: S.String,
-          slotToElicit: S.optional(S.String),
-          slotElicitationStyle: S.optional(S.String),
-          subSlotToElicit: S.optional(__S(19, __c2, 3)),
-        }),
-      ).annotate({ identifier: "DialogAction" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({ timeToLiveInSeconds: S.Number, turnsToLive: S.Number }),
-      ).annotate({ identifier: "ActiveContextTimeToLive" });
-    case 6:
-      return S.Record(S.String, /*@__PURE__*/ SensitiveString.pipe(S.optional));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String,
-          timeToLive: __S(21, __c2, 5),
-          contextAttributes: __S(22, __c2, 6),
-        }),
-      ).annotate({ identifier: "ActiveContext" });
-  }
-}
-function __c3(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(23, __c2, 7));
-    case 1:
-      return S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
-    case 2:
-      return S.suspend(() => S.Struct({ phrase: S.String })).annotate({
-        identifier: "RuntimeHintValue",
-      });
-    case 3:
-      return S.Array(__S(26, __c3, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          runtimeHintValues: S.optional(__S(27, __c3, 3)),
-          subSlotHints: S.optional(
-            S.suspend(() => __S(29, __c3, 5)).annotate({ identifier: "SlotHintsSlotMap" }),
-          ),
-        }),
-      ).annotate({ identifier: "RuntimeHintDetails" });
-    case 5:
-      return S.Record(
-        S.String,
-        /*@__PURE__*/ S.suspend((): S.Schema<RuntimeHintDetails> => __S(28, __c3, 4))
-          .annotate({ identifier: "RuntimeHintDetails" })
-          .pipe(S.optional),
-      );
-    case 6:
-      return S.Record(
-        S.String,
-        /*@__PURE__*/ S.suspend(() => __S(29, __c3, 5))
-          .annotate({ identifier: "SlotHintsSlotMap" })
-          .pipe(S.optional),
-      );
-    case 7:
-      return S.suspend(() => S.Struct({ slotHints: S.optional(__S(30, __c3, 6)) })).annotate({
-        identifier: "RuntimeHints",
-      });
-  }
-}
-function __c4(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          dialogAction: S.optional(__S(20, __c2, 4)),
-          intent: S.optional(__S(16, __c2, 0)),
-          activeContexts: S.optional(__S(24, __c3, 0)),
-          sessionAttributes: S.optional(__S(25, __c3, 1)),
-          originatingRequestId: S.optional(S.String),
-          runtimeHints: S.optional(__S(31, __c3, 7)),
-        }),
-      ).annotate({ identifier: "SessionState" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          sessionId: S.optional(S.String),
-          messages: S.optional(__S(7, __c0, 7)),
-          interpretations: S.optional(__S(18, __c2, 2)),
-          sessionState: S.optional(__S(32, __c4, 0)),
-        }),
-      ).annotate({ identifier: "GetSessionResponse" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          botId: S.String.pipe(T.HttpLabel("botId")),
-          botAliasId: S.String.pipe(T.HttpLabel("botAliasId")),
-          localeId: S.String.pipe(T.HttpLabel("localeId")),
-          sessionId: S.String.pipe(T.HttpLabel("sessionId")),
-          messages: S.optional(__S(7, __c0, 7)),
-          sessionState: __S(32, __c4, 0),
-          requestAttributes: S.optional(__S(25, __c3, 1)),
+          messages: S.optional(__S(228, __c7, 4)),
+          sessionState: __S(248, __c7, 24),
+          requestAttributes: S.optional(__S(241, __c7, 17)),
           responseContentType: S.optional(S.String).pipe(T.HttpHeader("ResponseContentType")),
         }).pipe(
           T.all(
@@ -1346,7 +1091,7 @@ function __c4(j: number): any {
           ),
         ),
       ).annotate({ identifier: "PutSessionRequest" });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           contentType: S.optional(S.String).pipe(T.HttpHeader("Content-Type")),
@@ -1359,7 +1104,11 @@ function __c4(j: number): any {
           audioStream: S.optional(T.StreamingOutput).pipe(T.HttpPayload()),
         }),
       ).annotate({ identifier: "PutSessionResponse" });
-    case 4:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           botId: S.String.pipe(T.HttpLabel("botId")),
@@ -1367,8 +1116,8 @@ function __c4(j: number): any {
           localeId: S.String.pipe(T.HttpLabel("localeId")),
           sessionId: S.String.pipe(T.HttpLabel("sessionId")),
           text: SensitiveString,
-          sessionState: S.optional(__S(32, __c4, 0)),
-          requestAttributes: S.optional(__S(25, __c3, 1)),
+          sessionState: S.optional(__S(248, __c7, 24)),
+          requestAttributes: S.optional(__S(241, __c7, 17)),
         }).pipe(
           T.all(
             T.Http({
@@ -1383,22 +1132,30 @@ function __c4(j: number): any {
           ),
         ),
       ).annotate({ identifier: "RecognizeTextRequest" });
-    case 5:
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          messages: S.optional(__S(228, __c7, 4)),
+          sessionState: S.optional(__S(248, __c7, 24)),
+          interpretations: S.optional(__S(260, __c8, 4)),
+          requestAttributes: S.optional(__S(241, __c7, 17)),
+          sessionId: S.optional(S.String),
+          recognizedBotMember: S.optional(__S(64, __c2, 0)),
+        }),
+      ).annotate({ identifier: "RecognizeTextResponse" });
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() => S.Struct({ botId: S.String, botName: S.optional(S.String) })).annotate(
         { identifier: "RecognizedBotMember" },
       );
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          messages: S.optional(__S(7, __c0, 7)),
-          sessionState: S.optional(__S(32, __c4, 0)),
-          interpretations: S.optional(__S(18, __c2, 2)),
-          requestAttributes: S.optional(__S(25, __c3, 1)),
-          sessionId: S.optional(S.String),
-          recognizedBotMember: S.optional(__S(37, __c4, 5)),
-        }),
-      ).annotate({ identifier: "RecognizeTextResponse" });
-    case 7:
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           botId: S.String.pipe(T.HttpLabel("botId")),
@@ -1428,11 +1185,7 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "RecognizeUtteranceRequest",
       });
-  }
-}
-function __c5(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           inputMode: S.optional(S.String).pipe(T.HttpHeader("x-amz-lex-input-mode")),
@@ -1453,19 +1206,23 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "RecognizeUtteranceResponse",
       });
-    case 1:
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          requestAttributes: S.optional(__S(25, __c3, 1)),
+          requestAttributes: S.optional(__S(241, __c7, 17)),
           responseContentType: S.String,
-          sessionState: S.optional(__S(32, __c4, 0)),
-          welcomeMessages: S.optional(__S(7, __c0, 7)),
+          sessionState: S.optional(__S(248, __c7, 24)),
+          welcomeMessages: S.optional(__S(228, __c7, 4)),
           disablePlayback: S.optional(S.Boolean),
           eventId: S.optional(S.String),
           clientTimestampMillis: S.optional(S.Number),
         }),
       ).annotate({ identifier: "ConfigurationEvent" });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           audioChunk: S.optional(T.Blob),
@@ -1474,7 +1231,7 @@ function __c5(j: number): any {
           clientTimestampMillis: S.optional(S.Number),
         }),
       ).annotate({ identifier: "AudioInputEvent" });
-    case 3:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           inputCharacter: SensitiveString,
@@ -1482,7 +1239,7 @@ function __c5(j: number): any {
           clientTimestampMillis: S.optional(S.Number),
         }),
       ).annotate({ identifier: "DTMFInputEvent" });
-    case 4:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           text: SensitiveString,
@@ -1490,22 +1247,22 @@ function __c5(j: number): any {
           clientTimestampMillis: S.optional(S.Number),
         }),
       ).annotate({ identifier: "TextInputEvent" });
-    case 5:
+    case 4:
       return S.suspend(() =>
         S.Struct({ eventId: S.optional(S.String), clientTimestampMillis: S.optional(S.Number) }),
       ).annotate({ identifier: "PlaybackCompletionEvent" });
-    case 6:
+    case 5:
       return T.InputEventStream(
         /*@__PURE__*/ S.Union([
-          /*@__PURE__*/ S.Struct({ ConfigurationEvent: __S(41, __c5, 1) }),
-          /*@__PURE__*/ S.Struct({ AudioInputEvent: __S(42, __c5, 2) }),
-          /*@__PURE__*/ S.Struct({ DTMFInputEvent: __S(43, __c5, 3) }),
-          /*@__PURE__*/ S.Struct({ TextInputEvent: __S(44, __c5, 4) }),
-          /*@__PURE__*/ S.Struct({ PlaybackCompletionEvent: __S(45, __c5, 5) }),
-          /*@__PURE__*/ S.Struct({ DisconnectionEvent: __S(45, __c5, 5) }),
+          /*@__PURE__*/ S.Struct({ ConfigurationEvent: __S(128, __c4, 0) }),
+          /*@__PURE__*/ S.Struct({ AudioInputEvent: __S(129, __c4, 1) }),
+          /*@__PURE__*/ S.Struct({ DTMFInputEvent: __S(130, __c4, 2) }),
+          /*@__PURE__*/ S.Struct({ TextInputEvent: __S(131, __c4, 3) }),
+          /*@__PURE__*/ S.Struct({ PlaybackCompletionEvent: __S(132, __c4, 4) }),
+          /*@__PURE__*/ S.Struct({ DisconnectionEvent: __S(132, __c4, 4) }),
         ]),
       );
-    case 7:
+    case 6:
       return S.suspend(() =>
         S.Struct({
           botId: S.String.pipe(T.HttpLabel("botId")),
@@ -1513,7 +1270,7 @@ function __c5(j: number): any {
           localeId: S.String.pipe(T.HttpLabel("localeId")),
           sessionId: S.String.pipe(T.HttpLabel("sessionId")),
           conversationMode: S.optional(S.String).pipe(T.HttpHeader("x-amz-lex-conversation-mode")),
-          requestEventStream: __S(46, __c5, 6).pipe(T.HttpPayload()),
+          requestEventStream: __S(133, __c4, 5).pipe(T.HttpPayload()),
         }).pipe(
           T.all(
             T.Http({
@@ -1528,11 +1285,7 @@ function __c5(j: number): any {
           ),
         ),
       ).annotate({ identifier: "StartConversationRequest" });
-  }
-}
-function __c6(j: number): any {
-  switch (j) {
-    case 0:
+    case 7:
       return S.suspend(() =>
         S.Struct({
           eventReason: S.optional(S.String),
@@ -1542,27 +1295,27 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "PlaybackInterruptionEvent",
       });
-    case 1:
+    case 8:
       return S.suspend(() =>
         S.Struct({ transcript: S.optional(S.String), eventId: S.optional(S.String) }),
       ).annotate({ identifier: "TranscriptEvent" });
-    case 2:
+    case 9:
       return S.suspend(() =>
         S.Struct({
           inputMode: S.optional(S.String),
-          interpretations: S.optional(__S(18, __c2, 2)),
-          sessionState: S.optional(__S(32, __c4, 0)),
-          requestAttributes: S.optional(__S(25, __c3, 1)),
+          interpretations: S.optional(__S(260, __c8, 4)),
+          sessionState: S.optional(__S(248, __c7, 24)),
+          requestAttributes: S.optional(__S(241, __c7, 17)),
           sessionId: S.optional(S.String),
           eventId: S.optional(S.String),
-          recognizedBotMember: S.optional(__S(37, __c4, 5)),
+          recognizedBotMember: S.optional(__S(64, __c2, 0)),
         }),
       ).annotate({ identifier: "IntentResultEvent" });
-    case 3:
+    case 10:
       return S.suspend(() =>
-        S.Struct({ messages: S.optional(__S(7, __c0, 7)), eventId: S.optional(S.String) }),
+        S.Struct({ messages: S.optional(__S(228, __c7, 4)), eventId: S.optional(S.String) }),
       ).annotate({ identifier: "TextResponseEvent" });
-    case 4:
+    case 11:
       return S.suspend(() =>
         S.Struct({
           audioChunk: S.optional(T.Blob),
@@ -1570,19 +1323,19 @@ function __c6(j: number): any {
           eventId: S.optional(S.String),
         }),
       ).annotate({ identifier: "AudioResponseEvent" });
-    case 5:
+    case 12:
       return S.suspend(() => S.Struct({ eventId: S.optional(S.String) })).annotate({
         identifier: "HeartbeatEvent",
       });
-    case 6:
+    case 13:
       return T.EventStream(
         /*@__PURE__*/ S.Union([
-          /*@__PURE__*/ S.Struct({ PlaybackInterruptionEvent: __S(48, __c6, 0) }),
-          /*@__PURE__*/ S.Struct({ TranscriptEvent: __S(49, __c6, 1) }),
-          /*@__PURE__*/ S.Struct({ IntentResultEvent: __S(50, __c6, 2) }),
-          /*@__PURE__*/ S.Struct({ TextResponseEvent: __S(51, __c6, 3) }),
-          /*@__PURE__*/ S.Struct({ AudioResponseEvent: __S(52, __c6, 4) }),
-          /*@__PURE__*/ S.Struct({ HeartbeatEvent: __S(53, __c6, 5) }),
+          /*@__PURE__*/ S.Struct({ PlaybackInterruptionEvent: __S(135, __c4, 7) }),
+          /*@__PURE__*/ S.Struct({ TranscriptEvent: __S(136, __c4, 8) }),
+          /*@__PURE__*/ S.Struct({ IntentResultEvent: __S(137, __c4, 9) }),
+          /*@__PURE__*/ S.Struct({ TextResponseEvent: __S(138, __c4, 10) }),
+          /*@__PURE__*/ S.Struct({ AudioResponseEvent: __S(139, __c4, 11) }),
+          /*@__PURE__*/ S.Struct({ HeartbeatEvent: __S(140, __c4, 12) }),
           /*@__PURE__*/ S.Struct({
             AccessDeniedException: /*@__PURE__*/ S.suspend(() => AccessDeniedException).annotate({
               identifier: "AccessDeniedException",
@@ -1631,17 +1384,273 @@ function __c6(j: number): any {
           }),
         ]),
       );
-    case 7:
+    case 14:
       return S.suspend(() =>
         S.Struct({
-          responseEventStream: S.optional(__S(54, __c6, 6)).pipe(T.HttpPayload()),
+          responseEventStream: S.optional(__S(141, __c4, 13)).pipe(T.HttpPayload()),
         }),
       ).annotate({
         identifier: "StartConversationResponse",
       });
   }
 }
-
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          botId: S.String.pipe(T.HttpLabel("botId")),
+          botAliasId: S.String.pipe(T.HttpLabel("botAliasId")),
+          localeId: S.String.pipe(T.HttpLabel("localeId")),
+          sessionId: S.String.pipe(T.HttpLabel("sessionId")),
+        }).pipe(
+          T.all(
+            T.Http({
+              method: "DELETE",
+              uri: "/bots/{botId}/botAliases/{botAliasId}/botLocales/{localeId}/sessions/{sessionId}",
+            }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "DeleteSessionRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          botId: S.optional(S.String),
+          botAliasId: S.optional(S.String),
+          localeId: S.optional(S.String),
+          sessionId: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "DeleteSessionResponse" });
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          botId: S.String.pipe(T.HttpLabel("botId")),
+          botAliasId: S.String.pipe(T.HttpLabel("botAliasId")),
+          localeId: S.String.pipe(T.HttpLabel("localeId")),
+          sessionId: S.String.pipe(T.HttpLabel("sessionId")),
+        }).pipe(
+          T.all(
+            T.Http({
+              method: "GET",
+              uri: "/bots/{botId}/botAliases/{botAliasId}/botLocales/{localeId}/sessions/{sessionId}",
+            }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "GetSessionRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          sessionId: S.optional(S.String),
+          messages: S.optional(__S(228, __c7, 4)),
+          interpretations: S.optional(__S(260, __c8, 4)),
+          sessionState: S.optional(__S(248, __c7, 24)),
+        }),
+      ).annotate({ identifier: "GetSessionResponse" });
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({ text: S.String, value: S.String })).annotate({
+        identifier: "Button",
+      });
+    case 1:
+      return S.Array(__S(224, __c7, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          title: S.String,
+          subtitle: S.optional(S.String),
+          imageUrl: S.optional(S.String),
+          buttons: S.optional(__S(225, __c7, 1)),
+        }),
+      ).annotate({ identifier: "ImageResponseCard" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          content: S.optional(SensitiveString),
+          contentType: S.String,
+          imageResponseCard: S.optional(__S(226, __c7, 2)),
+        }),
+      ).annotate({ identifier: "Message" });
+    case 4:
+      return S.Array(__S(227, __c7, 3));
+    case 5:
+      return S.Array(S.String);
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          originalValue: S.optional(S.String),
+          interpretedValue: S.String,
+          resolvedValues: S.optional(__S(229, __c7, 5)),
+        }),
+      ).annotate({ identifier: "Value" });
+    case 7:
+      return S.Array(
+        /*@__PURE__*/ S.suspend((): S.Schema<Slot> => __S(232, __c7, 8)).annotate({
+          identifier: "Slot",
+        }),
+      );
+    case 8:
+      return S.suspend(() =>
+        S.Struct({
+          value: S.optional(__S(230, __c7, 6)),
+          shape: S.optional(S.String),
+          values: S.optional(S.suspend(() => __S(231, __c7, 7)).annotate({ identifier: "Values" })),
+          subSlots: S.optional(
+            S.suspend(() => __S(233, __c7, 9)).annotate({ identifier: "Slots" }),
+          ),
+        }),
+      ).annotate({ identifier: "Slot" });
+    case 9:
+      return S.Record(
+        S.String,
+        /*@__PURE__*/ S.suspend((): S.Schema<Slot> => __S(232, __c7, 8))
+          .annotate({ identifier: "Slot" })
+          .pipe(S.optional),
+      );
+    case 10:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String,
+          slots: S.optional(__S(233, __c7, 9)),
+          state: S.optional(S.String),
+          confirmationState: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Intent" });
+    case 11:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String,
+          subSlotToElicit: S.optional(
+            S.suspend((): S.Schema<ElicitSubSlot> => __S(235, __c7, 11)).annotate({
+              identifier: "ElicitSubSlot",
+            }),
+          ),
+        }),
+      ).annotate({ identifier: "ElicitSubSlot" });
+    case 12:
+      return S.suspend(() =>
+        S.Struct({
+          type: S.String,
+          slotToElicit: S.optional(S.String),
+          slotElicitationStyle: S.optional(S.String),
+          subSlotToElicit: S.optional(__S(235, __c7, 11)),
+        }),
+      ).annotate({ identifier: "DialogAction" });
+    case 13:
+      return S.suspend(() =>
+        S.Struct({ timeToLiveInSeconds: S.Number, turnsToLive: S.Number }),
+      ).annotate({ identifier: "ActiveContextTimeToLive" });
+    case 14:
+      return S.Record(S.String, /*@__PURE__*/ SensitiveString.pipe(S.optional));
+    case 15:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String,
+          timeToLive: __S(237, __c7, 13),
+          contextAttributes: __S(238, __c7, 14),
+        }),
+      ).annotate({ identifier: "ActiveContext" });
+    case 16:
+      return S.Array(__S(239, __c7, 15));
+    case 17:
+      return S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
+    case 18:
+      return S.suspend(() => S.Struct({ phrase: S.String })).annotate({
+        identifier: "RuntimeHintValue",
+      });
+    case 19:
+      return S.Array(__S(242, __c7, 18));
+    case 20:
+      return S.suspend(() =>
+        S.Struct({
+          runtimeHintValues: S.optional(__S(243, __c7, 19)),
+          subSlotHints: S.optional(
+            S.suspend(() => __S(245, __c7, 21)).annotate({ identifier: "SlotHintsSlotMap" }),
+          ),
+        }),
+      ).annotate({ identifier: "RuntimeHintDetails" });
+    case 21:
+      return S.Record(
+        S.String,
+        /*@__PURE__*/ S.suspend((): S.Schema<RuntimeHintDetails> => __S(244, __c7, 20))
+          .annotate({ identifier: "RuntimeHintDetails" })
+          .pipe(S.optional),
+      );
+    case 22:
+      return S.Record(
+        S.String,
+        /*@__PURE__*/ S.suspend(() => __S(245, __c7, 21))
+          .annotate({ identifier: "SlotHintsSlotMap" })
+          .pipe(S.optional),
+      );
+    case 23:
+      return S.suspend(() => S.Struct({ slotHints: S.optional(__S(246, __c7, 22)) })).annotate({
+        identifier: "RuntimeHints",
+      });
+    case 24:
+      return S.suspend(() =>
+        S.Struct({
+          dialogAction: S.optional(__S(236, __c7, 12)),
+          intent: S.optional(__S(234, __c7, 10)),
+          activeContexts: S.optional(__S(240, __c7, 16)),
+          sessionAttributes: S.optional(__S(241, __c7, 17)),
+          originatingRequestId: S.optional(S.String),
+          runtimeHints: S.optional(__S(247, __c7, 23)),
+        }),
+      ).annotate({ identifier: "SessionState" });
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({ score: S.optional(S.Number) })).annotate({
+        identifier: "ConfidenceScore",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          positive: S.optional(S.Number),
+          negative: S.optional(S.Number),
+          neutral: S.optional(S.Number),
+          mixed: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "SentimentScore" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          sentiment: S.optional(S.String),
+          sentimentScore: S.optional(__S(257, __c8, 1)),
+        }),
+      ).annotate({ identifier: "SentimentResponse" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          nluConfidence: S.optional(__S(256, __c8, 0)),
+          sentimentResponse: S.optional(__S(258, __c8, 2)),
+          intent: S.optional(__S(234, __c7, 10)),
+          interpretationSource: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Interpretation" });
+    case 4:
+      return S.Array(__S(259, __c8, 3));
+  }
+}
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

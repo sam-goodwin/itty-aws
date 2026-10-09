@@ -168,8 +168,8 @@ export const createSshKey: API.OperationMethod<
   CreateSshKeyError,
   HetznerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1, __c0, 1) as any as S.Schema<CreateSshKeyRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<CreateSshKeyResponse>,
+  input: __S(0, __c0, 0) as any as S.Schema<CreateSshKeyRequest>,
+  output: __S(24, __c3, 0) as any as S.Schema<CreateSshKeyResponse>,
   errors: [UnknownHetznerError],
   protocol: HetznerProtocol,
   retry: Retry.Retry,
@@ -183,8 +183,8 @@ export const deleteSshKey: API.OperationMethod<
   DeleteSshKeyError,
   HetznerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(4, __c0, 4) as any as S.Schema<DeleteSshKeyRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<DeleteSshKeyResponse>,
+  input: __S(32, __c4, 0) as any as S.Schema<DeleteSshKeyRequest>,
+  output: __S(33, __c4, 1) as any as S.Schema<DeleteSshKeyResponse>,
   errors: [UnknownHetznerError],
   protocol: HetznerProtocol,
   retry: Retry.Retry,
@@ -198,8 +198,8 @@ export const getSshKey: API.OperationMethod<
   GetSshKeyError,
   HetznerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(6, __c0, 6) as any as S.Schema<GetSshKeyRequest>,
-  output: __S(8, __c1, 0) as any as S.Schema<GetSshKeyResponse>,
+  input: __S(40, __c5, 0) as any as S.Schema<GetSshKeyRequest>,
+  output: __S(42, __c5, 2) as any as S.Schema<GetSshKeyResponse>,
   errors: [UnknownHetznerError],
   protocol: HetznerProtocol,
   retry: Retry.Retry,
@@ -215,8 +215,8 @@ export const listSshKeys: API.PaginatedOperationMethod<
   ListSshKeysResponseSshKeysItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(10, __c1, 2) as any as S.Schema<ListSshKeysRequest>,
-    output: __S(14, __c1, 6) as any as S.Schema<ListSshKeysResponse>,
+    input: __S(49, __c6, 1) as any as S.Schema<ListSshKeysRequest>,
+    output: __S(53, __c6, 5) as any as S.Schema<ListSshKeysResponse>,
     errors: [UnknownHetznerError],
     protocol: HetznerProtocol,
     retry: Retry.Retry,
@@ -239,8 +239,8 @@ export const updateSshKey: API.OperationMethod<
   UpdateSshKeyError,
   HetznerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(15, __c1, 7) as any as S.Schema<UpdateSshKeyRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<UpdateSshKeyResponse>,
+  input: __S(56, __c7, 0) as any as S.Schema<UpdateSshKeyRequest>,
+  output: __S(24, __c3, 0) as any as S.Schema<UpdateSshKeyResponse>,
   errors: [UnknownHetznerError],
   protocol: HetznerProtocol,
   retry: Retry.Retry,
@@ -250,77 +250,97 @@ export const updateSshKey: API.OperationMethod<
 function __c0(j: number): any {
   switch (j) {
     case 0:
-      return S.Record(S.String, S.String);
-    case 1:
       return S.suspend(() =>
         S.Struct({
           name: S.String,
           public_key: S.String,
-          labels: S.optional(__S(0, __c0, 0)),
+          labels: S.optional(__S(8, __c1, 0)),
         }).pipe(T.Http({ method: "POST", uri: "/ssh_keys", code: 200 })),
       ).annotate({ identifier: "CreateSshKeyRequest" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.Number,
-          name: S.String,
-          fingerprint: S.String,
-          public_key: S.String,
-          labels: __S(0, __c0, 0),
-          created: S.String,
-        }),
-      ).annotate({
-        identifier: "CreateSshKeyResponseSshKey",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          ssh_key: __S(2, __c0, 2),
-        }),
-      ).annotate({ identifier: "CreateSshKeyResponse" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.Number.pipe(T.Label()),
-        }).pipe(T.Http({ method: "DELETE", uri: "/ssh_keys/{id}", code: 200 })),
-      ).annotate({ identifier: "DeleteSshKeyRequest" });
-    case 5:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "DeleteSshKeyResponse",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.Number.pipe(T.Label()),
-        }).pipe(T.Http({ method: "GET", uri: "/ssh_keys/{id}", code: 200 })),
-      ).annotate({ identifier: "GetSshKeyRequest" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.Number,
-          name: S.String,
-          fingerprint: S.String,
-          public_key: S.String,
-          labels: __S(0, __c0, 0),
-          created: S.String,
-        }),
-      ).annotate({ identifier: "GetSshKeyResponseSshKey" });
   }
 }
 function __c1(j: number): any {
   switch (j) {
     case 0:
+      return S.Record(S.String, S.String);
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          ssh_key: __S(7, __c0, 7),
+          id: S.Number,
+          name: S.String,
+          fingerprint: S.String,
+          public_key: S.String,
+          labels: __S(8, __c1, 0),
+          created: S.String,
         }),
-      ).annotate({ identifier: "GetSshKeyResponse" });
+      ).annotate({
+        identifier: "CreateSshKeyResponseSshKey",
+      });
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          ssh_key: __S(16, __c2, 0),
+        }),
+      ).annotate({ identifier: "CreateSshKeyResponse" });
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.Number.pipe(T.Label()),
+        }).pipe(T.Http({ method: "DELETE", uri: "/ssh_keys/{id}", code: 200 })),
+      ).annotate({ identifier: "DeleteSshKeyRequest" });
     case 1:
-      return S.Array(S.String);
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "DeleteSshKeyResponse",
+      });
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.Number.pipe(T.Label()),
+        }).pipe(T.Http({ method: "GET", uri: "/ssh_keys/{id}", code: 200 })),
+      ).annotate({ identifier: "GetSshKeyRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.Number,
+          name: S.String,
+          fingerprint: S.String,
+          public_key: S.String,
+          labels: __S(8, __c1, 0),
+          created: S.String,
+        }),
+      ).annotate({ identifier: "GetSshKeyResponseSshKey" });
     case 2:
       return S.suspend(() =>
         S.Struct({
-          sort: S.optional(__S(9, __c1, 1).pipe(T.Query())),
+          ssh_key: __S(41, __c5, 1),
+        }),
+      ).annotate({ identifier: "GetSshKeyResponse" });
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          sort: S.optional(__S(48, __c6, 0).pipe(T.Query())),
           name: S.optional(S.String.pipe(T.Query())),
           fingerprint: S.optional(S.String.pipe(T.Query())),
           label_selector: S.optional(S.String.pipe(T.Query())),
@@ -328,9 +348,9 @@ function __c1(j: number): any {
           per_page: S.optional(S.Number.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/ssh_keys", code: 200 })),
       ).annotate({ identifier: "ListSshKeysRequest" });
+    case 2:
+      return S.Array(__S(16, __c2, 0));
     case 3:
-      return S.Array(__S(2, __c0, 2));
-    case 4:
       return S.suspend(() =>
         S.Struct({
           page: S.Number,
@@ -343,30 +363,33 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "ListSshKeysResponseMetaPagination",
       });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          pagination: __S(51, __c6, 3),
+        }),
+      ).annotate({ identifier: "ListSshKeysResponseMeta" });
     case 5:
       return S.suspend(() =>
         S.Struct({
-          pagination: __S(12, __c1, 4),
-        }),
-      ).annotate({ identifier: "ListSshKeysResponseMeta" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          ssh_keys: __S(11, __c1, 3),
-          meta: __S(13, __c1, 5),
+          ssh_keys: __S(50, __c6, 2),
+          meta: __S(52, __c6, 4),
         }),
       ).annotate({ identifier: "ListSshKeysResponse" });
-    case 7:
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.Number.pipe(T.Label()),
           name: S.optional(S.String),
-          labels: S.optional(__S(0, __c0, 0)),
+          labels: S.optional(__S(8, __c1, 0)),
         }).pipe(T.Http({ method: "PUT", uri: "/ssh_keys/{id}", code: 200 })),
       ).annotate({ identifier: "UpdateSshKeyRequest" });
   }
 }
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

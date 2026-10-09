@@ -474,8 +474,8 @@ export const addNotificationChannels: API.OperationMethod<
   AddNotificationChannelsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3, __c0, 3) as any as S.Schema<AddNotificationChannelsRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<AddNotificationChannelsResponse>,
+  input: __S(352, __c22, 0) as any as S.Schema<AddNotificationChannelsRequest>,
+  output: __S(384, __c24, 0) as any as S.Schema<AddNotificationChannelsResponse>,
   errors: [
     ConflictException,
     InternalServerException,
@@ -505,8 +505,8 @@ export const batchGetFrameMetricData: API.OperationMethod<
   BatchGetFrameMetricDataError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(8, __c1, 0) as any as S.Schema<BatchGetFrameMetricDataRequest>,
-  output: __S(15, __c1, 7) as any as S.Schema<BatchGetFrameMetricDataResponse>,
+  input: __S(417, __c26, 1) as any as S.Schema<BatchGetFrameMetricDataRequest>,
+  output: __S(424, __c26, 8) as any as S.Schema<BatchGetFrameMetricDataResponse>,
   errors: [
     InternalServerException,
     ResourceNotFoundException,
@@ -535,8 +535,8 @@ export const configureAgent: API.OperationMethod<
   ConfigureAgentError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(17, __c2, 1) as any as S.Schema<ConfigureAgentRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<ConfigureAgentResponse>,
+  input: __S(448, __c28, 0) as any as S.Schema<ConfigureAgentRequest>,
+  output: __S(451, __c28, 3) as any as S.Schema<ConfigureAgentResponse>,
   errors: [
     InternalServerException,
     ResourceNotFoundException,
@@ -564,8 +564,8 @@ export const createProfilingGroup: API.OperationMethod<
   CreateProfilingGroupError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(22, __c2, 6) as any as S.Schema<CreateProfilingGroupRequest>,
-  output: __S(26, __c3, 2) as any as S.Schema<CreateProfilingGroupResponse>,
+  input: __S(480, __c30, 0) as any as S.Schema<CreateProfilingGroupRequest>,
+  output: __S(512, __c32, 0) as any as S.Schema<CreateProfilingGroupResponse>,
   errors: [
     ConflictException,
     InternalServerException,
@@ -594,8 +594,8 @@ export const deleteProfilingGroup: API.OperationMethod<
   DeleteProfilingGroupError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(27, __c3, 3) as any as S.Schema<DeleteProfilingGroupRequest>,
-  output: __S(28, __c3, 4) as any as S.Schema<DeleteProfilingGroupResponse>,
+  input: __S(0, __c0, 0) as any as S.Schema<DeleteProfilingGroupRequest>,
+  output: __S(16, __c1, 0) as any as S.Schema<DeleteProfilingGroupResponse>,
   errors: [
     ConflictException,
     InternalServerException,
@@ -626,8 +626,8 @@ export const describeProfilingGroup: API.OperationMethod<
   DescribeProfilingGroupError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(29, __c3, 5) as any as S.Schema<DescribeProfilingGroupRequest>,
-  output: __S(26, __c3, 2) as any as S.Schema<DescribeProfilingGroupResponse>,
+  input: __S(32, __c2, 0) as any as S.Schema<DescribeProfilingGroupRequest>,
+  output: __S(512, __c32, 0) as any as S.Schema<DescribeProfilingGroupResponse>,
   errors: [
     InternalServerException,
     ResourceNotFoundException,
@@ -658,8 +658,8 @@ export const getFindingsReportAccountSummary: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(30, __c3, 6) as any as S.Schema<GetFindingsReportAccountSummaryRequest>,
-  output: __S(33, __c4, 1) as any as S.Schema<GetFindingsReportAccountSummaryResponse>,
+  input: __S(48, __c3, 0) as any as S.Schema<GetFindingsReportAccountSummaryRequest>,
+  output: __S(49, __c3, 1) as any as S.Schema<GetFindingsReportAccountSummaryResponse>,
   errors: [InternalServerException, ThrottlingException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -686,8 +686,8 @@ export const getNotificationConfiguration: API.OperationMethod<
   GetNotificationConfigurationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(34, __c4, 2) as any as S.Schema<GetNotificationConfigurationRequest>,
-  output: __S(35, __c4, 3) as any as S.Schema<GetNotificationConfigurationResponse>,
+  input: __S(80, __c5, 0) as any as S.Schema<GetNotificationConfigurationRequest>,
+  output: __S(81, __c5, 1) as any as S.Schema<GetNotificationConfigurationResponse>,
   errors: [
     InternalServerException,
     ResourceNotFoundException,
@@ -713,8 +713,8 @@ export const getPolicy: API.OperationMethod<
   GetPolicyError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(36, __c4, 4) as any as S.Schema<GetPolicyRequest>,
-  output: __S(37, __c4, 5) as any as S.Schema<GetPolicyResponse>,
+  input: __S(96, __c6, 0) as any as S.Schema<GetPolicyRequest>,
+  output: __S(112, __c7, 0) as any as S.Schema<GetPolicyResponse>,
   errors: [InternalServerException, ResourceNotFoundException, ThrottlingException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -775,8 +775,8 @@ export const getProfile: API.OperationMethod<
   GetProfileError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(38, __c4, 6) as any as S.Schema<GetProfileRequest>,
-  output: __S(39, __c4, 7) as any as S.Schema<GetProfileResponse>,
+  input: __S(128, __c8, 0) as any as S.Schema<GetProfileRequest>,
+  output: __S(129, __c8, 1) as any as S.Schema<GetProfileResponse>,
   errors: [
     InternalServerException,
     ResourceNotFoundException,
@@ -812,8 +812,8 @@ export const getRecommendations: API.OperationMethod<
   GetRecommendationsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(40, __c5, 0) as any as S.Schema<GetRecommendationsRequest>,
-  output: __S(52, __c6, 4) as any as S.Schema<GetRecommendationsResponse>,
+  input: __S(144, __c9, 0) as any as S.Schema<GetRecommendationsRequest>,
+  output: __S(156, __c9, 12) as any as S.Schema<GetRecommendationsResponse>,
   errors: [
     InternalServerException,
     ResourceNotFoundException,
@@ -841,8 +841,8 @@ export const listFindingsReports: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(53, __c6, 5) as any as S.Schema<ListFindingsReportsRequest>,
-  output: __S(54, __c6, 6) as any as S.Schema<ListFindingsReportsResponse>,
+  input: __S(160, __c10, 0) as any as S.Schema<ListFindingsReportsRequest>,
+  output: __S(161, __c10, 1) as any as S.Schema<ListFindingsReportsResponse>,
   errors: [
     InternalServerException,
     ResourceNotFoundException,
@@ -876,8 +876,8 @@ export const listProfileTimes: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   ProfileTime
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(55, __c6, 7) as any as S.Schema<ListProfileTimesRequest>,
-  output: __S(58, __c7, 2) as any as S.Schema<ListProfileTimesResponse>,
+  input: __S(176, __c11, 0) as any as S.Schema<ListProfileTimesRequest>,
+  output: __S(179, __c11, 3) as any as S.Schema<ListProfileTimesResponse>,
   errors: [
     InternalServerException,
     ResourceNotFoundException,
@@ -910,8 +910,8 @@ export const listProfilingGroups: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(59, __c7, 3) as any as S.Schema<ListProfilingGroupsRequest>,
-  output: __S(61, __c7, 5) as any as S.Schema<ListProfilingGroupsResponse>,
+  input: __S(192, __c12, 0) as any as S.Schema<ListProfilingGroupsRequest>,
+  output: __S(194, __c12, 2) as any as S.Schema<ListProfilingGroupsResponse>,
   errors: [InternalServerException, ThrottlingException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -937,8 +937,8 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(62, __c7, 6) as any as S.Schema<ListTagsForResourceRequest>,
-  output: __S(63, __c7, 7) as any as S.Schema<ListTagsForResourceResponse>,
+  input: __S(208, __c13, 0) as any as S.Schema<ListTagsForResourceRequest>,
+  output: __S(209, __c13, 1) as any as S.Schema<ListTagsForResourceResponse>,
   errors: [InternalServerException, ResourceNotFoundException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -964,8 +964,8 @@ export const postAgentProfile: API.OperationMethod<
   PostAgentProfileError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(64, __c8, 0) as any as S.Schema<PostAgentProfileRequest>,
-  output: __S(28, __c3, 4) as any as S.Schema<PostAgentProfileResponse>,
+  input: __S(224, __c14, 0) as any as S.Schema<PostAgentProfileRequest>,
+  output: __S(16, __c1, 0) as any as S.Schema<PostAgentProfileResponse>,
   errors: [
     InternalServerException,
     ResourceNotFoundException,
@@ -1012,8 +1012,8 @@ export const putPermission: API.OperationMethod<
   PutPermissionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(65, __c8, 1) as any as S.Schema<PutPermissionRequest>,
-  output: __S(37, __c4, 5) as any as S.Schema<PutPermissionResponse>,
+  input: __S(240, __c15, 0) as any as S.Schema<PutPermissionRequest>,
+  output: __S(112, __c7, 0) as any as S.Schema<PutPermissionResponse>,
   errors: [
     ConflictException,
     InternalServerException,
@@ -1041,8 +1041,8 @@ export const removeNotificationChannel: API.OperationMethod<
   RemoveNotificationChannelError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(66, __c8, 2) as any as S.Schema<RemoveNotificationChannelRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<RemoveNotificationChannelResponse>,
+  input: __S(256, __c16, 0) as any as S.Schema<RemoveNotificationChannelRequest>,
+  output: __S(384, __c24, 0) as any as S.Schema<RemoveNotificationChannelResponse>,
   errors: [
     InternalServerException,
     ResourceNotFoundException,
@@ -1078,8 +1078,8 @@ export const removePermission: API.OperationMethod<
   RemovePermissionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(67, __c8, 3) as any as S.Schema<RemovePermissionRequest>,
-  output: __S(37, __c4, 5) as any as S.Schema<RemovePermissionResponse>,
+  input: __S(272, __c17, 0) as any as S.Schema<RemovePermissionRequest>,
+  output: __S(112, __c7, 0) as any as S.Schema<RemovePermissionResponse>,
   errors: [
     ConflictException,
     InternalServerException,
@@ -1108,8 +1108,8 @@ export const submitFeedback: API.OperationMethod<
   SubmitFeedbackError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(68, __c8, 4) as any as S.Schema<SubmitFeedbackRequest>,
-  output: __S(28, __c3, 4) as any as S.Schema<SubmitFeedbackResponse>,
+  input: __S(288, __c18, 0) as any as S.Schema<SubmitFeedbackRequest>,
+  output: __S(16, __c1, 0) as any as S.Schema<SubmitFeedbackResponse>,
   errors: [
     InternalServerException,
     ResourceNotFoundException,
@@ -1135,8 +1135,8 @@ export const tagResource: API.OperationMethod<
   TagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(69, __c8, 5) as any as S.Schema<TagResourceRequest>,
-  output: __S(28, __c3, 4) as any as S.Schema<TagResourceResponse>,
+  input: __S(304, __c19, 0) as any as S.Schema<TagResourceRequest>,
+  output: __S(16, __c1, 0) as any as S.Schema<TagResourceResponse>,
   errors: [InternalServerException, ResourceNotFoundException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1157,8 +1157,8 @@ export const untagResource: API.OperationMethod<
   UntagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(70, __c8, 6) as any as S.Schema<UntagResourceRequest>,
-  output: __S(28, __c3, 4) as any as S.Schema<UntagResourceResponse>,
+  input: __S(320, __c20, 0) as any as S.Schema<UntagResourceRequest>,
+  output: __S(16, __c1, 0) as any as S.Schema<UntagResourceResponse>,
   errors: [InternalServerException, ResourceNotFoundException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1181,8 +1181,8 @@ export const updateProfilingGroup: API.OperationMethod<
   UpdateProfilingGroupError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(71, __c8, 7) as any as S.Schema<UpdateProfilingGroupRequest>,
-  output: __S(26, __c3, 2) as any as S.Schema<UpdateProfilingGroupResponse>,
+  input: __S(336, __c21, 0) as any as S.Schema<UpdateProfilingGroupRequest>,
+  output: __S(512, __c32, 0) as any as S.Schema<UpdateProfilingGroupResponse>,
   errors: [
     ConflictException,
     InternalServerException,
@@ -1199,220 +1199,6 @@ export const updateProfilingGroup: API.OperationMethod<
 function __c0(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(S.String);
-    case 1:
-      return S.suspend(() =>
-        S.Struct({ id: S.optional(S.String), uri: S.String, eventPublishers: __S(0, __c0, 0) }),
-      ).annotate({ identifier: "Channel" });
-    case 2:
-      return S.Array(__S(1, __c0, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          profilingGroupName: S.String.pipe(T.HttpLabel("profilingGroupName")),
-          channels: __S(2, __c0, 2),
-        }).pipe(
-          T.all(
-            T.Http({
-              method: "POST",
-              uri: "/profilingGroups/{profilingGroupName}/notificationConfiguration",
-            }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({
-        identifier: "AddNotificationChannelsRequest",
-      });
-    case 4:
-      return S.suspend(() => S.Struct({ channels: S.optional(__S(2, __c0, 2)) })).annotate({
-        identifier: "NotificationConfiguration",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({ notificationConfiguration: S.optional(__S(4, __c0, 4)) }),
-      ).annotate({
-        identifier: "AddNotificationChannelsResponse",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({ frameName: S.String, type: S.String, threadStates: __S(0, __c0, 0) }),
-      ).annotate({ identifier: "FrameMetric" });
-    case 7:
-      return S.Array(__S(6, __c0, 6));
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          profilingGroupName: S.String.pipe(T.HttpLabel("profilingGroupName")),
-          startTime: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))).pipe(
-            T.HttpQuery("startTime"),
-          ),
-          endTime: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))).pipe(
-            T.HttpQuery("endTime"),
-          ),
-          period: S.optional(S.String).pipe(T.HttpQuery("period")),
-          targetResolution: S.optional(S.String).pipe(T.HttpQuery("targetResolution")),
-          frameMetrics: S.optional(__S(7, __c0, 7)),
-        }).pipe(
-          T.all(
-            T.Http({
-              method: "POST",
-              uri: "/profilingGroups/{profilingGroupName}/frames/-/metrics",
-            }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({
-        identifier: "BatchGetFrameMetricDataRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({ value: T.DateFromString.pipe(T.TimestampFormat("date-time")) }),
-      ).annotate({ identifier: "TimestampStructure" });
-    case 2:
-      return S.Array(__S(9, __c1, 1));
-    case 3:
-      return S.Record(S.String, /*@__PURE__*/ __S(10, __c1, 2).pipe(S.optional));
-    case 4:
-      return S.Array(S.Number);
-    case 5:
-      return S.suspend(() =>
-        S.Struct({ frameMetric: __S(6, __c0, 6), values: __S(12, __c1, 4) }),
-      ).annotate({ identifier: "FrameMetricDatum" });
-    case 6:
-      return S.Array(__S(13, __c1, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          startTime: T.DateFromString.pipe(T.TimestampFormat("date-time")),
-          endTime: T.DateFromString.pipe(T.TimestampFormat("date-time")),
-          resolution: S.String,
-          endTimes: __S(10, __c1, 2),
-          unprocessedEndTimes: __S(11, __c1, 3),
-          frameMetricData: __S(14, __c1, 6),
-        }),
-      ).annotate({
-        identifier: "BatchGetFrameMetricDataResponse",
-      });
-  }
-}
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          profilingGroupName: S.String.pipe(T.HttpLabel("profilingGroupName")),
-          fleetInstanceId: S.optional(S.String),
-          metadata: S.optional(__S(16, __c2, 0)),
-        }).pipe(
-          T.all(
-            T.Http({ method: "POST", uri: "/profilingGroups/{profilingGroupName}/configureAgent" }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({ identifier: "ConfigureAgentRequest" });
-    case 2:
-      return S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          shouldProfile: S.Boolean,
-          periodInSeconds: S.Number,
-          agentParameters: S.optional(__S(18, __c2, 2)),
-        }),
-      ).annotate({ identifier: "AgentConfiguration" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          configuration: __S(19, __c2, 3).pipe(T.HttpPayload()).annotate({
-            identifier: "AgentConfiguration",
-          }),
-        }),
-      ).annotate({ identifier: "ConfigureAgentResponse" });
-    case 5:
-      return S.suspend(() => S.Struct({ profilingEnabled: S.Boolean })).annotate({
-        identifier: "AgentOrchestrationConfig",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          profilingGroupName: S.String,
-          computePlatform: S.optional(S.String),
-          clientToken: S.String.pipe(T.HttpQuery("clientToken"), T.IdempotencyToken()),
-          agentOrchestrationConfig: S.optional(__S(21, __c2, 5)),
-          tags: S.optional(__S(16, __c2, 0)),
-        }).pipe(
-          T.all(T.Http({ method: "POST", uri: "/profilingGroups" }), svc, auth, proto, ver, rules),
-        ),
-      ).annotate({
-        identifier: "CreateProfilingGroupRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          start: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-          period: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "AggregatedProfileTime" });
-  }
-}
-function __c3(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          latestAgentProfileReportedAt: S.optional(
-            T.DateFromString.pipe(T.TimestampFormat("date-time")),
-          ),
-          latestAggregatedProfile: S.optional(__S(23, __c2, 7)),
-          latestAgentOrchestratedAt: S.optional(
-            T.DateFromString.pipe(T.TimestampFormat("date-time")),
-          ),
-        }),
-      ).annotate({ identifier: "ProfilingStatus" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.optional(S.String),
-          agentOrchestrationConfig: S.optional(__S(21, __c2, 5)),
-          arn: S.optional(S.String),
-          createdAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-          updatedAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-          profilingStatus: S.optional(__S(24, __c3, 0)),
-          computePlatform: S.optional(S.String),
-          tags: S.optional(__S(16, __c2, 0)),
-        }),
-      ).annotate({
-        identifier: "ProfilingGroupDescription",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          profilingGroup: __S(25, __c3, 1).pipe(T.HttpPayload()).annotate({
-            identifier: "ProfilingGroupDescription",
-          }),
-        }),
-      ).annotate({
-        identifier: "CreateProfilingGroupResponse",
-      });
-    case 3:
       return S.suspend(() =>
         S.Struct({ profilingGroupName: S.String.pipe(T.HttpLabel("profilingGroupName")) }).pipe(
           T.all(
@@ -1427,11 +1213,19 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "DeleteProfilingGroupRequest",
       });
-    case 4:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "DeleteProfilingGroupResponse",
       });
-    case 5:
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ profilingGroupName: S.String.pipe(T.HttpLabel("profilingGroupName")) }).pipe(
           T.all(
@@ -1446,7 +1240,11 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "DescribeProfilingGroupRequest",
       });
-    case 6:
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
@@ -1465,7 +1263,17 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "GetFindingsReportAccountSummaryRequest",
       });
-    case 7:
+    case 1:
+      return S.suspend(() =>
+        S.Struct({ reportSummaries: __S(65, __c4, 1), nextToken: S.optional(S.String) }),
+      ).annotate({
+        identifier: "GetFindingsReportAccountSummaryResponse",
+      });
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
@@ -1475,19 +1283,13 @@ function __c3(j: number): any {
           totalNumberOfFindings: S.optional(S.Number),
         }),
       ).annotate({ identifier: "FindingsReportSummary" });
+    case 1:
+      return S.Array(__S(64, __c4, 0));
   }
 }
-function __c4(j: number): any {
+function __c5(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(31, __c3, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({ reportSummaries: __S(32, __c4, 0), nextToken: S.optional(S.String) }),
-      ).annotate({
-        identifier: "GetFindingsReportAccountSummaryResponse",
-      });
-    case 2:
       return S.suspend(() =>
         S.Struct({ profilingGroupName: S.String.pipe(T.HttpLabel("profilingGroupName")) }).pipe(
           T.all(
@@ -1505,11 +1307,15 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "GetNotificationConfigurationRequest",
       });
-    case 3:
-      return S.suspend(() => S.Struct({ notificationConfiguration: __S(4, __c0, 4) })).annotate({
+    case 1:
+      return S.suspend(() => S.Struct({ notificationConfiguration: __S(370, __c23, 2) })).annotate({
         identifier: "GetNotificationConfigurationResponse",
       });
-    case 4:
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ profilingGroupName: S.String.pipe(T.HttpLabel("profilingGroupName")) }).pipe(
           T.all(
@@ -1522,11 +1328,19 @@ function __c4(j: number): any {
           ),
         ),
       ).annotate({ identifier: "GetPolicyRequest" });
-    case 5:
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() => S.Struct({ policy: S.String, revisionId: S.String })).annotate({
         identifier: "GetPolicyResponse",
       });
-    case 6:
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           profilingGroupName: S.String.pipe(T.HttpLabel("profilingGroupName")),
@@ -1550,7 +1364,7 @@ function __c4(j: number): any {
           ),
         ),
       ).annotate({ identifier: "GetProfileRequest" });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           profile: T.StreamingOutput.pipe(T.HttpPayload()),
@@ -1560,7 +1374,7 @@ function __c4(j: number): any {
       ).annotate({ identifier: "GetProfileResponse" });
   }
 }
-function __c5(j: number): any {
+function __c9(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1590,7 +1404,7 @@ function __c5(j: number): any {
         identifier: "GetRecommendationsRequest",
       });
     case 1:
-      return S.Array(__S(0, __c0, 0));
+      return S.Array(__S(400, __c25, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -1598,9 +1412,9 @@ function __c5(j: number): any {
           name: S.optional(S.String),
           description: S.optional(S.String),
           resolutionSteps: S.optional(S.String),
-          targetFrames: S.optional(__S(41, __c5, 1)),
+          targetFrames: S.optional(__S(145, __c9, 1)),
           thresholdPercent: S.optional(S.Number),
-          countersToAggregate: S.optional(__S(0, __c0, 0)),
+          countersToAggregate: S.optional(__S(400, __c25, 0)),
         }),
       ).annotate({ identifier: "Pattern" });
     case 3:
@@ -1612,58 +1426,58 @@ function __c5(j: number): any {
         }),
       ).annotate({ identifier: "Match" });
     case 4:
-      return S.Array(__S(43, __c5, 3));
+      return S.Array(__S(147, __c9, 3));
     case 5:
       return S.suspend(() =>
         S.Struct({
           allMatchesCount: S.Number,
           allMatchesSum: S.Number,
-          pattern: __S(42, __c5, 2),
-          topMatches: __S(44, __c5, 4),
+          pattern: __S(146, __c9, 2),
+          topMatches: __S(148, __c9, 4),
           startTime: T.DateFromString.pipe(T.TimestampFormat("date-time")),
           endTime: T.DateFromString.pipe(T.TimestampFormat("date-time")),
         }),
       ).annotate({ identifier: "Recommendation" });
     case 6:
-      return S.Array(__S(45, __c5, 5));
+      return S.Array(__S(149, __c9, 5));
     case 7:
       return S.suspend(() => S.Struct({ type: S.String })).annotate({
         identifier: "UserFeedback",
       });
-  }
-}
-function __c6(j: number): any {
-  switch (j) {
-    case 0:
+    case 8:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
           startTime: T.DateFromString.pipe(T.TimestampFormat("date-time")),
           endTime: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-          userFeedback: S.optional(__S(47, __c5, 7)),
+          userFeedback: S.optional(__S(151, __c9, 7)),
         }),
       ).annotate({ identifier: "AnomalyInstance" });
-    case 1:
-      return S.Array(__S(48, __c6, 0));
-    case 2:
+    case 9:
+      return S.Array(__S(152, __c9, 8));
+    case 10:
       return S.suspend(() =>
-        S.Struct({ metric: __S(6, __c0, 6), reason: S.String, instances: __S(49, __c6, 1) }),
+        S.Struct({ metric: __S(432, __c27, 0), reason: S.String, instances: __S(153, __c9, 9) }),
       ).annotate({ identifier: "Anomaly" });
-    case 3:
-      return S.Array(__S(50, __c6, 2));
-    case 4:
+    case 11:
+      return S.Array(__S(154, __c9, 10));
+    case 12:
       return S.suspend(() =>
         S.Struct({
           profilingGroupName: S.String,
           profileStartTime: T.DateFromString.pipe(T.TimestampFormat("date-time")),
           profileEndTime: T.DateFromString.pipe(T.TimestampFormat("date-time")),
-          recommendations: __S(46, __c5, 6),
-          anomalies: __S(51, __c6, 3),
+          recommendations: __S(150, __c9, 6),
+          anomalies: __S(155, __c9, 11),
         }),
       ).annotate({
         identifier: "GetRecommendationsResponse",
       });
-    case 5:
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           profilingGroupName: S.String.pipe(T.HttpLabel("profilingGroupName")),
@@ -1692,16 +1506,17 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "ListFindingsReportsRequest",
       });
-    case 6:
+    case 1:
       return S.suspend(() =>
-        S.Struct({
-          findingsReportSummaries: __S(32, __c4, 0),
-          nextToken: S.optional(S.String),
-        }),
+        S.Struct({ findingsReportSummaries: __S(65, __c4, 1), nextToken: S.optional(S.String) }),
       ).annotate({
         identifier: "ListFindingsReportsResponse",
       });
-    case 7:
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           profilingGroupName: S.String.pipe(T.HttpLabel("profilingGroupName")),
@@ -1726,21 +1541,21 @@ function __c6(j: number): any {
           ),
         ),
       ).annotate({ identifier: "ListProfileTimesRequest" });
-  }
-}
-function __c7(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({ start: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))) }),
       ).annotate({ identifier: "ProfileTime" });
-    case 1:
-      return S.Array(__S(56, __c7, 0));
     case 2:
-      return S.suspend(() =>
-        S.Struct({ profileTimes: __S(57, __c7, 1), nextToken: S.optional(S.String) }),
-      ).annotate({ identifier: "ListProfileTimesResponse" });
+      return S.Array(__S(177, __c11, 1));
     case 3:
+      return S.suspend(() =>
+        S.Struct({ profileTimes: __S(178, __c11, 2), nextToken: S.optional(S.String) }),
+      ).annotate({ identifier: "ListProfileTimesResponse" });
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
@@ -1752,19 +1567,23 @@ function __c7(j: number): any {
       ).annotate({
         identifier: "ListProfilingGroupsRequest",
       });
-    case 4:
-      return S.Array(__S(25, __c3, 1));
-    case 5:
+    case 1:
+      return S.Array(__S(499, __c31, 3));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          profilingGroupNames: __S(0, __c0, 0),
-          profilingGroups: S.optional(__S(60, __c7, 4)),
+          profilingGroupNames: __S(400, __c25, 0),
+          profilingGroups: S.optional(__S(193, __c12, 1)),
           nextToken: S.optional(S.String),
         }),
       ).annotate({
         identifier: "ListProfilingGroupsResponse",
       });
-    case 6:
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ resourceArn: S.String.pipe(T.HttpLabel("resourceArn")) }).pipe(
           T.all(
@@ -1779,13 +1598,13 @@ function __c7(j: number): any {
       ).annotate({
         identifier: "ListTagsForResourceRequest",
       });
-    case 7:
-      return S.suspend(() => S.Struct({ tags: S.optional(__S(16, __c2, 0)) })).annotate({
+    case 1:
+      return S.suspend(() => S.Struct({ tags: S.optional(__S(464, __c29, 0)) })).annotate({
         identifier: "ListTagsForResourceResponse",
       });
   }
 }
-function __c8(j: number): any {
+function __c14(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1808,12 +1627,16 @@ function __c8(j: number): any {
           ),
         ),
       ).annotate({ identifier: "PostAgentProfileRequest" });
-    case 1:
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           profilingGroupName: S.String.pipe(T.HttpLabel("profilingGroupName")),
           actionGroup: S.String.pipe(T.HttpLabel("actionGroup")),
-          principals: __S(0, __c0, 0),
+          principals: __S(400, __c25, 0),
           revisionId: S.optional(S.String),
         }).pipe(
           T.all(
@@ -1829,7 +1652,11 @@ function __c8(j: number): any {
           ),
         ),
       ).annotate({ identifier: "PutPermissionRequest" });
-    case 2:
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           profilingGroupName: S.String.pipe(T.HttpLabel("profilingGroupName")),
@@ -1850,7 +1677,11 @@ function __c8(j: number): any {
       ).annotate({
         identifier: "RemoveNotificationChannelRequest",
       });
-    case 3:
+  }
+}
+function __c17(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           profilingGroupName: S.String.pipe(T.HttpLabel("profilingGroupName")),
@@ -1870,7 +1701,11 @@ function __c8(j: number): any {
           ),
         ),
       ).annotate({ identifier: "RemovePermissionRequest" });
-    case 4:
+  }
+}
+function __c18(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           profilingGroupName: S.String.pipe(T.HttpLabel("profilingGroupName")),
@@ -1891,11 +1726,15 @@ function __c8(j: number): any {
           ),
         ),
       ).annotate({ identifier: "SubmitFeedbackRequest" });
-    case 5:
+  }
+}
+function __c19(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           resourceArn: S.String.pipe(T.HttpLabel("resourceArn")),
-          tags: __S(16, __c2, 0),
+          tags: __S(464, __c29, 0),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/tags/{resourceArn}" }),
@@ -1907,11 +1746,15 @@ function __c8(j: number): any {
           ),
         ),
       ).annotate({ identifier: "TagResourceRequest" });
-    case 6:
+  }
+}
+function __c20(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           resourceArn: S.String.pipe(T.HttpLabel("resourceArn")),
-          tagKeys: __S(0, __c0, 0).pipe(T.HttpQuery("tagKeys")),
+          tagKeys: __S(400, __c25, 0).pipe(T.HttpQuery("tagKeys")),
         }).pipe(
           T.all(
             T.Http({ method: "DELETE", uri: "/tags/{resourceArn}" }),
@@ -1923,11 +1766,15 @@ function __c8(j: number): any {
           ),
         ),
       ).annotate({ identifier: "UntagResourceRequest" });
-    case 7:
+  }
+}
+function __c21(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           profilingGroupName: S.String.pipe(T.HttpLabel("profilingGroupName")),
-          agentOrchestrationConfig: __S(21, __c2, 5),
+          agentOrchestrationConfig: __S(496, __c31, 0),
         }).pipe(
           T.all(
             T.Http({ method: "PUT", uri: "/profilingGroups/{profilingGroupName}" }),
@@ -1943,7 +1790,252 @@ function __c8(j: number): any {
       });
   }
 }
-
+function __c22(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          profilingGroupName: S.String.pipe(T.HttpLabel("profilingGroupName")),
+          channels: __S(369, __c23, 1),
+        }).pipe(
+          T.all(
+            T.Http({
+              method: "POST",
+              uri: "/profilingGroups/{profilingGroupName}/notificationConfiguration",
+            }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "AddNotificationChannelsRequest",
+      });
+  }
+}
+function __c23(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ id: S.optional(S.String), uri: S.String, eventPublishers: __S(400, __c25, 0) }),
+      ).annotate({ identifier: "Channel" });
+    case 1:
+      return S.Array(__S(368, __c23, 0));
+    case 2:
+      return S.suspend(() => S.Struct({ channels: S.optional(__S(369, __c23, 1)) })).annotate({
+        identifier: "NotificationConfiguration",
+      });
+  }
+}
+function __c24(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ notificationConfiguration: S.optional(__S(370, __c23, 2)) }),
+      ).annotate({
+        identifier: "AddNotificationChannelsResponse",
+      });
+  }
+}
+function __c25(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c26(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(432, __c27, 0));
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          profilingGroupName: S.String.pipe(T.HttpLabel("profilingGroupName")),
+          startTime: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))).pipe(
+            T.HttpQuery("startTime"),
+          ),
+          endTime: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))).pipe(
+            T.HttpQuery("endTime"),
+          ),
+          period: S.optional(S.String).pipe(T.HttpQuery("period")),
+          targetResolution: S.optional(S.String).pipe(T.HttpQuery("targetResolution")),
+          frameMetrics: S.optional(__S(416, __c26, 0)),
+        }).pipe(
+          T.all(
+            T.Http({
+              method: "POST",
+              uri: "/profilingGroups/{profilingGroupName}/frames/-/metrics",
+            }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "BatchGetFrameMetricDataRequest",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({ value: T.DateFromString.pipe(T.TimestampFormat("date-time")) }),
+      ).annotate({ identifier: "TimestampStructure" });
+    case 3:
+      return S.Array(__S(418, __c26, 2));
+    case 4:
+      return S.Record(S.String, /*@__PURE__*/ __S(419, __c26, 3).pipe(S.optional));
+    case 5:
+      return S.Array(S.Number);
+    case 6:
+      return S.suspend(() =>
+        S.Struct({ frameMetric: __S(432, __c27, 0), values: __S(421, __c26, 5) }),
+      ).annotate({ identifier: "FrameMetricDatum" });
+    case 7:
+      return S.Array(__S(422, __c26, 6));
+    case 8:
+      return S.suspend(() =>
+        S.Struct({
+          startTime: T.DateFromString.pipe(T.TimestampFormat("date-time")),
+          endTime: T.DateFromString.pipe(T.TimestampFormat("date-time")),
+          resolution: S.String,
+          endTimes: __S(419, __c26, 3),
+          unprocessedEndTimes: __S(420, __c26, 4),
+          frameMetricData: __S(423, __c26, 7),
+        }),
+      ).annotate({
+        identifier: "BatchGetFrameMetricDataResponse",
+      });
+  }
+}
+function __c27(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ frameName: S.String, type: S.String, threadStates: __S(400, __c25, 0) }),
+      ).annotate({ identifier: "FrameMetric" });
+  }
+}
+function __c28(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          profilingGroupName: S.String.pipe(T.HttpLabel("profilingGroupName")),
+          fleetInstanceId: S.optional(S.String),
+          metadata: S.optional(__S(464, __c29, 0)),
+        }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/profilingGroups/{profilingGroupName}/configureAgent" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "ConfigureAgentRequest" });
+    case 1:
+      return S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          shouldProfile: S.Boolean,
+          periodInSeconds: S.Number,
+          agentParameters: S.optional(__S(449, __c28, 1)),
+        }),
+      ).annotate({ identifier: "AgentConfiguration" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          configuration: __S(450, __c28, 2).pipe(T.HttpPayload()).annotate({
+            identifier: "AgentConfiguration",
+          }),
+        }),
+      ).annotate({ identifier: "ConfigureAgentResponse" });
+  }
+}
+function __c29(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
+  }
+}
+function __c30(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          profilingGroupName: S.String,
+          computePlatform: S.optional(S.String),
+          clientToken: S.String.pipe(T.HttpQuery("clientToken"), T.IdempotencyToken()),
+          agentOrchestrationConfig: S.optional(__S(496, __c31, 0)),
+          tags: S.optional(__S(464, __c29, 0)),
+        }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/profilingGroups" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({
+        identifier: "CreateProfilingGroupRequest",
+      });
+  }
+}
+function __c31(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({ profilingEnabled: S.Boolean })).annotate({
+        identifier: "AgentOrchestrationConfig",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          start: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
+          period: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "AggregatedProfileTime" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          latestAgentProfileReportedAt: S.optional(
+            T.DateFromString.pipe(T.TimestampFormat("date-time")),
+          ),
+          latestAggregatedProfile: S.optional(__S(497, __c31, 1)),
+          latestAgentOrchestratedAt: S.optional(
+            T.DateFromString.pipe(T.TimestampFormat("date-time")),
+          ),
+        }),
+      ).annotate({ identifier: "ProfilingStatus" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.optional(S.String),
+          agentOrchestrationConfig: S.optional(__S(496, __c31, 0)),
+          arn: S.optional(S.String),
+          createdAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
+          updatedAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
+          profilingStatus: S.optional(__S(498, __c31, 2)),
+          computePlatform: S.optional(S.String),
+          tags: S.optional(__S(464, __c29, 0)),
+        }),
+      ).annotate({
+        identifier: "ProfilingGroupDescription",
+      });
+  }
+}
+function __c32(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          profilingGroup: __S(499, __c31, 3).pipe(T.HttpPayload()).annotate({
+            identifier: "ProfilingGroupDescription",
+          }),
+        }),
+      ).annotate({
+        identifier: "CreateProfilingGroupResponse",
+      });
+  }
+}
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

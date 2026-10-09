@@ -118,7 +118,7 @@ export class ValidationException
   extends /*@__PURE__*/ S.TaggedError<ValidationException>()("ValidationException", {
     message: /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.ErrorMessage()),
     fieldList: /*@__PURE__*/ S.optional(
-      /*@__PURE__*/ S.suspend(() => __S(36, __c4, 4)).annotate({
+      /*@__PURE__*/ S.suspend(() => __S(73, __c9, 1)).annotate({
         identifier: "ValidationExceptionFieldList",
       }),
     ),
@@ -318,8 +318,8 @@ export const createSupportPermit: API.OperationMethod<
   CreateSupportPermitError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(8, __c1, 0) as any as S.Schema<CreateSupportPermitInput>,
-  output: __S(9, __c1, 1) as any as S.Schema<CreateSupportPermitOutput>,
+  input: __S(80, __c10, 0) as any as S.Schema<CreateSupportPermitInput>,
+  output: __S(81, __c10, 1) as any as S.Schema<CreateSupportPermitOutput>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -349,8 +349,8 @@ export const deleteSupportPermit: API.OperationMethod<
   DeleteSupportPermitError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(10, __c1, 2) as any as S.Schema<DeleteSupportPermitInput>,
-  output: __S(11, __c1, 3) as any as S.Schema<DeleteSupportPermitOutput>,
+  input: __S(120, __c15, 0) as any as S.Schema<DeleteSupportPermitInput>,
+  output: __S(121, __c15, 1) as any as S.Schema<DeleteSupportPermitOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -379,8 +379,8 @@ export const getAction: API.OperationMethod<
   GetActionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(12, __c1, 4) as any as S.Schema<GetActionInput>,
-  output: __S(13, __c1, 5) as any as S.Schema<GetActionOutput>,
+  input: __S(128, __c16, 0) as any as S.Schema<GetActionInput>,
+  output: __S(136, __c17, 0) as any as S.Schema<GetActionOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -409,8 +409,8 @@ export const getSupportPermit: API.OperationMethod<
   GetSupportPermitError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(14, __c1, 6) as any as S.Schema<GetSupportPermitInput>,
-  output: __S(15, __c1, 7) as any as S.Schema<GetSupportPermitOutput>,
+  input: __S(0, __c0, 0) as any as S.Schema<GetSupportPermitInput>,
+  output: __S(1, __c0, 1) as any as S.Schema<GetSupportPermitOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -439,8 +439,8 @@ export const listActions: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   ActionSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(16, __c2, 0) as any as S.Schema<ListActionsInput>,
-  output: __S(18, __c2, 2) as any as S.Schema<ListActionsOutput>,
+  input: __S(8, __c1, 0) as any as S.Schema<ListActionsInput>,
+  output: __S(10, __c1, 2) as any as S.Schema<ListActionsOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -474,8 +474,8 @@ export const listSupportPermitRequests: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   SupportPermitRequest
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(19, __c2, 3) as any as S.Schema<ListSupportPermitRequestsInput>,
-  output: __S(22, __c2, 6) as any as S.Schema<ListSupportPermitRequestsOutput>,
+  input: __S(16, __c2, 0) as any as S.Schema<ListSupportPermitRequestsInput>,
+  output: __S(19, __c2, 3) as any as S.Schema<ListSupportPermitRequestsOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -509,8 +509,8 @@ export const listSupportPermits: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   SupportPermitSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(24, __c3, 0) as any as S.Schema<ListSupportPermitsInput>,
-  output: __S(27, __c3, 3) as any as S.Schema<ListSupportPermitsOutput>,
+  input: __S(25, __c3, 1) as any as S.Schema<ListSupportPermitsInput>,
+  output: __S(28, __c3, 4) as any as S.Schema<ListSupportPermitsOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -544,8 +544,8 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(28, __c3, 4) as any as S.Schema<ListTagsForResourceInput>,
-  output: __S(29, __c3, 5) as any as S.Schema<ListTagsForResourceOutput>,
+  input: __S(32, __c4, 0) as any as S.Schema<ListTagsForResourceInput>,
+  output: __S(33, __c4, 1) as any as S.Schema<ListTagsForResourceOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -575,8 +575,8 @@ export const rejectSupportPermitRequest: API.OperationMethod<
   RejectSupportPermitRequestError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(30, __c3, 6) as any as S.Schema<RejectSupportPermitRequestInput>,
-  output: __S(31, __c3, 7) as any as S.Schema<RejectSupportPermitRequestOutput>,
+  input: __S(40, __c5, 0) as any as S.Schema<RejectSupportPermitRequestInput>,
+  output: __S(41, __c5, 1) as any as S.Schema<RejectSupportPermitRequestOutput>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -606,8 +606,8 @@ export const tagResource: API.OperationMethod<
   TagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(32, __c4, 0) as any as S.Schema<TagResourceInput>,
-  output: __S(33, __c4, 1) as any as S.Schema<TagResourceOutput>,
+  input: __S(48, __c6, 0) as any as S.Schema<TagResourceInput>,
+  output: __S(56, __c7, 0) as any as S.Schema<TagResourceOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -636,8 +636,8 @@ export const untagResource: API.OperationMethod<
   UntagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(34, __c4, 2) as any as S.Schema<UntagResourceInput>,
-  output: __S(33, __c4, 1) as any as S.Schema<UntagResourceOutput>,
+  input: __S(64, __c8, 0) as any as S.Schema<UntagResourceInput>,
+  output: __S(56, __c7, 0) as any as S.Schema<UntagResourceOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -654,115 +654,6 @@ export const untagResource: API.OperationMethod<
 function __c0(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(S.String);
-    case 1:
-      return S.Union([
-        /*@__PURE__*/ S.Struct({ allActions: /*@__PURE__*/ S.Struct({}) }),
-        /*@__PURE__*/ S.Struct({ actions: __S(0, __c0, 0) }),
-      ]);
-    case 2:
-      return S.Union([
-        /*@__PURE__*/ S.Struct({ allResourcesInRegion: /*@__PURE__*/ S.Struct({}) }),
-        /*@__PURE__*/ S.Struct({ resources: __S(0, __c0, 0) }),
-      ]);
-    case 3:
-      return S.Union([
-        /*@__PURE__*/ S.Struct({
-          allowAfter: /*@__PURE__*/ S.Date.pipe(/*@__PURE__*/ T.TimestampFormat("epoch-seconds")),
-        }),
-        /*@__PURE__*/ S.Struct({
-          allowBefore: /*@__PURE__*/ S.Date.pipe(/*@__PURE__*/ T.TimestampFormat("epoch-seconds")),
-        }),
-      ]);
-    case 4:
-      return S.Array(__S(3, __c0, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          actions: __S(1, __c0, 1),
-          resources: __S(2, __c0, 2),
-          conditions: S.optional(__S(4, __c0, 4)),
-        }),
-      ).annotate({ identifier: "Permit" });
-    case 6:
-      return S.Union([/*@__PURE__*/ S.Struct({ kmsKey: S.String })]);
-    case 7:
-      return S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          permit: __S(5, __c0, 5),
-          name: S.String,
-          description: S.optional(S.String),
-          signingKeyInfo: __S(6, __c0, 6),
-          supportCaseDisplayId: S.optional(S.String),
-          clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-          tags: S.optional(__S(7, __c0, 7)),
-        }).pipe(
-          T.all(T.Http({ method: "POST", uri: "/support-permits" }), svc, auth, proto, ver, rules),
-        ),
-      ).annotate({ identifier: "CreateSupportPermitInput" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String,
-          arn: S.String,
-          description: S.optional(S.String),
-          permit: __S(5, __c0, 5),
-          status: S.String,
-          signingKeyInfo: __S(6, __c0, 6),
-          createdAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-          supportCaseDisplayId: S.optional(S.String),
-          tags: S.optional(__S(7, __c0, 7)),
-        }),
-      ).annotate({
-        identifier: "CreateSupportPermitOutput",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          supportPermitIdentifier: S.String.pipe(T.HttpLabel("supportPermitIdentifier")),
-        }).pipe(
-          T.all(
-            T.Http({ method: "DELETE", uri: "/support-permits/{supportPermitIdentifier}" }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({ identifier: "DeleteSupportPermitInput" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String,
-          arn: S.String,
-          description: S.optional(S.String),
-          permit: __S(5, __c0, 5),
-          status: S.String,
-          signingKeyInfo: __S(6, __c0, 6),
-          createdAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-          supportCaseDisplayId: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "DeleteSupportPermitOutput",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({ action: S.String.pipe(T.HttpLabel("action")) }).pipe(
-          T.all(T.Http({ method: "GET", uri: "/actions/{action}" }), svc, auth, proto, ver, rules),
-        ),
-      ).annotate({ identifier: "GetActionInput" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({ action: S.String, service: S.String, description: S.String }),
-      ).annotate({ identifier: "GetActionOutput" });
-    case 6:
       return S.suspend(() =>
         S.Struct({
           supportPermitIdentifier: S.String.pipe(T.HttpLabel("supportPermitIdentifier")),
@@ -777,23 +668,23 @@ function __c1(j: number): any {
           ),
         ),
       ).annotate({ identifier: "GetSupportPermitInput" });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           name: S.String,
           arn: S.String,
           description: S.optional(S.String),
-          permit: __S(5, __c0, 5),
+          permit: __S(100, __c12, 4),
           status: S.String,
-          signingKeyInfo: __S(6, __c0, 6),
+          signingKeyInfo: __S(112, __c14, 0),
           createdAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
           supportCaseDisplayId: S.optional(S.String),
-          tags: S.optional(__S(7, __c0, 7)),
+          tags: S.optional(__S(88, __c11, 0)),
         }),
       ).annotate({ identifier: "GetSupportPermitOutput" });
   }
 }
-function __c2(j: number): any {
+function __c1(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -804,12 +695,16 @@ function __c2(j: number): any {
         }).pipe(T.all(T.Http({ method: "GET", uri: "/actions" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "ListActionsInput" });
     case 1:
-      return S.Array(__S(13, __c1, 5));
+      return S.Array(__S(136, __c17, 0));
     case 2:
       return S.suspend(() =>
-        S.Struct({ actionSummaries: __S(17, __c2, 1), nextToken: S.optional(S.String) }),
+        S.Struct({ actionSummaries: __S(9, __c1, 1), nextToken: S.optional(S.String) }),
       ).annotate({ identifier: "ListActionsOutput" });
-    case 3:
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
@@ -828,62 +723,66 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "ListSupportPermitRequestsInput",
       });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           requestArn: S.String,
-          permit: __S(5, __c0, 5),
+          permit: __S(100, __c12, 4),
           supportCaseDisplayId: S.String,
           status: S.String,
           createdAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
           updatedAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
         }),
       ).annotate({ identifier: "SupportPermitRequest" });
-    case 5:
-      return S.Array(__S(20, __c2, 4));
-    case 6:
+    case 2:
+      return S.Array(__S(17, __c2, 1));
+    case 3:
       return S.suspend(() =>
-        S.Struct({ supportPermitRequests: __S(21, __c2, 5), nextToken: S.optional(S.String) }),
+        S.Struct({ supportPermitRequests: __S(18, __c2, 2), nextToken: S.optional(S.String) }),
       ).annotate({
         identifier: "ListSupportPermitRequestsOutput",
       });
-    case 7:
-      return S.Array(S.String);
   }
 }
 function __c3(j: number): any {
   switch (j) {
     case 0:
+      return S.Array(S.String);
+    case 1:
       return S.suspend(() =>
         S.Struct({
           nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
           maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
-          supportPermitStatuses: S.optional(__S(23, __c2, 7)).pipe(
+          supportPermitStatuses: S.optional(__S(24, __c3, 0)).pipe(
             T.HttpQuery("supportPermitStatuses"),
           ),
         }).pipe(
           T.all(T.Http({ method: "GET", uri: "/support-permits" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "ListSupportPermitsInput" });
-    case 1:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           name: S.String,
           arn: S.String,
-          permit: __S(5, __c0, 5),
+          permit: __S(100, __c12, 4),
           status: S.String,
-          signingKeyInfo: __S(6, __c0, 6),
+          signingKeyInfo: __S(112, __c14, 0),
           createdAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
           supportCaseDisplayId: S.optional(S.String),
         }),
       ).annotate({ identifier: "SupportPermitSummary" });
-    case 2:
-      return S.Array(__S(25, __c3, 1));
     case 3:
-      return S.suspend(() =>
-        S.Struct({ supportPermits: __S(26, __c3, 2), nextToken: S.optional(S.String) }),
-      ).annotate({ identifier: "ListSupportPermitsOutput" });
+      return S.Array(__S(26, __c3, 2));
     case 4:
+      return S.suspend(() =>
+        S.Struct({ supportPermits: __S(27, __c3, 3), nextToken: S.optional(S.String) }),
+      ).annotate({ identifier: "ListSupportPermitsOutput" });
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ resourceArn: S.String.pipe(T.HttpLabel("resourceArn")) }).pipe(
           T.all(
@@ -896,11 +795,15 @@ function __c3(j: number): any {
           ),
         ),
       ).annotate({ identifier: "ListTagsForResourceInput" });
-    case 5:
-      return S.suspend(() => S.Struct({ tags: S.optional(__S(7, __c0, 7)) })).annotate({
+    case 1:
+      return S.suspend(() => S.Struct({ tags: S.optional(__S(88, __c11, 0)) })).annotate({
         identifier: "ListTagsForResourceOutput",
       });
-    case 6:
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ requestArn: S.String.pipe(T.HttpLabel("requestArn")) }).pipe(
           T.all(
@@ -915,19 +818,19 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "RejectSupportPermitRequestInput",
       });
-    case 7:
+    case 1:
       return S.suspend(() => S.Struct({ requestArn: S.String })).annotate({
         identifier: "RejectSupportPermitRequestOutput",
       });
   }
 }
-function __c4(j: number): any {
+function __c6(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           resourceArn: S.String.pipe(T.HttpLabel("resourceArn")),
-          tags: __S(7, __c0, 7),
+          tags: __S(88, __c11, 0),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/tags/{resourceArn}" }),
@@ -939,15 +842,23 @@ function __c4(j: number): any {
           ),
         ),
       ).annotate({ identifier: "TagResourceInput" });
-    case 1:
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "TagResourceOutput",
       });
-    case 2:
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           resourceArn: S.String.pipe(T.HttpLabel("resourceArn")),
-          tagKeys: __S(0, __c0, 0).pipe(T.HttpQuery("tagKeys")),
+          tagKeys: __S(104, __c13, 0).pipe(T.HttpQuery("tagKeys")),
         }).pipe(
           T.all(
             T.Http({ method: "DELETE", uri: "/tags/{resourceArn}" }),
@@ -959,15 +870,155 @@ function __c4(j: number): any {
           ),
         ),
       ).annotate({ identifier: "UntagResourceInput" });
-    case 3:
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() => S.Struct({ path: S.String, message: S.String })).annotate({
         identifier: "ValidationExceptionField",
       });
-    case 4:
-      return S.Array(__S(35, __c4, 3));
+    case 1:
+      return S.Array(__S(72, __c9, 0));
   }
 }
-
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          permit: __S(100, __c12, 4),
+          name: S.String,
+          description: S.optional(S.String),
+          signingKeyInfo: __S(112, __c14, 0),
+          supportCaseDisplayId: S.optional(S.String),
+          clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
+          tags: S.optional(__S(88, __c11, 0)),
+        }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/support-permits" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "CreateSupportPermitInput" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String,
+          arn: S.String,
+          description: S.optional(S.String),
+          permit: __S(100, __c12, 4),
+          status: S.String,
+          signingKeyInfo: __S(112, __c14, 0),
+          createdAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+          supportCaseDisplayId: S.optional(S.String),
+          tags: S.optional(__S(88, __c11, 0)),
+        }),
+      ).annotate({
+        identifier: "CreateSupportPermitOutput",
+      });
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Union([
+        /*@__PURE__*/ S.Struct({ allActions: /*@__PURE__*/ S.Struct({}) }),
+        /*@__PURE__*/ S.Struct({ actions: __S(104, __c13, 0) }),
+      ]);
+    case 1:
+      return S.Union([
+        /*@__PURE__*/ S.Struct({ allResourcesInRegion: /*@__PURE__*/ S.Struct({}) }),
+        /*@__PURE__*/ S.Struct({ resources: __S(104, __c13, 0) }),
+      ]);
+    case 2:
+      return S.Union([
+        /*@__PURE__*/ S.Struct({
+          allowAfter: /*@__PURE__*/ S.Date.pipe(/*@__PURE__*/ T.TimestampFormat("epoch-seconds")),
+        }),
+        /*@__PURE__*/ S.Struct({
+          allowBefore: /*@__PURE__*/ S.Date.pipe(/*@__PURE__*/ T.TimestampFormat("epoch-seconds")),
+        }),
+      ]);
+    case 3:
+      return S.Array(__S(98, __c12, 2));
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          actions: __S(96, __c12, 0),
+          resources: __S(97, __c12, 1),
+          conditions: S.optional(__S(99, __c12, 3)),
+        }),
+      ).annotate({ identifier: "Permit" });
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Union([/*@__PURE__*/ S.Struct({ kmsKey: S.String })]);
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          supportPermitIdentifier: S.String.pipe(T.HttpLabel("supportPermitIdentifier")),
+        }).pipe(
+          T.all(
+            T.Http({ method: "DELETE", uri: "/support-permits/{supportPermitIdentifier}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "DeleteSupportPermitInput" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String,
+          arn: S.String,
+          description: S.optional(S.String),
+          permit: __S(100, __c12, 4),
+          status: S.String,
+          signingKeyInfo: __S(112, __c14, 0),
+          createdAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+          supportCaseDisplayId: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "DeleteSupportPermitOutput",
+      });
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ action: S.String.pipe(T.HttpLabel("action")) }).pipe(
+          T.all(T.Http({ method: "GET", uri: "/actions/{action}" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "GetActionInput" });
+  }
+}
+function __c17(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ action: S.String, service: S.String, description: S.String }),
+      ).annotate({ identifier: "GetActionOutput" });
+  }
+}
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

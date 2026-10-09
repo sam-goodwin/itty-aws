@@ -245,8 +245,8 @@ export const attachExperience: API.OperationMethod<
   AttachExperienceError,
   WhopOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(0, __c0, 0) as any as S.Schema<AttachExperienceRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<Experience>,
+  input: __S(16, __c2, 0) as any as S.Schema<AttachExperienceRequest>,
+  output: __S(33, __c4, 1) as any as S.Schema<Experience>,
   errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity],
   protocol: WhopProtocol,
   retry: Retry.Retry,
@@ -265,8 +265,8 @@ export const createExperience: API.OperationMethod<
   CreateExperienceError,
   WhopOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(7, __c0, 7) as any as S.Schema<CreateExperienceRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<Experience>,
+  input: __S(40, __c5, 0) as any as S.Schema<CreateExperienceRequest>,
+  output: __S(33, __c4, 1) as any as S.Schema<Experience>,
   errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity],
   protocol: WhopProtocol,
   retry: Retry.Retry,
@@ -285,8 +285,8 @@ export const deleteExperience: API.OperationMethod<
   DeleteExperienceError,
   WhopOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(8, __c1, 0) as any as S.Schema<DeleteExperienceRequest>,
-  output: __S(9, __c1, 1) as any as S.Schema<DeleteExperienceResponse>,
+  input: __S(56, __c7, 0) as any as S.Schema<DeleteExperienceRequest>,
+  output: __S(57, __c7, 1) as any as S.Schema<DeleteExperienceResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity],
   protocol: WhopProtocol,
   retry: Retry.Retry,
@@ -305,8 +305,8 @@ export const detachExperience: API.OperationMethod<
   DetachExperienceError,
   WhopOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(10, __c1, 2) as any as S.Schema<DetachExperienceRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<Experience>,
+  input: __S(64, __c8, 0) as any as S.Schema<DetachExperienceRequest>,
+  output: __S(33, __c4, 1) as any as S.Schema<Experience>,
   errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity],
   protocol: WhopProtocol,
   retry: Retry.Retry,
@@ -325,8 +325,8 @@ export const duplicateExperience: API.OperationMethod<
   DuplicateExperienceError,
   WhopOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(11, __c1, 3) as any as S.Schema<DuplicateExperienceRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<Experience>,
+  input: __S(72, __c9, 0) as any as S.Schema<DuplicateExperienceRequest>,
+  output: __S(33, __c4, 1) as any as S.Schema<Experience>,
   errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity],
   protocol: WhopProtocol,
   retry: Retry.Retry,
@@ -345,8 +345,8 @@ export const getExperience: API.OperationMethod<
   GetExperienceError,
   WhopOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(12, __c1, 4) as any as S.Schema<GetExperienceRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<Experience>,
+  input: __S(80, __c10, 0) as any as S.Schema<GetExperienceRequest>,
+  output: __S(33, __c4, 1) as any as S.Schema<Experience>,
   errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity],
   protocol: WhopProtocol,
   retry: Retry.Retry,
@@ -367,8 +367,8 @@ export const listExperience: API.PaginatedOperationMethod<
   ExperienceListItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(13, __c1, 5) as any as S.Schema<ListExperienceRequest>,
-    output: __S(17, __c2, 1) as any as S.Schema<ListExperienceResponse>,
+    input: __S(0, __c0, 0) as any as S.Schema<ListExperienceRequest>,
+    output: __S(4, __c0, 4) as any as S.Schema<ListExperienceResponse>,
     errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity],
     protocol: WhopProtocol,
     retry: Retry.Retry,
@@ -397,8 +397,8 @@ export const updateExperience: API.OperationMethod<
   UpdateExperienceError,
   WhopOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(18, __c2, 2) as any as S.Schema<UpdateExperienceRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<Experience>,
+  input: __S(8, __c1, 0) as any as S.Schema<UpdateExperienceRequest>,
+  output: __S(33, __c4, 1) as any as S.Schema<Experience>,
   errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity],
   protocol: WhopProtocol,
   retry: Retry.Retry,
@@ -408,107 +408,6 @@ export const updateExperience: API.OperationMethod<
 function __c0(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String.pipe(T.Label()),
-          product_id: S.String,
-        }).pipe(T.Http({ method: "POST", uri: "/experiences/{id}/attach", code: 200 })),
-      ).annotate({ identifier: "AttachExperienceRequest" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          url: S.NullOr(S.String),
-        }),
-      ).annotate({ identifier: "ExperienceAppIcon" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          icon: S.NullOr(__S(1, __c0, 1)),
-          id: S.String,
-          name: S.String,
-        }),
-      ).annotate({ identifier: "ExperienceApp" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String,
-          route: S.String,
-          title: S.String,
-        }),
-      ).annotate({ identifier: "ExperienceCompany" });
-    case 4:
-      return S.Array(__S(3, __c0, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          app: __S(2, __c0, 2),
-          company: __S(3, __c0, 3),
-          created_at: S.String,
-          id: S.String,
-          image: S.NullOr(__S(1, __c0, 1)),
-          is_public: S.Boolean,
-          name: S.String,
-          order: S.NullOr(S.String),
-          products: __S(4, __c0, 4),
-        }),
-      ).annotate({ identifier: "Experience" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String,
-        }),
-      ).annotate({
-        identifier: "CreateExperienceRequestLogo",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          account_id: S.String,
-          app_id: S.String,
-          is_public: S.optional(S.NullOr(S.Boolean)),
-          logo: S.optional(S.NullOr(__S(6, __c0, 6))),
-          name: S.optional(S.NullOr(S.String)),
-          notifications_enabled: S.optional(S.NullOr(S.Boolean)),
-          section_id: S.optional(S.NullOr(S.String)),
-        }).pipe(T.Http({ method: "POST", uri: "/experiences", code: 200 })),
-      ).annotate({ identifier: "CreateExperienceRequest" });
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String.pipe(T.Label()),
-        }).pipe(T.Http({ method: "DELETE", uri: "/experiences/{id}", code: 200 })),
-      ).annotate({ identifier: "DeleteExperienceRequest" });
-    case 1:
-      return S.suspend(() => S.Boolean.pipe(T.RawResponseRoot())).annotate({
-        identifier: "DeleteExperienceResponse",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String.pipe(T.Label()),
-          product_id: S.String,
-        }).pipe(T.Http({ method: "POST", uri: "/experiences/{id}/detach", code: 200 })),
-      ).annotate({ identifier: "DetachExperienceRequest" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String.pipe(T.Label()),
-          name: S.optional(S.NullOr(S.String)),
-        }).pipe(T.Http({ method: "POST", uri: "/experiences/{id}/duplicate", code: 200 })),
-      ).annotate({
-        identifier: "DuplicateExperienceRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String.pipe(T.Label()),
-        }).pipe(T.Http({ method: "GET", uri: "/experiences/{id}", code: 200 })),
-      ).annotate({ identifier: "GetExperienceRequest" });
-    case 5:
       return S.suspend(() =>
         S.Struct({
           after: S.optional(S.String.pipe(T.Query())),
@@ -522,26 +421,22 @@ function __c1(j: number): any {
           account_id: S.String.pipe(T.Query()),
         }).pipe(T.Http({ method: "GET", uri: "/experiences", code: 200 })),
       ).annotate({ identifier: "ListExperienceRequest" });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          app: __S(2, __c0, 2),
-          company: __S(3, __c0, 3),
+          app: __S(25, __c3, 1),
+          company: __S(26, __c3, 2),
           created_at: S.String,
           id: S.String,
-          image: S.NullOr(__S(1, __c0, 1)),
+          image: S.NullOr(__S(24, __c3, 0)),
           is_public: S.Boolean,
           name: S.String,
           order: S.NullOr(S.String),
         }),
       ).annotate({ identifier: "ExperienceListItem" });
-    case 7:
-      return S.Array(__S(14, __c1, 6));
-  }
-}
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
+    case 2:
+      return S.Array(__S(1, __c0, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
           end_cursor: S.NullOr(S.String),
@@ -550,20 +445,24 @@ function __c2(j: number): any {
           start_cursor: S.NullOr(S.String),
         }),
       ).annotate({ identifier: "PageInfo" });
-    case 1:
+    case 4:
       return S.suspend(() =>
         S.Struct({
-          data: __S(15, __c1, 7),
-          page_info: __S(16, __c2, 0),
+          data: __S(2, __c0, 2),
+          page_info: __S(3, __c0, 3),
         }),
       ).annotate({ identifier: "ListExperienceResponse" });
-    case 2:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.String.pipe(T.Label()),
           access_level: S.optional(S.NullOr(S.String)),
           is_public: S.optional(S.NullOr(S.Boolean)),
-          logo: S.optional(S.NullOr(__S(6, __c0, 6))),
+          logo: S.optional(S.NullOr(__S(48, __c6, 0))),
           name: S.optional(S.NullOr(S.String)),
           notifications_enabled: S.optional(S.NullOr(S.Boolean)),
           order: S.optional(S.NullOr(S.String)),
@@ -572,7 +471,139 @@ function __c2(j: number): any {
       ).annotate({ identifier: "UpdateExperienceRequest" });
   }
 }
-
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String.pipe(T.Label()),
+          product_id: S.String,
+        }).pipe(T.Http({ method: "POST", uri: "/experiences/{id}/attach", code: 200 })),
+      ).annotate({ identifier: "AttachExperienceRequest" });
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          url: S.NullOr(S.String),
+        }),
+      ).annotate({ identifier: "ExperienceAppIcon" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          icon: S.NullOr(__S(24, __c3, 0)),
+          id: S.String,
+          name: S.String,
+        }),
+      ).annotate({ identifier: "ExperienceApp" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          route: S.String,
+          title: S.String,
+        }),
+      ).annotate({ identifier: "ExperienceCompany" });
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(26, __c3, 2));
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          app: __S(25, __c3, 1),
+          company: __S(26, __c3, 2),
+          created_at: S.String,
+          id: S.String,
+          image: S.NullOr(__S(24, __c3, 0)),
+          is_public: S.Boolean,
+          name: S.String,
+          order: S.NullOr(S.String),
+          products: __S(32, __c4, 0),
+        }),
+      ).annotate({ identifier: "Experience" });
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          account_id: S.String,
+          app_id: S.String,
+          is_public: S.optional(S.NullOr(S.Boolean)),
+          logo: S.optional(S.NullOr(__S(48, __c6, 0))),
+          name: S.optional(S.NullOr(S.String)),
+          notifications_enabled: S.optional(S.NullOr(S.Boolean)),
+          section_id: S.optional(S.NullOr(S.String)),
+        }).pipe(T.Http({ method: "POST", uri: "/experiences", code: 200 })),
+      ).annotate({ identifier: "CreateExperienceRequest" });
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+        }),
+      ).annotate({
+        identifier: "CreateExperienceRequestLogo",
+      });
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String.pipe(T.Label()),
+        }).pipe(T.Http({ method: "DELETE", uri: "/experiences/{id}", code: 200 })),
+      ).annotate({ identifier: "DeleteExperienceRequest" });
+    case 1:
+      return S.suspend(() => S.Boolean.pipe(T.RawResponseRoot())).annotate({
+        identifier: "DeleteExperienceResponse",
+      });
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String.pipe(T.Label()),
+          product_id: S.String,
+        }).pipe(T.Http({ method: "POST", uri: "/experiences/{id}/detach", code: 200 })),
+      ).annotate({ identifier: "DetachExperienceRequest" });
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String.pipe(T.Label()),
+          name: S.optional(S.NullOr(S.String)),
+        }).pipe(T.Http({ method: "POST", uri: "/experiences/{id}/duplicate", code: 200 })),
+      ).annotate({
+        identifier: "DuplicateExperienceRequest",
+      });
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String.pipe(T.Label()),
+        }).pipe(T.Http({ method: "GET", uri: "/experiences/{id}", code: 200 })),
+      ).annotate({ identifier: "GetExperienceRequest" });
+  }
+}
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

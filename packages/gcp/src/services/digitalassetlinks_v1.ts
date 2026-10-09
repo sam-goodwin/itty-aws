@@ -237,8 +237,8 @@ export const bulkCheckAssetlinks: API.OperationMethod<
   BulkCheckAssetlinksError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(7, __c0, 7) as any as S.Schema<BulkCheckAssetlinksRequest>,
-  output: __S(13, __c1, 5) as any as S.Schema<BulkCheckResponse>,
+  input: __S(3, __c0, 3) as any as S.Schema<BulkCheckAssetlinksRequest>,
+  output: __S(5, __c0, 5) as any as S.Schema<BulkCheckResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -252,8 +252,8 @@ export const checkAssetlinks: API.OperationMethod<
   CheckAssetlinksError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(14, __c1, 6) as any as S.Schema<CheckAssetlinksRequest>,
-  output: __S(11, __c1, 3) as any as S.Schema<CheckResponse>,
+  input: __S(32, __c4, 0) as any as S.Schema<CheckAssetlinksRequest>,
+  output: __S(9, __c1, 1) as any as S.Schema<CheckResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -267,8 +267,8 @@ export const listStatements: API.OperationMethod<
   ListStatementsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(15, __c1, 7) as any as S.Schema<ListStatementsRequest>,
-  output: __S(18, __c2, 2) as any as S.Schema<ListResponse>,
+  input: __S(40, __c5, 0) as any as S.Schema<ListStatementsRequest>,
+  output: __S(43, __c5, 3) as any as S.Schema<ListResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -276,6 +276,77 @@ export const listStatements: API.OperationMethod<
 
 // Schema builders: each runs one schema initializer, on that schema's first use.
 function __c0(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          source: S.optional(__S(27, __c3, 3)),
+          relation: S.optional(S.String),
+          target: S.optional(__S(27, __c3, 3)),
+        }),
+      ).annotate({ identifier: "StatementTemplate" });
+    case 1:
+      return S.Array(__S(0, __c0, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          statements: S.optional(__S(1, __c0, 1)),
+          returnRelationExtensions: S.optional(S.Boolean),
+          defaultTarget: S.optional(__S(27, __c3, 3)),
+          defaultSource: S.optional(__S(27, __c3, 3)),
+          defaultRelation: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "BulkCheckRequest" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          body: S.optional(__S(2, __c0, 2).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/assetlinks:bulkCheck",
+            baseUrl: "https://digitalassetlinks.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "BulkCheckAssetlinksRequest",
+      });
+    case 4:
+      return S.Array(__S(9, __c1, 1));
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          bulkErrorCode: S.optional(S.String),
+          checkResults: S.optional(__S(4, __c0, 4)),
+        }),
+      ).annotate({ identifier: "BulkCheckResponse" });
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(16, __c2, 0));
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          linked: S.optional(S.Boolean),
+          debugString: S.optional(S.String),
+          maxAge: S.optional(S.String),
+          relationExtensions: S.optional(__S(8, __c1, 0)),
+          errorCode: S.optional(__S(17, __c2, 1)),
+        }),
+      ).annotate({ identifier: "CheckResponse" });
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, S.Unknown);
+    case 1:
+      return S.Array(S.String);
+  }
+}
+function __c3(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -293,80 +364,21 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           packageName: S.optional(S.String),
-          certificate: S.optional(__S(1, __c0, 1)),
+          certificate: S.optional(__S(25, __c3, 1)),
         }),
       ).annotate({ identifier: "AndroidAppAsset" });
     case 3:
       return S.suspend(() =>
         S.Struct({
-          web: S.optional(__S(0, __c0, 0)),
-          androidApp: S.optional(__S(2, __c0, 2)),
+          web: S.optional(__S(24, __c3, 0)),
+          androidApp: S.optional(__S(26, __c3, 2)),
         }),
       ).annotate({ identifier: "Asset" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          source: S.optional(__S(3, __c0, 3)),
-          relation: S.optional(S.String),
-          target: S.optional(__S(3, __c0, 3)),
-        }),
-      ).annotate({ identifier: "StatementTemplate" });
-    case 5:
-      return S.Array(__S(4, __c0, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          statements: S.optional(__S(5, __c0, 5)),
-          returnRelationExtensions: S.optional(S.Boolean),
-          defaultTarget: S.optional(__S(3, __c0, 3)),
-          defaultSource: S.optional(__S(3, __c0, 3)),
-          defaultRelation: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "BulkCheckRequest" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          body: S.optional(__S(6, __c0, 6).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/assetlinks:bulkCheck",
-            baseUrl: "https://digitalassetlinks.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "BulkCheckAssetlinksRequest",
-      });
   }
 }
-function __c1(j: number): any {
+function __c4(j: number): any {
   switch (j) {
     case 0:
-      return S.Record(S.String, S.Unknown);
-    case 1:
-      return S.Array(__S(8, __c1, 0));
-    case 2:
-      return S.Array(S.String);
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          linked: S.optional(S.Boolean),
-          debugString: S.optional(S.String),
-          maxAge: S.optional(S.String),
-          relationExtensions: S.optional(__S(9, __c1, 1)),
-          errorCode: S.optional(__S(10, __c1, 2)),
-        }),
-      ).annotate({ identifier: "CheckResponse" });
-    case 4:
-      return S.Array(__S(11, __c1, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          bulkErrorCode: S.optional(S.String),
-          checkResults: S.optional(__S(12, __c1, 4)),
-        }),
-      ).annotate({ identifier: "BulkCheckResponse" });
-    case 6:
       return S.suspend(() =>
         S.Struct({
           "source.web.site": S.optional(S.String.pipe(T.Query())),
@@ -385,7 +397,11 @@ function __c1(j: number): any {
           }),
         ),
       ).annotate({ identifier: "CheckAssetlinksRequest" });
-    case 7:
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           returnRelationExtensions: S.optional(S.Boolean.pipe(T.Query())),
@@ -401,33 +417,28 @@ function __c1(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ListStatementsRequest" });
-  }
-}
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          target: S.optional(__S(3, __c0, 3)),
+          target: S.optional(__S(27, __c3, 3)),
           relation: S.optional(S.String),
-          relationExtensions: S.optional(__S(8, __c1, 0)),
-          source: S.optional(__S(3, __c0, 3)),
+          relationExtensions: S.optional(__S(16, __c2, 0)),
+          source: S.optional(__S(27, __c3, 3)),
         }),
       ).annotate({ identifier: "Statement" });
-    case 1:
-      return S.Array(__S(16, __c2, 0));
     case 2:
+      return S.Array(__S(41, __c5, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          errorCode: S.optional(__S(10, __c1, 2)),
+          errorCode: S.optional(__S(17, __c2, 1)),
           debugString: S.optional(S.String),
-          statements: S.optional(__S(17, __c2, 1)),
+          statements: S.optional(__S(42, __c5, 2)),
           maxAge: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListResponse" });
   }
 }
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

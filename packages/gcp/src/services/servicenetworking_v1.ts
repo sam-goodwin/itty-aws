@@ -658,8 +658,8 @@ export const addServicesDnsRecordSets: API.OperationMethod<
   AddServicesDnsRecordSetsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3, __c0, 3) as any as S.Schema<AddServicesDnsRecordSetsRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<Operation>,
+  input: __S(465, __c29, 1) as any as S.Schema<AddServicesDnsRecordSetsRequest>,
+  output: __S(499, __c31, 3) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -673,8 +673,8 @@ export const addServicesDnsZones: API.OperationMethod<
   AddServicesDnsZonesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(9, __c1, 1) as any as S.Schema<AddServicesDnsZonesRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<Operation>,
+  input: __S(529, __c33, 1) as any as S.Schema<AddServicesDnsZonesRequest>,
+  output: __S(499, __c31, 3) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -688,8 +688,8 @@ export const addServicesRoles: API.OperationMethod<
   AddServicesRolesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(13, __c1, 5) as any as S.Schema<AddServicesRolesRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<Operation>,
+  input: __S(547, __c34, 3) as any as S.Schema<AddServicesRolesRequest>,
+  output: __S(499, __c31, 3) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -703,8 +703,8 @@ export const addSubnetworkServices: API.OperationMethod<
   AddSubnetworkServicesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(17, __c2, 1) as any as S.Schema<AddSubnetworkServicesRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<Operation>,
+  input: __S(563, __c35, 3) as any as S.Schema<AddSubnetworkServicesRequest>,
+  output: __S(499, __c31, 3) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -718,8 +718,8 @@ export const cancelOperations: API.OperationMethod<
   CancelOperationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(19, __c2, 3) as any as S.Schema<CancelOperationsRequest>,
-  output: __S(18, __c2, 2) as any as S.Schema<Empty>,
+  input: __S(576, __c36, 0) as any as S.Schema<CancelOperationsRequest>,
+  output: __S(592, __c37, 0) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -739,8 +739,8 @@ export const createServicesConnections: API.OperationMethod<
   CreateServicesConnectionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(21, __c2, 5) as any as S.Schema<CreateServicesConnectionsRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<Operation>,
+  input: __S(0, __c0, 0) as any as S.Schema<CreateServicesConnectionsRequest>,
+  output: __S(499, __c31, 3) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, ConnectionAlreadyExists, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -760,11 +760,11 @@ export const createServicesProjectsGlobalNetworksPeeredDnsDomains: API.Operation
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    23,
+    32,
     __c2,
-    7,
+    0,
   ) as any as S.Schema<CreateServicesProjectsGlobalNetworksPeeredDnsDomainsRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<Operation>,
+  output: __S(499, __c31, 3) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -783,8 +783,8 @@ export const deleteConnectionServicesConnections: API.OperationMethod<
   DeleteConnectionServicesConnectionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(25, __c3, 1) as any as S.Schema<DeleteConnectionServicesConnectionsRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<Operation>,
+  input: __S(65, __c4, 1) as any as S.Schema<DeleteConnectionServicesConnectionsRequest>,
+  output: __S(499, __c31, 3) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -798,8 +798,8 @@ export const deleteOperations: API.OperationMethod<
   DeleteOperationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(26, __c3, 2) as any as S.Schema<DeleteOperationsRequest>,
-  output: __S(18, __c2, 2) as any as S.Schema<Empty>,
+  input: __S(80, __c5, 0) as any as S.Schema<DeleteOperationsRequest>,
+  output: __S(592, __c37, 0) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -819,11 +819,11 @@ export const deleteServicesProjectsGlobalNetworksPeeredDnsDomains: API.Operation
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    27,
-    __c3,
-    3,
+    96,
+    __c6,
+    0,
   ) as any as S.Schema<DeleteServicesProjectsGlobalNetworksPeeredDnsDomainsRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<Operation>,
+  output: __S(499, __c31, 3) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -842,8 +842,8 @@ export const disableVpcServiceControlsServices: API.OperationMethod<
   DisableVpcServiceControlsServicesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(29, __c3, 5) as any as S.Schema<DisableVpcServiceControlsServicesRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<Operation>,
+  input: __S(112, __c7, 0) as any as S.Schema<DisableVpcServiceControlsServicesRequest>,
+  output: __S(499, __c31, 3) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -862,8 +862,8 @@ export const enableVpcServiceControlsServices: API.OperationMethod<
   EnableVpcServiceControlsServicesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(30, __c3, 6) as any as S.Schema<EnableVpcServiceControlsServicesRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<Operation>,
+  input: __S(144, __c9, 0) as any as S.Schema<EnableVpcServiceControlsServicesRequest>,
+  output: __S(499, __c31, 3) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -877,8 +877,8 @@ export const getOperations: API.OperationMethod<
   GetOperationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(31, __c3, 7) as any as S.Schema<GetOperationsRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<Operation>,
+  input: __S(160, __c10, 0) as any as S.Schema<GetOperationsRequest>,
+  output: __S(499, __c31, 3) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -892,8 +892,8 @@ export const getServicesDnsRecordSets: API.OperationMethod<
   GetServicesDnsRecordSetsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(32, __c4, 0) as any as S.Schema<GetServicesDnsRecordSetsRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<DnsRecordSet>,
+  input: __S(176, __c11, 0) as any as S.Schema<GetServicesDnsRecordSetsRequest>,
+  output: __S(480, __c30, 0) as any as S.Schema<DnsRecordSet>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -907,8 +907,8 @@ export const getServicesProjectsGlobalNetworks: API.OperationMethod<
   GetServicesProjectsGlobalNetworksError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(33, __c4, 1) as any as S.Schema<GetServicesProjectsGlobalNetworksRequest>,
-  output: __S(38, __c4, 6) as any as S.Schema<ConsumerConfig>,
+  input: __S(192, __c12, 0) as any as S.Schema<GetServicesProjectsGlobalNetworksRequest>,
+  output: __S(212, __c13, 4) as any as S.Schema<ConsumerConfig>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -922,8 +922,8 @@ export const getServicesProjectsGlobalNetworksDnsZones: API.OperationMethod<
   GetServicesProjectsGlobalNetworksDnsZonesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(39, __c4, 7) as any as S.Schema<GetServicesProjectsGlobalNetworksDnsZonesRequest>,
-  output: __S(41, __c5, 1) as any as S.Schema<GetDnsZoneResponse>,
+  input: __S(224, __c14, 0) as any as S.Schema<GetServicesProjectsGlobalNetworksDnsZonesRequest>,
+  output: __S(241, __c15, 1) as any as S.Schema<GetDnsZoneResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -941,11 +941,11 @@ export const getVpcServiceControlsServicesProjectsGlobalNetworks: API.OperationM
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    42,
-    __c5,
-    2,
+    256,
+    __c16,
+    0,
   ) as any as S.Schema<GetVpcServiceControlsServicesProjectsGlobalNetworksRequest>,
-  output: __S(43, __c5, 3) as any as S.Schema<VpcServiceControls>,
+  output: __S(257, __c16, 1) as any as S.Schema<VpcServiceControls>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -960,8 +960,8 @@ export const listOperations: API.PaginatedOperationMethod<
   GcpOpContext,
   ListOperationsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(44, __c5, 4) as any as S.Schema<ListOperationsRequest>,
-  output: __S(46, __c5, 6) as any as S.Schema<ListOperationsResponse>,
+  input: __S(272, __c17, 0) as any as S.Schema<ListOperationsRequest>,
+  output: __S(274, __c17, 2) as any as S.Schema<ListOperationsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -976,8 +976,8 @@ export const listServicesConnections: API.OperationMethod<
   ListServicesConnectionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(47, __c5, 7) as any as S.Schema<ListServicesConnectionsRequest>,
-  output: __S(49, __c6, 1) as any as S.Schema<ListConnectionsResponse>,
+  input: __S(288, __c18, 0) as any as S.Schema<ListServicesConnectionsRequest>,
+  output: __S(290, __c18, 2) as any as S.Schema<ListConnectionsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -991,8 +991,8 @@ export const listServicesDnsRecordSets: API.OperationMethod<
   ListServicesDnsRecordSetsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(50, __c6, 2) as any as S.Schema<ListServicesDnsRecordSetsRequest>,
-  output: __S(52, __c6, 4) as any as S.Schema<ListDnsRecordSetsResponse>,
+  input: __S(304, __c19, 0) as any as S.Schema<ListServicesDnsRecordSetsRequest>,
+  output: __S(306, __c19, 2) as any as S.Schema<ListDnsRecordSetsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1006,8 +1006,8 @@ export const listServicesProjectsGlobalNetworksDnsZones: API.OperationMethod<
   ListServicesProjectsGlobalNetworksDnsZonesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(53, __c6, 5) as any as S.Schema<ListServicesProjectsGlobalNetworksDnsZonesRequest>,
-  output: __S(55, __c6, 7) as any as S.Schema<ListDnsZonesResponse>,
+  input: __S(320, __c20, 0) as any as S.Schema<ListServicesProjectsGlobalNetworksDnsZonesRequest>,
+  output: __S(322, __c20, 2) as any as S.Schema<ListDnsZonesResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1025,11 +1025,11 @@ export const listServicesProjectsGlobalNetworksPeeredDnsDomains: API.OperationMe
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    56,
-    __c7,
+    336,
+    __c21,
     0,
   ) as any as S.Schema<ListServicesProjectsGlobalNetworksPeeredDnsDomainsRequest>,
-  output: __S(58, __c7, 2) as any as S.Schema<ListPeeredDnsDomainsResponse>,
+  output: __S(338, __c21, 2) as any as S.Schema<ListPeeredDnsDomainsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1049,8 +1049,8 @@ export const patchServicesConnections: API.OperationMethod<
   PatchServicesConnectionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(59, __c7, 3) as any as S.Schema<PatchServicesConnectionsRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<Operation>,
+  input: __S(352, __c22, 0) as any as S.Schema<PatchServicesConnectionsRequest>,
+  output: __S(499, __c31, 3) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, ConnectionAlreadyExists, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1069,8 +1069,8 @@ export const removeServicesDnsRecordSets: API.OperationMethod<
   RemoveServicesDnsRecordSetsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(61, __c7, 5) as any as S.Schema<RemoveServicesDnsRecordSetsRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<Operation>,
+  input: __S(369, __c23, 1) as any as S.Schema<RemoveServicesDnsRecordSetsRequest>,
+  output: __S(499, __c31, 3) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1084,8 +1084,8 @@ export const removeServicesDnsZones: API.OperationMethod<
   RemoveServicesDnsZonesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(63, __c7, 7) as any as S.Schema<RemoveServicesDnsZonesRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<Operation>,
+  input: __S(385, __c24, 1) as any as S.Schema<RemoveServicesDnsZonesRequest>,
+  output: __S(499, __c31, 3) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1099,8 +1099,8 @@ export const searchRangeServices: API.OperationMethod<
   SearchRangeServicesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(65, __c8, 1) as any as S.Schema<SearchRangeServicesRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<Operation>,
+  input: __S(401, __c25, 1) as any as S.Schema<SearchRangeServicesRequest>,
+  output: __S(499, __c31, 3) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1120,11 +1120,11 @@ export const updateConsumerConfigServicesProjectsGlobalNetworks: API.OperationMe
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    67,
-    __c8,
-    3,
+    417,
+    __c26,
+    1,
   ) as any as S.Schema<UpdateConsumerConfigServicesProjectsGlobalNetworksRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<Operation>,
+  output: __S(499, __c31, 3) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1143,8 +1143,8 @@ export const updateServicesDnsRecordSets: API.OperationMethod<
   UpdateServicesDnsRecordSetsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(69, __c8, 5) as any as S.Schema<UpdateServicesDnsRecordSetsRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<Operation>,
+  input: __S(433, __c27, 1) as any as S.Schema<UpdateServicesDnsRecordSetsRequest>,
+  output: __S(499, __c31, 3) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1158,8 +1158,8 @@ export const validateServices: API.OperationMethod<
   ValidateServicesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(78, __c9, 6) as any as S.Schema<ValidateServicesRequest>,
-  output: __S(79, __c9, 7) as any as S.Schema<ValidateConsumerConfigResponse>,
+  input: __S(456, __c28, 8) as any as S.Schema<ValidateServicesRequest>,
+  output: __S(457, __c28, 9) as any as S.Schema<ValidateConsumerConfigResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1169,203 +1169,10 @@ export const validateServices: API.OperationMethod<
 function __c0(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(S.String);
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          domain: S.optional(S.String),
-          ttl: S.optional(S.String),
-          type: S.optional(S.String),
-          data: S.optional(__S(0, __c0, 0)),
-        }),
-      ).annotate({ identifier: "DnsRecordSet" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          consumerNetwork: S.optional(S.String),
-          dnsRecordSet: S.optional(__S(1, __c0, 1)),
-          zone: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "AddDnsRecordSetRequest" });
-    case 3:
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(2, __c0, 2).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/{+parent}/dnsRecordSets:add",
-            baseUrl: "https://servicenetworking.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "AddServicesDnsRecordSetsRequest",
-      });
-    case 4:
-      return S.Record(S.String, S.Unknown);
-    case 5:
-      return S.Array(__S(4, __c0, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          code: S.optional(S.Number),
-          message: S.optional(S.String),
-          details: S.optional(__S(5, __c0, 5)),
-        }),
-      ).annotate({ identifier: "Status" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          error: S.optional(__S(6, __c0, 6)),
-          done: S.optional(S.Boolean),
-          metadata: S.optional(__S(4, __c0, 4)),
-          name: S.optional(S.String),
-          response: S.optional(__S(4, __c0, 4)),
-        }),
-      ).annotate({ identifier: "Operation" });
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          dnsSuffix: S.optional(S.String),
-          consumerNetwork: S.optional(S.String),
-          name: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "AddDnsZoneRequest" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(8, __c1, 0).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/{+parent}/dnsZones:add",
-            baseUrl: "https://servicenetworking.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "AddServicesDnsZonesRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          role: S.optional(S.String),
-          member: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "PolicyBinding" });
-    case 3:
-      return S.Array(__S(10, __c1, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          consumerNetwork: S.optional(S.String),
-          policyBinding: S.optional(__S(11, __c1, 3)),
-        }),
-      ).annotate({ identifier: "AddRolesRequest" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(12, __c1, 4).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/{+parent}/roles:add",
-            baseUrl: "https://servicenetworking.googleapis.com/",
-          }),
-        ),
-      ).annotate({ identifier: "AddServicesRolesRequest" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          ipPrefixLength: S.optional(S.Number),
-          requestedAddress: S.optional(S.String),
-          outsideAllocationPublicIpRange: S.optional(S.String),
-          rangeName: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "SecondaryIpRangeSpec" });
-    case 7:
-      return S.Array(__S(14, __c1, 6));
-  }
-}
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          outsideAllocationPublicIpRange: S.optional(S.String),
-          subnetworkUsers: S.optional(__S(0, __c0, 0)),
-          ipPrefixLength: S.optional(S.Number),
-          checkServiceNetworkingUsePermission: S.optional(S.Boolean),
-          region: S.optional(S.String),
-          role: S.optional(S.String),
-          purpose: S.optional(S.String),
-          skipRequestedAddressValidation: S.optional(S.Boolean),
-          requestedAddress: S.optional(S.String),
-          consumer: S.optional(S.String),
-          privateIpv6GoogleAccess: S.optional(S.String),
-          useCustomComputeIdempotencyWindow: S.optional(S.Boolean),
-          requestedRanges: S.optional(__S(0, __c0, 0)),
-          internalRange: S.optional(S.String),
-          consumerNetwork: S.optional(S.String),
-          subnetwork: S.optional(S.String),
-          secondaryIpRangeSpecs: S.optional(__S(15, __c1, 7)),
-          allowSubnetCidrRoutesOverlap: S.optional(S.Boolean),
-          computeIdempotencyWindow: S.optional(S.String),
-          description: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "AddSubnetworkRequest" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(16, __c2, 0).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/{+parent}:addSubnetwork",
-            baseUrl: "https://servicenetworking.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "AddSubnetworkServicesRequest",
-      });
-    case 2:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "CancelOperationRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-          body: S.optional(__S(18, __c2, 2).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/{+name}:cancel",
-            baseUrl: "https://servicenetworking.googleapis.com/",
-          }),
-        ),
-      ).annotate({ identifier: "CancelOperationsRequest" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          peering: S.optional(S.String),
-          service: S.optional(S.String),
-          reservedPeeringRanges: S.optional(__S(0, __c0, 0)),
-          network: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Connection" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(20, __c2, 4).pipe(T.HttpBody())),
+          body: S.optional(__S(16, __c1, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -1376,18 +1183,28 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "CreateServicesConnectionsRequest",
       });
-    case 6:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          name: S.optional(S.String),
-          dnsSuffix: S.optional(S.String),
+          peering: S.optional(S.String),
+          service: S.optional(S.String),
+          reservedPeeringRanges: S.optional(__S(512, __c32, 0)),
+          network: S.optional(S.String),
         }),
-      ).annotate({ identifier: "PeeredDnsDomain" });
-    case 7:
+      ).annotate({ identifier: "Connection" });
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(22, __c2, 6).pipe(T.HttpBody())),
+          body: S.optional(__S(48, __c3, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -1405,6 +1222,17 @@ function __c3(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
+          name: S.optional(S.String),
+          dnsSuffix: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "PeeredDnsDomain" });
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
           consumerNetwork: S.optional(S.String),
         }),
       ).annotate({ identifier: "DeleteConnectionRequest" });
@@ -1412,7 +1240,7 @@ function __c3(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(24, __c3, 0).pipe(T.HttpBody())),
+          body: S.optional(__S(64, __c4, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -1423,7 +1251,11 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "DeleteConnectionServicesConnectionsRequest",
       });
-    case 2:
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -1435,7 +1267,11 @@ function __c3(j: number): any {
           }),
         ),
       ).annotate({ identifier: "DeleteOperationsRequest" });
-    case 3:
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -1449,19 +1285,15 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "DeleteServicesProjectsGlobalNetworksPeeredDnsDomainsRequest",
       });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          consumerNetwork: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "DisableVpcServiceControlsRequest",
-      });
-    case 5:
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(28, __c3, 4).pipe(T.HttpBody())),
+          body: S.optional(__S(128, __c8, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -1472,11 +1304,27 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "DisableVpcServiceControlsServicesRequest",
       });
-    case 6:
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          consumerNetwork: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "DisableVpcServiceControlsRequest",
+      });
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(28, __c3, 4).pipe(T.HttpBody())),
+          body: S.optional(__S(128, __c8, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -1487,7 +1335,11 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "EnableVpcServiceControlsServicesRequest",
       });
-    case 7:
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -1501,7 +1353,7 @@ function __c3(j: number): any {
       ).annotate({ identifier: "GetOperationsRequest" });
   }
 }
-function __c4(j: number): any {
+function __c11(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1521,7 +1373,11 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "GetServicesDnsRecordSetsRequest",
       });
-    case 1:
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -1536,7 +1392,11 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "GetServicesProjectsGlobalNetworksRequest",
       });
-    case 2:
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           ipPrefixLength: S.optional(S.Number),
@@ -1546,9 +1406,9 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "GoogleCloudServicenetworkingV1ConsumerConfigReservedRange",
       });
-    case 3:
-      return S.Array(__S(34, __c4, 2));
-    case 4:
+    case 1:
+      return S.Array(__S(208, __c13, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           umbrellaProject: S.optional(S.String),
@@ -1556,28 +1416,32 @@ function __c4(j: number): any {
           umbrellaNetwork: S.optional(S.String),
         }),
       ).annotate({ identifier: "CloudSQLConfig" });
-    case 5:
-      return S.Array(__S(36, __c4, 4));
-    case 6:
+    case 3:
+      return S.Array(__S(210, __c13, 2));
+    case 4:
       return S.suspend(() =>
         S.Struct({
           producerNetwork: S.optional(S.String),
-          usedIpRanges: S.optional(__S(0, __c0, 0)),
+          usedIpRanges: S.optional(__S(512, __c32, 0)),
           consumerExportCustomRoutes: S.optional(S.Boolean),
           consumerImportSubnetRoutesWithPublicIp: S.optional(S.Boolean),
           producerExportCustomRoutes: S.optional(S.Boolean),
           vpcScReferenceArchitectureEnabled: S.optional(S.Boolean),
-          reservedRanges: S.optional(__S(35, __c4, 3)),
+          reservedRanges: S.optional(__S(209, __c13, 1)),
           producerExportSubnetRoutesWithPublicIp: S.optional(S.Boolean),
           consumerImportCustomRoutes: S.optional(S.Boolean),
           consumerExportSubnetRoutesWithPublicIp: S.optional(S.Boolean),
-          cloudsqlConfigs: S.optional(__S(37, __c4, 5)),
+          cloudsqlConfigs: S.optional(__S(211, __c13, 3)),
           producerImportCustomRoutes: S.optional(S.Boolean),
           producerImportSubnetRoutesWithPublicIp: S.optional(S.Boolean),
           consumerPeeringActive: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "ConsumerConfig" });
-    case 7:
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -1593,7 +1457,7 @@ function __c4(j: number): any {
       });
   }
 }
-function __c5(j: number): any {
+function __c15(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1605,11 +1469,15 @@ function __c5(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          producerPrivateZone: S.optional(__S(40, __c5, 0)),
-          consumerPeeringZone: S.optional(__S(40, __c5, 0)),
+          producerPrivateZone: S.optional(__S(240, __c15, 0)),
+          consumerPeeringZone: S.optional(__S(240, __c15, 0)),
         }),
       ).annotate({ identifier: "GetDnsZoneResponse" });
-    case 2:
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -1623,13 +1491,17 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "GetVpcServiceControlsServicesProjectsGlobalNetworksRequest",
       });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           enabled: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "VpcServiceControls" });
-    case 4:
+  }
+}
+function __c17(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -1645,17 +1517,21 @@ function __c5(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ListOperationsRequest" });
-    case 5:
-      return S.Array(__S(7, __c0, 7));
-    case 6:
+    case 1:
+      return S.Array(__S(499, __c31, 3));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          unreachable: S.optional(__S(0, __c0, 0)),
-          operations: S.optional(__S(45, __c5, 5)),
+          unreachable: S.optional(__S(512, __c32, 0)),
+          operations: S.optional(__S(273, __c17, 1)),
         }),
       ).annotate({ identifier: "ListOperationsResponse" });
-    case 7:
+  }
+}
+function __c18(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
@@ -1670,19 +1546,19 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "ListServicesConnectionsRequest",
       });
-  }
-}
-function __c6(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(20, __c2, 4));
     case 1:
+      return S.Array(__S(16, __c1, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          connections: S.optional(__S(48, __c6, 0)),
+          connections: S.optional(__S(289, __c18, 1)),
         }),
       ).annotate({ identifier: "ListConnectionsResponse" });
-    case 2:
+  }
+}
+function __c19(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           consumerNetwork: S.optional(S.String.pipe(T.Query())),
@@ -1698,17 +1574,21 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "ListServicesDnsRecordSetsRequest",
       });
-    case 3:
-      return S.Array(__S(1, __c0, 1));
-    case 4:
+    case 1:
+      return S.Array(__S(480, __c30, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          dnsRecordSets: S.optional(__S(51, __c6, 3)),
+          dnsRecordSets: S.optional(__S(305, __c19, 1)),
         }),
       ).annotate({
         identifier: "ListDnsRecordSetsResponse",
       });
-    case 5:
+  }
+}
+function __c20(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
@@ -1722,17 +1602,17 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "ListServicesProjectsGlobalNetworksDnsZonesRequest",
       });
-    case 6:
-      return S.Array(__S(41, __c5, 1));
-    case 7:
+    case 1:
+      return S.Array(__S(241, __c15, 1));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          dnsZonePairs: S.optional(__S(54, __c6, 6)),
+          dnsZonePairs: S.optional(__S(321, __c20, 1)),
         }),
       ).annotate({ identifier: "ListDnsZonesResponse" });
   }
 }
-function __c7(j: number): any {
+function __c21(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1749,22 +1629,26 @@ function __c7(j: number): any {
         identifier: "ListServicesProjectsGlobalNetworksPeeredDnsDomainsRequest",
       });
     case 1:
-      return S.Array(__S(22, __c2, 6));
+      return S.Array(__S(48, __c3, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          peeredDnsDomains: S.optional(__S(57, __c7, 1)),
+          peeredDnsDomains: S.optional(__S(337, __c21, 1)),
         }),
       ).annotate({
         identifier: "ListPeeredDnsDomainsResponse",
       });
-    case 3:
+  }
+}
+function __c22(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
           force: S.optional(S.Boolean.pipe(T.Query())),
           updateMask: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(20, __c2, 4).pipe(T.HttpBody())),
+          body: S.optional(__S(16, __c1, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -1775,21 +1659,25 @@ function __c7(j: number): any {
       ).annotate({
         identifier: "PatchServicesConnectionsRequest",
       });
-    case 4:
+  }
+}
+function __c23(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          dnsRecordSet: S.optional(__S(1, __c0, 1)),
+          dnsRecordSet: S.optional(__S(480, __c30, 0)),
           zone: S.optional(S.String),
           consumerNetwork: S.optional(S.String),
         }),
       ).annotate({
         identifier: "RemoveDnsRecordSetRequest",
       });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(60, __c7, 4).pipe(T.HttpBody())),
+          body: S.optional(__S(368, __c23, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -1800,18 +1688,22 @@ function __c7(j: number): any {
       ).annotate({
         identifier: "RemoveServicesDnsRecordSetsRequest",
       });
-    case 6:
+  }
+}
+function __c24(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           consumerNetwork: S.optional(S.String),
           name: S.optional(S.String),
         }),
       ).annotate({ identifier: "RemoveDnsZoneRequest" });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(62, __c7, 6).pipe(T.HttpBody())),
+          body: S.optional(__S(384, __c24, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -1824,7 +1716,7 @@ function __c7(j: number): any {
       });
   }
 }
-function __c8(j: number): any {
+function __c25(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1837,7 +1729,7 @@ function __c8(j: number): any {
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(64, __c8, 0).pipe(T.HttpBody())),
+          body: S.optional(__S(400, __c25, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -1848,19 +1740,23 @@ function __c8(j: number): any {
       ).annotate({
         identifier: "SearchRangeServicesRequest",
       });
-    case 2:
+  }
+}
+function __c26(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          consumerConfig: S.optional(__S(38, __c4, 6)),
+          consumerConfig: S.optional(__S(212, __c13, 4)),
         }),
       ).annotate({
         identifier: "UpdateConsumerConfigRequest",
       });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(66, __c8, 2).pipe(T.HttpBody())),
+          body: S.optional(__S(416, __c26, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -1871,22 +1767,26 @@ function __c8(j: number): any {
       ).annotate({
         identifier: "UpdateConsumerConfigServicesProjectsGlobalNetworksRequest",
       });
-    case 4:
+  }
+}
+function __c27(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           zone: S.optional(S.String),
-          existingDnsRecordSet: S.optional(__S(1, __c0, 1)),
+          existingDnsRecordSet: S.optional(__S(480, __c30, 0)),
           consumerNetwork: S.optional(S.String),
-          newDnsRecordSet: S.optional(__S(1, __c0, 1)),
+          newDnsRecordSet: S.optional(__S(480, __c30, 0)),
         }),
       ).annotate({
         identifier: "UpdateDnsRecordSetRequest",
       });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(68, __c8, 4).pipe(T.HttpBody())),
+          body: S.optional(__S(432, __c27, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -1897,66 +1797,66 @@ function __c8(j: number): any {
       ).annotate({
         identifier: "UpdateServicesDnsRecordSetsRequest",
       });
-    case 6:
+  }
+}
+function __c28(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           projectNum: S.optional(S.String),
         }),
       ).annotate({ identifier: "ConsumerProject" });
-    case 7:
+    case 1:
       return S.Array(S.Number);
-  }
-}
-function __c9(j: number): any {
-  switch (j) {
-    case 0:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           ipCidrRange: S.optional(S.String),
           rangeName: S.optional(S.String),
         }),
       ).annotate({ identifier: "SecondaryIpRange" });
-    case 1:
-      return S.Array(__S(72, __c9, 0));
-    case 2:
+    case 3:
+      return S.Array(__S(450, __c28, 2));
+    case 4:
       return S.suspend(() =>
         S.Struct({
           ipCidrRange: S.optional(S.String),
           outsideAllocation: S.optional(S.Boolean),
           region: S.optional(S.String),
-          secondaryIpRanges: S.optional(__S(73, __c9, 1)),
+          secondaryIpRanges: S.optional(__S(451, __c28, 3)),
           name: S.optional(S.String),
           network: S.optional(S.String),
         }),
       ).annotate({ identifier: "Subnetwork" });
-    case 3:
-      return S.Array(__S(74, __c9, 2));
-    case 4:
+    case 5:
+      return S.Array(__S(452, __c28, 4));
+    case 6:
       return S.suspend(() =>
         S.Struct({
           ipPrefixLength: S.optional(S.Number),
-          secondaryRangeIpPrefixLengths: S.optional(__S(71, __c8, 7)),
-          subnetworkCandidates: S.optional(__S(75, __c9, 3)),
-          requestedRanges: S.optional(__S(0, __c0, 0)),
+          secondaryRangeIpPrefixLengths: S.optional(__S(449, __c28, 1)),
+          subnetworkCandidates: S.optional(__S(453, __c28, 5)),
+          requestedRanges: S.optional(__S(512, __c32, 0)),
         }),
       ).annotate({ identifier: "RangeReservation" });
-    case 5:
+    case 7:
       return S.suspend(() =>
         S.Struct({
-          consumerProject: S.optional(__S(70, __c8, 6)),
+          consumerProject: S.optional(__S(448, __c28, 0)),
           checkServiceNetworkingUsePermission: S.optional(S.Boolean),
-          rangeReservation: S.optional(__S(76, __c9, 4)),
+          rangeReservation: S.optional(__S(454, __c28, 6)),
           consumerNetwork: S.optional(S.String),
           validateNetwork: S.optional(S.Boolean),
         }),
       ).annotate({
         identifier: "ValidateConsumerConfigRequest",
       });
-    case 6:
+    case 8:
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(77, __c9, 5).pipe(T.HttpBody())),
+          body: S.optional(__S(455, __c28, 7).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -1965,11 +1865,11 @@ function __c9(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ValidateServicesRequest" });
-    case 7:
+    case 9:
       return S.suspend(() =>
         S.Struct({
           isValid: S.optional(S.Boolean),
-          existingSubnetworkCandidates: S.optional(__S(75, __c9, 3)),
+          existingSubnetworkCandidates: S.optional(__S(453, __c28, 5)),
           validationError: S.optional(S.String),
         }),
       ).annotate({
@@ -1977,7 +1877,218 @@ function __c9(j: number): any {
       });
   }
 }
-
+function __c29(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          consumerNetwork: S.optional(S.String),
+          dnsRecordSet: S.optional(__S(480, __c30, 0)),
+          zone: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "AddDnsRecordSetRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          parent: S.String.pipe(T.Label()),
+          body: S.optional(__S(464, __c29, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/{+parent}/dnsRecordSets:add",
+            baseUrl: "https://servicenetworking.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "AddServicesDnsRecordSetsRequest",
+      });
+  }
+}
+function __c30(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          domain: S.optional(S.String),
+          ttl: S.optional(S.String),
+          type: S.optional(S.String),
+          data: S.optional(__S(512, __c32, 0)),
+        }),
+      ).annotate({ identifier: "DnsRecordSet" });
+  }
+}
+function __c31(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, S.Unknown);
+    case 1:
+      return S.Array(__S(496, __c31, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          code: S.optional(S.Number),
+          message: S.optional(S.String),
+          details: S.optional(__S(497, __c31, 1)),
+        }),
+      ).annotate({ identifier: "Status" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          error: S.optional(__S(498, __c31, 2)),
+          done: S.optional(S.Boolean),
+          metadata: S.optional(__S(496, __c31, 0)),
+          name: S.optional(S.String),
+          response: S.optional(__S(496, __c31, 0)),
+        }),
+      ).annotate({ identifier: "Operation" });
+  }
+}
+function __c32(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c33(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          dnsSuffix: S.optional(S.String),
+          consumerNetwork: S.optional(S.String),
+          name: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "AddDnsZoneRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          parent: S.String.pipe(T.Label()),
+          body: S.optional(__S(528, __c33, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/{+parent}/dnsZones:add",
+            baseUrl: "https://servicenetworking.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "AddServicesDnsZonesRequest",
+      });
+  }
+}
+function __c34(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          role: S.optional(S.String),
+          member: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "PolicyBinding" });
+    case 1:
+      return S.Array(__S(544, __c34, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          consumerNetwork: S.optional(S.String),
+          policyBinding: S.optional(__S(545, __c34, 1)),
+        }),
+      ).annotate({ identifier: "AddRolesRequest" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          parent: S.String.pipe(T.Label()),
+          body: S.optional(__S(546, __c34, 2).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/{+parent}/roles:add",
+            baseUrl: "https://servicenetworking.googleapis.com/",
+          }),
+        ),
+      ).annotate({ identifier: "AddServicesRolesRequest" });
+  }
+}
+function __c35(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          ipPrefixLength: S.optional(S.Number),
+          requestedAddress: S.optional(S.String),
+          outsideAllocationPublicIpRange: S.optional(S.String),
+          rangeName: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "SecondaryIpRangeSpec" });
+    case 1:
+      return S.Array(__S(560, __c35, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          outsideAllocationPublicIpRange: S.optional(S.String),
+          subnetworkUsers: S.optional(__S(512, __c32, 0)),
+          ipPrefixLength: S.optional(S.Number),
+          checkServiceNetworkingUsePermission: S.optional(S.Boolean),
+          region: S.optional(S.String),
+          role: S.optional(S.String),
+          purpose: S.optional(S.String),
+          skipRequestedAddressValidation: S.optional(S.Boolean),
+          requestedAddress: S.optional(S.String),
+          consumer: S.optional(S.String),
+          privateIpv6GoogleAccess: S.optional(S.String),
+          useCustomComputeIdempotencyWindow: S.optional(S.Boolean),
+          requestedRanges: S.optional(__S(512, __c32, 0)),
+          internalRange: S.optional(S.String),
+          consumerNetwork: S.optional(S.String),
+          subnetwork: S.optional(S.String),
+          secondaryIpRangeSpecs: S.optional(__S(561, __c35, 1)),
+          allowSubnetCidrRoutesOverlap: S.optional(S.Boolean),
+          computeIdempotencyWindow: S.optional(S.String),
+          description: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "AddSubnetworkRequest" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          parent: S.String.pipe(T.Label()),
+          body: S.optional(__S(562, __c35, 2).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/{+parent}:addSubnetwork",
+            baseUrl: "https://servicenetworking.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "AddSubnetworkServicesRequest",
+      });
+  }
+}
+function __c36(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+          body: S.optional(__S(592, __c37, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/{+name}:cancel",
+            baseUrl: "https://servicenetworking.googleapis.com/",
+          }),
+        ),
+      ).annotate({ identifier: "CancelOperationsRequest" });
+  }
+}
+function __c37(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "CancelOperationRequest",
+      });
+  }
+}
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

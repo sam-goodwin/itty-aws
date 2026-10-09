@@ -254,8 +254,8 @@ export const createRule: API.OperationMethod<
   CreateRuleError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(0, __c0, 0) as any as S.Schema<CreateRuleRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<CreateRuleResponse>,
+  input: __S(4, __c1, 0) as any as S.Schema<CreateRuleRequest>,
+  output: __S(8, __c2, 0) as any as S.Schema<CreateRuleResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -269,8 +269,8 @@ export const deleteRule: API.OperationMethod<
   DeleteRuleError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2, __c0, 2) as any as S.Schema<DeleteRuleRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<DeleteRuleResponse>,
+  input: __S(12, __c3, 0) as any as S.Schema<DeleteRuleRequest>,
+  output: __S(13, __c3, 1) as any as S.Schema<DeleteRuleResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -284,8 +284,8 @@ export const getRule: API.OperationMethod<
   GetRuleError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(4, __c0, 4) as any as S.Schema<GetRuleRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<RuleResponse>,
+  input: __S(16, __c4, 0) as any as S.Schema<GetRuleRequest>,
+  output: __S(20, __c5, 0) as any as S.Schema<RuleResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -299,8 +299,8 @@ export const listFolderContainers: API.OperationMethod<
   ListFolderContainersError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(6, __c0, 6) as any as S.Schema<ListFolderContainersRequest>,
-  output: __S(9, __c1, 1) as any as S.Schema<ListContainersResponse>,
+  input: __S(24, __c6, 0) as any as S.Schema<ListFolderContainersRequest>,
+  output: __S(30, __c7, 2) as any as S.Schema<ListContainersResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -314,8 +314,8 @@ export const listOrganizationContainers: API.OperationMethod<
   ListOrganizationContainersError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(10, __c1, 2) as any as S.Schema<ListOrganizationContainersRequest>,
-  output: __S(9, __c1, 1) as any as S.Schema<ListContainersResponse>,
+  input: __S(32, __c8, 0) as any as S.Schema<ListOrganizationContainersRequest>,
+  output: __S(30, __c7, 2) as any as S.Schema<ListContainersResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -329,8 +329,8 @@ export const listProviderOptions: API.OperationMethod<
   ListProviderOptionsError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(11, __c1, 3) as any as S.Schema<ListProviderOptionsRequest>,
-  output: __S(15, __c1, 7) as any as S.Schema<ProviderOptionsResponse>,
+  input: __S(36, __c9, 0) as any as S.Schema<ListProviderOptionsRequest>,
+  output: __S(39, __c9, 3) as any as S.Schema<ProviderOptionsResponse>,
   errors: [BadRequest, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -344,8 +344,8 @@ export const listRules: API.OperationMethod<
   ListRulesError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(16, __c2, 0) as any as S.Schema<ListRulesRequest>,
-  output: __S(18, __c2, 2) as any as S.Schema<ListRulesResponse>,
+  input: __S(44, __c11, 0) as any as S.Schema<ListRulesRequest>,
+  output: __S(46, __c11, 2) as any as S.Schema<ListRulesResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -359,8 +359,8 @@ export const updateRule: API.OperationMethod<
   UpdateRuleError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(19, __c2, 3) as any as S.Schema<UpdateRuleRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<UpdateRuleResponse>,
+  input: __S(0, __c0, 0) as any as S.Schema<UpdateRuleRequest>,
+  output: __S(8, __c2, 0) as any as S.Schema<UpdateRuleResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -368,6 +368,31 @@ export const updateRule: API.OperationMethod<
 
 // Schema builders: each runs one schema initializer, on that schema's first use.
 function __c0(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          projectId: S.String.pipe(T.Label()),
+          regionId: S.String.pipe(T.Label()),
+          ruleId: S.String.pipe(T.Label()),
+          direction: S.optional(S.String),
+          etherType: S.optional(S.String),
+          portRange: S.optional(S.String),
+          protocol: S.optional(S.String),
+          securityGroupId: S.optional(S.String),
+          sourceIP: S.String,
+        }).pipe(
+          T.Http({
+            method: "PUT",
+            uri: "/v1/projects/{projectId}/regions/{regionId}/rules/{ruleId}",
+            code: 200,
+            baseUrl: "https://ufw.api.stackit.cloud",
+          }),
+        ),
+      ).annotate({ identifier: "UpdateRuleRequest" });
+  }
+}
+function __c1(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -396,13 +421,21 @@ function __c0(j: number): any {
           }),
         ),
       ).annotate({ identifier: "CreateRuleRequest" });
-    case 1:
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           refId: S.optional(S.String),
         }),
       ).annotate({ identifier: "CreateRuleResponse" });
-    case 2:
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.Label()),
@@ -417,13 +450,17 @@ function __c0(j: number): any {
           }),
         ),
       ).annotate({ identifier: "DeleteRuleRequest" });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           success: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "DeleteRuleResponse" });
-    case 4:
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.Label()),
@@ -438,7 +475,11 @@ function __c0(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetRuleRequest" });
-    case 5:
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           description: S.optional(S.String),
@@ -463,7 +504,11 @@ function __c0(j: number): any {
           type: S.String,
         }),
       ).annotate({ identifier: "RuleResponse" });
-    case 6:
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           folderId: S.String.pipe(T.Label()),
@@ -480,7 +525,11 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "ListFolderContainersRequest",
       });
-    case 7:
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
@@ -488,21 +537,21 @@ function __c0(j: number): any {
           type: S.String,
         }),
       ).annotate({ identifier: "ContainerResponse" });
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(7, __c0, 7));
     case 1:
+      return S.Array(__S(28, __c7, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           cursor: S.String,
-          items: __S(8, __c1, 0),
+          items: __S(29, __c7, 1),
           limit: S.Number,
         }),
       ).annotate({ identifier: "ListContainersResponse" });
-    case 2:
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           organizationId: S.String.pipe(T.Label()),
@@ -519,7 +568,11 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "ListOrganizationContainersRequest",
       });
-    case 3:
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           regionId: S.String.pipe(T.Label()),
@@ -534,30 +587,34 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "ListProviderOptionsRequest",
       });
-    case 4:
-      return S.Array(S.String);
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          actions: __S(12, __c1, 4),
-          types: __S(12, __c1, 4),
+          actions: __S(40, __c10, 0),
+          types: __S(40, __c10, 0),
         }),
       ).annotate({
         identifier: "ProviderOptionsProductMeta",
       });
-    case 6:
-      return S.Record(S.String, __S(13, __c1, 5));
-    case 7:
+    case 2:
+      return S.Record(S.String, __S(37, __c9, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          productMeta: __S(14, __c1, 6),
-          products: __S(12, __c1, 4),
-          types: __S(12, __c1, 4),
+          productMeta: __S(38, __c9, 2),
+          products: __S(40, __c10, 0),
+          types: __S(40, __c10, 0),
         }),
       ).annotate({ identifier: "ProviderOptionsResponse" });
   }
 }
-function __c2(j: number): any {
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c11(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -587,38 +644,16 @@ function __c2(j: number): any {
         ),
       ).annotate({ identifier: "ListRulesRequest" });
     case 1:
-      return S.Array(__S(5, __c0, 5));
+      return S.Array(__S(20, __c5, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          errors: S.optional(__S(12, __c1, 4)),
-          rules: __S(17, __c2, 1),
+          errors: S.optional(__S(40, __c10, 0)),
+          rules: __S(45, __c11, 1),
         }),
       ).annotate({ identifier: "ListRulesResponse" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          projectId: S.String.pipe(T.Label()),
-          regionId: S.String.pipe(T.Label()),
-          ruleId: S.String.pipe(T.Label()),
-          direction: S.optional(S.String),
-          etherType: S.optional(S.String),
-          portRange: S.optional(S.String),
-          protocol: S.optional(S.String),
-          securityGroupId: S.optional(S.String),
-          sourceIP: S.String,
-        }).pipe(
-          T.Http({
-            method: "PUT",
-            uri: "/v1/projects/{projectId}/regions/{regionId}/rules/{ruleId}",
-            code: 200,
-            baseUrl: "https://ufw.api.stackit.cloud",
-          }),
-        ),
-      ).annotate({ identifier: "UpdateRuleRequest" });
   }
 }
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

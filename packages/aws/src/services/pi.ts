@@ -419,8 +419,8 @@ export const createPerformanceAnalysisReport: API.OperationMethod<
   CreatePerformanceAnalysisReportError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2, __c0, 2) as any as S.Schema<CreatePerformanceAnalysisReportRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<CreatePerformanceAnalysisReportResponse>,
+  input: __S(128, __c8, 0) as any as S.Schema<CreatePerformanceAnalysisReportRequest>,
+  output: __S(129, __c8, 1) as any as S.Schema<CreatePerformanceAnalysisReportResponse>,
   errors: [InternalServiceError, InvalidArgumentException, NotAuthorizedException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -441,8 +441,8 @@ export const deletePerformanceAnalysisReport: API.OperationMethod<
   DeletePerformanceAnalysisReportError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(4, __c0, 4) as any as S.Schema<DeletePerformanceAnalysisReportRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<DeletePerformanceAnalysisReportResponse>,
+  input: __S(160, __c10, 0) as any as S.Schema<DeletePerformanceAnalysisReportRequest>,
+  output: __S(161, __c10, 1) as any as S.Schema<DeletePerformanceAnalysisReportResponse>,
   errors: [InternalServiceError, InvalidArgumentException, NotAuthorizedException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -467,8 +467,8 @@ export const describeDimensionKeys: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(9, __c1, 1) as any as S.Schema<DescribeDimensionKeysRequest>,
-  output: __S(16, __c2, 0) as any as S.Schema<DescribeDimensionKeysResponse>,
+  input: __S(176, __c11, 0) as any as S.Schema<DescribeDimensionKeysRequest>,
+  output: __S(183, __c11, 7) as any as S.Schema<DescribeDimensionKeysResponse>,
   errors: [InternalServiceError, InvalidArgumentException, NotAuthorizedException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -497,8 +497,8 @@ export const getDimensionKeyDetails: API.OperationMethod<
   GetDimensionKeyDetailsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(17, __c2, 1) as any as S.Schema<GetDimensionKeyDetailsRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<GetDimensionKeyDetailsResponse>,
+  input: __S(240, __c15, 0) as any as S.Schema<GetDimensionKeyDetailsRequest>,
+  output: __S(243, __c15, 3) as any as S.Schema<GetDimensionKeyDetailsResponse>,
   errors: [InternalServiceError, InvalidArgumentException, NotAuthorizedException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -522,8 +522,8 @@ export const getPerformanceAnalysisReport: API.OperationMethod<
   GetPerformanceAnalysisReportError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(21, __c2, 5) as any as S.Schema<GetPerformanceAnalysisReportRequest>,
-  output: __S(30, __c3, 6) as any as S.Schema<GetPerformanceAnalysisReportResponse>,
+  input: __S(256, __c16, 0) as any as S.Schema<GetPerformanceAnalysisReportRequest>,
+  output: __S(263, __c16, 7) as any as S.Schema<GetPerformanceAnalysisReportResponse>,
   errors: [InternalServiceError, InvalidArgumentException, NotAuthorizedException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -545,8 +545,8 @@ export const getResourceMetadata: API.OperationMethod<
   GetResourceMetadataError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(31, __c3, 7) as any as S.Schema<GetResourceMetadataRequest>,
-  output: __S(34, __c4, 2) as any as S.Schema<GetResourceMetadataResponse>,
+  input: __S(288, __c18, 0) as any as S.Schema<GetResourceMetadataRequest>,
+  output: __S(291, __c18, 3) as any as S.Schema<GetResourceMetadataResponse>,
   errors: [InternalServiceError, InvalidArgumentException, NotAuthorizedException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -573,8 +573,8 @@ export const getResourceMetrics: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(37, __c4, 5) as any as S.Schema<GetResourceMetricsRequest>,
-  output: __S(43, __c5, 3) as any as S.Schema<GetResourceMetricsResponse>,
+  input: __S(306, __c19, 2) as any as S.Schema<GetResourceMetricsRequest>,
+  output: __S(312, __c19, 8) as any as S.Schema<GetResourceMetricsResponse>,
   errors: [InternalServiceError, InvalidArgumentException, NotAuthorizedException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -601,8 +601,8 @@ export const listAvailableResourceDimensions: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(45, __c5, 5) as any as S.Schema<ListAvailableResourceDimensionsRequest>,
-  output: __S(52, __c6, 4) as any as S.Schema<ListAvailableResourceDimensionsResponse>,
+  input: __S(1, __c0, 1) as any as S.Schema<ListAvailableResourceDimensionsRequest>,
+  output: __S(8, __c0, 8) as any as S.Schema<ListAvailableResourceDimensionsResponse>,
   errors: [InternalServiceError, InvalidArgumentException, NotAuthorizedException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -629,8 +629,8 @@ export const listAvailableResourceMetrics: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(53, __c6, 5) as any as S.Schema<ListAvailableResourceMetricsRequest>,
-  output: __S(56, __c7, 0) as any as S.Schema<ListAvailableResourceMetricsResponse>,
+  input: __S(16, __c1, 0) as any as S.Schema<ListAvailableResourceMetricsRequest>,
+  output: __S(19, __c1, 3) as any as S.Schema<ListAvailableResourceMetricsResponse>,
   errors: [InternalServiceError, InvalidArgumentException, NotAuthorizedException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -657,8 +657,8 @@ export const listPerformanceAnalysisReportRecommendations: API.PaginatedOperatio
   Credentials | HttpClient.HttpClient,
   Recommendation
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(57, __c7, 1) as any as S.Schema<ListPerformanceAnalysisReportRecommendationsRequest>,
-  output: __S(58, __c7, 2) as any as S.Schema<ListPerformanceAnalysisReportRecommendationsResponse>,
+  input: __S(32, __c2, 0) as any as S.Schema<ListPerformanceAnalysisReportRecommendationsRequest>,
+  output: __S(33, __c2, 1) as any as S.Schema<ListPerformanceAnalysisReportRecommendationsResponse>,
   errors: [InternalServiceError, InvalidArgumentException, NotAuthorizedException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -686,8 +686,8 @@ export const listPerformanceAnalysisReports: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(59, __c7, 3) as any as S.Schema<ListPerformanceAnalysisReportsRequest>,
-  output: __S(62, __c7, 6) as any as S.Schema<ListPerformanceAnalysisReportsResponse>,
+  input: __S(48, __c3, 0) as any as S.Schema<ListPerformanceAnalysisReportsRequest>,
+  output: __S(51, __c3, 3) as any as S.Schema<ListPerformanceAnalysisReportsResponse>,
   errors: [InternalServiceError, InvalidArgumentException, NotAuthorizedException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -713,8 +713,8 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(63, __c7, 7) as any as S.Schema<ListTagsForResourceRequest>,
-  output: __S(64, __c8, 0) as any as S.Schema<ListTagsForResourceResponse>,
+  input: __S(64, __c4, 0) as any as S.Schema<ListTagsForResourceRequest>,
+  output: __S(65, __c4, 1) as any as S.Schema<ListTagsForResourceResponse>,
   errors: [InternalServiceError, InvalidArgumentException, NotAuthorizedException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -735,8 +735,8 @@ export const tagResource: API.OperationMethod<
   TagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(65, __c8, 1) as any as S.Schema<TagResourceRequest>,
-  output: __S(66, __c8, 2) as any as S.Schema<TagResourceResponse>,
+  input: __S(80, __c5, 0) as any as S.Schema<TagResourceRequest>,
+  output: __S(96, __c6, 0) as any as S.Schema<TagResourceResponse>,
   errors: [InternalServiceError, InvalidArgumentException, NotAuthorizedException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -757,8 +757,8 @@ export const untagResource: API.OperationMethod<
   UntagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(67, __c8, 3) as any as S.Schema<UntagResourceRequest>,
-  output: __S(66, __c8, 2) as any as S.Schema<UntagResourceResponse>,
+  input: __S(112, __c7, 0) as any as S.Schema<UntagResourceRequest>,
+  output: __S(96, __c6, 0) as any as S.Schema<UntagResourceResponse>,
   errors: [InternalServiceError, InvalidArgumentException, NotAuthorizedException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -769,379 +769,64 @@ export const untagResource: API.OperationMethod<
 function __c0(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => S.Struct({ Key: S.String, Value: S.String })).annotate({
-        identifier: "Tag",
-      });
-    case 1:
-      return S.Array(__S(0, __c0, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          ServiceType: S.String,
-          Identifier: S.String,
-          StartTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-          EndTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          Tags: S.optional(__S(1, __c0, 1)),
-        }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "CreatePerformanceAnalysisReportRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({ AnalysisReportId: S.optional(S.String) }).pipe(ns),
-      ).annotate({
-        identifier: "CreatePerformanceAnalysisReportResponse",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          ServiceType: S.String,
-          Identifier: S.String,
-          AnalysisReportId: S.String,
-        }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "DeletePerformanceAnalysisReportRequest",
-      });
-    case 5:
-      return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
-        identifier: "DeletePerformanceAnalysisReportResponse",
-      });
-    case 6:
       return S.Array(S.String);
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          Group: S.String,
-          Dimensions: S.optional(__S(6, __c0, 6)),
-          Limit: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "DimensionGroup" });
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
     case 1:
       return S.suspend(() =>
         S.Struct({
           ServiceType: S.String,
           Identifier: S.String,
-          StartTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-          EndTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-          Metric: S.String,
-          PeriodInSeconds: S.optional(S.Number),
-          GroupBy: __S(7, __c0, 7),
-          AdditionalMetrics: S.optional(__S(6, __c0, 6)),
-          PartitionBy: S.optional(__S(7, __c0, 7)),
-          Filter: S.optional(__S(8, __c1, 0)),
+          Metrics: __S(192, __c12, 0),
           MaxResults: S.optional(S.Number),
           NextToken: S.optional(S.String),
-        }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "DescribeDimensionKeysRequest",
-      });
-    case 2:
-      return S.suspend(() => S.Struct({ Dimensions: __S(8, __c1, 0) })).annotate({
-        identifier: "ResponsePartitionKey",
-      });
-    case 3:
-      return S.Array(__S(10, __c1, 2));
-    case 4:
-      return S.Record(S.String, /*@__PURE__*/ S.Number.pipe(S.optional));
-    case 5:
-      return S.Array(S.Number);
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          Dimensions: S.optional(__S(8, __c1, 0)),
-          Total: S.optional(S.Number),
-          AdditionalMetrics: S.optional(__S(12, __c1, 4)),
-          Partitions: S.optional(__S(13, __c1, 5)),
-        }),
-      ).annotate({ identifier: "DimensionKeyDescription" });
-    case 7:
-      return S.Array(__S(14, __c1, 6));
-  }
-}
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          AlignedStartTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          AlignedEndTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          PartitionKeys: S.optional(__S(11, __c1, 3)),
-          Keys: S.optional(__S(15, __c1, 7)),
-          NextToken: S.optional(S.String),
-        }).pipe(ns),
-      ).annotate({
-        identifier: "DescribeDimensionKeysResponse",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          ServiceType: S.String,
-          Identifier: S.String,
-          Group: S.String,
-          GroupIdentifier: S.String,
-          RequestedDimensions: S.optional(__S(6, __c0, 6)),
-        }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "GetDimensionKeyDetailsRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          Value: S.optional(S.String),
-          Dimension: S.optional(S.String),
-          Status: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "DimensionKeyDetail" });
-    case 3:
-      return S.Array(__S(18, __c2, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({ Dimensions: S.optional(__S(19, __c2, 3)) }).pipe(ns),
-      ).annotate({
-        identifier: "GetDimensionKeyDetailsResponse",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          ServiceType: S.String,
-          Identifier: S.String,
-          AnalysisReportId: S.String,
-          TextFormat: S.optional(S.String),
-          AcceptLanguage: S.optional(S.String),
-        }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "GetPerformanceAnalysisReportRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          RecommendationId: S.optional(S.String),
-          RecommendationDescription: S.optional(SensitiveString),
-          RecommendationDetails: S.optional(SensitiveString),
-        }),
-      ).annotate({ identifier: "Recommendation" });
-    case 7:
-      return S.Array(__S(22, __c2, 6));
-  }
-}
-function __c3(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          Metric: S.optional(S.String),
-          DisplayName: S.optional(S.String),
-          Dimensions: S.optional(__S(8, __c1, 0)),
-          Filter: S.optional(__S(8, __c1, 0)),
-          Value: S.optional(S.Number),
-        }),
-      ).annotate({
-        identifier: "PerformanceInsightsMetric",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({ PerformanceInsightsMetric: S.optional(__S(24, __c3, 0)) }),
-      ).annotate({ identifier: "Data" });
-    case 2:
-      return S.Array(__S(25, __c3, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          InsightId: S.String,
-          InsightType: S.optional(S.String),
-          Context: S.optional(S.String),
-          StartTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          EndTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          Severity: S.optional(S.String),
-          SupportingInsights: S.optional(
-            S.suspend(() => __S(28, __c3, 4)).annotate({ identifier: "InsightList" }),
-          ),
-          Description: S.optional(SensitiveString),
-          Recommendations: S.optional(__S(23, __c2, 7)),
-          InsightData: S.optional(__S(26, __c3, 2)),
-          BaselineData: S.optional(__S(26, __c3, 2)),
-        }),
-      ).annotate({ identifier: "Insight" });
-    case 4:
-      return S.Array(
-        /*@__PURE__*/ S.suspend((): S.Schema<Insight> => __S(27, __c3, 3)).annotate({
-          identifier: "Insight",
-        }),
-      );
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          AnalysisReportId: S.String,
-          Identifier: S.optional(S.String),
-          ServiceType: S.optional(S.String),
-          CreateTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          StartTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          EndTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          Status: S.optional(S.String),
-          Insights: S.optional(__S(28, __c3, 4)),
-        }),
-      ).annotate({ identifier: "AnalysisReport" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({ AnalysisReport: S.optional(__S(29, __c3, 5)) }).pipe(ns),
-      ).annotate({
-        identifier: "GetPerformanceAnalysisReportResponse",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({ ServiceType: S.String, Identifier: S.String }).pipe(
-          T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-        ),
-      ).annotate({
-        identifier: "GetResourceMetadataRequest",
-      });
-  }
-}
-function __c4(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() => S.Struct({ Status: S.optional(S.String) })).annotate({
-        identifier: "FeatureMetadata",
-      });
-    case 1:
-      return S.Record(S.String, /*@__PURE__*/ __S(32, __c4, 0).pipe(S.optional));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          Identifier: S.optional(S.String),
-          Features: S.optional(__S(33, __c4, 1)),
-        }).pipe(ns),
-      ).annotate({
-        identifier: "GetResourceMetadataResponse",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          Metric: S.String,
-          GroupBy: S.optional(__S(7, __c0, 7)),
-          Filter: S.optional(__S(8, __c1, 0)),
-        }),
-      ).annotate({ identifier: "MetricQuery" });
-    case 4:
-      return S.Array(__S(35, __c4, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          ServiceType: S.String,
-          Identifier: S.String,
-          MetricQueries: __S(36, __c4, 4),
-          StartTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-          EndTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-          PeriodInSeconds: S.optional(S.Number),
-          MaxResults: S.optional(S.Number),
-          NextToken: S.optional(S.String),
-          PeriodAlignment: S.optional(S.String),
-        }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "GetResourceMetricsRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({ Metric: S.String, Dimensions: S.optional(__S(8, __c1, 0)) }),
-      ).annotate({
-        identifier: "ResponseResourceMetricKey",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({ Timestamp: S.Date.pipe(T.TimestampFormat("epoch-seconds")), Value: S.Number }),
-      ).annotate({ identifier: "DataPoint" });
-  }
-}
-function __c5(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(39, __c4, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          Key: S.optional(__S(38, __c4, 6)),
-          DataPoints: S.optional(__S(40, __c5, 0)),
-        }),
-      ).annotate({ identifier: "MetricKeyDataPoints" });
-    case 2:
-      return S.Array(__S(41, __c5, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          AlignedStartTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          AlignedEndTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          Identifier: S.optional(S.String),
-          MetricList: S.optional(__S(42, __c5, 2)),
-          NextToken: S.optional(S.String),
-        }).pipe(ns),
-      ).annotate({
-        identifier: "GetResourceMetricsResponse",
-      });
-    case 4:
-      return S.Array(S.String);
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          ServiceType: S.String,
-          Identifier: S.String,
-          Metrics: __S(6, __c0, 6),
-          MaxResults: S.optional(S.Number),
-          NextToken: S.optional(S.String),
-          AuthorizedActions: S.optional(__S(44, __c5, 4)),
+          AuthorizedActions: S.optional(__S(0, __c0, 0)),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "ListAvailableResourceDimensionsRequest",
       });
-    case 6:
+    case 2:
       return S.suspend(() => S.Struct({ Identifier: S.optional(S.String) })).annotate({
         identifier: "DimensionDetail",
       });
-    case 7:
-      return S.Array(__S(46, __c5, 6));
-  }
-}
-function __c6(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({ Group: S.optional(S.String), Dimensions: S.optional(__S(47, __c5, 7)) }),
-      ).annotate({ identifier: "DimensionGroupDetail" });
-    case 1:
-      return S.Array(__S(48, __c6, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({ Metric: S.optional(S.String), Groups: S.optional(__S(49, __c6, 1)) }),
-      ).annotate({ identifier: "MetricDimensionGroups" });
     case 3:
-      return S.Array(__S(50, __c6, 2));
+      return S.Array(__S(2, __c0, 2));
     case 4:
       return S.suspend(() =>
+        S.Struct({ Group: S.optional(S.String), Dimensions: S.optional(__S(3, __c0, 3)) }),
+      ).annotate({ identifier: "DimensionGroupDetail" });
+    case 5:
+      return S.Array(__S(4, __c0, 4));
+    case 6:
+      return S.suspend(() =>
+        S.Struct({ Metric: S.optional(S.String), Groups: S.optional(__S(5, __c0, 5)) }),
+      ).annotate({ identifier: "MetricDimensionGroups" });
+    case 7:
+      return S.Array(__S(6, __c0, 6));
+    case 8:
+      return S.suspend(() =>
         S.Struct({
-          MetricDimensions: S.optional(__S(51, __c6, 3)),
+          MetricDimensions: S.optional(__S(7, __c0, 7)),
           NextToken: S.optional(S.String),
         }).pipe(ns),
       ).annotate({
         identifier: "ListAvailableResourceDimensionsResponse",
       });
-    case 5:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           ServiceType: S.String,
           Identifier: S.String,
-          MetricTypes: __S(6, __c0, 6),
+          MetricTypes: __S(192, __c12, 0),
           NextToken: S.optional(S.String),
           MaxResults: S.optional(S.Number),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "ListAvailableResourceMetricsRequest",
       });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           Metric: S.optional(S.String),
@@ -1149,44 +834,48 @@ function __c6(j: number): any {
           Unit: S.optional(S.String),
         }),
       ).annotate({ identifier: "ResponseResourceMetric" });
-    case 7:
-      return S.Array(__S(54, __c6, 6));
-  }
-}
-function __c7(j: number): any {
-  switch (j) {
-    case 0:
+    case 2:
+      return S.Array(__S(17, __c1, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          Metrics: S.optional(__S(55, __c6, 7)),
+          Metrics: S.optional(__S(18, __c1, 2)),
           NextToken: S.optional(S.String),
         }).pipe(ns),
       ).annotate({
         identifier: "ListAvailableResourceMetricsResponse",
       });
-    case 1:
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           ServiceType: S.String,
           Identifier: S.String,
           AnalysisReportId: S.String,
-          RecommendationIds: S.optional(__S(6, __c0, 6)),
+          RecommendationIds: S.optional(__S(192, __c12, 0)),
           MaxResults: S.optional(S.Number),
           NextToken: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "ListPerformanceAnalysisReportRecommendationsRequest",
       });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          Recommendations: S.optional(__S(23, __c2, 7)),
+          Recommendations: S.optional(__S(273, __c17, 1)),
           NextToken: S.optional(S.String),
         }).pipe(ns),
       ).annotate({
         identifier: "ListPerformanceAnalysisReportRecommendationsResponse",
       });
-    case 3:
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           ServiceType: S.String,
@@ -1198,7 +887,7 @@ function __c7(j: number): any {
       ).annotate({
         identifier: "ListPerformanceAnalysisReportsRequest",
       });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           AnalysisReportId: S.optional(S.String),
@@ -1206,21 +895,25 @@ function __c7(j: number): any {
           StartTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           EndTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           Status: S.optional(S.String),
-          Tags: S.optional(__S(1, __c0, 1)),
+          Tags: S.optional(__S(145, __c9, 1)),
         }),
       ).annotate({ identifier: "AnalysisReportSummary" });
-    case 5:
-      return S.Array(__S(60, __c7, 4));
-    case 6:
+    case 2:
+      return S.Array(__S(49, __c3, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          AnalysisReports: S.optional(__S(61, __c7, 5)),
+          AnalysisReports: S.optional(__S(50, __c3, 2)),
           NextToken: S.optional(S.String),
         }).pipe(ns),
       ).annotate({
         identifier: "ListPerformanceAnalysisReportsResponse",
       });
-    case 7:
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ ServiceType: S.String, ResourceARN: S.String }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
@@ -1228,33 +921,383 @@ function __c7(j: number): any {
       ).annotate({
         identifier: "ListTagsForResourceRequest",
       });
+    case 1:
+      return S.suspend(() => S.Struct({ Tags: S.optional(__S(145, __c9, 1)) }).pipe(ns)).annotate({
+        identifier: "ListTagsForResourceResponse",
+      });
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ ServiceType: S.String, ResourceARN: S.String, Tags: __S(145, __c9, 1) }).pipe(
+          T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "TagResourceRequest" });
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
+        identifier: "TagResourceResponse",
+      });
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          ServiceType: S.String,
+          ResourceARN: S.String,
+          TagKeys: __S(192, __c12, 0),
+        }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({ identifier: "UntagResourceRequest" });
   }
 }
 function __c8(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => S.Struct({ Tags: S.optional(__S(1, __c0, 1)) }).pipe(ns)).annotate({
-        identifier: "ListTagsForResourceResponse",
+      return S.suspend(() =>
+        S.Struct({
+          ServiceType: S.String,
+          Identifier: S.String,
+          StartTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+          EndTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          Tags: S.optional(__S(145, __c9, 1)),
+        }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({
+        identifier: "CreatePerformanceAnalysisReportRequest",
       });
     case 1:
       return S.suspend(() =>
-        S.Struct({ ServiceType: S.String, ResourceARN: S.String, Tags: __S(1, __c0, 1) }).pipe(
+        S.Struct({ AnalysisReportId: S.optional(S.String) }).pipe(ns),
+      ).annotate({
+        identifier: "CreatePerformanceAnalysisReportResponse",
+      });
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({ Key: S.String, Value: S.String })).annotate({
+        identifier: "Tag",
+      });
+    case 1:
+      return S.Array(__S(144, __c9, 0));
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ ServiceType: S.String, Identifier: S.String, AnalysisReportId: S.String }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({ identifier: "TagResourceRequest" });
-    case 2:
+      ).annotate({
+        identifier: "DeletePerformanceAnalysisReportRequest",
+      });
+    case 1:
       return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
-        identifier: "TagResourceResponse",
+        identifier: "DeletePerformanceAnalysisReportResponse",
+      });
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          ServiceType: S.String,
+          Identifier: S.String,
+          StartTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+          EndTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+          Metric: S.String,
+          PeriodInSeconds: S.optional(S.Number),
+          GroupBy: __S(224, __c14, 0),
+          AdditionalMetrics: S.optional(__S(192, __c12, 0)),
+          PartitionBy: S.optional(__S(224, __c14, 0)),
+          Filter: S.optional(__S(208, __c13, 0)),
+          MaxResults: S.optional(S.Number),
+          NextToken: S.optional(S.String),
+        }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({
+        identifier: "DescribeDimensionKeysRequest",
+      });
+    case 1:
+      return S.suspend(() => S.Struct({ Dimensions: __S(208, __c13, 0) })).annotate({
+        identifier: "ResponsePartitionKey",
+      });
+    case 2:
+      return S.Array(__S(177, __c11, 1));
+    case 3:
+      return S.Record(S.String, /*@__PURE__*/ S.Number.pipe(S.optional));
+    case 4:
+      return S.Array(S.Number);
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          Dimensions: S.optional(__S(208, __c13, 0)),
+          Total: S.optional(S.Number),
+          AdditionalMetrics: S.optional(__S(179, __c11, 3)),
+          Partitions: S.optional(__S(180, __c11, 4)),
+        }),
+      ).annotate({ identifier: "DimensionKeyDescription" });
+    case 6:
+      return S.Array(__S(181, __c11, 5));
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          AlignedStartTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          AlignedEndTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          PartitionKeys: S.optional(__S(178, __c11, 2)),
+          Keys: S.optional(__S(182, __c11, 6)),
+          NextToken: S.optional(S.String),
+        }).pipe(ns),
+      ).annotate({
+        identifier: "DescribeDimensionKeysResponse",
+      });
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          Group: S.String,
+          Dimensions: S.optional(__S(192, __c12, 0)),
+          Limit: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "DimensionGroup" });
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          ServiceType: S.String,
+          Identifier: S.String,
+          Group: S.String,
+          GroupIdentifier: S.String,
+          RequestedDimensions: S.optional(__S(192, __c12, 0)),
+        }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({
+        identifier: "GetDimensionKeyDetailsRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          Value: S.optional(S.String),
+          Dimension: S.optional(S.String),
+          Status: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "DimensionKeyDetail" });
+    case 2:
+      return S.Array(__S(241, __c15, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({ Dimensions: S.optional(__S(242, __c15, 2)) }).pipe(ns),
+      ).annotate({
+        identifier: "GetDimensionKeyDetailsResponse",
+      });
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          ServiceType: S.String,
+          Identifier: S.String,
+          AnalysisReportId: S.String,
+          TextFormat: S.optional(S.String),
+          AcceptLanguage: S.optional(S.String),
+        }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({
+        identifier: "GetPerformanceAnalysisReportRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          Metric: S.optional(S.String),
+          DisplayName: S.optional(S.String),
+          Dimensions: S.optional(__S(208, __c13, 0)),
+          Filter: S.optional(__S(208, __c13, 0)),
+          Value: S.optional(S.Number),
+        }),
+      ).annotate({
+        identifier: "PerformanceInsightsMetric",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({ PerformanceInsightsMetric: S.optional(__S(257, __c16, 1)) }),
+      ).annotate({ identifier: "Data" });
+    case 3:
+      return S.Array(__S(258, __c16, 2));
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          InsightId: S.String,
+          InsightType: S.optional(S.String),
+          Context: S.optional(S.String),
+          StartTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          EndTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          Severity: S.optional(S.String),
+          SupportingInsights: S.optional(
+            S.suspend(() => __S(261, __c16, 5)).annotate({ identifier: "InsightList" }),
+          ),
+          Description: S.optional(SensitiveString),
+          Recommendations: S.optional(__S(273, __c17, 1)),
+          InsightData: S.optional(__S(259, __c16, 3)),
+          BaselineData: S.optional(__S(259, __c16, 3)),
+        }),
+      ).annotate({ identifier: "Insight" });
+    case 5:
+      return S.Array(
+        /*@__PURE__*/ S.suspend((): S.Schema<Insight> => __S(260, __c16, 4)).annotate({
+          identifier: "Insight",
+        }),
+      );
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          AnalysisReportId: S.String,
+          Identifier: S.optional(S.String),
+          ServiceType: S.optional(S.String),
+          CreateTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          StartTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          EndTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          Status: S.optional(S.String),
+          Insights: S.optional(__S(261, __c16, 5)),
+        }),
+      ).annotate({ identifier: "AnalysisReport" });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({ AnalysisReport: S.optional(__S(262, __c16, 6)) }).pipe(ns),
+      ).annotate({
+        identifier: "GetPerformanceAnalysisReportResponse",
+      });
+  }
+}
+function __c17(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          RecommendationId: S.optional(S.String),
+          RecommendationDescription: S.optional(SensitiveString),
+          RecommendationDetails: S.optional(SensitiveString),
+        }),
+      ).annotate({ identifier: "Recommendation" });
+    case 1:
+      return S.Array(__S(272, __c17, 0));
+  }
+}
+function __c18(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ ServiceType: S.String, Identifier: S.String }).pipe(
+          T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({
+        identifier: "GetResourceMetadataRequest",
+      });
+    case 1:
+      return S.suspend(() => S.Struct({ Status: S.optional(S.String) })).annotate({
+        identifier: "FeatureMetadata",
+      });
+    case 2:
+      return S.Record(S.String, /*@__PURE__*/ __S(289, __c18, 1).pipe(S.optional));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          Identifier: S.optional(S.String),
+          Features: S.optional(__S(290, __c18, 2)),
+        }).pipe(ns),
+      ).annotate({
+        identifier: "GetResourceMetadataResponse",
+      });
+  }
+}
+function __c19(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          Metric: S.String,
+          GroupBy: S.optional(__S(224, __c14, 0)),
+          Filter: S.optional(__S(208, __c13, 0)),
+        }),
+      ).annotate({ identifier: "MetricQuery" });
+    case 1:
+      return S.Array(__S(304, __c19, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          ServiceType: S.String,
+          Identifier: S.String,
+          MetricQueries: __S(305, __c19, 1),
+          StartTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+          EndTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+          PeriodInSeconds: S.optional(S.Number),
+          MaxResults: S.optional(S.Number),
+          NextToken: S.optional(S.String),
+          PeriodAlignment: S.optional(S.String),
+        }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({
+        identifier: "GetResourceMetricsRequest",
       });
     case 3:
       return S.suspend(() =>
-        S.Struct({ ServiceType: S.String, ResourceARN: S.String, TagKeys: __S(6, __c0, 6) }).pipe(
-          T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-        ),
-      ).annotate({ identifier: "UntagResourceRequest" });
+        S.Struct({ Metric: S.String, Dimensions: S.optional(__S(208, __c13, 0)) }),
+      ).annotate({
+        identifier: "ResponseResourceMetricKey",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({ Timestamp: S.Date.pipe(T.TimestampFormat("epoch-seconds")), Value: S.Number }),
+      ).annotate({ identifier: "DataPoint" });
+    case 5:
+      return S.Array(__S(308, __c19, 4));
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          Key: S.optional(__S(307, __c19, 3)),
+          DataPoints: S.optional(__S(309, __c19, 5)),
+        }),
+      ).annotate({ identifier: "MetricKeyDataPoints" });
+    case 7:
+      return S.Array(__S(310, __c19, 6));
+    case 8:
+      return S.suspend(() =>
+        S.Struct({
+          AlignedStartTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          AlignedEndTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          Identifier: S.optional(S.String),
+          MetricList: S.optional(__S(311, __c19, 7)),
+          NextToken: S.optional(S.String),
+        }).pipe(ns),
+      ).annotate({
+        identifier: "GetResourceMetricsResponse",
+      });
   }
 }
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

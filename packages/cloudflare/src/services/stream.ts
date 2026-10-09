@@ -1618,8 +1618,8 @@ export const copyAudioTrack: API.OperationMethod<
   CopyAudioTrackError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(0, __c0, 0) as any as S.Schema<CopyAudioTrackRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<CopyAudioTrackResponse>,
+  input: __S(384, __c48, 0) as any as S.Schema<CopyAudioTrackRequest>,
+  output: __S(392, __c49, 0) as any as S.Schema<CopyAudioTrackResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -1633,8 +1633,8 @@ export const createCaptionLanguage: API.OperationMethod<
   CreateCaptionLanguageError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2, __c0, 2) as any as S.Schema<CreateCaptionLanguageRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<CreateCaptionLanguageResponse>,
+  input: __S(400, __c50, 0) as any as S.Schema<CreateCaptionLanguageRequest>,
+  output: __S(408, __c51, 0) as any as S.Schema<CreateCaptionLanguageResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -1648,8 +1648,8 @@ export const createClip: API.OperationMethod<
   CreateClipError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(6, __c0, 6) as any as S.Schema<CreateClipRequest>,
-  output: __S(12, __c1, 4) as any as S.Schema<CreateClipResponse>,
+  input: __S(416, __c52, 0) as any as S.Schema<CreateClipRequest>,
+  output: __S(417, __c52, 1) as any as S.Schema<CreateClipResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -1663,8 +1663,8 @@ export const createCopy: API.OperationMethod<
   CreateCopyError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(13, __c1, 5) as any as S.Schema<CreateCopyRequest>,
-  output: __S(14, __c1, 6) as any as S.Schema<CreateCopyResponse>,
+  input: __S(0, __c0, 0) as any as S.Schema<CreateCopyRequest>,
+  output: __S(1, __c0, 1) as any as S.Schema<CreateCopyResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -1678,8 +1678,8 @@ export const createDirectUpload: API.OperationMethod<
   CreateDirectUploadError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(15, __c1, 7) as any as S.Schema<CreateDirectUploadRequest>,
-  output: __S(16, __c2, 0) as any as S.Schema<CreateDirectUploadResponse>,
+  input: __S(8, __c1, 0) as any as S.Schema<CreateDirectUploadRequest>,
+  output: __S(9, __c1, 1) as any as S.Schema<CreateDirectUploadResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -1693,8 +1693,8 @@ export const createDownload: API.OperationMethod<
   CreateDownloadError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(17, __c2, 1) as any as S.Schema<CreateDownloadRequest>,
-  output: __S(19, __c2, 3) as any as S.Schema<CreateDownloadResponse>,
+  input: __S(16, __c2, 0) as any as S.Schema<CreateDownloadRequest>,
+  output: __S(25, __c3, 1) as any as S.Schema<CreateDownloadResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -1708,8 +1708,8 @@ export const createKey: API.OperationMethod<
   CreateKeyError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(20, __c2, 4) as any as S.Schema<CreateKeyRequest>,
-  output: __S(21, __c2, 5) as any as S.Schema<CreateKeyResponse>,
+  input: __S(32, __c4, 0) as any as S.Schema<CreateKeyRequest>,
+  output: __S(33, __c4, 1) as any as S.Schema<CreateKeyResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -1723,8 +1723,8 @@ export const createLiveInput: API.OperationMethod<
   CreateLiveInputError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(23, __c2, 7) as any as S.Schema<CreateLiveInputRequest>,
-  output: __S(29, __c3, 5) as any as S.Schema<CreateLiveInputResponse>,
+  input: __S(41, __c5, 1) as any as S.Schema<CreateLiveInputRequest>,
+  output: __S(43, __c5, 3) as any as S.Schema<CreateLiveInputResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -1738,8 +1738,8 @@ export const createLiveInputOutput: API.OperationMethod<
   CreateLiveInputOutputError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(30, __c3, 6) as any as S.Schema<CreateLiveInputOutputRequest>,
-  output: __S(31, __c3, 7) as any as S.Schema<CreateLiveInputOutputResponse>,
+  input: __S(56, __c7, 0) as any as S.Schema<CreateLiveInputOutputRequest>,
+  output: __S(64, __c8, 0) as any as S.Schema<CreateLiveInputOutputResponse>,
   errors: [LiveInputNotFound, Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -1753,8 +1753,8 @@ export const createStream: API.OperationMethod<
   CreateStreamError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(32, __c4, 0) as any as S.Schema<CreateStreamRequest>,
-  output: __S(33, __c4, 1) as any as S.Schema<CreateStreamResponse>,
+  input: __S(72, __c9, 0) as any as S.Schema<CreateStreamRequest>,
+  output: __S(80, __c10, 0) as any as S.Schema<CreateStreamResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -1768,8 +1768,8 @@ export const createToken: API.OperationMethod<
   CreateTokenError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(37, __c4, 5) as any as S.Schema<CreateTokenRequest>,
-  output: __S(38, __c4, 6) as any as S.Schema<CreateTokenResponse>,
+  input: __S(91, __c11, 3) as any as S.Schema<CreateTokenRequest>,
+  output: __S(92, __c11, 4) as any as S.Schema<CreateTokenResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -1783,8 +1783,8 @@ export const createWatermark: API.OperationMethod<
   CreateWatermarkError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(39, __c4, 7) as any as S.Schema<CreateWatermarkRequest>,
-  output: __S(40, __c5, 0) as any as S.Schema<CreateWatermarkResponse>,
+  input: __S(96, __c12, 0) as any as S.Schema<CreateWatermarkRequest>,
+  output: __S(104, __c13, 0) as any as S.Schema<CreateWatermarkResponse>,
   errors: [WatermarkImageInvalid, Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -1798,8 +1798,8 @@ export const deleteAudioTrack: API.OperationMethod<
   DeleteAudioTrackError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(41, __c5, 1) as any as S.Schema<DeleteAudioTrackRequest>,
-  output: __S(42, __c5, 2) as any as S.Schema<DeleteAudioTrackResponse>,
+  input: __S(112, __c14, 0) as any as S.Schema<DeleteAudioTrackRequest>,
+  output: __S(120, __c15, 0) as any as S.Schema<DeleteAudioTrackResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -1813,8 +1813,8 @@ export const deleteCaptionLanguage: API.OperationMethod<
   DeleteCaptionLanguageError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(43, __c5, 3) as any as S.Schema<DeleteCaptionLanguageRequest>,
-  output: __S(44, __c5, 4) as any as S.Schema<DeleteCaptionLanguageResponse>,
+  input: __S(128, __c16, 0) as any as S.Schema<DeleteCaptionLanguageRequest>,
+  output: __S(129, __c16, 1) as any as S.Schema<DeleteCaptionLanguageResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -1828,8 +1828,8 @@ export const deleteDownload: API.OperationMethod<
   DeleteDownloadError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(45, __c5, 5) as any as S.Schema<DeleteDownloadRequest>,
-  output: __S(42, __c5, 2) as any as S.Schema<DeleteDownloadResponse>,
+  input: __S(136, __c17, 0) as any as S.Schema<DeleteDownloadRequest>,
+  output: __S(120, __c15, 0) as any as S.Schema<DeleteDownloadResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -1843,8 +1843,8 @@ export const deleteKey: API.OperationMethod<
   DeleteKeyError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(46, __c5, 6) as any as S.Schema<DeleteKeyRequest>,
-  output: __S(42, __c5, 2) as any as S.Schema<DeleteKeyResponse>,
+  input: __S(144, __c18, 0) as any as S.Schema<DeleteKeyRequest>,
+  output: __S(120, __c15, 0) as any as S.Schema<DeleteKeyResponse>,
   errors: [SigningKeyNotFound, Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -1858,8 +1858,8 @@ export const deleteLiveInput: API.OperationMethod<
   DeleteLiveInputError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(47, __c5, 7) as any as S.Schema<DeleteLiveInputRequest>,
-  output: __S(33, __c4, 1) as any as S.Schema<DeleteLiveInputResponse>,
+  input: __S(152, __c19, 0) as any as S.Schema<DeleteLiveInputRequest>,
+  output: __S(80, __c10, 0) as any as S.Schema<DeleteLiveInputResponse>,
   errors: [LiveInputNotFound, Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -1873,8 +1873,8 @@ export const deleteLiveInputOutput: API.OperationMethod<
   DeleteLiveInputOutputError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(48, __c6, 0) as any as S.Schema<DeleteLiveInputOutputRequest>,
-  output: __S(49, __c6, 1) as any as S.Schema<DeleteLiveInputOutputResponse>,
+  input: __S(160, __c20, 0) as any as S.Schema<DeleteLiveInputOutputRequest>,
+  output: __S(168, __c21, 0) as any as S.Schema<DeleteLiveInputOutputResponse>,
   errors: [OutputNotFound, Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -1888,8 +1888,8 @@ export const deleteStream: API.OperationMethod<
   DeleteStreamError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(50, __c6, 2) as any as S.Schema<DeleteStreamRequest>,
-  output: __S(33, __c4, 1) as any as S.Schema<DeleteStreamResponse>,
+  input: __S(176, __c22, 0) as any as S.Schema<DeleteStreamRequest>,
+  output: __S(80, __c10, 0) as any as S.Schema<DeleteStreamResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -1903,8 +1903,8 @@ export const deleteWatermark: API.OperationMethod<
   DeleteWatermarkError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(51, __c6, 3) as any as S.Schema<DeleteWatermarkRequest>,
-  output: __S(42, __c5, 2) as any as S.Schema<DeleteWatermarkResponse>,
+  input: __S(184, __c23, 0) as any as S.Schema<DeleteWatermarkRequest>,
+  output: __S(120, __c15, 0) as any as S.Schema<DeleteWatermarkResponse>,
   errors: [WatermarkNotFound, Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -1918,8 +1918,8 @@ export const deleteWebhook: API.OperationMethod<
   DeleteWebhookError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(52, __c6, 4) as any as S.Schema<DeleteWebhookRequest>,
-  output: __S(42, __c5, 2) as any as S.Schema<DeleteWebhookResponse>,
+  input: __S(192, __c24, 0) as any as S.Schema<DeleteWebhookRequest>,
+  output: __S(120, __c15, 0) as any as S.Schema<DeleteWebhookResponse>,
   errors: [WebhookNotFound, Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -1933,8 +1933,8 @@ export const editStream: API.OperationMethod<
   EditStreamError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(54, __c6, 6) as any as S.Schema<EditStreamRequest>,
-  output: __S(55, __c6, 7) as any as S.Schema<EditStreamResponse>,
+  input: __S(201, __c25, 1) as any as S.Schema<EditStreamRequest>,
+  output: __S(202, __c25, 2) as any as S.Schema<EditStreamResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -1948,8 +1948,8 @@ export const getAudioTrack: API.OperationMethod<
   GetAudioTrackError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(56, __c7, 0) as any as S.Schema<GetAudioTrackRequest>,
-  output: __S(59, __c7, 3) as any as S.Schema<GetAudioTrackResponse>,
+  input: __S(208, __c26, 0) as any as S.Schema<GetAudioTrackRequest>,
+  output: __S(211, __c26, 3) as any as S.Schema<GetAudioTrackResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -1965,8 +1965,8 @@ export const getCaption: API.PaginatedOperationMethod<
   CaptionsGetResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(60, __c7, 4) as any as S.Schema<GetCaptionRequest>,
-    output: __S(63, __c7, 7) as any as S.Schema<GetCaptionResponse>,
+    input: __S(216, __c27, 0) as any as S.Schema<GetCaptionRequest>,
+    output: __S(219, __c27, 3) as any as S.Schema<GetCaptionResponse>,
     errors: [CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
     retry: Retry.Retry,
@@ -1983,8 +1983,8 @@ export const getCaptionLanguage: API.OperationMethod<
   GetCaptionLanguageError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(64, __c8, 0) as any as S.Schema<GetCaptionLanguageRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<GetCaptionLanguageResponse>,
+  input: __S(224, __c28, 0) as any as S.Schema<GetCaptionLanguageRequest>,
+  output: __S(408, __c51, 0) as any as S.Schema<GetCaptionLanguageResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -1998,8 +1998,8 @@ export const getCaptionLanguageVtt: API.OperationMethod<
   GetCaptionLanguageVttError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(65, __c8, 1) as any as S.Schema<GetCaptionLanguageVttRequest>,
-  output: __S(49, __c6, 1) as any as S.Schema<GetCaptionLanguageVttResponse>,
+  input: __S(232, __c29, 0) as any as S.Schema<GetCaptionLanguageVttRequest>,
+  output: __S(168, __c21, 0) as any as S.Schema<GetCaptionLanguageVttResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -2013,8 +2013,8 @@ export const getDownload: API.OperationMethod<
   GetDownloadError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(66, __c8, 2) as any as S.Schema<GetDownloadRequest>,
-  output: __S(19, __c2, 3) as any as S.Schema<GetDownloadResponse>,
+  input: __S(240, __c30, 0) as any as S.Schema<GetDownloadRequest>,
+  output: __S(25, __c3, 1) as any as S.Schema<GetDownloadResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -2028,8 +2028,8 @@ export const getEmbed: API.OperationMethod<
   GetEmbedError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(67, __c8, 3) as any as S.Schema<GetEmbedRequest>,
-  output: __S(33, __c4, 1) as any as S.Schema<GetEmbedResponse>,
+  input: __S(248, __c31, 0) as any as S.Schema<GetEmbedRequest>,
+  output: __S(80, __c10, 0) as any as S.Schema<GetEmbedResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -2045,8 +2045,8 @@ export const getKey: API.PaginatedOperationMethod<
   KeysGetResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(68, __c8, 4) as any as S.Schema<GetKeyRequest>,
-    output: __S(71, __c8, 7) as any as S.Schema<GetKeyResponse>,
+    input: __S(256, __c32, 0) as any as S.Schema<GetKeyRequest>,
+    output: __S(259, __c32, 3) as any as S.Schema<GetKeyResponse>,
     errors: [Forbidden, CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
     retry: Retry.Retry,
@@ -2063,8 +2063,8 @@ export const getLiveInput: API.OperationMethod<
   GetLiveInputError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(72, __c9, 0) as any as S.Schema<GetLiveInputRequest>,
-  output: __S(74, __c9, 2) as any as S.Schema<GetLiveInputResponse>,
+  input: __S(264, __c33, 0) as any as S.Schema<GetLiveInputRequest>,
+  output: __S(266, __c33, 2) as any as S.Schema<GetLiveInputResponse>,
   errors: [LiveInputNotFound, Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -2078,8 +2078,8 @@ export const getStream: API.OperationMethod<
   GetStreamError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(75, __c9, 3) as any as S.Schema<GetStreamRequest>,
-  output: __S(76, __c9, 4) as any as S.Schema<GetStreamResponse>,
+  input: __S(272, __c34, 0) as any as S.Schema<GetStreamRequest>,
+  output: __S(273, __c34, 1) as any as S.Schema<GetStreamResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -2093,8 +2093,8 @@ export const getWatermark: API.OperationMethod<
   GetWatermarkError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(77, __c9, 5) as any as S.Schema<GetWatermarkRequest>,
-  output: __S(40, __c5, 0) as any as S.Schema<GetWatermarkResponse>,
+  input: __S(280, __c35, 0) as any as S.Schema<GetWatermarkRequest>,
+  output: __S(104, __c13, 0) as any as S.Schema<GetWatermarkResponse>,
   errors: [WatermarkNotFound, Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -2108,8 +2108,8 @@ export const getWebhook: API.OperationMethod<
   GetWebhookError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(78, __c9, 6) as any as S.Schema<GetWebhookRequest>,
-  output: __S(79, __c9, 7) as any as S.Schema<GetWebhookResponse>,
+  input: __S(288, __c36, 0) as any as S.Schema<GetWebhookRequest>,
+  output: __S(296, __c37, 0) as any as S.Schema<GetWebhookResponse>,
   errors: [WebhookNotFound, Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -2125,8 +2125,8 @@ export const listLiveInputOutputs: API.PaginatedOperationMethod<
   LiveInputsOutputsListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(80, __c10, 0) as any as S.Schema<ListLiveInputOutputsRequest>,
-    output: __S(83, __c10, 3) as any as S.Schema<ListLiveInputOutputsResponse>,
+    input: __S(304, __c38, 0) as any as S.Schema<ListLiveInputOutputsRequest>,
+    output: __S(307, __c38, 3) as any as S.Schema<ListLiveInputOutputsResponse>,
     errors: [LiveInputNotFound, Forbidden, CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
     retry: Retry.Retry,
@@ -2143,8 +2143,8 @@ export const listLiveInputs: API.OperationMethod<
   ListLiveInputsError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(84, __c10, 4) as any as S.Schema<ListLiveInputsRequest>,
-  output: __S(87, __c10, 7) as any as S.Schema<ListLiveInputsResponse>,
+  input: __S(312, __c39, 0) as any as S.Schema<ListLiveInputsRequest>,
+  output: __S(315, __c39, 3) as any as S.Schema<ListLiveInputsResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -2160,8 +2160,8 @@ export const listStreams: API.PaginatedOperationMethod<
   ListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(88, __c11, 0) as any as S.Schema<ListStreamsRequest>,
-    output: __S(91, __c11, 3) as any as S.Schema<ListStreamsResponse>,
+    input: __S(320, __c40, 0) as any as S.Schema<ListStreamsRequest>,
+    output: __S(323, __c40, 3) as any as S.Schema<ListStreamsResponse>,
     errors: [CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
     retry: Retry.Retry,
@@ -2180,8 +2180,8 @@ export const listWatermarks: API.PaginatedOperationMethod<
   ClipCreateResponseWatermark
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(92, __c11, 4) as any as S.Schema<ListWatermarksRequest>,
-    output: __S(94, __c11, 6) as any as S.Schema<ListWatermarksResponse>,
+    input: __S(328, __c41, 0) as any as S.Schema<ListWatermarksRequest>,
+    output: __S(330, __c41, 2) as any as S.Schema<ListWatermarksResponse>,
     errors: [CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
     retry: Retry.Retry,
@@ -2198,8 +2198,8 @@ export const patchAudioTrack: API.OperationMethod<
   PatchAudioTrackError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(95, __c11, 7) as any as S.Schema<PatchAudioTrackRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<PatchAudioTrackResponse>,
+  input: __S(336, __c42, 0) as any as S.Schema<PatchAudioTrackRequest>,
+  output: __S(392, __c49, 0) as any as S.Schema<PatchAudioTrackResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -2213,8 +2213,8 @@ export const putWebhook: API.OperationMethod<
   PutWebhookError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(96, __c12, 0) as any as S.Schema<PutWebhookRequest>,
-  output: __S(79, __c9, 7) as any as S.Schema<PutWebhookResponse>,
+  input: __S(344, __c43, 0) as any as S.Schema<PutWebhookRequest>,
+  output: __S(296, __c37, 0) as any as S.Schema<PutWebhookResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -2228,8 +2228,8 @@ export const storageUsageVideo: API.OperationMethod<
   StorageUsageVideoError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(97, __c12, 1) as any as S.Schema<StorageUsageVideoRequest>,
-  output: __S(98, __c12, 2) as any as S.Schema<StorageUsageVideoResponse>,
+  input: __S(352, __c44, 0) as any as S.Schema<StorageUsageVideoRequest>,
+  output: __S(353, __c44, 1) as any as S.Schema<StorageUsageVideoResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -2243,8 +2243,8 @@ export const updateCaptionLanguage: API.OperationMethod<
   UpdateCaptionLanguageError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(99, __c12, 3) as any as S.Schema<UpdateCaptionLanguageRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<UpdateCaptionLanguageResponse>,
+  input: __S(360, __c45, 0) as any as S.Schema<UpdateCaptionLanguageRequest>,
+  output: __S(408, __c51, 0) as any as S.Schema<UpdateCaptionLanguageResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -2258,8 +2258,8 @@ export const updateLiveInput: API.OperationMethod<
   UpdateLiveInputError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(101, __c12, 5) as any as S.Schema<UpdateLiveInputRequest>,
-  output: __S(103, __c12, 7) as any as S.Schema<UpdateLiveInputResponse>,
+  input: __S(369, __c46, 1) as any as S.Schema<UpdateLiveInputRequest>,
+  output: __S(371, __c46, 3) as any as S.Schema<UpdateLiveInputResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -2273,8 +2273,8 @@ export const updateLiveInputOutput: API.OperationMethod<
   UpdateLiveInputOutputError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(104, __c13, 0) as any as S.Schema<UpdateLiveInputOutputRequest>,
-  output: __S(31, __c3, 7) as any as S.Schema<UpdateLiveInputOutputResponse>,
+  input: __S(376, __c47, 0) as any as S.Schema<UpdateLiveInputOutputRequest>,
+  output: __S(64, __c8, 0) as any as S.Schema<UpdateLiveInputOutputResponse>,
   errors: [OutputNotFound, Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -2287,75 +2287,7 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
-          identifier: S.String.pipe(T.Label()),
-          label: S.String,
-          url: S.optional(S.String),
-        })
-          .pipe(
-            T.Http({
-              method: "POST",
-              uri: "/accounts/{account_id}/stream/{identifier}/audio/copy",
-              code: 200,
-            }),
-          )
-          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({ identifier: "CopyAudioTrackRequest" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          default: S.optional(S.NullOr(S.Boolean)),
-          label: S.optional(S.NullOr(S.String)),
-          status: S.optional(S.NullOr(S.String)),
-          uid: S.optional(S.NullOr(S.String)),
-        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({ identifier: "CopyAudioTrackResponse" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          accountId: S.String.pipe(T.Label("account_id")),
-          identifier: S.String.pipe(T.Label()),
-          language: S.String.pipe(T.Label()),
-        })
-          .pipe(
-            T.Http({
-              method: "POST",
-              uri: "/accounts/{account_id}/stream/{identifier}/captions/{language}/generate",
-              code: 200,
-            }),
-          )
-          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({
-        identifier: "CreateCaptionLanguageRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          generated: S.optional(S.NullOr(S.Boolean)),
-          label: S.optional(S.NullOr(S.String)),
-          language: S.optional(S.NullOr(S.String)),
-          status: S.optional(S.NullOr(S.String)),
-        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({
-        identifier: "CreateCaptionLanguageResponse",
-      });
-    case 4:
-      return S.Array(S.String);
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          uid: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "ClipCreateRequestWatermark",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          accountId: S.String.pipe(T.Label("account_id")),
-          clippedFromVideoUID: S.String,
-          endTimeSeconds: S.Number,
-          startTimeSeconds: S.Number,
-          allowedOrigins: S.optional(__S(4, __c0, 4)),
+          allowedOrigins: S.optional(__S(432, __c54, 0)),
           creator: S.optional(S.String),
           input: S.optional(S.String),
           meta: S.optional(S.Unknown),
@@ -2364,18 +2296,43 @@ function __c0(j: number): any {
           scheduledDeletion: S.optional(S.String),
           thumbnailTimestampPct: S.optional(S.Number),
           url: S.optional(S.String),
-          watermark: S.optional(__S(5, __c0, 5)),
+          watermark: S.optional(__S(424, __c53, 0)),
+          uploadCreator: S.optional(S.String.pipe(T.Header("Upload-Creator"))),
         })
-          .pipe(T.Http({ method: "POST", uri: "/accounts/{account_id}/stream/clip", code: 200 }))
+          .pipe(T.Http({ method: "POST", uri: "/accounts/{account_id}/stream/copy", code: 200 }))
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({ identifier: "CreateClipRequest" });
-    case 7:
+      ).annotate({ identifier: "CreateCopyRequest" });
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          height: S.optional(S.NullOr(S.Number)),
-          width: S.optional(S.NullOr(S.Number)),
-        }),
-      ).annotate({ identifier: "ClipCreateResponseInput" });
+          allowedOrigins: S.optional(S.NullOr(__S(432, __c54, 0))),
+          clippedFrom: S.optional(S.NullOr(S.String)),
+          created: S.optional(S.NullOr(S.String)),
+          creator: S.optional(S.NullOr(S.String)),
+          duration: S.optional(S.NullOr(S.Number)),
+          input: S.optional(S.NullOr(__S(448, __c56, 0))),
+          liveInput: S.optional(S.NullOr(S.String)),
+          maxDurationSeconds: S.optional(S.NullOr(S.Number)),
+          maxSizeBytes: S.optional(S.NullOr(S.Number)),
+          meta: S.optional(S.NullOr(S.Unknown)),
+          modified: S.optional(S.NullOr(S.String)),
+          playback: S.optional(S.NullOr(__S(449, __c56, 1))),
+          preview: S.optional(S.NullOr(S.String)),
+          publicDetails: S.optional(S.NullOr(__S(450, __c56, 2))),
+          readyToStream: S.optional(S.NullOr(S.Boolean)),
+          readyToStreamAt: S.optional(S.NullOr(S.String)),
+          requireSignedURLs: S.optional(S.NullOr(S.Boolean)),
+          scheduledDeletion: S.optional(S.NullOr(S.String)),
+          size: S.optional(S.NullOr(S.Number)),
+          status: S.optional(S.NullOr(__S(451, __c56, 3))),
+          thumbnail: S.optional(S.NullOr(S.String)),
+          thumbnailTimestampPct: S.optional(S.NullOr(S.Number)),
+          uid: S.optional(S.NullOr(S.String)),
+          uploaded: S.optional(S.NullOr(S.String)),
+          uploadExpiry: S.optional(S.NullOr(S.String)),
+          watermark: S.optional(S.NullOr(__S(440, __c55, 0))),
+        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({ identifier: "CreateCopyResponse" });
   }
 }
 function __c1(j: number): any {
@@ -2383,145 +2340,16 @@ function __c1(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          dash: S.optional(S.NullOr(S.String)),
-          hls: S.optional(S.NullOr(S.String)),
-        }),
-      ).annotate({
-        identifier: "ClipCreateResponsePlayback",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          channelLink: S.optional(S.NullOr(S.String).pipe(T.Body("channel_link"))),
-          logo: S.optional(S.NullOr(S.String)),
-          mediaId: S.optional(S.NullOr(S.Number).pipe(T.Body("media_id"))),
-          shareLink: S.optional(S.NullOr(S.String).pipe(T.Body("share_link"))),
-          title: S.optional(S.NullOr(S.String)),
-        }),
-      ).annotate({
-        identifier: "ClipCreateResponsePublicDetails",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          errorReasonCode: S.optional(S.NullOr(S.String)),
-          errorReasonText: S.optional(S.NullOr(S.String)),
-          pctComplete: S.optional(S.NullOr(S.String)),
-          state: S.optional(S.NullOr(S.String)),
-        }),
-      ).annotate({ identifier: "ClipCreateResponseStatus" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          created: S.optional(S.NullOr(S.String)),
-          downloadedFrom: S.optional(S.NullOr(S.String)),
-          height: S.optional(S.NullOr(S.Number)),
-          name: S.optional(S.NullOr(S.String)),
-          opacity: S.optional(S.NullOr(S.Number)),
-          padding: S.optional(S.NullOr(S.Number)),
-          position: S.optional(S.NullOr(S.String)),
-          scale: S.optional(S.NullOr(S.Number)),
-          size: S.optional(S.NullOr(S.Number)),
-          uid: S.optional(S.NullOr(S.String)),
-          width: S.optional(S.NullOr(S.Number)),
-        }),
-      ).annotate({
-        identifier: "ClipCreateResponseWatermark",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          allowedOrigins: S.optional(S.NullOr(__S(4, __c0, 4))),
-          clippedFrom: S.optional(S.NullOr(S.String)),
-          created: S.optional(S.NullOr(S.String)),
-          creator: S.optional(S.NullOr(S.String)),
-          duration: S.optional(S.NullOr(S.Number)),
-          input: S.optional(S.NullOr(__S(7, __c0, 7))),
-          liveInput: S.optional(S.NullOr(S.String)),
-          maxDurationSeconds: S.optional(S.NullOr(S.Number)),
-          maxSizeBytes: S.optional(S.NullOr(S.Number)),
-          meta: S.optional(S.NullOr(S.Unknown)),
-          modified: S.optional(S.NullOr(S.String)),
-          playback: S.optional(S.NullOr(__S(8, __c1, 0))),
-          preview: S.optional(S.NullOr(S.String)),
-          publicDetails: S.optional(S.NullOr(__S(9, __c1, 1))),
-          readyToStream: S.optional(S.NullOr(S.Boolean)),
-          readyToStreamAt: S.optional(S.NullOr(S.String)),
-          requireSignedURLs: S.optional(S.NullOr(S.Boolean)),
-          scheduledDeletion: S.optional(S.NullOr(S.String)),
-          size: S.optional(S.NullOr(S.Number)),
-          status: S.optional(S.NullOr(__S(10, __c1, 2))),
-          thumbnail: S.optional(S.NullOr(S.String)),
-          thumbnailTimestampPct: S.optional(S.NullOr(S.Number)),
-          uid: S.optional(S.NullOr(S.String)),
-          uploaded: S.optional(S.NullOr(S.String)),
-          uploadExpiry: S.optional(S.NullOr(S.String)),
-          watermark: S.optional(S.NullOr(__S(11, __c1, 3))),
-        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({ identifier: "CreateClipResponse" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          accountId: S.String.pipe(T.Label("account_id")),
-          allowedOrigins: S.optional(__S(4, __c0, 4)),
-          creator: S.optional(S.String),
-          input: S.optional(S.String),
-          meta: S.optional(S.Unknown),
-          name: S.optional(S.String),
-          requireSignedURLs: S.optional(S.Boolean),
-          scheduledDeletion: S.optional(S.String),
-          thumbnailTimestampPct: S.optional(S.Number),
-          url: S.optional(S.String),
-          watermark: S.optional(__S(5, __c0, 5)),
-          uploadCreator: S.optional(S.String.pipe(T.Header("Upload-Creator"))),
-        })
-          .pipe(T.Http({ method: "POST", uri: "/accounts/{account_id}/stream/copy", code: 200 }))
-          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({ identifier: "CreateCopyRequest" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          allowedOrigins: S.optional(S.NullOr(__S(4, __c0, 4))),
-          clippedFrom: S.optional(S.NullOr(S.String)),
-          created: S.optional(S.NullOr(S.String)),
-          creator: S.optional(S.NullOr(S.String)),
-          duration: S.optional(S.NullOr(S.Number)),
-          input: S.optional(S.NullOr(__S(7, __c0, 7))),
-          liveInput: S.optional(S.NullOr(S.String)),
-          maxDurationSeconds: S.optional(S.NullOr(S.Number)),
-          maxSizeBytes: S.optional(S.NullOr(S.Number)),
-          meta: S.optional(S.NullOr(S.Unknown)),
-          modified: S.optional(S.NullOr(S.String)),
-          playback: S.optional(S.NullOr(__S(8, __c1, 0))),
-          preview: S.optional(S.NullOr(S.String)),
-          publicDetails: S.optional(S.NullOr(__S(9, __c1, 1))),
-          readyToStream: S.optional(S.NullOr(S.Boolean)),
-          readyToStreamAt: S.optional(S.NullOr(S.String)),
-          requireSignedURLs: S.optional(S.NullOr(S.Boolean)),
-          scheduledDeletion: S.optional(S.NullOr(S.String)),
-          size: S.optional(S.NullOr(S.Number)),
-          status: S.optional(S.NullOr(__S(10, __c1, 2))),
-          thumbnail: S.optional(S.NullOr(S.String)),
-          thumbnailTimestampPct: S.optional(S.NullOr(S.Number)),
-          uid: S.optional(S.NullOr(S.String)),
-          uploaded: S.optional(S.NullOr(S.String)),
-          uploadExpiry: S.optional(S.NullOr(S.String)),
-          watermark: S.optional(S.NullOr(__S(11, __c1, 3))),
-        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({ identifier: "CreateCopyResponse" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
           maxDurationSeconds: S.Number,
-          allowedOrigins: S.optional(__S(4, __c0, 4)),
+          allowedOrigins: S.optional(__S(432, __c54, 0)),
           creator: S.optional(S.String),
           expiry: S.optional(S.String),
           meta: S.optional(S.Unknown),
           requireSignedURLs: S.optional(S.Boolean),
           scheduledDeletion: S.optional(S.String),
           thumbnailTimestampPct: S.optional(S.Number),
-          watermark: S.optional(__S(5, __c0, 5)),
+          watermark: S.optional(__S(424, __c53, 0)),
           uploadCreator: S.optional(S.String.pipe(T.Header("Upload-Creator"))),
         })
           .pipe(
@@ -2535,22 +2363,22 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "CreateDirectUploadRequest",
       });
-  }
-}
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           scheduledDeletion: S.optional(S.NullOr(S.String)),
           uid: S.optional(S.NullOr(S.String)),
           uploadURL: S.optional(S.NullOr(S.String)),
-          watermark: S.optional(S.NullOr(__S(11, __c1, 3))),
+          watermark: S.optional(S.NullOr(__S(440, __c55, 0))),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({
         identifier: "CreateDirectUploadResponse",
       });
-    case 1:
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -2565,7 +2393,11 @@ function __c2(j: number): any {
           )
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "CreateDownloadRequest" });
-    case 2:
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           percentComplete: S.Number,
@@ -2575,14 +2407,18 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "DownloadsCreateResponseAudio",
       });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          audio: S.optional(S.NullOr(__S(18, __c2, 2))),
-          default: S.optional(S.NullOr(__S(18, __c2, 2))),
+          audio: S.optional(S.NullOr(__S(24, __c3, 0))),
+          default: S.optional(S.NullOr(__S(24, __c3, 0))),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "CreateDownloadResponse" });
-    case 4:
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -2590,7 +2426,7 @@ function __c2(j: number): any {
           .pipe(T.Http({ method: "POST", uri: "/accounts/{account_id}/stream/keys", code: 200 }))
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "CreateKeyRequest" });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.NullOr(S.String)),
@@ -2599,10 +2435,14 @@ function __c2(j: number): any {
           pem: S.optional(S.NullOr(S.String)),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "CreateKeyResponse" });
-    case 6:
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          allowedOrigins: S.optional(__S(4, __c0, 4)),
+          allowedOrigins: S.optional(__S(432, __c54, 0)),
           hideLiveViewerCount: S.optional(S.Boolean),
           mode: S.optional(S.String),
           requireSignedURLs: S.optional(S.Boolean),
@@ -2611,7 +2451,7 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "LiveInputsCreateRequestRecording",
       });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -2621,16 +2461,50 @@ function __c2(j: number): any {
           enabled: S.optional(S.Boolean),
           meta: S.optional(S.Unknown),
           preferLowLatency: S.optional(S.Boolean),
-          recording: S.optional(__S(22, __c2, 6)),
+          recording: S.optional(__S(40, __c5, 0)),
         })
           .pipe(
             T.Http({ method: "POST", uri: "/accounts/{account_id}/stream/live_inputs", code: 200 }),
           )
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "CreateLiveInputRequest" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          allowedOrigins: S.optional(S.NullOr(__S(432, __c54, 0))),
+          hideLiveViewerCount: S.optional(S.NullOr(S.Boolean)),
+          mode: S.optional(S.NullOr(S.String)),
+          requireSignedURLs: S.optional(S.NullOr(S.Boolean)),
+          timeoutSeconds: S.optional(S.NullOr(S.Number)),
+        }),
+      ).annotate({
+        identifier: "LiveInputsCreateResponseRecording",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          created: S.optional(S.NullOr(S.String)),
+          deleteRecordingAfterDays: S.optional(S.NullOr(S.Number)),
+          enabled: S.optional(S.NullOr(S.Boolean)),
+          keysRotatedAt: S.optional(S.NullOr(S.String)),
+          meta: S.optional(S.NullOr(S.Unknown)),
+          modified: S.optional(S.NullOr(S.String)),
+          playback: S.optional(S.NullOr(__S(48, __c6, 0))),
+          preferLowLatency: S.optional(S.NullOr(S.Boolean)),
+          recording: S.optional(S.NullOr(__S(42, __c5, 2))),
+          rtmps: S.optional(S.NullOr(__S(49, __c6, 1))),
+          rtmpsPlayback: S.optional(S.NullOr(__S(49, __c6, 1))),
+          srt: S.optional(S.NullOr(__S(50, __c6, 2))),
+          srtPlayback: S.optional(S.NullOr(__S(50, __c6, 2))),
+          status: S.optional(S.NullOr(S.String)),
+          uid: S.optional(S.NullOr(S.String)),
+          webRTC: S.optional(S.NullOr(__S(51, __c6, 3))),
+          webRTCPlayback: S.optional(S.NullOr(__S(51, __c6, 3))),
+        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({ identifier: "CreateLiveInputResponse" });
   }
 }
-function __c3(j: number): any {
+function __c6(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2644,25 +2518,13 @@ function __c3(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          allowedOrigins: S.optional(S.NullOr(__S(4, __c0, 4))),
-          hideLiveViewerCount: S.optional(S.NullOr(S.Boolean)),
-          mode: S.optional(S.NullOr(S.String)),
-          requireSignedURLs: S.optional(S.NullOr(S.Boolean)),
-          timeoutSeconds: S.optional(S.NullOr(S.Number)),
-        }),
-      ).annotate({
-        identifier: "LiveInputsCreateResponseRecording",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
           streamKey: S.optional(S.NullOr(S.String)),
           url: S.optional(S.NullOr(S.String)),
         }),
       ).annotate({
         identifier: "LiveInputsCreateResponseRtmps",
       });
-    case 3:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           passphrase: S.optional(S.NullOr(S.String)),
@@ -2672,7 +2534,7 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "LiveInputsCreateResponseSrt",
       });
-    case 4:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           url: S.optional(S.NullOr(S.String)),
@@ -2680,29 +2542,11 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "LiveInputsCreateResponseWebRTC",
       });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          created: S.optional(S.NullOr(S.String)),
-          deleteRecordingAfterDays: S.optional(S.NullOr(S.Number)),
-          enabled: S.optional(S.NullOr(S.Boolean)),
-          keysRotatedAt: S.optional(S.NullOr(S.String)),
-          meta: S.optional(S.NullOr(S.Unknown)),
-          modified: S.optional(S.NullOr(S.String)),
-          playback: S.optional(S.NullOr(__S(24, __c3, 0))),
-          preferLowLatency: S.optional(S.NullOr(S.Boolean)),
-          recording: S.optional(S.NullOr(__S(25, __c3, 1))),
-          rtmps: S.optional(S.NullOr(__S(26, __c3, 2))),
-          rtmpsPlayback: S.optional(S.NullOr(__S(26, __c3, 2))),
-          srt: S.optional(S.NullOr(__S(27, __c3, 3))),
-          srtPlayback: S.optional(S.NullOr(__S(27, __c3, 3))),
-          status: S.optional(S.NullOr(S.String)),
-          uid: S.optional(S.NullOr(S.String)),
-          webRTC: S.optional(S.NullOr(__S(28, __c3, 4))),
-          webRTCPlayback: S.optional(S.NullOr(__S(28, __c3, 4))),
-        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({ identifier: "CreateLiveInputResponse" });
-    case 6:
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -2722,7 +2566,11 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "CreateLiveInputOutputRequest",
       });
-    case 7:
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           enabled: S.optional(S.NullOr(S.Boolean)),
@@ -2735,7 +2583,7 @@ function __c3(j: number): any {
       });
   }
 }
-function __c4(j: number): any {
+function __c9(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2750,39 +2598,47 @@ function __c4(j: number): any {
           .pipe(T.Http({ method: "POST", uri: "/accounts/{account_id}/stream", code: 200 }))
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "CreateStreamRequest" });
-    case 1:
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() => S.Struct({}).pipe(T.KeyDictionary(KEY_DICTIONARY))).annotate({
         identifier: "CreateStreamResponse",
       });
-    case 2:
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           action: S.optional(S.String),
-          country: S.optional(__S(4, __c0, 4)),
-          ip: S.optional(__S(4, __c0, 4)),
+          country: S.optional(__S(432, __c54, 0)),
+          ip: S.optional(__S(432, __c54, 0)),
           type: S.optional(S.String),
         }),
       ).annotate({
         identifier: "TokenCreateRequestAccessRulesItem",
       });
-    case 3:
-      return S.Array(__S(34, __c4, 2));
-    case 4:
+    case 1:
+      return S.Array(__S(88, __c11, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           original: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "TokenCreateRequestFlags" });
-    case 5:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
           identifier: S.String.pipe(T.Label()),
           id: S.optional(S.String),
-          accessRules: S.optional(__S(35, __c4, 3)),
+          accessRules: S.optional(__S(89, __c11, 1)),
           downloadable: S.optional(S.Boolean),
           exp: S.optional(S.Number),
-          flags: S.optional(__S(36, __c4, 4)),
+          flags: S.optional(__S(90, __c11, 2)),
           nbf: S.optional(S.Number),
           pem: S.optional(S.String),
         })
@@ -2795,13 +2651,17 @@ function __c4(j: number): any {
           )
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "CreateTokenRequest" });
-    case 6:
+    case 4:
       return S.suspend(() =>
         S.Struct({
           token: S.optional(S.NullOr(S.String)),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "CreateTokenResponse" });
-    case 7:
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -2819,7 +2679,7 @@ function __c4(j: number): any {
       ).annotate({ identifier: "CreateWatermarkRequest" });
   }
 }
-function __c5(j: number): any {
+function __c13(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2837,7 +2697,11 @@ function __c5(j: number): any {
           width: S.optional(S.NullOr(S.Number)),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "CreateWatermarkResponse" });
-    case 1:
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -2853,11 +2717,19 @@ function __c5(j: number): any {
           )
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "DeleteAudioTrackRequest" });
-    case 2:
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.String.pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "DeleteAudioTrackResponse" });
-    case 3:
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -2875,13 +2747,17 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "DeleteCaptionLanguageRequest",
       });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.String.pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({
         identifier: "DeleteCaptionLanguageResponse",
       });
-    case 5:
+  }
+}
+function __c17(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -2896,7 +2772,11 @@ function __c5(j: number): any {
           )
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "DeleteDownloadRequest" });
-    case 6:
+  }
+}
+function __c18(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -2911,7 +2791,11 @@ function __c5(j: number): any {
           )
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "DeleteKeyRequest" });
-    case 7:
+  }
+}
+function __c19(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -2928,7 +2812,7 @@ function __c5(j: number): any {
       ).annotate({ identifier: "DeleteLiveInputRequest" });
   }
 }
-function __c6(j: number): any {
+function __c20(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2948,11 +2832,19 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "DeleteLiveInputOutputRequest",
       });
-    case 1:
+  }
+}
+function __c21(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() => S.Struct({}).pipe(T.KeyDictionary(KEY_DICTIONARY))).annotate({
         identifier: "DeleteLiveInputOutputResponse",
       });
-    case 2:
+  }
+}
+function __c22(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -2967,7 +2859,11 @@ function __c6(j: number): any {
           )
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "DeleteStreamRequest" });
-    case 3:
+  }
+}
+function __c23(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -2982,7 +2878,11 @@ function __c6(j: number): any {
           )
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "DeleteWatermarkRequest" });
-    case 4:
+  }
+}
+function __c24(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -2992,7 +2892,11 @@ function __c6(j: number): any {
           )
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "DeleteWebhookRequest" });
-    case 5:
+  }
+}
+function __c25(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           channelLink: S.optional(S.String.pipe(T.Body("channel_link"))),
@@ -3001,16 +2905,16 @@ function __c6(j: number): any {
           title: S.optional(S.String),
         }),
       ).annotate({ identifier: "EditRequestPublicDetails" });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
           identifier: S.String.pipe(T.Label()),
-          allowedOrigins: S.optional(__S(4, __c0, 4)),
+          allowedOrigins: S.optional(__S(432, __c54, 0)),
           creator: S.optional(S.String),
           maxDurationSeconds: S.optional(S.Number),
           meta: S.optional(S.Unknown),
-          publicDetails: S.optional(__S(53, __c6, 5)),
+          publicDetails: S.optional(__S(200, __c25, 0)),
           requireSignedURLs: S.optional(S.Boolean),
           scheduledDeletion: S.optional(S.String),
           thumbnailTimestampPct: S.optional(S.Number),
@@ -3026,40 +2930,40 @@ function __c6(j: number): any {
           )
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "EditStreamRequest" });
-    case 7:
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          allowedOrigins: S.optional(S.NullOr(__S(4, __c0, 4))),
+          allowedOrigins: S.optional(S.NullOr(__S(432, __c54, 0))),
           clippedFrom: S.optional(S.NullOr(S.String)),
           created: S.optional(S.NullOr(S.String)),
           creator: S.optional(S.NullOr(S.String)),
           duration: S.optional(S.NullOr(S.Number)),
-          input: S.optional(S.NullOr(__S(7, __c0, 7))),
+          input: S.optional(S.NullOr(__S(448, __c56, 0))),
           liveInput: S.optional(S.NullOr(S.String)),
           maxDurationSeconds: S.optional(S.NullOr(S.Number)),
           maxSizeBytes: S.optional(S.NullOr(S.Number)),
           meta: S.optional(S.NullOr(S.Unknown)),
           modified: S.optional(S.NullOr(S.String)),
-          playback: S.optional(S.NullOr(__S(8, __c1, 0))),
+          playback: S.optional(S.NullOr(__S(449, __c56, 1))),
           preview: S.optional(S.NullOr(S.String)),
-          publicDetails: S.optional(S.NullOr(__S(9, __c1, 1))),
+          publicDetails: S.optional(S.NullOr(__S(450, __c56, 2))),
           readyToStream: S.optional(S.NullOr(S.Boolean)),
           readyToStreamAt: S.optional(S.NullOr(S.String)),
           requireSignedURLs: S.optional(S.NullOr(S.Boolean)),
           scheduledDeletion: S.optional(S.NullOr(S.String)),
           size: S.optional(S.NullOr(S.Number)),
-          status: S.optional(S.NullOr(__S(10, __c1, 2))),
+          status: S.optional(S.NullOr(__S(451, __c56, 3))),
           thumbnail: S.optional(S.NullOr(S.String)),
           thumbnailTimestampPct: S.optional(S.NullOr(S.Number)),
           uid: S.optional(S.NullOr(S.String)),
           uploaded: S.optional(S.NullOr(S.String)),
           uploadExpiry: S.optional(S.NullOr(S.String)),
-          watermark: S.optional(S.NullOr(__S(11, __c1, 3))),
+          watermark: S.optional(S.NullOr(__S(440, __c55, 0))),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "EditStreamResponse" });
   }
 }
-function __c7(j: number): any {
+function __c26(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3088,14 +2992,18 @@ function __c7(j: number): any {
         identifier: "AudioTracksGetResponseAudioItem",
       });
     case 2:
-      return S.Array(__S(57, __c7, 1));
+      return S.Array(__S(209, __c26, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          audio: S.optional(S.NullOr(__S(58, __c7, 2))),
+          audio: S.optional(S.NullOr(__S(210, __c26, 2))),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "GetAudioTrackResponse" });
-    case 4:
+  }
+}
+function __c27(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -3110,7 +3018,7 @@ function __c7(j: number): any {
           )
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "GetCaptionRequest" });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           generated: S.optional(S.NullOr(S.Boolean)),
@@ -3119,18 +3027,18 @@ function __c7(j: number): any {
           status: S.optional(S.NullOr(S.String)),
         }),
       ).annotate({ identifier: "CaptionsGetResultItem" });
-    case 6:
-      return S.Array(__S(61, __c7, 5));
-    case 7:
+    case 2:
+      return S.Array(__S(217, __c27, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          result: __S(62, __c7, 6).pipe(T.EnvelopePayload()),
+          result: __S(218, __c27, 2).pipe(T.EnvelopePayload()),
           resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "GetCaptionResponse" });
   }
 }
-function __c8(j: number): any {
+function __c28(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3150,7 +3058,11 @@ function __c8(j: number): any {
       ).annotate({
         identifier: "GetCaptionLanguageRequest",
       });
-    case 1:
+  }
+}
+function __c29(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -3168,7 +3080,11 @@ function __c8(j: number): any {
       ).annotate({
         identifier: "GetCaptionLanguageVttRequest",
       });
-    case 2:
+  }
+}
+function __c30(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -3183,7 +3099,11 @@ function __c8(j: number): any {
           )
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "GetDownloadRequest" });
-    case 3:
+  }
+}
+function __c31(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -3198,7 +3118,11 @@ function __c8(j: number): any {
           )
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "GetEmbedRequest" });
-    case 4:
+  }
+}
+function __c32(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -3206,7 +3130,7 @@ function __c8(j: number): any {
           .pipe(T.Http({ method: "GET", uri: "/accounts/{account_id}/stream/keys", code: 200 }))
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "GetKeyRequest" });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.NullOr(S.String)),
@@ -3214,18 +3138,18 @@ function __c8(j: number): any {
           keyId: S.optional(S.NullOr(S.String).pipe(T.Body("key_id"))),
         }),
       ).annotate({ identifier: "KeysGetResultItem" });
-    case 6:
-      return S.Array(__S(69, __c8, 5));
-    case 7:
+    case 2:
+      return S.Array(__S(257, __c32, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          result: __S(70, __c8, 6).pipe(T.EnvelopePayload()),
+          result: __S(258, __c32, 2).pipe(T.EnvelopePayload()),
           resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "GetKeyResponse" });
   }
 }
-function __c9(j: number): any {
+function __c33(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3245,7 +3169,7 @@ function __c9(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          allowedOrigins: S.optional(S.NullOr(__S(4, __c0, 4))),
+          allowedOrigins: S.optional(S.NullOr(__S(432, __c54, 0))),
           hideLiveViewerCount: S.optional(S.NullOr(S.Boolean)),
           mode: S.optional(S.NullOr(S.String)),
           requireSignedURLs: S.optional(S.NullOr(S.Boolean)),
@@ -3263,20 +3187,24 @@ function __c9(j: number): any {
           keysRotatedAt: S.optional(S.NullOr(S.String)),
           meta: S.optional(S.NullOr(S.Unknown)),
           modified: S.optional(S.NullOr(S.String)),
-          playback: S.optional(S.NullOr(__S(24, __c3, 0))),
+          playback: S.optional(S.NullOr(__S(48, __c6, 0))),
           preferLowLatency: S.optional(S.NullOr(S.Boolean)),
-          recording: S.optional(S.NullOr(__S(73, __c9, 1))),
-          rtmps: S.optional(S.NullOr(__S(26, __c3, 2))),
-          rtmpsPlayback: S.optional(S.NullOr(__S(26, __c3, 2))),
-          srt: S.optional(S.NullOr(__S(27, __c3, 3))),
-          srtPlayback: S.optional(S.NullOr(__S(27, __c3, 3))),
+          recording: S.optional(S.NullOr(__S(265, __c33, 1))),
+          rtmps: S.optional(S.NullOr(__S(49, __c6, 1))),
+          rtmpsPlayback: S.optional(S.NullOr(__S(49, __c6, 1))),
+          srt: S.optional(S.NullOr(__S(50, __c6, 2))),
+          srtPlayback: S.optional(S.NullOr(__S(50, __c6, 2))),
           status: S.optional(S.NullOr(S.String)),
           uid: S.optional(S.NullOr(S.String)),
-          webRTC: S.optional(S.NullOr(__S(28, __c3, 4))),
-          webRTCPlayback: S.optional(S.NullOr(__S(28, __c3, 4))),
+          webRTC: S.optional(S.NullOr(__S(51, __c6, 3))),
+          webRTCPlayback: S.optional(S.NullOr(__S(51, __c6, 3))),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "GetLiveInputResponse" });
-    case 3:
+  }
+}
+function __c34(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -3287,38 +3215,42 @@ function __c9(j: number): any {
           )
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "GetStreamRequest" });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          allowedOrigins: S.optional(S.NullOr(__S(4, __c0, 4))),
+          allowedOrigins: S.optional(S.NullOr(__S(432, __c54, 0))),
           clippedFrom: S.optional(S.NullOr(S.String)),
           created: S.optional(S.NullOr(S.String)),
           creator: S.optional(S.NullOr(S.String)),
           duration: S.optional(S.NullOr(S.Number)),
-          input: S.optional(S.NullOr(__S(7, __c0, 7))),
+          input: S.optional(S.NullOr(__S(448, __c56, 0))),
           liveInput: S.optional(S.NullOr(S.String)),
           maxDurationSeconds: S.optional(S.NullOr(S.Number)),
           maxSizeBytes: S.optional(S.NullOr(S.Number)),
           meta: S.optional(S.NullOr(S.Unknown)),
           modified: S.optional(S.NullOr(S.String)),
-          playback: S.optional(S.NullOr(__S(8, __c1, 0))),
+          playback: S.optional(S.NullOr(__S(449, __c56, 1))),
           preview: S.optional(S.NullOr(S.String)),
-          publicDetails: S.optional(S.NullOr(__S(9, __c1, 1))),
+          publicDetails: S.optional(S.NullOr(__S(450, __c56, 2))),
           readyToStream: S.optional(S.NullOr(S.Boolean)),
           readyToStreamAt: S.optional(S.NullOr(S.String)),
           requireSignedURLs: S.optional(S.NullOr(S.Boolean)),
           scheduledDeletion: S.optional(S.NullOr(S.String)),
           size: S.optional(S.NullOr(S.Number)),
-          status: S.optional(S.NullOr(__S(10, __c1, 2))),
+          status: S.optional(S.NullOr(__S(451, __c56, 3))),
           thumbnail: S.optional(S.NullOr(S.String)),
           thumbnailTimestampPct: S.optional(S.NullOr(S.Number)),
           uid: S.optional(S.NullOr(S.String)),
           uploaded: S.optional(S.NullOr(S.String)),
           uploadExpiry: S.optional(S.NullOr(S.String)),
-          watermark: S.optional(S.NullOr(__S(11, __c1, 3))),
+          watermark: S.optional(S.NullOr(__S(440, __c55, 0))),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "GetStreamResponse" });
-    case 5:
+  }
+}
+function __c35(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -3333,7 +3265,11 @@ function __c9(j: number): any {
           )
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "GetWatermarkRequest" });
-    case 6:
+  }
+}
+function __c36(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -3341,7 +3277,11 @@ function __c9(j: number): any {
           .pipe(T.Http({ method: "GET", uri: "/accounts/{account_id}/stream/webhook", code: 200 }))
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "GetWebhookRequest" });
-    case 7:
+  }
+}
+function __c37(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           modified: S.optional(S.NullOr(S.String)),
@@ -3351,7 +3291,7 @@ function __c9(j: number): any {
       ).annotate({ identifier: "GetWebhookResponse" });
   }
 }
-function __c10(j: number): any {
+function __c38(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3382,17 +3322,21 @@ function __c10(j: number): any {
         identifier: "LiveInputsOutputsListResultItem",
       });
     case 2:
-      return S.Array(__S(81, __c10, 1));
+      return S.Array(__S(305, __c38, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          result: __S(82, __c10, 2).pipe(T.EnvelopePayload()),
+          result: __S(306, __c38, 2).pipe(T.EnvelopePayload()),
           resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({
         identifier: "ListLiveInputOutputsResponse",
       });
-    case 4:
+  }
+}
+function __c39(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -3403,7 +3347,7 @@ function __c10(j: number): any {
           )
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "ListLiveInputsRequest" });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           created: S.optional(S.NullOr(S.String)),
@@ -3416,19 +3360,19 @@ function __c10(j: number): any {
       ).annotate({
         identifier: "LiveInputsListResponseLiveInputsItem",
       });
-    case 6:
-      return S.Array(__S(85, __c10, 5));
-    case 7:
+    case 2:
+      return S.Array(__S(313, __c39, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          liveInputs: S.optional(S.NullOr(__S(86, __c10, 6))),
+          liveInputs: S.optional(S.NullOr(__S(314, __c39, 2))),
           range: S.optional(S.NullOr(S.Number)),
           total: S.optional(S.NullOr(S.Number)),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "ListLiveInputsResponse" });
   }
 }
-function __c11(j: number): any {
+function __c40(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3456,44 +3400,48 @@ function __c11(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          allowedOrigins: S.optional(S.NullOr(__S(4, __c0, 4))),
+          allowedOrigins: S.optional(S.NullOr(__S(432, __c54, 0))),
           clippedFrom: S.optional(S.NullOr(S.String)),
           created: S.optional(S.NullOr(S.String)),
           creator: S.optional(S.NullOr(S.String)),
           duration: S.optional(S.NullOr(S.Number)),
-          input: S.optional(S.NullOr(__S(7, __c0, 7))),
+          input: S.optional(S.NullOr(__S(448, __c56, 0))),
           liveInput: S.optional(S.NullOr(S.String)),
           maxDurationSeconds: S.optional(S.NullOr(S.Number)),
           maxSizeBytes: S.optional(S.NullOr(S.Number)),
           meta: S.optional(S.NullOr(S.Unknown)),
           modified: S.optional(S.NullOr(S.String)),
-          playback: S.optional(S.NullOr(__S(8, __c1, 0))),
+          playback: S.optional(S.NullOr(__S(449, __c56, 1))),
           preview: S.optional(S.NullOr(S.String)),
-          publicDetails: S.optional(S.NullOr(__S(9, __c1, 1))),
+          publicDetails: S.optional(S.NullOr(__S(450, __c56, 2))),
           readyToStream: S.optional(S.NullOr(S.Boolean)),
           readyToStreamAt: S.optional(S.NullOr(S.String)),
           requireSignedURLs: S.optional(S.NullOr(S.Boolean)),
           scheduledDeletion: S.optional(S.NullOr(S.String)),
           size: S.optional(S.NullOr(S.Number)),
-          status: S.optional(S.NullOr(__S(10, __c1, 2))),
+          status: S.optional(S.NullOr(__S(451, __c56, 3))),
           thumbnail: S.optional(S.NullOr(S.String)),
           thumbnailTimestampPct: S.optional(S.NullOr(S.Number)),
           uid: S.optional(S.NullOr(S.String)),
           uploaded: S.optional(S.NullOr(S.String)),
           uploadExpiry: S.optional(S.NullOr(S.String)),
-          watermark: S.optional(S.NullOr(__S(11, __c1, 3))),
+          watermark: S.optional(S.NullOr(__S(440, __c55, 0))),
         }),
       ).annotate({ identifier: "ListResultItem" });
     case 2:
-      return S.Array(__S(89, __c11, 1));
+      return S.Array(__S(321, __c40, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          result: __S(90, __c11, 2).pipe(T.EnvelopePayload()),
+          result: __S(322, __c40, 2).pipe(T.EnvelopePayload()),
           resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "ListStreamsResponse" });
-    case 4:
+  }
+}
+function __c41(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -3503,16 +3451,20 @@ function __c11(j: number): any {
           )
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "ListWatermarksRequest" });
-    case 5:
-      return S.Array(__S(11, __c1, 3));
-    case 6:
+    case 1:
+      return S.Array(__S(440, __c55, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          result: __S(93, __c11, 5).pipe(T.EnvelopePayload()),
+          result: __S(329, __c41, 1).pipe(T.EnvelopePayload()),
           resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "ListWatermarksResponse" });
-    case 7:
+  }
+}
+function __c42(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -3532,7 +3484,7 @@ function __c11(j: number): any {
       ).annotate({ identifier: "PatchAudioTrackRequest" });
   }
 }
-function __c12(j: number): any {
+function __c43(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3543,7 +3495,11 @@ function __c12(j: number): any {
           .pipe(T.Http({ method: "PUT", uri: "/accounts/{account_id}/stream/webhook", code: 200 }))
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "PutWebhookRequest" });
-    case 1:
+  }
+}
+function __c44(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -3558,7 +3514,7 @@ function __c12(j: number): any {
           )
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "StorageUsageVideoRequest" });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           creator: S.optional(S.NullOr(S.String)),
@@ -3569,7 +3525,11 @@ function __c12(j: number): any {
       ).annotate({
         identifier: "StorageUsageVideoResponse",
       });
-    case 3:
+  }
+}
+function __c45(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -3588,10 +3548,14 @@ function __c12(j: number): any {
       ).annotate({
         identifier: "UpdateCaptionLanguageRequest",
       });
-    case 4:
+  }
+}
+function __c46(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          allowedOrigins: S.optional(__S(4, __c0, 4)),
+          allowedOrigins: S.optional(__S(432, __c54, 0)),
           hideLiveViewerCount: S.optional(S.Boolean),
           mode: S.optional(S.String),
           requireSignedURLs: S.optional(S.Boolean),
@@ -3600,7 +3564,7 @@ function __c12(j: number): any {
       ).annotate({
         identifier: "LiveInputsUpdateRequestRecording",
       });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -3610,7 +3574,7 @@ function __c12(j: number): any {
           enabled: S.optional(S.Boolean),
           meta: S.optional(S.Unknown),
           preferLowLatency: S.optional(S.Boolean),
-          recording: S.optional(__S(100, __c12, 4)),
+          recording: S.optional(__S(368, __c46, 0)),
         })
           .pipe(
             T.Http({
@@ -3621,10 +3585,10 @@ function __c12(j: number): any {
           )
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "UpdateLiveInputRequest" });
-    case 6:
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          allowedOrigins: S.optional(S.NullOr(__S(4, __c0, 4))),
+          allowedOrigins: S.optional(S.NullOr(__S(432, __c54, 0))),
           hideLiveViewerCount: S.optional(S.NullOr(S.Boolean)),
           mode: S.optional(S.NullOr(S.String)),
           requireSignedURLs: S.optional(S.NullOr(S.Boolean)),
@@ -3633,7 +3597,7 @@ function __c12(j: number): any {
       ).annotate({
         identifier: "LiveInputsUpdateResponseRecording",
       });
-    case 7:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           created: S.optional(S.NullOr(S.String)),
@@ -3642,22 +3606,22 @@ function __c12(j: number): any {
           keysRotatedAt: S.optional(S.NullOr(S.String)),
           meta: S.optional(S.NullOr(S.Unknown)),
           modified: S.optional(S.NullOr(S.String)),
-          playback: S.optional(S.NullOr(__S(24, __c3, 0))),
+          playback: S.optional(S.NullOr(__S(48, __c6, 0))),
           preferLowLatency: S.optional(S.NullOr(S.Boolean)),
-          recording: S.optional(S.NullOr(__S(102, __c12, 6))),
-          rtmps: S.optional(S.NullOr(__S(26, __c3, 2))),
-          rtmpsPlayback: S.optional(S.NullOr(__S(26, __c3, 2))),
-          srt: S.optional(S.NullOr(__S(27, __c3, 3))),
-          srtPlayback: S.optional(S.NullOr(__S(27, __c3, 3))),
+          recording: S.optional(S.NullOr(__S(370, __c46, 2))),
+          rtmps: S.optional(S.NullOr(__S(49, __c6, 1))),
+          rtmpsPlayback: S.optional(S.NullOr(__S(49, __c6, 1))),
+          srt: S.optional(S.NullOr(__S(50, __c6, 2))),
+          srtPlayback: S.optional(S.NullOr(__S(50, __c6, 2))),
           status: S.optional(S.NullOr(S.String)),
           uid: S.optional(S.NullOr(S.String)),
-          webRTC: S.optional(S.NullOr(__S(28, __c3, 4))),
-          webRTCPlayback: S.optional(S.NullOr(__S(28, __c3, 4))),
+          webRTC: S.optional(S.NullOr(__S(51, __c6, 3))),
+          webRTCPlayback: S.optional(S.NullOr(__S(51, __c6, 3))),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "UpdateLiveInputResponse" });
   }
 }
-function __c13(j: number): any {
+function __c47(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3680,7 +3644,214 @@ function __c13(j: number): any {
       });
   }
 }
-
+function __c48(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          accountId: S.String.pipe(T.Label("account_id")),
+          identifier: S.String.pipe(T.Label()),
+          label: S.String,
+          url: S.optional(S.String),
+        })
+          .pipe(
+            T.Http({
+              method: "POST",
+              uri: "/accounts/{account_id}/stream/{identifier}/audio/copy",
+              code: 200,
+            }),
+          )
+          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({ identifier: "CopyAudioTrackRequest" });
+  }
+}
+function __c49(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          default: S.optional(S.NullOr(S.Boolean)),
+          label: S.optional(S.NullOr(S.String)),
+          status: S.optional(S.NullOr(S.String)),
+          uid: S.optional(S.NullOr(S.String)),
+        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({ identifier: "CopyAudioTrackResponse" });
+  }
+}
+function __c50(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          accountId: S.String.pipe(T.Label("account_id")),
+          identifier: S.String.pipe(T.Label()),
+          language: S.String.pipe(T.Label()),
+        })
+          .pipe(
+            T.Http({
+              method: "POST",
+              uri: "/accounts/{account_id}/stream/{identifier}/captions/{language}/generate",
+              code: 200,
+            }),
+          )
+          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({
+        identifier: "CreateCaptionLanguageRequest",
+      });
+  }
+}
+function __c51(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          generated: S.optional(S.NullOr(S.Boolean)),
+          label: S.optional(S.NullOr(S.String)),
+          language: S.optional(S.NullOr(S.String)),
+          status: S.optional(S.NullOr(S.String)),
+        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({
+        identifier: "CreateCaptionLanguageResponse",
+      });
+  }
+}
+function __c52(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          accountId: S.String.pipe(T.Label("account_id")),
+          clippedFromVideoUID: S.String,
+          endTimeSeconds: S.Number,
+          startTimeSeconds: S.Number,
+          allowedOrigins: S.optional(__S(432, __c54, 0)),
+          creator: S.optional(S.String),
+          input: S.optional(S.String),
+          meta: S.optional(S.Unknown),
+          name: S.optional(S.String),
+          requireSignedURLs: S.optional(S.Boolean),
+          scheduledDeletion: S.optional(S.String),
+          thumbnailTimestampPct: S.optional(S.Number),
+          url: S.optional(S.String),
+          watermark: S.optional(__S(424, __c53, 0)),
+        })
+          .pipe(T.Http({ method: "POST", uri: "/accounts/{account_id}/stream/clip", code: 200 }))
+          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({ identifier: "CreateClipRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          allowedOrigins: S.optional(S.NullOr(__S(432, __c54, 0))),
+          clippedFrom: S.optional(S.NullOr(S.String)),
+          created: S.optional(S.NullOr(S.String)),
+          creator: S.optional(S.NullOr(S.String)),
+          duration: S.optional(S.NullOr(S.Number)),
+          input: S.optional(S.NullOr(__S(448, __c56, 0))),
+          liveInput: S.optional(S.NullOr(S.String)),
+          maxDurationSeconds: S.optional(S.NullOr(S.Number)),
+          maxSizeBytes: S.optional(S.NullOr(S.Number)),
+          meta: S.optional(S.NullOr(S.Unknown)),
+          modified: S.optional(S.NullOr(S.String)),
+          playback: S.optional(S.NullOr(__S(449, __c56, 1))),
+          preview: S.optional(S.NullOr(S.String)),
+          publicDetails: S.optional(S.NullOr(__S(450, __c56, 2))),
+          readyToStream: S.optional(S.NullOr(S.Boolean)),
+          readyToStreamAt: S.optional(S.NullOr(S.String)),
+          requireSignedURLs: S.optional(S.NullOr(S.Boolean)),
+          scheduledDeletion: S.optional(S.NullOr(S.String)),
+          size: S.optional(S.NullOr(S.Number)),
+          status: S.optional(S.NullOr(__S(451, __c56, 3))),
+          thumbnail: S.optional(S.NullOr(S.String)),
+          thumbnailTimestampPct: S.optional(S.NullOr(S.Number)),
+          uid: S.optional(S.NullOr(S.String)),
+          uploaded: S.optional(S.NullOr(S.String)),
+          uploadExpiry: S.optional(S.NullOr(S.String)),
+          watermark: S.optional(S.NullOr(__S(440, __c55, 0))),
+        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({ identifier: "CreateClipResponse" });
+  }
+}
+function __c53(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          uid: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "ClipCreateRequestWatermark",
+      });
+  }
+}
+function __c54(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c55(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          created: S.optional(S.NullOr(S.String)),
+          downloadedFrom: S.optional(S.NullOr(S.String)),
+          height: S.optional(S.NullOr(S.Number)),
+          name: S.optional(S.NullOr(S.String)),
+          opacity: S.optional(S.NullOr(S.Number)),
+          padding: S.optional(S.NullOr(S.Number)),
+          position: S.optional(S.NullOr(S.String)),
+          scale: S.optional(S.NullOr(S.Number)),
+          size: S.optional(S.NullOr(S.Number)),
+          uid: S.optional(S.NullOr(S.String)),
+          width: S.optional(S.NullOr(S.Number)),
+        }),
+      ).annotate({
+        identifier: "ClipCreateResponseWatermark",
+      });
+  }
+}
+function __c56(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          height: S.optional(S.NullOr(S.Number)),
+          width: S.optional(S.NullOr(S.Number)),
+        }),
+      ).annotate({ identifier: "ClipCreateResponseInput" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          dash: S.optional(S.NullOr(S.String)),
+          hls: S.optional(S.NullOr(S.String)),
+        }),
+      ).annotate({
+        identifier: "ClipCreateResponsePlayback",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          channelLink: S.optional(S.NullOr(S.String).pipe(T.Body("channel_link"))),
+          logo: S.optional(S.NullOr(S.String)),
+          mediaId: S.optional(S.NullOr(S.Number).pipe(T.Body("media_id"))),
+          shareLink: S.optional(S.NullOr(S.String).pipe(T.Body("share_link"))),
+          title: S.optional(S.NullOr(S.String)),
+        }),
+      ).annotate({
+        identifier: "ClipCreateResponsePublicDetails",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          errorReasonCode: S.optional(S.NullOr(S.String)),
+          errorReasonText: S.optional(S.NullOr(S.String)),
+          pctComplete: S.optional(S.NullOr(S.String)),
+          state: S.optional(S.NullOr(S.String)),
+        }),
+      ).annotate({ identifier: "ClipCreateResponseStatus" });
+  }
+}
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

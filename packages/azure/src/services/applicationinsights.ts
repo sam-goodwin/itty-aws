@@ -388,7 +388,7 @@ export const DeleteWorkbook: API.OperationMethod<
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(0, __c0, 0) as any as S.Schema<DeleteWorkbookRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<DeleteWorkbookResponse>,
+  output: __S(8, __c1, 0) as any as S.Schema<DeleteWorkbookResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -402,8 +402,8 @@ export const GetWorkbook: API.OperationMethod<
   GetWorkbookError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2, __c0, 2) as any as S.Schema<GetWorkbookRequest>,
-  output: __S(10, __c1, 2) as any as S.Schema<GetWorkbookResponse>,
+  input: __S(16, __c2, 0) as any as S.Schema<GetWorkbookRequest>,
+  output: __S(32, __c4, 0) as any as S.Schema<GetWorkbookResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -417,8 +417,8 @@ export const GetWorkbooksRevision: API.OperationMethod<
   GetWorkbooksRevisionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(11, __c1, 3) as any as S.Schema<GetWorkbooksRevisionRequest>,
-  output: __S(12, __c1, 4) as any as S.Schema<GetWorkbooksRevisionResponse>,
+  input: __S(40, __c5, 0) as any as S.Schema<GetWorkbooksRevisionRequest>,
+  output: __S(48, __c6, 0) as any as S.Schema<GetWorkbooksRevisionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -432,8 +432,8 @@ export const ListWorkbookByResourceGroup: API.OperationMethod<
   ListWorkbookByResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(13, __c1, 5) as any as S.Schema<ListWorkbookByResourceGroupRequest>,
-  output: __S(15, __c1, 7) as any as S.Schema<WorkbooksListResult>,
+  input: __S(56, __c7, 0) as any as S.Schema<ListWorkbookByResourceGroupRequest>,
+  output: __S(65, __c8, 1) as any as S.Schema<WorkbooksListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -447,8 +447,8 @@ export const ListWorkbookBySubscription: API.OperationMethod<
   ListWorkbookBySubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(16, __c2, 0) as any as S.Schema<ListWorkbookBySubscriptionRequest>,
-  output: __S(15, __c1, 7) as any as S.Schema<WorkbooksListResult>,
+  input: __S(72, __c9, 0) as any as S.Schema<ListWorkbookBySubscriptionRequest>,
+  output: __S(65, __c8, 1) as any as S.Schema<WorkbooksListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -462,8 +462,8 @@ export const ListWorkbooksRevisions: API.OperationMethod<
   ListWorkbooksRevisionsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(17, __c2, 1) as any as S.Schema<ListWorkbooksRevisionsRequest>,
-  output: __S(15, __c1, 7) as any as S.Schema<WorkbooksListResult>,
+  input: __S(80, __c10, 0) as any as S.Schema<ListWorkbooksRevisionsRequest>,
+  output: __S(65, __c8, 1) as any as S.Schema<WorkbooksListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -477,8 +477,8 @@ export const UpdateWorkbook: API.OperationMethod<
   UpdateWorkbookError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(19, __c2, 3) as any as S.Schema<UpdateWorkbookRequest>,
-  output: __S(10, __c1, 2) as any as S.Schema<UpdateWorkbookResponse>,
+  input: __S(89, __c11, 1) as any as S.Schema<UpdateWorkbookRequest>,
+  output: __S(32, __c4, 0) as any as S.Schema<UpdateWorkbookResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -492,8 +492,8 @@ export const WorkbooksCreateOrUpdate: API.OperationMethod<
   WorkbooksCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(23, __c2, 7) as any as S.Schema<WorkbooksCreateOrUpdateRequest>,
-  output: __S(12, __c1, 4) as any as S.Schema<WorkbooksCreateOrUpdateResponse>,
+  input: __S(99, __c12, 3) as any as S.Schema<WorkbooksCreateOrUpdateRequest>,
+  output: __S(48, __c6, 0) as any as S.Schema<WorkbooksCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -517,11 +517,19 @@ function __c0(j: number): any {
           }),
         ),
       ).annotate({ identifier: "DeleteWorkbookRequest" });
-    case 1:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "DeleteWorkbookResponse",
       });
-    case 2:
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -537,7 +545,11 @@ function __c0(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetWorkbookRequest" });
-    case 3:
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           createdBy: S.optional(S.String),
@@ -548,11 +560,11 @@ function __c0(j: number): any {
           lastModifiedAt: S.optional(S.String),
         }),
       ).annotate({ identifier: "SystemData" });
-    case 4:
+    case 1:
       return S.Record(S.String, S.String);
-    case 5:
+    case 2:
       return S.Array(S.String);
-    case 6:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           displayName: S.String,
@@ -560,7 +572,7 @@ function __c0(j: number): any {
           version: S.optional(S.String),
           timeModified: S.optional(S.String),
           category: S.String,
-          tags: S.optional(__S(5, __c0, 5)),
+          tags: S.optional(__S(26, __c3, 2)),
           userId: S.optional(S.String),
           sourceId: S.optional(S.String),
           storageUri: S.optional(S.NullOr(S.String)),
@@ -568,44 +580,48 @@ function __c0(j: number): any {
           revision: S.optional(S.NullOr(S.String)),
         }),
       ).annotate({ identifier: "WorkbookProperties" });
-    case 7:
+    case 4:
       return S.suspend(() =>
         S.Struct({
           principalId: S.optional(S.String),
           clientId: S.optional(S.String),
         }),
       ).annotate({ identifier: "UserAssignedIdentity" });
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Record(S.String, /*@__PURE__*/ S.NullOr(__S(7, __c0, 7)));
-    case 1:
+    case 5:
+      return S.Record(S.String, /*@__PURE__*/ S.NullOr(__S(28, __c3, 4)));
+    case 6:
       return S.suspend(() =>
         S.Struct({
           principalId: S.optional(S.String),
           tenantId: S.optional(S.String),
           type: S.String,
-          userAssignedIdentities: S.optional(__S(8, __c1, 0)),
+          userAssignedIdentities: S.optional(__S(29, __c3, 5)),
         }),
       ).annotate({ identifier: "WorkbookResourceIdentity" });
-    case 2:
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(3, __c0, 3)),
-          tags: S.optional(__S(4, __c0, 4)),
+          systemData: S.optional(__S(24, __c3, 0)),
+          tags: S.optional(__S(25, __c3, 1)),
           location: S.String,
-          properties: S.optional(__S(6, __c0, 6)),
-          identity: S.optional(__S(9, __c1, 1)),
+          properties: S.optional(__S(27, __c3, 3)),
+          identity: S.optional(__S(30, __c3, 6)),
           kind: S.optional(S.String),
           etag: S.optional(S.String),
         }),
       ).annotate({ identifier: "GetWorkbookResponse" });
-    case 3:
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -623,30 +639,38 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "GetWorkbooksRevisionRequest",
       });
-    case 4:
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(3, __c0, 3)),
-          tags: S.optional(__S(4, __c0, 4)),
+          systemData: S.optional(__S(24, __c3, 0)),
+          tags: S.optional(__S(25, __c3, 1)),
           location: S.String,
-          properties: S.optional(__S(6, __c0, 6)),
-          identity: S.optional(__S(9, __c1, 1)),
+          properties: S.optional(__S(27, __c3, 3)),
+          identity: S.optional(__S(30, __c3, 6)),
           kind: S.optional(S.String),
           etag: S.optional(S.String),
         }),
       ).annotate({
         identifier: "GetWorkbooksRevisionResponse",
       });
-    case 5:
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           category: S.String.pipe(T.Query()),
-          tags: S.optional(__S(5, __c0, 5).pipe(T.Query())),
+          tags: S.optional(__S(26, __c3, 2).pipe(T.Query())),
           sourceId: S.optional(S.String.pipe(T.Query())),
           canFetchContent: S.optional(S.Boolean.pipe(T.Query())),
         }).pipe(
@@ -660,25 +684,29 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "ListWorkbookByResourceGroupRequest",
       });
-    case 6:
-      return S.Array(__S(10, __c1, 2));
-    case 7:
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(32, __c4, 0));
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(14, __c1, 6)),
+          value: S.optional(__S(64, __c8, 0)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "WorkbooksListResult" });
   }
 }
-function __c2(j: number): any {
+function __c9(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           category: S.String.pipe(T.Query()),
-          tags: S.optional(__S(5, __c0, 5).pipe(T.Query())),
+          tags: S.optional(__S(26, __c3, 2).pipe(T.Query())),
           canFetchContent: S.optional(S.Boolean.pipe(T.Query())),
         }).pipe(
           T.Http({
@@ -691,7 +719,11 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "ListWorkbookBySubscriptionRequest",
       });
-    case 1:
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -708,20 +740,24 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "ListWorkbooksRevisionsRequest",
       });
-    case 2:
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           displayName: S.optional(S.String),
           serializedData: S.optional(S.String),
           category: S.optional(S.String),
-          tags: S.optional(__S(5, __c0, 5)),
+          tags: S.optional(__S(26, __c3, 2)),
           description: S.optional(S.NullOr(S.String)),
           revision: S.optional(S.NullOr(S.String)),
         }),
       ).annotate({
         identifier: "WorkbookPropertiesUpdateParameters",
       });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -729,8 +765,8 @@ function __c2(j: number): any {
           resourceName: S.String.pipe(T.Label()),
           sourceId: S.optional(S.String.pipe(T.Query())),
           kind: S.optional(S.String),
-          tags: S.optional(__S(4, __c0, 4)),
-          properties: S.optional(__S(18, __c2, 2)),
+          tags: S.optional(__S(25, __c3, 1)),
+          properties: S.optional(__S(88, __c11, 0)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -740,41 +776,45 @@ function __c2(j: number): any {
           }),
         ),
       ).annotate({ identifier: "UpdateWorkbookRequest" });
-    case 4:
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           displayName: S.String,
           serializedData: S.NullOr(S.String),
           version: S.optional(S.String),
           category: S.String,
-          tags: S.optional(__S(5, __c0, 5)),
+          tags: S.optional(__S(26, __c3, 2)),
           sourceId: S.optional(S.String),
           storageUri: S.optional(S.NullOr(S.String)),
           description: S.optional(S.NullOr(S.String)),
         }),
       ).annotate({ identifier: "WorkbookPropertiesInput" });
-    case 5:
-      return S.Record(S.String, /*@__PURE__*/ S.NullOr(__S(1, __c0, 1)));
-    case 6:
+    case 1:
+      return S.Record(S.String, /*@__PURE__*/ S.NullOr(__S(8, __c1, 0)));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           type: S.String,
-          userAssignedIdentities: S.optional(__S(21, __c2, 5)),
+          userAssignedIdentities: S.optional(__S(97, __c12, 1)),
         }),
       ).annotate({
         identifier: "WorkbookResourceIdentityInput",
       });
-    case 7:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           resourceName: S.String.pipe(T.Label()),
           sourceId: S.optional(S.String.pipe(T.Query())),
-          tags: S.optional(__S(4, __c0, 4)),
+          tags: S.optional(__S(25, __c3, 1)),
           location: S.String,
-          properties: S.optional(__S(20, __c2, 4)),
-          identity: S.optional(__S(22, __c2, 6)),
+          properties: S.optional(__S(96, __c12, 0)),
+          identity: S.optional(__S(98, __c12, 2)),
           kind: S.optional(S.String),
           etag: S.optional(S.String),
         }).pipe(
@@ -790,7 +830,6 @@ function __c2(j: number): any {
       });
   }
 }
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

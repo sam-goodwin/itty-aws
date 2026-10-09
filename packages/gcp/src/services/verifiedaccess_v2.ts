@@ -283,8 +283,8 @@ export const verifyChallenge: API.OperationMethod<
   VerifyChallengeError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(4, __c0, 4) as any as S.Schema<VerifyChallengeRequest>,
-  output: __S(9, __c1, 1) as any as S.Schema<VerifyChallengeResponseResult>,
+  input: __S(9, __c1, 1) as any as S.Schema<VerifyChallengeRequest>,
+  output: __S(14, __c1, 6) as any as S.Schema<VerifyChallengeResponseResult>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -315,7 +315,11 @@ function __c0(j: number): any {
           challenge: S.optional(S.String),
         }),
       ).annotate({ identifier: "Challenge" });
-    case 3:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           expectedIdentity: S.optional(S.String),
@@ -324,10 +328,10 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "VerifyChallengeResponseRequest",
       });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          body: S.optional(__S(3, __c0, 3).pipe(T.HttpBody())),
+          body: S.optional(__S(8, __c1, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -336,49 +340,45 @@ function __c0(j: number): any {
           }),
         ),
       ).annotate({ identifier: "VerifyChallengeRequest" });
-    case 5:
+    case 2:
       return S.Array(S.String);
-    case 6:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           state: S.optional(S.String),
         }),
       ).annotate({ identifier: "Antivirus" });
-    case 7:
+    case 4:
       return S.suspend(() =>
         S.Struct({
           agentId: S.optional(S.String),
           customerId: S.optional(S.String),
         }),
       ).annotate({ identifier: "CrowdStrikeAgent" });
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
+    case 5:
       return S.suspend(() =>
         S.Struct({
-          profileAffiliationIds: S.optional(__S(5, __c0, 5)),
+          profileAffiliationIds: S.optional(__S(10, __c1, 2)),
           allowScreenLock: S.optional(S.Boolean),
           browserVersion: S.optional(S.String),
           displayName: S.optional(S.String),
           deviceModel: S.optional(S.String),
-          meid: S.optional(__S(5, __c0, 5)),
+          meid: S.optional(__S(10, __c1, 2)),
           hostname: S.optional(S.String),
           osFirewall: S.optional(S.String),
-          systemDnsServers: S.optional(__S(5, __c0, 5)),
+          systemDnsServers: S.optional(__S(10, __c1, 2)),
           siteIsolationEnabled: S.optional(S.Boolean),
           chromeRemoteDesktopAppBlocked: S.optional(S.Boolean),
           builtInDnsClientEnabled: S.optional(S.Boolean),
           safeBrowsingProtectionLevel: S.optional(S.String),
-          antivirus: S.optional(__S(6, __c0, 6)),
+          antivirus: S.optional(__S(11, __c1, 3)),
           trigger: S.optional(S.String),
-          imei: S.optional(__S(5, __c0, 5)),
+          imei: S.optional(__S(10, __c1, 2)),
           operatingSystem: S.optional(S.String),
           deviceEnrollmentDomain: S.optional(S.String),
-          deviceAffiliationIds: S.optional(__S(5, __c0, 5)),
-          macAddresses: S.optional(__S(5, __c0, 5)),
-          crowdStrikeAgent: S.optional(__S(7, __c0, 7)),
+          deviceAffiliationIds: S.optional(__S(10, __c1, 2)),
+          macAddresses: S.optional(__S(10, __c1, 2)),
+          crowdStrikeAgent: S.optional(__S(12, __c1, 4)),
           windowsUserDomain: S.optional(S.String),
           realtimeUrlCheckMode: S.optional(S.String),
           deviceManufacturer: S.optional(S.String),
@@ -393,7 +393,7 @@ function __c1(j: number): any {
           osVersion: S.optional(S.String),
         }),
       ).annotate({ identifier: "DeviceSignals" });
-    case 1:
+    case 6:
       return S.suspend(() =>
         S.Struct({
           virtualProfileId: S.optional(S.String),
@@ -406,7 +406,7 @@ function __c1(j: number): any {
           profileKeyTrustLevel: S.optional(S.String),
           customerId: S.optional(S.String),
           deviceSignal: S.optional(S.String),
-          deviceSignals: S.optional(__S(8, __c1, 0)),
+          deviceSignals: S.optional(__S(13, __c1, 5)),
           profilePermanentId: S.optional(S.String),
           keyTrustLevel: S.optional(S.String),
         }),
@@ -415,7 +415,6 @@ function __c1(j: number): any {
       });
   }
 }
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

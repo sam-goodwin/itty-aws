@@ -1076,8 +1076,8 @@ export const acceptDataGrant: API.OperationMethod<
   AcceptDataGrantError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(0, __c0, 0) as any as S.Schema<AcceptDataGrantRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<AcceptDataGrantResponse>,
+  input: __S(1440, __c45, 0) as any as S.Schema<AcceptDataGrantRequest>,
+  output: __S(1441, __c45, 1) as any as S.Schema<AcceptDataGrantResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1107,8 +1107,8 @@ export const cancelJob: API.OperationMethod<
   CancelJobError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2, __c0, 2) as any as S.Schema<CancelJobRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<CancelJobResponse>,
+  input: __S(1472, __c46, 0) as any as S.Schema<CancelJobRequest>,
+  output: __S(1504, __c47, 0) as any as S.Schema<CancelJobResponse>,
   errors: [
     ConflictException,
     InternalServerException,
@@ -1138,8 +1138,8 @@ export const createDataGrant: API.OperationMethod<
   CreateDataGrantError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(5, __c0, 5) as any as S.Schema<CreateDataGrantRequest>,
-  output: __S(6, __c0, 6) as any as S.Schema<CreateDataGrantResponse>,
+  input: __S(1536, __c48, 0) as any as S.Schema<CreateDataGrantRequest>,
+  output: __S(1600, __c50, 0) as any as S.Schema<CreateDataGrantResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1169,8 +1169,8 @@ export const createDataSet: API.OperationMethod<
   CreateDataSetError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(7, __c0, 7) as any as S.Schema<CreateDataSetRequest>,
-  output: __S(9, __c1, 1) as any as S.Schema<CreateDataSetResponse>,
+  input: __S(0, __c0, 0) as any as S.Schema<CreateDataSetRequest>,
+  output: __S(32, __c1, 0) as any as S.Schema<CreateDataSetResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1199,8 +1199,8 @@ export const createEventAction: API.OperationMethod<
   CreateEventActionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(16, __c2, 0) as any as S.Schema<CreateEventActionRequest>,
-  output: __S(17, __c2, 1) as any as S.Schema<CreateEventActionResponse>,
+  input: __S(96, __c3, 0) as any as S.Schema<CreateEventActionRequest>,
+  output: __S(97, __c3, 1) as any as S.Schema<CreateEventActionResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1230,8 +1230,8 @@ export const createJob: API.OperationMethod<
   CreateJobError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(46, __c5, 6) as any as S.Schema<CreateJobRequest>,
-  output: __S(56, __c7, 0) as any as S.Schema<CreateJobResponse>,
+  input: __S(197, __c6, 5) as any as S.Schema<CreateJobRequest>,
+  output: __S(288, __c9, 0) as any as S.Schema<CreateJobResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1261,8 +1261,8 @@ export const createRevision: API.OperationMethod<
   CreateRevisionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(57, __c7, 1) as any as S.Schema<CreateRevisionRequest>,
-  output: __S(58, __c7, 2) as any as S.Schema<CreateRevisionResponse>,
+  input: __S(352, __c11, 0) as any as S.Schema<CreateRevisionRequest>,
+  output: __S(384, __c12, 0) as any as S.Schema<CreateRevisionResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1292,8 +1292,8 @@ export const deleteAsset: API.OperationMethod<
   DeleteAssetError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(59, __c7, 3) as any as S.Schema<DeleteAssetRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<DeleteAssetResponse>,
+  input: __S(416, __c13, 0) as any as S.Schema<DeleteAssetRequest>,
+  output: __S(1504, __c47, 0) as any as S.Schema<DeleteAssetResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1323,8 +1323,8 @@ export const deleteDataGrant: API.OperationMethod<
   DeleteDataGrantError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(60, __c7, 4) as any as S.Schema<DeleteDataGrantRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<DeleteDataGrantResponse>,
+  input: __S(448, __c14, 0) as any as S.Schema<DeleteDataGrantRequest>,
+  output: __S(1504, __c47, 0) as any as S.Schema<DeleteDataGrantResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1354,8 +1354,8 @@ export const deleteDataSet: API.OperationMethod<
   DeleteDataSetError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(61, __c7, 5) as any as S.Schema<DeleteDataSetRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<DeleteDataSetResponse>,
+  input: __S(480, __c15, 0) as any as S.Schema<DeleteDataSetRequest>,
+  output: __S(1504, __c47, 0) as any as S.Schema<DeleteDataSetResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1384,8 +1384,8 @@ export const deleteEventAction: API.OperationMethod<
   DeleteEventActionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(62, __c7, 6) as any as S.Schema<DeleteEventActionRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<DeleteEventActionResponse>,
+  input: __S(512, __c16, 0) as any as S.Schema<DeleteEventActionRequest>,
+  output: __S(1504, __c47, 0) as any as S.Schema<DeleteEventActionResponse>,
   errors: [
     InternalServerException,
     ResourceNotFoundException,
@@ -1414,8 +1414,8 @@ export const deleteRevision: API.OperationMethod<
   DeleteRevisionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(63, __c7, 7) as any as S.Schema<DeleteRevisionRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<DeleteRevisionResponse>,
+  input: __S(544, __c17, 0) as any as S.Schema<DeleteRevisionRequest>,
+  output: __S(1504, __c47, 0) as any as S.Schema<DeleteRevisionResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1444,8 +1444,8 @@ export const getAsset: API.OperationMethod<
   GetAssetError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(64, __c8, 0) as any as S.Schema<GetAssetRequest>,
-  output: __S(75, __c9, 3) as any as S.Schema<GetAssetResponse>,
+  input: __S(576, __c18, 0) as any as S.Schema<GetAssetRequest>,
+  output: __S(577, __c18, 1) as any as S.Schema<GetAssetResponse>,
   errors: [
     InternalServerException,
     ResourceNotFoundException,
@@ -1473,8 +1473,8 @@ export const getDataGrant: API.OperationMethod<
   GetDataGrantError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(76, __c9, 4) as any as S.Schema<GetDataGrantRequest>,
-  output: __S(6, __c0, 6) as any as S.Schema<GetDataGrantResponse>,
+  input: __S(640, __c20, 0) as any as S.Schema<GetDataGrantRequest>,
+  output: __S(1600, __c50, 0) as any as S.Schema<GetDataGrantResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1502,8 +1502,8 @@ export const getDataSet: API.OperationMethod<
   GetDataSetError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(77, __c9, 5) as any as S.Schema<GetDataSetRequest>,
-  output: __S(9, __c1, 1) as any as S.Schema<GetDataSetResponse>,
+  input: __S(672, __c21, 0) as any as S.Schema<GetDataSetRequest>,
+  output: __S(32, __c1, 0) as any as S.Schema<GetDataSetResponse>,
   errors: [
     InternalServerException,
     ResourceNotFoundException,
@@ -1530,8 +1530,8 @@ export const getEventAction: API.OperationMethod<
   GetEventActionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(78, __c9, 6) as any as S.Schema<GetEventActionRequest>,
-  output: __S(79, __c9, 7) as any as S.Schema<GetEventActionResponse>,
+  input: __S(704, __c22, 0) as any as S.Schema<GetEventActionRequest>,
+  output: __S(705, __c22, 1) as any as S.Schema<GetEventActionResponse>,
   errors: [
     InternalServerException,
     ResourceNotFoundException,
@@ -1558,8 +1558,8 @@ export const getJob: API.OperationMethod<
   GetJobError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(80, __c10, 0) as any as S.Schema<GetJobRequest>,
-  output: __S(56, __c7, 0) as any as S.Schema<GetJobResponse>,
+  input: __S(736, __c23, 0) as any as S.Schema<GetJobRequest>,
+  output: __S(288, __c9, 0) as any as S.Schema<GetJobResponse>,
   errors: [
     InternalServerException,
     ResourceNotFoundException,
@@ -1587,8 +1587,8 @@ export const getReceivedDataGrant: API.OperationMethod<
   GetReceivedDataGrantError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(81, __c10, 1) as any as S.Schema<GetReceivedDataGrantRequest>,
-  output: __S(82, __c10, 2) as any as S.Schema<GetReceivedDataGrantResponse>,
+  input: __S(768, __c24, 0) as any as S.Schema<GetReceivedDataGrantRequest>,
+  output: __S(769, __c24, 1) as any as S.Schema<GetReceivedDataGrantResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1616,8 +1616,8 @@ export const getRevision: API.OperationMethod<
   GetRevisionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(83, __c10, 3) as any as S.Schema<GetRevisionRequest>,
-  output: __S(58, __c7, 2) as any as S.Schema<GetRevisionResponse>,
+  input: __S(800, __c25, 0) as any as S.Schema<GetRevisionRequest>,
+  output: __S(384, __c12, 0) as any as S.Schema<GetRevisionResponse>,
   errors: [
     InternalServerException,
     ResourceNotFoundException,
@@ -1646,8 +1646,8 @@ export const listDataGrants: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   DataGrantSummaryEntry
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(84, __c10, 4) as any as S.Schema<ListDataGrantsRequest>,
-  output: __S(87, __c10, 7) as any as S.Schema<ListDataGrantsResponse>,
+  input: __S(832, __c26, 0) as any as S.Schema<ListDataGrantsRequest>,
+  output: __S(835, __c26, 3) as any as S.Schema<ListDataGrantsResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1682,8 +1682,8 @@ export const listDataSetRevisions: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   RevisionEntry
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(88, __c11, 0) as any as S.Schema<ListDataSetRevisionsRequest>,
-  output: __S(91, __c11, 3) as any as S.Schema<ListDataSetRevisionsResponse>,
+  input: __S(864, __c27, 0) as any as S.Schema<ListDataSetRevisionsRequest>,
+  output: __S(867, __c27, 3) as any as S.Schema<ListDataSetRevisionsResponse>,
   errors: [
     InternalServerException,
     ResourceNotFoundException,
@@ -1717,8 +1717,8 @@ export const listDataSets: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   DataSetEntry
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(92, __c11, 4) as any as S.Schema<ListDataSetsRequest>,
-  output: __S(95, __c11, 7) as any as S.Schema<ListDataSetsResponse>,
+  input: __S(896, __c28, 0) as any as S.Schema<ListDataSetsRequest>,
+  output: __S(899, __c28, 3) as any as S.Schema<ListDataSetsResponse>,
   errors: [
     InternalServerException,
     ResourceNotFoundException,
@@ -1752,8 +1752,8 @@ export const listEventActions: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   EventActionEntry
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(96, __c12, 0) as any as S.Schema<ListEventActionsRequest>,
-  output: __S(99, __c12, 3) as any as S.Schema<ListEventActionsResponse>,
+  input: __S(928, __c29, 0) as any as S.Schema<ListEventActionsRequest>,
+  output: __S(931, __c29, 3) as any as S.Schema<ListEventActionsResponse>,
   errors: [
     InternalServerException,
     ResourceNotFoundException,
@@ -1787,8 +1787,8 @@ export const listJobs: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   JobEntry
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(100, __c12, 4) as any as S.Schema<ListJobsRequest>,
-  output: __S(103, __c12, 7) as any as S.Schema<ListJobsResponse>,
+  input: __S(960, __c30, 0) as any as S.Schema<ListJobsRequest>,
+  output: __S(963, __c30, 3) as any as S.Schema<ListJobsResponse>,
   errors: [
     InternalServerException,
     ResourceNotFoundException,
@@ -1823,8 +1823,8 @@ export const listReceivedDataGrants: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   ReceivedDataGrantSummariesEntry
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(104, __c13, 0) as any as S.Schema<ListReceivedDataGrantsRequest>,
-  output: __S(107, __c13, 3) as any as S.Schema<ListReceivedDataGrantsResponse>,
+  input: __S(992, __c31, 0) as any as S.Schema<ListReceivedDataGrantsRequest>,
+  output: __S(995, __c31, 3) as any as S.Schema<ListReceivedDataGrantsResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1859,8 +1859,8 @@ export const listRevisionAssets: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   AssetEntry
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(108, __c13, 4) as any as S.Schema<ListRevisionAssetsRequest>,
-  output: __S(111, __c13, 7) as any as S.Schema<ListRevisionAssetsResponse>,
+  input: __S(1024, __c32, 0) as any as S.Schema<ListRevisionAssetsRequest>,
+  output: __S(1027, __c32, 3) as any as S.Schema<ListRevisionAssetsResponse>,
   errors: [
     InternalServerException,
     ResourceNotFoundException,
@@ -1888,8 +1888,8 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(112, __c14, 0) as any as S.Schema<ListTagsForResourceRequest>,
-  output: __S(113, __c14, 1) as any as S.Schema<ListTagsForResourceResponse>,
+  input: __S(1056, __c33, 0) as any as S.Schema<ListTagsForResourceRequest>,
+  output: __S(1057, __c33, 1) as any as S.Schema<ListTagsForResourceResponse>,
   errors: [],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1913,8 +1913,8 @@ export const revokeRevision: API.OperationMethod<
   RevokeRevisionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(114, __c14, 2) as any as S.Schema<RevokeRevisionRequest>,
-  output: __S(115, __c14, 3) as any as S.Schema<RevokeRevisionResponse>,
+  input: __S(1088, __c34, 0) as any as S.Schema<RevokeRevisionRequest>,
+  output: __S(1120, __c35, 0) as any as S.Schema<RevokeRevisionResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1944,8 +1944,8 @@ export const sendApiAsset: API.OperationMethod<
   SendApiAssetError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(116, __c14, 4) as any as S.Schema<SendApiAssetRequest>,
-  output: __S(117, __c14, 5) as any as S.Schema<SendApiAssetResponse>,
+  input: __S(1152, __c36, 0) as any as S.Schema<SendApiAssetRequest>,
+  output: __S(1153, __c36, 1) as any as S.Schema<SendApiAssetResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1976,8 +1976,8 @@ export const sendDataSetNotification: API.OperationMethod<
   SendDataSetNotificationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(131, __c16, 3) as any as S.Schema<SendDataSetNotificationRequest>,
-  output: __S(132, __c16, 4) as any as S.Schema<SendDataSetNotificationResponse>,
+  input: __S(1197, __c37, 13) as any as S.Schema<SendDataSetNotificationRequest>,
+  output: __S(1198, __c37, 14) as any as S.Schema<SendDataSetNotificationResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -2008,8 +2008,8 @@ export const startJob: API.OperationMethod<
   StartJobError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(133, __c16, 5) as any as S.Schema<StartJobRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<StartJobResponse>,
+  input: __S(1216, __c38, 0) as any as S.Schema<StartJobRequest>,
+  output: __S(1504, __c47, 0) as any as S.Schema<StartJobResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -2033,8 +2033,8 @@ export const tagResource: API.OperationMethod<
   TagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(134, __c16, 6) as any as S.Schema<TagResourceRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<TagResourceResponse>,
+  input: __S(1248, __c39, 0) as any as S.Schema<TagResourceRequest>,
+  output: __S(1504, __c47, 0) as any as S.Schema<TagResourceResponse>,
   errors: [],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2051,8 +2051,8 @@ export const untagResource: API.OperationMethod<
   UntagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(135, __c16, 7) as any as S.Schema<UntagResourceRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<UntagResourceResponse>,
+  input: __S(1280, __c40, 0) as any as S.Schema<UntagResourceRequest>,
+  output: __S(1504, __c47, 0) as any as S.Schema<UntagResourceResponse>,
   errors: [],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2076,8 +2076,8 @@ export const updateAsset: API.OperationMethod<
   UpdateAssetError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(136, __c17, 0) as any as S.Schema<UpdateAssetRequest>,
-  output: __S(137, __c17, 1) as any as S.Schema<UpdateAssetResponse>,
+  input: __S(1312, __c41, 0) as any as S.Schema<UpdateAssetRequest>,
+  output: __S(1313, __c41, 1) as any as S.Schema<UpdateAssetResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -2107,8 +2107,8 @@ export const updateDataSet: API.OperationMethod<
   UpdateDataSetError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(138, __c17, 2) as any as S.Schema<UpdateDataSetRequest>,
-  output: __S(139, __c17, 3) as any as S.Schema<UpdateDataSetResponse>,
+  input: __S(1344, __c42, 0) as any as S.Schema<UpdateDataSetRequest>,
+  output: __S(1345, __c42, 1) as any as S.Schema<UpdateDataSetResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -2137,8 +2137,8 @@ export const updateEventAction: API.OperationMethod<
   UpdateEventActionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(140, __c17, 4) as any as S.Schema<UpdateEventActionRequest>,
-  output: __S(141, __c17, 5) as any as S.Schema<UpdateEventActionResponse>,
+  input: __S(1376, __c43, 0) as any as S.Schema<UpdateEventActionRequest>,
+  output: __S(1377, __c43, 1) as any as S.Schema<UpdateEventActionResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -2168,8 +2168,8 @@ export const updateRevision: API.OperationMethod<
   UpdateRevisionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(142, __c17, 6) as any as S.Schema<UpdateRevisionRequest>,
-  output: __S(115, __c14, 3) as any as S.Schema<UpdateRevisionResponse>,
+  input: __S(1408, __c44, 0) as any as S.Schema<UpdateRevisionRequest>,
+  output: __S(1120, __c35, 0) as any as S.Schema<UpdateRevisionResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -2188,95 +2188,11 @@ function __c0(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({ DataGrantArn: S.String.pipe(T.HttpLabel("DataGrantArn")) }).pipe(
-          T.all(
-            T.Http({ method: "POST", uri: "/v1/data-grants/{DataGrantArn}/accept" }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({ identifier: "AcceptDataGrantRequest" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          Name: S.String,
-          SenderPrincipal: S.optional(S.String),
-          ReceiverPrincipal: S.String,
-          Description: S.optional(S.String),
-          AcceptanceState: S.String,
-          AcceptedAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-          EndsAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-          GrantDistributionScope: S.String,
-          DataSetId: S.String,
-          Id: S.String,
-          Arn: S.String,
-          CreatedAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
-          UpdatedAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
-        }),
-      ).annotate({ identifier: "AcceptDataGrantResponse" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({ JobId: S.String.pipe(T.HttpLabel("JobId")) }).pipe(
-          T.all(
-            T.Http({ method: "DELETE", uri: "/v1/jobs/{JobId}" }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({ identifier: "CancelJobRequest" });
-    case 3:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "CancelJobResponse",
-      });
-    case 4:
-      return S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          Name: S.String,
-          GrantDistributionScope: S.String,
-          ReceiverPrincipal: S.String,
-          SourceDataSetId: S.String,
-          EndsAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-          Description: S.optional(S.String),
-          Tags: S.optional(__S(4, __c0, 4)),
-        }).pipe(
-          T.all(T.Http({ method: "POST", uri: "/v1/data-grants" }), svc, auth, proto, ver, rules),
-        ),
-      ).annotate({ identifier: "CreateDataGrantRequest" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          Name: S.String,
-          SenderPrincipal: S.String,
-          ReceiverPrincipal: S.String,
-          Description: S.optional(S.String),
-          AcceptanceState: S.String,
-          AcceptedAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-          EndsAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-          GrantDistributionScope: S.String,
-          DataSetId: S.String,
-          SourceDataSetId: S.String,
-          Id: S.String,
-          Arn: S.String,
-          CreatedAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
-          UpdatedAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
-          Tags: S.optional(__S(4, __c0, 4)),
-        }),
-      ).annotate({ identifier: "CreateDataGrantResponse" });
-    case 7:
-      return S.suspend(() =>
         S.Struct({
           AssetType: S.String,
           Description: S.String,
           Name: S.String,
-          Tags: S.optional(__S(4, __c0, 4)),
+          Tags: S.optional(__S(1568, __c49, 0)),
         }).pipe(
           T.all(T.Http({ method: "POST", uri: "/v1/data-sets" }), svc, auth, proto, ver, rules),
         ),
@@ -2287,10 +2203,6 @@ function __c1(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({ ProductId: S.optional(S.String), DataGrantId: S.optional(S.String) }),
-      ).annotate({ identifier: "OriginDetails" });
-    case 1:
-      return S.suspend(() =>
         S.Struct({
           Arn: S.optional(S.String),
           AssetType: S.optional(S.String),
@@ -2299,95 +2211,20 @@ function __c1(j: number): any {
           Id: S.optional(S.String),
           Name: S.optional(S.String),
           Origin: S.optional(S.String),
-          OriginDetails: S.optional(__S(8, __c1, 0)),
+          OriginDetails: S.optional(__S(64, __c2, 0)),
           SourceId: S.optional(S.String),
-          Tags: S.optional(__S(4, __c0, 4)),
+          Tags: S.optional(__S(1568, __c49, 0)),
           UpdatedAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
         }),
       ).annotate({ identifier: "CreateDataSetResponse" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({ KmsKeyArn: S.optional(S.String), Type: S.String }),
-      ).annotate({
-        identifier: "ExportServerSideEncryption",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({ Bucket: S.String, KeyPattern: S.optional(S.String) }),
-      ).annotate({
-        identifier: "AutoExportRevisionDestinationEntry",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          Encryption: S.optional(__S(10, __c1, 2)),
-          RevisionDestination: __S(11, __c1, 3),
-        }),
-      ).annotate({
-        identifier: "AutoExportRevisionToS3RequestDetails",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({ ExportRevisionToS3: S.optional(__S(12, __c1, 4)) }),
-      ).annotate({ identifier: "Action" });
-    case 6:
-      return S.suspend(() => S.Struct({ DataSetId: S.String })).annotate({
-        identifier: "RevisionPublished",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({ RevisionPublished: S.optional(__S(14, __c1, 6)) }),
-      ).annotate({ identifier: "Event" });
   }
 }
 function __c2(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({
-          Action: __S(13, __c1, 5),
-          Event: __S(15, __c1, 7),
-          Tags: S.optional(__S(4, __c0, 4)),
-        }).pipe(
-          T.all(T.Http({ method: "POST", uri: "/v1/event-actions" }), svc, auth, proto, ver, rules),
-        ),
-      ).annotate({ identifier: "CreateEventActionRequest" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          Action: S.optional(__S(13, __c1, 5)),
-          Arn: S.optional(S.String),
-          CreatedAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-          Event: S.optional(__S(15, __c1, 7)),
-          Id: S.optional(S.String),
-          Tags: S.optional(__S(4, __c0, 4)),
-          UpdatedAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-        }),
-      ).annotate({
-        identifier: "CreateEventActionResponse",
-      });
-    case 2:
-      return S.suspend(() => S.Struct({ Key: S.String, Value: S.String })).annotate({
-        identifier: "Tag",
-      });
-    case 3:
-      return S.Array(__S(18, __c2, 2));
-    case 4:
-      return S.suspend(() => S.Struct({ Tags: S.optional(__S(19, __c2, 3)) })).annotate({
-        identifier: "AssetConfiguration",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({ AssetId: S.String, DataSetId: S.String, RevisionId: S.String }),
-      ).annotate({
-        identifier: "ExportAssetToSignedUrlRequestDetails",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({ AssetId: S.String, Bucket: S.String, Key: S.optional(S.String) }),
-      ).annotate({ identifier: "AssetDestinationEntry" });
-    case 7:
-      return S.Array(__S(22, __c2, 6));
+        S.Struct({ ProductId: S.optional(S.String), DataGrantId: S.optional(S.String) }),
+      ).annotate({ identifier: "OriginDetails" });
   }
 }
 function __c3(j: number): any {
@@ -2395,31 +2232,89 @@ function __c3(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          AssetDestinations: __S(23, __c2, 7),
-          DataSetId: S.String,
-          Encryption: S.optional(__S(10, __c1, 2)),
-          RevisionId: S.String,
+          Action: __S(162, __c5, 2),
+          Event: __S(164, __c5, 4),
+          Tags: S.optional(__S(1568, __c49, 0)),
+        }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/v1/event-actions" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "CreateEventActionRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          Action: S.optional(__S(162, __c5, 2)),
+          Arn: S.optional(S.String),
+          CreatedAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
+          Event: S.optional(__S(164, __c5, 4)),
+          Id: S.optional(S.String),
+          Tags: S.optional(__S(1568, __c49, 0)),
+          UpdatedAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
         }),
       ).annotate({
-        identifier: "ExportAssetsToS3RequestDetails",
+        identifier: "CreateEventActionResponse",
+      });
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ KmsKeyArn: S.optional(S.String), Type: S.String }),
+      ).annotate({
+        identifier: "ExportServerSideEncryption",
+      });
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ Bucket: S.String, KeyPattern: S.optional(S.String) }),
+      ).annotate({
+        identifier: "AutoExportRevisionDestinationEntry",
       });
     case 1:
       return S.suspend(() =>
-        S.Struct({ Bucket: S.String, KeyPattern: S.optional(S.String), RevisionId: S.String }),
-      ).annotate({ identifier: "RevisionDestinationEntry" });
+        S.Struct({
+          Encryption: S.optional(__S(128, __c4, 0)),
+          RevisionDestination: __S(160, __c5, 0),
+        }),
+      ).annotate({
+        identifier: "AutoExportRevisionToS3RequestDetails",
+      });
     case 2:
-      return S.Array(__S(25, __c3, 1));
+      return S.suspend(() =>
+        S.Struct({ ExportRevisionToS3: S.optional(__S(161, __c5, 1)) }),
+      ).annotate({ identifier: "Action" });
     case 3:
+      return S.suspend(() => S.Struct({ DataSetId: S.String })).annotate({
+        identifier: "RevisionPublished",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({ RevisionPublished: S.optional(__S(163, __c5, 3)) }),
+      ).annotate({ identifier: "Event" });
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ AssetId: S.String, DataSetId: S.String, RevisionId: S.String }),
+      ).annotate({
+        identifier: "ExportAssetToSignedUrlRequestDetails",
+      });
+    case 1:
       return S.suspend(() =>
         S.Struct({
           DataSetId: S.String,
-          Encryption: S.optional(__S(10, __c1, 2)),
-          RevisionDestinations: __S(26, __c3, 2),
+          Encryption: S.optional(__S(128, __c4, 0)),
+          RevisionDestinations: __S(327, __c10, 7),
         }),
       ).annotate({
         identifier: "ExportRevisionsToS3RequestDetails",
       });
-    case 4:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           AssetName: S.String,
@@ -2429,42 +2324,6 @@ function __c3(j: number): any {
         }),
       ).annotate({
         identifier: "ImportAssetFromSignedUrlRequestDetails",
-      });
-    case 5:
-      return S.suspend(() => S.Struct({ Bucket: S.String, Key: S.String })).annotate({
-        identifier: "AssetSourceEntry",
-      });
-    case 6:
-      return S.Array(__S(29, __c3, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          AssetSources: __S(30, __c3, 6),
-          DataSetId: S.String,
-          RevisionId: S.String,
-        }),
-      ).annotate({
-        identifier: "ImportAssetsFromS3RequestDetails",
-      });
-  }
-}
-function __c4(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() => S.Struct({ DataShareArn: S.String })).annotate({
-        identifier: "RedshiftDataShareAssetSourceEntry",
-      });
-    case 1:
-      return S.Array(__S(32, __c4, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          AssetSources: __S(33, __c4, 1),
-          DataSetId: S.String,
-          RevisionId: S.String,
-        }),
-      ).annotate({
-        identifier: "ImportAssetsFromRedshiftDataSharesRequestDetails",
       });
     case 3:
       return S.suspend(() =>
@@ -2483,56 +2342,165 @@ function __c4(j: number): any {
         identifier: "ImportAssetFromApiGatewayApiRequestDetails",
       });
     case 4:
-      return S.Array(S.String);
+      return S.suspend(() =>
+        S.Struct({
+          ExportAssetToSignedUrl: S.optional(__S(192, __c6, 0)),
+          ExportAssetsToS3: S.optional(__S(325, __c10, 5)),
+          ExportRevisionsToS3: S.optional(__S(193, __c6, 1)),
+          ImportAssetFromSignedUrl: S.optional(__S(194, __c6, 2)),
+          ImportAssetsFromS3: S.optional(__S(330, __c10, 10)),
+          ImportAssetsFromRedshiftDataShares: S.optional(__S(333, __c10, 13)),
+          ImportAssetFromApiGatewayApi: S.optional(__S(195, __c6, 3)),
+          CreateS3DataAccessFromS3Bucket: S.optional(__S(335, __c10, 15)),
+          ImportAssetsFromLakeFormationTagPolicy: S.optional(__S(337, __c10, 17)),
+        }),
+      ).annotate({ identifier: "RequestDetails" });
     case 5:
+      return S.suspend(() =>
+        S.Struct({
+          AssetConfiguration: S.optional(__S(322, __c10, 2)),
+          Details: __S(196, __c6, 4),
+          Type: S.String,
+        }).pipe(T.all(T.Http({ method: "POST", uri: "/v1/jobs" }), svc, auth, proto, ver, rules)),
+      ).annotate({ identifier: "CreateJobRequest" });
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() => S.Struct({ KmsKeyArn: S.String })).annotate({
         identifier: "KmsKeyToGrant",
       });
-    case 6:
-      return S.Array(__S(37, __c4, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          Bucket: S.String,
-          KeyPrefixes: S.optional(__S(36, __c4, 4)),
-          Keys: S.optional(__S(36, __c4, 4)),
-          KmsKeysToGrant: S.optional(__S(38, __c4, 6)),
-        }),
-      ).annotate({
-        identifier: "S3DataAccessAssetSourceEntry",
-      });
+    case 1:
+      return S.Array(__S(256, __c8, 0));
+    case 2:
+      return S.suspend(() => S.Struct({ TagKey: S.String, TagValues: __S(224, __c7, 0) })).annotate(
+        { identifier: "LFTag" },
+      );
+    case 3:
+      return S.Array(__S(258, __c8, 2));
   }
 }
-function __c5(j: number): any {
+function __c9(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          AssetSource: __S(39, __c4, 7),
+          Arn: S.optional(S.String),
+          AssetConfiguration: S.optional(__S(322, __c10, 2)),
+          CreatedAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
+          Details: S.optional(__S(342, __c10, 22)),
+          Errors: S.optional(__S(346, __c10, 26)),
+          Id: S.optional(S.String),
+          State: S.optional(S.String),
+          Type: S.optional(S.String),
+          UpdatedAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
+        }),
+      ).annotate({ identifier: "CreateJobResponse" });
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({ Key: S.String, Value: S.String })).annotate({
+        identifier: "Tag",
+      });
+    case 1:
+      return S.Array(__S(320, __c10, 0));
+    case 2:
+      return S.suspend(() => S.Struct({ Tags: S.optional(__S(321, __c10, 1)) })).annotate({
+        identifier: "AssetConfiguration",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({ AssetId: S.String, Bucket: S.String, Key: S.optional(S.String) }),
+      ).annotate({ identifier: "AssetDestinationEntry" });
+    case 4:
+      return S.Array(__S(323, __c10, 3));
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          AssetDestinations: __S(324, __c10, 4),
+          DataSetId: S.String,
+          Encryption: S.optional(__S(128, __c4, 0)),
+          RevisionId: S.String,
+        }),
+      ).annotate({
+        identifier: "ExportAssetsToS3RequestDetails",
+      });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({ Bucket: S.String, KeyPattern: S.optional(S.String), RevisionId: S.String }),
+      ).annotate({ identifier: "RevisionDestinationEntry" });
+    case 7:
+      return S.Array(__S(326, __c10, 6));
+    case 8:
+      return S.suspend(() => S.Struct({ Bucket: S.String, Key: S.String })).annotate({
+        identifier: "AssetSourceEntry",
+      });
+    case 9:
+      return S.Array(__S(328, __c10, 8));
+    case 10:
+      return S.suspend(() =>
+        S.Struct({ AssetSources: __S(329, __c10, 9), DataSetId: S.String, RevisionId: S.String }),
+      ).annotate({
+        identifier: "ImportAssetsFromS3RequestDetails",
+      });
+    case 11:
+      return S.suspend(() => S.Struct({ DataShareArn: S.String })).annotate({
+        identifier: "RedshiftDataShareAssetSourceEntry",
+      });
+    case 12:
+      return S.Array(__S(331, __c10, 11));
+    case 13:
+      return S.suspend(() =>
+        S.Struct({
+          AssetSources: __S(332, __c10, 12),
+          DataSetId: S.String,
+          RevisionId: S.String,
+        }),
+      ).annotate({
+        identifier: "ImportAssetsFromRedshiftDataSharesRequestDetails",
+      });
+    case 14:
+      return S.suspend(() =>
+        S.Struct({
+          Bucket: S.String,
+          KeyPrefixes: S.optional(__S(224, __c7, 0)),
+          Keys: S.optional(__S(224, __c7, 0)),
+          KmsKeysToGrant: S.optional(__S(257, __c8, 1)),
+        }),
+      ).annotate({
+        identifier: "S3DataAccessAssetSourceEntry",
+      });
+    case 15:
+      return S.suspend(() =>
+        S.Struct({
+          AssetSource: __S(334, __c10, 14),
           DataSetId: S.String,
           RevisionId: S.String,
         }),
       ).annotate({
         identifier: "CreateS3DataAccessFromS3BucketRequestDetails",
       });
-    case 1:
-      return S.suspend(() => S.Struct({ TagKey: S.String, TagValues: __S(36, __c4, 4) })).annotate({
-        identifier: "LFTag",
-      });
-    case 2:
-      return S.Array(__S(41, __c5, 1));
-    case 3:
+    case 16:
       return S.suspend(() =>
-        S.Struct({ Expression: __S(42, __c5, 2), Permissions: __S(36, __c4, 4) }),
+        S.Struct({ Expression: __S(259, __c8, 3), Permissions: __S(224, __c7, 0) }),
       ).annotate({
         identifier: "DatabaseLFTagPolicyAndPermissions",
       });
-    case 4:
+    case 17:
       return S.suspend(() =>
         S.Struct({
           CatalogId: S.String,
-          Database: S.optional(__S(43, __c5, 3)),
-          Table: S.optional(__S(43, __c5, 3)),
+          Database: S.optional(__S(336, __c10, 16)),
+          Table: S.optional(__S(336, __c10, 16)),
           RoleArn: S.String,
           DataSetId: S.String,
           RevisionId: S.String,
@@ -2540,29 +2508,7 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "ImportAssetsFromLakeFormationTagPolicyRequestDetails",
       });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          ExportAssetToSignedUrl: S.optional(__S(21, __c2, 5)),
-          ExportAssetsToS3: S.optional(__S(24, __c3, 0)),
-          ExportRevisionsToS3: S.optional(__S(27, __c3, 3)),
-          ImportAssetFromSignedUrl: S.optional(__S(28, __c3, 4)),
-          ImportAssetsFromS3: S.optional(__S(31, __c3, 7)),
-          ImportAssetsFromRedshiftDataShares: S.optional(__S(34, __c4, 2)),
-          ImportAssetFromApiGatewayApi: S.optional(__S(35, __c4, 3)),
-          CreateS3DataAccessFromS3Bucket: S.optional(__S(40, __c5, 0)),
-          ImportAssetsFromLakeFormationTagPolicy: S.optional(__S(44, __c5, 4)),
-        }),
-      ).annotate({ identifier: "RequestDetails" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          AssetConfiguration: S.optional(__S(20, __c2, 4)),
-          Details: __S(45, __c5, 5),
-          Type: S.String,
-        }).pipe(T.all(T.Http({ method: "POST", uri: "/v1/jobs" }), svc, auth, proto, ver, rules)),
-      ).annotate({ identifier: "CreateJobRequest" });
-    case 7:
+    case 18:
       return S.suspend(() =>
         S.Struct({
           AssetId: S.String,
@@ -2574,22 +2520,18 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "ExportAssetToSignedUrlResponseDetails",
       });
-  }
-}
-function __c6(j: number): any {
-  switch (j) {
-    case 0:
+    case 19:
       return S.suspend(() =>
         S.Struct({
           DataSetId: S.String,
-          Encryption: S.optional(__S(10, __c1, 2)),
-          RevisionDestinations: __S(26, __c3, 2),
+          Encryption: S.optional(__S(128, __c4, 0)),
+          RevisionDestinations: __S(327, __c10, 7),
           EventActionArn: S.optional(S.String),
         }),
       ).annotate({
         identifier: "ExportRevisionsToS3ResponseDetails",
       });
-    case 1:
+    case 20:
       return S.suspend(() =>
         S.Struct({
           AssetName: S.String,
@@ -2602,7 +2544,7 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "ImportAssetFromSignedUrlResponseDetails",
       });
-    case 2:
+    case 21:
       return S.suspend(() =>
         S.Struct({
           ApiDescription: S.optional(S.String),
@@ -2620,36 +2562,36 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "ImportAssetFromApiGatewayApiResponseDetails",
       });
-    case 3:
+    case 22:
       return S.suspend(() =>
         S.Struct({
-          ExportAssetToSignedUrl: S.optional(__S(47, __c5, 7)),
-          ExportAssetsToS3: S.optional(__S(24, __c3, 0)),
-          ExportRevisionsToS3: S.optional(__S(48, __c6, 0)),
-          ImportAssetFromSignedUrl: S.optional(__S(49, __c6, 1)),
-          ImportAssetsFromS3: S.optional(__S(31, __c3, 7)),
-          ImportAssetsFromRedshiftDataShares: S.optional(__S(34, __c4, 2)),
-          ImportAssetFromApiGatewayApi: S.optional(__S(50, __c6, 2)),
-          CreateS3DataAccessFromS3Bucket: S.optional(__S(40, __c5, 0)),
-          ImportAssetsFromLakeFormationTagPolicy: S.optional(__S(44, __c5, 4)),
+          ExportAssetToSignedUrl: S.optional(__S(338, __c10, 18)),
+          ExportAssetsToS3: S.optional(__S(325, __c10, 5)),
+          ExportRevisionsToS3: S.optional(__S(339, __c10, 19)),
+          ImportAssetFromSignedUrl: S.optional(__S(340, __c10, 20)),
+          ImportAssetsFromS3: S.optional(__S(330, __c10, 10)),
+          ImportAssetsFromRedshiftDataShares: S.optional(__S(333, __c10, 13)),
+          ImportAssetFromApiGatewayApi: S.optional(__S(341, __c10, 21)),
+          CreateS3DataAccessFromS3Bucket: S.optional(__S(335, __c10, 15)),
+          ImportAssetsFromLakeFormationTagPolicy: S.optional(__S(337, __c10, 17)),
         }),
       ).annotate({ identifier: "ResponseDetails" });
-    case 4:
+    case 23:
       return S.suspend(() => S.Struct({ AssetName: S.String })).annotate({
         identifier: "ImportAssetFromSignedUrlJobErrorDetails",
       });
-    case 5:
+    case 24:
       return S.suspend(() =>
         S.Struct({
-          ImportAssetFromSignedUrlJobErrorDetails: S.optional(__S(52, __c6, 4)),
-          ImportAssetsFromS3JobErrorDetails: S.optional(__S(30, __c3, 6)),
+          ImportAssetFromSignedUrlJobErrorDetails: S.optional(__S(343, __c10, 23)),
+          ImportAssetsFromS3JobErrorDetails: S.optional(__S(329, __c10, 9)),
         }),
       ).annotate({ identifier: "Details" });
-    case 6:
+    case 25:
       return S.suspend(() =>
         S.Struct({
           Code: S.String,
-          Details: S.optional(__S(53, __c6, 5)),
+          Details: S.optional(__S(344, __c10, 24)),
           LimitName: S.optional(S.String),
           LimitValue: S.optional(S.Number),
           Message: S.String,
@@ -2657,32 +2599,18 @@ function __c6(j: number): any {
           ResourceType: S.optional(S.String),
         }),
       ).annotate({ identifier: "JobError" });
-    case 7:
-      return S.Array(__S(54, __c6, 6));
+    case 26:
+      return S.Array(__S(345, __c10, 25));
   }
 }
-function __c7(j: number): any {
+function __c11(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          Arn: S.optional(S.String),
-          AssetConfiguration: S.optional(__S(20, __c2, 4)),
-          CreatedAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-          Details: S.optional(__S(51, __c6, 3)),
-          Errors: S.optional(__S(55, __c6, 7)),
-          Id: S.optional(S.String),
-          State: S.optional(S.String),
-          Type: S.optional(S.String),
-          UpdatedAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-        }),
-      ).annotate({ identifier: "CreateJobResponse" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
           Comment: S.optional(S.String),
           DataSetId: S.String.pipe(T.HttpLabel("DataSetId")),
-          Tags: S.optional(__S(4, __c0, 4)),
+          Tags: S.optional(__S(1568, __c49, 0)),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/v1/data-sets/{DataSetId}/revisions" }),
@@ -2694,7 +2622,11 @@ function __c7(j: number): any {
           ),
         ),
       ).annotate({ identifier: "CreateRevisionRequest" });
-    case 2:
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           Arn: S.optional(S.String),
@@ -2704,14 +2636,18 @@ function __c7(j: number): any {
           Finalized: S.optional(S.Boolean),
           Id: S.optional(S.String),
           SourceId: S.optional(S.String),
-          Tags: S.optional(__S(4, __c0, 4)),
+          Tags: S.optional(__S(1568, __c49, 0)),
           UpdatedAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
           RevocationComment: S.optional(S.String),
           Revoked: S.optional(S.Boolean),
           RevokedAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
         }),
       ).annotate({ identifier: "CreateRevisionResponse" });
-    case 3:
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           AssetId: S.String.pipe(T.HttpLabel("AssetId")),
@@ -2731,7 +2667,11 @@ function __c7(j: number): any {
           ),
         ),
       ).annotate({ identifier: "DeleteAssetRequest" });
-    case 4:
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ DataGrantId: S.String.pipe(T.HttpLabel("DataGrantId")) }).pipe(
           T.all(
@@ -2744,7 +2684,11 @@ function __c7(j: number): any {
           ),
         ),
       ).annotate({ identifier: "DeleteDataGrantRequest" });
-    case 5:
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ DataSetId: S.String.pipe(T.HttpLabel("DataSetId")) }).pipe(
           T.all(
@@ -2757,7 +2701,11 @@ function __c7(j: number): any {
           ),
         ),
       ).annotate({ identifier: "DeleteDataSetRequest" });
-    case 6:
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ EventActionId: S.String.pipe(T.HttpLabel("EventActionId")) }).pipe(
           T.all(
@@ -2770,7 +2718,11 @@ function __c7(j: number): any {
           ),
         ),
       ).annotate({ identifier: "DeleteEventActionRequest" });
-    case 7:
+  }
+}
+function __c17(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           DataSetId: S.String.pipe(T.HttpLabel("DataSetId")),
@@ -2788,7 +2740,7 @@ function __c7(j: number): any {
       ).annotate({ identifier: "DeleteRevisionRequest" });
   }
 }
-function __c8(j: number): any {
+function __c18(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2811,14 +2763,34 @@ function __c8(j: number): any {
         ),
       ).annotate({ identifier: "GetAssetRequest" });
     case 1:
+      return S.suspend(() =>
+        S.Struct({
+          Arn: S.optional(S.String),
+          AssetDetails: S.optional(__S(617, __c19, 9)),
+          AssetType: S.optional(S.String),
+          CreatedAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
+          DataSetId: S.optional(S.String),
+          Id: S.optional(S.String),
+          Name: S.optional(S.String),
+          RevisionId: S.optional(S.String),
+          SourceId: S.optional(S.String),
+          Tags: S.optional(__S(1568, __c49, 0)),
+          UpdatedAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
+        }),
+      ).annotate({ identifier: "GetAssetResponse" });
+  }
+}
+function __c19(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() => S.Struct({ Size: S.Number })).annotate({
         identifier: "S3SnapshotAsset",
       });
-    case 2:
+    case 1:
       return S.suspend(() => S.Struct({ Arn: S.String })).annotate({
         identifier: "RedshiftDataShareAsset",
       });
-    case 3:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           ApiDescription: S.optional(S.String),
@@ -2834,82 +2806,66 @@ function __c8(j: number): any {
           Stage: S.optional(S.String),
         }),
       ).annotate({ identifier: "ApiGatewayApiAsset" });
-    case 4:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           Bucket: S.String,
-          KeyPrefixes: S.optional(__S(36, __c4, 4)),
-          Keys: S.optional(__S(36, __c4, 4)),
+          KeyPrefixes: S.optional(__S(224, __c7, 0)),
+          Keys: S.optional(__S(224, __c7, 0)),
           S3AccessPointAlias: S.optional(S.String),
           S3AccessPointArn: S.optional(S.String),
-          KmsKeysToGrant: S.optional(__S(38, __c4, 6)),
+          KmsKeysToGrant: S.optional(__S(257, __c8, 1)),
         }),
       ).annotate({ identifier: "S3DataAccessAsset" });
-    case 5:
-      return S.suspend(() => S.Struct({ Expression: __S(42, __c5, 2) })).annotate({
+    case 4:
+      return S.suspend(() => S.Struct({ Expression: __S(259, __c8, 3) })).annotate({
         identifier: "DatabaseLFTagPolicy",
       });
-    case 6:
+    case 5:
       return S.suspend(() =>
         S.Struct({
-          Database: S.optional(__S(69, __c8, 5)),
-          Table: S.optional(__S(69, __c8, 5)),
+          Database: S.optional(__S(612, __c19, 4)),
+          Table: S.optional(__S(612, __c19, 4)),
         }),
       ).annotate({ identifier: "LFResourceDetails" });
-    case 7:
+    case 6:
       return S.suspend(() =>
         S.Struct({
           CatalogId: S.String,
           ResourceType: S.String,
-          ResourceDetails: __S(70, __c8, 6),
+          ResourceDetails: __S(613, __c19, 5),
         }),
       ).annotate({ identifier: "LFTagPolicyDetails" });
-  }
-}
-function __c9(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() => S.Struct({ LFTagPolicy: S.optional(__S(71, __c8, 7)) })).annotate({
+    case 7:
+      return S.suspend(() => S.Struct({ LFTagPolicy: S.optional(__S(614, __c19, 6)) })).annotate({
         identifier: "LakeFormationDataPermissionDetails",
       });
-    case 1:
+    case 8:
       return S.suspend(() =>
         S.Struct({
-          LakeFormationDataPermissionDetails: __S(72, __c9, 0),
+          LakeFormationDataPermissionDetails: __S(615, __c19, 7),
           LakeFormationDataPermissionType: S.String,
-          Permissions: __S(36, __c4, 4),
+          Permissions: __S(224, __c7, 0),
           RoleArn: S.optional(S.String),
         }),
       ).annotate({
         identifier: "LakeFormationDataPermissionAsset",
       });
-    case 2:
+    case 9:
       return S.suspend(() =>
         S.Struct({
-          S3SnapshotAsset: S.optional(__S(65, __c8, 1)),
-          RedshiftDataShareAsset: S.optional(__S(66, __c8, 2)),
-          ApiGatewayApiAsset: S.optional(__S(67, __c8, 3)),
-          S3DataAccessAsset: S.optional(__S(68, __c8, 4)),
-          LakeFormationDataPermissionAsset: S.optional(__S(73, __c9, 1)),
+          S3SnapshotAsset: S.optional(__S(608, __c19, 0)),
+          RedshiftDataShareAsset: S.optional(__S(609, __c19, 1)),
+          ApiGatewayApiAsset: S.optional(__S(610, __c19, 2)),
+          S3DataAccessAsset: S.optional(__S(611, __c19, 3)),
+          LakeFormationDataPermissionAsset: S.optional(__S(616, __c19, 8)),
         }),
       ).annotate({ identifier: "AssetDetails" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          Arn: S.optional(S.String),
-          AssetDetails: S.optional(__S(74, __c9, 2)),
-          AssetType: S.optional(S.String),
-          CreatedAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-          DataSetId: S.optional(S.String),
-          Id: S.optional(S.String),
-          Name: S.optional(S.String),
-          RevisionId: S.optional(S.String),
-          SourceId: S.optional(S.String),
-          Tags: S.optional(__S(4, __c0, 4)),
-          UpdatedAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-        }),
-      ).annotate({ identifier: "GetAssetResponse" });
-    case 4:
+  }
+}
+function __c20(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ DataGrantId: S.String.pipe(T.HttpLabel("DataGrantId")) }).pipe(
           T.all(
@@ -2922,7 +2878,11 @@ function __c9(j: number): any {
           ),
         ),
       ).annotate({ identifier: "GetDataGrantRequest" });
-    case 5:
+  }
+}
+function __c21(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ DataSetId: S.String.pipe(T.HttpLabel("DataSetId")) }).pipe(
           T.all(
@@ -2935,7 +2895,11 @@ function __c9(j: number): any {
           ),
         ),
       ).annotate({ identifier: "GetDataSetRequest" });
-    case 6:
+  }
+}
+function __c22(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ EventActionId: S.String.pipe(T.HttpLabel("EventActionId")) }).pipe(
           T.all(
@@ -2948,21 +2912,21 @@ function __c9(j: number): any {
           ),
         ),
       ).annotate({ identifier: "GetEventActionRequest" });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          Action: S.optional(__S(13, __c1, 5)),
+          Action: S.optional(__S(162, __c5, 2)),
           Arn: S.optional(S.String),
           CreatedAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-          Event: S.optional(__S(15, __c1, 7)),
+          Event: S.optional(__S(164, __c5, 4)),
           Id: S.optional(S.String),
-          Tags: S.optional(__S(4, __c0, 4)),
+          Tags: S.optional(__S(1568, __c49, 0)),
           UpdatedAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
         }),
       ).annotate({ identifier: "GetEventActionResponse" });
   }
 }
-function __c10(j: number): any {
+function __c23(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2970,7 +2934,11 @@ function __c10(j: number): any {
           T.all(T.Http({ method: "GET", uri: "/v1/jobs/{JobId}" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "GetJobRequest" });
-    case 1:
+  }
+}
+function __c24(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ DataGrantArn: S.String.pipe(T.HttpLabel("DataGrantArn")) }).pipe(
           T.all(
@@ -2985,7 +2953,7 @@ function __c10(j: number): any {
       ).annotate({
         identifier: "GetReceivedDataGrantRequest",
       });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           Name: S.String,
@@ -3005,7 +2973,11 @@ function __c10(j: number): any {
       ).annotate({
         identifier: "GetReceivedDataGrantResponse",
       });
-    case 3:
+  }
+}
+function __c25(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           DataSetId: S.String.pipe(T.HttpLabel("DataSetId")),
@@ -3021,7 +2993,11 @@ function __c10(j: number): any {
           ),
         ),
       ).annotate({ identifier: "GetRevisionRequest" });
-    case 4:
+  }
+}
+function __c26(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           MaxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
@@ -3030,7 +3006,7 @@ function __c10(j: number): any {
           T.all(T.Http({ method: "GET", uri: "/v1/data-grants" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "ListDataGrantsRequest" });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           Name: S.String,
@@ -3047,18 +3023,18 @@ function __c10(j: number): any {
           UpdatedAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
         }),
       ).annotate({ identifier: "DataGrantSummaryEntry" });
-    case 6:
-      return S.Array(__S(85, __c10, 5));
-    case 7:
+    case 2:
+      return S.Array(__S(833, __c26, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          DataGrantSummaries: S.optional(__S(86, __c10, 6)),
+          DataGrantSummaries: S.optional(__S(834, __c26, 2)),
           NextToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListDataGrantsResponse" });
   }
 }
-function __c11(j: number): any {
+function __c27(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3096,14 +3072,18 @@ function __c11(j: number): any {
         }),
       ).annotate({ identifier: "RevisionEntry" });
     case 2:
-      return S.Array(__S(89, __c11, 1));
+      return S.Array(__S(865, __c27, 1));
     case 3:
       return S.suspend(() =>
-        S.Struct({ NextToken: S.optional(S.String), Revisions: S.optional(__S(90, __c11, 2)) }),
+        S.Struct({ NextToken: S.optional(S.String), Revisions: S.optional(__S(866, __c27, 2)) }),
       ).annotate({
         identifier: "ListDataSetRevisionsResponse",
       });
-    case 4:
+  }
+}
+function __c28(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           MaxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
@@ -3113,7 +3093,7 @@ function __c11(j: number): any {
           T.all(T.Http({ method: "GET", uri: "/v1/data-sets" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "ListDataSetsRequest" });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           Arn: S.String,
@@ -3123,20 +3103,20 @@ function __c11(j: number): any {
           Id: S.String,
           Name: S.String,
           Origin: S.String,
-          OriginDetails: S.optional(__S(8, __c1, 0)),
+          OriginDetails: S.optional(__S(64, __c2, 0)),
           SourceId: S.optional(S.String),
           UpdatedAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
         }),
       ).annotate({ identifier: "DataSetEntry" });
-    case 6:
-      return S.Array(__S(93, __c11, 5));
-    case 7:
+    case 2:
+      return S.Array(__S(897, __c28, 1));
+    case 3:
       return S.suspend(() =>
-        S.Struct({ DataSets: S.optional(__S(94, __c11, 6)), NextToken: S.optional(S.String) }),
+        S.Struct({ DataSets: S.optional(__S(898, __c28, 2)), NextToken: S.optional(S.String) }),
       ).annotate({ identifier: "ListDataSetsResponse" });
   }
 }
-function __c12(j: number): any {
+function __c29(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3151,24 +3131,25 @@ function __c12(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          Action: __S(13, __c1, 5),
+          Action: __S(162, __c5, 2),
           Arn: S.String,
           CreatedAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
-          Event: __S(15, __c1, 7),
+          Event: __S(164, __c5, 4),
           Id: S.String,
           UpdatedAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
         }),
       ).annotate({ identifier: "EventActionEntry" });
     case 2:
-      return S.Array(__S(97, __c12, 1));
+      return S.Array(__S(929, __c29, 1));
     case 3:
       return S.suspend(() =>
-        S.Struct({
-          EventActions: S.optional(__S(98, __c12, 2)),
-          NextToken: S.optional(S.String),
-        }),
+        S.Struct({ EventActions: S.optional(__S(930, __c29, 2)), NextToken: S.optional(S.String) }),
       ).annotate({ identifier: "ListEventActionsResponse" });
-    case 4:
+  }
+}
+function __c30(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           DataSetId: S.optional(S.String).pipe(T.HttpQuery("dataSetId")),
@@ -3177,36 +3158,36 @@ function __c12(j: number): any {
           RevisionId: S.optional(S.String).pipe(T.HttpQuery("revisionId")),
         }).pipe(T.all(T.Http({ method: "GET", uri: "/v1/jobs" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "ListJobsRequest" });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           Arn: S.String,
-          AssetConfiguration: S.optional(__S(20, __c2, 4)),
+          AssetConfiguration: S.optional(__S(322, __c10, 2)),
           CreatedAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
-          Details: __S(51, __c6, 3),
-          Errors: S.optional(__S(55, __c6, 7)),
+          Details: __S(342, __c10, 22),
+          Errors: S.optional(__S(346, __c10, 26)),
           Id: S.String,
           State: S.String,
           Type: S.String,
           UpdatedAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
         }),
       ).annotate({ identifier: "JobEntry" });
-    case 6:
-      return S.Array(__S(101, __c12, 5));
-    case 7:
+    case 2:
+      return S.Array(__S(961, __c30, 1));
+    case 3:
       return S.suspend(() =>
-        S.Struct({ Jobs: S.optional(__S(102, __c12, 6)), NextToken: S.optional(S.String) }),
+        S.Struct({ Jobs: S.optional(__S(962, __c30, 2)), NextToken: S.optional(S.String) }),
       ).annotate({ identifier: "ListJobsResponse" });
   }
 }
-function __c13(j: number): any {
+function __c31(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           MaxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
           NextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
-          AcceptanceState: S.optional(__S(36, __c4, 4)).pipe(T.HttpQuery("acceptanceState")),
+          AcceptanceState: S.optional(__S(224, __c7, 0)).pipe(T.HttpQuery("acceptanceState")),
         }).pipe(
           T.all(
             T.Http({ method: "GET", uri: "/v1/received-data-grants" }),
@@ -3239,17 +3220,21 @@ function __c13(j: number): any {
         identifier: "ReceivedDataGrantSummariesEntry",
       });
     case 2:
-      return S.Array(__S(105, __c13, 1));
+      return S.Array(__S(993, __c31, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          DataGrantSummaries: S.optional(__S(106, __c13, 2)),
+          DataGrantSummaries: S.optional(__S(994, __c31, 2)),
           NextToken: S.optional(S.String),
         }),
       ).annotate({
         identifier: "ListReceivedDataGrantsResponse",
       });
-    case 4:
+  }
+}
+function __c32(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           DataSetId: S.String.pipe(T.HttpLabel("DataSetId")),
@@ -3272,11 +3257,11 @@ function __c13(j: number): any {
       ).annotate({
         identifier: "ListRevisionAssetsRequest",
       });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           Arn: S.String,
-          AssetDetails: __S(74, __c9, 2),
+          AssetDetails: __S(617, __c19, 9),
           AssetType: S.String,
           CreatedAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
           DataSetId: S.String,
@@ -3287,17 +3272,17 @@ function __c13(j: number): any {
           UpdatedAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
         }),
       ).annotate({ identifier: "AssetEntry" });
-    case 6:
-      return S.Array(__S(109, __c13, 5));
-    case 7:
+    case 2:
+      return S.Array(__S(1025, __c32, 1));
+    case 3:
       return S.suspend(() =>
-        S.Struct({ Assets: S.optional(__S(110, __c13, 6)), NextToken: S.optional(S.String) }),
+        S.Struct({ Assets: S.optional(__S(1026, __c32, 2)), NextToken: S.optional(S.String) }),
       ).annotate({
         identifier: "ListRevisionAssetsResponse",
       });
   }
 }
-function __c14(j: number): any {
+function __c33(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3316,11 +3301,15 @@ function __c14(j: number): any {
       });
     case 1:
       return S.suspend(() =>
-        S.Struct({ Tags: S.optional(__S(4, __c0, 4)) }).pipe(S.encodeKeys({ Tags: "tags" })),
+        S.Struct({ Tags: S.optional(__S(1568, __c49, 0)) }).pipe(S.encodeKeys({ Tags: "tags" })),
       ).annotate({
         identifier: "ListTagsForResourceResponse",
       });
-    case 2:
+  }
+}
+function __c34(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           DataSetId: S.String.pipe(T.HttpLabel("DataSetId")),
@@ -3340,7 +3329,11 @@ function __c14(j: number): any {
           ),
         ),
       ).annotate({ identifier: "RevokeRevisionRequest" });
-    case 3:
+  }
+}
+function __c35(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           Arn: S.optional(S.String),
@@ -3356,14 +3349,18 @@ function __c14(j: number): any {
           RevokedAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
         }),
       ).annotate({ identifier: "RevokeRevisionResponse" });
-    case 4:
+  }
+}
+function __c36(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           Body: S.optional(S.String).pipe(T.HttpPayload()),
-          QueryStringParameters: S.optional(__S(4, __c0, 4)).pipe(T.HttpQueryParams()),
+          QueryStringParameters: S.optional(__S(1568, __c49, 0)).pipe(T.HttpQueryParams()),
           AssetId: S.String.pipe(T.HttpHeader("x-amzn-dataexchange-asset-id")),
           DataSetId: S.String.pipe(T.HttpHeader("x-amzn-dataexchange-data-set-id")),
-          RequestHeaders: S.optional(__S(4, __c0, 4)).pipe(
+          RequestHeaders: S.optional(__S(1568, __c49, 0)).pipe(
             T.HttpPrefixHeaders("x-amzn-dataexchange-header-"),
           ),
           Method: S.optional(S.String).pipe(T.HttpHeader("x-amzn-dataexchange-http-method")),
@@ -3371,26 +3368,26 @@ function __c14(j: number): any {
           RevisionId: S.String.pipe(T.HttpHeader("x-amzn-dataexchange-revision-id")),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/v1" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "SendApiAssetRequest" });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           Body: S.optional(S.String).pipe(T.HttpPayload()),
-          ResponseHeaders: S.optional(__S(4, __c0, 4)).pipe(T.HttpPrefixHeaders("")),
+          ResponseHeaders: S.optional(__S(1568, __c49, 0)).pipe(T.HttpPrefixHeaders("")),
         }),
       ).annotate({ identifier: "SendApiAssetResponse" });
-    case 6:
+  }
+}
+function __c37(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ Database: S.optional(S.String), Table: S.optional(S.String) }),
       ).annotate({
         identifier: "LakeFormationTagPolicyDetails",
       });
-    case 7:
-      return S.Array(__S(118, __c14, 6));
-  }
-}
-function __c15(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
+      return S.Array(__S(1184, __c37, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           Arn: S.String,
@@ -3401,69 +3398,68 @@ function __c15(j: number): any {
           View: S.optional(S.String),
         }),
       ).annotate({ identifier: "RedshiftDataShareDetails" });
-    case 1:
-      return S.Array(__S(120, __c15, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({ KeyPrefixes: S.optional(__S(36, __c4, 4)), Keys: S.optional(__S(36, __c4, 4)) }),
-      ).annotate({ identifier: "S3DataAccessDetails" });
     case 3:
-      return S.Array(__S(122, __c15, 2));
+      return S.Array(__S(1186, __c37, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          LakeFormationTagPolicies: S.optional(__S(119, __c14, 7)),
-          RedshiftDataShares: S.optional(__S(121, __c15, 1)),
-          S3DataAccesses: S.optional(__S(123, __c15, 3)),
+          KeyPrefixes: S.optional(__S(224, __c7, 0)),
+          Keys: S.optional(__S(224, __c7, 0)),
+        }),
+      ).annotate({ identifier: "S3DataAccessDetails" });
+    case 5:
+      return S.Array(__S(1188, __c37, 4));
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          LakeFormationTagPolicies: S.optional(__S(1185, __c37, 1)),
+          RedshiftDataShares: S.optional(__S(1187, __c37, 3)),
+          S3DataAccesses: S.optional(__S(1189, __c37, 5)),
         }),
       ).annotate({ identifier: "ScopeDetails" });
-    case 5:
+    case 7:
       return S.suspend(() =>
         S.Struct({
           DataUpdatedAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
         }),
       ).annotate({ identifier: "DataUpdateRequestDetails" });
-    case 6:
+    case 8:
       return S.suspend(() =>
         S.Struct({ DeprecationAt: T.DateFromString.pipe(T.TimestampFormat("date-time")) }),
       ).annotate({
         identifier: "DeprecationRequestDetails",
       });
-    case 7:
+    case 9:
       return S.suspend(() =>
         S.Struct({ Name: S.String, Type: S.String, Description: S.optional(S.String) }),
       ).annotate({ identifier: "SchemaChangeDetails" });
-  }
-}
-function __c16(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(127, __c15, 7));
-    case 1:
+    case 10:
+      return S.Array(__S(1193, __c37, 9));
+    case 11:
       return S.suspend(() =>
         S.Struct({
-          Changes: S.optional(__S(128, __c16, 0)),
+          Changes: S.optional(__S(1194, __c37, 10)),
           SchemaChangeAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
         }),
       ).annotate({
         identifier: "SchemaChangeRequestDetails",
       });
-    case 2:
+    case 12:
       return S.suspend(() =>
         S.Struct({
-          DataUpdate: S.optional(__S(125, __c15, 5)),
-          Deprecation: S.optional(__S(126, __c15, 6)),
-          SchemaChange: S.optional(__S(129, __c16, 1)),
+          DataUpdate: S.optional(__S(1191, __c37, 7)),
+          Deprecation: S.optional(__S(1192, __c37, 8)),
+          SchemaChange: S.optional(__S(1195, __c37, 11)),
         }),
       ).annotate({ identifier: "NotificationDetails" });
-    case 3:
+    case 13:
       return S.suspend(() =>
         S.Struct({
-          Scope: S.optional(__S(124, __c15, 4)),
+          Scope: S.optional(__S(1190, __c37, 6)),
           ClientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
           Comment: S.optional(S.String),
           DataSetId: S.String.pipe(T.HttpLabel("DataSetId")),
-          Details: S.optional(__S(130, __c16, 2)),
+          Details: S.optional(__S(1196, __c37, 12)),
           Type: S.String,
         }).pipe(
           T.all(
@@ -3478,19 +3474,30 @@ function __c16(j: number): any {
       ).annotate({
         identifier: "SendDataSetNotificationRequest",
       });
-    case 4:
+    case 14:
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "SendDataSetNotificationResponse",
       });
-    case 5:
+  }
+}
+function __c38(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ JobId: S.String.pipe(T.HttpLabel("JobId")) }).pipe(
           T.all(T.Http({ method: "PATCH", uri: "/v1/jobs/{JobId}" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "StartJobRequest" });
-    case 6:
+  }
+}
+function __c39(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
-        S.Struct({ ResourceArn: S.String.pipe(T.HttpLabel("ResourceArn")), Tags: __S(4, __c0, 4) })
+        S.Struct({
+          ResourceArn: S.String.pipe(T.HttpLabel("ResourceArn")),
+          Tags: __S(1568, __c49, 0),
+        })
           .pipe(S.encodeKeys({ Tags: "tags" }))
           .pipe(
             T.all(
@@ -3503,11 +3510,15 @@ function __c16(j: number): any {
             ),
           ),
       ).annotate({ identifier: "TagResourceRequest" });
-    case 7:
+  }
+}
+function __c40(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           ResourceArn: S.String.pipe(T.HttpLabel("ResourceArn")),
-          TagKeys: __S(36, __c4, 4).pipe(T.HttpQuery("tagKeys")),
+          TagKeys: __S(224, __c7, 0).pipe(T.HttpQuery("tagKeys")),
         }).pipe(
           T.all(
             T.Http({ method: "DELETE", uri: "/tags/{ResourceArn}" }),
@@ -3521,7 +3532,7 @@ function __c16(j: number): any {
       ).annotate({ identifier: "UntagResourceRequest" });
   }
 }
-function __c17(j: number): any {
+function __c41(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3548,7 +3559,7 @@ function __c17(j: number): any {
       return S.suspend(() =>
         S.Struct({
           Arn: S.optional(S.String),
-          AssetDetails: S.optional(__S(74, __c9, 2)),
+          AssetDetails: S.optional(__S(617, __c19, 9)),
           AssetType: S.optional(S.String),
           CreatedAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
           DataSetId: S.optional(S.String),
@@ -3559,7 +3570,11 @@ function __c17(j: number): any {
           UpdatedAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
         }),
       ).annotate({ identifier: "UpdateAssetResponse" });
-    case 2:
+  }
+}
+function __c42(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           DataSetId: S.String.pipe(T.HttpLabel("DataSetId")),
@@ -3576,7 +3591,7 @@ function __c17(j: number): any {
           ),
         ),
       ).annotate({ identifier: "UpdateDataSetRequest" });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           Arn: S.optional(S.String),
@@ -3586,15 +3601,19 @@ function __c17(j: number): any {
           Id: S.optional(S.String),
           Name: S.optional(S.String),
           Origin: S.optional(S.String),
-          OriginDetails: S.optional(__S(8, __c1, 0)),
+          OriginDetails: S.optional(__S(64, __c2, 0)),
           SourceId: S.optional(S.String),
           UpdatedAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
         }),
       ).annotate({ identifier: "UpdateDataSetResponse" });
-    case 4:
+  }
+}
+function __c43(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          Action: S.optional(__S(13, __c1, 5)),
+          Action: S.optional(__S(162, __c5, 2)),
           EventActionId: S.String.pipe(T.HttpLabel("EventActionId")),
         }).pipe(
           T.all(
@@ -3607,20 +3626,24 @@ function __c17(j: number): any {
           ),
         ),
       ).annotate({ identifier: "UpdateEventActionRequest" });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          Action: S.optional(__S(13, __c1, 5)),
+          Action: S.optional(__S(162, __c5, 2)),
           Arn: S.optional(S.String),
           CreatedAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-          Event: S.optional(__S(15, __c1, 7)),
+          Event: S.optional(__S(164, __c5, 4)),
           Id: S.optional(S.String),
           UpdatedAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
         }),
       ).annotate({
         identifier: "UpdateEventActionResponse",
       });
-    case 6:
+  }
+}
+function __c44(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           Comment: S.optional(S.String),
@@ -3640,7 +3663,114 @@ function __c17(j: number): any {
       ).annotate({ identifier: "UpdateRevisionRequest" });
   }
 }
-
+function __c45(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ DataGrantArn: S.String.pipe(T.HttpLabel("DataGrantArn")) }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/v1/data-grants/{DataGrantArn}/accept" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "AcceptDataGrantRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          Name: S.String,
+          SenderPrincipal: S.optional(S.String),
+          ReceiverPrincipal: S.String,
+          Description: S.optional(S.String),
+          AcceptanceState: S.String,
+          AcceptedAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
+          EndsAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
+          GrantDistributionScope: S.String,
+          DataSetId: S.String,
+          Id: S.String,
+          Arn: S.String,
+          CreatedAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
+          UpdatedAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
+        }),
+      ).annotate({ identifier: "AcceptDataGrantResponse" });
+  }
+}
+function __c46(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ JobId: S.String.pipe(T.HttpLabel("JobId")) }).pipe(
+          T.all(
+            T.Http({ method: "DELETE", uri: "/v1/jobs/{JobId}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "CancelJobRequest" });
+  }
+}
+function __c47(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "CancelJobResponse",
+      });
+  }
+}
+function __c48(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          Name: S.String,
+          GrantDistributionScope: S.String,
+          ReceiverPrincipal: S.String,
+          SourceDataSetId: S.String,
+          EndsAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
+          Description: S.optional(S.String),
+          Tags: S.optional(__S(1568, __c49, 0)),
+        }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/v1/data-grants" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "CreateDataGrantRequest" });
+  }
+}
+function __c49(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
+  }
+}
+function __c50(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          Name: S.String,
+          SenderPrincipal: S.String,
+          ReceiverPrincipal: S.String,
+          Description: S.optional(S.String),
+          AcceptanceState: S.String,
+          AcceptedAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
+          EndsAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
+          GrantDistributionScope: S.String,
+          DataSetId: S.String,
+          SourceDataSetId: S.String,
+          Id: S.String,
+          Arn: S.String,
+          CreatedAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
+          UpdatedAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
+          Tags: S.optional(__S(1568, __c49, 0)),
+        }),
+      ).annotate({ identifier: "CreateDataGrantResponse" });
+  }
+}
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

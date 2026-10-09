@@ -160,7 +160,7 @@ export const getPayoutMethod: API.OperationMethod<
   WhopOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(0, __c0, 0) as any as S.Schema<GetPayoutMethodRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<PayoutMethod>,
+  output: __S(6, __c1, 2) as any as S.Schema<PayoutMethod>,
   errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity],
   protocol: WhopProtocol,
   retry: Retry.Retry,
@@ -181,8 +181,8 @@ export const listPayoutMethod: API.PaginatedOperationMethod<
   PayoutMethodListItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(4, __c0, 4) as any as S.Schema<ListPayoutMethodRequest>,
-    output: __S(7, __c0, 7) as any as S.Schema<ListPayoutMethodResponse>,
+    input: __S(8, __c2, 0) as any as S.Schema<ListPayoutMethodRequest>,
+    output: __S(11, __c2, 3) as any as S.Schema<ListPayoutMethodResponse>,
     errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity],
     protocol: WhopProtocol,
     retry: Retry.Retry,
@@ -207,13 +207,17 @@ function __c0(j: number): any {
           id: S.String.pipe(T.Label()),
         }).pipe(T.Http({ method: "GET", uri: "/payout_methods/{id}", code: 200 })),
       ).annotate({ identifier: "GetPayoutMethodRequest" });
-    case 1:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
         }),
       ).annotate({ identifier: "PayoutMethodCompany" });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           category: S.String,
@@ -221,21 +225,25 @@ function __c0(j: number): any {
           name: S.String,
         }),
       ).annotate({ identifier: "PayoutMethodDestination" });
-    case 3:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           account_reference: S.NullOr(S.String),
-          company: S.NullOr(__S(1, __c0, 1)),
+          company: S.NullOr(__S(4, __c1, 0)),
           created_at: S.String,
           currency: S.String,
-          destination: S.NullOr(__S(2, __c0, 2)),
+          destination: S.NullOr(__S(5, __c1, 1)),
           id: S.String,
           institution_name: S.NullOr(S.String),
           is_default: S.Boolean,
           nickname: S.NullOr(S.String),
         }),
       ).annotate({ identifier: "PayoutMethod" });
-    case 4:
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           after: S.optional(S.String.pipe(T.Query())),
@@ -245,9 +253,9 @@ function __c0(j: number): any {
           account_id: S.String.pipe(T.Query()),
         }).pipe(T.Http({ method: "GET", uri: "/payout_methods", code: 200 })),
       ).annotate({ identifier: "ListPayoutMethodRequest" });
-    case 5:
-      return S.Array(__S(3, __c0, 3));
-    case 6:
+    case 1:
+      return S.Array(__S(6, __c1, 2));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           end_cursor: S.NullOr(S.String),
@@ -256,16 +264,15 @@ function __c0(j: number): any {
           start_cursor: S.NullOr(S.String),
         }),
       ).annotate({ identifier: "PageInfo" });
-    case 7:
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          data: __S(5, __c0, 5),
-          page_info: __S(6, __c0, 6),
+          data: __S(9, __c2, 1),
+          page_info: __S(10, __c2, 2),
         }),
       ).annotate({ identifier: "ListPayoutMethodResponse" });
   }
 }
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

@@ -530,7 +530,7 @@ export const listAssets: API.PaginatedOperationMethod<
   ListAssetsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(1, __c0, 1) as any as S.Schema<ListAssetsRequest>,
-  output: __S(55, __c6, 7) as any as S.Schema<ListAssetsResponse>,
+  output: __S(55, __c1, 23) as any as S.Schema<ListAssetsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -594,24 +594,20 @@ function __c0(j: number): any {
           members: S.optional(__S(0, __c0, 0)),
         }),
       ).annotate({ identifier: "Binding" });
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
+    case 8:
       return S.Array(__S(7, __c0, 7));
-    case 1:
+    case 9:
       return S.suspend(() =>
         S.Struct({
           version: S.optional(S.Number),
           auditConfigs: S.optional(__S(5, __c0, 5)),
           etag: S.optional(S.String),
-          bindings: S.optional(__S(8, __c1, 0)),
+          bindings: S.optional(__S(8, __c0, 8)),
         }),
       ).annotate({ identifier: "Policy" });
-    case 2:
+    case 10:
       return S.Array(S.String);
-    case 3:
+    case 11:
       return S.suspend(() =>
         S.Struct({
           minimumVersion: S.optional(S.String),
@@ -621,22 +617,22 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "GoogleIdentityAccesscontextmanagerV1OsConstraint",
       });
-    case 4:
-      return S.Array(__S(11, __c1, 3));
-    case 5:
+    case 12:
+      return S.Array(__S(11, __c0, 11));
+    case 13:
       return S.suspend(() =>
         S.Struct({
-          allowedEncryptionStatuses: S.optional(__S(10, __c1, 2)),
+          allowedEncryptionStatuses: S.optional(__S(10, __c0, 10)),
           requireAdminApproval: S.optional(S.Boolean),
           requireCorpOwned: S.optional(S.Boolean),
-          osConstraints: S.optional(__S(12, __c1, 4)),
+          osConstraints: S.optional(__S(12, __c0, 12)),
           requireScreenlock: S.optional(S.Boolean),
-          allowedDeviceManagementLevels: S.optional(__S(10, __c1, 2)),
+          allowedDeviceManagementLevels: S.optional(__S(10, __c0, 10)),
         }),
       ).annotate({
         identifier: "GoogleIdentityAccesscontextmanagerV1DevicePolicy",
       });
-    case 6:
+    case 14:
       return S.suspend(() =>
         S.Struct({
           network: S.optional(S.String),
@@ -645,25 +641,21 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "GoogleIdentityAccesscontextmanagerV1VpcSubNetwork",
       });
-    case 7:
+    case 15:
       return S.suspend(() =>
         S.Struct({
-          vpcSubnetwork: S.optional(__S(14, __c1, 6)),
+          vpcSubnetwork: S.optional(__S(14, __c0, 14)),
         }),
       ).annotate({
         identifier: "GoogleIdentityAccesscontextmanagerV1VpcNetworkSource",
       });
-  }
-}
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(15, __c1, 7));
-    case 1:
+    case 16:
+      return S.Array(__S(15, __c0, 15));
+    case 17:
       return S.suspend(() =>
         S.Struct({
-          devicePolicy: S.optional(__S(13, __c1, 5)),
-          vpcNetworkSources: S.optional(__S(16, __c2, 0)),
+          devicePolicy: S.optional(__S(13, __c0, 13)),
+          vpcNetworkSources: S.optional(__S(16, __c0, 16)),
           regions: S.optional(__S(0, __c0, 0)),
           negate: S.optional(S.Boolean),
           members: S.optional(__S(0, __c0, 0)),
@@ -673,18 +665,18 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "GoogleIdentityAccesscontextmanagerV1Condition",
       });
-    case 2:
-      return S.Array(__S(17, __c2, 1));
-    case 3:
+    case 18:
+      return S.Array(__S(17, __c0, 17));
+    case 19:
       return S.suspend(() =>
         S.Struct({
-          conditions: S.optional(__S(18, __c2, 2)),
+          conditions: S.optional(__S(18, __c0, 18)),
           combiningFunction: S.optional(S.String),
         }),
       ).annotate({
         identifier: "GoogleIdentityAccesscontextmanagerV1BasicLevel",
       });
-    case 4:
+    case 20:
       return S.suspend(() =>
         S.Struct({
           expr: S.optional(__S(6, __c0, 6)),
@@ -692,19 +684,19 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "GoogleIdentityAccesscontextmanagerV1CustomLevel",
       });
-    case 5:
+    case 21:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
           description: S.optional(S.String),
-          basic: S.optional(__S(19, __c2, 3)),
+          basic: S.optional(__S(19, __c0, 19)),
           title: S.optional(S.String),
-          custom: S.optional(__S(20, __c2, 4)),
+          custom: S.optional(__S(20, __c0, 20)),
         }),
       ).annotate({
         identifier: "GoogleIdentityAccesscontextmanagerV1AccessLevel",
       });
-    case 6:
+    case 22:
       return S.suspend(() =>
         S.Struct({
           forwardingRule: S.optional(S.String),
@@ -712,33 +704,29 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "GoogleIdentityAccesscontextmanagerV1PrivateServiceConnectEndpoint",
       });
-    case 7:
+    case 23:
       return S.suspend(() =>
         S.Struct({
           resource: S.optional(S.String),
           accessLevel: S.optional(S.String),
-          pscEndpoint: S.optional(__S(22, __c2, 6)),
+          pscEndpoint: S.optional(__S(22, __c0, 22)),
         }),
       ).annotate({
         identifier: "GoogleIdentityAccesscontextmanagerV1IngressSource",
       });
-  }
-}
-function __c3(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(23, __c2, 7));
-    case 1:
+    case 24:
+      return S.Array(__S(23, __c0, 23));
+    case 25:
       return S.suspend(() =>
         S.Struct({
           identityType: S.optional(S.String),
           identities: S.optional(__S(0, __c0, 0)),
-          sources: S.optional(__S(24, __c3, 0)),
+          sources: S.optional(__S(24, __c0, 24)),
         }),
       ).annotate({
         identifier: "GoogleIdentityAccesscontextmanagerV1IngressFrom",
       });
-    case 2:
+    case 26:
       return S.suspend(() =>
         S.Struct({
           method: S.optional(S.String),
@@ -747,50 +735,50 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "GoogleIdentityAccesscontextmanagerV1MethodSelector",
       });
-    case 3:
-      return S.Array(__S(26, __c3, 2));
-    case 4:
+    case 27:
+      return S.Array(__S(26, __c0, 26));
+    case 28:
       return S.suspend(() =>
         S.Struct({
           serviceName: S.optional(S.String),
-          methodSelectors: S.optional(__S(27, __c3, 3)),
+          methodSelectors: S.optional(__S(27, __c0, 27)),
         }),
       ).annotate({
         identifier: "GoogleIdentityAccesscontextmanagerV1ApiOperation",
       });
-    case 5:
-      return S.Array(__S(28, __c3, 4));
-    case 6:
+    case 29:
+      return S.Array(__S(28, __c0, 28));
+    case 30:
       return S.suspend(() =>
         S.Struct({
           resources: S.optional(__S(0, __c0, 0)),
-          operations: S.optional(__S(29, __c3, 5)),
+          operations: S.optional(__S(29, __c0, 29)),
           roles: S.optional(__S(0, __c0, 0)),
         }),
       ).annotate({
         identifier: "GoogleIdentityAccesscontextmanagerV1IngressTo",
       });
-    case 7:
+    case 31:
       return S.suspend(() =>
         S.Struct({
-          ingressFrom: S.optional(__S(25, __c3, 1)),
+          ingressFrom: S.optional(__S(25, __c0, 25)),
           title: S.optional(S.String),
-          ingressTo: S.optional(__S(30, __c3, 6)),
+          ingressTo: S.optional(__S(30, __c0, 30)),
         }),
       ).annotate({
         identifier: "GoogleIdentityAccesscontextmanagerV1IngressPolicy",
       });
   }
 }
-function __c4(j: number): any {
+function __c1(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(31, __c3, 7));
+      return S.Array(__S(31, __c0, 31));
     case 1:
       return S.suspend(() =>
         S.Struct({
           identities: S.optional(__S(0, __c0, 0)),
-          sources: S.optional(__S(24, __c3, 0)),
+          sources: S.optional(__S(24, __c0, 24)),
           identityType: S.optional(S.String),
           sourceRestriction: S.optional(S.String),
         }),
@@ -802,7 +790,7 @@ function __c4(j: number): any {
         S.Struct({
           resources: S.optional(__S(0, __c0, 0)),
           externalResources: S.optional(__S(0, __c0, 0)),
-          operations: S.optional(__S(29, __c3, 5)),
+          operations: S.optional(__S(29, __c0, 29)),
           roles: S.optional(__S(0, __c0, 0)),
         }),
       ).annotate({
@@ -811,15 +799,15 @@ function __c4(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          egressFrom: S.optional(__S(33, __c4, 1)),
+          egressFrom: S.optional(__S(33, __c1, 1)),
           title: S.optional(S.String),
-          egressTo: S.optional(__S(34, __c4, 2)),
+          egressTo: S.optional(__S(34, __c1, 2)),
         }),
       ).annotate({
         identifier: "GoogleIdentityAccesscontextmanagerV1EgressPolicy",
       });
     case 4:
-      return S.Array(__S(35, __c4, 3));
+      return S.Array(__S(35, __c1, 3));
     case 5:
       return S.suspend(() =>
         S.Struct({
@@ -832,59 +820,55 @@ function __c4(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          addRequestHeader: S.optional(__S(37, __c4, 5)),
+          addRequestHeader: S.optional(__S(37, __c1, 5)),
         }),
       ).annotate({
         identifier: "GoogleIdentityAccesscontextmanagerV1Modifier",
       });
     case 7:
-      return S.Array(__S(38, __c4, 6));
-  }
-}
-function __c5(j: number): any {
-  switch (j) {
-    case 0:
+      return S.Array(__S(38, __c1, 6));
+    case 8:
       return S.suspend(() =>
         S.Struct({
           service: S.optional(S.String),
           pattern: S.optional(S.String),
-          modifiers: S.optional(__S(39, __c4, 7)),
+          modifiers: S.optional(__S(39, __c1, 7)),
         }),
       ).annotate({
         identifier: "GoogleIdentityAccesscontextmanagerV1ServicePattern",
       });
-    case 1:
-      return S.Array(__S(40, __c5, 0));
-    case 2:
+    case 9:
+      return S.Array(__S(40, __c1, 8));
+    case 10:
       return S.suspend(() =>
         S.Struct({
           allowedServices: S.optional(__S(0, __c0, 0)),
           enableRestriction: S.optional(S.Boolean),
-          allowedServicePatterns: S.optional(__S(41, __c5, 1)),
-          servicePatternsEnforcementScopes: S.optional(__S(10, __c1, 2)),
+          allowedServicePatterns: S.optional(__S(41, __c1, 9)),
+          servicePatternsEnforcementScopes: S.optional(__S(10, __c0, 10)),
         }),
       ).annotate({
         identifier: "GoogleIdentityAccesscontextmanagerV1VpcAccessibleServices",
       });
-    case 3:
+    case 11:
       return S.suspend(() =>
         S.Struct({
-          ingressPolicies: S.optional(__S(32, __c4, 0)),
+          ingressPolicies: S.optional(__S(32, __c1, 0)),
           restrictedServices: S.optional(__S(0, __c0, 0)),
           accessLevels: S.optional(__S(0, __c0, 0)),
           resources: S.optional(__S(0, __c0, 0)),
-          egressPolicies: S.optional(__S(36, __c4, 4)),
-          vpcAccessibleServices: S.optional(__S(42, __c5, 2)),
+          egressPolicies: S.optional(__S(36, __c1, 4)),
+          vpcAccessibleServices: S.optional(__S(42, __c1, 10)),
         }),
       ).annotate({
         identifier: "GoogleIdentityAccesscontextmanagerV1ServicePerimeterConfig",
       });
-    case 4:
+    case 12:
       return S.suspend(() =>
         S.Struct({
           etag: S.optional(S.String),
-          spec: S.optional(__S(43, __c5, 3)),
-          status: S.optional(__S(43, __c5, 3)),
+          spec: S.optional(__S(43, __c1, 11)),
+          status: S.optional(__S(43, __c1, 11)),
           useExplicitDryRunSpec: S.optional(S.Boolean),
           description: S.optional(S.String),
           name: S.optional(S.String),
@@ -894,20 +878,20 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "GoogleIdentityAccesscontextmanagerV1ServicePerimeter",
       });
-    case 5:
+    case 13:
       return S.Record(S.String, S.Unknown);
-    case 6:
+    case 14:
       return S.suspend(() =>
         S.Struct({
           parent: S.optional(S.String),
           discoveryName: S.optional(S.String),
-          data: S.optional(__S(45, __c5, 5)),
+          data: S.optional(__S(45, __c1, 13)),
           resourceUrl: S.optional(S.String),
           discoveryDocumentUri: S.optional(S.String),
           version: S.optional(S.String),
         }),
       ).annotate({ identifier: "Resource" });
-    case 7:
+    case 15:
       return S.suspend(() =>
         S.Struct({
           allowedValues: S.optional(__S(0, __c0, 0)),
@@ -919,11 +903,7 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "GoogleCloudOrgpolicyV1ListPolicy",
       });
-  }
-}
-function __c6(j: number): any {
-  switch (j) {
-    case 0:
+    case 16:
       return S.suspend(() =>
         S.Struct({
           enforced: S.optional(S.Boolean),
@@ -931,27 +911,27 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "GoogleCloudOrgpolicyV1BooleanPolicy",
       });
-    case 1:
+    case 17:
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "GoogleCloudOrgpolicyV1RestoreDefault",
       });
-    case 2:
+    case 18:
       return S.suspend(() =>
         S.Struct({
           constraint: S.optional(S.String),
-          listPolicy: S.optional(__S(47, __c5, 7)),
+          listPolicy: S.optional(__S(47, __c1, 15)),
           version: S.optional(S.Number),
           updateTime: S.optional(S.String),
-          booleanPolicy: S.optional(__S(48, __c6, 0)),
-          restoreDefault: S.optional(__S(49, __c6, 1)),
+          booleanPolicy: S.optional(__S(48, __c1, 16)),
+          restoreDefault: S.optional(__S(49, __c1, 17)),
           etag: S.optional(S.String),
         }),
       ).annotate({
         identifier: "GoogleCloudOrgpolicyV1Policy",
       });
-    case 3:
-      return S.Array(__S(50, __c6, 2));
-    case 4:
+    case 19:
+      return S.Array(__S(50, __c1, 18));
+    case 20:
       return S.suspend(() =>
         S.Struct({
           scopes: S.optional(__S(0, __c0, 0)),
@@ -963,33 +943,32 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "GoogleIdentityAccesscontextmanagerV1AccessPolicy",
       });
-    case 5:
+    case 21:
       return S.suspend(() =>
         S.Struct({
-          iamPolicy: S.optional(__S(9, __c1, 1)),
-          accessLevel: S.optional(__S(21, __c2, 5)),
-          servicePerimeter: S.optional(__S(44, __c5, 4)),
+          iamPolicy: S.optional(__S(9, __c0, 9)),
+          accessLevel: S.optional(__S(21, __c0, 21)),
+          servicePerimeter: S.optional(__S(44, __c1, 12)),
           name: S.optional(S.String),
           assetType: S.optional(S.String),
-          resource: S.optional(__S(46, __c5, 6)),
+          resource: S.optional(__S(46, __c1, 14)),
           ancestors: S.optional(__S(0, __c0, 0)),
-          orgPolicy: S.optional(__S(51, __c6, 3)),
-          accessPolicy: S.optional(__S(52, __c6, 4)),
+          orgPolicy: S.optional(__S(51, __c1, 19)),
+          accessPolicy: S.optional(__S(52, __c1, 20)),
         }),
       ).annotate({ identifier: "Asset" });
-    case 6:
-      return S.Array(__S(53, __c6, 5));
-    case 7:
+    case 22:
+      return S.Array(__S(53, __c1, 21));
+    case 23:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
           readTime: S.optional(S.String),
-          assets: S.optional(__S(54, __c6, 6)),
+          assets: S.optional(__S(54, __c1, 22)),
         }),
       ).annotate({ identifier: "ListAssetsResponse" });
   }
 }
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

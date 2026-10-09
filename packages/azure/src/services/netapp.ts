@@ -4855,8 +4855,8 @@ export const AccountsChangeKeyVault: API.OperationMethod<
   AccountsChangeKeyVaultError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2, __c0, 2) as any as S.Schema<AccountsChangeKeyVaultRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<AccountsChangeKeyVaultResponse>,
+  input: __S(1, __c0, 1) as any as S.Schema<AccountsChangeKeyVaultRequest>,
+  output: __S(16, __c1, 0) as any as S.Schema<AccountsChangeKeyVaultResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4870,8 +4870,8 @@ export const AccountsCreateOrUpdate: API.OperationMethod<
   AccountsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(15, __c1, 7) as any as S.Schema<AccountsCreateOrUpdateRequest>,
-  output: __S(26, __c3, 2) as any as S.Schema<AccountsCreateOrUpdateResponse>,
+  input: __S(50, __c3, 2) as any as S.Schema<AccountsCreateOrUpdateRequest>,
+  output: __S(53, __c3, 5) as any as S.Schema<AccountsCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4885,8 +4885,8 @@ export const AccountsTransitionToCmk: API.OperationMethod<
   AccountsTransitionToCmkError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(27, __c3, 3) as any as S.Schema<AccountsTransitionToCmkRequest>,
-  output: __S(28, __c3, 4) as any as S.Schema<AccountsTransitionToCmkResponse>,
+  input: __S(864, __c54, 0) as any as S.Schema<AccountsTransitionToCmkRequest>,
+  output: __S(880, __c55, 0) as any as S.Schema<AccountsTransitionToCmkResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4900,8 +4900,8 @@ export const AuthorizeVolumeExternalReplication: API.OperationMethod<
   AuthorizeVolumeExternalReplicationError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(29, __c3, 5) as any as S.Schema<AuthorizeVolumeExternalReplicationRequest>,
-  output: __S(31, __c3, 7) as any as S.Schema<SvmPeerCommandResponse>,
+  input: __S(1056, __c66, 0) as any as S.Schema<AuthorizeVolumeExternalReplicationRequest>,
+  output: __S(1058, __c66, 2) as any as S.Schema<SvmPeerCommandResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4915,8 +4915,8 @@ export const AuthorizeVolumeReplication: API.OperationMethod<
   AuthorizeVolumeReplicationError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(32, __c4, 0) as any as S.Schema<AuthorizeVolumeReplicationRequest>,
-  output: __S(33, __c4, 1) as any as S.Schema<AuthorizeVolumeReplicationResponse>,
+  input: __S(1264, __c79, 0) as any as S.Schema<AuthorizeVolumeReplicationRequest>,
+  output: __S(1280, __c80, 0) as any as S.Schema<AuthorizeVolumeReplicationResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4930,8 +4930,8 @@ export const BackupsGetVolumeLatestRestoreStatus: API.OperationMethod<
   BackupsGetVolumeLatestRestoreStatusError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(34, __c4, 2) as any as S.Schema<BackupsGetVolumeLatestRestoreStatusRequest>,
-  output: __S(35, __c4, 3) as any as S.Schema<RestoreStatus>,
+  input: __S(1600, __c100, 0) as any as S.Schema<BackupsGetVolumeLatestRestoreStatusRequest>,
+  output: __S(1601, __c100, 1) as any as S.Schema<RestoreStatus>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4945,8 +4945,8 @@ export const BackupVaultsCreateOrUpdate: API.OperationMethod<
   BackupVaultsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(36, __c4, 4) as any as S.Schema<BackupVaultsCreateOrUpdateRequest>,
-  output: __S(38, __c4, 6) as any as S.Schema<BackupVaultsCreateOrUpdateResponse>,
+  input: __S(1824, __c114, 0) as any as S.Schema<BackupVaultsCreateOrUpdateRequest>,
+  output: __S(1856, __c116, 0) as any as S.Schema<BackupVaultsCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4960,8 +4960,8 @@ export const BucketsCreateOrUpdate: API.OperationMethod<
   BucketsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(47, __c5, 7) as any as S.Schema<BucketsCreateOrUpdateRequest>,
-  output: __S(50, __c6, 2) as any as S.Schema<BucketsCreateOrUpdateResponse>,
+  input: __S(2065, __c129, 1) as any as S.Schema<BucketsCreateOrUpdateRequest>,
+  output: __S(2066, __c129, 2) as any as S.Schema<BucketsCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4975,8 +4975,8 @@ export const CachesCreateOrUpdate: API.OperationMethod<
   CachesCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(58, __c7, 2) as any as S.Schema<CachesCreateOrUpdateRequest>,
-  output: __S(62, __c7, 6) as any as S.Schema<CachesCreateOrUpdateResponse>,
+  input: __S(2289, __c143, 1) as any as S.Schema<CachesCreateOrUpdateRequest>,
+  output: __S(2304, __c144, 0) as any as S.Schema<CachesCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4990,8 +4990,8 @@ export const CachesPoolChange: API.OperationMethod<
   CachesPoolChangeError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(63, __c7, 7) as any as S.Schema<CachesPoolChangeRequest>,
-  output: __S(64, __c8, 0) as any as S.Schema<CachesPoolChangeResponse>,
+  input: __S(2544, __c159, 0) as any as S.Schema<CachesPoolChangeRequest>,
+  output: __S(2560, __c160, 0) as any as S.Schema<CachesPoolChangeResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5005,8 +5005,8 @@ export const CheckNetAppResourceFilePathAvailability: API.OperationMethod<
   CheckNetAppResourceFilePathAvailabilityError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(65, __c8, 1) as any as S.Schema<CheckNetAppResourceFilePathAvailabilityRequest>,
-  output: __S(66, __c8, 2) as any as S.Schema<CheckAvailabilityResponse>,
+  input: __S(144, __c9, 0) as any as S.Schema<CheckNetAppResourceFilePathAvailabilityRequest>,
+  output: __S(160, __c10, 0) as any as S.Schema<CheckAvailabilityResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5020,8 +5020,8 @@ export const CheckNetAppResourceNameAvailability: API.OperationMethod<
   CheckNetAppResourceNameAvailabilityError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(67, __c8, 3) as any as S.Schema<CheckNetAppResourceNameAvailabilityRequest>,
-  output: __S(66, __c8, 2) as any as S.Schema<CheckAvailabilityResponse>,
+  input: __S(352, __c22, 0) as any as S.Schema<CheckNetAppResourceNameAvailabilityRequest>,
+  output: __S(160, __c10, 0) as any as S.Schema<CheckAvailabilityResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5035,8 +5035,8 @@ export const CheckNetAppResourceQuotaAvailability: API.OperationMethod<
   CheckNetAppResourceQuotaAvailabilityError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(68, __c8, 4) as any as S.Schema<CheckNetAppResourceQuotaAvailabilityRequest>,
-  output: __S(66, __c8, 2) as any as S.Schema<CheckAvailabilityResponse>,
+  input: __S(496, __c31, 0) as any as S.Schema<CheckNetAppResourceQuotaAvailabilityRequest>,
+  output: __S(160, __c10, 0) as any as S.Schema<CheckAvailabilityResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5050,8 +5050,8 @@ export const ClearRansomwareReportSuspects: API.OperationMethod<
   ClearRansomwareReportSuspectsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(69, __c8, 5) as any as S.Schema<ClearRansomwareReportSuspectsRequest>,
-  output: __S(33, __c4, 1) as any as S.Schema<ClearRansomwareReportSuspectsResponse>,
+  input: __S(512, __c32, 0) as any as S.Schema<ClearRansomwareReportSuspectsRequest>,
+  output: __S(1280, __c80, 0) as any as S.Schema<ClearRansomwareReportSuspectsResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5065,8 +5065,8 @@ export const CreateBackup: API.OperationMethod<
   CreateBackupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(71, __c8, 7) as any as S.Schema<CreateBackupRequest>,
-  output: __S(73, __c9, 1) as any as S.Schema<CreateBackupResponse>,
+  input: __S(529, __c33, 1) as any as S.Schema<CreateBackupRequest>,
+  output: __S(545, __c34, 1) as any as S.Schema<CreateBackupResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5080,8 +5080,8 @@ export const CreateBackupPolicy: API.OperationMethod<
   CreateBackupPolicyError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(75, __c9, 3) as any as S.Schema<CreateBackupPolicyRequest>,
-  output: __S(79, __c9, 7) as any as S.Schema<CreateBackupPolicyResponse>,
+  input: __S(560, __c35, 0) as any as S.Schema<CreateBackupPolicyRequest>,
+  output: __S(593, __c37, 1) as any as S.Schema<CreateBackupPolicyResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5095,8 +5095,8 @@ export const CreateSnapshot: API.OperationMethod<
   CreateSnapshotError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(80, __c10, 0) as any as S.Schema<CreateSnapshotRequest>,
-  output: __S(82, __c10, 2) as any as S.Schema<CreateSnapshotResponse>,
+  input: __S(608, __c38, 0) as any as S.Schema<CreateSnapshotRequest>,
+  output: __S(625, __c39, 1) as any as S.Schema<CreateSnapshotResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5110,8 +5110,8 @@ export const CreateSnapshotPolicy: API.OperationMethod<
   CreateSnapshotPolicyError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(88, __c11, 0) as any as S.Schema<CreateSnapshotPolicyRequest>,
-  output: __S(90, __c11, 2) as any as S.Schema<CreateSnapshotPolicyResponse>,
+  input: __S(640, __c40, 0) as any as S.Schema<CreateSnapshotPolicyRequest>,
+  output: __S(672, __c42, 0) as any as S.Schema<CreateSnapshotPolicyResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5125,8 +5125,8 @@ export const CreateVolumeGroup: API.OperationMethod<
   CreateVolumeGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(105, __c13, 1) as any as S.Schema<CreateVolumeGroupRequest>,
-  output: __S(118, __c14, 6) as any as S.Schema<CreateVolumeGroupResponse>,
+  input: __S(708, __c44, 4) as any as S.Schema<CreateVolumeGroupRequest>,
+  output: __S(709, __c44, 5) as any as S.Schema<CreateVolumeGroupResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5140,8 +5140,8 @@ export const CreateVolumeQuotaRule: API.OperationMethod<
   CreateVolumeQuotaRuleError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(120, __c15, 0) as any as S.Schema<CreateVolumeQuotaRuleRequest>,
-  output: __S(122, __c15, 2) as any as S.Schema<CreateVolumeQuotaRuleResponse>,
+  input: __S(800, __c50, 0) as any as S.Schema<CreateVolumeQuotaRuleRequest>,
+  output: __S(832, __c52, 0) as any as S.Schema<CreateVolumeQuotaRuleResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5155,8 +5155,8 @@ export const DeleteAccount: API.OperationMethod<
   DeleteAccountError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(123, __c15, 3) as any as S.Schema<DeleteAccountRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<DeleteAccountResponse>,
+  input: __S(896, __c56, 0) as any as S.Schema<DeleteAccountRequest>,
+  output: __S(16, __c1, 0) as any as S.Schema<DeleteAccountResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5170,8 +5170,8 @@ export const DeleteBackup: API.OperationMethod<
   DeleteBackupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(124, __c15, 4) as any as S.Schema<DeleteBackupRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<DeleteBackupResponse>,
+  input: __S(912, __c57, 0) as any as S.Schema<DeleteBackupRequest>,
+  output: __S(16, __c1, 0) as any as S.Schema<DeleteBackupResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5185,8 +5185,8 @@ export const DeleteBackupPolicy: API.OperationMethod<
   DeleteBackupPolicyError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(125, __c15, 5) as any as S.Schema<DeleteBackupPolicyRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<DeleteBackupPolicyResponse>,
+  input: __S(928, __c58, 0) as any as S.Schema<DeleteBackupPolicyRequest>,
+  output: __S(16, __c1, 0) as any as S.Schema<DeleteBackupPolicyResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5200,8 +5200,8 @@ export const DeleteBackupVault: API.OperationMethod<
   DeleteBackupVaultError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(126, __c15, 6) as any as S.Schema<DeleteBackupVaultRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<DeleteBackupVaultResponse>,
+  input: __S(944, __c59, 0) as any as S.Schema<DeleteBackupVaultRequest>,
+  output: __S(16, __c1, 0) as any as S.Schema<DeleteBackupVaultResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5215,8 +5215,8 @@ export const DeleteBucket: API.OperationMethod<
   DeleteBucketError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(127, __c15, 7) as any as S.Schema<DeleteBucketRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<DeleteBucketResponse>,
+  input: __S(960, __c60, 0) as any as S.Schema<DeleteBucketRequest>,
+  output: __S(16, __c1, 0) as any as S.Schema<DeleteBucketResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5230,8 +5230,8 @@ export const DeleteCach: API.OperationMethod<
   DeleteCachError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(128, __c16, 0) as any as S.Schema<DeleteCachRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<DeleteCachResponse>,
+  input: __S(976, __c61, 0) as any as S.Schema<DeleteCachRequest>,
+  output: __S(16, __c1, 0) as any as S.Schema<DeleteCachResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5245,8 +5245,8 @@ export const DeletePool: API.OperationMethod<
   DeletePoolError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(129, __c16, 1) as any as S.Schema<DeletePoolRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<DeletePoolResponse>,
+  input: __S(992, __c62, 0) as any as S.Schema<DeletePoolRequest>,
+  output: __S(16, __c1, 0) as any as S.Schema<DeletePoolResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5260,8 +5260,8 @@ export const DeleteSnapshot: API.OperationMethod<
   DeleteSnapshotError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(130, __c16, 2) as any as S.Schema<DeleteSnapshotRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<DeleteSnapshotResponse>,
+  input: __S(1008, __c63, 0) as any as S.Schema<DeleteSnapshotRequest>,
+  output: __S(16, __c1, 0) as any as S.Schema<DeleteSnapshotResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5275,8 +5275,8 @@ export const DeleteSnapshotPolicy: API.OperationMethod<
   DeleteSnapshotPolicyError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(131, __c16, 3) as any as S.Schema<DeleteSnapshotPolicyRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<DeleteSnapshotPolicyResponse>,
+  input: __S(1024, __c64, 0) as any as S.Schema<DeleteSnapshotPolicyRequest>,
+  output: __S(16, __c1, 0) as any as S.Schema<DeleteSnapshotPolicyResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5290,8 +5290,8 @@ export const DeleteVolume: API.OperationMethod<
   DeleteVolumeError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(132, __c16, 4) as any as S.Schema<DeleteVolumeRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<DeleteVolumeResponse>,
+  input: __S(1040, __c65, 0) as any as S.Schema<DeleteVolumeRequest>,
+  output: __S(16, __c1, 0) as any as S.Schema<DeleteVolumeResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5305,8 +5305,8 @@ export const DeleteVolumeGroup: API.OperationMethod<
   DeleteVolumeGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(133, __c16, 5) as any as S.Schema<DeleteVolumeGroupRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<DeleteVolumeGroupResponse>,
+  input: __S(1072, __c67, 0) as any as S.Schema<DeleteVolumeGroupRequest>,
+  output: __S(16, __c1, 0) as any as S.Schema<DeleteVolumeGroupResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5320,8 +5320,8 @@ export const DeleteVolumeQuotaRule: API.OperationMethod<
   DeleteVolumeQuotaRuleError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(134, __c16, 6) as any as S.Schema<DeleteVolumeQuotaRuleRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<DeleteVolumeQuotaRuleResponse>,
+  input: __S(1088, __c68, 0) as any as S.Schema<DeleteVolumeQuotaRuleRequest>,
+  output: __S(16, __c1, 0) as any as S.Schema<DeleteVolumeQuotaRuleResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5335,8 +5335,8 @@ export const DeleteVolumeReplication: API.OperationMethod<
   DeleteVolumeReplicationError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(135, __c16, 7) as any as S.Schema<DeleteVolumeReplicationRequest>,
-  output: __S(28, __c3, 4) as any as S.Schema<DeleteVolumeReplicationResponse>,
+  input: __S(1104, __c69, 0) as any as S.Schema<DeleteVolumeReplicationRequest>,
+  output: __S(880, __c55, 0) as any as S.Schema<DeleteVolumeReplicationResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5350,8 +5350,8 @@ export const FinalizeVolumeExternalReplication: API.OperationMethod<
   FinalizeVolumeExternalReplicationError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(136, __c17, 0) as any as S.Schema<FinalizeVolumeExternalReplicationRequest>,
-  output: __S(33, __c4, 1) as any as S.Schema<FinalizeVolumeExternalReplicationResponse>,
+  input: __S(1120, __c70, 0) as any as S.Schema<FinalizeVolumeExternalReplicationRequest>,
+  output: __S(1280, __c80, 0) as any as S.Schema<FinalizeVolumeExternalReplicationResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5365,8 +5365,8 @@ export const FinalizeVolumeRelocation: API.OperationMethod<
   FinalizeVolumeRelocationError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(137, __c17, 1) as any as S.Schema<FinalizeVolumeRelocationRequest>,
-  output: __S(33, __c4, 1) as any as S.Schema<FinalizeVolumeRelocationResponse>,
+  input: __S(1136, __c71, 0) as any as S.Schema<FinalizeVolumeRelocationRequest>,
+  output: __S(1280, __c80, 0) as any as S.Schema<FinalizeVolumeRelocationResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5380,8 +5380,8 @@ export const GenerateBucketAkvCredentials: API.OperationMethod<
   GenerateBucketAkvCredentialsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(138, __c17, 2) as any as S.Schema<GenerateBucketAkvCredentialsRequest>,
-  output: __S(33, __c4, 1) as any as S.Schema<GenerateBucketAkvCredentialsResponse>,
+  input: __S(1152, __c72, 0) as any as S.Schema<GenerateBucketAkvCredentialsRequest>,
+  output: __S(1280, __c80, 0) as any as S.Schema<GenerateBucketAkvCredentialsResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5395,8 +5395,8 @@ export const GenerateBucketCredentials: API.OperationMethod<
   GenerateBucketCredentialsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(139, __c17, 3) as any as S.Schema<GenerateBucketCredentialsRequest>,
-  output: __S(140, __c17, 4) as any as S.Schema<BucketGenerateCredentials>,
+  input: __S(1168, __c73, 0) as any as S.Schema<GenerateBucketCredentialsRequest>,
+  output: __S(1169, __c73, 1) as any as S.Schema<BucketGenerateCredentials>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5410,8 +5410,8 @@ export const GetAccount: API.OperationMethod<
   GetAccountError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(141, __c17, 5) as any as S.Schema<GetAccountRequest>,
-  output: __S(144, __c18, 0) as any as S.Schema<GetAccountResponse>,
+  input: __S(1184, __c74, 0) as any as S.Schema<GetAccountRequest>,
+  output: __S(1217, __c76, 1) as any as S.Schema<GetAccountResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5425,8 +5425,8 @@ export const GetAccountChangeKeyVaultInformation: API.OperationMethod<
   GetAccountChangeKeyVaultInformationError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(145, __c18, 1) as any as S.Schema<GetAccountChangeKeyVaultInformationRequest>,
-  output: __S(148, __c18, 4) as any as S.Schema<GetKeyVaultStatusResponse>,
+  input: __S(1232, __c77, 0) as any as S.Schema<GetAccountChangeKeyVaultInformationRequest>,
+  output: __S(1235, __c77, 3) as any as S.Schema<GetKeyVaultStatusResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5440,8 +5440,8 @@ export const GetBackup: API.OperationMethod<
   GetBackupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(149, __c18, 5) as any as S.Schema<GetBackupRequest>,
-  output: __S(73, __c9, 1) as any as S.Schema<GetBackupResponse>,
+  input: __S(1248, __c78, 0) as any as S.Schema<GetBackupRequest>,
+  output: __S(545, __c34, 1) as any as S.Schema<GetBackupResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5455,8 +5455,8 @@ export const GetBackupLatestStatus: API.OperationMethod<
   GetBackupLatestStatusError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(150, __c18, 6) as any as S.Schema<GetBackupLatestStatusRequest>,
-  output: __S(151, __c18, 7) as any as S.Schema<BackupStatus>,
+  input: __S(1296, __c81, 0) as any as S.Schema<GetBackupLatestStatusRequest>,
+  output: __S(1297, __c81, 1) as any as S.Schema<BackupStatus>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5470,8 +5470,8 @@ export const GetBackupPolicy: API.OperationMethod<
   GetBackupPolicyError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(152, __c19, 0) as any as S.Schema<GetBackupPolicyRequest>,
-  output: __S(153, __c19, 1) as any as S.Schema<GetBackupPolicyResponse>,
+  input: __S(1312, __c82, 0) as any as S.Schema<GetBackupPolicyRequest>,
+  output: __S(1328, __c83, 0) as any as S.Schema<GetBackupPolicyResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5485,8 +5485,8 @@ export const GetBackupVault: API.OperationMethod<
   GetBackupVaultError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(154, __c19, 2) as any as S.Schema<GetBackupVaultRequest>,
-  output: __S(155, __c19, 3) as any as S.Schema<GetBackupVaultResponse>,
+  input: __S(1344, __c84, 0) as any as S.Schema<GetBackupVaultRequest>,
+  output: __S(1360, __c85, 0) as any as S.Schema<GetBackupVaultResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5500,8 +5500,8 @@ export const GetBucket: API.OperationMethod<
   GetBucketError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(156, __c19, 4) as any as S.Schema<GetBucketRequest>,
-  output: __S(157, __c19, 5) as any as S.Schema<GetBucketResponse>,
+  input: __S(1376, __c86, 0) as any as S.Schema<GetBucketRequest>,
+  output: __S(1392, __c87, 0) as any as S.Schema<GetBucketResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5515,8 +5515,8 @@ export const GetCach: API.OperationMethod<
   GetCachError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(158, __c19, 6) as any as S.Schema<GetCachRequest>,
-  output: __S(64, __c8, 0) as any as S.Schema<GetCachResponse>,
+  input: __S(1408, __c88, 0) as any as S.Schema<GetCachRequest>,
+  output: __S(2560, __c160, 0) as any as S.Schema<GetCachResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5530,8 +5530,8 @@ export const GetNetAppResourceQuotaLimit: API.OperationMethod<
   GetNetAppResourceQuotaLimitError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(159, __c19, 7) as any as S.Schema<GetNetAppResourceQuotaLimitRequest>,
-  output: __S(161, __c20, 1) as any as S.Schema<GetNetAppResourceQuotaLimitResponse>,
+  input: __S(1424, __c89, 0) as any as S.Schema<GetNetAppResourceQuotaLimitRequest>,
+  output: __S(1440, __c90, 0) as any as S.Schema<GetNetAppResourceQuotaLimitResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5545,8 +5545,8 @@ export const GetNetAppResourceQuotaLimitsAccount: API.OperationMethod<
   GetNetAppResourceQuotaLimitsAccountError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(162, __c20, 2) as any as S.Schema<GetNetAppResourceQuotaLimitsAccountRequest>,
-  output: __S(161, __c20, 1) as any as S.Schema<GetNetAppResourceQuotaLimitsAccountResponse>,
+  input: __S(1472, __c92, 0) as any as S.Schema<GetNetAppResourceQuotaLimitsAccountRequest>,
+  output: __S(1440, __c90, 0) as any as S.Schema<GetNetAppResourceQuotaLimitsAccountResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5560,8 +5560,8 @@ export const GetNetAppResourceRegionInfos: API.OperationMethod<
   GetNetAppResourceRegionInfosError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(163, __c20, 3) as any as S.Schema<GetNetAppResourceRegionInfosRequest>,
-  output: __S(167, __c20, 7) as any as S.Schema<GetNetAppResourceRegionInfosResponse>,
+  input: __S(1488, __c93, 0) as any as S.Schema<GetNetAppResourceRegionInfosRequest>,
+  output: __S(1489, __c93, 1) as any as S.Schema<GetNetAppResourceRegionInfosResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5575,8 +5575,8 @@ export const GetNetAppResourceUsage: API.OperationMethod<
   GetNetAppResourceUsageError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(168, __c21, 0) as any as S.Schema<GetNetAppResourceUsageRequest>,
-  output: __S(171, __c21, 3) as any as S.Schema<UsageResult>,
+  input: __S(1520, __c95, 0) as any as S.Schema<GetNetAppResourceUsageRequest>,
+  output: __S(1538, __c96, 2) as any as S.Schema<UsageResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5590,8 +5590,8 @@ export const GetPool: API.OperationMethod<
   GetPoolError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(172, __c21, 4) as any as S.Schema<GetPoolRequest>,
-  output: __S(174, __c21, 6) as any as S.Schema<GetPoolResponse>,
+  input: __S(1552, __c97, 0) as any as S.Schema<GetPoolRequest>,
+  output: __S(1584, __c99, 0) as any as S.Schema<GetPoolResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5605,8 +5605,8 @@ export const GetRansomwareReport: API.OperationMethod<
   GetRansomwareReportError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(175, __c21, 7) as any as S.Schema<GetRansomwareReportRequest>,
-  output: __S(181, __c22, 5) as any as S.Schema<GetRansomwareReportResponse>,
+  input: __S(1616, __c101, 0) as any as S.Schema<GetRansomwareReportRequest>,
+  output: __S(1617, __c101, 1) as any as S.Schema<GetRansomwareReportResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5620,8 +5620,8 @@ export const GetSnapshot: API.OperationMethod<
   GetSnapshotError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(182, __c22, 6) as any as S.Schema<GetSnapshotRequest>,
-  output: __S(82, __c10, 2) as any as S.Schema<GetSnapshotResponse>,
+  input: __S(1648, __c103, 0) as any as S.Schema<GetSnapshotRequest>,
+  output: __S(625, __c39, 1) as any as S.Schema<GetSnapshotResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5635,8 +5635,8 @@ export const GetSnapshotPolicy: API.OperationMethod<
   GetSnapshotPolicyError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(183, __c22, 7) as any as S.Schema<GetSnapshotPolicyRequest>,
-  output: __S(90, __c11, 2) as any as S.Schema<GetSnapshotPolicyResponse>,
+  input: __S(1664, __c104, 0) as any as S.Schema<GetSnapshotPolicyRequest>,
+  output: __S(672, __c42, 0) as any as S.Schema<GetSnapshotPolicyResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5650,8 +5650,8 @@ export const GetVolume: API.OperationMethod<
   GetVolumeError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(184, __c23, 0) as any as S.Schema<GetVolumeRequest>,
-  output: __S(185, __c23, 1) as any as S.Schema<GetVolumeResponse>,
+  input: __S(1680, __c105, 0) as any as S.Schema<GetVolumeRequest>,
+  output: __S(1696, __c106, 0) as any as S.Schema<GetVolumeResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5665,8 +5665,8 @@ export const GetVolumeGroup: API.OperationMethod<
   GetVolumeGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(186, __c23, 2) as any as S.Schema<GetVolumeGroupRequest>,
-  output: __S(187, __c23, 3) as any as S.Schema<GetVolumeGroupResponse>,
+  input: __S(1712, __c107, 0) as any as S.Schema<GetVolumeGroupRequest>,
+  output: __S(1713, __c107, 1) as any as S.Schema<GetVolumeGroupResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5680,8 +5680,8 @@ export const GetVolumeQuotaRule: API.OperationMethod<
   GetVolumeQuotaRuleError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(188, __c23, 4) as any as S.Schema<GetVolumeQuotaRuleRequest>,
-  output: __S(122, __c15, 2) as any as S.Schema<GetVolumeQuotaRuleResponse>,
+  input: __S(1728, __c108, 0) as any as S.Schema<GetVolumeQuotaRuleRequest>,
+  output: __S(832, __c52, 0) as any as S.Schema<GetVolumeQuotaRuleResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5695,8 +5695,8 @@ export const ListAccountBySubscription: API.OperationMethod<
   ListAccountBySubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(189, __c23, 5) as any as S.Schema<ListAccountBySubscriptionRequest>,
-  output: __S(193, __c24, 1) as any as S.Schema<NetAppAccountList>,
+  input: __S(1744, __c109, 0) as any as S.Schema<ListAccountBySubscriptionRequest>,
+  output: __S(1763, __c110, 3) as any as S.Schema<NetAppAccountList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5710,8 +5710,8 @@ export const ListAccounts: API.OperationMethod<
   ListAccountsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(194, __c24, 2) as any as S.Schema<ListAccountsRequest>,
-  output: __S(193, __c24, 1) as any as S.Schema<NetAppAccountList>,
+  input: __S(1776, __c111, 0) as any as S.Schema<ListAccountsRequest>,
+  output: __S(1763, __c110, 3) as any as S.Schema<NetAppAccountList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5725,8 +5725,8 @@ export const ListBackupByVault: API.OperationMethod<
   ListBackupByVaultError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(195, __c24, 3) as any as S.Schema<ListBackupByVaultRequest>,
-  output: __S(197, __c24, 5) as any as S.Schema<BackupsList>,
+  input: __S(1792, __c112, 0) as any as S.Schema<ListBackupByVaultRequest>,
+  output: __S(1794, __c112, 2) as any as S.Schema<BackupsList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5740,8 +5740,8 @@ export const ListBackupPolicies: API.OperationMethod<
   ListBackupPoliciesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(198, __c24, 6) as any as S.Schema<ListBackupPoliciesRequest>,
-  output: __S(200, __c25, 0) as any as S.Schema<BackupPoliciesList>,
+  input: __S(1808, __c113, 0) as any as S.Schema<ListBackupPoliciesRequest>,
+  output: __S(1810, __c113, 2) as any as S.Schema<BackupPoliciesList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5755,8 +5755,8 @@ export const ListBackupVaultByNetAppAccount: API.OperationMethod<
   ListBackupVaultByNetAppAccountError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(201, __c25, 1) as any as S.Schema<ListBackupVaultByNetAppAccountRequest>,
-  output: __S(203, __c25, 3) as any as S.Schema<BackupVaultsList>,
+  input: __S(1872, __c117, 0) as any as S.Schema<ListBackupVaultByNetAppAccountRequest>,
+  output: __S(1874, __c117, 2) as any as S.Schema<BackupVaultsList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5770,8 +5770,8 @@ export const ListBuckets: API.OperationMethod<
   ListBucketsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(204, __c25, 4) as any as S.Schema<ListBucketsRequest>,
-  output: __S(206, __c25, 6) as any as S.Schema<BucketList>,
+  input: __S(1888, __c118, 0) as any as S.Schema<ListBucketsRequest>,
+  output: __S(1890, __c118, 2) as any as S.Schema<BucketList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5785,8 +5785,8 @@ export const ListCaches: API.OperationMethod<
   ListCachesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(207, __c25, 7) as any as S.Schema<ListCachesRequest>,
-  output: __S(211, __c26, 3) as any as S.Schema<CacheList>,
+  input: __S(1904, __c119, 0) as any as S.Schema<ListCachesRequest>,
+  output: __S(1907, __c119, 3) as any as S.Schema<CacheList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5800,8 +5800,8 @@ export const ListCachPeeringPassphrases: API.OperationMethod<
   ListCachPeeringPassphrasesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(212, __c26, 4) as any as S.Schema<ListCachPeeringPassphrasesRequest>,
-  output: __S(213, __c26, 5) as any as S.Schema<PeeringPassphrases>,
+  input: __S(1936, __c121, 0) as any as S.Schema<ListCachPeeringPassphrasesRequest>,
+  output: __S(1937, __c121, 1) as any as S.Schema<PeeringPassphrases>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5815,8 +5815,8 @@ export const ListNetAppResourceQuotaLimits: API.OperationMethod<
   ListNetAppResourceQuotaLimitsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(214, __c26, 6) as any as S.Schema<ListNetAppResourceQuotaLimitsRequest>,
-  output: __S(217, __c27, 1) as any as S.Schema<QuotaItemList>,
+  input: __S(1952, __c122, 0) as any as S.Schema<ListNetAppResourceQuotaLimitsRequest>,
+  output: __S(1970, __c123, 2) as any as S.Schema<QuotaItemList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5830,8 +5830,8 @@ export const ListNetAppResourceQuotaLimitsAccount: API.OperationMethod<
   ListNetAppResourceQuotaLimitsAccountError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(218, __c27, 2) as any as S.Schema<ListNetAppResourceQuotaLimitsAccountRequest>,
-  output: __S(217, __c27, 1) as any as S.Schema<QuotaItemList>,
+  input: __S(1984, __c124, 0) as any as S.Schema<ListNetAppResourceQuotaLimitsAccountRequest>,
+  output: __S(1970, __c123, 2) as any as S.Schema<QuotaItemList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5845,8 +5845,8 @@ export const ListNetAppResourceRegionInfos: API.OperationMethod<
   ListNetAppResourceRegionInfosError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(219, __c27, 3) as any as S.Schema<ListNetAppResourceRegionInfosRequest>,
-  output: __S(222, __c27, 6) as any as S.Schema<RegionInfosList>,
+  input: __S(2000, __c125, 0) as any as S.Schema<ListNetAppResourceRegionInfosRequest>,
+  output: __S(2003, __c125, 3) as any as S.Schema<RegionInfosList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5860,8 +5860,8 @@ export const ListNetAppResourceUsages: API.OperationMethod<
   ListNetAppResourceUsagesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(223, __c27, 7) as any as S.Schema<ListNetAppResourceUsagesRequest>,
-  output: __S(225, __c28, 1) as any as S.Schema<UsagesListResult>,
+  input: __S(2016, __c126, 0) as any as S.Schema<ListNetAppResourceUsagesRequest>,
+  output: __S(2018, __c126, 2) as any as S.Schema<UsagesListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5875,8 +5875,8 @@ export const ListOperations: API.OperationMethod<
   ListOperationsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(226, __c28, 2) as any as S.Schema<ListOperationsRequest>,
-  output: __S(236, __c29, 4) as any as S.Schema<OperationListResult>,
+  input: __S(2032, __c127, 0) as any as S.Schema<ListOperationsRequest>,
+  output: __S(2042, __c127, 10) as any as S.Schema<OperationListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5890,8 +5890,8 @@ export const ListPools: API.OperationMethod<
   ListPoolsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(237, __c29, 5) as any as S.Schema<ListPoolsRequest>,
-  output: __S(239, __c29, 7) as any as S.Schema<CapacityPoolList>,
+  input: __S(2048, __c128, 0) as any as S.Schema<ListPoolsRequest>,
+  output: __S(2050, __c128, 2) as any as S.Schema<CapacityPoolList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5905,8 +5905,8 @@ export const ListRansomwareReports: API.OperationMethod<
   ListRansomwareReportsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(240, __c30, 0) as any as S.Schema<ListRansomwareReportsRequest>,
-  output: __S(243, __c30, 3) as any as S.Schema<RansomwareReportsList>,
+  input: __S(2112, __c132, 0) as any as S.Schema<ListRansomwareReportsRequest>,
+  output: __S(2115, __c132, 3) as any as S.Schema<RansomwareReportsList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5920,8 +5920,8 @@ export const ListSnapshotPolicies: API.OperationMethod<
   ListSnapshotPoliciesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(244, __c30, 4) as any as S.Schema<ListSnapshotPoliciesRequest>,
-  output: __S(247, __c30, 7) as any as S.Schema<SnapshotPoliciesList>,
+  input: __S(2128, __c133, 0) as any as S.Schema<ListSnapshotPoliciesRequest>,
+  output: __S(2131, __c133, 3) as any as S.Schema<SnapshotPoliciesList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5935,8 +5935,8 @@ export const ListSnapshotPolicyVolumes: API.OperationMethod<
   ListSnapshotPolicyVolumesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(248, __c31, 0) as any as S.Schema<ListSnapshotPolicyVolumesRequest>,
-  output: __S(251, __c31, 3) as any as S.Schema<SnapshotPolicyVolumeList>,
+  input: __S(2144, __c134, 0) as any as S.Schema<ListSnapshotPolicyVolumesRequest>,
+  output: __S(2162, __c135, 2) as any as S.Schema<SnapshotPolicyVolumeList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5950,8 +5950,8 @@ export const ListSnapshots: API.OperationMethod<
   ListSnapshotsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(252, __c31, 4) as any as S.Schema<ListSnapshotsRequest>,
-  output: __S(254, __c31, 6) as any as S.Schema<SnapshotsList>,
+  input: __S(2176, __c136, 0) as any as S.Schema<ListSnapshotsRequest>,
+  output: __S(2178, __c136, 2) as any as S.Schema<SnapshotsList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5965,8 +5965,8 @@ export const ListVolumeGroupByNetAppAccount: API.OperationMethod<
   ListVolumeGroupByNetAppAccountError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(255, __c31, 7) as any as S.Schema<ListVolumeGroupByNetAppAccountRequest>,
-  output: __S(259, __c32, 3) as any as S.Schema<VolumeGroupList>,
+  input: __S(2192, __c137, 0) as any as S.Schema<ListVolumeGroupByNetAppAccountRequest>,
+  output: __S(2196, __c137, 4) as any as S.Schema<VolumeGroupList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5980,8 +5980,8 @@ export const ListVolumeQuotaReport: API.OperationMethod<
   ListVolumeQuotaReportError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(260, __c32, 4) as any as S.Schema<ListVolumeQuotaReportRequest>,
-  output: __S(264, __c33, 0) as any as S.Schema<ListQuotaReportResult>,
+  input: __S(2208, __c138, 0) as any as S.Schema<ListVolumeQuotaReportRequest>,
+  output: __S(2212, __c138, 4) as any as S.Schema<ListQuotaReportResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5995,8 +5995,8 @@ export const ListVolumeQuotaRuleByVolume: API.OperationMethod<
   ListVolumeQuotaRuleByVolumeError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(265, __c33, 1) as any as S.Schema<ListVolumeQuotaRuleByVolumeRequest>,
-  output: __S(268, __c33, 4) as any as S.Schema<VolumeQuotaRulesList>,
+  input: __S(2224, __c139, 0) as any as S.Schema<ListVolumeQuotaRuleByVolumeRequest>,
+  output: __S(2227, __c139, 3) as any as S.Schema<VolumeQuotaRulesList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6010,8 +6010,8 @@ export const ListVolumeReplications: API.OperationMethod<
   ListVolumeReplicationsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(269, __c33, 5) as any as S.Schema<ListVolumeReplicationsRequest>,
-  output: __S(272, __c34, 0) as any as S.Schema<ListReplications>,
+  input: __S(2240, __c140, 0) as any as S.Schema<ListVolumeReplicationsRequest>,
+  output: __S(2243, __c140, 3) as any as S.Schema<ListReplications>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6025,8 +6025,8 @@ export const ListVolumes: API.OperationMethod<
   ListVolumesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(273, __c34, 1) as any as S.Schema<ListVolumesRequest>,
-  output: __S(251, __c31, 3) as any as S.Schema<VolumeList>,
+  input: __S(2256, __c141, 0) as any as S.Schema<ListVolumesRequest>,
+  output: __S(2162, __c135, 2) as any as S.Schema<VolumeList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6040,8 +6040,8 @@ export const MigrateBackupsUnderAccountBackups: API.OperationMethod<
   MigrateBackupsUnderAccountBackupsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(274, __c34, 2) as any as S.Schema<MigrateBackupsUnderAccountBackupsRequest>,
-  output: __S(33, __c4, 1) as any as S.Schema<MigrateBackupsUnderAccountBackupsResponse>,
+  input: __S(2272, __c142, 0) as any as S.Schema<MigrateBackupsUnderAccountBackupsRequest>,
+  output: __S(1280, __c80, 0) as any as S.Schema<MigrateBackupsUnderAccountBackupsResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6055,8 +6055,8 @@ export const MigrateBackupsUnderVolumeBackups: API.OperationMethod<
   MigrateBackupsUnderVolumeBackupsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(275, __c34, 3) as any as S.Schema<MigrateBackupsUnderVolumeBackupsRequest>,
-  output: __S(33, __c4, 1) as any as S.Schema<MigrateBackupsUnderVolumeBackupsResponse>,
+  input: __S(2368, __c148, 0) as any as S.Schema<MigrateBackupsUnderVolumeBackupsRequest>,
+  output: __S(1280, __c80, 0) as any as S.Schema<MigrateBackupsUnderVolumeBackupsResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6070,8 +6070,8 @@ export const NetAppResourceQueryRegionInfo: API.OperationMethod<
   NetAppResourceQueryRegionInfoError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(276, __c34, 4) as any as S.Schema<NetAppResourceQueryRegionInfoRequest>,
-  output: __S(166, __c20, 6) as any as S.Schema<RegionInfo>,
+  input: __S(2384, __c149, 0) as any as S.Schema<NetAppResourceQueryRegionInfoRequest>,
+  output: __S(1506, __c94, 2) as any as S.Schema<RegionInfo>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6085,8 +6085,8 @@ export const PoolsCreateOrUpdate: API.OperationMethod<
   PoolsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(278, __c34, 6) as any as S.Schema<PoolsCreateOrUpdateRequest>,
-  output: __S(279, __c34, 7) as any as S.Schema<PoolsCreateOrUpdateResponse>,
+  input: __S(2401, __c150, 1) as any as S.Schema<PoolsCreateOrUpdateRequest>,
+  output: __S(2402, __c150, 2) as any as S.Schema<PoolsCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6100,8 +6100,8 @@ export const RefreshBucketCertificate: API.OperationMethod<
   RefreshBucketCertificateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(280, __c35, 0) as any as S.Schema<RefreshBucketCertificateRequest>,
-  output: __S(33, __c4, 1) as any as S.Schema<RefreshBucketCertificateResponse>,
+  input: __S(2416, __c151, 0) as any as S.Schema<RefreshBucketCertificateRequest>,
+  output: __S(1280, __c80, 0) as any as S.Schema<RefreshBucketCertificateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6115,8 +6115,8 @@ export const RenewAccountCredentials: API.OperationMethod<
   RenewAccountCredentialsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(281, __c35, 1) as any as S.Schema<RenewAccountCredentialsRequest>,
-  output: __S(28, __c3, 4) as any as S.Schema<RenewAccountCredentialsResponse>,
+  input: __S(2432, __c152, 0) as any as S.Schema<RenewAccountCredentialsRequest>,
+  output: __S(880, __c55, 0) as any as S.Schema<RenewAccountCredentialsResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6130,8 +6130,8 @@ export const ResetCachSmbPassword: API.OperationMethod<
   ResetCachSmbPasswordError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(282, __c35, 2) as any as S.Schema<ResetCachSmbPasswordRequest>,
-  output: __S(62, __c7, 6) as any as S.Schema<ResetCachSmbPasswordResponse>,
+  input: __S(2448, __c153, 0) as any as S.Schema<ResetCachSmbPasswordRequest>,
+  output: __S(2304, __c144, 0) as any as S.Schema<ResetCachSmbPasswordResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6145,8 +6145,8 @@ export const ResetVolumeCifsPassword: API.OperationMethod<
   ResetVolumeCifsPasswordError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(283, __c35, 3) as any as S.Schema<ResetVolumeCifsPasswordRequest>,
-  output: __S(28, __c3, 4) as any as S.Schema<ResetVolumeCifsPasswordResponse>,
+  input: __S(2464, __c154, 0) as any as S.Schema<ResetVolumeCifsPasswordRequest>,
+  output: __S(880, __c55, 0) as any as S.Schema<ResetVolumeCifsPasswordResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6160,8 +6160,8 @@ export const RestoreBackupsUnderBackupVaultFiles: API.OperationMethod<
   RestoreBackupsUnderBackupVaultFilesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(284, __c35, 4) as any as S.Schema<RestoreBackupsUnderBackupVaultFilesRequest>,
-  output: __S(33, __c4, 1) as any as S.Schema<RestoreBackupsUnderBackupVaultFilesResponse>,
+  input: __S(2480, __c155, 0) as any as S.Schema<RestoreBackupsUnderBackupVaultFilesRequest>,
+  output: __S(1280, __c80, 0) as any as S.Schema<RestoreBackupsUnderBackupVaultFilesResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6175,8 +6175,8 @@ export const RestoreSnapshotFiles: API.OperationMethod<
   RestoreSnapshotFilesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(285, __c35, 5) as any as S.Schema<RestoreSnapshotFilesRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<RestoreSnapshotFilesResponse>,
+  input: __S(2496, __c156, 0) as any as S.Schema<RestoreSnapshotFilesRequest>,
+  output: __S(16, __c1, 0) as any as S.Schema<RestoreSnapshotFilesResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6190,8 +6190,8 @@ export const SetNetAppResourceQueryNetworkSibling: API.OperationMethod<
   SetNetAppResourceQueryNetworkSiblingError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(286, __c35, 6) as any as S.Schema<SetNetAppResourceQueryNetworkSiblingRequest>,
-  output: __S(289, __c36, 1) as any as S.Schema<NetworkSiblingSet>,
+  input: __S(2512, __c157, 0) as any as S.Schema<SetNetAppResourceQueryNetworkSiblingRequest>,
+  output: __S(2530, __c158, 2) as any as S.Schema<NetworkSiblingSet>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6205,8 +6205,8 @@ export const TransferVolumesPerformReplication: API.OperationMethod<
   TransferVolumesPerformReplicationError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(290, __c36, 2) as any as S.Schema<TransferVolumesPerformReplicationRequest>,
-  output: __S(33, __c4, 1) as any as S.Schema<TransferVolumesPerformReplicationResponse>,
+  input: __S(2576, __c161, 0) as any as S.Schema<TransferVolumesPerformReplicationRequest>,
+  output: __S(1280, __c80, 0) as any as S.Schema<TransferVolumesPerformReplicationResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6220,8 +6220,8 @@ export const UpdateAccount: API.OperationMethod<
   UpdateAccountError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(293, __c36, 5) as any as S.Schema<UpdateAccountRequest>,
-  output: __S(144, __c18, 0) as any as S.Schema<UpdateAccountResponse>,
+  input: __S(2594, __c162, 2) as any as S.Schema<UpdateAccountRequest>,
+  output: __S(1217, __c76, 1) as any as S.Schema<UpdateAccountResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6235,8 +6235,8 @@ export const UpdateBackup: API.OperationMethod<
   UpdateBackupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(295, __c36, 7) as any as S.Schema<UpdateBackupRequest>,
-  output: __S(73, __c9, 1) as any as S.Schema<UpdateBackupResponse>,
+  input: __S(2609, __c163, 1) as any as S.Schema<UpdateBackupRequest>,
+  output: __S(545, __c34, 1) as any as S.Schema<UpdateBackupResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6250,8 +6250,8 @@ export const UpdateBackupPolicy: API.OperationMethod<
   UpdateBackupPolicyError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(296, __c37, 0) as any as S.Schema<UpdateBackupPolicyRequest>,
-  output: __S(79, __c9, 7) as any as S.Schema<UpdateBackupPolicyResponse>,
+  input: __S(2624, __c164, 0) as any as S.Schema<UpdateBackupPolicyRequest>,
+  output: __S(593, __c37, 1) as any as S.Schema<UpdateBackupPolicyResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6265,8 +6265,8 @@ export const UpdateBackupVault: API.OperationMethod<
   UpdateBackupVaultError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(297, __c37, 1) as any as S.Schema<UpdateBackupVaultRequest>,
-  output: __S(38, __c4, 6) as any as S.Schema<UpdateBackupVaultResponse>,
+  input: __S(2640, __c165, 0) as any as S.Schema<UpdateBackupVaultRequest>,
+  output: __S(1856, __c116, 0) as any as S.Schema<UpdateBackupVaultResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6280,8 +6280,8 @@ export const UpdateBucket: API.OperationMethod<
   UpdateBucketError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(299, __c37, 3) as any as S.Schema<UpdateBucketRequest>,
-  output: __S(157, __c19, 5) as any as S.Schema<UpdateBucketResponse>,
+  input: __S(2657, __c166, 1) as any as S.Schema<UpdateBucketRequest>,
+  output: __S(1392, __c87, 0) as any as S.Schema<UpdateBucketResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6295,8 +6295,8 @@ export const UpdateCach: API.OperationMethod<
   UpdateCachError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(301, __c37, 5) as any as S.Schema<UpdateCachRequest>,
-  output: __S(64, __c8, 0) as any as S.Schema<UpdateCachResponse>,
+  input: __S(2673, __c167, 1) as any as S.Schema<UpdateCachRequest>,
+  output: __S(2560, __c160, 0) as any as S.Schema<UpdateCachResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6310,8 +6310,8 @@ export const UpdateNetAppResourceNetworkSiblingSet: API.OperationMethod<
   UpdateNetAppResourceNetworkSiblingSetError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(302, __c37, 6) as any as S.Schema<UpdateNetAppResourceNetworkSiblingSetRequest>,
-  output: __S(289, __c36, 1) as any as S.Schema<NetworkSiblingSet>,
+  input: __S(2688, __c168, 0) as any as S.Schema<UpdateNetAppResourceNetworkSiblingSetRequest>,
+  output: __S(2530, __c158, 2) as any as S.Schema<NetworkSiblingSet>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6325,8 +6325,8 @@ export const UpdatePool: API.OperationMethod<
   UpdatePoolError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(304, __c38, 0) as any as S.Schema<UpdatePoolRequest>,
-  output: __S(174, __c21, 6) as any as S.Schema<UpdatePoolResponse>,
+  input: __S(2705, __c169, 1) as any as S.Schema<UpdatePoolRequest>,
+  output: __S(1584, __c99, 0) as any as S.Schema<UpdatePoolResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6340,8 +6340,8 @@ export const UpdateSnapshot: API.OperationMethod<
   UpdateSnapshotError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(305, __c38, 1) as any as S.Schema<UpdateSnapshotRequest>,
-  output: __S(82, __c10, 2) as any as S.Schema<UpdateSnapshotResponse>,
+  input: __S(2720, __c170, 0) as any as S.Schema<UpdateSnapshotRequest>,
+  output: __S(625, __c39, 1) as any as S.Schema<UpdateSnapshotResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6355,8 +6355,8 @@ export const UpdateSnapshotPolicy: API.OperationMethod<
   UpdateSnapshotPolicyError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(306, __c38, 2) as any as S.Schema<UpdateSnapshotPolicyRequest>,
-  output: __S(90, __c11, 2) as any as S.Schema<UpdateSnapshotPolicyResponse>,
+  input: __S(176, __c11, 0) as any as S.Schema<UpdateSnapshotPolicyRequest>,
+  output: __S(672, __c42, 0) as any as S.Schema<UpdateSnapshotPolicyResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6370,8 +6370,8 @@ export const UpdateVolume: API.OperationMethod<
   UpdateVolumeError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(310, __c38, 6) as any as S.Schema<UpdateVolumeRequest>,
-  output: __S(185, __c23, 1) as any as S.Schema<UpdateVolumeResponse>,
+  input: __S(195, __c12, 3) as any as S.Schema<UpdateVolumeRequest>,
+  output: __S(1696, __c106, 0) as any as S.Schema<UpdateVolumeResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6385,8 +6385,8 @@ export const UpdateVolumeQuotaRule: API.OperationMethod<
   UpdateVolumeQuotaRuleError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(311, __c38, 7) as any as S.Schema<UpdateVolumeQuotaRuleRequest>,
-  output: __S(122, __c15, 2) as any as S.Schema<UpdateVolumeQuotaRuleResponse>,
+  input: __S(208, __c13, 0) as any as S.Schema<UpdateVolumeQuotaRuleRequest>,
+  output: __S(832, __c52, 0) as any as S.Schema<UpdateVolumeQuotaRuleResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6400,8 +6400,8 @@ export const VolumesBreakFileLocks: API.OperationMethod<
   VolumesBreakFileLocksError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(312, __c39, 0) as any as S.Schema<VolumesBreakFileLocksRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<VolumesBreakFileLocksResponse>,
+  input: __S(224, __c14, 0) as any as S.Schema<VolumesBreakFileLocksRequest>,
+  output: __S(16, __c1, 0) as any as S.Schema<VolumesBreakFileLocksResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6415,8 +6415,8 @@ export const VolumesBreakReplication: API.OperationMethod<
   VolumesBreakReplicationError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(313, __c39, 1) as any as S.Schema<VolumesBreakReplicationRequest>,
-  output: __S(28, __c3, 4) as any as S.Schema<VolumesBreakReplicationResponse>,
+  input: __S(240, __c15, 0) as any as S.Schema<VolumesBreakReplicationRequest>,
+  output: __S(880, __c55, 0) as any as S.Schema<VolumesBreakReplicationResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6430,8 +6430,8 @@ export const VolumesCreateOrUpdate: API.OperationMethod<
   VolumesCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(314, __c39, 2) as any as S.Schema<VolumesCreateOrUpdateRequest>,
-  output: __S(315, __c39, 3) as any as S.Schema<VolumesCreateOrUpdateResponse>,
+  input: __S(256, __c16, 0) as any as S.Schema<VolumesCreateOrUpdateRequest>,
+  output: __S(272, __c17, 0) as any as S.Schema<VolumesCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6445,8 +6445,8 @@ export const VolumesListGetGroupIdListForLdapUser: API.OperationMethod<
   VolumesListGetGroupIdListForLdapUserError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(316, __c39, 4) as any as S.Schema<VolumesListGetGroupIdListForLdapUserRequest>,
-  output: __S(317, __c39, 5) as any as S.Schema<GetGroupIdListForLdapUserResponse>,
+  input: __S(288, __c18, 0) as any as S.Schema<VolumesListGetGroupIdListForLdapUserRequest>,
+  output: __S(289, __c18, 1) as any as S.Schema<GetGroupIdListForLdapUserResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6460,8 +6460,8 @@ export const VolumesPeerExternalCluster: API.OperationMethod<
   VolumesPeerExternalClusterError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(318, __c39, 6) as any as S.Schema<VolumesPeerExternalClusterRequest>,
-  output: __S(320, __c40, 0) as any as S.Schema<ClusterPeerCommandResponse>,
+  input: __S(304, __c19, 0) as any as S.Schema<VolumesPeerExternalClusterRequest>,
+  output: __S(306, __c19, 2) as any as S.Schema<ClusterPeerCommandResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6475,8 +6475,8 @@ export const VolumesPoolChange: API.OperationMethod<
   VolumesPoolChangeError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(321, __c40, 1) as any as S.Schema<VolumesPoolChangeRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<VolumesPoolChangeResponse>,
+  input: __S(320, __c20, 0) as any as S.Schema<VolumesPoolChangeRequest>,
+  output: __S(16, __c1, 0) as any as S.Schema<VolumesPoolChangeResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6490,8 +6490,8 @@ export const VolumesPopulateAvailabilityZone: API.OperationMethod<
   VolumesPopulateAvailabilityZoneError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(322, __c40, 2) as any as S.Schema<VolumesPopulateAvailabilityZoneRequest>,
-  output: __S(315, __c39, 3) as any as S.Schema<VolumesPopulateAvailabilityZoneResponse>,
+  input: __S(336, __c21, 0) as any as S.Schema<VolumesPopulateAvailabilityZoneRequest>,
+  output: __S(272, __c17, 0) as any as S.Schema<VolumesPopulateAvailabilityZoneResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6505,8 +6505,8 @@ export const VolumesReestablishReplication: API.OperationMethod<
   VolumesReestablishReplicationError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(323, __c40, 3) as any as S.Schema<VolumesReestablishReplicationRequest>,
-  output: __S(33, __c4, 1) as any as S.Schema<VolumesReestablishReplicationResponse>,
+  input: __S(368, __c23, 0) as any as S.Schema<VolumesReestablishReplicationRequest>,
+  output: __S(1280, __c80, 0) as any as S.Schema<VolumesReestablishReplicationResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6520,8 +6520,8 @@ export const VolumesReInitializeReplication: API.OperationMethod<
   VolumesReInitializeReplicationError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(324, __c40, 4) as any as S.Schema<VolumesReInitializeReplicationRequest>,
-  output: __S(33, __c4, 1) as any as S.Schema<VolumesReInitializeReplicationResponse>,
+  input: __S(384, __c24, 0) as any as S.Schema<VolumesReInitializeReplicationRequest>,
+  output: __S(1280, __c80, 0) as any as S.Schema<VolumesReInitializeReplicationResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6535,8 +6535,8 @@ export const VolumesRelocate: API.OperationMethod<
   VolumesRelocateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(325, __c40, 5) as any as S.Schema<VolumesRelocateRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<VolumesRelocateResponse>,
+  input: __S(400, __c25, 0) as any as S.Schema<VolumesRelocateRequest>,
+  output: __S(16, __c1, 0) as any as S.Schema<VolumesRelocateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6550,8 +6550,8 @@ export const VolumesReplicationStatus: API.OperationMethod<
   VolumesReplicationStatusError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(326, __c40, 6) as any as S.Schema<VolumesReplicationStatusRequest>,
-  output: __S(327, __c40, 7) as any as S.Schema<ReplicationStatus>,
+  input: __S(416, __c26, 0) as any as S.Schema<VolumesReplicationStatusRequest>,
+  output: __S(417, __c26, 1) as any as S.Schema<ReplicationStatus>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6565,8 +6565,8 @@ export const VolumesResyncReplication: API.OperationMethod<
   VolumesResyncReplicationError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(328, __c41, 0) as any as S.Schema<VolumesResyncReplicationRequest>,
-  output: __S(33, __c4, 1) as any as S.Schema<VolumesResyncReplicationResponse>,
+  input: __S(432, __c27, 0) as any as S.Schema<VolumesResyncReplicationRequest>,
+  output: __S(1280, __c80, 0) as any as S.Schema<VolumesResyncReplicationResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6580,8 +6580,8 @@ export const VolumesRevert: API.OperationMethod<
   VolumesRevertError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(329, __c41, 1) as any as S.Schema<VolumesRevertRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<VolumesRevertResponse>,
+  input: __S(448, __c28, 0) as any as S.Schema<VolumesRevertRequest>,
+  output: __S(16, __c1, 0) as any as S.Schema<VolumesRevertResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6595,8 +6595,8 @@ export const VolumesRevertRelocation: API.OperationMethod<
   VolumesRevertRelocationError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(330, __c41, 2) as any as S.Schema<VolumesRevertRelocationRequest>,
-  output: __S(28, __c3, 4) as any as S.Schema<VolumesRevertRelocationResponse>,
+  input: __S(464, __c29, 0) as any as S.Schema<VolumesRevertRelocationRequest>,
+  output: __S(880, __c55, 0) as any as S.Schema<VolumesRevertRelocationResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6610,8 +6610,8 @@ export const VolumesSplitCloneFromParent: API.OperationMethod<
   VolumesSplitCloneFromParentError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(331, __c41, 3) as any as S.Schema<VolumesSplitCloneFromParentRequest>,
-  output: __S(315, __c39, 3) as any as S.Schema<VolumesSplitCloneFromParentResponse>,
+  input: __S(480, __c30, 0) as any as S.Schema<VolumesSplitCloneFromParentRequest>,
+  output: __S(272, __c17, 0) as any as S.Schema<VolumesSplitCloneFromParentResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6621,15 +6621,8 @@ export const VolumesSplitCloneFromParent: API.OperationMethod<
 function __c0(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() =>
-        S.Struct({
-          virtualNetworkId: S.optional(S.String),
-          privateEndpointId: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "KeyVaultPrivateEndpoint" });
+      return S.Array(__S(32, __c2, 0));
     case 1:
-      return S.Array(__S(0, __c0, 0));
-    case 2:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -6638,7 +6631,7 @@ function __c0(j: number): any {
           keyVaultUri: S.String,
           keyName: S.String,
           keyVaultResourceId: S.optional(S.String),
-          keyVaultPrivateEndpoints: __S(1, __c0, 1),
+          keyVaultPrivateEndpoints: __S(0, __c0, 0),
         }).pipe(
           T.Http({
             method: "POST",
@@ -6650,106 +6643,50 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "AccountsChangeKeyVaultRequest",
       });
-    case 3:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "AccountsChangeKeyVaultResponse",
-      });
-    case 4:
-      return S.Record(S.String, S.String);
-    case 5:
-      return S.Array(S.String);
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          userDN: S.optional(S.String),
-          groupDN: S.optional(S.String),
-          groupMembershipFilter: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "LdapSearchScopeOpt" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          activeDirectoryId: S.optional(S.NullOr(S.String)),
-          username: S.optional(S.String),
-          password: S.optional(S.String.pipe(T.SensitiveValue({}))),
-          domain: S.optional(S.String),
-          dns: S.optional(S.String),
-          smbServerName: S.optional(S.String),
-          organizationalUnit: S.optional(S.String),
-          site: S.optional(S.String),
-          backupOperators: S.optional(__S(5, __c0, 5)),
-          administrators: S.optional(__S(5, __c0, 5)),
-          kdcIP: S.optional(S.String),
-          adName: S.optional(S.String),
-          serverRootCACertificate: S.optional(S.String),
-          aesEncryption: S.optional(S.Boolean),
-          ldapSigning: S.optional(S.Boolean),
-          securityOperators: S.optional(__S(5, __c0, 5)),
-          ldapOverTLS: S.optional(S.Boolean),
-          allowLocalNfsUsersWithLdap: S.optional(S.Boolean),
-          encryptDCConnections: S.optional(S.Boolean),
-          ldapSearchScope: S.optional(__S(6, __c0, 6)),
-          preferredServersForLdapClient: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ActiveDirectoryInput" });
   }
 }
 function __c1(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(7, __c0, 7));
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "AccountsChangeKeyVaultResponse",
+      });
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          virtualNetworkId: S.optional(S.String),
+          privateEndpointId: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "KeyVaultPrivateEndpoint" });
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, /*@__PURE__*/ S.NullOr(__S(16, __c1, 0)));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          keyVaultUri: S.String,
-          keyName: S.String,
-          keyVaultResourceId: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "KeyVaultPropertiesInput" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          userAssignedIdentity: S.optional(S.String),
-          federatedClientId: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "EncryptionIdentityInput" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          keySource: S.optional(S.String),
-          keyVaultProperties: S.optional(__S(9, __c1, 1)),
-          identity: S.optional(__S(10, __c1, 2)),
-        }),
-      ).annotate({ identifier: "AccountEncryptionInput" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          activeDirectories: S.optional(__S(8, __c1, 0)),
-          encryption: S.optional(__S(11, __c1, 3)),
-          nfsV4IDDomain: S.optional(S.NullOr(S.String)),
-        }),
-      ).annotate({ identifier: "AccountPropertiesInput" });
-    case 5:
-      return S.Record(S.String, /*@__PURE__*/ S.NullOr(__S(3, __c0, 3)));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
           type: S.String,
-          userAssignedIdentities: S.optional(__S(13, __c1, 5)),
+          userAssignedIdentities: S.optional(__S(48, __c3, 0)),
         }),
       ).annotate({
         identifier: "AccountsCreateOrUpdateRequestIdentity",
       });
-    case 7:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           accountName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(4, __c0, 4)),
+          tags: S.optional(__S(96, __c6, 0)),
           location: S.String,
-          properties: S.optional(__S(12, __c1, 4)),
-          identity: S.optional(__S(14, __c1, 6)),
+          properties: S.optional(__S(133, __c8, 5)),
+          identity: S.optional(__S(49, __c3, 1)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -6761,21 +6698,47 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "AccountsCreateOrUpdateRequest",
       });
+    case 3:
+      return S.Record(S.String, /*@__PURE__*/ S.NullOr(__S(71, __c4, 7)));
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          principalId: S.optional(S.String),
+          tenantId: S.optional(S.String),
+          type: S.String,
+          userAssignedIdentities: S.optional(__S(51, __c3, 3)),
+        }),
+      ).annotate({
+        identifier: "AccountsCreateOrUpdateResponseIdentity",
+      });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(80, __c5, 0)),
+          tags: S.optional(__S(96, __c6, 0)),
+          location: S.String,
+          properties: S.optional(__S(70, __c4, 6)),
+          etag: S.optional(S.String),
+          identity: S.optional(__S(52, __c3, 4)),
+        }),
+      ).annotate({
+        identifier: "AccountsCreateOrUpdateResponse",
+      });
   }
 }
-function __c2(j: number): any {
+function __c4(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          createdBy: S.optional(S.String),
-          createdByType: S.optional(S.String),
-          createdAt: S.optional(S.String),
-          lastModifiedBy: S.optional(S.String),
-          lastModifiedByType: S.optional(S.String),
-          lastModifiedAt: S.optional(S.String),
+          userDN: S.optional(S.String),
+          groupDN: S.optional(S.String),
+          groupMembershipFilter: S.optional(S.String),
         }),
-      ).annotate({ identifier: "SystemData" });
+      ).annotate({ identifier: "LdapSearchScopeOpt" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -6789,23 +6752,23 @@ function __c2(j: number): any {
           smbServerName: S.optional(S.String),
           organizationalUnit: S.optional(S.String),
           site: S.optional(S.String),
-          backupOperators: S.optional(__S(5, __c0, 5)),
-          administrators: S.optional(__S(5, __c0, 5)),
+          backupOperators: S.optional(__S(112, __c7, 0)),
+          administrators: S.optional(__S(112, __c7, 0)),
           kdcIP: S.optional(S.String),
           adName: S.optional(S.String),
           serverRootCACertificate: S.optional(S.String),
           aesEncryption: S.optional(S.Boolean),
           ldapSigning: S.optional(S.Boolean),
-          securityOperators: S.optional(__S(5, __c0, 5)),
+          securityOperators: S.optional(__S(112, __c7, 0)),
           ldapOverTLS: S.optional(S.Boolean),
           allowLocalNfsUsersWithLdap: S.optional(S.Boolean),
           encryptDCConnections: S.optional(S.Boolean),
-          ldapSearchScope: S.optional(__S(6, __c0, 6)),
+          ldapSearchScope: S.optional(__S(64, __c4, 0)),
           preferredServersForLdapClient: S.optional(S.String),
         }),
       ).annotate({ identifier: "ActiveDirectory" });
     case 2:
-      return S.Array(__S(17, __c2, 1));
+      return S.Array(__S(65, __c4, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
@@ -6828,16 +6791,16 @@ function __c2(j: number): any {
       return S.suspend(() =>
         S.Struct({
           keySource: S.optional(S.String),
-          keyVaultProperties: S.optional(__S(19, __c2, 3)),
-          identity: S.optional(__S(20, __c2, 4)),
+          keyVaultProperties: S.optional(__S(67, __c4, 3)),
+          identity: S.optional(__S(68, __c4, 4)),
         }),
       ).annotate({ identifier: "AccountEncryption" });
     case 6:
       return S.suspend(() =>
         S.Struct({
           provisioningState: S.optional(S.String),
-          activeDirectories: S.optional(__S(18, __c2, 2)),
-          encryption: S.optional(__S(21, __c2, 5)),
+          activeDirectories: S.optional(__S(66, __c4, 2)),
+          encryption: S.optional(__S(69, __c4, 5)),
           disableShowmount: S.optional(S.NullOr(S.Boolean)),
           nfsV4IDDomain: S.optional(S.NullOr(S.String)),
           multiAdStatus: S.optional(S.String),
@@ -6852,491 +6815,31 @@ function __c2(j: number): any {
       ).annotate({ identifier: "UserAssignedIdentity" });
   }
 }
-function __c3(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Record(S.String, /*@__PURE__*/ S.NullOr(__S(23, __c2, 7)));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          principalId: S.optional(S.String),
-          tenantId: S.optional(S.String),
-          type: S.String,
-          userAssignedIdentities: S.optional(__S(24, __c3, 0)),
-        }),
-      ).annotate({
-        identifier: "AccountsCreateOrUpdateResponseIdentity",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(16, __c2, 0)),
-          tags: S.optional(__S(4, __c0, 4)),
-          location: S.String,
-          properties: S.optional(__S(22, __c2, 6)),
-          etag: S.optional(S.String),
-          identity: S.optional(__S(25, __c3, 1)),
-        }),
-      ).annotate({
-        identifier: "AccountsCreateOrUpdateResponse",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          accountName: S.String.pipe(T.Label()),
-          virtualNetworkId: S.String,
-          privateEndpointId: S.String,
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/transitiontocmk",
-            code: 200,
-            apiVersion: "2026-06-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "AccountsTransitionToCmkRequest",
-      });
-    case 4:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "AccountsTransitionToCmkResponse",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          accountName: S.String.pipe(T.Label()),
-          poolName: S.String.pipe(T.Label()),
-          volumeName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/capacityPools/{poolName}/volumes/{volumeName}/authorizeExternalReplication",
-            code: 200,
-            apiVersion: "2026-06-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "AuthorizeVolumeExternalReplicationRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          svmPeeringCommand: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "SvmPeerCommandResponseProperties",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          properties: S.optional(__S(30, __c3, 6)),
-        }),
-      ).annotate({ identifier: "SvmPeerCommandResponse" });
-  }
-}
-function __c4(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          accountName: S.String.pipe(T.Label()),
-          poolName: S.String.pipe(T.Label()),
-          volumeName: S.String.pipe(T.Label()),
-          remoteVolumeResourceId: S.optional(S.String),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/capacityPools/{poolName}/volumes/{volumeName}/authorizeReplication",
-            code: 200,
-            apiVersion: "2026-06-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "AuthorizeVolumeReplicationRequest",
-      });
-    case 1:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "AuthorizeVolumeReplicationResponse",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          accountName: S.String.pipe(T.Label()),
-          poolName: S.String.pipe(T.Label()),
-          volumeName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/capacityPools/{poolName}/volumes/{volumeName}/latestRestoreStatus/current",
-            code: 200,
-            apiVersion: "2026-06-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "BackupsGetVolumeLatestRestoreStatusRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          healthy: S.optional(S.Boolean),
-          relationshipStatus: S.optional(S.String),
-          mirrorState: S.optional(S.String),
-          unhealthyReason: S.optional(S.String),
-          errorMessage: S.optional(S.String),
-          totalTransferBytes: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "RestoreStatus" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          accountName: S.String.pipe(T.Label()),
-          backupVaultName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(4, __c0, 4)),
-          location: S.String,
-          properties: S.optional(__S(3, __c0, 3)),
-        }).pipe(
-          T.Http({
-            method: "PUT",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/backupVaults/{backupVaultName}",
-            code: 200,
-            apiVersion: "2026-06-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "BackupVaultsCreateOrUpdateRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          provisioningState: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "BackupVaultProperties" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(16, __c2, 0)),
-          tags: S.optional(__S(4, __c0, 4)),
-          location: S.String,
-          properties: S.optional(__S(37, __c4, 5)),
-        }),
-      ).annotate({
-        identifier: "BackupVaultsCreateOrUpdateResponse",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          userId: S.optional(S.Number),
-          groupId: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "NfsUser" });
-  }
-}
 function __c5(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          username: S.optional(S.String),
+          createdBy: S.optional(S.String),
+          createdByType: S.optional(S.String),
+          createdAt: S.optional(S.String),
+          lastModifiedBy: S.optional(S.String),
+          lastModifiedByType: S.optional(S.String),
+          lastModifiedAt: S.optional(S.String),
         }),
-      ).annotate({ identifier: "CifsUser" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          nfsUser: S.optional(__S(39, __c4, 7)),
-          cifsUser: S.optional(__S(40, __c5, 0)),
-        }),
-      ).annotate({ identifier: "FileSystemUser" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          fqdn: S.optional(S.String),
-          certificateObject: S.optional(S.String),
-          onCertificateConflictAction: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "BucketServerPropertiesInput",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          certificateKeyVaultUri: S.optional(S.String),
-          certificateName: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "CertificateAkvDetails" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          credentialsKeyVaultUri: S.optional(S.String),
-          secretName: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "CredentialsAkvDetails" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          certificateAkvDetails: S.optional(__S(43, __c5, 3)),
-          credentialsAkvDetails: S.optional(__S(44, __c5, 4)),
-        }),
-      ).annotate({ identifier: "AzureKeyVaultDetails" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          path: S.optional(S.String),
-          fileSystemUser: S.optional(__S(41, __c5, 1)),
-          server: S.optional(__S(42, __c5, 2)),
-          permissions: S.optional(S.String),
-          akvDetails: S.optional(__S(45, __c5, 5)),
-        }),
-      ).annotate({ identifier: "BucketPropertiesInput" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          accountName: S.String.pipe(T.Label()),
-          poolName: S.String.pipe(T.Label()),
-          volumeName: S.String.pipe(T.Label()),
-          bucketName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(46, __c5, 6)),
-        }).pipe(
-          T.Http({
-            method: "PUT",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/capacityPools/{poolName}/volumes/{volumeName}/buckets/{bucketName}",
-            code: 200,
-            apiVersion: "2026-06-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "BucketsCreateOrUpdateRequest",
-      });
+      ).annotate({ identifier: "SystemData" });
   }
 }
 function __c6(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() =>
-        S.Struct({
-          fqdn: S.optional(S.String),
-          certificateCommonName: S.optional(S.String),
-          certificateExpiryDate: S.optional(S.String),
-          ipAddress: S.optional(S.String),
-          certificateObject: S.optional(S.String),
-          onCertificateConflictAction: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "BucketServerProperties" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          path: S.optional(S.String),
-          fileSystemUser: S.optional(__S(41, __c5, 1)),
-          provisioningState: S.optional(S.String),
-          status: S.optional(S.String),
-          server: S.optional(__S(48, __c6, 0)),
-          permissions: S.optional(S.String),
-          akvDetails: S.optional(__S(45, __c5, 5)),
-        }),
-      ).annotate({ identifier: "BucketProperties" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(16, __c2, 0)),
-          properties: S.optional(__S(49, __c6, 1)),
-        }),
-      ).annotate({
-        identifier: "BucketsCreateOrUpdateResponse",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          ruleIndex: S.optional(S.Number),
-          unixReadOnly: S.optional(S.Boolean),
-          unixReadWrite: S.optional(S.Boolean),
-          kerberos5ReadOnly: S.optional(S.Boolean),
-          kerberos5ReadWrite: S.optional(S.Boolean),
-          kerberos5iReadOnly: S.optional(S.Boolean),
-          kerberos5iReadWrite: S.optional(S.Boolean),
-          kerberos5pReadOnly: S.optional(S.Boolean),
-          kerberos5pReadWrite: S.optional(S.Boolean),
-          cifs: S.optional(S.Boolean),
-          nfsv3: S.optional(S.Boolean),
-          nfsv41: S.optional(S.Boolean),
-          allowedClients: S.optional(S.String),
-          hasRootAccess: S.optional(S.Boolean),
-          chownMode: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ExportPolicyRule" });
-    case 4:
-      return S.Array(__S(51, __c6, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          rules: S.optional(__S(52, __c6, 4)),
-        }),
-      ).annotate({
-        identifier: "CachePropertiesExportPolicy",
-      });
-    case 6:
-      return S.Array(S.String);
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          smbEncryption: S.optional(S.String),
-          smbAccessBasedEnumeration: S.optional(S.String),
-          smbNonBrowsable: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "SmbSettings" });
+      return S.Record(S.String, S.String);
   }
 }
 function __c7(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() =>
-        S.Struct({
-          peerClusterName: S.String,
-          peerAddresses: __S(5, __c0, 5),
-          peerVserverName: S.String,
-          peerVolumeName: S.String,
-        }),
-      ).annotate({ identifier: "OriginClusterInformation" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          filePath: S.String,
-          size: S.Number,
-          exportPolicy: S.optional(__S(53, __c6, 5)),
-          protocolTypes: S.optional(__S(54, __c6, 6)),
-          cacheSubnetResourceId: S.String,
-          peeringSubnetResourceId: S.String,
-          kerberos: S.optional(S.String),
-          smbSettings: S.optional(__S(55, __c6, 7)),
-          throughputMibps: S.optional(S.Number),
-          encryptionKeySource: S.String,
-          keyVaultPrivateEndpointResourceId: S.optional(S.String),
-          ldap: S.optional(S.String),
-          ldapServerType: S.optional(S.String),
-          originClusterInformation: __S(56, __c7, 0),
-          cifsChangeNotifications: S.optional(S.String),
-          globalFileLocking: S.optional(S.String),
-          writeBack: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "CachePropertiesInput" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          accountName: S.String.pipe(T.Label()),
-          poolName: S.String.pipe(T.Label()),
-          cacheName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(4, __c0, 4)),
-          location: S.String,
-          properties: __S(57, __c7, 1),
-          zones: S.optional(__S(5, __c0, 5)),
-        }).pipe(
-          T.Http({
-            method: "PUT",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/capacityPools/{poolName}/caches/{cacheName}",
-            code: 200,
-            apiVersion: "2026-06-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "CachesCreateOrUpdateRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          mountTargetId: S.optional(S.String),
-          ipAddress: S.optional(S.String),
-          smbServerFqdn: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "CacheMountTargetProperties",
-      });
-    case 4:
-      return S.Array(__S(59, __c7, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          filePath: S.String,
-          size: S.Number,
-          exportPolicy: S.optional(__S(53, __c6, 5)),
-          protocolTypes: S.optional(__S(54, __c6, 6)),
-          provisioningState: S.optional(S.String),
-          cacheState: S.optional(S.String),
-          cacheSubnetResourceId: S.String,
-          peeringSubnetResourceId: S.String,
-          mountTargets: S.optional(__S(60, __c7, 4)),
-          kerberos: S.optional(S.String),
-          smbSettings: S.optional(__S(55, __c6, 7)),
-          throughputMibps: S.optional(S.Number),
-          actualThroughputMibps: S.optional(S.Number),
-          encryptionKeySource: S.String,
-          keyVaultPrivateEndpointResourceId: S.optional(S.String),
-          maximumNumberOfFiles: S.optional(S.Number),
-          encryption: S.optional(S.String),
-          language: S.optional(S.String),
-          ldap: S.optional(S.String),
-          ldapServerType: S.optional(S.String),
-          originClusterInformation: __S(56, __c7, 0),
-          cifsChangeNotifications: S.optional(S.String),
-          globalFileLocking: S.optional(S.String),
-          writeBack: S.optional(S.String),
-          fileAccessLogs: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "CacheProperties" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(16, __c2, 0)),
-          tags: S.optional(__S(4, __c0, 4)),
-          location: S.String,
-          properties: __S(61, __c7, 5),
-          etag: S.optional(S.String),
-          zones: S.optional(__S(5, __c0, 5)),
-        }),
-      ).annotate({
-        identifier: "CachesCreateOrUpdateResponse",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          accountName: S.String.pipe(T.Label()),
-          poolName: S.String.pipe(T.Label()),
-          cacheName: S.String.pipe(T.Label()),
-          newPoolResourceId: S.String,
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/capacityPools/{poolName}/caches/{cacheName}/poolChange",
-            code: 200,
-            apiVersion: "2026-06-01",
-          }),
-        ),
-      ).annotate({ identifier: "CachesPoolChangeRequest" });
+      return S.Array(S.String);
   }
 }
 function __c8(j: number): any {
@@ -7344,18 +6847,67 @@ function __c8(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(16, __c2, 0)),
-          tags: S.optional(__S(4, __c0, 4)),
-          location: S.String,
-          properties: __S(61, __c7, 5),
-          etag: S.optional(S.String),
-          zones: S.optional(__S(5, __c0, 5)),
+          activeDirectoryId: S.optional(S.NullOr(S.String)),
+          username: S.optional(S.String),
+          password: S.optional(S.String.pipe(T.SensitiveValue({}))),
+          domain: S.optional(S.String),
+          dns: S.optional(S.String),
+          smbServerName: S.optional(S.String),
+          organizationalUnit: S.optional(S.String),
+          site: S.optional(S.String),
+          backupOperators: S.optional(__S(112, __c7, 0)),
+          administrators: S.optional(__S(112, __c7, 0)),
+          kdcIP: S.optional(S.String),
+          adName: S.optional(S.String),
+          serverRootCACertificate: S.optional(S.String),
+          aesEncryption: S.optional(S.Boolean),
+          ldapSigning: S.optional(S.Boolean),
+          securityOperators: S.optional(__S(112, __c7, 0)),
+          ldapOverTLS: S.optional(S.Boolean),
+          allowLocalNfsUsersWithLdap: S.optional(S.Boolean),
+          encryptDCConnections: S.optional(S.Boolean),
+          ldapSearchScope: S.optional(__S(64, __c4, 0)),
+          preferredServersForLdapClient: S.optional(S.String),
         }),
-      ).annotate({ identifier: "CachesPoolChangeResponse" });
+      ).annotate({ identifier: "ActiveDirectoryInput" });
     case 1:
+      return S.Array(__S(128, __c8, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          keyVaultUri: S.String,
+          keyName: S.String,
+          keyVaultResourceId: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "KeyVaultPropertiesInput" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          userAssignedIdentity: S.optional(S.String),
+          federatedClientId: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "EncryptionIdentityInput" });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          keySource: S.optional(S.String),
+          keyVaultProperties: S.optional(__S(130, __c8, 2)),
+          identity: S.optional(__S(131, __c8, 3)),
+        }),
+      ).annotate({ identifier: "AccountEncryptionInput" });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          activeDirectories: S.optional(__S(129, __c8, 1)),
+          encryption: S.optional(__S(132, __c8, 4)),
+          nfsV4IDDomain: S.optional(S.NullOr(S.String)),
+        }),
+      ).annotate({ identifier: "AccountPropertiesInput" });
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -7374,7 +6926,11 @@ function __c8(j: number): any {
       ).annotate({
         identifier: "CheckNetAppResourceFilePathAvailabilityRequest",
       });
-    case 2:
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           isAvailable: S.optional(S.Boolean),
@@ -7384,7 +6940,340 @@ function __c8(j: number): any {
       ).annotate({
         identifier: "CheckAvailabilityResponse",
       });
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          accountName: S.String.pipe(T.Label()),
+          snapshotPolicyName: S.String.pipe(T.Label()),
+          location: S.optional(S.String),
+          tags: S.optional(__S(96, __c6, 0)),
+          properties: S.optional(__S(656, __c41, 0)),
+        }).pipe(
+          T.Http({
+            method: "PATCH",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/snapshotPolicies/{snapshotPolicyName}",
+            code: 200,
+            apiVersion: "2026-06-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "UpdateSnapshotPolicyRequest",
+      });
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          desiredRansomwareProtectionState: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "RansomwareProtectionPatchSettings",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          backup: S.optional(__S(752, __c47, 0)),
+          snapshot: S.optional(__S(754, __c47, 2)),
+          ransomwareProtection: S.optional(__S(192, __c12, 0)),
+        }),
+      ).annotate({
+        identifier: "VolumePatchPropertiesDataProtection",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          serviceLevel: S.optional(S.String),
+          usageThreshold: S.optional(S.Number),
+          exportPolicy: S.optional(__S(2322, __c145, 2)),
+          protocolTypes: S.optional(__S(112, __c7, 0)),
+          throughputMibps: S.optional(S.Number),
+          dataProtection: S.optional(__S(193, __c12, 1)),
+          isDefaultQuotaEnabled: S.optional(S.Boolean),
+          defaultUserQuotaInKiBs: S.optional(S.Number),
+          defaultGroupQuotaInKiBs: S.optional(S.Number),
+          unixPermissions: S.optional(S.NullOr(S.String)),
+          coolAccess: S.optional(S.Boolean),
+          coolnessPeriod: S.optional(S.Number),
+          coolAccessRetrievalPolicy: S.optional(S.String),
+          coolAccessTieringPolicy: S.optional(S.String),
+          snapshotDirectoryVisible: S.optional(S.Boolean),
+          smbAccessBasedEnumeration: S.optional(S.NullOr(S.String)),
+          smbNonBrowsable: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "VolumePatchProperties" });
     case 3:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          accountName: S.String.pipe(T.Label()),
+          poolName: S.String.pipe(T.Label()),
+          volumeName: S.String.pipe(T.Label()),
+          location: S.optional(S.String),
+          tags: S.optional(__S(96, __c6, 0)),
+          properties: S.optional(__S(194, __c12, 2)),
+        }).pipe(
+          T.Http({
+            method: "PATCH",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/capacityPools/{poolName}/volumes/{volumeName}",
+            code: 200,
+            apiVersion: "2026-06-01",
+          }),
+        ),
+      ).annotate({ identifier: "UpdateVolumeRequest" });
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          accountName: S.String.pipe(T.Label()),
+          poolName: S.String.pipe(T.Label()),
+          volumeName: S.String.pipe(T.Label()),
+          volumeQuotaRuleName: S.String.pipe(T.Label()),
+          tags: S.optional(__S(96, __c6, 0)),
+          properties: S.optional(__S(816, __c51, 0)),
+        }).pipe(
+          T.Http({
+            method: "PATCH",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/capacityPools/{poolName}/volumes/{volumeName}/volumeQuotaRules/{volumeQuotaRuleName}",
+            code: 200,
+            apiVersion: "2026-06-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "UpdateVolumeQuotaRuleRequest",
+      });
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          accountName: S.String.pipe(T.Label()),
+          poolName: S.String.pipe(T.Label()),
+          volumeName: S.String.pipe(T.Label()),
+          clientIp: S.optional(S.String),
+          confirmRunningDisruptiveOperation: S.optional(S.Boolean),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/capacityPools/{poolName}/volumes/{volumeName}/breakFileLocks",
+            code: 200,
+            apiVersion: "2026-06-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "VolumesBreakFileLocksRequest",
+      });
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          accountName: S.String.pipe(T.Label()),
+          poolName: S.String.pipe(T.Label()),
+          volumeName: S.String.pipe(T.Label()),
+          forceBreakReplication: S.optional(S.Boolean),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/capacityPools/{poolName}/volumes/{volumeName}/breakReplication",
+            code: 200,
+            apiVersion: "2026-06-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "VolumesBreakReplicationRequest",
+      });
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          accountName: S.String.pipe(T.Label()),
+          poolName: S.String.pipe(T.Label()),
+          volumeName: S.String.pipe(T.Label()),
+          tags: S.optional(__S(96, __c6, 0)),
+          location: S.String,
+          properties: __S(723, __c45, 3),
+          zones: S.optional(__S(112, __c7, 0)),
+        }).pipe(
+          T.Http({
+            method: "PUT",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/capacityPools/{poolName}/volumes/{volumeName}",
+            code: 200,
+            apiVersion: "2026-06-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "VolumesCreateOrUpdateRequest",
+      });
+  }
+}
+function __c17(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(80, __c5, 0)),
+          tags: S.optional(__S(96, __c6, 0)),
+          location: S.String,
+          properties: __S(763, __c47, 11),
+          etag: S.optional(S.String),
+          zones: S.optional(__S(112, __c7, 0)),
+        }),
+      ).annotate({
+        identifier: "VolumesCreateOrUpdateResponse",
+      });
+  }
+}
+function __c18(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          accountName: S.String.pipe(T.Label()),
+          poolName: S.String.pipe(T.Label()),
+          volumeName: S.String.pipe(T.Label()),
+          username: S.String,
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/capacityPools/{poolName}/volumes/{volumeName}/getGroupIdListForLdapUser",
+            code: 200,
+            apiVersion: "2026-06-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "VolumesListGetGroupIdListForLdapUserRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          groupIdsForLdapUser: S.optional(__S(112, __c7, 0)),
+        }),
+      ).annotate({
+        identifier: "GetGroupIdListForLdapUserResponse",
+      });
+  }
+}
+function __c19(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          accountName: S.String.pipe(T.Label()),
+          poolName: S.String.pipe(T.Label()),
+          volumeName: S.String.pipe(T.Label()),
+          peerIpAddresses: __S(112, __c7, 0),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/capacityPools/{poolName}/volumes/{volumeName}/peerExternalCluster",
+            code: 200,
+            apiVersion: "2026-06-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "VolumesPeerExternalClusterRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          clusterPeeringCommand: S.optional(S.String),
+          passphrase: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "ClusterPeerCommandResponseProperties",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          properties: S.optional(__S(305, __c19, 1)),
+        }),
+      ).annotate({
+        identifier: "ClusterPeerCommandResponse",
+      });
+  }
+}
+function __c20(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          accountName: S.String.pipe(T.Label()),
+          poolName: S.String.pipe(T.Label()),
+          volumeName: S.String.pipe(T.Label()),
+          newPoolResourceId: S.String,
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/capacityPools/{poolName}/volumes/{volumeName}/poolChange",
+            code: 200,
+            apiVersion: "2026-06-01",
+          }),
+        ),
+      ).annotate({ identifier: "VolumesPoolChangeRequest" });
+  }
+}
+function __c21(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          accountName: S.String.pipe(T.Label()),
+          poolName: S.String.pipe(T.Label()),
+          volumeName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/capacityPools/{poolName}/volumes/{volumeName}/populateAvailabilityZone",
+            code: 200,
+            apiVersion: "2026-06-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "VolumesPopulateAvailabilityZoneRequest",
+      });
+  }
+}
+function __c22(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -7403,7 +7292,204 @@ function __c8(j: number): any {
       ).annotate({
         identifier: "CheckNetAppResourceNameAvailabilityRequest",
       });
-    case 4:
+  }
+}
+function __c23(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          accountName: S.String.pipe(T.Label()),
+          poolName: S.String.pipe(T.Label()),
+          volumeName: S.String.pipe(T.Label()),
+          sourceVolumeId: S.optional(S.String),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/capacityPools/{poolName}/volumes/{volumeName}/reestablishReplication",
+            code: 200,
+            apiVersion: "2026-06-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "VolumesReestablishReplicationRequest",
+      });
+  }
+}
+function __c24(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          accountName: S.String.pipe(T.Label()),
+          poolName: S.String.pipe(T.Label()),
+          volumeName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/capacityPools/{poolName}/volumes/{volumeName}/reinitializeReplication",
+            code: 200,
+            apiVersion: "2026-06-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "VolumesReInitializeReplicationRequest",
+      });
+  }
+}
+function __c25(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          accountName: S.String.pipe(T.Label()),
+          poolName: S.String.pipe(T.Label()),
+          volumeName: S.String.pipe(T.Label()),
+          creationToken: S.optional(S.String),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/capacityPools/{poolName}/volumes/{volumeName}/relocate",
+            code: 200,
+            apiVersion: "2026-06-01",
+          }),
+        ),
+      ).annotate({ identifier: "VolumesRelocateRequest" });
+  }
+}
+function __c26(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          accountName: S.String.pipe(T.Label()),
+          poolName: S.String.pipe(T.Label()),
+          volumeName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/capacityPools/{poolName}/volumes/{volumeName}/replicationStatus",
+            code: 200,
+            apiVersion: "2026-06-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "VolumesReplicationStatusRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          healthy: S.optional(S.Boolean),
+          relationshipStatus: S.optional(S.String),
+          mirrorState: S.optional(S.String),
+          totalProgress: S.optional(S.String),
+          errorMessage: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ReplicationStatus" });
+  }
+}
+function __c27(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          accountName: S.String.pipe(T.Label()),
+          poolName: S.String.pipe(T.Label()),
+          volumeName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/capacityPools/{poolName}/volumes/{volumeName}/resyncReplication",
+            code: 200,
+            apiVersion: "2026-06-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "VolumesResyncReplicationRequest",
+      });
+  }
+}
+function __c28(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          accountName: S.String.pipe(T.Label()),
+          poolName: S.String.pipe(T.Label()),
+          volumeName: S.String.pipe(T.Label()),
+          snapshotId: S.optional(S.String),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/capacityPools/{poolName}/volumes/{volumeName}/revert",
+            code: 200,
+            apiVersion: "2026-06-01",
+          }),
+        ),
+      ).annotate({ identifier: "VolumesRevertRequest" });
+  }
+}
+function __c29(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          accountName: S.String.pipe(T.Label()),
+          poolName: S.String.pipe(T.Label()),
+          volumeName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/capacityPools/{poolName}/volumes/{volumeName}/revertRelocation",
+            code: 200,
+            apiVersion: "2026-06-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "VolumesRevertRelocationRequest",
+      });
+  }
+}
+function __c30(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          accountName: S.String.pipe(T.Label()),
+          poolName: S.String.pipe(T.Label()),
+          volumeName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/capacityPools/{poolName}/volumes/{volumeName}/splitCloneFromParent",
+            code: 200,
+            apiVersion: "2026-06-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "VolumesSplitCloneFromParentRequest",
+      });
+  }
+}
+function __c31(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -7422,7 +7508,11 @@ function __c8(j: number): any {
       ).annotate({
         identifier: "CheckNetAppResourceQuotaAvailabilityRequest",
       });
-    case 5:
+  }
+}
+function __c32(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -7432,7 +7522,7 @@ function __c8(j: number): any {
           volumeName: S.String.pipe(T.Label()),
           ransomwareReportName: S.String.pipe(T.Label()),
           resolution: S.String,
-          extensions: __S(5, __c0, 5),
+          extensions: __S(112, __c7, 0),
         }).pipe(
           T.Http({
             method: "POST",
@@ -7444,7 +7534,11 @@ function __c8(j: number): any {
       ).annotate({
         identifier: "ClearRansomwareReportSuspectsRequest",
       });
-    case 6:
+  }
+}
+function __c33(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           label: S.optional(S.String),
@@ -7453,7 +7547,7 @@ function __c8(j: number): any {
           snapshotName: S.optional(S.String),
         }),
       ).annotate({ identifier: "BackupPropertiesInput" });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -7461,7 +7555,7 @@ function __c8(j: number): any {
           accountName: S.String.pipe(T.Label()),
           backupVaultName: S.String.pipe(T.Label()),
           backupName: S.String.pipe(T.Label()),
-          properties: __S(70, __c8, 6),
+          properties: __S(528, __c33, 0),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -7473,7 +7567,7 @@ function __c8(j: number): any {
       ).annotate({ identifier: "CreateBackupRequest" });
   }
 }
-function __c9(j: number): any {
+function __c34(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -7500,31 +7594,24 @@ function __c9(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(16, __c2, 0)),
-          properties: __S(72, __c9, 0),
+          systemData: S.optional(__S(80, __c5, 0)),
+          properties: __S(544, __c34, 0),
         }),
       ).annotate({ identifier: "CreateBackupResponse" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          dailyBackupsToKeep: S.optional(S.Number),
-          weeklyBackupsToKeep: S.optional(S.Number),
-          monthlyBackupsToKeep: S.optional(S.Number),
-          enabled: S.optional(S.Boolean),
-        }),
-      ).annotate({
-        identifier: "BackupPolicyPropertiesInput",
-      });
-    case 3:
+  }
+}
+function __c35(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           accountName: S.String.pipe(T.Label()),
           backupPolicyName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(4, __c0, 4)),
+          tags: S.optional(__S(96, __c6, 0)),
           location: S.String,
-          properties: __S(74, __c9, 2),
+          properties: __S(592, __c37, 0),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -7536,7 +7623,11 @@ function __c9(j: number): any {
       ).annotate({
         identifier: "CreateBackupPolicyRequest",
       });
-    case 4:
+  }
+}
+function __c36(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           volumeName: S.optional(S.String),
@@ -7545,9 +7636,9 @@ function __c9(j: number): any {
           policyEnabled: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "VolumeBackups" });
-    case 5:
-      return S.Array(__S(76, __c9, 4));
-    case 6:
+    case 1:
+      return S.Array(__S(576, __c36, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           backupPolicyId: S.optional(S.String),
@@ -7557,19 +7648,34 @@ function __c9(j: number): any {
           monthlyBackupsToKeep: S.optional(S.Number),
           volumesAssigned: S.optional(S.Number),
           enabled: S.optional(S.Boolean),
-          volumeBackups: S.optional(__S(77, __c9, 5)),
+          volumeBackups: S.optional(__S(577, __c36, 1)),
         }),
       ).annotate({ identifier: "BackupPolicyProperties" });
-    case 7:
+  }
+}
+function __c37(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          dailyBackupsToKeep: S.optional(S.Number),
+          weeklyBackupsToKeep: S.optional(S.Number),
+          monthlyBackupsToKeep: S.optional(S.Number),
+          enabled: S.optional(S.Boolean),
+        }),
+      ).annotate({
+        identifier: "BackupPolicyPropertiesInput",
+      });
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(16, __c2, 0)),
-          tags: S.optional(__S(4, __c0, 4)),
+          systemData: S.optional(__S(80, __c5, 0)),
+          tags: S.optional(__S(96, __c6, 0)),
           location: S.String,
-          properties: __S(78, __c9, 6),
+          properties: __S(578, __c36, 2),
           etag: S.optional(S.String),
         }),
       ).annotate({
@@ -7577,7 +7683,7 @@ function __c9(j: number): any {
       });
   }
 }
-function __c10(j: number): any {
+function __c38(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -7588,7 +7694,7 @@ function __c10(j: number): any {
           poolName: S.String.pipe(T.Label()),
           volumeName: S.String.pipe(T.Label()),
           snapshotName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(3, __c0, 3)),
+          properties: S.optional(__S(16, __c1, 0)),
           location: S.String,
         }).pipe(
           T.Http({
@@ -7599,7 +7705,11 @@ function __c10(j: number): any {
           }),
         ),
       ).annotate({ identifier: "CreateSnapshotRequest" });
-    case 1:
+  }
+}
+function __c39(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           snapshotId: S.optional(S.String),
@@ -7607,69 +7717,20 @@ function __c10(j: number): any {
           provisioningState: S.optional(S.String),
         }),
       ).annotate({ identifier: "SnapshotProperties" });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(16, __c2, 0)),
-          properties: S.optional(__S(81, __c10, 1)),
+          systemData: S.optional(__S(80, __c5, 0)),
+          properties: S.optional(__S(624, __c39, 0)),
           location: S.String,
         }),
       ).annotate({ identifier: "CreateSnapshotResponse" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          snapshotsToKeep: S.optional(S.Number),
-          minute: S.optional(S.Number),
-          usedBytes: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "HourlySchedule" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          snapshotsToKeep: S.optional(S.Number),
-          hour: S.optional(S.Number),
-          minute: S.optional(S.Number),
-          usedBytes: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "DailySchedule" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          snapshotsToKeep: S.optional(S.Number),
-          day: S.optional(S.String),
-          hour: S.optional(S.Number),
-          minute: S.optional(S.Number),
-          usedBytes: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "WeeklySchedule" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          snapshotsToKeep: S.optional(S.Number),
-          daysOfMonth: S.optional(S.String),
-          hour: S.optional(S.Number),
-          minute: S.optional(S.Number),
-          usedBytes: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "MonthlySchedule" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          hourlySchedule: S.optional(__S(83, __c10, 3)),
-          dailySchedule: S.optional(__S(84, __c10, 4)),
-          weeklySchedule: S.optional(__S(85, __c10, 5)),
-          monthlySchedule: S.optional(__S(86, __c10, 6)),
-          enabled: S.optional(S.Boolean),
-        }),
-      ).annotate({
-        identifier: "SnapshotPolicyPropertiesInput",
-      });
   }
 }
-function __c11(j: number): any {
+function __c40(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -7678,9 +7739,9 @@ function __c11(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           accountName: S.String.pipe(T.Label()),
           snapshotPolicyName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(4, __c0, 4)),
+          tags: S.optional(__S(96, __c6, 0)),
           location: S.String,
-          properties: __S(87, __c10, 7),
+          properties: __S(656, __c41, 0),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -7692,86 +7753,173 @@ function __c11(j: number): any {
       ).annotate({
         identifier: "CreateSnapshotPolicyRequest",
       });
-    case 1:
+  }
+}
+function __c41(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          hourlySchedule: S.optional(__S(83, __c10, 3)),
-          dailySchedule: S.optional(__S(84, __c10, 4)),
-          weeklySchedule: S.optional(__S(85, __c10, 5)),
-          monthlySchedule: S.optional(__S(86, __c10, 6)),
+          hourlySchedule: S.optional(__S(688, __c43, 0)),
+          dailySchedule: S.optional(__S(689, __c43, 1)),
+          weeklySchedule: S.optional(__S(690, __c43, 2)),
+          monthlySchedule: S.optional(__S(691, __c43, 3)),
           enabled: S.optional(S.Boolean),
-          provisioningState: S.optional(S.String),
         }),
-      ).annotate({ identifier: "SnapshotPolicyProperties" });
-    case 2:
+      ).annotate({
+        identifier: "SnapshotPolicyPropertiesInput",
+      });
+  }
+}
+function __c42(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(16, __c2, 0)),
-          tags: S.optional(__S(4, __c0, 4)),
+          systemData: S.optional(__S(80, __c5, 0)),
+          tags: S.optional(__S(96, __c6, 0)),
           location: S.String,
-          properties: __S(89, __c11, 1),
+          properties: __S(692, __c43, 4),
           etag: S.optional(S.String),
         }),
       ).annotate({
         identifier: "CreateSnapshotPolicyResponse",
       });
+  }
+}
+function __c43(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          snapshotsToKeep: S.optional(S.Number),
+          minute: S.optional(S.Number),
+          usedBytes: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "HourlySchedule" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          snapshotsToKeep: S.optional(S.Number),
+          hour: S.optional(S.Number),
+          minute: S.optional(S.Number),
+          usedBytes: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "DailySchedule" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          snapshotsToKeep: S.optional(S.Number),
+          day: S.optional(S.String),
+          hour: S.optional(S.Number),
+          minute: S.optional(S.Number),
+          usedBytes: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "WeeklySchedule" });
     case 3:
       return S.suspend(() =>
         S.Struct({
-          key: S.String,
-          value: S.String,
+          snapshotsToKeep: S.optional(S.Number),
+          daysOfMonth: S.optional(S.String),
+          hour: S.optional(S.Number),
+          minute: S.optional(S.Number),
+          usedBytes: S.optional(S.Number),
         }),
-      ).annotate({ identifier: "PlacementKeyValuePairs" });
+      ).annotate({ identifier: "MonthlySchedule" });
     case 4:
-      return S.Array(__S(91, __c11, 3));
-    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          hourlySchedule: S.optional(__S(688, __c43, 0)),
+          dailySchedule: S.optional(__S(689, __c43, 1)),
+          weeklySchedule: S.optional(__S(690, __c43, 2)),
+          monthlySchedule: S.optional(__S(691, __c43, 3)),
+          enabled: S.optional(S.Boolean),
+          provisioningState: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "SnapshotPolicyProperties" });
+  }
+}
+function __c44(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           groupDescription: S.optional(S.String),
           applicationType: S.optional(S.String),
           applicationIdentifier: S.optional(S.String),
-          globalPlacementRules: S.optional(__S(92, __c11, 4)),
+          globalPlacementRules: S.optional(__S(737, __c46, 1)),
         }),
       ).annotate({ identifier: "VolumeGroupMetaDataInput" });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          backupPolicyId: S.optional(S.String),
-          policyEnforced: S.optional(S.Boolean),
-          backupVaultId: S.optional(S.String),
+          name: S.optional(S.String),
+          tags: S.optional(__S(96, __c6, 0)),
+          zones: S.optional(__S(112, __c7, 0)),
+          properties: __S(723, __c45, 3),
         }),
-      ).annotate({ identifier: "VolumeBackupProperties" });
-    case 7:
+      ).annotate({
+        identifier: "VolumeGroupVolumePropertiesInput",
+      });
+    case 2:
+      return S.Array(__S(705, __c44, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          externalHostName: S.String,
-          serverName: S.String,
-          volumeName: S.String,
+          groupMetaData: S.optional(__S(704, __c44, 0)),
+          volumes: S.optional(__S(706, __c44, 2)),
         }),
-      ).annotate({ identifier: "RemotePath" });
+      ).annotate({
+        identifier: "VolumeGroupPropertiesInput",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          accountName: S.String.pipe(T.Label()),
+          volumeGroupName: S.String.pipe(T.Label()),
+          properties: S.optional(__S(707, __c44, 3)),
+          location: S.optional(S.String),
+        }).pipe(
+          T.Http({
+            method: "PUT",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/volumeGroups/{volumeGroupName}",
+            code: 200,
+            apiVersion: "2026-06-01",
+          }),
+        ),
+      ).annotate({ identifier: "CreateVolumeGroupRequest" });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(80, __c5, 0)),
+          properties: S.optional(__S(770, __c48, 2)),
+          location: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "CreateVolumeGroupResponse",
+      });
   }
 }
-function __c12(j: number): any {
+function __c45(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           replicationSchedule: S.optional(S.String),
           remoteVolumeResourceId: S.optional(S.String),
-          remotePath: S.optional(__S(95, __c11, 7)),
+          remotePath: S.optional(__S(753, __c47, 1)),
           remoteVolumeRegion: S.optional(S.String),
         }),
       ).annotate({ identifier: "ReplicationObjectInput" });
     case 1:
-      return S.suspend(() =>
-        S.Struct({
-          snapshotPolicyId: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "VolumeSnapshotProperties" });
-    case 2:
       return S.suspend(() =>
         S.Struct({
           relocationRequested: S.optional(S.Boolean),
@@ -7779,42 +7927,33 @@ function __c12(j: number): any {
       ).annotate({
         identifier: "VolumeRelocationPropertiesInput",
       });
-    case 3:
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          desiredRansomwareProtectionState: S.optional(S.String),
-          actualRansomwareProtectionState: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "RansomwareProtectionSettings",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          backup: S.optional(__S(94, __c11, 6)),
-          replication: S.optional(__S(96, __c12, 0)),
-          snapshot: S.optional(__S(97, __c12, 1)),
-          volumeRelocation: S.optional(__S(98, __c12, 2)),
-          ransomwareProtection: S.optional(__S(99, __c12, 3)),
+          backup: S.optional(__S(752, __c47, 0)),
+          replication: S.optional(__S(720, __c45, 0)),
+          snapshot: S.optional(__S(754, __c47, 2)),
+          volumeRelocation: S.optional(__S(721, __c45, 1)),
+          ransomwareProtection: S.optional(__S(755, __c47, 3)),
         }),
       ).annotate({
         identifier: "VolumePropertiesDataProtectionInput",
       });
-    case 5:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           creationToken: S.String,
           serviceLevel: S.optional(S.String),
           usageThreshold: S.Number,
-          exportPolicy: S.optional(__S(53, __c6, 5)),
-          protocolTypes: S.optional(__S(5, __c0, 5)),
+          exportPolicy: S.optional(__S(2322, __c145, 2)),
+          protocolTypes: S.optional(__S(112, __c7, 0)),
           snapshotId: S.optional(S.NullOr(S.String)),
           deleteBaseSnapshot: S.optional(S.Boolean),
           backupId: S.optional(S.NullOr(S.String)),
           subnetId: S.String,
           networkFeatures: S.optional(S.String),
           volumeType: S.optional(S.String),
-          dataProtection: S.optional(__S(100, __c12, 4)),
+          dataProtection: S.optional(__S(722, __c45, 2)),
           acceptGrowCapacityPoolForShortTermCloneSplit: S.optional(S.String),
           snapshotDirectoryVisible: S.optional(S.Boolean),
           kerberosEnabled: S.optional(S.Boolean),
@@ -7839,67 +7978,61 @@ function __c12(j: number): any {
           capacityPoolResourceId: S.optional(S.String),
           proximityPlacementGroup: S.optional(S.String),
           volumeSpecName: S.optional(S.String),
-          placementRules: S.optional(__S(92, __c11, 4)),
+          placementRules: S.optional(__S(737, __c46, 1)),
           enableSubvolumes: S.optional(S.String),
           isLargeVolume: S.optional(S.Boolean),
           breakthroughMode: S.optional(S.String),
         }),
       ).annotate({ identifier: "VolumePropertiesInput" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.optional(S.String),
-          tags: S.optional(__S(4, __c0, 4)),
-          zones: S.optional(__S(5, __c0, 5)),
-          properties: __S(101, __c12, 5),
-        }),
-      ).annotate({
-        identifier: "VolumeGroupVolumePropertiesInput",
-      });
-    case 7:
-      return S.Array(__S(102, __c12, 6));
   }
 }
-function __c13(j: number): any {
+function __c46(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          groupMetaData: S.optional(__S(93, __c11, 5)),
-          volumes: S.optional(__S(103, __c12, 7)),
+          key: S.String,
+          value: S.String,
         }),
-      ).annotate({
-        identifier: "VolumeGroupPropertiesInput",
-      });
+      ).annotate({ identifier: "PlacementKeyValuePairs" });
+    case 1:
+      return S.Array(__S(736, __c46, 0));
+  }
+}
+function __c47(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          backupPolicyId: S.optional(S.String),
+          policyEnforced: S.optional(S.Boolean),
+          backupVaultId: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "VolumeBackupProperties" });
     case 1:
       return S.suspend(() =>
         S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          accountName: S.String.pipe(T.Label()),
-          volumeGroupName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(104, __c13, 0)),
-          location: S.optional(S.String),
-        }).pipe(
-          T.Http({
-            method: "PUT",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/volumeGroups/{volumeGroupName}",
-            code: 200,
-            apiVersion: "2026-06-01",
-          }),
-        ),
-      ).annotate({ identifier: "CreateVolumeGroupRequest" });
+          externalHostName: S.String,
+          serverName: S.String,
+          volumeName: S.String,
+        }),
+      ).annotate({ identifier: "RemotePath" });
     case 2:
       return S.suspend(() =>
         S.Struct({
-          groupDescription: S.optional(S.String),
-          applicationType: S.optional(S.String),
-          applicationIdentifier: S.optional(S.String),
-          globalPlacementRules: S.optional(__S(92, __c11, 4)),
-          volumesCount: S.optional(S.Number),
+          snapshotPolicyId: S.optional(S.String),
         }),
-      ).annotate({ identifier: "VolumeGroupMetaData" });
+      ).annotate({ identifier: "VolumeSnapshotProperties" });
     case 3:
+      return S.suspend(() =>
+        S.Struct({
+          desiredRansomwareProtectionState: S.optional(S.String),
+          actualRansomwareProtectionState: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "RansomwareProtectionSettings",
+      });
+    case 4:
       return S.suspend(() =>
         S.Struct({
           mountTargetId: S.optional(S.String),
@@ -7908,9 +8041,9 @@ function __c13(j: number): any {
           smbServerFqdn: S.optional(S.String),
         }),
       ).annotate({ identifier: "MountTargetProperties" });
-    case 4:
-      return S.Array(__S(107, __c13, 3));
     case 5:
+      return S.Array(__S(756, __c47, 4));
+    case 6:
       return S.suspend(() =>
         S.Struct({
           resourceId: S.optional(S.String),
@@ -7919,29 +8052,25 @@ function __c13(j: number): any {
           zone: S.optional(S.String),
         }),
       ).annotate({ identifier: "DestinationReplication" });
-    case 6:
-      return S.Array(__S(109, __c13, 5));
     case 7:
+      return S.Array(__S(758, __c47, 6));
+    case 8:
       return S.suspend(() =>
         S.Struct({
           replicationId: S.optional(S.String),
           endpointType: S.optional(S.String),
           replicationSchedule: S.optional(S.String),
           remoteVolumeResourceId: S.optional(S.String),
-          remotePath: S.optional(__S(95, __c11, 7)),
+          remotePath: S.optional(__S(753, __c47, 1)),
           remoteVolumeRegion: S.optional(S.String),
-          destinationReplications: S.optional(__S(110, __c13, 6)),
+          destinationReplications: S.optional(__S(759, __c47, 7)),
           externalReplicationSetupStatus: S.optional(S.String),
           externalReplicationSetupInfo: S.optional(S.String),
           mirrorState: S.optional(S.String),
           relationshipStatus: S.optional(S.String),
         }),
       ).annotate({ identifier: "ReplicationObject" });
-  }
-}
-function __c14(j: number): any {
-  switch (j) {
-    case 0:
+    case 9:
       return S.suspend(() =>
         S.Struct({
           relocationRequested: S.optional(S.Boolean),
@@ -7950,27 +8079,27 @@ function __c14(j: number): any {
       ).annotate({
         identifier: "VolumeRelocationProperties",
       });
-    case 1:
+    case 10:
       return S.suspend(() =>
         S.Struct({
-          backup: S.optional(__S(94, __c11, 6)),
-          replication: S.optional(__S(111, __c13, 7)),
-          snapshot: S.optional(__S(97, __c12, 1)),
-          volumeRelocation: S.optional(__S(112, __c14, 0)),
-          ransomwareProtection: S.optional(__S(99, __c12, 3)),
+          backup: S.optional(__S(752, __c47, 0)),
+          replication: S.optional(__S(760, __c47, 8)),
+          snapshot: S.optional(__S(754, __c47, 2)),
+          volumeRelocation: S.optional(__S(761, __c47, 9)),
+          ransomwareProtection: S.optional(__S(755, __c47, 3)),
         }),
       ).annotate({
         identifier: "VolumePropertiesDataProtection",
       });
-    case 2:
+    case 11:
       return S.suspend(() =>
         S.Struct({
           fileSystemId: S.optional(S.String),
           creationToken: S.String,
           serviceLevel: S.optional(S.String),
           usageThreshold: S.Number,
-          exportPolicy: S.optional(__S(53, __c6, 5)),
-          protocolTypes: S.optional(__S(5, __c0, 5)),
+          exportPolicy: S.optional(__S(2322, __c145, 2)),
+          protocolTypes: S.optional(__S(112, __c7, 0)),
           provisioningState: S.optional(S.String),
           snapshotId: S.optional(S.NullOr(S.String)),
           deleteBaseSnapshot: S.optional(S.Boolean),
@@ -7981,9 +8110,9 @@ function __c14(j: number): any {
           effectiveNetworkFeatures: S.optional(S.String),
           networkSiblingSetId: S.optional(S.String),
           storageToNetworkProximity: S.optional(S.String),
-          mountTargets: S.optional(__S(108, __c13, 4)),
+          mountTargets: S.optional(__S(757, __c47, 5)),
           volumeType: S.optional(S.String),
-          dataProtection: S.optional(__S(113, __c14, 1)),
+          dataProtection: S.optional(__S(762, __c47, 10)),
           acceptGrowCapacityPoolForShortTermCloneSplit: S.optional(S.String),
           isRestoring: S.optional(S.Boolean),
           snapshotDirectoryVisible: S.optional(S.Boolean),
@@ -8006,7 +8135,7 @@ function __c14(j: number): any {
           cloneProgress: S.optional(S.NullOr(S.Number)),
           fileAccessLogs: S.optional(S.String),
           avsDataStore: S.optional(S.String),
-          dataStoreResourceId: S.optional(__S(5, __c0, 5)),
+          dataStoreResourceId: S.optional(__S(112, __c7, 0)),
           isDefaultQuotaEnabled: S.optional(S.Boolean),
           defaultUserQuotaInKiBs: S.optional(S.Number),
           defaultGroupQuotaInKiBs: S.optional(S.Number),
@@ -8017,7 +8146,7 @@ function __c14(j: number): any {
           t2Network: S.optional(S.String),
           volumeSpecName: S.optional(S.String),
           encrypted: S.optional(S.Boolean),
-          placementRules: S.optional(__S(92, __c11, 4)),
+          placementRules: S.optional(__S(737, __c46, 1)),
           enableSubvolumes: S.optional(S.String),
           provisionedAvailabilityZone: S.optional(S.NullOr(S.String)),
           isLargeVolume: S.optional(S.Boolean),
@@ -8026,55 +8155,50 @@ function __c14(j: number): any {
           breakthroughMode: S.optional(S.String),
         }),
       ).annotate({ identifier: "VolumeProperties" });
-    case 3:
+  }
+}
+function __c48(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          tags: S.optional(__S(4, __c0, 4)),
-          zones: S.optional(__S(5, __c0, 5)),
-          properties: __S(114, __c14, 2),
+          tags: S.optional(__S(96, __c6, 0)),
+          zones: S.optional(__S(112, __c7, 0)),
+          properties: __S(763, __c47, 11),
         }),
       ).annotate({
         identifier: "VolumeGroupVolumeProperties",
       });
-    case 4:
-      return S.Array(__S(115, __c14, 3));
-    case 5:
+    case 1:
+      return S.Array(__S(768, __c48, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           provisioningState: S.optional(S.String),
-          groupMetaData: S.optional(__S(106, __c13, 2)),
-          volumes: S.optional(__S(116, __c14, 4)),
+          groupMetaData: S.optional(__S(784, __c49, 0)),
+          volumes: S.optional(__S(769, __c48, 1)),
         }),
       ).annotate({ identifier: "VolumeGroupProperties" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(16, __c2, 0)),
-          properties: S.optional(__S(117, __c14, 5)),
-          location: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "CreateVolumeGroupResponse",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          quotaSizeInKiBs: S.optional(S.Number),
-          quotaType: S.optional(S.String),
-          quotaTarget: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "VolumeQuotaRulesPropertiesInput",
-      });
   }
 }
-function __c15(j: number): any {
+function __c49(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          groupDescription: S.optional(S.String),
+          applicationType: S.optional(S.String),
+          applicationIdentifier: S.optional(S.String),
+          globalPlacementRules: S.optional(__S(737, __c46, 1)),
+          volumesCount: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "VolumeGroupMetaData" });
+  }
+}
+function __c50(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -8085,9 +8209,9 @@ function __c15(j: number): any {
           poolName: S.String.pipe(T.Label()),
           volumeName: S.String.pipe(T.Label()),
           volumeQuotaRuleName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(4, __c0, 4)),
+          tags: S.optional(__S(96, __c6, 0)),
           location: S.String,
-          properties: S.optional(__S(119, __c14, 7)),
+          properties: S.optional(__S(816, __c51, 0)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -8099,7 +8223,43 @@ function __c15(j: number): any {
       ).annotate({
         identifier: "CreateVolumeQuotaRuleRequest",
       });
-    case 1:
+  }
+}
+function __c51(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          quotaSizeInKiBs: S.optional(S.Number),
+          quotaType: S.optional(S.String),
+          quotaTarget: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "VolumeQuotaRulesPropertiesInput",
+      });
+  }
+}
+function __c52(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(80, __c5, 0)),
+          tags: S.optional(__S(96, __c6, 0)),
+          location: S.String,
+          properties: S.optional(__S(848, __c53, 0)),
+        }),
+      ).annotate({
+        identifier: "CreateVolumeQuotaRuleResponse",
+      });
+  }
+}
+function __c53(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           provisioningState: S.optional(S.String),
@@ -8110,21 +8270,42 @@ function __c15(j: number): any {
       ).annotate({
         identifier: "VolumeQuotaRulesProperties",
       });
-    case 2:
+  }
+}
+function __c54(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(16, __c2, 0)),
-          tags: S.optional(__S(4, __c0, 4)),
-          location: S.String,
-          properties: S.optional(__S(121, __c15, 1)),
-        }),
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          accountName: S.String.pipe(T.Label()),
+          virtualNetworkId: S.String,
+          privateEndpointId: S.String,
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/transitiontocmk",
+            code: 200,
+            apiVersion: "2026-06-01",
+          }),
+        ),
       ).annotate({
-        identifier: "CreateVolumeQuotaRuleResponse",
+        identifier: "AccountsTransitionToCmkRequest",
       });
-    case 3:
+  }
+}
+function __c55(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "AccountsTransitionToCmkResponse",
+      });
+  }
+}
+function __c56(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -8139,7 +8320,11 @@ function __c15(j: number): any {
           }),
         ),
       ).annotate({ identifier: "DeleteAccountRequest" });
-    case 4:
+  }
+}
+function __c57(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -8156,7 +8341,11 @@ function __c15(j: number): any {
           }),
         ),
       ).annotate({ identifier: "DeleteBackupRequest" });
-    case 5:
+  }
+}
+function __c58(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -8174,7 +8363,11 @@ function __c15(j: number): any {
       ).annotate({
         identifier: "DeleteBackupPolicyRequest",
       });
-    case 6:
+  }
+}
+function __c59(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -8190,7 +8383,11 @@ function __c15(j: number): any {
           }),
         ),
       ).annotate({ identifier: "DeleteBackupVaultRequest" });
-    case 7:
+  }
+}
+function __c60(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -8210,7 +8407,7 @@ function __c15(j: number): any {
       ).annotate({ identifier: "DeleteBucketRequest" });
   }
 }
-function __c16(j: number): any {
+function __c61(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -8229,7 +8426,11 @@ function __c16(j: number): any {
           }),
         ),
       ).annotate({ identifier: "DeleteCachRequest" });
-    case 1:
+  }
+}
+function __c62(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -8245,7 +8446,11 @@ function __c16(j: number): any {
           }),
         ),
       ).annotate({ identifier: "DeletePoolRequest" });
-    case 2:
+  }
+}
+function __c63(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -8263,7 +8468,11 @@ function __c16(j: number): any {
           }),
         ),
       ).annotate({ identifier: "DeleteSnapshotRequest" });
-    case 3:
+  }
+}
+function __c64(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -8281,7 +8490,11 @@ function __c16(j: number): any {
       ).annotate({
         identifier: "DeleteSnapshotPolicyRequest",
       });
-    case 4:
+  }
+}
+function __c65(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -8299,7 +8512,48 @@ function __c16(j: number): any {
           }),
         ),
       ).annotate({ identifier: "DeleteVolumeRequest" });
-    case 5:
+  }
+}
+function __c66(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          accountName: S.String.pipe(T.Label()),
+          poolName: S.String.pipe(T.Label()),
+          volumeName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/capacityPools/{poolName}/volumes/{volumeName}/authorizeExternalReplication",
+            code: 200,
+            apiVersion: "2026-06-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "AuthorizeVolumeExternalReplicationRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          svmPeeringCommand: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "SvmPeerCommandResponseProperties",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          properties: S.optional(__S(1057, __c66, 1)),
+        }),
+      ).annotate({ identifier: "SvmPeerCommandResponse" });
+  }
+}
+function __c67(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -8315,7 +8569,11 @@ function __c16(j: number): any {
           }),
         ),
       ).annotate({ identifier: "DeleteVolumeGroupRequest" });
-    case 6:
+  }
+}
+function __c68(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -8335,7 +8593,11 @@ function __c16(j: number): any {
       ).annotate({
         identifier: "DeleteVolumeQuotaRuleRequest",
       });
-    case 7:
+  }
+}
+function __c69(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -8356,7 +8618,7 @@ function __c16(j: number): any {
       });
   }
 }
-function __c17(j: number): any {
+function __c70(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -8377,7 +8639,11 @@ function __c17(j: number): any {
       ).annotate({
         identifier: "FinalizeVolumeExternalReplicationRequest",
       });
-    case 1:
+  }
+}
+function __c71(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -8396,7 +8662,11 @@ function __c17(j: number): any {
       ).annotate({
         identifier: "FinalizeVolumeRelocationRequest",
       });
-    case 2:
+  }
+}
+function __c72(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -8417,7 +8687,11 @@ function __c17(j: number): any {
       ).annotate({
         identifier: "GenerateBucketAkvCredentialsRequest",
       });
-    case 3:
+  }
+}
+function __c73(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -8438,7 +8712,7 @@ function __c17(j: number): any {
       ).annotate({
         identifier: "GenerateBucketCredentialsRequest",
       });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           accessKey: S.optional(S.String),
@@ -8448,7 +8722,11 @@ function __c17(j: number): any {
       ).annotate({
         identifier: "BucketGenerateCredentials",
       });
-    case 5:
+  }
+}
+function __c74(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -8463,38 +8741,46 @@ function __c17(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetAccountRequest" });
-    case 6:
-      return S.Record(S.String, /*@__PURE__*/ S.NullOr(__S(23, __c2, 7)));
-    case 7:
+  }
+}
+function __c75(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, /*@__PURE__*/ S.NullOr(__S(71, __c4, 7)));
+  }
+}
+function __c76(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           principalId: S.optional(S.String),
           tenantId: S.optional(S.String),
           type: S.String,
-          userAssignedIdentities: S.optional(__S(142, __c17, 6)),
+          userAssignedIdentities: S.optional(__S(1200, __c75, 0)),
         }),
       ).annotate({
         identifier: "GetAccountResponseIdentity",
       });
-  }
-}
-function __c18(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(16, __c2, 0)),
-          tags: S.optional(__S(4, __c0, 4)),
+          systemData: S.optional(__S(80, __c5, 0)),
+          tags: S.optional(__S(96, __c6, 0)),
           location: S.String,
-          properties: S.optional(__S(22, __c2, 6)),
+          properties: S.optional(__S(70, __c4, 6)),
           etag: S.optional(S.String),
-          identity: S.optional(__S(143, __c17, 7)),
+          identity: S.optional(__S(1216, __c76, 0)),
         }),
       ).annotate({ identifier: "GetAccountResponse" });
-    case 1:
+  }
+}
+function __c77(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -8511,28 +8797,32 @@ function __c18(j: number): any {
       ).annotate({
         identifier: "GetAccountChangeKeyVaultInformationRequest",
       });
+    case 1:
+      return S.Array(__S(32, __c2, 0));
     case 2:
-      return S.Array(__S(0, __c0, 0));
-    case 3:
       return S.suspend(() =>
         S.Struct({
           keyVaultUri: S.optional(S.String),
           keyName: S.optional(S.String),
           keyVaultResourceId: S.optional(S.String),
-          keyVaultPrivateEndpoints: S.optional(__S(146, __c18, 2)),
+          keyVaultPrivateEndpoints: S.optional(__S(1233, __c77, 1)),
         }),
       ).annotate({
         identifier: "GetKeyVaultStatusResponseProperties",
       });
-    case 4:
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          properties: S.optional(__S(147, __c18, 3)),
+          properties: S.optional(__S(1234, __c77, 2)),
         }),
       ).annotate({
         identifier: "GetKeyVaultStatusResponse",
       });
-    case 5:
+  }
+}
+function __c78(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -8549,7 +8839,43 @@ function __c18(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetBackupRequest" });
-    case 6:
+  }
+}
+function __c79(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          accountName: S.String.pipe(T.Label()),
+          poolName: S.String.pipe(T.Label()),
+          volumeName: S.String.pipe(T.Label()),
+          remoteVolumeResourceId: S.optional(S.String),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/capacityPools/{poolName}/volumes/{volumeName}/authorizeReplication",
+            code: 200,
+            apiVersion: "2026-06-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "AuthorizeVolumeReplicationRequest",
+      });
+  }
+}
+function __c80(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "AuthorizeVolumeReplicationResponse",
+      });
+  }
+}
+function __c81(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -8568,7 +8894,7 @@ function __c18(j: number): any {
       ).annotate({
         identifier: "GetBackupLatestStatusRequest",
       });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           healthy: S.optional(S.Boolean),
@@ -8584,7 +8910,7 @@ function __c18(j: number): any {
       ).annotate({ identifier: "BackupStatus" });
   }
 }
-function __c19(j: number): any {
+function __c82(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -8602,20 +8928,28 @@ function __c19(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetBackupPolicyRequest" });
-    case 1:
+  }
+}
+function __c83(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(16, __c2, 0)),
-          tags: S.optional(__S(4, __c0, 4)),
+          systemData: S.optional(__S(80, __c5, 0)),
+          tags: S.optional(__S(96, __c6, 0)),
           location: S.String,
-          properties: __S(78, __c9, 6),
+          properties: __S(578, __c36, 2),
           etag: S.optional(S.String),
         }),
       ).annotate({ identifier: "GetBackupPolicyResponse" });
-    case 2:
+  }
+}
+function __c84(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -8631,19 +8965,27 @@ function __c19(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetBackupVaultRequest" });
-    case 3:
+  }
+}
+function __c85(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(16, __c2, 0)),
-          tags: S.optional(__S(4, __c0, 4)),
+          systemData: S.optional(__S(80, __c5, 0)),
+          tags: S.optional(__S(96, __c6, 0)),
           location: S.String,
-          properties: S.optional(__S(37, __c4, 5)),
+          properties: S.optional(__S(1840, __c115, 0)),
         }),
       ).annotate({ identifier: "GetBackupVaultResponse" });
-    case 4:
+  }
+}
+function __c86(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -8661,17 +9003,25 @@ function __c19(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetBucketRequest" });
-    case 5:
+  }
+}
+function __c87(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(16, __c2, 0)),
-          properties: S.optional(__S(49, __c6, 1)),
+          systemData: S.optional(__S(80, __c5, 0)),
+          properties: S.optional(__S(2087, __c130, 7)),
         }),
       ).annotate({ identifier: "GetBucketResponse" });
-    case 6:
+  }
+}
+function __c88(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -8688,7 +9038,11 @@ function __c19(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetCachRequest" });
-    case 7:
+  }
+}
+function __c89(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -8707,7 +9061,23 @@ function __c19(j: number): any {
       });
   }
 }
-function __c20(j: number): any {
+function __c90(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(80, __c5, 0)),
+          properties: S.optional(__S(1456, __c91, 0)),
+        }),
+      ).annotate({
+        identifier: "GetNetAppResourceQuotaLimitResponse",
+      });
+  }
+}
+function __c91(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -8717,19 +9087,11 @@ function __c20(j: number): any {
           usage: S.optional(S.NullOr(S.Number)),
         }),
       ).annotate({ identifier: "QuotaItemProperties" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(16, __c2, 0)),
-          properties: S.optional(__S(160, __c20, 0)),
-        }),
-      ).annotate({
-        identifier: "GetNetAppResourceQuotaLimitResponse",
-      });
-    case 2:
+  }
+}
+function __c92(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -8747,7 +9109,11 @@ function __c20(j: number): any {
       ).annotate({
         identifier: "GetNetAppResourceQuotaLimitsAccountRequest",
       });
-    case 3:
+  }
+}
+function __c93(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -8763,7 +9129,23 @@ function __c20(j: number): any {
       ).annotate({
         identifier: "GetNetAppResourceRegionInfosRequest",
       });
-    case 4:
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(80, __c5, 0)),
+          properties: S.optional(__S(1506, __c94, 2)),
+        }),
+      ).annotate({
+        identifier: "GetNetAppResourceRegionInfosResponse",
+      });
+  }
+}
+function __c94(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           availabilityZone: S.optional(S.String),
@@ -8772,30 +9154,18 @@ function __c20(j: number): any {
       ).annotate({
         identifier: "RegionInfoAvailabilityZoneMappingsItem",
       });
-    case 5:
-      return S.Array(__S(164, __c20, 4));
-    case 6:
+    case 1:
+      return S.Array(__S(1504, __c94, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           storageToNetworkProximity: S.optional(S.String),
-          availabilityZoneMappings: S.optional(__S(165, __c20, 5)),
+          availabilityZoneMappings: S.optional(__S(1505, __c94, 1)),
         }),
       ).annotate({ identifier: "RegionInfo" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(16, __c2, 0)),
-          properties: S.optional(__S(166, __c20, 6)),
-        }),
-      ).annotate({
-        identifier: "GetNetAppResourceRegionInfosResponse",
-      });
   }
 }
-function __c21(j: number): any {
+function __c95(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -8814,14 +9184,18 @@ function __c21(j: number): any {
       ).annotate({
         identifier: "GetNetAppResourceUsageRequest",
       });
-    case 1:
+  }
+}
+function __c96(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           value: S.optional(S.String),
           localizedValue: S.optional(S.String),
         }),
       ).annotate({ identifier: "UsageName" });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           currentValue: S.optional(S.Number),
@@ -8829,15 +9203,19 @@ function __c21(j: number): any {
           unit: S.optional(S.String),
         }),
       ).annotate({ identifier: "UsageProperties" });
-    case 3:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
-          name: S.optional(__S(169, __c21, 1)),
-          properties: S.optional(__S(170, __c21, 2)),
+          name: S.optional(__S(1536, __c96, 0)),
+          properties: S.optional(__S(1537, __c96, 1)),
         }),
       ).annotate({ identifier: "UsageResult" });
-    case 4:
+  }
+}
+function __c97(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -8853,7 +9231,11 @@ function __c21(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetPoolRequest" });
-    case 5:
+  }
+}
+function __c98(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           poolId: S.optional(S.String),
@@ -8868,20 +9250,62 @@ function __c21(j: number): any {
           encryptionType: S.optional(S.NullOr(S.String)),
         }),
       ).annotate({ identifier: "PoolProperties" });
-    case 6:
+  }
+}
+function __c99(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(16, __c2, 0)),
-          tags: S.optional(__S(4, __c0, 4)),
+          systemData: S.optional(__S(80, __c5, 0)),
+          tags: S.optional(__S(96, __c6, 0)),
           location: S.String,
-          properties: __S(173, __c21, 5),
+          properties: __S(1568, __c98, 0),
           etag: S.optional(S.String),
         }),
       ).annotate({ identifier: "GetPoolResponse" });
-    case 7:
+  }
+}
+function __c100(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          accountName: S.String.pipe(T.Label()),
+          poolName: S.String.pipe(T.Label()),
+          volumeName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/capacityPools/{poolName}/volumes/{volumeName}/latestRestoreStatus/current",
+            code: 200,
+            apiVersion: "2026-06-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "BackupsGetVolumeLatestRestoreStatusRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          healthy: S.optional(S.Boolean),
+          relationshipStatus: S.optional(S.String),
+          mirrorState: S.optional(S.String),
+          unhealthyReason: S.optional(S.String),
+          errorMessage: S.optional(S.String),
+          totalTransferBytes: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "RestoreStatus" });
+  }
+}
+function __c101(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -8901,9 +9325,21 @@ function __c21(j: number): any {
       ).annotate({
         identifier: "GetRansomwareReportRequest",
       });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(80, __c5, 0)),
+          properties: S.optional(__S(1636, __c102, 4)),
+        }),
+      ).annotate({
+        identifier: "GetRansomwareReportResponse",
+      });
   }
 }
-function __c22(j: number): any {
+function __c102(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -8913,18 +9349,18 @@ function __c22(j: number): any {
         }),
       ).annotate({ identifier: "SuspectFile" });
     case 1:
-      return S.Array(__S(176, __c22, 0));
+      return S.Array(__S(1632, __c102, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
           extension: S.optional(S.String),
           resolution: S.optional(S.String),
           fileCount: S.optional(S.Number),
-          suspectFiles: S.optional(__S(177, __c22, 1)),
+          suspectFiles: S.optional(__S(1633, __c102, 1)),
         }),
       ).annotate({ identifier: "RansomwareSuspects" });
     case 3:
-      return S.Array(__S(178, __c22, 2));
+      return S.Array(__S(1634, __c102, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
@@ -8933,25 +9369,17 @@ function __c22(j: number): any {
           severity: S.optional(S.String),
           clearedCount: S.optional(S.Number),
           reportedCount: S.optional(S.Number),
-          suspects: S.optional(__S(179, __c22, 3)),
+          suspects: S.optional(__S(1635, __c102, 3)),
           provisioningState: S.optional(S.String),
         }),
       ).annotate({
         identifier: "RansomwareReportProperties",
       });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(16, __c2, 0)),
-          properties: S.optional(__S(180, __c22, 4)),
-        }),
-      ).annotate({
-        identifier: "GetRansomwareReportResponse",
-      });
-    case 6:
+  }
+}
+function __c103(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -8969,7 +9397,11 @@ function __c22(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetSnapshotRequest" });
-    case 7:
+  }
+}
+function __c104(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -8987,7 +9419,7 @@ function __c22(j: number): any {
       ).annotate({ identifier: "GetSnapshotPolicyRequest" });
   }
 }
-function __c23(j: number): any {
+function __c105(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -9006,21 +9438,29 @@ function __c23(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetVolumeRequest" });
-    case 1:
+  }
+}
+function __c106(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(16, __c2, 0)),
-          tags: S.optional(__S(4, __c0, 4)),
+          systemData: S.optional(__S(80, __c5, 0)),
+          tags: S.optional(__S(96, __c6, 0)),
           location: S.String,
-          properties: __S(114, __c14, 2),
+          properties: __S(763, __c47, 11),
           etag: S.optional(S.String),
-          zones: S.optional(__S(5, __c0, 5)),
+          zones: S.optional(__S(112, __c7, 0)),
         }),
       ).annotate({ identifier: "GetVolumeResponse" });
-    case 2:
+  }
+}
+function __c107(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -9036,18 +9476,22 @@ function __c23(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetVolumeGroupRequest" });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(16, __c2, 0)),
-          properties: S.optional(__S(117, __c14, 5)),
+          systemData: S.optional(__S(80, __c5, 0)),
+          properties: S.optional(__S(770, __c48, 2)),
           location: S.optional(S.String),
         }),
       ).annotate({ identifier: "GetVolumeGroupResponse" });
-    case 4:
+  }
+}
+function __c108(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -9067,7 +9511,11 @@ function __c23(j: number): any {
       ).annotate({
         identifier: "GetVolumeQuotaRuleRequest",
       });
-    case 5:
+  }
+}
+function __c109(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -9082,43 +9530,47 @@ function __c23(j: number): any {
       ).annotate({
         identifier: "ListAccountBySubscriptionRequest",
       });
-    case 6:
+  }
+}
+function __c110(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           principalId: S.optional(S.String),
           tenantId: S.optional(S.String),
           type: S.String,
-          userAssignedIdentities: S.optional(__S(142, __c17, 6)),
+          userAssignedIdentities: S.optional(__S(1200, __c75, 0)),
         }),
       ).annotate({ identifier: "NetAppAccountIdentity" });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(16, __c2, 0)),
-          tags: S.optional(__S(4, __c0, 4)),
+          systemData: S.optional(__S(80, __c5, 0)),
+          tags: S.optional(__S(96, __c6, 0)),
           location: S.String,
-          properties: S.optional(__S(22, __c2, 6)),
+          properties: S.optional(__S(70, __c4, 6)),
           etag: S.optional(S.String),
-          identity: S.optional(__S(190, __c23, 6)),
+          identity: S.optional(__S(1760, __c110, 0)),
         }),
       ).annotate({ identifier: "NetAppAccount" });
-  }
-}
-function __c24(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(191, __c23, 7));
-    case 1:
+    case 2:
+      return S.Array(__S(1761, __c110, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          value: __S(192, __c24, 0),
+          value: __S(1762, __c110, 2),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "NetAppAccountList" });
-    case 2:
+  }
+}
+function __c111(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -9132,7 +9584,11 @@ function __c24(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ListAccountsRequest" });
-    case 3:
+  }
+}
+function __c112(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -9149,16 +9605,20 @@ function __c24(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ListBackupByVaultRequest" });
-    case 4:
-      return S.Array(__S(73, __c9, 1));
-    case 5:
+    case 1:
+      return S.Array(__S(545, __c34, 1));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          value: __S(196, __c24, 4),
+          value: __S(1793, __c112, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "BackupsList" });
-    case 6:
+  }
+}
+function __c113(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -9175,20 +9635,73 @@ function __c24(j: number): any {
       ).annotate({
         identifier: "ListBackupPoliciesRequest",
       });
-    case 7:
-      return S.Array(__S(153, __c19, 1));
+    case 1:
+      return S.Array(__S(1328, __c83, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          value: __S(1809, __c113, 1),
+          nextLink: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "BackupPoliciesList" });
   }
 }
-function __c25(j: number): any {
+function __c114(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          value: __S(199, __c24, 7),
-          nextLink: S.optional(S.String),
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          accountName: S.String.pipe(T.Label()),
+          backupVaultName: S.String.pipe(T.Label()),
+          tags: S.optional(__S(96, __c6, 0)),
+          location: S.String,
+          properties: S.optional(__S(16, __c1, 0)),
+        }).pipe(
+          T.Http({
+            method: "PUT",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/backupVaults/{backupVaultName}",
+            code: 200,
+            apiVersion: "2026-06-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "BackupVaultsCreateOrUpdateRequest",
+      });
+  }
+}
+function __c115(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          provisioningState: S.optional(S.String),
         }),
-      ).annotate({ identifier: "BackupPoliciesList" });
-    case 1:
+      ).annotate({ identifier: "BackupVaultProperties" });
+  }
+}
+function __c116(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(80, __c5, 0)),
+          tags: S.optional(__S(96, __c6, 0)),
+          location: S.String,
+          properties: S.optional(__S(1840, __c115, 0)),
+        }),
+      ).annotate({
+        identifier: "BackupVaultsCreateOrUpdateResponse",
+      });
+  }
+}
+function __c117(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -9205,16 +9718,20 @@ function __c25(j: number): any {
       ).annotate({
         identifier: "ListBackupVaultByNetAppAccountRequest",
       });
+    case 1:
+      return S.Array(__S(1360, __c85, 0));
     case 2:
-      return S.Array(__S(155, __c19, 3));
-    case 3:
       return S.suspend(() =>
         S.Struct({
-          value: __S(202, __c25, 2),
+          value: __S(1873, __c117, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "BackupVaultsList" });
-    case 4:
+  }
+}
+function __c118(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -9231,16 +9748,20 @@ function __c25(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ListBucketsRequest" });
-    case 5:
-      return S.Array(__S(157, __c19, 5));
-    case 6:
+    case 1:
+      return S.Array(__S(1392, __c87, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          value: __S(205, __c25, 5),
+          value: __S(1889, __c118, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "BucketList" });
-    case 7:
+  }
+}
+function __c119(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -9256,36 +9777,40 @@ function __c25(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ListCachesRequest" });
-  }
-}
-function __c26(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(S.String);
     case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(16, __c2, 0)),
-          tags: S.optional(__S(4, __c0, 4)),
+          systemData: S.optional(__S(80, __c5, 0)),
+          tags: S.optional(__S(96, __c6, 0)),
           location: S.String,
-          properties: __S(61, __c7, 5),
+          properties: __S(2356, __c147, 4),
           etag: S.optional(S.String),
-          zones: S.optional(__S(208, __c26, 0)),
+          zones: S.optional(__S(1920, __c120, 0)),
         }),
       ).annotate({ identifier: "Cache" });
     case 2:
-      return S.Array(__S(209, __c26, 1));
+      return S.Array(__S(1905, __c119, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          value: __S(210, __c26, 2),
+          value: __S(1906, __c119, 2),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "CacheList" });
-    case 4:
+  }
+}
+function __c120(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c121(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -9304,7 +9829,7 @@ function __c26(j: number): any {
       ).annotate({
         identifier: "ListCachPeeringPassphrasesRequest",
       });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           clusterPeeringCommand: S.String,
@@ -9313,7 +9838,11 @@ function __c26(j: number): any {
           criticalWarning: S.optional(S.String),
         }),
       ).annotate({ identifier: "PeeringPassphrases" });
-    case 6:
+  }
+}
+function __c122(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -9329,30 +9858,34 @@ function __c26(j: number): any {
       ).annotate({
         identifier: "ListNetAppResourceQuotaLimitsRequest",
       });
-    case 7:
+  }
+}
+function __c123(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(16, __c2, 0)),
-          properties: S.optional(__S(160, __c20, 0)),
+          systemData: S.optional(__S(80, __c5, 0)),
+          properties: S.optional(__S(1456, __c91, 0)),
         }),
       ).annotate({ identifier: "QuotaItem" });
-  }
-}
-function __c27(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(215, __c26, 7));
     case 1:
+      return S.Array(__S(1968, __c123, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          value: __S(216, __c27, 0),
+          value: __S(1969, __c123, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "QuotaItemList" });
-    case 2:
+  }
+}
+function __c124(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -9369,7 +9902,11 @@ function __c27(j: number): any {
       ).annotate({
         identifier: "ListNetAppResourceQuotaLimitsAccountRequest",
       });
-    case 3:
+  }
+}
+function __c125(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -9385,26 +9922,30 @@ function __c27(j: number): any {
       ).annotate({
         identifier: "ListNetAppResourceRegionInfosRequest",
       });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(16, __c2, 0)),
-          properties: S.optional(__S(166, __c20, 6)),
+          systemData: S.optional(__S(80, __c5, 0)),
+          properties: S.optional(__S(1506, __c94, 2)),
         }),
       ).annotate({ identifier: "RegionInfoResource" });
-    case 5:
-      return S.Array(__S(220, __c27, 4));
-    case 6:
+    case 2:
+      return S.Array(__S(2001, __c125, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          value: __S(221, __c27, 5),
+          value: __S(2002, __c125, 2),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "RegionInfosList" });
-    case 7:
+  }
+}
+function __c126(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -9420,20 +9961,20 @@ function __c27(j: number): any {
       ).annotate({
         identifier: "ListNetAppResourceUsagesRequest",
       });
-  }
-}
-function __c28(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(171, __c21, 3));
     case 1:
+      return S.Array(__S(1538, __c96, 2));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          value: __S(224, __c28, 0),
+          value: __S(2017, __c126, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "UsagesListResult" });
-    case 2:
+  }
+}
+function __c127(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({}).pipe(
           T.Http({
@@ -9444,7 +9985,7 @@ function __c28(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ListOperationsRequest" });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           provider: S.optional(S.String),
@@ -9453,29 +9994,29 @@ function __c28(j: number): any {
           description: S.optional(S.String),
         }),
       ).annotate({ identifier: "OperationDisplay" });
-    case 4:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
           displayName: S.optional(S.String),
         }),
       ).annotate({ identifier: "Dimension" });
-    case 5:
-      return S.Array(__S(228, __c28, 4));
-    case 6:
+    case 3:
+      return S.Array(__S(2034, __c127, 2));
+    case 4:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
           displayName: S.optional(S.String),
           displayDescription: S.optional(S.String),
           unit: S.optional(S.String),
-          supportedAggregationTypes: S.optional(__S(54, __c6, 6)),
-          supportedTimeGrainTypes: S.optional(__S(5, __c0, 5)),
+          supportedAggregationTypes: S.optional(__S(2336, __c146, 0)),
+          supportedTimeGrainTypes: S.optional(__S(112, __c7, 0)),
           internalMetricName: S.optional(S.String),
           enableRegionalMdmAccount: S.optional(S.Boolean),
           sourceMdmAccount: S.optional(S.String),
           sourceMdmNamespace: S.optional(S.String),
-          dimensions: S.optional(__S(229, __c28, 5)),
+          dimensions: S.optional(__S(2035, __c127, 3)),
           aggregationType: S.optional(S.String),
           fillGapWithZero: S.optional(S.Boolean),
           category: S.optional(S.String),
@@ -9483,44 +10024,44 @@ function __c28(j: number): any {
           isInternal: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "MetricSpecification" });
-    case 7:
-      return S.Array(__S(230, __c28, 6));
-  }
-}
-function __c29(j: number): any {
-  switch (j) {
-    case 0:
+    case 5:
+      return S.Array(__S(2036, __c127, 4));
+    case 6:
       return S.suspend(() =>
         S.Struct({
-          metricSpecifications: S.optional(__S(231, __c28, 7)),
-          logSpecifications: S.optional(__S(229, __c28, 5)),
+          metricSpecifications: S.optional(__S(2037, __c127, 5)),
+          logSpecifications: S.optional(__S(2035, __c127, 3)),
         }),
       ).annotate({ identifier: "ServiceSpecification" });
-    case 1:
+    case 7:
       return S.suspend(() =>
         S.Struct({
-          serviceSpecification: S.optional(__S(232, __c29, 0)),
+          serviceSpecification: S.optional(__S(2038, __c127, 6)),
         }),
       ).annotate({ identifier: "OperationProperties" });
-    case 2:
+    case 8:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
-          display: S.optional(__S(227, __c28, 3)),
+          display: S.optional(__S(2033, __c127, 1)),
           origin: S.optional(S.String),
-          properties: S.optional(__S(233, __c29, 1)),
+          properties: S.optional(__S(2039, __c127, 7)),
         }),
       ).annotate({ identifier: "Operation" });
-    case 3:
-      return S.Array(__S(234, __c29, 2));
-    case 4:
+    case 9:
+      return S.Array(__S(2040, __c127, 8));
+    case 10:
       return S.suspend(() =>
         S.Struct({
-          value: __S(235, __c29, 3),
+          value: __S(2041, __c127, 9),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "OperationListResult" });
-    case 5:
+  }
+}
+function __c128(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -9535,18 +10076,147 @@ function __c29(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ListPoolsRequest" });
-    case 6:
-      return S.Array(__S(174, __c21, 6));
-    case 7:
+    case 1:
+      return S.Array(__S(1584, __c99, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          value: __S(238, __c29, 6),
+          value: __S(2049, __c128, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "CapacityPoolList" });
   }
 }
-function __c30(j: number): any {
+function __c129(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          path: S.optional(S.String),
+          fileSystemUser: S.optional(__S(2082, __c130, 2)),
+          server: S.optional(__S(2096, __c131, 0)),
+          permissions: S.optional(S.String),
+          akvDetails: S.optional(__S(2085, __c130, 5)),
+        }),
+      ).annotate({ identifier: "BucketPropertiesInput" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          accountName: S.String.pipe(T.Label()),
+          poolName: S.String.pipe(T.Label()),
+          volumeName: S.String.pipe(T.Label()),
+          bucketName: S.String.pipe(T.Label()),
+          properties: S.optional(__S(2064, __c129, 0)),
+        }).pipe(
+          T.Http({
+            method: "PUT",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/capacityPools/{poolName}/volumes/{volumeName}/buckets/{bucketName}",
+            code: 200,
+            apiVersion: "2026-06-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "BucketsCreateOrUpdateRequest",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(80, __c5, 0)),
+          properties: S.optional(__S(2087, __c130, 7)),
+        }),
+      ).annotate({
+        identifier: "BucketsCreateOrUpdateResponse",
+      });
+  }
+}
+function __c130(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          userId: S.optional(S.Number),
+          groupId: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "NfsUser" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          username: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "CifsUser" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          nfsUser: S.optional(__S(2080, __c130, 0)),
+          cifsUser: S.optional(__S(2081, __c130, 1)),
+        }),
+      ).annotate({ identifier: "FileSystemUser" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          certificateKeyVaultUri: S.optional(S.String),
+          certificateName: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "CertificateAkvDetails" });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          credentialsKeyVaultUri: S.optional(S.String),
+          secretName: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "CredentialsAkvDetails" });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          certificateAkvDetails: S.optional(__S(2083, __c130, 3)),
+          credentialsAkvDetails: S.optional(__S(2084, __c130, 4)),
+        }),
+      ).annotate({ identifier: "AzureKeyVaultDetails" });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          fqdn: S.optional(S.String),
+          certificateCommonName: S.optional(S.String),
+          certificateExpiryDate: S.optional(S.String),
+          ipAddress: S.optional(S.String),
+          certificateObject: S.optional(S.String),
+          onCertificateConflictAction: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "BucketServerProperties" });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          path: S.optional(S.String),
+          fileSystemUser: S.optional(__S(2082, __c130, 2)),
+          provisioningState: S.optional(S.String),
+          status: S.optional(S.String),
+          server: S.optional(__S(2086, __c130, 6)),
+          permissions: S.optional(S.String),
+          akvDetails: S.optional(__S(2085, __c130, 5)),
+        }),
+      ).annotate({ identifier: "BucketProperties" });
+  }
+}
+function __c131(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          fqdn: S.optional(S.String),
+          certificateObject: S.optional(S.String),
+          onCertificateConflictAction: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "BucketServerPropertiesInput",
+      });
+  }
+}
+function __c132(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -9573,20 +10243,24 @@ function __c30(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(16, __c2, 0)),
-          properties: S.optional(__S(180, __c22, 4)),
+          systemData: S.optional(__S(80, __c5, 0)),
+          properties: S.optional(__S(1636, __c102, 4)),
         }),
       ).annotate({ identifier: "RansomwareReport" });
     case 2:
-      return S.Array(__S(241, __c30, 1));
+      return S.Array(__S(2113, __c132, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          value: __S(242, __c30, 2),
+          value: __S(2114, __c132, 2),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "RansomwareReportsList" });
-    case 4:
+  }
+}
+function __c133(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -9603,31 +10277,31 @@ function __c30(j: number): any {
       ).annotate({
         identifier: "ListSnapshotPoliciesRequest",
       });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(16, __c2, 0)),
-          tags: S.optional(__S(4, __c0, 4)),
+          systemData: S.optional(__S(80, __c5, 0)),
+          tags: S.optional(__S(96, __c6, 0)),
           location: S.String,
-          properties: __S(89, __c11, 1),
+          properties: __S(692, __c43, 4),
           etag: S.optional(S.String),
         }),
       ).annotate({ identifier: "SnapshotPolicy" });
-    case 6:
-      return S.Array(__S(245, __c30, 5));
-    case 7:
+    case 2:
+      return S.Array(__S(2129, __c133, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          value: __S(246, __c30, 6),
+          value: __S(2130, __c133, 2),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "SnapshotPoliciesList" });
   }
 }
-function __c31(j: number): any {
+function __c134(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -9647,30 +10321,38 @@ function __c31(j: number): any {
       ).annotate({
         identifier: "ListSnapshotPolicyVolumesRequest",
       });
-    case 1:
+  }
+}
+function __c135(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(16, __c2, 0)),
-          tags: S.optional(__S(4, __c0, 4)),
+          systemData: S.optional(__S(80, __c5, 0)),
+          tags: S.optional(__S(96, __c6, 0)),
           location: S.String,
-          properties: __S(114, __c14, 2),
+          properties: __S(763, __c47, 11),
           etag: S.optional(S.String),
-          zones: S.optional(__S(208, __c26, 0)),
+          zones: S.optional(__S(1920, __c120, 0)),
         }),
       ).annotate({ identifier: "Volume" });
+    case 1:
+      return S.Array(__S(2160, __c135, 0));
     case 2:
-      return S.Array(__S(249, __c31, 1));
-    case 3:
       return S.suspend(() =>
         S.Struct({
-          value: __S(250, __c31, 2),
+          value: __S(2161, __c135, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "SnapshotPolicyVolumeList" });
-    case 4:
+  }
+}
+function __c136(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -9687,16 +10369,20 @@ function __c31(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ListSnapshotsRequest" });
-    case 5:
-      return S.Array(__S(82, __c10, 2));
-    case 6:
+    case 1:
+      return S.Array(__S(625, __c39, 1));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          value: __S(253, __c31, 5),
+          value: __S(2177, __c136, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "SnapshotsList" });
-    case 7:
+  }
+}
+function __c137(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -9713,39 +10399,39 @@ function __c31(j: number): any {
       ).annotate({
         identifier: "ListVolumeGroupByNetAppAccountRequest",
       });
-  }
-}
-function __c32(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           provisioningState: S.optional(S.String),
-          groupMetaData: S.optional(__S(106, __c13, 2)),
+          groupMetaData: S.optional(__S(784, __c49, 0)),
         }),
       ).annotate({
         identifier: "VolumeGroupListProperties",
       });
-    case 1:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           location: S.optional(S.String),
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          properties: S.optional(__S(256, __c32, 0)),
+          properties: S.optional(__S(2193, __c137, 1)),
         }),
       ).annotate({ identifier: "VolumeGroup" });
-    case 2:
-      return S.Array(__S(257, __c32, 1));
     case 3:
+      return S.Array(__S(2194, __c137, 2));
+    case 4:
       return S.suspend(() =>
         S.Struct({
-          value: __S(258, __c32, 2),
+          value: __S(2195, __c137, 3),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "VolumeGroupList" });
-    case 4:
+  }
+}
+function __c138(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -9767,7 +10453,7 @@ function __c32(j: number): any {
       ).annotate({
         identifier: "ListVolumeQuotaReportRequest",
       });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           quotaType: S.optional(S.String),
@@ -9778,25 +10464,25 @@ function __c32(j: number): any {
           isDerivedQuota: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "QuotaReport" });
-    case 6:
-      return S.Array(__S(261, __c32, 5));
-    case 7:
+    case 2:
+      return S.Array(__S(2209, __c138, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          quotaReportRecords: S.optional(__S(262, __c32, 6)),
+          quotaReportRecords: S.optional(__S(2210, __c138, 2)),
         }),
       ).annotate({ identifier: "ListQuotaReportResponse" });
-  }
-}
-function __c33(j: number): any {
-  switch (j) {
-    case 0:
+    case 4:
       return S.suspend(() =>
         S.Struct({
-          properties: S.optional(__S(263, __c32, 7)),
+          properties: S.optional(__S(2211, __c138, 3)),
         }),
       ).annotate({ identifier: "ListQuotaReportResult" });
-    case 1:
+  }
+}
+function __c139(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -9815,28 +10501,32 @@ function __c33(j: number): any {
       ).annotate({
         identifier: "ListVolumeQuotaRuleByVolumeRequest",
       });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(16, __c2, 0)),
-          tags: S.optional(__S(4, __c0, 4)),
+          systemData: S.optional(__S(80, __c5, 0)),
+          tags: S.optional(__S(96, __c6, 0)),
           location: S.String,
-          properties: S.optional(__S(121, __c15, 1)),
+          properties: S.optional(__S(848, __c53, 0)),
         }),
       ).annotate({ identifier: "VolumeQuotaRule" });
+    case 2:
+      return S.Array(__S(2225, __c139, 1));
     case 3:
-      return S.Array(__S(266, __c33, 2));
-    case 4:
       return S.suspend(() =>
         S.Struct({
-          value: __S(267, __c33, 3),
+          value: __S(2226, __c139, 2),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "VolumeQuotaRulesList" });
-    case 5:
+  }
+}
+function __c140(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -9856,7 +10546,7 @@ function __c33(j: number): any {
       ).annotate({
         identifier: "ListVolumeReplicationsRequest",
       });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           replicationId: S.optional(S.String),
@@ -9869,20 +10559,20 @@ function __c33(j: number): any {
           replicationDeletionTime: S.optional(S.String),
         }),
       ).annotate({ identifier: "Replication" });
-    case 7:
-      return S.Array(__S(270, __c33, 6));
-  }
-}
-function __c34(j: number): any {
-  switch (j) {
-    case 0:
+    case 2:
+      return S.Array(__S(2241, __c140, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          value: __S(271, __c33, 7),
+          value: __S(2242, __c140, 2),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListReplications" });
-    case 1:
+  }
+}
+function __c141(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -9898,7 +10588,11 @@ function __c34(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ListVolumesRequest" });
-    case 2:
+  }
+}
+function __c142(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -9916,7 +10610,183 @@ function __c34(j: number): any {
       ).annotate({
         identifier: "MigrateBackupsUnderAccountBackupsRequest",
       });
+  }
+}
+function __c143(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          filePath: S.String,
+          size: S.Number,
+          exportPolicy: S.optional(__S(2322, __c145, 2)),
+          protocolTypes: S.optional(__S(2336, __c146, 0)),
+          cacheSubnetResourceId: S.String,
+          peeringSubnetResourceId: S.String,
+          kerberos: S.optional(S.String),
+          smbSettings: S.optional(__S(2352, __c147, 0)),
+          throughputMibps: S.optional(S.Number),
+          encryptionKeySource: S.String,
+          keyVaultPrivateEndpointResourceId: S.optional(S.String),
+          ldap: S.optional(S.String),
+          ldapServerType: S.optional(S.String),
+          originClusterInformation: __S(2353, __c147, 1),
+          cifsChangeNotifications: S.optional(S.String),
+          globalFileLocking: S.optional(S.String),
+          writeBack: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "CachePropertiesInput" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          accountName: S.String.pipe(T.Label()),
+          poolName: S.String.pipe(T.Label()),
+          cacheName: S.String.pipe(T.Label()),
+          tags: S.optional(__S(96, __c6, 0)),
+          location: S.String,
+          properties: __S(2288, __c143, 0),
+          zones: S.optional(__S(112, __c7, 0)),
+        }).pipe(
+          T.Http({
+            method: "PUT",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/capacityPools/{poolName}/caches/{cacheName}",
+            code: 200,
+            apiVersion: "2026-06-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "CachesCreateOrUpdateRequest",
+      });
+  }
+}
+function __c144(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(80, __c5, 0)),
+          tags: S.optional(__S(96, __c6, 0)),
+          location: S.String,
+          properties: __S(2356, __c147, 4),
+          etag: S.optional(S.String),
+          zones: S.optional(__S(112, __c7, 0)),
+        }),
+      ).annotate({
+        identifier: "CachesCreateOrUpdateResponse",
+      });
+  }
+}
+function __c145(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          ruleIndex: S.optional(S.Number),
+          unixReadOnly: S.optional(S.Boolean),
+          unixReadWrite: S.optional(S.Boolean),
+          kerberos5ReadOnly: S.optional(S.Boolean),
+          kerberos5ReadWrite: S.optional(S.Boolean),
+          kerberos5iReadOnly: S.optional(S.Boolean),
+          kerberos5iReadWrite: S.optional(S.Boolean),
+          kerberos5pReadOnly: S.optional(S.Boolean),
+          kerberos5pReadWrite: S.optional(S.Boolean),
+          cifs: S.optional(S.Boolean),
+          nfsv3: S.optional(S.Boolean),
+          nfsv41: S.optional(S.Boolean),
+          allowedClients: S.optional(S.String),
+          hasRootAccess: S.optional(S.Boolean),
+          chownMode: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ExportPolicyRule" });
+    case 1:
+      return S.Array(__S(2320, __c145, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          rules: S.optional(__S(2321, __c145, 1)),
+        }),
+      ).annotate({
+        identifier: "CachePropertiesExportPolicy",
+      });
+  }
+}
+function __c146(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c147(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          smbEncryption: S.optional(S.String),
+          smbAccessBasedEnumeration: S.optional(S.String),
+          smbNonBrowsable: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "SmbSettings" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          peerClusterName: S.String,
+          peerAddresses: __S(112, __c7, 0),
+          peerVserverName: S.String,
+          peerVolumeName: S.String,
+        }),
+      ).annotate({ identifier: "OriginClusterInformation" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          mountTargetId: S.optional(S.String),
+          ipAddress: S.optional(S.String),
+          smbServerFqdn: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "CacheMountTargetProperties",
+      });
     case 3:
+      return S.Array(__S(2354, __c147, 2));
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          filePath: S.String,
+          size: S.Number,
+          exportPolicy: S.optional(__S(2322, __c145, 2)),
+          protocolTypes: S.optional(__S(2336, __c146, 0)),
+          provisioningState: S.optional(S.String),
+          cacheState: S.optional(S.String),
+          cacheSubnetResourceId: S.String,
+          peeringSubnetResourceId: S.String,
+          mountTargets: S.optional(__S(2355, __c147, 3)),
+          kerberos: S.optional(S.String),
+          smbSettings: S.optional(__S(2352, __c147, 0)),
+          throughputMibps: S.optional(S.Number),
+          actualThroughputMibps: S.optional(S.Number),
+          encryptionKeySource: S.String,
+          keyVaultPrivateEndpointResourceId: S.optional(S.String),
+          maximumNumberOfFiles: S.optional(S.Number),
+          encryption: S.optional(S.String),
+          language: S.optional(S.String),
+          ldap: S.optional(S.String),
+          ldapServerType: S.optional(S.String),
+          originClusterInformation: __S(2353, __c147, 1),
+          cifsChangeNotifications: S.optional(S.String),
+          globalFileLocking: S.optional(S.String),
+          writeBack: S.optional(S.String),
+          fileAccessLogs: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "CacheProperties" });
+  }
+}
+function __c148(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -9936,7 +10806,11 @@ function __c34(j: number): any {
       ).annotate({
         identifier: "MigrateBackupsUnderVolumeBackupsRequest",
       });
-    case 4:
+  }
+}
+function __c149(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -9952,7 +10826,11 @@ function __c34(j: number): any {
       ).annotate({
         identifier: "NetAppResourceQueryRegionInfoRequest",
       });
-    case 5:
+  }
+}
+function __c150(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           size: S.Number,
@@ -9963,16 +10841,16 @@ function __c34(j: number): any {
           encryptionType: S.optional(S.NullOr(S.String)),
         }),
       ).annotate({ identifier: "PoolPropertiesInput" });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           accountName: S.String.pipe(T.Label()),
           poolName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(4, __c0, 4)),
+          tags: S.optional(__S(96, __c6, 0)),
           location: S.String,
-          properties: __S(277, __c34, 5),
+          properties: __S(2400, __c150, 0),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -9984,16 +10862,16 @@ function __c34(j: number): any {
       ).annotate({
         identifier: "PoolsCreateOrUpdateRequest",
       });
-    case 7:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(16, __c2, 0)),
-          tags: S.optional(__S(4, __c0, 4)),
+          systemData: S.optional(__S(80, __c5, 0)),
+          tags: S.optional(__S(96, __c6, 0)),
           location: S.String,
-          properties: __S(173, __c21, 5),
+          properties: __S(1568, __c98, 0),
           etag: S.optional(S.String),
         }),
       ).annotate({
@@ -10001,7 +10879,7 @@ function __c34(j: number): any {
       });
   }
 }
-function __c35(j: number): any {
+function __c151(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -10023,7 +10901,11 @@ function __c35(j: number): any {
       ).annotate({
         identifier: "RefreshBucketCertificateRequest",
       });
-    case 1:
+  }
+}
+function __c152(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -10040,7 +10922,11 @@ function __c35(j: number): any {
       ).annotate({
         identifier: "RenewAccountCredentialsRequest",
       });
-    case 2:
+  }
+}
+function __c153(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -10059,7 +10945,11 @@ function __c35(j: number): any {
       ).annotate({
         identifier: "ResetCachSmbPasswordRequest",
       });
-    case 3:
+  }
+}
+function __c154(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -10078,7 +10968,11 @@ function __c35(j: number): any {
       ).annotate({
         identifier: "ResetVolumeCifsPasswordRequest",
       });
-    case 4:
+  }
+}
+function __c155(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -10086,7 +10980,7 @@ function __c35(j: number): any {
           accountName: S.String.pipe(T.Label()),
           backupVaultName: S.String.pipe(T.Label()),
           backupName: S.String.pipe(T.Label()),
-          fileList: __S(5, __c0, 5),
+          fileList: __S(112, __c7, 0),
           restoreFilePath: S.optional(S.String),
           destinationVolumeId: S.String,
         }).pipe(
@@ -10100,7 +10994,11 @@ function __c35(j: number): any {
       ).annotate({
         identifier: "RestoreBackupsUnderBackupVaultFilesRequest",
       });
-    case 5:
+  }
+}
+function __c156(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -10109,7 +11007,7 @@ function __c35(j: number): any {
           poolName: S.String.pipe(T.Label()),
           volumeName: S.String.pipe(T.Label()),
           snapshotName: S.String.pipe(T.Label()),
-          filePaths: __S(5, __c0, 5),
+          filePaths: __S(112, __c7, 0),
           destinationPath: S.optional(S.String),
         }).pipe(
           T.Http({
@@ -10122,7 +11020,11 @@ function __c35(j: number): any {
       ).annotate({
         identifier: "RestoreSnapshotFilesRequest",
       });
-    case 6:
+  }
+}
+function __c157(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -10140,20 +11042,20 @@ function __c35(j: number): any {
       ).annotate({
         identifier: "SetNetAppResourceQueryNetworkSiblingRequest",
       });
-    case 7:
+  }
+}
+function __c158(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           ipAddress: S.optional(S.String),
-          volumeResourceIds: S.optional(__S(5, __c0, 5)),
+          volumeResourceIds: S.optional(__S(112, __c7, 0)),
         }),
       ).annotate({ identifier: "NicInfo" });
-  }
-}
-function __c36(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(287, __c35, 7));
     case 1:
+      return S.Array(__S(2528, __c158, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           networkSiblingSetId: S.optional(S.String),
@@ -10161,10 +11063,54 @@ function __c36(j: number): any {
           networkSiblingSetStateId: S.optional(S.String),
           networkFeatures: S.optional(S.String),
           provisioningState: S.optional(S.String),
-          nicInfoList: S.optional(__S(288, __c36, 0)),
+          nicInfoList: S.optional(__S(2529, __c158, 1)),
         }),
       ).annotate({ identifier: "NetworkSiblingSet" });
-    case 2:
+  }
+}
+function __c159(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          accountName: S.String.pipe(T.Label()),
+          poolName: S.String.pipe(T.Label()),
+          cacheName: S.String.pipe(T.Label()),
+          newPoolResourceId: S.String,
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/capacityPools/{poolName}/caches/{cacheName}/poolChange",
+            code: 200,
+            apiVersion: "2026-06-01",
+          }),
+        ),
+      ).annotate({ identifier: "CachesPoolChangeRequest" });
+  }
+}
+function __c160(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(80, __c5, 0)),
+          tags: S.optional(__S(96, __c6, 0)),
+          location: S.String,
+          properties: __S(2356, __c147, 4),
+          etag: S.optional(S.String),
+          zones: S.optional(__S(112, __c7, 0)),
+        }),
+      ).annotate({ identifier: "CachesPoolChangeResponse" });
+  }
+}
+function __c161(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -10183,27 +11129,31 @@ function __c36(j: number): any {
       ).annotate({
         identifier: "TransferVolumesPerformReplicationRequest",
       });
-    case 3:
-      return S.Record(S.String, /*@__PURE__*/ S.NullOr(__S(3, __c0, 3)));
-    case 4:
+  }
+}
+function __c162(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, /*@__PURE__*/ S.NullOr(__S(16, __c1, 0)));
+    case 1:
       return S.suspend(() =>
         S.Struct({
           type: S.String,
-          userAssignedIdentities: S.optional(__S(291, __c36, 3)),
+          userAssignedIdentities: S.optional(__S(2592, __c162, 0)),
         }),
       ).annotate({
         identifier: "UpdateAccountRequestIdentity",
       });
-    case 5:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           accountName: S.String.pipe(T.Label()),
           location: S.optional(S.String),
-          tags: S.optional(__S(4, __c0, 4)),
-          properties: S.optional(__S(12, __c1, 4)),
-          identity: S.optional(__S(292, __c36, 4)),
+          tags: S.optional(__S(96, __c6, 0)),
+          properties: S.optional(__S(133, __c8, 5)),
+          identity: S.optional(__S(2593, __c162, 1)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -10213,13 +11163,17 @@ function __c36(j: number): any {
           }),
         ),
       ).annotate({ identifier: "UpdateAccountRequest" });
-    case 6:
+  }
+}
+function __c163(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           label: S.optional(S.String),
         }),
       ).annotate({ identifier: "BackupPatchProperties" });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -10227,7 +11181,7 @@ function __c36(j: number): any {
           accountName: S.String.pipe(T.Label()),
           backupVaultName: S.String.pipe(T.Label()),
           backupName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(294, __c36, 6)),
+          properties: S.optional(__S(2608, __c163, 0)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -10239,7 +11193,7 @@ function __c36(j: number): any {
       ).annotate({ identifier: "UpdateBackupRequest" });
   }
 }
-function __c37(j: number): any {
+function __c164(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -10249,8 +11203,8 @@ function __c37(j: number): any {
           accountName: S.String.pipe(T.Label()),
           backupPolicyName: S.String.pipe(T.Label()),
           location: S.optional(S.String),
-          tags: S.optional(__S(4, __c0, 4)),
-          properties: S.optional(__S(74, __c9, 2)),
+          tags: S.optional(__S(96, __c6, 0)),
+          properties: S.optional(__S(592, __c37, 0)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -10262,14 +11216,18 @@ function __c37(j: number): any {
       ).annotate({
         identifier: "UpdateBackupPolicyRequest",
       });
-    case 1:
+  }
+}
+function __c165(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           accountName: S.String.pipe(T.Label()),
           backupVaultName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(4, __c0, 4)),
+          tags: S.optional(__S(96, __c6, 0)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -10279,18 +11237,22 @@ function __c37(j: number): any {
           }),
         ),
       ).annotate({ identifier: "UpdateBackupVaultRequest" });
-    case 2:
+  }
+}
+function __c166(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          fileSystemUser: S.optional(__S(41, __c5, 1)),
-          server: S.optional(__S(42, __c5, 2)),
+          fileSystemUser: S.optional(__S(2082, __c130, 2)),
+          server: S.optional(__S(2096, __c131, 0)),
           permissions: S.optional(S.String),
-          akvDetails: S.optional(__S(45, __c5, 5)),
+          akvDetails: S.optional(__S(2085, __c130, 5)),
         }),
       ).annotate({
         identifier: "BucketPatchPropertiesInput",
       });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -10299,7 +11261,7 @@ function __c37(j: number): any {
           poolName: S.String.pipe(T.Label()),
           volumeName: S.String.pipe(T.Label()),
           bucketName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(298, __c37, 2)),
+          properties: S.optional(__S(2656, __c166, 0)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -10309,20 +11271,24 @@ function __c37(j: number): any {
           }),
         ),
       ).annotate({ identifier: "UpdateBucketRequest" });
-    case 4:
+  }
+}
+function __c167(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           size: S.optional(S.Number),
-          exportPolicy: S.optional(__S(53, __c6, 5)),
-          protocolTypes: S.optional(__S(54, __c6, 6)),
-          smbSettings: S.optional(__S(55, __c6, 7)),
+          exportPolicy: S.optional(__S(2322, __c145, 2)),
+          protocolTypes: S.optional(__S(2336, __c146, 0)),
+          smbSettings: S.optional(__S(2352, __c147, 0)),
           throughputMibps: S.optional(S.Number),
           keyVaultPrivateEndpointResourceId: S.optional(S.String),
           cifsChangeNotifications: S.optional(S.String),
           writeBack: S.optional(S.String),
         }),
       ).annotate({ identifier: "CacheUpdateProperties" });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -10330,8 +11296,8 @@ function __c37(j: number): any {
           accountName: S.String.pipe(T.Label()),
           poolName: S.String.pipe(T.Label()),
           cacheName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(4, __c0, 4)),
-          properties: S.optional(__S(300, __c37, 4)),
+          tags: S.optional(__S(96, __c6, 0)),
+          properties: S.optional(__S(2672, __c167, 0)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -10341,7 +11307,11 @@ function __c37(j: number): any {
           }),
         ),
       ).annotate({ identifier: "UpdateCachRequest" });
-    case 6:
+  }
+}
+function __c168(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -10361,7 +11331,11 @@ function __c37(j: number): any {
       ).annotate({
         identifier: "UpdateNetAppResourceNetworkSiblingSetRequest",
       });
-    case 7:
+  }
+}
+function __c169(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           size: S.optional(S.Number),
@@ -10370,11 +11344,7 @@ function __c37(j: number): any {
           customThroughputMibps: S.optional(S.NullOr(S.Number)),
         }),
       ).annotate({ identifier: "PoolPatchProperties" });
-  }
-}
-function __c38(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -10382,8 +11352,8 @@ function __c38(j: number): any {
           accountName: S.String.pipe(T.Label()),
           poolName: S.String.pipe(T.Label()),
           location: S.optional(S.String),
-          tags: S.optional(__S(4, __c0, 4)),
-          properties: S.optional(__S(303, __c37, 7)),
+          tags: S.optional(__S(96, __c6, 0)),
+          properties: S.optional(__S(2704, __c169, 0)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -10393,7 +11363,11 @@ function __c38(j: number): any {
           }),
         ),
       ).annotate({ identifier: "UpdatePoolRequest" });
-    case 1:
+  }
+}
+function __c170(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -10411,467 +11385,8 @@ function __c38(j: number): any {
           }),
         ),
       ).annotate({ identifier: "UpdateSnapshotRequest" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          accountName: S.String.pipe(T.Label()),
-          snapshotPolicyName: S.String.pipe(T.Label()),
-          location: S.optional(S.String),
-          tags: S.optional(__S(4, __c0, 4)),
-          properties: S.optional(__S(87, __c10, 7)),
-        }).pipe(
-          T.Http({
-            method: "PATCH",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/snapshotPolicies/{snapshotPolicyName}",
-            code: 200,
-            apiVersion: "2026-06-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "UpdateSnapshotPolicyRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          desiredRansomwareProtectionState: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "RansomwareProtectionPatchSettings",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          backup: S.optional(__S(94, __c11, 6)),
-          snapshot: S.optional(__S(97, __c12, 1)),
-          ransomwareProtection: S.optional(__S(307, __c38, 3)),
-        }),
-      ).annotate({
-        identifier: "VolumePatchPropertiesDataProtection",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          serviceLevel: S.optional(S.String),
-          usageThreshold: S.optional(S.Number),
-          exportPolicy: S.optional(__S(53, __c6, 5)),
-          protocolTypes: S.optional(__S(5, __c0, 5)),
-          throughputMibps: S.optional(S.Number),
-          dataProtection: S.optional(__S(308, __c38, 4)),
-          isDefaultQuotaEnabled: S.optional(S.Boolean),
-          defaultUserQuotaInKiBs: S.optional(S.Number),
-          defaultGroupQuotaInKiBs: S.optional(S.Number),
-          unixPermissions: S.optional(S.NullOr(S.String)),
-          coolAccess: S.optional(S.Boolean),
-          coolnessPeriod: S.optional(S.Number),
-          coolAccessRetrievalPolicy: S.optional(S.String),
-          coolAccessTieringPolicy: S.optional(S.String),
-          snapshotDirectoryVisible: S.optional(S.Boolean),
-          smbAccessBasedEnumeration: S.optional(S.NullOr(S.String)),
-          smbNonBrowsable: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "VolumePatchProperties" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          accountName: S.String.pipe(T.Label()),
-          poolName: S.String.pipe(T.Label()),
-          volumeName: S.String.pipe(T.Label()),
-          location: S.optional(S.String),
-          tags: S.optional(__S(4, __c0, 4)),
-          properties: S.optional(__S(309, __c38, 5)),
-        }).pipe(
-          T.Http({
-            method: "PATCH",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/capacityPools/{poolName}/volumes/{volumeName}",
-            code: 200,
-            apiVersion: "2026-06-01",
-          }),
-        ),
-      ).annotate({ identifier: "UpdateVolumeRequest" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          accountName: S.String.pipe(T.Label()),
-          poolName: S.String.pipe(T.Label()),
-          volumeName: S.String.pipe(T.Label()),
-          volumeQuotaRuleName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(4, __c0, 4)),
-          properties: S.optional(__S(119, __c14, 7)),
-        }).pipe(
-          T.Http({
-            method: "PATCH",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/capacityPools/{poolName}/volumes/{volumeName}/volumeQuotaRules/{volumeQuotaRuleName}",
-            code: 200,
-            apiVersion: "2026-06-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "UpdateVolumeQuotaRuleRequest",
-      });
   }
 }
-function __c39(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          accountName: S.String.pipe(T.Label()),
-          poolName: S.String.pipe(T.Label()),
-          volumeName: S.String.pipe(T.Label()),
-          clientIp: S.optional(S.String),
-          confirmRunningDisruptiveOperation: S.optional(S.Boolean),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/capacityPools/{poolName}/volumes/{volumeName}/breakFileLocks",
-            code: 200,
-            apiVersion: "2026-06-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "VolumesBreakFileLocksRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          accountName: S.String.pipe(T.Label()),
-          poolName: S.String.pipe(T.Label()),
-          volumeName: S.String.pipe(T.Label()),
-          forceBreakReplication: S.optional(S.Boolean),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/capacityPools/{poolName}/volumes/{volumeName}/breakReplication",
-            code: 200,
-            apiVersion: "2026-06-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "VolumesBreakReplicationRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          accountName: S.String.pipe(T.Label()),
-          poolName: S.String.pipe(T.Label()),
-          volumeName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(4, __c0, 4)),
-          location: S.String,
-          properties: __S(101, __c12, 5),
-          zones: S.optional(__S(5, __c0, 5)),
-        }).pipe(
-          T.Http({
-            method: "PUT",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/capacityPools/{poolName}/volumes/{volumeName}",
-            code: 200,
-            apiVersion: "2026-06-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "VolumesCreateOrUpdateRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(16, __c2, 0)),
-          tags: S.optional(__S(4, __c0, 4)),
-          location: S.String,
-          properties: __S(114, __c14, 2),
-          etag: S.optional(S.String),
-          zones: S.optional(__S(5, __c0, 5)),
-        }),
-      ).annotate({
-        identifier: "VolumesCreateOrUpdateResponse",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          accountName: S.String.pipe(T.Label()),
-          poolName: S.String.pipe(T.Label()),
-          volumeName: S.String.pipe(T.Label()),
-          username: S.String,
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/capacityPools/{poolName}/volumes/{volumeName}/getGroupIdListForLdapUser",
-            code: 200,
-            apiVersion: "2026-06-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "VolumesListGetGroupIdListForLdapUserRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          groupIdsForLdapUser: S.optional(__S(5, __c0, 5)),
-        }),
-      ).annotate({
-        identifier: "GetGroupIdListForLdapUserResponse",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          accountName: S.String.pipe(T.Label()),
-          poolName: S.String.pipe(T.Label()),
-          volumeName: S.String.pipe(T.Label()),
-          peerIpAddresses: __S(5, __c0, 5),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/capacityPools/{poolName}/volumes/{volumeName}/peerExternalCluster",
-            code: 200,
-            apiVersion: "2026-06-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "VolumesPeerExternalClusterRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          clusterPeeringCommand: S.optional(S.String),
-          passphrase: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "ClusterPeerCommandResponseProperties",
-      });
-  }
-}
-function __c40(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          properties: S.optional(__S(319, __c39, 7)),
-        }),
-      ).annotate({
-        identifier: "ClusterPeerCommandResponse",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          accountName: S.String.pipe(T.Label()),
-          poolName: S.String.pipe(T.Label()),
-          volumeName: S.String.pipe(T.Label()),
-          newPoolResourceId: S.String,
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/capacityPools/{poolName}/volumes/{volumeName}/poolChange",
-            code: 200,
-            apiVersion: "2026-06-01",
-          }),
-        ),
-      ).annotate({ identifier: "VolumesPoolChangeRequest" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          accountName: S.String.pipe(T.Label()),
-          poolName: S.String.pipe(T.Label()),
-          volumeName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/capacityPools/{poolName}/volumes/{volumeName}/populateAvailabilityZone",
-            code: 200,
-            apiVersion: "2026-06-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "VolumesPopulateAvailabilityZoneRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          accountName: S.String.pipe(T.Label()),
-          poolName: S.String.pipe(T.Label()),
-          volumeName: S.String.pipe(T.Label()),
-          sourceVolumeId: S.optional(S.String),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/capacityPools/{poolName}/volumes/{volumeName}/reestablishReplication",
-            code: 200,
-            apiVersion: "2026-06-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "VolumesReestablishReplicationRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          accountName: S.String.pipe(T.Label()),
-          poolName: S.String.pipe(T.Label()),
-          volumeName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/capacityPools/{poolName}/volumes/{volumeName}/reinitializeReplication",
-            code: 200,
-            apiVersion: "2026-06-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "VolumesReInitializeReplicationRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          accountName: S.String.pipe(T.Label()),
-          poolName: S.String.pipe(T.Label()),
-          volumeName: S.String.pipe(T.Label()),
-          creationToken: S.optional(S.String),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/capacityPools/{poolName}/volumes/{volumeName}/relocate",
-            code: 200,
-            apiVersion: "2026-06-01",
-          }),
-        ),
-      ).annotate({ identifier: "VolumesRelocateRequest" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          accountName: S.String.pipe(T.Label()),
-          poolName: S.String.pipe(T.Label()),
-          volumeName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/capacityPools/{poolName}/volumes/{volumeName}/replicationStatus",
-            code: 200,
-            apiVersion: "2026-06-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "VolumesReplicationStatusRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          healthy: S.optional(S.Boolean),
-          relationshipStatus: S.optional(S.String),
-          mirrorState: S.optional(S.String),
-          totalProgress: S.optional(S.String),
-          errorMessage: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ReplicationStatus" });
-  }
-}
-function __c41(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          accountName: S.String.pipe(T.Label()),
-          poolName: S.String.pipe(T.Label()),
-          volumeName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/capacityPools/{poolName}/volumes/{volumeName}/resyncReplication",
-            code: 200,
-            apiVersion: "2026-06-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "VolumesResyncReplicationRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          accountName: S.String.pipe(T.Label()),
-          poolName: S.String.pipe(T.Label()),
-          volumeName: S.String.pipe(T.Label()),
-          snapshotId: S.optional(S.String),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/capacityPools/{poolName}/volumes/{volumeName}/revert",
-            code: 200,
-            apiVersion: "2026-06-01",
-          }),
-        ),
-      ).annotate({ identifier: "VolumesRevertRequest" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          accountName: S.String.pipe(T.Label()),
-          poolName: S.String.pipe(T.Label()),
-          volumeName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/capacityPools/{poolName}/volumes/{volumeName}/revertRelocation",
-            code: 200,
-            apiVersion: "2026-06-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "VolumesRevertRelocationRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          accountName: S.String.pipe(T.Label()),
-          poolName: S.String.pipe(T.Label()),
-          volumeName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/capacityPools/{poolName}/volumes/{volumeName}/splitCloneFromParent",
-            code: 200,
-            apiVersion: "2026-06-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "VolumesSplitCloneFromParentRequest",
-      });
-  }
-}
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

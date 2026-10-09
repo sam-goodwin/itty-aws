@@ -1521,8 +1521,8 @@ export const acceptBuyersProposals: API.OperationMethod<
   AcceptBuyersProposalsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1, __c0, 1) as any as S.Schema<AcceptBuyersProposalsRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<Proposal>,
+  input: __S(1153, __c36, 1) as any as S.Schema<AcceptBuyersProposalsRequest>,
+  output: __S(1189, __c37, 5) as any as S.Schema<Proposal>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1536,8 +1536,8 @@ export const activateBuyersClients: API.OperationMethod<
   ActivateBuyersClientsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(9, __c1, 1) as any as S.Schema<ActivateBuyersClientsRequest>,
-  output: __S(10, __c1, 2) as any as S.Schema<Client>,
+  input: __S(1536, __c48, 0) as any as S.Schema<ActivateBuyersClientsRequest>,
+  output: __S(1568, __c49, 0) as any as S.Schema<Client>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1556,8 +1556,8 @@ export const activateBuyersClientsUsers: API.OperationMethod<
   ActivateBuyersClientsUsersError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(11, __c1, 3) as any as S.Schema<ActivateBuyersClientsUsersRequest>,
-  output: __S(12, __c1, 4) as any as S.Schema<ClientUser>,
+  input: __S(1856, __c58, 0) as any as S.Schema<ActivateBuyersClientsUsersRequest>,
+  output: __S(1888, __c59, 0) as any as S.Schema<ClientUser>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1576,8 +1576,8 @@ export const activateBuyersDataSegments: API.OperationMethod<
   ActivateBuyersDataSegmentsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(13, __c1, 5) as any as S.Schema<ActivateBuyersDataSegmentsRequest>,
-  output: __S(15, __c1, 7) as any as S.Schema<DataSegment>,
+  input: __S(1920, __c60, 0) as any as S.Schema<ActivateBuyersDataSegmentsRequest>,
+  output: __S(1952, __c61, 0) as any as S.Schema<DataSegment>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1596,8 +1596,8 @@ export const activateCuratorsCuratedPackages: API.OperationMethod<
   ActivateCuratorsCuratedPackagesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(16, __c2, 0) as any as S.Schema<ActivateCuratorsCuratedPackagesRequest>,
-  output: __S(31, __c3, 7) as any as S.Schema<CuratedPackage>,
+  input: __S(2016, __c63, 0) as any as S.Schema<ActivateCuratorsCuratedPackagesRequest>,
+  output: __S(2057, __c64, 9) as any as S.Schema<CuratedPackage>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1616,8 +1616,8 @@ export const addCreativeBuyersFinalizedDeals: API.OperationMethod<
   AddCreativeBuyersFinalizedDealsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(33, __c4, 1) as any as S.Schema<AddCreativeBuyersFinalizedDealsRequest>,
-  output: __S(61, __c7, 5) as any as S.Schema<FinalizedDeal>,
+  input: __S(2177, __c68, 1) as any as S.Schema<AddCreativeBuyersFinalizedDealsRequest>,
+  output: __S(2306, __c72, 2) as any as S.Schema<FinalizedDeal>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1631,8 +1631,8 @@ export const addNoteBuyersProposals: API.OperationMethod<
   AddNoteBuyersProposalsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(63, __c7, 7) as any as S.Schema<AddNoteBuyersProposalsRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<Proposal>,
+  input: __S(1, __c0, 1) as any as S.Schema<AddNoteBuyersProposalsRequest>,
+  output: __S(1189, __c37, 5) as any as S.Schema<Proposal>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1651,8 +1651,8 @@ export const batchUpdateBuyersProposalsDeals: API.OperationMethod<
   BatchUpdateBuyersProposalsDealsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(67, __c8, 3) as any as S.Schema<BatchUpdateBuyersProposalsDealsRequest>,
-  output: __S(69, __c8, 5) as any as S.Schema<BatchUpdateDealsResponse>,
+  input: __S(35, __c1, 3) as any as S.Schema<BatchUpdateBuyersProposalsDealsRequest>,
+  output: __S(36, __c1, 4) as any as S.Schema<BatchUpdateDealsResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1671,8 +1671,8 @@ export const cancelNegotiationBuyersProposals: API.OperationMethod<
   CancelNegotiationBuyersProposalsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(70, __c8, 6) as any as S.Schema<CancelNegotiationBuyersProposalsRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<Proposal>,
+  input: __S(96, __c3, 0) as any as S.Schema<CancelNegotiationBuyersProposalsRequest>,
+  output: __S(1189, __c37, 5) as any as S.Schema<Proposal>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1686,8 +1686,8 @@ export const createBuyersClients: API.OperationMethod<
   CreateBuyersClientsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(71, __c8, 7) as any as S.Schema<CreateBuyersClientsRequest>,
-  output: __S(10, __c1, 2) as any as S.Schema<Client>,
+  input: __S(128, __c4, 0) as any as S.Schema<CreateBuyersClientsRequest>,
+  output: __S(1568, __c49, 0) as any as S.Schema<Client>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1706,8 +1706,8 @@ export const createBuyersClientsUsers: API.OperationMethod<
   CreateBuyersClientsUsersError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(72, __c9, 0) as any as S.Schema<CreateBuyersClientsUsersRequest>,
-  output: __S(12, __c1, 4) as any as S.Schema<ClientUser>,
+  input: __S(160, __c5, 0) as any as S.Schema<CreateBuyersClientsUsersRequest>,
+  output: __S(1888, __c59, 0) as any as S.Schema<ClientUser>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1726,8 +1726,8 @@ export const createBuyersDataSegments: API.OperationMethod<
   CreateBuyersDataSegmentsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(73, __c9, 1) as any as S.Schema<CreateBuyersDataSegmentsRequest>,
-  output: __S(15, __c1, 7) as any as S.Schema<DataSegment>,
+  input: __S(192, __c6, 0) as any as S.Schema<CreateBuyersDataSegmentsRequest>,
+  output: __S(1952, __c61, 0) as any as S.Schema<DataSegment>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1746,8 +1746,8 @@ export const createCuratorsCuratedPackages: API.OperationMethod<
   CreateCuratorsCuratedPackagesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(74, __c9, 2) as any as S.Schema<CreateCuratorsCuratedPackagesRequest>,
-  output: __S(31, __c3, 7) as any as S.Schema<CuratedPackage>,
+  input: __S(224, __c7, 0) as any as S.Schema<CreateCuratorsCuratedPackagesRequest>,
+  output: __S(2057, __c64, 9) as any as S.Schema<CuratedPackage>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1766,8 +1766,8 @@ export const deactivateBuyersClients: API.OperationMethod<
   DeactivateBuyersClientsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(75, __c9, 3) as any as S.Schema<DeactivateBuyersClientsRequest>,
-  output: __S(10, __c1, 2) as any as S.Schema<Client>,
+  input: __S(256, __c8, 0) as any as S.Schema<DeactivateBuyersClientsRequest>,
+  output: __S(1568, __c49, 0) as any as S.Schema<Client>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1786,8 +1786,8 @@ export const deactivateBuyersClientsUsers: API.OperationMethod<
   DeactivateBuyersClientsUsersError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(76, __c9, 4) as any as S.Schema<DeactivateBuyersClientsUsersRequest>,
-  output: __S(12, __c1, 4) as any as S.Schema<ClientUser>,
+  input: __S(288, __c9, 0) as any as S.Schema<DeactivateBuyersClientsUsersRequest>,
+  output: __S(1888, __c59, 0) as any as S.Schema<ClientUser>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1806,8 +1806,8 @@ export const deactivateBuyersDataSegments: API.OperationMethod<
   DeactivateBuyersDataSegmentsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(77, __c9, 5) as any as S.Schema<DeactivateBuyersDataSegmentsRequest>,
-  output: __S(15, __c1, 7) as any as S.Schema<DataSegment>,
+  input: __S(320, __c10, 0) as any as S.Schema<DeactivateBuyersDataSegmentsRequest>,
+  output: __S(1952, __c61, 0) as any as S.Schema<DataSegment>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1826,8 +1826,8 @@ export const deactivateCuratorsCuratedPackages: API.OperationMethod<
   DeactivateCuratorsCuratedPackagesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(78, __c9, 6) as any as S.Schema<DeactivateCuratorsCuratedPackagesRequest>,
-  output: __S(31, __c3, 7) as any as S.Schema<CuratedPackage>,
+  input: __S(352, __c11, 0) as any as S.Schema<DeactivateCuratorsCuratedPackagesRequest>,
+  output: __S(2057, __c64, 9) as any as S.Schema<CuratedPackage>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1846,8 +1846,8 @@ export const deleteBuyersClientsUsers: API.OperationMethod<
   DeleteBuyersClientsUsersError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(79, __c9, 7) as any as S.Schema<DeleteBuyersClientsUsersRequest>,
-  output: __S(8, __c1, 0) as any as S.Schema<Empty>,
+  input: __S(384, __c12, 0) as any as S.Schema<DeleteBuyersClientsUsersRequest>,
+  output: __S(1600, __c50, 0) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1861,8 +1861,8 @@ export const getBuyersAuctionPackages: API.OperationMethod<
   GetBuyersAuctionPackagesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(80, __c10, 0) as any as S.Schema<GetBuyersAuctionPackagesRequest>,
-  output: __S(82, __c10, 2) as any as S.Schema<AuctionPackage>,
+  input: __S(416, __c13, 0) as any as S.Schema<GetBuyersAuctionPackagesRequest>,
+  output: __S(480, __c15, 0) as any as S.Schema<AuctionPackage>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1876,8 +1876,8 @@ export const getBuyersClients: API.OperationMethod<
   GetBuyersClientsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(83, __c10, 3) as any as S.Schema<GetBuyersClientsRequest>,
-  output: __S(10, __c1, 2) as any as S.Schema<Client>,
+  input: __S(512, __c16, 0) as any as S.Schema<GetBuyersClientsRequest>,
+  output: __S(1568, __c49, 0) as any as S.Schema<Client>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1891,8 +1891,8 @@ export const getBuyersClientsUsers: API.OperationMethod<
   GetBuyersClientsUsersError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(84, __c10, 4) as any as S.Schema<GetBuyersClientsUsersRequest>,
-  output: __S(12, __c1, 4) as any as S.Schema<ClientUser>,
+  input: __S(544, __c17, 0) as any as S.Schema<GetBuyersClientsUsersRequest>,
+  output: __S(1888, __c59, 0) as any as S.Schema<ClientUser>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1906,8 +1906,8 @@ export const getBuyersDataSegments: API.OperationMethod<
   GetBuyersDataSegmentsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(85, __c10, 5) as any as S.Schema<GetBuyersDataSegmentsRequest>,
-  output: __S(15, __c1, 7) as any as S.Schema<DataSegment>,
+  input: __S(576, __c18, 0) as any as S.Schema<GetBuyersDataSegmentsRequest>,
+  output: __S(1952, __c61, 0) as any as S.Schema<DataSegment>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1921,8 +1921,8 @@ export const getBuyersFinalizedDeals: API.OperationMethod<
   GetBuyersFinalizedDealsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(86, __c10, 6) as any as S.Schema<GetBuyersFinalizedDealsRequest>,
-  output: __S(61, __c7, 5) as any as S.Schema<FinalizedDeal>,
+  input: __S(608, __c19, 0) as any as S.Schema<GetBuyersFinalizedDealsRequest>,
+  output: __S(2306, __c72, 2) as any as S.Schema<FinalizedDeal>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1936,8 +1936,8 @@ export const getBuyersProposals: API.OperationMethod<
   GetBuyersProposalsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(87, __c10, 7) as any as S.Schema<GetBuyersProposalsRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<Proposal>,
+  input: __S(640, __c20, 0) as any as S.Schema<GetBuyersProposalsRequest>,
+  output: __S(1189, __c37, 5) as any as S.Schema<Proposal>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1951,8 +1951,8 @@ export const getBuyersProposalsDeals: API.OperationMethod<
   GetBuyersProposalsDealsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(88, __c11, 0) as any as S.Schema<GetBuyersProposalsDealsRequest>,
-  output: __S(58, __c7, 2) as any as S.Schema<Deal>,
+  input: __S(672, __c21, 0) as any as S.Schema<GetBuyersProposalsDealsRequest>,
+  output: __S(2291, __c71, 19) as any as S.Schema<Deal>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1966,8 +1966,8 @@ export const getBuyersPublisherProfiles: API.OperationMethod<
   GetBuyersPublisherProfilesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(89, __c11, 1) as any as S.Schema<GetBuyersPublisherProfilesRequest>,
-  output: __S(92, __c11, 4) as any as S.Schema<PublisherProfile>,
+  input: __S(704, __c22, 0) as any as S.Schema<GetBuyersPublisherProfilesRequest>,
+  output: __S(738, __c23, 2) as any as S.Schema<PublisherProfile>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1981,8 +1981,8 @@ export const getCuratorsCuratedPackages: API.OperationMethod<
   GetCuratorsCuratedPackagesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(93, __c11, 5) as any as S.Schema<GetCuratorsCuratedPackagesRequest>,
-  output: __S(31, __c3, 7) as any as S.Schema<CuratedPackage>,
+  input: __S(768, __c24, 0) as any as S.Schema<GetCuratorsCuratedPackagesRequest>,
+  output: __S(2057, __c64, 9) as any as S.Schema<CuratedPackage>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1997,8 +1997,8 @@ export const listBiddersAuctionPackages: API.PaginatedOperationMethod<
   GcpOpContext,
   ListAuctionPackagesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(94, __c11, 6) as any as S.Schema<ListBiddersAuctionPackagesRequest>,
-  output: __S(96, __c12, 0) as any as S.Schema<ListAuctionPackagesResponse>,
+  input: __S(800, __c25, 0) as any as S.Schema<ListBiddersAuctionPackagesRequest>,
+  output: __S(833, __c26, 1) as any as S.Schema<ListAuctionPackagesResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2014,8 +2014,8 @@ export const listBiddersFinalizedDeals: API.PaginatedOperationMethod<
   GcpOpContext,
   ListFinalizedDealsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(97, __c12, 1) as any as S.Schema<ListBiddersFinalizedDealsRequest>,
-  output: __S(99, __c12, 3) as any as S.Schema<ListFinalizedDealsResponse>,
+  input: __S(864, __c27, 0) as any as S.Schema<ListBiddersFinalizedDealsRequest>,
+  output: __S(897, __c28, 1) as any as S.Schema<ListFinalizedDealsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2031,8 +2031,8 @@ export const listBuyersAuctionPackages: API.PaginatedOperationMethod<
   GcpOpContext,
   ListAuctionPackagesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(100, __c12, 4) as any as S.Schema<ListBuyersAuctionPackagesRequest>,
-  output: __S(96, __c12, 0) as any as S.Schema<ListAuctionPackagesResponse>,
+  input: __S(928, __c29, 0) as any as S.Schema<ListBuyersAuctionPackagesRequest>,
+  output: __S(833, __c26, 1) as any as S.Schema<ListAuctionPackagesResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2048,8 +2048,8 @@ export const listBuyersClients: API.PaginatedOperationMethod<
   GcpOpContext,
   ListClientsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(101, __c12, 5) as any as S.Schema<ListBuyersClientsRequest>,
-  output: __S(103, __c12, 7) as any as S.Schema<ListClientsResponse>,
+  input: __S(960, __c30, 0) as any as S.Schema<ListBuyersClientsRequest>,
+  output: __S(962, __c30, 2) as any as S.Schema<ListClientsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2065,8 +2065,8 @@ export const listBuyersClientsUsers: API.PaginatedOperationMethod<
   GcpOpContext,
   ListClientUsersResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(104, __c13, 0) as any as S.Schema<ListBuyersClientsUsersRequest>,
-  output: __S(106, __c13, 2) as any as S.Schema<ListClientUsersResponse>,
+  input: __S(992, __c31, 0) as any as S.Schema<ListBuyersClientsUsersRequest>,
+  output: __S(994, __c31, 2) as any as S.Schema<ListClientUsersResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2082,8 +2082,8 @@ export const listBuyersDataSegments: API.PaginatedOperationMethod<
   GcpOpContext,
   ListDataSegmentsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(107, __c13, 3) as any as S.Schema<ListBuyersDataSegmentsRequest>,
-  output: __S(109, __c13, 5) as any as S.Schema<ListDataSegmentsResponse>,
+  input: __S(1024, __c32, 0) as any as S.Schema<ListBuyersDataSegmentsRequest>,
+  output: __S(1026, __c32, 2) as any as S.Schema<ListDataSegmentsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2099,8 +2099,8 @@ export const listBuyersFinalizedDeals: API.PaginatedOperationMethod<
   GcpOpContext,
   ListFinalizedDealsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(110, __c13, 6) as any as S.Schema<ListBuyersFinalizedDealsRequest>,
-  output: __S(99, __c12, 3) as any as S.Schema<ListFinalizedDealsResponse>,
+  input: __S(1056, __c33, 0) as any as S.Schema<ListBuyersFinalizedDealsRequest>,
+  output: __S(897, __c28, 1) as any as S.Schema<ListFinalizedDealsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2116,8 +2116,8 @@ export const listBuyersProposals: API.PaginatedOperationMethod<
   GcpOpContext,
   ListProposalsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(111, __c13, 7) as any as S.Schema<ListBuyersProposalsRequest>,
-  output: __S(113, __c14, 1) as any as S.Schema<ListProposalsResponse>,
+  input: __S(1088, __c34, 0) as any as S.Schema<ListBuyersProposalsRequest>,
+  output: __S(1090, __c34, 2) as any as S.Schema<ListProposalsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2133,8 +2133,8 @@ export const listBuyersProposalsDeals: API.PaginatedOperationMethod<
   GcpOpContext,
   ListDealsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(114, __c14, 2) as any as S.Schema<ListBuyersProposalsDealsRequest>,
-  output: __S(115, __c14, 3) as any as S.Schema<ListDealsResponse>,
+  input: __S(1120, __c35, 0) as any as S.Schema<ListBuyersProposalsDealsRequest>,
+  output: __S(1121, __c35, 1) as any as S.Schema<ListDealsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2150,8 +2150,8 @@ export const listBuyersPublisherProfiles: API.PaginatedOperationMethod<
   GcpOpContext,
   ListPublisherProfilesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(116, __c14, 4) as any as S.Schema<ListBuyersPublisherProfilesRequest>,
-  output: __S(118, __c14, 6) as any as S.Schema<ListPublisherProfilesResponse>,
+  input: __S(1216, __c38, 0) as any as S.Schema<ListBuyersPublisherProfilesRequest>,
+  output: __S(1218, __c38, 2) as any as S.Schema<ListPublisherProfilesResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2167,8 +2167,8 @@ export const listCuratorsCuratedPackages: API.PaginatedOperationMethod<
   GcpOpContext,
   ListCuratedPackagesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(119, __c14, 7) as any as S.Schema<ListCuratorsCuratedPackagesRequest>,
-  output: __S(121, __c15, 1) as any as S.Schema<ListCuratedPackagesResponse>,
+  input: __S(1248, __c39, 0) as any as S.Schema<ListCuratorsCuratedPackagesRequest>,
+  output: __S(1250, __c39, 2) as any as S.Schema<ListCuratedPackagesResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2184,8 +2184,8 @@ export const listMediaPlanners: API.PaginatedOperationMethod<
   GcpOpContext,
   ListMediaPlannersResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(122, __c15, 2) as any as S.Schema<ListMediaPlannersRequest>,
-  output: __S(123, __c15, 3) as any as S.Schema<ListMediaPlannersResponse>,
+  input: __S(1280, __c40, 0) as any as S.Schema<ListMediaPlannersRequest>,
+  output: __S(1281, __c40, 1) as any as S.Schema<ListMediaPlannersResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2200,8 +2200,8 @@ export const patchBuyersClients: API.OperationMethod<
   PatchBuyersClientsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(124, __c15, 4) as any as S.Schema<PatchBuyersClientsRequest>,
-  output: __S(10, __c1, 2) as any as S.Schema<Client>,
+  input: __S(1312, __c41, 0) as any as S.Schema<PatchBuyersClientsRequest>,
+  output: __S(1568, __c49, 0) as any as S.Schema<Client>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2220,8 +2220,8 @@ export const patchBuyersDataSegments: API.OperationMethod<
   PatchBuyersDataSegmentsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(125, __c15, 5) as any as S.Schema<PatchBuyersDataSegmentsRequest>,
-  output: __S(15, __c1, 7) as any as S.Schema<DataSegment>,
+  input: __S(1344, __c42, 0) as any as S.Schema<PatchBuyersDataSegmentsRequest>,
+  output: __S(1952, __c61, 0) as any as S.Schema<DataSegment>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2235,8 +2235,8 @@ export const patchBuyersProposals: API.OperationMethod<
   PatchBuyersProposalsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(126, __c15, 6) as any as S.Schema<PatchBuyersProposalsRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<Proposal>,
+  input: __S(1376, __c43, 0) as any as S.Schema<PatchBuyersProposalsRequest>,
+  output: __S(1189, __c37, 5) as any as S.Schema<Proposal>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2255,8 +2255,8 @@ export const patchBuyersProposalsDeals: API.OperationMethod<
   PatchBuyersProposalsDealsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(127, __c15, 7) as any as S.Schema<PatchBuyersProposalsDealsRequest>,
-  output: __S(58, __c7, 2) as any as S.Schema<Deal>,
+  input: __S(1408, __c44, 0) as any as S.Schema<PatchBuyersProposalsDealsRequest>,
+  output: __S(2291, __c71, 19) as any as S.Schema<Deal>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2275,8 +2275,8 @@ export const patchCuratorsCuratedPackages: API.OperationMethod<
   PatchCuratorsCuratedPackagesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(128, __c16, 0) as any as S.Schema<PatchCuratorsCuratedPackagesRequest>,
-  output: __S(31, __c3, 7) as any as S.Schema<CuratedPackage>,
+  input: __S(1440, __c45, 0) as any as S.Schema<PatchCuratorsCuratedPackagesRequest>,
+  output: __S(2057, __c64, 9) as any as S.Schema<CuratedPackage>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2295,8 +2295,8 @@ export const pauseBuyersFinalizedDeals: API.OperationMethod<
   PauseBuyersFinalizedDealsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(130, __c16, 2) as any as S.Schema<PauseBuyersFinalizedDealsRequest>,
-  output: __S(61, __c7, 5) as any as S.Schema<FinalizedDeal>,
+  input: __S(1473, __c46, 1) as any as S.Schema<PauseBuyersFinalizedDealsRequest>,
+  output: __S(2306, __c72, 2) as any as S.Schema<FinalizedDeal>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2315,8 +2315,8 @@ export const resumeBuyersFinalizedDeals: API.OperationMethod<
   ResumeBuyersFinalizedDealsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(131, __c16, 3) as any as S.Schema<ResumeBuyersFinalizedDealsRequest>,
-  output: __S(61, __c7, 5) as any as S.Schema<FinalizedDeal>,
+  input: __S(1504, __c47, 0) as any as S.Schema<ResumeBuyersFinalizedDealsRequest>,
+  output: __S(2306, __c72, 2) as any as S.Schema<FinalizedDeal>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2330,8 +2330,8 @@ export const sendRfpBuyersProposals: API.OperationMethod<
   SendRfpBuyersProposalsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(133, __c16, 5) as any as S.Schema<SendRfpBuyersProposalsRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<Proposal>,
+  input: __S(1633, __c51, 1) as any as S.Schema<SendRfpBuyersProposalsRequest>,
+  output: __S(1189, __c37, 5) as any as S.Schema<Proposal>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2350,8 +2350,8 @@ export const setReadyToServeBiddersFinalizedDeals: API.OperationMethod<
   SetReadyToServeBiddersFinalizedDealsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(134, __c16, 6) as any as S.Schema<SetReadyToServeBiddersFinalizedDealsRequest>,
-  output: __S(61, __c7, 5) as any as S.Schema<FinalizedDeal>,
+  input: __S(1664, __c52, 0) as any as S.Schema<SetReadyToServeBiddersFinalizedDealsRequest>,
+  output: __S(2306, __c72, 2) as any as S.Schema<FinalizedDeal>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2370,8 +2370,8 @@ export const setReadyToServeBuyersFinalizedDeals: API.OperationMethod<
   SetReadyToServeBuyersFinalizedDealsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(135, __c16, 7) as any as S.Schema<SetReadyToServeBuyersFinalizedDealsRequest>,
-  output: __S(61, __c7, 5) as any as S.Schema<FinalizedDeal>,
+  input: __S(1696, __c53, 0) as any as S.Schema<SetReadyToServeBuyersFinalizedDealsRequest>,
+  output: __S(2306, __c72, 2) as any as S.Schema<FinalizedDeal>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2390,8 +2390,8 @@ export const subscribeBuyersAuctionPackages: API.OperationMethod<
   SubscribeBuyersAuctionPackagesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(136, __c17, 0) as any as S.Schema<SubscribeBuyersAuctionPackagesRequest>,
-  output: __S(82, __c10, 2) as any as S.Schema<AuctionPackage>,
+  input: __S(1728, __c54, 0) as any as S.Schema<SubscribeBuyersAuctionPackagesRequest>,
+  output: __S(480, __c15, 0) as any as S.Schema<AuctionPackage>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2410,8 +2410,8 @@ export const subscribeClientsBuyersAuctionPackages: API.OperationMethod<
   SubscribeClientsBuyersAuctionPackagesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(138, __c17, 2) as any as S.Schema<SubscribeClientsBuyersAuctionPackagesRequest>,
-  output: __S(82, __c10, 2) as any as S.Schema<AuctionPackage>,
+  input: __S(1761, __c55, 1) as any as S.Schema<SubscribeClientsBuyersAuctionPackagesRequest>,
+  output: __S(480, __c15, 0) as any as S.Schema<AuctionPackage>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2430,8 +2430,8 @@ export const unsubscribeBuyersAuctionPackages: API.OperationMethod<
   UnsubscribeBuyersAuctionPackagesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(139, __c17, 3) as any as S.Schema<UnsubscribeBuyersAuctionPackagesRequest>,
-  output: __S(82, __c10, 2) as any as S.Schema<AuctionPackage>,
+  input: __S(1792, __c56, 0) as any as S.Schema<UnsubscribeBuyersAuctionPackagesRequest>,
+  output: __S(480, __c15, 0) as any as S.Schema<AuctionPackage>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2450,8 +2450,8 @@ export const unsubscribeClientsBuyersAuctionPackages: API.OperationMethod<
   UnsubscribeClientsBuyersAuctionPackagesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(141, __c17, 5) as any as S.Schema<UnsubscribeClientsBuyersAuctionPackagesRequest>,
-  output: __S(82, __c10, 2) as any as S.Schema<AuctionPackage>,
+  input: __S(1825, __c57, 1) as any as S.Schema<UnsubscribeClientsBuyersAuctionPackagesRequest>,
+  output: __S(480, __c15, 0) as any as S.Schema<AuctionPackage>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2463,612 +2463,14 @@ function __c0(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          proposalRevision: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "AcceptProposalRequest" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-          body: S.optional(__S(0, __c0, 0).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1alpha/{+name}:accept",
-            baseUrl: "https://authorizedbuyersmarketplace.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "AcceptBuyersProposalsRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          email: S.optional(S.String),
-          displayName: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Contact" });
-    case 3:
-      return S.Array(__S(2, __c0, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          note: S.optional(S.String),
-          creatorRole: S.optional(S.String),
-          createTime: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Note" });
-    case 5:
-      return S.Array(__S(4, __c0, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          referenceId: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "PrivateData" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          originatorRole: S.optional(S.String),
-          sellerContacts: S.optional(__S(3, __c0, 3)),
-          buyerContacts: S.optional(__S(3, __c0, 3)),
-          notes: S.optional(__S(5, __c0, 5)),
-          lastUpdaterOrCommentorRole: S.optional(S.String),
-          client: S.optional(S.String),
-          pausingConsented: S.optional(S.Boolean),
-          proposalRevision: S.optional(S.String),
-          updateTime: S.optional(S.String),
-          name: S.optional(S.String),
-          displayName: S.optional(S.String),
-          billedBuyer: S.optional(S.String),
-          buyerPrivateData: S.optional(__S(6, __c0, 6)),
-          termsAndConditions: S.optional(S.String),
-          publisherProfile: S.optional(S.String),
-          dealType: S.optional(S.String),
-          buyer: S.optional(S.String),
-          isRenegotiating: S.optional(S.Boolean),
-          state: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Proposal" });
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "ActivateClientRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-          body: S.optional(__S(8, __c1, 0).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1alpha/{+name}:activate",
-            baseUrl: "https://authorizedbuyersmarketplace.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "ActivateBuyersClientsRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          partnerClientId: S.optional(S.String),
-          displayName: S.optional(S.String),
-          sellerVisible: S.optional(S.Boolean),
-          state: S.optional(S.String),
-          name: S.optional(S.String),
-          role: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Client" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-          body: S.optional(__S(8, __c1, 0).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1alpha/{+name}:activate",
-            baseUrl: "https://authorizedbuyersmarketplace.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "ActivateBuyersClientsUsersRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.optional(S.String),
-          state: S.optional(S.String),
-          email: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ClientUser" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-          body: S.optional(__S(8, __c1, 0).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1alpha/{+name}:activate",
-            baseUrl: "https://authorizedbuyersmarketplace.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "ActivateBuyersDataSegmentsRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          units: S.optional(S.String),
-          currencyCode: S.optional(S.String),
-          nanos: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "Money" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.optional(S.String),
-          createTime: S.optional(S.String),
-          userListId: S.optional(S.String),
-          updateTime: S.optional(S.String),
-          state: S.optional(S.String),
-          cpmFee: S.optional(__S(14, __c1, 6)),
-          millipercentOfMediaFee: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "DataSegment" });
-  }
-}
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-          body: S.optional(__S(8, __c1, 0).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1alpha/{+name}:activate",
-            baseUrl: "https://authorizedbuyersmarketplace.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "ActivateCuratorsCuratedPackagesRequest",
-      });
-    case 1:
-      return S.Array(S.String);
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          allowlistedMediaPlanners: S.optional(__S(17, __c2, 1)),
-        }),
-      ).annotate({ identifier: "AccessControlSettings" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          targetedCriteriaIds: S.optional(__S(17, __c2, 1)),
-          excludedCriteriaIds: S.optional(__S(17, __c2, 1)),
-        }),
-      ).annotate({ identifier: "CriteriaTargeting" });
-    case 4:
-      return S.Array(S.String);
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          width: S.optional(S.String),
-          height: S.optional(S.String),
-          type: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "AdSize" });
-    case 6:
-      return S.Array(__S(21, __c2, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          selectionType: S.optional(S.String),
-          values: S.optional(__S(17, __c2, 1)),
-        }),
-      ).annotate({ identifier: "StringTargetingDimension" });
-  }
-}
-function __c3(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          excludedTaxonomyIds: S.optional(__S(17, __c2, 1)),
-          targetedTaxonomyIds: S.optional(__S(17, __c2, 1)),
-        }),
-      ).annotate({ identifier: "TaxonomyTargeting" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          audienceTargeting: S.optional(__S(24, __c3, 0)),
-          contentTargeting: S.optional(__S(24, __c3, 0)),
-          videoAndAudioSignalsTargeting: S.optional(__S(23, __c2, 7)),
-        }),
-      ).annotate({
-        identifier: "PackagePublisherProvidedSignalsTargeting",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          uriTargeting: S.optional(__S(23, __c2, 7)),
-          includedMobileAppCategoryTargeting: S.optional(__S(17, __c2, 1)),
-          mobileAppTargeting: S.optional(__S(23, __c2, 7)),
-        }),
-      ).annotate({
-        identifier: "PackagePlacementTargeting",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          selectionType: S.optional(S.String),
-          videoPlcmtTypes: S.optional(__S(20, __c2, 4)),
-        }),
-      ).annotate({ identifier: "VideoPlcmtTargeting" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          minimumHeight: S.optional(S.String),
-          minimumWidth: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "VideoPlayerSizeTargeting" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          plcmtTargeting: S.optional(__S(27, __c3, 3)),
-          includedPlayerSizeTargeting: S.optional(__S(28, __c3, 4)),
-          includedMaximumAdDurationTargeting: S.optional(S.String),
-          includedContentDeliveryMethod: S.optional(S.String),
-          includedPlaybackMethods: S.optional(__S(20, __c2, 4)),
-          includedPositionTypes: S.optional(__S(20, __c2, 4)),
-          minimumPredictedCompletionRatePercentage: S.optional(S.String),
-          includedMimeTypes: S.optional(__S(20, __c2, 4)),
-        }),
-      ).annotate({ identifier: "PackageVideoTargeting" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          includedEnvironment: S.optional(S.String),
-          includedRewardedType: S.optional(S.String),
-          verticalTargeting: S.optional(__S(19, __c2, 3)),
-          includedOpenMeasurementTypes: S.optional(__S(20, __c2, 4)),
-          minimumPredictedClickThroughRatePercentageMillis: S.optional(S.String),
-          includedAuthorizedSellerStatuses: S.optional(__S(20, __c2, 4)),
-          includedDeviceTypes: S.optional(__S(20, __c2, 4)),
-          includedDataSegments: S.optional(__S(17, __c2, 1)),
-          includedAdSizes: S.optional(__S(22, __c2, 6)),
-          includedCreativeFormat: S.optional(S.String),
-          geoTargeting: S.optional(__S(19, __c2, 3)),
-          languageTargeting: S.optional(__S(23, __c2, 7)),
-          publisherProvidedSignalsTargeting: S.optional(__S(25, __c3, 1)),
-          placementTargeting: S.optional(__S(26, __c3, 2)),
-          videoTargeting: S.optional(__S(29, __c3, 5)),
-          minimumPredictedViewabilityPercentage: S.optional(S.String),
-          includedNativeInventoryTypes: S.optional(__S(20, __c2, 4)),
-          publisherTargeting: S.optional(__S(23, __c2, 7)),
-          includedRestrictedCategories: S.optional(__S(20, __c2, 4)),
-          includedAcceleratedMobilePageType: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "PackageTargeting" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          createTime: S.optional(S.String),
-          updateTime: S.optional(S.String),
-          curationFeeVisibility: S.optional(S.String),
-          description: S.optional(S.String),
-          accessSettings: S.optional(__S(18, __c2, 2)),
-          state: S.optional(S.String),
-          targeting: S.optional(__S(30, __c3, 6)),
-          feeCpm: S.optional(__S(14, __c1, 6)),
-          floorPriceCpm: S.optional(__S(14, __c1, 6)),
-          displayName: S.optional(S.String),
-          name: S.optional(S.String),
-          millipercentOfMediaFee: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "CuratedPackage" });
-  }
-}
-function __c4(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          creative: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "AddCreativeRequest" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          deal: S.String.pipe(T.Label()),
-          body: S.optional(__S(32, __c4, 0).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1alpha/{+deal}:addCreative",
-            baseUrl: "https://authorizedbuyersmarketplace.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "AddCreativeBuyersFinalizedDealsRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          type: S.optional(S.String),
-          amount: S.optional(__S(14, __c1, 6)),
-        }),
-      ).annotate({ identifier: "Price" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          openAuctionAllowed: S.optional(S.Boolean),
-          floorPrice: S.optional(__S(34, __c4, 2)),
-        }),
-      ).annotate({ identifier: "PrivateAuctionTerms" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          version: S.optional(S.String),
-          id: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "TimeZone" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.optional(S.String),
-          displayName: S.optional(S.String),
-          accountId: S.optional(S.String),
-          ancestorNames: S.optional(__S(17, __c2, 1)),
-        }),
-      ).annotate({ identifier: "MediaPlanner" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          targetedPositionTypes: S.optional(__S(20, __c2, 4)),
-          excludedPositionTypes: S.optional(__S(20, __c2, 4)),
-        }),
-      ).annotate({ identifier: "VideoTargeting" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          targetedInventorySizes: S.optional(__S(22, __c2, 6)),
-          excludedInventorySizes: S.optional(__S(22, __c2, 6)),
-        }),
-      ).annotate({ identifier: "InventorySizeTargeting" });
-  }
-}
-function __c5(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          inventoryTypes: S.optional(__S(20, __c2, 4)),
-        }),
-      ).annotate({ identifier: "InventoryTypeTargeting" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          operatingSystemCriteria: S.optional(__S(19, __c2, 3)),
-          operatingSystemVersionCriteria: S.optional(__S(19, __c2, 3)),
-        }),
-      ).annotate({ identifier: "OperatingSystemTargeting" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          deviceCapabilityTargeting: S.optional(__S(19, __c2, 3)),
-          operatingSystemTargeting: S.optional(__S(41, __c5, 1)),
-          deviceCategoryTargeting: S.optional(__S(19, __c2, 3)),
-        }),
-      ).annotate({ identifier: "TechnologyTargeting" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          targetedUris: S.optional(__S(17, __c2, 1)),
-          excludedUris: S.optional(__S(17, __c2, 1)),
-        }),
-      ).annotate({ identifier: "UriTargeting" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          targetedAppIds: S.optional(__S(17, __c2, 1)),
-          excludedAppIds: S.optional(__S(17, __c2, 1)),
-        }),
-      ).annotate({
-        identifier: "FirstPartyMobileApplicationTargeting",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          firstPartyTargeting: S.optional(__S(44, __c5, 4)),
-        }),
-      ).annotate({
-        identifier: "MobileApplicationTargeting",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          uriTargeting: S.optional(__S(43, __c5, 3)),
-          mobileApplicationTargeting: S.optional(__S(45, __c5, 5)),
-        }),
-      ).annotate({ identifier: "PlacementTargeting" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          seconds: S.optional(S.Number),
-          minutes: S.optional(S.Number),
-          nanos: S.optional(S.Number),
-          hours: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "TimeOfDay" });
-  }
-}
-function __c6(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          dayOfWeek: S.optional(S.String),
-          endTime: S.optional(__S(47, __c5, 7)),
-          startTime: S.optional(__S(47, __c5, 7)),
-        }),
-      ).annotate({ identifier: "DayPart" });
-    case 1:
-      return S.Array(__S(48, __c6, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          timeZoneType: S.optional(S.String),
-          dayParts: S.optional(__S(49, __c6, 1)),
-        }),
-      ).annotate({ identifier: "DayPartTargeting" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          geoTargeting: S.optional(__S(19, __c2, 3)),
-          videoTargeting: S.optional(__S(38, __c4, 6)),
-          inventorySizeTargeting: S.optional(__S(39, __c4, 7)),
-          verticalTargeting: S.optional(__S(19, __c2, 3)),
-          userListTargeting: S.optional(__S(19, __c2, 3)),
-          inventoryTypeTargeting: S.optional(__S(40, __c5, 0)),
-          technologyTargeting: S.optional(__S(42, __c5, 2)),
-          excludedSensitiveCategoryIds: S.optional(__S(17, __c2, 1)),
-          placementTargeting: S.optional(__S(46, __c5, 6)),
-          daypartTargeting: S.optional(__S(50, __c6, 2)),
-        }),
-      ).annotate({ identifier: "MarketplaceTargeting" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          impressionCap: S.optional(S.String),
-          fixedPrice: S.optional(__S(34, __c4, 2)),
-          percentShareOfVoice: S.optional(S.String),
-          guaranteedLooks: S.optional(S.String),
-          minimumDailyLooks: S.optional(S.String),
-          reservationType: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "ProgrammaticGuaranteedTerms",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          creativeFormat: S.optional(S.String),
-          maxAdDurationMs: S.optional(S.String),
-          programmaticCreativeSource: S.optional(S.String),
-          creativePreApprovalPolicy: S.optional(S.String),
-          skippableAdType: S.optional(S.String),
-          creativeSafeFrameCompatibility: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "CreativeRequirements" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          fixedPrice: S.optional(__S(34, __c4, 2)),
-        }),
-      ).annotate({ identifier: "PreferredDealTerms" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          maxImpressions: S.optional(S.Number),
-          timeUnitType: S.optional(S.String),
-          timeUnitsCount: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "FrequencyCap" });
-  }
-}
-function __c7(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(55, __c6, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          companionDeliveryType: S.optional(S.String),
-          roadblockingType: S.optional(S.String),
-          creativeRotationType: S.optional(S.String),
-          deliveryRateType: S.optional(S.String),
-          frequencyCap: S.optional(__S(56, __c7, 0)),
-        }),
-      ).annotate({ identifier: "DeliveryControl" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          privateAuctionTerms: S.optional(__S(35, __c4, 3)),
-          sellerTimeZone: S.optional(__S(36, __c4, 4)),
-          proposalRevision: S.optional(S.String),
-          eligibleSeatIds: S.optional(__S(17, __c2, 1)),
-          mediaPlanner: S.optional(__S(37, __c4, 5)),
-          flightEndTime: S.optional(S.String),
-          name: S.optional(S.String),
-          buyer: S.optional(S.String),
-          buyerPermissionType: S.optional(S.String),
-          displayName: S.optional(S.String),
-          billedBuyer: S.optional(S.String),
-          flightStartTime: S.optional(S.String),
-          client: S.optional(S.String),
-          estimatedGrossSpend: S.optional(__S(14, __c1, 6)),
-          publisherProfile: S.optional(S.String),
-          targeting: S.optional(__S(51, __c6, 3)),
-          createTime: S.optional(S.String),
-          programmaticGuaranteedTerms: S.optional(__S(52, __c6, 4)),
-          updateTime: S.optional(S.String),
-          description: S.optional(S.String),
-          creativeRequirements: S.optional(__S(53, __c6, 5)),
-          dealType: S.optional(S.String),
-          preferredDealTerms: S.optional(__S(54, __c6, 6)),
-          deliveryControl: S.optional(__S(57, __c7, 1)),
-        }),
-      ).annotate({ identifier: "Deal" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          bidRequests7Days: S.optional(S.String),
-          bidRate7Days: S.optional(S.Number),
-          filteredBidRate7Days: S.optional(S.Number),
-          bids7Days: S.optional(S.String),
-          adImpressions7Days: S.optional(S.String),
-          mustBidRateCurrentMonth: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "RtbMetrics" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          pausingConsented: S.optional(S.Boolean),
-          pauseReason: S.optional(S.String),
-          pauseRole: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "DealPausingInfo" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.optional(S.String),
-          deal: S.optional(__S(58, __c7, 2)),
-          rtbMetrics: S.optional(__S(59, __c7, 3)),
-          dealServingStatus: S.optional(S.String),
-          dealPausingInfo: S.optional(__S(60, __c7, 4)),
-          readyToServe: S.optional(S.Boolean),
-        }),
-      ).annotate({ identifier: "FinalizedDeal" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          note: S.optional(__S(4, __c0, 4)),
+          note: S.optional(__S(1186, __c37, 2)),
         }),
       ).annotate({ identifier: "AddNoteRequest" });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           proposal: S.String.pipe(T.Label()),
-          body: S.optional(__S(62, __c7, 6).pipe(T.HttpBody())),
+          body: S.optional(__S(0, __c0, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -3081,28 +2483,28 @@ function __c7(j: number): any {
       });
   }
 }
-function __c8(j: number): any {
+function __c1(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          deal: S.optional(__S(58, __c7, 2)),
+          deal: S.optional(__S(2291, __c71, 19)),
           updateMask: S.optional(S.String),
         }),
       ).annotate({ identifier: "UpdateDealRequest" });
     case 1:
-      return S.Array(__S(64, __c8, 0));
+      return S.Array(__S(32, __c1, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          requests: S.optional(__S(65, __c8, 1)),
+          requests: S.optional(__S(33, __c1, 1)),
         }),
       ).annotate({ identifier: "BatchUpdateDealsRequest" });
     case 3:
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(66, __c8, 2).pipe(T.HttpBody())),
+          body: S.optional(__S(34, __c1, 2).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -3114,18 +2516,26 @@ function __c8(j: number): any {
         identifier: "BatchUpdateBuyersProposalsDealsRequest",
       });
     case 4:
-      return S.Array(__S(58, __c7, 2));
-    case 5:
       return S.suspend(() =>
         S.Struct({
-          deals: S.optional(__S(68, __c8, 4)),
+          deals: S.optional(__S(64, __c2, 0)),
         }),
       ).annotate({ identifier: "BatchUpdateDealsResponse" });
-    case 6:
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(2291, __c71, 19));
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           proposal: S.String.pipe(T.Label()),
-          body: S.optional(__S(8, __c1, 0).pipe(T.HttpBody())),
+          body: S.optional(__S(1600, __c50, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -3136,11 +2546,15 @@ function __c8(j: number): any {
       ).annotate({
         identifier: "CancelNegotiationBuyersProposalsRequest",
       });
-    case 7:
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(10, __c1, 2).pipe(T.HttpBody())),
+          body: S.optional(__S(1568, __c49, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -3153,13 +2567,13 @@ function __c8(j: number): any {
       });
   }
 }
-function __c9(j: number): any {
+function __c5(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(12, __c1, 4).pipe(T.HttpBody())),
+          body: S.optional(__S(1888, __c59, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -3170,11 +2584,15 @@ function __c9(j: number): any {
       ).annotate({
         identifier: "CreateBuyersClientsUsersRequest",
       });
-    case 1:
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(15, __c1, 7).pipe(T.HttpBody())),
+          body: S.optional(__S(1952, __c61, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -3185,11 +2603,15 @@ function __c9(j: number): any {
       ).annotate({
         identifier: "CreateBuyersDataSegmentsRequest",
       });
-    case 2:
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(31, __c3, 7).pipe(T.HttpBody())),
+          body: S.optional(__S(2057, __c64, 9).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -3200,11 +2622,15 @@ function __c9(j: number): any {
       ).annotate({
         identifier: "CreateCuratorsCuratedPackagesRequest",
       });
-    case 3:
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(8, __c1, 0).pipe(T.HttpBody())),
+          body: S.optional(__S(1600, __c50, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -3215,11 +2641,15 @@ function __c9(j: number): any {
       ).annotate({
         identifier: "DeactivateBuyersClientsRequest",
       });
-    case 4:
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(8, __c1, 0).pipe(T.HttpBody())),
+          body: S.optional(__S(1600, __c50, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -3230,11 +2660,15 @@ function __c9(j: number): any {
       ).annotate({
         identifier: "DeactivateBuyersClientsUsersRequest",
       });
-    case 5:
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(8, __c1, 0).pipe(T.HttpBody())),
+          body: S.optional(__S(1600, __c50, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -3245,11 +2679,15 @@ function __c9(j: number): any {
       ).annotate({
         identifier: "DeactivateBuyersDataSegmentsRequest",
       });
-    case 6:
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(8, __c1, 0).pipe(T.HttpBody())),
+          body: S.optional(__S(1600, __c50, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -3260,7 +2698,11 @@ function __c9(j: number): any {
       ).annotate({
         identifier: "DeactivateCuratorsCuratedPackagesRequest",
       });
-    case 7:
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -3276,7 +2718,7 @@ function __c9(j: number): any {
       });
   }
 }
-function __c10(j: number): any {
+function __c13(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3292,26 +2734,38 @@ function __c10(j: number): any {
       ).annotate({
         identifier: "GetBuyersAuctionPackagesRequest",
       });
-    case 1:
-      return S.Array(__S(37, __c4, 5));
-    case 2:
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(2208, __c69, 0));
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           displayName: S.optional(S.String),
-          floorPriceCpm: S.optional(__S(14, __c1, 6)),
+          floorPriceCpm: S.optional(__S(1984, __c62, 0)),
           creator: S.optional(S.String),
-          eligibleSeatIds: S.optional(__S(17, __c2, 1)),
-          subscribedBuyers: S.optional(__S(17, __c2, 1)),
+          eligibleSeatIds: S.optional(__S(2080, __c65, 0)),
+          subscribedBuyers: S.optional(__S(2080, __c65, 0)),
           name: S.optional(S.String),
-          subscribedMediaPlanners: S.optional(__S(81, __c10, 1)),
+          subscribedMediaPlanners: S.optional(__S(448, __c14, 0)),
           description: S.optional(S.String),
           dealOwnerSeatId: S.optional(S.String),
           updateTime: S.optional(S.String),
           createTime: S.optional(S.String),
-          subscribedClients: S.optional(__S(17, __c2, 1)),
+          subscribedClients: S.optional(__S(2080, __c65, 0)),
         }),
       ).annotate({ identifier: "AuctionPackage" });
-    case 3:
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -3323,7 +2777,11 @@ function __c10(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetBuyersClientsRequest" });
-    case 4:
+  }
+}
+function __c17(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -3337,7 +2795,11 @@ function __c10(j: number): any {
       ).annotate({
         identifier: "GetBuyersClientsUsersRequest",
       });
-    case 5:
+  }
+}
+function __c18(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -3351,7 +2813,11 @@ function __c10(j: number): any {
       ).annotate({
         identifier: "GetBuyersDataSegmentsRequest",
       });
-    case 6:
+  }
+}
+function __c19(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -3365,7 +2831,11 @@ function __c10(j: number): any {
       ).annotate({
         identifier: "GetBuyersFinalizedDealsRequest",
       });
-    case 7:
+  }
+}
+function __c20(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -3381,7 +2851,7 @@ function __c10(j: number): any {
       });
   }
 }
-function __c11(j: number): any {
+function __c21(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3397,7 +2867,11 @@ function __c11(j: number): any {
       ).annotate({
         identifier: "GetBuyersProposalsDealsRequest",
       });
-    case 1:
+  }
+}
+function __c22(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -3411,7 +2885,11 @@ function __c11(j: number): any {
       ).annotate({
         identifier: "GetBuyersPublisherProfilesRequest",
       });
-    case 2:
+  }
+}
+function __c23(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           appStore: S.optional(S.String),
@@ -3421,9 +2899,9 @@ function __c11(j: number): any {
       ).annotate({
         identifier: "PublisherProfileMobileApplication",
       });
-    case 3:
-      return S.Array(__S(90, __c11, 2));
-    case 4:
+    case 1:
+      return S.Array(__S(736, __c23, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           mediaKitUrl: S.optional(S.String),
@@ -3431,11 +2909,11 @@ function __c11(j: number): any {
           name: S.optional(S.String),
           directDealsContact: S.optional(S.String),
           displayName: S.optional(S.String),
-          topHeadlines: S.optional(__S(17, __c2, 1)),
+          topHeadlines: S.optional(__S(2080, __c65, 0)),
           overview: S.optional(S.String),
           pitchStatement: S.optional(S.String),
-          mobileApps: S.optional(__S(91, __c11, 3)),
-          domains: S.optional(__S(17, __c2, 1)),
+          mobileApps: S.optional(__S(737, __c23, 1)),
+          domains: S.optional(__S(2080, __c65, 0)),
           logoUrl: S.optional(S.String),
           publisherCode: S.optional(S.String),
           isParent: S.optional(S.Boolean),
@@ -3443,7 +2921,11 @@ function __c11(j: number): any {
           audienceDescription: S.optional(S.String),
         }),
       ).annotate({ identifier: "PublisherProfile" });
-    case 5:
+  }
+}
+function __c24(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -3457,7 +2939,11 @@ function __c11(j: number): any {
       ).annotate({
         identifier: "GetCuratorsCuratedPackagesRequest",
       });
-    case 6:
+  }
+}
+function __c25(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           orderBy: S.optional(S.String.pipe(T.Query())),
@@ -3475,22 +2961,26 @@ function __c11(j: number): any {
       ).annotate({
         identifier: "ListBiddersAuctionPackagesRequest",
       });
-    case 7:
-      return S.Array(__S(82, __c10, 2));
   }
 }
-function __c12(j: number): any {
+function __c26(j: number): any {
   switch (j) {
     case 0:
+      return S.Array(__S(480, __c15, 0));
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          auctionPackages: S.optional(__S(95, __c11, 7)),
+          auctionPackages: S.optional(__S(832, __c26, 0)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({
         identifier: "ListAuctionPackagesResponse",
       });
-    case 1:
+  }
+}
+function __c27(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
@@ -3508,18 +2998,26 @@ function __c12(j: number): any {
       ).annotate({
         identifier: "ListBiddersFinalizedDealsRequest",
       });
-    case 2:
-      return S.Array(__S(61, __c7, 5));
-    case 3:
+  }
+}
+function __c28(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(2306, __c72, 2));
+    case 1:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          finalizedDeals: S.optional(__S(98, __c12, 2)),
+          finalizedDeals: S.optional(__S(896, __c28, 0)),
         }),
       ).annotate({
         identifier: "ListFinalizedDealsResponse",
       });
-    case 4:
+  }
+}
+function __c29(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           orderBy: S.optional(S.String.pipe(T.Query())),
@@ -3537,7 +3035,11 @@ function __c12(j: number): any {
       ).annotate({
         identifier: "ListBuyersAuctionPackagesRequest",
       });
-    case 5:
+  }
+}
+function __c30(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
@@ -3552,18 +3054,18 @@ function __c12(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ListBuyersClientsRequest" });
-    case 6:
-      return S.Array(__S(10, __c1, 2));
-    case 7:
+    case 1:
+      return S.Array(__S(1568, __c49, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          clients: S.optional(__S(102, __c12, 6)),
+          clients: S.optional(__S(961, __c30, 1)),
         }),
       ).annotate({ identifier: "ListClientsResponse" });
   }
 }
-function __c13(j: number): any {
+function __c31(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3582,15 +3084,19 @@ function __c13(j: number): any {
         identifier: "ListBuyersClientsUsersRequest",
       });
     case 1:
-      return S.Array(__S(12, __c1, 4));
+      return S.Array(__S(1888, __c59, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          clientUsers: S.optional(__S(105, __c13, 1)),
+          clientUsers: S.optional(__S(993, __c31, 1)),
         }),
       ).annotate({ identifier: "ListClientUsersResponse" });
-    case 3:
+  }
+}
+function __c32(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
@@ -3606,16 +3112,20 @@ function __c13(j: number): any {
       ).annotate({
         identifier: "ListBuyersDataSegmentsRequest",
       });
-    case 4:
-      return S.Array(__S(15, __c1, 7));
-    case 5:
+    case 1:
+      return S.Array(__S(1952, __c61, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          dataSegments: S.optional(__S(108, __c13, 4)),
+          dataSegments: S.optional(__S(1025, __c32, 1)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListDataSegmentsResponse" });
-    case 6:
+  }
+}
+function __c33(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           pageToken: S.optional(S.String.pipe(T.Query())),
@@ -3633,7 +3143,11 @@ function __c13(j: number): any {
       ).annotate({
         identifier: "ListBuyersFinalizedDealsRequest",
       });
-    case 7:
+  }
+}
+function __c34(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           pageToken: S.optional(S.String.pipe(T.Query())),
@@ -3650,20 +3164,20 @@ function __c13(j: number): any {
       ).annotate({
         identifier: "ListBuyersProposalsRequest",
       });
-  }
-}
-function __c14(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(7, __c0, 7));
     case 1:
+      return S.Array(__S(1189, __c37, 5));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          proposals: S.optional(__S(112, __c14, 0)),
+          proposals: S.optional(__S(1089, __c34, 1)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListProposalsResponse" });
-    case 2:
+  }
+}
+function __c35(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
@@ -3679,14 +3193,96 @@ function __c14(j: number): any {
       ).annotate({
         identifier: "ListBuyersProposalsDealsRequest",
       });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          deals: S.optional(__S(68, __c8, 4)),
+          deals: S.optional(__S(64, __c2, 0)),
         }),
       ).annotate({ identifier: "ListDealsResponse" });
+  }
+}
+function __c36(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          proposalRevision: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "AcceptProposalRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+          body: S.optional(__S(1152, __c36, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1alpha/{+name}:accept",
+            baseUrl: "https://authorizedbuyersmarketplace.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "AcceptBuyersProposalsRequest",
+      });
+  }
+}
+function __c37(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          email: S.optional(S.String),
+          displayName: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Contact" });
+    case 1:
+      return S.Array(__S(1184, __c37, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          note: S.optional(S.String),
+          creatorRole: S.optional(S.String),
+          createTime: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Note" });
+    case 3:
+      return S.Array(__S(1186, __c37, 2));
     case 4:
+      return S.suspend(() =>
+        S.Struct({
+          referenceId: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "PrivateData" });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          originatorRole: S.optional(S.String),
+          sellerContacts: S.optional(__S(1185, __c37, 1)),
+          buyerContacts: S.optional(__S(1185, __c37, 1)),
+          notes: S.optional(__S(1187, __c37, 3)),
+          lastUpdaterOrCommentorRole: S.optional(S.String),
+          client: S.optional(S.String),
+          pausingConsented: S.optional(S.Boolean),
+          proposalRevision: S.optional(S.String),
+          updateTime: S.optional(S.String),
+          name: S.optional(S.String),
+          displayName: S.optional(S.String),
+          billedBuyer: S.optional(S.String),
+          buyerPrivateData: S.optional(__S(1188, __c37, 4)),
+          termsAndConditions: S.optional(S.String),
+          publisherProfile: S.optional(S.String),
+          dealType: S.optional(S.String),
+          buyer: S.optional(S.String),
+          isRenegotiating: S.optional(S.Boolean),
+          state: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Proposal" });
+  }
+}
+function __c38(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           filter: S.optional(S.String.pipe(T.Query())),
@@ -3703,18 +3299,22 @@ function __c14(j: number): any {
       ).annotate({
         identifier: "ListBuyersPublisherProfilesRequest",
       });
-    case 5:
-      return S.Array(__S(92, __c11, 4));
-    case 6:
+    case 1:
+      return S.Array(__S(738, __c23, 2));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          publisherProfiles: S.optional(__S(117, __c14, 5)),
+          publisherProfiles: S.optional(__S(1217, __c38, 1)),
         }),
       ).annotate({
         identifier: "ListPublisherProfilesResponse",
       });
-    case 7:
+  }
+}
+function __c39(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
@@ -3731,22 +3331,22 @@ function __c14(j: number): any {
       ).annotate({
         identifier: "ListCuratorsCuratedPackagesRequest",
       });
-  }
-}
-function __c15(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(31, __c3, 7));
     case 1:
+      return S.Array(__S(2057, __c64, 9));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          curatedPackages: S.optional(__S(120, __c15, 0)),
+          curatedPackages: S.optional(__S(1249, __c39, 1)),
         }),
       ).annotate({
         identifier: "ListCuratedPackagesResponse",
       });
-    case 2:
+  }
+}
+function __c40(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           pageToken: S.optional(S.String.pipe(T.Query())),
@@ -3760,21 +3360,25 @@ function __c15(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ListMediaPlannersRequest" });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          mediaPlanners: S.optional(__S(81, __c10, 1)),
+          mediaPlanners: S.optional(__S(448, __c14, 0)),
         }),
       ).annotate({
         identifier: "ListMediaPlannersResponse",
       });
-    case 4:
+  }
+}
+function __c41(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
           updateMask: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(10, __c1, 2).pipe(T.HttpBody())),
+          body: S.optional(__S(1568, __c49, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -3785,12 +3389,16 @@ function __c15(j: number): any {
       ).annotate({
         identifier: "PatchBuyersClientsRequest",
       });
-    case 5:
+  }
+}
+function __c42(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
           updateMask: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(15, __c1, 7).pipe(T.HttpBody())),
+          body: S.optional(__S(1952, __c61, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -3801,12 +3409,16 @@ function __c15(j: number): any {
       ).annotate({
         identifier: "PatchBuyersDataSegmentsRequest",
       });
-    case 6:
+  }
+}
+function __c43(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           updateMask: S.optional(S.String.pipe(T.Query())),
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(7, __c0, 7).pipe(T.HttpBody())),
+          body: S.optional(__S(1189, __c37, 5).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -3817,12 +3429,16 @@ function __c15(j: number): any {
       ).annotate({
         identifier: "PatchBuyersProposalsRequest",
       });
-    case 7:
+  }
+}
+function __c44(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
           updateMask: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(58, __c7, 2).pipe(T.HttpBody())),
+          body: S.optional(__S(2291, __c71, 19).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -3835,14 +3451,14 @@ function __c15(j: number): any {
       });
   }
 }
-function __c16(j: number): any {
+function __c45(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
           updateMask: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(31, __c3, 7).pipe(T.HttpBody())),
+          body: S.optional(__S(2057, __c64, 9).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -3853,7 +3469,11 @@ function __c16(j: number): any {
       ).annotate({
         identifier: "PatchCuratorsCuratedPackagesRequest",
       });
-    case 1:
+  }
+}
+function __c46(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           reason: S.optional(S.String),
@@ -3861,11 +3481,11 @@ function __c16(j: number): any {
       ).annotate({
         identifier: "PauseFinalizedDealRequest",
       });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(129, __c16, 1).pipe(T.HttpBody())),
+          body: S.optional(__S(1472, __c46, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -3876,11 +3496,15 @@ function __c16(j: number): any {
       ).annotate({
         identifier: "PauseBuyersFinalizedDealsRequest",
       });
-    case 3:
+  }
+}
+function __c47(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(8, __c1, 0).pipe(T.HttpBody())),
+          body: S.optional(__S(1600, __c50, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -3891,28 +3515,74 @@ function __c16(j: number): any {
       ).annotate({
         identifier: "ResumeBuyersFinalizedDealsRequest",
       });
-    case 4:
+  }
+}
+function __c48(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+          body: S.optional(__S(1600, __c50, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1alpha/{+name}:activate",
+            baseUrl: "https://authorizedbuyersmarketplace.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "ActivateBuyersClientsRequest",
+      });
+  }
+}
+function __c49(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          partnerClientId: S.optional(S.String),
+          displayName: S.optional(S.String),
+          sellerVisible: S.optional(S.Boolean),
+          state: S.optional(S.String),
+          name: S.optional(S.String),
+          role: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Client" });
+  }
+}
+function __c50(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "ActivateClientRequest",
+      });
+  }
+}
+function __c51(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           client: S.optional(S.String),
-          estimatedGrossSpend: S.optional(__S(14, __c1, 6)),
-          programmaticGuaranteedTerms: S.optional(__S(52, __c6, 4)),
+          estimatedGrossSpend: S.optional(__S(1984, __c62, 0)),
+          programmaticGuaranteedTerms: S.optional(__S(2242, __c70, 2)),
           publisherProfile: S.optional(S.String),
-          inventorySizeTargeting: S.optional(__S(39, __c4, 7)),
-          geoTargeting: S.optional(__S(19, __c2, 3)),
+          inventorySizeTargeting: S.optional(__S(2241, __c70, 1)),
+          geoTargeting: S.optional(__S(2112, __c66, 0)),
           displayName: S.optional(S.String),
           flightEndTime: S.optional(S.String),
-          preferredDealTerms: S.optional(__S(54, __c6, 6)),
-          buyerContacts: S.optional(__S(3, __c0, 3)),
+          preferredDealTerms: S.optional(__S(2243, __c70, 3)),
+          buyerContacts: S.optional(__S(1185, __c37, 1)),
           note: S.optional(S.String),
           flightStartTime: S.optional(S.String),
         }),
       ).annotate({ identifier: "SendRfpRequest" });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           buyer: S.String.pipe(T.Label()),
-          body: S.optional(__S(132, __c16, 4).pipe(T.HttpBody())),
+          body: S.optional(__S(1632, __c51, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -3923,11 +3593,15 @@ function __c16(j: number): any {
       ).annotate({
         identifier: "SendRfpBuyersProposalsRequest",
       });
-    case 6:
+  }
+}
+function __c52(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           deal: S.String.pipe(T.Label()),
-          body: S.optional(__S(8, __c1, 0).pipe(T.HttpBody())),
+          body: S.optional(__S(1600, __c50, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -3938,11 +3612,15 @@ function __c16(j: number): any {
       ).annotate({
         identifier: "SetReadyToServeBiddersFinalizedDealsRequest",
       });
-    case 7:
+  }
+}
+function __c53(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           deal: S.String.pipe(T.Label()),
-          body: S.optional(__S(8, __c1, 0).pipe(T.HttpBody())),
+          body: S.optional(__S(1600, __c50, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -3955,13 +3633,13 @@ function __c16(j: number): any {
       });
   }
 }
-function __c17(j: number): any {
+function __c54(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(8, __c1, 0).pipe(T.HttpBody())),
+          body: S.optional(__S(1600, __c50, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -3972,17 +3650,21 @@ function __c17(j: number): any {
       ).annotate({
         identifier: "SubscribeBuyersAuctionPackagesRequest",
       });
+  }
+}
+function __c55(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          clients: S.optional(__S(2080, __c65, 0)),
+        }),
+      ).annotate({ identifier: "SubscribeClientsRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
-          clients: S.optional(__S(17, __c2, 1)),
-        }),
-      ).annotate({ identifier: "SubscribeClientsRequest" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
           auctionPackage: S.String.pipe(T.Label()),
-          body: S.optional(__S(137, __c17, 1).pipe(T.HttpBody())),
+          body: S.optional(__S(1760, __c55, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -3993,11 +3675,15 @@ function __c17(j: number): any {
       ).annotate({
         identifier: "SubscribeClientsBuyersAuctionPackagesRequest",
       });
-    case 3:
+  }
+}
+function __c56(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(8, __c1, 0).pipe(T.HttpBody())),
+          body: S.optional(__S(1600, __c50, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -4008,19 +3694,23 @@ function __c17(j: number): any {
       ).annotate({
         identifier: "UnsubscribeBuyersAuctionPackagesRequest",
       });
-    case 4:
+  }
+}
+function __c57(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          clients: S.optional(__S(17, __c2, 1)),
+          clients: S.optional(__S(2080, __c65, 0)),
         }),
       ).annotate({
         identifier: "UnsubscribeClientsRequest",
       });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           auctionPackage: S.String.pipe(T.Label()),
-          body: S.optional(__S(140, __c17, 4).pipe(T.HttpBody())),
+          body: S.optional(__S(1824, __c57, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -4033,7 +3723,536 @@ function __c17(j: number): any {
       });
   }
 }
-
+function __c58(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+          body: S.optional(__S(1600, __c50, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1alpha/{+name}:activate",
+            baseUrl: "https://authorizedbuyersmarketplace.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "ActivateBuyersClientsUsersRequest",
+      });
+  }
+}
+function __c59(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.optional(S.String),
+          state: S.optional(S.String),
+          email: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ClientUser" });
+  }
+}
+function __c60(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+          body: S.optional(__S(1600, __c50, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1alpha/{+name}:activate",
+            baseUrl: "https://authorizedbuyersmarketplace.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "ActivateBuyersDataSegmentsRequest",
+      });
+  }
+}
+function __c61(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.optional(S.String),
+          createTime: S.optional(S.String),
+          userListId: S.optional(S.String),
+          updateTime: S.optional(S.String),
+          state: S.optional(S.String),
+          cpmFee: S.optional(__S(1984, __c62, 0)),
+          millipercentOfMediaFee: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "DataSegment" });
+  }
+}
+function __c62(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          units: S.optional(S.String),
+          currencyCode: S.optional(S.String),
+          nanos: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "Money" });
+  }
+}
+function __c63(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+          body: S.optional(__S(1600, __c50, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1alpha/{+name}:activate",
+            baseUrl: "https://authorizedbuyersmarketplace.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "ActivateCuratorsCuratedPackagesRequest",
+      });
+  }
+}
+function __c64(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          allowlistedMediaPlanners: S.optional(__S(2080, __c65, 0)),
+        }),
+      ).annotate({ identifier: "AccessControlSettings" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          selectionType: S.optional(S.String),
+          values: S.optional(__S(2080, __c65, 0)),
+        }),
+      ).annotate({ identifier: "StringTargetingDimension" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          excludedTaxonomyIds: S.optional(__S(2080, __c65, 0)),
+          targetedTaxonomyIds: S.optional(__S(2080, __c65, 0)),
+        }),
+      ).annotate({ identifier: "TaxonomyTargeting" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          audienceTargeting: S.optional(__S(2050, __c64, 2)),
+          contentTargeting: S.optional(__S(2050, __c64, 2)),
+          videoAndAudioSignalsTargeting: S.optional(__S(2049, __c64, 1)),
+        }),
+      ).annotate({
+        identifier: "PackagePublisherProvidedSignalsTargeting",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          uriTargeting: S.optional(__S(2049, __c64, 1)),
+          includedMobileAppCategoryTargeting: S.optional(__S(2080, __c65, 0)),
+          mobileAppTargeting: S.optional(__S(2049, __c64, 1)),
+        }),
+      ).annotate({
+        identifier: "PackagePlacementTargeting",
+      });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          selectionType: S.optional(S.String),
+          videoPlcmtTypes: S.optional(__S(2144, __c67, 0)),
+        }),
+      ).annotate({ identifier: "VideoPlcmtTargeting" });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          minimumHeight: S.optional(S.String),
+          minimumWidth: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "VideoPlayerSizeTargeting" });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          plcmtTargeting: S.optional(__S(2053, __c64, 5)),
+          includedPlayerSizeTargeting: S.optional(__S(2054, __c64, 6)),
+          includedMaximumAdDurationTargeting: S.optional(S.String),
+          includedContentDeliveryMethod: S.optional(S.String),
+          includedPlaybackMethods: S.optional(__S(2144, __c67, 0)),
+          includedPositionTypes: S.optional(__S(2144, __c67, 0)),
+          minimumPredictedCompletionRatePercentage: S.optional(S.String),
+          includedMimeTypes: S.optional(__S(2144, __c67, 0)),
+        }),
+      ).annotate({ identifier: "PackageVideoTargeting" });
+    case 8:
+      return S.suspend(() =>
+        S.Struct({
+          includedEnvironment: S.optional(S.String),
+          includedRewardedType: S.optional(S.String),
+          verticalTargeting: S.optional(__S(2112, __c66, 0)),
+          includedOpenMeasurementTypes: S.optional(__S(2144, __c67, 0)),
+          minimumPredictedClickThroughRatePercentageMillis: S.optional(S.String),
+          includedAuthorizedSellerStatuses: S.optional(__S(2144, __c67, 0)),
+          includedDeviceTypes: S.optional(__S(2144, __c67, 0)),
+          includedDataSegments: S.optional(__S(2080, __c65, 0)),
+          includedAdSizes: S.optional(__S(2114, __c66, 2)),
+          includedCreativeFormat: S.optional(S.String),
+          geoTargeting: S.optional(__S(2112, __c66, 0)),
+          languageTargeting: S.optional(__S(2049, __c64, 1)),
+          publisherProvidedSignalsTargeting: S.optional(__S(2051, __c64, 3)),
+          placementTargeting: S.optional(__S(2052, __c64, 4)),
+          videoTargeting: S.optional(__S(2055, __c64, 7)),
+          minimumPredictedViewabilityPercentage: S.optional(S.String),
+          includedNativeInventoryTypes: S.optional(__S(2144, __c67, 0)),
+          publisherTargeting: S.optional(__S(2049, __c64, 1)),
+          includedRestrictedCategories: S.optional(__S(2144, __c67, 0)),
+          includedAcceleratedMobilePageType: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "PackageTargeting" });
+    case 9:
+      return S.suspend(() =>
+        S.Struct({
+          createTime: S.optional(S.String),
+          updateTime: S.optional(S.String),
+          curationFeeVisibility: S.optional(S.String),
+          description: S.optional(S.String),
+          accessSettings: S.optional(__S(2048, __c64, 0)),
+          state: S.optional(S.String),
+          targeting: S.optional(__S(2056, __c64, 8)),
+          feeCpm: S.optional(__S(1984, __c62, 0)),
+          floorPriceCpm: S.optional(__S(1984, __c62, 0)),
+          displayName: S.optional(S.String),
+          name: S.optional(S.String),
+          millipercentOfMediaFee: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "CuratedPackage" });
+  }
+}
+function __c65(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c66(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          targetedCriteriaIds: S.optional(__S(2080, __c65, 0)),
+          excludedCriteriaIds: S.optional(__S(2080, __c65, 0)),
+        }),
+      ).annotate({ identifier: "CriteriaTargeting" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          width: S.optional(S.String),
+          height: S.optional(S.String),
+          type: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "AdSize" });
+    case 2:
+      return S.Array(__S(2113, __c66, 1));
+  }
+}
+function __c67(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c68(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          creative: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "AddCreativeRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          deal: S.String.pipe(T.Label()),
+          body: S.optional(__S(2176, __c68, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1alpha/{+deal}:addCreative",
+            baseUrl: "https://authorizedbuyersmarketplace.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "AddCreativeBuyersFinalizedDealsRequest",
+      });
+  }
+}
+function __c69(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.optional(S.String),
+          displayName: S.optional(S.String),
+          accountId: S.optional(S.String),
+          ancestorNames: S.optional(__S(2080, __c65, 0)),
+        }),
+      ).annotate({ identifier: "MediaPlanner" });
+  }
+}
+function __c70(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          type: S.optional(S.String),
+          amount: S.optional(__S(1984, __c62, 0)),
+        }),
+      ).annotate({ identifier: "Price" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          targetedInventorySizes: S.optional(__S(2114, __c66, 2)),
+          excludedInventorySizes: S.optional(__S(2114, __c66, 2)),
+        }),
+      ).annotate({ identifier: "InventorySizeTargeting" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          impressionCap: S.optional(S.String),
+          fixedPrice: S.optional(__S(2240, __c70, 0)),
+          percentShareOfVoice: S.optional(S.String),
+          guaranteedLooks: S.optional(S.String),
+          minimumDailyLooks: S.optional(S.String),
+          reservationType: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "ProgrammaticGuaranteedTerms",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          fixedPrice: S.optional(__S(2240, __c70, 0)),
+        }),
+      ).annotate({ identifier: "PreferredDealTerms" });
+  }
+}
+function __c71(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          openAuctionAllowed: S.optional(S.Boolean),
+          floorPrice: S.optional(__S(2240, __c70, 0)),
+        }),
+      ).annotate({ identifier: "PrivateAuctionTerms" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          version: S.optional(S.String),
+          id: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "TimeZone" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          targetedPositionTypes: S.optional(__S(2144, __c67, 0)),
+          excludedPositionTypes: S.optional(__S(2144, __c67, 0)),
+        }),
+      ).annotate({ identifier: "VideoTargeting" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          inventoryTypes: S.optional(__S(2144, __c67, 0)),
+        }),
+      ).annotate({ identifier: "InventoryTypeTargeting" });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          operatingSystemCriteria: S.optional(__S(2112, __c66, 0)),
+          operatingSystemVersionCriteria: S.optional(__S(2112, __c66, 0)),
+        }),
+      ).annotate({ identifier: "OperatingSystemTargeting" });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          deviceCapabilityTargeting: S.optional(__S(2112, __c66, 0)),
+          operatingSystemTargeting: S.optional(__S(2276, __c71, 4)),
+          deviceCategoryTargeting: S.optional(__S(2112, __c66, 0)),
+        }),
+      ).annotate({ identifier: "TechnologyTargeting" });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          targetedUris: S.optional(__S(2080, __c65, 0)),
+          excludedUris: S.optional(__S(2080, __c65, 0)),
+        }),
+      ).annotate({ identifier: "UriTargeting" });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          targetedAppIds: S.optional(__S(2080, __c65, 0)),
+          excludedAppIds: S.optional(__S(2080, __c65, 0)),
+        }),
+      ).annotate({
+        identifier: "FirstPartyMobileApplicationTargeting",
+      });
+    case 8:
+      return S.suspend(() =>
+        S.Struct({
+          firstPartyTargeting: S.optional(__S(2279, __c71, 7)),
+        }),
+      ).annotate({
+        identifier: "MobileApplicationTargeting",
+      });
+    case 9:
+      return S.suspend(() =>
+        S.Struct({
+          uriTargeting: S.optional(__S(2278, __c71, 6)),
+          mobileApplicationTargeting: S.optional(__S(2280, __c71, 8)),
+        }),
+      ).annotate({ identifier: "PlacementTargeting" });
+    case 10:
+      return S.suspend(() =>
+        S.Struct({
+          seconds: S.optional(S.Number),
+          minutes: S.optional(S.Number),
+          nanos: S.optional(S.Number),
+          hours: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "TimeOfDay" });
+    case 11:
+      return S.suspend(() =>
+        S.Struct({
+          dayOfWeek: S.optional(S.String),
+          endTime: S.optional(__S(2282, __c71, 10)),
+          startTime: S.optional(__S(2282, __c71, 10)),
+        }),
+      ).annotate({ identifier: "DayPart" });
+    case 12:
+      return S.Array(__S(2283, __c71, 11));
+    case 13:
+      return S.suspend(() =>
+        S.Struct({
+          timeZoneType: S.optional(S.String),
+          dayParts: S.optional(__S(2284, __c71, 12)),
+        }),
+      ).annotate({ identifier: "DayPartTargeting" });
+    case 14:
+      return S.suspend(() =>
+        S.Struct({
+          geoTargeting: S.optional(__S(2112, __c66, 0)),
+          videoTargeting: S.optional(__S(2274, __c71, 2)),
+          inventorySizeTargeting: S.optional(__S(2241, __c70, 1)),
+          verticalTargeting: S.optional(__S(2112, __c66, 0)),
+          userListTargeting: S.optional(__S(2112, __c66, 0)),
+          inventoryTypeTargeting: S.optional(__S(2275, __c71, 3)),
+          technologyTargeting: S.optional(__S(2277, __c71, 5)),
+          excludedSensitiveCategoryIds: S.optional(__S(2080, __c65, 0)),
+          placementTargeting: S.optional(__S(2281, __c71, 9)),
+          daypartTargeting: S.optional(__S(2285, __c71, 13)),
+        }),
+      ).annotate({ identifier: "MarketplaceTargeting" });
+    case 15:
+      return S.suspend(() =>
+        S.Struct({
+          creativeFormat: S.optional(S.String),
+          maxAdDurationMs: S.optional(S.String),
+          programmaticCreativeSource: S.optional(S.String),
+          creativePreApprovalPolicy: S.optional(S.String),
+          skippableAdType: S.optional(S.String),
+          creativeSafeFrameCompatibility: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "CreativeRequirements" });
+    case 16:
+      return S.suspend(() =>
+        S.Struct({
+          maxImpressions: S.optional(S.Number),
+          timeUnitType: S.optional(S.String),
+          timeUnitsCount: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "FrequencyCap" });
+    case 17:
+      return S.Array(__S(2288, __c71, 16));
+    case 18:
+      return S.suspend(() =>
+        S.Struct({
+          companionDeliveryType: S.optional(S.String),
+          roadblockingType: S.optional(S.String),
+          creativeRotationType: S.optional(S.String),
+          deliveryRateType: S.optional(S.String),
+          frequencyCap: S.optional(__S(2289, __c71, 17)),
+        }),
+      ).annotate({ identifier: "DeliveryControl" });
+    case 19:
+      return S.suspend(() =>
+        S.Struct({
+          privateAuctionTerms: S.optional(__S(2272, __c71, 0)),
+          sellerTimeZone: S.optional(__S(2273, __c71, 1)),
+          proposalRevision: S.optional(S.String),
+          eligibleSeatIds: S.optional(__S(2080, __c65, 0)),
+          mediaPlanner: S.optional(__S(2208, __c69, 0)),
+          flightEndTime: S.optional(S.String),
+          name: S.optional(S.String),
+          buyer: S.optional(S.String),
+          buyerPermissionType: S.optional(S.String),
+          displayName: S.optional(S.String),
+          billedBuyer: S.optional(S.String),
+          flightStartTime: S.optional(S.String),
+          client: S.optional(S.String),
+          estimatedGrossSpend: S.optional(__S(1984, __c62, 0)),
+          publisherProfile: S.optional(S.String),
+          targeting: S.optional(__S(2286, __c71, 14)),
+          createTime: S.optional(S.String),
+          programmaticGuaranteedTerms: S.optional(__S(2242, __c70, 2)),
+          updateTime: S.optional(S.String),
+          description: S.optional(S.String),
+          creativeRequirements: S.optional(__S(2287, __c71, 15)),
+          dealType: S.optional(S.String),
+          preferredDealTerms: S.optional(__S(2243, __c70, 3)),
+          deliveryControl: S.optional(__S(2290, __c71, 18)),
+        }),
+      ).annotate({ identifier: "Deal" });
+  }
+}
+function __c72(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          bidRequests7Days: S.optional(S.String),
+          bidRate7Days: S.optional(S.Number),
+          filteredBidRate7Days: S.optional(S.Number),
+          bids7Days: S.optional(S.String),
+          adImpressions7Days: S.optional(S.String),
+          mustBidRateCurrentMonth: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "RtbMetrics" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          pausingConsented: S.optional(S.Boolean),
+          pauseReason: S.optional(S.String),
+          pauseRole: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "DealPausingInfo" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.optional(S.String),
+          deal: S.optional(__S(2291, __c71, 19)),
+          rtbMetrics: S.optional(__S(2304, __c72, 0)),
+          dealServingStatus: S.optional(S.String),
+          dealPausingInfo: S.optional(__S(2305, __c72, 1)),
+          readyToServe: S.optional(S.Boolean),
+        }),
+      ).annotate({ identifier: "FinalizedDeal" });
+  }
+}
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

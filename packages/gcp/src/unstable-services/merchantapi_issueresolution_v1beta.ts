@@ -487,8 +487,8 @@ export const renderaccountissuesIssueresolution: API.OperationMethod<
   RenderaccountissuesIssueresolutionError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(8, __c1, 0) as any as S.Schema<RenderaccountissuesIssueresolutionRequest>,
-  output: __S(36, __c4, 4) as any as S.Schema<RenderAccountIssuesResponse>,
+  input: __S(32, __c1, 0) as any as S.Schema<RenderaccountissuesIssueresolutionRequest>,
+  output: __S(92, __c2, 28) as any as S.Schema<RenderAccountIssuesResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -507,8 +507,8 @@ export const renderproductissuesIssueresolution: API.OperationMethod<
   RenderproductissuesIssueresolutionError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(37, __c4, 5) as any as S.Schema<RenderproductissuesIssueresolutionRequest>,
-  output: __S(36, __c4, 4) as any as S.Schema<RenderProductIssuesResponse>,
+  input: __S(96, __c3, 0) as any as S.Schema<RenderproductissuesIssueresolutionRequest>,
+  output: __S(92, __c2, 28) as any as S.Schema<RenderProductIssuesResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -527,8 +527,8 @@ export const triggeractionIssueresolution: API.OperationMethod<
   TriggeractionIssueresolutionError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(45, __c5, 5) as any as S.Schema<TriggeractionIssueresolutionRequest>,
-  output: __S(46, __c5, 6) as any as S.Schema<TriggerActionResponse>,
+  input: __S(135, __c4, 7) as any as S.Schema<TriggeractionIssueresolutionRequest>,
+  output: __S(136, __c4, 8) as any as S.Schema<TriggerActionResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -599,15 +599,6 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "ListAggregateProductStatusesResponse",
       });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          userInputActionOption: S.optional(S.String),
-          contentOption: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "RenderIssuesRequestPayload",
-      });
   }
 }
 function __c1(j: number): any {
@@ -618,7 +609,7 @@ function __c1(j: number): any {
           languageCode: S.optional(S.String.pipe(T.Query())),
           name: S.String.pipe(T.Label()),
           timeZone: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(7, __c0, 7).pipe(T.HttpBody())),
+          body: S.optional(__S(64, __c2, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -629,6 +620,19 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "RenderaccountissuesIssueresolutionRequest",
       });
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          userInputActionOption: S.optional(S.String),
+          contentOption: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "RenderIssuesRequestPayload",
+      });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -637,56 +641,52 @@ function __c1(j: number): any {
         }),
       ).annotate({ identifier: "Region" });
     case 2:
-      return S.Array(__S(9, __c1, 1));
+      return S.Array(__S(65, __c2, 1));
     case 3:
       return S.Array(S.String);
     case 4:
       return S.suspend(() =>
         S.Struct({
-          regions: S.optional(__S(10, __c1, 2)),
-          details: S.optional(__S(11, __c1, 3)),
+          regions: S.optional(__S(66, __c2, 2)),
+          details: S.optional(__S(67, __c2, 3)),
         }),
       ).annotate({ identifier: "Breakdown" });
     case 5:
-      return S.Array(__S(12, __c1, 4));
+      return S.Array(__S(68, __c2, 4));
     case 6:
       return S.suspend(() =>
         S.Struct({
           message: S.optional(S.String),
           severity: S.optional(S.String),
-          breakdowns: S.optional(__S(13, __c1, 5)),
+          breakdowns: S.optional(__S(69, __c2, 5)),
         }),
       ).annotate({ identifier: "Impact" });
     case 7:
       return S.suspend(() =>
         S.Struct({
           message: S.optional(S.String),
-          action: S.optional(S.suspend(() => __S(32, __c4, 0))),
+          action: S.optional(S.suspend(() => __S(88, __c2, 24))),
           detail: S.optional(S.String),
         }),
       ).annotate({ identifier: "Reason" });
-  }
-}
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(15, __c1, 7));
-    case 1:
+    case 8:
+      return S.Array(__S(71, __c2, 7));
+    case 9:
       return S.suspend(() =>
         S.Struct({
           title: S.optional(S.String),
-          paragraphs: S.optional(__S(11, __c1, 3)),
+          paragraphs: S.optional(__S(67, __c2, 3)),
         }),
       ).annotate({ identifier: "AdditionalContent" });
-    case 2:
+    case 10:
       return S.suspend(() =>
         S.Struct({
           attributeCode: S.optional(S.String),
-          additionalContent: S.optional(__S(17, __c2, 1)),
+          additionalContent: S.optional(__S(73, __c2, 9)),
           type: S.optional(S.String),
         }),
       ).annotate({ identifier: "BuiltInSimpleAction" });
-    case 3:
+    case 11:
       return S.suspend(() =>
         S.Struct({
           simpleValue: S.optional(S.String),
@@ -694,131 +694,127 @@ function __c2(j: number): any {
           tooltipIconStyle: S.optional(S.String),
         }),
       ).annotate({ identifier: "TextWithTooltip" });
-    case 4:
+    case 12:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
-          label: S.optional(__S(19, __c2, 3)),
-          additionalInput: S.optional(S.suspend(() => __S(25, __c3, 1))),
+          label: S.optional(__S(75, __c2, 11)),
+          additionalInput: S.optional(S.suspend(() => __S(81, __c2, 17))),
         }),
       ).annotate({ identifier: "ChoiceInputOption" });
-    case 5:
-      return S.Array(__S(20, __c2, 4));
-    case 6:
+    case 13:
+      return S.Array(__S(76, __c2, 12));
+    case 14:
       return S.suspend(() =>
         S.Struct({
-          options: S.optional(__S(21, __c2, 5)),
+          options: S.optional(__S(77, __c2, 13)),
         }),
       ).annotate({ identifier: "ChoiceInput" });
-    case 7:
+    case 15:
       return S.suspend(() =>
         S.Struct({
           type: S.optional(S.String),
           ariaLabel: S.optional(S.String),
-          additionalInfo: S.optional(__S(19, __c2, 3)),
+          additionalInfo: S.optional(__S(75, __c2, 11)),
           formatInfo: S.optional(S.String),
         }),
       ).annotate({ identifier: "TextInput" });
-  }
-}
-function __c3(j: number): any {
-  switch (j) {
-    case 0:
+    case 16:
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "CheckboxInput",
       });
-    case 1:
+    case 17:
       return S.suspend(() =>
         S.Struct({
-          choiceInput: S.optional(__S(22, __c2, 6)),
-          textInput: S.optional(__S(23, __c2, 7)),
+          choiceInput: S.optional(__S(78, __c2, 14)),
+          textInput: S.optional(__S(79, __c2, 15)),
           required: S.optional(S.Boolean),
-          label: S.optional(__S(19, __c2, 3)),
-          checkboxInput: S.optional(__S(24, __c3, 0)),
+          label: S.optional(__S(75, __c2, 11)),
+          checkboxInput: S.optional(__S(80, __c2, 16)),
           id: S.optional(S.String),
         }),
       ).annotate({ identifier: "InputField" });
-    case 2:
-      return S.Array(__S(25, __c3, 1));
-    case 3:
+    case 18:
+      return S.Array(__S(81, __c2, 17));
+    case 19:
       return S.suspend(() =>
         S.Struct({
-          fullMessage: S.optional(__S(19, __c2, 3)),
+          fullMessage: S.optional(__S(75, __c2, 11)),
           styleHint: S.optional(S.String),
         }),
       ).annotate({ identifier: "Callout" });
-    case 4:
+    case 20:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
-          dialogMessage: S.optional(__S(19, __c2, 3)),
+          dialogMessage: S.optional(__S(75, __c2, 11)),
           label: S.optional(S.String),
-          inputs: S.optional(__S(26, __c3, 2)),
+          inputs: S.optional(__S(82, __c2, 18)),
           dialogTitle: S.optional(S.String),
-          dialogCallout: S.optional(__S(27, __c3, 3)),
+          dialogCallout: S.optional(__S(83, __c2, 19)),
           dialogButtonLabel: S.optional(S.String),
         }),
       ).annotate({ identifier: "ActionFlow" });
-    case 5:
-      return S.Array(__S(28, __c3, 4));
-    case 6:
+    case 21:
+      return S.Array(__S(84, __c2, 20));
+    case 22:
       return S.suspend(() =>
         S.Struct({
           actionContext: S.optional(S.String),
-          flows: S.optional(__S(29, __c3, 5)),
+          flows: S.optional(__S(85, __c2, 21)),
         }),
       ).annotate({ identifier: "BuiltInUserInputAction" });
-    case 7:
+    case 23:
       return S.suspend(() =>
         S.Struct({
           type: S.optional(S.String),
           uri: S.optional(S.String),
         }),
       ).annotate({ identifier: "ExternalAction" });
-  }
-}
-function __c4(j: number): any {
-  switch (j) {
-    case 0:
+    case 24:
       return S.suspend(() =>
         S.Struct({
-          reasons: S.optional(__S(16, __c2, 0)),
-          builtinSimpleAction: S.optional(__S(18, __c2, 2)),
-          builtinUserInputAction: S.optional(__S(30, __c3, 6)),
-          externalAction: S.optional(__S(31, __c3, 7)),
+          reasons: S.optional(__S(72, __c2, 8)),
+          builtinSimpleAction: S.optional(__S(74, __c2, 10)),
+          builtinUserInputAction: S.optional(__S(86, __c2, 22)),
+          externalAction: S.optional(__S(87, __c2, 23)),
           buttonLabel: S.optional(S.String),
           isAvailable: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "Action" });
-    case 1:
-      return S.Array(__S(32, __c4, 0));
-    case 2:
+    case 25:
+      return S.Array(__S(88, __c2, 24));
+    case 26:
       return S.suspend(() =>
         S.Struct({
-          impact: S.optional(__S(14, __c1, 6)),
+          impact: S.optional(__S(70, __c2, 6)),
           title: S.optional(S.String),
           prerenderedContent: S.optional(S.String),
           prerenderedOutOfCourtDisputeSettlement: S.optional(S.String),
-          actions: S.optional(__S(33, __c4, 1)),
+          actions: S.optional(__S(89, __c2, 25)),
         }),
       ).annotate({ identifier: "RenderedIssue" });
-    case 3:
-      return S.Array(__S(34, __c4, 2));
-    case 4:
+    case 27:
+      return S.Array(__S(90, __c2, 26));
+    case 28:
       return S.suspend(() =>
         S.Struct({
-          renderedIssues: S.optional(__S(35, __c4, 3)),
+          renderedIssues: S.optional(__S(91, __c2, 27)),
         }),
       ).annotate({
         identifier: "RenderAccountIssuesResponse",
       });
-    case 5:
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           languageCode: S.optional(S.String.pipe(T.Query())),
           name: S.String.pipe(T.Label()),
           timeZone: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(7, __c0, 7).pipe(T.HttpBody())),
+          body: S.optional(__S(64, __c2, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -829,59 +825,59 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "RenderproductissuesIssueresolutionRequest",
       });
-    case 6:
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           value: S.optional(S.String),
         }),
       ).annotate({ identifier: "TextInputValue" });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           choiceInputOptionId: S.optional(S.String),
         }),
       ).annotate({ identifier: "ChoiceInputValue" });
-  }
-}
-function __c5(j: number): any {
-  switch (j) {
-    case 0:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           value: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "CheckboxInputValue" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          inputFieldId: S.optional(S.String),
-          textInputValue: S.optional(__S(38, __c4, 6)),
-          choiceInputValue: S.optional(__S(39, __c4, 7)),
-          checkboxInputValue: S.optional(__S(40, __c5, 0)),
-        }),
-      ).annotate({ identifier: "InputValue" });
-    case 2:
-      return S.Array(__S(41, __c5, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          inputValues: S.optional(__S(42, __c5, 2)),
+          inputFieldId: S.optional(S.String),
+          textInputValue: S.optional(__S(128, __c4, 0)),
+          choiceInputValue: S.optional(__S(129, __c4, 1)),
+          checkboxInputValue: S.optional(__S(130, __c4, 2)),
+        }),
+      ).annotate({ identifier: "InputValue" });
+    case 4:
+      return S.Array(__S(131, __c4, 3));
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          inputValues: S.optional(__S(132, __c4, 4)),
           actionFlowId: S.optional(S.String),
         }),
       ).annotate({ identifier: "ActionInput" });
-    case 4:
+    case 6:
       return S.suspend(() =>
         S.Struct({
-          actionInput: S.optional(__S(43, __c5, 3)),
+          actionInput: S.optional(__S(133, __c4, 5)),
           actionContext: S.optional(S.String),
         }),
       ).annotate({ identifier: "TriggerActionPayload" });
-    case 5:
+    case 7:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
           languageCode: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(44, __c5, 4).pipe(T.HttpBody())),
+          body: S.optional(__S(134, __c4, 6).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -892,7 +888,7 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "TriggeractionIssueresolutionRequest",
       });
-    case 6:
+    case 8:
       return S.suspend(() =>
         S.Struct({
           message: S.optional(S.String),
@@ -900,7 +896,6 @@ function __c5(j: number): any {
       ).annotate({ identifier: "TriggerActionResponse" });
   }
 }
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

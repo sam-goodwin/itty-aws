@@ -389,7 +389,7 @@ export const changeZonePrimaryNameservers: API.OperationMethod<
   HetznerOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(2, __c0, 2) as any as S.Schema<ChangeZonePrimaryNameserversRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<ChangeZonePrimaryNameserversResponse>,
+  output: __S(4, __c0, 4) as any as S.Schema<ChangeZonePrimaryNameserversResponse>,
   errors: [UnknownHetznerError],
   protocol: HetznerProtocol,
   retry: Retry.Retry,
@@ -403,8 +403,8 @@ export const changeZoneProtection: API.OperationMethod<
   ChangeZoneProtectionError,
   HetznerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(8, __c1, 0) as any as S.Schema<ChangeZoneProtectionRequest>,
-  output: __S(10, __c1, 2) as any as S.Schema<ChangeZoneProtectionResponse>,
+  input: __S(16, __c2, 0) as any as S.Schema<ChangeZoneProtectionRequest>,
+  output: __S(18, __c2, 2) as any as S.Schema<ChangeZoneProtectionResponse>,
   errors: [UnknownHetznerError],
   protocol: HetznerProtocol,
   retry: Retry.Retry,
@@ -418,8 +418,8 @@ export const changeZoneTtl: API.OperationMethod<
   ChangeZoneTtlError,
   HetznerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(11, __c1, 3) as any as S.Schema<ChangeZoneTtlRequest>,
-  output: __S(13, __c1, 5) as any as S.Schema<ChangeZoneTtlResponse>,
+  input: __S(24, __c3, 0) as any as S.Schema<ChangeZoneTtlRequest>,
+  output: __S(26, __c3, 2) as any as S.Schema<ChangeZoneTtlResponse>,
   errors: [UnknownHetznerError],
   protocol: HetznerProtocol,
   retry: Retry.Retry,
@@ -433,8 +433,8 @@ export const getZonesAction: API.OperationMethod<
   GetZonesActionError,
   HetznerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(14, __c1, 6) as any as S.Schema<GetZonesActionRequest>,
-  output: __S(16, __c2, 0) as any as S.Schema<GetZonesActionResponse>,
+  input: __S(32, __c4, 0) as any as S.Schema<GetZonesActionRequest>,
+  output: __S(34, __c4, 2) as any as S.Schema<GetZonesActionResponse>,
   errors: [UnknownHetznerError],
   protocol: HetznerProtocol,
   retry: Retry.Retry,
@@ -448,8 +448,8 @@ export const importZoneZonefile: API.OperationMethod<
   ImportZoneZonefileError,
   HetznerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(17, __c2, 1) as any as S.Schema<ImportZoneZonefileRequest>,
-  output: __S(19, __c2, 3) as any as S.Schema<ImportZoneZonefileResponse>,
+  input: __S(40, __c5, 0) as any as S.Schema<ImportZoneZonefileRequest>,
+  output: __S(42, __c5, 2) as any as S.Schema<ImportZoneZonefileResponse>,
   errors: [UnknownHetznerError],
   protocol: HetznerProtocol,
   retry: Retry.Retry,
@@ -465,8 +465,8 @@ export const listZoneActions: API.PaginatedOperationMethod<
   ListZoneActionsResponseActionsItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(21, __c2, 5) as any as S.Schema<ListZoneActionsRequest>,
-    output: __S(26, __c3, 2) as any as S.Schema<ListZoneActionsResponse>,
+    input: __S(48, __c6, 0) as any as S.Schema<ListZoneActionsRequest>,
+    output: __S(51, __c6, 3) as any as S.Schema<ListZoneActionsResponse>,
     errors: [UnknownHetznerError],
     protocol: HetznerProtocol,
     retry: Retry.Retry,
@@ -491,8 +491,8 @@ export const listZonesActions: API.PaginatedOperationMethod<
   ListZonesActionsResponseActionsItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(28, __c3, 4) as any as S.Schema<ListZonesActionsRequest>,
-    output: __S(31, __c3, 7) as any as S.Schema<ListZonesActionsResponse>,
+    input: __S(65, __c8, 1) as any as S.Schema<ListZonesActionsRequest>,
+    output: __S(68, __c8, 4) as any as S.Schema<ListZonesActionsResponse>,
     errors: [UnknownHetznerError],
     protocol: HetznerProtocol,
     retry: Retry.Retry,
@@ -542,14 +542,41 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           id: S.Number,
+          command: S.String,
+          status: S.String,
+          started: S.String,
+          finished: S.NullOr(S.String),
+          progress: S.Number,
+          resources: __S(9, __c1, 1),
+          error: S.NullOr(__S(10, __c1, 2)),
+        }),
+      ).annotate({
+        identifier: "ChangeZonePrimaryNameserversResponseAction",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          action: __S(3, __c0, 3),
+        }),
+      ).annotate({
+        identifier: "ChangeZonePrimaryNameserversResponse",
+      });
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.Number,
           type: S.String,
         }),
       ).annotate({
         identifier: "ChangeZonePrimaryNameserversResponseActionResourcesItem",
       });
-    case 4:
-      return S.Array(__S(3, __c0, 3));
-    case 5:
+    case 1:
+      return S.Array(__S(8, __c1, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           code: S.String,
@@ -558,32 +585,9 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "ChangeZonePrimaryNameserversResponseActionError",
       });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.Number,
-          command: S.String,
-          status: S.String,
-          started: S.String,
-          finished: S.NullOr(S.String),
-          progress: S.Number,
-          resources: __S(4, __c0, 4),
-          error: S.NullOr(__S(5, __c0, 5)),
-        }),
-      ).annotate({
-        identifier: "ChangeZonePrimaryNameserversResponseAction",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          action: __S(6, __c0, 6),
-        }),
-      ).annotate({
-        identifier: "ChangeZonePrimaryNameserversResponse",
-      });
   }
 }
-function __c1(j: number): any {
+function __c2(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -609,8 +613,8 @@ function __c1(j: number): any {
           started: S.String,
           finished: S.NullOr(S.String),
           progress: S.Number,
-          resources: __S(4, __c0, 4),
-          error: S.NullOr(__S(5, __c0, 5)),
+          resources: __S(9, __c1, 1),
+          error: S.NullOr(__S(10, __c1, 2)),
         }),
       ).annotate({
         identifier: "ChangeZoneProtectionResponseAction",
@@ -618,12 +622,16 @@ function __c1(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          action: __S(9, __c1, 1),
+          action: __S(17, __c2, 1),
         }),
       ).annotate({
         identifier: "ChangeZoneProtectionResponse",
       });
-    case 3:
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id_or_name: S.String.pipe(T.Label()),
@@ -632,7 +640,7 @@ function __c1(j: number): any {
           T.Http({ method: "POST", uri: "/zones/{id_or_name}/actions/change_ttl", code: 200 }),
         ),
       ).annotate({ identifier: "ChangeZoneTtlRequest" });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.Number,
@@ -641,25 +649,29 @@ function __c1(j: number): any {
           started: S.String,
           finished: S.NullOr(S.String),
           progress: S.Number,
-          resources: __S(4, __c0, 4),
-          error: S.NullOr(__S(5, __c0, 5)),
+          resources: __S(9, __c1, 1),
+          error: S.NullOr(__S(10, __c1, 2)),
         }),
       ).annotate({
         identifier: "ChangeZoneTtlResponseAction",
       });
-    case 5:
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          action: __S(12, __c1, 4),
+          action: __S(25, __c3, 1),
         }),
       ).annotate({ identifier: "ChangeZoneTtlResponse" });
-    case 6:
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.Number.pipe(T.Label()),
         }).pipe(T.Http({ method: "GET", uri: "/zones/actions/{id}", code: 200 })),
       ).annotate({ identifier: "GetZonesActionRequest" });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.Number,
@@ -668,23 +680,23 @@ function __c1(j: number): any {
           started: S.String,
           finished: S.NullOr(S.String),
           progress: S.Number,
-          resources: __S(4, __c0, 4),
-          error: S.NullOr(__S(5, __c0, 5)),
+          resources: __S(9, __c1, 1),
+          error: S.NullOr(__S(10, __c1, 2)),
         }),
       ).annotate({
         identifier: "GetZonesActionResponseAction",
       });
-  }
-}
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          action: __S(15, __c1, 7),
+          action: __S(33, __c4, 1),
         }),
       ).annotate({ identifier: "GetZonesActionResponse" });
-    case 1:
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id_or_name: S.String.pipe(T.Label()),
@@ -695,7 +707,7 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "ImportZoneZonefileRequest",
       });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.Number,
@@ -704,33 +716,35 @@ function __c2(j: number): any {
           started: S.String,
           finished: S.NullOr(S.String),
           progress: S.Number,
-          resources: __S(4, __c0, 4),
-          error: S.NullOr(__S(5, __c0, 5)),
+          resources: __S(9, __c1, 1),
+          error: S.NullOr(__S(10, __c1, 2)),
         }),
       ).annotate({
         identifier: "ImportZoneZonefileResponseAction",
       });
-    case 3:
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          action: __S(18, __c2, 2),
+          action: __S(41, __c5, 1),
         }),
       ).annotate({
         identifier: "ImportZoneZonefileResponse",
       });
-    case 4:
-      return S.Array(S.String);
-    case 5:
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id_or_name: S.String.pipe(T.Label()),
-          sort: S.optional(__S(20, __c2, 4).pipe(T.Query())),
-          status: S.optional(__S(20, __c2, 4).pipe(T.Query())),
+          sort: S.optional(__S(56, __c7, 0).pipe(T.Query())),
+          status: S.optional(__S(56, __c7, 0).pipe(T.Query())),
           page: S.optional(S.Number.pipe(T.Query())),
           per_page: S.optional(S.Number.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/zones/{id_or_name}/actions", code: 200 })),
       ).annotate({ identifier: "ListZoneActionsRequest" });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.Number,
@@ -739,19 +753,28 @@ function __c2(j: number): any {
           started: S.String,
           finished: S.NullOr(S.String),
           progress: S.Number,
-          resources: __S(4, __c0, 4),
-          error: S.NullOr(__S(5, __c0, 5)),
+          resources: __S(9, __c1, 1),
+          error: S.NullOr(__S(10, __c1, 2)),
         }),
       ).annotate({
         identifier: "ListZoneActionsResponseActionsItem",
       });
-    case 7:
-      return S.Array(__S(22, __c2, 6));
+    case 2:
+      return S.Array(__S(49, __c6, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          actions: __S(50, __c6, 2),
+          meta: __S(58, __c7, 2),
+        }),
+      ).annotate({ identifier: "ListZoneActionsResponse" });
   }
 }
-function __c3(j: number): any {
+function __c7(j: number): any {
   switch (j) {
     case 0:
+      return S.Array(S.String);
+    case 1:
       return S.suspend(() =>
         S.Struct({
           page: S.Number,
@@ -764,34 +787,31 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "ListZoneActionsResponseMetaPagination",
       });
-    case 1:
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          pagination: __S(24, __c3, 0),
+          pagination: __S(57, __c7, 1),
         }),
       ).annotate({
         identifier: "ListZoneActionsResponseMeta",
       });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          actions: __S(23, __c2, 7),
-          meta: __S(25, __c3, 1),
-        }),
-      ).annotate({ identifier: "ListZoneActionsResponse" });
-    case 3:
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
       return S.Array(S.Number);
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          id: S.optional(__S(27, __c3, 3).pipe(T.Query())),
-          sort: S.optional(__S(20, __c2, 4).pipe(T.Query())),
-          status: S.optional(__S(20, __c2, 4).pipe(T.Query())),
+          id: S.optional(__S(64, __c8, 0).pipe(T.Query())),
+          sort: S.optional(__S(56, __c7, 0).pipe(T.Query())),
+          status: S.optional(__S(56, __c7, 0).pipe(T.Query())),
           page: S.optional(S.Number.pipe(T.Query())),
           per_page: S.optional(S.Number.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/zones/actions", code: 200 })),
       ).annotate({ identifier: "ListZonesActionsRequest" });
-    case 5:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           id: S.Number,
@@ -800,24 +820,23 @@ function __c3(j: number): any {
           started: S.String,
           finished: S.NullOr(S.String),
           progress: S.Number,
-          resources: __S(4, __c0, 4),
-          error: S.NullOr(__S(5, __c0, 5)),
+          resources: __S(9, __c1, 1),
+          error: S.NullOr(__S(10, __c1, 2)),
         }),
       ).annotate({
         identifier: "ListZonesActionsResponseActionsItem",
       });
-    case 6:
-      return S.Array(__S(29, __c3, 5));
-    case 7:
+    case 3:
+      return S.Array(__S(66, __c8, 2));
+    case 4:
       return S.suspend(() =>
         S.Struct({
-          actions: __S(30, __c3, 6),
-          meta: __S(25, __c3, 1),
+          actions: __S(67, __c8, 3),
+          meta: __S(58, __c7, 2),
         }),
       ).annotate({ identifier: "ListZonesActionsResponse" });
   }
 }
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

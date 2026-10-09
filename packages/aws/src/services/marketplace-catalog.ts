@@ -131,7 +131,7 @@ export class ValidationException
     {
       message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
       ValidationExceptionFieldList: /*@__PURE__*/ S.optional(
-        /*@__PURE__*/ S.suspend(() => __S(95, __c11, 7)).annotate({
+        /*@__PURE__*/ S.suspend(() => __S(641, __c20, 1)).annotate({
           identifier: "ValidationExceptionFieldList",
         }),
       ),
@@ -1284,8 +1284,8 @@ export const batchDescribeEntities: API.OperationMethod<
   BatchDescribeEntitiesError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2, __c0, 2) as any as S.Schema<BatchDescribeEntitiesRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<BatchDescribeEntitiesResponse>,
+  input: __S(674, __c21, 2) as any as S.Schema<BatchDescribeEntitiesRequest>,
+  output: __S(678, __c21, 6) as any as S.Schema<BatchDescribeEntitiesResponse>,
   errors: [
     AccessDeniedException,
     InternalServiceException,
@@ -1317,8 +1317,8 @@ export const cancelChangeSet: API.OperationMethod<
   CancelChangeSetError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(8, __c1, 0) as any as S.Schema<CancelChangeSetRequest>,
-  output: __S(9, __c1, 1) as any as S.Schema<CancelChangeSetResponse>,
+  input: __S(736, __c23, 0) as any as S.Schema<CancelChangeSetRequest>,
+  output: __S(768, __c24, 0) as any as S.Schema<CancelChangeSetResponse>,
   errors: [
     AccessDeniedException,
     InternalServiceException,
@@ -1349,8 +1349,8 @@ export const deleteResourcePolicy: API.OperationMethod<
   DeleteResourcePolicyError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(10, __c1, 2) as any as S.Schema<DeleteResourcePolicyRequest>,
-  output: __S(11, __c1, 3) as any as S.Schema<DeleteResourcePolicyResponse>,
+  input: __S(0, __c0, 0) as any as S.Schema<DeleteResourcePolicyRequest>,
+  output: __S(32, __c1, 0) as any as S.Schema<DeleteResourcePolicyResponse>,
   errors: [
     AccessDeniedException,
     InternalServiceException,
@@ -1385,8 +1385,8 @@ export const describeAssessment: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   ControlAssessment
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(12, __c1, 4) as any as S.Schema<DescribeAssessmentRequest>,
-  output: __S(22, __c2, 6) as any as S.Schema<DescribeAssessmentResponse>,
+  input: __S(64, __c2, 0) as any as S.Schema<DescribeAssessmentRequest>,
+  output: __S(71, __c2, 7) as any as S.Schema<DescribeAssessmentResponse>,
   errors: [
     AccessDeniedException,
     InternalServiceException,
@@ -1421,8 +1421,8 @@ export const describeChangeSet: API.OperationMethod<
   DescribeChangeSetError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(23, __c2, 7) as any as S.Schema<DescribeChangeSetRequest>,
-  output: __S(28, __c3, 4) as any as S.Schema<DescribeChangeSetResponse>,
+  input: __S(128, __c4, 0) as any as S.Schema<DescribeChangeSetRequest>,
+  output: __S(132, __c4, 4) as any as S.Schema<DescribeChangeSetResponse>,
   errors: [
     AccessDeniedException,
     InternalServiceException,
@@ -1452,8 +1452,8 @@ export const describeEntity: API.OperationMethod<
   DescribeEntityError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(29, __c3, 5) as any as S.Schema<DescribeEntityRequest>,
-  output: __S(30, __c3, 6) as any as S.Schema<DescribeEntityResponse>,
+  input: __S(192, __c6, 0) as any as S.Schema<DescribeEntityRequest>,
+  output: __S(193, __c6, 1) as any as S.Schema<DescribeEntityResponse>,
   errors: [
     AccessDeniedException,
     InternalServiceException,
@@ -1484,8 +1484,8 @@ export const getResourcePolicy: API.OperationMethod<
   GetResourcePolicyError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(31, __c3, 7) as any as S.Schema<GetResourcePolicyRequest>,
-  output: __S(32, __c4, 0) as any as S.Schema<GetResourcePolicyResponse>,
+  input: __S(224, __c7, 0) as any as S.Schema<GetResourcePolicyRequest>,
+  output: __S(225, __c7, 1) as any as S.Schema<GetResourcePolicyResponse>,
   errors: [
     AccessDeniedException,
     InternalServiceException,
@@ -1524,8 +1524,8 @@ export const listAssessments: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   AssessmentSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(34, __c4, 2) as any as S.Schema<ListAssessmentsRequest>,
-  output: __S(37, __c4, 5) as any as S.Schema<ListAssessmentsResponse>,
+  input: __S(257, __c8, 1) as any as S.Schema<ListAssessmentsRequest>,
+  output: __S(260, __c8, 4) as any as S.Schema<ListAssessmentsResponse>,
   errors: [
     AccessDeniedException,
     InternalServiceException,
@@ -1565,8 +1565,8 @@ export const listChangeSets: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   ChangeSetSummaryListItem
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(42, __c5, 2) as any as S.Schema<ListChangeSetsRequest>,
-  output: __S(45, __c5, 5) as any as S.Schema<ListChangeSetsResponse>,
+  input: __S(288, __c9, 0) as any as S.Schema<ListChangeSetsRequest>,
+  output: __S(291, __c9, 3) as any as S.Schema<ListChangeSetsResponse>,
   errors: [
     AccessDeniedException,
     InternalServiceException,
@@ -1601,8 +1601,8 @@ export const listEntities: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   EntitySummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(75, __c9, 3) as any as S.Schema<ListEntitiesRequest>,
-  output: __S(83, __c10, 3) as any as S.Schema<ListEntitiesResponse>,
+  input: __S(413, __c12, 29) as any as S.Schema<ListEntitiesRequest>,
+  output: __S(421, __c13, 5) as any as S.Schema<ListEntitiesResponse>,
   errors: [
     AccessDeniedException,
     InternalServiceException,
@@ -1637,8 +1637,8 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(84, __c10, 4) as any as S.Schema<ListTagsForResourceRequest>,
-  output: __S(87, __c10, 7) as any as S.Schema<ListTagsForResourceResponse>,
+  input: __S(448, __c14, 0) as any as S.Schema<ListTagsForResourceRequest>,
+  output: __S(449, __c14, 1) as any as S.Schema<ListTagsForResourceResponse>,
   errors: [
     AccessDeniedException,
     InternalServiceException,
@@ -1668,8 +1668,8 @@ export const putResourcePolicy: API.OperationMethod<
   PutResourcePolicyError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(88, __c11, 0) as any as S.Schema<PutResourcePolicyRequest>,
-  output: __S(11, __c1, 3) as any as S.Schema<PutResourcePolicyResponse>,
+  input: __S(512, __c16, 0) as any as S.Schema<PutResourcePolicyRequest>,
+  output: __S(32, __c1, 0) as any as S.Schema<PutResourcePolicyResponse>,
   errors: [
     AccessDeniedException,
     InternalServiceException,
@@ -1717,8 +1717,8 @@ export const startChangeSet: API.OperationMethod<
   StartChangeSetError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(91, __c11, 3) as any as S.Schema<StartChangeSetRequest>,
-  output: __S(9, __c1, 1) as any as S.Schema<StartChangeSetResponse>,
+  input: __S(546, __c17, 2) as any as S.Schema<StartChangeSetRequest>,
+  output: __S(768, __c24, 0) as any as S.Schema<StartChangeSetResponse>,
   errors: [
     AccessDeniedException,
     InternalServiceException,
@@ -1749,8 +1749,8 @@ export const tagResource: API.OperationMethod<
   TagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(92, __c11, 4) as any as S.Schema<TagResourceRequest>,
-  output: __S(11, __c1, 3) as any as S.Schema<TagResourceResponse>,
+  input: __S(576, __c18, 0) as any as S.Schema<TagResourceRequest>,
+  output: __S(32, __c1, 0) as any as S.Schema<TagResourceResponse>,
   errors: [
     AccessDeniedException,
     InternalServiceException,
@@ -1779,8 +1779,8 @@ export const untagResource: API.OperationMethod<
   UntagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(93, __c11, 5) as any as S.Schema<UntagResourceRequest>,
-  output: __S(11, __c1, 3) as any as S.Schema<UntagResourceResponse>,
+  input: __S(608, __c19, 0) as any as S.Schema<UntagResourceRequest>,
+  output: __S(32, __c1, 0) as any as S.Schema<UntagResourceResponse>,
   errors: [
     AccessDeniedException,
     InternalServiceException,
@@ -1797,14 +1797,773 @@ export const untagResource: API.OperationMethod<
 function __c0(j: number): any {
   switch (j) {
     case 0:
+      return S.suspend(() =>
+        S.Struct({ ResourceArn: S.String.pipe(T.HttpQuery("resourceArn")) }).pipe(
+          T.all(
+            T.Http({ method: "DELETE", uri: "/DeleteResourcePolicy" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "DeleteResourcePolicyRequest",
+      });
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "DeleteResourcePolicyResponse",
+      });
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          Catalog: S.String,
+          AssessmentIdentifier: S.String,
+          MaxResults: S.optional(S.Number),
+          NextToken: S.optional(S.String),
+        }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/DescribeAssessment" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "DescribeAssessmentRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({ Name: S.optional(S.String), Value: S.optional(S.String) }),
+      ).annotate({ identifier: "ErrorScope" });
+    case 2:
+      return S.Array(__S(65, __c2, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          Code: S.optional(S.String),
+          Message: S.optional(S.String),
+          Scope: S.optional(__S(66, __c2, 2)),
+        }),
+      ).annotate({ identifier: "ControlError" });
+    case 4:
+      return S.Array(__S(67, __c2, 3));
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          ControlId: S.optional(S.String),
+          ControlAssessmentResult: S.optional(S.String),
+          Errors: S.optional(__S(68, __c2, 4)),
+        }),
+      ).annotate({ identifier: "ControlAssessment" });
+    case 6:
+      return S.Array(__S(69, __c2, 5));
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          AssessmentArn: S.optional(S.String),
+          AssessmentId: S.optional(S.String),
+          FrameworkId: S.optional(S.String),
+          AssessmentTargetSummary: S.optional(__S(96, __c3, 0)),
+          FrameworkSummary: S.optional(__S(98, __c3, 2)),
+          AssessmentResult: S.optional(S.String),
+          CreatedAt: S.optional(S.String),
+          ExpiresAt: S.optional(S.String),
+          ControlAssessments: S.optional(__S(70, __c2, 6)),
+          NextToken: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "DescribeAssessmentResponse",
+      });
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ EntityId: S.optional(S.String), ChangeSetId: S.optional(S.String) }),
+      ).annotate({ identifier: "AssessmentTargetSummary" });
+    case 1:
+      return S.suspend(() => S.Struct({ DeliveryOptionId: S.optional(S.String) })).annotate({
+        identifier: "AMISecuritySummary",
+      });
+    case 2:
+      return S.Union([
+        /*@__PURE__*/ S.Struct({ AMISecuritySummary: __S(97, __c3, 1) }),
+        /*@__PURE__*/ S.Struct({ ContainerSecuritySummary: __S(97, __c3, 1) }),
+      ]);
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          Catalog: S.String.pipe(T.HttpQuery("catalog")),
+          ChangeSetId: S.String.pipe(T.HttpQuery("changeSetId")),
+        }).pipe(
+          T.all(T.Http({ method: "GET", uri: "/DescribeChangeSet" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "DescribeChangeSetRequest" });
+    case 1:
+      return S.Array(__S(704, __c22, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          ChangeType: S.optional(S.String),
+          Entity: S.optional(__S(160, __c5, 0)),
+          Details: S.optional(S.String),
+          DetailsDocument: S.optional(S.Any),
+          ErrorDetailList: S.optional(__S(129, __c4, 1)),
+          ChangeName: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ChangeSummary" });
+    case 3:
+      return S.Array(__S(130, __c4, 2));
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          ChangeSetId: S.optional(S.String),
+          ChangeSetArn: S.optional(S.String),
+          ChangeSetName: S.optional(S.String),
+          Intent: S.optional(S.String),
+          StartTime: S.optional(S.String),
+          EndTime: S.optional(S.String),
+          Status: S.optional(S.String),
+          FailureCode: S.optional(S.String),
+          FailureDescription: S.optional(S.String),
+          ChangeSet: S.optional(__S(131, __c4, 3)),
+        }),
+      ).annotate({
+        identifier: "DescribeChangeSetResponse",
+      });
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ Type: S.String, Identifier: S.optional(S.String) }),
+      ).annotate({ identifier: "Entity" });
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          Catalog: S.String.pipe(T.HttpQuery("catalog")),
+          EntityId: S.String.pipe(T.HttpQuery("entityId")),
+        }).pipe(
+          T.all(T.Http({ method: "GET", uri: "/DescribeEntity" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "DescribeEntityRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          EntityType: S.optional(S.String),
+          EntityIdentifier: S.optional(S.String),
+          EntityArn: S.optional(S.String),
+          LastModifiedDate: S.optional(S.String),
+          Details: S.optional(S.String),
+          DetailsDocument: S.optional(S.Any),
+        }),
+      ).annotate({ identifier: "DescribeEntityResponse" });
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ ResourceArn: S.String.pipe(T.HttpQuery("resourceArn")) }).pipe(
+          T.all(T.Http({ method: "GET", uri: "/GetResourcePolicy" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "GetResourcePolicyRequest" });
+    case 1:
+      return S.suspend(() => S.Struct({ Policy: S.optional(S.String) })).annotate({
+        identifier: "GetResourcePolicyResponse",
+      });
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Union([
+        /*@__PURE__*/ S.Struct({ AMISecurityFilters: __S(97, __c3, 1) }),
+        /*@__PURE__*/ S.Struct({ ContainerSecurityFilters: __S(97, __c3, 1) }),
+      ]);
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          Catalog: S.String,
+          FrameworkId: S.optional(S.String),
+          AssessmentTargetFilter: S.optional(__S(96, __c3, 0)),
+          FrameworkFilters: S.optional(__S(256, __c8, 0)),
+          MaxResults: S.optional(S.Number),
+          NextToken: S.optional(S.String),
+        }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/ListAssessments" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "ListAssessmentsRequest" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          AssessmentArn: S.optional(S.String),
+          AssessmentId: S.optional(S.String),
+          FrameworkId: S.optional(S.String),
+          AssessmentTargetSummary: S.optional(__S(96, __c3, 0)),
+          FrameworkSummary: S.optional(__S(98, __c3, 2)),
+          AssessmentResult: S.optional(S.String),
+          CreatedAt: S.optional(S.String),
+          ExpiresAt: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "AssessmentSummary" });
+    case 3:
+      return S.Array(__S(258, __c8, 2));
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          AssessmentSummaryList: S.optional(__S(259, __c8, 3)),
+          NextToken: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ListAssessmentsResponse" });
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          Catalog: S.String,
+          FilterList: S.optional(__S(321, __c10, 1)),
+          Sort: S.optional(__S(322, __c10, 2)),
+          MaxResults: S.optional(S.Number),
+          NextToken: S.optional(S.String),
+        }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/ListChangeSets" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "ListChangeSetsRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          ChangeSetId: S.optional(S.String),
+          ChangeSetArn: S.optional(S.String),
+          ChangeSetName: S.optional(S.String),
+          StartTime: S.optional(S.String),
+          EndTime: S.optional(S.String),
+          Status: S.optional(S.String),
+          EntityIdList: S.optional(__S(352, __c11, 0)),
+          FailureCode: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ChangeSetSummaryListItem" });
+    case 2:
+      return S.Array(__S(289, __c9, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          ChangeSetSummaryList: S.optional(__S(290, __c9, 2)),
+          NextToken: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ListChangeSetsResponse" });
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ Name: S.optional(S.String), ValueList: S.optional(__S(352, __c11, 0)) }),
+      ).annotate({ identifier: "Filter" });
+    case 1:
+      return S.Array(__S(320, __c10, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({ SortBy: S.optional(S.String), SortOrder: S.optional(S.String) }),
+      ).annotate({ identifier: "Sort" });
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({ ValueList: S.optional(__S(352, __c11, 0)) })).annotate({
+        identifier: "DataProductEntityIdFilter",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          ValueList: S.optional(__S(352, __c11, 0)),
+          WildCardValue: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "DataProductTitleFilter" });
+    case 2:
+      return S.Array(S.String);
+    case 3:
+      return S.suspend(() => S.Struct({ ValueList: S.optional(__S(386, __c12, 2)) })).annotate({
+        identifier: "DataProductVisibilityFilter",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({ AfterValue: S.optional(S.String), BeforeValue: S.optional(S.String) }),
+      ).annotate({
+        identifier: "DataProductLastModifiedDateFilterDateRange",
+      });
+    case 5:
+      return S.suspend(() => S.Struct({ DateRange: S.optional(__S(388, __c12, 4)) })).annotate({
+        identifier: "DataProductLastModifiedDateFilter",
+      });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          EntityId: S.optional(__S(384, __c12, 0)),
+          ProductTitle: S.optional(__S(385, __c12, 1)),
+          Visibility: S.optional(__S(387, __c12, 3)),
+          LastModifiedDate: S.optional(__S(389, __c12, 5)),
+        }),
+      ).annotate({ identifier: "DataProductFilters" });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          EntityId: S.optional(__S(384, __c12, 0)),
+          ProductTitle: S.optional(__S(385, __c12, 1)),
+          Visibility: S.optional(__S(387, __c12, 3)),
+          LastModifiedDate: S.optional(__S(389, __c12, 5)),
+        }),
+      ).annotate({ identifier: "SaaSProductFilters" });
+    case 8:
+      return S.suspend(() => S.Struct({ ValueList: S.optional(__S(352, __c11, 0)) })).annotate({
+        identifier: "AmiProductEntityIdFilter",
+      });
+    case 9:
+      return S.suspend(() =>
+        S.Struct({
+          EntityId: S.optional(__S(392, __c12, 8)),
+          LastModifiedDate: S.optional(__S(389, __c12, 5)),
+          ProductTitle: S.optional(__S(385, __c12, 1)),
+          Visibility: S.optional(__S(387, __c12, 3)),
+        }),
+      ).annotate({ identifier: "AmiProductFilters" });
+    case 10:
+      return S.suspend(() => S.Struct({ DateRange: S.optional(__S(388, __c12, 4)) })).annotate({
+        identifier: "OfferReleaseDateFilter",
+      });
+    case 11:
+      return S.suspend(() => S.Struct({ WildCardValue: S.optional(S.String) })).annotate({
+        identifier: "OfferBuyerAccountsFilter",
+      });
+    case 12:
+      return S.Array(S.String);
+    case 13:
+      return S.suspend(() => S.Struct({ ValueList: S.optional(__S(396, __c12, 12)) })).annotate({
+        identifier: "OfferStateFilter",
+      });
+    case 14:
+      return S.suspend(() =>
+        S.Struct({
+          EntityId: S.optional(__S(392, __c12, 8)),
+          Name: S.optional(__S(385, __c12, 1)),
+          ProductId: S.optional(__S(392, __c12, 8)),
+          ResaleAuthorizationId: S.optional(__S(384, __c12, 0)),
+          ReleaseDate: S.optional(__S(394, __c12, 10)),
+          AvailabilityEndDate: S.optional(__S(389, __c12, 5)),
+          BuyerAccounts: S.optional(__S(395, __c12, 11)),
+          State: S.optional(__S(397, __c12, 13)),
+          Targeting: S.optional(__S(397, __c12, 13)),
+          LastModifiedDate: S.optional(__S(389, __c12, 5)),
+          OfferSetId: S.optional(__S(392, __c12, 8)),
+          TargetAgreementId: S.optional(__S(384, __c12, 0)),
+          TargetAgreementIntent: S.optional(__S(387, __c12, 3)),
+          CreatedBySource: S.optional(__S(387, __c12, 3)),
+        }),
+      ).annotate({ identifier: "OfferFilters" });
+    case 15:
+      return S.suspend(() =>
+        S.Struct({
+          ValueList: S.optional(__S(352, __c11, 0)),
+          WildCardValue: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "ContainerProductTitleFilter",
+      });
+    case 16:
+      return S.suspend(() =>
+        S.Struct({
+          EntityId: S.optional(__S(384, __c12, 0)),
+          LastModifiedDate: S.optional(__S(389, __c12, 5)),
+          ProductTitle: S.optional(__S(399, __c12, 15)),
+          Visibility: S.optional(__S(387, __c12, 3)),
+        }),
+      ).annotate({ identifier: "ContainerProductFilters" });
+    case 17:
+      return S.suspend(() =>
+        S.Struct({
+          DateRange: S.optional(__S(388, __c12, 4)),
+          ValueList: S.optional(__S(352, __c11, 0)),
+        }),
+      ).annotate({
+        identifier: "ResaleAuthorizationCreatedDateFilter",
+      });
+    case 18:
+      return S.Array(S.String);
+    case 19:
+      return S.suspend(() =>
+        S.Struct({
+          DateRange: S.optional(__S(388, __c12, 4)),
+          ValueList: S.optional(__S(402, __c12, 18)),
+        }),
+      ).annotate({
+        identifier: "ResaleAuthorizationAvailabilityEndDateFilter",
+      });
+    case 20:
+      return S.suspend(() =>
+        S.Struct({
+          ValueList: S.optional(__S(402, __c12, 18)),
+          WildCardValue: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "ResaleAuthorizationManufacturerAccountIdFilter",
+      });
+    case 21:
+      return S.suspend(() => S.Struct({ ValueList: S.optional(__S(402, __c12, 18)) })).annotate({
+        identifier: "ResaleAuthorizationOfferExtendedStatusFilter",
+      });
+    case 22:
+      return S.suspend(() =>
+        S.Struct({
+          EntityId: S.optional(__S(384, __c12, 0)),
+          Name: S.optional(__S(399, __c12, 15)),
+          ProductId: S.optional(__S(399, __c12, 15)),
+          CreatedDate: S.optional(__S(401, __c12, 17)),
+          AvailabilityEndDate: S.optional(__S(403, __c12, 19)),
+          ManufacturerAccountId: S.optional(__S(404, __c12, 20)),
+          ProductName: S.optional(__S(399, __c12, 15)),
+          ManufacturerLegalName: S.optional(__S(404, __c12, 20)),
+          ResellerAccountID: S.optional(__S(399, __c12, 15)),
+          ResellerLegalName: S.optional(__S(399, __c12, 15)),
+          Status: S.optional(__S(387, __c12, 3)),
+          OfferExtendedStatus: S.optional(__S(405, __c12, 21)),
+          LastModifiedDate: S.optional(__S(389, __c12, 5)),
+          ResellerRole: S.optional(__S(387, __c12, 3)),
+          SourceAuthorization: S.optional(__S(405, __c12, 21)),
+          IssuerAccountId: S.optional(__S(384, __c12, 0)),
+        }),
+      ).annotate({
+        identifier: "ResaleAuthorizationFilters",
+      });
+    case 23:
+      return S.suspend(() =>
+        S.Struct({
+          EntityId: S.optional(__S(384, __c12, 0)),
+          LastModifiedDate: S.optional(__S(389, __c12, 5)),
+          ProductTitle: S.optional(__S(399, __c12, 15)),
+          Visibility: S.optional(__S(387, __c12, 3)),
+        }),
+      ).annotate({
+        identifier: "MachineLearningProductFilters",
+      });
+    case 24:
+      return S.suspend(() =>
+        S.Struct({
+          EntityId: S.optional(__S(392, __c12, 8)),
+          Name: S.optional(__S(392, __c12, 8)),
+          State: S.optional(__S(397, __c12, 13)),
+          ReleaseDate: S.optional(__S(389, __c12, 5)),
+          AssociatedOfferIds: S.optional(__S(384, __c12, 0)),
+          SolutionId: S.optional(__S(392, __c12, 8)),
+          LastModifiedDate: S.optional(__S(389, __c12, 5)),
+        }),
+      ).annotate({ identifier: "OfferSetFilters" });
+    case 25:
+      return S.Union([
+        /*@__PURE__*/ S.Struct({ DataProductFilters: __S(390, __c12, 6) }),
+        /*@__PURE__*/ S.Struct({ SaaSProductFilters: __S(391, __c12, 7) }),
+        /*@__PURE__*/ S.Struct({ AmiProductFilters: __S(393, __c12, 9) }),
+        /*@__PURE__*/ S.Struct({ OfferFilters: __S(398, __c12, 14) }),
+        /*@__PURE__*/ S.Struct({ ContainerProductFilters: __S(400, __c12, 16) }),
+        /*@__PURE__*/ S.Struct({ ResaleAuthorizationFilters: __S(406, __c12, 22) }),
+        /*@__PURE__*/ S.Struct({ MachineLearningProductFilters: __S(407, __c12, 23) }),
+        /*@__PURE__*/ S.Struct({ OfferSetFilters: __S(408, __c12, 24) }),
+      ]);
+    case 26:
+      return S.suspend(() =>
+        S.Struct({ SortBy: S.optional(S.String), SortOrder: S.optional(S.String) }),
+      ).annotate({ identifier: "DataProductSort" });
+    case 27:
+      return S.suspend(() =>
+        S.Struct({ SortBy: S.optional(S.String), SortOrder: S.optional(S.String) }),
+      ).annotate({
+        identifier: "MachineLearningProductSort",
+      });
+    case 28:
+      return S.Union([
+        /*@__PURE__*/ S.Struct({ DataProductSort: __S(410, __c12, 26) }),
+        /*@__PURE__*/ S.Struct({ SaaSProductSort: __S(410, __c12, 26) }),
+        /*@__PURE__*/ S.Struct({ AmiProductSort: __S(410, __c12, 26) }),
+        /*@__PURE__*/ S.Struct({ OfferSort: __S(410, __c12, 26) }),
+        /*@__PURE__*/ S.Struct({ ContainerProductSort: __S(410, __c12, 26) }),
+        /*@__PURE__*/ S.Struct({ ResaleAuthorizationSort: __S(410, __c12, 26) }),
+        /*@__PURE__*/ S.Struct({ MachineLearningProductSort: __S(411, __c12, 27) }),
+        /*@__PURE__*/ S.Struct({ OfferSetSort: __S(410, __c12, 26) }),
+      ]);
+    case 29:
+      return S.suspend(() =>
+        S.Struct({
+          Catalog: S.String,
+          EntityType: S.String,
+          FilterList: S.optional(__S(321, __c10, 1)),
+          Sort: S.optional(__S(322, __c10, 2)),
+          NextToken: S.optional(S.String),
+          MaxResults: S.optional(S.Number),
+          OwnershipType: S.optional(S.String),
+          EntityTypeFilters: S.optional(__S(409, __c12, 25)),
+          EntityTypeSort: S.optional(__S(412, __c12, 28)),
+        }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/ListEntities" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "ListEntitiesRequest" });
+    case 30:
+      return S.suspend(() =>
+        S.Struct({
+          ProductTitle: S.optional(S.String),
+          Visibility: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "AmiProductSummary" });
+    case 31:
+      return S.suspend(() =>
+        S.Struct({
+          Name: S.optional(S.String),
+          ProductId: S.optional(S.String),
+          ResaleAuthorizationId: S.optional(S.String),
+          ReleaseDate: S.optional(S.String),
+          AvailabilityEndDate: S.optional(S.String),
+          BuyerAccounts: S.optional(__S(352, __c11, 0)),
+          State: S.optional(S.String),
+          Targeting: S.optional(__S(396, __c12, 12)),
+          OfferSetId: S.optional(S.String),
+          TargetAgreementId: S.optional(S.String),
+          TargetAgreementIntent: S.optional(S.String),
+          CreatedBySource: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "OfferSummary" });
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          Name: S.optional(S.String),
+          ProductId: S.optional(S.String),
+          ProductName: S.optional(S.String),
+          ManufacturerAccountId: S.optional(S.String),
+          ManufacturerLegalName: S.optional(S.String),
+          ResellerAccountID: S.optional(S.String),
+          ResellerLegalName: S.optional(S.String),
+          Status: S.optional(S.String),
+          OfferExtendedStatus: S.optional(S.String),
+          CreatedDate: S.optional(S.String),
+          AvailabilityEndDate: S.optional(S.String),
+          ResellerRole: S.optional(S.String),
+          SourceAuthorization: S.optional(S.String),
+          IssuerAccountId: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "ResaleAuthorizationSummary",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          ProductTitle: S.optional(S.String),
+          Visibility: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "MachineLearningProductSummary",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          Name: S.optional(S.String),
+          State: S.optional(S.String),
+          ReleaseDate: S.optional(S.String),
+          AssociatedOfferIds: S.optional(__S(352, __c11, 0)),
+          SolutionId: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "OfferSetSummary" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          Name: S.optional(S.String),
+          EntityType: S.optional(S.String),
+          EntityId: S.optional(S.String),
+          EntityArn: S.optional(S.String),
+          LastModifiedDate: S.optional(S.String),
+          Visibility: S.optional(S.String),
+          AmiProductSummary: S.optional(__S(414, __c12, 30)),
+          ContainerProductSummary: S.optional(__S(414, __c12, 30)),
+          DataProductSummary: S.optional(__S(414, __c12, 30)),
+          SaaSProductSummary: S.optional(__S(414, __c12, 30)),
+          OfferSummary: S.optional(__S(415, __c12, 31)),
+          ResaleAuthorizationSummary: S.optional(__S(416, __c13, 0)),
+          MachineLearningProductSummary: S.optional(__S(417, __c13, 1)),
+          OfferSetSummary: S.optional(__S(418, __c13, 2)),
+        }),
+      ).annotate({ identifier: "EntitySummary" });
+    case 4:
+      return S.Array(__S(419, __c13, 3));
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          EntitySummaryList: S.optional(__S(420, __c13, 4)),
+          NextToken: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ListEntitiesResponse" });
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ ResourceArn: S.String }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/ListTagsForResource" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "ListTagsForResourceRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({ ResourceArn: S.optional(S.String), Tags: S.optional(__S(481, __c15, 1)) }),
+      ).annotate({
+        identifier: "ListTagsForResourceResponse",
+      });
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({ Key: S.String, Value: S.String })).annotate({
+        identifier: "Tag",
+      });
+    case 1:
+      return S.Array(__S(480, __c15, 0));
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ ResourceArn: S.String, Policy: S.String }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/PutResourcePolicy" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "PutResourcePolicyRequest" });
+  }
+}
+function __c17(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          ChangeType: S.String,
+          Entity: __S(160, __c5, 0),
+          EntityTags: S.optional(__S(481, __c15, 1)),
+          Details: S.optional(S.String),
+          DetailsDocument: S.optional(S.Any),
+          ChangeName: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Change" });
+    case 1:
+      return S.Array(__S(544, __c17, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          Catalog: S.String,
+          ChangeSet: __S(545, __c17, 1),
+          ChangeSetName: S.optional(S.String),
+          ClientRequestToken: S.optional(S.String).pipe(T.IdempotencyToken()),
+          ChangeSetTags: S.optional(__S(481, __c15, 1)),
+          Intent: S.optional(S.String),
+        }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/StartChangeSet" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "StartChangeSetRequest" });
+  }
+}
+function __c18(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ ResourceArn: S.String, Tags: __S(481, __c15, 1) }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/TagResource" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "TagResourceRequest" });
+  }
+}
+function __c19(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ ResourceArn: S.String, TagKeys: __S(352, __c11, 0) }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/UntagResource" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "UntagResourceRequest" });
+  }
+}
+function __c20(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          Reason: S.optional(S.String),
+          EntityType: S.optional(S.String),
+          EntityId: S.optional(S.String),
+          ChangeType: S.optional(S.String),
+          Field: S.optional(S.String),
+          Message: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ValidationExceptionField" });
+    case 1:
+      return S.Array(__S(640, __c20, 0));
+  }
+}
+function __c21(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() => S.Struct({ Catalog: S.String, EntityId: S.String })).annotate({
         identifier: "EntityRequest",
       });
     case 1:
-      return S.Array(__S(0, __c0, 0));
+      return S.Array(__S(672, __c21, 0));
     case 2:
       return S.suspend(() =>
-        S.Struct({ EntityRequestList: __S(1, __c0, 1) }).pipe(
+        S.Struct({ EntityRequestList: __S(673, __c21, 1) }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/BatchDescribeEntities" }),
             svc,
@@ -1828,25 +2587,29 @@ function __c0(j: number): any {
         }),
       ).annotate({ identifier: "EntityDetail" });
     case 4:
-      return S.Record(S.String, /*@__PURE__*/ __S(3, __c0, 3).pipe(S.optional));
+      return S.Record(S.String, /*@__PURE__*/ __S(675, __c21, 3).pipe(S.optional));
     case 5:
-      return S.suspend(() =>
-        S.Struct({ ErrorCode: S.optional(S.String), ErrorMessage: S.optional(S.String) }),
-      ).annotate({ identifier: "BatchDescribeErrorDetail" });
+      return S.Record(S.String, /*@__PURE__*/ __S(704, __c22, 0).pipe(S.optional));
     case 6:
-      return S.Record(S.String, /*@__PURE__*/ __S(5, __c0, 5).pipe(S.optional));
-    case 7:
       return S.suspend(() =>
         S.Struct({
-          EntityDetails: S.optional(__S(4, __c0, 4)),
-          Errors: S.optional(__S(6, __c0, 6)),
+          EntityDetails: S.optional(__S(676, __c21, 4)),
+          Errors: S.optional(__S(677, __c21, 5)),
         }),
       ).annotate({
         identifier: "BatchDescribeEntitiesResponse",
       });
   }
 }
-function __c1(j: number): any {
+function __c22(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ ErrorCode: S.optional(S.String), ErrorMessage: S.optional(S.String) }),
+      ).annotate({ identifier: "BatchDescribeErrorDetail" });
+  }
+}
+function __c23(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1857,731 +2620,16 @@ function __c1(j: number): any {
           T.all(T.Http({ method: "PATCH", uri: "/CancelChangeSet" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "CancelChangeSetRequest" });
-    case 1:
+  }
+}
+function __c24(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ ChangeSetId: S.optional(S.String), ChangeSetArn: S.optional(S.String) }),
       ).annotate({ identifier: "CancelChangeSetResponse" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({ ResourceArn: S.String.pipe(T.HttpQuery("resourceArn")) }).pipe(
-          T.all(
-            T.Http({ method: "DELETE", uri: "/DeleteResourcePolicy" }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({
-        identifier: "DeleteResourcePolicyRequest",
-      });
-    case 3:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "DeleteResourcePolicyResponse",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          Catalog: S.String,
-          AssessmentIdentifier: S.String,
-          MaxResults: S.optional(S.Number),
-          NextToken: S.optional(S.String),
-        }).pipe(
-          T.all(
-            T.Http({ method: "POST", uri: "/DescribeAssessment" }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({
-        identifier: "DescribeAssessmentRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({ EntityId: S.optional(S.String), ChangeSetId: S.optional(S.String) }),
-      ).annotate({ identifier: "AssessmentTargetSummary" });
-    case 6:
-      return S.suspend(() => S.Struct({ DeliveryOptionId: S.optional(S.String) })).annotate({
-        identifier: "AMISecuritySummary",
-      });
-    case 7:
-      return S.Union([
-        /*@__PURE__*/ S.Struct({ AMISecuritySummary: __S(14, __c1, 6) }),
-        /*@__PURE__*/ S.Struct({ ContainerSecuritySummary: __S(14, __c1, 6) }),
-      ]);
   }
 }
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({ Name: S.optional(S.String), Value: S.optional(S.String) }),
-      ).annotate({ identifier: "ErrorScope" });
-    case 1:
-      return S.Array(__S(16, __c2, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          Code: S.optional(S.String),
-          Message: S.optional(S.String),
-          Scope: S.optional(__S(17, __c2, 1)),
-        }),
-      ).annotate({ identifier: "ControlError" });
-    case 3:
-      return S.Array(__S(18, __c2, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          ControlId: S.optional(S.String),
-          ControlAssessmentResult: S.optional(S.String),
-          Errors: S.optional(__S(19, __c2, 3)),
-        }),
-      ).annotate({ identifier: "ControlAssessment" });
-    case 5:
-      return S.Array(__S(20, __c2, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          AssessmentArn: S.optional(S.String),
-          AssessmentId: S.optional(S.String),
-          FrameworkId: S.optional(S.String),
-          AssessmentTargetSummary: S.optional(__S(13, __c1, 5)),
-          FrameworkSummary: S.optional(__S(15, __c1, 7)),
-          AssessmentResult: S.optional(S.String),
-          CreatedAt: S.optional(S.String),
-          ExpiresAt: S.optional(S.String),
-          ControlAssessments: S.optional(__S(21, __c2, 5)),
-          NextToken: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "DescribeAssessmentResponse",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          Catalog: S.String.pipe(T.HttpQuery("catalog")),
-          ChangeSetId: S.String.pipe(T.HttpQuery("changeSetId")),
-        }).pipe(
-          T.all(T.Http({ method: "GET", uri: "/DescribeChangeSet" }), svc, auth, proto, ver, rules),
-        ),
-      ).annotate({ identifier: "DescribeChangeSetRequest" });
-  }
-}
-function __c3(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({ Type: S.String, Identifier: S.optional(S.String) }),
-      ).annotate({ identifier: "Entity" });
-    case 1:
-      return S.Array(__S(5, __c0, 5));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          ChangeType: S.optional(S.String),
-          Entity: S.optional(__S(24, __c3, 0)),
-          Details: S.optional(S.String),
-          DetailsDocument: S.optional(S.Any),
-          ErrorDetailList: S.optional(__S(25, __c3, 1)),
-          ChangeName: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ChangeSummary" });
-    case 3:
-      return S.Array(__S(26, __c3, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          ChangeSetId: S.optional(S.String),
-          ChangeSetArn: S.optional(S.String),
-          ChangeSetName: S.optional(S.String),
-          Intent: S.optional(S.String),
-          StartTime: S.optional(S.String),
-          EndTime: S.optional(S.String),
-          Status: S.optional(S.String),
-          FailureCode: S.optional(S.String),
-          FailureDescription: S.optional(S.String),
-          ChangeSet: S.optional(__S(27, __c3, 3)),
-        }),
-      ).annotate({
-        identifier: "DescribeChangeSetResponse",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          Catalog: S.String.pipe(T.HttpQuery("catalog")),
-          EntityId: S.String.pipe(T.HttpQuery("entityId")),
-        }).pipe(
-          T.all(T.Http({ method: "GET", uri: "/DescribeEntity" }), svc, auth, proto, ver, rules),
-        ),
-      ).annotate({ identifier: "DescribeEntityRequest" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          EntityType: S.optional(S.String),
-          EntityIdentifier: S.optional(S.String),
-          EntityArn: S.optional(S.String),
-          LastModifiedDate: S.optional(S.String),
-          Details: S.optional(S.String),
-          DetailsDocument: S.optional(S.Any),
-        }),
-      ).annotate({ identifier: "DescribeEntityResponse" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({ ResourceArn: S.String.pipe(T.HttpQuery("resourceArn")) }).pipe(
-          T.all(T.Http({ method: "GET", uri: "/GetResourcePolicy" }), svc, auth, proto, ver, rules),
-        ),
-      ).annotate({ identifier: "GetResourcePolicyRequest" });
-  }
-}
-function __c4(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() => S.Struct({ Policy: S.optional(S.String) })).annotate({
-        identifier: "GetResourcePolicyResponse",
-      });
-    case 1:
-      return S.Union([
-        /*@__PURE__*/ S.Struct({ AMISecurityFilters: __S(14, __c1, 6) }),
-        /*@__PURE__*/ S.Struct({ ContainerSecurityFilters: __S(14, __c1, 6) }),
-      ]);
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          Catalog: S.String,
-          FrameworkId: S.optional(S.String),
-          AssessmentTargetFilter: S.optional(__S(13, __c1, 5)),
-          FrameworkFilters: S.optional(__S(33, __c4, 1)),
-          MaxResults: S.optional(S.Number),
-          NextToken: S.optional(S.String),
-        }).pipe(
-          T.all(T.Http({ method: "POST", uri: "/ListAssessments" }), svc, auth, proto, ver, rules),
-        ),
-      ).annotate({ identifier: "ListAssessmentsRequest" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          AssessmentArn: S.optional(S.String),
-          AssessmentId: S.optional(S.String),
-          FrameworkId: S.optional(S.String),
-          AssessmentTargetSummary: S.optional(__S(13, __c1, 5)),
-          FrameworkSummary: S.optional(__S(15, __c1, 7)),
-          AssessmentResult: S.optional(S.String),
-          CreatedAt: S.optional(S.String),
-          ExpiresAt: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "AssessmentSummary" });
-    case 4:
-      return S.Array(__S(35, __c4, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          AssessmentSummaryList: S.optional(__S(36, __c4, 4)),
-          NextToken: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ListAssessmentsResponse" });
-    case 6:
-      return S.Array(S.String);
-    case 7:
-      return S.suspend(() =>
-        S.Struct({ Name: S.optional(S.String), ValueList: S.optional(__S(38, __c4, 6)) }),
-      ).annotate({ identifier: "Filter" });
-  }
-}
-function __c5(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(39, __c4, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({ SortBy: S.optional(S.String), SortOrder: S.optional(S.String) }),
-      ).annotate({ identifier: "Sort" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          Catalog: S.String,
-          FilterList: S.optional(__S(40, __c5, 0)),
-          Sort: S.optional(__S(41, __c5, 1)),
-          MaxResults: S.optional(S.Number),
-          NextToken: S.optional(S.String),
-        }).pipe(
-          T.all(T.Http({ method: "POST", uri: "/ListChangeSets" }), svc, auth, proto, ver, rules),
-        ),
-      ).annotate({ identifier: "ListChangeSetsRequest" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          ChangeSetId: S.optional(S.String),
-          ChangeSetArn: S.optional(S.String),
-          ChangeSetName: S.optional(S.String),
-          StartTime: S.optional(S.String),
-          EndTime: S.optional(S.String),
-          Status: S.optional(S.String),
-          EntityIdList: S.optional(__S(38, __c4, 6)),
-          FailureCode: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ChangeSetSummaryListItem" });
-    case 4:
-      return S.Array(__S(43, __c5, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          ChangeSetSummaryList: S.optional(__S(44, __c5, 4)),
-          NextToken: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ListChangeSetsResponse" });
-    case 6:
-      return S.suspend(() => S.Struct({ ValueList: S.optional(__S(38, __c4, 6)) })).annotate({
-        identifier: "DataProductEntityIdFilter",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          ValueList: S.optional(__S(38, __c4, 6)),
-          WildCardValue: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "DataProductTitleFilter" });
-  }
-}
-function __c6(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(S.String);
-    case 1:
-      return S.suspend(() => S.Struct({ ValueList: S.optional(__S(48, __c6, 0)) })).annotate({
-        identifier: "DataProductVisibilityFilter",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({ AfterValue: S.optional(S.String), BeforeValue: S.optional(S.String) }),
-      ).annotate({
-        identifier: "DataProductLastModifiedDateFilterDateRange",
-      });
-    case 3:
-      return S.suspend(() => S.Struct({ DateRange: S.optional(__S(50, __c6, 2)) })).annotate({
-        identifier: "DataProductLastModifiedDateFilter",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          EntityId: S.optional(__S(46, __c5, 6)),
-          ProductTitle: S.optional(__S(47, __c5, 7)),
-          Visibility: S.optional(__S(49, __c6, 1)),
-          LastModifiedDate: S.optional(__S(51, __c6, 3)),
-        }),
-      ).annotate({ identifier: "DataProductFilters" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          EntityId: S.optional(__S(46, __c5, 6)),
-          ProductTitle: S.optional(__S(47, __c5, 7)),
-          Visibility: S.optional(__S(49, __c6, 1)),
-          LastModifiedDate: S.optional(__S(51, __c6, 3)),
-        }),
-      ).annotate({ identifier: "SaaSProductFilters" });
-    case 6:
-      return S.suspend(() => S.Struct({ ValueList: S.optional(__S(38, __c4, 6)) })).annotate({
-        identifier: "AmiProductEntityIdFilter",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          EntityId: S.optional(__S(54, __c6, 6)),
-          LastModifiedDate: S.optional(__S(51, __c6, 3)),
-          ProductTitle: S.optional(__S(47, __c5, 7)),
-          Visibility: S.optional(__S(49, __c6, 1)),
-        }),
-      ).annotate({ identifier: "AmiProductFilters" });
-  }
-}
-function __c7(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() => S.Struct({ DateRange: S.optional(__S(50, __c6, 2)) })).annotate({
-        identifier: "OfferReleaseDateFilter",
-      });
-    case 1:
-      return S.suspend(() => S.Struct({ WildCardValue: S.optional(S.String) })).annotate({
-        identifier: "OfferBuyerAccountsFilter",
-      });
-    case 2:
-      return S.Array(S.String);
-    case 3:
-      return S.suspend(() => S.Struct({ ValueList: S.optional(__S(58, __c7, 2)) })).annotate({
-        identifier: "OfferStateFilter",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          EntityId: S.optional(__S(54, __c6, 6)),
-          Name: S.optional(__S(47, __c5, 7)),
-          ProductId: S.optional(__S(54, __c6, 6)),
-          ResaleAuthorizationId: S.optional(__S(46, __c5, 6)),
-          ReleaseDate: S.optional(__S(56, __c7, 0)),
-          AvailabilityEndDate: S.optional(__S(51, __c6, 3)),
-          BuyerAccounts: S.optional(__S(57, __c7, 1)),
-          State: S.optional(__S(59, __c7, 3)),
-          Targeting: S.optional(__S(59, __c7, 3)),
-          LastModifiedDate: S.optional(__S(51, __c6, 3)),
-          OfferSetId: S.optional(__S(54, __c6, 6)),
-          TargetAgreementId: S.optional(__S(46, __c5, 6)),
-          TargetAgreementIntent: S.optional(__S(49, __c6, 1)),
-          CreatedBySource: S.optional(__S(49, __c6, 1)),
-        }),
-      ).annotate({ identifier: "OfferFilters" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          ValueList: S.optional(__S(38, __c4, 6)),
-          WildCardValue: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "ContainerProductTitleFilter",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          EntityId: S.optional(__S(46, __c5, 6)),
-          LastModifiedDate: S.optional(__S(51, __c6, 3)),
-          ProductTitle: S.optional(__S(61, __c7, 5)),
-          Visibility: S.optional(__S(49, __c6, 1)),
-        }),
-      ).annotate({ identifier: "ContainerProductFilters" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          DateRange: S.optional(__S(50, __c6, 2)),
-          ValueList: S.optional(__S(38, __c4, 6)),
-        }),
-      ).annotate({
-        identifier: "ResaleAuthorizationCreatedDateFilter",
-      });
-  }
-}
-function __c8(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(S.String);
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          DateRange: S.optional(__S(50, __c6, 2)),
-          ValueList: S.optional(__S(64, __c8, 0)),
-        }),
-      ).annotate({
-        identifier: "ResaleAuthorizationAvailabilityEndDateFilter",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          ValueList: S.optional(__S(64, __c8, 0)),
-          WildCardValue: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "ResaleAuthorizationManufacturerAccountIdFilter",
-      });
-    case 3:
-      return S.suspend(() => S.Struct({ ValueList: S.optional(__S(64, __c8, 0)) })).annotate({
-        identifier: "ResaleAuthorizationOfferExtendedStatusFilter",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          EntityId: S.optional(__S(46, __c5, 6)),
-          Name: S.optional(__S(61, __c7, 5)),
-          ProductId: S.optional(__S(61, __c7, 5)),
-          CreatedDate: S.optional(__S(63, __c7, 7)),
-          AvailabilityEndDate: S.optional(__S(65, __c8, 1)),
-          ManufacturerAccountId: S.optional(__S(66, __c8, 2)),
-          ProductName: S.optional(__S(61, __c7, 5)),
-          ManufacturerLegalName: S.optional(__S(66, __c8, 2)),
-          ResellerAccountID: S.optional(__S(61, __c7, 5)),
-          ResellerLegalName: S.optional(__S(61, __c7, 5)),
-          Status: S.optional(__S(49, __c6, 1)),
-          OfferExtendedStatus: S.optional(__S(67, __c8, 3)),
-          LastModifiedDate: S.optional(__S(51, __c6, 3)),
-          ResellerRole: S.optional(__S(49, __c6, 1)),
-          SourceAuthorization: S.optional(__S(67, __c8, 3)),
-          IssuerAccountId: S.optional(__S(46, __c5, 6)),
-        }),
-      ).annotate({
-        identifier: "ResaleAuthorizationFilters",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          EntityId: S.optional(__S(46, __c5, 6)),
-          LastModifiedDate: S.optional(__S(51, __c6, 3)),
-          ProductTitle: S.optional(__S(61, __c7, 5)),
-          Visibility: S.optional(__S(49, __c6, 1)),
-        }),
-      ).annotate({
-        identifier: "MachineLearningProductFilters",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          EntityId: S.optional(__S(54, __c6, 6)),
-          Name: S.optional(__S(54, __c6, 6)),
-          State: S.optional(__S(59, __c7, 3)),
-          ReleaseDate: S.optional(__S(51, __c6, 3)),
-          AssociatedOfferIds: S.optional(__S(46, __c5, 6)),
-          SolutionId: S.optional(__S(54, __c6, 6)),
-          LastModifiedDate: S.optional(__S(51, __c6, 3)),
-        }),
-      ).annotate({ identifier: "OfferSetFilters" });
-    case 7:
-      return S.Union([
-        /*@__PURE__*/ S.Struct({ DataProductFilters: __S(52, __c6, 4) }),
-        /*@__PURE__*/ S.Struct({ SaaSProductFilters: __S(53, __c6, 5) }),
-        /*@__PURE__*/ S.Struct({ AmiProductFilters: __S(55, __c6, 7) }),
-        /*@__PURE__*/ S.Struct({ OfferFilters: __S(60, __c7, 4) }),
-        /*@__PURE__*/ S.Struct({ ContainerProductFilters: __S(62, __c7, 6) }),
-        /*@__PURE__*/ S.Struct({ ResaleAuthorizationFilters: __S(68, __c8, 4) }),
-        /*@__PURE__*/ S.Struct({ MachineLearningProductFilters: __S(69, __c8, 5) }),
-        /*@__PURE__*/ S.Struct({ OfferSetFilters: __S(70, __c8, 6) }),
-      ]);
-  }
-}
-function __c9(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({ SortBy: S.optional(S.String), SortOrder: S.optional(S.String) }),
-      ).annotate({ identifier: "DataProductSort" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          SortBy: S.optional(S.String),
-          SortOrder: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "MachineLearningProductSort",
-      });
-    case 2:
-      return S.Union([
-        /*@__PURE__*/ S.Struct({ DataProductSort: __S(72, __c9, 0) }),
-        /*@__PURE__*/ S.Struct({ SaaSProductSort: __S(72, __c9, 0) }),
-        /*@__PURE__*/ S.Struct({ AmiProductSort: __S(72, __c9, 0) }),
-        /*@__PURE__*/ S.Struct({ OfferSort: __S(72, __c9, 0) }),
-        /*@__PURE__*/ S.Struct({ ContainerProductSort: __S(72, __c9, 0) }),
-        /*@__PURE__*/ S.Struct({ ResaleAuthorizationSort: __S(72, __c9, 0) }),
-        /*@__PURE__*/ S.Struct({ MachineLearningProductSort: __S(73, __c9, 1) }),
-        /*@__PURE__*/ S.Struct({ OfferSetSort: __S(72, __c9, 0) }),
-      ]);
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          Catalog: S.String,
-          EntityType: S.String,
-          FilterList: S.optional(__S(40, __c5, 0)),
-          Sort: S.optional(__S(41, __c5, 1)),
-          NextToken: S.optional(S.String),
-          MaxResults: S.optional(S.Number),
-          OwnershipType: S.optional(S.String),
-          EntityTypeFilters: S.optional(__S(71, __c8, 7)),
-          EntityTypeSort: S.optional(__S(74, __c9, 2)),
-        }).pipe(
-          T.all(T.Http({ method: "POST", uri: "/ListEntities" }), svc, auth, proto, ver, rules),
-        ),
-      ).annotate({ identifier: "ListEntitiesRequest" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          ProductTitle: S.optional(S.String),
-          Visibility: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "AmiProductSummary" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          Name: S.optional(S.String),
-          ProductId: S.optional(S.String),
-          ResaleAuthorizationId: S.optional(S.String),
-          ReleaseDate: S.optional(S.String),
-          AvailabilityEndDate: S.optional(S.String),
-          BuyerAccounts: S.optional(__S(38, __c4, 6)),
-          State: S.optional(S.String),
-          Targeting: S.optional(__S(58, __c7, 2)),
-          OfferSetId: S.optional(S.String),
-          TargetAgreementId: S.optional(S.String),
-          TargetAgreementIntent: S.optional(S.String),
-          CreatedBySource: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "OfferSummary" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          Name: S.optional(S.String),
-          ProductId: S.optional(S.String),
-          ProductName: S.optional(S.String),
-          ManufacturerAccountId: S.optional(S.String),
-          ManufacturerLegalName: S.optional(S.String),
-          ResellerAccountID: S.optional(S.String),
-          ResellerLegalName: S.optional(S.String),
-          Status: S.optional(S.String),
-          OfferExtendedStatus: S.optional(S.String),
-          CreatedDate: S.optional(S.String),
-          AvailabilityEndDate: S.optional(S.String),
-          ResellerRole: S.optional(S.String),
-          SourceAuthorization: S.optional(S.String),
-          IssuerAccountId: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "ResaleAuthorizationSummary",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          ProductTitle: S.optional(S.String),
-          Visibility: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "MachineLearningProductSummary",
-      });
-  }
-}
-function __c10(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          Name: S.optional(S.String),
-          State: S.optional(S.String),
-          ReleaseDate: S.optional(S.String),
-          AssociatedOfferIds: S.optional(__S(38, __c4, 6)),
-          SolutionId: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "OfferSetSummary" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          Name: S.optional(S.String),
-          EntityType: S.optional(S.String),
-          EntityId: S.optional(S.String),
-          EntityArn: S.optional(S.String),
-          LastModifiedDate: S.optional(S.String),
-          Visibility: S.optional(S.String),
-          AmiProductSummary: S.optional(__S(76, __c9, 4)),
-          ContainerProductSummary: S.optional(__S(76, __c9, 4)),
-          DataProductSummary: S.optional(__S(76, __c9, 4)),
-          SaaSProductSummary: S.optional(__S(76, __c9, 4)),
-          OfferSummary: S.optional(__S(77, __c9, 5)),
-          ResaleAuthorizationSummary: S.optional(__S(78, __c9, 6)),
-          MachineLearningProductSummary: S.optional(__S(79, __c9, 7)),
-          OfferSetSummary: S.optional(__S(80, __c10, 0)),
-        }),
-      ).annotate({ identifier: "EntitySummary" });
-    case 2:
-      return S.Array(__S(81, __c10, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          EntitySummaryList: S.optional(__S(82, __c10, 2)),
-          NextToken: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ListEntitiesResponse" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({ ResourceArn: S.String }).pipe(
-          T.all(
-            T.Http({ method: "POST", uri: "/ListTagsForResource" }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({
-        identifier: "ListTagsForResourceRequest",
-      });
-    case 5:
-      return S.suspend(() => S.Struct({ Key: S.String, Value: S.String })).annotate({
-        identifier: "Tag",
-      });
-    case 6:
-      return S.Array(__S(85, __c10, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({ ResourceArn: S.optional(S.String), Tags: S.optional(__S(86, __c10, 6)) }),
-      ).annotate({
-        identifier: "ListTagsForResourceResponse",
-      });
-  }
-}
-function __c11(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({ ResourceArn: S.String, Policy: S.String }).pipe(
-          T.all(
-            T.Http({ method: "POST", uri: "/PutResourcePolicy" }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({ identifier: "PutResourcePolicyRequest" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          ChangeType: S.String,
-          Entity: __S(24, __c3, 0),
-          EntityTags: S.optional(__S(86, __c10, 6)),
-          Details: S.optional(S.String),
-          DetailsDocument: S.optional(S.Any),
-          ChangeName: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Change" });
-    case 2:
-      return S.Array(__S(89, __c11, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          Catalog: S.String,
-          ChangeSet: __S(90, __c11, 2),
-          ChangeSetName: S.optional(S.String),
-          ClientRequestToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-          ChangeSetTags: S.optional(__S(86, __c10, 6)),
-          Intent: S.optional(S.String),
-        }).pipe(
-          T.all(T.Http({ method: "POST", uri: "/StartChangeSet" }), svc, auth, proto, ver, rules),
-        ),
-      ).annotate({ identifier: "StartChangeSetRequest" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({ ResourceArn: S.String, Tags: __S(86, __c10, 6) }).pipe(
-          T.all(T.Http({ method: "POST", uri: "/TagResource" }), svc, auth, proto, ver, rules),
-        ),
-      ).annotate({ identifier: "TagResourceRequest" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({ ResourceArn: S.String, TagKeys: __S(38, __c4, 6) }).pipe(
-          T.all(T.Http({ method: "POST", uri: "/UntagResource" }), svc, auth, proto, ver, rules),
-        ),
-      ).annotate({ identifier: "UntagResourceRequest" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          Reason: S.optional(S.String),
-          EntityType: S.optional(S.String),
-          EntityId: S.optional(S.String),
-          ChangeType: S.optional(S.String),
-          Field: S.optional(S.String),
-          Message: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ValidationExceptionField" });
-    case 7:
-      return S.Array(__S(94, __c11, 6));
-  }
-}
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

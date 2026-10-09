@@ -188,7 +188,7 @@ export const createReminder: API.OperationMethod<
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(0, __c0, 0) as any as S.Schema<CreateReminderRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<Reminder>,
+  output: __S(6, __c1, 2) as any as S.Schema<Reminder>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -201,8 +201,8 @@ export const getReminder: API.OperationMethod<
   GetReminderError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(4, __c0, 4) as any as S.Schema<GetReminderRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<Reminder>,
+  input: __S(8, __c2, 0) as any as S.Schema<GetReminderRequest>,
+  output: __S(6, __c1, 2) as any as S.Schema<Reminder>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -215,8 +215,8 @@ export const listReminders: API.OperationMethod<
   ListRemindersError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(5, __c0, 5) as any as S.Schema<ListRemindersRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<PaginatedReminderList>,
+  input: __S(12, __c3, 0) as any as S.Schema<ListRemindersRequest>,
+  output: __S(14, __c3, 2) as any as S.Schema<PaginatedReminderList>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -229,8 +229,8 @@ export const remindersDestroy: API.OperationMethod<
   RemindersDestroyError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(8, __c1, 0) as any as S.Schema<RemindersDestroyRequest>,
-  output: __S(9, __c1, 1) as any as S.Schema<RemindersDestroyResponse>,
+  input: __S(16, __c4, 0) as any as S.Schema<RemindersDestroyRequest>,
+  output: __S(17, __c4, 1) as any as S.Schema<RemindersDestroyResponse>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -243,8 +243,8 @@ export const updateReminder: API.OperationMethod<
   UpdateReminderError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(10, __c1, 2) as any as S.Schema<UpdateReminderRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<Reminder>,
+  input: __S(20, __c5, 0) as any as S.Schema<UpdateReminderRequest>,
+  output: __S(6, __c1, 2) as any as S.Schema<Reminder>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -257,8 +257,8 @@ export const updateRemindersPartial: API.OperationMethod<
   UpdateRemindersPartialError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(11, __c1, 3) as any as S.Schema<UpdateRemindersPartialRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<Reminder>,
+  input: __S(24, __c6, 0) as any as S.Schema<UpdateRemindersPartialRequest>,
+  output: __S(6, __c1, 2) as any as S.Schema<Reminder>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -284,9 +284,13 @@ function __c0(j: number): any {
           deleted: S.optional(S.Boolean),
         }).pipe(T.Http({ method: "POST", uri: "/api/reminders/", code: 200 })),
       ).annotate({ identifier: "CreateReminderRequest" });
-    case 1:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
       return S.Record(S.String, S.Unknown);
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.Number),
@@ -296,11 +300,11 @@ function __c0(j: number): any {
           last_name: S.optional(S.String),
           email: S.optional(S.String),
           is_email_verified: S.optional(S.NullOr(S.Boolean)),
-          hedgehog_config: S.optional(S.NullOr(__S(1, __c0, 1))),
+          hedgehog_config: S.optional(S.NullOr(__S(4, __c1, 0))),
           role_at_organization: S.optional(S.NullOr(S.Unknown)),
         }),
       ).annotate({ identifier: "UserBasic" });
-    case 3:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
@@ -319,38 +323,46 @@ function __c0(j: number): any {
           last_fired_at: S.NullOr(S.String),
           status: S.String,
           deleted: S.optional(S.Boolean),
-          created_by: __S(2, __c0, 2),
+          created_by: __S(5, __c1, 1),
           created_at: S.String,
           updated_at: S.NullOr(S.String),
         }),
       ).annotate({ identifier: "Reminder" });
-    case 4:
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.String.pipe(T.Label()),
         }).pipe(T.Http({ method: "GET", uri: "/api/reminders/{id}/", code: 200 })),
       ).annotate({ identifier: "GetReminderRequest" });
-    case 5:
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           limit: S.optional(S.Number.pipe(T.Query())),
           offset: S.optional(S.Number.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/api/reminders/", code: 200 })),
       ).annotate({ identifier: "ListRemindersRequest" });
-    case 6:
-      return S.Array(__S(3, __c0, 3));
-    case 7:
+    case 1:
+      return S.Array(__S(6, __c1, 2));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           count: S.Number,
           next: S.optional(S.NullOr(S.String)),
           previous: S.optional(S.NullOr(S.String)),
-          results: __S(6, __c0, 6),
+          results: __S(13, __c3, 1),
         }),
       ).annotate({ identifier: "PaginatedReminderList" });
   }
 }
-function __c1(j: number): any {
+function __c4(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -362,7 +374,11 @@ function __c1(j: number): any {
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "RemindersDestroyResponse",
       });
-    case 2:
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.String.pipe(T.Label()),
@@ -380,7 +396,11 @@ function __c1(j: number): any {
           deleted: S.optional(S.Boolean),
         }).pipe(T.Http({ method: "PUT", uri: "/api/reminders/{id}/", code: 200 })),
       ).annotate({ identifier: "UpdateReminderRequest" });
-    case 3:
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.String.pipe(T.Label()),
@@ -402,7 +422,6 @@ function __c1(j: number): any {
       });
   }
 }
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

@@ -5333,8 +5333,8 @@ export const createApp: API.OperationMethod<
   CreateAppError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2, __c0, 2) as any as S.Schema<CreateAppRequest>,
-  output: __S(4, __c0, 4) as any as S.Schema<CreateAppResponse>,
+  input: __S(5121, __c160, 1) as any as S.Schema<CreateAppRequest>,
+  output: __S(5152, __c161, 0) as any as S.Schema<CreateAppResponse>,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -5367,8 +5367,8 @@ export const createCampaign: API.OperationMethod<
   CreateCampaignError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(39, __c4, 7) as any as S.Schema<CreateCampaignRequest>,
-  output: __S(44, __c5, 4) as any as S.Schema<CreateCampaignResponse>,
+  input: __S(5600, __c175, 0) as any as S.Schema<CreateCampaignRequest>,
+  output: __S(5920, __c185, 0) as any as S.Schema<CreateCampaignResponse>,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -5399,8 +5399,8 @@ export const createEmailTemplate: API.OperationMethod<
   CreateEmailTemplateError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(46, __c5, 6) as any as S.Schema<CreateEmailTemplateRequest>,
-  output: __S(48, __c6, 0) as any as S.Schema<CreateEmailTemplateResponse>,
+  input: __S(0, __c0, 0) as any as S.Schema<CreateEmailTemplateRequest>,
+  output: __S(96, __c3, 0) as any as S.Schema<CreateEmailTemplateResponse>,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -5431,8 +5431,8 @@ export const createExportJob: API.OperationMethod<
   CreateExportJobError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(50, __c6, 2) as any as S.Schema<CreateExportJobRequest>,
-  output: __S(52, __c6, 4) as any as S.Schema<CreateExportJobResponse>,
+  input: __S(640, __c20, 0) as any as S.Schema<CreateExportJobRequest>,
+  output: __S(672, __c21, 0) as any as S.Schema<CreateExportJobResponse>,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -5465,8 +5465,8 @@ export const createImportJob: API.OperationMethod<
   CreateImportJobError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(54, __c6, 6) as any as S.Schema<CreateImportJobRequest>,
-  output: __S(56, __c7, 0) as any as S.Schema<CreateImportJobResponse>,
+  input: __S(1056, __c33, 0) as any as S.Schema<CreateImportJobRequest>,
+  output: __S(1088, __c34, 0) as any as S.Schema<CreateImportJobResponse>,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -5497,8 +5497,8 @@ export const createInAppTemplate: API.OperationMethod<
   CreateInAppTemplateError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(58, __c7, 2) as any as S.Schema<CreateInAppTemplateRequest>,
-  output: __S(59, __c7, 3) as any as S.Schema<CreateInAppTemplateResponse>,
+  input: __S(1472, __c46, 0) as any as S.Schema<CreateInAppTemplateRequest>,
+  output: __S(1473, __c46, 1) as any as S.Schema<CreateInAppTemplateResponse>,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -5529,8 +5529,8 @@ export const createJourney: API.OperationMethod<
   CreateJourneyError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(106, __c13, 2) as any as S.Schema<CreateJourneyRequest>,
-  output: __S(108, __c13, 4) as any as S.Schema<CreateJourneyResponse>,
+  input: __S(1536, __c48, 0) as any as S.Schema<CreateJourneyRequest>,
+  output: __S(1664, __c52, 0) as any as S.Schema<CreateJourneyResponse>,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -5561,8 +5561,8 @@ export const createPushTemplate: API.OperationMethod<
   CreatePushTemplateError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(113, __c14, 1) as any as S.Schema<CreatePushTemplateRequest>,
-  output: __S(48, __c6, 0) as any as S.Schema<CreatePushTemplateResponse>,
+  input: __S(1760, __c55, 0) as any as S.Schema<CreatePushTemplateRequest>,
+  output: __S(96, __c3, 0) as any as S.Schema<CreatePushTemplateResponse>,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -5593,8 +5593,8 @@ export const createRecommenderConfiguration: API.OperationMethod<
   CreateRecommenderConfigurationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(115, __c14, 3) as any as S.Schema<CreateRecommenderConfigurationRequest>,
-  output: __S(117, __c14, 5) as any as S.Schema<CreateRecommenderConfigurationResponse>,
+  input: __S(1856, __c58, 0) as any as S.Schema<CreateRecommenderConfigurationRequest>,
+  output: __S(1920, __c60, 0) as any as S.Schema<CreateRecommenderConfigurationResponse>,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -5627,8 +5627,8 @@ export const createSegment: API.OperationMethod<
   CreateSegmentError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(125, __c15, 5) as any as S.Schema<CreateSegmentRequest>,
-  output: __S(129, __c16, 1) as any as S.Schema<CreateSegmentResponse>,
+  input: __S(1984, __c62, 0) as any as S.Schema<CreateSegmentRequest>,
+  output: __S(2080, __c65, 0) as any as S.Schema<CreateSegmentResponse>,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -5659,8 +5659,8 @@ export const createSmsTemplate: API.OperationMethod<
   CreateSmsTemplateError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(131, __c16, 3) as any as S.Schema<CreateSmsTemplateRequest>,
-  output: __S(48, __c6, 0) as any as S.Schema<CreateSmsTemplateResponse>,
+  input: __S(2144, __c67, 0) as any as S.Schema<CreateSmsTemplateRequest>,
+  output: __S(96, __c3, 0) as any as S.Schema<CreateSmsTemplateResponse>,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -5689,8 +5689,8 @@ export const createVoiceTemplate: API.OperationMethod<
   CreateVoiceTemplateError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(133, __c16, 5) as any as S.Schema<CreateVoiceTemplateRequest>,
-  output: __S(48, __c6, 0) as any as S.Schema<CreateVoiceTemplateResponse>,
+  input: __S(2208, __c69, 0) as any as S.Schema<CreateVoiceTemplateRequest>,
+  output: __S(96, __c3, 0) as any as S.Schema<CreateVoiceTemplateResponse>,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -5721,8 +5721,8 @@ export const deleteAdmChannel: API.OperationMethod<
   DeleteAdmChannelError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(134, __c16, 6) as any as S.Schema<DeleteAdmChannelRequest>,
-  output: __S(136, __c17, 0) as any as S.Schema<DeleteAdmChannelResponse>,
+  input: __S(2272, __c71, 0) as any as S.Schema<DeleteAdmChannelRequest>,
+  output: __S(2336, __c73, 0) as any as S.Schema<DeleteAdmChannelResponse>,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -5755,8 +5755,8 @@ export const deleteApnsChannel: API.OperationMethod<
   DeleteApnsChannelError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(137, __c17, 1) as any as S.Schema<DeleteApnsChannelRequest>,
-  output: __S(139, __c17, 3) as any as S.Schema<DeleteApnsChannelResponse>,
+  input: __S(2368, __c74, 0) as any as S.Schema<DeleteApnsChannelRequest>,
+  output: __S(2400, __c75, 0) as any as S.Schema<DeleteApnsChannelResponse>,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -5789,8 +5789,8 @@ export const deleteApnsSandboxChannel: API.OperationMethod<
   DeleteApnsSandboxChannelError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(140, __c17, 4) as any as S.Schema<DeleteApnsSandboxChannelRequest>,
-  output: __S(142, __c17, 6) as any as S.Schema<DeleteApnsSandboxChannelResponse>,
+  input: __S(2464, __c77, 0) as any as S.Schema<DeleteApnsSandboxChannelRequest>,
+  output: __S(2528, __c79, 0) as any as S.Schema<DeleteApnsSandboxChannelResponse>,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -5823,8 +5823,8 @@ export const deleteApnsVoipChannel: API.OperationMethod<
   DeleteApnsVoipChannelError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(143, __c17, 7) as any as S.Schema<DeleteApnsVoipChannelRequest>,
-  output: __S(144, __c18, 0) as any as S.Schema<DeleteApnsVoipChannelResponse>,
+  input: __S(2560, __c80, 0) as any as S.Schema<DeleteApnsVoipChannelRequest>,
+  output: __S(2592, __c81, 0) as any as S.Schema<DeleteApnsVoipChannelResponse>,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -5857,8 +5857,8 @@ export const deleteApnsVoipSandboxChannel: API.OperationMethod<
   DeleteApnsVoipSandboxChannelError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(145, __c18, 1) as any as S.Schema<DeleteApnsVoipSandboxChannelRequest>,
-  output: __S(146, __c18, 2) as any as S.Schema<DeleteApnsVoipSandboxChannelResponse>,
+  input: __S(2624, __c82, 0) as any as S.Schema<DeleteApnsVoipSandboxChannelRequest>,
+  output: __S(2656, __c83, 0) as any as S.Schema<DeleteApnsVoipSandboxChannelResponse>,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -5891,8 +5891,8 @@ export const deleteApp: API.OperationMethod<
   DeleteAppError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(147, __c18, 3) as any as S.Schema<DeleteAppRequest>,
-  output: __S(4, __c0, 4) as any as S.Schema<DeleteAppResponse>,
+  input: __S(2688, __c84, 0) as any as S.Schema<DeleteAppRequest>,
+  output: __S(5152, __c161, 0) as any as S.Schema<DeleteAppResponse>,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -5925,8 +5925,8 @@ export const deleteBaiduChannel: API.OperationMethod<
   DeleteBaiduChannelError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(148, __c18, 4) as any as S.Schema<DeleteBaiduChannelRequest>,
-  output: __S(150, __c18, 6) as any as S.Schema<DeleteBaiduChannelResponse>,
+  input: __S(2720, __c85, 0) as any as S.Schema<DeleteBaiduChannelRequest>,
+  output: __S(2752, __c86, 0) as any as S.Schema<DeleteBaiduChannelResponse>,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -5959,8 +5959,8 @@ export const deleteCampaign: API.OperationMethod<
   DeleteCampaignError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(151, __c18, 7) as any as S.Schema<DeleteCampaignRequest>,
-  output: __S(44, __c5, 4) as any as S.Schema<DeleteCampaignResponse>,
+  input: __S(2816, __c88, 0) as any as S.Schema<DeleteCampaignRequest>,
+  output: __S(5920, __c185, 0) as any as S.Schema<DeleteCampaignResponse>,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -5993,8 +5993,8 @@ export const deleteEmailChannel: API.OperationMethod<
   DeleteEmailChannelError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(152, __c19, 0) as any as S.Schema<DeleteEmailChannelRequest>,
-  output: __S(154, __c19, 2) as any as S.Schema<DeleteEmailChannelResponse>,
+  input: __S(2848, __c89, 0) as any as S.Schema<DeleteEmailChannelRequest>,
+  output: __S(2880, __c90, 0) as any as S.Schema<DeleteEmailChannelResponse>,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -6027,8 +6027,8 @@ export const deleteEmailTemplate: API.OperationMethod<
   DeleteEmailTemplateError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(155, __c19, 3) as any as S.Schema<DeleteEmailTemplateRequest>,
-  output: __S(157, __c19, 5) as any as S.Schema<DeleteEmailTemplateResponse>,
+  input: __S(2944, __c92, 0) as any as S.Schema<DeleteEmailTemplateRequest>,
+  output: __S(3008, __c94, 0) as any as S.Schema<DeleteEmailTemplateResponse>,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -6061,8 +6061,8 @@ export const deleteEndpoint: API.OperationMethod<
   DeleteEndpointError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(158, __c19, 6) as any as S.Schema<DeleteEndpointRequest>,
-  output: __S(164, __c20, 4) as any as S.Schema<DeleteEndpointResponse>,
+  input: __S(3040, __c95, 0) as any as S.Schema<DeleteEndpointRequest>,
+  output: __S(3168, __c99, 0) as any as S.Schema<DeleteEndpointResponse>,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -6095,8 +6095,8 @@ export const deleteEventStream: API.OperationMethod<
   DeleteEventStreamError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(165, __c20, 5) as any as S.Schema<DeleteEventStreamRequest>,
-  output: __S(167, __c20, 7) as any as S.Schema<DeleteEventStreamResponse>,
+  input: __S(3200, __c100, 0) as any as S.Schema<DeleteEventStreamRequest>,
+  output: __S(3201, __c100, 1) as any as S.Schema<DeleteEventStreamResponse>,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -6129,8 +6129,8 @@ export const deleteGcmChannel: API.OperationMethod<
   DeleteGcmChannelError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(168, __c21, 0) as any as S.Schema<DeleteGcmChannelRequest>,
-  output: __S(170, __c21, 2) as any as S.Schema<DeleteGcmChannelResponse>,
+  input: __S(3264, __c102, 0) as any as S.Schema<DeleteGcmChannelRequest>,
+  output: __S(3297, __c103, 1) as any as S.Schema<DeleteGcmChannelResponse>,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -6163,8 +6163,8 @@ export const deleteInAppTemplate: API.OperationMethod<
   DeleteInAppTemplateError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(171, __c21, 3) as any as S.Schema<DeleteInAppTemplateRequest>,
-  output: __S(157, __c19, 5) as any as S.Schema<DeleteInAppTemplateResponse>,
+  input: __S(3328, __c104, 0) as any as S.Schema<DeleteInAppTemplateRequest>,
+  output: __S(3008, __c94, 0) as any as S.Schema<DeleteInAppTemplateResponse>,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -6197,8 +6197,8 @@ export const deleteJourney: API.OperationMethod<
   DeleteJourneyError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(172, __c21, 4) as any as S.Schema<DeleteJourneyRequest>,
-  output: __S(108, __c13, 4) as any as S.Schema<DeleteJourneyResponse>,
+  input: __S(3360, __c105, 0) as any as S.Schema<DeleteJourneyRequest>,
+  output: __S(1664, __c52, 0) as any as S.Schema<DeleteJourneyResponse>,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -6231,8 +6231,8 @@ export const deletePushTemplate: API.OperationMethod<
   DeletePushTemplateError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(173, __c21, 5) as any as S.Schema<DeletePushTemplateRequest>,
-  output: __S(157, __c19, 5) as any as S.Schema<DeletePushTemplateResponse>,
+  input: __S(3392, __c106, 0) as any as S.Schema<DeletePushTemplateRequest>,
+  output: __S(3008, __c94, 0) as any as S.Schema<DeletePushTemplateResponse>,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -6265,8 +6265,8 @@ export const deleteRecommenderConfiguration: API.OperationMethod<
   DeleteRecommenderConfigurationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(174, __c21, 6) as any as S.Schema<DeleteRecommenderConfigurationRequest>,
-  output: __S(117, __c14, 5) as any as S.Schema<DeleteRecommenderConfigurationResponse>,
+  input: __S(3424, __c107, 0) as any as S.Schema<DeleteRecommenderConfigurationRequest>,
+  output: __S(1920, __c60, 0) as any as S.Schema<DeleteRecommenderConfigurationResponse>,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -6299,8 +6299,8 @@ export const deleteSegment: API.OperationMethod<
   DeleteSegmentError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(175, __c21, 7) as any as S.Schema<DeleteSegmentRequest>,
-  output: __S(129, __c16, 1) as any as S.Schema<DeleteSegmentResponse>,
+  input: __S(3456, __c108, 0) as any as S.Schema<DeleteSegmentRequest>,
+  output: __S(2080, __c65, 0) as any as S.Schema<DeleteSegmentResponse>,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -6333,8 +6333,8 @@ export const deleteSmsChannel: API.OperationMethod<
   DeleteSmsChannelError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(176, __c22, 0) as any as S.Schema<DeleteSmsChannelRequest>,
-  output: __S(178, __c22, 2) as any as S.Schema<DeleteSmsChannelResponse>,
+  input: __S(3488, __c109, 0) as any as S.Schema<DeleteSmsChannelRequest>,
+  output: __S(3521, __c110, 1) as any as S.Schema<DeleteSmsChannelResponse>,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -6367,8 +6367,8 @@ export const deleteSmsTemplate: API.OperationMethod<
   DeleteSmsTemplateError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(179, __c22, 3) as any as S.Schema<DeleteSmsTemplateRequest>,
-  output: __S(157, __c19, 5) as any as S.Schema<DeleteSmsTemplateResponse>,
+  input: __S(3552, __c111, 0) as any as S.Schema<DeleteSmsTemplateRequest>,
+  output: __S(3008, __c94, 0) as any as S.Schema<DeleteSmsTemplateResponse>,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -6401,8 +6401,8 @@ export const deleteUserEndpoints: API.OperationMethod<
   DeleteUserEndpointsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(180, __c22, 4) as any as S.Schema<DeleteUserEndpointsRequest>,
-  output: __S(183, __c22, 7) as any as S.Schema<DeleteUserEndpointsResponse>,
+  input: __S(3584, __c112, 0) as any as S.Schema<DeleteUserEndpointsRequest>,
+  output: __S(3585, __c112, 1) as any as S.Schema<DeleteUserEndpointsResponse>,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -6435,8 +6435,8 @@ export const deleteVoiceChannel: API.OperationMethod<
   DeleteVoiceChannelError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(184, __c23, 0) as any as S.Schema<DeleteVoiceChannelRequest>,
-  output: __S(185, __c23, 1) as any as S.Schema<DeleteVoiceChannelResponse>,
+  input: __S(3648, __c114, 0) as any as S.Schema<DeleteVoiceChannelRequest>,
+  output: __S(3680, __c115, 0) as any as S.Schema<DeleteVoiceChannelResponse>,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -6469,8 +6469,8 @@ export const deleteVoiceTemplate: API.OperationMethod<
   DeleteVoiceTemplateError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(186, __c23, 2) as any as S.Schema<DeleteVoiceTemplateRequest>,
-  output: __S(157, __c19, 5) as any as S.Schema<DeleteVoiceTemplateResponse>,
+  input: __S(3712, __c116, 0) as any as S.Schema<DeleteVoiceTemplateRequest>,
+  output: __S(3008, __c94, 0) as any as S.Schema<DeleteVoiceTemplateResponse>,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -6503,8 +6503,8 @@ export const getAdmChannel: API.OperationMethod<
   GetAdmChannelError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(187, __c23, 3) as any as S.Schema<GetAdmChannelRequest>,
-  output: __S(136, __c17, 0) as any as S.Schema<GetAdmChannelResponse>,
+  input: __S(3744, __c117, 0) as any as S.Schema<GetAdmChannelRequest>,
+  output: __S(2336, __c73, 0) as any as S.Schema<GetAdmChannelResponse>,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -6537,8 +6537,8 @@ export const getApnsChannel: API.OperationMethod<
   GetApnsChannelError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(188, __c23, 4) as any as S.Schema<GetApnsChannelRequest>,
-  output: __S(189, __c23, 5) as any as S.Schema<GetApnsChannelResponse>,
+  input: __S(3776, __c118, 0) as any as S.Schema<GetApnsChannelRequest>,
+  output: __S(3777, __c118, 1) as any as S.Schema<GetApnsChannelResponse>,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -6571,8 +6571,8 @@ export const getApnsSandboxChannel: API.OperationMethod<
   GetApnsSandboxChannelError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(190, __c23, 6) as any as S.Schema<GetApnsSandboxChannelRequest>,
-  output: __S(142, __c17, 6) as any as S.Schema<GetApnsSandboxChannelResponse>,
+  input: __S(3808, __c119, 0) as any as S.Schema<GetApnsSandboxChannelRequest>,
+  output: __S(2528, __c79, 0) as any as S.Schema<GetApnsSandboxChannelResponse>,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -6605,8 +6605,8 @@ export const getApnsVoipChannel: API.OperationMethod<
   GetApnsVoipChannelError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(191, __c23, 7) as any as S.Schema<GetApnsVoipChannelRequest>,
-  output: __S(144, __c18, 0) as any as S.Schema<GetApnsVoipChannelResponse>,
+  input: __S(3840, __c120, 0) as any as S.Schema<GetApnsVoipChannelRequest>,
+  output: __S(2592, __c81, 0) as any as S.Schema<GetApnsVoipChannelResponse>,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -6639,8 +6639,8 @@ export const getApnsVoipSandboxChannel: API.OperationMethod<
   GetApnsVoipSandboxChannelError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(192, __c24, 0) as any as S.Schema<GetApnsVoipSandboxChannelRequest>,
-  output: __S(146, __c18, 2) as any as S.Schema<GetApnsVoipSandboxChannelResponse>,
+  input: __S(3872, __c121, 0) as any as S.Schema<GetApnsVoipSandboxChannelRequest>,
+  output: __S(2656, __c83, 0) as any as S.Schema<GetApnsVoipSandboxChannelResponse>,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -6673,8 +6673,8 @@ export const getApp: API.OperationMethod<
   GetAppError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(193, __c24, 1) as any as S.Schema<GetAppRequest>,
-  output: __S(4, __c0, 4) as any as S.Schema<GetAppResponse>,
+  input: __S(3904, __c122, 0) as any as S.Schema<GetAppRequest>,
+  output: __S(5152, __c161, 0) as any as S.Schema<GetAppResponse>,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -6707,8 +6707,8 @@ export const getApplicationDateRangeKpi: API.OperationMethod<
   GetApplicationDateRangeKpiError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(194, __c24, 2) as any as S.Schema<GetApplicationDateRangeKpiRequest>,
-  output: __S(201, __c25, 1) as any as S.Schema<GetApplicationDateRangeKpiResponse>,
+  input: __S(3936, __c123, 0) as any as S.Schema<GetApplicationDateRangeKpiRequest>,
+  output: __S(3938, __c123, 2) as any as S.Schema<GetApplicationDateRangeKpiResponse>,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -6741,8 +6741,8 @@ export const getApplicationSettings: API.OperationMethod<
   GetApplicationSettingsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(202, __c25, 2) as any as S.Schema<GetApplicationSettingsRequest>,
-  output: __S(205, __c25, 5) as any as S.Schema<GetApplicationSettingsResponse>,
+  input: __S(4000, __c125, 0) as any as S.Schema<GetApplicationSettingsRequest>,
+  output: __S(4034, __c126, 2) as any as S.Schema<GetApplicationSettingsResponse>,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -6775,8 +6775,8 @@ export const getApps: API.OperationMethod<
   GetAppsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(206, __c25, 6) as any as S.Schema<GetAppsRequest>,
-  output: __S(209, __c26, 1) as any as S.Schema<GetAppsResponse>,
+  input: __S(4064, __c127, 0) as any as S.Schema<GetAppsRequest>,
+  output: __S(4067, __c127, 3) as any as S.Schema<GetAppsResponse>,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -6809,8 +6809,8 @@ export const getBaiduChannel: API.OperationMethod<
   GetBaiduChannelError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(210, __c26, 2) as any as S.Schema<GetBaiduChannelRequest>,
-  output: __S(211, __c26, 3) as any as S.Schema<GetBaiduChannelResponse>,
+  input: __S(4096, __c128, 0) as any as S.Schema<GetBaiduChannelRequest>,
+  output: __S(4097, __c128, 1) as any as S.Schema<GetBaiduChannelResponse>,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -6843,8 +6843,8 @@ export const getCampaign: API.OperationMethod<
   GetCampaignError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(212, __c26, 4) as any as S.Schema<GetCampaignRequest>,
-  output: __S(44, __c5, 4) as any as S.Schema<GetCampaignResponse>,
+  input: __S(4128, __c129, 0) as any as S.Schema<GetCampaignRequest>,
+  output: __S(5920, __c185, 0) as any as S.Schema<GetCampaignResponse>,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -6877,8 +6877,8 @@ export const getCampaignActivities: API.OperationMethod<
   GetCampaignActivitiesError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(213, __c26, 5) as any as S.Schema<GetCampaignActivitiesRequest>,
-  output: __S(217, __c27, 1) as any as S.Schema<GetCampaignActivitiesResponse>,
+  input: __S(4160, __c130, 0) as any as S.Schema<GetCampaignActivitiesRequest>,
+  output: __S(4164, __c130, 4) as any as S.Schema<GetCampaignActivitiesResponse>,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -6911,8 +6911,8 @@ export const getCampaignDateRangeKpi: API.OperationMethod<
   GetCampaignDateRangeKpiError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(218, __c27, 2) as any as S.Schema<GetCampaignDateRangeKpiRequest>,
-  output: __S(220, __c27, 4) as any as S.Schema<GetCampaignDateRangeKpiResponse>,
+  input: __S(4192, __c131, 0) as any as S.Schema<GetCampaignDateRangeKpiRequest>,
+  output: __S(4194, __c131, 2) as any as S.Schema<GetCampaignDateRangeKpiResponse>,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -6945,8 +6945,8 @@ export const getCampaigns: API.OperationMethod<
   GetCampaignsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(221, __c27, 5) as any as S.Schema<GetCampaignsRequest>,
-  output: __S(224, __c28, 0) as any as S.Schema<GetCampaignsResponse>,
+  input: __S(4224, __c132, 0) as any as S.Schema<GetCampaignsRequest>,
+  output: __S(4225, __c132, 1) as any as S.Schema<GetCampaignsResponse>,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -6979,8 +6979,8 @@ export const getCampaignVersion: API.OperationMethod<
   GetCampaignVersionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(225, __c28, 1) as any as S.Schema<GetCampaignVersionRequest>,
-  output: __S(226, __c28, 2) as any as S.Schema<GetCampaignVersionResponse>,
+  input: __S(4288, __c134, 0) as any as S.Schema<GetCampaignVersionRequest>,
+  output: __S(4289, __c134, 1) as any as S.Schema<GetCampaignVersionResponse>,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -7013,8 +7013,8 @@ export const getCampaignVersions: API.OperationMethod<
   GetCampaignVersionsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(227, __c28, 3) as any as S.Schema<GetCampaignVersionsRequest>,
-  output: __S(228, __c28, 4) as any as S.Schema<GetCampaignVersionsResponse>,
+  input: __S(4320, __c135, 0) as any as S.Schema<GetCampaignVersionsRequest>,
+  output: __S(4321, __c135, 1) as any as S.Schema<GetCampaignVersionsResponse>,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -7047,8 +7047,8 @@ export const getChannels: API.OperationMethod<
   GetChannelsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(229, __c28, 5) as any as S.Schema<GetChannelsRequest>,
-  output: __S(233, __c29, 1) as any as S.Schema<GetChannelsResponse>,
+  input: __S(4352, __c136, 0) as any as S.Schema<GetChannelsRequest>,
+  output: __S(4356, __c136, 4) as any as S.Schema<GetChannelsResponse>,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -7081,8 +7081,8 @@ export const getEmailChannel: API.OperationMethod<
   GetEmailChannelError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(234, __c29, 2) as any as S.Schema<GetEmailChannelRequest>,
-  output: __S(235, __c29, 3) as any as S.Schema<GetEmailChannelResponse>,
+  input: __S(4384, __c137, 0) as any as S.Schema<GetEmailChannelRequest>,
+  output: __S(4385, __c137, 1) as any as S.Schema<GetEmailChannelResponse>,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -7115,8 +7115,8 @@ export const getEmailTemplate: API.OperationMethod<
   GetEmailTemplateError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(236, __c29, 4) as any as S.Schema<GetEmailTemplateRequest>,
-  output: __S(238, __c29, 6) as any as S.Schema<GetEmailTemplateResponse>,
+  input: __S(4416, __c138, 0) as any as S.Schema<GetEmailTemplateRequest>,
+  output: __S(4418, __c138, 2) as any as S.Schema<GetEmailTemplateResponse>,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -7149,8 +7149,8 @@ export const getEndpoint: API.OperationMethod<
   GetEndpointError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(239, __c29, 7) as any as S.Schema<GetEndpointRequest>,
-  output: __S(164, __c20, 4) as any as S.Schema<GetEndpointResponse>,
+  input: __S(4448, __c139, 0) as any as S.Schema<GetEndpointRequest>,
+  output: __S(3168, __c99, 0) as any as S.Schema<GetEndpointResponse>,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -7183,8 +7183,8 @@ export const getEventStream: API.OperationMethod<
   GetEventStreamError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(240, __c30, 0) as any as S.Schema<GetEventStreamRequest>,
-  output: __S(241, __c30, 1) as any as S.Schema<GetEventStreamResponse>,
+  input: __S(4480, __c140, 0) as any as S.Schema<GetEventStreamRequest>,
+  output: __S(4512, __c141, 0) as any as S.Schema<GetEventStreamResponse>,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -7217,8 +7217,8 @@ export const getExportJob: API.OperationMethod<
   GetExportJobError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(242, __c30, 2) as any as S.Schema<GetExportJobRequest>,
-  output: __S(52, __c6, 4) as any as S.Schema<GetExportJobResponse>,
+  input: __S(4544, __c142, 0) as any as S.Schema<GetExportJobRequest>,
+  output: __S(672, __c21, 0) as any as S.Schema<GetExportJobResponse>,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -7251,8 +7251,8 @@ export const getExportJobs: API.OperationMethod<
   GetExportJobsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(243, __c30, 3) as any as S.Schema<GetExportJobsRequest>,
-  output: __S(246, __c30, 6) as any as S.Schema<GetExportJobsResponse>,
+  input: __S(4576, __c143, 0) as any as S.Schema<GetExportJobsRequest>,
+  output: __S(4577, __c143, 1) as any as S.Schema<GetExportJobsResponse>,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -7285,8 +7285,8 @@ export const getGcmChannel: API.OperationMethod<
   GetGcmChannelError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(247, __c30, 7) as any as S.Schema<GetGcmChannelRequest>,
-  output: __S(170, __c21, 2) as any as S.Schema<GetGcmChannelResponse>,
+  input: __S(4640, __c145, 0) as any as S.Schema<GetGcmChannelRequest>,
+  output: __S(3297, __c103, 1) as any as S.Schema<GetGcmChannelResponse>,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -7319,8 +7319,8 @@ export const getImportJob: API.OperationMethod<
   GetImportJobError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(248, __c31, 0) as any as S.Schema<GetImportJobRequest>,
-  output: __S(56, __c7, 0) as any as S.Schema<GetImportJobResponse>,
+  input: __S(4672, __c146, 0) as any as S.Schema<GetImportJobRequest>,
+  output: __S(1088, __c34, 0) as any as S.Schema<GetImportJobResponse>,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -7353,8 +7353,8 @@ export const getImportJobs: API.OperationMethod<
   GetImportJobsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(249, __c31, 1) as any as S.Schema<GetImportJobsRequest>,
-  output: __S(252, __c31, 4) as any as S.Schema<GetImportJobsResponse>,
+  input: __S(4704, __c147, 0) as any as S.Schema<GetImportJobsRequest>,
+  output: __S(4705, __c147, 1) as any as S.Schema<GetImportJobsResponse>,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -7387,8 +7387,8 @@ export const getInAppMessages: API.OperationMethod<
   GetInAppMessagesError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(253, __c31, 5) as any as S.Schema<GetInAppMessagesRequest>,
-  output: __S(259, __c32, 3) as any as S.Schema<GetInAppMessagesResponse>,
+  input: __S(4768, __c149, 0) as any as S.Schema<GetInAppMessagesRequest>,
+  output: __S(4774, __c149, 6) as any as S.Schema<GetInAppMessagesResponse>,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -7421,8 +7421,8 @@ export const getInAppTemplate: API.OperationMethod<
   GetInAppTemplateError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(260, __c32, 4) as any as S.Schema<GetInAppTemplateRequest>,
-  output: __S(262, __c32, 6) as any as S.Schema<GetInAppTemplateResponse>,
+  input: __S(4800, __c150, 0) as any as S.Schema<GetInAppTemplateRequest>,
+  output: __S(4802, __c150, 2) as any as S.Schema<GetInAppTemplateResponse>,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -7455,8 +7455,8 @@ export const getJourney: API.OperationMethod<
   GetJourneyError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(263, __c32, 7) as any as S.Schema<GetJourneyRequest>,
-  output: __S(108, __c13, 4) as any as S.Schema<GetJourneyResponse>,
+  input: __S(4832, __c151, 0) as any as S.Schema<GetJourneyRequest>,
+  output: __S(1664, __c52, 0) as any as S.Schema<GetJourneyResponse>,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -7489,8 +7489,8 @@ export const getJourneyDateRangeKpi: API.OperationMethod<
   GetJourneyDateRangeKpiError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(264, __c33, 0) as any as S.Schema<GetJourneyDateRangeKpiRequest>,
-  output: __S(266, __c33, 2) as any as S.Schema<GetJourneyDateRangeKpiResponse>,
+  input: __S(4864, __c152, 0) as any as S.Schema<GetJourneyDateRangeKpiRequest>,
+  output: __S(4866, __c152, 2) as any as S.Schema<GetJourneyDateRangeKpiResponse>,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -7523,8 +7523,8 @@ export const getJourneyExecutionActivityMetrics: API.OperationMethod<
   GetJourneyExecutionActivityMetricsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(267, __c33, 3) as any as S.Schema<GetJourneyExecutionActivityMetricsRequest>,
-  output: __S(269, __c33, 5) as any as S.Schema<GetJourneyExecutionActivityMetricsResponse>,
+  input: __S(4896, __c153, 0) as any as S.Schema<GetJourneyExecutionActivityMetricsRequest>,
+  output: __S(4898, __c153, 2) as any as S.Schema<GetJourneyExecutionActivityMetricsResponse>,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -7557,8 +7557,8 @@ export const getJourneyExecutionMetrics: API.OperationMethod<
   GetJourneyExecutionMetricsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(270, __c33, 6) as any as S.Schema<GetJourneyExecutionMetricsRequest>,
-  output: __S(272, __c34, 0) as any as S.Schema<GetJourneyExecutionMetricsResponse>,
+  input: __S(4928, __c154, 0) as any as S.Schema<GetJourneyExecutionMetricsRequest>,
+  output: __S(4930, __c154, 2) as any as S.Schema<GetJourneyExecutionMetricsResponse>,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -7591,8 +7591,8 @@ export const getJourneyRunExecutionActivityMetrics: API.OperationMethod<
   GetJourneyRunExecutionActivityMetricsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(273, __c34, 1) as any as S.Schema<GetJourneyRunExecutionActivityMetricsRequest>,
-  output: __S(275, __c34, 3) as any as S.Schema<GetJourneyRunExecutionActivityMetricsResponse>,
+  input: __S(4960, __c155, 0) as any as S.Schema<GetJourneyRunExecutionActivityMetricsRequest>,
+  output: __S(4962, __c155, 2) as any as S.Schema<GetJourneyRunExecutionActivityMetricsResponse>,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -7625,8 +7625,8 @@ export const getJourneyRunExecutionMetrics: API.OperationMethod<
   GetJourneyRunExecutionMetricsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(276, __c34, 4) as any as S.Schema<GetJourneyRunExecutionMetricsRequest>,
-  output: __S(278, __c34, 6) as any as S.Schema<GetJourneyRunExecutionMetricsResponse>,
+  input: __S(4992, __c156, 0) as any as S.Schema<GetJourneyRunExecutionMetricsRequest>,
+  output: __S(4994, __c156, 2) as any as S.Schema<GetJourneyRunExecutionMetricsResponse>,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -7659,8 +7659,8 @@ export const getJourneyRuns: API.OperationMethod<
   GetJourneyRunsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(279, __c34, 7) as any as S.Schema<GetJourneyRunsRequest>,
-  output: __S(283, __c35, 3) as any as S.Schema<GetJourneyRunsResponse>,
+  input: __S(5024, __c157, 0) as any as S.Schema<GetJourneyRunsRequest>,
+  output: __S(5028, __c157, 4) as any as S.Schema<GetJourneyRunsResponse>,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -7693,8 +7693,8 @@ export const getPushTemplate: API.OperationMethod<
   GetPushTemplateError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(284, __c35, 4) as any as S.Schema<GetPushTemplateRequest>,
-  output: __S(286, __c35, 6) as any as S.Schema<GetPushTemplateResponse>,
+  input: __S(5056, __c158, 0) as any as S.Schema<GetPushTemplateRequest>,
+  output: __S(5058, __c158, 2) as any as S.Schema<GetPushTemplateResponse>,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -7727,8 +7727,8 @@ export const getRecommenderConfiguration: API.OperationMethod<
   GetRecommenderConfigurationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(287, __c35, 7) as any as S.Schema<GetRecommenderConfigurationRequest>,
-  output: __S(117, __c14, 5) as any as S.Schema<GetRecommenderConfigurationResponse>,
+  input: __S(5088, __c159, 0) as any as S.Schema<GetRecommenderConfigurationRequest>,
+  output: __S(1920, __c60, 0) as any as S.Schema<GetRecommenderConfigurationResponse>,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -7761,8 +7761,8 @@ export const getRecommenderConfigurations: API.OperationMethod<
   GetRecommenderConfigurationsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(288, __c36, 0) as any as S.Schema<GetRecommenderConfigurationsRequest>,
-  output: __S(291, __c36, 3) as any as S.Schema<GetRecommenderConfigurationsResponse>,
+  input: __S(5248, __c164, 0) as any as S.Schema<GetRecommenderConfigurationsRequest>,
+  output: __S(5251, __c164, 3) as any as S.Schema<GetRecommenderConfigurationsResponse>,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -7795,8 +7795,8 @@ export const getSegment: API.OperationMethod<
   GetSegmentError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(292, __c36, 4) as any as S.Schema<GetSegmentRequest>,
-  output: __S(129, __c16, 1) as any as S.Schema<GetSegmentResponse>,
+  input: __S(5280, __c165, 0) as any as S.Schema<GetSegmentRequest>,
+  output: __S(2080, __c65, 0) as any as S.Schema<GetSegmentResponse>,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -7829,8 +7829,8 @@ export const getSegmentExportJobs: API.OperationMethod<
   GetSegmentExportJobsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(293, __c36, 5) as any as S.Schema<GetSegmentExportJobsRequest>,
-  output: __S(294, __c36, 6) as any as S.Schema<GetSegmentExportJobsResponse>,
+  input: __S(5312, __c166, 0) as any as S.Schema<GetSegmentExportJobsRequest>,
+  output: __S(5313, __c166, 1) as any as S.Schema<GetSegmentExportJobsResponse>,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -7863,8 +7863,8 @@ export const getSegmentImportJobs: API.OperationMethod<
   GetSegmentImportJobsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(295, __c36, 7) as any as S.Schema<GetSegmentImportJobsRequest>,
-  output: __S(296, __c37, 0) as any as S.Schema<GetSegmentImportJobsResponse>,
+  input: __S(5344, __c167, 0) as any as S.Schema<GetSegmentImportJobsRequest>,
+  output: __S(5345, __c167, 1) as any as S.Schema<GetSegmentImportJobsResponse>,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -7897,8 +7897,8 @@ export const getSegments: API.OperationMethod<
   GetSegmentsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(297, __c37, 1) as any as S.Schema<GetSegmentsRequest>,
-  output: __S(300, __c37, 4) as any as S.Schema<GetSegmentsResponse>,
+  input: __S(5376, __c168, 0) as any as S.Schema<GetSegmentsRequest>,
+  output: __S(5377, __c168, 1) as any as S.Schema<GetSegmentsResponse>,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -7931,8 +7931,8 @@ export const getSegmentVersion: API.OperationMethod<
   GetSegmentVersionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(301, __c37, 5) as any as S.Schema<GetSegmentVersionRequest>,
-  output: __S(302, __c37, 6) as any as S.Schema<GetSegmentVersionResponse>,
+  input: __S(5440, __c170, 0) as any as S.Schema<GetSegmentVersionRequest>,
+  output: __S(5441, __c170, 1) as any as S.Schema<GetSegmentVersionResponse>,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -7965,8 +7965,8 @@ export const getSegmentVersions: API.OperationMethod<
   GetSegmentVersionsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(303, __c37, 7) as any as S.Schema<GetSegmentVersionsRequest>,
-  output: __S(304, __c38, 0) as any as S.Schema<GetSegmentVersionsResponse>,
+  input: __S(5472, __c171, 0) as any as S.Schema<GetSegmentVersionsRequest>,
+  output: __S(5473, __c171, 1) as any as S.Schema<GetSegmentVersionsResponse>,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -7999,8 +7999,8 @@ export const getSmsChannel: API.OperationMethod<
   GetSmsChannelError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(305, __c38, 1) as any as S.Schema<GetSmsChannelRequest>,
-  output: __S(178, __c22, 2) as any as S.Schema<GetSmsChannelResponse>,
+  input: __S(5504, __c172, 0) as any as S.Schema<GetSmsChannelRequest>,
+  output: __S(3521, __c110, 1) as any as S.Schema<GetSmsChannelResponse>,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -8033,8 +8033,8 @@ export const getSmsTemplate: API.OperationMethod<
   GetSmsTemplateError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(306, __c38, 2) as any as S.Schema<GetSmsTemplateRequest>,
-  output: __S(308, __c38, 4) as any as S.Schema<GetSmsTemplateResponse>,
+  input: __S(5536, __c173, 0) as any as S.Schema<GetSmsTemplateRequest>,
+  output: __S(5538, __c173, 2) as any as S.Schema<GetSmsTemplateResponse>,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -8067,8 +8067,8 @@ export const getUserEndpoints: API.OperationMethod<
   GetUserEndpointsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(309, __c38, 5) as any as S.Schema<GetUserEndpointsRequest>,
-  output: __S(310, __c38, 6) as any as S.Schema<GetUserEndpointsResponse>,
+  input: __S(5568, __c174, 0) as any as S.Schema<GetUserEndpointsRequest>,
+  output: __S(5569, __c174, 1) as any as S.Schema<GetUserEndpointsResponse>,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -8101,8 +8101,8 @@ export const getVoiceChannel: API.OperationMethod<
   GetVoiceChannelError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(311, __c38, 7) as any as S.Schema<GetVoiceChannelRequest>,
-  output: __S(312, __c39, 0) as any as S.Schema<GetVoiceChannelResponse>,
+  input: __S(6016, __c188, 0) as any as S.Schema<GetVoiceChannelRequest>,
+  output: __S(6017, __c188, 1) as any as S.Schema<GetVoiceChannelResponse>,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -8135,8 +8135,8 @@ export const getVoiceTemplate: API.OperationMethod<
   GetVoiceTemplateError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(313, __c39, 1) as any as S.Schema<GetVoiceTemplateRequest>,
-  output: __S(315, __c39, 3) as any as S.Schema<GetVoiceTemplateResponse>,
+  input: __S(6048, __c189, 0) as any as S.Schema<GetVoiceTemplateRequest>,
+  output: __S(6050, __c189, 2) as any as S.Schema<GetVoiceTemplateResponse>,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -8169,8 +8169,8 @@ export const listJourneys: API.OperationMethod<
   ListJourneysError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(316, __c39, 4) as any as S.Schema<ListJourneysRequest>,
-  output: __S(319, __c39, 7) as any as S.Schema<ListJourneysResponse>,
+  input: __S(6080, __c190, 0) as any as S.Schema<ListJourneysRequest>,
+  output: __S(6083, __c190, 3) as any as S.Schema<ListJourneysResponse>,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -8195,8 +8195,8 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(320, __c40, 0) as any as S.Schema<ListTagsForResourceRequest>,
-  output: __S(322, __c40, 2) as any as S.Schema<ListTagsForResourceResponse>,
+  input: __S(6112, __c191, 0) as any as S.Schema<ListTagsForResourceRequest>,
+  output: __S(6113, __c191, 1) as any as S.Schema<ListTagsForResourceResponse>,
   errors: [],
   protocol: AwsProtocol,
   retry: Retry,
@@ -8219,8 +8219,8 @@ export const listTemplates: API.OperationMethod<
   ListTemplatesError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(323, __c40, 3) as any as S.Schema<ListTemplatesRequest>,
-  output: __S(327, __c40, 7) as any as S.Schema<ListTemplatesResponse>,
+  input: __S(6176, __c193, 0) as any as S.Schema<ListTemplatesRequest>,
+  output: __S(6180, __c193, 4) as any as S.Schema<ListTemplatesResponse>,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -8251,8 +8251,8 @@ export const listTemplateVersions: API.OperationMethod<
   ListTemplateVersionsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(328, __c41, 0) as any as S.Schema<ListTemplateVersionsRequest>,
-  output: __S(332, __c41, 4) as any as S.Schema<ListTemplateVersionsResponse>,
+  input: __S(6208, __c194, 0) as any as S.Schema<ListTemplateVersionsRequest>,
+  output: __S(6212, __c194, 4) as any as S.Schema<ListTemplateVersionsResponse>,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -8285,8 +8285,8 @@ export const phoneNumberValidate: API.OperationMethod<
   PhoneNumberValidateError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(334, __c41, 6) as any as S.Schema<PhoneNumberValidateRequest>,
-  output: __S(336, __c42, 0) as any as S.Schema<PhoneNumberValidateResponse>,
+  input: __S(6241, __c195, 1) as any as S.Schema<PhoneNumberValidateRequest>,
+  output: __S(6243, __c195, 3) as any as S.Schema<PhoneNumberValidateResponse>,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -8319,8 +8319,8 @@ export const putEvents: API.OperationMethod<
   PutEventsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(344, __c43, 0) as any as S.Schema<PutEventsRequest>,
-  output: __S(350, __c43, 6) as any as S.Schema<PutEventsResponse>,
+  input: __S(6278, __c196, 6) as any as S.Schema<PutEventsRequest>,
+  output: __S(6284, __c196, 12) as any as S.Schema<PutEventsResponse>,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -8353,8 +8353,8 @@ export const putEventStream: API.OperationMethod<
   PutEventStreamError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(352, __c44, 0) as any as S.Schema<PutEventStreamRequest>,
-  output: __S(241, __c30, 1) as any as S.Schema<PutEventStreamResponse>,
+  input: __S(6337, __c198, 1) as any as S.Schema<PutEventStreamRequest>,
+  output: __S(4512, __c141, 0) as any as S.Schema<PutEventStreamResponse>,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -8387,8 +8387,8 @@ export const removeAttributes: API.OperationMethod<
   RemoveAttributesError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(354, __c44, 2) as any as S.Schema<RemoveAttributesRequest>,
-  output: __S(356, __c44, 4) as any as S.Schema<RemoveAttributesResponse>,
+  input: __S(6369, __c199, 1) as any as S.Schema<RemoveAttributesRequest>,
+  output: __S(6371, __c199, 3) as any as S.Schema<RemoveAttributesResponse>,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -8421,8 +8421,8 @@ export const sendMessages: API.OperationMethod<
   SendMessagesError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(375, __c46, 7) as any as S.Schema<SendMessagesRequest>,
-  output: __S(381, __c47, 5) as any as S.Schema<SendMessagesResponse>,
+  input: __S(131, __c4, 3) as any as S.Schema<SendMessagesRequest>,
+  output: __S(163, __c5, 3) as any as S.Schema<SendMessagesResponse>,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -8455,8 +8455,8 @@ export const sendOTPMessage: API.OperationMethod<
   SendOTPMessageError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(383, __c47, 7) as any as S.Schema<SendOTPMessageRequest>,
-  output: __S(381, __c47, 5) as any as S.Schema<SendOTPMessageResponse>,
+  input: __S(257, __c8, 1) as any as S.Schema<SendOTPMessageRequest>,
+  output: __S(163, __c5, 3) as any as S.Schema<SendOTPMessageResponse>,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -8489,8 +8489,8 @@ export const sendUsersMessages: API.OperationMethod<
   SendUsersMessagesError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(385, __c48, 1) as any as S.Schema<SendUsersMessagesRequest>,
-  output: __S(388, __c48, 4) as any as S.Schema<SendUsersMessagesResponse>,
+  input: __S(289, __c9, 1) as any as S.Schema<SendUsersMessagesRequest>,
+  output: __S(292, __c9, 4) as any as S.Schema<SendUsersMessagesResponse>,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -8515,8 +8515,8 @@ export const tagResource: API.OperationMethod<
   TagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(389, __c48, 5) as any as S.Schema<TagResourceRequest>,
-  output: __S(390, __c48, 6) as any as S.Schema<TagResourceResponse>,
+  input: __S(320, __c10, 0) as any as S.Schema<TagResourceRequest>,
+  output: __S(352, __c11, 0) as any as S.Schema<TagResourceResponse>,
   errors: [],
   protocol: AwsProtocol,
   retry: Retry,
@@ -8533,8 +8533,8 @@ export const untagResource: API.OperationMethod<
   UntagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(391, __c48, 7) as any as S.Schema<UntagResourceRequest>,
-  output: __S(390, __c48, 6) as any as S.Schema<UntagResourceResponse>,
+  input: __S(384, __c12, 0) as any as S.Schema<UntagResourceRequest>,
+  output: __S(352, __c11, 0) as any as S.Schema<UntagResourceResponse>,
   errors: [],
   protocol: AwsProtocol,
   retry: Retry,
@@ -8559,8 +8559,8 @@ export const updateAdmChannel: API.OperationMethod<
   UpdateAdmChannelError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(393, __c49, 1) as any as S.Schema<UpdateAdmChannelRequest>,
-  output: __S(136, __c17, 0) as any as S.Schema<UpdateAdmChannelResponse>,
+  input: __S(417, __c13, 1) as any as S.Schema<UpdateAdmChannelRequest>,
+  output: __S(2336, __c73, 0) as any as S.Schema<UpdateAdmChannelResponse>,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -8593,8 +8593,8 @@ export const updateApnsChannel: API.OperationMethod<
   UpdateApnsChannelError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(395, __c49, 3) as any as S.Schema<UpdateApnsChannelRequest>,
-  output: __S(139, __c17, 3) as any as S.Schema<UpdateApnsChannelResponse>,
+  input: __S(448, __c14, 0) as any as S.Schema<UpdateApnsChannelRequest>,
+  output: __S(2400, __c75, 0) as any as S.Schema<UpdateApnsChannelResponse>,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -8627,8 +8627,8 @@ export const updateApnsSandboxChannel: API.OperationMethod<
   UpdateApnsSandboxChannelError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(397, __c49, 5) as any as S.Schema<UpdateApnsSandboxChannelRequest>,
-  output: __S(142, __c17, 6) as any as S.Schema<UpdateApnsSandboxChannelResponse>,
+  input: __S(512, __c16, 0) as any as S.Schema<UpdateApnsSandboxChannelRequest>,
+  output: __S(2528, __c79, 0) as any as S.Schema<UpdateApnsSandboxChannelResponse>,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -8661,8 +8661,8 @@ export const updateApnsVoipChannel: API.OperationMethod<
   UpdateApnsVoipChannelError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(398, __c49, 6) as any as S.Schema<UpdateApnsVoipChannelRequest>,
-  output: __S(144, __c18, 0) as any as S.Schema<UpdateApnsVoipChannelResponse>,
+  input: __S(576, __c18, 0) as any as S.Schema<UpdateApnsVoipChannelRequest>,
+  output: __S(2592, __c81, 0) as any as S.Schema<UpdateApnsVoipChannelResponse>,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -8695,8 +8695,8 @@ export const updateApnsVoipSandboxChannel: API.OperationMethod<
   UpdateApnsVoipSandboxChannelError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(399, __c49, 7) as any as S.Schema<UpdateApnsVoipSandboxChannelRequest>,
-  output: __S(146, __c18, 2) as any as S.Schema<UpdateApnsVoipSandboxChannelResponse>,
+  input: __S(608, __c19, 0) as any as S.Schema<UpdateApnsVoipSandboxChannelRequest>,
+  output: __S(2656, __c83, 0) as any as S.Schema<UpdateApnsVoipSandboxChannelResponse>,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -8729,8 +8729,8 @@ export const updateApplicationSettings: API.OperationMethod<
   UpdateApplicationSettingsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(401, __c50, 1) as any as S.Schema<UpdateApplicationSettingsRequest>,
-  output: __S(205, __c25, 5) as any as S.Schema<UpdateApplicationSettingsResponse>,
+  input: __S(737, __c23, 1) as any as S.Schema<UpdateApplicationSettingsRequest>,
+  output: __S(4034, __c126, 2) as any as S.Schema<UpdateApplicationSettingsResponse>,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -8763,8 +8763,8 @@ export const updateBaiduChannel: API.OperationMethod<
   UpdateBaiduChannelError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(403, __c50, 3) as any as S.Schema<UpdateBaiduChannelRequest>,
-  output: __S(150, __c18, 6) as any as S.Schema<UpdateBaiduChannelResponse>,
+  input: __S(769, __c24, 1) as any as S.Schema<UpdateBaiduChannelRequest>,
+  output: __S(2752, __c86, 0) as any as S.Schema<UpdateBaiduChannelResponse>,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -8797,8 +8797,8 @@ export const updateCampaign: API.OperationMethod<
   UpdateCampaignError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(404, __c50, 4) as any as S.Schema<UpdateCampaignRequest>,
-  output: __S(44, __c5, 4) as any as S.Schema<UpdateCampaignResponse>,
+  input: __S(800, __c25, 0) as any as S.Schema<UpdateCampaignRequest>,
+  output: __S(5920, __c185, 0) as any as S.Schema<UpdateCampaignResponse>,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -8831,8 +8831,8 @@ export const updateEmailChannel: API.OperationMethod<
   UpdateEmailChannelError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(406, __c50, 6) as any as S.Schema<UpdateEmailChannelRequest>,
-  output: __S(154, __c19, 2) as any as S.Schema<UpdateEmailChannelResponse>,
+  input: __S(833, __c26, 1) as any as S.Schema<UpdateEmailChannelRequest>,
+  output: __S(2880, __c90, 0) as any as S.Schema<UpdateEmailChannelResponse>,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -8865,8 +8865,8 @@ export const updateEmailTemplate: API.OperationMethod<
   UpdateEmailTemplateError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(407, __c50, 7) as any as S.Schema<UpdateEmailTemplateRequest>,
-  output: __S(157, __c19, 5) as any as S.Schema<UpdateEmailTemplateResponse>,
+  input: __S(864, __c27, 0) as any as S.Schema<UpdateEmailTemplateRequest>,
+  output: __S(3008, __c94, 0) as any as S.Schema<UpdateEmailTemplateResponse>,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -8899,8 +8899,8 @@ export const updateEndpoint: API.OperationMethod<
   UpdateEndpointError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(408, __c51, 0) as any as S.Schema<UpdateEndpointRequest>,
-  output: __S(409, __c51, 1) as any as S.Schema<UpdateEndpointResponse>,
+  input: __S(896, __c28, 0) as any as S.Schema<UpdateEndpointRequest>,
+  output: __S(897, __c28, 1) as any as S.Schema<UpdateEndpointResponse>,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -8933,8 +8933,8 @@ export const updateEndpointsBatch: API.OperationMethod<
   UpdateEndpointsBatchError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(413, __c51, 5) as any as S.Schema<UpdateEndpointsBatchRequest>,
-  output: __S(157, __c19, 5) as any as S.Schema<UpdateEndpointsBatchResponse>,
+  input: __S(931, __c29, 3) as any as S.Schema<UpdateEndpointsBatchRequest>,
+  output: __S(3008, __c94, 0) as any as S.Schema<UpdateEndpointsBatchResponse>,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -8967,8 +8967,8 @@ export const updateGcmChannel: API.OperationMethod<
   UpdateGcmChannelError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(415, __c51, 7) as any as S.Schema<UpdateGcmChannelRequest>,
-  output: __S(170, __c21, 2) as any as S.Schema<UpdateGcmChannelResponse>,
+  input: __S(961, __c30, 1) as any as S.Schema<UpdateGcmChannelRequest>,
+  output: __S(3297, __c103, 1) as any as S.Schema<UpdateGcmChannelResponse>,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -9001,8 +9001,8 @@ export const updateInAppTemplate: API.OperationMethod<
   UpdateInAppTemplateError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(416, __c52, 0) as any as S.Schema<UpdateInAppTemplateRequest>,
-  output: __S(157, __c19, 5) as any as S.Schema<UpdateInAppTemplateResponse>,
+  input: __S(992, __c31, 0) as any as S.Schema<UpdateInAppTemplateRequest>,
+  output: __S(3008, __c94, 0) as any as S.Schema<UpdateInAppTemplateResponse>,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -9036,8 +9036,8 @@ export const updateJourney: API.OperationMethod<
   UpdateJourneyError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(417, __c52, 1) as any as S.Schema<UpdateJourneyRequest>,
-  output: __S(108, __c13, 4) as any as S.Schema<UpdateJourneyResponse>,
+  input: __S(1024, __c32, 0) as any as S.Schema<UpdateJourneyRequest>,
+  output: __S(1664, __c52, 0) as any as S.Schema<UpdateJourneyResponse>,
   errors: [
     BadRequestException,
     ConflictException,
@@ -9071,8 +9071,8 @@ export const updateJourneyState: API.OperationMethod<
   UpdateJourneyStateError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(419, __c52, 3) as any as S.Schema<UpdateJourneyStateRequest>,
-  output: __S(420, __c52, 4) as any as S.Schema<UpdateJourneyStateResponse>,
+  input: __S(1153, __c36, 1) as any as S.Schema<UpdateJourneyStateRequest>,
+  output: __S(1154, __c36, 2) as any as S.Schema<UpdateJourneyStateResponse>,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -9105,8 +9105,8 @@ export const updatePushTemplate: API.OperationMethod<
   UpdatePushTemplateError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(421, __c52, 5) as any as S.Schema<UpdatePushTemplateRequest>,
-  output: __S(157, __c19, 5) as any as S.Schema<UpdatePushTemplateResponse>,
+  input: __S(1184, __c37, 0) as any as S.Schema<UpdatePushTemplateRequest>,
+  output: __S(3008, __c94, 0) as any as S.Schema<UpdatePushTemplateResponse>,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -9139,8 +9139,8 @@ export const updateRecommenderConfiguration: API.OperationMethod<
   UpdateRecommenderConfigurationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(422, __c52, 6) as any as S.Schema<UpdateRecommenderConfigurationRequest>,
-  output: __S(117, __c14, 5) as any as S.Schema<UpdateRecommenderConfigurationResponse>,
+  input: __S(1216, __c38, 0) as any as S.Schema<UpdateRecommenderConfigurationRequest>,
+  output: __S(1920, __c60, 0) as any as S.Schema<UpdateRecommenderConfigurationResponse>,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -9173,8 +9173,8 @@ export const updateSegment: API.OperationMethod<
   UpdateSegmentError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(423, __c52, 7) as any as S.Schema<UpdateSegmentRequest>,
-  output: __S(129, __c16, 1) as any as S.Schema<UpdateSegmentResponse>,
+  input: __S(1248, __c39, 0) as any as S.Schema<UpdateSegmentRequest>,
+  output: __S(2080, __c65, 0) as any as S.Schema<UpdateSegmentResponse>,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -9207,8 +9207,8 @@ export const updateSmsChannel: API.OperationMethod<
   UpdateSmsChannelError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(425, __c53, 1) as any as S.Schema<UpdateSmsChannelRequest>,
-  output: __S(178, __c22, 2) as any as S.Schema<UpdateSmsChannelResponse>,
+  input: __S(1281, __c40, 1) as any as S.Schema<UpdateSmsChannelRequest>,
+  output: __S(3521, __c110, 1) as any as S.Schema<UpdateSmsChannelResponse>,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -9241,8 +9241,8 @@ export const updateSmsTemplate: API.OperationMethod<
   UpdateSmsTemplateError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(426, __c53, 2) as any as S.Schema<UpdateSmsTemplateRequest>,
-  output: __S(157, __c19, 5) as any as S.Schema<UpdateSmsTemplateResponse>,
+  input: __S(1312, __c41, 0) as any as S.Schema<UpdateSmsTemplateRequest>,
+  output: __S(3008, __c94, 0) as any as S.Schema<UpdateSmsTemplateResponse>,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -9275,8 +9275,8 @@ export const updateTemplateActiveVersion: API.OperationMethod<
   UpdateTemplateActiveVersionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(428, __c53, 4) as any as S.Schema<UpdateTemplateActiveVersionRequest>,
-  output: __S(157, __c19, 5) as any as S.Schema<UpdateTemplateActiveVersionResponse>,
+  input: __S(1345, __c42, 1) as any as S.Schema<UpdateTemplateActiveVersionRequest>,
+  output: __S(3008, __c94, 0) as any as S.Schema<UpdateTemplateActiveVersionResponse>,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -9309,8 +9309,8 @@ export const updateVoiceChannel: API.OperationMethod<
   UpdateVoiceChannelError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(430, __c53, 6) as any as S.Schema<UpdateVoiceChannelRequest>,
-  output: __S(185, __c23, 1) as any as S.Schema<UpdateVoiceChannelResponse>,
+  input: __S(1377, __c43, 1) as any as S.Schema<UpdateVoiceChannelRequest>,
+  output: __S(3680, __c115, 0) as any as S.Schema<UpdateVoiceChannelResponse>,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -9343,8 +9343,8 @@ export const updateVoiceTemplate: API.OperationMethod<
   UpdateVoiceTemplateError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(431, __c53, 7) as any as S.Schema<UpdateVoiceTemplateRequest>,
-  output: __S(157, __c19, 5) as any as S.Schema<UpdateVoiceTemplateResponse>,
+  input: __S(1408, __c44, 0) as any as S.Schema<UpdateVoiceTemplateRequest>,
+  output: __S(3008, __c94, 0) as any as S.Schema<UpdateVoiceTemplateResponse>,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -9377,8 +9377,8 @@ export const verifyOTPMessage: API.OperationMethod<
   VerifyOTPMessageError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(433, __c54, 1) as any as S.Schema<VerifyOTPMessageRequest>,
-  output: __S(435, __c54, 3) as any as S.Schema<VerifyOTPMessageResponse>,
+  input: __S(1441, __c45, 1) as any as S.Schema<VerifyOTPMessageRequest>,
+  output: __S(1443, __c45, 3) as any as S.Schema<VerifyOTPMessageResponse>,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -9397,403 +9397,9 @@ export const verifyOTPMessage: API.OperationMethod<
 function __c0(j: number): any {
   switch (j) {
     case 0:
-      return S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({ Name: S.optional(S.String), tags: S.optional(__S(0, __c0, 0)) }),
-      ).annotate({ identifier: "CreateApplicationRequest" });
-    case 2:
       return S.suspend(() =>
         S.Struct({
-          CreateApplicationRequest: S.optional(__S(1, __c0, 1))
-            .pipe(T.HttpPayload())
-            .annotate({ identifier: "CreateApplicationRequest" }),
-        }).pipe(T.all(T.Http({ method: "POST", uri: "/v1/apps" }), svc, auth, proto, ver, rules)),
-      ).annotate({ identifier: "CreateAppRequest" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          Arn: S.optional(S.String),
-          Id: S.optional(S.String),
-          Name: S.optional(S.String),
-          tags: S.optional(__S(0, __c0, 0)),
-          CreationDate: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ApplicationResponse" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          ApplicationResponse: S.optional(__S(3, __c0, 3))
-            .pipe(T.HttpPayload())
-            .annotate({ identifier: "ApplicationResponse" }),
-        }),
-      ).annotate({ identifier: "CreateAppResponse" });
-    case 5:
-      return S.Array(__EndpointTypesElement);
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          DeliveryUri: S.optional(S.String),
-          EndpointTypes: S.optional(__S(5, __c0, 5)),
-        }),
-      ).annotate({
-        identifier: "CustomDeliveryConfiguration",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          Action: S.optional(S.String),
-          Body: S.optional(S.String),
-          ImageIconUrl: S.optional(S.String),
-          ImageSmallIconUrl: S.optional(S.String),
-          ImageUrl: S.optional(S.String),
-          JsonBody: S.optional(S.String),
-          MediaUrl: S.optional(S.String),
-          RawContent: S.optional(S.String),
-          SilentPush: S.optional(S.Boolean),
-          TimeToLive: S.optional(S.Number),
-          Title: S.optional(S.String),
-          Url: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Message" });
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() => S.Struct({ Data: S.optional(S.String) })).annotate({
-        identifier: "CampaignCustomMessage",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({ Name: S.optional(S.String), Value: S.optional(S.String) }),
-      ).annotate({ identifier: "MessageHeader" });
-    case 2:
-      return S.Array(__S(9, __c1, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          Body: S.optional(S.String),
-          FromAddress: S.optional(S.String),
-          Headers: S.optional(__S(10, __c1, 2)),
-          HtmlBody: S.optional(S.String),
-          Title: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "CampaignEmailMessage" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          Body: S.optional(S.String),
-          MessageType: S.optional(S.String),
-          OriginationNumber: S.optional(S.String),
-          SenderId: S.optional(S.String),
-          EntityId: S.optional(S.String),
-          TemplateId: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "CampaignSmsMessage" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          Alignment: S.optional(S.String),
-          Body: S.optional(S.String),
-          TextColor: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "InAppMessageBodyConfig" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          Alignment: S.optional(S.String),
-          Header: S.optional(S.String),
-          TextColor: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "InAppMessageHeaderConfig" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({ ButtonAction: S.optional(S.String), Link: S.optional(S.String) }),
-      ).annotate({
-        identifier: "OverrideButtonConfiguration",
-      });
-  }
-}
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          BackgroundColor: S.optional(S.String),
-          BorderRadius: S.optional(S.Number),
-          ButtonAction: S.optional(S.String),
-          Link: S.optional(S.String),
-          Text: S.optional(S.String),
-          TextColor: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "DefaultButtonConfiguration",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          Android: S.optional(__S(15, __c1, 7)),
-          DefaultConfig: S.optional(__S(16, __c2, 0)),
-          IOS: S.optional(__S(15, __c1, 7)),
-          Web: S.optional(__S(15, __c1, 7)),
-        }),
-      ).annotate({ identifier: "InAppMessageButton" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          BackgroundColor: S.optional(S.String),
-          BodyConfig: S.optional(__S(13, __c1, 5)),
-          HeaderConfig: S.optional(__S(14, __c1, 6)),
-          ImageUrl: S.optional(S.String),
-          PrimaryBtn: S.optional(__S(17, __c2, 1)),
-          SecondaryBtn: S.optional(__S(17, __c2, 1)),
-        }),
-      ).annotate({ identifier: "InAppMessageContent" });
-    case 3:
-      return S.Array(__S(18, __c2, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          Body: S.optional(S.String),
-          Content: S.optional(__S(19, __c2, 3)),
-          CustomConfig: S.optional(__S(0, __c0, 0)),
-          Layout: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "CampaignInAppMessage" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          ADMMessage: S.optional(__S(7, __c0, 7)),
-          APNSMessage: S.optional(__S(7, __c0, 7)),
-          BaiduMessage: S.optional(__S(7, __c0, 7)),
-          CustomMessage: S.optional(__S(8, __c1, 0)),
-          DefaultMessage: S.optional(__S(7, __c0, 7)),
-          EmailMessage: S.optional(__S(11, __c1, 3)),
-          GCMMessage: S.optional(__S(7, __c0, 7)),
-          SMSMessage: S.optional(__S(12, __c1, 4)),
-          InAppMessage: S.optional(__S(20, __c2, 4)),
-        }),
-      ).annotate({ identifier: "MessageConfiguration" });
-    case 6:
-      return S.Array(S.String);
-    case 7:
-      return S.suspend(() =>
-        S.Struct({ AttributeType: S.optional(S.String), Values: S.optional(__S(22, __c2, 6)) }),
-      ).annotate({ identifier: "AttributeDimension" });
-  }
-}
-function __c3(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Record(S.String, /*@__PURE__*/ __S(23, __c2, 7).pipe(S.optional));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({ DimensionType: S.optional(S.String), Values: S.optional(__S(22, __c2, 6)) }),
-      ).annotate({ identifier: "SetDimension" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({ ComparisonOperator: S.optional(S.String), Value: S.optional(S.Number) }),
-      ).annotate({ identifier: "MetricDimension" });
-    case 3:
-      return S.Record(S.String, /*@__PURE__*/ __S(26, __c3, 2).pipe(S.optional));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          Attributes: S.optional(__S(24, __c3, 0)),
-          EventType: S.optional(__S(25, __c3, 1)),
-          Metrics: S.optional(__S(27, __c3, 3)),
-        }),
-      ).annotate({ identifier: "EventDimensions" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({ Dimensions: S.optional(__S(28, __c3, 4)), FilterType: S.optional(S.String) }),
-      ).annotate({ identifier: "CampaignEventFilter" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({ End: S.optional(S.String), Start: S.optional(S.String) }),
-      ).annotate({ identifier: "QuietTime" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          EndTime: S.optional(S.String),
-          EventFilter: S.optional(__S(29, __c3, 5)),
-          Frequency: S.optional(S.String),
-          IsLocalTime: S.optional(S.Boolean),
-          QuietTime: S.optional(__S(30, __c3, 6)),
-          StartTime: S.optional(S.String),
-          Timezone: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Schedule" });
-  }
-}
-function __c4(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({ Name: S.optional(S.String), Version: S.optional(S.String) }),
-      ).annotate({ identifier: "Template" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          EmailTemplate: S.optional(__S(32, __c4, 0)),
-          PushTemplate: S.optional(__S(32, __c4, 0)),
-          SMSTemplate: S.optional(__S(32, __c4, 0)),
-          VoiceTemplate: S.optional(__S(32, __c4, 0)),
-          InAppTemplate: S.optional(__S(32, __c4, 0)),
-        }),
-      ).annotate({ identifier: "TemplateConfiguration" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          CustomDeliveryConfiguration: S.optional(__S(6, __c0, 6)),
-          MessageConfiguration: S.optional(__S(21, __c2, 5)),
-          Schedule: S.optional(__S(31, __c3, 7)),
-          SizePercent: S.optional(S.Number),
-          TemplateConfiguration: S.optional(__S(33, __c4, 1)),
-          TreatmentDescription: S.optional(S.String),
-          TreatmentName: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "WriteTreatmentResource" });
-    case 3:
-      return S.Array(__S(34, __c4, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          LambdaFunctionName: S.optional(S.String),
-          Mode: S.optional(S.String),
-          WebUrl: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "CampaignHook" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          Daily: S.optional(S.Number),
-          MaximumDuration: S.optional(S.Number),
-          MessagesPerSecond: S.optional(S.Number),
-          Total: S.optional(S.Number),
-          Session: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "CampaignLimits" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          AdditionalTreatments: S.optional(__S(35, __c4, 3)),
-          CustomDeliveryConfiguration: S.optional(__S(6, __c0, 6)),
-          Description: S.optional(S.String),
-          HoldoutPercent: S.optional(S.Number),
-          Hook: S.optional(__S(36, __c4, 4)),
-          IsPaused: S.optional(S.Boolean),
-          Limits: S.optional(__S(37, __c4, 5)),
-          MessageConfiguration: S.optional(__S(21, __c2, 5)),
-          Name: S.optional(S.String),
-          Schedule: S.optional(__S(31, __c3, 7)),
-          SegmentId: S.optional(S.String),
-          SegmentVersion: S.optional(S.Number),
-          tags: S.optional(__S(0, __c0, 0)),
-          TemplateConfiguration: S.optional(__S(33, __c4, 1)),
-          TreatmentDescription: S.optional(S.String),
-          TreatmentName: S.optional(S.String),
-          Priority: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "WriteCampaignRequest" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          ApplicationId: S.String.pipe(T.HttpLabel("ApplicationId")),
-          WriteCampaignRequest: S.optional(__S(38, __c4, 6))
-            .pipe(T.HttpPayload())
-            .annotate({ identifier: "WriteCampaignRequest" }),
-        }).pipe(
-          T.all(
-            T.Http({ method: "POST", uri: "/v1/apps/{ApplicationId}/campaigns" }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({ identifier: "CreateCampaignRequest" });
-  }
-}
-function __c5(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() => S.Struct({ CampaignStatus: S.optional(S.String) })).annotate({
-        identifier: "CampaignState",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          CustomDeliveryConfiguration: S.optional(__S(6, __c0, 6)),
-          Id: S.optional(S.String),
-          MessageConfiguration: S.optional(__S(21, __c2, 5)),
-          Schedule: S.optional(__S(31, __c3, 7)),
-          SizePercent: S.optional(S.Number),
-          State: S.optional(__S(40, __c5, 0)),
-          TemplateConfiguration: S.optional(__S(33, __c4, 1)),
-          TreatmentDescription: S.optional(S.String),
-          TreatmentName: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "TreatmentResource" });
-    case 2:
-      return S.Array(__S(41, __c5, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          AdditionalTreatments: S.optional(__S(42, __c5, 2)),
-          ApplicationId: S.optional(S.String),
-          Arn: S.optional(S.String),
-          CreationDate: S.optional(S.String),
-          CustomDeliveryConfiguration: S.optional(__S(6, __c0, 6)),
-          DefaultState: S.optional(__S(40, __c5, 0)),
-          Description: S.optional(S.String),
-          HoldoutPercent: S.optional(S.Number),
-          Hook: S.optional(__S(36, __c4, 4)),
-          Id: S.optional(S.String),
-          IsPaused: S.optional(S.Boolean),
-          LastModifiedDate: S.optional(S.String),
-          Limits: S.optional(__S(37, __c4, 5)),
-          MessageConfiguration: S.optional(__S(21, __c2, 5)),
-          Name: S.optional(S.String),
-          Schedule: S.optional(__S(31, __c3, 7)),
-          SegmentId: S.optional(S.String),
-          SegmentVersion: S.optional(S.Number),
-          State: S.optional(__S(40, __c5, 0)),
-          tags: S.optional(__S(0, __c0, 0)),
-          TemplateConfiguration: S.optional(__S(33, __c4, 1)),
-          TreatmentDescription: S.optional(S.String),
-          TreatmentName: S.optional(S.String),
-          Version: S.optional(S.Number),
-          Priority: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "CampaignResponse" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          CampaignResponse: S.optional(__S(43, __c5, 3))
-            .pipe(T.HttpPayload())
-            .annotate({ identifier: "CampaignResponse" }),
-        }),
-      ).annotate({ identifier: "CreateCampaignResponse" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          DefaultSubstitutions: S.optional(S.String),
-          HtmlPart: S.optional(S.String),
-          RecommenderId: S.optional(S.String),
-          Subject: S.optional(S.String),
-          Headers: S.optional(__S(10, __c1, 2)),
-          tags: S.optional(__S(0, __c0, 0)),
-          TemplateDescription: S.optional(S.String),
-          TextPart: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "EmailTemplateRequest" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          EmailTemplateRequest: S.optional(__S(45, __c5, 5))
+          EmailTemplateRequest: S.optional(__S(32, __c1, 0))
             .pipe(T.HttpPayload())
             .annotate({ identifier: "EmailTemplateRequest" }),
           TemplateName: S.String.pipe(T.HttpLabel("TemplateName")),
@@ -9810,7 +9416,28 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "CreateEmailTemplateRequest",
       });
-    case 7:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          DefaultSubstitutions: S.optional(S.String),
+          HtmlPart: S.optional(S.String),
+          RecommenderId: S.optional(S.String),
+          Subject: S.optional(S.String),
+          Headers: S.optional(__S(5633, __c176, 1)),
+          tags: S.optional(__S(5216, __c163, 0)),
+          TemplateDescription: S.optional(S.String),
+          TextPart: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "EmailTemplateRequest" });
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           Arn: S.optional(S.String),
@@ -9822,32 +9449,616 @@ function __c5(j: number): any {
       });
   }
 }
-function __c6(j: number): any {
+function __c3(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          CreateTemplateMessageBody: S.optional(__S(47, __c5, 7))
+          CreateTemplateMessageBody: S.optional(__S(64, __c2, 0))
             .pipe(T.HttpPayload())
             .annotate({ identifier: "CreateTemplateMessageBody" }),
         }),
       ).annotate({
         identifier: "CreateEmailTemplateResponse",
       });
-    case 1:
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          RoleArn: S.optional(S.String),
-          S3UrlPrefix: S.optional(S.String),
-          SegmentId: S.optional(S.String),
-          SegmentVersion: S.optional(S.Number),
+          BodyOverride: S.optional(S.String),
+          ChannelType: S.optional(S.String),
+          Context: S.optional(__S(5216, __c163, 0)),
+          RawContent: S.optional(S.String),
+          Substitutions: S.optional(__S(3104, __c97, 0)),
+          TitleOverride: S.optional(S.String),
         }),
-      ).annotate({ identifier: "ExportJobRequest" });
+      ).annotate({ identifier: "AddressConfiguration" });
+    case 1:
+      return S.Record(S.String, /*@__PURE__*/ __S(128, __c4, 0).pipe(S.optional));
     case 2:
       return S.suspend(() =>
         S.Struct({
+          Addresses: S.optional(__S(129, __c4, 1)),
+          Context: S.optional(__S(5216, __c163, 0)),
+          Endpoints: S.optional(__S(225, __c7, 1)),
+          MessageConfiguration: S.optional(__S(238, __c7, 14)),
+          TemplateConfiguration: S.optional(__S(5953, __c186, 1)),
+          TraceId: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "MessageRequest" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
           ApplicationId: S.String.pipe(T.HttpLabel("ApplicationId")),
-          ExportJobRequest: S.optional(__S(49, __c6, 1))
+          MessageRequest: S.optional(__S(130, __c4, 2))
+            .pipe(T.HttpPayload())
+            .annotate({ identifier: "MessageRequest" }),
+        }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/v1/apps/{ApplicationId}/messages" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "SendMessagesRequest" });
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          DeliveryStatus: S.optional(S.String),
+          MessageId: S.optional(S.String),
+          StatusCode: S.optional(S.Number),
+          StatusMessage: S.optional(S.String),
+          UpdatedToken: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "MessageResult" });
+    case 1:
+      return S.Record(S.String, /*@__PURE__*/ __S(160, __c5, 0).pipe(S.optional));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          ApplicationId: S.optional(S.String),
+          EndpointResult: S.optional(__S(193, __c6, 1)),
+          RequestId: S.optional(S.String),
+          Result: S.optional(__S(161, __c5, 1)),
+        }),
+      ).annotate({ identifier: "MessageResponse" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          MessageResponse: S.optional(__S(162, __c5, 2))
+            .pipe(T.HttpPayload())
+            .annotate({ identifier: "MessageResponse" }),
+        }),
+      ).annotate({ identifier: "SendMessagesResponse" });
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          Address: S.optional(S.String),
+          DeliveryStatus: S.optional(S.String),
+          MessageId: S.optional(S.String),
+          StatusCode: S.optional(S.Number),
+          StatusMessage: S.optional(S.String),
+          UpdatedToken: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "EndpointMessageResult" });
+    case 1:
+      return S.Record(S.String, /*@__PURE__*/ __S(192, __c6, 0).pipe(S.optional));
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          BodyOverride: S.optional(S.String),
+          Context: S.optional(__S(5216, __c163, 0)),
+          RawContent: S.optional(S.String),
+          Substitutions: S.optional(__S(3104, __c97, 0)),
+          TitleOverride: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "EndpointSendConfiguration",
+      });
+    case 1:
+      return S.Record(S.String, /*@__PURE__*/ __S(224, __c7, 0).pipe(S.optional));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          Action: S.optional(S.String),
+          Body: S.optional(S.String),
+          ConsolidationKey: S.optional(S.String),
+          Data: S.optional(__S(5216, __c163, 0)),
+          ExpiresAfter: S.optional(S.String),
+          IconReference: S.optional(S.String),
+          ImageIconUrl: S.optional(S.String),
+          ImageUrl: S.optional(S.String),
+          MD5: S.optional(S.String),
+          RawContent: S.optional(S.String),
+          SilentPush: S.optional(S.Boolean),
+          SmallImageIconUrl: S.optional(S.String),
+          Sound: S.optional(S.String),
+          Substitutions: S.optional(__S(3104, __c97, 0)),
+          Title: S.optional(S.String),
+          Url: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ADMMessage" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          APNSPushType: S.optional(S.String),
+          Action: S.optional(S.String),
+          Badge: S.optional(S.Number),
+          Body: S.optional(S.String),
+          Category: S.optional(S.String),
+          CollapseId: S.optional(S.String),
+          Data: S.optional(__S(5216, __c163, 0)),
+          MediaUrl: S.optional(S.String),
+          PreferredAuthenticationMethod: S.optional(S.String),
+          Priority: S.optional(S.String),
+          RawContent: S.optional(S.String),
+          SilentPush: S.optional(S.Boolean),
+          Sound: S.optional(S.String),
+          Substitutions: S.optional(__S(3104, __c97, 0)),
+          ThreadId: S.optional(S.String),
+          TimeToLive: S.optional(S.Number),
+          Title: S.optional(S.String),
+          Url: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "APNSMessage" });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          Action: S.optional(S.String),
+          Body: S.optional(S.String),
+          Data: S.optional(__S(5216, __c163, 0)),
+          IconReference: S.optional(S.String),
+          ImageIconUrl: S.optional(S.String),
+          ImageUrl: S.optional(S.String),
+          RawContent: S.optional(S.String),
+          SilentPush: S.optional(S.Boolean),
+          SmallImageIconUrl: S.optional(S.String),
+          Sound: S.optional(S.String),
+          Substitutions: S.optional(__S(3104, __c97, 0)),
+          TimeToLive: S.optional(S.Number),
+          Title: S.optional(S.String),
+          Url: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "BaiduMessage" });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({ Body: S.optional(S.String), Substitutions: S.optional(__S(3104, __c97, 0)) }),
+      ).annotate({ identifier: "DefaultMessage" });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          Action: S.optional(S.String),
+          Body: S.optional(S.String),
+          Data: S.optional(__S(5216, __c163, 0)),
+          SilentPush: S.optional(S.Boolean),
+          Substitutions: S.optional(__S(3104, __c97, 0)),
+          Title: S.optional(S.String),
+          Url: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "DefaultPushNotificationMessage",
+      });
+    case 7:
+      return S.suspend(() => S.Struct({ Data: S.optional(T.Blob) })).annotate({
+        identifier: "RawEmail",
+      });
+    case 8:
+      return S.suspend(() =>
+        S.Struct({ Charset: S.optional(S.String), Data: S.optional(S.String) }),
+      ).annotate({ identifier: "SimpleEmailPart" });
+    case 9:
+      return S.suspend(() =>
+        S.Struct({
+          HtmlPart: S.optional(__S(232, __c7, 8)),
+          Subject: S.optional(__S(232, __c7, 8)),
+          TextPart: S.optional(__S(232, __c7, 8)),
+          Headers: S.optional(__S(5633, __c176, 1)),
+        }),
+      ).annotate({ identifier: "SimpleEmail" });
+    case 10:
+      return S.suspend(() =>
+        S.Struct({
+          Body: S.optional(S.String),
+          FeedbackForwardingAddress: S.optional(S.String),
+          FromAddress: S.optional(S.String),
+          RawEmail: S.optional(__S(231, __c7, 7)),
+          ReplyToAddresses: S.optional(__S(5664, __c177, 0)),
+          SimpleEmail: S.optional(__S(233, __c7, 9)),
+          Substitutions: S.optional(__S(3104, __c97, 0)),
+        }),
+      ).annotate({ identifier: "EmailMessage" });
+    case 11:
+      return S.suspend(() =>
+        S.Struct({
+          Action: S.optional(S.String),
+          Body: S.optional(S.String),
+          CollapseKey: S.optional(S.String),
+          Data: S.optional(__S(5216, __c163, 0)),
+          IconReference: S.optional(S.String),
+          ImageIconUrl: S.optional(S.String),
+          ImageUrl: S.optional(S.String),
+          PreferredAuthenticationMethod: S.optional(S.String),
+          Priority: S.optional(S.String),
+          RawContent: S.optional(S.String),
+          RestrictedPackageName: S.optional(S.String),
+          SilentPush: S.optional(S.Boolean),
+          SmallImageIconUrl: S.optional(S.String),
+          Sound: S.optional(S.String),
+          Substitutions: S.optional(__S(3104, __c97, 0)),
+          TimeToLive: S.optional(S.Number),
+          Title: S.optional(S.String),
+          Url: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "GCMMessage" });
+    case 12:
+      return S.suspend(() =>
+        S.Struct({
+          Body: S.optional(S.String),
+          Keyword: S.optional(S.String),
+          MediaUrl: S.optional(S.String),
+          MessageType: S.optional(S.String),
+          OriginationNumber: S.optional(S.String),
+          SenderId: S.optional(S.String),
+          Substitutions: S.optional(__S(3104, __c97, 0)),
+          EntityId: S.optional(S.String),
+          TemplateId: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "SMSMessage" });
+    case 13:
+      return S.suspend(() =>
+        S.Struct({
+          Body: S.optional(S.String),
+          LanguageCode: S.optional(S.String),
+          OriginationNumber: S.optional(S.String),
+          Substitutions: S.optional(__S(3104, __c97, 0)),
+          VoiceId: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "VoiceMessage" });
+    case 14:
+      return S.suspend(() =>
+        S.Struct({
+          ADMMessage: S.optional(__S(226, __c7, 2)),
+          APNSMessage: S.optional(__S(227, __c7, 3)),
+          BaiduMessage: S.optional(__S(228, __c7, 4)),
+          DefaultMessage: S.optional(__S(229, __c7, 5)),
+          DefaultPushNotificationMessage: S.optional(__S(230, __c7, 6)),
+          EmailMessage: S.optional(__S(234, __c7, 10)),
+          GCMMessage: S.optional(__S(235, __c7, 11)),
+          SMSMessage: S.optional(__S(236, __c7, 12)),
+          VoiceMessage: S.optional(__S(237, __c7, 13)),
+        }),
+      ).annotate({
+        identifier: "DirectMessageConfiguration",
+      });
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          AllowedAttempts: S.optional(S.Number),
+          BrandName: S.optional(S.String),
+          Channel: S.optional(S.String),
+          CodeLength: S.optional(S.Number),
+          DestinationIdentity: S.optional(S.String),
+          EntityId: S.optional(S.String),
+          Language: S.optional(S.String),
+          OriginationIdentity: S.optional(S.String),
+          ReferenceId: S.optional(S.String),
+          TemplateId: S.optional(S.String),
+          ValidityPeriod: S.optional(S.Number),
+        }),
+      ).annotate({
+        identifier: "SendOTPMessageRequestParameters",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          ApplicationId: S.String.pipe(T.HttpLabel("ApplicationId")),
+          SendOTPMessageRequestParameters: S.optional(__S(256, __c8, 0))
+            .pipe(T.HttpPayload())
+            .annotate({ identifier: "SendOTPMessageRequestParameters" }),
+        }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/v1/apps/{ApplicationId}/otp" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "SendOTPMessageRequest" });
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          Context: S.optional(__S(5216, __c163, 0)),
+          MessageConfiguration: S.optional(__S(238, __c7, 14)),
+          TemplateConfiguration: S.optional(__S(5953, __c186, 1)),
+          TraceId: S.optional(S.String),
+          Users: S.optional(__S(225, __c7, 1)),
+        }),
+      ).annotate({ identifier: "SendUsersMessageRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          ApplicationId: S.String.pipe(T.HttpLabel("ApplicationId")),
+          SendUsersMessageRequest: S.optional(__S(288, __c9, 0))
+            .pipe(T.HttpPayload())
+            .annotate({ identifier: "SendUsersMessageRequest" }),
+        }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/v1/apps/{ApplicationId}/users-messages" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "SendUsersMessagesRequest" });
+    case 2:
+      return S.Record(S.String, /*@__PURE__*/ __S(193, __c6, 1).pipe(S.optional));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          ApplicationId: S.optional(S.String),
+          RequestId: S.optional(S.String),
+          Result: S.optional(__S(290, __c9, 2)),
+        }),
+      ).annotate({ identifier: "SendUsersMessageResponse" });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          SendUsersMessageResponse: S.optional(__S(291, __c9, 3))
+            .pipe(T.HttpPayload())
+            .annotate({ identifier: "SendUsersMessageResponse" }),
+        }),
+      ).annotate({
+        identifier: "SendUsersMessagesResponse",
+      });
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          ResourceArn: S.String.pipe(T.HttpLabel("ResourceArn")),
+          TagsModel: S.optional(__S(6144, __c192, 0))
+            .pipe(T.HttpPayload())
+            .annotate({ identifier: "TagsModel" }),
+        }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/v1/tags/{ResourceArn}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "TagResourceRequest" });
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "TagResourceResponse",
+      });
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          ResourceArn: S.String.pipe(T.HttpLabel("ResourceArn")),
+          TagKeys: S.optional(__S(5664, __c177, 0)).pipe(T.HttpQuery("tagKeys")),
+        }).pipe(
+          T.all(
+            T.Http({ method: "DELETE", uri: "/v1/tags/{ResourceArn}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "UntagResourceRequest" });
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          ClientId: S.optional(S.String),
+          ClientSecret: S.optional(S.String),
+          Enabled: S.optional(S.Boolean),
+        }),
+      ).annotate({ identifier: "ADMChannelRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          ADMChannelRequest: S.optional(__S(416, __c13, 0))
+            .pipe(T.HttpPayload())
+            .annotate({ identifier: "ADMChannelRequest" }),
+          ApplicationId: S.String.pipe(T.HttpLabel("ApplicationId")),
+        }).pipe(
+          T.all(
+            T.Http({ method: "PUT", uri: "/v1/apps/{ApplicationId}/channels/adm" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "UpdateAdmChannelRequest" });
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          APNSChannelRequest: S.optional(__S(480, __c15, 0))
+            .pipe(T.HttpPayload())
+            .annotate({ identifier: "APNSChannelRequest" }),
+          ApplicationId: S.String.pipe(T.HttpLabel("ApplicationId")),
+        }).pipe(
+          T.all(
+            T.Http({ method: "PUT", uri: "/v1/apps/{ApplicationId}/channels/apns" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "UpdateApnsChannelRequest" });
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          BundleId: S.optional(S.String),
+          Certificate: S.optional(S.String),
+          DefaultAuthenticationMethod: S.optional(S.String),
+          Enabled: S.optional(S.Boolean),
+          PrivateKey: S.optional(S.String),
+          TeamId: S.optional(S.String),
+          TokenKey: S.optional(S.String),
+          TokenKeyId: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "APNSChannelRequest" });
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          APNSSandboxChannelRequest: S.optional(__S(544, __c17, 0))
+            .pipe(T.HttpPayload())
+            .annotate({ identifier: "APNSSandboxChannelRequest" }),
+          ApplicationId: S.String.pipe(T.HttpLabel("ApplicationId")),
+        }).pipe(
+          T.all(
+            T.Http({ method: "PUT", uri: "/v1/apps/{ApplicationId}/channels/apns_sandbox" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "UpdateApnsSandboxChannelRequest",
+      });
+  }
+}
+function __c17(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          BundleId: S.optional(S.String),
+          Certificate: S.optional(S.String),
+          DefaultAuthenticationMethod: S.optional(S.String),
+          Enabled: S.optional(S.Boolean),
+          PrivateKey: S.optional(S.String),
+          TeamId: S.optional(S.String),
+          TokenKey: S.optional(S.String),
+          TokenKeyId: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "APNSSandboxChannelRequest",
+      });
+  }
+}
+function __c18(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          APNSVoipChannelRequest: S.optional(__S(480, __c15, 0))
+            .pipe(T.HttpPayload())
+            .annotate({ identifier: "APNSVoipChannelRequest" }),
+          ApplicationId: S.String.pipe(T.HttpLabel("ApplicationId")),
+        }).pipe(
+          T.all(
+            T.Http({ method: "PUT", uri: "/v1/apps/{ApplicationId}/channels/apns_voip" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "UpdateApnsVoipChannelRequest",
+      });
+  }
+}
+function __c19(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          APNSVoipSandboxChannelRequest: S.optional(__S(544, __c17, 0))
+            .pipe(T.HttpPayload())
+            .annotate({ identifier: "APNSVoipSandboxChannelRequest" }),
+          ApplicationId: S.String.pipe(T.HttpLabel("ApplicationId")),
+        }).pipe(
+          T.all(
+            T.Http({ method: "PUT", uri: "/v1/apps/{ApplicationId}/channels/apns_voip_sandbox" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "UpdateApnsVoipSandboxChannelRequest",
+      });
+  }
+}
+function __c20(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          ApplicationId: S.String.pipe(T.HttpLabel("ApplicationId")),
+          ExportJobRequest: S.optional(__S(704, __c22, 0))
             .pipe(T.HttpPayload())
             .annotate({ identifier: "ExportJobRequest" }),
         }).pipe(
@@ -9861,16 +10072,41 @@ function __c6(j: number): any {
           ),
         ),
       ).annotate({ identifier: "CreateExportJobRequest" });
-    case 3:
+  }
+}
+function __c21(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          ExportJobResponse: S.optional(__S(705, __c22, 1))
+            .pipe(T.HttpPayload())
+            .annotate({ identifier: "ExportJobResponse" }),
+        }),
+      ).annotate({ identifier: "CreateExportJobResponse" });
+  }
+}
+function __c22(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          RoleArn: S.optional(S.String),
+          S3UrlPrefix: S.optional(S.String),
+          SegmentId: S.optional(S.String),
+          SegmentVersion: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "ExportJobRequest" });
+    case 1:
       return S.suspend(() =>
         S.Struct({
           ApplicationId: S.optional(S.String),
           CompletedPieces: S.optional(S.Number),
           CompletionDate: S.optional(S.String),
           CreationDate: S.optional(S.String),
-          Definition: S.optional(__S(49, __c6, 1)),
+          Definition: S.optional(__S(704, __c22, 0)),
           FailedPieces: S.optional(S.Number),
-          Failures: S.optional(__S(22, __c2, 6)),
+          Failures: S.optional(__S(5664, __c177, 0)),
           Id: S.optional(S.String),
           JobStatus: S.optional(S.String),
           TotalFailures: S.optional(S.Number),
@@ -9879,32 +10115,326 @@ function __c6(j: number): any {
           Type: S.optional(S.String),
         }),
       ).annotate({ identifier: "ExportJobResponse" });
-    case 4:
+  }
+}
+function __c23(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          ExportJobResponse: S.optional(__S(51, __c6, 3))
-            .pipe(T.HttpPayload())
-            .annotate({ identifier: "ExportJobResponse" }),
+          CampaignHook: S.optional(__S(5888, __c184, 0)),
+          CloudWatchMetricsEnabled: S.optional(S.Boolean),
+          EventTaggingEnabled: S.optional(S.Boolean),
+          Limits: S.optional(__S(5889, __c184, 1)),
+          QuietTime: S.optional(__S(5792, __c181, 0)),
+          JourneyLimits: S.optional(__S(4032, __c126, 0)),
         }),
-      ).annotate({ identifier: "CreateExportJobResponse" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          DefineSegment: S.optional(S.Boolean),
-          ExternalId: S.optional(S.String),
-          Format: S.optional(S.String),
-          RegisterEndpoints: S.optional(S.Boolean),
-          RoleArn: S.optional(S.String),
-          S3Url: S.optional(S.String),
-          SegmentId: S.optional(S.String),
-          SegmentName: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ImportJobRequest" });
-    case 6:
+      ).annotate({
+        identifier: "WriteApplicationSettingsRequest",
+      });
+    case 1:
       return S.suspend(() =>
         S.Struct({
           ApplicationId: S.String.pipe(T.HttpLabel("ApplicationId")),
-          ImportJobRequest: S.optional(__S(53, __c6, 5))
+          WriteApplicationSettingsRequest: S.optional(__S(736, __c23, 0))
+            .pipe(T.HttpPayload())
+            .annotate({ identifier: "WriteApplicationSettingsRequest" }),
+        }).pipe(
+          T.all(
+            T.Http({ method: "PUT", uri: "/v1/apps/{ApplicationId}/settings" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "UpdateApplicationSettingsRequest",
+      });
+  }
+}
+function __c24(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          ApiKey: S.optional(S.String),
+          Enabled: S.optional(S.Boolean),
+          SecretKey: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "BaiduChannelRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          ApplicationId: S.String.pipe(T.HttpLabel("ApplicationId")),
+          BaiduChannelRequest: S.optional(__S(768, __c24, 0))
+            .pipe(T.HttpPayload())
+            .annotate({ identifier: "BaiduChannelRequest" }),
+        }).pipe(
+          T.all(
+            T.Http({ method: "PUT", uri: "/v1/apps/{ApplicationId}/channels/baidu" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "UpdateBaiduChannelRequest",
+      });
+  }
+}
+function __c25(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          ApplicationId: S.String.pipe(T.HttpLabel("ApplicationId")),
+          CampaignId: S.String.pipe(T.HttpLabel("CampaignId")),
+          WriteCampaignRequest: S.optional(__S(5698, __c178, 2))
+            .pipe(T.HttpPayload())
+            .annotate({ identifier: "WriteCampaignRequest" }),
+        }).pipe(
+          T.all(
+            T.Http({ method: "PUT", uri: "/v1/apps/{ApplicationId}/campaigns/{CampaignId}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "UpdateCampaignRequest" });
+  }
+}
+function __c26(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          ConfigurationSet: S.optional(S.String),
+          Enabled: S.optional(S.Boolean),
+          FromAddress: S.optional(S.String),
+          Identity: S.optional(S.String),
+          RoleArn: S.optional(S.String),
+          OrchestrationSendingRoleArn: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "EmailChannelRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          ApplicationId: S.String.pipe(T.HttpLabel("ApplicationId")),
+          EmailChannelRequest: S.optional(__S(832, __c26, 0))
+            .pipe(T.HttpPayload())
+            .annotate({ identifier: "EmailChannelRequest" }),
+        }).pipe(
+          T.all(
+            T.Http({ method: "PUT", uri: "/v1/apps/{ApplicationId}/channels/email" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "UpdateEmailChannelRequest",
+      });
+  }
+}
+function __c27(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          CreateNewVersion: S.optional(S.Boolean).pipe(T.HttpQuery("create-new-version")),
+          EmailTemplateRequest: S.optional(__S(32, __c1, 0))
+            .pipe(T.HttpPayload())
+            .annotate({ identifier: "EmailTemplateRequest" }),
+          TemplateName: S.String.pipe(T.HttpLabel("TemplateName")),
+          Version: S.optional(S.String).pipe(T.HttpQuery("version")),
+        }).pipe(
+          T.all(
+            T.Http({ method: "PUT", uri: "/v1/templates/{TemplateName}/email" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "UpdateEmailTemplateRequest",
+      });
+  }
+}
+function __c28(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          ApplicationId: S.String.pipe(T.HttpLabel("ApplicationId")),
+          EndpointId: S.String.pipe(T.HttpLabel("EndpointId")),
+          EndpointRequest: S.optional(__S(6304, __c197, 0))
+            .pipe(T.HttpPayload())
+            .annotate({ identifier: "EndpointRequest" }),
+        }).pipe(
+          T.all(
+            T.Http({ method: "PUT", uri: "/v1/apps/{ApplicationId}/endpoints/{EndpointId}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "UpdateEndpointRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          MessageBody: S.optional(__S(2976, __c93, 0))
+            .pipe(T.HttpPayload())
+            .annotate({ identifier: "MessageBody" }),
+        }),
+      ).annotate({ identifier: "UpdateEndpointResponse" });
+  }
+}
+function __c29(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          Address: S.optional(S.String),
+          Attributes: S.optional(__S(3104, __c97, 0)),
+          ChannelType: S.optional(S.String),
+          Demographic: S.optional(__S(3136, __c98, 0)),
+          EffectiveDate: S.optional(S.String),
+          EndpointStatus: S.optional(S.String),
+          Id: S.optional(S.String),
+          Location: S.optional(__S(3137, __c98, 1)),
+          Metrics: S.optional(__S(2048, __c64, 0)),
+          OptOut: S.optional(S.String),
+          RequestId: S.optional(S.String),
+          User: S.optional(__S(3138, __c98, 2)),
+        }),
+      ).annotate({ identifier: "EndpointBatchItem" });
+    case 1:
+      return S.Array(__S(928, __c29, 0));
+    case 2:
+      return S.suspend(() => S.Struct({ Item: S.optional(__S(929, __c29, 1)) })).annotate({
+        identifier: "EndpointBatchRequest",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          ApplicationId: S.String.pipe(T.HttpLabel("ApplicationId")),
+          EndpointBatchRequest: S.optional(__S(930, __c29, 2))
+            .pipe(T.HttpPayload())
+            .annotate({ identifier: "EndpointBatchRequest" }),
+        }).pipe(
+          T.all(
+            T.Http({ method: "PUT", uri: "/v1/apps/{ApplicationId}/endpoints" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "UpdateEndpointsBatchRequest",
+      });
+  }
+}
+function __c30(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          ApiKey: S.optional(S.String),
+          DefaultAuthenticationMethod: S.optional(S.String),
+          Enabled: S.optional(S.Boolean),
+          ServiceJson: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "GCMChannelRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          ApplicationId: S.String.pipe(T.HttpLabel("ApplicationId")),
+          GCMChannelRequest: S.optional(__S(960, __c30, 0))
+            .pipe(T.HttpPayload())
+            .annotate({ identifier: "GCMChannelRequest" }),
+        }).pipe(
+          T.all(
+            T.Http({ method: "PUT", uri: "/v1/apps/{ApplicationId}/channels/gcm" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "UpdateGcmChannelRequest" });
+  }
+}
+function __c31(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          CreateNewVersion: S.optional(S.Boolean).pipe(T.HttpQuery("create-new-version")),
+          InAppTemplateRequest: S.optional(__S(1504, __c47, 0))
+            .pipe(T.HttpPayload())
+            .annotate({ identifier: "InAppTemplateRequest" }),
+          TemplateName: S.String.pipe(T.HttpLabel("TemplateName")),
+          Version: S.optional(S.String).pipe(T.HttpQuery("version")),
+        }).pipe(
+          T.all(
+            T.Http({ method: "PUT", uri: "/v1/templates/{TemplateName}/inapp" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "UpdateInAppTemplateRequest",
+      });
+  }
+}
+function __c32(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          ApplicationId: S.String.pipe(T.HttpLabel("ApplicationId")),
+          JourneyId: S.String.pipe(T.HttpLabel("JourneyId")),
+          WriteJourneyRequest: S.optional(__S(1568, __c49, 0))
+            .pipe(T.HttpPayload())
+            .annotate({ identifier: "WriteJourneyRequest" }),
+        }).pipe(
+          T.all(
+            T.Http({ method: "PUT", uri: "/v1/apps/{ApplicationId}/journeys/{JourneyId}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "UpdateJourneyRequest" });
+  }
+}
+function __c33(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          ApplicationId: S.String.pipe(T.HttpLabel("ApplicationId")),
+          ImportJobRequest: S.optional(__S(1120, __c35, 0))
             .pipe(T.HttpPayload())
             .annotate({ identifier: "ImportJobRequest" }),
         }).pipe(
@@ -9918,16 +10448,45 @@ function __c6(j: number): any {
           ),
         ),
       ).annotate({ identifier: "CreateImportJobRequest" });
-    case 7:
+  }
+}
+function __c34(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          ImportJobResponse: S.optional(__S(1121, __c35, 1))
+            .pipe(T.HttpPayload())
+            .annotate({ identifier: "ImportJobResponse" }),
+        }),
+      ).annotate({ identifier: "CreateImportJobResponse" });
+  }
+}
+function __c35(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          DefineSegment: S.optional(S.Boolean),
+          ExternalId: S.optional(S.String),
+          Format: S.optional(S.String),
+          RegisterEndpoints: S.optional(S.Boolean),
+          RoleArn: S.optional(S.String),
+          S3Url: S.optional(S.String),
+          SegmentId: S.optional(S.String),
+          SegmentName: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ImportJobRequest" });
+    case 1:
       return S.suspend(() =>
         S.Struct({
           ApplicationId: S.optional(S.String),
           CompletedPieces: S.optional(S.Number),
           CompletionDate: S.optional(S.String),
           CreationDate: S.optional(S.String),
-          Definition: S.optional(__S(53, __c6, 5)),
+          Definition: S.optional(__S(1120, __c35, 0)),
           FailedPieces: S.optional(S.Number),
-          Failures: S.optional(__S(22, __c2, 6)),
+          Failures: S.optional(__S(5664, __c177, 0)),
           Id: S.optional(S.String),
           JobStatus: S.optional(S.String),
           TotalFailures: S.optional(S.Number),
@@ -9938,30 +10497,308 @@ function __c6(j: number): any {
       ).annotate({ identifier: "ImportJobResponse" });
   }
 }
-function __c7(j: number): any {
+function __c36(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({ State: S.optional(S.String) })).annotate({
+        identifier: "JourneyStateRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          ApplicationId: S.String.pipe(T.HttpLabel("ApplicationId")),
+          JourneyId: S.String.pipe(T.HttpLabel("JourneyId")),
+          JourneyStateRequest: S.optional(__S(1152, __c36, 0))
+            .pipe(T.HttpPayload())
+            .annotate({ identifier: "JourneyStateRequest" }),
+        }).pipe(
+          T.all(
+            T.Http({ method: "PUT", uri: "/v1/apps/{ApplicationId}/journeys/{JourneyId}/state" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "UpdateJourneyStateRequest",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          JourneyResponse: S.optional(__S(1733, __c54, 5))
+            .pipe(T.HttpPayload())
+            .annotate({ identifier: "JourneyResponse" }),
+        }),
+      ).annotate({
+        identifier: "UpdateJourneyStateResponse",
+      });
+  }
+}
+function __c37(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          ImportJobResponse: S.optional(__S(55, __c6, 7))
+          CreateNewVersion: S.optional(S.Boolean).pipe(T.HttpQuery("create-new-version")),
+          PushNotificationTemplateRequest: S.optional(__S(1792, __c56, 0))
             .pipe(T.HttpPayload())
-            .annotate({ identifier: "ImportJobResponse" }),
+            .annotate({ identifier: "PushNotificationTemplateRequest" }),
+          TemplateName: S.String.pipe(T.HttpLabel("TemplateName")),
+          Version: S.optional(S.String).pipe(T.HttpQuery("version")),
+        }).pipe(
+          T.all(
+            T.Http({ method: "PUT", uri: "/v1/templates/{TemplateName}/push" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "UpdatePushTemplateRequest",
+      });
+  }
+}
+function __c38(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          RecommenderId: S.String.pipe(T.HttpLabel("RecommenderId")),
+          UpdateRecommenderConfiguration: S.optional(__S(1888, __c59, 0))
+            .pipe(T.HttpPayload())
+            .annotate({ identifier: "UpdateRecommenderConfigurationShape" }),
+        }).pipe(
+          T.all(
+            T.Http({ method: "PUT", uri: "/v1/recommenders/{RecommenderId}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "UpdateRecommenderConfigurationRequest",
+      });
+  }
+}
+function __c39(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          ApplicationId: S.String.pipe(T.HttpLabel("ApplicationId")),
+          SegmentId: S.String.pipe(T.HttpLabel("SegmentId")),
+          WriteSegmentRequest: S.optional(__S(2016, __c63, 0))
+            .pipe(T.HttpPayload())
+            .annotate({ identifier: "WriteSegmentRequest" }),
+        }).pipe(
+          T.all(
+            T.Http({ method: "PUT", uri: "/v1/apps/{ApplicationId}/segments/{SegmentId}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "UpdateSegmentRequest" });
+  }
+}
+function __c40(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          Enabled: S.optional(S.Boolean),
+          SenderId: S.optional(S.String),
+          ShortCode: S.optional(S.String),
         }),
-      ).annotate({ identifier: "CreateImportJobResponse" });
+      ).annotate({ identifier: "SMSChannelRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
-          Content: S.optional(__S(19, __c2, 3)),
-          CustomConfig: S.optional(__S(0, __c0, 0)),
-          Layout: S.optional(S.String),
-          tags: S.optional(__S(0, __c0, 0)),
-          TemplateDescription: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "InAppTemplateRequest" });
-    case 2:
+          ApplicationId: S.String.pipe(T.HttpLabel("ApplicationId")),
+          SMSChannelRequest: S.optional(__S(1280, __c40, 0))
+            .pipe(T.HttpPayload())
+            .annotate({ identifier: "SMSChannelRequest" }),
+        }).pipe(
+          T.all(
+            T.Http({ method: "PUT", uri: "/v1/apps/{ApplicationId}/channels/sms" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "UpdateSmsChannelRequest" });
+  }
+}
+function __c41(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          InAppTemplateRequest: S.optional(__S(57, __c7, 1))
+          CreateNewVersion: S.optional(S.Boolean).pipe(T.HttpQuery("create-new-version")),
+          SMSTemplateRequest: S.optional(__S(2176, __c68, 0))
+            .pipe(T.HttpPayload())
+            .annotate({ identifier: "SMSTemplateRequest" }),
+          TemplateName: S.String.pipe(T.HttpLabel("TemplateName")),
+          Version: S.optional(S.String).pipe(T.HttpQuery("version")),
+        }).pipe(
+          T.all(
+            T.Http({ method: "PUT", uri: "/v1/templates/{TemplateName}/sms" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "UpdateSmsTemplateRequest" });
+  }
+}
+function __c42(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({ Version: S.optional(S.String) })).annotate({
+        identifier: "TemplateActiveVersionRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          TemplateActiveVersionRequest: S.optional(__S(1344, __c42, 0))
+            .pipe(T.HttpPayload())
+            .annotate({ identifier: "TemplateActiveVersionRequest" }),
+          TemplateName: S.String.pipe(T.HttpLabel("TemplateName")),
+          TemplateType: S.String.pipe(T.HttpLabel("TemplateType")),
+        }).pipe(
+          T.all(
+            T.Http({
+              method: "PUT",
+              uri: "/v1/templates/{TemplateName}/{TemplateType}/active-version",
+            }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "UpdateTemplateActiveVersionRequest",
+      });
+  }
+}
+function __c43(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({ Enabled: S.optional(S.Boolean) })).annotate({
+        identifier: "VoiceChannelRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          ApplicationId: S.String.pipe(T.HttpLabel("ApplicationId")),
+          VoiceChannelRequest: S.optional(__S(1376, __c43, 0))
+            .pipe(T.HttpPayload())
+            .annotate({ identifier: "VoiceChannelRequest" }),
+        }).pipe(
+          T.all(
+            T.Http({ method: "PUT", uri: "/v1/apps/{ApplicationId}/channels/voice" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "UpdateVoiceChannelRequest",
+      });
+  }
+}
+function __c44(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          CreateNewVersion: S.optional(S.Boolean).pipe(T.HttpQuery("create-new-version")),
+          TemplateName: S.String.pipe(T.HttpLabel("TemplateName")),
+          Version: S.optional(S.String).pipe(T.HttpQuery("version")),
+          VoiceTemplateRequest: S.optional(__S(2240, __c70, 0))
+            .pipe(T.HttpPayload())
+            .annotate({ identifier: "VoiceTemplateRequest" }),
+        }).pipe(
+          T.all(
+            T.Http({ method: "PUT", uri: "/v1/templates/{TemplateName}/voice" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "UpdateVoiceTemplateRequest",
+      });
+  }
+}
+function __c45(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          DestinationIdentity: S.optional(S.String),
+          Otp: S.optional(S.String),
+          ReferenceId: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "VerifyOTPMessageRequestParameters",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          ApplicationId: S.String.pipe(T.HttpLabel("ApplicationId")),
+          VerifyOTPMessageRequestParameters: S.optional(__S(1440, __c45, 0))
+            .pipe(T.HttpPayload())
+            .annotate({ identifier: "VerifyOTPMessageRequestParameters" }),
+        }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/v1/apps/{ApplicationId}/verify-otp" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "VerifyOTPMessageRequest" });
+    case 2:
+      return S.suspend(() => S.Struct({ Valid: S.optional(S.Boolean) })).annotate({
+        identifier: "VerificationResponse",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          VerificationResponse: S.optional(__S(1442, __c45, 2))
+            .pipe(T.HttpPayload())
+            .annotate({ identifier: "VerificationResponse" }),
+        }),
+      ).annotate({ identifier: "VerifyOTPMessageResponse" });
+  }
+}
+function __c46(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          InAppTemplateRequest: S.optional(__S(1504, __c47, 0))
             .pipe(T.HttpPayload())
             .annotate({ identifier: "InAppTemplateRequest" }),
           TemplateName: S.String.pipe(T.HttpLabel("TemplateName")),
@@ -9978,342 +10815,39 @@ function __c7(j: number): any {
       ).annotate({
         identifier: "CreateInAppTemplateRequest",
       });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          TemplateCreateMessageBody: S.optional(__S(47, __c5, 7))
+          TemplateCreateMessageBody: S.optional(__S(64, __c2, 0))
             .pipe(T.HttpPayload())
             .annotate({ identifier: "TemplateCreateMessageBody" }),
         }),
       ).annotate({
         identifier: "CreateInAppTemplateResponse",
       });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          DeliveryUri: S.optional(S.String),
-          EndpointTypes: S.optional(__S(5, __c0, 5)),
-          MessageConfig: S.optional(__S(8, __c1, 0)),
-          NextActivity: S.optional(S.String),
-          TemplateName: S.optional(S.String),
-          TemplateVersion: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "CustomMessageActivity" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          Dimensions: S.optional(__S(28, __c3, 4)),
-          MessageActivity: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "EventCondition" });
-    case 6:
-      return S.suspend(() => S.Struct({ SegmentId: S.optional(S.String) })).annotate({
-        identifier: "SegmentCondition",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({ Duration: S.optional(S.String), RecencyType: S.optional(S.String) }),
-      ).annotate({ identifier: "RecencyDimension" });
   }
 }
-function __c8(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() => S.Struct({ Recency: S.optional(__S(63, __c7, 7)) })).annotate({
-        identifier: "SegmentBehaviors",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          AppVersion: S.optional(__S(25, __c3, 1)),
-          Channel: S.optional(__S(25, __c3, 1)),
-          DeviceType: S.optional(__S(25, __c3, 1)),
-          Make: S.optional(__S(25, __c3, 1)),
-          Model: S.optional(__S(25, __c3, 1)),
-          Platform: S.optional(__S(25, __c3, 1)),
-        }),
-      ).annotate({ identifier: "SegmentDemographics" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({ Latitude: S.optional(S.Number), Longitude: S.optional(S.Number) }),
-      ).annotate({ identifier: "GPSCoordinates" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          Coordinates: S.optional(__S(66, __c8, 2)),
-          RangeInKilometers: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "GPSPointDimension" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({ Country: S.optional(__S(25, __c3, 1)), GPSPoint: S.optional(__S(67, __c8, 3)) }),
-      ).annotate({ identifier: "SegmentLocation" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          Attributes: S.optional(__S(24, __c3, 0)),
-          Behavior: S.optional(__S(64, __c8, 0)),
-          Demographic: S.optional(__S(65, __c8, 1)),
-          Location: S.optional(__S(68, __c8, 4)),
-          Metrics: S.optional(__S(27, __c3, 3)),
-          UserAttributes: S.optional(__S(24, __c3, 0)),
-        }),
-      ).annotate({ identifier: "SegmentDimensions" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          EventCondition: S.optional(__S(61, __c7, 5)),
-          SegmentCondition: S.optional(__S(62, __c7, 6)),
-          SegmentDimensions: S.optional(__S(69, __c8, 5)),
-        }).pipe(S.encodeKeys({ SegmentDimensions: "segmentDimensions" })),
-      ).annotate({ identifier: "SimpleCondition" });
-    case 7:
-      return S.Array(__S(70, __c8, 6));
-  }
-}
-function __c9(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({ Conditions: S.optional(__S(71, __c8, 7)), Operator: S.optional(S.String) }),
-      ).annotate({ identifier: "Condition" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({ WaitFor: S.optional(S.String), WaitUntil: S.optional(S.String) }),
-      ).annotate({ identifier: "WaitTime" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          Condition: S.optional(__S(72, __c9, 0)),
-          EvaluationWaitTime: S.optional(__S(73, __c9, 1)),
-          FalseActivity: S.optional(S.String),
-          TrueActivity: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ConditionalSplitActivity" });
-    case 3:
-      return S.suspend(() => S.Struct({ FromAddress: S.optional(S.String) })).annotate({
-        identifier: "JourneyEmailMessage",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          MessageConfig: S.optional(__S(75, __c9, 3)),
-          NextActivity: S.optional(S.String),
-          TemplateName: S.optional(S.String),
-          TemplateVersion: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "EmailMessageActivity" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({ NextActivity: S.optional(S.String), Percentage: S.optional(S.Number) }),
-      ).annotate({ identifier: "HoldoutActivity" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({ Condition: S.optional(__S(70, __c8, 6)), NextActivity: S.optional(S.String) }),
-      ).annotate({ identifier: "MultiConditionalBranch" });
-    case 7:
-      return S.Array(__S(78, __c9, 6));
-  }
-}
-function __c10(j: number): any {
+function __c47(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          Branches: S.optional(__S(79, __c9, 7)),
-          DefaultActivity: S.optional(S.String),
-          EvaluationWaitTime: S.optional(__S(73, __c9, 1)),
+          Content: S.optional(__S(5734, __c179, 6)),
+          CustomConfig: S.optional(__S(5216, __c163, 0)),
+          Layout: S.optional(S.String),
+          tags: S.optional(__S(5216, __c163, 0)),
+          TemplateDescription: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "MultiConditionalSplitActivity",
-      });
-    case 1:
-      return S.suspend(() => S.Struct({ TimeToLive: S.optional(S.String) })).annotate({
-        identifier: "JourneyPushMessage",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          MessageConfig: S.optional(__S(81, __c10, 1)),
-          NextActivity: S.optional(S.String),
-          TemplateName: S.optional(S.String),
-          TemplateVersion: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "PushMessageActivity" });
-    case 3:
-      return S.Array(__S(77, __c9, 5));
-    case 4:
-      return S.suspend(() => S.Struct({ Branches: S.optional(__S(83, __c10, 3)) })).annotate({
-        identifier: "RandomSplitActivity",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          MessageType: S.optional(S.String),
-          OriginationNumber: S.optional(S.String),
-          SenderId: S.optional(S.String),
-          EntityId: S.optional(S.String),
-          TemplateId: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "JourneySMSMessage" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          MessageConfig: S.optional(__S(85, __c10, 5)),
-          NextActivity: S.optional(S.String),
-          TemplateName: S.optional(S.String),
-          TemplateVersion: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "SMSMessageActivity" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({ NextActivity: S.optional(S.String), WaitTime: S.optional(__S(73, __c9, 1)) }),
-      ).annotate({ identifier: "WaitActivity" });
+      ).annotate({ identifier: "InAppTemplateRequest" });
   }
 }
-function __c11(j: number): any {
+function __c48(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => S.Struct({ NextActivity: S.optional(S.String) })).annotate({
-        identifier: "ContactCenterActivity",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          CUSTOM: S.optional(__S(60, __c7, 4)),
-          ConditionalSplit: S.optional(__S(74, __c9, 2)),
-          Description: S.optional(S.String),
-          EMAIL: S.optional(__S(76, __c9, 4)),
-          Holdout: S.optional(__S(77, __c9, 5)),
-          MultiCondition: S.optional(__S(80, __c10, 0)),
-          PUSH: S.optional(__S(82, __c10, 2)),
-          RandomSplit: S.optional(__S(84, __c10, 4)),
-          SMS: S.optional(__S(86, __c10, 6)),
-          Wait: S.optional(__S(87, __c10, 7)),
-          ContactCenter: S.optional(__S(88, __c11, 0)),
-        }),
-      ).annotate({ identifier: "Activity" });
-    case 2:
-      return S.Record(S.String, /*@__PURE__*/ __S(89, __c11, 1).pipe(S.optional));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({ Cap: S.optional(S.Number), Days: S.optional(S.Number) }),
-      ).annotate({ identifier: "JourneyTimeframeCap" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          DailyCap: S.optional(S.Number),
-          EndpointReentryCap: S.optional(S.Number),
-          MessagesPerSecond: S.optional(S.Number),
-          EndpointReentryInterval: S.optional(S.String),
-          TimeframeCap: S.optional(__S(91, __c11, 3)),
-          TotalCap: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "JourneyLimits" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          EndTime: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-          StartTime: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-          Timezone: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "JourneySchedule" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({ EventFilter: S.optional(__S(29, __c3, 5)), SegmentId: S.optional(S.String) }),
-      ).annotate({ identifier: "EventStartCondition" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          Description: S.optional(S.String),
-          EventStartCondition: S.optional(__S(94, __c11, 6)),
-          SegmentStartCondition: S.optional(__S(62, __c7, 6)),
-        }),
-      ).annotate({ identifier: "StartCondition" });
-  }
-}
-function __c12(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          ConnectCampaignArn: S.optional(S.String),
-          ConnectCampaignExecutionRoleArn: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "JourneyChannelSettings" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({ StartTime: S.optional(S.String), EndTime: S.optional(S.String) }),
-      ).annotate({ identifier: "OpenHoursRule" });
-    case 2:
-      return S.Array(__S(97, __c12, 1));
-    case 3:
-      return S.Record(S.String, /*@__PURE__*/ __S(98, __c12, 2).pipe(S.optional));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          EMAIL: S.optional(__S(99, __c12, 3)),
-          SMS: S.optional(__S(99, __c12, 3)),
-          PUSH: S.optional(__S(99, __c12, 3)),
-          VOICE: S.optional(__S(99, __c12, 3)),
-          CUSTOM: S.optional(__S(99, __c12, 3)),
-        }),
-      ).annotate({ identifier: "OpenHours" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          Name: S.optional(S.String),
-          StartDateTime: S.optional(S.String),
-          EndDateTime: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ClosedDaysRule" });
-    case 6:
-      return S.Array(__S(101, __c12, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          EMAIL: S.optional(__S(102, __c12, 6)),
-          SMS: S.optional(__S(102, __c12, 6)),
-          PUSH: S.optional(__S(102, __c12, 6)),
-          VOICE: S.optional(__S(102, __c12, 6)),
-          CUSTOM: S.optional(__S(102, __c12, 6)),
-        }),
-      ).annotate({ identifier: "ClosedDays" });
-  }
-}
-function __c13(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__TimezoneEstimationMethodsElement);
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          Activities: S.optional(__S(90, __c11, 2)),
-          CreationDate: S.optional(S.String),
-          LastModifiedDate: S.optional(S.String),
-          Limits: S.optional(__S(92, __c11, 4)),
-          LocalTime: S.optional(S.Boolean),
-          Name: S.optional(S.String),
-          QuietTime: S.optional(__S(30, __c3, 6)),
-          RefreshFrequency: S.optional(S.String),
-          Schedule: S.optional(__S(93, __c11, 5)),
-          StartActivity: S.optional(S.String),
-          StartCondition: S.optional(__S(95, __c11, 7)),
-          State: S.optional(S.String),
-          WaitForQuietTime: S.optional(S.Boolean),
-          RefreshOnSegmentUpdate: S.optional(S.Boolean),
-          JourneyChannelSettings: S.optional(__S(96, __c12, 0)),
-          SendingSchedule: S.optional(S.Boolean),
-          OpenHours: S.optional(__S(100, __c12, 4)),
-          ClosedDays: S.optional(__S(103, __c12, 7)),
-          TimezoneEstimationMethods: S.optional(__S(104, __c13, 0)),
-        }),
-      ).annotate({ identifier: "WriteJourneyRequest" });
-    case 2:
       return S.suspend(() =>
         S.Struct({
           ApplicationId: S.String.pipe(T.HttpLabel("ApplicationId")),
-          WriteJourneyRequest: S.optional(__S(105, __c13, 1))
+          WriteJourneyRequest: S.optional(__S(1568, __c49, 0))
             .pipe(T.HttpPayload())
             .annotate({ identifier: "WriteJourneyRequest" }),
         }).pipe(
@@ -10327,107 +10861,379 @@ function __c13(j: number): any {
           ),
         ),
       ).annotate({ identifier: "CreateJourneyRequest" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          Activities: S.optional(__S(90, __c11, 2)),
-          ApplicationId: S.optional(S.String),
-          CreationDate: S.optional(S.String),
-          Id: S.optional(S.String),
-          LastModifiedDate: S.optional(S.String),
-          Limits: S.optional(__S(92, __c11, 4)),
-          LocalTime: S.optional(S.Boolean),
-          Name: S.optional(S.String),
-          QuietTime: S.optional(__S(30, __c3, 6)),
-          RefreshFrequency: S.optional(S.String),
-          Schedule: S.optional(__S(93, __c11, 5)),
-          StartActivity: S.optional(S.String),
-          StartCondition: S.optional(__S(95, __c11, 7)),
-          State: S.optional(S.String),
-          tags: S.optional(__S(0, __c0, 0)),
-          WaitForQuietTime: S.optional(S.Boolean),
-          RefreshOnSegmentUpdate: S.optional(S.Boolean),
-          JourneyChannelSettings: S.optional(__S(96, __c12, 0)),
-          SendingSchedule: S.optional(S.Boolean),
-          OpenHours: S.optional(__S(100, __c12, 4)),
-          ClosedDays: S.optional(__S(103, __c12, 7)),
-          TimezoneEstimationMethods: S.optional(__S(104, __c13, 0)),
-        }),
-      ).annotate({ identifier: "JourneyResponse" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          JourneyResponse: S.optional(__S(107, __c13, 3))
-            .pipe(T.HttpPayload())
-            .annotate({ identifier: "JourneyResponse" }),
-        }),
-      ).annotate({ identifier: "CreateJourneyResponse" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          Action: S.optional(S.String),
-          Body: S.optional(S.String),
-          ImageIconUrl: S.optional(S.String),
-          ImageUrl: S.optional(S.String),
-          RawContent: S.optional(S.String),
-          SmallImageIconUrl: S.optional(S.String),
-          Sound: S.optional(S.String),
-          Title: S.optional(S.String),
-          Url: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "AndroidPushNotificationTemplate",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          Action: S.optional(S.String),
-          Body: S.optional(S.String),
-          MediaUrl: S.optional(S.String),
-          RawContent: S.optional(S.String),
-          Sound: S.optional(S.String),
-          Title: S.optional(S.String),
-          Url: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "APNSPushNotificationTemplate",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          Action: S.optional(S.String),
-          Body: S.optional(S.String),
-          Sound: S.optional(S.String),
-          Title: S.optional(S.String),
-          Url: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "DefaultPushNotificationTemplate",
-      });
   }
 }
-function __c14(j: number): any {
+function __c49(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          ADM: S.optional(__S(109, __c13, 5)),
-          APNS: S.optional(__S(110, __c13, 6)),
-          Baidu: S.optional(__S(109, __c13, 5)),
-          Default: S.optional(__S(111, __c13, 7)),
-          DefaultSubstitutions: S.optional(S.String),
-          GCM: S.optional(__S(109, __c13, 5)),
-          RecommenderId: S.optional(S.String),
-          tags: S.optional(__S(0, __c0, 0)),
-          TemplateDescription: S.optional(S.String),
+          Activities: S.optional(__S(1719, __c53, 23)),
+          CreationDate: S.optional(S.String),
+          LastModifiedDate: S.optional(S.String),
+          Limits: S.optional(__S(1720, __c53, 24)),
+          LocalTime: S.optional(S.Boolean),
+          Name: S.optional(S.String),
+          QuietTime: S.optional(__S(5792, __c181, 0)),
+          RefreshFrequency: S.optional(S.String),
+          Schedule: S.optional(__S(1721, __c53, 25)),
+          StartActivity: S.optional(S.String),
+          StartCondition: S.optional(__S(1723, __c53, 27)),
+          State: S.optional(S.String),
+          WaitForQuietTime: S.optional(S.Boolean),
+          RefreshOnSegmentUpdate: S.optional(S.Boolean),
+          JourneyChannelSettings: S.optional(__S(1724, __c53, 28)),
+          SendingSchedule: S.optional(S.Boolean),
+          OpenHours: S.optional(__S(1728, __c54, 0)),
+          ClosedDays: S.optional(__S(1731, __c54, 3)),
+          TimezoneEstimationMethods: S.optional(__S(1732, __c54, 4)),
         }),
-      ).annotate({
-        identifier: "PushNotificationTemplateRequest",
+      ).annotate({ identifier: "WriteJourneyRequest" });
+  }
+}
+function __c50(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ Duration: S.optional(S.String), RecencyType: S.optional(S.String) }),
+      ).annotate({ identifier: "RecencyDimension" });
+    case 1:
+      return S.suspend(() => S.Struct({ Recency: S.optional(__S(1600, __c50, 0)) })).annotate({
+        identifier: "SegmentBehaviors",
       });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          AppVersion: S.optional(__S(5762, __c180, 2)),
+          Channel: S.optional(__S(5762, __c180, 2)),
+          DeviceType: S.optional(__S(5762, __c180, 2)),
+          Make: S.optional(__S(5762, __c180, 2)),
+          Model: S.optional(__S(5762, __c180, 2)),
+          Platform: S.optional(__S(5762, __c180, 2)),
+        }),
+      ).annotate({ identifier: "SegmentDemographics" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({ Latitude: S.optional(S.Number), Longitude: S.optional(S.Number) }),
+      ).annotate({ identifier: "GPSCoordinates" });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          Coordinates: S.optional(__S(1603, __c50, 3)),
+          RangeInKilometers: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "GPSPointDimension" });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          Country: S.optional(__S(5762, __c180, 2)),
+          GPSPoint: S.optional(__S(1604, __c50, 4)),
+        }),
+      ).annotate({ identifier: "SegmentLocation" });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          Attributes: S.optional(__S(5761, __c180, 1)),
+          Behavior: S.optional(__S(1601, __c50, 1)),
+          Demographic: S.optional(__S(1602, __c50, 2)),
+          Location: S.optional(__S(1605, __c50, 5)),
+          Metrics: S.optional(__S(5764, __c180, 4)),
+          UserAttributes: S.optional(__S(5761, __c180, 1)),
+        }),
+      ).annotate({ identifier: "SegmentDimensions" });
+  }
+}
+function __c51(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ Cap: S.optional(S.Number), Days: S.optional(S.Number) }),
+      ).annotate({ identifier: "JourneyTimeframeCap" });
+  }
+}
+function __c52(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          JourneyResponse: S.optional(__S(1733, __c54, 5))
+            .pipe(T.HttpPayload())
+            .annotate({ identifier: "JourneyResponse" }),
+        }),
+      ).annotate({ identifier: "CreateJourneyResponse" });
+  }
+}
+function __c53(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          DeliveryUri: S.optional(S.String),
+          EndpointTypes: S.optional(__S(5856, __c183, 0)),
+          MessageConfig: S.optional(__S(5857, __c183, 1)),
+          NextActivity: S.optional(S.String),
+          TemplateName: S.optional(S.String),
+          TemplateVersion: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "CustomMessageActivity" });
     case 1:
       return S.suspend(() =>
         S.Struct({
-          PushNotificationTemplateRequest: S.optional(__S(112, __c14, 0))
+          Dimensions: S.optional(__S(5824, __c182, 0)),
+          MessageActivity: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "EventCondition" });
+    case 2:
+      return S.suspend(() => S.Struct({ SegmentId: S.optional(S.String) })).annotate({
+        identifier: "SegmentCondition",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          EventCondition: S.optional(__S(1697, __c53, 1)),
+          SegmentCondition: S.optional(__S(1698, __c53, 2)),
+          SegmentDimensions: S.optional(__S(1606, __c50, 6)),
+        }).pipe(S.encodeKeys({ SegmentDimensions: "segmentDimensions" })),
+      ).annotate({ identifier: "SimpleCondition" });
+    case 4:
+      return S.Array(__S(1699, __c53, 3));
+    case 5:
+      return S.suspend(() =>
+        S.Struct({ Conditions: S.optional(__S(1700, __c53, 4)), Operator: S.optional(S.String) }),
+      ).annotate({ identifier: "Condition" });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({ WaitFor: S.optional(S.String), WaitUntil: S.optional(S.String) }),
+      ).annotate({ identifier: "WaitTime" });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          Condition: S.optional(__S(1701, __c53, 5)),
+          EvaluationWaitTime: S.optional(__S(1702, __c53, 6)),
+          FalseActivity: S.optional(S.String),
+          TrueActivity: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ConditionalSplitActivity" });
+    case 8:
+      return S.suspend(() => S.Struct({ FromAddress: S.optional(S.String) })).annotate({
+        identifier: "JourneyEmailMessage",
+      });
+    case 9:
+      return S.suspend(() =>
+        S.Struct({
+          MessageConfig: S.optional(__S(1704, __c53, 8)),
+          NextActivity: S.optional(S.String),
+          TemplateName: S.optional(S.String),
+          TemplateVersion: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "EmailMessageActivity" });
+    case 10:
+      return S.suspend(() =>
+        S.Struct({ NextActivity: S.optional(S.String), Percentage: S.optional(S.Number) }),
+      ).annotate({ identifier: "HoldoutActivity" });
+    case 11:
+      return S.suspend(() =>
+        S.Struct({
+          Condition: S.optional(__S(1699, __c53, 3)),
+          NextActivity: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "MultiConditionalBranch" });
+    case 12:
+      return S.Array(__S(1707, __c53, 11));
+    case 13:
+      return S.suspend(() =>
+        S.Struct({
+          Branches: S.optional(__S(1708, __c53, 12)),
+          DefaultActivity: S.optional(S.String),
+          EvaluationWaitTime: S.optional(__S(1702, __c53, 6)),
+        }),
+      ).annotate({
+        identifier: "MultiConditionalSplitActivity",
+      });
+    case 14:
+      return S.suspend(() => S.Struct({ TimeToLive: S.optional(S.String) })).annotate({
+        identifier: "JourneyPushMessage",
+      });
+    case 15:
+      return S.suspend(() =>
+        S.Struct({
+          MessageConfig: S.optional(__S(1710, __c53, 14)),
+          NextActivity: S.optional(S.String),
+          TemplateName: S.optional(S.String),
+          TemplateVersion: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "PushMessageActivity" });
+    case 16:
+      return S.Array(__S(1706, __c53, 10));
+    case 17:
+      return S.suspend(() => S.Struct({ Branches: S.optional(__S(1712, __c53, 16)) })).annotate({
+        identifier: "RandomSplitActivity",
+      });
+    case 18:
+      return S.suspend(() =>
+        S.Struct({
+          MessageType: S.optional(S.String),
+          OriginationNumber: S.optional(S.String),
+          SenderId: S.optional(S.String),
+          EntityId: S.optional(S.String),
+          TemplateId: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "JourneySMSMessage" });
+    case 19:
+      return S.suspend(() =>
+        S.Struct({
+          MessageConfig: S.optional(__S(1714, __c53, 18)),
+          NextActivity: S.optional(S.String),
+          TemplateName: S.optional(S.String),
+          TemplateVersion: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "SMSMessageActivity" });
+    case 20:
+      return S.suspend(() =>
+        S.Struct({ NextActivity: S.optional(S.String), WaitTime: S.optional(__S(1702, __c53, 6)) }),
+      ).annotate({ identifier: "WaitActivity" });
+    case 21:
+      return S.suspend(() => S.Struct({ NextActivity: S.optional(S.String) })).annotate({
+        identifier: "ContactCenterActivity",
+      });
+    case 22:
+      return S.suspend(() =>
+        S.Struct({
+          CUSTOM: S.optional(__S(1696, __c53, 0)),
+          ConditionalSplit: S.optional(__S(1703, __c53, 7)),
+          Description: S.optional(S.String),
+          EMAIL: S.optional(__S(1705, __c53, 9)),
+          Holdout: S.optional(__S(1706, __c53, 10)),
+          MultiCondition: S.optional(__S(1709, __c53, 13)),
+          PUSH: S.optional(__S(1711, __c53, 15)),
+          RandomSplit: S.optional(__S(1713, __c53, 17)),
+          SMS: S.optional(__S(1715, __c53, 19)),
+          Wait: S.optional(__S(1716, __c53, 20)),
+          ContactCenter: S.optional(__S(1717, __c53, 21)),
+        }),
+      ).annotate({ identifier: "Activity" });
+    case 23:
+      return S.Record(S.String, /*@__PURE__*/ __S(1718, __c53, 22).pipe(S.optional));
+    case 24:
+      return S.suspend(() =>
+        S.Struct({
+          DailyCap: S.optional(S.Number),
+          EndpointReentryCap: S.optional(S.Number),
+          MessagesPerSecond: S.optional(S.Number),
+          EndpointReentryInterval: S.optional(S.String),
+          TimeframeCap: S.optional(__S(1632, __c51, 0)),
+          TotalCap: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "JourneyLimits" });
+    case 25:
+      return S.suspend(() =>
+        S.Struct({
+          EndTime: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
+          StartTime: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
+          Timezone: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "JourneySchedule" });
+    case 26:
+      return S.suspend(() =>
+        S.Struct({
+          EventFilter: S.optional(__S(5825, __c182, 1)),
+          SegmentId: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "EventStartCondition" });
+    case 27:
+      return S.suspend(() =>
+        S.Struct({
+          Description: S.optional(S.String),
+          EventStartCondition: S.optional(__S(1722, __c53, 26)),
+          SegmentStartCondition: S.optional(__S(1698, __c53, 2)),
+        }),
+      ).annotate({ identifier: "StartCondition" });
+    case 28:
+      return S.suspend(() =>
+        S.Struct({
+          ConnectCampaignArn: S.optional(S.String),
+          ConnectCampaignExecutionRoleArn: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "JourneyChannelSettings" });
+    case 29:
+      return S.suspend(() =>
+        S.Struct({ StartTime: S.optional(S.String), EndTime: S.optional(S.String) }),
+      ).annotate({ identifier: "OpenHoursRule" });
+    case 30:
+      return S.Array(__S(1725, __c53, 29));
+    case 31:
+      return S.Record(S.String, /*@__PURE__*/ __S(1726, __c53, 30).pipe(S.optional));
+  }
+}
+function __c54(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          EMAIL: S.optional(__S(1727, __c53, 31)),
+          SMS: S.optional(__S(1727, __c53, 31)),
+          PUSH: S.optional(__S(1727, __c53, 31)),
+          VOICE: S.optional(__S(1727, __c53, 31)),
+          CUSTOM: S.optional(__S(1727, __c53, 31)),
+        }),
+      ).annotate({ identifier: "OpenHours" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          Name: S.optional(S.String),
+          StartDateTime: S.optional(S.String),
+          EndDateTime: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ClosedDaysRule" });
+    case 2:
+      return S.Array(__S(1729, __c54, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          EMAIL: S.optional(__S(1730, __c54, 2)),
+          SMS: S.optional(__S(1730, __c54, 2)),
+          PUSH: S.optional(__S(1730, __c54, 2)),
+          VOICE: S.optional(__S(1730, __c54, 2)),
+          CUSTOM: S.optional(__S(1730, __c54, 2)),
+        }),
+      ).annotate({ identifier: "ClosedDays" });
+    case 4:
+      return S.Array(__TimezoneEstimationMethodsElement);
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          Activities: S.optional(__S(1719, __c53, 23)),
+          ApplicationId: S.optional(S.String),
+          CreationDate: S.optional(S.String),
+          Id: S.optional(S.String),
+          LastModifiedDate: S.optional(S.String),
+          Limits: S.optional(__S(1720, __c53, 24)),
+          LocalTime: S.optional(S.Boolean),
+          Name: S.optional(S.String),
+          QuietTime: S.optional(__S(5792, __c181, 0)),
+          RefreshFrequency: S.optional(S.String),
+          Schedule: S.optional(__S(1721, __c53, 25)),
+          StartActivity: S.optional(S.String),
+          StartCondition: S.optional(__S(1723, __c53, 27)),
+          State: S.optional(S.String),
+          tags: S.optional(__S(5216, __c163, 0)),
+          WaitForQuietTime: S.optional(S.Boolean),
+          RefreshOnSegmentUpdate: S.optional(S.Boolean),
+          JourneyChannelSettings: S.optional(__S(1724, __c53, 28)),
+          SendingSchedule: S.optional(S.Boolean),
+          OpenHours: S.optional(__S(1728, __c54, 0)),
+          ClosedDays: S.optional(__S(1731, __c54, 3)),
+          TimezoneEstimationMethods: S.optional(__S(1732, __c54, 4)),
+        }),
+      ).annotate({ identifier: "JourneyResponse" });
+  }
+}
+function __c55(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          PushNotificationTemplateRequest: S.optional(__S(1792, __c56, 0))
             .pipe(T.HttpPayload())
             .annotate({ identifier: "PushNotificationTemplateRequest" }),
           TemplateName: S.String.pipe(T.HttpLabel("TemplateName")),
@@ -10444,10 +11250,96 @@ function __c14(j: number): any {
       ).annotate({
         identifier: "CreatePushTemplateRequest",
       });
+  }
+}
+function __c56(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          ADM: S.optional(__S(1824, __c57, 0)),
+          APNS: S.optional(__S(1825, __c57, 1)),
+          Baidu: S.optional(__S(1824, __c57, 0)),
+          Default: S.optional(__S(1826, __c57, 2)),
+          DefaultSubstitutions: S.optional(S.String),
+          GCM: S.optional(__S(1824, __c57, 0)),
+          RecommenderId: S.optional(S.String),
+          tags: S.optional(__S(5216, __c163, 0)),
+          TemplateDescription: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "PushNotificationTemplateRequest",
+      });
+  }
+}
+function __c57(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          Action: S.optional(S.String),
+          Body: S.optional(S.String),
+          ImageIconUrl: S.optional(S.String),
+          ImageUrl: S.optional(S.String),
+          RawContent: S.optional(S.String),
+          SmallImageIconUrl: S.optional(S.String),
+          Sound: S.optional(S.String),
+          Title: S.optional(S.String),
+          Url: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "AndroidPushNotificationTemplate",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          Action: S.optional(S.String),
+          Body: S.optional(S.String),
+          MediaUrl: S.optional(S.String),
+          RawContent: S.optional(S.String),
+          Sound: S.optional(S.String),
+          Title: S.optional(S.String),
+          Url: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "APNSPushNotificationTemplate",
+      });
     case 2:
       return S.suspend(() =>
         S.Struct({
-          Attributes: S.optional(__S(0, __c0, 0)),
+          Action: S.optional(S.String),
+          Body: S.optional(S.String),
+          Sound: S.optional(S.String),
+          Title: S.optional(S.String),
+          Url: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "DefaultPushNotificationTemplate",
+      });
+  }
+}
+function __c58(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          CreateRecommenderConfiguration: S.optional(__S(1888, __c59, 0))
+            .pipe(T.HttpPayload())
+            .annotate({ identifier: "CreateRecommenderConfigurationShape" }),
+        }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/v1/recommenders" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({
+        identifier: "CreateRecommenderConfigurationRequest",
+      });
+  }
+}
+function __c59(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          Attributes: S.optional(__S(5216, __c163, 0)),
           Description: S.optional(S.String),
           Name: S.optional(S.String),
           RecommendationProviderIdType: S.optional(S.String),
@@ -10460,22 +11352,28 @@ function __c14(j: number): any {
       ).annotate({
         identifier: "CreateRecommenderConfigurationShape",
       });
-    case 3:
+  }
+}
+function __c60(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          CreateRecommenderConfiguration: S.optional(__S(114, __c14, 2))
+          RecommenderConfigurationResponse: S.optional(__S(1952, __c61, 0))
             .pipe(T.HttpPayload())
-            .annotate({ identifier: "CreateRecommenderConfigurationShape" }),
-        }).pipe(
-          T.all(T.Http({ method: "POST", uri: "/v1/recommenders" }), svc, auth, proto, ver, rules),
-        ),
+            .annotate({ identifier: "RecommenderConfigurationResponse" }),
+        }),
       ).annotate({
-        identifier: "CreateRecommenderConfigurationRequest",
+        identifier: "CreateRecommenderConfigurationResponse",
       });
-    case 4:
+  }
+}
+function __c61(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          Attributes: S.optional(__S(0, __c0, 0)),
+          Attributes: S.optional(__S(5216, __c163, 0)),
           CreationDate: S.optional(S.String),
           Description: S.optional(S.String),
           Id: S.optional(S.String),
@@ -10491,57 +11389,15 @@ function __c14(j: number): any {
       ).annotate({
         identifier: "RecommenderConfigurationResponse",
       });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          RecommenderConfigurationResponse: S.optional(__S(116, __c14, 4))
-            .pipe(T.HttpPayload())
-            .annotate({ identifier: "RecommenderConfigurationResponse" }),
-        }),
-      ).annotate({
-        identifier: "CreateRecommenderConfigurationResponse",
-      });
-    case 6:
-      return S.Array(__S(69, __c8, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({ Id: S.optional(S.String), Version: S.optional(S.Number) }),
-      ).annotate({ identifier: "SegmentReference" });
   }
 }
-function __c15(j: number): any {
+function __c62(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(119, __c14, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          Dimensions: S.optional(__S(118, __c14, 6)),
-          SourceSegments: S.optional(__S(120, __c15, 0)),
-          SourceType: S.optional(S.String),
-          Type: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "SegmentGroup" });
-    case 2:
-      return S.Array(__S(121, __c15, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({ Groups: S.optional(__S(122, __c15, 2)), Include: S.optional(S.String) }),
-      ).annotate({ identifier: "SegmentGroupList" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          Dimensions: S.optional(__S(69, __c8, 5)),
-          Name: S.optional(S.String),
-          SegmentGroups: S.optional(__S(123, __c15, 3)),
-          tags: S.optional(__S(0, __c0, 0)),
-        }),
-      ).annotate({ identifier: "WriteSegmentRequest" });
-    case 5:
       return S.suspend(() =>
         S.Struct({
           ApplicationId: S.String.pipe(T.HttpLabel("ApplicationId")),
-          WriteSegmentRequest: S.optional(__S(124, __c15, 4))
+          WriteSegmentRequest: S.optional(__S(2016, __c63, 0))
             .pipe(T.HttpPayload())
             .annotate({ identifier: "WriteSegmentRequest" }),
         }).pipe(
@@ -10555,12 +11411,68 @@ function __c15(j: number): any {
           ),
         ),
       ).annotate({ identifier: "CreateSegmentRequest" });
-    case 6:
-      return S.Record(S.String, /*@__PURE__*/ S.Number.pipe(S.optional));
-    case 7:
+  }
+}
+function __c63(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          ChannelCounts: S.optional(__S(126, __c15, 6)),
+          Dimensions: S.optional(__S(1606, __c50, 6)),
+          Name: S.optional(S.String),
+          SegmentGroups: S.optional(__S(2117, __c66, 5)),
+          tags: S.optional(__S(5216, __c163, 0)),
+        }),
+      ).annotate({ identifier: "WriteSegmentRequest" });
+  }
+}
+function __c64(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, /*@__PURE__*/ S.Number.pipe(S.optional));
+  }
+}
+function __c65(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          SegmentResponse: S.optional(__S(2119, __c66, 7))
+            .pipe(T.HttpPayload())
+            .annotate({ identifier: "SegmentResponse" }),
+        }),
+      ).annotate({ identifier: "CreateSegmentResponse" });
+  }
+}
+function __c66(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(1606, __c50, 6));
+    case 1:
+      return S.suspend(() =>
+        S.Struct({ Id: S.optional(S.String), Version: S.optional(S.Number) }),
+      ).annotate({ identifier: "SegmentReference" });
+    case 2:
+      return S.Array(__S(2113, __c66, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          Dimensions: S.optional(__S(2112, __c66, 0)),
+          SourceSegments: S.optional(__S(2114, __c66, 2)),
+          SourceType: S.optional(S.String),
+          Type: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "SegmentGroup" });
+    case 4:
+      return S.Array(__S(2115, __c66, 3));
+    case 5:
+      return S.suspend(() =>
+        S.Struct({ Groups: S.optional(__S(2116, __c66, 4)), Include: S.optional(S.String) }),
+      ).annotate({ identifier: "SegmentGroupList" });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          ChannelCounts: S.optional(__S(2048, __c64, 0)),
           ExternalId: S.optional(S.String),
           Format: S.optional(S.String),
           RoleArn: S.optional(S.String),
@@ -10568,49 +11480,31 @@ function __c15(j: number): any {
           Size: S.optional(S.Number),
         }),
       ).annotate({ identifier: "SegmentImportResource" });
-  }
-}
-function __c16(j: number): any {
-  switch (j) {
-    case 0:
+    case 7:
       return S.suspend(() =>
         S.Struct({
           ApplicationId: S.optional(S.String),
           Arn: S.optional(S.String),
           CreationDate: S.optional(S.String),
-          Dimensions: S.optional(__S(69, __c8, 5)),
+          Dimensions: S.optional(__S(1606, __c50, 6)),
           Id: S.optional(S.String),
-          ImportDefinition: S.optional(__S(127, __c15, 7)),
+          ImportDefinition: S.optional(__S(2118, __c66, 6)),
           LastModifiedDate: S.optional(S.String),
           Name: S.optional(S.String),
-          SegmentGroups: S.optional(__S(123, __c15, 3)),
+          SegmentGroups: S.optional(__S(2117, __c66, 5)),
           SegmentType: S.optional(S.String),
-          tags: S.optional(__S(0, __c0, 0)),
+          tags: S.optional(__S(5216, __c163, 0)),
           Version: S.optional(S.Number),
         }),
       ).annotate({ identifier: "SegmentResponse" });
-    case 1:
+  }
+}
+function __c67(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          SegmentResponse: S.optional(__S(128, __c16, 0))
-            .pipe(T.HttpPayload())
-            .annotate({ identifier: "SegmentResponse" }),
-        }),
-      ).annotate({ identifier: "CreateSegmentResponse" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          Body: S.optional(S.String),
-          DefaultSubstitutions: S.optional(S.String),
-          RecommenderId: S.optional(S.String),
-          tags: S.optional(__S(0, __c0, 0)),
-          TemplateDescription: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "SMSTemplateRequest" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          SMSTemplateRequest: S.optional(__S(130, __c16, 2))
+          SMSTemplateRequest: S.optional(__S(2176, __c68, 0))
             .pipe(T.HttpPayload())
             .annotate({ identifier: "SMSTemplateRequest" }),
           TemplateName: S.String.pipe(T.HttpLabel("TemplateName")),
@@ -10625,22 +11519,29 @@ function __c16(j: number): any {
           ),
         ),
       ).annotate({ identifier: "CreateSmsTemplateRequest" });
-    case 4:
+  }
+}
+function __c68(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           Body: S.optional(S.String),
           DefaultSubstitutions: S.optional(S.String),
-          LanguageCode: S.optional(S.String),
-          tags: S.optional(__S(0, __c0, 0)),
+          RecommenderId: S.optional(S.String),
+          tags: S.optional(__S(5216, __c163, 0)),
           TemplateDescription: S.optional(S.String),
-          VoiceId: S.optional(S.String),
         }),
-      ).annotate({ identifier: "VoiceTemplateRequest" });
-    case 5:
+      ).annotate({ identifier: "SMSTemplateRequest" });
+  }
+}
+function __c69(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           TemplateName: S.String.pipe(T.HttpLabel("TemplateName")),
-          VoiceTemplateRequest: S.optional(__S(132, __c16, 4))
+          VoiceTemplateRequest: S.optional(__S(2240, __c70, 0))
             .pipe(T.HttpPayload())
             .annotate({ identifier: "VoiceTemplateRequest" }),
         }).pipe(
@@ -10656,7 +11557,26 @@ function __c16(j: number): any {
       ).annotate({
         identifier: "CreateVoiceTemplateRequest",
       });
-    case 6:
+  }
+}
+function __c70(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          Body: S.optional(S.String),
+          DefaultSubstitutions: S.optional(S.String),
+          LanguageCode: S.optional(S.String),
+          tags: S.optional(__S(5216, __c163, 0)),
+          TemplateDescription: S.optional(S.String),
+          VoiceId: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "VoiceTemplateRequest" });
+  }
+}
+function __c71(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ ApplicationId: S.String.pipe(T.HttpLabel("ApplicationId")) }).pipe(
           T.all(
@@ -10669,7 +11589,11 @@ function __c16(j: number): any {
           ),
         ),
       ).annotate({ identifier: "DeleteAdmChannelRequest" });
-    case 7:
+  }
+}
+function __c72(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           ApplicationId: S.optional(S.String),
@@ -10686,17 +11610,21 @@ function __c16(j: number): any {
       ).annotate({ identifier: "ADMChannelResponse" });
   }
 }
-function __c17(j: number): any {
+function __c73(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          ADMChannelResponse: S.optional(__S(135, __c16, 7))
+          ADMChannelResponse: S.optional(__S(2304, __c72, 0))
             .pipe(T.HttpPayload())
             .annotate({ identifier: "ADMChannelResponse" }),
         }),
       ).annotate({ identifier: "DeleteAdmChannelResponse" });
-    case 1:
+  }
+}
+function __c74(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ ApplicationId: S.String.pipe(T.HttpLabel("ApplicationId")) }).pipe(
           T.all(
@@ -10709,7 +11637,25 @@ function __c17(j: number): any {
           ),
         ),
       ).annotate({ identifier: "DeleteApnsChannelRequest" });
-    case 2:
+  }
+}
+function __c75(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          APNSChannelResponse: S.optional(__S(2432, __c76, 0))
+            .pipe(T.HttpPayload())
+            .annotate({ identifier: "APNSChannelResponse" }),
+        }),
+      ).annotate({
+        identifier: "DeleteApnsChannelResponse",
+      });
+  }
+}
+function __c76(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           ApplicationId: S.optional(S.String),
@@ -10726,17 +11672,11 @@ function __c17(j: number): any {
           Version: S.optional(S.Number),
         }),
       ).annotate({ identifier: "APNSChannelResponse" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          APNSChannelResponse: S.optional(__S(138, __c17, 2))
-            .pipe(T.HttpPayload())
-            .annotate({ identifier: "APNSChannelResponse" }),
-        }),
-      ).annotate({
-        identifier: "DeleteApnsChannelResponse",
-      });
-    case 4:
+  }
+}
+function __c77(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ ApplicationId: S.String.pipe(T.HttpLabel("ApplicationId")) }).pipe(
           T.all(
@@ -10751,7 +11691,11 @@ function __c17(j: number): any {
       ).annotate({
         identifier: "DeleteApnsSandboxChannelRequest",
       });
-    case 5:
+  }
+}
+function __c78(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           ApplicationId: S.optional(S.String),
@@ -10770,17 +11714,25 @@ function __c17(j: number): any {
       ).annotate({
         identifier: "APNSSandboxChannelResponse",
       });
-    case 6:
+  }
+}
+function __c79(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          APNSSandboxChannelResponse: S.optional(__S(141, __c17, 5))
+          APNSSandboxChannelResponse: S.optional(__S(2496, __c78, 0))
             .pipe(T.HttpPayload())
             .annotate({ identifier: "APNSSandboxChannelResponse" }),
         }),
       ).annotate({
         identifier: "DeleteApnsSandboxChannelResponse",
       });
-    case 7:
+  }
+}
+function __c80(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ ApplicationId: S.String.pipe(T.HttpLabel("ApplicationId")) }).pipe(
           T.all(
@@ -10797,19 +11749,23 @@ function __c17(j: number): any {
       });
   }
 }
-function __c18(j: number): any {
+function __c81(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          APNSVoipChannelResponse: S.optional(__S(138, __c17, 2))
+          APNSVoipChannelResponse: S.optional(__S(2432, __c76, 0))
             .pipe(T.HttpPayload())
             .annotate({ identifier: "APNSVoipChannelResponse" }),
         }),
       ).annotate({
         identifier: "DeleteApnsVoipChannelResponse",
       });
-    case 1:
+  }
+}
+function __c82(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ ApplicationId: S.String.pipe(T.HttpLabel("ApplicationId")) }).pipe(
           T.all(
@@ -10827,17 +11783,25 @@ function __c18(j: number): any {
       ).annotate({
         identifier: "DeleteApnsVoipSandboxChannelRequest",
       });
-    case 2:
+  }
+}
+function __c83(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          APNSVoipSandboxChannelResponse: S.optional(__S(141, __c17, 5))
+          APNSVoipSandboxChannelResponse: S.optional(__S(2496, __c78, 0))
             .pipe(T.HttpPayload())
             .annotate({ identifier: "APNSVoipSandboxChannelResponse" }),
         }),
       ).annotate({
         identifier: "DeleteApnsVoipSandboxChannelResponse",
       });
-    case 3:
+  }
+}
+function __c84(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ ApplicationId: S.String.pipe(T.HttpLabel("ApplicationId")) }).pipe(
           T.all(
@@ -10850,7 +11814,11 @@ function __c18(j: number): any {
           ),
         ),
       ).annotate({ identifier: "DeleteAppRequest" });
-    case 4:
+  }
+}
+function __c85(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ ApplicationId: S.String.pipe(T.HttpLabel("ApplicationId")) }).pipe(
           T.all(
@@ -10865,7 +11833,25 @@ function __c18(j: number): any {
       ).annotate({
         identifier: "DeleteBaiduChannelRequest",
       });
-    case 5:
+  }
+}
+function __c86(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          BaiduChannelResponse: S.optional(__S(2784, __c87, 0))
+            .pipe(T.HttpPayload())
+            .annotate({ identifier: "BaiduChannelResponse" }),
+        }),
+      ).annotate({
+        identifier: "DeleteBaiduChannelResponse",
+      });
+  }
+}
+function __c87(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           ApplicationId: S.optional(S.String),
@@ -10881,17 +11867,11 @@ function __c18(j: number): any {
           Version: S.optional(S.Number),
         }),
       ).annotate({ identifier: "BaiduChannelResponse" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          BaiduChannelResponse: S.optional(__S(149, __c18, 5))
-            .pipe(T.HttpPayload())
-            .annotate({ identifier: "BaiduChannelResponse" }),
-        }),
-      ).annotate({
-        identifier: "DeleteBaiduChannelResponse",
-      });
-    case 7:
+  }
+}
+function __c88(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           ApplicationId: S.String.pipe(T.HttpLabel("ApplicationId")),
@@ -10909,7 +11889,7 @@ function __c18(j: number): any {
       ).annotate({ identifier: "DeleteCampaignRequest" });
   }
 }
-function __c19(j: number): any {
+function __c89(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -10926,7 +11906,25 @@ function __c19(j: number): any {
       ).annotate({
         identifier: "DeleteEmailChannelRequest",
       });
-    case 1:
+  }
+}
+function __c90(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          EmailChannelResponse: S.optional(__S(2912, __c91, 0))
+            .pipe(T.HttpPayload())
+            .annotate({ identifier: "EmailChannelResponse" }),
+        }),
+      ).annotate({
+        identifier: "DeleteEmailChannelResponse",
+      });
+  }
+}
+function __c91(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           ApplicationId: S.optional(S.String),
@@ -10947,17 +11945,11 @@ function __c19(j: number): any {
           Version: S.optional(S.Number),
         }),
       ).annotate({ identifier: "EmailChannelResponse" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          EmailChannelResponse: S.optional(__S(153, __c19, 1))
-            .pipe(T.HttpPayload())
-            .annotate({ identifier: "EmailChannelResponse" }),
-        }),
-      ).annotate({
-        identifier: "DeleteEmailChannelResponse",
-      });
-    case 3:
+  }
+}
+function __c92(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           TemplateName: S.String.pipe(T.HttpLabel("TemplateName")),
@@ -10975,21 +11967,33 @@ function __c19(j: number): any {
       ).annotate({
         identifier: "DeleteEmailTemplateRequest",
       });
-    case 4:
+  }
+}
+function __c93(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ Message: S.optional(S.String), RequestID: S.optional(S.String) }),
       ).annotate({ identifier: "MessageBody" });
-    case 5:
+  }
+}
+function __c94(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          MessageBody: S.optional(__S(156, __c19, 4))
+          MessageBody: S.optional(__S(2976, __c93, 0))
             .pipe(T.HttpPayload())
             .annotate({ identifier: "MessageBody" }),
         }),
       ).annotate({
         identifier: "DeleteEmailTemplateResponse",
       });
-    case 6:
+  }
+}
+function __c95(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           ApplicationId: S.String.pipe(T.HttpLabel("ApplicationId")),
@@ -11005,11 +12009,39 @@ function __c19(j: number): any {
           ),
         ),
       ).annotate({ identifier: "DeleteEndpointRequest" });
-    case 7:
-      return S.Record(S.String, /*@__PURE__*/ __S(22, __c2, 6).pipe(S.optional));
   }
 }
-function __c20(j: number): any {
+function __c96(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          Address: S.optional(S.String),
+          ApplicationId: S.optional(S.String),
+          Attributes: S.optional(__S(3104, __c97, 0)),
+          ChannelType: S.optional(S.String),
+          CohortId: S.optional(S.String),
+          CreationDate: S.optional(S.String),
+          Demographic: S.optional(__S(3136, __c98, 0)),
+          EffectiveDate: S.optional(S.String),
+          EndpointStatus: S.optional(S.String),
+          Id: S.optional(S.String),
+          Location: S.optional(__S(3137, __c98, 1)),
+          Metrics: S.optional(__S(2048, __c64, 0)),
+          OptOut: S.optional(S.String),
+          RequestId: S.optional(S.String),
+          User: S.optional(__S(3138, __c98, 2)),
+        }),
+      ).annotate({ identifier: "EndpointResponse" });
+  }
+}
+function __c97(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, /*@__PURE__*/ __S(5664, __c177, 0).pipe(S.optional));
+  }
+}
+function __c98(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -11037,37 +12069,25 @@ function __c20(j: number): any {
       ).annotate({ identifier: "EndpointLocation" });
     case 2:
       return S.suspend(() =>
-        S.Struct({ UserAttributes: S.optional(__S(159, __c19, 7)), UserId: S.optional(S.String) }),
+        S.Struct({ UserAttributes: S.optional(__S(3104, __c97, 0)), UserId: S.optional(S.String) }),
       ).annotate({ identifier: "EndpointUser" });
-    case 3:
+  }
+}
+function __c99(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          Address: S.optional(S.String),
-          ApplicationId: S.optional(S.String),
-          Attributes: S.optional(__S(159, __c19, 7)),
-          ChannelType: S.optional(S.String),
-          CohortId: S.optional(S.String),
-          CreationDate: S.optional(S.String),
-          Demographic: S.optional(__S(160, __c20, 0)),
-          EffectiveDate: S.optional(S.String),
-          EndpointStatus: S.optional(S.String),
-          Id: S.optional(S.String),
-          Location: S.optional(__S(161, __c20, 1)),
-          Metrics: S.optional(__S(126, __c15, 6)),
-          OptOut: S.optional(S.String),
-          RequestId: S.optional(S.String),
-          User: S.optional(__S(162, __c20, 2)),
-        }),
-      ).annotate({ identifier: "EndpointResponse" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          EndpointResponse: S.optional(__S(163, __c20, 3))
+          EndpointResponse: S.optional(__S(3072, __c96, 0))
             .pipe(T.HttpPayload())
             .annotate({ identifier: "EndpointResponse" }),
         }),
       ).annotate({ identifier: "DeleteEndpointResponse" });
-    case 5:
+  }
+}
+function __c100(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ ApplicationId: S.String.pipe(T.HttpLabel("ApplicationId")) }).pipe(
           T.all(
@@ -11080,7 +12100,21 @@ function __c20(j: number): any {
           ),
         ),
       ).annotate({ identifier: "DeleteEventStreamRequest" });
-    case 6:
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          EventStream: S.optional(__S(3232, __c101, 0))
+            .pipe(T.HttpPayload())
+            .annotate({ identifier: "EventStream" }),
+        }),
+      ).annotate({
+        identifier: "DeleteEventStreamResponse",
+      });
+  }
+}
+function __c101(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           ApplicationId: S.optional(S.String),
@@ -11091,19 +12125,9 @@ function __c20(j: number): any {
           RoleArn: S.optional(S.String),
         }),
       ).annotate({ identifier: "EventStream" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          EventStream: S.optional(__S(166, __c20, 6))
-            .pipe(T.HttpPayload())
-            .annotate({ identifier: "EventStream" }),
-        }),
-      ).annotate({
-        identifier: "DeleteEventStreamResponse",
-      });
   }
 }
-function __c21(j: number): any {
+function __c102(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -11118,7 +12142,11 @@ function __c21(j: number): any {
           ),
         ),
       ).annotate({ identifier: "DeleteGcmChannelRequest" });
-    case 1:
+  }
+}
+function __c103(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           ApplicationId: S.optional(S.String),
@@ -11136,15 +12164,19 @@ function __c21(j: number): any {
           Version: S.optional(S.Number),
         }),
       ).annotate({ identifier: "GCMChannelResponse" });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          GCMChannelResponse: S.optional(__S(169, __c21, 1))
+          GCMChannelResponse: S.optional(__S(3296, __c103, 0))
             .pipe(T.HttpPayload())
             .annotate({ identifier: "GCMChannelResponse" }),
         }),
       ).annotate({ identifier: "DeleteGcmChannelResponse" });
-    case 3:
+  }
+}
+function __c104(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           TemplateName: S.String.pipe(T.HttpLabel("TemplateName")),
@@ -11162,7 +12194,11 @@ function __c21(j: number): any {
       ).annotate({
         identifier: "DeleteInAppTemplateRequest",
       });
-    case 4:
+  }
+}
+function __c105(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           ApplicationId: S.String.pipe(T.HttpLabel("ApplicationId")),
@@ -11178,7 +12214,11 @@ function __c21(j: number): any {
           ),
         ),
       ).annotate({ identifier: "DeleteJourneyRequest" });
-    case 5:
+  }
+}
+function __c106(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           TemplateName: S.String.pipe(T.HttpLabel("TemplateName")),
@@ -11196,7 +12236,11 @@ function __c21(j: number): any {
       ).annotate({
         identifier: "DeletePushTemplateRequest",
       });
-    case 6:
+  }
+}
+function __c107(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ RecommenderId: S.String.pipe(T.HttpLabel("RecommenderId")) }).pipe(
           T.all(
@@ -11211,7 +12255,11 @@ function __c21(j: number): any {
       ).annotate({
         identifier: "DeleteRecommenderConfigurationRequest",
       });
-    case 7:
+  }
+}
+function __c108(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           ApplicationId: S.String.pipe(T.HttpLabel("ApplicationId")),
@@ -11229,7 +12277,7 @@ function __c21(j: number): any {
       ).annotate({ identifier: "DeleteSegmentRequest" });
   }
 }
-function __c22(j: number): any {
+function __c109(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -11244,7 +12292,11 @@ function __c22(j: number): any {
           ),
         ),
       ).annotate({ identifier: "DeleteSmsChannelRequest" });
-    case 1:
+  }
+}
+function __c110(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           ApplicationId: S.optional(S.String),
@@ -11263,15 +12315,19 @@ function __c22(j: number): any {
           Version: S.optional(S.Number),
         }),
       ).annotate({ identifier: "SMSChannelResponse" });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          SMSChannelResponse: S.optional(__S(177, __c22, 1))
+          SMSChannelResponse: S.optional(__S(3520, __c110, 0))
             .pipe(T.HttpPayload())
             .annotate({ identifier: "SMSChannelResponse" }),
         }),
       ).annotate({ identifier: "DeleteSmsChannelResponse" });
-    case 3:
+  }
+}
+function __c111(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           TemplateName: S.String.pipe(T.HttpLabel("TemplateName")),
@@ -11287,7 +12343,11 @@ function __c22(j: number): any {
           ),
         ),
       ).annotate({ identifier: "DeleteSmsTemplateRequest" });
-    case 4:
+  }
+}
+function __c112(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           ApplicationId: S.String.pipe(T.HttpLabel("ApplicationId")),
@@ -11305,16 +12365,10 @@ function __c22(j: number): any {
       ).annotate({
         identifier: "DeleteUserEndpointsRequest",
       });
-    case 5:
-      return S.Array(__S(163, __c20, 3));
-    case 6:
-      return S.suspend(() => S.Struct({ Item: S.optional(__S(181, __c22, 5)) })).annotate({
-        identifier: "EndpointsResponse",
-      });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          EndpointsResponse: S.optional(__S(182, __c22, 6))
+          EndpointsResponse: S.optional(__S(3617, __c113, 1))
             .pipe(T.HttpPayload())
             .annotate({ identifier: "EndpointsResponse" }),
         }),
@@ -11323,7 +12377,17 @@ function __c22(j: number): any {
       });
   }
 }
-function __c23(j: number): any {
+function __c113(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(3072, __c96, 0));
+    case 1:
+      return S.suspend(() => S.Struct({ Item: S.optional(__S(3616, __c113, 0)) })).annotate({
+        identifier: "EndpointsResponse",
+      });
+  }
+}
+function __c114(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -11340,17 +12404,25 @@ function __c23(j: number): any {
       ).annotate({
         identifier: "DeleteVoiceChannelRequest",
       });
-    case 1:
+  }
+}
+function __c115(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          VoiceChannelResponse: S.optional(__S(135, __c16, 7))
+          VoiceChannelResponse: S.optional(__S(2304, __c72, 0))
             .pipe(T.HttpPayload())
             .annotate({ identifier: "VoiceChannelResponse" }),
         }),
       ).annotate({
         identifier: "DeleteVoiceChannelResponse",
       });
-    case 2:
+  }
+}
+function __c116(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           TemplateName: S.String.pipe(T.HttpLabel("TemplateName")),
@@ -11368,7 +12440,11 @@ function __c23(j: number): any {
       ).annotate({
         identifier: "DeleteVoiceTemplateRequest",
       });
-    case 3:
+  }
+}
+function __c117(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ ApplicationId: S.String.pipe(T.HttpLabel("ApplicationId")) }).pipe(
           T.all(
@@ -11381,7 +12457,11 @@ function __c23(j: number): any {
           ),
         ),
       ).annotate({ identifier: "GetAdmChannelRequest" });
-    case 4:
+  }
+}
+function __c118(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ ApplicationId: S.String.pipe(T.HttpLabel("ApplicationId")) }).pipe(
           T.all(
@@ -11394,15 +12474,19 @@ function __c23(j: number): any {
           ),
         ),
       ).annotate({ identifier: "GetApnsChannelRequest" });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          APNSChannelResponse: S.optional(__S(138, __c17, 2))
+          APNSChannelResponse: S.optional(__S(2432, __c76, 0))
             .pipe(T.HttpPayload())
             .annotate({ identifier: "APNSChannelResponse" }),
         }),
       ).annotate({ identifier: "GetApnsChannelResponse" });
-    case 6:
+  }
+}
+function __c119(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ ApplicationId: S.String.pipe(T.HttpLabel("ApplicationId")) }).pipe(
           T.all(
@@ -11417,7 +12501,11 @@ function __c23(j: number): any {
       ).annotate({
         identifier: "GetApnsSandboxChannelRequest",
       });
-    case 7:
+  }
+}
+function __c120(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ ApplicationId: S.String.pipe(T.HttpLabel("ApplicationId")) }).pipe(
           T.all(
@@ -11434,7 +12522,7 @@ function __c23(j: number): any {
       });
   }
 }
-function __c24(j: number): any {
+function __c121(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -11451,7 +12539,11 @@ function __c24(j: number): any {
       ).annotate({
         identifier: "GetApnsVoipSandboxChannelRequest",
       });
-    case 1:
+  }
+}
+function __c122(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ ApplicationId: S.String.pipe(T.HttpLabel("ApplicationId")) }).pipe(
           T.all(
@@ -11464,7 +12556,11 @@ function __c24(j: number): any {
           ),
         ),
       ).annotate({ identifier: "GetAppRequest" });
-    case 2:
+  }
+}
+function __c123(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           ApplicationId: S.String.pipe(T.HttpLabel("ApplicationId")),
@@ -11490,7 +12586,34 @@ function __c24(j: number): any {
       ).annotate({
         identifier: "GetApplicationDateRangeKpiRequest",
       });
-    case 3:
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          ApplicationId: S.optional(S.String),
+          EndTime: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
+          KpiName: S.optional(S.String),
+          KpiResult: S.optional(__S(3972, __c124, 4)),
+          NextToken: S.optional(S.String),
+          StartTime: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
+        }),
+      ).annotate({
+        identifier: "ApplicationDateRangeKpiResponse",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          ApplicationDateRangeKpiResponse: S.optional(__S(3937, __c123, 1))
+            .pipe(T.HttpPayload())
+            .annotate({ identifier: "ApplicationDateRangeKpiResponse" }),
+        }),
+      ).annotate({
+        identifier: "GetApplicationDateRangeKpiResponse",
+      });
+  }
+}
+function __c124(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           Key: S.optional(S.String),
@@ -11498,49 +12621,26 @@ function __c24(j: number): any {
           Value: S.optional(S.String),
         }),
       ).annotate({ identifier: "ResultRowValue" });
-    case 4:
-      return S.Array(__S(195, __c24, 3));
-    case 5:
+    case 1:
+      return S.Array(__S(3968, __c124, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          GroupedBys: S.optional(__S(196, __c24, 4)),
-          Values: S.optional(__S(196, __c24, 4)),
+          GroupedBys: S.optional(__S(3969, __c124, 1)),
+          Values: S.optional(__S(3969, __c124, 1)),
         }),
       ).annotate({ identifier: "ResultRow" });
-    case 6:
-      return S.Array(__S(197, __c24, 5));
-    case 7:
-      return S.suspend(() => S.Struct({ Rows: S.optional(__S(198, __c24, 6)) })).annotate({
+    case 3:
+      return S.Array(__S(3970, __c124, 2));
+    case 4:
+      return S.suspend(() => S.Struct({ Rows: S.optional(__S(3971, __c124, 3)) })).annotate({
         identifier: "BaseKpiResult",
       });
   }
 }
-function __c25(j: number): any {
+function __c125(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() =>
-        S.Struct({
-          ApplicationId: S.optional(S.String),
-          EndTime: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-          KpiName: S.optional(S.String),
-          KpiResult: S.optional(__S(199, __c24, 7)),
-          NextToken: S.optional(S.String),
-          StartTime: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-        }),
-      ).annotate({
-        identifier: "ApplicationDateRangeKpiResponse",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          ApplicationDateRangeKpiResponse: S.optional(__S(200, __c25, 0))
-            .pipe(T.HttpPayload())
-            .annotate({ identifier: "ApplicationDateRangeKpiResponse" }),
-        }),
-      ).annotate({
-        identifier: "GetApplicationDateRangeKpiResponse",
-      });
-    case 2:
       return S.suspend(() =>
         S.Struct({ ApplicationId: S.String.pipe(T.HttpLabel("ApplicationId")) }).pipe(
           T.all(
@@ -11555,65 +12655,73 @@ function __c25(j: number): any {
       ).annotate({
         identifier: "GetApplicationSettingsRequest",
       });
-    case 3:
+  }
+}
+function __c126(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           DailyCap: S.optional(S.Number),
-          TimeframeCap: S.optional(__S(91, __c11, 3)),
+          TimeframeCap: S.optional(__S(1632, __c51, 0)),
           TotalCap: S.optional(S.Number),
         }),
       ).annotate({
         identifier: "ApplicationSettingsJourneyLimits",
       });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           ApplicationId: S.optional(S.String),
-          CampaignHook: S.optional(__S(36, __c4, 4)),
+          CampaignHook: S.optional(__S(5888, __c184, 0)),
           LastModifiedDate: S.optional(S.String),
-          Limits: S.optional(__S(37, __c4, 5)),
-          QuietTime: S.optional(__S(30, __c3, 6)),
-          JourneyLimits: S.optional(__S(203, __c25, 3)),
+          Limits: S.optional(__S(5889, __c184, 1)),
+          QuietTime: S.optional(__S(5792, __c181, 0)),
+          JourneyLimits: S.optional(__S(4032, __c126, 0)),
         }),
       ).annotate({
         identifier: "ApplicationSettingsResource",
       });
-    case 5:
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          ApplicationSettingsResource: S.optional(__S(204, __c25, 4))
+          ApplicationSettingsResource: S.optional(__S(4033, __c126, 1))
             .pipe(T.HttpPayload())
             .annotate({ identifier: "ApplicationSettingsResource" }),
         }),
       ).annotate({
         identifier: "GetApplicationSettingsResponse",
       });
-    case 6:
+  }
+}
+function __c127(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           PageSize: S.optional(S.String).pipe(T.HttpQuery("page-size")),
           Token: S.optional(S.String).pipe(T.HttpQuery("token")),
         }).pipe(T.all(T.Http({ method: "GET", uri: "/v1/apps" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "GetAppsRequest" });
-    case 7:
-      return S.Array(__S(3, __c0, 3));
-  }
-}
-function __c26(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({ Item: S.optional(__S(207, __c25, 7)), NextToken: S.optional(S.String) }),
-      ).annotate({ identifier: "ApplicationsResponse" });
     case 1:
+      return S.Array(__S(5184, __c162, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({ Item: S.optional(__S(4065, __c127, 1)), NextToken: S.optional(S.String) }),
+      ).annotate({ identifier: "ApplicationsResponse" });
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          ApplicationsResponse: S.optional(__S(208, __c26, 0))
+          ApplicationsResponse: S.optional(__S(4066, __c127, 2))
             .pipe(T.HttpPayload())
             .annotate({ identifier: "ApplicationsResponse" }),
         }),
       ).annotate({ identifier: "GetAppsResponse" });
-    case 2:
+  }
+}
+function __c128(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ ApplicationId: S.String.pipe(T.HttpLabel("ApplicationId")) }).pipe(
           T.all(
@@ -11626,15 +12734,19 @@ function __c26(j: number): any {
           ),
         ),
       ).annotate({ identifier: "GetBaiduChannelRequest" });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          BaiduChannelResponse: S.optional(__S(149, __c18, 5))
+          BaiduChannelResponse: S.optional(__S(2784, __c87, 0))
             .pipe(T.HttpPayload())
             .annotate({ identifier: "BaiduChannelResponse" }),
         }),
       ).annotate({ identifier: "GetBaiduChannelResponse" });
-    case 4:
+  }
+}
+function __c129(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           ApplicationId: S.String.pipe(T.HttpLabel("ApplicationId")),
@@ -11650,7 +12762,11 @@ function __c26(j: number): any {
           ),
         ),
       ).annotate({ identifier: "GetCampaignRequest" });
-    case 5:
+  }
+}
+function __c130(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           ApplicationId: S.String.pipe(T.HttpLabel("ApplicationId")),
@@ -11673,7 +12789,7 @@ function __c26(j: number): any {
       ).annotate({
         identifier: "GetCampaignActivitiesRequest",
       });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           ApplicationId: S.optional(S.String),
@@ -11689,30 +12805,30 @@ function __c26(j: number): any {
           TimezonesTotalCount: S.optional(S.Number),
           TotalEndpointCount: S.optional(S.Number),
           TreatmentId: S.optional(S.String),
-          ExecutionMetrics: S.optional(__S(0, __c0, 0)),
+          ExecutionMetrics: S.optional(__S(5216, __c163, 0)),
         }),
       ).annotate({ identifier: "ActivityResponse" });
-    case 7:
-      return S.Array(__S(214, __c26, 6));
-  }
-}
-function __c27(j: number): any {
-  switch (j) {
-    case 0:
+    case 2:
+      return S.Array(__S(4161, __c130, 1));
+    case 3:
       return S.suspend(() =>
-        S.Struct({ Item: S.optional(__S(215, __c26, 7)), NextToken: S.optional(S.String) }),
+        S.Struct({ Item: S.optional(__S(4162, __c130, 2)), NextToken: S.optional(S.String) }),
       ).annotate({ identifier: "ActivitiesResponse" });
-    case 1:
+    case 4:
       return S.suspend(() =>
         S.Struct({
-          ActivitiesResponse: S.optional(__S(216, __c27, 0))
+          ActivitiesResponse: S.optional(__S(4163, __c130, 3))
             .pipe(T.HttpPayload())
             .annotate({ identifier: "ActivitiesResponse" }),
         }),
       ).annotate({
         identifier: "GetCampaignActivitiesResponse",
       });
-    case 2:
+  }
+}
+function __c131(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           ApplicationId: S.String.pipe(T.HttpLabel("ApplicationId")),
@@ -11742,31 +12858,35 @@ function __c27(j: number): any {
       ).annotate({
         identifier: "GetCampaignDateRangeKpiRequest",
       });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           ApplicationId: S.optional(S.String),
           CampaignId: S.optional(S.String),
           EndTime: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
           KpiName: S.optional(S.String),
-          KpiResult: S.optional(__S(199, __c24, 7)),
+          KpiResult: S.optional(__S(3972, __c124, 4)),
           NextToken: S.optional(S.String),
           StartTime: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
         }),
       ).annotate({
         identifier: "CampaignDateRangeKpiResponse",
       });
-    case 4:
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          CampaignDateRangeKpiResponse: S.optional(__S(219, __c27, 3))
+          CampaignDateRangeKpiResponse: S.optional(__S(4193, __c131, 1))
             .pipe(T.HttpPayload())
             .annotate({ identifier: "CampaignDateRangeKpiResponse" }),
         }),
       ).annotate({
         identifier: "GetCampaignDateRangeKpiResponse",
       });
-    case 5:
+  }
+}
+function __c132(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           ApplicationId: S.String.pipe(T.HttpLabel("ApplicationId")),
@@ -11783,25 +12903,29 @@ function __c27(j: number): any {
           ),
         ),
       ).annotate({ identifier: "GetCampaignsRequest" });
-    case 6:
-      return S.Array(__S(43, __c5, 3));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({ Item: S.optional(__S(222, __c27, 6)), NextToken: S.optional(S.String) }),
-      ).annotate({ identifier: "CampaignsResponse" });
-  }
-}
-function __c28(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          CampaignsResponse: S.optional(__S(223, __c27, 7))
+          CampaignsResponse: S.optional(__S(4257, __c133, 1))
             .pipe(T.HttpPayload())
             .annotate({ identifier: "CampaignsResponse" }),
         }),
       ).annotate({ identifier: "GetCampaignsResponse" });
+  }
+}
+function __c133(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(5994, __c187, 10));
     case 1:
+      return S.suspend(() =>
+        S.Struct({ Item: S.optional(__S(4256, __c133, 0)), NextToken: S.optional(S.String) }),
+      ).annotate({ identifier: "CampaignsResponse" });
+  }
+}
+function __c134(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           ApplicationId: S.String.pipe(T.HttpLabel("ApplicationId")),
@@ -11823,17 +12947,21 @@ function __c28(j: number): any {
       ).annotate({
         identifier: "GetCampaignVersionRequest",
       });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          CampaignResponse: S.optional(__S(43, __c5, 3))
+          CampaignResponse: S.optional(__S(5994, __c187, 10))
             .pipe(T.HttpPayload())
             .annotate({ identifier: "CampaignResponse" }),
         }),
       ).annotate({
         identifier: "GetCampaignVersionResponse",
       });
-    case 3:
+  }
+}
+function __c135(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           ApplicationId: S.String.pipe(T.HttpLabel("ApplicationId")),
@@ -11856,17 +12984,21 @@ function __c28(j: number): any {
       ).annotate({
         identifier: "GetCampaignVersionsRequest",
       });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          CampaignsResponse: S.optional(__S(223, __c27, 7))
+          CampaignsResponse: S.optional(__S(4257, __c133, 1))
             .pipe(T.HttpPayload())
             .annotate({ identifier: "CampaignsResponse" }),
         }),
       ).annotate({
         identifier: "GetCampaignVersionsResponse",
       });
-    case 5:
+  }
+}
+function __c136(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ ApplicationId: S.String.pipe(T.HttpLabel("ApplicationId")) }).pipe(
           T.all(
@@ -11879,7 +13011,7 @@ function __c28(j: number): any {
           ),
         ),
       ).annotate({ identifier: "GetChannelsRequest" });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           ApplicationId: S.optional(S.String),
@@ -11893,25 +13025,25 @@ function __c28(j: number): any {
           Version: S.optional(S.Number),
         }),
       ).annotate({ identifier: "ChannelResponse" });
-    case 7:
-      return S.Record(S.String, /*@__PURE__*/ __S(230, __c28, 6).pipe(S.optional));
-  }
-}
-function __c29(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() => S.Struct({ Channels: S.optional(__S(231, __c28, 7)) })).annotate({
+    case 2:
+      return S.Record(S.String, /*@__PURE__*/ __S(4353, __c136, 1).pipe(S.optional));
+    case 3:
+      return S.suspend(() => S.Struct({ Channels: S.optional(__S(4354, __c136, 2)) })).annotate({
         identifier: "ChannelsResponse",
       });
-    case 1:
+    case 4:
       return S.suspend(() =>
         S.Struct({
-          ChannelsResponse: S.optional(__S(232, __c29, 0))
+          ChannelsResponse: S.optional(__S(4355, __c136, 3))
             .pipe(T.HttpPayload())
             .annotate({ identifier: "ChannelsResponse" }),
         }),
       ).annotate({ identifier: "GetChannelsResponse" });
-    case 2:
+  }
+}
+function __c137(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ ApplicationId: S.String.pipe(T.HttpLabel("ApplicationId")) }).pipe(
           T.all(
@@ -11924,15 +13056,19 @@ function __c29(j: number): any {
           ),
         ),
       ).annotate({ identifier: "GetEmailChannelRequest" });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          EmailChannelResponse: S.optional(__S(153, __c19, 1))
+          EmailChannelResponse: S.optional(__S(2912, __c91, 0))
             .pipe(T.HttpPayload())
             .annotate({ identifier: "EmailChannelResponse" }),
         }),
       ).annotate({ identifier: "GetEmailChannelResponse" });
-    case 4:
+  }
+}
+function __c138(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           TemplateName: S.String.pipe(T.HttpLabel("TemplateName")),
@@ -11948,7 +13084,7 @@ function __c29(j: number): any {
           ),
         ),
       ).annotate({ identifier: "GetEmailTemplateRequest" });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           Arn: S.optional(S.String),
@@ -11958,8 +13094,8 @@ function __c29(j: number): any {
           LastModifiedDate: S.optional(S.String),
           RecommenderId: S.optional(S.String),
           Subject: S.optional(S.String),
-          Headers: S.optional(__S(10, __c1, 2)),
-          tags: S.optional(__S(0, __c0, 0)),
+          Headers: S.optional(__S(5633, __c176, 1)),
+          tags: S.optional(__S(5216, __c163, 0)),
           TemplateDescription: S.optional(S.String),
           TemplateName: S.optional(S.String),
           TemplateType: S.optional(S.String),
@@ -11967,15 +13103,19 @@ function __c29(j: number): any {
           Version: S.optional(S.String),
         }),
       ).annotate({ identifier: "EmailTemplateResponse" });
-    case 6:
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          EmailTemplateResponse: S.optional(__S(237, __c29, 5))
+          EmailTemplateResponse: S.optional(__S(4417, __c138, 1))
             .pipe(T.HttpPayload())
             .annotate({ identifier: "EmailTemplateResponse" }),
         }),
       ).annotate({ identifier: "GetEmailTemplateResponse" });
-    case 7:
+  }
+}
+function __c139(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           ApplicationId: S.String.pipe(T.HttpLabel("ApplicationId")),
@@ -11993,7 +13133,7 @@ function __c29(j: number): any {
       ).annotate({ identifier: "GetEndpointRequest" });
   }
 }
-function __c30(j: number): any {
+function __c140(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -12008,15 +13148,23 @@ function __c30(j: number): any {
           ),
         ),
       ).annotate({ identifier: "GetEventStreamRequest" });
-    case 1:
+  }
+}
+function __c141(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          EventStream: S.optional(__S(166, __c20, 6))
+          EventStream: S.optional(__S(3232, __c101, 0))
             .pipe(T.HttpPayload())
             .annotate({ identifier: "EventStream" }),
         }),
       ).annotate({ identifier: "GetEventStreamResponse" });
-    case 2:
+  }
+}
+function __c142(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           ApplicationId: S.String.pipe(T.HttpLabel("ApplicationId")),
@@ -12032,7 +13180,11 @@ function __c30(j: number): any {
           ),
         ),
       ).annotate({ identifier: "GetExportJobRequest" });
-    case 3:
+  }
+}
+function __c143(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           ApplicationId: S.String.pipe(T.HttpLabel("ApplicationId")),
@@ -12049,21 +13201,29 @@ function __c30(j: number): any {
           ),
         ),
       ).annotate({ identifier: "GetExportJobsRequest" });
-    case 4:
-      return S.Array(__S(51, __c6, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({ Item: S.optional(__S(244, __c30, 4)), NextToken: S.optional(S.String) }),
-      ).annotate({ identifier: "ExportJobsResponse" });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          ExportJobsResponse: S.optional(__S(245, __c30, 5))
+          ExportJobsResponse: S.optional(__S(4609, __c144, 1))
             .pipe(T.HttpPayload())
             .annotate({ identifier: "ExportJobsResponse" }),
         }),
       ).annotate({ identifier: "GetExportJobsResponse" });
-    case 7:
+  }
+}
+function __c144(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(705, __c22, 1));
+    case 1:
+      return S.suspend(() =>
+        S.Struct({ Item: S.optional(__S(4608, __c144, 0)), NextToken: S.optional(S.String) }),
+      ).annotate({ identifier: "ExportJobsResponse" });
+  }
+}
+function __c145(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ ApplicationId: S.String.pipe(T.HttpLabel("ApplicationId")) }).pipe(
           T.all(
@@ -12078,7 +13238,7 @@ function __c30(j: number): any {
       ).annotate({ identifier: "GetGcmChannelRequest" });
   }
 }
-function __c31(j: number): any {
+function __c146(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -12096,7 +13256,11 @@ function __c31(j: number): any {
           ),
         ),
       ).annotate({ identifier: "GetImportJobRequest" });
-    case 1:
+  }
+}
+function __c147(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           ApplicationId: S.String.pipe(T.HttpLabel("ApplicationId")),
@@ -12113,21 +13277,29 @@ function __c31(j: number): any {
           ),
         ),
       ).annotate({ identifier: "GetImportJobsRequest" });
-    case 2:
-      return S.Array(__S(55, __c6, 7));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({ Item: S.optional(__S(250, __c31, 2)), NextToken: S.optional(S.String) }),
-      ).annotate({ identifier: "ImportJobsResponse" });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          ImportJobsResponse: S.optional(__S(251, __c31, 3))
+          ImportJobsResponse: S.optional(__S(4737, __c148, 1))
             .pipe(T.HttpPayload())
             .annotate({ identifier: "ImportJobsResponse" }),
         }),
       ).annotate({ identifier: "GetImportJobsResponse" });
-    case 5:
+  }
+}
+function __c148(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(1121, __c35, 1));
+    case 1:
+      return S.suspend(() =>
+        S.Struct({ Item: S.optional(__S(4736, __c148, 0)), NextToken: S.optional(S.String) }),
+      ).annotate({ identifier: "ImportJobsResponse" });
+  }
+}
+function __c149(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           ApplicationId: S.String.pipe(T.HttpLabel("ApplicationId")),
@@ -12146,54 +13318,54 @@ function __c31(j: number): any {
           ),
         ),
       ).annotate({ identifier: "GetInAppMessagesRequest" });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          Content: S.optional(__S(19, __c2, 3)),
-          CustomConfig: S.optional(__S(0, __c0, 0)),
+          Content: S.optional(__S(5734, __c179, 6)),
+          CustomConfig: S.optional(__S(5216, __c163, 0)),
           Layout: S.optional(S.String),
         }),
       ).annotate({ identifier: "InAppMessage" });
-    case 7:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           EndDate: S.optional(S.String),
-          EventFilter: S.optional(__S(29, __c3, 5)),
-          QuietTime: S.optional(__S(30, __c3, 6)),
+          EventFilter: S.optional(__S(5825, __c182, 1)),
+          QuietTime: S.optional(__S(5792, __c181, 0)),
         }),
       ).annotate({ identifier: "InAppCampaignSchedule" });
-  }
-}
-function __c32(j: number): any {
-  switch (j) {
-    case 0:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           CampaignId: S.optional(S.String),
           DailyCap: S.optional(S.Number),
-          InAppMessage: S.optional(__S(254, __c31, 6)),
+          InAppMessage: S.optional(__S(4769, __c149, 1)),
           Priority: S.optional(S.Number),
-          Schedule: S.optional(__S(255, __c31, 7)),
+          Schedule: S.optional(__S(4770, __c149, 2)),
           SessionCap: S.optional(S.Number),
           TotalCap: S.optional(S.Number),
           TreatmentId: S.optional(S.String),
         }),
       ).annotate({ identifier: "InAppMessageCampaign" });
-    case 1:
-      return S.Array(__S(256, __c32, 0));
-    case 2:
+    case 4:
+      return S.Array(__S(4771, __c149, 3));
+    case 5:
       return S.suspend(() =>
-        S.Struct({ InAppMessageCampaigns: S.optional(__S(257, __c32, 1)) }),
+        S.Struct({ InAppMessageCampaigns: S.optional(__S(4772, __c149, 4)) }),
       ).annotate({ identifier: "InAppMessagesResponse" });
-    case 3:
+    case 6:
       return S.suspend(() =>
         S.Struct({
-          InAppMessagesResponse: S.optional(__S(258, __c32, 2))
+          InAppMessagesResponse: S.optional(__S(4773, __c149, 5))
             .pipe(T.HttpPayload())
             .annotate({ identifier: "InAppMessagesResponse" }),
         }),
       ).annotate({ identifier: "GetInAppMessagesResponse" });
-    case 4:
+  }
+}
+function __c150(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           TemplateName: S.String.pipe(T.HttpLabel("TemplateName")),
@@ -12209,31 +13381,35 @@ function __c32(j: number): any {
           ),
         ),
       ).annotate({ identifier: "GetInAppTemplateRequest" });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           Arn: S.optional(S.String),
-          Content: S.optional(__S(19, __c2, 3)),
+          Content: S.optional(__S(5734, __c179, 6)),
           CreationDate: S.optional(S.String),
-          CustomConfig: S.optional(__S(0, __c0, 0)),
+          CustomConfig: S.optional(__S(5216, __c163, 0)),
           LastModifiedDate: S.optional(S.String),
           Layout: S.optional(S.String),
-          tags: S.optional(__S(0, __c0, 0)),
+          tags: S.optional(__S(5216, __c163, 0)),
           TemplateDescription: S.optional(S.String),
           TemplateName: S.optional(S.String),
           TemplateType: S.optional(S.String),
           Version: S.optional(S.String),
         }),
       ).annotate({ identifier: "InAppTemplateResponse" });
-    case 6:
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          InAppTemplateResponse: S.optional(__S(261, __c32, 5))
+          InAppTemplateResponse: S.optional(__S(4801, __c150, 1))
             .pipe(T.HttpPayload())
             .annotate({ identifier: "InAppTemplateResponse" }),
         }),
       ).annotate({ identifier: "GetInAppTemplateResponse" });
-    case 7:
+  }
+}
+function __c151(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           ApplicationId: S.String.pipe(T.HttpLabel("ApplicationId")),
@@ -12251,7 +13427,7 @@ function __c32(j: number): any {
       ).annotate({ identifier: "GetJourneyRequest" });
   }
 }
-function __c33(j: number): any {
+function __c152(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -12290,7 +13466,7 @@ function __c33(j: number): any {
           EndTime: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
           JourneyId: S.optional(S.String),
           KpiName: S.optional(S.String),
-          KpiResult: S.optional(__S(199, __c24, 7)),
+          KpiResult: S.optional(__S(3972, __c124, 4)),
           NextToken: S.optional(S.String),
           StartTime: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
         }),
@@ -12300,14 +13476,18 @@ function __c33(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          JourneyDateRangeKpiResponse: S.optional(__S(265, __c33, 1))
+          JourneyDateRangeKpiResponse: S.optional(__S(4865, __c152, 1))
             .pipe(T.HttpPayload())
             .annotate({ identifier: "JourneyDateRangeKpiResponse" }),
         }),
       ).annotate({
         identifier: "GetJourneyDateRangeKpiResponse",
       });
-    case 3:
+  }
+}
+function __c153(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           ApplicationId: S.String.pipe(T.HttpLabel("ApplicationId")),
@@ -12331,7 +13511,7 @@ function __c33(j: number): any {
       ).annotate({
         identifier: "GetJourneyExecutionActivityMetricsRequest",
       });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           ActivityType: S.optional(S.String),
@@ -12339,22 +13519,26 @@ function __c33(j: number): any {
           JourneyActivityId: S.optional(S.String),
           JourneyId: S.optional(S.String),
           LastEvaluatedTime: S.optional(S.String),
-          Metrics: S.optional(__S(0, __c0, 0)),
+          Metrics: S.optional(__S(5216, __c163, 0)),
         }),
       ).annotate({
         identifier: "JourneyExecutionActivityMetricsResponse",
       });
-    case 5:
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          JourneyExecutionActivityMetricsResponse: S.optional(__S(268, __c33, 4))
+          JourneyExecutionActivityMetricsResponse: S.optional(__S(4897, __c153, 1))
             .pipe(T.HttpPayload())
             .annotate({ identifier: "JourneyExecutionActivityMetricsResponse" }),
         }),
       ).annotate({
         identifier: "GetJourneyExecutionActivityMetricsResponse",
       });
-    case 6:
+  }
+}
+function __c154(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           ApplicationId: S.String.pipe(T.HttpLabel("ApplicationId")),
@@ -12377,32 +13561,32 @@ function __c33(j: number): any {
       ).annotate({
         identifier: "GetJourneyExecutionMetricsRequest",
       });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           ApplicationId: S.optional(S.String),
           JourneyId: S.optional(S.String),
           LastEvaluatedTime: S.optional(S.String),
-          Metrics: S.optional(__S(0, __c0, 0)),
+          Metrics: S.optional(__S(5216, __c163, 0)),
         }),
       ).annotate({
         identifier: "JourneyExecutionMetricsResponse",
       });
-  }
-}
-function __c34(j: number): any {
-  switch (j) {
-    case 0:
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          JourneyExecutionMetricsResponse: S.optional(__S(271, __c33, 7))
+          JourneyExecutionMetricsResponse: S.optional(__S(4929, __c154, 1))
             .pipe(T.HttpPayload())
             .annotate({ identifier: "JourneyExecutionMetricsResponse" }),
         }),
       ).annotate({
         identifier: "GetJourneyExecutionMetricsResponse",
       });
-    case 1:
+  }
+}
+function __c155(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           ApplicationId: S.String.pipe(T.HttpLabel("ApplicationId")),
@@ -12427,7 +13611,7 @@ function __c34(j: number): any {
       ).annotate({
         identifier: "GetJourneyRunExecutionActivityMetricsRequest",
       });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           ActivityType: S.optional(S.String),
@@ -12435,23 +13619,27 @@ function __c34(j: number): any {
           JourneyActivityId: S.optional(S.String),
           JourneyId: S.optional(S.String),
           LastEvaluatedTime: S.optional(S.String),
-          Metrics: S.optional(__S(0, __c0, 0)),
+          Metrics: S.optional(__S(5216, __c163, 0)),
           RunId: S.optional(S.String),
         }),
       ).annotate({
         identifier: "JourneyRunExecutionActivityMetricsResponse",
       });
-    case 3:
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          JourneyRunExecutionActivityMetricsResponse: S.optional(__S(274, __c34, 2))
+          JourneyRunExecutionActivityMetricsResponse: S.optional(__S(4961, __c155, 1))
             .pipe(T.HttpPayload())
             .annotate({ identifier: "JourneyRunExecutionActivityMetricsResponse" }),
         }),
       ).annotate({
         identifier: "GetJourneyRunExecutionActivityMetricsResponse",
       });
-    case 4:
+  }
+}
+function __c156(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           ApplicationId: S.String.pipe(T.HttpLabel("ApplicationId")),
@@ -12475,29 +13663,33 @@ function __c34(j: number): any {
       ).annotate({
         identifier: "GetJourneyRunExecutionMetricsRequest",
       });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           ApplicationId: S.optional(S.String),
           JourneyId: S.optional(S.String),
           LastEvaluatedTime: S.optional(S.String),
-          Metrics: S.optional(__S(0, __c0, 0)),
+          Metrics: S.optional(__S(5216, __c163, 0)),
           RunId: S.optional(S.String),
         }),
       ).annotate({
         identifier: "JourneyRunExecutionMetricsResponse",
       });
-    case 6:
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          JourneyRunExecutionMetricsResponse: S.optional(__S(277, __c34, 5))
+          JourneyRunExecutionMetricsResponse: S.optional(__S(4993, __c156, 1))
             .pipe(T.HttpPayload())
             .annotate({ identifier: "JourneyRunExecutionMetricsResponse" }),
         }),
       ).annotate({
         identifier: "GetJourneyRunExecutionMetricsResponse",
       });
-    case 7:
+  }
+}
+function __c157(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           ApplicationId: S.String.pipe(T.HttpLabel("ApplicationId")),
@@ -12515,11 +13707,7 @@ function __c34(j: number): any {
           ),
         ),
       ).annotate({ identifier: "GetJourneyRunsRequest" });
-  }
-}
-function __c35(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           CreationTime: S.optional(S.String),
@@ -12528,21 +13716,25 @@ function __c35(j: number): any {
           Status: S.optional(S.String),
         }),
       ).annotate({ identifier: "JourneyRunResponse" });
-    case 1:
-      return S.Array(__S(280, __c35, 0));
     case 2:
-      return S.suspend(() =>
-        S.Struct({ Item: S.optional(__S(281, __c35, 1)), NextToken: S.optional(S.String) }),
-      ).annotate({ identifier: "JourneyRunsResponse" });
+      return S.Array(__S(5025, __c157, 1));
     case 3:
       return S.suspend(() =>
+        S.Struct({ Item: S.optional(__S(5026, __c157, 2)), NextToken: S.optional(S.String) }),
+      ).annotate({ identifier: "JourneyRunsResponse" });
+    case 4:
+      return S.suspend(() =>
         S.Struct({
-          JourneyRunsResponse: S.optional(__S(282, __c35, 2))
+          JourneyRunsResponse: S.optional(__S(5027, __c157, 3))
             .pipe(T.HttpPayload())
             .annotate({ identifier: "JourneyRunsResponse" }),
         }),
       ).annotate({ identifier: "GetJourneyRunsResponse" });
-    case 4:
+  }
+}
+function __c158(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           TemplateName: S.String.pipe(T.HttpLabel("TemplateName")),
@@ -12558,20 +13750,20 @@ function __c35(j: number): any {
           ),
         ),
       ).annotate({ identifier: "GetPushTemplateRequest" });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          ADM: S.optional(__S(109, __c13, 5)),
-          APNS: S.optional(__S(110, __c13, 6)),
+          ADM: S.optional(__S(1824, __c57, 0)),
+          APNS: S.optional(__S(1825, __c57, 1)),
           Arn: S.optional(S.String),
-          Baidu: S.optional(__S(109, __c13, 5)),
+          Baidu: S.optional(__S(1824, __c57, 0)),
           CreationDate: S.optional(S.String),
-          Default: S.optional(__S(111, __c13, 7)),
+          Default: S.optional(__S(1826, __c57, 2)),
           DefaultSubstitutions: S.optional(S.String),
-          GCM: S.optional(__S(109, __c13, 5)),
+          GCM: S.optional(__S(1824, __c57, 0)),
           LastModifiedDate: S.optional(S.String),
           RecommenderId: S.optional(S.String),
-          tags: S.optional(__S(0, __c0, 0)),
+          tags: S.optional(__S(5216, __c163, 0)),
           TemplateDescription: S.optional(S.String),
           TemplateName: S.optional(S.String),
           TemplateType: S.optional(S.String),
@@ -12580,15 +13772,19 @@ function __c35(j: number): any {
       ).annotate({
         identifier: "PushNotificationTemplateResponse",
       });
-    case 6:
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          PushNotificationTemplateResponse: S.optional(__S(285, __c35, 5))
+          PushNotificationTemplateResponse: S.optional(__S(5057, __c158, 1))
             .pipe(T.HttpPayload())
             .annotate({ identifier: "PushNotificationTemplateResponse" }),
         }),
       ).annotate({ identifier: "GetPushTemplateResponse" });
-    case 7:
+  }
+}
+function __c159(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ RecommenderId: S.String.pipe(T.HttpLabel("RecommenderId")) }).pipe(
           T.all(
@@ -12605,7 +13801,55 @@ function __c35(j: number): any {
       });
   }
 }
-function __c36(j: number): any {
+function __c160(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ Name: S.optional(S.String), tags: S.optional(__S(5216, __c163, 0)) }),
+      ).annotate({ identifier: "CreateApplicationRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          CreateApplicationRequest: S.optional(__S(5120, __c160, 0))
+            .pipe(T.HttpPayload())
+            .annotate({ identifier: "CreateApplicationRequest" }),
+        }).pipe(T.all(T.Http({ method: "POST", uri: "/v1/apps" }), svc, auth, proto, ver, rules)),
+      ).annotate({ identifier: "CreateAppRequest" });
+  }
+}
+function __c161(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          ApplicationResponse: S.optional(__S(5184, __c162, 0))
+            .pipe(T.HttpPayload())
+            .annotate({ identifier: "ApplicationResponse" }),
+        }),
+      ).annotate({ identifier: "CreateAppResponse" });
+  }
+}
+function __c162(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          Arn: S.optional(S.String),
+          Id: S.optional(S.String),
+          Name: S.optional(S.String),
+          tags: S.optional(__S(5216, __c163, 0)),
+          CreationDate: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ApplicationResponse" });
+  }
+}
+function __c163(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
+  }
+}
+function __c164(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -12619,11 +13863,11 @@ function __c36(j: number): any {
         identifier: "GetRecommenderConfigurationsRequest",
       });
     case 1:
-      return S.Array(__S(116, __c14, 4));
+      return S.Array(__S(1952, __c61, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          Item: S.optional(__S(289, __c36, 1)),
+          Item: S.optional(__S(5249, __c164, 1)),
           NextToken: S.optional(S.String),
         }),
       ).annotate({
@@ -12632,14 +13876,18 @@ function __c36(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          ListRecommenderConfigurationsResponse: S.optional(__S(290, __c36, 2))
+          ListRecommenderConfigurationsResponse: S.optional(__S(5250, __c164, 2))
             .pipe(T.HttpPayload())
             .annotate({ identifier: "ListRecommenderConfigurationsResponse" }),
         }),
       ).annotate({
         identifier: "GetRecommenderConfigurationsResponse",
       });
-    case 4:
+  }
+}
+function __c165(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           ApplicationId: S.String.pipe(T.HttpLabel("ApplicationId")),
@@ -12655,7 +13903,11 @@ function __c36(j: number): any {
           ),
         ),
       ).annotate({ identifier: "GetSegmentRequest" });
-    case 5:
+  }
+}
+function __c166(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           ApplicationId: S.String.pipe(T.HttpLabel("ApplicationId")),
@@ -12678,17 +13930,21 @@ function __c36(j: number): any {
       ).annotate({
         identifier: "GetSegmentExportJobsRequest",
       });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          ExportJobsResponse: S.optional(__S(245, __c30, 5))
+          ExportJobsResponse: S.optional(__S(4609, __c144, 1))
             .pipe(T.HttpPayload())
             .annotate({ identifier: "ExportJobsResponse" }),
         }),
       ).annotate({
         identifier: "GetSegmentExportJobsResponse",
       });
-    case 7:
+  }
+}
+function __c167(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           ApplicationId: S.String.pipe(T.HttpLabel("ApplicationId")),
@@ -12711,21 +13967,21 @@ function __c36(j: number): any {
       ).annotate({
         identifier: "GetSegmentImportJobsRequest",
       });
-  }
-}
-function __c37(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          ImportJobsResponse: S.optional(__S(251, __c31, 3))
+          ImportJobsResponse: S.optional(__S(4737, __c148, 1))
             .pipe(T.HttpPayload())
             .annotate({ identifier: "ImportJobsResponse" }),
         }),
       ).annotate({
         identifier: "GetSegmentImportJobsResponse",
       });
-    case 1:
+  }
+}
+function __c168(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           ApplicationId: S.String.pipe(T.HttpLabel("ApplicationId")),
@@ -12742,21 +13998,29 @@ function __c37(j: number): any {
           ),
         ),
       ).annotate({ identifier: "GetSegmentsRequest" });
-    case 2:
-      return S.Array(__S(128, __c16, 0));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({ Item: S.optional(__S(298, __c37, 2)), NextToken: S.optional(S.String) }),
-      ).annotate({ identifier: "SegmentsResponse" });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          SegmentsResponse: S.optional(__S(299, __c37, 3))
+          SegmentsResponse: S.optional(__S(5409, __c169, 1))
             .pipe(T.HttpPayload())
             .annotate({ identifier: "SegmentsResponse" }),
         }),
       ).annotate({ identifier: "GetSegmentsResponse" });
-    case 5:
+  }
+}
+function __c169(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(2119, __c66, 7));
+    case 1:
+      return S.suspend(() =>
+        S.Struct({ Item: S.optional(__S(5408, __c169, 0)), NextToken: S.optional(S.String) }),
+      ).annotate({ identifier: "SegmentsResponse" });
+  }
+}
+function __c170(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           ApplicationId: S.String.pipe(T.HttpLabel("ApplicationId")),
@@ -12776,17 +14040,21 @@ function __c37(j: number): any {
           ),
         ),
       ).annotate({ identifier: "GetSegmentVersionRequest" });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          SegmentResponse: S.optional(__S(128, __c16, 0))
+          SegmentResponse: S.optional(__S(2119, __c66, 7))
             .pipe(T.HttpPayload())
             .annotate({ identifier: "SegmentResponse" }),
         }),
       ).annotate({
         identifier: "GetSegmentVersionResponse",
       });
-    case 7:
+  }
+}
+function __c171(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           ApplicationId: S.String.pipe(T.HttpLabel("ApplicationId")),
@@ -12809,21 +14077,21 @@ function __c37(j: number): any {
       ).annotate({
         identifier: "GetSegmentVersionsRequest",
       });
-  }
-}
-function __c38(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          SegmentsResponse: S.optional(__S(299, __c37, 3))
+          SegmentsResponse: S.optional(__S(5409, __c169, 1))
             .pipe(T.HttpPayload())
             .annotate({ identifier: "SegmentsResponse" }),
         }),
       ).annotate({
         identifier: "GetSegmentVersionsResponse",
       });
-    case 1:
+  }
+}
+function __c172(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ ApplicationId: S.String.pipe(T.HttpLabel("ApplicationId")) }).pipe(
           T.all(
@@ -12836,7 +14104,11 @@ function __c38(j: number): any {
           ),
         ),
       ).annotate({ identifier: "GetSmsChannelRequest" });
-    case 2:
+  }
+}
+function __c173(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           TemplateName: S.String.pipe(T.HttpLabel("TemplateName")),
@@ -12852,7 +14124,7 @@ function __c38(j: number): any {
           ),
         ),
       ).annotate({ identifier: "GetSmsTemplateRequest" });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           Arn: S.optional(S.String),
@@ -12861,22 +14133,26 @@ function __c38(j: number): any {
           DefaultSubstitutions: S.optional(S.String),
           LastModifiedDate: S.optional(S.String),
           RecommenderId: S.optional(S.String),
-          tags: S.optional(__S(0, __c0, 0)),
+          tags: S.optional(__S(5216, __c163, 0)),
           TemplateDescription: S.optional(S.String),
           TemplateName: S.optional(S.String),
           TemplateType: S.optional(S.String),
           Version: S.optional(S.String),
         }),
       ).annotate({ identifier: "SMSTemplateResponse" });
-    case 4:
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          SMSTemplateResponse: S.optional(__S(307, __c38, 3))
+          SMSTemplateResponse: S.optional(__S(5537, __c173, 1))
             .pipe(T.HttpPayload())
             .annotate({ identifier: "SMSTemplateResponse" }),
         }),
       ).annotate({ identifier: "GetSmsTemplateResponse" });
-    case 5:
+  }
+}
+function __c174(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           ApplicationId: S.String.pipe(T.HttpLabel("ApplicationId")),
@@ -12892,15 +14168,403 @@ function __c38(j: number): any {
           ),
         ),
       ).annotate({ identifier: "GetUserEndpointsRequest" });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          EndpointsResponse: S.optional(__S(182, __c22, 6))
+          EndpointsResponse: S.optional(__S(3617, __c113, 1))
             .pipe(T.HttpPayload())
             .annotate({ identifier: "EndpointsResponse" }),
         }),
       ).annotate({ identifier: "GetUserEndpointsResponse" });
+  }
+}
+function __c175(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          ApplicationId: S.String.pipe(T.HttpLabel("ApplicationId")),
+          WriteCampaignRequest: S.optional(__S(5698, __c178, 2))
+            .pipe(T.HttpPayload())
+            .annotate({ identifier: "WriteCampaignRequest" }),
+        }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/v1/apps/{ApplicationId}/campaigns" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "CreateCampaignRequest" });
+  }
+}
+function __c176(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ Name: S.optional(S.String), Value: S.optional(S.String) }),
+      ).annotate({ identifier: "MessageHeader" });
+    case 1:
+      return S.Array(__S(5632, __c176, 0));
+  }
+}
+function __c177(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c178(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          CustomDeliveryConfiguration: S.optional(__S(5984, __c187, 0)),
+          MessageConfiguration: S.optional(__S(5989, __c187, 5)),
+          Schedule: S.optional(__S(5990, __c187, 6)),
+          SizePercent: S.optional(S.Number),
+          TemplateConfiguration: S.optional(__S(5953, __c186, 1)),
+          TreatmentDescription: S.optional(S.String),
+          TreatmentName: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "WriteTreatmentResource" });
+    case 1:
+      return S.Array(__S(5696, __c178, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          AdditionalTreatments: S.optional(__S(5697, __c178, 1)),
+          CustomDeliveryConfiguration: S.optional(__S(5984, __c187, 0)),
+          Description: S.optional(S.String),
+          HoldoutPercent: S.optional(S.Number),
+          Hook: S.optional(__S(5888, __c184, 0)),
+          IsPaused: S.optional(S.Boolean),
+          Limits: S.optional(__S(5889, __c184, 1)),
+          MessageConfiguration: S.optional(__S(5989, __c187, 5)),
+          Name: S.optional(S.String),
+          Schedule: S.optional(__S(5990, __c187, 6)),
+          SegmentId: S.optional(S.String),
+          SegmentVersion: S.optional(S.Number),
+          tags: S.optional(__S(5216, __c163, 0)),
+          TemplateConfiguration: S.optional(__S(5953, __c186, 1)),
+          TreatmentDescription: S.optional(S.String),
+          TreatmentName: S.optional(S.String),
+          Priority: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "WriteCampaignRequest" });
+  }
+}
+function __c179(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          Alignment: S.optional(S.String),
+          Body: S.optional(S.String),
+          TextColor: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "InAppMessageBodyConfig" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          Alignment: S.optional(S.String),
+          Header: S.optional(S.String),
+          TextColor: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "InAppMessageHeaderConfig" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({ ButtonAction: S.optional(S.String), Link: S.optional(S.String) }),
+      ).annotate({
+        identifier: "OverrideButtonConfiguration",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          BackgroundColor: S.optional(S.String),
+          BorderRadius: S.optional(S.Number),
+          ButtonAction: S.optional(S.String),
+          Link: S.optional(S.String),
+          Text: S.optional(S.String),
+          TextColor: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "DefaultButtonConfiguration",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          Android: S.optional(__S(5730, __c179, 2)),
+          DefaultConfig: S.optional(__S(5731, __c179, 3)),
+          IOS: S.optional(__S(5730, __c179, 2)),
+          Web: S.optional(__S(5730, __c179, 2)),
+        }),
+      ).annotate({ identifier: "InAppMessageButton" });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          BackgroundColor: S.optional(S.String),
+          BodyConfig: S.optional(__S(5728, __c179, 0)),
+          HeaderConfig: S.optional(__S(5729, __c179, 1)),
+          ImageUrl: S.optional(S.String),
+          PrimaryBtn: S.optional(__S(5732, __c179, 4)),
+          SecondaryBtn: S.optional(__S(5732, __c179, 4)),
+        }),
+      ).annotate({ identifier: "InAppMessageContent" });
+    case 6:
+      return S.Array(__S(5733, __c179, 5));
+  }
+}
+function __c180(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ AttributeType: S.optional(S.String), Values: S.optional(__S(5664, __c177, 0)) }),
+      ).annotate({ identifier: "AttributeDimension" });
+    case 1:
+      return S.Record(S.String, /*@__PURE__*/ __S(5760, __c180, 0).pipe(S.optional));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({ DimensionType: S.optional(S.String), Values: S.optional(__S(5664, __c177, 0)) }),
+      ).annotate({ identifier: "SetDimension" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({ ComparisonOperator: S.optional(S.String), Value: S.optional(S.Number) }),
+      ).annotate({ identifier: "MetricDimension" });
+    case 4:
+      return S.Record(S.String, /*@__PURE__*/ __S(5763, __c180, 3).pipe(S.optional));
+  }
+}
+function __c181(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ End: S.optional(S.String), Start: S.optional(S.String) }),
+      ).annotate({ identifier: "QuietTime" });
+  }
+}
+function __c182(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          Attributes: S.optional(__S(5761, __c180, 1)),
+          EventType: S.optional(__S(5762, __c180, 2)),
+          Metrics: S.optional(__S(5764, __c180, 4)),
+        }),
+      ).annotate({ identifier: "EventDimensions" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          Dimensions: S.optional(__S(5824, __c182, 0)),
+          FilterType: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "CampaignEventFilter" });
+  }
+}
+function __c183(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__EndpointTypesElement);
+    case 1:
+      return S.suspend(() => S.Struct({ Data: S.optional(S.String) })).annotate({
+        identifier: "CampaignCustomMessage",
+      });
+  }
+}
+function __c184(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          LambdaFunctionName: S.optional(S.String),
+          Mode: S.optional(S.String),
+          WebUrl: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "CampaignHook" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          Daily: S.optional(S.Number),
+          MaximumDuration: S.optional(S.Number),
+          MessagesPerSecond: S.optional(S.Number),
+          Total: S.optional(S.Number),
+          Session: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "CampaignLimits" });
+  }
+}
+function __c185(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          CampaignResponse: S.optional(__S(5994, __c187, 10))
+            .pipe(T.HttpPayload())
+            .annotate({ identifier: "CampaignResponse" }),
+        }),
+      ).annotate({ identifier: "CreateCampaignResponse" });
+  }
+}
+function __c186(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ Name: S.optional(S.String), Version: S.optional(S.String) }),
+      ).annotate({ identifier: "Template" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          EmailTemplate: S.optional(__S(5952, __c186, 0)),
+          PushTemplate: S.optional(__S(5952, __c186, 0)),
+          SMSTemplate: S.optional(__S(5952, __c186, 0)),
+          VoiceTemplate: S.optional(__S(5952, __c186, 0)),
+          InAppTemplate: S.optional(__S(5952, __c186, 0)),
+        }),
+      ).annotate({ identifier: "TemplateConfiguration" });
+  }
+}
+function __c187(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          DeliveryUri: S.optional(S.String),
+          EndpointTypes: S.optional(__S(5856, __c183, 0)),
+        }),
+      ).annotate({
+        identifier: "CustomDeliveryConfiguration",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          Action: S.optional(S.String),
+          Body: S.optional(S.String),
+          ImageIconUrl: S.optional(S.String),
+          ImageSmallIconUrl: S.optional(S.String),
+          ImageUrl: S.optional(S.String),
+          JsonBody: S.optional(S.String),
+          MediaUrl: S.optional(S.String),
+          RawContent: S.optional(S.String),
+          SilentPush: S.optional(S.Boolean),
+          TimeToLive: S.optional(S.Number),
+          Title: S.optional(S.String),
+          Url: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Message" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          Body: S.optional(S.String),
+          FromAddress: S.optional(S.String),
+          Headers: S.optional(__S(5633, __c176, 1)),
+          HtmlBody: S.optional(S.String),
+          Title: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "CampaignEmailMessage" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          Body: S.optional(S.String),
+          MessageType: S.optional(S.String),
+          OriginationNumber: S.optional(S.String),
+          SenderId: S.optional(S.String),
+          EntityId: S.optional(S.String),
+          TemplateId: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "CampaignSmsMessage" });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          Body: S.optional(S.String),
+          Content: S.optional(__S(5734, __c179, 6)),
+          CustomConfig: S.optional(__S(5216, __c163, 0)),
+          Layout: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "CampaignInAppMessage" });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          ADMMessage: S.optional(__S(5985, __c187, 1)),
+          APNSMessage: S.optional(__S(5985, __c187, 1)),
+          BaiduMessage: S.optional(__S(5985, __c187, 1)),
+          CustomMessage: S.optional(__S(5857, __c183, 1)),
+          DefaultMessage: S.optional(__S(5985, __c187, 1)),
+          EmailMessage: S.optional(__S(5986, __c187, 2)),
+          GCMMessage: S.optional(__S(5985, __c187, 1)),
+          SMSMessage: S.optional(__S(5987, __c187, 3)),
+          InAppMessage: S.optional(__S(5988, __c187, 4)),
+        }),
+      ).annotate({ identifier: "MessageConfiguration" });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          EndTime: S.optional(S.String),
+          EventFilter: S.optional(__S(5825, __c182, 1)),
+          Frequency: S.optional(S.String),
+          IsLocalTime: S.optional(S.Boolean),
+          QuietTime: S.optional(__S(5792, __c181, 0)),
+          StartTime: S.optional(S.String),
+          Timezone: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Schedule" });
     case 7:
+      return S.suspend(() => S.Struct({ CampaignStatus: S.optional(S.String) })).annotate({
+        identifier: "CampaignState",
+      });
+    case 8:
+      return S.suspend(() =>
+        S.Struct({
+          CustomDeliveryConfiguration: S.optional(__S(5984, __c187, 0)),
+          Id: S.optional(S.String),
+          MessageConfiguration: S.optional(__S(5989, __c187, 5)),
+          Schedule: S.optional(__S(5990, __c187, 6)),
+          SizePercent: S.optional(S.Number),
+          State: S.optional(__S(5991, __c187, 7)),
+          TemplateConfiguration: S.optional(__S(5953, __c186, 1)),
+          TreatmentDescription: S.optional(S.String),
+          TreatmentName: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "TreatmentResource" });
+    case 9:
+      return S.Array(__S(5992, __c187, 8));
+    case 10:
+      return S.suspend(() =>
+        S.Struct({
+          AdditionalTreatments: S.optional(__S(5993, __c187, 9)),
+          ApplicationId: S.optional(S.String),
+          Arn: S.optional(S.String),
+          CreationDate: S.optional(S.String),
+          CustomDeliveryConfiguration: S.optional(__S(5984, __c187, 0)),
+          DefaultState: S.optional(__S(5991, __c187, 7)),
+          Description: S.optional(S.String),
+          HoldoutPercent: S.optional(S.Number),
+          Hook: S.optional(__S(5888, __c184, 0)),
+          Id: S.optional(S.String),
+          IsPaused: S.optional(S.Boolean),
+          LastModifiedDate: S.optional(S.String),
+          Limits: S.optional(__S(5889, __c184, 1)),
+          MessageConfiguration: S.optional(__S(5989, __c187, 5)),
+          Name: S.optional(S.String),
+          Schedule: S.optional(__S(5990, __c187, 6)),
+          SegmentId: S.optional(S.String),
+          SegmentVersion: S.optional(S.Number),
+          State: S.optional(__S(5991, __c187, 7)),
+          tags: S.optional(__S(5216, __c163, 0)),
+          TemplateConfiguration: S.optional(__S(5953, __c186, 1)),
+          TreatmentDescription: S.optional(S.String),
+          TreatmentName: S.optional(S.String),
+          Version: S.optional(S.Number),
+          Priority: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "CampaignResponse" });
+  }
+}
+function __c188(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ ApplicationId: S.String.pipe(T.HttpLabel("ApplicationId")) }).pipe(
           T.all(
@@ -12913,19 +14577,19 @@ function __c38(j: number): any {
           ),
         ),
       ).annotate({ identifier: "GetVoiceChannelRequest" });
-  }
-}
-function __c39(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          VoiceChannelResponse: S.optional(__S(135, __c16, 7))
+          VoiceChannelResponse: S.optional(__S(2304, __c72, 0))
             .pipe(T.HttpPayload())
             .annotate({ identifier: "VoiceChannelResponse" }),
         }),
       ).annotate({ identifier: "GetVoiceChannelResponse" });
-    case 1:
+  }
+}
+function __c189(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           TemplateName: S.String.pipe(T.HttpLabel("TemplateName")),
@@ -12941,7 +14605,7 @@ function __c39(j: number): any {
           ),
         ),
       ).annotate({ identifier: "GetVoiceTemplateRequest" });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           Arn: S.optional(S.String),
@@ -12950,7 +14614,7 @@ function __c39(j: number): any {
           DefaultSubstitutions: S.optional(S.String),
           LanguageCode: S.optional(S.String),
           LastModifiedDate: S.optional(S.String),
-          tags: S.optional(__S(0, __c0, 0)),
+          tags: S.optional(__S(5216, __c163, 0)),
           TemplateDescription: S.optional(S.String),
           TemplateName: S.optional(S.String),
           TemplateType: S.optional(S.String),
@@ -12958,15 +14622,19 @@ function __c39(j: number): any {
           VoiceId: S.optional(S.String),
         }),
       ).annotate({ identifier: "VoiceTemplateResponse" });
-    case 3:
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          VoiceTemplateResponse: S.optional(__S(314, __c39, 2))
+          VoiceTemplateResponse: S.optional(__S(6049, __c189, 1))
             .pipe(T.HttpPayload())
             .annotate({ identifier: "VoiceTemplateResponse" }),
         }),
       ).annotate({ identifier: "GetVoiceTemplateResponse" });
-    case 4:
+  }
+}
+function __c190(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           ApplicationId: S.String.pipe(T.HttpLabel("ApplicationId")),
@@ -12983,23 +14651,23 @@ function __c39(j: number): any {
           ),
         ),
       ).annotate({ identifier: "ListJourneysRequest" });
-    case 5:
-      return S.Array(__S(107, __c13, 3));
-    case 6:
+    case 1:
+      return S.Array(__S(1733, __c54, 5));
+    case 2:
       return S.suspend(() =>
-        S.Struct({ Item: S.optional(__S(317, __c39, 5)), NextToken: S.optional(S.String) }),
+        S.Struct({ Item: S.optional(__S(6081, __c190, 1)), NextToken: S.optional(S.String) }),
       ).annotate({ identifier: "JourneysResponse" });
-    case 7:
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          JourneysResponse: S.optional(__S(318, __c39, 6))
+          JourneysResponse: S.optional(__S(6082, __c190, 2))
             .pipe(T.HttpPayload())
             .annotate({ identifier: "JourneysResponse" }),
         }),
       ).annotate({ identifier: "ListJourneysResponse" });
   }
 }
-function __c40(j: number): any {
+function __c191(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -13017,20 +14685,28 @@ function __c40(j: number): any {
         identifier: "ListTagsForResourceRequest",
       });
     case 1:
-      return S.suspend(() => S.Struct({ tags: S.optional(__S(0, __c0, 0)) })).annotate({
-        identifier: "TagsModel",
-      });
-    case 2:
       return S.suspend(() =>
         S.Struct({
-          TagsModel: S.optional(__S(321, __c40, 1))
+          TagsModel: S.optional(__S(6144, __c192, 0))
             .pipe(T.HttpPayload())
             .annotate({ identifier: "TagsModel" }),
         }),
       ).annotate({
         identifier: "ListTagsForResourceResponse",
       });
-    case 3:
+  }
+}
+function __c192(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({ tags: S.optional(__S(5216, __c163, 0)) })).annotate({
+        identifier: "TagsModel",
+      });
+  }
+}
+function __c193(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           NextToken: S.optional(S.String).pipe(T.HttpQuery("next-token")),
@@ -13041,37 +14717,37 @@ function __c40(j: number): any {
           T.all(T.Http({ method: "GET", uri: "/v1/templates" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "ListTemplatesRequest" });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           Arn: S.optional(S.String),
           CreationDate: S.optional(S.String),
           DefaultSubstitutions: S.optional(S.String),
           LastModifiedDate: S.optional(S.String),
-          tags: S.optional(__S(0, __c0, 0)),
+          tags: S.optional(__S(5216, __c163, 0)),
           TemplateDescription: S.optional(S.String),
           TemplateName: S.optional(S.String),
           TemplateType: S.optional(S.String),
           Version: S.optional(S.String),
         }),
       ).annotate({ identifier: "TemplateResponse" });
-    case 5:
-      return S.Array(__S(324, __c40, 4));
-    case 6:
+    case 2:
+      return S.Array(__S(6177, __c193, 1));
+    case 3:
       return S.suspend(() =>
-        S.Struct({ Item: S.optional(__S(325, __c40, 5)), NextToken: S.optional(S.String) }),
+        S.Struct({ Item: S.optional(__S(6178, __c193, 2)), NextToken: S.optional(S.String) }),
       ).annotate({ identifier: "TemplatesResponse" });
-    case 7:
+    case 4:
       return S.suspend(() =>
         S.Struct({
-          TemplatesResponse: S.optional(__S(326, __c40, 6))
+          TemplatesResponse: S.optional(__S(6179, __c193, 3))
             .pipe(T.HttpPayload())
             .annotate({ identifier: "TemplatesResponse" }),
         }),
       ).annotate({ identifier: "ListTemplatesResponse" });
   }
 }
-function __c41(j: number): any {
+function __c194(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -13106,11 +14782,11 @@ function __c41(j: number): any {
         }),
       ).annotate({ identifier: "TemplateVersionResponse" });
     case 2:
-      return S.Array(__S(329, __c41, 1));
+      return S.Array(__S(6209, __c194, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          Item: S.optional(__S(330, __c41, 2)),
+          Item: S.optional(__S(6210, __c194, 2)),
           Message: S.optional(S.String),
           NextToken: S.optional(S.String),
           RequestID: S.optional(S.String),
@@ -13119,21 +14795,25 @@ function __c41(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          TemplateVersionsResponse: S.optional(__S(331, __c41, 3))
+          TemplateVersionsResponse: S.optional(__S(6211, __c194, 3))
             .pipe(T.HttpPayload())
             .annotate({ identifier: "TemplateVersionsResponse" }),
         }),
       ).annotate({
         identifier: "ListTemplateVersionsResponse",
       });
-    case 5:
+  }
+}
+function __c195(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ IsoCountryCode: S.optional(S.String), PhoneNumber: S.optional(S.String) }),
       ).annotate({ identifier: "NumberValidateRequest" });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          NumberValidateRequest: S.optional(__S(333, __c41, 5))
+          NumberValidateRequest: S.optional(__S(6240, __c195, 0))
             .pipe(T.HttpPayload())
             .annotate({ identifier: "NumberValidateRequest" }),
         }).pipe(
@@ -13149,7 +14829,7 @@ function __c41(j: number): any {
       ).annotate({
         identifier: "PhoneNumberValidateRequest",
       });
-    case 7:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           Carrier: S.optional(S.String),
@@ -13168,37 +14848,21 @@ function __c41(j: number): any {
           ZipCode: S.optional(S.String),
         }),
       ).annotate({ identifier: "NumberValidateResponse" });
-  }
-}
-function __c42(j: number): any {
-  switch (j) {
-    case 0:
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          NumberValidateResponse: S.optional(__S(335, __c41, 7))
+          NumberValidateResponse: S.optional(__S(6242, __c195, 2))
             .pipe(T.HttpPayload())
             .annotate({ identifier: "NumberValidateResponse" }),
         }),
       ).annotate({
         identifier: "PhoneNumberValidateResponse",
       });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          Address: S.optional(S.String),
-          Attributes: S.optional(__S(159, __c19, 7)),
-          ChannelType: S.optional(S.String),
-          Demographic: S.optional(__S(160, __c20, 0)),
-          EffectiveDate: S.optional(S.String),
-          EndpointStatus: S.optional(S.String),
-          Location: S.optional(__S(161, __c20, 1)),
-          Metrics: S.optional(__S(126, __c15, 6)),
-          OptOut: S.optional(S.String),
-          RequestId: S.optional(S.String),
-          User: S.optional(__S(162, __c20, 2)),
-        }),
-      ).annotate({ identifier: "PublicEndpoint" });
-    case 2:
+  }
+}
+function __c196(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           Duration: S.optional(S.Number),
@@ -13207,45 +14871,41 @@ function __c42(j: number): any {
           StopTimestamp: S.optional(S.String),
         }),
       ).annotate({ identifier: "Session" });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           AppPackageName: S.optional(S.String),
           AppTitle: S.optional(S.String),
           AppVersionCode: S.optional(S.String),
-          Attributes: S.optional(__S(0, __c0, 0)),
+          Attributes: S.optional(__S(5216, __c163, 0)),
           ClientSdkVersion: S.optional(S.String),
           EventType: S.optional(S.String),
-          Metrics: S.optional(__S(126, __c15, 6)),
+          Metrics: S.optional(__S(2048, __c64, 0)),
           SdkName: S.optional(S.String),
-          Session: S.optional(__S(338, __c42, 2)),
+          Session: S.optional(__S(6272, __c196, 0)),
           Timestamp: S.optional(S.String),
         }),
       ).annotate({ identifier: "Event" });
-    case 4:
-      return S.Record(S.String, /*@__PURE__*/ __S(339, __c42, 3).pipe(S.optional));
-    case 5:
+    case 2:
+      return S.Record(S.String, /*@__PURE__*/ __S(6273, __c196, 1).pipe(S.optional));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          Endpoint: S.optional(__S(337, __c42, 1)),
-          Events: S.optional(__S(340, __c42, 4)),
+          Endpoint: S.optional(__S(6304, __c197, 0)),
+          Events: S.optional(__S(6274, __c196, 2)),
         }),
       ).annotate({ identifier: "EventsBatch" });
-    case 6:
-      return S.Record(S.String, /*@__PURE__*/ __S(341, __c42, 5).pipe(S.optional));
-    case 7:
-      return S.suspend(() => S.Struct({ BatchItem: S.optional(__S(342, __c42, 6)) })).annotate({
+    case 4:
+      return S.Record(S.String, /*@__PURE__*/ __S(6275, __c196, 3).pipe(S.optional));
+    case 5:
+      return S.suspend(() => S.Struct({ BatchItem: S.optional(__S(6276, __c196, 4)) })).annotate({
         identifier: "EventsRequest",
       });
-  }
-}
-function __c43(j: number): any {
-  switch (j) {
-    case 0:
+    case 6:
       return S.suspend(() =>
         S.Struct({
           ApplicationId: S.String.pipe(T.HttpLabel("ApplicationId")),
-          EventsRequest: S.optional(__S(343, __c42, 7))
+          EventsRequest: S.optional(__S(6277, __c196, 5))
             .pipe(T.HttpPayload())
             .annotate({ identifier: "EventsRequest" }),
         }).pipe(
@@ -13259,46 +14919,66 @@ function __c43(j: number): any {
           ),
         ),
       ).annotate({ identifier: "PutEventsRequest" });
-    case 1:
+    case 7:
       return S.suspend(() =>
         S.Struct({ Message: S.optional(S.String), StatusCode: S.optional(S.Number) }),
       ).annotate({ identifier: "EndpointItemResponse" });
-    case 2:
-      return S.Record(S.String, /*@__PURE__*/ __S(345, __c43, 1).pipe(S.optional));
-    case 3:
+    case 8:
+      return S.Record(S.String, /*@__PURE__*/ __S(6279, __c196, 7).pipe(S.optional));
+    case 9:
       return S.suspend(() =>
         S.Struct({
-          EndpointItemResponse: S.optional(__S(345, __c43, 1)),
-          EventsItemResponse: S.optional(__S(346, __c43, 2)),
+          EndpointItemResponse: S.optional(__S(6279, __c196, 7)),
+          EventsItemResponse: S.optional(__S(6280, __c196, 8)),
         }),
       ).annotate({ identifier: "ItemResponse" });
-    case 4:
-      return S.Record(S.String, /*@__PURE__*/ __S(347, __c43, 3).pipe(S.optional));
-    case 5:
-      return S.suspend(() => S.Struct({ Results: S.optional(__S(348, __c43, 4)) })).annotate({
+    case 10:
+      return S.Record(S.String, /*@__PURE__*/ __S(6281, __c196, 9).pipe(S.optional));
+    case 11:
+      return S.suspend(() => S.Struct({ Results: S.optional(__S(6282, __c196, 10)) })).annotate({
         identifier: "EventsResponse",
       });
-    case 6:
+    case 12:
       return S.suspend(() =>
         S.Struct({
-          EventsResponse: S.optional(__S(349, __c43, 5))
+          EventsResponse: S.optional(__S(6283, __c196, 11))
             .pipe(T.HttpPayload())
             .annotate({ identifier: "EventsResponse" }),
         }),
       ).annotate({ identifier: "PutEventsResponse" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({ DestinationStreamArn: S.optional(S.String), RoleArn: S.optional(S.String) }),
-      ).annotate({ identifier: "WriteEventStream" });
   }
 }
-function __c44(j: number): any {
+function __c197(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
+          Address: S.optional(S.String),
+          Attributes: S.optional(__S(3104, __c97, 0)),
+          ChannelType: S.optional(S.String),
+          Demographic: S.optional(__S(3136, __c98, 0)),
+          EffectiveDate: S.optional(S.String),
+          EndpointStatus: S.optional(S.String),
+          Location: S.optional(__S(3137, __c98, 1)),
+          Metrics: S.optional(__S(2048, __c64, 0)),
+          OptOut: S.optional(S.String),
+          RequestId: S.optional(S.String),
+          User: S.optional(__S(3138, __c98, 2)),
+        }),
+      ).annotate({ identifier: "PublicEndpoint" });
+  }
+}
+function __c198(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ DestinationStreamArn: S.optional(S.String), RoleArn: S.optional(S.String) }),
+      ).annotate({ identifier: "WriteEventStream" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
           ApplicationId: S.String.pipe(T.HttpLabel("ApplicationId")),
-          WriteEventStream: S.optional(__S(351, __c43, 7))
+          WriteEventStream: S.optional(__S(6336, __c198, 0))
             .pipe(T.HttpPayload())
             .annotate({ identifier: "WriteEventStream" }),
         }).pipe(
@@ -13312,16 +14992,20 @@ function __c44(j: number): any {
           ),
         ),
       ).annotate({ identifier: "PutEventStreamRequest" });
-    case 1:
-      return S.suspend(() => S.Struct({ Blacklist: S.optional(__S(22, __c2, 6)) })).annotate({
+  }
+}
+function __c199(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({ Blacklist: S.optional(__S(5664, __c177, 0)) })).annotate({
         identifier: "UpdateAttributesRequest",
       });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           ApplicationId: S.String.pipe(T.HttpLabel("ApplicationId")),
           AttributeType: S.String.pipe(T.HttpLabel("AttributeType")),
-          UpdateAttributesRequest: S.optional(__S(353, __c44, 1))
+          UpdateAttributesRequest: S.optional(__S(6368, __c199, 0))
             .pipe(T.HttpPayload())
             .annotate({ identifier: "UpdateAttributesRequest" }),
         }).pipe(
@@ -13335,1117 +15019,24 @@ function __c44(j: number): any {
           ),
         ),
       ).annotate({ identifier: "RemoveAttributesRequest" });
-    case 3:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           ApplicationId: S.optional(S.String),
           AttributeType: S.optional(S.String),
-          Attributes: S.optional(__S(22, __c2, 6)),
+          Attributes: S.optional(__S(5664, __c177, 0)),
         }),
       ).annotate({ identifier: "AttributesResource" });
-    case 4:
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          AttributesResource: S.optional(__S(355, __c44, 3))
+          AttributesResource: S.optional(__S(6370, __c199, 2))
             .pipe(T.HttpPayload())
             .annotate({ identifier: "AttributesResource" }),
         }),
       ).annotate({ identifier: "RemoveAttributesResponse" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          BodyOverride: S.optional(S.String),
-          ChannelType: S.optional(S.String),
-          Context: S.optional(__S(0, __c0, 0)),
-          RawContent: S.optional(S.String),
-          Substitutions: S.optional(__S(159, __c19, 7)),
-          TitleOverride: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "AddressConfiguration" });
-    case 6:
-      return S.Record(S.String, /*@__PURE__*/ __S(357, __c44, 5).pipe(S.optional));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          BodyOverride: S.optional(S.String),
-          Context: S.optional(__S(0, __c0, 0)),
-          RawContent: S.optional(S.String),
-          Substitutions: S.optional(__S(159, __c19, 7)),
-          TitleOverride: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "EndpointSendConfiguration",
-      });
   }
 }
-function __c45(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Record(S.String, /*@__PURE__*/ __S(359, __c44, 7).pipe(S.optional));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          Action: S.optional(S.String),
-          Body: S.optional(S.String),
-          ConsolidationKey: S.optional(S.String),
-          Data: S.optional(__S(0, __c0, 0)),
-          ExpiresAfter: S.optional(S.String),
-          IconReference: S.optional(S.String),
-          ImageIconUrl: S.optional(S.String),
-          ImageUrl: S.optional(S.String),
-          MD5: S.optional(S.String),
-          RawContent: S.optional(S.String),
-          SilentPush: S.optional(S.Boolean),
-          SmallImageIconUrl: S.optional(S.String),
-          Sound: S.optional(S.String),
-          Substitutions: S.optional(__S(159, __c19, 7)),
-          Title: S.optional(S.String),
-          Url: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ADMMessage" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          APNSPushType: S.optional(S.String),
-          Action: S.optional(S.String),
-          Badge: S.optional(S.Number),
-          Body: S.optional(S.String),
-          Category: S.optional(S.String),
-          CollapseId: S.optional(S.String),
-          Data: S.optional(__S(0, __c0, 0)),
-          MediaUrl: S.optional(S.String),
-          PreferredAuthenticationMethod: S.optional(S.String),
-          Priority: S.optional(S.String),
-          RawContent: S.optional(S.String),
-          SilentPush: S.optional(S.Boolean),
-          Sound: S.optional(S.String),
-          Substitutions: S.optional(__S(159, __c19, 7)),
-          ThreadId: S.optional(S.String),
-          TimeToLive: S.optional(S.Number),
-          Title: S.optional(S.String),
-          Url: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "APNSMessage" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          Action: S.optional(S.String),
-          Body: S.optional(S.String),
-          Data: S.optional(__S(0, __c0, 0)),
-          IconReference: S.optional(S.String),
-          ImageIconUrl: S.optional(S.String),
-          ImageUrl: S.optional(S.String),
-          RawContent: S.optional(S.String),
-          SilentPush: S.optional(S.Boolean),
-          SmallImageIconUrl: S.optional(S.String),
-          Sound: S.optional(S.String),
-          Substitutions: S.optional(__S(159, __c19, 7)),
-          TimeToLive: S.optional(S.Number),
-          Title: S.optional(S.String),
-          Url: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "BaiduMessage" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({ Body: S.optional(S.String), Substitutions: S.optional(__S(159, __c19, 7)) }),
-      ).annotate({ identifier: "DefaultMessage" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          Action: S.optional(S.String),
-          Body: S.optional(S.String),
-          Data: S.optional(__S(0, __c0, 0)),
-          SilentPush: S.optional(S.Boolean),
-          Substitutions: S.optional(__S(159, __c19, 7)),
-          Title: S.optional(S.String),
-          Url: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "DefaultPushNotificationMessage",
-      });
-    case 6:
-      return S.suspend(() => S.Struct({ Data: S.optional(T.Blob) })).annotate({
-        identifier: "RawEmail",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({ Charset: S.optional(S.String), Data: S.optional(S.String) }),
-      ).annotate({ identifier: "SimpleEmailPart" });
-  }
-}
-function __c46(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          HtmlPart: S.optional(__S(367, __c45, 7)),
-          Subject: S.optional(__S(367, __c45, 7)),
-          TextPart: S.optional(__S(367, __c45, 7)),
-          Headers: S.optional(__S(10, __c1, 2)),
-        }),
-      ).annotate({ identifier: "SimpleEmail" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          Body: S.optional(S.String),
-          FeedbackForwardingAddress: S.optional(S.String),
-          FromAddress: S.optional(S.String),
-          RawEmail: S.optional(__S(366, __c45, 6)),
-          ReplyToAddresses: S.optional(__S(22, __c2, 6)),
-          SimpleEmail: S.optional(__S(368, __c46, 0)),
-          Substitutions: S.optional(__S(159, __c19, 7)),
-        }),
-      ).annotate({ identifier: "EmailMessage" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          Action: S.optional(S.String),
-          Body: S.optional(S.String),
-          CollapseKey: S.optional(S.String),
-          Data: S.optional(__S(0, __c0, 0)),
-          IconReference: S.optional(S.String),
-          ImageIconUrl: S.optional(S.String),
-          ImageUrl: S.optional(S.String),
-          PreferredAuthenticationMethod: S.optional(S.String),
-          Priority: S.optional(S.String),
-          RawContent: S.optional(S.String),
-          RestrictedPackageName: S.optional(S.String),
-          SilentPush: S.optional(S.Boolean),
-          SmallImageIconUrl: S.optional(S.String),
-          Sound: S.optional(S.String),
-          Substitutions: S.optional(__S(159, __c19, 7)),
-          TimeToLive: S.optional(S.Number),
-          Title: S.optional(S.String),
-          Url: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "GCMMessage" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          Body: S.optional(S.String),
-          Keyword: S.optional(S.String),
-          MediaUrl: S.optional(S.String),
-          MessageType: S.optional(S.String),
-          OriginationNumber: S.optional(S.String),
-          SenderId: S.optional(S.String),
-          Substitutions: S.optional(__S(159, __c19, 7)),
-          EntityId: S.optional(S.String),
-          TemplateId: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "SMSMessage" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          Body: S.optional(S.String),
-          LanguageCode: S.optional(S.String),
-          OriginationNumber: S.optional(S.String),
-          Substitutions: S.optional(__S(159, __c19, 7)),
-          VoiceId: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "VoiceMessage" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          ADMMessage: S.optional(__S(361, __c45, 1)),
-          APNSMessage: S.optional(__S(362, __c45, 2)),
-          BaiduMessage: S.optional(__S(363, __c45, 3)),
-          DefaultMessage: S.optional(__S(364, __c45, 4)),
-          DefaultPushNotificationMessage: S.optional(__S(365, __c45, 5)),
-          EmailMessage: S.optional(__S(369, __c46, 1)),
-          GCMMessage: S.optional(__S(370, __c46, 2)),
-          SMSMessage: S.optional(__S(371, __c46, 3)),
-          VoiceMessage: S.optional(__S(372, __c46, 4)),
-        }),
-      ).annotate({
-        identifier: "DirectMessageConfiguration",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          Addresses: S.optional(__S(358, __c44, 6)),
-          Context: S.optional(__S(0, __c0, 0)),
-          Endpoints: S.optional(__S(360, __c45, 0)),
-          MessageConfiguration: S.optional(__S(373, __c46, 5)),
-          TemplateConfiguration: S.optional(__S(33, __c4, 1)),
-          TraceId: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "MessageRequest" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          ApplicationId: S.String.pipe(T.HttpLabel("ApplicationId")),
-          MessageRequest: S.optional(__S(374, __c46, 6))
-            .pipe(T.HttpPayload())
-            .annotate({ identifier: "MessageRequest" }),
-        }).pipe(
-          T.all(
-            T.Http({ method: "POST", uri: "/v1/apps/{ApplicationId}/messages" }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({ identifier: "SendMessagesRequest" });
-  }
-}
-function __c47(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          Address: S.optional(S.String),
-          DeliveryStatus: S.optional(S.String),
-          MessageId: S.optional(S.String),
-          StatusCode: S.optional(S.Number),
-          StatusMessage: S.optional(S.String),
-          UpdatedToken: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "EndpointMessageResult" });
-    case 1:
-      return S.Record(S.String, /*@__PURE__*/ __S(376, __c47, 0).pipe(S.optional));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          DeliveryStatus: S.optional(S.String),
-          MessageId: S.optional(S.String),
-          StatusCode: S.optional(S.Number),
-          StatusMessage: S.optional(S.String),
-          UpdatedToken: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "MessageResult" });
-    case 3:
-      return S.Record(S.String, /*@__PURE__*/ __S(378, __c47, 2).pipe(S.optional));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          ApplicationId: S.optional(S.String),
-          EndpointResult: S.optional(__S(377, __c47, 1)),
-          RequestId: S.optional(S.String),
-          Result: S.optional(__S(379, __c47, 3)),
-        }),
-      ).annotate({ identifier: "MessageResponse" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          MessageResponse: S.optional(__S(380, __c47, 4))
-            .pipe(T.HttpPayload())
-            .annotate({ identifier: "MessageResponse" }),
-        }),
-      ).annotate({ identifier: "SendMessagesResponse" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          AllowedAttempts: S.optional(S.Number),
-          BrandName: S.optional(S.String),
-          Channel: S.optional(S.String),
-          CodeLength: S.optional(S.Number),
-          DestinationIdentity: S.optional(S.String),
-          EntityId: S.optional(S.String),
-          Language: S.optional(S.String),
-          OriginationIdentity: S.optional(S.String),
-          ReferenceId: S.optional(S.String),
-          TemplateId: S.optional(S.String),
-          ValidityPeriod: S.optional(S.Number),
-        }),
-      ).annotate({
-        identifier: "SendOTPMessageRequestParameters",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          ApplicationId: S.String.pipe(T.HttpLabel("ApplicationId")),
-          SendOTPMessageRequestParameters: S.optional(__S(382, __c47, 6))
-            .pipe(T.HttpPayload())
-            .annotate({ identifier: "SendOTPMessageRequestParameters" }),
-        }).pipe(
-          T.all(
-            T.Http({ method: "POST", uri: "/v1/apps/{ApplicationId}/otp" }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({ identifier: "SendOTPMessageRequest" });
-  }
-}
-function __c48(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          Context: S.optional(__S(0, __c0, 0)),
-          MessageConfiguration: S.optional(__S(373, __c46, 5)),
-          TemplateConfiguration: S.optional(__S(33, __c4, 1)),
-          TraceId: S.optional(S.String),
-          Users: S.optional(__S(360, __c45, 0)),
-        }),
-      ).annotate({ identifier: "SendUsersMessageRequest" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          ApplicationId: S.String.pipe(T.HttpLabel("ApplicationId")),
-          SendUsersMessageRequest: S.optional(__S(384, __c48, 0))
-            .pipe(T.HttpPayload())
-            .annotate({ identifier: "SendUsersMessageRequest" }),
-        }).pipe(
-          T.all(
-            T.Http({ method: "POST", uri: "/v1/apps/{ApplicationId}/users-messages" }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({ identifier: "SendUsersMessagesRequest" });
-    case 2:
-      return S.Record(S.String, /*@__PURE__*/ __S(377, __c47, 1).pipe(S.optional));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          ApplicationId: S.optional(S.String),
-          RequestId: S.optional(S.String),
-          Result: S.optional(__S(386, __c48, 2)),
-        }),
-      ).annotate({ identifier: "SendUsersMessageResponse" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          SendUsersMessageResponse: S.optional(__S(387, __c48, 3))
-            .pipe(T.HttpPayload())
-            .annotate({ identifier: "SendUsersMessageResponse" }),
-        }),
-      ).annotate({
-        identifier: "SendUsersMessagesResponse",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          ResourceArn: S.String.pipe(T.HttpLabel("ResourceArn")),
-          TagsModel: S.optional(__S(321, __c40, 1))
-            .pipe(T.HttpPayload())
-            .annotate({ identifier: "TagsModel" }),
-        }).pipe(
-          T.all(
-            T.Http({ method: "POST", uri: "/v1/tags/{ResourceArn}" }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({ identifier: "TagResourceRequest" });
-    case 6:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "TagResourceResponse",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          ResourceArn: S.String.pipe(T.HttpLabel("ResourceArn")),
-          TagKeys: S.optional(__S(22, __c2, 6)).pipe(T.HttpQuery("tagKeys")),
-        }).pipe(
-          T.all(
-            T.Http({ method: "DELETE", uri: "/v1/tags/{ResourceArn}" }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({ identifier: "UntagResourceRequest" });
-  }
-}
-function __c49(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          ClientId: S.optional(S.String),
-          ClientSecret: S.optional(S.String),
-          Enabled: S.optional(S.Boolean),
-        }),
-      ).annotate({ identifier: "ADMChannelRequest" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          ADMChannelRequest: S.optional(__S(392, __c49, 0))
-            .pipe(T.HttpPayload())
-            .annotate({ identifier: "ADMChannelRequest" }),
-          ApplicationId: S.String.pipe(T.HttpLabel("ApplicationId")),
-        }).pipe(
-          T.all(
-            T.Http({ method: "PUT", uri: "/v1/apps/{ApplicationId}/channels/adm" }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({ identifier: "UpdateAdmChannelRequest" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          BundleId: S.optional(S.String),
-          Certificate: S.optional(S.String),
-          DefaultAuthenticationMethod: S.optional(S.String),
-          Enabled: S.optional(S.Boolean),
-          PrivateKey: S.optional(S.String),
-          TeamId: S.optional(S.String),
-          TokenKey: S.optional(S.String),
-          TokenKeyId: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "APNSChannelRequest" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          APNSChannelRequest: S.optional(__S(394, __c49, 2))
-            .pipe(T.HttpPayload())
-            .annotate({ identifier: "APNSChannelRequest" }),
-          ApplicationId: S.String.pipe(T.HttpLabel("ApplicationId")),
-        }).pipe(
-          T.all(
-            T.Http({ method: "PUT", uri: "/v1/apps/{ApplicationId}/channels/apns" }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({ identifier: "UpdateApnsChannelRequest" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          BundleId: S.optional(S.String),
-          Certificate: S.optional(S.String),
-          DefaultAuthenticationMethod: S.optional(S.String),
-          Enabled: S.optional(S.Boolean),
-          PrivateKey: S.optional(S.String),
-          TeamId: S.optional(S.String),
-          TokenKey: S.optional(S.String),
-          TokenKeyId: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "APNSSandboxChannelRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          APNSSandboxChannelRequest: S.optional(__S(396, __c49, 4))
-            .pipe(T.HttpPayload())
-            .annotate({ identifier: "APNSSandboxChannelRequest" }),
-          ApplicationId: S.String.pipe(T.HttpLabel("ApplicationId")),
-        }).pipe(
-          T.all(
-            T.Http({ method: "PUT", uri: "/v1/apps/{ApplicationId}/channels/apns_sandbox" }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({
-        identifier: "UpdateApnsSandboxChannelRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          APNSVoipChannelRequest: S.optional(__S(394, __c49, 2))
-            .pipe(T.HttpPayload())
-            .annotate({ identifier: "APNSVoipChannelRequest" }),
-          ApplicationId: S.String.pipe(T.HttpLabel("ApplicationId")),
-        }).pipe(
-          T.all(
-            T.Http({ method: "PUT", uri: "/v1/apps/{ApplicationId}/channels/apns_voip" }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({
-        identifier: "UpdateApnsVoipChannelRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          APNSVoipSandboxChannelRequest: S.optional(__S(396, __c49, 4))
-            .pipe(T.HttpPayload())
-            .annotate({ identifier: "APNSVoipSandboxChannelRequest" }),
-          ApplicationId: S.String.pipe(T.HttpLabel("ApplicationId")),
-        }).pipe(
-          T.all(
-            T.Http({ method: "PUT", uri: "/v1/apps/{ApplicationId}/channels/apns_voip_sandbox" }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({
-        identifier: "UpdateApnsVoipSandboxChannelRequest",
-      });
-  }
-}
-function __c50(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          CampaignHook: S.optional(__S(36, __c4, 4)),
-          CloudWatchMetricsEnabled: S.optional(S.Boolean),
-          EventTaggingEnabled: S.optional(S.Boolean),
-          Limits: S.optional(__S(37, __c4, 5)),
-          QuietTime: S.optional(__S(30, __c3, 6)),
-          JourneyLimits: S.optional(__S(203, __c25, 3)),
-        }),
-      ).annotate({
-        identifier: "WriteApplicationSettingsRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          ApplicationId: S.String.pipe(T.HttpLabel("ApplicationId")),
-          WriteApplicationSettingsRequest: S.optional(__S(400, __c50, 0))
-            .pipe(T.HttpPayload())
-            .annotate({ identifier: "WriteApplicationSettingsRequest" }),
-        }).pipe(
-          T.all(
-            T.Http({ method: "PUT", uri: "/v1/apps/{ApplicationId}/settings" }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({
-        identifier: "UpdateApplicationSettingsRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          ApiKey: S.optional(S.String),
-          Enabled: S.optional(S.Boolean),
-          SecretKey: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "BaiduChannelRequest" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          ApplicationId: S.String.pipe(T.HttpLabel("ApplicationId")),
-          BaiduChannelRequest: S.optional(__S(402, __c50, 2))
-            .pipe(T.HttpPayload())
-            .annotate({ identifier: "BaiduChannelRequest" }),
-        }).pipe(
-          T.all(
-            T.Http({ method: "PUT", uri: "/v1/apps/{ApplicationId}/channels/baidu" }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({
-        identifier: "UpdateBaiduChannelRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          ApplicationId: S.String.pipe(T.HttpLabel("ApplicationId")),
-          CampaignId: S.String.pipe(T.HttpLabel("CampaignId")),
-          WriteCampaignRequest: S.optional(__S(38, __c4, 6))
-            .pipe(T.HttpPayload())
-            .annotate({ identifier: "WriteCampaignRequest" }),
-        }).pipe(
-          T.all(
-            T.Http({ method: "PUT", uri: "/v1/apps/{ApplicationId}/campaigns/{CampaignId}" }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({ identifier: "UpdateCampaignRequest" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          ConfigurationSet: S.optional(S.String),
-          Enabled: S.optional(S.Boolean),
-          FromAddress: S.optional(S.String),
-          Identity: S.optional(S.String),
-          RoleArn: S.optional(S.String),
-          OrchestrationSendingRoleArn: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "EmailChannelRequest" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          ApplicationId: S.String.pipe(T.HttpLabel("ApplicationId")),
-          EmailChannelRequest: S.optional(__S(405, __c50, 5))
-            .pipe(T.HttpPayload())
-            .annotate({ identifier: "EmailChannelRequest" }),
-        }).pipe(
-          T.all(
-            T.Http({ method: "PUT", uri: "/v1/apps/{ApplicationId}/channels/email" }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({
-        identifier: "UpdateEmailChannelRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          CreateNewVersion: S.optional(S.Boolean).pipe(T.HttpQuery("create-new-version")),
-          EmailTemplateRequest: S.optional(__S(45, __c5, 5))
-            .pipe(T.HttpPayload())
-            .annotate({ identifier: "EmailTemplateRequest" }),
-          TemplateName: S.String.pipe(T.HttpLabel("TemplateName")),
-          Version: S.optional(S.String).pipe(T.HttpQuery("version")),
-        }).pipe(
-          T.all(
-            T.Http({ method: "PUT", uri: "/v1/templates/{TemplateName}/email" }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({
-        identifier: "UpdateEmailTemplateRequest",
-      });
-  }
-}
-function __c51(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          ApplicationId: S.String.pipe(T.HttpLabel("ApplicationId")),
-          EndpointId: S.String.pipe(T.HttpLabel("EndpointId")),
-          EndpointRequest: S.optional(__S(337, __c42, 1))
-            .pipe(T.HttpPayload())
-            .annotate({ identifier: "EndpointRequest" }),
-        }).pipe(
-          T.all(
-            T.Http({ method: "PUT", uri: "/v1/apps/{ApplicationId}/endpoints/{EndpointId}" }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({ identifier: "UpdateEndpointRequest" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          MessageBody: S.optional(__S(156, __c19, 4))
-            .pipe(T.HttpPayload())
-            .annotate({ identifier: "MessageBody" }),
-        }),
-      ).annotate({ identifier: "UpdateEndpointResponse" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          Address: S.optional(S.String),
-          Attributes: S.optional(__S(159, __c19, 7)),
-          ChannelType: S.optional(S.String),
-          Demographic: S.optional(__S(160, __c20, 0)),
-          EffectiveDate: S.optional(S.String),
-          EndpointStatus: S.optional(S.String),
-          Id: S.optional(S.String),
-          Location: S.optional(__S(161, __c20, 1)),
-          Metrics: S.optional(__S(126, __c15, 6)),
-          OptOut: S.optional(S.String),
-          RequestId: S.optional(S.String),
-          User: S.optional(__S(162, __c20, 2)),
-        }),
-      ).annotate({ identifier: "EndpointBatchItem" });
-    case 3:
-      return S.Array(__S(410, __c51, 2));
-    case 4:
-      return S.suspend(() => S.Struct({ Item: S.optional(__S(411, __c51, 3)) })).annotate({
-        identifier: "EndpointBatchRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          ApplicationId: S.String.pipe(T.HttpLabel("ApplicationId")),
-          EndpointBatchRequest: S.optional(__S(412, __c51, 4))
-            .pipe(T.HttpPayload())
-            .annotate({ identifier: "EndpointBatchRequest" }),
-        }).pipe(
-          T.all(
-            T.Http({ method: "PUT", uri: "/v1/apps/{ApplicationId}/endpoints" }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({
-        identifier: "UpdateEndpointsBatchRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          ApiKey: S.optional(S.String),
-          DefaultAuthenticationMethod: S.optional(S.String),
-          Enabled: S.optional(S.Boolean),
-          ServiceJson: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "GCMChannelRequest" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          ApplicationId: S.String.pipe(T.HttpLabel("ApplicationId")),
-          GCMChannelRequest: S.optional(__S(414, __c51, 6))
-            .pipe(T.HttpPayload())
-            .annotate({ identifier: "GCMChannelRequest" }),
-        }).pipe(
-          T.all(
-            T.Http({ method: "PUT", uri: "/v1/apps/{ApplicationId}/channels/gcm" }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({ identifier: "UpdateGcmChannelRequest" });
-  }
-}
-function __c52(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          CreateNewVersion: S.optional(S.Boolean).pipe(T.HttpQuery("create-new-version")),
-          InAppTemplateRequest: S.optional(__S(57, __c7, 1))
-            .pipe(T.HttpPayload())
-            .annotate({ identifier: "InAppTemplateRequest" }),
-          TemplateName: S.String.pipe(T.HttpLabel("TemplateName")),
-          Version: S.optional(S.String).pipe(T.HttpQuery("version")),
-        }).pipe(
-          T.all(
-            T.Http({ method: "PUT", uri: "/v1/templates/{TemplateName}/inapp" }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({
-        identifier: "UpdateInAppTemplateRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          ApplicationId: S.String.pipe(T.HttpLabel("ApplicationId")),
-          JourneyId: S.String.pipe(T.HttpLabel("JourneyId")),
-          WriteJourneyRequest: S.optional(__S(105, __c13, 1))
-            .pipe(T.HttpPayload())
-            .annotate({ identifier: "WriteJourneyRequest" }),
-        }).pipe(
-          T.all(
-            T.Http({ method: "PUT", uri: "/v1/apps/{ApplicationId}/journeys/{JourneyId}" }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({ identifier: "UpdateJourneyRequest" });
-    case 2:
-      return S.suspend(() => S.Struct({ State: S.optional(S.String) })).annotate({
-        identifier: "JourneyStateRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          ApplicationId: S.String.pipe(T.HttpLabel("ApplicationId")),
-          JourneyId: S.String.pipe(T.HttpLabel("JourneyId")),
-          JourneyStateRequest: S.optional(__S(418, __c52, 2))
-            .pipe(T.HttpPayload())
-            .annotate({ identifier: "JourneyStateRequest" }),
-        }).pipe(
-          T.all(
-            T.Http({ method: "PUT", uri: "/v1/apps/{ApplicationId}/journeys/{JourneyId}/state" }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({
-        identifier: "UpdateJourneyStateRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          JourneyResponse: S.optional(__S(107, __c13, 3))
-            .pipe(T.HttpPayload())
-            .annotate({ identifier: "JourneyResponse" }),
-        }),
-      ).annotate({
-        identifier: "UpdateJourneyStateResponse",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          CreateNewVersion: S.optional(S.Boolean).pipe(T.HttpQuery("create-new-version")),
-          PushNotificationTemplateRequest: S.optional(__S(112, __c14, 0))
-            .pipe(T.HttpPayload())
-            .annotate({ identifier: "PushNotificationTemplateRequest" }),
-          TemplateName: S.String.pipe(T.HttpLabel("TemplateName")),
-          Version: S.optional(S.String).pipe(T.HttpQuery("version")),
-        }).pipe(
-          T.all(
-            T.Http({ method: "PUT", uri: "/v1/templates/{TemplateName}/push" }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({
-        identifier: "UpdatePushTemplateRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          RecommenderId: S.String.pipe(T.HttpLabel("RecommenderId")),
-          UpdateRecommenderConfiguration: S.optional(__S(114, __c14, 2))
-            .pipe(T.HttpPayload())
-            .annotate({ identifier: "UpdateRecommenderConfigurationShape" }),
-        }).pipe(
-          T.all(
-            T.Http({ method: "PUT", uri: "/v1/recommenders/{RecommenderId}" }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({
-        identifier: "UpdateRecommenderConfigurationRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          ApplicationId: S.String.pipe(T.HttpLabel("ApplicationId")),
-          SegmentId: S.String.pipe(T.HttpLabel("SegmentId")),
-          WriteSegmentRequest: S.optional(__S(124, __c15, 4))
-            .pipe(T.HttpPayload())
-            .annotate({ identifier: "WriteSegmentRequest" }),
-        }).pipe(
-          T.all(
-            T.Http({ method: "PUT", uri: "/v1/apps/{ApplicationId}/segments/{SegmentId}" }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({ identifier: "UpdateSegmentRequest" });
-  }
-}
-function __c53(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          Enabled: S.optional(S.Boolean),
-          SenderId: S.optional(S.String),
-          ShortCode: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "SMSChannelRequest" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          ApplicationId: S.String.pipe(T.HttpLabel("ApplicationId")),
-          SMSChannelRequest: S.optional(__S(424, __c53, 0))
-            .pipe(T.HttpPayload())
-            .annotate({ identifier: "SMSChannelRequest" }),
-        }).pipe(
-          T.all(
-            T.Http({ method: "PUT", uri: "/v1/apps/{ApplicationId}/channels/sms" }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({ identifier: "UpdateSmsChannelRequest" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          CreateNewVersion: S.optional(S.Boolean).pipe(T.HttpQuery("create-new-version")),
-          SMSTemplateRequest: S.optional(__S(130, __c16, 2))
-            .pipe(T.HttpPayload())
-            .annotate({ identifier: "SMSTemplateRequest" }),
-          TemplateName: S.String.pipe(T.HttpLabel("TemplateName")),
-          Version: S.optional(S.String).pipe(T.HttpQuery("version")),
-        }).pipe(
-          T.all(
-            T.Http({ method: "PUT", uri: "/v1/templates/{TemplateName}/sms" }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({ identifier: "UpdateSmsTemplateRequest" });
-    case 3:
-      return S.suspend(() => S.Struct({ Version: S.optional(S.String) })).annotate({
-        identifier: "TemplateActiveVersionRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          TemplateActiveVersionRequest: S.optional(__S(427, __c53, 3))
-            .pipe(T.HttpPayload())
-            .annotate({ identifier: "TemplateActiveVersionRequest" }),
-          TemplateName: S.String.pipe(T.HttpLabel("TemplateName")),
-          TemplateType: S.String.pipe(T.HttpLabel("TemplateType")),
-        }).pipe(
-          T.all(
-            T.Http({
-              method: "PUT",
-              uri: "/v1/templates/{TemplateName}/{TemplateType}/active-version",
-            }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({
-        identifier: "UpdateTemplateActiveVersionRequest",
-      });
-    case 5:
-      return S.suspend(() => S.Struct({ Enabled: S.optional(S.Boolean) })).annotate({
-        identifier: "VoiceChannelRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          ApplicationId: S.String.pipe(T.HttpLabel("ApplicationId")),
-          VoiceChannelRequest: S.optional(__S(429, __c53, 5))
-            .pipe(T.HttpPayload())
-            .annotate({ identifier: "VoiceChannelRequest" }),
-        }).pipe(
-          T.all(
-            T.Http({ method: "PUT", uri: "/v1/apps/{ApplicationId}/channels/voice" }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({
-        identifier: "UpdateVoiceChannelRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          CreateNewVersion: S.optional(S.Boolean).pipe(T.HttpQuery("create-new-version")),
-          TemplateName: S.String.pipe(T.HttpLabel("TemplateName")),
-          Version: S.optional(S.String).pipe(T.HttpQuery("version")),
-          VoiceTemplateRequest: S.optional(__S(132, __c16, 4))
-            .pipe(T.HttpPayload())
-            .annotate({ identifier: "VoiceTemplateRequest" }),
-        }).pipe(
-          T.all(
-            T.Http({ method: "PUT", uri: "/v1/templates/{TemplateName}/voice" }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({
-        identifier: "UpdateVoiceTemplateRequest",
-      });
-  }
-}
-function __c54(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          DestinationIdentity: S.optional(S.String),
-          Otp: S.optional(S.String),
-          ReferenceId: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "VerifyOTPMessageRequestParameters",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          ApplicationId: S.String.pipe(T.HttpLabel("ApplicationId")),
-          VerifyOTPMessageRequestParameters: S.optional(__S(432, __c54, 0))
-            .pipe(T.HttpPayload())
-            .annotate({ identifier: "VerifyOTPMessageRequestParameters" }),
-        }).pipe(
-          T.all(
-            T.Http({ method: "POST", uri: "/v1/apps/{ApplicationId}/verify-otp" }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({ identifier: "VerifyOTPMessageRequest" });
-    case 2:
-      return S.suspend(() => S.Struct({ Valid: S.optional(S.Boolean) })).annotate({
-        identifier: "VerificationResponse",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          VerificationResponse: S.optional(__S(434, __c54, 2))
-            .pipe(T.HttpPayload())
-            .annotate({ identifier: "VerificationResponse" }),
-        }),
-      ).annotate({ identifier: "VerifyOTPMessageResponse" });
-  }
-}
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

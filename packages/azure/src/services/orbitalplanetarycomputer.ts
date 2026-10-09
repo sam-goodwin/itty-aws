@@ -293,8 +293,8 @@ export const CreateGeoCatalog: API.OperationMethod<
   CreateGeoCatalogError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(5, __c0, 5) as any as S.Schema<CreateGeoCatalogRequest>,
-  output: __S(11, __c1, 3) as any as S.Schema<CreateGeoCatalogResponse>,
+  input: __S(3, __c0, 3) as any as S.Schema<CreateGeoCatalogRequest>,
+  output: __S(22, __c2, 6) as any as S.Schema<CreateGeoCatalogResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -308,8 +308,8 @@ export const DeleteGeoCatalog: API.OperationMethod<
   DeleteGeoCatalogError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(12, __c1, 4) as any as S.Schema<DeleteGeoCatalogRequest>,
-  output: __S(2, __c0, 2) as any as S.Schema<DeleteGeoCatalogResponse>,
+  input: __S(24, __c3, 0) as any as S.Schema<DeleteGeoCatalogRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<DeleteGeoCatalogResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -323,8 +323,8 @@ export const GetGeoCatalog: API.OperationMethod<
   GetGeoCatalogError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(13, __c1, 5) as any as S.Schema<GetGeoCatalogRequest>,
-  output: __S(11, __c1, 3) as any as S.Schema<GetGeoCatalogResponse>,
+  input: __S(32, __c4, 0) as any as S.Schema<GetGeoCatalogRequest>,
+  output: __S(22, __c2, 6) as any as S.Schema<GetGeoCatalogResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -338,8 +338,8 @@ export const ListGeoCatalogByResourceGroup: API.OperationMethod<
   ListGeoCatalogByResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(14, __c1, 6) as any as S.Schema<ListGeoCatalogByResourceGroupRequest>,
-  output: __S(16, __c2, 0) as any as S.Schema<GeoCatalogListResult>,
+  input: __S(40, __c5, 0) as any as S.Schema<ListGeoCatalogByResourceGroupRequest>,
+  output: __S(49, __c6, 1) as any as S.Schema<GeoCatalogListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -353,8 +353,8 @@ export const ListGeoCatalogBySubscription: API.OperationMethod<
   ListGeoCatalogBySubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(17, __c2, 1) as any as S.Schema<ListGeoCatalogBySubscriptionRequest>,
-  output: __S(16, __c2, 0) as any as S.Schema<GeoCatalogListResult>,
+  input: __S(56, __c7, 0) as any as S.Schema<ListGeoCatalogBySubscriptionRequest>,
+  output: __S(49, __c6, 1) as any as S.Schema<GeoCatalogListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -368,8 +368,8 @@ export const UpdateGeoCatalog: API.OperationMethod<
   UpdateGeoCatalogError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(20, __c2, 4) as any as S.Schema<UpdateGeoCatalogRequest>,
-  output: __S(11, __c1, 3) as any as S.Schema<UpdateGeoCatalogResponse>,
+  input: __S(66, __c8, 2) as any as S.Schema<UpdateGeoCatalogRequest>,
+  output: __S(22, __c2, 6) as any as S.Schema<UpdateGeoCatalogResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -379,8 +379,6 @@ export const UpdateGeoCatalog: API.OperationMethod<
 function __c0(j: number): any {
   switch (j) {
     case 0:
-      return S.Record(S.String, S.String);
-    case 1:
       return S.suspend(() =>
         S.Struct({
           tier: S.optional(S.String),
@@ -389,31 +387,27 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "GeoCatalogPropertiesInput",
       });
+    case 1:
+      return S.Record(S.String, /*@__PURE__*/ S.NullOr(__S(8, __c1, 0)));
     case 2:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "UserAssignedIdentityInput",
-      });
-    case 3:
-      return S.Record(S.String, /*@__PURE__*/ S.NullOr(__S(2, __c0, 2)));
-    case 4:
       return S.suspend(() =>
         S.Struct({
           type: S.String,
-          userAssignedIdentities: S.optional(__S(3, __c0, 3)),
+          userAssignedIdentities: S.optional(__S(1, __c0, 1)),
         }),
       ).annotate({
         identifier: "CreateGeoCatalogRequestIdentity",
       });
-    case 5:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           catalogName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(0, __c0, 0)),
+          tags: S.optional(__S(16, __c2, 0)),
           location: S.String,
-          properties: S.optional(__S(1, __c0, 1)),
-          identity: S.optional(__S(4, __c0, 4)),
+          properties: S.optional(__S(0, __c0, 0)),
+          identity: S.optional(__S(2, __c0, 2)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -423,7 +417,21 @@ function __c0(j: number): any {
           }),
         ),
       ).annotate({ identifier: "CreateGeoCatalogRequest" });
-    case 6:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "UserAssignedIdentityInput",
+      });
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, S.String);
+    case 1:
       return S.suspend(() =>
         S.Struct({
           createdBy: S.optional(S.String),
@@ -434,7 +442,7 @@ function __c0(j: number): any {
           lastModifiedAt: S.optional(S.String),
         }),
       ).annotate({ identifier: "SystemData" });
-    case 7:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           tier: S.optional(S.String),
@@ -443,44 +451,44 @@ function __c0(j: number): any {
           autoGeneratedDomainNameLabelScope: S.optional(S.String),
         }),
       ).annotate({ identifier: "GeoCatalogProperties" });
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           principalId: S.optional(S.String),
           clientId: S.optional(S.String),
         }),
       ).annotate({ identifier: "UserAssignedIdentity" });
-    case 1:
-      return S.Record(S.String, /*@__PURE__*/ S.NullOr(__S(8, __c1, 0)));
-    case 2:
+    case 4:
+      return S.Record(S.String, /*@__PURE__*/ S.NullOr(__S(19, __c2, 3)));
+    case 5:
       return S.suspend(() =>
         S.Struct({
           principalId: S.optional(S.String),
           tenantId: S.optional(S.String),
           type: S.String,
-          userAssignedIdentities: S.optional(__S(9, __c1, 1)),
+          userAssignedIdentities: S.optional(__S(20, __c2, 4)),
         }),
       ).annotate({
         identifier: "CreateGeoCatalogResponseIdentity",
       });
-    case 3:
+    case 6:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(6, __c0, 6)),
-          tags: S.optional(__S(0, __c0, 0)),
+          systemData: S.optional(__S(17, __c2, 1)),
+          tags: S.optional(__S(16, __c2, 0)),
           location: S.String,
-          properties: S.optional(__S(7, __c0, 7)),
-          identity: S.optional(__S(10, __c1, 2)),
+          properties: S.optional(__S(18, __c2, 2)),
+          identity: S.optional(__S(21, __c2, 5)),
         }),
       ).annotate({ identifier: "CreateGeoCatalogResponse" });
-    case 4:
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -495,7 +503,11 @@ function __c1(j: number): any {
           }),
         ),
       ).annotate({ identifier: "DeleteGeoCatalogRequest" });
-    case 5:
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -510,7 +522,11 @@ function __c1(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetGeoCatalogRequest" });
-    case 6:
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -526,20 +542,24 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "ListGeoCatalogByResourceGroupRequest",
       });
-    case 7:
-      return S.Array(__S(11, __c1, 3));
   }
 }
-function __c2(j: number): any {
+function __c6(j: number): any {
   switch (j) {
     case 0:
+      return S.Array(__S(22, __c2, 6));
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          value: __S(15, __c1, 7),
+          value: __S(48, __c6, 0),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "GeoCatalogListResult" });
-    case 1:
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -554,25 +574,29 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "ListGeoCatalogBySubscriptionRequest",
       });
-    case 2:
-      return S.Record(S.String, __S(2, __c0, 2));
-    case 3:
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, __S(8, __c1, 0));
+    case 1:
       return S.suspend(() =>
         S.Struct({
           type: S.optional(S.String),
-          userAssignedIdentities: S.optional(__S(18, __c2, 2)),
+          userAssignedIdentities: S.optional(__S(64, __c8, 0)),
         }),
       ).annotate({
         identifier: "ManagedServiceIdentityUpdateInput",
       });
-    case 4:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           catalogName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(0, __c0, 0)),
-          identity: S.optional(__S(19, __c2, 3)),
+          tags: S.optional(__S(16, __c2, 0)),
+          identity: S.optional(__S(65, __c8, 1)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -584,7 +608,6 @@ function __c2(j: number): any {
       ).annotate({ identifier: "UpdateGeoCatalogRequest" });
   }
 }
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

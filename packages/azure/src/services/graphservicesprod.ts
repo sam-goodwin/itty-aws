@@ -337,8 +337,8 @@ export const AccountsCreateAndUpdate: API.OperationMethod<
   AccountsCreateAndUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2, __c0, 2) as any as S.Schema<AccountsCreateAndUpdateRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<AccountsCreateAndUpdateResponse>,
+  input: __S(1, __c0, 1) as any as S.Schema<AccountsCreateAndUpdateRequest>,
+  output: __S(2, __c0, 2) as any as S.Schema<AccountsCreateAndUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -352,8 +352,8 @@ export const DeleteAccount: API.OperationMethod<
   DeleteAccountError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(6, __c0, 6) as any as S.Schema<DeleteAccountRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<DeleteAccountResponse>,
+  input: __S(16, __c2, 0) as any as S.Schema<DeleteAccountRequest>,
+  output: __S(17, __c2, 1) as any as S.Schema<DeleteAccountResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -367,8 +367,8 @@ export const GetAccount: API.OperationMethod<
   GetAccountError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(8, __c1, 0) as any as S.Schema<GetAccountRequest>,
-  output: __S(9, __c1, 1) as any as S.Schema<GetAccountResponse>,
+  input: __S(24, __c3, 0) as any as S.Schema<GetAccountRequest>,
+  output: __S(25, __c3, 1) as any as S.Schema<GetAccountResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -382,8 +382,8 @@ export const ListAccountByResourceGroup: API.OperationMethod<
   ListAccountByResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(10, __c1, 2) as any as S.Schema<ListAccountByResourceGroupRequest>,
-  output: __S(13, __c1, 5) as any as S.Schema<AccountResourceList>,
+  input: __S(32, __c4, 0) as any as S.Schema<ListAccountByResourceGroupRequest>,
+  output: __S(42, __c5, 2) as any as S.Schema<AccountResourceList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -397,8 +397,8 @@ export const ListAccountBySubscription: API.OperationMethod<
   ListAccountBySubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(14, __c1, 6) as any as S.Schema<ListAccountBySubscriptionRequest>,
-  output: __S(13, __c1, 5) as any as S.Schema<AccountResourceList>,
+  input: __S(48, __c6, 0) as any as S.Schema<ListAccountBySubscriptionRequest>,
+  output: __S(42, __c5, 2) as any as S.Schema<AccountResourceList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -412,8 +412,8 @@ export const ListOperations: API.OperationMethod<
   ListOperationsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(15, __c1, 7) as any as S.Schema<ListOperationsRequest>,
-  output: __S(19, __c2, 3) as any as S.Schema<ListOperationsResponse>,
+  input: __S(56, __c7, 0) as any as S.Schema<ListOperationsRequest>,
+  output: __S(60, __c7, 4) as any as S.Schema<ListOperationsResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -427,8 +427,8 @@ export const UpdateAccount: API.OperationMethod<
   UpdateAccountError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(20, __c2, 4) as any as S.Schema<UpdateAccountRequest>,
-  output: __S(21, __c2, 5) as any as S.Schema<UpdateAccountResponse>,
+  input: __S(64, __c8, 0) as any as S.Schema<UpdateAccountRequest>,
+  output: __S(65, __c8, 1) as any as S.Schema<UpdateAccountResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -438,8 +438,6 @@ export const UpdateAccount: API.OperationMethod<
 function __c0(j: number): any {
   switch (j) {
     case 0:
-      return S.Record(S.String, S.String);
-    case 1:
       return S.suspend(() =>
         S.Struct({
           appId: S.String,
@@ -447,15 +445,15 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "AccountsCreateAndUpdateRequestProperties",
       });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           resourceName: S.String.pipe(T.Label()),
           location: S.optional(S.String),
-          tags: S.optional(__S(0, __c0, 0)),
-          properties: __S(1, __c0, 1),
+          tags: S.optional(__S(8, __c1, 0)),
+          properties: __S(0, __c0, 0),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -467,7 +465,27 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "AccountsCreateAndUpdateRequest",
       });
-    case 3:
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          location: S.optional(S.String),
+          tags: S.optional(__S(8, __c1, 0)),
+          systemData: S.optional(__S(9, __c1, 1)),
+          properties: __S(10, __c1, 2),
+        }),
+      ).annotate({
+        identifier: "AccountsCreateAndUpdateResponse",
+      });
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, S.String);
+    case 1:
       return S.suspend(() =>
         S.Struct({
           createdByType: S.optional(S.String),
@@ -478,7 +496,7 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "AccountsCreateAndUpdateResponseSystemData",
       });
-    case 4:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           provisioningState: S.optional(S.String),
@@ -488,21 +506,11 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "AccountsCreateAndUpdateResponseProperties",
       });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          location: S.optional(S.String),
-          tags: S.optional(__S(0, __c0, 0)),
-          systemData: S.optional(__S(3, __c0, 3)),
-          properties: __S(4, __c0, 4),
-        }),
-      ).annotate({
-        identifier: "AccountsCreateAndUpdateResponse",
-      });
-    case 6:
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -517,13 +525,13 @@ function __c0(j: number): any {
           }),
         ),
       ).annotate({ identifier: "DeleteAccountRequest" });
-    case 7:
+    case 1:
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "DeleteAccountResponse",
       });
   }
 }
-function __c1(j: number): any {
+function __c3(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -547,12 +555,16 @@ function __c1(j: number): any {
           name: S.optional(S.String),
           type: S.optional(S.String),
           location: S.optional(S.String),
-          tags: S.optional(__S(0, __c0, 0)),
-          systemData: S.optional(__S(3, __c0, 3)),
-          properties: __S(4, __c0, 4),
+          tags: S.optional(__S(8, __c1, 0)),
+          systemData: S.optional(__S(9, __c1, 1)),
+          properties: __S(10, __c1, 2),
         }),
       ).annotate({ identifier: "GetAccountResponse" });
-    case 2:
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -568,28 +580,36 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "ListAccountByResourceGroupRequest",
       });
-    case 3:
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
           location: S.optional(S.String),
-          tags: S.optional(__S(0, __c0, 0)),
-          systemData: S.optional(__S(3, __c0, 3)),
-          properties: __S(4, __c0, 4),
+          tags: S.optional(__S(8, __c1, 0)),
+          systemData: S.optional(__S(9, __c1, 1)),
+          properties: __S(10, __c1, 2),
         }),
       ).annotate({ identifier: "AccountResource" });
-    case 4:
-      return S.Array(__S(11, __c1, 3));
-    case 5:
+    case 1:
+      return S.Array(__S(40, __c5, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           nextLink: S.optional(S.String),
-          value: S.optional(__S(12, __c1, 4)),
+          value: S.optional(__S(41, __c5, 1)),
         }),
       ).annotate({ identifier: "AccountResourceList" });
-    case 6:
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -604,7 +624,11 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "ListAccountBySubscriptionRequest",
       });
-    case 7:
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({}).pipe(
           T.Http({
@@ -615,11 +639,7 @@ function __c1(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ListOperationsRequest" });
-  }
-}
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           provider: S.optional(S.String),
@@ -628,32 +648,36 @@ function __c2(j: number): any {
           description: S.optional(S.String),
         }),
       ).annotate({ identifier: "OperationDisplay" });
-    case 1:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
           isDataAction: S.optional(S.Boolean),
-          display: S.optional(__S(16, __c2, 0)),
+          display: S.optional(__S(57, __c7, 1)),
           origin: S.optional(S.String),
           actionType: S.optional(S.String),
         }),
       ).annotate({ identifier: "Operation" });
-    case 2:
-      return S.Array(__S(17, __c2, 1));
     case 3:
+      return S.Array(__S(58, __c7, 2));
+    case 4:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(18, __c2, 2)),
+          value: S.optional(__S(59, __c7, 3)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListOperationsResponse" });
-    case 4:
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           resourceName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(0, __c0, 0)),
+          tags: S.optional(__S(8, __c1, 0)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -663,21 +687,20 @@ function __c2(j: number): any {
           }),
         ),
       ).annotate({ identifier: "UpdateAccountRequest" });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
           location: S.optional(S.String),
-          tags: S.optional(__S(0, __c0, 0)),
-          systemData: S.optional(__S(3, __c0, 3)),
-          properties: __S(4, __c0, 4),
+          tags: S.optional(__S(8, __c1, 0)),
+          systemData: S.optional(__S(9, __c1, 1)),
+          properties: __S(10, __c1, 2),
         }),
       ).annotate({ identifier: "UpdateAccountResponse" });
   }
 }
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

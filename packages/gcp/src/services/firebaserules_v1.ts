@@ -374,8 +374,8 @@ export const createProjectsReleases: API.OperationMethod<
   CreateProjectsReleasesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1, __c0, 1) as any as S.Schema<CreateProjectsReleasesRequest>,
-  output: __S(0, __c0, 0) as any as S.Schema<Release>,
+  input: __S(160, __c5, 0) as any as S.Schema<CreateProjectsReleasesRequest>,
+  output: __S(192, __c6, 0) as any as S.Schema<Release>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -389,8 +389,8 @@ export const createProjectsRulesets: API.OperationMethod<
   CreateProjectsRulesetsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(8, __c1, 0) as any as S.Schema<CreateProjectsRulesetsRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<Ruleset>,
+  input: __S(224, __c7, 0) as any as S.Schema<CreateProjectsRulesetsRequest>,
+  output: __S(257, __c8, 1) as any as S.Schema<Ruleset>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -404,8 +404,8 @@ export const deleteProjectsReleases: API.OperationMethod<
   DeleteProjectsReleasesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(9, __c1, 1) as any as S.Schema<DeleteProjectsReleasesRequest>,
-  output: __S(10, __c1, 2) as any as S.Schema<Empty>,
+  input: __S(320, __c10, 0) as any as S.Schema<DeleteProjectsReleasesRequest>,
+  output: __S(352, __c11, 0) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -419,8 +419,8 @@ export const deleteProjectsRulesets: API.OperationMethod<
   DeleteProjectsRulesetsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(11, __c1, 3) as any as S.Schema<DeleteProjectsRulesetsRequest>,
-  output: __S(10, __c1, 2) as any as S.Schema<Empty>,
+  input: __S(384, __c12, 0) as any as S.Schema<DeleteProjectsRulesetsRequest>,
+  output: __S(352, __c11, 0) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -434,8 +434,8 @@ export const getExecutableProjectsReleases: API.OperationMethod<
   GetExecutableProjectsReleasesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(12, __c1, 4) as any as S.Schema<GetExecutableProjectsReleasesRequest>,
-  output: __S(13, __c1, 5) as any as S.Schema<GetReleaseExecutableResponse>,
+  input: __S(416, __c13, 0) as any as S.Schema<GetExecutableProjectsReleasesRequest>,
+  output: __S(417, __c13, 1) as any as S.Schema<GetReleaseExecutableResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -449,8 +449,8 @@ export const getProjectsReleases: API.OperationMethod<
   GetProjectsReleasesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(14, __c1, 6) as any as S.Schema<GetProjectsReleasesRequest>,
-  output: __S(0, __c0, 0) as any as S.Schema<Release>,
+  input: __S(448, __c14, 0) as any as S.Schema<GetProjectsReleasesRequest>,
+  output: __S(192, __c6, 0) as any as S.Schema<Release>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -464,8 +464,8 @@ export const getProjectsRulesets: API.OperationMethod<
   GetProjectsRulesetsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(15, __c1, 7) as any as S.Schema<GetProjectsRulesetsRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<Ruleset>,
+  input: __S(0, __c0, 0) as any as S.Schema<GetProjectsRulesetsRequest>,
+  output: __S(257, __c8, 1) as any as S.Schema<Ruleset>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -480,8 +480,8 @@ export const listProjectsReleases: API.PaginatedOperationMethod<
   GcpOpContext,
   ListReleasesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(16, __c2, 0) as any as S.Schema<ListProjectsReleasesRequest>,
-  output: __S(18, __c2, 2) as any as S.Schema<ListReleasesResponse>,
+  input: __S(32, __c1, 0) as any as S.Schema<ListProjectsReleasesRequest>,
+  output: __S(34, __c1, 2) as any as S.Schema<ListReleasesResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -497,8 +497,8 @@ export const listProjectsRulesets: API.PaginatedOperationMethod<
   GcpOpContext,
   ListRulesetsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(19, __c2, 3) as any as S.Schema<ListProjectsRulesetsRequest>,
-  output: __S(21, __c2, 5) as any as S.Schema<ListRulesetsResponse>,
+  input: __S(64, __c2, 0) as any as S.Schema<ListProjectsRulesetsRequest>,
+  output: __S(66, __c2, 2) as any as S.Schema<ListRulesetsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -513,8 +513,8 @@ export const patchProjectsReleases: API.OperationMethod<
   PatchProjectsReleasesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(23, __c2, 7) as any as S.Schema<PatchProjectsReleasesRequest>,
-  output: __S(0, __c0, 0) as any as S.Schema<Release>,
+  input: __S(97, __c3, 1) as any as S.Schema<PatchProjectsReleasesRequest>,
+  output: __S(192, __c6, 0) as any as S.Schema<Release>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -528,8 +528,8 @@ export const testProjects: API.OperationMethod<
   TestProjectsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(33, __c4, 1) as any as S.Schema<TestProjectsRequest>,
-  output: __S(48, __c6, 0) as any as S.Schema<TestRulesetResponse>,
+  input: __S(137, __c4, 9) as any as S.Schema<TestProjectsRequest>,
+  output: __S(152, __c4, 24) as any as S.Schema<TestRulesetResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -539,157 +539,6 @@ export const testProjects: API.OperationMethod<
 function __c0(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() =>
-        S.Struct({
-          updateTime: S.optional(S.String),
-          rulesetName: S.optional(S.String),
-          createTime: S.optional(S.String),
-          name: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Release" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-          body: S.optional(__S(0, __c0, 0).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/{+name}/releases",
-            baseUrl: "https://firebaserules.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateProjectsReleasesRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          fingerprint: S.optional(S.String),
-          content: S.optional(S.String),
-          name: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "File" });
-    case 3:
-      return S.Array(__S(2, __c0, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          files: S.optional(__S(3, __c0, 3)),
-        }),
-      ).annotate({ identifier: "Source" });
-    case 5:
-      return S.Array(S.String);
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          services: S.optional(__S(5, __c0, 5)),
-        }),
-      ).annotate({ identifier: "Metadata" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          source: S.optional(__S(4, __c0, 4)),
-          attachmentPoint: S.optional(S.String),
-          createTime: S.optional(S.String),
-          name: S.optional(S.String),
-          metadata: S.optional(__S(6, __c0, 6)),
-        }),
-      ).annotate({ identifier: "Ruleset" });
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-          body: S.optional(__S(7, __c0, 7).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/{+name}/rulesets",
-            baseUrl: "https://firebaserules.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateProjectsRulesetsRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "v1/{+name}",
-            baseUrl: "https://firebaserules.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteProjectsReleasesRequest",
-      });
-    case 2:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "Empty",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "v1/{+name}",
-            baseUrl: "https://firebaserules.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteProjectsRulesetsRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-          executableVersion: S.optional(S.String.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v1/{+name}:getExecutable",
-            baseUrl: "https://firebaserules.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetExecutableProjectsReleasesRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          executable: S.optional(S.String),
-          language: S.optional(S.String),
-          rulesetName: S.optional(S.String),
-          updateTime: S.optional(S.String),
-          syncTime: S.optional(S.String),
-          executableVersion: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GetReleaseExecutableResponse",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v1/{+name}",
-            baseUrl: "https://firebaserules.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetProjectsReleasesRequest",
-      });
-    case 7:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -705,7 +554,7 @@ function __c1(j: number): any {
       });
   }
 }
-function __c2(j: number): any {
+function __c1(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -725,15 +574,19 @@ function __c2(j: number): any {
         identifier: "ListProjectsReleasesRequest",
       });
     case 1:
-      return S.Array(__S(0, __c0, 0));
+      return S.Array(__S(192, __c6, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          releases: S.optional(__S(17, __c2, 1)),
+          releases: S.optional(__S(33, __c1, 1)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListReleasesResponse" });
-    case 3:
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -750,27 +603,31 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "ListProjectsRulesetsRequest",
       });
-    case 4:
-      return S.Array(__S(7, __c0, 7));
-    case 5:
+    case 1:
+      return S.Array(__S(257, __c8, 1));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          rulesets: S.optional(__S(20, __c2, 4)),
+          rulesets: S.optional(__S(65, __c2, 1)),
         }),
       ).annotate({ identifier: "ListRulesetsResponse" });
-    case 6:
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           updateMask: S.optional(S.String),
-          release: S.optional(__S(0, __c0, 0)),
+          release: S.optional(__S(192, __c6, 0)),
         }),
       ).annotate({ identifier: "UpdateReleaseRequest" });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(22, __c2, 6).pipe(T.HttpBody())),
+          body: S.optional(__S(96, __c3, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -783,38 +640,38 @@ function __c2(j: number): any {
       });
   }
 }
-function __c3(j: number): any {
+function __c4(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           value: S.optional(S.Unknown),
-          undefined: S.optional(__S(10, __c1, 2)),
+          undefined: S.optional(__S(352, __c11, 0)),
         }),
       ).annotate({ identifier: "Result" });
     case 1:
       return S.suspend(() =>
         S.Struct({
           exactValue: S.optional(S.Unknown),
-          anyValue: S.optional(__S(10, __c1, 2)),
+          anyValue: S.optional(__S(352, __c11, 0)),
         }),
       ).annotate({ identifier: "Arg" });
     case 2:
-      return S.Array(__S(25, __c3, 1));
+      return S.Array(__S(129, __c4, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          result: S.optional(__S(24, __c3, 0)),
+          result: S.optional(__S(128, __c4, 0)),
           function: S.optional(S.String),
-          args: S.optional(__S(26, __c3, 2)),
+          args: S.optional(__S(130, __c4, 2)),
         }),
       ).annotate({ identifier: "FunctionMock" });
     case 4:
-      return S.Array(__S(27, __c3, 3));
+      return S.Array(__S(131, __c4, 3));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          functionMocks: S.optional(__S(28, __c3, 4)),
+          functionMocks: S.optional(__S(132, __c4, 4)),
           pathEncoding: S.optional(S.String),
           expressionReportLevel: S.optional(S.String),
           expectation: S.optional(S.String),
@@ -823,29 +680,25 @@ function __c3(j: number): any {
         }),
       ).annotate({ identifier: "TestCase" });
     case 6:
-      return S.Array(__S(29, __c3, 5));
+      return S.Array(__S(133, __c4, 5));
     case 7:
       return S.suspend(() =>
         S.Struct({
-          testCases: S.optional(__S(30, __c3, 6)),
+          testCases: S.optional(__S(134, __c4, 6)),
         }),
       ).annotate({ identifier: "TestSuite" });
-  }
-}
-function __c4(j: number): any {
-  switch (j) {
-    case 0:
+    case 8:
       return S.suspend(() =>
         S.Struct({
-          testSuite: S.optional(__S(31, __c3, 7)),
-          source: S.optional(__S(4, __c0, 4)),
+          testSuite: S.optional(__S(135, __c4, 7)),
+          source: S.optional(__S(290, __c9, 2)),
         }),
       ).annotate({ identifier: "TestRulesetRequest" });
-    case 1:
+    case 9:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(32, __c4, 0).pipe(T.HttpBody())),
+          body: S.optional(__S(136, __c4, 8).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -854,7 +707,7 @@ function __c4(j: number): any {
           }),
         ),
       ).annotate({ identifier: "TestProjectsRequest" });
-    case 2:
+    case 10:
       return S.suspend(() =>
         S.Struct({
           column: S.optional(S.Number),
@@ -864,26 +717,75 @@ function __c4(j: number): any {
           fileName: S.optional(S.String),
         }),
       ).annotate({ identifier: "SourcePosition" });
-    case 3:
+    case 11:
       return S.suspend(() =>
         S.Struct({
-          sourcePosition: S.optional(__S(34, __c4, 2)),
+          sourcePosition: S.optional(__S(138, __c4, 10)),
           value: S.optional(S.Unknown),
         }),
       ).annotate({ identifier: "VisitedExpression" });
-    case 4:
-      return S.Array(__S(35, __c4, 3));
-    case 5:
+    case 12:
+      return S.Array(__S(139, __c4, 11));
+    case 13:
       return S.Array(S.Unknown);
-    case 6:
+    case 14:
       return S.suspend(() =>
         S.Struct({
           function: S.optional(S.String),
-          args: S.optional(__S(37, __c4, 5)),
+          args: S.optional(__S(141, __c4, 13)),
         }),
       ).annotate({ identifier: "FunctionCall" });
-    case 7:
-      return S.Array(__S(38, __c4, 6));
+    case 15:
+      return S.Array(__S(142, __c4, 14));
+    case 16:
+      return S.suspend(() =>
+        S.Struct({
+          value: S.optional(S.Unknown),
+          count: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "ValueCount" });
+    case 17:
+      return S.Array(__S(144, __c4, 16));
+    case 18:
+      return S.suspend(() =>
+        S.Struct({
+          values: S.optional(__S(145, __c4, 17)),
+          children: S.optional(S.suspend(() => __S(147, __c4, 19))),
+          sourcePosition: S.optional(__S(138, __c4, 10)),
+        }),
+      ).annotate({ identifier: "ExpressionReport" });
+    case 19:
+      return S.Array(__S(146, __c4, 18));
+    case 20:
+      return S.suspend(() =>
+        S.Struct({
+          visitedExpressions: S.optional(__S(140, __c4, 12)),
+          functionCalls: S.optional(__S(143, __c4, 15)),
+          state: S.optional(S.String),
+          expressionReports: S.optional(__S(147, __c4, 19)),
+          debugMessages: S.optional(__S(291, __c9, 3)),
+          errorPosition: S.optional(__S(138, __c4, 10)),
+        }),
+      ).annotate({ identifier: "TestResult" });
+    case 21:
+      return S.Array(__S(148, __c4, 20));
+    case 22:
+      return S.suspend(() =>
+        S.Struct({
+          severity: S.optional(S.String),
+          sourcePosition: S.optional(__S(138, __c4, 10)),
+          description: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Issue" });
+    case 23:
+      return S.Array(__S(150, __c4, 22));
+    case 24:
+      return S.suspend(() =>
+        S.Struct({
+          testResults: S.optional(__S(149, __c4, 21)),
+          issues: S.optional(__S(151, __c4, 23)),
+        }),
+      ).annotate({ identifier: "TestRulesetResponse" });
   }
 }
 function __c5(j: number): any {
@@ -891,45 +793,18 @@ function __c5(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(S.Unknown),
-          count: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "ValueCount" });
-    case 1:
-      return S.Array(__S(40, __c5, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          values: S.optional(__S(41, __c5, 1)),
-          children: S.optional(S.suspend(() => __S(43, __c5, 3))),
-          sourcePosition: S.optional(__S(34, __c4, 2)),
-        }),
-      ).annotate({ identifier: "ExpressionReport" });
-    case 3:
-      return S.Array(__S(42, __c5, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          visitedExpressions: S.optional(__S(36, __c4, 4)),
-          functionCalls: S.optional(__S(39, __c4, 7)),
-          state: S.optional(S.String),
-          expressionReports: S.optional(__S(43, __c5, 3)),
-          debugMessages: S.optional(__S(5, __c0, 5)),
-          errorPosition: S.optional(__S(34, __c4, 2)),
-        }),
-      ).annotate({ identifier: "TestResult" });
-    case 5:
-      return S.Array(__S(44, __c5, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          severity: S.optional(S.String),
-          sourcePosition: S.optional(__S(34, __c4, 2)),
-          description: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Issue" });
-    case 7:
-      return S.Array(__S(46, __c5, 6));
+          name: S.String.pipe(T.Label()),
+          body: S.optional(__S(192, __c6, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/{+name}/releases",
+            baseUrl: "https://firebaserules.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateProjectsReleasesRequest",
+      });
   }
 }
 function __c6(j: number): any {
@@ -937,13 +812,169 @@ function __c6(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          testResults: S.optional(__S(45, __c5, 5)),
-          issues: S.optional(__S(47, __c5, 7)),
+          updateTime: S.optional(S.String),
+          rulesetName: S.optional(S.String),
+          createTime: S.optional(S.String),
+          name: S.optional(S.String),
         }),
-      ).annotate({ identifier: "TestRulesetResponse" });
+      ).annotate({ identifier: "Release" });
   }
 }
-
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+          body: S.optional(__S(257, __c8, 1).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/{+name}/rulesets",
+            baseUrl: "https://firebaserules.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateProjectsRulesetsRequest",
+      });
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          services: S.optional(__S(291, __c9, 3)),
+        }),
+      ).annotate({ identifier: "Metadata" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          source: S.optional(__S(290, __c9, 2)),
+          attachmentPoint: S.optional(S.String),
+          createTime: S.optional(S.String),
+          name: S.optional(S.String),
+          metadata: S.optional(__S(256, __c8, 0)),
+        }),
+      ).annotate({ identifier: "Ruleset" });
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          fingerprint: S.optional(S.String),
+          content: S.optional(S.String),
+          name: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "File" });
+    case 1:
+      return S.Array(__S(288, __c9, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          files: S.optional(__S(289, __c9, 1)),
+        }),
+      ).annotate({ identifier: "Source" });
+    case 3:
+      return S.Array(S.String);
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "v1/{+name}",
+            baseUrl: "https://firebaserules.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteProjectsReleasesRequest",
+      });
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "Empty",
+      });
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "v1/{+name}",
+            baseUrl: "https://firebaserules.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteProjectsRulesetsRequest",
+      });
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+          executableVersion: S.optional(S.String.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v1/{+name}:getExecutable",
+            baseUrl: "https://firebaserules.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetExecutableProjectsReleasesRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          executable: S.optional(S.String),
+          language: S.optional(S.String),
+          rulesetName: S.optional(S.String),
+          updateTime: S.optional(S.String),
+          syncTime: S.optional(S.String),
+          executableVersion: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GetReleaseExecutableResponse",
+      });
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v1/{+name}",
+            baseUrl: "https://firebaserules.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetProjectsReleasesRequest",
+      });
+  }
+}
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

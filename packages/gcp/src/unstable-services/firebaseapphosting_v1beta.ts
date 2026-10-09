@@ -939,8 +939,8 @@ export const cancelProjectsLocationsOperations: API.OperationMethod<
   CancelProjectsLocationsOperationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(0, __c0, 0) as any as S.Schema<CancelProjectsLocationsOperationsRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<Empty>,
+  input: __S(368, __c23, 0) as any as S.Schema<CancelProjectsLocationsOperationsRequest>,
+  output: __S(384, __c24, 0) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -959,8 +959,8 @@ export const createProjectsLocationsBackends: API.OperationMethod<
   CreateProjectsLocationsBackendsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(12, __c1, 4) as any as S.Schema<CreateProjectsLocationsBackendsRequest>,
-  output: __S(16, __c2, 0) as any as S.Schema<Operation>,
+  input: __S(400, __c25, 0) as any as S.Schema<CreateProjectsLocationsBackendsRequest>,
+  output: __S(512, __c32, 0) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -979,8 +979,8 @@ export const createProjectsLocationsBackendsBuilds: API.OperationMethod<
   CreateProjectsLocationsBackendsBuildsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(29, __c3, 5) as any as S.Schema<CreateProjectsLocationsBackendsBuildsRequest>,
-  output: __S(16, __c2, 0) as any as S.Schema<Operation>,
+  input: __S(528, __c33, 0) as any as S.Schema<CreateProjectsLocationsBackendsBuildsRequest>,
+  output: __S(512, __c32, 0) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -999,8 +999,8 @@ export const createProjectsLocationsBackendsDomains: API.OperationMethod<
   CreateProjectsLocationsBackendsDomainsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(41, __c5, 1) as any as S.Schema<CreateProjectsLocationsBackendsDomainsRequest>,
-  output: __S(16, __c2, 0) as any as S.Schema<Operation>,
+  input: __S(560, __c35, 0) as any as S.Schema<CreateProjectsLocationsBackendsDomainsRequest>,
+  output: __S(512, __c32, 0) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1019,8 +1019,8 @@ export const createProjectsLocationsBackendsRollouts: API.OperationMethod<
   CreateProjectsLocationsBackendsRolloutsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(43, __c5, 3) as any as S.Schema<CreateProjectsLocationsBackendsRolloutsRequest>,
-  output: __S(16, __c2, 0) as any as S.Schema<Operation>,
+  input: __S(592, __c37, 0) as any as S.Schema<CreateProjectsLocationsBackendsRolloutsRequest>,
+  output: __S(512, __c32, 0) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1039,8 +1039,8 @@ export const deleteProjectsLocationsBackends: API.OperationMethod<
   DeleteProjectsLocationsBackendsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(44, __c5, 4) as any as S.Schema<DeleteProjectsLocationsBackendsRequest>,
-  output: __S(16, __c2, 0) as any as S.Schema<Operation>,
+  input: __S(624, __c39, 0) as any as S.Schema<DeleteProjectsLocationsBackendsRequest>,
+  output: __S(512, __c32, 0) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1059,8 +1059,8 @@ export const deleteProjectsLocationsBackendsBuilds: API.OperationMethod<
   DeleteProjectsLocationsBackendsBuildsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(45, __c5, 5) as any as S.Schema<DeleteProjectsLocationsBackendsBuildsRequest>,
-  output: __S(16, __c2, 0) as any as S.Schema<Operation>,
+  input: __S(0, __c0, 0) as any as S.Schema<DeleteProjectsLocationsBackendsBuildsRequest>,
+  output: __S(512, __c32, 0) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1079,8 +1079,8 @@ export const deleteProjectsLocationsBackendsDomains: API.OperationMethod<
   DeleteProjectsLocationsBackendsDomainsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(46, __c5, 6) as any as S.Schema<DeleteProjectsLocationsBackendsDomainsRequest>,
-  output: __S(16, __c2, 0) as any as S.Schema<Operation>,
+  input: __S(16, __c1, 0) as any as S.Schema<DeleteProjectsLocationsBackendsDomainsRequest>,
+  output: __S(512, __c32, 0) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1099,8 +1099,8 @@ export const deleteProjectsLocationsOperations: API.OperationMethod<
   DeleteProjectsLocationsOperationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(47, __c5, 7) as any as S.Schema<DeleteProjectsLocationsOperationsRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<Empty>,
+  input: __S(32, __c2, 0) as any as S.Schema<DeleteProjectsLocationsOperationsRequest>,
+  output: __S(384, __c24, 0) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1114,8 +1114,8 @@ export const getProjectsLocations: API.OperationMethod<
   GetProjectsLocationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(48, __c6, 0) as any as S.Schema<GetProjectsLocationsRequest>,
-  output: __S(49, __c6, 1) as any as S.Schema<Location>,
+  input: __S(48, __c3, 0) as any as S.Schema<GetProjectsLocationsRequest>,
+  output: __S(64, __c4, 0) as any as S.Schema<Location>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1129,8 +1129,8 @@ export const getProjectsLocationsBackends: API.OperationMethod<
   GetProjectsLocationsBackendsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(50, __c6, 2) as any as S.Schema<GetProjectsLocationsBackendsRequest>,
-  output: __S(11, __c1, 3) as any as S.Schema<Backend>,
+  input: __S(80, __c5, 0) as any as S.Schema<GetProjectsLocationsBackendsRequest>,
+  output: __S(421, __c26, 5) as any as S.Schema<Backend>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1144,8 +1144,8 @@ export const getProjectsLocationsBackendsBuilds: API.OperationMethod<
   GetProjectsLocationsBackendsBuildsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(51, __c6, 3) as any as S.Schema<GetProjectsLocationsBackendsBuildsRequest>,
-  output: __S(28, __c3, 4) as any as S.Schema<Build>,
+  input: __S(96, __c6, 0) as any as S.Schema<GetProjectsLocationsBackendsBuildsRequest>,
+  output: __S(555, __c34, 11) as any as S.Schema<Build>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1159,8 +1159,8 @@ export const getProjectsLocationsBackendsDomains: API.OperationMethod<
   GetProjectsLocationsBackendsDomainsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(52, __c6, 4) as any as S.Schema<GetProjectsLocationsBackendsDomainsRequest>,
-  output: __S(40, __c5, 0) as any as S.Schema<Domain>,
+  input: __S(112, __c7, 0) as any as S.Schema<GetProjectsLocationsBackendsDomainsRequest>,
+  output: __S(586, __c36, 10) as any as S.Schema<Domain>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1174,8 +1174,8 @@ export const getProjectsLocationsBackendsRollouts: API.OperationMethod<
   GetProjectsLocationsBackendsRolloutsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(53, __c6, 5) as any as S.Schema<GetProjectsLocationsBackendsRolloutsRequest>,
-  output: __S(42, __c5, 2) as any as S.Schema<Rollout>,
+  input: __S(128, __c8, 0) as any as S.Schema<GetProjectsLocationsBackendsRolloutsRequest>,
+  output: __S(608, __c38, 0) as any as S.Schema<Rollout>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1189,8 +1189,8 @@ export const getProjectsLocationsBackendsTraffic: API.OperationMethod<
   GetProjectsLocationsBackendsTrafficError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(54, __c6, 6) as any as S.Schema<GetProjectsLocationsBackendsTrafficRequest>,
-  output: __S(61, __c7, 5) as any as S.Schema<Traffic>,
+  input: __S(144, __c9, 0) as any as S.Schema<GetProjectsLocationsBackendsTrafficRequest>,
+  output: __S(166, __c10, 6) as any as S.Schema<Traffic>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1204,8 +1204,8 @@ export const getProjectsLocationsOperations: API.OperationMethod<
   GetProjectsLocationsOperationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(62, __c7, 6) as any as S.Schema<GetProjectsLocationsOperationsRequest>,
-  output: __S(16, __c2, 0) as any as S.Schema<Operation>,
+  input: __S(176, __c11, 0) as any as S.Schema<GetProjectsLocationsOperationsRequest>,
+  output: __S(512, __c32, 0) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1220,8 +1220,8 @@ export const listProjectsLocations: API.PaginatedOperationMethod<
   GcpOpContext,
   ListLocationsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(64, __c8, 0) as any as S.Schema<ListProjectsLocationsRequest>,
-  output: __S(66, __c8, 2) as any as S.Schema<ListLocationsResponse>,
+  input: __S(192, __c12, 0) as any as S.Schema<ListProjectsLocationsRequest>,
+  output: __S(194, __c12, 2) as any as S.Schema<ListLocationsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1237,8 +1237,8 @@ export const listProjectsLocationsBackends: API.PaginatedOperationMethod<
   GcpOpContext,
   ListBackendsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(67, __c8, 3) as any as S.Schema<ListProjectsLocationsBackendsRequest>,
-  output: __S(69, __c8, 5) as any as S.Schema<ListBackendsResponse>,
+  input: __S(224, __c14, 0) as any as S.Schema<ListProjectsLocationsBackendsRequest>,
+  output: __S(226, __c14, 2) as any as S.Schema<ListBackendsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1254,8 +1254,8 @@ export const listProjectsLocationsBackendsBuilds: API.PaginatedOperationMethod<
   GcpOpContext,
   ListBuildsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(70, __c8, 6) as any as S.Schema<ListProjectsLocationsBackendsBuildsRequest>,
-  output: __S(72, __c9, 0) as any as S.Schema<ListBuildsResponse>,
+  input: __S(240, __c15, 0) as any as S.Schema<ListProjectsLocationsBackendsBuildsRequest>,
+  output: __S(242, __c15, 2) as any as S.Schema<ListBuildsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1271,8 +1271,8 @@ export const listProjectsLocationsBackendsDomains: API.PaginatedOperationMethod<
   GcpOpContext,
   ListDomainsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(73, __c9, 1) as any as S.Schema<ListProjectsLocationsBackendsDomainsRequest>,
-  output: __S(75, __c9, 3) as any as S.Schema<ListDomainsResponse>,
+  input: __S(256, __c16, 0) as any as S.Schema<ListProjectsLocationsBackendsDomainsRequest>,
+  output: __S(258, __c16, 2) as any as S.Schema<ListDomainsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1288,8 +1288,8 @@ export const listProjectsLocationsBackendsRollouts: API.PaginatedOperationMethod
   GcpOpContext,
   ListRolloutsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(76, __c9, 4) as any as S.Schema<ListProjectsLocationsBackendsRolloutsRequest>,
-  output: __S(78, __c9, 6) as any as S.Schema<ListRolloutsResponse>,
+  input: __S(272, __c17, 0) as any as S.Schema<ListProjectsLocationsBackendsRolloutsRequest>,
+  output: __S(274, __c17, 2) as any as S.Schema<ListRolloutsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1305,8 +1305,8 @@ export const listProjectsLocationsOperations: API.PaginatedOperationMethod<
   GcpOpContext,
   ListOperationsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(79, __c9, 7) as any as S.Schema<ListProjectsLocationsOperationsRequest>,
-  output: __S(81, __c10, 1) as any as S.Schema<ListOperationsResponse>,
+  input: __S(288, __c18, 0) as any as S.Schema<ListProjectsLocationsOperationsRequest>,
+  output: __S(290, __c18, 2) as any as S.Schema<ListOperationsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1321,8 +1321,8 @@ export const listProjectsLocationsSupportedRuntimes: API.OperationMethod<
   ListProjectsLocationsSupportedRuntimesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(82, __c10, 2) as any as S.Schema<ListProjectsLocationsSupportedRuntimesRequest>,
-  output: __S(85, __c10, 5) as any as S.Schema<ListSupportedRuntimesResponse>,
+  input: __S(304, __c19, 0) as any as S.Schema<ListProjectsLocationsSupportedRuntimesRequest>,
+  output: __S(307, __c19, 3) as any as S.Schema<ListSupportedRuntimesResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1341,8 +1341,8 @@ export const patchProjectsLocationsBackends: API.OperationMethod<
   PatchProjectsLocationsBackendsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(86, __c10, 6) as any as S.Schema<PatchProjectsLocationsBackendsRequest>,
-  output: __S(16, __c2, 0) as any as S.Schema<Operation>,
+  input: __S(320, __c20, 0) as any as S.Schema<PatchProjectsLocationsBackendsRequest>,
+  output: __S(512, __c32, 0) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1361,8 +1361,8 @@ export const patchProjectsLocationsBackendsDomains: API.OperationMethod<
   PatchProjectsLocationsBackendsDomainsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(87, __c10, 7) as any as S.Schema<PatchProjectsLocationsBackendsDomainsRequest>,
-  output: __S(16, __c2, 0) as any as S.Schema<Operation>,
+  input: __S(336, __c21, 0) as any as S.Schema<PatchProjectsLocationsBackendsDomainsRequest>,
+  output: __S(512, __c32, 0) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1381,8 +1381,8 @@ export const patchProjectsLocationsBackendsTraffic: API.OperationMethod<
   PatchProjectsLocationsBackendsTrafficError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(88, __c11, 0) as any as S.Schema<PatchProjectsLocationsBackendsTrafficRequest>,
-  output: __S(16, __c2, 0) as any as S.Schema<Operation>,
+  input: __S(352, __c22, 0) as any as S.Schema<PatchProjectsLocationsBackendsTrafficRequest>,
+  output: __S(512, __c32, 0) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1392,441 +1392,6 @@ export const patchProjectsLocationsBackendsTraffic: API.OperationMethod<
 function __c0(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1beta/{+name}:cancel",
-            baseUrl: "https://firebaseapphosting.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "CancelProjectsLocationsOperationsRequest",
-      });
-    case 1:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "Empty",
-      });
-    case 2:
-      return S.Record(S.String, S.String);
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          service: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "RunService" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          runService: S.optional(__S(3, __c0, 3)),
-        }),
-      ).annotate({ identifier: "ManagedResource" });
-    case 5:
-      return S.Array(__S(4, __c0, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          value: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "BackendRuntime" });
-    case 7:
-      return S.Array(S.String);
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          availability: S.optional(__S(7, __c0, 7)),
-          value: S.optional(S.String),
-          originFileName: S.optional(S.String),
-          secret: S.optional(S.String),
-          origin: S.optional(S.String),
-          variable: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "EnvironmentVariable" });
-    case 1:
-      return S.Array(__S(8, __c1, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          rootDirectory: S.optional(S.String),
-          repository: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Codebase" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          environment: S.optional(S.String),
-          mode: S.optional(S.String),
-          displayName: S.optional(S.String),
-          labels: S.optional(__S(2, __c0, 2)),
-          managedResources: S.optional(__S(5, __c0, 5)),
-          name: S.optional(S.String),
-          annotations: S.optional(__S(2, __c0, 2)),
-          updateTime: S.optional(S.String),
-          runtime: S.optional(__S(6, __c0, 6)),
-          uri: S.optional(S.String),
-          appId: S.optional(S.String),
-          etag: S.optional(S.String),
-          servingLocality: S.optional(S.String),
-          reconciling: S.optional(S.Boolean),
-          overrideEnv: S.optional(__S(9, __c1, 1)),
-          createTime: S.optional(S.String),
-          deleteTime: S.optional(S.String),
-          automaticBaseImageUpdatesDisabled: S.optional(S.Boolean),
-          uid: S.optional(S.String),
-          codebase: S.optional(__S(10, __c1, 2)),
-          serviceAccount: S.optional(S.String),
-          requestLogsDisabled: S.optional(S.Boolean),
-        }),
-      ).annotate({ identifier: "Backend" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          parent: S.String.pipe(T.Label()),
-          validateOnly: S.optional(S.Boolean.pipe(T.Query())),
-          backendId: S.optional(S.String.pipe(T.Query())),
-          requestId: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(11, __c1, 3).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1beta/{+parent}/backends",
-            baseUrl: "https://firebaseapphosting.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateProjectsLocationsBackendsRequest",
-      });
-    case 5:
-      return S.Record(S.String, S.Unknown);
-    case 6:
-      return S.Array(__S(13, __c1, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          message: S.optional(S.String),
-          code: S.optional(S.Number),
-          details: S.optional(__S(14, __c1, 6)),
-        }),
-      ).annotate({ identifier: "Status" });
-  }
-}
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          metadata: S.optional(__S(13, __c1, 5)),
-          name: S.optional(S.String),
-          done: S.optional(S.Boolean),
-          response: S.optional(__S(13, __c1, 5)),
-          error: S.optional(__S(15, __c1, 7)),
-        }),
-      ).annotate({ identifier: "Operation" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          minInstances: S.optional(S.Number),
-          cpu: S.optional(S.Number),
-          memoryMib: S.optional(S.Number),
-          concurrency: S.optional(S.Number),
-          maxInstances: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "RunConfig" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          env: S.optional(__S(9, __c1, 1)),
-          runConfig: S.optional(__S(17, __c2, 1)),
-          effectiveEnv: S.optional(__S(9, __c1, 1)),
-        }),
-      ).annotate({ identifier: "Config" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          imageUri: S.optional(S.String),
-          displayName: S.optional(S.String),
-          email: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "SourceUserMetadata" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          userStorageUri: S.optional(S.String),
-          author: S.optional(__S(19, __c2, 3)),
-          description: S.optional(S.String),
-          externalSignedUri: S.optional(S.String),
-          rootDirectory: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ArchiveSource" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          email: S.optional(S.String),
-          imageUri: S.optional(S.String),
-          displayName: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "UserMetadata" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          author: S.optional(__S(21, __c2, 5)),
-          hash: S.optional(S.String),
-          repository: S.optional(S.String),
-          displayName: S.optional(S.String),
-          commitMessage: S.optional(S.String),
-          commit: S.optional(S.String),
-          uri: S.optional(S.String),
-          commitTime: S.optional(S.String),
-          branch: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "CodebaseSource" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          rootDirectory: S.optional(S.String),
-          runConfig: S.optional(__S(17, __c2, 1)),
-          description: S.optional(S.String),
-          runCommand: S.optional(S.String),
-          env: S.optional(__S(9, __c1, 1)),
-          userStorageUri: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "LocallyBuiltSource" });
-  }
-}
-function __c3(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          image: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ContainerSource" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          archive: S.optional(__S(20, __c2, 4)),
-          codebase: S.optional(__S(22, __c2, 6)),
-          locallyBuilt: S.optional(__S(23, __c2, 7)),
-          container: S.optional(__S(24, __c3, 0)),
-        }),
-      ).annotate({ identifier: "BuildSource" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          error: S.optional(__S(15, __c1, 7)),
-          errorSource: S.optional(S.String),
-          cloudResource: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Firebaseapphosting_Error" });
-    case 3:
-      return S.Array(__S(26, __c3, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          image: S.optional(S.String),
-          name: S.optional(S.String),
-          reconciling: S.optional(S.Boolean),
-          config: S.optional(__S(18, __c2, 2)),
-          source: S.optional(__S(25, __c3, 1)),
-          errorSource: S.optional(S.String),
-          errors: S.optional(__S(27, __c3, 3)),
-          etag: S.optional(S.String),
-          error: S.optional(__S(15, __c1, 7)),
-          updateTime: S.optional(S.String),
-          annotations: S.optional(__S(2, __c0, 2)),
-          labels: S.optional(__S(2, __c0, 2)),
-          state: S.optional(S.String),
-          buildLogsUri: S.optional(S.String),
-          displayName: S.optional(S.String),
-          environment: S.optional(S.String),
-          uid: S.optional(S.String),
-          createTime: S.optional(S.String),
-          deleteTime: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Build" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          requestId: S.optional(S.String.pipe(T.Query())),
-          buildId: S.optional(S.String.pipe(T.Query())),
-          parent: S.String.pipe(T.Label()),
-          validateOnly: S.optional(S.Boolean.pipe(T.Query())),
-          body: S.optional(__S(28, __c3, 4).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1beta/{+parent}/builds",
-            baseUrl: "https://firebaseapphosting.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateProjectsLocationsBackendsBuildsRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          type: S.optional(S.String),
-          relevantState: S.optional(__S(7, __c0, 7)),
-          requiredAction: S.optional(S.String),
-          domainName: S.optional(S.String),
-          rdata: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "DnsRecord" });
-    case 7:
-      return S.Array(__S(30, __c3, 6));
-  }
-}
-function __c4(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          records: S.optional(__S(31, __c3, 7)),
-          checkError: S.optional(__S(15, __c1, 7)),
-          domainName: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "DnsRecordSet" });
-    case 1:
-      return S.Array(__S(32, __c4, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          domainName: S.optional(S.String),
-          checkTime: S.optional(S.String),
-          discovered: S.optional(__S(33, __c4, 1)),
-          desired: S.optional(__S(33, __c4, 1)),
-        }),
-      ).annotate({ identifier: "DnsUpdates" });
-    case 3:
-      return S.Array(__S(34, __c4, 2));
-    case 4:
-      return S.Array(__S(15, __c1, 7));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          ownershipState: S.optional(S.String),
-          requiredDnsUpdates: S.optional(__S(35, __c4, 3)),
-          issues: S.optional(__S(36, __c4, 4)),
-          hostState: S.optional(S.String),
-          certState: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "CustomDomainStatus" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          uri: S.optional(S.String),
-          status: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Redirect" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          redirect: S.optional(__S(38, __c4, 6)),
-        }),
-      ).annotate({ identifier: "ServingBehavior" });
-  }
-}
-function __c5(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          customDomainStatus: S.optional(__S(37, __c4, 5)),
-          uid: S.optional(S.String),
-          serve: S.optional(__S(39, __c4, 7)),
-          reconciling: S.optional(S.Boolean),
-          type: S.optional(S.String),
-          labels: S.optional(__S(2, __c0, 2)),
-          updateTime: S.optional(S.String),
-          disabled: S.optional(S.Boolean),
-          displayName: S.optional(S.String),
-          etag: S.optional(S.String),
-          annotations: S.optional(__S(2, __c0, 2)),
-          purgeTime: S.optional(S.String),
-          deleteTime: S.optional(S.String),
-          createTime: S.optional(S.String),
-          name: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Domain" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          requestId: S.optional(S.String.pipe(T.Query())),
-          validateOnly: S.optional(S.Boolean.pipe(T.Query())),
-          parent: S.String.pipe(T.Label()),
-          domainId: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(40, __c5, 0).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1beta/{+parent}/domains",
-            baseUrl: "https://firebaseapphosting.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateProjectsLocationsBackendsDomainsRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          annotations: S.optional(__S(2, __c0, 2)),
-          error: S.optional(__S(15, __c1, 7)),
-          labels: S.optional(__S(2, __c0, 2)),
-          displayName: S.optional(S.String),
-          build: S.optional(S.String),
-          deleteTime: S.optional(S.String),
-          createTime: S.optional(S.String),
-          reconciling: S.optional(S.Boolean),
-          etag: S.optional(S.String),
-          updateTime: S.optional(S.String),
-          name: S.optional(S.String),
-          uid: S.optional(S.String),
-          state: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Rollout" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          rolloutId: S.optional(S.String.pipe(T.Query())),
-          parent: S.String.pipe(T.Label()),
-          requestId: S.optional(S.String.pipe(T.Query())),
-          validateOnly: S.optional(S.Boolean.pipe(T.Query())),
-          body: S.optional(__S(42, __c5, 2).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1beta/{+parent}/rollouts",
-            baseUrl: "https://firebaseapphosting.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateProjectsLocationsBackendsRolloutsRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          requestId: S.optional(S.String.pipe(T.Query())),
-          force: S.optional(S.Boolean.pipe(T.Query())),
-          validateOnly: S.optional(S.Boolean.pipe(T.Query())),
-          etag: S.optional(S.String.pipe(T.Query())),
-          name: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "v1beta/{+name}",
-            baseUrl: "https://firebaseapphosting.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteProjectsLocationsBackendsRequest",
-      });
-    case 5:
       return S.suspend(() =>
         S.Struct({
           validateOnly: S.optional(S.Boolean.pipe(T.Query())),
@@ -1843,7 +1408,11 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "DeleteProjectsLocationsBackendsBuildsRequest",
       });
-    case 6:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           validateOnly: S.optional(S.Boolean.pipe(T.Query())),
@@ -1860,7 +1429,11 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "DeleteProjectsLocationsBackendsDomainsRequest",
       });
-    case 7:
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -1873,6 +1446,56 @@ function __c5(j: number): any {
         ),
       ).annotate({
         identifier: "DeleteProjectsLocationsOperationsRequest",
+      });
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v1beta/{+name}",
+            baseUrl: "https://firebaseapphosting.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetProjectsLocationsRequest",
+      });
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.optional(S.String),
+          locationId: S.optional(S.String),
+          metadata: S.optional(__S(480, __c30, 0)),
+          displayName: S.optional(S.String),
+          labels: S.optional(__S(464, __c29, 0)),
+        }),
+      ).annotate({ identifier: "Location" });
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v1beta/{+name}",
+            baseUrl: "https://firebaseapphosting.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetProjectsLocationsBackendsRequest",
       });
   }
 }
@@ -1890,47 +1513,13 @@ function __c6(j: number): any {
           }),
         ),
       ).annotate({
-        identifier: "GetProjectsLocationsRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.optional(S.String),
-          locationId: S.optional(S.String),
-          metadata: S.optional(__S(13, __c1, 5)),
-          displayName: S.optional(S.String),
-          labels: S.optional(__S(2, __c0, 2)),
-        }),
-      ).annotate({ identifier: "Location" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v1beta/{+name}",
-            baseUrl: "https://firebaseapphosting.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetProjectsLocationsBackendsRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v1beta/{+name}",
-            baseUrl: "https://firebaseapphosting.googleapis.com/",
-          }),
-        ),
-      ).annotate({
         identifier: "GetProjectsLocationsBackendsBuildsRequest",
       });
-    case 4:
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -1944,7 +1533,11 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "GetProjectsLocationsBackendsDomainsRequest",
       });
-    case 5:
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -1958,7 +1551,11 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "GetProjectsLocationsBackendsRolloutsRequest",
       });
-    case 6:
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -1972,61 +1569,65 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "GetProjectsLocationsBackendsTrafficRequest",
       });
-    case 7:
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           type: S.optional(S.String),
           pattern: S.optional(S.String),
         }),
       ).annotate({ identifier: "Path" });
-  }
-}
-function __c7(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(55, __c6, 7));
     case 1:
+      return S.Array(__S(160, __c10, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           disabled: S.optional(S.Boolean),
           codebaseBranch: S.optional(S.String),
           disabledTime: S.optional(S.String),
-          ignoredPaths: S.optional(__S(56, __c7, 0)),
-          requiredPaths: S.optional(__S(56, __c7, 0)),
+          ignoredPaths: S.optional(__S(161, __c10, 1)),
+          requiredPaths: S.optional(__S(161, __c10, 1)),
         }),
       ).annotate({ identifier: "RolloutPolicy" });
-    case 2:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           build: S.optional(S.String),
           percent: S.optional(S.Number),
         }),
       ).annotate({ identifier: "TrafficSplit" });
-    case 3:
-      return S.Array(__S(58, __c7, 2));
     case 4:
-      return S.suspend(() =>
-        S.Struct({
-          splits: S.optional(__S(59, __c7, 3)),
-        }),
-      ).annotate({ identifier: "TrafficSet" });
+      return S.Array(__S(163, __c10, 3));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          rolloutPolicy: S.optional(__S(57, __c7, 1)),
-          target: S.optional(__S(60, __c7, 4)),
-          labels: S.optional(__S(2, __c0, 2)),
+          splits: S.optional(__S(164, __c10, 4)),
+        }),
+      ).annotate({ identifier: "TrafficSet" });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          rolloutPolicy: S.optional(__S(162, __c10, 2)),
+          target: S.optional(__S(165, __c10, 5)),
+          labels: S.optional(__S(464, __c29, 0)),
           etag: S.optional(S.String),
           createTime: S.optional(S.String),
-          current: S.optional(__S(60, __c7, 4)),
+          current: S.optional(__S(165, __c10, 5)),
           updateTime: S.optional(S.String),
           uid: S.optional(S.String),
           reconciling: S.optional(S.Boolean),
           name: S.optional(S.String),
-          annotations: S.optional(__S(2, __c0, 2)),
+          annotations: S.optional(__S(464, __c29, 0)),
         }),
       ).annotate({ identifier: "Traffic" });
-    case 6:
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -2040,11 +1641,9 @@ function __c7(j: number): any {
       ).annotate({
         identifier: "GetProjectsLocationsOperationsRequest",
       });
-    case 7:
-      return S.Array(S.String);
   }
 }
-function __c8(j: number): any {
+function __c12(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2052,7 +1651,7 @@ function __c8(j: number): any {
           filter: S.optional(S.String.pipe(T.Query())),
           name: S.String.pipe(T.Label()),
           pageSize: S.optional(S.Number.pipe(T.Query())),
-          extraLocationTypes: S.optional(__S(63, __c7, 7).pipe(T.Query())),
+          extraLocationTypes: S.optional(__S(208, __c13, 0).pipe(T.Query())),
           pageToken: S.optional(S.String.pipe(T.Query())),
         }).pipe(
           T.Http({
@@ -2065,15 +1664,25 @@ function __c8(j: number): any {
         identifier: "ListProjectsLocationsRequest",
       });
     case 1:
-      return S.Array(__S(49, __c6, 1));
+      return S.Array(__S(64, __c4, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          locations: S.optional(__S(65, __c8, 1)),
+          locations: S.optional(__S(193, __c12, 1)),
         }),
       ).annotate({ identifier: "ListLocationsResponse" });
-    case 3:
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           orderBy: S.optional(S.String.pipe(T.Query())),
@@ -2092,17 +1701,21 @@ function __c8(j: number): any {
       ).annotate({
         identifier: "ListProjectsLocationsBackendsRequest",
       });
-    case 4:
-      return S.Array(__S(11, __c1, 3));
-    case 5:
+    case 1:
+      return S.Array(__S(421, __c26, 5));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          unreachable: S.optional(__S(63, __c7, 7)),
-          backends: S.optional(__S(68, __c8, 4)),
+          unreachable: S.optional(__S(208, __c13, 0)),
+          backends: S.optional(__S(225, __c14, 1)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListBackendsResponse" });
-    case 6:
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -2121,21 +1734,21 @@ function __c8(j: number): any {
       ).annotate({
         identifier: "ListProjectsLocationsBackendsBuildsRequest",
       });
-    case 7:
-      return S.Array(__S(28, __c3, 4));
-  }
-}
-function __c9(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
+      return S.Array(__S(555, __c34, 11));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          unreachable: S.optional(__S(63, __c7, 7)),
+          unreachable: S.optional(__S(208, __c13, 0)),
           nextPageToken: S.optional(S.String),
-          builds: S.optional(__S(71, __c8, 7)),
+          builds: S.optional(__S(241, __c15, 1)),
         }),
       ).annotate({ identifier: "ListBuildsResponse" });
-    case 1:
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           filter: S.optional(S.String.pipe(T.Query())),
@@ -2154,17 +1767,21 @@ function __c9(j: number): any {
       ).annotate({
         identifier: "ListProjectsLocationsBackendsDomainsRequest",
       });
+    case 1:
+      return S.Array(__S(586, __c36, 10));
     case 2:
-      return S.Array(__S(40, __c5, 0));
-    case 3:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          unreachable: S.optional(__S(63, __c7, 7)),
-          domains: S.optional(__S(74, __c9, 2)),
+          unreachable: S.optional(__S(208, __c13, 0)),
+          domains: S.optional(__S(257, __c16, 1)),
         }),
       ).annotate({ identifier: "ListDomainsResponse" });
-    case 4:
+  }
+}
+function __c17(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           showDeleted: S.optional(S.Boolean.pipe(T.Query())),
@@ -2183,17 +1800,21 @@ function __c9(j: number): any {
       ).annotate({
         identifier: "ListProjectsLocationsBackendsRolloutsRequest",
       });
-    case 5:
-      return S.Array(__S(42, __c5, 2));
-    case 6:
+    case 1:
+      return S.Array(__S(608, __c38, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          unreachable: S.optional(__S(63, __c7, 7)),
+          unreachable: S.optional(__S(208, __c13, 0)),
           nextPageToken: S.optional(S.String),
-          rollouts: S.optional(__S(77, __c9, 5)),
+          rollouts: S.optional(__S(273, __c17, 1)),
         }),
       ).annotate({ identifier: "ListRolloutsResponse" });
-    case 7:
+  }
+}
+function __c18(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           pageToken: S.optional(S.String.pipe(T.Query())),
@@ -2211,21 +1832,21 @@ function __c9(j: number): any {
       ).annotate({
         identifier: "ListProjectsLocationsOperationsRequest",
       });
-  }
-}
-function __c10(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(16, __c2, 0));
     case 1:
+      return S.Array(__S(512, __c32, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          operations: S.optional(__S(80, __c10, 0)),
+          operations: S.optional(__S(289, __c18, 1)),
           nextPageToken: S.optional(S.String),
-          unreachable: S.optional(__S(63, __c7, 7)),
+          unreachable: S.optional(__S(208, __c13, 0)),
         }),
       ).annotate({ identifier: "ListOperationsResponse" });
-    case 2:
+  }
+}
+function __c19(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
@@ -2240,7 +1861,7 @@ function __c10(j: number): any {
       ).annotate({
         identifier: "ListProjectsLocationsSupportedRuntimesRequest",
       });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
@@ -2250,17 +1871,21 @@ function __c10(j: number): any {
           runtimeId: S.optional(S.String),
         }),
       ).annotate({ identifier: "SupportedRuntime" });
-    case 4:
-      return S.Array(__S(83, __c10, 3));
-    case 5:
+    case 2:
+      return S.Array(__S(305, __c19, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          supportedRuntimes: S.optional(__S(84, __c10, 4)),
+          supportedRuntimes: S.optional(__S(306, __c19, 2)),
         }),
       ).annotate({
         identifier: "ListSupportedRuntimesResponse",
       });
-    case 6:
+  }
+}
+function __c20(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -2268,7 +1893,7 @@ function __c10(j: number): any {
           requestId: S.optional(S.String.pipe(T.Query())),
           allowMissing: S.optional(S.Boolean.pipe(T.Query())),
           validateOnly: S.optional(S.Boolean.pipe(T.Query())),
-          body: S.optional(__S(11, __c1, 3).pipe(T.HttpBody())),
+          body: S.optional(__S(421, __c26, 5).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -2279,7 +1904,11 @@ function __c10(j: number): any {
       ).annotate({
         identifier: "PatchProjectsLocationsBackendsRequest",
       });
-    case 7:
+  }
+}
+function __c21(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           updateMask: S.optional(S.String.pipe(T.Query())),
@@ -2287,7 +1916,7 @@ function __c10(j: number): any {
           allowMissing: S.optional(S.Boolean.pipe(T.Query())),
           requestId: S.optional(S.String.pipe(T.Query())),
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(40, __c5, 0).pipe(T.HttpBody())),
+          body: S.optional(__S(586, __c36, 10).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -2300,7 +1929,7 @@ function __c10(j: number): any {
       });
   }
 }
-function __c11(j: number): any {
+function __c22(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2309,7 +1938,7 @@ function __c11(j: number): any {
           requestId: S.optional(S.String.pipe(T.Query())),
           updateMask: S.optional(S.String.pipe(T.Query())),
           validateOnly: S.optional(S.Boolean.pipe(T.Query())),
-          body: S.optional(__S(61, __c7, 5).pipe(T.HttpBody())),
+          body: S.optional(__S(166, __c10, 6).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -2322,7 +1951,489 @@ function __c11(j: number): any {
       });
   }
 }
-
+function __c23(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1beta/{+name}:cancel",
+            baseUrl: "https://firebaseapphosting.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "CancelProjectsLocationsOperationsRequest",
+      });
+  }
+}
+function __c24(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "Empty",
+      });
+  }
+}
+function __c25(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          parent: S.String.pipe(T.Label()),
+          validateOnly: S.optional(S.Boolean.pipe(T.Query())),
+          backendId: S.optional(S.String.pipe(T.Query())),
+          requestId: S.optional(S.String.pipe(T.Query())),
+          body: S.optional(__S(421, __c26, 5).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1beta/{+parent}/backends",
+            baseUrl: "https://firebaseapphosting.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateProjectsLocationsBackendsRequest",
+      });
+  }
+}
+function __c26(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          service: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "RunService" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          runService: S.optional(__S(416, __c26, 0)),
+        }),
+      ).annotate({ identifier: "ManagedResource" });
+    case 2:
+      return S.Array(__S(417, __c26, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          value: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "BackendRuntime" });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          rootDirectory: S.optional(S.String),
+          repository: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Codebase" });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          environment: S.optional(S.String),
+          mode: S.optional(S.String),
+          displayName: S.optional(S.String),
+          labels: S.optional(__S(464, __c29, 0)),
+          managedResources: S.optional(__S(418, __c26, 2)),
+          name: S.optional(S.String),
+          annotations: S.optional(__S(464, __c29, 0)),
+          updateTime: S.optional(S.String),
+          runtime: S.optional(__S(419, __c26, 3)),
+          uri: S.optional(S.String),
+          appId: S.optional(S.String),
+          etag: S.optional(S.String),
+          servingLocality: S.optional(S.String),
+          reconciling: S.optional(S.Boolean),
+          overrideEnv: S.optional(__S(433, __c27, 1)),
+          createTime: S.optional(S.String),
+          deleteTime: S.optional(S.String),
+          automaticBaseImageUpdatesDisabled: S.optional(S.Boolean),
+          uid: S.optional(S.String),
+          codebase: S.optional(__S(420, __c26, 4)),
+          serviceAccount: S.optional(S.String),
+          requestLogsDisabled: S.optional(S.Boolean),
+        }),
+      ).annotate({ identifier: "Backend" });
+  }
+}
+function __c27(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          availability: S.optional(__S(448, __c28, 0)),
+          value: S.optional(S.String),
+          originFileName: S.optional(S.String),
+          secret: S.optional(S.String),
+          origin: S.optional(S.String),
+          variable: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "EnvironmentVariable" });
+    case 1:
+      return S.Array(__S(432, __c27, 0));
+  }
+}
+function __c28(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c29(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, S.String);
+  }
+}
+function __c30(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, S.Unknown);
+  }
+}
+function __c31(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(480, __c30, 0));
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          message: S.optional(S.String),
+          code: S.optional(S.Number),
+          details: S.optional(__S(496, __c31, 0)),
+        }),
+      ).annotate({ identifier: "Status" });
+  }
+}
+function __c32(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          metadata: S.optional(__S(480, __c30, 0)),
+          name: S.optional(S.String),
+          done: S.optional(S.Boolean),
+          response: S.optional(__S(480, __c30, 0)),
+          error: S.optional(__S(497, __c31, 1)),
+        }),
+      ).annotate({ identifier: "Operation" });
+  }
+}
+function __c33(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          requestId: S.optional(S.String.pipe(T.Query())),
+          buildId: S.optional(S.String.pipe(T.Query())),
+          parent: S.String.pipe(T.Label()),
+          validateOnly: S.optional(S.Boolean.pipe(T.Query())),
+          body: S.optional(__S(555, __c34, 11).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1beta/{+parent}/builds",
+            baseUrl: "https://firebaseapphosting.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateProjectsLocationsBackendsBuildsRequest",
+      });
+  }
+}
+function __c34(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          minInstances: S.optional(S.Number),
+          cpu: S.optional(S.Number),
+          memoryMib: S.optional(S.Number),
+          concurrency: S.optional(S.Number),
+          maxInstances: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "RunConfig" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          env: S.optional(__S(433, __c27, 1)),
+          runConfig: S.optional(__S(544, __c34, 0)),
+          effectiveEnv: S.optional(__S(433, __c27, 1)),
+        }),
+      ).annotate({ identifier: "Config" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          imageUri: S.optional(S.String),
+          displayName: S.optional(S.String),
+          email: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "SourceUserMetadata" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          userStorageUri: S.optional(S.String),
+          author: S.optional(__S(546, __c34, 2)),
+          description: S.optional(S.String),
+          externalSignedUri: S.optional(S.String),
+          rootDirectory: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ArchiveSource" });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          email: S.optional(S.String),
+          imageUri: S.optional(S.String),
+          displayName: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "UserMetadata" });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          author: S.optional(__S(548, __c34, 4)),
+          hash: S.optional(S.String),
+          repository: S.optional(S.String),
+          displayName: S.optional(S.String),
+          commitMessage: S.optional(S.String),
+          commit: S.optional(S.String),
+          uri: S.optional(S.String),
+          commitTime: S.optional(S.String),
+          branch: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "CodebaseSource" });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          rootDirectory: S.optional(S.String),
+          runConfig: S.optional(__S(544, __c34, 0)),
+          description: S.optional(S.String),
+          runCommand: S.optional(S.String),
+          env: S.optional(__S(433, __c27, 1)),
+          userStorageUri: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "LocallyBuiltSource" });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          image: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ContainerSource" });
+    case 8:
+      return S.suspend(() =>
+        S.Struct({
+          archive: S.optional(__S(547, __c34, 3)),
+          codebase: S.optional(__S(549, __c34, 5)),
+          locallyBuilt: S.optional(__S(550, __c34, 6)),
+          container: S.optional(__S(551, __c34, 7)),
+        }),
+      ).annotate({ identifier: "BuildSource" });
+    case 9:
+      return S.suspend(() =>
+        S.Struct({
+          error: S.optional(__S(497, __c31, 1)),
+          errorSource: S.optional(S.String),
+          cloudResource: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Firebaseapphosting_Error" });
+    case 10:
+      return S.Array(__S(553, __c34, 9));
+    case 11:
+      return S.suspend(() =>
+        S.Struct({
+          image: S.optional(S.String),
+          name: S.optional(S.String),
+          reconciling: S.optional(S.Boolean),
+          config: S.optional(__S(545, __c34, 1)),
+          source: S.optional(__S(552, __c34, 8)),
+          errorSource: S.optional(S.String),
+          errors: S.optional(__S(554, __c34, 10)),
+          etag: S.optional(S.String),
+          error: S.optional(__S(497, __c31, 1)),
+          updateTime: S.optional(S.String),
+          annotations: S.optional(__S(464, __c29, 0)),
+          labels: S.optional(__S(464, __c29, 0)),
+          state: S.optional(S.String),
+          buildLogsUri: S.optional(S.String),
+          displayName: S.optional(S.String),
+          environment: S.optional(S.String),
+          uid: S.optional(S.String),
+          createTime: S.optional(S.String),
+          deleteTime: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Build" });
+  }
+}
+function __c35(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          requestId: S.optional(S.String.pipe(T.Query())),
+          validateOnly: S.optional(S.Boolean.pipe(T.Query())),
+          parent: S.String.pipe(T.Label()),
+          domainId: S.optional(S.String.pipe(T.Query())),
+          body: S.optional(__S(586, __c36, 10).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1beta/{+parent}/domains",
+            baseUrl: "https://firebaseapphosting.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateProjectsLocationsBackendsDomainsRequest",
+      });
+  }
+}
+function __c36(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          type: S.optional(S.String),
+          relevantState: S.optional(__S(448, __c28, 0)),
+          requiredAction: S.optional(S.String),
+          domainName: S.optional(S.String),
+          rdata: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "DnsRecord" });
+    case 1:
+      return S.Array(__S(576, __c36, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          records: S.optional(__S(577, __c36, 1)),
+          checkError: S.optional(__S(497, __c31, 1)),
+          domainName: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "DnsRecordSet" });
+    case 3:
+      return S.Array(__S(578, __c36, 2));
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          domainName: S.optional(S.String),
+          checkTime: S.optional(S.String),
+          discovered: S.optional(__S(579, __c36, 3)),
+          desired: S.optional(__S(579, __c36, 3)),
+        }),
+      ).annotate({ identifier: "DnsUpdates" });
+    case 5:
+      return S.Array(__S(580, __c36, 4));
+    case 6:
+      return S.Array(__S(497, __c31, 1));
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          ownershipState: S.optional(S.String),
+          requiredDnsUpdates: S.optional(__S(581, __c36, 5)),
+          issues: S.optional(__S(582, __c36, 6)),
+          hostState: S.optional(S.String),
+          certState: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "CustomDomainStatus" });
+    case 8:
+      return S.suspend(() =>
+        S.Struct({
+          uri: S.optional(S.String),
+          status: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Redirect" });
+    case 9:
+      return S.suspend(() =>
+        S.Struct({
+          redirect: S.optional(__S(584, __c36, 8)),
+        }),
+      ).annotate({ identifier: "ServingBehavior" });
+    case 10:
+      return S.suspend(() =>
+        S.Struct({
+          customDomainStatus: S.optional(__S(583, __c36, 7)),
+          uid: S.optional(S.String),
+          serve: S.optional(__S(585, __c36, 9)),
+          reconciling: S.optional(S.Boolean),
+          type: S.optional(S.String),
+          labels: S.optional(__S(464, __c29, 0)),
+          updateTime: S.optional(S.String),
+          disabled: S.optional(S.Boolean),
+          displayName: S.optional(S.String),
+          etag: S.optional(S.String),
+          annotations: S.optional(__S(464, __c29, 0)),
+          purgeTime: S.optional(S.String),
+          deleteTime: S.optional(S.String),
+          createTime: S.optional(S.String),
+          name: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Domain" });
+  }
+}
+function __c37(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          rolloutId: S.optional(S.String.pipe(T.Query())),
+          parent: S.String.pipe(T.Label()),
+          requestId: S.optional(S.String.pipe(T.Query())),
+          validateOnly: S.optional(S.Boolean.pipe(T.Query())),
+          body: S.optional(__S(608, __c38, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1beta/{+parent}/rollouts",
+            baseUrl: "https://firebaseapphosting.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateProjectsLocationsBackendsRolloutsRequest",
+      });
+  }
+}
+function __c38(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          annotations: S.optional(__S(464, __c29, 0)),
+          error: S.optional(__S(497, __c31, 1)),
+          labels: S.optional(__S(464, __c29, 0)),
+          displayName: S.optional(S.String),
+          build: S.optional(S.String),
+          deleteTime: S.optional(S.String),
+          createTime: S.optional(S.String),
+          reconciling: S.optional(S.Boolean),
+          etag: S.optional(S.String),
+          updateTime: S.optional(S.String),
+          name: S.optional(S.String),
+          uid: S.optional(S.String),
+          state: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Rollout" });
+  }
+}
+function __c39(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          requestId: S.optional(S.String.pipe(T.Query())),
+          force: S.optional(S.Boolean.pipe(T.Query())),
+          validateOnly: S.optional(S.Boolean.pipe(T.Query())),
+          etag: S.optional(S.String.pipe(T.Query())),
+          name: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "v1beta/{+name}",
+            baseUrl: "https://firebaseapphosting.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteProjectsLocationsBackendsRequest",
+      });
+  }
+}
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

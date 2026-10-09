@@ -1458,7 +1458,7 @@ export const confirmEmailDomainTermination: API.OperationMethod<
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(0, __c0, 0) as any as S.Schema<ConfirmEmailDomainTerminationRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<ConfirmEmailDomainTerminationResponse>,
+  output: __S(4, __c1, 0) as any as S.Schema<ConfirmEmailDomainTerminationResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1472,8 +1472,8 @@ export const createEmailDomainAccount: API.OperationMethod<
   CreateEmailDomainAccountError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2, __c0, 2) as any as S.Schema<CreateEmailDomainAccountRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<EmailDomainTaskPop>,
+  input: __S(8, __c2, 0) as any as S.Schema<CreateEmailDomainAccountRequest>,
+  output: __S(12, __c3, 0) as any as S.Schema<EmailDomainTaskPop>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1487,8 +1487,8 @@ export const createEmailDomainAccountChangePassword: API.OperationMethod<
   CreateEmailDomainAccountChangePasswordError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(4, __c0, 4) as any as S.Schema<CreateEmailDomainAccountChangePasswordRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<EmailDomainTaskPop>,
+  input: __S(104, __c26, 0) as any as S.Schema<CreateEmailDomainAccountChangePasswordRequest>,
+  output: __S(12, __c3, 0) as any as S.Schema<EmailDomainTaskPop>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1502,8 +1502,8 @@ export const createEmailDomainAccountDelegation: API.OperationMethod<
   CreateEmailDomainAccountDelegationError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(5, __c0, 5) as any as S.Schema<CreateEmailDomainAccountDelegationRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<CreateEmailDomainAccountDelegationResponse>,
+  input: __S(156, __c39, 0) as any as S.Schema<CreateEmailDomainAccountDelegationRequest>,
+  output: __S(4, __c1, 0) as any as S.Schema<CreateEmailDomainAccountDelegationResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1517,8 +1517,8 @@ export const createEmailDomainAccountFilter: API.OperationMethod<
   CreateEmailDomainAccountFilterError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(6, __c0, 6) as any as S.Schema<CreateEmailDomainAccountFilterRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<EmailDomainTaskFilter>,
+  input: __S(200, __c50, 0) as any as S.Schema<CreateEmailDomainAccountFilterRequest>,
+  output: __S(204, __c51, 0) as any as S.Schema<EmailDomainTaskFilter>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1532,8 +1532,8 @@ export const createEmailDomainAccountFilterChangeActivity: API.OperationMethod<
   CreateEmailDomainAccountFilterChangeActivityError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(8, __c1, 0) as any as S.Schema<CreateEmailDomainAccountFilterChangeActivityRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<EmailDomainTaskFilter>,
+  input: __S(256, __c64, 0) as any as S.Schema<CreateEmailDomainAccountFilterChangeActivityRequest>,
+  output: __S(204, __c51, 0) as any as S.Schema<EmailDomainTaskFilter>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1547,8 +1547,8 @@ export const createEmailDomainAccountFilterChangePriority: API.OperationMethod<
   CreateEmailDomainAccountFilterChangePriorityError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(9, __c1, 1) as any as S.Schema<CreateEmailDomainAccountFilterChangePriorityRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<EmailDomainTaskFilter>,
+  input: __S(308, __c77, 0) as any as S.Schema<CreateEmailDomainAccountFilterChangePriorityRequest>,
+  output: __S(204, __c51, 0) as any as S.Schema<EmailDomainTaskFilter>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1562,8 +1562,8 @@ export const createEmailDomainAccountFilterRule: API.OperationMethod<
   CreateEmailDomainAccountFilterRuleError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(10, __c1, 2) as any as S.Schema<CreateEmailDomainAccountFilterRuleRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<EmailDomainTaskFilter>,
+  input: __S(364, __c91, 0) as any as S.Schema<CreateEmailDomainAccountFilterRuleRequest>,
+  output: __S(204, __c51, 0) as any as S.Schema<EmailDomainTaskFilter>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1577,8 +1577,8 @@ export const createEmailDomainAcl: API.OperationMethod<
   CreateEmailDomainAclError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(11, __c1, 3) as any as S.Schema<CreateEmailDomainAclRequest>,
-  output: __S(12, __c1, 4) as any as S.Schema<EmailDomainAcl>,
+  input: __S(408, __c102, 0) as any as S.Schema<CreateEmailDomainAclRequest>,
+  output: __S(412, __c103, 0) as any as S.Schema<EmailDomainAcl>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1592,8 +1592,8 @@ export const createEmailDomainChangeContact: API.OperationMethod<
   CreateEmailDomainChangeContactError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(13, __c1, 5) as any as S.Schema<CreateEmailDomainChangeContactRequest>,
-  output: __S(15, __c1, 7) as any as S.Schema<CreateEmailDomainChangeContactResponse>,
+  input: __S(456, __c114, 0) as any as S.Schema<CreateEmailDomainChangeContactRequest>,
+  output: __S(464, __c116, 0) as any as S.Schema<CreateEmailDomainChangeContactResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1607,8 +1607,8 @@ export const createEmailDomainChangeDnsMXFilter: API.OperationMethod<
   CreateEmailDomainChangeDnsMXFilterError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(16, __c2, 0) as any as S.Schema<CreateEmailDomainChangeDnsMXFilterRequest>,
-  output: __S(17, __c2, 1) as any as S.Schema<CreateEmailDomainChangeDnsMXFilterResponse>,
+  input: __S(16, __c4, 0) as any as S.Schema<CreateEmailDomainChangeDnsMXFilterRequest>,
+  output: __S(20, __c5, 0) as any as S.Schema<CreateEmailDomainChangeDnsMXFilterResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1623,11 +1623,11 @@ export const createEmailDomainDelegatedAccountChangePassword: API.OperationMetho
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    18,
-    __c2,
-    2,
+    52,
+    __c13,
+    0,
   ) as any as S.Schema<CreateEmailDomainDelegatedAccountChangePasswordRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<EmailDomainTaskPop>,
+  output: __S(12, __c3, 0) as any as S.Schema<EmailDomainTaskPop>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1641,8 +1641,8 @@ export const createEmailDomainDelegatedAccountFilter: API.OperationMethod<
   CreateEmailDomainDelegatedAccountFilterError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(19, __c2, 3) as any as S.Schema<CreateEmailDomainDelegatedAccountFilterRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<EmailDomainTaskFilter>,
+  input: __S(56, __c14, 0) as any as S.Schema<CreateEmailDomainDelegatedAccountFilterRequest>,
+  output: __S(204, __c51, 0) as any as S.Schema<EmailDomainTaskFilter>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1657,11 +1657,11 @@ export const createEmailDomainDelegatedAccountFilterChangeActivity: API.Operatio
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    20,
-    __c2,
-    4,
+    60,
+    __c15,
+    0,
   ) as any as S.Schema<CreateEmailDomainDelegatedAccountFilterChangeActivityRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<EmailDomainTaskFilter>,
+  output: __S(204, __c51, 0) as any as S.Schema<EmailDomainTaskFilter>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1676,11 +1676,11 @@ export const createEmailDomainDelegatedAccountFilterChangePriority: API.Operatio
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    21,
-    __c2,
-    5,
+    64,
+    __c16,
+    0,
   ) as any as S.Schema<CreateEmailDomainDelegatedAccountFilterChangePriorityRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<EmailDomainTaskFilter>,
+  output: __S(204, __c51, 0) as any as S.Schema<EmailDomainTaskFilter>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1694,8 +1694,8 @@ export const createEmailDomainDelegatedAccountFilterRule: API.OperationMethod<
   CreateEmailDomainDelegatedAccountFilterRuleError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(22, __c2, 6) as any as S.Schema<CreateEmailDomainDelegatedAccountFilterRuleRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<EmailDomainTaskFilter>,
+  input: __S(68, __c17, 0) as any as S.Schema<CreateEmailDomainDelegatedAccountFilterRuleRequest>,
+  output: __S(204, __c51, 0) as any as S.Schema<EmailDomainTaskFilter>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1709,8 +1709,8 @@ export const createEmailDomainDelegatedAccountResponder: API.OperationMethod<
   CreateEmailDomainDelegatedAccountResponderError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(23, __c2, 7) as any as S.Schema<CreateEmailDomainDelegatedAccountResponderRequest>,
-  output: __S(24, __c3, 0) as any as S.Schema<EmailDomainTaskSpecialAccount>,
+  input: __S(72, __c18, 0) as any as S.Schema<CreateEmailDomainDelegatedAccountResponderRequest>,
+  output: __S(76, __c19, 0) as any as S.Schema<EmailDomainTaskSpecialAccount>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1724,8 +1724,8 @@ export const createEmailDomainDelegatedAccountUsage: API.OperationMethod<
   CreateEmailDomainDelegatedAccountUsageError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(25, __c3, 1) as any as S.Schema<CreateEmailDomainDelegatedAccountUsageRequest>,
-  output: __S(26, __c3, 2) as any as S.Schema<DomainDomainUsageAccountStruct>,
+  input: __S(80, __c20, 0) as any as S.Schema<CreateEmailDomainDelegatedAccountUsageRequest>,
+  output: __S(84, __c21, 0) as any as S.Schema<DomainDomainUsageAccountStruct>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1739,8 +1739,8 @@ export const createEmailDomainMailingList: API.OperationMethod<
   CreateEmailDomainMailingListError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(28, __c3, 4) as any as S.Schema<CreateEmailDomainMailingListRequest>,
-  output: __S(29, __c3, 5) as any as S.Schema<EmailDomainTaskMl>,
+  input: __S(88, __c22, 0) as any as S.Schema<CreateEmailDomainMailingListRequest>,
+  output: __S(92, __c23, 0) as any as S.Schema<EmailDomainTaskMl>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1754,8 +1754,8 @@ export const createEmailDomainMailingListChangeOption: API.OperationMethod<
   CreateEmailDomainMailingListChangeOptionError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(30, __c3, 6) as any as S.Schema<CreateEmailDomainMailingListChangeOptionRequest>,
-  output: __S(29, __c3, 5) as any as S.Schema<EmailDomainTaskMl>,
+  input: __S(100, __c25, 0) as any as S.Schema<CreateEmailDomainMailingListChangeOptionRequest>,
+  output: __S(92, __c23, 0) as any as S.Schema<EmailDomainTaskMl>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1769,8 +1769,8 @@ export const createEmailDomainMailingListModerator: API.OperationMethod<
   CreateEmailDomainMailingListModeratorError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(31, __c3, 7) as any as S.Schema<CreateEmailDomainMailingListModeratorRequest>,
-  output: __S(29, __c3, 5) as any as S.Schema<EmailDomainTaskMl>,
+  input: __S(108, __c27, 0) as any as S.Schema<CreateEmailDomainMailingListModeratorRequest>,
+  output: __S(92, __c23, 0) as any as S.Schema<EmailDomainTaskMl>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1784,8 +1784,8 @@ export const createEmailDomainMailingListSubscriber: API.OperationMethod<
   CreateEmailDomainMailingListSubscriberError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(32, __c4, 0) as any as S.Schema<CreateEmailDomainMailingListSubscriberRequest>,
-  output: __S(29, __c3, 5) as any as S.Schema<EmailDomainTaskMl>,
+  input: __S(112, __c28, 0) as any as S.Schema<CreateEmailDomainMailingListSubscriberRequest>,
+  output: __S(92, __c23, 0) as any as S.Schema<EmailDomainTaskMl>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1799,8 +1799,8 @@ export const createEmailDomainRedirection: API.OperationMethod<
   CreateEmailDomainRedirectionError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(33, __c4, 1) as any as S.Schema<CreateEmailDomainRedirectionRequest>,
-  output: __S(24, __c3, 0) as any as S.Schema<EmailDomainTaskSpecialAccount>,
+  input: __S(116, __c29, 0) as any as S.Schema<CreateEmailDomainRedirectionRequest>,
+  output: __S(76, __c19, 0) as any as S.Schema<EmailDomainTaskSpecialAccount>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1814,8 +1814,12 @@ export const createEmailDomainRedirectionChangeRedirection: API.OperationMethod<
   CreateEmailDomainRedirectionChangeRedirectionError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(34, __c4, 2) as any as S.Schema<CreateEmailDomainRedirectionChangeRedirectionRequest>,
-  output: __S(24, __c3, 0) as any as S.Schema<EmailDomainTaskSpecialAccount>,
+  input: __S(
+    120,
+    __c30,
+    0,
+  ) as any as S.Schema<CreateEmailDomainRedirectionChangeRedirectionRequest>,
+  output: __S(76, __c19, 0) as any as S.Schema<EmailDomainTaskSpecialAccount>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1829,8 +1833,8 @@ export const createEmailDomainResponder: API.OperationMethod<
   CreateEmailDomainResponderError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(35, __c4, 3) as any as S.Schema<CreateEmailDomainResponderRequest>,
-  output: __S(24, __c3, 0) as any as S.Schema<EmailDomainTaskSpecialAccount>,
+  input: __S(124, __c31, 0) as any as S.Schema<CreateEmailDomainResponderRequest>,
+  output: __S(76, __c19, 0) as any as S.Schema<EmailDomainTaskSpecialAccount>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1844,8 +1848,8 @@ export const deleteEmailDomainAccount: API.OperationMethod<
   DeleteEmailDomainAccountError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(36, __c4, 4) as any as S.Schema<DeleteEmailDomainAccountRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<EmailDomainTaskPop>,
+  input: __S(128, __c32, 0) as any as S.Schema<DeleteEmailDomainAccountRequest>,
+  output: __S(12, __c3, 0) as any as S.Schema<EmailDomainTaskPop>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1859,8 +1863,8 @@ export const deleteEmailDomainAccountDelegation: API.OperationMethod<
   DeleteEmailDomainAccountDelegationError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(37, __c4, 5) as any as S.Schema<DeleteEmailDomainAccountDelegationRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<DeleteEmailDomainAccountDelegationResponse>,
+  input: __S(132, __c33, 0) as any as S.Schema<DeleteEmailDomainAccountDelegationRequest>,
+  output: __S(4, __c1, 0) as any as S.Schema<DeleteEmailDomainAccountDelegationResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1874,8 +1878,8 @@ export const deleteEmailDomainAccountFilter: API.OperationMethod<
   DeleteEmailDomainAccountFilterError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(38, __c4, 6) as any as S.Schema<DeleteEmailDomainAccountFilterRequest>,
-  output: __S(40, __c5, 0) as any as S.Schema<DeleteEmailDomainAccountFilterResponse>,
+  input: __S(136, __c34, 0) as any as S.Schema<DeleteEmailDomainAccountFilterRequest>,
+  output: __S(141, __c35, 1) as any as S.Schema<DeleteEmailDomainAccountFilterResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1889,8 +1893,8 @@ export const deleteEmailDomainAccountFilterRule: API.OperationMethod<
   DeleteEmailDomainAccountFilterRuleError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(41, __c5, 1) as any as S.Schema<DeleteEmailDomainAccountFilterRuleRequest>,
-  output: __S(40, __c5, 0) as any as S.Schema<DeleteEmailDomainAccountFilterRuleResponse>,
+  input: __S(144, __c36, 0) as any as S.Schema<DeleteEmailDomainAccountFilterRuleRequest>,
+  output: __S(141, __c35, 1) as any as S.Schema<DeleteEmailDomainAccountFilterRuleResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1904,8 +1908,8 @@ export const deleteEmailDomainAcl: API.OperationMethod<
   DeleteEmailDomainAclError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(42, __c5, 2) as any as S.Schema<DeleteEmailDomainAclRequest>,
-  output: __S(43, __c5, 3) as any as S.Schema<DeleteEmailDomainAclResponse>,
+  input: __S(148, __c37, 0) as any as S.Schema<DeleteEmailDomainAclRequest>,
+  output: __S(152, __c38, 0) as any as S.Schema<DeleteEmailDomainAclResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1919,8 +1923,8 @@ export const deleteEmailDomainDelegatedAccountFilter: API.OperationMethod<
   DeleteEmailDomainDelegatedAccountFilterError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(44, __c5, 4) as any as S.Schema<DeleteEmailDomainDelegatedAccountFilterRequest>,
-  output: __S(40, __c5, 0) as any as S.Schema<DeleteEmailDomainDelegatedAccountFilterResponse>,
+  input: __S(160, __c40, 0) as any as S.Schema<DeleteEmailDomainDelegatedAccountFilterRequest>,
+  output: __S(141, __c35, 1) as any as S.Schema<DeleteEmailDomainDelegatedAccountFilterResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1934,8 +1938,12 @@ export const deleteEmailDomainDelegatedAccountFilterRule: API.OperationMethod<
   DeleteEmailDomainDelegatedAccountFilterRuleError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(45, __c5, 5) as any as S.Schema<DeleteEmailDomainDelegatedAccountFilterRuleRequest>,
-  output: __S(40, __c5, 0) as any as S.Schema<DeleteEmailDomainDelegatedAccountFilterRuleResponse>,
+  input: __S(164, __c41, 0) as any as S.Schema<DeleteEmailDomainDelegatedAccountFilterRuleRequest>,
+  output: __S(
+    141,
+    __c35,
+    1,
+  ) as any as S.Schema<DeleteEmailDomainDelegatedAccountFilterRuleResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1949,8 +1957,8 @@ export const deleteEmailDomainDelegatedAccountResponder: API.OperationMethod<
   DeleteEmailDomainDelegatedAccountResponderError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(46, __c5, 6) as any as S.Schema<DeleteEmailDomainDelegatedAccountResponderRequest>,
-  output: __S(24, __c3, 0) as any as S.Schema<EmailDomainTaskSpecialAccount>,
+  input: __S(168, __c42, 0) as any as S.Schema<DeleteEmailDomainDelegatedAccountResponderRequest>,
+  output: __S(76, __c19, 0) as any as S.Schema<EmailDomainTaskSpecialAccount>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1964,8 +1972,8 @@ export const deleteEmailDomainMailingList: API.OperationMethod<
   DeleteEmailDomainMailingListError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(47, __c5, 7) as any as S.Schema<DeleteEmailDomainMailingListRequest>,
-  output: __S(29, __c3, 5) as any as S.Schema<EmailDomainTaskMl>,
+  input: __S(172, __c43, 0) as any as S.Schema<DeleteEmailDomainMailingListRequest>,
+  output: __S(92, __c23, 0) as any as S.Schema<EmailDomainTaskMl>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1979,8 +1987,8 @@ export const deleteEmailDomainMailingListModerator: API.OperationMethod<
   DeleteEmailDomainMailingListModeratorError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(48, __c6, 0) as any as S.Schema<DeleteEmailDomainMailingListModeratorRequest>,
-  output: __S(29, __c3, 5) as any as S.Schema<EmailDomainTaskMl>,
+  input: __S(176, __c44, 0) as any as S.Schema<DeleteEmailDomainMailingListModeratorRequest>,
+  output: __S(92, __c23, 0) as any as S.Schema<EmailDomainTaskMl>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1994,8 +2002,8 @@ export const deleteEmailDomainMailingListSubscriber: API.OperationMethod<
   DeleteEmailDomainMailingListSubscriberError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(49, __c6, 1) as any as S.Schema<DeleteEmailDomainMailingListSubscriberRequest>,
-  output: __S(29, __c3, 5) as any as S.Schema<EmailDomainTaskMl>,
+  input: __S(180, __c45, 0) as any as S.Schema<DeleteEmailDomainMailingListSubscriberRequest>,
+  output: __S(92, __c23, 0) as any as S.Schema<EmailDomainTaskMl>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -2009,8 +2017,8 @@ export const deleteEmailDomainRedirection: API.OperationMethod<
   DeleteEmailDomainRedirectionError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(50, __c6, 2) as any as S.Schema<DeleteEmailDomainRedirectionRequest>,
-  output: __S(24, __c3, 0) as any as S.Schema<EmailDomainTaskSpecialAccount>,
+  input: __S(184, __c46, 0) as any as S.Schema<DeleteEmailDomainRedirectionRequest>,
+  output: __S(76, __c19, 0) as any as S.Schema<EmailDomainTaskSpecialAccount>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -2024,8 +2032,8 @@ export const deleteEmailDomainResponder: API.OperationMethod<
   DeleteEmailDomainResponderError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(51, __c6, 3) as any as S.Schema<DeleteEmailDomainResponderRequest>,
-  output: __S(24, __c3, 0) as any as S.Schema<EmailDomainTaskSpecialAccount>,
+  input: __S(188, __c47, 0) as any as S.Schema<DeleteEmailDomainResponderRequest>,
+  output: __S(76, __c19, 0) as any as S.Schema<EmailDomainTaskSpecialAccount>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -2039,8 +2047,8 @@ export const getEmailDomain: API.OperationMethod<
   GetEmailDomainError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(52, __c6, 4) as any as S.Schema<GetEmailDomainRequest>,
-  output: __S(55, __c6, 7) as any as S.Schema<EmailDomainDomainServiceWithIAM>,
+  input: __S(192, __c48, 0) as any as S.Schema<GetEmailDomainRequest>,
+  output: __S(195, __c48, 3) as any as S.Schema<EmailDomainDomainServiceWithIAM>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -2054,8 +2062,8 @@ export const getEmailDomainAccount: API.OperationMethod<
   GetEmailDomainAccountError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(56, __c7, 0) as any as S.Schema<GetEmailDomainAccountRequest>,
-  output: __S(57, __c7, 1) as any as S.Schema<EmailDomainAccount>,
+  input: __S(196, __c49, 0) as any as S.Schema<GetEmailDomainAccountRequest>,
+  output: __S(197, __c49, 1) as any as S.Schema<EmailDomainAccount>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -2069,8 +2077,8 @@ export const getEmailDomainAccountDelegation: API.OperationMethod<
   GetEmailDomainAccountDelegationError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(58, __c7, 2) as any as S.Schema<GetEmailDomainAccountDelegationRequest>,
-  output: __S(12, __c1, 4) as any as S.Schema<EmailDomainDelegation>,
+  input: __S(208, __c52, 0) as any as S.Schema<GetEmailDomainAccountDelegationRequest>,
+  output: __S(412, __c103, 0) as any as S.Schema<EmailDomainDelegation>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -2084,8 +2092,8 @@ export const getEmailDomainAccountFilter: API.OperationMethod<
   GetEmailDomainAccountFilterError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(59, __c7, 3) as any as S.Schema<GetEmailDomainAccountFilterRequest>,
-  output: __S(60, __c7, 4) as any as S.Schema<EmailDomainFilter>,
+  input: __S(212, __c53, 0) as any as S.Schema<GetEmailDomainAccountFilterRequest>,
+  output: __S(216, __c54, 0) as any as S.Schema<EmailDomainFilter>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -2099,8 +2107,8 @@ export const getEmailDomainAccountFilterRule: API.OperationMethod<
   GetEmailDomainAccountFilterRuleError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(61, __c7, 5) as any as S.Schema<GetEmailDomainAccountFilterRuleRequest>,
-  output: __S(62, __c7, 6) as any as S.Schema<EmailDomainRule>,
+  input: __S(220, __c55, 0) as any as S.Schema<GetEmailDomainAccountFilterRuleRequest>,
+  output: __S(224, __c56, 0) as any as S.Schema<EmailDomainRule>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -2114,8 +2122,8 @@ export const getEmailDomainAccountMigrate: API.OperationMethod<
   GetEmailDomainAccountMigrateError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(63, __c7, 7) as any as S.Schema<GetEmailDomainAccountMigrateRequest>,
-  output: __S(64, __c8, 0) as any as S.Schema<EmailDomainMigrationService>,
+  input: __S(228, __c57, 0) as any as S.Schema<GetEmailDomainAccountMigrateRequest>,
+  output: __S(229, __c57, 1) as any as S.Schema<EmailDomainMigrationService>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -2130,11 +2138,11 @@ export const getEmailDomainAccountMigrateDestinationEmailAddress: API.OperationM
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    65,
-    __c8,
-    1,
+    232,
+    __c58,
+    0,
   ) as any as S.Schema<GetEmailDomainAccountMigrateDestinationEmailAddressRequest>,
-  output: __S(66, __c8, 2) as any as S.Schema<EmailDomainMigrationAccount>,
+  output: __S(233, __c58, 1) as any as S.Schema<EmailDomainMigrationAccount>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -2148,8 +2156,8 @@ export const getEmailDomainAccountUsage: API.OperationMethod<
   GetEmailDomainAccountUsageError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(67, __c8, 3) as any as S.Schema<GetEmailDomainAccountUsageRequest>,
-  output: __S(26, __c3, 2) as any as S.Schema<DomainDomainUsageAccountStruct>,
+  input: __S(236, __c59, 0) as any as S.Schema<GetEmailDomainAccountUsageRequest>,
+  output: __S(84, __c21, 0) as any as S.Schema<DomainDomainUsageAccountStruct>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -2163,8 +2171,8 @@ export const getEmailDomainAcl: API.OperationMethod<
   GetEmailDomainAclError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(68, __c8, 4) as any as S.Schema<GetEmailDomainAclRequest>,
-  output: __S(12, __c1, 4) as any as S.Schema<EmailDomainAcl>,
+  input: __S(240, __c60, 0) as any as S.Schema<GetEmailDomainAclRequest>,
+  output: __S(412, __c103, 0) as any as S.Schema<EmailDomainAcl>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -2178,8 +2186,8 @@ export const getEmailDomainDelegatedAccount: API.OperationMethod<
   GetEmailDomainDelegatedAccountError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(69, __c8, 5) as any as S.Schema<GetEmailDomainDelegatedAccountRequest>,
-  output: __S(70, __c8, 6) as any as S.Schema<EmailDomainAccountDelegated>,
+  input: __S(244, __c61, 0) as any as S.Schema<GetEmailDomainDelegatedAccountRequest>,
+  output: __S(245, __c61, 1) as any as S.Schema<EmailDomainAccountDelegated>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -2193,8 +2201,8 @@ export const getEmailDomainDelegatedAccountFilter: API.OperationMethod<
   GetEmailDomainDelegatedAccountFilterError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(71, __c8, 7) as any as S.Schema<GetEmailDomainDelegatedAccountFilterRequest>,
-  output: __S(60, __c7, 4) as any as S.Schema<EmailDomainFilter>,
+  input: __S(248, __c62, 0) as any as S.Schema<GetEmailDomainDelegatedAccountFilterRequest>,
+  output: __S(216, __c54, 0) as any as S.Schema<EmailDomainFilter>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -2208,8 +2216,8 @@ export const getEmailDomainDelegatedAccountFilterRule: API.OperationMethod<
   GetEmailDomainDelegatedAccountFilterRuleError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(72, __c9, 0) as any as S.Schema<GetEmailDomainDelegatedAccountFilterRuleRequest>,
-  output: __S(62, __c7, 6) as any as S.Schema<EmailDomainRule>,
+  input: __S(252, __c63, 0) as any as S.Schema<GetEmailDomainDelegatedAccountFilterRuleRequest>,
+  output: __S(224, __c56, 0) as any as S.Schema<EmailDomainRule>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -2223,8 +2231,8 @@ export const getEmailDomainDelegatedAccountResponder: API.OperationMethod<
   GetEmailDomainDelegatedAccountResponderError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(73, __c9, 1) as any as S.Schema<GetEmailDomainDelegatedAccountResponderRequest>,
-  output: __S(74, __c9, 2) as any as S.Schema<EmailDomainResponderAccount>,
+  input: __S(260, __c65, 0) as any as S.Schema<GetEmailDomainDelegatedAccountResponderRequest>,
+  output: __S(261, __c65, 1) as any as S.Schema<EmailDomainResponderAccount>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -2238,8 +2246,8 @@ export const getEmailDomainDnsMXFilter: API.OperationMethod<
   GetEmailDomainDnsMXFilterError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(75, __c9, 3) as any as S.Schema<GetEmailDomainDnsMXFilterRequest>,
-  output: __S(76, __c9, 4) as any as S.Schema<GetEmailDomainDnsMXFilterResponse>,
+  input: __S(264, __c66, 0) as any as S.Schema<GetEmailDomainDnsMXFilterRequest>,
+  output: __S(265, __c66, 1) as any as S.Schema<GetEmailDomainDnsMXFilterResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -2253,8 +2261,8 @@ export const getEmailDomainMailingList: API.OperationMethod<
   GetEmailDomainMailingListError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(77, __c9, 5) as any as S.Schema<GetEmailDomainMailingListRequest>,
-  output: __S(78, __c9, 6) as any as S.Schema<EmailDomainMailingList>,
+  input: __S(268, __c67, 0) as any as S.Schema<GetEmailDomainMailingListRequest>,
+  output: __S(269, __c67, 1) as any as S.Schema<EmailDomainMailingList>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -2268,8 +2276,8 @@ export const getEmailDomainMailingListLimits: API.OperationMethod<
   GetEmailDomainMailingListLimitsError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(79, __c9, 7) as any as S.Schema<GetEmailDomainMailingListLimitsRequest>,
-  output: __S(80, __c10, 0) as any as S.Schema<DomainDomainMlLimits>,
+  input: __S(272, __c68, 0) as any as S.Schema<GetEmailDomainMailingListLimitsRequest>,
+  output: __S(273, __c68, 1) as any as S.Schema<DomainDomainMlLimits>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -2283,8 +2291,8 @@ export const getEmailDomainMailingListModerator: API.OperationMethod<
   GetEmailDomainMailingListModeratorError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(81, __c10, 1) as any as S.Schema<GetEmailDomainMailingListModeratorRequest>,
-  output: __S(82, __c10, 2) as any as S.Schema<EmailDomainModerator>,
+  input: __S(276, __c69, 0) as any as S.Schema<GetEmailDomainMailingListModeratorRequest>,
+  output: __S(280, __c70, 0) as any as S.Schema<EmailDomainModerator>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -2298,8 +2306,8 @@ export const getEmailDomainMailingListSubscriber: API.OperationMethod<
   GetEmailDomainMailingListSubscriberError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(83, __c10, 3) as any as S.Schema<GetEmailDomainMailingListSubscriberRequest>,
-  output: __S(82, __c10, 2) as any as S.Schema<EmailDomainSubscriber>,
+  input: __S(284, __c71, 0) as any as S.Schema<GetEmailDomainMailingListSubscriberRequest>,
+  output: __S(280, __c70, 0) as any as S.Schema<EmailDomainSubscriber>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -2313,8 +2321,8 @@ export const getEmailDomainQuota: API.OperationMethod<
   GetEmailDomainQuotaError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(84, __c10, 4) as any as S.Schema<GetEmailDomainQuotaRequest>,
-  output: __S(85, __c10, 5) as any as S.Schema<DomainDomainQuota>,
+  input: __S(288, __c72, 0) as any as S.Schema<GetEmailDomainQuotaRequest>,
+  output: __S(289, __c72, 1) as any as S.Schema<DomainDomainQuota>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -2328,8 +2336,8 @@ export const getEmailDomainRedirection: API.OperationMethod<
   GetEmailDomainRedirectionError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(86, __c10, 6) as any as S.Schema<GetEmailDomainRedirectionRequest>,
-  output: __S(87, __c10, 7) as any as S.Schema<EmailDomainRedirectionGlobal>,
+  input: __S(292, __c73, 0) as any as S.Schema<GetEmailDomainRedirectionRequest>,
+  output: __S(293, __c73, 1) as any as S.Schema<EmailDomainRedirectionGlobal>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -2343,8 +2351,8 @@ export const getEmailDomainResponder: API.OperationMethod<
   GetEmailDomainResponderError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(88, __c11, 0) as any as S.Schema<GetEmailDomainResponderRequest>,
-  output: __S(89, __c11, 1) as any as S.Schema<EmailDomainResponder>,
+  input: __S(296, __c74, 0) as any as S.Schema<GetEmailDomainResponderRequest>,
+  output: __S(297, __c74, 1) as any as S.Schema<EmailDomainResponder>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -2358,8 +2366,8 @@ export const getEmailDomainServiceInfos: API.OperationMethod<
   GetEmailDomainServiceInfosError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(90, __c11, 2) as any as S.Schema<GetEmailDomainServiceInfosRequest>,
-  output: __S(92, __c11, 4) as any as S.Schema<ServicesService>,
+  input: __S(300, __c75, 0) as any as S.Schema<GetEmailDomainServiceInfosRequest>,
+  output: __S(301, __c75, 1) as any as S.Schema<ServicesService>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -2373,8 +2381,8 @@ export const getEmailDomainSummary: API.OperationMethod<
   GetEmailDomainSummaryError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(93, __c11, 5) as any as S.Schema<GetEmailDomainSummaryRequest>,
-  output: __S(94, __c11, 6) as any as S.Schema<DomainDomainSummary>,
+  input: __S(312, __c78, 0) as any as S.Schema<GetEmailDomainSummaryRequest>,
+  output: __S(313, __c78, 1) as any as S.Schema<DomainDomainSummary>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -2388,8 +2396,8 @@ export const getEmailDomainTaskAccount: API.OperationMethod<
   GetEmailDomainTaskAccountError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(95, __c11, 7) as any as S.Schema<GetEmailDomainTaskAccountRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<EmailDomainTaskPop>,
+  input: __S(316, __c79, 0) as any as S.Schema<GetEmailDomainTaskAccountRequest>,
+  output: __S(12, __c3, 0) as any as S.Schema<EmailDomainTaskPop>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -2403,8 +2411,8 @@ export const getEmailDomainTaskAll: API.OperationMethod<
   GetEmailDomainTaskAllError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(96, __c12, 0) as any as S.Schema<GetEmailDomainTaskAllRequest>,
-  output: __S(97, __c12, 1) as any as S.Schema<EmailDomainTask>,
+  input: __S(320, __c80, 0) as any as S.Schema<GetEmailDomainTaskAllRequest>,
+  output: __S(324, __c81, 0) as any as S.Schema<EmailDomainTask>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -2418,8 +2426,8 @@ export const getEmailDomainTaskFilter: API.OperationMethod<
   GetEmailDomainTaskFilterError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(98, __c12, 2) as any as S.Schema<GetEmailDomainTaskFilterRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<EmailDomainTaskFilter>,
+  input: __S(328, __c82, 0) as any as S.Schema<GetEmailDomainTaskFilterRequest>,
+  output: __S(204, __c51, 0) as any as S.Schema<EmailDomainTaskFilter>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -2433,8 +2441,8 @@ export const getEmailDomainTaskMailinglist: API.OperationMethod<
   GetEmailDomainTaskMailinglistError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(99, __c12, 3) as any as S.Schema<GetEmailDomainTaskMailinglistRequest>,
-  output: __S(29, __c3, 5) as any as S.Schema<EmailDomainTaskMl>,
+  input: __S(332, __c83, 0) as any as S.Schema<GetEmailDomainTaskMailinglistRequest>,
+  output: __S(92, __c23, 0) as any as S.Schema<EmailDomainTaskMl>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -2448,8 +2456,8 @@ export const getEmailDomainTaskRedirection: API.OperationMethod<
   GetEmailDomainTaskRedirectionError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(100, __c12, 4) as any as S.Schema<GetEmailDomainTaskRedirectionRequest>,
-  output: __S(24, __c3, 0) as any as S.Schema<EmailDomainTaskSpecialAccount>,
+  input: __S(336, __c84, 0) as any as S.Schema<GetEmailDomainTaskRedirectionRequest>,
+  output: __S(76, __c19, 0) as any as S.Schema<EmailDomainTaskSpecialAccount>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -2463,8 +2471,8 @@ export const getEmailDomainTaskResponder: API.OperationMethod<
   GetEmailDomainTaskResponderError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(101, __c12, 5) as any as S.Schema<GetEmailDomainTaskResponderRequest>,
-  output: __S(24, __c3, 0) as any as S.Schema<EmailDomainTaskSpecialAccount>,
+  input: __S(340, __c85, 0) as any as S.Schema<GetEmailDomainTaskResponderRequest>,
+  output: __S(76, __c19, 0) as any as S.Schema<EmailDomainTaskSpecialAccount>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -2478,8 +2486,8 @@ export const listEmailDomain: API.OperationMethod<
   ListEmailDomainError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(104, __c13, 0) as any as S.Schema<ListEmailDomainRequest>,
-  output: __S(106, __c13, 2) as any as S.Schema<ListEmailDomainResponse>,
+  input: __S(346, __c86, 2) as any as S.Schema<ListEmailDomainRequest>,
+  output: __S(347, __c86, 3) as any as S.Schema<ListEmailDomainResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -2493,8 +2501,8 @@ export const listEmailDomainAccount: API.OperationMethod<
   ListEmailDomainAccountError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(107, __c13, 3) as any as S.Schema<ListEmailDomainAccountRequest>,
-  output: __S(108, __c13, 4) as any as S.Schema<ListEmailDomainAccountResponse>,
+  input: __S(352, __c88, 0) as any as S.Schema<ListEmailDomainAccountRequest>,
+  output: __S(356, __c89, 0) as any as S.Schema<ListEmailDomainAccountResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -2508,8 +2516,8 @@ export const listEmailDomainAccountDelegation: API.OperationMethod<
   ListEmailDomainAccountDelegationError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(109, __c13, 5) as any as S.Schema<ListEmailDomainAccountDelegationRequest>,
-  output: __S(108, __c13, 4) as any as S.Schema<ListEmailDomainAccountDelegationResponse>,
+  input: __S(360, __c90, 0) as any as S.Schema<ListEmailDomainAccountDelegationRequest>,
+  output: __S(356, __c89, 0) as any as S.Schema<ListEmailDomainAccountDelegationResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -2523,8 +2531,8 @@ export const listEmailDomainAccountFilter: API.OperationMethod<
   ListEmailDomainAccountFilterError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(110, __c13, 6) as any as S.Schema<ListEmailDomainAccountFilterRequest>,
-  output: __S(108, __c13, 4) as any as S.Schema<ListEmailDomainAccountFilterResponse>,
+  input: __S(368, __c92, 0) as any as S.Schema<ListEmailDomainAccountFilterRequest>,
+  output: __S(356, __c89, 0) as any as S.Schema<ListEmailDomainAccountFilterResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -2538,8 +2546,8 @@ export const listEmailDomainAccountFilterRule: API.OperationMethod<
   ListEmailDomainAccountFilterRuleError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(111, __c13, 7) as any as S.Schema<ListEmailDomainAccountFilterRuleRequest>,
-  output: __S(15, __c1, 7) as any as S.Schema<ListEmailDomainAccountFilterRuleResponse>,
+  input: __S(372, __c93, 0) as any as S.Schema<ListEmailDomainAccountFilterRuleRequest>,
+  output: __S(464, __c116, 0) as any as S.Schema<ListEmailDomainAccountFilterRuleResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -2553,8 +2561,8 @@ export const listEmailDomainAccountMigrate: API.OperationMethod<
   ListEmailDomainAccountMigrateError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(112, __c14, 0) as any as S.Schema<ListEmailDomainAccountMigrateRequest>,
-  output: __S(108, __c13, 4) as any as S.Schema<ListEmailDomainAccountMigrateResponse>,
+  input: __S(376, __c94, 0) as any as S.Schema<ListEmailDomainAccountMigrateRequest>,
+  output: __S(356, __c89, 0) as any as S.Schema<ListEmailDomainAccountMigrateResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -2569,14 +2577,14 @@ export const listEmailDomainAccountMigrateDestinationEmailAddress: API.Operation
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    113,
-    __c14,
-    1,
+    380,
+    __c95,
+    0,
   ) as any as S.Schema<ListEmailDomainAccountMigrateDestinationEmailAddressRequest>,
   output: __S(
-    115,
-    __c14,
-    3,
+    382,
+    __c95,
+    2,
   ) as any as S.Schema<ListEmailDomainAccountMigrateDestinationEmailAddressResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
@@ -2592,11 +2600,11 @@ export const listEmailDomainAccountMigrateDestinationEmailAddressCheckMigrate: A
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    116,
-    __c14,
-    4,
+    384,
+    __c96,
+    0,
   ) as any as S.Schema<ListEmailDomainAccountMigrateDestinationEmailAddressCheckMigrateRequest>,
-  output: __S(119, __c14, 7) as any as S.Schema<EmailDomainMigrationCheckStruct>,
+  output: __S(387, __c96, 3) as any as S.Schema<EmailDomainMigrationCheckStruct>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -2610,8 +2618,8 @@ export const listEmailDomainAcl: API.OperationMethod<
   ListEmailDomainAclError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(120, __c15, 0) as any as S.Schema<ListEmailDomainAclRequest>,
-  output: __S(108, __c13, 4) as any as S.Schema<ListEmailDomainAclResponse>,
+  input: __S(388, __c97, 0) as any as S.Schema<ListEmailDomainAclRequest>,
+  output: __S(356, __c89, 0) as any as S.Schema<ListEmailDomainAclResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -2625,8 +2633,8 @@ export const listEmailDomainDelegatedAccount: API.OperationMethod<
   ListEmailDomainDelegatedAccountError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(121, __c15, 1) as any as S.Schema<ListEmailDomainDelegatedAccountRequest>,
-  output: __S(108, __c13, 4) as any as S.Schema<ListEmailDomainDelegatedAccountResponse>,
+  input: __S(392, __c98, 0) as any as S.Schema<ListEmailDomainDelegatedAccountRequest>,
+  output: __S(356, __c89, 0) as any as S.Schema<ListEmailDomainDelegatedAccountResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -2640,8 +2648,8 @@ export const listEmailDomainDelegatedAccountFilter: API.OperationMethod<
   ListEmailDomainDelegatedAccountFilterError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(122, __c15, 2) as any as S.Schema<ListEmailDomainDelegatedAccountFilterRequest>,
-  output: __S(108, __c13, 4) as any as S.Schema<ListEmailDomainDelegatedAccountFilterResponse>,
+  input: __S(396, __c99, 0) as any as S.Schema<ListEmailDomainDelegatedAccountFilterRequest>,
+  output: __S(356, __c89, 0) as any as S.Schema<ListEmailDomainDelegatedAccountFilterResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -2655,8 +2663,8 @@ export const listEmailDomainDelegatedAccountFilterRule: API.OperationMethod<
   ListEmailDomainDelegatedAccountFilterRuleError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(123, __c15, 3) as any as S.Schema<ListEmailDomainDelegatedAccountFilterRuleRequest>,
-  output: __S(15, __c1, 7) as any as S.Schema<ListEmailDomainDelegatedAccountFilterRuleResponse>,
+  input: __S(400, __c100, 0) as any as S.Schema<ListEmailDomainDelegatedAccountFilterRuleRequest>,
+  output: __S(464, __c116, 0) as any as S.Schema<ListEmailDomainDelegatedAccountFilterRuleResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -2670,8 +2678,8 @@ export const listEmailDomainDkim: API.OperationMethod<
   ListEmailDomainDkimError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(124, __c15, 4) as any as S.Schema<ListEmailDomainDkimRequest>,
-  output: __S(127, __c15, 7) as any as S.Schema<EmailDomainDkimSimplified>,
+  input: __S(404, __c101, 0) as any as S.Schema<ListEmailDomainDkimRequest>,
+  output: __S(407, __c101, 3) as any as S.Schema<EmailDomainDkimSimplified>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -2685,8 +2693,8 @@ export const listEmailDomainDnsMXRecords: API.OperationMethod<
   ListEmailDomainDnsMXRecordsError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(128, __c16, 0) as any as S.Schema<ListEmailDomainDnsMXRecordsRequest>,
-  output: __S(108, __c13, 4) as any as S.Schema<ListEmailDomainDnsMXRecordsResponse>,
+  input: __S(416, __c104, 0) as any as S.Schema<ListEmailDomainDnsMXRecordsRequest>,
+  output: __S(356, __c89, 0) as any as S.Schema<ListEmailDomainDnsMXRecordsResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -2700,8 +2708,8 @@ export const listEmailDomainMailingList: API.OperationMethod<
   ListEmailDomainMailingListError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(129, __c16, 1) as any as S.Schema<ListEmailDomainMailingListRequest>,
-  output: __S(108, __c13, 4) as any as S.Schema<ListEmailDomainMailingListResponse>,
+  input: __S(420, __c105, 0) as any as S.Schema<ListEmailDomainMailingListRequest>,
+  output: __S(356, __c89, 0) as any as S.Schema<ListEmailDomainMailingListResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -2715,8 +2723,8 @@ export const listEmailDomainMailingListModerator: API.OperationMethod<
   ListEmailDomainMailingListModeratorError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(130, __c16, 2) as any as S.Schema<ListEmailDomainMailingListModeratorRequest>,
-  output: __S(108, __c13, 4) as any as S.Schema<ListEmailDomainMailingListModeratorResponse>,
+  input: __S(424, __c106, 0) as any as S.Schema<ListEmailDomainMailingListModeratorRequest>,
+  output: __S(356, __c89, 0) as any as S.Schema<ListEmailDomainMailingListModeratorResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -2730,8 +2738,8 @@ export const listEmailDomainMailingListSubscriber: API.OperationMethod<
   ListEmailDomainMailingListSubscriberError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(131, __c16, 3) as any as S.Schema<ListEmailDomainMailingListSubscriberRequest>,
-  output: __S(108, __c13, 4) as any as S.Schema<ListEmailDomainMailingListSubscriberResponse>,
+  input: __S(428, __c107, 0) as any as S.Schema<ListEmailDomainMailingListSubscriberRequest>,
+  output: __S(356, __c89, 0) as any as S.Schema<ListEmailDomainMailingListSubscriberResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -2745,8 +2753,8 @@ export const listEmailDomainRecommendedDNSRecords: API.OperationMethod<
   ListEmailDomainRecommendedDNSRecordsError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(132, __c16, 4) as any as S.Schema<ListEmailDomainRecommendedDNSRecordsRequest>,
-  output: __S(135, __c16, 7) as any as S.Schema<ListEmailDomainRecommendedDNSRecordsResponse>,
+  input: __S(432, __c108, 0) as any as S.Schema<ListEmailDomainRecommendedDNSRecordsRequest>,
+  output: __S(435, __c108, 3) as any as S.Schema<ListEmailDomainRecommendedDNSRecordsResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -2760,8 +2768,8 @@ export const listEmailDomainRedirection: API.OperationMethod<
   ListEmailDomainRedirectionError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(136, __c17, 0) as any as S.Schema<ListEmailDomainRedirectionRequest>,
-  output: __S(108, __c13, 4) as any as S.Schema<ListEmailDomainRedirectionResponse>,
+  input: __S(436, __c109, 0) as any as S.Schema<ListEmailDomainRedirectionRequest>,
+  output: __S(356, __c89, 0) as any as S.Schema<ListEmailDomainRedirectionResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -2775,8 +2783,8 @@ export const listEmailDomainResponder: API.OperationMethod<
   ListEmailDomainResponderError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(137, __c17, 1) as any as S.Schema<ListEmailDomainResponderRequest>,
-  output: __S(108, __c13, 4) as any as S.Schema<ListEmailDomainResponderResponse>,
+  input: __S(440, __c110, 0) as any as S.Schema<ListEmailDomainResponderRequest>,
+  output: __S(356, __c89, 0) as any as S.Schema<ListEmailDomainResponderResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -2790,8 +2798,8 @@ export const listEmailDomainTaskAccount: API.OperationMethod<
   ListEmailDomainTaskAccountError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(138, __c17, 2) as any as S.Schema<ListEmailDomainTaskAccountRequest>,
-  output: __S(15, __c1, 7) as any as S.Schema<ListEmailDomainTaskAccountResponse>,
+  input: __S(444, __c111, 0) as any as S.Schema<ListEmailDomainTaskAccountRequest>,
+  output: __S(464, __c116, 0) as any as S.Schema<ListEmailDomainTaskAccountResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -2805,8 +2813,8 @@ export const listEmailDomainTaskAll: API.OperationMethod<
   ListEmailDomainTaskAllError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(139, __c17, 3) as any as S.Schema<ListEmailDomainTaskAllRequest>,
-  output: __S(15, __c1, 7) as any as S.Schema<ListEmailDomainTaskAllResponse>,
+  input: __S(448, __c112, 0) as any as S.Schema<ListEmailDomainTaskAllRequest>,
+  output: __S(464, __c116, 0) as any as S.Schema<ListEmailDomainTaskAllResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -2820,8 +2828,8 @@ export const listEmailDomainTaskFilter: API.OperationMethod<
   ListEmailDomainTaskFilterError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(140, __c17, 4) as any as S.Schema<ListEmailDomainTaskFilterRequest>,
-  output: __S(15, __c1, 7) as any as S.Schema<ListEmailDomainTaskFilterResponse>,
+  input: __S(452, __c113, 0) as any as S.Schema<ListEmailDomainTaskFilterRequest>,
+  output: __S(464, __c116, 0) as any as S.Schema<ListEmailDomainTaskFilterResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -2835,8 +2843,8 @@ export const listEmailDomainTaskMailinglist: API.OperationMethod<
   ListEmailDomainTaskMailinglistError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(141, __c17, 5) as any as S.Schema<ListEmailDomainTaskMailinglistRequest>,
-  output: __S(15, __c1, 7) as any as S.Schema<ListEmailDomainTaskMailinglistResponse>,
+  input: __S(468, __c117, 0) as any as S.Schema<ListEmailDomainTaskMailinglistRequest>,
+  output: __S(464, __c116, 0) as any as S.Schema<ListEmailDomainTaskMailinglistResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -2850,8 +2858,8 @@ export const listEmailDomainTaskRedirection: API.OperationMethod<
   ListEmailDomainTaskRedirectionError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(142, __c17, 6) as any as S.Schema<ListEmailDomainTaskRedirectionRequest>,
-  output: __S(108, __c13, 4) as any as S.Schema<ListEmailDomainTaskRedirectionResponse>,
+  input: __S(472, __c118, 0) as any as S.Schema<ListEmailDomainTaskRedirectionRequest>,
+  output: __S(356, __c89, 0) as any as S.Schema<ListEmailDomainTaskRedirectionResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -2865,8 +2873,8 @@ export const listEmailDomainTaskResponder: API.OperationMethod<
   ListEmailDomainTaskResponderError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(143, __c17, 7) as any as S.Schema<ListEmailDomainTaskResponderRequest>,
-  output: __S(15, __c1, 7) as any as S.Schema<ListEmailDomainTaskResponderResponse>,
+  input: __S(476, __c119, 0) as any as S.Schema<ListEmailDomainTaskResponderRequest>,
+  output: __S(464, __c116, 0) as any as S.Schema<ListEmailDomainTaskResponderResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -2881,11 +2889,11 @@ export const migrateEmailDomainAccountMigrateDestinationEmailAddress: API.Operat
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    144,
-    __c18,
+    480,
+    __c120,
     0,
   ) as any as S.Schema<MigrateEmailDomainAccountMigrateDestinationEmailAddressRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<EmailDomainTaskPop>,
+  output: __S(12, __c3, 0) as any as S.Schema<EmailDomainTaskPop>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -2899,8 +2907,8 @@ export const migrateEmailDomainDelegationV3toV6: API.OperationMethod<
   MigrateEmailDomainDelegationV3toV6Error,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(145, __c18, 1) as any as S.Schema<MigrateEmailDomainDelegationV3toV6Request>,
-  output: __S(17, __c2, 1) as any as S.Schema<MigrateEmailDomainDelegationV3toV6Response>,
+  input: __S(484, __c121, 0) as any as S.Schema<MigrateEmailDomainDelegationV3toV6Request>,
+  output: __S(20, __c5, 0) as any as S.Schema<MigrateEmailDomainDelegationV3toV6Response>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -2914,8 +2922,8 @@ export const putEmailDomainAccount: API.OperationMethod<
   PutEmailDomainAccountError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(146, __c18, 2) as any as S.Schema<PutEmailDomainAccountRequest>,
-  output: __S(43, __c5, 3) as any as S.Schema<PutEmailDomainAccountResponse>,
+  input: __S(488, __c122, 0) as any as S.Schema<PutEmailDomainAccountRequest>,
+  output: __S(152, __c38, 0) as any as S.Schema<PutEmailDomainAccountResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -2929,8 +2937,8 @@ export const putEmailDomainDelegatedAccount: API.OperationMethod<
   PutEmailDomainDelegatedAccountError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(147, __c18, 3) as any as S.Schema<PutEmailDomainDelegatedAccountRequest>,
-  output: __S(17, __c2, 1) as any as S.Schema<PutEmailDomainDelegatedAccountResponse>,
+  input: __S(492, __c123, 0) as any as S.Schema<PutEmailDomainDelegatedAccountRequest>,
+  output: __S(20, __c5, 0) as any as S.Schema<PutEmailDomainDelegatedAccountResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -2944,8 +2952,8 @@ export const putEmailDomainDelegatedAccountResponder: API.OperationMethod<
   PutEmailDomainDelegatedAccountResponderError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(148, __c18, 4) as any as S.Schema<PutEmailDomainDelegatedAccountResponderRequest>,
-  output: __S(17, __c2, 1) as any as S.Schema<PutEmailDomainDelegatedAccountResponderResponse>,
+  input: __S(496, __c124, 0) as any as S.Schema<PutEmailDomainDelegatedAccountResponderRequest>,
+  output: __S(20, __c5, 0) as any as S.Schema<PutEmailDomainDelegatedAccountResponderResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -2959,8 +2967,8 @@ export const putEmailDomainDkimDisable: API.OperationMethod<
   PutEmailDomainDkimDisableError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(149, __c18, 5) as any as S.Schema<PutEmailDomainDkimDisableRequest>,
-  output: __S(97, __c12, 1) as any as S.Schema<EmailDomainTask>,
+  input: __S(500, __c125, 0) as any as S.Schema<PutEmailDomainDkimDisableRequest>,
+  output: __S(324, __c81, 0) as any as S.Schema<EmailDomainTask>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -2974,8 +2982,8 @@ export const putEmailDomainDkimEnable: API.OperationMethod<
   PutEmailDomainDkimEnableError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(150, __c18, 6) as any as S.Schema<PutEmailDomainDkimEnableRequest>,
-  output: __S(97, __c12, 1) as any as S.Schema<EmailDomainTask>,
+  input: __S(504, __c126, 0) as any as S.Schema<PutEmailDomainDkimEnableRequest>,
+  output: __S(324, __c81, 0) as any as S.Schema<EmailDomainTask>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -2989,8 +2997,8 @@ export const putEmailDomainMailingList: API.OperationMethod<
   PutEmailDomainMailingListError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(151, __c18, 7) as any as S.Schema<PutEmailDomainMailingListRequest>,
-  output: __S(17, __c2, 1) as any as S.Schema<PutEmailDomainMailingListResponse>,
+  input: __S(24, __c6, 0) as any as S.Schema<PutEmailDomainMailingListRequest>,
+  output: __S(20, __c5, 0) as any as S.Schema<PutEmailDomainMailingListResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -3004,8 +3012,8 @@ export const putEmailDomainResponder: API.OperationMethod<
   PutEmailDomainResponderError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(152, __c19, 0) as any as S.Schema<PutEmailDomainResponderRequest>,
-  output: __S(153, __c19, 1) as any as S.Schema<PutEmailDomainResponderResponse>,
+  input: __S(28, __c7, 0) as any as S.Schema<PutEmailDomainResponderRequest>,
+  output: __S(29, __c7, 1) as any as S.Schema<PutEmailDomainResponderResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -3019,8 +3027,8 @@ export const putEmailDomainServiceInfos: API.OperationMethod<
   PutEmailDomainServiceInfosError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(154, __c19, 2) as any as S.Schema<PutEmailDomainServiceInfosRequest>,
-  output: __S(17, __c2, 1) as any as S.Schema<PutEmailDomainServiceInfosResponse>,
+  input: __S(32, __c8, 0) as any as S.Schema<PutEmailDomainServiceInfosRequest>,
+  output: __S(20, __c5, 0) as any as S.Schema<PutEmailDomainServiceInfosResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -3034,8 +3042,8 @@ export const sendEmailDomainMailingListListByEmail: API.OperationMethod<
   SendEmailDomainMailingListListByEmailError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(155, __c19, 3) as any as S.Schema<SendEmailDomainMailingListListByEmailRequest>,
-  output: __S(29, __c3, 5) as any as S.Schema<EmailDomainTaskMl>,
+  input: __S(36, __c9, 0) as any as S.Schema<SendEmailDomainMailingListListByEmailRequest>,
+  output: __S(92, __c23, 0) as any as S.Schema<EmailDomainTaskMl>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -3049,8 +3057,8 @@ export const terminateEmailDomain: API.OperationMethod<
   TerminateEmailDomainError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(156, __c19, 4) as any as S.Schema<TerminateEmailDomainRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<TerminateEmailDomainResponse>,
+  input: __S(40, __c10, 0) as any as S.Schema<TerminateEmailDomainRequest>,
+  output: __S(4, __c1, 0) as any as S.Schema<TerminateEmailDomainResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -3064,8 +3072,8 @@ export const updateEmailDomainAccountUsage: API.OperationMethod<
   UpdateEmailDomainAccountUsageError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(157, __c19, 5) as any as S.Schema<UpdateEmailDomainAccountUsageRequest>,
-  output: __S(17, __c2, 1) as any as S.Schema<UpdateEmailDomainAccountUsageResponse>,
+  input: __S(44, __c11, 0) as any as S.Schema<UpdateEmailDomainAccountUsageRequest>,
+  output: __S(20, __c5, 0) as any as S.Schema<UpdateEmailDomainAccountUsageResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -3079,8 +3087,8 @@ export const updateEmailDomainDelegatedAccountUsage: API.OperationMethod<
   UpdateEmailDomainDelegatedAccountUsageError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(158, __c19, 6) as any as S.Schema<UpdateEmailDomainDelegatedAccountUsageRequest>,
-  output: __S(17, __c2, 1) as any as S.Schema<UpdateEmailDomainDelegatedAccountUsageResponse>,
+  input: __S(48, __c12, 0) as any as S.Schema<UpdateEmailDomainDelegatedAccountUsageRequest>,
+  output: __S(20, __c5, 0) as any as S.Schema<UpdateEmailDomainDelegatedAccountUsageResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -3102,11 +3110,19 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "ConfirmEmailDomainTerminationRequest",
       });
-    case 1:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() => S.String.pipe(T.RawResponseRoot())).annotate({
         identifier: "ConfirmEmailDomainTerminationResponse",
       });
-    case 2:
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           domain: S.String.pipe(T.Label()),
@@ -3118,7 +3134,11 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "CreateEmailDomainAccountRequest",
       });
-    case 3:
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           action: S.optional(S.String),
@@ -3128,163 +3148,9 @@ function __c0(j: number): any {
           name: S.optional(S.String),
         }),
       ).annotate({ identifier: "EmailDomainTaskPop" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          domain: S.String.pipe(T.Label()),
-          accountName: S.String.pipe(T.Label()),
-          password: S.String.pipe(T.SensitiveValue({})),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/email/domain/{domain}/account/{accountName}/changePassword",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateEmailDomainAccountChangePasswordRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          domain: S.String.pipe(T.Label()),
-          accountName: S.String.pipe(T.Label()),
-          accountId: S.String,
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/email/domain/{domain}/account/{accountName}/delegation",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateEmailDomainAccountDelegationRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          domain: S.String.pipe(T.Label()),
-          accountName: S.String.pipe(T.Label()),
-          action: S.String,
-          actionParam: S.optional(S.String),
-          active: S.Boolean,
-          header: S.String,
-          name: S.String,
-          operand: S.String,
-          priority: S.Number,
-          value: S.String,
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/email/domain/{domain}/account/{accountName}/filter",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateEmailDomainAccountFilterRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          account: S.optional(S.String),
-          action: S.optional(S.String),
-          domain: S.optional(S.String),
-          id: S.optional(S.Number),
-          timestamp: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "EmailDomainTaskFilter" });
   }
 }
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          domain: S.String.pipe(T.Label()),
-          accountName: S.String.pipe(T.Label()),
-          name: S.String.pipe(T.Label()),
-          activity: S.Boolean,
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/email/domain/{domain}/account/{accountName}/filter/{name}/changeActivity",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateEmailDomainAccountFilterChangeActivityRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          domain: S.String.pipe(T.Label()),
-          accountName: S.String.pipe(T.Label()),
-          name: S.String.pipe(T.Label()),
-          priority: S.Number,
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/email/domain/{domain}/account/{accountName}/filter/{name}/changePriority",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateEmailDomainAccountFilterChangePriorityRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          domain: S.String.pipe(T.Label()),
-          accountName: S.String.pipe(T.Label()),
-          name: S.String.pipe(T.Label()),
-          header: S.String,
-          operand: S.String,
-          value: S.String,
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/email/domain/{domain}/account/{accountName}/filter/{name}/rule",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateEmailDomainAccountFilterRuleRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          domain: S.String.pipe(T.Label()),
-          accountId: S.String,
-        }).pipe(T.Http({ method: "POST", uri: "/email/domain/{domain}/acl", code: 200 })),
-      ).annotate({
-        identifier: "CreateEmailDomainAclRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          accountId: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "EmailDomainAcl" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          domain: S.String.pipe(T.Label()),
-          contactAdmin: S.optional(S.String),
-          contactBilling: S.optional(S.String),
-          contactTech: S.optional(S.String),
-        }).pipe(T.Http({ method: "POST", uri: "/email/domain/{domain}/changeContact", code: 200 })),
-      ).annotate({
-        identifier: "CreateEmailDomainChangeContactRequest",
-      });
-    case 6:
-      return S.Array(S.Number);
-    case 7:
-      return S.suspend(() => __S(14, __c1, 6).pipe(T.RawResponseRoot())).annotate({
-        identifier: "CreateEmailDomainChangeContactResponse",
-      });
-  }
-}
-function __c2(j: number): any {
+function __c4(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3299,11 +3165,141 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "CreateEmailDomainChangeDnsMXFilterRequest",
       });
-    case 1:
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "CreateEmailDomainChangeDnsMXFilterResponse",
       });
-    case 2:
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          domain: S.String.pipe(T.Label()),
+          name: S.String.pipe(T.Label()),
+          language: S.optional(S.NullOr(S.String)),
+          ownerEmail: S.optional(S.String),
+          replyTo: S.optional(S.String),
+        }).pipe(
+          T.Http({ method: "PUT", uri: "/email/domain/{domain}/mailingList/{name}", code: 200 }),
+        ),
+      ).annotate({
+        identifier: "PutEmailDomainMailingListRequest",
+      });
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          domain: S.String.pipe(T.Label()),
+          account: S.String.pipe(T.Label()),
+          content: S.optional(S.String),
+          from: S.optional(S.NullOr(S.String)),
+          to: S.optional(S.NullOr(S.String)),
+        }).pipe(
+          T.Http({ method: "PUT", uri: "/email/domain/{domain}/responder/{account}", code: 200 }),
+        ),
+      ).annotate({
+        identifier: "PutEmailDomainResponderRequest",
+      });
+    case 1:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "PutEmailDomainResponderResponse",
+      });
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          domain: S.String.pipe(T.Label()),
+          renew: S.optional(S.NullOr(__S(304, __c76, 0))),
+        }).pipe(T.Http({ method: "PUT", uri: "/email/domain/{domain}/serviceInfos", code: 200 })),
+      ).annotate({
+        identifier: "PutEmailDomainServiceInfosRequest",
+      });
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          domain: S.String.pipe(T.Label()),
+          name: S.String.pipe(T.Label()),
+          email: S.String,
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/email/domain/{domain}/mailingList/{name}/sendListByEmail",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "SendEmailDomainMailingListListByEmailRequest",
+      });
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          domain: S.String.pipe(T.Label()),
+        }).pipe(T.Http({ method: "POST", uri: "/email/domain/{domain}/terminate", code: 200 })),
+      ).annotate({
+        identifier: "TerminateEmailDomainRequest",
+      });
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          domain: S.String.pipe(T.Label()),
+          accountName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/email/domain/{domain}/account/{accountName}/updateUsage",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "UpdateEmailDomainAccountUsageRequest",
+      });
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          email: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/email/domain/delegatedAccount/{email}/updateUsage",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "UpdateEmailDomainDelegatedAccountUsageRequest",
+      });
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           email: S.String.pipe(T.Label()),
@@ -3318,7 +3314,11 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "CreateEmailDomainDelegatedAccountChangePasswordRequest",
       });
-    case 3:
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           email: S.String.pipe(T.Label()),
@@ -3340,7 +3340,11 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "CreateEmailDomainDelegatedAccountFilterRequest",
       });
-    case 4:
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           email: S.String.pipe(T.Label()),
@@ -3356,7 +3360,11 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "CreateEmailDomainDelegatedAccountFilterChangeActivityRequest",
       });
-    case 5:
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           email: S.String.pipe(T.Label()),
@@ -3372,7 +3380,11 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "CreateEmailDomainDelegatedAccountFilterChangePriorityRequest",
       });
-    case 6:
+  }
+}
+function __c17(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           email: S.String.pipe(T.Label()),
@@ -3390,7 +3402,11 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "CreateEmailDomainDelegatedAccountFilterRuleRequest",
       });
-    case 7:
+  }
+}
+function __c18(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           email: S.String.pipe(T.Label()),
@@ -3411,7 +3427,7 @@ function __c2(j: number): any {
       });
   }
 }
-function __c3(j: number): any {
+function __c19(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3426,7 +3442,11 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "EmailDomainTaskSpecialAccount",
       });
-    case 1:
+  }
+}
+function __c20(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           email: S.String.pipe(T.Label()),
@@ -3440,7 +3460,11 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "CreateEmailDomainDelegatedAccountUsageRequest",
       });
-    case 2:
+  }
+}
+function __c21(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           date: S.optional(S.NullOr(S.String)),
@@ -3450,30 +3474,28 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "DomainDomainUsageAccountStruct",
       });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          moderatorMessage: S.optional(S.Boolean),
-          subscribeByModerator: S.optional(S.Boolean),
-          usersPostOnly: S.optional(S.Boolean),
-        }),
-      ).annotate({
-        identifier: "DomainDomainMlOptionsStruct",
-      });
-    case 4:
+  }
+}
+function __c22(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           domain: S.String.pipe(T.Label()),
           language: S.String,
           name: S.String,
-          options: __S(27, __c3, 3),
+          options: __S(96, __c24, 0),
           ownerEmail: S.String,
           replyTo: S.optional(S.String),
         }).pipe(T.Http({ method: "POST", uri: "/email/domain/{domain}/mailingList", code: 200 })),
       ).annotate({
         identifier: "CreateEmailDomainMailingListRequest",
       });
-    case 5:
+  }
+}
+function __c23(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           account: S.optional(S.String),
@@ -3484,12 +3506,30 @@ function __c3(j: number): any {
           language: S.optional(S.String),
         }),
       ).annotate({ identifier: "EmailDomainTaskMl" });
-    case 6:
+  }
+}
+function __c24(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          moderatorMessage: S.optional(S.Boolean),
+          subscribeByModerator: S.optional(S.Boolean),
+          usersPostOnly: S.optional(S.Boolean),
+        }),
+      ).annotate({
+        identifier: "DomainDomainMlOptionsStruct",
+      });
+  }
+}
+function __c25(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           domain: S.String.pipe(T.Label()),
           name: S.String.pipe(T.Label()),
-          options: __S(27, __c3, 3),
+          options: __S(96, __c24, 0),
         }).pipe(
           T.Http({
             method: "POST",
@@ -3500,7 +3540,31 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "CreateEmailDomainMailingListChangeOptionRequest",
       });
-    case 7:
+  }
+}
+function __c26(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          domain: S.String.pipe(T.Label()),
+          accountName: S.String.pipe(T.Label()),
+          password: S.String.pipe(T.SensitiveValue({})),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/email/domain/{domain}/account/{accountName}/changePassword",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateEmailDomainAccountChangePasswordRequest",
+      });
+  }
+}
+function __c27(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           domain: S.String.pipe(T.Label()),
@@ -3518,7 +3582,7 @@ function __c3(j: number): any {
       });
   }
 }
-function __c4(j: number): any {
+function __c28(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3536,7 +3600,11 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "CreateEmailDomainMailingListSubscriberRequest",
       });
-    case 1:
+  }
+}
+function __c29(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           domain: S.String.pipe(T.Label()),
@@ -3547,7 +3615,11 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "CreateEmailDomainRedirectionRequest",
       });
-    case 2:
+  }
+}
+function __c30(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           domain: S.String.pipe(T.Label()),
@@ -3563,7 +3635,11 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "CreateEmailDomainRedirectionChangeRedirectionRequest",
       });
-    case 3:
+  }
+}
+function __c31(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           domain: S.String.pipe(T.Label()),
@@ -3577,7 +3653,11 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "CreateEmailDomainResponderRequest",
       });
-    case 4:
+  }
+}
+function __c32(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           domain: S.String.pipe(T.Label()),
@@ -3592,7 +3672,11 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "DeleteEmailDomainAccountRequest",
       });
-    case 5:
+  }
+}
+function __c33(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           domain: S.String.pipe(T.Label()),
@@ -3608,7 +3692,11 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "DeleteEmailDomainAccountDelegationRequest",
       });
-    case 6:
+  }
+}
+function __c34(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           domain: S.String.pipe(T.Label()),
@@ -3624,17 +3712,21 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "DeleteEmailDomainAccountFilterRequest",
       });
-    case 7:
-      return S.Array(__S(7, __c0, 7));
   }
 }
-function __c5(j: number): any {
+function __c35(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => __S(39, __c4, 7).pipe(T.RawResponseRoot())).annotate({
+      return S.Array(__S(204, __c51, 0));
+    case 1:
+      return S.suspend(() => __S(140, __c35, 0).pipe(T.RawResponseRoot())).annotate({
         identifier: "DeleteEmailDomainAccountFilterResponse",
       });
-    case 1:
+  }
+}
+function __c36(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           domain: S.String.pipe(T.Label()),
@@ -3651,7 +3743,11 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "DeleteEmailDomainAccountFilterRuleRequest",
       });
-    case 2:
+  }
+}
+function __c37(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           domain: S.String.pipe(T.Label()),
@@ -3662,11 +3758,39 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "DeleteEmailDomainAclRequest",
       });
-    case 3:
+  }
+}
+function __c38(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "DeleteEmailDomainAclResponse",
       });
-    case 4:
+  }
+}
+function __c39(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          domain: S.String.pipe(T.Label()),
+          accountName: S.String.pipe(T.Label()),
+          accountId: S.String,
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/email/domain/{domain}/account/{accountName}/delegation",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateEmailDomainAccountDelegationRequest",
+      });
+  }
+}
+function __c40(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           email: S.String.pipe(T.Label()),
@@ -3681,7 +3805,11 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "DeleteEmailDomainDelegatedAccountFilterRequest",
       });
-    case 5:
+  }
+}
+function __c41(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           email: S.String.pipe(T.Label()),
@@ -3697,7 +3825,11 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "DeleteEmailDomainDelegatedAccountFilterRuleRequest",
       });
-    case 6:
+  }
+}
+function __c42(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           email: S.String.pipe(T.Label()),
@@ -3711,7 +3843,11 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "DeleteEmailDomainDelegatedAccountResponderRequest",
       });
-    case 7:
+  }
+}
+function __c43(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           domain: S.String.pipe(T.Label()),
@@ -3724,7 +3860,7 @@ function __c5(j: number): any {
       });
   }
 }
-function __c6(j: number): any {
+function __c44(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3742,7 +3878,11 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "DeleteEmailDomainMailingListModeratorRequest",
       });
-    case 1:
+  }
+}
+function __c45(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           domain: S.String.pipe(T.Label()),
@@ -3758,7 +3898,11 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "DeleteEmailDomainMailingListSubscriberRequest",
       });
-    case 2:
+  }
+}
+function __c46(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           domain: S.String.pipe(T.Label()),
@@ -3769,7 +3913,11 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "DeleteEmailDomainRedirectionRequest",
       });
-    case 3:
+  }
+}
+function __c47(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           domain: S.String.pipe(T.Label()),
@@ -3784,32 +3932,36 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "DeleteEmailDomainResponderRequest",
       });
-    case 4:
+  }
+}
+function __c48(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           domain: S.String.pipe(T.Label()),
         }).pipe(T.Http({ method: "GET", uri: "/email/domain/{domain}", code: 200 })),
       ).annotate({ identifier: "GetEmailDomainRequest" });
-    case 5:
+    case 1:
       return S.Record(S.String, S.String);
-    case 6:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           displayName: S.optional(S.NullOr(S.String)),
           id: S.optional(S.String),
           state: S.optional(S.NullOr(S.String)),
-          tags: S.optional(S.NullOr(__S(53, __c6, 5))),
+          tags: S.optional(S.NullOr(__S(193, __c48, 1))),
           urn: S.optional(S.String),
         }),
       ).annotate({ identifier: "IamResourceMetadata" });
-    case 7:
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          allowedAccountSize: S.optional(S.NullOr(__S(14, __c1, 6))),
+          allowedAccountSize: S.optional(S.NullOr(__S(460, __c115, 0))),
           creationDate: S.optional(S.NullOr(S.String)),
           domain: S.optional(S.String),
           filerz: S.optional(S.NullOr(S.Number)),
-          iam: S.optional(S.NullOr(__S(54, __c6, 6))),
+          iam: S.optional(S.NullOr(__S(194, __c48, 2))),
           isMXValid: S.optional(S.String),
           isSPFValid: S.optional(S.String),
           linkTo: S.optional(S.NullOr(S.String)),
@@ -3822,7 +3974,7 @@ function __c6(j: number): any {
       });
   }
 }
-function __c7(j: number): any {
+function __c49(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3846,7 +3998,52 @@ function __c7(j: number): any {
           size: S.optional(S.Number),
         }),
       ).annotate({ identifier: "EmailDomainAccount" });
-    case 2:
+  }
+}
+function __c50(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          domain: S.String.pipe(T.Label()),
+          accountName: S.String.pipe(T.Label()),
+          action: S.String,
+          actionParam: S.optional(S.String),
+          active: S.Boolean,
+          header: S.String,
+          name: S.String,
+          operand: S.String,
+          priority: S.Number,
+          value: S.String,
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/email/domain/{domain}/account/{accountName}/filter",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateEmailDomainAccountFilterRequest",
+      });
+  }
+}
+function __c51(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          account: S.optional(S.String),
+          action: S.optional(S.String),
+          domain: S.optional(S.String),
+          id: S.optional(S.Number),
+          timestamp: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "EmailDomainTaskFilter" });
+  }
+}
+function __c52(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           domain: S.String.pipe(T.Label()),
@@ -3862,7 +4059,11 @@ function __c7(j: number): any {
       ).annotate({
         identifier: "GetEmailDomainAccountDelegationRequest",
       });
-    case 3:
+  }
+}
+function __c53(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           domain: S.String.pipe(T.Label()),
@@ -3878,7 +4079,11 @@ function __c7(j: number): any {
       ).annotate({
         identifier: "GetEmailDomainAccountFilterRequest",
       });
-    case 4:
+  }
+}
+function __c54(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           action: S.optional(S.NullOr(S.String)),
@@ -3890,7 +4095,11 @@ function __c7(j: number): any {
           priority: S.optional(S.Number),
         }),
       ).annotate({ identifier: "EmailDomainFilter" });
-    case 5:
+  }
+}
+function __c55(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           domain: S.String.pipe(T.Label()),
@@ -3907,7 +4116,11 @@ function __c7(j: number): any {
       ).annotate({
         identifier: "GetEmailDomainAccountFilterRuleRequest",
       });
-    case 6:
+  }
+}
+function __c56(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           header: S.optional(S.String),
@@ -3916,7 +4129,11 @@ function __c7(j: number): any {
           value: S.optional(S.String),
         }),
       ).annotate({ identifier: "EmailDomainRule" });
-    case 7:
+  }
+}
+function __c57(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           domain: S.String.pipe(T.Label()),
@@ -3932,11 +4149,7 @@ function __c7(j: number): any {
       ).annotate({
         identifier: "GetEmailDomainAccountMigrateRequest",
       });
-  }
-}
-function __c8(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           contactAdmin: S.optional(S.String),
@@ -3950,7 +4163,11 @@ function __c8(j: number): any {
       ).annotate({
         identifier: "EmailDomainMigrationService",
       });
-    case 1:
+  }
+}
+function __c58(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           domain: S.String.pipe(T.Label()),
@@ -3967,7 +4184,7 @@ function __c8(j: number): any {
       ).annotate({
         identifier: "GetEmailDomainAccountMigrateDestinationEmailAddressRequest",
       });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           destinationEmailAddress: S.optional(S.String),
@@ -3976,7 +4193,11 @@ function __c8(j: number): any {
       ).annotate({
         identifier: "EmailDomainMigrationAccount",
       });
-    case 3:
+  }
+}
+function __c59(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           domain: S.String.pipe(T.Label()),
@@ -3991,7 +4212,11 @@ function __c8(j: number): any {
       ).annotate({
         identifier: "GetEmailDomainAccountUsageRequest",
       });
-    case 4:
+  }
+}
+function __c60(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           domain: S.String.pipe(T.Label()),
@@ -4000,7 +4225,11 @@ function __c8(j: number): any {
           T.Http({ method: "GET", uri: "/email/domain/{domain}/acl/{accountId}", code: 200 }),
         ),
       ).annotate({ identifier: "GetEmailDomainAclRequest" });
-    case 5:
+  }
+}
+function __c61(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           email: S.String.pipe(T.Label()),
@@ -4010,11 +4239,11 @@ function __c8(j: number): any {
       ).annotate({
         identifier: "GetEmailDomainDelegatedAccountRequest",
       });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           accountName: S.optional(S.String),
-          allowedAccountSize: S.optional(S.NullOr(__S(14, __c1, 6))),
+          allowedAccountSize: S.optional(S.NullOr(__S(460, __c115, 0))),
           description: S.optional(S.String),
           domain: S.optional(S.String),
           email: S.optional(S.String),
@@ -4024,7 +4253,11 @@ function __c8(j: number): any {
       ).annotate({
         identifier: "EmailDomainAccountDelegated",
       });
-    case 7:
+  }
+}
+function __c62(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           email: S.String.pipe(T.Label()),
@@ -4041,7 +4274,7 @@ function __c8(j: number): any {
       });
   }
 }
-function __c9(j: number): any {
+function __c63(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4059,7 +4292,32 @@ function __c9(j: number): any {
       ).annotate({
         identifier: "GetEmailDomainDelegatedAccountFilterRuleRequest",
       });
-    case 1:
+  }
+}
+function __c64(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          domain: S.String.pipe(T.Label()),
+          accountName: S.String.pipe(T.Label()),
+          name: S.String.pipe(T.Label()),
+          activity: S.Boolean,
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/email/domain/{domain}/account/{accountName}/filter/{name}/changeActivity",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateEmailDomainAccountFilterChangeActivityRequest",
+      });
+  }
+}
+function __c65(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           email: S.String.pipe(T.Label()),
@@ -4073,7 +4331,7 @@ function __c9(j: number): any {
       ).annotate({
         identifier: "GetEmailDomainDelegatedAccountResponderRequest",
       });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           account: S.optional(S.String),
@@ -4086,7 +4344,11 @@ function __c9(j: number): any {
       ).annotate({
         identifier: "EmailDomainResponderAccount",
       });
-    case 3:
+  }
+}
+function __c66(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           domain: S.String.pipe(T.Label()),
@@ -4095,11 +4357,15 @@ function __c9(j: number): any {
       ).annotate({
         identifier: "GetEmailDomainDnsMXFilterRequest",
       });
-    case 4:
+    case 1:
       return S.suspend(() => S.String.pipe(T.RawResponseRoot())).annotate({
         identifier: "GetEmailDomainDnsMXFilterResponse",
       });
-    case 5:
+  }
+}
+function __c67(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           domain: S.String.pipe(T.Label()),
@@ -4110,7 +4376,7 @@ function __c9(j: number): any {
       ).annotate({
         identifier: "GetEmailDomainMailingListRequest",
       });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.Number),
@@ -4118,12 +4384,16 @@ function __c9(j: number): any {
           name: S.optional(S.String),
           nbSubscribers: S.optional(S.NullOr(S.Number)),
           nbSubscribersUpdateDate: S.optional(S.NullOr(S.String)),
-          options: S.optional(__S(27, __c3, 3)),
+          options: S.optional(__S(96, __c24, 0)),
           ownerEmail: S.optional(S.String),
           replyTo: S.optional(S.String),
         }),
       ).annotate({ identifier: "EmailDomainMailingList" });
-    case 7:
+  }
+}
+function __c68(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           moderatorMessage: S.Boolean.pipe(T.Query()),
@@ -4131,17 +4401,17 @@ function __c9(j: number): any {
       ).annotate({
         identifier: "GetEmailDomainMailingListLimitsRequest",
       });
-  }
-}
-function __c10(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           subscribers: S.optional(S.Number),
         }),
       ).annotate({ identifier: "DomainDomainMlLimits" });
-    case 1:
+  }
+}
+function __c69(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           domain: S.String.pipe(T.Label()),
@@ -4157,7 +4427,11 @@ function __c10(j: number): any {
       ).annotate({
         identifier: "GetEmailDomainMailingListModeratorRequest",
       });
-    case 2:
+  }
+}
+function __c70(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           domain: S.optional(S.String),
@@ -4165,7 +4439,11 @@ function __c10(j: number): any {
           mailinglist: S.optional(S.String),
         }),
       ).annotate({ identifier: "EmailDomainModerator" });
-    case 3:
+  }
+}
+function __c71(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           domain: S.String.pipe(T.Label()),
@@ -4181,7 +4459,11 @@ function __c10(j: number): any {
       ).annotate({
         identifier: "GetEmailDomainMailingListSubscriberRequest",
       });
-    case 4:
+  }
+}
+function __c72(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           domain: S.String.pipe(T.Label()),
@@ -4189,7 +4471,7 @@ function __c10(j: number): any {
       ).annotate({
         identifier: "GetEmailDomainQuotaRequest",
       });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           account: S.optional(S.Number),
@@ -4199,7 +4481,11 @@ function __c10(j: number): any {
           responder: S.optional(S.Number),
         }),
       ).annotate({ identifier: "DomainDomainQuota" });
-    case 6:
+  }
+}
+function __c73(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           domain: S.String.pipe(T.Label()),
@@ -4210,7 +4496,7 @@ function __c10(j: number): any {
       ).annotate({
         identifier: "GetEmailDomainRedirectionRequest",
       });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           from: S.optional(S.String),
@@ -4222,7 +4508,7 @@ function __c10(j: number): any {
       });
   }
 }
-function __c11(j: number): any {
+function __c74(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4246,7 +4532,11 @@ function __c11(j: number): any {
           to: S.optional(S.NullOr(S.String)),
         }),
       ).annotate({ identifier: "EmailDomainResponder" });
-    case 2:
+  }
+}
+function __c75(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           domain: S.String.pipe(T.Label()),
@@ -4254,17 +4544,7 @@ function __c11(j: number): any {
       ).annotate({
         identifier: "GetEmailDomainServiceInfosRequest",
       });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          automatic: S.optional(S.Boolean),
-          deleteAtExpiration: S.optional(S.Boolean),
-          forced: S.optional(S.Boolean),
-          manualPayment: S.optional(S.NullOr(S.Boolean)),
-          period: S.optional(S.NullOr(S.Number)),
-        }),
-      ).annotate({ identifier: "ServiceRenewType" });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           canDeleteAtExpiration: S.optional(S.Boolean),
@@ -4275,14 +4555,53 @@ function __c11(j: number): any {
           domain: S.optional(S.String),
           engagedUpTo: S.optional(S.NullOr(S.String)),
           expiration: S.optional(S.String),
-          possibleRenewPeriod: S.optional(S.NullOr(__S(14, __c1, 6))),
-          renew: S.optional(S.NullOr(__S(91, __c11, 3))),
+          possibleRenewPeriod: S.optional(S.NullOr(__S(460, __c115, 0))),
+          renew: S.optional(S.NullOr(__S(304, __c76, 0))),
           renewalType: S.optional(S.String),
           serviceId: S.optional(S.Number),
           status: S.optional(S.String),
         }),
       ).annotate({ identifier: "ServicesService" });
-    case 5:
+  }
+}
+function __c76(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          automatic: S.optional(S.Boolean),
+          deleteAtExpiration: S.optional(S.Boolean),
+          forced: S.optional(S.Boolean),
+          manualPayment: S.optional(S.NullOr(S.Boolean)),
+          period: S.optional(S.NullOr(S.Number)),
+        }),
+      ).annotate({ identifier: "ServiceRenewType" });
+  }
+}
+function __c77(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          domain: S.String.pipe(T.Label()),
+          accountName: S.String.pipe(T.Label()),
+          name: S.String.pipe(T.Label()),
+          priority: S.Number,
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/email/domain/{domain}/account/{accountName}/filter/{name}/changePriority",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateEmailDomainAccountFilterChangePriorityRequest",
+      });
+  }
+}
+function __c78(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           domain: S.String.pipe(T.Label()),
@@ -4290,7 +4609,7 @@ function __c11(j: number): any {
       ).annotate({
         identifier: "GetEmailDomainSummaryRequest",
       });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           account: S.optional(S.Number),
@@ -4299,7 +4618,11 @@ function __c11(j: number): any {
           responder: S.optional(S.Number),
         }),
       ).annotate({ identifier: "DomainDomainSummary" });
-    case 7:
+  }
+}
+function __c79(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           domain: S.String.pipe(T.Label()),
@@ -4312,7 +4635,7 @@ function __c11(j: number): any {
       });
   }
 }
-function __c12(j: number): any {
+function __c80(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4323,7 +4646,11 @@ function __c12(j: number): any {
       ).annotate({
         identifier: "GetEmailDomainTaskAllRequest",
       });
-    case 1:
+  }
+}
+function __c81(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           domain: S.optional(S.String),
@@ -4332,7 +4659,11 @@ function __c12(j: number): any {
           status: S.optional(S.String),
         }),
       ).annotate({ identifier: "EmailDomainTask" });
-    case 2:
+  }
+}
+function __c82(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           domain: S.String.pipe(T.Label()),
@@ -4343,7 +4674,11 @@ function __c12(j: number): any {
       ).annotate({
         identifier: "GetEmailDomainTaskFilterRequest",
       });
-    case 3:
+  }
+}
+function __c83(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           domain: S.String.pipe(T.Label()),
@@ -4354,7 +4689,11 @@ function __c12(j: number): any {
       ).annotate({
         identifier: "GetEmailDomainTaskMailinglistRequest",
       });
-    case 4:
+  }
+}
+function __c84(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           domain: S.String.pipe(T.Label()),
@@ -4365,7 +4704,11 @@ function __c12(j: number): any {
       ).annotate({
         identifier: "GetEmailDomainTaskRedirectionRequest",
       });
-    case 5:
+  }
+}
+function __c85(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           domain: S.String.pipe(T.Label()),
@@ -4376,27 +4719,35 @@ function __c12(j: number): any {
       ).annotate({
         identifier: "GetEmailDomainTaskResponderRequest",
       });
-    case 6:
-      return S.Array(__S(43, __c5, 3));
-    case 7:
-      return S.Record(S.String, __S(102, __c12, 6));
   }
 }
-function __c13(j: number): any {
+function __c86(j: number): any {
   switch (j) {
     case 0:
+      return S.Array(__S(152, __c38, 0));
+    case 1:
+      return S.Record(S.String, __S(344, __c86, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          iamTags: S.optional(__S(103, __c12, 7).pipe(T.Query())),
+          iamTags: S.optional(__S(345, __c86, 1).pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/email/domain", code: 200 })),
       ).annotate({ identifier: "ListEmailDomainRequest" });
-    case 1:
-      return S.Array(S.String);
-    case 2:
-      return S.suspend(() => __S(105, __c13, 1).pipe(T.RawResponseRoot())).annotate({
+    case 3:
+      return S.suspend(() => __S(348, __c87, 0).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListEmailDomainResponse",
       });
-    case 3:
+  }
+}
+function __c87(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c88(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           domain: S.String.pipe(T.Label()),
@@ -4406,11 +4757,19 @@ function __c13(j: number): any {
       ).annotate({
         identifier: "ListEmailDomainAccountRequest",
       });
-    case 4:
-      return S.suspend(() => __S(105, __c13, 1).pipe(T.RawResponseRoot())).annotate({
+  }
+}
+function __c89(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => __S(348, __c87, 0).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListEmailDomainAccountResponse",
       });
-    case 5:
+  }
+}
+function __c90(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           domain: S.String.pipe(T.Label()),
@@ -4425,7 +4784,34 @@ function __c13(j: number): any {
       ).annotate({
         identifier: "ListEmailDomainAccountDelegationRequest",
       });
-    case 6:
+  }
+}
+function __c91(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          domain: S.String.pipe(T.Label()),
+          accountName: S.String.pipe(T.Label()),
+          name: S.String.pipe(T.Label()),
+          header: S.String,
+          operand: S.String,
+          value: S.String,
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/email/domain/{domain}/account/{accountName}/filter/{name}/rule",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateEmailDomainAccountFilterRuleRequest",
+      });
+  }
+}
+function __c92(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           domain: S.String.pipe(T.Label()),
@@ -4440,7 +4826,11 @@ function __c13(j: number): any {
       ).annotate({
         identifier: "ListEmailDomainAccountFilterRequest",
       });
-    case 7:
+  }
+}
+function __c93(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           domain: S.String.pipe(T.Label()),
@@ -4458,7 +4848,7 @@ function __c13(j: number): any {
       });
   }
 }
-function __c14(j: number): any {
+function __c94(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4476,7 +4866,11 @@ function __c14(j: number): any {
       ).annotate({
         identifier: "ListEmailDomainAccountMigrateRequest",
       });
-    case 1:
+  }
+}
+function __c95(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           domain: S.String.pipe(T.Label()),
@@ -4493,13 +4887,17 @@ function __c14(j: number): any {
       ).annotate({
         identifier: "ListEmailDomainAccountMigrateDestinationEmailAddressRequest",
       });
-    case 2:
+    case 1:
       return S.Array(S.String);
-    case 3:
-      return S.suspend(() => __S(114, __c14, 2).pipe(T.RawResponseRoot())).annotate({
+    case 2:
+      return S.suspend(() => __S(381, __c95, 1).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListEmailDomainAccountMigrateDestinationEmailAddressResponse",
       });
-    case 4:
+  }
+}
+function __c96(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           domain: S.String.pipe(T.Label()),
@@ -4516,7 +4914,7 @@ function __c14(j: number): any {
       ).annotate({
         identifier: "ListEmailDomainAccountMigrateDestinationEmailAddressCheckMigrateRequest",
       });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           code: S.optional(S.String),
@@ -4525,23 +4923,23 @@ function __c14(j: number): any {
       ).annotate({
         identifier: "EmailDomainMigrationCheckResultStruct",
       });
-    case 6:
-      return S.Array(__S(117, __c14, 5));
-    case 7:
+    case 2:
+      return S.Array(__S(385, __c96, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          alias: S.optional(S.NullOr(__S(105, __c13, 1))),
-          error: S.optional(S.NullOr(__S(118, __c14, 6))),
-          filter: S.optional(S.NullOr(__S(105, __c13, 1))),
-          forward: S.optional(S.NullOr(__S(105, __c13, 1))),
-          warning: S.optional(S.NullOr(__S(118, __c14, 6))),
+          alias: S.optional(S.NullOr(__S(348, __c87, 0))),
+          error: S.optional(S.NullOr(__S(386, __c96, 2))),
+          filter: S.optional(S.NullOr(__S(348, __c87, 0))),
+          forward: S.optional(S.NullOr(__S(348, __c87, 0))),
+          warning: S.optional(S.NullOr(__S(386, __c96, 2))),
         }),
       ).annotate({
         identifier: "EmailDomainMigrationCheckStruct",
       });
   }
 }
-function __c15(j: number): any {
+function __c97(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4551,7 +4949,11 @@ function __c15(j: number): any {
       ).annotate({
         identifier: "ListEmailDomainAclRequest",
       });
-    case 1:
+  }
+}
+function __c98(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountName: S.optional(S.String.pipe(T.Query())),
@@ -4560,7 +4962,11 @@ function __c15(j: number): any {
       ).annotate({
         identifier: "ListEmailDomainDelegatedAccountRequest",
       });
-    case 2:
+  }
+}
+function __c99(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           email: S.String.pipe(T.Label()),
@@ -4574,7 +4980,11 @@ function __c15(j: number): any {
       ).annotate({
         identifier: "ListEmailDomainDelegatedAccountFilterRequest",
       });
-    case 3:
+  }
+}
+function __c100(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           email: S.String.pipe(T.Label()),
@@ -4589,7 +4999,11 @@ function __c15(j: number): any {
       ).annotate({
         identifier: "ListEmailDomainDelegatedAccountFilterRuleRequest",
       });
-    case 4:
+  }
+}
+function __c101(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           domain: S.String.pipe(T.Label()),
@@ -4597,7 +5011,7 @@ function __c15(j: number): any {
       ).annotate({
         identifier: "ListEmailDomainDkimRequest",
       });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           cname: S.optional(S.String),
@@ -4605,14 +5019,14 @@ function __c15(j: number): any {
           status: S.optional(S.String),
         }),
       ).annotate({ identifier: "EmailDomainDKIMSelector" });
-    case 6:
-      return S.Array(__S(125, __c15, 5));
-    case 7:
+    case 2:
+      return S.Array(__S(405, __c101, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
           activeSelector: S.optional(S.NullOr(S.String)),
           autoconfig: S.optional(S.NullOr(S.Boolean)),
-          selectors: S.optional(S.NullOr(__S(126, __c15, 6))),
+          selectors: S.optional(S.NullOr(__S(406, __c101, 2))),
           status: S.optional(S.String),
         }),
       ).annotate({
@@ -4620,7 +5034,30 @@ function __c15(j: number): any {
       });
   }
 }
-function __c16(j: number): any {
+function __c102(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          domain: S.String.pipe(T.Label()),
+          accountId: S.String,
+        }).pipe(T.Http({ method: "POST", uri: "/email/domain/{domain}/acl", code: 200 })),
+      ).annotate({
+        identifier: "CreateEmailDomainAclRequest",
+      });
+  }
+}
+function __c103(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          accountId: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "EmailDomainAcl" });
+  }
+}
+function __c104(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4631,7 +5068,11 @@ function __c16(j: number): any {
       ).annotate({
         identifier: "ListEmailDomainDnsMXRecordsRequest",
       });
-    case 1:
+  }
+}
+function __c105(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           domain: S.String.pipe(T.Label()),
@@ -4640,7 +5081,11 @@ function __c16(j: number): any {
       ).annotate({
         identifier: "ListEmailDomainMailingListRequest",
       });
-    case 2:
+  }
+}
+function __c106(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           domain: S.String.pipe(T.Label()),
@@ -4656,7 +5101,11 @@ function __c16(j: number): any {
       ).annotate({
         identifier: "ListEmailDomainMailingListModeratorRequest",
       });
-    case 3:
+  }
+}
+function __c107(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           domain: S.String.pipe(T.Label()),
@@ -4672,7 +5121,11 @@ function __c16(j: number): any {
       ).annotate({
         identifier: "ListEmailDomainMailingListSubscriberRequest",
       });
-    case 4:
+  }
+}
+function __c108(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           domain: S.String.pipe(T.Label()),
@@ -4682,7 +5135,7 @@ function __c16(j: number): any {
       ).annotate({
         identifier: "ListEmailDomainRecommendedDNSRecordsRequest",
       });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           fieldType: S.optional(S.String),
@@ -4693,15 +5146,15 @@ function __c16(j: number): any {
           zone: S.optional(S.String),
         }),
       ).annotate({ identifier: "EmailDomainRecord" });
-    case 6:
-      return S.Array(__S(133, __c16, 5));
-    case 7:
-      return S.suspend(() => __S(134, __c16, 6).pipe(T.RawResponseRoot())).annotate({
+    case 2:
+      return S.Array(__S(433, __c108, 1));
+    case 3:
+      return S.suspend(() => __S(434, __c108, 2).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListEmailDomainRecommendedDNSRecordsResponse",
       });
   }
 }
-function __c17(j: number): any {
+function __c109(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4713,7 +5166,11 @@ function __c17(j: number): any {
       ).annotate({
         identifier: "ListEmailDomainRedirectionRequest",
       });
-    case 1:
+  }
+}
+function __c110(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           domain: S.String.pipe(T.Label()),
@@ -4722,7 +5179,11 @@ function __c17(j: number): any {
       ).annotate({
         identifier: "ListEmailDomainResponderRequest",
       });
-    case 2:
+  }
+}
+function __c111(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           domain: S.String.pipe(T.Label()),
@@ -4731,7 +5192,11 @@ function __c17(j: number): any {
       ).annotate({
         identifier: "ListEmailDomainTaskAccountRequest",
       });
-    case 3:
+  }
+}
+function __c112(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           domain: S.String.pipe(T.Label()),
@@ -4739,7 +5204,11 @@ function __c17(j: number): any {
       ).annotate({
         identifier: "ListEmailDomainTaskAllRequest",
       });
-    case 4:
+  }
+}
+function __c113(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           domain: S.String.pipe(T.Label()),
@@ -4748,7 +5217,40 @@ function __c17(j: number): any {
       ).annotate({
         identifier: "ListEmailDomainTaskFilterRequest",
       });
-    case 5:
+  }
+}
+function __c114(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          domain: S.String.pipe(T.Label()),
+          contactAdmin: S.optional(S.String),
+          contactBilling: S.optional(S.String),
+          contactTech: S.optional(S.String),
+        }).pipe(T.Http({ method: "POST", uri: "/email/domain/{domain}/changeContact", code: 200 })),
+      ).annotate({
+        identifier: "CreateEmailDomainChangeContactRequest",
+      });
+  }
+}
+function __c115(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.Number);
+  }
+}
+function __c116(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => __S(460, __c115, 0).pipe(T.RawResponseRoot())).annotate({
+        identifier: "CreateEmailDomainChangeContactResponse",
+      });
+  }
+}
+function __c117(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           domain: S.String.pipe(T.Label()),
@@ -4759,7 +5261,11 @@ function __c17(j: number): any {
       ).annotate({
         identifier: "ListEmailDomainTaskMailinglistRequest",
       });
-    case 6:
+  }
+}
+function __c118(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           domain: S.String.pipe(T.Label()),
@@ -4770,7 +5276,11 @@ function __c17(j: number): any {
       ).annotate({
         identifier: "ListEmailDomainTaskRedirectionRequest",
       });
-    case 7:
+  }
+}
+function __c119(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           domain: S.String.pipe(T.Label()),
@@ -4781,7 +5291,7 @@ function __c17(j: number): any {
       });
   }
 }
-function __c18(j: number): any {
+function __c120(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4801,7 +5311,11 @@ function __c18(j: number): any {
       ).annotate({
         identifier: "MigrateEmailDomainAccountMigrateDestinationEmailAddressRequest",
       });
-    case 1:
+  }
+}
+function __c121(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           domain: S.String.pipe(T.Label()),
@@ -4815,7 +5329,11 @@ function __c18(j: number): any {
       ).annotate({
         identifier: "MigrateEmailDomainDelegationV3toV6Request",
       });
-    case 2:
+  }
+}
+function __c122(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           domain: S.String.pipe(T.Label()),
@@ -4828,7 +5346,11 @@ function __c18(j: number): any {
       ).annotate({
         identifier: "PutEmailDomainAccountRequest",
       });
-    case 3:
+  }
+}
+function __c123(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           email: S.String.pipe(T.Label()),
@@ -4840,7 +5362,11 @@ function __c18(j: number): any {
       ).annotate({
         identifier: "PutEmailDomainDelegatedAccountRequest",
       });
-    case 4:
+  }
+}
+function __c124(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           email: S.String.pipe(T.Label()),
@@ -4857,7 +5383,11 @@ function __c18(j: number): any {
       ).annotate({
         identifier: "PutEmailDomainDelegatedAccountResponderRequest",
       });
-    case 5:
+  }
+}
+function __c125(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           domain: S.String.pipe(T.Label()),
@@ -4865,7 +5395,11 @@ function __c18(j: number): any {
       ).annotate({
         identifier: "PutEmailDomainDkimDisableRequest",
       });
-    case 6:
+  }
+}
+function __c126(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           domain: S.String.pipe(T.Label()),
@@ -4873,107 +5407,8 @@ function __c18(j: number): any {
       ).annotate({
         identifier: "PutEmailDomainDkimEnableRequest",
       });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          domain: S.String.pipe(T.Label()),
-          name: S.String.pipe(T.Label()),
-          language: S.optional(S.NullOr(S.String)),
-          ownerEmail: S.optional(S.String),
-          replyTo: S.optional(S.String),
-        }).pipe(
-          T.Http({ method: "PUT", uri: "/email/domain/{domain}/mailingList/{name}", code: 200 }),
-        ),
-      ).annotate({
-        identifier: "PutEmailDomainMailingListRequest",
-      });
   }
 }
-function __c19(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          domain: S.String.pipe(T.Label()),
-          account: S.String.pipe(T.Label()),
-          content: S.optional(S.String),
-          from: S.optional(S.NullOr(S.String)),
-          to: S.optional(S.NullOr(S.String)),
-        }).pipe(
-          T.Http({ method: "PUT", uri: "/email/domain/{domain}/responder/{account}", code: 200 }),
-        ),
-      ).annotate({
-        identifier: "PutEmailDomainResponderRequest",
-      });
-    case 1:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "PutEmailDomainResponderResponse",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          domain: S.String.pipe(T.Label()),
-          renew: S.optional(S.NullOr(__S(91, __c11, 3))),
-        }).pipe(T.Http({ method: "PUT", uri: "/email/domain/{domain}/serviceInfos", code: 200 })),
-      ).annotate({
-        identifier: "PutEmailDomainServiceInfosRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          domain: S.String.pipe(T.Label()),
-          name: S.String.pipe(T.Label()),
-          email: S.String,
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/email/domain/{domain}/mailingList/{name}/sendListByEmail",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "SendEmailDomainMailingListListByEmailRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          domain: S.String.pipe(T.Label()),
-        }).pipe(T.Http({ method: "POST", uri: "/email/domain/{domain}/terminate", code: 200 })),
-      ).annotate({
-        identifier: "TerminateEmailDomainRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          domain: S.String.pipe(T.Label()),
-          accountName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/email/domain/{domain}/account/{accountName}/updateUsage",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "UpdateEmailDomainAccountUsageRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          email: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/email/domain/delegatedAccount/{email}/updateUsage",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "UpdateEmailDomainDelegatedAccountUsageRequest",
-      });
-  }
-}
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

@@ -1061,7 +1061,7 @@ export const DeleteGuestConfigurationAssignment: API.OperationMethod<
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(0, __c0, 0) as any as S.Schema<DeleteGuestConfigurationAssignmentRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<DeleteGuestConfigurationAssignmentResponse>,
+  output: __S(16, __c1, 0) as any as S.Schema<DeleteGuestConfigurationAssignmentResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1075,8 +1075,8 @@ export const DeleteGuestConfigurationAssignmentsVMSS: API.OperationMethod<
   DeleteGuestConfigurationAssignmentsVMSSError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2, __c0, 2) as any as S.Schema<DeleteGuestConfigurationAssignmentsVMSSRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<DeleteGuestConfigurationAssignmentsVMSSResponse>,
+  input: __S(32, __c2, 0) as any as S.Schema<DeleteGuestConfigurationAssignmentsVMSSRequest>,
+  output: __S(34, __c2, 2) as any as S.Schema<DeleteGuestConfigurationAssignmentsVMSSResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1091,14 +1091,14 @@ export const DeleteGuestConfigurationConnectedVMwarevSphereAssignment: API.Opera
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    21,
-    __c2,
-    5,
+    304,
+    __c19,
+    0,
   ) as any as S.Schema<DeleteGuestConfigurationConnectedVMwarevSphereAssignmentRequest>,
   output: __S(
-    22,
-    __c2,
-    6,
+    305,
+    __c19,
+    1,
   ) as any as S.Schema<DeleteGuestConfigurationConnectedVMwarevSphereAssignmentResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -1113,8 +1113,8 @@ export const DeleteGuestConfigurationHCRPAssignment: API.OperationMethod<
   DeleteGuestConfigurationHCRPAssignmentError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(23, __c2, 7) as any as S.Schema<DeleteGuestConfigurationHCRPAssignmentRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<DeleteGuestConfigurationHCRPAssignmentResponse>,
+  input: __S(432, __c27, 0) as any as S.Schema<DeleteGuestConfigurationHCRPAssignmentRequest>,
+  output: __S(16, __c1, 0) as any as S.Schema<DeleteGuestConfigurationHCRPAssignmentResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1128,8 +1128,8 @@ export const GetGuestConfigurationAssignment: API.OperationMethod<
   GetGuestConfigurationAssignmentError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(24, __c3, 0) as any as S.Schema<GetGuestConfigurationAssignmentRequest>,
-  output: __S(26, __c3, 2) as any as S.Schema<GetGuestConfigurationAssignmentResponse>,
+  input: __S(448, __c28, 0) as any as S.Schema<GetGuestConfigurationAssignmentRequest>,
+  output: __S(464, __c29, 0) as any as S.Schema<GetGuestConfigurationAssignmentResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1143,8 +1143,8 @@ export const GetGuestConfigurationAssignmentReport: API.OperationMethod<
   GetGuestConfigurationAssignmentReportError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(27, __c3, 3) as any as S.Schema<GetGuestConfigurationAssignmentReportRequest>,
-  output: __S(30, __c3, 6) as any as S.Schema<GuestConfigurationAssignmentReport>,
+  input: __S(496, __c31, 0) as any as S.Schema<GetGuestConfigurationAssignmentReportRequest>,
+  output: __S(514, __c32, 2) as any as S.Schema<GuestConfigurationAssignmentReport>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1158,8 +1158,8 @@ export const GetGuestConfigurationAssignmentReportsVMSS: API.OperationMethod<
   GetGuestConfigurationAssignmentReportsVMSSError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(31, __c3, 7) as any as S.Schema<GetGuestConfigurationAssignmentReportsVMSSRequest>,
-  output: __S(30, __c3, 6) as any as S.Schema<GuestConfigurationAssignmentReport>,
+  input: __S(528, __c33, 0) as any as S.Schema<GetGuestConfigurationAssignmentReportsVMSSRequest>,
+  output: __S(514, __c32, 2) as any as S.Schema<GuestConfigurationAssignmentReport>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1173,8 +1173,8 @@ export const GetGuestConfigurationAssignmentsVMSS: API.OperationMethod<
   GetGuestConfigurationAssignmentsVMSSError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(32, __c4, 0) as any as S.Schema<GetGuestConfigurationAssignmentsVMSSRequest>,
-  output: __S(34, __c4, 2) as any as S.Schema<GetGuestConfigurationAssignmentsVMSSResponse>,
+  input: __S(544, __c34, 0) as any as S.Schema<GetGuestConfigurationAssignmentsVMSSRequest>,
+  output: __S(545, __c34, 1) as any as S.Schema<GetGuestConfigurationAssignmentsVMSSResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1189,14 +1189,14 @@ export const GetGuestConfigurationConnectedVMwarevSphereAssignment: API.Operatio
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    35,
-    __c4,
-    3,
+    576,
+    __c36,
+    0,
   ) as any as S.Schema<GetGuestConfigurationConnectedVMwarevSphereAssignmentRequest>,
   output: __S(
-    37,
-    __c4,
-    5,
+    577,
+    __c36,
+    1,
   ) as any as S.Schema<GetGuestConfigurationConnectedVMwarevSphereAssignmentResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -1212,11 +1212,11 @@ export const GetGuestConfigurationConnectedVMwarevSphereAssignmentsReport: API.O
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    38,
-    __c4,
-    6,
+    608,
+    __c38,
+    0,
   ) as any as S.Schema<GetGuestConfigurationConnectedVMwarevSphereAssignmentsReportRequest>,
-  output: __S(30, __c3, 6) as any as S.Schema<GuestConfigurationAssignmentReport>,
+  output: __S(514, __c32, 2) as any as S.Schema<GuestConfigurationAssignmentReport>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1230,8 +1230,8 @@ export const GetGuestConfigurationHCRPAssignment: API.OperationMethod<
   GetGuestConfigurationHCRPAssignmentError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(39, __c4, 7) as any as S.Schema<GetGuestConfigurationHCRPAssignmentRequest>,
-  output: __S(26, __c3, 2) as any as S.Schema<GetGuestConfigurationHCRPAssignmentResponse>,
+  input: __S(80, __c5, 0) as any as S.Schema<GetGuestConfigurationHCRPAssignmentRequest>,
+  output: __S(464, __c29, 0) as any as S.Schema<GetGuestConfigurationHCRPAssignmentResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1245,8 +1245,8 @@ export const GetGuestConfigurationHCRPAssignmentReport: API.OperationMethod<
   GetGuestConfigurationHCRPAssignmentReportError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(40, __c5, 0) as any as S.Schema<GetGuestConfigurationHCRPAssignmentReportRequest>,
-  output: __S(30, __c3, 6) as any as S.Schema<GuestConfigurationAssignmentReport>,
+  input: __S(96, __c6, 0) as any as S.Schema<GetGuestConfigurationHCRPAssignmentReportRequest>,
+  output: __S(514, __c32, 2) as any as S.Schema<GuestConfigurationAssignmentReport>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1260,8 +1260,8 @@ export const GuestConfigurationAssignmentsCreateOrUpdate: API.OperationMethod<
   GuestConfigurationAssignmentsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(49, __c6, 1) as any as S.Schema<GuestConfigurationAssignmentsCreateOrUpdateRequest>,
-  output: __S(50, __c6, 2) as any as S.Schema<GuestConfigurationAssignmentsCreateOrUpdateResponse>,
+  input: __S(112, __c7, 0) as any as S.Schema<GuestConfigurationAssignmentsCreateOrUpdateRequest>,
+  output: __S(144, __c9, 0) as any as S.Schema<GuestConfigurationAssignmentsCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1276,14 +1276,14 @@ export const GuestConfigurationAssignmentsVMSSCreateOrUpdate: API.OperationMetho
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    51,
-    __c6,
-    3,
+    160,
+    __c10,
+    0,
   ) as any as S.Schema<GuestConfigurationAssignmentsVMSSCreateOrUpdateRequest>,
   output: __S(
-    52,
-    __c6,
-    4,
+    161,
+    __c10,
+    1,
   ) as any as S.Schema<GuestConfigurationAssignmentsVMSSCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -1299,14 +1299,14 @@ export const GuestConfigurationConnectedVMwarevSphereAssignmentsCreateOrUpdate: 
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    53,
-    __c6,
-    5,
+    176,
+    __c11,
+    0,
   ) as any as S.Schema<GuestConfigurationConnectedVMwarevSphereAssignmentsCreateOrUpdateRequest>,
   output: __S(
-    55,
-    __c6,
-    7,
+    178,
+    __c11,
+    2,
   ) as any as S.Schema<GuestConfigurationConnectedVMwarevSphereAssignmentsCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -1322,14 +1322,14 @@ export const GuestConfigurationHCRPAssignmentsCreateOrUpdate: API.OperationMetho
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    56,
-    __c7,
+    192,
+    __c12,
     0,
   ) as any as S.Schema<GuestConfigurationHCRPAssignmentsCreateOrUpdateRequest>,
   output: __S(
-    50,
-    __c6,
-    2,
+    144,
+    __c9,
+    0,
   ) as any as S.Schema<GuestConfigurationHCRPAssignmentsCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -1344,8 +1344,8 @@ export const ListGuestConfigurationAssignmentReports: API.OperationMethod<
   ListGuestConfigurationAssignmentReportsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(57, __c7, 1) as any as S.Schema<ListGuestConfigurationAssignmentReportsRequest>,
-  output: __S(59, __c7, 3) as any as S.Schema<GuestConfigurationAssignmentReportList>,
+  input: __S(208, __c13, 0) as any as S.Schema<ListGuestConfigurationAssignmentReportsRequest>,
+  output: __S(225, __c14, 1) as any as S.Schema<GuestConfigurationAssignmentReportList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1359,8 +1359,8 @@ export const ListGuestConfigurationAssignmentReportsVMSS: API.OperationMethod<
   ListGuestConfigurationAssignmentReportsVMSSError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(60, __c7, 4) as any as S.Schema<ListGuestConfigurationAssignmentReportsVMSSRequest>,
-  output: __S(59, __c7, 3) as any as S.Schema<GuestConfigurationAssignmentReportList>,
+  input: __S(240, __c15, 0) as any as S.Schema<ListGuestConfigurationAssignmentReportsVMSSRequest>,
+  output: __S(225, __c14, 1) as any as S.Schema<GuestConfigurationAssignmentReportList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1374,8 +1374,8 @@ export const ListGuestConfigurationAssignments: API.OperationMethod<
   ListGuestConfigurationAssignmentsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(61, __c7, 5) as any as S.Schema<ListGuestConfigurationAssignmentsRequest>,
-  output: __S(65, __c8, 1) as any as S.Schema<GuestConfigurationAssignmentList>,
+  input: __S(256, __c16, 0) as any as S.Schema<ListGuestConfigurationAssignmentsRequest>,
+  output: __S(275, __c17, 3) as any as S.Schema<GuestConfigurationAssignmentList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1389,8 +1389,8 @@ export const ListGuestConfigurationAssignmentsRG: API.OperationMethod<
   ListGuestConfigurationAssignmentsRGError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(66, __c8, 2) as any as S.Schema<ListGuestConfigurationAssignmentsRGRequest>,
-  output: __S(65, __c8, 1) as any as S.Schema<GuestConfigurationAssignmentList>,
+  input: __S(288, __c18, 0) as any as S.Schema<ListGuestConfigurationAssignmentsRGRequest>,
+  output: __S(275, __c17, 3) as any as S.Schema<GuestConfigurationAssignmentList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1404,8 +1404,12 @@ export const ListGuestConfigurationAssignmentsSubscription: API.OperationMethod<
   ListGuestConfigurationAssignmentsSubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(67, __c8, 3) as any as S.Schema<ListGuestConfigurationAssignmentsSubscriptionRequest>,
-  output: __S(65, __c8, 1) as any as S.Schema<GuestConfigurationAssignmentList>,
+  input: __S(
+    320,
+    __c20,
+    0,
+  ) as any as S.Schema<ListGuestConfigurationAssignmentsSubscriptionRequest>,
+  output: __S(275, __c17, 3) as any as S.Schema<GuestConfigurationAssignmentList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1419,8 +1423,8 @@ export const ListGuestConfigurationAssignmentsVMSS: API.OperationMethod<
   ListGuestConfigurationAssignmentsVMSSError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(68, __c8, 4) as any as S.Schema<ListGuestConfigurationAssignmentsVMSSRequest>,
-  output: __S(65, __c8, 1) as any as S.Schema<GuestConfigurationAssignmentList>,
+  input: __S(336, __c21, 0) as any as S.Schema<ListGuestConfigurationAssignmentsVMSSRequest>,
+  output: __S(275, __c17, 3) as any as S.Schema<GuestConfigurationAssignmentList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1435,11 +1439,11 @@ export const ListGuestConfigurationConnectedVMwarevSphereAssignments: API.Operat
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    69,
-    __c8,
-    5,
+    352,
+    __c22,
+    0,
   ) as any as S.Schema<ListGuestConfigurationConnectedVMwarevSphereAssignmentsRequest>,
-  output: __S(65, __c8, 1) as any as S.Schema<GuestConfigurationAssignmentList>,
+  output: __S(275, __c17, 3) as any as S.Schema<GuestConfigurationAssignmentList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1454,11 +1458,11 @@ export const ListGuestConfigurationConnectedVMwarevSphereAssignmentsReports: API
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    70,
-    __c8,
-    6,
+    368,
+    __c23,
+    0,
   ) as any as S.Schema<ListGuestConfigurationConnectedVMwarevSphereAssignmentsReportsRequest>,
-  output: __S(59, __c7, 3) as any as S.Schema<GuestConfigurationAssignmentReportList>,
+  output: __S(225, __c14, 1) as any as S.Schema<GuestConfigurationAssignmentReportList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1472,8 +1476,8 @@ export const ListGuestConfigurationHCRPAssignmentReports: API.OperationMethod<
   ListGuestConfigurationHCRPAssignmentReportsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(71, __c8, 7) as any as S.Schema<ListGuestConfigurationHCRPAssignmentReportsRequest>,
-  output: __S(59, __c7, 3) as any as S.Schema<GuestConfigurationAssignmentReportList>,
+  input: __S(384, __c24, 0) as any as S.Schema<ListGuestConfigurationHCRPAssignmentReportsRequest>,
+  output: __S(225, __c14, 1) as any as S.Schema<GuestConfigurationAssignmentReportList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1487,8 +1491,8 @@ export const ListGuestConfigurationHCRPAssignments: API.OperationMethod<
   ListGuestConfigurationHCRPAssignmentsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(72, __c9, 0) as any as S.Schema<ListGuestConfigurationHCRPAssignmentsRequest>,
-  output: __S(65, __c8, 1) as any as S.Schema<GuestConfigurationAssignmentList>,
+  input: __S(400, __c25, 0) as any as S.Schema<ListGuestConfigurationHCRPAssignmentsRequest>,
+  output: __S(275, __c17, 3) as any as S.Schema<GuestConfigurationAssignmentList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1502,8 +1506,8 @@ export const ListOperations: API.OperationMethod<
   ListOperationsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(73, __c9, 1) as any as S.Schema<ListOperationsRequest>,
-  output: __S(78, __c9, 6) as any as S.Schema<OperationList>,
+  input: __S(416, __c26, 0) as any as S.Schema<ListOperationsRequest>,
+  output: __S(421, __c26, 5) as any as S.Schema<OperationList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1530,11 +1534,19 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "DeleteGuestConfigurationAssignmentRequest",
       });
-    case 1:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "DeleteGuestConfigurationAssignmentResponse",
       });
-    case 2:
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -1552,50 +1564,35 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "DeleteGuestConfigurationAssignmentsVMSSRequest",
       });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          name: S.optional(S.String),
-          value: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ConfigurationParameter" });
-    case 4:
-      return S.Array(__S(3, __c0, 3));
-    case 5:
-      return S.Array(__S(3, __c0, 3));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          configurationMode: S.optional(S.String),
-          allowModuleOverwrite: S.optional(S.Boolean),
-          actionAfterReboot: S.optional(S.String),
-          refreshFrequencyMins: S.optional(S.Number),
-          rebootIfNeeded: S.optional(S.Boolean),
-          configurationModeFrequencyMins: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "ConfigurationSetting" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          kind: S.optional(S.String),
-          name: S.optional(S.String),
-          version: S.optional(S.String),
-          contentUri: S.optional(S.String),
-          contentHash: S.optional(S.String),
-          contentManagedIdentity: S.optional(S.String),
-          assignmentType: S.optional(S.String),
-          assignmentSource: S.optional(S.NullOr(S.String)),
-          contentType: S.optional(S.NullOr(S.String)),
-          configurationParameter: S.optional(__S(4, __c0, 4)),
-          configurationProtectedParameter: S.optional(__S(5, __c0, 5)),
-          configurationSetting: S.optional(__S(6, __c0, 6)),
+          createdBy: S.optional(S.String),
+          createdByType: S.optional(S.String),
+          createdAt: S.optional(S.String),
+          lastModifiedBy: S.optional(S.String),
+          lastModifiedByType: S.optional(S.String),
+          lastModifiedAt: S.optional(S.String),
         }),
       ).annotate({
-        identifier: "GuestConfigurationNavigation",
+        identifier: "DeleteGuestConfigurationAssignmentsVMSSResponseSystemData",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.String,
+          location: S.optional(S.String),
+          type: S.optional(S.String),
+          properties: S.optional(__S(72, __c4, 8)),
+          systemData: S.optional(__S(33, __c2, 1)),
+        }),
+      ).annotate({
+        identifier: "DeleteGuestConfigurationAssignmentsVMSSResponse",
       });
   }
 }
-function __c1(j: number): any {
+function __c3(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1608,7 +1605,7 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
-          configuration: S.optional(__S(8, __c1, 0)),
+          configuration: S.optional(__S(48, __c3, 0)),
         }),
       ).annotate({ identifier: "AssignmentInfo" });
     case 2:
@@ -1628,37 +1625,78 @@ function __c1(j: number): any {
         identifier: "AssignmentReportResourceComplianceReason",
       });
     case 4:
-      return S.Array(__S(11, __c1, 3));
+      return S.Array(__S(51, __c3, 3));
     case 5:
       return S.suspend(() =>
         S.Struct({
           complianceStatus: S.optional(S.String),
           resourceId: S.optional(S.String),
-          reasons: S.optional(__S(12, __c1, 4)),
+          reasons: S.optional(__S(52, __c3, 4)),
           properties: S.optional(S.Unknown),
         }),
       ).annotate({ identifier: "AssignmentReportResource" });
     case 6:
-      return S.Array(__S(13, __c1, 5));
-    case 7:
+      return S.Array(__S(53, __c3, 5));
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.optional(S.String),
+          value: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ConfigurationParameter" });
+    case 1:
+      return S.Array(__S(64, __c4, 0));
+    case 2:
+      return S.Array(__S(64, __c4, 0));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          configurationMode: S.optional(S.String),
+          allowModuleOverwrite: S.optional(S.Boolean),
+          actionAfterReboot: S.optional(S.String),
+          refreshFrequencyMins: S.optional(S.Number),
+          rebootIfNeeded: S.optional(S.Boolean),
+          configurationModeFrequencyMins: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "ConfigurationSetting" });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          kind: S.optional(S.String),
+          name: S.optional(S.String),
+          version: S.optional(S.String),
+          contentUri: S.optional(S.String),
+          contentHash: S.optional(S.String),
+          contentManagedIdentity: S.optional(S.String),
+          assignmentType: S.optional(S.String),
+          assignmentSource: S.optional(S.NullOr(S.String)),
+          contentType: S.optional(S.NullOr(S.String)),
+          configurationParameter: S.optional(__S(65, __c4, 1)),
+          configurationProtectedParameter: S.optional(__S(66, __c4, 2)),
+          configurationSetting: S.optional(__S(67, __c4, 3)),
+        }),
+      ).annotate({
+        identifier: "GuestConfigurationNavigation",
+      });
+    case 5:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           reportId: S.optional(S.String),
-          assignment: S.optional(__S(9, __c1, 1)),
-          vm: S.optional(__S(10, __c1, 2)),
+          assignment: S.optional(__S(49, __c3, 1)),
+          vm: S.optional(__S(50, __c3, 2)),
           startTime: S.optional(S.String),
           endTime: S.optional(S.String),
           complianceStatus: S.optional(S.String),
           operationType: S.optional(S.String),
-          resources: S.optional(__S(14, __c1, 6)),
+          resources: S.optional(__S(54, __c3, 6)),
         }),
       ).annotate({ identifier: "AssignmentReport" });
-  }
-}
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
+    case 6:
       return S.suspend(() =>
         S.Struct({
           vmId: S.optional(S.String),
@@ -1668,28 +1706,239 @@ function __c2(j: number): any {
           lastComplianceChecked: S.optional(S.NullOr(S.String)),
         }),
       ).annotate({ identifier: "VMSSVMInfo" });
-    case 1:
-      return S.Array(__S(16, __c2, 0));
-    case 2:
+    case 7:
+      return S.Array(__S(70, __c4, 6));
+    case 8:
       return S.suspend(() =>
         S.Struct({
           targetResourceId: S.optional(S.NullOr(S.String)),
-          guestConfiguration: S.optional(__S(7, __c0, 7)),
+          guestConfiguration: S.optional(__S(68, __c4, 4)),
           complianceStatus: S.optional(S.String),
           lastComplianceStatusChecked: S.optional(S.NullOr(S.String)),
           latestReportId: S.optional(S.NullOr(S.String)),
           parameterHash: S.optional(S.NullOr(S.String)),
-          latestAssignmentReport: S.optional(__S(15, __c1, 7)),
+          latestAssignmentReport: S.optional(__S(69, __c4, 5)),
           context: S.optional(S.String),
           assignmentHash: S.optional(S.NullOr(S.String)),
           provisioningState: S.optional(S.NullOr(S.String)),
           resourceType: S.optional(S.NullOr(S.String)),
-          vmssVMList: S.optional(__S(17, __c2, 1)),
+          vmssVMList: S.optional(__S(71, __c4, 7)),
         }),
       ).annotate({
         identifier: "GuestConfigurationAssignmentProperties",
       });
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          machineName: S.String.pipe(T.Label()),
+          guestConfigurationAssignmentName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridCompute/machines/{machineName}/providers/Microsoft.GuestConfiguration/guestConfigurationAssignments/{guestConfigurationAssignmentName}",
+            code: 200,
+            apiVersion: "2024-04-05",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetGuestConfigurationHCRPAssignmentRequest",
+      });
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          machineName: S.String.pipe(T.Label()),
+          guestConfigurationAssignmentName: S.String.pipe(T.Label()),
+          reportId: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridCompute/machines/{machineName}/providers/Microsoft.GuestConfiguration/guestConfigurationAssignments/{guestConfigurationAssignmentName}/reports/{reportId}",
+            code: 200,
+            apiVersion: "2024-04-05",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetGuestConfigurationHCRPAssignmentReportRequest",
+      });
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          vmName: S.String.pipe(T.Label()),
+          guestConfigurationAssignmentName: S.String.pipe(T.Label()),
+          name: S.String,
+          location: S.optional(S.String),
+          properties: S.optional(__S(135, __c8, 7)),
+        }).pipe(
+          T.Http({
+            method: "PUT",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachines/{vmName}/providers/Microsoft.GuestConfiguration/guestConfigurationAssignments/{guestConfigurationAssignmentName}",
+            code: 200,
+            apiVersion: "2024-04-05",
+          }),
+        ),
+      ).annotate({
+        identifier: "GuestConfigurationAssignmentsCreateOrUpdateRequest",
+      });
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          kind: S.optional(S.String),
+          name: S.optional(S.String),
+          version: S.optional(S.String),
+          contentUri: S.optional(S.String),
+          contentHash: S.optional(S.String),
+          contentManagedIdentity: S.optional(S.String),
+          assignmentType: S.optional(S.String),
+          configurationParameter: S.optional(__S(65, __c4, 1)),
+          configurationProtectedParameter: S.optional(__S(66, __c4, 2)),
+        }),
+      ).annotate({
+        identifier: "GuestConfigurationNavigationInput",
+      });
+    case 1:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "ConfigurationInfoInput",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          configuration: S.optional(__S(129, __c8, 1)),
+        }),
+      ).annotate({ identifier: "AssignmentInfoInput" });
     case 3:
+      return S.Array(__S(129, __c8, 1));
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          reasons: S.optional(__S(131, __c8, 3)),
+        }),
+      ).annotate({
+        identifier: "AssignmentReportResourceInput",
+      });
+    case 5:
+      return S.Array(__S(132, __c8, 4));
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          assignment: S.optional(__S(130, __c8, 2)),
+          vm: S.optional(__S(129, __c8, 1)),
+          resources: S.optional(__S(133, __c8, 5)),
+        }),
+      ).annotate({ identifier: "AssignmentReportInput" });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          guestConfiguration: S.optional(__S(128, __c8, 0)),
+          latestAssignmentReport: S.optional(__S(134, __c8, 6)),
+          context: S.optional(S.String),
+          vmssVMList: S.optional(__S(131, __c8, 3)),
+        }),
+      ).annotate({
+        identifier: "GuestConfigurationAssignmentPropertiesInput",
+      });
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.String,
+          location: S.optional(S.String),
+          type: S.optional(S.String),
+          properties: S.optional(__S(72, __c4, 8)),
+          systemData: S.optional(__S(592, __c37, 0)),
+        }),
+      ).annotate({
+        identifier: "GuestConfigurationAssignmentsCreateOrUpdateResponse",
+      });
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          vmssName: S.String.pipe(T.Label()),
+          name: S.String.pipe(T.Label()),
+          location: S.optional(S.String),
+          properties: S.optional(__S(135, __c8, 7)),
+        }).pipe(
+          T.Http({
+            method: "PUT",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmssName}/providers/Microsoft.GuestConfiguration/guestConfigurationAssignments/{name}",
+            code: 200,
+            apiVersion: "2024-04-05",
+          }),
+        ),
+      ).annotate({
+        identifier: "GuestConfigurationAssignmentsVMSSCreateOrUpdateRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          location: S.optional(S.String),
+          type: S.optional(S.String),
+          properties: S.optional(__S(72, __c4, 8)),
+          systemData: S.optional(__S(592, __c37, 0)),
+          error: S.optional(__S(560, __c35, 0)),
+        }),
+      ).annotate({
+        identifier: "GuestConfigurationAssignmentsVMSSCreateOrUpdateResponse",
+      });
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          vmName: S.String.pipe(T.Label()),
+          guestConfigurationAssignmentName: S.String.pipe(T.Label()),
+          name: S.String,
+          location: S.optional(S.String),
+          properties: S.optional(__S(135, __c8, 7)),
+        }).pipe(
+          T.Http({
+            method: "PUT",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ConnectedVMwarevSphere/virtualmachines/{vmName}/providers/Microsoft.GuestConfiguration/guestConfigurationAssignments/{guestConfigurationAssignmentName}",
+            code: 200,
+            apiVersion: "2024-04-05",
+          }),
+        ),
+      ).annotate({
+        identifier: "GuestConfigurationConnectedVMwarevSphereAssignmentsCreateOrUpdateRequest",
+      });
+    case 1:
       return S.suspend(() =>
         S.Struct({
           createdBy: S.optional(S.String),
@@ -1700,22 +1949,193 @@ function __c2(j: number): any {
           lastModifiedAt: S.optional(S.String),
         }),
       ).annotate({
-        identifier: "DeleteGuestConfigurationAssignmentsVMSSResponseSystemData",
+        identifier:
+          "GuestConfigurationConnectedVMwarevSphereAssignmentsCreateOrUpdateResponseSystemData",
       });
-    case 4:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.String,
           location: S.optional(S.String),
           type: S.optional(S.String),
-          properties: S.optional(__S(18, __c2, 2)),
-          systemData: S.optional(__S(19, __c2, 3)),
+          properties: S.optional(__S(72, __c4, 8)),
+          systemData: S.optional(__S(177, __c11, 1)),
         }),
       ).annotate({
-        identifier: "DeleteGuestConfigurationAssignmentsVMSSResponse",
+        identifier: "GuestConfigurationConnectedVMwarevSphereAssignmentsCreateOrUpdateResponse",
       });
-    case 5:
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          machineName: S.String.pipe(T.Label()),
+          guestConfigurationAssignmentName: S.String.pipe(T.Label()),
+          name: S.String,
+          location: S.optional(S.String),
+          properties: S.optional(__S(135, __c8, 7)),
+        }).pipe(
+          T.Http({
+            method: "PUT",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridCompute/machines/{machineName}/providers/Microsoft.GuestConfiguration/guestConfigurationAssignments/{guestConfigurationAssignmentName}",
+            code: 200,
+            apiVersion: "2024-04-05",
+          }),
+        ),
+      ).annotate({
+        identifier: "GuestConfigurationHCRPAssignmentsCreateOrUpdateRequest",
+      });
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          vmName: S.String.pipe(T.Label()),
+          guestConfigurationAssignmentName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachines/{vmName}/providers/Microsoft.GuestConfiguration/guestConfigurationAssignments/{guestConfigurationAssignmentName}/reports",
+            code: 200,
+            apiVersion: "2024-04-05",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListGuestConfigurationAssignmentReportsRequest",
+      });
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(514, __c32, 2));
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          value: S.optional(__S(224, __c14, 0)),
+          nextLink: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GuestConfigurationAssignmentReportList",
+      });
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          vmssName: S.String.pipe(T.Label()),
+          name: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmssName}/providers/Microsoft.GuestConfiguration/guestConfigurationAssignments/{name}/reports",
+            code: 200,
+            apiVersion: "2024-04-05",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListGuestConfigurationAssignmentReportsVMSSRequest",
+      });
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          vmName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachines/{vmName}/providers/Microsoft.GuestConfiguration/guestConfigurationAssignments",
+            code: 200,
+            apiVersion: "2024-04-05",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListGuestConfigurationAssignmentsRequest",
+      });
+  }
+}
+function __c17(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          createdBy: S.optional(S.String),
+          createdByType: S.optional(S.String),
+          createdAt: S.optional(S.String),
+          lastModifiedBy: S.optional(S.String),
+          lastModifiedByType: S.optional(S.String),
+          lastModifiedAt: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GuestConfigurationAssignmentSystemData",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.String,
+          location: S.optional(S.String),
+          type: S.optional(S.String),
+          properties: S.optional(__S(72, __c4, 8)),
+          systemData: S.optional(__S(272, __c17, 0)),
+        }),
+      ).annotate({
+        identifier: "GuestConfigurationAssignment",
+      });
+    case 2:
+      return S.Array(__S(273, __c17, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          value: S.optional(__S(274, __c17, 2)),
+          nextLink: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GuestConfigurationAssignmentList",
+      });
+  }
+}
+function __c18(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.GuestConfiguration/guestConfigurationAssignments",
+            code: 200,
+            apiVersion: "2024-04-05",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListGuestConfigurationAssignmentsRGRequest",
+      });
+  }
+}
+function __c19(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -1733,11 +2153,188 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "DeleteGuestConfigurationConnectedVMwarevSphereAssignmentRequest",
       });
-    case 6:
+    case 1:
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "DeleteGuestConfigurationConnectedVMwarevSphereAssignmentResponse",
       });
-    case 7:
+  }
+}
+function __c20(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/providers/Microsoft.GuestConfiguration/guestConfigurationAssignments",
+            code: 200,
+            apiVersion: "2024-04-05",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListGuestConfigurationAssignmentsSubscriptionRequest",
+      });
+  }
+}
+function __c21(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          vmssName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmssName}/providers/Microsoft.GuestConfiguration/guestConfigurationAssignments",
+            code: 200,
+            apiVersion: "2024-04-05",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListGuestConfigurationAssignmentsVMSSRequest",
+      });
+  }
+}
+function __c22(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          vmName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ConnectedVMwarevSphere/virtualmachines/{vmName}/providers/Microsoft.GuestConfiguration/guestConfigurationAssignments",
+            code: 200,
+            apiVersion: "2024-04-05",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListGuestConfigurationConnectedVMwarevSphereAssignmentsRequest",
+      });
+  }
+}
+function __c23(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          vmName: S.String.pipe(T.Label()),
+          guestConfigurationAssignmentName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ConnectedVMwarevSphere/virtualmachines/{vmName}/providers/Microsoft.GuestConfiguration/guestConfigurationAssignments/{guestConfigurationAssignmentName}/reports",
+            code: 200,
+            apiVersion: "2024-04-05",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListGuestConfigurationConnectedVMwarevSphereAssignmentsReportsRequest",
+      });
+  }
+}
+function __c24(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          machineName: S.String.pipe(T.Label()),
+          guestConfigurationAssignmentName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridCompute/machines/{machineName}/providers/Microsoft.GuestConfiguration/guestConfigurationAssignments/{guestConfigurationAssignmentName}/reports",
+            code: 200,
+            apiVersion: "2024-04-05",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListGuestConfigurationHCRPAssignmentReportsRequest",
+      });
+  }
+}
+function __c25(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          machineName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridCompute/machines/{machineName}/providers/Microsoft.GuestConfiguration/guestConfigurationAssignments",
+            code: 200,
+            apiVersion: "2024-04-05",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListGuestConfigurationHCRPAssignmentsRequest",
+      });
+  }
+}
+function __c26(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({}).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/providers/Microsoft.GuestConfiguration/operations",
+            code: 200,
+            apiVersion: "2024-04-05",
+          }),
+        ),
+      ).annotate({ identifier: "ListOperationsRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          provider: S.optional(S.String),
+          resource: S.optional(S.String),
+          operation: S.optional(S.String),
+          description: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "OperationDisplay" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          statusCode: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "OperationProperties" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.optional(S.String),
+          display: S.optional(__S(417, __c26, 1)),
+          properties: S.optional(__S(418, __c26, 2)),
+        }),
+      ).annotate({ identifier: "Operation" });
+    case 4:
+      return S.Array(__S(419, __c26, 3));
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          value: __S(420, __c26, 4),
+          nextLink: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "OperationList" });
+  }
+}
+function __c27(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -1757,7 +2354,7 @@ function __c2(j: number): any {
       });
   }
 }
-function __c3(j: number): any {
+function __c28(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1777,7 +2374,28 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "GetGuestConfigurationAssignmentRequest",
       });
-    case 1:
+  }
+}
+function __c29(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.String,
+          location: S.optional(S.String),
+          type: S.optional(S.String),
+          properties: S.optional(__S(72, __c4, 8)),
+          systemData: S.optional(__S(480, __c30, 0)),
+        }),
+      ).annotate({
+        identifier: "GetGuestConfigurationAssignmentResponse",
+      });
+  }
+}
+function __c30(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           createdBy: S.optional(S.String),
@@ -1790,20 +2408,11 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "GetGuestConfigurationAssignmentResponseSystemData",
       });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.String,
-          location: S.optional(S.String),
-          type: S.optional(S.String),
-          properties: S.optional(__S(18, __c2, 2)),
-          systemData: S.optional(__S(25, __c3, 1)),
-        }),
-      ).annotate({
-        identifier: "GetGuestConfigurationAssignmentResponse",
-      });
-    case 3:
+  }
+}
+function __c31(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -1822,7 +2431,11 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "GetGuestConfigurationAssignmentReportRequest",
       });
-    case 4:
+  }
+}
+function __c32(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           complianceStatus: S.optional(S.String),
@@ -1830,35 +2443,39 @@ function __c3(j: number): any {
           endTime: S.optional(S.String),
           jobId: S.optional(S.String),
           operationType: S.optional(S.String),
-          resources: S.optional(__S(14, __c1, 6)),
+          resources: S.optional(__S(54, __c3, 6)),
         }),
       ).annotate({ identifier: "AssignmentReportDetails" });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           complianceStatus: S.optional(S.String),
           reportId: S.optional(S.String),
-          assignment: S.optional(__S(9, __c1, 1)),
-          vm: S.optional(__S(10, __c1, 2)),
+          assignment: S.optional(__S(49, __c3, 1)),
+          vm: S.optional(__S(50, __c3, 2)),
           startTime: S.optional(S.String),
           endTime: S.optional(S.String),
-          details: S.optional(S.NullOr(__S(28, __c3, 4))),
+          details: S.optional(S.NullOr(__S(512, __c32, 0))),
           vmssResourceId: S.optional(S.String),
         }),
       ).annotate({
         identifier: "GuestConfigurationAssignmentReportProperties",
       });
-    case 6:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
-          properties: S.optional(__S(29, __c3, 5)),
+          properties: S.optional(__S(513, __c32, 1)),
         }),
       ).annotate({
         identifier: "GuestConfigurationAssignmentReport",
       });
-    case 7:
+  }
+}
+function __c33(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -1879,7 +2496,7 @@ function __c3(j: number): any {
       });
   }
 }
-function __c4(j: number): any {
+function __c34(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1902,27 +2519,35 @@ function __c4(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          location: S.optional(S.String),
+          type: S.optional(S.String),
+          properties: S.optional(__S(72, __c4, 8)),
+          systemData: S.optional(__S(480, __c30, 0)),
+          error: S.optional(__S(560, __c35, 0)),
+        }),
+      ).annotate({
+        identifier: "GetGuestConfigurationAssignmentsVMSSResponse",
+      });
+  }
+}
+function __c35(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
           code: S.optional(S.String),
           message: S.optional(S.String),
         }),
       ).annotate({
         identifier: "GuestConfigurationAssignmentResponseError",
       });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          location: S.optional(S.String),
-          type: S.optional(S.String),
-          properties: S.optional(__S(18, __c2, 2)),
-          systemData: S.optional(__S(25, __c3, 1)),
-          error: S.optional(__S(33, __c4, 1)),
-        }),
-      ).annotate({
-        identifier: "GetGuestConfigurationAssignmentsVMSSResponse",
-      });
-    case 3:
+  }
+}
+function __c36(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -1940,7 +2565,24 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "GetGuestConfigurationConnectedVMwarevSphereAssignmentRequest",
       });
-    case 4:
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.String,
+          location: S.optional(S.String),
+          type: S.optional(S.String),
+          properties: S.optional(__S(72, __c4, 8)),
+          systemData: S.optional(__S(592, __c37, 0)),
+        }),
+      ).annotate({
+        identifier: "GetGuestConfigurationConnectedVMwarevSphereAssignmentResponse",
+      });
+  }
+}
+function __c37(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           createdBy: S.optional(S.String),
@@ -1953,20 +2595,11 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "GetGuestConfigurationConnectedVMwarevSphereAssignmentResponseSystemData",
       });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.String,
-          location: S.optional(S.String),
-          type: S.optional(S.String),
-          properties: S.optional(__S(18, __c2, 2)),
-          systemData: S.optional(__S(36, __c4, 4)),
-        }),
-      ).annotate({
-        identifier: "GetGuestConfigurationConnectedVMwarevSphereAssignmentResponse",
-      });
-    case 6:
+  }
+}
+function __c38(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -1985,522 +2618,8 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "GetGuestConfigurationConnectedVMwarevSphereAssignmentsReportRequest",
       });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          machineName: S.String.pipe(T.Label()),
-          guestConfigurationAssignmentName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridCompute/machines/{machineName}/providers/Microsoft.GuestConfiguration/guestConfigurationAssignments/{guestConfigurationAssignmentName}",
-            code: 200,
-            apiVersion: "2024-04-05",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetGuestConfigurationHCRPAssignmentRequest",
-      });
   }
 }
-function __c5(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          machineName: S.String.pipe(T.Label()),
-          guestConfigurationAssignmentName: S.String.pipe(T.Label()),
-          reportId: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridCompute/machines/{machineName}/providers/Microsoft.GuestConfiguration/guestConfigurationAssignments/{guestConfigurationAssignmentName}/reports/{reportId}",
-            code: 200,
-            apiVersion: "2024-04-05",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetGuestConfigurationHCRPAssignmentReportRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          kind: S.optional(S.String),
-          name: S.optional(S.String),
-          version: S.optional(S.String),
-          contentUri: S.optional(S.String),
-          contentHash: S.optional(S.String),
-          contentManagedIdentity: S.optional(S.String),
-          assignmentType: S.optional(S.String),
-          configurationParameter: S.optional(__S(4, __c0, 4)),
-          configurationProtectedParameter: S.optional(__S(5, __c0, 5)),
-        }),
-      ).annotate({
-        identifier: "GuestConfigurationNavigationInput",
-      });
-    case 2:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "ConfigurationInfoInput",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          configuration: S.optional(__S(42, __c5, 2)),
-        }),
-      ).annotate({ identifier: "AssignmentInfoInput" });
-    case 4:
-      return S.Array(__S(42, __c5, 2));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          reasons: S.optional(__S(44, __c5, 4)),
-        }),
-      ).annotate({
-        identifier: "AssignmentReportResourceInput",
-      });
-    case 6:
-      return S.Array(__S(45, __c5, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          assignment: S.optional(__S(43, __c5, 3)),
-          vm: S.optional(__S(42, __c5, 2)),
-          resources: S.optional(__S(46, __c5, 6)),
-        }),
-      ).annotate({ identifier: "AssignmentReportInput" });
-  }
-}
-function __c6(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          guestConfiguration: S.optional(__S(41, __c5, 1)),
-          latestAssignmentReport: S.optional(__S(47, __c5, 7)),
-          context: S.optional(S.String),
-          vmssVMList: S.optional(__S(44, __c5, 4)),
-        }),
-      ).annotate({
-        identifier: "GuestConfigurationAssignmentPropertiesInput",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          vmName: S.String.pipe(T.Label()),
-          guestConfigurationAssignmentName: S.String.pipe(T.Label()),
-          name: S.String,
-          location: S.optional(S.String),
-          properties: S.optional(__S(48, __c6, 0)),
-        }).pipe(
-          T.Http({
-            method: "PUT",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachines/{vmName}/providers/Microsoft.GuestConfiguration/guestConfigurationAssignments/{guestConfigurationAssignmentName}",
-            code: 200,
-            apiVersion: "2024-04-05",
-          }),
-        ),
-      ).annotate({
-        identifier: "GuestConfigurationAssignmentsCreateOrUpdateRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.String,
-          location: S.optional(S.String),
-          type: S.optional(S.String),
-          properties: S.optional(__S(18, __c2, 2)),
-          systemData: S.optional(__S(36, __c4, 4)),
-        }),
-      ).annotate({
-        identifier: "GuestConfigurationAssignmentsCreateOrUpdateResponse",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          vmssName: S.String.pipe(T.Label()),
-          name: S.String.pipe(T.Label()),
-          location: S.optional(S.String),
-          properties: S.optional(__S(48, __c6, 0)),
-        }).pipe(
-          T.Http({
-            method: "PUT",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmssName}/providers/Microsoft.GuestConfiguration/guestConfigurationAssignments/{name}",
-            code: 200,
-            apiVersion: "2024-04-05",
-          }),
-        ),
-      ).annotate({
-        identifier: "GuestConfigurationAssignmentsVMSSCreateOrUpdateRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          location: S.optional(S.String),
-          type: S.optional(S.String),
-          properties: S.optional(__S(18, __c2, 2)),
-          systemData: S.optional(__S(36, __c4, 4)),
-          error: S.optional(__S(33, __c4, 1)),
-        }),
-      ).annotate({
-        identifier: "GuestConfigurationAssignmentsVMSSCreateOrUpdateResponse",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          vmName: S.String.pipe(T.Label()),
-          guestConfigurationAssignmentName: S.String.pipe(T.Label()),
-          name: S.String,
-          location: S.optional(S.String),
-          properties: S.optional(__S(48, __c6, 0)),
-        }).pipe(
-          T.Http({
-            method: "PUT",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ConnectedVMwarevSphere/virtualmachines/{vmName}/providers/Microsoft.GuestConfiguration/guestConfigurationAssignments/{guestConfigurationAssignmentName}",
-            code: 200,
-            apiVersion: "2024-04-05",
-          }),
-        ),
-      ).annotate({
-        identifier: "GuestConfigurationConnectedVMwarevSphereAssignmentsCreateOrUpdateRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          createdBy: S.optional(S.String),
-          createdByType: S.optional(S.String),
-          createdAt: S.optional(S.String),
-          lastModifiedBy: S.optional(S.String),
-          lastModifiedByType: S.optional(S.String),
-          lastModifiedAt: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier:
-          "GuestConfigurationConnectedVMwarevSphereAssignmentsCreateOrUpdateResponseSystemData",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.String,
-          location: S.optional(S.String),
-          type: S.optional(S.String),
-          properties: S.optional(__S(18, __c2, 2)),
-          systemData: S.optional(__S(54, __c6, 6)),
-        }),
-      ).annotate({
-        identifier: "GuestConfigurationConnectedVMwarevSphereAssignmentsCreateOrUpdateResponse",
-      });
-  }
-}
-function __c7(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          machineName: S.String.pipe(T.Label()),
-          guestConfigurationAssignmentName: S.String.pipe(T.Label()),
-          name: S.String,
-          location: S.optional(S.String),
-          properties: S.optional(__S(48, __c6, 0)),
-        }).pipe(
-          T.Http({
-            method: "PUT",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridCompute/machines/{machineName}/providers/Microsoft.GuestConfiguration/guestConfigurationAssignments/{guestConfigurationAssignmentName}",
-            code: 200,
-            apiVersion: "2024-04-05",
-          }),
-        ),
-      ).annotate({
-        identifier: "GuestConfigurationHCRPAssignmentsCreateOrUpdateRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          vmName: S.String.pipe(T.Label()),
-          guestConfigurationAssignmentName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachines/{vmName}/providers/Microsoft.GuestConfiguration/guestConfigurationAssignments/{guestConfigurationAssignmentName}/reports",
-            code: 200,
-            apiVersion: "2024-04-05",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListGuestConfigurationAssignmentReportsRequest",
-      });
-    case 2:
-      return S.Array(__S(30, __c3, 6));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          value: S.optional(__S(58, __c7, 2)),
-          nextLink: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GuestConfigurationAssignmentReportList",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          vmssName: S.String.pipe(T.Label()),
-          name: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmssName}/providers/Microsoft.GuestConfiguration/guestConfigurationAssignments/{name}/reports",
-            code: 200,
-            apiVersion: "2024-04-05",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListGuestConfigurationAssignmentReportsVMSSRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          vmName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachines/{vmName}/providers/Microsoft.GuestConfiguration/guestConfigurationAssignments",
-            code: 200,
-            apiVersion: "2024-04-05",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListGuestConfigurationAssignmentsRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          createdBy: S.optional(S.String),
-          createdByType: S.optional(S.String),
-          createdAt: S.optional(S.String),
-          lastModifiedBy: S.optional(S.String),
-          lastModifiedByType: S.optional(S.String),
-          lastModifiedAt: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GuestConfigurationAssignmentSystemData",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.String,
-          location: S.optional(S.String),
-          type: S.optional(S.String),
-          properties: S.optional(__S(18, __c2, 2)),
-          systemData: S.optional(__S(62, __c7, 6)),
-        }),
-      ).annotate({
-        identifier: "GuestConfigurationAssignment",
-      });
-  }
-}
-function __c8(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(63, __c7, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          value: S.optional(__S(64, __c8, 0)),
-          nextLink: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GuestConfigurationAssignmentList",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.GuestConfiguration/guestConfigurationAssignments",
-            code: 200,
-            apiVersion: "2024-04-05",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListGuestConfigurationAssignmentsRGRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/providers/Microsoft.GuestConfiguration/guestConfigurationAssignments",
-            code: 200,
-            apiVersion: "2024-04-05",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListGuestConfigurationAssignmentsSubscriptionRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          vmssName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmssName}/providers/Microsoft.GuestConfiguration/guestConfigurationAssignments",
-            code: 200,
-            apiVersion: "2024-04-05",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListGuestConfigurationAssignmentsVMSSRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          vmName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ConnectedVMwarevSphere/virtualmachines/{vmName}/providers/Microsoft.GuestConfiguration/guestConfigurationAssignments",
-            code: 200,
-            apiVersion: "2024-04-05",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListGuestConfigurationConnectedVMwarevSphereAssignmentsRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          vmName: S.String.pipe(T.Label()),
-          guestConfigurationAssignmentName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ConnectedVMwarevSphere/virtualmachines/{vmName}/providers/Microsoft.GuestConfiguration/guestConfigurationAssignments/{guestConfigurationAssignmentName}/reports",
-            code: 200,
-            apiVersion: "2024-04-05",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListGuestConfigurationConnectedVMwarevSphereAssignmentsReportsRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          machineName: S.String.pipe(T.Label()),
-          guestConfigurationAssignmentName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridCompute/machines/{machineName}/providers/Microsoft.GuestConfiguration/guestConfigurationAssignments/{guestConfigurationAssignmentName}/reports",
-            code: 200,
-            apiVersion: "2024-04-05",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListGuestConfigurationHCRPAssignmentReportsRequest",
-      });
-  }
-}
-function __c9(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          machineName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridCompute/machines/{machineName}/providers/Microsoft.GuestConfiguration/guestConfigurationAssignments",
-            code: 200,
-            apiVersion: "2024-04-05",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListGuestConfigurationHCRPAssignmentsRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({}).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/providers/Microsoft.GuestConfiguration/operations",
-            code: 200,
-            apiVersion: "2024-04-05",
-          }),
-        ),
-      ).annotate({ identifier: "ListOperationsRequest" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          provider: S.optional(S.String),
-          resource: S.optional(S.String),
-          operation: S.optional(S.String),
-          description: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "OperationDisplay" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          statusCode: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "OperationProperties" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.optional(S.String),
-          display: S.optional(__S(74, __c9, 2)),
-          properties: S.optional(__S(75, __c9, 3)),
-        }),
-      ).annotate({ identifier: "Operation" });
-    case 5:
-      return S.Array(__S(76, __c9, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          value: __S(77, __c9, 5),
-          nextLink: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "OperationList" });
-  }
-}
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

@@ -856,8 +856,8 @@ export const createGateway: API.OperationMethod<
   CreateGatewayError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(5, __c0, 5) as any as S.Schema<CreateGatewayRequest>,
-  output: __S(6, __c0, 6) as any as S.Schema<CreateGatewayResponse>,
+  input: __S(320, __c20, 0) as any as S.Schema<CreateGatewayRequest>,
+  output: __S(339, __c21, 3) as any as S.Schema<CreateGatewayResponse>,
   errors: [BadRequest, Forbidden, Conflict, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -876,8 +876,8 @@ export const createGatewayBGPFilter: API.OperationMethod<
   CreateGatewayBGPFilterError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(7, __c0, 7) as any as S.Schema<CreateGatewayBGPFilterRequest>,
-  output: __S(8, __c1, 0) as any as S.Schema<BGPFilter>,
+  input: __S(384, __c24, 0) as any as S.Schema<CreateGatewayBGPFilterRequest>,
+  output: __S(400, __c25, 0) as any as S.Schema<BGPFilter>,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -896,8 +896,8 @@ export const createGatewayBGPFilterRule: API.OperationMethod<
   CreateGatewayBGPFilterRuleError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(12, __c1, 4) as any as S.Schema<CreateGatewayBGPFilterRuleRequest>,
-  output: __S(14, __c1, 6) as any as S.Schema<BGPFilterRule>,
+  input: __S(416, __c26, 0) as any as S.Schema<CreateGatewayBGPFilterRuleRequest>,
+  output: __S(435, __c27, 3) as any as S.Schema<BGPFilterRule>,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -911,8 +911,8 @@ export const createGatewayConnection: API.OperationMethod<
   CreateGatewayConnectionError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(21, __c2, 5) as any as S.Schema<CreateGatewayConnectionRequest>,
-  output: __S(23, __c2, 7) as any as S.Schema<ConnectionResponseOutput>,
+  input: __S(464, __c29, 0) as any as S.Schema<CreateGatewayConnectionRequest>,
+  output: __S(486, __c30, 6) as any as S.Schema<ConnectionResponseOutput>,
   errors: [BadRequest, Forbidden, NotFound, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -926,8 +926,8 @@ export const deleteGateway: API.OperationMethod<
   DeleteGatewayError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(24, __c3, 0) as any as S.Schema<DeleteGatewayRequest>,
-  output: __S(25, __c3, 1) as any as S.Schema<DeleteGatewayResponse>,
+  input: __S(512, __c32, 0) as any as S.Schema<DeleteGatewayRequest>,
+  output: __S(528, __c33, 0) as any as S.Schema<DeleteGatewayResponse>,
   errors: [BadRequest, Forbidden, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -946,8 +946,8 @@ export const deleteGatewayBGPFilter: API.OperationMethod<
   DeleteGatewayBGPFilterError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(26, __c3, 2) as any as S.Schema<DeleteGatewayBGPFilterRequest>,
-  output: __S(25, __c3, 1) as any as S.Schema<DeleteGatewayBGPFilterResponse>,
+  input: __S(544, __c34, 0) as any as S.Schema<DeleteGatewayBGPFilterRequest>,
+  output: __S(528, __c33, 0) as any as S.Schema<DeleteGatewayBGPFilterResponse>,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -961,8 +961,8 @@ export const deleteGatewayBGPFilterRule: API.OperationMethod<
   DeleteGatewayBGPFilterRuleError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(27, __c3, 3) as any as S.Schema<DeleteGatewayBGPFilterRuleRequest>,
-  output: __S(28, __c3, 4) as any as S.Schema<DeleteGatewayBGPFilterRuleResponse>,
+  input: __S(0, __c0, 0) as any as S.Schema<DeleteGatewayBGPFilterRuleRequest>,
+  output: __S(1, __c0, 1) as any as S.Schema<DeleteGatewayBGPFilterRuleResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -976,8 +976,8 @@ export const deleteGatewayConnection: API.OperationMethod<
   DeleteGatewayConnectionError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(29, __c3, 5) as any as S.Schema<DeleteGatewayConnectionRequest>,
-  output: __S(30, __c3, 6) as any as S.Schema<DeleteGatewayConnectionResponse>,
+  input: __S(16, __c1, 0) as any as S.Schema<DeleteGatewayConnectionRequest>,
+  output: __S(17, __c1, 1) as any as S.Schema<DeleteGatewayConnectionResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -991,8 +991,8 @@ export const getGateway: API.OperationMethod<
   GetGatewayError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(31, __c3, 7) as any as S.Schema<GetGatewayRequest>,
-  output: __S(6, __c0, 6) as any as S.Schema<GetGatewayResponse>,
+  input: __S(32, __c2, 0) as any as S.Schema<GetGatewayRequest>,
+  output: __S(339, __c21, 3) as any as S.Schema<GetGatewayResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -1006,8 +1006,8 @@ export const getGatewayBGPFilter: API.OperationMethod<
   GetGatewayBGPFilterError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(32, __c4, 0) as any as S.Schema<GetGatewayBGPFilterRequest>,
-  output: __S(8, __c1, 0) as any as S.Schema<BGPFilter>,
+  input: __S(48, __c3, 0) as any as S.Schema<GetGatewayBGPFilterRequest>,
+  output: __S(400, __c25, 0) as any as S.Schema<BGPFilter>,
   errors: [BadRequest, Forbidden, NotFound, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -1021,8 +1021,8 @@ export const getGatewayBGPFilterRule: API.OperationMethod<
   GetGatewayBGPFilterRuleError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(33, __c4, 1) as any as S.Schema<GetGatewayBGPFilterRuleRequest>,
-  output: __S(14, __c1, 6) as any as S.Schema<BGPFilterRule>,
+  input: __S(64, __c4, 0) as any as S.Schema<GetGatewayBGPFilterRuleRequest>,
+  output: __S(435, __c27, 3) as any as S.Schema<BGPFilterRule>,
   errors: [BadRequest, Forbidden, NotFound, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -1036,8 +1036,8 @@ export const getGatewayConnection: API.OperationMethod<
   GetGatewayConnectionError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(34, __c4, 2) as any as S.Schema<GetGatewayConnectionRequest>,
-  output: __S(23, __c2, 7) as any as S.Schema<ConnectionResponseOutput>,
+  input: __S(80, __c5, 0) as any as S.Schema<GetGatewayConnectionRequest>,
+  output: __S(486, __c30, 6) as any as S.Schema<ConnectionResponseOutput>,
   errors: [BadRequest, Forbidden, NotFound, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -1051,8 +1051,8 @@ export const getGatewayConnectionStatus: API.OperationMethod<
   GetGatewayConnectionStatusError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(35, __c4, 3) as any as S.Schema<GetGatewayConnectionStatusRequest>,
-  output: __S(40, __c5, 0) as any as S.Schema<ConnectionStatusResponse>,
+  input: __S(96, __c6, 0) as any as S.Schema<GetGatewayConnectionStatusRequest>,
+  output: __S(116, __c7, 4) as any as S.Schema<ConnectionStatusResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -1066,8 +1066,8 @@ export const getGatewayStatus: API.OperationMethod<
   GetGatewayStatusError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(41, __c5, 1) as any as S.Schema<GetGatewayStatusRequest>,
-  output: __S(50, __c6, 2) as any as S.Schema<GatewayStatusResponse>,
+  input: __S(128, __c8, 0) as any as S.Schema<GetGatewayStatusRequest>,
+  output: __S(137, __c8, 9) as any as S.Schema<GatewayStatusResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -1081,8 +1081,8 @@ export const listGatewayBGPFilterRules: API.OperationMethod<
   ListGatewayBGPFilterRulesError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(51, __c6, 3) as any as S.Schema<ListGatewayBGPFilterRulesRequest>,
-  output: __S(53, __c6, 5) as any as S.Schema<BGPFilterRuleList>,
+  input: __S(144, __c9, 0) as any as S.Schema<ListGatewayBGPFilterRulesRequest>,
+  output: __S(146, __c9, 2) as any as S.Schema<BGPFilterRuleList>,
   errors: [BadRequest, Forbidden, NotFound, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -1096,8 +1096,8 @@ export const listGatewayBGPFilters: API.OperationMethod<
   ListGatewayBGPFiltersError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(54, __c6, 6) as any as S.Schema<ListGatewayBGPFiltersRequest>,
-  output: __S(56, __c7, 0) as any as S.Schema<BGPFilterList>,
+  input: __S(160, __c10, 0) as any as S.Schema<ListGatewayBGPFiltersRequest>,
+  output: __S(162, __c10, 2) as any as S.Schema<BGPFilterList>,
   errors: [BadRequest, Forbidden, NotFound, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -1111,8 +1111,8 @@ export const listGatewayConnections: API.OperationMethod<
   ListGatewayConnectionsError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(58, __c7, 2) as any as S.Schema<ListGatewayConnectionsRequest>,
-  output: __S(60, __c7, 4) as any as S.Schema<ConnectionListOutput>,
+  input: __S(176, __c11, 0) as any as S.Schema<ListGatewayConnectionsRequest>,
+  output: __S(178, __c11, 2) as any as S.Schema<ConnectionListOutput>,
   errors: [BadRequest, Forbidden, NotFound, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -1126,8 +1126,8 @@ export const listGateways: API.OperationMethod<
   ListGatewaysError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(61, __c7, 5) as any as S.Schema<ListGatewaysRequest>,
-  output: __S(63, __c7, 7) as any as S.Schema<GatewayList>,
+  input: __S(208, __c13, 0) as any as S.Schema<ListGatewaysRequest>,
+  output: __S(210, __c13, 2) as any as S.Schema<GatewayList>,
   errors: [BadRequest, Forbidden, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -1141,8 +1141,8 @@ export const listPlans: API.OperationMethod<
   ListPlansError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(64, __c8, 0) as any as S.Schema<ListPlansRequest>,
-  output: __S(67, __c8, 3) as any as S.Schema<PlanList>,
+  input: __S(224, __c14, 0) as any as S.Schema<ListPlansRequest>,
+  output: __S(227, __c14, 3) as any as S.Schema<PlanList>,
   errors: [BadRequest, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -1156,8 +1156,8 @@ export const listQuotas: API.OperationMethod<
   ListQuotasError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(68, __c8, 4) as any as S.Schema<ListQuotasRequest>,
-  output: __S(71, __c8, 7) as any as S.Schema<QuotaListResponse>,
+  input: __S(240, __c15, 0) as any as S.Schema<ListQuotasRequest>,
+  output: __S(243, __c15, 3) as any as S.Schema<QuotaListResponse>,
   errors: [BadRequest, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -1171,8 +1171,8 @@ export const updateGateway: API.OperationMethod<
   UpdateGatewayError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(72, __c9, 0) as any as S.Schema<UpdateGatewayRequest>,
-  output: __S(6, __c0, 6) as any as S.Schema<UpdateGatewayResponse>,
+  input: __S(256, __c16, 0) as any as S.Schema<UpdateGatewayRequest>,
+  output: __S(339, __c21, 3) as any as S.Schema<UpdateGatewayResponse>,
   errors: [BadRequest, Forbidden, Conflict, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -1191,8 +1191,8 @@ export const updateGatewayBGPFilter: API.OperationMethod<
   UpdateGatewayBGPFilterError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(73, __c9, 1) as any as S.Schema<UpdateGatewayBGPFilterRequest>,
-  output: __S(8, __c1, 0) as any as S.Schema<BGPFilter>,
+  input: __S(272, __c17, 0) as any as S.Schema<UpdateGatewayBGPFilterRequest>,
+  output: __S(400, __c25, 0) as any as S.Schema<BGPFilter>,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -1211,8 +1211,8 @@ export const updateGatewayBGPFilterRule: API.OperationMethod<
   UpdateGatewayBGPFilterRuleError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(74, __c9, 2) as any as S.Schema<UpdateGatewayBGPFilterRuleRequest>,
-  output: __S(14, __c1, 6) as any as S.Schema<BGPFilterRule>,
+  input: __S(288, __c18, 0) as any as S.Schema<UpdateGatewayBGPFilterRuleRequest>,
+  output: __S(435, __c27, 3) as any as S.Schema<BGPFilterRule>,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -1226,8 +1226,8 @@ export const updateGatewayConnection: API.OperationMethod<
   UpdateGatewayConnectionError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(75, __c9, 3) as any as S.Schema<UpdateGatewayConnectionRequest>,
-  output: __S(23, __c2, 7) as any as S.Schema<ConnectionResponseOutput>,
+  input: __S(304, __c19, 0) as any as S.Schema<UpdateGatewayConnectionRequest>,
+  output: __S(486, __c30, 6) as any as S.Schema<ConnectionResponseOutput>,
   errors: [BadRequest, Forbidden, NotFound, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -1237,312 +1237,6 @@ export const updateGatewayConnection: API.OperationMethod<
 function __c0(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() =>
-        S.Struct({
-          tunnel1: S.String,
-          tunnel2: S.String,
-        }),
-      ).annotate({
-        identifier: "CreateGatewayRequestAvailabilityZones",
-      });
-    case 1:
-      return S.Array(S.String);
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          localAsn: S.Number,
-          overrideAdvertisedRoutes: S.optional(__S(1, __c0, 1)),
-        }),
-      ).annotate({ identifier: "BGPGatewayConfig" });
-    case 3:
-      return S.Record(S.String, S.String);
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          predefinedNetworkPrefix: S.optional(S.String),
-          routingTableId: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "NetworkConfig" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          projectId: S.String.pipe(T.Label()),
-          region: S.String.pipe(T.Label()),
-          availabilityZones: __S(0, __c0, 0),
-          bgp: S.optional(__S(2, __c0, 2)),
-          displayName: S.String,
-          labels: S.optional(__S(3, __c0, 3)),
-          networkConfig: S.optional(__S(4, __c0, 4)),
-          planId: S.String,
-          routingType: S.String,
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/v1/projects/{projectId}/regions/{region}/gateways",
-            code: 200,
-            baseUrl: "https://vpn.api.stackit.cloud",
-          }),
-        ),
-      ).annotate({ identifier: "CreateGatewayRequest" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          availabilityZones: __S(0, __c0, 0),
-          bgp: S.optional(__S(2, __c0, 2)),
-          displayName: S.String,
-          labels: S.optional(__S(3, __c0, 3)),
-          networkConfig: S.optional(__S(4, __c0, 4)),
-          planId: S.String,
-          routingType: S.String,
-          id: S.optional(S.String),
-          state: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "CreateGatewayResponse" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          projectId: S.String.pipe(T.Label()),
-          region: S.String.pipe(T.Label()),
-          gatewayId: S.String.pipe(T.Label()),
-          displayName: S.String,
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/v1/projects/{projectId}/regions/{region}/gateways/{gatewayId}/bgp-filters",
-            code: 200,
-            baseUrl: "https://vpn.api.stackit.cloud",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateGatewayBGPFilterRequest",
-      });
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          displayName: S.String,
-          id: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "BGPFilter" });
-    case 1:
-      return S.Array(S.Number);
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          asPathContainsAny: S.optional(__S(9, __c1, 1)),
-          communities: S.optional(__S(1, __c0, 1)),
-          firstASN: S.optional(S.Number),
-          maxPrefixLength: S.optional(S.Number),
-          minPrefixLength: S.optional(S.Number),
-          peer: S.optional(S.String),
-          prefixes: S.optional(__S(1, __c0, 1)),
-        }),
-      ).annotate({
-        identifier: "CreateGatewayBGPFilterRuleRequestMatch",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          localPreference: S.optional(S.Number),
-        }),
-      ).annotate({
-        identifier: "CreateGatewayBGPFilterRuleRequestSet",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          projectId: S.String.pipe(T.Label()),
-          region: S.String.pipe(T.Label()),
-          gatewayId: S.String.pipe(T.Label()),
-          filterId: S.String.pipe(T.Label()),
-          action: S.String,
-          match: S.optional(__S(10, __c1, 2)),
-          sequence: S.optional(S.Number),
-          set: S.optional(__S(11, __c1, 3)),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/v1/projects/{projectId}/regions/{region}/gateways/{gatewayId}/bgp-filters/{filterId}/rules",
-            code: 200,
-            baseUrl: "https://vpn.api.stackit.cloud",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateGatewayBGPFilterRuleRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          asPathContainsAny: S.optional(__S(9, __c1, 1)),
-          communities: S.optional(__S(1, __c0, 1)),
-          firstASN: S.optional(S.Number),
-          maxPrefixLength: S.optional(S.Number),
-          minPrefixLength: S.optional(S.Number),
-          peer: S.optional(S.String),
-          prefixes: S.optional(__S(1, __c0, 1)),
-        }),
-      ).annotate({ identifier: "BGPFilterRuleMatch" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          action: S.String,
-          id: S.optional(S.String),
-          match: S.optional(__S(13, __c1, 5)),
-          sequence: S.optional(S.Number),
-          set: S.optional(__S(11, __c1, 3)),
-        }),
-      ).annotate({ identifier: "BGPFilterRule" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          inboundFilterId: S.optional(S.NullOr(S.String)),
-          remoteAsn: S.Number,
-        }),
-      ).annotate({ identifier: "BGPTunnelConfig" });
-  }
-}
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          localAddress: S.optional(S.String),
-          remoteAddress: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "PeeringConfig" });
-    case 1:
-      return S.Array(S.String);
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          dhGroups: S.optional(__S(17, __c2, 1)),
-          encryptionAlgorithms: __S(17, __c2, 1),
-          integrityAlgorithms: __S(17, __c2, 1),
-          rekeyTime: S.optional(S.Number),
-        }),
-      ).annotate({
-        identifier: "TunnelConfigurationPhase1",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          dhGroups: S.optional(__S(17, __c2, 1)),
-          encryptionAlgorithms: __S(17, __c2, 1),
-          integrityAlgorithms: __S(17, __c2, 1),
-          dpdAction: S.optional(S.String),
-          rekeyTime: S.optional(S.Number),
-          startAction: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "TunnelConfigurationPhase2",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          bgp: S.optional(__S(15, __c1, 7)),
-          peering: S.optional(__S(16, __c2, 0)),
-          phase1: __S(18, __c2, 2),
-          phase2: __S(19, __c2, 3),
-          preSharedKey: S.optional(S.String),
-          remoteAddress: S.String,
-        }),
-      ).annotate({ identifier: "TunnelConfiguration" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          projectId: S.String.pipe(T.Label()),
-          region: S.String.pipe(T.Label()),
-          gatewayId: S.String.pipe(T.Label()),
-          displayName: S.String,
-          enabled: S.optional(S.Boolean),
-          labels: S.optional(__S(3, __c0, 3)),
-          localSubnets: S.optional(__S(1, __c0, 1)),
-          remoteSubnets: S.optional(__S(1, __c0, 1)),
-          staticRoutes: S.optional(__S(1, __c0, 1)),
-          tunnel1: __S(20, __c2, 4),
-          tunnel2: __S(20, __c2, 4),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/v1/projects/{projectId}/regions/{region}/gateways/{gatewayId}/connections",
-            code: 200,
-            baseUrl: "https://vpn.api.stackit.cloud",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateGatewayConnectionRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          bgp: S.optional(__S(15, __c1, 7)),
-          peering: S.optional(__S(16, __c2, 0)),
-          phase1: __S(18, __c2, 2),
-          phase2: __S(19, __c2, 3),
-          remoteAddress: S.String,
-        }),
-      ).annotate({
-        identifier: "TunnelConfigurationOutput",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          displayName: S.String,
-          enabled: S.optional(S.Boolean),
-          id: S.optional(S.String),
-          labels: S.optional(__S(3, __c0, 3)),
-          localSubnets: S.optional(__S(1, __c0, 1)),
-          remoteSubnets: S.optional(__S(1, __c0, 1)),
-          staticRoutes: S.optional(__S(1, __c0, 1)),
-          tunnel1: __S(22, __c2, 6),
-          tunnel2: __S(22, __c2, 6),
-        }),
-      ).annotate({ identifier: "ConnectionResponseOutput" });
-  }
-}
-function __c3(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          projectId: S.String.pipe(T.Label()),
-          region: S.String.pipe(T.Label()),
-          gatewayId: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/v1/projects/{projectId}/regions/{region}/gateways/{gatewayId}",
-            code: 200,
-            baseUrl: "https://vpn.api.stackit.cloud",
-          }),
-        ),
-      ).annotate({ identifier: "DeleteGatewayRequest" });
-    case 1:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "DeleteGatewayResponse",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          projectId: S.String.pipe(T.Label()),
-          region: S.String.pipe(T.Label()),
-          gatewayId: S.String.pipe(T.Label()),
-          filterId: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/v1/projects/{projectId}/regions/{region}/gateways/{gatewayId}/bgp-filters/{filterId}",
-            code: 200,
-            baseUrl: "https://vpn.api.stackit.cloud",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteGatewayBGPFilterRequest",
-      });
-    case 3:
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.Label()),
@@ -1561,11 +1255,15 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "DeleteGatewayBGPFilterRuleRequest",
       });
-    case 4:
+    case 1:
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "DeleteGatewayBGPFilterRuleResponse",
       });
-    case 5:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.Label()),
@@ -1583,11 +1281,15 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "DeleteGatewayConnectionRequest",
       });
-    case 6:
+    case 1:
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "DeleteGatewayConnectionResponse",
       });
-    case 7:
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.Label()),
@@ -1604,7 +1306,7 @@ function __c3(j: number): any {
       ).annotate({ identifier: "GetGatewayRequest" });
   }
 }
-function __c4(j: number): any {
+function __c3(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1624,7 +1326,11 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "GetGatewayBGPFilterRequest",
       });
-    case 1:
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.Label()),
@@ -1643,7 +1349,11 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "GetGatewayBGPFilterRuleRequest",
       });
-    case 2:
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.Label()),
@@ -1661,7 +1371,11 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "GetGatewayConnectionRequest",
       });
-    case 3:
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.Label()),
@@ -1679,7 +1393,11 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "GetGatewayConnectionStatusRequest",
       });
-    case 4:
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           dhGroup: S.optional(S.String),
@@ -1688,7 +1406,7 @@ function __c4(j: number): any {
           state: S.optional(S.String),
         }),
       ).annotate({ identifier: "Phase1Status" });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           bytesIn: S.optional(S.String),
@@ -1703,31 +1421,31 @@ function __c4(j: number): any {
           state: S.optional(S.String),
         }),
       ).annotate({ identifier: "Phase2Status" });
-    case 6:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           established: S.optional(S.Boolean),
           name: S.optional(S.String),
-          phase1: S.optional(__S(36, __c4, 4)),
-          phase2: S.optional(__S(37, __c4, 5)),
+          phase1: S.optional(__S(112, __c7, 0)),
+          phase2: S.optional(__S(113, __c7, 1)),
         }),
       ).annotate({ identifier: "TunnelStatus" });
-    case 7:
-      return S.Array(__S(38, __c4, 6));
-  }
-}
-function __c5(j: number): any {
-  switch (j) {
-    case 0:
+    case 3:
+      return S.Array(__S(114, __c7, 2));
+    case 4:
       return S.suspend(() =>
         S.Struct({
           displayName: S.optional(S.String),
           enabled: S.optional(S.Boolean),
           id: S.optional(S.String),
-          tunnels: S.optional(__S(39, __c4, 7)),
+          tunnels: S.optional(__S(115, __c7, 3)),
         }),
       ).annotate({ identifier: "ConnectionStatusResponse" });
-    case 1:
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.Label()),
@@ -1742,9 +1460,9 @@ function __c5(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetGatewayStatusRequest" });
+    case 1:
+      return S.Array(__S(116, __c7, 4));
     case 2:
-      return S.Array(__S(40, __c5, 0));
-    case 3:
       return S.suspend(() =>
         S.Struct({
           localAs: S.Number,
@@ -1756,9 +1474,9 @@ function __c5(j: number): any {
           state: S.String,
         }),
       ).annotate({ identifier: "BGPStatusPeers" });
+    case 3:
+      return S.Array(__S(130, __c8, 2));
     case 4:
-      return S.Array(__S(43, __c5, 3));
-    case 5:
       return S.suspend(() =>
         S.Struct({
           network: S.String,
@@ -1768,43 +1486,43 @@ function __c5(j: number): any {
           weight: S.Number,
         }),
       ).annotate({ identifier: "BGPStatusRoutes" });
+    case 5:
+      return S.Array(__S(132, __c8, 4));
     case 6:
-      return S.Array(__S(45, __c5, 5));
+      return S.suspend(() =>
+        S.Struct({
+          peers: S.optional(__S(131, __c8, 3)),
+          routes: S.optional(__S(133, __c8, 5)),
+        }),
+      ).annotate({ identifier: "BGPStatus" });
     case 7:
       return S.suspend(() =>
         S.Struct({
-          peers: S.optional(__S(44, __c5, 4)),
-          routes: S.optional(__S(46, __c5, 6)),
-        }),
-      ).annotate({ identifier: "BGPStatus" });
-  }
-}
-function __c6(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          bgpStatus: S.optional(S.NullOr(__S(47, __c5, 7))),
+          bgpStatus: S.optional(S.NullOr(__S(134, __c8, 6))),
           instanceState: S.optional(S.String),
           internalNextHopIP: S.optional(S.String),
           name: S.optional(S.String),
           publicIP: S.optional(S.String),
         }),
       ).annotate({ identifier: "VPNTunnels" });
-    case 1:
-      return S.Array(__S(48, __c6, 0));
-    case 2:
+    case 8:
+      return S.Array(__S(135, __c8, 7));
+    case 9:
       return S.suspend(() =>
         S.Struct({
-          connections: S.optional(__S(42, __c5, 2)),
+          connections: S.optional(__S(129, __c8, 1)),
           displayName: S.optional(S.String),
           errorMessage: S.optional(S.String),
           gatewayStatus: S.optional(S.String),
           id: S.optional(S.String),
-          tunnels: S.optional(__S(49, __c6, 1)),
+          tunnels: S.optional(__S(136, __c8, 8)),
         }),
       ).annotate({ identifier: "GatewayStatusResponse" });
-    case 3:
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.Label()),
@@ -1822,15 +1540,19 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "ListGatewayBGPFilterRulesRequest",
       });
-    case 4:
-      return S.Array(__S(14, __c1, 6));
-    case 5:
+    case 1:
+      return S.Array(__S(435, __c27, 3));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          rules: __S(52, __c6, 4),
+          rules: __S(145, __c9, 1),
         }),
       ).annotate({ identifier: "BGPFilterRuleList" });
-    case 6:
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.Label()),
@@ -1847,27 +1569,25 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "ListGatewayBGPFiltersRequest",
       });
-    case 7:
-      return S.Array(__S(8, __c1, 0));
-  }
-}
-function __c7(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
+      return S.Array(__S(400, __c25, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          bgpFilters: __S(55, __c6, 7),
+          bgpFilters: __S(161, __c10, 1),
         }),
       ).annotate({ identifier: "BGPFilterList" });
-    case 1:
-      return S.Record(S.String, S.String);
-    case 2:
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.Label()),
           region: S.String.pipe(T.Label()),
           gatewayId: S.String.pipe(T.Label()),
-          label_selector: S.optional(__S(57, __c7, 1).pipe(T.Query())),
+          label_selector: S.optional(__S(192, __c12, 0).pipe(T.Query())),
         }).pipe(
           T.Http({
             method: "GET",
@@ -1879,20 +1599,30 @@ function __c7(j: number): any {
       ).annotate({
         identifier: "ListGatewayConnectionsRequest",
       });
-    case 3:
-      return S.Array(__S(23, __c2, 7));
-    case 4:
+    case 1:
+      return S.Array(__S(486, __c30, 6));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          connections: __S(59, __c7, 3),
+          connections: __S(177, __c11, 1),
         }),
       ).annotate({ identifier: "ConnectionListOutput" });
-    case 5:
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, S.String);
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.Label()),
           region: S.String.pipe(T.Label()),
-          label_selector: S.optional(__S(57, __c7, 1).pipe(T.Query())),
+          label_selector: S.optional(__S(192, __c12, 0).pipe(T.Query())),
         }).pipe(
           T.Http({
             method: "GET",
@@ -1902,17 +1632,17 @@ function __c7(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ListGatewaysRequest" });
-    case 6:
-      return S.Array(__S(6, __c0, 6));
-    case 7:
+    case 1:
+      return S.Array(__S(339, __c21, 3));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          gateways: __S(62, __c7, 6),
+          gateways: __S(209, __c13, 1),
         }),
       ).annotate({ identifier: "GatewayList" });
   }
 }
-function __c8(j: number): any {
+function __c14(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1938,15 +1668,19 @@ function __c8(j: number): any {
         }),
       ).annotate({ identifier: "Plan" });
     case 2:
-      return S.Array(__S(65, __c8, 1));
+      return S.Array(__S(225, __c14, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
           defaultPlanId: S.optional(S.String),
-          plans: S.optional(__S(66, __c8, 2)),
+          plans: S.optional(__S(226, __c14, 2)),
         }),
       ).annotate({ identifier: "PlanList" });
-    case 4:
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.Label()),
@@ -1960,28 +1694,28 @@ function __c8(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ListQuotasRequest" });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           limit: S.Number,
           usage: S.Number,
         }),
       ).annotate({ identifier: "Quota" });
-    case 6:
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          gateways: __S(69, __c8, 5),
+          gateways: __S(241, __c15, 1),
         }),
       ).annotate({ identifier: "QuotaList" });
-    case 7:
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          quotas: __S(70, __c8, 6),
+          quotas: __S(242, __c15, 2),
         }),
       ).annotate({ identifier: "QuotaListResponse" });
   }
 }
-function __c9(j: number): any {
+function __c16(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1989,11 +1723,11 @@ function __c9(j: number): any {
           projectId: S.String.pipe(T.Label()),
           region: S.String.pipe(T.Label()),
           gatewayId: S.String.pipe(T.Label()),
-          availabilityZones: __S(0, __c0, 0),
-          bgp: S.optional(__S(2, __c0, 2)),
+          availabilityZones: __S(336, __c21, 0),
+          bgp: S.optional(__S(337, __c21, 1)),
           displayName: S.String,
-          labels: S.optional(__S(3, __c0, 3)),
-          networkConfig: S.optional(__S(4, __c0, 4)),
+          labels: S.optional(__S(368, __c23, 0)),
+          networkConfig: S.optional(__S(338, __c21, 2)),
           planId: S.String,
           routingType: S.String,
         }).pipe(
@@ -2005,7 +1739,11 @@ function __c9(j: number): any {
           }),
         ),
       ).annotate({ identifier: "UpdateGatewayRequest" });
-    case 1:
+  }
+}
+function __c17(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.Label()),
@@ -2024,7 +1762,11 @@ function __c9(j: number): any {
       ).annotate({
         identifier: "UpdateGatewayBGPFilterRequest",
       });
-    case 2:
+  }
+}
+function __c18(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.Label()),
@@ -2033,9 +1775,9 @@ function __c9(j: number): any {
           filterId: S.String.pipe(T.Label()),
           ruleId: S.String.pipe(T.Label()),
           action: S.String,
-          match: S.optional(__S(10, __c1, 2)),
+          match: S.optional(__S(448, __c28, 0)),
           sequence: S.optional(S.Number),
-          set: S.optional(__S(11, __c1, 3)),
+          set: S.optional(__S(433, __c27, 1)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -2047,7 +1789,11 @@ function __c9(j: number): any {
       ).annotate({
         identifier: "UpdateGatewayBGPFilterRuleRequest",
       });
-    case 3:
+  }
+}
+function __c19(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.Label()),
@@ -2056,12 +1802,12 @@ function __c9(j: number): any {
           connectionId: S.String.pipe(T.Label()),
           displayName: S.String,
           enabled: S.optional(S.Boolean),
-          labels: S.optional(__S(3, __c0, 3)),
-          localSubnets: S.optional(__S(1, __c0, 1)),
-          remoteSubnets: S.optional(__S(1, __c0, 1)),
-          staticRoutes: S.optional(__S(1, __c0, 1)),
-          tunnel1: __S(20, __c2, 4),
-          tunnel2: __S(20, __c2, 4),
+          labels: S.optional(__S(368, __c23, 0)),
+          localSubnets: S.optional(__S(352, __c22, 0)),
+          remoteSubnets: S.optional(__S(352, __c22, 0)),
+          staticRoutes: S.optional(__S(352, __c22, 0)),
+          tunnel1: __S(496, __c31, 0),
+          tunnel2: __S(496, __c31, 0),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -2075,7 +1821,360 @@ function __c9(j: number): any {
       });
   }
 }
-
+function __c20(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          projectId: S.String.pipe(T.Label()),
+          region: S.String.pipe(T.Label()),
+          availabilityZones: __S(336, __c21, 0),
+          bgp: S.optional(__S(337, __c21, 1)),
+          displayName: S.String,
+          labels: S.optional(__S(368, __c23, 0)),
+          networkConfig: S.optional(__S(338, __c21, 2)),
+          planId: S.String,
+          routingType: S.String,
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/v1/projects/{projectId}/regions/{region}/gateways",
+            code: 200,
+            baseUrl: "https://vpn.api.stackit.cloud",
+          }),
+        ),
+      ).annotate({ identifier: "CreateGatewayRequest" });
+  }
+}
+function __c21(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          tunnel1: S.String,
+          tunnel2: S.String,
+        }),
+      ).annotate({
+        identifier: "CreateGatewayRequestAvailabilityZones",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          localAsn: S.Number,
+          overrideAdvertisedRoutes: S.optional(__S(352, __c22, 0)),
+        }),
+      ).annotate({ identifier: "BGPGatewayConfig" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          predefinedNetworkPrefix: S.optional(S.String),
+          routingTableId: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "NetworkConfig" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          availabilityZones: __S(336, __c21, 0),
+          bgp: S.optional(__S(337, __c21, 1)),
+          displayName: S.String,
+          labels: S.optional(__S(368, __c23, 0)),
+          networkConfig: S.optional(__S(338, __c21, 2)),
+          planId: S.String,
+          routingType: S.String,
+          id: S.optional(S.String),
+          state: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "CreateGatewayResponse" });
+  }
+}
+function __c22(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c23(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, S.String);
+  }
+}
+function __c24(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          projectId: S.String.pipe(T.Label()),
+          region: S.String.pipe(T.Label()),
+          gatewayId: S.String.pipe(T.Label()),
+          displayName: S.String,
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/v1/projects/{projectId}/regions/{region}/gateways/{gatewayId}/bgp-filters",
+            code: 200,
+            baseUrl: "https://vpn.api.stackit.cloud",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateGatewayBGPFilterRequest",
+      });
+  }
+}
+function __c25(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          displayName: S.String,
+          id: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "BGPFilter" });
+  }
+}
+function __c26(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          projectId: S.String.pipe(T.Label()),
+          region: S.String.pipe(T.Label()),
+          gatewayId: S.String.pipe(T.Label()),
+          filterId: S.String.pipe(T.Label()),
+          action: S.String,
+          match: S.optional(__S(448, __c28, 0)),
+          sequence: S.optional(S.Number),
+          set: S.optional(__S(433, __c27, 1)),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/v1/projects/{projectId}/regions/{region}/gateways/{gatewayId}/bgp-filters/{filterId}/rules",
+            code: 200,
+            baseUrl: "https://vpn.api.stackit.cloud",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateGatewayBGPFilterRuleRequest",
+      });
+  }
+}
+function __c27(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.Number);
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          localPreference: S.optional(S.Number),
+        }),
+      ).annotate({
+        identifier: "CreateGatewayBGPFilterRuleRequestSet",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          asPathContainsAny: S.optional(__S(432, __c27, 0)),
+          communities: S.optional(__S(352, __c22, 0)),
+          firstASN: S.optional(S.Number),
+          maxPrefixLength: S.optional(S.Number),
+          minPrefixLength: S.optional(S.Number),
+          peer: S.optional(S.String),
+          prefixes: S.optional(__S(352, __c22, 0)),
+        }),
+      ).annotate({ identifier: "BGPFilterRuleMatch" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          action: S.String,
+          id: S.optional(S.String),
+          match: S.optional(__S(434, __c27, 2)),
+          sequence: S.optional(S.Number),
+          set: S.optional(__S(433, __c27, 1)),
+        }),
+      ).annotate({ identifier: "BGPFilterRule" });
+  }
+}
+function __c28(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          asPathContainsAny: S.optional(__S(432, __c27, 0)),
+          communities: S.optional(__S(352, __c22, 0)),
+          firstASN: S.optional(S.Number),
+          maxPrefixLength: S.optional(S.Number),
+          minPrefixLength: S.optional(S.Number),
+          peer: S.optional(S.String),
+          prefixes: S.optional(__S(352, __c22, 0)),
+        }),
+      ).annotate({
+        identifier: "CreateGatewayBGPFilterRuleRequestMatch",
+      });
+  }
+}
+function __c29(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          projectId: S.String.pipe(T.Label()),
+          region: S.String.pipe(T.Label()),
+          gatewayId: S.String.pipe(T.Label()),
+          displayName: S.String,
+          enabled: S.optional(S.Boolean),
+          labels: S.optional(__S(368, __c23, 0)),
+          localSubnets: S.optional(__S(352, __c22, 0)),
+          remoteSubnets: S.optional(__S(352, __c22, 0)),
+          staticRoutes: S.optional(__S(352, __c22, 0)),
+          tunnel1: __S(496, __c31, 0),
+          tunnel2: __S(496, __c31, 0),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/v1/projects/{projectId}/regions/{region}/gateways/{gatewayId}/connections",
+            code: 200,
+            baseUrl: "https://vpn.api.stackit.cloud",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateGatewayConnectionRequest",
+      });
+  }
+}
+function __c30(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          inboundFilterId: S.optional(S.NullOr(S.String)),
+          remoteAsn: S.Number,
+        }),
+      ).annotate({ identifier: "BGPTunnelConfig" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          localAddress: S.optional(S.String),
+          remoteAddress: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "PeeringConfig" });
+    case 2:
+      return S.Array(S.String);
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          dhGroups: S.optional(__S(482, __c30, 2)),
+          encryptionAlgorithms: __S(482, __c30, 2),
+          integrityAlgorithms: __S(482, __c30, 2),
+          rekeyTime: S.optional(S.Number),
+        }),
+      ).annotate({
+        identifier: "TunnelConfigurationPhase1",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          dhGroups: S.optional(__S(482, __c30, 2)),
+          encryptionAlgorithms: __S(482, __c30, 2),
+          integrityAlgorithms: __S(482, __c30, 2),
+          dpdAction: S.optional(S.String),
+          rekeyTime: S.optional(S.Number),
+          startAction: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "TunnelConfigurationPhase2",
+      });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          bgp: S.optional(__S(480, __c30, 0)),
+          peering: S.optional(__S(481, __c30, 1)),
+          phase1: __S(483, __c30, 3),
+          phase2: __S(484, __c30, 4),
+          remoteAddress: S.String,
+        }),
+      ).annotate({
+        identifier: "TunnelConfigurationOutput",
+      });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          displayName: S.String,
+          enabled: S.optional(S.Boolean),
+          id: S.optional(S.String),
+          labels: S.optional(__S(368, __c23, 0)),
+          localSubnets: S.optional(__S(352, __c22, 0)),
+          remoteSubnets: S.optional(__S(352, __c22, 0)),
+          staticRoutes: S.optional(__S(352, __c22, 0)),
+          tunnel1: __S(485, __c30, 5),
+          tunnel2: __S(485, __c30, 5),
+        }),
+      ).annotate({ identifier: "ConnectionResponseOutput" });
+  }
+}
+function __c31(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          bgp: S.optional(__S(480, __c30, 0)),
+          peering: S.optional(__S(481, __c30, 1)),
+          phase1: __S(483, __c30, 3),
+          phase2: __S(484, __c30, 4),
+          preSharedKey: S.optional(S.String),
+          remoteAddress: S.String,
+        }),
+      ).annotate({ identifier: "TunnelConfiguration" });
+  }
+}
+function __c32(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          projectId: S.String.pipe(T.Label()),
+          region: S.String.pipe(T.Label()),
+          gatewayId: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/v1/projects/{projectId}/regions/{region}/gateways/{gatewayId}",
+            code: 200,
+            baseUrl: "https://vpn.api.stackit.cloud",
+          }),
+        ),
+      ).annotate({ identifier: "DeleteGatewayRequest" });
+  }
+}
+function __c33(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "DeleteGatewayResponse",
+      });
+  }
+}
+function __c34(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          projectId: S.String.pipe(T.Label()),
+          region: S.String.pipe(T.Label()),
+          gatewayId: S.String.pipe(T.Label()),
+          filterId: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/v1/projects/{projectId}/regions/{region}/gateways/{gatewayId}/bgp-filters/{filterId}",
+            code: 200,
+            baseUrl: "https://vpn.api.stackit.cloud",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteGatewayBGPFilterRequest",
+      });
+  }
+}
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

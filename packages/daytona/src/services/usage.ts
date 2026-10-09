@@ -114,8 +114,8 @@ export const listOrganizationSandboxUsage: API.OperationMethod<
   ListOrganizationSandboxUsageError,
   DaytonaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2, __c0, 2) as any as S.Schema<ListOrganizationSandboxUsageRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<ListOrganizationSandboxUsageResponse>,
+  input: __S(4, __c1, 0) as any as S.Schema<ListOrganizationSandboxUsageRequest>,
+  output: __S(7, __c1, 3) as any as S.Schema<ListOrganizationSandboxUsageResponse>,
   errors: [UnknownDaytonaError],
   protocol: DaytonaProtocol,
   retry: Retry.Retry,
@@ -129,8 +129,8 @@ export const listOrganizationUsageChart: API.OperationMethod<
   ListOrganizationUsageChartError,
   DaytonaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(6, __c0, 6) as any as S.Schema<ListOrganizationUsageChartRequest>,
-  output: __S(9, __c1, 1) as any as S.Schema<ListOrganizationUsageChartResponse>,
+  input: __S(8, __c2, 0) as any as S.Schema<ListOrganizationUsageChartRequest>,
+  output: __S(11, __c2, 3) as any as S.Schema<ListOrganizationUsageChartResponse>,
   errors: [UnknownDaytonaError],
   protocol: DaytonaProtocol,
   retry: Retry.Retry,
@@ -144,8 +144,8 @@ export const listOrganizationUsageSandbox: API.OperationMethod<
   ListOrganizationUsageSandboxError,
   DaytonaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(10, __c1, 2) as any as S.Schema<ListOrganizationUsageSandboxRequest>,
-  output: __S(13, __c1, 5) as any as S.Schema<ListOrganizationUsageSandboxResponse>,
+  input: __S(12, __c3, 0) as any as S.Schema<ListOrganizationUsageSandboxRequest>,
+  output: __S(15, __c3, 3) as any as S.Schema<ListOrganizationUsageSandboxResponse>,
   errors: [UnknownDaytonaError],
   protocol: DaytonaProtocol,
   retry: Retry.Retry,
@@ -183,7 +183,11 @@ function __c0(j: number): any {
           totalRAMGBSeconds: S.optional(S.Number),
         }),
       ).annotate({ identifier: "ModelsAggregatedUsage" });
-    case 2:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           organizationId: S.String.pipe(T.Label()),
@@ -200,7 +204,7 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "ListOrganizationSandboxUsageRequest",
       });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           cpu: S.optional(S.Number),
@@ -212,13 +216,17 @@ function __c0(j: number): any {
           startAt: S.optional(S.String),
         }),
       ).annotate({ identifier: "ModelsUsagePeriod" });
-    case 4:
-      return S.Array(__S(3, __c0, 3));
-    case 5:
-      return S.suspend(() => __S(4, __c0, 4).pipe(T.RawResponseRoot())).annotate({
+    case 2:
+      return S.Array(__S(5, __c1, 1));
+    case 3:
+      return S.suspend(() => __S(6, __c1, 2).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListOrganizationSandboxUsageResponse",
       });
-    case 6:
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           organizationId: S.String.pipe(T.Label()),
@@ -231,7 +239,7 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "ListOrganizationUsageChartRequest",
       });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           cpu: S.optional(S.Number),
@@ -243,17 +251,17 @@ function __c0(j: number): any {
           time: S.optional(S.String),
         }),
       ).annotate({ identifier: "ModelsUsageChartPoint" });
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(7, __c0, 7));
-    case 1:
-      return S.suspend(() => __S(8, __c1, 0).pipe(T.RawResponseRoot())).annotate({
+    case 2:
+      return S.Array(__S(9, __c2, 1));
+    case 3:
+      return S.suspend(() => __S(10, __c2, 2).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListOrganizationUsageChartResponse",
       });
-    case 2:
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           organizationId: S.String.pipe(T.Label()),
@@ -265,7 +273,7 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "ListOrganizationUsageSandboxRequest",
       });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           firstStart: S.optional(S.String),
@@ -278,15 +286,14 @@ function __c1(j: number): any {
           totalRAMGBSeconds: S.optional(S.Number),
         }),
       ).annotate({ identifier: "ModelsSandboxUsage" });
-    case 4:
-      return S.Array(__S(11, __c1, 3));
-    case 5:
-      return S.suspend(() => __S(12, __c1, 4).pipe(T.RawResponseRoot())).annotate({
+    case 2:
+      return S.Array(__S(13, __c3, 1));
+    case 3:
+      return S.suspend(() => __S(14, __c3, 2).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListOrganizationUsageSandboxResponse",
       });
   }
 }
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

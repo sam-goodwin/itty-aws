@@ -172,8 +172,8 @@ export const createExperimentSavedMetrics: API.OperationMethod<
   CreateExperimentSavedMetricsError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1, __c0, 1) as any as S.Schema<CreateExperimentSavedMetricsRequest>,
-  output: __S(6, __c0, 6) as any as S.Schema<ExperimentSavedMetric>,
+  input: __S(0, __c0, 0) as any as S.Schema<CreateExperimentSavedMetricsRequest>,
+  output: __S(13, __c1, 5) as any as S.Schema<ExperimentSavedMetric>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -186,8 +186,8 @@ export const experimentSavedMetricsDestroy: API.OperationMethod<
   ExperimentSavedMetricsDestroyError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(7, __c0, 7) as any as S.Schema<ExperimentSavedMetricsDestroyRequest>,
-  output: __S(8, __c1, 0) as any as S.Schema<ExperimentSavedMetricsDestroyResponse>,
+  input: __S(16, __c2, 0) as any as S.Schema<ExperimentSavedMetricsDestroyRequest>,
+  output: __S(17, __c2, 1) as any as S.Schema<ExperimentSavedMetricsDestroyResponse>,
   errors: [Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -200,8 +200,8 @@ export const getExperimentSavedMetrics: API.OperationMethod<
   GetExperimentSavedMetricsError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(9, __c1, 1) as any as S.Schema<GetExperimentSavedMetricsRequest>,
-  output: __S(6, __c0, 6) as any as S.Schema<ExperimentSavedMetric>,
+  input: __S(24, __c3, 0) as any as S.Schema<GetExperimentSavedMetricsRequest>,
+  output: __S(13, __c1, 5) as any as S.Schema<ExperimentSavedMetric>,
   errors: [Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -214,8 +214,8 @@ export const listExperimentSavedMetrics: API.OperationMethod<
   ListExperimentSavedMetricsError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(10, __c1, 2) as any as S.Schema<ListExperimentSavedMetricsRequest>,
-  output: __S(12, __c1, 4) as any as S.Schema<PaginatedExperimentSavedMetricList>,
+  input: __S(32, __c4, 0) as any as S.Schema<ListExperimentSavedMetricsRequest>,
+  output: __S(34, __c4, 2) as any as S.Schema<PaginatedExperimentSavedMetricList>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -228,8 +228,8 @@ export const updateExperimentSavedMetrics: API.OperationMethod<
   UpdateExperimentSavedMetricsError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(13, __c1, 5) as any as S.Schema<UpdateExperimentSavedMetricsRequest>,
-  output: __S(6, __c0, 6) as any as S.Schema<ExperimentSavedMetric>,
+  input: __S(40, __c5, 0) as any as S.Schema<UpdateExperimentSavedMetricsRequest>,
+  output: __S(13, __c1, 5) as any as S.Schema<ExperimentSavedMetric>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -246,8 +246,8 @@ export const updateExperimentSavedMetricsPartial: API.OperationMethod<
   UpdateExperimentSavedMetricsPartialError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(14, __c1, 6) as any as S.Schema<UpdateExperimentSavedMetricsPartialRequest>,
-  output: __S(6, __c0, 6) as any as S.Schema<ExperimentSavedMetric>,
+  input: __S(48, __c6, 0) as any as S.Schema<UpdateExperimentSavedMetricsPartialRequest>,
+  output: __S(13, __c1, 5) as any as S.Schema<ExperimentSavedMetric>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -257,15 +257,13 @@ export const updateExperimentSavedMetricsPartial: API.OperationMethod<
 function __c0(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(S.Unknown);
-    case 1:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
           name: S.optional(S.String),
           description: S.optional(S.NullOr(S.String)),
           query: S.optional(S.Unknown),
-          tags: S.optional(__S(0, __c0, 0)),
+          tags: S.optional(__S(8, __c1, 0)),
         }).pipe(
           T.Http({
             method: "POST",
@@ -276,9 +274,15 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "CreateExperimentSavedMetricsRequest",
       });
-    case 2:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.Unknown);
+    case 1:
       return S.Record(S.String, S.Unknown);
-    case 3:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.Number),
@@ -288,11 +292,11 @@ function __c0(j: number): any {
           last_name: S.optional(S.String),
           email: S.optional(S.String),
           is_email_verified: S.optional(S.NullOr(S.Boolean)),
-          hedgehog_config: S.optional(S.NullOr(__S(2, __c0, 2))),
+          hedgehog_config: S.optional(S.NullOr(__S(9, __c1, 1))),
           role_at_organization: S.optional(S.NullOr(S.Unknown)),
         }),
       ).annotate({ identifier: "UserBasic" });
-    case 4:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           id: S.Number,
@@ -302,24 +306,28 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "ExperimentSavedMetricLinkedExperiment",
       });
+    case 4:
+      return S.Array(__S(11, __c1, 3));
     case 5:
-      return S.Array(__S(4, __c0, 4));
-    case 6:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.Number),
           name: S.optional(S.String),
           description: S.optional(S.NullOr(S.String)),
           query: S.optional(S.Unknown),
-          created_by: S.optional(S.NullOr(__S(3, __c0, 3))),
+          created_by: S.optional(S.NullOr(__S(10, __c1, 2))),
           created_at: S.optional(S.String),
           updated_at: S.optional(S.String),
-          tags: S.optional(__S(0, __c0, 0)),
+          tags: S.optional(__S(8, __c1, 0)),
           user_access_level: S.optional(S.NullOr(S.String)),
-          linked_experiments: S.optional(__S(5, __c0, 5)),
+          linked_experiments: S.optional(__S(12, __c1, 4)),
         }),
       ).annotate({ identifier: "ExperimentSavedMetric" });
-    case 7:
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -334,15 +342,15 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "ExperimentSavedMetricsDestroyRequest",
       });
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "ExperimentSavedMetricsDestroyResponse",
       });
-    case 1:
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -357,7 +365,11 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "GetExperimentSavedMetricsRequest",
       });
-    case 2:
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -375,20 +387,24 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "ListExperimentSavedMetricsRequest",
       });
-    case 3:
-      return S.Array(__S(6, __c0, 6));
-    case 4:
+    case 1:
+      return S.Array(__S(13, __c1, 5));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           count: S.optional(S.Number),
           next: S.optional(S.NullOr(S.String)),
           previous: S.optional(S.NullOr(S.String)),
-          results: S.optional(__S(11, __c1, 3)),
+          results: S.optional(__S(33, __c4, 1)),
         }),
       ).annotate({
         identifier: "PaginatedExperimentSavedMetricList",
       });
-    case 5:
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -396,7 +412,7 @@ function __c1(j: number): any {
           name: S.optional(S.String),
           description: S.optional(S.NullOr(S.String)),
           query: S.optional(S.Unknown),
-          tags: S.optional(__S(0, __c0, 0)),
+          tags: S.optional(__S(8, __c1, 0)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -407,7 +423,11 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "UpdateExperimentSavedMetricsRequest",
       });
-    case 6:
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -415,7 +435,7 @@ function __c1(j: number): any {
           name: S.optional(S.String),
           description: S.optional(S.NullOr(S.String)),
           query: S.optional(S.Unknown),
-          tags: S.optional(__S(0, __c0, 0)),
+          tags: S.optional(__S(8, __c1, 0)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -428,7 +448,6 @@ function __c1(j: number): any {
       });
   }
 }
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

@@ -298,8 +298,8 @@ export const batchDeleteAlerts: API.OperationMethod<
   BatchDeleteAlertsError,
   GoogleWorkspaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2, __c0, 2) as any as S.Schema<BatchDeleteAlertsRequest_>,
-  output: __S(7, __c0, 7) as any as S.Schema<BatchDeleteAlertsResponse>,
+  input: __S(49, __c6, 1) as any as S.Schema<BatchDeleteAlertsRequest_>,
+  output: __S(60, __c7, 4) as any as S.Schema<BatchDeleteAlertsResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -318,8 +318,8 @@ export const batchUndeleteAlerts: API.OperationMethod<
   BatchUndeleteAlertsError,
   GoogleWorkspaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(9, __c1, 1) as any as S.Schema<BatchUndeleteAlertsRequest_>,
-  output: __S(7, __c0, 7) as any as S.Schema<BatchUndeleteAlertsResponse>,
+  input: __S(73, __c9, 1) as any as S.Schema<BatchUndeleteAlertsRequest_>,
+  output: __S(60, __c7, 4) as any as S.Schema<BatchUndeleteAlertsResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -338,8 +338,8 @@ export const createAlertsFeedback: API.OperationMethod<
   CreateAlertsFeedbackError,
   GoogleWorkspaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(11, __c1, 3) as any as S.Schema<CreateAlertsFeedbackRequest>,
-  output: __S(10, __c1, 2) as any as S.Schema<AlertFeedback>,
+  input: __S(80, __c10, 0) as any as S.Schema<CreateAlertsFeedbackRequest>,
+  output: __S(88, __c11, 0) as any as S.Schema<AlertFeedback>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -358,8 +358,8 @@ export const deleteAlerts: API.OperationMethod<
   DeleteAlertsError,
   GoogleWorkspaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(12, __c1, 4) as any as S.Schema<DeleteAlertsRequest>,
-  output: __S(13, __c1, 5) as any as S.Schema<Empty>,
+  input: __S(96, __c12, 0) as any as S.Schema<DeleteAlertsRequest>,
+  output: __S(97, __c12, 1) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -373,8 +373,8 @@ export const getAlerts: API.OperationMethod<
   GetAlertsError,
   GoogleWorkspaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(14, __c1, 6) as any as S.Schema<GetAlertsRequest>,
-  output: __S(16, __c2, 0) as any as S.Schema<Alert>,
+  input: __S(104, __c13, 0) as any as S.Schema<GetAlertsRequest>,
+  output: __S(112, __c14, 0) as any as S.Schema<Alert>,
   errors: [NotFound, Forbidden, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -388,8 +388,8 @@ export const getMetadataAlerts: API.OperationMethod<
   GetMetadataAlertsError,
   GoogleWorkspaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(17, __c2, 1) as any as S.Schema<GetMetadataAlertsRequest>,
-  output: __S(15, __c1, 7) as any as S.Schema<AlertMetadata>,
+  input: __S(128, __c16, 0) as any as S.Schema<GetMetadataAlertsRequest>,
+  output: __S(120, __c15, 0) as any as S.Schema<AlertMetadata>,
   errors: [NotFound, Forbidden, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -403,8 +403,8 @@ export const getSettingsV1beta1: API.OperationMethod<
   GetSettingsV1beta1Error,
   GoogleWorkspaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(18, __c2, 2) as any as S.Schema<GetSettingsV1beta1Request>,
-  output: __S(22, __c2, 6) as any as S.Schema<Settings>,
+  input: __S(0, __c0, 0) as any as S.Schema<GetSettingsV1beta1Request>,
+  output: __S(11, __c1, 3) as any as S.Schema<Settings>,
   errors: [NotFound, Forbidden, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -419,8 +419,8 @@ export const listAlerts: API.PaginatedOperationMethod<
   GoogleWorkspaceOpContext,
   ListAlertsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(23, __c2, 7) as any as S.Schema<ListAlertsRequest>,
-  output: __S(25, __c3, 1) as any as S.Schema<ListAlertsResponse>,
+  input: __S(16, __c2, 0) as any as S.Schema<ListAlertsRequest>,
+  output: __S(18, __c2, 2) as any as S.Schema<ListAlertsResponse>,
   errors: [NotFound, Forbidden, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -435,8 +435,8 @@ export const listAlertsFeedback: API.OperationMethod<
   ListAlertsFeedbackError,
   GoogleWorkspaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(26, __c3, 2) as any as S.Schema<ListAlertsFeedbackRequest>,
-  output: __S(28, __c3, 4) as any as S.Schema<ListAlertFeedbackResponse>,
+  input: __S(24, __c3, 0) as any as S.Schema<ListAlertsFeedbackRequest>,
+  output: __S(26, __c3, 2) as any as S.Schema<ListAlertFeedbackResponse>,
   errors: [NotFound, Forbidden, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -455,8 +455,8 @@ export const undeleteAlerts: API.OperationMethod<
   UndeleteAlertsError,
   GoogleWorkspaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(30, __c3, 6) as any as S.Schema<UndeleteAlertsRequest>,
-  output: __S(16, __c2, 0) as any as S.Schema<Alert>,
+  input: __S(33, __c4, 1) as any as S.Schema<UndeleteAlertsRequest>,
+  output: __S(112, __c14, 0) as any as S.Schema<Alert>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -475,8 +475,8 @@ export const updateSettingsV1beta1: API.OperationMethod<
   UpdateSettingsV1beta1Error,
   GoogleWorkspaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(31, __c3, 7) as any as S.Schema<UpdateSettingsV1beta1Request>,
-  output: __S(22, __c2, 6) as any as S.Schema<Settings>,
+  input: __S(40, __c5, 0) as any as S.Schema<UpdateSettingsV1beta1Request>,
+  output: __S(11, __c1, 3) as any as S.Schema<Settings>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -486,183 +486,6 @@ export const updateSettingsV1beta1: API.OperationMethod<
 function __c0(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(S.String);
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          customerId: S.optional(S.String),
-          alertId: S.optional(__S(0, __c0, 0)),
-        }),
-      ).annotate({ identifier: "BatchDeleteAlertsRequest" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          body: S.optional(__S(1, __c0, 1).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1beta1/alerts:batchDelete",
-            baseUrl: "https://alertcenter.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "BatchDeleteAlertsRequest_",
-      });
-    case 3:
-      return S.Record(S.String, S.Unknown);
-    case 4:
-      return S.Array(__S(3, __c0, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          message: S.optional(S.String),
-          details: S.optional(__S(4, __c0, 4)),
-          code: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "Status" });
-    case 6:
-      return S.Record(S.String, __S(5, __c0, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          failedAlertStatus: S.optional(__S(6, __c0, 6)),
-          successAlertIds: S.optional(__S(0, __c0, 0)),
-        }),
-      ).annotate({
-        identifier: "BatchDeleteAlertsResponse",
-      });
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          alertId: S.optional(__S(0, __c0, 0)),
-          customerId: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "BatchUndeleteAlertsRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          body: S.optional(__S(8, __c1, 0).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1beta1/alerts:batchUndelete",
-            baseUrl: "https://alertcenter.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "BatchUndeleteAlertsRequest_",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          alertId: S.optional(S.String),
-          customerId: S.optional(S.String),
-          type: S.optional(S.String),
-          feedbackId: S.optional(S.String),
-          createTime: S.optional(S.String),
-          email: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "AlertFeedback" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          alertId: S.String.pipe(T.Label()),
-          customerId: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(10, __c1, 2).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1beta1/alerts/{alertId}/feedback",
-            baseUrl: "https://alertcenter.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateAlertsFeedbackRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          customerId: S.optional(S.String.pipe(T.Query())),
-          alertId: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "v1beta1/alerts/{alertId}",
-            baseUrl: "https://alertcenter.googleapis.com/",
-          }),
-        ),
-      ).annotate({ identifier: "DeleteAlertsRequest" });
-    case 5:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "Empty",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          customerId: S.optional(S.String.pipe(T.Query())),
-          alertId: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v1beta1/alerts/{alertId}",
-            baseUrl: "https://alertcenter.googleapis.com/",
-          }),
-        ),
-      ).annotate({ identifier: "GetAlertsRequest" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          updateTime: S.optional(S.String),
-          customerId: S.optional(S.String),
-          etag: S.optional(S.String),
-          status: S.optional(S.String),
-          alertId: S.optional(S.String),
-          severity: S.optional(S.String),
-          assignee: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "AlertMetadata" });
-  }
-}
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          updateTime: S.optional(S.String),
-          alertId: S.optional(S.String),
-          source: S.optional(S.String),
-          deleted: S.optional(S.Boolean),
-          securityInvestigationToolLink: S.optional(S.String),
-          etag: S.optional(S.String),
-          customerId: S.optional(S.String),
-          metadata: S.optional(__S(15, __c1, 7)),
-          type: S.optional(S.String),
-          endTime: S.optional(S.String),
-          data: S.optional(__S(3, __c0, 3)),
-          startTime: S.optional(S.String),
-          createTime: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Alert" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          customerId: S.optional(S.String.pipe(T.Query())),
-          alertId: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v1beta1/alerts/{alertId}/metadata",
-            baseUrl: "https://alertcenter.googleapis.com/",
-          }),
-        ),
-      ).annotate({ identifier: "GetMetadataAlertsRequest" });
-    case 2:
       return S.suspend(() =>
         S.Struct({
           customerId: S.optional(S.String.pipe(T.Query())),
@@ -676,28 +499,36 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "GetSettingsV1beta1Request",
       });
-    case 3:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           topicName: S.optional(S.String),
           payloadFormat: S.optional(S.String),
         }),
       ).annotate({ identifier: "CloudPubsubTopic" });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          cloudPubsubTopic: S.optional(__S(19, __c2, 3)),
+          cloudPubsubTopic: S.optional(__S(8, __c1, 0)),
         }),
       ).annotate({ identifier: "Notification" });
-    case 5:
-      return S.Array(__S(20, __c2, 4));
-    case 6:
+    case 2:
+      return S.Array(__S(9, __c1, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          notifications: S.optional(__S(21, __c2, 5)),
+          notifications: S.optional(__S(10, __c1, 2)),
         }),
       ).annotate({ identifier: "Settings" });
-    case 7:
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           orderBy: S.optional(S.String.pipe(T.Query())),
@@ -713,20 +544,20 @@ function __c2(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ListAlertsRequest" });
+    case 1:
+      return S.Array(__S(112, __c14, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          alerts: S.optional(__S(17, __c2, 1)),
+          nextPageToken: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ListAlertsResponse" });
   }
 }
 function __c3(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(16, __c2, 0));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          alerts: S.optional(__S(24, __c3, 0)),
-          nextPageToken: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ListAlertsResponse" });
-    case 2:
       return S.suspend(() =>
         S.Struct({
           customerId: S.optional(S.String.pipe(T.Query())),
@@ -742,27 +573,31 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "ListAlertsFeedbackRequest",
       });
-    case 3:
-      return S.Array(__S(10, __c1, 2));
-    case 4:
+    case 1:
+      return S.Array(__S(88, __c11, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          feedback: S.optional(__S(27, __c3, 3)),
+          feedback: S.optional(__S(25, __c3, 1)),
         }),
       ).annotate({
         identifier: "ListAlertFeedbackResponse",
       });
-    case 5:
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           customerId: S.optional(S.String),
         }),
       ).annotate({ identifier: "UndeleteAlertRequest" });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           alertId: S.String.pipe(T.Label()),
-          body: S.optional(__S(29, __c3, 5).pipe(T.HttpBody())),
+          body: S.optional(__S(32, __c4, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -771,11 +606,15 @@ function __c3(j: number): any {
           }),
         ),
       ).annotate({ identifier: "UndeleteAlertsRequest" });
-    case 7:
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           customerId: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(22, __c2, 6).pipe(T.HttpBody())),
+          body: S.optional(__S(11, __c1, 3).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -788,7 +627,219 @@ function __c3(j: number): any {
       });
   }
 }
-
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          customerId: S.optional(S.String),
+          alertId: S.optional(__S(56, __c7, 0)),
+        }),
+      ).annotate({ identifier: "BatchDeleteAlertsRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          body: S.optional(__S(48, __c6, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1beta1/alerts:batchDelete",
+            baseUrl: "https://alertcenter.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "BatchDeleteAlertsRequest_",
+      });
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+    case 1:
+      return S.Array(__S(64, __c8, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          message: S.optional(S.String),
+          details: S.optional(__S(57, __c7, 1)),
+          code: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "Status" });
+    case 3:
+      return S.Record(S.String, __S(58, __c7, 2));
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          failedAlertStatus: S.optional(__S(59, __c7, 3)),
+          successAlertIds: S.optional(__S(56, __c7, 0)),
+        }),
+      ).annotate({
+        identifier: "BatchDeleteAlertsResponse",
+      });
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, S.Unknown);
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          alertId: S.optional(__S(56, __c7, 0)),
+          customerId: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "BatchUndeleteAlertsRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          body: S.optional(__S(72, __c9, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1beta1/alerts:batchUndelete",
+            baseUrl: "https://alertcenter.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "BatchUndeleteAlertsRequest_",
+      });
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          alertId: S.String.pipe(T.Label()),
+          customerId: S.optional(S.String.pipe(T.Query())),
+          body: S.optional(__S(88, __c11, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1beta1/alerts/{alertId}/feedback",
+            baseUrl: "https://alertcenter.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateAlertsFeedbackRequest",
+      });
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          alertId: S.optional(S.String),
+          customerId: S.optional(S.String),
+          type: S.optional(S.String),
+          feedbackId: S.optional(S.String),
+          createTime: S.optional(S.String),
+          email: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "AlertFeedback" });
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          customerId: S.optional(S.String.pipe(T.Query())),
+          alertId: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "v1beta1/alerts/{alertId}",
+            baseUrl: "https://alertcenter.googleapis.com/",
+          }),
+        ),
+      ).annotate({ identifier: "DeleteAlertsRequest" });
+    case 1:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "Empty",
+      });
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          customerId: S.optional(S.String.pipe(T.Query())),
+          alertId: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v1beta1/alerts/{alertId}",
+            baseUrl: "https://alertcenter.googleapis.com/",
+          }),
+        ),
+      ).annotate({ identifier: "GetAlertsRequest" });
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          updateTime: S.optional(S.String),
+          alertId: S.optional(S.String),
+          source: S.optional(S.String),
+          deleted: S.optional(S.Boolean),
+          securityInvestigationToolLink: S.optional(S.String),
+          etag: S.optional(S.String),
+          customerId: S.optional(S.String),
+          metadata: S.optional(__S(120, __c15, 0)),
+          type: S.optional(S.String),
+          endTime: S.optional(S.String),
+          data: S.optional(__S(64, __c8, 0)),
+          startTime: S.optional(S.String),
+          createTime: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Alert" });
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          updateTime: S.optional(S.String),
+          customerId: S.optional(S.String),
+          etag: S.optional(S.String),
+          status: S.optional(S.String),
+          alertId: S.optional(S.String),
+          severity: S.optional(S.String),
+          assignee: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "AlertMetadata" });
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          customerId: S.optional(S.String.pipe(T.Query())),
+          alertId: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v1beta1/alerts/{alertId}/metadata",
+            baseUrl: "https://alertcenter.googleapis.com/",
+          }),
+        ),
+      ).annotate({ identifier: "GetMetadataAlertsRequest" });
+  }
+}
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

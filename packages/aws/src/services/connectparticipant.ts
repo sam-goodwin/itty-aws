@@ -431,8 +431,8 @@ export const cancelParticipantAuthentication: API.OperationMethod<
   CancelParticipantAuthenticationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(0, __c0, 0) as any as S.Schema<CancelParticipantAuthenticationRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<CancelParticipantAuthenticationResponse>,
+  input: __S(128, __c8, 0) as any as S.Schema<CancelParticipantAuthenticationRequest>,
+  output: __S(144, __c9, 0) as any as S.Schema<CancelParticipantAuthenticationResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -471,8 +471,8 @@ export const completeAttachmentUpload: API.OperationMethod<
   CompleteAttachmentUploadError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3, __c0, 3) as any as S.Schema<CompleteAttachmentUploadRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<CompleteAttachmentUploadResponse>,
+  input: __S(161, __c10, 1) as any as S.Schema<CompleteAttachmentUploadRequest>,
+  output: __S(144, __c9, 0) as any as S.Schema<CompleteAttachmentUploadResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -564,8 +564,8 @@ export const createParticipantConnection: API.OperationMethod<
   CreateParticipantConnectionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(5, __c0, 5) as any as S.Schema<CreateParticipantConnectionRequest>,
-  output: __S(14, __c1, 6) as any as S.Schema<CreateParticipantConnectionResponse>,
+  input: __S(177, __c11, 1) as any as S.Schema<CreateParticipantConnectionRequest>,
+  output: __S(186, __c11, 10) as any as S.Schema<CreateParticipantConnectionResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -595,8 +595,8 @@ export const describeView: API.OperationMethod<
   DescribeViewError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(15, __c1, 7) as any as S.Schema<DescribeViewRequest>,
-  output: __S(19, __c2, 3) as any as S.Schema<DescribeViewResponse>,
+  input: __S(0, __c0, 0) as any as S.Schema<DescribeViewRequest>,
+  output: __S(4, __c0, 4) as any as S.Schema<DescribeViewResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -632,8 +632,8 @@ export const disconnectParticipant: API.OperationMethod<
   DisconnectParticipantError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(20, __c2, 4) as any as S.Schema<DisconnectParticipantRequest>,
-  output: __S(21, __c2, 5) as any as S.Schema<DisconnectParticipantResponse>,
+  input: __S(16, __c1, 0) as any as S.Schema<DisconnectParticipantRequest>,
+  output: __S(17, __c1, 1) as any as S.Schema<DisconnectParticipantResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -674,8 +674,8 @@ export const getAttachment: API.OperationMethod<
   GetAttachmentError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(22, __c2, 6) as any as S.Schema<GetAttachmentRequest>,
-  output: __S(23, __c2, 7) as any as S.Schema<GetAttachmentResponse>,
+  input: __S(32, __c2, 0) as any as S.Schema<GetAttachmentRequest>,
+  output: __S(33, __c2, 1) as any as S.Schema<GetAttachmentResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -717,8 +717,8 @@ export const getAuthenticationUrl: API.OperationMethod<
   GetAuthenticationUrlError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(24, __c3, 0) as any as S.Schema<GetAuthenticationUrlRequest>,
-  output: __S(25, __c3, 1) as any as S.Schema<GetAuthenticationUrlResponse>,
+  input: __S(48, __c3, 0) as any as S.Schema<GetAuthenticationUrlRequest>,
+  output: __S(49, __c3, 1) as any as S.Schema<GetAuthenticationUrlResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -772,8 +772,8 @@ export const getTranscript: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(27, __c3, 3) as any as S.Schema<GetTranscriptRequest>,
-  output: __S(35, __c4, 3) as any as S.Schema<GetTranscriptResponse>,
+  input: __S(65, __c4, 1) as any as S.Schema<GetTranscriptRequest>,
+  output: __S(73, __c4, 9) as any as S.Schema<GetTranscriptResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -821,8 +821,8 @@ export const sendEvent: API.OperationMethod<
   SendEventError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(36, __c4, 4) as any as S.Schema<SendEventRequest>,
-  output: __S(37, __c4, 5) as any as S.Schema<SendEventResponse>,
+  input: __S(80, __c5, 0) as any as S.Schema<SendEventRequest>,
+  output: __S(81, __c5, 1) as any as S.Schema<SendEventResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -858,8 +858,8 @@ export const sendMessage: API.OperationMethod<
   SendMessageError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(38, __c4, 6) as any as S.Schema<SendMessageRequest>,
-  output: __S(40, __c5, 0) as any as S.Schema<SendMessageResponse>,
+  input: __S(96, __c6, 0) as any as S.Schema<SendMessageRequest>,
+  output: __S(98, __c6, 2) as any as S.Schema<SendMessageResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -896,8 +896,8 @@ export const startAttachmentUpload: API.OperationMethod<
   StartAttachmentUploadError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(41, __c5, 1) as any as S.Schema<StartAttachmentUploadRequest>,
-  output: __S(44, __c5, 4) as any as S.Schema<StartAttachmentUploadResponse>,
+  input: __S(112, __c7, 0) as any as S.Schema<StartAttachmentUploadRequest>,
+  output: __S(115, __c7, 3) as any as S.Schema<StartAttachmentUploadResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -916,125 +916,6 @@ function __c0(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          SessionId: S.String,
-          ConnectionToken: S.String.pipe(T.HttpHeader("X-Amz-Bearer")),
-        }).pipe(
-          T.all(
-            T.Http({ method: "POST", uri: "/participant/cancel-authentication" }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({
-        identifier: "CancelParticipantAuthenticationRequest",
-      });
-    case 1:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "CancelParticipantAuthenticationResponse",
-      });
-    case 2:
-      return S.Array(S.String);
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          AttachmentIds: __S(2, __c0, 2),
-          ClientToken: S.String.pipe(T.IdempotencyToken()),
-          ConnectionToken: S.String.pipe(T.HttpHeader("X-Amz-Bearer")),
-        }).pipe(
-          T.all(
-            T.Http({ method: "POST", uri: "/participant/complete-attachment-upload" }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({
-        identifier: "CompleteAttachmentUploadRequest",
-      });
-    case 4:
-      return S.Array(S.String);
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          Type: S.optional(__S(4, __c0, 4)),
-          ParticipantToken: S.String.pipe(T.HttpHeader("X-Amz-Bearer")),
-          ConnectParticipant: S.optional(S.Boolean),
-        }).pipe(
-          T.all(
-            T.Http({ method: "POST", uri: "/participant/connection" }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({
-        identifier: "CreateParticipantConnectionRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({ Url: S.optional(S.String), ConnectionExpiry: S.optional(S.String) }),
-      ).annotate({ identifier: "Websocket" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({ ConnectionToken: S.optional(S.String), Expiry: S.optional(S.String) }),
-      ).annotate({ identifier: "ConnectionCredentials" });
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({ AttendeeId: S.optional(S.String), JoinToken: S.optional(SensitiveString) }),
-      ).annotate({ identifier: "Attendee" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          AudioHostUrl: S.optional(S.String),
-          AudioFallbackUrl: S.optional(S.String),
-          SignalingUrl: S.optional(S.String),
-          EventIngestionUrl: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "WebRTCMediaPlacement" });
-    case 2:
-      return S.suspend(() => S.Struct({ EchoReduction: S.optional(S.String) })).annotate({
-        identifier: "AudioFeatures",
-      });
-    case 3:
-      return S.suspend(() => S.Struct({ Audio: S.optional(__S(10, __c1, 2)) })).annotate({
-        identifier: "MeetingFeaturesConfiguration",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          MediaPlacement: S.optional(__S(9, __c1, 1)),
-          MeetingFeatures: S.optional(__S(11, __c1, 3)),
-          MeetingId: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "WebRTCMeeting" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({ Attendee: S.optional(__S(8, __c1, 0)), Meeting: S.optional(__S(12, __c1, 4)) }),
-      ).annotate({ identifier: "WebRTCConnection" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          Websocket: S.optional(__S(6, __c0, 6)),
-          ConnectionCredentials: S.optional(__S(7, __c0, 7)),
-          WebRTCConnection: S.optional(__S(13, __c1, 5)),
-        }),
-      ).annotate({
-        identifier: "CreateParticipantConnectionResponse",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
           ViewToken: S.String.pipe(T.HttpLabel("ViewToken")),
           ConnectionToken: S.String.pipe(T.HttpHeader("X-Amz-Bearer")),
         }).pipe(
@@ -1048,35 +929,35 @@ function __c1(j: number): any {
           ),
         ),
       ).annotate({ identifier: "DescribeViewRequest" });
-  }
-}
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(SensitiveString);
     case 1:
+      return S.Array(SensitiveString);
+    case 2:
       return S.suspend(() =>
         S.Struct({
           InputSchema: S.optional(SensitiveString),
           Template: S.optional(SensitiveString),
-          Actions: S.optional(__S(16, __c2, 0)),
+          Actions: S.optional(__S(1, __c0, 1)),
         }),
       ).annotate({ identifier: "ViewContent" });
-    case 2:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           Id: S.optional(S.String),
           Arn: S.optional(S.String),
           Name: S.optional(SensitiveString),
           Version: S.optional(S.Number),
-          Content: S.optional(__S(17, __c2, 1)),
+          Content: S.optional(__S(2, __c0, 2)),
         }),
       ).annotate({ identifier: "View" });
-    case 3:
-      return S.suspend(() => S.Struct({ View: S.optional(__S(18, __c2, 2)) })).annotate({
+    case 4:
+      return S.suspend(() => S.Struct({ View: S.optional(__S(3, __c0, 3)) })).annotate({
         identifier: "DescribeViewResponse",
       });
-    case 4:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           ClientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
@@ -1094,11 +975,15 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "DisconnectParticipantRequest",
       });
-    case 5:
+    case 1:
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "DisconnectParticipantResponse",
       });
-    case 6:
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           AttachmentId: S.String,
@@ -1115,7 +1000,7 @@ function __c2(j: number): any {
           ),
         ),
       ).annotate({ identifier: "GetAttachmentRequest" });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           Url: S.optional(S.String),
@@ -1150,7 +1035,11 @@ function __c3(j: number): any {
       return S.suspend(() => S.Struct({ AuthenticationUrl: S.optional(S.String) })).annotate({
         identifier: "GetAuthenticationUrlResponse",
       });
-    case 2:
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           Id: S.optional(S.String),
@@ -1158,7 +1047,7 @@ function __c3(j: number): any {
           MostRecent: S.optional(S.Number),
         }),
       ).annotate({ identifier: "StartPosition" });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           ContactId: S.optional(S.String),
@@ -1166,7 +1055,7 @@ function __c3(j: number): any {
           NextToken: S.optional(S.String),
           ScanDirection: S.optional(S.String),
           SortOrder: S.optional(S.String),
-          StartPosition: S.optional(__S(26, __c3, 2)),
+          StartPosition: S.optional(__S(64, __c4, 0)),
           ConnectionToken: S.String.pipe(T.HttpHeader("X-Amz-Bearer")),
         }).pipe(
           T.all(
@@ -1179,7 +1068,7 @@ function __c3(j: number): any {
           ),
         ),
       ).annotate({ identifier: "GetTranscriptRequest" });
-    case 4:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           ContentType: S.optional(S.String),
@@ -1188,9 +1077,9 @@ function __c3(j: number): any {
           Status: S.optional(S.String),
         }),
       ).annotate({ identifier: "AttachmentItem" });
-    case 5:
-      return S.Array(__S(28, __c3, 4));
-    case 6:
+    case 3:
+      return S.Array(__S(66, __c4, 2));
+    case 4:
       return S.suspend(() =>
         S.Struct({
           DeliveredTimestamp: S.optional(S.String),
@@ -1198,21 +1087,17 @@ function __c3(j: number): any {
           RecipientParticipantId: S.optional(S.String),
         }),
       ).annotate({ identifier: "Receipt" });
-    case 7:
-      return S.Array(__S(30, __c3, 6));
-  }
-}
-function __c4(j: number): any {
-  switch (j) {
-    case 0:
+    case 5:
+      return S.Array(__S(68, __c4, 4));
+    case 6:
       return S.suspend(() =>
         S.Struct({
           MessageId: S.optional(S.String),
-          Receipts: S.optional(__S(31, __c3, 7)),
+          Receipts: S.optional(__S(69, __c4, 5)),
           MessageProcessingStatus: S.optional(S.String),
         }),
       ).annotate({ identifier: "MessageMetadata" });
-    case 1:
+    case 7:
       return S.suspend(() =>
         S.Struct({
           AbsoluteTime: S.optional(S.String),
@@ -1223,23 +1108,27 @@ function __c4(j: number): any {
           ParticipantId: S.optional(S.String),
           DisplayName: S.optional(S.String),
           ParticipantRole: S.optional(S.String),
-          Attachments: S.optional(__S(29, __c3, 5)),
-          MessageMetadata: S.optional(__S(32, __c4, 0)),
+          Attachments: S.optional(__S(67, __c4, 3)),
+          MessageMetadata: S.optional(__S(70, __c4, 6)),
           RelatedContactId: S.optional(S.String),
           ContactId: S.optional(S.String),
         }),
       ).annotate({ identifier: "Item" });
-    case 2:
-      return S.Array(__S(33, __c4, 1));
-    case 3:
+    case 8:
+      return S.Array(__S(71, __c4, 7));
+    case 9:
       return S.suspend(() =>
         S.Struct({
           InitialContactId: S.optional(S.String),
-          Transcript: S.optional(__S(34, __c4, 2)),
+          Transcript: S.optional(__S(72, __c4, 8)),
           NextToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "GetTranscriptResponse" });
-    case 4:
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           ContentType: S.String,
@@ -1257,11 +1146,15 @@ function __c4(j: number): any {
           ),
         ),
       ).annotate({ identifier: "SendEventRequest" });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({ Id: S.optional(S.String), AbsoluteTime: S.optional(S.String) }),
       ).annotate({ identifier: "SendEventResponse" });
-    case 6:
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           ContentType: S.String,
@@ -1279,23 +1172,23 @@ function __c4(j: number): any {
           ),
         ),
       ).annotate({ identifier: "SendMessageRequest" });
-    case 7:
+    case 1:
       return S.suspend(() => S.Struct({ MessageProcessingStatus: S.optional(S.String) })).annotate({
         identifier: "MessageProcessingMetadata",
       });
-  }
-}
-function __c5(j: number): any {
-  switch (j) {
-    case 0:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           Id: S.optional(S.String),
           AbsoluteTime: S.optional(S.String),
-          MessageMetadata: S.optional(__S(39, __c4, 7)),
+          MessageMetadata: S.optional(__S(97, __c6, 1)),
         }),
       ).annotate({ identifier: "SendMessageResponse" });
-    case 1:
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           ContentType: S.String,
@@ -1316,28 +1209,161 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "StartAttachmentUploadRequest",
       });
-    case 2:
+    case 1:
       return S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
-    case 3:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           Url: S.optional(S.String),
           UrlExpiry: S.optional(S.String),
-          HeadersToInclude: S.optional(__S(42, __c5, 2)),
+          HeadersToInclude: S.optional(__S(113, __c7, 1)),
         }),
       ).annotate({ identifier: "UploadMetadata" });
-    case 4:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           AttachmentId: S.optional(S.String),
-          UploadMetadata: S.optional(__S(43, __c5, 3)),
+          UploadMetadata: S.optional(__S(114, __c7, 2)),
         }),
       ).annotate({
         identifier: "StartAttachmentUploadResponse",
       });
   }
 }
-
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          SessionId: S.String,
+          ConnectionToken: S.String.pipe(T.HttpHeader("X-Amz-Bearer")),
+        }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/participant/cancel-authentication" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "CancelParticipantAuthenticationRequest",
+      });
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "CancelParticipantAuthenticationResponse",
+      });
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          AttachmentIds: __S(160, __c10, 0),
+          ClientToken: S.String.pipe(T.IdempotencyToken()),
+          ConnectionToken: S.String.pipe(T.HttpHeader("X-Amz-Bearer")),
+        }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/participant/complete-attachment-upload" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "CompleteAttachmentUploadRequest",
+      });
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          Type: S.optional(__S(176, __c11, 0)),
+          ParticipantToken: S.String.pipe(T.HttpHeader("X-Amz-Bearer")),
+          ConnectParticipant: S.optional(S.Boolean),
+        }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/participant/connection" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "CreateParticipantConnectionRequest",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({ Url: S.optional(S.String), ConnectionExpiry: S.optional(S.String) }),
+      ).annotate({ identifier: "Websocket" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({ ConnectionToken: S.optional(S.String), Expiry: S.optional(S.String) }),
+      ).annotate({ identifier: "ConnectionCredentials" });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({ AttendeeId: S.optional(S.String), JoinToken: S.optional(SensitiveString) }),
+      ).annotate({ identifier: "Attendee" });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          AudioHostUrl: S.optional(S.String),
+          AudioFallbackUrl: S.optional(S.String),
+          SignalingUrl: S.optional(S.String),
+          EventIngestionUrl: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "WebRTCMediaPlacement" });
+    case 6:
+      return S.suspend(() => S.Struct({ EchoReduction: S.optional(S.String) })).annotate({
+        identifier: "AudioFeatures",
+      });
+    case 7:
+      return S.suspend(() => S.Struct({ Audio: S.optional(__S(182, __c11, 6)) })).annotate({
+        identifier: "MeetingFeaturesConfiguration",
+      });
+    case 8:
+      return S.suspend(() =>
+        S.Struct({
+          MediaPlacement: S.optional(__S(181, __c11, 5)),
+          MeetingFeatures: S.optional(__S(183, __c11, 7)),
+          MeetingId: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "WebRTCMeeting" });
+    case 9:
+      return S.suspend(() =>
+        S.Struct({
+          Attendee: S.optional(__S(180, __c11, 4)),
+          Meeting: S.optional(__S(184, __c11, 8)),
+        }),
+      ).annotate({ identifier: "WebRTCConnection" });
+    case 10:
+      return S.suspend(() =>
+        S.Struct({
+          Websocket: S.optional(__S(178, __c11, 2)),
+          ConnectionCredentials: S.optional(__S(179, __c11, 3)),
+          WebRTCConnection: S.optional(__S(185, __c11, 9)),
+        }),
+      ).annotate({
+        identifier: "CreateParticipantConnectionResponse",
+      });
+  }
+}
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

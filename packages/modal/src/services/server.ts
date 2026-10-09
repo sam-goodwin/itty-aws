@@ -117,8 +117,8 @@ export const serverGetTimeRangeStats: API.OperationMethod<
   ServerGetTimeRangeStatsError,
   ModalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(5, __c0, 5) as any as S.Schema<ServerGetTimeRangeStatsRequest>,
-  output: __S(14, __c1, 6) as any as S.Schema<ServerGetTimeRangeStatsResponse>,
+  input: __S(16, __c1, 0) as any as S.Schema<ServerGetTimeRangeStatsRequest>,
+  output: __S(25, __c1, 9) as any as S.Schema<ServerGetTimeRangeStatsResponse>,
   errors: [UnknownModalError],
   protocol: ModalProtocol,
   retry: Retry.Retry,
@@ -170,7 +170,11 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "FetchServerRequestResponse",
       });
-    case 5:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           functionId: S.optional(S.String),
@@ -187,7 +191,7 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "ServerGetTimeRangeStatsRequest",
       });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           statusCode: S.optional(S.Number),
@@ -196,56 +200,52 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "ServerGetTimeRangeStatsResponseServerStatusCodeCount",
       });
-    case 7:
-      return S.Array(__S(6, __c0, 6));
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
+    case 2:
+      return S.Array(__S(17, __c1, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
           percentileBasisPoints: S.optional(S.Number),
           value: S.optional(S.Number),
         }),
       ).annotate({ identifier: "StatsPercentile" });
-    case 1:
-      return S.Array(__S(8, __c1, 0));
-    case 2:
+    case 4:
+      return S.Array(__S(19, __c1, 3));
+    case 5:
       return S.suspend(() =>
         S.Struct({
           unit: S.optional(S.String),
-          percentiles: S.optional(__S(9, __c1, 1)),
+          percentiles: S.optional(__S(20, __c1, 4)),
         }),
       ).annotate({
         identifier: "StatsPercentileDistribution",
       });
-    case 3:
-      return S.Record(S.String, __S(10, __c1, 2));
-    case 4:
+    case 6:
+      return S.Record(S.String, __S(21, __c1, 5));
+    case 7:
       return S.Record(S.String, S.Number);
-    case 5:
+    case 8:
       return S.suspend(() =>
         S.Struct({
           engine: S.optional(S.String),
           status: S.optional(S.String),
-          percentileStats: S.optional(__S(11, __c1, 3)),
-          scalarStats: S.optional(__S(12, __c1, 4)),
+          percentileStats: S.optional(__S(22, __c1, 6)),
+          scalarStats: S.optional(__S(23, __c1, 7)),
         }),
       ).annotate({
         identifier: "ServerGetTimeRangeStatsResponseServerInferenceStats",
       });
-    case 6:
+    case 9:
       return S.suspend(() =>
         S.Struct({
           since: S.optional(S.String),
           until: S.optional(S.String),
           requestCount: S.optional(S.String),
-          requestCountByStatusCode: S.optional(__S(7, __c0, 7)),
+          requestCountByStatusCode: S.optional(__S(18, __c1, 2)),
           requestRatePerSecond: S.optional(S.Number),
-          requestPercentileStats: S.optional(__S(11, __c1, 3)),
-          containerPercentileStats: S.optional(__S(11, __c1, 3)),
-          inference: S.optional(__S(13, __c1, 5)),
+          requestPercentileStats: S.optional(__S(22, __c1, 6)),
+          containerPercentileStats: S.optional(__S(22, __c1, 6)),
+          inference: S.optional(__S(24, __c1, 8)),
           containerStartedCount: S.optional(S.String),
           containerErrorCount: S.optional(S.String),
           containerCreatingAtEndCount: S.optional(S.String),
@@ -256,7 +256,6 @@ function __c1(j: number): any {
       });
   }
 }
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

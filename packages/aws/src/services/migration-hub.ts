@@ -411,8 +411,8 @@ export const associateCreatedArtifact: API.OperationMethod<
   AssociateCreatedArtifactError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1, __c0, 1) as any as S.Schema<AssociateCreatedArtifactRequest>,
-  output: __S(2, __c0, 2) as any as S.Schema<AssociateCreatedArtifactResult>,
+  input: __S(0, __c0, 0) as any as S.Schema<AssociateCreatedArtifactRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<AssociateCreatedArtifactResult>,
   errors: [
     AccessDeniedException,
     DryRunOperation,
@@ -451,8 +451,8 @@ export const associateDiscoveredResource: API.OperationMethod<
   AssociateDiscoveredResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(4, __c0, 4) as any as S.Schema<AssociateDiscoveredResourceRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<AssociateDiscoveredResourceResult>,
+  input: __S(24, __c3, 0) as any as S.Schema<AssociateDiscoveredResourceRequest>,
+  output: __S(32, __c4, 0) as any as S.Schema<AssociateDiscoveredResourceResult>,
   errors: [
     AccessDeniedException,
     DryRunOperation,
@@ -490,8 +490,8 @@ export const associateSourceResource: API.OperationMethod<
   AssociateSourceResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(7, __c0, 7) as any as S.Schema<AssociateSourceResourceRequest>,
-  output: __S(2, __c0, 2) as any as S.Schema<AssociateSourceResourceResult>,
+  input: __S(48, __c6, 0) as any as S.Schema<AssociateSourceResourceRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<AssociateSourceResourceResult>,
   errors: [
     AccessDeniedException,
     DryRunOperation,
@@ -530,8 +530,8 @@ export const createProgressUpdateStream: API.OperationMethod<
   CreateProgressUpdateStreamError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(8, __c1, 0) as any as S.Schema<CreateProgressUpdateStreamRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<CreateProgressUpdateStreamResult>,
+  input: __S(64, __c8, 0) as any as S.Schema<CreateProgressUpdateStreamRequest>,
+  output: __S(32, __c4, 0) as any as S.Schema<CreateProgressUpdateStreamResult>,
   errors: [
     AccessDeniedException,
     DryRunOperation,
@@ -589,8 +589,8 @@ export const deleteProgressUpdateStream: API.OperationMethod<
   DeleteProgressUpdateStreamError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(9, __c1, 1) as any as S.Schema<DeleteProgressUpdateStreamRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<DeleteProgressUpdateStreamResult>,
+  input: __S(72, __c9, 0) as any as S.Schema<DeleteProgressUpdateStreamRequest>,
+  output: __S(32, __c4, 0) as any as S.Schema<DeleteProgressUpdateStreamResult>,
   errors: [
     AccessDeniedException,
     DryRunOperation,
@@ -626,8 +626,8 @@ export const describeApplicationState: API.OperationMethod<
   DescribeApplicationStateError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(10, __c1, 2) as any as S.Schema<DescribeApplicationStateRequest>,
-  output: __S(11, __c1, 3) as any as S.Schema<DescribeApplicationStateResult>,
+  input: __S(80, __c10, 0) as any as S.Schema<DescribeApplicationStateRequest>,
+  output: __S(81, __c10, 1) as any as S.Schema<DescribeApplicationStateResult>,
   errors: [
     AccessDeniedException,
     HomeRegionNotSetException,
@@ -661,8 +661,8 @@ export const describeMigrationTask: API.OperationMethod<
   DescribeMigrationTaskError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(12, __c1, 4) as any as S.Schema<DescribeMigrationTaskRequest>,
-  output: __S(17, __c2, 1) as any as S.Schema<DescribeMigrationTaskResult>,
+  input: __S(88, __c11, 0) as any as S.Schema<DescribeMigrationTaskRequest>,
+  output: __S(90, __c11, 2) as any as S.Schema<DescribeMigrationTaskResult>,
   errors: [
     AccessDeniedException,
     HomeRegionNotSetException,
@@ -708,8 +708,8 @@ export const disassociateCreatedArtifact: API.OperationMethod<
   DisassociateCreatedArtifactError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(18, __c2, 2) as any as S.Schema<DisassociateCreatedArtifactRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<DisassociateCreatedArtifactResult>,
+  input: __S(112, __c14, 0) as any as S.Schema<DisassociateCreatedArtifactRequest>,
+  output: __S(32, __c4, 0) as any as S.Schema<DisassociateCreatedArtifactResult>,
   errors: [
     AccessDeniedException,
     DryRunOperation,
@@ -747,8 +747,8 @@ export const disassociateDiscoveredResource: API.OperationMethod<
   DisassociateDiscoveredResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(19, __c2, 3) as any as S.Schema<DisassociateDiscoveredResourceRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<DisassociateDiscoveredResourceResult>,
+  input: __S(120, __c15, 0) as any as S.Schema<DisassociateDiscoveredResourceRequest>,
+  output: __S(32, __c4, 0) as any as S.Schema<DisassociateDiscoveredResourceResult>,
   errors: [
     AccessDeniedException,
     DryRunOperation,
@@ -784,8 +784,8 @@ export const disassociateSourceResource: API.OperationMethod<
   DisassociateSourceResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(20, __c2, 4) as any as S.Schema<DisassociateSourceResourceRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<DisassociateSourceResourceResult>,
+  input: __S(128, __c16, 0) as any as S.Schema<DisassociateSourceResourceRequest>,
+  output: __S(32, __c4, 0) as any as S.Schema<DisassociateSourceResourceResult>,
   errors: [
     AccessDeniedException,
     DryRunOperation,
@@ -825,8 +825,8 @@ export const importMigrationTask: API.OperationMethod<
   ImportMigrationTaskError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(21, __c2, 5) as any as S.Schema<ImportMigrationTaskRequest>,
-  output: __S(2, __c0, 2) as any as S.Schema<ImportMigrationTaskResult>,
+  input: __S(136, __c17, 0) as any as S.Schema<ImportMigrationTaskRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<ImportMigrationTaskResult>,
   errors: [
     AccessDeniedException,
     DryRunOperation,
@@ -863,8 +863,8 @@ export const listApplicationStates: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   ApplicationState
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(23, __c2, 7) as any as S.Schema<ListApplicationStatesRequest>,
-  output: __S(26, __c3, 2) as any as S.Schema<ListApplicationStatesResult>,
+  input: __S(145, __c18, 1) as any as S.Schema<ListApplicationStatesRequest>,
+  output: __S(148, __c18, 4) as any as S.Schema<ListApplicationStatesResult>,
   errors: [
     AccessDeniedException,
     HomeRegionNotSetException,
@@ -912,8 +912,8 @@ export const listCreatedArtifacts: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   CreatedArtifact
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(27, __c3, 3) as any as S.Schema<ListCreatedArtifactsRequest>,
-  output: __S(29, __c3, 5) as any as S.Schema<ListCreatedArtifactsResult>,
+  input: __S(152, __c19, 0) as any as S.Schema<ListCreatedArtifactsRequest>,
+  output: __S(154, __c19, 2) as any as S.Schema<ListCreatedArtifactsResult>,
   errors: [
     AccessDeniedException,
     HomeRegionNotSetException,
@@ -953,8 +953,8 @@ export const listDiscoveredResources: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   DiscoveredResource
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(30, __c3, 6) as any as S.Schema<ListDiscoveredResourcesRequest>,
-  output: __S(32, __c4, 0) as any as S.Schema<ListDiscoveredResourcesResult>,
+  input: __S(160, __c20, 0) as any as S.Schema<ListDiscoveredResourcesRequest>,
+  output: __S(162, __c20, 2) as any as S.Schema<ListDiscoveredResourcesResult>,
   errors: [
     AccessDeniedException,
     HomeRegionNotSetException,
@@ -1003,8 +1003,8 @@ export const listMigrationTasks: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   MigrationTaskSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(33, __c4, 1) as any as S.Schema<ListMigrationTasksRequest>,
-  output: __S(36, __c4, 4) as any as S.Schema<ListMigrationTasksResult>,
+  input: __S(168, __c21, 0) as any as S.Schema<ListMigrationTasksRequest>,
+  output: __S(171, __c21, 3) as any as S.Schema<ListMigrationTasksResult>,
   errors: [
     AccessDeniedException,
     HomeRegionNotSetException,
@@ -1045,8 +1045,8 @@ export const listMigrationTaskUpdates: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   MigrationTaskUpdate
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(37, __c4, 5) as any as S.Schema<ListMigrationTaskUpdatesRequest>,
-  output: __S(40, __c5, 0) as any as S.Schema<ListMigrationTaskUpdatesResult>,
+  input: __S(176, __c22, 0) as any as S.Schema<ListMigrationTaskUpdatesRequest>,
+  output: __S(179, __c22, 3) as any as S.Schema<ListMigrationTaskUpdatesResult>,
   errors: [
     AccessDeniedException,
     InternalServerError,
@@ -1084,8 +1084,8 @@ export const listProgressUpdateStreams: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   ProgressUpdateStreamSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(41, __c5, 1) as any as S.Schema<ListProgressUpdateStreamsRequest>,
-  output: __S(44, __c5, 4) as any as S.Schema<ListProgressUpdateStreamsResult>,
+  input: __S(184, __c23, 0) as any as S.Schema<ListProgressUpdateStreamsRequest>,
+  output: __S(187, __c23, 3) as any as S.Schema<ListProgressUpdateStreamsResult>,
   errors: [
     AccessDeniedException,
     HomeRegionNotSetException,
@@ -1124,8 +1124,8 @@ export const listSourceResources: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   SourceResource
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(45, __c5, 5) as any as S.Schema<ListSourceResourcesRequest>,
-  output: __S(47, __c5, 7) as any as S.Schema<ListSourceResourcesResult>,
+  input: __S(192, __c24, 0) as any as S.Schema<ListSourceResourcesRequest>,
+  output: __S(194, __c24, 2) as any as S.Schema<ListSourceResourcesResult>,
   errors: [
     AccessDeniedException,
     InternalServerError,
@@ -1169,8 +1169,8 @@ export const notifyApplicationState: API.OperationMethod<
   NotifyApplicationStateError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(48, __c6, 0) as any as S.Schema<NotifyApplicationStateRequest>,
-  output: __S(2, __c0, 2) as any as S.Schema<NotifyApplicationStateResult>,
+  input: __S(200, __c25, 0) as any as S.Schema<NotifyApplicationStateRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<NotifyApplicationStateResult>,
   errors: [
     AccessDeniedException,
     DryRunOperation,
@@ -1218,8 +1218,8 @@ export const notifyMigrationTaskState: API.OperationMethod<
   NotifyMigrationTaskStateError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(49, __c6, 1) as any as S.Schema<NotifyMigrationTaskStateRequest>,
-  output: __S(2, __c0, 2) as any as S.Schema<NotifyMigrationTaskStateResult>,
+  input: __S(208, __c26, 0) as any as S.Schema<NotifyMigrationTaskStateRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<NotifyMigrationTaskStateResult>,
   errors: [
     AccessDeniedException,
     DryRunOperation,
@@ -1273,8 +1273,8 @@ export const putResourceAttributes: API.OperationMethod<
   PutResourceAttributesError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(50, __c6, 2) as any as S.Schema<PutResourceAttributesRequest>,
-  output: __S(2, __c0, 2) as any as S.Schema<PutResourceAttributesResult>,
+  input: __S(216, __c27, 0) as any as S.Schema<PutResourceAttributesRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<PutResourceAttributesResult>,
   errors: [
     AccessDeniedException,
     DryRunOperation,
@@ -1296,56 +1296,72 @@ function __c0(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({ Name: S.String, Description: S.optional(S.String) }),
-      ).annotate({ identifier: "CreatedArtifact" });
-    case 1:
-      return S.suspend(() =>
         S.Struct({
           ProgressUpdateStream: S.String,
           MigrationTaskName: S.String,
-          CreatedArtifact: __S(0, __c0, 0),
+          CreatedArtifact: __S(16, __c2, 0),
           DryRun: S.optional(S.Boolean),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "AssociateCreatedArtifactRequest",
       });
-    case 2:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "AssociateCreatedArtifactResult",
       });
-    case 3:
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
-        S.Struct({ ConfigurationId: S.String, Description: S.optional(S.String) }),
-      ).annotate({ identifier: "DiscoveredResource" });
-    case 4:
+        S.Struct({ Name: S.String, Description: S.optional(S.String) }),
+      ).annotate({ identifier: "CreatedArtifact" });
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           ProgressUpdateStream: S.String,
           MigrationTaskName: S.String,
-          DiscoveredResource: __S(3, __c0, 3),
+          DiscoveredResource: __S(40, __c5, 0),
           DryRun: S.optional(S.Boolean),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "AssociateDiscoveredResourceRequest",
       });
-    case 5:
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "AssociateDiscoveredResourceResult",
       });
-    case 6:
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
-        S.Struct({
-          Name: S.String,
-          Description: S.optional(S.String),
-          StatusDetail: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "SourceResource" });
-    case 7:
+        S.Struct({ ConfigurationId: S.String, Description: S.optional(S.String) }),
+      ).annotate({ identifier: "DiscoveredResource" });
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           ProgressUpdateStream: S.String,
           MigrationTaskName: S.String,
-          SourceResource: __S(6, __c0, 6),
+          SourceResource: __S(56, __c7, 0),
           DryRun: S.optional(S.Boolean),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
@@ -1353,7 +1369,19 @@ function __c0(j: number): any {
       });
   }
 }
-function __c1(j: number): any {
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          Name: S.String,
+          Description: S.optional(S.String),
+          StatusDetail: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "SourceResource" });
+  }
+}
+function __c8(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1363,7 +1391,11 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "CreateProgressUpdateStreamRequest",
       });
-    case 1:
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ ProgressUpdateStreamName: S.String, DryRun: S.optional(S.Boolean) }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
@@ -1371,7 +1403,11 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "DeleteProgressUpdateStreamRequest",
       });
-    case 2:
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ ApplicationId: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
@@ -1379,7 +1415,7 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "DescribeApplicationStateRequest",
       });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           ApplicationStatus: S.optional(S.String),
@@ -1388,7 +1424,11 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "DescribeApplicationStateResult",
       });
-    case 4:
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ ProgressUpdateStream: S.String, MigrationTaskName: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
@@ -1396,7 +1436,25 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "DescribeMigrationTaskRequest",
       });
-    case 5:
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          ProgressUpdateStream: S.optional(S.String),
+          MigrationTaskName: S.optional(S.String),
+          Task: S.optional(__S(96, __c12, 0)),
+          UpdateDateTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          ResourceAttributeList: S.optional(__S(105, __c13, 1)),
+        }),
+      ).annotate({ identifier: "MigrationTask" });
+    case 2:
+      return S.suspend(() => S.Struct({ MigrationTask: S.optional(__S(89, __c11, 1)) })).annotate({
+        identifier: "DescribeMigrationTaskResult",
+      });
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           Status: S.String,
@@ -1404,31 +1462,21 @@ function __c1(j: number): any {
           ProgressPercent: S.optional(S.Number),
         }),
       ).annotate({ identifier: "Task" });
-    case 6:
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() => S.Struct({ Type: S.String, Value: S.String })).annotate({
         identifier: "ResourceAttribute",
       });
-    case 7:
-      return S.Array(__S(14, __c1, 6));
+    case 1:
+      return S.Array(__S(104, __c13, 0));
   }
 }
-function __c2(j: number): any {
+function __c14(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() =>
-        S.Struct({
-          ProgressUpdateStream: S.optional(S.String),
-          MigrationTaskName: S.optional(S.String),
-          Task: S.optional(__S(13, __c1, 5)),
-          UpdateDateTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          ResourceAttributeList: S.optional(__S(15, __c1, 7)),
-        }),
-      ).annotate({ identifier: "MigrationTask" });
-    case 1:
-      return S.suspend(() => S.Struct({ MigrationTask: S.optional(__S(16, __c2, 0)) })).annotate({
-        identifier: "DescribeMigrationTaskResult",
-      });
-    case 2:
       return S.suspend(() =>
         S.Struct({
           ProgressUpdateStream: S.String,
@@ -1439,7 +1487,11 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "DisassociateCreatedArtifactRequest",
       });
-    case 3:
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           ProgressUpdateStream: S.String,
@@ -1450,7 +1502,11 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "DisassociateDiscoveredResourceRequest",
       });
-    case 4:
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           ProgressUpdateStream: S.String,
@@ -1461,7 +1517,11 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "DisassociateSourceResourceRequest",
       });
-    case 5:
+  }
+}
+function __c17(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           ProgressUpdateStream: S.String,
@@ -1471,23 +1531,23 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "ImportMigrationTaskRequest",
       });
-    case 6:
+  }
+}
+function __c18(j: number): any {
+  switch (j) {
+    case 0:
       return S.Array(S.String);
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          ApplicationIds: S.optional(__S(22, __c2, 6)),
+          ApplicationIds: S.optional(__S(144, __c18, 0)),
           NextToken: S.optional(S.String),
           MaxResults: S.optional(S.Number),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "ListApplicationStatesRequest",
       });
-  }
-}
-function __c3(j: number): any {
-  switch (j) {
-    case 0:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           ApplicationId: S.optional(S.String),
@@ -1495,18 +1555,22 @@ function __c3(j: number): any {
           LastUpdatedTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
         }),
       ).annotate({ identifier: "ApplicationState" });
-    case 1:
-      return S.Array(__S(24, __c3, 0));
-    case 2:
+    case 3:
+      return S.Array(__S(146, __c18, 2));
+    case 4:
       return S.suspend(() =>
         S.Struct({
-          ApplicationStateList: S.optional(__S(25, __c3, 1)),
+          ApplicationStateList: S.optional(__S(147, __c18, 3)),
           NextToken: S.optional(S.String),
         }),
       ).annotate({
         identifier: "ListApplicationStatesResult",
       });
-    case 3:
+  }
+}
+function __c19(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           ProgressUpdateStream: S.String,
@@ -1517,18 +1581,22 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "ListCreatedArtifactsRequest",
       });
-    case 4:
-      return S.Array(__S(0, __c0, 0));
-    case 5:
+    case 1:
+      return S.Array(__S(16, __c2, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           NextToken: S.optional(S.String),
-          CreatedArtifactList: S.optional(__S(28, __c3, 4)),
+          CreatedArtifactList: S.optional(__S(153, __c19, 1)),
         }),
       ).annotate({
         identifier: "ListCreatedArtifactsResult",
       });
-    case 6:
+  }
+}
+function __c20(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           ProgressUpdateStream: S.String,
@@ -1539,22 +1607,22 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "ListDiscoveredResourcesRequest",
       });
-    case 7:
-      return S.Array(__S(3, __c0, 3));
-  }
-}
-function __c4(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
+      return S.Array(__S(40, __c5, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           NextToken: S.optional(S.String),
-          DiscoveredResourceList: S.optional(__S(31, __c3, 7)),
+          DiscoveredResourceList: S.optional(__S(161, __c20, 1)),
         }),
       ).annotate({
         identifier: "ListDiscoveredResourcesResult",
       });
-    case 1:
+  }
+}
+function __c21(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           NextToken: S.optional(S.String),
@@ -1564,7 +1632,7 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "ListMigrationTasksRequest",
       });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           ProgressUpdateStream: S.optional(S.String),
@@ -1575,16 +1643,20 @@ function __c4(j: number): any {
           UpdateDateTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
         }),
       ).annotate({ identifier: "MigrationTaskSummary" });
+    case 2:
+      return S.Array(__S(169, __c21, 1));
     case 3:
-      return S.Array(__S(34, __c4, 2));
-    case 4:
       return S.suspend(() =>
         S.Struct({
           NextToken: S.optional(S.String),
-          MigrationTaskSummaryList: S.optional(__S(35, __c4, 3)),
+          MigrationTaskSummaryList: S.optional(__S(170, __c21, 2)),
         }),
       ).annotate({ identifier: "ListMigrationTasksResult" });
-    case 5:
+  }
+}
+function __c22(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           ProgressUpdateStream: S.String,
@@ -1595,30 +1667,30 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "ListMigrationTaskUpdatesRequest",
       });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           UpdateDateTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           UpdateType: S.optional(S.String),
-          MigrationTaskState: S.optional(__S(13, __c1, 5)),
+          MigrationTaskState: S.optional(__S(96, __c12, 0)),
         }),
       ).annotate({ identifier: "MigrationTaskUpdate" });
-    case 7:
-      return S.Array(__S(38, __c4, 6));
-  }
-}
-function __c5(j: number): any {
-  switch (j) {
-    case 0:
+    case 2:
+      return S.Array(__S(177, __c22, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
           NextToken: S.optional(S.String),
-          MigrationTaskUpdateList: S.optional(__S(39, __c4, 7)),
+          MigrationTaskUpdateList: S.optional(__S(178, __c22, 2)),
         }),
       ).annotate({
         identifier: "ListMigrationTaskUpdatesResult",
       });
-    case 1:
+  }
+}
+function __c23(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ NextToken: S.optional(S.String), MaxResults: S.optional(S.Number) }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
@@ -1626,24 +1698,28 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "ListProgressUpdateStreamsRequest",
       });
-    case 2:
+    case 1:
       return S.suspend(() => S.Struct({ ProgressUpdateStreamName: S.optional(S.String) })).annotate(
         {
           identifier: "ProgressUpdateStreamSummary",
         },
       );
+    case 2:
+      return S.Array(__S(185, __c23, 1));
     case 3:
-      return S.Array(__S(42, __c5, 2));
-    case 4:
       return S.suspend(() =>
         S.Struct({
-          ProgressUpdateStreamSummaryList: S.optional(__S(43, __c5, 3)),
+          ProgressUpdateStreamSummaryList: S.optional(__S(186, __c23, 2)),
           NextToken: S.optional(S.String),
         }),
       ).annotate({
         identifier: "ListProgressUpdateStreamsResult",
       });
-    case 5:
+  }
+}
+function __c24(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           ProgressUpdateStream: S.String,
@@ -1654,20 +1730,20 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "ListSourceResourcesRequest",
       });
-    case 6:
-      return S.Array(__S(6, __c0, 6));
-    case 7:
+    case 1:
+      return S.Array(__S(56, __c7, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           NextToken: S.optional(S.String),
-          SourceResourceList: S.optional(__S(46, __c5, 6)),
+          SourceResourceList: S.optional(__S(193, __c24, 1)),
         }),
       ).annotate({
         identifier: "ListSourceResourcesResult",
       });
   }
 }
-function __c6(j: number): any {
+function __c25(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1680,12 +1756,16 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "NotifyApplicationStateRequest",
       });
-    case 1:
+  }
+}
+function __c26(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           ProgressUpdateStream: S.String,
           MigrationTaskName: S.String,
-          Task: __S(13, __c1, 5),
+          Task: __S(96, __c12, 0),
           UpdateDateTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
           NextUpdateSeconds: S.Number,
           DryRun: S.optional(S.Boolean),
@@ -1693,12 +1773,16 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "NotifyMigrationTaskStateRequest",
       });
-    case 2:
+  }
+}
+function __c27(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           ProgressUpdateStream: S.String,
           MigrationTaskName: S.String,
-          ResourceAttributeList: __S(15, __c1, 7),
+          ResourceAttributeList: __S(105, __c13, 1),
           DryRun: S.optional(S.Boolean),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
@@ -1706,7 +1790,6 @@ function __c6(j: number): any {
       });
   }
 }
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

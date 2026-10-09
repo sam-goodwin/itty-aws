@@ -126,7 +126,7 @@ export class ValidationException
       message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
       reason: /*@__PURE__*/ S.optional(S.String),
       programSetValidationFailures: /*@__PURE__*/ S.optional(
-        /*@__PURE__*/ S.suspend(() => __S(72, __c9, 0)).annotate({
+        /*@__PURE__*/ S.suspend(() => __S(370, __c23, 2)).annotate({
           identifier: "ProgramSetValidationFailuresList",
         }),
       ),
@@ -527,8 +527,8 @@ export const cancelJob: API.OperationMethod<
   CancelJobError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(0, __c0, 0) as any as S.Schema<CancelJobRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<CancelJobResponse>,
+  input: __S(384, __c24, 0) as any as S.Schema<CancelJobRequest>,
+  output: __S(385, __c24, 1) as any as S.Schema<CancelJobResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -559,8 +559,8 @@ export const cancelQuantumTask: API.OperationMethod<
   CancelQuantumTaskError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2, __c0, 2) as any as S.Schema<CancelQuantumTaskRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<CancelQuantumTaskResponse>,
+  input: __S(0, __c0, 0) as any as S.Schema<CancelQuantumTaskRequest>,
+  output: __S(1, __c0, 1) as any as S.Schema<CancelQuantumTaskResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -593,8 +593,8 @@ export const createJob: API.OperationMethod<
   CreateJobError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(20, __c2, 4) as any as S.Schema<CreateJobRequest>,
-  output: __S(21, __c2, 5) as any as S.Schema<CreateJobResponse>,
+  input: __S(16, __c1, 0) as any as S.Schema<CreateJobRequest>,
+  output: __S(17, __c1, 1) as any as S.Schema<CreateJobResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -628,8 +628,8 @@ export const createQuantumTask: API.OperationMethod<
   CreateQuantumTaskError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(23, __c2, 7) as any as S.Schema<CreateQuantumTaskRequest>,
-  output: __S(24, __c3, 0) as any as S.Schema<CreateQuantumTaskResponse>,
+  input: __S(80, __c5, 0) as any as S.Schema<CreateQuantumTaskRequest>,
+  output: __S(81, __c5, 1) as any as S.Schema<CreateQuantumTaskResponse>,
   errors: [
     AccessDeniedException,
     DeviceOfflineException,
@@ -660,8 +660,8 @@ export const createSpendingLimit: API.OperationMethod<
   CreateSpendingLimitError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(26, __c3, 2) as any as S.Schema<CreateSpendingLimitRequest>,
-  output: __S(27, __c3, 3) as any as S.Schema<CreateSpendingLimitResponse>,
+  input: __S(112, __c7, 0) as any as S.Schema<CreateSpendingLimitRequest>,
+  output: __S(113, __c7, 1) as any as S.Schema<CreateSpendingLimitResponse>,
   errors: [
     AccessDeniedException,
     DeviceRetiredException,
@@ -690,8 +690,8 @@ export const deleteSpendingLimit: API.OperationMethod<
   DeleteSpendingLimitError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(28, __c3, 4) as any as S.Schema<DeleteSpendingLimitRequest>,
-  output: __S(29, __c3, 5) as any as S.Schema<DeleteSpendingLimitResponse>,
+  input: __S(144, __c9, 0) as any as S.Schema<DeleteSpendingLimitRequest>,
+  output: __S(160, __c10, 0) as any as S.Schema<DeleteSpendingLimitResponse>,
   errors: [
     AccessDeniedException,
     InternalServiceException,
@@ -722,8 +722,8 @@ export const getDevice: API.OperationMethod<
   GetDeviceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(30, __c3, 6) as any as S.Schema<GetDeviceRequest>,
-  output: __S(33, __c4, 1) as any as S.Schema<GetDeviceResponse>,
+  input: __S(176, __c11, 0) as any as S.Schema<GetDeviceRequest>,
+  output: __S(179, __c11, 3) as any as S.Schema<GetDeviceResponse>,
   errors: [
     AccessDeniedException,
     InternalServiceException,
@@ -752,8 +752,8 @@ export const getJob: API.OperationMethod<
   GetJobError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(35, __c4, 3) as any as S.Schema<GetJobRequest>,
-  output: __S(39, __c4, 7) as any as S.Schema<GetJobResponse>,
+  input: __S(192, __c12, 0) as any as S.Schema<GetJobRequest>,
+  output: __S(196, __c12, 4) as any as S.Schema<GetJobResponse>,
   errors: [
     AccessDeniedException,
     InternalServiceException,
@@ -782,8 +782,8 @@ export const getQuantumTask: API.OperationMethod<
   GetQuantumTaskError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(40, __c5, 0) as any as S.Schema<GetQuantumTaskRequest>,
-  output: __S(43, __c5, 3) as any as S.Schema<GetQuantumTaskResponse>,
+  input: __S(208, __c13, 0) as any as S.Schema<GetQuantumTaskRequest>,
+  output: __S(211, __c13, 3) as any as S.Schema<GetQuantumTaskResponse>,
   errors: [
     AccessDeniedException,
     InternalServiceException,
@@ -810,8 +810,8 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(44, __c5, 4) as any as S.Schema<ListTagsForResourceRequest>,
-  output: __S(45, __c5, 5) as any as S.Schema<ListTagsForResourceResponse>,
+  input: __S(224, __c14, 0) as any as S.Schema<ListTagsForResourceRequest>,
+  output: __S(225, __c14, 1) as any as S.Schema<ListTagsForResourceResponse>,
   errors: [InternalServiceException, ResourceNotFoundException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -834,8 +834,8 @@ export const searchDevices: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   DeviceSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(48, __c6, 0) as any as S.Schema<SearchDevicesRequest>,
-  output: __S(51, __c6, 3) as any as S.Schema<SearchDevicesResponse>,
+  input: __S(242, __c15, 2) as any as S.Schema<SearchDevicesRequest>,
+  output: __S(245, __c15, 5) as any as S.Schema<SearchDevicesResponse>,
   errors: [
     AccessDeniedException,
     InternalServiceException,
@@ -869,8 +869,8 @@ export const searchJobs: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   JobSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(54, __c6, 6) as any as S.Schema<SearchJobsRequest>,
-  output: __S(57, __c7, 1) as any as S.Schema<SearchJobsResponse>,
+  input: __S(256, __c16, 0) as any as S.Schema<SearchJobsRequest>,
+  output: __S(259, __c16, 3) as any as S.Schema<SearchJobsResponse>,
   errors: [
     AccessDeniedException,
     InternalServiceException,
@@ -904,8 +904,8 @@ export const searchQuantumTasks: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   QuantumTaskSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(58, __c7, 2) as any as S.Schema<SearchQuantumTasksRequest>,
-  output: __S(61, __c7, 5) as any as S.Schema<SearchQuantumTasksResponse>,
+  input: __S(288, __c18, 0) as any as S.Schema<SearchQuantumTasksRequest>,
+  output: __S(291, __c18, 3) as any as S.Schema<SearchQuantumTasksResponse>,
   errors: [
     AccessDeniedException,
     InternalServiceException,
@@ -939,8 +939,8 @@ export const searchSpendingLimits: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   SpendingLimitSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(64, __c8, 0) as any as S.Schema<SearchSpendingLimitsRequest>,
-  output: __S(67, __c8, 3) as any as S.Schema<SearchSpendingLimitsResponse>,
+  input: __S(306, __c19, 2) as any as S.Schema<SearchSpendingLimitsRequest>,
+  output: __S(309, __c19, 5) as any as S.Schema<SearchSpendingLimitsResponse>,
   errors: [
     AccessDeniedException,
     InternalServiceException,
@@ -972,8 +972,8 @@ export const tagResource: API.OperationMethod<
   TagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(68, __c8, 4) as any as S.Schema<TagResourceRequest>,
-  output: __S(29, __c3, 5) as any as S.Schema<TagResourceResponse>,
+  input: __S(320, __c20, 0) as any as S.Schema<TagResourceRequest>,
+  output: __S(160, __c10, 0) as any as S.Schema<TagResourceResponse>,
   errors: [InternalServiceException, ResourceNotFoundException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -994,8 +994,8 @@ export const untagResource: API.OperationMethod<
   UntagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(69, __c8, 5) as any as S.Schema<UntagResourceRequest>,
-  output: __S(29, __c3, 5) as any as S.Schema<UntagResourceResponse>,
+  input: __S(336, __c21, 0) as any as S.Schema<UntagResourceRequest>,
+  output: __S(160, __c10, 0) as any as S.Schema<UntagResourceResponse>,
   errors: [InternalServiceException, ResourceNotFoundException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1018,8 +1018,8 @@ export const updateSpendingLimit: API.OperationMethod<
   UpdateSpendingLimitError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(70, __c8, 6) as any as S.Schema<UpdateSpendingLimitRequest>,
-  output: __S(29, __c3, 5) as any as S.Schema<UpdateSpendingLimitResponse>,
+  input: __S(352, __c22, 0) as any as S.Schema<UpdateSpendingLimitRequest>,
+  output: __S(160, __c10, 0) as any as S.Schema<UpdateSpendingLimitResponse>,
   errors: [
     AccessDeniedException,
     InternalServiceException,
@@ -1037,23 +1037,6 @@ function __c0(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({ jobArn: S.String.pipe(T.HttpLabel("jobArn")) }).pipe(
-          T.all(
-            T.Http({ method: "PUT", uri: "/job/{jobArn}/cancel" }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({ identifier: "CancelJobRequest" });
-    case 1:
-      return S.suspend(() => S.Struct({ jobArn: S.String, cancellationStatus: S.String })).annotate(
-        { identifier: "CancelJobResponse" },
-      );
-    case 2:
-      return S.suspend(() =>
         S.Struct({
           quantumTaskArn: S.String.pipe(T.HttpLabel("quantumTaskArn")),
           clientToken: S.String.pipe(T.IdempotencyToken()),
@@ -1068,62 +1051,104 @@ function __c0(j: number): any {
           ),
         ),
       ).annotate({ identifier: "CancelQuantumTaskRequest" });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({ quantumTaskArn: S.String, cancellationStatus: S.String }),
       ).annotate({
         identifier: "CancelQuantumTaskResponse",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({ entryPoint: S.String, s3Uri: S.String, compressionType: S.optional(S.String) }),
-      ).annotate({ identifier: "ScriptModeConfig" });
-    case 5:
-      return S.suspend(() => S.Struct({ uri: S.String })).annotate({
-        identifier: "ContainerImage",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          scriptModeConfig: S.optional(__S(4, __c0, 4)),
-          containerImage: S.optional(__S(5, __c0, 5)),
-        }),
-      ).annotate({ identifier: "AlgorithmSpecification" });
-    case 7:
-      return S.suspend(() => S.Struct({ s3Uri: S.String })).annotate({
-        identifier: "S3DataSource",
       });
   }
 }
 function __c1(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => S.Struct({ s3DataSource: __S(7, __c0, 7) })).annotate({
-        identifier: "DataSource",
+      return S.suspend(() =>
+        S.Struct({
+          clientToken: S.String.pipe(T.IdempotencyToken()),
+          algorithmSpecification: __S(66, __c4, 2),
+          inputDataConfig: S.optional(__S(70, __c4, 6)),
+          outputDataConfig: __S(71, __c4, 7),
+          checkpointConfig: S.optional(__S(72, __c4, 8)),
+          jobName: S.String,
+          roleArn: S.String,
+          stoppingCondition: S.optional(__S(73, __c4, 9)),
+          instanceConfig: __S(74, __c4, 10),
+          hyperParameters: S.optional(__S(75, __c4, 11)),
+          deviceConfig: __S(76, __c4, 12),
+          tags: S.optional(__S(32, __c2, 0)),
+          associations: S.optional(__S(49, __c3, 1)),
+        }).pipe(T.all(T.Http({ method: "POST", uri: "/job" }), svc, auth, proto, ver, rules)),
+      ).annotate({ identifier: "CreateJobRequest" });
+    case 1:
+      return S.suspend(() => S.Struct({ jobArn: S.String })).annotate({
+        identifier: "CreateJobResponse",
+      });
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({ arn: S.String, type: S.String })).annotate({
+        identifier: "Association",
       });
     case 1:
+      return S.Array(__S(48, __c3, 0));
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ entryPoint: S.String, s3Uri: S.String, compressionType: S.optional(S.String) }),
+      ).annotate({ identifier: "ScriptModeConfig" });
+    case 1:
+      return S.suspend(() => S.Struct({ uri: S.String })).annotate({
+        identifier: "ContainerImage",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          scriptModeConfig: S.optional(__S(64, __c4, 0)),
+          containerImage: S.optional(__S(65, __c4, 1)),
+        }),
+      ).annotate({ identifier: "AlgorithmSpecification" });
+    case 3:
+      return S.suspend(() => S.Struct({ s3Uri: S.String })).annotate({
+        identifier: "S3DataSource",
+      });
+    case 4:
+      return S.suspend(() => S.Struct({ s3DataSource: __S(67, __c4, 3) })).annotate({
+        identifier: "DataSource",
+      });
+    case 5:
       return S.suspend(() =>
         S.Struct({
           channelName: S.String,
           contentType: S.optional(S.String),
-          dataSource: __S(8, __c1, 0),
+          dataSource: __S(68, __c4, 4),
         }),
       ).annotate({ identifier: "InputFileConfig" });
-    case 2:
-      return S.Array(__S(9, __c1, 1));
-    case 3:
+    case 6:
+      return S.Array(__S(69, __c4, 5));
+    case 7:
       return S.suspend(() =>
         S.Struct({ kmsKeyId: S.optional(S.String), s3Path: S.String }),
       ).annotate({ identifier: "JobOutputDataConfig" });
-    case 4:
+    case 8:
       return S.suspend(() =>
         S.Struct({ localPath: S.optional(S.String), s3Uri: S.String }),
       ).annotate({ identifier: "JobCheckpointConfig" });
-    case 5:
+    case 9:
       return S.suspend(() => S.Struct({ maxRuntimeInSeconds: S.optional(S.Number) })).annotate({
         identifier: "JobStoppingCondition",
       });
-    case 6:
+    case 10:
       return S.suspend(() =>
         S.Struct({
           instanceType: S.String,
@@ -1131,49 +1156,17 @@ function __c1(j: number): any {
           instanceCount: S.optional(S.Number),
         }),
       ).annotate({ identifier: "InstanceConfig" });
-    case 7:
+    case 11:
       return S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
-  }
-}
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
+    case 12:
       return S.suspend(() => S.Struct({ device: S.String })).annotate({
         identifier: "DeviceConfig",
       });
-    case 1:
-      return S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
-    case 2:
-      return S.suspend(() => S.Struct({ arn: S.String, type: S.String })).annotate({
-        identifier: "Association",
-      });
-    case 3:
-      return S.Array(__S(18, __c2, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          clientToken: S.String.pipe(T.IdempotencyToken()),
-          algorithmSpecification: __S(6, __c0, 6),
-          inputDataConfig: S.optional(__S(10, __c1, 2)),
-          outputDataConfig: __S(11, __c1, 3),
-          checkpointConfig: S.optional(__S(12, __c1, 4)),
-          jobName: S.String,
-          roleArn: S.String,
-          stoppingCondition: S.optional(__S(13, __c1, 5)),
-          instanceConfig: __S(14, __c1, 6),
-          hyperParameters: S.optional(__S(15, __c1, 7)),
-          deviceConfig: __S(16, __c2, 0),
-          tags: S.optional(__S(17, __c2, 1)),
-          associations: S.optional(__S(19, __c2, 3)),
-        }).pipe(T.all(T.Http({ method: "POST", uri: "/job" }), svc, auth, proto, ver, rules)),
-      ).annotate({ identifier: "CreateJobRequest" });
-    case 5:
-      return S.suspend(() => S.Struct({ jobArn: S.String })).annotate({
-        identifier: "CreateJobResponse",
-      });
-    case 6:
-      return S.Union([/*@__PURE__*/ S.Struct({ enabled: S.String })]);
-    case 7:
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           clientToken: S.String.pipe(T.IdempotencyToken()),
@@ -1183,48 +1176,62 @@ function __c2(j: number): any {
           outputS3Bucket: S.String,
           outputS3KeyPrefix: S.String,
           action: S.String,
-          tags: S.optional(__S(17, __c2, 1)),
+          tags: S.optional(__S(32, __c2, 0)),
           jobToken: S.optional(S.String),
-          associations: S.optional(__S(19, __c2, 3)),
-          experimentalCapabilities: S.optional(__S(22, __c2, 6)),
+          associations: S.optional(__S(49, __c3, 1)),
+          experimentalCapabilities: S.optional(__S(96, __c6, 0)),
         }).pipe(
           T.all(T.Http({ method: "POST", uri: "/quantum-task" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "CreateQuantumTaskRequest" });
-  }
-}
-function __c3(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() => S.Struct({ quantumTaskArn: S.String })).annotate({
         identifier: "CreateQuantumTaskResponse",
       });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          startAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-          endAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-        }),
-      ).annotate({ identifier: "TimePeriod" });
-    case 2:
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Union([/*@__PURE__*/ S.Struct({ enabled: S.String })]);
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           clientToken: S.String.pipe(T.IdempotencyToken()),
           deviceArn: S.String,
           spendingLimit: S.String,
-          timePeriod: S.optional(__S(25, __c3, 1)),
-          tags: S.optional(__S(17, __c2, 1)),
+          timePeriod: S.optional(__S(128, __c8, 0)),
+          tags: S.optional(__S(32, __c2, 0)),
         }).pipe(
           T.all(T.Http({ method: "POST", uri: "/spending-limit" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({
         identifier: "CreateSpendingLimitRequest",
       });
-    case 3:
+    case 1:
       return S.suspend(() => S.Struct({ spendingLimitArn: S.String })).annotate({
         identifier: "CreateSpendingLimitResponse",
       });
-    case 4:
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          startAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+          endAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+        }),
+      ).annotate({ identifier: "TimePeriod" });
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ spendingLimitArn: S.String.pipe(T.HttpLabel("spendingLimitArn")) }).pipe(
           T.all(
@@ -1239,11 +1246,19 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "DeleteSpendingLimitRequest",
       });
-    case 5:
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "DeleteSpendingLimitResponse",
       });
-    case 6:
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ deviceArn: S.String.pipe(T.HttpLabel("deviceArn")) }).pipe(
           T.all(
@@ -1256,17 +1271,13 @@ function __c3(j: number): any {
           ),
         ),
       ).annotate({ identifier: "GetDeviceRequest" });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({ queue: S.String, queueSize: S.String, queuePriority: S.optional(S.String) }),
       ).annotate({ identifier: "DeviceQueueInfo" });
-  }
-}
-function __c4(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(31, __c3, 7));
-    case 1:
+    case 2:
+      return S.Array(__S(177, __c11, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
           deviceArn: S.String,
@@ -1275,23 +1286,25 @@ function __c4(j: number): any {
           deviceType: S.String,
           deviceStatus: S.String,
           deviceCapabilities: S.String,
-          deviceQueueInfo: S.optional(__S(32, __c4, 0)),
+          deviceQueueInfo: S.optional(__S(178, __c11, 2)),
         }),
       ).annotate({ identifier: "GetDeviceResponse" });
-    case 2:
-      return S.Array(S.String);
-    case 3:
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           jobArn: S.String.pipe(T.HttpLabel("jobArn")),
-          additionalAttributeNames: S.optional(__S(34, __c4, 2)).pipe(
+          additionalAttributeNames: S.optional(__S(368, __c23, 0)).pipe(
             T.HttpQuery("additionalAttributeNames"),
           ),
         }).pipe(
           T.all(T.Http({ method: "GET", uri: "/job/{jobArn}" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "GetJobRequest" });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           eventType: S.optional(S.String),
@@ -1299,13 +1312,13 @@ function __c4(j: number): any {
           message: S.optional(S.String),
         }),
       ).annotate({ identifier: "JobEventDetails" });
-    case 5:
-      return S.Array(__S(36, __c4, 4));
-    case 6:
+    case 2:
+      return S.Array(__S(193, __c12, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({ queue: S.String, position: S.String, message: S.optional(S.String) }),
       ).annotate({ identifier: "HybridJobQueueInfo" });
-    case 7:
+    case 4:
       return S.suspend(() =>
         S.Struct({
           status: S.String,
@@ -1313,33 +1326,33 @@ function __c4(j: number): any {
           roleArn: S.String,
           failureReason: S.optional(S.String),
           jobName: S.String,
-          hyperParameters: S.optional(__S(15, __c1, 7)),
-          inputDataConfig: S.optional(__S(10, __c1, 2)),
-          outputDataConfig: __S(11, __c1, 3),
-          stoppingCondition: S.optional(__S(13, __c1, 5)),
-          checkpointConfig: S.optional(__S(12, __c1, 4)),
-          algorithmSpecification: __S(6, __c0, 6),
-          instanceConfig: __S(14, __c1, 6),
+          hyperParameters: S.optional(__S(75, __c4, 11)),
+          inputDataConfig: S.optional(__S(70, __c4, 6)),
+          outputDataConfig: __S(71, __c4, 7),
+          stoppingCondition: S.optional(__S(73, __c4, 9)),
+          checkpointConfig: S.optional(__S(72, __c4, 8)),
+          algorithmSpecification: __S(66, __c4, 2),
+          instanceConfig: __S(74, __c4, 10),
           createdAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
           startedAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
           endedAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
           billableDuration: S.optional(S.Number),
-          deviceConfig: S.optional(__S(16, __c2, 0)),
-          events: S.optional(__S(37, __c4, 5)),
-          tags: S.optional(__S(17, __c2, 1)),
-          queueInfo: S.optional(__S(38, __c4, 6)),
-          associations: S.optional(__S(19, __c2, 3)),
+          deviceConfig: S.optional(__S(76, __c4, 12)),
+          events: S.optional(__S(194, __c12, 2)),
+          tags: S.optional(__S(32, __c2, 0)),
+          queueInfo: S.optional(__S(195, __c12, 3)),
+          associations: S.optional(__S(49, __c3, 1)),
         }),
       ).annotate({ identifier: "GetJobResponse" });
   }
 }
-function __c5(j: number): any {
+function __c13(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           quantumTaskArn: S.String.pipe(T.HttpLabel("quantumTaskArn")),
-          additionalAttributeNames: S.optional(__S(34, __c4, 2)).pipe(
+          additionalAttributeNames: S.optional(__S(368, __c23, 0)).pipe(
             T.HttpQuery("additionalAttributeNames"),
           ),
         }).pipe(
@@ -1383,16 +1396,20 @@ function __c5(j: number): any {
           outputS3Directory: S.String,
           createdAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
           endedAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-          tags: S.optional(__S(17, __c2, 1)),
+          tags: S.optional(__S(32, __c2, 0)),
           jobArn: S.optional(S.String),
-          queueInfo: S.optional(__S(41, __c5, 1)),
-          associations: S.optional(__S(19, __c2, 3)),
+          queueInfo: S.optional(__S(209, __c13, 1)),
+          associations: S.optional(__S(49, __c3, 1)),
           numSuccessfulShots: S.optional(S.Number),
-          actionMetadata: S.optional(__S(42, __c5, 2)),
-          experimentalCapabilities: S.optional(__S(22, __c2, 6)),
+          actionMetadata: S.optional(__S(210, __c13, 2)),
+          experimentalCapabilities: S.optional(__S(96, __c6, 0)),
         }),
       ).annotate({ identifier: "GetQuantumTaskResponse" });
-    case 4:
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ resourceArn: S.String.pipe(T.HttpLabel("resourceArn")) }).pipe(
           T.all(
@@ -1407,29 +1424,29 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "ListTagsForResourceRequest",
       });
-    case 5:
-      return S.suspend(() => S.Struct({ tags: S.optional(__S(17, __c2, 1)) })).annotate({
+    case 1:
+      return S.suspend(() => S.Struct({ tags: S.optional(__S(32, __c2, 0)) })).annotate({
         identifier: "ListTagsForResourceResponse",
       });
-    case 6:
-      return S.suspend(() => S.Struct({ name: S.String, values: __S(34, __c4, 2) })).annotate({
-        identifier: "SearchDevicesFilter",
-      });
-    case 7:
-      return S.Array(__S(46, __c5, 6));
   }
 }
-function __c6(j: number): any {
+function __c15(j: number): any {
   switch (j) {
     case 0:
+      return S.suspend(() => S.Struct({ name: S.String, values: __S(368, __c23, 0) })).annotate({
+        identifier: "SearchDevicesFilter",
+      });
+    case 1:
+      return S.Array(__S(240, __c15, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           nextToken: S.optional(S.String),
           maxResults: S.optional(S.Number),
-          filters: __S(47, __c5, 7),
+          filters: __S(241, __c15, 1),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/devices" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "SearchDevicesRequest" });
-    case 1:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           deviceArn: S.String,
@@ -1439,27 +1456,25 @@ function __c6(j: number): any {
           deviceStatus: S.String,
         }),
       ).annotate({ identifier: "DeviceSummary" });
-    case 2:
-      return S.Array(__S(49, __c6, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({ devices: __S(50, __c6, 2), nextToken: S.optional(S.String) }),
-      ).annotate({ identifier: "SearchDevicesResponse" });
     case 4:
-      return S.suspend(() =>
-        S.Struct({ name: S.String, values: __S(34, __c4, 2), operator: S.String }),
-      ).annotate({ identifier: "SearchJobsFilter" });
+      return S.Array(__S(243, __c15, 3));
     case 5:
-      return S.Array(__S(52, __c6, 4));
-    case 6:
+      return S.suspend(() =>
+        S.Struct({ devices: __S(244, __c15, 4), nextToken: S.optional(S.String) }),
+      ).annotate({ identifier: "SearchDevicesResponse" });
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           nextToken: S.optional(S.String),
           maxResults: S.optional(S.Number),
-          filters: __S(53, __c6, 5),
+          filters: __S(273, __c17, 1),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/jobs" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "SearchJobsRequest" });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           status: S.String,
@@ -1469,32 +1484,42 @@ function __c6(j: number): any {
           createdAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
           startedAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
           endedAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-          tags: S.optional(__S(17, __c2, 1)),
+          tags: S.optional(__S(32, __c2, 0)),
         }),
       ).annotate({ identifier: "JobSummary" });
+    case 2:
+      return S.Array(__S(257, __c16, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({ jobs: __S(258, __c16, 2), nextToken: S.optional(S.String) }),
+      ).annotate({ identifier: "SearchJobsResponse" });
   }
 }
-function __c7(j: number): any {
+function __c17(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(55, __c6, 7));
-    case 1:
       return S.suspend(() =>
-        S.Struct({ jobs: __S(56, __c7, 0), nextToken: S.optional(S.String) }),
-      ).annotate({ identifier: "SearchJobsResponse" });
-    case 2:
+        S.Struct({ name: S.String, values: __S(368, __c23, 0), operator: S.String }),
+      ).annotate({ identifier: "SearchJobsFilter" });
+    case 1:
+      return S.Array(__S(272, __c17, 0));
+  }
+}
+function __c18(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           nextToken: S.optional(S.String),
           maxResults: S.optional(S.Number),
-          filters: __S(53, __c6, 5),
+          filters: __S(273, __c17, 1),
         }).pipe(
           T.all(T.Http({ method: "POST", uri: "/quantum-tasks" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({
         identifier: "SearchQuantumTasksRequest",
       });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           quantumTaskArn: S.String,
@@ -1505,68 +1530,72 @@ function __c7(j: number): any {
           outputS3Directory: S.String,
           createdAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
           endedAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-          tags: S.optional(__S(17, __c2, 1)),
+          tags: S.optional(__S(32, __c2, 0)),
         }),
       ).annotate({ identifier: "QuantumTaskSummary" });
-    case 4:
-      return S.Array(__S(59, __c7, 3));
-    case 5:
+    case 2:
+      return S.Array(__S(289, __c18, 1));
+    case 3:
       return S.suspend(() =>
-        S.Struct({ quantumTasks: __S(60, __c7, 4), nextToken: S.optional(S.String) }),
+        S.Struct({ quantumTasks: __S(290, __c18, 2), nextToken: S.optional(S.String) }),
       ).annotate({
         identifier: "SearchQuantumTasksResponse",
       });
-    case 6:
+  }
+}
+function __c19(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
-        S.Struct({ name: S.String, values: __S(34, __c4, 2), operator: S.String }),
+        S.Struct({ name: S.String, values: __S(368, __c23, 0), operator: S.String }),
       ).annotate({
         identifier: "SearchSpendingLimitsFilter",
       });
-    case 7:
-      return S.Array(__S(62, __c7, 6));
-  }
-}
-function __c8(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
+      return S.Array(__S(304, __c19, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           nextToken: S.optional(S.String),
           maxResults: S.optional(S.Number),
-          filters: S.optional(__S(63, __c7, 7)),
+          filters: S.optional(__S(305, __c19, 1)),
         }).pipe(
           T.all(T.Http({ method: "POST", uri: "/spending-limits" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({
         identifier: "SearchSpendingLimitsRequest",
       });
-    case 1:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           spendingLimitArn: S.String,
           deviceArn: S.String,
-          timePeriod: __S(25, __c3, 1),
+          timePeriod: __S(128, __c8, 0),
           spendingLimit: S.String,
           queuedSpend: S.String,
           totalSpend: S.String,
           createdAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
           updatedAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
-          tags: S.optional(__S(17, __c2, 1)),
+          tags: S.optional(__S(32, __c2, 0)),
         }),
       ).annotate({ identifier: "SpendingLimitSummary" });
-    case 2:
-      return S.Array(__S(65, __c8, 1));
-    case 3:
+    case 4:
+      return S.Array(__S(307, __c19, 3));
+    case 5:
       return S.suspend(() =>
-        S.Struct({ spendingLimits: __S(66, __c8, 2), nextToken: S.optional(S.String) }),
+        S.Struct({ spendingLimits: __S(308, __c19, 4), nextToken: S.optional(S.String) }),
       ).annotate({
         identifier: "SearchSpendingLimitsResponse",
       });
-    case 4:
+  }
+}
+function __c20(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           resourceArn: S.String.pipe(T.HttpLabel("resourceArn")),
-          tags: __S(17, __c2, 1),
+          tags: __S(32, __c2, 0),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/tags/{resourceArn}" }),
@@ -1578,11 +1607,15 @@ function __c8(j: number): any {
           ),
         ),
       ).annotate({ identifier: "TagResourceRequest" });
-    case 5:
+  }
+}
+function __c21(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           resourceArn: S.String.pipe(T.HttpLabel("resourceArn")),
-          tagKeys: __S(34, __c4, 2).pipe(T.HttpQuery("tagKeys")),
+          tagKeys: __S(368, __c23, 0).pipe(T.HttpQuery("tagKeys")),
         }).pipe(
           T.all(
             T.Http({ method: "DELETE", uri: "/tags/{resourceArn}" }),
@@ -1594,13 +1627,17 @@ function __c8(j: number): any {
           ),
         ),
       ).annotate({ identifier: "UntagResourceRequest" });
-    case 6:
+  }
+}
+function __c22(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           spendingLimitArn: S.String.pipe(T.HttpLabel("spendingLimitArn")),
           clientToken: S.String.pipe(T.IdempotencyToken()),
           spendingLimit: S.optional(S.String),
-          timePeriod: S.optional(__S(25, __c3, 1)),
+          timePeriod: S.optional(__S(128, __c8, 0)),
         }).pipe(
           T.all(
             T.Http({ method: "PATCH", uri: "/spending-limit/{spendingLimitArn}/update" }),
@@ -1614,25 +1651,47 @@ function __c8(j: number): any {
       ).annotate({
         identifier: "UpdateSpendingLimitRequest",
       });
-    case 7:
+  }
+}
+function __c23(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+    case 1:
       return S.suspend(() =>
         S.Struct({
           programIndex: S.Number,
           inputsIndex: S.optional(S.Number),
-          errors: S.optional(__S(34, __c4, 2)),
+          errors: S.optional(__S(368, __c23, 0)),
         }),
       ).annotate({
         identifier: "ProgramSetValidationFailure",
       });
+    case 2:
+      return S.Array(__S(369, __c23, 1));
   }
 }
-function __c9(j: number): any {
+function __c24(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(71, __c8, 7));
+      return S.suspend(() =>
+        S.Struct({ jobArn: S.String.pipe(T.HttpLabel("jobArn")) }).pipe(
+          T.all(
+            T.Http({ method: "PUT", uri: "/job/{jobArn}/cancel" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "CancelJobRequest" });
+    case 1:
+      return S.suspend(() => S.Struct({ jobArn: S.String, cancellationStatus: S.String })).annotate(
+        { identifier: "CancelJobResponse" },
+      );
   }
 }
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

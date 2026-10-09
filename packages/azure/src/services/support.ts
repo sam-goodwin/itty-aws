@@ -1073,7 +1073,7 @@ export const CheckCommunicationNameAvailability: API.OperationMethod<
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(0, __c0, 0) as any as S.Schema<CheckCommunicationNameAvailabilityRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<CheckNameAvailabilityOutput>,
+  output: __S(16, __c1, 0) as any as S.Schema<CheckNameAvailabilityOutput>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1088,11 +1088,11 @@ export const CheckCommunicationsNoSubscriptionNameAvailability: API.OperationMet
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    2,
-    __c0,
-    2,
+    32,
+    __c2,
+    0,
   ) as any as S.Schema<CheckCommunicationsNoSubscriptionNameAvailabilityRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<CheckNameAvailabilityOutput>,
+  output: __S(16, __c1, 0) as any as S.Schema<CheckNameAvailabilityOutput>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1106,8 +1106,8 @@ export const CheckSupportTicketNameAvailability: API.OperationMethod<
   CheckSupportTicketNameAvailabilityError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3, __c0, 3) as any as S.Schema<CheckSupportTicketNameAvailabilityRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<CheckNameAvailabilityOutput>,
+  input: __S(336, __c21, 0) as any as S.Schema<CheckSupportTicketNameAvailabilityRequest>,
+  output: __S(16, __c1, 0) as any as S.Schema<CheckNameAvailabilityOutput>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1122,11 +1122,11 @@ export const CheckSupportTicketsNoSubscriptionNameAvailability: API.OperationMet
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    4,
-    __c0,
-    4,
+    608,
+    __c38,
+    0,
   ) as any as S.Schema<CheckSupportTicketsNoSubscriptionNameAvailabilityRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<CheckNameAvailabilityOutput>,
+  output: __S(16, __c1, 0) as any as S.Schema<CheckNameAvailabilityOutput>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1140,8 +1140,8 @@ export const CreateCommunication: API.OperationMethod<
   CreateCommunicationError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(6, __c0, 6) as any as S.Schema<CreateCommunicationRequest>,
-  output: __S(9, __c1, 1) as any as S.Schema<CreateCommunicationResponse>,
+  input: __S(800, __c50, 0) as any as S.Schema<CreateCommunicationRequest>,
+  output: __S(848, __c53, 0) as any as S.Schema<CreateCommunicationResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1155,8 +1155,8 @@ export const CreateCommunicationsNoSubscription: API.OperationMethod<
   CreateCommunicationsNoSubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(10, __c1, 2) as any as S.Schema<CreateCommunicationsNoSubscriptionRequest>,
-  output: __S(9, __c1, 1) as any as S.Schema<CreateCommunicationsNoSubscriptionResponse>,
+  input: __S(880, __c55, 0) as any as S.Schema<CreateCommunicationsNoSubscriptionRequest>,
+  output: __S(848, __c53, 0) as any as S.Schema<CreateCommunicationsNoSubscriptionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1170,8 +1170,8 @@ export const CreateFile: API.OperationMethod<
   CreateFileError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(12, __c1, 4) as any as S.Schema<CreateFileRequest>,
-  output: __S(14, __c1, 6) as any as S.Schema<CreateFileResponse>,
+  input: __S(896, __c56, 0) as any as S.Schema<CreateFileRequest>,
+  output: __S(912, __c57, 0) as any as S.Schema<CreateFileResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1185,8 +1185,8 @@ export const CreateFilesNoSubscription: API.OperationMethod<
   CreateFilesNoSubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(15, __c1, 7) as any as S.Schema<CreateFilesNoSubscriptionRequest>,
-  output: __S(16, __c2, 0) as any as S.Schema<CreateFilesNoSubscriptionResponse>,
+  input: __S(960, __c60, 0) as any as S.Schema<CreateFilesNoSubscriptionRequest>,
+  output: __S(976, __c61, 0) as any as S.Schema<CreateFilesNoSubscriptionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1200,8 +1200,8 @@ export const CreateFileWorkspace: API.OperationMethod<
   CreateFileWorkspaceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(17, __c2, 1) as any as S.Schema<CreateFileWorkspaceRequest>,
-  output: __S(19, __c2, 3) as any as S.Schema<CreateFileWorkspaceResponse>,
+  input: __S(992, __c62, 0) as any as S.Schema<CreateFileWorkspaceRequest>,
+  output: __S(1024, __c64, 0) as any as S.Schema<CreateFileWorkspaceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1215,8 +1215,8 @@ export const CreateFileWorkspacesNoSubscription: API.OperationMethod<
   CreateFileWorkspacesNoSubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(20, __c2, 4) as any as S.Schema<CreateFileWorkspacesNoSubscriptionRequest>,
-  output: __S(19, __c2, 3) as any as S.Schema<CreateFileWorkspacesNoSubscriptionResponse>,
+  input: __S(1040, __c65, 0) as any as S.Schema<CreateFileWorkspacesNoSubscriptionRequest>,
+  output: __S(1024, __c64, 0) as any as S.Schema<CreateFileWorkspacesNoSubscriptionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1230,8 +1230,8 @@ export const CreateSupportTicket: API.OperationMethod<
   CreateSupportTicketError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(31, __c3, 7) as any as S.Schema<CreateSupportTicketRequest>,
-  output: __S(35, __c4, 3) as any as S.Schema<CreateSupportTicketResponse>,
+  input: __S(48, __c3, 0) as any as S.Schema<CreateSupportTicketRequest>,
+  output: __S(112, __c7, 0) as any as S.Schema<CreateSupportTicketResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1245,8 +1245,8 @@ export const CreateSupportTicketsNoSubscription: API.OperationMethod<
   CreateSupportTicketsNoSubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(36, __c4, 4) as any as S.Schema<CreateSupportTicketsNoSubscriptionRequest>,
-  output: __S(35, __c4, 3) as any as S.Schema<CreateSupportTicketsNoSubscriptionResponse>,
+  input: __S(144, __c9, 0) as any as S.Schema<CreateSupportTicketsNoSubscriptionRequest>,
+  output: __S(112, __c7, 0) as any as S.Schema<CreateSupportTicketsNoSubscriptionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1260,8 +1260,8 @@ export const GetChatTranscript: API.OperationMethod<
   GetChatTranscriptError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(37, __c4, 5) as any as S.Schema<GetChatTranscriptRequest>,
-  output: __S(41, __c5, 1) as any as S.Schema<GetChatTranscriptResponse>,
+  input: __S(160, __c10, 0) as any as S.Schema<GetChatTranscriptRequest>,
+  output: __S(176, __c11, 0) as any as S.Schema<GetChatTranscriptResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1275,8 +1275,8 @@ export const GetChatTranscriptsNoSubscription: API.OperationMethod<
   GetChatTranscriptsNoSubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(42, __c5, 2) as any as S.Schema<GetChatTranscriptsNoSubscriptionRequest>,
-  output: __S(41, __c5, 1) as any as S.Schema<GetChatTranscriptsNoSubscriptionResponse>,
+  input: __S(208, __c13, 0) as any as S.Schema<GetChatTranscriptsNoSubscriptionRequest>,
+  output: __S(176, __c11, 0) as any as S.Schema<GetChatTranscriptsNoSubscriptionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1290,8 +1290,8 @@ export const GetCommunication: API.OperationMethod<
   GetCommunicationError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(43, __c5, 3) as any as S.Schema<GetCommunicationRequest>,
-  output: __S(44, __c5, 4) as any as S.Schema<GetCommunicationResponse>,
+  input: __S(224, __c14, 0) as any as S.Schema<GetCommunicationRequest>,
+  output: __S(240, __c15, 0) as any as S.Schema<GetCommunicationResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1305,8 +1305,8 @@ export const GetCommunicationsNoSubscription: API.OperationMethod<
   GetCommunicationsNoSubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(45, __c5, 5) as any as S.Schema<GetCommunicationsNoSubscriptionRequest>,
-  output: __S(9, __c1, 1) as any as S.Schema<GetCommunicationsNoSubscriptionResponse>,
+  input: __S(256, __c16, 0) as any as S.Schema<GetCommunicationsNoSubscriptionRequest>,
+  output: __S(848, __c53, 0) as any as S.Schema<GetCommunicationsNoSubscriptionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1320,8 +1320,8 @@ export const GetFile: API.OperationMethod<
   GetFileError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(46, __c5, 6) as any as S.Schema<GetFileRequest>,
-  output: __S(14, __c1, 6) as any as S.Schema<GetFileResponse>,
+  input: __S(272, __c17, 0) as any as S.Schema<GetFileRequest>,
+  output: __S(912, __c57, 0) as any as S.Schema<GetFileResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1335,8 +1335,8 @@ export const GetFilesNoSubscription: API.OperationMethod<
   GetFilesNoSubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(47, __c5, 7) as any as S.Schema<GetFilesNoSubscriptionRequest>,
-  output: __S(16, __c2, 0) as any as S.Schema<GetFilesNoSubscriptionResponse>,
+  input: __S(288, __c18, 0) as any as S.Schema<GetFilesNoSubscriptionRequest>,
+  output: __S(976, __c61, 0) as any as S.Schema<GetFilesNoSubscriptionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1350,8 +1350,8 @@ export const GetFileWorkspace: API.OperationMethod<
   GetFileWorkspaceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(48, __c6, 0) as any as S.Schema<GetFileWorkspaceRequest>,
-  output: __S(49, __c6, 1) as any as S.Schema<GetFileWorkspaceResponse>,
+  input: __S(304, __c19, 0) as any as S.Schema<GetFileWorkspaceRequest>,
+  output: __S(305, __c19, 1) as any as S.Schema<GetFileWorkspaceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1365,8 +1365,8 @@ export const GetFileWorkspacesNoSubscription: API.OperationMethod<
   GetFileWorkspacesNoSubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(50, __c6, 2) as any as S.Schema<GetFileWorkspacesNoSubscriptionRequest>,
-  output: __S(19, __c2, 3) as any as S.Schema<GetFileWorkspacesNoSubscriptionResponse>,
+  input: __S(320, __c20, 0) as any as S.Schema<GetFileWorkspacesNoSubscriptionRequest>,
+  output: __S(1024, __c64, 0) as any as S.Schema<GetFileWorkspacesNoSubscriptionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1380,8 +1380,8 @@ export const GetProblemClassification: API.OperationMethod<
   GetProblemClassificationError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(51, __c6, 3) as any as S.Schema<GetProblemClassificationRequest>,
-  output: __S(55, __c6, 7) as any as S.Schema<GetProblemClassificationResponse>,
+  input: __S(352, __c22, 0) as any as S.Schema<GetProblemClassificationRequest>,
+  output: __S(353, __c22, 1) as any as S.Schema<GetProblemClassificationResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1395,8 +1395,8 @@ export const GetService: API.OperationMethod<
   GetServiceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(56, __c7, 0) as any as S.Schema<GetServiceRequest>,
-  output: __S(58, __c7, 2) as any as S.Schema<GetServiceResponse>,
+  input: __S(384, __c24, 0) as any as S.Schema<GetServiceRequest>,
+  output: __S(401, __c25, 1) as any as S.Schema<GetServiceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1410,8 +1410,8 @@ export const GetSupportTicket: API.OperationMethod<
   GetSupportTicketError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(59, __c7, 3) as any as S.Schema<GetSupportTicketRequest>,
-  output: __S(60, __c7, 4) as any as S.Schema<GetSupportTicketResponse>,
+  input: __S(416, __c26, 0) as any as S.Schema<GetSupportTicketRequest>,
+  output: __S(432, __c27, 0) as any as S.Schema<GetSupportTicketResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1425,8 +1425,8 @@ export const GetSupportTicketsNoSubscription: API.OperationMethod<
   GetSupportTicketsNoSubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(61, __c7, 5) as any as S.Schema<GetSupportTicketsNoSubscriptionRequest>,
-  output: __S(35, __c4, 3) as any as S.Schema<GetSupportTicketsNoSubscriptionResponse>,
+  input: __S(448, __c28, 0) as any as S.Schema<GetSupportTicketsNoSubscriptionRequest>,
+  output: __S(112, __c7, 0) as any as S.Schema<GetSupportTicketsNoSubscriptionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1440,8 +1440,8 @@ export const ListChatTranscripts: API.OperationMethod<
   ListChatTranscriptsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(62, __c7, 6) as any as S.Schema<ListChatTranscriptsRequest>,
-  output: __S(65, __c8, 1) as any as S.Schema<ChatTranscriptsListResult>,
+  input: __S(464, __c29, 0) as any as S.Schema<ListChatTranscriptsRequest>,
+  output: __S(482, __c30, 2) as any as S.Schema<ChatTranscriptsListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1455,8 +1455,8 @@ export const ListChatTranscriptsNoSubscription: API.OperationMethod<
   ListChatTranscriptsNoSubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(66, __c8, 2) as any as S.Schema<ListChatTranscriptsNoSubscriptionRequest>,
-  output: __S(65, __c8, 1) as any as S.Schema<ChatTranscriptsListResult>,
+  input: __S(496, __c31, 0) as any as S.Schema<ListChatTranscriptsNoSubscriptionRequest>,
+  output: __S(482, __c30, 2) as any as S.Schema<ChatTranscriptsListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1470,8 +1470,8 @@ export const ListCommunications: API.OperationMethod<
   ListCommunicationsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(67, __c8, 3) as any as S.Schema<ListCommunicationsRequest>,
-  output: __S(69, __c8, 5) as any as S.Schema<CommunicationsListResult>,
+  input: __S(512, __c32, 0) as any as S.Schema<ListCommunicationsRequest>,
+  output: __S(529, __c33, 1) as any as S.Schema<CommunicationsListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1485,8 +1485,8 @@ export const ListCommunicationsNoSubscription: API.OperationMethod<
   ListCommunicationsNoSubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(70, __c8, 6) as any as S.Schema<ListCommunicationsNoSubscriptionRequest>,
-  output: __S(69, __c8, 5) as any as S.Schema<CommunicationsListResult>,
+  input: __S(544, __c34, 0) as any as S.Schema<ListCommunicationsNoSubscriptionRequest>,
+  output: __S(529, __c33, 1) as any as S.Schema<CommunicationsListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1500,8 +1500,8 @@ export const ListFiles: API.OperationMethod<
   ListFilesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(71, __c8, 7) as any as S.Schema<ListFilesRequest>,
-  output: __S(73, __c9, 1) as any as S.Schema<FilesListResult>,
+  input: __S(560, __c35, 0) as any as S.Schema<ListFilesRequest>,
+  output: __S(577, __c36, 1) as any as S.Schema<FilesListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1515,8 +1515,8 @@ export const ListFilesNoSubscription: API.OperationMethod<
   ListFilesNoSubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(74, __c9, 2) as any as S.Schema<ListFilesNoSubscriptionRequest>,
-  output: __S(73, __c9, 1) as any as S.Schema<FilesListResult>,
+  input: __S(592, __c37, 0) as any as S.Schema<ListFilesNoSubscriptionRequest>,
+  output: __S(577, __c36, 1) as any as S.Schema<FilesListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1530,8 +1530,8 @@ export const ListOperations: API.OperationMethod<
   ListOperationsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(75, __c9, 3) as any as S.Schema<ListOperationsRequest>,
-  output: __S(79, __c9, 7) as any as S.Schema<ListOperationsResponse>,
+  input: __S(624, __c39, 0) as any as S.Schema<ListOperationsRequest>,
+  output: __S(628, __c39, 4) as any as S.Schema<ListOperationsResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1545,8 +1545,8 @@ export const ListProblemClassifications: API.OperationMethod<
   ListProblemClassificationsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(80, __c10, 0) as any as S.Schema<ListProblemClassificationsRequest>,
-  output: __S(83, __c10, 3) as any as S.Schema<ProblemClassificationsListResult>,
+  input: __S(640, __c40, 0) as any as S.Schema<ListProblemClassificationsRequest>,
+  output: __S(643, __c40, 3) as any as S.Schema<ProblemClassificationsListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1560,8 +1560,8 @@ export const ListServices: API.OperationMethod<
   ListServicesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(84, __c10, 4) as any as S.Schema<ListServicesRequest>,
-  output: __S(86, __c10, 6) as any as S.Schema<ServicesListResult>,
+  input: __S(656, __c41, 0) as any as S.Schema<ListServicesRequest>,
+  output: __S(658, __c41, 2) as any as S.Schema<ServicesListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1575,8 +1575,8 @@ export const ListSupportTickets: API.OperationMethod<
   ListSupportTicketsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(87, __c10, 7) as any as S.Schema<ListSupportTicketsRequest>,
-  output: __S(89, __c11, 1) as any as S.Schema<SupportTicketsListResult>,
+  input: __S(672, __c42, 0) as any as S.Schema<ListSupportTicketsRequest>,
+  output: __S(689, __c43, 1) as any as S.Schema<SupportTicketsListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1590,8 +1590,8 @@ export const ListSupportTicketsNoSubscription: API.OperationMethod<
   ListSupportTicketsNoSubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(90, __c11, 2) as any as S.Schema<ListSupportTicketsNoSubscriptionRequest>,
-  output: __S(89, __c11, 1) as any as S.Schema<SupportTicketsListResult>,
+  input: __S(704, __c44, 0) as any as S.Schema<ListSupportTicketsNoSubscriptionRequest>,
+  output: __S(689, __c43, 1) as any as S.Schema<SupportTicketsListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1605,8 +1605,8 @@ export const UpdateSupportTicket: API.OperationMethod<
   UpdateSupportTicketError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(92, __c11, 4) as any as S.Schema<UpdateSupportTicketRequest>,
-  output: __S(35, __c4, 3) as any as S.Schema<UpdateSupportTicketResponse>,
+  input: __S(720, __c45, 0) as any as S.Schema<UpdateSupportTicketRequest>,
+  output: __S(112, __c7, 0) as any as S.Schema<UpdateSupportTicketResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1620,8 +1620,8 @@ export const UpdateSupportTicketsNoSubscription: API.OperationMethod<
   UpdateSupportTicketsNoSubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(93, __c11, 5) as any as S.Schema<UpdateSupportTicketsNoSubscriptionRequest>,
-  output: __S(35, __c4, 3) as any as S.Schema<UpdateSupportTicketsNoSubscriptionResponse>,
+  input: __S(752, __c47, 0) as any as S.Schema<UpdateSupportTicketsNoSubscriptionRequest>,
+  output: __S(112, __c7, 0) as any as S.Schema<UpdateSupportTicketsNoSubscriptionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1635,8 +1635,8 @@ export const UploadFile: API.OperationMethod<
   UploadFileError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(94, __c11, 6) as any as S.Schema<UploadFileRequest>,
-  output: __S(23, __c2, 7) as any as S.Schema<UploadFileResponse>,
+  input: __S(768, __c48, 0) as any as S.Schema<UploadFileRequest>,
+  output: __S(128, __c8, 0) as any as S.Schema<UploadFileResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1650,8 +1650,8 @@ export const UploadFilesNoSubscription: API.OperationMethod<
   UploadFilesNoSubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(95, __c11, 7) as any as S.Schema<UploadFilesNoSubscriptionRequest>,
-  output: __S(96, __c12, 0) as any as S.Schema<UploadFilesNoSubscriptionResponse>,
+  input: __S(784, __c49, 0) as any as S.Schema<UploadFilesNoSubscriptionRequest>,
+  output: __S(785, __c49, 1) as any as S.Schema<UploadFilesNoSubscriptionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1678,7 +1678,11 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "CheckCommunicationNameAvailabilityRequest",
       });
-    case 1:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           nameAvailable: S.optional(S.Boolean),
@@ -1688,7 +1692,11 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "CheckNameAvailabilityOutput",
       });
-    case 2:
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           supportTicketName: S.String.pipe(T.Label()),
@@ -1705,274 +1713,6 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "CheckCommunicationsNoSubscriptionNameAvailabilityRequest",
       });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          name: S.String,
-          type: S.String,
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/subscriptions/{subscriptionId}/providers/Microsoft.Support/checkNameAvailability",
-            code: 200,
-            apiVersion: "2024-04-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "CheckSupportTicketNameAvailabilityRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String,
-          type: S.String,
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/providers/Microsoft.Support/checkNameAvailability",
-            code: 200,
-            apiVersion: "2024-04-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "CheckSupportTicketsNoSubscriptionNameAvailabilityRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          sender: S.optional(S.String),
-          subject: S.String,
-          body: S.String,
-        }),
-      ).annotate({
-        identifier: "CommunicationDetailsPropertiesInput",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          supportTicketName: S.String.pipe(T.Label()),
-          communicationName: S.String.pipe(T.Label()),
-          properties: __S(5, __c0, 5),
-        }).pipe(
-          T.Http({
-            method: "PUT",
-            uri: "/subscriptions/{subscriptionId}/providers/Microsoft.Support/supportTickets/{supportTicketName}/communications/{communicationName}",
-            code: 200,
-            apiVersion: "2024-04-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateCommunicationRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          createdBy: S.optional(S.String),
-          createdByType: S.optional(S.String),
-          createdAt: S.optional(S.String),
-          lastModifiedBy: S.optional(S.String),
-          lastModifiedByType: S.optional(S.String),
-          lastModifiedAt: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "SystemData" });
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          communicationType: S.optional(S.String),
-          communicationDirection: S.optional(S.String),
-          sender: S.optional(S.String),
-          subject: S.String,
-          body: S.String,
-          createdDate: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "CommunicationDetailsProperties",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(7, __c0, 7)),
-          properties: __S(8, __c1, 0),
-        }),
-      ).annotate({
-        identifier: "CreateCommunicationResponse",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          supportTicketName: S.String.pipe(T.Label()),
-          communicationName: S.String.pipe(T.Label()),
-          properties: __S(5, __c0, 5),
-        }).pipe(
-          T.Http({
-            method: "PUT",
-            uri: "/providers/Microsoft.Support/supportTickets/{supportTicketName}/communications/{communicationName}",
-            code: 200,
-            apiVersion: "2024-04-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateCommunicationsNoSubscriptionRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          chunkSize: S.optional(S.Number),
-          fileSize: S.optional(S.Number),
-          numberOfChunks: S.optional(S.Number),
-        }),
-      ).annotate({
-        identifier: "FileDetailsPropertiesInput",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          fileWorkspaceName: S.String.pipe(T.Label()),
-          fileName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(11, __c1, 3)),
-        }).pipe(
-          T.Http({
-            method: "PUT",
-            uri: "/subscriptions/{subscriptionId}/providers/Microsoft.Support/fileWorkspaces/{fileWorkspaceName}/files/{fileName}",
-            code: 200,
-            apiVersion: "2024-04-01",
-          }),
-        ),
-      ).annotate({ identifier: "CreateFileRequest" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          createdOn: S.optional(S.String),
-          chunkSize: S.optional(S.Number),
-          fileSize: S.optional(S.Number),
-          numberOfChunks: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "FileDetailsProperties" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(7, __c0, 7)),
-          properties: S.optional(__S(13, __c1, 5)),
-        }),
-      ).annotate({ identifier: "CreateFileResponse" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          fileWorkspaceName: S.String.pipe(T.Label()),
-          fileName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(11, __c1, 3)),
-        }).pipe(
-          T.Http({
-            method: "PUT",
-            uri: "/providers/Microsoft.Support/fileWorkspaces/{fileWorkspaceName}/files/{fileName}",
-            code: 200,
-            apiVersion: "2024-04-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateFilesNoSubscriptionRequest",
-      });
-  }
-}
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(7, __c0, 7)),
-          properties: S.optional(__S(13, __c1, 5)),
-        }),
-      ).annotate({
-        identifier: "CreateFilesNoSubscriptionResponse",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          fileWorkspaceName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "PUT",
-            uri: "/subscriptions/{subscriptionId}/providers/Microsoft.Support/fileWorkspaces/{fileWorkspaceName}",
-            code: 200,
-            apiVersion: "2024-04-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateFileWorkspaceRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          createdOn: S.optional(S.String),
-          expirationTime: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "FileWorkspaceDetailsProperties",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(7, __c0, 7)),
-          properties: S.optional(__S(18, __c2, 2)),
-        }),
-      ).annotate({
-        identifier: "CreateFileWorkspaceResponse",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          fileWorkspaceName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "PUT",
-            uri: "/providers/Microsoft.Support/fileWorkspaces/{fileWorkspaceName}",
-            code: 200,
-            apiVersion: "2024-04-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateFileWorkspacesNoSubscriptionRequest",
-      });
-    case 5:
-      return S.Array(S.String);
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          firstName: S.String,
-          lastName: S.String,
-          preferredContactMethod: S.String,
-          primaryEmailAddress: S.String,
-          additionalEmailAddresses: S.optional(__S(21, __c2, 5)),
-          phoneNumber: S.optional(S.String),
-          preferredTimeZone: S.String,
-          country: S.String,
-          preferredSupportLanguage: S.String,
-        }),
-      ).annotate({ identifier: "ContactProfile" });
-    case 7:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "ServiceLevelAgreementInput",
-      });
   }
 }
 function __c3(j: number): any {
@@ -1980,67 +1720,9 @@ function __c3(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          resourceId: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "TechnicalTicketDetails" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          region: S.optional(S.String),
-          payload: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "QuotaChangeRequest" });
-    case 2:
-      return S.Array(__S(25, __c3, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          quotaChangeRequestSubType: S.optional(S.String),
-          quotaChangeRequestVersion: S.optional(S.String),
-          quotaChangeRequests: S.optional(__S(26, __c3, 2)),
-        }),
-      ).annotate({ identifier: "QuotaTicketDetails" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          userConsent: S.optional(S.String),
-          type: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "SecondaryConsent" });
-    case 5:
-      return S.Array(__S(28, __c3, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          supportTicketId: S.optional(S.String),
-          description: S.String,
-          problemClassificationId: S.String,
-          severity: S.String,
-          enrollmentId: S.optional(S.String),
-          require24X7Response: S.optional(S.Boolean),
-          advancedDiagnosticConsent: S.String,
-          problemScopingQuestions: S.optional(S.String),
-          supportPlanId: S.optional(S.String),
-          contactDetails: __S(22, __c2, 6),
-          serviceLevelAgreement: S.optional(__S(23, __c2, 7)),
-          supportEngineer: S.optional(__S(23, __c2, 7)),
-          title: S.String,
-          problemStartTime: S.optional(S.String),
-          serviceId: S.String,
-          fileWorkspaceName: S.optional(S.String),
-          technicalTicketDetails: S.optional(__S(24, __c3, 0)),
-          quotaTicketDetails: S.optional(__S(27, __c3, 3)),
-          secondaryConsent: S.optional(__S(29, __c3, 5)),
-        }),
-      ).annotate({
-        identifier: "SupportTicketDetailsPropertiesInput",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           supportTicketName: S.String.pipe(T.Label()),
-          properties: __S(30, __c3, 6),
+          properties: __S(64, __c4, 0),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -2059,18 +1741,100 @@ function __c4(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
+          supportTicketId: S.optional(S.String),
+          description: S.String,
+          problemClassificationId: S.String,
+          severity: S.String,
+          enrollmentId: S.optional(S.String),
+          require24X7Response: S.optional(S.Boolean),
+          advancedDiagnosticConsent: S.String,
+          problemScopingQuestions: S.optional(S.String),
+          supportPlanId: S.optional(S.String),
+          contactDetails: __S(96, __c6, 0),
+          serviceLevelAgreement: S.optional(__S(128, __c8, 0)),
+          supportEngineer: S.optional(__S(128, __c8, 0)),
+          title: S.String,
+          problemStartTime: S.optional(S.String),
+          serviceId: S.String,
+          fileWorkspaceName: S.optional(S.String),
+          technicalTicketDetails: S.optional(__S(97, __c6, 1)),
+          quotaTicketDetails: S.optional(__S(100, __c6, 4)),
+          secondaryConsent: S.optional(__S(102, __c6, 6)),
+        }),
+      ).annotate({
+        identifier: "SupportTicketDetailsPropertiesInput",
+      });
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          firstName: S.String,
+          lastName: S.String,
+          preferredContactMethod: S.String,
+          primaryEmailAddress: S.String,
+          additionalEmailAddresses: S.optional(__S(80, __c5, 0)),
+          phoneNumber: S.optional(S.String),
+          preferredTimeZone: S.String,
+          country: S.String,
+          preferredSupportLanguage: S.String,
+        }),
+      ).annotate({ identifier: "ContactProfile" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          resourceId: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "TechnicalTicketDetails" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          region: S.optional(S.String),
+          payload: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "QuotaChangeRequest" });
+    case 3:
+      return S.Array(__S(98, __c6, 2));
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          quotaChangeRequestSubType: S.optional(S.String),
+          quotaChangeRequestVersion: S.optional(S.String),
+          quotaChangeRequests: S.optional(__S(99, __c6, 3)),
+        }),
+      ).annotate({ identifier: "QuotaTicketDetails" });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          userConsent: S.optional(S.String),
+          type: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "SecondaryConsent" });
+    case 6:
+      return S.Array(__S(101, __c6, 5));
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
           startTime: S.optional(S.String),
           expirationTime: S.optional(S.String),
           slaMinutes: S.optional(S.Number),
         }),
       ).annotate({ identifier: "ServiceLevelAgreement" });
-    case 1:
+    case 8:
       return S.suspend(() =>
         S.Struct({
           emailAddress: S.optional(S.String),
         }),
       ).annotate({ identifier: "SupportEngineer" });
-    case 2:
+    case 9:
       return S.suspend(() =>
         S.Struct({
           supportTicketId: S.optional(S.String),
@@ -2083,9 +1847,9 @@ function __c4(j: number): any {
           advancedDiagnosticConsent: S.String,
           problemScopingQuestions: S.optional(S.String),
           supportPlanId: S.optional(S.String),
-          contactDetails: __S(22, __c2, 6),
-          serviceLevelAgreement: S.optional(__S(32, __c4, 0)),
-          supportEngineer: S.optional(__S(33, __c4, 1)),
+          contactDetails: __S(96, __c6, 0),
+          serviceLevelAgreement: S.optional(__S(103, __c6, 7)),
+          supportEngineer: S.optional(__S(104, __c6, 8)),
           supportPlanType: S.optional(S.String),
           supportPlanDisplayName: S.optional(S.String),
           title: S.String,
@@ -2097,30 +1861,46 @@ function __c4(j: number): any {
           modifiedDate: S.optional(S.String),
           fileWorkspaceName: S.optional(S.String),
           isTemporaryTicket: S.optional(S.String),
-          technicalTicketDetails: S.optional(__S(24, __c3, 0)),
-          quotaTicketDetails: S.optional(__S(27, __c3, 3)),
-          secondaryConsent: S.optional(__S(29, __c3, 5)),
+          technicalTicketDetails: S.optional(__S(97, __c6, 1)),
+          quotaTicketDetails: S.optional(__S(100, __c6, 4)),
+          secondaryConsent: S.optional(__S(102, __c6, 6)),
         }),
       ).annotate({
         identifier: "SupportTicketDetailsProperties",
       });
-    case 3:
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(7, __c0, 7)),
-          properties: __S(34, __c4, 2),
+          systemData: S.optional(__S(864, __c54, 0)),
+          properties: __S(105, __c6, 9),
         }),
       ).annotate({
         identifier: "CreateSupportTicketResponse",
       });
-    case 4:
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "ServiceLevelAgreementInput",
+      });
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           supportTicketName: S.String.pipe(T.Label()),
-          properties: __S(30, __c3, 6),
+          properties: __S(64, __c4, 0),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -2132,7 +1912,11 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "CreateSupportTicketsNoSubscriptionRequest",
       });
-    case 5:
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -2147,7 +1931,27 @@ function __c4(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetChatTranscriptRequest" });
-    case 6:
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(864, __c54, 0)),
+          properties: S.optional(__S(194, __c12, 2)),
+        }),
+      ).annotate({
+        identifier: "GetChatTranscriptResponse",
+      });
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           contentType: S.optional(S.String),
@@ -2157,34 +1961,22 @@ function __c4(j: number): any {
           createdDate: S.optional(S.String),
         }),
       ).annotate({ identifier: "MessageProperties" });
-    case 7:
-      return S.Array(__S(38, __c4, 6));
-  }
-}
-function __c5(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
+      return S.Array(__S(192, __c12, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          messages: S.optional(__S(39, __c4, 7)),
+          messages: S.optional(__S(193, __c12, 1)),
           startTime: S.optional(S.String),
         }),
       ).annotate({
         identifier: "ChatTranscriptDetailsProperties",
       });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(7, __c0, 7)),
-          properties: S.optional(__S(40, __c5, 0)),
-        }),
-      ).annotate({
-        identifier: "GetChatTranscriptResponse",
-      });
-    case 2:
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           supportTicketName: S.String.pipe(T.Label()),
@@ -2200,7 +1992,11 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "GetChatTranscriptsNoSubscriptionRequest",
       });
-    case 3:
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -2215,17 +2011,25 @@ function __c5(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetCommunicationRequest" });
-    case 4:
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(7, __c0, 7)),
-          properties: __S(8, __c1, 0),
+          systemData: S.optional(__S(864, __c54, 0)),
+          properties: __S(832, __c52, 0),
         }),
       ).annotate({ identifier: "GetCommunicationResponse" });
-    case 5:
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           supportTicketName: S.String.pipe(T.Label()),
@@ -2241,7 +2045,11 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "GetCommunicationsNoSubscriptionRequest",
       });
-    case 6:
+  }
+}
+function __c17(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -2256,7 +2064,11 @@ function __c5(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetFileRequest" });
-    case 7:
+  }
+}
+function __c18(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           fileWorkspaceName: S.String.pipe(T.Label()),
@@ -2274,7 +2086,7 @@ function __c5(j: number): any {
       });
   }
 }
-function __c6(j: number): any {
+function __c19(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2296,11 +2108,15 @@ function __c6(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(7, __c0, 7)),
-          properties: S.optional(__S(18, __c2, 2)),
+          systemData: S.optional(__S(864, __c54, 0)),
+          properties: S.optional(__S(1008, __c63, 0)),
         }),
       ).annotate({ identifier: "GetFileWorkspaceResponse" });
-    case 2:
+  }
+}
+function __c20(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           fileWorkspaceName: S.String.pipe(T.Label()),
@@ -2315,7 +2131,32 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "GetFileWorkspacesNoSubscriptionRequest",
       });
-    case 3:
+  }
+}
+function __c21(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          name: S.String,
+          type: S.String,
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/subscriptions/{subscriptionId}/providers/Microsoft.Support/checkNameAvailability",
+            code: 200,
+            apiVersion: "2024-04-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "CheckSupportTicketNameAvailabilityRequest",
+      });
+  }
+}
+function __c22(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           serviceName: S.String.pipe(T.Label()),
@@ -2331,39 +2172,43 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "GetProblemClassificationRequest",
       });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          description: S.optional(S.String),
-          type: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "SecondaryConsentEnabled" });
-    case 5:
-      return S.Array(__S(52, __c6, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          displayName: S.optional(S.String),
-          secondaryConsentEnabled: S.optional(__S(53, __c6, 5)),
-        }),
-      ).annotate({
-        identifier: "ProblemClassificationProperties",
-      });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(7, __c0, 7)),
-          properties: S.optional(__S(54, __c6, 6)),
+          systemData: S.optional(__S(864, __c54, 0)),
+          properties: S.optional(__S(370, __c23, 2)),
         }),
       ).annotate({
         identifier: "GetProblemClassificationResponse",
       });
   }
 }
-function __c7(j: number): any {
+function __c23(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          description: S.optional(S.String),
+          type: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "SecondaryConsentEnabled" });
+    case 1:
+      return S.Array(__S(368, __c23, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          displayName: S.optional(S.String),
+          secondaryConsentEnabled: S.optional(__S(369, __c23, 1)),
+        }),
+      ).annotate({
+        identifier: "ProblemClassificationProperties",
+      });
+  }
+}
+function __c24(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2378,24 +2223,32 @@ function __c7(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetServiceRequest" });
-    case 1:
+  }
+}
+function __c25(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           displayName: S.optional(S.String),
-          resourceTypes: S.optional(__S(21, __c2, 5)),
+          resourceTypes: S.optional(__S(80, __c5, 0)),
         }),
       ).annotate({ identifier: "ServiceProperties" });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(7, __c0, 7)),
-          properties: S.optional(__S(57, __c7, 1)),
+          systemData: S.optional(__S(864, __c54, 0)),
+          properties: S.optional(__S(400, __c25, 0)),
         }),
       ).annotate({ identifier: "GetServiceResponse" });
-    case 3:
+  }
+}
+function __c26(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -2409,17 +2262,25 @@ function __c7(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetSupportTicketRequest" });
-    case 4:
+  }
+}
+function __c27(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(7, __c0, 7)),
-          properties: __S(34, __c4, 2),
+          systemData: S.optional(__S(864, __c54, 0)),
+          properties: __S(105, __c6, 9),
         }),
       ).annotate({ identifier: "GetSupportTicketResponse" });
-    case 5:
+  }
+}
+function __c28(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           supportTicketName: S.String.pipe(T.Label()),
@@ -2434,7 +2295,11 @@ function __c7(j: number): any {
       ).annotate({
         identifier: "GetSupportTicketsNoSubscriptionRequest",
       });
-    case 6:
+  }
+}
+function __c29(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -2450,32 +2315,36 @@ function __c7(j: number): any {
       ).annotate({
         identifier: "ListChatTranscriptsRequest",
       });
-    case 7:
+  }
+}
+function __c30(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(7, __c0, 7)),
-          properties: S.optional(__S(40, __c5, 0)),
+          systemData: S.optional(__S(864, __c54, 0)),
+          properties: S.optional(__S(194, __c12, 2)),
         }),
       ).annotate({ identifier: "ChatTranscriptDetails" });
-  }
-}
-function __c8(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(63, __c7, 7));
     case 1:
+      return S.Array(__S(480, __c30, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           nextLink: S.optional(S.String),
-          value: S.optional(__S(64, __c8, 0)),
+          value: S.optional(__S(481, __c30, 1)),
         }),
       ).annotate({
         identifier: "ChatTranscriptsListResult",
       });
-    case 2:
+  }
+}
+function __c31(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           supportTicketName: S.String.pipe(T.Label()),
@@ -2490,7 +2359,11 @@ function __c8(j: number): any {
       ).annotate({
         identifier: "ListChatTranscriptsNoSubscriptionRequest",
       });
-    case 3:
+  }
+}
+function __c32(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -2508,16 +2381,24 @@ function __c8(j: number): any {
       ).annotate({
         identifier: "ListCommunicationsRequest",
       });
-    case 4:
-      return S.Array(__S(44, __c5, 4));
-    case 5:
+  }
+}
+function __c33(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(240, __c15, 0));
+    case 1:
       return S.suspend(() =>
         S.Struct({
           nextLink: S.optional(S.String),
-          value: S.optional(__S(68, __c8, 4)),
+          value: S.optional(__S(528, __c33, 0)),
         }),
       ).annotate({ identifier: "CommunicationsListResult" });
-    case 6:
+  }
+}
+function __c34(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           supportTicketName: S.String.pipe(T.Label()),
@@ -2534,7 +2415,11 @@ function __c8(j: number): any {
       ).annotate({
         identifier: "ListCommunicationsNoSubscriptionRequest",
       });
-    case 7:
+  }
+}
+function __c35(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -2550,18 +2435,22 @@ function __c8(j: number): any {
       ).annotate({ identifier: "ListFilesRequest" });
   }
 }
-function __c9(j: number): any {
+function __c36(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(14, __c1, 6));
+      return S.Array(__S(912, __c57, 0));
     case 1:
       return S.suspend(() =>
         S.Struct({
           nextLink: S.optional(S.String),
-          value: S.optional(__S(72, __c9, 0)),
+          value: S.optional(__S(576, __c36, 0)),
         }),
       ).annotate({ identifier: "FilesListResult" });
-    case 2:
+  }
+}
+function __c37(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           fileWorkspaceName: S.String.pipe(T.Label()),
@@ -2576,7 +2465,31 @@ function __c9(j: number): any {
       ).annotate({
         identifier: "ListFilesNoSubscriptionRequest",
       });
-    case 3:
+  }
+}
+function __c38(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String,
+          type: S.String,
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/providers/Microsoft.Support/checkNameAvailability",
+            code: 200,
+            apiVersion: "2024-04-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "CheckSupportTicketsNoSubscriptionNameAvailabilityRequest",
+      });
+  }
+}
+function __c39(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({}).pipe(
           T.Http({
@@ -2587,7 +2500,7 @@ function __c9(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ListOperationsRequest" });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           provider: S.optional(S.String),
@@ -2596,28 +2509,28 @@ function __c9(j: number): any {
           description: S.optional(S.String),
         }),
       ).annotate({ identifier: "OperationDisplay" });
-    case 5:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
           isDataAction: S.optional(S.Boolean),
-          display: S.optional(__S(76, __c9, 4)),
+          display: S.optional(__S(625, __c39, 1)),
           origin: S.optional(S.String),
           actionType: S.optional(S.String),
         }),
       ).annotate({ identifier: "Operation" });
-    case 6:
-      return S.Array(__S(77, __c9, 5));
-    case 7:
+    case 3:
+      return S.Array(__S(626, __c39, 2));
+    case 4:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(78, __c9, 6)),
+          value: S.optional(__S(627, __c39, 3)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListOperationsResponse" });
   }
 }
-function __c10(j: number): any {
+function __c40(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2640,22 +2553,26 @@ function __c10(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(7, __c0, 7)),
-          properties: S.optional(__S(54, __c6, 6)),
+          systemData: S.optional(__S(864, __c54, 0)),
+          properties: S.optional(__S(370, __c23, 2)),
         }),
       ).annotate({ identifier: "ProblemClassification" });
     case 2:
-      return S.Array(__S(81, __c10, 1));
+      return S.Array(__S(641, __c40, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
           nextLink: S.optional(S.String),
-          value: S.optional(__S(82, __c10, 2)),
+          value: S.optional(__S(642, __c40, 2)),
         }),
       ).annotate({
         identifier: "ProblemClassificationsListResult",
       });
-    case 4:
+  }
+}
+function __c41(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({}).pipe(
           T.Http({
@@ -2666,16 +2583,20 @@ function __c10(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ListServicesRequest" });
-    case 5:
-      return S.Array(__S(58, __c7, 2));
-    case 6:
+    case 1:
+      return S.Array(__S(401, __c25, 1));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           nextLink: S.optional(S.String),
-          value: S.optional(__S(85, __c10, 5)),
+          value: S.optional(__S(657, __c41, 1)),
         }),
       ).annotate({ identifier: "ServicesListResult" });
-    case 7:
+  }
+}
+function __c42(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -2694,18 +2615,22 @@ function __c10(j: number): any {
       });
   }
 }
-function __c11(j: number): any {
+function __c43(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(60, __c7, 4));
+      return S.Array(__S(432, __c27, 0));
     case 1:
       return S.suspend(() =>
         S.Struct({
           nextLink: S.optional(S.String),
-          value: S.optional(__S(88, __c11, 0)),
+          value: S.optional(__S(688, __c43, 0)),
         }),
       ).annotate({ identifier: "SupportTicketsListResult" });
-    case 2:
+  }
+}
+function __c44(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           _top: S.optional(S.Number.pipe(T.Query("$top"))),
@@ -2721,30 +2646,20 @@ function __c11(j: number): any {
       ).annotate({
         identifier: "ListSupportTicketsNoSubscriptionRequest",
       });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          firstName: S.optional(S.String),
-          lastName: S.optional(S.String),
-          preferredContactMethod: S.optional(S.String),
-          primaryEmailAddress: S.optional(S.String),
-          additionalEmailAddresses: S.optional(__S(21, __c2, 5)),
-          phoneNumber: S.optional(S.String),
-          preferredTimeZone: S.optional(S.String),
-          country: S.optional(S.String),
-          preferredSupportLanguage: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "UpdateContactProfile" });
-    case 4:
+  }
+}
+function __c45(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           supportTicketName: S.String.pipe(T.Label()),
           severity: S.optional(S.String),
           status: S.optional(S.String),
-          contactDetails: S.optional(__S(91, __c11, 3)),
+          contactDetails: S.optional(__S(736, __c46, 0)),
           advancedDiagnosticConsent: S.optional(S.String),
-          secondaryConsent: S.optional(__S(29, __c3, 5)),
+          secondaryConsent: S.optional(__S(102, __c6, 6)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -2756,15 +2671,37 @@ function __c11(j: number): any {
       ).annotate({
         identifier: "UpdateSupportTicketRequest",
       });
-    case 5:
+  }
+}
+function __c46(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          firstName: S.optional(S.String),
+          lastName: S.optional(S.String),
+          preferredContactMethod: S.optional(S.String),
+          primaryEmailAddress: S.optional(S.String),
+          additionalEmailAddresses: S.optional(__S(80, __c5, 0)),
+          phoneNumber: S.optional(S.String),
+          preferredTimeZone: S.optional(S.String),
+          country: S.optional(S.String),
+          preferredSupportLanguage: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "UpdateContactProfile" });
+  }
+}
+function __c47(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           supportTicketName: S.String.pipe(T.Label()),
           severity: S.optional(S.String),
           status: S.optional(S.String),
-          contactDetails: S.optional(__S(91, __c11, 3)),
+          contactDetails: S.optional(__S(736, __c46, 0)),
           advancedDiagnosticConsent: S.optional(S.String),
-          secondaryConsent: S.optional(__S(29, __c3, 5)),
+          secondaryConsent: S.optional(__S(102, __c6, 6)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -2776,7 +2713,11 @@ function __c11(j: number): any {
       ).annotate({
         identifier: "UpdateSupportTicketsNoSubscriptionRequest",
       });
-    case 6:
+  }
+}
+function __c48(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -2793,7 +2734,11 @@ function __c11(j: number): any {
           }),
         ),
       ).annotate({ identifier: "UploadFileRequest" });
-    case 7:
+  }
+}
+function __c49(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           fileWorkspaceName: S.String.pipe(T.Label()),
@@ -2811,17 +2756,283 @@ function __c11(j: number): any {
       ).annotate({
         identifier: "UploadFilesNoSubscriptionRequest",
       });
-  }
-}
-function __c12(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "UploadFilesNoSubscriptionResponse",
       });
   }
 }
-
+function __c50(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          supportTicketName: S.String.pipe(T.Label()),
+          communicationName: S.String.pipe(T.Label()),
+          properties: __S(816, __c51, 0),
+        }).pipe(
+          T.Http({
+            method: "PUT",
+            uri: "/subscriptions/{subscriptionId}/providers/Microsoft.Support/supportTickets/{supportTicketName}/communications/{communicationName}",
+            code: 200,
+            apiVersion: "2024-04-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateCommunicationRequest",
+      });
+  }
+}
+function __c51(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          sender: S.optional(S.String),
+          subject: S.String,
+          body: S.String,
+        }),
+      ).annotate({
+        identifier: "CommunicationDetailsPropertiesInput",
+      });
+  }
+}
+function __c52(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          communicationType: S.optional(S.String),
+          communicationDirection: S.optional(S.String),
+          sender: S.optional(S.String),
+          subject: S.String,
+          body: S.String,
+          createdDate: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "CommunicationDetailsProperties",
+      });
+  }
+}
+function __c53(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(864, __c54, 0)),
+          properties: __S(832, __c52, 0),
+        }),
+      ).annotate({
+        identifier: "CreateCommunicationResponse",
+      });
+  }
+}
+function __c54(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          createdBy: S.optional(S.String),
+          createdByType: S.optional(S.String),
+          createdAt: S.optional(S.String),
+          lastModifiedBy: S.optional(S.String),
+          lastModifiedByType: S.optional(S.String),
+          lastModifiedAt: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "SystemData" });
+  }
+}
+function __c55(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          supportTicketName: S.String.pipe(T.Label()),
+          communicationName: S.String.pipe(T.Label()),
+          properties: __S(816, __c51, 0),
+        }).pipe(
+          T.Http({
+            method: "PUT",
+            uri: "/providers/Microsoft.Support/supportTickets/{supportTicketName}/communications/{communicationName}",
+            code: 200,
+            apiVersion: "2024-04-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateCommunicationsNoSubscriptionRequest",
+      });
+  }
+}
+function __c56(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          fileWorkspaceName: S.String.pipe(T.Label()),
+          fileName: S.String.pipe(T.Label()),
+          properties: S.optional(__S(928, __c58, 0)),
+        }).pipe(
+          T.Http({
+            method: "PUT",
+            uri: "/subscriptions/{subscriptionId}/providers/Microsoft.Support/fileWorkspaces/{fileWorkspaceName}/files/{fileName}",
+            code: 200,
+            apiVersion: "2024-04-01",
+          }),
+        ),
+      ).annotate({ identifier: "CreateFileRequest" });
+  }
+}
+function __c57(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(864, __c54, 0)),
+          properties: S.optional(__S(944, __c59, 0)),
+        }),
+      ).annotate({ identifier: "CreateFileResponse" });
+  }
+}
+function __c58(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          chunkSize: S.optional(S.Number),
+          fileSize: S.optional(S.Number),
+          numberOfChunks: S.optional(S.Number),
+        }),
+      ).annotate({
+        identifier: "FileDetailsPropertiesInput",
+      });
+  }
+}
+function __c59(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          createdOn: S.optional(S.String),
+          chunkSize: S.optional(S.Number),
+          fileSize: S.optional(S.Number),
+          numberOfChunks: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "FileDetailsProperties" });
+  }
+}
+function __c60(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          fileWorkspaceName: S.String.pipe(T.Label()),
+          fileName: S.String.pipe(T.Label()),
+          properties: S.optional(__S(928, __c58, 0)),
+        }).pipe(
+          T.Http({
+            method: "PUT",
+            uri: "/providers/Microsoft.Support/fileWorkspaces/{fileWorkspaceName}/files/{fileName}",
+            code: 200,
+            apiVersion: "2024-04-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateFilesNoSubscriptionRequest",
+      });
+  }
+}
+function __c61(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(864, __c54, 0)),
+          properties: S.optional(__S(944, __c59, 0)),
+        }),
+      ).annotate({
+        identifier: "CreateFilesNoSubscriptionResponse",
+      });
+  }
+}
+function __c62(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          fileWorkspaceName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "PUT",
+            uri: "/subscriptions/{subscriptionId}/providers/Microsoft.Support/fileWorkspaces/{fileWorkspaceName}",
+            code: 200,
+            apiVersion: "2024-04-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateFileWorkspaceRequest",
+      });
+  }
+}
+function __c63(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          createdOn: S.optional(S.String),
+          expirationTime: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "FileWorkspaceDetailsProperties",
+      });
+  }
+}
+function __c64(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(864, __c54, 0)),
+          properties: S.optional(__S(1008, __c63, 0)),
+        }),
+      ).annotate({
+        identifier: "CreateFileWorkspaceResponse",
+      });
+  }
+}
+function __c65(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          fileWorkspaceName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "PUT",
+            uri: "/providers/Microsoft.Support/fileWorkspaces/{fileWorkspaceName}",
+            code: 200,
+            apiVersion: "2024-04-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateFileWorkspacesNoSubscriptionRequest",
+      });
+  }
+}
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

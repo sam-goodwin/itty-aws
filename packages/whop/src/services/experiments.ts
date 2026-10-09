@@ -393,8 +393,8 @@ export const activateExperiment: API.OperationMethod<
   ActivateExperimentError,
   WhopOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(0, __c0, 0) as any as S.Schema<ActivateExperimentRequest>,
-  output: __S(11, __c1, 3) as any as S.Schema<Experiment>,
+  input: __S(16, __c1, 0) as any as S.Schema<ActivateExperimentRequest>,
+  output: __S(57, __c3, 9) as any as S.Schema<Experiment>,
   errors: [BadRequest, Conflict],
   protocol: WhopProtocol,
   retry: Retry.Retry,
@@ -408,8 +408,8 @@ export const createExperiment: API.OperationMethod<
   CreateExperimentError,
   WhopOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(14, __c1, 6) as any as S.Schema<CreateExperimentRequest>,
-  output: __S(11, __c1, 3) as any as S.Schema<Experiment>,
+  input: __S(66, __c4, 2) as any as S.Schema<CreateExperimentRequest>,
+  output: __S(57, __c3, 9) as any as S.Schema<Experiment>,
   errors: [Conflict],
   protocol: WhopProtocol,
   retry: Retry.Retry,
@@ -423,8 +423,8 @@ export const endExperiment: API.OperationMethod<
   EndExperimentError,
   WhopOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(15, __c1, 7) as any as S.Schema<EndExperimentRequest>,
-  output: __S(11, __c1, 3) as any as S.Schema<Experiment>,
+  input: __S(80, __c5, 0) as any as S.Schema<EndExperimentRequest>,
+  output: __S(57, __c3, 9) as any as S.Schema<Experiment>,
   errors: [BadRequest, Conflict],
   protocol: WhopProtocol,
   retry: Retry.Retry,
@@ -438,8 +438,8 @@ export const evaluateExperimentExposures: API.OperationMethod<
   EvaluateExperimentExposuresError,
   WhopOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(17, __c2, 1) as any as S.Schema<EvaluateExperimentExposuresRequest>,
-  output: __S(18, __c2, 2) as any as S.Schema<EvaluateExperimentExposuresResponse>,
+  input: __S(97, __c6, 1) as any as S.Schema<EvaluateExperimentExposuresRequest>,
+  output: __S(98, __c6, 2) as any as S.Schema<EvaluateExperimentExposuresResponse>,
   errors: [],
   protocol: WhopProtocol,
   retry: Retry.Retry,
@@ -453,8 +453,8 @@ export const getExperiment: API.OperationMethod<
   GetExperimentError,
   WhopOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(19, __c2, 3) as any as S.Schema<GetExperimentRequest>,
-  output: __S(11, __c1, 3) as any as S.Schema<Experiment>,
+  input: __S(112, __c7, 0) as any as S.Schema<GetExperimentRequest>,
+  output: __S(57, __c3, 9) as any as S.Schema<Experiment>,
   errors: [NotFound],
   protocol: WhopProtocol,
   retry: Retry.Retry,
@@ -470,8 +470,8 @@ export const listExperiments: API.PaginatedOperationMethod<
   Experiment
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(20, __c2, 4) as any as S.Schema<ListExperimentsRequest>,
-    output: __S(23, __c2, 7) as any as S.Schema<ListExperimentsResponse>,
+    input: __S(128, __c8, 0) as any as S.Schema<ListExperimentsRequest>,
+    output: __S(131, __c8, 3) as any as S.Schema<ListExperimentsResponse>,
     errors: [BadRequest],
     protocol: WhopProtocol,
     retry: Retry.Retry,
@@ -495,8 +495,8 @@ export const pauseExperiment: API.OperationMethod<
   PauseExperimentError,
   WhopOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(24, __c3, 0) as any as S.Schema<PauseExperimentRequest>,
-  output: __S(11, __c1, 3) as any as S.Schema<Experiment>,
+  input: __S(144, __c9, 0) as any as S.Schema<PauseExperimentRequest>,
+  output: __S(57, __c3, 9) as any as S.Schema<Experiment>,
   errors: [Conflict],
   protocol: WhopProtocol,
   retry: Retry.Retry,
@@ -510,8 +510,8 @@ export const updateExperiment: API.OperationMethod<
   UpdateExperimentError,
   WhopOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(27, __c3, 3) as any as S.Schema<UpdateExperimentRequest>,
-  output: __S(11, __c1, 3) as any as S.Schema<Experiment>,
+  input: __S(2, __c0, 2) as any as S.Schema<UpdateExperimentRequest>,
+  output: __S(57, __c3, 9) as any as S.Schema<Experiment>,
   errors: [NotFound],
   protocol: WhopProtocol,
   retry: Retry.Retry,
@@ -519,6 +519,34 @@ export const updateExperiment: API.OperationMethod<
 
 // Schema builders: each runs one schema initializer, on that schema's first use.
 function __c0(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String,
+          related_resource: S.optional(S.NullOr(__S(32, __c2, 0))),
+          weight: S.optional(S.Number),
+        }),
+      ).annotate({
+        identifier: "UpdateExperimentRequestVariantsItem",
+      });
+    case 1:
+      return S.Array(__S(0, __c0, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String.pipe(T.Label()),
+          account_id: S.optional(S.String.pipe(T.Query())),
+          control: S.optional(__S(48, __c3, 0)),
+          hypothesis: S.optional(S.NullOr(S.String)),
+          related_resource: S.optional(S.NullOr(__S(32, __c2, 0))),
+          targeting_rules: S.optional(__S(52, __c3, 4)),
+          variants: S.optional(__S(1, __c0, 1)),
+        }).pipe(T.Http({ method: "PATCH", uri: "/experiments/{id}", code: 200 })),
+      ).annotate({ identifier: "UpdateExperimentRequest" });
+  }
+}
+function __c1(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -531,7 +559,11 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "ActivateExperimentRequest",
       });
-    case 1:
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
@@ -540,13 +572,17 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "ExperimentResourceReference",
       });
-    case 2:
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          related_resource: S.optional(S.NullOr(__S(1, __c0, 1))),
+          related_resource: S.optional(S.NullOr(__S(32, __c2, 0))),
         }),
       ).annotate({ identifier: "ExperimentControl" });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           field: S.optional(S.NullOr(S.String)),
@@ -557,46 +593,42 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "ExperimentTargetingRulesItemConditionsItem",
       });
-    case 4:
-      return S.Array(__S(3, __c0, 3));
-    case 5:
+    case 2:
+      return S.Array(__S(49, __c3, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          conditions: __S(4, __c0, 4),
+          conditions: __S(50, __c3, 2),
           type: S.optional(S.String),
         }),
       ).annotate({
         identifier: "ExperimentTargetingRulesItem",
       });
-    case 6:
-      return S.Array(__S(5, __c0, 5));
-    case 7:
+    case 4:
+      return S.Array(__S(51, __c3, 3));
+    case 5:
       return S.Array(S.Number);
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(7, __c0, 7));
-    case 1:
+    case 6:
+      return S.Array(__S(53, __c3, 5));
+    case 7:
       return S.suspend(() =>
         S.Struct({
           name: S.String,
-          ranges: S.optional(__S(8, __c1, 0)),
-          related_resource: S.optional(S.NullOr(__S(1, __c0, 1))),
+          ranges: S.optional(__S(54, __c3, 6)),
+          related_resource: S.optional(S.NullOr(__S(32, __c2, 0))),
           weight: S.Number,
         }),
       ).annotate({ identifier: "ExperimentVariantsItem" });
-    case 2:
-      return S.Array(__S(9, __c1, 1));
-    case 3:
+    case 8:
+      return S.Array(__S(55, __c3, 7));
+    case 9:
       return S.suspend(() =>
         S.Struct({
           account_id: S.String,
           assignment_seed: S.String,
           bucket_by: S.optional(S.NullOr(S.String)),
           configuration_revision: S.Number,
-          control: __S(2, __c0, 2),
+          control: __S(48, __c3, 0),
           created_at: S.optional(S.NullOr(S.String)),
           created_by: S.optional(S.NullOr(S.String)),
           ended_at: S.optional(S.NullOr(S.String)),
@@ -606,44 +638,52 @@ function __c1(j: number): any {
           hypothesis: S.optional(S.NullOr(S.String)),
           id: S.String,
           name: S.String,
-          related_resource: S.NullOr(__S(1, __c0, 1)),
+          related_resource: S.NullOr(__S(32, __c2, 0)),
           started_at: S.optional(S.NullOr(S.String)),
           status: S.String,
-          targeting_rules: __S(6, __c0, 6),
+          targeting_rules: __S(52, __c3, 4),
           updated_at: S.NullOr(S.String),
-          variants: __S(10, __c1, 2),
+          variants: __S(56, __c3, 8),
           winning_arm: S.optional(S.NullOr(S.String)),
         }),
       ).annotate({ identifier: "Experiment" });
-    case 4:
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String,
-          related_resource: S.optional(S.NullOr(__S(1, __c0, 1))),
+          related_resource: S.optional(S.NullOr(__S(32, __c2, 0))),
           weight: S.Number,
         }),
       ).annotate({
         identifier: "CreateExperimentRequestVariantsItem",
       });
-    case 5:
-      return S.Array(__S(12, __c1, 4));
-    case 6:
+    case 1:
+      return S.Array(__S(64, __c4, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           account_id: S.String,
           bucket_by: S.optional(S.String),
-          control: S.optional(__S(2, __c0, 2)),
+          control: S.optional(__S(48, __c3, 0)),
           feature_flag_only: S.optional(S.Boolean),
           flag_key: S.String,
           hypothesis: S.optional(S.NullOr(S.String)),
           name: S.optional(S.String),
-          related_resource: S.optional(S.NullOr(__S(1, __c0, 1))),
-          targeting_rules: S.optional(__S(6, __c0, 6)),
-          variants: S.optional(__S(13, __c1, 5)),
+          related_resource: S.optional(S.NullOr(__S(32, __c2, 0))),
+          targeting_rules: S.optional(__S(52, __c3, 4)),
+          variants: S.optional(__S(65, __c4, 1)),
           idempotency_key: S.optional(S.String.pipe(T.Header("Idempotency-Key"))),
         }).pipe(T.Http({ method: "POST", uri: "/experiments", code: 200 })),
       ).annotate({ identifier: "CreateExperimentRequest" });
-    case 7:
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.String.pipe(T.Label()),
@@ -655,7 +695,7 @@ function __c1(j: number): any {
       ).annotate({ identifier: "EndExperimentRequest" });
   }
 }
-function __c2(j: number): any {
+function __c6(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -670,8 +710,8 @@ function __c2(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          subject: S.optional(__S(16, __c2, 0).pipe(T.Query())),
-          related_resource: S.optional(__S(1, __c0, 1).pipe(T.Query())),
+          subject: S.optional(__S(96, __c6, 0).pipe(T.Query())),
+          related_resource: S.optional(__S(32, __c2, 0).pipe(T.Query())),
           flag_key: S.optional(S.String.pipe(T.Query())),
           account_id: S.optional(S.String.pipe(T.Query())),
           properties: S.optional(S.String.pipe(T.Query())),
@@ -684,18 +724,26 @@ function __c2(j: number): any {
       return S.suspend(() => S.Unknown.pipe(T.RawResponseRoot())).annotate({
         identifier: "EvaluateExperimentExposuresResponse",
       });
-    case 3:
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.String.pipe(T.Label()),
           account_id: S.optional(S.String.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/experiments/{id}", code: 200 })),
       ).annotate({ identifier: "GetExperimentRequest" });
-    case 4:
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           account_id: S.optional(S.String.pipe(T.Query())),
-          related_resource: S.optional(__S(1, __c0, 1).pipe(T.Query())),
+          related_resource: S.optional(__S(32, __c2, 0).pipe(T.Query())),
           status: S.optional(S.String.pipe(T.Query())),
           first: S.optional(S.Number.pipe(T.Query())),
           after: S.optional(S.String.pipe(T.Query())),
@@ -705,9 +753,9 @@ function __c2(j: number): any {
           direction: S.optional(S.String.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/experiments", code: 200 })),
       ).annotate({ identifier: "ListExperimentsRequest" });
-    case 5:
-      return S.Array(__S(11, __c1, 3));
-    case 6:
+    case 1:
+      return S.Array(__S(57, __c3, 9));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           end_cursor: S.NullOr(S.String),
@@ -718,16 +766,16 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "ListExperimentsResponsePageInfo",
       });
-    case 7:
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          data: __S(21, __c2, 5),
-          page_info: __S(22, __c2, 6),
+          data: __S(129, __c8, 1),
+          page_info: __S(130, __c8, 2),
         }),
       ).annotate({ identifier: "ListExperimentsResponse" });
   }
 }
-function __c3(j: number): any {
+function __c9(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -737,33 +785,8 @@ function __c3(j: number): any {
           idempotency_key: S.optional(S.String.pipe(T.Header("Idempotency-Key"))),
         }).pipe(T.Http({ method: "POST", uri: "/experiments/{id}/pause", code: 200 })),
       ).annotate({ identifier: "PauseExperimentRequest" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String,
-          related_resource: S.optional(S.NullOr(__S(1, __c0, 1))),
-          weight: S.optional(S.Number),
-        }),
-      ).annotate({
-        identifier: "UpdateExperimentRequestVariantsItem",
-      });
-    case 2:
-      return S.Array(__S(25, __c3, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String.pipe(T.Label()),
-          account_id: S.optional(S.String.pipe(T.Query())),
-          control: S.optional(__S(2, __c0, 2)),
-          hypothesis: S.optional(S.NullOr(S.String)),
-          related_resource: S.optional(S.NullOr(__S(1, __c0, 1))),
-          targeting_rules: S.optional(__S(6, __c0, 6)),
-          variants: S.optional(__S(26, __c3, 2)),
-        }).pipe(T.Http({ method: "PATCH", uri: "/experiments/{id}", code: 200 })),
-      ).annotate({ identifier: "UpdateExperimentRequest" });
   }
 }
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

@@ -493,8 +493,8 @@ export const createMonitor: API.OperationMethod<
   CreateMonitorError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(6, __c0, 6) as any as S.Schema<CreateMonitorInput>,
-  output: __S(7, __c0, 7) as any as S.Schema<CreateMonitorOutput>,
+  input: __S(0, __c0, 0) as any as S.Schema<CreateMonitorInput>,
+  output: __S(1, __c0, 1) as any as S.Schema<CreateMonitorOutput>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -524,8 +524,8 @@ export const deleteMonitor: API.OperationMethod<
   DeleteMonitorError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(8, __c1, 0) as any as S.Schema<DeleteMonitorInput>,
-  output: __S(9, __c1, 1) as any as S.Schema<DeleteMonitorOutput>,
+  input: __S(64, __c4, 0) as any as S.Schema<DeleteMonitorInput>,
+  output: __S(80, __c5, 0) as any as S.Schema<DeleteMonitorOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -559,8 +559,8 @@ export const getHealthEvent: API.OperationMethod<
   GetHealthEventError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(10, __c1, 2) as any as S.Schema<GetHealthEventInput>,
-  output: __S(20, __c2, 4) as any as S.Schema<GetHealthEventOutput>,
+  input: __S(96, __c6, 0) as any as S.Schema<GetHealthEventInput>,
+  output: __S(121, __c7, 9) as any as S.Schema<GetHealthEventOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -593,8 +593,8 @@ export const getInternetEvent: API.OperationMethod<
   GetInternetEventError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(21, __c2, 5) as any as S.Schema<GetInternetEventInput>,
-  output: __S(23, __c2, 7) as any as S.Schema<GetInternetEventOutput>,
+  input: __S(128, __c8, 0) as any as S.Schema<GetInternetEventInput>,
+  output: __S(145, __c9, 1) as any as S.Schema<GetInternetEventOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -623,8 +623,8 @@ export const getMonitor: API.OperationMethod<
   GetMonitorError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(24, __c3, 0) as any as S.Schema<GetMonitorInput>,
-  output: __S(25, __c3, 1) as any as S.Schema<GetMonitorOutput>,
+  input: __S(160, __c10, 0) as any as S.Schema<GetMonitorInput>,
+  output: __S(161, __c10, 1) as any as S.Schema<GetMonitorOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -659,8 +659,8 @@ export const getQueryResults: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(26, __c3, 2) as any as S.Schema<GetQueryResultsInput>,
-  output: __S(30, __c3, 6) as any as S.Schema<GetQueryResultsOutput>,
+  input: __S(176, __c11, 0) as any as S.Schema<GetQueryResultsInput>,
+  output: __S(180, __c11, 4) as any as S.Schema<GetQueryResultsOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -705,8 +705,8 @@ export const getQueryStatus: API.OperationMethod<
   GetQueryStatusError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(31, __c3, 7) as any as S.Schema<GetQueryStatusInput>,
-  output: __S(32, __c4, 0) as any as S.Schema<GetQueryStatusOutput>,
+  input: __S(192, __c12, 0) as any as S.Schema<GetQueryStatusInput>,
+  output: __S(193, __c12, 1) as any as S.Schema<GetQueryStatusOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -738,8 +738,8 @@ export const listHealthEvents: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   HealthEvent
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(33, __c4, 1) as any as S.Schema<ListHealthEventsInput>,
-  output: __S(35, __c4, 3) as any as S.Schema<ListHealthEventsOutput>,
+  input: __S(208, __c13, 0) as any as S.Schema<ListHealthEventsInput>,
+  output: __S(210, __c13, 2) as any as S.Schema<ListHealthEventsOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -782,8 +782,8 @@ export const listInternetEvents: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   InternetEventSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(36, __c4, 4) as any as S.Schema<ListInternetEventsInput>,
-  output: __S(38, __c4, 6) as any as S.Schema<ListInternetEventsOutput>,
+  input: __S(224, __c14, 0) as any as S.Schema<ListInternetEventsInput>,
+  output: __S(226, __c14, 2) as any as S.Schema<ListInternetEventsOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -817,8 +817,8 @@ export const listMonitors: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   Monitor
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(39, __c4, 7) as any as S.Schema<ListMonitorsInput>,
-  output: __S(42, __c5, 2) as any as S.Schema<ListMonitorsOutput>,
+  input: __S(240, __c15, 0) as any as S.Schema<ListMonitorsInput>,
+  output: __S(243, __c15, 3) as any as S.Schema<ListMonitorsOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -852,8 +852,8 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(43, __c5, 3) as any as S.Schema<ListTagsForResourceInput>,
-  output: __S(44, __c5, 4) as any as S.Schema<ListTagsForResourceOutput>,
+  input: __S(256, __c16, 0) as any as S.Schema<ListTagsForResourceInput>,
+  output: __S(257, __c16, 1) as any as S.Schema<ListTagsForResourceOutput>,
   errors: [
     AccessDeniedException,
     BadRequestException,
@@ -888,8 +888,8 @@ export const startQuery: API.OperationMethod<
   StartQueryError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(47, __c5, 7) as any as S.Schema<StartQueryInput>,
-  output: __S(48, __c6, 0) as any as S.Schema<StartQueryOutput>,
+  input: __S(274, __c17, 2) as any as S.Schema<StartQueryInput>,
+  output: __S(275, __c17, 3) as any as S.Schema<StartQueryOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -918,8 +918,8 @@ export const stopQuery: API.OperationMethod<
   StopQueryError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(49, __c6, 1) as any as S.Schema<StopQueryInput>,
-  output: __S(9, __c1, 1) as any as S.Schema<StopQueryOutput>,
+  input: __S(288, __c18, 0) as any as S.Schema<StopQueryInput>,
+  output: __S(80, __c5, 0) as any as S.Schema<StopQueryOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -950,8 +950,8 @@ export const tagResource: API.OperationMethod<
   TagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(50, __c6, 2) as any as S.Schema<TagResourceInput>,
-  output: __S(9, __c1, 1) as any as S.Schema<TagResourceOutput>,
+  input: __S(304, __c19, 0) as any as S.Schema<TagResourceInput>,
+  output: __S(80, __c5, 0) as any as S.Schema<TagResourceOutput>,
   errors: [
     AccessDeniedException,
     BadRequestException,
@@ -980,8 +980,8 @@ export const untagResource: API.OperationMethod<
   UntagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(51, __c6, 3) as any as S.Schema<UntagResourceInput>,
-  output: __S(9, __c1, 1) as any as S.Schema<UntagResourceOutput>,
+  input: __S(320, __c20, 0) as any as S.Schema<UntagResourceInput>,
+  output: __S(80, __c5, 0) as any as S.Schema<UntagResourceOutput>,
   errors: [
     AccessDeniedException,
     BadRequestException,
@@ -1015,8 +1015,8 @@ export const updateMonitor: API.OperationMethod<
   UpdateMonitorError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(52, __c6, 4) as any as S.Schema<UpdateMonitorInput>,
-  output: __S(53, __c6, 5) as any as S.Schema<UpdateMonitorOutput>,
+  input: __S(336, __c21, 0) as any as S.Schema<UpdateMonitorInput>,
+  output: __S(337, __c21, 1) as any as S.Schema<UpdateMonitorOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1034,49 +1034,16 @@ export const updateMonitor: API.OperationMethod<
 function __c0(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(S.String);
-    case 1:
-      return S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          BucketName: S.optional(S.String),
-          BucketPrefix: S.optional(S.String),
-          LogDeliveryStatus: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "S3Config" });
-    case 3:
-      return S.suspend(() => S.Struct({ S3Config: S.optional(__S(2, __c0, 2)) })).annotate({
-        identifier: "InternetMeasurementsLogDelivery",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          Status: S.optional(S.String),
-          HealthScoreThreshold: S.optional(S.Number),
-          MinTrafficImpact: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "LocalHealthEventsConfig" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          AvailabilityScoreThreshold: S.optional(S.Number),
-          PerformanceScoreThreshold: S.optional(S.Number),
-          AvailabilityLocalHealthEventsConfig: S.optional(__S(4, __c0, 4)),
-          PerformanceLocalHealthEventsConfig: S.optional(__S(4, __c0, 4)),
-        }),
-      ).annotate({ identifier: "HealthEventsConfig" });
-    case 6:
       return S.suspend(() =>
         S.Struct({
           MonitorName: S.String,
-          Resources: S.optional(__S(0, __c0, 0)),
+          Resources: S.optional(__S(16, __c1, 0)),
           ClientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-          Tags: S.optional(__S(1, __c0, 1)),
+          Tags: S.optional(__S(32, __c2, 0)),
           MaxCityNetworksToMonitor: S.optional(S.Number),
-          InternetMeasurementsLogDelivery: S.optional(__S(3, __c0, 3)),
+          InternetMeasurementsLogDelivery: S.optional(__S(49, __c3, 1)),
           TrafficPercentageToMonitor: S.optional(S.Number),
-          HealthEventsConfig: S.optional(__S(5, __c0, 5)),
+          HealthEventsConfig: S.optional(__S(51, __c3, 3)),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/v20210603/Monitors" }),
@@ -1088,13 +1055,58 @@ function __c0(j: number): any {
           ),
         ),
       ).annotate({ identifier: "CreateMonitorInput" });
-    case 7:
+    case 1:
       return S.suspend(() => S.Struct({ Arn: S.String, Status: S.String })).annotate({
         identifier: "CreateMonitorOutput",
       });
   }
 }
 function __c1(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          BucketName: S.optional(S.String),
+          BucketPrefix: S.optional(S.String),
+          LogDeliveryStatus: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "S3Config" });
+    case 1:
+      return S.suspend(() => S.Struct({ S3Config: S.optional(__S(48, __c3, 0)) })).annotate({
+        identifier: "InternetMeasurementsLogDelivery",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          Status: S.optional(S.String),
+          HealthScoreThreshold: S.optional(S.Number),
+          MinTrafficImpact: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "LocalHealthEventsConfig" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          AvailabilityScoreThreshold: S.optional(S.Number),
+          PerformanceScoreThreshold: S.optional(S.Number),
+          AvailabilityLocalHealthEventsConfig: S.optional(__S(50, __c3, 2)),
+          PerformanceLocalHealthEventsConfig: S.optional(__S(50, __c3, 2)),
+        }),
+      ).annotate({ identifier: "HealthEventsConfig" });
+  }
+}
+function __c4(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1109,11 +1121,19 @@ function __c1(j: number): any {
           ),
         ),
       ).annotate({ identifier: "DeleteMonitorInput" });
-    case 1:
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "DeleteMonitorOutput",
       });
-    case 2:
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           MonitorName: S.String.pipe(T.HttpLabel("MonitorName")),
@@ -1133,21 +1153,25 @@ function __c1(j: number): any {
           ),
         ),
       ).annotate({ identifier: "GetHealthEventInput" });
-    case 3:
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() => S.Struct({ ASName: S.String, ASNumber: S.Number })).annotate({
         identifier: "Network",
       });
-    case 4:
-      return S.Array(__S(11, __c1, 3));
-    case 5:
+    case 1:
+      return S.Array(__S(112, __c7, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          Networks: __S(12, __c1, 4),
-          AsPath: __S(12, __c1, 4),
+          Networks: __S(113, __c7, 1),
+          AsPath: __S(113, __c7, 1),
           NetworkEventType: S.String,
         }),
       ).annotate({ identifier: "NetworkImpairment" });
-    case 6:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           ExperienceScore: S.optional(S.Number),
@@ -1155,7 +1179,7 @@ function __c1(j: number): any {
           PercentOfClientLocationImpacted: S.optional(S.Number),
         }),
       ).annotate({ identifier: "AvailabilityMeasurement" });
-    case 7:
+    case 4:
       return S.suspend(() =>
         S.Struct({
           P50: S.optional(S.Number),
@@ -1163,27 +1187,23 @@ function __c1(j: number): any {
           P95: S.optional(S.Number),
         }),
       ).annotate({ identifier: "RoundTripTime" });
-  }
-}
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
+    case 5:
       return S.suspend(() =>
         S.Struct({
           ExperienceScore: S.optional(S.Number),
           PercentOfTotalTrafficImpacted: S.optional(S.Number),
           PercentOfClientLocationImpacted: S.optional(S.Number),
-          RoundTripTime: S.optional(__S(15, __c1, 7)),
+          RoundTripTime: S.optional(__S(116, __c7, 4)),
         }),
       ).annotate({ identifier: "PerformanceMeasurement" });
-    case 1:
+    case 6:
       return S.suspend(() =>
         S.Struct({
-          Availability: S.optional(__S(14, __c1, 6)),
-          Performance: S.optional(__S(16, __c2, 0)),
+          Availability: S.optional(__S(115, __c7, 3)),
+          Performance: S.optional(__S(117, __c7, 5)),
         }),
       ).annotate({ identifier: "InternetHealth" });
-    case 2:
+    case 7:
       return S.suspend(() =>
         S.Struct({
           ASName: S.String,
@@ -1198,14 +1218,14 @@ function __c2(j: number): any {
           SubdivisionCode: S.optional(S.String),
           ServiceLocation: S.optional(S.String),
           Status: S.String,
-          CausedBy: S.optional(__S(13, __c1, 5)),
-          InternetHealth: S.optional(__S(17, __c2, 1)),
-          Ipv4Prefixes: S.optional(__S(0, __c0, 0)),
+          CausedBy: S.optional(__S(114, __c7, 2)),
+          InternetHealth: S.optional(__S(118, __c7, 6)),
+          Ipv4Prefixes: S.optional(__S(16, __c1, 0)),
         }),
       ).annotate({ identifier: "ImpactedLocation" });
-    case 3:
-      return S.Array(__S(18, __c2, 2));
-    case 4:
+    case 8:
+      return S.Array(__S(119, __c7, 7));
+    case 9:
       return S.suspend(() =>
         S.Struct({
           EventArn: S.String,
@@ -1214,14 +1234,18 @@ function __c2(j: number): any {
           EndedAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
           CreatedAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
           LastUpdatedAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
-          ImpactedLocations: __S(19, __c2, 3),
+          ImpactedLocations: __S(120, __c7, 8),
           Status: S.String,
           PercentOfTotalTrafficImpacted: S.optional(S.Number),
           ImpactType: S.String,
           HealthScoreThreshold: S.optional(S.Number),
         }),
       ).annotate({ identifier: "GetHealthEventOutput" });
-    case 5:
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ EventId: S.String.pipe(T.HttpLabel("EventId")) }).pipe(
           T.all(
@@ -1234,7 +1258,11 @@ function __c2(j: number): any {
           ),
         ),
       ).annotate({ identifier: "GetInternetEventInput" });
-    case 6:
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           ASName: S.String,
@@ -1247,21 +1275,21 @@ function __c2(j: number): any {
           Longitude: S.Number,
         }),
       ).annotate({ identifier: "ClientLocation" });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           EventId: S.String,
           EventArn: S.String,
           StartedAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
           EndedAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-          ClientLocation: __S(22, __c2, 6),
+          ClientLocation: __S(144, __c9, 0),
           EventType: S.String,
           EventStatus: S.String,
         }),
       ).annotate({ identifier: "GetInternetEventOutput" });
   }
 }
-function __c3(j: number): any {
+function __c10(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1284,20 +1312,24 @@ function __c3(j: number): any {
         S.Struct({
           MonitorName: S.String,
           MonitorArn: S.String,
-          Resources: __S(0, __c0, 0),
+          Resources: __S(16, __c1, 0),
           Status: S.String,
           CreatedAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
           ModifiedAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
           ProcessingStatus: S.optional(S.String),
           ProcessingStatusInfo: S.optional(S.String),
-          Tags: S.optional(__S(1, __c0, 1)),
+          Tags: S.optional(__S(32, __c2, 0)),
           MaxCityNetworksToMonitor: S.optional(S.Number),
-          InternetMeasurementsLogDelivery: S.optional(__S(3, __c0, 3)),
+          InternetMeasurementsLogDelivery: S.optional(__S(49, __c3, 1)),
           TrafficPercentageToMonitor: S.optional(S.Number),
-          HealthEventsConfig: S.optional(__S(5, __c0, 5)),
+          HealthEventsConfig: S.optional(__S(51, __c3, 3)),
         }),
       ).annotate({ identifier: "GetMonitorOutput" });
-    case 2:
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           MonitorName: S.String.pipe(T.HttpLabel("MonitorName")),
@@ -1318,23 +1350,27 @@ function __c3(j: number): any {
           ),
         ),
       ).annotate({ identifier: "GetQueryResultsInput" });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({ Name: S.optional(S.String), Type: S.optional(S.String) }),
       ).annotate({ identifier: "QueryField" });
+    case 2:
+      return S.Array(__S(177, __c11, 1));
+    case 3:
+      return S.Array(__S(16, __c1, 0));
     case 4:
-      return S.Array(__S(27, __c3, 3));
-    case 5:
-      return S.Array(__S(0, __c0, 0));
-    case 6:
       return S.suspend(() =>
         S.Struct({
-          Fields: __S(28, __c3, 4),
-          Data: S.optional(__S(29, __c3, 5)),
+          Fields: __S(178, __c11, 2),
+          Data: S.optional(__S(179, __c11, 3)),
           NextToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "GetQueryResultsOutput" });
-    case 7:
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           MonitorName: S.String.pipe(T.HttpLabel("MonitorName")),
@@ -1353,15 +1389,15 @@ function __c3(j: number): any {
           ),
         ),
       ).annotate({ identifier: "GetQueryStatusInput" });
-  }
-}
-function __c4(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() => S.Struct({ Status: S.String })).annotate({
         identifier: "GetQueryStatusOutput",
       });
-    case 1:
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           MonitorName: S.String.pipe(T.HttpLabel("MonitorName")),
@@ -1386,13 +1422,17 @@ function __c4(j: number): any {
           ),
         ),
       ).annotate({ identifier: "ListHealthEventsInput" });
+    case 1:
+      return S.Array(__S(121, __c7, 9));
     case 2:
-      return S.Array(__S(20, __c2, 4));
-    case 3:
       return S.suspend(() =>
-        S.Struct({ HealthEvents: __S(34, __c4, 2), NextToken: S.optional(S.String) }),
+        S.Struct({ HealthEvents: __S(209, __c13, 1), NextToken: S.optional(S.String) }),
       ).annotate({ identifier: "ListHealthEventsOutput" });
-    case 4:
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           NextToken: S.optional(S.String).pipe(T.HttpQuery("NextToken")),
@@ -1416,13 +1456,17 @@ function __c4(j: number): any {
           ),
         ),
       ).annotate({ identifier: "ListInternetEventsInput" });
-    case 5:
-      return S.Array(__S(23, __c2, 7));
-    case 6:
+    case 1:
+      return S.Array(__S(145, __c9, 1));
+    case 2:
       return S.suspend(() =>
-        S.Struct({ InternetEvents: __S(37, __c4, 5), NextToken: S.optional(S.String) }),
+        S.Struct({ InternetEvents: __S(225, __c14, 1), NextToken: S.optional(S.String) }),
       ).annotate({ identifier: "ListInternetEventsOutput" });
-    case 7:
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           NextToken: S.optional(S.String).pipe(T.HttpQuery("NextToken")),
@@ -1440,11 +1484,7 @@ function __c4(j: number): any {
           ),
         ),
       ).annotate({ identifier: "ListMonitorsInput" });
-  }
-}
-function __c5(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           MonitorName: S.String,
@@ -1453,13 +1493,17 @@ function __c5(j: number): any {
           ProcessingStatus: S.optional(S.String),
         }),
       ).annotate({ identifier: "Monitor" });
-    case 1:
-      return S.Array(__S(40, __c5, 0));
     case 2:
-      return S.suspend(() =>
-        S.Struct({ Monitors: __S(41, __c5, 1), NextToken: S.optional(S.String) }),
-      ).annotate({ identifier: "ListMonitorsOutput" });
+      return S.Array(__S(241, __c15, 1));
     case 3:
+      return S.suspend(() =>
+        S.Struct({ Monitors: __S(242, __c15, 2), NextToken: S.optional(S.String) }),
+      ).annotate({ identifier: "ListMonitorsOutput" });
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ ResourceArn: S.String.pipe(T.HttpLabel("ResourceArn")) }).pipe(
           T.all(
@@ -1472,28 +1516,32 @@ function __c5(j: number): any {
           ),
         ),
       ).annotate({ identifier: "ListTagsForResourceInput" });
-    case 4:
-      return S.suspend(() => S.Struct({ Tags: S.optional(__S(1, __c0, 1)) })).annotate({
+    case 1:
+      return S.suspend(() => S.Struct({ Tags: S.optional(__S(32, __c2, 0)) })).annotate({
         identifier: "ListTagsForResourceOutput",
       });
-    case 5:
+  }
+}
+function __c17(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           Field: S.optional(S.String),
           Operator: S.optional(S.String),
-          Values: S.optional(__S(0, __c0, 0)),
+          Values: S.optional(__S(16, __c1, 0)),
         }),
       ).annotate({ identifier: "FilterParameter" });
-    case 6:
-      return S.Array(__S(45, __c5, 5));
-    case 7:
+    case 1:
+      return S.Array(__S(272, __c17, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           MonitorName: S.String.pipe(T.HttpLabel("MonitorName")),
           StartTime: T.DateFromString.pipe(T.TimestampFormat("date-time")),
           EndTime: T.DateFromString.pipe(T.TimestampFormat("date-time")),
           QueryType: S.String,
-          FilterParameters: S.optional(__S(46, __c5, 6)),
+          FilterParameters: S.optional(__S(273, __c17, 1)),
           LinkedAccountId: S.optional(S.String),
         }).pipe(
           T.all(
@@ -1506,15 +1554,15 @@ function __c5(j: number): any {
           ),
         ),
       ).annotate({ identifier: "StartQueryInput" });
-  }
-}
-function __c6(j: number): any {
-  switch (j) {
-    case 0:
+    case 3:
       return S.suspend(() => S.Struct({ QueryId: S.String })).annotate({
         identifier: "StartQueryOutput",
       });
-    case 1:
+  }
+}
+function __c18(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           MonitorName: S.String.pipe(T.HttpLabel("MonitorName")),
@@ -1533,11 +1581,15 @@ function __c6(j: number): any {
           ),
         ),
       ).annotate({ identifier: "StopQueryInput" });
-    case 2:
+  }
+}
+function __c19(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           ResourceArn: S.String.pipe(T.HttpLabel("ResourceArn")),
-          Tags: __S(1, __c0, 1),
+          Tags: __S(32, __c2, 0),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/tags/{ResourceArn}" }),
@@ -1549,11 +1601,15 @@ function __c6(j: number): any {
           ),
         ),
       ).annotate({ identifier: "TagResourceInput" });
-    case 3:
+  }
+}
+function __c20(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           ResourceArn: S.String.pipe(T.HttpLabel("ResourceArn")),
-          TagKeys: __S(0, __c0, 0).pipe(T.HttpQuery("tagKeys")),
+          TagKeys: __S(16, __c1, 0).pipe(T.HttpQuery("tagKeys")),
         }).pipe(
           T.all(
             T.Http({ method: "DELETE", uri: "/tags/{ResourceArn}" }),
@@ -1565,18 +1621,22 @@ function __c6(j: number): any {
           ),
         ),
       ).annotate({ identifier: "UntagResourceInput" });
-    case 4:
+  }
+}
+function __c21(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           MonitorName: S.String.pipe(T.HttpLabel("MonitorName")),
-          ResourcesToAdd: S.optional(__S(0, __c0, 0)),
-          ResourcesToRemove: S.optional(__S(0, __c0, 0)),
+          ResourcesToAdd: S.optional(__S(16, __c1, 0)),
+          ResourcesToRemove: S.optional(__S(16, __c1, 0)),
           Status: S.optional(S.String),
           ClientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
           MaxCityNetworksToMonitor: S.optional(S.Number),
-          InternetMeasurementsLogDelivery: S.optional(__S(3, __c0, 3)),
+          InternetMeasurementsLogDelivery: S.optional(__S(49, __c3, 1)),
           TrafficPercentageToMonitor: S.optional(S.Number),
-          HealthEventsConfig: S.optional(__S(5, __c0, 5)),
+          HealthEventsConfig: S.optional(__S(51, __c3, 3)),
         }).pipe(
           T.all(
             T.Http({ method: "PATCH", uri: "/v20210603/Monitors/{MonitorName}" }),
@@ -1588,13 +1648,12 @@ function __c6(j: number): any {
           ),
         ),
       ).annotate({ identifier: "UpdateMonitorInput" });
-    case 5:
+    case 1:
       return S.suspend(() => S.Struct({ MonitorArn: S.String, Status: S.String })).annotate({
         identifier: "UpdateMonitorOutput",
       });
   }
 }
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

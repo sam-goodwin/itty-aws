@@ -1655,8 +1655,8 @@ export const cancelTrainedModel: API.OperationMethod<
   CancelTrainedModelError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(0, __c0, 0) as any as S.Schema<CancelTrainedModelRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<CancelTrainedModelResponse>,
+  input: __S(1312, __c82, 0) as any as S.Schema<CancelTrainedModelRequest>,
+  output: __S(1328, __c83, 0) as any as S.Schema<CancelTrainedModelResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1685,8 +1685,8 @@ export const cancelTrainedModelInferenceJob: API.OperationMethod<
   CancelTrainedModelInferenceJobError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2, __c0, 2) as any as S.Schema<CancelTrainedModelInferenceJobRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<CancelTrainedModelInferenceJobResponse>,
+  input: __S(1344, __c84, 0) as any as S.Schema<CancelTrainedModelInferenceJobRequest>,
+  output: __S(1360, __c85, 0) as any as S.Schema<CancelTrainedModelInferenceJobResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1716,8 +1716,8 @@ export const createAudienceModel: API.OperationMethod<
   CreateAudienceModelError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(5, __c0, 5) as any as S.Schema<CreateAudienceModelRequest>,
-  output: __S(6, __c0, 6) as any as S.Schema<CreateAudienceModelResponse>,
+  input: __S(1376, __c86, 0) as any as S.Schema<CreateAudienceModelRequest>,
+  output: __S(1377, __c86, 1) as any as S.Schema<CreateAudienceModelResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1748,8 +1748,8 @@ export const createConfiguredAudienceModel: API.OperationMethod<
   CreateConfiguredAudienceModelError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(13, __c1, 5) as any as S.Schema<CreateConfiguredAudienceModelRequest>,
-  output: __S(14, __c1, 6) as any as S.Schema<CreateConfiguredAudienceModelResponse>,
+  input: __S(0, __c0, 0) as any as S.Schema<CreateConfiguredAudienceModelRequest>,
+  output: __S(96, __c6, 0) as any as S.Schema<CreateConfiguredAudienceModelResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1779,8 +1779,8 @@ export const createConfiguredModelAlgorithm: API.OperationMethod<
   CreateConfiguredModelAlgorithmError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(20, __c2, 4) as any as S.Schema<CreateConfiguredModelAlgorithmRequest>,
-  output: __S(21, __c2, 5) as any as S.Schema<CreateConfiguredModelAlgorithmResponse>,
+  input: __S(112, __c7, 0) as any as S.Schema<CreateConfiguredModelAlgorithmRequest>,
+  output: __S(113, __c7, 1) as any as S.Schema<CreateConfiguredModelAlgorithmResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1810,8 +1810,8 @@ export const createConfiguredModelAlgorithmAssociation: API.OperationMethod<
   CreateConfiguredModelAlgorithmAssociationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(33, __c4, 1) as any as S.Schema<CreateConfiguredModelAlgorithmAssociationRequest>,
-  output: __S(34, __c4, 2) as any as S.Schema<CreateConfiguredModelAlgorithmAssociationResponse>,
+  input: __S(160, __c10, 0) as any as S.Schema<CreateConfiguredModelAlgorithmAssociationRequest>,
+  output: __S(161, __c10, 1) as any as S.Schema<CreateConfiguredModelAlgorithmAssociationResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1842,8 +1842,8 @@ export const createMLInputChannel: API.OperationMethod<
   CreateMLInputChannelError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(44, __c5, 4) as any as S.Schema<CreateMLInputChannelRequest>,
-  output: __S(45, __c5, 5) as any as S.Schema<CreateMLInputChannelResponse>,
+  input: __S(192, __c12, 0) as any as S.Schema<CreateMLInputChannelRequest>,
+  output: __S(193, __c12, 1) as any as S.Schema<CreateMLInputChannelResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1875,8 +1875,8 @@ export const createTrainedModel: API.OperationMethod<
   CreateTrainedModelError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(52, __c6, 4) as any as S.Schema<CreateTrainedModelRequest>,
-  output: __S(53, __c6, 5) as any as S.Schema<CreateTrainedModelResponse>,
+  input: __S(274, __c17, 2) as any as S.Schema<CreateTrainedModelRequest>,
+  output: __S(275, __c17, 3) as any as S.Schema<CreateTrainedModelResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1906,8 +1906,8 @@ export const createTrainingDataset: API.OperationMethod<
   CreateTrainingDatasetError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(61, __c7, 5) as any as S.Schema<CreateTrainingDatasetRequest>,
-  output: __S(62, __c7, 6) as any as S.Schema<CreateTrainingDatasetResponse>,
+  input: __S(320, __c20, 0) as any as S.Schema<CreateTrainingDatasetRequest>,
+  output: __S(321, __c20, 1) as any as S.Schema<CreateTrainingDatasetResponse>,
   errors: [AccessDeniedException, ConflictException, ThrottlingException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1930,8 +1930,8 @@ export const deleteAudienceGenerationJob: API.OperationMethod<
   DeleteAudienceGenerationJobError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(63, __c7, 7) as any as S.Schema<DeleteAudienceGenerationJobRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<DeleteAudienceGenerationJobResponse>,
+  input: __S(352, __c22, 0) as any as S.Schema<DeleteAudienceGenerationJobRequest>,
+  output: __S(1360, __c85, 0) as any as S.Schema<DeleteAudienceGenerationJobResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1960,8 +1960,8 @@ export const deleteAudienceModel: API.OperationMethod<
   DeleteAudienceModelError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(64, __c8, 0) as any as S.Schema<DeleteAudienceModelRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<DeleteAudienceModelResponse>,
+  input: __S(368, __c23, 0) as any as S.Schema<DeleteAudienceModelRequest>,
+  output: __S(1328, __c83, 0) as any as S.Schema<DeleteAudienceModelResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1990,8 +1990,8 @@ export const deleteConfiguredAudienceModel: API.OperationMethod<
   DeleteConfiguredAudienceModelError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(65, __c8, 1) as any as S.Schema<DeleteConfiguredAudienceModelRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<DeleteConfiguredAudienceModelResponse>,
+  input: __S(384, __c24, 0) as any as S.Schema<DeleteConfiguredAudienceModelRequest>,
+  output: __S(1360, __c85, 0) as any as S.Schema<DeleteConfiguredAudienceModelResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -2019,8 +2019,8 @@ export const deleteConfiguredAudienceModelPolicy: API.OperationMethod<
   DeleteConfiguredAudienceModelPolicyError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(66, __c8, 2) as any as S.Schema<DeleteConfiguredAudienceModelPolicyRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<DeleteConfiguredAudienceModelPolicyResponse>,
+  input: __S(400, __c25, 0) as any as S.Schema<DeleteConfiguredAudienceModelPolicyRequest>,
+  output: __S(1360, __c85, 0) as any as S.Schema<DeleteConfiguredAudienceModelPolicyResponse>,
   errors: [
     AccessDeniedException,
     ResourceNotFoundException,
@@ -2048,8 +2048,8 @@ export const deleteConfiguredModelAlgorithm: API.OperationMethod<
   DeleteConfiguredModelAlgorithmError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(67, __c8, 3) as any as S.Schema<DeleteConfiguredModelAlgorithmRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<DeleteConfiguredModelAlgorithmResponse>,
+  input: __S(416, __c26, 0) as any as S.Schema<DeleteConfiguredModelAlgorithmRequest>,
+  output: __S(1360, __c85, 0) as any as S.Schema<DeleteConfiguredModelAlgorithmResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -2078,8 +2078,8 @@ export const deleteConfiguredModelAlgorithmAssociation: API.OperationMethod<
   DeleteConfiguredModelAlgorithmAssociationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(68, __c8, 4) as any as S.Schema<DeleteConfiguredModelAlgorithmAssociationRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<DeleteConfiguredModelAlgorithmAssociationResponse>,
+  input: __S(432, __c27, 0) as any as S.Schema<DeleteConfiguredModelAlgorithmAssociationRequest>,
+  output: __S(1360, __c85, 0) as any as S.Schema<DeleteConfiguredModelAlgorithmAssociationResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -2107,8 +2107,8 @@ export const deleteMLConfiguration: API.OperationMethod<
   DeleteMLConfigurationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(69, __c8, 5) as any as S.Schema<DeleteMLConfigurationRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<DeleteMLConfigurationResponse>,
+  input: __S(448, __c28, 0) as any as S.Schema<DeleteMLConfigurationRequest>,
+  output: __S(1328, __c83, 0) as any as S.Schema<DeleteMLConfigurationResponse>,
   errors: [
     AccessDeniedException,
     ResourceNotFoundException,
@@ -2136,8 +2136,8 @@ export const deleteMLInputChannelData: API.OperationMethod<
   DeleteMLInputChannelDataError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(70, __c8, 6) as any as S.Schema<DeleteMLInputChannelDataRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<DeleteMLInputChannelDataResponse>,
+  input: __S(464, __c29, 0) as any as S.Schema<DeleteMLInputChannelDataRequest>,
+  output: __S(1360, __c85, 0) as any as S.Schema<DeleteMLInputChannelDataResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -2166,8 +2166,8 @@ export const deleteTrainedModelOutput: API.OperationMethod<
   DeleteTrainedModelOutputError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(71, __c8, 7) as any as S.Schema<DeleteTrainedModelOutputRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<DeleteTrainedModelOutputResponse>,
+  input: __S(480, __c30, 0) as any as S.Schema<DeleteTrainedModelOutputRequest>,
+  output: __S(1360, __c85, 0) as any as S.Schema<DeleteTrainedModelOutputResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -2196,8 +2196,8 @@ export const deleteTrainingDataset: API.OperationMethod<
   DeleteTrainingDatasetError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(72, __c9, 0) as any as S.Schema<DeleteTrainingDatasetRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<DeleteTrainingDatasetResponse>,
+  input: __S(496, __c31, 0) as any as S.Schema<DeleteTrainingDatasetRequest>,
+  output: __S(1328, __c83, 0) as any as S.Schema<DeleteTrainingDatasetResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -2225,8 +2225,8 @@ export const getAudienceGenerationJob: API.OperationMethod<
   GetAudienceGenerationJobError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(73, __c9, 1) as any as S.Schema<GetAudienceGenerationJobRequest>,
-  output: __S(80, __c10, 0) as any as S.Schema<GetAudienceGenerationJobResponse>,
+  input: __S(512, __c32, 0) as any as S.Schema<GetAudienceGenerationJobRequest>,
+  output: __S(516, __c32, 4) as any as S.Schema<GetAudienceGenerationJobResponse>,
   errors: [
     AccessDeniedException,
     ResourceNotFoundException,
@@ -2253,8 +2253,8 @@ export const getAudienceModel: API.OperationMethod<
   GetAudienceModelError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(81, __c10, 1) as any as S.Schema<GetAudienceModelRequest>,
-  output: __S(82, __c10, 2) as any as S.Schema<GetAudienceModelResponse>,
+  input: __S(576, __c36, 0) as any as S.Schema<GetAudienceModelRequest>,
+  output: __S(577, __c36, 1) as any as S.Schema<GetAudienceModelResponse>,
   errors: [
     AccessDeniedException,
     ResourceNotFoundException,
@@ -2282,14 +2282,14 @@ export const getCollaborationConfiguredModelAlgorithmAssociation: API.OperationM
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    83,
-    __c10,
-    3,
+    592,
+    __c37,
+    0,
   ) as any as S.Schema<GetCollaborationConfiguredModelAlgorithmAssociationRequest>,
   output: __S(
-    84,
-    __c10,
-    4,
+    593,
+    __c37,
+    1,
   ) as any as S.Schema<GetCollaborationConfiguredModelAlgorithmAssociationResponse>,
   errors: [
     AccessDeniedException,
@@ -2317,8 +2317,8 @@ export const getCollaborationMLInputChannel: API.OperationMethod<
   GetCollaborationMLInputChannelError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(85, __c10, 5) as any as S.Schema<GetCollaborationMLInputChannelRequest>,
-  output: __S(100, __c12, 4) as any as S.Schema<GetCollaborationMLInputChannelResponse>,
+  input: __S(608, __c38, 0) as any as S.Schema<GetCollaborationMLInputChannelRequest>,
+  output: __S(609, __c38, 1) as any as S.Schema<GetCollaborationMLInputChannelResponse>,
   errors: [
     AccessDeniedException,
     ResourceNotFoundException,
@@ -2345,8 +2345,8 @@ export const getCollaborationTrainedModel: API.OperationMethod<
   GetCollaborationTrainedModelError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(101, __c12, 5) as any as S.Schema<GetCollaborationTrainedModelRequest>,
-  output: __S(104, __c13, 0) as any as S.Schema<GetCollaborationTrainedModelResponse>,
+  input: __S(640, __c40, 0) as any as S.Schema<GetCollaborationTrainedModelRequest>,
+  output: __S(641, __c40, 1) as any as S.Schema<GetCollaborationTrainedModelResponse>,
   errors: [
     AccessDeniedException,
     ResourceNotFoundException,
@@ -2373,8 +2373,8 @@ export const getConfiguredAudienceModel: API.OperationMethod<
   GetConfiguredAudienceModelError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(105, __c13, 1) as any as S.Schema<GetConfiguredAudienceModelRequest>,
-  output: __S(106, __c13, 2) as any as S.Schema<GetConfiguredAudienceModelResponse>,
+  input: __S(672, __c42, 0) as any as S.Schema<GetConfiguredAudienceModelRequest>,
+  output: __S(673, __c42, 1) as any as S.Schema<GetConfiguredAudienceModelResponse>,
   errors: [
     AccessDeniedException,
     ResourceNotFoundException,
@@ -2401,8 +2401,8 @@ export const getConfiguredAudienceModelPolicy: API.OperationMethod<
   GetConfiguredAudienceModelPolicyError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(107, __c13, 3) as any as S.Schema<GetConfiguredAudienceModelPolicyRequest>,
-  output: __S(108, __c13, 4) as any as S.Schema<GetConfiguredAudienceModelPolicyResponse>,
+  input: __S(688, __c43, 0) as any as S.Schema<GetConfiguredAudienceModelPolicyRequest>,
+  output: __S(689, __c43, 1) as any as S.Schema<GetConfiguredAudienceModelPolicyResponse>,
   errors: [
     AccessDeniedException,
     ResourceNotFoundException,
@@ -2429,8 +2429,8 @@ export const getConfiguredModelAlgorithm: API.OperationMethod<
   GetConfiguredModelAlgorithmError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(109, __c13, 5) as any as S.Schema<GetConfiguredModelAlgorithmRequest>,
-  output: __S(110, __c13, 6) as any as S.Schema<GetConfiguredModelAlgorithmResponse>,
+  input: __S(704, __c44, 0) as any as S.Schema<GetConfiguredModelAlgorithmRequest>,
+  output: __S(705, __c44, 1) as any as S.Schema<GetConfiguredModelAlgorithmResponse>,
   errors: [
     AccessDeniedException,
     ResourceNotFoundException,
@@ -2457,8 +2457,8 @@ export const getConfiguredModelAlgorithmAssociation: API.OperationMethod<
   GetConfiguredModelAlgorithmAssociationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(111, __c13, 7) as any as S.Schema<GetConfiguredModelAlgorithmAssociationRequest>,
-  output: __S(112, __c14, 0) as any as S.Schema<GetConfiguredModelAlgorithmAssociationResponse>,
+  input: __S(720, __c45, 0) as any as S.Schema<GetConfiguredModelAlgorithmAssociationRequest>,
+  output: __S(721, __c45, 1) as any as S.Schema<GetConfiguredModelAlgorithmAssociationResponse>,
   errors: [
     AccessDeniedException,
     ResourceNotFoundException,
@@ -2485,8 +2485,8 @@ export const getMLConfiguration: API.OperationMethod<
   GetMLConfigurationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(113, __c14, 1) as any as S.Schema<GetMLConfigurationRequest>,
-  output: __S(115, __c14, 3) as any as S.Schema<GetMLConfigurationResponse>,
+  input: __S(736, __c46, 0) as any as S.Schema<GetMLConfigurationRequest>,
+  output: __S(737, __c46, 1) as any as S.Schema<GetMLConfigurationResponse>,
   errors: [
     AccessDeniedException,
     ResourceNotFoundException,
@@ -2513,8 +2513,8 @@ export const getMLInputChannel: API.OperationMethod<
   GetMLInputChannelError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(116, __c14, 4) as any as S.Schema<GetMLInputChannelRequest>,
-  output: __S(117, __c14, 5) as any as S.Schema<GetMLInputChannelResponse>,
+  input: __S(768, __c48, 0) as any as S.Schema<GetMLInputChannelRequest>,
+  output: __S(769, __c48, 1) as any as S.Schema<GetMLInputChannelResponse>,
   errors: [
     AccessDeniedException,
     ResourceNotFoundException,
@@ -2541,8 +2541,8 @@ export const getTrainedModel: API.OperationMethod<
   GetTrainedModelError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(118, __c14, 6) as any as S.Schema<GetTrainedModelRequest>,
-  output: __S(119, __c14, 7) as any as S.Schema<GetTrainedModelResponse>,
+  input: __S(784, __c49, 0) as any as S.Schema<GetTrainedModelRequest>,
+  output: __S(785, __c49, 1) as any as S.Schema<GetTrainedModelResponse>,
   errors: [
     AccessDeniedException,
     ResourceNotFoundException,
@@ -2569,8 +2569,8 @@ export const getTrainedModelInferenceJob: API.OperationMethod<
   GetTrainedModelInferenceJobError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(120, __c15, 0) as any as S.Schema<GetTrainedModelInferenceJobRequest>,
-  output: __S(127, __c15, 7) as any as S.Schema<GetTrainedModelInferenceJobResponse>,
+  input: __S(800, __c50, 0) as any as S.Schema<GetTrainedModelInferenceJobRequest>,
+  output: __S(801, __c50, 1) as any as S.Schema<GetTrainedModelInferenceJobResponse>,
   errors: [
     AccessDeniedException,
     ResourceNotFoundException,
@@ -2597,8 +2597,8 @@ export const getTrainingDataset: API.OperationMethod<
   GetTrainingDatasetError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(128, __c16, 0) as any as S.Schema<GetTrainingDatasetRequest>,
-  output: __S(129, __c16, 1) as any as S.Schema<GetTrainingDatasetResponse>,
+  input: __S(848, __c53, 0) as any as S.Schema<GetTrainingDatasetRequest>,
+  output: __S(849, __c53, 1) as any as S.Schema<GetTrainingDatasetResponse>,
   errors: [
     AccessDeniedException,
     ResourceNotFoundException,
@@ -2625,8 +2625,8 @@ export const listAudienceExportJobs: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   AudienceExportJobSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(130, __c16, 2) as any as S.Schema<ListAudienceExportJobsRequest>,
-  output: __S(133, __c16, 5) as any as S.Schema<ListAudienceExportJobsResponse>,
+  input: __S(864, __c54, 0) as any as S.Schema<ListAudienceExportJobsRequest>,
+  output: __S(867, __c54, 3) as any as S.Schema<ListAudienceExportJobsResponse>,
   errors: [AccessDeniedException, ThrottlingException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2654,8 +2654,8 @@ export const listAudienceGenerationJobs: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   AudienceGenerationJobSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(134, __c16, 6) as any as S.Schema<ListAudienceGenerationJobsRequest>,
-  output: __S(137, __c17, 1) as any as S.Schema<ListAudienceGenerationJobsResponse>,
+  input: __S(880, __c55, 0) as any as S.Schema<ListAudienceGenerationJobsRequest>,
+  output: __S(883, __c55, 3) as any as S.Schema<ListAudienceGenerationJobsResponse>,
   errors: [AccessDeniedException, ThrottlingException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2683,8 +2683,8 @@ export const listAudienceModels: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   AudienceModelSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(138, __c17, 2) as any as S.Schema<ListAudienceModelsRequest>,
-  output: __S(141, __c17, 5) as any as S.Schema<ListAudienceModelsResponse>,
+  input: __S(896, __c56, 0) as any as S.Schema<ListAudienceModelsRequest>,
+  output: __S(899, __c56, 3) as any as S.Schema<ListAudienceModelsResponse>,
   errors: [AccessDeniedException, ThrottlingException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2713,14 +2713,14 @@ export const listCollaborationConfiguredModelAlgorithmAssociations: API.Paginate
   CollaborationConfiguredModelAlgorithmAssociationSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(
-    142,
-    __c17,
-    6,
+    912,
+    __c57,
+    0,
   ) as any as S.Schema<ListCollaborationConfiguredModelAlgorithmAssociationsRequest>,
   output: __S(
-    145,
-    __c18,
-    1,
+    915,
+    __c57,
+    3,
   ) as any as S.Schema<ListCollaborationConfiguredModelAlgorithmAssociationsResponse>,
   errors: [AccessDeniedException, ThrottlingException, ValidationException],
   protocol: AwsProtocol,
@@ -2749,8 +2749,8 @@ export const listCollaborationMLInputChannels: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   CollaborationMLInputChannelSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(146, __c18, 2) as any as S.Schema<ListCollaborationMLInputChannelsRequest>,
-  output: __S(149, __c18, 5) as any as S.Schema<ListCollaborationMLInputChannelsResponse>,
+  input: __S(928, __c58, 0) as any as S.Schema<ListCollaborationMLInputChannelsRequest>,
+  output: __S(931, __c58, 3) as any as S.Schema<ListCollaborationMLInputChannelsResponse>,
   errors: [AccessDeniedException, ThrottlingException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2778,8 +2778,8 @@ export const listCollaborationTrainedModelExportJobs: API.PaginatedOperationMeth
   Credentials | HttpClient.HttpClient,
   CollaborationTrainedModelExportJobSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(150, __c18, 6) as any as S.Schema<ListCollaborationTrainedModelExportJobsRequest>,
-  output: __S(156, __c19, 4) as any as S.Schema<ListCollaborationTrainedModelExportJobsResponse>,
+  input: __S(944, __c59, 0) as any as S.Schema<ListCollaborationTrainedModelExportJobsRequest>,
+  output: __S(947, __c59, 3) as any as S.Schema<ListCollaborationTrainedModelExportJobsResponse>,
   errors: [AccessDeniedException, ThrottlingException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2807,8 +2807,8 @@ export const listCollaborationTrainedModelInferenceJobs: API.PaginatedOperationM
   Credentials | HttpClient.HttpClient,
   CollaborationTrainedModelInferenceJobSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(157, __c19, 5) as any as S.Schema<ListCollaborationTrainedModelInferenceJobsRequest>,
-  output: __S(160, __c20, 0) as any as S.Schema<ListCollaborationTrainedModelInferenceJobsResponse>,
+  input: __S(976, __c61, 0) as any as S.Schema<ListCollaborationTrainedModelInferenceJobsRequest>,
+  output: __S(979, __c61, 3) as any as S.Schema<ListCollaborationTrainedModelInferenceJobsResponse>,
   errors: [AccessDeniedException, ThrottlingException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2836,8 +2836,8 @@ export const listCollaborationTrainedModels: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   CollaborationTrainedModelSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(161, __c20, 1) as any as S.Schema<ListCollaborationTrainedModelsRequest>,
-  output: __S(164, __c20, 4) as any as S.Schema<ListCollaborationTrainedModelsResponse>,
+  input: __S(992, __c62, 0) as any as S.Schema<ListCollaborationTrainedModelsRequest>,
+  output: __S(995, __c62, 3) as any as S.Schema<ListCollaborationTrainedModelsResponse>,
   errors: [AccessDeniedException, ThrottlingException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2865,8 +2865,8 @@ export const listConfiguredAudienceModels: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   ConfiguredAudienceModelSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(165, __c20, 5) as any as S.Schema<ListConfiguredAudienceModelsRequest>,
-  output: __S(168, __c21, 0) as any as S.Schema<ListConfiguredAudienceModelsResponse>,
+  input: __S(1008, __c63, 0) as any as S.Schema<ListConfiguredAudienceModelsRequest>,
+  output: __S(1011, __c63, 3) as any as S.Schema<ListConfiguredAudienceModelsResponse>,
   errors: [AccessDeniedException, ThrottlingException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2894,8 +2894,8 @@ export const listConfiguredModelAlgorithmAssociations: API.PaginatedOperationMet
   Credentials | HttpClient.HttpClient,
   ConfiguredModelAlgorithmAssociationSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(169, __c21, 1) as any as S.Schema<ListConfiguredModelAlgorithmAssociationsRequest>,
-  output: __S(172, __c21, 4) as any as S.Schema<ListConfiguredModelAlgorithmAssociationsResponse>,
+  input: __S(1024, __c64, 0) as any as S.Schema<ListConfiguredModelAlgorithmAssociationsRequest>,
+  output: __S(1027, __c64, 3) as any as S.Schema<ListConfiguredModelAlgorithmAssociationsResponse>,
   errors: [AccessDeniedException, ThrottlingException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2923,8 +2923,8 @@ export const listConfiguredModelAlgorithms: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   ConfiguredModelAlgorithmSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(173, __c21, 5) as any as S.Schema<ListConfiguredModelAlgorithmsRequest>,
-  output: __S(176, __c22, 0) as any as S.Schema<ListConfiguredModelAlgorithmsResponse>,
+  input: __S(1040, __c65, 0) as any as S.Schema<ListConfiguredModelAlgorithmsRequest>,
+  output: __S(1043, __c65, 3) as any as S.Schema<ListConfiguredModelAlgorithmsResponse>,
   errors: [AccessDeniedException, ThrottlingException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2952,8 +2952,8 @@ export const listMLInputChannels: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   MLInputChannelSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(177, __c22, 1) as any as S.Schema<ListMLInputChannelsRequest>,
-  output: __S(180, __c22, 4) as any as S.Schema<ListMLInputChannelsResponse>,
+  input: __S(1056, __c66, 0) as any as S.Schema<ListMLInputChannelsRequest>,
+  output: __S(1059, __c66, 3) as any as S.Schema<ListMLInputChannelsResponse>,
   errors: [AccessDeniedException, ThrottlingException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2980,8 +2980,8 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(181, __c22, 5) as any as S.Schema<ListTagsForResourceRequest>,
-  output: __S(182, __c22, 6) as any as S.Schema<ListTagsForResourceResponse>,
+  input: __S(1072, __c67, 0) as any as S.Schema<ListTagsForResourceRequest>,
+  output: __S(1073, __c67, 1) as any as S.Schema<ListTagsForResourceResponse>,
   errors: [AccessDeniedException, ResourceNotFoundException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3003,8 +3003,8 @@ export const listTrainedModelInferenceJobs: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   TrainedModelInferenceJobSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(183, __c22, 7) as any as S.Schema<ListTrainedModelInferenceJobsRequest>,
-  output: __S(186, __c23, 2) as any as S.Schema<ListTrainedModelInferenceJobsResponse>,
+  input: __S(1088, __c68, 0) as any as S.Schema<ListTrainedModelInferenceJobsRequest>,
+  output: __S(1091, __c68, 3) as any as S.Schema<ListTrainedModelInferenceJobsResponse>,
   errors: [AccessDeniedException, ThrottlingException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3032,8 +3032,8 @@ export const listTrainedModels: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   TrainedModelSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(187, __c23, 3) as any as S.Schema<ListTrainedModelsRequest>,
-  output: __S(190, __c23, 6) as any as S.Schema<ListTrainedModelsResponse>,
+  input: __S(1104, __c69, 0) as any as S.Schema<ListTrainedModelsRequest>,
+  output: __S(1122, __c70, 2) as any as S.Schema<ListTrainedModelsResponse>,
   errors: [AccessDeniedException, ThrottlingException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3062,8 +3062,8 @@ export const listTrainedModelVersions: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   TrainedModelSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(191, __c23, 7) as any as S.Schema<ListTrainedModelVersionsRequest>,
-  output: __S(190, __c23, 6) as any as S.Schema<ListTrainedModelVersionsResponse>,
+  input: __S(1136, __c71, 0) as any as S.Schema<ListTrainedModelVersionsRequest>,
+  output: __S(1122, __c70, 2) as any as S.Schema<ListTrainedModelVersionsResponse>,
   errors: [
     AccessDeniedException,
     ResourceNotFoundException,
@@ -3096,8 +3096,8 @@ export const listTrainingDatasets: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   TrainingDatasetSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(192, __c24, 0) as any as S.Schema<ListTrainingDatasetsRequest>,
-  output: __S(195, __c24, 3) as any as S.Schema<ListTrainingDatasetsResponse>,
+  input: __S(1152, __c72, 0) as any as S.Schema<ListTrainingDatasetsRequest>,
+  output: __S(1155, __c72, 3) as any as S.Schema<ListTrainingDatasetsResponse>,
   errors: [AccessDeniedException, ThrottlingException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3125,8 +3125,8 @@ export const putConfiguredAudienceModelPolicy: API.OperationMethod<
   PutConfiguredAudienceModelPolicyError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(196, __c24, 4) as any as S.Schema<PutConfiguredAudienceModelPolicyRequest>,
-  output: __S(197, __c24, 5) as any as S.Schema<PutConfiguredAudienceModelPolicyResponse>,
+  input: __S(1168, __c73, 0) as any as S.Schema<PutConfiguredAudienceModelPolicyRequest>,
+  output: __S(1169, __c73, 1) as any as S.Schema<PutConfiguredAudienceModelPolicyResponse>,
   errors: [
     AccessDeniedException,
     ResourceNotFoundException,
@@ -3152,8 +3152,8 @@ export const putMLConfiguration: API.OperationMethod<
   PutMLConfigurationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(198, __c24, 6) as any as S.Schema<PutMLConfigurationRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<PutMLConfigurationResponse>,
+  input: __S(1184, __c74, 0) as any as S.Schema<PutMLConfigurationRequest>,
+  output: __S(1328, __c83, 0) as any as S.Schema<PutMLConfigurationResponse>,
   errors: [AccessDeniedException, ThrottlingException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3177,8 +3177,8 @@ export const startAudienceExportJob: API.OperationMethod<
   StartAudienceExportJobError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(199, __c24, 7) as any as S.Schema<StartAudienceExportJobRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<StartAudienceExportJobResponse>,
+  input: __S(1200, __c75, 0) as any as S.Schema<StartAudienceExportJobRequest>,
+  output: __S(1328, __c83, 0) as any as S.Schema<StartAudienceExportJobResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -3209,8 +3209,8 @@ export const startAudienceGenerationJob: API.OperationMethod<
   StartAudienceGenerationJobError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(200, __c25, 0) as any as S.Schema<StartAudienceGenerationJobRequest>,
-  output: __S(201, __c25, 1) as any as S.Schema<StartAudienceGenerationJobResponse>,
+  input: __S(1216, __c76, 0) as any as S.Schema<StartAudienceGenerationJobRequest>,
+  output: __S(1217, __c76, 1) as any as S.Schema<StartAudienceGenerationJobResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -3240,8 +3240,8 @@ export const startTrainedModelExportJob: API.OperationMethod<
   StartTrainedModelExportJobError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(202, __c25, 2) as any as S.Schema<StartTrainedModelExportJobRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<StartTrainedModelExportJobResponse>,
+  input: __S(1232, __c77, 0) as any as S.Schema<StartTrainedModelExportJobRequest>,
+  output: __S(1360, __c85, 0) as any as S.Schema<StartTrainedModelExportJobResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -3271,8 +3271,8 @@ export const startTrainedModelInferenceJob: API.OperationMethod<
   StartTrainedModelInferenceJobError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(203, __c25, 3) as any as S.Schema<StartTrainedModelInferenceJobRequest>,
-  output: __S(204, __c25, 4) as any as S.Schema<StartTrainedModelInferenceJobResponse>,
+  input: __S(1248, __c78, 0) as any as S.Schema<StartTrainedModelInferenceJobRequest>,
+  output: __S(1249, __c78, 1) as any as S.Schema<StartTrainedModelInferenceJobResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -3300,8 +3300,8 @@ export const tagResource: API.OperationMethod<
   TagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(205, __c25, 5) as any as S.Schema<TagResourceRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<TagResourceResponse>,
+  input: __S(1264, __c79, 0) as any as S.Schema<TagResourceRequest>,
+  output: __S(1328, __c83, 0) as any as S.Schema<TagResourceResponse>,
   errors: [AccessDeniedException, ResourceNotFoundException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3322,8 +3322,8 @@ export const untagResource: API.OperationMethod<
   UntagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(206, __c25, 6) as any as S.Schema<UntagResourceRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<UntagResourceResponse>,
+  input: __S(1280, __c80, 0) as any as S.Schema<UntagResourceRequest>,
+  output: __S(1328, __c83, 0) as any as S.Schema<UntagResourceResponse>,
   errors: [AccessDeniedException, ResourceNotFoundException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3346,8 +3346,8 @@ export const updateConfiguredAudienceModel: API.OperationMethod<
   UpdateConfiguredAudienceModelError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(207, __c25, 7) as any as S.Schema<UpdateConfiguredAudienceModelRequest>,
-  output: __S(14, __c1, 6) as any as S.Schema<UpdateConfiguredAudienceModelResponse>,
+  input: __S(1296, __c81, 0) as any as S.Schema<UpdateConfiguredAudienceModelRequest>,
+  output: __S(96, __c6, 0) as any as S.Schema<UpdateConfiguredAudienceModelResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -3366,113 +3366,14 @@ function __c0(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          membershipIdentifier: S.String.pipe(T.HttpLabel("membershipIdentifier")),
-          trainedModelArn: S.String.pipe(T.HttpLabel("trainedModelArn")),
-          versionIdentifier: S.optional(S.String).pipe(T.HttpQuery("versionIdentifier")),
-        }).pipe(
-          T.all(
-            T.Http({
-              method: "PATCH",
-              uri: "/memberships/{membershipIdentifier}/trained-models/{trainedModelArn}",
-            }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({
-        identifier: "CancelTrainedModelRequest",
-      });
-    case 1:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "CancelTrainedModelResponse",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          membershipIdentifier: S.String.pipe(T.HttpLabel("membershipIdentifier")),
-          trainedModelInferenceJobArn: S.String.pipe(T.HttpLabel("trainedModelInferenceJobArn")),
-        }).pipe(
-          T.all(
-            T.Http({
-              method: "PATCH",
-              uri: "/memberships/{membershipIdentifier}/trained-model-inference-jobs/{trainedModelInferenceJobArn}",
-            }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({
-        identifier: "CancelTrainedModelInferenceJobRequest",
-      });
-    case 3:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "CancelTrainedModelInferenceJobResponse",
-      });
-    case 4:
-      return S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          trainingDataStartTime: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-          trainingDataEndTime: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-          name: S.String,
-          trainingDatasetArn: S.String,
-          kmsKeyArn: S.optional(S.String),
-          tags: S.optional(__S(4, __c0, 4)),
-          description: S.optional(S.String),
-        }).pipe(
-          T.all(T.Http({ method: "POST", uri: "/audience-model" }), svc, auth, proto, ver, rules),
-        ),
-      ).annotate({
-        identifier: "CreateAudienceModelRequest",
-      });
-    case 6:
-      return S.suspend(() => S.Struct({ audienceModelArn: S.String })).annotate({
-        identifier: "CreateAudienceModelResponse",
-      });
-    case 7:
-      return S.suspend(() => S.Struct({ s3Uri: S.String })).annotate({
-        identifier: "S3ConfigMap",
-      });
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() => S.Struct({ s3Destination: __S(7, __c0, 7) })).annotate({
-        identifier: "AudienceDestination",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({ destination: __S(8, __c1, 0), roleArn: S.String }),
-      ).annotate({
-        identifier: "ConfiguredAudienceModelOutputConfig",
-      });
-    case 2:
-      return S.Array(S.String);
-    case 3:
-      return S.Array(S.Number);
-    case 4:
-      return S.suspend(() =>
-        S.Struct({ audienceSizeType: S.String, audienceSizeBins: __S(11, __c1, 3) }),
-      ).annotate({ identifier: "AudienceSizeConfig" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
           name: S.String,
           audienceModelArn: S.String,
-          outputConfig: __S(9, __c1, 1),
+          outputConfig: __S(64, __c4, 0),
           description: S.optional(S.String),
-          sharedAudienceMetrics: __S(10, __c1, 2),
+          sharedAudienceMetrics: __S(16, __c1, 0),
           minMatchingSeedSize: S.optional(S.Number),
-          audienceSizeConfig: S.optional(__S(12, __c1, 4)),
-          tags: S.optional(__S(4, __c0, 4)),
+          audienceSizeConfig: S.optional(__S(81, __c5, 1)),
+          tags: S.optional(__S(1392, __c87, 0)),
           childResourceTagOnCreatePolicy: S.optional(S.String),
         }).pipe(
           T.all(
@@ -3487,44 +3388,69 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "CreateConfiguredAudienceModelRequest",
       });
-    case 6:
-      return S.suspend(() => S.Struct({ configuredAudienceModelArn: S.String })).annotate({
-        identifier: "CreateConfiguredAudienceModelResponse",
-      });
-    case 7:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
       return S.Array(S.String);
   }
 }
 function __c2(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => S.Struct({ name: S.String, regex: S.String })).annotate({
-        identifier: "MetricDefinition",
+      return S.suspend(() => S.Struct({ s3Uri: S.String })).annotate({
+        identifier: "S3ConfigMap",
       });
-    case 1:
-      return S.Array(__S(16, __c2, 0));
-    case 2:
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({ s3Destination: __S(32, __c2, 0) })).annotate({
+        identifier: "AudienceDestination",
+      });
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
-        S.Struct({
-          imageUri: S.String,
-          entrypoint: S.optional(__S(15, __c1, 7)),
-          arguments: S.optional(__S(15, __c1, 7)),
-          metricDefinitions: S.optional(__S(17, __c2, 1)),
-        }),
-      ).annotate({ identifier: "ContainerConfig" });
-    case 3:
-      return S.suspend(() => S.Struct({ imageUri: S.String })).annotate({
-        identifier: "InferenceContainerConfig",
+        S.Struct({ destination: __S(48, __c3, 0), roleArn: S.String }),
+      ).annotate({
+        identifier: "ConfiguredAudienceModelOutputConfig",
       });
-    case 4:
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.Number);
+    case 1:
+      return S.suspend(() =>
+        S.Struct({ audienceSizeType: S.String, audienceSizeBins: __S(80, __c5, 0) }),
+      ).annotate({ identifier: "AudienceSizeConfig" });
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({ configuredAudienceModelArn: S.String })).annotate({
+        identifier: "CreateConfiguredAudienceModelResponse",
+      });
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String,
           description: S.optional(S.String),
           roleArn: S.String,
-          trainingContainerConfig: S.optional(__S(18, __c2, 2)),
-          inferenceContainerConfig: S.optional(__S(19, __c2, 3)),
-          tags: S.optional(__S(4, __c0, 4)),
+          trainingContainerConfig: S.optional(__S(146, __c9, 2)),
+          inferenceContainerConfig: S.optional(__S(147, __c9, 3)),
+          tags: S.optional(__S(1392, __c87, 0)),
           kmsKeyArn: S.optional(S.String),
         }).pipe(
           T.all(
@@ -3539,101 +3465,52 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "CreateConfiguredModelAlgorithmRequest",
       });
-    case 5:
+    case 1:
       return S.suspend(() => S.Struct({ configuredModelAlgorithmArn: S.String })).annotate({
         identifier: "CreateConfiguredModelAlgorithmResponse",
       });
-    case 6:
-      return S.suspend(() => S.Struct({ customDataIdentifiers: __S(15, __c1, 7) })).annotate({
-        identifier: "CustomEntityConfig",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          entitiesToRedact: __S(10, __c1, 2),
-          customEntityConfig: S.optional(__S(22, __c2, 6)),
-        }),
-      ).annotate({
-        identifier: "LogRedactionConfiguration",
-      });
   }
 }
-function __c3(j: number): any {
+function __c8(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() =>
-        S.Struct({
-          allowedAccountIds: __S(15, __c1, 7),
-          filterPattern: S.optional(S.String),
-          logType: S.optional(S.String),
-          logRedactionConfiguration: S.optional(__S(23, __c2, 7)),
-        }),
-      ).annotate({ identifier: "LogsConfigurationPolicy" });
+      return S.Array(S.String);
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({ name: S.String, regex: S.String })).annotate({
+        identifier: "MetricDefinition",
+      });
     case 1:
-      return S.Array(__S(24, __c3, 0));
+      return S.Array(__S(144, __c9, 0));
     case 2:
-      return S.suspend(() => S.Struct({ noiseLevel: S.String })).annotate({
-        identifier: "MetricsConfigurationPolicy",
-      });
+      return S.suspend(() =>
+        S.Struct({
+          imageUri: S.String,
+          entrypoint: S.optional(__S(128, __c8, 0)),
+          arguments: S.optional(__S(128, __c8, 0)),
+          metricDefinitions: S.optional(__S(145, __c9, 1)),
+        }),
+      ).annotate({ identifier: "ContainerConfig" });
     case 3:
-      return S.suspend(() => S.Struct({ unit: S.String, value: S.Number })).annotate({
-        identifier: "TrainedModelArtifactMaxSize",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          containerLogs: S.optional(__S(25, __c3, 1)),
-          containerMetrics: S.optional(__S(26, __c3, 2)),
-          maxArtifactSize: S.optional(__S(27, __c3, 3)),
-        }),
-      ).annotate({
-        identifier: "TrainedModelsConfigurationPolicy",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          maxSize: __S(27, __c3, 3),
-          filesToExport: __S(10, __c1, 2),
-        }),
-      ).annotate({
-        identifier: "TrainedModelExportsConfigurationPolicy",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          containerLogs: S.optional(__S(25, __c3, 1)),
-          maxOutputSize: S.optional(__S(27, __c3, 3)),
-        }),
-      ).annotate({
-        identifier: "TrainedModelInferenceJobsConfigurationPolicy",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          trainedModels: S.optional(__S(28, __c3, 4)),
-          trainedModelExports: S.optional(__S(29, __c3, 5)),
-          trainedModelInferenceJobs: S.optional(__S(30, __c3, 6)),
-        }),
-      ).annotate({
-        identifier: "PrivacyConfigurationPolicies",
+      return S.suspend(() => S.Struct({ imageUri: S.String })).annotate({
+        identifier: "InferenceContainerConfig",
       });
   }
 }
-function __c4(j: number): any {
+function __c10(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => S.Struct({ policies: __S(31, __c3, 7) })).annotate({
-        identifier: "PrivacyConfiguration",
-      });
-    case 1:
       return S.suspend(() =>
         S.Struct({
           membershipIdentifier: S.String.pipe(T.HttpLabel("membershipIdentifier")),
           configuredModelAlgorithmArn: S.String,
           name: S.String,
           description: S.optional(S.String),
-          privacyConfiguration: S.optional(__S(32, __c4, 0)),
-          tags: S.optional(__S(4, __c0, 4)),
+          privacyConfiguration: S.optional(__S(186, __c11, 10)),
+          tags: S.optional(__S(1392, __c87, 0)),
         }).pipe(
           T.all(
             T.Http({
@@ -3650,77 +3527,103 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "CreateConfiguredModelAlgorithmAssociationRequest",
       });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({ configuredModelAlgorithmAssociationArn: S.String }),
       ).annotate({
         identifier: "CreateConfiguredModelAlgorithmAssociationResponse",
       });
-    case 3:
-      return S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
-    case 4:
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({ customDataIdentifiers: __S(128, __c8, 0) })).annotate({
+        identifier: "CustomEntityConfig",
+      });
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          queryString: S.optional(S.String),
-          analysisTemplateArn: S.optional(S.String),
-          parameters: S.optional(__S(35, __c4, 3)),
+          entitiesToRedact: __S(16, __c1, 0),
+          customEntityConfig: S.optional(__S(176, __c11, 0)),
         }),
       ).annotate({
-        identifier: "ProtectedQuerySQLParameters",
+        identifier: "LogRedactionConfiguration",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          allowedAccountIds: __S(128, __c8, 0),
+          filterPattern: S.optional(S.String),
+          logType: S.optional(S.String),
+          logRedactionConfiguration: S.optional(__S(177, __c11, 1)),
+        }),
+      ).annotate({ identifier: "LogsConfigurationPolicy" });
+    case 3:
+      return S.Array(__S(178, __c11, 2));
+    case 4:
+      return S.suspend(() => S.Struct({ noiseLevel: S.String })).annotate({
+        identifier: "MetricsConfigurationPolicy",
       });
     case 5:
-      return S.Union([/*@__PURE__*/ S.Struct({ spark: __S(35, __c4, 3) })]);
+      return S.suspend(() => S.Struct({ unit: S.String, value: S.Number })).annotate({
+        identifier: "TrainedModelArtifactMaxSize",
+      });
     case 6:
       return S.suspend(() =>
         S.Struct({
-          type: S.optional(S.String),
-          number: S.optional(S.Number),
-          properties: S.optional(__S(37, __c4, 5)),
+          containerLogs: S.optional(__S(179, __c11, 3)),
+          containerMetrics: S.optional(__S(180, __c11, 4)),
+          maxArtifactSize: S.optional(__S(181, __c11, 5)),
         }),
       ).annotate({
-        identifier: "WorkerComputeConfiguration",
+        identifier: "TrainedModelsConfigurationPolicy",
       });
     case 7:
-      return S.Union([/*@__PURE__*/ S.Struct({ worker: __S(38, __c4, 6) })]);
+      return S.suspend(() =>
+        S.Struct({ maxSize: __S(181, __c11, 5), filesToExport: __S(16, __c1, 0) }),
+      ).annotate({
+        identifier: "TrainedModelExportsConfigurationPolicy",
+      });
+    case 8:
+      return S.suspend(() =>
+        S.Struct({
+          containerLogs: S.optional(__S(179, __c11, 3)),
+          maxOutputSize: S.optional(__S(181, __c11, 5)),
+        }),
+      ).annotate({
+        identifier: "TrainedModelInferenceJobsConfigurationPolicy",
+      });
+    case 9:
+      return S.suspend(() =>
+        S.Struct({
+          trainedModels: S.optional(__S(182, __c11, 6)),
+          trainedModelExports: S.optional(__S(183, __c11, 7)),
+          trainedModelInferenceJobs: S.optional(__S(184, __c11, 8)),
+        }),
+      ).annotate({
+        identifier: "PrivacyConfigurationPolicies",
+      });
+    case 10:
+      return S.suspend(() => S.Struct({ policies: __S(185, __c11, 9) })).annotate({
+        identifier: "PrivacyConfiguration",
+      });
   }
 }
-function __c5(j: number): any {
+function __c12(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          sqlParameters: __S(36, __c4, 4),
-          computeConfiguration: S.optional(__S(39, __c4, 7)),
-          resultFormat: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "ProtectedQueryInputParameters",
-      });
-    case 1:
-      return S.Union([/*@__PURE__*/ S.Struct({ protectedQueryInputParameters: __S(40, __c5, 0) })]);
-    case 2:
-      return S.suspend(() =>
-        S.Struct({ dataSource: __S(41, __c5, 1), roleArn: S.String }),
-      ).annotate({ identifier: "InputChannel" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          computePayerAccountId: S.optional(S.String),
-          syntheticDataPayerAccountId: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "PayerConfiguration" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
           membershipIdentifier: S.String.pipe(T.HttpLabel("membershipIdentifier")),
-          configuredModelAlgorithmAssociations: __S(15, __c1, 7),
-          inputChannel: __S(42, __c5, 2),
+          configuredModelAlgorithmAssociations: __S(128, __c8, 0),
+          inputChannel: __S(258, __c16, 2),
           name: S.String,
           retentionInDays: S.Number,
           description: S.optional(S.String),
           kmsKeyArn: S.optional(S.String),
-          tags: S.optional(__S(4, __c0, 4)),
-          payerConfiguration: S.optional(__S(43, __c5, 3)),
+          tags: S.optional(__S(1392, __c87, 0)),
+          payerConfiguration: S.optional(__S(240, __c15, 0)),
         }).pipe(
           T.all(
             T.Http({
@@ -3737,25 +3640,80 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "CreateMLInputChannelRequest",
       });
-    case 5:
+    case 1:
       return S.suspend(() => S.Struct({ mlInputChannelArn: S.String })).annotate({
         identifier: "CreateMLInputChannelResponse",
       });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          instanceCount: S.optional(S.Number),
-          instanceType: S.String,
-          volumeSizeInGB: S.Number,
-        }),
-      ).annotate({ identifier: "ResourceConfig" });
-    case 7:
-      return S.suspend(() => S.Struct({ maxRuntimeInSeconds: S.optional(S.Number) })).annotate({
-        identifier: "StoppingCondition",
-      });
   }
 }
-function __c6(j: number): any {
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          queryString: S.optional(S.String),
+          analysisTemplateArn: S.optional(S.String),
+          parameters: S.optional(__S(208, __c13, 0)),
+        }),
+      ).annotate({
+        identifier: "ProtectedQuerySQLParameters",
+      });
+    case 1:
+      return S.Union([/*@__PURE__*/ S.Struct({ spark: __S(208, __c13, 0) })]);
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          type: S.optional(S.String),
+          number: S.optional(S.Number),
+          properties: S.optional(__S(225, __c14, 1)),
+        }),
+      ).annotate({
+        identifier: "WorkerComputeConfiguration",
+      });
+    case 3:
+      return S.Union([/*@__PURE__*/ S.Struct({ worker: __S(226, __c14, 2) })]);
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          computePayerAccountId: S.optional(S.String),
+          syntheticDataPayerAccountId: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "PayerConfiguration" });
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          sqlParameters: __S(224, __c14, 0),
+          computeConfiguration: S.optional(__S(227, __c14, 3)),
+          resultFormat: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "ProtectedQueryInputParameters",
+      });
+    case 1:
+      return S.Union([
+        /*@__PURE__*/ S.Struct({ protectedQueryInputParameters: __S(256, __c16, 0) }),
+      ]);
+    case 2:
+      return S.suspend(() =>
+        S.Struct({ dataSource: __S(257, __c16, 1), roleArn: S.String }),
+      ).annotate({ identifier: "InputChannel" });
+  }
+}
+function __c17(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3768,33 +3726,23 @@ function __c6(j: number): any {
         identifier: "IncrementalTrainingDataChannel",
       });
     case 1:
-      return S.Array(__S(48, __c6, 0));
+      return S.Array(__S(272, __c17, 0));
     case 2:
-      return S.suspend(() =>
-        S.Struct({
-          mlInputChannelArn: S.String,
-          channelName: S.String,
-          s3DataDistributionType: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ModelTrainingDataChannel" });
-    case 3:
-      return S.Array(__S(50, __c6, 2));
-    case 4:
       return S.suspend(() =>
         S.Struct({
           membershipIdentifier: S.String.pipe(T.HttpLabel("membershipIdentifier")),
           name: S.String,
           configuredModelAlgorithmAssociationArn: S.String,
-          hyperparameters: S.optional(__S(35, __c4, 3)),
-          environment: S.optional(__S(35, __c4, 3)),
-          resourceConfig: __S(46, __c5, 6),
-          stoppingCondition: S.optional(__S(47, __c5, 7)),
-          incrementalTrainingDataChannels: S.optional(__S(49, __c6, 1)),
-          dataChannels: __S(51, __c6, 3),
+          hyperparameters: S.optional(__S(208, __c13, 0)),
+          environment: S.optional(__S(208, __c13, 0)),
+          resourceConfig: __S(288, __c18, 0),
+          stoppingCondition: S.optional(__S(289, __c18, 1)),
+          incrementalTrainingDataChannels: S.optional(__S(273, __c17, 1)),
+          dataChannels: __S(305, __c19, 1),
           trainingInputMode: S.optional(S.String),
           description: S.optional(S.String),
           kmsKeyArn: S.optional(S.String),
-          tags: S.optional(__S(4, __c0, 4)),
+          tags: S.optional(__S(1392, __c87, 0)),
           mlModelTrainingPayerAccountId: S.optional(S.String),
         }).pipe(
           T.all(
@@ -3809,47 +3757,53 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "CreateTrainedModelRequest",
       });
-    case 5:
+    case 3:
       return S.suspend(() =>
         S.Struct({ trainedModelArn: S.String, versionIdentifier: S.optional(S.String) }),
       ).annotate({
         identifier: "CreateTrainedModelResponse",
       });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({ columnName: S.String, columnTypes: __S(10, __c1, 2) }),
-      ).annotate({ identifier: "ColumnSchema" });
-    case 7:
-      return S.Array(__S(54, __c6, 6));
   }
 }
-function __c7(j: number): any {
+function __c18(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({ tableName: S.String, databaseName: S.String, catalogId: S.optional(S.String) }),
-      ).annotate({ identifier: "GlueDataSource" });
+        S.Struct({
+          instanceCount: S.optional(S.Number),
+          instanceType: S.String,
+          volumeSizeInGB: S.Number,
+        }),
+      ).annotate({ identifier: "ResourceConfig" });
     case 1:
-      return S.suspend(() => S.Struct({ glueDataSource: __S(56, __c7, 0) })).annotate({
-        identifier: "DataSource",
+      return S.suspend(() => S.Struct({ maxRuntimeInSeconds: S.optional(S.Number) })).annotate({
+        identifier: "StoppingCondition",
       });
-    case 2:
+  }
+}
+function __c19(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
-        S.Struct({ schema: __S(55, __c6, 7), dataSource: __S(57, __c7, 1) }),
-      ).annotate({ identifier: "DatasetInputConfig" });
-    case 3:
-      return S.suspend(() => S.Struct({ type: S.String, inputConfig: __S(58, __c7, 2) })).annotate({
-        identifier: "Dataset",
-      });
-    case 4:
-      return S.Array(__S(59, __c7, 3));
-    case 5:
+        S.Struct({
+          mlInputChannelArn: S.String,
+          channelName: S.String,
+          s3DataDistributionType: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ModelTrainingDataChannel" });
+    case 1:
+      return S.Array(__S(304, __c19, 0));
+  }
+}
+function __c20(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String,
           roleArn: S.String,
-          trainingData: __S(60, __c7, 4),
-          tags: S.optional(__S(4, __c0, 4)),
+          trainingData: __S(342, __c21, 6),
+          tags: S.optional(__S(1392, __c87, 0)),
           description: S.optional(S.String),
         }).pipe(
           T.all(T.Http({ method: "POST", uri: "/training-dataset" }), svc, auth, proto, ver, rules),
@@ -3857,11 +3811,43 @@ function __c7(j: number): any {
       ).annotate({
         identifier: "CreateTrainingDatasetRequest",
       });
-    case 6:
+    case 1:
       return S.suspend(() => S.Struct({ trainingDatasetArn: S.String })).annotate({
         identifier: "CreateTrainingDatasetResponse",
       });
-    case 7:
+  }
+}
+function __c21(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ columnName: S.String, columnTypes: __S(16, __c1, 0) }),
+      ).annotate({ identifier: "ColumnSchema" });
+    case 1:
+      return S.Array(__S(336, __c21, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({ tableName: S.String, databaseName: S.String, catalogId: S.optional(S.String) }),
+      ).annotate({ identifier: "GlueDataSource" });
+    case 3:
+      return S.suspend(() => S.Struct({ glueDataSource: __S(338, __c21, 2) })).annotate({
+        identifier: "DataSource",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({ schema: __S(337, __c21, 1), dataSource: __S(339, __c21, 3) }),
+      ).annotate({ identifier: "DatasetInputConfig" });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({ type: S.String, inputConfig: __S(340, __c21, 4) }),
+      ).annotate({ identifier: "Dataset" });
+    case 6:
+      return S.Array(__S(341, __c21, 5));
+  }
+}
+function __c22(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           audienceGenerationJobArn: S.String.pipe(T.HttpLabel("audienceGenerationJobArn")),
@@ -3883,7 +3869,7 @@ function __c7(j: number): any {
       });
   }
 }
-function __c8(j: number): any {
+function __c23(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3900,7 +3886,11 @@ function __c8(j: number): any {
       ).annotate({
         identifier: "DeleteAudienceModelRequest",
       });
-    case 1:
+  }
+}
+function __c24(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           configuredAudienceModelArn: S.String.pipe(T.HttpLabel("configuredAudienceModelArn")),
@@ -3920,7 +3910,11 @@ function __c8(j: number): any {
       ).annotate({
         identifier: "DeleteConfiguredAudienceModelRequest",
       });
-    case 2:
+  }
+}
+function __c25(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           configuredAudienceModelArn: S.String.pipe(T.HttpLabel("configuredAudienceModelArn")),
@@ -3940,7 +3934,11 @@ function __c8(j: number): any {
       ).annotate({
         identifier: "DeleteConfiguredAudienceModelPolicyRequest",
       });
-    case 3:
+  }
+}
+function __c26(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           configuredModelAlgorithmArn: S.String.pipe(T.HttpLabel("configuredModelAlgorithmArn")),
@@ -3960,7 +3958,11 @@ function __c8(j: number): any {
       ).annotate({
         identifier: "DeleteConfiguredModelAlgorithmRequest",
       });
-    case 4:
+  }
+}
+function __c27(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           configuredModelAlgorithmAssociationArn: S.String.pipe(
@@ -3983,7 +3985,11 @@ function __c8(j: number): any {
       ).annotate({
         identifier: "DeleteConfiguredModelAlgorithmAssociationRequest",
       });
-    case 5:
+  }
+}
+function __c28(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ membershipIdentifier: S.String.pipe(T.HttpLabel("membershipIdentifier")) }).pipe(
           T.all(
@@ -4001,7 +4007,11 @@ function __c8(j: number): any {
       ).annotate({
         identifier: "DeleteMLConfigurationRequest",
       });
-    case 6:
+  }
+}
+function __c29(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           mlInputChannelArn: S.String.pipe(T.HttpLabel("mlInputChannelArn")),
@@ -4022,7 +4032,11 @@ function __c8(j: number): any {
       ).annotate({
         identifier: "DeleteMLInputChannelDataRequest",
       });
-    case 7:
+  }
+}
+function __c30(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           trainedModelArn: S.String.pipe(T.HttpLabel("trainedModelArn")),
@@ -4046,7 +4060,7 @@ function __c8(j: number): any {
       });
   }
 }
-function __c9(j: number): any {
+function __c31(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4063,7 +4077,11 @@ function __c9(j: number): any {
       ).annotate({
         identifier: "DeleteTrainingDatasetRequest",
       });
-    case 1:
+  }
+}
+function __c32(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           audienceGenerationJobArn: S.String.pipe(T.HttpLabel("audienceGenerationJobArn")),
@@ -4080,40 +4098,17 @@ function __c9(j: number): any {
       ).annotate({
         identifier: "GetAudienceGenerationJobRequest",
       });
-    case 2:
+    case 1:
       return S.suspend(() =>
-        S.Struct({ statusCode: S.optional(S.String), message: S.optional(S.String) }),
-      ).annotate({ identifier: "StatusDetails" });
+        S.Struct({ audienceSize: __S(544, __c34, 0), score: S.optional(S.Number) }),
+      ).annotate({ identifier: "RelevanceMetric" });
+    case 2:
+      return S.Array(__S(513, __c32, 1));
     case 3:
       return S.suspend(() =>
-        S.Struct({
-          dataSource: S.optional(__S(7, __c0, 7)),
-          roleArn: S.String,
-          sqlParameters: S.optional(__S(36, __c4, 4)),
-          sqlComputeConfiguration: S.optional(__S(39, __c4, 7)),
-        }),
-      ).annotate({
-        identifier: "AudienceGenerationJobDataSource",
-      });
-    case 4:
-      return S.suspend(() => S.Struct({ type: S.String, value: S.Number })).annotate({
-        identifier: "AudienceSize",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({ audienceSize: __S(76, __c9, 4), score: S.optional(S.Number) }),
-      ).annotate({ identifier: "RelevanceMetric" });
-    case 6:
-      return S.Array(__S(77, __c9, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({ relevanceMetrics: __S(78, __c9, 6), recallMetric: S.optional(S.Number) }),
+        S.Struct({ relevanceMetrics: __S(514, __c32, 2), recallMetric: S.optional(S.Number) }),
       ).annotate({ identifier: "AudienceQualityMetrics" });
-  }
-}
-function __c10(j: number): any {
-  switch (j) {
-    case 0:
+    case 4:
       return S.suspend(() =>
         S.Struct({
           createTime: T.DateFromString.pipe(T.TimestampFormat("date-time")),
@@ -4122,20 +4117,55 @@ function __c10(j: number): any {
           name: S.String,
           description: S.optional(S.String),
           status: S.String,
-          statusDetails: S.optional(__S(74, __c9, 2)),
+          statusDetails: S.optional(__S(528, __c33, 0)),
           configuredAudienceModelArn: S.String,
-          seedAudience: S.optional(__S(75, __c9, 3)),
+          seedAudience: S.optional(__S(560, __c35, 0)),
           includeSeedInOutput: S.optional(S.Boolean),
           collaborationId: S.optional(S.String),
-          metrics: S.optional(__S(79, __c9, 7)),
+          metrics: S.optional(__S(515, __c32, 3)),
           startedBy: S.optional(S.String),
-          tags: S.optional(__S(4, __c0, 4)),
+          tags: S.optional(__S(1392, __c87, 0)),
           protectedQueryIdentifier: S.optional(S.String),
         }),
       ).annotate({
         identifier: "GetAudienceGenerationJobResponse",
       });
-    case 1:
+  }
+}
+function __c33(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ statusCode: S.optional(S.String), message: S.optional(S.String) }),
+      ).annotate({ identifier: "StatusDetails" });
+  }
+}
+function __c34(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({ type: S.String, value: S.Number })).annotate({
+        identifier: "AudienceSize",
+      });
+  }
+}
+function __c35(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          dataSource: S.optional(__S(32, __c2, 0)),
+          roleArn: S.String,
+          sqlParameters: S.optional(__S(224, __c14, 0)),
+          sqlComputeConfiguration: S.optional(__S(227, __c14, 3)),
+        }),
+      ).annotate({
+        identifier: "AudienceGenerationJobDataSource",
+      });
+  }
+}
+function __c36(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ audienceModelArn: S.String.pipe(T.HttpLabel("audienceModelArn")) }).pipe(
           T.all(
@@ -4148,7 +4178,7 @@ function __c10(j: number): any {
           ),
         ),
       ).annotate({ identifier: "GetAudienceModelRequest" });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           createTime: T.DateFromString.pipe(T.TimestampFormat("date-time")),
@@ -4159,13 +4189,17 @@ function __c10(j: number): any {
           name: S.String,
           trainingDatasetArn: S.String,
           status: S.String,
-          statusDetails: S.optional(__S(74, __c9, 2)),
+          statusDetails: S.optional(__S(528, __c33, 0)),
           kmsKeyArn: S.optional(S.String),
-          tags: S.optional(__S(4, __c0, 4)),
+          tags: S.optional(__S(1392, __c87, 0)),
           description: S.optional(S.String),
         }),
       ).annotate({ identifier: "GetAudienceModelResponse" });
-    case 3:
+  }
+}
+function __c37(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           configuredModelAlgorithmAssociationArn: S.String.pipe(
@@ -4188,7 +4222,7 @@ function __c10(j: number): any {
       ).annotate({
         identifier: "GetCollaborationConfiguredModelAlgorithmAssociationRequest",
       });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           createTime: T.DateFromString.pipe(T.TimestampFormat("date-time")),
@@ -4200,12 +4234,16 @@ function __c10(j: number): any {
           name: S.String,
           description: S.optional(S.String),
           creatorAccountId: S.String,
-          privacyConfiguration: S.optional(__S(32, __c4, 0)),
+          privacyConfiguration: S.optional(__S(186, __c11, 10)),
         }),
       ).annotate({
         identifier: "GetCollaborationConfiguredModelAlgorithmAssociationResponse",
       });
-    case 5:
+  }
+}
+function __c38(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           mlInputChannelArn: S.String.pipe(T.HttpLabel("mlInputChannelArn")),
@@ -4226,7 +4264,34 @@ function __c10(j: number): any {
       ).annotate({
         identifier: "GetCollaborationMLInputChannelRequest",
       });
-    case 6:
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          membershipIdentifier: S.String,
+          collaborationIdentifier: S.String,
+          mlInputChannelArn: S.String,
+          name: S.String,
+          configuredModelAlgorithmAssociations: __S(128, __c8, 0),
+          status: S.String,
+          statusDetails: S.optional(__S(528, __c33, 0)),
+          retentionInDays: S.Number,
+          numberOfRecords: S.optional(S.Number),
+          privacyBudgets: S.optional(__S(628, __c39, 4)),
+          description: S.optional(S.String),
+          syntheticDataConfiguration: S.optional(__S(637, __c39, 13)),
+          payerConfiguration: S.optional(__S(240, __c15, 0)),
+          createTime: T.DateFromString.pipe(T.TimestampFormat("date-time")),
+          updateTime: T.DateFromString.pipe(T.TimestampFormat("date-time")),
+          creatorAccountId: S.String,
+        }),
+      ).annotate({
+        identifier: "GetCollaborationMLInputChannelResponse",
+      });
+  }
+}
+function __c39(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           startTime: T.DateFromString.pipe(T.TimestampFormat("date-time")),
@@ -4237,25 +4302,21 @@ function __c10(j: number): any {
           autoRefresh: S.optional(S.String),
         }),
       ).annotate({ identifier: "AccessBudgetDetails" });
-    case 7:
-      return S.Array(__S(86, __c10, 6));
-  }
-}
-function __c11(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
+      return S.Array(__S(624, __c39, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           resourceArn: S.String,
-          details: __S(87, __c10, 7),
+          details: __S(625, __c39, 1),
           aggregateRemainingBudget: S.Number,
         }),
       ).annotate({ identifier: "AccessBudget" });
-    case 1:
-      return S.Array(__S(88, __c11, 0));
-    case 2:
-      return S.Union([/*@__PURE__*/ S.Struct({ accessBudgets: __S(89, __c11, 1) })]);
     case 3:
+      return S.Array(__S(626, __c39, 2));
+    case 4:
+      return S.Union([/*@__PURE__*/ S.Struct({ accessBudgets: __S(627, __c39, 3) })]);
+    case 5:
       return S.suspend(() =>
         S.Struct({
           columnName: S.String,
@@ -4265,73 +4326,50 @@ function __c11(j: number): any {
       ).annotate({
         identifier: "SyntheticDataColumnProperties",
       });
-    case 4:
-      return S.Array(__S(91, __c11, 3));
-    case 5:
-      return S.suspend(() => S.Struct({ columnMapping: __S(92, __c11, 4) })).annotate({
+    case 6:
+      return S.Array(__S(629, __c39, 5));
+    case 7:
+      return S.suspend(() => S.Struct({ columnMapping: __S(630, __c39, 6) })).annotate({
         identifier: "ColumnClassificationDetails",
       });
-    case 6:
+    case 8:
       return S.suspend(() =>
         S.Struct({
           epsilon: S.Number,
           maxMembershipInferenceAttackScore: S.Number,
-          columnClassification: S.optional(__S(93, __c11, 5)),
+          columnClassification: S.optional(__S(631, __c39, 7)),
         }),
       ).annotate({
         identifier: "MLSyntheticDataParameters",
       });
-    case 7:
+    case 9:
       return S.suspend(() => S.Struct({ attackVersion: S.String, score: S.Number })).annotate({
         identifier: "MembershipInferenceAttackScore",
       });
-  }
-}
-function __c12(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(95, __c11, 7));
-    case 1:
+    case 10:
+      return S.Array(__S(633, __c39, 9));
+    case 11:
       return S.suspend(() =>
-        S.Struct({ membershipInferenceAttackScores: __S(96, __c12, 0) }),
+        S.Struct({ membershipInferenceAttackScores: __S(634, __c39, 10) }),
       ).annotate({ identifier: "DataPrivacyScores" });
-    case 2:
-      return S.suspend(() => S.Struct({ dataPrivacyScores: __S(97, __c12, 1) })).annotate({
+    case 12:
+      return S.suspend(() => S.Struct({ dataPrivacyScores: __S(635, __c39, 11) })).annotate({
         identifier: "SyntheticDataEvaluationScores",
       });
-    case 3:
+    case 13:
       return S.suspend(() =>
         S.Struct({
-          syntheticDataParameters: __S(94, __c11, 6),
-          syntheticDataEvaluationScores: S.optional(__S(98, __c12, 2)),
+          syntheticDataParameters: __S(632, __c39, 8),
+          syntheticDataEvaluationScores: S.optional(__S(636, __c39, 12)),
         }),
       ).annotate({
         identifier: "SyntheticDataConfiguration",
       });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          membershipIdentifier: S.String,
-          collaborationIdentifier: S.String,
-          mlInputChannelArn: S.String,
-          name: S.String,
-          configuredModelAlgorithmAssociations: __S(15, __c1, 7),
-          status: S.String,
-          statusDetails: S.optional(__S(74, __c9, 2)),
-          retentionInDays: S.Number,
-          numberOfRecords: S.optional(S.Number),
-          privacyBudgets: S.optional(__S(90, __c11, 2)),
-          description: S.optional(S.String),
-          syntheticDataConfiguration: S.optional(__S(99, __c12, 3)),
-          payerConfiguration: S.optional(__S(43, __c5, 3)),
-          createTime: T.DateFromString.pipe(T.TimestampFormat("date-time")),
-          updateTime: T.DateFromString.pipe(T.TimestampFormat("date-time")),
-          creatorAccountId: S.String,
-        }),
-      ).annotate({
-        identifier: "GetCollaborationMLInputChannelResponse",
-      });
-    case 5:
+  }
+}
+function __c40(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           trainedModelArn: S.String.pipe(T.HttpLabel("trainedModelArn")),
@@ -4353,38 +4391,22 @@ function __c12(j: number): any {
       ).annotate({
         identifier: "GetCollaborationTrainedModelRequest",
       });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          channelName: S.String,
-          versionIdentifier: S.optional(S.String),
-          modelName: S.String,
-        }),
-      ).annotate({
-        identifier: "IncrementalTrainingDataChannelOutput",
-      });
-    case 7:
-      return S.Array(__S(102, __c12, 6));
-  }
-}
-function __c13(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           membershipIdentifier: S.String,
           collaborationIdentifier: S.String,
           trainedModelArn: S.String,
           versionIdentifier: S.optional(S.String),
-          incrementalTrainingDataChannels: S.optional(__S(103, __c12, 7)),
+          incrementalTrainingDataChannels: S.optional(__S(657, __c41, 1)),
           name: S.String,
           description: S.optional(S.String),
           status: S.String,
-          statusDetails: S.optional(__S(74, __c9, 2)),
+          statusDetails: S.optional(__S(528, __c33, 0)),
           configuredModelAlgorithmAssociationArn: S.String,
-          resourceConfig: S.optional(__S(46, __c5, 6)),
+          resourceConfig: S.optional(__S(288, __c18, 0)),
           trainingInputMode: S.optional(S.String),
-          stoppingCondition: S.optional(__S(47, __c5, 7)),
+          stoppingCondition: S.optional(__S(289, __c18, 1)),
           metricsStatus: S.optional(S.String),
           metricsStatusDetails: S.optional(S.String),
           logsStatus: S.optional(S.String),
@@ -4398,7 +4420,27 @@ function __c13(j: number): any {
       ).annotate({
         identifier: "GetCollaborationTrainedModelResponse",
       });
+  }
+}
+function __c41(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          channelName: S.String,
+          versionIdentifier: S.optional(S.String),
+          modelName: S.String,
+        }),
+      ).annotate({
+        identifier: "IncrementalTrainingDataChannelOutput",
+      });
     case 1:
+      return S.Array(__S(656, __c41, 0));
+  }
+}
+function __c42(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           configuredAudienceModelArn: S.String.pipe(T.HttpLabel("configuredAudienceModelArn")),
@@ -4418,7 +4460,7 @@ function __c13(j: number): any {
       ).annotate({
         identifier: "GetConfiguredAudienceModelRequest",
       });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           createTime: T.DateFromString.pipe(T.TimestampFormat("date-time")),
@@ -4426,19 +4468,23 @@ function __c13(j: number): any {
           configuredAudienceModelArn: S.String,
           name: S.String,
           audienceModelArn: S.String,
-          outputConfig: __S(9, __c1, 1),
+          outputConfig: __S(64, __c4, 0),
           description: S.optional(S.String),
           status: S.String,
-          sharedAudienceMetrics: __S(10, __c1, 2),
+          sharedAudienceMetrics: __S(16, __c1, 0),
           minMatchingSeedSize: S.optional(S.Number),
-          audienceSizeConfig: S.optional(__S(12, __c1, 4)),
-          tags: S.optional(__S(4, __c0, 4)),
+          audienceSizeConfig: S.optional(__S(81, __c5, 1)),
+          tags: S.optional(__S(1392, __c87, 0)),
           childResourceTagOnCreatePolicy: S.optional(S.String),
         }),
       ).annotate({
         identifier: "GetConfiguredAudienceModelResponse",
       });
-    case 3:
+  }
+}
+function __c43(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           configuredAudienceModelArn: S.String.pipe(T.HttpLabel("configuredAudienceModelArn")),
@@ -4458,7 +4504,7 @@ function __c13(j: number): any {
       ).annotate({
         identifier: "GetConfiguredAudienceModelPolicyRequest",
       });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           configuredAudienceModelArn: S.String,
@@ -4468,7 +4514,11 @@ function __c13(j: number): any {
       ).annotate({
         identifier: "GetConfiguredAudienceModelPolicyResponse",
       });
-    case 5:
+  }
+}
+function __c44(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           configuredModelAlgorithmArn: S.String.pipe(T.HttpLabel("configuredModelAlgorithmArn")),
@@ -4488,24 +4538,28 @@ function __c13(j: number): any {
       ).annotate({
         identifier: "GetConfiguredModelAlgorithmRequest",
       });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           createTime: T.DateFromString.pipe(T.TimestampFormat("date-time")),
           updateTime: T.DateFromString.pipe(T.TimestampFormat("date-time")),
           configuredModelAlgorithmArn: S.String,
           name: S.String,
-          trainingContainerConfig: S.optional(__S(18, __c2, 2)),
-          inferenceContainerConfig: S.optional(__S(19, __c2, 3)),
+          trainingContainerConfig: S.optional(__S(146, __c9, 2)),
+          inferenceContainerConfig: S.optional(__S(147, __c9, 3)),
           roleArn: S.String,
           description: S.optional(S.String),
-          tags: S.optional(__S(4, __c0, 4)),
+          tags: S.optional(__S(1392, __c87, 0)),
           kmsKeyArn: S.optional(S.String),
         }),
       ).annotate({
         identifier: "GetConfiguredModelAlgorithmResponse",
       });
-    case 7:
+  }
+}
+function __c45(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           configuredModelAlgorithmAssociationArn: S.String.pipe(
@@ -4528,11 +4582,7 @@ function __c13(j: number): any {
       ).annotate({
         identifier: "GetConfiguredModelAlgorithmAssociationRequest",
       });
-  }
-}
-function __c14(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           createTime: T.DateFromString.pipe(T.TimestampFormat("date-time")),
@@ -4542,14 +4592,18 @@ function __c14(j: number): any {
           collaborationIdentifier: S.String,
           configuredModelAlgorithmArn: S.String,
           name: S.String,
-          privacyConfiguration: S.optional(__S(32, __c4, 0)),
+          privacyConfiguration: S.optional(__S(186, __c11, 10)),
           description: S.optional(S.String),
-          tags: S.optional(__S(4, __c0, 4)),
+          tags: S.optional(__S(1392, __c87, 0)),
         }),
       ).annotate({
         identifier: "GetConfiguredModelAlgorithmAssociationResponse",
       });
-    case 1:
+  }
+}
+function __c46(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ membershipIdentifier: S.String.pipe(T.HttpLabel("membershipIdentifier")) }).pipe(
           T.all(
@@ -4564,22 +4618,30 @@ function __c14(j: number): any {
       ).annotate({
         identifier: "GetMLConfigurationRequest",
       });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({ destination: S.optional(__S(8, __c1, 0)), roleArn: S.String }),
-      ).annotate({ identifier: "MLOutputConfiguration" });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           membershipIdentifier: S.String,
-          defaultOutputLocation: __S(114, __c14, 2),
+          defaultOutputLocation: __S(752, __c47, 0),
           createTime: T.DateFromString.pipe(T.TimestampFormat("date-time")),
           updateTime: T.DateFromString.pipe(T.TimestampFormat("date-time")),
         }),
       ).annotate({
         identifier: "GetMLConfigurationResponse",
       });
-    case 4:
+  }
+}
+function __c47(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ destination: S.optional(__S(48, __c3, 0)), roleArn: S.String }),
+      ).annotate({ identifier: "MLOutputConfiguration" });
+  }
+}
+function __c48(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           mlInputChannelArn: S.String.pipe(T.HttpLabel("mlInputChannelArn")),
@@ -4598,35 +4660,39 @@ function __c14(j: number): any {
           ),
         ),
       ).annotate({ identifier: "GetMLInputChannelRequest" });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           membershipIdentifier: S.String,
           collaborationIdentifier: S.String,
           mlInputChannelArn: S.String,
           name: S.String,
-          configuredModelAlgorithmAssociations: __S(15, __c1, 7),
+          configuredModelAlgorithmAssociations: __S(128, __c8, 0),
           status: S.String,
-          statusDetails: S.optional(__S(74, __c9, 2)),
+          statusDetails: S.optional(__S(528, __c33, 0)),
           retentionInDays: S.Number,
           numberOfRecords: S.optional(S.Number),
-          privacyBudgets: S.optional(__S(90, __c11, 2)),
+          privacyBudgets: S.optional(__S(628, __c39, 4)),
           description: S.optional(S.String),
-          syntheticDataConfiguration: S.optional(__S(99, __c12, 3)),
-          payerConfiguration: S.optional(__S(43, __c5, 3)),
+          syntheticDataConfiguration: S.optional(__S(637, __c39, 13)),
+          payerConfiguration: S.optional(__S(240, __c15, 0)),
           createTime: T.DateFromString.pipe(T.TimestampFormat("date-time")),
           updateTime: T.DateFromString.pipe(T.TimestampFormat("date-time")),
-          inputChannel: __S(42, __c5, 2),
+          inputChannel: __S(258, __c16, 2),
           protectedQueryIdentifier: S.optional(S.String),
           numberOfFiles: S.optional(S.Number),
           sizeInGb: S.optional(S.Number),
           kmsKeyArn: S.optional(S.String),
-          tags: S.optional(__S(4, __c0, 4)),
+          tags: S.optional(__S(1392, __c87, 0)),
         }),
       ).annotate({
         identifier: "GetMLInputChannelResponse",
       });
-    case 6:
+  }
+}
+function __c49(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           trainedModelArn: S.String.pipe(T.HttpLabel("trainedModelArn")),
@@ -4646,22 +4712,22 @@ function __c14(j: number): any {
           ),
         ),
       ).annotate({ identifier: "GetTrainedModelRequest" });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           membershipIdentifier: S.String,
           collaborationIdentifier: S.String,
           trainedModelArn: S.String,
           versionIdentifier: S.optional(S.String),
-          incrementalTrainingDataChannels: S.optional(__S(103, __c12, 7)),
+          incrementalTrainingDataChannels: S.optional(__S(657, __c41, 1)),
           name: S.String,
           description: S.optional(S.String),
           status: S.String,
-          statusDetails: S.optional(__S(74, __c9, 2)),
+          statusDetails: S.optional(__S(528, __c33, 0)),
           configuredModelAlgorithmAssociationArn: S.String,
-          resourceConfig: S.optional(__S(46, __c5, 6)),
+          resourceConfig: S.optional(__S(288, __c18, 0)),
           trainingInputMode: S.optional(S.String),
-          stoppingCondition: S.optional(__S(47, __c5, 7)),
+          stoppingCondition: S.optional(__S(289, __c18, 1)),
           metricsStatus: S.optional(S.String),
           metricsStatusDetails: S.optional(S.String),
           logsStatus: S.optional(S.String),
@@ -4670,16 +4736,16 @@ function __c14(j: number): any {
           mlModelTrainingPayerAccountId: S.optional(S.String),
           createTime: T.DateFromString.pipe(T.TimestampFormat("date-time")),
           updateTime: T.DateFromString.pipe(T.TimestampFormat("date-time")),
-          hyperparameters: S.optional(__S(35, __c4, 3)),
-          environment: S.optional(__S(35, __c4, 3)),
+          hyperparameters: S.optional(__S(208, __c13, 0)),
+          environment: S.optional(__S(208, __c13, 0)),
           kmsKeyArn: S.optional(S.String),
-          tags: S.optional(__S(4, __c0, 4)),
-          dataChannels: __S(51, __c6, 3),
+          tags: S.optional(__S(1392, __c87, 0)),
+          dataChannels: __S(305, __c19, 1),
         }),
       ).annotate({ identifier: "GetTrainedModelResponse" });
   }
 }
-function __c15(j: number): any {
+function __c50(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4704,30 +4770,6 @@ function __c15(j: number): any {
       });
     case 1:
       return S.suspend(() =>
-        S.Struct({ instanceType: S.String, instanceCount: S.optional(S.Number) }),
-      ).annotate({ identifier: "InferenceResourceConfig" });
-    case 2:
-      return S.suspend(() => S.Struct({ accountId: S.String })).annotate({
-        identifier: "InferenceReceiverMember",
-      });
-    case 3:
-      return S.Array(__S(122, __c15, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({ accept: S.optional(S.String), members: __S(123, __c15, 3) }),
-      ).annotate({
-        identifier: "InferenceOutputConfiguration",
-      });
-    case 5:
-      return S.suspend(() => S.Struct({ mlInputChannelArn: S.String })).annotate({
-        identifier: "ModelInferenceDataSource",
-      });
-    case 6:
-      return S.suspend(() => S.Struct({ maxPayloadInMB: S.optional(S.Number) })).annotate({
-        identifier: "InferenceContainerExecutionParameters",
-      });
-    case 7:
-      return S.suspend(() =>
         S.Struct({
           createTime: T.DateFromString.pipe(T.TimestampFormat("date-time")),
           updateTime: T.DateFromString.pipe(T.TimestampFormat("date-time")),
@@ -4737,21 +4779,21 @@ function __c15(j: number): any {
           status: S.String,
           trainedModelArn: S.String,
           trainedModelVersionIdentifier: S.optional(S.String),
-          resourceConfig: __S(121, __c15, 1),
-          outputConfiguration: __S(124, __c15, 4),
+          resourceConfig: __S(832, __c52, 0),
+          outputConfiguration: __S(818, __c51, 2),
           membershipIdentifier: S.String,
-          dataSource: __S(125, __c15, 5),
-          containerExecutionParameters: S.optional(__S(126, __c15, 6)),
-          statusDetails: S.optional(__S(74, __c9, 2)),
+          dataSource: __S(833, __c52, 1),
+          containerExecutionParameters: S.optional(__S(834, __c52, 2)),
+          statusDetails: S.optional(__S(528, __c33, 0)),
           description: S.optional(S.String),
           inferenceContainerImageDigest: S.optional(S.String),
-          environment: S.optional(__S(35, __c4, 3)),
+          environment: S.optional(__S(208, __c13, 0)),
           kmsKeyArn: S.optional(S.String),
           metricsStatus: S.optional(S.String),
           metricsStatusDetails: S.optional(S.String),
           logsStatus: S.optional(S.String),
           logsStatusDetails: S.optional(S.String),
-          tags: S.optional(__S(4, __c0, 4)),
+          tags: S.optional(__S(1392, __c87, 0)),
           mlModelInferencePayerAccountId: S.optional(S.String),
         }),
       ).annotate({
@@ -4759,7 +4801,39 @@ function __c15(j: number): any {
       });
   }
 }
-function __c16(j: number): any {
+function __c51(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({ accountId: S.String })).annotate({
+        identifier: "InferenceReceiverMember",
+      });
+    case 1:
+      return S.Array(__S(816, __c51, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({ accept: S.optional(S.String), members: __S(817, __c51, 1) }),
+      ).annotate({
+        identifier: "InferenceOutputConfiguration",
+      });
+  }
+}
+function __c52(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ instanceType: S.String, instanceCount: S.optional(S.Number) }),
+      ).annotate({ identifier: "InferenceResourceConfig" });
+    case 1:
+      return S.suspend(() => S.Struct({ mlInputChannelArn: S.String })).annotate({
+        identifier: "ModelInferenceDataSource",
+      });
+    case 2:
+      return S.suspend(() => S.Struct({ maxPayloadInMB: S.optional(S.Number) })).annotate({
+        identifier: "InferenceContainerExecutionParameters",
+      });
+  }
+}
+function __c53(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4783,16 +4857,20 @@ function __c16(j: number): any {
           updateTime: T.DateFromString.pipe(T.TimestampFormat("date-time")),
           trainingDatasetArn: S.String,
           name: S.String,
-          trainingData: __S(60, __c7, 4),
+          trainingData: __S(342, __c21, 6),
           status: S.String,
           roleArn: S.String,
-          tags: S.optional(__S(4, __c0, 4)),
+          tags: S.optional(__S(1392, __c87, 0)),
           description: S.optional(S.String),
         }),
       ).annotate({
         identifier: "GetTrainingDatasetResponse",
       });
-    case 2:
+  }
+}
+function __c54(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
@@ -4813,29 +4891,33 @@ function __c16(j: number): any {
       ).annotate({
         identifier: "ListAudienceExportJobsRequest",
       });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           createTime: T.DateFromString.pipe(T.TimestampFormat("date-time")),
           updateTime: T.DateFromString.pipe(T.TimestampFormat("date-time")),
           name: S.String,
           audienceGenerationJobArn: S.String,
-          audienceSize: __S(76, __c9, 4),
+          audienceSize: __S(544, __c34, 0),
           description: S.optional(S.String),
           status: S.String,
-          statusDetails: S.optional(__S(74, __c9, 2)),
+          statusDetails: S.optional(__S(528, __c33, 0)),
           outputLocation: S.optional(S.String),
         }),
       ).annotate({ identifier: "AudienceExportJobSummary" });
-    case 4:
-      return S.Array(__S(131, __c16, 3));
-    case 5:
+    case 2:
+      return S.Array(__S(865, __c54, 1));
+    case 3:
       return S.suspend(() =>
-        S.Struct({ nextToken: S.optional(S.String), audienceExportJobs: __S(132, __c16, 4) }),
+        S.Struct({ nextToken: S.optional(S.String), audienceExportJobs: __S(866, __c54, 2) }),
       ).annotate({
         identifier: "ListAudienceExportJobsResponse",
       });
-    case 6:
+  }
+}
+function __c55(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
@@ -4857,7 +4939,7 @@ function __c16(j: number): any {
       ).annotate({
         identifier: "ListAudienceGenerationJobsRequest",
       });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           createTime: T.DateFromString.pipe(T.TimestampFormat("date-time")),
@@ -4873,22 +4955,19 @@ function __c16(j: number): any {
       ).annotate({
         identifier: "AudienceGenerationJobSummary",
       });
-  }
-}
-function __c17(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(135, __c16, 7));
-    case 1:
+    case 2:
+      return S.Array(__S(881, __c55, 1));
+    case 3:
       return S.suspend(() =>
-        S.Struct({
-          nextToken: S.optional(S.String),
-          audienceGenerationJobs: __S(136, __c17, 0),
-        }),
+        S.Struct({ nextToken: S.optional(S.String), audienceGenerationJobs: __S(882, __c55, 2) }),
       ).annotate({
         identifier: "ListAudienceGenerationJobsResponse",
       });
-    case 2:
+  }
+}
+function __c56(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
@@ -4899,7 +4978,7 @@ function __c17(j: number): any {
       ).annotate({
         identifier: "ListAudienceModelsRequest",
       });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           createTime: T.DateFromString.pipe(T.TimestampFormat("date-time")),
@@ -4911,15 +4990,19 @@ function __c17(j: number): any {
           description: S.optional(S.String),
         }),
       ).annotate({ identifier: "AudienceModelSummary" });
-    case 4:
-      return S.Array(__S(139, __c17, 3));
-    case 5:
+    case 2:
+      return S.Array(__S(897, __c56, 1));
+    case 3:
       return S.suspend(() =>
-        S.Struct({ nextToken: S.optional(S.String), audienceModels: __S(140, __c17, 4) }),
+        S.Struct({ nextToken: S.optional(S.String), audienceModels: __S(898, __c56, 2) }),
       ).annotate({
         identifier: "ListAudienceModelsResponse",
       });
-    case 6:
+  }
+}
+function __c57(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
@@ -4941,7 +5024,7 @@ function __c17(j: number): any {
       ).annotate({
         identifier: "ListCollaborationConfiguredModelAlgorithmAssociationsRequest",
       });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           createTime: T.DateFromString.pipe(T.TimestampFormat("date-time")),
@@ -4957,22 +5040,22 @@ function __c17(j: number): any {
       ).annotate({
         identifier: "CollaborationConfiguredModelAlgorithmAssociationSummary",
       });
-  }
-}
-function __c18(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(143, __c17, 7));
-    case 1:
+    case 2:
+      return S.Array(__S(913, __c57, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
           nextToken: S.optional(S.String),
-          collaborationConfiguredModelAlgorithmAssociations: __S(144, __c18, 0),
+          collaborationConfiguredModelAlgorithmAssociations: __S(914, __c57, 2),
         }),
       ).annotate({
         identifier: "ListCollaborationConfiguredModelAlgorithmAssociationsResponse",
       });
-    case 2:
+  }
+}
+function __c58(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
@@ -4994,7 +5077,7 @@ function __c18(j: number): any {
       ).annotate({
         identifier: "ListCollaborationMLInputChannelsRequest",
       });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           createTime: T.DateFromString.pipe(T.TimestampFormat("date-time")),
@@ -5002,28 +5085,32 @@ function __c18(j: number): any {
           membershipIdentifier: S.String,
           collaborationIdentifier: S.String,
           name: S.String,
-          configuredModelAlgorithmAssociations: __S(15, __c1, 7),
+          configuredModelAlgorithmAssociations: __S(128, __c8, 0),
           mlInputChannelArn: S.String,
           status: S.String,
           creatorAccountId: S.String,
           description: S.optional(S.String),
-          payerConfiguration: S.optional(__S(43, __c5, 3)),
+          payerConfiguration: S.optional(__S(240, __c15, 0)),
         }),
       ).annotate({
         identifier: "CollaborationMLInputChannelSummary",
       });
-    case 4:
-      return S.Array(__S(147, __c18, 3));
-    case 5:
+    case 2:
+      return S.Array(__S(929, __c58, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
           nextToken: S.optional(S.String),
-          collaborationMLInputChannelsList: __S(148, __c18, 4),
+          collaborationMLInputChannelsList: __S(930, __c58, 2),
         }),
       ).annotate({
         identifier: "ListCollaborationMLInputChannelsResponse",
       });
-    case 6:
+  }
+}
+function __c59(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
@@ -5049,29 +5136,15 @@ function __c18(j: number): any {
       ).annotate({
         identifier: "ListCollaborationTrainedModelExportJobsRequest",
       });
-    case 7:
-      return S.suspend(() => S.Struct({ accountId: S.String })).annotate({
-        identifier: "TrainedModelExportReceiverMember",
-      });
-  }
-}
-function __c19(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(151, __c18, 7));
     case 1:
-      return S.suspend(() => S.Struct({ members: __S(152, __c19, 0) })).annotate({
-        identifier: "TrainedModelExportOutputConfiguration",
-      });
-    case 2:
       return S.suspend(() =>
         S.Struct({
           createTime: T.DateFromString.pipe(T.TimestampFormat("date-time")),
           updateTime: T.DateFromString.pipe(T.TimestampFormat("date-time")),
           name: S.String,
-          outputConfiguration: __S(153, __c19, 1),
+          outputConfiguration: __S(962, __c60, 2),
           status: S.String,
-          statusDetails: S.optional(__S(74, __c9, 2)),
+          statusDetails: S.optional(__S(528, __c33, 0)),
           description: S.optional(S.String),
           creatorAccountId: S.String,
           trainedModelArn: S.String,
@@ -5082,18 +5155,36 @@ function __c19(j: number): any {
       ).annotate({
         identifier: "CollaborationTrainedModelExportJobSummary",
       });
+    case 2:
+      return S.Array(__S(945, __c59, 1));
     case 3:
-      return S.Array(__S(154, __c19, 2));
-    case 4:
       return S.suspend(() =>
         S.Struct({
           nextToken: S.optional(S.String),
-          collaborationTrainedModelExportJobs: __S(155, __c19, 3),
+          collaborationTrainedModelExportJobs: __S(946, __c59, 2),
         }),
       ).annotate({
         identifier: "ListCollaborationTrainedModelExportJobsResponse",
       });
-    case 5:
+  }
+}
+function __c60(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({ accountId: S.String })).annotate({
+        identifier: "TrainedModelExportReceiverMember",
+      });
+    case 1:
+      return S.Array(__S(960, __c60, 0));
+    case 2:
+      return S.suspend(() => S.Struct({ members: __S(961, __c60, 1) })).annotate({
+        identifier: "TrainedModelExportOutputConfiguration",
+      });
+  }
+}
+function __c61(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
@@ -5119,7 +5210,7 @@ function __c19(j: number): any {
       ).annotate({
         identifier: "ListCollaborationTrainedModelInferenceJobsRequest",
       });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           trainedModelInferenceJobArn: S.String,
@@ -5129,7 +5220,7 @@ function __c19(j: number): any {
           trainedModelVersionIdentifier: S.optional(S.String),
           collaborationIdentifier: S.String,
           status: S.String,
-          outputConfiguration: __S(124, __c15, 4),
+          outputConfiguration: __S(818, __c51, 2),
           name: S.String,
           description: S.optional(S.String),
           metricsStatus: S.optional(S.String),
@@ -5144,22 +5235,22 @@ function __c19(j: number): any {
       ).annotate({
         identifier: "CollaborationTrainedModelInferenceJobSummary",
       });
-    case 7:
-      return S.Array(__S(158, __c19, 6));
-  }
-}
-function __c20(j: number): any {
-  switch (j) {
-    case 0:
+    case 2:
+      return S.Array(__S(977, __c61, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
           nextToken: S.optional(S.String),
-          collaborationTrainedModelInferenceJobs: __S(159, __c19, 7),
+          collaborationTrainedModelInferenceJobs: __S(978, __c61, 2),
         }),
       ).annotate({
         identifier: "ListCollaborationTrainedModelInferenceJobsResponse",
       });
-    case 1:
+  }
+}
+function __c62(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
@@ -5181,7 +5272,7 @@ function __c20(j: number): any {
       ).annotate({
         identifier: "ListCollaborationTrainedModelsRequest",
       });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           createTime: T.DateFromString.pipe(T.TimestampFormat("date-time")),
@@ -5189,7 +5280,7 @@ function __c20(j: number): any {
           trainedModelArn: S.String,
           name: S.String,
           versionIdentifier: S.optional(S.String),
-          incrementalTrainingDataChannels: S.optional(__S(103, __c12, 7)),
+          incrementalTrainingDataChannels: S.optional(__S(657, __c41, 1)),
           description: S.optional(S.String),
           membershipIdentifier: S.String,
           collaborationIdentifier: S.String,
@@ -5201,18 +5292,22 @@ function __c20(j: number): any {
       ).annotate({
         identifier: "CollaborationTrainedModelSummary",
       });
+    case 2:
+      return S.Array(__S(993, __c62, 1));
     case 3:
-      return S.Array(__S(162, __c20, 2));
-    case 4:
       return S.suspend(() =>
         S.Struct({
           nextToken: S.optional(S.String),
-          collaborationTrainedModels: __S(163, __c20, 3),
+          collaborationTrainedModels: __S(994, __c62, 2),
         }),
       ).annotate({
         identifier: "ListCollaborationTrainedModelsResponse",
       });
-    case 5:
+  }
+}
+function __c63(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
@@ -5230,14 +5325,14 @@ function __c20(j: number): any {
       ).annotate({
         identifier: "ListConfiguredAudienceModelsRequest",
       });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           createTime: T.DateFromString.pipe(T.TimestampFormat("date-time")),
           updateTime: T.DateFromString.pipe(T.TimestampFormat("date-time")),
           name: S.String,
           audienceModelArn: S.String,
-          outputConfig: __S(9, __c1, 1),
+          outputConfig: __S(64, __c4, 0),
           description: S.optional(S.String),
           configuredAudienceModelArn: S.String,
           status: S.String,
@@ -5245,22 +5340,22 @@ function __c20(j: number): any {
       ).annotate({
         identifier: "ConfiguredAudienceModelSummary",
       });
-    case 7:
-      return S.Array(__S(166, __c20, 6));
-  }
-}
-function __c21(j: number): any {
-  switch (j) {
-    case 0:
+    case 2:
+      return S.Array(__S(1009, __c63, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
           nextToken: S.optional(S.String),
-          configuredAudienceModels: __S(167, __c20, 7),
+          configuredAudienceModels: __S(1010, __c63, 2),
         }),
       ).annotate({
         identifier: "ListConfiguredAudienceModelsResponse",
       });
-    case 1:
+  }
+}
+function __c64(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
@@ -5282,7 +5377,7 @@ function __c21(j: number): any {
       ).annotate({
         identifier: "ListConfiguredModelAlgorithmAssociationsRequest",
       });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           createTime: T.DateFromString.pipe(T.TimestampFormat("date-time")),
@@ -5297,18 +5392,22 @@ function __c21(j: number): any {
       ).annotate({
         identifier: "ConfiguredModelAlgorithmAssociationSummary",
       });
+    case 2:
+      return S.Array(__S(1025, __c64, 1));
     case 3:
-      return S.Array(__S(170, __c21, 2));
-    case 4:
       return S.suspend(() =>
         S.Struct({
           nextToken: S.optional(S.String),
-          configuredModelAlgorithmAssociations: __S(171, __c21, 3),
+          configuredModelAlgorithmAssociations: __S(1026, __c64, 2),
         }),
       ).annotate({
         identifier: "ListConfiguredModelAlgorithmAssociationsResponse",
       });
-    case 5:
+  }
+}
+function __c65(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
@@ -5326,7 +5425,7 @@ function __c21(j: number): any {
       ).annotate({
         identifier: "ListConfiguredModelAlgorithmsRequest",
       });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           createTime: T.DateFromString.pipe(T.TimestampFormat("date-time")),
@@ -5338,22 +5437,22 @@ function __c21(j: number): any {
       ).annotate({
         identifier: "ConfiguredModelAlgorithmSummary",
       });
-    case 7:
-      return S.Array(__S(174, __c21, 6));
-  }
-}
-function __c22(j: number): any {
-  switch (j) {
-    case 0:
+    case 2:
+      return S.Array(__S(1041, __c65, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
           nextToken: S.optional(S.String),
-          configuredModelAlgorithms: __S(175, __c21, 7),
+          configuredModelAlgorithms: __S(1042, __c65, 2),
         }),
       ).annotate({
         identifier: "ListConfiguredModelAlgorithmsResponse",
       });
-    case 1:
+  }
+}
+function __c66(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
@@ -5372,7 +5471,7 @@ function __c22(j: number): any {
       ).annotate({
         identifier: "ListMLInputChannelsRequest",
       });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           createTime: T.DateFromString.pipe(T.TimestampFormat("date-time")),
@@ -5380,23 +5479,27 @@ function __c22(j: number): any {
           membershipIdentifier: S.String,
           collaborationIdentifier: S.String,
           name: S.String,
-          configuredModelAlgorithmAssociations: __S(15, __c1, 7),
+          configuredModelAlgorithmAssociations: __S(128, __c8, 0),
           protectedQueryIdentifier: S.optional(S.String),
           mlInputChannelArn: S.String,
           status: S.String,
           description: S.optional(S.String),
-          payerConfiguration: S.optional(__S(43, __c5, 3)),
+          payerConfiguration: S.optional(__S(240, __c15, 0)),
         }),
       ).annotate({ identifier: "MLInputChannelSummary" });
+    case 2:
+      return S.Array(__S(1057, __c66, 1));
     case 3:
-      return S.Array(__S(178, __c22, 2));
-    case 4:
       return S.suspend(() =>
-        S.Struct({ nextToken: S.optional(S.String), mlInputChannelsList: __S(179, __c22, 3) }),
+        S.Struct({ nextToken: S.optional(S.String), mlInputChannelsList: __S(1058, __c66, 2) }),
       ).annotate({
         identifier: "ListMLInputChannelsResponse",
       });
-    case 5:
+  }
+}
+function __c67(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ resourceArn: S.String.pipe(T.HttpLabel("resourceArn")) }).pipe(
           T.all(
@@ -5411,11 +5514,15 @@ function __c22(j: number): any {
       ).annotate({
         identifier: "ListTagsForResourceRequest",
       });
-    case 6:
-      return S.suspend(() => S.Struct({ tags: __S(4, __c0, 4) })).annotate({
+    case 1:
+      return S.suspend(() => S.Struct({ tags: __S(1392, __c87, 0) })).annotate({
         identifier: "ListTagsForResourceResponse",
       });
-    case 7:
+  }
+}
+function __c68(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
@@ -5441,11 +5548,7 @@ function __c22(j: number): any {
       ).annotate({
         identifier: "ListTrainedModelInferenceJobsRequest",
       });
-  }
-}
-function __c23(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           trainedModelInferenceJobArn: S.String,
@@ -5455,7 +5558,7 @@ function __c23(j: number): any {
           trainedModelVersionIdentifier: S.optional(S.String),
           collaborationIdentifier: S.String,
           status: S.String,
-          outputConfiguration: __S(124, __c15, 4),
+          outputConfiguration: __S(818, __c51, 2),
           name: S.String,
           description: S.optional(S.String),
           metricsStatus: S.optional(S.String),
@@ -5469,18 +5572,22 @@ function __c23(j: number): any {
       ).annotate({
         identifier: "TrainedModelInferenceJobSummary",
       });
-    case 1:
-      return S.Array(__S(184, __c23, 0));
     case 2:
+      return S.Array(__S(1089, __c68, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
           nextToken: S.optional(S.String),
-          trainedModelInferenceJobs: __S(185, __c23, 1),
+          trainedModelInferenceJobs: __S(1090, __c68, 2),
         }),
       ).annotate({
         identifier: "ListTrainedModelInferenceJobsResponse",
       });
-    case 3:
+  }
+}
+function __c69(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
@@ -5497,14 +5604,18 @@ function __c23(j: number): any {
           ),
         ),
       ).annotate({ identifier: "ListTrainedModelsRequest" });
-    case 4:
+  }
+}
+function __c70(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           createTime: T.DateFromString.pipe(T.TimestampFormat("date-time")),
           updateTime: T.DateFromString.pipe(T.TimestampFormat("date-time")),
           trainedModelArn: S.String,
           versionIdentifier: S.optional(S.String),
-          incrementalTrainingDataChannels: S.optional(__S(103, __c12, 7)),
+          incrementalTrainingDataChannels: S.optional(__S(657, __c41, 1)),
           name: S.String,
           description: S.optional(S.String),
           membershipIdentifier: S.String,
@@ -5514,15 +5625,19 @@ function __c23(j: number): any {
           mlModelTrainingPayerAccountId: S.optional(S.String),
         }),
       ).annotate({ identifier: "TrainedModelSummary" });
-    case 5:
-      return S.Array(__S(188, __c23, 4));
-    case 6:
+    case 1:
+      return S.Array(__S(1120, __c70, 0));
+    case 2:
       return S.suspend(() =>
-        S.Struct({ nextToken: S.optional(S.String), trainedModels: __S(189, __c23, 5) }),
+        S.Struct({ nextToken: S.optional(S.String), trainedModels: __S(1121, __c70, 1) }),
       ).annotate({
         identifier: "ListTrainedModelsResponse",
       });
-    case 7:
+  }
+}
+function __c71(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
@@ -5548,7 +5663,7 @@ function __c23(j: number): any {
       });
   }
 }
-function __c24(j: number): any {
+function __c72(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5573,14 +5688,18 @@ function __c24(j: number): any {
         }),
       ).annotate({ identifier: "TrainingDatasetSummary" });
     case 2:
-      return S.Array(__S(193, __c24, 1));
+      return S.Array(__S(1153, __c72, 1));
     case 3:
       return S.suspend(() =>
-        S.Struct({ nextToken: S.optional(S.String), trainingDatasets: __S(194, __c24, 2) }),
+        S.Struct({ nextToken: S.optional(S.String), trainingDatasets: __S(1154, __c72, 2) }),
       ).annotate({
         identifier: "ListTrainingDatasetsResponse",
       });
-    case 4:
+  }
+}
+function __c73(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           configuredAudienceModelArn: S.String.pipe(T.HttpLabel("configuredAudienceModelArn")),
@@ -5603,17 +5722,21 @@ function __c24(j: number): any {
       ).annotate({
         identifier: "PutConfiguredAudienceModelPolicyRequest",
       });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({ configuredAudienceModelPolicy: S.String, policyHash: S.String }),
       ).annotate({
         identifier: "PutConfiguredAudienceModelPolicyResponse",
       });
-    case 6:
+  }
+}
+function __c74(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           membershipIdentifier: S.String.pipe(T.HttpLabel("membershipIdentifier")),
-          defaultOutputLocation: __S(114, __c14, 2),
+          defaultOutputLocation: __S(752, __c47, 0),
         }).pipe(
           T.all(
             T.Http({ method: "PUT", uri: "/memberships/{membershipIdentifier}/ml-configurations" }),
@@ -5627,12 +5750,16 @@ function __c24(j: number): any {
       ).annotate({
         identifier: "PutMLConfigurationRequest",
       });
-    case 7:
+  }
+}
+function __c75(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String,
           audienceGenerationJobArn: S.String,
-          audienceSize: __S(76, __c9, 4),
+          audienceSize: __S(544, __c34, 0),
           description: S.optional(S.String),
         }).pipe(
           T.all(
@@ -5649,18 +5776,18 @@ function __c24(j: number): any {
       });
   }
 }
-function __c25(j: number): any {
+function __c76(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String,
           configuredAudienceModelArn: S.String,
-          seedAudience: __S(75, __c9, 3),
+          seedAudience: __S(560, __c35, 0),
           includeSeedInOutput: S.optional(S.Boolean),
           collaborationId: S.optional(S.String),
           description: S.optional(S.String),
-          tags: S.optional(__S(4, __c0, 4)),
+          tags: S.optional(__S(1392, __c87, 0)),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/audience-generation-job" }),
@@ -5678,14 +5805,18 @@ function __c25(j: number): any {
       return S.suspend(() => S.Struct({ audienceGenerationJobArn: S.String })).annotate({
         identifier: "StartAudienceGenerationJobResponse",
       });
-    case 2:
+  }
+}
+function __c77(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String,
           trainedModelArn: S.String.pipe(T.HttpLabel("trainedModelArn")),
           trainedModelVersionIdentifier: S.optional(S.String),
           membershipIdentifier: S.String.pipe(T.HttpLabel("membershipIdentifier")),
-          outputConfiguration: __S(153, __c19, 1),
+          outputConfiguration: __S(962, __c60, 2),
           description: S.optional(S.String),
         }).pipe(
           T.all(
@@ -5703,7 +5834,11 @@ function __c25(j: number): any {
       ).annotate({
         identifier: "StartTrainedModelExportJobRequest",
       });
-    case 3:
+  }
+}
+function __c78(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           membershipIdentifier: S.String.pipe(T.HttpLabel("membershipIdentifier")),
@@ -5711,14 +5846,14 @@ function __c25(j: number): any {
           trainedModelArn: S.String,
           trainedModelVersionIdentifier: S.optional(S.String),
           configuredModelAlgorithmAssociationArn: S.optional(S.String),
-          resourceConfig: __S(121, __c15, 1),
-          outputConfiguration: __S(124, __c15, 4),
-          dataSource: __S(125, __c15, 5),
+          resourceConfig: __S(832, __c52, 0),
+          outputConfiguration: __S(818, __c51, 2),
+          dataSource: __S(833, __c52, 1),
           description: S.optional(S.String),
-          containerExecutionParameters: S.optional(__S(126, __c15, 6)),
-          environment: S.optional(__S(35, __c4, 3)),
+          containerExecutionParameters: S.optional(__S(834, __c52, 2)),
+          environment: S.optional(__S(208, __c13, 0)),
           kmsKeyArn: S.optional(S.String),
-          tags: S.optional(__S(4, __c0, 4)),
+          tags: S.optional(__S(1392, __c87, 0)),
           mlModelInferencePayerAccountId: S.optional(S.String),
         }).pipe(
           T.all(
@@ -5736,15 +5871,19 @@ function __c25(j: number): any {
       ).annotate({
         identifier: "StartTrainedModelInferenceJobRequest",
       });
-    case 4:
+    case 1:
       return S.suspend(() => S.Struct({ trainedModelInferenceJobArn: S.String })).annotate({
         identifier: "StartTrainedModelInferenceJobResponse",
       });
-    case 5:
+  }
+}
+function __c79(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           resourceArn: S.String.pipe(T.HttpLabel("resourceArn")),
-          tags: __S(4, __c0, 4),
+          tags: __S(1392, __c87, 0),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/tags/{resourceArn}" }),
@@ -5756,11 +5895,15 @@ function __c25(j: number): any {
           ),
         ),
       ).annotate({ identifier: "TagResourceRequest" });
-    case 6:
+  }
+}
+function __c80(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           resourceArn: S.String.pipe(T.HttpLabel("resourceArn")),
-          tagKeys: __S(15, __c1, 7).pipe(T.HttpQuery("tagKeys")),
+          tagKeys: __S(128, __c8, 0).pipe(T.HttpQuery("tagKeys")),
         }).pipe(
           T.all(
             T.Http({ method: "DELETE", uri: "/tags/{resourceArn}" }),
@@ -5772,15 +5915,19 @@ function __c25(j: number): any {
           ),
         ),
       ).annotate({ identifier: "UntagResourceRequest" });
-    case 7:
+  }
+}
+function __c81(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           configuredAudienceModelArn: S.String.pipe(T.HttpLabel("configuredAudienceModelArn")),
-          outputConfig: S.optional(__S(9, __c1, 1)),
+          outputConfig: S.optional(__S(64, __c4, 0)),
           audienceModelArn: S.optional(S.String),
-          sharedAudienceMetrics: S.optional(__S(10, __c1, 2)),
+          sharedAudienceMetrics: S.optional(__S(16, __c1, 0)),
           minMatchingSeedSize: S.optional(S.Number),
-          audienceSizeConfig: S.optional(__S(12, __c1, 4)),
+          audienceSizeConfig: S.optional(__S(81, __c5, 1)),
           description: S.optional(S.String),
         }).pipe(
           T.all(
@@ -5800,7 +5947,103 @@ function __c25(j: number): any {
       });
   }
 }
-
+function __c82(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          membershipIdentifier: S.String.pipe(T.HttpLabel("membershipIdentifier")),
+          trainedModelArn: S.String.pipe(T.HttpLabel("trainedModelArn")),
+          versionIdentifier: S.optional(S.String).pipe(T.HttpQuery("versionIdentifier")),
+        }).pipe(
+          T.all(
+            T.Http({
+              method: "PATCH",
+              uri: "/memberships/{membershipIdentifier}/trained-models/{trainedModelArn}",
+            }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "CancelTrainedModelRequest",
+      });
+  }
+}
+function __c83(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "CancelTrainedModelResponse",
+      });
+  }
+}
+function __c84(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          membershipIdentifier: S.String.pipe(T.HttpLabel("membershipIdentifier")),
+          trainedModelInferenceJobArn: S.String.pipe(T.HttpLabel("trainedModelInferenceJobArn")),
+        }).pipe(
+          T.all(
+            T.Http({
+              method: "PATCH",
+              uri: "/memberships/{membershipIdentifier}/trained-model-inference-jobs/{trainedModelInferenceJobArn}",
+            }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "CancelTrainedModelInferenceJobRequest",
+      });
+  }
+}
+function __c85(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "CancelTrainedModelInferenceJobResponse",
+      });
+  }
+}
+function __c86(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          trainingDataStartTime: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
+          trainingDataEndTime: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
+          name: S.String,
+          trainingDatasetArn: S.String,
+          kmsKeyArn: S.optional(S.String),
+          tags: S.optional(__S(1392, __c87, 0)),
+          description: S.optional(S.String),
+        }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/audience-model" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({
+        identifier: "CreateAudienceModelRequest",
+      });
+    case 1:
+      return S.suspend(() => S.Struct({ audienceModelArn: S.String })).annotate({
+        identifier: "CreateAudienceModelResponse",
+      });
+  }
+}
+function __c87(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
+  }
+}
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

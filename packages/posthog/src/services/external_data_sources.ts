@@ -2729,8 +2729,8 @@ export const createExternalDataSource: API.OperationMethod<
   CreateExternalDataSourceError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2, __c0, 2) as any as S.Schema<CreateExternalDataSourceRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<ExternalDataSourceCreateResponse>,
+  input: __S(576, __c36, 0) as any as S.Schema<CreateExternalDataSourceRequest>,
+  output: __S(577, __c36, 1) as any as S.Schema<ExternalDataSourceCreateResponse>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -2748,8 +2748,12 @@ export const createExternalDataSourcesCheckCdcPrerequisite: API.OperationMethod<
   CreateExternalDataSourcesCheckCdcPrerequisiteError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(4, __c0, 4) as any as S.Schema<CreateExternalDataSourcesCheckCdcPrerequisiteRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<CdcPrerequisitesResponse>,
+  input: __S(
+    656,
+    __c41,
+    0,
+  ) as any as S.Schema<CreateExternalDataSourcesCheckCdcPrerequisiteRequest>,
+  output: __S(657, __c41, 1) as any as S.Schema<CdcPrerequisitesResponse>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -2764,13 +2768,13 @@ export const createExternalDataSourcesCheckCdcPrerequisitesForSource: API.Operat
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    7,
-    __c0,
-    7,
+    672,
+    __c42,
+    0,
   ) as any as S.Schema<CreateExternalDataSourcesCheckCdcPrerequisitesForSourceRequest>,
   output: __S(
-    8,
-    __c1,
+    704,
+    __c44,
     0,
   ) as any as S.Schema<CreateExternalDataSourcesCheckCdcPrerequisitesForSourceResponse>,
   errors: [],
@@ -2786,8 +2790,8 @@ export const createExternalDataSourcesCredentialAccount: API.OperationMethod<
   CreateExternalDataSourcesCredentialAccountError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(10, __c1, 2) as any as S.Schema<CreateExternalDataSourcesCredentialAccountRequest>,
-  output: __S(13, __c1, 5) as any as S.Schema<IntegrationAccountsResponse>,
+  input: __S(721, __c45, 1) as any as S.Schema<CreateExternalDataSourcesCredentialAccountRequest>,
+  output: __S(738, __c46, 2) as any as S.Schema<IntegrationAccountsResponse>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -2805,8 +2809,8 @@ export const createExternalDataSourcesDatabaseSchema: API.OperationMethod<
   CreateExternalDataSourcesDatabaseSchemaError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(14, __c1, 6) as any as S.Schema<CreateExternalDataSourcesDatabaseSchemaRequest>,
-  output: __S(15, __c1, 7) as any as S.Schema<CreateExternalDataSourcesDatabaseSchemaResponse>,
+  input: __S(752, __c47, 0) as any as S.Schema<CreateExternalDataSourcesDatabaseSchemaRequest>,
+  output: __S(768, __c48, 0) as any as S.Schema<CreateExternalDataSourcesDatabaseSchemaResponse>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -2820,8 +2824,8 @@ export const createExternalDataSourcesDraftCustomManifest: API.OperationMethod<
   CreateExternalDataSourcesDraftCustomManifestError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(16, __c2, 0) as any as S.Schema<CreateExternalDataSourcesDraftCustomManifestRequest>,
-  output: __S(17, __c2, 1) as any as S.Schema<DraftCustomManifestResponse>,
+  input: __S(784, __c49, 0) as any as S.Schema<CreateExternalDataSourcesDraftCustomManifestRequest>,
+  output: __S(785, __c49, 1) as any as S.Schema<DraftCustomManifestResponse>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -2835,8 +2839,8 @@ export const createExternalDataSourcesPreviewResource: API.OperationMethod<
   CreateExternalDataSourcesPreviewResourceError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(18, __c2, 2) as any as S.Schema<CreateExternalDataSourcesPreviewResourceRequest>,
-  output: __S(22, __c2, 6) as any as S.Schema<SourcePreviewResponse>,
+  input: __S(0, __c0, 0) as any as S.Schema<CreateExternalDataSourcesPreviewResourceRequest>,
+  output: __S(3, __c0, 3) as any as S.Schema<SourcePreviewResponse>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -2854,8 +2858,8 @@ export const createExternalDataSourcesReload: API.OperationMethod<
   CreateExternalDataSourcesReloadError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(23, __c2, 7) as any as S.Schema<CreateExternalDataSourcesReloadRequest>,
-  output: __S(15, __c1, 7) as any as S.Schema<CreateExternalDataSourcesReloadResponse>,
+  input: __S(32, __c2, 0) as any as S.Schema<CreateExternalDataSourcesReloadRequest>,
+  output: __S(768, __c48, 0) as any as S.Schema<CreateExternalDataSourcesReloadResponse>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -2869,8 +2873,8 @@ export const createExternalDataSourcesRepairCdc: API.OperationMethod<
   CreateExternalDataSourcesRepairCdcError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(24, __c3, 0) as any as S.Schema<CreateExternalDataSourcesRepairCdcRequest>,
-  output: __S(25, __c3, 1) as any as S.Schema<CreateExternalDataSourcesRepairCdcResponse>,
+  input: __S(48, __c3, 0) as any as S.Schema<CreateExternalDataSourcesRepairCdcRequest>,
+  output: __S(49, __c3, 1) as any as S.Schema<CreateExternalDataSourcesRepairCdcResponse>,
   errors: [BadRequest, Conflict],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -2884,8 +2888,8 @@ export const createExternalDataSourcesSetup: API.OperationMethod<
   CreateExternalDataSourcesSetupError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(26, __c3, 2) as any as S.Schema<CreateExternalDataSourcesSetupRequest>,
-  output: __S(28, __c3, 4) as any as S.Schema<SourceSetupResponse>,
+  input: __S(64, __c4, 0) as any as S.Schema<CreateExternalDataSourcesSetupRequest>,
+  output: __S(65, __c4, 1) as any as S.Schema<SourceSetupResponse>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -2903,8 +2907,8 @@ export const createExternalDataSourcesSourcePrefix: API.OperationMethod<
   CreateExternalDataSourcesSourcePrefixError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(29, __c3, 5) as any as S.Schema<CreateExternalDataSourcesSourcePrefixRequest>,
-  output: __S(15, __c1, 7) as any as S.Schema<CreateExternalDataSourcesSourcePrefixResponse>,
+  input: __S(96, __c6, 0) as any as S.Schema<CreateExternalDataSourcesSourcePrefixRequest>,
+  output: __S(768, __c48, 0) as any as S.Schema<CreateExternalDataSourcesSourcePrefixResponse>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -2918,8 +2922,8 @@ export const createExternalDataSourcesStoreCredentials: API.OperationMethod<
   CreateExternalDataSourcesStoreCredentialsError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(30, __c3, 6) as any as S.Schema<CreateExternalDataSourcesStoreCredentialsRequest>,
-  output: __S(31, __c3, 7) as any as S.Schema<SourceCredential>,
+  input: __S(112, __c7, 0) as any as S.Schema<CreateExternalDataSourcesStoreCredentialsRequest>,
+  output: __S(128, __c8, 0) as any as S.Schema<SourceCredential>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -2938,14 +2942,14 @@ export const externalDataSourcesBulkUpdateSchemasPartialUpdate: API.OperationMet
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    36,
-    __c4,
+    148,
+    __c9,
     4,
   ) as any as S.Schema<ExternalDataSourcesBulkUpdateSchemasPartialUpdateRequest>,
   output: __S(
-    43,
-    __c5,
-    3,
+    154,
+    __c9,
+    10,
   ) as any as S.Schema<ExternalDataSourcesBulkUpdateSchemasPartialUpdateResponse>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
@@ -2960,8 +2964,8 @@ export const externalDataSourcesConnectLinkRetrieve: API.OperationMethod<
   ExternalDataSourcesConnectLinkRetrieveError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(44, __c5, 4) as any as S.Schema<ExternalDataSourcesConnectLinkRetrieveRequest>,
-  output: __S(45, __c5, 5) as any as S.Schema<SourceConnectLink>,
+  input: __S(176, __c11, 0) as any as S.Schema<ExternalDataSourcesConnectLinkRetrieveRequest>,
+  output: __S(177, __c11, 1) as any as S.Schema<SourceConnectLink>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -2979,8 +2983,8 @@ export const externalDataSourcesCreateWebhookCreate: API.OperationMethod<
   ExternalDataSourcesCreateWebhookCreateError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(46, __c5, 6) as any as S.Schema<ExternalDataSourcesCreateWebhookCreateRequest>,
-  output: __S(27, __c3, 3) as any as S.Schema<CreateWebhookResponse>,
+  input: __S(192, __c12, 0) as any as S.Schema<ExternalDataSourcesCreateWebhookCreateRequest>,
+  output: __S(80, __c5, 0) as any as S.Schema<CreateWebhookResponse>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -2998,8 +3002,8 @@ export const externalDataSourcesDeleteWebhookCreate: API.OperationMethod<
   ExternalDataSourcesDeleteWebhookCreateError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(47, __c5, 7) as any as S.Schema<ExternalDataSourcesDeleteWebhookCreateRequest>,
-  output: __S(48, __c6, 0) as any as S.Schema<DeleteWebhookResponse>,
+  input: __S(208, __c13, 0) as any as S.Schema<ExternalDataSourcesDeleteWebhookCreateRequest>,
+  output: __S(209, __c13, 1) as any as S.Schema<DeleteWebhookResponse>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -3013,8 +3017,8 @@ export const externalDataSourcesDestroy: API.OperationMethod<
   ExternalDataSourcesDestroyError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(49, __c6, 1) as any as S.Schema<ExternalDataSourcesDestroyRequest>,
-  output: __S(15, __c1, 7) as any as S.Schema<ExternalDataSourcesDestroyResponse>,
+  input: __S(224, __c14, 0) as any as S.Schema<ExternalDataSourcesDestroyRequest>,
+  output: __S(768, __c48, 0) as any as S.Schema<ExternalDataSourcesDestroyResponse>,
   errors: [Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -3028,8 +3032,8 @@ export const externalDataSourcesDisableCdcCreate: API.OperationMethod<
   ExternalDataSourcesDisableCdcCreateError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(50, __c6, 2) as any as S.Schema<ExternalDataSourcesDisableCdcCreateRequest>,
-  output: __S(15, __c1, 7) as any as S.Schema<ExternalDataSourcesDisableCdcCreateResponse>,
+  input: __S(240, __c15, 0) as any as S.Schema<ExternalDataSourcesDisableCdcCreateRequest>,
+  output: __S(768, __c48, 0) as any as S.Schema<ExternalDataSourcesDisableCdcCreateResponse>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -3043,8 +3047,8 @@ export const externalDataSourcesEnableCdcCreate: API.OperationMethod<
   ExternalDataSourcesEnableCdcCreateError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(51, __c6, 3) as any as S.Schema<ExternalDataSourcesEnableCdcCreateRequest>,
-  output: __S(52, __c6, 4) as any as S.Schema<CdcEnableResponse>,
+  input: __S(256, __c16, 0) as any as S.Schema<ExternalDataSourcesEnableCdcCreateRequest>,
+  output: __S(257, __c16, 1) as any as S.Schema<CdcEnableResponse>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -3062,8 +3066,8 @@ export const externalDataSourcesRefreshSchemasCreate: API.OperationMethod<
   ExternalDataSourcesRefreshSchemasCreateError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(53, __c6, 5) as any as S.Schema<ExternalDataSourcesRefreshSchemasCreateRequest>,
-  output: __S(15, __c1, 7) as any as S.Schema<ExternalDataSourcesRefreshSchemasCreateResponse>,
+  input: __S(272, __c17, 0) as any as S.Schema<ExternalDataSourcesRefreshSchemasCreateRequest>,
+  output: __S(768, __c48, 0) as any as S.Schema<ExternalDataSourcesRefreshSchemasCreateResponse>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -3077,8 +3081,8 @@ export const externalDataSourcesResumeCdcCreate: API.OperationMethod<
   ExternalDataSourcesResumeCdcCreateError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(54, __c6, 6) as any as S.Schema<ExternalDataSourcesResumeCdcCreateRequest>,
-  output: __S(55, __c6, 7) as any as S.Schema<ExternalDataSourcesResumeCdcCreateResponse>,
+  input: __S(288, __c18, 0) as any as S.Schema<ExternalDataSourcesResumeCdcCreateRequest>,
+  output: __S(289, __c18, 1) as any as S.Schema<ExternalDataSourcesResumeCdcCreateResponse>,
   errors: [BadRequest],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -3092,8 +3096,8 @@ export const externalDataSourcesUpdateCdcSettingsCreate: API.OperationMethod<
   ExternalDataSourcesUpdateCdcSettingsCreateError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(56, __c7, 0) as any as S.Schema<ExternalDataSourcesUpdateCdcSettingsCreateRequest>,
-  output: __S(15, __c1, 7) as any as S.Schema<ExternalDataSourcesUpdateCdcSettingsCreateResponse>,
+  input: __S(304, __c19, 0) as any as S.Schema<ExternalDataSourcesUpdateCdcSettingsCreateRequest>,
+  output: __S(768, __c48, 0) as any as S.Schema<ExternalDataSourcesUpdateCdcSettingsCreateResponse>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -3111,8 +3115,8 @@ export const externalDataSourcesUpdateWebhookInputsCreate: API.OperationMethod<
   ExternalDataSourcesUpdateWebhookInputsCreateError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(57, __c7, 1) as any as S.Schema<ExternalDataSourcesUpdateWebhookInputsCreateRequest>,
-  output: __S(58, __c7, 2) as any as S.Schema<UpdateWebhookInputsResponse>,
+  input: __S(320, __c20, 0) as any as S.Schema<ExternalDataSourcesUpdateWebhookInputsCreateRequest>,
+  output: __S(321, __c20, 1) as any as S.Schema<UpdateWebhookInputsResponse>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -3126,8 +3130,8 @@ export const getExternalDataSource: API.OperationMethod<
   GetExternalDataSourceError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(59, __c7, 3) as any as S.Schema<GetExternalDataSourceRequest>,
-  output: __S(61, __c7, 5) as any as S.Schema<ExternalDataSourceSerializersOutput>,
+  input: __S(336, __c21, 0) as any as S.Schema<GetExternalDataSourceRequest>,
+  output: __S(353, __c22, 1) as any as S.Schema<ExternalDataSourceSerializersOutput>,
   errors: [Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -3141,8 +3145,8 @@ export const getExternalDataSourcesCdcStatus: API.OperationMethod<
   GetExternalDataSourcesCdcStatusError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(62, __c7, 6) as any as S.Schema<GetExternalDataSourcesCdcStatusRequest>,
-  output: __S(63, __c7, 7) as any as S.Schema<CdcStatus>,
+  input: __S(368, __c23, 0) as any as S.Schema<GetExternalDataSourcesCdcStatusRequest>,
+  output: __S(369, __c23, 1) as any as S.Schema<CdcStatus>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -3156,8 +3160,8 @@ export const getExternalDataSourcesDestination: API.OperationMethod<
   GetExternalDataSourcesDestinationError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(64, __c8, 0) as any as S.Schema<GetExternalDataSourcesDestinationRequest>,
-  output: __S(65, __c8, 1) as any as S.Schema<SourceDestinations>,
+  input: __S(384, __c24, 0) as any as S.Schema<GetExternalDataSourcesDestinationRequest>,
+  output: __S(400, __c25, 0) as any as S.Schema<SourceDestinations>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -3171,8 +3175,8 @@ export const getExternalDataSourcesOauthAccount: API.OperationMethod<
   GetExternalDataSourcesOauthAccountError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(66, __c8, 2) as any as S.Schema<GetExternalDataSourcesOauthAccountRequest>,
-  output: __S(13, __c1, 5) as any as S.Schema<IntegrationAccountsResponse>,
+  input: __S(416, __c26, 0) as any as S.Schema<GetExternalDataSourcesOauthAccountRequest>,
+  output: __S(738, __c46, 2) as any as S.Schema<IntegrationAccountsResponse>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -3186,8 +3190,8 @@ export const getExternalDataSourcesWebhookInfo: API.OperationMethod<
   GetExternalDataSourcesWebhookInfoError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(67, __c8, 3) as any as S.Schema<GetExternalDataSourcesWebhookInfoRequest>,
-  output: __S(74, __c9, 2) as any as S.Schema<WebhookInfoResponse>,
+  input: __S(432, __c27, 0) as any as S.Schema<GetExternalDataSourcesWebhookInfoRequest>,
+  output: __S(439, __c27, 7) as any as S.Schema<WebhookInfoResponse>,
   errors: [Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -3201,8 +3205,8 @@ export const getExternalDataSourcesWizard: API.OperationMethod<
   GetExternalDataSourcesWizardError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(75, __c9, 3) as any as S.Schema<GetExternalDataSourcesWizardRequest>,
-  output: __S(86, __c10, 6) as any as S.Schema<GetExternalDataSourcesWizardResponse>,
+  input: __S(448, __c28, 0) as any as S.Schema<GetExternalDataSourcesWizardRequest>,
+  output: __S(459, __c28, 11) as any as S.Schema<GetExternalDataSourcesWizardResponse>,
   errors: [Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -3216,8 +3220,8 @@ export const listExternalDataSources: API.OperationMethod<
   ListExternalDataSourcesError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(87, __c10, 7) as any as S.Schema<ListExternalDataSourcesRequest>,
-  output: __S(89, __c11, 1) as any as S.Schema<PaginatedExternalDataSourceSerializersListOutput>,
+  input: __S(464, __c29, 0) as any as S.Schema<ListExternalDataSourcesRequest>,
+  output: __S(466, __c29, 2) as any as S.Schema<PaginatedExternalDataSourceSerializersListOutput>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -3235,8 +3239,8 @@ export const listExternalDataSourcesConnections: API.OperationMethod<
   ListExternalDataSourcesConnectionsError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(90, __c11, 2) as any as S.Schema<ListExternalDataSourcesConnectionsRequest>,
-  output: __S(93, __c11, 5) as any as S.Schema<ListExternalDataSourcesConnectionsResponse>,
+  input: __S(480, __c30, 0) as any as S.Schema<ListExternalDataSourcesConnectionsRequest>,
+  output: __S(483, __c30, 3) as any as S.Schema<ListExternalDataSourcesConnectionsResponse>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -3251,14 +3255,14 @@ export const listExternalDataSourcesDirectConnectionOptions: API.OperationMethod
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    94,
-    __c11,
-    6,
+    496,
+    __c31,
+    0,
   ) as any as S.Schema<ListExternalDataSourcesDirectConnectionOptionsRequest>,
   output: __S(
-    97,
-    __c12,
-    1,
+    499,
+    __c31,
+    3,
   ) as any as S.Schema<ListExternalDataSourcesDirectConnectionOptionsResponse>,
   errors: [],
   protocol: PosthogProtocol,
@@ -3273,8 +3277,8 @@ export const listExternalDataSourcesJobs: API.OperationMethod<
   ListExternalDataSourcesJobsError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(98, __c12, 2) as any as S.Schema<ListExternalDataSourcesJobsRequest>,
-  output: __S(102, __c12, 6) as any as S.Schema<ListExternalDataSourcesJobsResponse>,
+  input: __S(512, __c32, 0) as any as S.Schema<ListExternalDataSourcesJobsRequest>,
+  output: __S(516, __c32, 4) as any as S.Schema<ListExternalDataSourcesJobsResponse>,
   errors: [Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -3288,8 +3292,8 @@ export const listExternalDataSourcesStoredCredentials: API.OperationMethod<
   ListExternalDataSourcesStoredCredentialsError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(103, __c12, 7) as any as S.Schema<ListExternalDataSourcesStoredCredentialsRequest>,
-  output: __S(105, __c13, 1) as any as S.Schema<ListExternalDataSourcesStoredCredentialsResponse>,
+  input: __S(528, __c33, 0) as any as S.Schema<ListExternalDataSourcesStoredCredentialsRequest>,
+  output: __S(530, __c33, 2) as any as S.Schema<ListExternalDataSourcesStoredCredentialsResponse>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -3303,8 +3307,8 @@ export const updateExternalDataSource: API.OperationMethod<
   UpdateExternalDataSourceError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(106, __c13, 2) as any as S.Schema<UpdateExternalDataSourceRequest>,
-  output: __S(61, __c7, 5) as any as S.Schema<ExternalDataSourceSerializersOutput>,
+  input: __S(544, __c34, 0) as any as S.Schema<UpdateExternalDataSourceRequest>,
+  output: __S(353, __c22, 1) as any as S.Schema<ExternalDataSourceSerializersOutput>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -3318,8 +3322,8 @@ export const updateExternalDataSourcesDestinationsPartial: API.OperationMethod<
   UpdateExternalDataSourcesDestinationsPartialError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(107, __c13, 3) as any as S.Schema<UpdateExternalDataSourcesDestinationsPartialRequest>,
-  output: __S(65, __c8, 1) as any as S.Schema<SourceDestinations>,
+  input: __S(560, __c35, 0) as any as S.Schema<UpdateExternalDataSourcesDestinationsPartialRequest>,
+  output: __S(400, __c25, 0) as any as S.Schema<SourceDestinations>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -3337,8 +3341,8 @@ export const updateExternalDataSourcesPartial: API.OperationMethod<
   UpdateExternalDataSourcesPartialError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(108, __c13, 4) as any as S.Schema<UpdateExternalDataSourcesPartialRequest>,
-  output: __S(61, __c7, 5) as any as S.Schema<ExternalDataSourceSerializersOutput>,
+  input: __S(624, __c39, 0) as any as S.Schema<UpdateExternalDataSourcesPartialRequest>,
+  output: __S(353, __c22, 1) as any as S.Schema<ExternalDataSourceSerializersOutput>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -3357,13 +3361,13 @@ export const updateExternalDataSourcesRevenueAnalyticsConfigPartial: API.Operati
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    109,
-    __c13,
-    5,
+    640,
+    __c40,
+    0,
   ) as any as S.Schema<UpdateExternalDataSourcesRevenueAnalyticsConfigPartialRequest>,
   output: __S(
-    8,
-    __c1,
+    704,
+    __c44,
     0,
   ) as any as S.Schema<UpdateExternalDataSourcesRevenueAnalyticsConfigPartialResponse>,
   errors: [BadRequest, Forbidden, NotFound],
@@ -3375,192 +3379,11 @@ export const updateExternalDataSourcesRevenueAnalyticsConfigPartial: API.Operati
 function __c0(j: number): any {
   switch (j) {
     case 0:
-      return S.Record(S.String, S.Unknown);
-    case 1:
-      return S.Array(S.String);
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          project_id: S.String.pipe(T.Label()),
-          source_type: S.optional(S.String),
-          payload: S.optional(__S(0, __c0, 0)),
-          prefix: S.optional(S.NullOr(S.String)),
-          description: S.optional(S.NullOr(S.String)),
-          access_method: S.optional(S.String),
-          created_via: S.optional(S.String),
-          direct_query_enabled: S.optional(S.Boolean),
-          destination_ids: S.optional(__S(1, __c0, 1)),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/api/projects/{project_id}/external_data_sources/",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateExternalDataSourceRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String,
-        }),
-      ).annotate({
-        identifier: "ExternalDataSourceCreateResponse",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          project_id: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/api/projects/{project_id}/external_data_sources/check_cdc_prerequisites/",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateExternalDataSourcesCheckCdcPrerequisiteRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          valid: S.Boolean,
-          errors: __S(1, __c0, 1),
-        }),
-      ).annotate({ identifier: "CdcPrerequisitesResponse" });
-    case 6:
-      return S.Array(S.String);
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          project_id: S.String.pipe(T.Label()),
-          id: S.String.pipe(T.Label()),
-          created_via: S.optional(S.NullOr(S.String)),
-          client_secret: S.optional(S.String.pipe(T.SensitiveValue({}))),
-          account_id: S.optional(S.String),
-          prefix: S.optional(S.NullOr(S.String)),
-          description: S.optional(S.NullOr(S.String)),
-          direct_query_enabled: S.optional(S.Boolean),
-          auto_sync_new_schemas: S.optional(S.Boolean),
-          auto_sync_schema_patterns: S.optional(S.NullOr(__S(6, __c0, 6))),
-          job_inputs: S.optional(S.Unknown),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/api/projects/{project_id}/external_data_sources/{id}/check_cdc_prerequisites_for_source/",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateExternalDataSourcesCheckCdcPrerequisitesForSourceRequest",
-      });
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "CreateExternalDataSourcesCheckCdcPrerequisitesForSourceResponse",
-      });
-    case 1:
-      return S.Record(S.String, S.String);
-    case 2:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
           source_type: S.String,
-          credentials: __S(9, __c1, 1),
-          api_version: S.optional(S.NullOr(S.String)),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/api/projects/{project_id}/external_data_sources/credential_accounts/",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateExternalDataSourcesCredentialAccountRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          value: S.String,
-          display_name: S.String,
-          is_primary: S.Boolean,
-          badges: __S(1, __c0, 1),
-          group: S.NullOr(S.String),
-          secondary_text: S.NullOr(S.String),
-        }),
-      ).annotate({ identifier: "IntegrationAccount" });
-    case 4:
-      return S.Array(__S(11, __c1, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          accounts: __S(12, __c1, 4),
-        }),
-      ).annotate({
-        identifier: "IntegrationAccountsResponse",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          project_id: S.String.pipe(T.Label()),
-          source_type: S.optional(S.String),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/api/projects/{project_id}/external_data_sources/database_schema/",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateExternalDataSourcesDatabaseSchemaRequest",
-      });
-    case 7:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "CreateExternalDataSourcesDatabaseSchemaResponse",
-      });
-  }
-}
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          project_id: S.String.pipe(T.Label()),
-          source_name: S.optional(S.String),
-          docs_url: S.optional(S.String),
-          docs_text: S.optional(S.String),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/api/projects/{project_id}/external_data_sources/draft_custom_manifest/",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateExternalDataSourcesDraftCustomManifestRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          draft_status: S.String,
-          manifest_json: S.NullOr(S.String),
-          resource_names: __S(1, __c0, 1),
-          attempts: S.Number,
-          error: S.NullOr(S.String),
-        }),
-      ).annotate({
-        identifier: "DraftCustomManifestResponse",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          project_id: S.String.pipe(T.Label()),
-          source_type: S.String,
-          payload: S.optional(__S(0, __c0, 0)),
+          payload: S.optional(__S(592, __c37, 0)),
           resource_name: S.String,
           limit: S.optional(S.Number),
         }).pipe(
@@ -3573,27 +3396,35 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "CreateExternalDataSourcesPreviewResourceRequest",
       });
-    case 3:
-      return S.Array(__S(0, __c0, 0));
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           name: S.String,
           type: S.String,
         }),
       ).annotate({ identifier: "SourcePreviewColumn" });
-    case 5:
-      return S.Array(__S(20, __c2, 4));
-    case 6:
+    case 2:
+      return S.Array(__S(1, __c0, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          rows: __S(19, __c2, 3),
+          rows: __S(16, __c1, 0),
           row_count: S.Number,
-          columns: __S(21, __c2, 5),
+          columns: __S(2, __c0, 2),
           error: S.NullOr(S.String),
         }),
       ).annotate({ identifier: "SourcePreviewResponse" });
-    case 7:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(592, __c37, 0));
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -3605,7 +3436,7 @@ function __c2(j: number): any {
           description: S.optional(S.NullOr(S.String)),
           direct_query_enabled: S.optional(S.Boolean),
           auto_sync_new_schemas: S.optional(S.Boolean),
-          auto_sync_schema_patterns: S.optional(S.NullOr(__S(6, __c0, 6))),
+          auto_sync_schema_patterns: S.optional(S.NullOr(__S(688, __c43, 0))),
           job_inputs: S.optional(S.Unknown),
         }).pipe(
           T.Http({
@@ -3645,12 +3476,16 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "CreateExternalDataSourcesRepairCdcResponse",
       });
-    case 2:
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
           source_type: S.String,
-          payload: S.optional(__S(0, __c0, 0)),
+          payload: S.optional(__S(592, __c37, 0)),
           prefix: S.optional(S.NullOr(S.String)),
           description: S.optional(S.NullOr(S.String)),
           direct_query_enabled: S.optional(S.Boolean),
@@ -3664,23 +3499,31 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "CreateExternalDataSourcesSetupRequest",
       });
-    case 3:
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          webhook: S.optional(__S(80, __c5, 0)),
+        }),
+      ).annotate({ identifier: "SourceSetupResponse" });
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           success: S.Boolean,
           webhook_url: S.NullOr(S.String),
           error: S.NullOr(S.String),
-          pending_inputs: __S(1, __c0, 1),
+          pending_inputs: __S(608, __c38, 0),
         }),
       ).annotate({ identifier: "SourceSetupWebhook" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String,
-          webhook: S.optional(__S(27, __c3, 3)),
-        }),
-      ).annotate({ identifier: "SourceSetupResponse" });
-    case 5:
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -3691,7 +3534,7 @@ function __c3(j: number): any {
           description: S.optional(S.NullOr(S.String)),
           direct_query_enabled: S.optional(S.Boolean),
           auto_sync_new_schemas: S.optional(S.Boolean),
-          auto_sync_schema_patterns: S.optional(S.NullOr(__S(6, __c0, 6))),
+          auto_sync_schema_patterns: S.optional(S.NullOr(__S(688, __c43, 0))),
           job_inputs: S.optional(S.Unknown),
         }).pipe(
           T.Http({
@@ -3703,12 +3546,16 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "CreateExternalDataSourcesSourcePrefixRequest",
       });
-    case 6:
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
           source_type: S.String,
-          payload: __S(0, __c0, 0),
+          payload: __S(592, __c37, 0),
         }).pipe(
           T.Http({
             method: "POST",
@@ -3719,7 +3566,11 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "CreateExternalDataSourcesStoreCredentialsRequest",
       });
-    case 7:
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           credential_id: S.String,
@@ -3730,7 +3581,7 @@ function __c3(j: number): any {
       ).annotate({ identifier: "SourceCredential" });
   }
 }
-function __c4(j: number): any {
+function __c9(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3743,7 +3594,7 @@ function __c4(j: number): any {
         identifier: "ExternalDataSourceBulkUpdateSchemaRowFiltersItem",
       });
     case 1:
-      return S.Array(__S(32, __c4, 0));
+      return S.Array(__S(144, __c9, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -3756,23 +3607,23 @@ function __c4(j: number): any {
           sync_time_of_day: S.optional(S.NullOr(S.String)),
           full_refresh_interval_days: S.optional(S.NullOr(S.Number)),
           full_refresh_time_of_day: S.optional(S.NullOr(S.String)),
-          primary_key_columns: S.optional(S.NullOr(__S(1, __c0, 1))),
+          primary_key_columns: S.optional(S.NullOr(__S(608, __c38, 0))),
           cdc_table_mode: S.optional(S.NullOr(S.String)),
-          enabled_columns: S.optional(S.NullOr(__S(1, __c0, 1))),
-          row_filters: S.optional(S.NullOr(__S(33, __c4, 1))),
+          enabled_columns: S.optional(S.NullOr(__S(608, __c38, 0))),
+          row_filters: S.optional(S.NullOr(__S(145, __c9, 1))),
           apply_sync_defaults: S.optional(S.Boolean),
         }),
       ).annotate({
         identifier: "ExternalDataSourceBulkUpdateSchema",
       });
     case 3:
-      return S.Array(__S(34, __c4, 2));
+      return S.Array(__S(146, __c9, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
           id: S.String.pipe(T.Label()),
-          schemas: __S(35, __c4, 3),
+          schemas: __S(147, __c9, 3),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -3794,7 +3645,7 @@ function __c4(j: number): any {
         identifier: "ExternalDataSchemaAvailableColumnsItem",
       });
     case 6:
-      return S.Array(__S(37, __c4, 5));
+      return S.Array(__S(149, __c9, 5));
     case 7:
       return S.suspend(() =>
         S.Struct({
@@ -3806,30 +3657,16 @@ function __c4(j: number): any {
           requires_exact_column_metadata: S.optional(S.Boolean),
           user_access_level: S.optional(S.NullOr(S.String)),
           api_version: S.optional(S.NullOr(S.String)),
-          supported_api_versions: S.optional(__S(1, __c0, 1)),
+          supported_api_versions: S.optional(__S(608, __c38, 0)),
         }),
       ).annotate({ identifier: "ExternalDataSchemaSource" });
-  }
-}
-function __c5(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          version: S.String,
-          sunset_at: S.NullOr(S.String),
-          default_version: S.String,
-        }),
-      ).annotate({
-        identifier: "ExternalDataSourceApiVersionDeprecation",
-      });
-    case 1:
+    case 8:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           label: S.optional(S.NullOr(S.String)),
-          table: S.optional(S.NullOr(__S(0, __c0, 0))),
+          table: S.optional(S.NullOr(__S(592, __c37, 0))),
           should_sync: S.optional(S.Boolean),
           last_synced_at: S.optional(S.NullOr(S.String)),
           latest_error: S.optional(S.NullOr(S.String)),
@@ -3845,26 +3682,44 @@ function __c5(j: number): any {
           full_refresh_time_of_day: S.optional(S.NullOr(S.String)),
           next_full_refresh_at: S.optional(S.NullOr(S.String)),
           description: S.optional(S.NullOr(S.String)),
-          primary_key_columns: S.optional(S.NullOr(__S(1, __c0, 1))),
+          primary_key_columns: S.optional(S.NullOr(__S(608, __c38, 0))),
           cdc_table_mode: S.optional(S.NullOr(S.String)),
           incremental_sync_blocked: S.optional(S.NullOr(S.String)),
-          enabled_columns: S.optional(S.NullOr(__S(1, __c0, 1))),
-          row_filters: S.optional(S.NullOr(__S(33, __c4, 1))),
-          available_columns: S.optional(__S(38, __c4, 6)),
+          enabled_columns: S.optional(S.NullOr(__S(608, __c38, 0))),
+          row_filters: S.optional(S.NullOr(__S(145, __c9, 1))),
+          available_columns: S.optional(__S(150, __c9, 6)),
           source_column_metadata_available: S.optional(S.Boolean),
-          source: S.optional(S.NullOr(__S(39, __c4, 7))),
+          source: S.optional(S.NullOr(__S(151, __c9, 7))),
           api_version: S.optional(S.NullOr(S.String)),
-          api_version_deprecation: S.optional(S.NullOr(__S(40, __c5, 0))),
+          api_version_deprecation: S.optional(S.NullOr(__S(160, __c10, 0))),
           user_access_level: S.optional(S.NullOr(S.String)),
         }),
       ).annotate({ identifier: "ExternalDataSchema" });
-    case 2:
-      return S.Array(__S(41, __c5, 1));
-    case 3:
-      return S.suspend(() => __S(42, __c5, 2).pipe(T.RawResponseRoot())).annotate({
+    case 9:
+      return S.Array(__S(152, __c9, 8));
+    case 10:
+      return S.suspend(() => __S(153, __c9, 9).pipe(T.RawResponseRoot())).annotate({
         identifier: "ExternalDataSourcesBulkUpdateSchemasPartialUpdateResponse",
       });
-    case 4:
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          version: S.String,
+          sunset_at: S.NullOr(S.String),
+          default_version: S.String,
+        }),
+      ).annotate({
+        identifier: "ExternalDataSourceApiVersionDeprecation",
+      });
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -3879,7 +3734,7 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "ExternalDataSourcesConnectLinkRetrieveRequest",
       });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           source_type: S.String,
@@ -3888,7 +3743,11 @@ function __c5(j: number): any {
           instructions: S.String,
         }),
       ).annotate({ identifier: "SourceConnectLink" });
-    case 6:
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -3900,7 +3759,7 @@ function __c5(j: number): any {
           description: S.optional(S.NullOr(S.String)),
           direct_query_enabled: S.optional(S.Boolean),
           auto_sync_new_schemas: S.optional(S.Boolean),
-          auto_sync_schema_patterns: S.optional(S.NullOr(__S(6, __c0, 6))),
+          auto_sync_schema_patterns: S.optional(S.NullOr(__S(688, __c43, 0))),
           job_inputs: S.optional(S.Unknown),
         }).pipe(
           T.Http({
@@ -3912,7 +3771,11 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "ExternalDataSourcesCreateWebhookCreateRequest",
       });
-    case 7:
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -3924,7 +3787,7 @@ function __c5(j: number): any {
           description: S.optional(S.NullOr(S.String)),
           direct_query_enabled: S.optional(S.Boolean),
           auto_sync_new_schemas: S.optional(S.Boolean),
-          auto_sync_schema_patterns: S.optional(S.NullOr(__S(6, __c0, 6))),
+          auto_sync_schema_patterns: S.optional(S.NullOr(__S(688, __c43, 0))),
           job_inputs: S.optional(S.Unknown),
         }).pipe(
           T.Http({
@@ -3936,11 +3799,7 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "ExternalDataSourcesDeleteWebhookCreateRequest",
       });
-  }
-}
-function __c6(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           success: S.Boolean,
@@ -3948,7 +3807,11 @@ function __c6(j: number): any {
           error: S.NullOr(S.String),
         }),
       ).annotate({ identifier: "DeleteWebhookResponse" });
-    case 1:
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -3963,7 +3826,11 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "ExternalDataSourcesDestroyRequest",
       });
-    case 2:
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -3975,7 +3842,7 @@ function __c6(j: number): any {
           description: S.optional(S.NullOr(S.String)),
           direct_query_enabled: S.optional(S.Boolean),
           auto_sync_new_schemas: S.optional(S.Boolean),
-          auto_sync_schema_patterns: S.optional(S.NullOr(__S(6, __c0, 6))),
+          auto_sync_schema_patterns: S.optional(S.NullOr(__S(688, __c43, 0))),
           job_inputs: S.optional(S.Unknown),
         }).pipe(
           T.Http({
@@ -3987,7 +3854,11 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "ExternalDataSourcesDisableCdcCreateRequest",
       });
-    case 3:
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -3999,7 +3870,7 @@ function __c6(j: number): any {
           description: S.optional(S.NullOr(S.String)),
           direct_query_enabled: S.optional(S.Boolean),
           auto_sync_new_schemas: S.optional(S.Boolean),
-          auto_sync_schema_patterns: S.optional(S.NullOr(__S(6, __c0, 6))),
+          auto_sync_schema_patterns: S.optional(S.NullOr(__S(688, __c43, 0))),
           job_inputs: S.optional(S.Unknown),
         }).pipe(
           T.Http({
@@ -4011,14 +3882,18 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "ExternalDataSourcesEnableCdcCreateRequest",
       });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           success: S.Boolean,
           schedules_ready: S.Boolean,
         }),
       ).annotate({ identifier: "CdcEnableResponse" });
-    case 5:
+  }
+}
+function __c17(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -4030,7 +3905,7 @@ function __c6(j: number): any {
           description: S.optional(S.NullOr(S.String)),
           direct_query_enabled: S.optional(S.Boolean),
           auto_sync_new_schemas: S.optional(S.Boolean),
-          auto_sync_schema_patterns: S.optional(S.NullOr(__S(6, __c0, 6))),
+          auto_sync_schema_patterns: S.optional(S.NullOr(__S(688, __c43, 0))),
           job_inputs: S.optional(S.Unknown),
         }).pipe(
           T.Http({
@@ -4042,7 +3917,11 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "ExternalDataSourcesRefreshSchemasCreateRequest",
       });
-    case 6:
+  }
+}
+function __c18(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -4057,7 +3936,7 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "ExternalDataSourcesResumeCdcCreateRequest",
       });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           success: S.optional(S.Boolean),
@@ -4067,7 +3946,7 @@ function __c6(j: number): any {
       });
   }
 }
-function __c7(j: number): any {
+function __c19(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4081,7 +3960,7 @@ function __c7(j: number): any {
           description: S.optional(S.NullOr(S.String)),
           direct_query_enabled: S.optional(S.Boolean),
           auto_sync_new_schemas: S.optional(S.Boolean),
-          auto_sync_schema_patterns: S.optional(S.NullOr(__S(6, __c0, 6))),
+          auto_sync_schema_patterns: S.optional(S.NullOr(__S(688, __c43, 0))),
           job_inputs: S.optional(S.Unknown),
         }).pipe(
           T.Http({
@@ -4093,7 +3972,11 @@ function __c7(j: number): any {
       ).annotate({
         identifier: "ExternalDataSourcesUpdateCdcSettingsCreateRequest",
       });
-    case 1:
+  }
+}
+function __c20(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -4105,7 +3988,7 @@ function __c7(j: number): any {
           description: S.optional(S.NullOr(S.String)),
           direct_query_enabled: S.optional(S.Boolean),
           auto_sync_new_schemas: S.optional(S.Boolean),
-          auto_sync_schema_patterns: S.optional(S.NullOr(__S(6, __c0, 6))),
+          auto_sync_schema_patterns: S.optional(S.NullOr(__S(688, __c43, 0))),
           job_inputs: S.optional(S.Unknown),
         }).pipe(
           T.Http({
@@ -4117,7 +4000,7 @@ function __c7(j: number): any {
       ).annotate({
         identifier: "ExternalDataSourcesUpdateWebhookInputsCreateRequest",
       });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           success: S.Boolean,
@@ -4125,7 +4008,11 @@ function __c7(j: number): any {
       ).annotate({
         identifier: "UpdateWebhookInputsResponse",
       });
-    case 3:
+  }
+}
+function __c21(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -4140,7 +4027,11 @@ function __c7(j: number): any {
       ).annotate({
         identifier: "GetExternalDataSourceRequest",
       });
-    case 4:
+  }
+}
+function __c22(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           enabled: S.optional(S.Boolean),
@@ -4149,7 +4040,7 @@ function __c7(j: number): any {
       ).annotate({
         identifier: "ExternalDataSourceRevenueAnalyticsConfig",
       });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
@@ -4164,22 +4055,26 @@ function __c7(j: number): any {
           access_method: S.optional(S.String),
           direct_query_enabled: S.optional(S.Boolean),
           auto_sync_new_schemas: S.optional(S.Boolean),
-          auto_sync_schema_patterns: S.optional(S.NullOr(__S(1, __c0, 1))),
+          auto_sync_schema_patterns: S.optional(S.NullOr(__S(608, __c38, 0))),
           engine: S.optional(S.NullOr(S.String)),
           last_run_at: S.optional(S.NullOr(S.String)),
-          schemas: S.optional(__S(19, __c2, 3)),
+          schemas: S.optional(__S(16, __c1, 0)),
           job_inputs: S.optional(S.Unknown),
-          revenue_analytics_config: S.optional(__S(60, __c7, 4)),
+          revenue_analytics_config: S.optional(__S(352, __c22, 0)),
           user_access_level: S.optional(S.NullOr(S.String)),
           supports_webhooks: S.optional(S.Boolean),
           supports_column_selection: S.optional(S.Boolean),
           api_version: S.optional(S.NullOr(S.String)),
-          api_version_deprecation: S.optional(S.NullOr(__S(40, __c5, 0))),
+          api_version_deprecation: S.optional(S.NullOr(__S(160, __c10, 0))),
         }),
       ).annotate({
         identifier: "ExternalDataSourceSerializersOutput",
       });
-    case 6:
+  }
+}
+function __c23(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -4194,7 +4089,7 @@ function __c7(j: number): any {
       ).annotate({
         identifier: "GetExternalDataSourcesCdcStatusRequest",
       });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           enabled: S.Boolean,
@@ -4207,12 +4102,12 @@ function __c7(j: number): any {
           slot_exists: S.optional(S.Boolean),
           publication_exists: S.optional(S.Boolean),
           lag_bytes: S.optional(S.NullOr(S.Number)),
-          published_tables: S.optional(__S(1, __c0, 1)),
+          published_tables: S.optional(__S(608, __c38, 0)),
         }),
       ).annotate({ identifier: "CdcStatus" });
   }
 }
-function __c8(j: number): any {
+function __c24(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4229,13 +4124,21 @@ function __c8(j: number): any {
       ).annotate({
         identifier: "GetExternalDataSourcesDestinationRequest",
       });
-    case 1:
+  }
+}
+function __c25(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          destination_ids: __S(1, __c0, 1),
+          destination_ids: __S(608, __c38, 0),
         }),
       ).annotate({ identifier: "SourceDestinations" });
-    case 2:
+  }
+}
+function __c26(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -4252,7 +4155,11 @@ function __c8(j: number): any {
       ).annotate({
         identifier: "GetExternalDataSourcesOauthAccountRequest",
       });
-    case 3:
+  }
+}
+function __c27(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -4267,43 +4174,39 @@ function __c8(j: number): any {
       ).annotate({
         identifier: "GetExternalDataSourcesWebhookInfoRequest",
       });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
           name: S.String,
           enabled: S.Boolean,
           created_at: S.String,
-          status: __S(0, __c0, 0),
+          status: __S(592, __c37, 0),
         }),
       ).annotate({ identifier: "WebhookHogFunction" });
-    case 5:
+    case 2:
       return S.Record(S.String, S.String);
-    case 6:
+    case 3:
       return S.Array(S.Unknown);
-    case 7:
+    case 4:
       return S.suspend(() =>
         S.Struct({
           value: S.optional(S.Unknown),
           templating: S.optional(S.String),
-          bytecode: S.optional(__S(70, __c8, 6)),
+          bytecode: S.optional(__S(435, __c27, 3)),
           bytecode_contract: S.optional(S.String),
           order: S.optional(S.Number),
           transpiled: S.optional(S.Unknown),
         }),
       ).annotate({ identifier: "InputsItem" });
-  }
-}
-function __c9(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Record(S.String, __S(71, __c8, 7));
-    case 1:
+    case 5:
+      return S.Record(S.String, __S(436, __c27, 4));
+    case 6:
       return S.suspend(() =>
         S.Struct({
           exists: S.Boolean,
           url: S.NullOr(S.String),
-          enabled_events: S.NullOr(__S(1, __c0, 1)),
+          enabled_events: S.NullOr(__S(608, __c38, 0)),
           status: S.NullOr(S.String),
           description: S.NullOr(S.String),
           created_at: S.NullOr(S.String),
@@ -4311,22 +4214,26 @@ function __c9(j: number): any {
           error: S.NullOr(S.String),
         }),
       ).annotate({ identifier: "WebhookExternalStatus" });
-    case 2:
+    case 7:
       return S.suspend(() =>
         S.Struct({
           supports_webhooks: S.Boolean,
           exists: S.Boolean,
           auto_creation_blocked_reason: S.NullOr(S.String),
-          hog_function: S.NullOr(__S(68, __c8, 4)),
+          hog_function: S.NullOr(__S(433, __c27, 1)),
           webhook_url: S.NullOr(S.String),
-          schema_mapping: __S(69, __c8, 5),
-          inputs: S.optional(__S(72, __c9, 0)),
-          external_status: S.NullOr(__S(73, __c9, 1)),
-          missing_events: S.optional(__S(1, __c0, 1)),
-          missing_inputs: S.optional(__S(1, __c0, 1)),
+          schema_mapping: __S(434, __c27, 2),
+          inputs: S.optional(__S(437, __c27, 5)),
+          external_status: S.NullOr(__S(438, __c27, 6)),
+          missing_events: S.optional(__S(608, __c38, 0)),
+          missing_inputs: S.optional(__S(608, __c38, 0)),
         }),
       ).annotate({ identifier: "WebhookInfoResponse" });
-    case 3:
+  }
+}
+function __c28(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -4341,46 +4248,42 @@ function __c9(j: number): any {
       ).annotate({
         identifier: "GetExternalDataSourcesWizardRequest",
       });
-    case 4:
+    case 1:
       return S.Array(S.Unknown);
-    case 5:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           table: S.String,
           tooltip: S.optional(S.NullOr(S.String)),
         }),
       ).annotate({ identifier: "SuggestedTable" });
-    case 6:
-      return S.Array(__S(77, __c9, 5));
-    case 7:
+    case 3:
+      return S.Array(__S(450, __c28, 2));
+    case 4:
       return S.Array(S.Unknown);
-  }
-}
-function __c10(j: number): any {
-  switch (j) {
-    case 0:
+    case 5:
       return S.suspend(() =>
         S.Struct({
           version: S.String,
           sunsetAt: S.optional(S.NullOr(S.String)),
         }),
       ).annotate({ identifier: "SourceVersionDeprecation" });
-    case 1:
-      return S.Array(__S(80, __c10, 0));
-    case 2:
+    case 6:
+      return S.Array(__S(453, __c28, 5));
+    case 7:
       return S.suspend(() =>
         S.Struct({
           name: S.String,
           label: S.String,
           description: S.optional(S.NullOr(S.String)),
-          sync_methods: __S(1, __c0, 1),
-          incremental_fields: __S(1, __c0, 1),
-          primary_keys: __S(1, __c0, 1),
+          sync_methods: __S(608, __c38, 0),
+          incremental_fields: __S(608, __c38, 0),
+          primary_keys: __S(608, __c38, 0),
         }),
       ).annotate({ identifier: "SourceDocumentedTable" });
-    case 3:
-      return S.Array(__S(82, __c10, 2));
-    case 4:
+    case 8:
+      return S.Array(__S(455, __c28, 7));
+    case 9:
       return S.suspend(() =>
         S.Struct({
           caption: S.optional(S.NullOr(S.String)),
@@ -4390,34 +4293,38 @@ function __c10(j: number): any {
           existingSource: S.optional(S.NullOr(S.Boolean)),
           featureFlag: S.optional(S.NullOr(S.String)),
           featured: S.optional(S.NullOr(S.Boolean)),
-          fields: __S(76, __c9, 4),
+          fields: __S(449, __c28, 1),
           iconClassName: S.optional(S.NullOr(S.String)),
           iconPath: S.String,
-          keywords: S.optional(S.NullOr(__S(1, __c0, 1))),
+          keywords: S.optional(S.NullOr(__S(608, __c38, 0))),
           label: S.optional(S.NullOr(S.String)),
           name: S.String,
           permissionsCaption: S.optional(S.NullOr(S.String)),
           releaseStatus: S.optional(S.NullOr(S.String)),
-          suggestedTables: S.optional(S.NullOr(__S(78, __c9, 6))),
+          suggestedTables: S.optional(S.NullOr(__S(451, __c28, 3))),
           supportsColumnSelection: S.Boolean,
           unreleasedSource: S.optional(S.NullOr(S.Boolean)),
-          webhookFields: S.optional(S.NullOr(__S(79, __c9, 7))),
+          webhookFields: S.optional(S.NullOr(__S(452, __c28, 4))),
           webhookManualOnly: S.optional(S.NullOr(S.Boolean)),
           webhookSetupCaption: S.optional(S.NullOr(S.String)),
-          versions: __S(1, __c0, 1),
+          versions: __S(608, __c38, 0),
           defaultVersion: S.String,
           apiDocsUrl: S.optional(S.NullOr(S.String)),
-          deprecatedVersions: __S(81, __c10, 1),
-          tables: S.optional(S.NullOr(__S(83, __c10, 3))),
+          deprecatedVersions: __S(454, __c28, 6),
+          tables: S.optional(S.NullOr(__S(456, __c28, 8))),
         }),
       ).annotate({ identifier: "SourceConfigResponse" });
-    case 5:
-      return S.Record(S.String, __S(84, __c10, 4));
-    case 6:
-      return S.suspend(() => __S(85, __c10, 5).pipe(T.RawResponseRoot())).annotate({
+    case 10:
+      return S.Record(S.String, __S(457, __c28, 9));
+    case 11:
+      return S.suspend(() => __S(458, __c28, 10).pipe(T.RawResponseRoot())).annotate({
         identifier: "GetExternalDataSourcesWizardResponse",
       });
-    case 7:
+  }
+}
+function __c29(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -4434,24 +4341,24 @@ function __c10(j: number): any {
       ).annotate({
         identifier: "ListExternalDataSourcesRequest",
       });
-  }
-}
-function __c11(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(61, __c7, 5));
     case 1:
+      return S.Array(__S(353, __c22, 1));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           count: S.optional(S.Number),
           next: S.optional(S.NullOr(S.String)),
           previous: S.optional(S.NullOr(S.String)),
-          results: S.optional(__S(88, __c11, 0)),
+          results: S.optional(__S(465, __c29, 1)),
         }),
       ).annotate({
         identifier: "PaginatedExternalDataSourceSerializersListOutput",
       });
-    case 2:
+  }
+}
+function __c30(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -4465,7 +4372,7 @@ function __c11(j: number): any {
       ).annotate({
         identifier: "ListExternalDataSourcesConnectionsRequest",
       });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
@@ -4481,13 +4388,17 @@ function __c11(j: number): any {
       ).annotate({
         identifier: "ExternalDataSourceConnectionOption",
       });
-    case 4:
-      return S.Array(__S(91, __c11, 3));
-    case 5:
-      return S.suspend(() => __S(92, __c11, 4).pipe(T.RawResponseRoot())).annotate({
+    case 2:
+      return S.Array(__S(481, __c30, 1));
+    case 3:
+      return S.suspend(() => __S(482, __c30, 2).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListExternalDataSourcesConnectionsResponse",
       });
-    case 6:
+  }
+}
+function __c31(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -4501,7 +4412,7 @@ function __c11(j: number): any {
       ).annotate({
         identifier: "ListExternalDataSourcesDirectConnectionOptionsRequest",
       });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           source_type: S.String,
@@ -4511,24 +4422,24 @@ function __c11(j: number): any {
       ).annotate({
         identifier: "DirectConnectionSourceOption",
       });
-  }
-}
-function __c12(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(95, __c11, 7));
-    case 1:
-      return S.suspend(() => __S(96, __c12, 0).pipe(T.RawResponseRoot())).annotate({
+    case 2:
+      return S.Array(__S(497, __c31, 1));
+    case 3:
+      return S.suspend(() => __S(498, __c31, 2).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListExternalDataSourcesDirectConnectionOptionsResponse",
       });
-    case 2:
+  }
+}
+function __c32(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
           id: S.String.pipe(T.Label()),
           after: S.optional(S.String.pipe(T.Query())),
           before: S.optional(S.String.pipe(T.Query())),
-          schemas: S.optional(__S(1, __c0, 1).pipe(T.Query())),
+          schemas: S.optional(__S(608, __c38, 0).pipe(T.Query())),
           search: S.optional(S.String.pipe(T.Query())),
         }).pipe(
           T.Http({
@@ -4540,7 +4451,7 @@ function __c12(j: number): any {
       ).annotate({
         identifier: "ListExternalDataSourcesJobsRequest",
       });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
@@ -4551,7 +4462,7 @@ function __c12(j: number): any {
           sync_type: S.optional(S.NullOr(S.Unknown)),
         }),
       ).annotate({ identifier: "SimpleExternalDataSchema" });
-    case 4:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
@@ -4559,24 +4470,28 @@ function __c12(j: number): any {
           created_by: S.NullOr(S.Number),
           finished_at: S.NullOr(S.String),
           status: S.String,
-          schema: __S(99, __c12, 3),
+          schema: __S(513, __c32, 1),
           rows_synced: S.NullOr(S.Number),
           latest_error: S.NullOr(S.String),
           workflow_run_id: S.NullOr(S.String),
           cdc_write_mode: S.NullOr(S.String),
           billable: S.NullOr(S.Boolean),
-          destination_ids: __S(1, __c0, 1),
+          destination_ids: __S(608, __c38, 0),
         }),
       ).annotate({
         identifier: "ExternalDataJobSerializers",
       });
-    case 5:
-      return S.Array(__S(100, __c12, 4));
-    case 6:
-      return S.suspend(() => __S(101, __c12, 5).pipe(T.RawResponseRoot())).annotate({
+    case 3:
+      return S.Array(__S(514, __c32, 2));
+    case 4:
+      return S.suspend(() => __S(515, __c32, 3).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListExternalDataSourcesJobsResponse",
       });
-    case 7:
+  }
+}
+function __c33(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -4592,17 +4507,17 @@ function __c12(j: number): any {
       ).annotate({
         identifier: "ListExternalDataSourcesStoredCredentialsRequest",
       });
-  }
-}
-function __c13(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(31, __c3, 7));
     case 1:
-      return S.suspend(() => __S(104, __c13, 0).pipe(T.RawResponseRoot())).annotate({
+      return S.Array(__S(128, __c8, 0));
+    case 2:
+      return S.suspend(() => __S(529, __c33, 1).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListExternalDataSourcesStoredCredentialsResponse",
       });
-    case 2:
+  }
+}
+function __c34(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -4614,7 +4529,7 @@ function __c13(j: number): any {
           description: S.optional(S.NullOr(S.String)),
           direct_query_enabled: S.optional(S.Boolean),
           auto_sync_new_schemas: S.optional(S.Boolean),
-          auto_sync_schema_patterns: S.optional(S.NullOr(__S(1, __c0, 1))),
+          auto_sync_schema_patterns: S.optional(S.NullOr(__S(608, __c38, 0))),
           job_inputs: S.optional(S.Unknown),
         }).pipe(
           T.Http({
@@ -4626,12 +4541,16 @@ function __c13(j: number): any {
       ).annotate({
         identifier: "UpdateExternalDataSourceRequest",
       });
-    case 3:
+  }
+}
+function __c35(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
           id: S.String.pipe(T.Label()),
-          destination_ids: S.optional(S.NullOr(__S(6, __c0, 6))),
+          destination_ids: S.optional(S.NullOr(__S(688, __c43, 0))),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -4642,7 +4561,57 @@ function __c13(j: number): any {
       ).annotate({
         identifier: "UpdateExternalDataSourcesDestinationsPartialRequest",
       });
-    case 4:
+  }
+}
+function __c36(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          project_id: S.String.pipe(T.Label()),
+          source_type: S.optional(S.String),
+          payload: S.optional(__S(592, __c37, 0)),
+          prefix: S.optional(S.NullOr(S.String)),
+          description: S.optional(S.NullOr(S.String)),
+          access_method: S.optional(S.String),
+          created_via: S.optional(S.String),
+          direct_query_enabled: S.optional(S.Boolean),
+          destination_ids: S.optional(__S(608, __c38, 0)),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/api/projects/{project_id}/external_data_sources/",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateExternalDataSourceRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+        }),
+      ).annotate({
+        identifier: "ExternalDataSourceCreateResponse",
+      });
+  }
+}
+function __c37(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, S.Unknown);
+  }
+}
+function __c38(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c39(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -4654,7 +4623,7 @@ function __c13(j: number): any {
           description: S.optional(S.NullOr(S.String)),
           direct_query_enabled: S.optional(S.Boolean),
           auto_sync_new_schemas: S.optional(S.Boolean),
-          auto_sync_schema_patterns: S.optional(S.NullOr(__S(6, __c0, 6))),
+          auto_sync_schema_patterns: S.optional(S.NullOr(__S(688, __c43, 0))),
           job_inputs: S.optional(S.Unknown),
         }).pipe(
           T.Http({
@@ -4666,7 +4635,11 @@ function __c13(j: number): any {
       ).annotate({
         identifier: "UpdateExternalDataSourcesPartialRequest",
       });
-    case 5:
+  }
+}
+function __c40(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -4678,7 +4651,7 @@ function __c13(j: number): any {
           description: S.optional(S.NullOr(S.String)),
           direct_query_enabled: S.optional(S.Boolean),
           auto_sync_new_schemas: S.optional(S.Boolean),
-          auto_sync_schema_patterns: S.optional(S.NullOr(__S(6, __c0, 6))),
+          auto_sync_schema_patterns: S.optional(S.NullOr(__S(688, __c43, 0))),
           job_inputs: S.optional(S.Unknown),
         }).pipe(
           T.Http({
@@ -4692,7 +4665,181 @@ function __c13(j: number): any {
       });
   }
 }
-
+function __c41(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          project_id: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/api/projects/{project_id}/external_data_sources/check_cdc_prerequisites/",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateExternalDataSourcesCheckCdcPrerequisiteRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          valid: S.Boolean,
+          errors: __S(608, __c38, 0),
+        }),
+      ).annotate({ identifier: "CdcPrerequisitesResponse" });
+  }
+}
+function __c42(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          project_id: S.String.pipe(T.Label()),
+          id: S.String.pipe(T.Label()),
+          created_via: S.optional(S.NullOr(S.String)),
+          client_secret: S.optional(S.String.pipe(T.SensitiveValue({}))),
+          account_id: S.optional(S.String),
+          prefix: S.optional(S.NullOr(S.String)),
+          description: S.optional(S.NullOr(S.String)),
+          direct_query_enabled: S.optional(S.Boolean),
+          auto_sync_new_schemas: S.optional(S.Boolean),
+          auto_sync_schema_patterns: S.optional(S.NullOr(__S(688, __c43, 0))),
+          job_inputs: S.optional(S.Unknown),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/api/projects/{project_id}/external_data_sources/{id}/check_cdc_prerequisites_for_source/",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateExternalDataSourcesCheckCdcPrerequisitesForSourceRequest",
+      });
+  }
+}
+function __c43(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c44(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "CreateExternalDataSourcesCheckCdcPrerequisitesForSourceResponse",
+      });
+  }
+}
+function __c45(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, S.String);
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          project_id: S.String.pipe(T.Label()),
+          source_type: S.String,
+          credentials: __S(720, __c45, 0),
+          api_version: S.optional(S.NullOr(S.String)),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/api/projects/{project_id}/external_data_sources/credential_accounts/",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateExternalDataSourcesCredentialAccountRequest",
+      });
+  }
+}
+function __c46(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          value: S.String,
+          display_name: S.String,
+          is_primary: S.Boolean,
+          badges: __S(608, __c38, 0),
+          group: S.NullOr(S.String),
+          secondary_text: S.NullOr(S.String),
+        }),
+      ).annotate({ identifier: "IntegrationAccount" });
+    case 1:
+      return S.Array(__S(736, __c46, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          accounts: __S(737, __c46, 1),
+        }),
+      ).annotate({
+        identifier: "IntegrationAccountsResponse",
+      });
+  }
+}
+function __c47(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          project_id: S.String.pipe(T.Label()),
+          source_type: S.optional(S.String),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/api/projects/{project_id}/external_data_sources/database_schema/",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateExternalDataSourcesDatabaseSchemaRequest",
+      });
+  }
+}
+function __c48(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "CreateExternalDataSourcesDatabaseSchemaResponse",
+      });
+  }
+}
+function __c49(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          project_id: S.String.pipe(T.Label()),
+          source_name: S.optional(S.String),
+          docs_url: S.optional(S.String),
+          docs_text: S.optional(S.String),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/api/projects/{project_id}/external_data_sources/draft_custom_manifest/",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateExternalDataSourcesDraftCustomManifestRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          draft_status: S.String,
+          manifest_json: S.NullOr(S.String),
+          resource_names: __S(608, __c38, 0),
+          attempts: S.Number,
+          error: S.NullOr(S.String),
+        }),
+      ).annotate({
+        identifier: "DraftCustomManifestResponse",
+      });
+  }
+}
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

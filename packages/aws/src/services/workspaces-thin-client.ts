@@ -151,7 +151,7 @@ export class ValidationException
         }),
       ),
       fieldList: /*@__PURE__*/ S.optional(
-        /*@__PURE__*/ S.suspend(() => __S(43, __c5, 3)).annotate({
+        /*@__PURE__*/ S.suspend(() => __S(113, __c14, 1)).annotate({
           identifier: "ValidationExceptionFieldList",
         }),
       ),
@@ -482,8 +482,8 @@ export const createEnvironment: API.OperationMethod<
   CreateEnvironmentError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(4, __c0, 4) as any as S.Schema<CreateEnvironmentRequest>,
-  output: __S(6, __c0, 6) as any as S.Schema<CreateEnvironmentResponse>,
+  input: __S(120, __c15, 0) as any as S.Schema<CreateEnvironmentRequest>,
+  output: __S(160, __c20, 0) as any as S.Schema<CreateEnvironmentResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -516,8 +516,8 @@ export const deleteDevice: API.OperationMethod<
   DeleteDeviceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(7, __c0, 7) as any as S.Schema<DeleteDeviceRequest>,
-  output: __S(8, __c1, 0) as any as S.Schema<DeleteDeviceResponse>,
+  input: __S(168, __c21, 0) as any as S.Schema<DeleteDeviceRequest>,
+  output: __S(176, __c22, 0) as any as S.Schema<DeleteDeviceResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -549,8 +549,8 @@ export const deleteEnvironment: API.OperationMethod<
   DeleteEnvironmentError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(9, __c1, 1) as any as S.Schema<DeleteEnvironmentRequest>,
-  output: __S(8, __c1, 0) as any as S.Schema<DeleteEnvironmentResponse>,
+  input: __S(184, __c23, 0) as any as S.Schema<DeleteEnvironmentRequest>,
+  output: __S(176, __c22, 0) as any as S.Schema<DeleteEnvironmentResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -582,8 +582,8 @@ export const deregisterDevice: API.OperationMethod<
   DeregisterDeviceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(10, __c1, 2) as any as S.Schema<DeregisterDeviceRequest>,
-  output: __S(8, __c1, 0) as any as S.Schema<DeregisterDeviceResponse>,
+  input: __S(0, __c0, 0) as any as S.Schema<DeregisterDeviceRequest>,
+  output: __S(176, __c22, 0) as any as S.Schema<DeregisterDeviceResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -614,8 +614,8 @@ export const getDevice: API.OperationMethod<
   GetDeviceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(11, __c1, 3) as any as S.Schema<GetDeviceRequest>,
-  output: __S(13, __c1, 5) as any as S.Schema<GetDeviceResponse>,
+  input: __S(8, __c1, 0) as any as S.Schema<GetDeviceRequest>,
+  output: __S(10, __c1, 2) as any as S.Schema<GetDeviceResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -645,8 +645,8 @@ export const getEnvironment: API.OperationMethod<
   GetEnvironmentError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(14, __c1, 6) as any as S.Schema<GetEnvironmentRequest>,
-  output: __S(16, __c2, 0) as any as S.Schema<GetEnvironmentResponse>,
+  input: __S(16, __c2, 0) as any as S.Schema<GetEnvironmentRequest>,
+  output: __S(18, __c2, 2) as any as S.Schema<GetEnvironmentResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -676,8 +676,8 @@ export const getSoftwareSet: API.OperationMethod<
   GetSoftwareSetError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(17, __c2, 1) as any as S.Schema<GetSoftwareSetRequest>,
-  output: __S(21, __c2, 5) as any as S.Schema<GetSoftwareSetResponse>,
+  input: __S(24, __c3, 0) as any as S.Schema<GetSoftwareSetRequest>,
+  output: __S(28, __c3, 4) as any as S.Schema<GetSoftwareSetResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -707,8 +707,8 @@ export const listDevices: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   DeviceSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(22, __c2, 6) as any as S.Schema<ListDevicesRequest>,
-  output: __S(25, __c3, 1) as any as S.Schema<ListDevicesResponse>,
+  input: __S(32, __c4, 0) as any as S.Schema<ListDevicesRequest>,
+  output: __S(34, __c4, 2) as any as S.Schema<ListDevicesResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -743,8 +743,8 @@ export const listEnvironments: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   EnvironmentSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(26, __c3, 2) as any as S.Schema<ListEnvironmentsRequest>,
-  output: __S(28, __c3, 4) as any as S.Schema<ListEnvironmentsResponse>,
+  input: __S(48, __c6, 0) as any as S.Schema<ListEnvironmentsRequest>,
+  output: __S(50, __c6, 2) as any as S.Schema<ListEnvironmentsResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -779,8 +779,8 @@ export const listSoftwareSets: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   SoftwareSetSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(29, __c3, 5) as any as S.Schema<ListSoftwareSetsRequest>,
-  output: __S(32, __c4, 0) as any as S.Schema<ListSoftwareSetsResponse>,
+  input: __S(56, __c7, 0) as any as S.Schema<ListSoftwareSetsRequest>,
+  output: __S(59, __c7, 3) as any as S.Schema<ListSoftwareSetsResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -815,8 +815,8 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(33, __c4, 1) as any as S.Schema<ListTagsForResourceRequest>,
-  output: __S(34, __c4, 2) as any as S.Schema<ListTagsForResourceResponse>,
+  input: __S(64, __c8, 0) as any as S.Schema<ListTagsForResourceRequest>,
+  output: __S(65, __c8, 1) as any as S.Schema<ListTagsForResourceResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -847,8 +847,8 @@ export const tagResource: API.OperationMethod<
   TagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(35, __c4, 3) as any as S.Schema<TagResourceRequest>,
-  output: __S(8, __c1, 0) as any as S.Schema<TagResourceResponse>,
+  input: __S(72, __c9, 0) as any as S.Schema<TagResourceRequest>,
+  output: __S(176, __c22, 0) as any as S.Schema<TagResourceResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -880,8 +880,8 @@ export const untagResource: API.OperationMethod<
   UntagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(37, __c4, 5) as any as S.Schema<UntagResourceRequest>,
-  output: __S(8, __c1, 0) as any as S.Schema<UntagResourceResponse>,
+  input: __S(81, __c10, 1) as any as S.Schema<UntagResourceRequest>,
+  output: __S(176, __c22, 0) as any as S.Schema<UntagResourceResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -912,8 +912,8 @@ export const updateDevice: API.OperationMethod<
   UpdateDeviceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(38, __c4, 6) as any as S.Schema<UpdateDeviceRequest>,
-  output: __S(39, __c4, 7) as any as S.Schema<UpdateDeviceResponse>,
+  input: __S(88, __c11, 0) as any as S.Schema<UpdateDeviceRequest>,
+  output: __S(89, __c11, 1) as any as S.Schema<UpdateDeviceResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -944,8 +944,8 @@ export const updateEnvironment: API.OperationMethod<
   UpdateEnvironmentError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(40, __c5, 0) as any as S.Schema<UpdateEnvironmentRequest>,
-  output: __S(6, __c0, 6) as any as S.Schema<UpdateEnvironmentResponse>,
+  input: __S(96, __c12, 0) as any as S.Schema<UpdateEnvironmentRequest>,
+  output: __S(160, __c20, 0) as any as S.Schema<UpdateEnvironmentResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -976,8 +976,8 @@ export const updateSoftwareSet: API.OperationMethod<
   UpdateSoftwareSetError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(41, __c5, 1) as any as S.Schema<UpdateSoftwareSetRequest>,
-  output: __S(8, __c1, 0) as any as S.Schema<UpdateSoftwareSetResponse>,
+  input: __S(104, __c13, 0) as any as S.Schema<UpdateSoftwareSetRequest>,
+  output: __S(176, __c22, 0) as any as S.Schema<UpdateSoftwareSetResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -995,98 +995,6 @@ export const updateSoftwareSet: API.OperationMethod<
 function __c0(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(S.String);
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          type: S.String,
-          startTimeHour: S.optional(S.Number),
-          startTimeMinute: S.optional(S.Number),
-          endTimeHour: S.optional(S.Number),
-          endTimeMinute: S.optional(S.Number),
-          daysOfTheWeek: S.optional(__S(0, __c0, 0)),
-          applyTimeOf: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "MaintenanceWindow" });
-    case 2:
-      return S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
-    case 3:
-      return S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.optional(SensitiveString),
-          desktopArn: S.String,
-          desktopEndpoint: S.optional(SensitiveString),
-          softwareSetUpdateSchedule: S.optional(S.String),
-          maintenanceWindow: S.optional(__S(1, __c0, 1)),
-          softwareSetUpdateMode: S.optional(S.String),
-          desiredSoftwareSetId: S.optional(S.String),
-          kmsKeyArn: S.optional(S.String),
-          clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-          tags: S.optional(__S(2, __c0, 2)),
-          deviceCreationTags: S.optional(__S(3, __c0, 3)),
-        }).pipe(
-          T.all(T.Http({ method: "POST", uri: "/environments" }), svc, auth, proto, ver, rules),
-        ),
-      ).annotate({ identifier: "CreateEnvironmentRequest" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(SensitiveString),
-          desktopArn: S.optional(S.String),
-          desktopEndpoint: S.optional(SensitiveString),
-          desktopType: S.optional(S.String),
-          activationCode: S.optional(SensitiveString),
-          softwareSetUpdateSchedule: S.optional(S.String),
-          maintenanceWindow: S.optional(__S(1, __c0, 1)),
-          softwareSetUpdateMode: S.optional(S.String),
-          desiredSoftwareSetId: S.optional(S.String),
-          pendingSoftwareSetId: S.optional(S.String),
-          createdAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          updatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          arn: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "EnvironmentSummary" });
-    case 6:
-      return S.suspend(() => S.Struct({ environment: S.optional(__S(5, __c0, 5)) })).annotate({
-        identifier: "CreateEnvironmentResponse",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String.pipe(T.HttpLabel("id")),
-          clientToken: S.optional(S.String).pipe(T.HttpQuery("clientToken"), T.IdempotencyToken()),
-        }).pipe(
-          T.all(T.Http({ method: "DELETE", uri: "/devices/{id}" }), svc, auth, proto, ver, rules),
-        ),
-      ).annotate({ identifier: "DeleteDeviceRequest" });
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "DeleteDeviceResponse",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String.pipe(T.HttpLabel("id")),
-          clientToken: S.optional(S.String).pipe(T.HttpQuery("clientToken"), T.IdempotencyToken()),
-        }).pipe(
-          T.all(
-            T.Http({ method: "DELETE", uri: "/environments/{id}" }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({ identifier: "DeleteEnvironmentRequest" });
-    case 2:
       return S.suspend(() =>
         S.Struct({
           id: S.String.pipe(T.HttpLabel("id")),
@@ -1103,13 +1011,17 @@ function __c1(j: number): any {
           ),
         ),
       ).annotate({ identifier: "DeregisterDeviceRequest" });
-    case 3:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ id: S.String.pipe(T.HttpLabel("id")) }).pipe(
           T.all(T.Http({ method: "GET", uri: "/devices/{id}" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "GetDeviceRequest" });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
@@ -1135,17 +1047,21 @@ function __c1(j: number): any {
           lastUserId: S.optional(SensitiveString),
         }),
       ).annotate({ identifier: "Device" });
-    case 5:
-      return S.suspend(() => S.Struct({ device: S.optional(__S(12, __c1, 4)) })).annotate({
+    case 2:
+      return S.suspend(() => S.Struct({ device: S.optional(__S(9, __c1, 1)) })).annotate({
         identifier: "GetDeviceResponse",
       });
-    case 6:
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ id: S.String.pipe(T.HttpLabel("id")) }).pipe(
           T.all(T.Http({ method: "GET", uri: "/environments/{id}" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "GetEnvironmentRequest" });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
@@ -1156,7 +1072,7 @@ function __c1(j: number): any {
           activationCode: S.optional(SensitiveString),
           registeredDevicesCount: S.optional(S.Number),
           softwareSetUpdateSchedule: S.optional(S.String),
-          maintenanceWindow: S.optional(__S(1, __c0, 1)),
+          maintenanceWindow: S.optional(__S(129, __c16, 1)),
           softwareSetUpdateMode: S.optional(S.String),
           desiredSoftwareSetId: S.optional(S.String),
           pendingSoftwareSetId: S.optional(S.String),
@@ -1166,30 +1082,30 @@ function __c1(j: number): any {
           updatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           arn: S.optional(S.String),
           kmsKeyArn: S.optional(S.String),
-          deviceCreationTags: S.optional(__S(3, __c0, 3)),
+          deviceCreationTags: S.optional(__S(136, __c17, 0)),
         }),
       ).annotate({ identifier: "Environment" });
-  }
-}
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() => S.Struct({ environment: S.optional(__S(15, __c1, 7)) })).annotate({
+    case 2:
+      return S.suspend(() => S.Struct({ environment: S.optional(__S(17, __c2, 1)) })).annotate({
         identifier: "GetEnvironmentResponse",
       });
-    case 1:
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ id: S.String.pipe(T.HttpLabel("id")) }).pipe(
           T.all(T.Http({ method: "GET", uri: "/softwaresets/{id}" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "GetSoftwareSetRequest" });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({ name: S.optional(S.String), version: S.optional(S.String) }),
       ).annotate({ identifier: "Software" });
+    case 2:
+      return S.Array(__S(25, __c3, 1));
     case 3:
-      return S.Array(__S(18, __c2, 2));
-    case 4:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
@@ -1197,22 +1113,36 @@ function __c2(j: number): any {
           releasedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           supportedUntil: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           validationStatus: S.optional(S.String),
-          software: S.optional(__S(19, __c2, 3)),
+          software: S.optional(__S(26, __c3, 2)),
           arn: S.optional(S.String),
         }),
       ).annotate({ identifier: "SoftwareSet" });
-    case 5:
-      return S.suspend(() => S.Struct({ softwareSet: S.optional(__S(20, __c2, 4)) })).annotate({
+    case 4:
+      return S.suspend(() => S.Struct({ softwareSet: S.optional(__S(27, __c3, 3)) })).annotate({
         identifier: "GetSoftwareSetResponse",
       });
-    case 6:
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
           maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
         }).pipe(T.all(T.Http({ method: "GET", uri: "/devices" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "ListDevicesRequest" });
-    case 7:
+    case 1:
+      return S.Array(__S(40, __c5, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({ devices: S.optional(__S(33, __c4, 1)), nextToken: S.optional(S.String) }),
+      ).annotate({ identifier: "ListDevicesResponse" });
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
@@ -1235,15 +1165,9 @@ function __c2(j: number): any {
       ).annotate({ identifier: "DeviceSummary" });
   }
 }
-function __c3(j: number): any {
+function __c6(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(23, __c2, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({ devices: S.optional(__S(24, __c3, 0)), nextToken: S.optional(S.String) }),
-      ).annotate({ identifier: "ListDevicesResponse" });
-    case 2:
       return S.suspend(() =>
         S.Struct({
           nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
@@ -1252,13 +1176,17 @@ function __c3(j: number): any {
           T.all(T.Http({ method: "GET", uri: "/environments" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "ListEnvironmentsRequest" });
-    case 3:
-      return S.Array(__S(5, __c0, 5));
-    case 4:
+    case 1:
+      return S.Array(__S(144, __c18, 0));
+    case 2:
       return S.suspend(() =>
-        S.Struct({ environments: S.optional(__S(27, __c3, 3)), nextToken: S.optional(S.String) }),
+        S.Struct({ environments: S.optional(__S(49, __c6, 1)), nextToken: S.optional(S.String) }),
       ).annotate({ identifier: "ListEnvironmentsResponse" });
-    case 5:
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
@@ -1267,7 +1195,7 @@ function __c3(j: number): any {
           T.all(T.Http({ method: "GET", uri: "/softwaresets" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "ListSoftwareSetsRequest" });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
@@ -1278,17 +1206,17 @@ function __c3(j: number): any {
           arn: S.optional(S.String),
         }),
       ).annotate({ identifier: "SoftwareSetSummary" });
-    case 7:
-      return S.Array(__S(30, __c3, 6));
+    case 2:
+      return S.Array(__S(57, __c7, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({ softwareSets: S.optional(__S(58, __c7, 2)), nextToken: S.optional(S.String) }),
+      ).annotate({ identifier: "ListSoftwareSetsResponse" });
   }
 }
-function __c4(j: number): any {
+function __c8(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() =>
-        S.Struct({ softwareSets: S.optional(__S(31, __c3, 7)), nextToken: S.optional(S.String) }),
-      ).annotate({ identifier: "ListSoftwareSetsResponse" });
-    case 1:
       return S.suspend(() =>
         S.Struct({ resourceArn: S.String.pipe(T.HttpLabel("resourceArn")) }).pipe(
           T.all(
@@ -1303,15 +1231,19 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "ListTagsForResourceRequest",
       });
-    case 2:
-      return S.suspend(() => S.Struct({ tags: S.optional(__S(2, __c0, 2)) })).annotate({
+    case 1:
+      return S.suspend(() => S.Struct({ tags: S.optional(__S(152, __c19, 0)) })).annotate({
         identifier: "ListTagsForResourceResponse",
       });
-    case 3:
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           resourceArn: S.String.pipe(T.HttpLabel("resourceArn")),
-          tags: __S(2, __c0, 2),
+          tags: __S(152, __c19, 0),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/tags/{resourceArn}" }),
@@ -1323,13 +1255,17 @@ function __c4(j: number): any {
           ),
         ),
       ).annotate({ identifier: "TagResourceRequest" });
-    case 4:
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
       return S.Array(S.String);
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           resourceArn: S.String.pipe(T.HttpLabel("resourceArn")),
-          tagKeys: __S(36, __c4, 4).pipe(T.HttpQuery("tagKeys")),
+          tagKeys: __S(80, __c10, 0).pipe(T.HttpQuery("tagKeys")),
         }).pipe(
           T.all(
             T.Http({ method: "DELETE", uri: "/tags/{resourceArn}" }),
@@ -1341,7 +1277,11 @@ function __c4(j: number): any {
           ),
         ),
       ).annotate({ identifier: "UntagResourceRequest" });
-    case 6:
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.String.pipe(T.HttpLabel("id")),
@@ -1352,13 +1292,13 @@ function __c4(j: number): any {
           T.all(T.Http({ method: "PATCH", uri: "/devices/{id}" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "UpdateDeviceRequest" });
-    case 7:
-      return S.suspend(() => S.Struct({ device: S.optional(__S(23, __c2, 7)) })).annotate({
+    case 1:
+      return S.suspend(() => S.Struct({ device: S.optional(__S(40, __c5, 0)) })).annotate({
         identifier: "UpdateDeviceResponse",
       });
   }
 }
-function __c5(j: number): any {
+function __c12(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1368,10 +1308,10 @@ function __c5(j: number): any {
           desktopArn: S.optional(S.String),
           desktopEndpoint: S.optional(SensitiveString),
           softwareSetUpdateSchedule: S.optional(S.String),
-          maintenanceWindow: S.optional(__S(1, __c0, 1)),
+          maintenanceWindow: S.optional(__S(129, __c16, 1)),
           softwareSetUpdateMode: S.optional(S.String),
           desiredSoftwareSetId: S.optional(S.String),
-          deviceCreationTags: S.optional(__S(3, __c0, 3)),
+          deviceCreationTags: S.optional(__S(136, __c17, 0)),
         }).pipe(
           T.all(
             T.Http({ method: "PATCH", uri: "/environments/{id}" }),
@@ -1383,7 +1323,11 @@ function __c5(j: number): any {
           ),
         ),
       ).annotate({ identifier: "UpdateEnvironmentRequest" });
-    case 1:
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.String.pipe(T.HttpLabel("id")),
@@ -1399,15 +1343,142 @@ function __c5(j: number): any {
           ),
         ),
       ).annotate({ identifier: "UpdateSoftwareSetRequest" });
-    case 2:
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() => S.Struct({ name: S.String, message: S.String })).annotate({
         identifier: "ValidationExceptionField",
       });
-    case 3:
-      return S.Array(__S(42, __c5, 2));
+    case 1:
+      return S.Array(__S(112, __c14, 0));
   }
 }
-
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.optional(SensitiveString),
+          desktopArn: S.String,
+          desktopEndpoint: S.optional(SensitiveString),
+          softwareSetUpdateSchedule: S.optional(S.String),
+          maintenanceWindow: S.optional(__S(129, __c16, 1)),
+          softwareSetUpdateMode: S.optional(S.String),
+          desiredSoftwareSetId: S.optional(S.String),
+          kmsKeyArn: S.optional(S.String),
+          clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
+          tags: S.optional(__S(152, __c19, 0)),
+          deviceCreationTags: S.optional(__S(136, __c17, 0)),
+        }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/environments" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "CreateEnvironmentRequest" });
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          type: S.String,
+          startTimeHour: S.optional(S.Number),
+          startTimeMinute: S.optional(S.Number),
+          endTimeHour: S.optional(S.Number),
+          endTimeMinute: S.optional(S.Number),
+          daysOfTheWeek: S.optional(__S(128, __c16, 0)),
+          applyTimeOf: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "MaintenanceWindow" });
+  }
+}
+function __c17(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
+  }
+}
+function __c18(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(SensitiveString),
+          desktopArn: S.optional(S.String),
+          desktopEndpoint: S.optional(SensitiveString),
+          desktopType: S.optional(S.String),
+          activationCode: S.optional(SensitiveString),
+          softwareSetUpdateSchedule: S.optional(S.String),
+          maintenanceWindow: S.optional(__S(129, __c16, 1)),
+          softwareSetUpdateMode: S.optional(S.String),
+          desiredSoftwareSetId: S.optional(S.String),
+          pendingSoftwareSetId: S.optional(S.String),
+          createdAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          updatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          arn: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "EnvironmentSummary" });
+  }
+}
+function __c19(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
+  }
+}
+function __c20(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({ environment: S.optional(__S(144, __c18, 0)) })).annotate({
+        identifier: "CreateEnvironmentResponse",
+      });
+  }
+}
+function __c21(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String.pipe(T.HttpLabel("id")),
+          clientToken: S.optional(S.String).pipe(T.HttpQuery("clientToken"), T.IdempotencyToken()),
+        }).pipe(
+          T.all(T.Http({ method: "DELETE", uri: "/devices/{id}" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "DeleteDeviceRequest" });
+  }
+}
+function __c22(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "DeleteDeviceResponse",
+      });
+  }
+}
+function __c23(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String.pipe(T.HttpLabel("id")),
+          clientToken: S.optional(S.String).pipe(T.HttpQuery("clientToken"), T.IdempotencyToken()),
+        }).pipe(
+          T.all(
+            T.Http({ method: "DELETE", uri: "/environments/{id}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "DeleteEnvironmentRequest" });
+  }
+}
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

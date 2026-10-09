@@ -569,8 +569,8 @@ export const createCredential: API.OperationMethod<
   CreateCredentialError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(0, __c0, 0) as any as S.Schema<CreateCredentialRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<CreateCredentialResponse>,
+  input: __S(112, __c14, 0) as any as S.Schema<CreateCredentialRequest>,
+  output: __S(113, __c14, 1) as any as S.Schema<CreateCredentialResponse>,
   errors: [InvalidRoute, InvalidCredential, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -584,8 +584,8 @@ export const Delete: API.OperationMethod<
   DeleteError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2, __c0, 2) as any as S.Schema<DeleteRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<DeleteResponse>,
+  input: __S(120, __c15, 0) as any as S.Schema<DeleteRequest>,
+  output: __S(121, __c15, 1) as any as S.Schema<DeleteResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -604,8 +604,8 @@ export const disableR2DataCatalog: API.OperationMethod<
   DisableR2DataCatalogError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(4, __c0, 4) as any as S.Schema<DisableR2DataCatalogRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<DisableR2DataCatalogResponse>,
+  input: __S(128, __c16, 0) as any as S.Schema<DisableR2DataCatalogRequest>,
+  output: __S(129, __c16, 1) as any as S.Schema<DisableR2DataCatalogResponse>,
   errors: [
     NoSuchBucket,
     InvalidRoute,
@@ -626,8 +626,8 @@ export const enableR2DataCatalog: API.OperationMethod<
   EnableR2DataCatalogError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(6, __c0, 6) as any as S.Schema<EnableR2DataCatalogRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<EnableR2DataCatalogResponse>,
+  input: __S(0, __c0, 0) as any as S.Schema<EnableR2DataCatalogRequest>,
+  output: __S(1, __c0, 1) as any as S.Schema<EnableR2DataCatalogResponse>,
   errors: [NoSuchBucket, InvalidRoute, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -646,7 +646,7 @@ export const getMaintenanceConfig: API.OperationMethod<
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(8, __c1, 0) as any as S.Schema<GetMaintenanceConfigRequest>,
-  output: __S(12, __c1, 4) as any as S.Schema<GetMaintenanceConfigResponse>,
+  output: __S(11, __c1, 3) as any as S.Schema<GetMaintenanceConfigResponse>,
   errors: [
     InvalidRoute,
     WarehouseInactive,
@@ -670,8 +670,8 @@ export const getNamespaceTableMaintenanceConfig: API.OperationMethod<
   GetNamespaceTableMaintenanceConfigError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(13, __c1, 5) as any as S.Schema<GetNamespaceTableMaintenanceConfigRequest>,
-  output: __S(17, __c2, 1) as any as S.Schema<GetNamespaceTableMaintenanceConfigResponse>,
+  input: __S(24, __c3, 0) as any as S.Schema<GetNamespaceTableMaintenanceConfigRequest>,
+  output: __S(27, __c3, 3) as any as S.Schema<GetNamespaceTableMaintenanceConfigResponse>,
   errors: [TableNotFound, InvalidRoute, WarehouseInactive, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -690,8 +690,8 @@ export const getR2DataCatalog: API.OperationMethod<
   GetR2DataCatalogError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(18, __c2, 2) as any as S.Schema<GetR2DataCatalogRequest>,
-  output: __S(22, __c2, 6) as any as S.Schema<GetR2DataCatalogResponse>,
+  input: __S(40, __c5, 0) as any as S.Schema<GetR2DataCatalogRequest>,
+  output: __S(43, __c5, 3) as any as S.Schema<GetR2DataCatalogResponse>,
   errors: [
     NoSuchBucket,
     InvalidRoute,
@@ -716,8 +716,8 @@ export const listNamespaces: API.OperationMethod<
   ListNamespacesError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(23, __c2, 7) as any as S.Schema<ListNamespacesRequest>,
-  output: __S(28, __c3, 4) as any as S.Schema<ListNamespacesResponse>,
+  input: __S(56, __c7, 0) as any as S.Schema<ListNamespacesRequest>,
+  output: __S(60, __c7, 4) as any as S.Schema<ListNamespacesResponse>,
   errors: [
     InvalidRoute,
     WarehouseInactive,
@@ -737,8 +737,8 @@ export const listNamespaceTables: API.OperationMethod<
   ListNamespaceTablesError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(29, __c3, 5) as any as S.Schema<ListNamespaceTablesRequest>,
-  output: __S(34, __c4, 2) as any as S.Schema<ListNamespaceTablesResponse>,
+  input: __S(72, __c9, 0) as any as S.Schema<ListNamespaceTablesRequest>,
+  output: __S(77, __c9, 5) as any as S.Schema<ListNamespaceTablesResponse>,
   errors: [InvalidRoute, WarehouseInactive, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -752,8 +752,8 @@ export const listR2DataCatalogs: API.OperationMethod<
   ListR2DataCatalogsError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(35, __c4, 3) as any as S.Schema<ListR2DataCatalogsRequest>,
-  output: __S(40, __c5, 0) as any as S.Schema<ListR2DataCatalogsResponse>,
+  input: __S(80, __c10, 0) as any as S.Schema<ListR2DataCatalogsRequest>,
+  output: __S(84, __c10, 4) as any as S.Schema<ListR2DataCatalogsResponse>,
   errors: [InvalidRoute, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -767,8 +767,8 @@ export const updateMaintenanceConfig: API.OperationMethod<
   UpdateMaintenanceConfigError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(43, __c5, 3) as any as S.Schema<UpdateMaintenanceConfigRequest>,
-  output: __S(44, __c5, 4) as any as S.Schema<UpdateMaintenanceConfigResponse>,
+  input: __S(98, __c12, 2) as any as S.Schema<UpdateMaintenanceConfigRequest>,
+  output: __S(99, __c12, 3) as any as S.Schema<UpdateMaintenanceConfigResponse>,
   errors: [InvalidRoute, WarehouseInactive, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -786,8 +786,8 @@ export const updateNamespaceTableMaintenanceConfig: API.OperationMethod<
   UpdateNamespaceTableMaintenanceConfigError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(47, __c5, 7) as any as S.Schema<UpdateNamespaceTableMaintenanceConfigRequest>,
-  output: __S(49, __c6, 1) as any as S.Schema<UpdateNamespaceTableMaintenanceConfigResponse>,
+  input: __S(106, __c13, 2) as any as S.Schema<UpdateNamespaceTableMaintenanceConfigRequest>,
+  output: __S(108, __c13, 4) as any as S.Schema<UpdateNamespaceTableMaintenanceConfigResponse>,
   errors: [TableNotFound, InvalidRoute, WarehouseInactive, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -797,67 +797,6 @@ export const updateNamespaceTableMaintenanceConfig: API.OperationMethod<
 function __c0(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() =>
-        S.Struct({
-          accountId: S.String.pipe(T.Label("account_id")),
-          bucketName: S.String.pipe(T.Label("bucket_name")),
-          token: S.String,
-        })
-          .pipe(
-            T.Http({
-              method: "POST",
-              uri: "/accounts/{account_id}/r2-catalog/{bucket_name}/credential",
-              code: 200,
-            }),
-          )
-          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({ identifier: "CreateCredentialRequest" });
-    case 1:
-      return S.suspend(() =>
-        S.Unknown.pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({ identifier: "CreateCredentialResponse" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          accountId: S.String.pipe(T.Label("account_id")),
-          bucketName: S.String.pipe(T.Label("bucket_name")),
-          force: S.optional(S.Boolean.pipe(T.Query())),
-        })
-          .pipe(
-            T.Http({
-              method: "POST",
-              uri: "/accounts/{account_id}/r2-catalog/{bucket_name}/delete",
-              code: 200,
-            }),
-          )
-          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({ identifier: "DeleteRequest" });
-    case 3:
-      return S.suspend(() => S.Struct({}).pipe(T.KeyDictionary(KEY_DICTIONARY))).annotate({
-        identifier: "DeleteResponse",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          accountId: S.String.pipe(T.Label("account_id")),
-          bucketName: S.String.pipe(T.Label("bucket_name")),
-        })
-          .pipe(
-            T.Http({
-              method: "POST",
-              uri: "/accounts/{account_id}/r2-catalog/{bucket_name}/disable",
-              code: 200,
-            }),
-          )
-          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({
-        identifier: "DisableR2DataCatalogRequest",
-      });
-    case 5:
-      return S.suspend(() => S.Struct({}).pipe(T.KeyDictionary(KEY_DICTIONARY))).annotate({
-        identifier: "DisableR2DataCatalogResponse",
-      });
-    case 6:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -874,7 +813,7 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "EnableR2DataCatalogRequest",
       });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
@@ -916,6 +855,31 @@ function __c1(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
+          compaction: S.optional(S.NullOr(__S(9, __c1, 1))),
+          interval: S.optional(S.NullOr(S.String)),
+          snapshotExpiration: S.optional(
+            S.NullOr(__S(16, __c2, 0)).pipe(T.Body("snapshot_expiration")),
+          ),
+        }),
+      ).annotate({
+        identifier: "MaintenanceConfigsGetResponseMaintenanceConfig",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          credentialStatus: S.String.pipe(T.Body("credential_status")),
+          maintenanceConfig: __S(10, __c1, 2).pipe(T.Body("maintenance_config")),
+        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({
+        identifier: "GetMaintenanceConfigResponse",
+      });
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
           maxSnapshotAge: S.String.pipe(T.Body("max_snapshot_age")),
           minSnapshotsToKeep: S.Number.pipe(T.Body("min_snapshots_to_keep")),
           state: S.String,
@@ -923,28 +887,11 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "MaintenanceConfigsGetResponseMaintenanceConfigSnapshotExpiration",
       });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          compaction: S.optional(S.NullOr(__S(9, __c1, 1))),
-          interval: S.optional(S.NullOr(S.String)),
-          snapshotExpiration: S.optional(
-            S.NullOr(__S(10, __c1, 2)).pipe(T.Body("snapshot_expiration")),
-          ),
-        }),
-      ).annotate({
-        identifier: "MaintenanceConfigsGetResponseMaintenanceConfig",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          credentialStatus: S.String.pipe(T.Body("credential_status")),
-          maintenanceConfig: __S(11, __c1, 3).pipe(T.Body("maintenance_config")),
-        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({
-        identifier: "GetMaintenanceConfigResponse",
-      });
-    case 5:
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -963,7 +910,7 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "GetNamespaceTableMaintenanceConfigRequest",
       });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           state: S.String,
@@ -973,7 +920,31 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "NamespacesTablesMaintenanceConfigsGetResponseMaintenanceConfigCompaction",
       });
-    case 7:
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          compaction: S.optional(S.NullOr(__S(25, __c3, 1))),
+          interval: S.optional(S.NullOr(S.String)),
+          snapshotExpiration: S.optional(
+            S.NullOr(__S(32, __c4, 0)).pipe(T.Body("snapshot_expiration")),
+          ),
+        }),
+      ).annotate({
+        identifier: "NamespacesTablesMaintenanceConfigsGetResponseMaintenanceConfig",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          maintenanceConfig: __S(26, __c3, 2).pipe(T.Body("maintenance_config")),
+        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({
+        identifier: "GetNamespaceTableMaintenanceConfigResponse",
+      });
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           maxSnapshotAge: S.String.pipe(T.Body("max_snapshot_age")),
@@ -987,29 +958,9 @@ function __c1(j: number): any {
       });
   }
 }
-function __c2(j: number): any {
+function __c5(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() =>
-        S.Struct({
-          compaction: S.optional(S.NullOr(__S(14, __c1, 6))),
-          interval: S.optional(S.NullOr(S.String)),
-          snapshotExpiration: S.optional(
-            S.NullOr(__S(15, __c1, 7)).pipe(T.Body("snapshot_expiration")),
-          ),
-        }),
-      ).annotate({
-        identifier: "NamespacesTablesMaintenanceConfigsGetResponseMaintenanceConfig",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          maintenanceConfig: __S(16, __c2, 0).pipe(T.Body("maintenance_config")),
-        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({
-        identifier: "GetNamespaceTableMaintenanceConfigResponse",
-      });
-    case 2:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -1024,7 +975,7 @@ function __c2(j: number): any {
           )
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "GetR2DataCatalogRequest" });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           state: S.String,
@@ -1033,7 +984,36 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "GetResponseMaintenanceConfigCompaction",
       });
-    case 4:
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          compaction: S.optional(S.NullOr(__S(41, __c5, 1))),
+          interval: S.optional(S.NullOr(S.String)),
+          snapshotExpiration: S.optional(
+            S.NullOr(__S(48, __c6, 0)).pipe(T.Body("snapshot_expiration")),
+          ),
+        }),
+      ).annotate({
+        identifier: "GetResponseMaintenanceConfig",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          bucket: S.String,
+          name: S.String,
+          status: S.String,
+          credentialStatus: S.optional(S.NullOr(S.String).pipe(T.Body("credential_status"))),
+          maintenanceConfig: S.optional(
+            S.NullOr(__S(42, __c5, 2)).pipe(T.Body("maintenance_config")),
+          ),
+        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({ identifier: "GetR2DataCatalogResponse" });
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           maxSnapshotAge: S.String.pipe(T.Body("max_snapshot_age")),
@@ -1043,32 +1023,11 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "GetResponseMaintenanceConfigSnapshotExpiration",
       });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          compaction: S.optional(S.NullOr(__S(19, __c2, 3))),
-          interval: S.optional(S.NullOr(S.String)),
-          snapshotExpiration: S.optional(
-            S.NullOr(__S(20, __c2, 4)).pipe(T.Body("snapshot_expiration")),
-          ),
-        }),
-      ).annotate({
-        identifier: "GetResponseMaintenanceConfig",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String,
-          bucket: S.String,
-          name: S.String,
-          status: S.String,
-          credentialStatus: S.optional(S.NullOr(S.String).pipe(T.Body("credential_status"))),
-          maintenanceConfig: S.optional(
-            S.NullOr(__S(21, __c2, 5)).pipe(T.Body("maintenance_config")),
-          ),
-        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({ identifier: "GetR2DataCatalogResponse" });
-    case 7:
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -1088,18 +1047,12 @@ function __c2(j: number): any {
           )
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "ListNamespacesRequest" });
-  }
-}
-function __c3(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(S.String);
     case 1:
-      return S.Array(__S(24, __c3, 0));
+      return S.Array(__S(64, __c8, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          namespace: __S(24, __c3, 0),
+          namespace: __S(64, __c8, 0),
           namespaceUuid: S.String.pipe(T.Body("namespace_uuid")),
           createdAt: S.optional(S.NullOr(S.String).pipe(T.Body("created_at"))),
           updatedAt: S.optional(S.NullOr(S.String).pipe(T.Body("updated_at"))),
@@ -1108,17 +1061,27 @@ function __c3(j: number): any {
         identifier: "NamespacesListResponseDetailsItem",
       });
     case 3:
-      return S.Array(__S(26, __c3, 2));
+      return S.Array(__S(58, __c7, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          namespaces: __S(25, __c3, 1),
-          details: S.optional(S.NullOr(__S(27, __c3, 3))),
-          namespaceUuids: S.optional(S.NullOr(__S(24, __c3, 0)).pipe(T.Body("namespace_uuids"))),
+          namespaces: __S(57, __c7, 1),
+          details: S.optional(S.NullOr(__S(59, __c7, 3))),
+          namespaceUuids: S.optional(S.NullOr(__S(64, __c8, 0)).pipe(T.Body("namespace_uuids"))),
           nextPageToken: S.optional(S.NullOr(S.String).pipe(T.Body("next_page_token"))),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "ListNamespacesResponse" });
-    case 5:
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -1140,25 +1103,21 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "ListNamespaceTablesRequest",
       });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           name: S.String,
-          namespace: __S(24, __c3, 0),
+          namespace: __S(64, __c8, 0),
         }),
       ).annotate({
         identifier: "NamespacesTablesListResponseIdentifiersItem",
       });
-    case 7:
-      return S.Array(__S(30, __c3, 6));
-  }
-}
-function __c4(j: number): any {
-  switch (j) {
-    case 0:
+    case 2:
+      return S.Array(__S(73, __c9, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          identifier: __S(30, __c3, 6),
+          identifier: __S(73, __c9, 1),
           tableUuid: S.String.pipe(T.Body("table_uuid")),
           createdAt: S.optional(S.NullOr(S.String).pipe(T.Body("created_at"))),
           location: S.optional(S.NullOr(S.String)),
@@ -1168,20 +1127,24 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "NamespacesTablesListResponseDetailsItem",
       });
-    case 1:
-      return S.Array(__S(32, __c4, 0));
-    case 2:
+    case 4:
+      return S.Array(__S(75, __c9, 3));
+    case 5:
       return S.suspend(() =>
         S.Struct({
-          identifiers: __S(31, __c3, 7),
-          details: S.optional(S.NullOr(__S(33, __c4, 1))),
+          identifiers: __S(74, __c9, 2),
+          details: S.optional(S.NullOr(__S(76, __c9, 4))),
           nextPageToken: S.optional(S.NullOr(S.String).pipe(T.Body("next_page_token"))),
-          tableUuids: S.optional(S.NullOr(__S(24, __c3, 0)).pipe(T.Body("table_uuids"))),
+          tableUuids: S.optional(S.NullOr(__S(64, __c8, 0)).pipe(T.Body("table_uuids"))),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({
         identifier: "ListNamespaceTablesResponse",
       });
-    case 3:
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -1191,28 +1154,19 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "ListR2DataCatalogsRequest",
       });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          state: S.String,
-          targetSizeMb: S.String.pipe(T.Body("target_size_mb")),
-        }),
-      ).annotate({
-        identifier: "ListResponseWarehousesItemMaintenanceConfigCompaction",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          compaction: S.optional(S.NullOr(__S(36, __c4, 4))),
+          compaction: S.optional(S.NullOr(__S(88, __c11, 0))),
           interval: S.optional(S.NullOr(S.String)),
           snapshotExpiration: S.optional(
-            S.NullOr(__S(10, __c1, 2)).pipe(T.Body("snapshot_expiration")),
+            S.NullOr(__S(16, __c2, 0)).pipe(T.Body("snapshot_expiration")),
           ),
         }),
       ).annotate({
         identifier: "ListResponseWarehousesItemMaintenanceConfig",
       });
-    case 6:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
@@ -1221,27 +1175,40 @@ function __c4(j: number): any {
           status: S.String,
           credentialStatus: S.optional(S.NullOr(S.String).pipe(T.Body("credential_status"))),
           maintenanceConfig: S.optional(
-            S.NullOr(__S(37, __c4, 5)).pipe(T.Body("maintenance_config")),
+            S.NullOr(__S(81, __c10, 1)).pipe(T.Body("maintenance_config")),
           ),
         }),
       ).annotate({
         identifier: "ListResponseWarehousesItem",
       });
-    case 7:
-      return S.Array(__S(38, __c4, 6));
-  }
-}
-function __c5(j: number): any {
-  switch (j) {
-    case 0:
+    case 3:
+      return S.Array(__S(82, __c10, 2));
+    case 4:
       return S.suspend(() =>
         S.Struct({
-          warehouses: __S(39, __c4, 7),
+          warehouses: __S(83, __c10, 3),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({
         identifier: "ListR2DataCatalogsResponse",
       });
-    case 1:
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          state: S.String,
+          targetSizeMb: S.String.pipe(T.Body("target_size_mb")),
+        }),
+      ).annotate({
+        identifier: "ListResponseWarehousesItemMaintenanceConfigCompaction",
+      });
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           state: S.optional(S.String),
@@ -1250,7 +1217,7 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "MaintenanceConfigsUpdateRequestCompaction",
       });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           maxSnapshotAge: S.optional(S.String.pipe(T.Body("max_snapshot_age"))),
@@ -1260,13 +1227,13 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "MaintenanceConfigsUpdateRequestSnapshotExpiration",
       });
-    case 3:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
           bucketName: S.String.pipe(T.Label("bucket_name")),
-          compaction: S.optional(__S(41, __c5, 1)),
-          snapshotExpiration: S.optional(__S(42, __c5, 2).pipe(T.Body("snapshot_expiration"))),
+          compaction: S.optional(__S(96, __c12, 0)),
+          snapshotExpiration: S.optional(__S(97, __c12, 1).pipe(T.Body("snapshot_expiration"))),
         })
           .pipe(
             T.Http({
@@ -1279,19 +1246,23 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "UpdateMaintenanceConfigRequest",
       });
-    case 4:
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          compaction: S.optional(S.NullOr(__S(36, __c4, 4))),
+          compaction: S.optional(S.NullOr(__S(88, __c11, 0))),
           interval: S.optional(S.NullOr(S.String)),
           snapshotExpiration: S.optional(
-            S.NullOr(__S(20, __c2, 4)).pipe(T.Body("snapshot_expiration")),
+            S.NullOr(__S(48, __c6, 0)).pipe(T.Body("snapshot_expiration")),
           ),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({
         identifier: "UpdateMaintenanceConfigResponse",
       });
-    case 5:
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           state: S.optional(S.String),
@@ -1300,7 +1271,7 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "NamespacesTablesMaintenanceConfigsUpdateRequestCompaction",
       });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           maxSnapshotAge: S.optional(S.String.pipe(T.Body("max_snapshot_age"))),
@@ -1310,15 +1281,15 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "NamespacesTablesMaintenanceConfigsUpdateRequestSnapshotExpiration",
       });
-    case 7:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
           bucketName: S.String.pipe(T.Label("bucket_name")),
           namespace: S.String.pipe(T.Label()),
           tableName: S.String.pipe(T.Label("table_name")),
-          compaction: S.optional(__S(45, __c5, 5)),
-          snapshotExpiration: S.optional(__S(46, __c5, 6).pipe(T.Body("snapshot_expiration"))),
+          compaction: S.optional(__S(104, __c13, 0)),
+          snapshotExpiration: S.optional(__S(105, __c13, 1).pipe(T.Body("snapshot_expiration"))),
         })
           .pipe(
             T.Http({
@@ -1331,11 +1302,7 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "UpdateNamespaceTableMaintenanceConfigRequest",
       });
-  }
-}
-function __c6(j: number): any {
-  switch (j) {
-    case 0:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           state: S.String,
@@ -1345,13 +1312,13 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "NamespacesTablesMaintenanceConfigsUpdateResponseCompaction",
       });
-    case 1:
+    case 4:
       return S.suspend(() =>
         S.Struct({
-          compaction: S.optional(S.NullOr(__S(48, __c6, 0))),
+          compaction: S.optional(S.NullOr(__S(107, __c13, 3))),
           interval: S.optional(S.NullOr(S.String)),
           snapshotExpiration: S.optional(
-            S.NullOr(__S(15, __c1, 7)).pipe(T.Body("snapshot_expiration")),
+            S.NullOr(__S(32, __c4, 0)).pipe(T.Body("snapshot_expiration")),
           ),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({
@@ -1359,7 +1326,79 @@ function __c6(j: number): any {
       });
   }
 }
-
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          accountId: S.String.pipe(T.Label("account_id")),
+          bucketName: S.String.pipe(T.Label("bucket_name")),
+          token: S.String,
+        })
+          .pipe(
+            T.Http({
+              method: "POST",
+              uri: "/accounts/{account_id}/r2-catalog/{bucket_name}/credential",
+              code: 200,
+            }),
+          )
+          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({ identifier: "CreateCredentialRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Unknown.pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({ identifier: "CreateCredentialResponse" });
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          accountId: S.String.pipe(T.Label("account_id")),
+          bucketName: S.String.pipe(T.Label("bucket_name")),
+          force: S.optional(S.Boolean.pipe(T.Query())),
+        })
+          .pipe(
+            T.Http({
+              method: "POST",
+              uri: "/accounts/{account_id}/r2-catalog/{bucket_name}/delete",
+              code: 200,
+            }),
+          )
+          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({ identifier: "DeleteRequest" });
+    case 1:
+      return S.suspend(() => S.Struct({}).pipe(T.KeyDictionary(KEY_DICTIONARY))).annotate({
+        identifier: "DeleteResponse",
+      });
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          accountId: S.String.pipe(T.Label("account_id")),
+          bucketName: S.String.pipe(T.Label("bucket_name")),
+        })
+          .pipe(
+            T.Http({
+              method: "POST",
+              uri: "/accounts/{account_id}/r2-catalog/{bucket_name}/disable",
+              code: 200,
+            }),
+          )
+          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({
+        identifier: "DisableR2DataCatalogRequest",
+      });
+    case 1:
+      return S.suspend(() => S.Struct({}).pipe(T.KeyDictionary(KEY_DICTIONARY))).annotate({
+        identifier: "DisableR2DataCatalogResponse",
+      });
+  }
+}
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

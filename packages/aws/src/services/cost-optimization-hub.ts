@@ -113,7 +113,7 @@ export class ValidationException
         }),
       ),
       fields: /*@__PURE__*/ S.optional(
-        /*@__PURE__*/ S.suspend(() => __S(90, __c11, 2)).annotate({
+        /*@__PURE__*/ S.suspend(() => __S(97, __c3, 1)).annotate({
           identifier: "ValidationExceptionDetails",
         }),
       ),
@@ -1390,8 +1390,8 @@ export const getPreferences: API.OperationMethod<
   GetPreferencesError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(0, __c0, 0) as any as S.Schema<GetPreferencesRequest>,
-  output: __S(2, __c0, 2) as any as S.Schema<GetPreferencesResponse>,
+  input: __S(128, __c4, 0) as any as S.Schema<GetPreferencesRequest>,
+  output: __S(129, __c4, 1) as any as S.Schema<GetPreferencesResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1421,8 +1421,8 @@ export const getRecommendation: API.OperationMethod<
   GetRecommendationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3, __c0, 3) as any as S.Schema<GetRecommendationRequest>,
-  output: __S(60, __c7, 4) as any as S.Schema<GetRecommendationResponse>,
+  input: __S(192, __c6, 0) as any as S.Schema<GetRecommendationRequest>,
+  output: __S(247, __c7, 23) as any as S.Schema<GetRecommendationResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1453,8 +1453,8 @@ export const listEfficiencyMetrics: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   EfficiencyMetricsByGroup
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(63, __c7, 7) as any as S.Schema<ListEfficiencyMetricsRequest>,
-  output: __S(68, __c8, 4) as any as S.Schema<ListEfficiencyMetricsResponse>,
+  input: __S(289, __c9, 1) as any as S.Schema<ListEfficiencyMetricsRequest>,
+  output: __S(294, __c9, 6) as any as S.Schema<ListEfficiencyMetricsResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1488,8 +1488,8 @@ export const listEnrollmentStatuses: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   AccountEnrollmentStatus
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(69, __c8, 5) as any as S.Schema<ListEnrollmentStatusesRequest>,
-  output: __S(72, __c9, 0) as any as S.Schema<ListEnrollmentStatusesResponse>,
+  input: __S(352, __c11, 0) as any as S.Schema<ListEnrollmentStatusesRequest>,
+  output: __S(355, __c11, 3) as any as S.Schema<ListEnrollmentStatusesResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1523,8 +1523,8 @@ export const listRecommendations: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   Recommendation
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(76, __c9, 4) as any as S.Schema<ListRecommendationsRequest>,
-  output: __S(79, __c9, 7) as any as S.Schema<ListRecommendationsResponse>,
+  input: __S(384, __c12, 0) as any as S.Schema<ListRecommendationsRequest>,
+  output: __S(387, __c12, 3) as any as S.Schema<ListRecommendationsResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1560,8 +1560,8 @@ export const listRecommendationSummaries: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   RecommendationSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(80, __c10, 0) as any as S.Schema<ListRecommendationSummariesRequest>,
-  output: __S(84, __c10, 4) as any as S.Schema<ListRecommendationSummariesResponse>,
+  input: __S(0, __c0, 0) as any as S.Schema<ListRecommendationSummariesRequest>,
+  output: __S(4, __c0, 4) as any as S.Schema<ListRecommendationSummariesResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1598,8 +1598,8 @@ export const updateEnrollmentStatus: API.OperationMethod<
   UpdateEnrollmentStatusError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(85, __c10, 5) as any as S.Schema<UpdateEnrollmentStatusRequest>,
-  output: __S(86, __c10, 6) as any as S.Schema<UpdateEnrollmentStatusResponse>,
+  input: __S(32, __c1, 0) as any as S.Schema<UpdateEnrollmentStatusRequest>,
+  output: __S(33, __c1, 1) as any as S.Schema<UpdateEnrollmentStatusResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1626,8 +1626,8 @@ export const updatePreferences: API.OperationMethod<
   UpdatePreferencesError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(87, __c10, 7) as any as S.Schema<UpdatePreferencesRequest>,
-  output: __S(88, __c11, 0) as any as S.Schema<UpdatePreferencesResponse>,
+  input: __S(64, __c2, 0) as any as S.Schema<UpdatePreferencesRequest>,
+  output: __S(65, __c2, 1) as any as S.Schema<UpdatePreferencesResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1644,29 +1644,128 @@ function __c0(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
+        S.Struct({
+          filter: S.optional(__S(418, __c13, 2)),
+          groupBy: S.String,
+          maxResults: S.optional(S.Number),
+          metrics: S.optional(__S(416, __c13, 0)),
+          nextToken: S.optional(S.String),
+        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({
+        identifier: "ListRecommendationSummariesRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          group: S.optional(S.String),
+          estimatedMonthlySavings: S.optional(S.Number),
+          recommendationCount: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "RecommendationSummary" });
+    case 2:
+      return S.Array(__S(1, __c0, 1));
+    case 3:
+      return S.suspend(() => S.Struct({ savingsPercentage: S.optional(S.String) })).annotate({
+        identifier: "SummaryMetricsResult",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          estimatedTotalDedupedSavings: S.optional(S.Number),
+          items: S.optional(__S(2, __c0, 2)),
+          groupBy: S.optional(S.String),
+          currencyCode: S.optional(S.String),
+          metrics: S.optional(__S(3, __c0, 3)),
+          nextToken: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "ListRecommendationSummariesResponse",
+      });
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ status: S.String, includeMemberAccounts: S.optional(S.Boolean) }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({
+        identifier: "UpdateEnrollmentStatusRequest",
+      });
+    case 1:
+      return S.suspend(() => S.Struct({ status: S.optional(S.String) })).annotate({
+        identifier: "UpdateEnrollmentStatusResponse",
+      });
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          savingsEstimationMode: S.optional(S.String),
+          memberAccountDiscountVisibility: S.optional(S.String),
+          preferredCommitment: S.optional(__S(160, __c5, 0)),
+        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({ identifier: "UpdatePreferencesRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          savingsEstimationMode: S.optional(S.String),
+          memberAccountDiscountVisibility: S.optional(S.String),
+          preferredCommitment: S.optional(__S(160, __c5, 0)),
+        }),
+      ).annotate({
+        identifier: "UpdatePreferencesResponse",
+      });
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({ fieldName: S.String, message: S.String })).annotate({
+        identifier: "ValidationExceptionDetail",
+      });
+    case 1:
+      return S.Array(__S(96, __c3, 0));
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
         S.Struct({}).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "GetPreferencesRequest" });
     case 1:
       return S.suspend(() =>
-        S.Struct({ term: S.optional(S.String), paymentOption: S.optional(S.String) }),
-      ).annotate({ identifier: "PreferredCommitment" });
-    case 2:
-      return S.suspend(() =>
         S.Struct({
           savingsEstimationMode: S.optional(S.String),
           memberAccountDiscountVisibility: S.optional(S.String),
-          preferredCommitment: S.optional(__S(1, __c0, 1)),
+          preferredCommitment: S.optional(__S(160, __c5, 0)),
         }),
       ).annotate({ identifier: "GetPreferencesResponse" });
-    case 3:
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ term: S.optional(S.String), paymentOption: S.optional(S.String) }),
+      ).annotate({ identifier: "PreferredCommitment" });
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ recommendationId: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "GetRecommendationRequest" });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           vCpu: S.optional(S.Number),
@@ -1675,11 +1774,11 @@ function __c0(j: number): any {
           platform: S.optional(S.String),
         }),
       ).annotate({ identifier: "ComputeConfiguration" });
-    case 5:
-      return S.suspend(() => S.Struct({ compute: S.optional(__S(4, __c0, 4)) })).annotate({
+    case 2:
+      return S.suspend(() => S.Struct({ compute: S.optional(__S(193, __c6, 1)) })).annotate({
         identifier: "LambdaFunctionConfiguration",
       });
-    case 6:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           usageType: S.optional(S.String),
@@ -1689,13 +1788,9 @@ function __c0(j: number): any {
           unit: S.optional(S.String),
         }),
       ).annotate({ identifier: "Usage" });
-    case 7:
-      return S.Array(__S(6, __c0, 6));
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
+    case 4:
+      return S.Array(__S(195, __c6, 3));
+    case 5:
       return S.suspend(() =>
         S.Struct({
           savingsPlansDiscount: S.optional(S.Number),
@@ -1703,110 +1798,102 @@ function __c1(j: number): any {
           otherDiscount: S.optional(S.Number),
         }),
       ).annotate({ identifier: "EstimatedDiscounts" });
-    case 1:
+    case 6:
       return S.suspend(() =>
         S.Struct({
           estimatedCostBeforeDiscounts: S.optional(S.Number),
           estimatedNetUnusedAmortizedCommitments: S.optional(S.Number),
-          estimatedDiscounts: S.optional(__S(8, __c1, 0)),
+          estimatedDiscounts: S.optional(__S(197, __c6, 5)),
           estimatedCostAfterDiscounts: S.optional(S.Number),
         }),
       ).annotate({ identifier: "ResourcePricing" });
-    case 2:
+    case 7:
       return S.suspend(() =>
-        S.Struct({ usages: S.optional(__S(7, __c0, 7)), pricing: S.optional(__S(9, __c1, 1)) }),
+        S.Struct({ usages: S.optional(__S(196, __c6, 4)), pricing: S.optional(__S(198, __c6, 6)) }),
       ).annotate({ identifier: "ResourceCostCalculation" });
-    case 3:
+    case 8:
       return S.suspend(() =>
         S.Struct({
-          configuration: S.optional(__S(5, __c0, 5)),
-          costCalculation: S.optional(__S(10, __c1, 2)),
+          configuration: S.optional(__S(194, __c6, 2)),
+          costCalculation: S.optional(__S(199, __c6, 7)),
         }),
       ).annotate({ identifier: "LambdaFunction" });
-    case 4:
-      return S.suspend(() => S.Struct({ compute: S.optional(__S(4, __c0, 4)) })).annotate({
+    case 9:
+      return S.suspend(() => S.Struct({ compute: S.optional(__S(193, __c6, 1)) })).annotate({
         identifier: "EcsServiceConfiguration",
       });
-    case 5:
+    case 10:
       return S.suspend(() =>
         S.Struct({
-          configuration: S.optional(__S(12, __c1, 4)),
-          costCalculation: S.optional(__S(10, __c1, 2)),
+          configuration: S.optional(__S(201, __c6, 9)),
+          costCalculation: S.optional(__S(199, __c6, 7)),
         }),
       ).annotate({ identifier: "EcsService" });
-    case 6:
+    case 11:
       return S.suspend(() => S.Struct({ type: S.optional(S.String) })).annotate({
         identifier: "InstanceConfiguration",
       });
-    case 7:
-      return S.suspend(() => S.Struct({ instance: S.optional(__S(14, __c1, 6)) })).annotate({
+    case 12:
+      return S.suspend(() => S.Struct({ instance: S.optional(__S(203, __c6, 11)) })).annotate({
         identifier: "Ec2InstanceConfiguration",
       });
-  }
-}
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
+    case 13:
       return S.suspend(() =>
         S.Struct({
-          configuration: S.optional(__S(15, __c1, 7)),
-          costCalculation: S.optional(__S(10, __c1, 2)),
+          configuration: S.optional(__S(204, __c6, 12)),
+          costCalculation: S.optional(__S(199, __c6, 7)),
         }),
       ).annotate({ identifier: "Ec2Instance" });
-    case 1:
+    case 14:
       return S.suspend(() =>
         S.Struct({ type: S.optional(S.String), sizeInGb: S.optional(S.Number) }),
       ).annotate({ identifier: "StorageConfiguration" });
-    case 2:
+    case 15:
       return S.suspend(() =>
         S.Struct({ iops: S.optional(S.Number), throughput: S.optional(S.Number) }),
       ).annotate({
         identifier: "BlockStoragePerformanceConfiguration",
       });
-    case 3:
+    case 16:
       return S.suspend(() =>
         S.Struct({
-          storage: S.optional(__S(17, __c2, 1)),
-          performance: S.optional(__S(18, __c2, 2)),
+          storage: S.optional(__S(206, __c6, 14)),
+          performance: S.optional(__S(207, __c6, 15)),
           attachmentState: S.optional(S.String),
         }),
       ).annotate({ identifier: "EbsVolumeConfiguration" });
-    case 4:
+    case 17:
       return S.suspend(() =>
         S.Struct({
-          configuration: S.optional(__S(19, __c2, 3)),
-          costCalculation: S.optional(__S(10, __c1, 2)),
+          configuration: S.optional(__S(208, __c6, 16)),
+          costCalculation: S.optional(__S(199, __c6, 7)),
         }),
       ).annotate({ identifier: "EbsVolume" });
-    case 5:
+    case 18:
       return S.suspend(() => S.Struct({ type: S.optional(S.String) })).annotate({
         identifier: "MixedInstanceConfiguration",
       });
-    case 6:
-      return S.Array(__S(21, __c2, 5));
-    case 7:
+    case 19:
+      return S.Array(__S(210, __c6, 18));
+    case 20:
       return S.suspend(() =>
         S.Struct({
-          instance: S.optional(__S(14, __c1, 6)),
-          mixedInstances: S.optional(__S(22, __c2, 6)),
+          instance: S.optional(__S(203, __c6, 11)),
+          mixedInstances: S.optional(__S(211, __c6, 19)),
           type: S.optional(S.String),
           allocationStrategy: S.optional(S.String),
         }),
       ).annotate({
         identifier: "Ec2AutoScalingGroupConfiguration",
       });
-  }
-}
-function __c3(j: number): any {
-  switch (j) {
-    case 0:
+    case 21:
       return S.suspend(() =>
         S.Struct({
-          configuration: S.optional(__S(23, __c2, 7)),
-          costCalculation: S.optional(__S(10, __c1, 2)),
+          configuration: S.optional(__S(212, __c6, 20)),
+          costCalculation: S.optional(__S(199, __c6, 7)),
         }),
       ).annotate({ identifier: "Ec2AutoScalingGroup" });
-    case 1:
+    case 22:
       return S.suspend(() =>
         S.Struct({
           accountScope: S.optional(S.String),
@@ -1829,7 +1916,7 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "Ec2ReservedInstancesConfiguration",
       });
-    case 2:
+    case 23:
       return S.suspend(() =>
         S.Struct({
           estimatedOnDemandCost: S.optional(S.Number),
@@ -1838,18 +1925,18 @@ function __c3(j: number): any {
           estimatedMonthlyAmortizedReservationCost: S.optional(S.Number),
         }),
       ).annotate({ identifier: "ReservedInstancesPricing" });
-    case 3:
-      return S.suspend(() => S.Struct({ pricing: S.optional(__S(26, __c3, 2)) })).annotate({
+    case 24:
+      return S.suspend(() => S.Struct({ pricing: S.optional(__S(215, __c6, 23)) })).annotate({
         identifier: "ReservedInstancesCostCalculation",
       });
-    case 4:
+    case 25:
       return S.suspend(() =>
         S.Struct({
-          configuration: S.optional(__S(25, __c3, 1)),
-          costCalculation: S.optional(__S(27, __c3, 3)),
+          configuration: S.optional(__S(214, __c6, 22)),
+          costCalculation: S.optional(__S(216, __c6, 24)),
         }),
       ).annotate({ identifier: "Ec2ReservedInstances" });
-    case 5:
+    case 26:
       return S.suspend(() =>
         S.Struct({
           accountScope: S.optional(S.String),
@@ -1873,14 +1960,14 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "RdsReservedInstancesConfiguration",
       });
-    case 6:
+    case 27:
       return S.suspend(() =>
         S.Struct({
-          configuration: S.optional(__S(29, __c3, 5)),
-          costCalculation: S.optional(__S(27, __c3, 3)),
+          configuration: S.optional(__S(218, __c6, 26)),
+          costCalculation: S.optional(__S(216, __c6, 24)),
         }),
       ).annotate({ identifier: "RdsReservedInstances" });
-    case 7:
+    case 28:
       return S.suspend(() =>
         S.Struct({
           accountScope: S.optional(S.String),
@@ -1900,20 +1987,16 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "ElastiCacheReservedInstancesConfiguration",
       });
-  }
-}
-function __c4(j: number): any {
-  switch (j) {
-    case 0:
+    case 29:
       return S.suspend(() =>
         S.Struct({
-          configuration: S.optional(__S(31, __c3, 7)),
-          costCalculation: S.optional(__S(27, __c3, 3)),
+          configuration: S.optional(__S(220, __c6, 28)),
+          costCalculation: S.optional(__S(216, __c6, 24)),
         }),
       ).annotate({
         identifier: "ElastiCacheReservedInstances",
       });
-    case 1:
+    case 30:
       return S.suspend(() =>
         S.Struct({
           accountScope: S.optional(S.String),
@@ -1932,16 +2015,20 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "OpenSearchReservedInstancesConfiguration",
       });
-    case 2:
+    case 31:
       return S.suspend(() =>
         S.Struct({
-          configuration: S.optional(__S(33, __c4, 1)),
-          costCalculation: S.optional(__S(27, __c3, 3)),
+          configuration: S.optional(__S(222, __c6, 30)),
+          costCalculation: S.optional(__S(216, __c6, 24)),
         }),
       ).annotate({
         identifier: "OpenSearchReservedInstances",
       });
-    case 3:
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountScope: S.optional(S.String),
@@ -1961,16 +2048,16 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "RedshiftReservedInstancesConfiguration",
       });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          configuration: S.optional(__S(35, __c4, 3)),
-          costCalculation: S.optional(__S(27, __c3, 3)),
+          configuration: S.optional(__S(224, __c7, 0)),
+          costCalculation: S.optional(__S(216, __c6, 24)),
         }),
       ).annotate({
         identifier: "RedshiftReservedInstances",
       });
-    case 5:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           accountScope: S.optional(S.String),
@@ -1983,7 +2070,7 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "Ec2InstanceSavingsPlansConfiguration",
       });
-    case 6:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           monthlySavingsPlansEligibleCost: S.optional(S.Number),
@@ -1992,22 +2079,18 @@ function __c4(j: number): any {
           estimatedOnDemandCost: S.optional(S.Number),
         }),
       ).annotate({ identifier: "SavingsPlansPricing" });
-    case 7:
-      return S.suspend(() => S.Struct({ pricing: S.optional(__S(38, __c4, 6)) })).annotate({
+    case 4:
+      return S.suspend(() => S.Struct({ pricing: S.optional(__S(227, __c7, 3)) })).annotate({
         identifier: "SavingsPlansCostCalculation",
       });
-  }
-}
-function __c5(j: number): any {
-  switch (j) {
-    case 0:
+    case 5:
       return S.suspend(() =>
         S.Struct({
-          configuration: S.optional(__S(37, __c4, 5)),
-          costCalculation: S.optional(__S(39, __c4, 7)),
+          configuration: S.optional(__S(226, __c7, 2)),
+          costCalculation: S.optional(__S(228, __c7, 4)),
         }),
       ).annotate({ identifier: "Ec2InstanceSavingsPlans" });
-    case 1:
+    case 6:
       return S.suspend(() =>
         S.Struct({
           accountScope: S.optional(S.String),
@@ -2018,29 +2101,29 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "ComputeSavingsPlansConfiguration",
       });
-    case 2:
+    case 7:
       return S.suspend(() =>
         S.Struct({
-          configuration: S.optional(__S(41, __c5, 1)),
-          costCalculation: S.optional(__S(39, __c4, 7)),
+          configuration: S.optional(__S(230, __c7, 6)),
+          costCalculation: S.optional(__S(228, __c7, 4)),
         }),
       ).annotate({ identifier: "ComputeSavingsPlans" });
-    case 3:
+    case 8:
       return S.suspend(() => S.Struct({ dbInstanceClass: S.optional(S.String) })).annotate({
         identifier: "DbInstanceConfiguration",
       });
-    case 4:
-      return S.suspend(() => S.Struct({ instance: S.optional(__S(43, __c5, 3)) })).annotate({
+    case 9:
+      return S.suspend(() => S.Struct({ instance: S.optional(__S(232, __c7, 8)) })).annotate({
         identifier: "RdsDbInstanceConfiguration",
       });
-    case 5:
+    case 10:
       return S.suspend(() =>
         S.Struct({
-          configuration: S.optional(__S(44, __c5, 4)),
-          costCalculation: S.optional(__S(10, __c1, 2)),
+          configuration: S.optional(__S(233, __c7, 9)),
+          costCalculation: S.optional(__S(199, __c6, 7)),
         }),
       ).annotate({ identifier: "RdsDbInstance" });
-    case 6:
+    case 11:
       return S.suspend(() =>
         S.Struct({
           storageType: S.optional(S.String),
@@ -2051,29 +2134,25 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "RdsDbInstanceStorageConfiguration",
       });
-    case 7:
+    case 12:
       return S.suspend(() =>
         S.Struct({
-          configuration: S.optional(__S(46, __c5, 6)),
-          costCalculation: S.optional(__S(10, __c1, 2)),
+          configuration: S.optional(__S(235, __c7, 11)),
+          costCalculation: S.optional(__S(199, __c6, 7)),
         }),
       ).annotate({ identifier: "RdsDbInstanceStorage" });
-  }
-}
-function __c6(j: number): any {
-  switch (j) {
-    case 0:
+    case 13:
       return S.suspend(() => S.Struct({ storageType: S.optional(S.String) })).annotate({
         identifier: "AuroraDbClusterStorageConfiguration",
       });
-    case 1:
+    case 14:
       return S.suspend(() =>
         S.Struct({
-          configuration: S.optional(__S(48, __c6, 0)),
-          costCalculation: S.optional(__S(10, __c1, 2)),
+          configuration: S.optional(__S(237, __c7, 13)),
+          costCalculation: S.optional(__S(199, __c6, 7)),
         }),
       ).annotate({ identifier: "AuroraDbClusterStorage" });
-    case 2:
+    case 15:
       return S.suspend(() =>
         S.Struct({
           accountScope: S.optional(S.String),
@@ -2089,14 +2168,14 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "DynamoDbReservedCapacityConfiguration",
       });
-    case 3:
+    case 16:
       return S.suspend(() =>
         S.Struct({
-          configuration: S.optional(__S(50, __c6, 2)),
-          costCalculation: S.optional(__S(27, __c3, 3)),
+          configuration: S.optional(__S(239, __c7, 15)),
+          costCalculation: S.optional(__S(216, __c6, 24)),
         }),
       ).annotate({ identifier: "DynamoDbReservedCapacity" });
-    case 4:
+    case 17:
       return S.suspend(() =>
         S.Struct({
           accountScope: S.optional(S.String),
@@ -2116,16 +2195,16 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "MemoryDbReservedInstancesConfiguration",
       });
-    case 5:
+    case 18:
       return S.suspend(() =>
         S.Struct({
-          configuration: S.optional(__S(52, __c6, 4)),
-          costCalculation: S.optional(__S(27, __c3, 3)),
+          configuration: S.optional(__S(241, __c7, 17)),
+          costCalculation: S.optional(__S(216, __c6, 24)),
         }),
       ).annotate({
         identifier: "MemoryDbReservedInstances",
       });
-    case 6:
+    case 19:
       return S.suspend(() =>
         S.Struct({
           activeConnectionCount: S.optional(S.Number),
@@ -2133,56 +2212,46 @@ function __c6(j: number): any {
           packetsInFromDestination: S.optional(S.Number),
         }),
       ).annotate({ identifier: "NatGatewayConfiguration" });
-    case 7:
+    case 20:
       return S.suspend(() =>
         S.Struct({
-          configuration: S.optional(__S(54, __c6, 6)),
-          costCalculation: S.optional(__S(10, __c1, 2)),
+          configuration: S.optional(__S(243, __c7, 19)),
+          costCalculation: S.optional(__S(199, __c6, 7)),
         }),
       ).annotate({ identifier: "NatGateway" });
-  }
-}
-function __c7(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() => S.Struct({ costCalculation: S.optional(__S(10, __c1, 2)) })).annotate({
-        identifier: "DynamoDbTable",
-      });
-    case 1:
+    case 21:
+      return S.suspend(() => S.Struct({ costCalculation: S.optional(__S(199, __c6, 7)) })).annotate(
+        { identifier: "DynamoDbTable" },
+      );
+    case 22:
       return S.Union([
-        /*@__PURE__*/ S.Struct({ lambdaFunction: __S(11, __c1, 3) }),
-        /*@__PURE__*/ S.Struct({ ecsService: __S(13, __c1, 5) }),
-        /*@__PURE__*/ S.Struct({ ec2Instance: __S(16, __c2, 0) }),
-        /*@__PURE__*/ S.Struct({ ebsVolume: __S(20, __c2, 4) }),
-        /*@__PURE__*/ S.Struct({ ec2AutoScalingGroup: __S(24, __c3, 0) }),
-        /*@__PURE__*/ S.Struct({ ec2ReservedInstances: __S(28, __c3, 4) }),
-        /*@__PURE__*/ S.Struct({ rdsReservedInstances: __S(30, __c3, 6) }),
-        /*@__PURE__*/ S.Struct({ elastiCacheReservedInstances: __S(32, __c4, 0) }),
-        /*@__PURE__*/ S.Struct({ openSearchReservedInstances: __S(34, __c4, 2) }),
-        /*@__PURE__*/ S.Struct({ redshiftReservedInstances: __S(36, __c4, 4) }),
-        /*@__PURE__*/ S.Struct({ ec2InstanceSavingsPlans: __S(40, __c5, 0) }),
-        /*@__PURE__*/ S.Struct({ computeSavingsPlans: __S(42, __c5, 2) }),
-        /*@__PURE__*/ S.Struct({ sageMakerSavingsPlans: __S(42, __c5, 2) }),
-        /*@__PURE__*/ S.Struct({ rdsDbInstance: __S(45, __c5, 5) }),
-        /*@__PURE__*/ S.Struct({ rdsDbInstanceStorage: __S(47, __c5, 7) }),
-        /*@__PURE__*/ S.Struct({ auroraDbClusterStorage: __S(49, __c6, 1) }),
-        /*@__PURE__*/ S.Struct({ dynamoDbReservedCapacity: __S(51, __c6, 3) }),
-        /*@__PURE__*/ S.Struct({ memoryDbReservedInstances: __S(53, __c6, 5) }),
-        /*@__PURE__*/ S.Struct({ natGateway: __S(55, __c6, 7) }),
-        /*@__PURE__*/ S.Struct({ dynamoDbTable: __S(56, __c7, 0) }),
-        /*@__PURE__*/ S.Struct({ elastiCacheCluster: __S(56, __c7, 0) }),
-        /*@__PURE__*/ S.Struct({ memoryDbCluster: __S(56, __c7, 0) }),
-        /*@__PURE__*/ S.Struct({ documentDbCluster: __S(56, __c7, 0) }),
-        /*@__PURE__*/ S.Struct({ workSpaces: __S(56, __c7, 0) }),
-        /*@__PURE__*/ S.Struct({ sageMakerEndpoint: __S(56, __c7, 0) }),
+        /*@__PURE__*/ S.Struct({ lambdaFunction: __S(200, __c6, 8) }),
+        /*@__PURE__*/ S.Struct({ ecsService: __S(202, __c6, 10) }),
+        /*@__PURE__*/ S.Struct({ ec2Instance: __S(205, __c6, 13) }),
+        /*@__PURE__*/ S.Struct({ ebsVolume: __S(209, __c6, 17) }),
+        /*@__PURE__*/ S.Struct({ ec2AutoScalingGroup: __S(213, __c6, 21) }),
+        /*@__PURE__*/ S.Struct({ ec2ReservedInstances: __S(217, __c6, 25) }),
+        /*@__PURE__*/ S.Struct({ rdsReservedInstances: __S(219, __c6, 27) }),
+        /*@__PURE__*/ S.Struct({ elastiCacheReservedInstances: __S(221, __c6, 29) }),
+        /*@__PURE__*/ S.Struct({ openSearchReservedInstances: __S(223, __c6, 31) }),
+        /*@__PURE__*/ S.Struct({ redshiftReservedInstances: __S(225, __c7, 1) }),
+        /*@__PURE__*/ S.Struct({ ec2InstanceSavingsPlans: __S(229, __c7, 5) }),
+        /*@__PURE__*/ S.Struct({ computeSavingsPlans: __S(231, __c7, 7) }),
+        /*@__PURE__*/ S.Struct({ sageMakerSavingsPlans: __S(231, __c7, 7) }),
+        /*@__PURE__*/ S.Struct({ rdsDbInstance: __S(234, __c7, 10) }),
+        /*@__PURE__*/ S.Struct({ rdsDbInstanceStorage: __S(236, __c7, 12) }),
+        /*@__PURE__*/ S.Struct({ auroraDbClusterStorage: __S(238, __c7, 14) }),
+        /*@__PURE__*/ S.Struct({ dynamoDbReservedCapacity: __S(240, __c7, 16) }),
+        /*@__PURE__*/ S.Struct({ memoryDbReservedInstances: __S(242, __c7, 18) }),
+        /*@__PURE__*/ S.Struct({ natGateway: __S(244, __c7, 20) }),
+        /*@__PURE__*/ S.Struct({ dynamoDbTable: __S(245, __c7, 21) }),
+        /*@__PURE__*/ S.Struct({ elastiCacheCluster: __S(245, __c7, 21) }),
+        /*@__PURE__*/ S.Struct({ memoryDbCluster: __S(245, __c7, 21) }),
+        /*@__PURE__*/ S.Struct({ documentDbCluster: __S(245, __c7, 21) }),
+        /*@__PURE__*/ S.Struct({ workSpaces: __S(245, __c7, 21) }),
+        /*@__PURE__*/ S.Struct({ sageMakerEndpoint: __S(245, __c7, 21) }),
       ]);
-    case 2:
-      return S.suspend(() =>
-        S.Struct({ key: S.optional(S.String), value: S.optional(S.String) }),
-      ).annotate({ identifier: "Tag" });
-    case 3:
-      return S.Array(__S(58, __c7, 2));
-    case 4:
+    case 23:
       return S.suspend(() =>
         S.Struct({
           recommendationId: S.optional(S.String),
@@ -2205,39 +2274,45 @@ function __c7(j: number): any {
           restartNeeded: S.optional(S.Boolean),
           actionType: S.optional(S.String),
           rollbackPossible: S.optional(S.Boolean),
-          currentResourceDetails: S.optional(__S(57, __c7, 1)),
-          recommendedResourceDetails: S.optional(__S(57, __c7, 1)),
-          tags: S.optional(__S(59, __c7, 3)),
+          currentResourceDetails: S.optional(__S(246, __c7, 22)),
+          recommendedResourceDetails: S.optional(__S(246, __c7, 22)),
+          tags: S.optional(__S(257, __c8, 1)),
         }),
       ).annotate({
         identifier: "GetRecommendationResponse",
-      });
-    case 5:
-      return S.suspend(() => S.Struct({ start: S.String, end: S.String })).annotate({
-        identifier: "TimePeriod",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({ dimension: S.optional(S.String), order: S.optional(S.String) }),
-      ).annotate({ identifier: "OrderBy" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          groupBy: S.optional(S.String),
-          granularity: S.String,
-          timePeriod: __S(61, __c7, 5),
-          maxResults: S.optional(S.Number),
-          orderBy: S.optional(__S(62, __c7, 6)),
-          nextToken: S.optional(S.String),
-        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "ListEfficiencyMetricsRequest",
       });
   }
 }
 function __c8(j: number): any {
   switch (j) {
     case 0:
+      return S.suspend(() =>
+        S.Struct({ key: S.optional(S.String), value: S.optional(S.String) }),
+      ).annotate({ identifier: "Tag" });
+    case 1:
+      return S.Array(__S(256, __c8, 0));
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({ start: S.String, end: S.String })).annotate({
+        identifier: "TimePeriod",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          groupBy: S.optional(S.String),
+          granularity: S.String,
+          timePeriod: __S(288, __c9, 0),
+          maxResults: S.optional(S.Number),
+          orderBy: S.optional(__S(320, __c10, 0)),
+          nextToken: S.optional(S.String),
+        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({
+        identifier: "ListEfficiencyMetricsRequest",
+      });
+    case 2:
       return S.suspend(() =>
         S.Struct({
           score: S.optional(S.Number),
@@ -2246,28 +2321,40 @@ function __c8(j: number): any {
           timestamp: S.optional(S.String),
         }),
       ).annotate({ identifier: "MetricsByTime" });
-    case 1:
-      return S.Array(__S(64, __c8, 0));
-    case 2:
+    case 3:
+      return S.Array(__S(290, __c9, 2));
+    case 4:
       return S.suspend(() =>
         S.Struct({
-          metricsByTime: S.optional(__S(65, __c8, 1)),
+          metricsByTime: S.optional(__S(291, __c9, 3)),
           group: S.optional(S.String),
           message: S.optional(S.String),
         }),
       ).annotate({ identifier: "EfficiencyMetricsByGroup" });
-    case 3:
-      return S.Array(__S(66, __c8, 2));
-    case 4:
+    case 5:
+      return S.Array(__S(292, __c9, 4));
+    case 6:
       return S.suspend(() =>
         S.Struct({
-          efficiencyMetricsByGroup: S.optional(__S(67, __c8, 3)),
+          efficiencyMetricsByGroup: S.optional(__S(293, __c9, 5)),
           nextToken: S.optional(S.String),
         }),
       ).annotate({
         identifier: "ListEfficiencyMetricsResponse",
       });
-    case 5:
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ dimension: S.optional(S.String), order: S.optional(S.String) }),
+      ).annotate({ identifier: "OrderBy" });
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           includeOrganizationInfo: S.optional(S.Boolean),
@@ -2278,7 +2365,7 @@ function __c8(j: number): any {
       ).annotate({
         identifier: "ListEnrollmentStatusesRequest",
       });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           accountId: S.optional(S.String),
@@ -2287,47 +2374,27 @@ function __c8(j: number): any {
           createdTimestamp: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
         }),
       ).annotate({ identifier: "AccountEnrollmentStatus" });
-    case 7:
-      return S.Array(__S(70, __c8, 6));
-  }
-}
-function __c9(j: number): any {
-  switch (j) {
-    case 0:
+    case 2:
+      return S.Array(__S(353, __c11, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          items: S.optional(__S(71, __c8, 7)),
+          items: S.optional(__S(354, __c11, 2)),
           includeMemberAccounts: S.optional(S.Boolean),
           nextToken: S.optional(S.String),
         }),
       ).annotate({
         identifier: "ListEnrollmentStatusesResponse",
       });
-    case 1:
-      return S.Array(S.String);
-    case 2:
-      return S.Array(S.String);
-    case 3:
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          restartNeeded: S.optional(S.Boolean),
-          rollbackPossible: S.optional(S.Boolean),
-          implementationEfforts: S.optional(__S(73, __c9, 1)),
-          accountIds: S.optional(__S(74, __c9, 2)),
-          regions: S.optional(__S(74, __c9, 2)),
-          resourceTypes: S.optional(__S(73, __c9, 1)),
-          actionTypes: S.optional(__S(73, __c9, 1)),
-          tags: S.optional(__S(59, __c7, 3)),
-          resourceIds: S.optional(__S(74, __c9, 2)),
-          resourceArns: S.optional(__S(74, __c9, 2)),
-          recommendationIds: S.optional(__S(74, __c9, 2)),
-        }),
-      ).annotate({ identifier: "Filter" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          filter: S.optional(__S(75, __c9, 3)),
-          orderBy: S.optional(__S(62, __c7, 6)),
+          filter: S.optional(__S(418, __c13, 2)),
+          orderBy: S.optional(__S(320, __c10, 0)),
           includeAllRecommendations: S.optional(S.Boolean),
           maxResults: S.optional(S.Number),
           nextToken: S.optional(S.String),
@@ -2335,7 +2402,7 @@ function __c9(j: number): any {
       ).annotate({
         identifier: "ListRecommendationsRequest",
       });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           recommendationId: S.optional(S.String),
@@ -2358,103 +2425,43 @@ function __c9(j: number): any {
           lastRefreshTimestamp: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           recommendationLookbackPeriodInDays: S.optional(S.Number),
           source: S.optional(S.String),
-          tags: S.optional(__S(59, __c7, 3)),
+          tags: S.optional(__S(257, __c8, 1)),
         }),
       ).annotate({ identifier: "Recommendation" });
-    case 6:
-      return S.Array(__S(77, __c9, 5));
-    case 7:
+    case 2:
+      return S.Array(__S(385, __c12, 1));
+    case 3:
       return S.suspend(() =>
-        S.Struct({ items: S.optional(__S(78, __c9, 6)), nextToken: S.optional(S.String) }),
+        S.Struct({ items: S.optional(__S(386, __c12, 2)), nextToken: S.optional(S.String) }),
       ).annotate({
         identifier: "ListRecommendationsResponse",
       });
   }
 }
-function __c10(j: number): any {
+function __c13(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() =>
-        S.Struct({
-          filter: S.optional(__S(75, __c9, 3)),
-          groupBy: S.String,
-          maxResults: S.optional(S.Number),
-          metrics: S.optional(__S(73, __c9, 1)),
-          nextToken: S.optional(S.String),
-        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "ListRecommendationSummariesRequest",
-      });
+      return S.Array(S.String);
     case 1:
-      return S.suspend(() =>
-        S.Struct({
-          group: S.optional(S.String),
-          estimatedMonthlySavings: S.optional(S.Number),
-          recommendationCount: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "RecommendationSummary" });
+      return S.Array(S.String);
     case 2:
-      return S.Array(__S(81, __c10, 1));
-    case 3:
-      return S.suspend(() => S.Struct({ savingsPercentage: S.optional(S.String) })).annotate({
-        identifier: "SummaryMetricsResult",
-      });
-    case 4:
       return S.suspend(() =>
         S.Struct({
-          estimatedTotalDedupedSavings: S.optional(S.Number),
-          items: S.optional(__S(82, __c10, 2)),
-          groupBy: S.optional(S.String),
-          currencyCode: S.optional(S.String),
-          metrics: S.optional(__S(83, __c10, 3)),
-          nextToken: S.optional(S.String),
+          restartNeeded: S.optional(S.Boolean),
+          rollbackPossible: S.optional(S.Boolean),
+          implementationEfforts: S.optional(__S(416, __c13, 0)),
+          accountIds: S.optional(__S(417, __c13, 1)),
+          regions: S.optional(__S(417, __c13, 1)),
+          resourceTypes: S.optional(__S(416, __c13, 0)),
+          actionTypes: S.optional(__S(416, __c13, 0)),
+          tags: S.optional(__S(257, __c8, 1)),
+          resourceIds: S.optional(__S(417, __c13, 1)),
+          resourceArns: S.optional(__S(417, __c13, 1)),
+          recommendationIds: S.optional(__S(417, __c13, 1)),
         }),
-      ).annotate({
-        identifier: "ListRecommendationSummariesResponse",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({ status: S.String, includeMemberAccounts: S.optional(S.Boolean) }).pipe(
-          T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-        ),
-      ).annotate({
-        identifier: "UpdateEnrollmentStatusRequest",
-      });
-    case 6:
-      return S.suspend(() => S.Struct({ status: S.optional(S.String) })).annotate({
-        identifier: "UpdateEnrollmentStatusResponse",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          savingsEstimationMode: S.optional(S.String),
-          memberAccountDiscountVisibility: S.optional(S.String),
-          preferredCommitment: S.optional(__S(1, __c0, 1)),
-        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({ identifier: "UpdatePreferencesRequest" });
+      ).annotate({ identifier: "Filter" });
   }
 }
-function __c11(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          savingsEstimationMode: S.optional(S.String),
-          memberAccountDiscountVisibility: S.optional(S.String),
-          preferredCommitment: S.optional(__S(1, __c0, 1)),
-        }),
-      ).annotate({
-        identifier: "UpdatePreferencesResponse",
-      });
-    case 1:
-      return S.suspend(() => S.Struct({ fieldName: S.String, message: S.String })).annotate({
-        identifier: "ValidationExceptionDetail",
-      });
-    case 2:
-      return S.Array(__S(89, __c11, 1));
-  }
-}
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

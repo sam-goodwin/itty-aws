@@ -235,7 +235,7 @@ export const dataSecurityContentFindingsTopN: API.OperationMethod<
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(4, __c0, 4) as any as S.Schema<DataSecurityContentFindingsTopNRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<DataSecurityContentFindingsTopNResponse>,
+  output: __S(5, __c0, 5) as any as S.Schema<DataSecurityContentFindingsTopNResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -249,8 +249,8 @@ export const dataSecurityFindingsSummary: API.OperationMethod<
   DataSecurityFindingsSummaryError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(12, __c1, 4) as any as S.Schema<DataSecurityFindingsSummaryRequest>,
-  output: __S(13, __c1, 5) as any as S.Schema<DataSecurityFindingsSummaryResponse>,
+  input: __S(20, __c2, 4) as any as S.Schema<DataSecurityFindingsSummaryRequest>,
+  output: __S(21, __c2, 5) as any as S.Schema<DataSecurityFindingsSummaryResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -264,8 +264,8 @@ export const dataSecurityFindingsTimeseries: API.OperationMethod<
   DataSecurityFindingsTimeseriesError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(18, __c2, 2) as any as S.Schema<DataSecurityFindingsTimeseriesRequest>,
-  output: __S(19, __c2, 3) as any as S.Schema<DataSecurityFindingsTimeseriesResponse>,
+  input: __S(28, __c3, 4) as any as S.Schema<DataSecurityFindingsTimeseriesRequest>,
+  output: __S(29, __c3, 5) as any as S.Schema<DataSecurityFindingsTimeseriesResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -279,8 +279,8 @@ export const summary: API.OperationMethod<
   SummaryError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(25, __c3, 1) as any as S.Schema<SummaryRequest>,
-  output: __S(26, __c3, 2) as any as S.Schema<SummaryResponse>,
+  input: __S(36, __c4, 4) as any as S.Schema<SummaryRequest>,
+  output: __S(37, __c4, 5) as any as S.Schema<SummaryResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -294,8 +294,8 @@ export const timeseries: API.OperationMethod<
   TimeseriesError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(31, __c3, 7) as any as S.Schema<TimeseriesRequest>,
-  output: __S(32, __c4, 0) as any as S.Schema<TimeseriesResponse>,
+  input: __S(52, __c6, 4) as any as S.Schema<TimeseriesRequest>,
+  output: __S(53, __c6, 5) as any as S.Schema<TimeseriesResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -305,8 +305,8 @@ export type TopNError = CloudflareOpError;
 /** Returns the top N results for a dataset by a specified stat. Includes an array of result rows, each containing the requested stats and group-by dimensions. */
 export const topN: API.OperationMethod<TopNRequest, TopNResponse, TopNError, CloudflareOpContext> =
   /*@__PURE__*/ API.make(() => ({
-    input: __S(37, __c4, 5) as any as S.Schema<TopNRequest>,
-    output: __S(38, __c4, 6) as any as S.Schema<TopNResponse>,
+    input: __S(60, __c7, 4) as any as S.Schema<TopNRequest>,
+    output: __S(61, __c7, 5) as any as S.Schema<TopNResponse>,
     errors: [CloudflareRateLimited, CloudflareError],
     protocol: CloudflareProtocol,
     retry: Retry.Retry,
@@ -350,11 +350,7 @@ function __c0(j: number): any {
         identifier: "DataSecurityContentFindingsTopNRequest",
       });
     case 5:
-      return S.Record(S.String, S.Unknown);
-    case 6:
-      return S.Array(__S(5, __c0, 5));
-    case 7:
-      return S.suspend(() => __S(6, __c0, 6).pipe(T.EnvelopePayloadRoot())).annotate({
+      return S.suspend(() => __S(9, __c1, 1).pipe(T.EnvelopePayloadRoot())).annotate({
         identifier: "DataSecurityContentFindingsTopNResponse",
       });
   }
@@ -362,26 +358,34 @@ function __c0(j: number): any {
 function __c1(j: number): any {
   switch (j) {
     case 0:
-      return S.Unknown.pipe(/*@__PURE__*/ T.UnionCases([[], [], []]));
+      return S.Record(S.String, S.Unknown);
     case 1:
       return S.Array(__S(8, __c1, 0));
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Unknown.pipe(/*@__PURE__*/ T.UnionCases([[], [], []]));
+    case 1:
+      return S.Array(__S(16, __c2, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
           name: S.String,
           op: S.String,
-          values: __S(9, __c1, 1),
+          values: __S(17, __c2, 1),
         }),
       ).annotate({
         identifier: "DataSecurityFindingsSummaryRequestFiltersItem",
       });
     case 3:
-      return S.Array(__S(10, __c1, 2));
+      return S.Array(__S(18, __c2, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
-          filters: __S(11, __c1, 3),
+          filters: __S(19, __c2, 3),
           from: S.String,
           to: S.String,
         }).pipe(
@@ -397,37 +401,37 @@ function __c1(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          currentTotal: __S(6, __c0, 6),
-          previousTotal: __S(6, __c0, 6),
+          currentTotal: __S(9, __c1, 1),
+          previousTotal: __S(9, __c1, 1),
         }),
       ).annotate({
         identifier: "DataSecurityFindingsSummaryResponse",
       });
-    case 6:
-      return S.Unknown.pipe(/*@__PURE__*/ T.UnionCases([[], [], []]));
-    case 7:
-      return S.Array(__S(14, __c1, 6));
   }
 }
-function __c2(j: number): any {
+function __c3(j: number): any {
   switch (j) {
     case 0:
+      return S.Unknown.pipe(/*@__PURE__*/ T.UnionCases([[], [], []]));
+    case 1:
+      return S.Array(__S(24, __c3, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           name: S.String,
           op: S.String,
-          values: __S(15, __c1, 7),
+          values: __S(25, __c3, 1),
         }),
       ).annotate({
         identifier: "DataSecurityFindingsTimeseriesRequestFiltersItem",
       });
-    case 1:
-      return S.Array(__S(16, __c2, 0));
-    case 2:
+    case 3:
+      return S.Array(__S(26, __c3, 2));
+    case 4:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
-          filters: __S(17, __c2, 1),
+          filters: __S(27, __c3, 3),
           from: S.String,
           to: S.String,
         }).pipe(
@@ -440,46 +444,44 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "DataSecurityFindingsTimeseriesRequest",
       });
-    case 3:
+    case 5:
       return S.suspend(() =>
         S.Struct({
-          slots: __S(6, __c0, 6),
+          slots: __S(9, __c1, 1),
           resolution: S.optional(S.NullOr(S.String)),
         }),
       ).annotate({
         identifier: "DataSecurityFindingsTimeseriesResponse",
       });
-    case 4:
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
       return S.Unknown.pipe(/*@__PURE__*/ T.UnionCases([[], [], []]));
-    case 5:
-      return S.Array(__S(20, __c2, 4));
-    case 6:
+    case 1:
+      return S.Array(__S(32, __c4, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           name: S.String,
           op: S.String,
-          values: __S(21, __c2, 5),
+          values: __S(33, __c4, 1),
         }),
       ).annotate({
         identifier: "SummaryRequestFiltersItem",
       });
-    case 7:
-      return S.Array(__S(22, __c2, 6));
-  }
-}
-function __c3(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(S.String);
-    case 1:
+    case 3:
+      return S.Array(__S(34, __c4, 2));
+    case 4:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
           dataset: S.String.pipe(T.Label()),
-          filters: __S(23, __c2, 7),
+          filters: __S(35, __c4, 3),
           from: S.String,
-          groupBy: __S(24, __c3, 0),
-          stats: __S(24, __c3, 0),
+          groupBy: __S(40, __c5, 0),
+          stats: __S(40, __c5, 0),
           to: S.String,
         }).pipe(
           T.Http({
@@ -489,39 +491,49 @@ function __c3(j: number): any {
           }),
         ),
       ).annotate({ identifier: "SummaryRequest" });
-    case 2:
+    case 5:
       return S.suspend(() =>
         S.Struct({
-          currentTotal: __S(6, __c0, 6),
-          previousTotal: __S(6, __c0, 6),
+          currentTotal: __S(9, __c1, 1),
+          previousTotal: __S(9, __c1, 1),
         }),
       ).annotate({ identifier: "SummaryResponse" });
-    case 3:
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
       return S.Unknown.pipe(/*@__PURE__*/ T.UnionCases([[], [], []]));
-    case 4:
-      return S.Array(__S(27, __c3, 3));
-    case 5:
+    case 1:
+      return S.Array(__S(48, __c6, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           name: S.String,
           op: S.String,
-          values: __S(28, __c3, 4),
+          values: __S(49, __c6, 1),
         }),
       ).annotate({
         identifier: "TimeseriesRequestFiltersItem",
       });
-    case 6:
-      return S.Array(__S(29, __c3, 5));
-    case 7:
+    case 3:
+      return S.Array(__S(50, __c6, 2));
+    case 4:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
           dataset: S.String.pipe(T.Label()),
-          filters: __S(30, __c3, 6),
+          filters: __S(51, __c6, 3),
           from: S.String,
-          groupBy: __S(24, __c3, 0),
+          groupBy: __S(40, __c5, 0),
           resolution: S.String,
-          stats: __S(24, __c3, 0),
+          stats: __S(40, __c5, 0),
           to: S.String,
         }).pipe(
           T.Http({
@@ -531,42 +543,42 @@ function __c3(j: number): any {
           }),
         ),
       ).annotate({ identifier: "TimeseriesRequest" });
-  }
-}
-function __c4(j: number): any {
-  switch (j) {
-    case 0:
+    case 5:
       return S.suspend(() =>
         S.Struct({
           resolution: S.String,
-          slots: __S(6, __c0, 6),
+          slots: __S(9, __c1, 1),
         }),
       ).annotate({ identifier: "TimeseriesResponse" });
-    case 1:
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
       return S.Unknown.pipe(/*@__PURE__*/ T.UnionCases([[], [], []]));
+    case 1:
+      return S.Array(__S(56, __c7, 0));
     case 2:
-      return S.Array(__S(33, __c4, 1));
-    case 3:
       return S.suspend(() =>
         S.Struct({
           name: S.String,
           op: S.String,
-          values: __S(34, __c4, 2),
+          values: __S(57, __c7, 1),
         }),
       ).annotate({ identifier: "TopNRequestFiltersItem" });
+    case 3:
+      return S.Array(__S(58, __c7, 2));
     case 4:
-      return S.Array(__S(35, __c4, 3));
-    case 5:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
           dataset: S.String.pipe(T.Label()),
-          filters: __S(36, __c4, 4),
+          filters: __S(59, __c7, 3),
           from: S.String,
-          groupBy: __S(24, __c3, 0),
+          groupBy: __S(40, __c5, 0),
           n: S.Number,
           orderBy: S.String,
-          stats: __S(24, __c3, 0),
+          stats: __S(40, __c5, 0),
           to: S.String,
         }).pipe(
           T.Http({
@@ -576,13 +588,12 @@ function __c4(j: number): any {
           }),
         ),
       ).annotate({ identifier: "TopNRequest" });
-    case 6:
-      return S.suspend(() => __S(6, __c0, 6).pipe(T.EnvelopePayloadRoot())).annotate({
+    case 5:
+      return S.suspend(() => __S(9, __c1, 1).pipe(T.EnvelopePayloadRoot())).annotate({
         identifier: "TopNResponse",
       });
   }
 }
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

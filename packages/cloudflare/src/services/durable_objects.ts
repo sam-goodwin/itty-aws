@@ -141,8 +141,8 @@ export const listNamespaces: API.PaginatedOperationMethod<
   NamespacesListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(4, __c0, 4) as any as S.Schema<ListNamespacesRequest>,
-    output: __S(7, __c0, 7) as any as S.Schema<ListNamespacesResponse>,
+    input: __S(4, __c1, 0) as any as S.Schema<ListNamespacesRequest>,
+    output: __S(7, __c1, 3) as any as S.Schema<ListNamespacesResponse>,
     errors: [InvalidIdentifier, CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
     retry: Retry.Retry,
@@ -199,7 +199,11 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "ListNamespaceObjectsResponse",
       });
-    case 4:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -215,7 +219,7 @@ function __c0(j: number): any {
           )
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "ListNamespacesRequest" });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.NullOr(S.String)),
@@ -225,18 +229,17 @@ function __c0(j: number): any {
           useSqlite: S.optional(S.NullOr(S.Boolean).pipe(T.Body("use_sqlite"))),
         }),
       ).annotate({ identifier: "NamespacesListResultItem" });
-    case 6:
-      return S.Array(__S(5, __c0, 5));
-    case 7:
+    case 2:
+      return S.Array(__S(5, __c1, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          result: __S(6, __c0, 6).pipe(T.EnvelopePayload()),
+          result: __S(6, __c1, 2).pipe(T.EnvelopePayload()),
           resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "ListNamespacesResponse" });
   }
 }
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

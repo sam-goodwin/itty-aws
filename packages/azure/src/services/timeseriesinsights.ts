@@ -735,8 +735,8 @@ export const AccessPoliciesCreateOrUpdate: API.OperationMethod<
   AccessPoliciesCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2, __c0, 2) as any as S.Schema<AccessPoliciesCreateOrUpdateRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<AccessPoliciesCreateOrUpdateResponse>,
+  input: __S(0, __c0, 0) as any as S.Schema<AccessPoliciesCreateOrUpdateRequest>,
+  output: __S(16, __c1, 0) as any as S.Schema<AccessPoliciesCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -750,8 +750,8 @@ export const DeleteAccessPolicy: API.OperationMethod<
   DeleteAccessPolicyError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(4, __c0, 4) as any as S.Schema<DeleteAccessPolicyRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<DeleteAccessPolicyResponse>,
+  input: __S(48, __c3, 0) as any as S.Schema<DeleteAccessPolicyRequest>,
+  output: __S(64, __c4, 0) as any as S.Schema<DeleteAccessPolicyResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -765,8 +765,8 @@ export const DeleteEnvironment: API.OperationMethod<
   DeleteEnvironmentError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(6, __c0, 6) as any as S.Schema<DeleteEnvironmentRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<DeleteEnvironmentResponse>,
+  input: __S(288, __c18, 0) as any as S.Schema<DeleteEnvironmentRequest>,
+  output: __S(64, __c4, 0) as any as S.Schema<DeleteEnvironmentResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -780,8 +780,8 @@ export const DeleteEventSource: API.OperationMethod<
   DeleteEventSourceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(7, __c0, 7) as any as S.Schema<DeleteEventSourceRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<DeleteEventSourceResponse>,
+  input: __S(336, __c21, 0) as any as S.Schema<DeleteEventSourceRequest>,
+  output: __S(64, __c4, 0) as any as S.Schema<DeleteEventSourceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -795,8 +795,8 @@ export const DeleteReferenceDataSet: API.OperationMethod<
   DeleteReferenceDataSetError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(8, __c1, 0) as any as S.Schema<DeleteReferenceDataSetRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<DeleteReferenceDataSetResponse>,
+  input: __S(352, __c22, 0) as any as S.Schema<DeleteReferenceDataSetRequest>,
+  output: __S(64, __c4, 0) as any as S.Schema<DeleteReferenceDataSetResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -810,8 +810,8 @@ export const EnvironmentsCreateOrUpdate: API.OperationMethod<
   EnvironmentsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(11, __c1, 3) as any as S.Schema<EnvironmentsCreateOrUpdateRequest>,
-  output: __S(12, __c1, 4) as any as S.Schema<EnvironmentsCreateOrUpdateResponse>,
+  input: __S(368, __c23, 0) as any as S.Schema<EnvironmentsCreateOrUpdateRequest>,
+  output: __S(369, __c23, 1) as any as S.Schema<EnvironmentsCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -825,8 +825,8 @@ export const EventSourcesCreateOrUpdate: API.OperationMethod<
   EventSourcesCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(15, __c1, 7) as any as S.Schema<EventSourcesCreateOrUpdateRequest>,
-  output: __S(16, __c2, 0) as any as S.Schema<EventSourcesCreateOrUpdateResponse>,
+  input: __S(418, __c26, 2) as any as S.Schema<EventSourcesCreateOrUpdateRequest>,
+  output: __S(419, __c26, 3) as any as S.Schema<EventSourcesCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -840,8 +840,8 @@ export const GetAccessPolicy: API.OperationMethod<
   GetAccessPolicyError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(17, __c2, 1) as any as S.Schema<GetAccessPolicyRequest>,
-  output: __S(18, __c2, 2) as any as S.Schema<GetAccessPolicyResponse>,
+  input: __S(432, __c27, 0) as any as S.Schema<GetAccessPolicyRequest>,
+  output: __S(448, __c28, 0) as any as S.Schema<GetAccessPolicyResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -855,8 +855,8 @@ export const GetEnvironment: API.OperationMethod<
   GetEnvironmentError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(19, __c2, 3) as any as S.Schema<GetEnvironmentRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<GetEnvironmentResponse>,
+  input: __S(464, __c29, 0) as any as S.Schema<GetEnvironmentRequest>,
+  output: __S(465, __c29, 1) as any as S.Schema<GetEnvironmentResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -870,8 +870,8 @@ export const GetEventSource: API.OperationMethod<
   GetEventSourceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(21, __c2, 5) as any as S.Schema<GetEventSourceRequest>,
-  output: __S(22, __c2, 6) as any as S.Schema<GetEventSourceResponse>,
+  input: __S(480, __c30, 0) as any as S.Schema<GetEventSourceRequest>,
+  output: __S(481, __c30, 1) as any as S.Schema<GetEventSourceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -885,8 +885,8 @@ export const GetReferenceDataSet: API.OperationMethod<
   GetReferenceDataSetError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(23, __c2, 7) as any as S.Schema<GetReferenceDataSetRequest>,
-  output: __S(27, __c3, 3) as any as S.Schema<GetReferenceDataSetResponse>,
+  input: __S(80, __c5, 0) as any as S.Schema<GetReferenceDataSetRequest>,
+  output: __S(112, __c7, 0) as any as S.Schema<GetReferenceDataSetResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -900,8 +900,8 @@ export const ListAccessPolicyByEnvironment: API.OperationMethod<
   ListAccessPolicyByEnvironmentError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(28, __c3, 4) as any as S.Schema<ListAccessPolicyByEnvironmentRequest>,
-  output: __S(30, __c3, 6) as any as S.Schema<AccessPolicyListResponse>,
+  input: __S(128, __c8, 0) as any as S.Schema<ListAccessPolicyByEnvironmentRequest>,
+  output: __S(130, __c8, 2) as any as S.Schema<AccessPolicyListResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -915,8 +915,8 @@ export const ListEnvironmentByResourceGroup: API.OperationMethod<
   ListEnvironmentByResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(31, __c3, 7) as any as S.Schema<ListEnvironmentByResourceGroupRequest>,
-  output: __S(34, __c4, 2) as any as S.Schema<EnvironmentListResponse>,
+  input: __S(144, __c9, 0) as any as S.Schema<ListEnvironmentByResourceGroupRequest>,
+  output: __S(162, __c10, 2) as any as S.Schema<EnvironmentListResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -930,8 +930,8 @@ export const ListEnvironmentBySubscription: API.OperationMethod<
   ListEnvironmentBySubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(35, __c4, 3) as any as S.Schema<ListEnvironmentBySubscriptionRequest>,
-  output: __S(34, __c4, 2) as any as S.Schema<EnvironmentListResponse>,
+  input: __S(176, __c11, 0) as any as S.Schema<ListEnvironmentBySubscriptionRequest>,
+  output: __S(162, __c10, 2) as any as S.Schema<EnvironmentListResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -945,8 +945,8 @@ export const ListEventSourceByEnvironment: API.OperationMethod<
   ListEventSourceByEnvironmentError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(36, __c4, 4) as any as S.Schema<ListEventSourceByEnvironmentRequest>,
-  output: __S(39, __c4, 7) as any as S.Schema<EventSourceListResponse>,
+  input: __S(192, __c12, 0) as any as S.Schema<ListEventSourceByEnvironmentRequest>,
+  output: __S(195, __c12, 3) as any as S.Schema<EventSourceListResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -960,8 +960,8 @@ export const ListOperations: API.OperationMethod<
   ListOperationsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(40, __c5, 0) as any as S.Schema<ListOperationsRequest>,
-  output: __S(52, __c6, 4) as any as S.Schema<OperationListResult>,
+  input: __S(208, __c13, 0) as any as S.Schema<ListOperationsRequest>,
+  output: __S(220, __c13, 12) as any as S.Schema<OperationListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -975,8 +975,8 @@ export const ListReferenceDataSetByEnvironment: API.OperationMethod<
   ListReferenceDataSetByEnvironmentError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(53, __c6, 5) as any as S.Schema<ListReferenceDataSetByEnvironmentRequest>,
-  output: __S(56, __c7, 0) as any as S.Schema<ReferenceDataSetListResponse>,
+  input: __S(224, __c14, 0) as any as S.Schema<ListReferenceDataSetByEnvironmentRequest>,
+  output: __S(227, __c14, 3) as any as S.Schema<ReferenceDataSetListResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -990,8 +990,8 @@ export const ReferenceDataSetsCreateOrUpdate: API.OperationMethod<
   ReferenceDataSetsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(58, __c7, 2) as any as S.Schema<ReferenceDataSetsCreateOrUpdateRequest>,
-  output: __S(27, __c3, 3) as any as S.Schema<ReferenceDataSetsCreateOrUpdateResponse>,
+  input: __S(241, __c15, 1) as any as S.Schema<ReferenceDataSetsCreateOrUpdateRequest>,
+  output: __S(112, __c7, 0) as any as S.Schema<ReferenceDataSetsCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1005,8 +1005,8 @@ export const UpdateAccessPolicy: API.OperationMethod<
   UpdateAccessPolicyError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(60, __c7, 4) as any as S.Schema<UpdateAccessPolicyRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<UpdateAccessPolicyResponse>,
+  input: __S(257, __c16, 1) as any as S.Schema<UpdateAccessPolicyRequest>,
+  output: __S(16, __c1, 0) as any as S.Schema<UpdateAccessPolicyResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1020,8 +1020,8 @@ export const UpdateEnvironment: API.OperationMethod<
   UpdateEnvironmentError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(61, __c7, 5) as any as S.Schema<UpdateEnvironmentRequest>,
-  output: __S(62, __c7, 6) as any as S.Schema<UpdateEnvironmentResponse>,
+  input: __S(272, __c17, 0) as any as S.Schema<UpdateEnvironmentRequest>,
+  output: __S(273, __c17, 1) as any as S.Schema<UpdateEnvironmentResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1035,8 +1035,8 @@ export const UpdateEventSource: API.OperationMethod<
   UpdateEventSourceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(63, __c7, 7) as any as S.Schema<UpdateEventSourceRequest>,
-  output: __S(64, __c8, 0) as any as S.Schema<UpdateEventSourceResponse>,
+  input: __S(304, __c19, 0) as any as S.Schema<UpdateEventSourceRequest>,
+  output: __S(305, __c19, 1) as any as S.Schema<UpdateEventSourceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1050,8 +1050,8 @@ export const UpdateReferenceDataSet: API.OperationMethod<
   UpdateReferenceDataSetError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(65, __c8, 1) as any as S.Schema<UpdateReferenceDataSetRequest>,
-  output: __S(27, __c3, 3) as any as S.Schema<UpdateReferenceDataSetResponse>,
+  input: __S(320, __c20, 0) as any as S.Schema<UpdateReferenceDataSetRequest>,
+  output: __S(112, __c7, 0) as any as S.Schema<UpdateReferenceDataSetResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1061,25 +1061,13 @@ export const UpdateReferenceDataSet: API.OperationMethod<
 function __c0(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(S.String);
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          principalObjectId: S.optional(S.String),
-          description: S.optional(S.String),
-          roles: S.optional(__S(0, __c0, 0)),
-        }),
-      ).annotate({
-        identifier: "AccessPolicyResourceProperties",
-      });
-    case 2:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           environmentName: S.String.pipe(T.Label()),
           accessPolicyName: S.String.pipe(T.Label()),
-          properties: __S(1, __c0, 1),
+          properties: __S(33, __c2, 1),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -1091,18 +1079,42 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "AccessPoliciesCreateOrUpdateRequest",
       });
-    case 3:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          properties: S.optional(__S(1, __c0, 1)),
+          properties: S.optional(__S(33, __c2, 1)),
         }),
       ).annotate({
         identifier: "AccessPoliciesCreateOrUpdateResponse",
       });
-    case 4:
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          principalObjectId: S.optional(S.String),
+          description: S.optional(S.String),
+          roles: S.optional(__S(32, __c2, 0)),
+        }),
+      ).annotate({
+        identifier: "AccessPolicyResourceProperties",
+      });
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -1120,242 +1132,19 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "DeleteAccessPolicyRequest",
       });
-    case 5:
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "DeleteAccessPolicyResponse",
       });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          environmentName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.TimeSeriesInsights/environments/{environmentName}",
-            code: 200,
-            apiVersion: "2020-05-15",
-          }),
-        ),
-      ).annotate({ identifier: "DeleteEnvironmentRequest" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          environmentName: S.String.pipe(T.Label()),
-          eventSourceName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.TimeSeriesInsights/environments/{environmentName}/eventSources/{eventSourceName}",
-            code: 200,
-            apiVersion: "2020-05-15",
-          }),
-        ),
-      ).annotate({ identifier: "DeleteEventSourceRequest" });
   }
 }
-function __c1(j: number): any {
+function __c5(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          environmentName: S.String.pipe(T.Label()),
-          referenceDataSetName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.TimeSeriesInsights/environments/{environmentName}/referenceDataSets/{referenceDataSetName}",
-            code: 200,
-            apiVersion: "2020-05-15",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteReferenceDataSetRequest",
-      });
-    case 1:
-      return S.Record(S.String, S.String);
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String,
-          capacity: S.Number,
-        }),
-      ).annotate({ identifier: "Sku" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          environmentName: S.String.pipe(T.Label()),
-          location: S.String,
-          tags: S.optional(__S(9, __c1, 1)),
-          kind: S.String,
-          sku: __S(10, __c1, 2),
-        }).pipe(
-          T.Http({
-            method: "PUT",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.TimeSeriesInsights/environments/{environmentName}",
-            code: 200,
-            apiVersion: "2020-05-15",
-          }),
-        ),
-      ).annotate({
-        identifier: "EnvironmentsCreateOrUpdateRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          location: S.String,
-          tags: S.optional(__S(9, __c1, 1)),
-          sku: __S(10, __c1, 2),
-          kind: S.String,
-        }),
-      ).annotate({
-        identifier: "EnvironmentsCreateOrUpdateResponse",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          propertyName: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "LocalTimestampTimeZoneOffset",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          format: S.optional(S.String),
-          timeZoneOffset: S.optional(__S(13, __c1, 5)),
-        }),
-      ).annotate({ identifier: "LocalTimestamp" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          environmentName: S.String.pipe(T.Label()),
-          eventSourceName: S.String.pipe(T.Label()),
-          location: S.String,
-          tags: S.optional(__S(9, __c1, 1)),
-          kind: S.String,
-          localTimestamp: S.optional(__S(14, __c1, 6)),
-        }).pipe(
-          T.Http({
-            method: "PUT",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.TimeSeriesInsights/environments/{environmentName}/eventSources/{eventSourceName}",
-            code: 200,
-            apiVersion: "2020-05-15",
-          }),
-        ),
-      ).annotate({
-        identifier: "EventSourcesCreateOrUpdateRequest",
-      });
-  }
-}
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          location: S.String,
-          tags: S.optional(__S(9, __c1, 1)),
-          kind: S.String,
-        }),
-      ).annotate({
-        identifier: "EventSourcesCreateOrUpdateResponse",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          environmentName: S.String.pipe(T.Label()),
-          accessPolicyName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.TimeSeriesInsights/environments/{environmentName}/accessPolicies/{accessPolicyName}",
-            code: 200,
-            apiVersion: "2020-05-15",
-          }),
-        ),
-      ).annotate({ identifier: "GetAccessPolicyRequest" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          properties: S.optional(__S(1, __c0, 1)),
-        }),
-      ).annotate({ identifier: "GetAccessPolicyResponse" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          environmentName: S.String.pipe(T.Label()),
-          _expand: S.optional(S.String.pipe(T.Query("$expand"))),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.TimeSeriesInsights/environments/{environmentName}",
-            code: 200,
-            apiVersion: "2020-05-15",
-          }),
-        ),
-      ).annotate({ identifier: "GetEnvironmentRequest" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          location: S.String,
-          tags: S.optional(__S(9, __c1, 1)),
-          sku: __S(10, __c1, 2),
-          kind: S.String,
-        }),
-      ).annotate({ identifier: "GetEnvironmentResponse" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          environmentName: S.String.pipe(T.Label()),
-          eventSourceName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.TimeSeriesInsights/environments/{environmentName}/eventSources/{eventSourceName}",
-            code: 200,
-            apiVersion: "2020-05-15",
-          }),
-        ),
-      ).annotate({ identifier: "GetEventSourceRequest" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          location: S.String,
-          tags: S.optional(__S(9, __c1, 1)),
-          kind: S.String,
-        }),
-      ).annotate({ identifier: "GetEventSourceResponse" });
-    case 7:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -1375,7 +1164,7 @@ function __c2(j: number): any {
       });
   }
 }
-function __c3(j: number): any {
+function __c6(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1387,11 +1176,11 @@ function __c3(j: number): any {
         identifier: "ReferenceDataSetKeyProperty",
       });
     case 1:
-      return S.Array(__S(24, __c3, 0));
+      return S.Array(__S(96, __c6, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          keyProperties: __S(25, __c3, 1),
+          keyProperties: __S(97, __c6, 1),
           dataStringComparisonBehavior: S.optional(S.String),
           provisioningState: S.optional(S.String),
           creationTime: S.optional(S.String),
@@ -1399,20 +1188,28 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "ReferenceDataSetResourceProperties",
       });
-    case 3:
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
           location: S.String,
-          tags: S.optional(__S(9, __c1, 1)),
-          properties: S.optional(__S(26, __c3, 2)),
+          tags: S.optional(__S(384, __c24, 0)),
+          properties: S.optional(__S(98, __c6, 2)),
         }),
       ).annotate({
         identifier: "GetReferenceDataSetResponse",
       });
-    case 4:
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -1429,15 +1226,19 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "ListAccessPolicyByEnvironmentRequest",
       });
-    case 5:
-      return S.Array(__S(18, __c2, 2));
-    case 6:
+    case 1:
+      return S.Array(__S(448, __c28, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(29, __c3, 5)),
+          value: S.optional(__S(129, __c8, 1)),
         }),
       ).annotate({ identifier: "AccessPolicyListResponse" });
-    case 7:
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -1455,7 +1256,7 @@ function __c3(j: number): any {
       });
   }
 }
-function __c4(j: number): any {
+function __c10(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1464,20 +1265,24 @@ function __c4(j: number): any {
           name: S.optional(S.String),
           type: S.optional(S.String),
           location: S.String,
-          tags: S.optional(__S(9, __c1, 1)),
-          sku: __S(10, __c1, 2),
+          tags: S.optional(__S(384, __c24, 0)),
+          sku: __S(400, __c25, 0),
           kind: S.String,
         }),
       ).annotate({ identifier: "EnvironmentResource" });
     case 1:
-      return S.Array(__S(32, __c4, 0));
+      return S.Array(__S(160, __c10, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(33, __c4, 1)),
+          value: S.optional(__S(161, __c10, 1)),
         }),
       ).annotate({ identifier: "EnvironmentListResponse" });
-    case 3:
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -1492,7 +1297,11 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "ListEnvironmentBySubscriptionRequest",
       });
-    case 4:
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -1509,28 +1318,28 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "ListEventSourceByEnvironmentRequest",
       });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
           location: S.String,
-          tags: S.optional(__S(9, __c1, 1)),
+          tags: S.optional(__S(384, __c24, 0)),
           kind: S.String,
         }),
       ).annotate({ identifier: "EventSourceResource" });
-    case 6:
-      return S.Array(__S(37, __c4, 5));
-    case 7:
+    case 2:
+      return S.Array(__S(193, __c12, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(38, __c4, 6)),
+          value: S.optional(__S(194, __c12, 2)),
         }),
       ).annotate({ identifier: "EventSourceListResponse" });
   }
 }
-function __c5(j: number): any {
+function __c13(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1560,7 +1369,7 @@ function __c5(j: number): any {
         }),
       ).annotate({ identifier: "Dimension" });
     case 3:
-      return S.Array(__S(42, __c5, 2));
+      return S.Array(__S(210, __c13, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
@@ -1569,7 +1378,7 @@ function __c5(j: number): any {
         }),
       ).annotate({ identifier: "MetricAvailability" });
     case 5:
-      return S.Array(__S(44, __c5, 4));
+      return S.Array(__S(212, __c13, 4));
     case 6:
       return S.suspend(() =>
         S.Struct({
@@ -1577,51 +1386,51 @@ function __c5(j: number): any {
           displayName: S.optional(S.String),
           displayDescription: S.optional(S.String),
           unit: S.optional(S.String),
-          dimensions: S.optional(__S(43, __c5, 3)),
+          dimensions: S.optional(__S(211, __c13, 3)),
           aggregationType: S.optional(S.String),
-          availabilities: S.optional(__S(45, __c5, 5)),
+          availabilities: S.optional(__S(213, __c13, 5)),
           category: S.optional(S.String),
           resourceIdDimensionNameOverride: S.optional(S.String),
         }),
       ).annotate({ identifier: "MetricSpecification" });
     case 7:
-      return S.Array(__S(46, __c5, 6));
-  }
-}
-function __c6(j: number): any {
-  switch (j) {
-    case 0:
+      return S.Array(__S(214, __c13, 6));
+    case 8:
       return S.suspend(() =>
         S.Struct({
-          metricSpecifications: S.optional(__S(47, __c5, 7)),
-          logSpecifications: S.optional(__S(43, __c5, 3)),
+          metricSpecifications: S.optional(__S(215, __c13, 7)),
+          logSpecifications: S.optional(__S(211, __c13, 3)),
         }),
       ).annotate({ identifier: "ServiceSpecification" });
-    case 1:
+    case 9:
       return S.suspend(() =>
         S.Struct({
-          serviceSpecification: S.optional(__S(48, __c6, 0)),
+          serviceSpecification: S.optional(__S(216, __c13, 8)),
         }),
       ).annotate({ identifier: "OperationProperties" });
-    case 2:
+    case 10:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
-          display: S.optional(__S(41, __c5, 1)),
+          display: S.optional(__S(209, __c13, 1)),
           origin: S.optional(S.String),
-          properties: S.optional(__S(49, __c6, 1)),
+          properties: S.optional(__S(217, __c13, 9)),
         }),
       ).annotate({ identifier: "Operation" });
-    case 3:
-      return S.Array(__S(50, __c6, 2));
-    case 4:
+    case 11:
+      return S.Array(__S(218, __c13, 10));
+    case 12:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(51, __c6, 3)),
+          value: S.optional(__S(219, __c13, 11)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "OperationListResult" });
-    case 5:
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -1638,41 +1447,41 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "ListReferenceDataSetByEnvironmentRequest",
       });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
           location: S.String,
-          tags: S.optional(__S(9, __c1, 1)),
-          properties: S.optional(__S(26, __c3, 2)),
+          tags: S.optional(__S(384, __c24, 0)),
+          properties: S.optional(__S(98, __c6, 2)),
         }),
       ).annotate({ identifier: "ReferenceDataSetResource" });
-    case 7:
-      return S.Array(__S(54, __c6, 6));
-  }
-}
-function __c7(j: number): any {
-  switch (j) {
-    case 0:
+    case 2:
+      return S.Array(__S(225, __c14, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(55, __c6, 7)),
+          value: S.optional(__S(226, __c14, 2)),
         }),
       ).annotate({
         identifier: "ReferenceDataSetListResponse",
       });
-    case 1:
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          keyProperties: __S(25, __c3, 1),
+          keyProperties: __S(97, __c6, 1),
           dataStringComparisonBehavior: S.optional(S.String),
         }),
       ).annotate({
         identifier: "ReferenceDataSetCreationProperties",
       });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -1680,8 +1489,8 @@ function __c7(j: number): any {
           environmentName: S.String.pipe(T.Label()),
           referenceDataSetName: S.String.pipe(T.Label()),
           location: S.String,
-          tags: S.optional(__S(9, __c1, 1)),
-          properties: __S(57, __c7, 1),
+          tags: S.optional(__S(384, __c24, 0)),
+          properties: __S(240, __c15, 0),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -1693,23 +1502,27 @@ function __c7(j: number): any {
       ).annotate({
         identifier: "ReferenceDataSetsCreateOrUpdateRequest",
       });
-    case 3:
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           description: S.optional(S.String),
-          roles: S.optional(__S(0, __c0, 0)),
+          roles: S.optional(__S(32, __c2, 0)),
         }),
       ).annotate({
         identifier: "AccessPolicyMutableProperties",
       });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           environmentName: S.String.pipe(T.Label()),
           accessPolicyName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(59, __c7, 3)),
+          properties: S.optional(__S(256, __c16, 0)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -1721,14 +1534,18 @@ function __c7(j: number): any {
       ).annotate({
         identifier: "UpdateAccessPolicyRequest",
       });
-    case 5:
+  }
+}
+function __c17(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           environmentName: S.String.pipe(T.Label()),
           kind: S.String,
-          tags: S.optional(__S(9, __c1, 1)),
+          tags: S.optional(__S(384, __c24, 0)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -1738,21 +1555,44 @@ function __c7(j: number): any {
           }),
         ),
       ).annotate({ identifier: "UpdateEnvironmentRequest" });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
           location: S.String,
-          tags: S.optional(__S(9, __c1, 1)),
-          sku: __S(10, __c1, 2),
+          tags: S.optional(__S(384, __c24, 0)),
+          sku: __S(400, __c25, 0),
           kind: S.String,
         }),
       ).annotate({
         identifier: "UpdateEnvironmentResponse",
       });
-    case 7:
+  }
+}
+function __c18(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          environmentName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.TimeSeriesInsights/environments/{environmentName}",
+            code: 200,
+            apiVersion: "2020-05-15",
+          }),
+        ),
+      ).annotate({ identifier: "DeleteEnvironmentRequest" });
+  }
+}
+function __c19(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -1760,7 +1600,7 @@ function __c7(j: number): any {
           environmentName: S.String.pipe(T.Label()),
           eventSourceName: S.String.pipe(T.Label()),
           kind: S.String,
-          tags: S.optional(__S(9, __c1, 1)),
+          tags: S.optional(__S(384, __c24, 0)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -1770,31 +1610,31 @@ function __c7(j: number): any {
           }),
         ),
       ).annotate({ identifier: "UpdateEventSourceRequest" });
-  }
-}
-function __c8(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
           location: S.String,
-          tags: S.optional(__S(9, __c1, 1)),
+          tags: S.optional(__S(384, __c24, 0)),
           kind: S.String,
         }),
       ).annotate({
         identifier: "UpdateEventSourceResponse",
       });
-    case 1:
+  }
+}
+function __c20(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           environmentName: S.String.pipe(T.Label()),
           referenceDataSetName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(9, __c1, 1)),
+          tags: S.optional(__S(384, __c24, 0)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -1808,7 +1648,254 @@ function __c8(j: number): any {
       });
   }
 }
-
+function __c21(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          environmentName: S.String.pipe(T.Label()),
+          eventSourceName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.TimeSeriesInsights/environments/{environmentName}/eventSources/{eventSourceName}",
+            code: 200,
+            apiVersion: "2020-05-15",
+          }),
+        ),
+      ).annotate({ identifier: "DeleteEventSourceRequest" });
+  }
+}
+function __c22(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          environmentName: S.String.pipe(T.Label()),
+          referenceDataSetName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.TimeSeriesInsights/environments/{environmentName}/referenceDataSets/{referenceDataSetName}",
+            code: 200,
+            apiVersion: "2020-05-15",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteReferenceDataSetRequest",
+      });
+  }
+}
+function __c23(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          environmentName: S.String.pipe(T.Label()),
+          location: S.String,
+          tags: S.optional(__S(384, __c24, 0)),
+          kind: S.String,
+          sku: __S(400, __c25, 0),
+        }).pipe(
+          T.Http({
+            method: "PUT",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.TimeSeriesInsights/environments/{environmentName}",
+            code: 200,
+            apiVersion: "2020-05-15",
+          }),
+        ),
+      ).annotate({
+        identifier: "EnvironmentsCreateOrUpdateRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          location: S.String,
+          tags: S.optional(__S(384, __c24, 0)),
+          sku: __S(400, __c25, 0),
+          kind: S.String,
+        }),
+      ).annotate({
+        identifier: "EnvironmentsCreateOrUpdateResponse",
+      });
+  }
+}
+function __c24(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, S.String);
+  }
+}
+function __c25(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String,
+          capacity: S.Number,
+        }),
+      ).annotate({ identifier: "Sku" });
+  }
+}
+function __c26(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          propertyName: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "LocalTimestampTimeZoneOffset",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          format: S.optional(S.String),
+          timeZoneOffset: S.optional(__S(416, __c26, 0)),
+        }),
+      ).annotate({ identifier: "LocalTimestamp" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          environmentName: S.String.pipe(T.Label()),
+          eventSourceName: S.String.pipe(T.Label()),
+          location: S.String,
+          tags: S.optional(__S(384, __c24, 0)),
+          kind: S.String,
+          localTimestamp: S.optional(__S(417, __c26, 1)),
+        }).pipe(
+          T.Http({
+            method: "PUT",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.TimeSeriesInsights/environments/{environmentName}/eventSources/{eventSourceName}",
+            code: 200,
+            apiVersion: "2020-05-15",
+          }),
+        ),
+      ).annotate({
+        identifier: "EventSourcesCreateOrUpdateRequest",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          location: S.String,
+          tags: S.optional(__S(384, __c24, 0)),
+          kind: S.String,
+        }),
+      ).annotate({
+        identifier: "EventSourcesCreateOrUpdateResponse",
+      });
+  }
+}
+function __c27(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          environmentName: S.String.pipe(T.Label()),
+          accessPolicyName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.TimeSeriesInsights/environments/{environmentName}/accessPolicies/{accessPolicyName}",
+            code: 200,
+            apiVersion: "2020-05-15",
+          }),
+        ),
+      ).annotate({ identifier: "GetAccessPolicyRequest" });
+  }
+}
+function __c28(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          properties: S.optional(__S(33, __c2, 1)),
+        }),
+      ).annotate({ identifier: "GetAccessPolicyResponse" });
+  }
+}
+function __c29(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          environmentName: S.String.pipe(T.Label()),
+          _expand: S.optional(S.String.pipe(T.Query("$expand"))),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.TimeSeriesInsights/environments/{environmentName}",
+            code: 200,
+            apiVersion: "2020-05-15",
+          }),
+        ),
+      ).annotate({ identifier: "GetEnvironmentRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          location: S.String,
+          tags: S.optional(__S(384, __c24, 0)),
+          sku: __S(400, __c25, 0),
+          kind: S.String,
+        }),
+      ).annotate({ identifier: "GetEnvironmentResponse" });
+  }
+}
+function __c30(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          environmentName: S.String.pipe(T.Label()),
+          eventSourceName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.TimeSeriesInsights/environments/{environmentName}/eventSources/{eventSourceName}",
+            code: 200,
+            apiVersion: "2020-05-15",
+          }),
+        ),
+      ).annotate({ identifier: "GetEventSourceRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          location: S.String,
+          tags: S.optional(__S(384, __c24, 0)),
+          kind: S.String,
+        }),
+      ).annotate({ identifier: "GetEventSourceResponse" });
+  }
+}
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

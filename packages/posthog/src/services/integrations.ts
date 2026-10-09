@@ -636,8 +636,8 @@ export const createIntegration: API.OperationMethod<
   CreateIntegrationError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(0, __c0, 0) as any as S.Schema<CreateIntegrationRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<IntegrationConfig>,
+  input: __S(84, __c21, 0) as any as S.Schema<CreateIntegrationRequest>,
+  output: __S(90, __c22, 2) as any as S.Schema<IntegrationConfig>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -651,8 +651,8 @@ export const createIntegrationsGithubLinkExisting: API.OperationMethod<
   CreateIntegrationsGithubLinkExistingError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(4, __c0, 4) as any as S.Schema<CreateIntegrationsGithubLinkExistingRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<IntegrationConfig>,
+  input: __S(116, __c29, 0) as any as S.Schema<CreateIntegrationsGithubLinkExistingRequest>,
+  output: __S(90, __c22, 2) as any as S.Schema<IntegrationConfig>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -666,8 +666,8 @@ export const createIntegrationsGithubPrepareCallback: API.OperationMethod<
   CreateIntegrationsGithubPrepareCallbackError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(5, __c0, 5) as any as S.Schema<CreateIntegrationsGithubPrepareCallbackRequest>,
-  output: __S(6, __c0, 6) as any as S.Schema<CreateIntegrationsGithubPrepareCallbackResponse>,
+  input: __S(120, __c30, 0) as any as S.Schema<CreateIntegrationsGithubPrepareCallbackRequest>,
+  output: __S(124, __c31, 0) as any as S.Schema<CreateIntegrationsGithubPrepareCallbackResponse>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -681,8 +681,8 @@ export const createIntegrationsRequestAccess: API.OperationMethod<
   CreateIntegrationsRequestAccessError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(7, __c0, 7) as any as S.Schema<CreateIntegrationsRequestAccessRequest>,
-  output: __S(8, __c1, 0) as any as S.Schema<IntegrationAccessRequestResponse>,
+  input: __S(128, __c32, 0) as any as S.Schema<CreateIntegrationsRequestAccessRequest>,
+  output: __S(129, __c32, 1) as any as S.Schema<IntegrationAccessRequestResponse>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -695,8 +695,8 @@ export const getIntegration: API.OperationMethod<
   GetIntegrationError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(9, __c1, 1) as any as S.Schema<GetIntegrationRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<IntegrationConfig>,
+  input: __S(132, __c33, 0) as any as S.Schema<GetIntegrationRequest>,
+  output: __S(90, __c22, 2) as any as S.Schema<IntegrationConfig>,
   errors: [Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -709,8 +709,8 @@ export const getIntegrationsAnthropicManagedAgent: API.OperationMethod<
   GetIntegrationsAnthropicManagedAgentError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(10, __c1, 2) as any as S.Schema<GetIntegrationsAnthropicManagedAgentRequest>,
-  output: __S(6, __c0, 6) as any as S.Schema<GetIntegrationsAnthropicManagedAgentResponse>,
+  input: __S(136, __c34, 0) as any as S.Schema<GetIntegrationsAnthropicManagedAgentRequest>,
+  output: __S(124, __c31, 0) as any as S.Schema<GetIntegrationsAnthropicManagedAgentResponse>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -723,8 +723,8 @@ export const getIntegrationsAnthropicManagedAgentEnv: API.OperationMethod<
   GetIntegrationsAnthropicManagedAgentEnvError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(11, __c1, 3) as any as S.Schema<GetIntegrationsAnthropicManagedAgentEnvRequest>,
-  output: __S(6, __c0, 6) as any as S.Schema<GetIntegrationsAnthropicManagedAgentEnvResponse>,
+  input: __S(140, __c35, 0) as any as S.Schema<GetIntegrationsAnthropicManagedAgentEnvRequest>,
+  output: __S(124, __c31, 0) as any as S.Schema<GetIntegrationsAnthropicManagedAgentEnvResponse>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -737,8 +737,8 @@ export const getIntegrationsAnthropicManagedAgentVault: API.OperationMethod<
   GetIntegrationsAnthropicManagedAgentVaultError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(12, __c1, 4) as any as S.Schema<GetIntegrationsAnthropicManagedAgentVaultRequest>,
-  output: __S(6, __c0, 6) as any as S.Schema<GetIntegrationsAnthropicManagedAgentVaultResponse>,
+  input: __S(0, __c0, 0) as any as S.Schema<GetIntegrationsAnthropicManagedAgentVaultRequest>,
+  output: __S(124, __c31, 0) as any as S.Schema<GetIntegrationsAnthropicManagedAgentVaultResponse>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -751,8 +751,8 @@ export const getIntegrationsChannel: API.OperationMethod<
   GetIntegrationsChannelError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(13, __c1, 5) as any as S.Schema<GetIntegrationsChannelRequest>,
-  output: __S(16, __c2, 0) as any as S.Schema<SlackChannelsResponse>,
+  input: __S(4, __c1, 0) as any as S.Schema<GetIntegrationsChannelRequest>,
+  output: __S(7, __c1, 3) as any as S.Schema<SlackChannelsResponse>,
   errors: [Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -765,8 +765,8 @@ export const getIntegrationsClickupList: API.OperationMethod<
   GetIntegrationsClickupListError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(17, __c2, 1) as any as S.Schema<GetIntegrationsClickupListRequest>,
-  output: __S(6, __c0, 6) as any as S.Schema<GetIntegrationsClickupListResponse>,
+  input: __S(8, __c2, 0) as any as S.Schema<GetIntegrationsClickupListRequest>,
+  output: __S(124, __c31, 0) as any as S.Schema<GetIntegrationsClickupListResponse>,
   errors: [Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -779,8 +779,8 @@ export const getIntegrationsClickupSpace: API.OperationMethod<
   GetIntegrationsClickupSpaceError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(18, __c2, 2) as any as S.Schema<GetIntegrationsClickupSpaceRequest>,
-  output: __S(6, __c0, 6) as any as S.Schema<GetIntegrationsClickupSpaceResponse>,
+  input: __S(12, __c3, 0) as any as S.Schema<GetIntegrationsClickupSpaceRequest>,
+  output: __S(124, __c31, 0) as any as S.Schema<GetIntegrationsClickupSpaceResponse>,
   errors: [Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -793,8 +793,8 @@ export const getIntegrationsClickupWorkspace: API.OperationMethod<
   GetIntegrationsClickupWorkspaceError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(19, __c2, 3) as any as S.Schema<GetIntegrationsClickupWorkspaceRequest>,
-  output: __S(6, __c0, 6) as any as S.Schema<GetIntegrationsClickupWorkspaceResponse>,
+  input: __S(16, __c4, 0) as any as S.Schema<GetIntegrationsClickupWorkspaceRequest>,
+  output: __S(124, __c31, 0) as any as S.Schema<GetIntegrationsClickupWorkspaceResponse>,
   errors: [Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -808,8 +808,8 @@ export const getIntegrationsGithubAvailableInstallation: API.OperationMethod<
   GetIntegrationsGithubAvailableInstallationError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(20, __c2, 4) as any as S.Schema<GetIntegrationsGithubAvailableInstallationRequest>,
-  output: __S(23, __c2, 7) as any as S.Schema<GitHubAvailableInstallationsResponse>,
+  input: __S(20, __c5, 0) as any as S.Schema<GetIntegrationsGithubAvailableInstallationRequest>,
+  output: __S(23, __c5, 3) as any as S.Schema<GitHubAvailableInstallationsResponse>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -822,8 +822,8 @@ export const getIntegrationsGithubBranch: API.OperationMethod<
   GetIntegrationsGithubBranchError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(24, __c3, 0) as any as S.Schema<GetIntegrationsGithubBranchRequest>,
-  output: __S(26, __c3, 2) as any as S.Schema<GitHubBranchesResponse>,
+  input: __S(24, __c6, 0) as any as S.Schema<GetIntegrationsGithubBranchRequest>,
+  output: __S(26, __c6, 2) as any as S.Schema<GitHubBranchesResponse>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -836,8 +836,8 @@ export const getIntegrationsGithubRepos: API.OperationMethod<
   GetIntegrationsGithubReposError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(27, __c3, 3) as any as S.Schema<GetIntegrationsGithubReposRequest>,
-  output: __S(30, __c3, 6) as any as S.Schema<GitHubReposResponse>,
+  input: __S(28, __c7, 0) as any as S.Schema<GetIntegrationsGithubReposRequest>,
+  output: __S(29, __c7, 1) as any as S.Schema<GitHubReposResponse>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -850,8 +850,8 @@ export const getIntegrationsGithubTeam: API.OperationMethod<
   GetIntegrationsGithubTeamError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(31, __c3, 7) as any as S.Schema<GetIntegrationsGithubTeamRequest>,
-  output: __S(34, __c4, 2) as any as S.Schema<GitHubTeamsResponse>,
+  input: __S(36, __c9, 0) as any as S.Schema<GetIntegrationsGithubTeamRequest>,
+  output: __S(39, __c9, 3) as any as S.Schema<GitHubTeamsResponse>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -864,8 +864,8 @@ export const getIntegrationsGoogleAccessibleAccount: API.OperationMethod<
   GetIntegrationsGoogleAccessibleAccountError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(35, __c4, 3) as any as S.Schema<GetIntegrationsGoogleAccessibleAccountRequest>,
-  output: __S(6, __c0, 6) as any as S.Schema<GetIntegrationsGoogleAccessibleAccountResponse>,
+  input: __S(40, __c10, 0) as any as S.Schema<GetIntegrationsGoogleAccessibleAccountRequest>,
+  output: __S(124, __c31, 0) as any as S.Schema<GetIntegrationsGoogleAccessibleAccountResponse>,
   errors: [Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -878,8 +878,8 @@ export const getIntegrationsGoogleConversionAction: API.OperationMethod<
   GetIntegrationsGoogleConversionActionError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(36, __c4, 4) as any as S.Schema<GetIntegrationsGoogleConversionActionRequest>,
-  output: __S(6, __c0, 6) as any as S.Schema<GetIntegrationsGoogleConversionActionResponse>,
+  input: __S(44, __c11, 0) as any as S.Schema<GetIntegrationsGoogleConversionActionRequest>,
+  output: __S(124, __c31, 0) as any as S.Schema<GetIntegrationsGoogleConversionActionResponse>,
   errors: [Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -892,8 +892,8 @@ export const getIntegrationsJiraProject: API.OperationMethod<
   GetIntegrationsJiraProjectError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(37, __c4, 5) as any as S.Schema<GetIntegrationsJiraProjectRequest>,
-  output: __S(40, __c5, 0) as any as S.Schema<JiraProjectsResponse>,
+  input: __S(48, __c12, 0) as any as S.Schema<GetIntegrationsJiraProjectRequest>,
+  output: __S(51, __c12, 3) as any as S.Schema<JiraProjectsResponse>,
   errors: [Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -906,8 +906,8 @@ export const getIntegrationsLinearTeam: API.OperationMethod<
   GetIntegrationsLinearTeamError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(41, __c5, 1) as any as S.Schema<GetIntegrationsLinearTeamRequest>,
-  output: __S(44, __c5, 4) as any as S.Schema<LinearTeamsResponse>,
+  input: __S(52, __c13, 0) as any as S.Schema<GetIntegrationsLinearTeamRequest>,
+  output: __S(55, __c13, 3) as any as S.Schema<LinearTeamsResponse>,
   errors: [Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -920,8 +920,8 @@ export const getIntegrationsLinkedinAdsAccount: API.OperationMethod<
   GetIntegrationsLinkedinAdsAccountError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(45, __c5, 5) as any as S.Schema<GetIntegrationsLinkedinAdsAccountRequest>,
-  output: __S(6, __c0, 6) as any as S.Schema<GetIntegrationsLinkedinAdsAccountResponse>,
+  input: __S(56, __c14, 0) as any as S.Schema<GetIntegrationsLinkedinAdsAccountRequest>,
+  output: __S(124, __c31, 0) as any as S.Schema<GetIntegrationsLinkedinAdsAccountResponse>,
   errors: [Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -934,8 +934,8 @@ export const getIntegrationsLinkedinAdsConversionRule: API.OperationMethod<
   GetIntegrationsLinkedinAdsConversionRuleError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(46, __c5, 6) as any as S.Schema<GetIntegrationsLinkedinAdsConversionRuleRequest>,
-  output: __S(6, __c0, 6) as any as S.Schema<GetIntegrationsLinkedinAdsConversionRuleResponse>,
+  input: __S(60, __c15, 0) as any as S.Schema<GetIntegrationsLinkedinAdsConversionRuleRequest>,
+  output: __S(124, __c31, 0) as any as S.Schema<GetIntegrationsLinkedinAdsConversionRuleResponse>,
   errors: [Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -948,8 +948,8 @@ export const getIntegrationsTwilioPhoneNumber: API.OperationMethod<
   GetIntegrationsTwilioPhoneNumberError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(47, __c5, 7) as any as S.Schema<GetIntegrationsTwilioPhoneNumberRequest>,
-  output: __S(6, __c0, 6) as any as S.Schema<GetIntegrationsTwilioPhoneNumberResponse>,
+  input: __S(64, __c16, 0) as any as S.Schema<GetIntegrationsTwilioPhoneNumberRequest>,
+  output: __S(124, __c31, 0) as any as S.Schema<GetIntegrationsTwilioPhoneNumberResponse>,
   errors: [Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -962,8 +962,8 @@ export const getIntegrationsUser: API.OperationMethod<
   GetIntegrationsUserError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(48, __c6, 0) as any as S.Schema<GetIntegrationsUserRequest>,
-  output: __S(51, __c6, 3) as any as S.Schema<SlackUsersResponse>,
+  input: __S(68, __c17, 0) as any as S.Schema<GetIntegrationsUserRequest>,
+  output: __S(71, __c17, 3) as any as S.Schema<SlackUsersResponse>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -976,8 +976,8 @@ export const integrationsAuthorizeRetrieve: API.OperationMethod<
   IntegrationsAuthorizeRetrieveError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(52, __c6, 4) as any as S.Schema<IntegrationsAuthorizeRetrieveRequest>,
-  output: __S(6, __c0, 6) as any as S.Schema<IntegrationsAuthorizeRetrieveResponse>,
+  input: __S(72, __c18, 0) as any as S.Schema<IntegrationsAuthorizeRetrieveRequest>,
+  output: __S(124, __c31, 0) as any as S.Schema<IntegrationsAuthorizeRetrieveResponse>,
   errors: [Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -990,8 +990,8 @@ export const integrationsDestroy: API.OperationMethod<
   IntegrationsDestroyError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(53, __c6, 5) as any as S.Schema<IntegrationsDestroyRequest>,
-  output: __S(54, __c6, 6) as any as S.Schema<IntegrationsDestroyResponse>,
+  input: __S(76, __c19, 0) as any as S.Schema<IntegrationsDestroyRequest>,
+  output: __S(77, __c19, 1) as any as S.Schema<IntegrationsDestroyResponse>,
   errors: [Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1009,8 +1009,8 @@ export const integrationsDomainConnectApplyUrlCreate: API.OperationMethod<
   IntegrationsDomainConnectApplyUrlCreateError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(55, __c6, 7) as any as S.Schema<IntegrationsDomainConnectApplyUrlCreateRequest>,
-  output: __S(6, __c0, 6) as any as S.Schema<IntegrationsDomainConnectApplyUrlCreateResponse>,
+  input: __S(80, __c20, 0) as any as S.Schema<IntegrationsDomainConnectApplyUrlCreateRequest>,
+  output: __S(124, __c31, 0) as any as S.Schema<IntegrationsDomainConnectApplyUrlCreateResponse>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1023,8 +1023,8 @@ export const integrationsDomainConnectCheckRetrieve: API.OperationMethod<
   IntegrationsDomainConnectCheckRetrieveError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(56, __c7, 0) as any as S.Schema<IntegrationsDomainConnectCheckRetrieveRequest>,
-  output: __S(6, __c0, 6) as any as S.Schema<IntegrationsDomainConnectCheckRetrieveResponse>,
+  input: __S(92, __c23, 0) as any as S.Schema<IntegrationsDomainConnectCheckRetrieveRequest>,
+  output: __S(124, __c31, 0) as any as S.Schema<IntegrationsDomainConnectCheckRetrieveResponse>,
   errors: [Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1037,8 +1037,8 @@ export const integrationsEmailVerifyCreate: API.OperationMethod<
   IntegrationsEmailVerifyCreateError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(57, __c7, 1) as any as S.Schema<IntegrationsEmailVerifyCreateRequest>,
-  output: __S(6, __c0, 6) as any as S.Schema<IntegrationsEmailVerifyCreateResponse>,
+  input: __S(96, __c24, 0) as any as S.Schema<IntegrationsEmailVerifyCreateRequest>,
+  output: __S(124, __c31, 0) as any as S.Schema<IntegrationsEmailVerifyCreateResponse>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1052,8 +1052,8 @@ export const integrationsGithubOauthAuthorizeCreate: API.OperationMethod<
   IntegrationsGithubOauthAuthorizeCreateError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(58, __c7, 2) as any as S.Schema<IntegrationsGithubOauthAuthorizeCreateRequest>,
-  output: __S(59, __c7, 3) as any as S.Schema<GitHubOAuthAuthorizeResponse>,
+  input: __S(100, __c25, 0) as any as S.Schema<IntegrationsGithubOauthAuthorizeCreateRequest>,
+  output: __S(101, __c25, 1) as any as S.Schema<GitHubOAuthAuthorizeResponse>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1066,8 +1066,8 @@ export const integrationsGithubReposRefreshCreate: API.OperationMethod<
   IntegrationsGithubReposRefreshCreateError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(60, __c7, 4) as any as S.Schema<IntegrationsGithubReposRefreshCreateRequest>,
-  output: __S(61, __c7, 5) as any as S.Schema<GitHubReposRefreshResponse>,
+  input: __S(104, __c26, 0) as any as S.Schema<IntegrationsGithubReposRefreshCreateRequest>,
+  output: __S(105, __c26, 1) as any as S.Schema<GitHubReposRefreshResponse>,
   errors: [Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1080,8 +1080,8 @@ export const listIntegrations: API.OperationMethod<
   ListIntegrationsError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(62, __c7, 6) as any as S.Schema<ListIntegrationsRequest>,
-  output: __S(64, __c8, 0) as any as S.Schema<PaginatedIntegrationConfigList>,
+  input: __S(108, __c27, 0) as any as S.Schema<ListIntegrationsRequest>,
+  output: __S(110, __c27, 2) as any as S.Schema<PaginatedIntegrationConfigList>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1098,8 +1098,8 @@ export const updateIntegrationsEmailPartial: API.OperationMethod<
   UpdateIntegrationsEmailPartialError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(65, __c8, 1) as any as S.Schema<UpdateIntegrationsEmailPartialRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<IntegrationConfig>,
+  input: __S(112, __c28, 0) as any as S.Schema<UpdateIntegrationsEmailPartialRequest>,
+  output: __S(90, __c22, 2) as any as S.Schema<IntegrationConfig>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1109,155 +1109,6 @@ export const updateIntegrationsEmailPartial: API.OperationMethod<
 function __c0(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() =>
-        S.Struct({
-          project_id: S.String.pipe(T.Label()),
-          kind: S.optional(S.String),
-          config: S.optional(S.Unknown),
-        }).pipe(
-          T.Http({ method: "POST", uri: "/api/projects/{project_id}/integrations/", code: 200 }),
-        ),
-      ).annotate({ identifier: "CreateIntegrationRequest" });
-    case 1:
-      return S.Record(S.String, S.Unknown);
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.Number),
-          uuid: S.optional(S.String),
-          distinct_id: S.optional(S.NullOr(S.String)),
-          first_name: S.optional(S.String),
-          last_name: S.optional(S.String),
-          email: S.optional(S.String),
-          is_email_verified: S.optional(S.NullOr(S.Boolean)),
-          hedgehog_config: S.optional(S.NullOr(__S(1, __c0, 1))),
-          role_at_organization: S.optional(S.NullOr(S.Unknown)),
-        }),
-      ).annotate({ identifier: "UserBasic" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.Number),
-          kind: S.optional(S.String),
-          config: S.optional(S.Unknown),
-          created_at: S.optional(S.String),
-          created_by: S.optional(S.NullOr(__S(2, __c0, 2))),
-          errors: S.optional(S.String),
-          display_name: S.optional(S.String),
-          files_write_requestable: S.optional(S.Boolean),
-          installation_shared: S.optional(S.NullOr(S.Boolean)),
-          installation_status: S.optional(S.NullOr(S.String)),
-        }),
-      ).annotate({ identifier: "IntegrationConfig" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          project_id: S.String.pipe(T.Label()),
-          discovery_id: S.optional(S.NullOr(S.String)),
-          source_team_id: S.optional(S.NullOr(S.Number)),
-          installation_id: S.optional(S.NullOr(S.String)),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/api/projects/{project_id}/integrations/github/link_existing/",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateIntegrationsGithubLinkExistingRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          project_id: S.String.pipe(T.Label()),
-          next: S.optional(S.String),
-          installation_id: S.optional(S.String),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/api/projects/{project_id}/integrations/github/prepare_callback/",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateIntegrationsGithubPrepareCallbackRequest",
-      });
-    case 6:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "CreateIntegrationsGithubPrepareCallbackResponse",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          project_id: S.String.pipe(T.Label()),
-          kind: S.String,
-          reason: S.String,
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/api/projects/{project_id}/integrations/request_access/",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateIntegrationsRequestAccessRequest",
-      });
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          success: S.Boolean,
-        }),
-      ).annotate({
-        identifier: "IntegrationAccessRequestResponse",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          project_id: S.String.pipe(T.Label()),
-          id: S.Number.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/api/projects/{project_id}/integrations/{id}/",
-            code: 200,
-          }),
-        ),
-      ).annotate({ identifier: "GetIntegrationRequest" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          project_id: S.String.pipe(T.Label()),
-          id: S.Number.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/api/projects/{project_id}/integrations/{id}/anthropic_managed_agents/",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "GetIntegrationsAnthropicManagedAgentRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          project_id: S.String.pipe(T.Label()),
-          id: S.Number.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/api/projects/{project_id}/integrations/{id}/anthropic_managed_agent_environments/",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "GetIntegrationsAnthropicManagedAgentEnvRequest",
-      });
-    case 4:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -1272,7 +1123,11 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "GetIntegrationsAnthropicManagedAgentVaultRequest",
       });
-    case 5:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -1290,7 +1145,7 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "GetIntegrationsChannelRequest",
       });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
@@ -1301,21 +1156,21 @@ function __c1(j: number): any {
           is_private_without_access: S.Boolean,
         }),
       ).annotate({ identifier: "SlackChannel" });
-    case 7:
-      return S.Array(__S(14, __c1, 6));
+    case 2:
+      return S.Array(__S(5, __c1, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          channels: __S(6, __c1, 2),
+          lastRefreshedAt: S.optional(S.NullOr(S.String)),
+          has_more: S.optional(S.Boolean),
+        }),
+      ).annotate({ identifier: "SlackChannelsResponse" });
   }
 }
 function __c2(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() =>
-        S.Struct({
-          channels: __S(15, __c1, 7),
-          lastRefreshedAt: S.optional(S.NullOr(S.String)),
-          has_more: S.optional(S.Boolean),
-        }),
-      ).annotate({ identifier: "SlackChannelsResponse" });
-    case 1:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -1330,7 +1185,11 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "GetIntegrationsClickupListRequest",
       });
-    case 2:
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -1345,7 +1204,11 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "GetIntegrationsClickupSpaceRequest",
       });
-    case 3:
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -1360,7 +1223,11 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "GetIntegrationsClickupWorkspaceRequest",
       });
-    case 4:
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -1374,7 +1241,7 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "GetIntegrationsGithubAvailableInstallationRequest",
       });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           installation_id: S.String,
@@ -1386,16 +1253,16 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "GitHubAvailableInstallation",
       });
-    case 6:
-      return S.Array(__S(21, __c2, 5));
-    case 7:
+    case 2:
+      return S.Array(__S(21, __c5, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
           discovery_id: S.String,
           discovered_at: S.String,
           personal_github_login: S.NullOr(S.String),
           personal_discovery_status: S.String,
-          installations: __S(22, __c2, 6),
+          installations: __S(22, __c5, 2),
           personal_github_connected: S.Boolean,
         }),
       ).annotate({
@@ -1403,7 +1270,7 @@ function __c2(j: number): any {
       });
   }
 }
-function __c3(j: number): any {
+function __c6(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1429,12 +1296,16 @@ function __c3(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          branches: S.optional(__S(25, __c3, 1)),
+          branches: S.optional(__S(25, __c6, 1)),
           default_branch: S.optional(S.NullOr(S.String)),
           has_more: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "GitHubBranchesResponse" });
-    case 3:
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -1453,7 +1324,20 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "GetIntegrationsGithubReposRequest",
       });
-    case 4:
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          repositories: S.optional(__S(33, __c8, 1)),
+          has_more: S.optional(S.Boolean),
+          next_offset: S.optional(S.NullOr(S.Number)),
+          total: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "GitHubReposResponse" });
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.Number),
@@ -1467,18 +1351,13 @@ function __c3(j: number): any {
           can_push: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "GitHubRepo" });
-    case 5:
-      return S.Array(__S(28, __c3, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          repositories: S.optional(__S(29, __c3, 5)),
-          has_more: S.optional(S.Boolean),
-          next_offset: S.optional(S.NullOr(S.Number)),
-          total: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "GitHubReposResponse" });
-    case 7:
+    case 1:
+      return S.Array(__S(32, __c8, 0));
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -1496,11 +1375,7 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "GetIntegrationsGithubTeamRequest",
       });
-  }
-}
-function __c4(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.Number,
@@ -1508,16 +1383,20 @@ function __c4(j: number): any {
           name: S.String,
         }),
       ).annotate({ identifier: "GitHubTeam" });
-    case 1:
-      return S.Array(__S(32, __c4, 0));
     case 2:
+      return S.Array(__S(37, __c9, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          teams: __S(33, __c4, 1),
+          teams: __S(38, __c9, 2),
           has_more: S.Boolean,
         }),
       ).annotate({ identifier: "GitHubTeamsResponse" });
-    case 3:
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -1532,7 +1411,11 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "GetIntegrationsGoogleAccessibleAccountRequest",
       });
-    case 4:
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -1547,7 +1430,11 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "GetIntegrationsGoogleConversionActionRequest",
       });
-    case 5:
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -1562,7 +1449,7 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "GetIntegrationsJiraProjectRequest",
       });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
@@ -1570,19 +1457,19 @@ function __c4(j: number): any {
           name: S.String,
         }),
       ).annotate({ identifier: "JiraProject" });
-    case 7:
-      return S.Array(__S(38, __c4, 6));
-  }
-}
-function __c5(j: number): any {
-  switch (j) {
-    case 0:
+    case 2:
+      return S.Array(__S(49, __c12, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          projects: __S(39, __c4, 7),
+          projects: __S(50, __c12, 2),
         }),
       ).annotate({ identifier: "JiraProjectsResponse" });
-    case 1:
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -1597,22 +1484,26 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "GetIntegrationsLinearTeamRequest",
       });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
           name: S.String,
         }),
       ).annotate({ identifier: "LinearTeam" });
+    case 2:
+      return S.Array(__S(53, __c13, 1));
     case 3:
-      return S.Array(__S(42, __c5, 2));
-    case 4:
       return S.suspend(() =>
         S.Struct({
-          teams: __S(43, __c5, 3),
+          teams: __S(54, __c13, 2),
         }),
       ).annotate({ identifier: "LinearTeamsResponse" });
-    case 5:
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -1627,7 +1518,11 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "GetIntegrationsLinkedinAdsAccountRequest",
       });
-    case 6:
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -1642,7 +1537,11 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "GetIntegrationsLinkedinAdsConversionRuleRequest",
       });
-    case 7:
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -1659,7 +1558,7 @@ function __c5(j: number): any {
       });
   }
 }
-function __c6(j: number): any {
+function __c17(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1690,16 +1589,20 @@ function __c6(j: number): any {
         }),
       ).annotate({ identifier: "SlackUser" });
     case 2:
-      return S.Array(__S(49, __c6, 1));
+      return S.Array(__S(69, __c17, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          users: __S(50, __c6, 2),
+          users: __S(70, __c17, 2),
           lastRefreshedAt: S.optional(S.NullOr(S.String)),
           has_more: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "SlackUsersResponse" });
-    case 4:
+  }
+}
+function __c18(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -1713,7 +1616,11 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "IntegrationsAuthorizeRetrieveRequest",
       });
-    case 5:
+  }
+}
+function __c19(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -1728,11 +1635,15 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "IntegrationsDestroyRequest",
       });
-    case 6:
+    case 1:
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "IntegrationsDestroyResponse",
       });
-    case 7:
+  }
+}
+function __c20(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -1750,7 +1661,56 @@ function __c6(j: number): any {
       });
   }
 }
-function __c7(j: number): any {
+function __c21(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          project_id: S.String.pipe(T.Label()),
+          kind: S.optional(S.String),
+          config: S.optional(S.Unknown),
+        }).pipe(
+          T.Http({ method: "POST", uri: "/api/projects/{project_id}/integrations/", code: 200 }),
+        ),
+      ).annotate({ identifier: "CreateIntegrationRequest" });
+  }
+}
+function __c22(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, S.Unknown);
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.Number),
+          uuid: S.optional(S.String),
+          distinct_id: S.optional(S.NullOr(S.String)),
+          first_name: S.optional(S.String),
+          last_name: S.optional(S.String),
+          email: S.optional(S.String),
+          is_email_verified: S.optional(S.NullOr(S.Boolean)),
+          hedgehog_config: S.optional(S.NullOr(__S(88, __c22, 0))),
+          role_at_organization: S.optional(S.NullOr(S.Unknown)),
+        }),
+      ).annotate({ identifier: "UserBasic" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.Number),
+          kind: S.optional(S.String),
+          config: S.optional(S.Unknown),
+          created_at: S.optional(S.String),
+          created_by: S.optional(S.NullOr(__S(89, __c22, 1))),
+          errors: S.optional(S.String),
+          display_name: S.optional(S.String),
+          files_write_requestable: S.optional(S.Boolean),
+          installation_shared: S.optional(S.NullOr(S.Boolean)),
+          installation_status: S.optional(S.NullOr(S.String)),
+        }),
+      ).annotate({ identifier: "IntegrationConfig" });
+  }
+}
+function __c23(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1766,7 +1726,11 @@ function __c7(j: number): any {
       ).annotate({
         identifier: "IntegrationsDomainConnectCheckRetrieveRequest",
       });
-    case 1:
+  }
+}
+function __c24(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -1783,7 +1747,11 @@ function __c7(j: number): any {
       ).annotate({
         identifier: "IntegrationsEmailVerifyCreateRequest",
       });
-    case 2:
+  }
+}
+function __c25(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -1800,7 +1768,7 @@ function __c7(j: number): any {
       ).annotate({
         identifier: "IntegrationsGithubOauthAuthorizeCreateRequest",
       });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           oauth_url: S.String,
@@ -1808,7 +1776,11 @@ function __c7(j: number): any {
       ).annotate({
         identifier: "GitHubOAuthAuthorizeResponse",
       });
-    case 4:
+  }
+}
+function __c26(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -1823,16 +1795,20 @@ function __c7(j: number): any {
       ).annotate({
         identifier: "IntegrationsGithubReposRefreshCreateRequest",
       });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          repositories: S.optional(__S(29, __c3, 5)),
+          repositories: S.optional(__S(33, __c8, 1)),
           installation_status: S.optional(S.String),
         }),
       ).annotate({
         identifier: "GitHubReposRefreshResponse",
       });
-    case 6:
+  }
+}
+function __c27(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -1843,24 +1819,24 @@ function __c7(j: number): any {
           T.Http({ method: "GET", uri: "/api/projects/{project_id}/integrations/", code: 200 }),
         ),
       ).annotate({ identifier: "ListIntegrationsRequest" });
-    case 7:
-      return S.Array(__S(3, __c0, 3));
-  }
-}
-function __c8(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
+      return S.Array(__S(90, __c22, 2));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           count: S.optional(S.Number),
           next: S.optional(S.NullOr(S.String)),
           previous: S.optional(S.NullOr(S.String)),
-          results: S.optional(__S(63, __c7, 7)),
+          results: S.optional(__S(109, __c27, 1)),
         }),
       ).annotate({
         identifier: "PaginatedIntegrationConfigList",
       });
-    case 1:
+  }
+}
+function __c28(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -1879,7 +1855,138 @@ function __c8(j: number): any {
       });
   }
 }
-
+function __c29(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          project_id: S.String.pipe(T.Label()),
+          discovery_id: S.optional(S.NullOr(S.String)),
+          source_team_id: S.optional(S.NullOr(S.Number)),
+          installation_id: S.optional(S.NullOr(S.String)),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/api/projects/{project_id}/integrations/github/link_existing/",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateIntegrationsGithubLinkExistingRequest",
+      });
+  }
+}
+function __c30(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          project_id: S.String.pipe(T.Label()),
+          next: S.optional(S.String),
+          installation_id: S.optional(S.String),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/api/projects/{project_id}/integrations/github/prepare_callback/",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateIntegrationsGithubPrepareCallbackRequest",
+      });
+  }
+}
+function __c31(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "CreateIntegrationsGithubPrepareCallbackResponse",
+      });
+  }
+}
+function __c32(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          project_id: S.String.pipe(T.Label()),
+          kind: S.String,
+          reason: S.String,
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/api/projects/{project_id}/integrations/request_access/",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateIntegrationsRequestAccessRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          success: S.Boolean,
+        }),
+      ).annotate({
+        identifier: "IntegrationAccessRequestResponse",
+      });
+  }
+}
+function __c33(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          project_id: S.String.pipe(T.Label()),
+          id: S.Number.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/api/projects/{project_id}/integrations/{id}/",
+            code: 200,
+          }),
+        ),
+      ).annotate({ identifier: "GetIntegrationRequest" });
+  }
+}
+function __c34(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          project_id: S.String.pipe(T.Label()),
+          id: S.Number.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/api/projects/{project_id}/integrations/{id}/anthropic_managed_agents/",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "GetIntegrationsAnthropicManagedAgentRequest",
+      });
+  }
+}
+function __c35(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          project_id: S.String.pipe(T.Label()),
+          id: S.Number.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/api/projects/{project_id}/integrations/{id}/anthropic_managed_agent_environments/",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "GetIntegrationsAnthropicManagedAgentEnvRequest",
+      });
+  }
+}
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

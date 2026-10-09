@@ -85,8 +85,8 @@ export const updateManagedViewset: API.OperationMethod<
   UpdateManagedViewsetError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(4, __c0, 4) as any as S.Schema<UpdateManagedViewsetRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<DataWarehouseManagedViewSetUpdateResponse>,
+  input: __S(4, __c1, 0) as any as S.Schema<UpdateManagedViewsetRequest>,
+  output: __S(5, __c1, 1) as any as S.Schema<DataWarehouseManagedViewSetUpdateResponse>,
   errors: [BadRequest],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -128,7 +128,11 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "DataWarehouseManagedViewSetResponse",
       });
-    case 4:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -144,7 +148,7 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "UpdateManagedViewsetRequest",
       });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           enabled: S.Boolean,
@@ -155,7 +159,6 @@ function __c0(j: number): any {
       });
   }
 }
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

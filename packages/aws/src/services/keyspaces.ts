@@ -532,8 +532,8 @@ export const createKeyspace: API.OperationMethod<
   CreateKeyspaceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(4, __c0, 4) as any as S.Schema<CreateKeyspaceRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<CreateKeyspaceResponse>,
+  input: __S(120, __c15, 0) as any as S.Schema<CreateKeyspaceRequest>,
+  output: __S(152, __c19, 0) as any as S.Schema<CreateKeyspaceResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -567,8 +567,8 @@ export const createTable: API.OperationMethod<
   CreateTableError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(26, __c3, 2) as any as S.Schema<CreateTableRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<CreateTableResponse>,
+  input: __S(160, __c20, 0) as any as S.Schema<CreateTableRequest>,
+  output: __S(152, __c19, 0) as any as S.Schema<CreateTableResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -603,8 +603,8 @@ export const createType: API.OperationMethod<
   CreateTypeError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(27, __c3, 3) as any as S.Schema<CreateTypeRequest>,
-  output: __S(28, __c3, 4) as any as S.Schema<CreateTypeResponse>,
+  input: __S(232, __c29, 0) as any as S.Schema<CreateTypeRequest>,
+  output: __S(240, __c30, 0) as any as S.Schema<CreateTypeResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -635,8 +635,8 @@ export const deleteKeyspace: API.OperationMethod<
   DeleteKeyspaceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(29, __c3, 5) as any as S.Schema<DeleteKeyspaceRequest>,
-  output: __S(30, __c3, 6) as any as S.Schema<DeleteKeyspaceResponse>,
+  input: __S(248, __c31, 0) as any as S.Schema<DeleteKeyspaceRequest>,
+  output: __S(256, __c32, 0) as any as S.Schema<DeleteKeyspaceResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -667,8 +667,8 @@ export const deleteTable: API.OperationMethod<
   DeleteTableError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(31, __c3, 7) as any as S.Schema<DeleteTableRequest>,
-  output: __S(30, __c3, 6) as any as S.Schema<DeleteTableResponse>,
+  input: __S(0, __c0, 0) as any as S.Schema<DeleteTableRequest>,
+  output: __S(256, __c32, 0) as any as S.Schema<DeleteTableResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -701,8 +701,8 @@ export const deleteType: API.OperationMethod<
   DeleteTypeError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(32, __c4, 0) as any as S.Schema<DeleteTypeRequest>,
-  output: __S(28, __c3, 4) as any as S.Schema<DeleteTypeResponse>,
+  input: __S(8, __c1, 0) as any as S.Schema<DeleteTypeRequest>,
+  output: __S(240, __c30, 0) as any as S.Schema<DeleteTypeResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -732,8 +732,8 @@ export const getKeyspace: API.OperationMethod<
   GetKeyspaceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(33, __c4, 1) as any as S.Schema<GetKeyspaceRequest>,
-  output: __S(36, __c4, 4) as any as S.Schema<GetKeyspaceResponse>,
+  input: __S(16, __c2, 0) as any as S.Schema<GetKeyspaceRequest>,
+  output: __S(19, __c2, 3) as any as S.Schema<GetKeyspaceResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -764,8 +764,8 @@ export const getTable: API.OperationMethod<
   GetTableError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(37, __c4, 5) as any as S.Schema<GetTableRequest>,
-  output: __S(44, __c5, 4) as any as S.Schema<GetTableResponse>,
+  input: __S(24, __c3, 0) as any as S.Schema<GetTableRequest>,
+  output: __S(31, __c3, 7) as any as S.Schema<GetTableResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -804,8 +804,8 @@ export const getTableAutoScalingSettings: API.OperationMethod<
   GetTableAutoScalingSettingsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(45, __c5, 5) as any as S.Schema<GetTableAutoScalingSettingsRequest>,
-  output: __S(48, __c6, 0) as any as S.Schema<GetTableAutoScalingSettingsResponse>,
+  input: __S(32, __c4, 0) as any as S.Schema<GetTableAutoScalingSettingsRequest>,
+  output: __S(35, __c4, 3) as any as S.Schema<GetTableAutoScalingSettingsResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -836,8 +836,8 @@ export const getType: API.OperationMethod<
   GetTypeError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(49, __c6, 1) as any as S.Schema<GetTypeRequest>,
-  output: __S(50, __c6, 2) as any as S.Schema<GetTypeResponse>,
+  input: __S(40, __c5, 0) as any as S.Schema<GetTypeRequest>,
+  output: __S(41, __c5, 1) as any as S.Schema<GetTypeResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -867,8 +867,8 @@ export const listKeyspaces: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   KeyspaceSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(51, __c6, 3) as any as S.Schema<ListKeyspacesRequest>,
-  output: __S(54, __c6, 6) as any as S.Schema<ListKeyspacesResponse>,
+  input: __S(48, __c6, 0) as any as S.Schema<ListKeyspacesRequest>,
+  output: __S(51, __c6, 3) as any as S.Schema<ListKeyspacesResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -906,8 +906,8 @@ export const listTables: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   TableSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(55, __c6, 7) as any as S.Schema<ListTablesRequest>,
-  output: __S(58, __c7, 2) as any as S.Schema<ListTablesResponse>,
+  input: __S(56, __c7, 0) as any as S.Schema<ListTablesRequest>,
+  output: __S(59, __c7, 3) as any as S.Schema<ListTablesResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -945,8 +945,8 @@ export const listTagsForResource: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   Tag
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(59, __c7, 3) as any as S.Schema<ListTagsForResourceRequest>,
-  output: __S(60, __c7, 4) as any as S.Schema<ListTagsForResourceResponse>,
+  input: __S(64, __c8, 0) as any as S.Schema<ListTagsForResourceRequest>,
+  output: __S(65, __c8, 1) as any as S.Schema<ListTagsForResourceResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -984,8 +984,8 @@ export const listTypes: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   TypeName
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(61, __c7, 5) as any as S.Schema<ListTypesRequest>,
-  output: __S(62, __c7, 6) as any as S.Schema<ListTypesResponse>,
+  input: __S(72, __c9, 0) as any as S.Schema<ListTypesRequest>,
+  output: __S(73, __c9, 1) as any as S.Schema<ListTypesResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1047,8 +1047,8 @@ export const restoreTable: API.OperationMethod<
   RestoreTableError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(63, __c7, 7) as any as S.Schema<RestoreTableRequest>,
-  output: __S(64, __c8, 0) as any as S.Schema<RestoreTableResponse>,
+  input: __S(80, __c10, 0) as any as S.Schema<RestoreTableRequest>,
+  output: __S(81, __c10, 1) as any as S.Schema<RestoreTableResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1081,8 +1081,8 @@ export const tagResource: API.OperationMethod<
   TagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(65, __c8, 1) as any as S.Schema<TagResourceRequest>,
-  output: __S(30, __c3, 6) as any as S.Schema<TagResourceResponse>,
+  input: __S(88, __c11, 0) as any as S.Schema<TagResourceRequest>,
+  output: __S(256, __c32, 0) as any as S.Schema<TagResourceResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1113,8 +1113,8 @@ export const untagResource: API.OperationMethod<
   UntagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(66, __c8, 2) as any as S.Schema<UntagResourceRequest>,
-  output: __S(30, __c3, 6) as any as S.Schema<UntagResourceResponse>,
+  input: __S(96, __c12, 0) as any as S.Schema<UntagResourceRequest>,
+  output: __S(256, __c32, 0) as any as S.Schema<UntagResourceResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1185,8 +1185,8 @@ export const updateKeyspace: API.OperationMethod<
   UpdateKeyspaceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(67, __c8, 3) as any as S.Schema<UpdateKeyspaceRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<UpdateKeyspaceResponse>,
+  input: __S(104, __c13, 0) as any as S.Schema<UpdateKeyspaceRequest>,
+  output: __S(152, __c19, 0) as any as S.Schema<UpdateKeyspaceResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1217,8 +1217,8 @@ export const updateTable: API.OperationMethod<
   UpdateTableError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(68, __c8, 4) as any as S.Schema<UpdateTableRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<UpdateTableResponse>,
+  input: __S(112, __c14, 0) as any as S.Schema<UpdateTableRequest>,
+  output: __S(152, __c19, 0) as any as S.Schema<UpdateTableResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1236,196 +1236,6 @@ export const updateTable: API.OperationMethod<
 function __c0(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => S.Struct({ key: S.String, value: S.String })).annotate({
-        identifier: "Tag",
-      });
-    case 1:
-      return S.Array(__S(0, __c0, 0));
-    case 2:
-      return S.Array(S.String);
-    case 3:
-      return S.suspend(() =>
-        S.Struct({ replicationStrategy: S.String, regionList: S.optional(__S(2, __c0, 2)) }),
-      ).annotate({ identifier: "ReplicationSpecification" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          keyspaceName: S.String,
-          tags: S.optional(__S(1, __c0, 1)),
-          replicationSpecification: S.optional(__S(3, __c0, 3)),
-        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({ identifier: "CreateKeyspaceRequest" });
-    case 5:
-      return S.suspend(() => S.Struct({ resourceArn: S.String })).annotate({
-        identifier: "CreateKeyspaceResponse",
-      });
-    case 6:
-      return S.suspend(() => S.Struct({ name: S.String, type: S.String })).annotate({
-        identifier: "ColumnDefinition",
-      });
-    case 7:
-      return S.Array(__S(6, __c0, 6));
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() => S.Struct({ name: S.String })).annotate({
-        identifier: "PartitionKey",
-      });
-    case 1:
-      return S.Array(__S(8, __c1, 0));
-    case 2:
-      return S.suspend(() => S.Struct({ name: S.String, orderBy: S.String })).annotate({
-        identifier: "ClusteringKey",
-      });
-    case 3:
-      return S.Array(__S(10, __c1, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          allColumns: __S(7, __c0, 7),
-          partitionKeys: __S(9, __c1, 1),
-          clusteringKeys: S.optional(__S(11, __c1, 3)),
-          staticColumns: S.optional(__S(9, __c1, 1)),
-        }),
-      ).annotate({ identifier: "SchemaDefinition" });
-    case 5:
-      return S.suspend(() => S.Struct({ message: S.String })).annotate({
-        identifier: "Comment",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          throughputMode: S.String,
-          readCapacityUnits: S.optional(S.Number),
-          writeCapacityUnits: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "CapacitySpecification" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({ type: S.String, kmsKeyIdentifier: S.optional(S.String) }),
-      ).annotate({ identifier: "EncryptionSpecification" });
-  }
-}
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() => S.Struct({ status: S.String })).annotate({
-        identifier: "PointInTimeRecovery",
-      });
-    case 1:
-      return S.suspend(() => S.Struct({ status: S.String })).annotate({
-        identifier: "TimeToLive",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          disableScaleIn: S.optional(S.Boolean),
-          scaleInCooldown: S.optional(S.Number),
-          scaleOutCooldown: S.optional(S.Number),
-          targetValue: S.Number,
-        }),
-      ).annotate({
-        identifier: "TargetTrackingScalingPolicyConfiguration",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          targetTrackingScalingPolicyConfiguration: S.optional(__S(18, __c2, 2)),
-        }),
-      ).annotate({ identifier: "AutoScalingPolicy" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          autoScalingDisabled: S.optional(S.Boolean),
-          minimumUnits: S.optional(S.Number),
-          maximumUnits: S.optional(S.Number),
-          scalingPolicy: S.optional(__S(19, __c2, 3)),
-        }),
-      ).annotate({ identifier: "AutoScalingSettings" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          writeCapacityAutoScaling: S.optional(__S(20, __c2, 4)),
-          readCapacityAutoScaling: S.optional(__S(20, __c2, 4)),
-        }),
-      ).annotate({ identifier: "AutoScalingSpecification" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          region: S.String,
-          readCapacityUnits: S.optional(S.Number),
-          readCapacityAutoScaling: S.optional(__S(20, __c2, 4)),
-        }),
-      ).annotate({ identifier: "ReplicaSpecification" });
-    case 7:
-      return S.Array(__S(22, __c2, 6));
-  }
-}
-function __c3(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          status: S.String,
-          viewType: S.optional(S.String),
-          tags: S.optional(__S(1, __c0, 1)),
-          propagateTags: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "CdcSpecification" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          readUnitsPerSecond: S.optional(S.Number),
-          writeUnitsPerSecond: S.optional(S.Number),
-        }),
-      ).annotate({
-        identifier: "WarmThroughputSpecification",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          keyspaceName: S.String,
-          tableName: S.String,
-          schemaDefinition: __S(12, __c1, 4),
-          comment: S.optional(__S(13, __c1, 5)),
-          capacitySpecification: S.optional(__S(14, __c1, 6)),
-          encryptionSpecification: S.optional(__S(15, __c1, 7)),
-          pointInTimeRecovery: S.optional(__S(16, __c2, 0)),
-          ttl: S.optional(__S(17, __c2, 1)),
-          defaultTimeToLive: S.optional(S.Number),
-          tags: S.optional(__S(1, __c0, 1)),
-          clientSideTimestamps: S.optional(__S(16, __c2, 0)),
-          autoScalingSpecification: S.optional(__S(21, __c2, 5)),
-          replicaSpecifications: S.optional(__S(23, __c2, 7)),
-          cdcSpecification: S.optional(__S(24, __c3, 0)),
-          warmThroughputSpecification: S.optional(__S(25, __c3, 1)),
-        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({ identifier: "CreateTableRequest" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          keyspaceName: S.String,
-          typeName: S.String,
-          fieldDefinitions: __S(7, __c0, 7),
-        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({ identifier: "CreateTypeRequest" });
-    case 4:
-      return S.suspend(() => S.Struct({ keyspaceArn: S.String, typeName: S.String })).annotate({
-        identifier: "CreateTypeResponse",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({ keyspaceName: S.String }).pipe(
-          T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-        ),
-      ).annotate({ identifier: "DeleteKeyspaceRequest" });
-    case 6:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "DeleteKeyspaceResponse",
-      });
-    case 7:
       return S.suspend(() =>
         S.Struct({ keyspaceName: S.String, tableName: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
@@ -1433,7 +1243,7 @@ function __c3(j: number): any {
       ).annotate({ identifier: "DeleteTableRequest" });
   }
 }
-function __c4(j: number): any {
+function __c1(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1441,13 +1251,17 @@ function __c4(j: number): any {
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "DeleteTypeRequest" });
-    case 1:
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ keyspaceName: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "GetKeyspaceRequest" });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           region: S.String,
@@ -1455,25 +1269,29 @@ function __c4(j: number): any {
           tablesReplicationProgress: S.optional(S.String),
         }),
       ).annotate({ identifier: "ReplicationGroupStatus" });
+    case 2:
+      return S.Array(__S(17, __c2, 1));
     case 3:
-      return S.Array(__S(34, __c4, 2));
-    case 4:
       return S.suspend(() =>
         S.Struct({
           keyspaceName: S.String,
           resourceArn: S.String,
           replicationStrategy: S.String,
-          replicationRegions: S.optional(__S(2, __c0, 2)),
-          replicationGroupStatuses: S.optional(__S(35, __c4, 3)),
+          replicationRegions: S.optional(__S(128, __c16, 0)),
+          replicationGroupStatuses: S.optional(__S(18, __c2, 2)),
         }),
       ).annotate({ identifier: "GetKeyspaceResponse" });
-    case 5:
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ keyspaceName: S.String, tableName: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "GetTableRequest" });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           throughputMode: S.String,
@@ -1486,7 +1304,7 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "CapacitySpecificationSummary",
       });
-    case 7:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           status: S.String,
@@ -1495,34 +1313,30 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "PointInTimeRecoverySummary",
       });
-  }
-}
-function __c5(j: number): any {
-  switch (j) {
-    case 0:
+    case 3:
       return S.suspend(() =>
         S.Struct({ readUnitsPerSecond: S.Number, writeUnitsPerSecond: S.Number, status: S.String }),
       ).annotate({
         identifier: "WarmThroughputSpecificationSummary",
       });
-    case 1:
+    case 4:
       return S.suspend(() =>
         S.Struct({
           region: S.optional(S.String),
           status: S.optional(S.String),
-          capacitySpecification: S.optional(__S(38, __c4, 6)),
-          warmThroughputSpecification: S.optional(__S(40, __c5, 0)),
+          capacitySpecification: S.optional(__S(25, __c3, 1)),
+          warmThroughputSpecification: S.optional(__S(27, __c3, 3)),
         }),
       ).annotate({
         identifier: "ReplicaSpecificationSummary",
       });
-    case 2:
-      return S.Array(__S(41, __c5, 1));
-    case 3:
+    case 5:
+      return S.Array(__S(28, __c3, 4));
+    case 6:
       return S.suspend(() =>
         S.Struct({ status: S.String, viewType: S.optional(S.String) }),
       ).annotate({ identifier: "CdcSpecificationSummary" });
-    case 4:
+    case 7:
       return S.suspend(() =>
         S.Struct({
           keyspaceName: S.String,
@@ -1530,21 +1344,25 @@ function __c5(j: number): any {
           resourceArn: S.String,
           creationTimestamp: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           status: S.optional(S.String),
-          schemaDefinition: S.optional(__S(12, __c1, 4)),
-          capacitySpecification: S.optional(__S(38, __c4, 6)),
-          encryptionSpecification: S.optional(__S(15, __c1, 7)),
-          pointInTimeRecovery: S.optional(__S(39, __c4, 7)),
-          ttl: S.optional(__S(17, __c2, 1)),
+          schemaDefinition: S.optional(__S(172, __c21, 4)),
+          capacitySpecification: S.optional(__S(25, __c3, 1)),
+          encryptionSpecification: S.optional(__S(184, __c23, 0)),
+          pointInTimeRecovery: S.optional(__S(26, __c3, 2)),
+          ttl: S.optional(__S(192, __c24, 0)),
           defaultTimeToLive: S.optional(S.Number),
-          comment: S.optional(__S(13, __c1, 5)),
-          clientSideTimestamps: S.optional(__S(16, __c2, 0)),
-          replicaSpecifications: S.optional(__S(42, __c5, 2)),
+          comment: S.optional(__S(173, __c21, 5)),
+          clientSideTimestamps: S.optional(__S(176, __c22, 0)),
+          replicaSpecifications: S.optional(__S(29, __c3, 5)),
           latestStreamArn: S.optional(S.String),
-          cdcSpecification: S.optional(__S(43, __c5, 3)),
-          warmThroughputSpecification: S.optional(__S(40, __c5, 0)),
+          cdcSpecification: S.optional(__S(30, __c3, 6)),
+          warmThroughputSpecification: S.optional(__S(27, __c3, 3)),
         }),
       ).annotate({ identifier: "GetTableResponse" });
-    case 5:
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ keyspaceName: S.String, tableName: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
@@ -1552,75 +1370,83 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "GetTableAutoScalingSettingsRequest",
       });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           region: S.optional(S.String),
-          autoScalingSpecification: S.optional(__S(21, __c2, 5)),
+          autoScalingSpecification: S.optional(__S(203, __c25, 3)),
         }),
       ).annotate({
         identifier: "ReplicaAutoScalingSpecification",
       });
-    case 7:
-      return S.Array(__S(46, __c5, 6));
+    case 2:
+      return S.Array(__S(33, __c4, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          keyspaceName: S.String,
+          tableName: S.String,
+          resourceArn: S.String,
+          autoScalingSpecification: S.optional(__S(203, __c25, 3)),
+          replicaSpecifications: S.optional(__S(34, __c4, 2)),
+        }),
+      ).annotate({
+        identifier: "GetTableAutoScalingSettingsResponse",
+      });
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ keyspaceName: S.String, typeName: S.String }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "GetTypeRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          keyspaceName: S.String,
+          typeName: S.String,
+          fieldDefinitions: S.optional(__S(225, __c28, 1)),
+          lastModifiedTimestamp: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          status: S.optional(S.String),
+          directReferringTables: S.optional(__S(128, __c16, 0)),
+          directParentTypes: S.optional(__S(128, __c16, 0)),
+          maxNestingDepth: S.optional(S.Number),
+          keyspaceArn: S.String,
+        }),
+      ).annotate({ identifier: "GetTypeResponse" });
   }
 }
 function __c6(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({
-          keyspaceName: S.String,
-          tableName: S.String,
-          resourceArn: S.String,
-          autoScalingSpecification: S.optional(__S(21, __c2, 5)),
-          replicaSpecifications: S.optional(__S(47, __c5, 7)),
-        }),
-      ).annotate({
-        identifier: "GetTableAutoScalingSettingsResponse",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({ keyspaceName: S.String, typeName: S.String }).pipe(
-          T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-        ),
-      ).annotate({ identifier: "GetTypeRequest" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          keyspaceName: S.String,
-          typeName: S.String,
-          fieldDefinitions: S.optional(__S(7, __c0, 7)),
-          lastModifiedTimestamp: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          status: S.optional(S.String),
-          directReferringTables: S.optional(__S(2, __c0, 2)),
-          directParentTypes: S.optional(__S(2, __c0, 2)),
-          maxNestingDepth: S.optional(S.Number),
-          keyspaceArn: S.String,
-        }),
-      ).annotate({ identifier: "GetTypeResponse" });
-    case 3:
-      return S.suspend(() =>
         S.Struct({ nextToken: S.optional(S.String), maxResults: S.optional(S.Number) }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "ListKeyspacesRequest" });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           keyspaceName: S.String,
           resourceArn: S.String,
           replicationStrategy: S.String,
-          replicationRegions: S.optional(__S(2, __c0, 2)),
+          replicationRegions: S.optional(__S(128, __c16, 0)),
         }),
       ).annotate({ identifier: "KeyspaceSummary" });
-    case 5:
-      return S.Array(__S(52, __c6, 4));
-    case 6:
+    case 2:
+      return S.Array(__S(49, __c6, 1));
+    case 3:
       return S.suspend(() =>
-        S.Struct({ nextToken: S.optional(S.String), keyspaces: __S(53, __c6, 5) }),
+        S.Struct({ nextToken: S.optional(S.String), keyspaces: __S(50, __c6, 2) }),
       ).annotate({ identifier: "ListKeyspacesResponse" });
-    case 7:
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           nextToken: S.optional(S.String),
@@ -1628,21 +1454,21 @@ function __c6(j: number): any {
           keyspaceName: S.String,
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "ListTablesRequest" });
-  }
-}
-function __c7(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({ keyspaceName: S.String, tableName: S.String, resourceArn: S.String }),
       ).annotate({ identifier: "TableSummary" });
-    case 1:
-      return S.Array(__S(56, __c7, 0));
     case 2:
-      return S.suspend(() =>
-        S.Struct({ nextToken: S.optional(S.String), tables: S.optional(__S(57, __c7, 1)) }),
-      ).annotate({ identifier: "ListTablesResponse" });
+      return S.Array(__S(57, __c7, 1));
     case 3:
+      return S.suspend(() =>
+        S.Struct({ nextToken: S.optional(S.String), tables: S.optional(__S(58, __c7, 2)) }),
+      ).annotate({ identifier: "ListTablesResponse" });
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           resourceArn: S.String,
@@ -1652,13 +1478,17 @@ function __c7(j: number): any {
       ).annotate({
         identifier: "ListTagsForResourceRequest",
       });
-    case 4:
+    case 1:
       return S.suspend(() =>
-        S.Struct({ nextToken: S.optional(S.String), tags: S.optional(__S(1, __c0, 1)) }),
+        S.Struct({ nextToken: S.optional(S.String), tags: S.optional(__S(145, __c18, 1)) }),
       ).annotate({
         identifier: "ListTagsForResourceResponse",
       });
-    case 5:
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           nextToken: S.optional(S.String),
@@ -1666,11 +1496,15 @@ function __c7(j: number): any {
           keyspaceName: S.String,
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "ListTypesRequest" });
-    case 6:
+    case 1:
       return S.suspend(() =>
-        S.Struct({ nextToken: S.optional(S.String), types: __S(2, __c0, 2) }),
+        S.Struct({ nextToken: S.optional(S.String), types: __S(128, __c16, 0) }),
       ).annotate({ identifier: "ListTypesResponse" });
-    case 7:
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           sourceKeyspaceName: S.String,
@@ -1678,63 +1512,324 @@ function __c7(j: number): any {
           targetKeyspaceName: S.String,
           targetTableName: S.String,
           restoreTimestamp: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          capacitySpecificationOverride: S.optional(__S(14, __c1, 6)),
-          encryptionSpecificationOverride: S.optional(__S(15, __c1, 7)),
-          pointInTimeRecoveryOverride: S.optional(__S(16, __c2, 0)),
-          tagsOverride: S.optional(__S(1, __c0, 1)),
-          autoScalingSpecification: S.optional(__S(21, __c2, 5)),
-          replicaSpecifications: S.optional(__S(23, __c2, 7)),
+          capacitySpecificationOverride: S.optional(__S(208, __c26, 0)),
+          encryptionSpecificationOverride: S.optional(__S(184, __c23, 0)),
+          pointInTimeRecoveryOverride: S.optional(__S(176, __c22, 0)),
+          tagsOverride: S.optional(__S(145, __c18, 1)),
+          autoScalingSpecification: S.optional(__S(203, __c25, 3)),
+          replicaSpecifications: S.optional(__S(210, __c26, 2)),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "RestoreTableRequest" });
-  }
-}
-function __c8(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() => S.Struct({ restoredTableARN: S.String })).annotate({
         identifier: "RestoreTableResponse",
       });
-    case 1:
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
-        S.Struct({ resourceArn: S.String, tags: __S(1, __c0, 1) }).pipe(
+        S.Struct({ resourceArn: S.String, tags: __S(145, __c18, 1) }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "TagResourceRequest" });
-    case 2:
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
-        S.Struct({ resourceArn: S.String, tags: __S(1, __c0, 1) }).pipe(
+        S.Struct({ resourceArn: S.String, tags: __S(145, __c18, 1) }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "UntagResourceRequest" });
-    case 3:
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           keyspaceName: S.String,
-          replicationSpecification: __S(3, __c0, 3),
-          clientSideTimestamps: S.optional(__S(16, __c2, 0)),
+          replicationSpecification: __S(136, __c17, 0),
+          clientSideTimestamps: S.optional(__S(176, __c22, 0)),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "UpdateKeyspaceRequest" });
-    case 4:
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           keyspaceName: S.String,
           tableName: S.String,
-          addColumns: S.optional(__S(7, __c0, 7)),
-          capacitySpecification: S.optional(__S(14, __c1, 6)),
-          encryptionSpecification: S.optional(__S(15, __c1, 7)),
-          pointInTimeRecovery: S.optional(__S(16, __c2, 0)),
-          ttl: S.optional(__S(17, __c2, 1)),
+          addColumns: S.optional(__S(225, __c28, 1)),
+          capacitySpecification: S.optional(__S(208, __c26, 0)),
+          encryptionSpecification: S.optional(__S(184, __c23, 0)),
+          pointInTimeRecovery: S.optional(__S(176, __c22, 0)),
+          ttl: S.optional(__S(192, __c24, 0)),
           defaultTimeToLive: S.optional(S.Number),
-          clientSideTimestamps: S.optional(__S(16, __c2, 0)),
-          autoScalingSpecification: S.optional(__S(21, __c2, 5)),
-          replicaSpecifications: S.optional(__S(23, __c2, 7)),
-          cdcSpecification: S.optional(__S(24, __c3, 0)),
-          warmThroughputSpecification: S.optional(__S(25, __c3, 1)),
+          clientSideTimestamps: S.optional(__S(176, __c22, 0)),
+          autoScalingSpecification: S.optional(__S(203, __c25, 3)),
+          replicaSpecifications: S.optional(__S(210, __c26, 2)),
+          cdcSpecification: S.optional(__S(216, __c27, 0)),
+          warmThroughputSpecification: S.optional(__S(217, __c27, 1)),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "UpdateTableRequest" });
   }
 }
-
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          keyspaceName: S.String,
+          tags: S.optional(__S(145, __c18, 1)),
+          replicationSpecification: S.optional(__S(136, __c17, 0)),
+        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({ identifier: "CreateKeyspaceRequest" });
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c17(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ replicationStrategy: S.String, regionList: S.optional(__S(128, __c16, 0)) }),
+      ).annotate({ identifier: "ReplicationSpecification" });
+  }
+}
+function __c18(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({ key: S.String, value: S.String })).annotate({
+        identifier: "Tag",
+      });
+    case 1:
+      return S.Array(__S(144, __c18, 0));
+  }
+}
+function __c19(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({ resourceArn: S.String })).annotate({
+        identifier: "CreateKeyspaceResponse",
+      });
+  }
+}
+function __c20(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          keyspaceName: S.String,
+          tableName: S.String,
+          schemaDefinition: __S(172, __c21, 4),
+          comment: S.optional(__S(173, __c21, 5)),
+          capacitySpecification: S.optional(__S(208, __c26, 0)),
+          encryptionSpecification: S.optional(__S(184, __c23, 0)),
+          pointInTimeRecovery: S.optional(__S(176, __c22, 0)),
+          ttl: S.optional(__S(192, __c24, 0)),
+          defaultTimeToLive: S.optional(S.Number),
+          tags: S.optional(__S(145, __c18, 1)),
+          clientSideTimestamps: S.optional(__S(176, __c22, 0)),
+          autoScalingSpecification: S.optional(__S(203, __c25, 3)),
+          replicaSpecifications: S.optional(__S(210, __c26, 2)),
+          cdcSpecification: S.optional(__S(216, __c27, 0)),
+          warmThroughputSpecification: S.optional(__S(217, __c27, 1)),
+        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({ identifier: "CreateTableRequest" });
+  }
+}
+function __c21(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({ name: S.String })).annotate({
+        identifier: "PartitionKey",
+      });
+    case 1:
+      return S.Array(__S(168, __c21, 0));
+    case 2:
+      return S.suspend(() => S.Struct({ name: S.String, orderBy: S.String })).annotate({
+        identifier: "ClusteringKey",
+      });
+    case 3:
+      return S.Array(__S(170, __c21, 2));
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          allColumns: __S(225, __c28, 1),
+          partitionKeys: __S(169, __c21, 1),
+          clusteringKeys: S.optional(__S(171, __c21, 3)),
+          staticColumns: S.optional(__S(169, __c21, 1)),
+        }),
+      ).annotate({ identifier: "SchemaDefinition" });
+    case 5:
+      return S.suspend(() => S.Struct({ message: S.String })).annotate({
+        identifier: "Comment",
+      });
+  }
+}
+function __c22(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({ status: S.String })).annotate({
+        identifier: "PointInTimeRecovery",
+      });
+  }
+}
+function __c23(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ type: S.String, kmsKeyIdentifier: S.optional(S.String) }),
+      ).annotate({ identifier: "EncryptionSpecification" });
+  }
+}
+function __c24(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({ status: S.String })).annotate({
+        identifier: "TimeToLive",
+      });
+  }
+}
+function __c25(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          disableScaleIn: S.optional(S.Boolean),
+          scaleInCooldown: S.optional(S.Number),
+          scaleOutCooldown: S.optional(S.Number),
+          targetValue: S.Number,
+        }),
+      ).annotate({
+        identifier: "TargetTrackingScalingPolicyConfiguration",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          targetTrackingScalingPolicyConfiguration: S.optional(__S(200, __c25, 0)),
+        }),
+      ).annotate({ identifier: "AutoScalingPolicy" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          autoScalingDisabled: S.optional(S.Boolean),
+          minimumUnits: S.optional(S.Number),
+          maximumUnits: S.optional(S.Number),
+          scalingPolicy: S.optional(__S(201, __c25, 1)),
+        }),
+      ).annotate({ identifier: "AutoScalingSettings" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          writeCapacityAutoScaling: S.optional(__S(202, __c25, 2)),
+          readCapacityAutoScaling: S.optional(__S(202, __c25, 2)),
+        }),
+      ).annotate({ identifier: "AutoScalingSpecification" });
+  }
+}
+function __c26(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          throughputMode: S.String,
+          readCapacityUnits: S.optional(S.Number),
+          writeCapacityUnits: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "CapacitySpecification" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          region: S.String,
+          readCapacityUnits: S.optional(S.Number),
+          readCapacityAutoScaling: S.optional(__S(202, __c25, 2)),
+        }),
+      ).annotate({ identifier: "ReplicaSpecification" });
+    case 2:
+      return S.Array(__S(209, __c26, 1));
+  }
+}
+function __c27(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          status: S.String,
+          viewType: S.optional(S.String),
+          tags: S.optional(__S(145, __c18, 1)),
+          propagateTags: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "CdcSpecification" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          readUnitsPerSecond: S.optional(S.Number),
+          writeUnitsPerSecond: S.optional(S.Number),
+        }),
+      ).annotate({
+        identifier: "WarmThroughputSpecification",
+      });
+  }
+}
+function __c28(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({ name: S.String, type: S.String })).annotate({
+        identifier: "ColumnDefinition",
+      });
+    case 1:
+      return S.Array(__S(224, __c28, 0));
+  }
+}
+function __c29(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          keyspaceName: S.String,
+          typeName: S.String,
+          fieldDefinitions: __S(225, __c28, 1),
+        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({ identifier: "CreateTypeRequest" });
+  }
+}
+function __c30(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({ keyspaceArn: S.String, typeName: S.String })).annotate({
+        identifier: "CreateTypeResponse",
+      });
+  }
+}
+function __c31(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ keyspaceName: S.String }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "DeleteKeyspaceRequest" });
+  }
+}
+function __c32(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "DeleteKeyspaceResponse",
+      });
+  }
+}
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

@@ -685,8 +685,8 @@ export const closeCases: API.OperationMethod<
   CloseCasesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1, __c0, 1) as any as S.Schema<CloseCasesRequest>,
-  output: __S(6, __c0, 6) as any as S.Schema<Case>,
+  input: __S(304, __c19, 0) as any as S.Schema<CloseCasesRequest>,
+  output: __S(368, __c23, 0) as any as S.Schema<Case>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -700,8 +700,8 @@ export const createCases: API.OperationMethod<
   CreateCasesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(7, __c0, 7) as any as S.Schema<CreateCasesRequest>,
-  output: __S(6, __c0, 6) as any as S.Schema<Case>,
+  input: __S(400, __c25, 0) as any as S.Schema<CreateCasesRequest>,
+  output: __S(368, __c23, 0) as any as S.Schema<Case>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -715,8 +715,8 @@ export const createCasesComments: API.OperationMethod<
   CreateCasesCommentsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(9, __c1, 1) as any as S.Schema<CreateCasesCommentsRequest>,
-  output: __S(8, __c1, 0) as any as S.Schema<Comment>,
+  input: __S(416, __c26, 0) as any as S.Schema<CreateCasesCommentsRequest>,
+  output: __S(432, __c27, 0) as any as S.Schema<Comment>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -735,8 +735,8 @@ export const createOrganizationsSupportEventSubscriptions: API.OperationMethod<
   CreateOrganizationsSupportEventSubscriptionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(11, __c1, 3) as any as S.Schema<CreateOrganizationsSupportEventSubscriptionsRequest>,
-  output: __S(10, __c1, 2) as any as S.Schema<SupportEventSubscription>,
+  input: __S(448, __c28, 0) as any as S.Schema<CreateOrganizationsSupportEventSubscriptionsRequest>,
+  output: __S(464, __c29, 0) as any as S.Schema<SupportEventSubscription>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -755,8 +755,8 @@ export const deleteOrganizationsSupportEventSubscriptions: API.OperationMethod<
   DeleteOrganizationsSupportEventSubscriptionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(12, __c1, 4) as any as S.Schema<DeleteOrganizationsSupportEventSubscriptionsRequest>,
-  output: __S(10, __c1, 2) as any as S.Schema<SupportEventSubscription>,
+  input: __S(480, __c30, 0) as any as S.Schema<DeleteOrganizationsSupportEventSubscriptionsRequest>,
+  output: __S(464, __c29, 0) as any as S.Schema<SupportEventSubscription>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -770,8 +770,8 @@ export const downloadMedia: API.OperationMethod<
   DownloadMediaError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(13, __c1, 5) as any as S.Schema<DownloadMediaRequest>,
-  output: __S(25, __c3, 1) as any as S.Schema<Media>,
+  input: __S(496, __c31, 0) as any as S.Schema<DownloadMediaRequest>,
+  output: __S(508, __c31, 12) as any as S.Schema<Media>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -785,8 +785,8 @@ export const escalateCases: API.OperationMethod<
   EscalateCasesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(28, __c3, 4) as any as S.Schema<EscalateCasesRequest>,
-  output: __S(6, __c0, 6) as any as S.Schema<Case>,
+  input: __S(2, __c0, 2) as any as S.Schema<EscalateCasesRequest>,
+  output: __S(368, __c23, 0) as any as S.Schema<Case>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -805,8 +805,8 @@ export const expungeOrganizationsSupportEventSubscriptions: API.OperationMethod<
   ExpungeOrganizationsSupportEventSubscriptionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(29, __c3, 5) as any as S.Schema<ExpungeOrganizationsSupportEventSubscriptionsRequest>,
-  output: __S(0, __c0, 0) as any as S.Schema<Empty>,
+  input: __S(16, __c1, 0) as any as S.Schema<ExpungeOrganizationsSupportEventSubscriptionsRequest>,
+  output: __S(320, __c20, 0) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -816,8 +816,8 @@ export type GetCasesError = NotFound | Forbidden | GcpOpError;
 /** Retrieve a case. EXAMPLES: cURL: ```shell case="projects/some-project/cases/16033687" curl \ --header "Authorization: Bearer $(gcloud auth print-access-token)" \ "https://cloudsupport.googleapis.com/v2beta/$case" ``` Python: ```python import googleapiclient.discovery api_version = "v2beta" supportApiService = googleapiclient.discovery.build( serviceName="cloudsupport", version=api_version, discoveryServiceUrl=f"https://cloudsupport.googleapis.com/$discovery/rest?version={api_version}", ) request = supportApiService.cases().get( name="projects/some-project/cases/43595344", ) print(request.execute()) ``` */
 export const getCases: API.OperationMethod<GetCasesRequest, Case, GetCasesError, GcpOpContext> =
   /*@__PURE__*/ API.make(() => ({
-    input: __S(30, __c3, 6) as any as S.Schema<GetCasesRequest>,
-    output: __S(6, __c0, 6) as any as S.Schema<Case>,
+    input: __S(32, __c2, 0) as any as S.Schema<GetCasesRequest>,
+    output: __S(368, __c23, 0) as any as S.Schema<Case>,
     errors: [NotFound, Forbidden, UnknownGCPError],
     protocol: GcpProtocol,
     retry: Retry.Retry,
@@ -831,8 +831,8 @@ export const getCasesAttachments: API.OperationMethod<
   GetCasesAttachmentsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(31, __c3, 7) as any as S.Schema<GetCasesAttachmentsRequest>,
-  output: __S(32, __c4, 0) as any as S.Schema<Attachment>,
+  input: __S(48, __c3, 0) as any as S.Schema<GetCasesAttachmentsRequest>,
+  output: __S(64, __c4, 0) as any as S.Schema<Attachment>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -846,8 +846,8 @@ export const getCasesComments: API.OperationMethod<
   GetCasesCommentsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(33, __c4, 1) as any as S.Schema<GetCasesCommentsRequest>,
-  output: __S(8, __c1, 0) as any as S.Schema<Comment>,
+  input: __S(80, __c5, 0) as any as S.Schema<GetCasesCommentsRequest>,
+  output: __S(432, __c27, 0) as any as S.Schema<Comment>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -862,8 +862,8 @@ export const getFeedCases: API.PaginatedOperationMethod<
   GcpOpContext,
   ShowFeedResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(34, __c4, 2) as any as S.Schema<GetFeedCasesRequest>,
-  output: __S(39, __c4, 7) as any as S.Schema<ShowFeedResponse>,
+  input: __S(96, __c6, 0) as any as S.Schema<GetFeedCasesRequest>,
+  output: __S(101, __c6, 5) as any as S.Schema<ShowFeedResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -878,8 +878,8 @@ export const getOrganizationsSupportEventSubscriptions: API.OperationMethod<
   GetOrganizationsSupportEventSubscriptionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(40, __c5, 0) as any as S.Schema<GetOrganizationsSupportEventSubscriptionsRequest>,
-  output: __S(10, __c1, 2) as any as S.Schema<SupportEventSubscription>,
+  input: __S(112, __c7, 0) as any as S.Schema<GetOrganizationsSupportEventSubscriptionsRequest>,
+  output: __S(464, __c29, 0) as any as S.Schema<SupportEventSubscription>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -894,8 +894,8 @@ export const listCases: API.PaginatedOperationMethod<
   GcpOpContext,
   ListCasesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(41, __c5, 1) as any as S.Schema<ListCasesRequest>,
-  output: __S(43, __c5, 3) as any as S.Schema<ListCasesResponse>,
+  input: __S(128, __c8, 0) as any as S.Schema<ListCasesRequest>,
+  output: __S(145, __c9, 1) as any as S.Schema<ListCasesResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -911,8 +911,8 @@ export const listCasesAttachments: API.PaginatedOperationMethod<
   GcpOpContext,
   ListAttachmentsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(44, __c5, 4) as any as S.Schema<ListCasesAttachmentsRequest>,
-  output: __S(46, __c5, 6) as any as S.Schema<ListAttachmentsResponse>,
+  input: __S(160, __c10, 0) as any as S.Schema<ListCasesAttachmentsRequest>,
+  output: __S(162, __c10, 2) as any as S.Schema<ListAttachmentsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -928,8 +928,8 @@ export const listCasesComments: API.PaginatedOperationMethod<
   GcpOpContext,
   ListCommentsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(47, __c5, 7) as any as S.Schema<ListCasesCommentsRequest>,
-  output: __S(49, __c6, 1) as any as S.Schema<ListCommentsResponse>,
+  input: __S(176, __c11, 0) as any as S.Schema<ListCasesCommentsRequest>,
+  output: __S(178, __c11, 2) as any as S.Schema<ListCommentsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -945,8 +945,8 @@ export const listOrganizationsSupportEventSubscriptions: API.PaginatedOperationM
   GcpOpContext,
   ListSupportEventSubscriptionsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(50, __c6, 2) as any as S.Schema<ListOrganizationsSupportEventSubscriptionsRequest>,
-  output: __S(52, __c6, 4) as any as S.Schema<ListSupportEventSubscriptionsResponse>,
+  input: __S(192, __c12, 0) as any as S.Schema<ListOrganizationsSupportEventSubscriptionsRequest>,
+  output: __S(194, __c12, 2) as any as S.Schema<ListSupportEventSubscriptionsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -961,8 +961,8 @@ export const patchCases: API.OperationMethod<
   PatchCasesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(53, __c6, 5) as any as S.Schema<PatchCasesRequest>,
-  output: __S(6, __c0, 6) as any as S.Schema<Case>,
+  input: __S(208, __c13, 0) as any as S.Schema<PatchCasesRequest>,
+  output: __S(368, __c23, 0) as any as S.Schema<Case>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -981,8 +981,8 @@ export const patchOrganizationsSupportEventSubscriptions: API.OperationMethod<
   PatchOrganizationsSupportEventSubscriptionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(54, __c6, 6) as any as S.Schema<PatchOrganizationsSupportEventSubscriptionsRequest>,
-  output: __S(10, __c1, 2) as any as S.Schema<SupportEventSubscription>,
+  input: __S(224, __c14, 0) as any as S.Schema<PatchOrganizationsSupportEventSubscriptionsRequest>,
+  output: __S(464, __c29, 0) as any as S.Schema<SupportEventSubscription>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -997,8 +997,8 @@ export const searchCaseClassifications: API.PaginatedOperationMethod<
   GcpOpContext,
   SearchCaseClassificationsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(55, __c6, 7) as any as S.Schema<SearchCaseClassificationsRequest>,
-  output: __S(57, __c7, 1) as any as S.Schema<SearchCaseClassificationsResponse>,
+  input: __S(240, __c15, 0) as any as S.Schema<SearchCaseClassificationsRequest>,
+  output: __S(242, __c15, 2) as any as S.Schema<SearchCaseClassificationsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1014,8 +1014,8 @@ export const searchCases: API.PaginatedOperationMethod<
   GcpOpContext,
   SearchCasesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(58, __c7, 2) as any as S.Schema<SearchCasesRequest>,
-  output: __S(43, __c5, 3) as any as S.Schema<SearchCasesResponse>,
+  input: __S(256, __c16, 0) as any as S.Schema<SearchCasesRequest>,
+  output: __S(145, __c9, 1) as any as S.Schema<SearchCasesResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1035,8 +1035,12 @@ export const undeleteOrganizationsSupportEventSubscriptions: API.OperationMethod
   UndeleteOrganizationsSupportEventSubscriptionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(59, __c7, 3) as any as S.Schema<UndeleteOrganizationsSupportEventSubscriptionsRequest>,
-  output: __S(10, __c1, 2) as any as S.Schema<SupportEventSubscription>,
+  input: __S(
+    272,
+    __c17,
+    0,
+  ) as any as S.Schema<UndeleteOrganizationsSupportEventSubscriptionsRequest>,
+  output: __S(464, __c29, 0) as any as S.Schema<SupportEventSubscription>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1050,8 +1054,8 @@ export const uploadMedia: API.OperationMethod<
   UploadMediaError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(61, __c7, 5) as any as S.Schema<UploadMediaRequest>,
-  output: __S(32, __c4, 0) as any as S.Schema<Attachment>,
+  input: __S(289, __c18, 1) as any as S.Schema<UploadMediaRequest>,
+  output: __S(64, __c4, 0) as any as S.Schema<Attachment>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1061,321 +1065,23 @@ export const uploadMedia: API.OperationMethod<
 function __c0(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "CloseCaseRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-          body: S.optional(__S(0, __c0, 0).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v2beta/{+name}:close",
-            baseUrl: "https://cloudsupport.googleapis.com/",
-          }),
-        ),
-      ).annotate({ identifier: "CloseCasesRequest" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          productLine: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Product" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          product: S.optional(__S(2, __c0, 2)),
-          id: S.optional(S.String),
-          displayName: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "CaseClassification" });
-    case 4:
-      return S.Array(S.String);
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          email: S.optional(S.String),
-          username: S.optional(S.String),
-          displayName: S.optional(S.String),
-          googleSupport: S.optional(S.Boolean),
-        }),
-      ).annotate({ identifier: "Actor" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          severity: S.optional(S.String),
-          description: S.optional(S.String),
-          displayName: S.optional(S.String),
-          updateTime: S.optional(S.String),
-          languageCode: S.optional(S.String),
-          priority: S.optional(S.String),
-          testCase: S.optional(S.Boolean),
-          name: S.optional(S.String),
-          classification: S.optional(__S(3, __c0, 3)),
-          subscriberEmailAddresses: S.optional(__S(4, __c0, 4)),
-          state: S.optional(S.String),
-          contactEmail: S.optional(S.String),
-          escalated: S.optional(S.Boolean),
-          createTime: S.optional(S.String),
-          timeZone: S.optional(S.String),
-          creator: S.optional(__S(5, __c0, 5)),
-        }),
-      ).annotate({ identifier: "Case" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(6, __c0, 6).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v2beta/{+parent}/cases",
-            baseUrl: "https://cloudsupport.googleapis.com/",
-          }),
-        ),
-      ).annotate({ identifier: "CreateCasesRequest" });
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.optional(S.String),
-          plainTextBody: S.optional(S.String),
-          body: S.optional(S.String),
-          createTime: S.optional(S.String),
-          creator: S.optional(__S(5, __c0, 5)),
-        }),
-      ).annotate({ identifier: "Comment" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(8, __c1, 0).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v2beta/{+parent}/comments",
-            baseUrl: "https://cloudsupport.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateCasesCommentsRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          pubSubTopic: S.optional(S.String),
-          updateTime: S.optional(S.String),
-          deleteTime: S.optional(S.String),
-          state: S.optional(S.String),
-          createTime: S.optional(S.String),
-          name: S.optional(S.String),
-          failureReason: S.optional(S.String),
-          purgeTime: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "SupportEventSubscription" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(10, __c1, 2).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v2beta/{+parent}/supportEventSubscriptions",
-            baseUrl: "https://cloudsupport.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateOrganizationsSupportEventSubscriptionsRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "v2beta/{+name}",
-            baseUrl: "https://cloudsupport.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteOrganizationsSupportEventSubscriptionsRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v2beta/{+name}:download",
-            baseUrl: "https://cloudsupport.googleapis.com/",
-          }),
-        ),
-      ).annotate({ identifier: "DownloadMediaRequest" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          downloadExternalReadToken: S.optional(S.String),
-          blobId: S.optional(S.String),
-          uploadMetadataContainer: S.optional(S.String),
-          downloadReadHandle: S.optional(S.String),
-          uploadFragmentListCreationInfo: S.optional(S.String),
-          blobGeneration: S.optional(S.String),
-          readToken: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Blobstore2Info" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          bucketName: S.optional(S.String),
-          objectName: S.optional(S.String),
-          generation: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ObjectId" });
-  }
-}
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          path: S.optional(S.String),
-          blobstore2Info: S.optional(__S(14, __c1, 6)),
-          md5Hash: S.optional(S.String),
-          crc32cHash: S.optional(S.Number),
-          blobRef: S.optional(S.String),
-          cosmoBinaryReference: S.optional(S.String),
-          sha1Hash: S.optional(S.String),
-          inline: S.optional(S.String),
-          referenceType: S.optional(S.String),
-          objectId: S.optional(__S(15, __c1, 7)),
-          length: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "CompositeMedia" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          objectVersion: S.optional(S.String),
-          objectLocation: S.optional(__S(16, __c2, 0)),
-          objectSizeBytes: S.optional(S.String),
-          chunkSizeBytes: S.optional(S.String),
-          checksumsLocation: S.optional(__S(16, __c2, 0)),
-        }),
-      ).annotate({ identifier: "DiffChecksumsResponse" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          objectLocation: S.optional(__S(16, __c2, 0)),
-        }),
-      ).annotate({ identifier: "DiffDownloadResponse" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          objectInfo: S.optional(__S(16, __c2, 0)),
-          objectVersion: S.optional(S.String),
-          checksumsInfo: S.optional(__S(16, __c2, 0)),
-        }),
-      ).annotate({ identifier: "DiffUploadRequest" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          allowGzipCompression: S.optional(S.Boolean),
-          ignoreRange: S.optional(S.Boolean),
-        }),
-      ).annotate({ identifier: "DownloadParameters" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          fromFileName: S.optional(S.String),
-          bestGuess: S.optional(S.String),
-          fromHeader: S.optional(S.String),
-          fromUrlPath: S.optional(S.String),
-          fromFusionId: S.optional(S.String),
-          fromBytes: S.optional(S.String),
-          fusionIdDetectionMetadata: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ContentTypeInfo" });
-    case 6:
-      return S.Array(__S(16, __c2, 0));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          objectVersion: S.optional(S.String),
-          objectSizeBytes: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "DiffVersionResponse" });
-  }
-}
-function __c3(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          objectVersion: S.optional(S.String),
-          originalObject: S.optional(__S(16, __c2, 0)),
-        }),
-      ).annotate({ identifier: "DiffUploadResponse" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          hashVerified: S.optional(S.Boolean),
-          inline: S.optional(S.String),
-          filename: S.optional(S.String),
-          path: S.optional(S.String),
-          isPotentialRetry: S.optional(S.Boolean),
-          blobRef: S.optional(S.String),
-          length: S.optional(S.String),
-          blobstore2Info: S.optional(__S(14, __c1, 6)),
-          md5Hash: S.optional(S.String),
-          diffChecksumsResponse: S.optional(__S(17, __c2, 1)),
-          contentType: S.optional(S.String),
-          hash: S.optional(S.String),
-          diffDownloadResponse: S.optional(__S(18, __c2, 2)),
-          diffUploadRequest: S.optional(__S(19, __c2, 3)),
-          cosmoBinaryReference: S.optional(S.String),
-          algorithm: S.optional(S.String),
-          downloadParameters: S.optional(__S(20, __c2, 4)),
-          contentTypeInfo: S.optional(__S(21, __c2, 5)),
-          referenceType: S.optional(S.String),
-          sha256Hash: S.optional(S.String),
-          sha512Hash: S.optional(S.String),
-          token: S.optional(S.String),
-          objectId: S.optional(__S(15, __c1, 7)),
-          compositeMedia: S.optional(__S(22, __c2, 6)),
-          timestamp: S.optional(S.String),
-          diffVersionResponse: S.optional(__S(23, __c2, 7)),
-          mediaId: S.optional(S.String),
-          sha1Hash: S.optional(S.String),
-          bigstoreObjectRef: S.optional(S.String),
-          diffUploadResponse: S.optional(__S(24, __c3, 0)),
-          crc32cHash: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "Media" });
-    case 2:
       return S.suspend(() =>
         S.Struct({
           reason: S.optional(S.String),
           justification: S.optional(S.String),
         }),
       ).annotate({ identifier: "Escalation" });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          escalation: S.optional(__S(26, __c3, 2)),
+          escalation: S.optional(__S(0, __c0, 0)),
         }),
       ).annotate({ identifier: "EscalateCaseRequest" });
-    case 4:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(27, __c3, 3).pipe(T.HttpBody())),
+          body: S.optional(__S(1, __c0, 1).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -1384,11 +1090,15 @@ function __c3(j: number): any {
           }),
         ),
       ).annotate({ identifier: "EscalateCasesRequest" });
-    case 5:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(0, __c0, 0).pipe(T.HttpBody())),
+          body: S.optional(__S(320, __c20, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -1399,7 +1109,11 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "ExpungeOrganizationsSupportEventSubscriptionsRequest",
       });
-    case 6:
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -1411,7 +1125,11 @@ function __c3(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetCasesRequest" });
-    case 7:
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -1432,7 +1150,7 @@ function __c4(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          creator: S.optional(__S(5, __c0, 5)),
+          creator: S.optional(__S(384, __c24, 0)),
           name: S.optional(S.String),
           filename: S.optional(S.String),
           sizeBytes: S.optional(S.String),
@@ -1440,70 +1158,6 @@ function __c4(j: number): any {
           mimeType: S.optional(S.String),
         }),
       ).annotate({ identifier: "Attachment" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v2beta/{+name}",
-            baseUrl: "https://cloudsupport.googleapis.com/",
-          }),
-        ),
-      ).annotate({ identifier: "GetCasesCommentsRequest" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          pageToken: S.optional(S.String.pipe(T.Query())),
-          pageSize: S.optional(S.Number.pipe(T.Query())),
-          parent: S.String.pipe(T.Label()),
-          orderBy: S.optional(S.String.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v2beta/{+parent}:showFeed",
-            baseUrl: "https://cloudsupport.googleapis.com/",
-          }),
-        ),
-      ).annotate({ identifier: "GetFeedCasesRequest" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          plainText: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "TextContent" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          subject: S.optional(S.String),
-          createTime: S.optional(S.String),
-          actor: S.optional(__S(5, __c0, 5)),
-          recipientEmailAddresses: S.optional(__S(4, __c0, 4)),
-          name: S.optional(S.String),
-          ccEmailAddresses: S.optional(__S(4, __c0, 4)),
-          bodyContent: S.optional(__S(35, __c4, 3)),
-        }),
-      ).annotate({ identifier: "EmailMessage" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          attachment: S.optional(__S(32, __c4, 0)),
-          comment: S.optional(__S(8, __c1, 0)),
-          emailMessage: S.optional(__S(36, __c4, 4)),
-          deletedAttachment: S.optional(__S(32, __c4, 0)),
-          eventTime: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "FeedItem" });
-    case 6:
-      return S.Array(__S(37, __c4, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          nextPageToken: S.optional(S.String),
-          feedItems: S.optional(__S(38, __c4, 6)),
-        }),
-      ).annotate({ identifier: "ShowFeedResponse" });
   }
 }
 function __c5(j: number): any {
@@ -1519,10 +1173,86 @@ function __c5(j: number): any {
             baseUrl: "https://cloudsupport.googleapis.com/",
           }),
         ),
+      ).annotate({ identifier: "GetCasesCommentsRequest" });
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          pageToken: S.optional(S.String.pipe(T.Query())),
+          pageSize: S.optional(S.Number.pipe(T.Query())),
+          parent: S.String.pipe(T.Label()),
+          orderBy: S.optional(S.String.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v2beta/{+parent}:showFeed",
+            baseUrl: "https://cloudsupport.googleapis.com/",
+          }),
+        ),
+      ).annotate({ identifier: "GetFeedCasesRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          plainText: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "TextContent" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          subject: S.optional(S.String),
+          createTime: S.optional(S.String),
+          actor: S.optional(__S(384, __c24, 0)),
+          recipientEmailAddresses: S.optional(__S(336, __c21, 0)),
+          name: S.optional(S.String),
+          ccEmailAddresses: S.optional(__S(336, __c21, 0)),
+          bodyContent: S.optional(__S(97, __c6, 1)),
+        }),
+      ).annotate({ identifier: "EmailMessage" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          attachment: S.optional(__S(64, __c4, 0)),
+          comment: S.optional(__S(432, __c27, 0)),
+          emailMessage: S.optional(__S(98, __c6, 2)),
+          deletedAttachment: S.optional(__S(64, __c4, 0)),
+          eventTime: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "FeedItem" });
+    case 4:
+      return S.Array(__S(99, __c6, 3));
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          nextPageToken: S.optional(S.String),
+          feedItems: S.optional(__S(100, __c6, 4)),
+        }),
+      ).annotate({ identifier: "ShowFeedResponse" });
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v2beta/{+name}",
+            baseUrl: "https://cloudsupport.googleapis.com/",
+          }),
+        ),
       ).annotate({
         identifier: "GetOrganizationsSupportEventSubscriptionsRequest",
       });
-    case 1:
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
@@ -1538,16 +1268,24 @@ function __c5(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ListCasesRequest" });
-    case 2:
-      return S.Array(__S(6, __c0, 6));
-    case 3:
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(368, __c23, 0));
+    case 1:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          cases: S.optional(__S(42, __c5, 2)),
+          cases: S.optional(__S(144, __c9, 0)),
         }),
       ).annotate({ identifier: "ListCasesResponse" });
-    case 4:
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           pageToken: S.optional(S.String.pipe(T.Query())),
@@ -1563,16 +1301,20 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "ListCasesAttachmentsRequest",
       });
-    case 5:
-      return S.Array(__S(32, __c4, 0));
-    case 6:
+    case 1:
+      return S.Array(__S(64, __c4, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          attachments: S.optional(__S(45, __c5, 5)),
+          attachments: S.optional(__S(161, __c10, 1)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListAttachmentsResponse" });
-    case 7:
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           pageToken: S.optional(S.String.pipe(T.Query())),
@@ -1586,20 +1328,20 @@ function __c5(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ListCasesCommentsRequest" });
-  }
-}
-function __c6(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(8, __c1, 0));
     case 1:
+      return S.Array(__S(432, __c27, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          comments: S.optional(__S(48, __c6, 0)),
+          comments: S.optional(__S(177, __c11, 1)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListCommentsResponse" });
-    case 2:
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           showDeleted: S.optional(S.Boolean.pipe(T.Query())),
@@ -1617,23 +1359,27 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "ListOrganizationsSupportEventSubscriptionsRequest",
       });
-    case 3:
-      return S.Array(__S(10, __c1, 2));
-    case 4:
+    case 1:
+      return S.Array(__S(464, __c29, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          supportEventSubscriptions: S.optional(__S(51, __c6, 3)),
+          supportEventSubscriptions: S.optional(__S(193, __c12, 1)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({
         identifier: "ListSupportEventSubscriptionsResponse",
       });
-    case 5:
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           updateMask: S.optional(S.String.pipe(T.Query())),
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(6, __c0, 6).pipe(T.HttpBody())),
+          body: S.optional(__S(368, __c23, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -1642,12 +1388,16 @@ function __c6(j: number): any {
           }),
         ),
       ).annotate({ identifier: "PatchCasesRequest" });
-    case 6:
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           updateMask: S.optional(S.String.pipe(T.Query())),
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(10, __c1, 2).pipe(T.HttpBody())),
+          body: S.optional(__S(464, __c29, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -1658,7 +1408,11 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "PatchOrganizationsSupportEventSubscriptionsRequest",
       });
-    case 7:
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -1675,22 +1429,22 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "SearchCaseClassificationsRequest",
       });
-  }
-}
-function __c7(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(3, __c0, 3));
     case 1:
+      return S.Array(__S(353, __c22, 1));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          caseClassifications: S.optional(__S(56, __c7, 0)),
+          caseClassifications: S.optional(__S(241, __c15, 1)),
         }),
       ).annotate({
         identifier: "SearchCaseClassificationsResponse",
       });
-    case 2:
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           parent: S.optional(S.String.pipe(T.Query())),
@@ -1705,11 +1459,15 @@ function __c7(j: number): any {
           }),
         ),
       ).annotate({ identifier: "SearchCasesRequest" });
-    case 3:
+  }
+}
+function __c17(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(0, __c0, 0).pipe(T.HttpBody())),
+          body: S.optional(__S(320, __c20, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -1720,17 +1478,21 @@ function __c7(j: number): any {
       ).annotate({
         identifier: "UndeleteOrganizationsSupportEventSubscriptionsRequest",
       });
-    case 4:
+  }
+}
+function __c18(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          attachment: S.optional(__S(32, __c4, 0)),
+          attachment: S.optional(__S(64, __c4, 0)),
         }),
       ).annotate({ identifier: "CreateAttachmentRequest" });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(60, __c7, 4).pipe(T.HttpBody())),
+          body: S.optional(__S(288, __c18, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -1741,7 +1503,344 @@ function __c7(j: number): any {
       ).annotate({ identifier: "UploadMediaRequest" });
   }
 }
-
+function __c19(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+          body: S.optional(__S(320, __c20, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v2beta/{+name}:close",
+            baseUrl: "https://cloudsupport.googleapis.com/",
+          }),
+        ),
+      ).annotate({ identifier: "CloseCasesRequest" });
+  }
+}
+function __c20(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "CloseCaseRequest",
+      });
+  }
+}
+function __c21(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c22(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          productLine: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Product" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          product: S.optional(__S(352, __c22, 0)),
+          id: S.optional(S.String),
+          displayName: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "CaseClassification" });
+  }
+}
+function __c23(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          severity: S.optional(S.String),
+          description: S.optional(S.String),
+          displayName: S.optional(S.String),
+          updateTime: S.optional(S.String),
+          languageCode: S.optional(S.String),
+          priority: S.optional(S.String),
+          testCase: S.optional(S.Boolean),
+          name: S.optional(S.String),
+          classification: S.optional(__S(353, __c22, 1)),
+          subscriberEmailAddresses: S.optional(__S(336, __c21, 0)),
+          state: S.optional(S.String),
+          contactEmail: S.optional(S.String),
+          escalated: S.optional(S.Boolean),
+          createTime: S.optional(S.String),
+          timeZone: S.optional(S.String),
+          creator: S.optional(__S(384, __c24, 0)),
+        }),
+      ).annotate({ identifier: "Case" });
+  }
+}
+function __c24(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          email: S.optional(S.String),
+          username: S.optional(S.String),
+          displayName: S.optional(S.String),
+          googleSupport: S.optional(S.Boolean),
+        }),
+      ).annotate({ identifier: "Actor" });
+  }
+}
+function __c25(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          parent: S.String.pipe(T.Label()),
+          body: S.optional(__S(368, __c23, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v2beta/{+parent}/cases",
+            baseUrl: "https://cloudsupport.googleapis.com/",
+          }),
+        ),
+      ).annotate({ identifier: "CreateCasesRequest" });
+  }
+}
+function __c26(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          parent: S.String.pipe(T.Label()),
+          body: S.optional(__S(432, __c27, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v2beta/{+parent}/comments",
+            baseUrl: "https://cloudsupport.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateCasesCommentsRequest",
+      });
+  }
+}
+function __c27(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.optional(S.String),
+          plainTextBody: S.optional(S.String),
+          body: S.optional(S.String),
+          createTime: S.optional(S.String),
+          creator: S.optional(__S(384, __c24, 0)),
+        }),
+      ).annotate({ identifier: "Comment" });
+  }
+}
+function __c28(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          parent: S.String.pipe(T.Label()),
+          body: S.optional(__S(464, __c29, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v2beta/{+parent}/supportEventSubscriptions",
+            baseUrl: "https://cloudsupport.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateOrganizationsSupportEventSubscriptionsRequest",
+      });
+  }
+}
+function __c29(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          pubSubTopic: S.optional(S.String),
+          updateTime: S.optional(S.String),
+          deleteTime: S.optional(S.String),
+          state: S.optional(S.String),
+          createTime: S.optional(S.String),
+          name: S.optional(S.String),
+          failureReason: S.optional(S.String),
+          purgeTime: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "SupportEventSubscription" });
+  }
+}
+function __c30(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "v2beta/{+name}",
+            baseUrl: "https://cloudsupport.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteOrganizationsSupportEventSubscriptionsRequest",
+      });
+  }
+}
+function __c31(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v2beta/{+name}:download",
+            baseUrl: "https://cloudsupport.googleapis.com/",
+          }),
+        ),
+      ).annotate({ identifier: "DownloadMediaRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          downloadExternalReadToken: S.optional(S.String),
+          blobId: S.optional(S.String),
+          uploadMetadataContainer: S.optional(S.String),
+          downloadReadHandle: S.optional(S.String),
+          uploadFragmentListCreationInfo: S.optional(S.String),
+          blobGeneration: S.optional(S.String),
+          readToken: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Blobstore2Info" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          bucketName: S.optional(S.String),
+          objectName: S.optional(S.String),
+          generation: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ObjectId" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          path: S.optional(S.String),
+          blobstore2Info: S.optional(__S(497, __c31, 1)),
+          md5Hash: S.optional(S.String),
+          crc32cHash: S.optional(S.Number),
+          blobRef: S.optional(S.String),
+          cosmoBinaryReference: S.optional(S.String),
+          sha1Hash: S.optional(S.String),
+          inline: S.optional(S.String),
+          referenceType: S.optional(S.String),
+          objectId: S.optional(__S(498, __c31, 2)),
+          length: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "CompositeMedia" });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          objectVersion: S.optional(S.String),
+          objectLocation: S.optional(__S(499, __c31, 3)),
+          objectSizeBytes: S.optional(S.String),
+          chunkSizeBytes: S.optional(S.String),
+          checksumsLocation: S.optional(__S(499, __c31, 3)),
+        }),
+      ).annotate({ identifier: "DiffChecksumsResponse" });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          objectLocation: S.optional(__S(499, __c31, 3)),
+        }),
+      ).annotate({ identifier: "DiffDownloadResponse" });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          objectInfo: S.optional(__S(499, __c31, 3)),
+          objectVersion: S.optional(S.String),
+          checksumsInfo: S.optional(__S(499, __c31, 3)),
+        }),
+      ).annotate({ identifier: "DiffUploadRequest" });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          allowGzipCompression: S.optional(S.Boolean),
+          ignoreRange: S.optional(S.Boolean),
+        }),
+      ).annotate({ identifier: "DownloadParameters" });
+    case 8:
+      return S.suspend(() =>
+        S.Struct({
+          fromFileName: S.optional(S.String),
+          bestGuess: S.optional(S.String),
+          fromHeader: S.optional(S.String),
+          fromUrlPath: S.optional(S.String),
+          fromFusionId: S.optional(S.String),
+          fromBytes: S.optional(S.String),
+          fusionIdDetectionMetadata: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ContentTypeInfo" });
+    case 9:
+      return S.Array(__S(499, __c31, 3));
+    case 10:
+      return S.suspend(() =>
+        S.Struct({
+          objectVersion: S.optional(S.String),
+          objectSizeBytes: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "DiffVersionResponse" });
+    case 11:
+      return S.suspend(() =>
+        S.Struct({
+          objectVersion: S.optional(S.String),
+          originalObject: S.optional(__S(499, __c31, 3)),
+        }),
+      ).annotate({ identifier: "DiffUploadResponse" });
+    case 12:
+      return S.suspend(() =>
+        S.Struct({
+          hashVerified: S.optional(S.Boolean),
+          inline: S.optional(S.String),
+          filename: S.optional(S.String),
+          path: S.optional(S.String),
+          isPotentialRetry: S.optional(S.Boolean),
+          blobRef: S.optional(S.String),
+          length: S.optional(S.String),
+          blobstore2Info: S.optional(__S(497, __c31, 1)),
+          md5Hash: S.optional(S.String),
+          diffChecksumsResponse: S.optional(__S(500, __c31, 4)),
+          contentType: S.optional(S.String),
+          hash: S.optional(S.String),
+          diffDownloadResponse: S.optional(__S(501, __c31, 5)),
+          diffUploadRequest: S.optional(__S(502, __c31, 6)),
+          cosmoBinaryReference: S.optional(S.String),
+          algorithm: S.optional(S.String),
+          downloadParameters: S.optional(__S(503, __c31, 7)),
+          contentTypeInfo: S.optional(__S(504, __c31, 8)),
+          referenceType: S.optional(S.String),
+          sha256Hash: S.optional(S.String),
+          sha512Hash: S.optional(S.String),
+          token: S.optional(S.String),
+          objectId: S.optional(__S(498, __c31, 2)),
+          compositeMedia: S.optional(__S(505, __c31, 9)),
+          timestamp: S.optional(S.String),
+          diffVersionResponse: S.optional(__S(506, __c31, 10)),
+          mediaId: S.optional(S.String),
+          sha1Hash: S.optional(S.String),
+          bigstoreObjectRef: S.optional(S.String),
+          diffUploadResponse: S.optional(__S(507, __c31, 11)),
+          crc32cHash: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "Media" });
+  }
+}
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

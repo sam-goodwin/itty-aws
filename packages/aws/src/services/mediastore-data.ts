@@ -211,8 +211,8 @@ export const describeObject: API.OperationMethod<
   DescribeObjectError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2, __c0, 2) as any as S.Schema<DescribeObjectRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<DescribeObjectResponse>,
+  input: __S(4, __c1, 0) as any as S.Schema<DescribeObjectRequest>,
+  output: __S(5, __c1, 1) as any as S.Schema<DescribeObjectResponse>,
   errors: [ContainerNotFoundException, InternalServerError, ObjectNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -234,8 +234,8 @@ export const getObject: API.OperationMethod<
   GetObjectError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(4, __c0, 4) as any as S.Schema<GetObjectRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<GetObjectResponse>,
+  input: __S(8, __c2, 0) as any as S.Schema<GetObjectRequest>,
+  output: __S(9, __c2, 1) as any as S.Schema<GetObjectResponse>,
   errors: [
     ContainerNotFoundException,
     InternalServerError,
@@ -259,8 +259,8 @@ export const listItems: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(6, __c0, 6) as any as S.Schema<ListItemsRequest>,
-  output: __S(9, __c1, 1) as any as S.Schema<ListItemsResponse>,
+  input: __S(12, __c3, 0) as any as S.Schema<ListItemsRequest>,
+  output: __S(15, __c3, 3) as any as S.Schema<ListItemsResponse>,
   errors: [ContainerNotFoundException, InternalServerError],
   protocol: AwsProtocol,
   retry: Retry,
@@ -282,8 +282,8 @@ export const putObject: API.OperationMethod<
   PutObjectError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(10, __c1, 2) as any as S.Schema<PutObjectRequest>,
-  output: __S(11, __c1, 3) as any as S.Schema<PutObjectResponse>,
+  input: __S(16, __c4, 0) as any as S.Schema<PutObjectRequest>,
+  output: __S(17, __c4, 1) as any as S.Schema<PutObjectResponse>,
   errors: [ContainerNotFoundException, InternalServerError],
   protocol: AwsProtocol,
   retry: Retry,
@@ -303,13 +303,17 @@ function __c0(j: number): any {
       return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
         identifier: "DeleteObjectResponse",
       });
-    case 2:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ Path: S.String.pipe(T.HttpLabel("Path")) }).pipe(
           T.all(ns, T.Http({ method: "HEAD", uri: "/{Path+}" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "DescribeObjectRequest" });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           ETag: S.optional(S.String).pipe(T.HttpHeader("ETag")),
@@ -321,7 +325,11 @@ function __c0(j: number): any {
           ),
         }).pipe(ns),
       ).annotate({ identifier: "DescribeObjectResponse" });
-    case 4:
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           Path: S.String.pipe(T.HttpLabel("Path")),
@@ -330,7 +338,7 @@ function __c0(j: number): any {
           T.all(ns, T.Http({ method: "GET", uri: "/{Path+}" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "GetObjectRequest" });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           Body: S.optional(T.StreamingOutput).pipe(T.HttpPayload()),
@@ -345,7 +353,11 @@ function __c0(j: number): any {
           StatusCode: S.Number.pipe(T.HttpResponseCode()),
         }).pipe(ns),
       ).annotate({ identifier: "GetObjectResponse" });
-    case 6:
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           Path: S.optional(S.String).pipe(T.HttpQuery("Path")),
@@ -353,7 +365,7 @@ function __c0(j: number): any {
           NextToken: S.optional(S.String).pipe(T.HttpQuery("NextToken")),
         }).pipe(T.all(ns, T.Http({ method: "GET", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "ListItemsRequest" });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           Name: S.optional(S.String),
@@ -364,17 +376,17 @@ function __c0(j: number): any {
           ContentLength: S.optional(S.Number),
         }),
       ).annotate({ identifier: "Item" });
+    case 2:
+      return S.Array(__S(13, __c3, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({ Items: S.optional(__S(14, __c3, 2)), NextToken: S.optional(S.String) }).pipe(ns),
+      ).annotate({ identifier: "ListItemsResponse" });
   }
 }
-function __c1(j: number): any {
+function __c4(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(7, __c0, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({ Items: S.optional(__S(8, __c1, 0)), NextToken: S.optional(S.String) }).pipe(ns),
-      ).annotate({ identifier: "ListItemsResponse" });
-    case 2:
       return S.suspend(() =>
         S.Struct({
           Body: T.StreamingInput.pipe(T.HttpPayload()),
@@ -387,7 +399,7 @@ function __c1(j: number): any {
           T.all(ns, T.Http({ method: "PUT", uri: "/{Path+}" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "PutObjectRequest" });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           ContentSHA256: S.optional(S.String),
@@ -397,7 +409,6 @@ function __c1(j: number): any {
       ).annotate({ identifier: "PutObjectResponse" });
   }
 }
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

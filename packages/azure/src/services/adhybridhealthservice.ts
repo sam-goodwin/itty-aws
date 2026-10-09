@@ -2078,8 +2078,8 @@ export const AddAddsService: API.OperationMethod<
   AddAddsServiceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1, __c0, 1) as any as S.Schema<AddAddsServiceRequest>,
-  output: __S(2, __c0, 2) as any as S.Schema<ServiceProperties>,
+  input: __S(0, __c0, 0) as any as S.Schema<AddAddsServiceRequest>,
+  output: __S(32, __c2, 0) as any as S.Schema<ServiceProperties>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2093,8 +2093,8 @@ export const AddAddsServicesServiceMember: API.OperationMethod<
   AddAddsServicesServiceMemberError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3, __c0, 3) as any as S.Schema<AddAddsServicesServiceMemberRequest>,
-  output: __S(4, __c0, 4) as any as S.Schema<ServiceMember>,
+  input: __S(48, __c3, 0) as any as S.Schema<AddAddsServicesServiceMemberRequest>,
+  output: __S(64, __c4, 0) as any as S.Schema<ServiceMember>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2108,8 +2108,8 @@ export const AddAddsServicesUserPreference: API.OperationMethod<
   AddAddsServicesUserPreferenceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(5, __c0, 5) as any as S.Schema<AddAddsServicesUserPreferenceRequest>,
-  output: __S(6, __c0, 6) as any as S.Schema<AddAddsServicesUserPreferenceResponse>,
+  input: __S(272, __c17, 0) as any as S.Schema<AddAddsServicesUserPreferenceRequest>,
+  output: __S(288, __c18, 0) as any as S.Schema<AddAddsServicesUserPreferenceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2123,8 +2123,8 @@ export const AddConfiguration: API.OperationMethod<
   AddConfigurationError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(7, __c0, 7) as any as S.Schema<AddConfigurationRequest>,
-  output: __S(8, __c1, 0) as any as S.Schema<Tenant>,
+  input: __S(480, __c30, 0) as any as S.Schema<AddConfigurationRequest>,
+  output: __S(496, __c31, 0) as any as S.Schema<Tenant>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2138,8 +2138,8 @@ export const AddService: API.OperationMethod<
   AddServiceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(9, __c1, 1) as any as S.Schema<AddServiceRequest>,
-  output: __S(2, __c0, 2) as any as S.Schema<ServiceProperties>,
+  input: __S(800, __c50, 0) as any as S.Schema<AddServiceRequest>,
+  output: __S(32, __c2, 0) as any as S.Schema<ServiceProperties>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2153,8 +2153,8 @@ export const AddServiceAlertFeedback: API.OperationMethod<
   AddServiceAlertFeedbackError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(10, __c1, 2) as any as S.Schema<AddServiceAlertFeedbackRequest>,
-  output: __S(11, __c1, 3) as any as S.Schema<AlertFeedback>,
+  input: __S(1040, __c65, 0) as any as S.Schema<AddServiceAlertFeedbackRequest>,
+  output: __S(1056, __c66, 0) as any as S.Schema<AlertFeedback>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2168,8 +2168,8 @@ export const AddServiceMember: API.OperationMethod<
   AddServiceMemberError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(12, __c1, 4) as any as S.Schema<AddServiceMemberRequest>,
-  output: __S(4, __c0, 4) as any as S.Schema<ServiceMember>,
+  input: __S(1232, __c77, 0) as any as S.Schema<AddServiceMemberRequest>,
+  output: __S(64, __c4, 0) as any as S.Schema<ServiceMember>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2183,8 +2183,8 @@ export const DeleteAddsService: API.OperationMethod<
   DeleteAddsServiceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(13, __c1, 5) as any as S.Schema<DeleteAddsServiceRequest>,
-  output: __S(14, __c1, 6) as any as S.Schema<DeleteAddsServiceResponse>,
+  input: __S(1440, __c90, 0) as any as S.Schema<DeleteAddsServiceRequest>,
+  output: __S(1456, __c91, 0) as any as S.Schema<DeleteAddsServiceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2198,8 +2198,8 @@ export const DeleteAddsServiceMember: API.OperationMethod<
   DeleteAddsServiceMemberError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(15, __c1, 7) as any as S.Schema<DeleteAddsServiceMemberRequest>,
-  output: __S(16, __c2, 0) as any as S.Schema<DeleteAddsServiceMemberResponse>,
+  input: __S(1584, __c99, 0) as any as S.Schema<DeleteAddsServiceMemberRequest>,
+  output: __S(1600, __c100, 0) as any as S.Schema<DeleteAddsServiceMemberResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2213,8 +2213,8 @@ export const DeleteAddsServicesUserPreference: API.OperationMethod<
   DeleteAddsServicesUserPreferenceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(17, __c2, 1) as any as S.Schema<DeleteAddsServicesUserPreferenceRequest>,
-  output: __S(6, __c0, 6) as any as S.Schema<DeleteAddsServicesUserPreferenceResponse>,
+  input: __S(1616, __c101, 0) as any as S.Schema<DeleteAddsServicesUserPreferenceRequest>,
+  output: __S(288, __c18, 0) as any as S.Schema<DeleteAddsServicesUserPreferenceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2228,8 +2228,8 @@ export const DeleteService: API.OperationMethod<
   DeleteServiceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(18, __c2, 2) as any as S.Schema<DeleteServiceRequest>,
-  output: __S(14, __c1, 6) as any as S.Schema<DeleteServiceResponse>,
+  input: __S(80, __c5, 0) as any as S.Schema<DeleteServiceRequest>,
+  output: __S(1456, __c91, 0) as any as S.Schema<DeleteServiceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2243,8 +2243,8 @@ export const DeleteServiceMember: API.OperationMethod<
   DeleteServiceMemberError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(19, __c2, 3) as any as S.Schema<DeleteServiceMemberRequest>,
-  output: __S(14, __c1, 6) as any as S.Schema<DeleteServiceMemberResponse>,
+  input: __S(96, __c6, 0) as any as S.Schema<DeleteServiceMemberRequest>,
+  output: __S(1456, __c91, 0) as any as S.Schema<DeleteServiceMemberResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2258,8 +2258,8 @@ export const DeleteServiceMemberData: API.OperationMethod<
   DeleteServiceMemberDataError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(20, __c2, 4) as any as S.Schema<DeleteServiceMemberDataRequest>,
-  output: __S(16, __c2, 0) as any as S.Schema<DeleteServiceMemberDataResponse>,
+  input: __S(112, __c7, 0) as any as S.Schema<DeleteServiceMemberDataRequest>,
+  output: __S(1600, __c100, 0) as any as S.Schema<DeleteServiceMemberDataResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2273,8 +2273,8 @@ export const GetAddsService: API.OperationMethod<
   GetAddsServiceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(21, __c2, 5) as any as S.Schema<GetAddsServiceRequest>,
-  output: __S(2, __c0, 2) as any as S.Schema<ServiceProperties>,
+  input: __S(128, __c8, 0) as any as S.Schema<GetAddsServiceRequest>,
+  output: __S(32, __c2, 0) as any as S.Schema<ServiceProperties>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2288,8 +2288,8 @@ export const GetAddsServiceForestSummary: API.OperationMethod<
   GetAddsServiceForestSummaryError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(22, __c2, 6) as any as S.Schema<GetAddsServiceForestSummaryRequest>,
-  output: __S(23, __c2, 7) as any as S.Schema<ForestSummary>,
+  input: __S(144, __c9, 0) as any as S.Schema<GetAddsServiceForestSummaryRequest>,
+  output: __S(145, __c9, 1) as any as S.Schema<ForestSummary>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2303,8 +2303,8 @@ export const GetAddsServiceMember: API.OperationMethod<
   GetAddsServiceMemberError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(24, __c3, 0) as any as S.Schema<GetAddsServiceMemberRequest>,
-  output: __S(4, __c0, 4) as any as S.Schema<ServiceMember>,
+  input: __S(160, __c10, 0) as any as S.Schema<GetAddsServiceMemberRequest>,
+  output: __S(64, __c4, 0) as any as S.Schema<ServiceMember>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2318,8 +2318,8 @@ export const GetAddsServiceMetricMetadata: API.OperationMethod<
   GetAddsServiceMetricMetadataError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(25, __c3, 1) as any as S.Schema<GetAddsServiceMetricMetadataRequest>,
-  output: __S(28, __c3, 4) as any as S.Schema<MetricMetadata>,
+  input: __S(176, __c11, 0) as any as S.Schema<GetAddsServiceMetricMetadataRequest>,
+  output: __S(194, __c12, 2) as any as S.Schema<MetricMetadata>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2333,8 +2333,8 @@ export const GetAddsServiceMetricMetadataForGroup: API.OperationMethod<
   GetAddsServiceMetricMetadataForGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(29, __c3, 5) as any as S.Schema<GetAddsServiceMetricMetadataForGroupRequest>,
-  output: __S(33, __c4, 1) as any as S.Schema<MetricSets>,
+  input: __S(208, __c13, 0) as any as S.Schema<GetAddsServiceMetricMetadataForGroupRequest>,
+  output: __S(227, __c14, 3) as any as S.Schema<MetricSets>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2348,8 +2348,8 @@ export const GetAddsServiceMetrics: API.OperationMethod<
   GetAddsServiceMetricsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(34, __c4, 2) as any as S.Schema<GetAddsServiceMetricsRequest>,
-  output: __S(33, __c4, 1) as any as S.Schema<MetricSets>,
+  input: __S(240, __c15, 0) as any as S.Schema<GetAddsServiceMetricsRequest>,
+  output: __S(227, __c14, 3) as any as S.Schema<MetricSets>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2363,8 +2363,8 @@ export const GetAddsServicesReplicationStatus: API.OperationMethod<
   GetAddsServicesReplicationStatusError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(35, __c4, 3) as any as S.Schema<GetAddsServicesReplicationStatusRequest>,
-  output: __S(36, __c4, 4) as any as S.Schema<ReplicationStatus>,
+  input: __S(256, __c16, 0) as any as S.Schema<GetAddsServicesReplicationStatusRequest>,
+  output: __S(257, __c16, 1) as any as S.Schema<ReplicationStatus>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2378,8 +2378,8 @@ export const GetAddsServicesUserPreference: API.OperationMethod<
   GetAddsServicesUserPreferenceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(37, __c4, 5) as any as S.Schema<GetAddsServicesUserPreferenceRequest>,
-  output: __S(38, __c4, 6) as any as S.Schema<UserPreference>,
+  input: __S(304, __c19, 0) as any as S.Schema<GetAddsServicesUserPreferenceRequest>,
+  output: __S(305, __c19, 1) as any as S.Schema<UserPreference>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2393,8 +2393,8 @@ export const GetConfiguration: API.OperationMethod<
   GetConfigurationError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(39, __c4, 7) as any as S.Schema<GetConfigurationRequest>,
-  output: __S(8, __c1, 0) as any as S.Schema<Tenant>,
+  input: __S(320, __c20, 0) as any as S.Schema<GetConfigurationRequest>,
+  output: __S(496, __c31, 0) as any as S.Schema<Tenant>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2408,8 +2408,8 @@ export const GetReportDevOps: API.OperationMethod<
   GetReportDevOpsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(40, __c5, 0) as any as S.Schema<GetReportDevOpsRequest>,
-  output: __S(41, __c5, 1) as any as S.Schema<Result>,
+  input: __S(336, __c21, 0) as any as S.Schema<GetReportDevOpsRequest>,
+  output: __S(352, __c22, 0) as any as S.Schema<Result>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2423,8 +2423,8 @@ export const GetService: API.OperationMethod<
   GetServiceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(42, __c5, 2) as any as S.Schema<GetServiceRequest>,
-  output: __S(2, __c0, 2) as any as S.Schema<ServiceProperties>,
+  input: __S(368, __c23, 0) as any as S.Schema<GetServiceRequest>,
+  output: __S(32, __c2, 0) as any as S.Schema<ServiceProperties>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2438,8 +2438,8 @@ export const GetServiceFeatureAvailibility: API.OperationMethod<
   GetServiceFeatureAvailibilityError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(43, __c5, 3) as any as S.Schema<GetServiceFeatureAvailibilityRequest>,
-  output: __S(41, __c5, 1) as any as S.Schema<Result>,
+  input: __S(384, __c24, 0) as any as S.Schema<GetServiceFeatureAvailibilityRequest>,
+  output: __S(352, __c22, 0) as any as S.Schema<Result>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2453,8 +2453,8 @@ export const GetServiceMember: API.OperationMethod<
   GetServiceMemberError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(44, __c5, 4) as any as S.Schema<GetServiceMemberRequest>,
-  output: __S(4, __c0, 4) as any as S.Schema<ServiceMember>,
+  input: __S(400, __c25, 0) as any as S.Schema<GetServiceMemberRequest>,
+  output: __S(64, __c4, 0) as any as S.Schema<ServiceMember>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2468,8 +2468,8 @@ export const GetServiceMemberConnectorMetadata: API.OperationMethod<
   GetServiceMemberConnectorMetadataError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(45, __c5, 5) as any as S.Schema<GetServiceMemberConnectorMetadataRequest>,
-  output: __S(48, __c6, 0) as any as S.Schema<ConnectorMetadata>,
+  input: __S(416, __c26, 0) as any as S.Schema<GetServiceMemberConnectorMetadataRequest>,
+  output: __S(419, __c26, 3) as any as S.Schema<ConnectorMetadata>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2483,8 +2483,8 @@ export const GetServiceMemberMetrics: API.OperationMethod<
   GetServiceMemberMetricsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(49, __c6, 1) as any as S.Schema<GetServiceMemberMetricsRequest>,
-  output: __S(33, __c4, 1) as any as S.Schema<MetricSets>,
+  input: __S(432, __c27, 0) as any as S.Schema<GetServiceMemberMetricsRequest>,
+  output: __S(227, __c14, 3) as any as S.Schema<MetricSets>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2498,8 +2498,8 @@ export const GetServiceMemberServiceConfiguration: API.OperationMethod<
   GetServiceMemberServiceConfigurationError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(50, __c6, 2) as any as S.Schema<GetServiceMemberServiceConfigurationRequest>,
-  output: __S(51, __c6, 3) as any as S.Schema<ServiceConfiguration>,
+  input: __S(448, __c28, 0) as any as S.Schema<GetServiceMemberServiceConfigurationRequest>,
+  output: __S(449, __c28, 1) as any as S.Schema<ServiceConfiguration>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2513,8 +2513,8 @@ export const GetServiceMetricMetadata: API.OperationMethod<
   GetServiceMetricMetadataError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(52, __c6, 4) as any as S.Schema<GetServiceMetricMetadataRequest>,
-  output: __S(28, __c3, 4) as any as S.Schema<MetricMetadata>,
+  input: __S(464, __c29, 0) as any as S.Schema<GetServiceMetricMetadataRequest>,
+  output: __S(194, __c12, 2) as any as S.Schema<MetricMetadata>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2528,8 +2528,8 @@ export const GetServiceMetricMetadataForGroup: API.OperationMethod<
   GetServiceMetricMetadataForGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(53, __c6, 5) as any as S.Schema<GetServiceMetricMetadataForGroupRequest>,
-  output: __S(33, __c4, 1) as any as S.Schema<MetricSets>,
+  input: __S(512, __c32, 0) as any as S.Schema<GetServiceMetricMetadataForGroupRequest>,
+  output: __S(227, __c14, 3) as any as S.Schema<MetricSets>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2543,8 +2543,8 @@ export const GetServiceMetrics: API.OperationMethod<
   GetServiceMetricsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(54, __c6, 6) as any as S.Schema<GetServiceMetricsRequest>,
-  output: __S(33, __c4, 1) as any as S.Schema<MetricSets>,
+  input: __S(528, __c33, 0) as any as S.Schema<GetServiceMetricsRequest>,
+  output: __S(227, __c14, 3) as any as S.Schema<MetricSets>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2558,8 +2558,8 @@ export const GetServiceTenantWhitelisting: API.OperationMethod<
   GetServiceTenantWhitelistingError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(55, __c6, 7) as any as S.Schema<GetServiceTenantWhitelistingRequest>,
-  output: __S(41, __c5, 1) as any as S.Schema<Result>,
+  input: __S(544, __c34, 0) as any as S.Schema<GetServiceTenantWhitelistingRequest>,
+  output: __S(352, __c22, 0) as any as S.Schema<Result>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2573,8 +2573,8 @@ export const ListAdDomainServiceMembers: API.OperationMethod<
   ListAdDomainServiceMembersError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(56, __c7, 0) as any as S.Schema<ListAdDomainServiceMembersRequest>,
-  output: __S(63, __c7, 7) as any as S.Schema<AddsServiceMembers>,
+  input: __S(560, __c35, 0) as any as S.Schema<ListAdDomainServiceMembersRequest>,
+  output: __S(580, __c36, 4) as any as S.Schema<AddsServiceMembers>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2588,8 +2588,8 @@ export const ListAddsServiceMemberCredentials: API.OperationMethod<
   ListAddsServiceMemberCredentialsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(64, __c8, 0) as any as S.Schema<ListAddsServiceMemberCredentialsRequest>,
-  output: __S(67, __c8, 3) as any as S.Schema<Credentials>,
+  input: __S(624, __c39, 0) as any as S.Schema<ListAddsServiceMemberCredentialsRequest>,
+  output: __S(642, __c40, 2) as any as S.Schema<Credentials>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2603,8 +2603,8 @@ export const ListAddsServiceMembers: API.OperationMethod<
   ListAddsServiceMembersError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(68, __c8, 4) as any as S.Schema<ListAddsServiceMembersRequest>,
-  output: __S(63, __c7, 7) as any as S.Schema<AddsServiceMembers>,
+  input: __S(656, __c41, 0) as any as S.Schema<ListAddsServiceMembersRequest>,
+  output: __S(580, __c36, 4) as any as S.Schema<AddsServiceMembers>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2618,8 +2618,8 @@ export const ListAddsServiceMetricMetadata: API.OperationMethod<
   ListAddsServiceMetricMetadataError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(69, __c8, 5) as any as S.Schema<ListAddsServiceMetricMetadataRequest>,
-  output: __S(71, __c8, 7) as any as S.Schema<MetricMetadataList>,
+  input: __S(672, __c42, 0) as any as S.Schema<ListAddsServiceMetricMetadataRequest>,
+  output: __S(689, __c43, 1) as any as S.Schema<MetricMetadataList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2633,8 +2633,8 @@ export const ListAddsServiceMetricsAverage: API.OperationMethod<
   ListAddsServiceMetricsAverageError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(72, __c9, 0) as any as S.Schema<ListAddsServiceMetricsAverageRequest>,
-  output: __S(74, __c9, 2) as any as S.Schema<Metrics>,
+  input: __S(704, __c44, 0) as any as S.Schema<ListAddsServiceMetricsAverageRequest>,
+  output: __S(720, __c45, 0) as any as S.Schema<Metrics>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2648,8 +2648,8 @@ export const ListAddsServiceMetricsSum: API.OperationMethod<
   ListAddsServiceMetricsSumError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(75, __c9, 3) as any as S.Schema<ListAddsServiceMetricsSumRequest>,
-  output: __S(74, __c9, 2) as any as S.Schema<Metrics>,
+  input: __S(752, __c47, 0) as any as S.Schema<ListAddsServiceMetricsSumRequest>,
+  output: __S(720, __c45, 0) as any as S.Schema<Metrics>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2663,8 +2663,8 @@ export const ListAddsServicePremiumServices: API.OperationMethod<
   ListAddsServicePremiumServicesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(76, __c9, 4) as any as S.Schema<ListAddsServicePremiumServicesRequest>,
-  output: __S(78, __c9, 6) as any as S.Schema<Services>,
+  input: __S(768, __c48, 0) as any as S.Schema<ListAddsServicePremiumServicesRequest>,
+  output: __S(785, __c49, 1) as any as S.Schema<Services>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2678,8 +2678,8 @@ export const ListAddsServiceReplicationDetails: API.OperationMethod<
   ListAddsServiceReplicationDetailsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(79, __c9, 7) as any as S.Schema<ListAddsServiceReplicationDetailsRequest>,
-  output: __S(84, __c10, 4) as any as S.Schema<ReplicationDetailsList>,
+  input: __S(816, __c51, 0) as any as S.Schema<ListAddsServiceReplicationDetailsRequest>,
+  output: __S(817, __c51, 1) as any as S.Schema<ReplicationDetailsList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2693,8 +2693,8 @@ export const ListAddsServiceReplicationSummary: API.OperationMethod<
   ListAddsServiceReplicationSummaryError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(85, __c10, 5) as any as S.Schema<ListAddsServiceReplicationSummaryRequest>,
-  output: __S(86, __c10, 6) as any as S.Schema<ReplicationSummaryList>,
+  input: __S(848, __c53, 0) as any as S.Schema<ListAddsServiceReplicationSummaryRequest>,
+  output: __S(849, __c53, 1) as any as S.Schema<ReplicationSummaryList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2708,8 +2708,8 @@ export const ListAddsServices: API.OperationMethod<
   ListAddsServicesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(87, __c10, 7) as any as S.Schema<ListAddsServicesRequest>,
-  output: __S(78, __c9, 6) as any as S.Schema<Services>,
+  input: __S(864, __c54, 0) as any as S.Schema<ListAddsServicesRequest>,
+  output: __S(785, __c49, 1) as any as S.Schema<Services>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2723,8 +2723,8 @@ export const ListAddsServiceServerAlerts: API.OperationMethod<
   ListAddsServiceServerAlertsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(88, __c11, 0) as any as S.Schema<ListAddsServiceServerAlertsRequest>,
-  output: __S(95, __c11, 7) as any as S.Schema<Alerts>,
+  input: __S(880, __c55, 0) as any as S.Schema<ListAddsServiceServerAlertsRequest>,
+  output: __S(902, __c56, 6) as any as S.Schema<Alerts>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2738,8 +2738,8 @@ export const ListAddsServicesServiceMembers: API.OperationMethod<
   ListAddsServicesServiceMembersError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(96, __c12, 0) as any as S.Schema<ListAddsServicesServiceMembersRequest>,
-  output: __S(98, __c12, 2) as any as S.Schema<ServiceMembers>,
+  input: __S(912, __c57, 0) as any as S.Schema<ListAddsServicesServiceMembersRequest>,
+  output: __S(929, __c58, 1) as any as S.Schema<ServiceMembers>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2753,8 +2753,8 @@ export const ListAlertAddsAlerts: API.OperationMethod<
   ListAlertAddsAlertsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(99, __c12, 3) as any as S.Schema<ListAlertAddsAlertsRequest>,
-  output: __S(95, __c11, 7) as any as S.Schema<Alerts>,
+  input: __S(944, __c59, 0) as any as S.Schema<ListAlertAddsAlertsRequest>,
+  output: __S(902, __c56, 6) as any as S.Schema<Alerts>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2768,8 +2768,8 @@ export const ListConfigurationAddsConfigurations: API.OperationMethod<
   ListConfigurationAddsConfigurationsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(100, __c12, 4) as any as S.Schema<ListConfigurationAddsConfigurationsRequest>,
-  output: __S(101, __c12, 5) as any as S.Schema<AddsConfiguration>,
+  input: __S(960, __c60, 0) as any as S.Schema<ListConfigurationAddsConfigurationsRequest>,
+  output: __S(961, __c60, 1) as any as S.Schema<AddsConfiguration>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2783,8 +2783,8 @@ export const ListDimensionAddsDimensions: API.OperationMethod<
   ListDimensionAddsDimensionsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(102, __c12, 6) as any as S.Schema<ListDimensionAddsDimensionsRequest>,
-  output: __S(105, __c13, 1) as any as S.Schema<Dimensions>,
+  input: __S(976, __c61, 0) as any as S.Schema<ListDimensionAddsDimensionsRequest>,
+  output: __S(979, __c61, 3) as any as S.Schema<Dimensions>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2798,8 +2798,8 @@ export const ListIPAddressAggregatesByService: API.OperationMethod<
   ListIPAddressAggregatesByServiceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(106, __c13, 2) as any as S.Schema<ListIPAddressAggregatesByServiceRequest>,
-  output: __S(109, __c13, 5) as any as S.Schema<IPAddressAggregates>,
+  input: __S(992, __c62, 0) as any as S.Schema<ListIPAddressAggregatesByServiceRequest>,
+  output: __S(995, __c62, 3) as any as S.Schema<IPAddressAggregates>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2813,8 +2813,8 @@ export const ListIPAddressAggregateSettings: API.OperationMethod<
   ListIPAddressAggregateSettingsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(110, __c13, 6) as any as S.Schema<ListIPAddressAggregateSettingsRequest>,
-  output: __S(111, __c13, 7) as any as S.Schema<IPAddressAggregateSetting>,
+  input: __S(1008, __c63, 0) as any as S.Schema<ListIPAddressAggregateSettingsRequest>,
+  output: __S(1024, __c64, 0) as any as S.Schema<IPAddressAggregateSetting>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2828,8 +2828,8 @@ export const ListOperations: API.OperationMethod<
   ListOperationsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(112, __c14, 0) as any as S.Schema<ListOperationsRequest>,
-  output: __S(115, __c14, 3) as any as S.Schema<OperationListResponse>,
+  input: __S(1072, __c67, 0) as any as S.Schema<ListOperationsRequest>,
+  output: __S(1075, __c67, 3) as any as S.Schema<OperationListResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2843,8 +2843,8 @@ export const ListServiceAlertFeedback: API.OperationMethod<
   ListServiceAlertFeedbackError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(116, __c14, 4) as any as S.Schema<ListServiceAlertFeedbackRequest>,
-  output: __S(118, __c14, 6) as any as S.Schema<AlertFeedbacks>,
+  input: __S(1088, __c68, 0) as any as S.Schema<ListServiceAlertFeedbackRequest>,
+  output: __S(1090, __c68, 2) as any as S.Schema<AlertFeedbacks>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2858,8 +2858,8 @@ export const ListServiceAlerts: API.OperationMethod<
   ListServiceAlertsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(119, __c14, 7) as any as S.Schema<ListServiceAlertsRequest>,
-  output: __S(95, __c11, 7) as any as S.Schema<Alerts>,
+  input: __S(1104, __c69, 0) as any as S.Schema<ListServiceAlertsRequest>,
+  output: __S(902, __c56, 6) as any as S.Schema<Alerts>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2873,8 +2873,8 @@ export const ListServiceMemberAlerts: API.OperationMethod<
   ListServiceMemberAlertsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(120, __c15, 0) as any as S.Schema<ListServiceMemberAlertsRequest>,
-  output: __S(95, __c11, 7) as any as S.Schema<Alerts>,
+  input: __S(1120, __c70, 0) as any as S.Schema<ListServiceMemberAlertsRequest>,
+  output: __S(902, __c56, 6) as any as S.Schema<Alerts>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2888,8 +2888,8 @@ export const ListServiceMemberConnectors: API.OperationMethod<
   ListServiceMemberConnectorsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(121, __c15, 1) as any as S.Schema<ListServiceMemberConnectorsRequest>,
-  output: __S(131, __c16, 3) as any as S.Schema<Connectors>,
+  input: __S(1136, __c71, 0) as any as S.Schema<ListServiceMemberConnectorsRequest>,
+  output: __S(1146, __c71, 10) as any as S.Schema<Connectors>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2903,8 +2903,8 @@ export const ListServiceMemberCredentials: API.OperationMethod<
   ListServiceMemberCredentialsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(132, __c16, 4) as any as S.Schema<ListServiceMemberCredentialsRequest>,
-  output: __S(67, __c8, 3) as any as S.Schema<Credentials>,
+  input: __S(1152, __c72, 0) as any as S.Schema<ListServiceMemberCredentialsRequest>,
+  output: __S(642, __c40, 2) as any as S.Schema<Credentials>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2918,8 +2918,8 @@ export const ListServiceMemberDataFreshness: API.OperationMethod<
   ListServiceMemberDataFreshnessError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(133, __c16, 5) as any as S.Schema<ListServiceMemberDataFreshnessRequest>,
-  output: __S(134, __c16, 6) as any as S.Schema<DataFreshnessDetails>,
+  input: __S(1168, __c73, 0) as any as S.Schema<ListServiceMemberDataFreshnessRequest>,
+  output: __S(1169, __c73, 1) as any as S.Schema<DataFreshnessDetails>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2933,8 +2933,8 @@ export const ListServiceMemberGlobalConfiguration: API.OperationMethod<
   ListServiceMemberGlobalConfigurationError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(135, __c16, 7) as any as S.Schema<ListServiceMemberGlobalConfigurationRequest>,
-  output: __S(138, __c17, 2) as any as S.Schema<GlobalConfigurations>,
+  input: __S(1184, __c74, 0) as any as S.Schema<ListServiceMemberGlobalConfigurationRequest>,
+  output: __S(1187, __c74, 3) as any as S.Schema<GlobalConfigurations>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2948,8 +2948,8 @@ export const ListServiceMembers: API.OperationMethod<
   ListServiceMembersError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(139, __c17, 3) as any as S.Schema<ListServiceMembersRequest>,
-  output: __S(98, __c12, 2) as any as S.Schema<ServiceMembers>,
+  input: __S(1200, __c75, 0) as any as S.Schema<ListServiceMembersRequest>,
+  output: __S(929, __c58, 1) as any as S.Schema<ServiceMembers>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2963,8 +2963,8 @@ export const ListServiceMetricMetadata: API.OperationMethod<
   ListServiceMetricMetadataError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(140, __c17, 4) as any as S.Schema<ListServiceMetricMetadataRequest>,
-  output: __S(71, __c8, 7) as any as S.Schema<MetricMetadataList>,
+  input: __S(1216, __c76, 0) as any as S.Schema<ListServiceMetricMetadataRequest>,
+  output: __S(689, __c43, 1) as any as S.Schema<MetricMetadataList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2978,8 +2978,8 @@ export const ListServiceMetricsAverage: API.OperationMethod<
   ListServiceMetricsAverageError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(141, __c17, 5) as any as S.Schema<ListServiceMetricsAverageRequest>,
-  output: __S(74, __c9, 2) as any as S.Schema<Metrics>,
+  input: __S(1248, __c78, 0) as any as S.Schema<ListServiceMetricsAverageRequest>,
+  output: __S(720, __c45, 0) as any as S.Schema<Metrics>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2993,8 +2993,8 @@ export const ListServiceMetricsSum: API.OperationMethod<
   ListServiceMetricsSumError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(142, __c17, 6) as any as S.Schema<ListServiceMetricsSumRequest>,
-  output: __S(74, __c9, 2) as any as S.Schema<Metrics>,
+  input: __S(1264, __c79, 0) as any as S.Schema<ListServiceMetricsSumRequest>,
+  output: __S(720, __c45, 0) as any as S.Schema<Metrics>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3008,8 +3008,8 @@ export const ListServiceMonitoringConfigurations: API.OperationMethod<
   ListServiceMonitoringConfigurationsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(143, __c17, 7) as any as S.Schema<ListServiceMonitoringConfigurationsRequest>,
-  output: __S(144, __c18, 0) as any as S.Schema<Items>,
+  input: __S(1280, __c80, 0) as any as S.Schema<ListServiceMonitoringConfigurationsRequest>,
+  output: __S(1281, __c80, 1) as any as S.Schema<Items>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3023,8 +3023,8 @@ export const ListServicePremium: API.OperationMethod<
   ListServicePremiumError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(145, __c18, 1) as any as S.Schema<ListServicePremiumRequest>,
-  output: __S(78, __c9, 6) as any as S.Schema<Services>,
+  input: __S(1296, __c81, 0) as any as S.Schema<ListServicePremiumRequest>,
+  output: __S(785, __c49, 1) as any as S.Schema<Services>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3038,8 +3038,8 @@ export const ListServices: API.OperationMethod<
   ListServicesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(146, __c18, 2) as any as S.Schema<ListServicesRequest>,
-  output: __S(78, __c9, 6) as any as S.Schema<Services>,
+  input: __S(1312, __c82, 0) as any as S.Schema<ListServicesRequest>,
+  output: __S(785, __c49, 1) as any as S.Schema<Services>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3053,8 +3053,8 @@ export const ListServiceUserBadPasswordReport: API.OperationMethod<
   ListServiceUserBadPasswordReportError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(147, __c18, 3) as any as S.Schema<ListServiceUserBadPasswordReportRequest>,
-  output: __S(150, __c18, 6) as any as S.Schema<ErrorReportUsersEntries>,
+  input: __S(1328, __c83, 0) as any as S.Schema<ListServiceUserBadPasswordReportRequest>,
+  output: __S(1331, __c83, 3) as any as S.Schema<ErrorReportUsersEntries>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3068,8 +3068,8 @@ export const ServiceMembersListExportStatus: API.OperationMethod<
   ServiceMembersListExportStatusError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(151, __c18, 7) as any as S.Schema<ServiceMembersListExportStatusRequest>,
-  output: __S(154, __c19, 2) as any as S.Schema<ExportStatuses>,
+  input: __S(1344, __c84, 0) as any as S.Schema<ServiceMembersListExportStatusRequest>,
+  output: __S(1362, __c85, 2) as any as S.Schema<ExportStatuses>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3083,8 +3083,8 @@ export const ServicesListAllRiskyIpDownloadReport: API.OperationMethod<
   ServicesListAllRiskyIpDownloadReportError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(155, __c19, 3) as any as S.Schema<ServicesListAllRiskyIpDownloadReportRequest>,
-  output: __S(158, __c19, 6) as any as S.Schema<RiskyIPBlobUris>,
+  input: __S(1376, __c86, 0) as any as S.Schema<ServicesListAllRiskyIpDownloadReportRequest>,
+  output: __S(1394, __c87, 2) as any as S.Schema<RiskyIPBlobUris>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3098,8 +3098,8 @@ export const ServicesListCurrentRiskyIpDownloadReport: API.OperationMethod<
   ServicesListCurrentRiskyIpDownloadReportError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(159, __c19, 7) as any as S.Schema<ServicesListCurrentRiskyIpDownloadReportRequest>,
-  output: __S(158, __c19, 6) as any as S.Schema<RiskyIPBlobUris>,
+  input: __S(1408, __c88, 0) as any as S.Schema<ServicesListCurrentRiskyIpDownloadReportRequest>,
+  output: __S(1394, __c87, 2) as any as S.Schema<RiskyIPBlobUris>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3113,8 +3113,8 @@ export const ServicesListExportErrors: API.OperationMethod<
   ServicesListExportErrorsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(160, __c20, 0) as any as S.Schema<ServicesListExportErrorsRequest>,
-  output: __S(163, __c20, 3) as any as S.Schema<ErrorCounts>,
+  input: __S(1424, __c89, 0) as any as S.Schema<ServicesListExportErrorsRequest>,
+  output: __S(1427, __c89, 3) as any as S.Schema<ErrorCounts>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3128,8 +3128,8 @@ export const ServicesListExportErrorsV2: API.OperationMethod<
   ServicesListExportErrorsV2Error,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(164, __c20, 4) as any as S.Schema<ServicesListExportErrorsV2Request>,
-  output: __S(168, __c21, 0) as any as S.Schema<MergedExportErrors>,
+  input: __S(1472, __c92, 0) as any as S.Schema<ServicesListExportErrorsV2Request>,
+  output: __S(1476, __c92, 4) as any as S.Schema<MergedExportErrors>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3143,8 +3143,8 @@ export const ServicesListExportStatus: API.OperationMethod<
   ServicesListExportStatusError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(169, __c21, 1) as any as S.Schema<ServicesListExportStatusRequest>,
-  output: __S(154, __c19, 2) as any as S.Schema<ExportStatuses>,
+  input: __S(1488, __c93, 0) as any as S.Schema<ServicesListExportStatusRequest>,
+  output: __S(1362, __c85, 2) as any as S.Schema<ExportStatuses>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3158,8 +3158,8 @@ export const UpdateAddsService: API.OperationMethod<
   UpdateAddsServiceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(170, __c21, 2) as any as S.Schema<UpdateAddsServiceRequest>,
-  output: __S(2, __c0, 2) as any as S.Schema<ServiceProperties>,
+  input: __S(1504, __c94, 0) as any as S.Schema<UpdateAddsServiceRequest>,
+  output: __S(32, __c2, 0) as any as S.Schema<ServiceProperties>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3173,8 +3173,8 @@ export const UpdateConfiguration: API.OperationMethod<
   UpdateConfigurationError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(171, __c21, 3) as any as S.Schema<UpdateConfigurationRequest>,
-  output: __S(8, __c1, 0) as any as S.Schema<Tenant>,
+  input: __S(1520, __c95, 0) as any as S.Schema<UpdateConfigurationRequest>,
+  output: __S(496, __c31, 0) as any as S.Schema<Tenant>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3188,8 +3188,8 @@ export const UpdateIPAddressAggregateSettings: API.OperationMethod<
   UpdateIPAddressAggregateSettingsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(172, __c21, 4) as any as S.Schema<UpdateIPAddressAggregateSettingsRequest>,
-  output: __S(111, __c13, 7) as any as S.Schema<IPAddressAggregateSetting>,
+  input: __S(1536, __c96, 0) as any as S.Schema<UpdateIPAddressAggregateSettingsRequest>,
+  output: __S(1024, __c64, 0) as any as S.Schema<IPAddressAggregateSetting>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3203,8 +3203,8 @@ export const UpdateService: API.OperationMethod<
   UpdateServiceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(173, __c21, 5) as any as S.Schema<UpdateServiceRequest>,
-  output: __S(2, __c0, 2) as any as S.Schema<ServiceProperties>,
+  input: __S(1552, __c97, 0) as any as S.Schema<UpdateServiceRequest>,
+  output: __S(32, __c2, 0) as any as S.Schema<ServiceProperties>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3218,8 +3218,8 @@ export const UpdateServiceMonitoringConfiguration: API.OperationMethod<
   UpdateServiceMonitoringConfigurationError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(174, __c21, 6) as any as S.Schema<UpdateServiceMonitoringConfigurationRequest>,
-  output: __S(6, __c0, 6) as any as S.Schema<UpdateServiceMonitoringConfigurationResponse>,
+  input: __S(1568, __c98, 0) as any as S.Schema<UpdateServiceMonitoringConfigurationRequest>,
+  output: __S(288, __c18, 0) as any as S.Schema<UpdateServiceMonitoringConfigurationResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3229,15 +3229,13 @@ export const UpdateServiceMonitoringConfiguration: API.OperationMethod<
 function __c0(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(S.String);
-    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           activeAlerts: S.optional(S.Number),
           additionalInformation: S.optional(S.String),
           createdDate: S.optional(S.String),
-          customNotificationEmails: S.optional(__S(0, __c0, 0)),
+          customNotificationEmails: S.optional(__S(16, __c1, 0)),
           disabled: S.optional(S.Boolean),
           displayName: S.optional(S.String),
           health: S.optional(S.String),
@@ -3248,7 +3246,7 @@ function __c0(j: number): any {
           notificationEmailEnabled: S.optional(S.Boolean),
           notificationEmailEnabledForGlobalAdmins: S.optional(S.Boolean),
           notificationEmailsEnabledForGlobalAdmins: S.optional(S.Boolean),
-          notificationEmails: S.optional(__S(0, __c0, 0)),
+          notificationEmails: S.optional(__S(16, __c1, 0)),
           originalDisabledState: S.optional(S.Boolean),
           resolvedAlerts: S.optional(S.Number),
           serviceId: S.optional(S.String),
@@ -3266,14 +3264,24 @@ function __c0(j: number): any {
           }),
         ),
       ).annotate({ identifier: "AddAddsServiceRequest" });
-    case 2:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           activeAlerts: S.optional(S.Number),
           additionalInformation: S.optional(S.String),
           createdDate: S.optional(S.String),
-          customNotificationEmails: S.optional(__S(0, __c0, 0)),
+          customNotificationEmails: S.optional(__S(16, __c1, 0)),
           disabled: S.optional(S.Boolean),
           displayName: S.optional(S.String),
           health: S.optional(S.String),
@@ -3284,7 +3292,7 @@ function __c0(j: number): any {
           notificationEmailEnabled: S.optional(S.Boolean),
           notificationEmailEnabledForGlobalAdmins: S.optional(S.Boolean),
           notificationEmailsEnabledForGlobalAdmins: S.optional(S.Boolean),
-          notificationEmails: S.optional(__S(0, __c0, 0)),
+          notificationEmails: S.optional(__S(16, __c1, 0)),
           originalDisabledState: S.optional(S.Boolean),
           resolvedAlerts: S.optional(S.Number),
           serviceId: S.optional(S.String),
@@ -3295,7 +3303,11 @@ function __c0(j: number): any {
           type: S.optional(S.String),
         }),
       ).annotate({ identifier: "ServiceProperties" });
-    case 3:
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           serviceName: S.String.pipe(T.Label()),
@@ -3336,7 +3348,11 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "AddAddsServicesServiceMemberRequest",
       });
-    case 4:
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           serviceMemberId: S.optional(S.String),
@@ -3367,12 +3383,290 @@ function __c0(j: number): any {
           status: S.optional(S.String),
         }),
       ).annotate({ identifier: "ServiceMember" });
-    case 5:
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          serviceName: S.String.pipe(T.Label()),
+          confirm: S.optional(S.Boolean.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/providers/Microsoft.ADHybridHealthService/services/{serviceName}",
+            code: 200,
+            apiVersion: "2014-01-01",
+          }),
+        ),
+      ).annotate({ identifier: "DeleteServiceRequest" });
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          serviceName: S.String.pipe(T.Label()),
+          serviceMemberId: S.String.pipe(T.Label()),
+          confirm: S.optional(S.Boolean.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/providers/Microsoft.ADHybridHealthService/services/{serviceName}/servicemembers/{serviceMemberId}",
+            code: 200,
+            apiVersion: "2014-01-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteServiceMemberRequest",
+      });
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          serviceName: S.String.pipe(T.Label()),
+          serviceMemberId: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/providers/Microsoft.ADHybridHealthService/services/{serviceName}/servicemembers/{serviceMemberId}/data",
+            code: 200,
+            apiVersion: "2014-01-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteServiceMemberDataRequest",
+      });
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          serviceName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/providers/Microsoft.ADHybridHealthService/addsservices/{serviceName}",
+            code: 200,
+            apiVersion: "2014-01-01",
+          }),
+        ),
+      ).annotate({ identifier: "GetAddsServiceRequest" });
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          serviceName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/providers/Microsoft.ADHybridHealthService/addsservices/{serviceName}/forestsummary",
+            code: 200,
+            apiVersion: "2014-01-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetAddsServiceForestSummaryRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          forestName: S.optional(S.String),
+          domainCount: S.optional(S.Number),
+          siteCount: S.optional(S.Number),
+          monitoredDcCount: S.optional(S.Number),
+          totalDcCount: S.optional(S.Number),
+          domains: S.optional(__S(16, __c1, 0)),
+          sites: S.optional(__S(16, __c1, 0)),
+        }),
+      ).annotate({ identifier: "ForestSummary" });
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          serviceName: S.String.pipe(T.Label()),
+          serviceMemberId: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/providers/Microsoft.ADHybridHealthService/addsservices/{serviceName}/servicemembers/{serviceMemberId}",
+            code: 200,
+            apiVersion: "2014-01-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetAddsServiceMemberRequest",
+      });
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          serviceName: S.String.pipe(T.Label()),
+          metricName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/providers/Microsoft.ADHybridHealthService/addsservices/{serviceName}/metricmetadata/{metricName}",
+            code: 200,
+            apiVersion: "2014-01-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetAddsServiceMetricMetadataRequest",
+      });
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          key: S.optional(S.String),
+          displayName: S.optional(S.String),
+          invisibleForUi: S.optional(S.Boolean),
+        }),
+      ).annotate({ identifier: "MetricGroup" });
+    case 1:
+      return S.Array(__S(192, __c12, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          metricsProcessorClassName: S.optional(S.String),
+          metricName: S.optional(S.String),
+          groupings: S.optional(__S(193, __c12, 1)),
+          displayName: S.optional(S.String),
+          valueKind: S.optional(S.String),
+          minValue: S.optional(S.Number),
+          maxValue: S.optional(S.Number),
+          kind: S.optional(S.String),
+          isDefault: S.optional(S.Boolean),
+          isPerfCounter: S.optional(S.Boolean),
+          isDevOps: S.optional(S.Boolean),
+        }),
+      ).annotate({ identifier: "MetricMetadata" });
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          serviceName: S.String.pipe(T.Label()),
+          metricName: S.String.pipe(T.Label()),
+          groupName: S.String.pipe(T.Label()),
+          groupKey: S.optional(S.String.pipe(T.Query())),
+          fromDate: S.optional(S.String.pipe(T.Query())),
+          toDate: S.optional(S.String.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/providers/Microsoft.ADHybridHealthService/addsservices/{serviceName}/metricmetadata/{metricName}/groups/{groupName}",
+            code: 200,
+            apiVersion: "2014-01-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetAddsServiceMetricMetadataForGroupRequest",
+      });
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.Number);
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          setName: S.optional(S.String),
+          values: S.optional(__S(224, __c14, 0)),
+        }),
+      ).annotate({ identifier: "MetricSet" });
+    case 2:
+      return S.Array(__S(225, __c14, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          sets: S.optional(__S(226, __c14, 2)),
+          timeStamps: S.optional(__S(16, __c1, 0)),
+        }),
+      ).annotate({ identifier: "MetricSets" });
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          serviceName: S.String.pipe(T.Label()),
+          metricName: S.String.pipe(T.Label()),
+          groupName: S.String.pipe(T.Label()),
+          groupKey: S.optional(S.String.pipe(T.Query())),
+          fromDate: S.optional(S.String.pipe(T.Query())),
+          toDate: S.optional(S.String.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/providers/Microsoft.ADHybridHealthService/addsservices/{serviceName}/metrics/{metricName}/groups/{groupName}",
+            code: 200,
+            apiVersion: "2014-01-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetAddsServiceMetricsRequest",
+      });
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          serviceName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/providers/Microsoft.ADHybridHealthService/addsservices/{serviceName}/replicationstatus",
+            code: 200,
+            apiVersion: "2014-01-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetAddsServicesReplicationStatusRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          forestName: S.optional(S.String),
+          totalDcCount: S.optional(S.Number),
+          errorDcCount: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "ReplicationStatus" });
+  }
+}
+function __c17(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           serviceName: S.String.pipe(T.Label()),
           featureName: S.String.pipe(T.Label()),
-          metricNames: S.optional(__S(0, __c0, 0)),
+          metricNames: S.optional(__S(16, __c1, 0)),
         }).pipe(
           T.Http({
             method: "POST",
@@ -3384,11 +3678,256 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "AddAddsServicesUserPreferenceRequest",
       });
-    case 6:
+  }
+}
+function __c18(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "AddAddsServicesUserPreferenceResponse",
       });
-    case 7:
+  }
+}
+function __c19(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          serviceName: S.String.pipe(T.Label()),
+          featureName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/providers/Microsoft.ADHybridHealthService/addsservices/{serviceName}/features/{featureName}/userpreference",
+            code: 200,
+            apiVersion: "2014-01-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetAddsServicesUserPreferenceRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          metricNames: S.optional(__S(16, __c1, 0)),
+        }),
+      ).annotate({ identifier: "UserPreference" });
+  }
+}
+function __c20(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({}).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/providers/Microsoft.ADHybridHealthService/configuration",
+            code: 200,
+            apiVersion: "2014-01-01",
+          }),
+        ),
+      ).annotate({ identifier: "GetConfigurationRequest" });
+  }
+}
+function __c21(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({}).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/providers/Microsoft.ADHybridHealthService/reports/DevOps/IsDevOps",
+            code: 200,
+            apiVersion: "2014-01-01",
+          }),
+        ),
+      ).annotate({ identifier: "GetReportDevOpsRequest" });
+  }
+}
+function __c22(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          value: S.optional(S.Boolean),
+        }),
+      ).annotate({ identifier: "Result" });
+  }
+}
+function __c23(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          serviceName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/providers/Microsoft.ADHybridHealthService/services/{serviceName}",
+            code: 200,
+            apiVersion: "2014-01-01",
+          }),
+        ),
+      ).annotate({ identifier: "GetServiceRequest" });
+  }
+}
+function __c24(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          serviceName: S.String.pipe(T.Label()),
+          featureName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/providers/Microsoft.ADHybridHealthService/services/{serviceName}/checkServiceFeatureAvailibility/{featureName}",
+            code: 200,
+            apiVersion: "2014-01-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetServiceFeatureAvailibilityRequest",
+      });
+  }
+}
+function __c25(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          serviceName: S.String.pipe(T.Label()),
+          serviceMemberId: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/providers/Microsoft.ADHybridHealthService/services/{serviceName}/servicemembers/{serviceMemberId}",
+            code: 200,
+            apiVersion: "2014-01-01",
+          }),
+        ),
+      ).annotate({ identifier: "GetServiceMemberRequest" });
+  }
+}
+function __c26(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          serviceName: S.String.pipe(T.Label()),
+          serviceMemberId: S.String.pipe(T.Label()),
+          metricName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/providers/Microsoft.ADHybridHealthService/services/{serviceName}/servicemembers/{serviceMemberId}/metrics/{metricName}",
+            code: 200,
+            apiVersion: "2014-01-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetServiceMemberConnectorMetadataRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          connectorId: S.optional(S.String),
+          connectorDisplayName: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ConnectorMetadataDetails" });
+    case 2:
+      return S.Array(__S(417, __c26, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          connectors: S.optional(__S(418, __c26, 2)),
+          runProfileNames: S.optional(__S(16, __c1, 0)),
+        }),
+      ).annotate({ identifier: "ConnectorMetadata" });
+  }
+}
+function __c27(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          serviceName: S.String.pipe(T.Label()),
+          serviceMemberId: S.String.pipe(T.Label()),
+          metricName: S.String.pipe(T.Label()),
+          groupName: S.String.pipe(T.Label()),
+          groupKey: S.optional(S.String.pipe(T.Query())),
+          fromDate: S.optional(S.String.pipe(T.Query())),
+          toDate: S.optional(S.String.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/providers/Microsoft.ADHybridHealthService/services/{serviceName}/servicemembers/{serviceMemberId}/metrics/{metricName}/groups/{groupName}",
+            code: 200,
+            apiVersion: "2014-01-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetServiceMemberMetricsRequest",
+      });
+  }
+}
+function __c28(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          serviceName: S.String.pipe(T.Label()),
+          serviceMemberId: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/providers/Microsoft.ADHybridHealthService/services/{serviceName}/servicemembers/{serviceMemberId}/serviceconfiguration",
+            code: 200,
+            apiVersion: "2014-01-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetServiceMemberServiceConfigurationRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          version: S.optional(S.String),
+          serviceType: S.optional(S.Number),
+          serviceAccount: S.optional(S.String),
+          sqlServer: S.optional(S.String),
+          sqlVersion: S.optional(S.String),
+          sqlEdition: S.optional(S.String),
+          sqlInstance: S.optional(S.String),
+          sqlDatabaseName: S.optional(S.String),
+          sqlDatabaseSize: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "ServiceConfiguration" });
+  }
+}
+function __c29(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          serviceName: S.String.pipe(T.Label()),
+          metricName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/providers/Microsoft.ADHybridHealthService/services/{serviceName}/metricmetadata/{metricName}",
+            code: 200,
+            apiVersion: "2014-01-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetServiceMetricMetadataRequest",
+      });
+  }
+}
+function __c30(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({}).pipe(
           T.Http({
@@ -3401,7 +3940,7 @@ function __c0(j: number): any {
       ).annotate({ identifier: "AddConfigurationRequest" });
   }
 }
-function __c1(j: number): any {
+function __c31(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3417,7 +3956,7 @@ function __c1(j: number): any {
           devOpsTtl: S.optional(S.String),
           disabled: S.optional(S.Boolean),
           disabledReason: S.optional(S.Number),
-          globalAdminsEmail: S.optional(__S(0, __c0, 0)),
+          globalAdminsEmail: S.optional(__S(16, __c1, 0)),
           initialDomain: S.optional(S.String),
           lastDisabled: S.optional(S.String),
           lastVerified: S.optional(S.String),
@@ -3429,14 +3968,385 @@ function __c1(j: number): any {
           tenantName: S.optional(S.String),
         }),
       ).annotate({ identifier: "Tenant" });
+  }
+}
+function __c32(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          serviceName: S.String.pipe(T.Label()),
+          metricName: S.String.pipe(T.Label()),
+          groupName: S.String.pipe(T.Label()),
+          groupKey: S.optional(S.String.pipe(T.Query())),
+          fromDate: S.optional(S.String.pipe(T.Query())),
+          toDate: S.optional(S.String.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/providers/Microsoft.ADHybridHealthService/services/{serviceName}/metricmetadata/{metricName}/groups/{groupName}",
+            code: 200,
+            apiVersion: "2014-01-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetServiceMetricMetadataForGroupRequest",
+      });
+  }
+}
+function __c33(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          serviceName: S.String.pipe(T.Label()),
+          metricName: S.String.pipe(T.Label()),
+          groupName: S.String.pipe(T.Label()),
+          groupKey: S.optional(S.String.pipe(T.Query())),
+          fromDate: S.optional(S.String.pipe(T.Query())),
+          toDate: S.optional(S.String.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/providers/Microsoft.ADHybridHealthService/services/{serviceName}/metrics/{metricName}/groups/{groupName}",
+            code: 200,
+            apiVersion: "2014-01-01",
+          }),
+        ),
+      ).annotate({ identifier: "GetServiceMetricsRequest" });
+  }
+}
+function __c34(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          serviceName: S.String.pipe(T.Label()),
+          featureName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/providers/Microsoft.ADHybridHealthService/services/{serviceName}/TenantWhitelisting/{featureName}",
+            code: 200,
+            apiVersion: "2014-01-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetServiceTenantWhitelistingRequest",
+      });
+  }
+}
+function __c35(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          serviceName: S.String.pipe(T.Label()),
+          _filter: S.optional(S.String.pipe(T.Query("$filter"))),
+          isGroupbySite: S.Boolean.pipe(T.Query()),
+          query: S.optional(S.String.pipe(T.Query())),
+          nextPartitionKey: S.String.pipe(T.Query()),
+          nextRowKey: S.String.pipe(T.Query()),
+          takeCount: S.optional(S.Number.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/providers/Microsoft.ADHybridHealthService/addsservices/{serviceName}/addomainservicemembers",
+            code: 200,
+            apiVersion: "2014-01-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListAdDomainServiceMembersRequest",
+      });
+  }
+}
+function __c36(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          kbName: S.optional(S.String),
+          link: S.optional(S.String),
+          installedDate: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Hotfix" });
     case 1:
+      return S.Array(__S(576, __c36, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          domainName: S.optional(S.String),
+          siteName: S.optional(S.String),
+          addsRoles: S.optional(__S(16, __c1, 0)),
+          gcReachable: S.optional(S.Boolean),
+          isAdvertising: S.optional(S.Boolean),
+          pdcReachable: S.optional(S.Boolean),
+          sysvolState: S.optional(S.Boolean),
+          dcTypes: S.optional(__S(16, __c1, 0)),
+          serviceMemberId: S.optional(S.String),
+          serviceId: S.optional(S.String),
+          tenantId: S.optional(S.String),
+          activeAlerts: S.optional(S.Number),
+          additionalInformation: S.optional(S.String),
+          createdDate: S.optional(S.String),
+          dimensions: S.optional(__S(608, __c38, 0)),
+          disabled: S.optional(S.Boolean),
+          disabledReason: S.optional(S.Number),
+          installedQfes: S.optional(__S(577, __c36, 1)),
+          lastDisabled: S.optional(S.String),
+          lastReboot: S.optional(S.String),
+          lastServerReportedMonitoringLevelChange: S.optional(S.String),
+          lastUpdated: S.optional(S.String),
+          machineId: S.optional(S.String),
+          machineName: S.optional(S.String),
+          monitoringConfigurationsComputed: S.optional(__S(608, __c38, 0)),
+          monitoringConfigurationsCustomized: S.optional(__S(608, __c38, 0)),
+          osName: S.optional(S.String),
+          osVersion: S.optional(S.String),
+          properties: S.optional(__S(608, __c38, 0)),
+          recommendedQfes: S.optional(__S(577, __c36, 1)),
+          resolvedAlerts: S.optional(S.Number),
+          role: S.optional(S.String),
+          serverReportedMonitoringLevel: S.optional(S.String),
+          status: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "AddsServiceMember" });
+    case 3:
+      return S.Array(__S(578, __c36, 2));
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          nextLink: S.optional(S.String),
+          value: S.optional(__S(579, __c36, 3)),
+          totalCount: S.optional(S.Number),
+          continuationToken: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "AddsServiceMembers" });
+  }
+}
+function __c37(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          key: S.optional(S.String),
+          value: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Item" });
+  }
+}
+function __c38(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(592, __c37, 0));
+  }
+}
+function __c39(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          serviceName: S.String.pipe(T.Label()),
+          serviceMemberId: S.String.pipe(T.Label()),
+          _filter: S.optional(S.String.pipe(T.Query("$filter"))),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/providers/Microsoft.ADHybridHealthService/addsservices/{serviceName}/servicemembers/{serviceMemberId}/credentials",
+            code: 200,
+            apiVersion: "2014-01-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListAddsServiceMemberCredentialsRequest",
+      });
+  }
+}
+function __c40(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          identifier: S.optional(S.String),
+          type: S.optional(S.String),
+          credentialData: S.optional(__S(16, __c1, 0)),
+        }),
+      ).annotate({ identifier: "Credential" });
+    case 1:
+      return S.Array(__S(640, __c40, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          value: S.optional(__S(641, __c40, 1)),
+        }),
+      ).annotate({ identifier: "Credentials" });
+  }
+}
+function __c41(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          serviceName: S.String.pipe(T.Label()),
+          _filter: S.optional(S.String.pipe(T.Query("$filter"))),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/providers/Microsoft.ADHybridHealthService/addsservices/{serviceName}/addsservicemembers",
+            code: 200,
+            apiVersion: "2014-01-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListAddsServiceMembersRequest",
+      });
+  }
+}
+function __c42(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          serviceName: S.String.pipe(T.Label()),
+          _filter: S.optional(S.String.pipe(T.Query("$filter"))),
+          perfCounter: S.optional(S.Boolean.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/providers/Microsoft.ADHybridHealthService/addsservices/{serviceName}/metricmetadata",
+            code: 200,
+            apiVersion: "2014-01-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListAddsServiceMetricMetadataRequest",
+      });
+  }
+}
+function __c43(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(194, __c12, 2));
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          nextLink: S.optional(S.String),
+          value: S.optional(__S(688, __c43, 0)),
+          totalCount: S.optional(S.Number),
+          continuationToken: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "MetricMetadataList" });
+  }
+}
+function __c44(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          serviceName: S.String.pipe(T.Label()),
+          metricName: S.String.pipe(T.Label()),
+          groupName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/providers/Microsoft.ADHybridHealthService/addsservices/{serviceName}/metrics/{metricName}/groups/{groupName}/average",
+            code: 200,
+            apiVersion: "2014-01-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListAddsServiceMetricsAverageRequest",
+      });
+  }
+}
+function __c45(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          nextLink: S.optional(S.String),
+          value: S.optional(__S(736, __c46, 0)),
+          totalCount: S.optional(S.Number),
+          continuationToken: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Metrics" });
+  }
+}
+function __c46(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(592, __c37, 0));
+  }
+}
+function __c47(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          serviceName: S.String.pipe(T.Label()),
+          metricName: S.String.pipe(T.Label()),
+          groupName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/providers/Microsoft.ADHybridHealthService/addsservices/{serviceName}/metrics/{metricName}/groups/{groupName}/sum",
+            code: 200,
+            apiVersion: "2014-01-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListAddsServiceMetricsSumRequest",
+      });
+  }
+}
+function __c48(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          _filter: S.optional(S.String.pipe(T.Query("$filter"))),
+          serviceType: S.optional(S.String.pipe(T.Query())),
+          skipCount: S.optional(S.Number.pipe(T.Query())),
+          takeCount: S.optional(S.Number.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/providers/Microsoft.ADHybridHealthService/addsservices/premiumCheck",
+            code: 200,
+            apiVersion: "2014-01-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListAddsServicePremiumServicesRequest",
+      });
+  }
+}
+function __c49(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(32, __c2, 0));
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          nextLink: S.optional(S.String),
+          value: S.optional(__S(784, __c49, 0)),
+          totalCount: S.optional(S.Number),
+          continuationToken: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Services" });
+  }
+}
+function __c50(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           activeAlerts: S.optional(S.Number),
           additionalInformation: S.optional(S.String),
           createdDate: S.optional(S.String),
-          customNotificationEmails: S.optional(__S(0, __c0, 0)),
+          customNotificationEmails: S.optional(__S(16, __c1, 0)),
           disabled: S.optional(S.Boolean),
           displayName: S.optional(S.String),
           health: S.optional(S.String),
@@ -3447,7 +4357,7 @@ function __c1(j: number): any {
           notificationEmailEnabled: S.optional(S.Boolean),
           notificationEmailEnabledForGlobalAdmins: S.optional(S.Boolean),
           notificationEmailsEnabledForGlobalAdmins: S.optional(S.Boolean),
-          notificationEmails: S.optional(__S(0, __c0, 0)),
+          notificationEmails: S.optional(__S(16, __c1, 0)),
           originalDisabledState: S.optional(S.Boolean),
           resolvedAlerts: S.optional(S.Number),
           serviceId: S.optional(S.String),
@@ -3465,7 +4375,438 @@ function __c1(j: number): any {
           }),
         ),
       ).annotate({ identifier: "AddServiceRequest" });
+  }
+}
+function __c51(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          serviceName: S.String.pipe(T.Label()),
+          _filter: S.optional(S.String.pipe(T.Query("$filter"))),
+          withDetails: S.optional(S.Boolean.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/providers/Microsoft.ADHybridHealthService/addsservices/{serviceName}/replicationdetails",
+            code: 200,
+            apiVersion: "2014-01-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListAddsServiceReplicationDetailsRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          value: S.optional(__S(835, __c52, 3)),
+          totalCount: S.optional(S.Number),
+          continuationToken: S.optional(S.String),
+          nextLink: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ReplicationDetailsList" });
+  }
+}
+function __c52(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          sourceDomainController: S.optional(S.String),
+          consecutiveFailureCount: S.optional(S.Number),
+          namingContext: S.optional(S.String),
+          status: S.optional(S.Number),
+          lastAttemptedSync: S.optional(S.String),
+          lastSuccessfulSync: S.optional(S.String),
+          lastErrorCode: S.optional(S.Number),
+          lastErrorMessage: S.optional(S.String),
+          errorTitle: S.optional(S.String),
+          errorDescription: S.optional(S.String),
+          fixLink: S.optional(S.String),
+          fixDetails: S.optional(S.String),
+          additionalInfo: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "InboundReplicationNeighbor",
+      });
+    case 1:
+      return S.Array(__S(832, __c52, 0));
     case 2:
+      return S.suspend(() =>
+        S.Struct({
+          targetServer: S.optional(S.String),
+          site: S.optional(S.String),
+          domain: S.optional(S.String),
+          status: S.optional(S.Number),
+          lastAttemptedSync: S.optional(S.String),
+          lastSuccessfulSync: S.optional(S.String),
+          inboundNeighborCollection: S.optional(__S(833, __c52, 1)),
+        }),
+      ).annotate({ identifier: "ReplicationSummary" });
+    case 3:
+      return S.Array(__S(834, __c52, 2));
+  }
+}
+function __c53(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          serviceName: S.String.pipe(T.Label()),
+          _filter: S.optional(S.String.pipe(T.Query("$filter"))),
+          isGroupbySite: S.Boolean.pipe(T.Query()),
+          query: S.String.pipe(T.Query()),
+          nextPartitionKey: S.String.pipe(T.Query()),
+          nextRowKey: S.String.pipe(T.Query()),
+          takeCount: S.optional(S.Number.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/providers/Microsoft.ADHybridHealthService/addsservices/{serviceName}/replicationsummary",
+            code: 200,
+            apiVersion: "2014-01-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListAddsServiceReplicationSummaryRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          value: S.optional(__S(835, __c52, 3)),
+        }),
+      ).annotate({ identifier: "ReplicationSummaryList" });
+  }
+}
+function __c54(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          _filter: S.optional(S.String.pipe(T.Query("$filter"))),
+          serviceType: S.optional(S.String.pipe(T.Query())),
+          skipCount: S.optional(S.Number.pipe(T.Query())),
+          takeCount: S.optional(S.Number.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/providers/Microsoft.ADHybridHealthService/addsservices",
+            code: 200,
+            apiVersion: "2014-01-01",
+          }),
+        ),
+      ).annotate({ identifier: "ListAddsServicesRequest" });
+  }
+}
+function __c55(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          serviceName: S.String.pipe(T.Label()),
+          serviceMemberId: S.String.pipe(T.Label()),
+          _filter: S.optional(S.String.pipe(T.Query("$filter"))),
+          state: S.optional(S.String.pipe(T.Query())),
+          from: S.optional(S.String.pipe(T.Query())),
+          to: S.optional(S.String.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/providers/Microsoft.ADHybridHealthService/addsservices/{serviceName}/servicemembers/{serviceMemberId}/alerts",
+            code: 200,
+            apiVersion: "2014-01-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListAddsServiceServerAlertsRequest",
+      });
+  }
+}
+function __c56(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          title: S.optional(S.String),
+          url: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "HelpLink" });
+    case 1:
+      return S.Array(__S(896, __c56, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          titleName: S.optional(S.String),
+          titleValue: S.optional(S.String),
+          properties: S.optional(S.Unknown),
+          hasProperties: S.optional(S.Boolean),
+        }),
+      ).annotate({ identifier: "AdditionalInformation" });
+    case 3:
+      return S.Array(__S(898, __c56, 2));
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          alertId: S.optional(S.String),
+          level: S.optional(S.String),
+          state: S.optional(S.String),
+          shortName: S.optional(S.String),
+          displayName: S.optional(S.String),
+          description: S.optional(S.String),
+          remediation: S.optional(S.String),
+          relatedLinks: S.optional(__S(897, __c56, 1)),
+          scope: S.optional(S.String),
+          additionalInformation: S.optional(__S(899, __c56, 3)),
+          createdDate: S.optional(S.String),
+          resolvedDate: S.optional(S.String),
+          lastUpdated: S.optional(S.String),
+          monitorRoleType: S.optional(S.String),
+          activeAlertProperties: S.optional(__S(608, __c38, 0)),
+          resolvedAlertProperties: S.optional(__S(608, __c38, 0)),
+          tenantId: S.optional(S.String),
+          serviceId: S.optional(S.String),
+          serviceMemberId: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Alert" });
+    case 5:
+      return S.Array(__S(900, __c56, 4));
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          value: S.optional(__S(901, __c56, 5)),
+          nextLink: S.optional(S.String),
+          totalCount: S.optional(S.Number),
+          continuationToken: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Alerts" });
+  }
+}
+function __c57(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          serviceName: S.String.pipe(T.Label()),
+          _filter: S.optional(S.String.pipe(T.Query("$filter"))),
+          dimensionType: S.optional(S.String.pipe(T.Query())),
+          dimensionSignature: S.optional(S.String.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/providers/Microsoft.ADHybridHealthService/addsservices/{serviceName}/servicemembers",
+            code: 200,
+            apiVersion: "2014-01-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListAddsServicesServiceMembersRequest",
+      });
+  }
+}
+function __c58(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(64, __c4, 0));
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          nextLink: S.optional(S.String),
+          value: S.optional(__S(928, __c58, 0)),
+          totalCount: S.optional(S.Number),
+          continuationToken: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ServiceMembers" });
+  }
+}
+function __c59(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          serviceName: S.String.pipe(T.Label()),
+          _filter: S.optional(S.String.pipe(T.Query("$filter"))),
+          state: S.optional(S.String.pipe(T.Query())),
+          from: S.optional(S.String.pipe(T.Query())),
+          to: S.optional(S.String.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/providers/Microsoft.ADHybridHealthService/addsservices/{serviceName}/alerts",
+            code: 200,
+            apiVersion: "2014-01-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListAlertAddsAlertsRequest",
+      });
+  }
+}
+function __c60(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          serviceName: S.String.pipe(T.Label()),
+          grouping: S.optional(S.String.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/providers/Microsoft.ADHybridHealthService/addsservices/{serviceName}/configuration",
+            code: 200,
+            apiVersion: "2014-01-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListConfigurationAddsConfigurationsRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          nextLink: S.optional(S.String),
+          value: S.optional(__S(608, __c38, 0)),
+          totalCount: S.optional(S.Number),
+          continuationToken: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "AddsConfiguration" });
+  }
+}
+function __c61(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          serviceName: S.String.pipe(T.Label()),
+          dimension: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/providers/Microsoft.ADHybridHealthService/addsservices/{serviceName}/dimensions/{dimension}",
+            code: 200,
+            apiVersion: "2014-01-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListDimensionAddsDimensionsRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          health: S.optional(S.String),
+          simpleProperties: S.optional(S.Unknown),
+          activeAlerts: S.optional(S.Number),
+          additionalInformation: S.optional(S.String),
+          lastUpdated: S.optional(S.String),
+          displayName: S.optional(S.String),
+          resolvedAlerts: S.optional(S.Number),
+          signature: S.optional(S.String),
+          type: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Dimension" });
+    case 2:
+      return S.Array(__S(977, __c61, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          nextLink: S.optional(S.String),
+          value: S.optional(__S(978, __c61, 2)),
+          totalCount: S.optional(S.Number),
+          continuationToken: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Dimensions" });
+  }
+}
+function __c62(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          serviceName: S.String.pipe(T.Label()),
+          skiptoken: S.optional(S.String.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/providers/Microsoft.ADHybridHealthService/services/{serviceName}/ipAddressAggregates",
+            code: 200,
+            apiVersion: "2014-01-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListIPAddressAggregatesByServiceRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          tenantId: S.optional(S.String),
+          serviceId: S.optional(S.String),
+          ipAddress: S.optional(S.String),
+          timestamp: S.optional(S.String),
+          firstAuditTimestamp: S.optional(S.String),
+          lastAuditTimestamp: S.optional(S.String),
+          extranetLockoutErrorCount: S.optional(S.Number),
+          badPasswordErrorCount: S.optional(S.Number),
+          uniqueUsernamesAttemptedCount: S.optional(S.Number),
+          attemptCountThresholdIsExceeded: S.optional(S.Boolean),
+          timeSpan: S.optional(S.String),
+          isWhitelistedIpAddress: S.optional(S.Boolean),
+          networkLocation: S.optional(S.String),
+          attemptCountThresholdOnTrigger: S.optional(S.Number),
+          attemptThresholdTypeOnTrigger: S.optional(S.String),
+          geographicLocation: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "IPAddressAggregate" });
+    case 2:
+      return S.Array(__S(993, __c62, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          value: S.optional(__S(994, __c62, 2)),
+          nextLink: S.optional(S.String),
+          totalCount: S.optional(S.Number),
+          continuationToken: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "IPAddressAggregates" });
+  }
+}
+function __c63(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          serviceName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/providers/Microsoft.ADHybridHealthService/services/{serviceName}/ipAddressAggregateSettings",
+            code: 200,
+            apiVersion: "2014-01-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListIPAddressAggregateSettingsRequest",
+      });
+  }
+}
+function __c64(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          badPasswordAndExtranetLockoutCombinedDailyThreshold: S.optional(S.Number),
+          badPasswordAndExtranetLockoutCombinedHourlyThreshold: S.optional(S.Number),
+          extranetLockoutDailyThreshold: S.optional(S.Number),
+          extranetLockoutHourlyThreshold: S.optional(S.Number),
+          emailNotificationEnabled: S.optional(S.Boolean),
+        }),
+      ).annotate({
+        identifier: "IPAddressAggregateSetting",
+      });
+  }
+}
+function __c65(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           serviceName: S.String.pipe(T.Label()),
@@ -3488,7 +4829,11 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "AddServiceAlertFeedbackRequest",
       });
-    case 3:
+  }
+}
+function __c66(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           level: S.optional(S.String),
@@ -3501,7 +4846,342 @@ function __c1(j: number): any {
           createdDate: S.optional(S.String),
         }),
       ).annotate({ identifier: "AlertFeedback" });
+  }
+}
+function __c67(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({}).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/providers/Microsoft.ADHybridHealthService/operations",
+            code: 200,
+            apiVersion: "2014-01-01",
+          }),
+        ),
+      ).annotate({ identifier: "ListOperationsRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.optional(S.String),
+          display: S.optional(S.Unknown),
+        }),
+      ).annotate({ identifier: "Operation" });
+    case 2:
+      return S.Array(__S(1073, __c67, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          nextLink: S.optional(S.String),
+          value: S.optional(__S(1074, __c67, 2)),
+          totalCount: S.optional(S.Number),
+          continuationToken: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "OperationListResponse" });
+  }
+}
+function __c68(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          serviceName: S.String.pipe(T.Label()),
+          shortName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/providers/Microsoft.ADHybridHealthService/services/{serviceName}/feedbacktype/alerts/{shortName}/alertfeedback",
+            code: 200,
+            apiVersion: "2014-01-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListServiceAlertFeedbackRequest",
+      });
+    case 1:
+      return S.Array(__S(1056, __c66, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          value: S.optional(__S(1089, __c68, 1)),
+        }),
+      ).annotate({ identifier: "AlertFeedbacks" });
+  }
+}
+function __c69(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          serviceName: S.String.pipe(T.Label()),
+          _filter: S.optional(S.String.pipe(T.Query("$filter"))),
+          state: S.optional(S.String.pipe(T.Query())),
+          from: S.optional(S.String.pipe(T.Query())),
+          to: S.optional(S.String.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/providers/Microsoft.ADHybridHealthService/services/{serviceName}/alerts",
+            code: 200,
+            apiVersion: "2014-01-01",
+          }),
+        ),
+      ).annotate({ identifier: "ListServiceAlertsRequest" });
+  }
+}
+function __c70(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          serviceName: S.String.pipe(T.Label()),
+          serviceMemberId: S.String.pipe(T.Label()),
+          _filter: S.optional(S.String.pipe(T.Query("$filter"))),
+          state: S.optional(S.String.pipe(T.Query())),
+          from: S.optional(S.String.pipe(T.Query())),
+          to: S.optional(S.String.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/providers/Microsoft.ADHybridHealthService/services/{serviceName}/servicemembers/{serviceMemberId}/alerts",
+            code: 200,
+            apiVersion: "2014-01-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListServiceMemberAlertsRequest",
+      });
+  }
+}
+function __c71(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          serviceName: S.String.pipe(T.Label()),
+          serviceMemberId: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/providers/Microsoft.ADHybridHealthService/service/{serviceName}/servicemembers/{serviceMemberId}/connectors",
+            code: 200,
+            apiVersion: "2014-01-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListServiceMemberConnectorsRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          isDefault: S.optional(S.Boolean),
+          objectClasses: S.optional(__S(16, __c1, 0)),
+          containersIncluded: S.optional(__S(16, __c1, 0)),
+          containersExcluded: S.optional(__S(16, __c1, 0)),
+        }),
+      ).annotate({ identifier: "PartitionScope" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          dn: S.optional(S.String),
+          enabled: S.optional(S.Boolean),
+          timeCreated: S.optional(S.String),
+          timeLastModified: S.optional(S.String),
+          partitionScope: S.optional(__S(1137, __c71, 1)),
+          name: S.optional(S.String),
+          isDomain: S.optional(S.Boolean),
+          type: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Partition" });
+    case 3:
+      return S.Array(__S(1138, __c71, 2));
     case 4:
+      return S.suspend(() =>
+        S.Struct({
+          batchSize: S.optional(S.Number),
+          objectProcessLimit: S.optional(S.Number),
+          objectDeleteLimit: S.optional(S.Number),
+          pageSize: S.optional(S.Number),
+          partitionId: S.optional(S.String),
+          operationType: S.optional(S.Number),
+          timeout: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "RunStep" });
+    case 5:
+      return S.Array(__S(1140, __c71, 4));
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          runSteps: S.optional(__S(1141, __c71, 5)),
+        }),
+      ).annotate({ identifier: "RunProfile" });
+    case 7:
+      return S.Array(__S(1142, __c71, 6));
+    case 8:
+      return S.suspend(() =>
+        S.Struct({
+          connectorId: S.optional(S.String),
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          version: S.optional(S.Number),
+          type: S.optional(S.String),
+          description: S.optional(S.String),
+          schemaXml: S.optional(S.String),
+          passwordManagementSettings: S.optional(S.Unknown),
+          passwordHashSyncConfiguration: S.optional(S.Unknown),
+          timeCreated: S.optional(S.String),
+          timeLastModified: S.optional(S.String),
+          partitions: S.optional(__S(1139, __c71, 3)),
+          runProfiles: S.optional(__S(1143, __c71, 7)),
+          classesIncluded: S.optional(__S(16, __c1, 0)),
+          attributesIncluded: S.optional(__S(16, __c1, 0)),
+        }),
+      ).annotate({ identifier: "Connector" });
+    case 9:
+      return S.Array(__S(1144, __c71, 8));
+    case 10:
+      return S.suspend(() =>
+        S.Struct({
+          value: S.optional(__S(1145, __c71, 9)),
+        }),
+      ).annotate({ identifier: "Connectors" });
+  }
+}
+function __c72(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          serviceName: S.String.pipe(T.Label()),
+          serviceMemberId: S.String.pipe(T.Label()),
+          _filter: S.optional(S.String.pipe(T.Query("$filter"))),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/providers/Microsoft.ADHybridHealthService/services/{serviceName}/servicemembers/{serviceMemberId}/credentials",
+            code: 200,
+            apiVersion: "2014-01-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListServiceMemberCredentialsRequest",
+      });
+  }
+}
+function __c73(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          serviceName: S.String.pipe(T.Label()),
+          serviceMemberId: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/providers/Microsoft.ADHybridHealthService/services/{serviceName}/servicemembers/{serviceMemberId}/datafreshness",
+            code: 200,
+            apiVersion: "2014-01-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListServiceMemberDataFreshnessRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          value: S.optional(__S(608, __c38, 0)),
+        }),
+      ).annotate({ identifier: "DataFreshnessDetails" });
+  }
+}
+function __c74(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          serviceName: S.String.pipe(T.Label()),
+          serviceMemberId: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/providers/Microsoft.ADHybridHealthService/services/{serviceName}/servicemembers/{serviceMemberId}/globalconfiguration",
+            code: 200,
+            apiVersion: "2014-01-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListServiceMemberGlobalConfigurationRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          version: S.optional(S.Number),
+          schemaXml: S.optional(S.String),
+          passwordSyncEnabled: S.optional(S.Boolean),
+          numSavedPwdEvent: S.optional(S.Number),
+          featureSet: S.optional(__S(608, __c38, 0)),
+        }),
+      ).annotate({ identifier: "GlobalConfiguration" });
+    case 2:
+      return S.Array(__S(1185, __c74, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          value: S.optional(__S(1186, __c74, 2)),
+        }),
+      ).annotate({ identifier: "GlobalConfigurations" });
+  }
+}
+function __c75(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          serviceName: S.String.pipe(T.Label()),
+          _filter: S.optional(S.String.pipe(T.Query("$filter"))),
+          dimensionType: S.optional(S.String.pipe(T.Query())),
+          dimensionSignature: S.optional(S.String.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/providers/Microsoft.ADHybridHealthService/services/{serviceName}/servicemembers",
+            code: 200,
+            apiVersion: "2014-01-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListServiceMembersRequest",
+      });
+  }
+}
+function __c76(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          serviceName: S.String.pipe(T.Label()),
+          _filter: S.optional(S.String.pipe(T.Query("$filter"))),
+          perfCounter: S.optional(S.Boolean.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/providers/Microsoft.ADHybridHealthService/services/{serviceName}/metricmetadata",
+            code: 200,
+            apiVersion: "2014-01-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListServiceMetricMetadataRequest",
+      });
+  }
+}
+function __c77(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           serviceName: S.String.pipe(T.Label()),
@@ -3540,1502 +5220,11 @@ function __c1(j: number): any {
           }),
         ),
       ).annotate({ identifier: "AddServiceMemberRequest" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          serviceName: S.String.pipe(T.Label()),
-          confirm: S.optional(S.Boolean.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/providers/Microsoft.ADHybridHealthService/addsservices/{serviceName}",
-            code: 200,
-            apiVersion: "2014-01-01",
-          }),
-        ),
-      ).annotate({ identifier: "DeleteAddsServiceRequest" });
-    case 6:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "DeleteAddsServiceResponse",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          serviceName: S.String.pipe(T.Label()),
-          serviceMemberId: S.String.pipe(T.Label()),
-          confirm: S.optional(S.Boolean.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/providers/Microsoft.ADHybridHealthService/addsservices/{serviceName}/servicemembers/{serviceMemberId}",
-            code: 200,
-            apiVersion: "2014-01-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteAddsServiceMemberRequest",
-      });
   }
 }
-function __c2(j: number): any {
+function __c78(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "DeleteAddsServiceMemberResponse",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          serviceName: S.String.pipe(T.Label()),
-          featureName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/providers/Microsoft.ADHybridHealthService/addsservices/{serviceName}/features/{featureName}/userpreference",
-            code: 200,
-            apiVersion: "2014-01-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteAddsServicesUserPreferenceRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          serviceName: S.String.pipe(T.Label()),
-          confirm: S.optional(S.Boolean.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/providers/Microsoft.ADHybridHealthService/services/{serviceName}",
-            code: 200,
-            apiVersion: "2014-01-01",
-          }),
-        ),
-      ).annotate({ identifier: "DeleteServiceRequest" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          serviceName: S.String.pipe(T.Label()),
-          serviceMemberId: S.String.pipe(T.Label()),
-          confirm: S.optional(S.Boolean.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/providers/Microsoft.ADHybridHealthService/services/{serviceName}/servicemembers/{serviceMemberId}",
-            code: 200,
-            apiVersion: "2014-01-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteServiceMemberRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          serviceName: S.String.pipe(T.Label()),
-          serviceMemberId: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/providers/Microsoft.ADHybridHealthService/services/{serviceName}/servicemembers/{serviceMemberId}/data",
-            code: 200,
-            apiVersion: "2014-01-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteServiceMemberDataRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          serviceName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/providers/Microsoft.ADHybridHealthService/addsservices/{serviceName}",
-            code: 200,
-            apiVersion: "2014-01-01",
-          }),
-        ),
-      ).annotate({ identifier: "GetAddsServiceRequest" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          serviceName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/providers/Microsoft.ADHybridHealthService/addsservices/{serviceName}/forestsummary",
-            code: 200,
-            apiVersion: "2014-01-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetAddsServiceForestSummaryRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          forestName: S.optional(S.String),
-          domainCount: S.optional(S.Number),
-          siteCount: S.optional(S.Number),
-          monitoredDcCount: S.optional(S.Number),
-          totalDcCount: S.optional(S.Number),
-          domains: S.optional(__S(0, __c0, 0)),
-          sites: S.optional(__S(0, __c0, 0)),
-        }),
-      ).annotate({ identifier: "ForestSummary" });
-  }
-}
-function __c3(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          serviceName: S.String.pipe(T.Label()),
-          serviceMemberId: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/providers/Microsoft.ADHybridHealthService/addsservices/{serviceName}/servicemembers/{serviceMemberId}",
-            code: 200,
-            apiVersion: "2014-01-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetAddsServiceMemberRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          serviceName: S.String.pipe(T.Label()),
-          metricName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/providers/Microsoft.ADHybridHealthService/addsservices/{serviceName}/metricmetadata/{metricName}",
-            code: 200,
-            apiVersion: "2014-01-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetAddsServiceMetricMetadataRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          key: S.optional(S.String),
-          displayName: S.optional(S.String),
-          invisibleForUi: S.optional(S.Boolean),
-        }),
-      ).annotate({ identifier: "MetricGroup" });
-    case 3:
-      return S.Array(__S(26, __c3, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          metricsProcessorClassName: S.optional(S.String),
-          metricName: S.optional(S.String),
-          groupings: S.optional(__S(27, __c3, 3)),
-          displayName: S.optional(S.String),
-          valueKind: S.optional(S.String),
-          minValue: S.optional(S.Number),
-          maxValue: S.optional(S.Number),
-          kind: S.optional(S.String),
-          isDefault: S.optional(S.Boolean),
-          isPerfCounter: S.optional(S.Boolean),
-          isDevOps: S.optional(S.Boolean),
-        }),
-      ).annotate({ identifier: "MetricMetadata" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          serviceName: S.String.pipe(T.Label()),
-          metricName: S.String.pipe(T.Label()),
-          groupName: S.String.pipe(T.Label()),
-          groupKey: S.optional(S.String.pipe(T.Query())),
-          fromDate: S.optional(S.String.pipe(T.Query())),
-          toDate: S.optional(S.String.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/providers/Microsoft.ADHybridHealthService/addsservices/{serviceName}/metricmetadata/{metricName}/groups/{groupName}",
-            code: 200,
-            apiVersion: "2014-01-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetAddsServiceMetricMetadataForGroupRequest",
-      });
-    case 6:
-      return S.Array(S.Number);
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          setName: S.optional(S.String),
-          values: S.optional(__S(30, __c3, 6)),
-        }),
-      ).annotate({ identifier: "MetricSet" });
-  }
-}
-function __c4(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(31, __c3, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          sets: S.optional(__S(32, __c4, 0)),
-          timeStamps: S.optional(__S(0, __c0, 0)),
-        }),
-      ).annotate({ identifier: "MetricSets" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          serviceName: S.String.pipe(T.Label()),
-          metricName: S.String.pipe(T.Label()),
-          groupName: S.String.pipe(T.Label()),
-          groupKey: S.optional(S.String.pipe(T.Query())),
-          fromDate: S.optional(S.String.pipe(T.Query())),
-          toDate: S.optional(S.String.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/providers/Microsoft.ADHybridHealthService/addsservices/{serviceName}/metrics/{metricName}/groups/{groupName}",
-            code: 200,
-            apiVersion: "2014-01-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetAddsServiceMetricsRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          serviceName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/providers/Microsoft.ADHybridHealthService/addsservices/{serviceName}/replicationstatus",
-            code: 200,
-            apiVersion: "2014-01-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetAddsServicesReplicationStatusRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          forestName: S.optional(S.String),
-          totalDcCount: S.optional(S.Number),
-          errorDcCount: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "ReplicationStatus" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          serviceName: S.String.pipe(T.Label()),
-          featureName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/providers/Microsoft.ADHybridHealthService/addsservices/{serviceName}/features/{featureName}/userpreference",
-            code: 200,
-            apiVersion: "2014-01-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetAddsServicesUserPreferenceRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          metricNames: S.optional(__S(0, __c0, 0)),
-        }),
-      ).annotate({ identifier: "UserPreference" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({}).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/providers/Microsoft.ADHybridHealthService/configuration",
-            code: 200,
-            apiVersion: "2014-01-01",
-          }),
-        ),
-      ).annotate({ identifier: "GetConfigurationRequest" });
-  }
-}
-function __c5(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({}).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/providers/Microsoft.ADHybridHealthService/reports/DevOps/IsDevOps",
-            code: 200,
-            apiVersion: "2014-01-01",
-          }),
-        ),
-      ).annotate({ identifier: "GetReportDevOpsRequest" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          value: S.optional(S.Boolean),
-        }),
-      ).annotate({ identifier: "Result" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          serviceName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/providers/Microsoft.ADHybridHealthService/services/{serviceName}",
-            code: 200,
-            apiVersion: "2014-01-01",
-          }),
-        ),
-      ).annotate({ identifier: "GetServiceRequest" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          serviceName: S.String.pipe(T.Label()),
-          featureName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/providers/Microsoft.ADHybridHealthService/services/{serviceName}/checkServiceFeatureAvailibility/{featureName}",
-            code: 200,
-            apiVersion: "2014-01-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetServiceFeatureAvailibilityRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          serviceName: S.String.pipe(T.Label()),
-          serviceMemberId: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/providers/Microsoft.ADHybridHealthService/services/{serviceName}/servicemembers/{serviceMemberId}",
-            code: 200,
-            apiVersion: "2014-01-01",
-          }),
-        ),
-      ).annotate({ identifier: "GetServiceMemberRequest" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          serviceName: S.String.pipe(T.Label()),
-          serviceMemberId: S.String.pipe(T.Label()),
-          metricName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/providers/Microsoft.ADHybridHealthService/services/{serviceName}/servicemembers/{serviceMemberId}/metrics/{metricName}",
-            code: 200,
-            apiVersion: "2014-01-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetServiceMemberConnectorMetadataRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          connectorId: S.optional(S.String),
-          connectorDisplayName: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ConnectorMetadataDetails" });
-    case 7:
-      return S.Array(__S(46, __c5, 6));
-  }
-}
-function __c6(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          connectors: S.optional(__S(47, __c5, 7)),
-          runProfileNames: S.optional(__S(0, __c0, 0)),
-        }),
-      ).annotate({ identifier: "ConnectorMetadata" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          serviceName: S.String.pipe(T.Label()),
-          serviceMemberId: S.String.pipe(T.Label()),
-          metricName: S.String.pipe(T.Label()),
-          groupName: S.String.pipe(T.Label()),
-          groupKey: S.optional(S.String.pipe(T.Query())),
-          fromDate: S.optional(S.String.pipe(T.Query())),
-          toDate: S.optional(S.String.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/providers/Microsoft.ADHybridHealthService/services/{serviceName}/servicemembers/{serviceMemberId}/metrics/{metricName}/groups/{groupName}",
-            code: 200,
-            apiVersion: "2014-01-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetServiceMemberMetricsRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          serviceName: S.String.pipe(T.Label()),
-          serviceMemberId: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/providers/Microsoft.ADHybridHealthService/services/{serviceName}/servicemembers/{serviceMemberId}/serviceconfiguration",
-            code: 200,
-            apiVersion: "2014-01-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetServiceMemberServiceConfigurationRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          version: S.optional(S.String),
-          serviceType: S.optional(S.Number),
-          serviceAccount: S.optional(S.String),
-          sqlServer: S.optional(S.String),
-          sqlVersion: S.optional(S.String),
-          sqlEdition: S.optional(S.String),
-          sqlInstance: S.optional(S.String),
-          sqlDatabaseName: S.optional(S.String),
-          sqlDatabaseSize: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "ServiceConfiguration" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          serviceName: S.String.pipe(T.Label()),
-          metricName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/providers/Microsoft.ADHybridHealthService/services/{serviceName}/metricmetadata/{metricName}",
-            code: 200,
-            apiVersion: "2014-01-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetServiceMetricMetadataRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          serviceName: S.String.pipe(T.Label()),
-          metricName: S.String.pipe(T.Label()),
-          groupName: S.String.pipe(T.Label()),
-          groupKey: S.optional(S.String.pipe(T.Query())),
-          fromDate: S.optional(S.String.pipe(T.Query())),
-          toDate: S.optional(S.String.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/providers/Microsoft.ADHybridHealthService/services/{serviceName}/metricmetadata/{metricName}/groups/{groupName}",
-            code: 200,
-            apiVersion: "2014-01-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetServiceMetricMetadataForGroupRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          serviceName: S.String.pipe(T.Label()),
-          metricName: S.String.pipe(T.Label()),
-          groupName: S.String.pipe(T.Label()),
-          groupKey: S.optional(S.String.pipe(T.Query())),
-          fromDate: S.optional(S.String.pipe(T.Query())),
-          toDate: S.optional(S.String.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/providers/Microsoft.ADHybridHealthService/services/{serviceName}/metrics/{metricName}/groups/{groupName}",
-            code: 200,
-            apiVersion: "2014-01-01",
-          }),
-        ),
-      ).annotate({ identifier: "GetServiceMetricsRequest" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          serviceName: S.String.pipe(T.Label()),
-          featureName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/providers/Microsoft.ADHybridHealthService/services/{serviceName}/TenantWhitelisting/{featureName}",
-            code: 200,
-            apiVersion: "2014-01-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetServiceTenantWhitelistingRequest",
-      });
-  }
-}
-function __c7(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          serviceName: S.String.pipe(T.Label()),
-          _filter: S.optional(S.String.pipe(T.Query("$filter"))),
-          isGroupbySite: S.Boolean.pipe(T.Query()),
-          query: S.optional(S.String.pipe(T.Query())),
-          nextPartitionKey: S.String.pipe(T.Query()),
-          nextRowKey: S.String.pipe(T.Query()),
-          takeCount: S.optional(S.Number.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/providers/Microsoft.ADHybridHealthService/addsservices/{serviceName}/addomainservicemembers",
-            code: 200,
-            apiVersion: "2014-01-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListAdDomainServiceMembersRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          key: S.optional(S.String),
-          value: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Item" });
-    case 2:
-      return S.Array(__S(57, __c7, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          kbName: S.optional(S.String),
-          link: S.optional(S.String),
-          installedDate: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Hotfix" });
-    case 4:
-      return S.Array(__S(59, __c7, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          domainName: S.optional(S.String),
-          siteName: S.optional(S.String),
-          addsRoles: S.optional(__S(0, __c0, 0)),
-          gcReachable: S.optional(S.Boolean),
-          isAdvertising: S.optional(S.Boolean),
-          pdcReachable: S.optional(S.Boolean),
-          sysvolState: S.optional(S.Boolean),
-          dcTypes: S.optional(__S(0, __c0, 0)),
-          serviceMemberId: S.optional(S.String),
-          serviceId: S.optional(S.String),
-          tenantId: S.optional(S.String),
-          activeAlerts: S.optional(S.Number),
-          additionalInformation: S.optional(S.String),
-          createdDate: S.optional(S.String),
-          dimensions: S.optional(__S(58, __c7, 2)),
-          disabled: S.optional(S.Boolean),
-          disabledReason: S.optional(S.Number),
-          installedQfes: S.optional(__S(60, __c7, 4)),
-          lastDisabled: S.optional(S.String),
-          lastReboot: S.optional(S.String),
-          lastServerReportedMonitoringLevelChange: S.optional(S.String),
-          lastUpdated: S.optional(S.String),
-          machineId: S.optional(S.String),
-          machineName: S.optional(S.String),
-          monitoringConfigurationsComputed: S.optional(__S(58, __c7, 2)),
-          monitoringConfigurationsCustomized: S.optional(__S(58, __c7, 2)),
-          osName: S.optional(S.String),
-          osVersion: S.optional(S.String),
-          properties: S.optional(__S(58, __c7, 2)),
-          recommendedQfes: S.optional(__S(60, __c7, 4)),
-          resolvedAlerts: S.optional(S.Number),
-          role: S.optional(S.String),
-          serverReportedMonitoringLevel: S.optional(S.String),
-          status: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "AddsServiceMember" });
-    case 6:
-      return S.Array(__S(61, __c7, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          nextLink: S.optional(S.String),
-          value: S.optional(__S(62, __c7, 6)),
-          totalCount: S.optional(S.Number),
-          continuationToken: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "AddsServiceMembers" });
-  }
-}
-function __c8(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          serviceName: S.String.pipe(T.Label()),
-          serviceMemberId: S.String.pipe(T.Label()),
-          _filter: S.optional(S.String.pipe(T.Query("$filter"))),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/providers/Microsoft.ADHybridHealthService/addsservices/{serviceName}/servicemembers/{serviceMemberId}/credentials",
-            code: 200,
-            apiVersion: "2014-01-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListAddsServiceMemberCredentialsRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          identifier: S.optional(S.String),
-          type: S.optional(S.String),
-          credentialData: S.optional(__S(0, __c0, 0)),
-        }),
-      ).annotate({ identifier: "Credential" });
-    case 2:
-      return S.Array(__S(65, __c8, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          value: S.optional(__S(66, __c8, 2)),
-        }),
-      ).annotate({ identifier: "Credentials" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          serviceName: S.String.pipe(T.Label()),
-          _filter: S.optional(S.String.pipe(T.Query("$filter"))),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/providers/Microsoft.ADHybridHealthService/addsservices/{serviceName}/addsservicemembers",
-            code: 200,
-            apiVersion: "2014-01-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListAddsServiceMembersRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          serviceName: S.String.pipe(T.Label()),
-          _filter: S.optional(S.String.pipe(T.Query("$filter"))),
-          perfCounter: S.optional(S.Boolean.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/providers/Microsoft.ADHybridHealthService/addsservices/{serviceName}/metricmetadata",
-            code: 200,
-            apiVersion: "2014-01-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListAddsServiceMetricMetadataRequest",
-      });
-    case 6:
-      return S.Array(__S(28, __c3, 4));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          nextLink: S.optional(S.String),
-          value: S.optional(__S(70, __c8, 6)),
-          totalCount: S.optional(S.Number),
-          continuationToken: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "MetricMetadataList" });
-  }
-}
-function __c9(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          serviceName: S.String.pipe(T.Label()),
-          metricName: S.String.pipe(T.Label()),
-          groupName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/providers/Microsoft.ADHybridHealthService/addsservices/{serviceName}/metrics/{metricName}/groups/{groupName}/average",
-            code: 200,
-            apiVersion: "2014-01-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListAddsServiceMetricsAverageRequest",
-      });
-    case 1:
-      return S.Array(__S(57, __c7, 1));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          nextLink: S.optional(S.String),
-          value: S.optional(__S(73, __c9, 1)),
-          totalCount: S.optional(S.Number),
-          continuationToken: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Metrics" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          serviceName: S.String.pipe(T.Label()),
-          metricName: S.String.pipe(T.Label()),
-          groupName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/providers/Microsoft.ADHybridHealthService/addsservices/{serviceName}/metrics/{metricName}/groups/{groupName}/sum",
-            code: 200,
-            apiVersion: "2014-01-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListAddsServiceMetricsSumRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          _filter: S.optional(S.String.pipe(T.Query("$filter"))),
-          serviceType: S.optional(S.String.pipe(T.Query())),
-          skipCount: S.optional(S.Number.pipe(T.Query())),
-          takeCount: S.optional(S.Number.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/providers/Microsoft.ADHybridHealthService/addsservices/premiumCheck",
-            code: 200,
-            apiVersion: "2014-01-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListAddsServicePremiumServicesRequest",
-      });
-    case 5:
-      return S.Array(__S(2, __c0, 2));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          nextLink: S.optional(S.String),
-          value: S.optional(__S(77, __c9, 5)),
-          totalCount: S.optional(S.Number),
-          continuationToken: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Services" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          serviceName: S.String.pipe(T.Label()),
-          _filter: S.optional(S.String.pipe(T.Query("$filter"))),
-          withDetails: S.optional(S.Boolean.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/providers/Microsoft.ADHybridHealthService/addsservices/{serviceName}/replicationdetails",
-            code: 200,
-            apiVersion: "2014-01-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListAddsServiceReplicationDetailsRequest",
-      });
-  }
-}
-function __c10(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          sourceDomainController: S.optional(S.String),
-          consecutiveFailureCount: S.optional(S.Number),
-          namingContext: S.optional(S.String),
-          status: S.optional(S.Number),
-          lastAttemptedSync: S.optional(S.String),
-          lastSuccessfulSync: S.optional(S.String),
-          lastErrorCode: S.optional(S.Number),
-          lastErrorMessage: S.optional(S.String),
-          errorTitle: S.optional(S.String),
-          errorDescription: S.optional(S.String),
-          fixLink: S.optional(S.String),
-          fixDetails: S.optional(S.String),
-          additionalInfo: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "InboundReplicationNeighbor",
-      });
-    case 1:
-      return S.Array(__S(80, __c10, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          targetServer: S.optional(S.String),
-          site: S.optional(S.String),
-          domain: S.optional(S.String),
-          status: S.optional(S.Number),
-          lastAttemptedSync: S.optional(S.String),
-          lastSuccessfulSync: S.optional(S.String),
-          inboundNeighborCollection: S.optional(__S(81, __c10, 1)),
-        }),
-      ).annotate({ identifier: "ReplicationSummary" });
-    case 3:
-      return S.Array(__S(82, __c10, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          value: S.optional(__S(83, __c10, 3)),
-          totalCount: S.optional(S.Number),
-          continuationToken: S.optional(S.String),
-          nextLink: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ReplicationDetailsList" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          serviceName: S.String.pipe(T.Label()),
-          _filter: S.optional(S.String.pipe(T.Query("$filter"))),
-          isGroupbySite: S.Boolean.pipe(T.Query()),
-          query: S.String.pipe(T.Query()),
-          nextPartitionKey: S.String.pipe(T.Query()),
-          nextRowKey: S.String.pipe(T.Query()),
-          takeCount: S.optional(S.Number.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/providers/Microsoft.ADHybridHealthService/addsservices/{serviceName}/replicationsummary",
-            code: 200,
-            apiVersion: "2014-01-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListAddsServiceReplicationSummaryRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          value: S.optional(__S(83, __c10, 3)),
-        }),
-      ).annotate({ identifier: "ReplicationSummaryList" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          _filter: S.optional(S.String.pipe(T.Query("$filter"))),
-          serviceType: S.optional(S.String.pipe(T.Query())),
-          skipCount: S.optional(S.Number.pipe(T.Query())),
-          takeCount: S.optional(S.Number.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/providers/Microsoft.ADHybridHealthService/addsservices",
-            code: 200,
-            apiVersion: "2014-01-01",
-          }),
-        ),
-      ).annotate({ identifier: "ListAddsServicesRequest" });
-  }
-}
-function __c11(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          serviceName: S.String.pipe(T.Label()),
-          serviceMemberId: S.String.pipe(T.Label()),
-          _filter: S.optional(S.String.pipe(T.Query("$filter"))),
-          state: S.optional(S.String.pipe(T.Query())),
-          from: S.optional(S.String.pipe(T.Query())),
-          to: S.optional(S.String.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/providers/Microsoft.ADHybridHealthService/addsservices/{serviceName}/servicemembers/{serviceMemberId}/alerts",
-            code: 200,
-            apiVersion: "2014-01-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListAddsServiceServerAlertsRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          title: S.optional(S.String),
-          url: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "HelpLink" });
-    case 2:
-      return S.Array(__S(89, __c11, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          titleName: S.optional(S.String),
-          titleValue: S.optional(S.String),
-          properties: S.optional(S.Unknown),
-          hasProperties: S.optional(S.Boolean),
-        }),
-      ).annotate({ identifier: "AdditionalInformation" });
-    case 4:
-      return S.Array(__S(91, __c11, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          alertId: S.optional(S.String),
-          level: S.optional(S.String),
-          state: S.optional(S.String),
-          shortName: S.optional(S.String),
-          displayName: S.optional(S.String),
-          description: S.optional(S.String),
-          remediation: S.optional(S.String),
-          relatedLinks: S.optional(__S(90, __c11, 2)),
-          scope: S.optional(S.String),
-          additionalInformation: S.optional(__S(92, __c11, 4)),
-          createdDate: S.optional(S.String),
-          resolvedDate: S.optional(S.String),
-          lastUpdated: S.optional(S.String),
-          monitorRoleType: S.optional(S.String),
-          activeAlertProperties: S.optional(__S(58, __c7, 2)),
-          resolvedAlertProperties: S.optional(__S(58, __c7, 2)),
-          tenantId: S.optional(S.String),
-          serviceId: S.optional(S.String),
-          serviceMemberId: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Alert" });
-    case 6:
-      return S.Array(__S(93, __c11, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          value: S.optional(__S(94, __c11, 6)),
-          nextLink: S.optional(S.String),
-          totalCount: S.optional(S.Number),
-          continuationToken: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Alerts" });
-  }
-}
-function __c12(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          serviceName: S.String.pipe(T.Label()),
-          _filter: S.optional(S.String.pipe(T.Query("$filter"))),
-          dimensionType: S.optional(S.String.pipe(T.Query())),
-          dimensionSignature: S.optional(S.String.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/providers/Microsoft.ADHybridHealthService/addsservices/{serviceName}/servicemembers",
-            code: 200,
-            apiVersion: "2014-01-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListAddsServicesServiceMembersRequest",
-      });
-    case 1:
-      return S.Array(__S(4, __c0, 4));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          nextLink: S.optional(S.String),
-          value: S.optional(__S(97, __c12, 1)),
-          totalCount: S.optional(S.Number),
-          continuationToken: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ServiceMembers" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          serviceName: S.String.pipe(T.Label()),
-          _filter: S.optional(S.String.pipe(T.Query("$filter"))),
-          state: S.optional(S.String.pipe(T.Query())),
-          from: S.optional(S.String.pipe(T.Query())),
-          to: S.optional(S.String.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/providers/Microsoft.ADHybridHealthService/addsservices/{serviceName}/alerts",
-            code: 200,
-            apiVersion: "2014-01-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListAlertAddsAlertsRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          serviceName: S.String.pipe(T.Label()),
-          grouping: S.optional(S.String.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/providers/Microsoft.ADHybridHealthService/addsservices/{serviceName}/configuration",
-            code: 200,
-            apiVersion: "2014-01-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListConfigurationAddsConfigurationsRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          nextLink: S.optional(S.String),
-          value: S.optional(__S(58, __c7, 2)),
-          totalCount: S.optional(S.Number),
-          continuationToken: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "AddsConfiguration" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          serviceName: S.String.pipe(T.Label()),
-          dimension: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/providers/Microsoft.ADHybridHealthService/addsservices/{serviceName}/dimensions/{dimension}",
-            code: 200,
-            apiVersion: "2014-01-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListDimensionAddsDimensionsRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          health: S.optional(S.String),
-          simpleProperties: S.optional(S.Unknown),
-          activeAlerts: S.optional(S.Number),
-          additionalInformation: S.optional(S.String),
-          lastUpdated: S.optional(S.String),
-          displayName: S.optional(S.String),
-          resolvedAlerts: S.optional(S.Number),
-          signature: S.optional(S.String),
-          type: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Dimension" });
-  }
-}
-function __c13(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(103, __c12, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          nextLink: S.optional(S.String),
-          value: S.optional(__S(104, __c13, 0)),
-          totalCount: S.optional(S.Number),
-          continuationToken: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Dimensions" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          serviceName: S.String.pipe(T.Label()),
-          skiptoken: S.optional(S.String.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/providers/Microsoft.ADHybridHealthService/services/{serviceName}/ipAddressAggregates",
-            code: 200,
-            apiVersion: "2014-01-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListIPAddressAggregatesByServiceRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          tenantId: S.optional(S.String),
-          serviceId: S.optional(S.String),
-          ipAddress: S.optional(S.String),
-          timestamp: S.optional(S.String),
-          firstAuditTimestamp: S.optional(S.String),
-          lastAuditTimestamp: S.optional(S.String),
-          extranetLockoutErrorCount: S.optional(S.Number),
-          badPasswordErrorCount: S.optional(S.Number),
-          uniqueUsernamesAttemptedCount: S.optional(S.Number),
-          attemptCountThresholdIsExceeded: S.optional(S.Boolean),
-          timeSpan: S.optional(S.String),
-          isWhitelistedIpAddress: S.optional(S.Boolean),
-          networkLocation: S.optional(S.String),
-          attemptCountThresholdOnTrigger: S.optional(S.Number),
-          attemptThresholdTypeOnTrigger: S.optional(S.String),
-          geographicLocation: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "IPAddressAggregate" });
-    case 4:
-      return S.Array(__S(107, __c13, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          value: S.optional(__S(108, __c13, 4)),
-          nextLink: S.optional(S.String),
-          totalCount: S.optional(S.Number),
-          continuationToken: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "IPAddressAggregates" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          serviceName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/providers/Microsoft.ADHybridHealthService/services/{serviceName}/ipAddressAggregateSettings",
-            code: 200,
-            apiVersion: "2014-01-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListIPAddressAggregateSettingsRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          badPasswordAndExtranetLockoutCombinedDailyThreshold: S.optional(S.Number),
-          badPasswordAndExtranetLockoutCombinedHourlyThreshold: S.optional(S.Number),
-          extranetLockoutDailyThreshold: S.optional(S.Number),
-          extranetLockoutHourlyThreshold: S.optional(S.Number),
-          emailNotificationEnabled: S.optional(S.Boolean),
-        }),
-      ).annotate({
-        identifier: "IPAddressAggregateSetting",
-      });
-  }
-}
-function __c14(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({}).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/providers/Microsoft.ADHybridHealthService/operations",
-            code: 200,
-            apiVersion: "2014-01-01",
-          }),
-        ),
-      ).annotate({ identifier: "ListOperationsRequest" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.optional(S.String),
-          display: S.optional(S.Unknown),
-        }),
-      ).annotate({ identifier: "Operation" });
-    case 2:
-      return S.Array(__S(113, __c14, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          nextLink: S.optional(S.String),
-          value: S.optional(__S(114, __c14, 2)),
-          totalCount: S.optional(S.Number),
-          continuationToken: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "OperationListResponse" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          serviceName: S.String.pipe(T.Label()),
-          shortName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/providers/Microsoft.ADHybridHealthService/services/{serviceName}/feedbacktype/alerts/{shortName}/alertfeedback",
-            code: 200,
-            apiVersion: "2014-01-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListServiceAlertFeedbackRequest",
-      });
-    case 5:
-      return S.Array(__S(11, __c1, 3));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          value: S.optional(__S(117, __c14, 5)),
-        }),
-      ).annotate({ identifier: "AlertFeedbacks" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          serviceName: S.String.pipe(T.Label()),
-          _filter: S.optional(S.String.pipe(T.Query("$filter"))),
-          state: S.optional(S.String.pipe(T.Query())),
-          from: S.optional(S.String.pipe(T.Query())),
-          to: S.optional(S.String.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/providers/Microsoft.ADHybridHealthService/services/{serviceName}/alerts",
-            code: 200,
-            apiVersion: "2014-01-01",
-          }),
-        ),
-      ).annotate({ identifier: "ListServiceAlertsRequest" });
-  }
-}
-function __c15(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          serviceName: S.String.pipe(T.Label()),
-          serviceMemberId: S.String.pipe(T.Label()),
-          _filter: S.optional(S.String.pipe(T.Query("$filter"))),
-          state: S.optional(S.String.pipe(T.Query())),
-          from: S.optional(S.String.pipe(T.Query())),
-          to: S.optional(S.String.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/providers/Microsoft.ADHybridHealthService/services/{serviceName}/servicemembers/{serviceMemberId}/alerts",
-            code: 200,
-            apiVersion: "2014-01-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListServiceMemberAlertsRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          serviceName: S.String.pipe(T.Label()),
-          serviceMemberId: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/providers/Microsoft.ADHybridHealthService/service/{serviceName}/servicemembers/{serviceMemberId}/connectors",
-            code: 200,
-            apiVersion: "2014-01-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListServiceMemberConnectorsRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          isDefault: S.optional(S.Boolean),
-          objectClasses: S.optional(__S(0, __c0, 0)),
-          containersIncluded: S.optional(__S(0, __c0, 0)),
-          containersExcluded: S.optional(__S(0, __c0, 0)),
-        }),
-      ).annotate({ identifier: "PartitionScope" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          dn: S.optional(S.String),
-          enabled: S.optional(S.Boolean),
-          timeCreated: S.optional(S.String),
-          timeLastModified: S.optional(S.String),
-          partitionScope: S.optional(__S(122, __c15, 2)),
-          name: S.optional(S.String),
-          isDomain: S.optional(S.Boolean),
-          type: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Partition" });
-    case 4:
-      return S.Array(__S(123, __c15, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          batchSize: S.optional(S.Number),
-          objectProcessLimit: S.optional(S.Number),
-          objectDeleteLimit: S.optional(S.Number),
-          pageSize: S.optional(S.Number),
-          partitionId: S.optional(S.String),
-          operationType: S.optional(S.Number),
-          timeout: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "RunStep" });
-    case 6:
-      return S.Array(__S(125, __c15, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          runSteps: S.optional(__S(126, __c15, 6)),
-        }),
-      ).annotate({ identifier: "RunProfile" });
-  }
-}
-function __c16(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(127, __c15, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          connectorId: S.optional(S.String),
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          version: S.optional(S.Number),
-          type: S.optional(S.String),
-          description: S.optional(S.String),
-          schemaXml: S.optional(S.String),
-          passwordManagementSettings: S.optional(S.Unknown),
-          passwordHashSyncConfiguration: S.optional(S.Unknown),
-          timeCreated: S.optional(S.String),
-          timeLastModified: S.optional(S.String),
-          partitions: S.optional(__S(124, __c15, 4)),
-          runProfiles: S.optional(__S(128, __c16, 0)),
-          classesIncluded: S.optional(__S(0, __c0, 0)),
-          attributesIncluded: S.optional(__S(0, __c0, 0)),
-        }),
-      ).annotate({ identifier: "Connector" });
-    case 2:
-      return S.Array(__S(129, __c16, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          value: S.optional(__S(130, __c16, 2)),
-        }),
-      ).annotate({ identifier: "Connectors" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          serviceName: S.String.pipe(T.Label()),
-          serviceMemberId: S.String.pipe(T.Label()),
-          _filter: S.optional(S.String.pipe(T.Query("$filter"))),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/providers/Microsoft.ADHybridHealthService/services/{serviceName}/servicemembers/{serviceMemberId}/credentials",
-            code: 200,
-            apiVersion: "2014-01-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListServiceMemberCredentialsRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          serviceName: S.String.pipe(T.Label()),
-          serviceMemberId: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/providers/Microsoft.ADHybridHealthService/services/{serviceName}/servicemembers/{serviceMemberId}/datafreshness",
-            code: 200,
-            apiVersion: "2014-01-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListServiceMemberDataFreshnessRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          value: S.optional(__S(58, __c7, 2)),
-        }),
-      ).annotate({ identifier: "DataFreshnessDetails" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          serviceName: S.String.pipe(T.Label()),
-          serviceMemberId: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/providers/Microsoft.ADHybridHealthService/services/{serviceName}/servicemembers/{serviceMemberId}/globalconfiguration",
-            code: 200,
-            apiVersion: "2014-01-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListServiceMemberGlobalConfigurationRequest",
-      });
-  }
-}
-function __c17(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          version: S.optional(S.Number),
-          schemaXml: S.optional(S.String),
-          passwordSyncEnabled: S.optional(S.Boolean),
-          numSavedPwdEvent: S.optional(S.Number),
-          featureSet: S.optional(__S(58, __c7, 2)),
-        }),
-      ).annotate({ identifier: "GlobalConfiguration" });
-    case 1:
-      return S.Array(__S(136, __c17, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          value: S.optional(__S(137, __c17, 1)),
-        }),
-      ).annotate({ identifier: "GlobalConfigurations" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          serviceName: S.String.pipe(T.Label()),
-          _filter: S.optional(S.String.pipe(T.Query("$filter"))),
-          dimensionType: S.optional(S.String.pipe(T.Query())),
-          dimensionSignature: S.optional(S.String.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/providers/Microsoft.ADHybridHealthService/services/{serviceName}/servicemembers",
-            code: 200,
-            apiVersion: "2014-01-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListServiceMembersRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          serviceName: S.String.pipe(T.Label()),
-          _filter: S.optional(S.String.pipe(T.Query("$filter"))),
-          perfCounter: S.optional(S.Boolean.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/providers/Microsoft.ADHybridHealthService/services/{serviceName}/metricmetadata",
-            code: 200,
-            apiVersion: "2014-01-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListServiceMetricMetadataRequest",
-      });
-    case 5:
       return S.suspend(() =>
         S.Struct({
           serviceName: S.String.pipe(T.Label()),
@@ -5052,7 +5241,11 @@ function __c17(j: number): any {
       ).annotate({
         identifier: "ListServiceMetricsAverageRequest",
       });
-    case 6:
+  }
+}
+function __c79(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           serviceName: S.String.pipe(T.Label()),
@@ -5069,7 +5262,11 @@ function __c17(j: number): any {
       ).annotate({
         identifier: "ListServiceMetricsSumRequest",
       });
-    case 7:
+  }
+}
+function __c80(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           serviceName: S.String.pipe(T.Label()),
@@ -5084,17 +5281,17 @@ function __c17(j: number): any {
       ).annotate({
         identifier: "ListServiceMonitoringConfigurationsRequest",
       });
-  }
-}
-function __c18(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(73, __c9, 1)),
+          value: S.optional(__S(736, __c46, 0)),
         }),
       ).annotate({ identifier: "Items" });
-    case 1:
+  }
+}
+function __c81(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           _filter: S.optional(S.String.pipe(T.Query("$filter"))),
@@ -5112,7 +5309,11 @@ function __c18(j: number): any {
       ).annotate({
         identifier: "ListServicePremiumRequest",
       });
-    case 2:
+  }
+}
+function __c82(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           _filter: S.optional(S.String.pipe(T.Query("$filter"))),
@@ -5128,7 +5329,11 @@ function __c18(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ListServicesRequest" });
-    case 3:
+  }
+}
+function __c83(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           serviceName: S.String.pipe(T.Label()),
@@ -5144,7 +5349,7 @@ function __c18(j: number): any {
       ).annotate({
         identifier: "ListServiceUserBadPasswordReportRequest",
       });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           userId: S.optional(S.String),
@@ -5154,15 +5359,19 @@ function __c18(j: number): any {
           totalErrorAttempts: S.optional(S.Number),
         }),
       ).annotate({ identifier: "ErrorReportUsersEntry" });
-    case 5:
-      return S.Array(__S(148, __c18, 4));
-    case 6:
+    case 2:
+      return S.Array(__S(1329, __c83, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(149, __c18, 5)),
+          value: S.optional(__S(1330, __c83, 2)),
         }),
       ).annotate({ identifier: "ErrorReportUsersEntries" });
-    case 7:
+  }
+}
+function __c84(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           serviceName: S.String.pipe(T.Label()),
@@ -5180,7 +5389,7 @@ function __c18(j: number): any {
       });
   }
 }
-function __c19(j: number): any {
+function __c85(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5192,17 +5401,21 @@ function __c19(j: number): any {
         }),
       ).annotate({ identifier: "ExportStatus" });
     case 1:
-      return S.Array(__S(152, __c19, 0));
+      return S.Array(__S(1360, __c85, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
           nextLink: S.optional(S.String),
-          value: S.optional(__S(153, __c19, 1)),
+          value: S.optional(__S(1361, __c85, 1)),
           totalCount: S.optional(S.Number),
           continuationToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "ExportStatuses" });
-    case 3:
+  }
+}
+function __c86(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           serviceName: S.String.pipe(T.Label()),
@@ -5217,7 +5430,11 @@ function __c19(j: number): any {
       ).annotate({
         identifier: "ServicesListAllRiskyIpDownloadReportRequest",
       });
-    case 4:
+  }
+}
+function __c87(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           tenantId: S.optional(S.String),
@@ -5228,15 +5445,19 @@ function __c19(j: number): any {
           status: S.optional(S.String),
         }),
       ).annotate({ identifier: "RiskyIPBlobUri" });
-    case 5:
-      return S.Array(__S(156, __c19, 4));
-    case 6:
+    case 1:
+      return S.Array(__S(1392, __c87, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(157, __c19, 5)),
+          value: S.optional(__S(1393, __c87, 1)),
         }),
       ).annotate({ identifier: "RiskyIPBlobUris" });
-    case 7:
+  }
+}
+function __c88(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           serviceName: S.String.pipe(T.Label()),
@@ -5253,7 +5474,7 @@ function __c19(j: number): any {
       });
   }
 }
-function __c20(j: number): any {
+function __c89(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5279,14 +5500,44 @@ function __c20(j: number): any {
         }),
       ).annotate({ identifier: "ErrorCount" });
     case 2:
-      return S.Array(__S(161, __c20, 1));
+      return S.Array(__S(1425, __c89, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(162, __c20, 2)),
+          value: S.optional(__S(1426, __c89, 2)),
         }),
       ).annotate({ identifier: "ErrorCounts" });
-    case 4:
+  }
+}
+function __c90(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          serviceName: S.String.pipe(T.Label()),
+          confirm: S.optional(S.Boolean.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/providers/Microsoft.ADHybridHealthService/addsservices/{serviceName}",
+            code: 200,
+            apiVersion: "2014-01-01",
+          }),
+        ),
+      ).annotate({ identifier: "DeleteAddsServiceRequest" });
+  }
+}
+function __c91(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "DeleteAddsServiceResponse",
+      });
+  }
+}
+function __c92(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           serviceName: S.String.pipe(T.Label()),
@@ -5302,7 +5553,7 @@ function __c20(j: number): any {
       ).annotate({
         identifier: "ServicesListExportErrorsV2Request",
       });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           displayName: S.optional(S.String),
@@ -5319,7 +5570,7 @@ function __c20(j: number): any {
           userPrincipalName: S.optional(S.String),
         }),
       ).annotate({ identifier: "AssociatedObject" });
-    case 6:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
@@ -5333,8 +5584,8 @@ function __c20(j: number): any {
           timeFirstOccurred: S.optional(S.String),
           csObjectId: S.optional(S.String),
           dn: S.optional(S.String),
-          incomingObject: S.optional(__S(165, __c20, 5)),
-          existingObject: S.optional(__S(165, __c20, 5)),
+          incomingObject: S.optional(__S(1473, __c92, 1)),
+          existingObject: S.optional(__S(1473, __c92, 1)),
           modifiedOrRemovedAttributeValue: S.optional(S.String),
           runStepResultId: S.optional(S.String),
           samAccountName: S.optional(S.String),
@@ -5346,19 +5597,19 @@ function __c20(j: number): any {
           exportErrorStatus: S.optional(S.Number),
         }),
       ).annotate({ identifier: "MergedExportError" });
-    case 7:
-      return S.Array(__S(166, __c20, 6));
-  }
-}
-function __c21(j: number): any {
-  switch (j) {
-    case 0:
+    case 3:
+      return S.Array(__S(1474, __c92, 2));
+    case 4:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(167, __c20, 7)),
+          value: S.optional(__S(1475, __c92, 3)),
         }),
       ).annotate({ identifier: "MergedExportErrors" });
-    case 1:
+  }
+}
+function __c93(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           serviceName: S.String.pipe(T.Label()),
@@ -5373,7 +5624,11 @@ function __c21(j: number): any {
       ).annotate({
         identifier: "ServicesListExportStatusRequest",
       });
-    case 2:
+  }
+}
+function __c94(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           serviceName: S.String.pipe(T.Label()),
@@ -5381,7 +5636,7 @@ function __c21(j: number): any {
           activeAlerts: S.optional(S.Number),
           additionalInformation: S.optional(S.String),
           createdDate: S.optional(S.String),
-          customNotificationEmails: S.optional(__S(0, __c0, 0)),
+          customNotificationEmails: S.optional(__S(16, __c1, 0)),
           disabled: S.optional(S.Boolean),
           displayName: S.optional(S.String),
           health: S.optional(S.String),
@@ -5392,7 +5647,7 @@ function __c21(j: number): any {
           notificationEmailEnabled: S.optional(S.Boolean),
           notificationEmailEnabledForGlobalAdmins: S.optional(S.Boolean),
           notificationEmailsEnabledForGlobalAdmins: S.optional(S.Boolean),
-          notificationEmails: S.optional(__S(0, __c0, 0)),
+          notificationEmails: S.optional(__S(16, __c1, 0)),
           originalDisabledState: S.optional(S.Boolean),
           resolvedAlerts: S.optional(S.Number),
           serviceId: S.optional(S.String),
@@ -5409,7 +5664,11 @@ function __c21(j: number): any {
           }),
         ),
       ).annotate({ identifier: "UpdateAddsServiceRequest" });
-    case 3:
+  }
+}
+function __c95(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           tenantId: S.optional(S.String),
@@ -5423,7 +5682,7 @@ function __c21(j: number): any {
           devOpsTtl: S.optional(S.String),
           disabled: S.optional(S.Boolean),
           disabledReason: S.optional(S.Number),
-          globalAdminsEmail: S.optional(__S(0, __c0, 0)),
+          globalAdminsEmail: S.optional(__S(16, __c1, 0)),
           initialDomain: S.optional(S.String),
           lastDisabled: S.optional(S.String),
           lastVerified: S.optional(S.String),
@@ -5444,7 +5703,11 @@ function __c21(j: number): any {
       ).annotate({
         identifier: "UpdateConfigurationRequest",
       });
-    case 4:
+  }
+}
+function __c96(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           serviceName: S.String.pipe(T.Label()),
@@ -5465,7 +5728,11 @@ function __c21(j: number): any {
       ).annotate({
         identifier: "UpdateIPAddressAggregateSettingsRequest",
       });
-    case 5:
+  }
+}
+function __c97(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           serviceName: S.String.pipe(T.Label()),
@@ -5473,7 +5740,7 @@ function __c21(j: number): any {
           activeAlerts: S.optional(S.Number),
           additionalInformation: S.optional(S.String),
           createdDate: S.optional(S.String),
-          customNotificationEmails: S.optional(__S(0, __c0, 0)),
+          customNotificationEmails: S.optional(__S(16, __c1, 0)),
           disabled: S.optional(S.Boolean),
           displayName: S.optional(S.String),
           health: S.optional(S.String),
@@ -5484,7 +5751,7 @@ function __c21(j: number): any {
           notificationEmailEnabled: S.optional(S.Boolean),
           notificationEmailEnabledForGlobalAdmins: S.optional(S.Boolean),
           notificationEmailsEnabledForGlobalAdmins: S.optional(S.Boolean),
-          notificationEmails: S.optional(__S(0, __c0, 0)),
+          notificationEmails: S.optional(__S(16, __c1, 0)),
           originalDisabledState: S.optional(S.Boolean),
           resolvedAlerts: S.optional(S.Number),
           serviceId: S.optional(S.String),
@@ -5501,7 +5768,11 @@ function __c21(j: number): any {
           }),
         ),
       ).annotate({ identifier: "UpdateServiceRequest" });
-    case 6:
+  }
+}
+function __c98(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           serviceName: S.String.pipe(T.Label()),
@@ -5520,7 +5791,55 @@ function __c21(j: number): any {
       });
   }
 }
-
+function __c99(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          serviceName: S.String.pipe(T.Label()),
+          serviceMemberId: S.String.pipe(T.Label()),
+          confirm: S.optional(S.Boolean.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/providers/Microsoft.ADHybridHealthService/addsservices/{serviceName}/servicemembers/{serviceMemberId}",
+            code: 200,
+            apiVersion: "2014-01-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteAddsServiceMemberRequest",
+      });
+  }
+}
+function __c100(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "DeleteAddsServiceMemberResponse",
+      });
+  }
+}
+function __c101(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          serviceName: S.String.pipe(T.Label()),
+          featureName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/providers/Microsoft.ADHybridHealthService/addsservices/{serviceName}/features/{featureName}/userpreference",
+            code: 200,
+            apiVersion: "2014-01-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteAddsServicesUserPreferenceRequest",
+      });
+  }
+}
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

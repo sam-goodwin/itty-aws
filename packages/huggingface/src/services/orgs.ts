@@ -729,7 +729,7 @@ export const changeMemberRole: API.OperationMethod<
   HuggingFaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(2, __c0, 2) as any as S.Schema<ChangeMemberRoleRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<ChangeMemberRoleResponse>,
+  output: __S(16, __c1, 0) as any as S.Schema<ChangeMemberRoleResponse>,
   errors: [],
   protocol: HuggingFaceProtocol,
   retry: Retry.Retry,
@@ -743,8 +743,8 @@ export const exportAuditLog: API.OperationMethod<
   ExportAuditLogError,
   HuggingFaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(4, __c0, 4) as any as S.Schema<ExportAuditLogRequest>,
-  output: __S(11, __c1, 3) as any as S.Schema<ExportAuditLogResponse>,
+  input: __S(32, __c2, 0) as any as S.Schema<ExportAuditLogRequest>,
+  output: __S(39, __c2, 7) as any as S.Schema<ExportAuditLogResponse>,
   errors: [],
   protocol: HuggingFaceProtocol,
   retry: Retry.Retry,
@@ -758,8 +758,8 @@ export const getAvatar: API.OperationMethod<
   GetAvatarError,
   HuggingFaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(12, __c1, 4) as any as S.Schema<GetAvatarRequest>,
-  output: __S(13, __c1, 5) as any as S.Schema<GetAvatarResponse>,
+  input: __S(128, __c8, 0) as any as S.Schema<GetAvatarRequest>,
+  output: __S(129, __c8, 1) as any as S.Schema<GetAvatarResponse>,
   errors: [],
   protocol: HuggingFaceProtocol,
   retry: Retry.Retry,
@@ -773,8 +773,8 @@ export const getNetworkSecuritySettings: API.OperationMethod<
   GetNetworkSecuritySettingsError,
   HuggingFaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(14, __c1, 6) as any as S.Schema<GetNetworkSecuritySettingsRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<GetNetworkSecuritySettingsResponse>,
+  input: __S(144, __c9, 0) as any as S.Schema<GetNetworkSecuritySettingsRequest>,
+  output: __S(149, __c9, 5) as any as S.Schema<GetNetworkSecuritySettingsResponse>,
   errors: [],
   protocol: HuggingFaceProtocol,
   retry: Retry.Retry,
@@ -788,8 +788,8 @@ export const getOrganizationMembers: API.OperationMethod<
   GetOrganizationMembersError,
   HuggingFaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(21, __c2, 5) as any as S.Schema<GetOrganizationMembersRequest>,
-  output: __S(26, __c3, 2) as any as S.Schema<GetOrganizationMembersResponse>,
+  input: __S(176, __c11, 0) as any as S.Schema<GetOrganizationMembersRequest>,
+  output: __S(181, __c11, 5) as any as S.Schema<GetOrganizationMembersResponse>,
   errors: [],
   protocol: HuggingFaceProtocol,
   retry: Retry.Retry,
@@ -803,8 +803,8 @@ export const getOrgUsageV2: API.OperationMethod<
   GetOrgUsageV2Error,
   HuggingFaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(27, __c3, 3) as any as S.Schema<GetOrgUsageV2Request>,
-  output: __S(3, __c0, 3) as any as S.Schema<GetOrgUsageV2Response>,
+  input: __S(192, __c12, 0) as any as S.Schema<GetOrgUsageV2Request>,
+  output: __S(16, __c1, 0) as any as S.Schema<GetOrgUsageV2Response>,
   errors: [],
   protocol: HuggingFaceProtocol,
   retry: Retry.Retry,
@@ -818,8 +818,8 @@ export const getResourceGroupUsage: API.OperationMethod<
   GetResourceGroupUsageError,
   HuggingFaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(28, __c3, 4) as any as S.Schema<GetResourceGroupUsageRequest>,
-  output: __S(37, __c4, 5) as any as S.Schema<GetResourceGroupUsageResponse>,
+  input: __S(208, __c13, 0) as any as S.Schema<GetResourceGroupUsageRequest>,
+  output: __S(217, __c13, 9) as any as S.Schema<GetResourceGroupUsageResponse>,
   errors: [],
   protocol: HuggingFaceProtocol,
   retry: Retry.Retry,
@@ -833,8 +833,8 @@ export const getSessionInferenceUsage: API.OperationMethod<
   GetSessionInferenceUsageError,
   HuggingFaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(38, __c4, 6) as any as S.Schema<GetSessionInferenceUsageRequest>,
-  output: __S(43, __c5, 3) as any as S.Schema<GetSessionInferenceUsageResponse>,
+  input: __S(224, __c14, 0) as any as S.Schema<GetSessionInferenceUsageRequest>,
+  output: __S(229, __c14, 5) as any as S.Schema<GetSessionInferenceUsageResponse>,
   errors: [],
   protocol: HuggingFaceProtocol,
   retry: Retry.Retry,
@@ -848,8 +848,8 @@ export const getSocialHandles: API.OperationMethod<
   GetSocialHandlesError,
   HuggingFaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(44, __c5, 4) as any as S.Schema<GetSocialHandlesRequest>,
-  output: __S(46, __c5, 6) as any as S.Schema<GetSocialHandlesResponse>,
+  input: __S(240, __c15, 0) as any as S.Schema<GetSocialHandlesRequest>,
+  output: __S(242, __c15, 2) as any as S.Schema<GetSocialHandlesResponse>,
   errors: [],
   protocol: HuggingFaceProtocol,
   retry: Retry.Retry,
@@ -863,8 +863,8 @@ export const listMemberAccessTokens: API.OperationMethod<
   ListMemberAccessTokensError,
   HuggingFaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(47, __c5, 7) as any as S.Schema<ListMemberAccessTokensRequest>,
-  output: __S(58, __c7, 2) as any as S.Schema<ListMemberAccessTokensResponse>,
+  input: __S(256, __c16, 0) as any as S.Schema<ListMemberAccessTokensRequest>,
+  output: __S(267, __c16, 11) as any as S.Schema<ListMemberAccessTokensResponse>,
   errors: [],
   protocol: HuggingFaceProtocol,
   retry: Retry.Retry,
@@ -878,8 +878,8 @@ export const listOrganizationRepositories: API.OperationMethod<
   ListOrganizationRepositoriesError,
   HuggingFaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(59, __c7, 3) as any as S.Schema<ListOrganizationRepositoriesRequest>,
-  output: __S(62, __c7, 6) as any as S.Schema<ListOrganizationRepositoriesResponse>,
+  input: __S(48, __c3, 0) as any as S.Schema<ListOrganizationRepositoriesRequest>,
+  output: __S(51, __c3, 3) as any as S.Schema<ListOrganizationRepositoriesResponse>,
   errors: [],
   protocol: HuggingFaceProtocol,
   retry: Retry.Retry,
@@ -893,8 +893,8 @@ export const revokeMemberToken: API.OperationMethod<
   RevokeMemberTokenError,
   HuggingFaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(63, __c7, 7) as any as S.Schema<RevokeMemberTokenRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<RevokeMemberTokenResponse>,
+  input: __S(64, __c4, 0) as any as S.Schema<RevokeMemberTokenRequest>,
+  output: __S(16, __c1, 0) as any as S.Schema<RevokeMemberTokenResponse>,
   errors: [],
   protocol: HuggingFaceProtocol,
   retry: Retry.Retry,
@@ -908,8 +908,8 @@ export const rotateSsoCredentials: API.OperationMethod<
   RotateSsoCredentialsError,
   HuggingFaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(64, __c8, 0) as any as S.Schema<RotateSsoCredentialsRequest>,
-  output: __S(65, __c8, 1) as any as S.Schema<RotateSsoCredentialsResponse>,
+  input: __S(80, __c5, 0) as any as S.Schema<RotateSsoCredentialsRequest>,
+  output: __S(81, __c5, 1) as any as S.Schema<RotateSsoCredentialsResponse>,
   errors: [],
   protocol: HuggingFaceProtocol,
   retry: Retry.Retry,
@@ -923,8 +923,8 @@ export const streamUsage: API.OperationMethod<
   StreamUsageError,
   HuggingFaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(66, __c8, 2) as any as S.Schema<StreamUsageRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<StreamUsageResponse>,
+  input: __S(96, __c6, 0) as any as S.Schema<StreamUsageRequest>,
+  output: __S(16, __c1, 0) as any as S.Schema<StreamUsageResponse>,
   errors: [],
   protocol: HuggingFaceProtocol,
   retry: Retry.Retry,
@@ -938,8 +938,8 @@ export const updateNetworkSecurity: API.OperationMethod<
   UpdateNetworkSecurityError,
   HuggingFaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(71, __c8, 7) as any as S.Schema<UpdateNetworkSecurityRequest>,
-  output: __S(76, __c9, 4) as any as S.Schema<UpdateNetworkSecurityResponse>,
+  input: __S(116, __c7, 4) as any as S.Schema<UpdateNetworkSecurityRequest>,
+  output: __S(121, __c7, 9) as any as S.Schema<UpdateNetworkSecurityResponse>,
   errors: [],
   protocol: HuggingFaceProtocol,
   retry: Retry.Retry,
@@ -974,11 +974,19 @@ function __c0(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ChangeMemberRoleRequest" });
-    case 3:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "ChangeMemberRoleResponse",
       });
-    case 4:
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -987,7 +995,7 @@ function __c0(j: number): any {
           T.Http({ method: "GET", uri: "/api/organizations/{name}/audit-log/export", code: 200 }),
         ),
       ).annotate({ identifier: "ExportAuditLogRequest" });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           formatted: S.String,
@@ -997,7 +1005,7 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "ExportAuditLogResponseBodyItemLocation",
       });
-    case 6:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           _id: S.String,
@@ -1009,7 +1017,7 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "ExportAuditLogResponseBodyItemAuthor",
       });
-    case 7:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           type: S.String,
@@ -1021,11 +1029,7 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "ExportAuditLogResponseBodyItemToken",
       });
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
+    case 4:
       return S.suspend(() =>
         S.Struct({
           clientId: S.String,
@@ -1034,7 +1038,7 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "ExportAuditLogResponseBodyItemOauth",
       });
-    case 1:
+    case 5:
       return S.suspend(() =>
         S.Struct({
           _id: S.String,
@@ -1043,428 +1047,26 @@ function __c1(j: number): any {
           data: S.optional(S.Unknown),
           message: S.String,
           ip: S.optional(S.String),
-          location: S.optional(__S(5, __c0, 5)),
+          location: S.optional(__S(33, __c2, 1)),
           userAgent: S.optional(S.String),
-          author: __S(6, __c0, 6),
-          token: S.optional(__S(7, __c0, 7)),
-          oauth: S.optional(__S(8, __c1, 0)),
+          author: __S(34, __c2, 2),
+          token: S.optional(__S(35, __c2, 3)),
+          oauth: S.optional(__S(36, __c2, 4)),
         }),
       ).annotate({
         identifier: "ExportAuditLogResponseBodyItem",
       });
-    case 2:
-      return S.Array(__S(9, __c1, 1));
-    case 3:
-      return S.suspend(() => __S(10, __c1, 2).pipe(T.RawResponseRoot())).annotate({
+    case 6:
+      return S.Array(__S(37, __c2, 5));
+    case 7:
+      return S.suspend(() => __S(38, __c2, 6).pipe(T.RawResponseRoot())).annotate({
         identifier: "ExportAuditLogResponse",
       });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-          redirect: S.optional(S.String.pipe(T.Query())),
-        }).pipe(T.Http({ method: "GET", uri: "/api/organizations/{name}/avatar", code: 200 })),
-      ).annotate({ identifier: "GetAvatarRequest" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          avatarUrl: S.String,
-        }),
-      ).annotate({ identifier: "GetAvatarResponse" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/api/organizations/{name}/settings/network-security",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "GetNetworkSecuritySettingsRequest",
-      });
-    case 7:
-      return S.Array(S.String);
-  }
-}
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          resource: S.Unknown,
-          scope: S.String,
-        }),
-      ).annotate({
-        identifier: "GetNetworkSecuritySettingsResponseBlockedContentsItem",
-      });
-    case 1:
-      return S.Array(__S(16, __c2, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          resource: S.Unknown,
-          scope: S.String,
-        }),
-      ).annotate({
-        identifier: "GetNetworkSecuritySettingsResponseAllowedContentsItem",
-      });
-    case 3:
-      return S.Array(__S(18, __c2, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          enforceAuth: S.Boolean,
-          areCidrRangesApproved: S.Boolean,
-          enforceIpRestriction: S.Boolean,
-          highRateLimits: S.Boolean,
-          ipRanges: __S(15, __c1, 7),
-          blockedContents: __S(17, __c2, 1),
-          allowedContents: __S(19, __c2, 3),
-          keepReposMetadataVisible: S.Boolean,
-        }),
-      ).annotate({
-        identifier: "GetNetworkSecuritySettingsResponse",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-          search: S.optional(S.String.pipe(T.Query())),
-          email: S.optional(S.String.pipe(T.Query())),
-          cursor: S.optional(S.String.pipe(T.Query())),
-          limit: S.optional(S.Number.pipe(T.Query())),
-        }).pipe(T.Http({ method: "GET", uri: "/api/organizations/{name}/members", code: 200 })),
-      ).annotate({
-        identifier: "GetOrganizationMembersRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String,
-          id: S.String,
-          numUsers: S.Number,
-          role: S.String,
-        }),
-      ).annotate({
-        identifier: "GetOrganizationMembersResponseBodyItemResourceGroupsItem",
-      });
-    case 7:
-      return S.Array(__S(22, __c2, 6));
   }
 }
 function __c3(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() =>
-        S.Struct({
-          avatarUrl: S.String,
-          fullname: S.String,
-          isPro: S.Boolean,
-          user: S.String,
-          type: S.String,
-          isFollowing: S.optional(S.Boolean),
-          _id: S.String,
-          role: S.optional(S.String),
-          resourceGroups: S.optional(__S(23, __c2, 7)),
-          twoFaEnabled: S.optional(S.Boolean),
-          verifiedEmail: S.optional(S.NullOr(S.String)),
-          isExternalCollaborator: S.optional(S.Boolean),
-        }),
-      ).annotate({
-        identifier: "GetOrganizationMembersResponseBodyItem",
-      });
-    case 1:
-      return S.Array(__S(24, __c3, 0));
-    case 2:
-      return S.suspend(() => __S(25, __c3, 1).pipe(T.RawResponseRoot())).annotate({
-        identifier: "GetOrganizationMembersResponse",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-          startDate: S.Number.pipe(T.Query()),
-          endDate: S.Number.pipe(T.Query()),
-        }).pipe(
-          T.Http({ method: "GET", uri: "/api/organizations/{name}/billing/usage-v2", code: 200 }),
-        ),
-      ).annotate({ identifier: "GetOrgUsageV2Request" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-          startDate: S.optional(S.String.pipe(T.Query())),
-          endDate: S.optional(S.String.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/api/organizations/{name}/billing/usage-by-resource-group",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "GetResourceGroupUsageRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          privateGB: S.Number,
-          publicGB: S.Number,
-        }),
-      ).annotate({
-        identifier: "GetResourceGroupUsageResponsePeriodsItemResourceGroupsItemStorage",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          requestCount: S.Number,
-          costCents: S.Number,
-        }),
-      ).annotate({
-        identifier: "GetResourceGroupUsageResponsePeriodsItemResourceGroupsItemInference",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          uptimeSec: S.Number,
-          costCents: S.Number,
-        }),
-      ).annotate({
-        identifier: "GetResourceGroupUsageResponsePeriodsItemResourceGroupsItemComputeSpaces",
-      });
-  }
-}
-function __c4(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          spaces: __S(31, __c3, 7),
-          endpoints: __S(31, __c3, 7),
-          jobs: __S(31, __c3, 7),
-        }),
-      ).annotate({
-        identifier: "GetResourceGroupUsageResponsePeriodsItemResourceGroupsItemCompute",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.NullOr(S.String),
-          name: S.NullOr(S.String),
-          storage: __S(29, __c3, 5),
-          inference: __S(30, __c3, 6),
-          compute: __S(32, __c4, 0),
-        }),
-      ).annotate({
-        identifier: "GetResourceGroupUsageResponsePeriodsItemResourceGroupsItem",
-      });
-    case 2:
-      return S.Array(__S(33, __c4, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          period: S.String,
-          resourceGroups: __S(34, __c4, 2),
-        }),
-      ).annotate({
-        identifier: "GetResourceGroupUsageResponsePeriodsItem",
-      });
-    case 4:
-      return S.Array(__S(35, __c4, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          currency: S.String,
-          periods: __S(36, __c4, 4),
-        }),
-      ).annotate({
-        identifier: "GetResourceGroupUsageResponse",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-          startDate: S.optional(S.String.pipe(T.Query())),
-          endDate: S.optional(S.String.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/api/organizations/{name}/billing/usage-by-inference-session",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "GetSessionInferenceUsageRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String,
-          requestCount: S.Number,
-          costCents: S.Number,
-        }),
-      ).annotate({
-        identifier: "GetSessionInferenceUsageResponsePeriodsItemSessionsItem",
-      });
-  }
-}
-function __c5(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(39, __c4, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          period: S.String,
-          sessions: __S(40, __c5, 0),
-        }),
-      ).annotate({
-        identifier: "GetSessionInferenceUsageResponsePeriodsItem",
-      });
-    case 2:
-      return S.Array(__S(41, __c5, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          currency: S.String,
-          periods: __S(42, __c5, 2),
-        }),
-      ).annotate({
-        identifier: "GetSessionInferenceUsageResponse",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-        }).pipe(T.Http({ method: "GET", uri: "/api/organizations/{name}/socials", code: 200 })),
-      ).annotate({ identifier: "GetSocialHandlesRequest" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          twitter: S.optional(S.String),
-          github: S.optional(S.String),
-          linkedin: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GetSocialHandlesResponseSocialHandles",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          _id: S.String,
-          org: S.String,
-          socialHandles: __S(45, __c5, 5),
-        }),
-      ).annotate({ identifier: "GetSocialHandlesResponse" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-          cursor: S.optional(S.String.pipe(T.Query())),
-          limit: S.optional(S.Number.pipe(T.Query())),
-          q: S.optional(S.String.pipe(T.Query())),
-        }).pipe(
-          T.Http({ method: "GET", uri: "/api/organizations/{name}/settings/tokens", code: 200 }),
-        ),
-      ).annotate({
-        identifier: "ListMemberAccessTokensRequest",
-      });
-  }
-}
-function __c6(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          _id: S.String,
-          name: S.String,
-          fullname: S.String,
-          avatarUrl: S.String,
-        }),
-      ).annotate({
-        identifier: "ListMemberAccessTokensResponseBodyItemOwner",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String,
-          fullname: S.String,
-          avatarUrl: S.String,
-        }),
-      ).annotate({
-        identifier: "ListMemberAccessTokensResponseBodyItemAuthorizationAuthorizer",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          status: S.String,
-          requestedAt: S.String,
-          authorizedAt: S.optional(S.String),
-          authorizer: S.optional(__S(49, __c6, 1)),
-        }),
-      ).annotate({
-        identifier: "ListMemberAccessTokensResponseBodyItemAuthorization",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          _id: S.String,
-          type: S.String,
-        }),
-      ).annotate({
-        identifier: "ListMemberAccessTokensResponseBodyItemFineGrainedScopedItemEntity",
-      });
-    case 4:
-      return S.Array(S.String);
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          entity: __S(51, __c6, 3),
-          permissions: __S(52, __c6, 4),
-        }),
-      ).annotate({
-        identifier: "ListMemberAccessTokensResponseBodyItemFineGrainedScopedItem",
-      });
-    case 6:
-      return S.Array(__S(53, __c6, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          scoped: __S(54, __c6, 6),
-        }),
-      ).annotate({
-        identifier: "ListMemberAccessTokensResponseBodyItemFineGrained",
-      });
-  }
-}
-function __c7(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          _id: S.String,
-          displayName: S.String,
-          role: S.String,
-          last4: S.optional(S.String),
-          createdAt: S.String,
-          lastUsedAt: S.optional(S.String),
-          owner: __S(48, __c6, 0),
-          authorization: S.optional(__S(50, __c6, 2)),
-          fineGrained: S.optional(__S(55, __c6, 7)),
-        }),
-      ).annotate({
-        identifier: "ListMemberAccessTokensResponseBodyItem",
-      });
-    case 1:
-      return S.Array(__S(56, __c7, 0));
-    case 2:
-      return S.suspend(() => __S(57, __c7, 1).pipe(T.RawResponseRoot())).annotate({
-        identifier: "ListMemberAccessTokensResponse",
-      });
-    case 3:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -1483,7 +1085,7 @@ function __c7(j: number): any {
       ).annotate({
         identifier: "ListOrganizationRepositoriesRequest",
       });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
@@ -1496,13 +1098,17 @@ function __c7(j: number): any {
       ).annotate({
         identifier: "ListOrganizationRepositoriesResponseBodyItem",
       });
-    case 5:
-      return S.Array(__S(60, __c7, 4));
-    case 6:
-      return S.suspend(() => __S(61, __c7, 5).pipe(T.RawResponseRoot())).annotate({
+    case 2:
+      return S.Array(__S(49, __c3, 1));
+    case 3:
+      return S.suspend(() => __S(50, __c3, 2).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListOrganizationRepositoriesResponse",
       });
-    case 7:
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -1517,7 +1123,7 @@ function __c7(j: number): any {
       ).annotate({ identifier: "RevokeMemberTokenRequest" });
   }
 }
-function __c8(j: number): any {
+function __c5(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1538,7 +1144,11 @@ function __c8(j: number): any {
       return S.suspend(() => S.Unknown.pipe(T.RawResponseRoot())).annotate({
         identifier: "RotateSsoCredentialsResponse",
       });
-    case 2:
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -1546,7 +1156,11 @@ function __c8(j: number): any {
           T.Http({ method: "GET", uri: "/api/organizations/{name}/billing/usage/live", code: 200 }),
         ),
       ).annotate({ identifier: "StreamUsageRequest" });
-    case 3:
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           resource: S.Unknown,
@@ -1555,9 +1169,9 @@ function __c8(j: number): any {
       ).annotate({
         identifier: "UpdateNetworkSecurityRequestBlockedContentsItem",
       });
-    case 4:
-      return S.Array(__S(67, __c8, 3));
-    case 5:
+    case 1:
+      return S.Array(__S(112, __c7, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           resource: S.Unknown,
@@ -1566,18 +1180,18 @@ function __c8(j: number): any {
       ).annotate({
         identifier: "UpdateNetworkSecurityRequestAllowedContentsItem",
       });
-    case 6:
-      return S.Array(__S(69, __c8, 5));
-    case 7:
+    case 3:
+      return S.Array(__S(114, __c7, 2));
+    case 4:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
           enforceAuth: S.optional(S.Boolean),
           enforceIpRestriction: S.optional(S.Boolean),
           highRateLimits: S.optional(S.Boolean),
-          ipRanges: S.optional(__S(15, __c1, 7)),
-          blockedContents: S.optional(__S(68, __c8, 4)),
-          allowedContents: S.optional(__S(70, __c8, 6)),
+          ipRanges: S.optional(__S(160, __c10, 0)),
+          blockedContents: S.optional(__S(113, __c7, 1)),
+          allowedContents: S.optional(__S(115, __c7, 3)),
           keepReposMetadataVisible: S.optional(S.Boolean),
         }).pipe(
           T.Http({
@@ -1589,11 +1203,7 @@ function __c8(j: number): any {
       ).annotate({
         identifier: "UpdateNetworkSecurityRequest",
       });
-  }
-}
-function __c9(j: number): any {
-  switch (j) {
-    case 0:
+    case 5:
       return S.suspend(() =>
         S.Struct({
           resource: S.Unknown,
@@ -1602,9 +1212,9 @@ function __c9(j: number): any {
       ).annotate({
         identifier: "UpdateNetworkSecurityResponseBlockedContentsItem",
       });
-    case 1:
-      return S.Array(__S(72, __c9, 0));
-    case 2:
+    case 6:
+      return S.Array(__S(117, __c7, 5));
+    case 7:
       return S.suspend(() =>
         S.Struct({
           resource: S.Unknown,
@@ -1613,17 +1223,17 @@ function __c9(j: number): any {
       ).annotate({
         identifier: "UpdateNetworkSecurityResponseAllowedContentsItem",
       });
-    case 3:
-      return S.Array(__S(74, __c9, 2));
-    case 4:
+    case 8:
+      return S.Array(__S(119, __c7, 7));
+    case 9:
       return S.suspend(() =>
         S.Struct({
           enforceAuth: S.Unknown,
           enforceIpRestriction: S.Boolean,
           highRateLimits: S.Boolean,
-          ipRanges: __S(15, __c1, 7),
-          blockedContents: __S(73, __c9, 1),
-          allowedContents: __S(75, __c9, 3),
+          ipRanges: __S(160, __c10, 0),
+          blockedContents: __S(118, __c7, 6),
+          allowedContents: __S(120, __c7, 8),
           keepReposMetadataVisible: S.Boolean,
           areCidrRangesApproved: S.Boolean,
         }),
@@ -1632,7 +1242,424 @@ function __c9(j: number): any {
       });
   }
 }
-
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+          redirect: S.optional(S.String.pipe(T.Query())),
+        }).pipe(T.Http({ method: "GET", uri: "/api/organizations/{name}/avatar", code: 200 })),
+      ).annotate({ identifier: "GetAvatarRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          avatarUrl: S.String,
+        }),
+      ).annotate({ identifier: "GetAvatarResponse" });
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/api/organizations/{name}/settings/network-security",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "GetNetworkSecuritySettingsRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          resource: S.Unknown,
+          scope: S.String,
+        }),
+      ).annotate({
+        identifier: "GetNetworkSecuritySettingsResponseBlockedContentsItem",
+      });
+    case 2:
+      return S.Array(__S(145, __c9, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          resource: S.Unknown,
+          scope: S.String,
+        }),
+      ).annotate({
+        identifier: "GetNetworkSecuritySettingsResponseAllowedContentsItem",
+      });
+    case 4:
+      return S.Array(__S(147, __c9, 3));
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          enforceAuth: S.Boolean,
+          areCidrRangesApproved: S.Boolean,
+          enforceIpRestriction: S.Boolean,
+          highRateLimits: S.Boolean,
+          ipRanges: __S(160, __c10, 0),
+          blockedContents: __S(146, __c9, 2),
+          allowedContents: __S(148, __c9, 4),
+          keepReposMetadataVisible: S.Boolean,
+        }),
+      ).annotate({
+        identifier: "GetNetworkSecuritySettingsResponse",
+      });
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+          search: S.optional(S.String.pipe(T.Query())),
+          email: S.optional(S.String.pipe(T.Query())),
+          cursor: S.optional(S.String.pipe(T.Query())),
+          limit: S.optional(S.Number.pipe(T.Query())),
+        }).pipe(T.Http({ method: "GET", uri: "/api/organizations/{name}/members", code: 200 })),
+      ).annotate({
+        identifier: "GetOrganizationMembersRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String,
+          id: S.String,
+          numUsers: S.Number,
+          role: S.String,
+        }),
+      ).annotate({
+        identifier: "GetOrganizationMembersResponseBodyItemResourceGroupsItem",
+      });
+    case 2:
+      return S.Array(__S(177, __c11, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          avatarUrl: S.String,
+          fullname: S.String,
+          isPro: S.Boolean,
+          user: S.String,
+          type: S.String,
+          isFollowing: S.optional(S.Boolean),
+          _id: S.String,
+          role: S.optional(S.String),
+          resourceGroups: S.optional(__S(178, __c11, 2)),
+          twoFaEnabled: S.optional(S.Boolean),
+          verifiedEmail: S.optional(S.NullOr(S.String)),
+          isExternalCollaborator: S.optional(S.Boolean),
+        }),
+      ).annotate({
+        identifier: "GetOrganizationMembersResponseBodyItem",
+      });
+    case 4:
+      return S.Array(__S(179, __c11, 3));
+    case 5:
+      return S.suspend(() => __S(180, __c11, 4).pipe(T.RawResponseRoot())).annotate({
+        identifier: "GetOrganizationMembersResponse",
+      });
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+          startDate: S.Number.pipe(T.Query()),
+          endDate: S.Number.pipe(T.Query()),
+        }).pipe(
+          T.Http({ method: "GET", uri: "/api/organizations/{name}/billing/usage-v2", code: 200 }),
+        ),
+      ).annotate({ identifier: "GetOrgUsageV2Request" });
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+          startDate: S.optional(S.String.pipe(T.Query())),
+          endDate: S.optional(S.String.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/api/organizations/{name}/billing/usage-by-resource-group",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "GetResourceGroupUsageRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          privateGB: S.Number,
+          publicGB: S.Number,
+        }),
+      ).annotate({
+        identifier: "GetResourceGroupUsageResponsePeriodsItemResourceGroupsItemStorage",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          requestCount: S.Number,
+          costCents: S.Number,
+        }),
+      ).annotate({
+        identifier: "GetResourceGroupUsageResponsePeriodsItemResourceGroupsItemInference",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          uptimeSec: S.Number,
+          costCents: S.Number,
+        }),
+      ).annotate({
+        identifier: "GetResourceGroupUsageResponsePeriodsItemResourceGroupsItemComputeSpaces",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          spaces: __S(211, __c13, 3),
+          endpoints: __S(211, __c13, 3),
+          jobs: __S(211, __c13, 3),
+        }),
+      ).annotate({
+        identifier: "GetResourceGroupUsageResponsePeriodsItemResourceGroupsItemCompute",
+      });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.NullOr(S.String),
+          name: S.NullOr(S.String),
+          storage: __S(209, __c13, 1),
+          inference: __S(210, __c13, 2),
+          compute: __S(212, __c13, 4),
+        }),
+      ).annotate({
+        identifier: "GetResourceGroupUsageResponsePeriodsItemResourceGroupsItem",
+      });
+    case 6:
+      return S.Array(__S(213, __c13, 5));
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          period: S.String,
+          resourceGroups: __S(214, __c13, 6),
+        }),
+      ).annotate({
+        identifier: "GetResourceGroupUsageResponsePeriodsItem",
+      });
+    case 8:
+      return S.Array(__S(215, __c13, 7));
+    case 9:
+      return S.suspend(() =>
+        S.Struct({
+          currency: S.String,
+          periods: __S(216, __c13, 8),
+        }),
+      ).annotate({
+        identifier: "GetResourceGroupUsageResponse",
+      });
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+          startDate: S.optional(S.String.pipe(T.Query())),
+          endDate: S.optional(S.String.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/api/organizations/{name}/billing/usage-by-inference-session",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "GetSessionInferenceUsageRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          requestCount: S.Number,
+          costCents: S.Number,
+        }),
+      ).annotate({
+        identifier: "GetSessionInferenceUsageResponsePeriodsItemSessionsItem",
+      });
+    case 2:
+      return S.Array(__S(225, __c14, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          period: S.String,
+          sessions: __S(226, __c14, 2),
+        }),
+      ).annotate({
+        identifier: "GetSessionInferenceUsageResponsePeriodsItem",
+      });
+    case 4:
+      return S.Array(__S(227, __c14, 3));
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          currency: S.String,
+          periods: __S(228, __c14, 4),
+        }),
+      ).annotate({
+        identifier: "GetSessionInferenceUsageResponse",
+      });
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+        }).pipe(T.Http({ method: "GET", uri: "/api/organizations/{name}/socials", code: 200 })),
+      ).annotate({ identifier: "GetSocialHandlesRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          twitter: S.optional(S.String),
+          github: S.optional(S.String),
+          linkedin: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GetSocialHandlesResponseSocialHandles",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          _id: S.String,
+          org: S.String,
+          socialHandles: __S(241, __c15, 1),
+        }),
+      ).annotate({ identifier: "GetSocialHandlesResponse" });
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+          cursor: S.optional(S.String.pipe(T.Query())),
+          limit: S.optional(S.Number.pipe(T.Query())),
+          q: S.optional(S.String.pipe(T.Query())),
+        }).pipe(
+          T.Http({ method: "GET", uri: "/api/organizations/{name}/settings/tokens", code: 200 }),
+        ),
+      ).annotate({
+        identifier: "ListMemberAccessTokensRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          _id: S.String,
+          name: S.String,
+          fullname: S.String,
+          avatarUrl: S.String,
+        }),
+      ).annotate({
+        identifier: "ListMemberAccessTokensResponseBodyItemOwner",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String,
+          fullname: S.String,
+          avatarUrl: S.String,
+        }),
+      ).annotate({
+        identifier: "ListMemberAccessTokensResponseBodyItemAuthorizationAuthorizer",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          status: S.String,
+          requestedAt: S.String,
+          authorizedAt: S.optional(S.String),
+          authorizer: S.optional(__S(258, __c16, 2)),
+        }),
+      ).annotate({
+        identifier: "ListMemberAccessTokensResponseBodyItemAuthorization",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          _id: S.String,
+          type: S.String,
+        }),
+      ).annotate({
+        identifier: "ListMemberAccessTokensResponseBodyItemFineGrainedScopedItemEntity",
+      });
+    case 5:
+      return S.Array(S.String);
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          entity: __S(260, __c16, 4),
+          permissions: __S(261, __c16, 5),
+        }),
+      ).annotate({
+        identifier: "ListMemberAccessTokensResponseBodyItemFineGrainedScopedItem",
+      });
+    case 7:
+      return S.Array(__S(262, __c16, 6));
+    case 8:
+      return S.suspend(() =>
+        S.Struct({
+          scoped: __S(263, __c16, 7),
+        }),
+      ).annotate({
+        identifier: "ListMemberAccessTokensResponseBodyItemFineGrained",
+      });
+    case 9:
+      return S.suspend(() =>
+        S.Struct({
+          _id: S.String,
+          displayName: S.String,
+          role: S.String,
+          last4: S.optional(S.String),
+          createdAt: S.String,
+          lastUsedAt: S.optional(S.String),
+          owner: __S(257, __c16, 1),
+          authorization: S.optional(__S(259, __c16, 3)),
+          fineGrained: S.optional(__S(264, __c16, 8)),
+        }),
+      ).annotate({
+        identifier: "ListMemberAccessTokensResponseBodyItem",
+      });
+    case 10:
+      return S.Array(__S(265, __c16, 9));
+    case 11:
+      return S.suspend(() => __S(266, __c16, 10).pipe(T.RawResponseRoot())).annotate({
+        identifier: "ListMemberAccessTokensResponse",
+      });
+  }
+}
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

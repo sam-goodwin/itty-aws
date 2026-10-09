@@ -1433,8 +1433,8 @@ export const DeleteSignalR: API.OperationMethod<
   DeleteSignalRError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2, __c0, 2) as any as S.Schema<DeleteSignalRRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<DeleteSignalRResponse>,
+  input: __S(32, __c1, 0) as any as S.Schema<DeleteSignalRRequest>,
+  output: __S(64, __c2, 0) as any as S.Schema<DeleteSignalRResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1448,8 +1448,8 @@ export const DeleteSignalRCustomCertificate: API.OperationMethod<
   DeleteSignalRCustomCertificateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(4, __c0, 4) as any as S.Schema<DeleteSignalRCustomCertificateRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<DeleteSignalRCustomCertificateResponse>,
+  input: __S(544, __c17, 0) as any as S.Schema<DeleteSignalRCustomCertificateRequest>,
+  output: __S(576, __c18, 0) as any as S.Schema<DeleteSignalRCustomCertificateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1463,8 +1463,8 @@ export const DeleteSignalRCustomDomain: API.OperationMethod<
   DeleteSignalRCustomDomainError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(6, __c0, 6) as any as S.Schema<DeleteSignalRCustomDomainRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<DeleteSignalRCustomDomainResponse>,
+  input: __S(992, __c31, 0) as any as S.Schema<DeleteSignalRCustomDomainRequest>,
+  output: __S(576, __c18, 0) as any as S.Schema<DeleteSignalRCustomDomainResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1478,8 +1478,8 @@ export const DeleteSignalRPrivateEndpointConnection: API.OperationMethod<
   DeleteSignalRPrivateEndpointConnectionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(7, __c0, 7) as any as S.Schema<DeleteSignalRPrivateEndpointConnectionRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<DeleteSignalRPrivateEndpointConnectionResponse>,
+  input: __S(1472, __c46, 0) as any as S.Schema<DeleteSignalRPrivateEndpointConnectionRequest>,
+  output: __S(576, __c18, 0) as any as S.Schema<DeleteSignalRPrivateEndpointConnectionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1493,8 +1493,8 @@ export const DeleteSignalRReplicas: API.OperationMethod<
   DeleteSignalRReplicasError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(8, __c1, 0) as any as S.Schema<DeleteSignalRReplicasRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<DeleteSignalRReplicasResponse>,
+  input: __S(1504, __c47, 0) as any as S.Schema<DeleteSignalRReplicasRequest>,
+  output: __S(64, __c2, 0) as any as S.Schema<DeleteSignalRReplicasResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1508,8 +1508,8 @@ export const DeleteSignalRSharedPrivateLinkResource: API.OperationMethod<
   DeleteSignalRSharedPrivateLinkResourceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(9, __c1, 1) as any as S.Schema<DeleteSignalRSharedPrivateLinkResourceRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<DeleteSignalRSharedPrivateLinkResourceResponse>,
+  input: __S(1536, __c48, 0) as any as S.Schema<DeleteSignalRSharedPrivateLinkResourceRequest>,
+  output: __S(576, __c18, 0) as any as S.Schema<DeleteSignalRSharedPrivateLinkResourceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1523,8 +1523,8 @@ export const GetSignalR: API.OperationMethod<
   GetSignalRError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(10, __c1, 2) as any as S.Schema<GetSignalRRequest>,
-  output: __S(48, __c6, 0) as any as S.Schema<GetSignalRResponse>,
+  input: __S(1568, __c49, 0) as any as S.Schema<GetSignalRRequest>,
+  output: __S(1888, __c59, 0) as any as S.Schema<GetSignalRResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1538,8 +1538,8 @@ export const GetSignalRCustomCertificate: API.OperationMethod<
   GetSignalRCustomCertificateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(49, __c6, 1) as any as S.Schema<GetSignalRCustomCertificateRequest>,
-  output: __S(51, __c6, 3) as any as S.Schema<GetSignalRCustomCertificateResponse>,
+  input: __S(1984, __c62, 0) as any as S.Schema<GetSignalRCustomCertificateRequest>,
+  output: __S(2048, __c64, 0) as any as S.Schema<GetSignalRCustomCertificateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1553,8 +1553,8 @@ export const GetSignalRCustomDomain: API.OperationMethod<
   GetSignalRCustomDomainError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(52, __c6, 4) as any as S.Schema<GetSignalRCustomDomainRequest>,
-  output: __S(54, __c6, 6) as any as S.Schema<GetSignalRCustomDomainResponse>,
+  input: __S(2080, __c65, 0) as any as S.Schema<GetSignalRCustomDomainRequest>,
+  output: __S(2144, __c67, 0) as any as S.Schema<GetSignalRCustomDomainResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1568,8 +1568,8 @@ export const GetSignalRPrivateEndpointConnection: API.OperationMethod<
   GetSignalRPrivateEndpointConnectionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(55, __c6, 7) as any as S.Schema<GetSignalRPrivateEndpointConnectionRequest>,
-  output: __S(18, __c2, 2) as any as S.Schema<GetSignalRPrivateEndpointConnectionResponse>,
+  input: __S(96, __c3, 0) as any as S.Schema<GetSignalRPrivateEndpointConnectionRequest>,
+  output: __S(1634, __c51, 2) as any as S.Schema<GetSignalRPrivateEndpointConnectionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1583,8 +1583,8 @@ export const GetSignalRReplicas: API.OperationMethod<
   GetSignalRReplicasError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(56, __c7, 0) as any as S.Schema<GetSignalRReplicasRequest>,
-  output: __S(58, __c7, 2) as any as S.Schema<GetSignalRReplicasResponse>,
+  input: __S(128, __c4, 0) as any as S.Schema<GetSignalRReplicasRequest>,
+  output: __S(192, __c6, 0) as any as S.Schema<GetSignalRReplicasResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1598,8 +1598,12 @@ export const GetSignalRReplicaSharedPrivateLinkResource: API.OperationMethod<
   GetSignalRReplicaSharedPrivateLinkResourceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(59, __c7, 3) as any as S.Schema<GetSignalRReplicaSharedPrivateLinkResourceRequest>,
-  output: __S(21, __c2, 5) as any as S.Schema<GetSignalRReplicaSharedPrivateLinkResourceResponse>,
+  input: __S(224, __c7, 0) as any as S.Schema<GetSignalRReplicaSharedPrivateLinkResourceRequest>,
+  output: __S(
+    1760,
+    __c55,
+    0,
+  ) as any as S.Schema<GetSignalRReplicaSharedPrivateLinkResourceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1613,8 +1617,8 @@ export const GetSignalRSharedPrivateLinkResource: API.OperationMethod<
   GetSignalRSharedPrivateLinkResourceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(60, __c7, 4) as any as S.Schema<GetSignalRSharedPrivateLinkResourceRequest>,
-  output: __S(21, __c2, 5) as any as S.Schema<GetSignalRSharedPrivateLinkResourceResponse>,
+  input: __S(256, __c8, 0) as any as S.Schema<GetSignalRSharedPrivateLinkResourceRequest>,
+  output: __S(1760, __c55, 0) as any as S.Schema<GetSignalRSharedPrivateLinkResourceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1628,8 +1632,8 @@ export const ListOperations: API.OperationMethod<
   ListOperationsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(61, __c7, 5) as any as S.Schema<ListOperationsRequest>,
-  output: __S(73, __c9, 1) as any as S.Schema<OperationList>,
+  input: __S(288, __c9, 0) as any as S.Schema<ListOperationsRequest>,
+  output: __S(300, __c9, 12) as any as S.Schema<OperationList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1643,8 +1647,8 @@ export const ListSignalRByResourceGroup: API.OperationMethod<
   ListSignalRByResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(74, __c9, 2) as any as S.Schema<ListSignalRByResourceGroupRequest>,
-  output: __S(76, __c9, 4) as any as S.Schema<SignalRResourceList>,
+  input: __S(320, __c10, 0) as any as S.Schema<ListSignalRByResourceGroupRequest>,
+  output: __S(353, __c11, 1) as any as S.Schema<SignalRResourceList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1658,8 +1662,8 @@ export const ListSignalRBySubscription: API.OperationMethod<
   ListSignalRBySubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(77, __c9, 5) as any as S.Schema<ListSignalRBySubscriptionRequest>,
-  output: __S(76, __c9, 4) as any as S.Schema<SignalRResourceList>,
+  input: __S(384, __c12, 0) as any as S.Schema<ListSignalRBySubscriptionRequest>,
+  output: __S(353, __c11, 1) as any as S.Schema<SignalRResourceList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1673,8 +1677,8 @@ export const ListSignalRCustomCertificates: API.OperationMethod<
   ListSignalRCustomCertificatesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(78, __c9, 6) as any as S.Schema<ListSignalRCustomCertificatesRequest>,
-  output: __S(81, __c10, 1) as any as S.Schema<CustomCertificateList>,
+  input: __S(416, __c13, 0) as any as S.Schema<ListSignalRCustomCertificatesRequest>,
+  output: __S(419, __c13, 3) as any as S.Schema<CustomCertificateList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1688,8 +1692,8 @@ export const ListSignalRCustomDomains: API.OperationMethod<
   ListSignalRCustomDomainsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(82, __c10, 2) as any as S.Schema<ListSignalRCustomDomainsRequest>,
-  output: __S(85, __c10, 5) as any as S.Schema<CustomDomainList>,
+  input: __S(448, __c14, 0) as any as S.Schema<ListSignalRCustomDomainsRequest>,
+  output: __S(451, __c14, 3) as any as S.Schema<CustomDomainList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1703,8 +1707,8 @@ export const ListSignalRKeys: API.OperationMethod<
   ListSignalRKeysError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(86, __c10, 6) as any as S.Schema<ListSignalRKeysRequest>,
-  output: __S(87, __c10, 7) as any as S.Schema<SignalRKeys>,
+  input: __S(480, __c15, 0) as any as S.Schema<ListSignalRKeysRequest>,
+  output: __S(512, __c16, 0) as any as S.Schema<SignalRKeys>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1718,8 +1722,8 @@ export const ListSignalRPrivateEndpointConnections: API.OperationMethod<
   ListSignalRPrivateEndpointConnectionsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(88, __c11, 0) as any as S.Schema<ListSignalRPrivateEndpointConnectionsRequest>,
-  output: __S(89, __c11, 1) as any as S.Schema<PrivateEndpointConnectionList>,
+  input: __S(608, __c19, 0) as any as S.Schema<ListSignalRPrivateEndpointConnectionsRequest>,
+  output: __S(609, __c19, 1) as any as S.Schema<PrivateEndpointConnectionList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1733,8 +1737,8 @@ export const ListSignalRPrivateLinkResources: API.OperationMethod<
   ListSignalRPrivateLinkResourcesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(90, __c11, 2) as any as S.Schema<ListSignalRPrivateLinkResourcesRequest>,
-  output: __S(97, __c12, 1) as any as S.Schema<PrivateLinkResourceList>,
+  input: __S(640, __c20, 0) as any as S.Schema<ListSignalRPrivateLinkResourcesRequest>,
+  output: __S(647, __c20, 7) as any as S.Schema<PrivateLinkResourceList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1748,8 +1752,8 @@ export const ListSignalRReplicas: API.OperationMethod<
   ListSignalRReplicasError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(98, __c12, 2) as any as S.Schema<ListSignalRReplicasRequest>,
-  output: __S(101, __c12, 5) as any as S.Schema<ReplicaList>,
+  input: __S(672, __c21, 0) as any as S.Schema<ListSignalRReplicasRequest>,
+  output: __S(675, __c21, 3) as any as S.Schema<ReplicaList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1763,8 +1767,8 @@ export const ListSignalRReplicaSharedPrivateLinkResources: API.OperationMethod<
   ListSignalRReplicaSharedPrivateLinkResourcesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(102, __c12, 6) as any as S.Schema<ListSignalRReplicaSharedPrivateLinkResourcesRequest>,
-  output: __S(103, __c12, 7) as any as S.Schema<SharedPrivateLinkResourceList>,
+  input: __S(704, __c22, 0) as any as S.Schema<ListSignalRReplicaSharedPrivateLinkResourcesRequest>,
+  output: __S(736, __c23, 0) as any as S.Schema<SharedPrivateLinkResourceList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1778,8 +1782,8 @@ export const ListSignalRReplicaSkus: API.OperationMethod<
   ListSignalRReplicaSkusError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(104, __c13, 0) as any as S.Schema<ListSignalRReplicaSkusRequest>,
-  output: __S(109, __c13, 5) as any as S.Schema<SkuList>,
+  input: __S(768, __c24, 0) as any as S.Schema<ListSignalRReplicaSkusRequest>,
+  output: __S(804, __c25, 4) as any as S.Schema<SkuList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1793,8 +1797,8 @@ export const ListSignalRSharedPrivateLinkResources: API.OperationMethod<
   ListSignalRSharedPrivateLinkResourcesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(110, __c13, 6) as any as S.Schema<ListSignalRSharedPrivateLinkResourcesRequest>,
-  output: __S(103, __c12, 7) as any as S.Schema<SharedPrivateLinkResourceList>,
+  input: __S(832, __c26, 0) as any as S.Schema<ListSignalRSharedPrivateLinkResourcesRequest>,
+  output: __S(736, __c23, 0) as any as S.Schema<SharedPrivateLinkResourceList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1808,8 +1812,8 @@ export const ListSignalRSkus: API.OperationMethod<
   ListSignalRSkusError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(111, __c13, 7) as any as S.Schema<ListSignalRSkusRequest>,
-  output: __S(109, __c13, 5) as any as S.Schema<SkuList>,
+  input: __S(864, __c27, 0) as any as S.Schema<ListSignalRSkusRequest>,
+  output: __S(804, __c25, 4) as any as S.Schema<SkuList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1823,8 +1827,8 @@ export const ListUsages: API.OperationMethod<
   ListUsagesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(112, __c14, 0) as any as S.Schema<ListUsagesRequest>,
-  output: __S(116, __c14, 4) as any as S.Schema<SignalRUsageList>,
+  input: __S(896, __c28, 0) as any as S.Schema<ListUsagesRequest>,
+  output: __S(900, __c28, 4) as any as S.Schema<SignalRUsageList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1838,8 +1842,8 @@ export const RegenerateSignalRKey: API.OperationMethod<
   RegenerateSignalRKeyError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(117, __c14, 5) as any as S.Schema<RegenerateSignalRKeyRequest>,
-  output: __S(87, __c10, 7) as any as S.Schema<SignalRKeys>,
+  input: __S(928, __c29, 0) as any as S.Schema<RegenerateSignalRKeyRequest>,
+  output: __S(512, __c16, 0) as any as S.Schema<SignalRKeys>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1853,8 +1857,8 @@ export const RestartSignalR: API.OperationMethod<
   RestartSignalRError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(118, __c14, 6) as any as S.Schema<RestartSignalRRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<RestartSignalRResponse>,
+  input: __S(960, __c30, 0) as any as S.Schema<RestartSignalRRequest>,
+  output: __S(64, __c2, 0) as any as S.Schema<RestartSignalRResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1868,8 +1872,8 @@ export const RestartSignalRReplicas: API.OperationMethod<
   RestartSignalRReplicasError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(119, __c14, 7) as any as S.Schema<RestartSignalRReplicasRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<RestartSignalRReplicasResponse>,
+  input: __S(1024, __c32, 0) as any as S.Schema<RestartSignalRReplicasRequest>,
+  output: __S(64, __c2, 0) as any as S.Schema<RestartSignalRReplicasResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1883,8 +1887,8 @@ export const SignalRCreateOrUpdate: API.OperationMethod<
   SignalRCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(124, __c15, 4) as any as S.Schema<SignalRCreateOrUpdateRequest>,
-  output: __S(125, __c15, 5) as any as S.Schema<SignalRCreateOrUpdateResponse>,
+  input: __S(1056, __c33, 0) as any as S.Schema<SignalRCreateOrUpdateRequest>,
+  output: __S(1057, __c33, 1) as any as S.Schema<SignalRCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1898,8 +1902,8 @@ export const SignalRCustomCertificatesCreateOrUpdate: API.OperationMethod<
   SignalRCustomCertificatesCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(127, __c15, 7) as any as S.Schema<SignalRCustomCertificatesCreateOrUpdateRequest>,
-  output: __S(51, __c6, 3) as any as S.Schema<SignalRCustomCertificatesCreateOrUpdateResponse>,
+  input: __S(1153, __c36, 1) as any as S.Schema<SignalRCustomCertificatesCreateOrUpdateRequest>,
+  output: __S(2048, __c64, 0) as any as S.Schema<SignalRCustomCertificatesCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1913,8 +1917,8 @@ export const SignalRCustomDomainsCreateOrUpdate: API.OperationMethod<
   SignalRCustomDomainsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(129, __c16, 1) as any as S.Schema<SignalRCustomDomainsCreateOrUpdateRequest>,
-  output: __S(54, __c6, 6) as any as S.Schema<SignalRCustomDomainsCreateOrUpdateResponse>,
+  input: __S(1185, __c37, 1) as any as S.Schema<SignalRCustomDomainsCreateOrUpdateRequest>,
+  output: __S(2144, __c67, 0) as any as S.Schema<SignalRCustomDomainsCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1928,8 +1932,8 @@ export const SignalRReplicasCreateOrUpdate: API.OperationMethod<
   SignalRReplicasCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(131, __c16, 3) as any as S.Schema<SignalRReplicasCreateOrUpdateRequest>,
-  output: __S(58, __c7, 2) as any as S.Schema<SignalRReplicasCreateOrUpdateResponse>,
+  input: __S(1216, __c38, 0) as any as S.Schema<SignalRReplicasCreateOrUpdateRequest>,
+  output: __S(192, __c6, 0) as any as S.Schema<SignalRReplicasCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1944,14 +1948,14 @@ export const SignalRReplicaSharedPrivateLinkResourcesCreateOrUpdate: API.Operati
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    133,
-    __c16,
-    5,
+    1280,
+    __c40,
+    0,
   ) as any as S.Schema<SignalRReplicaSharedPrivateLinkResourcesCreateOrUpdateRequest>,
   output: __S(
-    134,
-    __c16,
-    6,
+    1281,
+    __c40,
+    1,
   ) as any as S.Schema<SignalRReplicaSharedPrivateLinkResourcesCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -1967,14 +1971,14 @@ export const SignalRSharedPrivateLinkResourcesCreateOrUpdate: API.OperationMetho
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    135,
-    __c16,
-    7,
+    1344,
+    __c42,
+    0,
   ) as any as S.Schema<SignalRSharedPrivateLinkResourcesCreateOrUpdateRequest>,
   output: __S(
-    21,
-    __c2,
-    5,
+    1760,
+    __c55,
+    0,
   ) as any as S.Schema<SignalRSharedPrivateLinkResourcesCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -1989,8 +1993,8 @@ export const UpdateSignalR: API.OperationMethod<
   UpdateSignalRError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(136, __c17, 0) as any as S.Schema<UpdateSignalRRequest>,
-  output: __S(48, __c6, 0) as any as S.Schema<UpdateSignalRResponse>,
+  input: __S(1376, __c43, 0) as any as S.Schema<UpdateSignalRRequest>,
+  output: __S(1888, __c59, 0) as any as S.Schema<UpdateSignalRResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2004,8 +2008,8 @@ export const UpdateSignalRPrivateEndpointConnection: API.OperationMethod<
   UpdateSignalRPrivateEndpointConnectionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(138, __c17, 2) as any as S.Schema<UpdateSignalRPrivateEndpointConnectionRequest>,
-  output: __S(18, __c2, 2) as any as S.Schema<UpdateSignalRPrivateEndpointConnectionResponse>,
+  input: __S(1409, __c44, 1) as any as S.Schema<UpdateSignalRPrivateEndpointConnectionRequest>,
+  output: __S(1634, __c51, 2) as any as S.Schema<UpdateSignalRPrivateEndpointConnectionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2019,8 +2023,8 @@ export const UpdateSignalRReplicas: API.OperationMethod<
   UpdateSignalRReplicasError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(139, __c17, 3) as any as S.Schema<UpdateSignalRReplicasRequest>,
-  output: __S(58, __c7, 2) as any as S.Schema<UpdateSignalRReplicasResponse>,
+  input: __S(1440, __c45, 0) as any as S.Schema<UpdateSignalRReplicasRequest>,
+  output: __S(192, __c6, 0) as any as S.Schema<UpdateSignalRReplicasResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2055,7 +2059,11 @@ function __c0(j: number): any {
           message: S.optional(S.String),
         }),
       ).annotate({ identifier: "NameAvailability" });
-    case 2:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -2070,497 +2078,19 @@ function __c0(j: number): any {
           }),
         ),
       ).annotate({ identifier: "DeleteSignalRRequest" });
-    case 3:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "DeleteSignalRResponse",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          resourceName: S.String.pipe(T.Label()),
-          certificateName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.SignalRService/signalR/{resourceName}/customCertificates/{certificateName}",
-            code: 200,
-            apiVersion: "2024-03-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteSignalRCustomCertificateRequest",
-      });
-    case 5:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "DeleteSignalRCustomCertificateResponse",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          resourceName: S.String.pipe(T.Label()),
-          name: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.SignalRService/signalR/{resourceName}/customDomains/{name}",
-            code: 200,
-            apiVersion: "2024-03-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteSignalRCustomDomainRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          resourceName: S.String.pipe(T.Label()),
-          privateEndpointConnectionName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.SignalRService/signalR/{resourceName}/privateEndpointConnections/{privateEndpointConnectionName}",
-            code: 200,
-            apiVersion: "2024-03-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteSignalRPrivateEndpointConnectionRequest",
-      });
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          resourceName: S.String.pipe(T.Label()),
-          replicaName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.SignalRService/signalR/{resourceName}/replicas/{replicaName}",
-            code: 200,
-            apiVersion: "2024-03-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteSignalRReplicasRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          resourceName: S.String.pipe(T.Label()),
-          sharedPrivateLinkResourceName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.SignalRService/signalR/{resourceName}/sharedPrivateLinkResources/{sharedPrivateLinkResourceName}",
-            code: 200,
-            apiVersion: "2024-03-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteSignalRSharedPrivateLinkResourceRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          resourceName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.SignalRService/signalR/{resourceName}",
-            code: 200,
-            apiVersion: "2024-03-01",
-          }),
-        ),
-      ).annotate({ identifier: "GetSignalRRequest" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          createdBy: S.optional(S.String),
-          createdByType: S.optional(S.String),
-          createdAt: S.optional(S.String),
-          lastModifiedBy: S.optional(S.String),
-          lastModifiedByType: S.optional(S.String),
-          lastModifiedAt: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "SystemData" });
-    case 4:
-      return S.Record(S.String, S.String);
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String,
-          tier: S.optional(S.String),
-          size: S.optional(S.String),
-          family: S.optional(S.String),
-          capacity: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "ResourceSku" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "PrivateEndpoint" });
-    case 7:
-      return S.Array(S.String);
   }
 }
 function __c2(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() =>
-        S.Struct({
-          status: S.optional(S.String),
-          description: S.optional(S.String),
-          actionsRequired: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "PrivateLinkServiceConnectionState",
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "DeleteSignalRResponse",
       });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          provisioningState: S.optional(S.String),
-          privateEndpoint: S.optional(__S(14, __c1, 6)),
-          groupIds: S.optional(__S(15, __c1, 7)),
-          privateLinkServiceConnectionState: S.optional(__S(16, __c2, 0)),
-        }),
-      ).annotate({
-        identifier: "PrivateEndpointConnectionProperties",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(11, __c1, 3)),
-          properties: S.optional(__S(17, __c2, 1)),
-        }),
-      ).annotate({
-        identifier: "PrivateEndpointConnection",
-      });
-    case 3:
-      return S.Array(__S(18, __c2, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          groupId: S.String,
-          privateLinkResourceId: S.String,
-          provisioningState: S.optional(S.String),
-          requestMessage: S.optional(S.String),
-          status: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "SharedPrivateLinkResourceProperties",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(11, __c1, 3)),
-          properties: S.optional(__S(20, __c2, 4)),
-        }),
-      ).annotate({
-        identifier: "SharedPrivateLinkResource",
-      });
-    case 6:
-      return S.Array(__S(21, __c2, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          clientCertEnabled: S.optional(S.Boolean),
-        }),
-      ).annotate({ identifier: "SignalRTlsSettings" });
   }
 }
 function __c3(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() =>
-        S.Struct({
-          flag: S.String,
-          value: S.String,
-          properties: S.optional(__S(12, __c1, 4)),
-        }),
-      ).annotate({ identifier: "SignalRFeature" });
-    case 1:
-      return S.Array(__S(24, __c3, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.optional(S.String),
-          enabled: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "LiveTraceCategory" });
-    case 3:
-      return S.Array(__S(26, __c3, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          enabled: S.optional(S.String),
-          categories: S.optional(__S(27, __c3, 3)),
-        }),
-      ).annotate({ identifier: "LiveTraceConfiguration" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          categories: S.optional(__S(27, __c3, 3)),
-        }),
-      ).annotate({ identifier: "ResourceLogConfiguration" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          allowedOrigins: S.optional(__S(15, __c1, 7)),
-        }),
-      ).annotate({ identifier: "SignalRCorsSettings" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          connectionTimeoutInSeconds: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "ServerlessSettings" });
-  }
-}
-function __c4(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          resource: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ManagedIdentitySettings" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          type: S.optional(S.String),
-          managedIdentity: S.optional(__S(32, __c4, 0)),
-        }),
-      ).annotate({ identifier: "UpstreamAuthSettings" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          hubPattern: S.optional(S.String),
-          eventPattern: S.optional(S.String),
-          categoryPattern: S.optional(S.String),
-          urlTemplate: S.String,
-          auth: S.optional(__S(33, __c4, 1)),
-        }),
-      ).annotate({ identifier: "UpstreamTemplate" });
-    case 3:
-      return S.Array(__S(34, __c4, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          templates: S.optional(__S(35, __c4, 3)),
-        }),
-      ).annotate({
-        identifier: "ServerlessUpstreamSettings",
-      });
-    case 5:
-      return S.Array(S.String);
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          allow: S.optional(__S(37, __c4, 5)),
-          deny: S.optional(__S(37, __c4, 5)),
-        }),
-      ).annotate({ identifier: "NetworkACL" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          allow: S.optional(__S(37, __c4, 5)),
-          deny: S.optional(__S(37, __c4, 5)),
-          name: S.String,
-        }),
-      ).annotate({ identifier: "PrivateEndpointACL" });
-  }
-}
-function __c5(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(39, __c4, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          value: S.optional(S.String),
-          action: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "IPRule" });
-    case 2:
-      return S.Array(__S(41, __c5, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          defaultAction: S.optional(S.String),
-          publicNetwork: S.optional(__S(38, __c4, 6)),
-          privateEndpoints: S.optional(__S(40, __c5, 0)),
-          ipRules: S.optional(__S(42, __c5, 2)),
-        }),
-      ).annotate({ identifier: "SignalRNetworkACLs" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          provisioningState: S.optional(S.String),
-          externalIP: S.optional(S.String),
-          hostName: S.optional(S.String),
-          publicPort: S.optional(S.Number),
-          serverPort: S.optional(S.Number),
-          version: S.optional(S.String),
-          privateEndpointConnections: S.optional(__S(19, __c2, 3)),
-          sharedPrivateLinkResources: S.optional(__S(22, __c2, 6)),
-          tls: S.optional(__S(23, __c2, 7)),
-          hostNamePrefix: S.optional(S.String),
-          features: S.optional(__S(25, __c3, 1)),
-          liveTraceConfiguration: S.optional(__S(28, __c3, 4)),
-          resourceLogConfiguration: S.optional(__S(29, __c3, 5)),
-          cors: S.optional(__S(30, __c3, 6)),
-          serverless: S.optional(__S(31, __c3, 7)),
-          upstream: S.optional(__S(36, __c4, 4)),
-          networkACLs: S.optional(__S(43, __c5, 3)),
-          publicNetworkAccess: S.optional(S.String),
-          disableLocalAuth: S.optional(S.Boolean),
-          disableAadAuth: S.optional(S.Boolean),
-          regionEndpointEnabled: S.optional(S.String),
-          resourceStopped: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "SignalRProperties" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          principalId: S.optional(S.String),
-          clientId: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "UserAssignedIdentityProperty",
-      });
-    case 6:
-      return S.Record(S.String, __S(45, __c5, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          type: S.optional(S.String),
-          userAssignedIdentities: S.optional(__S(46, __c5, 6)),
-          principalId: S.optional(S.String),
-          tenantId: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ManagedIdentity" });
-  }
-}
-function __c6(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(11, __c1, 3)),
-          tags: S.optional(__S(12, __c1, 4)),
-          location: S.String,
-          sku: S.optional(__S(13, __c1, 5)),
-          properties: S.optional(__S(44, __c5, 4)),
-          kind: S.optional(S.String),
-          identity: S.optional(__S(47, __c5, 7)),
-        }),
-      ).annotate({ identifier: "GetSignalRResponse" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          resourceName: S.String.pipe(T.Label()),
-          certificateName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.SignalRService/signalR/{resourceName}/customCertificates/{certificateName}",
-            code: 200,
-            apiVersion: "2024-03-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetSignalRCustomCertificateRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          provisioningState: S.optional(S.String),
-          keyVaultBaseUri: S.String,
-          keyVaultSecretName: S.String,
-          keyVaultSecretVersion: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "CustomCertificateProperties",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(11, __c1, 3)),
-          properties: __S(50, __c6, 2),
-        }),
-      ).annotate({
-        identifier: "GetSignalRCustomCertificateResponse",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          resourceName: S.String.pipe(T.Label()),
-          name: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.SignalRService/signalR/{resourceName}/customDomains/{name}",
-            code: 200,
-            apiVersion: "2024-03-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetSignalRCustomDomainRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          provisioningState: S.optional(S.String),
-          domainName: S.String,
-          customCertificate: __S(14, __c1, 6),
-        }),
-      ).annotate({ identifier: "CustomDomainProperties" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(11, __c1, 3)),
-          properties: __S(53, __c6, 5),
-        }),
-      ).annotate({
-        identifier: "GetSignalRCustomDomainResponse",
-      });
-    case 7:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -2580,7 +2110,7 @@ function __c6(j: number): any {
       });
   }
 }
-function __c7(j: number): any {
+function __c4(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2600,7 +2130,11 @@ function __c7(j: number): any {
       ).annotate({
         identifier: "GetSignalRReplicasRequest",
       });
-    case 1:
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           provisioningState: S.optional(S.String),
@@ -2608,22 +2142,30 @@ function __c7(j: number): any {
           resourceStopped: S.optional(S.String),
         }),
       ).annotate({ identifier: "ReplicaProperties" });
-    case 2:
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(11, __c1, 3)),
-          tags: S.optional(__S(12, __c1, 4)),
+          systemData: S.optional(__S(1920, __c60, 0)),
+          tags: S.optional(__S(1696, __c53, 0)),
           location: S.String,
-          sku: S.optional(__S(13, __c1, 5)),
-          properties: S.optional(__S(57, __c7, 1)),
+          sku: S.optional(__S(1664, __c52, 0)),
+          properties: S.optional(__S(160, __c5, 0)),
         }),
       ).annotate({
         identifier: "GetSignalRReplicasResponse",
       });
-    case 3:
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -2642,7 +2184,11 @@ function __c7(j: number): any {
       ).annotate({
         identifier: "GetSignalRReplicaSharedPrivateLinkResourceRequest",
       });
-    case 4:
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -2660,7 +2206,11 @@ function __c7(j: number): any {
       ).annotate({
         identifier: "GetSignalRSharedPrivateLinkResourceRequest",
       });
-    case 5:
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({}).pipe(
           T.Http({
@@ -2671,7 +2221,7 @@ function __c7(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ListOperationsRequest" });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           provider: S.optional(S.String),
@@ -2680,7 +2230,7 @@ function __c7(j: number): any {
           description: S.optional(S.String),
         }),
       ).annotate({ identifier: "OperationDisplay" });
-    case 7:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
@@ -2689,13 +2239,9 @@ function __c7(j: number): any {
           toBeExportedForShoebox: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "Dimension" });
-  }
-}
-function __c8(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(63, __c7, 7));
-    case 1:
+    case 3:
+      return S.Array(__S(290, __c9, 2));
+    case 4:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
@@ -2705,57 +2251,57 @@ function __c8(j: number): any {
           aggregationType: S.optional(S.String),
           fillGapWithZero: S.optional(S.String),
           category: S.optional(S.String),
-          dimensions: S.optional(__S(64, __c8, 0)),
+          dimensions: S.optional(__S(291, __c9, 3)),
         }),
       ).annotate({ identifier: "MetricSpecification" });
-    case 2:
-      return S.Array(__S(65, __c8, 1));
-    case 3:
+    case 5:
+      return S.Array(__S(292, __c9, 4));
+    case 6:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
           displayName: S.optional(S.String),
         }),
       ).annotate({ identifier: "LogSpecification" });
-    case 4:
-      return S.Array(__S(67, __c8, 3));
-    case 5:
+    case 7:
+      return S.Array(__S(294, __c9, 6));
+    case 8:
       return S.suspend(() =>
         S.Struct({
-          metricSpecifications: S.optional(__S(66, __c8, 2)),
-          logSpecifications: S.optional(__S(68, __c8, 4)),
+          metricSpecifications: S.optional(__S(293, __c9, 5)),
+          logSpecifications: S.optional(__S(295, __c9, 7)),
         }),
       ).annotate({ identifier: "ServiceSpecification" });
-    case 6:
+    case 9:
       return S.suspend(() =>
         S.Struct({
-          serviceSpecification: S.optional(__S(69, __c8, 5)),
+          serviceSpecification: S.optional(__S(296, __c9, 8)),
         }),
       ).annotate({ identifier: "OperationProperties" });
-    case 7:
+    case 10:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
           isDataAction: S.optional(S.Boolean),
-          display: S.optional(__S(62, __c7, 6)),
+          display: S.optional(__S(289, __c9, 1)),
           origin: S.optional(S.String),
-          properties: S.optional(__S(70, __c8, 6)),
+          properties: S.optional(__S(297, __c9, 9)),
         }),
       ).annotate({ identifier: "Operation" });
-  }
-}
-function __c9(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(71, __c8, 7));
-    case 1:
+    case 11:
+      return S.Array(__S(298, __c9, 10));
+    case 12:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(72, __c9, 0)),
+          value: S.optional(__S(299, __c9, 11)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "OperationList" });
-    case 2:
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -2771,16 +2317,24 @@ function __c9(j: number): any {
       ).annotate({
         identifier: "ListSignalRByResourceGroupRequest",
       });
-    case 3:
-      return S.Array(__S(48, __c6, 0));
-    case 4:
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(1888, __c59, 0));
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(75, __c9, 3)),
+          value: S.optional(__S(352, __c11, 0)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "SignalRResourceList" });
-    case 5:
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -2795,7 +2349,11 @@ function __c9(j: number): any {
       ).annotate({
         identifier: "ListSignalRBySubscriptionRequest",
       });
-    case 6:
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -2812,30 +2370,30 @@ function __c9(j: number): any {
       ).annotate({
         identifier: "ListSignalRCustomCertificatesRequest",
       });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(11, __c1, 3)),
-          properties: __S(50, __c6, 2),
+          systemData: S.optional(__S(1920, __c60, 0)),
+          properties: __S(2016, __c63, 0),
         }),
       ).annotate({ identifier: "CustomCertificate" });
-  }
-}
-function __c10(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(79, __c9, 7));
-    case 1:
+    case 2:
+      return S.Array(__S(417, __c13, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(80, __c10, 0)),
+          value: S.optional(__S(418, __c13, 2)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "CustomCertificateList" });
-    case 2:
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -2852,26 +2410,30 @@ function __c10(j: number): any {
       ).annotate({
         identifier: "ListSignalRCustomDomainsRequest",
       });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(11, __c1, 3)),
-          properties: __S(53, __c6, 5),
+          systemData: S.optional(__S(1920, __c60, 0)),
+          properties: __S(2112, __c66, 0),
         }),
       ).annotate({ identifier: "CustomDomain" });
-    case 4:
-      return S.Array(__S(83, __c10, 3));
-    case 5:
+    case 2:
+      return S.Array(__S(449, __c14, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(84, __c10, 4)),
+          value: S.optional(__S(450, __c14, 2)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "CustomDomainList" });
-    case 6:
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -2886,7 +2448,11 @@ function __c10(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ListSignalRKeysRequest" });
-    case 7:
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           primaryKey: S.optional(S.String),
@@ -2897,7 +2463,37 @@ function __c10(j: number): any {
       ).annotate({ identifier: "SignalRKeys" });
   }
 }
-function __c11(j: number): any {
+function __c17(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          resourceName: S.String.pipe(T.Label()),
+          certificateName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.SignalRService/signalR/{resourceName}/customCertificates/{certificateName}",
+            code: 200,
+            apiVersion: "2024-03-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteSignalRCustomCertificateRequest",
+      });
+  }
+}
+function __c18(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "DeleteSignalRCustomCertificateResponse",
+      });
+  }
+}
+function __c19(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2919,13 +2515,17 @@ function __c11(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(19, __c2, 3)),
+          value: S.optional(__S(1792, __c56, 0)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
         identifier: "PrivateEndpointConnectionList",
       });
-    case 2:
+  }
+}
+function __c20(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -2942,7 +2542,7 @@ function __c11(j: number): any {
       ).annotate({
         identifier: "ListSignalRPrivateLinkResourcesRequest",
       });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           description: S.optional(S.String),
@@ -2952,52 +2552,52 @@ function __c11(j: number): any {
       ).annotate({
         identifier: "ShareablePrivateLinkResourceProperties",
       });
-    case 4:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
-          properties: S.optional(__S(91, __c11, 3)),
+          properties: S.optional(__S(641, __c20, 1)),
         }),
       ).annotate({
         identifier: "ShareablePrivateLinkResourceType",
       });
-    case 5:
-      return S.Array(__S(92, __c11, 4));
-    case 6:
+    case 3:
+      return S.Array(__S(642, __c20, 2));
+    case 4:
       return S.suspend(() =>
         S.Struct({
           groupId: S.optional(S.String),
-          requiredMembers: S.optional(__S(15, __c1, 7)),
-          requiredZoneNames: S.optional(__S(15, __c1, 7)),
-          shareablePrivateLinkResourceTypes: S.optional(__S(93, __c11, 5)),
+          requiredMembers: S.optional(__S(1600, __c50, 0)),
+          requiredZoneNames: S.optional(__S(1600, __c50, 0)),
+          shareablePrivateLinkResourceTypes: S.optional(__S(643, __c20, 3)),
         }),
       ).annotate({
         identifier: "PrivateLinkResourceProperties",
       });
-    case 7:
+    case 5:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(11, __c1, 3)),
-          properties: S.optional(__S(94, __c11, 6)),
+          systemData: S.optional(__S(1920, __c60, 0)),
+          properties: S.optional(__S(644, __c20, 4)),
         }),
       ).annotate({ identifier: "PrivateLinkResource" });
-  }
-}
-function __c12(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(95, __c11, 7));
-    case 1:
+    case 6:
+      return S.Array(__S(645, __c20, 5));
+    case 7:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(96, __c12, 0)),
+          value: S.optional(__S(646, __c20, 6)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "PrivateLinkResourceList" });
-    case 2:
+  }
+}
+function __c21(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -3014,29 +2614,33 @@ function __c12(j: number): any {
       ).annotate({
         identifier: "ListSignalRReplicasRequest",
       });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(11, __c1, 3)),
-          tags: S.optional(__S(12, __c1, 4)),
+          systemData: S.optional(__S(1920, __c60, 0)),
+          tags: S.optional(__S(1696, __c53, 0)),
           location: S.String,
-          sku: S.optional(__S(13, __c1, 5)),
-          properties: S.optional(__S(57, __c7, 1)),
+          sku: S.optional(__S(1664, __c52, 0)),
+          properties: S.optional(__S(160, __c5, 0)),
         }),
       ).annotate({ identifier: "Replica" });
-    case 4:
-      return S.Array(__S(99, __c12, 3));
-    case 5:
+    case 2:
+      return S.Array(__S(673, __c21, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(100, __c12, 4)),
+          value: S.optional(__S(674, __c21, 2)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ReplicaList" });
-    case 6:
+  }
+}
+function __c22(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -3054,10 +2658,14 @@ function __c12(j: number): any {
       ).annotate({
         identifier: "ListSignalRReplicaSharedPrivateLinkResourcesRequest",
       });
-    case 7:
+  }
+}
+function __c23(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(22, __c2, 6)),
+          value: S.optional(__S(1824, __c57, 0)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
@@ -3065,7 +2673,7 @@ function __c12(j: number): any {
       });
   }
 }
-function __c13(j: number): any {
+function __c24(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3085,36 +2693,44 @@ function __c13(j: number): any {
       ).annotate({
         identifier: "ListSignalRReplicaSkusRequest",
       });
-    case 1:
+  }
+}
+function __c25(j: number): any {
+  switch (j) {
+    case 0:
       return S.Array(S.Number);
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           minimum: S.optional(S.Number),
           maximum: S.optional(S.Number),
           default: S.optional(S.Number),
-          allowedValues: S.optional(__S(105, __c13, 1)),
+          allowedValues: S.optional(__S(800, __c25, 0)),
           scaleType: S.optional(S.String),
         }),
       ).annotate({ identifier: "SkuCapacity" });
-    case 3:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           resourceType: S.optional(S.String),
-          sku: S.optional(__S(13, __c1, 5)),
-          capacity: S.optional(__S(106, __c13, 2)),
+          sku: S.optional(__S(1664, __c52, 0)),
+          capacity: S.optional(__S(801, __c25, 1)),
         }),
       ).annotate({ identifier: "Sku" });
+    case 3:
+      return S.Array(__S(802, __c25, 2));
     case 4:
-      return S.Array(__S(107, __c13, 3));
-    case 5:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(108, __c13, 4)),
+          value: S.optional(__S(803, __c25, 3)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "SkuList" });
-    case 6:
+  }
+}
+function __c26(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -3131,7 +2747,11 @@ function __c13(j: number): any {
       ).annotate({
         identifier: "ListSignalRSharedPrivateLinkResourcesRequest",
       });
-    case 7:
+  }
+}
+function __c27(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -3148,7 +2768,7 @@ function __c13(j: number): any {
       ).annotate({ identifier: "ListSignalRSkusRequest" });
   }
 }
-function __c14(j: number): any {
+function __c28(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3177,20 +2797,24 @@ function __c14(j: number): any {
           id: S.optional(S.String),
           currentValue: S.optional(S.Number),
           limit: S.optional(S.Number),
-          name: S.optional(__S(113, __c14, 1)),
+          name: S.optional(__S(897, __c28, 1)),
           unit: S.optional(S.String),
         }),
       ).annotate({ identifier: "SignalRUsage" });
     case 3:
-      return S.Array(__S(114, __c14, 2));
+      return S.Array(__S(898, __c28, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(115, __c14, 3)),
+          value: S.optional(__S(899, __c28, 3)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "SignalRUsageList" });
-    case 5:
+  }
+}
+function __c29(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -3208,7 +2832,11 @@ function __c14(j: number): any {
       ).annotate({
         identifier: "RegenerateSignalRKeyRequest",
       });
-    case 6:
+  }
+}
+function __c30(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -3223,7 +2851,33 @@ function __c14(j: number): any {
           }),
         ),
       ).annotate({ identifier: "RestartSignalRRequest" });
-    case 7:
+  }
+}
+function __c31(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          resourceName: S.String.pipe(T.Label()),
+          name: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.SignalRService/signalR/{resourceName}/customDomains/{name}",
+            code: 200,
+            apiVersion: "2024-03-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteSignalRCustomDomainRequest",
+      });
+  }
+}
+function __c32(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -3243,55 +2897,20 @@ function __c14(j: number): any {
       });
   }
 }
-function __c15(j: number): any {
+function __c33(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String,
-          tier: S.optional(S.String),
-          capacity: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "ResourceSkuInput" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          tls: S.optional(__S(23, __c2, 7)),
-          features: S.optional(__S(25, __c3, 1)),
-          liveTraceConfiguration: S.optional(__S(28, __c3, 4)),
-          resourceLogConfiguration: S.optional(__S(29, __c3, 5)),
-          cors: S.optional(__S(30, __c3, 6)),
-          serverless: S.optional(__S(31, __c3, 7)),
-          upstream: S.optional(__S(36, __c4, 4)),
-          networkACLs: S.optional(__S(43, __c5, 3)),
-          publicNetworkAccess: S.optional(S.String),
-          disableLocalAuth: S.optional(S.Boolean),
-          disableAadAuth: S.optional(S.Boolean),
-          regionEndpointEnabled: S.optional(S.String),
-          resourceStopped: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "SignalRPropertiesInput" });
-    case 2:
-      return S.Record(S.String, __S(5, __c0, 5));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          type: S.optional(S.String),
-          userAssignedIdentities: S.optional(__S(122, __c15, 2)),
-        }),
-      ).annotate({ identifier: "ManagedIdentityInput" });
-    case 4:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           resourceName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(12, __c1, 4)),
+          tags: S.optional(__S(1696, __c53, 0)),
           location: S.String,
-          sku: S.optional(__S(120, __c15, 0)),
-          properties: S.optional(__S(121, __c15, 1)),
+          sku: S.optional(__S(1088, __c34, 0)),
+          properties: S.optional(__S(1120, __c35, 0)),
           kind: S.optional(S.String),
-          identity: S.optional(__S(123, __c15, 3)),
+          identity: S.optional(__S(1122, __c35, 2)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -3303,24 +2922,71 @@ function __c15(j: number): any {
       ).annotate({
         identifier: "SignalRCreateOrUpdateRequest",
       });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(11, __c1, 3)),
-          tags: S.optional(__S(12, __c1, 4)),
+          systemData: S.optional(__S(1920, __c60, 0)),
+          tags: S.optional(__S(1696, __c53, 0)),
           location: S.String,
-          sku: S.optional(__S(13, __c1, 5)),
-          properties: S.optional(__S(44, __c5, 4)),
+          sku: S.optional(__S(1664, __c52, 0)),
+          properties: S.optional(__S(1877, __c58, 21)),
           kind: S.optional(S.String),
-          identity: S.optional(__S(47, __c5, 7)),
+          identity: S.optional(__S(1880, __c58, 24)),
         }),
       ).annotate({
         identifier: "SignalRCreateOrUpdateResponse",
       });
-    case 6:
+  }
+}
+function __c34(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String,
+          tier: S.optional(S.String),
+          capacity: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "ResourceSkuInput" });
+  }
+}
+function __c35(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          tls: S.optional(__S(1856, __c58, 0)),
+          features: S.optional(__S(1858, __c58, 2)),
+          liveTraceConfiguration: S.optional(__S(1861, __c58, 5)),
+          resourceLogConfiguration: S.optional(__S(1862, __c58, 6)),
+          cors: S.optional(__S(1863, __c58, 7)),
+          serverless: S.optional(__S(1864, __c58, 8)),
+          upstream: S.optional(__S(1869, __c58, 13)),
+          networkACLs: S.optional(__S(1876, __c58, 20)),
+          publicNetworkAccess: S.optional(S.String),
+          disableLocalAuth: S.optional(S.Boolean),
+          disableAadAuth: S.optional(S.Boolean),
+          regionEndpointEnabled: S.optional(S.String),
+          resourceStopped: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "SignalRPropertiesInput" });
+    case 1:
+      return S.Record(S.String, __S(576, __c18, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          type: S.optional(S.String),
+          userAssignedIdentities: S.optional(__S(1121, __c35, 1)),
+        }),
+      ).annotate({ identifier: "ManagedIdentityInput" });
+  }
+}
+function __c36(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           keyVaultBaseUri: S.String,
@@ -3330,14 +2996,14 @@ function __c15(j: number): any {
       ).annotate({
         identifier: "CustomCertificatePropertiesInput",
       });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           resourceName: S.String.pipe(T.Label()),
           certificateName: S.String.pipe(T.Label()),
-          properties: __S(126, __c15, 6),
+          properties: __S(1152, __c36, 0),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -3351,13 +3017,13 @@ function __c15(j: number): any {
       });
   }
 }
-function __c16(j: number): any {
+function __c37(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           domainName: S.String,
-          customCertificate: __S(14, __c1, 6),
+          customCertificate: __S(1952, __c61, 0),
         }),
       ).annotate({
         identifier: "CustomDomainPropertiesInput",
@@ -3369,7 +3035,7 @@ function __c16(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           resourceName: S.String.pipe(T.Label()),
           name: S.String.pipe(T.Label()),
-          properties: __S(128, __c16, 0),
+          properties: __S(1184, __c37, 0),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -3381,24 +3047,21 @@ function __c16(j: number): any {
       ).annotate({
         identifier: "SignalRCustomDomainsCreateOrUpdateRequest",
       });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          regionEndpointEnabled: S.optional(S.String),
-          resourceStopped: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ReplicaPropertiesInput" });
-    case 3:
+  }
+}
+function __c38(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           resourceName: S.String.pipe(T.Label()),
           replicaName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(12, __c1, 4)),
+          tags: S.optional(__S(1696, __c53, 0)),
           location: S.String,
-          sku: S.optional(__S(120, __c15, 0)),
-          properties: S.optional(__S(130, __c16, 2)),
+          sku: S.optional(__S(1088, __c34, 0)),
+          properties: S.optional(__S(1248, __c39, 0)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -3410,17 +3073,22 @@ function __c16(j: number): any {
       ).annotate({
         identifier: "SignalRReplicasCreateOrUpdateRequest",
       });
-    case 4:
+  }
+}
+function __c39(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          groupId: S.String,
-          privateLinkResourceId: S.String,
-          requestMessage: S.optional(S.String),
+          regionEndpointEnabled: S.optional(S.String),
+          resourceStopped: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "SharedPrivateLinkResourcePropertiesInput",
-      });
-    case 5:
+      ).annotate({ identifier: "ReplicaPropertiesInput" });
+  }
+}
+function __c40(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -3428,7 +3096,7 @@ function __c16(j: number): any {
           resourceName: S.String.pipe(T.Label()),
           replicaName: S.String.pipe(T.Label()),
           sharedPrivateLinkResourceName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(132, __c16, 4)),
+          properties: S.optional(__S(1312, __c41, 0)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -3440,26 +3108,44 @@ function __c16(j: number): any {
       ).annotate({
         identifier: "SignalRReplicaSharedPrivateLinkResourcesCreateOrUpdateRequest",
       });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(11, __c1, 3)),
-          properties: S.optional(__S(20, __c2, 4)),
+          systemData: S.optional(__S(1920, __c60, 0)),
+          properties: S.optional(__S(1728, __c54, 0)),
         }),
       ).annotate({
         identifier: "SignalRReplicaSharedPrivateLinkResourcesCreateOrUpdateResponse",
       });
-    case 7:
+  }
+}
+function __c41(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          groupId: S.String,
+          privateLinkResourceId: S.String,
+          requestMessage: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "SharedPrivateLinkResourcePropertiesInput",
+      });
+  }
+}
+function __c42(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           resourceName: S.String.pipe(T.Label()),
           sharedPrivateLinkResourceName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(132, __c16, 4)),
+          properties: S.optional(__S(1312, __c41, 0)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -3473,7 +3159,7 @@ function __c16(j: number): any {
       });
   }
 }
-function __c17(j: number): any {
+function __c43(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3481,12 +3167,12 @@ function __c17(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           resourceName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(12, __c1, 4)),
+          tags: S.optional(__S(1696, __c53, 0)),
           location: S.String,
-          sku: S.optional(__S(120, __c15, 0)),
-          properties: S.optional(__S(121, __c15, 1)),
+          sku: S.optional(__S(1088, __c34, 0)),
+          properties: S.optional(__S(1120, __c35, 0)),
           kind: S.optional(S.String),
-          identity: S.optional(__S(123, __c15, 3)),
+          identity: S.optional(__S(1122, __c35, 2)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -3496,23 +3182,27 @@ function __c17(j: number): any {
           }),
         ),
       ).annotate({ identifier: "UpdateSignalRRequest" });
-    case 1:
+  }
+}
+function __c44(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          privateEndpoint: S.optional(__S(14, __c1, 6)),
-          privateLinkServiceConnectionState: S.optional(__S(16, __c2, 0)),
+          privateEndpoint: S.optional(__S(1952, __c61, 0)),
+          privateLinkServiceConnectionState: S.optional(__S(1632, __c51, 0)),
         }),
       ).annotate({
         identifier: "PrivateEndpointConnectionPropertiesInput",
       });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           resourceName: S.String.pipe(T.Label()),
           privateEndpointConnectionName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(137, __c17, 1)),
+          properties: S.optional(__S(1408, __c44, 0)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -3524,17 +3214,21 @@ function __c17(j: number): any {
       ).annotate({
         identifier: "UpdateSignalRPrivateEndpointConnectionRequest",
       });
-    case 3:
+  }
+}
+function __c45(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           resourceName: S.String.pipe(T.Label()),
           replicaName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(12, __c1, 4)),
+          tags: S.optional(__S(1696, __c53, 0)),
           location: S.String,
-          sku: S.optional(__S(120, __c15, 0)),
-          properties: S.optional(__S(130, __c16, 2)),
+          sku: S.optional(__S(1088, __c34, 0)),
+          properties: S.optional(__S(1248, __c39, 0)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -3548,7 +3242,516 @@ function __c17(j: number): any {
       });
   }
 }
-
+function __c46(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          resourceName: S.String.pipe(T.Label()),
+          privateEndpointConnectionName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.SignalRService/signalR/{resourceName}/privateEndpointConnections/{privateEndpointConnectionName}",
+            code: 200,
+            apiVersion: "2024-03-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteSignalRPrivateEndpointConnectionRequest",
+      });
+  }
+}
+function __c47(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          resourceName: S.String.pipe(T.Label()),
+          replicaName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.SignalRService/signalR/{resourceName}/replicas/{replicaName}",
+            code: 200,
+            apiVersion: "2024-03-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteSignalRReplicasRequest",
+      });
+  }
+}
+function __c48(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          resourceName: S.String.pipe(T.Label()),
+          sharedPrivateLinkResourceName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.SignalRService/signalR/{resourceName}/sharedPrivateLinkResources/{sharedPrivateLinkResourceName}",
+            code: 200,
+            apiVersion: "2024-03-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteSignalRSharedPrivateLinkResourceRequest",
+      });
+  }
+}
+function __c49(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          resourceName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.SignalRService/signalR/{resourceName}",
+            code: 200,
+            apiVersion: "2024-03-01",
+          }),
+        ),
+      ).annotate({ identifier: "GetSignalRRequest" });
+  }
+}
+function __c50(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c51(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          status: S.optional(S.String),
+          description: S.optional(S.String),
+          actionsRequired: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "PrivateLinkServiceConnectionState",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          provisioningState: S.optional(S.String),
+          privateEndpoint: S.optional(__S(1952, __c61, 0)),
+          groupIds: S.optional(__S(1600, __c50, 0)),
+          privateLinkServiceConnectionState: S.optional(__S(1632, __c51, 0)),
+        }),
+      ).annotate({
+        identifier: "PrivateEndpointConnectionProperties",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(1920, __c60, 0)),
+          properties: S.optional(__S(1633, __c51, 1)),
+        }),
+      ).annotate({
+        identifier: "PrivateEndpointConnection",
+      });
+  }
+}
+function __c52(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String,
+          tier: S.optional(S.String),
+          size: S.optional(S.String),
+          family: S.optional(S.String),
+          capacity: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "ResourceSku" });
+  }
+}
+function __c53(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, S.String);
+  }
+}
+function __c54(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          groupId: S.String,
+          privateLinkResourceId: S.String,
+          provisioningState: S.optional(S.String),
+          requestMessage: S.optional(S.String),
+          status: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "SharedPrivateLinkResourceProperties",
+      });
+  }
+}
+function __c55(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(1920, __c60, 0)),
+          properties: S.optional(__S(1728, __c54, 0)),
+        }),
+      ).annotate({
+        identifier: "SharedPrivateLinkResource",
+      });
+  }
+}
+function __c56(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(1634, __c51, 2));
+  }
+}
+function __c57(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(1760, __c55, 0));
+  }
+}
+function __c58(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          clientCertEnabled: S.optional(S.Boolean),
+        }),
+      ).annotate({ identifier: "SignalRTlsSettings" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          flag: S.String,
+          value: S.String,
+          properties: S.optional(__S(1696, __c53, 0)),
+        }),
+      ).annotate({ identifier: "SignalRFeature" });
+    case 2:
+      return S.Array(__S(1857, __c58, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.optional(S.String),
+          enabled: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "LiveTraceCategory" });
+    case 4:
+      return S.Array(__S(1859, __c58, 3));
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          enabled: S.optional(S.String),
+          categories: S.optional(__S(1860, __c58, 4)),
+        }),
+      ).annotate({ identifier: "LiveTraceConfiguration" });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          categories: S.optional(__S(1860, __c58, 4)),
+        }),
+      ).annotate({ identifier: "ResourceLogConfiguration" });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          allowedOrigins: S.optional(__S(1600, __c50, 0)),
+        }),
+      ).annotate({ identifier: "SignalRCorsSettings" });
+    case 8:
+      return S.suspend(() =>
+        S.Struct({
+          connectionTimeoutInSeconds: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "ServerlessSettings" });
+    case 9:
+      return S.suspend(() =>
+        S.Struct({
+          resource: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ManagedIdentitySettings" });
+    case 10:
+      return S.suspend(() =>
+        S.Struct({
+          type: S.optional(S.String),
+          managedIdentity: S.optional(__S(1865, __c58, 9)),
+        }),
+      ).annotate({ identifier: "UpstreamAuthSettings" });
+    case 11:
+      return S.suspend(() =>
+        S.Struct({
+          hubPattern: S.optional(S.String),
+          eventPattern: S.optional(S.String),
+          categoryPattern: S.optional(S.String),
+          urlTemplate: S.String,
+          auth: S.optional(__S(1866, __c58, 10)),
+        }),
+      ).annotate({ identifier: "UpstreamTemplate" });
+    case 12:
+      return S.Array(__S(1867, __c58, 11));
+    case 13:
+      return S.suspend(() =>
+        S.Struct({
+          templates: S.optional(__S(1868, __c58, 12)),
+        }),
+      ).annotate({
+        identifier: "ServerlessUpstreamSettings",
+      });
+    case 14:
+      return S.Array(S.String);
+    case 15:
+      return S.suspend(() =>
+        S.Struct({
+          allow: S.optional(__S(1870, __c58, 14)),
+          deny: S.optional(__S(1870, __c58, 14)),
+        }),
+      ).annotate({ identifier: "NetworkACL" });
+    case 16:
+      return S.suspend(() =>
+        S.Struct({
+          allow: S.optional(__S(1870, __c58, 14)),
+          deny: S.optional(__S(1870, __c58, 14)),
+          name: S.String,
+        }),
+      ).annotate({ identifier: "PrivateEndpointACL" });
+    case 17:
+      return S.Array(__S(1872, __c58, 16));
+    case 18:
+      return S.suspend(() =>
+        S.Struct({
+          value: S.optional(S.String),
+          action: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "IPRule" });
+    case 19:
+      return S.Array(__S(1874, __c58, 18));
+    case 20:
+      return S.suspend(() =>
+        S.Struct({
+          defaultAction: S.optional(S.String),
+          publicNetwork: S.optional(__S(1871, __c58, 15)),
+          privateEndpoints: S.optional(__S(1873, __c58, 17)),
+          ipRules: S.optional(__S(1875, __c58, 19)),
+        }),
+      ).annotate({ identifier: "SignalRNetworkACLs" });
+    case 21:
+      return S.suspend(() =>
+        S.Struct({
+          provisioningState: S.optional(S.String),
+          externalIP: S.optional(S.String),
+          hostName: S.optional(S.String),
+          publicPort: S.optional(S.Number),
+          serverPort: S.optional(S.Number),
+          version: S.optional(S.String),
+          privateEndpointConnections: S.optional(__S(1792, __c56, 0)),
+          sharedPrivateLinkResources: S.optional(__S(1824, __c57, 0)),
+          tls: S.optional(__S(1856, __c58, 0)),
+          hostNamePrefix: S.optional(S.String),
+          features: S.optional(__S(1858, __c58, 2)),
+          liveTraceConfiguration: S.optional(__S(1861, __c58, 5)),
+          resourceLogConfiguration: S.optional(__S(1862, __c58, 6)),
+          cors: S.optional(__S(1863, __c58, 7)),
+          serverless: S.optional(__S(1864, __c58, 8)),
+          upstream: S.optional(__S(1869, __c58, 13)),
+          networkACLs: S.optional(__S(1876, __c58, 20)),
+          publicNetworkAccess: S.optional(S.String),
+          disableLocalAuth: S.optional(S.Boolean),
+          disableAadAuth: S.optional(S.Boolean),
+          regionEndpointEnabled: S.optional(S.String),
+          resourceStopped: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "SignalRProperties" });
+    case 22:
+      return S.suspend(() =>
+        S.Struct({
+          principalId: S.optional(S.String),
+          clientId: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "UserAssignedIdentityProperty",
+      });
+    case 23:
+      return S.Record(S.String, __S(1878, __c58, 22));
+    case 24:
+      return S.suspend(() =>
+        S.Struct({
+          type: S.optional(S.String),
+          userAssignedIdentities: S.optional(__S(1879, __c58, 23)),
+          principalId: S.optional(S.String),
+          tenantId: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ManagedIdentity" });
+  }
+}
+function __c59(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(1920, __c60, 0)),
+          tags: S.optional(__S(1696, __c53, 0)),
+          location: S.String,
+          sku: S.optional(__S(1664, __c52, 0)),
+          properties: S.optional(__S(1877, __c58, 21)),
+          kind: S.optional(S.String),
+          identity: S.optional(__S(1880, __c58, 24)),
+        }),
+      ).annotate({ identifier: "GetSignalRResponse" });
+  }
+}
+function __c60(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          createdBy: S.optional(S.String),
+          createdByType: S.optional(S.String),
+          createdAt: S.optional(S.String),
+          lastModifiedBy: S.optional(S.String),
+          lastModifiedByType: S.optional(S.String),
+          lastModifiedAt: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "SystemData" });
+  }
+}
+function __c61(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "PrivateEndpoint" });
+  }
+}
+function __c62(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          resourceName: S.String.pipe(T.Label()),
+          certificateName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.SignalRService/signalR/{resourceName}/customCertificates/{certificateName}",
+            code: 200,
+            apiVersion: "2024-03-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetSignalRCustomCertificateRequest",
+      });
+  }
+}
+function __c63(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          provisioningState: S.optional(S.String),
+          keyVaultBaseUri: S.String,
+          keyVaultSecretName: S.String,
+          keyVaultSecretVersion: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "CustomCertificateProperties",
+      });
+  }
+}
+function __c64(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(1920, __c60, 0)),
+          properties: __S(2016, __c63, 0),
+        }),
+      ).annotate({
+        identifier: "GetSignalRCustomCertificateResponse",
+      });
+  }
+}
+function __c65(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          resourceName: S.String.pipe(T.Label()),
+          name: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.SignalRService/signalR/{resourceName}/customDomains/{name}",
+            code: 200,
+            apiVersion: "2024-03-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetSignalRCustomDomainRequest",
+      });
+  }
+}
+function __c66(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          provisioningState: S.optional(S.String),
+          domainName: S.String,
+          customCertificate: __S(1952, __c61, 0),
+        }),
+      ).annotate({ identifier: "CustomDomainProperties" });
+  }
+}
+function __c67(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(1920, __c60, 0)),
+          properties: __S(2112, __c66, 0),
+        }),
+      ).annotate({
+        identifier: "GetSignalRCustomDomainResponse",
+      });
+  }
+}
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

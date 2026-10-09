@@ -969,8 +969,8 @@ export const createConfigurableLogDrain: API.OperationMethod<
   CreateConfigurableLogDrainError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3, __c0, 3) as any as S.Schema<CreateConfigurableLogDrainRequest>,
-  output: __S(4, __c0, 4) as any as S.Schema<CreateConfigurableLogDrainResponse>,
+  input: __S(0, __c0, 0) as any as S.Schema<CreateConfigurableLogDrainRequest>,
+  output: __S(1, __c0, 1) as any as S.Schema<CreateConfigurableLogDrainResponse>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -984,8 +984,8 @@ export const createLogDrain: API.OperationMethod<
   CreateLogDrainError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(5, __c0, 5) as any as S.Schema<CreateLogDrainRequest>,
-  output: __S(6, __c0, 6) as any as S.Schema<CreateLogDrainResponse>,
+  input: __S(8, __c2, 0) as any as S.Schema<CreateLogDrainRequest>,
+  output: __S(9, __c2, 1) as any as S.Schema<CreateLogDrainResponse>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -999,8 +999,8 @@ export const deleteConfigurableLogDrain: API.OperationMethod<
   DeleteConfigurableLogDrainError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(7, __c0, 7) as any as S.Schema<DeleteConfigurableLogDrainRequest>,
-  output: __S(8, __c1, 0) as any as S.Schema<DeleteConfigurableLogDrainResponse>,
+  input: __S(12, __c3, 0) as any as S.Schema<DeleteConfigurableLogDrainRequest>,
+  output: __S(16, __c4, 0) as any as S.Schema<DeleteConfigurableLogDrainResponse>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -1014,8 +1014,8 @@ export const deleteIntegrationLogDrain: API.OperationMethod<
   DeleteIntegrationLogDrainError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(9, __c1, 1) as any as S.Schema<DeleteIntegrationLogDrainRequest>,
-  output: __S(8, __c1, 0) as any as S.Schema<DeleteIntegrationLogDrainResponse>,
+  input: __S(20, __c5, 0) as any as S.Schema<DeleteIntegrationLogDrainRequest>,
+  output: __S(16, __c4, 0) as any as S.Schema<DeleteIntegrationLogDrainResponse>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -1029,8 +1029,8 @@ export const getAllLogDrains: API.OperationMethod<
   GetAllLogDrainsError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(10, __c1, 2) as any as S.Schema<GetAllLogDrainsRequest>,
-  output: __S(11, __c1, 3) as any as S.Schema<GetAllLogDrainsResponse>,
+  input: __S(24, __c6, 0) as any as S.Schema<GetAllLogDrainsRequest>,
+  output: __S(25, __c6, 1) as any as S.Schema<GetAllLogDrainsResponse>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -1044,8 +1044,8 @@ export const getConfigurableLogDrain: API.OperationMethod<
   GetConfigurableLogDrainError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(12, __c1, 4) as any as S.Schema<GetConfigurableLogDrainRequest>,
-  output: __S(15, __c1, 7) as any as S.Schema<GetConfigurableLogDrainResponse>,
+  input: __S(28, __c7, 0) as any as S.Schema<GetConfigurableLogDrainRequest>,
+  output: __S(31, __c7, 3) as any as S.Schema<GetConfigurableLogDrainResponse>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -1059,8 +1059,8 @@ export const getIntegrationLogDrains: API.OperationMethod<
   GetIntegrationLogDrainsError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(16, __c2, 0) as any as S.Schema<GetIntegrationLogDrainsRequest>,
-  output: __S(19, __c2, 3) as any as S.Schema<GetIntegrationLogDrainsResponse>,
+  input: __S(32, __c8, 0) as any as S.Schema<GetIntegrationLogDrainsRequest>,
+  output: __S(35, __c8, 3) as any as S.Schema<GetIntegrationLogDrainsResponse>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -1070,22 +1070,16 @@ export const getIntegrationLogDrains: API.OperationMethod<
 function __c0(j: number): any {
   switch (j) {
     case 0:
-      return S.Record(S.String, S.String);
-    case 1:
-      return S.Array(S.String);
-    case 2:
-      return S.Array(S.String);
-    case 3:
       return S.suspend(() =>
         S.Struct({
           teamId: S.optional(S.String.pipe(T.Query())),
           slug: S.optional(S.String.pipe(T.Query())),
           deliveryFormat: S.String,
           url: S.String,
-          headers: S.optional(__S(0, __c0, 0)),
-          projectIds: S.optional(__S(1, __c0, 1)),
-          sources: __S(2, __c0, 2),
-          environments: S.optional(__S(2, __c0, 2)),
+          headers: S.optional(__S(4, __c1, 0)),
+          projectIds: S.optional(__S(5, __c1, 1)),
+          sources: __S(6, __c1, 2),
+          environments: S.optional(__S(6, __c1, 2)),
           secret: S.optional(S.String.pipe(T.SensitiveValue({}))),
           samplingRate: S.optional(S.Number),
           name: S.optional(S.String),
@@ -1093,26 +1087,40 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "CreateConfigurableLogDrainRequest",
       });
-    case 4:
+    case 1:
       return S.suspend(() => S.Unknown.pipe(T.RawResponseRoot())).annotate({
         identifier: "CreateConfigurableLogDrainResponse",
       });
-    case 5:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, S.String);
+    case 1:
+      return S.Array(S.String);
+    case 2:
+      return S.Array(S.String);
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           teamId: S.optional(S.String.pipe(T.Query())),
           slug: S.optional(S.String.pipe(T.Query())),
           name: S.String,
-          projectIds: S.optional(__S(1, __c0, 1)),
+          projectIds: S.optional(__S(5, __c1, 1)),
           secret: S.optional(S.String.pipe(T.SensitiveValue({}))),
           deliveryFormat: S.optional(S.String),
           url: S.String,
-          sources: S.optional(__S(2, __c0, 2)),
-          headers: S.optional(__S(0, __c0, 0)),
-          environments: S.optional(__S(2, __c0, 2)),
+          sources: S.optional(__S(6, __c1, 2)),
+          headers: S.optional(__S(4, __c1, 0)),
+          environments: S.optional(__S(6, __c1, 2)),
         }).pipe(T.Http({ method: "POST", uri: "/v2/integrations/log-drains", code: 200 })),
       ).annotate({ identifier: "CreateLogDrainRequest" });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           branch: S.optional(S.String),
@@ -1121,20 +1129,24 @@ function __c0(j: number): any {
           createdAt: S.Number,
           createdFrom: S.optional(S.String),
           deliveryFormat: S.optional(S.String),
-          environments: S.optional(__S(2, __c0, 2)),
-          headers: S.optional(__S(0, __c0, 0)),
+          environments: S.optional(__S(6, __c1, 2)),
+          headers: S.optional(__S(4, __c1, 0)),
           id: S.String,
           name: S.String,
           ownerId: S.String,
           projectId: S.optional(S.NullOr(S.String)),
-          projectIds: S.optional(__S(1, __c0, 1)),
+          projectIds: S.optional(__S(5, __c1, 1)),
           samplingRate: S.optional(S.Number),
           source: S.Unknown,
-          sources: S.optional(__S(2, __c0, 2)),
+          sources: S.optional(__S(6, __c1, 2)),
           url: S.String,
         }),
       ).annotate({ identifier: "CreateLogDrainResponse" });
-    case 7:
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.String.pipe(T.Label()),
@@ -1146,13 +1158,17 @@ function __c0(j: number): any {
       });
   }
 }
-function __c1(j: number): any {
+function __c4(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "DeleteConfigurableLogDrainResponse",
       });
-    case 1:
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.String.pipe(T.Label()),
@@ -1162,7 +1178,11 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "DeleteIntegrationLogDrainRequest",
       });
-    case 2:
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           projectId: S.optional(S.String.pipe(T.Query())),
@@ -1172,11 +1192,15 @@ function __c1(j: number): any {
           slug: S.optional(S.String.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/v1/log-drains", code: 200 })),
       ).annotate({ identifier: "GetAllLogDrainsRequest" });
-    case 3:
+    case 1:
       return S.suspend(() => S.Unknown.pipe(T.RawResponseRoot())).annotate({
         identifier: "GetAllLogDrainsResponse",
       });
-    case 4:
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.String.pipe(T.Label()),
@@ -1186,7 +1210,7 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "GetConfigurableLogDrainRequest",
       });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           framework: S.optional(S.NullOr(S.String)),
@@ -1197,9 +1221,9 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "GetConfigurableLogDrainResponseProjectsMetadataItem",
       });
-    case 6:
-      return S.Array(__S(13, __c1, 5));
-    case 7:
+    case 2:
+      return S.Array(__S(29, __c7, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
           clientId: S.optional(S.String),
@@ -1208,14 +1232,14 @@ function __c1(j: number): any {
           integrationConfigurationUri: S.optional(S.String),
           integrationIcon: S.optional(S.String),
           integrationWebsite: S.optional(S.String),
-          projectsMetadata: S.optional(S.NullOr(__S(14, __c1, 6))),
+          projectsMetadata: S.optional(S.NullOr(__S(30, __c7, 2))),
         }),
       ).annotate({
         identifier: "GetConfigurableLogDrainResponse",
       });
   }
 }
-function __c2(j: number): any {
+function __c8(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1235,30 +1259,29 @@ function __c2(j: number): any {
           createdAt: S.Number,
           createdFrom: S.optional(S.String),
           deliveryFormat: S.optional(S.String),
-          environments: S.optional(__S(2, __c0, 2)),
-          headers: S.optional(__S(0, __c0, 0)),
+          environments: S.optional(__S(6, __c1, 2)),
+          headers: S.optional(__S(4, __c1, 0)),
           id: S.String,
           name: S.String,
           ownerId: S.String,
           projectId: S.optional(S.NullOr(S.String)),
-          projectIds: S.optional(__S(1, __c0, 1)),
+          projectIds: S.optional(__S(5, __c1, 1)),
           samplingRate: S.optional(S.Number),
           source: S.Unknown,
-          sources: S.optional(__S(2, __c0, 2)),
+          sources: S.optional(__S(6, __c1, 2)),
           url: S.String,
         }),
       ).annotate({
         identifier: "GetIntegrationLogDrainsResponseBodyItem",
       });
     case 2:
-      return S.Array(__S(17, __c2, 1));
+      return S.Array(__S(33, __c8, 1));
     case 3:
-      return S.suspend(() => __S(18, __c2, 2).pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() => __S(34, __c8, 2).pipe(T.RawResponseRoot())).annotate({
         identifier: "GetIntegrationLogDrainsResponse",
       });
   }
 }
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

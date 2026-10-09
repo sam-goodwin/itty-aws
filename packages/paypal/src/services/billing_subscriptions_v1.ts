@@ -1000,8 +1000,8 @@ export const activatePlan: API.OperationMethod<
   ActivatePlanError,
   PaypalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(0, __c0, 0) as any as S.Schema<ActivatePlanRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<ActivatePlanResponse>,
+  input: __S(352, __c11, 0) as any as S.Schema<ActivatePlanRequest>,
+  output: __S(384, __c12, 0) as any as S.Schema<ActivatePlanResponse>,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPaypalError],
   protocol: PaypalProtocol,
   retry: Retry.Retry,
@@ -1020,8 +1020,8 @@ export const activateSubscription: API.OperationMethod<
   ActivateSubscriptionError,
   PaypalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2, __c0, 2) as any as S.Schema<ActivateSubscriptionRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<ActivateSubscriptionResponse>,
+  input: __S(416, __c13, 0) as any as S.Schema<ActivateSubscriptionRequest>,
+  output: __S(384, __c12, 0) as any as S.Schema<ActivateSubscriptionResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity, UnknownPaypalError],
   protocol: PaypalProtocol,
   retry: Retry.Retry,
@@ -1040,8 +1040,8 @@ export const cancelSubscription: API.OperationMethod<
   CancelSubscriptionError,
   PaypalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3, __c0, 3) as any as S.Schema<CancelSubscriptionRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<CancelSubscriptionResponse>,
+  input: __S(448, __c14, 0) as any as S.Schema<CancelSubscriptionRequest>,
+  output: __S(384, __c12, 0) as any as S.Schema<CancelSubscriptionResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity, UnknownPaypalError],
   protocol: PaypalProtocol,
   retry: Retry.Retry,
@@ -1060,8 +1060,8 @@ export const captureSubscription: API.OperationMethod<
   CaptureSubscriptionError,
   PaypalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(5, __c0, 5) as any as S.Schema<CaptureSubscriptionRequest>,
-  output: __S(8, __c1, 0) as any as S.Schema<Transaction>,
+  input: __S(480, __c15, 0) as any as S.Schema<CaptureSubscriptionRequest>,
+  output: __S(514, __c16, 2) as any as S.Schema<Transaction>,
   errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity, UnknownPaypalError],
   protocol: PaypalProtocol,
   retry: Retry.Retry,
@@ -1075,8 +1075,8 @@ export const createPlan: API.OperationMethod<
   CreatePlanError,
   PaypalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(17, __c2, 1) as any as S.Schema<CreatePlanRequest>,
-  output: __S(23, __c2, 7) as any as S.Schema<Plan>,
+  input: __S(578, __c18, 2) as any as S.Schema<CreatePlanRequest>,
+  output: __S(608, __c19, 0) as any as S.Schema<Plan>,
   errors: [BadRequest, Forbidden, UnprocessableEntity, UnknownPaypalError],
   protocol: PaypalProtocol,
   retry: Retry.Retry,
@@ -1090,8 +1090,8 @@ export const createSubscription: API.OperationMethod<
   CreateSubscriptionError,
   PaypalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(46, __c5, 6) as any as S.Schema<CreateSubscriptionRequest>,
-  output: __S(65, __c8, 1) as any as S.Schema<CreateSubscriptionResponse>,
+  input: __S(808, __c25, 8) as any as S.Schema<CreateSubscriptionRequest>,
+  output: __S(809, __c25, 9) as any as S.Schema<CreateSubscriptionResponse>,
   errors: [BadRequest, Forbidden, UnprocessableEntity, UnknownPaypalError],
   protocol: PaypalProtocol,
   retry: Retry.Retry,
@@ -1105,8 +1105,8 @@ export const deactivatePlan: API.OperationMethod<
   DeactivatePlanError,
   PaypalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(66, __c8, 2) as any as S.Schema<DeactivatePlanRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<DeactivatePlanResponse>,
+  input: __S(0, __c0, 0) as any as S.Schema<DeactivatePlanRequest>,
+  output: __S(384, __c12, 0) as any as S.Schema<DeactivatePlanResponse>,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPaypalError],
   protocol: PaypalProtocol,
   retry: Retry.Retry,
@@ -1116,8 +1116,8 @@ export type GetPlanError = Forbidden | NotFound | PaypalOpError;
 /** Show plan details Shows details for a plan, by ID. */
 export const getPlan: API.OperationMethod<GetPlanRequest, Plan, GetPlanError, PaypalOpContext> =
   /*@__PURE__*/ API.make(() => ({
-    input: __S(67, __c8, 3) as any as S.Schema<GetPlanRequest>,
-    output: __S(23, __c2, 7) as any as S.Schema<Plan>,
+    input: __S(32, __c1, 0) as any as S.Schema<GetPlanRequest>,
+    output: __S(608, __c19, 0) as any as S.Schema<Plan>,
     errors: [Forbidden, NotFound, UnknownPaypalError],
     protocol: PaypalProtocol,
     retry: Retry.Retry,
@@ -1131,8 +1131,8 @@ export const getSubscription: API.OperationMethod<
   GetSubscriptionError,
   PaypalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(68, __c8, 4) as any as S.Schema<GetSubscriptionRequest>,
-  output: __S(69, __c8, 5) as any as S.Schema<GetSubscriptionResponse>,
+  input: __S(64, __c2, 0) as any as S.Schema<GetSubscriptionRequest>,
+  output: __S(65, __c2, 1) as any as S.Schema<GetSubscriptionResponse>,
   errors: [Forbidden, NotFound, UnknownPaypalError],
   protocol: PaypalProtocol,
   retry: Retry.Retry,
@@ -1146,8 +1146,8 @@ export const listPlans: API.OperationMethod<
   ListPlansError,
   PaypalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(70, __c8, 6) as any as S.Schema<ListPlansRequest>,
-  output: __S(72, __c9, 0) as any as S.Schema<PlanCollection>,
+  input: __S(96, __c3, 0) as any as S.Schema<ListPlansRequest>,
+  output: __S(98, __c3, 2) as any as S.Schema<PlanCollection>,
   errors: [BadRequest, Forbidden, NotFound, UnknownPaypalError],
   protocol: PaypalProtocol,
   retry: Retry.Retry,
@@ -1166,8 +1166,8 @@ export const patchPlan: API.OperationMethod<
   PatchPlanError,
   PaypalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(75, __c9, 3) as any as S.Schema<PatchPlanRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<PatchPlanResponse>,
+  input: __S(128, __c4, 0) as any as S.Schema<PatchPlanRequest>,
+  output: __S(384, __c12, 0) as any as S.Schema<PatchPlanResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity, UnknownPaypalError],
   protocol: PaypalProtocol,
   retry: Retry.Retry,
@@ -1186,8 +1186,8 @@ export const patchSubscription: API.OperationMethod<
   PatchSubscriptionError,
   PaypalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(76, __c9, 4) as any as S.Schema<PatchSubscriptionRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<PatchSubscriptionResponse>,
+  input: __S(192, __c6, 0) as any as S.Schema<PatchSubscriptionRequest>,
+  output: __S(384, __c12, 0) as any as S.Schema<PatchSubscriptionResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity, UnknownPaypalError],
   protocol: PaypalProtocol,
   retry: Retry.Retry,
@@ -1206,8 +1206,8 @@ export const plansUpdatePricingSchemes: API.OperationMethod<
   PlansUpdatePricingSchemesError,
   PaypalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(79, __c9, 7) as any as S.Schema<PlansUpdatePricingSchemesRequest>,
-  output: __S(80, __c10, 0) as any as S.Schema<PlansUpdatePricingSchemesResponse>,
+  input: __S(226, __c7, 2) as any as S.Schema<PlansUpdatePricingSchemesRequest>,
+  output: __S(227, __c7, 3) as any as S.Schema<PlansUpdatePricingSchemesResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity, UnknownPaypalError],
   protocol: PaypalProtocol,
   retry: Retry.Retry,
@@ -1226,8 +1226,8 @@ export const subscriptionsRevise: API.OperationMethod<
   SubscriptionsReviseError,
   PaypalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(82, __c10, 2) as any as S.Schema<SubscriptionsReviseRequest>,
-  output: __S(86, __c10, 6) as any as S.Schema<SubscriptionReviseResponse>,
+  input: __S(257, __c8, 1) as any as S.Schema<SubscriptionsReviseRequest>,
+  output: __S(261, __c8, 5) as any as S.Schema<SubscriptionReviseResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity, UnknownPaypalError],
   protocol: PaypalProtocol,
   retry: Retry.Retry,
@@ -1241,8 +1241,8 @@ export const subscriptionsTransactions: API.OperationMethod<
   SubscriptionsTransactionsError,
   PaypalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(87, __c10, 7) as any as S.Schema<SubscriptionsTransactionsRequest>,
-  output: __S(89, __c11, 1) as any as S.Schema<TransactionsList>,
+  input: __S(288, __c9, 0) as any as S.Schema<SubscriptionsTransactionsRequest>,
+  output: __S(290, __c9, 2) as any as S.Schema<TransactionsList>,
   errors: [BadRequest, Forbidden, NotFound, UnknownPaypalError],
   protocol: PaypalProtocol,
   retry: Retry.Retry,
@@ -1261,8 +1261,8 @@ export const suspendSubscription: API.OperationMethod<
   SuspendSubscriptionError,
   PaypalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(90, __c11, 2) as any as S.Schema<SuspendSubscriptionRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<SuspendSubscriptionResponse>,
+  input: __S(320, __c10, 0) as any as S.Schema<SuspendSubscriptionRequest>,
+  output: __S(384, __c12, 0) as any as S.Schema<SuspendSubscriptionResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity, UnknownPaypalError],
   protocol: PaypalProtocol,
   retry: Retry.Retry,
@@ -1275,13 +1275,276 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           id: S.String.pipe(T.Label()),
+        }).pipe(T.Http({ method: "POST", uri: "/v1/billing/plans/{id}/deactivate", code: 200 })),
+      ).annotate({ identifier: "DeactivatePlanRequest" });
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String.pipe(T.Label()),
+        }).pipe(T.Http({ method: "GET", uri: "/v1/billing/plans/{id}", code: 200 })),
+      ).annotate({ identifier: "GetPlanRequest" });
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String.pipe(T.Label()),
+          fields: S.optional(S.String.pipe(T.Query())),
+        }).pipe(T.Http({ method: "GET", uri: "/v1/billing/subscriptions/{id}", code: 200 })),
+      ).annotate({ identifier: "GetSubscriptionRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          status: S.optional(S.String),
+          status_change_note: S.optional(S.String),
+          status_update_time: S.optional(S.String),
+          id: S.optional(S.String),
+          plan_id: S.optional(S.String),
+          start_time: S.optional(S.String),
+          quantity: S.optional(S.String),
+          shipping_amount: S.optional(__S(544, __c17, 0)),
+          subscriber: S.optional(__S(846, __c26, 14)),
+          billing_info: S.optional(__S(851, __c26, 19)),
+          create_time: S.optional(S.String),
+          update_time: S.optional(S.String),
+          custom_id: S.optional(S.String),
+          plan_overridden: S.optional(S.Boolean),
+          plan: S.optional(__S(852, __c26, 20)),
+          links: S.optional(__S(737, __c23, 1)),
+        }),
+      ).annotate({ identifier: "GetSubscriptionResponse" });
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          product_id: S.optional(S.String.pipe(T.Query())),
+          page_size: S.optional(S.Number.pipe(T.Query())),
+          page: S.optional(S.Number.pipe(T.Query())),
+          total_required: S.optional(S.Boolean.pipe(T.Query())),
+          prefer: S.optional(S.String.pipe(T.Header("Prefer"))),
+        }).pipe(T.Http({ method: "GET", uri: "/v1/billing/plans", code: 200 })),
+      ).annotate({ identifier: "ListPlansRequest" });
+    case 1:
+      return S.Array(__S(608, __c19, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          plans: S.optional(__S(97, __c3, 1)),
+          total_items: S.optional(S.Number),
+          total_pages: S.optional(S.Number),
+          links: S.optional(__S(737, __c23, 1)),
+        }),
+      ).annotate({ identifier: "PlanCollection" });
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String.pipe(T.Label()),
+          body: S.optional(__S(161, __c5, 1).pipe(T.HttpBody())),
+        }).pipe(T.Http({ method: "PATCH", uri: "/v1/billing/plans/{id}", code: 200 })),
+      ).annotate({ identifier: "PatchPlanRequest" });
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          op: S.String,
+          path: S.optional(S.String),
+          value: S.optional(S.Unknown),
+          from: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Patch" });
+    case 1:
+      return S.Array(__S(160, __c5, 0));
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String.pipe(T.Label()),
+          body: S.optional(__S(161, __c5, 1).pipe(T.HttpBody())),
+        }).pipe(T.Http({ method: "PATCH", uri: "/v1/billing/subscriptions/{id}", code: 200 })),
+      ).annotate({ identifier: "PatchSubscriptionRequest" });
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          billing_cycle_sequence: S.Number,
+          pricing_scheme: __S(768, __c24, 0),
+        }),
+      ).annotate({
+        identifier: "UpdatePricingSchemeRequestInput",
+      });
+    case 1:
+      return S.Array(__S(224, __c7, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String.pipe(T.Label()),
+          pricing_schemes: __S(225, __c7, 1),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/v1/billing/plans/{id}/update-pricing-schemes",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "PlansUpdatePricingSchemesRequest",
+      });
+    case 3:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "PlansUpdatePricingSchemesResponse",
+      });
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          brand_name: S.optional(S.String),
+          locale: S.optional(S.String),
+          shipping_preference: S.optional(S.String),
+          payment_method: S.optional(__S(896, __c28, 0)),
+          return_url: S.String,
+          cancel_url: S.String,
+        }),
+      ).annotate({
+        identifier: "SubscriptionsReviseRequestApplicationContext",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String.pipe(T.Label()),
+          plan_id: S.optional(S.String),
+          quantity: S.optional(S.String),
+          shipping_amount: S.optional(__S(544, __c17, 0)),
+          shipping_address: S.optional(__S(868, __c27, 4)),
+          application_context: S.optional(__S(256, __c8, 0)),
+          plan: S.optional(__S(901, __c28, 5)),
+        }).pipe(
+          T.Http({ method: "POST", uri: "/v1/billing/subscriptions/{id}/revise", code: 200 }),
+        ),
+      ).annotate({
+        identifier: "SubscriptionsReviseRequest",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          pricing_scheme: S.optional(__S(704, __c22, 0)),
+          sequence: S.Number,
+          total_cycles: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "BillingCycleOverride" });
+    case 3:
+      return S.Array(__S(258, __c8, 2));
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          billing_cycles: S.optional(__S(259, __c8, 3)),
+          payment_preferences: S.optional(__S(899, __c28, 3)),
+          taxes: S.optional(__S(900, __c28, 4)),
+        }),
+      ).annotate({ identifier: "PlanOverride" });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          plan_id: S.optional(S.String),
+          quantity: S.optional(S.String),
+          shipping_amount: S.optional(__S(544, __c17, 0)),
+          shipping_address: S.optional(__S(868, __c27, 4)),
+          plan: S.optional(__S(260, __c8, 4)),
+          plan_overridden: S.optional(S.Boolean),
+          links: S.optional(__S(737, __c23, 1)),
+        }),
+      ).annotate({
+        identifier: "SubscriptionReviseResponse",
+      });
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String.pipe(T.Label()),
+          start_time: S.String.pipe(T.Query()),
+          end_time: S.String.pipe(T.Query()),
+        }).pipe(
+          T.Http({ method: "GET", uri: "/v1/billing/subscriptions/{id}/transactions", code: 200 }),
+        ),
+      ).annotate({
+        identifier: "SubscriptionsTransactionsRequest",
+      });
+    case 1:
+      return S.Array(__S(514, __c16, 2));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          transactions: S.optional(__S(289, __c9, 1)),
+          total_items: S.optional(S.Number),
+          total_pages: S.optional(S.Number),
+          links: S.optional(__S(737, __c23, 1)),
+        }),
+      ).annotate({ identifier: "TransactionsList" });
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String.pipe(T.Label()),
+          reason: S.String,
+        }).pipe(
+          T.Http({ method: "POST", uri: "/v1/billing/subscriptions/{id}/suspend", code: 200 }),
+        ),
+      ).annotate({
+        identifier: "SuspendSubscriptionRequest",
+      });
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String.pipe(T.Label()),
         }).pipe(T.Http({ method: "POST", uri: "/v1/billing/plans/{id}/activate", code: 200 })),
       ).annotate({ identifier: "ActivatePlanRequest" });
-    case 1:
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "ActivatePlanResponse",
       });
-    case 2:
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.String.pipe(T.Label()),
@@ -1292,7 +1555,11 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "ActivateSubscriptionRequest",
       });
-    case 3:
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.String.pipe(T.Label()),
@@ -1303,39 +1570,40 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "CancelSubscriptionRequest",
       });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          currency_code: S.String,
-          value: S.String,
-        }),
-      ).annotate({ identifier: "Money" });
-    case 5:
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.String.pipe(T.Label()),
           payPalRequestId: S.optional(S.String.pipe(T.Header("PayPal-Request-Id"))),
           note: S.String,
           capture_type: S.String,
-          amount: __S(4, __c0, 4),
+          amount: __S(544, __c17, 0),
         }).pipe(
           T.Http({ method: "POST", uri: "/v1/billing/subscriptions/{id}/capture", code: 200 }),
         ),
       ).annotate({
         identifier: "CaptureSubscriptionRequest",
       });
-    case 6:
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          gross_amount: __S(4, __c0, 4),
-          total_item_amount: S.optional(__S(4, __c0, 4)),
-          fee_amount: S.optional(__S(4, __c0, 4)),
-          shipping_amount: S.optional(__S(4, __c0, 4)),
-          tax_amount: S.optional(__S(4, __c0, 4)),
-          net_amount: S.optional(__S(4, __c0, 4)),
+          gross_amount: __S(544, __c17, 0),
+          total_item_amount: S.optional(__S(544, __c17, 0)),
+          fee_amount: S.optional(__S(544, __c17, 0)),
+          shipping_amount: S.optional(__S(544, __c17, 0)),
+          tax_amount: S.optional(__S(544, __c17, 0)),
+          net_amount: S.optional(__S(544, __c17, 0)),
         }),
       ).annotate({ identifier: "AmountWithBreakdown" });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           prefix: S.optional(S.String),
@@ -1346,79 +1614,45 @@ function __c0(j: number): any {
           full_name: S.optional(S.String),
         }),
       ).annotate({ identifier: "Name" });
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           status: S.optional(S.String),
           id: S.String,
-          amount_with_breakdown: __S(6, __c0, 6),
-          payer_name: S.optional(__S(7, __c0, 7)),
+          amount_with_breakdown: __S(512, __c16, 0),
+          payer_name: S.optional(__S(513, __c16, 1)),
           payer_email: S.optional(S.String),
           time: S.String,
         }),
       ).annotate({ identifier: "Transaction" });
-    case 1:
+  }
+}
+function __c17(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          starting_quantity: S.String,
-          ending_quantity: S.optional(S.String),
-          amount: __S(4, __c0, 4),
+          currency_code: S.String,
+          value: S.String,
         }),
-      ).annotate({ identifier: "PricingTier" });
-    case 2:
-      return S.Array(__S(9, __c1, 1));
-    case 3:
+      ).annotate({ identifier: "Money" });
+  }
+}
+function __c18(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          fixed_price: S.optional(__S(4, __c0, 4)),
-          pricing_model: S.optional(S.String),
-          tiers: S.optional(__S(10, __c1, 2)),
-        }),
-      ).annotate({ identifier: "PricingSchemeInput" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          interval_unit: S.String,
-          interval_count: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "Frequency" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          pricing_scheme: S.optional(__S(11, __c1, 3)),
-          frequency: __S(12, __c1, 4),
+          pricing_scheme: S.optional(__S(768, __c24, 0)),
+          frequency: __S(640, __c20, 0),
           tenure_type: S.String,
           sequence: S.Number,
           total_cycles: S.optional(S.Number),
         }),
       ).annotate({ identifier: "BillingCycleInput" });
-    case 6:
-      return S.Array(__S(13, __c1, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          auto_bill_outstanding: S.optional(S.Boolean),
-          setup_fee: S.optional(__S(4, __c0, 4)),
-          setup_fee_failure_action: S.optional(S.String),
-          payment_failure_threshold: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "PaymentPreferences" });
-  }
-}
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          percentage: S.String,
-          inclusive: S.optional(S.Boolean),
-        }),
-      ).annotate({ identifier: "Taxes" });
     case 1:
+      return S.Array(__S(576, __c18, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           prefer: S.optional(S.String.pipe(T.Header("Prefer"))),
@@ -1427,46 +1661,17 @@ function __c2(j: number): any {
           name: S.String,
           status: S.optional(S.String),
           description: S.optional(S.String),
-          billing_cycles: __S(14, __c1, 6),
-          payment_preferences: __S(15, __c1, 7),
-          taxes: S.optional(__S(16, __c2, 0)),
+          billing_cycles: __S(577, __c18, 1),
+          payment_preferences: __S(641, __c20, 1),
+          taxes: S.optional(__S(642, __c20, 2)),
           quantity_supported: S.optional(S.Boolean),
         }).pipe(T.Http({ method: "POST", uri: "/v1/billing/plans", code: 200 })),
       ).annotate({ identifier: "CreatePlanRequest" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          version: S.optional(S.Number),
-          fixed_price: S.optional(__S(4, __c0, 4)),
-          pricing_model: S.optional(S.String),
-          tiers: S.optional(__S(10, __c1, 2)),
-          create_time: S.optional(S.String),
-          update_time: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "PricingScheme" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          pricing_scheme: S.optional(__S(18, __c2, 2)),
-          frequency: __S(12, __c1, 4),
-          tenure_type: S.String,
-          sequence: S.Number,
-          total_cycles: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "BillingCycle" });
-    case 4:
-      return S.Array(__S(19, __c2, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          href: S.String,
-          rel: S.String,
-          method: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "LinkDescription" });
-    case 6:
-      return S.Array(__S(21, __c2, 5));
-    case 7:
+  }
+}
+function __c19(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
@@ -1474,18 +1679,227 @@ function __c2(j: number): any {
           name: S.optional(S.String),
           status: S.optional(S.String),
           description: S.optional(S.String),
-          billing_cycles: S.optional(__S(20, __c2, 4)),
-          payment_preferences: S.optional(__S(15, __c1, 7)),
-          taxes: S.optional(__S(16, __c2, 0)),
+          billing_cycles: S.optional(__S(644, __c20, 4)),
+          payment_preferences: S.optional(__S(641, __c20, 1)),
+          taxes: S.optional(__S(642, __c20, 2)),
           quantity_supported: S.optional(S.Boolean),
           create_time: S.optional(S.String),
           update_time: S.optional(S.String),
-          links: S.optional(__S(22, __c2, 6)),
+          links: S.optional(__S(737, __c23, 1)),
         }),
       ).annotate({ identifier: "Plan" });
   }
 }
-function __c3(j: number): any {
+function __c20(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          interval_unit: S.String,
+          interval_count: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "Frequency" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          auto_bill_outstanding: S.optional(S.Boolean),
+          setup_fee: S.optional(__S(544, __c17, 0)),
+          setup_fee_failure_action: S.optional(S.String),
+          payment_failure_threshold: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "PaymentPreferences" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          percentage: S.String,
+          inclusive: S.optional(S.Boolean),
+        }),
+      ).annotate({ identifier: "Taxes" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          pricing_scheme: S.optional(__S(704, __c22, 0)),
+          frequency: __S(640, __c20, 0),
+          tenure_type: S.String,
+          sequence: S.Number,
+          total_cycles: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "BillingCycle" });
+    case 4:
+      return S.Array(__S(643, __c20, 3));
+  }
+}
+function __c21(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          starting_quantity: S.String,
+          ending_quantity: S.optional(S.String),
+          amount: __S(544, __c17, 0),
+        }),
+      ).annotate({ identifier: "PricingTier" });
+    case 1:
+      return S.Array(__S(672, __c21, 0));
+  }
+}
+function __c22(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          version: S.optional(S.Number),
+          fixed_price: S.optional(__S(544, __c17, 0)),
+          pricing_model: S.optional(S.String),
+          tiers: S.optional(__S(673, __c21, 1)),
+          create_time: S.optional(S.String),
+          update_time: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "PricingScheme" });
+  }
+}
+function __c23(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          href: S.String,
+          rel: S.String,
+          method: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "LinkDescription" });
+    case 1:
+      return S.Array(__S(736, __c23, 0));
+  }
+}
+function __c24(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          fixed_price: S.optional(__S(544, __c17, 0)),
+          pricing_model: S.optional(S.String),
+          tiers: S.optional(__S(673, __c21, 1)),
+        }),
+      ).annotate({ identifier: "PricingSchemeInput" });
+  }
+}
+function __c25(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          email_address: S.optional(S.String),
+          phone: S.optional(__S(834, __c26, 2)),
+        }),
+      ).annotate({ identifier: "Customer" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          store_in_vault: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "VaultInstructionBase" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          method: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "CardVerification" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          customer: S.optional(__S(800, __c25, 0)),
+          vault: S.optional(__S(801, __c25, 1)),
+          verification: S.optional(__S(802, __c25, 2)),
+        }),
+      ).annotate({ identifier: "CardAttributes" });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.optional(S.String),
+          number: S.optional(S.String),
+          expiry: S.optional(S.String),
+          security_code: S.optional(S.String),
+          type: S.optional(S.String),
+          brand: S.optional(S.String),
+          billing_address: S.optional(__S(867, __c27, 3)),
+          attributes: S.optional(__S(803, __c25, 3)),
+        }),
+      ).annotate({ identifier: "PaymentSourceCard" });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          card: S.optional(__S(804, __c25, 4)),
+        }),
+      ).annotate({ identifier: "PaymentSource" });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          email_address: S.optional(S.String),
+          name: S.optional(__S(832, __c26, 0)),
+          phone: S.optional(__S(834, __c26, 2)),
+          shipping_address: S.optional(__S(868, __c27, 4)),
+          payment_source: S.optional(__S(805, __c25, 5)),
+        }),
+      ).annotate({ identifier: "SubscriberRequest" });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          brand_name: S.optional(S.String),
+          locale: S.optional(S.String),
+          shipping_preference: S.optional(S.String),
+          user_action: S.optional(S.String),
+          payment_method: S.optional(__S(896, __c28, 0)),
+          return_url: S.String,
+          cancel_url: S.String,
+        }),
+      ).annotate({ identifier: "ApplicationContext" });
+    case 8:
+      return S.suspend(() =>
+        S.Struct({
+          prefer: S.optional(S.String.pipe(T.Header("Prefer"))),
+          payPalRequestId: S.optional(S.String.pipe(T.Header("PayPal-Request-Id"))),
+          plan_id: S.String,
+          start_time: S.optional(S.String),
+          quantity: S.optional(S.String),
+          shipping_amount: S.optional(__S(544, __c17, 0)),
+          subscriber: S.optional(__S(806, __c25, 6)),
+          auto_renewal: S.optional(S.Boolean),
+          application_context: S.optional(__S(807, __c25, 7)),
+          custom_id: S.optional(S.String),
+          plan: S.optional(__S(901, __c28, 5)),
+          merchant_inventory: S.optional(S.Unknown),
+        }).pipe(T.Http({ method: "POST", uri: "/v1/billing/subscriptions", code: 200 })),
+      ).annotate({
+        identifier: "CreateSubscriptionRequest",
+      });
+    case 9:
+      return S.suspend(() =>
+        S.Struct({
+          status: S.optional(S.String),
+          status_change_note: S.optional(S.String),
+          status_update_time: S.optional(S.String),
+          id: S.optional(S.String),
+          plan_id: S.optional(S.String),
+          start_time: S.optional(S.String),
+          quantity: S.optional(S.String),
+          shipping_amount: S.optional(__S(544, __c17, 0)),
+          subscriber: S.optional(__S(846, __c26, 14)),
+          billing_info: S.optional(__S(851, __c26, 19)),
+          create_time: S.optional(S.String),
+          update_time: S.optional(S.String),
+          custom_id: S.optional(S.String),
+          plan_overridden: S.optional(S.Boolean),
+          plan: S.optional(__S(852, __c26, 20)),
+          links: S.optional(__S(737, __c23, 1)),
+        }),
+      ).annotate({
+        identifier: "CreateSubscriptionResponse",
+      });
+  }
+}
+function __c26(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1504,28 +1918,180 @@ function __c3(j: number): any {
       return S.suspend(() =>
         S.Struct({
           phone_type: S.optional(S.String),
-          phone_number: __S(25, __c3, 1),
+          phone_number: __S(833, __c26, 1),
         }),
       ).annotate({ identifier: "PhoneWithType" });
     case 3:
+      return S.Array(S.String);
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          authentication_status: S.optional(S.String),
+          enrollment_status: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "ThreeDSecureAuthenticationResponse",
+      });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          liability_shift: S.optional(S.String),
+          three_d_secure: S.optional(__S(836, __c26, 4)),
+        }),
+      ).annotate({ identifier: "AuthenticationResponse" });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "VaultResponseCustomer" });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          status: S.optional(S.String),
+          customer: S.optional(__S(838, __c26, 6)),
+          links: S.optional(__S(737, __c23, 1)),
+        }),
+      ).annotate({ identifier: "VaultResponse" });
+    case 8:
+      return S.suspend(() =>
+        S.Struct({
+          vault: S.optional(__S(839, __c26, 7)),
+        }),
+      ).annotate({ identifier: "CardAttributesResponse" });
+    case 9:
+      return S.suspend(() =>
+        S.Struct({
+          expiry: S.optional(S.String),
+          last_digits: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "CardFromRequest" });
+    case 10:
+      return S.Array(S.String);
+    case 11:
+      return S.suspend(() =>
+        S.Struct({
+          bin: S.optional(S.String),
+          issuing_bank: S.optional(S.String),
+          bin_country_code: S.optional(S.String),
+          products: S.optional(__S(842, __c26, 10)),
+        }),
+      ).annotate({ identifier: "BinDetails" });
+    case 12:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.optional(S.String),
+          last_digits: S.optional(S.String),
+          brand: S.optional(S.String),
+          available_networks: S.optional(__S(835, __c26, 3)),
+          type: S.optional(S.String),
+          authentication_result: S.optional(__S(837, __c26, 5)),
+          attributes: S.optional(__S(840, __c26, 8)),
+          from_request: S.optional(__S(841, __c26, 9)),
+          expiry: S.optional(S.String),
+          bin_details: S.optional(__S(843, __c26, 11)),
+          billing_address: S.optional(__S(867, __c27, 3)),
+          currency_code: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "CardResponseWithBillingAddress",
+      });
+    case 13:
+      return S.suspend(() =>
+        S.Struct({
+          card: S.optional(__S(844, __c26, 12)),
+        }),
+      ).annotate({ identifier: "PaymentSourceResponse" });
+    case 14:
+      return S.suspend(() =>
+        S.Struct({
+          email_address: S.optional(S.String),
+          payer_id: S.optional(S.String),
+          name: S.optional(__S(832, __c26, 0)),
+          phone: S.optional(__S(834, __c26, 2)),
+          shipping_address: S.optional(__S(868, __c27, 4)),
+          payment_source: S.optional(__S(845, __c26, 13)),
+        }),
+      ).annotate({ identifier: "Subscriber" });
+    case 15:
+      return S.suspend(() =>
+        S.Struct({
+          tenure_type: S.String,
+          sequence: S.Number,
+          cycles_completed: S.Number,
+          cycles_remaining: S.optional(S.Number),
+          current_pricing_scheme_version: S.optional(S.Number),
+          total_cycles: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "CycleExecution" });
+    case 16:
+      return S.Array(__S(847, __c26, 15));
+    case 17:
+      return S.suspend(() =>
+        S.Struct({
+          amount: S.optional(__S(544, __c17, 0)),
+          time: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "LastPaymentDetails" });
+    case 18:
+      return S.suspend(() =>
+        S.Struct({
+          amount: __S(544, __c17, 0),
+          time: S.String,
+          reason_code: S.optional(S.String),
+          next_payment_retry_time: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "FailedPaymentDetails" });
+    case 19:
+      return S.suspend(() =>
+        S.Struct({
+          outstanding_balance: __S(544, __c17, 0),
+          cycle_executions: S.optional(__S(848, __c26, 16)),
+          last_payment: S.optional(__S(849, __c26, 17)),
+          next_billing_time: S.optional(S.String),
+          final_payment_time: S.optional(S.String),
+          failed_payments_count: S.Number,
+          last_failed_payment: S.optional(__S(850, __c26, 18)),
+        }),
+      ).annotate({ identifier: "SubscriptionBillingInfo" });
+    case 20:
+      return S.suspend(() =>
+        S.Struct({
+          product_id: S.optional(S.String),
+          name: S.optional(S.String),
+          description: S.optional(S.String),
+          billing_cycles: S.optional(__S(644, __c20, 4)),
+          payment_preferences: S.optional(__S(641, __c20, 1)),
+          taxes: S.optional(__S(642, __c20, 2)),
+          quantity_supported: S.optional(S.Boolean),
+        }),
+      ).annotate({
+        identifier: "CreateSubscriptionResponsePlan",
+      });
+  }
+}
+function __c27(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           full_name: S.optional(S.String),
         }),
       ).annotate({ identifier: "ShippingDetailName" });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
           label: S.String,
           type: S.optional(S.String),
-          amount: S.optional(__S(4, __c0, 4)),
+          amount: S.optional(__S(544, __c17, 0)),
           selected: S.Boolean,
         }),
       ).annotate({ identifier: "ShippingOption" });
-    case 5:
-      return S.Array(__S(28, __c3, 4));
-    case 6:
+    case 2:
+      return S.Array(__S(865, __c27, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
           address_line_1: S.optional(S.String),
@@ -1536,77 +2102,20 @@ function __c3(j: number): any {
           country_code: S.String,
         }),
       ).annotate({ identifier: "ShippingDetailAddress" });
-    case 7:
+    case 4:
       return S.suspend(() =>
         S.Struct({
-          name: S.optional(__S(27, __c3, 3)),
+          name: S.optional(__S(864, __c27, 0)),
           type: S.optional(S.String),
-          options: S.optional(__S(29, __c3, 5)),
-          address: S.optional(__S(30, __c3, 6)),
+          options: S.optional(__S(866, __c27, 2)),
+          address: S.optional(__S(867, __c27, 3)),
         }),
       ).annotate({ identifier: "ShippingDetail" });
   }
 }
-function __c4(j: number): any {
+function __c28(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          email_address: S.optional(S.String),
-          phone: S.optional(__S(26, __c3, 2)),
-        }),
-      ).annotate({ identifier: "Customer" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          store_in_vault: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "VaultInstructionBase" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          method: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "CardVerification" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          customer: S.optional(__S(32, __c4, 0)),
-          vault: S.optional(__S(33, __c4, 1)),
-          verification: S.optional(__S(34, __c4, 2)),
-        }),
-      ).annotate({ identifier: "CardAttributes" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.optional(S.String),
-          number: S.optional(S.String),
-          expiry: S.optional(S.String),
-          security_code: S.optional(S.String),
-          type: S.optional(S.String),
-          brand: S.optional(S.String),
-          billing_address: S.optional(__S(30, __c3, 6)),
-          attributes: S.optional(__S(35, __c4, 3)),
-        }),
-      ).annotate({ identifier: "PaymentSourceCard" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          card: S.optional(__S(36, __c4, 4)),
-        }),
-      ).annotate({ identifier: "PaymentSource" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          email_address: S.optional(S.String),
-          name: S.optional(__S(24, __c3, 0)),
-          phone: S.optional(__S(26, __c3, 2)),
-          shipping_address: S.optional(__S(31, __c3, 7)),
-          payment_source: S.optional(__S(37, __c4, 5)),
-        }),
-      ).annotate({ identifier: "SubscriberRequest" });
-    case 7:
       return S.suspend(() =>
         S.Struct({
           payee_preferred: S.optional(S.String),
@@ -1614,26 +2123,10 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "ApplicationContextPaymentMethod",
       });
-  }
-}
-function __c5(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          brand_name: S.optional(S.String),
-          locale: S.optional(S.String),
-          shipping_preference: S.optional(S.String),
-          user_action: S.optional(S.String),
-          payment_method: S.optional(__S(39, __c4, 7)),
-          return_url: S.String,
-          cancel_url: S.String,
-        }),
-      ).annotate({ identifier: "ApplicationContext" });
     case 1:
       return S.suspend(() =>
         S.Struct({
-          pricing_scheme: S.optional(__S(11, __c1, 3)),
+          pricing_scheme: S.optional(__S(768, __c24, 0)),
           sequence: S.Number,
           total_cycles: S.optional(S.Number),
         }),
@@ -1641,12 +2134,12 @@ function __c5(j: number): any {
         identifier: "BillingCycleOverrideInput",
       });
     case 2:
-      return S.Array(__S(41, __c5, 1));
+      return S.Array(__S(897, __c28, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
           auto_bill_outstanding: S.optional(S.Boolean),
-          setup_fee: S.optional(__S(4, __c0, 4)),
+          setup_fee: S.optional(__S(544, __c17, 0)),
           setup_fee_failure_action: S.optional(S.String),
           payment_failure_threshold: S.optional(S.Number),
         }),
@@ -1663,439 +2156,13 @@ function __c5(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          billing_cycles: S.optional(__S(42, __c5, 2)),
-          payment_preferences: S.optional(__S(43, __c5, 3)),
-          taxes: S.optional(__S(44, __c5, 4)),
+          billing_cycles: S.optional(__S(898, __c28, 2)),
+          payment_preferences: S.optional(__S(899, __c28, 3)),
+          taxes: S.optional(__S(900, __c28, 4)),
         }),
       ).annotate({ identifier: "PlanOverrideInput" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          prefer: S.optional(S.String.pipe(T.Header("Prefer"))),
-          payPalRequestId: S.optional(S.String.pipe(T.Header("PayPal-Request-Id"))),
-          plan_id: S.String,
-          start_time: S.optional(S.String),
-          quantity: S.optional(S.String),
-          shipping_amount: S.optional(__S(4, __c0, 4)),
-          subscriber: S.optional(__S(38, __c4, 6)),
-          auto_renewal: S.optional(S.Boolean),
-          application_context: S.optional(__S(40, __c5, 0)),
-          custom_id: S.optional(S.String),
-          plan: S.optional(__S(45, __c5, 5)),
-          merchant_inventory: S.optional(S.Unknown),
-        }).pipe(T.Http({ method: "POST", uri: "/v1/billing/subscriptions", code: 200 })),
-      ).annotate({
-        identifier: "CreateSubscriptionRequest",
-      });
-    case 7:
-      return S.Array(S.String);
   }
 }
-function __c6(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          authentication_status: S.optional(S.String),
-          enrollment_status: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "ThreeDSecureAuthenticationResponse",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          liability_shift: S.optional(S.String),
-          three_d_secure: S.optional(__S(48, __c6, 0)),
-        }),
-      ).annotate({ identifier: "AuthenticationResponse" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "VaultResponseCustomer" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          status: S.optional(S.String),
-          customer: S.optional(__S(50, __c6, 2)),
-          links: S.optional(__S(22, __c2, 6)),
-        }),
-      ).annotate({ identifier: "VaultResponse" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          vault: S.optional(__S(51, __c6, 3)),
-        }),
-      ).annotate({ identifier: "CardAttributesResponse" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          expiry: S.optional(S.String),
-          last_digits: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "CardFromRequest" });
-    case 6:
-      return S.Array(S.String);
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          bin: S.optional(S.String),
-          issuing_bank: S.optional(S.String),
-          bin_country_code: S.optional(S.String),
-          products: S.optional(__S(54, __c6, 6)),
-        }),
-      ).annotate({ identifier: "BinDetails" });
-  }
-}
-function __c7(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.optional(S.String),
-          last_digits: S.optional(S.String),
-          brand: S.optional(S.String),
-          available_networks: S.optional(__S(47, __c5, 7)),
-          type: S.optional(S.String),
-          authentication_result: S.optional(__S(49, __c6, 1)),
-          attributes: S.optional(__S(52, __c6, 4)),
-          from_request: S.optional(__S(53, __c6, 5)),
-          expiry: S.optional(S.String),
-          bin_details: S.optional(__S(55, __c6, 7)),
-          billing_address: S.optional(__S(30, __c3, 6)),
-          currency_code: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "CardResponseWithBillingAddress",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          card: S.optional(__S(56, __c7, 0)),
-        }),
-      ).annotate({ identifier: "PaymentSourceResponse" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          email_address: S.optional(S.String),
-          payer_id: S.optional(S.String),
-          name: S.optional(__S(24, __c3, 0)),
-          phone: S.optional(__S(26, __c3, 2)),
-          shipping_address: S.optional(__S(31, __c3, 7)),
-          payment_source: S.optional(__S(57, __c7, 1)),
-        }),
-      ).annotate({ identifier: "Subscriber" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          tenure_type: S.String,
-          sequence: S.Number,
-          cycles_completed: S.Number,
-          cycles_remaining: S.optional(S.Number),
-          current_pricing_scheme_version: S.optional(S.Number),
-          total_cycles: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "CycleExecution" });
-    case 4:
-      return S.Array(__S(59, __c7, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          amount: S.optional(__S(4, __c0, 4)),
-          time: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "LastPaymentDetails" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          amount: __S(4, __c0, 4),
-          time: S.String,
-          reason_code: S.optional(S.String),
-          next_payment_retry_time: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "FailedPaymentDetails" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          outstanding_balance: __S(4, __c0, 4),
-          cycle_executions: S.optional(__S(60, __c7, 4)),
-          last_payment: S.optional(__S(61, __c7, 5)),
-          next_billing_time: S.optional(S.String),
-          final_payment_time: S.optional(S.String),
-          failed_payments_count: S.Number,
-          last_failed_payment: S.optional(__S(62, __c7, 6)),
-        }),
-      ).annotate({ identifier: "SubscriptionBillingInfo" });
-  }
-}
-function __c8(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          product_id: S.optional(S.String),
-          name: S.optional(S.String),
-          description: S.optional(S.String),
-          billing_cycles: S.optional(__S(20, __c2, 4)),
-          payment_preferences: S.optional(__S(15, __c1, 7)),
-          taxes: S.optional(__S(16, __c2, 0)),
-          quantity_supported: S.optional(S.Boolean),
-        }),
-      ).annotate({
-        identifier: "CreateSubscriptionResponsePlan",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          status: S.optional(S.String),
-          status_change_note: S.optional(S.String),
-          status_update_time: S.optional(S.String),
-          id: S.optional(S.String),
-          plan_id: S.optional(S.String),
-          start_time: S.optional(S.String),
-          quantity: S.optional(S.String),
-          shipping_amount: S.optional(__S(4, __c0, 4)),
-          subscriber: S.optional(__S(58, __c7, 2)),
-          billing_info: S.optional(__S(63, __c7, 7)),
-          create_time: S.optional(S.String),
-          update_time: S.optional(S.String),
-          custom_id: S.optional(S.String),
-          plan_overridden: S.optional(S.Boolean),
-          plan: S.optional(__S(64, __c8, 0)),
-          links: S.optional(__S(22, __c2, 6)),
-        }),
-      ).annotate({
-        identifier: "CreateSubscriptionResponse",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String.pipe(T.Label()),
-        }).pipe(T.Http({ method: "POST", uri: "/v1/billing/plans/{id}/deactivate", code: 200 })),
-      ).annotate({ identifier: "DeactivatePlanRequest" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String.pipe(T.Label()),
-        }).pipe(T.Http({ method: "GET", uri: "/v1/billing/plans/{id}", code: 200 })),
-      ).annotate({ identifier: "GetPlanRequest" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String.pipe(T.Label()),
-          fields: S.optional(S.String.pipe(T.Query())),
-        }).pipe(T.Http({ method: "GET", uri: "/v1/billing/subscriptions/{id}", code: 200 })),
-      ).annotate({ identifier: "GetSubscriptionRequest" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          status: S.optional(S.String),
-          status_change_note: S.optional(S.String),
-          status_update_time: S.optional(S.String),
-          id: S.optional(S.String),
-          plan_id: S.optional(S.String),
-          start_time: S.optional(S.String),
-          quantity: S.optional(S.String),
-          shipping_amount: S.optional(__S(4, __c0, 4)),
-          subscriber: S.optional(__S(58, __c7, 2)),
-          billing_info: S.optional(__S(63, __c7, 7)),
-          create_time: S.optional(S.String),
-          update_time: S.optional(S.String),
-          custom_id: S.optional(S.String),
-          plan_overridden: S.optional(S.Boolean),
-          plan: S.optional(__S(64, __c8, 0)),
-          links: S.optional(__S(22, __c2, 6)),
-        }),
-      ).annotate({ identifier: "GetSubscriptionResponse" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          product_id: S.optional(S.String.pipe(T.Query())),
-          page_size: S.optional(S.Number.pipe(T.Query())),
-          page: S.optional(S.Number.pipe(T.Query())),
-          total_required: S.optional(S.Boolean.pipe(T.Query())),
-          prefer: S.optional(S.String.pipe(T.Header("Prefer"))),
-        }).pipe(T.Http({ method: "GET", uri: "/v1/billing/plans", code: 200 })),
-      ).annotate({ identifier: "ListPlansRequest" });
-    case 7:
-      return S.Array(__S(23, __c2, 7));
-  }
-}
-function __c9(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          plans: S.optional(__S(71, __c8, 7)),
-          total_items: S.optional(S.Number),
-          total_pages: S.optional(S.Number),
-          links: S.optional(__S(22, __c2, 6)),
-        }),
-      ).annotate({ identifier: "PlanCollection" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          op: S.String,
-          path: S.optional(S.String),
-          value: S.optional(S.Unknown),
-          from: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Patch" });
-    case 2:
-      return S.Array(__S(73, __c9, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String.pipe(T.Label()),
-          body: S.optional(__S(74, __c9, 2).pipe(T.HttpBody())),
-        }).pipe(T.Http({ method: "PATCH", uri: "/v1/billing/plans/{id}", code: 200 })),
-      ).annotate({ identifier: "PatchPlanRequest" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String.pipe(T.Label()),
-          body: S.optional(__S(74, __c9, 2).pipe(T.HttpBody())),
-        }).pipe(T.Http({ method: "PATCH", uri: "/v1/billing/subscriptions/{id}", code: 200 })),
-      ).annotate({ identifier: "PatchSubscriptionRequest" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          billing_cycle_sequence: S.Number,
-          pricing_scheme: __S(11, __c1, 3),
-        }),
-      ).annotate({
-        identifier: "UpdatePricingSchemeRequestInput",
-      });
-    case 6:
-      return S.Array(__S(77, __c9, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String.pipe(T.Label()),
-          pricing_schemes: __S(78, __c9, 6),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/v1/billing/plans/{id}/update-pricing-schemes",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "PlansUpdatePricingSchemesRequest",
-      });
-  }
-}
-function __c10(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "PlansUpdatePricingSchemesResponse",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          brand_name: S.optional(S.String),
-          locale: S.optional(S.String),
-          shipping_preference: S.optional(S.String),
-          payment_method: S.optional(__S(39, __c4, 7)),
-          return_url: S.String,
-          cancel_url: S.String,
-        }),
-      ).annotate({
-        identifier: "SubscriptionsReviseRequestApplicationContext",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String.pipe(T.Label()),
-          plan_id: S.optional(S.String),
-          quantity: S.optional(S.String),
-          shipping_amount: S.optional(__S(4, __c0, 4)),
-          shipping_address: S.optional(__S(31, __c3, 7)),
-          application_context: S.optional(__S(81, __c10, 1)),
-          plan: S.optional(__S(45, __c5, 5)),
-        }).pipe(
-          T.Http({ method: "POST", uri: "/v1/billing/subscriptions/{id}/revise", code: 200 }),
-        ),
-      ).annotate({
-        identifier: "SubscriptionsReviseRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          pricing_scheme: S.optional(__S(18, __c2, 2)),
-          sequence: S.Number,
-          total_cycles: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "BillingCycleOverride" });
-    case 4:
-      return S.Array(__S(83, __c10, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          billing_cycles: S.optional(__S(84, __c10, 4)),
-          payment_preferences: S.optional(__S(43, __c5, 3)),
-          taxes: S.optional(__S(44, __c5, 4)),
-        }),
-      ).annotate({ identifier: "PlanOverride" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          plan_id: S.optional(S.String),
-          quantity: S.optional(S.String),
-          shipping_amount: S.optional(__S(4, __c0, 4)),
-          shipping_address: S.optional(__S(31, __c3, 7)),
-          plan: S.optional(__S(85, __c10, 5)),
-          plan_overridden: S.optional(S.Boolean),
-          links: S.optional(__S(22, __c2, 6)),
-        }),
-      ).annotate({
-        identifier: "SubscriptionReviseResponse",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String.pipe(T.Label()),
-          start_time: S.String.pipe(T.Query()),
-          end_time: S.String.pipe(T.Query()),
-        }).pipe(
-          T.Http({ method: "GET", uri: "/v1/billing/subscriptions/{id}/transactions", code: 200 }),
-        ),
-      ).annotate({
-        identifier: "SubscriptionsTransactionsRequest",
-      });
-  }
-}
-function __c11(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(8, __c1, 0));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          transactions: S.optional(__S(88, __c11, 0)),
-          total_items: S.optional(S.Number),
-          total_pages: S.optional(S.Number),
-          links: S.optional(__S(22, __c2, 6)),
-        }),
-      ).annotate({ identifier: "TransactionsList" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String.pipe(T.Label()),
-          reason: S.String,
-        }).pipe(
-          T.Http({ method: "POST", uri: "/v1/billing/subscriptions/{id}/suspend", code: 200 }),
-        ),
-      ).annotate({
-        identifier: "SuspendSubscriptionRequest",
-      });
-  }
-}
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

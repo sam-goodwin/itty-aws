@@ -231,7 +231,7 @@ export const getTodayBriefing: API.OperationMethod<
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(0, __c0, 0) as any as S.Schema<GetTodayBriefingRequest>,
-  output: __S(12, __c1, 4) as any as S.Schema<Briefing>,
+  output: __S(27, __c1, 11) as any as S.Schema<Briefing>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -245,8 +245,8 @@ export const getTodayCandidate: API.OperationMethod<
   GetTodayCandidateError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(13, __c1, 5) as any as S.Schema<GetTodayCandidateRequest>,
-  output: __S(18, __c2, 2) as any as S.Schema<CandidateList>,
+  input: __S(32, __c2, 0) as any as S.Schema<GetTodayCandidateRequest>,
+  output: __S(37, __c2, 5) as any as S.Schema<CandidateList>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -260,8 +260,8 @@ export const todayBriefingRefreshCreate: API.OperationMethod<
   TodayBriefingRefreshCreateError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(19, __c2, 3) as any as S.Schema<TodayBriefingRefreshCreateRequest>,
-  output: __S(12, __c1, 4) as any as S.Schema<Briefing>,
+  input: __S(48, __c3, 0) as any as S.Schema<TodayBriefingRefreshCreateRequest>,
+  output: __S(27, __c1, 11) as any as S.Schema<Briefing>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -279,7 +279,11 @@ function __c0(j: number): any {
           T.Http({ method: "GET", uri: "/api/projects/{project_id}/today/briefing/", code: 200 }),
         ),
       ).annotate({ identifier: "GetTodayBriefingRequest" });
-    case 1:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           text: S.String,
@@ -287,13 +291,13 @@ function __c0(j: number): any {
           highlight: S.Boolean,
         }),
       ).annotate({ identifier: "BriefingSegment" });
+    case 1:
+      return S.Array(__S(16, __c1, 0));
     case 2:
-      return S.Array(__S(1, __c0, 1));
+      return S.Array(__S(17, __c1, 1));
     case 3:
-      return S.Array(__S(2, __c0, 2));
-    case 4:
       return S.Array(S.Number);
-    case 5:
+    case 4:
       return S.suspend(() =>
         S.Struct({
           metric_id: S.String,
@@ -301,15 +305,15 @@ function __c0(j: number): any {
           kind: S.String,
           role: S.String,
           value: S.Number,
-          series: S.NullOr(__S(4, __c0, 4)),
+          series: S.NullOr(__S(19, __c1, 3)),
           value_format: S.String,
           unit: S.NullOr(S.String),
           query: S.Unknown,
         }),
       ).annotate({ identifier: "BriefingItemMetric" });
+    case 5:
+      return S.Array(__S(20, __c1, 4));
     case 6:
-      return S.Array(__S(5, __c0, 5));
-    case 7:
       return S.suspend(() =>
         S.Struct({
           chart_id: S.String,
@@ -317,13 +321,9 @@ function __c0(j: number): any {
           query: S.Unknown,
         }),
       ).annotate({ identifier: "BriefingItemChart" });
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(7, __c0, 7));
-    case 1:
+    case 7:
+      return S.Array(__S(22, __c1, 6));
+    case 8:
       return S.suspend(() =>
         S.Struct({
           priority: S.NullOr(S.String),
@@ -332,11 +332,11 @@ function __c1(j: number): any {
           pull_request_url: S.NullOr(S.String),
           signal_count: S.Number,
           updated_at: S.String,
-          metrics: __S(6, __c0, 6),
-          charts: __S(8, __c1, 0),
+          metrics: __S(21, __c1, 5),
+          charts: __S(23, __c1, 7),
         }),
       ).annotate({ identifier: "BriefingItemReport" });
-    case 2:
+    case 9:
       return S.suspend(() =>
         S.Struct({
           key: S.String,
@@ -346,23 +346,23 @@ function __c1(j: number): any {
           url: S.String,
           rank: S.Number,
           source_product: S.NullOr(S.String),
-          report: S.NullOr(__S(9, __c1, 1)),
+          report: S.NullOr(__S(24, __c1, 8)),
           group: S.String,
           source: S.String,
           reason: S.String,
           state: S.String,
         }),
       ).annotate({ identifier: "BriefingItem" });
-    case 3:
-      return S.Array(__S(10, __c1, 2));
-    case 4:
+    case 10:
+      return S.Array(__S(25, __c1, 9));
+    case 11:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
           local_day: S.String,
           headline: S.String,
-          paragraphs: __S(3, __c0, 3),
-          items: __S(11, __c1, 3),
+          paragraphs: __S(18, __c1, 2),
+          items: __S(26, __c1, 10),
           more_reports_count: S.Number,
           open_reports_count: S.Number,
           status: S.String,
@@ -371,7 +371,11 @@ function __c1(j: number): any {
           ready_at: S.NullOr(S.String),
         }),
       ).annotate({ identifier: "Briefing" });
-    case 5:
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -380,43 +384,43 @@ function __c1(j: number): any {
           T.Http({ method: "GET", uri: "/api/projects/{project_id}/today/candidates/", code: 200 }),
         ),
       ).annotate({ identifier: "GetTodayCandidateRequest" });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           name: S.String,
           value: S.String,
         }),
       ).annotate({ identifier: "CandidateFact" });
-    case 7:
-      return S.Array(__S(14, __c1, 6));
-  }
-}
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
+    case 2:
+      return S.Array(__S(33, __c2, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
           key: S.String,
           title: S.String,
           url: S.String,
           rank: S.Number,
-          facts: __S(15, __c1, 7),
+          facts: __S(34, __c2, 2),
           group: S.String,
           source: S.String,
           reason: S.String,
         }),
       ).annotate({ identifier: "Candidate" });
-    case 1:
-      return S.Array(__S(16, __c2, 0));
-    case 2:
+    case 4:
+      return S.Array(__S(35, __c2, 3));
+    case 5:
       return S.suspend(() =>
         S.Struct({
           local_day: S.String,
-          candidates: __S(17, __c2, 1),
+          candidates: __S(36, __c2, 4),
           more_reports_count: S.Number,
         }),
       ).annotate({ identifier: "CandidateList" });
-    case 3:
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -433,7 +437,6 @@ function __c2(j: number): any {
       });
   }
 }
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

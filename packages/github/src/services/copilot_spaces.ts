@@ -707,8 +707,8 @@ export const addCollaboratorForOrg: API.OperationMethod<
   AddCollaboratorForOrgError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(0, __c0, 0) as any as S.Schema<AddCollaboratorForOrgRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<AddCollaboratorForOrgResponse>,
+  input: __S(192, __c24, 0) as any as S.Schema<AddCollaboratorForOrgRequest>,
+  output: __S(200, __c25, 0) as any as S.Schema<AddCollaboratorForOrgResponse>,
   errors: [Forbidden, NotFound, UnprocessableEntity],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -726,8 +726,8 @@ export const addCollaboratorForUser: API.OperationMethod<
   AddCollaboratorForUserError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2, __c0, 2) as any as S.Schema<AddCollaboratorForUserRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<AddCollaboratorForUserResponse>,
+  input: __S(216, __c27, 0) as any as S.Schema<AddCollaboratorForUserRequest>,
+  output: __S(200, __c25, 0) as any as S.Schema<AddCollaboratorForUserResponse>,
   errors: [Forbidden, NotFound, UnprocessableEntity],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -741,8 +741,8 @@ export const createForOrg: API.OperationMethod<
   CreateForOrgError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(6, __c0, 6) as any as S.Schema<CreateForOrgRequest>,
-  output: __S(11, __c1, 3) as any as S.Schema<CopilotSpace>,
+  input: __S(224, __c28, 0) as any as S.Schema<CreateForOrgRequest>,
+  output: __S(236, __c29, 4) as any as S.Schema<CopilotSpace>,
   errors: [Forbidden, NotFound, UnprocessableEntity],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -756,8 +756,8 @@ export const createForUser: API.OperationMethod<
   CreateForUserError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(12, __c1, 4) as any as S.Schema<CreateForUserRequest>,
-  output: __S(11, __c1, 3) as any as S.Schema<CopilotSpace>,
+  input: __S(248, __c31, 0) as any as S.Schema<CreateForUserRequest>,
+  output: __S(236, __c29, 4) as any as S.Schema<CopilotSpace>,
   errors: [Forbidden, NotFound, UnprocessableEntity],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -771,8 +771,8 @@ export const createResourceForOrg: API.OperationMethod<
   CreateResourceForOrgError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(14, __c1, 6) as any as S.Schema<CreateResourceForOrgRequest>,
-  output: __S(15, __c1, 7) as any as S.Schema<CopilotSpaceResource>,
+  input: __S(256, __c32, 0) as any as S.Schema<CreateResourceForOrgRequest>,
+  output: __S(265, __c33, 1) as any as S.Schema<CopilotSpaceResource>,
   errors: [Forbidden, NotFound, UnprocessableEntity],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -786,8 +786,8 @@ export const createResourceForUser: API.OperationMethod<
   CreateResourceForUserError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(16, __c2, 0) as any as S.Schema<CreateResourceForUserRequest>,
-  output: __S(15, __c1, 7) as any as S.Schema<CopilotSpaceResource>,
+  input: __S(272, __c34, 0) as any as S.Schema<CreateResourceForUserRequest>,
+  output: __S(265, __c33, 1) as any as S.Schema<CopilotSpaceResource>,
   errors: [Forbidden, NotFound, UnprocessableEntity],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -801,8 +801,8 @@ export const deleteForOrg: API.OperationMethod<
   DeleteForOrgError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(17, __c2, 1) as any as S.Schema<DeleteForOrgRequest>,
-  output: __S(18, __c2, 2) as any as S.Schema<DeleteForOrgResponse>,
+  input: __S(280, __c35, 0) as any as S.Schema<DeleteForOrgRequest>,
+  output: __S(288, __c36, 0) as any as S.Schema<DeleteForOrgResponse>,
   errors: [NotFound, UnprocessableEntity],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -816,8 +816,8 @@ export const deleteForUser: API.OperationMethod<
   DeleteForUserError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(19, __c2, 3) as any as S.Schema<DeleteForUserRequest>,
-  output: __S(18, __c2, 2) as any as S.Schema<DeleteForUserResponse>,
+  input: __S(0, __c0, 0) as any as S.Schema<DeleteForUserRequest>,
+  output: __S(288, __c36, 0) as any as S.Schema<DeleteForUserResponse>,
   errors: [NotFound, UnprocessableEntity],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -831,8 +831,8 @@ export const deleteResourceForOrg: API.OperationMethod<
   DeleteResourceForOrgError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(20, __c2, 4) as any as S.Schema<DeleteResourceForOrgRequest>,
-  output: __S(18, __c2, 2) as any as S.Schema<DeleteResourceForOrgResponse>,
+  input: __S(8, __c1, 0) as any as S.Schema<DeleteResourceForOrgRequest>,
+  output: __S(288, __c36, 0) as any as S.Schema<DeleteResourceForOrgResponse>,
   errors: [Forbidden, NotFound],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -846,8 +846,8 @@ export const deleteResourceForUser: API.OperationMethod<
   DeleteResourceForUserError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(21, __c2, 5) as any as S.Schema<DeleteResourceForUserRequest>,
-  output: __S(18, __c2, 2) as any as S.Schema<DeleteResourceForUserResponse>,
+  input: __S(16, __c2, 0) as any as S.Schema<DeleteResourceForUserRequest>,
+  output: __S(288, __c36, 0) as any as S.Schema<DeleteResourceForUserResponse>,
   errors: [Forbidden, NotFound],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -861,8 +861,8 @@ export const getForOrg: API.OperationMethod<
   GetForOrgError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(22, __c2, 6) as any as S.Schema<GetForOrgRequest>,
-  output: __S(11, __c1, 3) as any as S.Schema<CopilotSpace>,
+  input: __S(24, __c3, 0) as any as S.Schema<GetForOrgRequest>,
+  output: __S(236, __c29, 4) as any as S.Schema<CopilotSpace>,
   errors: [Forbidden, NotFound],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -876,8 +876,8 @@ export const getForUser: API.OperationMethod<
   GetForUserError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(23, __c2, 7) as any as S.Schema<GetForUserRequest>,
-  output: __S(11, __c1, 3) as any as S.Schema<CopilotSpace>,
+  input: __S(32, __c4, 0) as any as S.Schema<GetForUserRequest>,
+  output: __S(236, __c29, 4) as any as S.Schema<CopilotSpace>,
   errors: [Forbidden, NotFound],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -891,8 +891,8 @@ export const getResourceForOrg: API.OperationMethod<
   GetResourceForOrgError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(24, __c3, 0) as any as S.Schema<GetResourceForOrgRequest>,
-  output: __S(15, __c1, 7) as any as S.Schema<CopilotSpaceResource>,
+  input: __S(40, __c5, 0) as any as S.Schema<GetResourceForOrgRequest>,
+  output: __S(265, __c33, 1) as any as S.Schema<CopilotSpaceResource>,
   errors: [Forbidden, NotFound],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -906,8 +906,8 @@ export const getResourceForUser: API.OperationMethod<
   GetResourceForUserError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(25, __c3, 1) as any as S.Schema<GetResourceForUserRequest>,
-  output: __S(15, __c1, 7) as any as S.Schema<CopilotSpaceResource>,
+  input: __S(48, __c6, 0) as any as S.Schema<GetResourceForUserRequest>,
+  output: __S(265, __c33, 1) as any as S.Schema<CopilotSpaceResource>,
   errors: [Forbidden, NotFound],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -921,8 +921,8 @@ export const listCollaboratorsForOrg: API.OperationMethod<
   ListCollaboratorsForOrgError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(26, __c3, 2) as any as S.Schema<ListCollaboratorsForOrgRequest>,
-  output: __S(28, __c3, 4) as any as S.Schema<ListCollaboratorsForOrgResponse>,
+  input: __S(56, __c7, 0) as any as S.Schema<ListCollaboratorsForOrgRequest>,
+  output: __S(65, __c8, 1) as any as S.Schema<ListCollaboratorsForOrgResponse>,
   errors: [Forbidden, NotFound],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -936,8 +936,8 @@ export const listCollaboratorsForUser: API.OperationMethod<
   ListCollaboratorsForUserError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(29, __c3, 5) as any as S.Schema<ListCollaboratorsForUserRequest>,
-  output: __S(28, __c3, 4) as any as S.Schema<ListCollaboratorsForUserResponse>,
+  input: __S(72, __c9, 0) as any as S.Schema<ListCollaboratorsForUserRequest>,
+  output: __S(65, __c8, 1) as any as S.Schema<ListCollaboratorsForUserResponse>,
   errors: [Forbidden, NotFound],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -951,8 +951,8 @@ export const listForOrg: API.OperationMethod<
   ListForOrgError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(30, __c3, 6) as any as S.Schema<ListForOrgRequest>,
-  output: __S(32, __c4, 0) as any as S.Schema<ListForOrgResponse>,
+  input: __S(80, __c10, 0) as any as S.Schema<ListForOrgRequest>,
+  output: __S(89, __c11, 1) as any as S.Schema<ListForOrgResponse>,
   errors: [Forbidden, NotFound],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -966,8 +966,8 @@ export const listForUser: API.OperationMethod<
   ListForUserError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(33, __c4, 1) as any as S.Schema<ListForUserRequest>,
-  output: __S(32, __c4, 0) as any as S.Schema<ListForUserResponse>,
+  input: __S(96, __c12, 0) as any as S.Schema<ListForUserRequest>,
+  output: __S(89, __c11, 1) as any as S.Schema<ListForUserResponse>,
   errors: [Forbidden, NotFound],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -981,8 +981,8 @@ export const listResourcesForOrg: API.OperationMethod<
   ListResourcesForOrgError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(34, __c4, 2) as any as S.Schema<ListResourcesForOrgRequest>,
-  output: __S(36, __c4, 4) as any as S.Schema<ListResourcesForOrgResponse>,
+  input: __S(104, __c13, 0) as any as S.Schema<ListResourcesForOrgRequest>,
+  output: __S(113, __c14, 1) as any as S.Schema<ListResourcesForOrgResponse>,
   errors: [Forbidden, NotFound],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -996,8 +996,8 @@ export const listResourcesForUser: API.OperationMethod<
   ListResourcesForUserError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(37, __c4, 5) as any as S.Schema<ListResourcesForUserRequest>,
-  output: __S(36, __c4, 4) as any as S.Schema<ListResourcesForUserResponse>,
+  input: __S(120, __c15, 0) as any as S.Schema<ListResourcesForUserRequest>,
+  output: __S(113, __c14, 1) as any as S.Schema<ListResourcesForUserResponse>,
   errors: [Forbidden, NotFound],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -1011,8 +1011,8 @@ export const removeCollaboratorForOrg: API.OperationMethod<
   RemoveCollaboratorForOrgError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(38, __c4, 6) as any as S.Schema<RemoveCollaboratorForOrgRequest>,
-  output: __S(39, __c4, 7) as any as S.Schema<RemoveCollaboratorForOrgResponse>,
+  input: __S(128, __c16, 0) as any as S.Schema<RemoveCollaboratorForOrgRequest>,
+  output: __S(136, __c17, 0) as any as S.Schema<RemoveCollaboratorForOrgResponse>,
   errors: [Forbidden, NotFound],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -1026,8 +1026,8 @@ export const removeCollaboratorForUser: API.OperationMethod<
   RemoveCollaboratorForUserError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(40, __c5, 0) as any as S.Schema<RemoveCollaboratorForUserRequest>,
-  output: __S(39, __c4, 7) as any as S.Schema<RemoveCollaboratorForUserResponse>,
+  input: __S(144, __c18, 0) as any as S.Schema<RemoveCollaboratorForUserRequest>,
+  output: __S(136, __c17, 0) as any as S.Schema<RemoveCollaboratorForUserResponse>,
   errors: [Forbidden, NotFound],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -1045,8 +1045,8 @@ export const updateCollaboratorForOrg: API.OperationMethod<
   UpdateCollaboratorForOrgError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(41, __c5, 1) as any as S.Schema<UpdateCollaboratorForOrgRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<UpdateCollaboratorForOrgResponse>,
+  input: __S(152, __c19, 0) as any as S.Schema<UpdateCollaboratorForOrgRequest>,
+  output: __S(200, __c25, 0) as any as S.Schema<UpdateCollaboratorForOrgResponse>,
   errors: [Forbidden, NotFound, UnprocessableEntity],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -1064,8 +1064,8 @@ export const updateCollaboratorForUser: API.OperationMethod<
   UpdateCollaboratorForUserError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(42, __c5, 2) as any as S.Schema<UpdateCollaboratorForUserRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<UpdateCollaboratorForUserResponse>,
+  input: __S(160, __c20, 0) as any as S.Schema<UpdateCollaboratorForUserRequest>,
+  output: __S(200, __c25, 0) as any as S.Schema<UpdateCollaboratorForUserResponse>,
   errors: [Forbidden, NotFound, UnprocessableEntity],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -1079,8 +1079,8 @@ export const updateForOrg: API.OperationMethod<
   UpdateForOrgError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(43, __c5, 3) as any as S.Schema<UpdateForOrgRequest>,
-  output: __S(11, __c1, 3) as any as S.Schema<CopilotSpace>,
+  input: __S(168, __c21, 0) as any as S.Schema<UpdateForOrgRequest>,
+  output: __S(236, __c29, 4) as any as S.Schema<CopilotSpace>,
   errors: [Forbidden, NotFound, UnprocessableEntity],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -1094,8 +1094,8 @@ export const updateForUser: API.OperationMethod<
   UpdateForUserError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(44, __c5, 4) as any as S.Schema<UpdateForUserRequest>,
-  output: __S(11, __c1, 3) as any as S.Schema<CopilotSpace>,
+  input: __S(176, __c22, 0) as any as S.Schema<UpdateForUserRequest>,
+  output: __S(236, __c29, 4) as any as S.Schema<CopilotSpace>,
   errors: [Forbidden, NotFound, UnprocessableEntity],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -1109,8 +1109,8 @@ export const updateResourceForOrg: API.OperationMethod<
   UpdateResourceForOrgError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(45, __c5, 5) as any as S.Schema<UpdateResourceForOrgRequest>,
-  output: __S(15, __c1, 7) as any as S.Schema<CopilotSpaceResource>,
+  input: __S(184, __c23, 0) as any as S.Schema<UpdateResourceForOrgRequest>,
+  output: __S(265, __c33, 1) as any as S.Schema<CopilotSpaceResource>,
   errors: [Forbidden, NotFound, UnprocessableEntity],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -1124,8 +1124,8 @@ export const updateResourceForUser: API.OperationMethod<
   UpdateResourceForUserError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(46, __c5, 6) as any as S.Schema<UpdateResourceForUserRequest>,
-  output: __S(15, __c1, 7) as any as S.Schema<CopilotSpaceResource>,
+  input: __S(208, __c26, 0) as any as S.Schema<UpdateResourceForUserRequest>,
+  output: __S(265, __c33, 1) as any as S.Schema<CopilotSpaceResource>,
   errors: [Forbidden, NotFound, UnprocessableEntity],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -1133,6 +1133,428 @@ export const updateResourceForUser: API.OperationMethod<
 
 // Schema builders: each runs one schema initializer, on that schema's first use.
 function __c0(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          username: S.String.pipe(T.Label()),
+          space_number: S.Number.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/users/{username}/copilot-spaces/{space_number}",
+            code: 200,
+          }),
+        ),
+      ).annotate({ identifier: "DeleteForUserRequest" });
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          org: S.String.pipe(T.Label()),
+          space_number: S.Number.pipe(T.Label()),
+          space_resource_id: S.Number.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/orgs/{org}/copilot-spaces/{space_number}/resources/{space_resource_id}",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteResourceForOrgRequest",
+      });
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          username: S.String.pipe(T.Label()),
+          space_number: S.Number.pipe(T.Label()),
+          space_resource_id: S.Number.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/users/{username}/copilot-spaces/{space_number}/resources/{space_resource_id}",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteResourceForUserRequest",
+      });
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          org: S.String.pipe(T.Label()),
+          space_number: S.Number.pipe(T.Label()),
+        }).pipe(
+          T.Http({ method: "GET", uri: "/orgs/{org}/copilot-spaces/{space_number}", code: 200 }),
+        ),
+      ).annotate({ identifier: "GetForOrgRequest" });
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          username: S.String.pipe(T.Label()),
+          space_number: S.Number.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/users/{username}/copilot-spaces/{space_number}",
+            code: 200,
+          }),
+        ),
+      ).annotate({ identifier: "GetForUserRequest" });
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          org: S.String.pipe(T.Label()),
+          space_number: S.Number.pipe(T.Label()),
+          space_resource_id: S.Number.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/orgs/{org}/copilot-spaces/{space_number}/resources/{space_resource_id}",
+            code: 200,
+          }),
+        ),
+      ).annotate({ identifier: "GetResourceForOrgRequest" });
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          username: S.String.pipe(T.Label()),
+          space_number: S.Number.pipe(T.Label()),
+          space_resource_id: S.Number.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/users/{username}/copilot-spaces/{space_number}/resources/{space_resource_id}",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "GetResourceForUserRequest",
+      });
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          org: S.String.pipe(T.Label()),
+          space_number: S.Number.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/orgs/{org}/copilot-spaces/{space_number}/collaborators",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "ListCollaboratorsForOrgRequest",
+      });
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.Unknown);
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          collaborators: __S(64, __c8, 0),
+        }),
+      ).annotate({
+        identifier: "ListCollaboratorsForOrgResponse",
+      });
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          username: S.String.pipe(T.Label()),
+          space_number: S.Number.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/users/{username}/copilot-spaces/{space_number}/collaborators",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "ListCollaboratorsForUserRequest",
+      });
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          org: S.String.pipe(T.Label()),
+          per_page: S.optional(S.Number.pipe(T.Query())),
+          before: S.optional(S.String.pipe(T.Query())),
+          after: S.optional(S.String.pipe(T.Query())),
+        }).pipe(T.Http({ method: "GET", uri: "/orgs/{org}/copilot-spaces", code: 200 })),
+      ).annotate({ identifier: "ListForOrgRequest" });
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(236, __c29, 4));
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          spaces: __S(88, __c11, 0),
+        }),
+      ).annotate({ identifier: "ListForOrgResponse" });
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          username: S.String.pipe(T.Label()),
+          per_page: S.optional(S.Number.pipe(T.Query())),
+          before: S.optional(S.String.pipe(T.Query())),
+          after: S.optional(S.String.pipe(T.Query())),
+        }).pipe(T.Http({ method: "GET", uri: "/users/{username}/copilot-spaces", code: 200 })),
+      ).annotate({ identifier: "ListForUserRequest" });
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          org: S.String.pipe(T.Label()),
+          space_number: S.Number.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/orgs/{org}/copilot-spaces/{space_number}/resources",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "ListResourcesForOrgRequest",
+      });
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(265, __c33, 1));
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          resources: __S(112, __c14, 0),
+        }),
+      ).annotate({
+        identifier: "ListResourcesForOrgResponse",
+      });
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          username: S.String.pipe(T.Label()),
+          space_number: S.Number.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/users/{username}/copilot-spaces/{space_number}/resources",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "ListResourcesForUserRequest",
+      });
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          org: S.String.pipe(T.Label()),
+          space_number: S.Number.pipe(T.Label()),
+          actor_type: S.String.pipe(T.Label()),
+          actor_identifier: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/orgs/{org}/copilot-spaces/{space_number}/collaborators/{actor_type}/{actor_identifier}",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "RemoveCollaboratorForOrgRequest",
+      });
+  }
+}
+function __c17(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "RemoveCollaboratorForOrgResponse",
+      });
+  }
+}
+function __c18(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          username: S.String.pipe(T.Label()),
+          space_number: S.Number.pipe(T.Label()),
+          actor_type: S.String.pipe(T.Label()),
+          actor_identifier: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/users/{username}/copilot-spaces/{space_number}/collaborators/{actor_type}/{actor_identifier}",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "RemoveCollaboratorForUserRequest",
+      });
+  }
+}
+function __c19(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          org: S.String.pipe(T.Label()),
+          space_number: S.Number.pipe(T.Label()),
+          actor_type: S.String.pipe(T.Label()),
+          actor_identifier: S.String.pipe(T.Label()),
+          role: S.String,
+        }).pipe(
+          T.Http({
+            method: "PUT",
+            uri: "/orgs/{org}/copilot-spaces/{space_number}/collaborators/{actor_type}/{actor_identifier}",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "UpdateCollaboratorForOrgRequest",
+      });
+  }
+}
+function __c20(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          username: S.String.pipe(T.Label()),
+          space_number: S.Number.pipe(T.Label()),
+          actor_type: S.String.pipe(T.Label()),
+          actor_identifier: S.String.pipe(T.Label()),
+          role: S.String,
+        }).pipe(
+          T.Http({
+            method: "PUT",
+            uri: "/users/{username}/copilot-spaces/{space_number}/collaborators/{actor_type}/{actor_identifier}",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "UpdateCollaboratorForUserRequest",
+      });
+  }
+}
+function __c21(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          org: S.String.pipe(T.Label()),
+          space_number: S.Number.pipe(T.Label()),
+          name: S.optional(S.String),
+          description: S.optional(S.String),
+          general_instructions: S.optional(S.String),
+          base_role: S.optional(S.String),
+          resources_attributes: S.optional(__S(242, __c30, 2)),
+        }).pipe(
+          T.Http({ method: "PUT", uri: "/orgs/{org}/copilot-spaces/{space_number}", code: 200 }),
+        ),
+      ).annotate({ identifier: "UpdateForOrgRequest" });
+  }
+}
+function __c22(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          username: S.String.pipe(T.Label()),
+          space_number: S.Number.pipe(T.Label()),
+          name: S.optional(S.String),
+          description: S.optional(S.String),
+          general_instructions: S.optional(S.String),
+          base_role: S.optional(S.String),
+          resources_attributes: S.optional(__S(242, __c30, 2)),
+        }).pipe(
+          T.Http({
+            method: "PUT",
+            uri: "/users/{username}/copilot-spaces/{space_number}",
+            code: 200,
+          }),
+        ),
+      ).annotate({ identifier: "UpdateForUserRequest" });
+  }
+}
+function __c23(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          org: S.String.pipe(T.Label()),
+          space_number: S.Number.pipe(T.Label()),
+          space_resource_id: S.Number.pipe(T.Label()),
+          metadata: S.optional(__S(264, __c33, 0)),
+        }).pipe(
+          T.Http({
+            method: "PUT",
+            uri: "/orgs/{org}/copilot-spaces/{space_number}/resources/{space_resource_id}",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "UpdateResourceForOrgRequest",
+      });
+  }
+}
+function __c24(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1152,11 +1574,40 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "AddCollaboratorForOrgRequest",
       });
-    case 1:
+  }
+}
+function __c25(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() => S.Unknown.pipe(T.RawResponseRoot())).annotate({
         identifier: "AddCollaboratorForOrgResponse",
       });
-    case 2:
+  }
+}
+function __c26(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          username: S.String.pipe(T.Label()),
+          space_number: S.Number.pipe(T.Label()),
+          space_resource_id: S.Number.pipe(T.Label()),
+          metadata: S.optional(__S(264, __c33, 0)),
+        }).pipe(
+          T.Http({
+            method: "PUT",
+            uri: "/users/{username}/copilot-spaces/{space_number}/resources/{space_resource_id}",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "UpdateResourceForUserRequest",
+      });
+  }
+}
+function __c27(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           username: S.String.pipe(T.Label()),
@@ -1174,30 +1625,11 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "AddCollaboratorForUserRequest",
       });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          repository_id: S.optional(S.Number),
-          file_path: S.optional(S.String),
-          text: S.optional(S.String),
-          name: S.optional(S.String),
-          number: S.optional(S.Number),
-        }),
-      ).annotate({
-        identifier: "CreateForOrgRequestResourcesAttributesItemMetadata",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          resource_type: S.optional(S.String),
-          metadata: S.optional(__S(3, __c0, 3)),
-        }),
-      ).annotate({
-        identifier: "CreateForOrgRequestResourcesAttributesItem",
-      });
-    case 5:
-      return S.Array(__S(4, __c0, 4));
-    case 6:
+  }
+}
+function __c28(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           org: S.String.pipe(T.Label()),
@@ -1205,10 +1637,14 @@ function __c0(j: number): any {
           description: S.optional(S.String),
           general_instructions: S.optional(S.String),
           base_role: S.optional(S.String),
-          resources_attributes: S.optional(__S(5, __c0, 5)),
+          resources_attributes: S.optional(__S(242, __c30, 2)),
         }).pipe(T.Http({ method: "POST", uri: "/orgs/{org}/copilot-spaces", code: 200 })),
       ).annotate({ identifier: "CreateForOrgRequest" });
-    case 7:
+  }
+}
+function __c29(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.NullOr(S.String)),
@@ -1235,11 +1671,7 @@ function __c0(j: number): any {
           user_view_type: S.optional(S.String),
         }),
       ).annotate({ identifier: "SimpleUser" });
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           repository_id: S.optional(S.Number),
@@ -1256,7 +1688,7 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "CopilotSpaceResourcesAttributesItemMetadata",
       });
-    case 1:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.Number),
@@ -1264,14 +1696,14 @@ function __c1(j: number): any {
           copilot_chat_attachment_id: S.optional(S.NullOr(S.Number)),
           created_at: S.optional(S.String),
           updated_at: S.optional(S.String),
-          metadata: S.optional(__S(8, __c1, 0)),
+          metadata: S.optional(__S(233, __c29, 1)),
         }),
       ).annotate({
         identifier: "CopilotSpaceResourcesAttributesItem",
       });
-    case 2:
-      return S.Array(__S(9, __c1, 1));
     case 3:
+      return S.Array(__S(234, __c29, 2));
+    case 4:
       return S.suspend(() =>
         S.Struct({
           id: S.Number,
@@ -1281,15 +1713,46 @@ function __c1(j: number): any {
           general_instructions: S.optional(S.NullOr(S.String)),
           base_role: S.String,
           owner: S.Unknown,
-          creator: __S(7, __c0, 7),
+          creator: __S(232, __c29, 0),
           created_at: S.String,
           updated_at: S.String,
           html_url: S.String,
           api_url: S.String,
-          resources_attributes: S.optional(__S(10, __c1, 2)),
+          resources_attributes: S.optional(__S(235, __c29, 3)),
         }),
       ).annotate({ identifier: "CopilotSpace" });
-    case 4:
+  }
+}
+function __c30(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          repository_id: S.optional(S.Number),
+          file_path: S.optional(S.String),
+          text: S.optional(S.String),
+          name: S.optional(S.String),
+          number: S.optional(S.Number),
+        }),
+      ).annotate({
+        identifier: "CreateForOrgRequestResourcesAttributesItemMetadata",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          resource_type: S.optional(S.String),
+          metadata: S.optional(__S(240, __c30, 0)),
+        }),
+      ).annotate({
+        identifier: "CreateForOrgRequestResourcesAttributesItem",
+      });
+    case 2:
+      return S.Array(__S(241, __c30, 1));
+  }
+}
+function __c31(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           username: S.String.pipe(T.Label()),
@@ -1297,18 +1760,20 @@ function __c1(j: number): any {
           description: S.optional(S.String),
           general_instructions: S.optional(S.String),
           base_role: S.optional(S.String),
-          resources_attributes: S.optional(__S(5, __c0, 5)),
+          resources_attributes: S.optional(__S(242, __c30, 2)),
         }).pipe(T.Http({ method: "POST", uri: "/users/{username}/copilot-spaces", code: 200 })),
       ).annotate({ identifier: "CreateForUserRequest" });
-    case 5:
-      return S.Record(S.String, S.Unknown);
-    case 6:
+  }
+}
+function __c32(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           org: S.String.pipe(T.Label()),
           space_number: S.Number.pipe(T.Label()),
           resource_type: S.String,
-          metadata: __S(13, __c1, 5),
+          metadata: __S(264, __c33, 0),
         }).pipe(
           T.Http({
             method: "POST",
@@ -1319,20 +1784,26 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "CreateResourceForOrgRequest",
       });
-    case 7:
+  }
+}
+function __c33(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, S.Unknown);
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.Number,
           resource_type: S.String,
           copilot_chat_attachment_id: S.optional(S.NullOr(S.Number)),
-          metadata: __S(13, __c1, 5),
+          metadata: __S(264, __c33, 0),
           created_at: S.String,
           updated_at: S.String,
         }),
       ).annotate({ identifier: "CopilotSpaceResource" });
   }
 }
-function __c2(j: number): any {
+function __c34(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1340,7 +1811,7 @@ function __c2(j: number): any {
           username: S.String.pipe(T.Label()),
           space_number: S.Number.pipe(T.Label()),
           resource_type: S.String,
-          metadata: __S(13, __c1, 5),
+          metadata: __S(264, __c33, 0),
         }).pipe(
           T.Http({
             method: "POST",
@@ -1351,7 +1822,11 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "CreateResourceForUserRequest",
       });
-    case 1:
+  }
+}
+function __c35(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           org: S.String.pipe(T.Label()),
@@ -1360,368 +1835,16 @@ function __c2(j: number): any {
           T.Http({ method: "DELETE", uri: "/orgs/{org}/copilot-spaces/{space_number}", code: 200 }),
         ),
       ).annotate({ identifier: "DeleteForOrgRequest" });
-    case 2:
+  }
+}
+function __c36(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "DeleteForOrgResponse",
       });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          username: S.String.pipe(T.Label()),
-          space_number: S.Number.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/users/{username}/copilot-spaces/{space_number}",
-            code: 200,
-          }),
-        ),
-      ).annotate({ identifier: "DeleteForUserRequest" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          org: S.String.pipe(T.Label()),
-          space_number: S.Number.pipe(T.Label()),
-          space_resource_id: S.Number.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/orgs/{org}/copilot-spaces/{space_number}/resources/{space_resource_id}",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteResourceForOrgRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          username: S.String.pipe(T.Label()),
-          space_number: S.Number.pipe(T.Label()),
-          space_resource_id: S.Number.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/users/{username}/copilot-spaces/{space_number}/resources/{space_resource_id}",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteResourceForUserRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          org: S.String.pipe(T.Label()),
-          space_number: S.Number.pipe(T.Label()),
-        }).pipe(
-          T.Http({ method: "GET", uri: "/orgs/{org}/copilot-spaces/{space_number}", code: 200 }),
-        ),
-      ).annotate({ identifier: "GetForOrgRequest" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          username: S.String.pipe(T.Label()),
-          space_number: S.Number.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/users/{username}/copilot-spaces/{space_number}",
-            code: 200,
-          }),
-        ),
-      ).annotate({ identifier: "GetForUserRequest" });
   }
 }
-function __c3(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          org: S.String.pipe(T.Label()),
-          space_number: S.Number.pipe(T.Label()),
-          space_resource_id: S.Number.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/orgs/{org}/copilot-spaces/{space_number}/resources/{space_resource_id}",
-            code: 200,
-          }),
-        ),
-      ).annotate({ identifier: "GetResourceForOrgRequest" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          username: S.String.pipe(T.Label()),
-          space_number: S.Number.pipe(T.Label()),
-          space_resource_id: S.Number.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/users/{username}/copilot-spaces/{space_number}/resources/{space_resource_id}",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "GetResourceForUserRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          org: S.String.pipe(T.Label()),
-          space_number: S.Number.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/orgs/{org}/copilot-spaces/{space_number}/collaborators",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "ListCollaboratorsForOrgRequest",
-      });
-    case 3:
-      return S.Array(S.Unknown);
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          collaborators: __S(27, __c3, 3),
-        }),
-      ).annotate({
-        identifier: "ListCollaboratorsForOrgResponse",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          username: S.String.pipe(T.Label()),
-          space_number: S.Number.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/users/{username}/copilot-spaces/{space_number}/collaborators",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "ListCollaboratorsForUserRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          org: S.String.pipe(T.Label()),
-          per_page: S.optional(S.Number.pipe(T.Query())),
-          before: S.optional(S.String.pipe(T.Query())),
-          after: S.optional(S.String.pipe(T.Query())),
-        }).pipe(T.Http({ method: "GET", uri: "/orgs/{org}/copilot-spaces", code: 200 })),
-      ).annotate({ identifier: "ListForOrgRequest" });
-    case 7:
-      return S.Array(__S(11, __c1, 3));
-  }
-}
-function __c4(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          spaces: __S(31, __c3, 7),
-        }),
-      ).annotate({ identifier: "ListForOrgResponse" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          username: S.String.pipe(T.Label()),
-          per_page: S.optional(S.Number.pipe(T.Query())),
-          before: S.optional(S.String.pipe(T.Query())),
-          after: S.optional(S.String.pipe(T.Query())),
-        }).pipe(T.Http({ method: "GET", uri: "/users/{username}/copilot-spaces", code: 200 })),
-      ).annotate({ identifier: "ListForUserRequest" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          org: S.String.pipe(T.Label()),
-          space_number: S.Number.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/orgs/{org}/copilot-spaces/{space_number}/resources",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "ListResourcesForOrgRequest",
-      });
-    case 3:
-      return S.Array(__S(15, __c1, 7));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          resources: __S(35, __c4, 3),
-        }),
-      ).annotate({
-        identifier: "ListResourcesForOrgResponse",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          username: S.String.pipe(T.Label()),
-          space_number: S.Number.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/users/{username}/copilot-spaces/{space_number}/resources",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "ListResourcesForUserRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          org: S.String.pipe(T.Label()),
-          space_number: S.Number.pipe(T.Label()),
-          actor_type: S.String.pipe(T.Label()),
-          actor_identifier: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/orgs/{org}/copilot-spaces/{space_number}/collaborators/{actor_type}/{actor_identifier}",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "RemoveCollaboratorForOrgRequest",
-      });
-    case 7:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "RemoveCollaboratorForOrgResponse",
-      });
-  }
-}
-function __c5(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          username: S.String.pipe(T.Label()),
-          space_number: S.Number.pipe(T.Label()),
-          actor_type: S.String.pipe(T.Label()),
-          actor_identifier: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/users/{username}/copilot-spaces/{space_number}/collaborators/{actor_type}/{actor_identifier}",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "RemoveCollaboratorForUserRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          org: S.String.pipe(T.Label()),
-          space_number: S.Number.pipe(T.Label()),
-          actor_type: S.String.pipe(T.Label()),
-          actor_identifier: S.String.pipe(T.Label()),
-          role: S.String,
-        }).pipe(
-          T.Http({
-            method: "PUT",
-            uri: "/orgs/{org}/copilot-spaces/{space_number}/collaborators/{actor_type}/{actor_identifier}",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "UpdateCollaboratorForOrgRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          username: S.String.pipe(T.Label()),
-          space_number: S.Number.pipe(T.Label()),
-          actor_type: S.String.pipe(T.Label()),
-          actor_identifier: S.String.pipe(T.Label()),
-          role: S.String,
-        }).pipe(
-          T.Http({
-            method: "PUT",
-            uri: "/users/{username}/copilot-spaces/{space_number}/collaborators/{actor_type}/{actor_identifier}",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "UpdateCollaboratorForUserRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          org: S.String.pipe(T.Label()),
-          space_number: S.Number.pipe(T.Label()),
-          name: S.optional(S.String),
-          description: S.optional(S.String),
-          general_instructions: S.optional(S.String),
-          base_role: S.optional(S.String),
-          resources_attributes: S.optional(__S(5, __c0, 5)),
-        }).pipe(
-          T.Http({ method: "PUT", uri: "/orgs/{org}/copilot-spaces/{space_number}", code: 200 }),
-        ),
-      ).annotate({ identifier: "UpdateForOrgRequest" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          username: S.String.pipe(T.Label()),
-          space_number: S.Number.pipe(T.Label()),
-          name: S.optional(S.String),
-          description: S.optional(S.String),
-          general_instructions: S.optional(S.String),
-          base_role: S.optional(S.String),
-          resources_attributes: S.optional(__S(5, __c0, 5)),
-        }).pipe(
-          T.Http({
-            method: "PUT",
-            uri: "/users/{username}/copilot-spaces/{space_number}",
-            code: 200,
-          }),
-        ),
-      ).annotate({ identifier: "UpdateForUserRequest" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          org: S.String.pipe(T.Label()),
-          space_number: S.Number.pipe(T.Label()),
-          space_resource_id: S.Number.pipe(T.Label()),
-          metadata: S.optional(__S(13, __c1, 5)),
-        }).pipe(
-          T.Http({
-            method: "PUT",
-            uri: "/orgs/{org}/copilot-spaces/{space_number}/resources/{space_resource_id}",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "UpdateResourceForOrgRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          username: S.String.pipe(T.Label()),
-          space_number: S.Number.pipe(T.Label()),
-          space_resource_id: S.Number.pipe(T.Label()),
-          metadata: S.optional(__S(13, __c1, 5)),
-        }).pipe(
-          T.Http({
-            method: "PUT",
-            uri: "/users/{username}/copilot-spaces/{space_number}/resources/{space_resource_id}",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "UpdateResourceForUserRequest",
-      });
-  }
-}
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

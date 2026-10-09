@@ -3373,8 +3373,8 @@ export const acceptAdministratorInvitation: API.OperationMethod<
   AcceptAdministratorInvitationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(0, __c0, 0) as any as S.Schema<AcceptAdministratorInvitationRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<AcceptAdministratorInvitationResponse>,
+  input: __S(2432, __c76, 0) as any as S.Schema<AcceptAdministratorInvitationRequest>,
+  output: __S(2464, __c77, 0) as any as S.Schema<AcceptAdministratorInvitationResponse>,
   errors: [BadRequestException, InternalServerErrorException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3394,8 +3394,8 @@ export const acceptInvitation: API.OperationMethod<
   AcceptInvitationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2, __c0, 2) as any as S.Schema<AcceptInvitationRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<AcceptInvitationResponse>,
+  input: __S(2880, __c90, 0) as any as S.Schema<AcceptInvitationRequest>,
+  output: __S(2912, __c91, 0) as any as S.Schema<AcceptInvitationResponse>,
   errors: [BadRequestException, InternalServerErrorException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3417,8 +3417,8 @@ export const archiveFindings: API.OperationMethod<
   ArchiveFindingsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(5, __c0, 5) as any as S.Schema<ArchiveFindingsRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<ArchiveFindingsResponse>,
+  input: __S(3296, __c103, 0) as any as S.Schema<ArchiveFindingsRequest>,
+  output: __S(2912, __c91, 0) as any as S.Schema<ArchiveFindingsResponse>,
   errors: [BadRequestException, InternalServerErrorException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3441,8 +3441,8 @@ export const createCustomDetectionRuleAssociation: API.OperationMethod<
   CreateCustomDetectionRuleAssociationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(7, __c0, 7) as any as S.Schema<CreateCustomDetectionRuleAssociationRequest>,
-  output: __S(9, __c1, 1) as any as S.Schema<CreateCustomDetectionRuleAssociationResponse>,
+  input: __S(3680, __c115, 0) as any as S.Schema<CreateCustomDetectionRuleAssociationRequest>,
+  output: __S(3681, __c115, 1) as any as S.Schema<CreateCustomDetectionRuleAssociationResponse>,
   errors: [
     AccessDeniedException,
     BadRequestException,
@@ -3471,8 +3471,8 @@ export const createCustomDetectionRuleOrgConfiguration: API.OperationMethod<
   CreateCustomDetectionRuleOrgConfigurationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(10, __c1, 2) as any as S.Schema<CreateCustomDetectionRuleOrgConfigurationRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<CreateCustomDetectionRuleOrgConfigurationResponse>,
+  input: __S(4096, __c128, 0) as any as S.Schema<CreateCustomDetectionRuleOrgConfigurationRequest>,
+  output: __S(2464, __c77, 0) as any as S.Schema<CreateCustomDetectionRuleOrgConfigurationResponse>,
   errors: [
     AccessDeniedException,
     BadRequestException,
@@ -3503,8 +3503,8 @@ export const createDetector: API.OperationMethod<
   CreateDetectorError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(21, __c2, 5) as any as S.Schema<CreateDetectorRequest>,
-  output: __S(26, __c3, 2) as any as S.Schema<CreateDetectorResponse>,
+  input: __S(0, __c0, 0) as any as S.Schema<CreateDetectorRequest>,
+  output: __S(2, __c0, 2) as any as S.Schema<CreateDetectorResponse>,
   errors: [BadRequestException, InternalServerErrorException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3521,8 +3521,8 @@ export const createFilter: API.OperationMethod<
   CreateFilterError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(30, __c3, 6) as any as S.Schema<CreateFilterRequest>,
-  output: __S(31, __c3, 7) as any as S.Schema<CreateFilterResponse>,
+  input: __S(352, __c11, 0) as any as S.Schema<CreateFilterRequest>,
+  output: __S(416, __c13, 0) as any as S.Schema<CreateFilterResponse>,
   errors: [BadRequestException, InternalServerErrorException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3551,8 +3551,8 @@ export const createInvestigation: API.OperationMethod<
   CreateInvestigationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(32, __c4, 0) as any as S.Schema<CreateInvestigationRequest>,
-  output: __S(33, __c4, 1) as any as S.Schema<CreateInvestigationResponse>,
+  input: __S(448, __c14, 0) as any as S.Schema<CreateInvestigationRequest>,
+  output: __S(449, __c14, 1) as any as S.Schema<CreateInvestigationResponse>,
   errors: [AccessDeniedException, BadRequestException, InternalServerErrorException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3573,8 +3573,8 @@ export const createIPSet: API.OperationMethod<
   CreateIPSetError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(34, __c4, 2) as any as S.Schema<CreateIPSetRequest>,
-  output: __S(35, __c4, 3) as any as S.Schema<CreateIPSetResponse>,
+  input: __S(480, __c15, 0) as any as S.Schema<CreateIPSetRequest>,
+  output: __S(481, __c15, 1) as any as S.Schema<CreateIPSetResponse>,
   errors: [AccessDeniedException, BadRequestException, InternalServerErrorException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3598,8 +3598,8 @@ export const createMalwareProtectionPlan: API.OperationMethod<
   CreateMalwareProtectionPlanError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(40, __c5, 0) as any as S.Schema<CreateMalwareProtectionPlanRequest>,
-  output: __S(41, __c5, 1) as any as S.Schema<CreateMalwareProtectionPlanResponse>,
+  input: __S(512, __c16, 0) as any as S.Schema<CreateMalwareProtectionPlanRequest>,
+  output: __S(608, __c19, 0) as any as S.Schema<CreateMalwareProtectionPlanResponse>,
   errors: [
     AccessDeniedException,
     BadRequestException,
@@ -3629,8 +3629,8 @@ export const createMembers: API.OperationMethod<
   CreateMembersError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(44, __c5, 4) as any as S.Schema<CreateMembersRequest>,
-  output: __S(47, __c5, 7) as any as S.Schema<CreateMembersResponse>,
+  input: __S(642, __c20, 2) as any as S.Schema<CreateMembersRequest>,
+  output: __S(704, __c22, 0) as any as S.Schema<CreateMembersResponse>,
   errors: [BadRequestException, InternalServerErrorException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3650,8 +3650,8 @@ export const createPublishingDestination: API.OperationMethod<
   CreatePublishingDestinationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(49, __c6, 1) as any as S.Schema<CreatePublishingDestinationRequest>,
-  output: __S(50, __c6, 2) as any as S.Schema<CreatePublishingDestinationResponse>,
+  input: __S(736, __c23, 0) as any as S.Schema<CreatePublishingDestinationRequest>,
+  output: __S(737, __c23, 1) as any as S.Schema<CreatePublishingDestinationResponse>,
   errors: [BadRequestException, InternalServerErrorException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3671,8 +3671,8 @@ export const createSampleFindings: API.OperationMethod<
   CreateSampleFindingsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(51, __c6, 3) as any as S.Schema<CreateSampleFindingsRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<CreateSampleFindingsResponse>,
+  input: __S(800, __c25, 0) as any as S.Schema<CreateSampleFindingsRequest>,
+  output: __S(2912, __c91, 0) as any as S.Schema<CreateSampleFindingsResponse>,
   errors: [BadRequestException, InternalServerErrorException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3692,8 +3692,8 @@ export const createThreatEntitySet: API.OperationMethod<
   CreateThreatEntitySetError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(52, __c6, 4) as any as S.Schema<CreateThreatEntitySetRequest>,
-  output: __S(53, __c6, 5) as any as S.Schema<CreateThreatEntitySetResponse>,
+  input: __S(832, __c26, 0) as any as S.Schema<CreateThreatEntitySetRequest>,
+  output: __S(833, __c26, 1) as any as S.Schema<CreateThreatEntitySetResponse>,
   errors: [BadRequestException, InternalServerErrorException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3714,8 +3714,8 @@ export const createThreatIntelSet: API.OperationMethod<
   CreateThreatIntelSetError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(54, __c6, 6) as any as S.Schema<CreateThreatIntelSetRequest>,
-  output: __S(55, __c6, 7) as any as S.Schema<CreateThreatIntelSetResponse>,
+  input: __S(864, __c27, 0) as any as S.Schema<CreateThreatIntelSetRequest>,
+  output: __S(865, __c27, 1) as any as S.Schema<CreateThreatIntelSetResponse>,
   errors: [AccessDeniedException, BadRequestException, InternalServerErrorException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3737,8 +3737,8 @@ export const createTrustedEntitySet: API.OperationMethod<
   CreateTrustedEntitySetError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(56, __c7, 0) as any as S.Schema<CreateTrustedEntitySetRequest>,
-  output: __S(57, __c7, 1) as any as S.Schema<CreateTrustedEntitySetResponse>,
+  input: __S(896, __c28, 0) as any as S.Schema<CreateTrustedEntitySetRequest>,
+  output: __S(897, __c28, 1) as any as S.Schema<CreateTrustedEntitySetResponse>,
   errors: [BadRequestException, InternalServerErrorException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3758,8 +3758,8 @@ export const declineInvitations: API.OperationMethod<
   DeclineInvitationsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(58, __c7, 2) as any as S.Schema<DeclineInvitationsRequest>,
-  output: __S(59, __c7, 3) as any as S.Schema<DeclineInvitationsResponse>,
+  input: __S(928, __c29, 0) as any as S.Schema<DeclineInvitationsRequest>,
+  output: __S(960, __c30, 0) as any as S.Schema<DeclineInvitationsResponse>,
   errors: [BadRequestException, InternalServerErrorException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3781,8 +3781,8 @@ export const deleteCustomDetectionRuleAssociation: API.OperationMethod<
   DeleteCustomDetectionRuleAssociationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(60, __c7, 4) as any as S.Schema<DeleteCustomDetectionRuleAssociationRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<DeleteCustomDetectionRuleAssociationResponse>,
+  input: __S(992, __c31, 0) as any as S.Schema<DeleteCustomDetectionRuleAssociationRequest>,
+  output: __S(2464, __c77, 0) as any as S.Schema<DeleteCustomDetectionRuleAssociationResponse>,
   errors: [
     AccessDeniedException,
     BadRequestException,
@@ -3810,8 +3810,8 @@ export const deleteCustomDetectionRuleOrgConfiguration: API.OperationMethod<
   DeleteCustomDetectionRuleOrgConfigurationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(61, __c7, 5) as any as S.Schema<DeleteCustomDetectionRuleOrgConfigurationRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<DeleteCustomDetectionRuleOrgConfigurationResponse>,
+  input: __S(1024, __c32, 0) as any as S.Schema<DeleteCustomDetectionRuleOrgConfigurationRequest>,
+  output: __S(2464, __c77, 0) as any as S.Schema<DeleteCustomDetectionRuleOrgConfigurationResponse>,
   errors: [
     AccessDeniedException,
     BadRequestException,
@@ -3834,8 +3834,8 @@ export const deleteDetector: API.OperationMethod<
   DeleteDetectorError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(62, __c7, 6) as any as S.Schema<DeleteDetectorRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<DeleteDetectorResponse>,
+  input: __S(1056, __c33, 0) as any as S.Schema<DeleteDetectorRequest>,
+  output: __S(2912, __c91, 0) as any as S.Schema<DeleteDetectorResponse>,
   errors: [BadRequestException, InternalServerErrorException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3852,8 +3852,8 @@ export const deleteFilter: API.OperationMethod<
   DeleteFilterError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(63, __c7, 7) as any as S.Schema<DeleteFilterRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<DeleteFilterResponse>,
+  input: __S(1088, __c34, 0) as any as S.Schema<DeleteFilterRequest>,
+  output: __S(2912, __c91, 0) as any as S.Schema<DeleteFilterResponse>,
   errors: [BadRequestException, InternalServerErrorException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3873,8 +3873,8 @@ export const deleteInvitations: API.OperationMethod<
   DeleteInvitationsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(64, __c8, 0) as any as S.Schema<DeleteInvitationsRequest>,
-  output: __S(59, __c7, 3) as any as S.Schema<DeleteInvitationsResponse>,
+  input: __S(1120, __c35, 0) as any as S.Schema<DeleteInvitationsRequest>,
+  output: __S(960, __c30, 0) as any as S.Schema<DeleteInvitationsResponse>,
   errors: [BadRequestException, InternalServerErrorException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3891,8 +3891,8 @@ export const deleteIPSet: API.OperationMethod<
   DeleteIPSetError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(65, __c8, 1) as any as S.Schema<DeleteIPSetRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<DeleteIPSetResponse>,
+  input: __S(1152, __c36, 0) as any as S.Schema<DeleteIPSetRequest>,
+  output: __S(2912, __c91, 0) as any as S.Schema<DeleteIPSetResponse>,
   errors: [BadRequestException, InternalServerErrorException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3914,8 +3914,8 @@ export const deleteMalwareProtectionPlan: API.OperationMethod<
   DeleteMalwareProtectionPlanError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(66, __c8, 2) as any as S.Schema<DeleteMalwareProtectionPlanRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<DeleteMalwareProtectionPlanResponse>,
+  input: __S(1184, __c37, 0) as any as S.Schema<DeleteMalwareProtectionPlanRequest>,
+  output: __S(2464, __c77, 0) as any as S.Schema<DeleteMalwareProtectionPlanResponse>,
   errors: [
     AccessDeniedException,
     BadRequestException,
@@ -3939,8 +3939,8 @@ export const deleteMembers: API.OperationMethod<
   DeleteMembersError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(67, __c8, 3) as any as S.Schema<DeleteMembersRequest>,
-  output: __S(47, __c5, 7) as any as S.Schema<DeleteMembersResponse>,
+  input: __S(1216, __c38, 0) as any as S.Schema<DeleteMembersRequest>,
+  output: __S(704, __c22, 0) as any as S.Schema<DeleteMembersResponse>,
   errors: [BadRequestException, InternalServerErrorException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3960,8 +3960,8 @@ export const deletePublishingDestination: API.OperationMethod<
   DeletePublishingDestinationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(68, __c8, 4) as any as S.Schema<DeletePublishingDestinationRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<DeletePublishingDestinationResponse>,
+  input: __S(1248, __c39, 0) as any as S.Schema<DeletePublishingDestinationRequest>,
+  output: __S(2464, __c77, 0) as any as S.Schema<DeletePublishingDestinationResponse>,
   errors: [BadRequestException, InternalServerErrorException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3981,8 +3981,8 @@ export const deleteThreatEntitySet: API.OperationMethod<
   DeleteThreatEntitySetError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(69, __c8, 5) as any as S.Schema<DeleteThreatEntitySetRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<DeleteThreatEntitySetResponse>,
+  input: __S(1280, __c40, 0) as any as S.Schema<DeleteThreatEntitySetRequest>,
+  output: __S(2912, __c91, 0) as any as S.Schema<DeleteThreatEntitySetResponse>,
   errors: [BadRequestException, InternalServerErrorException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -4002,8 +4002,8 @@ export const deleteThreatIntelSet: API.OperationMethod<
   DeleteThreatIntelSetError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(70, __c8, 6) as any as S.Schema<DeleteThreatIntelSetRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<DeleteThreatIntelSetResponse>,
+  input: __S(1312, __c41, 0) as any as S.Schema<DeleteThreatIntelSetRequest>,
+  output: __S(2912, __c91, 0) as any as S.Schema<DeleteThreatIntelSetResponse>,
   errors: [BadRequestException, InternalServerErrorException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -4023,8 +4023,8 @@ export const deleteTrustedEntitySet: API.OperationMethod<
   DeleteTrustedEntitySetError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(71, __c8, 7) as any as S.Schema<DeleteTrustedEntitySetRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<DeleteTrustedEntitySetResponse>,
+  input: __S(1344, __c42, 0) as any as S.Schema<DeleteTrustedEntitySetRequest>,
+  output: __S(2912, __c91, 0) as any as S.Schema<DeleteTrustedEntitySetResponse>,
   errors: [BadRequestException, InternalServerErrorException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -4047,8 +4047,8 @@ export const describeMalwareScans: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   Scan
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(77, __c9, 5) as any as S.Schema<DescribeMalwareScansRequest>,
-  output: __S(85, __c10, 5) as any as S.Schema<DescribeMalwareScansResponse>,
+  input: __S(1379, __c43, 3) as any as S.Schema<DescribeMalwareScansRequest>,
+  output: __S(1384, __c43, 8) as any as S.Schema<DescribeMalwareScansResponse>,
   errors: [BadRequestException, InternalServerErrorException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -4077,8 +4077,8 @@ export const describeOrganizationConfiguration: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(86, __c10, 6) as any as S.Schema<DescribeOrganizationConfigurationRequest>,
-  output: __S(96, __c12, 0) as any as S.Schema<DescribeOrganizationConfigurationResponse>,
+  input: __S(1568, __c49, 0) as any as S.Schema<DescribeOrganizationConfigurationRequest>,
+  output: __S(1572, __c49, 4) as any as S.Schema<DescribeOrganizationConfigurationResponse>,
   errors: [BadRequestException, InternalServerErrorException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -4103,8 +4103,8 @@ export const describePublishingDestination: API.OperationMethod<
   DescribePublishingDestinationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(97, __c12, 1) as any as S.Schema<DescribePublishingDestinationRequest>,
-  output: __S(98, __c12, 2) as any as S.Schema<DescribePublishingDestinationResponse>,
+  input: __S(1632, __c51, 0) as any as S.Schema<DescribePublishingDestinationRequest>,
+  output: __S(1633, __c51, 1) as any as S.Schema<DescribePublishingDestinationResponse>,
   errors: [BadRequestException, InternalServerErrorException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -4124,8 +4124,8 @@ export const disableOrganizationAdminAccount: API.OperationMethod<
   DisableOrganizationAdminAccountError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(99, __c12, 3) as any as S.Schema<DisableOrganizationAdminAccountRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<DisableOrganizationAdminAccountResponse>,
+  input: __S(1664, __c52, 0) as any as S.Schema<DisableOrganizationAdminAccountRequest>,
+  output: __S(2464, __c77, 0) as any as S.Schema<DisableOrganizationAdminAccountResponse>,
   errors: [BadRequestException, InternalServerErrorException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -4149,8 +4149,8 @@ export const disassociateFromAdministratorAccount: API.OperationMethod<
   DisassociateFromAdministratorAccountError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(100, __c12, 4) as any as S.Schema<DisassociateFromAdministratorAccountRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<DisassociateFromAdministratorAccountResponse>,
+  input: __S(1696, __c53, 0) as any as S.Schema<DisassociateFromAdministratorAccountRequest>,
+  output: __S(2464, __c77, 0) as any as S.Schema<DisassociateFromAdministratorAccountResponse>,
   errors: [BadRequestException, InternalServerErrorException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -4172,8 +4172,8 @@ export const disassociateFromMasterAccount: API.OperationMethod<
   DisassociateFromMasterAccountError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(101, __c12, 5) as any as S.Schema<DisassociateFromMasterAccountRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<DisassociateFromMasterAccountResponse>,
+  input: __S(1728, __c54, 0) as any as S.Schema<DisassociateFromMasterAccountRequest>,
+  output: __S(2464, __c77, 0) as any as S.Schema<DisassociateFromMasterAccountResponse>,
   errors: [BadRequestException, InternalServerErrorException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -4201,8 +4201,8 @@ export const disassociateMembers: API.OperationMethod<
   DisassociateMembersError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(102, __c12, 6) as any as S.Schema<DisassociateMembersRequest>,
-  output: __S(59, __c7, 3) as any as S.Schema<DisassociateMembersResponse>,
+  input: __S(1760, __c55, 0) as any as S.Schema<DisassociateMembersRequest>,
+  output: __S(960, __c30, 0) as any as S.Schema<DisassociateMembersResponse>,
   errors: [BadRequestException, InternalServerErrorException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -4222,8 +4222,8 @@ export const enableOrganizationAdminAccount: API.OperationMethod<
   EnableOrganizationAdminAccountError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(103, __c12, 7) as any as S.Schema<EnableOrganizationAdminAccountRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<EnableOrganizationAdminAccountResponse>,
+  input: __S(1792, __c56, 0) as any as S.Schema<EnableOrganizationAdminAccountRequest>,
+  output: __S(2464, __c77, 0) as any as S.Schema<EnableOrganizationAdminAccountResponse>,
   errors: [BadRequestException, InternalServerErrorException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -4251,8 +4251,8 @@ export const getAdministratorAccount: API.OperationMethod<
   GetAdministratorAccountError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(104, __c13, 0) as any as S.Schema<GetAdministratorAccountRequest>,
-  output: __S(106, __c13, 2) as any as S.Schema<GetAdministratorAccountResponse>,
+  input: __S(1824, __c57, 0) as any as S.Schema<GetAdministratorAccountRequest>,
+  output: __S(1825, __c57, 1) as any as S.Schema<GetAdministratorAccountResponse>,
   errors: [BadRequestException, InternalServerErrorException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -4272,8 +4272,8 @@ export const getCoverageStatistics: API.OperationMethod<
   GetCoverageStatisticsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(112, __c14, 0) as any as S.Schema<GetCoverageStatisticsRequest>,
-  output: __S(115, __c14, 3) as any as S.Schema<GetCoverageStatisticsResponse>,
+  input: __S(1888, __c59, 0) as any as S.Schema<GetCoverageStatisticsRequest>,
+  output: __S(1891, __c59, 3) as any as S.Schema<GetCoverageStatisticsResponse>,
   errors: [BadRequestException, InternalServerErrorException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -4295,8 +4295,8 @@ export const getCustomDetectionRule: API.OperationMethod<
   GetCustomDetectionRuleError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(116, __c14, 4) as any as S.Schema<GetCustomDetectionRuleRequest>,
-  output: __S(119, __c14, 7) as any as S.Schema<GetCustomDetectionRuleResponse>,
+  input: __S(1984, __c62, 0) as any as S.Schema<GetCustomDetectionRuleRequest>,
+  output: __S(1987, __c62, 3) as any as S.Schema<GetCustomDetectionRuleResponse>,
   errors: [
     AccessDeniedException,
     BadRequestException,
@@ -4323,8 +4323,8 @@ export const getCustomDetectionRuleAssociation: API.OperationMethod<
   GetCustomDetectionRuleAssociationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(120, __c15, 0) as any as S.Schema<GetCustomDetectionRuleAssociationRequest>,
-  output: __S(121, __c15, 1) as any as S.Schema<GetCustomDetectionRuleAssociationResponse>,
+  input: __S(2016, __c63, 0) as any as S.Schema<GetCustomDetectionRuleAssociationRequest>,
+  output: __S(2017, __c63, 1) as any as S.Schema<GetCustomDetectionRuleAssociationResponse>,
   errors: [
     AccessDeniedException,
     BadRequestException,
@@ -4351,8 +4351,8 @@ export const getCustomDetectionRuleOrgConfiguration: API.OperationMethod<
   GetCustomDetectionRuleOrgConfigurationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(122, __c15, 2) as any as S.Schema<GetCustomDetectionRuleOrgConfigurationRequest>,
-  output: __S(124, __c15, 4) as any as S.Schema<GetCustomDetectionRuleOrgConfigurationResponse>,
+  input: __S(2048, __c64, 0) as any as S.Schema<GetCustomDetectionRuleOrgConfigurationRequest>,
+  output: __S(2050, __c64, 2) as any as S.Schema<GetCustomDetectionRuleOrgConfigurationResponse>,
   errors: [
     AccessDeniedException,
     BadRequestException,
@@ -4376,8 +4376,8 @@ export const getDetector: API.OperationMethod<
   GetDetectorError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(125, __c15, 5) as any as S.Schema<GetDetectorRequest>,
-  output: __S(133, __c16, 5) as any as S.Schema<GetDetectorResponse>,
+  input: __S(2080, __c65, 0) as any as S.Schema<GetDetectorRequest>,
+  output: __S(2081, __c65, 1) as any as S.Schema<GetDetectorResponse>,
   errors: [BadRequestException, InternalServerErrorException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -4394,8 +4394,8 @@ export const getFilter: API.OperationMethod<
   GetFilterError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(134, __c16, 6) as any as S.Schema<GetFilterRequest>,
-  output: __S(135, __c16, 7) as any as S.Schema<GetFilterResponse>,
+  input: __S(2144, __c67, 0) as any as S.Schema<GetFilterRequest>,
+  output: __S(2145, __c67, 1) as any as S.Schema<GetFilterResponse>,
   errors: [BadRequestException, InternalServerErrorException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -4412,8 +4412,8 @@ export const getFindings: API.OperationMethod<
   GetFindingsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(136, __c17, 0) as any as S.Schema<GetFindingsRequest>,
-  output: __S(299, __c37, 3) as any as S.Schema<GetFindingsResponse>,
+  input: __S(2176, __c68, 0) as any as S.Schema<GetFindingsRequest>,
+  output: __S(2332, __c72, 28) as any as S.Schema<GetFindingsResponse>,
   errors: [BadRequestException, InternalServerErrorException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -4437,8 +4437,8 @@ export const getFindingsStatistics: API.OperationMethod<
   GetFindingsStatisticsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(300, __c37, 4) as any as S.Schema<GetFindingsStatisticsRequest>,
-  output: __S(313, __c39, 1) as any as S.Schema<GetFindingsStatisticsResponse>,
+  input: __S(2496, __c78, 0) as any as S.Schema<GetFindingsStatisticsRequest>,
+  output: __S(2509, __c78, 13) as any as S.Schema<GetFindingsStatisticsResponse>,
   errors: [BadRequestException, InternalServerErrorException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -4464,8 +4464,8 @@ export const getInvestigation: API.OperationMethod<
   GetInvestigationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(314, __c39, 2) as any as S.Schema<GetInvestigationRequest>,
-  output: __S(319, __c39, 7) as any as S.Schema<GetInvestigationResponse>,
+  input: __S(2528, __c79, 0) as any as S.Schema<GetInvestigationRequest>,
+  output: __S(2533, __c79, 5) as any as S.Schema<GetInvestigationResponse>,
   errors: [
     AccessDeniedException,
     BadRequestException,
@@ -4490,8 +4490,8 @@ export const getInvitationsCount: API.OperationMethod<
   GetInvitationsCountError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(320, __c40, 0) as any as S.Schema<GetInvitationsCountRequest>,
-  output: __S(321, __c40, 1) as any as S.Schema<GetInvitationsCountResponse>,
+  input: __S(2560, __c80, 0) as any as S.Schema<GetInvitationsCountRequest>,
+  output: __S(2561, __c80, 1) as any as S.Schema<GetInvitationsCountResponse>,
   errors: [BadRequestException, InternalServerErrorException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -4508,8 +4508,8 @@ export const getIPSet: API.OperationMethod<
   GetIPSetError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(322, __c40, 2) as any as S.Schema<GetIPSetRequest>,
-  output: __S(323, __c40, 3) as any as S.Schema<GetIPSetResponse>,
+  input: __S(2592, __c81, 0) as any as S.Schema<GetIPSetRequest>,
+  output: __S(2593, __c81, 1) as any as S.Schema<GetIPSetResponse>,
   errors: [BadRequestException, InternalServerErrorException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -4531,8 +4531,8 @@ export const getMalwareProtectionPlan: API.OperationMethod<
   GetMalwareProtectionPlanError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(324, __c40, 4) as any as S.Schema<GetMalwareProtectionPlanRequest>,
-  output: __S(327, __c40, 7) as any as S.Schema<GetMalwareProtectionPlanResponse>,
+  input: __S(2624, __c82, 0) as any as S.Schema<GetMalwareProtectionPlanRequest>,
+  output: __S(2627, __c82, 3) as any as S.Schema<GetMalwareProtectionPlanResponse>,
   errors: [
     AccessDeniedException,
     BadRequestException,
@@ -4560,8 +4560,8 @@ export const getMalwareScan: API.OperationMethod<
   GetMalwareScanError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(328, __c41, 0) as any as S.Schema<GetMalwareScanRequest>,
-  output: __S(338, __c42, 2) as any as S.Schema<GetMalwareScanResponse>,
+  input: __S(2656, __c83, 0) as any as S.Schema<GetMalwareScanRequest>,
+  output: __S(2666, __c83, 10) as any as S.Schema<GetMalwareScanResponse>,
   errors: [BadRequestException, InternalServerErrorException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -4583,8 +4583,8 @@ export const getMalwareScanSettings: API.OperationMethod<
   GetMalwareScanSettingsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(339, __c42, 3) as any as S.Schema<GetMalwareScanSettingsRequest>,
-  output: __S(343, __c42, 7) as any as S.Schema<GetMalwareScanSettingsResponse>,
+  input: __S(2688, __c84, 0) as any as S.Schema<GetMalwareScanSettingsRequest>,
+  output: __S(2689, __c84, 1) as any as S.Schema<GetMalwareScanSettingsResponse>,
   errors: [BadRequestException, InternalServerErrorException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -4604,8 +4604,8 @@ export const getMasterAccount: API.OperationMethod<
   GetMasterAccountError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(344, __c43, 0) as any as S.Schema<GetMasterAccountRequest>,
-  output: __S(345, __c43, 1) as any as S.Schema<GetMasterAccountResponse>,
+  input: __S(2752, __c86, 0) as any as S.Schema<GetMasterAccountRequest>,
+  output: __S(2753, __c86, 1) as any as S.Schema<GetMasterAccountResponse>,
   errors: [BadRequestException, InternalServerErrorException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -4627,8 +4627,8 @@ export const getMemberDetectors: API.OperationMethod<
   GetMemberDetectorsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(346, __c43, 2) as any as S.Schema<GetMemberDetectorsRequest>,
-  output: __S(349, __c43, 5) as any as S.Schema<GetMemberDetectorsResponse>,
+  input: __S(2784, __c87, 0) as any as S.Schema<GetMemberDetectorsRequest>,
+  output: __S(2787, __c87, 3) as any as S.Schema<GetMemberDetectorsResponse>,
   errors: [BadRequestException, InternalServerErrorException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -4645,8 +4645,8 @@ export const getMembers: API.OperationMethod<
   GetMembersError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(350, __c43, 6) as any as S.Schema<GetMembersRequest>,
-  output: __S(353, __c44, 1) as any as S.Schema<GetMembersResponse>,
+  input: __S(2816, __c88, 0) as any as S.Schema<GetMembersRequest>,
+  output: __S(2817, __c88, 1) as any as S.Schema<GetMembersResponse>,
   errors: [BadRequestException, InternalServerErrorException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -4668,8 +4668,8 @@ export const getOrganizationStatistics: API.OperationMethod<
   GetOrganizationStatisticsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(354, __c44, 2) as any as S.Schema<GetOrganizationStatisticsRequest>,
-  output: __S(361, __c45, 1) as any as S.Schema<GetOrganizationStatisticsResponse>,
+  input: __S(2944, __c92, 0) as any as S.Schema<GetOrganizationStatisticsRequest>,
+  output: __S(2951, __c92, 7) as any as S.Schema<GetOrganizationStatisticsResponse>,
   errors: [BadRequestException, InternalServerErrorException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -4689,8 +4689,8 @@ export const getRemainingFreeTrialDays: API.OperationMethod<
   GetRemainingFreeTrialDaysError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(362, __c45, 2) as any as S.Schema<GetRemainingFreeTrialDaysRequest>,
-  output: __S(371, __c46, 3) as any as S.Schema<GetRemainingFreeTrialDaysResponse>,
+  input: __S(2976, __c93, 0) as any as S.Schema<GetRemainingFreeTrialDaysRequest>,
+  output: __S(2985, __c93, 9) as any as S.Schema<GetRemainingFreeTrialDaysResponse>,
   errors: [BadRequestException, InternalServerErrorException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -4710,8 +4710,8 @@ export const getThreatEntitySet: API.OperationMethod<
   GetThreatEntitySetError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(372, __c46, 4) as any as S.Schema<GetThreatEntitySetRequest>,
-  output: __S(373, __c46, 5) as any as S.Schema<GetThreatEntitySetResponse>,
+  input: __S(3008, __c94, 0) as any as S.Schema<GetThreatEntitySetRequest>,
+  output: __S(3040, __c95, 0) as any as S.Schema<GetThreatEntitySetResponse>,
   errors: [BadRequestException, InternalServerErrorException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -4731,8 +4731,8 @@ export const getThreatIntelSet: API.OperationMethod<
   GetThreatIntelSetError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(374, __c46, 6) as any as S.Schema<GetThreatIntelSetRequest>,
-  output: __S(375, __c46, 7) as any as S.Schema<GetThreatIntelSetResponse>,
+  input: __S(3072, __c96, 0) as any as S.Schema<GetThreatIntelSetRequest>,
+  output: __S(3073, __c96, 1) as any as S.Schema<GetThreatIntelSetResponse>,
   errors: [BadRequestException, InternalServerErrorException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -4752,8 +4752,8 @@ export const getTrustedEntitySet: API.OperationMethod<
   GetTrustedEntitySetError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(376, __c47, 0) as any as S.Schema<GetTrustedEntitySetRequest>,
-  output: __S(373, __c46, 5) as any as S.Schema<GetTrustedEntitySetResponse>,
+  input: __S(3104, __c97, 0) as any as S.Schema<GetTrustedEntitySetRequest>,
+  output: __S(3040, __c95, 0) as any as S.Schema<GetTrustedEntitySetResponse>,
   errors: [BadRequestException, InternalServerErrorException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -4774,8 +4774,8 @@ export const getUsageStatistics: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(378, __c47, 2) as any as S.Schema<GetUsageStatisticsRequest>,
-  output: __S(391, __c48, 7) as any as S.Schema<GetUsageStatisticsResponse>,
+  input: __S(3137, __c98, 1) as any as S.Schema<GetUsageStatisticsRequest>,
+  output: __S(3150, __c98, 14) as any as S.Schema<GetUsageStatisticsResponse>,
   errors: [BadRequestException, InternalServerErrorException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -4805,8 +4805,8 @@ export const inviteMembers: API.OperationMethod<
   InviteMembersError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(392, __c49, 0) as any as S.Schema<InviteMembersRequest>,
-  output: __S(47, __c5, 7) as any as S.Schema<InviteMembersResponse>,
+  input: __S(3168, __c99, 0) as any as S.Schema<InviteMembersRequest>,
+  output: __S(704, __c22, 0) as any as S.Schema<InviteMembersResponse>,
   errors: [BadRequestException, InternalServerErrorException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -4826,8 +4826,8 @@ export const listCoverage: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   CoverageResource
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(394, __c49, 2) as any as S.Schema<ListCoverageRequest>,
-  output: __S(405, __c50, 5) as any as S.Schema<ListCoverageResponse>,
+  input: __S(3201, __c100, 1) as any as S.Schema<ListCoverageRequest>,
+  output: __S(3212, __c100, 12) as any as S.Schema<ListCoverageResponse>,
   errors: [BadRequestException, InternalServerErrorException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -4855,8 +4855,8 @@ export const listCustomDetectionRuleAssociations: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   AssociationSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(406, __c50, 6) as any as S.Schema<ListCustomDetectionRuleAssociationsRequest>,
-  output: __S(409, __c51, 1) as any as S.Schema<ListCustomDetectionRuleAssociationsResponse>,
+  input: __S(3232, __c101, 0) as any as S.Schema<ListCustomDetectionRuleAssociationsRequest>,
+  output: __S(3235, __c101, 3) as any as S.Schema<ListCustomDetectionRuleAssociationsResponse>,
   errors: [AccessDeniedException, BadRequestException, InternalServerErrorException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -4884,8 +4884,8 @@ export const listCustomDetectionRuleOrgConfigurations: API.PaginatedOperationMet
   Credentials | HttpClient.HttpClient,
   DetectionRuleOrgConfigurationSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(410, __c51, 2) as any as S.Schema<ListCustomDetectionRuleOrgConfigurationsRequest>,
-  output: __S(413, __c51, 5) as any as S.Schema<ListCustomDetectionRuleOrgConfigurationsResponse>,
+  input: __S(3264, __c102, 0) as any as S.Schema<ListCustomDetectionRuleOrgConfigurationsRequest>,
+  output: __S(3267, __c102, 3) as any as S.Schema<ListCustomDetectionRuleOrgConfigurationsResponse>,
   errors: [AccessDeniedException, BadRequestException, InternalServerErrorException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -4913,8 +4913,8 @@ export const listCustomDetectionRules: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   RuleSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(416, __c52, 0) as any as S.Schema<ListCustomDetectionRulesRequest>,
-  output: __S(419, __c52, 3) as any as S.Schema<ListCustomDetectionRulesResponse>,
+  input: __S(3362, __c105, 2) as any as S.Schema<ListCustomDetectionRulesRequest>,
+  output: __S(3365, __c105, 5) as any as S.Schema<ListCustomDetectionRulesResponse>,
   errors: [AccessDeniedException, BadRequestException, InternalServerErrorException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -4938,8 +4938,8 @@ export const listDetectors: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   DetectorId
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(420, __c52, 4) as any as S.Schema<ListDetectorsRequest>,
-  output: __S(421, __c52, 5) as any as S.Schema<ListDetectorsResponse>,
+  input: __S(3392, __c106, 0) as any as S.Schema<ListDetectorsRequest>,
+  output: __S(3393, __c106, 1) as any as S.Schema<ListDetectorsResponse>,
   errors: [BadRequestException, InternalServerErrorException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -4963,8 +4963,8 @@ export const listFilters: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   FilterName
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(422, __c52, 6) as any as S.Schema<ListFiltersRequest>,
-  output: __S(423, __c52, 7) as any as S.Schema<ListFiltersResponse>,
+  input: __S(3424, __c107, 0) as any as S.Schema<ListFiltersRequest>,
+  output: __S(3425, __c107, 1) as any as S.Schema<ListFiltersResponse>,
   errors: [BadRequestException, InternalServerErrorException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -4990,8 +4990,8 @@ export const listFindings: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   FindingId
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(424, __c53, 0) as any as S.Schema<ListFindingsRequest>,
-  output: __S(425, __c53, 1) as any as S.Schema<ListFindingsResponse>,
+  input: __S(3456, __c108, 0) as any as S.Schema<ListFindingsRequest>,
+  output: __S(3457, __c108, 1) as any as S.Schema<ListFindingsResponse>,
   errors: [BadRequestException, InternalServerErrorException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -5023,8 +5023,8 @@ export const listInvestigations: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   InvestigationSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(427, __c53, 3) as any as S.Schema<ListInvestigationsRequest>,
-  output: __S(430, __c53, 6) as any as S.Schema<ListInvestigationsResponse>,
+  input: __S(3489, __c109, 1) as any as S.Schema<ListInvestigationsRequest>,
+  output: __S(3492, __c109, 4) as any as S.Schema<ListInvestigationsResponse>,
   errors: [AccessDeniedException, BadRequestException, InternalServerErrorException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -5051,8 +5051,8 @@ export const listInvitations: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   Invitation
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(431, __c53, 7) as any as S.Schema<ListInvitationsRequest>,
-  output: __S(433, __c54, 1) as any as S.Schema<ListInvitationsResponse>,
+  input: __S(3520, __c110, 0) as any as S.Schema<ListInvitationsRequest>,
+  output: __S(3522, __c110, 2) as any as S.Schema<ListInvitationsResponse>,
   errors: [BadRequestException, InternalServerErrorException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -5076,8 +5076,8 @@ export const listIPSets: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   string
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(434, __c54, 2) as any as S.Schema<ListIPSetsRequest>,
-  output: __S(435, __c54, 3) as any as S.Schema<ListIPSetsResponse>,
+  input: __S(3552, __c111, 0) as any as S.Schema<ListIPSetsRequest>,
+  output: __S(3553, __c111, 1) as any as S.Schema<ListIPSetsResponse>,
   errors: [BadRequestException, InternalServerErrorException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -5104,8 +5104,8 @@ export const listMalwareProtectionPlans: API.OperationMethod<
   ListMalwareProtectionPlansError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(436, __c54, 4) as any as S.Schema<ListMalwareProtectionPlansRequest>,
-  output: __S(438, __c54, 6) as any as S.Schema<ListMalwareProtectionPlansResponse>,
+  input: __S(3584, __c112, 0) as any as S.Schema<ListMalwareProtectionPlansRequest>,
+  output: __S(3586, __c112, 2) as any as S.Schema<ListMalwareProtectionPlansResponse>,
   errors: [AccessDeniedException, BadRequestException, InternalServerErrorException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -5126,8 +5126,8 @@ export const listMalwareScans: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   MalwareScan
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(442, __c55, 2) as any as S.Schema<ListMalwareScansRequest>,
-  output: __S(445, __c55, 5) as any as S.Schema<ListMalwareScansResponse>,
+  input: __S(3619, __c113, 3) as any as S.Schema<ListMalwareScansRequest>,
+  output: __S(3622, __c113, 6) as any as S.Schema<ListMalwareScansResponse>,
   errors: [BadRequestException, InternalServerErrorException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -5151,8 +5151,8 @@ export const listMembers: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   Member
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(446, __c55, 6) as any as S.Schema<ListMembersRequest>,
-  output: __S(447, __c55, 7) as any as S.Schema<ListMembersResponse>,
+  input: __S(3648, __c114, 0) as any as S.Schema<ListMembersRequest>,
+  output: __S(3649, __c114, 1) as any as S.Schema<ListMembersResponse>,
   errors: [BadRequestException, InternalServerErrorException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -5179,8 +5179,8 @@ export const listOrganizationAdminAccounts: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   AdminAccount
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(448, __c56, 0) as any as S.Schema<ListOrganizationAdminAccountsRequest>,
-  output: __S(451, __c56, 3) as any as S.Schema<ListOrganizationAdminAccountsResponse>,
+  input: __S(3776, __c118, 0) as any as S.Schema<ListOrganizationAdminAccountsRequest>,
+  output: __S(3779, __c118, 3) as any as S.Schema<ListOrganizationAdminAccountsResponse>,
   errors: [BadRequestException, InternalServerErrorException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -5207,8 +5207,8 @@ export const listPublishingDestinations: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(452, __c56, 4) as any as S.Schema<ListPublishingDestinationsRequest>,
-  output: __S(455, __c56, 7) as any as S.Schema<ListPublishingDestinationsResponse>,
+  input: __S(3808, __c119, 0) as any as S.Schema<ListPublishingDestinationsRequest>,
+  output: __S(3811, __c119, 3) as any as S.Schema<ListPublishingDestinationsResponse>,
   errors: [BadRequestException, InternalServerErrorException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -5234,8 +5234,8 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(456, __c57, 0) as any as S.Schema<ListTagsForResourceRequest>,
-  output: __S(457, __c57, 1) as any as S.Schema<ListTagsForResourceResponse>,
+  input: __S(3840, __c120, 0) as any as S.Schema<ListTagsForResourceRequest>,
+  output: __S(3841, __c120, 1) as any as S.Schema<ListTagsForResourceResponse>,
   errors: [AccessDeniedException, BadRequestException, InternalServerErrorException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -5256,8 +5256,8 @@ export const listThreatEntitySets: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   string
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(458, __c57, 2) as any as S.Schema<ListThreatEntitySetsRequest>,
-  output: __S(459, __c57, 3) as any as S.Schema<ListThreatEntitySetsResponse>,
+  input: __S(3872, __c121, 0) as any as S.Schema<ListThreatEntitySetsRequest>,
+  output: __S(3873, __c121, 1) as any as S.Schema<ListThreatEntitySetsResponse>,
   errors: [BadRequestException, InternalServerErrorException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -5284,8 +5284,8 @@ export const listThreatIntelSets: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   string
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(460, __c57, 4) as any as S.Schema<ListThreatIntelSetsRequest>,
-  output: __S(461, __c57, 5) as any as S.Schema<ListThreatIntelSetsResponse>,
+  input: __S(3904, __c122, 0) as any as S.Schema<ListThreatIntelSetsRequest>,
+  output: __S(3905, __c122, 1) as any as S.Schema<ListThreatIntelSetsResponse>,
   errors: [BadRequestException, InternalServerErrorException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -5312,8 +5312,8 @@ export const listTrustedEntitySets: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   string
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(462, __c57, 6) as any as S.Schema<ListTrustedEntitySetsRequest>,
-  output: __S(463, __c57, 7) as any as S.Schema<ListTrustedEntitySetsResponse>,
+  input: __S(3936, __c123, 0) as any as S.Schema<ListTrustedEntitySetsRequest>,
+  output: __S(3937, __c123, 1) as any as S.Schema<ListTrustedEntitySetsResponse>,
   errors: [BadRequestException, InternalServerErrorException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -5342,8 +5342,8 @@ export const sendObjectMalwareScan: API.OperationMethod<
   SendObjectMalwareScanError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(465, __c58, 1) as any as S.Schema<SendObjectMalwareScanRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<SendObjectMalwareScanResponse>,
+  input: __S(3969, __c124, 1) as any as S.Schema<SendObjectMalwareScanRequest>,
+  output: __S(2912, __c91, 0) as any as S.Schema<SendObjectMalwareScanResponse>,
   errors: [AccessDeniedException, BadRequestException, InternalServerErrorException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -5368,8 +5368,8 @@ export const startMalwareScan: API.OperationMethod<
   StartMalwareScanError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(469, __c58, 5) as any as S.Schema<StartMalwareScanRequest>,
-  output: __S(470, __c58, 6) as any as S.Schema<StartMalwareScanResponse>,
+  input: __S(4003, __c125, 3) as any as S.Schema<StartMalwareScanRequest>,
+  output: __S(4004, __c125, 4) as any as S.Schema<StartMalwareScanResponse>,
   errors: [BadRequestException, ConflictException, InternalServerErrorException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -5389,8 +5389,8 @@ export const startMonitoringMembers: API.OperationMethod<
   StartMonitoringMembersError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(471, __c58, 7) as any as S.Schema<StartMonitoringMembersRequest>,
-  output: __S(59, __c7, 3) as any as S.Schema<StartMonitoringMembersResponse>,
+  input: __S(4032, __c126, 0) as any as S.Schema<StartMonitoringMembersRequest>,
+  output: __S(960, __c30, 0) as any as S.Schema<StartMonitoringMembersResponse>,
   errors: [BadRequestException, InternalServerErrorException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -5412,8 +5412,8 @@ export const stopMonitoringMembers: API.OperationMethod<
   StopMonitoringMembersError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(472, __c59, 0) as any as S.Schema<StopMonitoringMembersRequest>,
-  output: __S(59, __c7, 3) as any as S.Schema<StopMonitoringMembersResponse>,
+  input: __S(4064, __c127, 0) as any as S.Schema<StopMonitoringMembersRequest>,
+  output: __S(960, __c30, 0) as any as S.Schema<StopMonitoringMembersResponse>,
   errors: [BadRequestException, InternalServerErrorException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -5434,8 +5434,8 @@ export const tagResource: API.OperationMethod<
   TagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(473, __c59, 1) as any as S.Schema<TagResourceRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<TagResourceResponse>,
+  input: __S(4128, __c129, 0) as any as S.Schema<TagResourceRequest>,
+  output: __S(2912, __c91, 0) as any as S.Schema<TagResourceResponse>,
   errors: [AccessDeniedException, BadRequestException, InternalServerErrorException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -5455,8 +5455,8 @@ export const unarchiveFindings: API.OperationMethod<
   UnarchiveFindingsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(474, __c59, 2) as any as S.Schema<UnarchiveFindingsRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<UnarchiveFindingsResponse>,
+  input: __S(4160, __c130, 0) as any as S.Schema<UnarchiveFindingsRequest>,
+  output: __S(2912, __c91, 0) as any as S.Schema<UnarchiveFindingsResponse>,
   errors: [BadRequestException, InternalServerErrorException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -5477,8 +5477,8 @@ export const untagResource: API.OperationMethod<
   UntagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(475, __c59, 3) as any as S.Schema<UntagResourceRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<UntagResourceResponse>,
+  input: __S(4192, __c131, 0) as any as S.Schema<UntagResourceRequest>,
+  output: __S(2912, __c91, 0) as any as S.Schema<UntagResourceResponse>,
   errors: [AccessDeniedException, BadRequestException, InternalServerErrorException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -5501,8 +5501,8 @@ export const updateCustomDetectionRuleAssociation: API.OperationMethod<
   UpdateCustomDetectionRuleAssociationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(476, __c59, 4) as any as S.Schema<UpdateCustomDetectionRuleAssociationRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<UpdateCustomDetectionRuleAssociationResponse>,
+  input: __S(4224, __c132, 0) as any as S.Schema<UpdateCustomDetectionRuleAssociationRequest>,
+  output: __S(2464, __c77, 0) as any as S.Schema<UpdateCustomDetectionRuleAssociationResponse>,
   errors: [
     AccessDeniedException,
     BadRequestException,
@@ -5531,8 +5531,8 @@ export const updateCustomDetectionRuleOrgConfiguration: API.OperationMethod<
   UpdateCustomDetectionRuleOrgConfigurationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(477, __c59, 5) as any as S.Schema<UpdateCustomDetectionRuleOrgConfigurationRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<UpdateCustomDetectionRuleOrgConfigurationResponse>,
+  input: __S(4256, __c133, 0) as any as S.Schema<UpdateCustomDetectionRuleOrgConfigurationRequest>,
+  output: __S(2464, __c77, 0) as any as S.Schema<UpdateCustomDetectionRuleOrgConfigurationResponse>,
   errors: [
     AccessDeniedException,
     BadRequestException,
@@ -5559,8 +5559,8 @@ export const updateDetector: API.OperationMethod<
   UpdateDetectorError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(478, __c59, 6) as any as S.Schema<UpdateDetectorRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<UpdateDetectorResponse>,
+  input: __S(4288, __c134, 0) as any as S.Schema<UpdateDetectorRequest>,
+  output: __S(2912, __c91, 0) as any as S.Schema<UpdateDetectorResponse>,
   errors: [BadRequestException, InternalServerErrorException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -5577,8 +5577,8 @@ export const updateFilter: API.OperationMethod<
   UpdateFilterError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(479, __c59, 7) as any as S.Schema<UpdateFilterRequest>,
-  output: __S(31, __c3, 7) as any as S.Schema<UpdateFilterResponse>,
+  input: __S(4320, __c135, 0) as any as S.Schema<UpdateFilterRequest>,
+  output: __S(416, __c13, 0) as any as S.Schema<UpdateFilterResponse>,
   errors: [BadRequestException, InternalServerErrorException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -5598,8 +5598,8 @@ export const updateFindingsFeedback: API.OperationMethod<
   UpdateFindingsFeedbackError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(480, __c60, 0) as any as S.Schema<UpdateFindingsFeedbackRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<UpdateFindingsFeedbackResponse>,
+  input: __S(4352, __c136, 0) as any as S.Schema<UpdateFindingsFeedbackRequest>,
+  output: __S(2912, __c91, 0) as any as S.Schema<UpdateFindingsFeedbackResponse>,
   errors: [BadRequestException, InternalServerErrorException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -5620,8 +5620,8 @@ export const updateIPSet: API.OperationMethod<
   UpdateIPSetError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(481, __c60, 1) as any as S.Schema<UpdateIPSetRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<UpdateIPSetResponse>,
+  input: __S(4384, __c137, 0) as any as S.Schema<UpdateIPSetRequest>,
+  output: __S(2912, __c91, 0) as any as S.Schema<UpdateIPSetResponse>,
   errors: [AccessDeniedException, BadRequestException, InternalServerErrorException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -5643,8 +5643,8 @@ export const updateMalwareProtectionPlan: API.OperationMethod<
   UpdateMalwareProtectionPlanError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(484, __c60, 4) as any as S.Schema<UpdateMalwareProtectionPlanRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<UpdateMalwareProtectionPlanResponse>,
+  input: __S(4418, __c138, 2) as any as S.Schema<UpdateMalwareProtectionPlanRequest>,
+  output: __S(2464, __c77, 0) as any as S.Schema<UpdateMalwareProtectionPlanResponse>,
   errors: [
     AccessDeniedException,
     BadRequestException,
@@ -5671,8 +5671,8 @@ export const updateMalwareScanSettings: API.OperationMethod<
   UpdateMalwareScanSettingsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(485, __c60, 5) as any as S.Schema<UpdateMalwareScanSettingsRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<UpdateMalwareScanSettingsResponse>,
+  input: __S(128, __c4, 0) as any as S.Schema<UpdateMalwareScanSettingsRequest>,
+  output: __S(2464, __c77, 0) as any as S.Schema<UpdateMalwareScanSettingsResponse>,
   errors: [BadRequestException, InternalServerErrorException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -5696,8 +5696,8 @@ export const updateMemberDetectors: API.OperationMethod<
   UpdateMemberDetectorsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(489, __c61, 1) as any as S.Schema<UpdateMemberDetectorsRequest>,
-  output: __S(59, __c7, 3) as any as S.Schema<UpdateMemberDetectorsResponse>,
+  input: __S(163, __c5, 3) as any as S.Schema<UpdateMemberDetectorsRequest>,
+  output: __S(960, __c30, 0) as any as S.Schema<UpdateMemberDetectorsResponse>,
   errors: [BadRequestException, InternalServerErrorException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -5721,8 +5721,8 @@ export const updateOrganizationConfiguration: API.OperationMethod<
   UpdateOrganizationConfigurationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(494, __c61, 6) as any as S.Schema<UpdateOrganizationConfigurationRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<UpdateOrganizationConfigurationResponse>,
+  input: __S(196, __c6, 4) as any as S.Schema<UpdateOrganizationConfigurationRequest>,
+  output: __S(2464, __c77, 0) as any as S.Schema<UpdateOrganizationConfigurationResponse>,
   errors: [BadRequestException, InternalServerErrorException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -5742,8 +5742,8 @@ export const updatePublishingDestination: API.OperationMethod<
   UpdatePublishingDestinationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(495, __c61, 7) as any as S.Schema<UpdatePublishingDestinationRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<UpdatePublishingDestinationResponse>,
+  input: __S(224, __c7, 0) as any as S.Schema<UpdatePublishingDestinationRequest>,
+  output: __S(2464, __c77, 0) as any as S.Schema<UpdatePublishingDestinationResponse>,
   errors: [BadRequestException, InternalServerErrorException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -5763,8 +5763,8 @@ export const updateThreatEntitySet: API.OperationMethod<
   UpdateThreatEntitySetError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(496, __c62, 0) as any as S.Schema<UpdateThreatEntitySetRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<UpdateThreatEntitySetResponse>,
+  input: __S(256, __c8, 0) as any as S.Schema<UpdateThreatEntitySetRequest>,
+  output: __S(2912, __c91, 0) as any as S.Schema<UpdateThreatEntitySetResponse>,
   errors: [BadRequestException, InternalServerErrorException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -5785,8 +5785,8 @@ export const updateThreatIntelSet: API.OperationMethod<
   UpdateThreatIntelSetError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(497, __c62, 1) as any as S.Schema<UpdateThreatIntelSetRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<UpdateThreatIntelSetResponse>,
+  input: __S(288, __c9, 0) as any as S.Schema<UpdateThreatIntelSetRequest>,
+  output: __S(2912, __c91, 0) as any as S.Schema<UpdateThreatIntelSetResponse>,
   errors: [AccessDeniedException, BadRequestException, InternalServerErrorException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -5806,8 +5806,8 @@ export const updateTrustedEntitySet: API.OperationMethod<
   UpdateTrustedEntitySetError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(498, __c62, 2) as any as S.Schema<UpdateTrustedEntitySetRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<UpdateTrustedEntitySetResponse>,
+  input: __S(320, __c10, 0) as any as S.Schema<UpdateTrustedEntitySetRequest>,
+  output: __S(2912, __c91, 0) as any as S.Schema<UpdateTrustedEntitySetResponse>,
   errors: [BadRequestException, InternalServerErrorException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -5820,257 +5820,12 @@ function __c0(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          DetectorId: S.String.pipe(T.HttpLabel("DetectorId")),
-          AdministratorId: S.optional(S.String),
-          InvitationId: S.optional(S.String),
-        })
-          .pipe(S.encodeKeys({ AdministratorId: "administratorId", InvitationId: "invitationId" }))
-          .pipe(
-            T.all(
-              T.Http({ method: "POST", uri: "/detector/{DetectorId}/administrator" }),
-              svc,
-              auth,
-              proto,
-              ver,
-              rules,
-            ),
-          ),
-      ).annotate({
-        identifier: "AcceptAdministratorInvitationRequest",
-      });
-    case 1:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "AcceptAdministratorInvitationResponse",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          DetectorId: S.String.pipe(T.HttpLabel("DetectorId")),
-          MasterId: S.optional(S.String),
-          InvitationId: S.optional(S.String),
-        })
-          .pipe(S.encodeKeys({ MasterId: "masterId", InvitationId: "invitationId" }))
-          .pipe(
-            T.all(
-              T.Http({ method: "POST", uri: "/detector/{DetectorId}/master" }),
-              svc,
-              auth,
-              proto,
-              ver,
-              rules,
-            ),
-          ),
-      ).annotate({ identifier: "AcceptInvitationRequest" });
-    case 3:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "AcceptInvitationResponse",
-      });
-    case 4:
-      return S.Array(S.String);
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          DetectorId: S.String.pipe(T.HttpLabel("DetectorId")),
-          FindingIds: S.optional(__S(4, __c0, 4)),
-        })
-          .pipe(S.encodeKeys({ FindingIds: "findingIds" }))
-          .pipe(
-            T.all(
-              T.Http({ method: "POST", uri: "/detector/{DetectorId}/findings/archive" }),
-              svc,
-              auth,
-              proto,
-              ver,
-              rules,
-            ),
-          ),
-      ).annotate({ identifier: "ArchiveFindingsRequest" });
-    case 6:
-      return S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          RuleId: S.optional(S.String),
-          Mode: S.optional(S.String),
-          ClientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-          Tags: S.optional(__S(6, __c0, 6)),
-        })
-          .pipe(
-            S.encodeKeys({
-              RuleId: "ruleId",
-              Mode: "mode",
-              ClientToken: "clientToken",
-              Tags: "tags",
-            }),
-          )
-          .pipe(
-            T.all(
-              T.Http({ method: "POST", uri: "/custom-detection-rule/association" }),
-              svc,
-              auth,
-              proto,
-              ver,
-              rules,
-            ),
-          ),
-      ).annotate({
-        identifier: "CreateCustomDetectionRuleAssociationRequest",
-      });
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          AssociationId: S.optional(S.String),
-          Arn: S.optional(S.String),
-          RuleId: S.optional(S.String),
-          AccountId: S.optional(S.String),
-          Mode: S.optional(S.String),
-          CreatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          UpdatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          ExpiresAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-        }).pipe(
-          S.encodeKeys({
-            AssociationId: "associationId",
-            Arn: "arn",
-            RuleId: "ruleId",
-            AccountId: "accountId",
-            Mode: "mode",
-            CreatedAt: "createdAt",
-            UpdatedAt: "updatedAt",
-            ExpiresAt: "expiresAt",
-          }),
-        ),
-      ).annotate({ identifier: "AssociationDetail" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({ RuleAssociation: S.optional(__S(8, __c1, 0)) }).pipe(
-          S.encodeKeys({ RuleAssociation: "ruleAssociation" }),
-        ),
-      ).annotate({
-        identifier: "CreateCustomDetectionRuleAssociationResponse",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          RuleId: S.optional(S.String),
-          Mode: S.optional(S.String),
-          IncludeAccountIds: S.optional(__S(4, __c0, 4)),
-          ExcludeAccountIds: S.optional(__S(4, __c0, 4)),
-          ClientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-        })
-          .pipe(
-            S.encodeKeys({
-              RuleId: "ruleId",
-              Mode: "mode",
-              IncludeAccountIds: "includeAccountIds",
-              ExcludeAccountIds: "excludeAccountIds",
-              ClientToken: "clientToken",
-            }),
-          )
-          .pipe(
-            T.all(
-              T.Http({ method: "POST", uri: "/custom-detection-rule/org-configuration" }),
-              svc,
-              auth,
-              proto,
-              ver,
-              rules,
-            ),
-          ),
-      ).annotate({
-        identifier: "CreateCustomDetectionRuleOrgConfigurationRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({ Enable: S.optional(S.Boolean) }).pipe(S.encodeKeys({ Enable: "enable" })),
-      ).annotate({ identifier: "S3LogsConfiguration" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({ Enable: S.optional(S.Boolean) }).pipe(S.encodeKeys({ Enable: "enable" })),
-      ).annotate({
-        identifier: "KubernetesAuditLogsConfiguration",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({ AuditLogs: S.optional(__S(12, __c1, 4)) }).pipe(
-          S.encodeKeys({ AuditLogs: "auditLogs" }),
-        ),
-      ).annotate({ identifier: "KubernetesConfiguration" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({ EbsVolumes: S.optional(S.Boolean) }).pipe(
-          S.encodeKeys({ EbsVolumes: "ebsVolumes" }),
-        ),
-      ).annotate({
-        identifier: "ScanEc2InstanceWithFindings",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({ ScanEc2InstanceWithFindings: S.optional(__S(14, __c1, 6)) }).pipe(
-          S.encodeKeys({ ScanEc2InstanceWithFindings: "scanEc2InstanceWithFindings" }),
-        ),
-      ).annotate({
-        identifier: "MalwareProtectionConfiguration",
-      });
-  }
-}
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          S3Logs: S.optional(__S(11, __c1, 3)),
-          Kubernetes: S.optional(__S(13, __c1, 5)),
-          MalwareProtection: S.optional(__S(15, __c1, 7)),
-        }).pipe(
-          S.encodeKeys({
-            S3Logs: "s3Logs",
-            Kubernetes: "kubernetes",
-            MalwareProtection: "malwareProtection",
-          }),
-        ),
-      ).annotate({ identifier: "DataSourceConfigurations" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          Name: S.optional(S.String),
-          Status: S.optional(S.String),
-        }).pipe(S.encodeKeys({ Name: "name", Status: "status" })),
-      ).annotate({
-        identifier: "DetectorAdditionalConfiguration",
-      });
-    case 2:
-      return S.Array(__S(17, __c2, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          Name: S.optional(S.String),
-          Status: S.optional(S.String),
-          AdditionalConfiguration: S.optional(__S(18, __c2, 2)),
-        }).pipe(
-          S.encodeKeys({
-            Name: "name",
-            Status: "status",
-            AdditionalConfiguration: "additionalConfiguration",
-          }),
-        ),
-      ).annotate({
-        identifier: "DetectorFeatureConfiguration",
-      });
-    case 4:
-      return S.Array(__S(19, __c2, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
           Enable: S.optional(S.Boolean),
           ClientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
           FindingPublishingFrequency: S.optional(S.String),
-          DataSources: S.optional(__S(16, __c2, 0)),
-          Tags: S.optional(__S(6, __c0, 6)),
-          Features: S.optional(__S(20, __c2, 4)),
+          DataSources: S.optional(__S(101, __c3, 5)),
+          Tags: S.optional(__S(3712, __c116, 0)),
+          Features: S.optional(__S(66, __c2, 2)),
         })
           .pipe(
             S.encodeKeys({
@@ -6084,28 +5839,48 @@ function __c2(j: number): any {
           )
           .pipe(T.all(T.Http({ method: "POST", uri: "/detector" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "CreateDetectorRequest" });
-    case 6:
+    case 1:
+      return S.suspend(() =>
+        S.Struct({ MalwareProtection: S.optional(__S(34, __c1, 2)) }).pipe(
+          S.encodeKeys({ MalwareProtection: "malwareProtection" }),
+        ),
+      ).annotate({
+        identifier: "UnprocessedDataSourcesResult",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          DetectorId: S.optional(S.String),
+          UnprocessedDataSources: S.optional(__S(1, __c0, 1)),
+        }).pipe(
+          S.encodeKeys({
+            DetectorId: "detectorId",
+            UnprocessedDataSources: "unprocessedDataSources",
+          }),
+        ),
+      ).annotate({ identifier: "CreateDetectorResponse" });
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ Status: S.optional(S.String), Reason: S.optional(S.String) }).pipe(
           S.encodeKeys({ Status: "status", Reason: "reason" }),
         ),
       ).annotate({ identifier: "EbsVolumesResult" });
-    case 7:
+    case 1:
       return S.suspend(() =>
-        S.Struct({ EbsVolumes: S.optional(__S(22, __c2, 6)) }).pipe(
+        S.Struct({ EbsVolumes: S.optional(__S(32, __c1, 0)) }).pipe(
           S.encodeKeys({ EbsVolumes: "ebsVolumes" }),
         ),
       ).annotate({
         identifier: "ScanEc2InstanceWithFindingsResult",
       });
-  }
-}
-function __c3(j: number): any {
-  switch (j) {
-    case 0:
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          ScanEc2InstanceWithFindings: S.optional(__S(23, __c2, 7)),
+          ScanEc2InstanceWithFindings: S.optional(__S(33, __c1, 1)),
           ServiceRole: S.optional(S.String),
         }).pipe(
           S.encodeKeys({
@@ -6116,108 +5891,89 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "MalwareProtectionConfigurationResult",
       });
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(102, __c3, 6));
     case 1:
       return S.suspend(() =>
-        S.Struct({ MalwareProtection: S.optional(__S(24, __c3, 0)) }).pipe(
-          S.encodeKeys({ MalwareProtection: "malwareProtection" }),
+        S.Struct({
+          Name: S.optional(S.String),
+          Status: S.optional(S.String),
+          AdditionalConfiguration: S.optional(__S(64, __c2, 0)),
+        }).pipe(
+          S.encodeKeys({
+            Name: "name",
+            Status: "status",
+            AdditionalConfiguration: "additionalConfiguration",
+          }),
         ),
       ).annotate({
-        identifier: "UnprocessedDataSourcesResult",
+        identifier: "DetectorFeatureConfiguration",
+      });
+    case 2:
+      return S.Array(__S(65, __c2, 1));
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ Enable: S.optional(S.Boolean) }).pipe(S.encodeKeys({ Enable: "enable" })),
+      ).annotate({ identifier: "S3LogsConfiguration" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({ Enable: S.optional(S.Boolean) }).pipe(S.encodeKeys({ Enable: "enable" })),
+      ).annotate({
+        identifier: "KubernetesAuditLogsConfiguration",
       });
     case 2:
       return S.suspend(() =>
-        S.Struct({
-          DetectorId: S.optional(S.String),
-          UnprocessedDataSources: S.optional(__S(25, __c3, 1)),
-        }).pipe(
-          S.encodeKeys({
-            DetectorId: "detectorId",
-            UnprocessedDataSources: "unprocessedDataSources",
-          }),
+        S.Struct({ AuditLogs: S.optional(__S(97, __c3, 1)) }).pipe(
+          S.encodeKeys({ AuditLogs: "auditLogs" }),
         ),
-      ).annotate({ identifier: "CreateDetectorResponse" });
+      ).annotate({ identifier: "KubernetesConfiguration" });
     case 3:
       return S.suspend(() =>
-        S.Struct({
-          Eq: S.optional(__S(4, __c0, 4)),
-          Neq: S.optional(__S(4, __c0, 4)),
-          Gt: S.optional(S.Number),
-          Gte: S.optional(S.Number),
-          Lt: S.optional(S.Number),
-          Lte: S.optional(S.Number),
-          Equals: S.optional(__S(4, __c0, 4)),
-          NotEquals: S.optional(__S(4, __c0, 4)),
-          GreaterThan: S.optional(S.Number),
-          GreaterThanOrEqual: S.optional(S.Number),
-          LessThan: S.optional(S.Number),
-          LessThanOrEqual: S.optional(S.Number),
-          Matches: S.optional(__S(4, __c0, 4)),
-          NotMatches: S.optional(__S(4, __c0, 4)),
-        }).pipe(
-          S.encodeKeys({
-            Eq: "eq",
-            Neq: "neq",
-            Gt: "gt",
-            Gte: "gte",
-            Lt: "lt",
-            Lte: "lte",
-            Equals: "equals",
-            NotEquals: "notEquals",
-            GreaterThan: "greaterThan",
-            GreaterThanOrEqual: "greaterThanOrEqual",
-            LessThan: "lessThan",
-            LessThanOrEqual: "lessThanOrEqual",
-            Matches: "matches",
-            NotMatches: "notMatches",
-          }),
+        S.Struct({ EbsVolumes: S.optional(S.Boolean) }).pipe(
+          S.encodeKeys({ EbsVolumes: "ebsVolumes" }),
         ),
-      ).annotate({ identifier: "Condition" });
+      ).annotate({
+        identifier: "ScanEc2InstanceWithFindings",
+      });
     case 4:
-      return S.Record(S.String, /*@__PURE__*/ __S(27, __c3, 3).pipe(S.optional));
+      return S.suspend(() =>
+        S.Struct({ ScanEc2InstanceWithFindings: S.optional(__S(99, __c3, 3)) }).pipe(
+          S.encodeKeys({ ScanEc2InstanceWithFindings: "scanEc2InstanceWithFindings" }),
+        ),
+      ).annotate({
+        identifier: "MalwareProtectionConfiguration",
+      });
     case 5:
       return S.suspend(() =>
-        S.Struct({ Criterion: S.optional(__S(28, __c3, 4)) }).pipe(
-          S.encodeKeys({ Criterion: "criterion" }),
+        S.Struct({
+          S3Logs: S.optional(__S(96, __c3, 0)),
+          Kubernetes: S.optional(__S(98, __c3, 2)),
+          MalwareProtection: S.optional(__S(100, __c3, 4)),
+        }).pipe(
+          S.encodeKeys({
+            S3Logs: "s3Logs",
+            Kubernetes: "kubernetes",
+            MalwareProtection: "malwareProtection",
+          }),
         ),
-      ).annotate({ identifier: "FindingCriteria" });
+      ).annotate({ identifier: "DataSourceConfigurations" });
     case 6:
       return S.suspend(() =>
         S.Struct({
-          DetectorId: S.String.pipe(T.HttpLabel("DetectorId")),
           Name: S.optional(S.String),
-          Description: S.optional(S.String),
-          Action: S.optional(S.String),
-          Rank: S.optional(S.Number),
-          FindingCriteria: S.optional(__S(29, __c3, 5)),
-          ClientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-          Tags: S.optional(__S(6, __c0, 6)),
-        })
-          .pipe(
-            S.encodeKeys({
-              Name: "name",
-              Description: "description",
-              Action: "action",
-              Rank: "rank",
-              FindingCriteria: "findingCriteria",
-              ClientToken: "clientToken",
-              Tags: "tags",
-            }),
-          )
-          .pipe(
-            T.all(
-              T.Http({ method: "POST", uri: "/detector/{DetectorId}/filter" }),
-              svc,
-              auth,
-              proto,
-              ver,
-              rules,
-            ),
-          ),
-      ).annotate({ identifier: "CreateFilterRequest" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({ Name: S.optional(S.String) }).pipe(S.encodeKeys({ Name: "name" })),
-      ).annotate({ identifier: "CreateFilterResponse" });
+          Status: S.optional(S.String),
+        }).pipe(S.encodeKeys({ Name: "name", Status: "status" })),
+      ).annotate({
+        identifier: "DetectorAdditionalConfiguration",
+      });
   }
 }
 function __c4(j: number): any {
@@ -6226,5973 +5982,7 @@ function __c4(j: number): any {
       return S.suspend(() =>
         S.Struct({
           DetectorId: S.String.pipe(T.HttpLabel("DetectorId")),
-          TriggerPrompt: S.optional(S.String),
-          ClientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-        })
-          .pipe(S.encodeKeys({ TriggerPrompt: "triggerPrompt", ClientToken: "clientToken" }))
-          .pipe(
-            T.all(
-              T.Http({ method: "POST", uri: "/detector/{DetectorId}/investigation" }),
-              svc,
-              auth,
-              proto,
-              ver,
-              rules,
-            ),
-          ),
-      ).annotate({
-        identifier: "CreateInvestigationRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({ InvestigationId: S.optional(S.String) }).pipe(
-          S.encodeKeys({ InvestigationId: "investigationId" }),
-        ),
-      ).annotate({
-        identifier: "CreateInvestigationResponse",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          DetectorId: S.String.pipe(T.HttpLabel("DetectorId")),
-          Name: S.optional(S.String),
-          Format: S.optional(S.String),
-          Location: S.optional(S.String),
-          Activate: S.optional(S.Boolean),
-          ClientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-          Tags: S.optional(__S(6, __c0, 6)),
-          ExpectedBucketOwner: S.optional(S.String),
-        })
-          .pipe(
-            S.encodeKeys({
-              Name: "name",
-              Format: "format",
-              Location: "location",
-              Activate: "activate",
-              ClientToken: "clientToken",
-              Tags: "tags",
-              ExpectedBucketOwner: "expectedBucketOwner",
-            }),
-          )
-          .pipe(
-            T.all(
-              T.Http({ method: "POST", uri: "/detector/{DetectorId}/ipset" }),
-              svc,
-              auth,
-              proto,
-              ver,
-              rules,
-            ),
-          ),
-      ).annotate({ identifier: "CreateIPSetRequest" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({ IpSetId: S.optional(S.String) }).pipe(S.encodeKeys({ IpSetId: "ipSetId" })),
-      ).annotate({ identifier: "CreateIPSetResponse" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          BucketName: S.optional(S.String),
-          ObjectPrefixes: S.optional(__S(4, __c0, 4)),
-        }).pipe(S.encodeKeys({ BucketName: "bucketName", ObjectPrefixes: "objectPrefixes" })),
-      ).annotate({ identifier: "CreateS3BucketResource" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({ S3Bucket: S.optional(__S(36, __c4, 4)) }).pipe(
-          S.encodeKeys({ S3Bucket: "s3Bucket" }),
-        ),
-      ).annotate({ identifier: "CreateProtectedResource" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({ Status: S.optional(S.String) }).pipe(S.encodeKeys({ Status: "status" })),
-      ).annotate({
-        identifier: "MalwareProtectionPlanTaggingAction",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({ Tagging: S.optional(__S(38, __c4, 6)) }).pipe(
-          S.encodeKeys({ Tagging: "tagging" }),
-        ),
-      ).annotate({
-        identifier: "MalwareProtectionPlanActions",
-      });
-  }
-}
-function __c5(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          ClientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-          Role: S.optional(S.String),
-          ProtectedResource: S.optional(__S(37, __c4, 5)),
-          Actions: S.optional(__S(39, __c4, 7)),
-          Tags: S.optional(__S(6, __c0, 6)),
-        })
-          .pipe(
-            S.encodeKeys({
-              ClientToken: "clientToken",
-              Role: "role",
-              ProtectedResource: "protectedResource",
-              Actions: "actions",
-              Tags: "tags",
-            }),
-          )
-          .pipe(
-            T.all(
-              T.Http({ method: "POST", uri: "/malware-protection-plan" }),
-              svc,
-              auth,
-              proto,
-              ver,
-              rules,
-            ),
-          ),
-      ).annotate({
-        identifier: "CreateMalwareProtectionPlanRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({ MalwareProtectionPlanId: S.optional(S.String) }).pipe(
-          S.encodeKeys({ MalwareProtectionPlanId: "malwareProtectionPlanId" }),
-        ),
-      ).annotate({
-        identifier: "CreateMalwareProtectionPlanResponse",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({ AccountId: S.optional(S.String), Email: S.optional(SensitiveString) }).pipe(
-          S.encodeKeys({ AccountId: "accountId", Email: "email" }),
-        ),
-      ).annotate({ identifier: "AccountDetail" });
-    case 3:
-      return S.Array(__S(42, __c5, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          DetectorId: S.String.pipe(T.HttpLabel("DetectorId")),
-          AccountDetails: S.optional(__S(43, __c5, 3)),
-        })
-          .pipe(S.encodeKeys({ AccountDetails: "accountDetails" }))
-          .pipe(
-            T.all(
-              T.Http({ method: "POST", uri: "/detector/{DetectorId}/member" }),
-              svc,
-              auth,
-              proto,
-              ver,
-              rules,
-            ),
-          ),
-      ).annotate({ identifier: "CreateMembersRequest" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({ AccountId: S.optional(S.String), Result: S.optional(S.String) }).pipe(
-          S.encodeKeys({ AccountId: "accountId", Result: "result" }),
-        ),
-      ).annotate({ identifier: "UnprocessedAccount" });
-    case 6:
-      return S.Array(__S(45, __c5, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({ UnprocessedAccounts: S.optional(__S(46, __c5, 6)) }).pipe(
-          S.encodeKeys({ UnprocessedAccounts: "unprocessedAccounts" }),
-        ),
-      ).annotate({ identifier: "CreateMembersResponse" });
-  }
-}
-function __c6(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({ DestinationArn: S.optional(S.String), KmsKeyArn: S.optional(S.String) }).pipe(
-          S.encodeKeys({ DestinationArn: "destinationArn", KmsKeyArn: "kmsKeyArn" }),
-        ),
-      ).annotate({ identifier: "DestinationProperties" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          DetectorId: S.String.pipe(T.HttpLabel("DetectorId")),
-          DestinationType: S.optional(S.String),
-          DestinationProperties: S.optional(__S(48, __c6, 0)),
-          ClientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-          Tags: S.optional(__S(6, __c0, 6)),
-        })
-          .pipe(
-            S.encodeKeys({
-              DestinationType: "destinationType",
-              DestinationProperties: "destinationProperties",
-              ClientToken: "clientToken",
-              Tags: "tags",
-            }),
-          )
-          .pipe(
-            T.all(
-              T.Http({ method: "POST", uri: "/detector/{DetectorId}/publishingDestination" }),
-              svc,
-              auth,
-              proto,
-              ver,
-              rules,
-            ),
-          ),
-      ).annotate({
-        identifier: "CreatePublishingDestinationRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({ DestinationId: S.optional(S.String) }).pipe(
-          S.encodeKeys({ DestinationId: "destinationId" }),
-        ),
-      ).annotate({
-        identifier: "CreatePublishingDestinationResponse",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          DetectorId: S.String.pipe(T.HttpLabel("DetectorId")),
-          FindingTypes: S.optional(__S(4, __c0, 4)),
-        })
-          .pipe(S.encodeKeys({ FindingTypes: "findingTypes" }))
-          .pipe(
-            T.all(
-              T.Http({ method: "POST", uri: "/detector/{DetectorId}/findings/create" }),
-              svc,
-              auth,
-              proto,
-              ver,
-              rules,
-            ),
-          ),
-      ).annotate({
-        identifier: "CreateSampleFindingsRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          DetectorId: S.String.pipe(T.HttpLabel("DetectorId")),
-          Name: S.optional(S.String),
-          Format: S.optional(S.String),
-          Location: S.optional(S.String),
-          ExpectedBucketOwner: S.optional(S.String),
-          Activate: S.optional(S.Boolean),
-          ClientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-          Tags: S.optional(__S(6, __c0, 6)),
-        })
-          .pipe(
-            S.encodeKeys({
-              Name: "name",
-              Format: "format",
-              Location: "location",
-              ExpectedBucketOwner: "expectedBucketOwner",
-              Activate: "activate",
-              ClientToken: "clientToken",
-              Tags: "tags",
-            }),
-          )
-          .pipe(
-            T.all(
-              T.Http({ method: "POST", uri: "/detector/{DetectorId}/threatentityset" }),
-              svc,
-              auth,
-              proto,
-              ver,
-              rules,
-            ),
-          ),
-      ).annotate({
-        identifier: "CreateThreatEntitySetRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({ ThreatEntitySetId: S.optional(S.String) }).pipe(
-          S.encodeKeys({ ThreatEntitySetId: "threatEntitySetId" }),
-        ),
-      ).annotate({
-        identifier: "CreateThreatEntitySetResponse",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          DetectorId: S.String.pipe(T.HttpLabel("DetectorId")),
-          Name: S.optional(S.String),
-          Format: S.optional(S.String),
-          Location: S.optional(S.String),
-          Activate: S.optional(S.Boolean),
-          ClientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-          Tags: S.optional(__S(6, __c0, 6)),
-          ExpectedBucketOwner: S.optional(S.String),
-        })
-          .pipe(
-            S.encodeKeys({
-              Name: "name",
-              Format: "format",
-              Location: "location",
-              Activate: "activate",
-              ClientToken: "clientToken",
-              Tags: "tags",
-              ExpectedBucketOwner: "expectedBucketOwner",
-            }),
-          )
-          .pipe(
-            T.all(
-              T.Http({ method: "POST", uri: "/detector/{DetectorId}/threatintelset" }),
-              svc,
-              auth,
-              proto,
-              ver,
-              rules,
-            ),
-          ),
-      ).annotate({
-        identifier: "CreateThreatIntelSetRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({ ThreatIntelSetId: S.optional(S.String) }).pipe(
-          S.encodeKeys({ ThreatIntelSetId: "threatIntelSetId" }),
-        ),
-      ).annotate({
-        identifier: "CreateThreatIntelSetResponse",
-      });
-  }
-}
-function __c7(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          DetectorId: S.String.pipe(T.HttpLabel("DetectorId")),
-          Name: S.optional(S.String),
-          Format: S.optional(S.String),
-          Location: S.optional(S.String),
-          ExpectedBucketOwner: S.optional(S.String),
-          Activate: S.optional(S.Boolean),
-          ClientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-          Tags: S.optional(__S(6, __c0, 6)),
-        })
-          .pipe(
-            S.encodeKeys({
-              Name: "name",
-              Format: "format",
-              Location: "location",
-              ExpectedBucketOwner: "expectedBucketOwner",
-              Activate: "activate",
-              ClientToken: "clientToken",
-              Tags: "tags",
-            }),
-          )
-          .pipe(
-            T.all(
-              T.Http({ method: "POST", uri: "/detector/{DetectorId}/trustedentityset" }),
-              svc,
-              auth,
-              proto,
-              ver,
-              rules,
-            ),
-          ),
-      ).annotate({
-        identifier: "CreateTrustedEntitySetRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({ TrustedEntitySetId: S.optional(S.String) }).pipe(
-          S.encodeKeys({ TrustedEntitySetId: "trustedEntitySetId" }),
-        ),
-      ).annotate({
-        identifier: "CreateTrustedEntitySetResponse",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({ AccountIds: S.optional(__S(4, __c0, 4)) })
-          .pipe(S.encodeKeys({ AccountIds: "accountIds" }))
-          .pipe(
-            T.all(
-              T.Http({ method: "POST", uri: "/invitation/decline" }),
-              svc,
-              auth,
-              proto,
-              ver,
-              rules,
-            ),
-          ),
-      ).annotate({
-        identifier: "DeclineInvitationsRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({ UnprocessedAccounts: S.optional(__S(46, __c5, 6)) }).pipe(
-          S.encodeKeys({ UnprocessedAccounts: "unprocessedAccounts" }),
-        ),
-      ).annotate({
-        identifier: "DeclineInvitationsResponse",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          RuleId: S.String.pipe(T.HttpLabel("RuleId")),
-          AssociationId: S.String.pipe(T.HttpLabel("AssociationId")),
-        }).pipe(
-          T.all(
-            T.Http({
-              method: "DELETE",
-              uri: "/custom-detection-rule/rule/{RuleId}/association/{AssociationId}",
-            }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({
-        identifier: "DeleteCustomDetectionRuleAssociationRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          RuleId: S.String.pipe(T.HttpLabel("RuleId")),
-          Mode: S.optional(S.String).pipe(T.HttpQuery("mode")),
-        }).pipe(
-          T.all(
-            T.Http({ method: "DELETE", uri: "/custom-detection-rule/org-configuration/{RuleId}" }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({
-        identifier: "DeleteCustomDetectionRuleOrgConfigurationRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({ DetectorId: S.String.pipe(T.HttpLabel("DetectorId")) }).pipe(
-          T.all(
-            T.Http({ method: "DELETE", uri: "/detector/{DetectorId}" }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({ identifier: "DeleteDetectorRequest" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          DetectorId: S.String.pipe(T.HttpLabel("DetectorId")),
-          FilterName: S.String.pipe(T.HttpLabel("FilterName")),
-        }).pipe(
-          T.all(
-            T.Http({ method: "DELETE", uri: "/detector/{DetectorId}/filter/{FilterName}" }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({ identifier: "DeleteFilterRequest" });
-  }
-}
-function __c8(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({ AccountIds: S.optional(__S(4, __c0, 4)) })
-          .pipe(S.encodeKeys({ AccountIds: "accountIds" }))
-          .pipe(
-            T.all(
-              T.Http({ method: "POST", uri: "/invitation/delete" }),
-              svc,
-              auth,
-              proto,
-              ver,
-              rules,
-            ),
-          ),
-      ).annotate({ identifier: "DeleteInvitationsRequest" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          DetectorId: S.String.pipe(T.HttpLabel("DetectorId")),
-          IpSetId: S.optional(S.String).pipe(T.HttpLabel("IpSetId")),
-        }).pipe(
-          T.all(
-            T.Http({ method: "DELETE", uri: "/detector/{DetectorId}/ipset/{IpSetId}" }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({ identifier: "DeleteIPSetRequest" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          MalwareProtectionPlanId: S.optional(S.String).pipe(
-            T.HttpLabel("MalwareProtectionPlanId"),
-          ),
-        }).pipe(
-          T.all(
-            T.Http({ method: "DELETE", uri: "/malware-protection-plan/{MalwareProtectionPlanId}" }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({
-        identifier: "DeleteMalwareProtectionPlanRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          DetectorId: S.String.pipe(T.HttpLabel("DetectorId")),
-          AccountIds: S.optional(__S(4, __c0, 4)),
-        })
-          .pipe(S.encodeKeys({ AccountIds: "accountIds" }))
-          .pipe(
-            T.all(
-              T.Http({ method: "POST", uri: "/detector/{DetectorId}/member/delete" }),
-              svc,
-              auth,
-              proto,
-              ver,
-              rules,
-            ),
-          ),
-      ).annotate({ identifier: "DeleteMembersRequest" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          DetectorId: S.String.pipe(T.HttpLabel("DetectorId")),
-          DestinationId: S.String.pipe(T.HttpLabel("DestinationId")),
-        }).pipe(
-          T.all(
-            T.Http({
-              method: "DELETE",
-              uri: "/detector/{DetectorId}/publishingDestination/{DestinationId}",
-            }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({
-        identifier: "DeletePublishingDestinationRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          DetectorId: S.String.pipe(T.HttpLabel("DetectorId")),
-          ThreatEntitySetId: S.optional(S.String).pipe(T.HttpLabel("ThreatEntitySetId")),
-        }).pipe(
-          T.all(
-            T.Http({
-              method: "DELETE",
-              uri: "/detector/{DetectorId}/threatentityset/{ThreatEntitySetId}",
-            }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({
-        identifier: "DeleteThreatEntitySetRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          DetectorId: S.String.pipe(T.HttpLabel("DetectorId")),
-          ThreatIntelSetId: S.String.pipe(T.HttpLabel("ThreatIntelSetId")),
-        }).pipe(
-          T.all(
-            T.Http({
-              method: "DELETE",
-              uri: "/detector/{DetectorId}/threatintelset/{ThreatIntelSetId}",
-            }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({
-        identifier: "DeleteThreatIntelSetRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          DetectorId: S.String.pipe(T.HttpLabel("DetectorId")),
-          TrustedEntitySetId: S.String.pipe(T.HttpLabel("TrustedEntitySetId")),
-        }).pipe(
-          T.all(
-            T.Http({
-              method: "DELETE",
-              uri: "/detector/{DetectorId}/trustedentityset/{TrustedEntitySetId}",
-            }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({
-        identifier: "DeleteTrustedEntitySetRequest",
-      });
-  }
-}
-function __c9(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          EqualsValue: S.optional(S.String),
-          GreaterThan: S.optional(S.Number),
-          LessThan: S.optional(S.Number),
-        }).pipe(
-          S.encodeKeys({
-            EqualsValue: "equalsValue",
-            GreaterThan: "greaterThan",
-            LessThan: "lessThan",
-          }),
-        ),
-      ).annotate({ identifier: "FilterCondition" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          CriterionKey: S.optional(S.String),
-          FilterCondition: S.optional(__S(72, __c9, 0)),
-        }).pipe(S.encodeKeys({ CriterionKey: "criterionKey", FilterCondition: "filterCondition" })),
-      ).annotate({ identifier: "FilterCriterion" });
-    case 2:
-      return S.Array(__S(73, __c9, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({ FilterCriterion: S.optional(__S(74, __c9, 2)) }).pipe(
-          S.encodeKeys({ FilterCriterion: "filterCriterion" }),
-        ),
-      ).annotate({ identifier: "FilterCriteria" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({ AttributeName: S.optional(S.String), OrderBy: S.optional(S.String) }).pipe(
-          S.encodeKeys({ AttributeName: "attributeName", OrderBy: "orderBy" }),
-        ),
-      ).annotate({ identifier: "SortCriteria" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          DetectorId: S.String.pipe(T.HttpLabel("DetectorId")),
-          NextToken: S.optional(S.String),
-          MaxResults: S.optional(S.Number),
-          FilterCriteria: S.optional(__S(75, __c9, 3)),
-          SortCriteria: S.optional(__S(76, __c9, 4)),
-        })
-          .pipe(
-            S.encodeKeys({
-              NextToken: "nextToken",
-              MaxResults: "maxResults",
-              FilterCriteria: "filterCriteria",
-              SortCriteria: "sortCriteria",
-            }),
-          )
-          .pipe(
-            T.all(
-              T.Http({ method: "POST", uri: "/detector/{DetectorId}/malware-scans" }),
-              svc,
-              auth,
-              proto,
-              ver,
-              rules,
-            ),
-          ),
-      ).annotate({
-        identifier: "DescribeMalwareScansRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          GuardDutyFindingId: S.optional(S.String),
-          Description: S.optional(S.String),
-          TriggerType: S.optional(S.String),
-        }).pipe(
-          S.encodeKeys({
-            GuardDutyFindingId: "guardDutyFindingId",
-            Description: "description",
-            TriggerType: "triggerType",
-          }),
-        ),
-      ).annotate({ identifier: "TriggerDetails" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({ InstanceArn: S.optional(S.String) }).pipe(
-          S.encodeKeys({ InstanceArn: "instanceArn" }),
-        ),
-      ).annotate({ identifier: "ResourceDetails" });
-  }
-}
-function __c10(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({ ScanResult: S.optional(S.String) }).pipe(
-          S.encodeKeys({ ScanResult: "scanResult" }),
-        ),
-      ).annotate({ identifier: "ScanResultDetails" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          VolumeArn: S.optional(S.String),
-          VolumeType: S.optional(S.String),
-          DeviceName: S.optional(S.String),
-          VolumeSizeInGB: S.optional(S.Number),
-          EncryptionType: S.optional(S.String),
-          SnapshotArn: S.optional(S.String),
-          KmsKeyArn: S.optional(S.String),
-        }).pipe(
-          S.encodeKeys({
-            VolumeArn: "volumeArn",
-            VolumeType: "volumeType",
-            DeviceName: "deviceName",
-            VolumeSizeInGB: "volumeSizeInGB",
-            EncryptionType: "encryptionType",
-            SnapshotArn: "snapshotArn",
-            KmsKeyArn: "kmsKeyArn",
-          }),
-        ),
-      ).annotate({ identifier: "VolumeDetail" });
-    case 2:
-      return S.Array(__S(81, __c10, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          DetectorId: S.optional(S.String),
-          AdminDetectorId: S.optional(S.String),
-          ScanId: S.optional(S.String),
-          ScanStatus: S.optional(S.String),
-          FailureReason: S.optional(S.String),
-          ScanStartTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          ScanEndTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          TriggerDetails: S.optional(__S(78, __c9, 6)),
-          ResourceDetails: S.optional(__S(79, __c9, 7)),
-          ScanResultDetails: S.optional(__S(80, __c10, 0)),
-          AccountId: S.optional(S.String),
-          TotalBytes: S.optional(S.Number),
-          FileCount: S.optional(S.Number),
-          AttachedVolumes: S.optional(__S(82, __c10, 2)),
-          ScanType: S.optional(S.String),
-        }).pipe(
-          S.encodeKeys({
-            DetectorId: "detectorId",
-            AdminDetectorId: "adminDetectorId",
-            ScanId: "scanId",
-            ScanStatus: "scanStatus",
-            FailureReason: "failureReason",
-            ScanStartTime: "scanStartTime",
-            ScanEndTime: "scanEndTime",
-            TriggerDetails: "triggerDetails",
-            ResourceDetails: "resourceDetails",
-            ScanResultDetails: "scanResultDetails",
-            AccountId: "accountId",
-            TotalBytes: "totalBytes",
-            FileCount: "fileCount",
-            AttachedVolumes: "attachedVolumes",
-            ScanType: "scanType",
-          }),
-        ),
-      ).annotate({ identifier: "Scan" });
-    case 4:
-      return S.Array(__S(83, __c10, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({ Scans: S.optional(__S(84, __c10, 4)), NextToken: S.optional(S.String) }).pipe(
-          S.encodeKeys({ Scans: "scans", NextToken: "nextToken" }),
-        ),
-      ).annotate({
-        identifier: "DescribeMalwareScansResponse",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          DetectorId: S.String.pipe(T.HttpLabel("DetectorId")),
-          MaxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
-          NextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
-        }).pipe(
-          T.all(
-            T.Http({ method: "GET", uri: "/detector/{DetectorId}/admin" }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({
-        identifier: "DescribeOrganizationConfigurationRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({ AutoEnable: S.optional(S.Boolean) }).pipe(
-          S.encodeKeys({ AutoEnable: "autoEnable" }),
-        ),
-      ).annotate({
-        identifier: "OrganizationS3LogsConfigurationResult",
-      });
-  }
-}
-function __c11(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          AuditLogs: S.optional(__S(87, __c10, 7)),
-        }).pipe(S.encodeKeys({ AuditLogs: "auditLogs" })),
-      ).annotate({
-        identifier: "OrganizationKubernetesConfigurationResult",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({ EbsVolumes: S.optional(__S(87, __c10, 7)) }).pipe(
-          S.encodeKeys({ EbsVolumes: "ebsVolumes" }),
-        ),
-      ).annotate({
-        identifier: "OrganizationScanEc2InstanceWithFindingsResult",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          ScanEc2InstanceWithFindings: S.optional(__S(89, __c11, 1)),
-        }).pipe(S.encodeKeys({ ScanEc2InstanceWithFindings: "scanEc2InstanceWithFindings" })),
-      ).annotate({
-        identifier: "OrganizationMalwareProtectionConfigurationResult",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          S3Logs: S.optional(__S(87, __c10, 7)),
-          Kubernetes: S.optional(__S(88, __c11, 0)),
-          MalwareProtection: S.optional(__S(90, __c11, 2)),
-        }).pipe(
-          S.encodeKeys({
-            S3Logs: "s3Logs",
-            Kubernetes: "kubernetes",
-            MalwareProtection: "malwareProtection",
-          }),
-        ),
-      ).annotate({
-        identifier: "OrganizationDataSourceConfigurationsResult",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          Name: S.optional(S.String),
-          AutoEnable: S.optional(S.String),
-        }).pipe(S.encodeKeys({ Name: "name", AutoEnable: "autoEnable" })),
-      ).annotate({
-        identifier: "OrganizationAdditionalConfigurationResult",
-      });
-    case 5:
-      return S.Array(__S(92, __c11, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          Name: S.optional(S.String),
-          AutoEnable: S.optional(S.String),
-          AdditionalConfiguration: S.optional(__S(93, __c11, 5)),
-        }).pipe(
-          S.encodeKeys({
-            Name: "name",
-            AutoEnable: "autoEnable",
-            AdditionalConfiguration: "additionalConfiguration",
-          }),
-        ),
-      ).annotate({
-        identifier: "OrganizationFeatureConfigurationResult",
-      });
-    case 7:
-      return S.Array(__S(94, __c11, 6));
-  }
-}
-function __c12(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          AutoEnable: S.optional(S.Boolean),
-          MemberAccountLimitReached: S.optional(S.Boolean),
-          DataSources: S.optional(__S(91, __c11, 3)),
-          Features: S.optional(__S(95, __c11, 7)),
-          NextToken: S.optional(S.String),
-          AutoEnableOrganizationMembers: S.optional(S.String),
-        }).pipe(
-          S.encodeKeys({
-            AutoEnable: "autoEnable",
-            MemberAccountLimitReached: "memberAccountLimitReached",
-            DataSources: "dataSources",
-            Features: "features",
-            NextToken: "nextToken",
-            AutoEnableOrganizationMembers: "autoEnableOrganizationMembers",
-          }),
-        ),
-      ).annotate({
-        identifier: "DescribeOrganizationConfigurationResponse",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          DetectorId: S.String.pipe(T.HttpLabel("DetectorId")),
-          DestinationId: S.String.pipe(T.HttpLabel("DestinationId")),
-        }).pipe(
-          T.all(
-            T.Http({
-              method: "GET",
-              uri: "/detector/{DetectorId}/publishingDestination/{DestinationId}",
-            }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({
-        identifier: "DescribePublishingDestinationRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          DestinationId: S.optional(S.String),
-          DestinationType: S.optional(S.String),
-          Status: S.optional(S.String),
-          PublishingFailureStartTimestamp: S.optional(S.Number),
-          DestinationProperties: S.optional(__S(48, __c6, 0)),
-          Tags: S.optional(__S(6, __c0, 6)),
-        }).pipe(
-          S.encodeKeys({
-            DestinationId: "destinationId",
-            DestinationType: "destinationType",
-            Status: "status",
-            PublishingFailureStartTimestamp: "publishingFailureStartTimestamp",
-            DestinationProperties: "destinationProperties",
-            Tags: "tags",
-          }),
-        ),
-      ).annotate({
-        identifier: "DescribePublishingDestinationResponse",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({ AdminAccountId: S.optional(S.String) })
-          .pipe(S.encodeKeys({ AdminAccountId: "adminAccountId" }))
-          .pipe(
-            T.all(T.Http({ method: "POST", uri: "/admin/disable" }), svc, auth, proto, ver, rules),
-          ),
-      ).annotate({
-        identifier: "DisableOrganizationAdminAccountRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({ DetectorId: S.String.pipe(T.HttpLabel("DetectorId")) }).pipe(
-          T.all(
-            T.Http({ method: "POST", uri: "/detector/{DetectorId}/administrator/disassociate" }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({
-        identifier: "DisassociateFromAdministratorAccountRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({ DetectorId: S.String.pipe(T.HttpLabel("DetectorId")) }).pipe(
-          T.all(
-            T.Http({ method: "POST", uri: "/detector/{DetectorId}/master/disassociate" }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({
-        identifier: "DisassociateFromMasterAccountRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          DetectorId: S.String.pipe(T.HttpLabel("DetectorId")),
-          AccountIds: S.optional(__S(4, __c0, 4)),
-        })
-          .pipe(S.encodeKeys({ AccountIds: "accountIds" }))
-          .pipe(
-            T.all(
-              T.Http({ method: "POST", uri: "/detector/{DetectorId}/member/disassociate" }),
-              svc,
-              auth,
-              proto,
-              ver,
-              rules,
-            ),
-          ),
-      ).annotate({
-        identifier: "DisassociateMembersRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({ AdminAccountId: S.optional(S.String) })
-          .pipe(S.encodeKeys({ AdminAccountId: "adminAccountId" }))
-          .pipe(
-            T.all(T.Http({ method: "POST", uri: "/admin/enable" }), svc, auth, proto, ver, rules),
-          ),
-      ).annotate({
-        identifier: "EnableOrganizationAdminAccountRequest",
-      });
-  }
-}
-function __c13(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({ DetectorId: S.String.pipe(T.HttpLabel("DetectorId")) }).pipe(
-          T.all(
-            T.Http({ method: "GET", uri: "/detector/{DetectorId}/administrator" }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({
-        identifier: "GetAdministratorAccountRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          AccountId: S.optional(S.String),
-          InvitationId: S.optional(S.String),
-          RelationshipStatus: S.optional(S.String),
-          InvitedAt: S.optional(S.String),
-        }).pipe(
-          S.encodeKeys({
-            AccountId: "accountId",
-            InvitationId: "invitationId",
-            RelationshipStatus: "relationshipStatus",
-            InvitedAt: "invitedAt",
-          }),
-        ),
-      ).annotate({ identifier: "Administrator" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({ Administrator: S.optional(__S(105, __c13, 1)) }).pipe(
-          S.encodeKeys({ Administrator: "administrator" }),
-        ),
-      ).annotate({
-        identifier: "GetAdministratorAccountResponse",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          Equals: S.optional(__S(4, __c0, 4)),
-          NotEquals: S.optional(__S(4, __c0, 4)),
-        }).pipe(S.encodeKeys({ Equals: "equals", NotEquals: "notEquals" })),
-      ).annotate({ identifier: "CoverageFilterCondition" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          CriterionKey: S.optional(S.String),
-          FilterCondition: S.optional(__S(107, __c13, 3)),
-        }).pipe(S.encodeKeys({ CriterionKey: "criterionKey", FilterCondition: "filterCondition" })),
-      ).annotate({ identifier: "CoverageFilterCriterion" });
-    case 5:
-      return S.Array(__S(108, __c13, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({ FilterCriterion: S.optional(__S(109, __c13, 5)) }).pipe(
-          S.encodeKeys({ FilterCriterion: "filterCriterion" }),
-        ),
-      ).annotate({ identifier: "CoverageFilterCriteria" });
-    case 7:
-      return S.Array(S.String);
-  }
-}
-function __c14(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          DetectorId: S.String.pipe(T.HttpLabel("DetectorId")),
-          FilterCriteria: S.optional(__S(110, __c13, 6)),
-          StatisticsType: S.optional(__S(111, __c13, 7)),
-        })
-          .pipe(
-            S.encodeKeys({ FilterCriteria: "filterCriteria", StatisticsType: "statisticsType" }),
-          )
-          .pipe(
-            T.all(
-              T.Http({ method: "POST", uri: "/detector/{DetectorId}/coverage/statistics" }),
-              svc,
-              auth,
-              proto,
-              ver,
-              rules,
-            ),
-          ),
-      ).annotate({
-        identifier: "GetCoverageStatisticsRequest",
-      });
-    case 1:
-      return S.Record(S.String, /*@__PURE__*/ S.Number.pipe(S.optional));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          CountByResourceType: S.optional(__S(113, __c14, 1)),
-          CountByCoverageStatus: S.optional(__S(113, __c14, 1)),
-        }).pipe(
-          S.encodeKeys({
-            CountByResourceType: "countByResourceType",
-            CountByCoverageStatus: "countByCoverageStatus",
-          }),
-        ),
-      ).annotate({ identifier: "CoverageStatistics" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({ CoverageStatistics: S.optional(__S(114, __c14, 2)) }).pipe(
-          S.encodeKeys({ CoverageStatistics: "coverageStatistics" }),
-        ),
-      ).annotate({
-        identifier: "GetCoverageStatisticsResponse",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({ RuleId: S.String.pipe(T.HttpLabel("RuleId")) }).pipe(
-          T.all(
-            T.Http({ method: "GET", uri: "/custom-detection-rule/rule/{RuleId}" }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({
-        identifier: "GetCustomDetectionRuleRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({ Expression: S.optional(S.String) }).pipe(
-          S.encodeKeys({ Expression: "expression" }),
-        ),
-      ).annotate({ identifier: "RuleDefinition" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          RuleId: S.optional(S.String),
-          Arn: S.optional(S.String),
-          Name: S.optional(S.String),
-          Description: S.optional(S.String),
-          Severity: S.optional(S.String),
-          DataSource: S.optional(S.String),
-          Tactic: S.optional(S.String),
-          Technique: S.optional(S.String),
-          Service: S.optional(S.String),
-          Definition: S.optional(__S(117, __c14, 5)),
-          Language: S.optional(S.String),
-          Schema: S.optional(S.String),
-          CreatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          UpdatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-        }).pipe(
-          S.encodeKeys({
-            RuleId: "ruleId",
-            Arn: "arn",
-            Name: "name",
-            Description: "description",
-            Severity: "severity",
-            DataSource: "dataSource",
-            Tactic: "tactic",
-            Technique: "technique",
-            Service: "service",
-            Definition: "definition",
-            Language: "language",
-            Schema: "schema",
-            CreatedAt: "createdAt",
-            UpdatedAt: "updatedAt",
-          }),
-        ),
-      ).annotate({ identifier: "RuleDetail" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({ Rule: S.optional(__S(118, __c14, 6)) }).pipe(S.encodeKeys({ Rule: "rule" })),
-      ).annotate({
-        identifier: "GetCustomDetectionRuleResponse",
-      });
-  }
-}
-function __c15(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          RuleId: S.String.pipe(T.HttpLabel("RuleId")),
-          AssociationId: S.String.pipe(T.HttpLabel("AssociationId")),
-        }).pipe(
-          T.all(
-            T.Http({
-              method: "GET",
-              uri: "/custom-detection-rule/rule/{RuleId}/association/{AssociationId}",
-            }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({
-        identifier: "GetCustomDetectionRuleAssociationRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          RuleAssociation: S.optional(__S(8, __c1, 0)),
-          Tags: S.optional(__S(6, __c0, 6)),
-        }).pipe(S.encodeKeys({ RuleAssociation: "ruleAssociation", Tags: "tags" })),
-      ).annotate({
-        identifier: "GetCustomDetectionRuleAssociationResponse",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          RuleId: S.String.pipe(T.HttpLabel("RuleId")),
-          Mode: S.optional(S.String).pipe(T.HttpQuery("mode")),
-        }).pipe(
-          T.all(
-            T.Http({ method: "GET", uri: "/custom-detection-rule/org-configuration/{RuleId}" }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({
-        identifier: "GetCustomDetectionRuleOrgConfigurationRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          RuleId: S.optional(S.String),
-          Mode: S.optional(S.String),
-          Status: S.optional(S.String),
-          StatusReason: S.optional(S.String),
-          IncludeAccountIds: S.optional(__S(4, __c0, 4)),
-          ExcludeAccountIds: S.optional(__S(4, __c0, 4)),
-          CreatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          UpdatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          ExpiresAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-        }).pipe(
-          S.encodeKeys({
-            RuleId: "ruleId",
-            Mode: "mode",
-            Status: "status",
-            StatusReason: "statusReason",
-            IncludeAccountIds: "includeAccountIds",
-            ExcludeAccountIds: "excludeAccountIds",
-            CreatedAt: "createdAt",
-            UpdatedAt: "updatedAt",
-            ExpiresAt: "expiresAt",
-          }),
-        ),
-      ).annotate({
-        identifier: "DetectionRuleOrgConfiguration",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({ Configuration: S.optional(__S(123, __c15, 3)) }).pipe(
-          S.encodeKeys({ Configuration: "configuration" }),
-        ),
-      ).annotate({
-        identifier: "GetCustomDetectionRuleOrgConfigurationResponse",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({ DetectorId: S.String.pipe(T.HttpLabel("DetectorId")) }).pipe(
-          T.all(
-            T.Http({ method: "GET", uri: "/detector/{DetectorId}" }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({ identifier: "GetDetectorRequest" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({ Status: S.optional(S.String) }).pipe(S.encodeKeys({ Status: "status" })),
-      ).annotate({
-        identifier: "CloudTrailConfigurationResult",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({ AuditLogs: S.optional(__S(126, __c15, 6)) }).pipe(
-          S.encodeKeys({ AuditLogs: "auditLogs" }),
-        ),
-      ).annotate({
-        identifier: "KubernetesConfigurationResult",
-      });
-  }
-}
-function __c16(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          CloudTrail: S.optional(__S(126, __c15, 6)),
-          DNSLogs: S.optional(__S(126, __c15, 6)),
-          FlowLogs: S.optional(__S(126, __c15, 6)),
-          S3Logs: S.optional(__S(126, __c15, 6)),
-          Kubernetes: S.optional(__S(127, __c15, 7)),
-          MalwareProtection: S.optional(__S(24, __c3, 0)),
-        }).pipe(
-          S.encodeKeys({
-            CloudTrail: "cloudTrail",
-            DNSLogs: "dnsLogs",
-            FlowLogs: "flowLogs",
-            S3Logs: "s3Logs",
-            Kubernetes: "kubernetes",
-            MalwareProtection: "malwareProtection",
-          }),
-        ),
-      ).annotate({
-        identifier: "DataSourceConfigurationsResult",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          Name: S.optional(S.String),
-          Status: S.optional(S.String),
-          UpdatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          ManagedBy: S.optional(S.String),
-        }).pipe(
-          S.encodeKeys({
-            Name: "name",
-            Status: "status",
-            UpdatedAt: "updatedAt",
-            ManagedBy: "managedBy",
-          }),
-        ),
-      ).annotate({
-        identifier: "DetectorAdditionalConfigurationResult",
-      });
-    case 2:
-      return S.Array(__S(129, __c16, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          Name: S.optional(S.String),
-          Status: S.optional(S.String),
-          UpdatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          AdditionalConfiguration: S.optional(__S(130, __c16, 2)),
-          ManagedBy: S.optional(S.String),
-        }).pipe(
-          S.encodeKeys({
-            Name: "name",
-            Status: "status",
-            UpdatedAt: "updatedAt",
-            AdditionalConfiguration: "additionalConfiguration",
-            ManagedBy: "managedBy",
-          }),
-        ),
-      ).annotate({
-        identifier: "DetectorFeatureConfigurationResult",
-      });
-    case 4:
-      return S.Array(__S(131, __c16, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          CreatedAt: S.optional(S.String),
-          FindingPublishingFrequency: S.optional(S.String),
-          ServiceRole: S.optional(S.String),
-          Status: S.optional(S.String),
-          UpdatedAt: S.optional(S.String),
-          DataSources: S.optional(__S(128, __c16, 0)),
-          Tags: S.optional(__S(6, __c0, 6)),
-          Features: S.optional(__S(132, __c16, 4)),
-        }).pipe(
-          S.encodeKeys({
-            CreatedAt: "createdAt",
-            FindingPublishingFrequency: "findingPublishingFrequency",
-            ServiceRole: "serviceRole",
-            Status: "status",
-            UpdatedAt: "updatedAt",
-            DataSources: "dataSources",
-            Tags: "tags",
-            Features: "features",
-          }),
-        ),
-      ).annotate({ identifier: "GetDetectorResponse" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          DetectorId: S.String.pipe(T.HttpLabel("DetectorId")),
-          FilterName: S.String.pipe(T.HttpLabel("FilterName")),
-        }).pipe(
-          T.all(
-            T.Http({ method: "GET", uri: "/detector/{DetectorId}/filter/{FilterName}" }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({ identifier: "GetFilterRequest" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          Name: S.optional(S.String),
-          Description: S.optional(S.String),
-          Action: S.optional(S.String),
-          Rank: S.optional(S.Number),
-          FindingCriteria: S.optional(__S(29, __c3, 5)),
-          Tags: S.optional(__S(6, __c0, 6)),
-          CreatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          UpdatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          Version: S.optional(S.Number),
-        }).pipe(
-          S.encodeKeys({
-            Name: "name",
-            Description: "description",
-            Action: "action",
-            Rank: "rank",
-            FindingCriteria: "findingCriteria",
-            Tags: "tags",
-            CreatedAt: "createdAt",
-            UpdatedAt: "updatedAt",
-            Version: "version",
-          }),
-        ),
-      ).annotate({ identifier: "GetFilterResponse" });
-  }
-}
-function __c17(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          DetectorId: S.String.pipe(T.HttpLabel("DetectorId")),
-          FindingIds: S.optional(__S(4, __c0, 4)),
-          SortCriteria: S.optional(__S(76, __c9, 4)),
-        })
-          .pipe(S.encodeKeys({ FindingIds: "findingIds", SortCriteria: "sortCriteria" }))
-          .pipe(
-            T.all(
-              T.Http({ method: "POST", uri: "/detector/{DetectorId}/findings/get" }),
-              svc,
-              auth,
-              proto,
-              ver,
-              rules,
-            ),
-          ),
-      ).annotate({ identifier: "GetFindingsRequest" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          AccessKeyId: S.optional(S.String),
-          PrincipalId: S.optional(S.String),
-          UserName: S.optional(S.String),
-          UserType: S.optional(S.String),
-        }).pipe(
-          S.encodeKeys({
-            AccessKeyId: "accessKeyId",
-            PrincipalId: "principalId",
-            UserName: "userName",
-            UserType: "userType",
-          }),
-        ),
-      ).annotate({ identifier: "AccessKeyDetails" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({ Id: S.optional(S.String) }).pipe(S.encodeKeys({ Id: "id" })),
-      ).annotate({ identifier: "Owner" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({ Key: S.optional(S.String), Value: S.optional(S.String) }).pipe(
-          S.encodeKeys({ Key: "key", Value: "value" }),
-        ),
-      ).annotate({ identifier: "Tag" });
-    case 4:
-      return S.Array(__S(139, __c17, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          EncryptionType: S.optional(S.String),
-          KmsMasterKeyArn: S.optional(S.String),
-        }).pipe(
-          S.encodeKeys({ EncryptionType: "encryptionType", KmsMasterKeyArn: "kmsMasterKeyArn" }),
-        ),
-      ).annotate({
-        identifier: "DefaultServerSideEncryption",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          AllowsPublicReadAccess: S.optional(S.Boolean),
-          AllowsPublicWriteAccess: S.optional(S.Boolean),
-        }).pipe(
-          S.encodeKeys({
-            AllowsPublicReadAccess: "allowsPublicReadAccess",
-            AllowsPublicWriteAccess: "allowsPublicWriteAccess",
-          }),
-        ),
-      ).annotate({ identifier: "AccessControlList" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          IgnorePublicAcls: S.optional(S.Boolean),
-          RestrictPublicBuckets: S.optional(S.Boolean),
-          BlockPublicAcls: S.optional(S.Boolean),
-          BlockPublicPolicy: S.optional(S.Boolean),
-        }).pipe(
-          S.encodeKeys({
-            IgnorePublicAcls: "ignorePublicAcls",
-            RestrictPublicBuckets: "restrictPublicBuckets",
-            BlockPublicAcls: "blockPublicAcls",
-            BlockPublicPolicy: "blockPublicPolicy",
-          }),
-        ),
-      ).annotate({ identifier: "BlockPublicAccess" });
-  }
-}
-function __c18(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          AccessControlList: S.optional(__S(142, __c17, 6)),
-          BucketPolicy: S.optional(__S(142, __c17, 6)),
-          BlockPublicAccess: S.optional(__S(143, __c17, 7)),
-        }).pipe(
-          S.encodeKeys({
-            AccessControlList: "accessControlList",
-            BucketPolicy: "bucketPolicy",
-            BlockPublicAccess: "blockPublicAccess",
-          }),
-        ),
-      ).annotate({ identifier: "BucketLevelPermissions" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({ BlockPublicAccess: S.optional(__S(143, __c17, 7)) }).pipe(
-          S.encodeKeys({ BlockPublicAccess: "blockPublicAccess" }),
-        ),
-      ).annotate({ identifier: "AccountLevelPermissions" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          BucketLevelPermissions: S.optional(__S(144, __c18, 0)),
-          AccountLevelPermissions: S.optional(__S(145, __c18, 1)),
-        }).pipe(
-          S.encodeKeys({
-            BucketLevelPermissions: "bucketLevelPermissions",
-            AccountLevelPermissions: "accountLevelPermissions",
-          }),
-        ),
-      ).annotate({ identifier: "PermissionConfiguration" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          PermissionConfiguration: S.optional(__S(146, __c18, 2)),
-          EffectivePermission: S.optional(S.String),
-        }).pipe(
-          S.encodeKeys({
-            PermissionConfiguration: "permissionConfiguration",
-            EffectivePermission: "effectivePermission",
-          }),
-        ),
-      ).annotate({ identifier: "PublicAccess" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          ObjectArn: S.optional(S.String),
-          Key: S.optional(S.String),
-          ETag: S.optional(S.String),
-          Hash: S.optional(S.String),
-          VersionId: S.optional(S.String),
-        }).pipe(
-          S.encodeKeys({
-            ObjectArn: "objectArn",
-            Key: "key",
-            ETag: "eTag",
-            Hash: "hash",
-            VersionId: "versionId",
-          }),
-        ),
-      ).annotate({ identifier: "S3ObjectDetail" });
-    case 5:
-      return S.Array(__S(148, __c18, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          Arn: S.optional(S.String),
-          Name: S.optional(S.String),
-          Type: S.optional(S.String),
-          CreatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          Owner: S.optional(__S(138, __c17, 2)),
-          Tags: S.optional(__S(140, __c17, 4)),
-          DefaultServerSideEncryption: S.optional(__S(141, __c17, 5)),
-          PublicAccess: S.optional(__S(147, __c18, 3)),
-          S3ObjectDetails: S.optional(__S(149, __c18, 5)),
-        }).pipe(
-          S.encodeKeys({
-            Arn: "arn",
-            Name: "name",
-            Type: "type",
-            CreatedAt: "createdAt",
-            Owner: "owner",
-            Tags: "tags",
-            DefaultServerSideEncryption: "defaultServerSideEncryption",
-            PublicAccess: "publicAccess",
-            S3ObjectDetails: "s3ObjectDetails",
-          }),
-        ),
-      ).annotate({ identifier: "S3BucketDetail" });
-    case 7:
-      return S.Array(__S(150, __c18, 6));
-  }
-}
-function __c19(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({ Arn: S.optional(S.String), Id: S.optional(S.String) }).pipe(
-          S.encodeKeys({ Arn: "arn", Id: "id" }),
-        ),
-      ).annotate({ identifier: "IamInstanceProfile" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          PrivateDnsName: S.optional(S.String),
-          PrivateIpAddress: S.optional(SensitiveString),
-        }).pipe(
-          S.encodeKeys({ PrivateDnsName: "privateDnsName", PrivateIpAddress: "privateIpAddress" }),
-        ),
-      ).annotate({ identifier: "PrivateIpAddressDetails" });
-    case 2:
-      return S.Array(__S(153, __c19, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({ GroupId: S.optional(S.String), GroupName: S.optional(S.String) }).pipe(
-          S.encodeKeys({ GroupId: "groupId", GroupName: "groupName" }),
-        ),
-      ).annotate({ identifier: "SecurityGroup" });
-    case 4:
-      return S.Array(__S(155, __c19, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          Ipv6Addresses: S.optional(__S(4, __c0, 4)),
-          NetworkInterfaceId: S.optional(S.String),
-          PrivateDnsName: S.optional(S.String),
-          PrivateIpAddress: S.optional(SensitiveString),
-          PrivateIpAddresses: S.optional(__S(154, __c19, 2)),
-          PublicDnsName: S.optional(S.String),
-          PublicIp: S.optional(S.String),
-          SecurityGroups: S.optional(__S(156, __c19, 4)),
-          SubnetId: S.optional(S.String),
-          VpcId: S.optional(S.String),
-        }).pipe(
-          S.encodeKeys({
-            Ipv6Addresses: "ipv6Addresses",
-            NetworkInterfaceId: "networkInterfaceId",
-            PrivateDnsName: "privateDnsName",
-            PrivateIpAddress: "privateIpAddress",
-            PrivateIpAddresses: "privateIpAddresses",
-            PublicDnsName: "publicDnsName",
-            PublicIp: "publicIp",
-            SecurityGroups: "securityGroups",
-            SubnetId: "subnetId",
-            VpcId: "vpcId",
-          }),
-        ),
-      ).annotate({ identifier: "NetworkInterface" });
-    case 6:
-      return S.Array(__S(157, __c19, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({ Code: S.optional(S.String), ProductType: S.optional(S.String) }).pipe(
-          S.encodeKeys({ Code: "productCodeId", ProductType: "productCodeType" }),
-        ),
-      ).annotate({ identifier: "ProductCode" });
-  }
-}
-function __c20(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(159, __c19, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          AvailabilityZone: S.optional(S.String),
-          IamInstanceProfile: S.optional(__S(152, __c19, 0)),
-          ImageDescription: S.optional(S.String),
-          ImageId: S.optional(S.String),
-          InstanceId: S.optional(S.String),
-          InstanceState: S.optional(S.String),
-          InstanceType: S.optional(S.String),
-          OutpostArn: S.optional(S.String),
-          LaunchTime: S.optional(S.String),
-          NetworkInterfaces: S.optional(__S(158, __c19, 6)),
-          Platform: S.optional(S.String),
-          ProductCodes: S.optional(__S(160, __c20, 0)),
-          Tags: S.optional(__S(140, __c17, 4)),
-        }).pipe(
-          S.encodeKeys({
-            AvailabilityZone: "availabilityZone",
-            IamInstanceProfile: "iamInstanceProfile",
-            ImageDescription: "imageDescription",
-            ImageId: "imageId",
-            InstanceId: "instanceId",
-            InstanceState: "instanceState",
-            InstanceType: "instanceType",
-            OutpostArn: "outpostArn",
-            LaunchTime: "launchTime",
-            NetworkInterfaces: "networkInterfaces",
-            Platform: "platform",
-            ProductCodes: "productCodes",
-            Tags: "tags",
-          }),
-        ),
-      ).annotate({ identifier: "InstanceDetails" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          Name: S.optional(S.String),
-          Arn: S.optional(S.String),
-          VpcId: S.optional(S.String),
-          Status: S.optional(S.String),
-          Tags: S.optional(__S(140, __c17, 4)),
-          CreatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-        }).pipe(
-          S.encodeKeys({
-            Name: "name",
-            Arn: "arn",
-            VpcId: "vpcId",
-            Status: "status",
-            Tags: "tags",
-            CreatedAt: "createdAt",
-          }),
-        ),
-      ).annotate({ identifier: "EksClusterDetails" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({ Username: S.optional(S.String), Groups: S.optional(__S(4, __c0, 4)) }).pipe(
-          S.encodeKeys({ Username: "username", Groups: "groups" }),
-        ),
-      ).annotate({ identifier: "ImpersonatedUser" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          Username: S.optional(S.String),
-          Uid: S.optional(S.String),
-          Groups: S.optional(__S(4, __c0, 4)),
-          SessionName: S.optional(__S(4, __c0, 4)),
-          ImpersonatedUser: S.optional(__S(163, __c20, 3)),
-        }).pipe(
-          S.encodeKeys({
-            Username: "username",
-            Uid: "uid",
-            Groups: "groups",
-            SessionName: "sessionName",
-            ImpersonatedUser: "impersonatedUser",
-          }),
-        ),
-      ).annotate({ identifier: "KubernetesUserDetails" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({ Name: S.optional(S.String), MountPath: S.optional(S.String) }).pipe(
-          S.encodeKeys({ Name: "name", MountPath: "mountPath" }),
-        ),
-      ).annotate({ identifier: "VolumeMount" });
-    case 6:
-      return S.Array(__S(165, __c20, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          Privileged: S.optional(S.Boolean),
-          AllowPrivilegeEscalation: S.optional(S.Boolean),
-        }).pipe(
-          S.encodeKeys({
-            Privileged: "privileged",
-            AllowPrivilegeEscalation: "allowPrivilegeEscalation",
-          }),
-        ),
-      ).annotate({ identifier: "SecurityContext" });
-  }
-}
-function __c21(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          ContainerRuntime: S.optional(S.String),
-          Id: S.optional(S.String),
-          Name: S.optional(S.String),
-          Image: S.optional(S.String),
-          ImagePrefix: S.optional(S.String),
-          VolumeMounts: S.optional(__S(166, __c20, 6)),
-          SecurityContext: S.optional(__S(167, __c20, 7)),
-        }).pipe(
-          S.encodeKeys({
-            ContainerRuntime: "containerRuntime",
-            Id: "id",
-            Name: "name",
-            Image: "image",
-            ImagePrefix: "imagePrefix",
-            VolumeMounts: "volumeMounts",
-            SecurityContext: "securityContext",
-          }),
-        ),
-      ).annotate({ identifier: "Container" });
-    case 1:
-      return S.Array(__S(168, __c21, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({ Path: S.optional(S.String) }).pipe(S.encodeKeys({ Path: "path" })),
-      ).annotate({ identifier: "HostPath" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({ Name: S.optional(S.String), HostPath: S.optional(__S(170, __c21, 2)) }).pipe(
-          S.encodeKeys({ Name: "name", HostPath: "hostPath" }),
-        ),
-      ).annotate({ identifier: "Volume" });
-    case 4:
-      return S.Array(__S(171, __c21, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          Name: S.optional(S.String),
-          Type: S.optional(S.String),
-          Uid: S.optional(S.String),
-          Namespace: S.optional(S.String),
-          HostNetwork: S.optional(S.Boolean),
-          ServiceAccountName: S.optional(S.String),
-          Containers: S.optional(__S(169, __c21, 1)),
-          Volumes: S.optional(__S(172, __c21, 4)),
-          HostIPC: S.optional(S.Boolean),
-          HostPID: S.optional(S.Boolean),
-        }).pipe(
-          S.encodeKeys({
-            Name: "name",
-            Type: "type",
-            Uid: "uid",
-            Namespace: "namespace",
-            HostNetwork: "hostNetwork",
-            ServiceAccountName: "serviceAccountName",
-            Containers: "containers",
-            Volumes: "volumes",
-            HostIPC: "hostIPC",
-            HostPID: "hostPID",
-          }),
-        ),
-      ).annotate({
-        identifier: "KubernetesWorkloadDetails",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          KubernetesUserDetails: S.optional(__S(164, __c20, 4)),
-          KubernetesWorkloadDetails: S.optional(__S(173, __c21, 5)),
-        }).pipe(
-          S.encodeKeys({
-            KubernetesUserDetails: "kubernetesUserDetails",
-            KubernetesWorkloadDetails: "kubernetesWorkloadDetails",
-          }),
-        ),
-      ).annotate({ identifier: "KubernetesDetails" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          ScannedVolumeDetails: S.optional(__S(82, __c10, 2)),
-          SkippedVolumeDetails: S.optional(__S(82, __c10, 2)),
-        }).pipe(
-          S.encodeKeys({
-            ScannedVolumeDetails: "scannedVolumeDetails",
-            SkippedVolumeDetails: "skippedVolumeDetails",
-          }),
-        ),
-      ).annotate({ identifier: "EbsVolumeDetails" });
-  }
-}
-function __c22(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          Arn: S.optional(S.String),
-          DefinitionArn: S.optional(S.String),
-          Version: S.optional(S.String),
-          TaskCreatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          StartedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          StartedBy: S.optional(S.String),
-          Tags: S.optional(__S(140, __c17, 4)),
-          Volumes: S.optional(__S(172, __c21, 4)),
-          Containers: S.optional(__S(169, __c21, 1)),
-          Group: S.optional(S.String),
-          LaunchType: S.optional(S.String),
-        }).pipe(
-          S.encodeKeys({
-            Arn: "arn",
-            DefinitionArn: "definitionArn",
-            Version: "version",
-            TaskCreatedAt: "createdAt",
-            StartedAt: "startedAt",
-            StartedBy: "startedBy",
-            Tags: "tags",
-            Volumes: "volumes",
-            Containers: "containers",
-            Group: "group",
-            LaunchType: "launchType",
-          }),
-        ),
-      ).annotate({ identifier: "EcsTaskDetails" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          Name: S.optional(S.String),
-          Arn: S.optional(S.String),
-          Status: S.optional(S.String),
-          ActiveServicesCount: S.optional(S.Number),
-          RegisteredContainerInstancesCount: S.optional(S.Number),
-          RunningTasksCount: S.optional(S.Number),
-          Tags: S.optional(__S(140, __c17, 4)),
-          TaskDetails: S.optional(__S(176, __c22, 0)),
-        }).pipe(
-          S.encodeKeys({
-            Name: "name",
-            Arn: "arn",
-            Status: "status",
-            ActiveServicesCount: "activeServicesCount",
-            RegisteredContainerInstancesCount: "registeredContainerInstancesCount",
-            RunningTasksCount: "runningTasksCount",
-            Tags: "tags",
-            TaskDetails: "taskDetails",
-          }),
-        ),
-      ).annotate({ identifier: "EcsClusterDetails" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          SubnetIds: S.optional(__S(4, __c0, 4)),
-          VpcId: S.optional(S.String),
-          SecurityGroups: S.optional(__S(156, __c19, 4)),
-        }).pipe(
-          S.encodeKeys({
-            SubnetIds: "subnetIds",
-            VpcId: "vpcId",
-            SecurityGroups: "securityGroups",
-          }),
-        ),
-      ).annotate({ identifier: "VpcConfig" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          FunctionArn: S.optional(S.String),
-          FunctionName: S.optional(S.String),
-          Description: S.optional(S.String),
-          LastModifiedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          RevisionId: S.optional(S.String),
-          FunctionVersion: S.optional(S.String),
-          Role: S.optional(S.String),
-          VpcConfig: S.optional(__S(178, __c22, 2)),
-          Tags: S.optional(__S(140, __c17, 4)),
-        }).pipe(
-          S.encodeKeys({
-            FunctionArn: "functionArn",
-            FunctionName: "functionName",
-            Description: "description",
-            LastModifiedAt: "lastModifiedAt",
-            RevisionId: "revisionId",
-            FunctionVersion: "functionVersion",
-            Role: "role",
-            VpcConfig: "vpcConfig",
-            Tags: "tags",
-          }),
-        ),
-      ).annotate({ identifier: "LambdaDetails" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          DbInstanceIdentifier: S.optional(S.String),
-          Engine: S.optional(S.String),
-          EngineVersion: S.optional(S.String),
-          DbClusterIdentifier: S.optional(S.String),
-          DbInstanceArn: S.optional(S.String),
-          DbiResourceId: S.optional(S.String),
-          Tags: S.optional(__S(140, __c17, 4)),
-        }).pipe(
-          S.encodeKeys({
-            DbInstanceIdentifier: "dbInstanceIdentifier",
-            Engine: "engine",
-            EngineVersion: "engineVersion",
-            DbClusterIdentifier: "dbClusterIdentifier",
-            DbInstanceArn: "dbInstanceArn",
-            DbiResourceId: "dbiResourceId",
-            Tags: "tags",
-          }),
-        ),
-      ).annotate({ identifier: "RdsDbInstanceDetails" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          DbShardGroupIdentifier: S.optional(S.String),
-          DbShardGroupResourceId: S.optional(S.String),
-          DbShardGroupArn: S.optional(S.String),
-          Engine: S.optional(S.String),
-          EngineVersion: S.optional(S.String),
-          DbClusterIdentifier: S.optional(S.String),
-          Tags: S.optional(__S(140, __c17, 4)),
-        }).pipe(
-          S.encodeKeys({
-            DbShardGroupIdentifier: "dbShardGroupIdentifier",
-            DbShardGroupResourceId: "dbShardGroupResourceId",
-            DbShardGroupArn: "dbShardGroupArn",
-            Engine: "engine",
-            EngineVersion: "engineVersion",
-            DbClusterIdentifier: "dbClusterIdentifier",
-            Tags: "tags",
-          }),
-        ),
-      ).annotate({ identifier: "RdsLimitlessDbDetails" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          User: S.optional(S.String),
-          Application: S.optional(S.String),
-          Database: S.optional(S.String),
-          Ssl: S.optional(S.String),
-          AuthMethod: S.optional(S.String),
-        }).pipe(
-          S.encodeKeys({
-            User: "user",
-            Application: "application",
-            Database: "database",
-            Ssl: "ssl",
-            AuthMethod: "authMethod",
-          }),
-        ),
-      ).annotate({ identifier: "RdsDbUserDetails" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({ SnapshotArn: S.optional(S.String) }).pipe(
-          S.encodeKeys({ SnapshotArn: "snapshotArn" }),
-        ),
-      ).annotate({ identifier: "EbsSnapshotDetails" });
-  }
-}
-function __c23(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({ ImageArn: S.optional(S.String) }).pipe(S.encodeKeys({ ImageArn: "imageArn" })),
-      ).annotate({ identifier: "Ec2ImageDetails" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          StartTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          EndTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-        }).pipe(S.encodeKeys({ StartTime: "startTime", EndTime: "endTime" })),
-      ).annotate({
-        identifier: "ScanConfigurationContinuousScanDetails",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          RecoveryPointArn: S.optional(S.String),
-          BackupVaultName: S.optional(S.String),
-          ContinuousScanDetails: S.optional(__S(185, __c23, 1)),
-        }).pipe(
-          S.encodeKeys({
-            RecoveryPointArn: "recoveryPointArn",
-            BackupVaultName: "backupVaultName",
-            ContinuousScanDetails: "continuousScanDetails",
-          }),
-        ),
-      ).annotate({ identifier: "RecoveryPointDetails" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({ Arn: S.optional(S.String), Version: S.optional(S.String) }).pipe(
-          S.encodeKeys({ Arn: "arn", Version: "version" }),
-        ),
-      ).annotate({ identifier: "BedrockGuardrail" });
-    case 4:
-      return S.Array(__S(187, __c23, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          Type: S.optional(S.String),
-          Confidence: S.optional(S.String),
-          Action: S.optional(S.String),
-        }).pipe(S.encodeKeys({ Type: "type", Confidence: "confidence", Action: "action" })),
-      ).annotate({ identifier: "ContentPolicyFilter" });
-    case 6:
-      return S.Array(__S(189, __c23, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          GuardrailArn: S.optional(S.String),
-          GuardrailVersion: S.optional(S.String),
-          Guardrails: S.optional(__S(188, __c23, 4)),
-          GuardrailAction: S.optional(S.String),
-          GuardrailSource: S.optional(S.String),
-          ContentPolicyFilters: S.optional(__S(190, __c23, 6)),
-        }).pipe(
-          S.encodeKeys({
-            GuardrailArn: "guardrailArn",
-            GuardrailVersion: "guardrailVersion",
-            Guardrails: "guardrails",
-            GuardrailAction: "guardrailAction",
-            GuardrailSource: "guardrailSource",
-            ContentPolicyFilters: "contentPolicyFilters",
-          }),
-        ),
-      ).annotate({ identifier: "BedrockGuardrailDetails" });
-  }
-}
-function __c24(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({ ModelId: S.optional(S.String) }).pipe(S.encodeKeys({ ModelId: "modelId" })),
-      ).annotate({ identifier: "ModelDetail" });
-    case 1:
-      return S.Array(__S(192, __c24, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          AccessKeyDetails: S.optional(__S(137, __c17, 1)),
-          S3BucketDetails: S.optional(__S(151, __c18, 7)),
-          InstanceDetails: S.optional(__S(161, __c20, 1)),
-          EksClusterDetails: S.optional(__S(162, __c20, 2)),
-          KubernetesDetails: S.optional(__S(174, __c21, 6)),
-          ResourceType: S.optional(S.String),
-          EbsVolumeDetails: S.optional(__S(175, __c21, 7)),
-          EcsClusterDetails: S.optional(__S(177, __c22, 1)),
-          ContainerDetails: S.optional(__S(168, __c21, 0)),
-          LambdaDetails: S.optional(__S(179, __c22, 3)),
-          RdsDbInstanceDetails: S.optional(__S(180, __c22, 4)),
-          RdsLimitlessDbDetails: S.optional(__S(181, __c22, 5)),
-          RdsDbUserDetails: S.optional(__S(182, __c22, 6)),
-          EbsSnapshotDetails: S.optional(__S(183, __c22, 7)),
-          Ec2ImageDetails: S.optional(__S(184, __c23, 0)),
-          RecoveryPointDetails: S.optional(__S(186, __c23, 2)),
-          BedrockGuardrailDetails: S.optional(__S(191, __c23, 7)),
-          ModelDetails: S.optional(__S(193, __c24, 1)),
-        }).pipe(
-          S.encodeKeys({
-            AccessKeyDetails: "accessKeyDetails",
-            S3BucketDetails: "s3BucketDetails",
-            InstanceDetails: "instanceDetails",
-            EksClusterDetails: "eksClusterDetails",
-            KubernetesDetails: "kubernetesDetails",
-            ResourceType: "resourceType",
-            EbsVolumeDetails: "ebsVolumeDetails",
-            EcsClusterDetails: "ecsClusterDetails",
-            ContainerDetails: "containerDetails",
-            LambdaDetails: "lambdaDetails",
-            RdsDbInstanceDetails: "rdsDbInstanceDetails",
-            RdsLimitlessDbDetails: "rdsLimitlessDbDetails",
-            RdsDbUserDetails: "rdsDbUserDetails",
-            EbsSnapshotDetails: "ebsSnapshotDetails",
-            Ec2ImageDetails: "ec2ImageDetails",
-            RecoveryPointDetails: "recoveryPointDetails",
-            BedrockGuardrailDetails: "bedrockGuardrailDetails",
-            ModelDetails: "modelDetails",
-          }),
-        ),
-      ).annotate({ identifier: "Resource" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({ Domain: S.optional(S.String) }).pipe(S.encodeKeys({ Domain: "domain" })),
-      ).annotate({ identifier: "DomainDetails" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({ CityName: S.optional(S.String) }).pipe(S.encodeKeys({ CityName: "cityName" })),
-      ).annotate({ identifier: "City" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({ CountryCode: S.optional(S.String), CountryName: S.optional(S.String) }).pipe(
-          S.encodeKeys({ CountryCode: "countryCode", CountryName: "countryName" }),
-        ),
-      ).annotate({ identifier: "Country" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({ Lat: S.optional(S.Number), Lon: S.optional(S.Number) }).pipe(
-          S.encodeKeys({ Lat: "lat", Lon: "lon" }),
-        ),
-      ).annotate({ identifier: "GeoLocation" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          Asn: S.optional(S.String),
-          AsnOrg: S.optional(S.String),
-          Isp: S.optional(S.String),
-          Org: S.optional(S.String),
-        }).pipe(S.encodeKeys({ Asn: "asn", AsnOrg: "asnOrg", Isp: "isp", Org: "org" })),
-      ).annotate({ identifier: "Organization" });
-  }
-}
-function __c25(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          City: S.optional(__S(196, __c24, 4)),
-          Country: S.optional(__S(197, __c24, 5)),
-          GeoLocation: S.optional(__S(198, __c24, 6)),
-          IpAddressV4: S.optional(SensitiveString),
-          IpAddressV6: S.optional(SensitiveString),
-          Organization: S.optional(__S(199, __c24, 7)),
-        }).pipe(
-          S.encodeKeys({
-            City: "city",
-            Country: "country",
-            GeoLocation: "geoLocation",
-            IpAddressV4: "ipAddressV4",
-            IpAddressV6: "ipAddressV6",
-            Organization: "organization",
-          }),
-        ),
-      ).annotate({ identifier: "RemoteIpDetails" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          AccountId: S.optional(S.String),
-          Affiliated: S.optional(S.Boolean),
-          AwsServiceName: S.optional(S.String),
-        }).pipe(
-          S.encodeKeys({
-            AccountId: "accountId",
-            Affiliated: "affiliated",
-            AwsServiceName: "awsServiceName",
-          }),
-        ),
-      ).annotate({ identifier: "RemoteAccountDetails" });
-    case 2:
-      return S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          Api: S.optional(S.String),
-          CallerType: S.optional(S.String),
-          DomainDetails: S.optional(__S(195, __c24, 3)),
-          ErrorCode: S.optional(S.String),
-          UserAgent: S.optional(S.String),
-          RemoteIpDetails: S.optional(__S(200, __c25, 0)),
-          ServiceName: S.optional(S.String),
-          RemoteAccountDetails: S.optional(__S(201, __c25, 1)),
-          AffectedResources: S.optional(__S(202, __c25, 2)),
-        }).pipe(
-          S.encodeKeys({
-            Api: "api",
-            CallerType: "callerType",
-            DomainDetails: "domainDetails",
-            ErrorCode: "errorCode",
-            UserAgent: "userAgent",
-            RemoteIpDetails: "remoteIpDetails",
-            ServiceName: "serviceName",
-            RemoteAccountDetails: "remoteAccountDetails",
-            AffectedResources: "affectedResources",
-          }),
-        ),
-      ).annotate({ identifier: "AwsApiCallAction" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          Domain: S.optional(S.String),
-          Protocol: S.optional(S.String),
-          Blocked: S.optional(S.Boolean),
-          DomainWithSuffix: S.optional(S.String),
-          VpcOwnerAccountId: S.optional(S.String),
-        }).pipe(
-          S.encodeKeys({
-            Domain: "domain",
-            Protocol: "protocol",
-            Blocked: "blocked",
-            DomainWithSuffix: "domainWithSuffix",
-            VpcOwnerAccountId: "vpcOwnerAccountId",
-          }),
-        ),
-      ).annotate({ identifier: "DnsRequestAction" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({ Port: S.optional(S.Number), PortName: S.optional(S.String) }).pipe(
-          S.encodeKeys({ Port: "port", PortName: "portName" }),
-        ),
-      ).annotate({ identifier: "LocalPortDetails" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          IpAddressV4: S.optional(SensitiveString),
-          IpAddressV6: S.optional(SensitiveString),
-        }).pipe(S.encodeKeys({ IpAddressV4: "ipAddressV4", IpAddressV6: "ipAddressV6" })),
-      ).annotate({ identifier: "LocalIpDetails" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          Blocked: S.optional(S.Boolean),
-          ConnectionDirection: S.optional(S.String),
-          LocalPortDetails: S.optional(__S(205, __c25, 5)),
-          Protocol: S.optional(S.String),
-          LocalIpDetails: S.optional(__S(206, __c25, 6)),
-          LocalNetworkInterface: S.optional(S.String),
-          RemoteIpDetails: S.optional(__S(200, __c25, 0)),
-          RemotePortDetails: S.optional(__S(205, __c25, 5)),
-        }).pipe(
-          S.encodeKeys({
-            Blocked: "blocked",
-            ConnectionDirection: "connectionDirection",
-            LocalPortDetails: "localPortDetails",
-            Protocol: "protocol",
-            LocalIpDetails: "localIpDetails",
-            LocalNetworkInterface: "localNetworkInterface",
-            RemoteIpDetails: "remoteIpDetails",
-            RemotePortDetails: "remotePortDetails",
-          }),
-        ),
-      ).annotate({ identifier: "NetworkConnectionAction" });
-  }
-}
-function __c26(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          LocalPortDetails: S.optional(__S(205, __c25, 5)),
-          LocalIpDetails: S.optional(__S(206, __c25, 6)),
-          RemoteIpDetails: S.optional(__S(200, __c25, 0)),
-        }).pipe(
-          S.encodeKeys({
-            LocalPortDetails: "localPortDetails",
-            LocalIpDetails: "localIpDetails",
-            RemoteIpDetails: "remoteIpDetails",
-          }),
-        ),
-      ).annotate({ identifier: "PortProbeDetail" });
-    case 1:
-      return S.Array(__S(208, __c26, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          Blocked: S.optional(S.Boolean),
-          PortProbeDetails: S.optional(__S(209, __c26, 1)),
-        }).pipe(S.encodeKeys({ Blocked: "blocked", PortProbeDetails: "portProbeDetails" })),
-      ).annotate({ identifier: "PortProbeAction" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          RequestUri: S.optional(S.String),
-          Verb: S.optional(S.String),
-          Resource: S.optional(S.String),
-          Subresource: S.optional(S.String),
-          Namespace: S.optional(S.String),
-          ResourceName: S.optional(S.String),
-          SourceIps: S.optional(__S(4, __c0, 4)),
-          UserAgent: S.optional(S.String),
-          RemoteIpDetails: S.optional(__S(200, __c25, 0)),
-          StatusCode: S.optional(S.Number),
-          Parameters: S.optional(S.String),
-        }).pipe(
-          S.encodeKeys({
-            RequestUri: "requestUri",
-            Verb: "verb",
-            Resource: "resource",
-            Subresource: "subresource",
-            Namespace: "namespace",
-            ResourceName: "resourceName",
-            SourceIps: "sourceIPs",
-            UserAgent: "userAgent",
-            RemoteIpDetails: "remoteIpDetails",
-            StatusCode: "statusCode",
-            Parameters: "parameters",
-          }),
-        ),
-      ).annotate({ identifier: "KubernetesApiCallAction" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          Verb: S.optional(S.String),
-          Resource: S.optional(S.String),
-          Namespace: S.optional(S.String),
-          Allowed: S.optional(S.Boolean),
-        }).pipe(
-          S.encodeKeys({
-            Verb: "verb",
-            Resource: "resource",
-            Namespace: "namespace",
-            Allowed: "allowed",
-          }),
-        ),
-      ).annotate({
-        identifier: "KubernetesPermissionCheckedDetails",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          Kind: S.optional(S.String),
-          Name: S.optional(S.String),
-          Uid: S.optional(S.String),
-          RoleRefName: S.optional(S.String),
-          RoleRefKind: S.optional(S.String),
-        }).pipe(
-          S.encodeKeys({
-            Kind: "kind",
-            Name: "name",
-            Uid: "uid",
-            RoleRefName: "roleRefName",
-            RoleRefKind: "roleRefKind",
-          }),
-        ),
-      ).annotate({
-        identifier: "KubernetesRoleBindingDetails",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          Kind: S.optional(S.String),
-          Name: S.optional(S.String),
-          Uid: S.optional(S.String),
-        }).pipe(S.encodeKeys({ Kind: "kind", Name: "name", Uid: "uid" })),
-      ).annotate({ identifier: "KubernetesRoleDetails" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          User: S.optional(S.String),
-          Application: S.optional(S.String),
-          FailedLoginAttempts: S.optional(S.Number),
-          SuccessfulLoginAttempts: S.optional(S.Number),
-        }).pipe(
-          S.encodeKeys({
-            User: "user",
-            Application: "application",
-            FailedLoginAttempts: "failedLoginAttempts",
-            SuccessfulLoginAttempts: "successfulLoginAttempts",
-          }),
-        ),
-      ).annotate({ identifier: "LoginAttribute" });
-  }
-}
-function __c27(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(215, __c26, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          RemoteIpDetails: S.optional(__S(200, __c25, 0)),
-          LoginAttributes: S.optional(__S(216, __c27, 0)),
-        }).pipe(S.encodeKeys({ RemoteIpDetails: "remoteIpDetails" })),
-      ).annotate({ identifier: "RdsLoginAttemptAction" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          ActionType: S.optional(S.String),
-          AwsApiCallAction: S.optional(__S(203, __c25, 3)),
-          DnsRequestAction: S.optional(__S(204, __c25, 4)),
-          NetworkConnectionAction: S.optional(__S(207, __c25, 7)),
-          PortProbeAction: S.optional(__S(210, __c26, 2)),
-          KubernetesApiCallAction: S.optional(__S(211, __c26, 3)),
-          KubernetesPermissionCheckedDetails: S.optional(__S(212, __c26, 4)),
-          KubernetesRoleBindingDetails: S.optional(__S(213, __c26, 5)),
-          KubernetesRoleDetails: S.optional(__S(214, __c26, 6)),
-          RdsLoginAttemptAction: S.optional(__S(217, __c27, 1)),
-        }).pipe(
-          S.encodeKeys({
-            ActionType: "actionType",
-            AwsApiCallAction: "awsApiCallAction",
-            DnsRequestAction: "dnsRequestAction",
-            NetworkConnectionAction: "networkConnectionAction",
-            PortProbeAction: "portProbeAction",
-            KubernetesApiCallAction: "kubernetesApiCallAction",
-            KubernetesPermissionCheckedDetails: "kubernetesPermissionCheckedDetails",
-            KubernetesRoleBindingDetails: "kubernetesRoleBindingDetails",
-            KubernetesRoleDetails: "kubernetesRoleDetails",
-            RdsLoginAttemptAction: "rdsLoginAttemptAction",
-          }),
-        ),
-      ).annotate({ identifier: "Action" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          ThreatListName: S.optional(S.String),
-          ThreatNames: S.optional(__S(4, __c0, 4)),
-          ThreatFileSha256: S.optional(S.String),
-        }).pipe(
-          S.encodeKeys({
-            ThreatListName: "threatListName",
-            ThreatNames: "threatNames",
-            ThreatFileSha256: "threatFileSha256",
-          }),
-        ),
-      ).annotate({ identifier: "ThreatIntelligenceDetail" });
-    case 4:
-      return S.Array(__S(219, __c27, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({ ThreatIntelligenceDetails: S.optional(__S(220, __c27, 4)) }).pipe(
-          S.encodeKeys({ ThreatIntelligenceDetails: "threatIntelligenceDetails" }),
-        ),
-      ).annotate({ identifier: "Evidence" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({ Value: S.optional(S.String), Type: S.optional(S.String) }).pipe(
-          S.encodeKeys({ Value: "value", Type: "type" }),
-        ),
-      ).annotate({ identifier: "ServiceAdditionalInfo" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          TotalGb: S.optional(S.Number),
-          Files: S.optional(S.Number),
-          Volumes: S.optional(S.Number),
-        }).pipe(S.encodeKeys({ TotalGb: "totalGb", Files: "files", Volumes: "volumes" })),
-      ).annotate({ identifier: "ScannedItemCount" });
-  }
-}
-function __c28(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({ Files: S.optional(S.Number) }).pipe(S.encodeKeys({ Files: "files" })),
-      ).annotate({ identifier: "ThreatsDetectedItemCount" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          Severity: S.optional(S.String),
-          ThreatName: S.optional(S.String),
-          Count: S.optional(S.Number),
-        }).pipe(S.encodeKeys({ Severity: "severity", ThreatName: "threatName", Count: "count" })),
-      ).annotate({
-        identifier: "HighestSeverityThreatDetails",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          FilePath: S.optional(S.String),
-          VolumeArn: S.optional(S.String),
-          Hash: S.optional(S.String),
-          FileName: S.optional(S.String),
-        }).pipe(
-          S.encodeKeys({
-            FilePath: "filePath",
-            VolumeArn: "volumeArn",
-            Hash: "hash",
-            FileName: "fileName",
-          }),
-        ),
-      ).annotate({ identifier: "ScanFilePath" });
-    case 3:
-      return S.Array(__S(226, __c28, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          Name: S.optional(S.String),
-          Severity: S.optional(S.String),
-          ItemCount: S.optional(S.Number),
-          FilePaths: S.optional(__S(227, __c28, 3)),
-        }).pipe(
-          S.encodeKeys({
-            Name: "name",
-            Severity: "severity",
-            ItemCount: "itemCount",
-            FilePaths: "filePaths",
-          }),
-        ),
-      ).annotate({ identifier: "ScanThreatName" });
-    case 5:
-      return S.Array(__S(228, __c28, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          ItemCount: S.optional(S.Number),
-          UniqueThreatNameCount: S.optional(S.Number),
-          Shortened: S.optional(S.Boolean),
-          ThreatNames: S.optional(__S(229, __c28, 5)),
-        }).pipe(
-          S.encodeKeys({
-            ItemCount: "itemCount",
-            UniqueThreatNameCount: "uniqueThreatNameCount",
-            Shortened: "shortened",
-            ThreatNames: "threatNames",
-          }),
-        ),
-      ).annotate({ identifier: "ThreatDetectedByName" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          ScannedItemCount: S.optional(__S(223, __c27, 7)),
-          ThreatsDetectedItemCount: S.optional(__S(224, __c28, 0)),
-          HighestSeverityThreatDetails: S.optional(__S(225, __c28, 1)),
-          ThreatDetectedByName: S.optional(__S(230, __c28, 6)),
-        }).pipe(
-          S.encodeKeys({
-            ScannedItemCount: "scannedItemCount",
-            ThreatsDetectedItemCount: "threatsDetectedItemCount",
-            HighestSeverityThreatDetails: "highestSeverityThreatDetails",
-            ThreatDetectedByName: "threatDetectedByName",
-          }),
-        ),
-      ).annotate({ identifier: "ScanDetections" });
-  }
-}
-function __c29(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          ScanId: S.optional(S.String),
-          ScanStartedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          ScanCompletedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          TriggerFindingId: S.optional(S.String),
-          Sources: S.optional(__S(4, __c0, 4)),
-          ScanDetections: S.optional(__S(231, __c28, 7)),
-          ScanType: S.optional(S.String),
-        }).pipe(
-          S.encodeKeys({
-            ScanId: "scanId",
-            ScanStartedAt: "scanStartedAt",
-            ScanCompletedAt: "scanCompletedAt",
-            TriggerFindingId: "triggerFindingId",
-            Sources: "sources",
-            ScanDetections: "scanDetections",
-            ScanType: "scanType",
-          }),
-        ),
-      ).annotate({ identifier: "EbsVolumeScanDetails" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          StartTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          NamespacePid: S.optional(S.Number),
-          UserId: S.optional(S.Number),
-          Name: S.optional(S.String),
-          Pid: S.optional(S.Number),
-          Uuid: S.optional(S.String),
-          ExecutablePath: S.optional(S.String),
-          Euid: S.optional(S.Number),
-          ParentUuid: S.optional(S.String),
-        }).pipe(
-          S.encodeKeys({
-            StartTime: "startTime",
-            NamespacePid: "namespacePid",
-            UserId: "userId",
-            Name: "name",
-            Pid: "pid",
-            Uuid: "uuid",
-            ExecutablePath: "executablePath",
-            Euid: "euid",
-            ParentUuid: "parentUuid",
-          }),
-        ),
-      ).annotate({ identifier: "LineageObject" });
-    case 2:
-      return S.Array(__S(233, __c29, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          Name: S.optional(S.String),
-          ExecutablePath: S.optional(S.String),
-          ExecutableSha256: S.optional(S.String),
-          NamespacePid: S.optional(S.Number),
-          Pwd: S.optional(S.String),
-          Pid: S.optional(S.Number),
-          StartTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          Uuid: S.optional(S.String),
-          ParentUuid: S.optional(S.String),
-          User: S.optional(S.String),
-          UserId: S.optional(S.Number),
-          Euid: S.optional(S.Number),
-          Lineage: S.optional(__S(234, __c29, 2)),
-        }).pipe(
-          S.encodeKeys({
-            Name: "name",
-            ExecutablePath: "executablePath",
-            ExecutableSha256: "executableSha256",
-            NamespacePid: "namespacePid",
-            Pwd: "pwd",
-            Pid: "pid",
-            StartTime: "startTime",
-            Uuid: "uuid",
-            ParentUuid: "parentUuid",
-            User: "user",
-            UserId: "userId",
-            Euid: "euid",
-            Lineage: "lineage",
-          }),
-        ),
-      ).annotate({ identifier: "ProcessDetails" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          ModifyingProcess: S.optional(__S(235, __c29, 3)),
-          ModifiedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          ScriptPath: S.optional(S.String),
-          LibraryPath: S.optional(S.String),
-          LdPreloadValue: S.optional(S.String),
-          SocketPath: S.optional(S.String),
-          RuncBinaryPath: S.optional(S.String),
-          ReleaseAgentPath: S.optional(S.String),
-          MountSource: S.optional(S.String),
-          MountTarget: S.optional(S.String),
-          FileSystemType: S.optional(S.String),
-          Flags: S.optional(__S(4, __c0, 4)),
-          ModuleName: S.optional(S.String),
-          ModuleFilePath: S.optional(S.String),
-          ModuleSha256: S.optional(S.String),
-          ShellHistoryFilePath: S.optional(S.String),
-          TargetProcess: S.optional(__S(235, __c29, 3)),
-          AddressFamily: S.optional(S.String),
-          IanaProtocolNumber: S.optional(S.Number),
-          MemoryRegions: S.optional(__S(4, __c0, 4)),
-          ToolName: S.optional(S.String),
-          ToolCategory: S.optional(S.String),
-          ServiceName: S.optional(S.String),
-          CommandLineExample: S.optional(S.String),
-          ThreatFilePath: S.optional(S.String),
-          FileOperation: S.optional(S.String),
-          FilePath: S.optional(S.String),
-          RelatedFilePaths: S.optional(__S(4, __c0, 4)),
-        }).pipe(
-          S.encodeKeys({
-            ModifyingProcess: "modifyingProcess",
-            ModifiedAt: "modifiedAt",
-            ScriptPath: "scriptPath",
-            LibraryPath: "libraryPath",
-            LdPreloadValue: "ldPreloadValue",
-            SocketPath: "socketPath",
-            RuncBinaryPath: "runcBinaryPath",
-            ReleaseAgentPath: "releaseAgentPath",
-            MountSource: "mountSource",
-            MountTarget: "mountTarget",
-            FileSystemType: "fileSystemType",
-            Flags: "flags",
-            ModuleName: "moduleName",
-            ModuleFilePath: "moduleFilePath",
-            ModuleSha256: "moduleSha256",
-            ShellHistoryFilePath: "shellHistoryFilePath",
-            TargetProcess: "targetProcess",
-            AddressFamily: "addressFamily",
-            IanaProtocolNumber: "ianaProtocolNumber",
-            MemoryRegions: "memoryRegions",
-            ToolName: "toolName",
-            ToolCategory: "toolCategory",
-            ServiceName: "serviceName",
-            CommandLineExample: "commandLineExample",
-            ThreatFilePath: "threatFilePath",
-            FileOperation: "fileOperation",
-            FilePath: "filePath",
-            RelatedFilePaths: "relatedFilePaths",
-          }),
-        ),
-      ).annotate({ identifier: "RuntimeContext" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          Process: S.optional(__S(235, __c29, 3)),
-          Context: S.optional(__S(236, __c29, 4)),
-        }).pipe(S.encodeKeys({ Process: "process", Context: "context" })),
-      ).annotate({ identifier: "RuntimeDetails" });
-    case 6:
-      return S.Array(S.Number);
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          Text: S.optional(__S(4, __c0, 4)),
-          Number: S.optional(__S(238, __c29, 6)),
-        }).pipe(S.encodeKeys({ Text: "text", Number: "number" })),
-      ).annotate({ identifier: "Observations" });
-  }
-}
-function __c30(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          ProfileType: S.optional(S.String),
-          ProfileSubtype: S.optional(S.String),
-          Observations: S.optional(__S(239, __c29, 7)),
-        }).pipe(
-          S.encodeKeys({
-            ProfileType: "profileType",
-            ProfileSubtype: "profileSubtype",
-            Observations: "observations",
-          }),
-        ),
-      ).annotate({ identifier: "AnomalyObject" });
-    case 1:
-      return S.Array(__S(240, __c30, 0));
-    case 2:
-      return S.Record(S.String, /*@__PURE__*/ __S(241, __c30, 1).pipe(S.optional));
-    case 3:
-      return S.Record(S.String, /*@__PURE__*/ __S(242, __c30, 2).pipe(S.optional));
-    case 4:
-      return S.Record(S.String, /*@__PURE__*/ __S(240, __c30, 0).pipe(S.optional));
-    case 5:
-      return S.Record(S.String, /*@__PURE__*/ __S(244, __c30, 4).pipe(S.optional));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({ Behavior: S.optional(__S(245, __c30, 5)) }).pipe(
-          S.encodeKeys({ Behavior: "behavior" }),
-        ),
-      ).annotate({ identifier: "AnomalyUnusual" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          Profiles: S.optional(__S(243, __c30, 3)),
-          Unusual: S.optional(__S(246, __c30, 6)),
-        }).pipe(S.encodeKeys({ Profiles: "profiles", Unusual: "unusual" })),
-      ).annotate({ identifier: "Anomaly" });
-  }
-}
-function __c31(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({ Uid: S.optional(S.String), Name: S.optional(S.String) }).pipe(
-          S.encodeKeys({ Uid: "uid", Name: "account" }),
-        ),
-      ).annotate({ identifier: "Account" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          Name: S.optional(S.String),
-          Uid: S.optional(S.String),
-          Type: S.optional(S.String),
-          CredentialUid: S.optional(S.String),
-          Account: S.optional(__S(248, __c31, 0)),
-        }).pipe(
-          S.encodeKeys({
-            Name: "name",
-            Uid: "uid",
-            Type: "type",
-            CredentialUid: "credentialUid",
-            Account: "account",
-          }),
-        ),
-      ).annotate({ identifier: "User" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          Uid: S.optional(S.String),
-          MfaStatus: S.optional(S.String),
-          CreatedTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          Issuer: S.optional(S.String),
-        }).pipe(
-          S.encodeKeys({
-            Uid: "uid",
-            MfaStatus: "mfaStatus",
-            CreatedTime: "createdTime",
-            Issuer: "issuer",
-          }),
-        ),
-      ).annotate({ identifier: "Session" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          Name: S.optional(S.String),
-          Path: S.optional(S.String),
-          Sha256: S.optional(S.String),
-        }).pipe(S.encodeKeys({ Name: "name", Path: "path", Sha256: "sha256" })),
-      ).annotate({ identifier: "ActorProcess" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          Id: S.optional(S.String),
-          User: S.optional(__S(249, __c31, 1)),
-          Session: S.optional(__S(250, __c31, 2)),
-          Process: S.optional(__S(251, __c31, 3)),
-        }).pipe(S.encodeKeys({ Id: "id", User: "user", Session: "session", Process: "process" })),
-      ).annotate({ identifier: "Actor" });
-    case 5:
-      return S.Array(__S(252, __c31, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          PublicAclAccess: S.optional(S.String),
-          PublicPolicyAccess: S.optional(S.String),
-          PublicAclIgnoreBehavior: S.optional(S.String),
-          PublicBucketRestrictBehavior: S.optional(S.String),
-        }).pipe(
-          S.encodeKeys({
-            PublicAclAccess: "publicAclAccess",
-            PublicPolicyAccess: "publicPolicyAccess",
-            PublicAclIgnoreBehavior: "publicAclIgnoreBehavior",
-            PublicBucketRestrictBehavior: "publicBucketRestrictBehavior",
-          }),
-        ),
-      ).annotate({
-        identifier: "PublicAccessConfiguration",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          OwnerId: S.optional(S.String),
-          CreatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          EncryptionType: S.optional(S.String),
-          EncryptionKeyArn: S.optional(S.String),
-          EffectivePermission: S.optional(S.String),
-          PublicReadAccess: S.optional(S.String),
-          PublicWriteAccess: S.optional(S.String),
-          AccountPublicAccess: S.optional(__S(254, __c31, 6)),
-          BucketPublicAccess: S.optional(__S(254, __c31, 6)),
-          S3ObjectUids: S.optional(__S(4, __c0, 4)),
-        }).pipe(
-          S.encodeKeys({
-            OwnerId: "ownerId",
-            CreatedAt: "createdAt",
-            EncryptionType: "encryptionType",
-            EncryptionKeyArn: "encryptionKeyArn",
-            EffectivePermission: "effectivePermission",
-            PublicReadAccess: "publicReadAccess",
-            PublicWriteAccess: "publicWriteAccess",
-            AccountPublicAccess: "accountPublicAccess",
-            BucketPublicAccess: "bucketPublicAccess",
-            S3ObjectUids: "s3ObjectUids",
-          }),
-        ),
-      ).annotate({ identifier: "S3Bucket" });
-  }
-}
-function __c32(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          AvailabilityZone: S.optional(S.String),
-          ImageDescription: S.optional(S.String),
-          InstanceState: S.optional(S.String),
-          IamInstanceProfile: S.optional(__S(152, __c19, 0)),
-          InstanceType: S.optional(S.String),
-          OutpostArn: S.optional(S.String),
-          Platform: S.optional(S.String),
-          ProductCodes: S.optional(__S(160, __c20, 0)),
-          Ec2NetworkInterfaceUids: S.optional(__S(4, __c0, 4)),
-        }).pipe(
-          S.encodeKeys({
-            AvailabilityZone: "availabilityZone",
-            ImageDescription: "imageDescription",
-            InstanceState: "instanceState",
-            InstanceType: "instanceType",
-            OutpostArn: "outpostArn",
-            Platform: "platform",
-            ProductCodes: "productCodes",
-            Ec2NetworkInterfaceUids: "ec2NetworkInterfaceUids",
-          }),
-        ),
-      ).annotate({ identifier: "Ec2Instance" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          PrincipalId: S.optional(S.String),
-          UserName: S.optional(S.String),
-          UserType: S.optional(S.String),
-        }).pipe(
-          S.encodeKeys({ PrincipalId: "principalId", UserName: "userName", UserType: "userType" }),
-        ),
-      ).annotate({ identifier: "AccessKey" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          Ipv6Addresses: S.optional(__S(4, __c0, 4)),
-          PrivateIpAddresses: S.optional(__S(154, __c19, 2)),
-          PublicIp: S.optional(S.String),
-          SecurityGroups: S.optional(__S(156, __c19, 4)),
-          SubNetId: S.optional(S.String),
-          VpcId: S.optional(S.String),
-        }).pipe(
-          S.encodeKeys({
-            Ipv6Addresses: "ipv6Addresses",
-            PrivateIpAddresses: "privateIpAddresses",
-            PublicIp: "publicIp",
-            SecurityGroups: "securityGroups",
-            SubNetId: "subNetId",
-            VpcId: "vpcId",
-          }),
-        ),
-      ).annotate({ identifier: "Ec2NetworkInterface" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          ETag: S.optional(S.String),
-          Key: S.optional(S.String),
-          VersionId: S.optional(S.String),
-        }).pipe(S.encodeKeys({ ETag: "eTag", Key: "key", VersionId: "versionId" })),
-      ).annotate({ identifier: "S3Object" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          Arn: S.optional(S.String),
-          CreatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          Status: S.optional(S.String),
-          VpcId: S.optional(S.String),
-          Ec2InstanceUids: S.optional(__S(4, __c0, 4)),
-        }).pipe(
-          S.encodeKeys({
-            Arn: "arn",
-            CreatedAt: "createdAt",
-            Status: "status",
-            VpcId: "vpcId",
-            Ec2InstanceUids: "ec2InstanceUids",
-          }),
-        ),
-      ).annotate({ identifier: "EksCluster" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          ContainerUids: S.optional(__S(4, __c0, 4)),
-          Namespace: S.optional(S.String),
-          KubernetesResourcesTypes: S.optional(S.String),
-        }).pipe(
-          S.encodeKeys({
-            ContainerUids: "containerUids",
-            Namespace: "namespace",
-            KubernetesResourcesTypes: "type",
-          }),
-        ),
-      ).annotate({ identifier: "KubernetesWorkload" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({ Image: S.optional(S.String), ImageUid: S.optional(S.String) }).pipe(
-          S.encodeKeys({ Image: "image", ImageUid: "imageUid" }),
-        ),
-      ).annotate({ identifier: "ContainerFindingResource" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          Status: S.optional(S.String),
-          Ec2InstanceUids: S.optional(__S(4, __c0, 4)),
-        }).pipe(S.encodeKeys({ Status: "status", Ec2InstanceUids: "ec2InstanceUids" })),
-      ).annotate({ identifier: "EcsCluster" });
-  }
-}
-function __c33(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          CreatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          TaskDefinitionArn: S.optional(S.String),
-          LaunchType: S.optional(S.String),
-          ContainerUids: S.optional(__S(4, __c0, 4)),
-        }).pipe(
-          S.encodeKeys({
-            CreatedAt: "createdAt",
-            TaskDefinitionArn: "taskDefinitionArn",
-            LaunchType: "launchType",
-            ContainerUids: "containerUids",
-          }),
-        ),
-      ).annotate({ identifier: "EcsTask" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({ Ec2InstanceUids: S.optional(__S(4, __c0, 4)) }).pipe(
-          S.encodeKeys({ Ec2InstanceUids: "ec2InstanceUids" }),
-        ),
-      ).annotate({ identifier: "IamInstanceProfileV2" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({ Ec2InstanceUids: S.optional(__S(4, __c0, 4)) }).pipe(
-          S.encodeKeys({ Ec2InstanceUids: "ec2InstanceUids" }),
-        ),
-      ).annotate({
-        identifier: "AutoscalingAutoScalingGroup",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          Ec2InstanceUids: S.optional(__S(4, __c0, 4)),
-          Version: S.optional(S.String),
-        }).pipe(S.encodeKeys({ Ec2InstanceUids: "ec2InstanceUids", Version: "version" })),
-      ).annotate({ identifier: "Ec2LaunchTemplate" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          Version: S.optional(S.String),
-          GuardrailAction: S.optional(S.String),
-          GuardrailSource: S.optional(S.String),
-        }).pipe(
-          S.encodeKeys({
-            Version: "version",
-            GuardrailAction: "guardrailAction",
-            GuardrailSource: "guardrailSource",
-          }),
-        ),
-      ).annotate({ identifier: "BedrockGuardrailResource" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          S3Bucket: S.optional(__S(255, __c31, 7)),
-          Ec2Instance: S.optional(__S(256, __c32, 0)),
-          AccessKey: S.optional(__S(257, __c32, 1)),
-          Ec2NetworkInterface: S.optional(__S(258, __c32, 2)),
-          S3Object: S.optional(__S(259, __c32, 3)),
-          EksCluster: S.optional(__S(260, __c32, 4)),
-          KubernetesWorkload: S.optional(__S(261, __c32, 5)),
-          Container: S.optional(__S(262, __c32, 6)),
-          EcsCluster: S.optional(__S(263, __c32, 7)),
-          EcsTask: S.optional(__S(264, __c33, 0)),
-          IamInstanceProfile: S.optional(__S(265, __c33, 1)),
-          AutoscalingAutoScalingGroup: S.optional(__S(266, __c33, 2)),
-          Ec2LaunchTemplate: S.optional(__S(267, __c33, 3)),
-          Ec2Vpc: S.optional(__S(265, __c33, 1)),
-          Ec2Image: S.optional(__S(265, __c33, 1)),
-          CloudformationStack: S.optional(__S(265, __c33, 1)),
-          BedrockGuardrail: S.optional(__S(268, __c33, 4)),
-        }).pipe(
-          S.encodeKeys({
-            S3Bucket: "s3Bucket",
-            Ec2Instance: "ec2Instance",
-            AccessKey: "accessKey",
-            Ec2NetworkInterface: "ec2NetworkInterface",
-            S3Object: "s3Object",
-            EksCluster: "eksCluster",
-            KubernetesWorkload: "kubernetesWorkload",
-            Container: "container",
-            EcsCluster: "ecsCluster",
-            EcsTask: "ecsTask",
-            IamInstanceProfile: "iamInstanceProfile",
-            AutoscalingAutoScalingGroup: "autoscalingAutoScalingGroup",
-            Ec2LaunchTemplate: "ec2LaunchTemplate",
-            Ec2Vpc: "ec2Vpc",
-            Ec2Image: "ec2Image",
-            CloudformationStack: "cloudformationStack",
-            BedrockGuardrail: "bedrockGuardrail",
-          }),
-        ),
-      ).annotate({ identifier: "ResourceData" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          Uid: S.optional(S.String),
-          Name: S.optional(S.String),
-          AccountId: S.optional(S.String),
-          ResourceType: S.optional(S.String),
-          Region: S.optional(S.String),
-          Service: S.optional(S.String),
-          CloudPartition: S.optional(S.String),
-          Tags: S.optional(__S(140, __c17, 4)),
-          Data: S.optional(__S(269, __c33, 5)),
-        }).pipe(
-          S.encodeKeys({
-            Uid: "uid",
-            Name: "name",
-            AccountId: "accountId",
-            ResourceType: "resourceType",
-            Region: "region",
-            Service: "service",
-            CloudPartition: "cloudPartition",
-            Tags: "tags",
-            Data: "data",
-          }),
-        ),
-      ).annotate({ identifier: "ResourceV2" });
-    case 7:
-      return S.Array(__S(270, __c33, 6));
-  }
-}
-function __c34(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          City: S.optional(S.String),
-          Country: S.optional(S.String),
-          Latitude: S.optional(S.Number),
-          Longitude: S.optional(S.Number),
-        }).pipe(
-          S.encodeKeys({ City: "city", Country: "country", Latitude: "lat", Longitude: "lon" }),
-        ),
-      ).annotate({ identifier: "NetworkGeoLocation" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({ Name: S.optional(S.String), Number: S.optional(S.Number) }).pipe(
-          S.encodeKeys({ Name: "name", Number: "number" }),
-        ),
-      ).annotate({ identifier: "AutonomousSystem" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({ Direction: S.optional(S.String) }).pipe(
-          S.encodeKeys({ Direction: "direction" }),
-        ),
-      ).annotate({ identifier: "NetworkConnection" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          Id: S.optional(S.String),
-          Ip: S.optional(S.String),
-          Domain: S.optional(S.String),
-          Port: S.optional(S.Number),
-          Location: S.optional(__S(272, __c34, 0)),
-          AutonomousSystem: S.optional(__S(273, __c34, 1)),
-          Connection: S.optional(__S(274, __c34, 2)),
-        }).pipe(
-          S.encodeKeys({
-            Id: "id",
-            Ip: "ip",
-            Domain: "domain",
-            Port: "port",
-            Location: "location",
-            AutonomousSystem: "autonomousSystem",
-            Connection: "connection",
-          }),
-        ),
-      ).annotate({ identifier: "NetworkEndpoint" });
-    case 4:
-      return S.Array(__S(275, __c34, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          Key: S.optional(S.String),
-          Values: S.optional(__S(4, __c0, 4)),
-          Title: S.optional(S.String),
-        }).pipe(S.encodeKeys({ Key: "key", Values: "values", Title: "title" })),
-      ).annotate({ identifier: "Indicator" });
-    case 6:
-      return S.Array(__S(277, __c34, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          Operation: S.optional(S.String),
-          Service: S.optional(S.String),
-          Error: S.optional(S.String),
-          UserAgent: S.optional(S.String),
-        }).pipe(
-          S.encodeKeys({
-            Operation: "operation",
-            Service: "service",
-            Error: "error",
-            UserAgent: "userAgent",
-          }),
-        ),
-      ).annotate({ identifier: "ApiCall" });
-  }
-}
-function __c35(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({ Type: S.optional(S.String), Api: S.optional(__S(279, __c34, 7)) }).pipe(
-          S.encodeKeys({ Type: "type", Api: "api" }),
-        ),
-      ).annotate({ identifier: "Activity" });
-    case 1:
-      return S.Array(__S(280, __c35, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          Uid: S.optional(S.String),
-          Type: S.optional(S.String),
-          Description: S.optional(S.String),
-          Name: S.optional(S.String),
-          CreatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          UpdatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          FirstSeenAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          LastSeenAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          Severity: S.optional(S.Number),
-          Count: S.optional(S.Number),
-          ResourceUids: S.optional(__S(4, __c0, 4)),
-          ActorIds: S.optional(__S(4, __c0, 4)),
-          EndpointIds: S.optional(__S(4, __c0, 4)),
-          SignalIndicators: S.optional(__S(278, __c34, 6)),
-          Activities: S.optional(__S(281, __c35, 1)),
-        }).pipe(
-          S.encodeKeys({
-            Uid: "uid",
-            Type: "type",
-            Description: "description",
-            Name: "name",
-            CreatedAt: "createdAt",
-            UpdatedAt: "updatedAt",
-            FirstSeenAt: "firstSeenAt",
-            LastSeenAt: "lastSeenAt",
-            Severity: "severity",
-            Count: "count",
-            ResourceUids: "resourceUids",
-            ActorIds: "actorIds",
-            EndpointIds: "endpointIds",
-            SignalIndicators: "signalIndicators",
-            Activities: "activities",
-          }),
-        ),
-      ).annotate({ identifier: "Signal" });
-    case 3:
-      return S.Array(__S(282, __c35, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          Uid: S.optional(S.String),
-          Description: S.optional(S.String),
-          Actors: S.optional(__S(253, __c31, 5)),
-          Resources: S.optional(__S(271, __c33, 7)),
-          Endpoints: S.optional(__S(276, __c34, 4)),
-          Signals: S.optional(__S(283, __c35, 3)),
-          SequenceIndicators: S.optional(__S(278, __c34, 6)),
-          AdditionalSequenceTypes: S.optional(__S(4, __c0, 4)),
-        }).pipe(
-          S.encodeKeys({
-            Uid: "uid",
-            Description: "description",
-            Actors: "actors",
-            Resources: "resources",
-            Endpoints: "endpoints",
-            Signals: "signals",
-            SequenceIndicators: "sequenceIndicators",
-            AdditionalSequenceTypes: "additionalSequenceTypes",
-          }),
-        ),
-      ).annotate({ identifier: "Sequence" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          Anomaly: S.optional(__S(247, __c30, 7)),
-          Sequence: S.optional(__S(284, __c35, 4)),
-        }).pipe(S.encodeKeys({ Anomaly: "anomaly", Sequence: "sequence" })),
-      ).annotate({ identifier: "Detection" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({ NestedItemPath: S.optional(S.String), Hash: S.optional(S.String) }).pipe(
-          S.encodeKeys({ NestedItemPath: "nestedItemPath", Hash: "hash" }),
-        ),
-      ).annotate({ identifier: "ItemPath" });
-    case 7:
-      return S.Array(__S(286, __c35, 6));
-  }
-}
-function __c36(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({ VersionId: S.optional(S.String), DeviceName: S.optional(S.String) }).pipe(
-          S.encodeKeys({ VersionId: "versionId", DeviceName: "deviceName" }),
-        ),
-      ).annotate({ identifier: "AdditionalInfo" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          ResourceArn: S.optional(S.String),
-          ItemPath: S.optional(S.String),
-          Hash: S.optional(S.String),
-          AdditionalInfo: S.optional(__S(288, __c36, 0)),
-        }).pipe(
-          S.encodeKeys({
-            ResourceArn: "resourceArn",
-            ItemPath: "itemPath",
-            Hash: "hash",
-            AdditionalInfo: "additionalInfo",
-          }),
-        ),
-      ).annotate({ identifier: "ItemDetails" });
-    case 2:
-      return S.Array(__S(289, __c36, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          Name: S.optional(S.String),
-          Source: S.optional(S.String),
-          ItemPaths: S.optional(__S(287, __c35, 7)),
-          Count: S.optional(S.Number),
-          Hash: S.optional(S.String),
-          ItemDetails: S.optional(__S(290, __c36, 2)),
-        }).pipe(
-          S.encodeKeys({
-            Name: "name",
-            Source: "source",
-            ItemPaths: "itemPaths",
-            Count: "count",
-            Hash: "hash",
-            ItemDetails: "itemDetails",
-          }),
-        ),
-      ).annotate({ identifier: "Threat" });
-    case 4:
-      return S.Array(__S(291, __c36, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({ BaselineResourceArn: S.optional(S.String) }).pipe(
-          S.encodeKeys({ BaselineResourceArn: "baselineResourceArn" }),
-        ),
-      ).annotate({ identifier: "IncrementalScanDetails" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          TriggerType: S.optional(S.String),
-          IncrementalScanDetails: S.optional(__S(293, __c36, 5)),
-        }).pipe(
-          S.encodeKeys({
-            TriggerType: "triggerType",
-            IncrementalScanDetails: "incrementalScanDetails",
-          }),
-        ),
-      ).annotate({
-        identifier: "MalwareProtectionFindingsScanConfiguration",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          Threats: S.optional(__S(292, __c36, 4)),
-          ScanId: S.optional(S.String),
-          ScanType: S.optional(S.String),
-          ScanCategory: S.optional(S.String),
-          ScanConfiguration: S.optional(__S(294, __c36, 6)),
-          UniqueThreatCount: S.optional(S.Number),
-        }).pipe(
-          S.encodeKeys({
-            Threats: "threats",
-            ScanId: "scanId",
-            ScanType: "scanType",
-            ScanCategory: "scanCategory",
-            ScanConfiguration: "scanConfiguration",
-            UniqueThreatCount: "uniqueThreatCount",
-          }),
-        ),
-      ).annotate({ identifier: "MalwareScanDetails" });
-  }
-}
-function __c37(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          Action: S.optional(__S(218, __c27, 2)),
-          Evidence: S.optional(__S(221, __c27, 5)),
-          Archived: S.optional(S.Boolean),
-          Count: S.optional(S.Number),
-          DetectorId: S.optional(S.String),
-          EventFirstSeen: S.optional(S.String),
-          EventLastSeen: S.optional(S.String),
-          ResourceRole: S.optional(S.String),
-          ServiceName: S.optional(S.String),
-          UserFeedback: S.optional(S.String),
-          AdditionalInfo: S.optional(__S(222, __c27, 6)),
-          FeatureName: S.optional(S.String),
-          EbsVolumeScanDetails: S.optional(__S(232, __c29, 0)),
-          RuntimeDetails: S.optional(__S(237, __c29, 5)),
-          Detection: S.optional(__S(285, __c35, 5)),
-          MalwareScanDetails: S.optional(__S(295, __c36, 7)),
-        }).pipe(
-          S.encodeKeys({
-            Action: "action",
-            Evidence: "evidence",
-            Archived: "archived",
-            Count: "count",
-            DetectorId: "detectorId",
-            EventFirstSeen: "eventFirstSeen",
-            EventLastSeen: "eventLastSeen",
-            ResourceRole: "resourceRole",
-            ServiceName: "serviceName",
-            UserFeedback: "userFeedback",
-            AdditionalInfo: "additionalInfo",
-            FeatureName: "featureName",
-            EbsVolumeScanDetails: "ebsVolumeScanDetails",
-            RuntimeDetails: "runtimeDetails",
-            Detection: "detection",
-            MalwareScanDetails: "malwareScanDetails",
-          }),
-        ),
-      ).annotate({ identifier: "Service" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          AccountId: S.optional(S.String),
-          Arn: S.optional(S.String),
-          Confidence: S.optional(S.Number),
-          CreatedAt: S.optional(S.String),
-          Description: S.optional(S.String),
-          Id: S.optional(S.String),
-          Partition: S.optional(S.String),
-          Region: S.optional(S.String),
-          Resource: S.optional(__S(194, __c24, 2)),
-          SchemaVersion: S.optional(S.String),
-          Service: S.optional(__S(296, __c37, 0)),
-          Severity: S.optional(S.Number),
-          Title: S.optional(S.String),
-          Type: S.optional(S.String),
-          UpdatedAt: S.optional(S.String),
-          AssociatedAttackSequenceArn: S.optional(S.String),
-        }).pipe(
-          S.encodeKeys({
-            AccountId: "accountId",
-            Arn: "arn",
-            Confidence: "confidence",
-            CreatedAt: "createdAt",
-            Description: "description",
-            Id: "id",
-            Partition: "partition",
-            Region: "region",
-            Resource: "resource",
-            SchemaVersion: "schemaVersion",
-            Service: "service",
-            Severity: "severity",
-            Title: "title",
-            Type: "type",
-            UpdatedAt: "updatedAt",
-            AssociatedAttackSequenceArn: "associatedAttackSequenceArn",
-          }),
-        ),
-      ).annotate({ identifier: "Finding" });
-    case 2:
-      return S.Array(__S(297, __c37, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({ Findings: S.optional(__S(298, __c37, 2)) }).pipe(
-          S.encodeKeys({ Findings: "findings" }),
-        ),
-      ).annotate({ identifier: "GetFindingsResponse" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          DetectorId: S.String.pipe(T.HttpLabel("DetectorId")),
-          FindingStatisticTypes: S.optional(__S(111, __c13, 7)),
-          FindingCriteria: S.optional(__S(29, __c3, 5)),
-          GroupBy: S.optional(S.String),
-          OrderBy: S.optional(S.String),
-          MaxResults: S.optional(S.Number),
-        })
-          .pipe(
-            S.encodeKeys({
-              FindingStatisticTypes: "findingStatisticTypes",
-              FindingCriteria: "findingCriteria",
-              GroupBy: "groupBy",
-              OrderBy: "orderBy",
-              MaxResults: "maxResults",
-            }),
-          )
-          .pipe(
-            T.all(
-              T.Http({ method: "POST", uri: "/detector/{DetectorId}/findings/statistics" }),
-              svc,
-              auth,
-              proto,
-              ver,
-              rules,
-            ),
-          ),
-      ).annotate({
-        identifier: "GetFindingsStatisticsRequest",
-      });
-    case 5:
-      return S.Record(S.String, /*@__PURE__*/ S.Number.pipe(S.optional));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          AccountId: S.optional(S.String),
-          LastGeneratedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          TotalFindings: S.optional(S.Number),
-        }).pipe(
-          S.encodeKeys({
-            AccountId: "accountId",
-            LastGeneratedAt: "lastGeneratedAt",
-            TotalFindings: "totalFindings",
-          }),
-        ),
-      ).annotate({ identifier: "AccountStatistics" });
-    case 7:
-      return S.Array(__S(302, __c37, 6));
-  }
-}
-function __c38(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          Date: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          LastGeneratedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          Severity: S.optional(S.Number),
-          TotalFindings: S.optional(S.Number),
-        }).pipe(
-          S.encodeKeys({
-            Date: "date",
-            LastGeneratedAt: "lastGeneratedAt",
-            Severity: "severity",
-            TotalFindings: "totalFindings",
-          }),
-        ),
-      ).annotate({ identifier: "DateStatistics" });
-    case 1:
-      return S.Array(__S(304, __c38, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          FindingType: S.optional(S.String),
-          LastGeneratedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          TotalFindings: S.optional(S.Number),
-        }).pipe(
-          S.encodeKeys({
-            FindingType: "findingType",
-            LastGeneratedAt: "lastGeneratedAt",
-            TotalFindings: "totalFindings",
-          }),
-        ),
-      ).annotate({ identifier: "FindingTypeStatistics" });
-    case 3:
-      return S.Array(__S(306, __c38, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          AccountId: S.optional(S.String),
-          LastGeneratedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          ResourceId: S.optional(S.String),
-          ResourceType: S.optional(S.String),
-          TotalFindings: S.optional(S.Number),
-        }).pipe(
-          S.encodeKeys({
-            AccountId: "accountId",
-            LastGeneratedAt: "lastGeneratedAt",
-            ResourceId: "resourceId",
-            ResourceType: "resourceType",
-            TotalFindings: "totalFindings",
-          }),
-        ),
-      ).annotate({ identifier: "ResourceStatistics" });
-    case 5:
-      return S.Array(__S(308, __c38, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          LastGeneratedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          Severity: S.optional(S.Number),
-          TotalFindings: S.optional(S.Number),
-        }).pipe(
-          S.encodeKeys({
-            LastGeneratedAt: "lastGeneratedAt",
-            Severity: "severity",
-            TotalFindings: "totalFindings",
-          }),
-        ),
-      ).annotate({ identifier: "SeverityStatistics" });
-    case 7:
-      return S.Array(__S(310, __c38, 6));
-  }
-}
-function __c39(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          CountBySeverity: S.optional(__S(301, __c37, 5)),
-          GroupedByAccount: S.optional(__S(303, __c37, 7)),
-          GroupedByDate: S.optional(__S(305, __c38, 1)),
-          GroupedByFindingType: S.optional(__S(307, __c38, 3)),
-          GroupedByResource: S.optional(__S(309, __c38, 5)),
-          GroupedBySeverity: S.optional(__S(311, __c38, 7)),
-        }).pipe(
-          S.encodeKeys({
-            CountBySeverity: "countBySeverity",
-            GroupedByAccount: "groupedByAccount",
-            GroupedByDate: "groupedByDate",
-            GroupedByFindingType: "groupedByFindingType",
-            GroupedByResource: "groupedByResource",
-            GroupedBySeverity: "groupedBySeverity",
-          }),
-        ),
-      ).annotate({ identifier: "FindingStatistics" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          FindingStatistics: S.optional(__S(312, __c39, 0)),
-          NextToken: S.optional(S.String),
-        }).pipe(S.encodeKeys({ FindingStatistics: "findingStatistics", NextToken: "nextToken" })),
-      ).annotate({
-        identifier: "GetFindingsStatisticsResponse",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          DetectorId: S.String.pipe(T.HttpLabel("DetectorId")),
-          InvestigationId: S.String.pipe(T.HttpLabel("InvestigationId")),
-        }).pipe(
-          T.all(
-            T.Http({
-              method: "GET",
-              uri: "/detector/{DetectorId}/investigation/{InvestigationId}",
-            }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({ identifier: "GetInvestigationRequest" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({ Name: S.optional(S.String), Feature: S.optional(S.String) }).pipe(
-          S.encodeKeys({ Name: "name", Feature: "feature" }),
-        ),
-      ).annotate({ identifier: "Product" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({ Version: S.optional(S.String), Product: S.optional(__S(315, __c39, 3)) }).pipe(
-          S.encodeKeys({ Version: "version", Product: "product" }),
-        ),
-      ).annotate({ identifier: "InvestigationMetadata" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          Provider: S.optional(S.String),
-          Region: S.optional(S.String),
-          Account: S.optional(S.String),
-        }).pipe(S.encodeKeys({ Provider: "provider", Region: "region", Account: "account" })),
-      ).annotate({ identifier: "CloudDetails" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          InvestigationId: S.optional(S.String),
-          Status: S.optional(S.String),
-          TriggerPrompt: S.optional(S.String),
-          TriggeredBy: S.optional(S.String),
-          Metadata: S.optional(__S(316, __c39, 4)),
-          Cloud: S.optional(__S(317, __c39, 5)),
-          RiskLevel: S.optional(S.String),
-          Risk: S.optional(S.String),
-          Confidence: S.optional(S.String),
-          Summary: S.optional(S.String),
-          StartTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          EndTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          Error: S.optional(S.String),
-        }).pipe(
-          S.encodeKeys({
-            InvestigationId: "investigationId",
-            Status: "status",
-            TriggerPrompt: "triggerPrompt",
-            TriggeredBy: "triggeredBy",
-            Metadata: "metadata",
-            Cloud: "cloud",
-            RiskLevel: "riskLevel",
-            Risk: "risk",
-            Confidence: "confidence",
-            Summary: "summary",
-            StartTime: "startTime",
-            EndTime: "endTime",
-            Error: "error",
-          }),
-        ),
-      ).annotate({ identifier: "Investigation" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({ Investigation: S.optional(__S(318, __c39, 6)) }).pipe(
-          S.encodeKeys({ Investigation: "investigation" }),
-        ),
-      ).annotate({ identifier: "GetInvestigationResponse" });
-  }
-}
-function __c40(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({}).pipe(
-          T.all(T.Http({ method: "GET", uri: "/invitation/count" }), svc, auth, proto, ver, rules),
-        ),
-      ).annotate({
-        identifier: "GetInvitationsCountRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({ InvitationsCount: S.optional(S.Number) }).pipe(
-          S.encodeKeys({ InvitationsCount: "invitationsCount" }),
-        ),
-      ).annotate({
-        identifier: "GetInvitationsCountResponse",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          DetectorId: S.String.pipe(T.HttpLabel("DetectorId")),
-          IpSetId: S.optional(S.String).pipe(T.HttpLabel("IpSetId")),
-        }).pipe(
-          T.all(
-            T.Http({ method: "GET", uri: "/detector/{DetectorId}/ipset/{IpSetId}" }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({ identifier: "GetIPSetRequest" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          Name: S.optional(S.String),
-          Format: S.optional(S.String),
-          Location: S.optional(S.String),
-          Status: S.optional(S.String),
-          Tags: S.optional(__S(6, __c0, 6)),
-          ExpectedBucketOwner: S.optional(S.String),
-        }).pipe(
-          S.encodeKeys({
-            Name: "name",
-            Format: "format",
-            Location: "location",
-            Status: "status",
-            Tags: "tags",
-            ExpectedBucketOwner: "expectedBucketOwner",
-          }),
-        ),
-      ).annotate({ identifier: "GetIPSetResponse" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          MalwareProtectionPlanId: S.optional(S.String).pipe(
-            T.HttpLabel("MalwareProtectionPlanId"),
-          ),
-        }).pipe(
-          T.all(
-            T.Http({ method: "GET", uri: "/malware-protection-plan/{MalwareProtectionPlanId}" }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({
-        identifier: "GetMalwareProtectionPlanRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({ Code: S.optional(S.String), Message: S.optional(S.String) }).pipe(
-          S.encodeKeys({ Code: "code", Message: "message" }),
-        ),
-      ).annotate({
-        identifier: "MalwareProtectionPlanStatusReason",
-      });
-    case 6:
-      return S.Array(__S(325, __c40, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          Arn: S.optional(S.String),
-          Role: S.optional(S.String),
-          ProtectedResource: S.optional(__S(37, __c4, 5)),
-          Actions: S.optional(__S(39, __c4, 7)),
-          CreatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          Status: S.optional(S.String),
-          StatusReasons: S.optional(__S(326, __c40, 6)),
-          Tags: S.optional(__S(6, __c0, 6)),
-        }).pipe(
-          S.encodeKeys({
-            Arn: "arn",
-            Role: "role",
-            ProtectedResource: "protectedResource",
-            Actions: "actions",
-            CreatedAt: "createdAt",
-            Status: "status",
-            StatusReasons: "statusReasons",
-            Tags: "tags",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetMalwareProtectionPlanResponse",
-      });
-  }
-}
-function __c41(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({ ScanId: S.optional(S.String).pipe(T.HttpLabel("ScanId")) }).pipe(
-          T.all(
-            T.Http({ method: "GET", uri: "/malware-scan/{ScanId}" }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({ identifier: "GetMalwareScanRequest" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({ DeviceName: S.optional(S.String) }).pipe(
-          S.encodeKeys({ DeviceName: "deviceName" }),
-        ),
-      ).annotate({ identifier: "EbsSnapshot" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          EbsVolume: S.optional(__S(81, __c10, 1)),
-          EbsSnapshot: S.optional(__S(329, __c41, 1)),
-        }).pipe(S.encodeKeys({ EbsVolume: "ebsVolume", EbsSnapshot: "ebsSnapshot" })),
-      ).annotate({ identifier: "ScannedResourceDetails" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          ScannedResourceArn: S.optional(S.String),
-          ScannedResourceType: S.optional(S.String),
-          ScannedResourceStatus: S.optional(S.String),
-          ScanStatusReason: S.optional(S.String),
-          ResourceDetails: S.optional(__S(330, __c41, 2)),
-        }).pipe(
-          S.encodeKeys({
-            ScannedResourceArn: "scannedResourceArn",
-            ScannedResourceType: "scannedResourceType",
-            ScannedResourceStatus: "scannedResourceStatus",
-            ScanStatusReason: "scanStatusReason",
-            ResourceDetails: "resourceDetails",
-          }),
-        ),
-      ).annotate({ identifier: "ScannedResource" });
-    case 4:
-      return S.Array(__S(331, __c41, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          BackupVaultName: S.optional(S.String),
-          ContinuousScanDetails: S.optional(__S(185, __c23, 1)),
-        }).pipe(
-          S.encodeKeys({
-            BackupVaultName: "backupVaultName",
-            ContinuousScanDetails: "continuousScanDetails",
-          }),
-        ),
-      ).annotate({
-        identifier: "ScanConfigurationRecoveryPoint",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          Role: S.optional(S.String),
-          TriggerDetails: S.optional(__S(78, __c9, 6)),
-          IncrementalScanDetails: S.optional(__S(293, __c36, 5)),
-          RecoveryPoint: S.optional(__S(333, __c41, 5)),
-        }).pipe(
-          S.encodeKeys({
-            Role: "role",
-            TriggerDetails: "triggerDetails",
-            IncrementalScanDetails: "incrementalScanDetails",
-            RecoveryPoint: "recoveryPoint",
-          }),
-        ),
-      ).annotate({ identifier: "ScanConfiguration" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          Name: S.optional(S.String),
-          Source: S.optional(S.String),
-          Count: S.optional(S.Number),
-          Hash: S.optional(S.String),
-          ItemDetails: S.optional(__S(290, __c36, 2)),
-        }).pipe(
-          S.encodeKeys({
-            Name: "name",
-            Source: "source",
-            Count: "count",
-            Hash: "hash",
-            ItemDetails: "itemDetails",
-          }),
-        ),
-      ).annotate({ identifier: "ScanResultThreat" });
-  }
-}
-function __c42(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(335, __c41, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          ScanResultStatus: S.optional(S.String),
-          SkippedFileCount: S.optional(S.Number),
-          FailedFileCount: S.optional(S.Number),
-          ThreatFoundFileCount: S.optional(S.Number),
-          TotalFileCount: S.optional(S.Number),
-          TotalBytes: S.optional(S.Number),
-          UniqueThreatCount: S.optional(S.Number),
-          Threats: S.optional(__S(336, __c42, 0)),
-        }).pipe(
-          S.encodeKeys({
-            ScanResultStatus: "scanResultStatus",
-            SkippedFileCount: "skippedFileCount",
-            FailedFileCount: "failedFileCount",
-            ThreatFoundFileCount: "threatFoundFileCount",
-            TotalFileCount: "totalFileCount",
-            TotalBytes: "totalBytes",
-            UniqueThreatCount: "uniqueThreatCount",
-            Threats: "threats",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetMalwareScanResultDetails",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          ScanId: S.optional(S.String),
-          DetectorId: S.optional(S.String),
-          AdminDetectorId: S.optional(S.String),
-          ResourceArn: S.optional(S.String),
-          ResourceType: S.optional(S.String),
-          ScannedResourcesCount: S.optional(S.Number),
-          SkippedResourcesCount: S.optional(S.Number),
-          FailedResourcesCount: S.optional(S.Number),
-          ScannedResources: S.optional(__S(332, __c41, 4)),
-          ScanConfiguration: S.optional(__S(334, __c41, 6)),
-          ScanCategory: S.optional(S.String),
-          ScanStatus: S.optional(S.String),
-          ScanStatusReason: S.optional(S.String),
-          ScanType: S.optional(S.String),
-          ScanStartedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          ScanCompletedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          ScanResultDetails: S.optional(__S(337, __c42, 1)),
-        }).pipe(
-          S.encodeKeys({
-            ScanId: "scanId",
-            DetectorId: "detectorId",
-            AdminDetectorId: "adminDetectorId",
-            ResourceArn: "resourceArn",
-            ResourceType: "resourceType",
-            ScannedResourcesCount: "scannedResourcesCount",
-            SkippedResourcesCount: "skippedResourcesCount",
-            FailedResourcesCount: "failedResourcesCount",
-            ScannedResources: "scannedResources",
-            ScanConfiguration: "scanConfiguration",
-            ScanCategory: "scanCategory",
-            ScanStatus: "scanStatus",
-            ScanStatusReason: "scanStatusReason",
-            ScanType: "scanType",
-            ScanStartedAt: "scanStartedAt",
-            ScanCompletedAt: "scanCompletedAt",
-            ScanResultDetails: "scanResultDetails",
-          }),
-        ),
-      ).annotate({ identifier: "GetMalwareScanResponse" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({ DetectorId: S.String.pipe(T.HttpLabel("DetectorId")) }).pipe(
-          T.all(
-            T.Http({ method: "GET", uri: "/detector/{DetectorId}/malware-scan-settings" }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({
-        identifier: "GetMalwareScanSettingsRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({ MapEquals: S.optional(__S(140, __c17, 4)) }).pipe(
-          S.encodeKeys({ MapEquals: "mapEquals" }),
-        ),
-      ).annotate({ identifier: "ScanCondition" });
-    case 5:
-      return S.Record(S.String, /*@__PURE__*/ __S(340, __c42, 4).pipe(S.optional));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          Include: S.optional(__S(341, __c42, 5)),
-          Exclude: S.optional(__S(341, __c42, 5)),
-        }).pipe(S.encodeKeys({ Include: "include", Exclude: "exclude" })),
-      ).annotate({ identifier: "ScanResourceCriteria" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          ScanResourceCriteria: S.optional(__S(342, __c42, 6)),
-          EbsSnapshotPreservation: S.optional(S.String),
-        }).pipe(
-          S.encodeKeys({
-            ScanResourceCriteria: "scanResourceCriteria",
-            EbsSnapshotPreservation: "ebsSnapshotPreservation",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetMalwareScanSettingsResponse",
-      });
-  }
-}
-function __c43(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({ DetectorId: S.String.pipe(T.HttpLabel("DetectorId")) }).pipe(
-          T.all(
-            T.Http({ method: "GET", uri: "/detector/{DetectorId}/master" }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({ identifier: "GetMasterAccountRequest" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({ Master: S.optional(__S(105, __c13, 1)) }).pipe(
-          S.encodeKeys({ Master: "master" }),
-        ),
-      ).annotate({ identifier: "GetMasterAccountResponse" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          DetectorId: S.String.pipe(T.HttpLabel("DetectorId")),
-          AccountIds: S.optional(__S(4, __c0, 4)),
-        })
-          .pipe(S.encodeKeys({ AccountIds: "accountIds" }))
-          .pipe(
-            T.all(
-              T.Http({ method: "POST", uri: "/detector/{DetectorId}/member/detector/get" }),
-              svc,
-              auth,
-              proto,
-              ver,
-              rules,
-            ),
-          ),
-      ).annotate({
-        identifier: "GetMemberDetectorsRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          AccountId: S.optional(S.String),
-          DataSources: S.optional(__S(128, __c16, 0)),
-          Features: S.optional(__S(132, __c16, 4)),
-        }).pipe(
-          S.encodeKeys({
-            AccountId: "accountId",
-            DataSources: "dataSources",
-            Features: "features",
-          }),
-        ),
-      ).annotate({
-        identifier: "MemberDataSourceConfiguration",
-      });
-    case 4:
-      return S.Array(__S(347, __c43, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          MemberDataSourceConfigurations: S.optional(__S(348, __c43, 4)),
-          UnprocessedAccounts: S.optional(__S(46, __c5, 6)),
-        }).pipe(
-          S.encodeKeys({
-            MemberDataSourceConfigurations: "members",
-            UnprocessedAccounts: "unprocessedAccounts",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetMemberDetectorsResponse",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          DetectorId: S.String.pipe(T.HttpLabel("DetectorId")),
-          AccountIds: S.optional(__S(4, __c0, 4)),
-        })
-          .pipe(S.encodeKeys({ AccountIds: "accountIds" }))
-          .pipe(
-            T.all(
-              T.Http({ method: "POST", uri: "/detector/{DetectorId}/member/get" }),
-              svc,
-              auth,
-              proto,
-              ver,
-              rules,
-            ),
-          ),
-      ).annotate({ identifier: "GetMembersRequest" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          AccountId: S.optional(S.String),
-          DetectorId: S.optional(S.String),
-          MasterId: S.optional(S.String),
-          Email: S.optional(SensitiveString),
-          RelationshipStatus: S.optional(S.String),
-          InvitedAt: S.optional(S.String),
-          UpdatedAt: S.optional(S.String),
-          AdministratorId: S.optional(S.String),
-        }).pipe(
-          S.encodeKeys({
-            AccountId: "accountId",
-            DetectorId: "detectorId",
-            MasterId: "masterId",
-            Email: "email",
-            RelationshipStatus: "relationshipStatus",
-            InvitedAt: "invitedAt",
-            UpdatedAt: "updatedAt",
-            AdministratorId: "administratorId",
-          }),
-        ),
-      ).annotate({ identifier: "Member" });
-  }
-}
-function __c44(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(351, __c43, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          Members: S.optional(__S(352, __c44, 0)),
-          UnprocessedAccounts: S.optional(__S(46, __c5, 6)),
-        }).pipe(S.encodeKeys({ Members: "members", UnprocessedAccounts: "unprocessedAccounts" })),
-      ).annotate({ identifier: "GetMembersResponse" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({}).pipe(
-          T.all(
-            T.Http({ method: "GET", uri: "/organization/statistics" }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({
-        identifier: "GetOrganizationStatisticsRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          Name: S.optional(S.String),
-          EnabledAccountsCount: S.optional(S.Number),
-        }).pipe(S.encodeKeys({ Name: "name", EnabledAccountsCount: "enabledAccountsCount" })),
-      ).annotate({
-        identifier: "OrganizationFeatureStatisticsAdditionalConfiguration",
-      });
-    case 4:
-      return S.Array(__S(355, __c44, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          Name: S.optional(S.String),
-          EnabledAccountsCount: S.optional(S.Number),
-          AdditionalConfiguration: S.optional(__S(356, __c44, 4)),
-        }).pipe(
-          S.encodeKeys({
-            Name: "name",
-            EnabledAccountsCount: "enabledAccountsCount",
-            AdditionalConfiguration: "additionalConfiguration",
-          }),
-        ),
-      ).annotate({
-        identifier: "OrganizationFeatureStatistics",
-      });
-    case 6:
-      return S.Array(__S(357, __c44, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          TotalAccountsCount: S.optional(S.Number),
-          MemberAccountsCount: S.optional(S.Number),
-          ActiveAccountsCount: S.optional(S.Number),
-          EnabledAccountsCount: S.optional(S.Number),
-          CountByFeature: S.optional(__S(358, __c44, 6)),
-        }).pipe(
-          S.encodeKeys({
-            TotalAccountsCount: "totalAccountsCount",
-            MemberAccountsCount: "memberAccountsCount",
-            ActiveAccountsCount: "activeAccountsCount",
-            EnabledAccountsCount: "enabledAccountsCount",
-            CountByFeature: "countByFeature",
-          }),
-        ),
-      ).annotate({ identifier: "OrganizationStatistics" });
-  }
-}
-function __c45(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          UpdatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          OrganizationStatistics: S.optional(__S(359, __c44, 7)),
-        }).pipe(
-          S.encodeKeys({
-            UpdatedAt: "updatedAt",
-            OrganizationStatistics: "organizationStatistics",
-          }),
-        ),
-      ).annotate({ identifier: "OrganizationDetails" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({ OrganizationDetails: S.optional(__S(360, __c45, 0)) }).pipe(
-          S.encodeKeys({ OrganizationDetails: "organizationDetails" }),
-        ),
-      ).annotate({
-        identifier: "GetOrganizationStatisticsResponse",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          DetectorId: S.String.pipe(T.HttpLabel("DetectorId")),
-          AccountIds: __S(4, __c0, 4),
-        })
-          .pipe(S.encodeKeys({ AccountIds: "accountIds" }))
-          .pipe(
-            T.all(
-              T.Http({ method: "POST", uri: "/detector/{DetectorId}/freeTrial/daysRemaining" }),
-              svc,
-              auth,
-              proto,
-              ver,
-              rules,
-            ),
-          ),
-      ).annotate({
-        identifier: "GetRemainingFreeTrialDaysRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({ FreeTrialDaysRemaining: S.optional(S.Number) }).pipe(
-          S.encodeKeys({ FreeTrialDaysRemaining: "freeTrialDaysRemaining" }),
-        ),
-      ).annotate({ identifier: "DataSourceFreeTrial" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({ AuditLogs: S.optional(__S(363, __c45, 3)) }).pipe(
-          S.encodeKeys({ AuditLogs: "auditLogs" }),
-        ),
-      ).annotate({
-        identifier: "KubernetesDataSourceFreeTrial",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({ ScanEc2InstanceWithFindings: S.optional(__S(363, __c45, 3)) }).pipe(
-          S.encodeKeys({ ScanEc2InstanceWithFindings: "scanEc2InstanceWithFindings" }),
-        ),
-      ).annotate({
-        identifier: "MalwareProtectionDataSourceFreeTrial",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          CloudTrail: S.optional(__S(363, __c45, 3)),
-          DnsLogs: S.optional(__S(363, __c45, 3)),
-          FlowLogs: S.optional(__S(363, __c45, 3)),
-          S3Logs: S.optional(__S(363, __c45, 3)),
-          Kubernetes: S.optional(__S(364, __c45, 4)),
-          MalwareProtection: S.optional(__S(365, __c45, 5)),
-        }).pipe(
-          S.encodeKeys({
-            CloudTrail: "cloudTrail",
-            DnsLogs: "dnsLogs",
-            FlowLogs: "flowLogs",
-            S3Logs: "s3Logs",
-            Kubernetes: "kubernetes",
-            MalwareProtection: "malwareProtection",
-          }),
-        ),
-      ).annotate({ identifier: "DataSourcesFreeTrial" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          Name: S.optional(S.String),
-          FreeTrialDaysRemaining: S.optional(S.Number),
-        }).pipe(S.encodeKeys({ Name: "name", FreeTrialDaysRemaining: "freeTrialDaysRemaining" })),
-      ).annotate({
-        identifier: "FreeTrialFeatureConfigurationResult",
-      });
-  }
-}
-function __c46(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(367, __c45, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          AccountId: S.optional(S.String),
-          DataSources: S.optional(__S(366, __c45, 6)),
-          Features: S.optional(__S(368, __c46, 0)),
-        }).pipe(
-          S.encodeKeys({
-            AccountId: "accountId",
-            DataSources: "dataSources",
-            Features: "features",
-          }),
-        ),
-      ).annotate({ identifier: "AccountFreeTrialInfo" });
-    case 2:
-      return S.Array(__S(369, __c46, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          Accounts: S.optional(__S(370, __c46, 2)),
-          UnprocessedAccounts: S.optional(__S(46, __c5, 6)),
-        }).pipe(S.encodeKeys({ Accounts: "accounts", UnprocessedAccounts: "unprocessedAccounts" })),
-      ).annotate({
-        identifier: "GetRemainingFreeTrialDaysResponse",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          DetectorId: S.String.pipe(T.HttpLabel("DetectorId")),
-          ThreatEntitySetId: S.optional(S.String).pipe(T.HttpLabel("ThreatEntitySetId")),
-        }).pipe(
-          T.all(
-            T.Http({
-              method: "GET",
-              uri: "/detector/{DetectorId}/threatentityset/{ThreatEntitySetId}",
-            }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({
-        identifier: "GetThreatEntitySetRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          Name: S.optional(S.String),
-          Format: S.optional(S.String),
-          Location: S.optional(S.String),
-          ExpectedBucketOwner: S.optional(S.String),
-          Status: S.optional(S.String),
-          Tags: S.optional(__S(6, __c0, 6)),
-          CreatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          UpdatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          ErrorDetails: S.optional(S.String),
-        }).pipe(
-          S.encodeKeys({
-            Name: "name",
-            Format: "format",
-            Location: "location",
-            ExpectedBucketOwner: "expectedBucketOwner",
-            Status: "status",
-            Tags: "tags",
-            CreatedAt: "createdAt",
-            UpdatedAt: "updatedAt",
-            ErrorDetails: "errorDetails",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetThreatEntitySetResponse",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          DetectorId: S.String.pipe(T.HttpLabel("DetectorId")),
-          ThreatIntelSetId: S.String.pipe(T.HttpLabel("ThreatIntelSetId")),
-        }).pipe(
-          T.all(
-            T.Http({
-              method: "GET",
-              uri: "/detector/{DetectorId}/threatintelset/{ThreatIntelSetId}",
-            }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({ identifier: "GetThreatIntelSetRequest" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          Name: S.optional(S.String),
-          Format: S.optional(S.String),
-          Location: S.optional(S.String),
-          Status: S.optional(S.String),
-          Tags: S.optional(__S(6, __c0, 6)),
-          ExpectedBucketOwner: S.optional(S.String),
-        }).pipe(
-          S.encodeKeys({
-            Name: "name",
-            Format: "format",
-            Location: "location",
-            Status: "status",
-            Tags: "tags",
-            ExpectedBucketOwner: "expectedBucketOwner",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetThreatIntelSetResponse",
-      });
-  }
-}
-function __c47(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          DetectorId: S.String.pipe(T.HttpLabel("DetectorId")),
-          TrustedEntitySetId: S.String.pipe(T.HttpLabel("TrustedEntitySetId")),
-        }).pipe(
-          T.all(
-            T.Http({
-              method: "GET",
-              uri: "/detector/{DetectorId}/trustedentityset/{TrustedEntitySetId}",
-            }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({
-        identifier: "GetTrustedEntitySetRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          AccountIds: S.optional(__S(4, __c0, 4)),
-          DataSources: S.optional(__S(111, __c13, 7)),
-          Resources: S.optional(__S(4, __c0, 4)),
-          Features: S.optional(__S(111, __c13, 7)),
-        }).pipe(
-          S.encodeKeys({
-            AccountIds: "accountIds",
-            DataSources: "dataSources",
-            Resources: "resources",
-            Features: "features",
-          }),
-        ),
-      ).annotate({ identifier: "UsageCriteria" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          DetectorId: S.String.pipe(T.HttpLabel("DetectorId")),
-          UsageStatisticType: S.optional(S.String),
-          UsageCriteria: S.optional(__S(377, __c47, 1)),
-          Unit: S.optional(S.String),
-          MaxResults: S.optional(S.Number),
-          NextToken: S.optional(S.String),
-        })
-          .pipe(
-            S.encodeKeys({
-              UsageStatisticType: "usageStatisticsType",
-              UsageCriteria: "usageCriteria",
-              Unit: "unit",
-              MaxResults: "maxResults",
-              NextToken: "nextToken",
-            }),
-          )
-          .pipe(
-            T.all(
-              T.Http({ method: "POST", uri: "/detector/{DetectorId}/usage/statistics" }),
-              svc,
-              auth,
-              proto,
-              ver,
-              rules,
-            ),
-          ),
-      ).annotate({
-        identifier: "GetUsageStatisticsRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({ Amount: S.optional(S.String), Unit: S.optional(S.String) }).pipe(
-          S.encodeKeys({ Amount: "amount", Unit: "unit" }),
-        ),
-      ).annotate({ identifier: "Total" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({ AccountId: S.optional(S.String), Total: S.optional(__S(379, __c47, 3)) }).pipe(
-          S.encodeKeys({ AccountId: "accountId", Total: "total" }),
-        ),
-      ).annotate({ identifier: "UsageAccountResult" });
-    case 5:
-      return S.Array(__S(380, __c47, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          Feature: S.optional(S.String),
-          Accounts: S.optional(__S(381, __c47, 5)),
-        }).pipe(S.encodeKeys({ Feature: "feature", Accounts: "accounts" })),
-      ).annotate({ identifier: "UsageTopAccountsResult" });
-    case 7:
-      return S.Array(__S(382, __c47, 6));
-  }
-}
-function __c48(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({ DataSource: S.optional(S.String), Total: S.optional(__S(379, __c47, 3)) }).pipe(
-          S.encodeKeys({ DataSource: "dataSource", Total: "total" }),
-        ),
-      ).annotate({ identifier: "UsageDataSourceResult" });
-    case 1:
-      return S.Array(__S(384, __c48, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({ Resource: S.optional(S.String), Total: S.optional(__S(379, __c47, 3)) }).pipe(
-          S.encodeKeys({ Resource: "resource", Total: "total" }),
-        ),
-      ).annotate({ identifier: "UsageResourceResult" });
-    case 3:
-      return S.Array(__S(386, __c48, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({ Feature: S.optional(S.String), Total: S.optional(__S(379, __c47, 3)) }).pipe(
-          S.encodeKeys({ Feature: "feature", Total: "total" }),
-        ),
-      ).annotate({ identifier: "UsageFeatureResult" });
-    case 5:
-      return S.Array(__S(388, __c48, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          SumByAccount: S.optional(__S(381, __c47, 5)),
-          TopAccountsByFeature: S.optional(__S(383, __c47, 7)),
-          SumByDataSource: S.optional(__S(385, __c48, 1)),
-          SumByResource: S.optional(__S(387, __c48, 3)),
-          TopResources: S.optional(__S(387, __c48, 3)),
-          SumByFeature: S.optional(__S(389, __c48, 5)),
-        }).pipe(
-          S.encodeKeys({
-            SumByAccount: "sumByAccount",
-            TopAccountsByFeature: "topAccountsByFeature",
-            SumByDataSource: "sumByDataSource",
-            SumByResource: "sumByResource",
-            TopResources: "topResources",
-            SumByFeature: "sumByFeature",
-          }),
-        ),
-      ).annotate({ identifier: "UsageStatistics" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          UsageStatistics: S.optional(__S(390, __c48, 6)),
-          NextToken: S.optional(S.String),
-        }).pipe(S.encodeKeys({ UsageStatistics: "usageStatistics", NextToken: "nextToken" })),
-      ).annotate({
-        identifier: "GetUsageStatisticsResponse",
-      });
-  }
-}
-function __c49(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          DetectorId: S.String.pipe(T.HttpLabel("DetectorId")),
-          AccountIds: S.optional(__S(4, __c0, 4)),
-          DisableEmailNotification: S.optional(S.Boolean),
-          Message: S.optional(S.String),
-        })
-          .pipe(
-            S.encodeKeys({
-              AccountIds: "accountIds",
-              DisableEmailNotification: "disableEmailNotification",
-              Message: "message",
-            }),
-          )
-          .pipe(
-            T.all(
-              T.Http({ method: "POST", uri: "/detector/{DetectorId}/member/invite" }),
-              svc,
-              auth,
-              proto,
-              ver,
-              rules,
-            ),
-          ),
-      ).annotate({ identifier: "InviteMembersRequest" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({ AttributeName: S.optional(S.String), OrderBy: S.optional(S.String) }).pipe(
-          S.encodeKeys({ AttributeName: "attributeName", OrderBy: "orderBy" }),
-        ),
-      ).annotate({ identifier: "CoverageSortCriteria" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          DetectorId: S.String.pipe(T.HttpLabel("DetectorId")),
-          NextToken: S.optional(S.String),
-          MaxResults: S.optional(S.Number),
-          FilterCriteria: S.optional(__S(110, __c13, 6)),
-          SortCriteria: S.optional(__S(393, __c49, 1)),
-        })
-          .pipe(
-            S.encodeKeys({
-              NextToken: "nextToken",
-              MaxResults: "maxResults",
-              FilterCriteria: "filterCriteria",
-              SortCriteria: "sortCriteria",
-            }),
-          )
-          .pipe(
-            T.all(
-              T.Http({ method: "POST", uri: "/detector/{DetectorId}/coverage" }),
-              svc,
-              auth,
-              proto,
-              ver,
-              rules,
-            ),
-          ),
-      ).annotate({ identifier: "ListCoverageRequest" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({ AddonVersion: S.optional(S.String), AddonStatus: S.optional(S.String) }).pipe(
-          S.encodeKeys({ AddonVersion: "addonVersion", AddonStatus: "addonStatus" }),
-        ),
-      ).annotate({ identifier: "AddonDetails" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          ClusterName: S.optional(S.String),
-          CoveredNodes: S.optional(S.Number),
-          CompatibleNodes: S.optional(S.Number),
-          AddonDetails: S.optional(__S(395, __c49, 3)),
-          ManagementType: S.optional(S.String),
-        }).pipe(
-          S.encodeKeys({
-            ClusterName: "clusterName",
-            CoveredNodes: "coveredNodes",
-            CompatibleNodes: "compatibleNodes",
-            AddonDetails: "addonDetails",
-            ManagementType: "managementType",
-          }),
-        ),
-      ).annotate({
-        identifier: "CoverageEksClusterDetails",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          Issues: S.optional(__S(4, __c0, 4)),
-          ManagementType: S.optional(S.String),
-        }).pipe(S.encodeKeys({ Issues: "issues", ManagementType: "managementType" })),
-      ).annotate({ identifier: "FargateDetails" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          CoveredContainerInstances: S.optional(S.Number),
-          CompatibleContainerInstances: S.optional(S.Number),
-        }).pipe(
-          S.encodeKeys({
-            CoveredContainerInstances: "coveredContainerInstances",
-            CompatibleContainerInstances: "compatibleContainerInstances",
-          }),
-        ),
-      ).annotate({ identifier: "ContainerInstanceDetails" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          ClusterName: S.optional(S.String),
-          FargateDetails: S.optional(__S(397, __c49, 5)),
-          ContainerInstanceDetails: S.optional(__S(398, __c49, 6)),
-        }).pipe(
-          S.encodeKeys({
-            ClusterName: "clusterName",
-            FargateDetails: "fargateDetails",
-            ContainerInstanceDetails: "containerInstanceDetails",
-          }),
-        ),
-      ).annotate({
-        identifier: "CoverageEcsClusterDetails",
-      });
-  }
-}
-function __c50(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({ Version: S.optional(S.String) }).pipe(S.encodeKeys({ Version: "version" })),
-      ).annotate({ identifier: "AgentDetails" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          InstanceId: S.optional(S.String),
-          InstanceType: S.optional(S.String),
-          ClusterArn: S.optional(S.String),
-          AgentDetails: S.optional(__S(400, __c50, 0)),
-          ManagementType: S.optional(S.String),
-        }).pipe(
-          S.encodeKeys({
-            InstanceId: "instanceId",
-            InstanceType: "instanceType",
-            ClusterArn: "clusterArn",
-            AgentDetails: "agentDetails",
-            ManagementType: "managementType",
-          }),
-        ),
-      ).annotate({
-        identifier: "CoverageEc2InstanceDetails",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          EksClusterDetails: S.optional(__S(396, __c49, 4)),
-          EcsClusterDetails: S.optional(__S(399, __c49, 7)),
-          Ec2InstanceDetails: S.optional(__S(401, __c50, 1)),
-          ResourceType: S.optional(S.String),
-        }).pipe(
-          S.encodeKeys({
-            EksClusterDetails: "eksClusterDetails",
-            EcsClusterDetails: "ecsClusterDetails",
-            Ec2InstanceDetails: "ec2InstanceDetails",
-            ResourceType: "resourceType",
-          }),
-        ),
-      ).annotate({ identifier: "CoverageResourceDetails" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          ResourceId: S.optional(S.String),
-          DetectorId: S.optional(S.String),
-          AccountId: S.optional(S.String),
-          ResourceDetails: S.optional(__S(402, __c50, 2)),
-          CoverageStatus: S.optional(S.String),
-          Issue: S.optional(S.String),
-          UpdatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-        }).pipe(
-          S.encodeKeys({
-            ResourceId: "resourceId",
-            DetectorId: "detectorId",
-            AccountId: "accountId",
-            ResourceDetails: "resourceDetails",
-            CoverageStatus: "coverageStatus",
-            Issue: "issue",
-            UpdatedAt: "updatedAt",
-          }),
-        ),
-      ).annotate({ identifier: "CoverageResource" });
-    case 4:
-      return S.Array(__S(403, __c50, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          Resources: S.optional(__S(404, __c50, 4)),
-          NextToken: S.optional(S.String),
-        }).pipe(S.encodeKeys({ Resources: "resources", NextToken: "nextToken" })),
-      ).annotate({ identifier: "ListCoverageResponse" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          MaxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
-          NextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
-          RuleId: S.optional(S.String).pipe(T.HttpQuery("ruleId")),
-          Mode: S.optional(S.String).pipe(T.HttpQuery("mode")),
-        }).pipe(
-          T.all(
-            T.Http({ method: "GET", uri: "/custom-detection-rule/association" }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({
-        identifier: "ListCustomDetectionRuleAssociationsRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          AssociationId: S.optional(S.String),
-          Arn: S.optional(S.String),
-          RuleId: S.optional(S.String),
-          Mode: S.optional(S.String),
-          CreatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          UpdatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          ExpiresAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-        }).pipe(
-          S.encodeKeys({
-            AssociationId: "associationId",
-            Arn: "arn",
-            RuleId: "ruleId",
-            Mode: "mode",
-            CreatedAt: "createdAt",
-            UpdatedAt: "updatedAt",
-            ExpiresAt: "expiresAt",
-          }),
-        ),
-      ).annotate({ identifier: "AssociationSummary" });
-  }
-}
-function __c51(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(407, __c50, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          RuleAssociations: S.optional(__S(408, __c51, 0)),
-          NextToken: S.optional(S.String),
-        }).pipe(S.encodeKeys({ RuleAssociations: "ruleAssociations", NextToken: "nextToken" })),
-      ).annotate({
-        identifier: "ListCustomDetectionRuleAssociationsResponse",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          MaxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
-          NextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
-          Status: S.optional(S.String).pipe(T.HttpQuery("status")),
-        }).pipe(
-          T.all(
-            T.Http({ method: "GET", uri: "/custom-detection-rule/org-configuration" }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({
-        identifier: "ListCustomDetectionRuleOrgConfigurationsRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          RuleId: S.optional(S.String),
-          Mode: S.optional(S.String),
-          Status: S.optional(S.String),
-          StatusReason: S.optional(S.String),
-          CreatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          UpdatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          ExpiresAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-        }).pipe(
-          S.encodeKeys({
-            RuleId: "ruleId",
-            Mode: "mode",
-            Status: "status",
-            StatusReason: "statusReason",
-            CreatedAt: "createdAt",
-            UpdatedAt: "updatedAt",
-            ExpiresAt: "expiresAt",
-          }),
-        ),
-      ).annotate({
-        identifier: "DetectionRuleOrgConfigurationSummary",
-      });
-    case 4:
-      return S.Array(__S(411, __c51, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          Configurations: S.optional(__S(412, __c51, 4)),
-          NextToken: S.optional(S.String),
-        }).pipe(S.encodeKeys({ Configurations: "configurations", NextToken: "nextToken" })),
-      ).annotate({
-        identifier: "ListCustomDetectionRuleOrgConfigurationsResponse",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          Name: S.optional(S.String),
-          Values: S.optional(__S(4, __c0, 4)),
-          Condition: S.optional(S.String),
-        }).pipe(S.encodeKeys({ Name: "name", Values: "values", Condition: "condition" })),
-      ).annotate({ identifier: "DetectionRuleFilter" });
-    case 7:
-      return S.Array(__S(414, __c51, 6));
-  }
-}
-function __c52(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          MaxResults: S.optional(S.Number),
-          NextToken: S.optional(S.String),
-          Filters: S.optional(__S(415, __c51, 7)),
-        })
-          .pipe(
-            S.encodeKeys({ MaxResults: "maxResults", NextToken: "nextToken", Filters: "filters" }),
-          )
-          .pipe(
-            T.all(
-              T.Http({ method: "POST", uri: "/custom-detection-rule/rule" }),
-              svc,
-              auth,
-              proto,
-              ver,
-              rules,
-            ),
-          ),
-      ).annotate({
-        identifier: "ListCustomDetectionRulesRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          RuleId: S.optional(S.String),
-          Arn: S.optional(S.String),
-          Name: S.optional(S.String),
-          Description: S.optional(S.String),
-          Severity: S.optional(S.String),
-          DataSource: S.optional(S.String),
-          Tactic: S.optional(S.String),
-          Technique: S.optional(S.String),
-          Service: S.optional(S.String),
-          Language: S.optional(S.String),
-          Schema: S.optional(S.String),
-          CreatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          UpdatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-        }).pipe(
-          S.encodeKeys({
-            RuleId: "ruleId",
-            Arn: "arn",
-            Name: "name",
-            Description: "description",
-            Severity: "severity",
-            DataSource: "dataSource",
-            Tactic: "tactic",
-            Technique: "technique",
-            Service: "service",
-            Language: "language",
-            Schema: "schema",
-            CreatedAt: "createdAt",
-            UpdatedAt: "updatedAt",
-          }),
-        ),
-      ).annotate({ identifier: "RuleSummary" });
-    case 2:
-      return S.Array(__S(417, __c52, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({ Rules: S.optional(__S(418, __c52, 2)), NextToken: S.optional(S.String) }).pipe(
-          S.encodeKeys({ Rules: "rules", NextToken: "nextToken" }),
-        ),
-      ).annotate({
-        identifier: "ListCustomDetectionRulesResponse",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          MaxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
-          NextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
-        }).pipe(T.all(T.Http({ method: "GET", uri: "/detector" }), svc, auth, proto, ver, rules)),
-      ).annotate({ identifier: "ListDetectorsRequest" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          DetectorIds: S.optional(__S(4, __c0, 4)),
-          NextToken: S.optional(S.String),
-        }).pipe(S.encodeKeys({ DetectorIds: "detectorIds", NextToken: "nextToken" })),
-      ).annotate({ identifier: "ListDetectorsResponse" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          DetectorId: S.String.pipe(T.HttpLabel("DetectorId")),
-          MaxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
-          NextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
-        }).pipe(
-          T.all(
-            T.Http({ method: "GET", uri: "/detector/{DetectorId}/filter" }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({ identifier: "ListFiltersRequest" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          FilterNames: S.optional(__S(4, __c0, 4)),
-          NextToken: S.optional(S.String),
-        }).pipe(S.encodeKeys({ FilterNames: "filterNames", NextToken: "nextToken" })),
-      ).annotate({ identifier: "ListFiltersResponse" });
-  }
-}
-function __c53(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          DetectorId: S.String.pipe(T.HttpLabel("DetectorId")),
-          FindingCriteria: S.optional(__S(29, __c3, 5)),
-          SortCriteria: S.optional(__S(76, __c9, 4)),
-          MaxResults: S.optional(S.Number),
-          NextToken: S.optional(S.String),
-        })
-          .pipe(
-            S.encodeKeys({
-              FindingCriteria: "findingCriteria",
-              SortCriteria: "sortCriteria",
-              MaxResults: "maxResults",
-              NextToken: "nextToken",
-            }),
-          )
-          .pipe(
-            T.all(
-              T.Http({ method: "POST", uri: "/detector/{DetectorId}/findings" }),
-              svc,
-              auth,
-              proto,
-              ver,
-              rules,
-            ),
-          ),
-      ).annotate({ identifier: "ListFindingsRequest" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({ FindingIds: S.optional(__S(4, __c0, 4)), NextToken: S.optional(S.String) }).pipe(
-          S.encodeKeys({ FindingIds: "findingIds", NextToken: "nextToken" }),
-        ),
-      ).annotate({ identifier: "ListFindingsResponse" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          AttributeName: S.optional(S.String),
-          OrderBy: S.optional(S.String),
-        }).pipe(S.encodeKeys({ AttributeName: "attributeName", OrderBy: "orderBy" })),
-      ).annotate({
-        identifier: "InvestigationSortCriteria",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          DetectorId: S.String.pipe(T.HttpLabel("DetectorId")),
-          SortCriteria: S.optional(__S(426, __c53, 2)),
-          MaxResults: S.optional(S.Number),
-          NextToken: S.optional(S.String),
-        })
-          .pipe(
-            S.encodeKeys({
-              SortCriteria: "sortCriteria",
-              MaxResults: "maxResults",
-              NextToken: "nextToken",
-            }),
-          )
-          .pipe(
-            T.all(
-              T.Http({ method: "POST", uri: "/detector/{DetectorId}/investigation/list" }),
-              svc,
-              auth,
-              proto,
-              ver,
-              rules,
-            ),
-          ),
-      ).annotate({
-        identifier: "ListInvestigationsRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          InvestigationId: S.optional(S.String),
-          Status: S.optional(S.String),
-          TriggerPrompt: S.optional(S.String),
-          RiskLevel: S.optional(S.String),
-          Confidence: S.optional(S.String),
-          Title: S.optional(S.String),
-          AccountId: S.optional(S.String),
-          StartTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          EndTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-        }).pipe(
-          S.encodeKeys({
-            InvestigationId: "investigationId",
-            Status: "status",
-            TriggerPrompt: "triggerPrompt",
-            RiskLevel: "riskLevel",
-            Confidence: "confidence",
-            Title: "title",
-            AccountId: "accountId",
-            StartTime: "startTime",
-            EndTime: "endTime",
-          }),
-        ),
-      ).annotate({ identifier: "InvestigationSummary" });
-    case 5:
-      return S.Array(__S(428, __c53, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          Investigations: S.optional(__S(429, __c53, 5)),
-          NextToken: S.optional(S.String),
-        }).pipe(S.encodeKeys({ Investigations: "investigations", NextToken: "nextToken" })),
-      ).annotate({
-        identifier: "ListInvestigationsResponse",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          MaxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
-          NextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
-        }).pipe(T.all(T.Http({ method: "GET", uri: "/invitation" }), svc, auth, proto, ver, rules)),
-      ).annotate({ identifier: "ListInvitationsRequest" });
-  }
-}
-function __c54(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(105, __c13, 1));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          Invitations: S.optional(__S(432, __c54, 0)),
-          NextToken: S.optional(S.String),
-        }).pipe(S.encodeKeys({ Invitations: "invitations", NextToken: "nextToken" })),
-      ).annotate({ identifier: "ListInvitationsResponse" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          DetectorId: S.String.pipe(T.HttpLabel("DetectorId")),
-          MaxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
-          NextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
-        }).pipe(
-          T.all(
-            T.Http({ method: "GET", uri: "/detector/{DetectorId}/ipset" }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({ identifier: "ListIPSetsRequest" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({ IpSetIds: S.optional(__S(4, __c0, 4)), NextToken: S.optional(S.String) }).pipe(
-          S.encodeKeys({ IpSetIds: "ipSetIds", NextToken: "nextToken" }),
-        ),
-      ).annotate({ identifier: "ListIPSetsResponse" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({ NextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")) }).pipe(
-          T.all(
-            T.Http({ method: "GET", uri: "/malware-protection-plan" }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({
-        identifier: "ListMalwareProtectionPlansRequest",
-      });
-    case 5:
-      return S.Array(__S(41, __c5, 1));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          MalwareProtectionPlans: S.optional(__S(437, __c54, 5)),
-          NextToken: S.optional(S.String),
-        }).pipe(
-          S.encodeKeys({
-            MalwareProtectionPlans: "malwareProtectionPlans",
-            NextToken: "nextToken",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListMalwareProtectionPlansResponse",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          ListMalwareScansCriterionKey: S.optional(S.String),
-          FilterCondition: S.optional(__S(72, __c9, 0)),
-        }).pipe(
-          S.encodeKeys({
-            ListMalwareScansCriterionKey: "criterionKey",
-            FilterCondition: "filterCondition",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListMalwareScansFilterCriterion",
-      });
-  }
-}
-function __c55(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(439, __c54, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          ListMalwareScansFilterCriterion: S.optional(__S(440, __c55, 0)),
-        }).pipe(S.encodeKeys({ ListMalwareScansFilterCriterion: "filterCriterion" })),
-      ).annotate({
-        identifier: "ListMalwareScansFilterCriteria",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          MaxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
-          NextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
-          FilterCriteria: S.optional(__S(441, __c55, 1)),
-          SortCriteria: S.optional(__S(76, __c9, 4)),
-        })
-          .pipe(S.encodeKeys({ FilterCriteria: "filterCriteria", SortCriteria: "sortCriteria" }))
-          .pipe(
-            T.all(T.Http({ method: "POST", uri: "/malware-scan" }), svc, auth, proto, ver, rules),
-          ),
-      ).annotate({ identifier: "ListMalwareScansRequest" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          ResourceArn: S.optional(S.String),
-          ResourceType: S.optional(S.String),
-          ScanId: S.optional(S.String),
-          ScanStatus: S.optional(S.String),
-          ScanResultStatus: S.optional(S.String),
-          ScanType: S.optional(S.String),
-          ScanStartedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          ScanCompletedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-        }).pipe(
-          S.encodeKeys({
-            ResourceArn: "resourceArn",
-            ResourceType: "resourceType",
-            ScanId: "scanId",
-            ScanStatus: "scanStatus",
-            ScanResultStatus: "scanResultStatus",
-            ScanType: "scanType",
-            ScanStartedAt: "scanStartedAt",
-            ScanCompletedAt: "scanCompletedAt",
-          }),
-        ),
-      ).annotate({ identifier: "MalwareScan" });
-    case 4:
-      return S.Array(__S(443, __c55, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({ Scans: S.optional(__S(444, __c55, 4)), NextToken: S.optional(S.String) }).pipe(
-          S.encodeKeys({ Scans: "scans", NextToken: "nextToken" }),
-        ),
-      ).annotate({ identifier: "ListMalwareScansResponse" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          DetectorId: S.String.pipe(T.HttpLabel("DetectorId")),
-          MaxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
-          NextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
-          OnlyAssociated: S.optional(S.String).pipe(T.HttpQuery("onlyAssociated")),
-        }).pipe(
-          T.all(
-            T.Http({ method: "GET", uri: "/detector/{DetectorId}/member" }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({ identifier: "ListMembersRequest" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({ Members: S.optional(__S(352, __c44, 0)), NextToken: S.optional(S.String) }).pipe(
-          S.encodeKeys({ Members: "members", NextToken: "nextToken" }),
-        ),
-      ).annotate({ identifier: "ListMembersResponse" });
-  }
-}
-function __c56(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          MaxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
-          NextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
-        }).pipe(T.all(T.Http({ method: "GET", uri: "/admin" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "ListOrganizationAdminAccountsRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          AdminAccountId: S.optional(S.String),
-          AdminStatus: S.optional(S.String),
-        }).pipe(S.encodeKeys({ AdminAccountId: "adminAccountId", AdminStatus: "adminStatus" })),
-      ).annotate({ identifier: "AdminAccount" });
-    case 2:
-      return S.Array(__S(449, __c56, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          AdminAccounts: S.optional(__S(450, __c56, 2)),
-          NextToken: S.optional(S.String),
-        }).pipe(S.encodeKeys({ AdminAccounts: "adminAccounts", NextToken: "nextToken" })),
-      ).annotate({
-        identifier: "ListOrganizationAdminAccountsResponse",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          DetectorId: S.String.pipe(T.HttpLabel("DetectorId")),
-          MaxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
-          NextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
-        }).pipe(
-          T.all(
-            T.Http({ method: "GET", uri: "/detector/{DetectorId}/publishingDestination" }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({
-        identifier: "ListPublishingDestinationsRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          DestinationId: S.optional(S.String),
-          DestinationType: S.optional(S.String),
-          Status: S.optional(S.String),
-        }).pipe(
-          S.encodeKeys({
-            DestinationId: "destinationId",
-            DestinationType: "destinationType",
-            Status: "status",
-          }),
-        ),
-      ).annotate({ identifier: "Destination" });
-    case 6:
-      return S.Array(__S(453, __c56, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          Destinations: S.optional(__S(454, __c56, 6)),
-          NextToken: S.optional(S.String),
-        }).pipe(S.encodeKeys({ Destinations: "destinations", NextToken: "nextToken" })),
-      ).annotate({
-        identifier: "ListPublishingDestinationsResponse",
-      });
-  }
-}
-function __c57(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({ ResourceArn: S.String.pipe(T.HttpLabel("ResourceArn")) }).pipe(
-          T.all(
-            T.Http({ method: "GET", uri: "/tags/{ResourceArn}" }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({
-        identifier: "ListTagsForResourceRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({ Tags: S.optional(__S(6, __c0, 6)) }).pipe(S.encodeKeys({ Tags: "tags" })),
-      ).annotate({
-        identifier: "ListTagsForResourceResponse",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          DetectorId: S.String.pipe(T.HttpLabel("DetectorId")),
-          MaxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
-          NextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
-        }).pipe(
-          T.all(
-            T.Http({ method: "GET", uri: "/detector/{DetectorId}/threatentityset" }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({
-        identifier: "ListThreatEntitySetsRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          ThreatEntitySetIds: S.optional(__S(4, __c0, 4)),
-          NextToken: S.optional(S.String),
-        }).pipe(S.encodeKeys({ ThreatEntitySetIds: "threatEntitySetIds", NextToken: "nextToken" })),
-      ).annotate({
-        identifier: "ListThreatEntitySetsResponse",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          DetectorId: S.String.pipe(T.HttpLabel("DetectorId")),
-          MaxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
-          NextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
-        }).pipe(
-          T.all(
-            T.Http({ method: "GET", uri: "/detector/{DetectorId}/threatintelset" }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({
-        identifier: "ListThreatIntelSetsRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          ThreatIntelSetIds: S.optional(__S(4, __c0, 4)),
-          NextToken: S.optional(S.String),
-        }).pipe(S.encodeKeys({ ThreatIntelSetIds: "threatIntelSetIds", NextToken: "nextToken" })),
-      ).annotate({
-        identifier: "ListThreatIntelSetsResponse",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          DetectorId: S.String.pipe(T.HttpLabel("DetectorId")),
-          MaxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
-          NextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
-        }).pipe(
-          T.all(
-            T.Http({ method: "GET", uri: "/detector/{DetectorId}/trustedentityset" }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({
-        identifier: "ListTrustedEntitySetsRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          TrustedEntitySetIds: S.optional(__S(4, __c0, 4)),
-          NextToken: S.optional(S.String),
-        }).pipe(
-          S.encodeKeys({ TrustedEntitySetIds: "trustedEntitySetIds", NextToken: "nextToken" }),
-        ),
-      ).annotate({
-        identifier: "ListTrustedEntitySetsResponse",
-      });
-  }
-}
-function __c58(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          Bucket: S.optional(S.String),
-          Key: S.optional(S.String),
-          VersionId: S.optional(S.String),
-        }).pipe(S.encodeKeys({ Bucket: "bucket", Key: "key", VersionId: "versionId" })),
-      ).annotate({
-        identifier: "S3ObjectForSendObjectMalwareScan",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({ S3Object: S.optional(__S(464, __c58, 0)) })
-          .pipe(S.encodeKeys({ S3Object: "s3Object" }))
-          .pipe(
-            T.all(
-              T.Http({ method: "POST", uri: "/object-malware-scan/send" }),
-              svc,
-              auth,
-              proto,
-              ver,
-              rules,
-            ),
-          ),
-      ).annotate({
-        identifier: "SendObjectMalwareScanRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          StartTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          EndTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-        }).pipe(S.encodeKeys({ StartTime: "startTime", EndTime: "endTime" })),
-      ).annotate({ identifier: "ContinuousScanDetails" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          BackupVaultName: S.optional(S.String),
-          ContinuousScanDetails: S.optional(__S(466, __c58, 2)),
-        }).pipe(
-          S.encodeKeys({
-            BackupVaultName: "backupVaultName",
-            ContinuousScanDetails: "continuousScanDetails",
-          }),
-        ),
-      ).annotate({ identifier: "RecoveryPoint" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          Role: S.optional(S.String),
-          IncrementalScanDetails: S.optional(__S(293, __c36, 5)),
-          RecoveryPoint: S.optional(__S(467, __c58, 3)),
-        }).pipe(
-          S.encodeKeys({
-            Role: "role",
-            IncrementalScanDetails: "incrementalScanDetails",
-            RecoveryPoint: "recoveryPoint",
-          }),
-        ),
-      ).annotate({
-        identifier: "StartMalwareScanConfiguration",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          ResourceArn: S.optional(S.String),
-          ClientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-          ScanConfiguration: S.optional(__S(468, __c58, 4)),
-        })
-          .pipe(
-            S.encodeKeys({
-              ResourceArn: "resourceArn",
-              ClientToken: "clientToken",
-              ScanConfiguration: "scanConfiguration",
-            }),
-          )
-          .pipe(
-            T.all(
-              T.Http({ method: "POST", uri: "/malware-scan/start" }),
-              svc,
-              auth,
-              proto,
-              ver,
-              rules,
-            ),
-          ),
-      ).annotate({ identifier: "StartMalwareScanRequest" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({ ScanId: S.optional(S.String) }).pipe(S.encodeKeys({ ScanId: "scanId" })),
-      ).annotate({ identifier: "StartMalwareScanResponse" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          DetectorId: S.String.pipe(T.HttpLabel("DetectorId")),
-          AccountIds: S.optional(__S(4, __c0, 4)),
-        })
-          .pipe(S.encodeKeys({ AccountIds: "accountIds" }))
-          .pipe(
-            T.all(
-              T.Http({ method: "POST", uri: "/detector/{DetectorId}/member/start" }),
-              svc,
-              auth,
-              proto,
-              ver,
-              rules,
-            ),
-          ),
-      ).annotate({
-        identifier: "StartMonitoringMembersRequest",
-      });
-  }
-}
-function __c59(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          DetectorId: S.String.pipe(T.HttpLabel("DetectorId")),
-          AccountIds: S.optional(__S(4, __c0, 4)),
-        })
-          .pipe(S.encodeKeys({ AccountIds: "accountIds" }))
-          .pipe(
-            T.all(
-              T.Http({ method: "POST", uri: "/detector/{DetectorId}/member/stop" }),
-              svc,
-              auth,
-              proto,
-              ver,
-              rules,
-            ),
-          ),
-      ).annotate({
-        identifier: "StopMonitoringMembersRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          ResourceArn: S.optional(S.String).pipe(T.HttpLabel("ResourceArn")),
-          Tags: __S(6, __c0, 6),
-        })
-          .pipe(S.encodeKeys({ Tags: "tags" }))
-          .pipe(
-            T.all(
-              T.Http({ method: "POST", uri: "/tags/{ResourceArn}" }),
-              svc,
-              auth,
-              proto,
-              ver,
-              rules,
-            ),
-          ),
-      ).annotate({ identifier: "TagResourceRequest" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          DetectorId: S.String.pipe(T.HttpLabel("DetectorId")),
-          FindingIds: S.optional(__S(4, __c0, 4)),
-        })
-          .pipe(S.encodeKeys({ FindingIds: "findingIds" }))
-          .pipe(
-            T.all(
-              T.Http({ method: "POST", uri: "/detector/{DetectorId}/findings/unarchive" }),
-              svc,
-              auth,
-              proto,
-              ver,
-              rules,
-            ),
-          ),
-      ).annotate({ identifier: "UnarchiveFindingsRequest" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          ResourceArn: S.String.pipe(T.HttpLabel("ResourceArn")),
-          TagKeys: S.optional(__S(4, __c0, 4)).pipe(T.HttpQuery("tagKeys")),
-        }).pipe(
-          T.all(
-            T.Http({ method: "DELETE", uri: "/tags/{ResourceArn}" }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({ identifier: "UntagResourceRequest" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          RuleId: S.String.pipe(T.HttpLabel("RuleId")),
-          AssociationId: S.String.pipe(T.HttpLabel("AssociationId")),
-          Mode: S.optional(S.String),
-        })
-          .pipe(S.encodeKeys({ Mode: "mode" }))
-          .pipe(
-            T.all(
-              T.Http({
-                method: "PUT",
-                uri: "/custom-detection-rule/rule/{RuleId}/association/{AssociationId}",
-              }),
-              svc,
-              auth,
-              proto,
-              ver,
-              rules,
-            ),
-          ),
-      ).annotate({
-        identifier: "UpdateCustomDetectionRuleAssociationRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          RuleId: S.String.pipe(T.HttpLabel("RuleId")),
-          Mode: S.optional(S.String),
-          IncludeAccountIds: S.optional(__S(4, __c0, 4)),
-          ExcludeAccountIds: S.optional(__S(4, __c0, 4)),
-        })
-          .pipe(
-            S.encodeKeys({
-              Mode: "mode",
-              IncludeAccountIds: "includeAccountIds",
-              ExcludeAccountIds: "excludeAccountIds",
-            }),
-          )
-          .pipe(
-            T.all(
-              T.Http({ method: "PUT", uri: "/custom-detection-rule/org-configuration/{RuleId}" }),
-              svc,
-              auth,
-              proto,
-              ver,
-              rules,
-            ),
-          ),
-      ).annotate({
-        identifier: "UpdateCustomDetectionRuleOrgConfigurationRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          DetectorId: S.String.pipe(T.HttpLabel("DetectorId")),
-          Enable: S.optional(S.Boolean),
-          FindingPublishingFrequency: S.optional(S.String),
-          DataSources: S.optional(__S(16, __c2, 0)),
-          Features: S.optional(__S(20, __c2, 4)),
-        })
-          .pipe(
-            S.encodeKeys({
-              Enable: "enable",
-              FindingPublishingFrequency: "findingPublishingFrequency",
-              DataSources: "dataSources",
-              Features: "features",
-            }),
-          )
-          .pipe(
-            T.all(
-              T.Http({ method: "POST", uri: "/detector/{DetectorId}" }),
-              svc,
-              auth,
-              proto,
-              ver,
-              rules,
-            ),
-          ),
-      ).annotate({ identifier: "UpdateDetectorRequest" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          DetectorId: S.String.pipe(T.HttpLabel("DetectorId")),
-          FilterName: S.String.pipe(T.HttpLabel("FilterName")),
-          Description: S.optional(S.String),
-          Action: S.optional(S.String),
-          Rank: S.optional(S.Number),
-          FindingCriteria: S.optional(__S(29, __c3, 5)),
-        })
-          .pipe(
-            S.encodeKeys({
-              Description: "description",
-              Action: "action",
-              Rank: "rank",
-              FindingCriteria: "findingCriteria",
-            }),
-          )
-          .pipe(
-            T.all(
-              T.Http({ method: "POST", uri: "/detector/{DetectorId}/filter/{FilterName}" }),
-              svc,
-              auth,
-              proto,
-              ver,
-              rules,
-            ),
-          ),
-      ).annotate({ identifier: "UpdateFilterRequest" });
-  }
-}
-function __c60(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          DetectorId: S.String.pipe(T.HttpLabel("DetectorId")),
-          FindingIds: S.optional(__S(4, __c0, 4)),
-          Feedback: S.optional(S.String),
-          Comments: S.optional(SensitiveString),
-        })
-          .pipe(
-            S.encodeKeys({ FindingIds: "findingIds", Feedback: "feedback", Comments: "comments" }),
-          )
-          .pipe(
-            T.all(
-              T.Http({ method: "POST", uri: "/detector/{DetectorId}/findings/feedback" }),
-              svc,
-              auth,
-              proto,
-              ver,
-              rules,
-            ),
-          ),
-      ).annotate({
-        identifier: "UpdateFindingsFeedbackRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          DetectorId: S.String.pipe(T.HttpLabel("DetectorId")),
-          IpSetId: S.optional(S.String).pipe(T.HttpLabel("IpSetId")),
-          Name: S.optional(S.String),
-          Location: S.optional(S.String),
-          Activate: S.optional(S.Boolean),
-          ExpectedBucketOwner: S.optional(S.String),
-        })
-          .pipe(
-            S.encodeKeys({
-              Name: "name",
-              Location: "location",
-              Activate: "activate",
-              ExpectedBucketOwner: "expectedBucketOwner",
-            }),
-          )
-          .pipe(
-            T.all(
-              T.Http({ method: "POST", uri: "/detector/{DetectorId}/ipset/{IpSetId}" }),
-              svc,
-              auth,
-              proto,
-              ver,
-              rules,
-            ),
-          ),
-      ).annotate({ identifier: "UpdateIPSetRequest" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({ ObjectPrefixes: S.optional(__S(4, __c0, 4)) }).pipe(
-          S.encodeKeys({ ObjectPrefixes: "objectPrefixes" }),
-        ),
-      ).annotate({ identifier: "UpdateS3BucketResource" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({ S3Bucket: S.optional(__S(482, __c60, 2)) }).pipe(
-          S.encodeKeys({ S3Bucket: "s3Bucket" }),
-        ),
-      ).annotate({ identifier: "UpdateProtectedResource" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          MalwareProtectionPlanId: S.String.pipe(T.HttpLabel("MalwareProtectionPlanId")),
-          Role: S.optional(S.String),
-          Actions: S.optional(__S(39, __c4, 7)),
-          ProtectedResource: S.optional(__S(483, __c60, 3)),
-        })
-          .pipe(
-            S.encodeKeys({
-              Role: "role",
-              Actions: "actions",
-              ProtectedResource: "protectedResource",
-            }),
-          )
-          .pipe(
-            T.all(
-              T.Http({
-                method: "PATCH",
-                uri: "/malware-protection-plan/{MalwareProtectionPlanId}",
-              }),
-              svc,
-              auth,
-              proto,
-              ver,
-              rules,
-            ),
-          ),
-      ).annotate({
-        identifier: "UpdateMalwareProtectionPlanRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          DetectorId: S.String.pipe(T.HttpLabel("DetectorId")),
-          ScanResourceCriteria: S.optional(__S(342, __c42, 6)),
+          ScanResourceCriteria: S.optional(__S(2722, __c85, 2)),
           EbsSnapshotPreservation: S.optional(S.String),
         })
           .pipe(
@@ -12214,14 +6004,18 @@ function __c60(j: number): any {
       ).annotate({
         identifier: "UpdateMalwareScanSettingsRequest",
       });
-    case 6:
-      return S.Array(__S(17, __c2, 1));
-    case 7:
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(102, __c3, 6));
+    case 1:
       return S.suspend(() =>
         S.Struct({
           Name: S.optional(S.String),
           Status: S.optional(S.String),
-          AdditionalConfiguration: S.optional(__S(486, __c60, 6)),
+          AdditionalConfiguration: S.optional(__S(160, __c5, 0)),
         }).pipe(
           S.encodeKeys({
             Name: "name",
@@ -12232,19 +6026,15 @@ function __c60(j: number): any {
       ).annotate({
         identifier: "MemberFeaturesConfiguration",
       });
-  }
-}
-function __c61(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(487, __c60, 7));
-    case 1:
+    case 2:
+      return S.Array(__S(161, __c5, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
           DetectorId: S.String.pipe(T.HttpLabel("DetectorId")),
-          AccountIds: S.optional(__S(4, __c0, 4)),
-          DataSources: S.optional(__S(16, __c2, 0)),
-          Features: S.optional(__S(488, __c61, 0)),
+          AccountIds: S.optional(__S(3328, __c104, 0)),
+          DataSources: S.optional(__S(101, __c3, 5)),
+          Features: S.optional(__S(162, __c5, 2)),
         })
           .pipe(
             S.encodeKeys({
@@ -12266,34 +6056,38 @@ function __c61(j: number): any {
       ).annotate({
         identifier: "UpdateMemberDetectorsRequest",
       });
-    case 2:
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ AutoEnable: S.optional(S.Boolean) }).pipe(
           S.encodeKeys({ AutoEnable: "autoEnable" }),
         ),
       ).annotate({ identifier: "OrganizationEbsVolumes" });
-    case 3:
+    case 1:
       return S.suspend(() =>
-        S.Struct({ EbsVolumes: S.optional(__S(490, __c61, 2)) }).pipe(
+        S.Struct({ EbsVolumes: S.optional(__S(192, __c6, 0)) }).pipe(
           S.encodeKeys({ EbsVolumes: "ebsVolumes" }),
         ),
       ).annotate({
         identifier: "OrganizationScanEc2InstanceWithFindings",
       });
-    case 4:
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          ScanEc2InstanceWithFindings: S.optional(__S(491, __c61, 3)),
+          ScanEc2InstanceWithFindings: S.optional(__S(193, __c6, 1)),
         }).pipe(S.encodeKeys({ ScanEc2InstanceWithFindings: "scanEc2InstanceWithFindings" })),
       ).annotate({
         identifier: "OrganizationMalwareProtectionConfiguration",
       });
-    case 5:
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          S3Logs: S.optional(__S(87, __c10, 7)),
-          Kubernetes: S.optional(__S(88, __c11, 0)),
-          MalwareProtection: S.optional(__S(492, __c61, 4)),
+          S3Logs: S.optional(__S(1600, __c50, 0)),
+          Kubernetes: S.optional(__S(1601, __c50, 1)),
+          MalwareProtection: S.optional(__S(194, __c6, 2)),
         }).pipe(
           S.encodeKeys({
             S3Logs: "s3Logs",
@@ -12304,13 +6098,13 @@ function __c61(j: number): any {
       ).annotate({
         identifier: "OrganizationDataSourceConfigurations",
       });
-    case 6:
+    case 4:
       return S.suspend(() =>
         S.Struct({
           DetectorId: S.String.pipe(T.HttpLabel("DetectorId")),
           AutoEnable: S.optional(S.Boolean),
-          DataSources: S.optional(__S(493, __c61, 5)),
-          Features: S.optional(__S(95, __c11, 7)),
+          DataSources: S.optional(__S(195, __c6, 3)),
+          Features: S.optional(__S(1605, __c50, 5)),
           AutoEnableOrganizationMembers: S.optional(S.String),
         })
           .pipe(
@@ -12334,12 +6128,16 @@ function __c61(j: number): any {
       ).annotate({
         identifier: "UpdateOrganizationConfigurationRequest",
       });
-    case 7:
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           DetectorId: S.String.pipe(T.HttpLabel("DetectorId")),
           DestinationId: S.String.pipe(T.HttpLabel("DestinationId")),
-          DestinationProperties: S.optional(__S(48, __c6, 0)),
+          DestinationProperties: S.optional(__S(768, __c24, 0)),
         })
           .pipe(S.encodeKeys({ DestinationProperties: "destinationProperties" }))
           .pipe(
@@ -12360,7 +6158,7 @@ function __c61(j: number): any {
       });
   }
 }
-function __c62(j: number): any {
+function __c8(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -12396,7 +6194,11 @@ function __c62(j: number): any {
       ).annotate({
         identifier: "UpdateThreatEntitySetRequest",
       });
-    case 1:
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           DetectorId: S.String.pipe(T.HttpLabel("DetectorId")),
@@ -12430,7 +6232,11 @@ function __c62(j: number): any {
       ).annotate({
         identifier: "UpdateThreatIntelSetRequest",
       });
-    case 2:
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           DetectorId: S.String.pipe(T.HttpLabel("DetectorId")),
@@ -12466,7 +6272,6506 @@ function __c62(j: number): any {
       });
   }
 }
-
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          DetectorId: S.String.pipe(T.HttpLabel("DetectorId")),
+          Name: S.optional(S.String),
+          Description: S.optional(S.String),
+          Action: S.optional(S.String),
+          Rank: S.optional(S.Number),
+          FindingCriteria: S.optional(__S(386, __c12, 2)),
+          ClientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
+          Tags: S.optional(__S(3712, __c116, 0)),
+        })
+          .pipe(
+            S.encodeKeys({
+              Name: "name",
+              Description: "description",
+              Action: "action",
+              Rank: "rank",
+              FindingCriteria: "findingCriteria",
+              ClientToken: "clientToken",
+              Tags: "tags",
+            }),
+          )
+          .pipe(
+            T.all(
+              T.Http({ method: "POST", uri: "/detector/{DetectorId}/filter" }),
+              svc,
+              auth,
+              proto,
+              ver,
+              rules,
+            ),
+          ),
+      ).annotate({ identifier: "CreateFilterRequest" });
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          Eq: S.optional(__S(3328, __c104, 0)),
+          Neq: S.optional(__S(3328, __c104, 0)),
+          Gt: S.optional(S.Number),
+          Gte: S.optional(S.Number),
+          Lt: S.optional(S.Number),
+          Lte: S.optional(S.Number),
+          Equals: S.optional(__S(3328, __c104, 0)),
+          NotEquals: S.optional(__S(3328, __c104, 0)),
+          GreaterThan: S.optional(S.Number),
+          GreaterThanOrEqual: S.optional(S.Number),
+          LessThan: S.optional(S.Number),
+          LessThanOrEqual: S.optional(S.Number),
+          Matches: S.optional(__S(3328, __c104, 0)),
+          NotMatches: S.optional(__S(3328, __c104, 0)),
+        }).pipe(
+          S.encodeKeys({
+            Eq: "eq",
+            Neq: "neq",
+            Gt: "gt",
+            Gte: "gte",
+            Lt: "lt",
+            Lte: "lte",
+            Equals: "equals",
+            NotEquals: "notEquals",
+            GreaterThan: "greaterThan",
+            GreaterThanOrEqual: "greaterThanOrEqual",
+            LessThan: "lessThan",
+            LessThanOrEqual: "lessThanOrEqual",
+            Matches: "matches",
+            NotMatches: "notMatches",
+          }),
+        ),
+      ).annotate({ identifier: "Condition" });
+    case 1:
+      return S.Record(S.String, /*@__PURE__*/ __S(384, __c12, 0).pipe(S.optional));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({ Criterion: S.optional(__S(385, __c12, 1)) }).pipe(
+          S.encodeKeys({ Criterion: "criterion" }),
+        ),
+      ).annotate({ identifier: "FindingCriteria" });
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ Name: S.optional(S.String) }).pipe(S.encodeKeys({ Name: "name" })),
+      ).annotate({ identifier: "CreateFilterResponse" });
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          DetectorId: S.String.pipe(T.HttpLabel("DetectorId")),
+          TriggerPrompt: S.optional(S.String),
+          ClientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
+        })
+          .pipe(S.encodeKeys({ TriggerPrompt: "triggerPrompt", ClientToken: "clientToken" }))
+          .pipe(
+            T.all(
+              T.Http({ method: "POST", uri: "/detector/{DetectorId}/investigation" }),
+              svc,
+              auth,
+              proto,
+              ver,
+              rules,
+            ),
+          ),
+      ).annotate({
+        identifier: "CreateInvestigationRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({ InvestigationId: S.optional(S.String) }).pipe(
+          S.encodeKeys({ InvestigationId: "investigationId" }),
+        ),
+      ).annotate({
+        identifier: "CreateInvestigationResponse",
+      });
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          DetectorId: S.String.pipe(T.HttpLabel("DetectorId")),
+          Name: S.optional(S.String),
+          Format: S.optional(S.String),
+          Location: S.optional(S.String),
+          Activate: S.optional(S.Boolean),
+          ClientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
+          Tags: S.optional(__S(3712, __c116, 0)),
+          ExpectedBucketOwner: S.optional(S.String),
+        })
+          .pipe(
+            S.encodeKeys({
+              Name: "name",
+              Format: "format",
+              Location: "location",
+              Activate: "activate",
+              ClientToken: "clientToken",
+              Tags: "tags",
+              ExpectedBucketOwner: "expectedBucketOwner",
+            }),
+          )
+          .pipe(
+            T.all(
+              T.Http({ method: "POST", uri: "/detector/{DetectorId}/ipset" }),
+              svc,
+              auth,
+              proto,
+              ver,
+              rules,
+            ),
+          ),
+      ).annotate({ identifier: "CreateIPSetRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({ IpSetId: S.optional(S.String) }).pipe(S.encodeKeys({ IpSetId: "ipSetId" })),
+      ).annotate({ identifier: "CreateIPSetResponse" });
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          ClientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
+          Role: S.optional(S.String),
+          ProtectedResource: S.optional(__S(545, __c17, 1)),
+          Actions: S.optional(__S(577, __c18, 1)),
+          Tags: S.optional(__S(3712, __c116, 0)),
+        })
+          .pipe(
+            S.encodeKeys({
+              ClientToken: "clientToken",
+              Role: "role",
+              ProtectedResource: "protectedResource",
+              Actions: "actions",
+              Tags: "tags",
+            }),
+          )
+          .pipe(
+            T.all(
+              T.Http({ method: "POST", uri: "/malware-protection-plan" }),
+              svc,
+              auth,
+              proto,
+              ver,
+              rules,
+            ),
+          ),
+      ).annotate({
+        identifier: "CreateMalwareProtectionPlanRequest",
+      });
+  }
+}
+function __c17(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          BucketName: S.optional(S.String),
+          ObjectPrefixes: S.optional(__S(3328, __c104, 0)),
+        }).pipe(S.encodeKeys({ BucketName: "bucketName", ObjectPrefixes: "objectPrefixes" })),
+      ).annotate({ identifier: "CreateS3BucketResource" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({ S3Bucket: S.optional(__S(544, __c17, 0)) }).pipe(
+          S.encodeKeys({ S3Bucket: "s3Bucket" }),
+        ),
+      ).annotate({ identifier: "CreateProtectedResource" });
+  }
+}
+function __c18(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ Status: S.optional(S.String) }).pipe(S.encodeKeys({ Status: "status" })),
+      ).annotate({
+        identifier: "MalwareProtectionPlanTaggingAction",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({ Tagging: S.optional(__S(576, __c18, 0)) }).pipe(
+          S.encodeKeys({ Tagging: "tagging" }),
+        ),
+      ).annotate({
+        identifier: "MalwareProtectionPlanActions",
+      });
+  }
+}
+function __c19(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ MalwareProtectionPlanId: S.optional(S.String) }).pipe(
+          S.encodeKeys({ MalwareProtectionPlanId: "malwareProtectionPlanId" }),
+        ),
+      ).annotate({
+        identifier: "CreateMalwareProtectionPlanResponse",
+      });
+  }
+}
+function __c20(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ AccountId: S.optional(S.String), Email: S.optional(SensitiveString) }).pipe(
+          S.encodeKeys({ AccountId: "accountId", Email: "email" }),
+        ),
+      ).annotate({ identifier: "AccountDetail" });
+    case 1:
+      return S.Array(__S(640, __c20, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          DetectorId: S.String.pipe(T.HttpLabel("DetectorId")),
+          AccountDetails: S.optional(__S(641, __c20, 1)),
+        })
+          .pipe(S.encodeKeys({ AccountDetails: "accountDetails" }))
+          .pipe(
+            T.all(
+              T.Http({ method: "POST", uri: "/detector/{DetectorId}/member" }),
+              svc,
+              auth,
+              proto,
+              ver,
+              rules,
+            ),
+          ),
+      ).annotate({ identifier: "CreateMembersRequest" });
+  }
+}
+function __c21(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ AccountId: S.optional(S.String), Result: S.optional(S.String) }).pipe(
+          S.encodeKeys({ AccountId: "accountId", Result: "result" }),
+        ),
+      ).annotate({ identifier: "UnprocessedAccount" });
+    case 1:
+      return S.Array(__S(672, __c21, 0));
+  }
+}
+function __c22(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ UnprocessedAccounts: S.optional(__S(673, __c21, 1)) }).pipe(
+          S.encodeKeys({ UnprocessedAccounts: "unprocessedAccounts" }),
+        ),
+      ).annotate({ identifier: "CreateMembersResponse" });
+  }
+}
+function __c23(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          DetectorId: S.String.pipe(T.HttpLabel("DetectorId")),
+          DestinationType: S.optional(S.String),
+          DestinationProperties: S.optional(__S(768, __c24, 0)),
+          ClientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
+          Tags: S.optional(__S(3712, __c116, 0)),
+        })
+          .pipe(
+            S.encodeKeys({
+              DestinationType: "destinationType",
+              DestinationProperties: "destinationProperties",
+              ClientToken: "clientToken",
+              Tags: "tags",
+            }),
+          )
+          .pipe(
+            T.all(
+              T.Http({ method: "POST", uri: "/detector/{DetectorId}/publishingDestination" }),
+              svc,
+              auth,
+              proto,
+              ver,
+              rules,
+            ),
+          ),
+      ).annotate({
+        identifier: "CreatePublishingDestinationRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({ DestinationId: S.optional(S.String) }).pipe(
+          S.encodeKeys({ DestinationId: "destinationId" }),
+        ),
+      ).annotate({
+        identifier: "CreatePublishingDestinationResponse",
+      });
+  }
+}
+function __c24(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ DestinationArn: S.optional(S.String), KmsKeyArn: S.optional(S.String) }).pipe(
+          S.encodeKeys({ DestinationArn: "destinationArn", KmsKeyArn: "kmsKeyArn" }),
+        ),
+      ).annotate({ identifier: "DestinationProperties" });
+  }
+}
+function __c25(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          DetectorId: S.String.pipe(T.HttpLabel("DetectorId")),
+          FindingTypes: S.optional(__S(3328, __c104, 0)),
+        })
+          .pipe(S.encodeKeys({ FindingTypes: "findingTypes" }))
+          .pipe(
+            T.all(
+              T.Http({ method: "POST", uri: "/detector/{DetectorId}/findings/create" }),
+              svc,
+              auth,
+              proto,
+              ver,
+              rules,
+            ),
+          ),
+      ).annotate({
+        identifier: "CreateSampleFindingsRequest",
+      });
+  }
+}
+function __c26(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          DetectorId: S.String.pipe(T.HttpLabel("DetectorId")),
+          Name: S.optional(S.String),
+          Format: S.optional(S.String),
+          Location: S.optional(S.String),
+          ExpectedBucketOwner: S.optional(S.String),
+          Activate: S.optional(S.Boolean),
+          ClientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
+          Tags: S.optional(__S(3712, __c116, 0)),
+        })
+          .pipe(
+            S.encodeKeys({
+              Name: "name",
+              Format: "format",
+              Location: "location",
+              ExpectedBucketOwner: "expectedBucketOwner",
+              Activate: "activate",
+              ClientToken: "clientToken",
+              Tags: "tags",
+            }),
+          )
+          .pipe(
+            T.all(
+              T.Http({ method: "POST", uri: "/detector/{DetectorId}/threatentityset" }),
+              svc,
+              auth,
+              proto,
+              ver,
+              rules,
+            ),
+          ),
+      ).annotate({
+        identifier: "CreateThreatEntitySetRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({ ThreatEntitySetId: S.optional(S.String) }).pipe(
+          S.encodeKeys({ ThreatEntitySetId: "threatEntitySetId" }),
+        ),
+      ).annotate({
+        identifier: "CreateThreatEntitySetResponse",
+      });
+  }
+}
+function __c27(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          DetectorId: S.String.pipe(T.HttpLabel("DetectorId")),
+          Name: S.optional(S.String),
+          Format: S.optional(S.String),
+          Location: S.optional(S.String),
+          Activate: S.optional(S.Boolean),
+          ClientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
+          Tags: S.optional(__S(3712, __c116, 0)),
+          ExpectedBucketOwner: S.optional(S.String),
+        })
+          .pipe(
+            S.encodeKeys({
+              Name: "name",
+              Format: "format",
+              Location: "location",
+              Activate: "activate",
+              ClientToken: "clientToken",
+              Tags: "tags",
+              ExpectedBucketOwner: "expectedBucketOwner",
+            }),
+          )
+          .pipe(
+            T.all(
+              T.Http({ method: "POST", uri: "/detector/{DetectorId}/threatintelset" }),
+              svc,
+              auth,
+              proto,
+              ver,
+              rules,
+            ),
+          ),
+      ).annotate({
+        identifier: "CreateThreatIntelSetRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({ ThreatIntelSetId: S.optional(S.String) }).pipe(
+          S.encodeKeys({ ThreatIntelSetId: "threatIntelSetId" }),
+        ),
+      ).annotate({
+        identifier: "CreateThreatIntelSetResponse",
+      });
+  }
+}
+function __c28(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          DetectorId: S.String.pipe(T.HttpLabel("DetectorId")),
+          Name: S.optional(S.String),
+          Format: S.optional(S.String),
+          Location: S.optional(S.String),
+          ExpectedBucketOwner: S.optional(S.String),
+          Activate: S.optional(S.Boolean),
+          ClientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
+          Tags: S.optional(__S(3712, __c116, 0)),
+        })
+          .pipe(
+            S.encodeKeys({
+              Name: "name",
+              Format: "format",
+              Location: "location",
+              ExpectedBucketOwner: "expectedBucketOwner",
+              Activate: "activate",
+              ClientToken: "clientToken",
+              Tags: "tags",
+            }),
+          )
+          .pipe(
+            T.all(
+              T.Http({ method: "POST", uri: "/detector/{DetectorId}/trustedentityset" }),
+              svc,
+              auth,
+              proto,
+              ver,
+              rules,
+            ),
+          ),
+      ).annotate({
+        identifier: "CreateTrustedEntitySetRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({ TrustedEntitySetId: S.optional(S.String) }).pipe(
+          S.encodeKeys({ TrustedEntitySetId: "trustedEntitySetId" }),
+        ),
+      ).annotate({
+        identifier: "CreateTrustedEntitySetResponse",
+      });
+  }
+}
+function __c29(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ AccountIds: S.optional(__S(3328, __c104, 0)) })
+          .pipe(S.encodeKeys({ AccountIds: "accountIds" }))
+          .pipe(
+            T.all(
+              T.Http({ method: "POST", uri: "/invitation/decline" }),
+              svc,
+              auth,
+              proto,
+              ver,
+              rules,
+            ),
+          ),
+      ).annotate({
+        identifier: "DeclineInvitationsRequest",
+      });
+  }
+}
+function __c30(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ UnprocessedAccounts: S.optional(__S(673, __c21, 1)) }).pipe(
+          S.encodeKeys({ UnprocessedAccounts: "unprocessedAccounts" }),
+        ),
+      ).annotate({
+        identifier: "DeclineInvitationsResponse",
+      });
+  }
+}
+function __c31(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          RuleId: S.String.pipe(T.HttpLabel("RuleId")),
+          AssociationId: S.String.pipe(T.HttpLabel("AssociationId")),
+        }).pipe(
+          T.all(
+            T.Http({
+              method: "DELETE",
+              uri: "/custom-detection-rule/rule/{RuleId}/association/{AssociationId}",
+            }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "DeleteCustomDetectionRuleAssociationRequest",
+      });
+  }
+}
+function __c32(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          RuleId: S.String.pipe(T.HttpLabel("RuleId")),
+          Mode: S.optional(S.String).pipe(T.HttpQuery("mode")),
+        }).pipe(
+          T.all(
+            T.Http({ method: "DELETE", uri: "/custom-detection-rule/org-configuration/{RuleId}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "DeleteCustomDetectionRuleOrgConfigurationRequest",
+      });
+  }
+}
+function __c33(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ DetectorId: S.String.pipe(T.HttpLabel("DetectorId")) }).pipe(
+          T.all(
+            T.Http({ method: "DELETE", uri: "/detector/{DetectorId}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "DeleteDetectorRequest" });
+  }
+}
+function __c34(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          DetectorId: S.String.pipe(T.HttpLabel("DetectorId")),
+          FilterName: S.String.pipe(T.HttpLabel("FilterName")),
+        }).pipe(
+          T.all(
+            T.Http({ method: "DELETE", uri: "/detector/{DetectorId}/filter/{FilterName}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "DeleteFilterRequest" });
+  }
+}
+function __c35(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ AccountIds: S.optional(__S(3328, __c104, 0)) })
+          .pipe(S.encodeKeys({ AccountIds: "accountIds" }))
+          .pipe(
+            T.all(
+              T.Http({ method: "POST", uri: "/invitation/delete" }),
+              svc,
+              auth,
+              proto,
+              ver,
+              rules,
+            ),
+          ),
+      ).annotate({ identifier: "DeleteInvitationsRequest" });
+  }
+}
+function __c36(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          DetectorId: S.String.pipe(T.HttpLabel("DetectorId")),
+          IpSetId: S.optional(S.String).pipe(T.HttpLabel("IpSetId")),
+        }).pipe(
+          T.all(
+            T.Http({ method: "DELETE", uri: "/detector/{DetectorId}/ipset/{IpSetId}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "DeleteIPSetRequest" });
+  }
+}
+function __c37(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          MalwareProtectionPlanId: S.optional(S.String).pipe(
+            T.HttpLabel("MalwareProtectionPlanId"),
+          ),
+        }).pipe(
+          T.all(
+            T.Http({ method: "DELETE", uri: "/malware-protection-plan/{MalwareProtectionPlanId}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "DeleteMalwareProtectionPlanRequest",
+      });
+  }
+}
+function __c38(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          DetectorId: S.String.pipe(T.HttpLabel("DetectorId")),
+          AccountIds: S.optional(__S(3328, __c104, 0)),
+        })
+          .pipe(S.encodeKeys({ AccountIds: "accountIds" }))
+          .pipe(
+            T.all(
+              T.Http({ method: "POST", uri: "/detector/{DetectorId}/member/delete" }),
+              svc,
+              auth,
+              proto,
+              ver,
+              rules,
+            ),
+          ),
+      ).annotate({ identifier: "DeleteMembersRequest" });
+  }
+}
+function __c39(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          DetectorId: S.String.pipe(T.HttpLabel("DetectorId")),
+          DestinationId: S.String.pipe(T.HttpLabel("DestinationId")),
+        }).pipe(
+          T.all(
+            T.Http({
+              method: "DELETE",
+              uri: "/detector/{DetectorId}/publishingDestination/{DestinationId}",
+            }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "DeletePublishingDestinationRequest",
+      });
+  }
+}
+function __c40(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          DetectorId: S.String.pipe(T.HttpLabel("DetectorId")),
+          ThreatEntitySetId: S.optional(S.String).pipe(T.HttpLabel("ThreatEntitySetId")),
+        }).pipe(
+          T.all(
+            T.Http({
+              method: "DELETE",
+              uri: "/detector/{DetectorId}/threatentityset/{ThreatEntitySetId}",
+            }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "DeleteThreatEntitySetRequest",
+      });
+  }
+}
+function __c41(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          DetectorId: S.String.pipe(T.HttpLabel("DetectorId")),
+          ThreatIntelSetId: S.String.pipe(T.HttpLabel("ThreatIntelSetId")),
+        }).pipe(
+          T.all(
+            T.Http({
+              method: "DELETE",
+              uri: "/detector/{DetectorId}/threatintelset/{ThreatIntelSetId}",
+            }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "DeleteThreatIntelSetRequest",
+      });
+  }
+}
+function __c42(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          DetectorId: S.String.pipe(T.HttpLabel("DetectorId")),
+          TrustedEntitySetId: S.String.pipe(T.HttpLabel("TrustedEntitySetId")),
+        }).pipe(
+          T.all(
+            T.Http({
+              method: "DELETE",
+              uri: "/detector/{DetectorId}/trustedentityset/{TrustedEntitySetId}",
+            }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "DeleteTrustedEntitySetRequest",
+      });
+  }
+}
+function __c43(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          CriterionKey: S.optional(S.String),
+          FilterCondition: S.optional(__S(1536, __c48, 0)),
+        }).pipe(S.encodeKeys({ CriterionKey: "criterionKey", FilterCondition: "filterCondition" })),
+      ).annotate({ identifier: "FilterCriterion" });
+    case 1:
+      return S.Array(__S(1376, __c43, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({ FilterCriterion: S.optional(__S(1377, __c43, 1)) }).pipe(
+          S.encodeKeys({ FilterCriterion: "filterCriterion" }),
+        ),
+      ).annotate({ identifier: "FilterCriteria" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          DetectorId: S.String.pipe(T.HttpLabel("DetectorId")),
+          NextToken: S.optional(S.String),
+          MaxResults: S.optional(S.Number),
+          FilterCriteria: S.optional(__S(1378, __c43, 2)),
+          SortCriteria: S.optional(__S(1472, __c46, 0)),
+        })
+          .pipe(
+            S.encodeKeys({
+              NextToken: "nextToken",
+              MaxResults: "maxResults",
+              FilterCriteria: "filterCriteria",
+              SortCriteria: "sortCriteria",
+            }),
+          )
+          .pipe(
+            T.all(
+              T.Http({ method: "POST", uri: "/detector/{DetectorId}/malware-scans" }),
+              svc,
+              auth,
+              proto,
+              ver,
+              rules,
+            ),
+          ),
+      ).annotate({
+        identifier: "DescribeMalwareScansRequest",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({ InstanceArn: S.optional(S.String) }).pipe(
+          S.encodeKeys({ InstanceArn: "instanceArn" }),
+        ),
+      ).annotate({ identifier: "ResourceDetails" });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({ ScanResult: S.optional(S.String) }).pipe(
+          S.encodeKeys({ ScanResult: "scanResult" }),
+        ),
+      ).annotate({ identifier: "ScanResultDetails" });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          DetectorId: S.optional(S.String),
+          AdminDetectorId: S.optional(S.String),
+          ScanId: S.optional(S.String),
+          ScanStatus: S.optional(S.String),
+          FailureReason: S.optional(S.String),
+          ScanStartTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          ScanEndTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          TriggerDetails: S.optional(__S(1504, __c47, 0)),
+          ResourceDetails: S.optional(__S(1380, __c43, 4)),
+          ScanResultDetails: S.optional(__S(1381, __c43, 5)),
+          AccountId: S.optional(S.String),
+          TotalBytes: S.optional(S.Number),
+          FileCount: S.optional(S.Number),
+          AttachedVolumes: S.optional(__S(1408, __c44, 0)),
+          ScanType: S.optional(S.String),
+        }).pipe(
+          S.encodeKeys({
+            DetectorId: "detectorId",
+            AdminDetectorId: "adminDetectorId",
+            ScanId: "scanId",
+            ScanStatus: "scanStatus",
+            FailureReason: "failureReason",
+            ScanStartTime: "scanStartTime",
+            ScanEndTime: "scanEndTime",
+            TriggerDetails: "triggerDetails",
+            ResourceDetails: "resourceDetails",
+            ScanResultDetails: "scanResultDetails",
+            AccountId: "accountId",
+            TotalBytes: "totalBytes",
+            FileCount: "fileCount",
+            AttachedVolumes: "attachedVolumes",
+            ScanType: "scanType",
+          }),
+        ),
+      ).annotate({ identifier: "Scan" });
+    case 7:
+      return S.Array(__S(1382, __c43, 6));
+    case 8:
+      return S.suspend(() =>
+        S.Struct({ Scans: S.optional(__S(1383, __c43, 7)), NextToken: S.optional(S.String) }).pipe(
+          S.encodeKeys({ Scans: "scans", NextToken: "nextToken" }),
+        ),
+      ).annotate({
+        identifier: "DescribeMalwareScansResponse",
+      });
+  }
+}
+function __c44(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(1440, __c45, 0));
+  }
+}
+function __c45(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          VolumeArn: S.optional(S.String),
+          VolumeType: S.optional(S.String),
+          DeviceName: S.optional(S.String),
+          VolumeSizeInGB: S.optional(S.Number),
+          EncryptionType: S.optional(S.String),
+          SnapshotArn: S.optional(S.String),
+          KmsKeyArn: S.optional(S.String),
+        }).pipe(
+          S.encodeKeys({
+            VolumeArn: "volumeArn",
+            VolumeType: "volumeType",
+            DeviceName: "deviceName",
+            VolumeSizeInGB: "volumeSizeInGB",
+            EncryptionType: "encryptionType",
+            SnapshotArn: "snapshotArn",
+            KmsKeyArn: "kmsKeyArn",
+          }),
+        ),
+      ).annotate({ identifier: "VolumeDetail" });
+  }
+}
+function __c46(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ AttributeName: S.optional(S.String), OrderBy: S.optional(S.String) }).pipe(
+          S.encodeKeys({ AttributeName: "attributeName", OrderBy: "orderBy" }),
+        ),
+      ).annotate({ identifier: "SortCriteria" });
+  }
+}
+function __c47(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          GuardDutyFindingId: S.optional(S.String),
+          Description: S.optional(S.String),
+          TriggerType: S.optional(S.String),
+        }).pipe(
+          S.encodeKeys({
+            GuardDutyFindingId: "guardDutyFindingId",
+            Description: "description",
+            TriggerType: "triggerType",
+          }),
+        ),
+      ).annotate({ identifier: "TriggerDetails" });
+  }
+}
+function __c48(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          EqualsValue: S.optional(S.String),
+          GreaterThan: S.optional(S.Number),
+          LessThan: S.optional(S.Number),
+        }).pipe(
+          S.encodeKeys({
+            EqualsValue: "equalsValue",
+            GreaterThan: "greaterThan",
+            LessThan: "lessThan",
+          }),
+        ),
+      ).annotate({ identifier: "FilterCondition" });
+  }
+}
+function __c49(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          DetectorId: S.String.pipe(T.HttpLabel("DetectorId")),
+          MaxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
+          NextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
+        }).pipe(
+          T.all(
+            T.Http({ method: "GET", uri: "/detector/{DetectorId}/admin" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "DescribeOrganizationConfigurationRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({ EbsVolumes: S.optional(__S(1600, __c50, 0)) }).pipe(
+          S.encodeKeys({ EbsVolumes: "ebsVolumes" }),
+        ),
+      ).annotate({
+        identifier: "OrganizationScanEc2InstanceWithFindingsResult",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          ScanEc2InstanceWithFindings: S.optional(__S(1569, __c49, 1)),
+        }).pipe(S.encodeKeys({ ScanEc2InstanceWithFindings: "scanEc2InstanceWithFindings" })),
+      ).annotate({
+        identifier: "OrganizationMalwareProtectionConfigurationResult",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          S3Logs: S.optional(__S(1600, __c50, 0)),
+          Kubernetes: S.optional(__S(1601, __c50, 1)),
+          MalwareProtection: S.optional(__S(1570, __c49, 2)),
+        }).pipe(
+          S.encodeKeys({
+            S3Logs: "s3Logs",
+            Kubernetes: "kubernetes",
+            MalwareProtection: "malwareProtection",
+          }),
+        ),
+      ).annotate({
+        identifier: "OrganizationDataSourceConfigurationsResult",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          AutoEnable: S.optional(S.Boolean),
+          MemberAccountLimitReached: S.optional(S.Boolean),
+          DataSources: S.optional(__S(1571, __c49, 3)),
+          Features: S.optional(__S(1605, __c50, 5)),
+          NextToken: S.optional(S.String),
+          AutoEnableOrganizationMembers: S.optional(S.String),
+        }).pipe(
+          S.encodeKeys({
+            AutoEnable: "autoEnable",
+            MemberAccountLimitReached: "memberAccountLimitReached",
+            DataSources: "dataSources",
+            Features: "features",
+            NextToken: "nextToken",
+            AutoEnableOrganizationMembers: "autoEnableOrganizationMembers",
+          }),
+        ),
+      ).annotate({
+        identifier: "DescribeOrganizationConfigurationResponse",
+      });
+  }
+}
+function __c50(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ AutoEnable: S.optional(S.Boolean) }).pipe(
+          S.encodeKeys({ AutoEnable: "autoEnable" }),
+        ),
+      ).annotate({
+        identifier: "OrganizationS3LogsConfigurationResult",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({ AuditLogs: S.optional(__S(1600, __c50, 0)) }).pipe(
+          S.encodeKeys({ AuditLogs: "auditLogs" }),
+        ),
+      ).annotate({
+        identifier: "OrganizationKubernetesConfigurationResult",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          Name: S.optional(S.String),
+          AutoEnable: S.optional(S.String),
+        }).pipe(S.encodeKeys({ Name: "name", AutoEnable: "autoEnable" })),
+      ).annotate({
+        identifier: "OrganizationAdditionalConfigurationResult",
+      });
+    case 3:
+      return S.Array(__S(1602, __c50, 2));
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          Name: S.optional(S.String),
+          AutoEnable: S.optional(S.String),
+          AdditionalConfiguration: S.optional(__S(1603, __c50, 3)),
+        }).pipe(
+          S.encodeKeys({
+            Name: "name",
+            AutoEnable: "autoEnable",
+            AdditionalConfiguration: "additionalConfiguration",
+          }),
+        ),
+      ).annotate({
+        identifier: "OrganizationFeatureConfigurationResult",
+      });
+    case 5:
+      return S.Array(__S(1604, __c50, 4));
+  }
+}
+function __c51(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          DetectorId: S.String.pipe(T.HttpLabel("DetectorId")),
+          DestinationId: S.String.pipe(T.HttpLabel("DestinationId")),
+        }).pipe(
+          T.all(
+            T.Http({
+              method: "GET",
+              uri: "/detector/{DetectorId}/publishingDestination/{DestinationId}",
+            }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "DescribePublishingDestinationRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          DestinationId: S.optional(S.String),
+          DestinationType: S.optional(S.String),
+          Status: S.optional(S.String),
+          PublishingFailureStartTimestamp: S.optional(S.Number),
+          DestinationProperties: S.optional(__S(768, __c24, 0)),
+          Tags: S.optional(__S(3712, __c116, 0)),
+        }).pipe(
+          S.encodeKeys({
+            DestinationId: "destinationId",
+            DestinationType: "destinationType",
+            Status: "status",
+            PublishingFailureStartTimestamp: "publishingFailureStartTimestamp",
+            DestinationProperties: "destinationProperties",
+            Tags: "tags",
+          }),
+        ),
+      ).annotate({
+        identifier: "DescribePublishingDestinationResponse",
+      });
+  }
+}
+function __c52(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ AdminAccountId: S.optional(S.String) })
+          .pipe(S.encodeKeys({ AdminAccountId: "adminAccountId" }))
+          .pipe(
+            T.all(T.Http({ method: "POST", uri: "/admin/disable" }), svc, auth, proto, ver, rules),
+          ),
+      ).annotate({
+        identifier: "DisableOrganizationAdminAccountRequest",
+      });
+  }
+}
+function __c53(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ DetectorId: S.String.pipe(T.HttpLabel("DetectorId")) }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/detector/{DetectorId}/administrator/disassociate" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "DisassociateFromAdministratorAccountRequest",
+      });
+  }
+}
+function __c54(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ DetectorId: S.String.pipe(T.HttpLabel("DetectorId")) }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/detector/{DetectorId}/master/disassociate" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "DisassociateFromMasterAccountRequest",
+      });
+  }
+}
+function __c55(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          DetectorId: S.String.pipe(T.HttpLabel("DetectorId")),
+          AccountIds: S.optional(__S(3328, __c104, 0)),
+        })
+          .pipe(S.encodeKeys({ AccountIds: "accountIds" }))
+          .pipe(
+            T.all(
+              T.Http({ method: "POST", uri: "/detector/{DetectorId}/member/disassociate" }),
+              svc,
+              auth,
+              proto,
+              ver,
+              rules,
+            ),
+          ),
+      ).annotate({
+        identifier: "DisassociateMembersRequest",
+      });
+  }
+}
+function __c56(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ AdminAccountId: S.optional(S.String) })
+          .pipe(S.encodeKeys({ AdminAccountId: "adminAccountId" }))
+          .pipe(
+            T.all(T.Http({ method: "POST", uri: "/admin/enable" }), svc, auth, proto, ver, rules),
+          ),
+      ).annotate({
+        identifier: "EnableOrganizationAdminAccountRequest",
+      });
+  }
+}
+function __c57(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ DetectorId: S.String.pipe(T.HttpLabel("DetectorId")) }).pipe(
+          T.all(
+            T.Http({ method: "GET", uri: "/detector/{DetectorId}/administrator" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "GetAdministratorAccountRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({ Administrator: S.optional(__S(1856, __c58, 0)) }).pipe(
+          S.encodeKeys({ Administrator: "administrator" }),
+        ),
+      ).annotate({
+        identifier: "GetAdministratorAccountResponse",
+      });
+  }
+}
+function __c58(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          AccountId: S.optional(S.String),
+          InvitationId: S.optional(S.String),
+          RelationshipStatus: S.optional(S.String),
+          InvitedAt: S.optional(S.String),
+        }).pipe(
+          S.encodeKeys({
+            AccountId: "accountId",
+            InvitationId: "invitationId",
+            RelationshipStatus: "relationshipStatus",
+            InvitedAt: "invitedAt",
+          }),
+        ),
+      ).annotate({ identifier: "Administrator" });
+  }
+}
+function __c59(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          DetectorId: S.String.pipe(T.HttpLabel("DetectorId")),
+          FilterCriteria: S.optional(__S(1955, __c61, 3)),
+          StatisticsType: S.optional(__S(1920, __c60, 0)),
+        })
+          .pipe(
+            S.encodeKeys({ FilterCriteria: "filterCriteria", StatisticsType: "statisticsType" }),
+          )
+          .pipe(
+            T.all(
+              T.Http({ method: "POST", uri: "/detector/{DetectorId}/coverage/statistics" }),
+              svc,
+              auth,
+              proto,
+              ver,
+              rules,
+            ),
+          ),
+      ).annotate({
+        identifier: "GetCoverageStatisticsRequest",
+      });
+    case 1:
+      return S.Record(S.String, /*@__PURE__*/ S.Number.pipe(S.optional));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          CountByResourceType: S.optional(__S(1889, __c59, 1)),
+          CountByCoverageStatus: S.optional(__S(1889, __c59, 1)),
+        }).pipe(
+          S.encodeKeys({
+            CountByResourceType: "countByResourceType",
+            CountByCoverageStatus: "countByCoverageStatus",
+          }),
+        ),
+      ).annotate({ identifier: "CoverageStatistics" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({ CoverageStatistics: S.optional(__S(1890, __c59, 2)) }).pipe(
+          S.encodeKeys({ CoverageStatistics: "coverageStatistics" }),
+        ),
+      ).annotate({
+        identifier: "GetCoverageStatisticsResponse",
+      });
+  }
+}
+function __c60(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c61(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          Equals: S.optional(__S(3328, __c104, 0)),
+          NotEquals: S.optional(__S(3328, __c104, 0)),
+        }).pipe(S.encodeKeys({ Equals: "equals", NotEquals: "notEquals" })),
+      ).annotate({ identifier: "CoverageFilterCondition" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          CriterionKey: S.optional(S.String),
+          FilterCondition: S.optional(__S(1952, __c61, 0)),
+        }).pipe(S.encodeKeys({ CriterionKey: "criterionKey", FilterCondition: "filterCondition" })),
+      ).annotate({ identifier: "CoverageFilterCriterion" });
+    case 2:
+      return S.Array(__S(1953, __c61, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({ FilterCriterion: S.optional(__S(1954, __c61, 2)) }).pipe(
+          S.encodeKeys({ FilterCriterion: "filterCriterion" }),
+        ),
+      ).annotate({ identifier: "CoverageFilterCriteria" });
+  }
+}
+function __c62(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ RuleId: S.String.pipe(T.HttpLabel("RuleId")) }).pipe(
+          T.all(
+            T.Http({ method: "GET", uri: "/custom-detection-rule/rule/{RuleId}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "GetCustomDetectionRuleRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({ Expression: S.optional(S.String) }).pipe(
+          S.encodeKeys({ Expression: "expression" }),
+        ),
+      ).annotate({ identifier: "RuleDefinition" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          RuleId: S.optional(S.String),
+          Arn: S.optional(S.String),
+          Name: S.optional(S.String),
+          Description: S.optional(S.String),
+          Severity: S.optional(S.String),
+          DataSource: S.optional(S.String),
+          Tactic: S.optional(S.String),
+          Technique: S.optional(S.String),
+          Service: S.optional(S.String),
+          Definition: S.optional(__S(1985, __c62, 1)),
+          Language: S.optional(S.String),
+          Schema: S.optional(S.String),
+          CreatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          UpdatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+        }).pipe(
+          S.encodeKeys({
+            RuleId: "ruleId",
+            Arn: "arn",
+            Name: "name",
+            Description: "description",
+            Severity: "severity",
+            DataSource: "dataSource",
+            Tactic: "tactic",
+            Technique: "technique",
+            Service: "service",
+            Definition: "definition",
+            Language: "language",
+            Schema: "schema",
+            CreatedAt: "createdAt",
+            UpdatedAt: "updatedAt",
+          }),
+        ),
+      ).annotate({ identifier: "RuleDetail" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({ Rule: S.optional(__S(1986, __c62, 2)) }).pipe(S.encodeKeys({ Rule: "rule" })),
+      ).annotate({
+        identifier: "GetCustomDetectionRuleResponse",
+      });
+  }
+}
+function __c63(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          RuleId: S.String.pipe(T.HttpLabel("RuleId")),
+          AssociationId: S.String.pipe(T.HttpLabel("AssociationId")),
+        }).pipe(
+          T.all(
+            T.Http({
+              method: "GET",
+              uri: "/custom-detection-rule/rule/{RuleId}/association/{AssociationId}",
+            }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "GetCustomDetectionRuleAssociationRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          RuleAssociation: S.optional(__S(3744, __c117, 0)),
+          Tags: S.optional(__S(3712, __c116, 0)),
+        }).pipe(S.encodeKeys({ RuleAssociation: "ruleAssociation", Tags: "tags" })),
+      ).annotate({
+        identifier: "GetCustomDetectionRuleAssociationResponse",
+      });
+  }
+}
+function __c64(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          RuleId: S.String.pipe(T.HttpLabel("RuleId")),
+          Mode: S.optional(S.String).pipe(T.HttpQuery("mode")),
+        }).pipe(
+          T.all(
+            T.Http({ method: "GET", uri: "/custom-detection-rule/org-configuration/{RuleId}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "GetCustomDetectionRuleOrgConfigurationRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          RuleId: S.optional(S.String),
+          Mode: S.optional(S.String),
+          Status: S.optional(S.String),
+          StatusReason: S.optional(S.String),
+          IncludeAccountIds: S.optional(__S(3328, __c104, 0)),
+          ExcludeAccountIds: S.optional(__S(3328, __c104, 0)),
+          CreatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          UpdatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          ExpiresAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+        }).pipe(
+          S.encodeKeys({
+            RuleId: "ruleId",
+            Mode: "mode",
+            Status: "status",
+            StatusReason: "statusReason",
+            IncludeAccountIds: "includeAccountIds",
+            ExcludeAccountIds: "excludeAccountIds",
+            CreatedAt: "createdAt",
+            UpdatedAt: "updatedAt",
+            ExpiresAt: "expiresAt",
+          }),
+        ),
+      ).annotate({
+        identifier: "DetectionRuleOrgConfiguration",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({ Configuration: S.optional(__S(2049, __c64, 1)) }).pipe(
+          S.encodeKeys({ Configuration: "configuration" }),
+        ),
+      ).annotate({
+        identifier: "GetCustomDetectionRuleOrgConfigurationResponse",
+      });
+  }
+}
+function __c65(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ DetectorId: S.String.pipe(T.HttpLabel("DetectorId")) }).pipe(
+          T.all(
+            T.Http({ method: "GET", uri: "/detector/{DetectorId}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "GetDetectorRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          CreatedAt: S.optional(S.String),
+          FindingPublishingFrequency: S.optional(S.String),
+          ServiceRole: S.optional(S.String),
+          Status: S.optional(S.String),
+          UpdatedAt: S.optional(S.String),
+          DataSources: S.optional(__S(2114, __c66, 2)),
+          Tags: S.optional(__S(3712, __c116, 0)),
+          Features: S.optional(__S(2118, __c66, 6)),
+        }).pipe(
+          S.encodeKeys({
+            CreatedAt: "createdAt",
+            FindingPublishingFrequency: "findingPublishingFrequency",
+            ServiceRole: "serviceRole",
+            Status: "status",
+            UpdatedAt: "updatedAt",
+            DataSources: "dataSources",
+            Tags: "tags",
+            Features: "features",
+          }),
+        ),
+      ).annotate({ identifier: "GetDetectorResponse" });
+  }
+}
+function __c66(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ Status: S.optional(S.String) }).pipe(S.encodeKeys({ Status: "status" })),
+      ).annotate({
+        identifier: "CloudTrailConfigurationResult",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({ AuditLogs: S.optional(__S(2112, __c66, 0)) }).pipe(
+          S.encodeKeys({ AuditLogs: "auditLogs" }),
+        ),
+      ).annotate({
+        identifier: "KubernetesConfigurationResult",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          CloudTrail: S.optional(__S(2112, __c66, 0)),
+          DNSLogs: S.optional(__S(2112, __c66, 0)),
+          FlowLogs: S.optional(__S(2112, __c66, 0)),
+          S3Logs: S.optional(__S(2112, __c66, 0)),
+          Kubernetes: S.optional(__S(2113, __c66, 1)),
+          MalwareProtection: S.optional(__S(34, __c1, 2)),
+        }).pipe(
+          S.encodeKeys({
+            CloudTrail: "cloudTrail",
+            DNSLogs: "dnsLogs",
+            FlowLogs: "flowLogs",
+            S3Logs: "s3Logs",
+            Kubernetes: "kubernetes",
+            MalwareProtection: "malwareProtection",
+          }),
+        ),
+      ).annotate({
+        identifier: "DataSourceConfigurationsResult",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          Name: S.optional(S.String),
+          Status: S.optional(S.String),
+          UpdatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          ManagedBy: S.optional(S.String),
+        }).pipe(
+          S.encodeKeys({
+            Name: "name",
+            Status: "status",
+            UpdatedAt: "updatedAt",
+            ManagedBy: "managedBy",
+          }),
+        ),
+      ).annotate({
+        identifier: "DetectorAdditionalConfigurationResult",
+      });
+    case 4:
+      return S.Array(__S(2115, __c66, 3));
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          Name: S.optional(S.String),
+          Status: S.optional(S.String),
+          UpdatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          AdditionalConfiguration: S.optional(__S(2116, __c66, 4)),
+          ManagedBy: S.optional(S.String),
+        }).pipe(
+          S.encodeKeys({
+            Name: "name",
+            Status: "status",
+            UpdatedAt: "updatedAt",
+            AdditionalConfiguration: "additionalConfiguration",
+            ManagedBy: "managedBy",
+          }),
+        ),
+      ).annotate({
+        identifier: "DetectorFeatureConfigurationResult",
+      });
+    case 6:
+      return S.Array(__S(2117, __c66, 5));
+  }
+}
+function __c67(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          DetectorId: S.String.pipe(T.HttpLabel("DetectorId")),
+          FilterName: S.String.pipe(T.HttpLabel("FilterName")),
+        }).pipe(
+          T.all(
+            T.Http({ method: "GET", uri: "/detector/{DetectorId}/filter/{FilterName}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "GetFilterRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          Name: S.optional(S.String),
+          Description: S.optional(S.String),
+          Action: S.optional(S.String),
+          Rank: S.optional(S.Number),
+          FindingCriteria: S.optional(__S(386, __c12, 2)),
+          Tags: S.optional(__S(3712, __c116, 0)),
+          CreatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          UpdatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          Version: S.optional(S.Number),
+        }).pipe(
+          S.encodeKeys({
+            Name: "name",
+            Description: "description",
+            Action: "action",
+            Rank: "rank",
+            FindingCriteria: "findingCriteria",
+            Tags: "tags",
+            CreatedAt: "createdAt",
+            UpdatedAt: "updatedAt",
+            Version: "version",
+          }),
+        ),
+      ).annotate({ identifier: "GetFilterResponse" });
+  }
+}
+function __c68(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          DetectorId: S.String.pipe(T.HttpLabel("DetectorId")),
+          FindingIds: S.optional(__S(3328, __c104, 0)),
+          SortCriteria: S.optional(__S(1472, __c46, 0)),
+        })
+          .pipe(S.encodeKeys({ FindingIds: "findingIds", SortCriteria: "sortCriteria" }))
+          .pipe(
+            T.all(
+              T.Http({ method: "POST", uri: "/detector/{DetectorId}/findings/get" }),
+              svc,
+              auth,
+              proto,
+              ver,
+              rules,
+            ),
+          ),
+      ).annotate({ identifier: "GetFindingsRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          AccessKeyId: S.optional(S.String),
+          PrincipalId: S.optional(S.String),
+          UserName: S.optional(S.String),
+          UserType: S.optional(S.String),
+        }).pipe(
+          S.encodeKeys({
+            AccessKeyId: "accessKeyId",
+            PrincipalId: "principalId",
+            UserName: "userName",
+            UserType: "userType",
+          }),
+        ),
+      ).annotate({ identifier: "AccessKeyDetails" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({ Id: S.optional(S.String) }).pipe(S.encodeKeys({ Id: "id" })),
+      ).annotate({ identifier: "Owner" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          EncryptionType: S.optional(S.String),
+          KmsMasterKeyArn: S.optional(S.String),
+        }).pipe(
+          S.encodeKeys({ EncryptionType: "encryptionType", KmsMasterKeyArn: "kmsMasterKeyArn" }),
+        ),
+      ).annotate({
+        identifier: "DefaultServerSideEncryption",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          AllowsPublicReadAccess: S.optional(S.Boolean),
+          AllowsPublicWriteAccess: S.optional(S.Boolean),
+        }).pipe(
+          S.encodeKeys({
+            AllowsPublicReadAccess: "allowsPublicReadAccess",
+            AllowsPublicWriteAccess: "allowsPublicWriteAccess",
+          }),
+        ),
+      ).annotate({ identifier: "AccessControlList" });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          IgnorePublicAcls: S.optional(S.Boolean),
+          RestrictPublicBuckets: S.optional(S.Boolean),
+          BlockPublicAcls: S.optional(S.Boolean),
+          BlockPublicPolicy: S.optional(S.Boolean),
+        }).pipe(
+          S.encodeKeys({
+            IgnorePublicAcls: "ignorePublicAcls",
+            RestrictPublicBuckets: "restrictPublicBuckets",
+            BlockPublicAcls: "blockPublicAcls",
+            BlockPublicPolicy: "blockPublicPolicy",
+          }),
+        ),
+      ).annotate({ identifier: "BlockPublicAccess" });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          AccessControlList: S.optional(__S(2180, __c68, 4)),
+          BucketPolicy: S.optional(__S(2180, __c68, 4)),
+          BlockPublicAccess: S.optional(__S(2181, __c68, 5)),
+        }).pipe(
+          S.encodeKeys({
+            AccessControlList: "accessControlList",
+            BucketPolicy: "bucketPolicy",
+            BlockPublicAccess: "blockPublicAccess",
+          }),
+        ),
+      ).annotate({ identifier: "BucketLevelPermissions" });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({ BlockPublicAccess: S.optional(__S(2181, __c68, 5)) }).pipe(
+          S.encodeKeys({ BlockPublicAccess: "blockPublicAccess" }),
+        ),
+      ).annotate({ identifier: "AccountLevelPermissions" });
+    case 8:
+      return S.suspend(() =>
+        S.Struct({
+          BucketLevelPermissions: S.optional(__S(2182, __c68, 6)),
+          AccountLevelPermissions: S.optional(__S(2183, __c68, 7)),
+        }).pipe(
+          S.encodeKeys({
+            BucketLevelPermissions: "bucketLevelPermissions",
+            AccountLevelPermissions: "accountLevelPermissions",
+          }),
+        ),
+      ).annotate({ identifier: "PermissionConfiguration" });
+    case 9:
+      return S.suspend(() =>
+        S.Struct({
+          PermissionConfiguration: S.optional(__S(2184, __c68, 8)),
+          EffectivePermission: S.optional(S.String),
+        }).pipe(
+          S.encodeKeys({
+            PermissionConfiguration: "permissionConfiguration",
+            EffectivePermission: "effectivePermission",
+          }),
+        ),
+      ).annotate({ identifier: "PublicAccess" });
+    case 10:
+      return S.suspend(() =>
+        S.Struct({
+          ObjectArn: S.optional(S.String),
+          Key: S.optional(S.String),
+          ETag: S.optional(S.String),
+          Hash: S.optional(S.String),
+          VersionId: S.optional(S.String),
+        }).pipe(
+          S.encodeKeys({
+            ObjectArn: "objectArn",
+            Key: "key",
+            ETag: "eTag",
+            Hash: "hash",
+            VersionId: "versionId",
+          }),
+        ),
+      ).annotate({ identifier: "S3ObjectDetail" });
+    case 11:
+      return S.Array(__S(2186, __c68, 10));
+    case 12:
+      return S.suspend(() =>
+        S.Struct({
+          Arn: S.optional(S.String),
+          Name: S.optional(S.String),
+          Type: S.optional(S.String),
+          CreatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          Owner: S.optional(__S(2178, __c68, 2)),
+          Tags: S.optional(__S(2401, __c75, 1)),
+          DefaultServerSideEncryption: S.optional(__S(2179, __c68, 3)),
+          PublicAccess: S.optional(__S(2185, __c68, 9)),
+          S3ObjectDetails: S.optional(__S(2187, __c68, 11)),
+        }).pipe(
+          S.encodeKeys({
+            Arn: "arn",
+            Name: "name",
+            Type: "type",
+            CreatedAt: "createdAt",
+            Owner: "owner",
+            Tags: "tags",
+            DefaultServerSideEncryption: "defaultServerSideEncryption",
+            PublicAccess: "publicAccess",
+            S3ObjectDetails: "s3ObjectDetails",
+          }),
+        ),
+      ).annotate({ identifier: "S3BucketDetail" });
+    case 13:
+      return S.Array(__S(2188, __c68, 12));
+    case 14:
+      return S.suspend(() =>
+        S.Struct({ Arn: S.optional(S.String), Id: S.optional(S.String) }).pipe(
+          S.encodeKeys({ Arn: "arn", Id: "id" }),
+        ),
+      ).annotate({ identifier: "IamInstanceProfile" });
+    case 15:
+      return S.suspend(() =>
+        S.Struct({
+          PrivateDnsName: S.optional(S.String),
+          PrivateIpAddress: S.optional(SensitiveString),
+        }).pipe(
+          S.encodeKeys({ PrivateDnsName: "privateDnsName", PrivateIpAddress: "privateIpAddress" }),
+        ),
+      ).annotate({ identifier: "PrivateIpAddressDetails" });
+    case 16:
+      return S.Array(__S(2191, __c68, 15));
+    case 17:
+      return S.suspend(() =>
+        S.Struct({ GroupId: S.optional(S.String), GroupName: S.optional(S.String) }).pipe(
+          S.encodeKeys({ GroupId: "groupId", GroupName: "groupName" }),
+        ),
+      ).annotate({ identifier: "SecurityGroup" });
+    case 18:
+      return S.Array(__S(2193, __c68, 17));
+    case 19:
+      return S.suspend(() =>
+        S.Struct({
+          Ipv6Addresses: S.optional(__S(3328, __c104, 0)),
+          NetworkInterfaceId: S.optional(S.String),
+          PrivateDnsName: S.optional(S.String),
+          PrivateIpAddress: S.optional(SensitiveString),
+          PrivateIpAddresses: S.optional(__S(2192, __c68, 16)),
+          PublicDnsName: S.optional(S.String),
+          PublicIp: S.optional(S.String),
+          SecurityGroups: S.optional(__S(2194, __c68, 18)),
+          SubnetId: S.optional(S.String),
+          VpcId: S.optional(S.String),
+        }).pipe(
+          S.encodeKeys({
+            Ipv6Addresses: "ipv6Addresses",
+            NetworkInterfaceId: "networkInterfaceId",
+            PrivateDnsName: "privateDnsName",
+            PrivateIpAddress: "privateIpAddress",
+            PrivateIpAddresses: "privateIpAddresses",
+            PublicDnsName: "publicDnsName",
+            PublicIp: "publicIp",
+            SecurityGroups: "securityGroups",
+            SubnetId: "subnetId",
+            VpcId: "vpcId",
+          }),
+        ),
+      ).annotate({ identifier: "NetworkInterface" });
+    case 20:
+      return S.Array(__S(2195, __c68, 19));
+    case 21:
+      return S.suspend(() =>
+        S.Struct({ Code: S.optional(S.String), ProductType: S.optional(S.String) }).pipe(
+          S.encodeKeys({ Code: "productCodeId", ProductType: "productCodeType" }),
+        ),
+      ).annotate({ identifier: "ProductCode" });
+    case 22:
+      return S.Array(__S(2197, __c68, 21));
+    case 23:
+      return S.suspend(() =>
+        S.Struct({
+          AvailabilityZone: S.optional(S.String),
+          IamInstanceProfile: S.optional(__S(2190, __c68, 14)),
+          ImageDescription: S.optional(S.String),
+          ImageId: S.optional(S.String),
+          InstanceId: S.optional(S.String),
+          InstanceState: S.optional(S.String),
+          InstanceType: S.optional(S.String),
+          OutpostArn: S.optional(S.String),
+          LaunchTime: S.optional(S.String),
+          NetworkInterfaces: S.optional(__S(2196, __c68, 20)),
+          Platform: S.optional(S.String),
+          ProductCodes: S.optional(__S(2198, __c68, 22)),
+          Tags: S.optional(__S(2401, __c75, 1)),
+        }).pipe(
+          S.encodeKeys({
+            AvailabilityZone: "availabilityZone",
+            IamInstanceProfile: "iamInstanceProfile",
+            ImageDescription: "imageDescription",
+            ImageId: "imageId",
+            InstanceId: "instanceId",
+            InstanceState: "instanceState",
+            InstanceType: "instanceType",
+            OutpostArn: "outpostArn",
+            LaunchTime: "launchTime",
+            NetworkInterfaces: "networkInterfaces",
+            Platform: "platform",
+            ProductCodes: "productCodes",
+            Tags: "tags",
+          }),
+        ),
+      ).annotate({ identifier: "InstanceDetails" });
+    case 24:
+      return S.suspend(() =>
+        S.Struct({
+          Name: S.optional(S.String),
+          Arn: S.optional(S.String),
+          VpcId: S.optional(S.String),
+          Status: S.optional(S.String),
+          Tags: S.optional(__S(2401, __c75, 1)),
+          CreatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+        }).pipe(
+          S.encodeKeys({
+            Name: "name",
+            Arn: "arn",
+            VpcId: "vpcId",
+            Status: "status",
+            Tags: "tags",
+            CreatedAt: "createdAt",
+          }),
+        ),
+      ).annotate({ identifier: "EksClusterDetails" });
+    case 25:
+      return S.suspend(() =>
+        S.Struct({ Username: S.optional(S.String), Groups: S.optional(__S(3328, __c104, 0)) }).pipe(
+          S.encodeKeys({ Username: "username", Groups: "groups" }),
+        ),
+      ).annotate({ identifier: "ImpersonatedUser" });
+    case 26:
+      return S.suspend(() =>
+        S.Struct({
+          Username: S.optional(S.String),
+          Uid: S.optional(S.String),
+          Groups: S.optional(__S(3328, __c104, 0)),
+          SessionName: S.optional(__S(3328, __c104, 0)),
+          ImpersonatedUser: S.optional(__S(2201, __c68, 25)),
+        }).pipe(
+          S.encodeKeys({
+            Username: "username",
+            Uid: "uid",
+            Groups: "groups",
+            SessionName: "sessionName",
+            ImpersonatedUser: "impersonatedUser",
+          }),
+        ),
+      ).annotate({ identifier: "KubernetesUserDetails" });
+    case 27:
+      return S.suspend(() =>
+        S.Struct({ Name: S.optional(S.String), MountPath: S.optional(S.String) }).pipe(
+          S.encodeKeys({ Name: "name", MountPath: "mountPath" }),
+        ),
+      ).annotate({ identifier: "VolumeMount" });
+    case 28:
+      return S.Array(__S(2203, __c68, 27));
+    case 29:
+      return S.suspend(() =>
+        S.Struct({
+          Privileged: S.optional(S.Boolean),
+          AllowPrivilegeEscalation: S.optional(S.Boolean),
+        }).pipe(
+          S.encodeKeys({
+            Privileged: "privileged",
+            AllowPrivilegeEscalation: "allowPrivilegeEscalation",
+          }),
+        ),
+      ).annotate({ identifier: "SecurityContext" });
+    case 30:
+      return S.suspend(() =>
+        S.Struct({
+          ContainerRuntime: S.optional(S.String),
+          Id: S.optional(S.String),
+          Name: S.optional(S.String),
+          Image: S.optional(S.String),
+          ImagePrefix: S.optional(S.String),
+          VolumeMounts: S.optional(__S(2204, __c68, 28)),
+          SecurityContext: S.optional(__S(2205, __c68, 29)),
+        }).pipe(
+          S.encodeKeys({
+            ContainerRuntime: "containerRuntime",
+            Id: "id",
+            Name: "name",
+            Image: "image",
+            ImagePrefix: "imagePrefix",
+            VolumeMounts: "volumeMounts",
+            SecurityContext: "securityContext",
+          }),
+        ),
+      ).annotate({ identifier: "Container" });
+    case 31:
+      return S.Array(__S(2206, __c68, 30));
+  }
+}
+function __c69(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ Path: S.optional(S.String) }).pipe(S.encodeKeys({ Path: "path" })),
+      ).annotate({ identifier: "HostPath" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({ Name: S.optional(S.String), HostPath: S.optional(__S(2208, __c69, 0)) }).pipe(
+          S.encodeKeys({ Name: "name", HostPath: "hostPath" }),
+        ),
+      ).annotate({ identifier: "Volume" });
+    case 2:
+      return S.Array(__S(2209, __c69, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          Name: S.optional(S.String),
+          Type: S.optional(S.String),
+          Uid: S.optional(S.String),
+          Namespace: S.optional(S.String),
+          HostNetwork: S.optional(S.Boolean),
+          ServiceAccountName: S.optional(S.String),
+          Containers: S.optional(__S(2207, __c68, 31)),
+          Volumes: S.optional(__S(2210, __c69, 2)),
+          HostIPC: S.optional(S.Boolean),
+          HostPID: S.optional(S.Boolean),
+        }).pipe(
+          S.encodeKeys({
+            Name: "name",
+            Type: "type",
+            Uid: "uid",
+            Namespace: "namespace",
+            HostNetwork: "hostNetwork",
+            ServiceAccountName: "serviceAccountName",
+            Containers: "containers",
+            Volumes: "volumes",
+            HostIPC: "hostIPC",
+            HostPID: "hostPID",
+          }),
+        ),
+      ).annotate({
+        identifier: "KubernetesWorkloadDetails",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          KubernetesUserDetails: S.optional(__S(2202, __c68, 26)),
+          KubernetesWorkloadDetails: S.optional(__S(2211, __c69, 3)),
+        }).pipe(
+          S.encodeKeys({
+            KubernetesUserDetails: "kubernetesUserDetails",
+            KubernetesWorkloadDetails: "kubernetesWorkloadDetails",
+          }),
+        ),
+      ).annotate({ identifier: "KubernetesDetails" });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          ScannedVolumeDetails: S.optional(__S(1408, __c44, 0)),
+          SkippedVolumeDetails: S.optional(__S(1408, __c44, 0)),
+        }).pipe(
+          S.encodeKeys({
+            ScannedVolumeDetails: "scannedVolumeDetails",
+            SkippedVolumeDetails: "skippedVolumeDetails",
+          }),
+        ),
+      ).annotate({ identifier: "EbsVolumeDetails" });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          Arn: S.optional(S.String),
+          DefinitionArn: S.optional(S.String),
+          Version: S.optional(S.String),
+          TaskCreatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          StartedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          StartedBy: S.optional(S.String),
+          Tags: S.optional(__S(2401, __c75, 1)),
+          Volumes: S.optional(__S(2210, __c69, 2)),
+          Containers: S.optional(__S(2207, __c68, 31)),
+          Group: S.optional(S.String),
+          LaunchType: S.optional(S.String),
+        }).pipe(
+          S.encodeKeys({
+            Arn: "arn",
+            DefinitionArn: "definitionArn",
+            Version: "version",
+            TaskCreatedAt: "createdAt",
+            StartedAt: "startedAt",
+            StartedBy: "startedBy",
+            Tags: "tags",
+            Volumes: "volumes",
+            Containers: "containers",
+            Group: "group",
+            LaunchType: "launchType",
+          }),
+        ),
+      ).annotate({ identifier: "EcsTaskDetails" });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          Name: S.optional(S.String),
+          Arn: S.optional(S.String),
+          Status: S.optional(S.String),
+          ActiveServicesCount: S.optional(S.Number),
+          RegisteredContainerInstancesCount: S.optional(S.Number),
+          RunningTasksCount: S.optional(S.Number),
+          Tags: S.optional(__S(2401, __c75, 1)),
+          TaskDetails: S.optional(__S(2214, __c69, 6)),
+        }).pipe(
+          S.encodeKeys({
+            Name: "name",
+            Arn: "arn",
+            Status: "status",
+            ActiveServicesCount: "activeServicesCount",
+            RegisteredContainerInstancesCount: "registeredContainerInstancesCount",
+            RunningTasksCount: "runningTasksCount",
+            Tags: "tags",
+            TaskDetails: "taskDetails",
+          }),
+        ),
+      ).annotate({ identifier: "EcsClusterDetails" });
+    case 8:
+      return S.suspend(() =>
+        S.Struct({
+          SubnetIds: S.optional(__S(3328, __c104, 0)),
+          VpcId: S.optional(S.String),
+          SecurityGroups: S.optional(__S(2194, __c68, 18)),
+        }).pipe(
+          S.encodeKeys({
+            SubnetIds: "subnetIds",
+            VpcId: "vpcId",
+            SecurityGroups: "securityGroups",
+          }),
+        ),
+      ).annotate({ identifier: "VpcConfig" });
+    case 9:
+      return S.suspend(() =>
+        S.Struct({
+          FunctionArn: S.optional(S.String),
+          FunctionName: S.optional(S.String),
+          Description: S.optional(S.String),
+          LastModifiedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          RevisionId: S.optional(S.String),
+          FunctionVersion: S.optional(S.String),
+          Role: S.optional(S.String),
+          VpcConfig: S.optional(__S(2216, __c69, 8)),
+          Tags: S.optional(__S(2401, __c75, 1)),
+        }).pipe(
+          S.encodeKeys({
+            FunctionArn: "functionArn",
+            FunctionName: "functionName",
+            Description: "description",
+            LastModifiedAt: "lastModifiedAt",
+            RevisionId: "revisionId",
+            FunctionVersion: "functionVersion",
+            Role: "role",
+            VpcConfig: "vpcConfig",
+            Tags: "tags",
+          }),
+        ),
+      ).annotate({ identifier: "LambdaDetails" });
+    case 10:
+      return S.suspend(() =>
+        S.Struct({
+          DbInstanceIdentifier: S.optional(S.String),
+          Engine: S.optional(S.String),
+          EngineVersion: S.optional(S.String),
+          DbClusterIdentifier: S.optional(S.String),
+          DbInstanceArn: S.optional(S.String),
+          DbiResourceId: S.optional(S.String),
+          Tags: S.optional(__S(2401, __c75, 1)),
+        }).pipe(
+          S.encodeKeys({
+            DbInstanceIdentifier: "dbInstanceIdentifier",
+            Engine: "engine",
+            EngineVersion: "engineVersion",
+            DbClusterIdentifier: "dbClusterIdentifier",
+            DbInstanceArn: "dbInstanceArn",
+            DbiResourceId: "dbiResourceId",
+            Tags: "tags",
+          }),
+        ),
+      ).annotate({ identifier: "RdsDbInstanceDetails" });
+    case 11:
+      return S.suspend(() =>
+        S.Struct({
+          DbShardGroupIdentifier: S.optional(S.String),
+          DbShardGroupResourceId: S.optional(S.String),
+          DbShardGroupArn: S.optional(S.String),
+          Engine: S.optional(S.String),
+          EngineVersion: S.optional(S.String),
+          DbClusterIdentifier: S.optional(S.String),
+          Tags: S.optional(__S(2401, __c75, 1)),
+        }).pipe(
+          S.encodeKeys({
+            DbShardGroupIdentifier: "dbShardGroupIdentifier",
+            DbShardGroupResourceId: "dbShardGroupResourceId",
+            DbShardGroupArn: "dbShardGroupArn",
+            Engine: "engine",
+            EngineVersion: "engineVersion",
+            DbClusterIdentifier: "dbClusterIdentifier",
+            Tags: "tags",
+          }),
+        ),
+      ).annotate({ identifier: "RdsLimitlessDbDetails" });
+    case 12:
+      return S.suspend(() =>
+        S.Struct({
+          User: S.optional(S.String),
+          Application: S.optional(S.String),
+          Database: S.optional(S.String),
+          Ssl: S.optional(S.String),
+          AuthMethod: S.optional(S.String),
+        }).pipe(
+          S.encodeKeys({
+            User: "user",
+            Application: "application",
+            Database: "database",
+            Ssl: "ssl",
+            AuthMethod: "authMethod",
+          }),
+        ),
+      ).annotate({ identifier: "RdsDbUserDetails" });
+    case 13:
+      return S.suspend(() =>
+        S.Struct({ SnapshotArn: S.optional(S.String) }).pipe(
+          S.encodeKeys({ SnapshotArn: "snapshotArn" }),
+        ),
+      ).annotate({ identifier: "EbsSnapshotDetails" });
+    case 14:
+      return S.suspend(() =>
+        S.Struct({ ImageArn: S.optional(S.String) }).pipe(S.encodeKeys({ ImageArn: "imageArn" })),
+      ).annotate({ identifier: "Ec2ImageDetails" });
+    case 15:
+      return S.suspend(() =>
+        S.Struct({
+          RecoveryPointArn: S.optional(S.String),
+          BackupVaultName: S.optional(S.String),
+          ContinuousScanDetails: S.optional(__S(2336, __c73, 0)),
+        }).pipe(
+          S.encodeKeys({
+            RecoveryPointArn: "recoveryPointArn",
+            BackupVaultName: "backupVaultName",
+            ContinuousScanDetails: "continuousScanDetails",
+          }),
+        ),
+      ).annotate({ identifier: "RecoveryPointDetails" });
+    case 16:
+      return S.suspend(() =>
+        S.Struct({ Arn: S.optional(S.String), Version: S.optional(S.String) }).pipe(
+          S.encodeKeys({ Arn: "arn", Version: "version" }),
+        ),
+      ).annotate({ identifier: "BedrockGuardrail" });
+    case 17:
+      return S.Array(__S(2224, __c69, 16));
+    case 18:
+      return S.suspend(() =>
+        S.Struct({
+          Type: S.optional(S.String),
+          Confidence: S.optional(S.String),
+          Action: S.optional(S.String),
+        }).pipe(S.encodeKeys({ Type: "type", Confidence: "confidence", Action: "action" })),
+      ).annotate({ identifier: "ContentPolicyFilter" });
+    case 19:
+      return S.Array(__S(2226, __c69, 18));
+    case 20:
+      return S.suspend(() =>
+        S.Struct({
+          GuardrailArn: S.optional(S.String),
+          GuardrailVersion: S.optional(S.String),
+          Guardrails: S.optional(__S(2225, __c69, 17)),
+          GuardrailAction: S.optional(S.String),
+          GuardrailSource: S.optional(S.String),
+          ContentPolicyFilters: S.optional(__S(2227, __c69, 19)),
+        }).pipe(
+          S.encodeKeys({
+            GuardrailArn: "guardrailArn",
+            GuardrailVersion: "guardrailVersion",
+            Guardrails: "guardrails",
+            GuardrailAction: "guardrailAction",
+            GuardrailSource: "guardrailSource",
+            ContentPolicyFilters: "contentPolicyFilters",
+          }),
+        ),
+      ).annotate({ identifier: "BedrockGuardrailDetails" });
+    case 21:
+      return S.suspend(() =>
+        S.Struct({ ModelId: S.optional(S.String) }).pipe(S.encodeKeys({ ModelId: "modelId" })),
+      ).annotate({ identifier: "ModelDetail" });
+    case 22:
+      return S.Array(__S(2229, __c69, 21));
+    case 23:
+      return S.suspend(() =>
+        S.Struct({
+          AccessKeyDetails: S.optional(__S(2177, __c68, 1)),
+          S3BucketDetails: S.optional(__S(2189, __c68, 13)),
+          InstanceDetails: S.optional(__S(2199, __c68, 23)),
+          EksClusterDetails: S.optional(__S(2200, __c68, 24)),
+          KubernetesDetails: S.optional(__S(2212, __c69, 4)),
+          ResourceType: S.optional(S.String),
+          EbsVolumeDetails: S.optional(__S(2213, __c69, 5)),
+          EcsClusterDetails: S.optional(__S(2215, __c69, 7)),
+          ContainerDetails: S.optional(__S(2206, __c68, 30)),
+          LambdaDetails: S.optional(__S(2217, __c69, 9)),
+          RdsDbInstanceDetails: S.optional(__S(2218, __c69, 10)),
+          RdsLimitlessDbDetails: S.optional(__S(2219, __c69, 11)),
+          RdsDbUserDetails: S.optional(__S(2220, __c69, 12)),
+          EbsSnapshotDetails: S.optional(__S(2221, __c69, 13)),
+          Ec2ImageDetails: S.optional(__S(2222, __c69, 14)),
+          RecoveryPointDetails: S.optional(__S(2223, __c69, 15)),
+          BedrockGuardrailDetails: S.optional(__S(2228, __c69, 20)),
+          ModelDetails: S.optional(__S(2230, __c69, 22)),
+        }).pipe(
+          S.encodeKeys({
+            AccessKeyDetails: "accessKeyDetails",
+            S3BucketDetails: "s3BucketDetails",
+            InstanceDetails: "instanceDetails",
+            EksClusterDetails: "eksClusterDetails",
+            KubernetesDetails: "kubernetesDetails",
+            ResourceType: "resourceType",
+            EbsVolumeDetails: "ebsVolumeDetails",
+            EcsClusterDetails: "ecsClusterDetails",
+            ContainerDetails: "containerDetails",
+            LambdaDetails: "lambdaDetails",
+            RdsDbInstanceDetails: "rdsDbInstanceDetails",
+            RdsLimitlessDbDetails: "rdsLimitlessDbDetails",
+            RdsDbUserDetails: "rdsDbUserDetails",
+            EbsSnapshotDetails: "ebsSnapshotDetails",
+            Ec2ImageDetails: "ec2ImageDetails",
+            RecoveryPointDetails: "recoveryPointDetails",
+            BedrockGuardrailDetails: "bedrockGuardrailDetails",
+            ModelDetails: "modelDetails",
+          }),
+        ),
+      ).annotate({ identifier: "Resource" });
+    case 24:
+      return S.suspend(() =>
+        S.Struct({ Domain: S.optional(S.String) }).pipe(S.encodeKeys({ Domain: "domain" })),
+      ).annotate({ identifier: "DomainDetails" });
+    case 25:
+      return S.suspend(() =>
+        S.Struct({ CityName: S.optional(S.String) }).pipe(S.encodeKeys({ CityName: "cityName" })),
+      ).annotate({ identifier: "City" });
+    case 26:
+      return S.suspend(() =>
+        S.Struct({ CountryCode: S.optional(S.String), CountryName: S.optional(S.String) }).pipe(
+          S.encodeKeys({ CountryCode: "countryCode", CountryName: "countryName" }),
+        ),
+      ).annotate({ identifier: "Country" });
+    case 27:
+      return S.suspend(() =>
+        S.Struct({ Lat: S.optional(S.Number), Lon: S.optional(S.Number) }).pipe(
+          S.encodeKeys({ Lat: "lat", Lon: "lon" }),
+        ),
+      ).annotate({ identifier: "GeoLocation" });
+    case 28:
+      return S.suspend(() =>
+        S.Struct({
+          Asn: S.optional(S.String),
+          AsnOrg: S.optional(S.String),
+          Isp: S.optional(S.String),
+          Org: S.optional(S.String),
+        }).pipe(S.encodeKeys({ Asn: "asn", AsnOrg: "asnOrg", Isp: "isp", Org: "org" })),
+      ).annotate({ identifier: "Organization" });
+    case 29:
+      return S.suspend(() =>
+        S.Struct({
+          City: S.optional(__S(2233, __c69, 25)),
+          Country: S.optional(__S(2234, __c69, 26)),
+          GeoLocation: S.optional(__S(2235, __c69, 27)),
+          IpAddressV4: S.optional(SensitiveString),
+          IpAddressV6: S.optional(SensitiveString),
+          Organization: S.optional(__S(2236, __c69, 28)),
+        }).pipe(
+          S.encodeKeys({
+            City: "city",
+            Country: "country",
+            GeoLocation: "geoLocation",
+            IpAddressV4: "ipAddressV4",
+            IpAddressV6: "ipAddressV6",
+            Organization: "organization",
+          }),
+        ),
+      ).annotate({ identifier: "RemoteIpDetails" });
+    case 30:
+      return S.suspend(() =>
+        S.Struct({
+          AccountId: S.optional(S.String),
+          Affiliated: S.optional(S.Boolean),
+          AwsServiceName: S.optional(S.String),
+        }).pipe(
+          S.encodeKeys({
+            AccountId: "accountId",
+            Affiliated: "affiliated",
+            AwsServiceName: "awsServiceName",
+          }),
+        ),
+      ).annotate({ identifier: "RemoteAccountDetails" });
+    case 31:
+      return S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
+  }
+}
+function __c70(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          Api: S.optional(S.String),
+          CallerType: S.optional(S.String),
+          DomainDetails: S.optional(__S(2232, __c69, 24)),
+          ErrorCode: S.optional(S.String),
+          UserAgent: S.optional(S.String),
+          RemoteIpDetails: S.optional(__S(2237, __c69, 29)),
+          ServiceName: S.optional(S.String),
+          RemoteAccountDetails: S.optional(__S(2238, __c69, 30)),
+          AffectedResources: S.optional(__S(2239, __c69, 31)),
+        }).pipe(
+          S.encodeKeys({
+            Api: "api",
+            CallerType: "callerType",
+            DomainDetails: "domainDetails",
+            ErrorCode: "errorCode",
+            UserAgent: "userAgent",
+            RemoteIpDetails: "remoteIpDetails",
+            ServiceName: "serviceName",
+            RemoteAccountDetails: "remoteAccountDetails",
+            AffectedResources: "affectedResources",
+          }),
+        ),
+      ).annotate({ identifier: "AwsApiCallAction" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          Domain: S.optional(S.String),
+          Protocol: S.optional(S.String),
+          Blocked: S.optional(S.Boolean),
+          DomainWithSuffix: S.optional(S.String),
+          VpcOwnerAccountId: S.optional(S.String),
+        }).pipe(
+          S.encodeKeys({
+            Domain: "domain",
+            Protocol: "protocol",
+            Blocked: "blocked",
+            DomainWithSuffix: "domainWithSuffix",
+            VpcOwnerAccountId: "vpcOwnerAccountId",
+          }),
+        ),
+      ).annotate({ identifier: "DnsRequestAction" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({ Port: S.optional(S.Number), PortName: S.optional(S.String) }).pipe(
+          S.encodeKeys({ Port: "port", PortName: "portName" }),
+        ),
+      ).annotate({ identifier: "LocalPortDetails" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          IpAddressV4: S.optional(SensitiveString),
+          IpAddressV6: S.optional(SensitiveString),
+        }).pipe(S.encodeKeys({ IpAddressV4: "ipAddressV4", IpAddressV6: "ipAddressV6" })),
+      ).annotate({ identifier: "LocalIpDetails" });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          Blocked: S.optional(S.Boolean),
+          ConnectionDirection: S.optional(S.String),
+          LocalPortDetails: S.optional(__S(2242, __c70, 2)),
+          Protocol: S.optional(S.String),
+          LocalIpDetails: S.optional(__S(2243, __c70, 3)),
+          LocalNetworkInterface: S.optional(S.String),
+          RemoteIpDetails: S.optional(__S(2237, __c69, 29)),
+          RemotePortDetails: S.optional(__S(2242, __c70, 2)),
+        }).pipe(
+          S.encodeKeys({
+            Blocked: "blocked",
+            ConnectionDirection: "connectionDirection",
+            LocalPortDetails: "localPortDetails",
+            Protocol: "protocol",
+            LocalIpDetails: "localIpDetails",
+            LocalNetworkInterface: "localNetworkInterface",
+            RemoteIpDetails: "remoteIpDetails",
+            RemotePortDetails: "remotePortDetails",
+          }),
+        ),
+      ).annotate({ identifier: "NetworkConnectionAction" });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          LocalPortDetails: S.optional(__S(2242, __c70, 2)),
+          LocalIpDetails: S.optional(__S(2243, __c70, 3)),
+          RemoteIpDetails: S.optional(__S(2237, __c69, 29)),
+        }).pipe(
+          S.encodeKeys({
+            LocalPortDetails: "localPortDetails",
+            LocalIpDetails: "localIpDetails",
+            RemoteIpDetails: "remoteIpDetails",
+          }),
+        ),
+      ).annotate({ identifier: "PortProbeDetail" });
+    case 6:
+      return S.Array(__S(2245, __c70, 5));
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          Blocked: S.optional(S.Boolean),
+          PortProbeDetails: S.optional(__S(2246, __c70, 6)),
+        }).pipe(S.encodeKeys({ Blocked: "blocked", PortProbeDetails: "portProbeDetails" })),
+      ).annotate({ identifier: "PortProbeAction" });
+    case 8:
+      return S.suspend(() =>
+        S.Struct({
+          RequestUri: S.optional(S.String),
+          Verb: S.optional(S.String),
+          Resource: S.optional(S.String),
+          Subresource: S.optional(S.String),
+          Namespace: S.optional(S.String),
+          ResourceName: S.optional(S.String),
+          SourceIps: S.optional(__S(3328, __c104, 0)),
+          UserAgent: S.optional(S.String),
+          RemoteIpDetails: S.optional(__S(2237, __c69, 29)),
+          StatusCode: S.optional(S.Number),
+          Parameters: S.optional(S.String),
+        }).pipe(
+          S.encodeKeys({
+            RequestUri: "requestUri",
+            Verb: "verb",
+            Resource: "resource",
+            Subresource: "subresource",
+            Namespace: "namespace",
+            ResourceName: "resourceName",
+            SourceIps: "sourceIPs",
+            UserAgent: "userAgent",
+            RemoteIpDetails: "remoteIpDetails",
+            StatusCode: "statusCode",
+            Parameters: "parameters",
+          }),
+        ),
+      ).annotate({ identifier: "KubernetesApiCallAction" });
+    case 9:
+      return S.suspend(() =>
+        S.Struct({
+          Verb: S.optional(S.String),
+          Resource: S.optional(S.String),
+          Namespace: S.optional(S.String),
+          Allowed: S.optional(S.Boolean),
+        }).pipe(
+          S.encodeKeys({
+            Verb: "verb",
+            Resource: "resource",
+            Namespace: "namespace",
+            Allowed: "allowed",
+          }),
+        ),
+      ).annotate({
+        identifier: "KubernetesPermissionCheckedDetails",
+      });
+    case 10:
+      return S.suspend(() =>
+        S.Struct({
+          Kind: S.optional(S.String),
+          Name: S.optional(S.String),
+          Uid: S.optional(S.String),
+          RoleRefName: S.optional(S.String),
+          RoleRefKind: S.optional(S.String),
+        }).pipe(
+          S.encodeKeys({
+            Kind: "kind",
+            Name: "name",
+            Uid: "uid",
+            RoleRefName: "roleRefName",
+            RoleRefKind: "roleRefKind",
+          }),
+        ),
+      ).annotate({
+        identifier: "KubernetesRoleBindingDetails",
+      });
+    case 11:
+      return S.suspend(() =>
+        S.Struct({
+          Kind: S.optional(S.String),
+          Name: S.optional(S.String),
+          Uid: S.optional(S.String),
+        }).pipe(S.encodeKeys({ Kind: "kind", Name: "name", Uid: "uid" })),
+      ).annotate({ identifier: "KubernetesRoleDetails" });
+    case 12:
+      return S.suspend(() =>
+        S.Struct({
+          User: S.optional(S.String),
+          Application: S.optional(S.String),
+          FailedLoginAttempts: S.optional(S.Number),
+          SuccessfulLoginAttempts: S.optional(S.Number),
+        }).pipe(
+          S.encodeKeys({
+            User: "user",
+            Application: "application",
+            FailedLoginAttempts: "failedLoginAttempts",
+            SuccessfulLoginAttempts: "successfulLoginAttempts",
+          }),
+        ),
+      ).annotate({ identifier: "LoginAttribute" });
+    case 13:
+      return S.Array(__S(2252, __c70, 12));
+    case 14:
+      return S.suspend(() =>
+        S.Struct({
+          RemoteIpDetails: S.optional(__S(2237, __c69, 29)),
+          LoginAttributes: S.optional(__S(2253, __c70, 13)),
+        }).pipe(S.encodeKeys({ RemoteIpDetails: "remoteIpDetails" })),
+      ).annotate({ identifier: "RdsLoginAttemptAction" });
+    case 15:
+      return S.suspend(() =>
+        S.Struct({
+          ActionType: S.optional(S.String),
+          AwsApiCallAction: S.optional(__S(2240, __c70, 0)),
+          DnsRequestAction: S.optional(__S(2241, __c70, 1)),
+          NetworkConnectionAction: S.optional(__S(2244, __c70, 4)),
+          PortProbeAction: S.optional(__S(2247, __c70, 7)),
+          KubernetesApiCallAction: S.optional(__S(2248, __c70, 8)),
+          KubernetesPermissionCheckedDetails: S.optional(__S(2249, __c70, 9)),
+          KubernetesRoleBindingDetails: S.optional(__S(2250, __c70, 10)),
+          KubernetesRoleDetails: S.optional(__S(2251, __c70, 11)),
+          RdsLoginAttemptAction: S.optional(__S(2254, __c70, 14)),
+        }).pipe(
+          S.encodeKeys({
+            ActionType: "actionType",
+            AwsApiCallAction: "awsApiCallAction",
+            DnsRequestAction: "dnsRequestAction",
+            NetworkConnectionAction: "networkConnectionAction",
+            PortProbeAction: "portProbeAction",
+            KubernetesApiCallAction: "kubernetesApiCallAction",
+            KubernetesPermissionCheckedDetails: "kubernetesPermissionCheckedDetails",
+            KubernetesRoleBindingDetails: "kubernetesRoleBindingDetails",
+            KubernetesRoleDetails: "kubernetesRoleDetails",
+            RdsLoginAttemptAction: "rdsLoginAttemptAction",
+          }),
+        ),
+      ).annotate({ identifier: "Action" });
+    case 16:
+      return S.suspend(() =>
+        S.Struct({
+          ThreatListName: S.optional(S.String),
+          ThreatNames: S.optional(__S(3328, __c104, 0)),
+          ThreatFileSha256: S.optional(S.String),
+        }).pipe(
+          S.encodeKeys({
+            ThreatListName: "threatListName",
+            ThreatNames: "threatNames",
+            ThreatFileSha256: "threatFileSha256",
+          }),
+        ),
+      ).annotate({ identifier: "ThreatIntelligenceDetail" });
+    case 17:
+      return S.Array(__S(2256, __c70, 16));
+    case 18:
+      return S.suspend(() =>
+        S.Struct({ ThreatIntelligenceDetails: S.optional(__S(2257, __c70, 17)) }).pipe(
+          S.encodeKeys({ ThreatIntelligenceDetails: "threatIntelligenceDetails" }),
+        ),
+      ).annotate({ identifier: "Evidence" });
+    case 19:
+      return S.suspend(() =>
+        S.Struct({ Value: S.optional(S.String), Type: S.optional(S.String) }).pipe(
+          S.encodeKeys({ Value: "value", Type: "type" }),
+        ),
+      ).annotate({ identifier: "ServiceAdditionalInfo" });
+    case 20:
+      return S.suspend(() =>
+        S.Struct({
+          TotalGb: S.optional(S.Number),
+          Files: S.optional(S.Number),
+          Volumes: S.optional(S.Number),
+        }).pipe(S.encodeKeys({ TotalGb: "totalGb", Files: "files", Volumes: "volumes" })),
+      ).annotate({ identifier: "ScannedItemCount" });
+    case 21:
+      return S.suspend(() =>
+        S.Struct({ Files: S.optional(S.Number) }).pipe(S.encodeKeys({ Files: "files" })),
+      ).annotate({ identifier: "ThreatsDetectedItemCount" });
+    case 22:
+      return S.suspend(() =>
+        S.Struct({
+          Severity: S.optional(S.String),
+          ThreatName: S.optional(S.String),
+          Count: S.optional(S.Number),
+        }).pipe(S.encodeKeys({ Severity: "severity", ThreatName: "threatName", Count: "count" })),
+      ).annotate({
+        identifier: "HighestSeverityThreatDetails",
+      });
+    case 23:
+      return S.suspend(() =>
+        S.Struct({
+          FilePath: S.optional(S.String),
+          VolumeArn: S.optional(S.String),
+          Hash: S.optional(S.String),
+          FileName: S.optional(S.String),
+        }).pipe(
+          S.encodeKeys({
+            FilePath: "filePath",
+            VolumeArn: "volumeArn",
+            Hash: "hash",
+            FileName: "fileName",
+          }),
+        ),
+      ).annotate({ identifier: "ScanFilePath" });
+    case 24:
+      return S.Array(__S(2263, __c70, 23));
+    case 25:
+      return S.suspend(() =>
+        S.Struct({
+          Name: S.optional(S.String),
+          Severity: S.optional(S.String),
+          ItemCount: S.optional(S.Number),
+          FilePaths: S.optional(__S(2264, __c70, 24)),
+        }).pipe(
+          S.encodeKeys({
+            Name: "name",
+            Severity: "severity",
+            ItemCount: "itemCount",
+            FilePaths: "filePaths",
+          }),
+        ),
+      ).annotate({ identifier: "ScanThreatName" });
+    case 26:
+      return S.Array(__S(2265, __c70, 25));
+    case 27:
+      return S.suspend(() =>
+        S.Struct({
+          ItemCount: S.optional(S.Number),
+          UniqueThreatNameCount: S.optional(S.Number),
+          Shortened: S.optional(S.Boolean),
+          ThreatNames: S.optional(__S(2266, __c70, 26)),
+        }).pipe(
+          S.encodeKeys({
+            ItemCount: "itemCount",
+            UniqueThreatNameCount: "uniqueThreatNameCount",
+            Shortened: "shortened",
+            ThreatNames: "threatNames",
+          }),
+        ),
+      ).annotate({ identifier: "ThreatDetectedByName" });
+    case 28:
+      return S.suspend(() =>
+        S.Struct({
+          ScannedItemCount: S.optional(__S(2260, __c70, 20)),
+          ThreatsDetectedItemCount: S.optional(__S(2261, __c70, 21)),
+          HighestSeverityThreatDetails: S.optional(__S(2262, __c70, 22)),
+          ThreatDetectedByName: S.optional(__S(2267, __c70, 27)),
+        }).pipe(
+          S.encodeKeys({
+            ScannedItemCount: "scannedItemCount",
+            ThreatsDetectedItemCount: "threatsDetectedItemCount",
+            HighestSeverityThreatDetails: "highestSeverityThreatDetails",
+            ThreatDetectedByName: "threatDetectedByName",
+          }),
+        ),
+      ).annotate({ identifier: "ScanDetections" });
+    case 29:
+      return S.suspend(() =>
+        S.Struct({
+          ScanId: S.optional(S.String),
+          ScanStartedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          ScanCompletedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          TriggerFindingId: S.optional(S.String),
+          Sources: S.optional(__S(3328, __c104, 0)),
+          ScanDetections: S.optional(__S(2268, __c70, 28)),
+          ScanType: S.optional(S.String),
+        }).pipe(
+          S.encodeKeys({
+            ScanId: "scanId",
+            ScanStartedAt: "scanStartedAt",
+            ScanCompletedAt: "scanCompletedAt",
+            TriggerFindingId: "triggerFindingId",
+            Sources: "sources",
+            ScanDetections: "scanDetections",
+            ScanType: "scanType",
+          }),
+        ),
+      ).annotate({ identifier: "EbsVolumeScanDetails" });
+    case 30:
+      return S.suspend(() =>
+        S.Struct({
+          StartTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          NamespacePid: S.optional(S.Number),
+          UserId: S.optional(S.Number),
+          Name: S.optional(S.String),
+          Pid: S.optional(S.Number),
+          Uuid: S.optional(S.String),
+          ExecutablePath: S.optional(S.String),
+          Euid: S.optional(S.Number),
+          ParentUuid: S.optional(S.String),
+        }).pipe(
+          S.encodeKeys({
+            StartTime: "startTime",
+            NamespacePid: "namespacePid",
+            UserId: "userId",
+            Name: "name",
+            Pid: "pid",
+            Uuid: "uuid",
+            ExecutablePath: "executablePath",
+            Euid: "euid",
+            ParentUuid: "parentUuid",
+          }),
+        ),
+      ).annotate({ identifier: "LineageObject" });
+    case 31:
+      return S.Array(__S(2270, __c70, 30));
+  }
+}
+function __c71(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          Name: S.optional(S.String),
+          ExecutablePath: S.optional(S.String),
+          ExecutableSha256: S.optional(S.String),
+          NamespacePid: S.optional(S.Number),
+          Pwd: S.optional(S.String),
+          Pid: S.optional(S.Number),
+          StartTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          Uuid: S.optional(S.String),
+          ParentUuid: S.optional(S.String),
+          User: S.optional(S.String),
+          UserId: S.optional(S.Number),
+          Euid: S.optional(S.Number),
+          Lineage: S.optional(__S(2271, __c70, 31)),
+        }).pipe(
+          S.encodeKeys({
+            Name: "name",
+            ExecutablePath: "executablePath",
+            ExecutableSha256: "executableSha256",
+            NamespacePid: "namespacePid",
+            Pwd: "pwd",
+            Pid: "pid",
+            StartTime: "startTime",
+            Uuid: "uuid",
+            ParentUuid: "parentUuid",
+            User: "user",
+            UserId: "userId",
+            Euid: "euid",
+            Lineage: "lineage",
+          }),
+        ),
+      ).annotate({ identifier: "ProcessDetails" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          ModifyingProcess: S.optional(__S(2272, __c71, 0)),
+          ModifiedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          ScriptPath: S.optional(S.String),
+          LibraryPath: S.optional(S.String),
+          LdPreloadValue: S.optional(S.String),
+          SocketPath: S.optional(S.String),
+          RuncBinaryPath: S.optional(S.String),
+          ReleaseAgentPath: S.optional(S.String),
+          MountSource: S.optional(S.String),
+          MountTarget: S.optional(S.String),
+          FileSystemType: S.optional(S.String),
+          Flags: S.optional(__S(3328, __c104, 0)),
+          ModuleName: S.optional(S.String),
+          ModuleFilePath: S.optional(S.String),
+          ModuleSha256: S.optional(S.String),
+          ShellHistoryFilePath: S.optional(S.String),
+          TargetProcess: S.optional(__S(2272, __c71, 0)),
+          AddressFamily: S.optional(S.String),
+          IanaProtocolNumber: S.optional(S.Number),
+          MemoryRegions: S.optional(__S(3328, __c104, 0)),
+          ToolName: S.optional(S.String),
+          ToolCategory: S.optional(S.String),
+          ServiceName: S.optional(S.String),
+          CommandLineExample: S.optional(S.String),
+          ThreatFilePath: S.optional(S.String),
+          FileOperation: S.optional(S.String),
+          FilePath: S.optional(S.String),
+          RelatedFilePaths: S.optional(__S(3328, __c104, 0)),
+        }).pipe(
+          S.encodeKeys({
+            ModifyingProcess: "modifyingProcess",
+            ModifiedAt: "modifiedAt",
+            ScriptPath: "scriptPath",
+            LibraryPath: "libraryPath",
+            LdPreloadValue: "ldPreloadValue",
+            SocketPath: "socketPath",
+            RuncBinaryPath: "runcBinaryPath",
+            ReleaseAgentPath: "releaseAgentPath",
+            MountSource: "mountSource",
+            MountTarget: "mountTarget",
+            FileSystemType: "fileSystemType",
+            Flags: "flags",
+            ModuleName: "moduleName",
+            ModuleFilePath: "moduleFilePath",
+            ModuleSha256: "moduleSha256",
+            ShellHistoryFilePath: "shellHistoryFilePath",
+            TargetProcess: "targetProcess",
+            AddressFamily: "addressFamily",
+            IanaProtocolNumber: "ianaProtocolNumber",
+            MemoryRegions: "memoryRegions",
+            ToolName: "toolName",
+            ToolCategory: "toolCategory",
+            ServiceName: "serviceName",
+            CommandLineExample: "commandLineExample",
+            ThreatFilePath: "threatFilePath",
+            FileOperation: "fileOperation",
+            FilePath: "filePath",
+            RelatedFilePaths: "relatedFilePaths",
+          }),
+        ),
+      ).annotate({ identifier: "RuntimeContext" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          Process: S.optional(__S(2272, __c71, 0)),
+          Context: S.optional(__S(2273, __c71, 1)),
+        }).pipe(S.encodeKeys({ Process: "process", Context: "context" })),
+      ).annotate({ identifier: "RuntimeDetails" });
+    case 3:
+      return S.Array(S.Number);
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          Text: S.optional(__S(3328, __c104, 0)),
+          Number: S.optional(__S(2275, __c71, 3)),
+        }).pipe(S.encodeKeys({ Text: "text", Number: "number" })),
+      ).annotate({ identifier: "Observations" });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          ProfileType: S.optional(S.String),
+          ProfileSubtype: S.optional(S.String),
+          Observations: S.optional(__S(2276, __c71, 4)),
+        }).pipe(
+          S.encodeKeys({
+            ProfileType: "profileType",
+            ProfileSubtype: "profileSubtype",
+            Observations: "observations",
+          }),
+        ),
+      ).annotate({ identifier: "AnomalyObject" });
+    case 6:
+      return S.Array(__S(2277, __c71, 5));
+    case 7:
+      return S.Record(S.String, /*@__PURE__*/ __S(2278, __c71, 6).pipe(S.optional));
+    case 8:
+      return S.Record(S.String, /*@__PURE__*/ __S(2279, __c71, 7).pipe(S.optional));
+    case 9:
+      return S.Record(S.String, /*@__PURE__*/ __S(2277, __c71, 5).pipe(S.optional));
+    case 10:
+      return S.Record(S.String, /*@__PURE__*/ __S(2281, __c71, 9).pipe(S.optional));
+    case 11:
+      return S.suspend(() =>
+        S.Struct({ Behavior: S.optional(__S(2282, __c71, 10)) }).pipe(
+          S.encodeKeys({ Behavior: "behavior" }),
+        ),
+      ).annotate({ identifier: "AnomalyUnusual" });
+    case 12:
+      return S.suspend(() =>
+        S.Struct({
+          Profiles: S.optional(__S(2280, __c71, 8)),
+          Unusual: S.optional(__S(2283, __c71, 11)),
+        }).pipe(S.encodeKeys({ Profiles: "profiles", Unusual: "unusual" })),
+      ).annotate({ identifier: "Anomaly" });
+    case 13:
+      return S.suspend(() =>
+        S.Struct({ Uid: S.optional(S.String), Name: S.optional(S.String) }).pipe(
+          S.encodeKeys({ Uid: "uid", Name: "account" }),
+        ),
+      ).annotate({ identifier: "Account" });
+    case 14:
+      return S.suspend(() =>
+        S.Struct({
+          Name: S.optional(S.String),
+          Uid: S.optional(S.String),
+          Type: S.optional(S.String),
+          CredentialUid: S.optional(S.String),
+          Account: S.optional(__S(2285, __c71, 13)),
+        }).pipe(
+          S.encodeKeys({
+            Name: "name",
+            Uid: "uid",
+            Type: "type",
+            CredentialUid: "credentialUid",
+            Account: "account",
+          }),
+        ),
+      ).annotate({ identifier: "User" });
+    case 15:
+      return S.suspend(() =>
+        S.Struct({
+          Uid: S.optional(S.String),
+          MfaStatus: S.optional(S.String),
+          CreatedTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          Issuer: S.optional(S.String),
+        }).pipe(
+          S.encodeKeys({
+            Uid: "uid",
+            MfaStatus: "mfaStatus",
+            CreatedTime: "createdTime",
+            Issuer: "issuer",
+          }),
+        ),
+      ).annotate({ identifier: "Session" });
+    case 16:
+      return S.suspend(() =>
+        S.Struct({
+          Name: S.optional(S.String),
+          Path: S.optional(S.String),
+          Sha256: S.optional(S.String),
+        }).pipe(S.encodeKeys({ Name: "name", Path: "path", Sha256: "sha256" })),
+      ).annotate({ identifier: "ActorProcess" });
+    case 17:
+      return S.suspend(() =>
+        S.Struct({
+          Id: S.optional(S.String),
+          User: S.optional(__S(2286, __c71, 14)),
+          Session: S.optional(__S(2287, __c71, 15)),
+          Process: S.optional(__S(2288, __c71, 16)),
+        }).pipe(S.encodeKeys({ Id: "id", User: "user", Session: "session", Process: "process" })),
+      ).annotate({ identifier: "Actor" });
+    case 18:
+      return S.Array(__S(2289, __c71, 17));
+    case 19:
+      return S.suspend(() =>
+        S.Struct({
+          PublicAclAccess: S.optional(S.String),
+          PublicPolicyAccess: S.optional(S.String),
+          PublicAclIgnoreBehavior: S.optional(S.String),
+          PublicBucketRestrictBehavior: S.optional(S.String),
+        }).pipe(
+          S.encodeKeys({
+            PublicAclAccess: "publicAclAccess",
+            PublicPolicyAccess: "publicPolicyAccess",
+            PublicAclIgnoreBehavior: "publicAclIgnoreBehavior",
+            PublicBucketRestrictBehavior: "publicBucketRestrictBehavior",
+          }),
+        ),
+      ).annotate({
+        identifier: "PublicAccessConfiguration",
+      });
+    case 20:
+      return S.suspend(() =>
+        S.Struct({
+          OwnerId: S.optional(S.String),
+          CreatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          EncryptionType: S.optional(S.String),
+          EncryptionKeyArn: S.optional(S.String),
+          EffectivePermission: S.optional(S.String),
+          PublicReadAccess: S.optional(S.String),
+          PublicWriteAccess: S.optional(S.String),
+          AccountPublicAccess: S.optional(__S(2291, __c71, 19)),
+          BucketPublicAccess: S.optional(__S(2291, __c71, 19)),
+          S3ObjectUids: S.optional(__S(3328, __c104, 0)),
+        }).pipe(
+          S.encodeKeys({
+            OwnerId: "ownerId",
+            CreatedAt: "createdAt",
+            EncryptionType: "encryptionType",
+            EncryptionKeyArn: "encryptionKeyArn",
+            EffectivePermission: "effectivePermission",
+            PublicReadAccess: "publicReadAccess",
+            PublicWriteAccess: "publicWriteAccess",
+            AccountPublicAccess: "accountPublicAccess",
+            BucketPublicAccess: "bucketPublicAccess",
+            S3ObjectUids: "s3ObjectUids",
+          }),
+        ),
+      ).annotate({ identifier: "S3Bucket" });
+    case 21:
+      return S.suspend(() =>
+        S.Struct({
+          AvailabilityZone: S.optional(S.String),
+          ImageDescription: S.optional(S.String),
+          InstanceState: S.optional(S.String),
+          IamInstanceProfile: S.optional(__S(2190, __c68, 14)),
+          InstanceType: S.optional(S.String),
+          OutpostArn: S.optional(S.String),
+          Platform: S.optional(S.String),
+          ProductCodes: S.optional(__S(2198, __c68, 22)),
+          Ec2NetworkInterfaceUids: S.optional(__S(3328, __c104, 0)),
+        }).pipe(
+          S.encodeKeys({
+            AvailabilityZone: "availabilityZone",
+            ImageDescription: "imageDescription",
+            InstanceState: "instanceState",
+            InstanceType: "instanceType",
+            OutpostArn: "outpostArn",
+            Platform: "platform",
+            ProductCodes: "productCodes",
+            Ec2NetworkInterfaceUids: "ec2NetworkInterfaceUids",
+          }),
+        ),
+      ).annotate({ identifier: "Ec2Instance" });
+    case 22:
+      return S.suspend(() =>
+        S.Struct({
+          PrincipalId: S.optional(S.String),
+          UserName: S.optional(S.String),
+          UserType: S.optional(S.String),
+        }).pipe(
+          S.encodeKeys({ PrincipalId: "principalId", UserName: "userName", UserType: "userType" }),
+        ),
+      ).annotate({ identifier: "AccessKey" });
+    case 23:
+      return S.suspend(() =>
+        S.Struct({
+          Ipv6Addresses: S.optional(__S(3328, __c104, 0)),
+          PrivateIpAddresses: S.optional(__S(2192, __c68, 16)),
+          PublicIp: S.optional(S.String),
+          SecurityGroups: S.optional(__S(2194, __c68, 18)),
+          SubNetId: S.optional(S.String),
+          VpcId: S.optional(S.String),
+        }).pipe(
+          S.encodeKeys({
+            Ipv6Addresses: "ipv6Addresses",
+            PrivateIpAddresses: "privateIpAddresses",
+            PublicIp: "publicIp",
+            SecurityGroups: "securityGroups",
+            SubNetId: "subNetId",
+            VpcId: "vpcId",
+          }),
+        ),
+      ).annotate({ identifier: "Ec2NetworkInterface" });
+    case 24:
+      return S.suspend(() =>
+        S.Struct({
+          ETag: S.optional(S.String),
+          Key: S.optional(S.String),
+          VersionId: S.optional(S.String),
+        }).pipe(S.encodeKeys({ ETag: "eTag", Key: "key", VersionId: "versionId" })),
+      ).annotate({ identifier: "S3Object" });
+    case 25:
+      return S.suspend(() =>
+        S.Struct({
+          Arn: S.optional(S.String),
+          CreatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          Status: S.optional(S.String),
+          VpcId: S.optional(S.String),
+          Ec2InstanceUids: S.optional(__S(3328, __c104, 0)),
+        }).pipe(
+          S.encodeKeys({
+            Arn: "arn",
+            CreatedAt: "createdAt",
+            Status: "status",
+            VpcId: "vpcId",
+            Ec2InstanceUids: "ec2InstanceUids",
+          }),
+        ),
+      ).annotate({ identifier: "EksCluster" });
+    case 26:
+      return S.suspend(() =>
+        S.Struct({
+          ContainerUids: S.optional(__S(3328, __c104, 0)),
+          Namespace: S.optional(S.String),
+          KubernetesResourcesTypes: S.optional(S.String),
+        }).pipe(
+          S.encodeKeys({
+            ContainerUids: "containerUids",
+            Namespace: "namespace",
+            KubernetesResourcesTypes: "type",
+          }),
+        ),
+      ).annotate({ identifier: "KubernetesWorkload" });
+    case 27:
+      return S.suspend(() =>
+        S.Struct({ Image: S.optional(S.String), ImageUid: S.optional(S.String) }).pipe(
+          S.encodeKeys({ Image: "image", ImageUid: "imageUid" }),
+        ),
+      ).annotate({ identifier: "ContainerFindingResource" });
+    case 28:
+      return S.suspend(() =>
+        S.Struct({
+          Status: S.optional(S.String),
+          Ec2InstanceUids: S.optional(__S(3328, __c104, 0)),
+        }).pipe(S.encodeKeys({ Status: "status", Ec2InstanceUids: "ec2InstanceUids" })),
+      ).annotate({ identifier: "EcsCluster" });
+    case 29:
+      return S.suspend(() =>
+        S.Struct({
+          CreatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          TaskDefinitionArn: S.optional(S.String),
+          LaunchType: S.optional(S.String),
+          ContainerUids: S.optional(__S(3328, __c104, 0)),
+        }).pipe(
+          S.encodeKeys({
+            CreatedAt: "createdAt",
+            TaskDefinitionArn: "taskDefinitionArn",
+            LaunchType: "launchType",
+            ContainerUids: "containerUids",
+          }),
+        ),
+      ).annotate({ identifier: "EcsTask" });
+    case 30:
+      return S.suspend(() =>
+        S.Struct({ Ec2InstanceUids: S.optional(__S(3328, __c104, 0)) }).pipe(
+          S.encodeKeys({ Ec2InstanceUids: "ec2InstanceUids" }),
+        ),
+      ).annotate({ identifier: "IamInstanceProfileV2" });
+    case 31:
+      return S.suspend(() =>
+        S.Struct({ Ec2InstanceUids: S.optional(__S(3328, __c104, 0)) }).pipe(
+          S.encodeKeys({ Ec2InstanceUids: "ec2InstanceUids" }),
+        ),
+      ).annotate({
+        identifier: "AutoscalingAutoScalingGroup",
+      });
+  }
+}
+function __c72(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          Ec2InstanceUids: S.optional(__S(3328, __c104, 0)),
+          Version: S.optional(S.String),
+        }).pipe(S.encodeKeys({ Ec2InstanceUids: "ec2InstanceUids", Version: "version" })),
+      ).annotate({ identifier: "Ec2LaunchTemplate" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          Version: S.optional(S.String),
+          GuardrailAction: S.optional(S.String),
+          GuardrailSource: S.optional(S.String),
+        }).pipe(
+          S.encodeKeys({
+            Version: "version",
+            GuardrailAction: "guardrailAction",
+            GuardrailSource: "guardrailSource",
+          }),
+        ),
+      ).annotate({ identifier: "BedrockGuardrailResource" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          S3Bucket: S.optional(__S(2292, __c71, 20)),
+          Ec2Instance: S.optional(__S(2293, __c71, 21)),
+          AccessKey: S.optional(__S(2294, __c71, 22)),
+          Ec2NetworkInterface: S.optional(__S(2295, __c71, 23)),
+          S3Object: S.optional(__S(2296, __c71, 24)),
+          EksCluster: S.optional(__S(2297, __c71, 25)),
+          KubernetesWorkload: S.optional(__S(2298, __c71, 26)),
+          Container: S.optional(__S(2299, __c71, 27)),
+          EcsCluster: S.optional(__S(2300, __c71, 28)),
+          EcsTask: S.optional(__S(2301, __c71, 29)),
+          IamInstanceProfile: S.optional(__S(2302, __c71, 30)),
+          AutoscalingAutoScalingGroup: S.optional(__S(2303, __c71, 31)),
+          Ec2LaunchTemplate: S.optional(__S(2304, __c72, 0)),
+          Ec2Vpc: S.optional(__S(2302, __c71, 30)),
+          Ec2Image: S.optional(__S(2302, __c71, 30)),
+          CloudformationStack: S.optional(__S(2302, __c71, 30)),
+          BedrockGuardrail: S.optional(__S(2305, __c72, 1)),
+        }).pipe(
+          S.encodeKeys({
+            S3Bucket: "s3Bucket",
+            Ec2Instance: "ec2Instance",
+            AccessKey: "accessKey",
+            Ec2NetworkInterface: "ec2NetworkInterface",
+            S3Object: "s3Object",
+            EksCluster: "eksCluster",
+            KubernetesWorkload: "kubernetesWorkload",
+            Container: "container",
+            EcsCluster: "ecsCluster",
+            EcsTask: "ecsTask",
+            IamInstanceProfile: "iamInstanceProfile",
+            AutoscalingAutoScalingGroup: "autoscalingAutoScalingGroup",
+            Ec2LaunchTemplate: "ec2LaunchTemplate",
+            Ec2Vpc: "ec2Vpc",
+            Ec2Image: "ec2Image",
+            CloudformationStack: "cloudformationStack",
+            BedrockGuardrail: "bedrockGuardrail",
+          }),
+        ),
+      ).annotate({ identifier: "ResourceData" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          Uid: S.optional(S.String),
+          Name: S.optional(S.String),
+          AccountId: S.optional(S.String),
+          ResourceType: S.optional(S.String),
+          Region: S.optional(S.String),
+          Service: S.optional(S.String),
+          CloudPartition: S.optional(S.String),
+          Tags: S.optional(__S(2401, __c75, 1)),
+          Data: S.optional(__S(2306, __c72, 2)),
+        }).pipe(
+          S.encodeKeys({
+            Uid: "uid",
+            Name: "name",
+            AccountId: "accountId",
+            ResourceType: "resourceType",
+            Region: "region",
+            Service: "service",
+            CloudPartition: "cloudPartition",
+            Tags: "tags",
+            Data: "data",
+          }),
+        ),
+      ).annotate({ identifier: "ResourceV2" });
+    case 4:
+      return S.Array(__S(2307, __c72, 3));
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          City: S.optional(S.String),
+          Country: S.optional(S.String),
+          Latitude: S.optional(S.Number),
+          Longitude: S.optional(S.Number),
+        }).pipe(
+          S.encodeKeys({ City: "city", Country: "country", Latitude: "lat", Longitude: "lon" }),
+        ),
+      ).annotate({ identifier: "NetworkGeoLocation" });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({ Name: S.optional(S.String), Number: S.optional(S.Number) }).pipe(
+          S.encodeKeys({ Name: "name", Number: "number" }),
+        ),
+      ).annotate({ identifier: "AutonomousSystem" });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({ Direction: S.optional(S.String) }).pipe(
+          S.encodeKeys({ Direction: "direction" }),
+        ),
+      ).annotate({ identifier: "NetworkConnection" });
+    case 8:
+      return S.suspend(() =>
+        S.Struct({
+          Id: S.optional(S.String),
+          Ip: S.optional(S.String),
+          Domain: S.optional(S.String),
+          Port: S.optional(S.Number),
+          Location: S.optional(__S(2309, __c72, 5)),
+          AutonomousSystem: S.optional(__S(2310, __c72, 6)),
+          Connection: S.optional(__S(2311, __c72, 7)),
+        }).pipe(
+          S.encodeKeys({
+            Id: "id",
+            Ip: "ip",
+            Domain: "domain",
+            Port: "port",
+            Location: "location",
+            AutonomousSystem: "autonomousSystem",
+            Connection: "connection",
+          }),
+        ),
+      ).annotate({ identifier: "NetworkEndpoint" });
+    case 9:
+      return S.Array(__S(2312, __c72, 8));
+    case 10:
+      return S.suspend(() =>
+        S.Struct({
+          Key: S.optional(S.String),
+          Values: S.optional(__S(3328, __c104, 0)),
+          Title: S.optional(S.String),
+        }).pipe(S.encodeKeys({ Key: "key", Values: "values", Title: "title" })),
+      ).annotate({ identifier: "Indicator" });
+    case 11:
+      return S.Array(__S(2314, __c72, 10));
+    case 12:
+      return S.suspend(() =>
+        S.Struct({
+          Operation: S.optional(S.String),
+          Service: S.optional(S.String),
+          Error: S.optional(S.String),
+          UserAgent: S.optional(S.String),
+        }).pipe(
+          S.encodeKeys({
+            Operation: "operation",
+            Service: "service",
+            Error: "error",
+            UserAgent: "userAgent",
+          }),
+        ),
+      ).annotate({ identifier: "ApiCall" });
+    case 13:
+      return S.suspend(() =>
+        S.Struct({ Type: S.optional(S.String), Api: S.optional(__S(2316, __c72, 12)) }).pipe(
+          S.encodeKeys({ Type: "type", Api: "api" }),
+        ),
+      ).annotate({ identifier: "Activity" });
+    case 14:
+      return S.Array(__S(2317, __c72, 13));
+    case 15:
+      return S.suspend(() =>
+        S.Struct({
+          Uid: S.optional(S.String),
+          Type: S.optional(S.String),
+          Description: S.optional(S.String),
+          Name: S.optional(S.String),
+          CreatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          UpdatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          FirstSeenAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          LastSeenAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          Severity: S.optional(S.Number),
+          Count: S.optional(S.Number),
+          ResourceUids: S.optional(__S(3328, __c104, 0)),
+          ActorIds: S.optional(__S(3328, __c104, 0)),
+          EndpointIds: S.optional(__S(3328, __c104, 0)),
+          SignalIndicators: S.optional(__S(2315, __c72, 11)),
+          Activities: S.optional(__S(2318, __c72, 14)),
+        }).pipe(
+          S.encodeKeys({
+            Uid: "uid",
+            Type: "type",
+            Description: "description",
+            Name: "name",
+            CreatedAt: "createdAt",
+            UpdatedAt: "updatedAt",
+            FirstSeenAt: "firstSeenAt",
+            LastSeenAt: "lastSeenAt",
+            Severity: "severity",
+            Count: "count",
+            ResourceUids: "resourceUids",
+            ActorIds: "actorIds",
+            EndpointIds: "endpointIds",
+            SignalIndicators: "signalIndicators",
+            Activities: "activities",
+          }),
+        ),
+      ).annotate({ identifier: "Signal" });
+    case 16:
+      return S.Array(__S(2319, __c72, 15));
+    case 17:
+      return S.suspend(() =>
+        S.Struct({
+          Uid: S.optional(S.String),
+          Description: S.optional(S.String),
+          Actors: S.optional(__S(2290, __c71, 18)),
+          Resources: S.optional(__S(2308, __c72, 4)),
+          Endpoints: S.optional(__S(2313, __c72, 9)),
+          Signals: S.optional(__S(2320, __c72, 16)),
+          SequenceIndicators: S.optional(__S(2315, __c72, 11)),
+          AdditionalSequenceTypes: S.optional(__S(3328, __c104, 0)),
+        }).pipe(
+          S.encodeKeys({
+            Uid: "uid",
+            Description: "description",
+            Actors: "actors",
+            Resources: "resources",
+            Endpoints: "endpoints",
+            Signals: "signals",
+            SequenceIndicators: "sequenceIndicators",
+            AdditionalSequenceTypes: "additionalSequenceTypes",
+          }),
+        ),
+      ).annotate({ identifier: "Sequence" });
+    case 18:
+      return S.suspend(() =>
+        S.Struct({
+          Anomaly: S.optional(__S(2284, __c71, 12)),
+          Sequence: S.optional(__S(2321, __c72, 17)),
+        }).pipe(S.encodeKeys({ Anomaly: "anomaly", Sequence: "sequence" })),
+      ).annotate({ identifier: "Detection" });
+    case 19:
+      return S.suspend(() =>
+        S.Struct({ NestedItemPath: S.optional(S.String), Hash: S.optional(S.String) }).pipe(
+          S.encodeKeys({ NestedItemPath: "nestedItemPath", Hash: "hash" }),
+        ),
+      ).annotate({ identifier: "ItemPath" });
+    case 20:
+      return S.Array(__S(2323, __c72, 19));
+    case 21:
+      return S.suspend(() =>
+        S.Struct({
+          Name: S.optional(S.String),
+          Source: S.optional(S.String),
+          ItemPaths: S.optional(__S(2324, __c72, 20)),
+          Count: S.optional(S.Number),
+          Hash: S.optional(S.String),
+          ItemDetails: S.optional(__S(2339, __c73, 3)),
+        }).pipe(
+          S.encodeKeys({
+            Name: "name",
+            Source: "source",
+            ItemPaths: "itemPaths",
+            Count: "count",
+            Hash: "hash",
+            ItemDetails: "itemDetails",
+          }),
+        ),
+      ).annotate({ identifier: "Threat" });
+    case 22:
+      return S.Array(__S(2325, __c72, 21));
+    case 23:
+      return S.suspend(() =>
+        S.Struct({
+          TriggerType: S.optional(S.String),
+          IncrementalScanDetails: S.optional(__S(2368, __c74, 0)),
+        }).pipe(
+          S.encodeKeys({
+            TriggerType: "triggerType",
+            IncrementalScanDetails: "incrementalScanDetails",
+          }),
+        ),
+      ).annotate({
+        identifier: "MalwareProtectionFindingsScanConfiguration",
+      });
+    case 24:
+      return S.suspend(() =>
+        S.Struct({
+          Threats: S.optional(__S(2326, __c72, 22)),
+          ScanId: S.optional(S.String),
+          ScanType: S.optional(S.String),
+          ScanCategory: S.optional(S.String),
+          ScanConfiguration: S.optional(__S(2327, __c72, 23)),
+          UniqueThreatCount: S.optional(S.Number),
+        }).pipe(
+          S.encodeKeys({
+            Threats: "threats",
+            ScanId: "scanId",
+            ScanType: "scanType",
+            ScanCategory: "scanCategory",
+            ScanConfiguration: "scanConfiguration",
+            UniqueThreatCount: "uniqueThreatCount",
+          }),
+        ),
+      ).annotate({ identifier: "MalwareScanDetails" });
+    case 25:
+      return S.suspend(() =>
+        S.Struct({
+          Action: S.optional(__S(2255, __c70, 15)),
+          Evidence: S.optional(__S(2258, __c70, 18)),
+          Archived: S.optional(S.Boolean),
+          Count: S.optional(S.Number),
+          DetectorId: S.optional(S.String),
+          EventFirstSeen: S.optional(S.String),
+          EventLastSeen: S.optional(S.String),
+          ResourceRole: S.optional(S.String),
+          ServiceName: S.optional(S.String),
+          UserFeedback: S.optional(S.String),
+          AdditionalInfo: S.optional(__S(2259, __c70, 19)),
+          FeatureName: S.optional(S.String),
+          EbsVolumeScanDetails: S.optional(__S(2269, __c70, 29)),
+          RuntimeDetails: S.optional(__S(2274, __c71, 2)),
+          Detection: S.optional(__S(2322, __c72, 18)),
+          MalwareScanDetails: S.optional(__S(2328, __c72, 24)),
+        }).pipe(
+          S.encodeKeys({
+            Action: "action",
+            Evidence: "evidence",
+            Archived: "archived",
+            Count: "count",
+            DetectorId: "detectorId",
+            EventFirstSeen: "eventFirstSeen",
+            EventLastSeen: "eventLastSeen",
+            ResourceRole: "resourceRole",
+            ServiceName: "serviceName",
+            UserFeedback: "userFeedback",
+            AdditionalInfo: "additionalInfo",
+            FeatureName: "featureName",
+            EbsVolumeScanDetails: "ebsVolumeScanDetails",
+            RuntimeDetails: "runtimeDetails",
+            Detection: "detection",
+            MalwareScanDetails: "malwareScanDetails",
+          }),
+        ),
+      ).annotate({ identifier: "Service" });
+    case 26:
+      return S.suspend(() =>
+        S.Struct({
+          AccountId: S.optional(S.String),
+          Arn: S.optional(S.String),
+          Confidence: S.optional(S.Number),
+          CreatedAt: S.optional(S.String),
+          Description: S.optional(S.String),
+          Id: S.optional(S.String),
+          Partition: S.optional(S.String),
+          Region: S.optional(S.String),
+          Resource: S.optional(__S(2231, __c69, 23)),
+          SchemaVersion: S.optional(S.String),
+          Service: S.optional(__S(2329, __c72, 25)),
+          Severity: S.optional(S.Number),
+          Title: S.optional(S.String),
+          Type: S.optional(S.String),
+          UpdatedAt: S.optional(S.String),
+          AssociatedAttackSequenceArn: S.optional(S.String),
+        }).pipe(
+          S.encodeKeys({
+            AccountId: "accountId",
+            Arn: "arn",
+            Confidence: "confidence",
+            CreatedAt: "createdAt",
+            Description: "description",
+            Id: "id",
+            Partition: "partition",
+            Region: "region",
+            Resource: "resource",
+            SchemaVersion: "schemaVersion",
+            Service: "service",
+            Severity: "severity",
+            Title: "title",
+            Type: "type",
+            UpdatedAt: "updatedAt",
+            AssociatedAttackSequenceArn: "associatedAttackSequenceArn",
+          }),
+        ),
+      ).annotate({ identifier: "Finding" });
+    case 27:
+      return S.Array(__S(2330, __c72, 26));
+    case 28:
+      return S.suspend(() =>
+        S.Struct({ Findings: S.optional(__S(2331, __c72, 27)) }).pipe(
+          S.encodeKeys({ Findings: "findings" }),
+        ),
+      ).annotate({ identifier: "GetFindingsResponse" });
+  }
+}
+function __c73(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          StartTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          EndTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+        }).pipe(S.encodeKeys({ StartTime: "startTime", EndTime: "endTime" })),
+      ).annotate({
+        identifier: "ScanConfigurationContinuousScanDetails",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({ VersionId: S.optional(S.String), DeviceName: S.optional(S.String) }).pipe(
+          S.encodeKeys({ VersionId: "versionId", DeviceName: "deviceName" }),
+        ),
+      ).annotate({ identifier: "AdditionalInfo" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          ResourceArn: S.optional(S.String),
+          ItemPath: S.optional(S.String),
+          Hash: S.optional(S.String),
+          AdditionalInfo: S.optional(__S(2337, __c73, 1)),
+        }).pipe(
+          S.encodeKeys({
+            ResourceArn: "resourceArn",
+            ItemPath: "itemPath",
+            Hash: "hash",
+            AdditionalInfo: "additionalInfo",
+          }),
+        ),
+      ).annotate({ identifier: "ItemDetails" });
+    case 3:
+      return S.Array(__S(2338, __c73, 2));
+  }
+}
+function __c74(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ BaselineResourceArn: S.optional(S.String) }).pipe(
+          S.encodeKeys({ BaselineResourceArn: "baselineResourceArn" }),
+        ),
+      ).annotate({ identifier: "IncrementalScanDetails" });
+  }
+}
+function __c75(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ Key: S.optional(S.String), Value: S.optional(S.String) }).pipe(
+          S.encodeKeys({ Key: "key", Value: "value" }),
+        ),
+      ).annotate({ identifier: "Tag" });
+    case 1:
+      return S.Array(__S(2400, __c75, 0));
+  }
+}
+function __c76(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          DetectorId: S.String.pipe(T.HttpLabel("DetectorId")),
+          AdministratorId: S.optional(S.String),
+          InvitationId: S.optional(S.String),
+        })
+          .pipe(S.encodeKeys({ AdministratorId: "administratorId", InvitationId: "invitationId" }))
+          .pipe(
+            T.all(
+              T.Http({ method: "POST", uri: "/detector/{DetectorId}/administrator" }),
+              svc,
+              auth,
+              proto,
+              ver,
+              rules,
+            ),
+          ),
+      ).annotate({
+        identifier: "AcceptAdministratorInvitationRequest",
+      });
+  }
+}
+function __c77(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "AcceptAdministratorInvitationResponse",
+      });
+  }
+}
+function __c78(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          DetectorId: S.String.pipe(T.HttpLabel("DetectorId")),
+          FindingStatisticTypes: S.optional(__S(1920, __c60, 0)),
+          FindingCriteria: S.optional(__S(386, __c12, 2)),
+          GroupBy: S.optional(S.String),
+          OrderBy: S.optional(S.String),
+          MaxResults: S.optional(S.Number),
+        })
+          .pipe(
+            S.encodeKeys({
+              FindingStatisticTypes: "findingStatisticTypes",
+              FindingCriteria: "findingCriteria",
+              GroupBy: "groupBy",
+              OrderBy: "orderBy",
+              MaxResults: "maxResults",
+            }),
+          )
+          .pipe(
+            T.all(
+              T.Http({ method: "POST", uri: "/detector/{DetectorId}/findings/statistics" }),
+              svc,
+              auth,
+              proto,
+              ver,
+              rules,
+            ),
+          ),
+      ).annotate({
+        identifier: "GetFindingsStatisticsRequest",
+      });
+    case 1:
+      return S.Record(S.String, /*@__PURE__*/ S.Number.pipe(S.optional));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          AccountId: S.optional(S.String),
+          LastGeneratedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          TotalFindings: S.optional(S.Number),
+        }).pipe(
+          S.encodeKeys({
+            AccountId: "accountId",
+            LastGeneratedAt: "lastGeneratedAt",
+            TotalFindings: "totalFindings",
+          }),
+        ),
+      ).annotate({ identifier: "AccountStatistics" });
+    case 3:
+      return S.Array(__S(2498, __c78, 2));
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          Date: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          LastGeneratedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          Severity: S.optional(S.Number),
+          TotalFindings: S.optional(S.Number),
+        }).pipe(
+          S.encodeKeys({
+            Date: "date",
+            LastGeneratedAt: "lastGeneratedAt",
+            Severity: "severity",
+            TotalFindings: "totalFindings",
+          }),
+        ),
+      ).annotate({ identifier: "DateStatistics" });
+    case 5:
+      return S.Array(__S(2500, __c78, 4));
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          FindingType: S.optional(S.String),
+          LastGeneratedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          TotalFindings: S.optional(S.Number),
+        }).pipe(
+          S.encodeKeys({
+            FindingType: "findingType",
+            LastGeneratedAt: "lastGeneratedAt",
+            TotalFindings: "totalFindings",
+          }),
+        ),
+      ).annotate({ identifier: "FindingTypeStatistics" });
+    case 7:
+      return S.Array(__S(2502, __c78, 6));
+    case 8:
+      return S.suspend(() =>
+        S.Struct({
+          AccountId: S.optional(S.String),
+          LastGeneratedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          ResourceId: S.optional(S.String),
+          ResourceType: S.optional(S.String),
+          TotalFindings: S.optional(S.Number),
+        }).pipe(
+          S.encodeKeys({
+            AccountId: "accountId",
+            LastGeneratedAt: "lastGeneratedAt",
+            ResourceId: "resourceId",
+            ResourceType: "resourceType",
+            TotalFindings: "totalFindings",
+          }),
+        ),
+      ).annotate({ identifier: "ResourceStatistics" });
+    case 9:
+      return S.Array(__S(2504, __c78, 8));
+    case 10:
+      return S.suspend(() =>
+        S.Struct({
+          LastGeneratedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          Severity: S.optional(S.Number),
+          TotalFindings: S.optional(S.Number),
+        }).pipe(
+          S.encodeKeys({
+            LastGeneratedAt: "lastGeneratedAt",
+            Severity: "severity",
+            TotalFindings: "totalFindings",
+          }),
+        ),
+      ).annotate({ identifier: "SeverityStatistics" });
+    case 11:
+      return S.Array(__S(2506, __c78, 10));
+    case 12:
+      return S.suspend(() =>
+        S.Struct({
+          CountBySeverity: S.optional(__S(2497, __c78, 1)),
+          GroupedByAccount: S.optional(__S(2499, __c78, 3)),
+          GroupedByDate: S.optional(__S(2501, __c78, 5)),
+          GroupedByFindingType: S.optional(__S(2503, __c78, 7)),
+          GroupedByResource: S.optional(__S(2505, __c78, 9)),
+          GroupedBySeverity: S.optional(__S(2507, __c78, 11)),
+        }).pipe(
+          S.encodeKeys({
+            CountBySeverity: "countBySeverity",
+            GroupedByAccount: "groupedByAccount",
+            GroupedByDate: "groupedByDate",
+            GroupedByFindingType: "groupedByFindingType",
+            GroupedByResource: "groupedByResource",
+            GroupedBySeverity: "groupedBySeverity",
+          }),
+        ),
+      ).annotate({ identifier: "FindingStatistics" });
+    case 13:
+      return S.suspend(() =>
+        S.Struct({
+          FindingStatistics: S.optional(__S(2508, __c78, 12)),
+          NextToken: S.optional(S.String),
+        }).pipe(S.encodeKeys({ FindingStatistics: "findingStatistics", NextToken: "nextToken" })),
+      ).annotate({
+        identifier: "GetFindingsStatisticsResponse",
+      });
+  }
+}
+function __c79(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          DetectorId: S.String.pipe(T.HttpLabel("DetectorId")),
+          InvestigationId: S.String.pipe(T.HttpLabel("InvestigationId")),
+        }).pipe(
+          T.all(
+            T.Http({
+              method: "GET",
+              uri: "/detector/{DetectorId}/investigation/{InvestigationId}",
+            }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "GetInvestigationRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({ Name: S.optional(S.String), Feature: S.optional(S.String) }).pipe(
+          S.encodeKeys({ Name: "name", Feature: "feature" }),
+        ),
+      ).annotate({ identifier: "Product" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({ Version: S.optional(S.String), Product: S.optional(__S(2529, __c79, 1)) }).pipe(
+          S.encodeKeys({ Version: "version", Product: "product" }),
+        ),
+      ).annotate({ identifier: "InvestigationMetadata" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          Provider: S.optional(S.String),
+          Region: S.optional(S.String),
+          Account: S.optional(S.String),
+        }).pipe(S.encodeKeys({ Provider: "provider", Region: "region", Account: "account" })),
+      ).annotate({ identifier: "CloudDetails" });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          InvestigationId: S.optional(S.String),
+          Status: S.optional(S.String),
+          TriggerPrompt: S.optional(S.String),
+          TriggeredBy: S.optional(S.String),
+          Metadata: S.optional(__S(2530, __c79, 2)),
+          Cloud: S.optional(__S(2531, __c79, 3)),
+          RiskLevel: S.optional(S.String),
+          Risk: S.optional(S.String),
+          Confidence: S.optional(S.String),
+          Summary: S.optional(S.String),
+          StartTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          EndTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          Error: S.optional(S.String),
+        }).pipe(
+          S.encodeKeys({
+            InvestigationId: "investigationId",
+            Status: "status",
+            TriggerPrompt: "triggerPrompt",
+            TriggeredBy: "triggeredBy",
+            Metadata: "metadata",
+            Cloud: "cloud",
+            RiskLevel: "riskLevel",
+            Risk: "risk",
+            Confidence: "confidence",
+            Summary: "summary",
+            StartTime: "startTime",
+            EndTime: "endTime",
+            Error: "error",
+          }),
+        ),
+      ).annotate({ identifier: "Investigation" });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({ Investigation: S.optional(__S(2532, __c79, 4)) }).pipe(
+          S.encodeKeys({ Investigation: "investigation" }),
+        ),
+      ).annotate({ identifier: "GetInvestigationResponse" });
+  }
+}
+function __c80(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({}).pipe(
+          T.all(T.Http({ method: "GET", uri: "/invitation/count" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({
+        identifier: "GetInvitationsCountRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({ InvitationsCount: S.optional(S.Number) }).pipe(
+          S.encodeKeys({ InvitationsCount: "invitationsCount" }),
+        ),
+      ).annotate({
+        identifier: "GetInvitationsCountResponse",
+      });
+  }
+}
+function __c81(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          DetectorId: S.String.pipe(T.HttpLabel("DetectorId")),
+          IpSetId: S.optional(S.String).pipe(T.HttpLabel("IpSetId")),
+        }).pipe(
+          T.all(
+            T.Http({ method: "GET", uri: "/detector/{DetectorId}/ipset/{IpSetId}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "GetIPSetRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          Name: S.optional(S.String),
+          Format: S.optional(S.String),
+          Location: S.optional(S.String),
+          Status: S.optional(S.String),
+          Tags: S.optional(__S(3712, __c116, 0)),
+          ExpectedBucketOwner: S.optional(S.String),
+        }).pipe(
+          S.encodeKeys({
+            Name: "name",
+            Format: "format",
+            Location: "location",
+            Status: "status",
+            Tags: "tags",
+            ExpectedBucketOwner: "expectedBucketOwner",
+          }),
+        ),
+      ).annotate({ identifier: "GetIPSetResponse" });
+  }
+}
+function __c82(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          MalwareProtectionPlanId: S.optional(S.String).pipe(
+            T.HttpLabel("MalwareProtectionPlanId"),
+          ),
+        }).pipe(
+          T.all(
+            T.Http({ method: "GET", uri: "/malware-protection-plan/{MalwareProtectionPlanId}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "GetMalwareProtectionPlanRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({ Code: S.optional(S.String), Message: S.optional(S.String) }).pipe(
+          S.encodeKeys({ Code: "code", Message: "message" }),
+        ),
+      ).annotate({
+        identifier: "MalwareProtectionPlanStatusReason",
+      });
+    case 2:
+      return S.Array(__S(2625, __c82, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          Arn: S.optional(S.String),
+          Role: S.optional(S.String),
+          ProtectedResource: S.optional(__S(545, __c17, 1)),
+          Actions: S.optional(__S(577, __c18, 1)),
+          CreatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          Status: S.optional(S.String),
+          StatusReasons: S.optional(__S(2626, __c82, 2)),
+          Tags: S.optional(__S(3712, __c116, 0)),
+        }).pipe(
+          S.encodeKeys({
+            Arn: "arn",
+            Role: "role",
+            ProtectedResource: "protectedResource",
+            Actions: "actions",
+            CreatedAt: "createdAt",
+            Status: "status",
+            StatusReasons: "statusReasons",
+            Tags: "tags",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetMalwareProtectionPlanResponse",
+      });
+  }
+}
+function __c83(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ ScanId: S.optional(S.String).pipe(T.HttpLabel("ScanId")) }).pipe(
+          T.all(
+            T.Http({ method: "GET", uri: "/malware-scan/{ScanId}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "GetMalwareScanRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({ DeviceName: S.optional(S.String) }).pipe(
+          S.encodeKeys({ DeviceName: "deviceName" }),
+        ),
+      ).annotate({ identifier: "EbsSnapshot" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          EbsVolume: S.optional(__S(1440, __c45, 0)),
+          EbsSnapshot: S.optional(__S(2657, __c83, 1)),
+        }).pipe(S.encodeKeys({ EbsVolume: "ebsVolume", EbsSnapshot: "ebsSnapshot" })),
+      ).annotate({ identifier: "ScannedResourceDetails" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          ScannedResourceArn: S.optional(S.String),
+          ScannedResourceType: S.optional(S.String),
+          ScannedResourceStatus: S.optional(S.String),
+          ScanStatusReason: S.optional(S.String),
+          ResourceDetails: S.optional(__S(2658, __c83, 2)),
+        }).pipe(
+          S.encodeKeys({
+            ScannedResourceArn: "scannedResourceArn",
+            ScannedResourceType: "scannedResourceType",
+            ScannedResourceStatus: "scannedResourceStatus",
+            ScanStatusReason: "scanStatusReason",
+            ResourceDetails: "resourceDetails",
+          }),
+        ),
+      ).annotate({ identifier: "ScannedResource" });
+    case 4:
+      return S.Array(__S(2659, __c83, 3));
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          BackupVaultName: S.optional(S.String),
+          ContinuousScanDetails: S.optional(__S(2336, __c73, 0)),
+        }).pipe(
+          S.encodeKeys({
+            BackupVaultName: "backupVaultName",
+            ContinuousScanDetails: "continuousScanDetails",
+          }),
+        ),
+      ).annotate({
+        identifier: "ScanConfigurationRecoveryPoint",
+      });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          Role: S.optional(S.String),
+          TriggerDetails: S.optional(__S(1504, __c47, 0)),
+          IncrementalScanDetails: S.optional(__S(2368, __c74, 0)),
+          RecoveryPoint: S.optional(__S(2661, __c83, 5)),
+        }).pipe(
+          S.encodeKeys({
+            Role: "role",
+            TriggerDetails: "triggerDetails",
+            IncrementalScanDetails: "incrementalScanDetails",
+            RecoveryPoint: "recoveryPoint",
+          }),
+        ),
+      ).annotate({ identifier: "ScanConfiguration" });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          Name: S.optional(S.String),
+          Source: S.optional(S.String),
+          Count: S.optional(S.Number),
+          Hash: S.optional(S.String),
+          ItemDetails: S.optional(__S(2339, __c73, 3)),
+        }).pipe(
+          S.encodeKeys({
+            Name: "name",
+            Source: "source",
+            Count: "count",
+            Hash: "hash",
+            ItemDetails: "itemDetails",
+          }),
+        ),
+      ).annotate({ identifier: "ScanResultThreat" });
+    case 8:
+      return S.Array(__S(2663, __c83, 7));
+    case 9:
+      return S.suspend(() =>
+        S.Struct({
+          ScanResultStatus: S.optional(S.String),
+          SkippedFileCount: S.optional(S.Number),
+          FailedFileCount: S.optional(S.Number),
+          ThreatFoundFileCount: S.optional(S.Number),
+          TotalFileCount: S.optional(S.Number),
+          TotalBytes: S.optional(S.Number),
+          UniqueThreatCount: S.optional(S.Number),
+          Threats: S.optional(__S(2664, __c83, 8)),
+        }).pipe(
+          S.encodeKeys({
+            ScanResultStatus: "scanResultStatus",
+            SkippedFileCount: "skippedFileCount",
+            FailedFileCount: "failedFileCount",
+            ThreatFoundFileCount: "threatFoundFileCount",
+            TotalFileCount: "totalFileCount",
+            TotalBytes: "totalBytes",
+            UniqueThreatCount: "uniqueThreatCount",
+            Threats: "threats",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetMalwareScanResultDetails",
+      });
+    case 10:
+      return S.suspend(() =>
+        S.Struct({
+          ScanId: S.optional(S.String),
+          DetectorId: S.optional(S.String),
+          AdminDetectorId: S.optional(S.String),
+          ResourceArn: S.optional(S.String),
+          ResourceType: S.optional(S.String),
+          ScannedResourcesCount: S.optional(S.Number),
+          SkippedResourcesCount: S.optional(S.Number),
+          FailedResourcesCount: S.optional(S.Number),
+          ScannedResources: S.optional(__S(2660, __c83, 4)),
+          ScanConfiguration: S.optional(__S(2662, __c83, 6)),
+          ScanCategory: S.optional(S.String),
+          ScanStatus: S.optional(S.String),
+          ScanStatusReason: S.optional(S.String),
+          ScanType: S.optional(S.String),
+          ScanStartedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          ScanCompletedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          ScanResultDetails: S.optional(__S(2665, __c83, 9)),
+        }).pipe(
+          S.encodeKeys({
+            ScanId: "scanId",
+            DetectorId: "detectorId",
+            AdminDetectorId: "adminDetectorId",
+            ResourceArn: "resourceArn",
+            ResourceType: "resourceType",
+            ScannedResourcesCount: "scannedResourcesCount",
+            SkippedResourcesCount: "skippedResourcesCount",
+            FailedResourcesCount: "failedResourcesCount",
+            ScannedResources: "scannedResources",
+            ScanConfiguration: "scanConfiguration",
+            ScanCategory: "scanCategory",
+            ScanStatus: "scanStatus",
+            ScanStatusReason: "scanStatusReason",
+            ScanType: "scanType",
+            ScanStartedAt: "scanStartedAt",
+            ScanCompletedAt: "scanCompletedAt",
+            ScanResultDetails: "scanResultDetails",
+          }),
+        ),
+      ).annotate({ identifier: "GetMalwareScanResponse" });
+  }
+}
+function __c84(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ DetectorId: S.String.pipe(T.HttpLabel("DetectorId")) }).pipe(
+          T.all(
+            T.Http({ method: "GET", uri: "/detector/{DetectorId}/malware-scan-settings" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "GetMalwareScanSettingsRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          ScanResourceCriteria: S.optional(__S(2722, __c85, 2)),
+          EbsSnapshotPreservation: S.optional(S.String),
+        }).pipe(
+          S.encodeKeys({
+            ScanResourceCriteria: "scanResourceCriteria",
+            EbsSnapshotPreservation: "ebsSnapshotPreservation",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetMalwareScanSettingsResponse",
+      });
+  }
+}
+function __c85(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ MapEquals: S.optional(__S(2401, __c75, 1)) }).pipe(
+          S.encodeKeys({ MapEquals: "mapEquals" }),
+        ),
+      ).annotate({ identifier: "ScanCondition" });
+    case 1:
+      return S.Record(S.String, /*@__PURE__*/ __S(2720, __c85, 0).pipe(S.optional));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          Include: S.optional(__S(2721, __c85, 1)),
+          Exclude: S.optional(__S(2721, __c85, 1)),
+        }).pipe(S.encodeKeys({ Include: "include", Exclude: "exclude" })),
+      ).annotate({ identifier: "ScanResourceCriteria" });
+  }
+}
+function __c86(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ DetectorId: S.String.pipe(T.HttpLabel("DetectorId")) }).pipe(
+          T.all(
+            T.Http({ method: "GET", uri: "/detector/{DetectorId}/master" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "GetMasterAccountRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({ Master: S.optional(__S(1856, __c58, 0)) }).pipe(
+          S.encodeKeys({ Master: "master" }),
+        ),
+      ).annotate({ identifier: "GetMasterAccountResponse" });
+  }
+}
+function __c87(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          DetectorId: S.String.pipe(T.HttpLabel("DetectorId")),
+          AccountIds: S.optional(__S(3328, __c104, 0)),
+        })
+          .pipe(S.encodeKeys({ AccountIds: "accountIds" }))
+          .pipe(
+            T.all(
+              T.Http({ method: "POST", uri: "/detector/{DetectorId}/member/detector/get" }),
+              svc,
+              auth,
+              proto,
+              ver,
+              rules,
+            ),
+          ),
+      ).annotate({
+        identifier: "GetMemberDetectorsRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          AccountId: S.optional(S.String),
+          DataSources: S.optional(__S(2114, __c66, 2)),
+          Features: S.optional(__S(2118, __c66, 6)),
+        }).pipe(
+          S.encodeKeys({
+            AccountId: "accountId",
+            DataSources: "dataSources",
+            Features: "features",
+          }),
+        ),
+      ).annotate({
+        identifier: "MemberDataSourceConfiguration",
+      });
+    case 2:
+      return S.Array(__S(2785, __c87, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          MemberDataSourceConfigurations: S.optional(__S(2786, __c87, 2)),
+          UnprocessedAccounts: S.optional(__S(673, __c21, 1)),
+        }).pipe(
+          S.encodeKeys({
+            MemberDataSourceConfigurations: "members",
+            UnprocessedAccounts: "unprocessedAccounts",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetMemberDetectorsResponse",
+      });
+  }
+}
+function __c88(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          DetectorId: S.String.pipe(T.HttpLabel("DetectorId")),
+          AccountIds: S.optional(__S(3328, __c104, 0)),
+        })
+          .pipe(S.encodeKeys({ AccountIds: "accountIds" }))
+          .pipe(
+            T.all(
+              T.Http({ method: "POST", uri: "/detector/{DetectorId}/member/get" }),
+              svc,
+              auth,
+              proto,
+              ver,
+              rules,
+            ),
+          ),
+      ).annotate({ identifier: "GetMembersRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          Members: S.optional(__S(2849, __c89, 1)),
+          UnprocessedAccounts: S.optional(__S(673, __c21, 1)),
+        }).pipe(S.encodeKeys({ Members: "members", UnprocessedAccounts: "unprocessedAccounts" })),
+      ).annotate({ identifier: "GetMembersResponse" });
+  }
+}
+function __c89(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          AccountId: S.optional(S.String),
+          DetectorId: S.optional(S.String),
+          MasterId: S.optional(S.String),
+          Email: S.optional(SensitiveString),
+          RelationshipStatus: S.optional(S.String),
+          InvitedAt: S.optional(S.String),
+          UpdatedAt: S.optional(S.String),
+          AdministratorId: S.optional(S.String),
+        }).pipe(
+          S.encodeKeys({
+            AccountId: "accountId",
+            DetectorId: "detectorId",
+            MasterId: "masterId",
+            Email: "email",
+            RelationshipStatus: "relationshipStatus",
+            InvitedAt: "invitedAt",
+            UpdatedAt: "updatedAt",
+            AdministratorId: "administratorId",
+          }),
+        ),
+      ).annotate({ identifier: "Member" });
+    case 1:
+      return S.Array(__S(2848, __c89, 0));
+  }
+}
+function __c90(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          DetectorId: S.String.pipe(T.HttpLabel("DetectorId")),
+          MasterId: S.optional(S.String),
+          InvitationId: S.optional(S.String),
+        })
+          .pipe(S.encodeKeys({ MasterId: "masterId", InvitationId: "invitationId" }))
+          .pipe(
+            T.all(
+              T.Http({ method: "POST", uri: "/detector/{DetectorId}/master" }),
+              svc,
+              auth,
+              proto,
+              ver,
+              rules,
+            ),
+          ),
+      ).annotate({ identifier: "AcceptInvitationRequest" });
+  }
+}
+function __c91(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "AcceptInvitationResponse",
+      });
+  }
+}
+function __c92(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({}).pipe(
+          T.all(
+            T.Http({ method: "GET", uri: "/organization/statistics" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "GetOrganizationStatisticsRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          Name: S.optional(S.String),
+          EnabledAccountsCount: S.optional(S.Number),
+        }).pipe(S.encodeKeys({ Name: "name", EnabledAccountsCount: "enabledAccountsCount" })),
+      ).annotate({
+        identifier: "OrganizationFeatureStatisticsAdditionalConfiguration",
+      });
+    case 2:
+      return S.Array(__S(2945, __c92, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          Name: S.optional(S.String),
+          EnabledAccountsCount: S.optional(S.Number),
+          AdditionalConfiguration: S.optional(__S(2946, __c92, 2)),
+        }).pipe(
+          S.encodeKeys({
+            Name: "name",
+            EnabledAccountsCount: "enabledAccountsCount",
+            AdditionalConfiguration: "additionalConfiguration",
+          }),
+        ),
+      ).annotate({
+        identifier: "OrganizationFeatureStatistics",
+      });
+    case 4:
+      return S.Array(__S(2947, __c92, 3));
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          TotalAccountsCount: S.optional(S.Number),
+          MemberAccountsCount: S.optional(S.Number),
+          ActiveAccountsCount: S.optional(S.Number),
+          EnabledAccountsCount: S.optional(S.Number),
+          CountByFeature: S.optional(__S(2948, __c92, 4)),
+        }).pipe(
+          S.encodeKeys({
+            TotalAccountsCount: "totalAccountsCount",
+            MemberAccountsCount: "memberAccountsCount",
+            ActiveAccountsCount: "activeAccountsCount",
+            EnabledAccountsCount: "enabledAccountsCount",
+            CountByFeature: "countByFeature",
+          }),
+        ),
+      ).annotate({ identifier: "OrganizationStatistics" });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          UpdatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          OrganizationStatistics: S.optional(__S(2949, __c92, 5)),
+        }).pipe(
+          S.encodeKeys({
+            UpdatedAt: "updatedAt",
+            OrganizationStatistics: "organizationStatistics",
+          }),
+        ),
+      ).annotate({ identifier: "OrganizationDetails" });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({ OrganizationDetails: S.optional(__S(2950, __c92, 6)) }).pipe(
+          S.encodeKeys({ OrganizationDetails: "organizationDetails" }),
+        ),
+      ).annotate({
+        identifier: "GetOrganizationStatisticsResponse",
+      });
+  }
+}
+function __c93(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          DetectorId: S.String.pipe(T.HttpLabel("DetectorId")),
+          AccountIds: __S(3328, __c104, 0),
+        })
+          .pipe(S.encodeKeys({ AccountIds: "accountIds" }))
+          .pipe(
+            T.all(
+              T.Http({ method: "POST", uri: "/detector/{DetectorId}/freeTrial/daysRemaining" }),
+              svc,
+              auth,
+              proto,
+              ver,
+              rules,
+            ),
+          ),
+      ).annotate({
+        identifier: "GetRemainingFreeTrialDaysRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({ FreeTrialDaysRemaining: S.optional(S.Number) }).pipe(
+          S.encodeKeys({ FreeTrialDaysRemaining: "freeTrialDaysRemaining" }),
+        ),
+      ).annotate({ identifier: "DataSourceFreeTrial" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({ AuditLogs: S.optional(__S(2977, __c93, 1)) }).pipe(
+          S.encodeKeys({ AuditLogs: "auditLogs" }),
+        ),
+      ).annotate({
+        identifier: "KubernetesDataSourceFreeTrial",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({ ScanEc2InstanceWithFindings: S.optional(__S(2977, __c93, 1)) }).pipe(
+          S.encodeKeys({ ScanEc2InstanceWithFindings: "scanEc2InstanceWithFindings" }),
+        ),
+      ).annotate({
+        identifier: "MalwareProtectionDataSourceFreeTrial",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          CloudTrail: S.optional(__S(2977, __c93, 1)),
+          DnsLogs: S.optional(__S(2977, __c93, 1)),
+          FlowLogs: S.optional(__S(2977, __c93, 1)),
+          S3Logs: S.optional(__S(2977, __c93, 1)),
+          Kubernetes: S.optional(__S(2978, __c93, 2)),
+          MalwareProtection: S.optional(__S(2979, __c93, 3)),
+        }).pipe(
+          S.encodeKeys({
+            CloudTrail: "cloudTrail",
+            DnsLogs: "dnsLogs",
+            FlowLogs: "flowLogs",
+            S3Logs: "s3Logs",
+            Kubernetes: "kubernetes",
+            MalwareProtection: "malwareProtection",
+          }),
+        ),
+      ).annotate({ identifier: "DataSourcesFreeTrial" });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          Name: S.optional(S.String),
+          FreeTrialDaysRemaining: S.optional(S.Number),
+        }).pipe(S.encodeKeys({ Name: "name", FreeTrialDaysRemaining: "freeTrialDaysRemaining" })),
+      ).annotate({
+        identifier: "FreeTrialFeatureConfigurationResult",
+      });
+    case 6:
+      return S.Array(__S(2981, __c93, 5));
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          AccountId: S.optional(S.String),
+          DataSources: S.optional(__S(2980, __c93, 4)),
+          Features: S.optional(__S(2982, __c93, 6)),
+        }).pipe(
+          S.encodeKeys({
+            AccountId: "accountId",
+            DataSources: "dataSources",
+            Features: "features",
+          }),
+        ),
+      ).annotate({ identifier: "AccountFreeTrialInfo" });
+    case 8:
+      return S.Array(__S(2983, __c93, 7));
+    case 9:
+      return S.suspend(() =>
+        S.Struct({
+          Accounts: S.optional(__S(2984, __c93, 8)),
+          UnprocessedAccounts: S.optional(__S(673, __c21, 1)),
+        }).pipe(S.encodeKeys({ Accounts: "accounts", UnprocessedAccounts: "unprocessedAccounts" })),
+      ).annotate({
+        identifier: "GetRemainingFreeTrialDaysResponse",
+      });
+  }
+}
+function __c94(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          DetectorId: S.String.pipe(T.HttpLabel("DetectorId")),
+          ThreatEntitySetId: S.optional(S.String).pipe(T.HttpLabel("ThreatEntitySetId")),
+        }).pipe(
+          T.all(
+            T.Http({
+              method: "GET",
+              uri: "/detector/{DetectorId}/threatentityset/{ThreatEntitySetId}",
+            }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "GetThreatEntitySetRequest",
+      });
+  }
+}
+function __c95(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          Name: S.optional(S.String),
+          Format: S.optional(S.String),
+          Location: S.optional(S.String),
+          ExpectedBucketOwner: S.optional(S.String),
+          Status: S.optional(S.String),
+          Tags: S.optional(__S(3712, __c116, 0)),
+          CreatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          UpdatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          ErrorDetails: S.optional(S.String),
+        }).pipe(
+          S.encodeKeys({
+            Name: "name",
+            Format: "format",
+            Location: "location",
+            ExpectedBucketOwner: "expectedBucketOwner",
+            Status: "status",
+            Tags: "tags",
+            CreatedAt: "createdAt",
+            UpdatedAt: "updatedAt",
+            ErrorDetails: "errorDetails",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetThreatEntitySetResponse",
+      });
+  }
+}
+function __c96(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          DetectorId: S.String.pipe(T.HttpLabel("DetectorId")),
+          ThreatIntelSetId: S.String.pipe(T.HttpLabel("ThreatIntelSetId")),
+        }).pipe(
+          T.all(
+            T.Http({
+              method: "GET",
+              uri: "/detector/{DetectorId}/threatintelset/{ThreatIntelSetId}",
+            }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "GetThreatIntelSetRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          Name: S.optional(S.String),
+          Format: S.optional(S.String),
+          Location: S.optional(S.String),
+          Status: S.optional(S.String),
+          Tags: S.optional(__S(3712, __c116, 0)),
+          ExpectedBucketOwner: S.optional(S.String),
+        }).pipe(
+          S.encodeKeys({
+            Name: "name",
+            Format: "format",
+            Location: "location",
+            Status: "status",
+            Tags: "tags",
+            ExpectedBucketOwner: "expectedBucketOwner",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetThreatIntelSetResponse",
+      });
+  }
+}
+function __c97(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          DetectorId: S.String.pipe(T.HttpLabel("DetectorId")),
+          TrustedEntitySetId: S.String.pipe(T.HttpLabel("TrustedEntitySetId")),
+        }).pipe(
+          T.all(
+            T.Http({
+              method: "GET",
+              uri: "/detector/{DetectorId}/trustedentityset/{TrustedEntitySetId}",
+            }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "GetTrustedEntitySetRequest",
+      });
+  }
+}
+function __c98(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          AccountIds: S.optional(__S(3328, __c104, 0)),
+          DataSources: S.optional(__S(1920, __c60, 0)),
+          Resources: S.optional(__S(3328, __c104, 0)),
+          Features: S.optional(__S(1920, __c60, 0)),
+        }).pipe(
+          S.encodeKeys({
+            AccountIds: "accountIds",
+            DataSources: "dataSources",
+            Resources: "resources",
+            Features: "features",
+          }),
+        ),
+      ).annotate({ identifier: "UsageCriteria" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          DetectorId: S.String.pipe(T.HttpLabel("DetectorId")),
+          UsageStatisticType: S.optional(S.String),
+          UsageCriteria: S.optional(__S(3136, __c98, 0)),
+          Unit: S.optional(S.String),
+          MaxResults: S.optional(S.Number),
+          NextToken: S.optional(S.String),
+        })
+          .pipe(
+            S.encodeKeys({
+              UsageStatisticType: "usageStatisticsType",
+              UsageCriteria: "usageCriteria",
+              Unit: "unit",
+              MaxResults: "maxResults",
+              NextToken: "nextToken",
+            }),
+          )
+          .pipe(
+            T.all(
+              T.Http({ method: "POST", uri: "/detector/{DetectorId}/usage/statistics" }),
+              svc,
+              auth,
+              proto,
+              ver,
+              rules,
+            ),
+          ),
+      ).annotate({
+        identifier: "GetUsageStatisticsRequest",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({ Amount: S.optional(S.String), Unit: S.optional(S.String) }).pipe(
+          S.encodeKeys({ Amount: "amount", Unit: "unit" }),
+        ),
+      ).annotate({ identifier: "Total" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({ AccountId: S.optional(S.String), Total: S.optional(__S(3138, __c98, 2)) }).pipe(
+          S.encodeKeys({ AccountId: "accountId", Total: "total" }),
+        ),
+      ).annotate({ identifier: "UsageAccountResult" });
+    case 4:
+      return S.Array(__S(3139, __c98, 3));
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          Feature: S.optional(S.String),
+          Accounts: S.optional(__S(3140, __c98, 4)),
+        }).pipe(S.encodeKeys({ Feature: "feature", Accounts: "accounts" })),
+      ).annotate({ identifier: "UsageTopAccountsResult" });
+    case 6:
+      return S.Array(__S(3141, __c98, 5));
+    case 7:
+      return S.suspend(() =>
+        S.Struct({ DataSource: S.optional(S.String), Total: S.optional(__S(3138, __c98, 2)) }).pipe(
+          S.encodeKeys({ DataSource: "dataSource", Total: "total" }),
+        ),
+      ).annotate({ identifier: "UsageDataSourceResult" });
+    case 8:
+      return S.Array(__S(3143, __c98, 7));
+    case 9:
+      return S.suspend(() =>
+        S.Struct({ Resource: S.optional(S.String), Total: S.optional(__S(3138, __c98, 2)) }).pipe(
+          S.encodeKeys({ Resource: "resource", Total: "total" }),
+        ),
+      ).annotate({ identifier: "UsageResourceResult" });
+    case 10:
+      return S.Array(__S(3145, __c98, 9));
+    case 11:
+      return S.suspend(() =>
+        S.Struct({ Feature: S.optional(S.String), Total: S.optional(__S(3138, __c98, 2)) }).pipe(
+          S.encodeKeys({ Feature: "feature", Total: "total" }),
+        ),
+      ).annotate({ identifier: "UsageFeatureResult" });
+    case 12:
+      return S.Array(__S(3147, __c98, 11));
+    case 13:
+      return S.suspend(() =>
+        S.Struct({
+          SumByAccount: S.optional(__S(3140, __c98, 4)),
+          TopAccountsByFeature: S.optional(__S(3142, __c98, 6)),
+          SumByDataSource: S.optional(__S(3144, __c98, 8)),
+          SumByResource: S.optional(__S(3146, __c98, 10)),
+          TopResources: S.optional(__S(3146, __c98, 10)),
+          SumByFeature: S.optional(__S(3148, __c98, 12)),
+        }).pipe(
+          S.encodeKeys({
+            SumByAccount: "sumByAccount",
+            TopAccountsByFeature: "topAccountsByFeature",
+            SumByDataSource: "sumByDataSource",
+            SumByResource: "sumByResource",
+            TopResources: "topResources",
+            SumByFeature: "sumByFeature",
+          }),
+        ),
+      ).annotate({ identifier: "UsageStatistics" });
+    case 14:
+      return S.suspend(() =>
+        S.Struct({
+          UsageStatistics: S.optional(__S(3149, __c98, 13)),
+          NextToken: S.optional(S.String),
+        }).pipe(S.encodeKeys({ UsageStatistics: "usageStatistics", NextToken: "nextToken" })),
+      ).annotate({
+        identifier: "GetUsageStatisticsResponse",
+      });
+  }
+}
+function __c99(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          DetectorId: S.String.pipe(T.HttpLabel("DetectorId")),
+          AccountIds: S.optional(__S(3328, __c104, 0)),
+          DisableEmailNotification: S.optional(S.Boolean),
+          Message: S.optional(S.String),
+        })
+          .pipe(
+            S.encodeKeys({
+              AccountIds: "accountIds",
+              DisableEmailNotification: "disableEmailNotification",
+              Message: "message",
+            }),
+          )
+          .pipe(
+            T.all(
+              T.Http({ method: "POST", uri: "/detector/{DetectorId}/member/invite" }),
+              svc,
+              auth,
+              proto,
+              ver,
+              rules,
+            ),
+          ),
+      ).annotate({ identifier: "InviteMembersRequest" });
+  }
+}
+function __c100(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ AttributeName: S.optional(S.String), OrderBy: S.optional(S.String) }).pipe(
+          S.encodeKeys({ AttributeName: "attributeName", OrderBy: "orderBy" }),
+        ),
+      ).annotate({ identifier: "CoverageSortCriteria" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          DetectorId: S.String.pipe(T.HttpLabel("DetectorId")),
+          NextToken: S.optional(S.String),
+          MaxResults: S.optional(S.Number),
+          FilterCriteria: S.optional(__S(1955, __c61, 3)),
+          SortCriteria: S.optional(__S(3200, __c100, 0)),
+        })
+          .pipe(
+            S.encodeKeys({
+              NextToken: "nextToken",
+              MaxResults: "maxResults",
+              FilterCriteria: "filterCriteria",
+              SortCriteria: "sortCriteria",
+            }),
+          )
+          .pipe(
+            T.all(
+              T.Http({ method: "POST", uri: "/detector/{DetectorId}/coverage" }),
+              svc,
+              auth,
+              proto,
+              ver,
+              rules,
+            ),
+          ),
+      ).annotate({ identifier: "ListCoverageRequest" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({ AddonVersion: S.optional(S.String), AddonStatus: S.optional(S.String) }).pipe(
+          S.encodeKeys({ AddonVersion: "addonVersion", AddonStatus: "addonStatus" }),
+        ),
+      ).annotate({ identifier: "AddonDetails" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          ClusterName: S.optional(S.String),
+          CoveredNodes: S.optional(S.Number),
+          CompatibleNodes: S.optional(S.Number),
+          AddonDetails: S.optional(__S(3202, __c100, 2)),
+          ManagementType: S.optional(S.String),
+        }).pipe(
+          S.encodeKeys({
+            ClusterName: "clusterName",
+            CoveredNodes: "coveredNodes",
+            CompatibleNodes: "compatibleNodes",
+            AddonDetails: "addonDetails",
+            ManagementType: "managementType",
+          }),
+        ),
+      ).annotate({
+        identifier: "CoverageEksClusterDetails",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          Issues: S.optional(__S(3328, __c104, 0)),
+          ManagementType: S.optional(S.String),
+        }).pipe(S.encodeKeys({ Issues: "issues", ManagementType: "managementType" })),
+      ).annotate({ identifier: "FargateDetails" });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          CoveredContainerInstances: S.optional(S.Number),
+          CompatibleContainerInstances: S.optional(S.Number),
+        }).pipe(
+          S.encodeKeys({
+            CoveredContainerInstances: "coveredContainerInstances",
+            CompatibleContainerInstances: "compatibleContainerInstances",
+          }),
+        ),
+      ).annotate({ identifier: "ContainerInstanceDetails" });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          ClusterName: S.optional(S.String),
+          FargateDetails: S.optional(__S(3204, __c100, 4)),
+          ContainerInstanceDetails: S.optional(__S(3205, __c100, 5)),
+        }).pipe(
+          S.encodeKeys({
+            ClusterName: "clusterName",
+            FargateDetails: "fargateDetails",
+            ContainerInstanceDetails: "containerInstanceDetails",
+          }),
+        ),
+      ).annotate({
+        identifier: "CoverageEcsClusterDetails",
+      });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({ Version: S.optional(S.String) }).pipe(S.encodeKeys({ Version: "version" })),
+      ).annotate({ identifier: "AgentDetails" });
+    case 8:
+      return S.suspend(() =>
+        S.Struct({
+          InstanceId: S.optional(S.String),
+          InstanceType: S.optional(S.String),
+          ClusterArn: S.optional(S.String),
+          AgentDetails: S.optional(__S(3207, __c100, 7)),
+          ManagementType: S.optional(S.String),
+        }).pipe(
+          S.encodeKeys({
+            InstanceId: "instanceId",
+            InstanceType: "instanceType",
+            ClusterArn: "clusterArn",
+            AgentDetails: "agentDetails",
+            ManagementType: "managementType",
+          }),
+        ),
+      ).annotate({
+        identifier: "CoverageEc2InstanceDetails",
+      });
+    case 9:
+      return S.suspend(() =>
+        S.Struct({
+          EksClusterDetails: S.optional(__S(3203, __c100, 3)),
+          EcsClusterDetails: S.optional(__S(3206, __c100, 6)),
+          Ec2InstanceDetails: S.optional(__S(3208, __c100, 8)),
+          ResourceType: S.optional(S.String),
+        }).pipe(
+          S.encodeKeys({
+            EksClusterDetails: "eksClusterDetails",
+            EcsClusterDetails: "ecsClusterDetails",
+            Ec2InstanceDetails: "ec2InstanceDetails",
+            ResourceType: "resourceType",
+          }),
+        ),
+      ).annotate({ identifier: "CoverageResourceDetails" });
+    case 10:
+      return S.suspend(() =>
+        S.Struct({
+          ResourceId: S.optional(S.String),
+          DetectorId: S.optional(S.String),
+          AccountId: S.optional(S.String),
+          ResourceDetails: S.optional(__S(3209, __c100, 9)),
+          CoverageStatus: S.optional(S.String),
+          Issue: S.optional(S.String),
+          UpdatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+        }).pipe(
+          S.encodeKeys({
+            ResourceId: "resourceId",
+            DetectorId: "detectorId",
+            AccountId: "accountId",
+            ResourceDetails: "resourceDetails",
+            CoverageStatus: "coverageStatus",
+            Issue: "issue",
+            UpdatedAt: "updatedAt",
+          }),
+        ),
+      ).annotate({ identifier: "CoverageResource" });
+    case 11:
+      return S.Array(__S(3210, __c100, 10));
+    case 12:
+      return S.suspend(() =>
+        S.Struct({
+          Resources: S.optional(__S(3211, __c100, 11)),
+          NextToken: S.optional(S.String),
+        }).pipe(S.encodeKeys({ Resources: "resources", NextToken: "nextToken" })),
+      ).annotate({ identifier: "ListCoverageResponse" });
+  }
+}
+function __c101(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          MaxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
+          NextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
+          RuleId: S.optional(S.String).pipe(T.HttpQuery("ruleId")),
+          Mode: S.optional(S.String).pipe(T.HttpQuery("mode")),
+        }).pipe(
+          T.all(
+            T.Http({ method: "GET", uri: "/custom-detection-rule/association" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "ListCustomDetectionRuleAssociationsRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          AssociationId: S.optional(S.String),
+          Arn: S.optional(S.String),
+          RuleId: S.optional(S.String),
+          Mode: S.optional(S.String),
+          CreatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          UpdatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          ExpiresAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+        }).pipe(
+          S.encodeKeys({
+            AssociationId: "associationId",
+            Arn: "arn",
+            RuleId: "ruleId",
+            Mode: "mode",
+            CreatedAt: "createdAt",
+            UpdatedAt: "updatedAt",
+            ExpiresAt: "expiresAt",
+          }),
+        ),
+      ).annotate({ identifier: "AssociationSummary" });
+    case 2:
+      return S.Array(__S(3233, __c101, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          RuleAssociations: S.optional(__S(3234, __c101, 2)),
+          NextToken: S.optional(S.String),
+        }).pipe(S.encodeKeys({ RuleAssociations: "ruleAssociations", NextToken: "nextToken" })),
+      ).annotate({
+        identifier: "ListCustomDetectionRuleAssociationsResponse",
+      });
+  }
+}
+function __c102(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          MaxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
+          NextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
+          Status: S.optional(S.String).pipe(T.HttpQuery("status")),
+        }).pipe(
+          T.all(
+            T.Http({ method: "GET", uri: "/custom-detection-rule/org-configuration" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "ListCustomDetectionRuleOrgConfigurationsRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          RuleId: S.optional(S.String),
+          Mode: S.optional(S.String),
+          Status: S.optional(S.String),
+          StatusReason: S.optional(S.String),
+          CreatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          UpdatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          ExpiresAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+        }).pipe(
+          S.encodeKeys({
+            RuleId: "ruleId",
+            Mode: "mode",
+            Status: "status",
+            StatusReason: "statusReason",
+            CreatedAt: "createdAt",
+            UpdatedAt: "updatedAt",
+            ExpiresAt: "expiresAt",
+          }),
+        ),
+      ).annotate({
+        identifier: "DetectionRuleOrgConfigurationSummary",
+      });
+    case 2:
+      return S.Array(__S(3265, __c102, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          Configurations: S.optional(__S(3266, __c102, 2)),
+          NextToken: S.optional(S.String),
+        }).pipe(S.encodeKeys({ Configurations: "configurations", NextToken: "nextToken" })),
+      ).annotate({
+        identifier: "ListCustomDetectionRuleOrgConfigurationsResponse",
+      });
+  }
+}
+function __c103(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          DetectorId: S.String.pipe(T.HttpLabel("DetectorId")),
+          FindingIds: S.optional(__S(3328, __c104, 0)),
+        })
+          .pipe(S.encodeKeys({ FindingIds: "findingIds" }))
+          .pipe(
+            T.all(
+              T.Http({ method: "POST", uri: "/detector/{DetectorId}/findings/archive" }),
+              svc,
+              auth,
+              proto,
+              ver,
+              rules,
+            ),
+          ),
+      ).annotate({ identifier: "ArchiveFindingsRequest" });
+  }
+}
+function __c104(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c105(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          Name: S.optional(S.String),
+          Values: S.optional(__S(3328, __c104, 0)),
+          Condition: S.optional(S.String),
+        }).pipe(S.encodeKeys({ Name: "name", Values: "values", Condition: "condition" })),
+      ).annotate({ identifier: "DetectionRuleFilter" });
+    case 1:
+      return S.Array(__S(3360, __c105, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          MaxResults: S.optional(S.Number),
+          NextToken: S.optional(S.String),
+          Filters: S.optional(__S(3361, __c105, 1)),
+        })
+          .pipe(
+            S.encodeKeys({ MaxResults: "maxResults", NextToken: "nextToken", Filters: "filters" }),
+          )
+          .pipe(
+            T.all(
+              T.Http({ method: "POST", uri: "/custom-detection-rule/rule" }),
+              svc,
+              auth,
+              proto,
+              ver,
+              rules,
+            ),
+          ),
+      ).annotate({
+        identifier: "ListCustomDetectionRulesRequest",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          RuleId: S.optional(S.String),
+          Arn: S.optional(S.String),
+          Name: S.optional(S.String),
+          Description: S.optional(S.String),
+          Severity: S.optional(S.String),
+          DataSource: S.optional(S.String),
+          Tactic: S.optional(S.String),
+          Technique: S.optional(S.String),
+          Service: S.optional(S.String),
+          Language: S.optional(S.String),
+          Schema: S.optional(S.String),
+          CreatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          UpdatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+        }).pipe(
+          S.encodeKeys({
+            RuleId: "ruleId",
+            Arn: "arn",
+            Name: "name",
+            Description: "description",
+            Severity: "severity",
+            DataSource: "dataSource",
+            Tactic: "tactic",
+            Technique: "technique",
+            Service: "service",
+            Language: "language",
+            Schema: "schema",
+            CreatedAt: "createdAt",
+            UpdatedAt: "updatedAt",
+          }),
+        ),
+      ).annotate({ identifier: "RuleSummary" });
+    case 4:
+      return S.Array(__S(3363, __c105, 3));
+    case 5:
+      return S.suspend(() =>
+        S.Struct({ Rules: S.optional(__S(3364, __c105, 4)), NextToken: S.optional(S.String) }).pipe(
+          S.encodeKeys({ Rules: "rules", NextToken: "nextToken" }),
+        ),
+      ).annotate({
+        identifier: "ListCustomDetectionRulesResponse",
+      });
+  }
+}
+function __c106(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          MaxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
+          NextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
+        }).pipe(T.all(T.Http({ method: "GET", uri: "/detector" }), svc, auth, proto, ver, rules)),
+      ).annotate({ identifier: "ListDetectorsRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          DetectorIds: S.optional(__S(3328, __c104, 0)),
+          NextToken: S.optional(S.String),
+        }).pipe(S.encodeKeys({ DetectorIds: "detectorIds", NextToken: "nextToken" })),
+      ).annotate({ identifier: "ListDetectorsResponse" });
+  }
+}
+function __c107(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          DetectorId: S.String.pipe(T.HttpLabel("DetectorId")),
+          MaxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
+          NextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
+        }).pipe(
+          T.all(
+            T.Http({ method: "GET", uri: "/detector/{DetectorId}/filter" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "ListFiltersRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          FilterNames: S.optional(__S(3328, __c104, 0)),
+          NextToken: S.optional(S.String),
+        }).pipe(S.encodeKeys({ FilterNames: "filterNames", NextToken: "nextToken" })),
+      ).annotate({ identifier: "ListFiltersResponse" });
+  }
+}
+function __c108(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          DetectorId: S.String.pipe(T.HttpLabel("DetectorId")),
+          FindingCriteria: S.optional(__S(386, __c12, 2)),
+          SortCriteria: S.optional(__S(1472, __c46, 0)),
+          MaxResults: S.optional(S.Number),
+          NextToken: S.optional(S.String),
+        })
+          .pipe(
+            S.encodeKeys({
+              FindingCriteria: "findingCriteria",
+              SortCriteria: "sortCriteria",
+              MaxResults: "maxResults",
+              NextToken: "nextToken",
+            }),
+          )
+          .pipe(
+            T.all(
+              T.Http({ method: "POST", uri: "/detector/{DetectorId}/findings" }),
+              svc,
+              auth,
+              proto,
+              ver,
+              rules,
+            ),
+          ),
+      ).annotate({ identifier: "ListFindingsRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          FindingIds: S.optional(__S(3328, __c104, 0)),
+          NextToken: S.optional(S.String),
+        }).pipe(S.encodeKeys({ FindingIds: "findingIds", NextToken: "nextToken" })),
+      ).annotate({ identifier: "ListFindingsResponse" });
+  }
+}
+function __c109(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          AttributeName: S.optional(S.String),
+          OrderBy: S.optional(S.String),
+        }).pipe(S.encodeKeys({ AttributeName: "attributeName", OrderBy: "orderBy" })),
+      ).annotate({
+        identifier: "InvestigationSortCriteria",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          DetectorId: S.String.pipe(T.HttpLabel("DetectorId")),
+          SortCriteria: S.optional(__S(3488, __c109, 0)),
+          MaxResults: S.optional(S.Number),
+          NextToken: S.optional(S.String),
+        })
+          .pipe(
+            S.encodeKeys({
+              SortCriteria: "sortCriteria",
+              MaxResults: "maxResults",
+              NextToken: "nextToken",
+            }),
+          )
+          .pipe(
+            T.all(
+              T.Http({ method: "POST", uri: "/detector/{DetectorId}/investigation/list" }),
+              svc,
+              auth,
+              proto,
+              ver,
+              rules,
+            ),
+          ),
+      ).annotate({
+        identifier: "ListInvestigationsRequest",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          InvestigationId: S.optional(S.String),
+          Status: S.optional(S.String),
+          TriggerPrompt: S.optional(S.String),
+          RiskLevel: S.optional(S.String),
+          Confidence: S.optional(S.String),
+          Title: S.optional(S.String),
+          AccountId: S.optional(S.String),
+          StartTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          EndTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+        }).pipe(
+          S.encodeKeys({
+            InvestigationId: "investigationId",
+            Status: "status",
+            TriggerPrompt: "triggerPrompt",
+            RiskLevel: "riskLevel",
+            Confidence: "confidence",
+            Title: "title",
+            AccountId: "accountId",
+            StartTime: "startTime",
+            EndTime: "endTime",
+          }),
+        ),
+      ).annotate({ identifier: "InvestigationSummary" });
+    case 3:
+      return S.Array(__S(3490, __c109, 2));
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          Investigations: S.optional(__S(3491, __c109, 3)),
+          NextToken: S.optional(S.String),
+        }).pipe(S.encodeKeys({ Investigations: "investigations", NextToken: "nextToken" })),
+      ).annotate({
+        identifier: "ListInvestigationsResponse",
+      });
+  }
+}
+function __c110(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          MaxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
+          NextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
+        }).pipe(T.all(T.Http({ method: "GET", uri: "/invitation" }), svc, auth, proto, ver, rules)),
+      ).annotate({ identifier: "ListInvitationsRequest" });
+    case 1:
+      return S.Array(__S(1856, __c58, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          Invitations: S.optional(__S(3521, __c110, 1)),
+          NextToken: S.optional(S.String),
+        }).pipe(S.encodeKeys({ Invitations: "invitations", NextToken: "nextToken" })),
+      ).annotate({ identifier: "ListInvitationsResponse" });
+  }
+}
+function __c111(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          DetectorId: S.String.pipe(T.HttpLabel("DetectorId")),
+          MaxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
+          NextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
+        }).pipe(
+          T.all(
+            T.Http({ method: "GET", uri: "/detector/{DetectorId}/ipset" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "ListIPSetsRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          IpSetIds: S.optional(__S(3328, __c104, 0)),
+          NextToken: S.optional(S.String),
+        }).pipe(S.encodeKeys({ IpSetIds: "ipSetIds", NextToken: "nextToken" })),
+      ).annotate({ identifier: "ListIPSetsResponse" });
+  }
+}
+function __c112(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ NextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")) }).pipe(
+          T.all(
+            T.Http({ method: "GET", uri: "/malware-protection-plan" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "ListMalwareProtectionPlansRequest",
+      });
+    case 1:
+      return S.Array(__S(608, __c19, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          MalwareProtectionPlans: S.optional(__S(3585, __c112, 1)),
+          NextToken: S.optional(S.String),
+        }).pipe(
+          S.encodeKeys({
+            MalwareProtectionPlans: "malwareProtectionPlans",
+            NextToken: "nextToken",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListMalwareProtectionPlansResponse",
+      });
+  }
+}
+function __c113(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          ListMalwareScansCriterionKey: S.optional(S.String),
+          FilterCondition: S.optional(__S(1536, __c48, 0)),
+        }).pipe(
+          S.encodeKeys({
+            ListMalwareScansCriterionKey: "criterionKey",
+            FilterCondition: "filterCondition",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListMalwareScansFilterCriterion",
+      });
+    case 1:
+      return S.Array(__S(3616, __c113, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          ListMalwareScansFilterCriterion: S.optional(__S(3617, __c113, 1)),
+        }).pipe(S.encodeKeys({ ListMalwareScansFilterCriterion: "filterCriterion" })),
+      ).annotate({
+        identifier: "ListMalwareScansFilterCriteria",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          MaxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
+          NextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
+          FilterCriteria: S.optional(__S(3618, __c113, 2)),
+          SortCriteria: S.optional(__S(1472, __c46, 0)),
+        })
+          .pipe(S.encodeKeys({ FilterCriteria: "filterCriteria", SortCriteria: "sortCriteria" }))
+          .pipe(
+            T.all(T.Http({ method: "POST", uri: "/malware-scan" }), svc, auth, proto, ver, rules),
+          ),
+      ).annotate({ identifier: "ListMalwareScansRequest" });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          ResourceArn: S.optional(S.String),
+          ResourceType: S.optional(S.String),
+          ScanId: S.optional(S.String),
+          ScanStatus: S.optional(S.String),
+          ScanResultStatus: S.optional(S.String),
+          ScanType: S.optional(S.String),
+          ScanStartedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          ScanCompletedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+        }).pipe(
+          S.encodeKeys({
+            ResourceArn: "resourceArn",
+            ResourceType: "resourceType",
+            ScanId: "scanId",
+            ScanStatus: "scanStatus",
+            ScanResultStatus: "scanResultStatus",
+            ScanType: "scanType",
+            ScanStartedAt: "scanStartedAt",
+            ScanCompletedAt: "scanCompletedAt",
+          }),
+        ),
+      ).annotate({ identifier: "MalwareScan" });
+    case 5:
+      return S.Array(__S(3620, __c113, 4));
+    case 6:
+      return S.suspend(() =>
+        S.Struct({ Scans: S.optional(__S(3621, __c113, 5)), NextToken: S.optional(S.String) }).pipe(
+          S.encodeKeys({ Scans: "scans", NextToken: "nextToken" }),
+        ),
+      ).annotate({ identifier: "ListMalwareScansResponse" });
+  }
+}
+function __c114(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          DetectorId: S.String.pipe(T.HttpLabel("DetectorId")),
+          MaxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
+          NextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
+          OnlyAssociated: S.optional(S.String).pipe(T.HttpQuery("onlyAssociated")),
+        }).pipe(
+          T.all(
+            T.Http({ method: "GET", uri: "/detector/{DetectorId}/member" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "ListMembersRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          Members: S.optional(__S(2849, __c89, 1)),
+          NextToken: S.optional(S.String),
+        }).pipe(S.encodeKeys({ Members: "members", NextToken: "nextToken" })),
+      ).annotate({ identifier: "ListMembersResponse" });
+  }
+}
+function __c115(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          RuleId: S.optional(S.String),
+          Mode: S.optional(S.String),
+          ClientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
+          Tags: S.optional(__S(3712, __c116, 0)),
+        })
+          .pipe(
+            S.encodeKeys({
+              RuleId: "ruleId",
+              Mode: "mode",
+              ClientToken: "clientToken",
+              Tags: "tags",
+            }),
+          )
+          .pipe(
+            T.all(
+              T.Http({ method: "POST", uri: "/custom-detection-rule/association" }),
+              svc,
+              auth,
+              proto,
+              ver,
+              rules,
+            ),
+          ),
+      ).annotate({
+        identifier: "CreateCustomDetectionRuleAssociationRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({ RuleAssociation: S.optional(__S(3744, __c117, 0)) }).pipe(
+          S.encodeKeys({ RuleAssociation: "ruleAssociation" }),
+        ),
+      ).annotate({
+        identifier: "CreateCustomDetectionRuleAssociationResponse",
+      });
+  }
+}
+function __c116(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
+  }
+}
+function __c117(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          AssociationId: S.optional(S.String),
+          Arn: S.optional(S.String),
+          RuleId: S.optional(S.String),
+          AccountId: S.optional(S.String),
+          Mode: S.optional(S.String),
+          CreatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          UpdatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          ExpiresAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+        }).pipe(
+          S.encodeKeys({
+            AssociationId: "associationId",
+            Arn: "arn",
+            RuleId: "ruleId",
+            AccountId: "accountId",
+            Mode: "mode",
+            CreatedAt: "createdAt",
+            UpdatedAt: "updatedAt",
+            ExpiresAt: "expiresAt",
+          }),
+        ),
+      ).annotate({ identifier: "AssociationDetail" });
+  }
+}
+function __c118(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          MaxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
+          NextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
+        }).pipe(T.all(T.Http({ method: "GET", uri: "/admin" }), svc, auth, proto, ver, rules)),
+      ).annotate({
+        identifier: "ListOrganizationAdminAccountsRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({ AdminAccountId: S.optional(S.String), AdminStatus: S.optional(S.String) }).pipe(
+          S.encodeKeys({ AdminAccountId: "adminAccountId", AdminStatus: "adminStatus" }),
+        ),
+      ).annotate({ identifier: "AdminAccount" });
+    case 2:
+      return S.Array(__S(3777, __c118, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          AdminAccounts: S.optional(__S(3778, __c118, 2)),
+          NextToken: S.optional(S.String),
+        }).pipe(S.encodeKeys({ AdminAccounts: "adminAccounts", NextToken: "nextToken" })),
+      ).annotate({
+        identifier: "ListOrganizationAdminAccountsResponse",
+      });
+  }
+}
+function __c119(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          DetectorId: S.String.pipe(T.HttpLabel("DetectorId")),
+          MaxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
+          NextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
+        }).pipe(
+          T.all(
+            T.Http({ method: "GET", uri: "/detector/{DetectorId}/publishingDestination" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "ListPublishingDestinationsRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          DestinationId: S.optional(S.String),
+          DestinationType: S.optional(S.String),
+          Status: S.optional(S.String),
+        }).pipe(
+          S.encodeKeys({
+            DestinationId: "destinationId",
+            DestinationType: "destinationType",
+            Status: "status",
+          }),
+        ),
+      ).annotate({ identifier: "Destination" });
+    case 2:
+      return S.Array(__S(3809, __c119, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          Destinations: S.optional(__S(3810, __c119, 2)),
+          NextToken: S.optional(S.String),
+        }).pipe(S.encodeKeys({ Destinations: "destinations", NextToken: "nextToken" })),
+      ).annotate({
+        identifier: "ListPublishingDestinationsResponse",
+      });
+  }
+}
+function __c120(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ ResourceArn: S.String.pipe(T.HttpLabel("ResourceArn")) }).pipe(
+          T.all(
+            T.Http({ method: "GET", uri: "/tags/{ResourceArn}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "ListTagsForResourceRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({ Tags: S.optional(__S(3712, __c116, 0)) }).pipe(S.encodeKeys({ Tags: "tags" })),
+      ).annotate({
+        identifier: "ListTagsForResourceResponse",
+      });
+  }
+}
+function __c121(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          DetectorId: S.String.pipe(T.HttpLabel("DetectorId")),
+          MaxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
+          NextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
+        }).pipe(
+          T.all(
+            T.Http({ method: "GET", uri: "/detector/{DetectorId}/threatentityset" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "ListThreatEntitySetsRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          ThreatEntitySetIds: S.optional(__S(3328, __c104, 0)),
+          NextToken: S.optional(S.String),
+        }).pipe(S.encodeKeys({ ThreatEntitySetIds: "threatEntitySetIds", NextToken: "nextToken" })),
+      ).annotate({
+        identifier: "ListThreatEntitySetsResponse",
+      });
+  }
+}
+function __c122(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          DetectorId: S.String.pipe(T.HttpLabel("DetectorId")),
+          MaxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
+          NextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
+        }).pipe(
+          T.all(
+            T.Http({ method: "GET", uri: "/detector/{DetectorId}/threatintelset" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "ListThreatIntelSetsRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          ThreatIntelSetIds: S.optional(__S(3328, __c104, 0)),
+          NextToken: S.optional(S.String),
+        }).pipe(S.encodeKeys({ ThreatIntelSetIds: "threatIntelSetIds", NextToken: "nextToken" })),
+      ).annotate({
+        identifier: "ListThreatIntelSetsResponse",
+      });
+  }
+}
+function __c123(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          DetectorId: S.String.pipe(T.HttpLabel("DetectorId")),
+          MaxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
+          NextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
+        }).pipe(
+          T.all(
+            T.Http({ method: "GET", uri: "/detector/{DetectorId}/trustedentityset" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "ListTrustedEntitySetsRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          TrustedEntitySetIds: S.optional(__S(3328, __c104, 0)),
+          NextToken: S.optional(S.String),
+        }).pipe(
+          S.encodeKeys({ TrustedEntitySetIds: "trustedEntitySetIds", NextToken: "nextToken" }),
+        ),
+      ).annotate({
+        identifier: "ListTrustedEntitySetsResponse",
+      });
+  }
+}
+function __c124(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          Bucket: S.optional(S.String),
+          Key: S.optional(S.String),
+          VersionId: S.optional(S.String),
+        }).pipe(S.encodeKeys({ Bucket: "bucket", Key: "key", VersionId: "versionId" })),
+      ).annotate({
+        identifier: "S3ObjectForSendObjectMalwareScan",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({ S3Object: S.optional(__S(3968, __c124, 0)) })
+          .pipe(S.encodeKeys({ S3Object: "s3Object" }))
+          .pipe(
+            T.all(
+              T.Http({ method: "POST", uri: "/object-malware-scan/send" }),
+              svc,
+              auth,
+              proto,
+              ver,
+              rules,
+            ),
+          ),
+      ).annotate({
+        identifier: "SendObjectMalwareScanRequest",
+      });
+  }
+}
+function __c125(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          StartTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          EndTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+        }).pipe(S.encodeKeys({ StartTime: "startTime", EndTime: "endTime" })),
+      ).annotate({ identifier: "ContinuousScanDetails" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          BackupVaultName: S.optional(S.String),
+          ContinuousScanDetails: S.optional(__S(4000, __c125, 0)),
+        }).pipe(
+          S.encodeKeys({
+            BackupVaultName: "backupVaultName",
+            ContinuousScanDetails: "continuousScanDetails",
+          }),
+        ),
+      ).annotate({ identifier: "RecoveryPoint" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          Role: S.optional(S.String),
+          IncrementalScanDetails: S.optional(__S(2368, __c74, 0)),
+          RecoveryPoint: S.optional(__S(4001, __c125, 1)),
+        }).pipe(
+          S.encodeKeys({
+            Role: "role",
+            IncrementalScanDetails: "incrementalScanDetails",
+            RecoveryPoint: "recoveryPoint",
+          }),
+        ),
+      ).annotate({
+        identifier: "StartMalwareScanConfiguration",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          ResourceArn: S.optional(S.String),
+          ClientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
+          ScanConfiguration: S.optional(__S(4002, __c125, 2)),
+        })
+          .pipe(
+            S.encodeKeys({
+              ResourceArn: "resourceArn",
+              ClientToken: "clientToken",
+              ScanConfiguration: "scanConfiguration",
+            }),
+          )
+          .pipe(
+            T.all(
+              T.Http({ method: "POST", uri: "/malware-scan/start" }),
+              svc,
+              auth,
+              proto,
+              ver,
+              rules,
+            ),
+          ),
+      ).annotate({ identifier: "StartMalwareScanRequest" });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({ ScanId: S.optional(S.String) }).pipe(S.encodeKeys({ ScanId: "scanId" })),
+      ).annotate({ identifier: "StartMalwareScanResponse" });
+  }
+}
+function __c126(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          DetectorId: S.String.pipe(T.HttpLabel("DetectorId")),
+          AccountIds: S.optional(__S(3328, __c104, 0)),
+        })
+          .pipe(S.encodeKeys({ AccountIds: "accountIds" }))
+          .pipe(
+            T.all(
+              T.Http({ method: "POST", uri: "/detector/{DetectorId}/member/start" }),
+              svc,
+              auth,
+              proto,
+              ver,
+              rules,
+            ),
+          ),
+      ).annotate({
+        identifier: "StartMonitoringMembersRequest",
+      });
+  }
+}
+function __c127(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          DetectorId: S.String.pipe(T.HttpLabel("DetectorId")),
+          AccountIds: S.optional(__S(3328, __c104, 0)),
+        })
+          .pipe(S.encodeKeys({ AccountIds: "accountIds" }))
+          .pipe(
+            T.all(
+              T.Http({ method: "POST", uri: "/detector/{DetectorId}/member/stop" }),
+              svc,
+              auth,
+              proto,
+              ver,
+              rules,
+            ),
+          ),
+      ).annotate({
+        identifier: "StopMonitoringMembersRequest",
+      });
+  }
+}
+function __c128(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          RuleId: S.optional(S.String),
+          Mode: S.optional(S.String),
+          IncludeAccountIds: S.optional(__S(3328, __c104, 0)),
+          ExcludeAccountIds: S.optional(__S(3328, __c104, 0)),
+          ClientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
+        })
+          .pipe(
+            S.encodeKeys({
+              RuleId: "ruleId",
+              Mode: "mode",
+              IncludeAccountIds: "includeAccountIds",
+              ExcludeAccountIds: "excludeAccountIds",
+              ClientToken: "clientToken",
+            }),
+          )
+          .pipe(
+            T.all(
+              T.Http({ method: "POST", uri: "/custom-detection-rule/org-configuration" }),
+              svc,
+              auth,
+              proto,
+              ver,
+              rules,
+            ),
+          ),
+      ).annotate({
+        identifier: "CreateCustomDetectionRuleOrgConfigurationRequest",
+      });
+  }
+}
+function __c129(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          ResourceArn: S.optional(S.String).pipe(T.HttpLabel("ResourceArn")),
+          Tags: __S(3712, __c116, 0),
+        })
+          .pipe(S.encodeKeys({ Tags: "tags" }))
+          .pipe(
+            T.all(
+              T.Http({ method: "POST", uri: "/tags/{ResourceArn}" }),
+              svc,
+              auth,
+              proto,
+              ver,
+              rules,
+            ),
+          ),
+      ).annotate({ identifier: "TagResourceRequest" });
+  }
+}
+function __c130(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          DetectorId: S.String.pipe(T.HttpLabel("DetectorId")),
+          FindingIds: S.optional(__S(3328, __c104, 0)),
+        })
+          .pipe(S.encodeKeys({ FindingIds: "findingIds" }))
+          .pipe(
+            T.all(
+              T.Http({ method: "POST", uri: "/detector/{DetectorId}/findings/unarchive" }),
+              svc,
+              auth,
+              proto,
+              ver,
+              rules,
+            ),
+          ),
+      ).annotate({ identifier: "UnarchiveFindingsRequest" });
+  }
+}
+function __c131(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          ResourceArn: S.String.pipe(T.HttpLabel("ResourceArn")),
+          TagKeys: S.optional(__S(3328, __c104, 0)).pipe(T.HttpQuery("tagKeys")),
+        }).pipe(
+          T.all(
+            T.Http({ method: "DELETE", uri: "/tags/{ResourceArn}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "UntagResourceRequest" });
+  }
+}
+function __c132(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          RuleId: S.String.pipe(T.HttpLabel("RuleId")),
+          AssociationId: S.String.pipe(T.HttpLabel("AssociationId")),
+          Mode: S.optional(S.String),
+        })
+          .pipe(S.encodeKeys({ Mode: "mode" }))
+          .pipe(
+            T.all(
+              T.Http({
+                method: "PUT",
+                uri: "/custom-detection-rule/rule/{RuleId}/association/{AssociationId}",
+              }),
+              svc,
+              auth,
+              proto,
+              ver,
+              rules,
+            ),
+          ),
+      ).annotate({
+        identifier: "UpdateCustomDetectionRuleAssociationRequest",
+      });
+  }
+}
+function __c133(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          RuleId: S.String.pipe(T.HttpLabel("RuleId")),
+          Mode: S.optional(S.String),
+          IncludeAccountIds: S.optional(__S(3328, __c104, 0)),
+          ExcludeAccountIds: S.optional(__S(3328, __c104, 0)),
+        })
+          .pipe(
+            S.encodeKeys({
+              Mode: "mode",
+              IncludeAccountIds: "includeAccountIds",
+              ExcludeAccountIds: "excludeAccountIds",
+            }),
+          )
+          .pipe(
+            T.all(
+              T.Http({ method: "PUT", uri: "/custom-detection-rule/org-configuration/{RuleId}" }),
+              svc,
+              auth,
+              proto,
+              ver,
+              rules,
+            ),
+          ),
+      ).annotate({
+        identifier: "UpdateCustomDetectionRuleOrgConfigurationRequest",
+      });
+  }
+}
+function __c134(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          DetectorId: S.String.pipe(T.HttpLabel("DetectorId")),
+          Enable: S.optional(S.Boolean),
+          FindingPublishingFrequency: S.optional(S.String),
+          DataSources: S.optional(__S(101, __c3, 5)),
+          Features: S.optional(__S(66, __c2, 2)),
+        })
+          .pipe(
+            S.encodeKeys({
+              Enable: "enable",
+              FindingPublishingFrequency: "findingPublishingFrequency",
+              DataSources: "dataSources",
+              Features: "features",
+            }),
+          )
+          .pipe(
+            T.all(
+              T.Http({ method: "POST", uri: "/detector/{DetectorId}" }),
+              svc,
+              auth,
+              proto,
+              ver,
+              rules,
+            ),
+          ),
+      ).annotate({ identifier: "UpdateDetectorRequest" });
+  }
+}
+function __c135(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          DetectorId: S.String.pipe(T.HttpLabel("DetectorId")),
+          FilterName: S.String.pipe(T.HttpLabel("FilterName")),
+          Description: S.optional(S.String),
+          Action: S.optional(S.String),
+          Rank: S.optional(S.Number),
+          FindingCriteria: S.optional(__S(386, __c12, 2)),
+        })
+          .pipe(
+            S.encodeKeys({
+              Description: "description",
+              Action: "action",
+              Rank: "rank",
+              FindingCriteria: "findingCriteria",
+            }),
+          )
+          .pipe(
+            T.all(
+              T.Http({ method: "POST", uri: "/detector/{DetectorId}/filter/{FilterName}" }),
+              svc,
+              auth,
+              proto,
+              ver,
+              rules,
+            ),
+          ),
+      ).annotate({ identifier: "UpdateFilterRequest" });
+  }
+}
+function __c136(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          DetectorId: S.String.pipe(T.HttpLabel("DetectorId")),
+          FindingIds: S.optional(__S(3328, __c104, 0)),
+          Feedback: S.optional(S.String),
+          Comments: S.optional(SensitiveString),
+        })
+          .pipe(
+            S.encodeKeys({ FindingIds: "findingIds", Feedback: "feedback", Comments: "comments" }),
+          )
+          .pipe(
+            T.all(
+              T.Http({ method: "POST", uri: "/detector/{DetectorId}/findings/feedback" }),
+              svc,
+              auth,
+              proto,
+              ver,
+              rules,
+            ),
+          ),
+      ).annotate({
+        identifier: "UpdateFindingsFeedbackRequest",
+      });
+  }
+}
+function __c137(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          DetectorId: S.String.pipe(T.HttpLabel("DetectorId")),
+          IpSetId: S.optional(S.String).pipe(T.HttpLabel("IpSetId")),
+          Name: S.optional(S.String),
+          Location: S.optional(S.String),
+          Activate: S.optional(S.Boolean),
+          ExpectedBucketOwner: S.optional(S.String),
+        })
+          .pipe(
+            S.encodeKeys({
+              Name: "name",
+              Location: "location",
+              Activate: "activate",
+              ExpectedBucketOwner: "expectedBucketOwner",
+            }),
+          )
+          .pipe(
+            T.all(
+              T.Http({ method: "POST", uri: "/detector/{DetectorId}/ipset/{IpSetId}" }),
+              svc,
+              auth,
+              proto,
+              ver,
+              rules,
+            ),
+          ),
+      ).annotate({ identifier: "UpdateIPSetRequest" });
+  }
+}
+function __c138(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ ObjectPrefixes: S.optional(__S(3328, __c104, 0)) }).pipe(
+          S.encodeKeys({ ObjectPrefixes: "objectPrefixes" }),
+        ),
+      ).annotate({ identifier: "UpdateS3BucketResource" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({ S3Bucket: S.optional(__S(4416, __c138, 0)) }).pipe(
+          S.encodeKeys({ S3Bucket: "s3Bucket" }),
+        ),
+      ).annotate({ identifier: "UpdateProtectedResource" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          MalwareProtectionPlanId: S.String.pipe(T.HttpLabel("MalwareProtectionPlanId")),
+          Role: S.optional(S.String),
+          Actions: S.optional(__S(577, __c18, 1)),
+          ProtectedResource: S.optional(__S(4417, __c138, 1)),
+        })
+          .pipe(
+            S.encodeKeys({
+              Role: "role",
+              Actions: "actions",
+              ProtectedResource: "protectedResource",
+            }),
+          )
+          .pipe(
+            T.all(
+              T.Http({
+                method: "PATCH",
+                uri: "/malware-protection-plan/{MalwareProtectionPlanId}",
+              }),
+              svc,
+              auth,
+              proto,
+              ver,
+              rules,
+            ),
+          ),
+      ).annotate({
+        identifier: "UpdateMalwareProtectionPlanRequest",
+      });
+  }
+}
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

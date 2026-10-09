@@ -1345,8 +1345,8 @@ export const bulkCreateRules: API.PaginatedOperationMethod<
   RulesBulkCreateResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(9, __c1, 1) as any as S.Schema<BulkCreateRulesRequest>,
-    output: __S(17, __c2, 1) as any as S.Schema<BulkCreateRulesResponse>,
+    input: __S(149, __c9, 5) as any as S.Schema<BulkCreateRulesRequest>,
+    output: __S(152, __c9, 8) as any as S.Schema<BulkCreateRulesResponse>,
     errors: [CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
     retry: Retry.Retry,
@@ -1365,8 +1365,8 @@ export const bulkPatchRules: API.PaginatedOperationMethod<
   RulesBulkEditResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(24, __c3, 0) as any as S.Schema<BulkPatchRulesRequest>,
-    output: __S(27, __c3, 3) as any as S.Schema<BulkPatchRulesResponse>,
+    input: __S(246, __c15, 6) as any as S.Schema<BulkPatchRulesRequest>,
+    output: __S(249, __c15, 9) as any as S.Schema<BulkPatchRulesResponse>,
     errors: [CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
     retry: Retry.Retry,
@@ -1383,8 +1383,8 @@ export const createConfiguration: API.OperationMethod<
   CreateConfigurationError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(31, __c3, 7) as any as S.Schema<CreateConfigurationRequest>,
-  output: __S(35, __c4, 3) as any as S.Schema<CreateConfigurationResponse>,
+  input: __S(259, __c16, 3) as any as S.Schema<CreateConfigurationRequest>,
+  output: __S(263, __c16, 7) as any as S.Schema<CreateConfigurationResponse>,
   errors: [TokenValidationNotEntitled, Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -1398,8 +1398,8 @@ export const createRule: API.OperationMethod<
   CreateRuleError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(39, __c4, 7) as any as S.Schema<CreateRuleRequest>,
-  output: __S(40, __c5, 0) as any as S.Schema<CreateRuleResponse>,
+  input: __S(273, __c17, 1) as any as S.Schema<CreateRuleRequest>,
+  output: __S(274, __c17, 2) as any as S.Schema<CreateRuleResponse>,
   errors: [TokenValidationNotEntitled, Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -1417,8 +1417,8 @@ export const deleteConfiguration: API.OperationMethod<
   DeleteConfigurationError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(41, __c5, 1) as any as S.Schema<DeleteConfigurationRequest>,
-  output: __S(42, __c5, 2) as any as S.Schema<DeleteConfigurationResponse>,
+  input: __S(304, __c19, 0) as any as S.Schema<DeleteConfigurationRequest>,
+  output: __S(305, __c19, 1) as any as S.Schema<DeleteConfigurationResponse>,
   errors: [
     TokenConfigurationNotFound,
     TokenValidationNotEntitled,
@@ -1442,8 +1442,8 @@ export const deleteRule: API.OperationMethod<
   DeleteRuleError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(43, __c5, 3) as any as S.Schema<DeleteRuleRequest>,
-  output: __S(44, __c5, 4) as any as S.Schema<DeleteRuleResponse>,
+  input: __S(320, __c20, 0) as any as S.Schema<DeleteRuleRequest>,
+  output: __S(321, __c20, 1) as any as S.Schema<DeleteRuleResponse>,
   errors: [
     TokenValidationRuleNotFound,
     TokenValidationNotEntitled,
@@ -1463,8 +1463,8 @@ export const editConfigurationCredentials: API.OperationMethod<
   EditConfigurationCredentialsError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(47, __c5, 7) as any as S.Schema<EditConfigurationCredentialsRequest>,
-  output: __S(50, __c6, 2) as any as S.Schema<EditConfigurationCredentialsResponse>,
+  input: __S(2, __c0, 2) as any as S.Schema<EditConfigurationCredentialsRequest>,
+  output: __S(5, __c0, 5) as any as S.Schema<EditConfigurationCredentialsResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -1482,8 +1482,8 @@ export const getConfiguration: API.OperationMethod<
   GetConfigurationError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(51, __c6, 3) as any as S.Schema<GetConfigurationRequest>,
-  output: __S(55, __c6, 7) as any as S.Schema<GetConfigurationResponse>,
+  input: __S(16, __c1, 0) as any as S.Schema<GetConfigurationRequest>,
+  output: __S(20, __c1, 4) as any as S.Schema<GetConfigurationResponse>,
   errors: [
     TokenConfigurationNotFound,
     TokenValidationNotEntitled,
@@ -1507,8 +1507,8 @@ export const getRule: API.OperationMethod<
   GetRuleError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(56, __c7, 0) as any as S.Schema<GetRuleRequest>,
-  output: __S(60, __c7, 4) as any as S.Schema<GetRuleResponse>,
+  input: __S(32, __c2, 0) as any as S.Schema<GetRuleRequest>,
+  output: __S(34, __c2, 2) as any as S.Schema<GetRuleResponse>,
   errors: [
     TokenValidationRuleNotFound,
     TokenValidationNotEntitled,
@@ -1530,8 +1530,8 @@ export const listConfigurations: API.PaginatedOperationMethod<
   ConfigurationListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(61, __c7, 5) as any as S.Schema<ListConfigurationsRequest>,
-    output: __S(67, __c8, 3) as any as S.Schema<ListConfigurationsResponse>,
+    input: __S(64, __c4, 0) as any as S.Schema<ListConfigurationsRequest>,
+    output: __S(70, __c4, 6) as any as S.Schema<ListConfigurationsResponse>,
     errors: [TokenValidationNotEntitled, Forbidden, CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
     retry: Retry.Retry,
@@ -1556,8 +1556,8 @@ export const listRules: API.PaginatedOperationMethod<
   RulesListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(68, __c8, 4) as any as S.Schema<ListRulesRequest>,
-    output: __S(71, __c8, 7) as any as S.Schema<ListRulesResponse>,
+    input: __S(80, __c5, 0) as any as S.Schema<ListRulesRequest>,
+    output: __S(83, __c5, 3) as any as S.Schema<ListRulesResponse>,
     errors: [TokenValidationNotEntitled, Forbidden, CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
     retry: Retry.Retry,
@@ -1584,8 +1584,8 @@ export const patchConfiguration: API.OperationMethod<
   PatchConfigurationError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(72, __c9, 0) as any as S.Schema<PatchConfigurationRequest>,
-  output: __S(73, __c9, 1) as any as S.Schema<PatchConfigurationResponse>,
+  input: __S(96, __c6, 0) as any as S.Schema<PatchConfigurationRequest>,
+  output: __S(97, __c6, 1) as any as S.Schema<PatchConfigurationResponse>,
   errors: [
     TokenConfigurationNotFound,
     TokenValidationNotEntitled,
@@ -1609,8 +1609,8 @@ export const patchRule: API.OperationMethod<
   PatchRuleError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(76, __c9, 4) as any as S.Schema<PatchRuleRequest>,
-  output: __S(78, __c9, 6) as any as S.Schema<PatchRuleResponse>,
+  input: __S(114, __c7, 2) as any as S.Schema<PatchRuleRequest>,
+  output: __S(116, __c7, 4) as any as S.Schema<PatchRuleResponse>,
   errors: [
     TokenValidationRuleNotFound,
     TokenValidationNotEntitled,
@@ -1634,8 +1634,8 @@ export const putConfigurationCredential: API.OperationMethod<
   PutConfigurationCredentialError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(81, __c10, 1) as any as S.Schema<PutConfigurationCredentialRequest>,
-  output: __S(84, __c10, 4) as any as S.Schema<PutConfigurationCredentialResponse>,
+  input: __S(130, __c8, 2) as any as S.Schema<PutConfigurationCredentialRequest>,
+  output: __S(133, __c8, 5) as any as S.Schema<PutConfigurationCredentialResponse>,
   errors: [
     TokenConfigurationNotFound,
     TokenValidationNotEntitled,
@@ -1651,382 +1651,6 @@ export const putConfigurationCredential: API.OperationMethod<
 function __c0(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(S.String);
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          operationIds: S.optional(__S(0, __c0, 0).pipe(T.Body("operation_ids"))),
-        }),
-      ).annotate({
-        identifier: "RulesBulkCreateRequestBodyItemSelectorExcludeItem",
-      });
-    case 2:
-      return S.Array(__S(1, __c0, 1));
-    case 3:
-      return S.Array(S.String);
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          host: S.optional(__S(3, __c0, 3)),
-        }),
-      ).annotate({
-        identifier: "RulesBulkCreateRequestBodyItemSelectorIncludeItem",
-      });
-    case 5:
-      return S.Array(__S(4, __c0, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          exclude: S.optional(__S(2, __c0, 2)),
-          include: S.optional(__S(5, __c0, 5)),
-        }),
-      ).annotate({
-        identifier: "RulesBulkCreateRequestBodyItemSelector",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          action: S.String,
-          description: S.String,
-          enabled: S.Boolean,
-          expression: S.String,
-          selector: __S(6, __c0, 6),
-          title: S.String,
-        }),
-      ).annotate({
-        identifier: "RulesBulkCreateRequestBodyItem",
-      });
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(7, __c0, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          zoneId: S.String.pipe(T.Label("zone_id")),
-          body: __S(8, __c1, 0).pipe(T.HttpBody()),
-        })
-          .pipe(
-            T.Http({
-              method: "POST",
-              uri: "/zones/{zone_id}/token_validation/rules/bulk",
-              code: 200,
-            }),
-          )
-          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({ identifier: "BulkCreateRulesRequest" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          operationIds: S.optional(S.NullOr(__S(3, __c0, 3)).pipe(T.Body("operation_ids"))),
-        }),
-      ).annotate({
-        identifier: "RulesBulkCreateResultItemSelectorExcludeItem",
-      });
-    case 3:
-      return S.Array(__S(10, __c1, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          host: S.optional(S.NullOr(__S(3, __c0, 3))),
-        }),
-      ).annotate({
-        identifier: "RulesBulkCreateResultItemSelectorIncludeItem",
-      });
-    case 5:
-      return S.Array(__S(12, __c1, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          exclude: S.optional(S.NullOr(__S(11, __c1, 3))),
-          include: S.optional(S.NullOr(__S(13, __c1, 5))),
-        }),
-      ).annotate({
-        identifier: "RulesBulkCreateResultItemSelector",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          action: S.String,
-          description: S.String,
-          enabled: S.Boolean,
-          expression: S.String,
-          selector: __S(14, __c1, 6),
-          title: S.String,
-          id: S.optional(S.NullOr(S.String)),
-          createdAt: S.optional(S.NullOr(S.String).pipe(T.Body("created_at"))),
-          lastUpdated: S.optional(S.NullOr(S.String).pipe(T.Body("last_updated"))),
-        }),
-      ).annotate({
-        identifier: "RulesBulkCreateResultItem",
-      });
-  }
-}
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(15, __c1, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          result: __S(16, __c2, 0).pipe(T.EnvelopePayload()),
-          resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
-        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({ identifier: "BulkCreateRulesResponse" });
-    case 2:
-      return S.Unknown.pipe(/*@__PURE__*/ T.UnionCases([["index"], ["before"], ["after"]]));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          operationIds: S.optional(__S(0, __c0, 0).pipe(T.Body("operation_ids"))),
-        }),
-      ).annotate({
-        identifier: "RulesBulkEditRequestBodyItemSelectorExcludeItem",
-      });
-    case 4:
-      return S.Array(__S(19, __c2, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          exclude: S.optional(__S(20, __c2, 4)),
-          include: S.optional(__S(5, __c0, 5)),
-        }),
-      ).annotate({
-        identifier: "RulesBulkEditRequestBodyItemSelector",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String,
-          action: S.optional(S.String),
-          description: S.optional(S.String),
-          enabled: S.optional(S.Boolean),
-          expression: S.optional(S.String),
-          position: S.optional(__S(18, __c2, 2)),
-          selector: S.optional(__S(21, __c2, 5)),
-          title: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "RulesBulkEditRequestBodyItem",
-      });
-    case 7:
-      return S.Array(__S(22, __c2, 6));
-  }
-}
-function __c3(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          zoneId: S.String.pipe(T.Label("zone_id")),
-          body: __S(23, __c2, 7).pipe(T.HttpBody()),
-        })
-          .pipe(
-            T.Http({
-              method: "PATCH",
-              uri: "/zones/{zone_id}/token_validation/rules/bulk",
-              code: 200,
-            }),
-          )
-          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({ identifier: "BulkPatchRulesRequest" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          action: S.String,
-          description: S.String,
-          enabled: S.Boolean,
-          expression: S.String,
-          selector: __S(14, __c1, 6),
-          title: S.String,
-          id: S.optional(S.NullOr(S.String)),
-          createdAt: S.optional(S.NullOr(S.String).pipe(T.Body("created_at"))),
-          lastUpdated: S.optional(S.NullOr(S.String).pipe(T.Body("last_updated"))),
-        }),
-      ).annotate({ identifier: "RulesBulkEditResultItem" });
-    case 2:
-      return S.Array(__S(25, __c3, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          result: __S(26, __c3, 2).pipe(T.EnvelopePayload()),
-          resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
-        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({ identifier: "BulkPatchRulesResponse" });
-    case 4:
-      return S.Unknown.pipe(
-        /*@__PURE__*/ T.UnionCases([
-          ["alg", "e", "kid", "kty", "n"],
-          ["alg", "crv", "kid", "kty", "x", "y"],
-          ["alg", "crv", "kid", "kty", "x", "y"],
-          ["alg", "k", "kid", "kty"],
-        ]),
-      );
-    case 5:
-      return S.Array(__S(28, __c3, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          keys: __S(29, __c3, 5),
-        }),
-      ).annotate({
-        identifier: "ConfigurationCreateRequestCredentials",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          zoneId: S.String.pipe(T.Label("zone_id")),
-          credentials: __S(30, __c3, 6),
-          description: S.String,
-          title: S.String,
-          tokenSources: __S(3, __c0, 3).pipe(T.Body("token_sources")),
-          tokenType: S.String.pipe(T.Body("token_type")),
-        })
-          .pipe(
-            T.Http({ method: "POST", uri: "/zones/{zone_id}/token_validation/config", code: 200 }),
-          )
-          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({
-        identifier: "CreateConfigurationRequest",
-      });
-  }
-}
-function __c4(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Unknown.pipe(
-        /*@__PURE__*/ T.UnionCases([
-          ["alg", "e", "kid", "kty", "n"],
-          ["alg", "crv", "kid", "kty", "x", "y"],
-          ["alg", "crv", "kid", "kty", "x", "y"],
-          ["alg", "kid", "kty"],
-        ]),
-      );
-    case 1:
-      return S.Array(__S(32, __c4, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          keys: __S(33, __c4, 1),
-        }),
-      ).annotate({
-        identifier: "ConfigurationCreateResponseCredentials",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String,
-          createdAt: S.String.pipe(T.Body("created_at")),
-          credentials: __S(34, __c4, 2),
-          description: S.String,
-          lastUpdated: S.String.pipe(T.Body("last_updated")),
-          title: S.String,
-          tokenSources: __S(3, __c0, 3).pipe(T.Body("token_sources")),
-          tokenType: S.String.pipe(T.Body("token_type")),
-        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({
-        identifier: "CreateConfigurationResponse",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          operationIds: S.optional(__S(3, __c0, 3).pipe(T.Body("operation_ids"))),
-        }),
-      ).annotate({
-        identifier: "RulesCreateRequestSelectorExcludeItem",
-      });
-    case 5:
-      return S.Array(__S(36, __c4, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          exclude: S.optional(__S(37, __c4, 5)),
-          include: S.optional(__S(5, __c0, 5)),
-        }),
-      ).annotate({
-        identifier: "RulesCreateRequestSelector",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          zoneId: S.String.pipe(T.Label("zone_id")),
-          action: S.String,
-          description: S.String,
-          enabled: S.Boolean,
-          expression: S.String,
-          selector: __S(38, __c4, 6),
-          title: S.String,
-        })
-          .pipe(
-            T.Http({ method: "POST", uri: "/zones/{zone_id}/token_validation/rules", code: 200 }),
-          )
-          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({ identifier: "CreateRuleRequest" });
-  }
-}
-function __c5(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          action: S.String,
-          description: S.String,
-          enabled: S.Boolean,
-          expression: S.String,
-          selector: __S(14, __c1, 6),
-          title: S.String,
-          id: S.optional(S.NullOr(S.String)),
-          createdAt: S.optional(S.NullOr(S.String).pipe(T.Body("created_at"))),
-          lastUpdated: S.optional(S.NullOr(S.String).pipe(T.Body("last_updated"))),
-        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({ identifier: "CreateRuleResponse" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          zoneId: S.String.pipe(T.Label("zone_id")),
-          configId: S.String.pipe(T.Label("config_id")),
-        })
-          .pipe(
-            T.Http({
-              method: "DELETE",
-              uri: "/zones/{zone_id}/token_validation/config/{config_id}",
-              code: 200,
-            }),
-          )
-          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({
-        identifier: "DeleteConfigurationRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.NullOr(S.String)),
-        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({
-        identifier: "DeleteConfigurationResponse",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          zoneId: S.String.pipe(T.Label("zone_id")),
-          ruleId: S.String.pipe(T.Label("rule_id")),
-        })
-          .pipe(
-            T.Http({
-              method: "DELETE",
-              uri: "/zones/{zone_id}/token_validation/rules/{rule_id}",
-              code: 200,
-            }),
-          )
-          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({ identifier: "DeleteRuleRequest" });
-    case 4:
-      return S.suspend(() =>
-        S.Unknown.pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({ identifier: "DeleteRuleResponse" });
-    case 5:
       return S.Unknown.pipe(
         /*@__PURE__*/ T.UnionCases([
           ["alg", "e", "kid", "kty", "n"],
@@ -2035,14 +1659,14 @@ function __c5(j: number): any {
           ["alg", "kid", "kty", "k"],
         ]),
       );
-    case 6:
-      return S.Array(__S(45, __c5, 5));
-    case 7:
+    case 1:
+      return S.Array(__S(0, __c0, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           zoneId: S.String.pipe(T.Label("zone_id")),
           configId: S.String.pipe(T.Label("config_id")),
-          keys: __S(46, __c5, 6),
+          keys: __S(1, __c0, 1),
         })
           .pipe(
             T.Http({
@@ -2055,11 +1679,7 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "EditConfigurationCredentialsRequest",
       });
-  }
-}
-function __c6(j: number): any {
-  switch (j) {
-    case 0:
+    case 3:
       return S.Unknown.pipe(
         /*@__PURE__*/ T.UnionCases([
           ["alg", "e", "kid", "kty", "n"],
@@ -2068,17 +1688,21 @@ function __c6(j: number): any {
           ["alg", "kid", "kty"],
         ]),
       );
-    case 1:
-      return S.Array(__S(48, __c6, 0));
-    case 2:
+    case 4:
+      return S.Array(__S(3, __c0, 3));
+    case 5:
       return S.suspend(() =>
         S.Struct({
-          keys: __S(49, __c6, 1),
+          keys: __S(4, __c0, 4),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({
         identifier: "EditConfigurationCredentialsResponse",
       });
-    case 3:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           zoneId: S.String.pipe(T.Label("zone_id")),
@@ -2093,7 +1717,7 @@ function __c6(j: number): any {
           )
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "GetConfigurationRequest" });
-    case 4:
+    case 1:
       return S.Unknown.pipe(
         /*@__PURE__*/ T.UnionCases([
           ["alg", "e", "kid", "kty", "n"],
@@ -2102,32 +1726,32 @@ function __c6(j: number): any {
           ["alg", "kid", "kty"],
         ]),
       );
-    case 5:
-      return S.Array(__S(52, __c6, 4));
-    case 6:
+    case 2:
+      return S.Array(__S(17, __c1, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          keys: __S(53, __c6, 5),
+          keys: __S(18, __c1, 2),
         }),
       ).annotate({
         identifier: "ConfigurationGetResponseCredentials",
       });
-    case 7:
+    case 4:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
           createdAt: S.String.pipe(T.Body("created_at")),
-          credentials: __S(54, __c6, 6),
+          credentials: __S(19, __c1, 3),
           description: S.String,
           lastUpdated: S.String.pipe(T.Body("last_updated")),
           title: S.String,
-          tokenSources: __S(3, __c0, 3).pipe(T.Body("token_sources")),
+          tokenSources: __S(176, __c11, 0).pipe(T.Body("token_sources")),
           tokenType: S.String.pipe(T.Body("token_type")),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "GetConfigurationResponse" });
   }
 }
-function __c7(j: number): any {
+function __c2(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2147,35 +1771,43 @@ function __c7(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          operationIds: S.optional(S.NullOr(__S(3, __c0, 3)).pipe(T.Body("operation_ids"))),
-        }),
-      ).annotate({
-        identifier: "RulesGetResponseSelectorExcludeItem",
-      });
-    case 2:
-      return S.Array(__S(57, __c7, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          exclude: S.optional(S.NullOr(__S(58, __c7, 2))),
-          include: S.optional(S.NullOr(__S(13, __c1, 5))),
+          exclude: S.optional(S.NullOr(__S(49, __c3, 1))),
+          include: S.optional(S.NullOr(__S(193, __c12, 1))),
         }),
       ).annotate({ identifier: "RulesGetResponseSelector" });
-    case 4:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           action: S.String,
           description: S.String,
           enabled: S.Boolean,
           expression: S.String,
-          selector: __S(59, __c7, 3),
+          selector: __S(33, __c2, 1),
           title: S.String,
           id: S.optional(S.NullOr(S.String)),
           createdAt: S.optional(S.NullOr(S.String).pipe(T.Body("created_at"))),
           lastUpdated: S.optional(S.NullOr(S.String).pipe(T.Body("last_updated"))),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "GetRuleResponse" });
-    case 5:
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          operationIds: S.optional(S.NullOr(__S(176, __c11, 0)).pipe(T.Body("operation_ids"))),
+        }),
+      ).annotate({
+        identifier: "RulesGetResponseSelectorExcludeItem",
+      });
+    case 1:
+      return S.Array(__S(48, __c3, 0));
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           zoneId: S.String.pipe(T.Label("zone_id")),
@@ -2189,7 +1821,7 @@ function __c7(j: number): any {
       ).annotate({
         identifier: "ListConfigurationsRequest",
       });
-    case 6:
+    case 1:
       return S.Unknown.pipe(
         /*@__PURE__*/ T.UnionCases([
           ["alg", "e", "kid", "kty", "n"],
@@ -2198,47 +1830,47 @@ function __c7(j: number): any {
           ["alg", "kid", "kty"],
         ]),
       );
-    case 7:
-      return S.Array(__S(62, __c7, 6));
-  }
-}
-function __c8(j: number): any {
-  switch (j) {
-    case 0:
+    case 2:
+      return S.Array(__S(65, __c4, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          keys: __S(63, __c7, 7),
+          keys: __S(66, __c4, 2),
         }),
       ).annotate({
         identifier: "ConfigurationListResultItemCredentials",
       });
-    case 1:
+    case 4:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
           createdAt: S.String.pipe(T.Body("created_at")),
-          credentials: __S(64, __c8, 0),
+          credentials: __S(67, __c4, 3),
           description: S.String,
           lastUpdated: S.String.pipe(T.Body("last_updated")),
           title: S.String,
-          tokenSources: __S(3, __c0, 3).pipe(T.Body("token_sources")),
+          tokenSources: __S(176, __c11, 0).pipe(T.Body("token_sources")),
           tokenType: S.String.pipe(T.Body("token_type")),
         }),
       ).annotate({
         identifier: "ConfigurationListResultItem",
       });
-    case 2:
-      return S.Array(__S(65, __c8, 1));
-    case 3:
+    case 5:
+      return S.Array(__S(68, __c4, 4));
+    case 6:
       return S.suspend(() =>
         S.Struct({
-          result: __S(66, __c8, 2).pipe(T.EnvelopePayload()),
+          result: __S(69, __c4, 5).pipe(T.EnvelopePayload()),
           resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({
         identifier: "ListConfigurationsResponse",
       });
-    case 4:
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           zoneId: S.String.pipe(T.Label("zone_id")),
@@ -2250,39 +1882,39 @@ function __c8(j: number): any {
           page: S.optional(S.Number.pipe(T.Query())),
           perPage: S.optional(S.Number.pipe(T.Query("per_page"))),
           ruleId: S.optional(S.String.pipe(T.Query("rule_id"))),
-          tokenConfiguration: S.optional(__S(3, __c0, 3).pipe(T.Query("token_configuration"))),
+          tokenConfiguration: S.optional(__S(176, __c11, 0).pipe(T.Query("token_configuration"))),
         })
           .pipe(
             T.Http({ method: "GET", uri: "/zones/{zone_id}/token_validation/rules", code: 200 }),
           )
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "ListRulesRequest" });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           action: S.String,
           description: S.String,
           enabled: S.Boolean,
           expression: S.String,
-          selector: __S(14, __c1, 6),
+          selector: __S(210, __c13, 2),
           title: S.String,
           id: S.optional(S.NullOr(S.String)),
           createdAt: S.optional(S.NullOr(S.String).pipe(T.Body("created_at"))),
           lastUpdated: S.optional(S.NullOr(S.String).pipe(T.Body("last_updated"))),
         }),
       ).annotate({ identifier: "RulesListResultItem" });
-    case 6:
-      return S.Array(__S(69, __c8, 5));
-    case 7:
+    case 2:
+      return S.Array(__S(81, __c5, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          result: __S(70, __c8, 6).pipe(T.EnvelopePayload()),
+          result: __S(82, __c5, 2).pipe(T.EnvelopePayload()),
           resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "ListRulesResponse" });
   }
 }
-function __c9(j: number): any {
+function __c6(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2291,7 +1923,7 @@ function __c9(j: number): any {
           configId: S.String.pipe(T.Label("config_id")),
           description: S.optional(S.String),
           title: S.optional(S.String),
-          tokenSources: S.optional(__S(3, __c0, 3).pipe(T.Body("token_sources"))),
+          tokenSources: S.optional(__S(176, __c11, 0).pipe(T.Body("token_sources"))),
         })
           .pipe(
             T.Http({
@@ -2310,21 +1942,25 @@ function __c9(j: number): any {
           id: S.optional(S.NullOr(S.String)),
           description: S.optional(S.NullOr(S.String)),
           title: S.optional(S.NullOr(S.String)),
-          tokenSources: S.optional(S.NullOr(__S(3, __c0, 3)).pipe(T.Body("token_sources"))),
+          tokenSources: S.optional(S.NullOr(__S(176, __c11, 0)).pipe(T.Body("token_sources"))),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({
         identifier: "PatchConfigurationResponse",
       });
-    case 2:
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
       return S.Unknown.pipe(/*@__PURE__*/ T.UnionCases([["index"], ["before"], ["after"]]));
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          exclude: S.optional(__S(37, __c4, 5)),
-          include: S.optional(__S(5, __c0, 5)),
+          exclude: S.optional(__S(289, __c18, 1)),
+          include: S.optional(__S(225, __c14, 1)),
         }),
       ).annotate({ identifier: "RulesEditRequestSelector" });
-    case 4:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           zoneId: S.String.pipe(T.Label("zone_id")),
@@ -2333,8 +1969,8 @@ function __c9(j: number): any {
           description: S.optional(S.String),
           enabled: S.optional(S.Boolean),
           expression: S.optional(S.String),
-          position: S.optional(__S(74, __c9, 2)),
-          selector: S.optional(__S(75, __c9, 3)),
+          position: S.optional(__S(112, __c7, 0)),
+          selector: S.optional(__S(113, __c7, 1)),
           title: S.optional(S.String),
         })
           .pipe(
@@ -2346,30 +1982,34 @@ function __c9(j: number): any {
           )
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "PatchRuleRequest" });
-    case 5:
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          exclude: S.optional(S.NullOr(__S(58, __c7, 2))),
-          include: S.optional(S.NullOr(__S(13, __c1, 5))),
+          exclude: S.optional(S.NullOr(__S(49, __c3, 1))),
+          include: S.optional(S.NullOr(__S(193, __c12, 1))),
         }),
       ).annotate({
         identifier: "RulesEditResponseSelector",
       });
-    case 6:
+    case 4:
       return S.suspend(() =>
         S.Struct({
           action: S.String,
           description: S.String,
           enabled: S.Boolean,
           expression: S.String,
-          selector: __S(77, __c9, 5),
+          selector: __S(115, __c7, 3),
           title: S.String,
           id: S.optional(S.NullOr(S.String)),
           createdAt: S.optional(S.NullOr(S.String).pipe(T.Body("created_at"))),
           lastUpdated: S.optional(S.NullOr(S.String).pipe(T.Body("last_updated"))),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "PatchRuleResponse" });
-    case 7:
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
       return S.Unknown.pipe(
         /*@__PURE__*/ T.UnionCases([
           ["alg", "e", "kid", "kty", "n"],
@@ -2378,18 +2018,14 @@ function __c9(j: number): any {
           ["alg", "k", "kid", "kty"],
         ]),
       );
-  }
-}
-function __c10(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(79, __c9, 7));
     case 1:
+      return S.Array(__S(128, __c8, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           zoneId: S.String.pipe(T.Label("zone_id")),
           configId: S.String.pipe(T.Label("config_id")),
-          keys: __S(80, __c10, 0),
+          keys: __S(129, __c8, 1),
         })
           .pipe(
             T.Http({
@@ -2402,7 +2038,7 @@ function __c10(j: number): any {
       ).annotate({
         identifier: "PutConfigurationCredentialRequest",
       });
-    case 2:
+    case 3:
       return S.Unknown.pipe(
         /*@__PURE__*/ T.UnionCases([
           ["alg", "e", "kid", "kty", "n"],
@@ -2411,19 +2047,422 @@ function __c10(j: number): any {
           ["alg", "kid", "kty"],
         ]),
       );
-    case 3:
-      return S.Array(__S(82, __c10, 2));
     case 4:
+      return S.Array(__S(131, __c8, 3));
+    case 5:
       return S.suspend(() =>
         S.Struct({
-          keys: __S(83, __c10, 3),
+          keys: __S(132, __c8, 4),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({
         identifier: "PutConfigurationCredentialResponse",
       });
   }
 }
-
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          operationIds: S.optional(__S(160, __c10, 0).pipe(T.Body("operation_ids"))),
+        }),
+      ).annotate({
+        identifier: "RulesBulkCreateRequestBodyItemSelectorExcludeItem",
+      });
+    case 1:
+      return S.Array(__S(144, __c9, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          exclude: S.optional(__S(145, __c9, 1)),
+          include: S.optional(__S(225, __c14, 1)),
+        }),
+      ).annotate({
+        identifier: "RulesBulkCreateRequestBodyItemSelector",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          action: S.String,
+          description: S.String,
+          enabled: S.Boolean,
+          expression: S.String,
+          selector: __S(146, __c9, 2),
+          title: S.String,
+        }),
+      ).annotate({
+        identifier: "RulesBulkCreateRequestBodyItem",
+      });
+    case 4:
+      return S.Array(__S(147, __c9, 3));
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          zoneId: S.String.pipe(T.Label("zone_id")),
+          body: __S(148, __c9, 4).pipe(T.HttpBody()),
+        })
+          .pipe(
+            T.Http({
+              method: "POST",
+              uri: "/zones/{zone_id}/token_validation/rules/bulk",
+              code: 200,
+            }),
+          )
+          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({ identifier: "BulkCreateRulesRequest" });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          action: S.String,
+          description: S.String,
+          enabled: S.Boolean,
+          expression: S.String,
+          selector: __S(210, __c13, 2),
+          title: S.String,
+          id: S.optional(S.NullOr(S.String)),
+          createdAt: S.optional(S.NullOr(S.String).pipe(T.Body("created_at"))),
+          lastUpdated: S.optional(S.NullOr(S.String).pipe(T.Body("last_updated"))),
+        }),
+      ).annotate({
+        identifier: "RulesBulkCreateResultItem",
+      });
+    case 7:
+      return S.Array(__S(150, __c9, 6));
+    case 8:
+      return S.suspend(() =>
+        S.Struct({
+          result: __S(151, __c9, 7).pipe(T.EnvelopePayload()),
+          resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
+        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({ identifier: "BulkCreateRulesResponse" });
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          host: S.optional(S.NullOr(__S(176, __c11, 0))),
+        }),
+      ).annotate({
+        identifier: "RulesBulkCreateResultItemSelectorIncludeItem",
+      });
+    case 1:
+      return S.Array(__S(192, __c12, 0));
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          operationIds: S.optional(S.NullOr(__S(176, __c11, 0)).pipe(T.Body("operation_ids"))),
+        }),
+      ).annotate({
+        identifier: "RulesBulkCreateResultItemSelectorExcludeItem",
+      });
+    case 1:
+      return S.Array(__S(208, __c13, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          exclude: S.optional(S.NullOr(__S(209, __c13, 1))),
+          include: S.optional(S.NullOr(__S(193, __c12, 1))),
+        }),
+      ).annotate({
+        identifier: "RulesBulkCreateResultItemSelector",
+      });
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          host: S.optional(__S(176, __c11, 0)),
+        }),
+      ).annotate({
+        identifier: "RulesBulkCreateRequestBodyItemSelectorIncludeItem",
+      });
+    case 1:
+      return S.Array(__S(224, __c14, 0));
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Unknown.pipe(/*@__PURE__*/ T.UnionCases([["index"], ["before"], ["after"]]));
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          operationIds: S.optional(__S(160, __c10, 0).pipe(T.Body("operation_ids"))),
+        }),
+      ).annotate({
+        identifier: "RulesBulkEditRequestBodyItemSelectorExcludeItem",
+      });
+    case 2:
+      return S.Array(__S(241, __c15, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          exclude: S.optional(__S(242, __c15, 2)),
+          include: S.optional(__S(225, __c14, 1)),
+        }),
+      ).annotate({
+        identifier: "RulesBulkEditRequestBodyItemSelector",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          action: S.optional(S.String),
+          description: S.optional(S.String),
+          enabled: S.optional(S.Boolean),
+          expression: S.optional(S.String),
+          position: S.optional(__S(240, __c15, 0)),
+          selector: S.optional(__S(243, __c15, 3)),
+          title: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "RulesBulkEditRequestBodyItem",
+      });
+    case 5:
+      return S.Array(__S(244, __c15, 4));
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          zoneId: S.String.pipe(T.Label("zone_id")),
+          body: __S(245, __c15, 5).pipe(T.HttpBody()),
+        })
+          .pipe(
+            T.Http({
+              method: "PATCH",
+              uri: "/zones/{zone_id}/token_validation/rules/bulk",
+              code: 200,
+            }),
+          )
+          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({ identifier: "BulkPatchRulesRequest" });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          action: S.String,
+          description: S.String,
+          enabled: S.Boolean,
+          expression: S.String,
+          selector: __S(210, __c13, 2),
+          title: S.String,
+          id: S.optional(S.NullOr(S.String)),
+          createdAt: S.optional(S.NullOr(S.String).pipe(T.Body("created_at"))),
+          lastUpdated: S.optional(S.NullOr(S.String).pipe(T.Body("last_updated"))),
+        }),
+      ).annotate({ identifier: "RulesBulkEditResultItem" });
+    case 8:
+      return S.Array(__S(247, __c15, 7));
+    case 9:
+      return S.suspend(() =>
+        S.Struct({
+          result: __S(248, __c15, 8).pipe(T.EnvelopePayload()),
+          resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
+        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({ identifier: "BulkPatchRulesResponse" });
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Unknown.pipe(
+        /*@__PURE__*/ T.UnionCases([
+          ["alg", "e", "kid", "kty", "n"],
+          ["alg", "crv", "kid", "kty", "x", "y"],
+          ["alg", "crv", "kid", "kty", "x", "y"],
+          ["alg", "k", "kid", "kty"],
+        ]),
+      );
+    case 1:
+      return S.Array(__S(256, __c16, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          keys: __S(257, __c16, 1),
+        }),
+      ).annotate({
+        identifier: "ConfigurationCreateRequestCredentials",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          zoneId: S.String.pipe(T.Label("zone_id")),
+          credentials: __S(258, __c16, 2),
+          description: S.String,
+          title: S.String,
+          tokenSources: __S(176, __c11, 0).pipe(T.Body("token_sources")),
+          tokenType: S.String.pipe(T.Body("token_type")),
+        })
+          .pipe(
+            T.Http({ method: "POST", uri: "/zones/{zone_id}/token_validation/config", code: 200 }),
+          )
+          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({
+        identifier: "CreateConfigurationRequest",
+      });
+    case 4:
+      return S.Unknown.pipe(
+        /*@__PURE__*/ T.UnionCases([
+          ["alg", "e", "kid", "kty", "n"],
+          ["alg", "crv", "kid", "kty", "x", "y"],
+          ["alg", "crv", "kid", "kty", "x", "y"],
+          ["alg", "kid", "kty"],
+        ]),
+      );
+    case 5:
+      return S.Array(__S(260, __c16, 4));
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          keys: __S(261, __c16, 5),
+        }),
+      ).annotate({
+        identifier: "ConfigurationCreateResponseCredentials",
+      });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          createdAt: S.String.pipe(T.Body("created_at")),
+          credentials: __S(262, __c16, 6),
+          description: S.String,
+          lastUpdated: S.String.pipe(T.Body("last_updated")),
+          title: S.String,
+          tokenSources: __S(176, __c11, 0).pipe(T.Body("token_sources")),
+          tokenType: S.String.pipe(T.Body("token_type")),
+        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({
+        identifier: "CreateConfigurationResponse",
+      });
+  }
+}
+function __c17(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          exclude: S.optional(__S(289, __c18, 1)),
+          include: S.optional(__S(225, __c14, 1)),
+        }),
+      ).annotate({
+        identifier: "RulesCreateRequestSelector",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          zoneId: S.String.pipe(T.Label("zone_id")),
+          action: S.String,
+          description: S.String,
+          enabled: S.Boolean,
+          expression: S.String,
+          selector: __S(272, __c17, 0),
+          title: S.String,
+        })
+          .pipe(
+            T.Http({ method: "POST", uri: "/zones/{zone_id}/token_validation/rules", code: 200 }),
+          )
+          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({ identifier: "CreateRuleRequest" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          action: S.String,
+          description: S.String,
+          enabled: S.Boolean,
+          expression: S.String,
+          selector: __S(210, __c13, 2),
+          title: S.String,
+          id: S.optional(S.NullOr(S.String)),
+          createdAt: S.optional(S.NullOr(S.String).pipe(T.Body("created_at"))),
+          lastUpdated: S.optional(S.NullOr(S.String).pipe(T.Body("last_updated"))),
+        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({ identifier: "CreateRuleResponse" });
+  }
+}
+function __c18(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          operationIds: S.optional(__S(176, __c11, 0).pipe(T.Body("operation_ids"))),
+        }),
+      ).annotate({
+        identifier: "RulesCreateRequestSelectorExcludeItem",
+      });
+    case 1:
+      return S.Array(__S(288, __c18, 0));
+  }
+}
+function __c19(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          zoneId: S.String.pipe(T.Label("zone_id")),
+          configId: S.String.pipe(T.Label("config_id")),
+        })
+          .pipe(
+            T.Http({
+              method: "DELETE",
+              uri: "/zones/{zone_id}/token_validation/config/{config_id}",
+              code: 200,
+            }),
+          )
+          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({
+        identifier: "DeleteConfigurationRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.NullOr(S.String)),
+        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({
+        identifier: "DeleteConfigurationResponse",
+      });
+  }
+}
+function __c20(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          zoneId: S.String.pipe(T.Label("zone_id")),
+          ruleId: S.String.pipe(T.Label("rule_id")),
+        })
+          .pipe(
+            T.Http({
+              method: "DELETE",
+              uri: "/zones/{zone_id}/token_validation/rules/{rule_id}",
+              code: 200,
+            }),
+          )
+          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({ identifier: "DeleteRuleRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Unknown.pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({ identifier: "DeleteRuleResponse" });
+  }
+}
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

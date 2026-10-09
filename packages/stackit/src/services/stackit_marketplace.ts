@@ -248,8 +248,8 @@ export const approveSubscription: API.OperationMethod<
   ApproveSubscriptionError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(0, __c0, 0) as any as S.Schema<ApproveSubscriptionRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<ApproveSubscriptionResponse>,
+  input: __S(56, __c7, 0) as any as S.Schema<ApproveSubscriptionRequest>,
+  output: __S(57, __c7, 1) as any as S.Schema<ApproveSubscriptionResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -268,8 +268,8 @@ export const cancelConsumersSubscription: API.OperationMethod<
   CancelConsumersSubscriptionError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2, __c0, 2) as any as S.Schema<CancelConsumersSubscriptionRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<CancelConsumersSubscriptionResponse>,
+  input: __S(64, __c8, 0) as any as S.Schema<CancelConsumersSubscriptionRequest>,
+  output: __S(72, __c9, 0) as any as S.Schema<CancelConsumersSubscriptionResponse>,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -283,8 +283,8 @@ export const consumersSubscriptionsListByOrganization: API.OperationMethod<
   ConsumersSubscriptionsListByOrganizationError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(4, __c0, 4) as any as S.Schema<ConsumersSubscriptionsListByOrganizationRequest>,
-  output: __S(11, __c1, 3) as any as S.Schema<MarketplaceSubscriptionV1ListSubscriptionsResponse>,
+  input: __S(80, __c10, 0) as any as S.Schema<ConsumersSubscriptionsListByOrganizationRequest>,
+  output: __S(89, __c11, 1) as any as S.Schema<MarketplaceSubscriptionV1ListSubscriptionsResponse>,
   errors: [BadRequest, Forbidden, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -298,8 +298,8 @@ export const consumersSubscriptionsListByProject: API.OperationMethod<
   ConsumersSubscriptionsListByProjectError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(12, __c1, 4) as any as S.Schema<ConsumersSubscriptionsListByProjectRequest>,
-  output: __S(11, __c1, 3) as any as S.Schema<MarketplaceSubscriptionV1ListSubscriptionsResponse>,
+  input: __S(104, __c13, 0) as any as S.Schema<ConsumersSubscriptionsListByProjectRequest>,
+  output: __S(89, __c11, 1) as any as S.Schema<MarketplaceSubscriptionV1ListSubscriptionsResponse>,
   errors: [BadRequest, Forbidden, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -313,8 +313,8 @@ export const createConsumersSubscription: API.OperationMethod<
   CreateConsumersSubscriptionError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(13, __c1, 5) as any as S.Schema<CreateConsumersSubscriptionRequest>,
-  output: __S(9, __c1, 1) as any as S.Schema<MarketplaceSubscriptionV1Subscription>,
+  input: __S(112, __c14, 0) as any as S.Schema<CreateConsumersSubscriptionRequest>,
+  output: __S(100, __c12, 4) as any as S.Schema<MarketplaceSubscriptionV1Subscription>,
   errors: [BadRequest, Forbidden, Conflict, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -328,8 +328,8 @@ export const getConsumersSubscription: API.OperationMethod<
   GetConsumersSubscriptionError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(14, __c1, 6) as any as S.Schema<GetConsumersSubscriptionRequest>,
-  output: __S(9, __c1, 1) as any as S.Schema<MarketplaceSubscriptionV1Subscription>,
+  input: __S(120, __c15, 0) as any as S.Schema<GetConsumersSubscriptionRequest>,
+  output: __S(100, __c12, 4) as any as S.Schema<MarketplaceSubscriptionV1Subscription>,
   errors: [BadRequest, Forbidden, NotFound, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -343,8 +343,8 @@ export const getConsumersSubscriptionsRedirect: API.OperationMethod<
   GetConsumersSubscriptionsRedirectError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(15, __c1, 7) as any as S.Schema<GetConsumersSubscriptionsRedirectRequest>,
-  output: __S(16, __c2, 0) as any as S.Schema<MarketplaceSubscriptionV1SubscriptionRedirect>,
+  input: __S(0, __c0, 0) as any as S.Schema<GetConsumersSubscriptionsRedirectRequest>,
+  output: __S(1, __c0, 1) as any as S.Schema<MarketplaceSubscriptionV1SubscriptionRedirect>,
   errors: [BadRequest, Forbidden, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -358,8 +358,8 @@ export const getVendorsSubscription: API.OperationMethod<
   GetVendorsSubscriptionError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(17, __c2, 1) as any as S.Schema<GetVendorsSubscriptionRequest>,
-  output: __S(9, __c1, 1) as any as S.Schema<MarketplaceSubscriptionV1Subscription>,
+  input: __S(8, __c1, 0) as any as S.Schema<GetVendorsSubscriptionRequest>,
+  output: __S(100, __c12, 4) as any as S.Schema<MarketplaceSubscriptionV1Subscription>,
   errors: [BadRequest, Forbidden, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -373,8 +373,8 @@ export const rejectVendorsSubscription: API.OperationMethod<
   RejectVendorsSubscriptionError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(18, __c2, 2) as any as S.Schema<RejectVendorsSubscriptionRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<RejectVendorsSubscriptionResponse>,
+  input: __S(16, __c2, 0) as any as S.Schema<RejectVendorsSubscriptionRequest>,
+  output: __S(72, __c9, 0) as any as S.Schema<RejectVendorsSubscriptionResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -388,8 +388,8 @@ export const resolveCustomer: API.OperationMethod<
   ResolveCustomerError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(19, __c2, 3) as any as S.Schema<ResolveCustomerRequest>,
-  output: __S(9, __c1, 1) as any as S.Schema<MarketplaceSubscriptionV1Subscription>,
+  input: __S(24, __c3, 0) as any as S.Schema<ResolveCustomerRequest>,
+  output: __S(100, __c12, 4) as any as S.Schema<MarketplaceSubscriptionV1Subscription>,
   errors: [BadRequest, Forbidden, NotFound, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -407,8 +407,8 @@ export const terminateConsumersSubscription: API.OperationMethod<
   TerminateConsumersSubscriptionError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(20, __c2, 4) as any as S.Schema<TerminateConsumersSubscriptionRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<TerminateConsumersSubscriptionResponse>,
+  input: __S(32, __c4, 0) as any as S.Schema<TerminateConsumersSubscriptionRequest>,
+  output: __S(72, __c9, 0) as any as S.Schema<TerminateConsumersSubscriptionResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -422,8 +422,8 @@ export const vendorsSubscriptionsListByOrganization: API.OperationMethod<
   VendorsSubscriptionsListByOrganizationError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(21, __c2, 5) as any as S.Schema<VendorsSubscriptionsListByOrganizationRequest>,
-  output: __S(11, __c1, 3) as any as S.Schema<MarketplaceSubscriptionV1ListSubscriptionsResponse>,
+  input: __S(40, __c5, 0) as any as S.Schema<VendorsSubscriptionsListByOrganizationRequest>,
+  output: __S(89, __c11, 1) as any as S.Schema<MarketplaceSubscriptionV1ListSubscriptionsResponse>,
   errors: [BadRequest, Forbidden, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -437,8 +437,8 @@ export const vendorsSubscriptionsListByProject: API.OperationMethod<
   VendorsSubscriptionsListByProjectError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(22, __c2, 6) as any as S.Schema<VendorsSubscriptionsListByProjectRequest>,
-  output: __S(11, __c1, 3) as any as S.Schema<MarketplaceSubscriptionV1ListSubscriptionsResponse>,
+  input: __S(48, __c6, 0) as any as S.Schema<VendorsSubscriptionsListByProjectRequest>,
+  output: __S(89, __c11, 1) as any as S.Schema<MarketplaceSubscriptionV1ListSubscriptionsResponse>,
   errors: [BadRequest, Forbidden, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -446,6 +446,161 @@ export const vendorsSubscriptionsListByProject: API.OperationMethod<
 
 // Schema builders: each runs one schema initializer, on that schema's first use.
 function __c0(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          projectId: S.String.pipe(T.Label()),
+          subscriptionId: S.String.pipe(T.Label()),
+          redirectTarget: S.optional(S.String.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/v1/consumers/projects/{projectId}/subscriptions/{subscriptionId}/redirects",
+            code: 200,
+            baseUrl: "https://stackit-marketplace.api.stackit.cloud",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetConsumersSubscriptionsRedirectRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          redirectTarget: S.String,
+          redirectUrl: S.String,
+        }),
+      ).annotate({
+        identifier: "MarketplaceSubscriptionV1SubscriptionRedirect",
+      });
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          projectId: S.String.pipe(T.Label()),
+          subscriptionId: S.String.pipe(T.Label()),
+          includeExpired: S.optional(S.Boolean.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/v1/vendors/projects/{projectId}/subscriptions/{subscriptionId}",
+            code: 200,
+            baseUrl: "https://stackit-marketplace.api.stackit.cloud",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetVendorsSubscriptionRequest",
+      });
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          projectId: S.String.pipe(T.Label()),
+          subscriptionId: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/v1/vendors/projects/{projectId}/subscriptions/{subscriptionId}/reject",
+            code: 200,
+            baseUrl: "https://stackit-marketplace.api.stackit.cloud",
+          }),
+        ),
+      ).annotate({
+        identifier: "RejectVendorsSubscriptionRequest",
+      });
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          projectId: S.String.pipe(T.Label()),
+          token: S.String,
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/v1/vendors/projects/{projectId}/resolve-customer",
+            code: 200,
+            baseUrl: "https://stackit-marketplace.api.stackit.cloud",
+          }),
+        ),
+      ).annotate({ identifier: "ResolveCustomerRequest" });
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          projectId: S.String.pipe(T.Label()),
+          subscriptionId: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/v1/consumers/projects/{projectId}/subscriptions/{subscriptionId}/terminate",
+            code: 200,
+            baseUrl: "https://stackit-marketplace.api.stackit.cloud",
+          }),
+        ),
+      ).annotate({
+        identifier: "TerminateConsumersSubscriptionRequest",
+      });
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          organizationId: S.String.pipe(T.Label()),
+          cursor: S.optional(S.String.pipe(T.Query())),
+          limit: S.optional(S.Number.pipe(T.Query())),
+          productId: S.optional(S.String.pipe(T.Query())),
+          includeExpired: S.optional(S.Boolean.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/v1/vendors/organizations/{organizationId}/subscriptions",
+            code: 200,
+            baseUrl: "https://stackit-marketplace.api.stackit.cloud",
+          }),
+        ),
+      ).annotate({
+        identifier: "VendorsSubscriptionsListByOrganizationRequest",
+      });
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          projectId: S.String.pipe(T.Label()),
+          cursor: S.optional(S.String.pipe(T.Query())),
+          limit: S.optional(S.Number.pipe(T.Query())),
+          productId: S.optional(S.String.pipe(T.Query())),
+          includeExpired: S.optional(S.Boolean.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/v1/vendors/projects/{projectId}/subscriptions",
+            code: 200,
+            baseUrl: "https://stackit-marketplace.api.stackit.cloud",
+          }),
+        ),
+      ).annotate({
+        identifier: "VendorsSubscriptionsListByProjectRequest",
+      });
+  }
+}
+function __c7(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -468,7 +623,11 @@ function __c0(j: number): any {
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "ApproveSubscriptionResponse",
       });
-    case 2:
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.Label()),
@@ -484,11 +643,19 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "CancelConsumersSubscriptionRequest",
       });
-    case 3:
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "CancelConsumersSubscriptionResponse",
       });
-    case 4:
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           organizationId: S.String.pipe(T.Label()),
@@ -507,7 +674,27 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "ConsumersSubscriptionsListByOrganizationRequest",
       });
-    case 5:
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(100, __c12, 4));
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          cursor: S.optional(S.String),
+          items: S.optional(__S(88, __c11, 0)),
+          limit: S.optional(S.Number),
+        }),
+      ).annotate({
+        identifier: "MarketplaceSubscriptionV1ListSubscriptionsResponse",
+      });
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           de: S.optional(S.String),
@@ -516,33 +703,29 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "MarketplaceSubscriptionV1FileLocalizedVersion",
       });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          version: S.optional(__S(5, __c0, 5)),
+          version: S.optional(__S(96, __c12, 0)),
         }),
       ).annotate({
         identifier: "MarketplaceSubscriptionV1File",
       });
-    case 7:
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          endUserLicenseAgreement: S.optional(__S(6, __c0, 6)),
-          productDescription: S.optional(__S(6, __c0, 6)),
-          serviceCertificate: S.optional(__S(6, __c0, 6)),
-          serviceLevelAgreement: S.optional(__S(6, __c0, 6)),
+          endUserLicenseAgreement: S.optional(__S(97, __c12, 1)),
+          productDescription: S.optional(__S(97, __c12, 1)),
+          serviceCertificate: S.optional(__S(97, __c12, 1)),
+          serviceLevelAgreement: S.optional(__S(97, __c12, 1)),
         }),
       ).annotate({
         identifier: "MarketplaceSubscriptionV1Assets",
       });
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          assets: S.optional(__S(7, __c0, 7)),
+          assets: S.optional(__S(98, __c12, 2)),
           deliveryMethod: S.String,
           lifecycleState: S.String,
           noticePeriod: S.String,
@@ -561,7 +744,7 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "MarketplaceSubscriptionV1SubscriptionProduct",
       });
-    case 1:
+    case 4:
       return S.suspend(() =>
         S.Struct({
           approvalTimeout: S.optional(S.String),
@@ -569,7 +752,7 @@ function __c1(j: number): any {
           lifecycleState: S.String,
           orderedAt: S.String,
           organizationId: S.String,
-          product: __S(8, __c1, 0),
+          product: __S(99, __c12, 3),
           projectId: S.String,
           subscriptionId: S.String,
           terminatesAt: S.optional(S.String),
@@ -579,19 +762,11 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "MarketplaceSubscriptionV1Subscription",
       });
-    case 2:
-      return S.Array(__S(9, __c1, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          cursor: S.optional(S.String),
-          items: S.optional(__S(10, __c1, 2)),
-          limit: S.optional(S.Number),
-        }),
-      ).annotate({
-        identifier: "MarketplaceSubscriptionV1ListSubscriptionsResponse",
-      });
-    case 4:
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.Label()),
@@ -610,7 +785,11 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "ConsumersSubscriptionsListByProjectRequest",
       });
-    case 5:
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.Label()),
@@ -628,7 +807,11 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "CreateConsumersSubscriptionRequest",
       });
-    case 6:
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.Label()),
@@ -645,140 +828,8 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "GetConsumersSubscriptionRequest",
       });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          projectId: S.String.pipe(T.Label()),
-          subscriptionId: S.String.pipe(T.Label()),
-          redirectTarget: S.optional(S.String.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/v1/consumers/projects/{projectId}/subscriptions/{subscriptionId}/redirects",
-            code: 200,
-            baseUrl: "https://stackit-marketplace.api.stackit.cloud",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetConsumersSubscriptionsRedirectRequest",
-      });
   }
 }
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          redirectTarget: S.String,
-          redirectUrl: S.String,
-        }),
-      ).annotate({
-        identifier: "MarketplaceSubscriptionV1SubscriptionRedirect",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          projectId: S.String.pipe(T.Label()),
-          subscriptionId: S.String.pipe(T.Label()),
-          includeExpired: S.optional(S.Boolean.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/v1/vendors/projects/{projectId}/subscriptions/{subscriptionId}",
-            code: 200,
-            baseUrl: "https://stackit-marketplace.api.stackit.cloud",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetVendorsSubscriptionRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          projectId: S.String.pipe(T.Label()),
-          subscriptionId: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/v1/vendors/projects/{projectId}/subscriptions/{subscriptionId}/reject",
-            code: 200,
-            baseUrl: "https://stackit-marketplace.api.stackit.cloud",
-          }),
-        ),
-      ).annotate({
-        identifier: "RejectVendorsSubscriptionRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          projectId: S.String.pipe(T.Label()),
-          token: S.String,
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/v1/vendors/projects/{projectId}/resolve-customer",
-            code: 200,
-            baseUrl: "https://stackit-marketplace.api.stackit.cloud",
-          }),
-        ),
-      ).annotate({ identifier: "ResolveCustomerRequest" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          projectId: S.String.pipe(T.Label()),
-          subscriptionId: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/v1/consumers/projects/{projectId}/subscriptions/{subscriptionId}/terminate",
-            code: 200,
-            baseUrl: "https://stackit-marketplace.api.stackit.cloud",
-          }),
-        ),
-      ).annotate({
-        identifier: "TerminateConsumersSubscriptionRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          organizationId: S.String.pipe(T.Label()),
-          cursor: S.optional(S.String.pipe(T.Query())),
-          limit: S.optional(S.Number.pipe(T.Query())),
-          productId: S.optional(S.String.pipe(T.Query())),
-          includeExpired: S.optional(S.Boolean.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/v1/vendors/organizations/{organizationId}/subscriptions",
-            code: 200,
-            baseUrl: "https://stackit-marketplace.api.stackit.cloud",
-          }),
-        ),
-      ).annotate({
-        identifier: "VendorsSubscriptionsListByOrganizationRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          projectId: S.String.pipe(T.Label()),
-          cursor: S.optional(S.String.pipe(T.Query())),
-          limit: S.optional(S.Number.pipe(T.Query())),
-          productId: S.optional(S.String.pipe(T.Query())),
-          includeExpired: S.optional(S.Boolean.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/v1/vendors/projects/{projectId}/subscriptions",
-            code: 200,
-            baseUrl: "https://stackit-marketplace.api.stackit.cloud",
-          }),
-        ),
-      ).annotate({
-        identifier: "VendorsSubscriptionsListByProjectRequest",
-      });
-  }
-}
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

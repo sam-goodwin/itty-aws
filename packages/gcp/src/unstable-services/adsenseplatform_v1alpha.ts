@@ -354,8 +354,8 @@ export const closePlatformsAccounts: API.OperationMethod<
   ClosePlatformsAccountsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1, __c0, 1) as any as S.Schema<ClosePlatformsAccountsRequest>,
-  output: __S(0, __c0, 0) as any as S.Schema<CloseAccountResponse>,
+  input: __S(60, __c15, 0) as any as S.Schema<ClosePlatformsAccountsRequest>,
+  output: __S(64, __c16, 0) as any as S.Schema<CloseAccountResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -374,8 +374,8 @@ export const createPlatformsAccounts: API.OperationMethod<
   CreatePlatformsAccountsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(4, __c0, 4) as any as S.Schema<CreatePlatformsAccountsRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<Account>,
+  input: __S(68, __c17, 0) as any as S.Schema<CreatePlatformsAccountsRequest>,
+  output: __S(73, __c18, 1) as any as S.Schema<Account>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -394,8 +394,8 @@ export const createPlatformsAccountsEvents: API.OperationMethod<
   CreatePlatformsAccountsEventsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(8, __c1, 0) as any as S.Schema<CreatePlatformsAccountsEventsRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<Event>,
+  input: __S(79, __c19, 3) as any as S.Schema<CreatePlatformsAccountsEventsRequest>,
+  output: __S(78, __c19, 2) as any as S.Schema<Event>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -414,8 +414,8 @@ export const createPlatformsAccountsSites: API.OperationMethod<
   CreatePlatformsAccountsSitesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(10, __c1, 2) as any as S.Schema<CreatePlatformsAccountsSitesRequest>,
-  output: __S(9, __c1, 1) as any as S.Schema<Site>,
+  input: __S(80, __c20, 0) as any as S.Schema<CreatePlatformsAccountsSitesRequest>,
+  output: __S(84, __c21, 0) as any as S.Schema<Site>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -434,8 +434,8 @@ export const deletePlatformsAccountsSites: API.OperationMethod<
   DeletePlatformsAccountsSitesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(11, __c1, 3) as any as S.Schema<DeletePlatformsAccountsSitesRequest>,
-  output: __S(0, __c0, 0) as any as S.Schema<Empty>,
+  input: __S(88, __c22, 0) as any as S.Schema<DeletePlatformsAccountsSitesRequest>,
+  output: __S(64, __c16, 0) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -449,8 +449,8 @@ export const getAccountsPlatforms: API.OperationMethod<
   GetAccountsPlatformsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(12, __c1, 4) as any as S.Schema<GetAccountsPlatformsRequest>,
-  output: __S(13, __c1, 5) as any as S.Schema<Platform>,
+  input: __S(92, __c23, 0) as any as S.Schema<GetAccountsPlatformsRequest>,
+  output: __S(96, __c24, 0) as any as S.Schema<Platform>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -464,8 +464,8 @@ export const getAccountsPlatformsChildAccountsSites: API.OperationMethod<
   GetAccountsPlatformsChildAccountsSitesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(14, __c1, 6) as any as S.Schema<GetAccountsPlatformsChildAccountsSitesRequest>,
-  output: __S(15, __c1, 7) as any as S.Schema<PlatformChildSite>,
+  input: __S(0, __c0, 0) as any as S.Schema<GetAccountsPlatformsChildAccountsSitesRequest>,
+  output: __S(4, __c1, 0) as any as S.Schema<PlatformChildSite>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -479,8 +479,8 @@ export const getAccountsPlatformsGroups: API.OperationMethod<
   GetAccountsPlatformsGroupsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(16, __c2, 0) as any as S.Schema<GetAccountsPlatformsGroupsRequest>,
-  output: __S(18, __c2, 2) as any as S.Schema<PlatformGroup>,
+  input: __S(8, __c2, 0) as any as S.Schema<GetAccountsPlatformsGroupsRequest>,
+  output: __S(13, __c3, 1) as any as S.Schema<PlatformGroup>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -494,8 +494,8 @@ export const getPlatformsAccounts: API.OperationMethod<
   GetPlatformsAccountsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(19, __c2, 3) as any as S.Schema<GetPlatformsAccountsRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<Account>,
+  input: __S(16, __c4, 0) as any as S.Schema<GetPlatformsAccountsRequest>,
+  output: __S(73, __c18, 1) as any as S.Schema<Account>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -509,8 +509,8 @@ export const getPlatformsAccountsSites: API.OperationMethod<
   GetPlatformsAccountsSitesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(20, __c2, 4) as any as S.Schema<GetPlatformsAccountsSitesRequest>,
-  output: __S(9, __c1, 1) as any as S.Schema<Site>,
+  input: __S(20, __c5, 0) as any as S.Schema<GetPlatformsAccountsSitesRequest>,
+  output: __S(84, __c21, 0) as any as S.Schema<Site>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -525,8 +525,8 @@ export const listAccountsPlatforms: API.PaginatedOperationMethod<
   GcpOpContext,
   ListPlatformsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(21, __c2, 5) as any as S.Schema<ListAccountsPlatformsRequest>,
-  output: __S(23, __c2, 7) as any as S.Schema<ListPlatformsResponse>,
+  input: __S(24, __c6, 0) as any as S.Schema<ListAccountsPlatformsRequest>,
+  output: __S(26, __c6, 2) as any as S.Schema<ListPlatformsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -542,8 +542,8 @@ export const listAccountsPlatformsChildAccountsSites: API.PaginatedOperationMeth
   GcpOpContext,
   ListPlatformChildSitesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(24, __c3, 0) as any as S.Schema<ListAccountsPlatformsChildAccountsSitesRequest>,
-  output: __S(26, __c3, 2) as any as S.Schema<ListPlatformChildSitesResponse>,
+  input: __S(28, __c7, 0) as any as S.Schema<ListAccountsPlatformsChildAccountsSitesRequest>,
+  output: __S(30, __c7, 2) as any as S.Schema<ListPlatformChildSitesResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -559,8 +559,8 @@ export const listAccountsPlatformsGroups: API.PaginatedOperationMethod<
   GcpOpContext,
   ListPlatformGroupsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(27, __c3, 3) as any as S.Schema<ListAccountsPlatformsGroupsRequest>,
-  output: __S(29, __c3, 5) as any as S.Schema<ListPlatformGroupsResponse>,
+  input: __S(32, __c8, 0) as any as S.Schema<ListAccountsPlatformsGroupsRequest>,
+  output: __S(34, __c8, 2) as any as S.Schema<ListPlatformGroupsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -576,8 +576,8 @@ export const listPlatformsAccounts: API.PaginatedOperationMethod<
   GcpOpContext,
   ListAccountsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(30, __c3, 6) as any as S.Schema<ListPlatformsAccountsRequest>,
-  output: __S(32, __c4, 0) as any as S.Schema<ListAccountsResponse>,
+  input: __S(36, __c9, 0) as any as S.Schema<ListPlatformsAccountsRequest>,
+  output: __S(38, __c9, 2) as any as S.Schema<ListAccountsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -593,8 +593,8 @@ export const listPlatformsAccountsSites: API.PaginatedOperationMethod<
   GcpOpContext,
   ListSitesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(33, __c4, 1) as any as S.Schema<ListPlatformsAccountsSitesRequest>,
-  output: __S(35, __c4, 3) as any as S.Schema<ListSitesResponse>,
+  input: __S(40, __c10, 0) as any as S.Schema<ListPlatformsAccountsSitesRequest>,
+  output: __S(42, __c10, 2) as any as S.Schema<ListSitesResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -609,8 +609,8 @@ export const lookupPlatformsAccounts: API.OperationMethod<
   LookupPlatformsAccountsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(36, __c4, 4) as any as S.Schema<LookupPlatformsAccountsRequest>,
-  output: __S(37, __c4, 5) as any as S.Schema<LookupAccountResponse>,
+  input: __S(44, __c11, 0) as any as S.Schema<LookupPlatformsAccountsRequest>,
+  output: __S(45, __c11, 1) as any as S.Schema<LookupAccountResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -629,8 +629,8 @@ export const patchAccountsPlatformsChildAccountsSites: API.OperationMethod<
   PatchAccountsPlatformsChildAccountsSitesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(38, __c4, 6) as any as S.Schema<PatchAccountsPlatformsChildAccountsSitesRequest>,
-  output: __S(15, __c1, 7) as any as S.Schema<PlatformChildSite>,
+  input: __S(48, __c12, 0) as any as S.Schema<PatchAccountsPlatformsChildAccountsSitesRequest>,
+  output: __S(4, __c1, 0) as any as S.Schema<PlatformChildSite>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -649,8 +649,8 @@ export const patchAccountsPlatformsGroups: API.OperationMethod<
   PatchAccountsPlatformsGroupsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(39, __c4, 7) as any as S.Schema<PatchAccountsPlatformsGroupsRequest>,
-  output: __S(18, __c2, 2) as any as S.Schema<PlatformGroup>,
+  input: __S(52, __c13, 0) as any as S.Schema<PatchAccountsPlatformsGroupsRequest>,
+  output: __S(13, __c3, 1) as any as S.Schema<PlatformGroup>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -669,8 +669,8 @@ export const requestReviewPlatformsAccountsSites: API.OperationMethod<
   RequestReviewPlatformsAccountsSitesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(40, __c5, 0) as any as S.Schema<RequestReviewPlatformsAccountsSitesRequest>,
-  output: __S(0, __c0, 0) as any as S.Schema<RequestSiteReviewResponse>,
+  input: __S(56, __c14, 0) as any as S.Schema<RequestReviewPlatformsAccountsSitesRequest>,
+  output: __S(64, __c16, 0) as any as S.Schema<RequestSiteReviewResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -680,167 +680,6 @@ export const requestReviewPlatformsAccountsSites: API.OperationMethod<
 function __c0(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "CloseAccountRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-          body: S.optional(__S(0, __c0, 0).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1alpha/{+name}:close",
-            baseUrl: "https://adsenseplatform.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "ClosePlatformsAccountsRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          version: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "TimeZone" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          regionCode: S.optional(S.String),
-          creationRequestId: S.optional(S.String),
-          state: S.optional(S.String),
-          name: S.optional(S.String),
-          createTime: S.optional(S.String),
-          displayName: S.optional(S.String),
-          timeZone: S.optional(__S(2, __c0, 2)),
-        }),
-      ).annotate({ identifier: "Account" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(3, __c0, 3).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1alpha/{+parent}/accounts",
-            baseUrl: "https://adsenseplatform.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreatePlatformsAccountsRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          address2: S.optional(S.String),
-          fax: S.optional(S.String),
-          contact: S.optional(S.String),
-          state: S.optional(S.String),
-          regionCode: S.optional(S.String),
-          city: S.optional(S.String),
-          phone: S.optional(S.String),
-          address1: S.optional(S.String),
-          company: S.optional(S.String),
-          zip: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Address" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          email: S.optional(S.String),
-          billingAddress: S.optional(__S(5, __c0, 5)),
-        }),
-      ).annotate({ identifier: "EventInfo" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          eventInfo: S.optional(__S(6, __c0, 6)),
-          eventType: S.optional(S.String),
-          eventTime: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Event" });
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(7, __c0, 7).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1alpha/{+parent}/events",
-            baseUrl: "https://adsenseplatform.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreatePlatformsAccountsEventsRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          domain: S.optional(S.String),
-          state: S.optional(S.String),
-          name: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Site" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(9, __c1, 1).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1alpha/{+parent}/sites",
-            baseUrl: "https://adsenseplatform.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreatePlatformsAccountsSitesRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "v1alpha/{+name}",
-            baseUrl: "https://adsenseplatform.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeletePlatformsAccountsSitesRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v1alpha/{+name}",
-            baseUrl: "https://adsenseplatform.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetAccountsPlatformsRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          description: S.optional(S.String),
-          defaultPlatformGroup: S.optional(S.String),
-          name: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Platform" });
-    case 6:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -854,7 +693,11 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "GetAccountsPlatformsChildAccountsSitesRequest",
       });
-    case 7:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           domain: S.optional(S.String),
@@ -880,21 +723,29 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "GetAccountsPlatformsGroupsRequest",
       });
-    case 1:
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           value: S.optional(S.String),
         }),
       ).annotate({ identifier: "Decimal" });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
-          revshareMillipercent: S.optional(__S(17, __c2, 1)),
+          revshareMillipercent: S.optional(__S(12, __c3, 0)),
           description: S.optional(S.String),
         }),
       ).annotate({ identifier: "PlatformGroup" });
-    case 3:
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -908,7 +759,11 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "GetPlatformsAccountsRequest",
       });
-    case 4:
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -922,7 +777,11 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "GetPlatformsAccountsSitesRequest",
       });
-    case 5:
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -938,18 +797,18 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "ListAccountsPlatformsRequest",
       });
-    case 6:
-      return S.Array(__S(13, __c1, 5));
-    case 7:
+    case 1:
+      return S.Array(__S(96, __c24, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          platforms: S.optional(__S(22, __c2, 6)),
+          platforms: S.optional(__S(25, __c6, 1)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListPlatformsResponse" });
   }
 }
-function __c3(j: number): any {
+function __c7(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -968,17 +827,21 @@ function __c3(j: number): any {
         identifier: "ListAccountsPlatformsChildAccountsSitesRequest",
       });
     case 1:
-      return S.Array(__S(15, __c1, 7));
+      return S.Array(__S(4, __c1, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          platformChildSites: S.optional(__S(25, __c3, 1)),
+          platformChildSites: S.optional(__S(29, __c7, 1)),
         }),
       ).annotate({
         identifier: "ListPlatformChildSitesResponse",
       });
-    case 3:
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -994,18 +857,22 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "ListAccountsPlatformsGroupsRequest",
       });
-    case 4:
-      return S.Array(__S(18, __c2, 2));
-    case 5:
+    case 1:
+      return S.Array(__S(13, __c3, 1));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          platformGroups: S.optional(__S(28, __c3, 4)),
+          platformGroups: S.optional(__S(33, __c8, 1)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({
         identifier: "ListPlatformGroupsResponse",
       });
-    case 6:
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -1021,20 +888,20 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "ListPlatformsAccountsRequest",
       });
-    case 7:
-      return S.Array(__S(3, __c0, 3));
-  }
-}
-function __c4(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
+      return S.Array(__S(73, __c18, 1));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          accounts: S.optional(__S(31, __c3, 7)),
+          accounts: S.optional(__S(37, __c9, 1)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListAccountsResponse" });
-    case 1:
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           pageToken: S.optional(S.String.pipe(T.Query())),
@@ -1050,16 +917,20 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "ListPlatformsAccountsSitesRequest",
       });
+    case 1:
+      return S.Array(__S(84, __c21, 0));
     case 2:
-      return S.Array(__S(9, __c1, 1));
-    case 3:
       return S.suspend(() =>
         S.Struct({
-          sites: S.optional(__S(34, __c4, 2)),
+          sites: S.optional(__S(41, __c10, 1)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListSitesResponse" });
-    case 4:
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           creationRequestId: S.optional(S.String.pipe(T.Query())),
@@ -1074,18 +945,22 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "LookupPlatformsAccountsRequest",
       });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
         }),
       ).annotate({ identifier: "LookupAccountResponse" });
-    case 6:
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           updateMask: S.optional(S.String.pipe(T.Query())),
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(15, __c1, 7).pipe(T.HttpBody())),
+          body: S.optional(__S(4, __c1, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -1096,12 +971,16 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "PatchAccountsPlatformsChildAccountsSitesRequest",
       });
-    case 7:
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           updateMask: S.optional(S.String.pipe(T.Query())),
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(18, __c2, 2).pipe(T.HttpBody())),
+          body: S.optional(__S(13, __c3, 1).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -1114,7 +993,7 @@ function __c4(j: number): any {
       });
   }
 }
-function __c5(j: number): any {
+function __c14(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1132,7 +1011,203 @@ function __c5(j: number): any {
       });
   }
 }
-
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+          body: S.optional(__S(64, __c16, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1alpha/{+name}:close",
+            baseUrl: "https://adsenseplatform.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "ClosePlatformsAccountsRequest",
+      });
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "CloseAccountRequest",
+      });
+  }
+}
+function __c17(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          parent: S.String.pipe(T.Label()),
+          body: S.optional(__S(73, __c18, 1).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1alpha/{+parent}/accounts",
+            baseUrl: "https://adsenseplatform.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreatePlatformsAccountsRequest",
+      });
+  }
+}
+function __c18(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          version: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "TimeZone" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          regionCode: S.optional(S.String),
+          creationRequestId: S.optional(S.String),
+          state: S.optional(S.String),
+          name: S.optional(S.String),
+          createTime: S.optional(S.String),
+          displayName: S.optional(S.String),
+          timeZone: S.optional(__S(72, __c18, 0)),
+        }),
+      ).annotate({ identifier: "Account" });
+  }
+}
+function __c19(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          address2: S.optional(S.String),
+          fax: S.optional(S.String),
+          contact: S.optional(S.String),
+          state: S.optional(S.String),
+          regionCode: S.optional(S.String),
+          city: S.optional(S.String),
+          phone: S.optional(S.String),
+          address1: S.optional(S.String),
+          company: S.optional(S.String),
+          zip: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Address" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          email: S.optional(S.String),
+          billingAddress: S.optional(__S(76, __c19, 0)),
+        }),
+      ).annotate({ identifier: "EventInfo" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          eventInfo: S.optional(__S(77, __c19, 1)),
+          eventType: S.optional(S.String),
+          eventTime: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Event" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          parent: S.String.pipe(T.Label()),
+          body: S.optional(__S(78, __c19, 2).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1alpha/{+parent}/events",
+            baseUrl: "https://adsenseplatform.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreatePlatformsAccountsEventsRequest",
+      });
+  }
+}
+function __c20(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          parent: S.String.pipe(T.Label()),
+          body: S.optional(__S(84, __c21, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1alpha/{+parent}/sites",
+            baseUrl: "https://adsenseplatform.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreatePlatformsAccountsSitesRequest",
+      });
+  }
+}
+function __c21(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          domain: S.optional(S.String),
+          state: S.optional(S.String),
+          name: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Site" });
+  }
+}
+function __c22(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "v1alpha/{+name}",
+            baseUrl: "https://adsenseplatform.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeletePlatformsAccountsSitesRequest",
+      });
+  }
+}
+function __c23(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v1alpha/{+name}",
+            baseUrl: "https://adsenseplatform.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetAccountsPlatformsRequest",
+      });
+  }
+}
+function __c24(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          description: S.optional(S.String),
+          defaultPlatformGroup: S.optional(S.String),
+          name: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Platform" });
+  }
+}
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

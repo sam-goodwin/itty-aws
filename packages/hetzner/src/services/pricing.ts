@@ -190,7 +190,7 @@ export const getPricing: API.OperationMethod<
   HetznerOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(0, __c0, 0) as any as S.Schema<GetPricingRequest>,
-  output: __S(18, __c2, 2) as any as S.Schema<GetPricingResponse>,
+  output: __S(18, __c0, 18) as any as S.Schema<GetPricingResponse>,
   errors: [UnknownHetznerError],
   protocol: HetznerProtocol,
   retry: Retry.Retry,
@@ -246,11 +246,7 @@ function __c0(j: number): any {
       });
     case 7:
       return S.Array(__S(6, __c0, 6));
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
+    case 8:
       return S.suspend(() =>
         S.Struct({
           type: S.String,
@@ -259,9 +255,9 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "GetPricingResponsePricingFloatingIpsItem",
       });
-    case 1:
-      return S.Array(__S(8, __c1, 0));
-    case 2:
+    case 9:
+      return S.Array(__S(8, __c0, 8));
+    case 10:
       return S.suspend(() =>
         S.Struct({
           price_per_gb_month: __S(1, __c0, 1),
@@ -269,7 +265,7 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "GetPricingResponsePricingImage",
       });
-    case 3:
+    case 11:
       return S.suspend(() =>
         S.Struct({
           percentage: S.String,
@@ -277,7 +273,7 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "GetPricingResponsePricingServerBackup",
       });
-    case 4:
+    case 12:
       return S.suspend(() =>
         S.Struct({
           location: S.String,
@@ -289,25 +285,21 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "GetPricingResponsePricingServerTypesItemPricesItem",
       });
-    case 5:
-      return S.Array(__S(12, __c1, 4));
-    case 6:
+    case 13:
+      return S.Array(__S(12, __c0, 12));
+    case 14:
       return S.suspend(() =>
         S.Struct({
           id: S.Number,
           name: S.String,
-          prices: __S(13, __c1, 5),
+          prices: __S(13, __c0, 13),
         }),
       ).annotate({
         identifier: "GetPricingResponsePricingServerTypesItem",
       });
-    case 7:
-      return S.Array(__S(14, __c1, 6));
-  }
-}
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
+    case 15:
+      return S.Array(__S(14, __c0, 14));
+    case 16:
       return S.suspend(() =>
         S.Struct({
           price_monthly: __S(1, __c0, 1),
@@ -315,32 +307,31 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "GetPricingResponsePricingFloatingIp",
       });
-    case 1:
+    case 17:
       return S.suspend(() =>
         S.Struct({
           currency: S.String,
           vat_rate: S.String,
           primary_ips: __S(5, __c0, 5),
-          floating_ips: __S(9, __c1, 1),
-          image: __S(10, __c1, 2),
-          volume: __S(10, __c1, 2),
-          server_backup: __S(11, __c1, 3),
-          server_types: __S(15, __c1, 7),
-          load_balancer_types: __S(15, __c1, 7),
-          floating_ip: __S(16, __c2, 0),
+          floating_ips: __S(9, __c0, 9),
+          image: __S(10, __c0, 10),
+          volume: __S(10, __c0, 10),
+          server_backup: __S(11, __c0, 11),
+          server_types: __S(15, __c0, 15),
+          load_balancer_types: __S(15, __c0, 15),
+          floating_ip: __S(16, __c0, 16),
         }),
       ).annotate({
         identifier: "GetPricingResponsePricing",
       });
-    case 2:
+    case 18:
       return S.suspend(() =>
         S.Struct({
-          pricing: __S(17, __c2, 1),
+          pricing: __S(17, __c0, 17),
         }),
       ).annotate({ identifier: "GetPricingResponse" });
   }
 }
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

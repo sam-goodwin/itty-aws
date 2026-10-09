@@ -134,8 +134,8 @@ export const createOidcCustomPropertyInclusionForEnterprise: API.OperationMethod
   CreateOidcCustomPropertyInclusionForEnterpriseError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(0, __c0, 0) as any as S.Schema<CreateOidcCustomPropertyInclusionForEnterpriseRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<OidcCustomPropertyInclusion>,
+  input: __S(4, __c2, 0) as any as S.Schema<CreateOidcCustomPropertyInclusionForEnterpriseRequest>,
+  output: __S(6, __c3, 0) as any as S.Schema<OidcCustomPropertyInclusion>,
   errors: [BadRequest, Forbidden, UnprocessableEntity],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -153,8 +153,8 @@ export const createOidcCustomPropertyInclusionForOrg: API.OperationMethod<
   CreateOidcCustomPropertyInclusionForOrgError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2, __c0, 2) as any as S.Schema<CreateOidcCustomPropertyInclusionForOrgRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<OidcCustomPropertyInclusion>,
+  input: __S(8, __c4, 0) as any as S.Schema<CreateOidcCustomPropertyInclusionForOrgRequest>,
+  output: __S(6, __c3, 0) as any as S.Schema<OidcCustomPropertyInclusion>,
   errors: [BadRequest, Forbidden, UnprocessableEntity],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -172,11 +172,11 @@ export const deleteOidcCustomPropertyInclusionForEnterprise: API.OperationMethod
   DeleteOidcCustomPropertyInclusionForEnterpriseError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3, __c0, 3) as any as S.Schema<DeleteOidcCustomPropertyInclusionForEnterpriseRequest>,
+  input: __S(10, __c5, 0) as any as S.Schema<DeleteOidcCustomPropertyInclusionForEnterpriseRequest>,
   output: __S(
-    4,
-    __c0,
-    4,
+    12,
+    __c6,
+    0,
   ) as any as S.Schema<DeleteOidcCustomPropertyInclusionForEnterpriseResponse>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: GithubProtocol,
@@ -195,8 +195,8 @@ export const deleteOidcCustomPropertyInclusionForOrg: API.OperationMethod<
   DeleteOidcCustomPropertyInclusionForOrgError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(5, __c0, 5) as any as S.Schema<DeleteOidcCustomPropertyInclusionForOrgRequest>,
-  output: __S(4, __c0, 4) as any as S.Schema<DeleteOidcCustomPropertyInclusionForOrgResponse>,
+  input: __S(14, __c7, 0) as any as S.Schema<DeleteOidcCustomPropertyInclusionForOrgRequest>,
+  output: __S(12, __c6, 0) as any as S.Schema<DeleteOidcCustomPropertyInclusionForOrgResponse>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -210,8 +210,8 @@ export const getOidcCustomSubTemplateForOrg: API.OperationMethod<
   GetOidcCustomSubTemplateForOrgError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(6, __c0, 6) as any as S.Schema<GetOidcCustomSubTemplateForOrgRequest>,
-  output: __S(8, __c1, 0) as any as S.Schema<OidcCustomSub>,
+  input: __S(16, __c8, 0) as any as S.Schema<GetOidcCustomSubTemplateForOrgRequest>,
+  output: __S(17, __c8, 1) as any as S.Schema<OidcCustomSub>,
   errors: [],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -228,11 +228,11 @@ export const listOidcCustomPropertyInclusionsForEnterprise: API.OperationMethod<
   ListOidcCustomPropertyInclusionsForEnterpriseError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(9, __c1, 1) as any as S.Schema<ListOidcCustomPropertyInclusionsForEnterpriseRequest>,
+  input: __S(20, __c10, 0) as any as S.Schema<ListOidcCustomPropertyInclusionsForEnterpriseRequest>,
   output: __S(
-    11,
-    __c1,
-    3,
+    23,
+    __c11,
+    1,
   ) as any as S.Schema<ListOidcCustomPropertyInclusionsForEnterpriseResponse>,
   errors: [Forbidden, NotFound],
   protocol: GithubProtocol,
@@ -247,8 +247,8 @@ export const listOidcCustomPropertyInclusionsForOrg: API.OperationMethod<
   ListOidcCustomPropertyInclusionsForOrgError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(12, __c1, 4) as any as S.Schema<ListOidcCustomPropertyInclusionsForOrgRequest>,
-  output: __S(11, __c1, 3) as any as S.Schema<ListOidcCustomPropertyInclusionsForOrgResponse>,
+  input: __S(0, __c0, 0) as any as S.Schema<ListOidcCustomPropertyInclusionsForOrgRequest>,
+  output: __S(23, __c11, 1) as any as S.Schema<ListOidcCustomPropertyInclusionsForOrgResponse>,
   errors: [Forbidden, NotFound],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -262,8 +262,8 @@ export const updateOidcCustomSubTemplateForOrg: API.OperationMethod<
   UpdateOidcCustomSubTemplateForOrgError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(13, __c1, 5) as any as S.Schema<UpdateOidcCustomSubTemplateForOrgRequest>,
-  output: __S(14, __c1, 6) as any as S.Schema<UpdateOidcCustomSubTemplateForOrgResponse>,
+  input: __S(2, __c1, 0) as any as S.Schema<UpdateOidcCustomSubTemplateForOrgRequest>,
+  output: __S(3, __c1, 1) as any as S.Schema<UpdateOidcCustomSubTemplateForOrgResponse>,
   errors: [Forbidden, NotFound],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -271,6 +271,44 @@ export const updateOidcCustomSubTemplateForOrg: API.OperationMethod<
 
 // Schema builders: each runs one schema initializer, on that schema's first use.
 function __c0(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          org: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/orgs/{org}/actions/oidc/customization/properties/repo",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "ListOidcCustomPropertyInclusionsForOrgRequest",
+      });
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          org: S.String.pipe(T.Label()),
+          include_claim_keys: S.optional(__S(18, __c9, 0)),
+          use_immutable_subject: S.optional(S.Boolean),
+        }).pipe(
+          T.Http({ method: "PUT", uri: "/orgs/{org}/actions/oidc/customization/sub", code: 200 }),
+        ),
+      ).annotate({
+        identifier: "UpdateOidcCustomSubTemplateForOrgRequest",
+      });
+    case 1:
+      return S.suspend(() => S.Unknown.pipe(T.RawResponseRoot())).annotate({
+        identifier: "UpdateOidcCustomSubTemplateForOrgResponse",
+      });
+  }
+}
+function __c2(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -287,7 +325,11 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "CreateOidcCustomPropertyInclusionForEnterpriseRequest",
       });
-    case 1:
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           custom_property_name: S.String,
@@ -296,7 +338,11 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "OidcCustomPropertyInclusion",
       });
-    case 2:
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           org: S.String.pipe(T.Label()),
@@ -311,7 +357,11 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "CreateOidcCustomPropertyInclusionForOrgRequest",
       });
-    case 3:
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           enterprise: S.String.pipe(T.Label()),
@@ -326,11 +376,19 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "DeleteOidcCustomPropertyInclusionForEnterpriseRequest",
       });
-    case 4:
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "DeleteOidcCustomPropertyInclusionForEnterpriseResponse",
       });
-    case 5:
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           org: S.String.pipe(T.Label()),
@@ -345,7 +403,11 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "DeleteOidcCustomPropertyInclusionForOrgRequest",
       });
-    case 6:
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           org: S.String.pipe(T.Label()),
@@ -355,20 +417,24 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "GetOidcCustomSubTemplateForOrgRequest",
       });
-    case 7:
-      return S.Array(S.String);
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          include_claim_keys: __S(7, __c0, 7),
+          include_claim_keys: __S(18, __c9, 0),
           use_immutable_subject: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "OidcCustomSub" });
-    case 1:
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           enterprise: S.String.pipe(T.Label()),
@@ -382,45 +448,18 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "ListOidcCustomPropertyInclusionsForEnterpriseRequest",
       });
-    case 2:
-      return S.Array(__S(1, __c0, 1));
-    case 3:
-      return S.suspend(() => __S(10, __c1, 2).pipe(T.RawResponseRoot())).annotate({
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(6, __c3, 0));
+    case 1:
+      return S.suspend(() => __S(22, __c11, 0).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListOidcCustomPropertyInclusionsForEnterpriseResponse",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          org: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/orgs/{org}/actions/oidc/customization/properties/repo",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "ListOidcCustomPropertyInclusionsForOrgRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          org: S.String.pipe(T.Label()),
-          include_claim_keys: S.optional(__S(7, __c0, 7)),
-          use_immutable_subject: S.optional(S.Boolean),
-        }).pipe(
-          T.Http({ method: "PUT", uri: "/orgs/{org}/actions/oidc/customization/sub", code: 200 }),
-        ),
-      ).annotate({
-        identifier: "UpdateOidcCustomSubTemplateForOrgRequest",
-      });
-    case 6:
-      return S.suspend(() => S.Unknown.pipe(T.RawResponseRoot())).annotate({
-        identifier: "UpdateOidcCustomSubTemplateForOrgResponse",
       });
   }
 }
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

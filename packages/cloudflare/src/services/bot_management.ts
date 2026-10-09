@@ -759,8 +759,8 @@ export const createFeedback: API.OperationMethod<
   CreateFeedbackError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2, __c0, 2) as any as S.Schema<CreateFeedbackRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<CreateFeedbackResponse>,
+  input: __S(0, __c0, 0) as any as S.Schema<CreateFeedbackRequest>,
+  output: __S(1, __c0, 1) as any as S.Schema<CreateFeedbackResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -774,8 +774,8 @@ export const getBotManagement: API.OperationMethod<
   GetBotManagementError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(4, __c0, 4) as any as S.Schema<GetBotManagementRequest>,
-  output: __S(6, __c0, 6) as any as S.Schema<GetBotManagementResponse>,
+  input: __S(8, __c2, 0) as any as S.Schema<GetBotManagementRequest>,
+  output: __S(10, __c2, 2) as any as S.Schema<GetBotManagementResponse>,
   errors: [Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -789,8 +789,8 @@ export const listFeedback: API.OperationMethod<
   ListFeedbackError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(7, __c0, 7) as any as S.Schema<ListFeedbackRequest>,
-  output: __S(8, __c1, 0) as any as S.Schema<ListFeedbackResponse>,
+  input: __S(12, __c3, 0) as any as S.Schema<ListFeedbackRequest>,
+  output: __S(13, __c3, 1) as any as S.Schema<ListFeedbackResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -804,8 +804,8 @@ export const putBotManagement: API.OperationMethod<
   PutBotManagementError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(10, __c1, 2) as any as S.Schema<PutBotManagementRequest>,
-  output: __S(12, __c1, 4) as any as S.Schema<PutBotManagementResponse>,
+  input: __S(17, __c4, 1) as any as S.Schema<PutBotManagementRequest>,
+  output: __S(19, __c4, 3) as any as S.Schema<PutBotManagementResponse>,
   errors: [Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -813,6 +813,34 @@ export const putBotManagement: API.OperationMethod<
 
 // Schema builders: each runs one schema initializer, on that schema's first use.
 function __c0(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          zoneId: S.String.pipe(T.Label("zone_id")),
+          description: S.String,
+          expression: S.String,
+          firstRequestSeenAt: S.String.pipe(T.Body("first_request_seen_at")),
+          lastRequestSeenAt: S.String.pipe(T.Body("last_request_seen_at")),
+          requests: S.Number,
+          requestsByAttribute: __S(4, __c1, 0).pipe(T.Body("requests_by_attribute")),
+          requestsByScore: __S(5, __c1, 1).pipe(T.Body("requests_by_score")),
+          requestsByScoreSrc: __S(5, __c1, 1).pipe(T.Body("requests_by_score_src")),
+          type: S.String,
+          subtype: S.optional(S.String),
+        })
+          .pipe(
+            T.Http({ method: "POST", uri: "/zones/{zone_id}/bot_management/feedback", code: 200 }),
+          )
+          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({ identifier: "CreateFeedbackRequest" });
+    case 1:
+      return S.suspend(() => S.Struct({}).pipe(T.KeyDictionary(KEY_DICTIONARY))).annotate({
+        identifier: "CreateFeedbackResponse",
+      });
+  }
+}
+function __c1(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -825,31 +853,11 @@ function __c0(j: number): any {
       });
     case 1:
       return S.Record(S.String, S.Number);
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          zoneId: S.String.pipe(T.Label("zone_id")),
-          description: S.String,
-          expression: S.String,
-          firstRequestSeenAt: S.String.pipe(T.Body("first_request_seen_at")),
-          lastRequestSeenAt: S.String.pipe(T.Body("last_request_seen_at")),
-          requests: S.Number,
-          requestsByAttribute: __S(0, __c0, 0).pipe(T.Body("requests_by_attribute")),
-          requestsByScore: __S(1, __c0, 1).pipe(T.Body("requests_by_score")),
-          requestsByScoreSrc: __S(1, __c0, 1).pipe(T.Body("requests_by_score_src")),
-          type: S.String,
-          subtype: S.optional(S.String),
-        })
-          .pipe(
-            T.Http({ method: "POST", uri: "/zones/{zone_id}/bot_management/feedback", code: 200 }),
-          )
-          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({ identifier: "CreateFeedbackRequest" });
-    case 3:
-      return S.suspend(() => S.Struct({}).pipe(T.KeyDictionary(KEY_DICTIONARY))).annotate({
-        identifier: "CreateFeedbackResponse",
-      });
-    case 4:
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           zoneId: S.String.pipe(T.Label("zone_id")),
@@ -857,7 +865,7 @@ function __c0(j: number): any {
           .pipe(T.Http({ method: "GET", uri: "/zones/{zone_id}/bot_management", code: 200 }))
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "GetBotManagementRequest" });
-    case 5:
+    case 1:
       return S.Unknown.pipe(
         /*@__PURE__*/ T.UnionCases([
           [
@@ -939,11 +947,15 @@ function __c0(j: number): any {
           ],
         ]),
       );
-    case 6:
+    case 2:
       return S.suspend(() =>
-        __S(5, __c0, 5).pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
+        __S(9, __c2, 1).pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "GetBotManagementResponse" });
-    case 7:
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           zoneId: S.String.pipe(T.Label("zone_id")),
@@ -953,11 +965,7 @@ function __c0(j: number): any {
           )
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "ListFeedbackRequest" });
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           description: S.String,
@@ -965,15 +973,19 @@ function __c1(j: number): any {
           firstRequestSeenAt: S.String.pipe(T.Body("first_request_seen_at")),
           lastRequestSeenAt: S.String.pipe(T.Body("last_request_seen_at")),
           requests: S.Number,
-          requestsByAttribute: __S(0, __c0, 0).pipe(T.Body("requests_by_attribute")),
-          requestsByScore: __S(1, __c0, 1).pipe(T.Body("requests_by_score")),
-          requestsByScoreSrc: __S(1, __c0, 1).pipe(T.Body("requests_by_score_src")),
+          requestsByAttribute: __S(4, __c1, 0).pipe(T.Body("requests_by_attribute")),
+          requestsByScore: __S(5, __c1, 1).pipe(T.Body("requests_by_score")),
+          requestsByScoreSrc: __S(5, __c1, 1).pipe(T.Body("requests_by_score_src")),
           type: S.String,
           createdAt: S.optional(S.NullOr(S.String).pipe(T.Body("created_at"))),
           subtype: S.optional(S.NullOr(S.String)),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "ListFeedbackResponse" });
-    case 1:
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
       return S.Unknown.pipe(
         /*@__PURE__*/ T.UnionCases([
           [
@@ -996,7 +1008,7 @@ function __c1(j: number): any {
           ],
         ]),
       );
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           zoneId: S.String.pipe(T.Label("zone_id")),
@@ -1016,7 +1028,7 @@ function __c1(j: number): any {
           isRobotsTxtManaged: S.optional(S.Boolean.pipe(T.Body("is_robots_txt_managed"))),
           jsdApiResultsEnabled: S.optional(S.Boolean.pipe(T.Body("jsd_api_results_enabled"))),
           staleZoneConfiguration: S.optional(
-            __S(9, __c1, 1).pipe(T.Body("stale_zone_configuration")),
+            __S(16, __c4, 0).pipe(T.Body("stale_zone_configuration")),
           ),
           usingLatestModel: S.optional(S.Boolean.pipe(T.Body("using_latest_model"))),
           optimizeWordpress: S.optional(S.Boolean.pipe(T.Body("optimize_wordpress"))),
@@ -1033,7 +1045,7 @@ function __c1(j: number): any {
           .pipe(T.Http({ method: "PUT", uri: "/zones/{zone_id}/bot_management", code: 200 }))
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "PutBotManagementRequest" });
-    case 3:
+    case 2:
       return S.Unknown.pipe(
         /*@__PURE__*/ T.UnionCases([
           [
@@ -1115,13 +1127,12 @@ function __c1(j: number): any {
           ],
         ]),
       );
-    case 4:
+    case 3:
       return S.suspend(() =>
-        __S(11, __c1, 3).pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
+        __S(18, __c4, 2).pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "PutBotManagementResponse" });
   }
 }
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

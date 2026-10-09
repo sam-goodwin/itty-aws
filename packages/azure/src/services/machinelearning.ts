@@ -294,8 +294,8 @@ export const GetWorkspace: API.OperationMethod<
   GetWorkspaceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2, __c0, 2) as any as S.Schema<GetWorkspaceRequest>,
-  output: __S(6, __c0, 6) as any as S.Schema<GetWorkspaceResponse>,
+  input: __S(8, __c1, 0) as any as S.Schema<GetWorkspaceRequest>,
+  output: __S(16, __c2, 0) as any as S.Schema<GetWorkspaceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -309,8 +309,8 @@ export const ListOperations: API.OperationMethod<
   ListOperationsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(7, __c0, 7) as any as S.Schema<ListOperationsRequest>,
-  output: __S(11, __c1, 3) as any as S.Schema<OperationListResult>,
+  input: __S(32, __c4, 0) as any as S.Schema<ListOperationsRequest>,
+  output: __S(36, __c4, 4) as any as S.Schema<OperationListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -324,8 +324,8 @@ export const ListWorkspaceByResourceGroup: API.OperationMethod<
   ListWorkspaceByResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(12, __c1, 4) as any as S.Schema<ListWorkspaceByResourceGroupRequest>,
-  output: __S(14, __c1, 6) as any as S.Schema<WorkspaceListResult>,
+  input: __S(40, __c5, 0) as any as S.Schema<ListWorkspaceByResourceGroupRequest>,
+  output: __S(49, __c6, 1) as any as S.Schema<WorkspaceListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -339,8 +339,8 @@ export const ListWorkspaces: API.OperationMethod<
   ListWorkspacesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(15, __c1, 7) as any as S.Schema<ListWorkspacesRequest>,
-  output: __S(14, __c1, 6) as any as S.Schema<WorkspaceListResult>,
+  input: __S(56, __c7, 0) as any as S.Schema<ListWorkspacesRequest>,
+  output: __S(49, __c6, 1) as any as S.Schema<WorkspaceListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -354,8 +354,8 @@ export const ListWorkspaceWorkspaceKeys: API.OperationMethod<
   ListWorkspaceWorkspaceKeysError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(16, __c2, 0) as any as S.Schema<ListWorkspaceWorkspaceKeysRequest>,
-  output: __S(17, __c2, 1) as any as S.Schema<WorkspaceKeysResponse>,
+  input: __S(64, __c8, 0) as any as S.Schema<ListWorkspaceWorkspaceKeysRequest>,
+  output: __S(65, __c8, 1) as any as S.Schema<WorkspaceKeysResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -369,8 +369,8 @@ export const UpdateWorkspace: API.OperationMethod<
   UpdateWorkspaceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(19, __c2, 3) as any as S.Schema<UpdateWorkspaceRequest>,
-  output: __S(6, __c0, 6) as any as S.Schema<UpdateWorkspaceResponse>,
+  input: __S(73, __c9, 1) as any as S.Schema<UpdateWorkspaceRequest>,
+  output: __S(16, __c2, 0) as any as S.Schema<UpdateWorkspaceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -384,8 +384,8 @@ export const WorkspacesCreateOrUpdate: API.OperationMethod<
   WorkspacesCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(21, __c2, 5) as any as S.Schema<WorkspacesCreateOrUpdateRequest>,
-  output: __S(22, __c2, 6) as any as S.Schema<WorkspacesCreateOrUpdateResponse>,
+  input: __S(81, __c10, 1) as any as S.Schema<WorkspacesCreateOrUpdateRequest>,
+  output: __S(82, __c10, 2) as any as S.Schema<WorkspacesCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -399,8 +399,8 @@ export const WorkspacesResyncStorageKeys: API.OperationMethod<
   WorkspacesResyncStorageKeysError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(23, __c2, 7) as any as S.Schema<WorkspacesResyncStorageKeysRequest>,
-  output: __S(24, __c3, 0) as any as S.Schema<WorkspacesResyncStorageKeysResponse>,
+  input: __S(88, __c11, 0) as any as S.Schema<WorkspacesResyncStorageKeysRequest>,
+  output: __S(89, __c11, 1) as any as S.Schema<WorkspacesResyncStorageKeysResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -428,7 +428,11 @@ function __c0(j: number): any {
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "DeleteWorkspaceResponse",
       });
-    case 2:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -443,16 +447,36 @@ function __c0(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetWorkspaceRequest" });
-    case 3:
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          location: S.String,
+          tags: S.optional(__S(24, __c3, 0)),
+          sku: S.optional(__S(25, __c3, 1)),
+          properties: S.optional(__S(26, __c3, 2)),
+        }),
+      ).annotate({ identifier: "GetWorkspaceResponse" });
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
       return S.Record(S.String, S.String);
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
           tier: S.optional(S.String),
         }),
       ).annotate({ identifier: "Sku" });
-    case 5:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           userStorageAccountId: S.String,
@@ -465,19 +489,11 @@ function __c0(j: number): any {
           keyVaultIdentifierId: S.optional(S.String),
         }),
       ).annotate({ identifier: "WorkspaceProperties" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          location: S.String,
-          tags: S.optional(__S(3, __c0, 3)),
-          sku: S.optional(__S(4, __c0, 4)),
-          properties: S.optional(__S(5, __c0, 5)),
-        }),
-      ).annotate({ identifier: "GetWorkspaceResponse" });
-    case 7:
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({}).pipe(
           T.Http({
@@ -488,11 +504,7 @@ function __c0(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ListOperationsRequest" });
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           provider: S.optional(S.String),
@@ -501,22 +513,26 @@ function __c1(j: number): any {
           description: S.optional(S.String),
         }),
       ).annotate({ identifier: "OperationDisplay" });
-    case 1:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
-          display: S.optional(__S(8, __c1, 0)),
+          display: S.optional(__S(33, __c4, 1)),
         }),
       ).annotate({ identifier: "Operation" });
-    case 2:
-      return S.Array(__S(9, __c1, 1));
     case 3:
+      return S.Array(__S(34, __c4, 2));
+    case 4:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(10, __c1, 2)),
+          value: S.optional(__S(35, __c4, 3)),
         }),
       ).annotate({ identifier: "OperationListResult" });
-    case 4:
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -532,16 +548,24 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "ListWorkspaceByResourceGroupRequest",
       });
-    case 5:
-      return S.Array(__S(6, __c0, 6));
-    case 6:
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(16, __c2, 0));
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(13, __c1, 5)),
+          value: S.optional(__S(48, __c6, 0)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "WorkspaceListResult" });
-    case 7:
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -556,7 +580,7 @@ function __c1(j: number): any {
       ).annotate({ identifier: "ListWorkspacesRequest" });
   }
 }
-function __c2(j: number): any {
+function __c8(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -582,24 +606,28 @@ function __c2(j: number): any {
           secondaryToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "WorkspaceKeysResponse" });
-    case 2:
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           workspaceState: S.optional(S.String),
           keyVaultIdentifierId: S.optional(S.String),
-          sku: S.optional(__S(4, __c0, 4)),
+          sku: S.optional(__S(25, __c3, 1)),
         }),
       ).annotate({
         identifier: "WorkspacePropertiesUpdateParameters",
       });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           workspaceName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(3, __c0, 3)),
-          properties: S.optional(__S(18, __c2, 2)),
+          tags: S.optional(__S(24, __c3, 0)),
+          properties: S.optional(__S(72, __c9, 0)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -609,7 +637,11 @@ function __c2(j: number): any {
           }),
         ),
       ).annotate({ identifier: "UpdateWorkspaceRequest" });
-    case 4:
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           userStorageAccountId: S.String,
@@ -617,16 +649,16 @@ function __c2(j: number): any {
           keyVaultIdentifierId: S.optional(S.String),
         }),
       ).annotate({ identifier: "WorkspacePropertiesInput" });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           workspaceName: S.String.pipe(T.Label()),
           location: S.String,
-          tags: S.optional(__S(3, __c0, 3)),
-          sku: S.optional(__S(4, __c0, 4)),
-          properties: S.optional(__S(20, __c2, 4)),
+          tags: S.optional(__S(24, __c3, 0)),
+          sku: S.optional(__S(25, __c3, 1)),
+          properties: S.optional(__S(80, __c10, 0)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -638,21 +670,25 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "WorkspacesCreateOrUpdateRequest",
       });
-    case 6:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
           location: S.String,
-          tags: S.optional(__S(3, __c0, 3)),
-          sku: S.optional(__S(4, __c0, 4)),
-          properties: S.optional(__S(5, __c0, 5)),
+          tags: S.optional(__S(24, __c3, 0)),
+          sku: S.optional(__S(25, __c3, 1)),
+          properties: S.optional(__S(26, __c3, 2)),
         }),
       ).annotate({
         identifier: "WorkspacesCreateOrUpdateResponse",
       });
-    case 7:
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -669,17 +705,12 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "WorkspacesResyncStorageKeysRequest",
       });
-  }
-}
-function __c3(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "WorkspacesResyncStorageKeysResponse",
       });
   }
 }
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

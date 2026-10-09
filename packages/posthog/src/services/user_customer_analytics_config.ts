@@ -96,7 +96,7 @@ export const getUserCustomerAnalyticsConfig: API.OperationMethod<
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(0, __c0, 0) as any as S.Schema<GetUserCustomerAnalyticsConfigRequest>,
-  output: __S(6, __c0, 6) as any as S.Schema<UserCustomerAnalyticsConfig2>,
+  output: __S(13, __c1, 5) as any as S.Schema<UserCustomerAnalyticsConfig2>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -110,8 +110,8 @@ export const updateUserCustomerAnalyticsConfigPartial: API.OperationMethod<
   UpdateUserCustomerAnalyticsConfigPartialError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(9, __c1, 1) as any as S.Schema<UpdateUserCustomerAnalyticsConfigPartialRequest>,
-  output: __S(6, __c0, 6) as any as S.Schema<UserCustomerAnalyticsConfig2>,
+  input: __S(18, __c2, 2) as any as S.Schema<UpdateUserCustomerAnalyticsConfigPartialRequest>,
+  output: __S(13, __c1, 5) as any as S.Schema<UserCustomerAnalyticsConfig2>,
   errors: [BadRequest],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -135,16 +135,20 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "GetUserCustomerAnalyticsConfigRequest",
       });
-    case 1:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           kind: S.String,
           id: S.String,
         }),
       ).annotate({ identifier: "PinnedAccountProperty" });
+    case 1:
+      return S.Array(__S(8, __c1, 0));
     case 2:
-      return S.Array(__S(1, __c0, 1));
-    case 3:
       return S.suspend(() =>
         S.Struct({
           enabled: S.Boolean,
@@ -152,33 +156,33 @@ function __c0(j: number): any {
           cadence: S.String,
         }),
       ).annotate({ identifier: "TaskDigestPreferences" });
-    case 4:
+    case 3:
       return S.Array(S.String);
-    case 5:
+    case 4:
       return S.suspend(() =>
         S.Struct({
-          ordered_tab_ids: __S(4, __c0, 4),
-          hidden_tab_ids: __S(4, __c0, 4),
+          ordered_tab_ids: __S(11, __c1, 3),
+          hidden_tab_ids: __S(11, __c1, 3),
           default_tab_id: S.NullOr(S.String),
         }),
       ).annotate({ identifier: "AccountDetailTabsConfig" });
-    case 6:
+    case 5:
       return S.suspend(() =>
         S.Struct({
-          pinned_properties: __S(2, __c0, 2),
-          task_digest: __S(3, __c0, 3),
-          account_detail_tabs: __S(5, __c0, 5),
+          pinned_properties: __S(9, __c1, 1),
+          task_digest: __S(10, __c1, 2),
+          account_detail_tabs: __S(12, __c1, 4),
         }),
       ).annotate({
         identifier: "UserCustomerAnalyticsConfig2",
       });
-    case 7:
-      return S.Array(__S(1, __c0, 1));
   }
 }
-function __c1(j: number): any {
+function __c2(j: number): any {
   switch (j) {
     case 0:
+      return S.Array(__S(8, __c1, 0));
+    case 1:
       return S.suspend(() =>
         S.Struct({
           enabled: S.optional(S.Boolean),
@@ -188,14 +192,14 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "TaskDigestPreferencesUpdate",
       });
-    case 1:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
           id: S.String.pipe(T.Label()),
-          pinned_properties: S.optional(__S(7, __c0, 7)),
-          task_digest: S.optional(__S(8, __c1, 0)),
-          account_detail_tabs: S.optional(__S(5, __c0, 5)),
+          pinned_properties: S.optional(__S(16, __c2, 0)),
+          task_digest: S.optional(__S(17, __c2, 1)),
+          account_detail_tabs: S.optional(__S(12, __c1, 4)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -208,7 +212,6 @@ function __c1(j: number): any {
       });
   }
 }
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

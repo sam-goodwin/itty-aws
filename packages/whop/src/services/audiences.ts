@@ -331,7 +331,7 @@ export const addAudiencePeople: API.OperationMethod<
   WhopOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(0, __c0, 0) as any as S.Schema<AddAudiencePeopleRequest>,
-  output: __S(6, __c0, 6) as any as S.Schema<Audience>,
+  output: __S(20, __c2, 4) as any as S.Schema<Audience>,
   errors: [Conflict],
   protocol: WhopProtocol,
   retry: Retry.Retry,
@@ -345,8 +345,8 @@ export const createAudience: API.OperationMethod<
   CreateAudienceError,
   WhopOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(9, __c1, 1) as any as S.Schema<CreateAudienceRequest>,
-  output: __S(11, __c1, 3) as any as S.Schema<CreateAudienceResponse>,
+  input: __S(26, __c3, 2) as any as S.Schema<CreateAudienceRequest>,
+  output: __S(27, __c3, 3) as any as S.Schema<CreateAudienceResponse>,
   errors: [BadRequest, Conflict],
   protocol: WhopProtocol,
   retry: Retry.Retry,
@@ -360,8 +360,8 @@ export const deleteAudience: API.OperationMethod<
   DeleteAudienceError,
   WhopOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(12, __c1, 4) as any as S.Schema<DeleteAudienceRequest>,
-  output: __S(13, __c1, 5) as any as S.Schema<DeleteAudienceResponse>,
+  input: __S(32, __c4, 0) as any as S.Schema<DeleteAudienceRequest>,
+  output: __S(33, __c4, 1) as any as S.Schema<DeleteAudienceResponse>,
   errors: [],
   protocol: WhopProtocol,
   retry: Retry.Retry,
@@ -377,8 +377,8 @@ export const listAudiences: API.PaginatedOperationMethod<
   Audience
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(14, __c1, 6) as any as S.Schema<ListAudiencesRequest>,
-    output: __S(16, __c2, 0) as any as S.Schema<ListAudiencesResponse>,
+    input: __S(41, __c5, 1) as any as S.Schema<ListAudiencesRequest>,
+    output: __S(43, __c5, 3) as any as S.Schema<ListAudiencesResponse>,
     errors: [],
     protocol: WhopProtocol,
     retry: Retry.Retry,
@@ -402,8 +402,8 @@ export const updateAudience: API.OperationMethod<
   UpdateAudienceError,
   WhopOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(17, __c2, 1) as any as S.Schema<UpdateAudienceRequest>,
-  output: __S(6, __c0, 6) as any as S.Schema<Audience>,
+  input: __S(48, __c6, 0) as any as S.Schema<UpdateAudienceRequest>,
+  output: __S(20, __c2, 4) as any as S.Schema<Audience>,
   errors: [],
   protocol: WhopProtocol,
   retry: Retry.Retry,
@@ -420,19 +420,27 @@ function __c0(j: number): any {
           idempotency_key: S.optional(S.String.pipe(T.Header("Idempotency-Key"))),
         }).pipe(T.Http({ method: "POST", uri: "/audiences/{id}/add_people", code: 200 })),
       ).annotate({ identifier: "AddAudiencePeopleRequest" });
-    case 1:
-      return S.Array(S.String);
-    case 2:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
       return S.Array(S.Unknown);
-    case 3:
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          exclude: __S(2, __c0, 2),
-          include: __S(2, __c0, 2),
+          exclude: __S(8, __c1, 0),
+          include: __S(8, __c1, 0),
           platform: S.String,
         }),
       ).annotate({ identifier: "AudienceEngagement" });
-    case 4:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           lower_bound: S.NullOr(S.Number),
@@ -441,25 +449,25 @@ function __c0(j: number): any {
           upper_bound: S.NullOr(S.Number),
         }),
       ).annotate({ identifier: "AudienceMatchRate" });
-    case 5:
-      return S.Array(__S(4, __c0, 4));
-    case 6:
+    case 3:
+      return S.Array(__S(18, __c2, 2));
+    case 4:
       return S.suspend(() =>
         S.Struct({
           audience_type: S.String,
           auto_refresh: S.Boolean,
           created_at: S.String,
-          engagement: S.NullOr(__S(3, __c0, 3)),
+          engagement: S.NullOr(__S(17, __c2, 1)),
           error_message: S.NullOr(S.String),
           filters: S.NullOr(S.Unknown),
           id: S.String,
           last_refreshed_at: S.NullOr(S.String),
           lookalike_ratio: S.NullOr(S.Number),
           lookalike_starting_ratio: S.NullOr(S.Number),
-          match_rates: __S(5, __c0, 5),
+          match_rates: __S(19, __c2, 3),
           matched_rows: S.Number,
           name: S.String,
-          platform_audience_ids: __S(1, __c0, 1),
+          platform_audience_ids: __S(16, __c2, 0),
           processed_rows: S.Number,
           progress_percent: S.Number,
           source_audience_id: S.NullOr(S.String),
@@ -469,7 +477,11 @@ function __c0(j: number): any {
           updated_at: S.String,
         }),
       ).annotate({ identifier: "Audience" });
-    case 7:
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           country: S.optional(S.String),
@@ -482,29 +494,25 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "CreateAudienceRequestColumnMapping",
       });
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          exclude: S.optional(__S(2, __c0, 2)),
-          include: __S(2, __c0, 2),
+          exclude: S.optional(__S(8, __c1, 0)),
+          include: __S(8, __c1, 0),
           platform: S.String,
         }),
       ).annotate({
         identifier: "CreateAudienceRequestEngagement",
       });
-    case 1:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           account_id: S.String,
           audience_type: S.optional(S.String),
           auto_refresh: S.optional(S.Boolean),
-          column_mapping: S.optional(__S(7, __c0, 7)),
+          column_mapping: S.optional(__S(24, __c3, 0)),
           count: S.optional(S.Number),
-          engagement: S.optional(__S(8, __c1, 0)),
+          engagement: S.optional(__S(25, __c3, 1)),
           file_id: S.optional(S.String),
           filters: S.optional(S.Unknown),
           name: S.optional(S.String),
@@ -514,25 +522,33 @@ function __c1(j: number): any {
           idempotency_key: S.optional(S.String.pipe(T.Header("Idempotency-Key"))),
         }).pipe(T.Http({ method: "POST", uri: "/audiences", code: 200 })),
       ).annotate({ identifier: "CreateAudienceRequest" });
-    case 2:
-      return S.Array(__S(6, __c0, 6));
     case 3:
       return S.suspend(() => S.Unknown.pipe(T.RawResponseRoot())).annotate({
         identifier: "CreateAudienceResponse",
       });
-    case 4:
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.String.pipe(T.Label()),
         }).pipe(T.Http({ method: "DELETE", uri: "/audiences/{id}", code: 200 })),
       ).annotate({ identifier: "DeleteAudienceRequest" });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           success: S.Boolean,
         }),
       ).annotate({ identifier: "DeleteAudienceResponse" });
-    case 6:
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(20, __c2, 4));
+    case 1:
       return S.suspend(() =>
         S.Struct({
           account_id: S.String.pipe(T.Query()),
@@ -543,7 +559,7 @@ function __c1(j: number): any {
           after: S.optional(S.String.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/audiences", code: 200 })),
       ).annotate({ identifier: "ListAudiencesRequest" });
-    case 7:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           end_cursor: S.NullOr(S.String),
@@ -554,18 +570,18 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "ListAudiencesResponsePageInfo",
       });
-  }
-}
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          data: __S(10, __c1, 2),
-          page_info: __S(15, __c1, 7),
+          data: __S(40, __c5, 0),
+          page_info: __S(42, __c5, 2),
         }),
       ).annotate({ identifier: "ListAudiencesResponse" });
-    case 1:
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.String.pipe(T.Label()),
@@ -575,7 +591,6 @@ function __c2(j: number): any {
       ).annotate({ identifier: "UpdateAudienceRequest" });
   }
 }
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

@@ -945,8 +945,8 @@ export const createAnalyze: API.OperationMethod<
   CreateAnalyzeError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(0, __c0, 0) as any as S.Schema<CreateAnalyzeRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<CreateAnalyzeResponse>,
+  input: __S(80, __c10, 0) as any as S.Schema<CreateAnalyzeRequest>,
+  output: __S(81, __c10, 1) as any as S.Schema<CreateAnalyzeResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -963,8 +963,8 @@ export const createCertificatePack: API.OperationMethod<
   CreateCertificatePackError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3, __c0, 3) as any as S.Schema<CreateCertificatePackRequest>,
-  output: __S(14, __c1, 6) as any as S.Schema<CreateCertificatePackResponse>,
+  input: __S(88, __c11, 0) as any as S.Schema<CreateCertificatePackRequest>,
+  output: __S(91, __c11, 3) as any as S.Schema<CreateCertificatePackResponse>,
   errors: [AdvancedCertificateManagerRequired, Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -978,8 +978,8 @@ export const deleteCertificatePack: API.OperationMethod<
   DeleteCertificatePackError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(15, __c1, 7) as any as S.Schema<DeleteCertificatePackRequest>,
-  output: __S(16, __c2, 0) as any as S.Schema<DeleteCertificatePackResponse>,
+  input: __S(112, __c14, 0) as any as S.Schema<DeleteCertificatePackRequest>,
+  output: __S(113, __c14, 1) as any as S.Schema<DeleteCertificatePackResponse>,
   errors: [CertificatePackNotFound, Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -993,8 +993,8 @@ export const getAutomaticUpgrader: API.OperationMethod<
   GetAutomaticUpgraderError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(17, __c2, 1) as any as S.Schema<GetAutomaticUpgraderRequest>,
-  output: __S(18, __c2, 2) as any as S.Schema<GetAutomaticUpgraderResponse>,
+  input: __S(120, __c15, 0) as any as S.Schema<GetAutomaticUpgraderRequest>,
+  output: __S(128, __c16, 0) as any as S.Schema<GetAutomaticUpgraderResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -1008,8 +1008,8 @@ export const getAutoOriginTlsKex: API.OperationMethod<
   GetAutoOriginTlsKexError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(19, __c2, 3) as any as S.Schema<GetAutoOriginTlsKexRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<GetAutoOriginTlsKexResponse>,
+  input: __S(136, __c17, 0) as any as S.Schema<GetAutoOriginTlsKexRequest>,
+  output: __S(144, __c18, 0) as any as S.Schema<GetAutoOriginTlsKexResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -1023,8 +1023,8 @@ export const getCertificatePack: API.OperationMethod<
   GetCertificatePackError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(21, __c2, 5) as any as S.Schema<GetCertificatePackRequest>,
-  output: __S(25, __c3, 1) as any as S.Schema<GetCertificatePackResponse>,
+  input: __S(152, __c19, 0) as any as S.Schema<GetCertificatePackRequest>,
+  output: __S(155, __c19, 3) as any as S.Schema<GetCertificatePackResponse>,
   errors: [CertificatePackNotFound, Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -1038,8 +1038,8 @@ export const getCertificatePackQuota: API.OperationMethod<
   GetCertificatePackQuotaError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(26, __c3, 2) as any as S.Schema<GetCertificatePackQuotaRequest>,
-  output: __S(28, __c3, 4) as any as S.Schema<GetCertificatePackQuotaResponse>,
+  input: __S(168, __c21, 0) as any as S.Schema<GetCertificatePackQuotaRequest>,
+  output: __S(170, __c21, 2) as any as S.Schema<GetCertificatePackQuotaResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -1053,8 +1053,8 @@ export const getRecommendation: API.OperationMethod<
   GetRecommendationError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(29, __c3, 5) as any as S.Schema<GetRecommendationRequest>,
-  output: __S(18, __c2, 2) as any as S.Schema<GetRecommendationResponse>,
+  input: __S(0, __c0, 0) as any as S.Schema<GetRecommendationRequest>,
+  output: __S(128, __c16, 0) as any as S.Schema<GetRecommendationResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -1068,8 +1068,8 @@ export const getUniversalSetting: API.OperationMethod<
   GetUniversalSettingError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(30, __c3, 6) as any as S.Schema<GetUniversalSettingRequest>,
-  output: __S(31, __c3, 7) as any as S.Schema<GetUniversalSettingResponse>,
+  input: __S(8, __c1, 0) as any as S.Schema<GetUniversalSettingRequest>,
+  output: __S(16, __c2, 0) as any as S.Schema<GetUniversalSettingResponse>,
   errors: [Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -1083,8 +1083,8 @@ export const getVerification: API.OperationMethod<
   GetVerificationError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(32, __c4, 0) as any as S.Schema<GetVerificationRequest>,
-  output: __S(36, __c4, 4) as any as S.Schema<GetVerificationResponse>,
+  input: __S(24, __c3, 0) as any as S.Schema<GetVerificationRequest>,
+  output: __S(28, __c3, 4) as any as S.Schema<GetVerificationResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -1100,8 +1100,8 @@ export const listCertificatePacks: API.PaginatedOperationMethod<
   CertificatePacksListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(37, __c4, 5) as any as S.Schema<ListCertificatePacksRequest>,
-    output: __S(42, __c5, 2) as any as S.Schema<ListCertificatePacksResponse>,
+    input: __S(32, __c4, 0) as any as S.Schema<ListCertificatePacksRequest>,
+    output: __S(37, __c4, 5) as any as S.Schema<ListCertificatePacksResponse>,
     errors: [Forbidden, CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
     retry: Retry.Retry,
@@ -1124,8 +1124,8 @@ export const patchAutomaticUpgrader: API.OperationMethod<
   PatchAutomaticUpgraderError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(43, __c5, 3) as any as S.Schema<PatchAutomaticUpgraderRequest>,
-  output: __S(18, __c2, 2) as any as S.Schema<PatchAutomaticUpgraderResponse>,
+  input: __S(40, __c5, 0) as any as S.Schema<PatchAutomaticUpgraderRequest>,
+  output: __S(128, __c16, 0) as any as S.Schema<PatchAutomaticUpgraderResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -1139,8 +1139,8 @@ export const patchAutoOriginTlsKex: API.OperationMethod<
   PatchAutoOriginTlsKexError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(44, __c5, 4) as any as S.Schema<PatchAutoOriginTlsKexRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<PatchAutoOriginTlsKexResponse>,
+  input: __S(48, __c6, 0) as any as S.Schema<PatchAutoOriginTlsKexRequest>,
+  output: __S(144, __c18, 0) as any as S.Schema<PatchAutoOriginTlsKexResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -1154,8 +1154,8 @@ export const patchCertificatePack: API.OperationMethod<
   PatchCertificatePackError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(45, __c5, 5) as any as S.Schema<PatchCertificatePackRequest>,
-  output: __S(48, __c6, 0) as any as S.Schema<PatchCertificatePackResponse>,
+  input: __S(56, __c7, 0) as any as S.Schema<PatchCertificatePackRequest>,
+  output: __S(59, __c7, 3) as any as S.Schema<PatchCertificatePackResponse>,
   errors: [CertificatePackNotFound, Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -1169,8 +1169,8 @@ export const patchUniversalSetting: API.OperationMethod<
   PatchUniversalSettingError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(49, __c6, 1) as any as S.Schema<PatchUniversalSettingRequest>,
-  output: __S(31, __c3, 7) as any as S.Schema<PatchUniversalSettingResponse>,
+  input: __S(64, __c8, 0) as any as S.Schema<PatchUniversalSettingRequest>,
+  output: __S(16, __c2, 0) as any as S.Schema<PatchUniversalSettingResponse>,
   errors: [Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -1184,8 +1184,8 @@ export const patchVerification: API.OperationMethod<
   PatchVerificationError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(50, __c6, 2) as any as S.Schema<PatchVerificationRequest>,
-  output: __S(51, __c6, 3) as any as S.Schema<PatchVerificationResponse>,
+  input: __S(72, __c9, 0) as any as S.Schema<PatchVerificationRequest>,
+  output: __S(73, __c9, 1) as any as S.Schema<PatchVerificationResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -1198,350 +1198,15 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           zoneId: S.String.pipe(T.Label("zone_id")),
-          bundleMethod: S.optional(S.String.pipe(T.Body("bundle_method"))),
-          certificate: S.optional(S.String),
         })
-          .pipe(T.Http({ method: "POST", uri: "/zones/{zone_id}/ssl/analyze", code: 200 }))
+          .pipe(T.Http({ method: "GET", uri: "/zones/{zone_id}/ssl/recommendation", code: 200 }))
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({ identifier: "CreateAnalyzeRequest" });
-    case 1:
-      return S.suspend(() =>
-        S.Unknown.pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({ identifier: "CreateAnalyzeResponse" });
-    case 2:
-      return S.Array(S.String);
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          zoneId: S.String.pipe(T.Label("zone_id")),
-          certificateAuthority: S.String.pipe(T.Body("certificate_authority")),
-          hosts: __S(2, __c0, 2),
-          type: S.String,
-          validationMethod: S.String.pipe(T.Body("validation_method")),
-          validityDays: S.Number.pipe(T.Body("validity_days")),
-          cloudflareBranding: S.optional(S.Boolean.pipe(T.Body("cloudflare_branding"))),
-        })
-          .pipe(
-            T.Http({
-              method: "POST",
-              uri: "/zones/{zone_id}/ssl/certificate_packs/order",
-              code: 200,
-            }),
-          )
-          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({
-        identifier: "CreateCertificatePackRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          label: S.optional(S.NullOr(S.String)),
-        }),
-      ).annotate({
-        identifier: "CertificatePacksCreateResponseCertificatesItemGeoRestrictions",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String,
-          hosts: __S(2, __c0, 2),
-          status: S.String,
-          bundleMethod: S.optional(S.NullOr(S.String).pipe(T.Body("bundle_method"))),
-          expiresOn: S.optional(S.NullOr(S.String).pipe(T.Body("expires_on"))),
-          geoRestrictions: S.optional(S.NullOr(__S(4, __c0, 4)).pipe(T.Body("geo_restrictions"))),
-          issuer: S.optional(S.NullOr(S.String)),
-          modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
-          priority: S.optional(S.NullOr(S.Number)),
-          signature: S.optional(S.NullOr(S.String)),
-          uploadedOn: S.optional(S.NullOr(S.String).pipe(T.Body("uploaded_on"))),
-          zoneId: S.optional(S.NullOr(S.String).pipe(T.Body("zone_id"))),
-        }),
-      ).annotate({
-        identifier: "CertificatePacksCreateResponseCertificatesItem",
-      });
-    case 6:
-      return S.Array(__S(5, __c0, 5));
-    case 7:
-      return S.Array(S.String);
+      ).annotate({ identifier: "GetRecommendationRequest" });
   }
 }
 function __c1(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() =>
-        S.Struct({
-          cname: S.optional(S.NullOr(S.String)),
-          cnameTarget: S.optional(S.NullOr(S.String).pipe(T.Body("cname_target"))),
-          emails: S.optional(S.NullOr(__S(7, __c0, 7))),
-          httpBody: S.optional(S.NullOr(S.String).pipe(T.Body("http_body"))),
-          httpUrl: S.optional(S.NullOr(S.String).pipe(T.Body("http_url"))),
-          status: S.optional(S.NullOr(S.String)),
-          txtName: S.optional(S.NullOr(S.String).pipe(T.Body("txt_name"))),
-          txtValue: S.optional(S.NullOr(S.String).pipe(T.Body("txt_value"))),
-        }),
-      ).annotate({
-        identifier: "CertificatePacksCreateResponseDcvDelegationRecordsItem",
-      });
-    case 1:
-      return S.Array(__S(8, __c1, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          message: S.optional(S.NullOr(S.String)),
-        }),
-      ).annotate({
-        identifier: "CertificatePacksCreateResponseValidationErrorsItem",
-      });
-    case 3:
-      return S.Array(__S(10, __c1, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          cname: S.optional(S.NullOr(S.String)),
-          cnameTarget: S.optional(S.NullOr(S.String).pipe(T.Body("cname_target"))),
-          emails: S.optional(S.NullOr(__S(2, __c0, 2))),
-          httpBody: S.optional(S.NullOr(S.String).pipe(T.Body("http_body"))),
-          httpUrl: S.optional(S.NullOr(S.String).pipe(T.Body("http_url"))),
-          status: S.optional(S.NullOr(S.String)),
-          txtName: S.optional(S.NullOr(S.String).pipe(T.Body("txt_name"))),
-          txtValue: S.optional(S.NullOr(S.String).pipe(T.Body("txt_value"))),
-        }),
-      ).annotate({
-        identifier: "CertificatePacksCreateResponseValidationRecordsItem",
-      });
-    case 5:
-      return S.Array(__S(12, __c1, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String,
-          certificates: __S(6, __c0, 6),
-          hosts: __S(2, __c0, 2),
-          status: S.String,
-          type: S.String,
-          certificateAuthority: S.optional(
-            S.NullOr(S.String).pipe(T.Body("certificate_authority")),
-          ),
-          cloudflareBranding: S.optional(S.NullOr(S.Boolean).pipe(T.Body("cloudflare_branding"))),
-          dcvDelegationRecords: S.optional(
-            S.NullOr(__S(9, __c1, 1)).pipe(T.Body("dcv_delegation_records")),
-          ),
-          primaryCertificate: S.optional(S.NullOr(S.String).pipe(T.Body("primary_certificate"))),
-          validationErrors: S.optional(
-            S.NullOr(__S(11, __c1, 3)).pipe(T.Body("validation_errors")),
-          ),
-          validationMethod: S.optional(S.NullOr(S.String).pipe(T.Body("validation_method"))),
-          validationRecords: S.optional(
-            S.NullOr(__S(13, __c1, 5)).pipe(T.Body("validation_records")),
-          ),
-          validityDays: S.optional(S.NullOr(S.Number).pipe(T.Body("validity_days"))),
-        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({
-        identifier: "CreateCertificatePackResponse",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          zoneId: S.String.pipe(T.Label("zone_id")),
-          certificatePackId: S.String.pipe(T.Label("certificate_pack_id")),
-        })
-          .pipe(
-            T.Http({
-              method: "DELETE",
-              uri: "/zones/{zone_id}/ssl/certificate_packs/{certificate_pack_id}",
-              code: 200,
-            }),
-          )
-          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({
-        identifier: "DeleteCertificatePackRequest",
-      });
-  }
-}
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.NullOr(S.String)),
-        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({
-        identifier: "DeleteCertificatePackResponse",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          zoneId: S.String.pipe(T.Label("zone_id")),
-        })
-          .pipe(
-            T.Http({
-              method: "GET",
-              uri: "/zones/{zone_id}/settings/ssl_automatic_mode",
-              code: 200,
-            }),
-          )
-          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({
-        identifier: "GetAutomaticUpgraderRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String,
-          editable: S.Boolean,
-          modifiedOn: S.String.pipe(T.Body("modified_on")),
-          value: S.String,
-          nextScheduledScan: S.optional(S.NullOr(S.String).pipe(T.Body("next_scheduled_scan"))),
-        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({
-        identifier: "GetAutomaticUpgraderResponse",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          zoneId: S.String.pipe(T.Label("zone_id")),
-        })
-          .pipe(
-            T.Http({
-              method: "GET",
-              uri: "/zones/{zone_id}/settings/auto_origin_tls_kex",
-              code: 200,
-            }),
-          )
-          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({
-        identifier: "GetAutoOriginTlsKexRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String,
-          enabled: S.Boolean,
-          modifiedOn: S.String.pipe(T.Body("modified_on")),
-        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({
-        identifier: "GetAutoOriginTlsKexResponse",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          zoneId: S.String.pipe(T.Label("zone_id")),
-          certificatePackId: S.String.pipe(T.Label("certificate_pack_id")),
-        })
-          .pipe(
-            T.Http({
-              method: "GET",
-              uri: "/zones/{zone_id}/ssl/certificate_packs/{certificate_pack_id}",
-              code: 200,
-            }),
-          )
-          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({
-        identifier: "GetCertificatePackRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          label: S.optional(S.NullOr(S.String)),
-        }),
-      ).annotate({
-        identifier: "CertificatePacksGetResponseCertificatesItemGeoRestrictions",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String,
-          hosts: __S(2, __c0, 2),
-          status: S.String,
-          bundleMethod: S.optional(S.NullOr(S.String).pipe(T.Body("bundle_method"))),
-          expiresOn: S.optional(S.NullOr(S.String).pipe(T.Body("expires_on"))),
-          geoRestrictions: S.optional(S.NullOr(__S(22, __c2, 6)).pipe(T.Body("geo_restrictions"))),
-          issuer: S.optional(S.NullOr(S.String)),
-          modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
-          priority: S.optional(S.NullOr(S.Number)),
-          signature: S.optional(S.NullOr(S.String)),
-          uploadedOn: S.optional(S.NullOr(S.String).pipe(T.Body("uploaded_on"))),
-          zoneId: S.optional(S.NullOr(S.String).pipe(T.Body("zone_id"))),
-        }),
-      ).annotate({
-        identifier: "CertificatePacksGetResponseCertificatesItem",
-      });
-  }
-}
-function __c3(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(23, __c2, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String,
-          certificates: __S(24, __c3, 0),
-          hosts: __S(2, __c0, 2),
-          status: S.String,
-          type: S.String,
-          certificateAuthority: S.optional(
-            S.NullOr(S.String).pipe(T.Body("certificate_authority")),
-          ),
-          cloudflareBranding: S.optional(S.NullOr(S.Boolean).pipe(T.Body("cloudflare_branding"))),
-          dcvDelegationRecords: S.optional(
-            S.NullOr(__S(13, __c1, 5)).pipe(T.Body("dcv_delegation_records")),
-          ),
-          primaryCertificate: S.optional(S.NullOr(S.String).pipe(T.Body("primary_certificate"))),
-          validationErrors: S.optional(
-            S.NullOr(__S(11, __c1, 3)).pipe(T.Body("validation_errors")),
-          ),
-          validationMethod: S.optional(S.NullOr(S.String).pipe(T.Body("validation_method"))),
-          validationRecords: S.optional(
-            S.NullOr(__S(13, __c1, 5)).pipe(T.Body("validation_records")),
-          ),
-          validityDays: S.optional(S.NullOr(S.Number).pipe(T.Body("validity_days"))),
-        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({
-        identifier: "GetCertificatePackResponse",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          zoneId: S.String.pipe(T.Label("zone_id")),
-        })
-          .pipe(
-            T.Http({
-              method: "GET",
-              uri: "/zones/{zone_id}/ssl/certificate_packs/quota",
-              code: 200,
-            }),
-          )
-          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({
-        identifier: "GetCertificatePackQuotaRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          allocated: S.optional(S.NullOr(S.Number)),
-          used: S.optional(S.NullOr(S.Number)),
-        }),
-      ).annotate({
-        identifier: "CertificatePacksQuotaGetResponseAdvanced",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          advanced: S.optional(S.NullOr(__S(27, __c3, 3))),
-        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({
-        identifier: "GetCertificatePackQuotaResponse",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          zoneId: S.String.pipe(T.Label("zone_id")),
-        })
-          .pipe(T.Http({ method: "GET", uri: "/zones/{zone_id}/ssl/recommendation", code: 200 }))
-          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({ identifier: "GetRecommendationRequest" });
-    case 6:
       return S.suspend(() =>
         S.Struct({
           zoneId: S.String.pipe(T.Label("zone_id")),
@@ -1553,7 +1218,11 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "GetUniversalSettingRequest",
       });
-    case 7:
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           enabled: S.optional(S.NullOr(S.Boolean)),
@@ -1563,7 +1232,7 @@ function __c3(j: number): any {
       });
   }
 }
-function __c4(j: number): any {
+function __c3(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1592,7 +1261,7 @@ function __c4(j: number): any {
           signature: S.optional(S.NullOr(S.String)),
           validationMethod: S.optional(S.NullOr(S.String).pipe(T.Body("validation_method"))),
           verificationInfo: S.optional(
-            S.NullOr(__S(33, __c4, 1)).pipe(T.Body("verification_info")),
+            S.NullOr(__S(25, __c3, 1)).pipe(T.Body("verification_info")),
           ),
           verificationStatus: S.optional(S.NullOr(S.Boolean).pipe(T.Body("verification_status"))),
           verificationType: S.optional(S.NullOr(S.String).pipe(T.Body("verification_type"))),
@@ -1601,12 +1270,16 @@ function __c4(j: number): any {
         identifier: "VerificationGetResultItem",
       });
     case 3:
-      return S.Array(__S(34, __c4, 2));
+      return S.Array(__S(26, __c3, 2));
     case 4:
       return S.suspend(() =>
-        __S(35, __c4, 3).pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
+        __S(27, __c3, 3).pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "GetVerificationResponse" });
-    case 5:
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           zoneId: S.String.pipe(T.Label("zone_id")),
@@ -1620,15 +1293,15 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "ListCertificatePacksRequest",
       });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
-          hosts: __S(2, __c0, 2),
+          hosts: __S(104, __c13, 0),
           status: S.String,
           bundleMethod: S.optional(S.NullOr(S.String).pipe(T.Body("bundle_method"))),
           expiresOn: S.optional(S.NullOr(S.String).pipe(T.Body("expires_on"))),
-          geoRestrictions: S.optional(S.NullOr(__S(4, __c0, 4)).pipe(T.Body("geo_restrictions"))),
+          geoRestrictions: S.optional(S.NullOr(__S(96, __c12, 0)).pipe(T.Body("geo_restrictions"))),
           issuer: S.optional(S.NullOr(S.String)),
           modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
           priority: S.optional(S.NullOr(S.Number)),
@@ -1639,18 +1312,14 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "CertificatePacksListResultItemCertificatesItem",
       });
-    case 7:
-      return S.Array(__S(38, __c4, 6));
-  }
-}
-function __c5(j: number): any {
-  switch (j) {
-    case 0:
+    case 2:
+      return S.Array(__S(33, __c4, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
-          certificates: __S(39, __c4, 7),
-          hosts: __S(2, __c0, 2),
+          certificates: __S(34, __c4, 2),
+          hosts: __S(104, __c13, 0),
           status: S.String,
           type: S.String,
           certificateAuthority: S.optional(
@@ -1658,33 +1327,37 @@ function __c5(j: number): any {
           ),
           cloudflareBranding: S.optional(S.NullOr(S.Boolean).pipe(T.Body("cloudflare_branding"))),
           dcvDelegationRecords: S.optional(
-            S.NullOr(__S(9, __c1, 1)).pipe(T.Body("dcv_delegation_records")),
+            S.NullOr(__S(99, __c12, 3)).pipe(T.Body("dcv_delegation_records")),
           ),
           primaryCertificate: S.optional(S.NullOr(S.String).pipe(T.Body("primary_certificate"))),
           validationErrors: S.optional(
-            S.NullOr(__S(11, __c1, 3)).pipe(T.Body("validation_errors")),
+            S.NullOr(__S(106, __c13, 2)).pipe(T.Body("validation_errors")),
           ),
           validationMethod: S.optional(S.NullOr(S.String).pipe(T.Body("validation_method"))),
           validationRecords: S.optional(
-            S.NullOr(__S(13, __c1, 5)).pipe(T.Body("validation_records")),
+            S.NullOr(__S(108, __c13, 4)).pipe(T.Body("validation_records")),
           ),
           validityDays: S.optional(S.NullOr(S.Number).pipe(T.Body("validity_days"))),
         }),
       ).annotate({
         identifier: "CertificatePacksListResultItem",
       });
-    case 1:
-      return S.Array(__S(40, __c5, 0));
-    case 2:
+    case 4:
+      return S.Array(__S(35, __c4, 3));
+    case 5:
       return S.suspend(() =>
         S.Struct({
-          result: __S(41, __c5, 1).pipe(T.EnvelopePayload()),
+          result: __S(36, __c4, 4).pipe(T.EnvelopePayload()),
           resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({
         identifier: "ListCertificatePacksResponse",
       });
-    case 3:
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           zoneId: S.String.pipe(T.Label("zone_id")),
@@ -1701,7 +1374,11 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "PatchAutomaticUpgraderRequest",
       });
-    case 4:
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           zoneId: S.String.pipe(T.Label("zone_id")),
@@ -1718,7 +1395,11 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "PatchAutoOriginTlsKexRequest",
       });
-    case 5:
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           zoneId: S.String.pipe(T.Label("zone_id")),
@@ -1736,15 +1417,17 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "PatchCertificatePackRequest",
       });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
-          hosts: __S(2, __c0, 2),
+          hosts: __S(104, __c13, 0),
           status: S.String,
           bundleMethod: S.optional(S.NullOr(S.String).pipe(T.Body("bundle_method"))),
           expiresOn: S.optional(S.NullOr(S.String).pipe(T.Body("expires_on"))),
-          geoRestrictions: S.optional(S.NullOr(__S(22, __c2, 6)).pipe(T.Body("geo_restrictions"))),
+          geoRestrictions: S.optional(
+            S.NullOr(__S(160, __c20, 0)).pipe(T.Body("geo_restrictions")),
+          ),
           issuer: S.optional(S.NullOr(S.String)),
           modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
           priority: S.optional(S.NullOr(S.Number)),
@@ -1755,18 +1438,14 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "CertificatePacksEditResponseCertificatesItem",
       });
-    case 7:
-      return S.Array(__S(46, __c5, 6));
-  }
-}
-function __c6(j: number): any {
-  switch (j) {
-    case 0:
+    case 2:
+      return S.Array(__S(57, __c7, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
-          certificates: __S(47, __c5, 7),
-          hosts: __S(2, __c0, 2),
+          certificates: __S(58, __c7, 2),
+          hosts: __S(104, __c13, 0),
           status: S.String,
           type: S.String,
           certificateAuthority: S.optional(
@@ -1774,22 +1453,26 @@ function __c6(j: number): any {
           ),
           cloudflareBranding: S.optional(S.NullOr(S.Boolean).pipe(T.Body("cloudflare_branding"))),
           dcvDelegationRecords: S.optional(
-            S.NullOr(__S(13, __c1, 5)).pipe(T.Body("dcv_delegation_records")),
+            S.NullOr(__S(108, __c13, 4)).pipe(T.Body("dcv_delegation_records")),
           ),
           primaryCertificate: S.optional(S.NullOr(S.String).pipe(T.Body("primary_certificate"))),
           validationErrors: S.optional(
-            S.NullOr(__S(11, __c1, 3)).pipe(T.Body("validation_errors")),
+            S.NullOr(__S(106, __c13, 2)).pipe(T.Body("validation_errors")),
           ),
           validationMethod: S.optional(S.NullOr(S.String).pipe(T.Body("validation_method"))),
           validationRecords: S.optional(
-            S.NullOr(__S(13, __c1, 5)).pipe(T.Body("validation_records")),
+            S.NullOr(__S(108, __c13, 4)).pipe(T.Body("validation_records")),
           ),
           validityDays: S.optional(S.NullOr(S.Number).pipe(T.Body("validity_days"))),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({
         identifier: "PatchCertificatePackResponse",
       });
-    case 1:
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           zoneId: S.String.pipe(T.Label("zone_id")),
@@ -1802,7 +1485,11 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "PatchUniversalSettingRequest",
       });
-    case 2:
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           zoneId: S.String.pipe(T.Label("zone_id")),
@@ -1818,7 +1505,7 @@ function __c6(j: number): any {
           )
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "PatchVerificationRequest" });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           status: S.optional(S.NullOr(S.String)),
@@ -1829,7 +1516,383 @@ function __c6(j: number): any {
       });
   }
 }
-
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          zoneId: S.String.pipe(T.Label("zone_id")),
+          bundleMethod: S.optional(S.String.pipe(T.Body("bundle_method"))),
+          certificate: S.optional(S.String),
+        })
+          .pipe(T.Http({ method: "POST", uri: "/zones/{zone_id}/ssl/analyze", code: 200 }))
+          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({ identifier: "CreateAnalyzeRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Unknown.pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({ identifier: "CreateAnalyzeResponse" });
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          zoneId: S.String.pipe(T.Label("zone_id")),
+          certificateAuthority: S.String.pipe(T.Body("certificate_authority")),
+          hosts: __S(104, __c13, 0),
+          type: S.String,
+          validationMethod: S.String.pipe(T.Body("validation_method")),
+          validityDays: S.Number.pipe(T.Body("validity_days")),
+          cloudflareBranding: S.optional(S.Boolean.pipe(T.Body("cloudflare_branding"))),
+        })
+          .pipe(
+            T.Http({
+              method: "POST",
+              uri: "/zones/{zone_id}/ssl/certificate_packs/order",
+              code: 200,
+            }),
+          )
+          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({
+        identifier: "CreateCertificatePackRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          hosts: __S(104, __c13, 0),
+          status: S.String,
+          bundleMethod: S.optional(S.NullOr(S.String).pipe(T.Body("bundle_method"))),
+          expiresOn: S.optional(S.NullOr(S.String).pipe(T.Body("expires_on"))),
+          geoRestrictions: S.optional(S.NullOr(__S(96, __c12, 0)).pipe(T.Body("geo_restrictions"))),
+          issuer: S.optional(S.NullOr(S.String)),
+          modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
+          priority: S.optional(S.NullOr(S.Number)),
+          signature: S.optional(S.NullOr(S.String)),
+          uploadedOn: S.optional(S.NullOr(S.String).pipe(T.Body("uploaded_on"))),
+          zoneId: S.optional(S.NullOr(S.String).pipe(T.Body("zone_id"))),
+        }),
+      ).annotate({
+        identifier: "CertificatePacksCreateResponseCertificatesItem",
+      });
+    case 2:
+      return S.Array(__S(89, __c11, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          certificates: __S(90, __c11, 2),
+          hosts: __S(104, __c13, 0),
+          status: S.String,
+          type: S.String,
+          certificateAuthority: S.optional(
+            S.NullOr(S.String).pipe(T.Body("certificate_authority")),
+          ),
+          cloudflareBranding: S.optional(S.NullOr(S.Boolean).pipe(T.Body("cloudflare_branding"))),
+          dcvDelegationRecords: S.optional(
+            S.NullOr(__S(99, __c12, 3)).pipe(T.Body("dcv_delegation_records")),
+          ),
+          primaryCertificate: S.optional(S.NullOr(S.String).pipe(T.Body("primary_certificate"))),
+          validationErrors: S.optional(
+            S.NullOr(__S(106, __c13, 2)).pipe(T.Body("validation_errors")),
+          ),
+          validationMethod: S.optional(S.NullOr(S.String).pipe(T.Body("validation_method"))),
+          validationRecords: S.optional(
+            S.NullOr(__S(108, __c13, 4)).pipe(T.Body("validation_records")),
+          ),
+          validityDays: S.optional(S.NullOr(S.Number).pipe(T.Body("validity_days"))),
+        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({
+        identifier: "CreateCertificatePackResponse",
+      });
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          label: S.optional(S.NullOr(S.String)),
+        }),
+      ).annotate({
+        identifier: "CertificatePacksCreateResponseCertificatesItemGeoRestrictions",
+      });
+    case 1:
+      return S.Array(S.String);
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          cname: S.optional(S.NullOr(S.String)),
+          cnameTarget: S.optional(S.NullOr(S.String).pipe(T.Body("cname_target"))),
+          emails: S.optional(S.NullOr(__S(97, __c12, 1))),
+          httpBody: S.optional(S.NullOr(S.String).pipe(T.Body("http_body"))),
+          httpUrl: S.optional(S.NullOr(S.String).pipe(T.Body("http_url"))),
+          status: S.optional(S.NullOr(S.String)),
+          txtName: S.optional(S.NullOr(S.String).pipe(T.Body("txt_name"))),
+          txtValue: S.optional(S.NullOr(S.String).pipe(T.Body("txt_value"))),
+        }),
+      ).annotate({
+        identifier: "CertificatePacksCreateResponseDcvDelegationRecordsItem",
+      });
+    case 3:
+      return S.Array(__S(98, __c12, 2));
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          message: S.optional(S.NullOr(S.String)),
+        }),
+      ).annotate({
+        identifier: "CertificatePacksCreateResponseValidationErrorsItem",
+      });
+    case 2:
+      return S.Array(__S(105, __c13, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          cname: S.optional(S.NullOr(S.String)),
+          cnameTarget: S.optional(S.NullOr(S.String).pipe(T.Body("cname_target"))),
+          emails: S.optional(S.NullOr(__S(104, __c13, 0))),
+          httpBody: S.optional(S.NullOr(S.String).pipe(T.Body("http_body"))),
+          httpUrl: S.optional(S.NullOr(S.String).pipe(T.Body("http_url"))),
+          status: S.optional(S.NullOr(S.String)),
+          txtName: S.optional(S.NullOr(S.String).pipe(T.Body("txt_name"))),
+          txtValue: S.optional(S.NullOr(S.String).pipe(T.Body("txt_value"))),
+        }),
+      ).annotate({
+        identifier: "CertificatePacksCreateResponseValidationRecordsItem",
+      });
+    case 4:
+      return S.Array(__S(107, __c13, 3));
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          zoneId: S.String.pipe(T.Label("zone_id")),
+          certificatePackId: S.String.pipe(T.Label("certificate_pack_id")),
+        })
+          .pipe(
+            T.Http({
+              method: "DELETE",
+              uri: "/zones/{zone_id}/ssl/certificate_packs/{certificate_pack_id}",
+              code: 200,
+            }),
+          )
+          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({
+        identifier: "DeleteCertificatePackRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.NullOr(S.String)),
+        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({
+        identifier: "DeleteCertificatePackResponse",
+      });
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          zoneId: S.String.pipe(T.Label("zone_id")),
+        })
+          .pipe(
+            T.Http({
+              method: "GET",
+              uri: "/zones/{zone_id}/settings/ssl_automatic_mode",
+              code: 200,
+            }),
+          )
+          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({
+        identifier: "GetAutomaticUpgraderRequest",
+      });
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          editable: S.Boolean,
+          modifiedOn: S.String.pipe(T.Body("modified_on")),
+          value: S.String,
+          nextScheduledScan: S.optional(S.NullOr(S.String).pipe(T.Body("next_scheduled_scan"))),
+        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({
+        identifier: "GetAutomaticUpgraderResponse",
+      });
+  }
+}
+function __c17(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          zoneId: S.String.pipe(T.Label("zone_id")),
+        })
+          .pipe(
+            T.Http({
+              method: "GET",
+              uri: "/zones/{zone_id}/settings/auto_origin_tls_kex",
+              code: 200,
+            }),
+          )
+          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({
+        identifier: "GetAutoOriginTlsKexRequest",
+      });
+  }
+}
+function __c18(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          enabled: S.Boolean,
+          modifiedOn: S.String.pipe(T.Body("modified_on")),
+        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({
+        identifier: "GetAutoOriginTlsKexResponse",
+      });
+  }
+}
+function __c19(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          zoneId: S.String.pipe(T.Label("zone_id")),
+          certificatePackId: S.String.pipe(T.Label("certificate_pack_id")),
+        })
+          .pipe(
+            T.Http({
+              method: "GET",
+              uri: "/zones/{zone_id}/ssl/certificate_packs/{certificate_pack_id}",
+              code: 200,
+            }),
+          )
+          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({
+        identifier: "GetCertificatePackRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          hosts: __S(104, __c13, 0),
+          status: S.String,
+          bundleMethod: S.optional(S.NullOr(S.String).pipe(T.Body("bundle_method"))),
+          expiresOn: S.optional(S.NullOr(S.String).pipe(T.Body("expires_on"))),
+          geoRestrictions: S.optional(
+            S.NullOr(__S(160, __c20, 0)).pipe(T.Body("geo_restrictions")),
+          ),
+          issuer: S.optional(S.NullOr(S.String)),
+          modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
+          priority: S.optional(S.NullOr(S.Number)),
+          signature: S.optional(S.NullOr(S.String)),
+          uploadedOn: S.optional(S.NullOr(S.String).pipe(T.Body("uploaded_on"))),
+          zoneId: S.optional(S.NullOr(S.String).pipe(T.Body("zone_id"))),
+        }),
+      ).annotate({
+        identifier: "CertificatePacksGetResponseCertificatesItem",
+      });
+    case 2:
+      return S.Array(__S(153, __c19, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          certificates: __S(154, __c19, 2),
+          hosts: __S(104, __c13, 0),
+          status: S.String,
+          type: S.String,
+          certificateAuthority: S.optional(
+            S.NullOr(S.String).pipe(T.Body("certificate_authority")),
+          ),
+          cloudflareBranding: S.optional(S.NullOr(S.Boolean).pipe(T.Body("cloudflare_branding"))),
+          dcvDelegationRecords: S.optional(
+            S.NullOr(__S(108, __c13, 4)).pipe(T.Body("dcv_delegation_records")),
+          ),
+          primaryCertificate: S.optional(S.NullOr(S.String).pipe(T.Body("primary_certificate"))),
+          validationErrors: S.optional(
+            S.NullOr(__S(106, __c13, 2)).pipe(T.Body("validation_errors")),
+          ),
+          validationMethod: S.optional(S.NullOr(S.String).pipe(T.Body("validation_method"))),
+          validationRecords: S.optional(
+            S.NullOr(__S(108, __c13, 4)).pipe(T.Body("validation_records")),
+          ),
+          validityDays: S.optional(S.NullOr(S.Number).pipe(T.Body("validity_days"))),
+        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({
+        identifier: "GetCertificatePackResponse",
+      });
+  }
+}
+function __c20(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          label: S.optional(S.NullOr(S.String)),
+        }),
+      ).annotate({
+        identifier: "CertificatePacksGetResponseCertificatesItemGeoRestrictions",
+      });
+  }
+}
+function __c21(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          zoneId: S.String.pipe(T.Label("zone_id")),
+        })
+          .pipe(
+            T.Http({
+              method: "GET",
+              uri: "/zones/{zone_id}/ssl/certificate_packs/quota",
+              code: 200,
+            }),
+          )
+          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({
+        identifier: "GetCertificatePackQuotaRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          allocated: S.optional(S.NullOr(S.Number)),
+          used: S.optional(S.NullOr(S.Number)),
+        }),
+      ).annotate({
+        identifier: "CertificatePacksQuotaGetResponseAdvanced",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          advanced: S.optional(S.NullOr(__S(169, __c21, 1))),
+        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({
+        identifier: "GetCertificatePackQuotaResponse",
+      });
+  }
+}
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

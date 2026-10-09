@@ -188,14 +188,14 @@ export const exchangeProjectsLocationsAuthProvidersCredentials: API.OperationMet
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    3,
+    2,
     __c0,
-    3,
+    2,
   ) as any as S.Schema<ExchangeProjectsLocationsAuthProvidersCredentialsRequest>,
   output: __S(
-    4,
+    3,
     __c0,
-    4,
+    3,
   ) as any as S.Schema<GoogleCloudAgentidentitycredentialsV1alpha_ExchangeCredentialsResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
@@ -216,14 +216,14 @@ export const finalizeProjectsLocationsAuthProvidersCredentials: API.OperationMet
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    6,
-    __c0,
-    6,
+    17,
+    __c2,
+    1,
   ) as any as S.Schema<FinalizeProjectsLocationsAuthProvidersCredentialsRequest>,
   output: __S(
-    7,
-    __c0,
-    7,
+    18,
+    __c2,
+    2,
   ) as any as S.Schema<GoogleCloudAgentidentitycredentialsV1alpha_FinalizeCredentialsResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
@@ -243,10 +243,10 @@ export const getProjectsLocationsAuthProvidersCredentials: API.OperationMethod<
   GetProjectsLocationsAuthProvidersCredentialsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(9, __c1, 1) as any as S.Schema<GetProjectsLocationsAuthProvidersCredentialsRequest>,
+  input: __S(25, __c3, 1) as any as S.Schema<GetProjectsLocationsAuthProvidersCredentialsRequest>,
   output: __S(
-    13,
-    __c1,
+    29,
+    __c3,
     5,
   ) as any as S.Schema<GoogleCloudAgentidentitycredentialsV1alpha_RetrieveCredentialsResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
@@ -258,8 +258,6 @@ export const getProjectsLocationsAuthProvidersCredentials: API.OperationMethod<
 function __c0(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(S.String);
-    case 1:
       return S.suspend(() =>
         S.Struct({
           certificateFingerprint: S.optional(S.String),
@@ -267,22 +265,22 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "GoogleCloudAgentidentitycredentialsV1alpha_TokenBinding",
       });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           targetTokenType: S.optional(S.String),
           sourceCredential: S.optional(S.String),
-          scopes: S.optional(__S(0, __c0, 0)),
-          tokenBinding: S.optional(__S(1, __c0, 1)),
+          scopes: S.optional(__S(8, __c1, 0)),
+          tokenBinding: S.optional(__S(0, __c0, 0)),
         }),
       ).annotate({
         identifier: "GoogleCloudAgentidentitycredentialsV1alpha_ExchangeCredentialsRequest",
       });
-    case 3:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           authProvider: S.String.pipe(T.Label()),
-          body: S.optional(__S(2, __c0, 2).pipe(T.HttpBody())),
+          body: S.optional(__S(1, __c0, 1).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -293,10 +291,10 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "ExchangeProjectsLocationsAuthProvidersCredentialsRequest",
       });
-    case 4:
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          scopes: S.optional(__S(0, __c0, 0)),
+          scopes: S.optional(__S(8, __c1, 0)),
           expireTime: S.optional(S.String),
           token: S.optional(S.String),
           acquireTime: S.optional(S.String),
@@ -304,7 +302,17 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "GoogleCloudAgentidentitycredentialsV1alpha_ExchangeCredentialsResponse",
       });
-    case 5:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           consentNonce: S.optional(S.String),
@@ -314,11 +322,11 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "GoogleCloudAgentidentitycredentialsV1alpha_FinalizeCredentialsRequest",
       });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           authProvider: S.String.pipe(T.Label()),
-          body: S.optional(__S(5, __c0, 5).pipe(T.HttpBody())),
+          body: S.optional(__S(16, __c2, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -329,19 +337,19 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "FinalizeProjectsLocationsAuthProvidersCredentialsRequest",
       });
-    case 7:
+    case 2:
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "GoogleCloudAgentidentitycredentialsV1alpha_FinalizeCredentialsResponse",
       });
   }
 }
-function __c1(j: number): any {
+function __c3(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           userId: S.optional(S.String),
-          scopes: S.optional(__S(0, __c0, 0)),
+          scopes: S.optional(__S(8, __c1, 0)),
           forceRefreshToken: S.optional(S.String),
           continueUri: S.optional(S.String),
         }),
@@ -352,7 +360,7 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           authProvider: S.String.pipe(T.Label()),
-          body: S.optional(__S(8, __c1, 0).pipe(T.HttpBody())),
+          body: S.optional(__S(24, __c3, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -380,7 +388,7 @@ function __c1(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          scopes: S.optional(__S(0, __c0, 0)),
+          scopes: S.optional(__S(8, __c1, 0)),
           expireTime: S.optional(S.String),
           token: S.optional(S.String),
           header: S.optional(S.String),
@@ -391,17 +399,16 @@ function __c1(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          uriConsentRequired: S.optional(__S(10, __c1, 2)),
-          consentRejected: S.optional(__S(11, __c1, 3)),
-          pending: S.optional(__S(11, __c1, 3)),
-          success: S.optional(__S(12, __c1, 4)),
+          uriConsentRequired: S.optional(__S(26, __c3, 2)),
+          consentRejected: S.optional(__S(27, __c3, 3)),
+          pending: S.optional(__S(27, __c3, 3)),
+          success: S.optional(__S(28, __c3, 4)),
         }),
       ).annotate({
         identifier: "GoogleCloudAgentidentitycredentialsV1alpha_RetrieveCredentialsResponse",
       });
   }
 }
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

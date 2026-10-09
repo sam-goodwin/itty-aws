@@ -1087,7 +1087,7 @@ export const createEmailProAccountAlias: API.OperationMethod<
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(0, __c0, 0) as any as S.Schema<CreateEmailProAccountAliasRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<EmailProTask>,
+  output: __S(4, __c1, 0) as any as S.Schema<EmailProTask>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1101,8 +1101,8 @@ export const createEmailProAccountChangePassword: API.OperationMethod<
   CreateEmailProAccountChangePasswordError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2, __c0, 2) as any as S.Schema<CreateEmailProAccountChangePasswordRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<EmailProTask>,
+  input: __S(8, __c2, 0) as any as S.Schema<CreateEmailProAccountChangePasswordRequest>,
+  output: __S(4, __c1, 0) as any as S.Schema<EmailProTask>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1116,8 +1116,8 @@ export const createEmailProAccountDiagnostic: API.OperationMethod<
   CreateEmailProAccountDiagnosticError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3, __c0, 3) as any as S.Schema<CreateEmailProAccountDiagnosticRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<EmailProTask>,
+  input: __S(52, __c13, 0) as any as S.Schema<CreateEmailProAccountDiagnosticRequest>,
+  output: __S(4, __c1, 0) as any as S.Schema<EmailProTask>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1131,8 +1131,8 @@ export const createEmailProAccountFullAccess: API.OperationMethod<
   CreateEmailProAccountFullAccessError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(4, __c0, 4) as any as S.Schema<CreateEmailProAccountFullAccessRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<EmailProTask>,
+  input: __S(112, __c28, 0) as any as S.Schema<CreateEmailProAccountFullAccessRequest>,
+  output: __S(4, __c1, 0) as any as S.Schema<EmailProTask>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1146,8 +1146,8 @@ export const createEmailProChangeContact: API.OperationMethod<
   CreateEmailProChangeContactError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(5, __c0, 5) as any as S.Schema<CreateEmailProChangeContactRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<CreateEmailProChangeContactResponse>,
+  input: __S(172, __c43, 0) as any as S.Schema<CreateEmailProChangeContactRequest>,
+  output: __S(180, __c45, 0) as any as S.Schema<CreateEmailProChangeContactResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1161,8 +1161,8 @@ export const createEmailProDomain: API.OperationMethod<
   CreateEmailProDomainError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(8, __c1, 0) as any as S.Schema<CreateEmailProDomainRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<EmailProTask>,
+  input: __S(224, __c56, 0) as any as S.Schema<CreateEmailProDomainRequest>,
+  output: __S(4, __c1, 0) as any as S.Schema<EmailProTask>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1176,8 +1176,8 @@ export const createEmailProDomainDisclaimer: API.OperationMethod<
   CreateEmailProDomainDisclaimerError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(9, __c1, 1) as any as S.Schema<CreateEmailProDomainDisclaimerRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<EmailProTask>,
+  input: __S(272, __c68, 0) as any as S.Schema<CreateEmailProDomainDisclaimerRequest>,
+  output: __S(4, __c1, 0) as any as S.Schema<EmailProTask>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1191,8 +1191,8 @@ export const createEmailProDomainDkim: API.OperationMethod<
   CreateEmailProDomainDkimError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(10, __c1, 2) as any as S.Schema<CreateEmailProDomainDkimRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<EmailProTask>,
+  input: __S(276, __c69, 0) as any as S.Schema<CreateEmailProDomainDkimRequest>,
+  output: __S(4, __c1, 0) as any as S.Schema<EmailProTask>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1206,8 +1206,8 @@ export const createEmailProExternalContact: API.OperationMethod<
   CreateEmailProExternalContactError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(11, __c1, 3) as any as S.Schema<CreateEmailProExternalContactRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<EmailProTask>,
+  input: __S(280, __c70, 0) as any as S.Schema<CreateEmailProExternalContactRequest>,
+  output: __S(4, __c1, 0) as any as S.Schema<EmailProTask>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1221,8 +1221,8 @@ export const deleteEmailProAccount: API.OperationMethod<
   DeleteEmailProAccountError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(12, __c1, 4) as any as S.Schema<DeleteEmailProAccountRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<EmailProTask>,
+  input: __S(284, __c71, 0) as any as S.Schema<DeleteEmailProAccountRequest>,
+  output: __S(4, __c1, 0) as any as S.Schema<EmailProTask>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1236,8 +1236,8 @@ export const deleteEmailProAccountAlias: API.OperationMethod<
   DeleteEmailProAccountAliasError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(13, __c1, 5) as any as S.Schema<DeleteEmailProAccountAliasRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<EmailProTask>,
+  input: __S(12, __c3, 0) as any as S.Schema<DeleteEmailProAccountAliasRequest>,
+  output: __S(4, __c1, 0) as any as S.Schema<EmailProTask>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1251,8 +1251,8 @@ export const deleteEmailProAccountFullAccess: API.OperationMethod<
   DeleteEmailProAccountFullAccessError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(14, __c1, 6) as any as S.Schema<DeleteEmailProAccountFullAccessRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<EmailProTask>,
+  input: __S(16, __c4, 0) as any as S.Schema<DeleteEmailProAccountFullAccessRequest>,
+  output: __S(4, __c1, 0) as any as S.Schema<EmailProTask>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1266,8 +1266,8 @@ export const deleteEmailProAccountSendAs: API.OperationMethod<
   DeleteEmailProAccountSendAsError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(15, __c1, 7) as any as S.Schema<DeleteEmailProAccountSendAsRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<EmailProTask>,
+  input: __S(20, __c5, 0) as any as S.Schema<DeleteEmailProAccountSendAsRequest>,
+  output: __S(4, __c1, 0) as any as S.Schema<EmailProTask>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1281,8 +1281,8 @@ export const deleteEmailProAccountSendOnBehalfTo: API.OperationMethod<
   DeleteEmailProAccountSendOnBehalfToError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(16, __c2, 0) as any as S.Schema<DeleteEmailProAccountSendOnBehalfToRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<EmailProTask>,
+  input: __S(24, __c6, 0) as any as S.Schema<DeleteEmailProAccountSendOnBehalfToRequest>,
+  output: __S(4, __c1, 0) as any as S.Schema<EmailProTask>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1296,8 +1296,8 @@ export const deleteEmailProDomain: API.OperationMethod<
   DeleteEmailProDomainError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(17, __c2, 1) as any as S.Schema<DeleteEmailProDomainRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<EmailProTask>,
+  input: __S(28, __c7, 0) as any as S.Schema<DeleteEmailProDomainRequest>,
+  output: __S(4, __c1, 0) as any as S.Schema<EmailProTask>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1311,8 +1311,8 @@ export const deleteEmailProDomainDisclaimer: API.OperationMethod<
   DeleteEmailProDomainDisclaimerError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(18, __c2, 2) as any as S.Schema<DeleteEmailProDomainDisclaimerRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<EmailProTask>,
+  input: __S(32, __c8, 0) as any as S.Schema<DeleteEmailProDomainDisclaimerRequest>,
+  output: __S(4, __c1, 0) as any as S.Schema<EmailProTask>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1326,8 +1326,8 @@ export const deleteEmailProDomainDkim: API.OperationMethod<
   DeleteEmailProDomainDkimError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(19, __c2, 3) as any as S.Schema<DeleteEmailProDomainDkimRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<EmailProTask>,
+  input: __S(36, __c9, 0) as any as S.Schema<DeleteEmailProDomainDkimRequest>,
+  output: __S(4, __c1, 0) as any as S.Schema<EmailProTask>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1341,8 +1341,8 @@ export const deleteEmailProExternalContact: API.OperationMethod<
   DeleteEmailProExternalContactError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(20, __c2, 4) as any as S.Schema<DeleteEmailProExternalContactRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<EmailProTask>,
+  input: __S(40, __c10, 0) as any as S.Schema<DeleteEmailProExternalContactRequest>,
+  output: __S(4, __c1, 0) as any as S.Schema<EmailProTask>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1356,8 +1356,8 @@ export const disableEmailProDomainDkim: API.OperationMethod<
   DisableEmailProDomainDkimError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(21, __c2, 5) as any as S.Schema<DisableEmailProDomainDkimRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<EmailProTask>,
+  input: __S(44, __c11, 0) as any as S.Schema<DisableEmailProDomainDkimRequest>,
+  output: __S(4, __c1, 0) as any as S.Schema<EmailProTask>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1371,8 +1371,8 @@ export const enableEmailProDomainDkim: API.OperationMethod<
   EnableEmailProDomainDkimError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(22, __c2, 6) as any as S.Schema<EnableEmailProDomainDkimRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<EmailProTask>,
+  input: __S(48, __c12, 0) as any as S.Schema<EnableEmailProDomainDkimRequest>,
+  output: __S(4, __c1, 0) as any as S.Schema<EmailProTask>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1386,8 +1386,8 @@ export const getEmailPro: API.OperationMethod<
   GetEmailProError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(23, __c2, 7) as any as S.Schema<GetEmailProRequest>,
-  output: __S(27, __c3, 3) as any as S.Schema<EmailProServiceNativeWithIAM>,
+  input: __S(56, __c14, 0) as any as S.Schema<GetEmailProRequest>,
+  output: __S(59, __c14, 3) as any as S.Schema<EmailProServiceNativeWithIAM>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1401,8 +1401,8 @@ export const getEmailProAccount: API.OperationMethod<
   GetEmailProAccountError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(28, __c3, 4) as any as S.Schema<GetEmailProAccountRequest>,
-  output: __S(30, __c3, 6) as any as S.Schema<EmailProAccountNative>,
+  input: __S(64, __c16, 0) as any as S.Schema<GetEmailProAccountRequest>,
+  output: __S(65, __c16, 1) as any as S.Schema<EmailProAccountNative>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1416,8 +1416,8 @@ export const getEmailProAccountAlias: API.OperationMethod<
   GetEmailProAccountAliasError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(31, __c3, 7) as any as S.Schema<GetEmailProAccountAliasRequest>,
-  output: __S(32, __c4, 0) as any as S.Schema<EmailProAccountAlias>,
+  input: __S(72, __c18, 0) as any as S.Schema<GetEmailProAccountAliasRequest>,
+  output: __S(73, __c18, 1) as any as S.Schema<EmailProAccountAlias>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1431,8 +1431,8 @@ export const getEmailProAccountDiagnostics: API.OperationMethod<
   GetEmailProAccountDiagnosticsError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(33, __c4, 1) as any as S.Schema<GetEmailProAccountDiagnosticsRequest>,
-  output: __S(34, __c4, 2) as any as S.Schema<EmailProAccountDiagnosis>,
+  input: __S(76, __c19, 0) as any as S.Schema<GetEmailProAccountDiagnosticsRequest>,
+  output: __S(77, __c19, 1) as any as S.Schema<EmailProAccountDiagnosis>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1446,8 +1446,8 @@ export const getEmailProAccountFullAccess: API.OperationMethod<
   GetEmailProAccountFullAccessError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(35, __c4, 3) as any as S.Schema<GetEmailProAccountFullAccessRequest>,
-  output: __S(36, __c4, 4) as any as S.Schema<EmailProAccountFullAccess>,
+  input: __S(80, __c20, 0) as any as S.Schema<GetEmailProAccountFullAccessRequest>,
+  output: __S(84, __c21, 0) as any as S.Schema<EmailProAccountFullAccess>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1461,8 +1461,8 @@ export const getEmailProAccountSendAs: API.OperationMethod<
   GetEmailProAccountSendAsError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(37, __c4, 5) as any as S.Schema<GetEmailProAccountSendAsRequest>,
-  output: __S(38, __c4, 6) as any as S.Schema<EmailProAccountSendAs>,
+  input: __S(88, __c22, 0) as any as S.Schema<GetEmailProAccountSendAsRequest>,
+  output: __S(89, __c22, 1) as any as S.Schema<EmailProAccountSendAs>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1476,8 +1476,8 @@ export const getEmailProAccountSendOnBehalfTo: API.OperationMethod<
   GetEmailProAccountSendOnBehalfToError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(39, __c4, 7) as any as S.Schema<GetEmailProAccountSendOnBehalfToRequest>,
-  output: __S(36, __c4, 4) as any as S.Schema<EmailProAccountSendOnBehalfTo>,
+  input: __S(92, __c23, 0) as any as S.Schema<GetEmailProAccountSendOnBehalfToRequest>,
+  output: __S(84, __c21, 0) as any as S.Schema<EmailProAccountSendOnBehalfTo>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1491,8 +1491,8 @@ export const getEmailProAccountTask: API.OperationMethod<
   GetEmailProAccountTaskError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(40, __c5, 0) as any as S.Schema<GetEmailProAccountTaskRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<EmailProTask>,
+  input: __S(96, __c24, 0) as any as S.Schema<GetEmailProAccountTaskRequest>,
+  output: __S(4, __c1, 0) as any as S.Schema<EmailProTask>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1506,8 +1506,8 @@ export const getEmailProBillingMigrated: API.OperationMethod<
   GetEmailProBillingMigratedError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(41, __c5, 1) as any as S.Schema<GetEmailProBillingMigratedRequest>,
-  output: __S(42, __c5, 2) as any as S.Schema<GetEmailProBillingMigratedResponse>,
+  input: __S(100, __c25, 0) as any as S.Schema<GetEmailProBillingMigratedRequest>,
+  output: __S(101, __c25, 1) as any as S.Schema<GetEmailProBillingMigratedResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1521,8 +1521,8 @@ export const getEmailProBillingPlan: API.OperationMethod<
   GetEmailProBillingPlanError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(43, __c5, 3) as any as S.Schema<GetEmailProBillingPlanRequest>,
-  output: __S(44, __c5, 4) as any as S.Schema<GetEmailProBillingPlanResponse>,
+  input: __S(104, __c26, 0) as any as S.Schema<GetEmailProBillingPlanRequest>,
+  output: __S(108, __c27, 0) as any as S.Schema<GetEmailProBillingPlanResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1536,8 +1536,8 @@ export const getEmailProDomain: API.OperationMethod<
   GetEmailProDomainError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(45, __c5, 5) as any as S.Schema<GetEmailProDomainRequest>,
-  output: __S(48, __c6, 0) as any as S.Schema<EmailProDomainNative>,
+  input: __S(116, __c29, 0) as any as S.Schema<GetEmailProDomainRequest>,
+  output: __S(118, __c29, 2) as any as S.Schema<EmailProDomainNative>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1551,8 +1551,8 @@ export const getEmailProDomainDisclaimer: API.OperationMethod<
   GetEmailProDomainDisclaimerError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(49, __c6, 1) as any as S.Schema<GetEmailProDomainDisclaimerRequest>,
-  output: __S(50, __c6, 2) as any as S.Schema<EmailProDisclaimerNative>,
+  input: __S(124, __c31, 0) as any as S.Schema<GetEmailProDomainDisclaimerRequest>,
+  output: __S(125, __c31, 1) as any as S.Schema<EmailProDisclaimerNative>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1566,8 +1566,8 @@ export const getEmailProDomainDkim: API.OperationMethod<
   GetEmailProDomainDkimError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(51, __c6, 3) as any as S.Schema<GetEmailProDomainDkimRequest>,
-  output: __S(52, __c6, 4) as any as S.Schema<EmailProDkim>,
+  input: __S(128, __c32, 0) as any as S.Schema<GetEmailProDomainDkimRequest>,
+  output: __S(129, __c32, 1) as any as S.Schema<EmailProDkim>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1581,8 +1581,8 @@ export const getEmailProExternalContact: API.OperationMethod<
   GetEmailProExternalContactError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(53, __c6, 5) as any as S.Schema<GetEmailProExternalContactRequest>,
-  output: __S(54, __c6, 6) as any as S.Schema<EmailProExternalContactNative>,
+  input: __S(132, __c33, 0) as any as S.Schema<GetEmailProExternalContactRequest>,
+  output: __S(133, __c33, 1) as any as S.Schema<EmailProExternalContactNative>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1596,8 +1596,8 @@ export const getEmailProServer: API.OperationMethod<
   GetEmailProServerError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(55, __c6, 7) as any as S.Schema<GetEmailProServerRequest>,
-  output: __S(56, __c7, 0) as any as S.Schema<EmailProServer>,
+  input: __S(136, __c34, 0) as any as S.Schema<GetEmailProServerRequest>,
+  output: __S(137, __c34, 1) as any as S.Schema<EmailProServer>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1611,8 +1611,8 @@ export const getEmailProServiceInfos: API.OperationMethod<
   GetEmailProServiceInfosError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(57, __c7, 1) as any as S.Schema<GetEmailProServiceInfosRequest>,
-  output: __S(59, __c7, 3) as any as S.Schema<ServicesService>,
+  input: __S(140, __c35, 0) as any as S.Schema<GetEmailProServiceInfosRequest>,
+  output: __S(141, __c35, 1) as any as S.Schema<ServicesService>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1626,8 +1626,8 @@ export const getEmailProTask: API.OperationMethod<
   GetEmailProTaskError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(60, __c7, 4) as any as S.Schema<GetEmailProTaskRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<EmailProTask>,
+  input: __S(148, __c37, 0) as any as S.Schema<GetEmailProTaskRequest>,
+  output: __S(4, __c1, 0) as any as S.Schema<EmailProTask>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1641,8 +1641,8 @@ export const listEmailPro: API.OperationMethod<
   ListEmailProError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(64, __c8, 0) as any as S.Schema<ListEmailProRequest>,
-  output: __S(65, __c8, 1) as any as S.Schema<ListEmailProResponse>,
+  input: __S(154, __c38, 2) as any as S.Schema<ListEmailProRequest>,
+  output: __S(155, __c38, 3) as any as S.Schema<ListEmailProResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1656,8 +1656,8 @@ export const listEmailProAccount: API.OperationMethod<
   ListEmailProAccountError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(66, __c8, 2) as any as S.Schema<ListEmailProAccountRequest>,
-  output: __S(67, __c8, 3) as any as S.Schema<ListEmailProAccountResponse>,
+  input: __S(160, __c40, 0) as any as S.Schema<ListEmailProAccountRequest>,
+  output: __S(164, __c41, 0) as any as S.Schema<ListEmailProAccountResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1671,8 +1671,8 @@ export const listEmailProAccountAlias: API.OperationMethod<
   ListEmailProAccountAliasError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(68, __c8, 4) as any as S.Schema<ListEmailProAccountAliasRequest>,
-  output: __S(67, __c8, 3) as any as S.Schema<ListEmailProAccountAliasResponse>,
+  input: __S(168, __c42, 0) as any as S.Schema<ListEmailProAccountAliasRequest>,
+  output: __S(164, __c41, 0) as any as S.Schema<ListEmailProAccountAliasResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1686,8 +1686,8 @@ export const listEmailProAccountFullAccess: API.OperationMethod<
   ListEmailProAccountFullAccessError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(69, __c8, 5) as any as S.Schema<ListEmailProAccountFullAccessRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<ListEmailProAccountFullAccessResponse>,
+  input: __S(184, __c46, 0) as any as S.Schema<ListEmailProAccountFullAccessRequest>,
+  output: __S(180, __c45, 0) as any as S.Schema<ListEmailProAccountFullAccessResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1701,8 +1701,8 @@ export const listEmailProAccountSendAs: API.OperationMethod<
   ListEmailProAccountSendAsError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(70, __c8, 6) as any as S.Schema<ListEmailProAccountSendAsRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<ListEmailProAccountSendAsResponse>,
+  input: __S(188, __c47, 0) as any as S.Schema<ListEmailProAccountSendAsRequest>,
+  output: __S(180, __c45, 0) as any as S.Schema<ListEmailProAccountSendAsResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1716,8 +1716,8 @@ export const listEmailProAccountSendOnBehalfTo: API.OperationMethod<
   ListEmailProAccountSendOnBehalfToError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(71, __c8, 7) as any as S.Schema<ListEmailProAccountSendOnBehalfToRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<ListEmailProAccountSendOnBehalfToResponse>,
+  input: __S(192, __c48, 0) as any as S.Schema<ListEmailProAccountSendOnBehalfToRequest>,
+  output: __S(180, __c45, 0) as any as S.Schema<ListEmailProAccountSendOnBehalfToResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1731,8 +1731,8 @@ export const listEmailProAccountTasks: API.OperationMethod<
   ListEmailProAccountTasksError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(72, __c9, 0) as any as S.Schema<ListEmailProAccountTasksRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<ListEmailProAccountTasksResponse>,
+  input: __S(196, __c49, 0) as any as S.Schema<ListEmailProAccountTasksRequest>,
+  output: __S(180, __c45, 0) as any as S.Schema<ListEmailProAccountTasksResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1746,8 +1746,8 @@ export const listEmailProDomain: API.OperationMethod<
   ListEmailProDomainError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(73, __c9, 1) as any as S.Schema<ListEmailProDomainRequest>,
-  output: __S(67, __c8, 3) as any as S.Schema<ListEmailProDomainResponse>,
+  input: __S(200, __c50, 0) as any as S.Schema<ListEmailProDomainRequest>,
+  output: __S(164, __c41, 0) as any as S.Schema<ListEmailProDomainResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1761,8 +1761,8 @@ export const listEmailProDomainDisclaimerAttribute: API.OperationMethod<
   ListEmailProDomainDisclaimerAttributeError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(74, __c9, 2) as any as S.Schema<ListEmailProDomainDisclaimerAttributeRequest>,
-  output: __S(75, __c9, 3) as any as S.Schema<ListEmailProDomainDisclaimerAttributeResponse>,
+  input: __S(204, __c51, 0) as any as S.Schema<ListEmailProDomainDisclaimerAttributeRequest>,
+  output: __S(205, __c51, 1) as any as S.Schema<ListEmailProDomainDisclaimerAttributeResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1776,8 +1776,8 @@ export const listEmailProDomainDkim: API.OperationMethod<
   ListEmailProDomainDkimError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(76, __c9, 4) as any as S.Schema<ListEmailProDomainDkimRequest>,
-  output: __S(67, __c8, 3) as any as S.Schema<ListEmailProDomainDkimResponse>,
+  input: __S(208, __c52, 0) as any as S.Schema<ListEmailProDomainDkimRequest>,
+  output: __S(164, __c41, 0) as any as S.Schema<ListEmailProDomainDkimResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1791,8 +1791,8 @@ export const listEmailProDomainDkimSelector: API.OperationMethod<
   ListEmailProDomainDkimSelectorError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(77, __c9, 5) as any as S.Schema<ListEmailProDomainDkimSelectorRequest>,
-  output: __S(67, __c8, 3) as any as S.Schema<ListEmailProDomainDkimSelectorResponse>,
+  input: __S(212, __c53, 0) as any as S.Schema<ListEmailProDomainDkimSelectorRequest>,
+  output: __S(164, __c41, 0) as any as S.Schema<ListEmailProDomainDkimSelectorResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1806,8 +1806,8 @@ export const listEmailProExternalContact: API.OperationMethod<
   ListEmailProExternalContactError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(78, __c9, 6) as any as S.Schema<ListEmailProExternalContactRequest>,
-  output: __S(67, __c8, 3) as any as S.Schema<ListEmailProExternalContactResponse>,
+  input: __S(216, __c54, 0) as any as S.Schema<ListEmailProExternalContactRequest>,
+  output: __S(164, __c41, 0) as any as S.Schema<ListEmailProExternalContactResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1821,8 +1821,8 @@ export const listEmailProTask: API.OperationMethod<
   ListEmailProTaskError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(79, __c9, 7) as any as S.Schema<ListEmailProTaskRequest>,
-  output: __S(80, __c10, 0) as any as S.Schema<ListEmailProTaskResponse>,
+  input: __S(220, __c55, 0) as any as S.Schema<ListEmailProTaskRequest>,
+  output: __S(221, __c55, 1) as any as S.Schema<ListEmailProTaskResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1836,8 +1836,8 @@ export const putEmailPro: API.OperationMethod<
   PutEmailProError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(81, __c10, 1) as any as S.Schema<PutEmailProRequest>,
-  output: __S(61, __c7, 5) as any as S.Schema<PutEmailProResponse>,
+  input: __S(228, __c57, 0) as any as S.Schema<PutEmailProRequest>,
+  output: __S(156, __c39, 0) as any as S.Schema<PutEmailProResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1851,8 +1851,8 @@ export const putEmailProAccount: API.OperationMethod<
   PutEmailProAccountError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(82, __c10, 2) as any as S.Schema<PutEmailProAccountRequest>,
-  output: __S(61, __c7, 5) as any as S.Schema<PutEmailProAccountResponse>,
+  input: __S(232, __c58, 0) as any as S.Schema<PutEmailProAccountRequest>,
+  output: __S(156, __c39, 0) as any as S.Schema<PutEmailProAccountResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1866,8 +1866,8 @@ export const putEmailProDomain: API.OperationMethod<
   PutEmailProDomainError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(83, __c10, 3) as any as S.Schema<PutEmailProDomainRequest>,
-  output: __S(61, __c7, 5) as any as S.Schema<PutEmailProDomainResponse>,
+  input: __S(236, __c59, 0) as any as S.Schema<PutEmailProDomainRequest>,
+  output: __S(156, __c39, 0) as any as S.Schema<PutEmailProDomainResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1881,8 +1881,8 @@ export const putEmailProDomainDisclaimer: API.OperationMethod<
   PutEmailProDomainDisclaimerError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(84, __c10, 4) as any as S.Schema<PutEmailProDomainDisclaimerRequest>,
-  output: __S(85, __c10, 5) as any as S.Schema<PutEmailProDomainDisclaimerResponse>,
+  input: __S(240, __c60, 0) as any as S.Schema<PutEmailProDomainDisclaimerRequest>,
+  output: __S(244, __c61, 0) as any as S.Schema<PutEmailProDomainDisclaimerResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1896,8 +1896,8 @@ export const putEmailProExternalContact: API.OperationMethod<
   PutEmailProExternalContactError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(86, __c10, 6) as any as S.Schema<PutEmailProExternalContactRequest>,
-  output: __S(85, __c10, 5) as any as S.Schema<PutEmailProExternalContactResponse>,
+  input: __S(248, __c62, 0) as any as S.Schema<PutEmailProExternalContactRequest>,
+  output: __S(244, __c61, 0) as any as S.Schema<PutEmailProExternalContactResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1911,8 +1911,8 @@ export const putEmailProServiceInfos: API.OperationMethod<
   PutEmailProServiceInfosError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(87, __c10, 7) as any as S.Schema<PutEmailProServiceInfosRequest>,
-  output: __S(88, __c11, 0) as any as S.Schema<PutEmailProServiceInfosResponse>,
+  input: __S(252, __c63, 0) as any as S.Schema<PutEmailProServiceInfosRequest>,
+  output: __S(253, __c63, 1) as any as S.Schema<PutEmailProServiceInfosResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1926,8 +1926,8 @@ export const sendEmailProAccountAs: API.OperationMethod<
   SendEmailProAccountAsError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(89, __c11, 1) as any as S.Schema<SendEmailProAccountAsRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<EmailProTask>,
+  input: __S(256, __c64, 0) as any as S.Schema<SendEmailProAccountAsRequest>,
+  output: __S(4, __c1, 0) as any as S.Schema<EmailProTask>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1941,8 +1941,8 @@ export const sendEmailProAccountOnBehalfTo: API.OperationMethod<
   SendEmailProAccountOnBehalfToError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(90, __c11, 2) as any as S.Schema<SendEmailProAccountOnBehalfToRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<EmailProTask>,
+  input: __S(260, __c65, 0) as any as S.Schema<SendEmailProAccountOnBehalfToRequest>,
+  output: __S(4, __c1, 0) as any as S.Schema<EmailProTask>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1956,8 +1956,8 @@ export const terminateEmailProAccount: API.OperationMethod<
   TerminateEmailProAccountError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(91, __c11, 3) as any as S.Schema<TerminateEmailProAccountRequest>,
-  output: __S(44, __c5, 4) as any as S.Schema<TerminateEmailProAccountResponse>,
+  input: __S(264, __c66, 0) as any as S.Schema<TerminateEmailProAccountRequest>,
+  output: __S(108, __c27, 0) as any as S.Schema<TerminateEmailProAccountResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1971,8 +1971,8 @@ export const updateEmailProFlagsOnAllAccounts: API.OperationMethod<
   UpdateEmailProFlagsOnAllAccountsError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(92, __c11, 4) as any as S.Schema<UpdateEmailProFlagsOnAllAccountsRequest>,
-  output: __S(85, __c10, 5) as any as S.Schema<UpdateEmailProFlagsOnAllAccountsResponse>,
+  input: __S(268, __c67, 0) as any as S.Schema<UpdateEmailProFlagsOnAllAccountsRequest>,
+  output: __S(244, __c61, 0) as any as S.Schema<UpdateEmailProFlagsOnAllAccountsResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1993,7 +1993,11 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "CreateEmailProAccountAliasRequest",
       });
-    case 1:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           finishDate: S.optional(S.NullOr(S.String)),
@@ -2003,7 +2007,11 @@ function __c0(j: number): any {
           todoDate: S.optional(S.String),
         }),
       ).annotate({ identifier: "EmailProTask" });
-    case 2:
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           service: S.String.pipe(T.Label()),
@@ -2019,136 +2027,11 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "CreateEmailProAccountChangePasswordRequest",
       });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          service: S.String.pipe(T.Label()),
-          email: S.String.pipe(T.Label()),
-          password: S.String.pipe(T.SensitiveValue({})),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/email/pro/{service}/account/{email}/diagnostics",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateEmailProAccountDiagnosticRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          service: S.String.pipe(T.Label()),
-          email: S.String.pipe(T.Label()),
-          allowedAccountId: S.Number,
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/email/pro/{service}/account/{email}/fullAccess",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateEmailProAccountFullAccessRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          service: S.String.pipe(T.Label()),
-          contactAdmin: S.optional(S.String),
-          contactBilling: S.optional(S.String),
-          contactTech: S.optional(S.String),
-        }).pipe(T.Http({ method: "POST", uri: "/email/pro/{service}/changeContact", code: 200 })),
-      ).annotate({
-        identifier: "CreateEmailProChangeContactRequest",
-      });
-    case 6:
-      return S.Array(S.Number);
-    case 7:
-      return S.suspend(() => __S(6, __c0, 6).pipe(T.RawResponseRoot())).annotate({
-        identifier: "CreateEmailProChangeContactResponse",
-      });
   }
 }
-function __c1(j: number): any {
+function __c3(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() =>
-        S.Struct({
-          service: S.String.pipe(T.Label()),
-          autoEnableDKIM: S.optional(S.Boolean),
-          configureAutodiscover: S.optional(S.Boolean),
-          configureDKIM: S.optional(S.Boolean),
-          configureMx: S.optional(S.Boolean),
-          configureSPF: S.optional(S.Boolean),
-          mxRelay: S.optional(S.String),
-          name: S.String,
-          type: S.String,
-        }).pipe(T.Http({ method: "POST", uri: "/email/pro/{service}/domain", code: 200 })),
-      ).annotate({
-        identifier: "CreateEmailProDomainRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          service: S.String.pipe(T.Label()),
-          domainName: S.String.pipe(T.Label()),
-          content: S.String,
-          outsideOnly: S.optional(S.Boolean),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/email/pro/{service}/domain/{domainName}/disclaimer",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateEmailProDomainDisclaimerRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          service: S.String.pipe(T.Label()),
-          domainName: S.String.pipe(T.Label()),
-          autoEnableDKIM: S.optional(S.Boolean),
-          configureDkim: S.optional(S.Boolean),
-          selectorName: S.String,
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/email/pro/{service}/domain/{domainName}/dkim",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateEmailProDomainDkimRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          service: S.String.pipe(T.Label()),
-          displayName: S.optional(S.String),
-          externalEmailAddress: S.String,
-          firstName: S.optional(S.String),
-          hiddenFromGAL: S.optional(S.Boolean),
-          initials: S.optional(S.String),
-          lastName: S.optional(S.String),
-        }).pipe(T.Http({ method: "POST", uri: "/email/pro/{service}/externalContact", code: 200 })),
-      ).annotate({
-        identifier: "CreateEmailProExternalContactRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          service: S.String.pipe(T.Label()),
-          email: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({ method: "DELETE", uri: "/email/pro/{service}/account/{email}", code: 200 }),
-        ),
-      ).annotate({
-        identifier: "DeleteEmailProAccountRequest",
-      });
-    case 5:
       return S.suspend(() =>
         S.Struct({
           service: S.String.pipe(T.Label()),
@@ -2164,7 +2047,11 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "DeleteEmailProAccountAliasRequest",
       });
-    case 6:
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           service: S.String.pipe(T.Label()),
@@ -2180,7 +2067,11 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "DeleteEmailProAccountFullAccessRequest",
       });
-    case 7:
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           service: S.String.pipe(T.Label()),
@@ -2198,7 +2089,7 @@ function __c1(j: number): any {
       });
   }
 }
-function __c2(j: number): any {
+function __c6(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2216,7 +2107,11 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "DeleteEmailProAccountSendOnBehalfToRequest",
       });
-    case 1:
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           service: S.String.pipe(T.Label()),
@@ -2227,7 +2122,11 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "DeleteEmailProDomainRequest",
       });
-    case 2:
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           service: S.String.pipe(T.Label()),
@@ -2242,7 +2141,11 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "DeleteEmailProDomainDisclaimerRequest",
       });
-    case 3:
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           service: S.String.pipe(T.Label()),
@@ -2258,7 +2161,11 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "DeleteEmailProDomainDkimRequest",
       });
-    case 4:
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           service: S.String.pipe(T.Label()),
@@ -2273,7 +2180,11 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "DeleteEmailProExternalContactRequest",
       });
-    case 5:
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           service: S.String.pipe(T.Label()),
@@ -2289,7 +2200,11 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "DisableEmailProDomainDkimRequest",
       });
-    case 6:
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           service: S.String.pipe(T.Label()),
@@ -2305,28 +2220,78 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "EnableEmailProDomainDkimRequest",
       });
-    case 7:
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          service: S.String.pipe(T.Label()),
+          email: S.String.pipe(T.Label()),
+          password: S.String.pipe(T.SensitiveValue({})),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/email/pro/{service}/account/{email}/diagnostics",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateEmailProAccountDiagnosticRequest",
+      });
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           service: S.String.pipe(T.Label()),
         }).pipe(T.Http({ method: "GET", uri: "/email/pro/{service}", code: 200 })),
       ).annotate({ identifier: "GetEmailProRequest" });
-  }
-}
-function __c3(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Record(S.String, S.String);
     case 1:
+      return S.Record(S.String, S.String);
+    case 2:
       return S.suspend(() =>
         S.Struct({
           displayName: S.optional(S.NullOr(S.String)),
           id: S.optional(S.String),
-          tags: S.optional(S.NullOr(__S(24, __c3, 0))),
+          tags: S.optional(S.NullOr(__S(57, __c14, 1))),
           urn: S.optional(S.String),
         }),
       ).annotate({ identifier: "IamResourceMetadata" });
-    case 2:
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          complexityEnabled: S.optional(S.Boolean),
+          displayName: S.optional(S.NullOr(S.String)),
+          domain: S.optional(S.String),
+          hostname: S.optional(S.NullOr(S.String)),
+          iam: S.optional(S.NullOr(__S(58, __c14, 2))),
+          lastUpdateDate: S.optional(S.NullOr(S.String)),
+          lockoutDuration: S.optional(S.Number),
+          lockoutObservationWindow: S.optional(S.Number),
+          lockoutThreshold: S.optional(S.NullOr(S.Number)),
+          maxPasswordAge: S.optional(S.NullOr(S.Number)),
+          maxReceiveSize: S.optional(S.Number),
+          maxSendSize: S.optional(S.Number),
+          minPasswordAge: S.optional(S.NullOr(S.Number)),
+          minPasswordLength: S.optional(S.NullOr(S.Number)),
+          offer: S.optional(S.String),
+          spamAndVirusConfiguration: S.optional(__S(60, __c15, 0)),
+          state: S.optional(S.String),
+          taskPendingId: S.optional(S.Number),
+          webUrl: S.optional(S.NullOr(S.String)),
+        }),
+      ).annotate({
+        identifier: "EmailProServiceNativeWithIAM",
+      });
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           checkDKIM: S.optional(S.Boolean),
@@ -2340,33 +2305,11 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "EmailProSpamAndVirusConfiguration",
       });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          complexityEnabled: S.optional(S.Boolean),
-          displayName: S.optional(S.NullOr(S.String)),
-          domain: S.optional(S.String),
-          hostname: S.optional(S.NullOr(S.String)),
-          iam: S.optional(S.NullOr(__S(25, __c3, 1))),
-          lastUpdateDate: S.optional(S.NullOr(S.String)),
-          lockoutDuration: S.optional(S.Number),
-          lockoutObservationWindow: S.optional(S.Number),
-          lockoutThreshold: S.optional(S.NullOr(S.Number)),
-          maxPasswordAge: S.optional(S.NullOr(S.Number)),
-          maxReceiveSize: S.optional(S.Number),
-          maxSendSize: S.optional(S.Number),
-          minPasswordAge: S.optional(S.NullOr(S.Number)),
-          minPasswordLength: S.optional(S.NullOr(S.Number)),
-          offer: S.optional(S.String),
-          spamAndVirusConfiguration: S.optional(__S(26, __c3, 2)),
-          state: S.optional(S.String),
-          taskPendingId: S.optional(S.Number),
-          webUrl: S.optional(S.NullOr(S.String)),
-        }),
-      ).annotate({
-        identifier: "EmailProServiceNativeWithIAM",
-      });
-    case 4:
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           service: S.String.pipe(T.Label()),
@@ -2375,9 +2318,7 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "GetEmailProAccountRequest",
       });
-    case 5:
-      return S.Array(S.String);
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           SAMAccountName: S.optional(S.NullOr(S.String)),
@@ -2398,19 +2339,29 @@ function __c3(j: number): any {
           lastName: S.optional(S.NullOr(S.String)),
           lastUpdateDate: S.optional(S.NullOr(S.String)),
           login: S.optional(S.String),
-          mailingFilter: S.optional(S.NullOr(__S(29, __c3, 5))),
+          mailingFilter: S.optional(S.NullOr(__S(68, __c17, 0))),
           passwordLastUpdate: S.optional(S.NullOr(S.String).pipe(T.SensitiveValue({}))),
           primaryEmailAddress: S.optional(S.String),
           quota: S.optional(S.Number),
           renewPeriod: S.optional(S.NullOr(S.String)),
-          spamAndVirusConfiguration: S.optional(__S(26, __c3, 2)),
+          spamAndVirusConfiguration: S.optional(__S(60, __c15, 0)),
           spamDetected: S.optional(S.Boolean),
           spamTicketNumber: S.optional(S.NullOr(S.Number)),
           state: S.optional(S.String),
           taskPendingId: S.optional(S.NullOr(S.Number)),
         }),
       ).annotate({ identifier: "EmailProAccountNative" });
-    case 7:
+  }
+}
+function __c17(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c18(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           service: S.String.pipe(T.Label()),
@@ -2426,11 +2377,7 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "GetEmailProAccountAliasRequest",
       });
-  }
-}
-function __c4(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           alias: S.optional(S.String),
@@ -2438,7 +2385,11 @@ function __c4(j: number): any {
           taskPendingId: S.optional(S.Number),
         }),
       ).annotate({ identifier: "EmailProAccountAlias" });
-    case 1:
+  }
+}
+function __c19(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           service: S.String.pipe(T.Label()),
@@ -2453,7 +2404,7 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "GetEmailProAccountDiagnosticsRequest",
       });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           canReceiveEmail: S.optional(S.Boolean),
@@ -2467,7 +2418,11 @@ function __c4(j: number): any {
           lastCheck: S.optional(S.String),
         }),
       ).annotate({ identifier: "EmailProAccountDiagnosis" });
-    case 3:
+  }
+}
+function __c20(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           service: S.String.pipe(T.Label()),
@@ -2483,7 +2438,11 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "GetEmailProAccountFullAccessRequest",
       });
-    case 4:
+  }
+}
+function __c21(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           allowedAccountId: S.optional(S.Number),
@@ -2493,7 +2452,11 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "EmailProAccountFullAccess",
       });
-    case 5:
+  }
+}
+function __c22(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           service: S.String.pipe(T.Label()),
@@ -2509,7 +2472,7 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "GetEmailProAccountSendAsRequest",
       });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           allowedAccountId: S.optional(S.Number),
@@ -2517,7 +2480,11 @@ function __c4(j: number): any {
           taskPendingId: S.optional(S.Number),
         }),
       ).annotate({ identifier: "EmailProAccountSendAs" });
-    case 7:
+  }
+}
+function __c23(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           service: S.String.pipe(T.Label()),
@@ -2535,7 +2502,7 @@ function __c4(j: number): any {
       });
   }
 }
-function __c5(j: number): any {
+function __c24(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2553,7 +2520,11 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "GetEmailProAccountTaskRequest",
       });
-    case 1:
+  }
+}
+function __c25(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           service: S.String.pipe(T.Label()),
@@ -2561,11 +2532,15 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "GetEmailProBillingMigratedRequest",
       });
-    case 2:
+    case 1:
       return S.suspend(() => S.Boolean.pipe(T.RawResponseRoot())).annotate({
         identifier: "GetEmailProBillingMigratedResponse",
       });
-    case 3:
+  }
+}
+function __c26(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           service: S.String.pipe(T.Label()),
@@ -2573,11 +2548,39 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "GetEmailProBillingPlanRequest",
       });
-    case 4:
+  }
+}
+function __c27(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() => S.String.pipe(T.RawResponseRoot())).annotate({
         identifier: "GetEmailProBillingPlanResponse",
       });
-    case 5:
+  }
+}
+function __c28(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          service: S.String.pipe(T.Label()),
+          email: S.String.pipe(T.Label()),
+          allowedAccountId: S.Number,
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/email/pro/{service}/account/{email}/fullAccess",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateEmailProAccountFullAccessRequest",
+      });
+  }
+}
+function __c29(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           service: S.String.pipe(T.Label()),
@@ -2586,7 +2589,7 @@ function __c5(j: number): any {
           T.Http({ method: "GET", uri: "/email/pro/{service}/domain/{domainName}", code: 200 }),
         ),
       ).annotate({ identifier: "GetEmailProDomainRequest" });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           errorCode: S.optional(S.NullOr(S.Number)),
@@ -2596,37 +2599,41 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "EmailProDomainDkimDiagnostics",
       });
-    case 7:
-      return S.Array(S.String);
-  }
-}
-function __c6(j: number): any {
-  switch (j) {
-    case 0:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           cnameToCheck: S.optional(S.NullOr(S.String)),
-          dkimDiagnostics: S.optional(S.NullOr(__S(46, __c5, 6))),
-          domainAliases: S.optional(__S(47, __c5, 7)),
+          dkimDiagnostics: S.optional(S.NullOr(__S(117, __c29, 1))),
+          domainAliases: S.optional(__S(120, __c30, 0)),
           domainValidated: S.optional(S.Boolean),
           expectedAutodiscoverSRV: S.optional(S.String),
-          expectedMX: S.optional(__S(47, __c5, 7)),
+          expectedMX: S.optional(__S(120, __c30, 0)),
           expectedSPF: S.optional(S.String),
           isAliasDomain: S.optional(S.Boolean),
           mxIsValid: S.optional(S.Boolean),
-          mxRecord: S.optional(S.NullOr(__S(47, __c5, 7))),
+          mxRecord: S.optional(S.NullOr(__S(120, __c30, 0))),
           mxRelay: S.optional(S.NullOr(S.String)),
           name: S.optional(S.String),
           spfIsValid: S.optional(S.Boolean),
-          spfRecord: S.optional(S.NullOr(__S(47, __c5, 7))),
+          spfRecord: S.optional(S.NullOr(__S(120, __c30, 0))),
           srvIsValid: S.optional(S.Boolean),
-          srvRecord: S.optional(S.NullOr(__S(47, __c5, 7))),
+          srvRecord: S.optional(S.NullOr(__S(120, __c30, 0))),
           state: S.optional(S.String),
           taskPendingId: S.optional(S.Number),
           type: S.optional(S.String),
         }),
       ).annotate({ identifier: "EmailProDomainNative" });
-    case 1:
+  }
+}
+function __c30(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c31(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           service: S.String.pipe(T.Label()),
@@ -2641,7 +2648,7 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "GetEmailProDomainDisclaimerRequest",
       });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           content: S.optional(S.String),
@@ -2651,7 +2658,11 @@ function __c6(j: number): any {
           taskPendingId: S.optional(S.Number),
         }),
       ).annotate({ identifier: "EmailProDisclaimerNative" });
-    case 3:
+  }
+}
+function __c32(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           service: S.String.pipe(T.Label()),
@@ -2667,7 +2678,7 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "GetEmailProDomainDkimRequest",
       });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           cnameIsValid: S.optional(S.Boolean),
@@ -2681,7 +2692,11 @@ function __c6(j: number): any {
           taskPendingId: S.optional(S.NullOr(S.Number)),
         }),
       ).annotate({ identifier: "EmailProDkim" });
-    case 5:
+  }
+}
+function __c33(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           service: S.String.pipe(T.Label()),
@@ -2696,7 +2711,7 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "GetEmailProExternalContactRequest",
       });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           creationDate: S.optional(S.String),
@@ -2713,17 +2728,17 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "EmailProExternalContactNative",
       });
-    case 7:
+  }
+}
+function __c34(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           service: S.String.pipe(T.Label()),
         }).pipe(T.Http({ method: "GET", uri: "/email/pro/{service}/server", code: 200 })),
       ).annotate({ identifier: "GetEmailProServerRequest" });
-  }
-}
-function __c7(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           currentDiskUsage: S.optional(S.NullOr(S.Number)),
@@ -2739,7 +2754,11 @@ function __c7(j: number): any {
           version: S.optional(S.NullOr(S.String)),
         }),
       ).annotate({ identifier: "EmailProServer" });
-    case 1:
+  }
+}
+function __c35(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           service: S.String.pipe(T.Label()),
@@ -2747,17 +2766,7 @@ function __c7(j: number): any {
       ).annotate({
         identifier: "GetEmailProServiceInfosRequest",
       });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          automatic: S.optional(S.Boolean),
-          deleteAtExpiration: S.optional(S.Boolean),
-          forced: S.optional(S.Boolean),
-          manualPayment: S.optional(S.NullOr(S.Boolean)),
-          period: S.optional(S.NullOr(S.Number)),
-        }),
-      ).annotate({ identifier: "ServiceRenewType" });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           canDeleteAtExpiration: S.optional(S.Boolean),
@@ -2768,43 +2777,69 @@ function __c7(j: number): any {
           domain: S.optional(S.String),
           engagedUpTo: S.optional(S.NullOr(S.String)),
           expiration: S.optional(S.String),
-          possibleRenewPeriod: S.optional(S.NullOr(__S(6, __c0, 6))),
-          renew: S.optional(S.NullOr(__S(58, __c7, 2))),
+          possibleRenewPeriod: S.optional(S.NullOr(__S(176, __c44, 0))),
+          renew: S.optional(S.NullOr(__S(144, __c36, 0))),
           renewalType: S.optional(S.String),
           serviceId: S.optional(S.Number),
           status: S.optional(S.String),
         }),
       ).annotate({ identifier: "ServicesService" });
-    case 4:
+  }
+}
+function __c36(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          automatic: S.optional(S.Boolean),
+          deleteAtExpiration: S.optional(S.Boolean),
+          forced: S.optional(S.Boolean),
+          manualPayment: S.optional(S.NullOr(S.Boolean)),
+          period: S.optional(S.NullOr(S.Number)),
+        }),
+      ).annotate({ identifier: "ServiceRenewType" });
+  }
+}
+function __c37(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           service: S.String.pipe(T.Label()),
           id: S.Number.pipe(T.Label()),
         }).pipe(T.Http({ method: "GET", uri: "/email/pro/{service}/task/{id}", code: 200 })),
       ).annotate({ identifier: "GetEmailProTaskRequest" });
-    case 5:
+  }
+}
+function __c38(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(156, __c39, 0));
+    case 1:
+      return S.Record(S.String, __S(152, __c38, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          iamTags: S.optional(__S(153, __c38, 1).pipe(T.Query())),
+        }).pipe(T.Http({ method: "GET", uri: "/email/pro", code: 200 })),
+      ).annotate({ identifier: "ListEmailProRequest" });
+    case 3:
+      return S.suspend(() => __S(120, __c30, 0).pipe(T.RawResponseRoot())).annotate({
+        identifier: "ListEmailProResponse",
+      });
+  }
+}
+function __c39(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "IamResourceTagFilterInput",
       });
-    case 6:
-      return S.Array(__S(61, __c7, 5));
-    case 7:
-      return S.Record(S.String, __S(62, __c7, 6));
   }
 }
-function __c8(j: number): any {
+function __c40(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() =>
-        S.Struct({
-          iamTags: S.optional(__S(63, __c7, 7).pipe(T.Query())),
-        }).pipe(T.Http({ method: "GET", uri: "/email/pro", code: 200 })),
-      ).annotate({ identifier: "ListEmailProRequest" });
-    case 1:
-      return S.suspend(() => __S(47, __c5, 7).pipe(T.RawResponseRoot())).annotate({
-        identifier: "ListEmailProResponse",
-      });
-    case 2:
       return S.suspend(() =>
         S.Struct({
           service: S.String.pipe(T.Label()),
@@ -2814,11 +2849,19 @@ function __c8(j: number): any {
       ).annotate({
         identifier: "ListEmailProAccountRequest",
       });
-    case 3:
-      return S.suspend(() => __S(47, __c5, 7).pipe(T.RawResponseRoot())).annotate({
+  }
+}
+function __c41(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => __S(120, __c30, 0).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListEmailProAccountResponse",
       });
-    case 4:
+  }
+}
+function __c42(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           service: S.String.pipe(T.Label()),
@@ -2829,7 +2872,40 @@ function __c8(j: number): any {
       ).annotate({
         identifier: "ListEmailProAccountAliasRequest",
       });
-    case 5:
+  }
+}
+function __c43(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          service: S.String.pipe(T.Label()),
+          contactAdmin: S.optional(S.String),
+          contactBilling: S.optional(S.String),
+          contactTech: S.optional(S.String),
+        }).pipe(T.Http({ method: "POST", uri: "/email/pro/{service}/changeContact", code: 200 })),
+      ).annotate({
+        identifier: "CreateEmailProChangeContactRequest",
+      });
+  }
+}
+function __c44(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.Number);
+  }
+}
+function __c45(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => __S(176, __c44, 0).pipe(T.RawResponseRoot())).annotate({
+        identifier: "CreateEmailProChangeContactResponse",
+      });
+  }
+}
+function __c46(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           service: S.String.pipe(T.Label()),
@@ -2844,7 +2920,11 @@ function __c8(j: number): any {
       ).annotate({
         identifier: "ListEmailProAccountFullAccessRequest",
       });
-    case 6:
+  }
+}
+function __c47(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           service: S.String.pipe(T.Label()),
@@ -2855,7 +2935,11 @@ function __c8(j: number): any {
       ).annotate({
         identifier: "ListEmailProAccountSendAsRequest",
       });
-    case 7:
+  }
+}
+function __c48(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           service: S.String.pipe(T.Label()),
@@ -2872,7 +2956,7 @@ function __c8(j: number): any {
       });
   }
 }
-function __c9(j: number): any {
+function __c49(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2885,7 +2969,11 @@ function __c9(j: number): any {
       ).annotate({
         identifier: "ListEmailProAccountTasksRequest",
       });
-    case 1:
+  }
+}
+function __c50(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           service: S.String.pipe(T.Label()),
@@ -2894,7 +2982,11 @@ function __c9(j: number): any {
       ).annotate({
         identifier: "ListEmailProDomainRequest",
       });
-    case 2:
+  }
+}
+function __c51(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           service: S.String.pipe(T.Label()),
@@ -2909,11 +3001,15 @@ function __c9(j: number): any {
       ).annotate({
         identifier: "ListEmailProDomainDisclaimerAttributeRequest",
       });
-    case 3:
-      return S.suspend(() => __S(29, __c3, 5).pipe(T.RawResponseRoot())).annotate({
+    case 1:
+      return S.suspend(() => __S(68, __c17, 0).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListEmailProDomainDisclaimerAttributeResponse",
       });
-    case 4:
+  }
+}
+function __c52(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           service: S.String.pipe(T.Label()),
@@ -2928,7 +3024,11 @@ function __c9(j: number): any {
       ).annotate({
         identifier: "ListEmailProDomainDkimRequest",
       });
-    case 5:
+  }
+}
+function __c53(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           service: S.String.pipe(T.Label()),
@@ -2943,7 +3043,11 @@ function __c9(j: number): any {
       ).annotate({
         identifier: "ListEmailProDomainDkimSelectorRequest",
       });
-    case 6:
+  }
+}
+function __c54(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           service: S.String.pipe(T.Label()),
@@ -2956,21 +3060,45 @@ function __c9(j: number): any {
       ).annotate({
         identifier: "ListEmailProExternalContactRequest",
       });
-    case 7:
+  }
+}
+function __c55(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           service: S.String.pipe(T.Label()),
         }).pipe(T.Http({ method: "GET", uri: "/email/pro/{service}/task", code: 200 })),
       ).annotate({ identifier: "ListEmailProTaskRequest" });
-  }
-}
-function __c10(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() => __S(6, __c0, 6).pipe(T.RawResponseRoot())).annotate({
+    case 1:
+      return S.suspend(() => __S(176, __c44, 0).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListEmailProTaskResponse",
       });
-    case 1:
+  }
+}
+function __c56(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          service: S.String.pipe(T.Label()),
+          autoEnableDKIM: S.optional(S.Boolean),
+          configureAutodiscover: S.optional(S.Boolean),
+          configureDKIM: S.optional(S.Boolean),
+          configureMx: S.optional(S.Boolean),
+          configureSPF: S.optional(S.Boolean),
+          mxRelay: S.optional(S.String),
+          name: S.String,
+          type: S.String,
+        }).pipe(T.Http({ method: "POST", uri: "/email/pro/{service}/domain", code: 200 })),
+      ).annotate({
+        identifier: "CreateEmailProDomainRequest",
+      });
+  }
+}
+function __c57(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           service: S.String.pipe(T.Label()),
@@ -2984,10 +3112,14 @@ function __c10(j: number): any {
           maxSendSize: S.optional(S.Number),
           minPasswordAge: S.optional(S.NullOr(S.Number)),
           minPasswordLength: S.optional(S.NullOr(S.Number)),
-          spamAndVirusConfiguration: S.optional(__S(61, __c7, 5)),
+          spamAndVirusConfiguration: S.optional(__S(156, __c39, 0)),
         }).pipe(T.Http({ method: "PUT", uri: "/email/pro/{service}", code: 200 })),
       ).annotate({ identifier: "PutEmailProRequest" });
-    case 2:
+  }
+}
+function __c58(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           service: S.String.pipe(T.Label()),
@@ -3000,15 +3132,19 @@ function __c10(j: number): any {
           initial: S.optional(S.NullOr(S.String)),
           lastName: S.optional(S.NullOr(S.String)),
           login: S.optional(S.String),
-          mailingFilter: S.optional(S.NullOr(__S(29, __c3, 5))),
+          mailingFilter: S.optional(S.NullOr(__S(68, __c17, 0))),
           quota: S.optional(S.Number),
           renewPeriod: S.optional(S.NullOr(S.String)),
-          spamAndVirusConfiguration: S.optional(__S(61, __c7, 5)),
+          spamAndVirusConfiguration: S.optional(__S(156, __c39, 0)),
         }).pipe(T.Http({ method: "PUT", uri: "/email/pro/{service}/account/{email}", code: 200 })),
       ).annotate({
         identifier: "PutEmailProAccountRequest",
       });
-    case 3:
+  }
+}
+function __c59(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           service: S.String.pipe(T.Label()),
@@ -3019,7 +3155,11 @@ function __c10(j: number): any {
           T.Http({ method: "PUT", uri: "/email/pro/{service}/domain/{domainName}", code: 200 }),
         ),
       ).annotate({ identifier: "PutEmailProDomainRequest" });
-    case 4:
+  }
+}
+function __c60(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           service: S.String.pipe(T.Label()),
@@ -3036,11 +3176,19 @@ function __c10(j: number): any {
       ).annotate({
         identifier: "PutEmailProDomainDisclaimerRequest",
       });
-    case 5:
+  }
+}
+function __c61(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "PutEmailProDomainDisclaimerResponse",
       });
-    case 6:
+  }
+}
+function __c62(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           service: S.String.pipe(T.Label()),
@@ -3060,24 +3208,28 @@ function __c10(j: number): any {
       ).annotate({
         identifier: "PutEmailProExternalContactRequest",
       });
-    case 7:
+  }
+}
+function __c63(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           service: S.String.pipe(T.Label()),
-          renew: S.optional(S.NullOr(__S(58, __c7, 2))),
+          renew: S.optional(S.NullOr(__S(144, __c36, 0))),
         }).pipe(T.Http({ method: "PUT", uri: "/email/pro/{service}/serviceInfos", code: 200 })),
       ).annotate({
         identifier: "PutEmailProServiceInfosRequest",
       });
-  }
-}
-function __c11(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "PutEmailProServiceInfosResponse",
       });
-    case 1:
+  }
+}
+function __c64(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           service: S.String.pipe(T.Label()),
@@ -3089,7 +3241,11 @@ function __c11(j: number): any {
       ).annotate({
         identifier: "SendEmailProAccountAsRequest",
       });
-    case 2:
+  }
+}
+function __c65(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           service: S.String.pipe(T.Label()),
@@ -3105,7 +3261,11 @@ function __c11(j: number): any {
       ).annotate({
         identifier: "SendEmailProAccountOnBehalfToRequest",
       });
-    case 3:
+  }
+}
+function __c66(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           service: S.String.pipe(T.Label()),
@@ -3120,7 +3280,11 @@ function __c11(j: number): any {
       ).annotate({
         identifier: "TerminateEmailProAccountRequest",
       });
-    case 4:
+  }
+}
+function __c67(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           service: S.String.pipe(T.Label()),
@@ -3136,7 +3300,82 @@ function __c11(j: number): any {
       });
   }
 }
-
+function __c68(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          service: S.String.pipe(T.Label()),
+          domainName: S.String.pipe(T.Label()),
+          content: S.String,
+          outsideOnly: S.optional(S.Boolean),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/email/pro/{service}/domain/{domainName}/disclaimer",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateEmailProDomainDisclaimerRequest",
+      });
+  }
+}
+function __c69(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          service: S.String.pipe(T.Label()),
+          domainName: S.String.pipe(T.Label()),
+          autoEnableDKIM: S.optional(S.Boolean),
+          configureDkim: S.optional(S.Boolean),
+          selectorName: S.String,
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/email/pro/{service}/domain/{domainName}/dkim",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateEmailProDomainDkimRequest",
+      });
+  }
+}
+function __c70(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          service: S.String.pipe(T.Label()),
+          displayName: S.optional(S.String),
+          externalEmailAddress: S.String,
+          firstName: S.optional(S.String),
+          hiddenFromGAL: S.optional(S.Boolean),
+          initials: S.optional(S.String),
+          lastName: S.optional(S.String),
+        }).pipe(T.Http({ method: "POST", uri: "/email/pro/{service}/externalContact", code: 200 })),
+      ).annotate({
+        identifier: "CreateEmailProExternalContactRequest",
+      });
+  }
+}
+function __c71(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          service: S.String.pipe(T.Label()),
+          email: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({ method: "DELETE", uri: "/email/pro/{service}/account/{email}", code: 200 }),
+        ),
+      ).annotate({
+        identifier: "DeleteEmailProAccountRequest",
+      });
+  }
+}
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

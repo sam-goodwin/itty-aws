@@ -146,7 +146,7 @@ export const getRecommendedAction: API.OperationMethod<
   WhopOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(0, __c0, 0) as any as S.Schema<GetRecommendedActionRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<AccountRecommendedActionChain>,
+  output: __S(6, __c1, 2) as any as S.Schema<AccountRecommendedActionChain>,
   errors: [NotFound],
   protocol: WhopProtocol,
   retry: Retry.Retry,
@@ -160,8 +160,8 @@ export const listRecommendedActionExecutions: API.OperationMethod<
   ListRecommendedActionExecutionsError,
   WhopOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(4, __c0, 4) as any as S.Schema<ListRecommendedActionExecutionsRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<ListRecommendedActionExecutionsResponse>,
+  input: __S(8, __c2, 0) as any as S.Schema<ListRecommendedActionExecutionsRequest>,
+  output: __S(11, __c2, 3) as any as S.Schema<ListRecommendedActionExecutionsResponse>,
   errors: [NotFound],
   protocol: WhopProtocol,
   retry: Retry.Retry,
@@ -175,8 +175,8 @@ export const listRecommendedActions: API.OperationMethod<
   ListRecommendedActionsError,
   WhopOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(8, __c1, 0) as any as S.Schema<ListRecommendedActionsRequest>,
-  output: __S(10, __c1, 2) as any as S.Schema<ListRecommendedActionsResponse>,
+  input: __S(12, __c3, 0) as any as S.Schema<ListRecommendedActionsRequest>,
+  output: __S(14, __c3, 2) as any as S.Schema<ListRecommendedActionsResponse>,
   errors: [NotFound],
   protocol: WhopProtocol,
   retry: Retry.Retry,
@@ -190,8 +190,8 @@ export const runRecommendedAction: API.OperationMethod<
   RunRecommendedActionError,
   WhopOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(11, __c1, 3) as any as S.Schema<RunRecommendedActionRequest>,
-  output: __S(12, __c1, 4) as any as S.Schema<RunRecommendedActionResponse>,
+  input: __S(16, __c4, 0) as any as S.Schema<RunRecommendedActionRequest>,
+  output: __S(17, __c4, 1) as any as S.Schema<RunRecommendedActionResponse>,
   errors: [NotFound, Conflict],
   protocol: WhopProtocol,
   retry: Retry.Retry,
@@ -209,7 +209,11 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "GetRecommendedActionRequest",
       });
-    case 1:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           action: S.String,
@@ -227,12 +231,12 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "AccountRecommendedActionChainStep",
       });
+    case 1:
+      return S.Array(__S(4, __c1, 0));
     case 2:
-      return S.Array(__S(1, __c0, 1));
-    case 3:
       return S.suspend(() =>
         S.Struct({
-          actions: __S(2, __c0, 2),
+          actions: __S(5, __c1, 1),
           description: S.String,
           id: S.String,
           reasoning: S.NullOr(S.Unknown),
@@ -241,7 +245,11 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "AccountRecommendedActionChain",
       });
-    case 4:
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.String.pipe(T.Label()),
@@ -250,7 +258,7 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "ListRecommendedActionExecutionsRequest",
       });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           action: S.String,
@@ -264,20 +272,20 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "RecommendedActionExecution",
       });
-    case 6:
-      return S.Array(__S(5, __c0, 5));
-    case 7:
+    case 2:
+      return S.Array(__S(9, __c2, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
           chain_id: S.String,
-          executions: __S(6, __c0, 6),
+          executions: __S(10, __c2, 2),
         }),
       ).annotate({
         identifier: "ListRecommendedActionExecutionsResponse",
       });
   }
 }
-function __c1(j: number): any {
+function __c3(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -288,16 +296,20 @@ function __c1(j: number): any {
         identifier: "ListRecommendedActionsRequest",
       });
     case 1:
-      return S.Array(__S(3, __c0, 3));
+      return S.Array(__S(6, __c1, 2));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          data: __S(9, __c1, 1),
+          data: __S(13, __c3, 1),
         }),
       ).annotate({
         identifier: "ListRecommendedActionsResponse",
       });
-    case 3:
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.String.pipe(T.Label()),
@@ -307,7 +319,7 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "RunRecommendedActionRequest",
       });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           chain_id: S.String,
@@ -318,7 +330,6 @@ function __c1(j: number): any {
       });
   }
 }
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

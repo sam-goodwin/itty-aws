@@ -73,7 +73,7 @@ export const createCalendarSyncBackfill: API.OperationMethod<
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(0, __c0, 0) as any as S.Schema<CreateCalendarSyncBackfillRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<CalendarSyncTriggerResponse>,
+  output: __S(4, __c1, 0) as any as S.Schema<CalendarSyncTriggerResponse>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -87,8 +87,8 @@ export const createCalendarSyncInterval: API.OperationMethod<
   CreateCalendarSyncIntervalError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2, __c0, 2) as any as S.Schema<CreateCalendarSyncIntervalRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<CalendarSyncInterval>,
+  input: __S(8, __c2, 0) as any as S.Schema<CreateCalendarSyncIntervalRequest>,
+  output: __S(9, __c2, 1) as any as S.Schema<CalendarSyncInterval>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -102,8 +102,8 @@ export const createCalendarSyncSyncNow: API.OperationMethod<
   CreateCalendarSyncSyncNowError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(4, __c0, 4) as any as S.Schema<CreateCalendarSyncSyncNowRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<CalendarSyncTriggerResponse>,
+  input: __S(12, __c3, 0) as any as S.Schema<CreateCalendarSyncSyncNowRequest>,
+  output: __S(4, __c1, 0) as any as S.Schema<CalendarSyncTriggerResponse>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -117,8 +117,8 @@ export const listCalendarSync: API.OperationMethod<
   ListCalendarSyncError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(5, __c0, 5) as any as S.Schema<ListCalendarSyncRequest>,
-  output: __S(8, __c1, 0) as any as S.Schema<ListCalendarSyncResponse>,
+  input: __S(16, __c4, 0) as any as S.Schema<ListCalendarSyncRequest>,
+  output: __S(19, __c4, 3) as any as S.Schema<ListCalendarSyncResponse>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -144,7 +144,11 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "CreateCalendarSyncBackfillRequest",
       });
-    case 1:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           status: S.String,
@@ -152,7 +156,11 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "CalendarSyncTriggerResponse",
       });
-    case 2:
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -168,14 +176,18 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "CreateCalendarSyncIntervalRequest",
       });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           integration_id: S.Number,
           sync_interval_minutes: S.Number,
         }),
       ).annotate({ identifier: "CalendarSyncInterval" });
-    case 4:
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -190,7 +202,11 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "CreateCalendarSyncSyncNowRequest",
       });
-    case 5:
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -198,7 +214,7 @@ function __c0(j: number): any {
           T.Http({ method: "GET", uri: "/api/projects/{project_id}/calendar_sync/", code: 200 }),
         ),
       ).annotate({ identifier: "ListCalendarSyncRequest" });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           integration_id: S.Number,
@@ -207,19 +223,14 @@ function __c0(j: number): any {
           sync_interval_minutes: S.Number,
         }),
       ).annotate({ identifier: "CalendarSyncStatus" });
-    case 7:
-      return S.Array(__S(6, __c0, 6));
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() => __S(7, __c0, 7).pipe(T.RawResponseRoot())).annotate({
+    case 2:
+      return S.Array(__S(17, __c4, 1));
+    case 3:
+      return S.suspend(() => __S(18, __c4, 2).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListCalendarSyncResponse",
       });
   }
 }
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

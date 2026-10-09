@@ -207,8 +207,8 @@ export const listAccountRoles: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   RoleInfo
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(3, __c0, 3) as any as S.Schema<ListAccountRolesRequest>,
-  output: __S(6, __c0, 6) as any as S.Schema<ListAccountRolesResponse>,
+  input: __S(4, __c1, 0) as any as S.Schema<ListAccountRolesRequest>,
+  output: __S(7, __c1, 3) as any as S.Schema<ListAccountRolesResponse>,
   errors: [
     InvalidRequestException,
     ResourceNotFoundException,
@@ -244,8 +244,8 @@ export const listAccounts: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   AccountInfo
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(7, __c0, 7) as any as S.Schema<ListAccountsRequest>,
-  output: __S(10, __c1, 2) as any as S.Schema<ListAccountsResponse>,
+  input: __S(8, __c2, 0) as any as S.Schema<ListAccountsRequest>,
+  output: __S(11, __c2, 3) as any as S.Schema<ListAccountsResponse>,
   errors: [
     InvalidRequestException,
     ResourceNotFoundException,
@@ -290,8 +290,8 @@ export const logout: API.OperationMethod<
   LogoutError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(11, __c1, 3) as any as S.Schema<LogoutRequest>,
-  output: __S(12, __c1, 4) as any as S.Schema<LogoutResponse>,
+  input: __S(12, __c3, 0) as any as S.Schema<LogoutRequest>,
+  output: __S(13, __c3, 1) as any as S.Schema<LogoutResponse>,
   errors: [InvalidRequestException, TooManyRequestsException, UnauthorizedException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -333,7 +333,11 @@ function __c0(j: number): any {
       return S.suspend(() => S.Struct({ roleCredentials: S.optional(__S(1, __c0, 1)) })).annotate({
         identifier: "GetRoleCredentialsResponse",
       });
-    case 3:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           nextToken: S.optional(S.String).pipe(T.HttpQuery("next_token")),
@@ -344,17 +348,21 @@ function __c0(j: number): any {
           T.all(T.Http({ method: "GET", uri: "/assignment/roles" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "ListAccountRolesRequest" });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({ roleName: S.optional(S.String), accountId: S.optional(S.String) }),
       ).annotate({ identifier: "RoleInfo" });
-    case 5:
-      return S.Array(__S(4, __c0, 4));
-    case 6:
+    case 2:
+      return S.Array(__S(5, __c1, 1));
+    case 3:
       return S.suspend(() =>
-        S.Struct({ nextToken: S.optional(S.String), roleList: S.optional(__S(5, __c0, 5)) }),
+        S.Struct({ nextToken: S.optional(S.String), roleList: S.optional(__S(6, __c1, 2)) }),
       ).annotate({ identifier: "ListAccountRolesResponse" });
-    case 7:
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           nextToken: S.optional(S.String).pipe(T.HttpQuery("next_token")),
@@ -371,11 +379,7 @@ function __c0(j: number): any {
           ),
         ),
       ).annotate({ identifier: "ListAccountsRequest" });
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           accountId: S.optional(S.String),
@@ -383,25 +387,28 @@ function __c1(j: number): any {
           emailAddress: S.optional(S.String),
         }),
       ).annotate({ identifier: "AccountInfo" });
-    case 1:
-      return S.Array(__S(8, __c1, 0));
     case 2:
-      return S.suspend(() =>
-        S.Struct({ nextToken: S.optional(S.String), accountList: S.optional(__S(9, __c1, 1)) }),
-      ).annotate({ identifier: "ListAccountsResponse" });
+      return S.Array(__S(9, __c2, 1));
     case 3:
+      return S.suspend(() =>
+        S.Struct({ nextToken: S.optional(S.String), accountList: S.optional(__S(10, __c2, 2)) }),
+      ).annotate({ identifier: "ListAccountsResponse" });
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accessToken: SensitiveString.pipe(T.HttpHeader("x-amz-sso_bearer_token")),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/logout" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "LogoutRequest" });
-    case 4:
+    case 1:
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "LogoutResponse",
       });
   }
 }
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

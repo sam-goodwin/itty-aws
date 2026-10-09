@@ -1309,8 +1309,8 @@ export const createUserVariable: API.OperationMethod<
   CreateUserVariableError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(0, __c0, 0) as any as S.Schema<CreateUserVariableRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<CreateUserVariableResponse>,
+  input: __S(736, __c46, 0) as any as S.Schema<CreateUserVariableRequest>,
+  output: __S(752, __c47, 0) as any as S.Schema<CreateUserVariableResponse>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -1324,8 +1324,8 @@ export const deleteUserRunner: API.OperationMethod<
   DeleteUserRunnerError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2, __c0, 2) as any as S.Schema<DeleteUserRunnerRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<DeleteUserRunnerResponse>,
+  input: __S(1024, __c64, 0) as any as S.Schema<DeleteUserRunnerRequest>,
+  output: __S(752, __c47, 0) as any as S.Schema<DeleteUserRunnerResponse>,
   errors: [BadRequest, NotFound],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -1339,8 +1339,8 @@ export const deleteUserSecret: API.OperationMethod<
   DeleteUserSecretError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3, __c0, 3) as any as S.Schema<DeleteUserSecretRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<DeleteUserSecretResponse>,
+  input: __S(1200, __c75, 0) as any as S.Schema<DeleteUserSecretRequest>,
+  output: __S(752, __c47, 0) as any as S.Schema<DeleteUserSecretResponse>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -1354,8 +1354,8 @@ export const deleteUserVariable: API.OperationMethod<
   DeleteUserVariableError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(4, __c0, 4) as any as S.Schema<DeleteUserVariableRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<DeleteUserVariableResponse>,
+  input: __S(1376, __c86, 0) as any as S.Schema<DeleteUserVariableRequest>,
+  output: __S(752, __c47, 0) as any as S.Schema<DeleteUserVariableResponse>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -1369,8 +1369,8 @@ export const followUserCurrentActivityPub: API.OperationMethod<
   FollowUserCurrentActivityPubError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(5, __c0, 5) as any as S.Schema<FollowUserCurrentActivityPubRequest>,
-  output: __S(6, __c0, 6) as any as S.Schema<FollowUserCurrentActivityPubResponse>,
+  input: __S(1568, __c98, 0) as any as S.Schema<FollowUserCurrentActivityPubRequest>,
+  output: __S(1584, __c99, 0) as any as S.Schema<FollowUserCurrentActivityPubResponse>,
   errors: [Forbidden, NotFound],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -1380,8 +1380,8 @@ export type GetUserError = NotFound | ForgejoOpError;
 /** Get a user */
 export const getUser: API.OperationMethod<GetUserRequest, User, GetUserError, ForgejoOpContext> =
   /*@__PURE__*/ API.make(() => ({
-    input: __S(7, __c0, 7) as any as S.Schema<GetUserRequest>,
-    output: __S(8, __c1, 0) as any as S.Schema<User>,
+    input: __S(1632, __c102, 0) as any as S.Schema<GetUserRequest>,
+    output: __S(1648, __c103, 0) as any as S.Schema<User>,
     errors: [NotFound],
     protocol: ForgejoProtocol,
     retry: Retry.Retry,
@@ -1395,8 +1395,8 @@ export const getUserRunner: API.OperationMethod<
   GetUserRunnerError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(9, __c1, 1) as any as S.Schema<GetUserRunnerRequest>,
-  output: __S(11, __c1, 3) as any as S.Schema<ActionRunner>,
+  input: __S(0, __c0, 0) as any as S.Schema<GetUserRunnerRequest>,
+  output: __S(16, __c1, 0) as any as S.Schema<ActionRunner>,
   errors: [BadRequest, NotFound],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -1410,8 +1410,8 @@ export const getUserRunners: API.OperationMethod<
   GetUserRunnersError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(12, __c1, 4) as any as S.Schema<GetUserRunnersRequest>,
-  output: __S(14, __c1, 6) as any as S.Schema<GetUserRunnersResponse>,
+  input: __S(48, __c3, 0) as any as S.Schema<GetUserRunnersRequest>,
+  output: __S(50, __c3, 2) as any as S.Schema<GetUserRunnersResponse>,
   errors: [BadRequest, NotFound],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -1425,8 +1425,8 @@ export const getUserSettings: API.OperationMethod<
   GetUserSettingsError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(15, __c1, 7) as any as S.Schema<GetUserSettingsRequest>,
-  output: __S(16, __c2, 0) as any as S.Schema<UserSettings>,
+  input: __S(64, __c4, 0) as any as S.Schema<GetUserSettingsRequest>,
+  output: __S(80, __c5, 0) as any as S.Schema<UserSettings>,
   errors: [Forbidden],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -1440,8 +1440,8 @@ export const getUserVariable: API.OperationMethod<
   GetUserVariableError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(17, __c2, 1) as any as S.Schema<GetUserVariableRequest>,
-  output: __S(18, __c2, 2) as any as S.Schema<ActionVariable>,
+  input: __S(96, __c6, 0) as any as S.Schema<GetUserVariableRequest>,
+  output: __S(112, __c7, 0) as any as S.Schema<ActionVariable>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -1455,8 +1455,8 @@ export const getUserVariablesList: API.OperationMethod<
   GetUserVariablesListError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(19, __c2, 3) as any as S.Schema<GetUserVariablesListRequest>,
-  output: __S(21, __c2, 5) as any as S.Schema<GetUserVariablesListResponse>,
+  input: __S(128, __c8, 0) as any as S.Schema<GetUserVariablesListRequest>,
+  output: __S(130, __c8, 2) as any as S.Schema<GetUserVariablesListResponse>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -1470,8 +1470,8 @@ export const getVerificationToken: API.OperationMethod<
   GetVerificationTokenError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(22, __c2, 6) as any as S.Schema<GetVerificationTokenRequest>,
-  output: __S(23, __c2, 7) as any as S.Schema<GetVerificationTokenResponse>,
+  input: __S(144, __c9, 0) as any as S.Schema<GetVerificationTokenRequest>,
+  output: __S(145, __c9, 1) as any as S.Schema<GetVerificationTokenResponse>,
   errors: [Forbidden, NotFound],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -1485,8 +1485,8 @@ export const registerUserRunner: API.OperationMethod<
   RegisterUserRunnerError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(24, __c3, 0) as any as S.Schema<RegisterUserRunnerRequest>,
-  output: __S(25, __c3, 1) as any as S.Schema<RegisterRunnerResponse>,
+  input: __S(160, __c10, 0) as any as S.Schema<RegisterUserRunnerRequest>,
+  output: __S(161, __c10, 1) as any as S.Schema<RegisterRunnerResponse>,
   errors: [BadRequest, NotFound],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -1500,8 +1500,8 @@ export const searchUser: API.OperationMethod<
   SearchUserError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(26, __c3, 2) as any as S.Schema<SearchUserRequest>,
-  output: __S(28, __c3, 4) as any as S.Schema<SearchUserResponse>,
+  input: __S(176, __c11, 0) as any as S.Schema<SearchUserRequest>,
+  output: __S(177, __c11, 1) as any as S.Schema<SearchUserResponse>,
   errors: [],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -1515,8 +1515,8 @@ export const unblockUser: API.OperationMethod<
   UnblockUserError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(29, __c3, 5) as any as S.Schema<UnblockUserRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<UnblockUserResponse>,
+  input: __S(208, __c13, 0) as any as S.Schema<UnblockUserRequest>,
+  output: __S(752, __c47, 0) as any as S.Schema<UnblockUserResponse>,
   errors: [Forbidden, NotFound, UnprocessableEntity],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -1530,8 +1530,8 @@ export const updateUserSecret: API.OperationMethod<
   UpdateUserSecretError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(30, __c3, 6) as any as S.Schema<UpdateUserSecretRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<UpdateUserSecretResponse>,
+  input: __S(224, __c14, 0) as any as S.Schema<UpdateUserSecretRequest>,
+  output: __S(752, __c47, 0) as any as S.Schema<UpdateUserSecretResponse>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -1545,8 +1545,8 @@ export const updateUserSettings: API.OperationMethod<
   UpdateUserSettingsError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(31, __c3, 7) as any as S.Schema<UpdateUserSettingsRequest>,
-  output: __S(16, __c2, 0) as any as S.Schema<UserSettings>,
+  input: __S(240, __c15, 0) as any as S.Schema<UpdateUserSettingsRequest>,
+  output: __S(80, __c5, 0) as any as S.Schema<UserSettings>,
   errors: [Forbidden],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -1560,8 +1560,8 @@ export const updateUserVariable: API.OperationMethod<
   UpdateUserVariableError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(32, __c4, 0) as any as S.Schema<UpdateUserVariableRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<UpdateUserVariableResponse>,
+  input: __S(256, __c16, 0) as any as S.Schema<UpdateUserVariableRequest>,
+  output: __S(752, __c47, 0) as any as S.Schema<UpdateUserVariableResponse>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -1575,8 +1575,8 @@ export const userAddEmail: API.OperationMethod<
   UserAddEmailError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(33, __c4, 1) as any as S.Schema<UserAddEmailRequest>,
-  output: __S(36, __c4, 4) as any as S.Schema<UserAddEmailResponse>,
+  input: __S(272, __c17, 0) as any as S.Schema<UserAddEmailRequest>,
+  output: __S(290, __c18, 2) as any as S.Schema<UserAddEmailResponse>,
   errors: [Forbidden, UnprocessableEntity],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -1590,8 +1590,8 @@ export const userBlockUser: API.OperationMethod<
   UserBlockUserError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(37, __c4, 5) as any as S.Schema<UserBlockUserRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<UserBlockUserResponse>,
+  input: __S(304, __c19, 0) as any as S.Schema<UserBlockUserRequest>,
+  output: __S(752, __c47, 0) as any as S.Schema<UserBlockUserResponse>,
   errors: [Forbidden, NotFound, UnprocessableEntity],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -1605,8 +1605,8 @@ export const userCheckFollowing: API.OperationMethod<
   UserCheckFollowingError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(38, __c4, 6) as any as S.Schema<UserCheckFollowingRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<UserCheckFollowingResponse>,
+  input: __S(320, __c20, 0) as any as S.Schema<UserCheckFollowingRequest>,
+  output: __S(752, __c47, 0) as any as S.Schema<UserCheckFollowingResponse>,
   errors: [NotFound],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -1620,8 +1620,8 @@ export const userCheckQuota: API.OperationMethod<
   UserCheckQuotaError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(39, __c4, 7) as any as S.Schema<UserCheckQuotaRequest>,
-  output: __S(40, __c5, 0) as any as S.Schema<UserCheckQuotaResponse>,
+  input: __S(336, __c21, 0) as any as S.Schema<UserCheckQuotaRequest>,
+  output: __S(337, __c21, 1) as any as S.Schema<UserCheckQuotaResponse>,
   errors: [Forbidden, UnprocessableEntity],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -1635,8 +1635,8 @@ export const userCreateHook: API.OperationMethod<
   UserCreateHookError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(42, __c5, 2) as any as S.Schema<UserCreateHookRequest>,
-  output: __S(44, __c5, 4) as any as S.Schema<Hook>,
+  input: __S(352, __c22, 0) as any as S.Schema<UserCreateHookRequest>,
+  output: __S(384, __c24, 0) as any as S.Schema<Hook>,
   errors: [Forbidden],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -1650,8 +1650,8 @@ export const userCreateOAuth2Application: API.OperationMethod<
   UserCreateOAuth2ApplicationError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(45, __c5, 5) as any as S.Schema<UserCreateOAuth2ApplicationRequest>,
-  output: __S(46, __c5, 6) as any as S.Schema<OAuth2Application>,
+  input: __S(400, __c25, 0) as any as S.Schema<UserCreateOAuth2ApplicationRequest>,
+  output: __S(416, __c26, 0) as any as S.Schema<OAuth2Application>,
   errors: [BadRequest, Forbidden],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -1665,8 +1665,8 @@ export const userCreateToken: API.OperationMethod<
   UserCreateTokenError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(49, __c6, 1) as any as S.Schema<UserCreateTokenRequest>,
-  output: __S(52, __c6, 4) as any as S.Schema<AccessToken>,
+  input: __S(434, __c27, 2) as any as S.Schema<UserCreateTokenRequest>,
+  output: __S(465, __c29, 1) as any as S.Schema<AccessToken>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -1680,8 +1680,8 @@ export const userCurrentCheckFollowing: API.OperationMethod<
   UserCurrentCheckFollowingError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(53, __c6, 5) as any as S.Schema<UserCurrentCheckFollowingRequest>,
-  output: __S(6, __c0, 6) as any as S.Schema<UserCurrentCheckFollowingResponse>,
+  input: __S(480, __c30, 0) as any as S.Schema<UserCurrentCheckFollowingRequest>,
+  output: __S(1584, __c99, 0) as any as S.Schema<UserCurrentCheckFollowingResponse>,
   errors: [Forbidden, NotFound],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -1695,8 +1695,8 @@ export const userCurrentCheckStarring: API.OperationMethod<
   UserCurrentCheckStarringError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(54, __c6, 6) as any as S.Schema<UserCurrentCheckStarringRequest>,
-  output: __S(6, __c0, 6) as any as S.Schema<UserCurrentCheckStarringResponse>,
+  input: __S(496, __c31, 0) as any as S.Schema<UserCurrentCheckStarringRequest>,
+  output: __S(1584, __c99, 0) as any as S.Schema<UserCurrentCheckStarringResponse>,
   errors: [Forbidden, NotFound],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -1710,8 +1710,8 @@ export const userCurrentDeleteFollow: API.OperationMethod<
   UserCurrentDeleteFollowError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(55, __c6, 7) as any as S.Schema<UserCurrentDeleteFollowRequest>,
-  output: __S(56, __c7, 0) as any as S.Schema<UserCurrentDeleteFollowResponse>,
+  input: __S(512, __c32, 0) as any as S.Schema<UserCurrentDeleteFollowRequest>,
+  output: __S(528, __c33, 0) as any as S.Schema<UserCurrentDeleteFollowResponse>,
   errors: [Forbidden, NotFound],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -1725,8 +1725,8 @@ export const userCurrentDeleteGPGKey: API.OperationMethod<
   UserCurrentDeleteGPGKeyError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(57, __c7, 1) as any as S.Schema<UserCurrentDeleteGPGKeyRequest>,
-  output: __S(56, __c7, 0) as any as S.Schema<UserCurrentDeleteGPGKeyResponse>,
+  input: __S(544, __c34, 0) as any as S.Schema<UserCurrentDeleteGPGKeyRequest>,
+  output: __S(528, __c33, 0) as any as S.Schema<UserCurrentDeleteGPGKeyResponse>,
   errors: [Forbidden, NotFound],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -1740,8 +1740,8 @@ export const userCurrentDeleteKey: API.OperationMethod<
   UserCurrentDeleteKeyError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(58, __c7, 2) as any as S.Schema<UserCurrentDeleteKeyRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<UserCurrentDeleteKeyResponse>,
+  input: __S(560, __c35, 0) as any as S.Schema<UserCurrentDeleteKeyRequest>,
+  output: __S(752, __c47, 0) as any as S.Schema<UserCurrentDeleteKeyResponse>,
   errors: [Forbidden, NotFound],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -1755,8 +1755,8 @@ export const userCurrentDeleteStar: API.OperationMethod<
   UserCurrentDeleteStarError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(59, __c7, 3) as any as S.Schema<UserCurrentDeleteStarRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<UserCurrentDeleteStarResponse>,
+  input: __S(576, __c36, 0) as any as S.Schema<UserCurrentDeleteStarRequest>,
+  output: __S(752, __c47, 0) as any as S.Schema<UserCurrentDeleteStarResponse>,
   errors: [Forbidden, NotFound],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -1770,8 +1770,8 @@ export const userCurrentGetGPGKey: API.OperationMethod<
   UserCurrentGetGPGKeyError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(60, __c7, 4) as any as S.Schema<UserCurrentGetGPGKeyRequest>,
-  output: __S(64, __c8, 0) as any as S.Schema<GPGKey>,
+  input: __S(592, __c37, 0) as any as S.Schema<UserCurrentGetGPGKeyRequest>,
+  output: __S(611, __c38, 3) as any as S.Schema<GPGKey>,
   errors: [Forbidden, NotFound],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -1785,8 +1785,8 @@ export const userCurrentGetKey: API.OperationMethod<
   UserCurrentGetKeyError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(65, __c8, 1) as any as S.Schema<UserCurrentGetKeyRequest>,
-  output: __S(66, __c8, 2) as any as S.Schema<PublicKey>,
+  input: __S(624, __c39, 0) as any as S.Schema<UserCurrentGetKeyRequest>,
+  output: __S(640, __c40, 0) as any as S.Schema<PublicKey>,
   errors: [Forbidden, NotFound],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -1800,8 +1800,8 @@ export const userCurrentListFollowers: API.OperationMethod<
   UserCurrentListFollowersError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(67, __c8, 3) as any as S.Schema<UserCurrentListFollowersRequest>,
-  output: __S(68, __c8, 4) as any as S.Schema<UserCurrentListFollowersResponse>,
+  input: __S(656, __c41, 0) as any as S.Schema<UserCurrentListFollowersRequest>,
+  output: __S(672, __c42, 0) as any as S.Schema<UserCurrentListFollowersResponse>,
   errors: [Forbidden],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -1815,8 +1815,8 @@ export const userCurrentListFollowing: API.OperationMethod<
   UserCurrentListFollowingError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(69, __c8, 5) as any as S.Schema<UserCurrentListFollowingRequest>,
-  output: __S(68, __c8, 4) as any as S.Schema<UserCurrentListFollowingResponse>,
+  input: __S(688, __c43, 0) as any as S.Schema<UserCurrentListFollowingRequest>,
+  output: __S(672, __c42, 0) as any as S.Schema<UserCurrentListFollowingResponse>,
   errors: [Forbidden],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -1830,8 +1830,8 @@ export const userCurrentListGPGKeys: API.OperationMethod<
   UserCurrentListGPGKeysError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(70, __c8, 6) as any as S.Schema<UserCurrentListGPGKeysRequest>,
-  output: __S(72, __c9, 0) as any as S.Schema<UserCurrentListGPGKeysResponse>,
+  input: __S(704, __c44, 0) as any as S.Schema<UserCurrentListGPGKeysRequest>,
+  output: __S(705, __c44, 1) as any as S.Schema<UserCurrentListGPGKeysResponse>,
   errors: [Forbidden],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -1845,8 +1845,8 @@ export const userCurrentListKeys: API.OperationMethod<
   UserCurrentListKeysError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(73, __c9, 1) as any as S.Schema<UserCurrentListKeysRequest>,
-  output: __S(75, __c9, 3) as any as S.Schema<UserCurrentListKeysResponse>,
+  input: __S(768, __c48, 0) as any as S.Schema<UserCurrentListKeysRequest>,
+  output: __S(769, __c48, 1) as any as S.Schema<UserCurrentListKeysResponse>,
   errors: [Forbidden],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -1860,8 +1860,8 @@ export const userCurrentListRepos: API.OperationMethod<
   UserCurrentListReposError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(76, __c9, 4) as any as S.Schema<UserCurrentListReposRequest>,
-  output: __S(87, __c10, 7) as any as S.Schema<UserCurrentListReposResponse>,
+  input: __S(800, __c50, 0) as any as S.Schema<UserCurrentListReposRequest>,
+  output: __S(864, __c54, 0) as any as S.Schema<UserCurrentListReposResponse>,
   errors: [Forbidden, UnprocessableEntity],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -1875,8 +1875,8 @@ export const userCurrentListStarred: API.OperationMethod<
   UserCurrentListStarredError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(88, __c11, 0) as any as S.Schema<UserCurrentListStarredRequest>,
-  output: __S(87, __c10, 7) as any as S.Schema<UserCurrentListStarredResponse>,
+  input: __S(880, __c55, 0) as any as S.Schema<UserCurrentListStarredRequest>,
+  output: __S(864, __c54, 0) as any as S.Schema<UserCurrentListStarredResponse>,
   errors: [Forbidden],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -1890,8 +1890,8 @@ export const userCurrentListSubscriptions: API.OperationMethod<
   UserCurrentListSubscriptionsError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(89, __c11, 1) as any as S.Schema<UserCurrentListSubscriptionsRequest>,
-  output: __S(87, __c10, 7) as any as S.Schema<UserCurrentListSubscriptionsResponse>,
+  input: __S(896, __c56, 0) as any as S.Schema<UserCurrentListSubscriptionsRequest>,
+  output: __S(864, __c54, 0) as any as S.Schema<UserCurrentListSubscriptionsResponse>,
   errors: [Forbidden],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -1909,8 +1909,8 @@ export const userCurrentPostGPGKey: API.OperationMethod<
   UserCurrentPostGPGKeyError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(90, __c11, 2) as any as S.Schema<UserCurrentPostGPGKeyRequest>,
-  output: __S(64, __c8, 0) as any as S.Schema<GPGKey>,
+  input: __S(912, __c57, 0) as any as S.Schema<UserCurrentPostGPGKeyRequest>,
+  output: __S(611, __c38, 3) as any as S.Schema<GPGKey>,
   errors: [Forbidden, NotFound, UnprocessableEntity],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -1924,8 +1924,8 @@ export const userCurrentPostKey: API.OperationMethod<
   UserCurrentPostKeyError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(91, __c11, 3) as any as S.Schema<UserCurrentPostKeyRequest>,
-  output: __S(66, __c8, 2) as any as S.Schema<PublicKey>,
+  input: __S(928, __c58, 0) as any as S.Schema<UserCurrentPostKeyRequest>,
+  output: __S(640, __c40, 0) as any as S.Schema<PublicKey>,
   errors: [Forbidden, UnprocessableEntity],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -1939,8 +1939,8 @@ export const userCurrentPutFollow: API.OperationMethod<
   UserCurrentPutFollowError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(92, __c11, 4) as any as S.Schema<UserCurrentPutFollowRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<UserCurrentPutFollowResponse>,
+  input: __S(944, __c59, 0) as any as S.Schema<UserCurrentPutFollowRequest>,
+  output: __S(752, __c47, 0) as any as S.Schema<UserCurrentPutFollowResponse>,
   errors: [Forbidden, NotFound],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -1954,8 +1954,8 @@ export const userCurrentPutStar: API.OperationMethod<
   UserCurrentPutStarError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(93, __c11, 5) as any as S.Schema<UserCurrentPutStarRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<UserCurrentPutStarResponse>,
+  input: __S(960, __c60, 0) as any as S.Schema<UserCurrentPutStarRequest>,
+  output: __S(752, __c47, 0) as any as S.Schema<UserCurrentPutStarResponse>,
   errors: [Forbidden, NotFound],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -1969,8 +1969,8 @@ export const userCurrentTrackedTimes: API.OperationMethod<
   UserCurrentTrackedTimesError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(94, __c11, 6) as any as S.Schema<UserCurrentTrackedTimesRequest>,
-  output: __S(104, __c13, 0) as any as S.Schema<UserCurrentTrackedTimesResponse>,
+  input: __S(976, __c61, 0) as any as S.Schema<UserCurrentTrackedTimesRequest>,
+  output: __S(984, __c61, 8) as any as S.Schema<UserCurrentTrackedTimesResponse>,
   errors: [Forbidden],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -1988,8 +1988,8 @@ export const userDeleteAccessToken: API.OperationMethod<
   UserDeleteAccessTokenError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(105, __c13, 1) as any as S.Schema<UserDeleteAccessTokenRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<UserDeleteAccessTokenResponse>,
+  input: __S(1008, __c63, 0) as any as S.Schema<UserDeleteAccessTokenRequest>,
+  output: __S(752, __c47, 0) as any as S.Schema<UserDeleteAccessTokenResponse>,
   errors: [Forbidden, NotFound, UnprocessableEntity],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -2003,8 +2003,8 @@ export const userDeleteAvatar: API.OperationMethod<
   UserDeleteAvatarError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(106, __c13, 2) as any as S.Schema<UserDeleteAvatarRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<UserDeleteAvatarResponse>,
+  input: __S(1040, __c65, 0) as any as S.Schema<UserDeleteAvatarRequest>,
+  output: __S(752, __c47, 0) as any as S.Schema<UserDeleteAvatarResponse>,
   errors: [Forbidden],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -2018,8 +2018,8 @@ export const userDeleteEmail: API.OperationMethod<
   UserDeleteEmailError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(107, __c13, 3) as any as S.Schema<UserDeleteEmailRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<UserDeleteEmailResponse>,
+  input: __S(1056, __c66, 0) as any as S.Schema<UserDeleteEmailRequest>,
+  output: __S(752, __c47, 0) as any as S.Schema<UserDeleteEmailResponse>,
   errors: [Forbidden, NotFound],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -2033,8 +2033,8 @@ export const userDeleteHook: API.OperationMethod<
   UserDeleteHookError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(108, __c13, 4) as any as S.Schema<UserDeleteHookRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<UserDeleteHookResponse>,
+  input: __S(1072, __c67, 0) as any as S.Schema<UserDeleteHookRequest>,
+  output: __S(752, __c47, 0) as any as S.Schema<UserDeleteHookResponse>,
   errors: [Forbidden],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -2048,8 +2048,8 @@ export const userDeleteOAuth2Application: API.OperationMethod<
   UserDeleteOAuth2ApplicationError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(109, __c13, 5) as any as S.Schema<UserDeleteOAuth2ApplicationRequest>,
-  output: __S(6, __c0, 6) as any as S.Schema<UserDeleteOAuth2ApplicationResponse>,
+  input: __S(1088, __c68, 0) as any as S.Schema<UserDeleteOAuth2ApplicationRequest>,
+  output: __S(1584, __c99, 0) as any as S.Schema<UserDeleteOAuth2ApplicationResponse>,
   errors: [Forbidden, NotFound],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -2063,8 +2063,8 @@ export const userEditHook: API.OperationMethod<
   UserEditHookError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(110, __c13, 6) as any as S.Schema<UserEditHookRequest>,
-  output: __S(44, __c5, 4) as any as S.Schema<Hook>,
+  input: __S(1104, __c69, 0) as any as S.Schema<UserEditHookRequest>,
+  output: __S(384, __c24, 0) as any as S.Schema<Hook>,
   errors: [Forbidden],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -2078,8 +2078,8 @@ export const userGetCurrent: API.OperationMethod<
   UserGetCurrentError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(111, __c13, 7) as any as S.Schema<UserGetCurrentRequest>,
-  output: __S(8, __c1, 0) as any as S.Schema<User>,
+  input: __S(1120, __c70, 0) as any as S.Schema<UserGetCurrentRequest>,
+  output: __S(1648, __c103, 0) as any as S.Schema<User>,
   errors: [Forbidden],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -2093,8 +2093,8 @@ export const userGetHeatmapData: API.OperationMethod<
   UserGetHeatmapDataError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(112, __c14, 0) as any as S.Schema<UserGetHeatmapDataRequest>,
-  output: __S(115, __c14, 3) as any as S.Schema<UserGetHeatmapDataResponse>,
+  input: __S(1136, __c71, 0) as any as S.Schema<UserGetHeatmapDataRequest>,
+  output: __S(1139, __c71, 3) as any as S.Schema<UserGetHeatmapDataResponse>,
   errors: [NotFound],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -2108,8 +2108,8 @@ export const userGetHook: API.OperationMethod<
   UserGetHookError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(116, __c14, 4) as any as S.Schema<UserGetHookRequest>,
-  output: __S(44, __c5, 4) as any as S.Schema<Hook>,
+  input: __S(1152, __c72, 0) as any as S.Schema<UserGetHookRequest>,
+  output: __S(384, __c24, 0) as any as S.Schema<Hook>,
   errors: [Forbidden],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -2123,8 +2123,8 @@ export const userGetOAuth2Application: API.OperationMethod<
   UserGetOAuth2ApplicationError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(117, __c14, 5) as any as S.Schema<UserGetOAuth2ApplicationRequest>,
-  output: __S(46, __c5, 6) as any as S.Schema<OAuth2Application>,
+  input: __S(1168, __c73, 0) as any as S.Schema<UserGetOAuth2ApplicationRequest>,
+  output: __S(416, __c26, 0) as any as S.Schema<OAuth2Application>,
   errors: [Forbidden, NotFound],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -2138,8 +2138,8 @@ export const userGetOAuth2Applications: API.OperationMethod<
   UserGetOAuth2ApplicationsError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(118, __c14, 6) as any as S.Schema<UserGetOAuth2ApplicationsRequest>,
-  output: __S(120, __c15, 0) as any as S.Schema<UserGetOAuth2ApplicationsResponse>,
+  input: __S(1184, __c74, 0) as any as S.Schema<UserGetOAuth2ApplicationsRequest>,
+  output: __S(1186, __c74, 2) as any as S.Schema<UserGetOAuth2ApplicationsResponse>,
   errors: [Forbidden],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -2153,8 +2153,8 @@ export const userGetQuota: API.OperationMethod<
   UserGetQuotaError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(121, __c15, 1) as any as S.Schema<UserGetQuotaRequest>,
-  output: __S(133, __c16, 5) as any as S.Schema<QuotaInfo>,
+  input: __S(1216, __c76, 0) as any as S.Schema<UserGetQuotaRequest>,
+  output: __S(1228, __c76, 12) as any as S.Schema<QuotaInfo>,
   errors: [Forbidden],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -2168,8 +2168,8 @@ export const userGetStopWatches: API.OperationMethod<
   UserGetStopWatchesError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(134, __c16, 6) as any as S.Schema<UserGetStopWatchesRequest>,
-  output: __S(137, __c17, 1) as any as S.Schema<UserGetStopWatchesResponse>,
+  input: __S(1232, __c77, 0) as any as S.Schema<UserGetStopWatchesRequest>,
+  output: __S(1235, __c77, 3) as any as S.Schema<UserGetStopWatchesResponse>,
   errors: [Forbidden],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -2183,8 +2183,8 @@ export const userGetTokens: API.OperationMethod<
   UserGetTokensError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(138, __c17, 2) as any as S.Schema<UserGetTokensRequest>,
-  output: __S(140, __c17, 4) as any as S.Schema<UserGetTokensResponse>,
+  input: __S(1248, __c78, 0) as any as S.Schema<UserGetTokensRequest>,
+  output: __S(1250, __c78, 2) as any as S.Schema<UserGetTokensResponse>,
   errors: [Forbidden, NotFound],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -2198,8 +2198,8 @@ export const userListActivityFeeds: API.OperationMethod<
   UserListActivityFeedsError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(141, __c17, 5) as any as S.Schema<UserListActivityFeedsRequest>,
-  output: __S(145, __c18, 1) as any as S.Schema<UserListActivityFeedsResponse>,
+  input: __S(1264, __c79, 0) as any as S.Schema<UserListActivityFeedsRequest>,
+  output: __S(1268, __c79, 4) as any as S.Schema<UserListActivityFeedsResponse>,
   errors: [NotFound],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -2213,8 +2213,8 @@ export const userListBlockedUsers: API.OperationMethod<
   UserListBlockedUsersError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(146, __c18, 2) as any as S.Schema<UserListBlockedUsersRequest>,
-  output: __S(149, __c18, 5) as any as S.Schema<UserListBlockedUsersResponse>,
+  input: __S(1280, __c80, 0) as any as S.Schema<UserListBlockedUsersRequest>,
+  output: __S(1283, __c80, 3) as any as S.Schema<UserListBlockedUsersResponse>,
   errors: [Forbidden],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -2228,8 +2228,8 @@ export const userListEmails: API.OperationMethod<
   UserListEmailsError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(150, __c18, 6) as any as S.Schema<UserListEmailsRequest>,
-  output: __S(36, __c4, 4) as any as S.Schema<UserListEmailsResponse>,
+  input: __S(1296, __c81, 0) as any as S.Schema<UserListEmailsRequest>,
+  output: __S(290, __c18, 2) as any as S.Schema<UserListEmailsResponse>,
   errors: [Forbidden],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -2243,8 +2243,8 @@ export const userListFollowers: API.OperationMethod<
   UserListFollowersError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(151, __c18, 7) as any as S.Schema<UserListFollowersRequest>,
-  output: __S(68, __c8, 4) as any as S.Schema<UserListFollowersResponse>,
+  input: __S(1312, __c82, 0) as any as S.Schema<UserListFollowersRequest>,
+  output: __S(672, __c42, 0) as any as S.Schema<UserListFollowersResponse>,
   errors: [NotFound],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -2258,8 +2258,8 @@ export const userListFollowing: API.OperationMethod<
   UserListFollowingError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(152, __c19, 0) as any as S.Schema<UserListFollowingRequest>,
-  output: __S(68, __c8, 4) as any as S.Schema<UserListFollowingResponse>,
+  input: __S(1328, __c83, 0) as any as S.Schema<UserListFollowingRequest>,
+  output: __S(672, __c42, 0) as any as S.Schema<UserListFollowingResponse>,
   errors: [NotFound],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -2273,8 +2273,8 @@ export const userListGPGKeys: API.OperationMethod<
   UserListGPGKeysError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(153, __c19, 1) as any as S.Schema<UserListGPGKeysRequest>,
-  output: __S(154, __c19, 2) as any as S.Schema<UserListGPGKeysResponse>,
+  input: __S(1344, __c84, 0) as any as S.Schema<UserListGPGKeysRequest>,
+  output: __S(1345, __c84, 1) as any as S.Schema<UserListGPGKeysResponse>,
   errors: [NotFound],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -2288,8 +2288,8 @@ export const userListHooks: API.OperationMethod<
   UserListHooksError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(155, __c19, 3) as any as S.Schema<UserListHooksRequest>,
-  output: __S(157, __c19, 5) as any as S.Schema<UserListHooksResponse>,
+  input: __S(1360, __c85, 0) as any as S.Schema<UserListHooksRequest>,
+  output: __S(1362, __c85, 2) as any as S.Schema<UserListHooksResponse>,
   errors: [Forbidden],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -2303,8 +2303,8 @@ export const userListKeys: API.OperationMethod<
   UserListKeysError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(158, __c19, 6) as any as S.Schema<UserListKeysRequest>,
-  output: __S(159, __c19, 7) as any as S.Schema<UserListKeysResponse>,
+  input: __S(1392, __c87, 0) as any as S.Schema<UserListKeysRequest>,
+  output: __S(1393, __c87, 1) as any as S.Schema<UserListKeysResponse>,
   errors: [NotFound],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -2318,8 +2318,8 @@ export const userListQuotaArtifacts: API.OperationMethod<
   UserListQuotaArtifactsError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(160, __c20, 0) as any as S.Schema<UserListQuotaArtifactsRequest>,
-  output: __S(163, __c20, 3) as any as S.Schema<UserListQuotaArtifactsResponse>,
+  input: __S(1408, __c88, 0) as any as S.Schema<UserListQuotaArtifactsRequest>,
+  output: __S(1411, __c88, 3) as any as S.Schema<UserListQuotaArtifactsResponse>,
   errors: [Forbidden],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -2333,8 +2333,8 @@ export const userListQuotaAttachments: API.OperationMethod<
   UserListQuotaAttachmentsError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(164, __c20, 4) as any as S.Schema<UserListQuotaAttachmentsRequest>,
-  output: __S(168, __c21, 0) as any as S.Schema<UserListQuotaAttachmentsResponse>,
+  input: __S(1424, __c89, 0) as any as S.Schema<UserListQuotaAttachmentsRequest>,
+  output: __S(1428, __c89, 4) as any as S.Schema<UserListQuotaAttachmentsResponse>,
   errors: [Forbidden],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -2348,8 +2348,8 @@ export const userListQuotaPackages: API.OperationMethod<
   UserListQuotaPackagesError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(169, __c21, 1) as any as S.Schema<UserListQuotaPackagesRequest>,
-  output: __S(172, __c21, 4) as any as S.Schema<UserListQuotaPackagesResponse>,
+  input: __S(1440, __c90, 0) as any as S.Schema<UserListQuotaPackagesRequest>,
+  output: __S(1443, __c90, 3) as any as S.Schema<UserListQuotaPackagesResponse>,
   errors: [Forbidden],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -2363,8 +2363,8 @@ export const userListRepos: API.OperationMethod<
   UserListReposError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(173, __c21, 5) as any as S.Schema<UserListReposRequest>,
-  output: __S(174, __c21, 6) as any as S.Schema<UserListReposResponse>,
+  input: __S(1456, __c91, 0) as any as S.Schema<UserListReposRequest>,
+  output: __S(1472, __c92, 0) as any as S.Schema<UserListReposResponse>,
   errors: [NotFound],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -2378,8 +2378,8 @@ export const userListStarred: API.OperationMethod<
   UserListStarredError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(175, __c21, 7) as any as S.Schema<UserListStarredRequest>,
-  output: __S(174, __c21, 6) as any as S.Schema<UserListStarredResponse>,
+  input: __S(1488, __c93, 0) as any as S.Schema<UserListStarredRequest>,
+  output: __S(1472, __c92, 0) as any as S.Schema<UserListStarredResponse>,
   errors: [NotFound],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -2393,8 +2393,8 @@ export const userListSubscriptions: API.OperationMethod<
   UserListSubscriptionsError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(176, __c22, 0) as any as S.Schema<UserListSubscriptionsRequest>,
-  output: __S(87, __c10, 7) as any as S.Schema<UserListSubscriptionsResponse>,
+  input: __S(1504, __c94, 0) as any as S.Schema<UserListSubscriptionsRequest>,
+  output: __S(864, __c54, 0) as any as S.Schema<UserListSubscriptionsResponse>,
   errors: [NotFound],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -2408,8 +2408,8 @@ export const userListTeams: API.OperationMethod<
   UserListTeamsError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(177, __c22, 1) as any as S.Schema<UserListTeamsRequest>,
-  output: __S(178, __c22, 2) as any as S.Schema<UserListTeamsResponse>,
+  input: __S(1520, __c95, 0) as any as S.Schema<UserListTeamsRequest>,
+  output: __S(1521, __c95, 1) as any as S.Schema<UserListTeamsResponse>,
   errors: [Forbidden],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -2423,8 +2423,8 @@ export const userSearchRunJobs: API.OperationMethod<
   UserSearchRunJobsError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(179, __c22, 3) as any as S.Schema<UserSearchRunJobsRequest>,
-  output: __S(182, __c22, 6) as any as S.Schema<UserSearchRunJobsResponse>,
+  input: __S(1536, __c96, 0) as any as S.Schema<UserSearchRunJobsRequest>,
+  output: __S(1539, __c96, 3) as any as S.Schema<UserSearchRunJobsResponse>,
   errors: [Forbidden],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -2438,8 +2438,8 @@ export const userUpdateAvatar: API.OperationMethod<
   UserUpdateAvatarError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(183, __c22, 7) as any as S.Schema<UserUpdateAvatarRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<UserUpdateAvatarResponse>,
+  input: __S(1552, __c97, 0) as any as S.Schema<UserUpdateAvatarRequest>,
+  output: __S(752, __c47, 0) as any as S.Schema<UserUpdateAvatarResponse>,
   errors: [Forbidden],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -2453,8 +2453,8 @@ export const userUpdateOAuth2Application: API.OperationMethod<
   UserUpdateOAuth2ApplicationError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(184, __c23, 0) as any as S.Schema<UserUpdateOAuth2ApplicationRequest>,
-  output: __S(46, __c5, 6) as any as S.Schema<OAuth2Application>,
+  input: __S(1600, __c100, 0) as any as S.Schema<UserUpdateOAuth2ApplicationRequest>,
+  output: __S(416, __c26, 0) as any as S.Schema<OAuth2Application>,
   errors: [Forbidden, NotFound],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -2468,8 +2468,8 @@ export const userVerifyGPGKey: API.OperationMethod<
   UserVerifyGPGKeyError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(185, __c23, 1) as any as S.Schema<UserVerifyGPGKeyRequest>,
-  output: __S(64, __c8, 0) as any as S.Schema<GPGKey>,
+  input: __S(1616, __c101, 0) as any as S.Schema<UserVerifyGPGKeyRequest>,
+  output: __S(611, __c38, 3) as any as S.Schema<GPGKey>,
   errors: [Forbidden, NotFound, UnprocessableEntity],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -2477,6 +2477,663 @@ export const userVerifyGPGKey: API.OperationMethod<
 
 // Schema builders: each runs one schema initializer, on that schema's first use.
 function __c0(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          runner_id: S.String.pipe(T.Label()),
+        }).pipe(T.Http({ method: "GET", uri: "/user/actions/runners/{runner_id}", code: 200 })),
+      ).annotate({ identifier: "GetUserRunnerRequest" });
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          description: S.optional(S.String),
+          ephemeral: S.optional(S.Boolean),
+          id: S.optional(S.Number),
+          labels: S.optional(__S(32, __c2, 0)),
+          name: S.optional(S.String),
+          owner_id: S.optional(S.Number),
+          repo_id: S.optional(S.Number),
+          status: S.optional(S.String),
+          uuid: S.optional(S.String),
+          version: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ActionRunner" });
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          visible: S.optional(S.Boolean.pipe(T.Query())),
+          page: S.optional(S.Number.pipe(T.Query())),
+          limit: S.optional(S.Number.pipe(T.Query())),
+        }).pipe(T.Http({ method: "GET", uri: "/user/actions/runners", code: 200 })),
+      ).annotate({ identifier: "GetUserRunnersRequest" });
+    case 1:
+      return S.Array(__S(16, __c1, 0));
+    case 2:
+      return S.suspend(() => __S(49, __c3, 1).pipe(T.RawResponseRoot())).annotate({
+        identifier: "GetUserRunnersResponse",
+      });
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({}).pipe(T.Http({ method: "GET", uri: "/user/settings", code: 200 })),
+      ).annotate({ identifier: "GetUserSettingsRequest" });
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          description: S.optional(S.String),
+          diff_view_style: S.optional(S.String),
+          enable_repo_unit_hints: S.optional(S.Boolean),
+          full_name: S.optional(S.String),
+          hide_activity: S.optional(S.Boolean),
+          hide_email: S.optional(S.Boolean),
+          hide_pronouns: S.optional(S.Boolean),
+          language: S.optional(S.String),
+          location: S.optional(S.String),
+          pronouns: S.optional(S.String),
+          theme: S.optional(S.String),
+          website: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "UserSettings" });
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          variablename: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({ method: "GET", uri: "/user/actions/variables/{variablename}", code: 200 }),
+        ),
+      ).annotate({ identifier: "GetUserVariableRequest" });
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          data: S.String,
+          name: S.String,
+          owner_id: S.optional(S.Number),
+          repo_id: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "ActionVariable" });
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          page: S.optional(S.Number.pipe(T.Query())),
+          limit: S.optional(S.Number.pipe(T.Query())),
+        }).pipe(T.Http({ method: "GET", uri: "/user/actions/variables", code: 200 })),
+      ).annotate({
+        identifier: "GetUserVariablesListRequest",
+      });
+    case 1:
+      return S.Array(__S(112, __c7, 0));
+    case 2:
+      return S.suspend(() => __S(129, __c8, 1).pipe(T.RawResponseRoot())).annotate({
+        identifier: "GetUserVariablesListResponse",
+      });
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({}).pipe(T.Http({ method: "GET", uri: "/user/gpg_key_token", code: 200 })),
+      ).annotate({
+        identifier: "GetVerificationTokenRequest",
+      });
+    case 1:
+      return S.suspend(() => S.String.pipe(T.RawResponseRoot())).annotate({
+        identifier: "GetVerificationTokenResponse",
+      });
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          description: S.optional(S.String),
+          ephemeral: S.optional(S.Boolean),
+          name: S.String,
+        }).pipe(T.Http({ method: "POST", uri: "/user/actions/runners", code: 200 })),
+      ).annotate({
+        identifier: "RegisterUserRunnerRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.Number),
+          token: S.optional(S.String),
+          uuid: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "RegisterRunnerResponse" });
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          q: S.optional(S.String.pipe(T.Query())),
+          uid: S.optional(S.Number.pipe(T.Query())),
+          sort: S.optional(S.String.pipe(T.Query())),
+          page: S.optional(S.Number.pipe(T.Query())),
+          limit: S.optional(S.Number.pipe(T.Query())),
+        }).pipe(T.Http({ method: "GET", uri: "/users/search", code: 200 })),
+      ).annotate({ identifier: "SearchUserRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          data: S.optional(__S(192, __c12, 0)),
+          ok: S.optional(S.Boolean),
+        }),
+      ).annotate({ identifier: "SearchUserResponse" });
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(1648, __c103, 0));
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          username: S.String.pipe(T.Label()),
+        }).pipe(T.Http({ method: "PUT", uri: "/user/unblock/{username}", code: 200 })),
+      ).annotate({ identifier: "UnblockUserRequest" });
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          secretname: S.String.pipe(T.Label()),
+          data: S.String,
+        }).pipe(T.Http({ method: "PUT", uri: "/user/actions/secrets/{secretname}", code: 200 })),
+      ).annotate({ identifier: "UpdateUserSecretRequest" });
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          description: S.optional(S.String),
+          diff_view_style: S.optional(S.String),
+          enable_repo_unit_hints: S.optional(S.Boolean),
+          full_name: S.optional(S.String),
+          hide_activity: S.optional(S.Boolean),
+          hide_email: S.optional(S.Boolean),
+          hide_pronouns: S.optional(S.Boolean),
+          language: S.optional(S.String),
+          location: S.optional(S.String),
+          pronouns: S.optional(S.String),
+          theme: S.optional(S.String),
+          website: S.optional(S.String),
+        }).pipe(T.Http({ method: "PATCH", uri: "/user/settings", code: 200 })),
+      ).annotate({
+        identifier: "UpdateUserSettingsRequest",
+      });
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          variablename: S.String.pipe(T.Label()),
+          name: S.optional(S.String),
+          value: S.String,
+        }).pipe(
+          T.Http({ method: "PUT", uri: "/user/actions/variables/{variablename}", code: 200 }),
+        ),
+      ).annotate({
+        identifier: "UpdateUserVariableRequest",
+      });
+  }
+}
+function __c17(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          emails: S.optional(__S(32, __c2, 0)),
+        }).pipe(T.Http({ method: "POST", uri: "/user/emails", code: 200 })),
+      ).annotate({ identifier: "UserAddEmailRequest" });
+  }
+}
+function __c18(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          email: S.optional(S.String),
+          primary: S.optional(S.Boolean),
+          user_id: S.optional(S.Number),
+          username: S.optional(S.String),
+          verified: S.optional(S.Boolean),
+        }),
+      ).annotate({ identifier: "Email" });
+    case 1:
+      return S.Array(__S(288, __c18, 0));
+    case 2:
+      return S.suspend(() => __S(289, __c18, 1).pipe(T.RawResponseRoot())).annotate({
+        identifier: "UserAddEmailResponse",
+      });
+  }
+}
+function __c19(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          username: S.String.pipe(T.Label()),
+        }).pipe(T.Http({ method: "PUT", uri: "/user/block/{username}", code: 200 })),
+      ).annotate({ identifier: "UserBlockUserRequest" });
+  }
+}
+function __c20(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          username: S.String.pipe(T.Label()),
+          target: S.String.pipe(T.Label()),
+        }).pipe(T.Http({ method: "GET", uri: "/users/{username}/following/{target}", code: 200 })),
+      ).annotate({
+        identifier: "UserCheckFollowingRequest",
+      });
+  }
+}
+function __c21(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subject: S.String.pipe(T.Query()),
+        }).pipe(T.Http({ method: "GET", uri: "/user/quota/check", code: 200 })),
+      ).annotate({ identifier: "UserCheckQuotaRequest" });
+    case 1:
+      return S.suspend(() => S.Boolean.pipe(T.RawResponseRoot())).annotate({
+        identifier: "UserCheckQuotaResponse",
+      });
+  }
+}
+function __c22(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          active: S.optional(S.Boolean),
+          authorization_header: S.optional(S.String),
+          branch_filter: S.optional(S.String),
+          config: __S(368, __c23, 0),
+          events: S.optional(__S(32, __c2, 0)),
+          type: S.String,
+        }).pipe(T.Http({ method: "POST", uri: "/user/hooks", code: 200 })),
+      ).annotate({ identifier: "UserCreateHookRequest" });
+  }
+}
+function __c23(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, S.String);
+    case 1:
+      return S.Array(S.String);
+  }
+}
+function __c24(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          active: S.Boolean,
+          authorization_header: S.optional(S.String),
+          branch_filter: S.optional(S.String),
+          config: S.optional(__S(368, __c23, 0)),
+          content_type: S.optional(S.String),
+          created_at: S.String,
+          events: S.optional(__S(369, __c23, 1)),
+          id: S.Number,
+          metadata: S.optional(S.Unknown),
+          type: S.String,
+          updated_at: S.String,
+          url: S.String,
+        }),
+      ).annotate({ identifier: "Hook" });
+  }
+}
+function __c25(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          confidential_client: S.optional(S.Boolean),
+          name: S.optional(S.String),
+          redirect_uris: S.optional(__S(32, __c2, 0)),
+        }).pipe(T.Http({ method: "POST", uri: "/user/applications/oauth2", code: 200 })),
+      ).annotate({
+        identifier: "UserCreateOAuth2ApplicationRequest",
+      });
+  }
+}
+function __c26(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          client_id: S.optional(S.String),
+          client_secret: S.optional(S.String.pipe(T.SensitiveValue({}))),
+          confidential_client: S.optional(S.Boolean),
+          created: S.optional(S.String),
+          id: S.optional(S.Number),
+          name: S.optional(S.String),
+          redirect_uris: S.optional(__S(32, __c2, 0)),
+        }),
+      ).annotate({ identifier: "OAuth2Application" });
+  }
+}
+function __c27(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String,
+          owner: S.String,
+        }),
+      ).annotate({ identifier: "RepoTargetOption" });
+    case 1:
+      return S.Array(__S(432, __c27, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          username: S.String.pipe(T.Label()),
+          name: S.String,
+          repositories: S.optional(__S(433, __c27, 1)),
+          scopes: S.optional(__S(32, __c2, 0)),
+        }).pipe(T.Http({ method: "POST", uri: "/users/{username}/tokens", code: 200 })),
+      ).annotate({ identifier: "UserCreateTokenRequest" });
+  }
+}
+function __c28(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          full_name: S.optional(S.String),
+          id: S.optional(S.Number),
+          name: S.optional(S.String),
+          owner: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "RepositoryMeta" });
+  }
+}
+function __c29(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(448, __c28, 0));
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          created_at: S.String,
+          id: S.Number,
+          name: S.String,
+          repositories: S.optional(__S(464, __c29, 0)),
+          scopes: S.optional(__S(32, __c2, 0)),
+          sha1: S.optional(S.String.pipe(T.SensitiveValue({}))),
+          token_last_eight: S.String,
+        }),
+      ).annotate({ identifier: "AccessToken" });
+  }
+}
+function __c30(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          username: S.String.pipe(T.Label()),
+        }).pipe(T.Http({ method: "GET", uri: "/user/following/{username}", code: 200 })),
+      ).annotate({
+        identifier: "UserCurrentCheckFollowingRequest",
+      });
+  }
+}
+function __c31(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          owner: S.String.pipe(T.Label()),
+          repo: S.String.pipe(T.Label()),
+        }).pipe(T.Http({ method: "GET", uri: "/user/starred/{owner}/{repo}", code: 200 })),
+      ).annotate({
+        identifier: "UserCurrentCheckStarringRequest",
+      });
+  }
+}
+function __c32(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          username: S.String.pipe(T.Label()),
+        }).pipe(T.Http({ method: "DELETE", uri: "/user/following/{username}", code: 200 })),
+      ).annotate({
+        identifier: "UserCurrentDeleteFollowRequest",
+      });
+  }
+}
+function __c33(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "UserCurrentDeleteFollowResponse",
+      });
+  }
+}
+function __c34(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.Number.pipe(T.Label()),
+        }).pipe(T.Http({ method: "DELETE", uri: "/user/gpg_keys/{id}", code: 200 })),
+      ).annotate({
+        identifier: "UserCurrentDeleteGPGKeyRequest",
+      });
+  }
+}
+function __c35(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.Number.pipe(T.Label()),
+        }).pipe(T.Http({ method: "DELETE", uri: "/user/keys/{id}", code: 200 })),
+      ).annotate({
+        identifier: "UserCurrentDeleteKeyRequest",
+      });
+  }
+}
+function __c36(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          owner: S.String.pipe(T.Label()),
+          repo: S.String.pipe(T.Label()),
+        }).pipe(T.Http({ method: "DELETE", uri: "/user/starred/{owner}/{repo}", code: 200 })),
+      ).annotate({
+        identifier: "UserCurrentDeleteStarRequest",
+      });
+  }
+}
+function __c37(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.Number.pipe(T.Label()),
+        }).pipe(T.Http({ method: "GET", uri: "/user/gpg_keys/{id}", code: 200 })),
+      ).annotate({
+        identifier: "UserCurrentGetGPGKeyRequest",
+      });
+  }
+}
+function __c38(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          email: S.optional(S.String),
+          verified: S.optional(S.Boolean),
+        }),
+      ).annotate({ identifier: "GPGKeyEmail" });
+    case 1:
+      return S.Array(__S(608, __c38, 0));
+    case 2:
+      return S.Array(/*@__PURE__*/ S.suspend(() => __S(611, __c38, 3)));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          can_certify: S.optional(S.Boolean),
+          can_encrypt_comms: S.optional(S.Boolean),
+          can_encrypt_storage: S.optional(S.Boolean),
+          can_sign: S.optional(S.Boolean),
+          created_at: S.optional(S.String),
+          emails: S.optional(__S(609, __c38, 1)),
+          expires_at: S.optional(S.String),
+          id: S.optional(S.Number),
+          key_id: S.optional(S.String),
+          primary_key_id: S.optional(S.String),
+          public_key: S.optional(S.String),
+          subkeys: S.optional(__S(610, __c38, 2)),
+          verified: S.optional(S.Boolean),
+        }),
+      ).annotate({ identifier: "GPGKey" });
+  }
+}
+function __c39(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.Number.pipe(T.Label()),
+        }).pipe(T.Http({ method: "GET", uri: "/user/keys/{id}", code: 200 })),
+      ).annotate({ identifier: "UserCurrentGetKeyRequest" });
+  }
+}
+function __c40(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          created_at: S.optional(S.String),
+          fingerprint: S.optional(S.String),
+          id: S.optional(S.Number),
+          key: S.optional(S.String),
+          key_type: S.optional(S.String),
+          read_only: S.optional(S.Boolean),
+          title: S.optional(S.String),
+          updated_at: S.optional(S.String),
+          url: S.optional(S.String),
+          user: S.optional(__S(1648, __c103, 0)),
+          verified: S.optional(S.Boolean),
+        }),
+      ).annotate({ identifier: "PublicKey" });
+  }
+}
+function __c41(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          page: S.optional(S.Number.pipe(T.Query())),
+          limit: S.optional(S.Number.pipe(T.Query())),
+        }).pipe(T.Http({ method: "GET", uri: "/user/followers", code: 200 })),
+      ).annotate({
+        identifier: "UserCurrentListFollowersRequest",
+      });
+  }
+}
+function __c42(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => __S(192, __c12, 0).pipe(T.RawResponseRoot())).annotate({
+        identifier: "UserCurrentListFollowersResponse",
+      });
+  }
+}
+function __c43(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          page: S.optional(S.Number.pipe(T.Query())),
+          limit: S.optional(S.Number.pipe(T.Query())),
+        }).pipe(T.Http({ method: "GET", uri: "/user/following", code: 200 })),
+      ).annotate({
+        identifier: "UserCurrentListFollowingRequest",
+      });
+  }
+}
+function __c44(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          page: S.optional(S.Number.pipe(T.Query())),
+          limit: S.optional(S.Number.pipe(T.Query())),
+        }).pipe(T.Http({ method: "GET", uri: "/user/gpg_keys", code: 200 })),
+      ).annotate({
+        identifier: "UserCurrentListGPGKeysRequest",
+      });
+    case 1:
+      return S.suspend(() => __S(720, __c45, 0).pipe(T.RawResponseRoot())).annotate({
+        identifier: "UserCurrentListGPGKeysResponse",
+      });
+  }
+}
+function __c45(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(611, __c38, 3));
+  }
+}
+function __c46(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2489,23 +3146,864 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "CreateUserVariableRequest",
       });
-    case 1:
+  }
+}
+function __c47(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "CreateUserVariableResponse",
       });
+  }
+}
+function __c48(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          fingerprint: S.optional(S.String.pipe(T.Query())),
+          page: S.optional(S.Number.pipe(T.Query())),
+          limit: S.optional(S.Number.pipe(T.Query())),
+        }).pipe(T.Http({ method: "GET", uri: "/user/keys", code: 200 })),
+      ).annotate({
+        identifier: "UserCurrentListKeysRequest",
+      });
+    case 1:
+      return S.suspend(() => __S(784, __c49, 0).pipe(T.RawResponseRoot())).annotate({
+        identifier: "UserCurrentListKeysResponse",
+      });
+  }
+}
+function __c49(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(640, __c40, 0));
+  }
+}
+function __c50(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          page: S.optional(S.Number.pipe(T.Query())),
+          limit: S.optional(S.Number.pipe(T.Query())),
+          order_by: S.optional(S.String.pipe(T.Query())),
+        }).pipe(T.Http({ method: "GET", uri: "/user/repos", code: 200 })),
+      ).annotate({
+        identifier: "UserCurrentListReposRequest",
+      });
+  }
+}
+function __c51(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          external_tracker_format: S.optional(S.String),
+          external_tracker_regexp_pattern: S.optional(S.String),
+          external_tracker_style: S.optional(S.String),
+          external_tracker_url: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ExternalTracker" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          external_wiki_url: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ExternalWiki" });
     case 2:
+      return S.suspend(() =>
+        S.Struct({
+          allow_only_contributors_to_track_time: S.optional(S.Boolean),
+          enable_issue_dependencies: S.optional(S.Boolean),
+          enable_time_tracker: S.optional(S.Boolean),
+        }),
+      ).annotate({ identifier: "InternalTracker" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          admin: S.optional(S.Boolean),
+          pull: S.optional(S.Boolean),
+          push: S.optional(S.Boolean),
+        }),
+      ).annotate({ identifier: "Permission" });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          doer: S.optional(__S(1648, __c103, 0)),
+          recipient: S.optional(__S(1648, __c103, 0)),
+          teams: S.optional(__S(834, __c52, 2)),
+        }),
+      ).annotate({ identifier: "RepoTransfer" });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          allow_fast_forward_only_merge: S.optional(S.Boolean),
+          allow_merge_commits: S.optional(S.Boolean),
+          allow_rebase: S.optional(S.Boolean),
+          allow_rebase_explicit: S.optional(S.Boolean),
+          allow_rebase_update: S.optional(S.Boolean),
+          allow_squash_merge: S.optional(S.Boolean),
+          archived: S.optional(S.Boolean),
+          archived_at: S.optional(S.String),
+          avatar_url: S.optional(S.String),
+          clone_url: S.String,
+          created_at: S.String,
+          default_allow_maintainer_edit: S.optional(S.Boolean),
+          default_branch: S.String,
+          default_delete_branch_after_merge: S.optional(S.Boolean),
+          default_merge_style: S.optional(S.String),
+          default_update_style: S.optional(S.String),
+          description: S.optional(S.String),
+          empty: S.optional(S.Boolean),
+          external_tracker: S.optional(__S(816, __c51, 0)),
+          external_wiki: S.optional(__S(817, __c51, 1)),
+          fork: S.optional(S.Boolean),
+          forks_count: S.optional(S.Number),
+          full_name: S.String,
+          globally_editable_wiki: S.optional(S.Boolean),
+          has_actions: S.optional(S.Boolean),
+          has_issues: S.optional(S.Boolean),
+          has_packages: S.optional(S.Boolean),
+          has_projects: S.optional(S.Boolean),
+          has_pull_requests: S.optional(S.Boolean),
+          has_releases: S.optional(S.Boolean),
+          has_wiki: S.optional(S.Boolean),
+          has_wiki_contents: S.optional(S.Boolean),
+          html_url: S.String,
+          id: S.Number,
+          ignore_whitespace_conflicts: S.optional(S.Boolean),
+          internal: S.optional(S.Boolean),
+          internal_tracker: S.optional(__S(818, __c51, 2)),
+          language: S.optional(S.String),
+          languages_url: S.optional(S.String),
+          link: S.optional(S.String),
+          mirror: S.optional(S.Boolean),
+          mirror_interval: S.optional(S.String),
+          mirror_updated: S.optional(S.String),
+          name: S.String,
+          object_format_name: S.optional(S.String),
+          open_issues_count: S.optional(S.Number),
+          open_pr_counter: S.optional(S.Number),
+          original_url: S.optional(S.String),
+          owner: __S(1648, __c103, 0),
+          parent: S.optional(__S(821, __c51, 5)),
+          permissions: S.optional(__S(819, __c51, 3)),
+          private: S.optional(S.Boolean),
+          release_counter: S.optional(S.Number),
+          repo_transfer: S.optional(__S(820, __c51, 4)),
+          size: S.optional(S.Number),
+          ssh_url: S.String,
+          stars_count: S.optional(S.Number),
+          template: S.optional(S.Boolean),
+          topics: S.optional(__S(32, __c2, 0)),
+          updated_at: S.String,
+          url: S.optional(S.String),
+          watchers_count: S.optional(S.Number),
+          website: S.optional(S.String),
+          wiki_branch: S.optional(S.String),
+          wiki_clone_url: S.optional(S.String),
+          wiki_ssh_url: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Repository" });
+  }
+}
+function __c52(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          avatar_url: S.optional(S.String),
+          created: S.optional(S.String),
+          description: S.optional(S.String),
+          email: S.optional(S.String),
+          full_name: S.optional(S.String),
+          id: S.Number,
+          location: S.optional(S.String),
+          name: S.optional(S.String),
+          repo_admin_change_team_access: S.optional(S.Boolean),
+          username: S.String,
+          visibility: S.optional(S.String),
+          website: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Organization" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          can_create_org_repo: S.optional(S.Boolean),
+          description: S.optional(S.String),
+          id: S.Number,
+          includes_all_repositories: S.optional(S.Boolean),
+          name: S.String,
+          organization: S.optional(__S(832, __c52, 0)),
+          permission: S.optional(S.String),
+          units: S.optional(__S(369, __c23, 1)),
+          units_map: S.optional(__S(368, __c23, 0)),
+        }),
+      ).annotate({ identifier: "Team" });
+    case 2:
+      return S.Array(__S(833, __c52, 1));
+  }
+}
+function __c53(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(821, __c51, 5));
+  }
+}
+function __c54(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => __S(848, __c53, 0).pipe(T.RawResponseRoot())).annotate({
+        identifier: "UserCurrentListReposResponse",
+      });
+  }
+}
+function __c55(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          page: S.optional(S.Number.pipe(T.Query())),
+          limit: S.optional(S.Number.pipe(T.Query())),
+        }).pipe(T.Http({ method: "GET", uri: "/user/starred", code: 200 })),
+      ).annotate({
+        identifier: "UserCurrentListStarredRequest",
+      });
+  }
+}
+function __c56(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          page: S.optional(S.Number.pipe(T.Query())),
+          limit: S.optional(S.Number.pipe(T.Query())),
+        }).pipe(T.Http({ method: "GET", uri: "/user/subscriptions", code: 200 })),
+      ).annotate({
+        identifier: "UserCurrentListSubscriptionsRequest",
+      });
+  }
+}
+function __c57(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          armored_public_key: S.String,
+          armored_signature: S.optional(S.String),
+        }).pipe(T.Http({ method: "POST", uri: "/user/gpg_keys", code: 200 })),
+      ).annotate({
+        identifier: "UserCurrentPostGPGKeyRequest",
+      });
+  }
+}
+function __c58(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          key: S.String,
+          read_only: S.optional(S.Boolean),
+          title: S.String,
+        }).pipe(T.Http({ method: "POST", uri: "/user/keys", code: 200 })),
+      ).annotate({
+        identifier: "UserCurrentPostKeyRequest",
+      });
+  }
+}
+function __c59(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          username: S.String.pipe(T.Label()),
+        }).pipe(T.Http({ method: "PUT", uri: "/user/following/{username}", code: 200 })),
+      ).annotate({
+        identifier: "UserCurrentPutFollowRequest",
+      });
+  }
+}
+function __c60(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          owner: S.String.pipe(T.Label()),
+          repo: S.String.pipe(T.Label()),
+        }).pipe(T.Http({ method: "PUT", uri: "/user/starred/{owner}/{repo}", code: 200 })),
+      ).annotate({
+        identifier: "UserCurrentPutStarRequest",
+      });
+  }
+}
+function __c61(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          page: S.optional(S.Number.pipe(T.Query())),
+          limit: S.optional(S.Number.pipe(T.Query())),
+          since: S.optional(S.String.pipe(T.Query())),
+          before: S.optional(S.String.pipe(T.Query())),
+        }).pipe(T.Http({ method: "GET", uri: "/user/times", code: 200 })),
+      ).annotate({
+        identifier: "UserCurrentTrackedTimesRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          color: S.String,
+          description: S.optional(S.String),
+          exclusive: S.optional(S.Boolean),
+          id: S.Number,
+          is_archived: S.optional(S.Boolean),
+          name: S.String,
+          url: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Label" });
+    case 2:
+      return S.Array(__S(977, __c61, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          closed_at: S.optional(S.String),
+          closed_issues: S.optional(S.Number),
+          created_at: S.optional(S.String),
+          description: S.optional(S.String),
+          due_on: S.optional(S.String),
+          id: S.optional(S.Number),
+          open_issues: S.optional(S.Number),
+          state: S.optional(S.String),
+          title: S.optional(S.String),
+          updated_at: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Milestone" });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          draft: S.optional(S.Boolean),
+          html_url: S.optional(S.String),
+          merged: S.optional(S.Boolean),
+          merged_at: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "PullRequestMeta" });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          assets: S.optional(__S(993, __c62, 1)),
+          assignee: S.optional(__S(1648, __c103, 0)),
+          assignees: S.optional(__S(192, __c12, 0)),
+          body: S.optional(S.String),
+          closed_at: S.optional(S.String),
+          comments: S.optional(S.Number),
+          created_at: S.optional(S.String),
+          due_date: S.optional(S.String),
+          html_url: S.optional(S.String),
+          id: S.optional(S.Number),
+          is_locked: S.optional(S.Boolean),
+          labels: S.optional(__S(978, __c61, 2)),
+          milestone: S.optional(__S(979, __c61, 3)),
+          number: S.optional(S.Number),
+          original_author: S.optional(S.String),
+          original_author_id: S.optional(S.Number),
+          pin_order: S.optional(S.Number),
+          pull_request: S.optional(__S(980, __c61, 4)),
+          ref: S.optional(S.String),
+          repository: S.optional(__S(448, __c28, 0)),
+          state: S.optional(S.String),
+          title: S.optional(S.String),
+          updated_at: S.optional(S.String),
+          url: S.optional(S.String),
+          user: S.optional(__S(1648, __c103, 0)),
+        }),
+      ).annotate({ identifier: "Issue" });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          created: S.optional(S.String),
+          id: S.optional(S.Number),
+          issue: S.optional(__S(981, __c61, 5)),
+          issue_id: S.optional(S.Number),
+          time: S.optional(S.Number),
+          user_id: S.optional(S.Number),
+          user_name: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "TrackedTime" });
+    case 7:
+      return S.Array(__S(982, __c61, 6));
+    case 8:
+      return S.suspend(() => __S(983, __c61, 7).pipe(T.RawResponseRoot())).annotate({
+        identifier: "UserCurrentTrackedTimesResponse",
+      });
+  }
+}
+function __c62(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          browser_download_url: S.optional(S.String),
+          created_at: S.optional(S.String),
+          download_count: S.optional(S.Number),
+          id: S.optional(S.Number),
+          name: S.optional(S.String),
+          size: S.optional(S.Number),
+          type: S.optional(S.String),
+          uuid: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Attachment" });
+    case 1:
+      return S.Array(__S(992, __c62, 0));
+  }
+}
+function __c63(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          username: S.String.pipe(T.Label()),
+          token: S.String.pipe(T.Label()),
+        }).pipe(T.Http({ method: "DELETE", uri: "/users/{username}/tokens/{token}", code: 200 })),
+      ).annotate({
+        identifier: "UserDeleteAccessTokenRequest",
+      });
+  }
+}
+function __c64(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           runner_id: S.String.pipe(T.Label()),
         }).pipe(T.Http({ method: "DELETE", uri: "/user/actions/runners/{runner_id}", code: 200 })),
       ).annotate({ identifier: "DeleteUserRunnerRequest" });
+  }
+}
+function __c65(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({}).pipe(T.Http({ method: "DELETE", uri: "/user/avatar", code: 200 })),
+      ).annotate({ identifier: "UserDeleteAvatarRequest" });
+  }
+}
+function __c66(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          emails: S.optional(__S(32, __c2, 0)),
+        }).pipe(T.Http({ method: "DELETE", uri: "/user/emails", code: 200 })),
+      ).annotate({ identifier: "UserDeleteEmailRequest" });
+  }
+}
+function __c67(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.Number.pipe(T.Label()),
+        }).pipe(T.Http({ method: "DELETE", uri: "/user/hooks/{id}", code: 200 })),
+      ).annotate({ identifier: "UserDeleteHookRequest" });
+  }
+}
+function __c68(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.Number.pipe(T.Label()),
+        }).pipe(T.Http({ method: "DELETE", uri: "/user/applications/oauth2/{id}", code: 200 })),
+      ).annotate({
+        identifier: "UserDeleteOAuth2ApplicationRequest",
+      });
+  }
+}
+function __c69(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.Number.pipe(T.Label()),
+          active: S.optional(S.Boolean),
+          authorization_header: S.optional(S.String),
+          branch_filter: S.optional(S.String),
+          config: S.optional(__S(368, __c23, 0)),
+          events: S.optional(__S(32, __c2, 0)),
+        }).pipe(T.Http({ method: "PATCH", uri: "/user/hooks/{id}", code: 200 })),
+      ).annotate({ identifier: "UserEditHookRequest" });
+  }
+}
+function __c70(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({}).pipe(T.Http({ method: "GET", uri: "/user", code: 200 })),
+      ).annotate({ identifier: "UserGetCurrentRequest" });
+  }
+}
+function __c71(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          username: S.String.pipe(T.Label()),
+        }).pipe(T.Http({ method: "GET", uri: "/users/{username}/heatmap", code: 200 })),
+      ).annotate({
+        identifier: "UserGetHeatmapDataRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          contributions: S.optional(S.Number),
+          timestamp: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "UserHeatmapData" });
+    case 2:
+      return S.Array(__S(1137, __c71, 1));
     case 3:
+      return S.suspend(() => __S(1138, __c71, 2).pipe(T.RawResponseRoot())).annotate({
+        identifier: "UserGetHeatmapDataResponse",
+      });
+  }
+}
+function __c72(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.Number.pipe(T.Label()),
+        }).pipe(T.Http({ method: "GET", uri: "/user/hooks/{id}", code: 200 })),
+      ).annotate({ identifier: "UserGetHookRequest" });
+  }
+}
+function __c73(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.Number.pipe(T.Label()),
+        }).pipe(T.Http({ method: "GET", uri: "/user/applications/oauth2/{id}", code: 200 })),
+      ).annotate({
+        identifier: "UserGetOAuth2ApplicationRequest",
+      });
+  }
+}
+function __c74(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          page: S.optional(S.Number.pipe(T.Query())),
+          limit: S.optional(S.Number.pipe(T.Query())),
+        }).pipe(T.Http({ method: "GET", uri: "/user/applications/oauth2", code: 200 })),
+      ).annotate({
+        identifier: "UserGetOAuth2ApplicationsRequest",
+      });
+    case 1:
+      return S.Array(__S(416, __c26, 0));
+    case 2:
+      return S.suspend(() => __S(1185, __c74, 1).pipe(T.RawResponseRoot())).annotate({
+        identifier: "UserGetOAuth2ApplicationsResponse",
+      });
+  }
+}
+function __c75(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           secretname: S.String.pipe(T.Label()),
         }).pipe(T.Http({ method: "DELETE", uri: "/user/actions/secrets/{secretname}", code: 200 })),
       ).annotate({ identifier: "DeleteUserSecretRequest" });
+  }
+}
+function __c76(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({}).pipe(T.Http({ method: "GET", uri: "/user/quota", code: 200 })),
+      ).annotate({ identifier: "UserGetQuotaRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          limit: S.optional(S.Number),
+          name: S.optional(S.String),
+          subjects: S.optional(__S(32, __c2, 0)),
+        }),
+      ).annotate({ identifier: "QuotaRuleInfo" });
+    case 2:
+      return S.Array(__S(1217, __c76, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.optional(S.String),
+          rules: S.optional(__S(1218, __c76, 2)),
+        }),
+      ).annotate({ identifier: "QuotaGroup" });
     case 4:
+      return S.Array(__S(1219, __c76, 3));
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          issues: S.optional(S.Number),
+          releases: S.optional(S.Number),
+        }),
+      ).annotate({
+        identifier: "QuotaUsedSizeAssetsAttachments",
+      });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          all: S.optional(S.Number),
+        }),
+      ).annotate({
+        identifier: "QuotaUsedSizeAssetsPackages",
+      });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          artifacts: S.optional(S.Number),
+          attachments: S.optional(__S(1221, __c76, 5)),
+          packages: S.optional(__S(1222, __c76, 6)),
+        }),
+      ).annotate({ identifier: "QuotaUsedSizeAssets" });
+    case 8:
+      return S.suspend(() =>
+        S.Struct({
+          LFS: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "QuotaUsedSizeGit" });
+    case 9:
+      return S.suspend(() =>
+        S.Struct({
+          private: S.optional(S.Number),
+          public: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "QuotaUsedSizeRepos" });
+    case 10:
+      return S.suspend(() =>
+        S.Struct({
+          assets: S.optional(__S(1223, __c76, 7)),
+          git: S.optional(__S(1224, __c76, 8)),
+          repos: S.optional(__S(1225, __c76, 9)),
+        }),
+      ).annotate({ identifier: "QuotaUsedSize" });
+    case 11:
+      return S.suspend(() =>
+        S.Struct({
+          size: S.optional(__S(1226, __c76, 10)),
+        }),
+      ).annotate({ identifier: "QuotaUsed" });
+    case 12:
+      return S.suspend(() =>
+        S.Struct({
+          groups: S.optional(__S(1220, __c76, 4)),
+          used: S.optional(__S(1227, __c76, 11)),
+        }),
+      ).annotate({ identifier: "QuotaInfo" });
+  }
+}
+function __c77(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          page: S.optional(S.Number.pipe(T.Query())),
+          limit: S.optional(S.Number.pipe(T.Query())),
+        }).pipe(T.Http({ method: "GET", uri: "/user/stopwatches", code: 200 })),
+      ).annotate({
+        identifier: "UserGetStopWatchesRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          created: S.optional(S.String),
+          duration: S.optional(S.String),
+          issue_index: S.optional(S.Number),
+          issue_title: S.optional(S.String),
+          repo_name: S.optional(S.String),
+          repo_owner_name: S.optional(S.String),
+          seconds: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "StopWatch" });
+    case 2:
+      return S.Array(__S(1233, __c77, 1));
+    case 3:
+      return S.suspend(() => __S(1234, __c77, 2).pipe(T.RawResponseRoot())).annotate({
+        identifier: "UserGetStopWatchesResponse",
+      });
+  }
+}
+function __c78(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          username: S.String.pipe(T.Label()),
+          page: S.optional(S.Number.pipe(T.Query())),
+          limit: S.optional(S.Number.pipe(T.Query())),
+        }).pipe(T.Http({ method: "GET", uri: "/users/{username}/tokens", code: 200 })),
+      ).annotate({ identifier: "UserGetTokensRequest" });
+    case 1:
+      return S.Array(__S(465, __c29, 1));
+    case 2:
+      return S.suspend(() => __S(1249, __c78, 1).pipe(T.RawResponseRoot())).annotate({
+        identifier: "UserGetTokensResponse",
+      });
+  }
+}
+function __c79(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          username: S.String.pipe(T.Label()),
+          only_performed_by: S.optional(S.Boolean.pipe(T.Query("only-performed-by"))),
+          date: S.optional(S.String.pipe(T.Query())),
+          page: S.optional(S.Number.pipe(T.Query())),
+          limit: S.optional(S.Number.pipe(T.Query())),
+        }).pipe(T.Http({ method: "GET", uri: "/users/{username}/activities/feeds", code: 200 })),
+      ).annotate({
+        identifier: "UserListActivityFeedsRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          assets: S.optional(__S(993, __c62, 1)),
+          body: S.optional(S.String),
+          created_at: S.optional(S.String),
+          html_url: S.optional(S.String),
+          id: S.optional(S.Number),
+          issue_url: S.optional(S.String),
+          original_author: S.optional(S.String),
+          original_author_id: S.optional(S.Number),
+          pull_request_url: S.optional(S.String),
+          updated_at: S.optional(S.String),
+          user: S.optional(__S(1648, __c103, 0)),
+        }),
+      ).annotate({ identifier: "Comment" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          act_user: S.optional(__S(1648, __c103, 0)),
+          act_user_id: S.optional(S.Number),
+          comment: S.optional(__S(1265, __c79, 1)),
+          comment_id: S.optional(S.Number),
+          content: S.optional(S.String),
+          created: S.optional(S.String),
+          id: S.optional(S.Number),
+          is_private: S.optional(S.Boolean),
+          op_type: S.optional(S.String),
+          ref_name: S.optional(S.String),
+          repo: S.optional(__S(821, __c51, 5)),
+          repo_id: S.optional(S.Number),
+          user_id: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "Activity" });
+    case 3:
+      return S.Array(__S(1266, __c79, 2));
+    case 4:
+      return S.suspend(() => __S(1267, __c79, 3).pipe(T.RawResponseRoot())).annotate({
+        identifier: "UserListActivityFeedsResponse",
+      });
+  }
+}
+function __c80(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          page: S.optional(S.Number.pipe(T.Query())),
+          limit: S.optional(S.Number.pipe(T.Query())),
+        }).pipe(T.Http({ method: "GET", uri: "/user/list_blocked", code: 200 })),
+      ).annotate({
+        identifier: "UserListBlockedUsersRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          block_id: S.optional(S.Number),
+          created_at: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "BlockedUser" });
+    case 2:
+      return S.Array(__S(1281, __c80, 1));
+    case 3:
+      return S.suspend(() => __S(1282, __c80, 2).pipe(T.RawResponseRoot())).annotate({
+        identifier: "UserListBlockedUsersResponse",
+      });
+  }
+}
+function __c81(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({}).pipe(T.Http({ method: "GET", uri: "/user/emails", code: 200 })),
+      ).annotate({ identifier: "UserListEmailsRequest" });
+  }
+}
+function __c82(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          username: S.String.pipe(T.Label()),
+          page: S.optional(S.Number.pipe(T.Query())),
+          limit: S.optional(S.Number.pipe(T.Query())),
+        }).pipe(T.Http({ method: "GET", uri: "/users/{username}/followers", code: 200 })),
+      ).annotate({ identifier: "UserListFollowersRequest" });
+  }
+}
+function __c83(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          username: S.String.pipe(T.Label()),
+          page: S.optional(S.Number.pipe(T.Query())),
+          limit: S.optional(S.Number.pipe(T.Query())),
+        }).pipe(T.Http({ method: "GET", uri: "/users/{username}/following", code: 200 })),
+      ).annotate({ identifier: "UserListFollowingRequest" });
+  }
+}
+function __c84(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          username: S.String.pipe(T.Label()),
+          page: S.optional(S.Number.pipe(T.Query())),
+          limit: S.optional(S.Number.pipe(T.Query())),
+        }).pipe(T.Http({ method: "GET", uri: "/users/{username}/gpg_keys", code: 200 })),
+      ).annotate({ identifier: "UserListGPGKeysRequest" });
+    case 1:
+      return S.suspend(() => __S(720, __c45, 0).pipe(T.RawResponseRoot())).annotate({
+        identifier: "UserListGPGKeysResponse",
+      });
+  }
+}
+function __c85(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          page: S.optional(S.Number.pipe(T.Query())),
+          limit: S.optional(S.Number.pipe(T.Query())),
+        }).pipe(T.Http({ method: "GET", uri: "/user/hooks", code: 200 })),
+      ).annotate({ identifier: "UserListHooksRequest" });
+    case 1:
+      return S.Array(__S(384, __c24, 0));
+    case 2:
+      return S.suspend(() => __S(1361, __c85, 1).pipe(T.RawResponseRoot())).annotate({
+        identifier: "UserListHooksResponse",
+      });
+  }
+}
+function __c86(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           variablename: S.String.pipe(T.Label()),
@@ -2515,7 +4013,224 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "DeleteUserVariableRequest",
       });
-    case 5:
+  }
+}
+function __c87(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          username: S.String.pipe(T.Label()),
+          fingerprint: S.optional(S.String.pipe(T.Query())),
+          page: S.optional(S.Number.pipe(T.Query())),
+          limit: S.optional(S.Number.pipe(T.Query())),
+        }).pipe(T.Http({ method: "GET", uri: "/users/{username}/keys", code: 200 })),
+      ).annotate({ identifier: "UserListKeysRequest" });
+    case 1:
+      return S.suspend(() => __S(784, __c49, 0).pipe(T.RawResponseRoot())).annotate({
+        identifier: "UserListKeysResponse",
+      });
+  }
+}
+function __c88(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          page: S.optional(S.Number.pipe(T.Query())),
+          limit: S.optional(S.Number.pipe(T.Query())),
+        }).pipe(T.Http({ method: "GET", uri: "/user/quota/artifacts", code: 200 })),
+      ).annotate({
+        identifier: "UserListQuotaArtifactsRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          html_url: S.optional(S.String),
+          name: S.optional(S.String),
+          size: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "QuotaUsedArtifact" });
+    case 2:
+      return S.Array(__S(1409, __c88, 1));
+    case 3:
+      return S.suspend(() => __S(1410, __c88, 2).pipe(T.RawResponseRoot())).annotate({
+        identifier: "UserListQuotaArtifactsResponse",
+      });
+  }
+}
+function __c89(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          page: S.optional(S.Number.pipe(T.Query())),
+          limit: S.optional(S.Number.pipe(T.Query())),
+        }).pipe(T.Http({ method: "GET", uri: "/user/quota/attachments", code: 200 })),
+      ).annotate({
+        identifier: "UserListQuotaAttachmentsRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          api_url: S.optional(S.String),
+          html_url: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "QuotaUsedAttachmentContainedIn",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          api_url: S.optional(S.String),
+          contained_in: S.optional(__S(1425, __c89, 1)),
+          name: S.optional(S.String),
+          size: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "QuotaUsedAttachment" });
+    case 3:
+      return S.Array(__S(1426, __c89, 2));
+    case 4:
+      return S.suspend(() => __S(1427, __c89, 3).pipe(T.RawResponseRoot())).annotate({
+        identifier: "UserListQuotaAttachmentsResponse",
+      });
+  }
+}
+function __c90(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          page: S.optional(S.Number.pipe(T.Query())),
+          limit: S.optional(S.Number.pipe(T.Query())),
+        }).pipe(T.Http({ method: "GET", uri: "/user/quota/packages", code: 200 })),
+      ).annotate({
+        identifier: "UserListQuotaPackagesRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          html_url: S.optional(S.String),
+          name: S.optional(S.String),
+          size: S.optional(S.Number),
+          type: S.optional(S.String),
+          version: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "QuotaUsedPackage" });
+    case 2:
+      return S.Array(__S(1441, __c90, 1));
+    case 3:
+      return S.suspend(() => __S(1442, __c90, 2).pipe(T.RawResponseRoot())).annotate({
+        identifier: "UserListQuotaPackagesResponse",
+      });
+  }
+}
+function __c91(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          username: S.String.pipe(T.Label()),
+          page: S.optional(S.Number.pipe(T.Query())),
+          limit: S.optional(S.Number.pipe(T.Query())),
+        }).pipe(T.Http({ method: "GET", uri: "/users/{username}/repos", code: 200 })),
+      ).annotate({ identifier: "UserListReposRequest" });
+  }
+}
+function __c92(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => __S(848, __c53, 0).pipe(T.RawResponseRoot())).annotate({
+        identifier: "UserListReposResponse",
+      });
+  }
+}
+function __c93(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          username: S.String.pipe(T.Label()),
+          page: S.optional(S.Number.pipe(T.Query())),
+          limit: S.optional(S.Number.pipe(T.Query())),
+        }).pipe(T.Http({ method: "GET", uri: "/users/{username}/starred", code: 200 })),
+      ).annotate({ identifier: "UserListStarredRequest" });
+  }
+}
+function __c94(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          username: S.String.pipe(T.Label()),
+          page: S.optional(S.Number.pipe(T.Query())),
+          limit: S.optional(S.Number.pipe(T.Query())),
+        }).pipe(T.Http({ method: "GET", uri: "/users/{username}/subscriptions", code: 200 })),
+      ).annotate({
+        identifier: "UserListSubscriptionsRequest",
+      });
+  }
+}
+function __c95(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          page: S.optional(S.Number.pipe(T.Query())),
+          limit: S.optional(S.Number.pipe(T.Query())),
+        }).pipe(T.Http({ method: "GET", uri: "/user/teams", code: 200 })),
+      ).annotate({ identifier: "UserListTeamsRequest" });
+    case 1:
+      return S.suspend(() => __S(834, __c52, 2).pipe(T.RawResponseRoot())).annotate({
+        identifier: "UserListTeamsResponse",
+      });
+  }
+}
+function __c96(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          labels: S.optional(S.String.pipe(T.Query())),
+        }).pipe(T.Http({ method: "GET", uri: "/user/actions/runners/jobs", code: 200 })),
+      ).annotate({ identifier: "UserSearchRunJobsRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          attempt: S.optional(S.Number),
+          handle: S.optional(S.String),
+          id: S.optional(S.Number),
+          name: S.optional(S.String),
+          needs: S.optional(__S(32, __c2, 0)),
+          owner_id: S.optional(S.Number),
+          repo_id: S.optional(S.Number),
+          run_id: S.optional(S.Number),
+          runs_on: S.optional(__S(32, __c2, 0)),
+          status: S.optional(S.String),
+          task_id: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "ActionRunJob" });
+    case 2:
+      return S.Array(__S(1537, __c96, 1));
+    case 3:
+      return S.suspend(() => __S(1538, __c96, 2).pipe(T.RawResponseRoot())).annotate({
+        identifier: "UserSearchRunJobsResponse",
+      });
+  }
+}
+function __c97(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          image: S.optional(S.String),
+        }).pipe(T.Http({ method: "POST", uri: "/user/avatar", code: 200 })),
+      ).annotate({ identifier: "UserUpdateAvatarRequest" });
+  }
+}
+function __c98(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           target: S.optional(S.String),
@@ -2523,11 +4238,45 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "FollowUserCurrentActivityPubRequest",
       });
-    case 6:
+  }
+}
+function __c99(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "FollowUserCurrentActivityPubResponse",
       });
-    case 7:
+  }
+}
+function __c100(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.Number.pipe(T.Label()),
+          confidential_client: S.optional(S.Boolean),
+          name: S.optional(S.String),
+          redirect_uris: S.optional(__S(32, __c2, 0)),
+        }).pipe(T.Http({ method: "PATCH", uri: "/user/applications/oauth2/{id}", code: 200 })),
+      ).annotate({
+        identifier: "UserUpdateOAuth2ApplicationRequest",
+      });
+  }
+}
+function __c101(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          armored_signature: S.optional(S.String),
+          key_id: S.String,
+        }).pipe(T.Http({ method: "POST", uri: "/user/gpg_key_verify", code: 200 })),
+      ).annotate({ identifier: "UserVerifyGPGKeyRequest" });
+  }
+}
+function __c102(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           username: S.String.pipe(T.Label()),
@@ -2535,7 +4284,7 @@ function __c0(j: number): any {
       ).annotate({ identifier: "GetUserRequest" });
   }
 }
-function __c1(j: number): any {
+function __c103(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2565,1438 +4314,8 @@ function __c1(j: number): any {
           website: S.optional(S.String),
         }),
       ).annotate({ identifier: "User" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          runner_id: S.String.pipe(T.Label()),
-        }).pipe(T.Http({ method: "GET", uri: "/user/actions/runners/{runner_id}", code: 200 })),
-      ).annotate({ identifier: "GetUserRunnerRequest" });
-    case 2:
-      return S.Array(S.String);
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          description: S.optional(S.String),
-          ephemeral: S.optional(S.Boolean),
-          id: S.optional(S.Number),
-          labels: S.optional(__S(10, __c1, 2)),
-          name: S.optional(S.String),
-          owner_id: S.optional(S.Number),
-          repo_id: S.optional(S.Number),
-          status: S.optional(S.String),
-          uuid: S.optional(S.String),
-          version: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ActionRunner" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          visible: S.optional(S.Boolean.pipe(T.Query())),
-          page: S.optional(S.Number.pipe(T.Query())),
-          limit: S.optional(S.Number.pipe(T.Query())),
-        }).pipe(T.Http({ method: "GET", uri: "/user/actions/runners", code: 200 })),
-      ).annotate({ identifier: "GetUserRunnersRequest" });
-    case 5:
-      return S.Array(__S(11, __c1, 3));
-    case 6:
-      return S.suspend(() => __S(13, __c1, 5).pipe(T.RawResponseRoot())).annotate({
-        identifier: "GetUserRunnersResponse",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({}).pipe(T.Http({ method: "GET", uri: "/user/settings", code: 200 })),
-      ).annotate({ identifier: "GetUserSettingsRequest" });
   }
 }
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          description: S.optional(S.String),
-          diff_view_style: S.optional(S.String),
-          enable_repo_unit_hints: S.optional(S.Boolean),
-          full_name: S.optional(S.String),
-          hide_activity: S.optional(S.Boolean),
-          hide_email: S.optional(S.Boolean),
-          hide_pronouns: S.optional(S.Boolean),
-          language: S.optional(S.String),
-          location: S.optional(S.String),
-          pronouns: S.optional(S.String),
-          theme: S.optional(S.String),
-          website: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "UserSettings" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          variablename: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({ method: "GET", uri: "/user/actions/variables/{variablename}", code: 200 }),
-        ),
-      ).annotate({ identifier: "GetUserVariableRequest" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          data: S.String,
-          name: S.String,
-          owner_id: S.optional(S.Number),
-          repo_id: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "ActionVariable" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          page: S.optional(S.Number.pipe(T.Query())),
-          limit: S.optional(S.Number.pipe(T.Query())),
-        }).pipe(T.Http({ method: "GET", uri: "/user/actions/variables", code: 200 })),
-      ).annotate({
-        identifier: "GetUserVariablesListRequest",
-      });
-    case 4:
-      return S.Array(__S(18, __c2, 2));
-    case 5:
-      return S.suspend(() => __S(20, __c2, 4).pipe(T.RawResponseRoot())).annotate({
-        identifier: "GetUserVariablesListResponse",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({}).pipe(T.Http({ method: "GET", uri: "/user/gpg_key_token", code: 200 })),
-      ).annotate({
-        identifier: "GetVerificationTokenRequest",
-      });
-    case 7:
-      return S.suspend(() => S.String.pipe(T.RawResponseRoot())).annotate({
-        identifier: "GetVerificationTokenResponse",
-      });
-  }
-}
-function __c3(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          description: S.optional(S.String),
-          ephemeral: S.optional(S.Boolean),
-          name: S.String,
-        }).pipe(T.Http({ method: "POST", uri: "/user/actions/runners", code: 200 })),
-      ).annotate({
-        identifier: "RegisterUserRunnerRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.Number),
-          token: S.optional(S.String),
-          uuid: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "RegisterRunnerResponse" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          q: S.optional(S.String.pipe(T.Query())),
-          uid: S.optional(S.Number.pipe(T.Query())),
-          sort: S.optional(S.String.pipe(T.Query())),
-          page: S.optional(S.Number.pipe(T.Query())),
-          limit: S.optional(S.Number.pipe(T.Query())),
-        }).pipe(T.Http({ method: "GET", uri: "/users/search", code: 200 })),
-      ).annotate({ identifier: "SearchUserRequest" });
-    case 3:
-      return S.Array(__S(8, __c1, 0));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          data: S.optional(__S(27, __c3, 3)),
-          ok: S.optional(S.Boolean),
-        }),
-      ).annotate({ identifier: "SearchUserResponse" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          username: S.String.pipe(T.Label()),
-        }).pipe(T.Http({ method: "PUT", uri: "/user/unblock/{username}", code: 200 })),
-      ).annotate({ identifier: "UnblockUserRequest" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          secretname: S.String.pipe(T.Label()),
-          data: S.String,
-        }).pipe(T.Http({ method: "PUT", uri: "/user/actions/secrets/{secretname}", code: 200 })),
-      ).annotate({ identifier: "UpdateUserSecretRequest" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          description: S.optional(S.String),
-          diff_view_style: S.optional(S.String),
-          enable_repo_unit_hints: S.optional(S.Boolean),
-          full_name: S.optional(S.String),
-          hide_activity: S.optional(S.Boolean),
-          hide_email: S.optional(S.Boolean),
-          hide_pronouns: S.optional(S.Boolean),
-          language: S.optional(S.String),
-          location: S.optional(S.String),
-          pronouns: S.optional(S.String),
-          theme: S.optional(S.String),
-          website: S.optional(S.String),
-        }).pipe(T.Http({ method: "PATCH", uri: "/user/settings", code: 200 })),
-      ).annotate({
-        identifier: "UpdateUserSettingsRequest",
-      });
-  }
-}
-function __c4(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          variablename: S.String.pipe(T.Label()),
-          name: S.optional(S.String),
-          value: S.String,
-        }).pipe(
-          T.Http({ method: "PUT", uri: "/user/actions/variables/{variablename}", code: 200 }),
-        ),
-      ).annotate({
-        identifier: "UpdateUserVariableRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          emails: S.optional(__S(10, __c1, 2)),
-        }).pipe(T.Http({ method: "POST", uri: "/user/emails", code: 200 })),
-      ).annotate({ identifier: "UserAddEmailRequest" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          email: S.optional(S.String),
-          primary: S.optional(S.Boolean),
-          user_id: S.optional(S.Number),
-          username: S.optional(S.String),
-          verified: S.optional(S.Boolean),
-        }),
-      ).annotate({ identifier: "Email" });
-    case 3:
-      return S.Array(__S(34, __c4, 2));
-    case 4:
-      return S.suspend(() => __S(35, __c4, 3).pipe(T.RawResponseRoot())).annotate({
-        identifier: "UserAddEmailResponse",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          username: S.String.pipe(T.Label()),
-        }).pipe(T.Http({ method: "PUT", uri: "/user/block/{username}", code: 200 })),
-      ).annotate({ identifier: "UserBlockUserRequest" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          username: S.String.pipe(T.Label()),
-          target: S.String.pipe(T.Label()),
-        }).pipe(T.Http({ method: "GET", uri: "/users/{username}/following/{target}", code: 200 })),
-      ).annotate({
-        identifier: "UserCheckFollowingRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          subject: S.String.pipe(T.Query()),
-        }).pipe(T.Http({ method: "GET", uri: "/user/quota/check", code: 200 })),
-      ).annotate({ identifier: "UserCheckQuotaRequest" });
-  }
-}
-function __c5(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() => S.Boolean.pipe(T.RawResponseRoot())).annotate({
-        identifier: "UserCheckQuotaResponse",
-      });
-    case 1:
-      return S.Record(S.String, S.String);
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          active: S.optional(S.Boolean),
-          authorization_header: S.optional(S.String),
-          branch_filter: S.optional(S.String),
-          config: __S(41, __c5, 1),
-          events: S.optional(__S(10, __c1, 2)),
-          type: S.String,
-        }).pipe(T.Http({ method: "POST", uri: "/user/hooks", code: 200 })),
-      ).annotate({ identifier: "UserCreateHookRequest" });
-    case 3:
-      return S.Array(S.String);
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          active: S.Boolean,
-          authorization_header: S.optional(S.String),
-          branch_filter: S.optional(S.String),
-          config: S.optional(__S(41, __c5, 1)),
-          content_type: S.optional(S.String),
-          created_at: S.String,
-          events: S.optional(__S(43, __c5, 3)),
-          id: S.Number,
-          metadata: S.optional(S.Unknown),
-          type: S.String,
-          updated_at: S.String,
-          url: S.String,
-        }),
-      ).annotate({ identifier: "Hook" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          confidential_client: S.optional(S.Boolean),
-          name: S.optional(S.String),
-          redirect_uris: S.optional(__S(10, __c1, 2)),
-        }).pipe(T.Http({ method: "POST", uri: "/user/applications/oauth2", code: 200 })),
-      ).annotate({
-        identifier: "UserCreateOAuth2ApplicationRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          client_id: S.optional(S.String),
-          client_secret: S.optional(S.String.pipe(T.SensitiveValue({}))),
-          confidential_client: S.optional(S.Boolean),
-          created: S.optional(S.String),
-          id: S.optional(S.Number),
-          name: S.optional(S.String),
-          redirect_uris: S.optional(__S(10, __c1, 2)),
-        }),
-      ).annotate({ identifier: "OAuth2Application" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String,
-          owner: S.String,
-        }),
-      ).annotate({ identifier: "RepoTargetOption" });
-  }
-}
-function __c6(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(47, __c5, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          username: S.String.pipe(T.Label()),
-          name: S.String,
-          repositories: S.optional(__S(48, __c6, 0)),
-          scopes: S.optional(__S(10, __c1, 2)),
-        }).pipe(T.Http({ method: "POST", uri: "/users/{username}/tokens", code: 200 })),
-      ).annotate({ identifier: "UserCreateTokenRequest" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          full_name: S.optional(S.String),
-          id: S.optional(S.Number),
-          name: S.optional(S.String),
-          owner: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "RepositoryMeta" });
-    case 3:
-      return S.Array(__S(50, __c6, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          created_at: S.String,
-          id: S.Number,
-          name: S.String,
-          repositories: S.optional(__S(51, __c6, 3)),
-          scopes: S.optional(__S(10, __c1, 2)),
-          sha1: S.optional(S.String.pipe(T.SensitiveValue({}))),
-          token_last_eight: S.String,
-        }),
-      ).annotate({ identifier: "AccessToken" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          username: S.String.pipe(T.Label()),
-        }).pipe(T.Http({ method: "GET", uri: "/user/following/{username}", code: 200 })),
-      ).annotate({
-        identifier: "UserCurrentCheckFollowingRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          owner: S.String.pipe(T.Label()),
-          repo: S.String.pipe(T.Label()),
-        }).pipe(T.Http({ method: "GET", uri: "/user/starred/{owner}/{repo}", code: 200 })),
-      ).annotate({
-        identifier: "UserCurrentCheckStarringRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          username: S.String.pipe(T.Label()),
-        }).pipe(T.Http({ method: "DELETE", uri: "/user/following/{username}", code: 200 })),
-      ).annotate({
-        identifier: "UserCurrentDeleteFollowRequest",
-      });
-  }
-}
-function __c7(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "UserCurrentDeleteFollowResponse",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.Number.pipe(T.Label()),
-        }).pipe(T.Http({ method: "DELETE", uri: "/user/gpg_keys/{id}", code: 200 })),
-      ).annotate({
-        identifier: "UserCurrentDeleteGPGKeyRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.Number.pipe(T.Label()),
-        }).pipe(T.Http({ method: "DELETE", uri: "/user/keys/{id}", code: 200 })),
-      ).annotate({
-        identifier: "UserCurrentDeleteKeyRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          owner: S.String.pipe(T.Label()),
-          repo: S.String.pipe(T.Label()),
-        }).pipe(T.Http({ method: "DELETE", uri: "/user/starred/{owner}/{repo}", code: 200 })),
-      ).annotate({
-        identifier: "UserCurrentDeleteStarRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.Number.pipe(T.Label()),
-        }).pipe(T.Http({ method: "GET", uri: "/user/gpg_keys/{id}", code: 200 })),
-      ).annotate({
-        identifier: "UserCurrentGetGPGKeyRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          email: S.optional(S.String),
-          verified: S.optional(S.Boolean),
-        }),
-      ).annotate({ identifier: "GPGKeyEmail" });
-    case 6:
-      return S.Array(__S(61, __c7, 5));
-    case 7:
-      return S.Array(/*@__PURE__*/ S.suspend(() => __S(64, __c8, 0)));
-  }
-}
-function __c8(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          can_certify: S.optional(S.Boolean),
-          can_encrypt_comms: S.optional(S.Boolean),
-          can_encrypt_storage: S.optional(S.Boolean),
-          can_sign: S.optional(S.Boolean),
-          created_at: S.optional(S.String),
-          emails: S.optional(__S(62, __c7, 6)),
-          expires_at: S.optional(S.String),
-          id: S.optional(S.Number),
-          key_id: S.optional(S.String),
-          primary_key_id: S.optional(S.String),
-          public_key: S.optional(S.String),
-          subkeys: S.optional(__S(63, __c7, 7)),
-          verified: S.optional(S.Boolean),
-        }),
-      ).annotate({ identifier: "GPGKey" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.Number.pipe(T.Label()),
-        }).pipe(T.Http({ method: "GET", uri: "/user/keys/{id}", code: 200 })),
-      ).annotate({ identifier: "UserCurrentGetKeyRequest" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          created_at: S.optional(S.String),
-          fingerprint: S.optional(S.String),
-          id: S.optional(S.Number),
-          key: S.optional(S.String),
-          key_type: S.optional(S.String),
-          read_only: S.optional(S.Boolean),
-          title: S.optional(S.String),
-          updated_at: S.optional(S.String),
-          url: S.optional(S.String),
-          user: S.optional(__S(8, __c1, 0)),
-          verified: S.optional(S.Boolean),
-        }),
-      ).annotate({ identifier: "PublicKey" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          page: S.optional(S.Number.pipe(T.Query())),
-          limit: S.optional(S.Number.pipe(T.Query())),
-        }).pipe(T.Http({ method: "GET", uri: "/user/followers", code: 200 })),
-      ).annotate({
-        identifier: "UserCurrentListFollowersRequest",
-      });
-    case 4:
-      return S.suspend(() => __S(27, __c3, 3).pipe(T.RawResponseRoot())).annotate({
-        identifier: "UserCurrentListFollowersResponse",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          page: S.optional(S.Number.pipe(T.Query())),
-          limit: S.optional(S.Number.pipe(T.Query())),
-        }).pipe(T.Http({ method: "GET", uri: "/user/following", code: 200 })),
-      ).annotate({
-        identifier: "UserCurrentListFollowingRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          page: S.optional(S.Number.pipe(T.Query())),
-          limit: S.optional(S.Number.pipe(T.Query())),
-        }).pipe(T.Http({ method: "GET", uri: "/user/gpg_keys", code: 200 })),
-      ).annotate({
-        identifier: "UserCurrentListGPGKeysRequest",
-      });
-    case 7:
-      return S.Array(__S(64, __c8, 0));
-  }
-}
-function __c9(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() => __S(71, __c8, 7).pipe(T.RawResponseRoot())).annotate({
-        identifier: "UserCurrentListGPGKeysResponse",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          fingerprint: S.optional(S.String.pipe(T.Query())),
-          page: S.optional(S.Number.pipe(T.Query())),
-          limit: S.optional(S.Number.pipe(T.Query())),
-        }).pipe(T.Http({ method: "GET", uri: "/user/keys", code: 200 })),
-      ).annotate({
-        identifier: "UserCurrentListKeysRequest",
-      });
-    case 2:
-      return S.Array(__S(66, __c8, 2));
-    case 3:
-      return S.suspend(() => __S(74, __c9, 2).pipe(T.RawResponseRoot())).annotate({
-        identifier: "UserCurrentListKeysResponse",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          page: S.optional(S.Number.pipe(T.Query())),
-          limit: S.optional(S.Number.pipe(T.Query())),
-          order_by: S.optional(S.String.pipe(T.Query())),
-        }).pipe(T.Http({ method: "GET", uri: "/user/repos", code: 200 })),
-      ).annotate({
-        identifier: "UserCurrentListReposRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          external_tracker_format: S.optional(S.String),
-          external_tracker_regexp_pattern: S.optional(S.String),
-          external_tracker_style: S.optional(S.String),
-          external_tracker_url: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ExternalTracker" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          external_wiki_url: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ExternalWiki" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          allow_only_contributors_to_track_time: S.optional(S.Boolean),
-          enable_issue_dependencies: S.optional(S.Boolean),
-          enable_time_tracker: S.optional(S.Boolean),
-        }),
-      ).annotate({ identifier: "InternalTracker" });
-  }
-}
-function __c10(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          admin: S.optional(S.Boolean),
-          pull: S.optional(S.Boolean),
-          push: S.optional(S.Boolean),
-        }),
-      ).annotate({ identifier: "Permission" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          avatar_url: S.optional(S.String),
-          created: S.optional(S.String),
-          description: S.optional(S.String),
-          email: S.optional(S.String),
-          full_name: S.optional(S.String),
-          id: S.Number,
-          location: S.optional(S.String),
-          name: S.optional(S.String),
-          repo_admin_change_team_access: S.optional(S.Boolean),
-          username: S.String,
-          visibility: S.optional(S.String),
-          website: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Organization" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          can_create_org_repo: S.optional(S.Boolean),
-          description: S.optional(S.String),
-          id: S.Number,
-          includes_all_repositories: S.optional(S.Boolean),
-          name: S.String,
-          organization: S.optional(__S(81, __c10, 1)),
-          permission: S.optional(S.String),
-          units: S.optional(__S(43, __c5, 3)),
-          units_map: S.optional(__S(41, __c5, 1)),
-        }),
-      ).annotate({ identifier: "Team" });
-    case 3:
-      return S.Array(__S(82, __c10, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          doer: S.optional(__S(8, __c1, 0)),
-          recipient: S.optional(__S(8, __c1, 0)),
-          teams: S.optional(__S(83, __c10, 3)),
-        }),
-      ).annotate({ identifier: "RepoTransfer" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          allow_fast_forward_only_merge: S.optional(S.Boolean),
-          allow_merge_commits: S.optional(S.Boolean),
-          allow_rebase: S.optional(S.Boolean),
-          allow_rebase_explicit: S.optional(S.Boolean),
-          allow_rebase_update: S.optional(S.Boolean),
-          allow_squash_merge: S.optional(S.Boolean),
-          archived: S.optional(S.Boolean),
-          archived_at: S.optional(S.String),
-          avatar_url: S.optional(S.String),
-          clone_url: S.String,
-          created_at: S.String,
-          default_allow_maintainer_edit: S.optional(S.Boolean),
-          default_branch: S.String,
-          default_delete_branch_after_merge: S.optional(S.Boolean),
-          default_merge_style: S.optional(S.String),
-          default_update_style: S.optional(S.String),
-          description: S.optional(S.String),
-          empty: S.optional(S.Boolean),
-          external_tracker: S.optional(__S(77, __c9, 5)),
-          external_wiki: S.optional(__S(78, __c9, 6)),
-          fork: S.optional(S.Boolean),
-          forks_count: S.optional(S.Number),
-          full_name: S.String,
-          globally_editable_wiki: S.optional(S.Boolean),
-          has_actions: S.optional(S.Boolean),
-          has_issues: S.optional(S.Boolean),
-          has_packages: S.optional(S.Boolean),
-          has_projects: S.optional(S.Boolean),
-          has_pull_requests: S.optional(S.Boolean),
-          has_releases: S.optional(S.Boolean),
-          has_wiki: S.optional(S.Boolean),
-          has_wiki_contents: S.optional(S.Boolean),
-          html_url: S.String,
-          id: S.Number,
-          ignore_whitespace_conflicts: S.optional(S.Boolean),
-          internal: S.optional(S.Boolean),
-          internal_tracker: S.optional(__S(79, __c9, 7)),
-          language: S.optional(S.String),
-          languages_url: S.optional(S.String),
-          link: S.optional(S.String),
-          mirror: S.optional(S.Boolean),
-          mirror_interval: S.optional(S.String),
-          mirror_updated: S.optional(S.String),
-          name: S.String,
-          object_format_name: S.optional(S.String),
-          open_issues_count: S.optional(S.Number),
-          open_pr_counter: S.optional(S.Number),
-          original_url: S.optional(S.String),
-          owner: __S(8, __c1, 0),
-          parent: S.optional(__S(85, __c10, 5)),
-          permissions: S.optional(__S(80, __c10, 0)),
-          private: S.optional(S.Boolean),
-          release_counter: S.optional(S.Number),
-          repo_transfer: S.optional(__S(84, __c10, 4)),
-          size: S.optional(S.Number),
-          ssh_url: S.String,
-          stars_count: S.optional(S.Number),
-          template: S.optional(S.Boolean),
-          topics: S.optional(__S(10, __c1, 2)),
-          updated_at: S.String,
-          url: S.optional(S.String),
-          watchers_count: S.optional(S.Number),
-          website: S.optional(S.String),
-          wiki_branch: S.optional(S.String),
-          wiki_clone_url: S.optional(S.String),
-          wiki_ssh_url: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Repository" });
-    case 6:
-      return S.Array(__S(85, __c10, 5));
-    case 7:
-      return S.suspend(() => __S(86, __c10, 6).pipe(T.RawResponseRoot())).annotate({
-        identifier: "UserCurrentListReposResponse",
-      });
-  }
-}
-function __c11(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          page: S.optional(S.Number.pipe(T.Query())),
-          limit: S.optional(S.Number.pipe(T.Query())),
-        }).pipe(T.Http({ method: "GET", uri: "/user/starred", code: 200 })),
-      ).annotate({
-        identifier: "UserCurrentListStarredRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          page: S.optional(S.Number.pipe(T.Query())),
-          limit: S.optional(S.Number.pipe(T.Query())),
-        }).pipe(T.Http({ method: "GET", uri: "/user/subscriptions", code: 200 })),
-      ).annotate({
-        identifier: "UserCurrentListSubscriptionsRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          armored_public_key: S.String,
-          armored_signature: S.optional(S.String),
-        }).pipe(T.Http({ method: "POST", uri: "/user/gpg_keys", code: 200 })),
-      ).annotate({
-        identifier: "UserCurrentPostGPGKeyRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          key: S.String,
-          read_only: S.optional(S.Boolean),
-          title: S.String,
-        }).pipe(T.Http({ method: "POST", uri: "/user/keys", code: 200 })),
-      ).annotate({
-        identifier: "UserCurrentPostKeyRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          username: S.String.pipe(T.Label()),
-        }).pipe(T.Http({ method: "PUT", uri: "/user/following/{username}", code: 200 })),
-      ).annotate({
-        identifier: "UserCurrentPutFollowRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          owner: S.String.pipe(T.Label()),
-          repo: S.String.pipe(T.Label()),
-        }).pipe(T.Http({ method: "PUT", uri: "/user/starred/{owner}/{repo}", code: 200 })),
-      ).annotate({
-        identifier: "UserCurrentPutStarRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          page: S.optional(S.Number.pipe(T.Query())),
-          limit: S.optional(S.Number.pipe(T.Query())),
-          since: S.optional(S.String.pipe(T.Query())),
-          before: S.optional(S.String.pipe(T.Query())),
-        }).pipe(T.Http({ method: "GET", uri: "/user/times", code: 200 })),
-      ).annotate({
-        identifier: "UserCurrentTrackedTimesRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          browser_download_url: S.optional(S.String),
-          created_at: S.optional(S.String),
-          download_count: S.optional(S.Number),
-          id: S.optional(S.Number),
-          name: S.optional(S.String),
-          size: S.optional(S.Number),
-          type: S.optional(S.String),
-          uuid: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Attachment" });
-  }
-}
-function __c12(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(95, __c11, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          color: S.String,
-          description: S.optional(S.String),
-          exclusive: S.optional(S.Boolean),
-          id: S.Number,
-          is_archived: S.optional(S.Boolean),
-          name: S.String,
-          url: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Label" });
-    case 2:
-      return S.Array(__S(97, __c12, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          closed_at: S.optional(S.String),
-          closed_issues: S.optional(S.Number),
-          created_at: S.optional(S.String),
-          description: S.optional(S.String),
-          due_on: S.optional(S.String),
-          id: S.optional(S.Number),
-          open_issues: S.optional(S.Number),
-          state: S.optional(S.String),
-          title: S.optional(S.String),
-          updated_at: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Milestone" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          draft: S.optional(S.Boolean),
-          html_url: S.optional(S.String),
-          merged: S.optional(S.Boolean),
-          merged_at: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "PullRequestMeta" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          assets: S.optional(__S(96, __c12, 0)),
-          assignee: S.optional(__S(8, __c1, 0)),
-          assignees: S.optional(__S(27, __c3, 3)),
-          body: S.optional(S.String),
-          closed_at: S.optional(S.String),
-          comments: S.optional(S.Number),
-          created_at: S.optional(S.String),
-          due_date: S.optional(S.String),
-          html_url: S.optional(S.String),
-          id: S.optional(S.Number),
-          is_locked: S.optional(S.Boolean),
-          labels: S.optional(__S(98, __c12, 2)),
-          milestone: S.optional(__S(99, __c12, 3)),
-          number: S.optional(S.Number),
-          original_author: S.optional(S.String),
-          original_author_id: S.optional(S.Number),
-          pin_order: S.optional(S.Number),
-          pull_request: S.optional(__S(100, __c12, 4)),
-          ref: S.optional(S.String),
-          repository: S.optional(__S(50, __c6, 2)),
-          state: S.optional(S.String),
-          title: S.optional(S.String),
-          updated_at: S.optional(S.String),
-          url: S.optional(S.String),
-          user: S.optional(__S(8, __c1, 0)),
-        }),
-      ).annotate({ identifier: "Issue" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          created: S.optional(S.String),
-          id: S.optional(S.Number),
-          issue: S.optional(__S(101, __c12, 5)),
-          issue_id: S.optional(S.Number),
-          time: S.optional(S.Number),
-          user_id: S.optional(S.Number),
-          user_name: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "TrackedTime" });
-    case 7:
-      return S.Array(__S(102, __c12, 6));
-  }
-}
-function __c13(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() => __S(103, __c12, 7).pipe(T.RawResponseRoot())).annotate({
-        identifier: "UserCurrentTrackedTimesResponse",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          username: S.String.pipe(T.Label()),
-          token: S.String.pipe(T.Label()),
-        }).pipe(T.Http({ method: "DELETE", uri: "/users/{username}/tokens/{token}", code: 200 })),
-      ).annotate({
-        identifier: "UserDeleteAccessTokenRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({}).pipe(T.Http({ method: "DELETE", uri: "/user/avatar", code: 200 })),
-      ).annotate({ identifier: "UserDeleteAvatarRequest" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          emails: S.optional(__S(10, __c1, 2)),
-        }).pipe(T.Http({ method: "DELETE", uri: "/user/emails", code: 200 })),
-      ).annotate({ identifier: "UserDeleteEmailRequest" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.Number.pipe(T.Label()),
-        }).pipe(T.Http({ method: "DELETE", uri: "/user/hooks/{id}", code: 200 })),
-      ).annotate({ identifier: "UserDeleteHookRequest" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.Number.pipe(T.Label()),
-        }).pipe(T.Http({ method: "DELETE", uri: "/user/applications/oauth2/{id}", code: 200 })),
-      ).annotate({
-        identifier: "UserDeleteOAuth2ApplicationRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.Number.pipe(T.Label()),
-          active: S.optional(S.Boolean),
-          authorization_header: S.optional(S.String),
-          branch_filter: S.optional(S.String),
-          config: S.optional(__S(41, __c5, 1)),
-          events: S.optional(__S(10, __c1, 2)),
-        }).pipe(T.Http({ method: "PATCH", uri: "/user/hooks/{id}", code: 200 })),
-      ).annotate({ identifier: "UserEditHookRequest" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({}).pipe(T.Http({ method: "GET", uri: "/user", code: 200 })),
-      ).annotate({ identifier: "UserGetCurrentRequest" });
-  }
-}
-function __c14(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          username: S.String.pipe(T.Label()),
-        }).pipe(T.Http({ method: "GET", uri: "/users/{username}/heatmap", code: 200 })),
-      ).annotate({
-        identifier: "UserGetHeatmapDataRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          contributions: S.optional(S.Number),
-          timestamp: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "UserHeatmapData" });
-    case 2:
-      return S.Array(__S(113, __c14, 1));
-    case 3:
-      return S.suspend(() => __S(114, __c14, 2).pipe(T.RawResponseRoot())).annotate({
-        identifier: "UserGetHeatmapDataResponse",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.Number.pipe(T.Label()),
-        }).pipe(T.Http({ method: "GET", uri: "/user/hooks/{id}", code: 200 })),
-      ).annotate({ identifier: "UserGetHookRequest" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.Number.pipe(T.Label()),
-        }).pipe(T.Http({ method: "GET", uri: "/user/applications/oauth2/{id}", code: 200 })),
-      ).annotate({
-        identifier: "UserGetOAuth2ApplicationRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          page: S.optional(S.Number.pipe(T.Query())),
-          limit: S.optional(S.Number.pipe(T.Query())),
-        }).pipe(T.Http({ method: "GET", uri: "/user/applications/oauth2", code: 200 })),
-      ).annotate({
-        identifier: "UserGetOAuth2ApplicationsRequest",
-      });
-    case 7:
-      return S.Array(__S(46, __c5, 6));
-  }
-}
-function __c15(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() => __S(119, __c14, 7).pipe(T.RawResponseRoot())).annotate({
-        identifier: "UserGetOAuth2ApplicationsResponse",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({}).pipe(T.Http({ method: "GET", uri: "/user/quota", code: 200 })),
-      ).annotate({ identifier: "UserGetQuotaRequest" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          limit: S.optional(S.Number),
-          name: S.optional(S.String),
-          subjects: S.optional(__S(10, __c1, 2)),
-        }),
-      ).annotate({ identifier: "QuotaRuleInfo" });
-    case 3:
-      return S.Array(__S(122, __c15, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.optional(S.String),
-          rules: S.optional(__S(123, __c15, 3)),
-        }),
-      ).annotate({ identifier: "QuotaGroup" });
-    case 5:
-      return S.Array(__S(124, __c15, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          issues: S.optional(S.Number),
-          releases: S.optional(S.Number),
-        }),
-      ).annotate({
-        identifier: "QuotaUsedSizeAssetsAttachments",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          all: S.optional(S.Number),
-        }),
-      ).annotate({
-        identifier: "QuotaUsedSizeAssetsPackages",
-      });
-  }
-}
-function __c16(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          artifacts: S.optional(S.Number),
-          attachments: S.optional(__S(126, __c15, 6)),
-          packages: S.optional(__S(127, __c15, 7)),
-        }),
-      ).annotate({ identifier: "QuotaUsedSizeAssets" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          LFS: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "QuotaUsedSizeGit" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          private: S.optional(S.Number),
-          public: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "QuotaUsedSizeRepos" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          assets: S.optional(__S(128, __c16, 0)),
-          git: S.optional(__S(129, __c16, 1)),
-          repos: S.optional(__S(130, __c16, 2)),
-        }),
-      ).annotate({ identifier: "QuotaUsedSize" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          size: S.optional(__S(131, __c16, 3)),
-        }),
-      ).annotate({ identifier: "QuotaUsed" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          groups: S.optional(__S(125, __c15, 5)),
-          used: S.optional(__S(132, __c16, 4)),
-        }),
-      ).annotate({ identifier: "QuotaInfo" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          page: S.optional(S.Number.pipe(T.Query())),
-          limit: S.optional(S.Number.pipe(T.Query())),
-        }).pipe(T.Http({ method: "GET", uri: "/user/stopwatches", code: 200 })),
-      ).annotate({
-        identifier: "UserGetStopWatchesRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          created: S.optional(S.String),
-          duration: S.optional(S.String),
-          issue_index: S.optional(S.Number),
-          issue_title: S.optional(S.String),
-          repo_name: S.optional(S.String),
-          repo_owner_name: S.optional(S.String),
-          seconds: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "StopWatch" });
-  }
-}
-function __c17(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(135, __c16, 7));
-    case 1:
-      return S.suspend(() => __S(136, __c17, 0).pipe(T.RawResponseRoot())).annotate({
-        identifier: "UserGetStopWatchesResponse",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          username: S.String.pipe(T.Label()),
-          page: S.optional(S.Number.pipe(T.Query())),
-          limit: S.optional(S.Number.pipe(T.Query())),
-        }).pipe(T.Http({ method: "GET", uri: "/users/{username}/tokens", code: 200 })),
-      ).annotate({ identifier: "UserGetTokensRequest" });
-    case 3:
-      return S.Array(__S(52, __c6, 4));
-    case 4:
-      return S.suspend(() => __S(139, __c17, 3).pipe(T.RawResponseRoot())).annotate({
-        identifier: "UserGetTokensResponse",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          username: S.String.pipe(T.Label()),
-          only_performed_by: S.optional(S.Boolean.pipe(T.Query("only-performed-by"))),
-          date: S.optional(S.String.pipe(T.Query())),
-          page: S.optional(S.Number.pipe(T.Query())),
-          limit: S.optional(S.Number.pipe(T.Query())),
-        }).pipe(T.Http({ method: "GET", uri: "/users/{username}/activities/feeds", code: 200 })),
-      ).annotate({
-        identifier: "UserListActivityFeedsRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          assets: S.optional(__S(96, __c12, 0)),
-          body: S.optional(S.String),
-          created_at: S.optional(S.String),
-          html_url: S.optional(S.String),
-          id: S.optional(S.Number),
-          issue_url: S.optional(S.String),
-          original_author: S.optional(S.String),
-          original_author_id: S.optional(S.Number),
-          pull_request_url: S.optional(S.String),
-          updated_at: S.optional(S.String),
-          user: S.optional(__S(8, __c1, 0)),
-        }),
-      ).annotate({ identifier: "Comment" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          act_user: S.optional(__S(8, __c1, 0)),
-          act_user_id: S.optional(S.Number),
-          comment: S.optional(__S(142, __c17, 6)),
-          comment_id: S.optional(S.Number),
-          content: S.optional(S.String),
-          created: S.optional(S.String),
-          id: S.optional(S.Number),
-          is_private: S.optional(S.Boolean),
-          op_type: S.optional(S.String),
-          ref_name: S.optional(S.String),
-          repo: S.optional(__S(85, __c10, 5)),
-          repo_id: S.optional(S.Number),
-          user_id: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "Activity" });
-  }
-}
-function __c18(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(143, __c17, 7));
-    case 1:
-      return S.suspend(() => __S(144, __c18, 0).pipe(T.RawResponseRoot())).annotate({
-        identifier: "UserListActivityFeedsResponse",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          page: S.optional(S.Number.pipe(T.Query())),
-          limit: S.optional(S.Number.pipe(T.Query())),
-        }).pipe(T.Http({ method: "GET", uri: "/user/list_blocked", code: 200 })),
-      ).annotate({
-        identifier: "UserListBlockedUsersRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          block_id: S.optional(S.Number),
-          created_at: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "BlockedUser" });
-    case 4:
-      return S.Array(__S(147, __c18, 3));
-    case 5:
-      return S.suspend(() => __S(148, __c18, 4).pipe(T.RawResponseRoot())).annotate({
-        identifier: "UserListBlockedUsersResponse",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({}).pipe(T.Http({ method: "GET", uri: "/user/emails", code: 200 })),
-      ).annotate({ identifier: "UserListEmailsRequest" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          username: S.String.pipe(T.Label()),
-          page: S.optional(S.Number.pipe(T.Query())),
-          limit: S.optional(S.Number.pipe(T.Query())),
-        }).pipe(T.Http({ method: "GET", uri: "/users/{username}/followers", code: 200 })),
-      ).annotate({ identifier: "UserListFollowersRequest" });
-  }
-}
-function __c19(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          username: S.String.pipe(T.Label()),
-          page: S.optional(S.Number.pipe(T.Query())),
-          limit: S.optional(S.Number.pipe(T.Query())),
-        }).pipe(T.Http({ method: "GET", uri: "/users/{username}/following", code: 200 })),
-      ).annotate({ identifier: "UserListFollowingRequest" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          username: S.String.pipe(T.Label()),
-          page: S.optional(S.Number.pipe(T.Query())),
-          limit: S.optional(S.Number.pipe(T.Query())),
-        }).pipe(T.Http({ method: "GET", uri: "/users/{username}/gpg_keys", code: 200 })),
-      ).annotate({ identifier: "UserListGPGKeysRequest" });
-    case 2:
-      return S.suspend(() => __S(71, __c8, 7).pipe(T.RawResponseRoot())).annotate({
-        identifier: "UserListGPGKeysResponse",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          page: S.optional(S.Number.pipe(T.Query())),
-          limit: S.optional(S.Number.pipe(T.Query())),
-        }).pipe(T.Http({ method: "GET", uri: "/user/hooks", code: 200 })),
-      ).annotate({ identifier: "UserListHooksRequest" });
-    case 4:
-      return S.Array(__S(44, __c5, 4));
-    case 5:
-      return S.suspend(() => __S(156, __c19, 4).pipe(T.RawResponseRoot())).annotate({
-        identifier: "UserListHooksResponse",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          username: S.String.pipe(T.Label()),
-          fingerprint: S.optional(S.String.pipe(T.Query())),
-          page: S.optional(S.Number.pipe(T.Query())),
-          limit: S.optional(S.Number.pipe(T.Query())),
-        }).pipe(T.Http({ method: "GET", uri: "/users/{username}/keys", code: 200 })),
-      ).annotate({ identifier: "UserListKeysRequest" });
-    case 7:
-      return S.suspend(() => __S(74, __c9, 2).pipe(T.RawResponseRoot())).annotate({
-        identifier: "UserListKeysResponse",
-      });
-  }
-}
-function __c20(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          page: S.optional(S.Number.pipe(T.Query())),
-          limit: S.optional(S.Number.pipe(T.Query())),
-        }).pipe(T.Http({ method: "GET", uri: "/user/quota/artifacts", code: 200 })),
-      ).annotate({
-        identifier: "UserListQuotaArtifactsRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          html_url: S.optional(S.String),
-          name: S.optional(S.String),
-          size: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "QuotaUsedArtifact" });
-    case 2:
-      return S.Array(__S(161, __c20, 1));
-    case 3:
-      return S.suspend(() => __S(162, __c20, 2).pipe(T.RawResponseRoot())).annotate({
-        identifier: "UserListQuotaArtifactsResponse",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          page: S.optional(S.Number.pipe(T.Query())),
-          limit: S.optional(S.Number.pipe(T.Query())),
-        }).pipe(T.Http({ method: "GET", uri: "/user/quota/attachments", code: 200 })),
-      ).annotate({
-        identifier: "UserListQuotaAttachmentsRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          api_url: S.optional(S.String),
-          html_url: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "QuotaUsedAttachmentContainedIn",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          api_url: S.optional(S.String),
-          contained_in: S.optional(__S(165, __c20, 5)),
-          name: S.optional(S.String),
-          size: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "QuotaUsedAttachment" });
-    case 7:
-      return S.Array(__S(166, __c20, 6));
-  }
-}
-function __c21(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() => __S(167, __c20, 7).pipe(T.RawResponseRoot())).annotate({
-        identifier: "UserListQuotaAttachmentsResponse",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          page: S.optional(S.Number.pipe(T.Query())),
-          limit: S.optional(S.Number.pipe(T.Query())),
-        }).pipe(T.Http({ method: "GET", uri: "/user/quota/packages", code: 200 })),
-      ).annotate({
-        identifier: "UserListQuotaPackagesRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          html_url: S.optional(S.String),
-          name: S.optional(S.String),
-          size: S.optional(S.Number),
-          type: S.optional(S.String),
-          version: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "QuotaUsedPackage" });
-    case 3:
-      return S.Array(__S(170, __c21, 2));
-    case 4:
-      return S.suspend(() => __S(171, __c21, 3).pipe(T.RawResponseRoot())).annotate({
-        identifier: "UserListQuotaPackagesResponse",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          username: S.String.pipe(T.Label()),
-          page: S.optional(S.Number.pipe(T.Query())),
-          limit: S.optional(S.Number.pipe(T.Query())),
-        }).pipe(T.Http({ method: "GET", uri: "/users/{username}/repos", code: 200 })),
-      ).annotate({ identifier: "UserListReposRequest" });
-    case 6:
-      return S.suspend(() => __S(86, __c10, 6).pipe(T.RawResponseRoot())).annotate({
-        identifier: "UserListReposResponse",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          username: S.String.pipe(T.Label()),
-          page: S.optional(S.Number.pipe(T.Query())),
-          limit: S.optional(S.Number.pipe(T.Query())),
-        }).pipe(T.Http({ method: "GET", uri: "/users/{username}/starred", code: 200 })),
-      ).annotate({ identifier: "UserListStarredRequest" });
-  }
-}
-function __c22(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          username: S.String.pipe(T.Label()),
-          page: S.optional(S.Number.pipe(T.Query())),
-          limit: S.optional(S.Number.pipe(T.Query())),
-        }).pipe(T.Http({ method: "GET", uri: "/users/{username}/subscriptions", code: 200 })),
-      ).annotate({
-        identifier: "UserListSubscriptionsRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          page: S.optional(S.Number.pipe(T.Query())),
-          limit: S.optional(S.Number.pipe(T.Query())),
-        }).pipe(T.Http({ method: "GET", uri: "/user/teams", code: 200 })),
-      ).annotate({ identifier: "UserListTeamsRequest" });
-    case 2:
-      return S.suspend(() => __S(83, __c10, 3).pipe(T.RawResponseRoot())).annotate({
-        identifier: "UserListTeamsResponse",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          labels: S.optional(S.String.pipe(T.Query())),
-        }).pipe(T.Http({ method: "GET", uri: "/user/actions/runners/jobs", code: 200 })),
-      ).annotate({ identifier: "UserSearchRunJobsRequest" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          attempt: S.optional(S.Number),
-          handle: S.optional(S.String),
-          id: S.optional(S.Number),
-          name: S.optional(S.String),
-          needs: S.optional(__S(10, __c1, 2)),
-          owner_id: S.optional(S.Number),
-          repo_id: S.optional(S.Number),
-          run_id: S.optional(S.Number),
-          runs_on: S.optional(__S(10, __c1, 2)),
-          status: S.optional(S.String),
-          task_id: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "ActionRunJob" });
-    case 5:
-      return S.Array(__S(180, __c22, 4));
-    case 6:
-      return S.suspend(() => __S(181, __c22, 5).pipe(T.RawResponseRoot())).annotate({
-        identifier: "UserSearchRunJobsResponse",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          image: S.optional(S.String),
-        }).pipe(T.Http({ method: "POST", uri: "/user/avatar", code: 200 })),
-      ).annotate({ identifier: "UserUpdateAvatarRequest" });
-  }
-}
-function __c23(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.Number.pipe(T.Label()),
-          confidential_client: S.optional(S.Boolean),
-          name: S.optional(S.String),
-          redirect_uris: S.optional(__S(10, __c1, 2)),
-        }).pipe(T.Http({ method: "PATCH", uri: "/user/applications/oauth2/{id}", code: 200 })),
-      ).annotate({
-        identifier: "UserUpdateOAuth2ApplicationRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          armored_signature: S.optional(S.String),
-          key_id: S.String,
-        }).pipe(T.Http({ method: "POST", uri: "/user/gpg_key_verify", code: 200 })),
-      ).annotate({ identifier: "UserVerifyGPGKeyRequest" });
-  }
-}
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

@@ -339,8 +339,8 @@ export const notifyGetList: API.OperationMethod<
   NotifyGetListError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2, __c0, 2) as any as S.Schema<NotifyGetListRequest>,
-  output: __S(18, __c2, 2) as any as S.Schema<NotifyGetListResponse>,
+  input: __S(0, __c0, 0) as any as S.Schema<NotifyGetListRequest>,
+  output: __S(1, __c0, 1) as any as S.Schema<NotifyGetListResponse>,
   errors: [],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -354,8 +354,8 @@ export const notifyGetRepoList: API.OperationMethod<
   NotifyGetRepoListError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(19, __c2, 3) as any as S.Schema<NotifyGetRepoListRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<NotifyGetRepoListResponse>,
+  input: __S(64, __c4, 0) as any as S.Schema<NotifyGetRepoListRequest>,
+  output: __S(65, __c4, 1) as any as S.Schema<NotifyGetRepoListResponse>,
   errors: [],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -369,8 +369,8 @@ export const notifyGetThread: API.OperationMethod<
   NotifyGetThreadError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(21, __c2, 5) as any as S.Schema<NotifyGetThreadRequest>,
-  output: __S(16, __c2, 0) as any as S.Schema<NotificationThread>,
+  input: __S(80, __c5, 0) as any as S.Schema<NotifyGetThreadRequest>,
+  output: __S(45, __c2, 13) as any as S.Schema<NotificationThread>,
   errors: [Forbidden, NotFound],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -384,8 +384,8 @@ export const notifyNewAvailable: API.OperationMethod<
   NotifyNewAvailableError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(22, __c2, 6) as any as S.Schema<NotifyNewAvailableRequest>,
-  output: __S(23, __c2, 7) as any as S.Schema<NotificationCount>,
+  input: __S(96, __c6, 0) as any as S.Schema<NotifyNewAvailableRequest>,
+  output: __S(97, __c6, 1) as any as S.Schema<NotificationCount>,
   errors: [],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -399,8 +399,8 @@ export const notifyReadList: API.OperationMethod<
   NotifyReadListError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(24, __c3, 0) as any as S.Schema<NotifyReadListRequest>,
-  output: __S(25, __c3, 1) as any as S.Schema<NotifyReadListResponse>,
+  input: __S(112, __c7, 0) as any as S.Schema<NotifyReadListRequest>,
+  output: __S(128, __c8, 0) as any as S.Schema<NotifyReadListResponse>,
   errors: [],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -414,8 +414,8 @@ export const notifyReadRepoList: API.OperationMethod<
   NotifyReadRepoListError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(26, __c3, 2) as any as S.Schema<NotifyReadRepoListRequest>,
-  output: __S(25, __c3, 1) as any as S.Schema<NotifyReadRepoListResponse>,
+  input: __S(144, __c9, 0) as any as S.Schema<NotifyReadRepoListRequest>,
+  output: __S(128, __c8, 0) as any as S.Schema<NotifyReadRepoListResponse>,
   errors: [],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -429,8 +429,8 @@ export const notifyReadThread: API.OperationMethod<
   NotifyReadThreadError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(27, __c3, 3) as any as S.Schema<NotifyReadThreadRequest>,
-  output: __S(25, __c3, 1) as any as S.Schema<NotifyReadThreadResponse>,
+  input: __S(160, __c10, 0) as any as S.Schema<NotifyReadThreadRequest>,
+  output: __S(128, __c8, 0) as any as S.Schema<NotifyReadThreadResponse>,
   errors: [Forbidden, NotFound],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -440,22 +440,34 @@ export const notifyReadThread: API.OperationMethod<
 function __c0(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(S.String);
-    case 1:
-      return S.Array(S.String);
-    case 2:
       return S.suspend(() =>
         S.Struct({
           all: S.optional(S.Boolean.pipe(T.Query())),
-          status_types: S.optional(__S(0, __c0, 0).pipe(T.Query("status-types"))),
-          subject_type: S.optional(__S(1, __c0, 1).pipe(T.Query("subject-type"))),
+          status_types: S.optional(__S(48, __c3, 0).pipe(T.Query("status-types"))),
+          subject_type: S.optional(__S(16, __c1, 0).pipe(T.Query("subject-type"))),
           since: S.optional(S.String.pipe(T.Query())),
           before: S.optional(S.String.pipe(T.Query())),
           page: S.optional(S.Number.pipe(T.Query())),
           limit: S.optional(S.Number.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/notifications", code: 200 })),
       ).annotate({ identifier: "NotifyGetListRequest" });
-    case 3:
+    case 1:
+      return S.suspend(() => __S(17, __c1, 1).pipe(T.RawResponseRoot())).annotate({
+        identifier: "NotifyGetListResponse",
+      });
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+    case 1:
+      return S.Array(__S(45, __c2, 13));
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           external_tracker_format: S.optional(S.String),
@@ -464,13 +476,13 @@ function __c0(j: number): any {
           external_tracker_url: S.optional(S.String),
         }),
       ).annotate({ identifier: "ExternalTracker" });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           external_wiki_url: S.optional(S.String),
         }),
       ).annotate({ identifier: "ExternalWiki" });
-    case 5:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           allow_only_contributors_to_track_time: S.optional(S.Boolean),
@@ -478,7 +490,7 @@ function __c0(j: number): any {
           enable_time_tracker: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "InternalTracker" });
-    case 6:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           active: S.optional(S.Boolean),
@@ -506,7 +518,7 @@ function __c0(j: number): any {
           website: S.optional(S.String),
         }),
       ).annotate({ identifier: "User" });
-    case 7:
+    case 4:
       return S.suspend(() =>
         S.Struct({
           admin: S.optional(S.Boolean),
@@ -514,11 +526,7 @@ function __c0(j: number): any {
           push: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "Permission" });
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
+    case 5:
       return S.suspend(() =>
         S.Struct({
           avatar_url: S.optional(S.String),
@@ -535,11 +543,11 @@ function __c1(j: number): any {
           website: S.optional(S.String),
         }),
       ).annotate({ identifier: "Organization" });
-    case 1:
+    case 6:
       return S.Array(S.String);
-    case 2:
+    case 7:
       return S.Record(S.String, S.String);
-    case 3:
+    case 8:
       return S.suspend(() =>
         S.Struct({
           can_create_org_repo: S.optional(S.Boolean),
@@ -547,23 +555,23 @@ function __c1(j: number): any {
           id: S.Number,
           includes_all_repositories: S.optional(S.Boolean),
           name: S.String,
-          organization: S.optional(__S(8, __c1, 0)),
+          organization: S.optional(__S(37, __c2, 5)),
           permission: S.optional(S.String),
-          units: S.optional(__S(9, __c1, 1)),
-          units_map: S.optional(__S(10, __c1, 2)),
+          units: S.optional(__S(38, __c2, 6)),
+          units_map: S.optional(__S(39, __c2, 7)),
         }),
       ).annotate({ identifier: "Team" });
-    case 4:
-      return S.Array(__S(11, __c1, 3));
-    case 5:
+    case 9:
+      return S.Array(__S(40, __c2, 8));
+    case 10:
       return S.suspend(() =>
         S.Struct({
-          doer: S.optional(__S(6, __c0, 6)),
-          recipient: S.optional(__S(6, __c0, 6)),
-          teams: S.optional(__S(12, __c1, 4)),
+          doer: S.optional(__S(35, __c2, 3)),
+          recipient: S.optional(__S(35, __c2, 3)),
+          teams: S.optional(__S(41, __c2, 9)),
         }),
       ).annotate({ identifier: "RepoTransfer" });
-    case 6:
+    case 11:
       return S.suspend(() =>
         S.Struct({
           allow_fast_forward_only_merge: S.optional(S.Boolean),
@@ -584,8 +592,8 @@ function __c1(j: number): any {
           default_update_style: S.optional(S.String),
           description: S.optional(S.String),
           empty: S.optional(S.Boolean),
-          external_tracker: S.optional(__S(3, __c0, 3)),
-          external_wiki: S.optional(__S(4, __c0, 4)),
+          external_tracker: S.optional(__S(32, __c2, 0)),
+          external_wiki: S.optional(__S(33, __c2, 1)),
           fork: S.optional(S.Boolean),
           forks_count: S.optional(S.Number),
           full_name: S.String,
@@ -602,7 +610,7 @@ function __c1(j: number): any {
           id: S.Number,
           ignore_whitespace_conflicts: S.optional(S.Boolean),
           internal: S.optional(S.Boolean),
-          internal_tracker: S.optional(__S(5, __c0, 5)),
+          internal_tracker: S.optional(__S(34, __c2, 2)),
           language: S.optional(S.String),
           languages_url: S.optional(S.String),
           link: S.optional(S.String),
@@ -614,17 +622,17 @@ function __c1(j: number): any {
           open_issues_count: S.optional(S.Number),
           open_pr_counter: S.optional(S.Number),
           original_url: S.optional(S.String),
-          owner: __S(6, __c0, 6),
-          parent: S.optional(__S(14, __c1, 6)),
-          permissions: S.optional(__S(7, __c0, 7)),
+          owner: __S(35, __c2, 3),
+          parent: S.optional(__S(43, __c2, 11)),
+          permissions: S.optional(__S(36, __c2, 4)),
           private: S.optional(S.Boolean),
           release_counter: S.optional(S.Number),
-          repo_transfer: S.optional(__S(13, __c1, 5)),
+          repo_transfer: S.optional(__S(42, __c2, 10)),
           size: S.optional(S.Number),
           ssh_url: S.String,
           stars_count: S.optional(S.Number),
           template: S.optional(S.Boolean),
-          topics: S.optional(__S(0, __c0, 0)),
+          topics: S.optional(__S(48, __c3, 0)),
           updated_at: S.String,
           url: S.optional(S.String),
           watchers_count: S.optional(S.Number),
@@ -634,7 +642,7 @@ function __c1(j: number): any {
           wiki_ssh_url: S.optional(S.String),
         }),
       ).annotate({ identifier: "Repository" });
-    case 7:
+    case 12:
       return S.suspend(() =>
         S.Struct({
           html_url: S.optional(S.String),
@@ -646,59 +654,67 @@ function __c1(j: number): any {
           url: S.optional(S.String),
         }),
       ).annotate({ identifier: "NotificationSubject" });
-  }
-}
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
+    case 13:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.Number),
           pinned: S.optional(S.Boolean),
-          repository: S.optional(__S(14, __c1, 6)),
-          subject: S.optional(__S(15, __c1, 7)),
+          repository: S.optional(__S(43, __c2, 11)),
+          subject: S.optional(__S(44, __c2, 12)),
           unread: S.optional(S.Boolean),
           updated_at: S.optional(S.String),
           url: S.optional(S.String),
         }),
       ).annotate({ identifier: "NotificationThread" });
-    case 1:
-      return S.Array(__S(16, __c2, 0));
-    case 2:
-      return S.suspend(() => __S(17, __c2, 1).pipe(T.RawResponseRoot())).annotate({
-        identifier: "NotifyGetListResponse",
-      });
-    case 3:
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           owner: S.String.pipe(T.Label()),
           repo: S.String.pipe(T.Label()),
           all: S.optional(S.Boolean.pipe(T.Query())),
-          status_types: S.optional(__S(0, __c0, 0).pipe(T.Query("status-types"))),
-          subject_type: S.optional(__S(1, __c0, 1).pipe(T.Query("subject-type"))),
+          status_types: S.optional(__S(48, __c3, 0).pipe(T.Query("status-types"))),
+          subject_type: S.optional(__S(16, __c1, 0).pipe(T.Query("subject-type"))),
           since: S.optional(S.String.pipe(T.Query())),
           before: S.optional(S.String.pipe(T.Query())),
           page: S.optional(S.Number.pipe(T.Query())),
           limit: S.optional(S.Number.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/repos/{owner}/{repo}/notifications", code: 200 })),
       ).annotate({ identifier: "NotifyGetRepoListRequest" });
-    case 4:
-      return S.suspend(() => __S(17, __c2, 1).pipe(T.RawResponseRoot())).annotate({
+    case 1:
+      return S.suspend(() => __S(17, __c1, 1).pipe(T.RawResponseRoot())).annotate({
         identifier: "NotifyGetRepoListResponse",
       });
-    case 5:
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.Number.pipe(T.Label()),
         }).pipe(T.Http({ method: "GET", uri: "/notifications/threads/{id}", code: 200 })),
       ).annotate({ identifier: "NotifyGetThreadRequest" });
-    case 6:
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({}).pipe(T.Http({ method: "GET", uri: "/notifications/new", code: 200 })),
       ).annotate({
         identifier: "NotifyNewAvailableRequest",
       });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           new: S.optional(S.Number),
@@ -706,35 +722,47 @@ function __c2(j: number): any {
       ).annotate({ identifier: "NotificationCount" });
   }
 }
-function __c3(j: number): any {
+function __c7(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           last_read_at: S.optional(S.String.pipe(T.Query())),
           all: S.optional(S.Boolean.pipe(T.Query())),
-          status_types: S.optional(__S(0, __c0, 0).pipe(T.Query("status-types"))),
+          status_types: S.optional(__S(48, __c3, 0).pipe(T.Query("status-types"))),
           to_status: S.optional(S.String.pipe(T.Query("to-status"))),
         }).pipe(T.Http({ method: "PUT", uri: "/notifications", code: 200 })),
       ).annotate({ identifier: "NotifyReadListRequest" });
-    case 1:
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "NotifyReadListResponse",
       });
-    case 2:
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           owner: S.String.pipe(T.Label()),
           repo: S.String.pipe(T.Label()),
           all: S.optional(S.Boolean.pipe(T.Query())),
-          status_types: S.optional(__S(0, __c0, 0).pipe(T.Query("status-types"))),
+          status_types: S.optional(__S(48, __c3, 0).pipe(T.Query("status-types"))),
           to_status: S.optional(S.String.pipe(T.Query("to-status"))),
           last_read_at: S.optional(S.String.pipe(T.Query())),
         }).pipe(T.Http({ method: "PUT", uri: "/repos/{owner}/{repo}/notifications", code: 200 })),
       ).annotate({
         identifier: "NotifyReadRepoListRequest",
       });
-    case 3:
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.Number.pipe(T.Label()),
@@ -743,7 +771,6 @@ function __c3(j: number): any {
       ).annotate({ identifier: "NotifyReadThreadRequest" });
   }
 }
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

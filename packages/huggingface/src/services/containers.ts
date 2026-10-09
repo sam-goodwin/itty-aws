@@ -339,8 +339,8 @@ export const batchFileOperations: API.OperationMethod<
   BatchFileOperationsError,
   HuggingFaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(0, __c0, 0) as any as S.Schema<BatchFileOperationsRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<BatchFileOperationsResponse>,
+  input: __S(28, __c7, 0) as any as S.Schema<BatchFileOperationsRequest>,
+  output: __S(31, __c7, 3) as any as S.Schema<BatchFileOperationsResponse>,
   errors: [UnprocessableEntity],
   protocol: HuggingFaceProtocol,
   retry: Retry.Retry,
@@ -354,8 +354,8 @@ export const createBucket: API.OperationMethod<
   CreateBucketError,
   HuggingFaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(6, __c0, 6) as any as S.Schema<CreateBucketRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<CreateBucketResponse>,
+  input: __S(32, __c8, 0) as any as S.Schema<CreateBucketRequest>,
+  output: __S(33, __c8, 1) as any as S.Schema<CreateBucketResponse>,
   errors: [Conflict],
   protocol: HuggingFaceProtocol,
   retry: Retry.Retry,
@@ -369,8 +369,8 @@ export const deleteBucket: API.OperationMethod<
   DeleteBucketError,
   HuggingFaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(8, __c1, 0) as any as S.Schema<DeleteBucketRequest>,
-  output: __S(9, __c1, 1) as any as S.Schema<DeleteBucketResponse>,
+  input: __S(40, __c10, 0) as any as S.Schema<DeleteBucketRequest>,
+  output: __S(41, __c10, 1) as any as S.Schema<DeleteBucketResponse>,
   errors: [],
   protocol: HuggingFaceProtocol,
   retry: Retry.Retry,
@@ -384,8 +384,8 @@ export const getBucketDetails: API.OperationMethod<
   GetBucketDetailsError,
   HuggingFaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(10, __c1, 2) as any as S.Schema<GetBucketDetailsRequest>,
-  output: __S(14, __c1, 6) as any as S.Schema<GetBucketDetailsResponse>,
+  input: __S(44, __c11, 0) as any as S.Schema<GetBucketDetailsRequest>,
+  output: __S(45, __c11, 1) as any as S.Schema<GetBucketDetailsResponse>,
   errors: [],
   protocol: HuggingFaceProtocol,
   retry: Retry.Retry,
@@ -399,8 +399,8 @@ export const getFileMetadata: API.OperationMethod<
   GetFileMetadataError,
   HuggingFaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(15, __c1, 7) as any as S.Schema<GetFileMetadataRequest>,
-  output: __S(16, __c2, 0) as any as S.Schema<GetFileMetadataResponse>,
+  input: __S(52, __c13, 0) as any as S.Schema<GetFileMetadataRequest>,
+  output: __S(53, __c13, 1) as any as S.Schema<GetFileMetadataResponse>,
   errors: [BadRequest, NotFound],
   protocol: HuggingFaceProtocol,
   retry: Retry.Retry,
@@ -414,8 +414,8 @@ export const listFiles: API.OperationMethod<
   ListFilesError,
   HuggingFaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(17, __c2, 1) as any as S.Schema<ListFilesRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<ListFilesResponse>,
+  input: __S(56, __c14, 0) as any as S.Schema<ListFilesRequest>,
+  output: __S(62, __c15, 2) as any as S.Schema<ListFilesResponse>,
   errors: [],
   protocol: HuggingFaceProtocol,
   retry: Retry.Retry,
@@ -429,8 +429,8 @@ export const listNamespaceBuckets: API.OperationMethod<
   ListNamespaceBucketsError,
   HuggingFaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(21, __c2, 5) as any as S.Schema<ListNamespaceBucketsRequest>,
-  output: __S(24, __c3, 0) as any as S.Schema<ListNamespaceBucketsResponse>,
+  input: __S(0, __c0, 0) as any as S.Schema<ListNamespaceBucketsRequest>,
+  output: __S(3, __c0, 3) as any as S.Schema<ListNamespaceBucketsResponse>,
   errors: [],
   protocol: HuggingFaceProtocol,
   retry: Retry.Retry,
@@ -444,8 +444,8 @@ export const listPathsInfo: API.OperationMethod<
   ListPathsInfoError,
   HuggingFaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(25, __c3, 1) as any as S.Schema<ListPathsInfoRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<ListPathsInfoResponse>,
+  input: __S(4, __c1, 0) as any as S.Schema<ListPathsInfoRequest>,
+  output: __S(62, __c15, 2) as any as S.Schema<ListPathsInfoResponse>,
   errors: [],
   protocol: HuggingFaceProtocol,
   retry: Retry.Retry,
@@ -459,8 +459,8 @@ export const registryToken: API.OperationMethod<
   RegistryTokenError,
   HuggingFaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(26, __c3, 2) as any as S.Schema<RegistryTokenRequest>,
-  output: __S(27, __c3, 3) as any as S.Schema<RegistryTokenResponse>,
+  input: __S(8, __c2, 0) as any as S.Schema<RegistryTokenRequest>,
+  output: __S(9, __c2, 1) as any as S.Schema<RegistryTokenResponse>,
   errors: [],
   protocol: HuggingFaceProtocol,
   retry: Retry.Retry,
@@ -474,8 +474,8 @@ export const updateBucketSettings: API.OperationMethod<
   UpdateBucketSettingsError,
   HuggingFaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(28, __c3, 4) as any as S.Schema<UpdateBucketSettingsRequest>,
-  output: __S(29, __c3, 5) as any as S.Schema<UpdateBucketSettingsResponse>,
+  input: __S(12, __c3, 0) as any as S.Schema<UpdateBucketSettingsRequest>,
+  output: __S(13, __c3, 1) as any as S.Schema<UpdateBucketSettingsResponse>,
   errors: [],
   protocol: HuggingFaceProtocol,
   retry: Retry.Retry,
@@ -489,8 +489,8 @@ export const xetReadToken: API.OperationMethod<
   XetReadTokenError,
   HuggingFaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(30, __c3, 6) as any as S.Schema<XetReadTokenRequest>,
-  output: __S(31, __c3, 7) as any as S.Schema<XetReadTokenResponse>,
+  input: __S(16, __c4, 0) as any as S.Schema<XetReadTokenRequest>,
+  output: __S(20, __c5, 0) as any as S.Schema<XetReadTokenResponse>,
   errors: [],
   protocol: HuggingFaceProtocol,
   retry: Retry.Retry,
@@ -504,8 +504,8 @@ export const xetWriteToken: API.OperationMethod<
   XetWriteTokenError,
   HuggingFaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(32, __c4, 0) as any as S.Schema<XetWriteTokenRequest>,
-  output: __S(31, __c3, 7) as any as S.Schema<XetWriteTokenResponse>,
+  input: __S(24, __c6, 0) as any as S.Schema<XetWriteTokenRequest>,
+  output: __S(20, __c5, 0) as any as S.Schema<XetWriteTokenResponse>,
   errors: [],
   protocol: HuggingFaceProtocol,
   retry: Retry.Retry,
@@ -513,6 +513,156 @@ export const xetWriteToken: API.OperationMethod<
 
 // Schema builders: each runs one schema initializer, on that schema's first use.
 function __c0(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          namespace: S.String.pipe(T.Label()),
+          search: S.optional(S.String.pipe(T.Query())),
+        }).pipe(T.Http({ method: "GET", uri: "/api/containers/{namespace}", code: 200 })),
+      ).annotate({
+        identifier: "ListNamespaceBucketsRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          _id: S.String,
+          author: S.String,
+          id: S.String,
+          private: S.optional(S.NullOr(S.Boolean)),
+          description: S.optional(S.NullOr(S.String)),
+          createdAt: S.String,
+          updatedAt: S.String,
+          size: S.Number,
+          totalFiles: S.Number,
+          repoType: S.String,
+          adminTags: S.optional(__S(48, __c12, 0)),
+          disabled: S.optional(__S(49, __c12, 1)),
+          cdnRegions: __S(37, __c9, 1),
+          resourceGroup: S.optional(__S(50, __c12, 2)),
+        }),
+      ).annotate({
+        identifier: "ListNamespaceBucketsResponseBodyItem",
+      });
+    case 2:
+      return S.Array(__S(1, __c0, 1));
+    case 3:
+      return S.suspend(() => __S(2, __c0, 2).pipe(T.RawResponseRoot())).annotate({
+        identifier: "ListNamespaceBucketsResponse",
+      });
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          namespace: S.String.pipe(T.Label()),
+          repo: S.String.pipe(T.Label()),
+          paths: S.Unknown,
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/api/containers/{namespace}/{repo}/paths-info",
+            code: 200,
+          }),
+        ),
+      ).annotate({ identifier: "ListPathsInfoRequest" });
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          service: S.String.pipe(T.Query()),
+          scope: S.optional(S.Unknown.pipe(T.Query())),
+        }).pipe(T.Http({ method: "GET", uri: "/api/registry/token", code: 200 })),
+      ).annotate({ identifier: "RegistryTokenRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          token: S.String,
+          access_token: S.String.pipe(T.SensitiveValue({})),
+          expires_in: S.Number,
+          issued_at: S.String,
+        }),
+      ).annotate({ identifier: "RegistryTokenResponse" });
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          namespace: S.String.pipe(T.Label()),
+          repo: S.String.pipe(T.Label()),
+          private: S.optional(S.Unknown),
+          cdnRegions: S.optional(__S(37, __c9, 1)),
+        }).pipe(
+          T.Http({ method: "PUT", uri: "/api/containers/{namespace}/{repo}/settings", code: 200 }),
+        ),
+      ).annotate({
+        identifier: "UpdateBucketSettingsRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          private: S.optional(S.Boolean),
+          cdnRegions: S.optional(__S(37, __c9, 1)),
+        }),
+      ).annotate({
+        identifier: "UpdateBucketSettingsResponse",
+      });
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          namespace: S.String.pipe(T.Label()),
+          repo: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/api/containers/{namespace}/{repo}/xet-read-token",
+            code: 200,
+          }),
+        ),
+      ).annotate({ identifier: "XetReadTokenRequest" });
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          casUrl: S.String,
+          exp: S.Number,
+          accessToken: S.String.pipe(T.SensitiveValue({})),
+        }),
+      ).annotate({ identifier: "XetReadTokenResponse" });
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          namespace: S.String.pipe(T.Label()),
+          repo: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/api/containers/{namespace}/{repo}/xet-write-token",
+            code: 200,
+          }),
+        ),
+      ).annotate({ identifier: "XetWriteTokenRequest" });
+  }
+}
+function __c7(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -535,30 +685,23 @@ function __c0(j: number): any {
         identifier: "BatchFileOperationsResponseFailedItem",
       });
     case 2:
-      return S.Array(__S(1, __c0, 1));
+      return S.Array(__S(29, __c7, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
           success: S.Boolean,
           processed: S.Number,
           succeeded: S.Number,
-          failed: __S(2, __c0, 2),
+          failed: __S(30, __c7, 2),
         }),
       ).annotate({
         identifier: "BatchFileOperationsResponse",
       });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          provider: S.String,
-          region: S.String,
-        }),
-      ).annotate({
-        identifier: "CreateBucketRequestCdnItem",
-      });
-    case 5:
-      return S.Array(__S(4, __c0, 4));
-    case 6:
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           namespace: S.String.pipe(T.Label()),
@@ -566,12 +709,12 @@ function __c0(j: number): any {
           private: S.optional(S.NullOr(S.Boolean)),
           visibility: S.optional(S.String),
           resourceGroupId: S.optional(S.String),
-          cdn: S.optional(__S(5, __c0, 5)),
+          cdn: S.optional(__S(37, __c9, 1)),
           region: S.optional(S.String),
           description: S.optional(S.String),
         }).pipe(T.Http({ method: "POST", uri: "/api/containers/{namespace}/{repo}", code: 200 })),
       ).annotate({ identifier: "CreateBucketRequest" });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           url: S.String,
@@ -581,7 +724,22 @@ function __c0(j: number): any {
       ).annotate({ identifier: "CreateBucketResponse" });
   }
 }
-function __c1(j: number): any {
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          provider: S.String,
+          region: S.String,
+        }),
+      ).annotate({
+        identifier: "CreateBucketRequestCdnItem",
+      });
+    case 1:
+      return S.Array(__S(36, __c9, 0));
+  }
+}
+function __c10(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -594,35 +752,18 @@ function __c1(j: number): any {
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "DeleteBucketResponse",
       });
-    case 2:
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           namespace: S.String.pipe(T.Label()),
           repo: S.String.pipe(T.Label()),
         }).pipe(T.Http({ method: "GET", uri: "/api/containers/{namespace}/{repo}", code: 200 })),
       ).annotate({ identifier: "GetBucketDetailsRequest" });
-    case 3:
-      return S.Array(S.String);
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          reason: S.String,
-          hideReadme: S.optional(S.Boolean),
-        }),
-      ).annotate({
-        identifier: "GetBucketDetailsResponseDisabled",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String,
-          name: S.String,
-          numUsers: S.optional(S.Number),
-        }),
-      ).annotate({
-        identifier: "GetBucketDetailsResponseResourceGroup",
-      });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           _id: S.String,
@@ -635,13 +776,42 @@ function __c1(j: number): any {
           size: S.Number,
           totalFiles: S.Number,
           repoType: S.String,
-          adminTags: S.optional(__S(11, __c1, 3)),
-          disabled: S.optional(__S(12, __c1, 4)),
-          cdnRegions: __S(5, __c0, 5),
-          resourceGroup: S.optional(__S(13, __c1, 5)),
+          adminTags: S.optional(__S(48, __c12, 0)),
+          disabled: S.optional(__S(49, __c12, 1)),
+          cdnRegions: __S(37, __c9, 1),
+          resourceGroup: S.optional(__S(50, __c12, 2)),
         }),
       ).annotate({ identifier: "GetBucketDetailsResponse" });
-    case 7:
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          reason: S.String,
+          hideReadme: S.optional(S.Boolean),
+        }),
+      ).annotate({
+        identifier: "GetBucketDetailsResponseDisabled",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          name: S.String,
+          numUsers: S.optional(S.Number),
+        }),
+      ).annotate({
+        identifier: "GetBucketDetailsResponseResourceGroup",
+      });
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           namespace: S.String.pipe(T.Label()),
@@ -658,11 +828,7 @@ function __c1(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetFileMetadataRequest" });
-  }
-}
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           hash: S.String,
@@ -673,7 +839,11 @@ function __c2(j: number): any {
           contentType: S.optional(S.String),
         }),
       ).annotate({ identifier: "GetFileMetadataResponse" });
-    case 1:
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           namespace: S.String.pipe(T.Label()),
@@ -692,7 +862,11 @@ function __c2(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ListFilesRequest" });
-    case 2:
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           type: S.String,
@@ -707,145 +881,14 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "ListFilesResponseBodyItem",
       });
-    case 3:
-      return S.Array(__S(18, __c2, 2));
-    case 4:
-      return S.suspend(() => __S(19, __c2, 3).pipe(T.RawResponseRoot())).annotate({
+    case 1:
+      return S.Array(__S(60, __c15, 0));
+    case 2:
+      return S.suspend(() => __S(61, __c15, 1).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListFilesResponse",
       });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          namespace: S.String.pipe(T.Label()),
-          search: S.optional(S.String.pipe(T.Query())),
-        }).pipe(T.Http({ method: "GET", uri: "/api/containers/{namespace}", code: 200 })),
-      ).annotate({
-        identifier: "ListNamespaceBucketsRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          _id: S.String,
-          author: S.String,
-          id: S.String,
-          private: S.optional(S.NullOr(S.Boolean)),
-          description: S.optional(S.NullOr(S.String)),
-          createdAt: S.String,
-          updatedAt: S.String,
-          size: S.Number,
-          totalFiles: S.Number,
-          repoType: S.String,
-          adminTags: S.optional(__S(11, __c1, 3)),
-          disabled: S.optional(__S(12, __c1, 4)),
-          cdnRegions: __S(5, __c0, 5),
-          resourceGroup: S.optional(__S(13, __c1, 5)),
-        }),
-      ).annotate({
-        identifier: "ListNamespaceBucketsResponseBodyItem",
-      });
-    case 7:
-      return S.Array(__S(22, __c2, 6));
   }
 }
-function __c3(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() => __S(23, __c2, 7).pipe(T.RawResponseRoot())).annotate({
-        identifier: "ListNamespaceBucketsResponse",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          namespace: S.String.pipe(T.Label()),
-          repo: S.String.pipe(T.Label()),
-          paths: S.Unknown,
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/api/containers/{namespace}/{repo}/paths-info",
-            code: 200,
-          }),
-        ),
-      ).annotate({ identifier: "ListPathsInfoRequest" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          service: S.String.pipe(T.Query()),
-          scope: S.optional(S.Unknown.pipe(T.Query())),
-        }).pipe(T.Http({ method: "GET", uri: "/api/registry/token", code: 200 })),
-      ).annotate({ identifier: "RegistryTokenRequest" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          token: S.String,
-          access_token: S.String.pipe(T.SensitiveValue({})),
-          expires_in: S.Number,
-          issued_at: S.String,
-        }),
-      ).annotate({ identifier: "RegistryTokenResponse" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          namespace: S.String.pipe(T.Label()),
-          repo: S.String.pipe(T.Label()),
-          private: S.optional(S.Unknown),
-          cdnRegions: S.optional(__S(5, __c0, 5)),
-        }).pipe(
-          T.Http({ method: "PUT", uri: "/api/containers/{namespace}/{repo}/settings", code: 200 }),
-        ),
-      ).annotate({
-        identifier: "UpdateBucketSettingsRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          private: S.optional(S.Boolean),
-          cdnRegions: S.optional(__S(5, __c0, 5)),
-        }),
-      ).annotate({
-        identifier: "UpdateBucketSettingsResponse",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          namespace: S.String.pipe(T.Label()),
-          repo: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/api/containers/{namespace}/{repo}/xet-read-token",
-            code: 200,
-          }),
-        ),
-      ).annotate({ identifier: "XetReadTokenRequest" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          casUrl: S.String,
-          exp: S.Number,
-          accessToken: S.String.pipe(T.SensitiveValue({})),
-        }),
-      ).annotate({ identifier: "XetReadTokenResponse" });
-  }
-}
-function __c4(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          namespace: S.String.pipe(T.Label()),
-          repo: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/api/containers/{namespace}/{repo}/xet-write-token",
-            code: 200,
-          }),
-        ),
-      ).annotate({ identifier: "XetWriteTokenRequest" });
-  }
-}
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

@@ -10001,8 +10001,8 @@ export const ApproveVirtualMachineScaleSetRollingUpgrade: API.OperationMethod<
   ApproveVirtualMachineScaleSetRollingUpgradeError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1, __c0, 1) as any as S.Schema<ApproveVirtualMachineScaleSetRollingUpgradeRequest>,
-  output: __S(2, __c0, 2) as any as S.Schema<ApproveVirtualMachineScaleSetRollingUpgradeResponse>,
+  input: __S(0, __c0, 0) as any as S.Schema<ApproveVirtualMachineScaleSetRollingUpgradeRequest>,
+  output: __S(32, __c1, 0) as any as S.Schema<ApproveVirtualMachineScaleSetRollingUpgradeResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -10016,8 +10016,12 @@ export const ApproveVirtualMachineScaleSetVMRollingUpgrade: API.OperationMethod<
   ApproveVirtualMachineScaleSetVMRollingUpgradeError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3, __c0, 3) as any as S.Schema<ApproveVirtualMachineScaleSetVMRollingUpgradeRequest>,
-  output: __S(2, __c0, 2) as any as S.Schema<ApproveVirtualMachineScaleSetVMRollingUpgradeResponse>,
+  input: __S(96, __c3, 0) as any as S.Schema<ApproveVirtualMachineScaleSetVMRollingUpgradeRequest>,
+  output: __S(
+    32,
+    __c1,
+    0,
+  ) as any as S.Schema<ApproveVirtualMachineScaleSetVMRollingUpgradeResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -10031,8 +10035,8 @@ export const AvailabilitySetsCreateOrUpdate: API.OperationMethod<
   AvailabilitySetsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(13, __c1, 5) as any as S.Schema<AvailabilitySetsCreateOrUpdateRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<AvailabilitySetsCreateOrUpdateResponse>,
+  input: __S(4992, __c156, 0) as any as S.Schema<AvailabilitySetsCreateOrUpdateRequest>,
+  output: __S(5056, __c158, 0) as any as S.Schema<AvailabilitySetsCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -10046,8 +10050,8 @@ export const BulkVirtualMachineBulkOperationDeallocate: API.OperationMethod<
   BulkVirtualMachineBulkOperationDeallocateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(25, __c3, 1) as any as S.Schema<BulkVirtualMachineBulkOperationDeallocateRequest>,
-  output: __S(31, __c3, 7) as any as S.Schema<DeallocateResourceOperationResponse>,
+  input: __S(6304, __c197, 0) as any as S.Schema<BulkVirtualMachineBulkOperationDeallocateRequest>,
+  output: __S(6370, __c199, 2) as any as S.Schema<DeallocateResourceOperationResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -10061,8 +10065,8 @@ export const BulkVirtualMachineBulkOperationHibernate: API.OperationMethod<
   BulkVirtualMachineBulkOperationHibernateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(32, __c4, 0) as any as S.Schema<BulkVirtualMachineBulkOperationHibernateRequest>,
-  output: __S(31, __c3, 7) as any as S.Schema<HibernateResourceOperationResponse>,
+  input: __S(6752, __c211, 0) as any as S.Schema<BulkVirtualMachineBulkOperationHibernateRequest>,
+  output: __S(6370, __c199, 2) as any as S.Schema<HibernateResourceOperationResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -10077,14 +10081,14 @@ export const CancelAvailabilitySetMigrationToVirtualMachineScaleSet: API.Operati
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    33,
-    __c4,
-    1,
+    7168,
+    __c224,
+    0,
   ) as any as S.Schema<CancelAvailabilitySetMigrationToVirtualMachineScaleSetRequest>,
   output: __S(
-    34,
-    __c4,
-    2,
+    7200,
+    __c225,
+    0,
   ) as any as S.Schema<CancelAvailabilitySetMigrationToVirtualMachineScaleSetResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -10099,8 +10103,8 @@ export const CancelVirtualMachineScaleSetRollingUpgrade: API.OperationMethod<
   CancelVirtualMachineScaleSetRollingUpgradeError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(35, __c4, 3) as any as S.Schema<CancelVirtualMachineScaleSetRollingUpgradeRequest>,
-  output: __S(2, __c0, 2) as any as S.Schema<CancelVirtualMachineScaleSetRollingUpgradeResponse>,
+  input: __S(8544, __c267, 0) as any as S.Schema<CancelVirtualMachineScaleSetRollingUpgradeRequest>,
+  output: __S(32, __c1, 0) as any as S.Schema<CancelVirtualMachineScaleSetRollingUpgradeResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -10114,8 +10118,8 @@ export const CapacityReservationGroupsCreateOrUpdate: API.OperationMethod<
   CapacityReservationGroupsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(38, __c4, 6) as any as S.Schema<CapacityReservationGroupsCreateOrUpdateRequest>,
-  output: __S(47, __c5, 7) as any as S.Schema<CapacityReservationGroupsCreateOrUpdateResponse>,
+  input: __S(9312, __c291, 0) as any as S.Schema<CapacityReservationGroupsCreateOrUpdateRequest>,
+  output: __S(9376, __c293, 0) as any as S.Schema<CapacityReservationGroupsCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -10129,8 +10133,8 @@ export const CapacityReservationsCreateOrUpdate: API.OperationMethod<
   CapacityReservationsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(50, __c6, 2) as any as S.Schema<CapacityReservationsCreateOrUpdateRequest>,
-  output: __S(54, __c6, 6) as any as S.Schema<CapacityReservationsCreateOrUpdateResponse>,
+  input: __S(10016, __c313, 0) as any as S.Schema<CapacityReservationsCreateOrUpdateRequest>,
+  output: __S(10080, __c315, 0) as any as S.Schema<CapacityReservationsCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -10144,8 +10148,8 @@ export const CaptureVirtualMachine: API.OperationMethod<
   CaptureVirtualMachineError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(55, __c6, 7) as any as S.Schema<CaptureVirtualMachineRequest>,
-  output: __S(57, __c7, 1) as any as S.Schema<CaptureVirtualMachineResponse>,
+  input: __S(10592, __c331, 0) as any as S.Schema<CaptureVirtualMachineRequest>,
+  output: __S(10594, __c331, 2) as any as S.Schema<CaptureVirtualMachineResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -10159,8 +10163,8 @@ export const ContainerServicesCreateOrUpdate: API.OperationMethod<
   ContainerServicesCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(72, __c9, 0) as any as S.Schema<ContainerServicesCreateOrUpdateRequest>,
-  output: __S(79, __c9, 7) as any as S.Schema<ContainerServicesCreateOrUpdateResponse>,
+  input: __S(134, __c4, 6) as any as S.Schema<ContainerServicesCreateOrUpdateRequest>,
+  output: __S(160, __c5, 0) as any as S.Schema<ContainerServicesCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -10175,14 +10179,14 @@ export const ConvertAvailabilitySetToVirtualMachineScaleSet: API.OperationMethod
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    80,
-    __c10,
+    672,
+    __c21,
     0,
   ) as any as S.Schema<ConvertAvailabilitySetToVirtualMachineScaleSetRequest>,
   output: __S(
-    2,
-    __c0,
-    2,
+    32,
+    __c1,
+    0,
   ) as any as S.Schema<ConvertAvailabilitySetToVirtualMachineScaleSetResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -10198,14 +10202,14 @@ export const ConvertVirtualMachineScaleSetToSinglePlacementGroup: API.OperationM
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    81,
-    __c10,
-    1,
+    1088,
+    __c34,
+    0,
   ) as any as S.Schema<ConvertVirtualMachineScaleSetToSinglePlacementGroupRequest>,
   output: __S(
-    82,
-    __c10,
-    2,
+    1120,
+    __c35,
+    0,
   ) as any as S.Schema<ConvertVirtualMachineScaleSetToSinglePlacementGroupResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -10220,8 +10224,8 @@ export const ConvertVirtualMachineToManagedDisks: API.OperationMethod<
   ConvertVirtualMachineToManagedDisksError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(83, __c10, 3) as any as S.Schema<ConvertVirtualMachineToManagedDisksRequest>,
-  output: __S(2, __c0, 2) as any as S.Schema<ConvertVirtualMachineToManagedDisksResponse>,
+  input: __S(1568, __c49, 0) as any as S.Schema<ConvertVirtualMachineToManagedDisksRequest>,
+  output: __S(32, __c1, 0) as any as S.Schema<ConvertVirtualMachineToManagedDisksResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -10235,8 +10239,8 @@ export const CreateRestorePoint: API.OperationMethod<
   CreateRestorePointError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(98, __c12, 2) as any as S.Schema<CreateRestorePointRequest>,
-  output: __S(140, __c17, 4) as any as S.Schema<CreateRestorePointResponse>,
+  input: __S(1926, __c60, 6) as any as S.Schema<CreateRestorePointRequest>,
+  output: __S(1927, __c60, 7) as any as S.Schema<CreateRestorePointResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -10250,8 +10254,8 @@ export const CreateSshPublicKey: API.OperationMethod<
   CreateSshPublicKeyError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(142, __c17, 6) as any as S.Schema<CreateSshPublicKeyRequest>,
-  output: __S(143, __c17, 7) as any as S.Schema<CreateSshPublicKeyResponse>,
+  input: __S(2592, __c81, 0) as any as S.Schema<CreateSshPublicKeyRequest>,
+  output: __S(2624, __c82, 0) as any as S.Schema<CreateSshPublicKeyResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -10265,8 +10269,8 @@ export const DedicatedHostGroupsCreateOrUpdate: API.OperationMethod<
   DedicatedHostGroupsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(146, __c18, 2) as any as S.Schema<DedicatedHostGroupsCreateOrUpdateRequest>,
-  output: __S(154, __c19, 2) as any as S.Schema<DedicatedHostGroupsCreateOrUpdateResponse>,
+  input: __S(3008, __c94, 0) as any as S.Schema<DedicatedHostGroupsCreateOrUpdateRequest>,
+  output: __S(3104, __c97, 0) as any as S.Schema<DedicatedHostGroupsCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -10280,8 +10284,8 @@ export const DedicatedHostsCreateOrUpdate: API.OperationMethod<
   DedicatedHostsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(156, __c19, 4) as any as S.Schema<DedicatedHostsCreateOrUpdateRequest>,
-  output: __S(159, __c19, 7) as any as S.Schema<DedicatedHostsCreateOrUpdateResponse>,
+  input: __S(3648, __c114, 0) as any as S.Schema<DedicatedHostsCreateOrUpdateRequest>,
+  output: __S(3681, __c115, 1) as any as S.Schema<DedicatedHostsCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -10295,8 +10299,8 @@ export const DeleteAvailabilitySet: API.OperationMethod<
   DeleteAvailabilitySetError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(160, __c20, 0) as any as S.Schema<DeleteAvailabilitySetRequest>,
-  output: __S(161, __c20, 1) as any as S.Schema<DeleteAvailabilitySetResponse>,
+  input: __S(4160, __c130, 0) as any as S.Schema<DeleteAvailabilitySetRequest>,
+  output: __S(4192, __c131, 0) as any as S.Schema<DeleteAvailabilitySetResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -10310,8 +10314,8 @@ export const DeleteCapacityReservation: API.OperationMethod<
   DeleteCapacityReservationError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(162, __c20, 2) as any as S.Schema<DeleteCapacityReservationRequest>,
-  output: __S(2, __c0, 2) as any as S.Schema<DeleteCapacityReservationResponse>,
+  input: __S(4608, __c144, 0) as any as S.Schema<DeleteCapacityReservationRequest>,
+  output: __S(32, __c1, 0) as any as S.Schema<DeleteCapacityReservationResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -10325,8 +10329,8 @@ export const DeleteCapacityReservationGroup: API.OperationMethod<
   DeleteCapacityReservationGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(163, __c20, 3) as any as S.Schema<DeleteCapacityReservationGroupRequest>,
-  output: __S(2, __c0, 2) as any as S.Schema<DeleteCapacityReservationGroupResponse>,
+  input: __S(5376, __c168, 0) as any as S.Schema<DeleteCapacityReservationGroupRequest>,
+  output: __S(32, __c1, 0) as any as S.Schema<DeleteCapacityReservationGroupResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -10340,8 +10344,8 @@ export const DeleteContainerService: API.OperationMethod<
   DeleteContainerServiceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(164, __c20, 4) as any as S.Schema<DeleteContainerServiceRequest>,
-  output: __S(161, __c20, 1) as any as S.Schema<DeleteContainerServiceResponse>,
+  input: __S(5728, __c179, 0) as any as S.Schema<DeleteContainerServiceRequest>,
+  output: __S(4192, __c131, 0) as any as S.Schema<DeleteContainerServiceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -10355,8 +10359,8 @@ export const DeleteDedicatedHost: API.OperationMethod<
   DeleteDedicatedHostError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(165, __c20, 5) as any as S.Schema<DeleteDedicatedHostRequest>,
-  output: __S(161, __c20, 1) as any as S.Schema<DeleteDedicatedHostResponse>,
+  input: __S(6016, __c188, 0) as any as S.Schema<DeleteDedicatedHostRequest>,
+  output: __S(4192, __c131, 0) as any as S.Schema<DeleteDedicatedHostResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -10370,8 +10374,8 @@ export const DeleteDedicatedHostGroup: API.OperationMethod<
   DeleteDedicatedHostGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(166, __c20, 6) as any as S.Schema<DeleteDedicatedHostGroupRequest>,
-  output: __S(2, __c0, 2) as any as S.Schema<DeleteDedicatedHostGroupResponse>,
+  input: __S(6048, __c189, 0) as any as S.Schema<DeleteDedicatedHostGroupRequest>,
+  output: __S(32, __c1, 0) as any as S.Schema<DeleteDedicatedHostGroupResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -10385,8 +10389,8 @@ export const DeleteImage: API.OperationMethod<
   DeleteImageError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(167, __c20, 7) as any as S.Schema<DeleteImageRequest>,
-  output: __S(161, __c20, 1) as any as S.Schema<DeleteImageResponse>,
+  input: __S(6080, __c190, 0) as any as S.Schema<DeleteImageRequest>,
+  output: __S(4192, __c131, 0) as any as S.Schema<DeleteImageResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -10400,8 +10404,8 @@ export const DeleteInterconnectBlock: API.OperationMethod<
   DeleteInterconnectBlockError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(168, __c21, 0) as any as S.Schema<DeleteInterconnectBlockRequest>,
-  output: __S(169, __c21, 1) as any as S.Schema<DeleteInterconnectBlockResponse>,
+  input: __S(6112, __c191, 0) as any as S.Schema<DeleteInterconnectBlockRequest>,
+  output: __S(6144, __c192, 0) as any as S.Schema<DeleteInterconnectBlockResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -10415,8 +10419,8 @@ export const DeleteProximityPlacementGroup: API.OperationMethod<
   DeleteProximityPlacementGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(170, __c21, 2) as any as S.Schema<DeleteProximityPlacementGroupRequest>,
-  output: __S(2, __c0, 2) as any as S.Schema<DeleteProximityPlacementGroupResponse>,
+  input: __S(6176, __c193, 0) as any as S.Schema<DeleteProximityPlacementGroupRequest>,
+  output: __S(32, __c1, 0) as any as S.Schema<DeleteProximityPlacementGroupResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -10430,8 +10434,8 @@ export const DeleteRestorePoint: API.OperationMethod<
   DeleteRestorePointError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(171, __c21, 3) as any as S.Schema<DeleteRestorePointRequest>,
-  output: __S(161, __c20, 1) as any as S.Schema<DeleteRestorePointResponse>,
+  input: __S(6208, __c194, 0) as any as S.Schema<DeleteRestorePointRequest>,
+  output: __S(4192, __c131, 0) as any as S.Schema<DeleteRestorePointResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -10445,8 +10449,8 @@ export const DeleteRestorePointCollection: API.OperationMethod<
   DeleteRestorePointCollectionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(172, __c21, 4) as any as S.Schema<DeleteRestorePointCollectionRequest>,
-  output: __S(2, __c0, 2) as any as S.Schema<DeleteRestorePointCollectionResponse>,
+  input: __S(6240, __c195, 0) as any as S.Schema<DeleteRestorePointCollectionRequest>,
+  output: __S(32, __c1, 0) as any as S.Schema<DeleteRestorePointCollectionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -10460,8 +10464,8 @@ export const DeleteSshPublicKey: API.OperationMethod<
   DeleteSshPublicKeyError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(173, __c21, 5) as any as S.Schema<DeleteSshPublicKeyRequest>,
-  output: __S(161, __c20, 1) as any as S.Schema<DeleteSshPublicKeyResponse>,
+  input: __S(6272, __c196, 0) as any as S.Schema<DeleteSshPublicKeyRequest>,
+  output: __S(4192, __c131, 0) as any as S.Schema<DeleteSshPublicKeyResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -10475,8 +10479,8 @@ export const DeleteVirtualMachine: API.OperationMethod<
   DeleteVirtualMachineError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(174, __c21, 6) as any as S.Schema<DeleteVirtualMachineRequest>,
-  output: __S(161, __c20, 1) as any as S.Schema<DeleteVirtualMachineResponse>,
+  input: __S(6432, __c201, 0) as any as S.Schema<DeleteVirtualMachineRequest>,
+  output: __S(4192, __c131, 0) as any as S.Schema<DeleteVirtualMachineResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -10490,8 +10494,8 @@ export const DeleteVirtualMachineDiagnosticRunCommand: API.OperationMethod<
   DeleteVirtualMachineDiagnosticRunCommandError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(175, __c21, 7) as any as S.Schema<DeleteVirtualMachineDiagnosticRunCommandRequest>,
-  output: __S(2, __c0, 2) as any as S.Schema<DeleteVirtualMachineDiagnosticRunCommandResponse>,
+  input: __S(6464, __c202, 0) as any as S.Schema<DeleteVirtualMachineDiagnosticRunCommandRequest>,
+  output: __S(32, __c1, 0) as any as S.Schema<DeleteVirtualMachineDiagnosticRunCommandResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -10505,8 +10509,8 @@ export const DeleteVirtualMachineExtension: API.OperationMethod<
   DeleteVirtualMachineExtensionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(176, __c22, 0) as any as S.Schema<DeleteVirtualMachineExtensionRequest>,
-  output: __S(2, __c0, 2) as any as S.Schema<DeleteVirtualMachineExtensionResponse>,
+  input: __S(6496, __c203, 0) as any as S.Schema<DeleteVirtualMachineExtensionRequest>,
+  output: __S(32, __c1, 0) as any as S.Schema<DeleteVirtualMachineExtensionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -10520,8 +10524,8 @@ export const DeleteVirtualMachineRunCommand: API.OperationMethod<
   DeleteVirtualMachineRunCommandError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(177, __c22, 1) as any as S.Schema<DeleteVirtualMachineRunCommandRequest>,
-  output: __S(2, __c0, 2) as any as S.Schema<DeleteVirtualMachineRunCommandResponse>,
+  input: __S(6528, __c204, 0) as any as S.Schema<DeleteVirtualMachineRunCommandRequest>,
+  output: __S(32, __c1, 0) as any as S.Schema<DeleteVirtualMachineRunCommandResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -10535,8 +10539,8 @@ export const DeleteVirtualMachineScaleSet: API.OperationMethod<
   DeleteVirtualMachineScaleSetError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(178, __c22, 2) as any as S.Schema<DeleteVirtualMachineScaleSetRequest>,
-  output: __S(2, __c0, 2) as any as S.Schema<DeleteVirtualMachineScaleSetResponse>,
+  input: __S(6560, __c205, 0) as any as S.Schema<DeleteVirtualMachineScaleSetRequest>,
+  output: __S(32, __c1, 0) as any as S.Schema<DeleteVirtualMachineScaleSetResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -10550,8 +10554,8 @@ export const DeleteVirtualMachineScaleSetExtension: API.OperationMethod<
   DeleteVirtualMachineScaleSetExtensionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(179, __c22, 3) as any as S.Schema<DeleteVirtualMachineScaleSetExtensionRequest>,
-  output: __S(2, __c0, 2) as any as S.Schema<DeleteVirtualMachineScaleSetExtensionResponse>,
+  input: __S(6592, __c206, 0) as any as S.Schema<DeleteVirtualMachineScaleSetExtensionRequest>,
+  output: __S(32, __c1, 0) as any as S.Schema<DeleteVirtualMachineScaleSetExtensionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -10565,8 +10569,8 @@ export const DeleteVirtualMachineScaleSetInstances: API.OperationMethod<
   DeleteVirtualMachineScaleSetInstancesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(180, __c22, 4) as any as S.Schema<DeleteVirtualMachineScaleSetInstancesRequest>,
-  output: __S(2, __c0, 2) as any as S.Schema<DeleteVirtualMachineScaleSetInstancesResponse>,
+  input: __S(6624, __c207, 0) as any as S.Schema<DeleteVirtualMachineScaleSetInstancesRequest>,
+  output: __S(32, __c1, 0) as any as S.Schema<DeleteVirtualMachineScaleSetInstancesResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -10580,8 +10584,8 @@ export const DeleteVirtualMachineScaleSetVM: API.OperationMethod<
   DeleteVirtualMachineScaleSetVMError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(181, __c22, 5) as any as S.Schema<DeleteVirtualMachineScaleSetVMRequest>,
-  output: __S(2, __c0, 2) as any as S.Schema<DeleteVirtualMachineScaleSetVMResponse>,
+  input: __S(6656, __c208, 0) as any as S.Schema<DeleteVirtualMachineScaleSetVMRequest>,
+  output: __S(32, __c1, 0) as any as S.Schema<DeleteVirtualMachineScaleSetVMResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -10596,14 +10600,14 @@ export const DeleteVirtualMachineScaleSetVMDiagnosticRunCommand: API.OperationMe
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    182,
-    __c22,
-    6,
+    6688,
+    __c209,
+    0,
   ) as any as S.Schema<DeleteVirtualMachineScaleSetVMDiagnosticRunCommandRequest>,
   output: __S(
-    82,
-    __c10,
-    2,
+    1120,
+    __c35,
+    0,
   ) as any as S.Schema<DeleteVirtualMachineScaleSetVMDiagnosticRunCommandResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -10618,8 +10622,8 @@ export const DeleteVirtualMachineScaleSetVMExtension: API.OperationMethod<
   DeleteVirtualMachineScaleSetVMExtensionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(183, __c22, 7) as any as S.Schema<DeleteVirtualMachineScaleSetVMExtensionRequest>,
-  output: __S(2, __c0, 2) as any as S.Schema<DeleteVirtualMachineScaleSetVMExtensionResponse>,
+  input: __S(6720, __c210, 0) as any as S.Schema<DeleteVirtualMachineScaleSetVMExtensionRequest>,
+  output: __S(32, __c1, 0) as any as S.Schema<DeleteVirtualMachineScaleSetVMExtensionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -10633,8 +10637,8 @@ export const DeleteVirtualMachineScaleSetVMRunCommand: API.OperationMethod<
   DeleteVirtualMachineScaleSetVMRunCommandError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(184, __c23, 0) as any as S.Schema<DeleteVirtualMachineScaleSetVMRunCommandRequest>,
-  output: __S(2, __c0, 2) as any as S.Schema<DeleteVirtualMachineScaleSetVMRunCommandResponse>,
+  input: __S(6784, __c212, 0) as any as S.Schema<DeleteVirtualMachineScaleSetVMRunCommandRequest>,
+  output: __S(32, __c1, 0) as any as S.Schema<DeleteVirtualMachineScaleSetVMRunCommandResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -10648,8 +10652,8 @@ export const ExportLogAnalyticsRequestRateByInterval: API.OperationMethod<
   ExportLogAnalyticsRequestRateByIntervalError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(185, __c23, 1) as any as S.Schema<ExportLogAnalyticsRequestRateByIntervalRequest>,
-  output: __S(187, __c23, 3) as any as S.Schema<LogAnalyticsOperationResult>,
+  input: __S(6816, __c213, 0) as any as S.Schema<ExportLogAnalyticsRequestRateByIntervalRequest>,
+  output: __S(6849, __c214, 1) as any as S.Schema<LogAnalyticsOperationResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -10663,8 +10667,8 @@ export const ExportLogAnalyticsThrottledRequests: API.OperationMethod<
   ExportLogAnalyticsThrottledRequestsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(188, __c23, 4) as any as S.Schema<ExportLogAnalyticsThrottledRequestsRequest>,
-  output: __S(187, __c23, 3) as any as S.Schema<LogAnalyticsOperationResult>,
+  input: __S(6880, __c215, 0) as any as S.Schema<ExportLogAnalyticsThrottledRequestsRequest>,
+  output: __S(6849, __c214, 1) as any as S.Schema<LogAnalyticsOperationResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -10678,8 +10682,8 @@ export const GenerateSshPublicKeyKeyPair: API.OperationMethod<
   GenerateSshPublicKeyKeyPairError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(189, __c23, 5) as any as S.Schema<GenerateSshPublicKeyKeyPairRequest>,
-  output: __S(190, __c23, 6) as any as S.Schema<SshPublicKeyGenerateKeyPairResult>,
+  input: __S(6912, __c216, 0) as any as S.Schema<GenerateSshPublicKeyKeyPairRequest>,
+  output: __S(6913, __c216, 1) as any as S.Schema<SshPublicKeyGenerateKeyPairResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -10693,8 +10697,8 @@ export const GetAvailabilitySet: API.OperationMethod<
   GetAvailabilitySetError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(191, __c23, 7) as any as S.Schema<GetAvailabilitySetRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<GetAvailabilitySetResponse>,
+  input: __S(6944, __c217, 0) as any as S.Schema<GetAvailabilitySetRequest>,
+  output: __S(5056, __c158, 0) as any as S.Schema<GetAvailabilitySetResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -10708,8 +10712,8 @@ export const GetCapacityReservation: API.OperationMethod<
   GetCapacityReservationError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(192, __c24, 0) as any as S.Schema<GetCapacityReservationRequest>,
-  output: __S(54, __c6, 6) as any as S.Schema<GetCapacityReservationResponse>,
+  input: __S(6976, __c218, 0) as any as S.Schema<GetCapacityReservationRequest>,
+  output: __S(10080, __c315, 0) as any as S.Schema<GetCapacityReservationResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -10723,8 +10727,8 @@ export const GetCapacityReservationGroup: API.OperationMethod<
   GetCapacityReservationGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(193, __c24, 1) as any as S.Schema<GetCapacityReservationGroupRequest>,
-  output: __S(47, __c5, 7) as any as S.Schema<GetCapacityReservationGroupResponse>,
+  input: __S(7008, __c219, 0) as any as S.Schema<GetCapacityReservationGroupRequest>,
+  output: __S(9376, __c293, 0) as any as S.Schema<GetCapacityReservationGroupResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -10738,8 +10742,8 @@ export const GetContainerService: API.OperationMethod<
   GetContainerServiceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(194, __c24, 2) as any as S.Schema<GetContainerServiceRequest>,
-  output: __S(79, __c9, 7) as any as S.Schema<GetContainerServiceResponse>,
+  input: __S(7040, __c220, 0) as any as S.Schema<GetContainerServiceRequest>,
+  output: __S(160, __c5, 0) as any as S.Schema<GetContainerServiceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -10753,8 +10757,8 @@ export const GetDedicatedHost: API.OperationMethod<
   GetDedicatedHostError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(195, __c24, 3) as any as S.Schema<GetDedicatedHostRequest>,
-  output: __S(196, __c24, 4) as any as S.Schema<GetDedicatedHostResponse>,
+  input: __S(7072, __c221, 0) as any as S.Schema<GetDedicatedHostRequest>,
+  output: __S(7104, __c222, 0) as any as S.Schema<GetDedicatedHostResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -10768,8 +10772,8 @@ export const GetDedicatedHostGroup: API.OperationMethod<
   GetDedicatedHostGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(197, __c24, 5) as any as S.Schema<GetDedicatedHostGroupRequest>,
-  output: __S(154, __c19, 2) as any as S.Schema<GetDedicatedHostGroupResponse>,
+  input: __S(7136, __c223, 0) as any as S.Schema<GetDedicatedHostGroupRequest>,
+  output: __S(3104, __c97, 0) as any as S.Schema<GetDedicatedHostGroupResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -10783,8 +10787,8 @@ export const GetImage: API.OperationMethod<
   GetImageError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(198, __c24, 6) as any as S.Schema<GetImageRequest>,
-  output: __S(205, __c25, 5) as any as S.Schema<GetImageResponse>,
+  input: __S(7232, __c226, 0) as any as S.Schema<GetImageRequest>,
+  output: __S(7328, __c229, 0) as any as S.Schema<GetImageResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -10798,8 +10802,8 @@ export const GetInterconnectBlock: API.OperationMethod<
   GetInterconnectBlockError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(206, __c25, 6) as any as S.Schema<GetInterconnectBlockRequest>,
-  output: __S(210, __c26, 2) as any as S.Schema<GetInterconnectBlockResponse>,
+  input: __S(7360, __c230, 0) as any as S.Schema<GetInterconnectBlockRequest>,
+  output: __S(7424, __c232, 0) as any as S.Schema<GetInterconnectBlockResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -10813,8 +10817,8 @@ export const GetProximityPlacementGroup: API.OperationMethod<
   GetProximityPlacementGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(211, __c26, 3) as any as S.Schema<GetProximityPlacementGroupRequest>,
-  output: __S(216, __c27, 0) as any as S.Schema<GetProximityPlacementGroupResponse>,
+  input: __S(7488, __c234, 0) as any as S.Schema<GetProximityPlacementGroupRequest>,
+  output: __S(7520, __c235, 0) as any as S.Schema<GetProximityPlacementGroupResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -10828,8 +10832,8 @@ export const GetRestorePoint: API.OperationMethod<
   GetRestorePointError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(217, __c27, 1) as any as S.Schema<GetRestorePointRequest>,
-  output: __S(218, __c27, 2) as any as S.Schema<GetRestorePointResponse>,
+  input: __S(7584, __c237, 0) as any as S.Schema<GetRestorePointRequest>,
+  output: __S(7616, __c238, 0) as any as S.Schema<GetRestorePointResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -10843,8 +10847,8 @@ export const GetRestorePointCollection: API.OperationMethod<
   GetRestorePointCollectionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(219, __c27, 3) as any as S.Schema<GetRestorePointCollectionRequest>,
-  output: __S(223, __c27, 7) as any as S.Schema<GetRestorePointCollectionResponse>,
+  input: __S(7648, __c239, 0) as any as S.Schema<GetRestorePointCollectionRequest>,
+  output: __S(7712, __c241, 0) as any as S.Schema<GetRestorePointCollectionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -10858,8 +10862,8 @@ export const GetSpotPlacementScore: API.OperationMethod<
   GetSpotPlacementScoreError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(224, __c28, 0) as any as S.Schema<GetSpotPlacementScoreRequest>,
-  output: __S(226, __c28, 2) as any as S.Schema<GetSpotPlacementScoreResponse>,
+  input: __S(7744, __c242, 0) as any as S.Schema<GetSpotPlacementScoreRequest>,
+  output: __S(7746, __c242, 2) as any as S.Schema<GetSpotPlacementScoreResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -10873,8 +10877,8 @@ export const GetSshPublicKey: API.OperationMethod<
   GetSshPublicKeyError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(227, __c28, 3) as any as S.Schema<GetSshPublicKeyRequest>,
-  output: __S(228, __c28, 4) as any as S.Schema<GetSshPublicKeyResponse>,
+  input: __S(7776, __c243, 0) as any as S.Schema<GetSshPublicKeyRequest>,
+  output: __S(7808, __c244, 0) as any as S.Schema<GetSshPublicKeyResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -10888,8 +10892,8 @@ export const GetVirtualMachine: API.OperationMethod<
   GetVirtualMachineError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(229, __c28, 5) as any as S.Schema<GetVirtualMachineRequest>,
-  output: __S(294, __c36, 6) as any as S.Schema<GetVirtualMachineResponse>,
+  input: __S(7840, __c245, 0) as any as S.Schema<GetVirtualMachineRequest>,
+  output: __S(7936, __c248, 0) as any as S.Schema<GetVirtualMachineResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -10903,8 +10907,8 @@ export const GetVirtualMachineBootDiagnosticsData: API.OperationMethod<
   GetVirtualMachineBootDiagnosticsDataError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(295, __c36, 7) as any as S.Schema<GetVirtualMachineBootDiagnosticsDataRequest>,
-  output: __S(296, __c37, 0) as any as S.Schema<RetrieveBootDiagnosticsDataResult>,
+  input: __S(8320, __c260, 0) as any as S.Schema<GetVirtualMachineBootDiagnosticsDataRequest>,
+  output: __S(8352, __c261, 0) as any as S.Schema<RetrieveBootDiagnosticsDataResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -10919,14 +10923,14 @@ export const GetVirtualMachineDiagnosticRunCommandByVirtualMachine: API.Operatio
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    297,
-    __c37,
-    1,
+    8384,
+    __c262,
+    0,
   ) as any as S.Schema<GetVirtualMachineDiagnosticRunCommandByVirtualMachineRequest>,
   output: __S(
-    305,
-    __c38,
-    1,
+    8416,
+    __c263,
+    0,
   ) as any as S.Schema<GetVirtualMachineDiagnosticRunCommandByVirtualMachineResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -10941,8 +10945,8 @@ export const GetVirtualMachineExtension: API.OperationMethod<
   GetVirtualMachineExtensionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(306, __c38, 2) as any as S.Schema<GetVirtualMachineExtensionRequest>,
-  output: __S(307, __c38, 3) as any as S.Schema<GetVirtualMachineExtensionResponse>,
+  input: __S(8576, __c268, 0) as any as S.Schema<GetVirtualMachineExtensionRequest>,
+  output: __S(8608, __c269, 0) as any as S.Schema<GetVirtualMachineExtensionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -10956,8 +10960,8 @@ export const GetVirtualMachineExtensionImage: API.OperationMethod<
   GetVirtualMachineExtensionImageError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(308, __c38, 4) as any as S.Schema<GetVirtualMachineExtensionImageRequest>,
-  output: __S(313, __c39, 1) as any as S.Schema<GetVirtualMachineExtensionImageResponse>,
+  input: __S(8640, __c270, 0) as any as S.Schema<GetVirtualMachineExtensionImageRequest>,
+  output: __S(8676, __c271, 4) as any as S.Schema<GetVirtualMachineExtensionImageResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -10971,8 +10975,8 @@ export const GetVirtualMachineImage: API.OperationMethod<
   GetVirtualMachineImageError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(314, __c39, 2) as any as S.Schema<GetVirtualMachineImageRequest>,
-  output: __S(326, __c40, 6) as any as S.Schema<GetVirtualMachineImageResponse>,
+  input: __S(8704, __c272, 0) as any as S.Schema<GetVirtualMachineImageRequest>,
+  output: __S(8747, __c273, 11) as any as S.Schema<GetVirtualMachineImageResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -10986,8 +10990,8 @@ export const GetVirtualMachineImagesEdgeZone: API.OperationMethod<
   GetVirtualMachineImagesEdgeZoneError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(327, __c40, 7) as any as S.Schema<GetVirtualMachineImagesEdgeZoneRequest>,
-  output: __S(326, __c40, 6) as any as S.Schema<GetVirtualMachineImagesEdgeZoneResponse>,
+  input: __S(8768, __c274, 0) as any as S.Schema<GetVirtualMachineImagesEdgeZoneRequest>,
+  output: __S(8747, __c273, 11) as any as S.Schema<GetVirtualMachineImagesEdgeZoneResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -11001,8 +11005,8 @@ export const GetVirtualMachineRunCommand: API.OperationMethod<
   GetVirtualMachineRunCommandError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(328, __c41, 0) as any as S.Schema<GetVirtualMachineRunCommandRequest>,
-  output: __S(331, __c41, 3) as any as S.Schema<GetVirtualMachineRunCommandResponse>,
+  input: __S(8800, __c275, 0) as any as S.Schema<GetVirtualMachineRunCommandRequest>,
+  output: __S(8803, __c275, 3) as any as S.Schema<GetVirtualMachineRunCommandResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -11016,11 +11020,15 @@ export const GetVirtualMachineRunCommandByVirtualMachine: API.OperationMethod<
   GetVirtualMachineRunCommandByVirtualMachineError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(332, __c41, 4) as any as S.Schema<GetVirtualMachineRunCommandByVirtualMachineRequest>,
+  input: __S(
+    8832,
+    __c276,
+    0,
+  ) as any as S.Schema<GetVirtualMachineRunCommandByVirtualMachineRequest>,
   output: __S(
-    333,
-    __c41,
-    5,
+    8864,
+    __c277,
+    0,
   ) as any as S.Schema<GetVirtualMachineRunCommandByVirtualMachineResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -11035,8 +11043,8 @@ export const GetVirtualMachineScaleSet: API.OperationMethod<
   GetVirtualMachineScaleSetError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(334, __c41, 6) as any as S.Schema<GetVirtualMachineScaleSetRequest>,
-  output: __S(383, __c47, 7) as any as S.Schema<GetVirtualMachineScaleSetResponse>,
+  input: __S(8896, __c278, 0) as any as S.Schema<GetVirtualMachineScaleSetRequest>,
+  output: __S(9024, __c282, 0) as any as S.Schema<GetVirtualMachineScaleSetResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -11050,8 +11058,8 @@ export const GetVirtualMachineScaleSetExtension: API.OperationMethod<
   GetVirtualMachineScaleSetExtensionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(384, __c48, 0) as any as S.Schema<GetVirtualMachineScaleSetExtensionRequest>,
-  output: __S(357, __c44, 5) as any as S.Schema<GetVirtualMachineScaleSetExtensionResponse>,
+  input: __S(9184, __c287, 0) as any as S.Schema<GetVirtualMachineScaleSetExtensionRequest>,
+  output: __S(9057, __c283, 1) as any as S.Schema<GetVirtualMachineScaleSetExtensionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -11065,8 +11073,8 @@ export const GetVirtualMachineScaleSetInstanceView: API.OperationMethod<
   GetVirtualMachineScaleSetInstanceViewError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(385, __c48, 1) as any as S.Schema<GetVirtualMachineScaleSetInstanceViewRequest>,
-  output: __S(394, __c49, 2) as any as S.Schema<VirtualMachineScaleSetInstanceView>,
+  input: __S(9216, __c288, 0) as any as S.Schema<GetVirtualMachineScaleSetInstanceViewRequest>,
+  output: __S(9225, __c288, 9) as any as S.Schema<VirtualMachineScaleSetInstanceView>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -11080,11 +11088,15 @@ export const GetVirtualMachineScaleSetLifeCycleHookEvent: API.OperationMethod<
   GetVirtualMachineScaleSetLifeCycleHookEventError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(395, __c49, 3) as any as S.Schema<GetVirtualMachineScaleSetLifeCycleHookEventRequest>,
-  output: __S(
-    400,
-    __c50,
+  input: __S(
+    9248,
+    __c289,
     0,
+  ) as any as S.Schema<GetVirtualMachineScaleSetLifeCycleHookEventRequest>,
+  output: __S(
+    9284,
+    __c290,
+    4,
   ) as any as S.Schema<GetVirtualMachineScaleSetLifeCycleHookEventResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -11099,8 +11111,8 @@ export const GetVirtualMachineScaleSetOSUpgradeHistory: API.OperationMethod<
   GetVirtualMachineScaleSetOSUpgradeHistoryError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(401, __c50, 1) as any as S.Schema<GetVirtualMachineScaleSetOSUpgradeHistoryRequest>,
-  output: __S(408, __c51, 0) as any as S.Schema<VirtualMachineScaleSetListOSUpgradeHistory>,
+  input: __S(9504, __c297, 0) as any as S.Schema<GetVirtualMachineScaleSetOSUpgradeHistoryRequest>,
+  output: __S(9510, __c297, 6) as any as S.Schema<VirtualMachineScaleSetListOSUpgradeHistory>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -11115,14 +11127,14 @@ export const GetVirtualMachineScaleSetRollingUpgradeLatest: API.OperationMethod<
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    409,
-    __c51,
-    1,
+    9568,
+    __c299,
+    0,
   ) as any as S.Schema<GetVirtualMachineScaleSetRollingUpgradeLatestRequest>,
   output: __S(
-    412,
-    __c51,
-    4,
+    9571,
+    __c299,
+    3,
   ) as any as S.Schema<GetVirtualMachineScaleSetRollingUpgradeLatestResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -11137,8 +11149,8 @@ export const GetVirtualMachineScaleSetVM: API.OperationMethod<
   GetVirtualMachineScaleSetVMError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(413, __c51, 5) as any as S.Schema<GetVirtualMachineScaleSetVMRequest>,
-  output: __S(418, __c52, 2) as any as S.Schema<GetVirtualMachineScaleSetVMResponse>,
+  input: __S(9600, __c300, 0) as any as S.Schema<GetVirtualMachineScaleSetVMRequest>,
+  output: __S(9664, __c302, 0) as any as S.Schema<GetVirtualMachineScaleSetVMResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -11153,11 +11165,11 @@ export const GetVirtualMachineScaleSetVMBootDiagnosticsData: API.OperationMethod
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    419,
-    __c52,
-    3,
+    9728,
+    __c304,
+    0,
   ) as any as S.Schema<GetVirtualMachineScaleSetVMBootDiagnosticsDataRequest>,
-  output: __S(296, __c37, 0) as any as S.Schema<RetrieveBootDiagnosticsDataResult>,
+  output: __S(8352, __c261, 0) as any as S.Schema<RetrieveBootDiagnosticsDataResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -11172,14 +11184,14 @@ export const GetVirtualMachineScaleSetVMDiagnosticRunCommand: API.OperationMetho
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    420,
-    __c52,
-    4,
+    9760,
+    __c305,
+    0,
   ) as any as S.Schema<GetVirtualMachineScaleSetVMDiagnosticRunCommandRequest>,
   output: __S(
-    421,
-    __c52,
-    5,
+    9761,
+    __c305,
+    1,
   ) as any as S.Schema<GetVirtualMachineScaleSetVMDiagnosticRunCommandResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -11194,8 +11206,8 @@ export const GetVirtualMachineScaleSetVMExtension: API.OperationMethod<
   GetVirtualMachineScaleSetVMExtensionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(422, __c52, 6) as any as S.Schema<GetVirtualMachineScaleSetVMExtensionRequest>,
-  output: __S(423, __c52, 7) as any as S.Schema<GetVirtualMachineScaleSetVMExtensionResponse>,
+  input: __S(9792, __c306, 0) as any as S.Schema<GetVirtualMachineScaleSetVMExtensionRequest>,
+  output: __S(9824, __c307, 0) as any as S.Schema<GetVirtualMachineScaleSetVMExtensionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -11209,8 +11221,8 @@ export const GetVirtualMachineScaleSetVMInstanceView: API.OperationMethod<
   GetVirtualMachineScaleSetVMInstanceViewError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(424, __c53, 0) as any as S.Schema<GetVirtualMachineScaleSetVMInstanceViewRequest>,
-  output: __S(414, __c51, 6) as any as S.Schema<VirtualMachineScaleSetVMInstanceView>,
+  input: __S(9856, __c308, 0) as any as S.Schema<GetVirtualMachineScaleSetVMInstanceViewRequest>,
+  output: __S(9696, __c303, 0) as any as S.Schema<VirtualMachineScaleSetVMInstanceView>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -11224,8 +11236,8 @@ export const GetVirtualMachineScaleSetVMRunCommand: API.OperationMethod<
   GetVirtualMachineScaleSetVMRunCommandError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(425, __c53, 1) as any as S.Schema<GetVirtualMachineScaleSetVMRunCommandRequest>,
-  output: __S(333, __c41, 5) as any as S.Schema<GetVirtualMachineScaleSetVMRunCommandResponse>,
+  input: __S(9888, __c309, 0) as any as S.Schema<GetVirtualMachineScaleSetVMRunCommandRequest>,
+  output: __S(8864, __c277, 0) as any as S.Schema<GetVirtualMachineScaleSetVMRunCommandResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -11239,8 +11251,8 @@ export const ImagesCreateOrUpdate: API.OperationMethod<
   ImagesCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(427, __c53, 3) as any as S.Schema<ImagesCreateOrUpdateRequest>,
-  output: __S(428, __c53, 4) as any as S.Schema<ImagesCreateOrUpdateResponse>,
+  input: __S(9920, __c310, 0) as any as S.Schema<ImagesCreateOrUpdateRequest>,
+  output: __S(9921, __c310, 1) as any as S.Schema<ImagesCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -11254,8 +11266,8 @@ export const InstallVirtualMachinePatches: API.OperationMethod<
   InstallVirtualMachinePatchesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(431, __c53, 7) as any as S.Schema<InstallVirtualMachinePatchesRequest>,
-  output: __S(434, __c54, 2) as any as S.Schema<VirtualMachineInstallPatchesResult>,
+  input: __S(9986, __c312, 2) as any as S.Schema<InstallVirtualMachinePatchesRequest>,
+  output: __S(9989, __c312, 5) as any as S.Schema<VirtualMachineInstallPatchesResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -11269,8 +11281,8 @@ export const InterconnectBlocksCreateOrUpdate: API.OperationMethod<
   InterconnectBlocksCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(436, __c54, 4) as any as S.Schema<InterconnectBlocksCreateOrUpdateRequest>,
-  output: __S(210, __c26, 2) as any as S.Schema<InterconnectBlocksCreateOrUpdateResponse>,
+  input: __S(10145, __c317, 1) as any as S.Schema<InterconnectBlocksCreateOrUpdateRequest>,
+  output: __S(7424, __c232, 0) as any as S.Schema<InterconnectBlocksCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -11284,8 +11296,8 @@ export const ListAvailabilitySetAvailableSizes: API.OperationMethod<
   ListAvailabilitySetAvailableSizesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(437, __c54, 5) as any as S.Schema<ListAvailabilitySetAvailableSizesRequest>,
-  output: __S(440, __c55, 0) as any as S.Schema<VirtualMachineSizeListResult>,
+  input: __S(10176, __c318, 0) as any as S.Schema<ListAvailabilitySetAvailableSizesRequest>,
+  output: __S(10210, __c319, 2) as any as S.Schema<VirtualMachineSizeListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -11299,8 +11311,8 @@ export const ListAvailabilitySetBySubscription: API.OperationMethod<
   ListAvailabilitySetBySubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(441, __c55, 1) as any as S.Schema<ListAvailabilitySetBySubscriptionRequest>,
-  output: __S(444, __c55, 4) as any as S.Schema<AvailabilitySetListResult>,
+  input: __S(10240, __c320, 0) as any as S.Schema<ListAvailabilitySetBySubscriptionRequest>,
+  output: __S(10274, __c321, 2) as any as S.Schema<AvailabilitySetListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -11314,8 +11326,8 @@ export const ListAvailabilitySets: API.OperationMethod<
   ListAvailabilitySetsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(445, __c55, 5) as any as S.Schema<ListAvailabilitySetsRequest>,
-  output: __S(444, __c55, 4) as any as S.Schema<AvailabilitySetListResult>,
+  input: __S(10304, __c322, 0) as any as S.Schema<ListAvailabilitySetsRequest>,
+  output: __S(10274, __c321, 2) as any as S.Schema<AvailabilitySetListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -11330,11 +11342,11 @@ export const ListCapacityReservationByCapacityReservationGroup: API.OperationMet
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    446,
-    __c55,
-    6,
+    10336,
+    __c323,
+    0,
   ) as any as S.Schema<ListCapacityReservationByCapacityReservationGroupRequest>,
-  output: __S(449, __c56, 1) as any as S.Schema<CapacityReservationListResult>,
+  output: __S(10339, __c323, 3) as any as S.Schema<CapacityReservationListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -11348,8 +11360,12 @@ export const ListCapacityReservationGroupByResourceGroup: API.OperationMethod<
   ListCapacityReservationGroupByResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(450, __c56, 2) as any as S.Schema<ListCapacityReservationGroupByResourceGroupRequest>,
-  output: __S(453, __c56, 5) as any as S.Schema<CapacityReservationGroupListResult>,
+  input: __S(
+    10368,
+    __c324,
+    0,
+  ) as any as S.Schema<ListCapacityReservationGroupByResourceGroupRequest>,
+  output: __S(10402, __c325, 2) as any as S.Schema<CapacityReservationGroupListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -11363,8 +11379,12 @@ export const ListCapacityReservationGroupBySubscription: API.OperationMethod<
   ListCapacityReservationGroupBySubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(454, __c56, 6) as any as S.Schema<ListCapacityReservationGroupBySubscriptionRequest>,
-  output: __S(453, __c56, 5) as any as S.Schema<CapacityReservationGroupListResult>,
+  input: __S(
+    10432,
+    __c326,
+    0,
+  ) as any as S.Schema<ListCapacityReservationGroupBySubscriptionRequest>,
+  output: __S(10402, __c325, 2) as any as S.Schema<CapacityReservationGroupListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -11378,8 +11398,8 @@ export const ListContainerServiceByResourceGroup: API.OperationMethod<
   ListContainerServiceByResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(455, __c56, 7) as any as S.Schema<ListContainerServiceByResourceGroupRequest>,
-  output: __S(458, __c57, 2) as any as S.Schema<ContainerServiceListResult>,
+  input: __S(10464, __c327, 0) as any as S.Schema<ListContainerServiceByResourceGroupRequest>,
+  output: __S(10498, __c328, 2) as any as S.Schema<ContainerServiceListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -11393,8 +11413,8 @@ export const ListContainerServices: API.OperationMethod<
   ListContainerServicesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(459, __c57, 3) as any as S.Schema<ListContainerServicesRequest>,
-  output: __S(458, __c57, 2) as any as S.Schema<ContainerServiceListResult>,
+  input: __S(10528, __c329, 0) as any as S.Schema<ListContainerServicesRequest>,
+  output: __S(10498, __c328, 2) as any as S.Schema<ContainerServiceListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -11408,8 +11428,8 @@ export const ListDedicatedHostAvailableSizes: API.OperationMethod<
   ListDedicatedHostAvailableSizesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(460, __c57, 4) as any as S.Schema<ListDedicatedHostAvailableSizesRequest>,
-  output: __S(461, __c57, 5) as any as S.Schema<DedicatedHostSizeListResult>,
+  input: __S(10560, __c330, 0) as any as S.Schema<ListDedicatedHostAvailableSizesRequest>,
+  output: __S(10561, __c330, 1) as any as S.Schema<DedicatedHostSizeListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -11423,8 +11443,8 @@ export const ListDedicatedHostByHostGroup: API.OperationMethod<
   ListDedicatedHostByHostGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(462, __c57, 6) as any as S.Schema<ListDedicatedHostByHostGroupRequest>,
-  output: __S(464, __c58, 0) as any as S.Schema<DedicatedHostListResult>,
+  input: __S(10624, __c332, 0) as any as S.Schema<ListDedicatedHostByHostGroupRequest>,
+  output: __S(10626, __c332, 2) as any as S.Schema<DedicatedHostListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -11438,8 +11458,8 @@ export const ListDedicatedHostGroupByResourceGroup: API.OperationMethod<
   ListDedicatedHostGroupByResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(465, __c58, 1) as any as S.Schema<ListDedicatedHostGroupByResourceGroupRequest>,
-  output: __S(468, __c58, 4) as any as S.Schema<DedicatedHostGroupListResult>,
+  input: __S(10656, __c333, 0) as any as S.Schema<ListDedicatedHostGroupByResourceGroupRequest>,
+  output: __S(10690, __c334, 2) as any as S.Schema<DedicatedHostGroupListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -11453,8 +11473,8 @@ export const ListDedicatedHostGroupBySubscription: API.OperationMethod<
   ListDedicatedHostGroupBySubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(469, __c58, 5) as any as S.Schema<ListDedicatedHostGroupBySubscriptionRequest>,
-  output: __S(468, __c58, 4) as any as S.Schema<DedicatedHostGroupListResult>,
+  input: __S(10720, __c335, 0) as any as S.Schema<ListDedicatedHostGroupBySubscriptionRequest>,
+  output: __S(10690, __c334, 2) as any as S.Schema<DedicatedHostGroupListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -11468,8 +11488,8 @@ export const ListImageByResourceGroup: API.OperationMethod<
   ListImageByResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(470, __c58, 6) as any as S.Schema<ListImageByResourceGroupRequest>,
-  output: __S(472, __c59, 0) as any as S.Schema<ImageListResult>,
+  input: __S(10752, __c336, 0) as any as S.Schema<ListImageByResourceGroupRequest>,
+  output: __S(10785, __c337, 1) as any as S.Schema<ImageListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -11483,8 +11503,8 @@ export const ListImages: API.OperationMethod<
   ListImagesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(473, __c59, 1) as any as S.Schema<ListImagesRequest>,
-  output: __S(472, __c59, 0) as any as S.Schema<ImageListResult>,
+  input: __S(10816, __c338, 0) as any as S.Schema<ListImagesRequest>,
+  output: __S(10785, __c337, 1) as any as S.Schema<ImageListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -11498,8 +11518,8 @@ export const ListInterconnectBlockByResourceGroup: API.OperationMethod<
   ListInterconnectBlockByResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(474, __c59, 2) as any as S.Schema<ListInterconnectBlockByResourceGroupRequest>,
-  output: __S(477, __c59, 5) as any as S.Schema<InterconnectBlockListResult>,
+  input: __S(10848, __c339, 0) as any as S.Schema<ListInterconnectBlockByResourceGroupRequest>,
+  output: __S(10882, __c340, 2) as any as S.Schema<InterconnectBlockListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -11513,8 +11533,8 @@ export const ListInterconnectBlockBySubscription: API.OperationMethod<
   ListInterconnectBlockBySubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(478, __c59, 6) as any as S.Schema<ListInterconnectBlockBySubscriptionRequest>,
-  output: __S(477, __c59, 5) as any as S.Schema<InterconnectBlockListResult>,
+  input: __S(10912, __c341, 0) as any as S.Schema<ListInterconnectBlockBySubscriptionRequest>,
+  output: __S(10882, __c340, 2) as any as S.Schema<InterconnectBlockListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -11528,8 +11548,8 @@ export const ListOperations: API.OperationMethod<
   ListOperationsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(479, __c59, 7) as any as S.Schema<ListOperationsRequest>,
-  output: __S(483, __c60, 3) as any as S.Schema<ListOperationsResponse>,
+  input: __S(10944, __c342, 0) as any as S.Schema<ListOperationsRequest>,
+  output: __S(10948, __c342, 4) as any as S.Schema<ListOperationsResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -11543,8 +11563,12 @@ export const ListProximityPlacementGroupByResourceGroup: API.OperationMethod<
   ListProximityPlacementGroupByResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(484, __c60, 4) as any as S.Schema<ListProximityPlacementGroupByResourceGroupRequest>,
-  output: __S(487, __c60, 7) as any as S.Schema<ProximityPlacementGroupListResult>,
+  input: __S(
+    10976,
+    __c343,
+    0,
+  ) as any as S.Schema<ListProximityPlacementGroupByResourceGroupRequest>,
+  output: __S(11010, __c344, 2) as any as S.Schema<ProximityPlacementGroupListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -11558,8 +11582,8 @@ export const ListProximityPlacementGroupBySubscription: API.OperationMethod<
   ListProximityPlacementGroupBySubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(488, __c61, 0) as any as S.Schema<ListProximityPlacementGroupBySubscriptionRequest>,
-  output: __S(487, __c60, 7) as any as S.Schema<ProximityPlacementGroupListResult>,
+  input: __S(11040, __c345, 0) as any as S.Schema<ListProximityPlacementGroupBySubscriptionRequest>,
+  output: __S(11010, __c344, 2) as any as S.Schema<ProximityPlacementGroupListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -11573,8 +11597,8 @@ export const ListRestorePointCollectionAll: API.OperationMethod<
   ListRestorePointCollectionAllError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(489, __c61, 1) as any as S.Schema<ListRestorePointCollectionAllRequest>,
-  output: __S(492, __c61, 4) as any as S.Schema<RestorePointCollectionListResult>,
+  input: __S(224, __c7, 0) as any as S.Schema<ListRestorePointCollectionAllRequest>,
+  output: __S(258, __c8, 2) as any as S.Schema<RestorePointCollectionListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -11588,8 +11612,8 @@ export const ListRestorePointCollections: API.OperationMethod<
   ListRestorePointCollectionsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(493, __c61, 5) as any as S.Schema<ListRestorePointCollectionsRequest>,
-  output: __S(492, __c61, 4) as any as S.Schema<RestorePointCollectionListResult>,
+  input: __S(288, __c9, 0) as any as S.Schema<ListRestorePointCollectionsRequest>,
+  output: __S(258, __c8, 2) as any as S.Schema<RestorePointCollectionListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -11603,8 +11627,8 @@ export const ListSshPublicKeyByResourceGroup: API.OperationMethod<
   ListSshPublicKeyByResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(494, __c61, 6) as any as S.Schema<ListSshPublicKeyByResourceGroupRequest>,
-  output: __S(496, __c62, 0) as any as S.Schema<SshPublicKeysGroupListResult>,
+  input: __S(320, __c10, 0) as any as S.Schema<ListSshPublicKeyByResourceGroupRequest>,
+  output: __S(353, __c11, 1) as any as S.Schema<SshPublicKeysGroupListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -11618,8 +11642,8 @@ export const ListSshPublicKeyBySubscription: API.OperationMethod<
   ListSshPublicKeyBySubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(497, __c62, 1) as any as S.Schema<ListSshPublicKeyBySubscriptionRequest>,
-  output: __S(496, __c62, 0) as any as S.Schema<SshPublicKeysGroupListResult>,
+  input: __S(384, __c12, 0) as any as S.Schema<ListSshPublicKeyBySubscriptionRequest>,
+  output: __S(353, __c11, 1) as any as S.Schema<SshPublicKeysGroupListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -11633,8 +11657,8 @@ export const ListUsage: API.OperationMethod<
   ListUsageError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(498, __c62, 2) as any as S.Schema<ListUsageRequest>,
-  output: __S(502, __c62, 6) as any as S.Schema<ListUsagesResult>,
+  input: __S(416, __c13, 0) as any as S.Schema<ListUsageRequest>,
+  output: __S(420, __c13, 4) as any as S.Schema<ListUsagesResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -11648,8 +11672,8 @@ export const ListVirtualMachineAll: API.OperationMethod<
   ListVirtualMachineAllError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(503, __c62, 7) as any as S.Schema<ListVirtualMachineAllRequest>,
-  output: __S(506, __c63, 2) as any as S.Schema<VirtualMachineListResult>,
+  input: __S(448, __c14, 0) as any as S.Schema<ListVirtualMachineAllRequest>,
+  output: __S(482, __c15, 2) as any as S.Schema<VirtualMachineListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -11663,8 +11687,8 @@ export const ListVirtualMachineAvailableSizes: API.OperationMethod<
   ListVirtualMachineAvailableSizesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(507, __c63, 3) as any as S.Schema<ListVirtualMachineAvailableSizesRequest>,
-  output: __S(440, __c55, 0) as any as S.Schema<VirtualMachineSizeListResult>,
+  input: __S(512, __c16, 0) as any as S.Schema<ListVirtualMachineAvailableSizesRequest>,
+  output: __S(10210, __c319, 2) as any as S.Schema<VirtualMachineSizeListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -11678,8 +11702,8 @@ export const ListVirtualMachineByLocation: API.OperationMethod<
   ListVirtualMachineByLocationError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(508, __c63, 4) as any as S.Schema<ListVirtualMachineByLocationRequest>,
-  output: __S(506, __c63, 2) as any as S.Schema<VirtualMachineListResult>,
+  input: __S(544, __c17, 0) as any as S.Schema<ListVirtualMachineByLocationRequest>,
+  output: __S(482, __c15, 2) as any as S.Schema<VirtualMachineListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -11693,8 +11717,8 @@ export const ListVirtualMachineExtensionImageTypes: API.OperationMethod<
   ListVirtualMachineExtensionImageTypesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(509, __c63, 5) as any as S.Schema<ListVirtualMachineExtensionImageTypesRequest>,
-  output: __S(511, __c63, 7) as any as S.Schema<ListVirtualMachineExtensionImageTypesResponse>,
+  input: __S(576, __c18, 0) as any as S.Schema<ListVirtualMachineExtensionImageTypesRequest>,
+  output: __S(609, __c19, 1) as any as S.Schema<ListVirtualMachineExtensionImageTypesResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -11708,8 +11732,8 @@ export const ListVirtualMachineExtensionImageVersions: API.OperationMethod<
   ListVirtualMachineExtensionImageVersionsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(512, __c64, 0) as any as S.Schema<ListVirtualMachineExtensionImageVersionsRequest>,
-  output: __S(511, __c63, 7) as any as S.Schema<ListVirtualMachineExtensionImageVersionsResponse>,
+  input: __S(640, __c20, 0) as any as S.Schema<ListVirtualMachineExtensionImageVersionsRequest>,
+  output: __S(609, __c19, 1) as any as S.Schema<ListVirtualMachineExtensionImageVersionsResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -11723,8 +11747,8 @@ export const ListVirtualMachineExtensions: API.OperationMethod<
   ListVirtualMachineExtensionsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(513, __c64, 1) as any as S.Schema<ListVirtualMachineExtensionsRequest>,
-  output: __S(514, __c64, 2) as any as S.Schema<VirtualMachineExtensionsListResult>,
+  input: __S(704, __c22, 0) as any as S.Schema<ListVirtualMachineExtensionsRequest>,
+  output: __S(705, __c22, 1) as any as S.Schema<VirtualMachineExtensionsListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -11738,8 +11762,8 @@ export const ListVirtualMachineImageByEdgeZone: API.OperationMethod<
   ListVirtualMachineImageByEdgeZoneError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(515, __c64, 3) as any as S.Schema<ListVirtualMachineImageByEdgeZoneRequest>,
-  output: __S(518, __c64, 6) as any as S.Schema<VmImagesInEdgeZoneListResult>,
+  input: __S(736, __c23, 0) as any as S.Schema<ListVirtualMachineImageByEdgeZoneRequest>,
+  output: __S(737, __c23, 1) as any as S.Schema<VmImagesInEdgeZoneListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -11753,8 +11777,8 @@ export const ListVirtualMachineImageOffers: API.OperationMethod<
   ListVirtualMachineImageOffersError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(519, __c64, 7) as any as S.Schema<ListVirtualMachineImageOffersRequest>,
-  output: __S(520, __c65, 0) as any as S.Schema<ListVirtualMachineImageOffersResponse>,
+  input: __S(800, __c25, 0) as any as S.Schema<ListVirtualMachineImageOffersRequest>,
+  output: __S(832, __c26, 0) as any as S.Schema<ListVirtualMachineImageOffersResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -11768,8 +11792,8 @@ export const ListVirtualMachineImagePublishers: API.OperationMethod<
   ListVirtualMachineImagePublishersError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(521, __c65, 1) as any as S.Schema<ListVirtualMachineImagePublishersRequest>,
-  output: __S(520, __c65, 0) as any as S.Schema<ListVirtualMachineImagePublishersResponse>,
+  input: __S(864, __c27, 0) as any as S.Schema<ListVirtualMachineImagePublishersRequest>,
+  output: __S(832, __c26, 0) as any as S.Schema<ListVirtualMachineImagePublishersResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -11783,8 +11807,8 @@ export const ListVirtualMachineImages: API.OperationMethod<
   ListVirtualMachineImagesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(522, __c65, 2) as any as S.Schema<ListVirtualMachineImagesRequest>,
-  output: __S(520, __c65, 0) as any as S.Schema<ListVirtualMachineImagesResponse>,
+  input: __S(896, __c28, 0) as any as S.Schema<ListVirtualMachineImagesRequest>,
+  output: __S(832, __c26, 0) as any as S.Schema<ListVirtualMachineImagesResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -11798,8 +11822,8 @@ export const ListVirtualMachineImagesEdgeZone: API.OperationMethod<
   ListVirtualMachineImagesEdgeZoneError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(523, __c65, 3) as any as S.Schema<ListVirtualMachineImagesEdgeZoneRequest>,
-  output: __S(520, __c65, 0) as any as S.Schema<ListVirtualMachineImagesEdgeZoneResponse>,
+  input: __S(928, __c29, 0) as any as S.Schema<ListVirtualMachineImagesEdgeZoneRequest>,
+  output: __S(832, __c26, 0) as any as S.Schema<ListVirtualMachineImagesEdgeZoneResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -11813,8 +11837,8 @@ export const ListVirtualMachineImagesEdgeZoneOffers: API.OperationMethod<
   ListVirtualMachineImagesEdgeZoneOffersError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(524, __c65, 4) as any as S.Schema<ListVirtualMachineImagesEdgeZoneOffersRequest>,
-  output: __S(520, __c65, 0) as any as S.Schema<ListVirtualMachineImagesEdgeZoneOffersResponse>,
+  input: __S(960, __c30, 0) as any as S.Schema<ListVirtualMachineImagesEdgeZoneOffersRequest>,
+  output: __S(832, __c26, 0) as any as S.Schema<ListVirtualMachineImagesEdgeZoneOffersResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -11828,8 +11852,8 @@ export const ListVirtualMachineImagesEdgeZonePublishers: API.OperationMethod<
   ListVirtualMachineImagesEdgeZonePublishersError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(525, __c65, 5) as any as S.Schema<ListVirtualMachineImagesEdgeZonePublishersRequest>,
-  output: __S(520, __c65, 0) as any as S.Schema<ListVirtualMachineImagesEdgeZonePublishersResponse>,
+  input: __S(992, __c31, 0) as any as S.Schema<ListVirtualMachineImagesEdgeZonePublishersRequest>,
+  output: __S(832, __c26, 0) as any as S.Schema<ListVirtualMachineImagesEdgeZonePublishersResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -11843,8 +11867,8 @@ export const ListVirtualMachineImagesEdgeZoneSkus: API.OperationMethod<
   ListVirtualMachineImagesEdgeZoneSkusError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(526, __c65, 6) as any as S.Schema<ListVirtualMachineImagesEdgeZoneSkusRequest>,
-  output: __S(520, __c65, 0) as any as S.Schema<ListVirtualMachineImagesEdgeZoneSkusResponse>,
+  input: __S(1024, __c32, 0) as any as S.Schema<ListVirtualMachineImagesEdgeZoneSkusRequest>,
+  output: __S(832, __c26, 0) as any as S.Schema<ListVirtualMachineImagesEdgeZoneSkusResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -11858,8 +11882,8 @@ export const ListVirtualMachineImageSkus: API.OperationMethod<
   ListVirtualMachineImageSkusError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(527, __c65, 7) as any as S.Schema<ListVirtualMachineImageSkusRequest>,
-  output: __S(520, __c65, 0) as any as S.Schema<ListVirtualMachineImageSkusResponse>,
+  input: __S(1056, __c33, 0) as any as S.Schema<ListVirtualMachineImageSkusRequest>,
+  output: __S(832, __c26, 0) as any as S.Schema<ListVirtualMachineImageSkusResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -11873,8 +11897,12 @@ export const ListVirtualMachineRunCommandByVirtualMachine: API.OperationMethod<
   ListVirtualMachineRunCommandByVirtualMachineError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(528, __c66, 0) as any as S.Schema<ListVirtualMachineRunCommandByVirtualMachineRequest>,
-  output: __S(531, __c66, 3) as any as S.Schema<VirtualMachineRunCommandsListResult>,
+  input: __S(
+    1152,
+    __c36,
+    0,
+  ) as any as S.Schema<ListVirtualMachineRunCommandByVirtualMachineRequest>,
+  output: __S(1186, __c37, 2) as any as S.Schema<VirtualMachineRunCommandsListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -11888,8 +11916,8 @@ export const ListVirtualMachineRunCommands: API.OperationMethod<
   ListVirtualMachineRunCommandsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(532, __c66, 4) as any as S.Schema<ListVirtualMachineRunCommandsRequest>,
-  output: __S(535, __c66, 7) as any as S.Schema<RunCommandListResult>,
+  input: __S(1216, __c38, 0) as any as S.Schema<ListVirtualMachineRunCommandsRequest>,
+  output: __S(1219, __c38, 3) as any as S.Schema<RunCommandListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -11903,8 +11931,8 @@ export const ListVirtualMachines: API.OperationMethod<
   ListVirtualMachinesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(536, __c67, 0) as any as S.Schema<ListVirtualMachinesRequest>,
-  output: __S(506, __c63, 2) as any as S.Schema<VirtualMachineListResult>,
+  input: __S(1248, __c39, 0) as any as S.Schema<ListVirtualMachinesRequest>,
+  output: __S(482, __c15, 2) as any as S.Schema<VirtualMachineListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -11918,8 +11946,8 @@ export const ListVirtualMachineScaleSetAll: API.OperationMethod<
   ListVirtualMachineScaleSetAllError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(537, __c67, 1) as any as S.Schema<ListVirtualMachineScaleSetAllRequest>,
-  output: __S(540, __c67, 4) as any as S.Schema<VirtualMachineScaleSetListWithLinkResult>,
+  input: __S(1280, __c40, 0) as any as S.Schema<ListVirtualMachineScaleSetAllRequest>,
+  output: __S(1314, __c41, 2) as any as S.Schema<VirtualMachineScaleSetListWithLinkResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -11933,8 +11961,8 @@ export const ListVirtualMachineScaleSetByLocation: API.OperationMethod<
   ListVirtualMachineScaleSetByLocationError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(541, __c67, 5) as any as S.Schema<ListVirtualMachineScaleSetByLocationRequest>,
-  output: __S(540, __c67, 4) as any as S.Schema<VirtualMachineScaleSetListResult>,
+  input: __S(1344, __c42, 0) as any as S.Schema<ListVirtualMachineScaleSetByLocationRequest>,
+  output: __S(1314, __c41, 2) as any as S.Schema<VirtualMachineScaleSetListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -11948,8 +11976,8 @@ export const ListVirtualMachineScaleSetExtensions: API.OperationMethod<
   ListVirtualMachineScaleSetExtensionsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(542, __c67, 6) as any as S.Schema<ListVirtualMachineScaleSetExtensionsRequest>,
-  output: __S(543, __c67, 7) as any as S.Schema<VirtualMachineScaleSetExtensionListResult>,
+  input: __S(1376, __c43, 0) as any as S.Schema<ListVirtualMachineScaleSetExtensionsRequest>,
+  output: __S(1377, __c43, 1) as any as S.Schema<VirtualMachineScaleSetExtensionListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -11964,11 +11992,11 @@ export const ListVirtualMachineScaleSetLifeCycleHookEvents: API.OperationMethod<
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    544,
-    __c68,
+    1408,
+    __c44,
     0,
   ) as any as S.Schema<ListVirtualMachineScaleSetLifeCycleHookEventsRequest>,
-  output: __S(546, __c68, 2) as any as S.Schema<VMScaleSetLifecycleHookEventListResult>,
+  output: __S(1410, __c44, 2) as any as S.Schema<VMScaleSetLifecycleHookEventListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -11982,8 +12010,8 @@ export const ListVirtualMachineScaleSets: API.OperationMethod<
   ListVirtualMachineScaleSetsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(547, __c68, 3) as any as S.Schema<ListVirtualMachineScaleSetsRequest>,
-  output: __S(540, __c67, 4) as any as S.Schema<VirtualMachineScaleSetListResult>,
+  input: __S(1440, __c45, 0) as any as S.Schema<ListVirtualMachineScaleSetsRequest>,
+  output: __S(1314, __c41, 2) as any as S.Schema<VirtualMachineScaleSetListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -11997,8 +12025,8 @@ export const ListVirtualMachineScaleSetSkus: API.OperationMethod<
   ListVirtualMachineScaleSetSkusError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(548, __c68, 4) as any as S.Schema<ListVirtualMachineScaleSetSkusRequest>,
-  output: __S(552, __c69, 0) as any as S.Schema<VirtualMachineScaleSetListSkusResult>,
+  input: __S(1472, __c46, 0) as any as S.Schema<ListVirtualMachineScaleSetSkusRequest>,
+  output: __S(1476, __c46, 4) as any as S.Schema<VirtualMachineScaleSetListSkusResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -12013,11 +12041,11 @@ export const ListVirtualMachineScaleSetVMDiagnosticRunCommands: API.OperationMet
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    553,
-    __c69,
-    1,
+    1504,
+    __c47,
+    0,
   ) as any as S.Schema<ListVirtualMachineScaleSetVMDiagnosticRunCommandsRequest>,
-  output: __S(555, __c69, 3) as any as S.Schema<VirtualMachineDiagnosticRunCommandsListResult>,
+  output: __S(1537, __c48, 1) as any as S.Schema<VirtualMachineDiagnosticRunCommandsListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -12031,8 +12059,8 @@ export const ListVirtualMachineScaleSetVMExtensions: API.OperationMethod<
   ListVirtualMachineScaleSetVMExtensionsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(556, __c69, 4) as any as S.Schema<ListVirtualMachineScaleSetVMExtensionsRequest>,
-  output: __S(558, __c69, 6) as any as S.Schema<VirtualMachineScaleSetVMExtensionsListResult>,
+  input: __S(1600, __c50, 0) as any as S.Schema<ListVirtualMachineScaleSetVMExtensionsRequest>,
+  output: __S(1602, __c50, 2) as any as S.Schema<VirtualMachineScaleSetVMExtensionsListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -12046,8 +12074,8 @@ export const ListVirtualMachineScaleSetVMRunCommands: API.OperationMethod<
   ListVirtualMachineScaleSetVMRunCommandsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(559, __c69, 7) as any as S.Schema<ListVirtualMachineScaleSetVMRunCommandsRequest>,
-  output: __S(531, __c66, 3) as any as S.Schema<VirtualMachineRunCommandsListResult>,
+  input: __S(1632, __c51, 0) as any as S.Schema<ListVirtualMachineScaleSetVMRunCommandsRequest>,
+  output: __S(1186, __c37, 2) as any as S.Schema<VirtualMachineRunCommandsListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -12061,8 +12089,8 @@ export const ListVirtualMachineScaleSetVMs: API.OperationMethod<
   ListVirtualMachineScaleSetVMsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(560, __c70, 0) as any as S.Schema<ListVirtualMachineScaleSetVMsRequest>,
-  output: __S(563, __c70, 3) as any as S.Schema<VirtualMachineScaleSetVMListResult>,
+  input: __S(1664, __c52, 0) as any as S.Schema<ListVirtualMachineScaleSetVMsRequest>,
+  output: __S(1667, __c52, 3) as any as S.Schema<VirtualMachineScaleSetVMListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -12076,8 +12104,8 @@ export const ListVirtualMachineSizes: API.OperationMethod<
   ListVirtualMachineSizesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(564, __c70, 4) as any as S.Schema<ListVirtualMachineSizesRequest>,
-  output: __S(440, __c55, 0) as any as S.Schema<VirtualMachineSizeListResult>,
+  input: __S(1696, __c53, 0) as any as S.Schema<ListVirtualMachineSizesRequest>,
+  output: __S(10210, __c319, 2) as any as S.Schema<VirtualMachineSizeListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -12092,14 +12120,14 @@ export const MigrateVirtualMachineScaleSetVMAvailabilityZone: API.OperationMetho
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    565,
-    __c70,
-    5,
+    1728,
+    __c54,
+    0,
   ) as any as S.Schema<MigrateVirtualMachineScaleSetVMAvailabilityZoneRequest>,
   output: __S(
-    2,
-    __c0,
-    2,
+    32,
+    __c1,
+    0,
   ) as any as S.Schema<MigrateVirtualMachineScaleSetVMAvailabilityZoneResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -12114,8 +12142,8 @@ export const MigrateVirtualMachineToVMScaleSet: API.OperationMethod<
   MigrateVirtualMachineToVMScaleSetError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(566, __c70, 6) as any as S.Schema<MigrateVirtualMachineToVMScaleSetRequest>,
-  output: __S(2, __c0, 2) as any as S.Schema<MigrateVirtualMachineToVMScaleSetResponse>,
+  input: __S(1760, __c55, 0) as any as S.Schema<MigrateVirtualMachineToVMScaleSetRequest>,
+  output: __S(32, __c1, 0) as any as S.Schema<MigrateVirtualMachineToVMScaleSetResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -12129,8 +12157,8 @@ export const PostSpotPlacementScore: API.OperationMethod<
   PostSpotPlacementScoreError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(569, __c71, 1) as any as S.Schema<PostSpotPlacementScoreRequest>,
-  output: __S(572, __c71, 4) as any as S.Schema<SpotPlacementScoresResponse>,
+  input: __S(1794, __c56, 2) as any as S.Schema<PostSpotPlacementScoreRequest>,
+  output: __S(1797, __c56, 5) as any as S.Schema<SpotPlacementScoresResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -12144,8 +12172,8 @@ export const ProximityPlacementGroupsCreateOrUpdate: API.OperationMethod<
   ProximityPlacementGroupsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(574, __c71, 6) as any as S.Schema<ProximityPlacementGroupsCreateOrUpdateRequest>,
-  output: __S(216, __c27, 0) as any as S.Schema<ProximityPlacementGroupsCreateOrUpdateResponse>,
+  input: __S(1825, __c57, 1) as any as S.Schema<ProximityPlacementGroupsCreateOrUpdateRequest>,
+  output: __S(7520, __c235, 0) as any as S.Schema<ProximityPlacementGroupsCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -12159,8 +12187,8 @@ export const RedeployDedicatedHost: API.OperationMethod<
   RedeployDedicatedHostError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(575, __c71, 7) as any as S.Schema<RedeployDedicatedHostRequest>,
-  output: __S(161, __c20, 1) as any as S.Schema<RedeployDedicatedHostResponse>,
+  input: __S(1856, __c58, 0) as any as S.Schema<RedeployDedicatedHostRequest>,
+  output: __S(4192, __c131, 0) as any as S.Schema<RedeployDedicatedHostResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -12174,8 +12202,8 @@ export const RedeployVirtualMachine: API.OperationMethod<
   RedeployVirtualMachineError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(576, __c72, 0) as any as S.Schema<RedeployVirtualMachineRequest>,
-  output: __S(161, __c20, 1) as any as S.Schema<RedeployVirtualMachineResponse>,
+  input: __S(1888, __c59, 0) as any as S.Schema<RedeployVirtualMachineRequest>,
+  output: __S(4192, __c131, 0) as any as S.Schema<RedeployVirtualMachineResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -12189,8 +12217,8 @@ export const RedeployVirtualMachineScaleSet: API.OperationMethod<
   RedeployVirtualMachineScaleSetError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(577, __c72, 1) as any as S.Schema<RedeployVirtualMachineScaleSetRequest>,
-  output: __S(2, __c0, 2) as any as S.Schema<RedeployVirtualMachineScaleSetResponse>,
+  input: __S(2208, __c69, 0) as any as S.Schema<RedeployVirtualMachineScaleSetRequest>,
+  output: __S(32, __c1, 0) as any as S.Schema<RedeployVirtualMachineScaleSetResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -12204,8 +12232,8 @@ export const RedeployVirtualMachineScaleSetVM: API.OperationMethod<
   RedeployVirtualMachineScaleSetVMError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(578, __c72, 2) as any as S.Schema<RedeployVirtualMachineScaleSetVMRequest>,
-  output: __S(2, __c0, 2) as any as S.Schema<RedeployVirtualMachineScaleSetVMResponse>,
+  input: __S(2240, __c70, 0) as any as S.Schema<RedeployVirtualMachineScaleSetVMRequest>,
+  output: __S(32, __c1, 0) as any as S.Schema<RedeployVirtualMachineScaleSetVMResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -12219,8 +12247,8 @@ export const RestartDedicatedHost: API.OperationMethod<
   RestartDedicatedHostError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(579, __c72, 3) as any as S.Schema<RestartDedicatedHostRequest>,
-  output: __S(161, __c20, 1) as any as S.Schema<RestartDedicatedHostResponse>,
+  input: __S(2272, __c71, 0) as any as S.Schema<RestartDedicatedHostRequest>,
+  output: __S(4192, __c131, 0) as any as S.Schema<RestartDedicatedHostResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -12234,8 +12262,8 @@ export const RestartVirtualMachine: API.OperationMethod<
   RestartVirtualMachineError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(580, __c72, 4) as any as S.Schema<RestartVirtualMachineRequest>,
-  output: __S(161, __c20, 1) as any as S.Schema<RestartVirtualMachineResponse>,
+  input: __S(2304, __c72, 0) as any as S.Schema<RestartVirtualMachineRequest>,
+  output: __S(4192, __c131, 0) as any as S.Schema<RestartVirtualMachineResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -12249,8 +12277,8 @@ export const RestartVirtualMachineScaleSet: API.OperationMethod<
   RestartVirtualMachineScaleSetError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(581, __c72, 5) as any as S.Schema<RestartVirtualMachineScaleSetRequest>,
-  output: __S(2, __c0, 2) as any as S.Schema<RestartVirtualMachineScaleSetResponse>,
+  input: __S(2336, __c73, 0) as any as S.Schema<RestartVirtualMachineScaleSetRequest>,
+  output: __S(32, __c1, 0) as any as S.Schema<RestartVirtualMachineScaleSetResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -12264,8 +12292,8 @@ export const RestartVirtualMachineScaleSetVM: API.OperationMethod<
   RestartVirtualMachineScaleSetVMError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(582, __c72, 6) as any as S.Schema<RestartVirtualMachineScaleSetVMRequest>,
-  output: __S(2, __c0, 2) as any as S.Schema<RestartVirtualMachineScaleSetVMResponse>,
+  input: __S(2368, __c74, 0) as any as S.Schema<RestartVirtualMachineScaleSetVMRequest>,
+  output: __S(32, __c1, 0) as any as S.Schema<RestartVirtualMachineScaleSetVMResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -12279,8 +12307,8 @@ export const RestorePointCollectionsCreateOrUpdate: API.OperationMethod<
   RestorePointCollectionsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(584, __c73, 0) as any as S.Schema<RestorePointCollectionsCreateOrUpdateRequest>,
-  output: __S(223, __c27, 7) as any as S.Schema<RestorePointCollectionsCreateOrUpdateResponse>,
+  input: __S(2400, __c75, 0) as any as S.Schema<RestorePointCollectionsCreateOrUpdateRequest>,
+  output: __S(7712, __c241, 0) as any as S.Schema<RestorePointCollectionsCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -12294,8 +12322,8 @@ export const RunVirtualMachineCommand: API.OperationMethod<
   RunVirtualMachineCommandError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(585, __c73, 1) as any as S.Schema<RunVirtualMachineCommandRequest>,
-  output: __S(586, __c73, 2) as any as S.Schema<RunCommandResult>,
+  input: __S(2464, __c77, 0) as any as S.Schema<RunVirtualMachineCommandRequest>,
+  output: __S(2496, __c78, 0) as any as S.Schema<RunCommandResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -12309,8 +12337,8 @@ export const RunVirtualMachineScaleSetVMCommand: API.OperationMethod<
   RunVirtualMachineScaleSetVMCommandError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(587, __c73, 3) as any as S.Schema<RunVirtualMachineScaleSetVMCommandRequest>,
-  output: __S(586, __c73, 2) as any as S.Schema<RunCommandResult>,
+  input: __S(2528, __c79, 0) as any as S.Schema<RunVirtualMachineScaleSetVMCommandRequest>,
+  output: __S(2496, __c78, 0) as any as S.Schema<RunCommandResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -12324,8 +12352,8 @@ export const ScaleVirtualMachineScaleSetOut: API.OperationMethod<
   ScaleVirtualMachineScaleSetOutError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(589, __c73, 5) as any as S.Schema<ScaleVirtualMachineScaleSetOutRequest>,
-  output: __S(2, __c0, 2) as any as S.Schema<ScaleVirtualMachineScaleSetOutResponse>,
+  input: __S(2561, __c80, 1) as any as S.Schema<ScaleVirtualMachineScaleSetOutRequest>,
+  output: __S(32, __c1, 0) as any as S.Schema<ScaleVirtualMachineScaleSetOutResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -12340,14 +12368,14 @@ export const SetVirtualMachineScaleSetOrchestrationServiceState: API.OperationMe
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    590,
-    __c73,
-    6,
+    2688,
+    __c84,
+    0,
   ) as any as S.Schema<SetVirtualMachineScaleSetOrchestrationServiceStateRequest>,
   output: __S(
-    82,
-    __c10,
-    2,
+    1120,
+    __c35,
+    0,
   ) as any as S.Schema<SetVirtualMachineScaleSetOrchestrationServiceStateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -12363,14 +12391,14 @@ export const StartAvailabilitySetMigrationToVirtualMachineScaleSet: API.Operatio
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    591,
-    __c73,
-    7,
+    2720,
+    __c85,
+    0,
   ) as any as S.Schema<StartAvailabilitySetMigrationToVirtualMachineScaleSetRequest>,
   output: __S(
-    34,
-    __c4,
-    2,
+    7200,
+    __c225,
+    0,
   ) as any as S.Schema<StartAvailabilitySetMigrationToVirtualMachineScaleSetResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -12385,8 +12413,8 @@ export const StartVirtualMachine: API.OperationMethod<
   StartVirtualMachineError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(592, __c74, 0) as any as S.Schema<StartVirtualMachineRequest>,
-  output: __S(161, __c20, 1) as any as S.Schema<StartVirtualMachineResponse>,
+  input: __S(2752, __c86, 0) as any as S.Schema<StartVirtualMachineRequest>,
+  output: __S(4192, __c131, 0) as any as S.Schema<StartVirtualMachineResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -12400,8 +12428,8 @@ export const StartVirtualMachineScaleSet: API.OperationMethod<
   StartVirtualMachineScaleSetError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(593, __c74, 1) as any as S.Schema<StartVirtualMachineScaleSetRequest>,
-  output: __S(2, __c0, 2) as any as S.Schema<StartVirtualMachineScaleSetResponse>,
+  input: __S(2784, __c87, 0) as any as S.Schema<StartVirtualMachineScaleSetRequest>,
+  output: __S(32, __c1, 0) as any as S.Schema<StartVirtualMachineScaleSetResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -12416,14 +12444,14 @@ export const StartVirtualMachineScaleSetRollingUpgradeExtensionUpgrade: API.Oper
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    594,
-    __c74,
-    2,
+    2816,
+    __c88,
+    0,
   ) as any as S.Schema<StartVirtualMachineScaleSetRollingUpgradeExtensionUpgradeRequest>,
   output: __S(
-    34,
-    __c4,
-    2,
+    7200,
+    __c225,
+    0,
   ) as any as S.Schema<StartVirtualMachineScaleSetRollingUpgradeExtensionUpgradeResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -12439,14 +12467,14 @@ export const StartVirtualMachineScaleSetRollingUpgradeOSUpgrade: API.OperationMe
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    595,
-    __c74,
-    3,
+    2848,
+    __c89,
+    0,
   ) as any as S.Schema<StartVirtualMachineScaleSetRollingUpgradeOSUpgradeRequest>,
   output: __S(
-    82,
-    __c10,
-    2,
+    1120,
+    __c35,
+    0,
   ) as any as S.Schema<StartVirtualMachineScaleSetRollingUpgradeOSUpgradeResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -12461,8 +12489,8 @@ export const StartVirtualMachineScaleSetVM: API.OperationMethod<
   StartVirtualMachineScaleSetVMError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(596, __c74, 4) as any as S.Schema<StartVirtualMachineScaleSetVMRequest>,
-  output: __S(2, __c0, 2) as any as S.Schema<StartVirtualMachineScaleSetVMResponse>,
+  input: __S(2880, __c90, 0) as any as S.Schema<StartVirtualMachineScaleSetVMRequest>,
+  output: __S(32, __c1, 0) as any as S.Schema<StartVirtualMachineScaleSetVMResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -12476,8 +12504,8 @@ export const UpdateAvailabilitySet: API.OperationMethod<
   UpdateAvailabilitySetError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(597, __c74, 5) as any as S.Schema<UpdateAvailabilitySetRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<UpdateAvailabilitySetResponse>,
+  input: __S(2912, __c91, 0) as any as S.Schema<UpdateAvailabilitySetRequest>,
+  output: __S(5056, __c158, 0) as any as S.Schema<UpdateAvailabilitySetResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -12491,8 +12519,8 @@ export const UpdateCapacityReservation: API.OperationMethod<
   UpdateCapacityReservationError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(598, __c74, 6) as any as S.Schema<UpdateCapacityReservationRequest>,
-  output: __S(54, __c6, 6) as any as S.Schema<UpdateCapacityReservationResponse>,
+  input: __S(2944, __c92, 0) as any as S.Schema<UpdateCapacityReservationRequest>,
+  output: __S(10080, __c315, 0) as any as S.Schema<UpdateCapacityReservationResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -12506,8 +12534,8 @@ export const UpdateCapacityReservationGroup: API.OperationMethod<
   UpdateCapacityReservationGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(599, __c74, 7) as any as S.Schema<UpdateCapacityReservationGroupRequest>,
-  output: __S(47, __c5, 7) as any as S.Schema<UpdateCapacityReservationGroupResponse>,
+  input: __S(2976, __c93, 0) as any as S.Schema<UpdateCapacityReservationGroupRequest>,
+  output: __S(9376, __c293, 0) as any as S.Schema<UpdateCapacityReservationGroupResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -12521,8 +12549,8 @@ export const UpdateDedicatedHost: API.OperationMethod<
   UpdateDedicatedHostError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(600, __c75, 0) as any as S.Schema<UpdateDedicatedHostRequest>,
-  output: __S(159, __c19, 7) as any as S.Schema<UpdateDedicatedHostResponse>,
+  input: __S(3168, __c99, 0) as any as S.Schema<UpdateDedicatedHostRequest>,
+  output: __S(3681, __c115, 1) as any as S.Schema<UpdateDedicatedHostResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -12536,8 +12564,8 @@ export const UpdateDedicatedHostGroup: API.OperationMethod<
   UpdateDedicatedHostGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(601, __c75, 1) as any as S.Schema<UpdateDedicatedHostGroupRequest>,
-  output: __S(154, __c19, 2) as any as S.Schema<UpdateDedicatedHostGroupResponse>,
+  input: __S(3200, __c100, 0) as any as S.Schema<UpdateDedicatedHostGroupRequest>,
+  output: __S(3104, __c97, 0) as any as S.Schema<UpdateDedicatedHostGroupResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -12551,8 +12579,8 @@ export const UpdateImage: API.OperationMethod<
   UpdateImageError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(602, __c75, 2) as any as S.Schema<UpdateImageRequest>,
-  output: __S(205, __c25, 5) as any as S.Schema<UpdateImageResponse>,
+  input: __S(3232, __c101, 0) as any as S.Schema<UpdateImageRequest>,
+  output: __S(7328, __c229, 0) as any as S.Schema<UpdateImageResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -12566,8 +12594,8 @@ export const UpdateInterconnectBlock: API.OperationMethod<
   UpdateInterconnectBlockError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(603, __c75, 3) as any as S.Schema<UpdateInterconnectBlockRequest>,
-  output: __S(210, __c26, 2) as any as S.Schema<UpdateInterconnectBlockResponse>,
+  input: __S(3264, __c102, 0) as any as S.Schema<UpdateInterconnectBlockRequest>,
+  output: __S(7424, __c232, 0) as any as S.Schema<UpdateInterconnectBlockResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -12581,8 +12609,8 @@ export const UpdateProximityPlacementGroup: API.OperationMethod<
   UpdateProximityPlacementGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(604, __c75, 4) as any as S.Schema<UpdateProximityPlacementGroupRequest>,
-  output: __S(216, __c27, 0) as any as S.Schema<UpdateProximityPlacementGroupResponse>,
+  input: __S(3296, __c103, 0) as any as S.Schema<UpdateProximityPlacementGroupRequest>,
+  output: __S(7520, __c235, 0) as any as S.Schema<UpdateProximityPlacementGroupResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -12596,8 +12624,8 @@ export const UpdateRestorePointCollection: API.OperationMethod<
   UpdateRestorePointCollectionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(605, __c75, 5) as any as S.Schema<UpdateRestorePointCollectionRequest>,
-  output: __S(223, __c27, 7) as any as S.Schema<UpdateRestorePointCollectionResponse>,
+  input: __S(3328, __c104, 0) as any as S.Schema<UpdateRestorePointCollectionRequest>,
+  output: __S(7712, __c241, 0) as any as S.Schema<UpdateRestorePointCollectionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -12611,8 +12639,8 @@ export const UpdateSshPublicKey: API.OperationMethod<
   UpdateSshPublicKeyError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(606, __c75, 6) as any as S.Schema<UpdateSshPublicKeyRequest>,
-  output: __S(143, __c17, 7) as any as S.Schema<UpdateSshPublicKeyResponse>,
+  input: __S(3360, __c105, 0) as any as S.Schema<UpdateSshPublicKeyRequest>,
+  output: __S(2624, __c82, 0) as any as S.Schema<UpdateSshPublicKeyResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -12626,8 +12654,8 @@ export const UpdateVirtualMachine: API.OperationMethod<
   UpdateVirtualMachineError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(614, __c76, 6) as any as S.Schema<UpdateVirtualMachineRequest>,
-  output: __S(294, __c36, 6) as any as S.Schema<UpdateVirtualMachineResponse>,
+  input: __S(3392, __c106, 0) as any as S.Schema<UpdateVirtualMachineRequest>,
+  output: __S(7936, __c248, 0) as any as S.Schema<UpdateVirtualMachineResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -12641,8 +12669,8 @@ export const UpdateVirtualMachineDiagnosticRunCommand: API.OperationMethod<
   UpdateVirtualMachineDiagnosticRunCommandError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(616, __c77, 0) as any as S.Schema<UpdateVirtualMachineDiagnosticRunCommandRequest>,
-  output: __S(333, __c41, 5) as any as S.Schema<UpdateVirtualMachineDiagnosticRunCommandResponse>,
+  input: __S(3520, __c110, 0) as any as S.Schema<UpdateVirtualMachineDiagnosticRunCommandRequest>,
+  output: __S(8864, __c277, 0) as any as S.Schema<UpdateVirtualMachineDiagnosticRunCommandResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -12656,8 +12684,8 @@ export const UpdateVirtualMachineExtension: API.OperationMethod<
   UpdateVirtualMachineExtensionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(618, __c77, 2) as any as S.Schema<UpdateVirtualMachineExtensionRequest>,
-  output: __S(307, __c38, 3) as any as S.Schema<UpdateVirtualMachineExtensionResponse>,
+  input: __S(3584, __c112, 0) as any as S.Schema<UpdateVirtualMachineExtensionRequest>,
+  output: __S(8608, __c269, 0) as any as S.Schema<UpdateVirtualMachineExtensionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -12671,8 +12699,8 @@ export const UpdateVirtualMachineRunCommand: API.OperationMethod<
   UpdateVirtualMachineRunCommandError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(619, __c77, 3) as any as S.Schema<UpdateVirtualMachineRunCommandRequest>,
-  output: __S(333, __c41, 5) as any as S.Schema<UpdateVirtualMachineRunCommandResponse>,
+  input: __S(3744, __c117, 0) as any as S.Schema<UpdateVirtualMachineRunCommandRequest>,
+  output: __S(8864, __c277, 0) as any as S.Schema<UpdateVirtualMachineRunCommandResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -12686,8 +12714,8 @@ export const UpdateVirtualMachineScaleSet: API.OperationMethod<
   UpdateVirtualMachineScaleSetError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(640, __c80, 0) as any as S.Schema<UpdateVirtualMachineScaleSetRequest>,
-  output: __S(383, __c47, 7) as any as S.Schema<UpdateVirtualMachineScaleSetResponse>,
+  input: __S(3791, __c118, 15) as any as S.Schema<UpdateVirtualMachineScaleSetRequest>,
+  output: __S(9024, __c282, 0) as any as S.Schema<UpdateVirtualMachineScaleSetResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -12701,8 +12729,8 @@ export const UpdateVirtualMachineScaleSetExtension: API.OperationMethod<
   UpdateVirtualMachineScaleSetExtensionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(641, __c80, 1) as any as S.Schema<UpdateVirtualMachineScaleSetExtensionRequest>,
-  output: __S(357, __c44, 5) as any as S.Schema<UpdateVirtualMachineScaleSetExtensionResponse>,
+  input: __S(3872, __c121, 0) as any as S.Schema<UpdateVirtualMachineScaleSetExtensionRequest>,
+  output: __S(9057, __c283, 1) as any as S.Schema<UpdateVirtualMachineScaleSetExtensionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -12716,8 +12744,8 @@ export const UpdateVirtualMachineScaleSetInstances: API.OperationMethod<
   UpdateVirtualMachineScaleSetInstancesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(642, __c80, 2) as any as S.Schema<UpdateVirtualMachineScaleSetInstancesRequest>,
-  output: __S(2, __c0, 2) as any as S.Schema<UpdateVirtualMachineScaleSetInstancesResponse>,
+  input: __S(3904, __c122, 0) as any as S.Schema<UpdateVirtualMachineScaleSetInstancesRequest>,
+  output: __S(32, __c1, 0) as any as S.Schema<UpdateVirtualMachineScaleSetInstancesResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -12732,14 +12760,14 @@ export const UpdateVirtualMachineScaleSetLifeCycleHookEvent: API.OperationMethod
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    644,
-    __c80,
-    4,
+    3937,
+    __c123,
+    1,
   ) as any as S.Schema<UpdateVirtualMachineScaleSetLifeCycleHookEventRequest>,
   output: __S(
-    400,
-    __c50,
-    0,
+    9284,
+    __c290,
+    4,
   ) as any as S.Schema<UpdateVirtualMachineScaleSetLifeCycleHookEventResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -12754,8 +12782,8 @@ export const UpdateVirtualMachineScaleSetVM: API.OperationMethod<
   UpdateVirtualMachineScaleSetVMError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(646, __c80, 6) as any as S.Schema<UpdateVirtualMachineScaleSetVMRequest>,
-  output: __S(418, __c52, 2) as any as S.Schema<UpdateVirtualMachineScaleSetVMResponse>,
+  input: __S(3969, __c124, 1) as any as S.Schema<UpdateVirtualMachineScaleSetVMRequest>,
+  output: __S(9664, __c302, 0) as any as S.Schema<UpdateVirtualMachineScaleSetVMResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -12770,13 +12798,13 @@ export const UpdateVirtualMachineScaleSetVMDiagnosticRunCommand: API.OperationMe
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    647,
-    __c80,
-    7,
+    4000,
+    __c125,
+    0,
   ) as any as S.Schema<UpdateVirtualMachineScaleSetVMDiagnosticRunCommandRequest>,
   output: __S(
-    648,
-    __c81,
+    4032,
+    __c126,
     0,
   ) as any as S.Schema<UpdateVirtualMachineScaleSetVMDiagnosticRunCommandResponse>,
   errors: [UnknownAzureError],
@@ -12792,8 +12820,8 @@ export const UpdateVirtualMachineScaleSetVMExtension: API.OperationMethod<
   UpdateVirtualMachineScaleSetVMExtensionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(649, __c81, 1) as any as S.Schema<UpdateVirtualMachineScaleSetVMExtensionRequest>,
-  output: __S(423, __c52, 7) as any as S.Schema<UpdateVirtualMachineScaleSetVMExtensionResponse>,
+  input: __S(4064, __c127, 0) as any as S.Schema<UpdateVirtualMachineScaleSetVMExtensionRequest>,
+  output: __S(9824, __c307, 0) as any as S.Schema<UpdateVirtualMachineScaleSetVMExtensionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -12807,8 +12835,8 @@ export const UpdateVirtualMachineScaleSetVMRunCommand: API.OperationMethod<
   UpdateVirtualMachineScaleSetVMRunCommandError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(650, __c81, 2) as any as S.Schema<UpdateVirtualMachineScaleSetVMRunCommandRequest>,
-  output: __S(333, __c41, 5) as any as S.Schema<UpdateVirtualMachineScaleSetVMRunCommandResponse>,
+  input: __S(4096, __c128, 0) as any as S.Schema<UpdateVirtualMachineScaleSetVMRunCommandRequest>,
+  output: __S(8864, __c277, 0) as any as S.Schema<UpdateVirtualMachineScaleSetVMRunCommandResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -12823,14 +12851,14 @@ export const ValidateAvailabilitySetMigrationToVirtualMachineScaleSet: API.Opera
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    651,
-    __c81,
-    3,
+    4128,
+    __c129,
+    0,
   ) as any as S.Schema<ValidateAvailabilitySetMigrationToVirtualMachineScaleSetRequest>,
   output: __S(
-    34,
-    __c4,
-    2,
+    7200,
+    __c225,
+    0,
   ) as any as S.Schema<ValidateAvailabilitySetMigrationToVirtualMachineScaleSetResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -12845,8 +12873,8 @@ export const VirtualMachineBulkOperationsBulkCancel: API.OperationMethod<
   VirtualMachineBulkOperationsBulkCancelError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(652, __c81, 4) as any as S.Schema<VirtualMachineBulkOperationsBulkCancelRequest>,
-  output: __S(653, __c81, 5) as any as S.Schema<CancelOperationsResponse>,
+  input: __S(4224, __c132, 0) as any as S.Schema<VirtualMachineBulkOperationsBulkCancelRequest>,
+  output: __S(4225, __c132, 1) as any as S.Schema<CancelOperationsResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -12860,8 +12888,8 @@ export const VirtualMachineBulkOperationsBulkDelete: API.OperationMethod<
   VirtualMachineBulkOperationsBulkDeleteError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(654, __c81, 6) as any as S.Schema<VirtualMachineBulkOperationsBulkDeleteRequest>,
-  output: __S(31, __c3, 7) as any as S.Schema<DeleteResourceOperationResponse>,
+  input: __S(4256, __c133, 0) as any as S.Schema<VirtualMachineBulkOperationsBulkDeleteRequest>,
+  output: __S(6370, __c199, 2) as any as S.Schema<DeleteResourceOperationResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -12876,11 +12904,11 @@ export const VirtualMachineBulkOperationsBulkGetOperationsStatus: API.OperationM
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    655,
-    __c81,
-    7,
+    4288,
+    __c134,
+    0,
   ) as any as S.Schema<VirtualMachineBulkOperationsBulkGetOperationsStatusRequest>,
-  output: __S(656, __c82, 0) as any as S.Schema<GetOperationStatusResponse>,
+  output: __S(4289, __c134, 1) as any as S.Schema<GetOperationStatusResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -12894,8 +12922,8 @@ export const VirtualMachineBulkOperationsBulkStart: API.OperationMethod<
   VirtualMachineBulkOperationsBulkStartError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(657, __c82, 1) as any as S.Schema<VirtualMachineBulkOperationsBulkStartRequest>,
-  output: __S(31, __c3, 7) as any as S.Schema<StartResourceOperationResponse>,
+  input: __S(4320, __c135, 0) as any as S.Schema<VirtualMachineBulkOperationsBulkStartRequest>,
+  output: __S(6370, __c199, 2) as any as S.Schema<StartResourceOperationResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -12910,13 +12938,13 @@ export const VirtualMachineDiagnosticRunCommandsCreateOrUpdate: API.OperationMet
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    658,
-    __c82,
-    2,
+    4352,
+    __c136,
+    0,
   ) as any as S.Schema<VirtualMachineDiagnosticRunCommandsCreateOrUpdateRequest>,
   output: __S(
-    648,
-    __c81,
+    4032,
+    __c126,
     0,
   ) as any as S.Schema<VirtualMachineDiagnosticRunCommandsCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
@@ -12933,11 +12961,11 @@ export const VirtualMachineDiagnosticRunCommandsDiagnosticListByVirtualMachine: 
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    659,
-    __c82,
-    3,
+    4384,
+    __c137,
+    0,
   ) as any as S.Schema<VirtualMachineDiagnosticRunCommandsDiagnosticListByVirtualMachineRequest>,
-  output: __S(555, __c69, 3) as any as S.Schema<VirtualMachineDiagnosticRunCommandsListResult>,
+  output: __S(1537, __c48, 1) as any as S.Schema<VirtualMachineDiagnosticRunCommandsListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -12951,8 +12979,8 @@ export const VirtualMachineExtensionsCreateOrUpdate: API.OperationMethod<
   VirtualMachineExtensionsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(661, __c82, 5) as any as S.Schema<VirtualMachineExtensionsCreateOrUpdateRequest>,
-  output: __S(307, __c38, 3) as any as S.Schema<VirtualMachineExtensionsCreateOrUpdateResponse>,
+  input: __S(4416, __c138, 0) as any as S.Schema<VirtualMachineExtensionsCreateOrUpdateRequest>,
+  output: __S(8608, __c269, 0) as any as S.Schema<VirtualMachineExtensionsCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -12966,8 +12994,8 @@ export const VirtualMachineRunCommandsCreateOrUpdate: API.OperationMethod<
   VirtualMachineRunCommandsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(662, __c82, 6) as any as S.Schema<VirtualMachineRunCommandsCreateOrUpdateRequest>,
-  output: __S(333, __c41, 5) as any as S.Schema<VirtualMachineRunCommandsCreateOrUpdateResponse>,
+  input: __S(4480, __c140, 0) as any as S.Schema<VirtualMachineRunCommandsCreateOrUpdateRequest>,
+  output: __S(8864, __c277, 0) as any as S.Schema<VirtualMachineRunCommandsCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -12981,8 +13009,8 @@ export const VirtualMachinesAssessPatches: API.OperationMethod<
   VirtualMachinesAssessPatchesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(663, __c82, 7) as any as S.Schema<VirtualMachinesAssessPatchesRequest>,
-  output: __S(666, __c83, 2) as any as S.Schema<VirtualMachineAssessPatchesResult>,
+  input: __S(4512, __c141, 0) as any as S.Schema<VirtualMachinesAssessPatchesRequest>,
+  output: __S(4515, __c141, 3) as any as S.Schema<VirtualMachineAssessPatchesResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -12996,8 +13024,8 @@ export const VirtualMachinesAttachDetachDataDisks: API.OperationMethod<
   VirtualMachinesAttachDetachDataDisksError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(671, __c83, 7) as any as S.Schema<VirtualMachinesAttachDetachDataDisksRequest>,
-  output: __S(236, __c29, 4) as any as S.Schema<StorageProfile>,
+  input: __S(4544, __c142, 0) as any as S.Schema<VirtualMachinesAttachDetachDataDisksRequest>,
+  output: __S(8227, __c257, 3) as any as S.Schema<StorageProfile>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -13012,14 +13040,14 @@ export const VirtualMachineScaleSetExtensionsCreateOrUpdate: API.OperationMethod
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    672,
-    __c84,
+    4640,
+    __c145,
     0,
   ) as any as S.Schema<VirtualMachineScaleSetExtensionsCreateOrUpdateRequest>,
   output: __S(
-    357,
-    __c44,
-    5,
+    9057,
+    __c283,
+    1,
   ) as any as S.Schema<VirtualMachineScaleSetExtensionsCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -13034,8 +13062,8 @@ export const VirtualMachineScaleSetsCreateOrUpdate: API.OperationMethod<
   VirtualMachineScaleSetsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(677, __c84, 5) as any as S.Schema<VirtualMachineScaleSetsCreateOrUpdateRequest>,
-  output: __S(383, __c47, 7) as any as S.Schema<VirtualMachineScaleSetsCreateOrUpdateResponse>,
+  input: __S(4676, __c146, 4) as any as S.Schema<VirtualMachineScaleSetsCreateOrUpdateRequest>,
+  output: __S(9024, __c282, 0) as any as S.Schema<VirtualMachineScaleSetsCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -13049,8 +13077,8 @@ export const VirtualMachineScaleSetsDeallocate: API.OperationMethod<
   VirtualMachineScaleSetsDeallocateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(678, __c84, 6) as any as S.Schema<VirtualMachineScaleSetsDeallocateRequest>,
-  output: __S(2, __c0, 2) as any as S.Schema<VirtualMachineScaleSetsDeallocateResponse>,
+  input: __S(4704, __c147, 0) as any as S.Schema<VirtualMachineScaleSetsDeallocateRequest>,
+  output: __S(32, __c1, 0) as any as S.Schema<VirtualMachineScaleSetsDeallocateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -13066,11 +13094,11 @@ export const VirtualMachineScaleSetsForceRecoveryServiceFabricPlatformUpdateDoma
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    679,
-    __c84,
-    7,
+    4736,
+    __c148,
+    0,
   ) as any as S.Schema<VirtualMachineScaleSetsForceRecoveryServiceFabricPlatformUpdateDomainWalkRequest>,
-  output: __S(680, __c85, 0) as any as S.Schema<RecoveryWalkResponse>,
+  output: __S(4737, __c148, 1) as any as S.Schema<RecoveryWalkResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -13084,8 +13112,8 @@ export const VirtualMachineScaleSetsPerformMaintenance: API.OperationMethod<
   VirtualMachineScaleSetsPerformMaintenanceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(681, __c85, 1) as any as S.Schema<VirtualMachineScaleSetsPerformMaintenanceRequest>,
-  output: __S(2, __c0, 2) as any as S.Schema<VirtualMachineScaleSetsPerformMaintenanceResponse>,
+  input: __S(4768, __c149, 0) as any as S.Schema<VirtualMachineScaleSetsPerformMaintenanceRequest>,
+  output: __S(32, __c1, 0) as any as S.Schema<VirtualMachineScaleSetsPerformMaintenanceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -13099,8 +13127,8 @@ export const VirtualMachineScaleSetsPowerOff: API.OperationMethod<
   VirtualMachineScaleSetsPowerOffError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(682, __c85, 2) as any as S.Schema<VirtualMachineScaleSetsPowerOffRequest>,
-  output: __S(2, __c0, 2) as any as S.Schema<VirtualMachineScaleSetsPowerOffResponse>,
+  input: __S(4800, __c150, 0) as any as S.Schema<VirtualMachineScaleSetsPowerOffRequest>,
+  output: __S(32, __c1, 0) as any as S.Schema<VirtualMachineScaleSetsPowerOffResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -13114,8 +13142,8 @@ export const VirtualMachineScaleSetsReapply: API.OperationMethod<
   VirtualMachineScaleSetsReapplyError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(683, __c85, 3) as any as S.Schema<VirtualMachineScaleSetsReapplyRequest>,
-  output: __S(2, __c0, 2) as any as S.Schema<VirtualMachineScaleSetsReapplyResponse>,
+  input: __S(4832, __c151, 0) as any as S.Schema<VirtualMachineScaleSetsReapplyRequest>,
+  output: __S(32, __c1, 0) as any as S.Schema<VirtualMachineScaleSetsReapplyResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -13129,8 +13157,8 @@ export const VirtualMachineScaleSetsReimage: API.OperationMethod<
   VirtualMachineScaleSetsReimageError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(685, __c85, 5) as any as S.Schema<VirtualMachineScaleSetsReimageRequest>,
-  output: __S(2, __c0, 2) as any as S.Schema<VirtualMachineScaleSetsReimageResponse>,
+  input: __S(4864, __c152, 0) as any as S.Schema<VirtualMachineScaleSetsReimageRequest>,
+  output: __S(32, __c1, 0) as any as S.Schema<VirtualMachineScaleSetsReimageResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -13144,8 +13172,8 @@ export const VirtualMachineScaleSetsReimageAll: API.OperationMethod<
   VirtualMachineScaleSetsReimageAllError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(686, __c85, 6) as any as S.Schema<VirtualMachineScaleSetsReimageAllRequest>,
-  output: __S(2, __c0, 2) as any as S.Schema<VirtualMachineScaleSetsReimageAllResponse>,
+  input: __S(4928, __c154, 0) as any as S.Schema<VirtualMachineScaleSetsReimageAllRequest>,
+  output: __S(32, __c1, 0) as any as S.Schema<VirtualMachineScaleSetsReimageAllResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -13160,14 +13188,14 @@ export const VirtualMachineScaleSetVMDiagnosticRunCommandsCreateOrUpdate: API.Op
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    687,
-    __c85,
-    7,
+    4960,
+    __c155,
+    0,
   ) as any as S.Schema<VirtualMachineScaleSetVMDiagnosticRunCommandsCreateOrUpdateRequest>,
   output: __S(
-    305,
-    __c38,
-    1,
+    8416,
+    __c263,
+    0,
   ) as any as S.Schema<VirtualMachineScaleSetVMDiagnosticRunCommandsCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -13183,13 +13211,13 @@ export const VirtualMachineScaleSetVMExtensionsCreateOrUpdate: API.OperationMeth
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    688,
-    __c86,
+    5408,
+    __c169,
     0,
   ) as any as S.Schema<VirtualMachineScaleSetVMExtensionsCreateOrUpdateRequest>,
   output: __S(
-    689,
-    __c86,
+    5409,
+    __c169,
     1,
   ) as any as S.Schema<VirtualMachineScaleSetVMExtensionsCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
@@ -13206,13 +13234,13 @@ export const VirtualMachineScaleSetVMRunCommandsCreateOrUpdate: API.OperationMet
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    690,
-    __c86,
-    2,
+    5440,
+    __c170,
+    0,
   ) as any as S.Schema<VirtualMachineScaleSetVMRunCommandsCreateOrUpdateRequest>,
   output: __S(
-    648,
-    __c81,
+    4032,
+    __c126,
     0,
   ) as any as S.Schema<VirtualMachineScaleSetVMRunCommandsCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
@@ -13229,11 +13257,11 @@ export const VirtualMachineScaleSetVMsAttachDetachDataDisks: API.OperationMethod
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    691,
-    __c86,
-    3,
+    5472,
+    __c171,
+    0,
   ) as any as S.Schema<VirtualMachineScaleSetVMsAttachDetachDataDisksRequest>,
-  output: __S(236, __c29, 4) as any as S.Schema<StorageProfile>,
+  output: __S(8227, __c257, 3) as any as S.Schema<StorageProfile>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -13247,8 +13275,8 @@ export const VirtualMachineScaleSetVMsDeallocate: API.OperationMethod<
   VirtualMachineScaleSetVMsDeallocateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(692, __c86, 4) as any as S.Schema<VirtualMachineScaleSetVMsDeallocateRequest>,
-  output: __S(2, __c0, 2) as any as S.Schema<VirtualMachineScaleSetVMsDeallocateResponse>,
+  input: __S(5504, __c172, 0) as any as S.Schema<VirtualMachineScaleSetVMsDeallocateRequest>,
+  output: __S(32, __c1, 0) as any as S.Schema<VirtualMachineScaleSetVMsDeallocateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -13262,8 +13290,12 @@ export const VirtualMachineScaleSetVMsPerformMaintenance: API.OperationMethod<
   VirtualMachineScaleSetVMsPerformMaintenanceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(693, __c86, 5) as any as S.Schema<VirtualMachineScaleSetVMsPerformMaintenanceRequest>,
-  output: __S(2, __c0, 2) as any as S.Schema<VirtualMachineScaleSetVMsPerformMaintenanceResponse>,
+  input: __S(
+    5536,
+    __c173,
+    0,
+  ) as any as S.Schema<VirtualMachineScaleSetVMsPerformMaintenanceRequest>,
+  output: __S(32, __c1, 0) as any as S.Schema<VirtualMachineScaleSetVMsPerformMaintenanceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -13277,8 +13309,8 @@ export const VirtualMachineScaleSetVMsPowerOff: API.OperationMethod<
   VirtualMachineScaleSetVMsPowerOffError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(694, __c86, 6) as any as S.Schema<VirtualMachineScaleSetVMsPowerOffRequest>,
-  output: __S(2, __c0, 2) as any as S.Schema<VirtualMachineScaleSetVMsPowerOffResponse>,
+  input: __S(5568, __c174, 0) as any as S.Schema<VirtualMachineScaleSetVMsPowerOffRequest>,
+  output: __S(32, __c1, 0) as any as S.Schema<VirtualMachineScaleSetVMsPowerOffResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -13292,8 +13324,8 @@ export const VirtualMachineScaleSetVMsReimage: API.OperationMethod<
   VirtualMachineScaleSetVMsReimageError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(695, __c86, 7) as any as S.Schema<VirtualMachineScaleSetVMsReimageRequest>,
-  output: __S(2, __c0, 2) as any as S.Schema<VirtualMachineScaleSetVMsReimageResponse>,
+  input: __S(5600, __c175, 0) as any as S.Schema<VirtualMachineScaleSetVMsReimageRequest>,
+  output: __S(32, __c1, 0) as any as S.Schema<VirtualMachineScaleSetVMsReimageResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -13307,8 +13339,8 @@ export const VirtualMachineScaleSetVMsReimageAll: API.OperationMethod<
   VirtualMachineScaleSetVMsReimageAllError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(696, __c87, 0) as any as S.Schema<VirtualMachineScaleSetVMsReimageAllRequest>,
-  output: __S(2, __c0, 2) as any as S.Schema<VirtualMachineScaleSetVMsReimageAllResponse>,
+  input: __S(5632, __c176, 0) as any as S.Schema<VirtualMachineScaleSetVMsReimageAllRequest>,
+  output: __S(32, __c1, 0) as any as S.Schema<VirtualMachineScaleSetVMsReimageAllResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -13322,8 +13354,8 @@ export const VirtualMachineScaleSetVMsSimulateEviction: API.OperationMethod<
   VirtualMachineScaleSetVMsSimulateEvictionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(697, __c87, 1) as any as S.Schema<VirtualMachineScaleSetVMsSimulateEvictionRequest>,
-  output: __S(2, __c0, 2) as any as S.Schema<VirtualMachineScaleSetVMsSimulateEvictionResponse>,
+  input: __S(5664, __c177, 0) as any as S.Schema<VirtualMachineScaleSetVMsSimulateEvictionRequest>,
+  output: __S(32, __c1, 0) as any as S.Schema<VirtualMachineScaleSetVMsSimulateEvictionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -13337,8 +13369,8 @@ export const VirtualMachinesCreateOrUpdate: API.OperationMethod<
   VirtualMachinesCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(698, __c87, 2) as any as S.Schema<VirtualMachinesCreateOrUpdateRequest>,
-  output: __S(294, __c36, 6) as any as S.Schema<VirtualMachinesCreateOrUpdateResponse>,
+  input: __S(5696, __c178, 0) as any as S.Schema<VirtualMachinesCreateOrUpdateRequest>,
+  output: __S(7936, __c248, 0) as any as S.Schema<VirtualMachinesCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -13352,8 +13384,8 @@ export const VirtualMachinesDeallocate: API.OperationMethod<
   VirtualMachinesDeallocateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(699, __c87, 3) as any as S.Schema<VirtualMachinesDeallocateRequest>,
-  output: __S(2, __c0, 2) as any as S.Schema<VirtualMachinesDeallocateResponse>,
+  input: __S(5760, __c180, 0) as any as S.Schema<VirtualMachinesDeallocateRequest>,
+  output: __S(32, __c1, 0) as any as S.Schema<VirtualMachinesDeallocateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -13367,8 +13399,8 @@ export const VirtualMachinesGeneralize: API.OperationMethod<
   VirtualMachinesGeneralizeError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(700, __c87, 4) as any as S.Schema<VirtualMachinesGeneralizeRequest>,
-  output: __S(2, __c0, 2) as any as S.Schema<VirtualMachinesGeneralizeResponse>,
+  input: __S(5792, __c181, 0) as any as S.Schema<VirtualMachinesGeneralizeRequest>,
+  output: __S(32, __c1, 0) as any as S.Schema<VirtualMachinesGeneralizeResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -13382,8 +13414,8 @@ export const VirtualMachinesInstanceView: API.OperationMethod<
   VirtualMachinesInstanceViewError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(701, __c87, 5) as any as S.Schema<VirtualMachinesInstanceViewRequest>,
-  output: __S(276, __c34, 4) as any as S.Schema<VirtualMachineInstanceView>,
+  input: __S(5824, __c182, 0) as any as S.Schema<VirtualMachinesInstanceViewRequest>,
+  output: __S(7907, __c247, 3) as any as S.Schema<VirtualMachineInstanceView>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -13397,8 +13429,8 @@ export const VirtualMachinesPerformMaintenance: API.OperationMethod<
   VirtualMachinesPerformMaintenanceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(702, __c87, 6) as any as S.Schema<VirtualMachinesPerformMaintenanceRequest>,
-  output: __S(2, __c0, 2) as any as S.Schema<VirtualMachinesPerformMaintenanceResponse>,
+  input: __S(5856, __c183, 0) as any as S.Schema<VirtualMachinesPerformMaintenanceRequest>,
+  output: __S(32, __c1, 0) as any as S.Schema<VirtualMachinesPerformMaintenanceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -13412,8 +13444,8 @@ export const VirtualMachinesPowerOff: API.OperationMethod<
   VirtualMachinesPowerOffError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(703, __c87, 7) as any as S.Schema<VirtualMachinesPowerOffRequest>,
-  output: __S(169, __c21, 1) as any as S.Schema<VirtualMachinesPowerOffResponse>,
+  input: __S(5888, __c184, 0) as any as S.Schema<VirtualMachinesPowerOffRequest>,
+  output: __S(6144, __c192, 0) as any as S.Schema<VirtualMachinesPowerOffResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -13427,8 +13459,8 @@ export const VirtualMachinesReapply: API.OperationMethod<
   VirtualMachinesReapplyError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(704, __c88, 0) as any as S.Schema<VirtualMachinesReapplyRequest>,
-  output: __S(161, __c20, 1) as any as S.Schema<VirtualMachinesReapplyResponse>,
+  input: __S(5920, __c185, 0) as any as S.Schema<VirtualMachinesReapplyRequest>,
+  output: __S(4192, __c131, 0) as any as S.Schema<VirtualMachinesReapplyResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -13442,8 +13474,8 @@ export const VirtualMachinesReimage: API.OperationMethod<
   VirtualMachinesReimageError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(705, __c88, 1) as any as S.Schema<VirtualMachinesReimageRequest>,
-  output: __S(161, __c20, 1) as any as S.Schema<VirtualMachinesReimageResponse>,
+  input: __S(5952, __c186, 0) as any as S.Schema<VirtualMachinesReimageRequest>,
+  output: __S(4192, __c131, 0) as any as S.Schema<VirtualMachinesReimageResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -13457,8 +13489,8 @@ export const VirtualMachinesSimulateEviction: API.OperationMethod<
   VirtualMachinesSimulateEvictionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(706, __c88, 2) as any as S.Schema<VirtualMachinesSimulateEvictionRequest>,
-  output: __S(2, __c0, 2) as any as S.Schema<VirtualMachinesSimulateEvictionResponse>,
+  input: __S(5984, __c187, 0) as any as S.Schema<VirtualMachinesSimulateEvictionRequest>,
+  output: __S(32, __c1, 0) as any as S.Schema<VirtualMachinesSimulateEvictionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -13468,14 +13500,12 @@ export const VirtualMachinesSimulateEviction: API.OperationMethod<
 function __c0(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(S.String);
-    case 1:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           vmScaleSetName: S.String.pipe(T.Label()),
-          instanceIds: S.optional(__S(0, __c0, 0)),
+          instanceIds: S.optional(__S(64, __c2, 0)),
         }).pipe(
           T.Http({
             method: "POST",
@@ -13487,11 +13517,25 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "ApproveVirtualMachineScaleSetRollingUpgradeRequest",
       });
-    case 2:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "ApproveVirtualMachineScaleSetRollingUpgradeResponse",
       });
-    case 3:
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -13509,597 +13553,11 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "ApproveVirtualMachineScaleSetVMRollingUpgradeRequest",
       });
-    case 4:
-      return S.Record(S.String, S.String);
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "AvailabilitySetPropertiesInputVirtualMachinesItem",
-      });
-    case 6:
-      return S.Array(__S(5, __c0, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          automaticallyApprove: S.optional(S.Boolean),
-        }),
-      ).annotate({ identifier: "UserInitiatedRedeploy" });
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          enable: S.optional(S.Boolean),
-          scheduledEventsApiVersion: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "EventGridAndResourceGraph",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          eventGridAndResourceGraph: S.optional(__S(8, __c1, 0)),
-        }),
-      ).annotate({
-        identifier: "ScheduledEventsAdditionalPublishingTargets",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          userInitiatedRedeploy: S.optional(__S(7, __c0, 7)),
-          userInitiatedReboot: S.optional(__S(7, __c0, 7)),
-          scheduledEventsAdditionalPublishingTargets: S.optional(__S(9, __c1, 1)),
-          allInstancesDown: S.optional(__S(7, __c0, 7)),
-        }),
-      ).annotate({ identifier: "ScheduledEventsPolicy" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          platformUpdateDomainCount: S.optional(S.Number),
-          platformFaultDomainCount: S.optional(S.Number),
-          virtualMachines: S.optional(__S(6, __c0, 6)),
-          proximityPlacementGroup: S.optional(__S(5, __c0, 5)),
-          scheduledEventsPolicy: S.optional(__S(10, __c1, 2)),
-        }),
-      ).annotate({
-        identifier: "AvailabilitySetPropertiesInput",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.optional(S.String),
-          tier: S.optional(S.String),
-          capacity: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "Sku" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          availabilitySetName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(4, __c0, 4)),
-          location: S.String,
-          properties: S.optional(__S(11, __c1, 3)),
-          sku: S.optional(__S(12, __c1, 4)),
-        }).pipe(
-          T.Http({
-            method: "PUT",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/availabilitySets/{availabilitySetName}",
-            code: 200,
-            apiVersion: "2026-04-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "AvailabilitySetsCreateOrUpdateRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          createdBy: S.optional(S.String),
-          createdByType: S.optional(S.String),
-          createdAt: S.optional(S.String),
-          lastModifiedBy: S.optional(S.String),
-          lastModifiedByType: S.optional(S.String),
-          lastModifiedAt: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "SystemData" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          code: S.optional(S.String),
-          level: S.optional(S.String),
-          displayStatus: S.optional(S.String),
-          message: S.optional(S.String),
-          time: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "InstanceViewStatus" });
-  }
-}
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(15, __c1, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          constrainedMaximumCapacity: S.optional(S.Boolean),
-          defaultVirtualMachineScaleSet: S.optional(__S(5, __c0, 5)),
-        }),
-      ).annotate({
-        identifier: "DefaultVirtualMachineScaleSetInfo",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          defaultVirtualMachineScaleSetInfo: S.optional(__S(17, __c2, 1)),
-          migrateToVirtualMachineScaleSet: S.optional(__S(5, __c0, 5)),
-        }),
-      ).annotate({
-        identifier: "VirtualMachineScaleSetMigrationInfo",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          platformUpdateDomainCount: S.optional(S.Number),
-          platformFaultDomainCount: S.optional(S.Number),
-          virtualMachines: S.optional(__S(6, __c0, 6)),
-          proximityPlacementGroup: S.optional(__S(5, __c0, 5)),
-          statuses: S.optional(__S(16, __c2, 0)),
-          scheduledEventsPolicy: S.optional(__S(10, __c1, 2)),
-          virtualMachineScaleSetMigrationInfo: S.optional(__S(18, __c2, 2)),
-        }),
-      ).annotate({
-        identifier: "AvailabilitySetProperties",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(14, __c1, 6)),
-          tags: S.optional(__S(4, __c0, 4)),
-          location: S.String,
-          properties: S.optional(__S(19, __c2, 3)),
-          sku: S.optional(__S(12, __c1, 4)),
-        }),
-      ).annotate({
-        identifier: "AvailabilitySetsCreateOrUpdateResponse",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          retryCount: S.optional(S.Number),
-          retryWindowInMinutes: S.optional(S.Number),
-          onFailureAction: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "RetryPolicy" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          retryPolicy: S.optional(__S(21, __c2, 5)),
-        }),
-      ).annotate({ identifier: "ExecutionParameters" });
-    case 7:
-      return S.Array(S.String);
-  }
-}
-function __c3(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          ids: __S(23, __c2, 7),
-        }),
-      ).annotate({ identifier: "Resources" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          location: S.String.pipe(T.Label()),
-          executionParameters: __S(22, __c2, 6),
-          resources: __S(24, __c3, 0),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/locations/{location}/virtualMachinesBulkDeallocate",
-            code: 200,
-            apiVersion: "2026-06-06",
-          }),
-        ),
-      ).annotate({
-        identifier: "BulkVirtualMachineBulkOperationDeallocateRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          errorCode: S.String,
-          errorDetails: S.String,
-        }),
-      ).annotate({ identifier: "ResourceOperationError" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          lastOpType: S.String,
-          status: S.String,
-          error: S.optional(__S(26, __c3, 2)),
-        }),
-      ).annotate({ identifier: "FallbackOperationInfo" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          operationId: S.String,
-          resourceId: S.optional(S.String),
-          opType: S.optional(S.String),
-          subscriptionId: S.optional(S.String),
-          deadline: S.optional(S.String),
-          deadlineType: S.optional(S.String),
-          state: S.optional(S.String),
-          timezone: S.optional(S.String),
-          resourceOperationError: S.optional(__S(26, __c3, 2)),
-          fallbackOperationInfo: S.optional(__S(27, __c3, 3)),
-          completedAt: S.optional(S.String),
-          retryPolicy: S.optional(__S(21, __c2, 5)),
-        }),
-      ).annotate({ identifier: "ResourceOperationDetails" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          resourceId: S.optional(S.String),
-          errorCode: S.optional(S.String),
-          errorDetails: S.optional(S.String),
-          operation: S.optional(__S(28, __c3, 4)),
-        }),
-      ).annotate({ identifier: "ResourceOperation" });
-    case 6:
-      return S.Array(__S(29, __c3, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          description: S.String,
-          type: S.String,
-          location: S.String,
-          results: S.optional(__S(30, __c3, 6)),
-        }),
-      ).annotate({
-        identifier: "DeallocateResourceOperationResponse",
-      });
   }
 }
 function __c4(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          location: S.String.pipe(T.Label()),
-          executionParameters: __S(22, __c2, 6),
-          resources: __S(24, __c3, 0),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/locations/{location}/virtualMachinesBulkHibernate",
-            code: 200,
-            apiVersion: "2026-06-06",
-          }),
-        ),
-      ).annotate({
-        identifier: "BulkVirtualMachineBulkOperationHibernateRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          availabilitySetName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/availabilitySets/{availabilitySetName}/cancelMigrationToVirtualMachineScaleSet",
-            code: 200,
-            apiVersion: "2026-04-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "CancelAvailabilitySetMigrationToVirtualMachineScaleSetRequest",
-      });
-    case 2:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "CancelAvailabilitySetMigrationToVirtualMachineScaleSetResponse",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          vmScaleSetName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}/rollingUpgrades/cancel",
-            code: 200,
-            apiVersion: "2026-04-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "CancelVirtualMachineScaleSetRollingUpgradeRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionIds: S.optional(__S(6, __c0, 6)),
-        }),
-      ).annotate({ identifier: "ResourceSharingProfile" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          sharingProfile: S.optional(__S(36, __c4, 4)),
-          reservationType: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "CapacityReservationGroupPropertiesInput",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          capacityReservationGroupName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(4, __c0, 4)),
-          location: S.String,
-          properties: S.optional(__S(37, __c4, 5)),
-          zones: S.optional(__S(23, __c2, 7)),
-        }).pipe(
-          T.Http({
-            method: "PUT",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/capacityReservationGroups/{capacityReservationGroupName}",
-            code: 200,
-            apiVersion: "2026-04-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "CapacityReservationGroupsCreateOrUpdateRequest",
-      });
-    case 7:
-      return S.Array(__S(5, __c0, 5));
-  }
-}
-function __c5(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Record(S.String, S.Number);
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          currentCapacity: S.optional(S.Number),
-          virtualMachinesAllocated: S.optional(__S(6, __c0, 6)),
-          usedReservedCountBySubscription: S.optional(__S(40, __c5, 0)),
-        }),
-      ).annotate({
-        identifier: "CapacityReservationUtilization",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          reservationState: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "CapacityReservationStateInfo",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          utilizationInfo: S.optional(__S(41, __c5, 1)),
-          statuses: S.optional(__S(16, __c2, 0)),
-          reservationStateInfo: S.optional(__S(42, __c5, 2)),
-          name: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "CapacityReservationInstanceViewWithName",
-      });
-    case 4:
-      return S.Array(__S(43, __c5, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          capacityReservations: S.optional(__S(44, __c5, 4)),
-          sharedSubscriptionIds: S.optional(__S(6, __c0, 6)),
-        }),
-      ).annotate({
-        identifier: "CapacityReservationGroupInstanceView",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          capacityReservations: S.optional(__S(6, __c0, 6)),
-          virtualMachinesAssociated: S.optional(__S(39, __c4, 7)),
-          instanceView: S.optional(__S(45, __c5, 5)),
-          sharingProfile: S.optional(__S(36, __c4, 4)),
-          reservationType: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "CapacityReservationGroupProperties",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(14, __c1, 6)),
-          tags: S.optional(__S(4, __c0, 4)),
-          location: S.String,
-          properties: S.optional(__S(46, __c5, 6)),
-          zones: S.optional(__S(23, __c2, 7)),
-        }),
-      ).annotate({
-        identifier: "CapacityReservationGroupsCreateOrUpdateResponse",
-      });
-  }
-}
-function __c6(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          start: S.optional(S.String),
-          end: S.optional(S.String),
-          minimumCommitmentDays: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "ScheduleProfileInput" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          scheduleProfile: S.optional(__S(48, __c6, 0)),
-        }),
-      ).annotate({
-        identifier: "CapacityReservationPropertiesInput",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          capacityReservationGroupName: S.String.pipe(T.Label()),
-          capacityReservationName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(4, __c0, 4)),
-          location: S.String,
-          properties: S.optional(__S(49, __c6, 1)),
-          sku: __S(12, __c1, 4),
-          zones: S.optional(__S(23, __c2, 7)),
-        }).pipe(
-          T.Http({
-            method: "PUT",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/capacityReservationGroups/{capacityReservationGroupName}/capacityReservations/{capacityReservationName}",
-            code: 200,
-            apiVersion: "2026-04-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "CapacityReservationsCreateOrUpdateRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          utilizationInfo: S.optional(__S(41, __c5, 1)),
-          statuses: S.optional(__S(16, __c2, 0)),
-          reservationStateInfo: S.optional(__S(42, __c5, 2)),
-        }),
-      ).annotate({
-        identifier: "CapacityReservationInstanceView",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          start: S.optional(S.String),
-          end: S.optional(S.String),
-          minimumCommitmentDays: S.optional(S.Number),
-          modifiableUntil: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ScheduleProfile" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          reservationId: S.optional(S.String),
-          platformFaultDomainCount: S.optional(S.Number),
-          virtualMachinesAssociated: S.optional(__S(6, __c0, 6)),
-          provisioningTime: S.optional(S.String),
-          provisioningState: S.optional(S.String),
-          instanceView: S.optional(__S(51, __c6, 3)),
-          timeCreated: S.optional(S.String),
-          scheduleProfile: S.optional(__S(52, __c6, 4)),
-        }),
-      ).annotate({
-        identifier: "CapacityReservationProperties",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(14, __c1, 6)),
-          tags: S.optional(__S(4, __c0, 4)),
-          location: S.String,
-          properties: S.optional(__S(53, __c6, 5)),
-          sku: __S(12, __c1, 4),
-          zones: S.optional(__S(23, __c2, 7)),
-        }),
-      ).annotate({
-        identifier: "CapacityReservationsCreateOrUpdateResponse",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          vmName: S.String.pipe(T.Label()),
-          vhdPrefix: S.String,
-          destinationContainerName: S.String,
-          overwriteVhds: S.Boolean,
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachines/{vmName}/capture",
-            code: 200,
-            apiVersion: "2026-04-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "CaptureVirtualMachineRequest",
-      });
-  }
-}
-function __c7(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(S.Unknown);
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          _schema: S.optional(S.String.pipe(T.Body("$schema"))),
-          contentVersion: S.optional(S.String),
-          parameters: S.optional(S.Unknown),
-          resources: S.optional(__S(56, __c7, 0)),
-        }),
-      ).annotate({
-        identifier: "CaptureVirtualMachineResponse",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          orchestratorType: S.String,
-        }),
-      ).annotate({
-        identifier: "ContainerServiceOrchestratorProfile",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          orchestrator: S.String,
-        }),
-      ).annotate({
-        identifier: "ContainerServiceCustomProfile",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          clientId: S.String,
-          secret: S.String.pipe(T.SensitiveValue({})),
-        }),
-      ).annotate({
-        identifier: "ContainerServiceServicePrincipalProfile",
-      });
-    case 5:
       return S.suspend(() =>
         S.Struct({
           count: S.optional(S.Number),
@@ -14108,7 +13566,7 @@ function __c7(j: number): any {
       ).annotate({
         identifier: "ContainerServiceMasterProfileInput",
       });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           name: S.String,
@@ -14119,49 +13577,9 @@ function __c7(j: number): any {
       ).annotate({
         identifier: "ContainerServiceAgentPoolProfileInput",
       });
-    case 7:
-      return S.Array(__S(62, __c7, 6));
-  }
-}
-function __c8(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          adminUsername: S.String,
-          adminPassword: S.String.pipe(T.SensitiveValue({})),
-        }),
-      ).annotate({
-        identifier: "ContainerServiceWindowsProfile",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          keyData: S.String,
-        }),
-      ).annotate({
-        identifier: "ContainerServiceSshPublicKey",
-      });
     case 2:
-      return S.Array(__S(65, __c8, 1));
+      return S.Array(__S(129, __c4, 1));
     case 3:
-      return S.suspend(() =>
-        S.Struct({
-          publicKeys: __S(66, __c8, 2),
-        }),
-      ).annotate({
-        identifier: "ContainerServiceSshConfiguration",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          adminUsername: S.String,
-          ssh: __S(67, __c8, 3),
-        }),
-      ).annotate({
-        identifier: "ContainerServiceLinuxProfile",
-      });
-    case 5:
       return S.suspend(() =>
         S.Struct({
           enabled: S.Boolean,
@@ -14169,42 +13587,38 @@ function __c8(j: number): any {
       ).annotate({
         identifier: "ContainerServiceVMDiagnosticsInput",
       });
-    case 6:
+    case 4:
       return S.suspend(() =>
         S.Struct({
-          vmDiagnostics: __S(69, __c8, 5),
+          vmDiagnostics: __S(131, __c4, 3),
         }),
       ).annotate({
         identifier: "ContainerServiceDiagnosticsProfileInput",
       });
-    case 7:
+    case 5:
       return S.suspend(() =>
         S.Struct({
-          orchestratorProfile: S.optional(__S(58, __c7, 2)),
-          customProfile: S.optional(__S(59, __c7, 3)),
-          servicePrincipalProfile: S.optional(__S(60, __c7, 4)),
-          masterProfile: __S(61, __c7, 5),
-          agentPoolProfiles: __S(63, __c7, 7),
-          windowsProfile: S.optional(__S(64, __c8, 0)),
-          linuxProfile: __S(68, __c8, 4),
-          diagnosticsProfile: S.optional(__S(70, __c8, 6)),
+          orchestratorProfile: S.optional(__S(192, __c6, 0)),
+          customProfile: S.optional(__S(193, __c6, 1)),
+          servicePrincipalProfile: S.optional(__S(194, __c6, 2)),
+          masterProfile: __S(128, __c4, 0),
+          agentPoolProfiles: __S(130, __c4, 2),
+          windowsProfile: S.optional(__S(195, __c6, 3)),
+          linuxProfile: __S(199, __c6, 7),
+          diagnosticsProfile: S.optional(__S(132, __c4, 4)),
         }),
       ).annotate({
         identifier: "ContainerServicePropertiesInput",
       });
-  }
-}
-function __c9(j: number): any {
-  switch (j) {
-    case 0:
+    case 6:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           containerServiceName: S.String.pipe(T.Label()),
           location: S.String,
-          tags: S.optional(__S(4, __c0, 4)),
-          properties: S.optional(__S(71, __c8, 7)),
+          tags: S.optional(__S(5152, __c161, 0)),
+          properties: S.optional(__S(133, __c4, 5)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -14216,7 +13630,89 @@ function __c9(j: number): any {
       ).annotate({
         identifier: "ContainerServicesCreateOrUpdateRequest",
       });
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          location: S.String,
+          tags: S.optional(__S(5152, __c161, 0)),
+          properties: S.optional(__S(205, __c6, 13)),
+        }),
+      ).annotate({
+        identifier: "ContainerServicesCreateOrUpdateResponse",
+      });
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          orchestratorType: S.String,
+        }),
+      ).annotate({
+        identifier: "ContainerServiceOrchestratorProfile",
+      });
     case 1:
+      return S.suspend(() =>
+        S.Struct({
+          orchestrator: S.String,
+        }),
+      ).annotate({
+        identifier: "ContainerServiceCustomProfile",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          clientId: S.String,
+          secret: S.String.pipe(T.SensitiveValue({})),
+        }),
+      ).annotate({
+        identifier: "ContainerServiceServicePrincipalProfile",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          adminUsername: S.String,
+          adminPassword: S.String.pipe(T.SensitiveValue({})),
+        }),
+      ).annotate({
+        identifier: "ContainerServiceWindowsProfile",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          keyData: S.String,
+        }),
+      ).annotate({
+        identifier: "ContainerServiceSshPublicKey",
+      });
+    case 5:
+      return S.Array(__S(196, __c6, 4));
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          publicKeys: __S(197, __c6, 5),
+        }),
+      ).annotate({
+        identifier: "ContainerServiceSshConfiguration",
+      });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          adminUsername: S.String,
+          ssh: __S(198, __c6, 6),
+        }),
+      ).annotate({
+        identifier: "ContainerServiceLinuxProfile",
+      });
+    case 8:
       return S.suspend(() =>
         S.Struct({
           count: S.optional(S.Number),
@@ -14226,7 +13722,7 @@ function __c9(j: number): any {
       ).annotate({
         identifier: "ContainerServiceMasterProfile",
       });
-    case 2:
+    case 9:
       return S.suspend(() =>
         S.Struct({
           name: S.String,
@@ -14238,9 +13734,9 @@ function __c9(j: number): any {
       ).annotate({
         identifier: "ContainerServiceAgentPoolProfile",
       });
-    case 3:
-      return S.Array(__S(74, __c9, 2));
-    case 4:
+    case 10:
+      return S.Array(__S(201, __c6, 9));
+    case 11:
       return S.suspend(() =>
         S.Struct({
           enabled: S.Boolean,
@@ -14249,46 +13745,349 @@ function __c9(j: number): any {
       ).annotate({
         identifier: "ContainerServiceVMDiagnostics",
       });
-    case 5:
+    case 12:
       return S.suspend(() =>
         S.Struct({
-          vmDiagnostics: __S(76, __c9, 4),
+          vmDiagnostics: __S(203, __c6, 11),
         }),
       ).annotate({
         identifier: "ContainerServiceDiagnosticsProfile",
       });
-    case 6:
+    case 13:
       return S.suspend(() =>
         S.Struct({
           provisioningState: S.optional(S.String),
-          orchestratorProfile: S.optional(__S(58, __c7, 2)),
-          customProfile: S.optional(__S(59, __c7, 3)),
-          servicePrincipalProfile: S.optional(__S(60, __c7, 4)),
-          masterProfile: __S(73, __c9, 1),
-          agentPoolProfiles: __S(75, __c9, 3),
-          windowsProfile: S.optional(__S(64, __c8, 0)),
-          linuxProfile: __S(68, __c8, 4),
-          diagnosticsProfile: S.optional(__S(77, __c9, 5)),
+          orchestratorProfile: S.optional(__S(192, __c6, 0)),
+          customProfile: S.optional(__S(193, __c6, 1)),
+          servicePrincipalProfile: S.optional(__S(194, __c6, 2)),
+          masterProfile: __S(200, __c6, 8),
+          agentPoolProfiles: __S(202, __c6, 10),
+          windowsProfile: S.optional(__S(195, __c6, 3)),
+          linuxProfile: __S(199, __c6, 7),
+          diagnosticsProfile: S.optional(__S(204, __c6, 12)),
         }),
       ).annotate({
         identifier: "ContainerServiceProperties",
       });
-    case 7:
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/providers/Microsoft.Compute/restorePointCollections",
+            code: 200,
+            apiVersion: "2026-04-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListRestorePointCollectionAllRequest",
+      });
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
+          systemData: S.optional(__S(5184, __c162, 0)),
+          tags: S.optional(__S(5152, __c161, 0)),
           location: S.String,
-          tags: S.optional(__S(4, __c0, 4)),
-          properties: S.optional(__S(78, __c9, 6)),
+          properties: S.optional(__S(7682, __c240, 2)),
+        }),
+      ).annotate({ identifier: "RestorePointCollection" });
+    case 1:
+      return S.Array(__S(256, __c8, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          value: __S(257, __c8, 1),
+          nextLink: S.optional(S.String),
         }),
       ).annotate({
-        identifier: "ContainerServicesCreateOrUpdateResponse",
+        identifier: "RestorePointCollectionListResult",
+      });
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/restorePointCollections",
+            code: 200,
+            apiVersion: "2026-04-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListRestorePointCollectionsRequest",
       });
   }
 }
 function __c10(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/sshPublicKeys",
+            code: 200,
+            apiVersion: "2026-04-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListSshPublicKeyByResourceGroupRequest",
+      });
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(7808, __c244, 0));
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          value: __S(352, __c11, 0),
+          nextLink: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "SshPublicKeysGroupListResult",
+      });
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/providers/Microsoft.Compute/sshPublicKeys",
+            code: 200,
+            apiVersion: "2026-04-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListSshPublicKeyBySubscriptionRequest",
+      });
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          location: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/providers/Microsoft.Compute/locations/{location}/usages",
+            code: 200,
+            apiVersion: "2026-04-01",
+          }),
+        ),
+      ).annotate({ identifier: "ListUsageRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          value: S.optional(S.String),
+          localizedValue: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "UsageName" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          unit: S.String,
+          currentValue: S.Number,
+          limit: S.Number,
+          name: __S(417, __c13, 1),
+        }),
+      ).annotate({ identifier: "Usage" });
+    case 3:
+      return S.Array(__S(418, __c13, 2));
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          value: __S(419, __c13, 3),
+          nextLink: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ListUsagesResult" });
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          statusOnly: S.optional(S.String.pipe(T.Query())),
+          _filter: S.optional(S.String.pipe(T.Query("$filter"))),
+          _expand: S.optional(S.String.pipe(T.Query("$expand"))),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/providers/Microsoft.Compute/virtualMachines",
+            code: 200,
+            apiVersion: "2026-04-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListVirtualMachineAllRequest",
+      });
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(5184, __c162, 0)),
+          tags: S.optional(__S(5152, __c161, 0)),
+          location: S.String,
+          properties: S.optional(__S(7874, __c246, 2)),
+          plan: S.optional(__S(8135, __c254, 7)),
+          resources: S.optional(__S(8193, __c256, 1)),
+          identity: S.optional(__S(8270, __c258, 14)),
+          zones: S.optional(__S(6400, __c200, 0)),
+          extendedLocation: S.optional(__S(7264, __c227, 0)),
+          managedBy: S.optional(S.String),
+          etag: S.optional(S.String),
+          placement: S.optional(__S(7392, __c231, 0)),
+        }),
+      ).annotate({ identifier: "VirtualMachine" });
+    case 1:
+      return S.Array(__S(480, __c15, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          value: __S(481, __c15, 1),
+          nextLink: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "VirtualMachineListResult" });
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          vmName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachines/{vmName}/vmSizes",
+            code: 200,
+            apiVersion: "2026-04-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListVirtualMachineAvailableSizesRequest",
+      });
+  }
+}
+function __c17(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          location: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/providers/Microsoft.Compute/locations/{location}/virtualMachines",
+            code: 200,
+            apiVersion: "2026-04-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListVirtualMachineByLocationRequest",
+      });
+  }
+}
+function __c18(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          location: S.String.pipe(T.Label()),
+          publisherName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/providers/Microsoft.Compute/locations/{location}/publishers/{publisherName}/artifacttypes/vmextension/types",
+            code: 200,
+            apiVersion: "2026-04-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListVirtualMachineExtensionImageTypesRequest",
+      });
+  }
+}
+function __c19(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(8676, __c271, 4));
+    case 1:
+      return S.suspend(() => __S(608, __c19, 0).pipe(T.RawResponseRoot())).annotate({
+        identifier: "ListVirtualMachineExtensionImageTypesResponse",
+      });
+  }
+}
+function __c20(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          location: S.String.pipe(T.Label()),
+          publisherName: S.String.pipe(T.Label()),
+          type: S.String.pipe(T.Label()),
+          _filter: S.optional(S.String.pipe(T.Query("$filter"))),
+          _top: S.optional(S.Number.pipe(T.Query("$top"))),
+          _orderby: S.optional(S.String.pipe(T.Query("$orderby"))),
+          _expand: S.optional(S.String.pipe(T.Query("$expand"))),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/providers/Microsoft.Compute/locations/{location}/publishers/{publisherName}/artifacttypes/vmextension/types/{type}/versions",
+            code: 200,
+            apiVersion: "2026-04-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListVirtualMachineExtensionImageVersionsRequest",
+      });
+  }
+}
+function __c21(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -14308,7 +14107,279 @@ function __c10(j: number): any {
       ).annotate({
         identifier: "ConvertAvailabilitySetToVirtualMachineScaleSetRequest",
       });
+  }
+}
+function __c22(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          vmName: S.String.pipe(T.Label()),
+          _expand: S.optional(S.String.pipe(T.Query("$expand"))),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachines/{vmName}/extensions",
+            code: 200,
+            apiVersion: "2026-04-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListVirtualMachineExtensionsRequest",
+      });
     case 1:
+      return S.suspend(() =>
+        S.Struct({
+          value: S.optional(__S(8193, __c256, 1)),
+        }),
+      ).annotate({
+        identifier: "VirtualMachineExtensionsListResult",
+      });
+  }
+}
+function __c23(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          location: S.String.pipe(T.Label()),
+          edgeZone: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/providers/Microsoft.Compute/locations/{location}/edgeZones/{edgeZone}/vmimages",
+            code: 200,
+            apiVersion: "2026-04-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListVirtualMachineImageByEdgeZoneRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          value: S.optional(__S(769, __c24, 1)),
+          nextLink: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "VmImagesInEdgeZoneListResult",
+      });
+  }
+}
+function __c24(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.String,
+          location: S.String,
+          tags: S.optional(__S(5152, __c161, 0)),
+          extendedLocation: S.optional(__S(7264, __c227, 0)),
+        }),
+      ).annotate({
+        identifier: "VirtualMachineImageResource",
+      });
+    case 1:
+      return S.Array(__S(768, __c24, 0));
+  }
+}
+function __c25(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          location: S.String.pipe(T.Label()),
+          publisherName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/providers/Microsoft.Compute/locations/{location}/publishers/{publisherName}/artifacttypes/vmimage/offers",
+            code: 200,
+            apiVersion: "2026-04-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListVirtualMachineImageOffersRequest",
+      });
+  }
+}
+function __c26(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => __S(769, __c24, 1).pipe(T.RawResponseRoot())).annotate({
+        identifier: "ListVirtualMachineImageOffersResponse",
+      });
+  }
+}
+function __c27(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          location: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/providers/Microsoft.Compute/locations/{location}/publishers",
+            code: 200,
+            apiVersion: "2026-04-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListVirtualMachineImagePublishersRequest",
+      });
+  }
+}
+function __c28(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          location: S.String.pipe(T.Label()),
+          publisherName: S.String.pipe(T.Label()),
+          offer: S.String.pipe(T.Label()),
+          skus: S.String.pipe(T.Label()),
+          _expand: S.optional(S.String.pipe(T.Query("$expand"))),
+          _top: S.optional(S.Number.pipe(T.Query("$top"))),
+          _orderby: S.optional(S.String.pipe(T.Query("$orderby"))),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/providers/Microsoft.Compute/locations/{location}/publishers/{publisherName}/artifacttypes/vmimage/offers/{offer}/skus/{skus}/versions",
+            code: 200,
+            apiVersion: "2026-04-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListVirtualMachineImagesRequest",
+      });
+  }
+}
+function __c29(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          location: S.String.pipe(T.Label()),
+          edgeZone: S.String.pipe(T.Label()),
+          publisherName: S.String.pipe(T.Label()),
+          offer: S.String.pipe(T.Label()),
+          skus: S.String.pipe(T.Label()),
+          _expand: S.optional(S.String.pipe(T.Query("$expand"))),
+          _top: S.optional(S.Number.pipe(T.Query("$top"))),
+          _orderby: S.optional(S.String.pipe(T.Query("$orderby"))),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/providers/Microsoft.Compute/locations/{location}/edgeZones/{edgeZone}/publishers/{publisherName}/artifacttypes/vmimage/offers/{offer}/skus/{skus}/versions",
+            code: 200,
+            apiVersion: "2026-04-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListVirtualMachineImagesEdgeZoneRequest",
+      });
+  }
+}
+function __c30(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          location: S.String.pipe(T.Label()),
+          edgeZone: S.String.pipe(T.Label()),
+          publisherName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/providers/Microsoft.Compute/locations/{location}/edgeZones/{edgeZone}/publishers/{publisherName}/artifacttypes/vmimage/offers",
+            code: 200,
+            apiVersion: "2026-04-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListVirtualMachineImagesEdgeZoneOffersRequest",
+      });
+  }
+}
+function __c31(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          location: S.String.pipe(T.Label()),
+          edgeZone: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/providers/Microsoft.Compute/locations/{location}/edgeZones/{edgeZone}/publishers",
+            code: 200,
+            apiVersion: "2026-04-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListVirtualMachineImagesEdgeZonePublishersRequest",
+      });
+  }
+}
+function __c32(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          location: S.String.pipe(T.Label()),
+          edgeZone: S.String.pipe(T.Label()),
+          publisherName: S.String.pipe(T.Label()),
+          offer: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/providers/Microsoft.Compute/locations/{location}/edgeZones/{edgeZone}/publishers/{publisherName}/artifacttypes/vmimage/offers/{offer}/skus",
+            code: 200,
+            apiVersion: "2026-04-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListVirtualMachineImagesEdgeZoneSkusRequest",
+      });
+  }
+}
+function __c33(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          location: S.String.pipe(T.Label()),
+          publisherName: S.String.pipe(T.Label()),
+          offer: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/providers/Microsoft.Compute/locations/{location}/publishers/{publisherName}/artifacttypes/vmimage/offers/{offer}/skus",
+            code: 200,
+            apiVersion: "2026-04-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListVirtualMachineImageSkusRequest",
+      });
+  }
+}
+function __c34(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -14326,11 +14397,375 @@ function __c10(j: number): any {
       ).annotate({
         identifier: "ConvertVirtualMachineScaleSetToSinglePlacementGroupRequest",
       });
-    case 2:
+  }
+}
+function __c35(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "ConvertVirtualMachineScaleSetToSinglePlacementGroupResponse",
       });
+  }
+}
+function __c36(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          vmName: S.String.pipe(T.Label()),
+          _expand: S.optional(S.String.pipe(T.Query("$expand"))),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachines/{vmName}/runCommands",
+            code: 200,
+            apiVersion: "2026-04-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListVirtualMachineRunCommandByVirtualMachineRequest",
+      });
+  }
+}
+function __c37(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(5184, __c162, 0)),
+          tags: S.optional(__S(5152, __c161, 0)),
+          location: S.String,
+          properties: S.optional(__S(8483, __c265, 3)),
+        }),
+      ).annotate({ identifier: "VirtualMachineRunCommand" });
+    case 1:
+      return S.Array(__S(1184, __c37, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          value: __S(1185, __c37, 1),
+          nextLink: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "VirtualMachineRunCommandsListResult",
+      });
+  }
+}
+function __c38(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          location: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/providers/Microsoft.Compute/locations/{location}/runCommands",
+            code: 200,
+            apiVersion: "2026-04-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListVirtualMachineRunCommandsRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          _schema: S.String.pipe(T.Body("$schema")),
+          id: S.String,
+          osType: S.String,
+          label: S.String,
+          description: S.String,
+        }),
+      ).annotate({ identifier: "RunCommandDocumentBase" });
+    case 2:
+      return S.Array(__S(1217, __c38, 1));
     case 3:
+      return S.suspend(() =>
+        S.Struct({
+          value: __S(1218, __c38, 2),
+          nextLink: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "RunCommandListResult" });
+  }
+}
+function __c39(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          _filter: S.optional(S.String.pipe(T.Query("$filter"))),
+          _expand: S.optional(S.String.pipe(T.Query("$expand"))),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachines",
+            code: 200,
+            apiVersion: "2026-04-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListVirtualMachinesRequest",
+      });
+  }
+}
+function __c40(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/providers/Microsoft.Compute/virtualMachineScaleSets",
+            code: 200,
+            apiVersion: "2026-04-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListVirtualMachineScaleSetAllRequest",
+      });
+  }
+}
+function __c41(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(5184, __c162, 0)),
+          tags: S.optional(__S(5152, __c161, 0)),
+          location: S.String,
+          sku: S.optional(__S(5344, __c167, 0)),
+          plan: S.optional(__S(8135, __c254, 7)),
+          properties: S.optional(__S(8991, __c280, 31)),
+          identity: S.optional(__S(8992, __c281, 0)),
+          zones: S.optional(__S(6400, __c200, 0)),
+          extendedLocation: S.optional(__S(7264, __c227, 0)),
+          etag: S.optional(S.String),
+          placement: S.optional(__S(7392, __c231, 0)),
+        }),
+      ).annotate({ identifier: "VirtualMachineScaleSet" });
+    case 1:
+      return S.Array(__S(1312, __c41, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          value: __S(1313, __c41, 1),
+          nextLink: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "VirtualMachineScaleSetListWithLinkResult",
+      });
+  }
+}
+function __c42(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          location: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/providers/Microsoft.Compute/locations/{location}/virtualMachineScaleSets",
+            code: 200,
+            apiVersion: "2026-04-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListVirtualMachineScaleSetByLocationRequest",
+      });
+  }
+}
+function __c43(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          vmScaleSetName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}/extensions",
+            code: 200,
+            apiVersion: "2026-04-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListVirtualMachineScaleSetExtensionsRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          value: __S(8928, __c279, 0),
+          nextLink: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "VirtualMachineScaleSetExtensionListResult",
+      });
+  }
+}
+function __c44(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          vmScaleSetName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}/lifecycleHookEvents",
+            code: 200,
+            apiVersion: "2026-04-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListVirtualMachineScaleSetLifeCycleHookEventsRequest",
+      });
+    case 1:
+      return S.Array(__S(9284, __c290, 4));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          value: __S(1409, __c44, 1),
+          nextLink: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "VMScaleSetLifecycleHookEventListResult",
+      });
+  }
+}
+function __c45(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets",
+            code: 200,
+            apiVersion: "2026-04-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListVirtualMachineScaleSetsRequest",
+      });
+  }
+}
+function __c46(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          vmScaleSetName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}/skus",
+            code: 200,
+            apiVersion: "2026-04-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListVirtualMachineScaleSetSkusRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          minimum: S.optional(S.Number),
+          maximum: S.optional(S.Number),
+          defaultCapacity: S.optional(S.Number),
+          scaleType: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "VirtualMachineScaleSetSkuCapacity",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          resourceType: S.optional(S.String),
+          sku: S.optional(__S(5344, __c167, 0)),
+          capacity: S.optional(__S(1473, __c46, 1)),
+        }),
+      ).annotate({
+        identifier: "VirtualMachineScaleSetSku",
+      });
+    case 3:
+      return S.Array(__S(1474, __c46, 2));
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          value: __S(1475, __c46, 3),
+          nextLink: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "VirtualMachineScaleSetListSkusResult",
+      });
+  }
+}
+function __c47(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          vmScaleSetName: S.String.pipe(T.Label()),
+          instanceId: S.String.pipe(T.Label()),
+          _expand: S.optional(S.String.pipe(T.Query("$expand"))),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}/virtualMachines/{instanceId}/diagnosticRunCommands",
+            code: 200,
+            apiVersion: "2026-04-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListVirtualMachineScaleSetVMDiagnosticRunCommandsRequest",
+      });
+  }
+}
+function __c48(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(8864, __c277, 0));
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          value: __S(1536, __c48, 0),
+          nextLink: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "VirtualMachineDiagnosticRunCommandsListResult",
+      });
+  }
+}
+function __c49(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -14347,132 +14782,379 @@ function __c10(j: number): any {
       ).annotate({
         identifier: "ConvertVirtualMachineToManagedDisksRequest",
       });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ApiEntityReference" });
-    case 5:
-      return S.Array(__S(84, __c10, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          securityEncryptionType: S.optional(S.String),
-          diskEncryptionSet: S.optional(__S(5, __c0, 5)),
-        }),
-      ).annotate({ identifier: "VMDiskSecurityProfile" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          actionOnDiskDelay: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "DiskAvailabilityPolicy" });
   }
 }
-function __c11(j: number): any {
+function __c50(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          tier: S.optional(S.String),
-          burstingEnabled: S.optional(S.Boolean),
-          performancePlus: S.optional(S.Boolean),
-          optimizedForFrequentAttach: S.optional(S.Boolean),
-          availabilityPolicy: S.optional(__S(87, __c10, 7)),
-          maxShares: S.optional(S.Number),
-          networkAccessPolicy: S.optional(S.String),
-          diskAccessId: S.optional(S.String),
-          diskIOPSReadOnly: S.optional(S.Number),
-          diskMBpsReadOnly: S.optional(S.Number),
-          logicalSectorSize: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "ManagedDiskProperties" });
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          vmScaleSetName: S.String.pipe(T.Label()),
+          instanceId: S.String.pipe(T.Label()),
+          _expand: S.optional(S.String.pipe(T.Query("$expand"))),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}/virtualMachines/{instanceId}/extensions",
+            code: 200,
+            apiVersion: "2026-04-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListVirtualMachineScaleSetVMExtensionsRequest",
+      });
     case 1:
-      return S.suspend(() =>
-        S.Struct({
-          managedDiskProperties: S.optional(__S(88, __c11, 0)),
-        }),
-      ).annotate({ identifier: "AdditionalDiskProperties" });
+      return S.Array(__S(9824, __c307, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          id: S.optional(S.String),
-          storageAccountType: S.optional(S.String),
-          diskEncryptionSet: S.optional(__S(5, __c0, 5)),
-          securityProfile: S.optional(__S(86, __c10, 6)),
-          additionalDiskProperties: S.optional(__S(89, __c11, 1)),
+          value: S.optional(__S(1601, __c50, 1)),
         }),
-      ).annotate({ identifier: "ManagedDiskParameters" });
+      ).annotate({
+        identifier: "VirtualMachineScaleSetVMExtensionsListResult",
+      });
+  }
+}
+function __c51(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          vmScaleSetName: S.String.pipe(T.Label()),
+          instanceId: S.String.pipe(T.Label()),
+          _expand: S.optional(S.String.pipe(T.Query("$expand"))),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}/virtualMachines/{instanceId}/runCommands",
+            code: 200,
+            apiVersion: "2026-04-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListVirtualMachineScaleSetVMRunCommandsRequest",
+      });
+  }
+}
+function __c52(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          virtualMachineScaleSetName: S.String.pipe(T.Label()),
+          _filter: S.optional(S.String.pipe(T.Query("$filter"))),
+          _select: S.optional(S.String.pipe(T.Query("$select"))),
+          _expand: S.optional(S.String.pipe(T.Query("$expand"))),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{virtualMachineScaleSetName}/virtualMachines",
+            code: 200,
+            apiVersion: "2026-04-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListVirtualMachineScaleSetVMsRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(5184, __c162, 0)),
+          tags: S.optional(__S(5152, __c161, 0)),
+          location: S.String,
+          properties: S.optional(__S(9634, __c301, 2)),
+          instanceId: S.optional(S.String),
+          sku: S.optional(__S(5344, __c167, 0)),
+          plan: S.optional(__S(8135, __c254, 7)),
+          resources: S.optional(__S(8193, __c256, 1)),
+          zones: S.optional(__S(6400, __c200, 0)),
+          identity: S.optional(__S(8270, __c258, 14)),
+          etag: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "VirtualMachineScaleSetVM" });
+    case 2:
+      return S.Array(__S(1665, __c52, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          diskEncryptionSet: S.optional(__S(5, __c0, 5)),
-          type: S.optional(S.String),
+          value: __S(1666, __c52, 2),
+          nextLink: S.optional(S.String),
         }),
-      ).annotate({ identifier: "RestorePointEncryption" });
-    case 4:
+      ).annotate({
+        identifier: "VirtualMachineScaleSetVMListResult",
+      });
+  }
+}
+function __c53(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          encryption: S.optional(__S(91, __c11, 3)),
-          sourceDiskRestorePoint: S.optional(__S(84, __c10, 4)),
+          subscriptionId: S.String.pipe(T.Label()),
+          location: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/providers/Microsoft.Compute/locations/{location}/vmSizes",
+            code: 200,
+            apiVersion: "2026-04-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListVirtualMachineSizesRequest",
+      });
+  }
+}
+function __c54(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          vmScaleSetName: S.String.pipe(T.Label()),
+          instanceIds: __S(64, __c2, 0),
+          targetZone: S.optional(S.String),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}/migrateVMAvailabilityZone",
+            code: 200,
+            apiVersion: "2026-04-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "MigrateVirtualMachineScaleSetVMAvailabilityZoneRequest",
+      });
+  }
+}
+function __c55(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          vmName: S.String.pipe(T.Label()),
+          targetZone: S.optional(S.String),
+          targetFaultDomain: S.optional(S.Number),
+          targetVMSize: S.optional(S.String),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachines/{vmName}/migrateToVirtualMachineScaleSet",
+            code: 200,
+            apiVersion: "2026-04-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "MigrateVirtualMachineToVMScaleSetRequest",
+      });
+  }
+}
+function __c56(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          sku: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ResourceSize" });
+    case 1:
+      return S.Array(__S(1792, __c56, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          location: S.String.pipe(T.Label()),
+          desiredLocations: S.optional(__S(6400, __c200, 0)),
+          desiredSizes: S.optional(__S(1793, __c56, 1)),
+          desiredCount: S.optional(S.Number),
+          availabilityZones: S.optional(S.Boolean),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/subscriptions/{subscriptionId}/providers/Microsoft.Compute/locations/{location}/placementScores/spot/generate",
+            code: 200,
+            apiVersion: "2025-06-05",
+          }),
+        ),
+      ).annotate({
+        identifier: "PostSpotPlacementScoreRequest",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          sku: S.optional(S.String),
+          region: S.optional(S.String),
+          availabilityZone: S.optional(S.String),
+          score: S.optional(S.String),
+          isQuotaAvailable: S.optional(S.Boolean),
+        }),
+      ).annotate({ identifier: "PlacementScore" });
+    case 4:
+      return S.Array(__S(1795, __c56, 3));
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          desiredLocations: S.optional(__S(6400, __c200, 0)),
+          desiredSizes: S.optional(__S(1793, __c56, 1)),
+          desiredCount: S.optional(S.Number),
+          availabilityZones: S.optional(S.Boolean),
+          placementScores: S.optional(__S(1796, __c56, 4)),
+        }),
+      ).annotate({
+        identifier: "SpotPlacementScoresResponse",
+      });
+  }
+}
+function __c57(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          proximityPlacementGroupType: S.optional(S.String),
+          colocationStatus: S.optional(__S(5248, __c164, 0)),
+          intent: S.optional(__S(7554, __c236, 2)),
+        }),
+      ).annotate({
+        identifier: "ProximityPlacementGroupPropertiesInput",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          proximityPlacementGroupName: S.String.pipe(T.Label()),
+          tags: S.optional(__S(5152, __c161, 0)),
+          location: S.String,
+          properties: S.optional(__S(1824, __c57, 0)),
+          zones: S.optional(__S(6400, __c200, 0)),
+        }).pipe(
+          T.Http({
+            method: "PUT",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/proximityPlacementGroups/{proximityPlacementGroupName}",
+            code: 200,
+            apiVersion: "2026-04-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "ProximityPlacementGroupsCreateOrUpdateRequest",
+      });
+  }
+}
+function __c58(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          hostGroupName: S.String.pipe(T.Label()),
+          hostName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/hostGroups/{hostGroupName}/hosts/{hostName}/redeploy",
+            code: 200,
+            apiVersion: "2026-04-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "RedeployDedicatedHostRequest",
+      });
+  }
+}
+function __c59(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          vmName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachines/{vmName}/redeploy",
+            code: 200,
+            apiVersion: "2026-04-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "RedeployVirtualMachineRequest",
+      });
+  }
+}
+function __c60(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          encryption: S.optional(__S(1985, __c62, 1)),
+          sourceDiskRestorePoint: S.optional(__S(1952, __c61, 0)),
         }),
       ).annotate({
         identifier: "DiskRestorePointAttributesInput",
       });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          managedDisk: S.optional(__S(90, __c11, 2)),
-          diskRestorePoint: S.optional(__S(92, __c11, 4)),
+          managedDisk: S.optional(__S(2112, __c66, 0)),
+          diskRestorePoint: S.optional(__S(1920, __c60, 0)),
         }),
       ).annotate({
         identifier: "RestorePointSourceVMOSDiskInput",
       });
-    case 6:
-      return S.Array(__S(93, __c11, 5));
-    case 7:
+    case 2:
+      return S.Array(__S(1921, __c60, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          osDisk: S.optional(__S(93, __c11, 5)),
-          dataDisks: S.optional(__S(94, __c11, 6)),
+          osDisk: S.optional(__S(1921, __c60, 1)),
+          dataDisks: S.optional(__S(1922, __c60, 2)),
         }),
       ).annotate({
         identifier: "RestorePointSourceVMStorageProfileInput",
       });
-  }
-}
-function __c12(j: number): any {
-  switch (j) {
-    case 0:
+    case 4:
       return S.suspend(() =>
         S.Struct({
-          storageProfile: S.optional(__S(95, __c11, 7)),
+          storageProfile: S.optional(__S(1923, __c60, 3)),
         }),
       ).annotate({
         identifier: "RestorePointSourceMetadataInput",
       });
-    case 1:
+    case 5:
       return S.suspend(() =>
         S.Struct({
-          excludeDisks: S.optional(__S(85, __c10, 5)),
-          sourceMetadata: S.optional(__S(96, __c12, 0)),
+          excludeDisks: S.optional(__S(1984, __c62, 0)),
+          sourceMetadata: S.optional(__S(1924, __c60, 4)),
           consistencyMode: S.optional(S.String),
           timeCreated: S.optional(S.String),
-          sourceRestorePoint: S.optional(__S(84, __c10, 4)),
+          sourceRestorePoint: S.optional(__S(1952, __c61, 0)),
           instantAccessDurationMinutes: S.optional(S.Number),
         }),
       ).annotate({
         identifier: "RestorePointPropertiesInput",
       });
-    case 2:
+    case 6:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           restorePointCollectionName: S.String.pipe(T.Label()),
           restorePointName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(97, __c12, 1)),
+          properties: S.optional(__S(1925, __c60, 5)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -14484,99 +15166,212 @@ function __c12(j: number): any {
       ).annotate({
         identifier: "CreateRestorePointRequest",
       });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          vCPUsAvailable: S.optional(S.Number),
-          vCPUsPerCore: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "VMSizeProperties" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          vmSize: S.optional(S.String),
-          vmSizeProperties: S.optional(__S(99, __c12, 3)),
-          processorMode: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "HardwareProfile" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          secretUrl: S.String,
-          sourceVault: __S(5, __c0, 5),
-        }),
-      ).annotate({ identifier: "KeyVaultSecretReference" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          keyUrl: S.String,
-          sourceVault: __S(5, __c0, 5),
-        }),
-      ).annotate({ identifier: "KeyVaultKeyReference" });
     case 7:
       return S.suspend(() =>
         S.Struct({
-          diskEncryptionKey: S.optional(__S(101, __c12, 5)),
-          keyEncryptionKey: S.optional(__S(102, __c12, 6)),
-          enabled: S.optional(S.Boolean),
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(5184, __c162, 0)),
+          properties: S.optional(__S(1996, __c62, 12)),
         }),
-      ).annotate({ identifier: "DiskEncryptionSettings" });
+      ).annotate({
+        identifier: "CreateRestorePointResponse",
+      });
   }
 }
-function __c13(j: number): any {
+function __c61(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
-          encryption: S.optional(__S(91, __c11, 3)),
-          sourceDiskRestorePoint: S.optional(__S(84, __c10, 4)),
+        }),
+      ).annotate({ identifier: "ApiEntityReference" });
+  }
+}
+function __c62(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(1952, __c61, 0));
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          diskEncryptionSet: S.optional(__S(5216, __c163, 0)),
+          type: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "RestorePointEncryption" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          encryption: S.optional(__S(1985, __c62, 1)),
+          sourceDiskRestorePoint: S.optional(__S(1952, __c61, 0)),
         }),
       ).annotate({
         identifier: "DiskRestorePointAttributes",
       });
-    case 1:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           osType: S.optional(S.String),
-          encryptionSettings: S.optional(__S(103, __c12, 7)),
+          encryptionSettings: S.optional(__S(2177, __c68, 1)),
           name: S.optional(S.String),
           caching: S.optional(S.String),
           diskSizeGB: S.optional(S.Number),
-          managedDisk: S.optional(__S(90, __c11, 2)),
-          diskRestorePoint: S.optional(__S(104, __c13, 0)),
+          managedDisk: S.optional(__S(2112, __c66, 0)),
+          diskRestorePoint: S.optional(__S(1986, __c62, 2)),
           writeAcceleratorEnabled: S.optional(S.Boolean),
         }),
       ).annotate({
         identifier: "RestorePointSourceVMOSDisk",
       });
-    case 2:
+    case 4:
       return S.suspend(() =>
         S.Struct({
           lun: S.optional(S.Number),
           name: S.optional(S.String),
           caching: S.optional(S.String),
           diskSizeGB: S.optional(S.Number),
-          managedDisk: S.optional(__S(90, __c11, 2)),
-          diskRestorePoint: S.optional(__S(104, __c13, 0)),
+          managedDisk: S.optional(__S(2112, __c66, 0)),
+          diskRestorePoint: S.optional(__S(1986, __c62, 2)),
           writeAcceleratorEnabled: S.optional(S.Boolean),
         }),
       ).annotate({
         identifier: "RestorePointSourceVMDataDisk",
       });
-    case 3:
-      return S.Array(__S(106, __c13, 2));
-    case 4:
+    case 5:
+      return S.Array(__S(1988, __c62, 4));
+    case 6:
       return S.suspend(() =>
         S.Struct({
-          osDisk: S.optional(__S(105, __c13, 1)),
-          dataDisks: S.optional(__S(107, __c13, 3)),
+          osDisk: S.optional(__S(1987, __c62, 3)),
+          dataDisks: S.optional(__S(1989, __c62, 5)),
           diskControllerType: S.optional(S.String),
         }),
       ).annotate({
         identifier: "RestorePointSourceVMStorageProfile",
       });
-    case 5:
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          hardwareProfile: S.optional(__S(2144, __c67, 0)),
+          storageProfile: S.optional(__S(1990, __c62, 6)),
+          osProfile: S.optional(__S(2145, __c67, 1)),
+          diagnosticsProfile: S.optional(__S(2099, __c65, 19)),
+          licenseType: S.optional(S.String),
+          vmId: S.optional(S.String),
+          securityProfile: S.optional(__S(2104, __c65, 24)),
+          location: S.optional(S.String),
+          userData: S.optional(S.String),
+          hyperVGeneration: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "RestorePointSourceMetadata",
+      });
+    case 8:
+      return S.suspend(() =>
+        S.Struct({
+          status: S.optional(__S(5248, __c164, 0)),
+          completionPercent: S.optional(S.Number),
+        }),
+      ).annotate({
+        identifier: "DiskRestorePointReplicationStatus",
+      });
+    case 9:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          snapshotAccessState: S.optional(S.String),
+          replicationStatus: S.optional(__S(1992, __c62, 8)),
+        }),
+      ).annotate({
+        identifier: "DiskRestorePointInstanceView",
+      });
+    case 10:
+      return S.Array(__S(1993, __c62, 9));
+    case 11:
+      return S.suspend(() =>
+        S.Struct({
+          diskRestorePoints: S.optional(__S(1994, __c62, 10)),
+          statuses: S.optional(__S(5280, __c165, 0)),
+        }),
+      ).annotate({ identifier: "RestorePointInstanceView" });
+    case 12:
+      return S.suspend(() =>
+        S.Struct({
+          excludeDisks: S.optional(__S(1984, __c62, 0)),
+          sourceMetadata: S.optional(__S(1991, __c62, 7)),
+          provisioningState: S.optional(S.String),
+          consistencyMode: S.optional(S.String),
+          timeCreated: S.optional(S.String),
+          sourceRestorePoint: S.optional(__S(1952, __c61, 0)),
+          instanceView: S.optional(__S(1995, __c62, 11)),
+          instantAccessDurationMinutes: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "RestorePointProperties" });
+  }
+}
+function __c63(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          secretUrl: S.String,
+          sourceVault: __S(5216, __c163, 0),
+        }),
+      ).annotate({ identifier: "KeyVaultSecretReference" });
+  }
+}
+function __c64(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          securityEncryptionType: S.optional(S.String),
+          diskEncryptionSet: S.optional(__S(5216, __c163, 0)),
+        }),
+      ).annotate({ identifier: "VMDiskSecurityProfile" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          actionOnDiskDelay: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "DiskAvailabilityPolicy" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          tier: S.optional(S.String),
+          burstingEnabled: S.optional(S.Boolean),
+          performancePlus: S.optional(S.Boolean),
+          optimizedForFrequentAttach: S.optional(S.Boolean),
+          availabilityPolicy: S.optional(__S(2049, __c64, 1)),
+          maxShares: S.optional(S.Number),
+          networkAccessPolicy: S.optional(S.String),
+          diskAccessId: S.optional(S.String),
+          diskIOPSReadOnly: S.optional(S.Number),
+          diskMBpsReadOnly: S.optional(S.Number),
+          logicalSectorSize: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "ManagedDiskProperties" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          managedDiskProperties: S.optional(__S(2050, __c64, 2)),
+        }),
+      ).annotate({ identifier: "AdditionalDiskProperties" });
+  }
+}
+function __c65(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          vCPUsAvailable: S.optional(S.Number),
+          vCPUsPerCore: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "VMSizeProperties" });
+    case 1:
       return S.suspend(() =>
         S.Struct({
           passName: S.optional(S.String),
@@ -14587,9 +15382,9 @@ function __c13(j: number): any {
       ).annotate({
         identifier: "AdditionalUnattendContent",
       });
-    case 6:
-      return S.Array(__S(109, __c13, 5));
-    case 7:
+    case 2:
+      return S.Array(__S(2081, __c65, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
           rebootSetting: S.optional(S.String),
@@ -14598,146 +15393,120 @@ function __c13(j: number): any {
       ).annotate({
         identifier: "WindowsVMGuestPatchAutomaticByPlatformSettings",
       });
-  }
-}
-function __c14(j: number): any {
-  switch (j) {
-    case 0:
+    case 4:
       return S.suspend(() =>
         S.Struct({
           patchMode: S.optional(S.String),
           enableHotpatching: S.optional(S.Boolean),
           assessmentMode: S.optional(S.String),
-          automaticByPlatformSettings: S.optional(__S(111, __c13, 7)),
+          automaticByPlatformSettings: S.optional(__S(2083, __c65, 3)),
         }),
       ).annotate({ identifier: "PatchSettings" });
-    case 1:
+    case 5:
       return S.suspend(() =>
         S.Struct({
           protocol: S.optional(S.String),
           certificateUrl: S.optional(S.String),
         }),
       ).annotate({ identifier: "WinRMListener" });
-    case 2:
-      return S.Array(__S(113, __c14, 1));
-    case 3:
+    case 6:
+      return S.Array(__S(2085, __c65, 5));
+    case 7:
       return S.suspend(() =>
         S.Struct({
-          listeners: S.optional(__S(114, __c14, 2)),
+          listeners: S.optional(__S(2086, __c65, 6)),
         }),
       ).annotate({ identifier: "WinRMConfiguration" });
-    case 4:
+    case 8:
       return S.suspend(() =>
         S.Struct({
           provisionVMAgent: S.optional(S.Boolean),
           enableAutomaticUpdates: S.optional(S.Boolean),
           timeZone: S.optional(S.String),
-          additionalUnattendContent: S.optional(__S(110, __c13, 6)),
-          patchSettings: S.optional(__S(112, __c14, 0)),
-          winRM: S.optional(__S(115, __c14, 3)),
+          additionalUnattendContent: S.optional(__S(2082, __c65, 2)),
+          patchSettings: S.optional(__S(2084, __c65, 4)),
+          winRM: S.optional(__S(2087, __c65, 7)),
           enableVMAgentPlatformUpdates: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "WindowsConfiguration" });
-    case 5:
+    case 9:
       return S.suspend(() =>
         S.Struct({
           path: S.optional(S.String),
           keyData: S.optional(S.String),
         }),
       ).annotate({ identifier: "SshPublicKey" });
-    case 6:
-      return S.Array(__S(117, __c14, 5));
-    case 7:
+    case 10:
+      return S.Array(__S(2089, __c65, 9));
+    case 11:
       return S.suspend(() =>
         S.Struct({
-          publicKeys: S.optional(__S(118, __c14, 6)),
+          publicKeys: S.optional(__S(2090, __c65, 10)),
         }),
       ).annotate({ identifier: "SshConfiguration" });
-  }
-}
-function __c15(j: number): any {
-  switch (j) {
-    case 0:
+    case 12:
       return S.suspend(() =>
         S.Struct({
           patchMode: S.optional(S.String),
           assessmentMode: S.optional(S.String),
-          automaticByPlatformSettings: S.optional(__S(111, __c13, 7)),
+          automaticByPlatformSettings: S.optional(__S(2083, __c65, 3)),
         }),
       ).annotate({ identifier: "LinuxPatchSettings" });
-    case 1:
+    case 13:
       return S.suspend(() =>
         S.Struct({
           disablePasswordAuthentication: S.optional(S.Boolean),
-          ssh: S.optional(__S(119, __c14, 7)),
+          ssh: S.optional(__S(2091, __c65, 11)),
           provisionVMAgent: S.optional(S.Boolean),
-          patchSettings: S.optional(__S(120, __c15, 0)),
+          patchSettings: S.optional(__S(2092, __c65, 12)),
           enableVMAgentPlatformUpdates: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "LinuxConfiguration" });
-    case 2:
+    case 14:
       return S.suspend(() =>
         S.Struct({
           certificateUrl: S.optional(S.String),
           certificateStore: S.optional(S.String),
         }),
       ).annotate({ identifier: "VaultCertificate" });
-    case 3:
-      return S.Array(__S(122, __c15, 2));
-    case 4:
+    case 15:
+      return S.Array(__S(2094, __c65, 14));
+    case 16:
       return S.suspend(() =>
         S.Struct({
-          sourceVault: S.optional(__S(5, __c0, 5)),
-          vaultCertificates: S.optional(__S(123, __c15, 3)),
+          sourceVault: S.optional(__S(5216, __c163, 0)),
+          vaultCertificates: S.optional(__S(2095, __c65, 15)),
         }),
       ).annotate({ identifier: "VaultSecretGroup" });
-    case 5:
-      return S.Array(__S(124, __c15, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          computerName: S.optional(S.String),
-          adminUsername: S.optional(S.String),
-          adminPassword: S.optional(S.String.pipe(T.SensitiveValue({}))),
-          customData: S.optional(S.String),
-          windowsConfiguration: S.optional(__S(116, __c14, 4)),
-          linuxConfiguration: S.optional(__S(121, __c15, 1)),
-          secrets: S.optional(__S(125, __c15, 5)),
-          allowExtensionOperations: S.optional(S.Boolean),
-          requireGuestProvisionSignal: S.optional(S.Boolean),
-        }),
-      ).annotate({ identifier: "OSProfile" });
-    case 7:
+    case 17:
+      return S.Array(__S(2096, __c65, 16));
+    case 18:
       return S.suspend(() =>
         S.Struct({
           enabled: S.optional(S.Boolean),
           storageUri: S.optional(S.String),
         }),
       ).annotate({ identifier: "BootDiagnostics" });
-  }
-}
-function __c16(j: number): any {
-  switch (j) {
-    case 0:
+    case 19:
       return S.suspend(() =>
         S.Struct({
-          bootDiagnostics: S.optional(__S(127, __c15, 7)),
+          bootDiagnostics: S.optional(__S(2098, __c65, 18)),
         }),
       ).annotate({ identifier: "DiagnosticsProfile" });
-    case 1:
+    case 20:
       return S.suspend(() =>
         S.Struct({
           secureBootEnabled: S.optional(S.Boolean),
           vTpmEnabled: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "UefiSettings" });
-    case 2:
+    case 21:
       return S.suspend(() =>
         S.Struct({
           userAssignedIdentityResourceId: S.optional(S.String),
         }),
       ).annotate({ identifier: "EncryptionIdentity" });
-    case 3:
+    case 22:
       return S.suspend(() =>
         S.Struct({
           mode: S.optional(S.String),
@@ -14745,118 +15514,357 @@ function __c16(j: number): any {
           useLocalFileRules: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "HostEndpointSettings" });
-    case 4:
+    case 23:
       return S.suspend(() =>
         S.Struct({
           enabled: S.optional(S.Boolean),
           mode: S.optional(S.String),
           keyIncarnationId: S.optional(S.Number),
-          wireServer: S.optional(__S(131, __c16, 3)),
-          imds: S.optional(__S(131, __c16, 3)),
+          wireServer: S.optional(__S(2102, __c65, 22)),
+          imds: S.optional(__S(2102, __c65, 22)),
           addProxyAgentExtension: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "ProxyAgentSettings" });
-    case 5:
+    case 24:
       return S.suspend(() =>
         S.Struct({
-          uefiSettings: S.optional(__S(129, __c16, 1)),
+          uefiSettings: S.optional(__S(2100, __c65, 20)),
           encryptionAtHost: S.optional(S.Boolean),
           securityType: S.optional(S.String),
-          encryptionIdentity: S.optional(__S(130, __c16, 2)),
-          proxyAgentSettings: S.optional(__S(132, __c16, 4)),
+          encryptionIdentity: S.optional(__S(2101, __c65, 21)),
+          proxyAgentSettings: S.optional(__S(2103, __c65, 23)),
         }),
       ).annotate({ identifier: "SecurityProfile" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          hardwareProfile: S.optional(__S(100, __c12, 4)),
-          storageProfile: S.optional(__S(108, __c13, 4)),
-          osProfile: S.optional(__S(126, __c15, 6)),
-          diagnosticsProfile: S.optional(__S(128, __c16, 0)),
-          licenseType: S.optional(S.String),
-          vmId: S.optional(S.String),
-          securityProfile: S.optional(__S(133, __c16, 5)),
-          location: S.optional(S.String),
-          userData: S.optional(S.String),
-          hyperVGeneration: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "RestorePointSourceMetadata",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          status: S.optional(__S(15, __c1, 7)),
-          completionPercent: S.optional(S.Number),
-        }),
-      ).annotate({
-        identifier: "DiskRestorePointReplicationStatus",
-      });
   }
 }
-function __c17(j: number): any {
+function __c66(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
-          snapshotAccessState: S.optional(S.String),
-          replicationStatus: S.optional(__S(135, __c16, 7)),
+          storageAccountType: S.optional(S.String),
+          diskEncryptionSet: S.optional(__S(5216, __c163, 0)),
+          securityProfile: S.optional(__S(2048, __c64, 0)),
+          additionalDiskProperties: S.optional(__S(2051, __c64, 3)),
+        }),
+      ).annotate({ identifier: "ManagedDiskParameters" });
+  }
+}
+function __c67(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          vmSize: S.optional(S.String),
+          vmSizeProperties: S.optional(__S(2080, __c65, 0)),
+          processorMode: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "HardwareProfile" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          computerName: S.optional(S.String),
+          adminUsername: S.optional(S.String),
+          adminPassword: S.optional(S.String.pipe(T.SensitiveValue({}))),
+          customData: S.optional(S.String),
+          windowsConfiguration: S.optional(__S(2088, __c65, 8)),
+          linuxConfiguration: S.optional(__S(2093, __c65, 13)),
+          secrets: S.optional(__S(2097, __c65, 17)),
+          allowExtensionOperations: S.optional(S.Boolean),
+          requireGuestProvisionSignal: S.optional(S.Boolean),
+        }),
+      ).annotate({ identifier: "OSProfile" });
+  }
+}
+function __c68(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          keyUrl: S.String,
+          sourceVault: __S(5216, __c163, 0),
+        }),
+      ).annotate({ identifier: "KeyVaultKeyReference" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          diskEncryptionKey: S.optional(__S(2016, __c63, 0)),
+          keyEncryptionKey: S.optional(__S(2176, __c68, 0)),
+          enabled: S.optional(S.Boolean),
+        }),
+      ).annotate({ identifier: "DiskEncryptionSettings" });
+  }
+}
+function __c69(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          vmScaleSetName: S.String.pipe(T.Label()),
+          instanceIds: S.optional(__S(6400, __c200, 0)),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}/redeploy",
+            code: 200,
+            apiVersion: "2026-04-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "RedeployVirtualMachineScaleSetRequest",
+      });
+  }
+}
+function __c70(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          vmScaleSetName: S.String.pipe(T.Label()),
+          instanceId: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}/virtualMachines/{instanceId}/redeploy",
+            code: 200,
+            apiVersion: "2026-04-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "RedeployVirtualMachineScaleSetVMRequest",
+      });
+  }
+}
+function __c71(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          hostGroupName: S.String.pipe(T.Label()),
+          hostName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/hostGroups/{hostGroupName}/hosts/{hostName}/restart",
+            code: 200,
+            apiVersion: "2026-04-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "RestartDedicatedHostRequest",
+      });
+  }
+}
+function __c72(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          vmName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachines/{vmName}/restart",
+            code: 200,
+            apiVersion: "2026-04-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "RestartVirtualMachineRequest",
+      });
+  }
+}
+function __c73(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          vmScaleSetName: S.String.pipe(T.Label()),
+          instanceIds: S.optional(__S(6400, __c200, 0)),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}/restart",
+            code: 200,
+            apiVersion: "2026-04-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "RestartVirtualMachineScaleSetRequest",
+      });
+  }
+}
+function __c74(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          vmScaleSetName: S.String.pipe(T.Label()),
+          instanceId: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}/virtualMachines/{instanceId}/restart",
+            code: 200,
+            apiVersion: "2026-04-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "RestartVirtualMachineScaleSetVMRequest",
+      });
+  }
+}
+function __c75(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          restorePointCollectionName: S.String.pipe(T.Label()),
+          tags: S.optional(__S(5152, __c161, 0)),
+          location: S.String,
+          properties: S.optional(__S(2432, __c76, 0)),
+        }).pipe(
+          T.Http({
+            method: "PUT",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/restorePointCollections/{restorePointCollectionName}",
+            code: 200,
+            apiVersion: "2026-04-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "RestorePointCollectionsCreateOrUpdateRequest",
+      });
+  }
+}
+function __c76(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          source: S.optional(__S(5216, __c163, 0)),
+          instantAccess: S.optional(S.Boolean),
         }),
       ).annotate({
-        identifier: "DiskRestorePointInstanceView",
+        identifier: "RestorePointCollectionPropertiesInput",
+      });
+  }
+}
+function __c77(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          vmName: S.String.pipe(T.Label()),
+          commandId: S.String,
+          script: S.optional(__S(6400, __c200, 0)),
+          parameters: S.optional(__S(8449, __c264, 1)),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachines/{vmName}/runCommand",
+            code: 200,
+            apiVersion: "2026-04-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "RunVirtualMachineCommandRequest",
+      });
+  }
+}
+function __c78(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          value: S.optional(__S(5280, __c165, 0)),
+        }),
+      ).annotate({ identifier: "RunCommandResult" });
+  }
+}
+function __c79(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          vmScaleSetName: S.String.pipe(T.Label()),
+          instanceId: S.String.pipe(T.Label()),
+          commandId: S.String,
+          script: S.optional(__S(6400, __c200, 0)),
+          parameters: S.optional(__S(8449, __c264, 1)),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}/virtualMachines/{instanceId}/runCommand",
+            code: 200,
+            apiVersion: "2026-04-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "RunVirtualMachineScaleSetVMCommandRequest",
+      });
+  }
+}
+function __c80(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          zone: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "VMScaleSetScaleOutInputProperties",
       });
     case 1:
-      return S.Array(__S(136, __c17, 0));
-    case 2:
       return S.suspend(() =>
         S.Struct({
-          diskRestorePoints: S.optional(__S(137, __c17, 1)),
-          statuses: S.optional(__S(16, __c2, 0)),
-        }),
-      ).annotate({ identifier: "RestorePointInstanceView" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          excludeDisks: S.optional(__S(85, __c10, 5)),
-          sourceMetadata: S.optional(__S(134, __c16, 6)),
-          provisioningState: S.optional(S.String),
-          consistencyMode: S.optional(S.String),
-          timeCreated: S.optional(S.String),
-          sourceRestorePoint: S.optional(__S(84, __c10, 4)),
-          instanceView: S.optional(__S(138, __c17, 2)),
-          instantAccessDurationMinutes: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "RestorePointProperties" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(14, __c1, 6)),
-          properties: S.optional(__S(139, __c17, 3)),
-        }),
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          vmScaleSetName: S.String.pipe(T.Label()),
+          capacity: S.Number,
+          properties: S.optional(__S(2560, __c80, 0)),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}/scaleOut",
+            code: 200,
+            apiVersion: "2026-04-01",
+          }),
+        ),
       ).annotate({
-        identifier: "CreateRestorePointResponse",
+        identifier: "ScaleVirtualMachineScaleSetOutRequest",
       });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          publicKey: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "SshPublicKeyResourceProperties",
-      });
-    case 6:
+  }
+}
+function __c81(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           sshPublicKeyName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(4, __c0, 4)),
+          tags: S.optional(__S(5152, __c161, 0)),
           location: S.String,
-          properties: S.optional(__S(141, __c17, 5)),
+          properties: S.optional(__S(2656, __c83, 0)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -14868,23 +15876,344 @@ function __c17(j: number): any {
       ).annotate({
         identifier: "CreateSshPublicKeyRequest",
       });
-    case 7:
+  }
+}
+function __c82(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(14, __c1, 6)),
-          tags: S.optional(__S(4, __c0, 4)),
+          systemData: S.optional(__S(5184, __c162, 0)),
+          tags: S.optional(__S(5152, __c161, 0)),
           location: S.String,
-          properties: S.optional(__S(141, __c17, 5)),
+          properties: S.optional(__S(2656, __c83, 0)),
         }),
       ).annotate({
         identifier: "CreateSshPublicKeyResponse",
       });
   }
 }
-function __c18(j: number): any {
+function __c83(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          publicKey: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "SshPublicKeyResourceProperties",
+      });
+  }
+}
+function __c84(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          vmScaleSetName: S.String.pipe(T.Label()),
+          serviceName: S.String,
+          action: S.String,
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}/setOrchestrationServiceState",
+            code: 200,
+            apiVersion: "2026-04-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "SetVirtualMachineScaleSetOrchestrationServiceStateRequest",
+      });
+  }
+}
+function __c85(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          availabilitySetName: S.String.pipe(T.Label()),
+          virtualMachineScaleSetFlexible: __S(5216, __c163, 0),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/availabilitySets/{availabilitySetName}/startMigrationToVirtualMachineScaleSet",
+            code: 200,
+            apiVersion: "2026-04-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "StartAvailabilitySetMigrationToVirtualMachineScaleSetRequest",
+      });
+  }
+}
+function __c86(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          vmName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachines/{vmName}/start",
+            code: 200,
+            apiVersion: "2026-04-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "StartVirtualMachineRequest",
+      });
+  }
+}
+function __c87(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          vmScaleSetName: S.String.pipe(T.Label()),
+          instanceIds: S.optional(__S(6400, __c200, 0)),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}/start",
+            code: 200,
+            apiVersion: "2026-04-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "StartVirtualMachineScaleSetRequest",
+      });
+  }
+}
+function __c88(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          vmScaleSetName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}/extensionRollingUpgrade",
+            code: 200,
+            apiVersion: "2026-04-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "StartVirtualMachineScaleSetRollingUpgradeExtensionUpgradeRequest",
+      });
+  }
+}
+function __c89(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          vmScaleSetName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}/osRollingUpgrade",
+            code: 200,
+            apiVersion: "2026-04-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "StartVirtualMachineScaleSetRollingUpgradeOSUpgradeRequest",
+      });
+  }
+}
+function __c90(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          vmScaleSetName: S.String.pipe(T.Label()),
+          instanceId: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}/virtualMachines/{instanceId}/start",
+            code: 200,
+            apiVersion: "2026-04-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "StartVirtualMachineScaleSetVMRequest",
+      });
+  }
+}
+function __c91(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          availabilitySetName: S.String.pipe(T.Label()),
+          tags: S.optional(__S(5152, __c161, 0)),
+          properties: S.optional(__S(5024, __c157, 0)),
+          sku: S.optional(__S(5344, __c167, 0)),
+        }).pipe(
+          T.Http({
+            method: "PATCH",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/availabilitySets/{availabilitySetName}",
+            code: 200,
+            apiVersion: "2026-04-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "UpdateAvailabilitySetRequest",
+      });
+  }
+}
+function __c92(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          capacityReservationGroupName: S.String.pipe(T.Label()),
+          capacityReservationName: S.String.pipe(T.Label()),
+          tags: S.optional(__S(5152, __c161, 0)),
+          properties: S.optional(__S(10049, __c314, 1)),
+          sku: S.optional(__S(5344, __c167, 0)),
+        }).pipe(
+          T.Http({
+            method: "PATCH",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/capacityReservationGroups/{capacityReservationGroupName}/capacityReservations/{capacityReservationName}",
+            code: 200,
+            apiVersion: "2026-04-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "UpdateCapacityReservationRequest",
+      });
+  }
+}
+function __c93(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          capacityReservationGroupName: S.String.pipe(T.Label()),
+          tags: S.optional(__S(5152, __c161, 0)),
+          properties: S.optional(__S(9344, __c292, 0)),
+        }).pipe(
+          T.Http({
+            method: "PATCH",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/capacityReservationGroups/{capacityReservationGroupName}",
+            code: 200,
+            apiVersion: "2026-04-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "UpdateCapacityReservationGroupRequest",
+      });
+  }
+}
+function __c94(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          hostGroupName: S.String.pipe(T.Label()),
+          tags: S.optional(__S(5152, __c161, 0)),
+          location: S.String,
+          properties: S.optional(__S(3040, __c95, 0)),
+          zones: S.optional(__S(6400, __c200, 0)),
+        }).pipe(
+          T.Http({
+            method: "PUT",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/hostGroups/{hostGroupName}",
+            code: 200,
+            apiVersion: "2026-04-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "DedicatedHostGroupsCreateOrUpdateRequest",
+      });
+  }
+}
+function __c95(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          platformFaultDomainCount: S.Number,
+          supportAutomaticPlacement: S.optional(S.Boolean),
+          additionalCapabilities: S.optional(__S(3136, __c98, 0)),
+        }),
+      ).annotate({
+        identifier: "DedicatedHostGroupPropertiesInput",
+      });
+  }
+}
+function __c96(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          vmSize: S.optional(S.String),
+          count: S.optional(S.Number),
+        }),
+      ).annotate({
+        identifier: "DedicatedHostAllocatableVM",
+      });
+    case 1:
+      return S.Array(__S(3072, __c96, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          allocatableVMs: S.optional(__S(3073, __c96, 1)),
+        }),
+      ).annotate({
+        identifier: "DedicatedHostAvailableCapacity",
+      });
+  }
+}
+function __c97(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(5184, __c162, 0)),
+          tags: S.optional(__S(5152, __c161, 0)),
+          location: S.String,
+          properties: S.optional(__S(3140, __c98, 4)),
+          zones: S.optional(__S(6400, __c200, 0)),
+        }),
+      ).annotate({
+        identifier: "DedicatedHostGroupsCreateOrUpdateResponse",
+      });
+  }
+}
+function __c98(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -14897,126 +16226,435 @@ function __c18(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          platformFaultDomainCount: S.Number,
-          supportAutomaticPlacement: S.optional(S.Boolean),
-          additionalCapabilities: S.optional(__S(144, __c18, 0)),
-        }),
-      ).annotate({
-        identifier: "DedicatedHostGroupPropertiesInput",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          hostGroupName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(4, __c0, 4)),
-          location: S.String,
-          properties: S.optional(__S(145, __c18, 1)),
-          zones: S.optional(__S(23, __c2, 7)),
-        }).pipe(
-          T.Http({
-            method: "PUT",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/hostGroups/{hostGroupName}",
-            code: 200,
-            apiVersion: "2026-04-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "DedicatedHostGroupsCreateOrUpdateRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          vmSize: S.optional(S.String),
-          count: S.optional(S.Number),
-        }),
-      ).annotate({
-        identifier: "DedicatedHostAllocatableVM",
-      });
-    case 4:
-      return S.Array(__S(147, __c18, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          allocatableVMs: S.optional(__S(148, __c18, 4)),
-        }),
-      ).annotate({
-        identifier: "DedicatedHostAvailableCapacity",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
           assetId: S.optional(S.String),
-          availableCapacity: S.optional(__S(149, __c18, 5)),
-          statuses: S.optional(__S(16, __c2, 0)),
+          availableCapacity: S.optional(__S(3074, __c96, 2)),
+          statuses: S.optional(__S(5280, __c165, 0)),
           name: S.optional(S.String),
         }),
       ).annotate({
         identifier: "DedicatedHostInstanceViewWithName",
       });
-    case 7:
-      return S.Array(__S(150, __c18, 6));
-  }
-}
-function __c19(j: number): any {
-  switch (j) {
-    case 0:
+    case 2:
+      return S.Array(__S(3137, __c98, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          hosts: S.optional(__S(151, __c18, 7)),
+          hosts: S.optional(__S(3138, __c98, 2)),
         }),
       ).annotate({
         identifier: "DedicatedHostGroupInstanceView",
       });
-    case 1:
+    case 4:
       return S.suspend(() =>
         S.Struct({
           platformFaultDomainCount: S.Number,
-          hosts: S.optional(__S(6, __c0, 6)),
-          instanceView: S.optional(__S(152, __c19, 0)),
+          hosts: S.optional(__S(5312, __c166, 0)),
+          instanceView: S.optional(__S(3139, __c98, 3)),
           supportAutomaticPlacement: S.optional(S.Boolean),
-          additionalCapabilities: S.optional(__S(144, __c18, 0)),
+          additionalCapabilities: S.optional(__S(3136, __c98, 0)),
         }),
       ).annotate({
         identifier: "DedicatedHostGroupProperties",
       });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(14, __c1, 6)),
-          tags: S.optional(__S(4, __c0, 4)),
-          location: S.String,
-          properties: S.optional(__S(153, __c19, 1)),
-          zones: S.optional(__S(23, __c2, 7)),
-        }),
-      ).annotate({
-        identifier: "DedicatedHostGroupsCreateOrUpdateResponse",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          platformFaultDomain: S.optional(S.Number),
-          autoReplaceOnFailure: S.optional(S.Boolean),
-          licenseType: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "DedicatedHostPropertiesInput",
-      });
-    case 4:
+  }
+}
+function __c99(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           hostGroupName: S.String.pipe(T.Label()),
           hostName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(4, __c0, 4)),
+          tags: S.optional(__S(5152, __c161, 0)),
+          properties: S.optional(__S(3680, __c115, 0)),
+          sku: S.optional(__S(5344, __c167, 0)),
+        }).pipe(
+          T.Http({
+            method: "PATCH",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/hostGroups/{hostGroupName}/hosts/{hostName}",
+            code: 200,
+            apiVersion: "2026-04-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "UpdateDedicatedHostRequest",
+      });
+  }
+}
+function __c100(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          hostGroupName: S.String.pipe(T.Label()),
+          tags: S.optional(__S(5152, __c161, 0)),
+          properties: S.optional(__S(3040, __c95, 0)),
+          zones: S.optional(__S(6400, __c200, 0)),
+        }).pipe(
+          T.Http({
+            method: "PATCH",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/hostGroups/{hostGroupName}",
+            code: 200,
+            apiVersion: "2026-04-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "UpdateDedicatedHostGroupRequest",
+      });
+  }
+}
+function __c101(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          imageName: S.String.pipe(T.Label()),
+          tags: S.optional(__S(5152, __c161, 0)),
+          properties: S.optional(__S(9952, __c311, 0)),
+        }).pipe(
+          T.Http({
+            method: "PATCH",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/images/{imageName}",
+            code: 200,
+            apiVersion: "2026-04-01",
+          }),
+        ),
+      ).annotate({ identifier: "UpdateImageRequest" });
+  }
+}
+function __c102(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          interconnectBlockName: S.String.pipe(T.Label()),
+          tags: S.optional(__S(5152, __c161, 0)),
+          sku: S.optional(__S(5344, __c167, 0)),
+        }).pipe(
+          T.Http({
+            method: "PATCH",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/interconnectBlocks/{interconnectBlockName}",
+            code: 200,
+            apiVersion: "2026-04-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "UpdateInterconnectBlockRequest",
+      });
+  }
+}
+function __c103(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          proximityPlacementGroupName: S.String.pipe(T.Label()),
+          tags: S.optional(__S(5152, __c161, 0)),
+        }).pipe(
+          T.Http({
+            method: "PATCH",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/proximityPlacementGroups/{proximityPlacementGroupName}",
+            code: 200,
+            apiVersion: "2026-04-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "UpdateProximityPlacementGroupRequest",
+      });
+  }
+}
+function __c104(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          restorePointCollectionName: S.String.pipe(T.Label()),
+          tags: S.optional(__S(5152, __c161, 0)),
+          properties: S.optional(__S(2432, __c76, 0)),
+        }).pipe(
+          T.Http({
+            method: "PATCH",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/restorePointCollections/{restorePointCollectionName}",
+            code: 200,
+            apiVersion: "2026-04-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "UpdateRestorePointCollectionRequest",
+      });
+  }
+}
+function __c105(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          sshPublicKeyName: S.String.pipe(T.Label()),
+          tags: S.optional(__S(5152, __c161, 0)),
+          properties: S.optional(__S(2656, __c83, 0)),
+        }).pipe(
+          T.Http({
+            method: "PATCH",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/sshPublicKeys/{sshPublicKeyName}",
+            code: 200,
+            apiVersion: "2026-04-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "UpdateSshPublicKeyRequest",
+      });
+  }
+}
+function __c106(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          vmName: S.String.pipe(T.Label()),
+          tags: S.optional(__S(5152, __c161, 0)),
+          plan: S.optional(__S(8135, __c254, 7)),
+          properties: S.optional(__S(3488, __c109, 0)),
+          identity: S.optional(__S(3458, __c108, 2)),
+          zones: S.optional(__S(6400, __c200, 0)),
+        }).pipe(
+          T.Http({
+            method: "PATCH",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachines/{vmName}",
+            code: 200,
+            apiVersion: "2026-04-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "UpdateVirtualMachineRequest",
+      });
+  }
+}
+function __c107(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          publisher: S.optional(S.String),
+          offer: S.optional(S.String),
+          sku: S.optional(S.String),
+          version: S.optional(S.String),
+          sharedGalleryImageId: S.optional(S.String),
+          communityGalleryImageId: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ImageReferenceInput" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          provisionVMAgent: S.optional(S.Boolean),
+          enableAutomaticUpdates: S.optional(S.Boolean),
+          timeZone: S.optional(S.String),
+          additionalUnattendContent: S.optional(__S(2082, __c65, 2)),
+          patchSettings: S.optional(__S(2084, __c65, 4)),
+          winRM: S.optional(__S(2087, __c65, 7)),
+        }),
+      ).annotate({
+        identifier: "WindowsConfigurationInput",
+      });
+    case 2:
+      return S.Record(S.String, __S(32, __c1, 0));
+  }
+}
+function __c108(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          imageReference: S.optional(__S(3424, __c107, 0)),
+          osDisk: S.optional(__S(8224, __c257, 0)),
+          dataDisks: S.optional(__S(8226, __c257, 2)),
+          diskControllerType: S.optional(S.String),
+          alignRegionalDisksToVMZone: S.optional(S.Boolean),
+          diskApiVersion: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "StorageProfileInput" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          computerName: S.optional(S.String),
+          adminUsername: S.optional(S.String),
+          adminPassword: S.optional(S.String.pipe(T.SensitiveValue({}))),
+          customData: S.optional(S.String),
+          windowsConfiguration: S.optional(__S(3425, __c107, 1)),
+          linuxConfiguration: S.optional(__S(2093, __c65, 13)),
+          secrets: S.optional(__S(2097, __c65, 17)),
+          allowExtensionOperations: S.optional(S.Boolean),
+          requireGuestProvisionSignal: S.optional(S.Boolean),
+        }),
+      ).annotate({ identifier: "OSProfileInput" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          type: S.optional(S.String),
+          userAssignedIdentities: S.optional(__S(3426, __c107, 2)),
+        }),
+      ).annotate({
+        identifier: "VirtualMachineIdentityInput",
+      });
+  }
+}
+function __c109(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          hardwareProfile: S.optional(__S(2144, __c67, 0)),
+          scheduledEventsPolicy: S.optional(__S(5091, __c159, 3)),
+          storageProfile: S.optional(__S(3456, __c108, 0)),
+          additionalCapabilities: S.optional(__S(8128, __c254, 0)),
+          osProfile: S.optional(__S(3457, __c108, 1)),
+          networkProfile: S.optional(__S(8269, __c258, 13)),
+          securityProfile: S.optional(__S(2104, __c65, 24)),
+          diagnosticsProfile: S.optional(__S(2099, __c65, 19)),
+          availabilitySet: S.optional(__S(5216, __c163, 0)),
+          virtualMachineScaleSet: S.optional(__S(5216, __c163, 0)),
+          proximityPlacementGroup: S.optional(__S(5216, __c163, 0)),
+          priority: S.optional(S.String),
+          evictionPolicy: S.optional(S.String),
+          billingProfile: S.optional(__S(8032, __c251, 0)),
+          host: S.optional(__S(5216, __c163, 0)),
+          hostGroup: S.optional(__S(5216, __c163, 0)),
+          licenseType: S.optional(S.String),
+          extensionsTimeBudget: S.optional(S.String),
+          platformFaultDomain: S.optional(S.Number),
+          scheduledEventsProfile: S.optional(__S(8034, __c251, 2)),
+          userData: S.optional(S.String),
+          capacityReservation: S.optional(__S(8133, __c254, 5)),
+          interconnectBlockProfile: S.optional(__S(8134, __c254, 6)),
+          applicationProfile: S.optional(__S(8037, __c251, 5)),
+          resiliencyProfile: S.optional(__S(7873, __c246, 1)),
+        }),
+      ).annotate({
+        identifier: "VirtualMachinePropertiesInput",
+      });
+  }
+}
+function __c110(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          vmName: S.String.pipe(T.Label()),
+          runCommandName: S.String.pipe(T.Label()),
+          tags: S.optional(__S(5152, __c161, 0)),
+          properties: S.optional(__S(3552, __c111, 0)),
+        }).pipe(
+          T.Http({
+            method: "PATCH",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachines/{vmName}/diagnosticRunCommands/{runCommandName}",
+            code: 200,
+            apiVersion: "2026-04-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "UpdateVirtualMachineDiagnosticRunCommandRequest",
+      });
+  }
+}
+function __c111(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          source: S.optional(__S(8481, __c265, 1)),
+          parameters: S.optional(__S(8449, __c264, 1)),
+          protectedParameters: S.optional(__S(8449, __c264, 1)),
+          asyncExecution: S.optional(S.Boolean),
+          runAsUser: S.optional(S.String),
+          runAsPassword: S.optional(S.String.pipe(T.SensitiveValue({}))),
+          timeoutInSeconds: S.optional(S.Number),
+          outputBlobUri: S.optional(S.String),
+          errorBlobUri: S.optional(S.String),
+          outputBlobManagedIdentity: S.optional(__S(8480, __c265, 0)),
+          errorBlobManagedIdentity: S.optional(__S(8480, __c265, 0)),
+          treatFailureAsDeploymentFailure: S.optional(S.Boolean),
+        }),
+      ).annotate({
+        identifier: "VirtualMachineRunCommandPropertiesInput",
+      });
+  }
+}
+function __c112(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          vmName: S.String.pipe(T.Label()),
+          vmExtensionName: S.String.pipe(T.Label()),
+          tags: S.optional(__S(5152, __c161, 0)),
+          properties: S.optional(__S(3616, __c113, 0)),
+        }).pipe(
+          T.Http({
+            method: "PATCH",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachines/{vmName}/extensions/{vmExtensionName}",
+            code: 200,
+            apiVersion: "2026-04-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "UpdateVirtualMachineExtensionRequest",
+      });
+  }
+}
+function __c113(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          forceUpdateTag: S.optional(S.String),
+          publisher: S.optional(S.String),
+          type: S.optional(S.String),
+          typeHandlerVersion: S.optional(S.String),
+          autoUpgradeMinorVersion: S.optional(S.Boolean),
+          enableAutomaticUpgrade: S.optional(S.Boolean),
+          settings: S.optional(S.Unknown),
+          protectedSettings: S.optional(S.Unknown),
+          suppressFailures: S.optional(S.Boolean),
+          protectedSettingsFromKeyVault: S.optional(__S(2016, __c63, 0)),
+        }),
+      ).annotate({
+        identifier: "VirtualMachineExtensionUpdateProperties",
+      });
+  }
+}
+function __c114(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          hostGroupName: S.String.pipe(T.Label()),
+          hostName: S.String.pipe(T.Label()),
+          tags: S.optional(__S(5152, __c161, 0)),
           location: S.String,
-          properties: S.optional(__S(155, __c19, 3)),
-          sku: __S(12, __c1, 4),
+          properties: S.optional(__S(3680, __c115, 0)),
+          sku: __S(5344, __c167, 0),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -15028,48 +16666,594 @@ function __c19(j: number): any {
       ).annotate({
         identifier: "DedicatedHostsCreateOrUpdateRequest",
       });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          assetId: S.optional(S.String),
-          availableCapacity: S.optional(__S(149, __c18, 5)),
-          statuses: S.optional(__S(16, __c2, 0)),
-        }),
-      ).annotate({
-        identifier: "DedicatedHostInstanceView",
-      });
-    case 6:
+  }
+}
+function __c115(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           platformFaultDomain: S.optional(S.Number),
           autoReplaceOnFailure: S.optional(S.Boolean),
-          hostId: S.optional(S.String),
-          virtualMachines: S.optional(__S(6, __c0, 6)),
           licenseType: S.optional(S.String),
-          provisioningTime: S.optional(S.String),
-          provisioningState: S.optional(S.String),
-          instanceView: S.optional(__S(157, __c19, 5)),
-          timeCreated: S.optional(S.String),
         }),
-      ).annotate({ identifier: "DedicatedHostProperties" });
-    case 7:
+      ).annotate({
+        identifier: "DedicatedHostPropertiesInput",
+      });
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(14, __c1, 6)),
-          tags: S.optional(__S(4, __c0, 4)),
+          systemData: S.optional(__S(5184, __c162, 0)),
+          tags: S.optional(__S(5152, __c161, 0)),
           location: S.String,
-          properties: S.optional(__S(158, __c19, 6)),
-          sku: __S(12, __c1, 4),
+          properties: S.optional(__S(3713, __c116, 1)),
+          sku: __S(5344, __c167, 0),
         }),
       ).annotate({
         identifier: "DedicatedHostsCreateOrUpdateResponse",
       });
   }
 }
-function __c20(j: number): any {
+function __c116(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          assetId: S.optional(S.String),
+          availableCapacity: S.optional(__S(3074, __c96, 2)),
+          statuses: S.optional(__S(5280, __c165, 0)),
+        }),
+      ).annotate({
+        identifier: "DedicatedHostInstanceView",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          platformFaultDomain: S.optional(S.Number),
+          autoReplaceOnFailure: S.optional(S.Boolean),
+          hostId: S.optional(S.String),
+          virtualMachines: S.optional(__S(5312, __c166, 0)),
+          licenseType: S.optional(S.String),
+          provisioningTime: S.optional(S.String),
+          provisioningState: S.optional(S.String),
+          instanceView: S.optional(__S(3712, __c116, 0)),
+          timeCreated: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "DedicatedHostProperties" });
+  }
+}
+function __c117(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          vmName: S.String.pipe(T.Label()),
+          runCommandName: S.String.pipe(T.Label()),
+          tags: S.optional(__S(5152, __c161, 0)),
+          properties: S.optional(__S(3552, __c111, 0)),
+        }).pipe(
+          T.Http({
+            method: "PATCH",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachines/{vmName}/runCommands/{runCommandName}",
+            code: 200,
+            apiVersion: "2026-04-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "UpdateVirtualMachineRunCommandRequest",
+      });
+  }
+}
+function __c118(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          customData: S.optional(S.String),
+          windowsConfiguration: S.optional(__S(3425, __c107, 1)),
+          linuxConfiguration: S.optional(__S(2093, __c65, 13)),
+          secrets: S.optional(__S(2097, __c65, 17)),
+        }),
+      ).annotate({
+        identifier: "VirtualMachineScaleSetUpdateOSProfileInput",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          caching: S.optional(S.String),
+          writeAcceleratorEnabled: S.optional(S.Boolean),
+          diffDiskSettings: S.optional(__S(8097, __c253, 1)),
+          diskSizeGB: S.optional(S.Number),
+          storageFaultDomainAlignment: S.optional(S.String),
+          image: S.optional(__S(8096, __c253, 0)),
+          vhdContainers: S.optional(__S(6400, __c200, 0)),
+          managedDisk: S.optional(__S(8964, __c280, 4)),
+          deleteOption: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "VirtualMachineScaleSetUpdateOSDisk",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          imageReference: S.optional(__S(3424, __c107, 0)),
+          osDisk: S.optional(__S(3777, __c118, 1)),
+          dataDisks: S.optional(__S(8967, __c280, 7)),
+          diskControllerType: S.optional(S.String),
+          diskApiVersion: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "VirtualMachineScaleSetUpdateStorageProfileInput",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          idleTimeoutInMinutes: S.optional(S.Number),
+          dnsSettings: S.optional(__S(9120, __c285, 0)),
+          publicIPPrefix: S.optional(__S(5216, __c163, 0)),
+          deleteOption: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "VirtualMachineScaleSetUpdatePublicIPAddressConfigurationProperties",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.optional(S.String),
+          properties: S.optional(__S(3779, __c118, 3)),
+          tags: S.optional(__S(8512, __c266, 0)),
+        }),
+      ).annotate({
+        identifier: "VirtualMachineScaleSetUpdatePublicIPAddressConfiguration",
+      });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          subnet: S.optional(__S(1952, __c61, 0)),
+          primary: S.optional(S.Boolean),
+          publicIPAddressConfiguration: S.optional(__S(3780, __c118, 4)),
+          privateIPAddressVersion: S.optional(S.String),
+          applicationGatewayBackendAddressPools: S.optional(__S(9408, __c294, 0)),
+          applicationSecurityGroups: S.optional(__S(9408, __c294, 0)),
+          loadBalancerBackendAddressPools: S.optional(__S(9408, __c294, 0)),
+          loadBalancerInboundNatPools: S.optional(__S(9408, __c294, 0)),
+        }),
+      ).annotate({
+        identifier: "VirtualMachineScaleSetUpdateIPConfigurationProperties",
+      });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.optional(S.String),
+          properties: S.optional(__S(3781, __c118, 5)),
+        }),
+      ).annotate({
+        identifier: "VirtualMachineScaleSetUpdateIPConfiguration",
+      });
+    case 7:
+      return S.Array(__S(3782, __c118, 6));
+    case 8:
+      return S.suspend(() =>
+        S.Struct({
+          primary: S.optional(S.Boolean),
+          enableAcceleratedNetworking: S.optional(S.Boolean),
+          disableTcpStateTracking: S.optional(S.Boolean),
+          enableFpga: S.optional(S.Boolean),
+          networkSecurityGroup: S.optional(__S(5216, __c163, 0)),
+          dnsSettings: S.optional(__S(8129, __c254, 1)),
+          ipConfigurations: S.optional(__S(3783, __c118, 7)),
+          enableIPForwarding: S.optional(S.Boolean),
+          deleteOption: S.optional(S.String),
+          auxiliaryMode: S.optional(S.String),
+          auxiliarySku: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "VirtualMachineScaleSetUpdateNetworkConfigurationProperties",
+      });
+    case 9:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.optional(S.String),
+          properties: S.optional(__S(3784, __c118, 8)),
+          tags: S.optional(__S(5152, __c161, 0)),
+        }),
+      ).annotate({
+        identifier: "VirtualMachineScaleSetUpdateNetworkConfiguration",
+      });
+    case 10:
+      return S.Array(__S(3785, __c118, 9));
+    case 11:
+      return S.suspend(() =>
+        S.Struct({
+          healthProbe: S.optional(__S(1952, __c61, 0)),
+          networkInterfaceConfigurations: S.optional(__S(3786, __c118, 10)),
+          networkApiVersion: S.optional(S.String),
+          interconnectGroupProfile: S.optional(__S(8132, __c254, 4)),
+        }),
+      ).annotate({
+        identifier: "VirtualMachineScaleSetUpdateNetworkProfile",
+      });
+    case 12:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          excludeExtensions: S.optional(__S(6400, __c200, 0)),
+          isOverridable: S.optional(S.Boolean),
+        }),
+      ).annotate({
+        identifier: "SecurityPostureReferenceUpdate",
+      });
+    case 13:
+      return S.suspend(() =>
+        S.Struct({
+          osProfile: S.optional(__S(3776, __c118, 0)),
+          storageProfile: S.optional(__S(3778, __c118, 2)),
+          networkProfile: S.optional(__S(3787, __c118, 11)),
+          securityPostureReference: S.optional(__S(3788, __c118, 12)),
+          securityProfile: S.optional(__S(2104, __c65, 24)),
+          diagnosticsProfile: S.optional(__S(2099, __c65, 19)),
+          extensionProfile: S.optional(__S(3842, __c120, 2)),
+          licenseType: S.optional(S.String),
+          billingProfile: S.optional(__S(8032, __c251, 0)),
+          scheduledEventsProfile: S.optional(__S(8034, __c251, 2)),
+          userData: S.optional(S.String),
+          hardwareProfile: S.optional(__S(8971, __c280, 11)),
+          interconnectBlockProfile: S.optional(__S(8134, __c254, 6)),
+        }),
+      ).annotate({
+        identifier: "VirtualMachineScaleSetUpdateVMProfileInput",
+      });
+    case 14:
+      return S.suspend(() =>
+        S.Struct({
+          upgradePolicy: S.optional(__S(8961, __c280, 1)),
+          automaticRepairsPolicy: S.optional(__S(8962, __c280, 2)),
+          virtualMachineProfile: S.optional(__S(3789, __c118, 13)),
+          overprovision: S.optional(S.Boolean),
+          doNotRunExtensionsOnOverprovisionedVMs: S.optional(S.Boolean),
+          singlePlacementGroup: S.optional(S.Boolean),
+          additionalCapabilities: S.optional(__S(8128, __c254, 0)),
+          scaleInPolicy: S.optional(__S(8974, __c280, 14)),
+          proximityPlacementGroup: S.optional(__S(5216, __c163, 0)),
+          priorityMixPolicy: S.optional(__S(8976, __c280, 16)),
+          spotRestorePolicy: S.optional(__S(8975, __c280, 15)),
+          resiliencyPolicy: S.optional(__S(8983, __c280, 23)),
+          zonalPlatformFaultDomainAlignMode: S.optional(S.String),
+          skuProfile: S.optional(__S(8986, __c280, 26)),
+          lifecycleHooksProfile: S.optional(__S(8989, __c280, 29)),
+        }),
+      ).annotate({
+        identifier: "VirtualMachineScaleSetUpdatePropertiesInput",
+      });
+    case 15:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          vmScaleSetName: S.String.pipe(T.Label()),
+          tags: S.optional(__S(5152, __c161, 0)),
+          sku: S.optional(__S(5344, __c167, 0)),
+          plan: S.optional(__S(8135, __c254, 7)),
+          properties: S.optional(__S(3790, __c118, 14)),
+          identity: S.optional(__S(3843, __c120, 3)),
+          zones: S.optional(__S(6400, __c200, 0)),
+          placement: S.optional(__S(7392, __c231, 0)),
+        }).pipe(
+          T.Http({
+            method: "PATCH",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}",
+            code: 200,
+            apiVersion: "2026-04-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "UpdateVirtualMachineScaleSetRequest",
+      });
+  }
+}
+function __c119(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          forceUpdateTag: S.optional(S.String),
+          publisher: S.optional(S.String),
+          type: S.optional(S.String),
+          typeHandlerVersion: S.optional(S.String),
+          autoUpgradeMinorVersion: S.optional(S.Boolean),
+          enableAutomaticUpgrade: S.optional(S.Boolean),
+          settings: S.optional(S.Unknown),
+          protectedSettings: S.optional(S.Unknown),
+          provisionAfterExtensions: S.optional(__S(64, __c2, 0)),
+          suppressFailures: S.optional(S.Boolean),
+          protectedSettingsFromKeyVault: S.optional(__S(2016, __c63, 0)),
+        }),
+      ).annotate({
+        identifier: "VirtualMachineScaleSetExtensionPropertiesInput",
+      });
+  }
+}
+function __c120(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.optional(S.String),
+          properties: S.optional(__S(3808, __c119, 0)),
+        }),
+      ).annotate({
+        identifier: "VirtualMachineScaleSetExtensionInput",
+      });
+    case 1:
+      return S.Array(__S(3840, __c120, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          extensions: S.optional(__S(3841, __c120, 1)),
+          extensionsTimeBudget: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "VirtualMachineScaleSetExtensionProfileInput",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          type: S.optional(S.String),
+          userAssignedIdentities: S.optional(__S(3426, __c107, 2)),
+        }),
+      ).annotate({
+        identifier: "VirtualMachineScaleSetIdentityInput",
+      });
+  }
+}
+function __c121(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          vmScaleSetName: S.String.pipe(T.Label()),
+          vmssExtensionName: S.String.pipe(T.Label()),
+          properties: S.optional(__S(3808, __c119, 0)),
+        }).pipe(
+          T.Http({
+            method: "PATCH",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}/extensions/{vmssExtensionName}",
+            code: 200,
+            apiVersion: "2026-04-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "UpdateVirtualMachineScaleSetExtensionRequest",
+      });
+  }
+}
+function __c122(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          vmScaleSetName: S.String.pipe(T.Label()),
+          instanceIds: __S(6400, __c200, 0),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}/manualupgrade",
+            code: 200,
+            apiVersion: "2026-04-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "UpdateVirtualMachineScaleSetInstancesRequest",
+      });
+  }
+}
+function __c123(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          type: S.optional(S.String),
+          waitUntil: S.optional(S.String),
+          targetResources: S.optional(__S(9281, __c290, 1)),
+          additionalContext: S.optional(__S(9282, __c290, 2)),
+        }),
+      ).annotate({
+        identifier: "VMScaleSetLifecycleHookEventPropertiesInput",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          vmScaleSetName: S.String.pipe(T.Label()),
+          lifecycleHookEventName: S.String.pipe(T.Label()),
+          properties: S.optional(__S(3936, __c123, 0)),
+        }).pipe(
+          T.Http({
+            method: "PATCH",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}/lifecycleHookEvents/{lifecycleHookEventName}",
+            code: 200,
+            apiVersion: "2026-04-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "UpdateVirtualMachineScaleSetLifeCycleHookEventRequest",
+      });
+  }
+}
+function __c124(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          hardwareProfile: S.optional(__S(2144, __c67, 0)),
+          resilientVMDeletionStatus: S.optional(S.String),
+          storageProfile: S.optional(__S(3456, __c108, 0)),
+          additionalCapabilities: S.optional(__S(8128, __c254, 0)),
+          osProfile: S.optional(__S(3457, __c108, 1)),
+          securityProfile: S.optional(__S(2104, __c65, 24)),
+          networkProfile: S.optional(__S(8269, __c258, 13)),
+          networkProfileConfiguration: S.optional(__S(9632, __c301, 0)),
+          diagnosticsProfile: S.optional(__S(2099, __c65, 19)),
+          availabilitySet: S.optional(__S(5216, __c163, 0)),
+          licenseType: S.optional(S.String),
+          protectionPolicy: S.optional(__S(9633, __c301, 1)),
+          userData: S.optional(S.String),
+          interconnectBlockProfile: S.optional(__S(8134, __c254, 6)),
+          capacityReservation: S.optional(__S(8133, __c254, 5)),
+        }),
+      ).annotate({
+        identifier: "VirtualMachineScaleSetVMPropertiesInput",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          vmScaleSetName: S.String.pipe(T.Label()),
+          instanceId: S.String.pipe(T.Label()),
+          tags: S.optional(__S(5152, __c161, 0)),
+          location: S.String,
+          properties: S.optional(__S(3968, __c124, 0)),
+          plan: S.optional(__S(8135, __c254, 7)),
+          identity: S.optional(__S(3458, __c108, 2)),
+        }).pipe(
+          T.Http({
+            method: "PUT",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}/virtualMachines/{instanceId}",
+            code: 200,
+            apiVersion: "2026-04-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "UpdateVirtualMachineScaleSetVMRequest",
+      });
+  }
+}
+function __c125(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          vmScaleSetName: S.String.pipe(T.Label()),
+          instanceId: S.String.pipe(T.Label()),
+          runCommandName: S.String.pipe(T.Label()),
+          tags: S.optional(__S(8512, __c266, 0)),
+          properties: S.optional(__S(3552, __c111, 0)),
+        }).pipe(
+          T.Http({
+            method: "PATCH",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}/virtualMachines/{instanceId}/diagnosticRunCommands/{runCommandName}",
+            code: 200,
+            apiVersion: "2026-04-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "UpdateVirtualMachineScaleSetVMDiagnosticRunCommandRequest",
+      });
+  }
+}
+function __c126(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(5184, __c162, 0)),
+          tags: S.optional(__S(8512, __c266, 0)),
+          location: S.String,
+          properties: S.optional(__S(8483, __c265, 3)),
+        }),
+      ).annotate({
+        identifier: "UpdateVirtualMachineScaleSetVMDiagnosticRunCommandResponse",
+      });
+  }
+}
+function __c127(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          vmScaleSetName: S.String.pipe(T.Label()),
+          instanceId: S.String.pipe(T.Label()),
+          vmExtensionName: S.String.pipe(T.Label()),
+          properties: S.optional(__S(3616, __c113, 0)),
+        }).pipe(
+          T.Http({
+            method: "PATCH",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}/virtualMachines/{instanceId}/extensions/{vmExtensionName}",
+            code: 200,
+            apiVersion: "2026-04-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "UpdateVirtualMachineScaleSetVMExtensionRequest",
+      });
+  }
+}
+function __c128(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          vmScaleSetName: S.String.pipe(T.Label()),
+          instanceId: S.String.pipe(T.Label()),
+          runCommandName: S.String.pipe(T.Label()),
+          tags: S.optional(__S(5152, __c161, 0)),
+          properties: S.optional(__S(3552, __c111, 0)),
+        }).pipe(
+          T.Http({
+            method: "PATCH",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}/virtualMachines/{instanceId}/runCommands/{runCommandName}",
+            code: 200,
+            apiVersion: "2026-04-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "UpdateVirtualMachineScaleSetVMRunCommandRequest",
+      });
+  }
+}
+function __c129(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          availabilitySetName: S.String.pipe(T.Label()),
+          virtualMachineScaleSetFlexible: __S(5216, __c163, 0),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/availabilitySets/{availabilitySetName}/validateMigrationToVirtualMachineScaleSet",
+            code: 200,
+            apiVersion: "2026-04-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "ValidateAvailabilitySetMigrationToVirtualMachineScaleSetRequest",
+      });
+  }
+}
+function __c130(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -15088,11 +17272,348 @@ function __c20(j: number): any {
       ).annotate({
         identifier: "DeleteAvailabilitySetRequest",
       });
-    case 1:
+  }
+}
+function __c131(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "DeleteAvailabilitySetResponse",
       });
+  }
+}
+function __c132(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          location: S.String.pipe(T.Label()),
+          operationIds: __S(6400, __c200, 0),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/locations/{location}/virtualMachinesBulkCancel",
+            code: 200,
+            apiVersion: "2026-06-06",
+          }),
+        ),
+      ).annotate({
+        identifier: "VirtualMachineBulkOperationsBulkCancelRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          results: __S(6341, __c198, 5),
+        }),
+      ).annotate({ identifier: "CancelOperationsResponse" });
+  }
+}
+function __c133(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          location: S.String.pipe(T.Label()),
+          executionParameters: __S(6368, __c199, 0),
+          resources: __S(6369, __c199, 1),
+          forceDeletion: S.optional(S.Boolean),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/locations/{location}/virtualMachinesBulkDelete",
+            code: 200,
+            apiVersion: "2026-06-06",
+          }),
+        ),
+      ).annotate({
+        identifier: "VirtualMachineBulkOperationsBulkDeleteRequest",
+      });
+  }
+}
+function __c134(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          location: S.String.pipe(T.Label()),
+          operationIds: __S(64, __c2, 0),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/locations/{location}/virtualMachinesBulkGetOperationStatus",
+            code: 200,
+            apiVersion: "2026-06-06",
+          }),
+        ),
+      ).annotate({
+        identifier: "VirtualMachineBulkOperationsBulkGetOperationsStatusRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          results: __S(6341, __c198, 5),
+        }),
+      ).annotate({
+        identifier: "GetOperationStatusResponse",
+      });
+  }
+}
+function __c135(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          location: S.String.pipe(T.Label()),
+          executionParameters: __S(6368, __c199, 0),
+          resources: __S(6369, __c199, 1),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/locations/{location}/virtualMachinesBulkStart",
+            code: 200,
+            apiVersion: "2026-06-06",
+          }),
+        ),
+      ).annotate({
+        identifier: "VirtualMachineBulkOperationsBulkStartRequest",
+      });
+  }
+}
+function __c136(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          vmName: S.String.pipe(T.Label()),
+          runCommandName: S.String.pipe(T.Label()),
+          tags: S.optional(__S(8512, __c266, 0)),
+          location: S.String,
+          properties: S.optional(__S(3552, __c111, 0)),
+        }).pipe(
+          T.Http({
+            method: "PUT",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachines/{vmName}/diagnosticRunCommands/{runCommandName}",
+            code: 200,
+            apiVersion: "2026-04-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "VirtualMachineDiagnosticRunCommandsCreateOrUpdateRequest",
+      });
+  }
+}
+function __c137(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          vmName: S.String.pipe(T.Label()),
+          _expand: S.optional(S.String.pipe(T.Query("$expand"))),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachines/{vmName}/diagnosticRunCommands",
+            code: 200,
+            apiVersion: "2026-04-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "VirtualMachineDiagnosticRunCommandsDiagnosticListByVirtualMachineRequest",
+      });
+  }
+}
+function __c138(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          vmName: S.String.pipe(T.Label()),
+          vmExtensionName: S.String.pipe(T.Label()),
+          tags: S.optional(__S(5152, __c161, 0)),
+          location: S.String,
+          properties: S.optional(__S(4448, __c139, 0)),
+        }).pipe(
+          T.Http({
+            method: "PUT",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachines/{vmName}/extensions/{vmExtensionName}",
+            code: 200,
+            apiVersion: "2026-04-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "VirtualMachineExtensionsCreateOrUpdateRequest",
+      });
+  }
+}
+function __c139(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          forceUpdateTag: S.optional(S.String),
+          publisher: S.optional(S.String),
+          type: S.optional(S.String),
+          typeHandlerVersion: S.optional(S.String),
+          autoUpgradeMinorVersion: S.optional(S.Boolean),
+          enableAutomaticUpgrade: S.optional(S.Boolean),
+          settings: S.optional(S.Unknown),
+          protectedSettings: S.optional(S.Unknown),
+          instanceView: S.optional(__S(8000, __c250, 0)),
+          suppressFailures: S.optional(S.Boolean),
+          protectedSettingsFromKeyVault: S.optional(__S(2016, __c63, 0)),
+          provisionAfterExtensions: S.optional(__S(64, __c2, 0)),
+        }),
+      ).annotate({
+        identifier: "VirtualMachineExtensionPropertiesInput",
+      });
+  }
+}
+function __c140(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          vmName: S.String.pipe(T.Label()),
+          runCommandName: S.String.pipe(T.Label()),
+          tags: S.optional(__S(5152, __c161, 0)),
+          location: S.String,
+          properties: S.optional(__S(3552, __c111, 0)),
+        }).pipe(
+          T.Http({
+            method: "PUT",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachines/{vmName}/runCommands/{runCommandName}",
+            code: 200,
+            apiVersion: "2026-04-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "VirtualMachineRunCommandsCreateOrUpdateRequest",
+      });
+  }
+}
+function __c141(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          vmName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachines/{vmName}/assessPatches",
+            code: 200,
+            apiVersion: "2026-04-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "VirtualMachinesAssessPatchesRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          patchId: S.optional(S.String),
+          name: S.optional(S.String),
+          version: S.optional(S.String),
+          kbId: S.optional(S.String),
+          classifications: S.optional(__S(6400, __c200, 0)),
+          rebootBehavior: S.optional(S.String),
+          activityId: S.optional(S.String),
+          publishedDate: S.optional(S.String),
+          lastModifiedDateTime: S.optional(S.String),
+          assessmentState: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "VirtualMachineSoftwarePatchProperties",
+      });
     case 2:
+      return S.Array(__S(4513, __c141, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          status: S.optional(S.String),
+          assessmentActivityId: S.optional(S.String),
+          rebootPending: S.optional(S.Boolean),
+          criticalAndSecurityPatchCount: S.optional(S.Number),
+          otherPatchCount: S.optional(S.Number),
+          startDateTime: S.optional(S.String),
+          availablePatches: S.optional(__S(4514, __c141, 2)),
+          error: S.optional(__S(8163, __c255, 3)),
+        }),
+      ).annotate({
+        identifier: "VirtualMachineAssessPatchesResult",
+      });
+  }
+}
+function __c142(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          vmName: S.String.pipe(T.Label()),
+          dataDisksToAttach: S.optional(__S(4577, __c143, 1)),
+          dataDisksToDetach: S.optional(__S(4579, __c143, 3)),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachines/{vmName}/attachDetachDataDisks",
+            code: 200,
+            apiVersion: "2026-04-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "VirtualMachinesAttachDetachDataDisksRequest",
+      });
+  }
+}
+function __c143(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          diskId: S.String,
+          lun: S.optional(S.Number),
+          caching: S.optional(S.String),
+          deleteOption: S.optional(S.String),
+          diskEncryptionSet: S.optional(__S(5216, __c163, 0)),
+          writeAcceleratorEnabled: S.optional(S.Boolean),
+        }),
+      ).annotate({ identifier: "DataDisksToAttach" });
+    case 1:
+      return S.Array(__S(4576, __c143, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          diskId: S.String,
+          detachOption: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "DataDisksToDetach" });
+    case 3:
+      return S.Array(__S(4578, __c143, 2));
+  }
+}
+function __c144(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -15110,7 +17631,559 @@ function __c20(j: number): any {
       ).annotate({
         identifier: "DeleteCapacityReservationRequest",
       });
+  }
+}
+function __c145(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          vmScaleSetName: S.String.pipe(T.Label()),
+          vmssExtensionName: S.String.pipe(T.Label()),
+          name: S.optional(S.String),
+          properties: S.optional(__S(3808, __c119, 0)),
+        }).pipe(
+          T.Http({
+            method: "PUT",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}/extensions/{vmssExtensionName}",
+            code: 200,
+            apiVersion: "2026-04-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "VirtualMachineScaleSetExtensionsCreateOrUpdateRequest",
+      });
+  }
+}
+function __c146(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          computerNamePrefix: S.optional(S.String),
+          adminUsername: S.optional(S.String),
+          adminPassword: S.optional(S.String.pipe(T.SensitiveValue({}))),
+          customData: S.optional(S.String),
+          windowsConfiguration: S.optional(__S(3425, __c107, 1)),
+          linuxConfiguration: S.optional(__S(2093, __c65, 13)),
+          secrets: S.optional(__S(2097, __c65, 17)),
+          allowExtensionOperations: S.optional(S.Boolean),
+          requireGuestProvisionSignal: S.optional(S.Boolean),
+        }),
+      ).annotate({
+        identifier: "VirtualMachineScaleSetOSProfileInput",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          imageReference: S.optional(__S(3424, __c107, 0)),
+          osDisk: S.optional(__S(8965, __c280, 5)),
+          dataDisks: S.optional(__S(8967, __c280, 7)),
+          diskControllerType: S.optional(S.String),
+          diskApiVersion: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "VirtualMachineScaleSetStorageProfileInput",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          osProfile: S.optional(__S(4672, __c146, 0)),
+          storageProfile: S.optional(__S(4673, __c146, 1)),
+          networkProfile: S.optional(__S(8969, __c280, 9)),
+          securityProfile: S.optional(__S(2104, __c65, 24)),
+          diagnosticsProfile: S.optional(__S(2099, __c65, 19)),
+          extensionProfile: S.optional(__S(3842, __c120, 2)),
+          licenseType: S.optional(S.String),
+          priority: S.optional(S.String),
+          evictionPolicy: S.optional(S.String),
+          billingProfile: S.optional(__S(8032, __c251, 0)),
+          scheduledEventsProfile: S.optional(__S(8034, __c251, 2)),
+          userData: S.optional(S.String),
+          capacityReservation: S.optional(__S(8133, __c254, 5)),
+          interconnectBlockProfile: S.optional(__S(8134, __c254, 6)),
+          applicationProfile: S.optional(__S(8037, __c251, 5)),
+          hardwareProfile: S.optional(__S(8971, __c280, 11)),
+          serviceArtifactReference: S.optional(__S(1952, __c61, 0)),
+          securityPostureReference: S.optional(__S(8972, __c280, 12)),
+        }),
+      ).annotate({
+        identifier: "VirtualMachineScaleSetVMProfileInput",
+      });
     case 3:
+      return S.suspend(() =>
+        S.Struct({
+          upgradePolicy: S.optional(__S(8961, __c280, 1)),
+          scheduledEventsPolicy: S.optional(__S(5091, __c159, 3)),
+          automaticRepairsPolicy: S.optional(__S(8962, __c280, 2)),
+          virtualMachineProfile: S.optional(__S(4674, __c146, 2)),
+          overprovision: S.optional(S.Boolean),
+          doNotRunExtensionsOnOverprovisionedVMs: S.optional(S.Boolean),
+          singlePlacementGroup: S.optional(S.Boolean),
+          zoneBalance: S.optional(S.Boolean),
+          platformFaultDomainCount: S.optional(S.Number),
+          proximityPlacementGroup: S.optional(__S(5216, __c163, 0)),
+          hostGroup: S.optional(__S(5216, __c163, 0)),
+          additionalCapabilities: S.optional(__S(8128, __c254, 0)),
+          scaleInPolicy: S.optional(__S(8974, __c280, 14)),
+          orchestrationMode: S.optional(S.String),
+          spotRestorePolicy: S.optional(__S(8975, __c280, 15)),
+          priorityMixPolicy: S.optional(__S(8976, __c280, 16)),
+          constrainedMaximumCapacity: S.optional(S.Boolean),
+          resiliencyPolicy: S.optional(__S(8983, __c280, 23)),
+          zonalPlatformFaultDomainAlignMode: S.optional(S.String),
+          skuProfile: S.optional(__S(8986, __c280, 26)),
+          highSpeedInterconnectPlacement: S.optional(S.String),
+          lifecycleHooksProfile: S.optional(__S(8989, __c280, 29)),
+          externalHealthPolicy: S.optional(__S(8990, __c280, 30)),
+        }),
+      ).annotate({
+        identifier: "VirtualMachineScaleSetPropertiesInput",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          vmScaleSetName: S.String.pipe(T.Label()),
+          tags: S.optional(__S(5152, __c161, 0)),
+          location: S.String,
+          sku: S.optional(__S(5344, __c167, 0)),
+          plan: S.optional(__S(8135, __c254, 7)),
+          properties: S.optional(__S(4675, __c146, 3)),
+          identity: S.optional(__S(3843, __c120, 3)),
+          zones: S.optional(__S(6400, __c200, 0)),
+          extendedLocation: S.optional(__S(7264, __c227, 0)),
+          placement: S.optional(__S(7392, __c231, 0)),
+        }).pipe(
+          T.Http({
+            method: "PUT",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}",
+            code: 200,
+            apiVersion: "2026-04-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "VirtualMachineScaleSetsCreateOrUpdateRequest",
+      });
+  }
+}
+function __c147(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          vmScaleSetName: S.String.pipe(T.Label()),
+          hibernate: S.optional(S.Boolean.pipe(T.Query())),
+          instanceIds: S.optional(__S(6400, __c200, 0)),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}/deallocate",
+            code: 200,
+            apiVersion: "2026-04-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "VirtualMachineScaleSetsDeallocateRequest",
+      });
+  }
+}
+function __c148(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          vmScaleSetName: S.String.pipe(T.Label()),
+          platformUpdateDomain: S.Number.pipe(T.Query()),
+          zone: S.optional(S.String.pipe(T.Query())),
+          placementGroupId: S.optional(S.String.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}/forceRecoveryServiceFabricPlatformUpdateDomainWalk",
+            code: 200,
+            apiVersion: "2026-04-01",
+          }),
+        ),
+      ).annotate({
+        identifier:
+          "VirtualMachineScaleSetsForceRecoveryServiceFabricPlatformUpdateDomainWalkRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          walkPerformed: S.optional(S.Boolean),
+          nextPlatformUpdateDomain: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "RecoveryWalkResponse" });
+  }
+}
+function __c149(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          vmScaleSetName: S.String.pipe(T.Label()),
+          instanceIds: S.optional(__S(64, __c2, 0)),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}/performMaintenance",
+            code: 200,
+            apiVersion: "2026-04-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "VirtualMachineScaleSetsPerformMaintenanceRequest",
+      });
+  }
+}
+function __c150(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          vmScaleSetName: S.String.pipe(T.Label()),
+          skipShutdown: S.optional(S.Boolean.pipe(T.Query())),
+          instanceIds: S.optional(__S(6400, __c200, 0)),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}/poweroff",
+            code: 200,
+            apiVersion: "2026-04-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "VirtualMachineScaleSetsPowerOffRequest",
+      });
+  }
+}
+function __c151(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          vmScaleSetName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}/reapply",
+            code: 200,
+            apiVersion: "2026-04-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "VirtualMachineScaleSetsReapplyRequest",
+      });
+  }
+}
+function __c152(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          vmScaleSetName: S.String.pipe(T.Label()),
+          tempDisk: S.optional(S.Boolean),
+          exactVersion: S.optional(S.String),
+          osProfile: S.optional(__S(4896, __c153, 0)),
+          forceUpdateOSDiskForEphemeral: S.optional(S.Boolean),
+          instanceIds: S.optional(__S(6400, __c200, 0)),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}/reimage",
+            code: 200,
+            apiVersion: "2026-04-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "VirtualMachineScaleSetsReimageRequest",
+      });
+  }
+}
+function __c153(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          adminPassword: S.optional(S.String.pipe(T.SensitiveValue({}))),
+          customData: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "OSProfileProvisioningData",
+      });
+  }
+}
+function __c154(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          vmScaleSetName: S.String.pipe(T.Label()),
+          instanceIds: S.optional(__S(6400, __c200, 0)),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}/reimageall",
+            code: 200,
+            apiVersion: "2026-04-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "VirtualMachineScaleSetsReimageAllRequest",
+      });
+  }
+}
+function __c155(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          vmScaleSetName: S.String.pipe(T.Label()),
+          instanceId: S.String.pipe(T.Label()),
+          runCommandName: S.String.pipe(T.Label()),
+          tags: S.optional(__S(8512, __c266, 0)),
+          location: S.String,
+          properties: S.optional(__S(3552, __c111, 0)),
+        }).pipe(
+          T.Http({
+            method: "PUT",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}/virtualMachines/{instanceId}/diagnosticRunCommands/{runCommandName}",
+            code: 200,
+            apiVersion: "2026-04-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "VirtualMachineScaleSetVMDiagnosticRunCommandsCreateOrUpdateRequest",
+      });
+  }
+}
+function __c156(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          availabilitySetName: S.String.pipe(T.Label()),
+          tags: S.optional(__S(5152, __c161, 0)),
+          location: S.String,
+          properties: S.optional(__S(5024, __c157, 0)),
+          sku: S.optional(__S(5344, __c167, 0)),
+        }).pipe(
+          T.Http({
+            method: "PUT",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/availabilitySets/{availabilitySetName}",
+            code: 200,
+            apiVersion: "2026-04-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "AvailabilitySetsCreateOrUpdateRequest",
+      });
+  }
+}
+function __c157(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          platformUpdateDomainCount: S.optional(S.Number),
+          platformFaultDomainCount: S.optional(S.Number),
+          virtualMachines: S.optional(__S(5312, __c166, 0)),
+          proximityPlacementGroup: S.optional(__S(5216, __c163, 0)),
+          scheduledEventsPolicy: S.optional(__S(5091, __c159, 3)),
+        }),
+      ).annotate({
+        identifier: "AvailabilitySetPropertiesInput",
+      });
+  }
+}
+function __c158(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(5184, __c162, 0)),
+          tags: S.optional(__S(5152, __c161, 0)),
+          location: S.String,
+          properties: S.optional(__S(5122, __c160, 2)),
+          sku: S.optional(__S(5344, __c167, 0)),
+        }),
+      ).annotate({
+        identifier: "AvailabilitySetsCreateOrUpdateResponse",
+      });
+  }
+}
+function __c159(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          automaticallyApprove: S.optional(S.Boolean),
+        }),
+      ).annotate({ identifier: "UserInitiatedRedeploy" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          enable: S.optional(S.Boolean),
+          scheduledEventsApiVersion: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "EventGridAndResourceGraph",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          eventGridAndResourceGraph: S.optional(__S(5089, __c159, 1)),
+        }),
+      ).annotate({
+        identifier: "ScheduledEventsAdditionalPublishingTargets",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          userInitiatedRedeploy: S.optional(__S(5088, __c159, 0)),
+          userInitiatedReboot: S.optional(__S(5088, __c159, 0)),
+          scheduledEventsAdditionalPublishingTargets: S.optional(__S(5090, __c159, 2)),
+          allInstancesDown: S.optional(__S(5088, __c159, 0)),
+        }),
+      ).annotate({ identifier: "ScheduledEventsPolicy" });
+  }
+}
+function __c160(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          constrainedMaximumCapacity: S.optional(S.Boolean),
+          defaultVirtualMachineScaleSet: S.optional(__S(5216, __c163, 0)),
+        }),
+      ).annotate({
+        identifier: "DefaultVirtualMachineScaleSetInfo",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          defaultVirtualMachineScaleSetInfo: S.optional(__S(5120, __c160, 0)),
+          migrateToVirtualMachineScaleSet: S.optional(__S(5216, __c163, 0)),
+        }),
+      ).annotate({
+        identifier: "VirtualMachineScaleSetMigrationInfo",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          platformUpdateDomainCount: S.optional(S.Number),
+          platformFaultDomainCount: S.optional(S.Number),
+          virtualMachines: S.optional(__S(5312, __c166, 0)),
+          proximityPlacementGroup: S.optional(__S(5216, __c163, 0)),
+          statuses: S.optional(__S(5280, __c165, 0)),
+          scheduledEventsPolicy: S.optional(__S(5091, __c159, 3)),
+          virtualMachineScaleSetMigrationInfo: S.optional(__S(5121, __c160, 1)),
+        }),
+      ).annotate({
+        identifier: "AvailabilitySetProperties",
+      });
+  }
+}
+function __c161(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, S.String);
+  }
+}
+function __c162(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          createdBy: S.optional(S.String),
+          createdByType: S.optional(S.String),
+          createdAt: S.optional(S.String),
+          lastModifiedBy: S.optional(S.String),
+          lastModifiedByType: S.optional(S.String),
+          lastModifiedAt: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "SystemData" });
+  }
+}
+function __c163(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "AvailabilitySetPropertiesInputVirtualMachinesItem",
+      });
+  }
+}
+function __c164(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          code: S.optional(S.String),
+          level: S.optional(S.String),
+          displayStatus: S.optional(S.String),
+          message: S.optional(S.String),
+          time: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "InstanceViewStatus" });
+  }
+}
+function __c165(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(5248, __c164, 0));
+  }
+}
+function __c166(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(5216, __c163, 0));
+  }
+}
+function __c167(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.optional(S.String),
+          tier: S.optional(S.String),
+          capacity: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "Sku" });
+  }
+}
+function __c168(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -15127,7 +18200,264 @@ function __c20(j: number): any {
       ).annotate({
         identifier: "DeleteCapacityReservationGroupRequest",
       });
-    case 4:
+  }
+}
+function __c169(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          vmScaleSetName: S.String.pipe(T.Label()),
+          instanceId: S.String.pipe(T.Label()),
+          vmExtensionName: S.String.pipe(T.Label()),
+          properties: S.optional(__S(4448, __c139, 0)),
+          location: S.optional(S.String),
+        }).pipe(
+          T.Http({
+            method: "PUT",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}/virtualMachines/{instanceId}/extensions/{vmExtensionName}",
+            code: 200,
+            apiVersion: "2026-04-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "VirtualMachineScaleSetVMExtensionsCreateOrUpdateRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          properties: S.optional(__S(7968, __c249, 0)),
+          location: S.optional(S.String),
+          type: S.optional(S.String),
+          name: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "VirtualMachineScaleSetVMExtensionsCreateOrUpdateResponse",
+      });
+  }
+}
+function __c170(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          vmScaleSetName: S.String.pipe(T.Label()),
+          instanceId: S.String.pipe(T.Label()),
+          runCommandName: S.String.pipe(T.Label()),
+          tags: S.optional(__S(8512, __c266, 0)),
+          location: S.String,
+          properties: S.optional(__S(3552, __c111, 0)),
+        }).pipe(
+          T.Http({
+            method: "PUT",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}/virtualMachines/{instanceId}/runCommands/{runCommandName}",
+            code: 200,
+            apiVersion: "2026-04-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "VirtualMachineScaleSetVMRunCommandsCreateOrUpdateRequest",
+      });
+  }
+}
+function __c171(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          vmScaleSetName: S.String.pipe(T.Label()),
+          instanceId: S.String.pipe(T.Label()),
+          dataDisksToAttach: S.optional(__S(4577, __c143, 1)),
+          dataDisksToDetach: S.optional(__S(4579, __c143, 3)),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}/virtualMachines/{instanceId}/attachDetachDataDisks",
+            code: 200,
+            apiVersion: "2026-04-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "VirtualMachineScaleSetVMsAttachDetachDataDisksRequest",
+      });
+  }
+}
+function __c172(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          vmScaleSetName: S.String.pipe(T.Label()),
+          instanceId: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}/virtualMachines/{instanceId}/deallocate",
+            code: 200,
+            apiVersion: "2026-04-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "VirtualMachineScaleSetVMsDeallocateRequest",
+      });
+  }
+}
+function __c173(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          vmScaleSetName: S.String.pipe(T.Label()),
+          instanceId: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}/virtualMachines/{instanceId}/performMaintenance",
+            code: 200,
+            apiVersion: "2026-04-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "VirtualMachineScaleSetVMsPerformMaintenanceRequest",
+      });
+  }
+}
+function __c174(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          vmScaleSetName: S.String.pipe(T.Label()),
+          instanceId: S.String.pipe(T.Label()),
+          skipShutdown: S.optional(S.Boolean.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}/virtualMachines/{instanceId}/powerOff",
+            code: 200,
+            apiVersion: "2026-04-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "VirtualMachineScaleSetVMsPowerOffRequest",
+      });
+  }
+}
+function __c175(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          vmScaleSetName: S.String.pipe(T.Label()),
+          instanceId: S.String.pipe(T.Label()),
+          tempDisk: S.optional(S.Boolean),
+          exactVersion: S.optional(S.String),
+          osProfile: S.optional(__S(4896, __c153, 0)),
+          forceUpdateOSDiskForEphemeral: S.optional(S.Boolean),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}/virtualMachines/{instanceId}/reimage",
+            code: 200,
+            apiVersion: "2026-04-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "VirtualMachineScaleSetVMsReimageRequest",
+      });
+  }
+}
+function __c176(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          vmScaleSetName: S.String.pipe(T.Label()),
+          instanceId: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}/virtualMachines/{instanceId}/reimageall",
+            code: 200,
+            apiVersion: "2026-04-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "VirtualMachineScaleSetVMsReimageAllRequest",
+      });
+  }
+}
+function __c177(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          vmScaleSetName: S.String.pipe(T.Label()),
+          instanceId: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}/virtualMachines/{instanceId}/simulateEviction",
+            code: 200,
+            apiVersion: "2026-04-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "VirtualMachineScaleSetVMsSimulateEvictionRequest",
+      });
+  }
+}
+function __c178(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          vmName: S.String.pipe(T.Label()),
+          tags: S.optional(__S(5152, __c161, 0)),
+          location: S.String,
+          properties: S.optional(__S(3488, __c109, 0)),
+          plan: S.optional(__S(8135, __c254, 7)),
+          identity: S.optional(__S(3458, __c108, 2)),
+          zones: S.optional(__S(6400, __c200, 0)),
+          extendedLocation: S.optional(__S(7264, __c227, 0)),
+          placement: S.optional(__S(7392, __c231, 0)),
+        }).pipe(
+          T.Http({
+            method: "PUT",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachines/{vmName}",
+            code: 200,
+            apiVersion: "2026-04-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "VirtualMachinesCreateOrUpdateRequest",
+      });
+  }
+}
+function __c179(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -15144,7 +18474,185 @@ function __c20(j: number): any {
       ).annotate({
         identifier: "DeleteContainerServiceRequest",
       });
-    case 5:
+  }
+}
+function __c180(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          vmName: S.String.pipe(T.Label()),
+          hibernate: S.optional(S.Boolean.pipe(T.Query())),
+          forceDeallocate: S.optional(S.Boolean.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachines/{vmName}/deallocate",
+            code: 200,
+            apiVersion: "2026-04-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "VirtualMachinesDeallocateRequest",
+      });
+  }
+}
+function __c181(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          vmName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachines/{vmName}/generalize",
+            code: 200,
+            apiVersion: "2026-04-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "VirtualMachinesGeneralizeRequest",
+      });
+  }
+}
+function __c182(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          vmName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachines/{vmName}/instanceView",
+            code: 200,
+            apiVersion: "2026-04-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "VirtualMachinesInstanceViewRequest",
+      });
+  }
+}
+function __c183(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          vmName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachines/{vmName}/performMaintenance",
+            code: 200,
+            apiVersion: "2026-04-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "VirtualMachinesPerformMaintenanceRequest",
+      });
+  }
+}
+function __c184(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          vmName: S.String.pipe(T.Label()),
+          skipShutdown: S.optional(S.Boolean.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachines/{vmName}/powerOff",
+            code: 200,
+            apiVersion: "2026-04-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "VirtualMachinesPowerOffRequest",
+      });
+  }
+}
+function __c185(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          vmName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachines/{vmName}/reapply",
+            code: 200,
+            apiVersion: "2026-04-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "VirtualMachinesReapplyRequest",
+      });
+  }
+}
+function __c186(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          vmName: S.String.pipe(T.Label()),
+          tempDisk: S.optional(S.Boolean),
+          exactVersion: S.optional(S.String),
+          osProfile: S.optional(__S(4896, __c153, 0)),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachines/{vmName}/reimage",
+            code: 200,
+            apiVersion: "2026-04-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "VirtualMachinesReimageRequest",
+      });
+  }
+}
+function __c187(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          vmName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachines/{vmName}/simulateEviction",
+            code: 200,
+            apiVersion: "2026-04-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "VirtualMachinesSimulateEvictionRequest",
+      });
+  }
+}
+function __c188(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -15162,7 +18670,11 @@ function __c20(j: number): any {
       ).annotate({
         identifier: "DeleteDedicatedHostRequest",
       });
-    case 6:
+  }
+}
+function __c189(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -15179,7 +18691,11 @@ function __c20(j: number): any {
       ).annotate({
         identifier: "DeleteDedicatedHostGroupRequest",
       });
-    case 7:
+  }
+}
+function __c190(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -15196,7 +18712,7 @@ function __c20(j: number): any {
       ).annotate({ identifier: "DeleteImageRequest" });
   }
 }
-function __c21(j: number): any {
+function __c191(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -15215,11 +18731,19 @@ function __c21(j: number): any {
       ).annotate({
         identifier: "DeleteInterconnectBlockRequest",
       });
-    case 1:
+  }
+}
+function __c192(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "DeleteInterconnectBlockResponse",
       });
-    case 2:
+  }
+}
+function __c193(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -15236,7 +18760,11 @@ function __c21(j: number): any {
       ).annotate({
         identifier: "DeleteProximityPlacementGroupRequest",
       });
-    case 3:
+  }
+}
+function __c194(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -15254,7 +18782,11 @@ function __c21(j: number): any {
       ).annotate({
         identifier: "DeleteRestorePointRequest",
       });
-    case 4:
+  }
+}
+function __c195(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -15271,7 +18803,11 @@ function __c21(j: number): any {
       ).annotate({
         identifier: "DeleteRestorePointCollectionRequest",
       });
-    case 5:
+  }
+}
+function __c196(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -15288,7 +18824,122 @@ function __c21(j: number): any {
       ).annotate({
         identifier: "DeleteSshPublicKeyRequest",
       });
-    case 6:
+  }
+}
+function __c197(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          location: S.String.pipe(T.Label()),
+          executionParameters: __S(6368, __c199, 0),
+          resources: __S(6369, __c199, 1),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/locations/{location}/virtualMachinesBulkDeallocate",
+            code: 200,
+            apiVersion: "2026-06-06",
+          }),
+        ),
+      ).annotate({
+        identifier: "BulkVirtualMachineBulkOperationDeallocateRequest",
+      });
+  }
+}
+function __c198(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          retryCount: S.optional(S.Number),
+          retryWindowInMinutes: S.optional(S.Number),
+          onFailureAction: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "RetryPolicy" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          errorCode: S.String,
+          errorDetails: S.String,
+        }),
+      ).annotate({ identifier: "ResourceOperationError" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          lastOpType: S.String,
+          status: S.String,
+          error: S.optional(__S(6337, __c198, 1)),
+        }),
+      ).annotate({ identifier: "FallbackOperationInfo" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          operationId: S.String,
+          resourceId: S.optional(S.String),
+          opType: S.optional(S.String),
+          subscriptionId: S.optional(S.String),
+          deadline: S.optional(S.String),
+          deadlineType: S.optional(S.String),
+          state: S.optional(S.String),
+          timezone: S.optional(S.String),
+          resourceOperationError: S.optional(__S(6337, __c198, 1)),
+          fallbackOperationInfo: S.optional(__S(6338, __c198, 2)),
+          completedAt: S.optional(S.String),
+          retryPolicy: S.optional(__S(6336, __c198, 0)),
+        }),
+      ).annotate({ identifier: "ResourceOperationDetails" });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          resourceId: S.optional(S.String),
+          errorCode: S.optional(S.String),
+          errorDetails: S.optional(S.String),
+          operation: S.optional(__S(6339, __c198, 3)),
+        }),
+      ).annotate({ identifier: "ResourceOperation" });
+    case 5:
+      return S.Array(__S(6340, __c198, 4));
+  }
+}
+function __c199(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          retryPolicy: S.optional(__S(6336, __c198, 0)),
+        }),
+      ).annotate({ identifier: "ExecutionParameters" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          ids: __S(6400, __c200, 0),
+        }),
+      ).annotate({ identifier: "Resources" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          description: S.String,
+          type: S.String,
+          location: S.String,
+          results: S.optional(__S(6341, __c198, 5)),
+        }),
+      ).annotate({
+        identifier: "DeallocateResourceOperationResponse",
+      });
+  }
+}
+function __c200(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c201(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -15306,7 +18957,11 @@ function __c21(j: number): any {
       ).annotate({
         identifier: "DeleteVirtualMachineRequest",
       });
-    case 7:
+  }
+}
+function __c202(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -15326,7 +18981,7 @@ function __c21(j: number): any {
       });
   }
 }
-function __c22(j: number): any {
+function __c203(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -15346,7 +19001,11 @@ function __c22(j: number): any {
       ).annotate({
         identifier: "DeleteVirtualMachineExtensionRequest",
       });
-    case 1:
+  }
+}
+function __c204(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -15364,7 +19023,11 @@ function __c22(j: number): any {
       ).annotate({
         identifier: "DeleteVirtualMachineRunCommandRequest",
       });
-    case 2:
+  }
+}
+function __c205(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -15382,7 +19045,11 @@ function __c22(j: number): any {
       ).annotate({
         identifier: "DeleteVirtualMachineScaleSetRequest",
       });
-    case 3:
+  }
+}
+function __c206(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -15400,14 +19067,18 @@ function __c22(j: number): any {
       ).annotate({
         identifier: "DeleteVirtualMachineScaleSetExtensionRequest",
       });
-    case 4:
+  }
+}
+function __c207(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           vmScaleSetName: S.String.pipe(T.Label()),
           forceDeletion: S.optional(S.Boolean.pipe(T.Query())),
-          instanceIds: __S(23, __c2, 7),
+          instanceIds: __S(6400, __c200, 0),
         }).pipe(
           T.Http({
             method: "POST",
@@ -15419,7 +19090,11 @@ function __c22(j: number): any {
       ).annotate({
         identifier: "DeleteVirtualMachineScaleSetInstancesRequest",
       });
-    case 5:
+  }
+}
+function __c208(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -15438,7 +19113,11 @@ function __c22(j: number): any {
       ).annotate({
         identifier: "DeleteVirtualMachineScaleSetVMRequest",
       });
-    case 6:
+  }
+}
+function __c209(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -15457,7 +19136,11 @@ function __c22(j: number): any {
       ).annotate({
         identifier: "DeleteVirtualMachineScaleSetVMDiagnosticRunCommandRequest",
       });
-    case 7:
+  }
+}
+function __c210(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -15478,7 +19161,30 @@ function __c22(j: number): any {
       });
   }
 }
-function __c23(j: number): any {
+function __c211(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          location: S.String.pipe(T.Label()),
+          executionParameters: __S(6368, __c199, 0),
+          resources: __S(6369, __c199, 1),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/locations/{location}/virtualMachinesBulkHibernate",
+            code: 200,
+            apiVersion: "2026-06-06",
+          }),
+        ),
+      ).annotate({
+        identifier: "BulkVirtualMachineBulkOperationHibernateRequest",
+      });
+  }
+}
+function __c212(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -15499,7 +19205,11 @@ function __c23(j: number): any {
       ).annotate({
         identifier: "DeleteVirtualMachineScaleSetVMRunCommandRequest",
       });
-    case 1:
+  }
+}
+function __c213(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -15524,21 +19234,29 @@ function __c23(j: number): any {
       ).annotate({
         identifier: "ExportLogAnalyticsRequestRateByIntervalRequest",
       });
-    case 2:
+  }
+}
+function __c214(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           output: S.optional(S.String),
         }),
       ).annotate({ identifier: "LogAnalyticsOutput" });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          properties: S.optional(__S(186, __c23, 2)),
+          properties: S.optional(__S(6848, __c214, 0)),
         }),
       ).annotate({
         identifier: "LogAnalyticsOperationResult",
       });
-    case 4:
+  }
+}
+function __c215(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -15562,7 +19280,11 @@ function __c23(j: number): any {
       ).annotate({
         identifier: "ExportLogAnalyticsThrottledRequestsRequest",
       });
-    case 5:
+  }
+}
+function __c216(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -15580,7 +19302,7 @@ function __c23(j: number): any {
       ).annotate({
         identifier: "GenerateSshPublicKeyKeyPairRequest",
       });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           privateKey: S.String.pipe(T.SensitiveValue({})),
@@ -15590,7 +19312,11 @@ function __c23(j: number): any {
       ).annotate({
         identifier: "SshPublicKeyGenerateKeyPairResult",
       });
-    case 7:
+  }
+}
+function __c217(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -15609,7 +19335,7 @@ function __c23(j: number): any {
       });
   }
 }
-function __c24(j: number): any {
+function __c218(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -15630,7 +19356,11 @@ function __c24(j: number): any {
       ).annotate({
         identifier: "GetCapacityReservationRequest",
       });
-    case 1:
+  }
+}
+function __c219(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -15648,7 +19378,11 @@ function __c24(j: number): any {
       ).annotate({
         identifier: "GetCapacityReservationGroupRequest",
       });
-    case 2:
+  }
+}
+function __c220(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -15665,7 +19399,11 @@ function __c24(j: number): any {
       ).annotate({
         identifier: "GetContainerServiceRequest",
       });
-    case 3:
+  }
+}
+function __c221(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -15682,20 +19420,28 @@ function __c24(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetDedicatedHostRequest" });
-    case 4:
+  }
+}
+function __c222(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(14, __c1, 6)),
-          tags: S.optional(__S(4, __c0, 4)),
+          systemData: S.optional(__S(5184, __c162, 0)),
+          tags: S.optional(__S(5152, __c161, 0)),
           location: S.String,
-          properties: S.optional(__S(158, __c19, 6)),
-          sku: __S(12, __c1, 4),
+          properties: S.optional(__S(3713, __c116, 1)),
+          sku: __S(5344, __c167, 0),
         }),
       ).annotate({ identifier: "GetDedicatedHostResponse" });
-    case 5:
+  }
+}
+function __c223(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -15713,7 +19459,40 @@ function __c24(j: number): any {
       ).annotate({
         identifier: "GetDedicatedHostGroupRequest",
       });
-    case 6:
+  }
+}
+function __c224(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          availabilitySetName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/availabilitySets/{availabilitySetName}/cancelMigrationToVirtualMachineScaleSet",
+            code: 200,
+            apiVersion: "2026-04-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "CancelAvailabilitySetMigrationToVirtualMachineScaleSetRequest",
+      });
+  }
+}
+function __c225(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "CancelAvailabilitySetMigrationToVirtualMachineScaleSetResponse",
+      });
+  }
+}
+function __c226(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -15729,57 +19508,11 @@ function __c24(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetImageRequest" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          snapshot: S.optional(__S(5, __c0, 5)),
-          managedDisk: S.optional(__S(5, __c0, 5)),
-          blobUri: S.optional(S.String),
-          caching: S.optional(S.String),
-          diskSizeGB: S.optional(S.Number),
-          storageAccountType: S.optional(S.String),
-          diskEncryptionSet: S.optional(__S(5, __c0, 5)),
-          osType: S.String,
-          osState: S.String,
-        }),
-      ).annotate({ identifier: "ImageOSDisk" });
   }
 }
-function __c25(j: number): any {
+function __c227(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() =>
-        S.Struct({
-          snapshot: S.optional(__S(5, __c0, 5)),
-          managedDisk: S.optional(__S(5, __c0, 5)),
-          blobUri: S.optional(S.String),
-          caching: S.optional(S.String),
-          diskSizeGB: S.optional(S.Number),
-          storageAccountType: S.optional(S.String),
-          diskEncryptionSet: S.optional(__S(5, __c0, 5)),
-          lun: S.Number,
-        }),
-      ).annotate({ identifier: "ImageDataDisk" });
-    case 1:
-      return S.Array(__S(200, __c25, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          osDisk: S.optional(__S(199, __c24, 7)),
-          dataDisks: S.optional(__S(201, __c25, 1)),
-          zoneResilient: S.optional(S.Boolean),
-        }),
-      ).annotate({ identifier: "ImageStorageProfile" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          sourceVirtualMachine: S.optional(__S(5, __c0, 5)),
-          storageProfile: S.optional(__S(202, __c25, 2)),
-          provisioningState: S.optional(S.String),
-          hyperVGeneration: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ImageProperties" });
-    case 4:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
@@ -15788,20 +19521,78 @@ function __c25(j: number): any {
       ).annotate({
         identifier: "GetImageResponseExtendedLocation",
       });
-    case 5:
+  }
+}
+function __c228(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          snapshot: S.optional(__S(5216, __c163, 0)),
+          managedDisk: S.optional(__S(5216, __c163, 0)),
+          blobUri: S.optional(S.String),
+          caching: S.optional(S.String),
+          diskSizeGB: S.optional(S.Number),
+          storageAccountType: S.optional(S.String),
+          diskEncryptionSet: S.optional(__S(5216, __c163, 0)),
+          osType: S.String,
+          osState: S.String,
+        }),
+      ).annotate({ identifier: "ImageOSDisk" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          snapshot: S.optional(__S(5216, __c163, 0)),
+          managedDisk: S.optional(__S(5216, __c163, 0)),
+          blobUri: S.optional(S.String),
+          caching: S.optional(S.String),
+          diskSizeGB: S.optional(S.Number),
+          storageAccountType: S.optional(S.String),
+          diskEncryptionSet: S.optional(__S(5216, __c163, 0)),
+          lun: S.Number,
+        }),
+      ).annotate({ identifier: "ImageDataDisk" });
+    case 2:
+      return S.Array(__S(7297, __c228, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          osDisk: S.optional(__S(7296, __c228, 0)),
+          dataDisks: S.optional(__S(7298, __c228, 2)),
+          zoneResilient: S.optional(S.Boolean),
+        }),
+      ).annotate({ identifier: "ImageStorageProfile" });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          sourceVirtualMachine: S.optional(__S(5216, __c163, 0)),
+          storageProfile: S.optional(__S(7299, __c228, 3)),
+          provisioningState: S.optional(S.String),
+          hyperVGeneration: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ImageProperties" });
+  }
+}
+function __c229(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(14, __c1, 6)),
-          tags: S.optional(__S(4, __c0, 4)),
+          systemData: S.optional(__S(5184, __c162, 0)),
+          tags: S.optional(__S(5152, __c161, 0)),
           location: S.String,
-          properties: S.optional(__S(203, __c25, 3)),
-          extendedLocation: S.optional(__S(204, __c25, 4)),
+          properties: S.optional(__S(7300, __c228, 4)),
+          extendedLocation: S.optional(__S(7264, __c227, 0)),
         }),
       ).annotate({ identifier: "GetImageResponse" });
-    case 6:
+  }
+}
+function __c230(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -15819,59 +19610,71 @@ function __c25(j: number): any {
       ).annotate({
         identifier: "GetInterconnectBlockRequest",
       });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          currentCapacity: S.optional(S.Number),
-          statuses: S.optional(__S(16, __c2, 0)),
-        }),
-      ).annotate({
-        identifier: "InterconnectBlockInstanceView",
-      });
   }
 }
-function __c26(j: number): any {
+function __c231(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          virtualMachinesAssociated: S.optional(__S(6, __c0, 6)),
-          interconnectGroup: __S(84, __c10, 4),
-          interconnectBlockId: S.optional(S.String),
-          provisioningTime: S.optional(S.String),
-          provisioningState: S.optional(S.String),
-          instanceView: S.optional(__S(207, __c25, 7)),
-          timeCreated: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "InterconnectBlockProperties",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
           zonePlacementPolicy: S.optional(S.String),
-          includeZones: S.optional(__S(23, __c2, 7)),
-          excludeZones: S.optional(__S(23, __c2, 7)),
+          includeZones: S.optional(__S(6400, __c200, 0)),
+          excludeZones: S.optional(__S(6400, __c200, 0)),
         }),
       ).annotate({ identifier: "Placement" });
-    case 2:
+  }
+}
+function __c232(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(14, __c1, 6)),
-          tags: S.optional(__S(4, __c0, 4)),
+          systemData: S.optional(__S(5184, __c162, 0)),
+          tags: S.optional(__S(5152, __c161, 0)),
           location: S.String,
-          properties: S.optional(__S(208, __c26, 0)),
-          sku: __S(12, __c1, 4),
-          zones: S.optional(__S(23, __c2, 7)),
-          placement: S.optional(__S(209, __c26, 1)),
+          properties: S.optional(__S(7457, __c233, 1)),
+          sku: __S(5344, __c167, 0),
+          zones: S.optional(__S(6400, __c200, 0)),
+          placement: S.optional(__S(7392, __c231, 0)),
         }),
       ).annotate({
         identifier: "GetInterconnectBlockResponse",
       });
-    case 3:
+  }
+}
+function __c233(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          currentCapacity: S.optional(S.Number),
+          statuses: S.optional(__S(5280, __c165, 0)),
+        }),
+      ).annotate({
+        identifier: "InterconnectBlockInstanceView",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          virtualMachinesAssociated: S.optional(__S(5312, __c166, 0)),
+          interconnectGroup: __S(1952, __c61, 0),
+          interconnectBlockId: S.optional(S.String),
+          provisioningTime: S.optional(S.String),
+          provisioningState: S.optional(S.String),
+          instanceView: S.optional(__S(7456, __c233, 0)),
+          timeCreated: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "InterconnectBlockProperties",
+      });
+  }
+}
+function __c234(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -15889,41 +19692,9 @@ function __c26(j: number): any {
       ).annotate({
         identifier: "GetProximityPlacementGroupRequest",
       });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          colocationStatus: S.optional(__S(15, __c1, 7)),
-        }),
-      ).annotate({
-        identifier: "SubResourceWithColocationStatus",
-      });
-    case 5:
-      return S.Array(__S(212, __c26, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          vmSizes: S.optional(__S(23, __c2, 7)),
-        }),
-      ).annotate({
-        identifier: "ProximityPlacementGroupPropertiesIntent",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          proximityPlacementGroupType: S.optional(S.String),
-          virtualMachines: S.optional(__S(213, __c26, 5)),
-          virtualMachineScaleSets: S.optional(__S(213, __c26, 5)),
-          availabilitySets: S.optional(__S(213, __c26, 5)),
-          colocationStatus: S.optional(__S(15, __c1, 7)),
-          intent: S.optional(__S(214, __c26, 6)),
-        }),
-      ).annotate({
-        identifier: "ProximityPlacementGroupProperties",
-      });
   }
 }
-function __c27(j: number): any {
+function __c235(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -15931,16 +19702,56 @@ function __c27(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(14, __c1, 6)),
-          tags: S.optional(__S(4, __c0, 4)),
+          systemData: S.optional(__S(5184, __c162, 0)),
+          tags: S.optional(__S(5152, __c161, 0)),
           location: S.String,
-          properties: S.optional(__S(215, __c26, 7)),
-          zones: S.optional(__S(23, __c2, 7)),
+          properties: S.optional(__S(7555, __c236, 3)),
+          zones: S.optional(__S(6400, __c200, 0)),
         }),
       ).annotate({
         identifier: "GetProximityPlacementGroupResponse",
       });
+  }
+}
+function __c236(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          colocationStatus: S.optional(__S(5248, __c164, 0)),
+        }),
+      ).annotate({
+        identifier: "SubResourceWithColocationStatus",
+      });
     case 1:
+      return S.Array(__S(7552, __c236, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          vmSizes: S.optional(__S(6400, __c200, 0)),
+        }),
+      ).annotate({
+        identifier: "ProximityPlacementGroupPropertiesIntent",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          proximityPlacementGroupType: S.optional(S.String),
+          virtualMachines: S.optional(__S(7553, __c236, 1)),
+          virtualMachineScaleSets: S.optional(__S(7553, __c236, 1)),
+          availabilitySets: S.optional(__S(7553, __c236, 1)),
+          colocationStatus: S.optional(__S(5248, __c164, 0)),
+          intent: S.optional(__S(7554, __c236, 2)),
+        }),
+      ).annotate({
+        identifier: "ProximityPlacementGroupProperties",
+      });
+  }
+}
+function __c237(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -15957,17 +19768,25 @@ function __c27(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetRestorePointRequest" });
-    case 2:
+  }
+}
+function __c238(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(14, __c1, 6)),
-          properties: S.optional(__S(139, __c17, 3)),
+          systemData: S.optional(__S(5184, __c162, 0)),
+          properties: S.optional(__S(1996, __c62, 12)),
         }),
       ).annotate({ identifier: "GetRestorePointResponse" });
-    case 3:
+  }
+}
+function __c239(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -15985,7 +19804,11 @@ function __c27(j: number): any {
       ).annotate({
         identifier: "GetRestorePointCollectionRequest",
       });
-    case 4:
+  }
+}
+function __c240(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           location: S.optional(S.String),
@@ -15994,37 +19817,41 @@ function __c27(j: number): any {
       ).annotate({
         identifier: "RestorePointCollectionSourceProperties",
       });
-    case 5:
-      return S.Array(__S(218, __c27, 2));
-    case 6:
+    case 1:
+      return S.Array(__S(7616, __c238, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          source: S.optional(__S(220, __c27, 4)),
+          source: S.optional(__S(7680, __c240, 0)),
           provisioningState: S.optional(S.String),
           restorePointCollectionId: S.optional(S.String),
-          restorePoints: S.optional(__S(221, __c27, 5)),
+          restorePoints: S.optional(__S(7681, __c240, 1)),
           instantAccess: S.optional(S.Boolean),
         }),
       ).annotate({
         identifier: "RestorePointCollectionProperties",
       });
-    case 7:
+  }
+}
+function __c241(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(14, __c1, 6)),
-          tags: S.optional(__S(4, __c0, 4)),
+          systemData: S.optional(__S(5184, __c162, 0)),
+          tags: S.optional(__S(5152, __c161, 0)),
           location: S.String,
-          properties: S.optional(__S(222, __c27, 6)),
+          properties: S.optional(__S(7682, __c240, 2)),
         }),
       ).annotate({
         identifier: "GetRestorePointCollectionResponse",
       });
   }
 }
-function __c28(j: number): any {
+function __c242(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -16045,7 +19872,7 @@ function __c28(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          supportedResourceTypes: S.optional(__S(23, __c2, 7)),
+          supportedResourceTypes: S.optional(__S(6400, __c200, 0)),
         }),
       ).annotate({ identifier: "DiagnosticProperties" });
     case 2:
@@ -16054,13 +19881,17 @@ function __c28(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(14, __c1, 6)),
-          properties: S.optional(__S(225, __c28, 1)),
+          systemData: S.optional(__S(5184, __c162, 0)),
+          properties: S.optional(__S(7745, __c242, 1)),
         }),
       ).annotate({
         identifier: "GetSpotPlacementScoreResponse",
       });
-    case 3:
+  }
+}
+function __c243(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -16075,19 +19906,27 @@ function __c28(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetSshPublicKeyRequest" });
-    case 4:
+  }
+}
+function __c244(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(14, __c1, 6)),
-          tags: S.optional(__S(4, __c0, 4)),
+          systemData: S.optional(__S(5184, __c162, 0)),
+          tags: S.optional(__S(5152, __c161, 0)),
           location: S.String,
-          properties: S.optional(__S(141, __c17, 5)),
+          properties: S.optional(__S(2656, __c83, 0)),
         }),
       ).annotate({ identifier: "GetSshPublicKeyResponse" });
-    case 5:
+  }
+}
+function __c245(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -16103,383 +19942,59 @@ function __c28(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetVirtualMachineRequest" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          publisher: S.optional(S.String),
-          offer: S.optional(S.String),
-          sku: S.optional(S.String),
-          version: S.optional(S.String),
-          exactVersion: S.optional(S.String),
-          sharedGalleryImageId: S.optional(S.String),
-          communityGalleryImageId: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ImageReference" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          uri: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "VirtualHardDisk" });
   }
 }
-function __c29(j: number): any {
+function __c246(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          option: S.optional(S.String),
-          placement: S.optional(S.String),
-          enableFullCaching: S.optional(S.Boolean),
+          isEnabled: S.optional(S.Boolean),
         }),
-      ).annotate({ identifier: "DiffDiskSettings" });
+      ).annotate({ identifier: "ZoneMovement" });
     case 1:
       return S.suspend(() =>
         S.Struct({
-          osType: S.optional(S.String),
-          encryptionSettings: S.optional(__S(103, __c12, 7)),
-          name: S.optional(S.String),
-          vhd: S.optional(__S(231, __c28, 7)),
-          image: S.optional(__S(231, __c28, 7)),
-          caching: S.optional(S.String),
-          writeAcceleratorEnabled: S.optional(S.Boolean),
-          diffDiskSettings: S.optional(__S(232, __c29, 0)),
-          createOption: S.String,
-          diskSizeGB: S.optional(S.Number),
-          storageFaultDomainAlignment: S.optional(S.String),
-          managedDisk: S.optional(__S(90, __c11, 2)),
-          deleteOption: S.optional(S.String),
+          zoneMovement: S.optional(__S(7872, __c246, 0)),
         }),
-      ).annotate({ identifier: "OSDisk" });
+      ).annotate({ identifier: "ResiliencyProfile" });
     case 2:
       return S.suspend(() =>
         S.Struct({
-          lun: S.Number,
-          name: S.optional(S.String),
-          vhd: S.optional(__S(231, __c28, 7)),
-          image: S.optional(__S(231, __c28, 7)),
-          caching: S.optional(S.String),
-          writeAcceleratorEnabled: S.optional(S.Boolean),
-          createOption: S.String,
-          diskSizeGB: S.optional(S.Number),
-          storageFaultDomainAlignment: S.optional(S.String),
-          managedDisk: S.optional(__S(90, __c11, 2)),
-          sourceResource: S.optional(__S(84, __c10, 4)),
-          toBeDetached: S.optional(S.Boolean),
-          diskIOPSReadWrite: S.optional(S.Number),
-          diskMBpsReadWrite: S.optional(S.Number),
-          detachOption: S.optional(S.String),
-          deleteOption: S.optional(S.String),
+          hardwareProfile: S.optional(__S(2144, __c67, 0)),
+          scheduledEventsPolicy: S.optional(__S(5091, __c159, 3)),
+          storageProfile: S.optional(__S(8227, __c257, 3)),
+          additionalCapabilities: S.optional(__S(8128, __c254, 0)),
+          osProfile: S.optional(__S(2145, __c67, 1)),
+          networkProfile: S.optional(__S(8269, __c258, 13)),
+          securityProfile: S.optional(__S(2104, __c65, 24)),
+          diagnosticsProfile: S.optional(__S(2099, __c65, 19)),
+          availabilitySet: S.optional(__S(5216, __c163, 0)),
+          virtualMachineScaleSet: S.optional(__S(5216, __c163, 0)),
+          proximityPlacementGroup: S.optional(__S(5216, __c163, 0)),
+          priority: S.optional(S.String),
+          evictionPolicy: S.optional(S.String),
+          billingProfile: S.optional(__S(8032, __c251, 0)),
+          host: S.optional(__S(5216, __c163, 0)),
+          hostGroup: S.optional(__S(5216, __c163, 0)),
+          provisioningState: S.optional(S.String),
+          instanceView: S.optional(__S(7907, __c247, 3)),
+          licenseType: S.optional(S.String),
+          vmId: S.optional(S.String),
+          extensionsTimeBudget: S.optional(S.String),
+          platformFaultDomain: S.optional(S.Number),
+          scheduledEventsProfile: S.optional(__S(8034, __c251, 2)),
+          userData: S.optional(S.String),
+          capacityReservation: S.optional(__S(8133, __c254, 5)),
+          interconnectBlockProfile: S.optional(__S(8134, __c254, 6)),
+          applicationProfile: S.optional(__S(8037, __c251, 5)),
+          timeCreated: S.optional(S.String),
+          resiliencyProfile: S.optional(__S(7873, __c246, 1)),
         }),
-      ).annotate({ identifier: "DataDisk" });
-    case 3:
-      return S.Array(__S(234, __c29, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          imageReference: S.optional(__S(230, __c28, 6)),
-          osDisk: S.optional(__S(233, __c29, 1)),
-          dataDisks: S.optional(__S(235, __c29, 3)),
-          diskControllerType: S.optional(S.String),
-          alignRegionalDisksToVMZone: S.optional(S.Boolean),
-          diskApiVersion: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "StorageProfile" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          ultraSSDEnabled: S.optional(S.Boolean),
-          hibernationEnabled: S.optional(S.Boolean),
-          enableFips1403Encryption: S.optional(S.Boolean),
-        }),
-      ).annotate({ identifier: "AdditionalCapabilities" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          primary: S.optional(S.Boolean),
-          deleteOption: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "NetworkInterfaceReferenceProperties",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          properties: S.optional(__S(238, __c29, 6)),
-        }),
-      ).annotate({
-        identifier: "NetworkInterfaceReference",
-      });
+      ).annotate({ identifier: "VirtualMachineProperties" });
   }
 }
-function __c30(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(239, __c29, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          dnsServers: S.optional(__S(0, __c0, 0)),
-        }),
-      ).annotate({
-        identifier: "VirtualMachineNetworkInterfaceDnsSettingsConfiguration",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          domainNameLabel: S.String,
-          domainNameLabelScope: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "VirtualMachinePublicIPAddressDnsSettingsConfiguration",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          ipTagType: S.optional(S.String),
-          tag: S.optional(S.String),
-          firstPartyServiceTagId: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "VirtualMachineIpTag" });
-    case 4:
-      return S.Array(__S(243, __c30, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          idleTimeoutInMinutes: S.optional(S.Number),
-          deleteOption: S.optional(S.String),
-          dnsSettings: S.optional(__S(242, __c30, 2)),
-          ipTags: S.optional(__S(244, __c30, 4)),
-          publicIPPrefix: S.optional(__S(5, __c0, 5)),
-          publicIPAddressVersion: S.optional(S.String),
-          publicIPAllocationMethod: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "VirtualMachinePublicIPAddressConfigurationProperties",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.optional(S.String),
-          tier: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "PublicIPAddressSku" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String,
-          properties: S.optional(__S(245, __c30, 5)),
-          sku: S.optional(__S(246, __c30, 6)),
-          tags: S.optional(__S(4, __c0, 4)),
-        }),
-      ).annotate({
-        identifier: "VirtualMachinePublicIPAddressConfiguration",
-      });
-  }
-}
-function __c31(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          subnet: S.optional(__S(5, __c0, 5)),
-          primary: S.optional(S.Boolean),
-          publicIPAddressConfiguration: S.optional(__S(247, __c30, 7)),
-          privateIPAddressVersion: S.optional(S.String),
-          applicationSecurityGroups: S.optional(__S(39, __c4, 7)),
-          applicationGatewayBackendAddressPools: S.optional(__S(39, __c4, 7)),
-          loadBalancerBackendAddressPools: S.optional(__S(39, __c4, 7)),
-        }),
-      ).annotate({
-        identifier: "VirtualMachineNetworkInterfaceIPConfigurationProperties",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String,
-          properties: S.optional(__S(248, __c31, 0)),
-        }),
-      ).annotate({
-        identifier: "VirtualMachineNetworkInterfaceIPConfiguration",
-      });
-    case 2:
-      return S.Array(__S(249, __c31, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          primary: S.optional(S.Boolean),
-          deleteOption: S.optional(S.String),
-          enableAcceleratedNetworking: S.optional(S.Boolean),
-          disableTcpStateTracking: S.optional(S.Boolean),
-          enableFpga: S.optional(S.Boolean),
-          enableIPForwarding: S.optional(S.Boolean),
-          networkSecurityGroup: S.optional(__S(5, __c0, 5)),
-          dnsSettings: S.optional(__S(241, __c30, 1)),
-          ipConfigurations: __S(250, __c31, 2),
-          dscpConfiguration: S.optional(__S(5, __c0, 5)),
-          auxiliaryMode: S.optional(S.String),
-          auxiliarySku: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "VirtualMachineNetworkInterfaceConfigurationProperties",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String,
-          properties: S.optional(__S(251, __c31, 3)),
-          tags: S.optional(__S(4, __c0, 4)),
-        }),
-      ).annotate({
-        identifier: "VirtualMachineNetworkInterfaceConfiguration",
-      });
-    case 5:
-      return S.Array(__S(252, __c31, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          interconnectGroup: S.optional(__S(5, __c0, 5)),
-          subgroups: S.optional(__S(6, __c0, 6)),
-        }),
-      ).annotate({ identifier: "InterconnectGroupProfile" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          networkInterfaces: S.optional(__S(240, __c30, 0)),
-          networkApiVersion: S.optional(S.String),
-          networkInterfaceConfigurations: S.optional(__S(253, __c31, 5)),
-          interconnectGroupProfile: S.optional(__S(254, __c31, 6)),
-        }),
-      ).annotate({ identifier: "NetworkProfile" });
-  }
-}
-function __c32(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          maxPrice: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "BillingProfile" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          type: S.optional(S.String),
-          typeHandlerVersion: S.optional(S.String),
-          status: S.optional(__S(15, __c1, 7)),
-        }),
-      ).annotate({
-        identifier: "VirtualMachineExtensionHandlerInstanceView",
-      });
-    case 2:
-      return S.Array(__S(257, __c32, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          vmAgentVersion: S.optional(S.String),
-          extensionHandlers: S.optional(__S(258, __c32, 2)),
-          statuses: S.optional(__S(16, __c2, 0)),
-        }),
-      ).annotate({
-        identifier: "VirtualMachineAgentInstanceView",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          isCustomerInitiatedMaintenanceAllowed: S.optional(S.Boolean),
-          preMaintenanceWindowStartTime: S.optional(S.String),
-          preMaintenanceWindowEndTime: S.optional(S.String),
-          maintenanceWindowStartTime: S.optional(S.String),
-          maintenanceWindowEndTime: S.optional(S.String),
-          lastOperationResultCode: S.optional(S.String),
-          lastOperationMessage: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "MaintenanceRedeployStatus",
-      });
-    case 5:
-      return S.Array(__S(103, __c12, 7));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.optional(S.String),
-          encryptionSettings: S.optional(__S(261, __c32, 5)),
-          statuses: S.optional(__S(16, __c2, 0)),
-          storageAlignmentStatus: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "DiskInstanceView" });
-    case 7:
-      return S.Array(__S(262, __c32, 6));
-  }
-}
-function __c33(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          typeHandlerVersion: S.optional(S.String),
-          substatuses: S.optional(__S(16, __c2, 0)),
-          statuses: S.optional(__S(16, __c2, 0)),
-        }),
-      ).annotate({
-        identifier: "VirtualMachineExtensionInstanceView",
-      });
-    case 1:
-      return S.Array(__S(264, __c33, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          status: S.optional(__S(15, __c1, 7)),
-        }),
-      ).annotate({
-        identifier: "VirtualMachineHealthStatus",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          consoleScreenshotBlobUri: S.optional(S.String),
-          serialConsoleLogBlobUri: S.optional(S.String),
-          status: S.optional(__S(15, __c1, 7)),
-        }),
-      ).annotate({
-        identifier: "BootDiagnosticsInstanceView",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          code: S.optional(S.String),
-          target: S.optional(S.String),
-          message: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ApiErrorBase" });
-    case 5:
-      return S.Array(__S(268, __c33, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          exceptiontype: S.optional(S.String),
-          errordetail: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "InnerError" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          details: S.optional(__S(269, __c33, 5)),
-          innererror: S.optional(__S(270, __c33, 6)),
-          code: S.optional(S.String),
-          target: S.optional(S.String),
-          message: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "AvailablePatchSummaryError",
-      });
-  }
-}
-function __c34(j: number): any {
+function __c247(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -16491,7 +20006,7 @@ function __c34(j: number): any {
           otherPatchCount: S.optional(S.Number),
           startTime: S.optional(S.String),
           lastModifiedTime: S.optional(S.String),
-          error: S.optional(__S(271, __c33, 7)),
+          error: S.optional(__S(8163, __c255, 3)),
         }),
       ).annotate({ identifier: "AvailablePatchSummary" });
     case 1:
@@ -16507,7 +20022,7 @@ function __c34(j: number): any {
           failedPatchCount: S.optional(S.Number),
           startTime: S.optional(S.String),
           lastModifiedTime: S.optional(S.String),
-          error: S.optional(__S(271, __c33, 7)),
+          error: S.optional(__S(8163, __c255, 3)),
         }),
       ).annotate({
         identifier: "LastPatchInstallationSummary",
@@ -16515,20 +20030,14 @@ function __c34(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          availablePatchSummary: S.optional(__S(272, __c34, 0)),
-          lastPatchInstallationSummary: S.optional(__S(273, __c34, 1)),
-          configurationStatuses: S.optional(__S(16, __c2, 0)),
+          availablePatchSummary: S.optional(__S(7904, __c247, 0)),
+          lastPatchInstallationSummary: S.optional(__S(7905, __c247, 1)),
+          configurationStatuses: S.optional(__S(5280, __c165, 0)),
         }),
       ).annotate({
         identifier: "VirtualMachinePatchStatus",
       });
     case 3:
-      return S.suspend(() =>
-        S.Struct({
-          interconnectSubgroupId: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "InterconnectInstanceView" });
-    case 4:
       return S.suspend(() =>
         S.Struct({
           platformUpdateDomain: S.optional(S.Number),
@@ -16538,134 +20047,51 @@ function __c34(j: number): any {
           osVersion: S.optional(S.String),
           hyperVGeneration: S.optional(S.String),
           rdpThumbPrint: S.optional(S.String),
-          vmAgent: S.optional(__S(259, __c32, 3)),
-          maintenanceRedeployStatus: S.optional(__S(260, __c32, 4)),
-          disks: S.optional(__S(263, __c32, 7)),
-          extensions: S.optional(__S(265, __c33, 1)),
-          vmHealth: S.optional(__S(266, __c33, 2)),
-          bootDiagnostics: S.optional(__S(267, __c33, 3)),
+          vmAgent: S.optional(__S(8290, __c259, 2)),
+          maintenanceRedeployStatus: S.optional(__S(8291, __c259, 3)),
+          disks: S.optional(__S(8294, __c259, 6)),
+          extensions: S.optional(__S(8295, __c259, 7)),
+          vmHealth: S.optional(__S(8296, __c259, 8)),
+          bootDiagnostics: S.optional(__S(8297, __c259, 9)),
           assignedHost: S.optional(S.String),
-          statuses: S.optional(__S(16, __c2, 0)),
-          patchStatus: S.optional(__S(274, __c34, 2)),
+          statuses: S.optional(__S(5280, __c165, 0)),
+          patchStatus: S.optional(__S(7906, __c247, 2)),
           isVMInStandbyPool: S.optional(S.Boolean),
-          interconnectInstanceView: S.optional(__S(275, __c34, 3)),
+          interconnectInstanceView: S.optional(__S(8298, __c259, 10)),
           capacityReservationType: S.optional(S.String),
         }),
       ).annotate({
         identifier: "VirtualMachineInstanceView",
       });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          notBeforeTimeout: S.optional(S.String),
-          enable: S.optional(S.Boolean),
-        }),
-      ).annotate({
-        identifier: "TerminateNotificationProfile",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          terminateNotificationProfile: S.optional(__S(277, __c34, 5)),
-          osImageNotificationProfile: S.optional(__S(277, __c34, 5)),
-        }),
-      ).annotate({ identifier: "ScheduledEventsProfile" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          capacityReservationGroup: S.optional(__S(5, __c0, 5)),
-          disableCapacityReservationAssignment: S.optional(S.Boolean),
-        }),
-      ).annotate({
-        identifier: "CapacityReservationProfile",
-      });
   }
 }
-function __c35(j: number): any {
+function __c248(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          interconnectBlock: S.optional(__S(84, __c10, 4)),
-        }),
-      ).annotate({ identifier: "InterconnectBlockProfile" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          tags: S.optional(S.String),
-          order: S.optional(S.Number),
-          packageReferenceId: S.String,
-          configurationReference: S.optional(S.String),
-          treatFailureAsDeploymentFailure: S.optional(S.Boolean),
-          enableAutomaticUpgrade: S.optional(S.Boolean),
-        }),
-      ).annotate({ identifier: "VMGalleryApplication" });
-    case 2:
-      return S.Array(__S(281, __c35, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          galleryApplications: S.optional(__S(282, __c35, 2)),
-        }),
-      ).annotate({ identifier: "ApplicationProfile" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          isEnabled: S.optional(S.Boolean),
-        }),
-      ).annotate({ identifier: "ZoneMovement" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          zoneMovement: S.optional(__S(284, __c35, 4)),
-        }),
-      ).annotate({ identifier: "ResiliencyProfile" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          hardwareProfile: S.optional(__S(100, __c12, 4)),
-          scheduledEventsPolicy: S.optional(__S(10, __c1, 2)),
-          storageProfile: S.optional(__S(236, __c29, 4)),
-          additionalCapabilities: S.optional(__S(237, __c29, 5)),
-          osProfile: S.optional(__S(126, __c15, 6)),
-          networkProfile: S.optional(__S(255, __c31, 7)),
-          securityProfile: S.optional(__S(133, __c16, 5)),
-          diagnosticsProfile: S.optional(__S(128, __c16, 0)),
-          availabilitySet: S.optional(__S(5, __c0, 5)),
-          virtualMachineScaleSet: S.optional(__S(5, __c0, 5)),
-          proximityPlacementGroup: S.optional(__S(5, __c0, 5)),
-          priority: S.optional(S.String),
-          evictionPolicy: S.optional(S.String),
-          billingProfile: S.optional(__S(256, __c32, 0)),
-          host: S.optional(__S(5, __c0, 5)),
-          hostGroup: S.optional(__S(5, __c0, 5)),
-          provisioningState: S.optional(S.String),
-          instanceView: S.optional(__S(276, __c34, 4)),
-          licenseType: S.optional(S.String),
-          vmId: S.optional(S.String),
-          extensionsTimeBudget: S.optional(S.String),
-          platformFaultDomain: S.optional(S.Number),
-          scheduledEventsProfile: S.optional(__S(278, __c34, 6)),
-          userData: S.optional(S.String),
-          capacityReservation: S.optional(__S(279, __c34, 7)),
-          interconnectBlockProfile: S.optional(__S(280, __c35, 0)),
-          applicationProfile: S.optional(__S(283, __c35, 3)),
-          timeCreated: S.optional(S.String),
-          resiliencyProfile: S.optional(__S(285, __c35, 5)),
-        }),
-      ).annotate({ identifier: "VirtualMachineProperties" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
+          id: S.optional(S.String),
           name: S.optional(S.String),
-          publisher: S.optional(S.String),
-          product: S.optional(S.String),
-          promotionCode: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(5184, __c162, 0)),
+          tags: S.optional(__S(5152, __c161, 0)),
+          location: S.String,
+          properties: S.optional(__S(7874, __c246, 2)),
+          plan: S.optional(__S(8135, __c254, 7)),
+          resources: S.optional(__S(8193, __c256, 1)),
+          identity: S.optional(__S(8270, __c258, 14)),
+          zones: S.optional(__S(6400, __c200, 0)),
+          extendedLocation: S.optional(__S(7264, __c227, 0)),
+          managedBy: S.optional(S.String),
+          etag: S.optional(S.String),
+          placement: S.optional(__S(7392, __c231, 0)),
         }),
-      ).annotate({ identifier: "Plan" });
+      ).annotate({
+        identifier: "GetVirtualMachineResponse",
+      });
   }
 }
-function __c36(j: number): any {
+function __c249(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -16679,29 +20105,177 @@ function __c36(j: number): any {
           settings: S.optional(S.Unknown),
           protectedSettings: S.optional(S.Unknown),
           provisioningState: S.optional(S.String),
-          instanceView: S.optional(__S(264, __c33, 0)),
+          instanceView: S.optional(__S(8000, __c250, 0)),
           suppressFailures: S.optional(S.Boolean),
-          protectedSettingsFromKeyVault: S.optional(__S(101, __c12, 5)),
-          provisionAfterExtensions: S.optional(__S(23, __c2, 7)),
+          protectedSettingsFromKeyVault: S.optional(__S(2016, __c63, 0)),
+          provisionAfterExtensions: S.optional(__S(6400, __c200, 0)),
         }),
       ).annotate({
         identifier: "VirtualMachineExtensionProperties",
       });
+  }
+}
+function __c250(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          typeHandlerVersion: S.optional(S.String),
+          substatuses: S.optional(__S(5280, __c165, 0)),
+          statuses: S.optional(__S(5280, __c165, 0)),
+        }),
+      ).annotate({
+        identifier: "VirtualMachineExtensionInstanceView",
+      });
+  }
+}
+function __c251(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          maxPrice: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "BillingProfile" });
     case 1:
       return S.suspend(() =>
         S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(14, __c1, 6)),
-          tags: S.optional(__S(4, __c0, 4)),
-          location: S.String,
-          properties: S.optional(__S(288, __c36, 0)),
+          notBeforeTimeout: S.optional(S.String),
+          enable: S.optional(S.Boolean),
         }),
-      ).annotate({ identifier: "VirtualMachineExtension" });
+      ).annotate({
+        identifier: "TerminateNotificationProfile",
+      });
     case 2:
-      return S.Array(__S(289, __c36, 1));
+      return S.suspend(() =>
+        S.Struct({
+          terminateNotificationProfile: S.optional(__S(8033, __c251, 1)),
+          osImageNotificationProfile: S.optional(__S(8033, __c251, 1)),
+        }),
+      ).annotate({ identifier: "ScheduledEventsProfile" });
     case 3:
+      return S.suspend(() =>
+        S.Struct({
+          tags: S.optional(S.String),
+          order: S.optional(S.Number),
+          packageReferenceId: S.String,
+          configurationReference: S.optional(S.String),
+          treatFailureAsDeploymentFailure: S.optional(S.Boolean),
+          enableAutomaticUpgrade: S.optional(S.Boolean),
+        }),
+      ).annotate({ identifier: "VMGalleryApplication" });
+    case 4:
+      return S.Array(__S(8035, __c251, 3));
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          galleryApplications: S.optional(__S(8036, __c251, 4)),
+        }),
+      ).annotate({ identifier: "ApplicationProfile" });
+  }
+}
+function __c252(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          publisher: S.optional(S.String),
+          offer: S.optional(S.String),
+          sku: S.optional(S.String),
+          version: S.optional(S.String),
+          exactVersion: S.optional(S.String),
+          sharedGalleryImageId: S.optional(S.String),
+          communityGalleryImageId: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ImageReference" });
+  }
+}
+function __c253(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          uri: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "VirtualHardDisk" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          option: S.optional(S.String),
+          placement: S.optional(S.String),
+          enableFullCaching: S.optional(S.Boolean),
+        }),
+      ).annotate({ identifier: "DiffDiskSettings" });
+  }
+}
+function __c254(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          ultraSSDEnabled: S.optional(S.Boolean),
+          hibernationEnabled: S.optional(S.Boolean),
+          enableFips1403Encryption: S.optional(S.Boolean),
+        }),
+      ).annotate({ identifier: "AdditionalCapabilities" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          dnsServers: S.optional(__S(64, __c2, 0)),
+        }),
+      ).annotate({
+        identifier: "VirtualMachineNetworkInterfaceDnsSettingsConfiguration",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          ipTagType: S.optional(S.String),
+          tag: S.optional(S.String),
+          firstPartyServiceTagId: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "VirtualMachineIpTag" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.optional(S.String),
+          tier: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "PublicIPAddressSku" });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          interconnectGroup: S.optional(__S(5216, __c163, 0)),
+          subgroups: S.optional(__S(5312, __c166, 0)),
+        }),
+      ).annotate({ identifier: "InterconnectGroupProfile" });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          capacityReservationGroup: S.optional(__S(5216, __c163, 0)),
+          disableCapacityReservationAssignment: S.optional(S.Boolean),
+        }),
+      ).annotate({
+        identifier: "CapacityReservationProfile",
+      });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          interconnectBlock: S.optional(__S(1952, __c61, 0)),
+        }),
+      ).annotate({ identifier: "InterconnectBlockProfile" });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.optional(S.String),
+          publisher: S.optional(S.String),
+          product: S.optional(S.String),
+          promotionCode: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Plan" });
+    case 8:
       return S.suspend(() =>
         S.Struct({
           principalId: S.optional(S.String),
@@ -16710,40 +20284,333 @@ function __c36(j: number): any {
       ).annotate({
         identifier: "CommonUserAssignedIdentitiesValue",
       });
-    case 4:
-      return S.Record(S.String, __S(291, __c36, 3));
-    case 5:
+    case 9:
+      return S.Record(S.String, __S(8136, __c254, 8));
+  }
+}
+function __c255(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          principalId: S.optional(S.String),
-          tenantId: S.optional(S.String),
-          type: S.optional(S.String),
-          userAssignedIdentities: S.optional(__S(292, __c36, 4)),
+          code: S.optional(S.String),
+          target: S.optional(S.String),
+          message: S.optional(S.String),
         }),
-      ).annotate({ identifier: "VirtualMachineIdentity" });
-    case 6:
+      ).annotate({ identifier: "ApiErrorBase" });
+    case 1:
+      return S.Array(__S(8160, __c255, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          exceptiontype: S.optional(S.String),
+          errordetail: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "InnerError" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          details: S.optional(__S(8161, __c255, 1)),
+          innererror: S.optional(__S(8162, __c255, 2)),
+          code: S.optional(S.String),
+          target: S.optional(S.String),
+          message: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "AvailablePatchSummaryError",
+      });
+  }
+}
+function __c256(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(14, __c1, 6)),
-          tags: S.optional(__S(4, __c0, 4)),
+          systemData: S.optional(__S(5184, __c162, 0)),
+          tags: S.optional(__S(5152, __c161, 0)),
           location: S.String,
-          properties: S.optional(__S(286, __c35, 6)),
-          plan: S.optional(__S(287, __c35, 7)),
-          resources: S.optional(__S(290, __c36, 2)),
-          identity: S.optional(__S(293, __c36, 5)),
-          zones: S.optional(__S(23, __c2, 7)),
-          extendedLocation: S.optional(__S(204, __c25, 4)),
-          managedBy: S.optional(S.String),
-          etag: S.optional(S.String),
-          placement: S.optional(__S(209, __c26, 1)),
+          properties: S.optional(__S(7968, __c249, 0)),
+        }),
+      ).annotate({ identifier: "VirtualMachineExtension" });
+    case 1:
+      return S.Array(__S(8192, __c256, 0));
+  }
+}
+function __c257(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          osType: S.optional(S.String),
+          encryptionSettings: S.optional(__S(2177, __c68, 1)),
+          name: S.optional(S.String),
+          vhd: S.optional(__S(8096, __c253, 0)),
+          image: S.optional(__S(8096, __c253, 0)),
+          caching: S.optional(S.String),
+          writeAcceleratorEnabled: S.optional(S.Boolean),
+          diffDiskSettings: S.optional(__S(8097, __c253, 1)),
+          createOption: S.String,
+          diskSizeGB: S.optional(S.Number),
+          storageFaultDomainAlignment: S.optional(S.String),
+          managedDisk: S.optional(__S(2112, __c66, 0)),
+          deleteOption: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "OSDisk" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          lun: S.Number,
+          name: S.optional(S.String),
+          vhd: S.optional(__S(8096, __c253, 0)),
+          image: S.optional(__S(8096, __c253, 0)),
+          caching: S.optional(S.String),
+          writeAcceleratorEnabled: S.optional(S.Boolean),
+          createOption: S.String,
+          diskSizeGB: S.optional(S.Number),
+          storageFaultDomainAlignment: S.optional(S.String),
+          managedDisk: S.optional(__S(2112, __c66, 0)),
+          sourceResource: S.optional(__S(1952, __c61, 0)),
+          toBeDetached: S.optional(S.Boolean),
+          diskIOPSReadWrite: S.optional(S.Number),
+          diskMBpsReadWrite: S.optional(S.Number),
+          detachOption: S.optional(S.String),
+          deleteOption: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "DataDisk" });
+    case 2:
+      return S.Array(__S(8225, __c257, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          imageReference: S.optional(__S(8064, __c252, 0)),
+          osDisk: S.optional(__S(8224, __c257, 0)),
+          dataDisks: S.optional(__S(8226, __c257, 2)),
+          diskControllerType: S.optional(S.String),
+          alignRegionalDisksToVMZone: S.optional(S.Boolean),
+          diskApiVersion: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "StorageProfile" });
+  }
+}
+function __c258(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          primary: S.optional(S.Boolean),
+          deleteOption: S.optional(S.String),
         }),
       ).annotate({
-        identifier: "GetVirtualMachineResponse",
+        identifier: "NetworkInterfaceReferenceProperties",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          properties: S.optional(__S(8256, __c258, 0)),
+        }),
+      ).annotate({
+        identifier: "NetworkInterfaceReference",
+      });
+    case 2:
+      return S.Array(__S(8257, __c258, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          domainNameLabel: S.String,
+          domainNameLabelScope: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "VirtualMachinePublicIPAddressDnsSettingsConfiguration",
+      });
+    case 4:
+      return S.Array(__S(8130, __c254, 2));
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          idleTimeoutInMinutes: S.optional(S.Number),
+          deleteOption: S.optional(S.String),
+          dnsSettings: S.optional(__S(8259, __c258, 3)),
+          ipTags: S.optional(__S(8260, __c258, 4)),
+          publicIPPrefix: S.optional(__S(5216, __c163, 0)),
+          publicIPAddressVersion: S.optional(S.String),
+          publicIPAllocationMethod: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "VirtualMachinePublicIPAddressConfigurationProperties",
+      });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String,
+          properties: S.optional(__S(8261, __c258, 5)),
+          sku: S.optional(__S(8131, __c254, 3)),
+          tags: S.optional(__S(5152, __c161, 0)),
+        }),
+      ).annotate({
+        identifier: "VirtualMachinePublicIPAddressConfiguration",
       });
     case 7:
+      return S.suspend(() =>
+        S.Struct({
+          subnet: S.optional(__S(5216, __c163, 0)),
+          primary: S.optional(S.Boolean),
+          publicIPAddressConfiguration: S.optional(__S(8262, __c258, 6)),
+          privateIPAddressVersion: S.optional(S.String),
+          applicationSecurityGroups: S.optional(__S(9408, __c294, 0)),
+          applicationGatewayBackendAddressPools: S.optional(__S(9408, __c294, 0)),
+          loadBalancerBackendAddressPools: S.optional(__S(9408, __c294, 0)),
+        }),
+      ).annotate({
+        identifier: "VirtualMachineNetworkInterfaceIPConfigurationProperties",
+      });
+    case 8:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String,
+          properties: S.optional(__S(8263, __c258, 7)),
+        }),
+      ).annotate({
+        identifier: "VirtualMachineNetworkInterfaceIPConfiguration",
+      });
+    case 9:
+      return S.Array(__S(8264, __c258, 8));
+    case 10:
+      return S.suspend(() =>
+        S.Struct({
+          primary: S.optional(S.Boolean),
+          deleteOption: S.optional(S.String),
+          enableAcceleratedNetworking: S.optional(S.Boolean),
+          disableTcpStateTracking: S.optional(S.Boolean),
+          enableFpga: S.optional(S.Boolean),
+          enableIPForwarding: S.optional(S.Boolean),
+          networkSecurityGroup: S.optional(__S(5216, __c163, 0)),
+          dnsSettings: S.optional(__S(8129, __c254, 1)),
+          ipConfigurations: __S(8265, __c258, 9),
+          dscpConfiguration: S.optional(__S(5216, __c163, 0)),
+          auxiliaryMode: S.optional(S.String),
+          auxiliarySku: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "VirtualMachineNetworkInterfaceConfigurationProperties",
+      });
+    case 11:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String,
+          properties: S.optional(__S(8266, __c258, 10)),
+          tags: S.optional(__S(5152, __c161, 0)),
+        }),
+      ).annotate({
+        identifier: "VirtualMachineNetworkInterfaceConfiguration",
+      });
+    case 12:
+      return S.Array(__S(8267, __c258, 11));
+    case 13:
+      return S.suspend(() =>
+        S.Struct({
+          networkInterfaces: S.optional(__S(8258, __c258, 2)),
+          networkApiVersion: S.optional(S.String),
+          networkInterfaceConfigurations: S.optional(__S(8268, __c258, 12)),
+          interconnectGroupProfile: S.optional(__S(8132, __c254, 4)),
+        }),
+      ).annotate({ identifier: "NetworkProfile" });
+    case 14:
+      return S.suspend(() =>
+        S.Struct({
+          principalId: S.optional(S.String),
+          tenantId: S.optional(S.String),
+          type: S.optional(S.String),
+          userAssignedIdentities: S.optional(__S(8137, __c254, 9)),
+        }),
+      ).annotate({ identifier: "VirtualMachineIdentity" });
+  }
+}
+function __c259(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          type: S.optional(S.String),
+          typeHandlerVersion: S.optional(S.String),
+          status: S.optional(__S(5248, __c164, 0)),
+        }),
+      ).annotate({
+        identifier: "VirtualMachineExtensionHandlerInstanceView",
+      });
+    case 1:
+      return S.Array(__S(8288, __c259, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          vmAgentVersion: S.optional(S.String),
+          extensionHandlers: S.optional(__S(8289, __c259, 1)),
+          statuses: S.optional(__S(5280, __c165, 0)),
+        }),
+      ).annotate({
+        identifier: "VirtualMachineAgentInstanceView",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          isCustomerInitiatedMaintenanceAllowed: S.optional(S.Boolean),
+          preMaintenanceWindowStartTime: S.optional(S.String),
+          preMaintenanceWindowEndTime: S.optional(S.String),
+          maintenanceWindowStartTime: S.optional(S.String),
+          maintenanceWindowEndTime: S.optional(S.String),
+          lastOperationResultCode: S.optional(S.String),
+          lastOperationMessage: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "MaintenanceRedeployStatus",
+      });
+    case 4:
+      return S.Array(__S(2177, __c68, 1));
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.optional(S.String),
+          encryptionSettings: S.optional(__S(8292, __c259, 4)),
+          statuses: S.optional(__S(5280, __c165, 0)),
+          storageAlignmentStatus: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "DiskInstanceView" });
+    case 6:
+      return S.Array(__S(8293, __c259, 5));
+    case 7:
+      return S.Array(__S(8000, __c250, 0));
+    case 8:
+      return S.suspend(() =>
+        S.Struct({
+          status: S.optional(__S(5248, __c164, 0)),
+        }),
+      ).annotate({
+        identifier: "VirtualMachineHealthStatus",
+      });
+    case 9:
+      return S.suspend(() =>
+        S.Struct({
+          consoleScreenshotBlobUri: S.optional(S.String),
+          serialConsoleLogBlobUri: S.optional(S.String),
+          status: S.optional(__S(5248, __c164, 0)),
+        }),
+      ).annotate({
+        identifier: "BootDiagnosticsInstanceView",
+      });
+    case 10:
+      return S.suspend(() =>
+        S.Struct({
+          interconnectSubgroupId: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "InterconnectInstanceView" });
+  }
+}
+function __c260(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -16763,7 +20630,7 @@ function __c36(j: number): any {
       });
   }
 }
-function __c37(j: number): any {
+function __c261(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -16774,7 +20641,11 @@ function __c37(j: number): any {
       ).annotate({
         identifier: "RetrieveBootDiagnosticsDataResult",
       });
-    case 1:
+  }
+}
+function __c262(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -16793,9 +20664,42 @@ function __c37(j: number): any {
       ).annotate({
         identifier: "GetVirtualMachineDiagnosticRunCommandByVirtualMachineRequest",
       });
-    case 2:
-      return S.Record(S.String, S.String);
-    case 3:
+  }
+}
+function __c263(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(5184, __c162, 0)),
+          tags: S.optional(__S(8512, __c266, 0)),
+          location: S.String,
+          properties: S.optional(__S(8483, __c265, 3)),
+        }),
+      ).annotate({
+        identifier: "GetVirtualMachineDiagnosticRunCommandByVirtualMachineResponse",
+      });
+  }
+}
+function __c264(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String,
+          value: S.String,
+        }),
+      ).annotate({ identifier: "RunCommandInputParameter" });
+    case 1:
+      return S.Array(__S(8448, __c264, 0));
+  }
+}
+function __c265(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           clientId: S.optional(S.String),
@@ -16804,29 +20708,20 @@ function __c37(j: number): any {
       ).annotate({
         identifier: "RunCommandManagedIdentity",
       });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           script: S.optional(S.String),
           scriptUri: S.optional(S.String),
           commandId: S.optional(S.String),
-          scriptUriManagedIdentity: S.optional(__S(299, __c37, 3)),
+          scriptUriManagedIdentity: S.optional(__S(8480, __c265, 0)),
           scriptShell: S.optional(S.String),
           galleryScriptReferenceId: S.optional(S.String),
         }),
       ).annotate({
         identifier: "VirtualMachineRunCommandScriptSource",
       });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String,
-          value: S.String,
-        }),
-      ).annotate({ identifier: "RunCommandInputParameter" });
-    case 6:
-      return S.Array(__S(301, __c37, 5));
-    case 7:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           executionState: S.optional(S.String),
@@ -16836,51 +20731,64 @@ function __c37(j: number): any {
           error: S.optional(S.String),
           startTime: S.optional(S.String),
           endTime: S.optional(S.String),
-          statuses: S.optional(__S(16, __c2, 0)),
+          statuses: S.optional(__S(5280, __c165, 0)),
         }),
       ).annotate({
         identifier: "VirtualMachineRunCommandInstanceView",
       });
-  }
-}
-function __c38(j: number): any {
-  switch (j) {
-    case 0:
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          source: S.optional(__S(300, __c37, 4)),
-          parameters: S.optional(__S(302, __c37, 6)),
-          protectedParameters: S.optional(__S(302, __c37, 6)),
+          source: S.optional(__S(8481, __c265, 1)),
+          parameters: S.optional(__S(8449, __c264, 1)),
+          protectedParameters: S.optional(__S(8449, __c264, 1)),
           asyncExecution: S.optional(S.Boolean),
           runAsUser: S.optional(S.String),
           runAsPassword: S.optional(S.String.pipe(T.SensitiveValue({}))),
           timeoutInSeconds: S.optional(S.Number),
           outputBlobUri: S.optional(S.String),
           errorBlobUri: S.optional(S.String),
-          outputBlobManagedIdentity: S.optional(__S(299, __c37, 3)),
-          errorBlobManagedIdentity: S.optional(__S(299, __c37, 3)),
+          outputBlobManagedIdentity: S.optional(__S(8480, __c265, 0)),
+          errorBlobManagedIdentity: S.optional(__S(8480, __c265, 0)),
           provisioningState: S.optional(S.String),
-          instanceView: S.optional(__S(303, __c37, 7)),
+          instanceView: S.optional(__S(8482, __c265, 2)),
           treatFailureAsDeploymentFailure: S.optional(S.Boolean),
         }),
       ).annotate({
         identifier: "VirtualMachineRunCommandProperties",
       });
-    case 1:
+  }
+}
+function __c266(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, S.String);
+  }
+}
+function __c267(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(14, __c1, 6)),
-          tags: S.optional(__S(298, __c37, 2)),
-          location: S.String,
-          properties: S.optional(__S(304, __c38, 0)),
-        }),
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          vmScaleSetName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}/rollingUpgrades/cancel",
+            code: 200,
+            apiVersion: "2026-04-01",
+          }),
+        ),
       ).annotate({
-        identifier: "GetVirtualMachineDiagnosticRunCommandByVirtualMachineResponse",
+        identifier: "CancelVirtualMachineScaleSetRollingUpgradeRequest",
       });
-    case 2:
+  }
+}
+function __c268(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -16899,21 +20807,29 @@ function __c38(j: number): any {
       ).annotate({
         identifier: "GetVirtualMachineExtensionRequest",
       });
-    case 3:
+  }
+}
+function __c269(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(14, __c1, 6)),
-          tags: S.optional(__S(4, __c0, 4)),
+          systemData: S.optional(__S(5184, __c162, 0)),
+          tags: S.optional(__S(5152, __c161, 0)),
           location: S.String,
-          properties: S.optional(__S(288, __c36, 0)),
+          properties: S.optional(__S(7968, __c249, 0)),
         }),
       ).annotate({
         identifier: "GetVirtualMachineExtensionResponse",
       });
-    case 4:
+  }
+}
+function __c270(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -16932,26 +20848,26 @@ function __c38(j: number): any {
       ).annotate({
         identifier: "GetVirtualMachineExtensionImageRequest",
       });
-    case 5:
+  }
+}
+function __c271(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           key: S.String,
           value: S.optional(S.String),
         }),
       ).annotate({ identifier: "ExtensionFeatureTag" });
-    case 6:
-      return S.Array(__S(309, __c38, 5));
-    case 7:
+    case 1:
+      return S.Array(__S(8672, __c271, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          extensionFeatureTags: S.optional(__S(310, __c38, 6)),
+          extensionFeatureTags: S.optional(__S(8673, __c271, 1)),
         }),
       ).annotate({ identifier: "ExtensionFeatureMetadata" });
-  }
-}
-function __c39(j: number): any {
-  switch (j) {
-    case 0:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           operatingSystem: S.String,
@@ -16963,26 +20879,30 @@ function __c39(j: number): any {
           releaseCategory: S.optional(S.String),
           urgencyLevel: S.optional(S.String),
           runProfile: S.optional(S.String),
-          extensionFeatureMetadata: S.optional(__S(311, __c38, 7)),
+          extensionFeatureMetadata: S.optional(__S(8674, __c271, 2)),
         }),
       ).annotate({
         identifier: "VirtualMachineExtensionImageProperties",
       });
-    case 1:
+    case 4:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(14, __c1, 6)),
-          tags: S.optional(__S(4, __c0, 4)),
+          systemData: S.optional(__S(5184, __c162, 0)),
+          tags: S.optional(__S(5152, __c161, 0)),
           location: S.String,
-          properties: S.optional(__S(312, __c39, 0)),
+          properties: S.optional(__S(8675, __c271, 3)),
         }),
       ).annotate({
         identifier: "GetVirtualMachineExtensionImageResponse",
       });
-    case 2:
+  }
+}
+function __c272(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -17002,7 +20922,11 @@ function __c39(j: number): any {
       ).annotate({
         identifier: "GetVirtualMachineImageRequest",
       });
-    case 3:
+  }
+}
+function __c273(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           publisher: S.String,
@@ -17010,21 +20934,21 @@ function __c39(j: number): any {
           product: S.String,
         }),
       ).annotate({ identifier: "PurchasePlan" });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           operatingSystem: S.String,
         }),
       ).annotate({ identifier: "OSDiskImage" });
-    case 5:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           lun: S.optional(S.Number),
         }),
       ).annotate({ identifier: "DataDiskImage" });
-    case 6:
-      return S.Array(__S(317, __c39, 5));
-    case 7:
+    case 3:
+      return S.Array(__S(8738, __c273, 2));
+    case 4:
       return S.suspend(() =>
         S.Struct({
           automaticOSUpgradeSupported: S.Boolean,
@@ -17032,17 +20956,13 @@ function __c39(j: number): any {
       ).annotate({
         identifier: "AutomaticOSUpgradeProperties",
       });
-  }
-}
-function __c40(j: number): any {
-  switch (j) {
-    case 0:
+    case 5:
       return S.suspend(() =>
         S.Struct({
           vmDiskType: S.optional(S.String),
         }),
       ).annotate({ identifier: "DisallowedConfiguration" });
-    case 1:
+    case 6:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
@@ -17051,53 +20971,57 @@ function __c40(j: number): any {
       ).annotate({
         identifier: "VirtualMachineImageFeature",
       });
-    case 2:
-      return S.Array(__S(321, __c40, 1));
-    case 3:
+    case 7:
+      return S.Array(__S(8742, __c273, 6));
+    case 8:
       return S.suspend(() =>
         S.Struct({
           type: S.optional(S.String),
           value: S.optional(S.String),
         }),
       ).annotate({ identifier: "AlternativeOption" });
-    case 4:
+    case 9:
       return S.suspend(() =>
         S.Struct({
           imageState: S.optional(S.String),
           scheduledDeprecationTime: S.optional(S.String),
-          alternativeOption: S.optional(__S(323, __c40, 3)),
+          alternativeOption: S.optional(__S(8744, __c273, 8)),
         }),
       ).annotate({ identifier: "ImageDeprecationStatus" });
-    case 5:
+    case 10:
       return S.suspend(() =>
         S.Struct({
-          plan: S.optional(__S(315, __c39, 3)),
-          osDiskImage: S.optional(__S(316, __c39, 4)),
-          dataDiskImages: S.optional(__S(318, __c39, 6)),
-          automaticOSUpgradeProperties: S.optional(__S(319, __c39, 7)),
+          plan: S.optional(__S(8736, __c273, 0)),
+          osDiskImage: S.optional(__S(8737, __c273, 1)),
+          dataDiskImages: S.optional(__S(8739, __c273, 3)),
+          automaticOSUpgradeProperties: S.optional(__S(8740, __c273, 4)),
           hyperVGeneration: S.optional(S.String),
-          disallowed: S.optional(__S(320, __c40, 0)),
-          features: S.optional(__S(322, __c40, 2)),
+          disallowed: S.optional(__S(8741, __c273, 5)),
+          features: S.optional(__S(8743, __c273, 7)),
           architecture: S.optional(S.String),
-          imageDeprecationStatus: S.optional(__S(324, __c40, 4)),
+          imageDeprecationStatus: S.optional(__S(8745, __c273, 9)),
         }),
       ).annotate({
         identifier: "VirtualMachineImageProperties",
       });
-    case 6:
+    case 11:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.String,
           location: S.String,
-          tags: S.optional(__S(4, __c0, 4)),
-          extendedLocation: S.optional(__S(204, __c25, 4)),
-          properties: S.optional(__S(325, __c40, 5)),
+          tags: S.optional(__S(5152, __c161, 0)),
+          extendedLocation: S.optional(__S(7264, __c227, 0)),
+          properties: S.optional(__S(8746, __c273, 10)),
         }),
       ).annotate({
         identifier: "GetVirtualMachineImageResponse",
       });
-    case 7:
+  }
+}
+function __c274(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -17120,7 +21044,7 @@ function __c40(j: number): any {
       });
   }
 }
-function __c41(j: number): any {
+function __c275(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -17151,7 +21075,7 @@ function __c41(j: number): any {
         identifier: "RunCommandParameterDefinition",
       });
     case 2:
-      return S.Array(__S(329, __c41, 1));
+      return S.Array(__S(8801, __c275, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
@@ -17160,13 +21084,17 @@ function __c41(j: number): any {
           osType: S.String,
           label: S.String,
           description: S.String,
-          script: __S(23, __c2, 7),
-          parameters: S.optional(__S(330, __c41, 2)),
+          script: __S(6400, __c200, 0),
+          parameters: S.optional(__S(8802, __c275, 2)),
         }),
       ).annotate({
         identifier: "GetVirtualMachineRunCommandResponse",
       });
-    case 4:
+  }
+}
+function __c276(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -17185,21 +21113,29 @@ function __c41(j: number): any {
       ).annotate({
         identifier: "GetVirtualMachineRunCommandByVirtualMachineRequest",
       });
-    case 5:
+  }
+}
+function __c277(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(14, __c1, 6)),
-          tags: S.optional(__S(4, __c0, 4)),
+          systemData: S.optional(__S(5184, __c162, 0)),
+          tags: S.optional(__S(5152, __c161, 0)),
           location: S.String,
-          properties: S.optional(__S(304, __c38, 0)),
+          properties: S.optional(__S(8483, __c265, 3)),
         }),
       ).annotate({
         identifier: "GetVirtualMachineRunCommandByVirtualMachineResponse",
       });
-    case 6:
+  }
+}
+function __c278(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -17217,22 +21153,15 @@ function __c41(j: number): any {
       ).annotate({
         identifier: "GetVirtualMachineScaleSetRequest",
       });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          maxBatchInstancePercent: S.optional(S.Number),
-          maxUnhealthyInstancePercent: S.optional(S.Number),
-          maxUnhealthyUpgradedInstancePercent: S.optional(S.Number),
-          pauseTimeBetweenBatches: S.optional(S.String),
-          enableCrossZoneUpgrade: S.optional(S.Boolean),
-          prioritizeUnhealthyInstances: S.optional(S.Boolean),
-          rollbackFailedInstancesOnPolicyBreach: S.optional(S.Boolean),
-          maxSurge: S.optional(S.Boolean),
-        }),
-      ).annotate({ identifier: "RollingUpgradePolicy" });
   }
 }
-function __c42(j: number): any {
+function __c279(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(9057, __c283, 1));
+  }
+}
+function __c280(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -17247,8 +21176,8 @@ function __c42(j: number): any {
       return S.suspend(() =>
         S.Struct({
           mode: S.optional(S.String),
-          rollingUpgradePolicy: S.optional(__S(335, __c41, 7)),
-          automaticOSUpgradePolicy: S.optional(__S(336, __c42, 0)),
+          rollingUpgradePolicy: S.optional(__S(9088, __c284, 0)),
+          automaticOSUpgradePolicy: S.optional(__S(8960, __c280, 0)),
         }),
       ).annotate({ identifier: "UpgradePolicy" });
     case 2:
@@ -17266,9 +21195,9 @@ function __c42(j: number): any {
           adminUsername: S.optional(S.String),
           adminPassword: S.optional(S.String.pipe(T.SensitiveValue({}))),
           customData: S.optional(S.String),
-          windowsConfiguration: S.optional(__S(116, __c14, 4)),
-          linuxConfiguration: S.optional(__S(121, __c15, 1)),
-          secrets: S.optional(__S(125, __c15, 5)),
+          windowsConfiguration: S.optional(__S(2088, __c65, 8)),
+          linuxConfiguration: S.optional(__S(2093, __c65, 13)),
+          secrets: S.optional(__S(2097, __c65, 17)),
           allowExtensionOperations: S.optional(S.Boolean),
           requireGuestProvisionSignal: S.optional(S.Boolean),
         }),
@@ -17279,9 +21208,9 @@ function __c42(j: number): any {
       return S.suspend(() =>
         S.Struct({
           storageAccountType: S.optional(S.String),
-          diskEncryptionSet: S.optional(__S(5, __c0, 5)),
-          securityProfile: S.optional(__S(86, __c10, 6)),
-          additionalDiskProperties: S.optional(__S(89, __c11, 1)),
+          diskEncryptionSet: S.optional(__S(5216, __c163, 0)),
+          securityProfile: S.optional(__S(2048, __c64, 0)),
+          additionalDiskProperties: S.optional(__S(2051, __c64, 3)),
         }),
       ).annotate({
         identifier: "VirtualMachineScaleSetManagedDiskParameters",
@@ -17293,13 +21222,13 @@ function __c42(j: number): any {
           caching: S.optional(S.String),
           writeAcceleratorEnabled: S.optional(S.Boolean),
           createOption: S.String,
-          diffDiskSettings: S.optional(__S(232, __c29, 0)),
+          diffDiskSettings: S.optional(__S(8097, __c253, 1)),
           diskSizeGB: S.optional(S.Number),
           storageFaultDomainAlignment: S.optional(S.String),
           osType: S.optional(S.String),
-          image: S.optional(__S(231, __c28, 7)),
-          vhdContainers: S.optional(__S(23, __c2, 7)),
-          managedDisk: S.optional(__S(340, __c42, 4)),
+          image: S.optional(__S(8096, __c253, 0)),
+          vhdContainers: S.optional(__S(6400, __c200, 0)),
+          managedDisk: S.optional(__S(8964, __c280, 4)),
           deleteOption: S.optional(S.String),
         }),
       ).annotate({
@@ -17315,7 +21244,7 @@ function __c42(j: number): any {
           createOption: S.String,
           diskSizeGB: S.optional(S.Number),
           storageFaultDomainAlignment: S.optional(S.String),
-          managedDisk: S.optional(__S(340, __c42, 4)),
+          managedDisk: S.optional(__S(8964, __c280, 4)),
           diskIOPSReadWrite: S.optional(S.Number),
           diskMBpsReadWrite: S.optional(S.Number),
           deleteOption: S.optional(S.String),
@@ -17324,130 +21253,283 @@ function __c42(j: number): any {
         identifier: "VirtualMachineScaleSetDataDisk",
       });
     case 7:
-      return S.Array(__S(342, __c42, 6));
-  }
-}
-function __c43(j: number): any {
-  switch (j) {
-    case 0:
+      return S.Array(__S(8966, __c280, 6));
+    case 8:
       return S.suspend(() =>
         S.Struct({
-          imageReference: S.optional(__S(230, __c28, 6)),
-          osDisk: S.optional(__S(341, __c42, 5)),
-          dataDisks: S.optional(__S(343, __c42, 7)),
+          imageReference: S.optional(__S(8064, __c252, 0)),
+          osDisk: S.optional(__S(8965, __c280, 5)),
+          dataDisks: S.optional(__S(8967, __c280, 7)),
           diskControllerType: S.optional(S.String),
           diskApiVersion: S.optional(S.String),
         }),
       ).annotate({
         identifier: "VirtualMachineScaleSetStorageProfile",
       });
-    case 1:
+    case 9:
       return S.suspend(() =>
         S.Struct({
-          domainNameLabel: S.String,
-          domainNameLabelScope: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "VirtualMachineScaleSetPublicIPAddressConfigurationDnsSettings",
-      });
-    case 2:
-      return S.Array(__S(243, __c30, 3));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          idleTimeoutInMinutes: S.optional(S.Number),
-          dnsSettings: S.optional(__S(345, __c43, 1)),
-          ipTags: S.optional(__S(346, __c43, 2)),
-          publicIPPrefix: S.optional(__S(5, __c0, 5)),
-          publicIPAddressVersion: S.optional(S.String),
-          deleteOption: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "VirtualMachineScaleSetPublicIPAddressConfigurationProperties",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String,
-          properties: S.optional(__S(347, __c43, 3)),
-          sku: S.optional(__S(246, __c30, 6)),
-          tags: S.optional(__S(4, __c0, 4)),
-        }),
-      ).annotate({
-        identifier: "VirtualMachineScaleSetPublicIPAddressConfiguration",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          subnet: S.optional(__S(84, __c10, 4)),
-          primary: S.optional(S.Boolean),
-          publicIPAddressConfiguration: S.optional(__S(348, __c43, 4)),
-          privateIPAddressVersion: S.optional(S.String),
-          applicationGatewayBackendAddressPools: S.optional(__S(39, __c4, 7)),
-          applicationSecurityGroups: S.optional(__S(39, __c4, 7)),
-          loadBalancerBackendAddressPools: S.optional(__S(39, __c4, 7)),
-          loadBalancerInboundNatPools: S.optional(__S(39, __c4, 7)),
-        }),
-      ).annotate({
-        identifier: "VirtualMachineScaleSetIPConfigurationProperties",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String,
-          properties: S.optional(__S(349, __c43, 5)),
-        }),
-      ).annotate({
-        identifier: "VirtualMachineScaleSetIPConfiguration",
-      });
-    case 7:
-      return S.Array(__S(350, __c43, 6));
-  }
-}
-function __c44(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          primary: S.optional(S.Boolean),
-          enableAcceleratedNetworking: S.optional(S.Boolean),
-          disableTcpStateTracking: S.optional(S.Boolean),
-          enableFpga: S.optional(S.Boolean),
-          networkSecurityGroup: S.optional(__S(5, __c0, 5)),
-          dnsSettings: S.optional(__S(241, __c30, 1)),
-          ipConfigurations: __S(351, __c43, 7),
-          enableIPForwarding: S.optional(S.Boolean),
-          deleteOption: S.optional(S.String),
-          auxiliaryMode: S.optional(S.String),
-          auxiliarySku: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "VirtualMachineScaleSetNetworkConfigurationProperties",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String,
-          properties: S.optional(__S(352, __c44, 0)),
-          tags: S.optional(__S(4, __c0, 4)),
-        }),
-      ).annotate({
-        identifier: "VirtualMachineScaleSetNetworkConfiguration",
-      });
-    case 2:
-      return S.Array(__S(353, __c44, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          healthProbe: S.optional(__S(84, __c10, 4)),
-          networkInterfaceConfigurations: S.optional(__S(354, __c44, 2)),
+          healthProbe: S.optional(__S(1952, __c61, 0)),
+          networkInterfaceConfigurations: S.optional(__S(9129, __c285, 9)),
           networkApiVersion: S.optional(S.String),
-          interconnectGroupProfile: S.optional(__S(254, __c31, 6)),
+          interconnectGroupProfile: S.optional(__S(8132, __c254, 4)),
         }),
       ).annotate({
         identifier: "VirtualMachineScaleSetNetworkProfile",
       });
-    case 4:
+    case 10:
+      return S.suspend(() =>
+        S.Struct({
+          extensions: S.optional(__S(8928, __c279, 0)),
+          extensionsTimeBudget: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "VirtualMachineScaleSetExtensionProfile",
+      });
+    case 11:
+      return S.suspend(() =>
+        S.Struct({
+          vmSizeProperties: S.optional(__S(2080, __c65, 0)),
+          processorMode: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "VirtualMachineScaleSetHardwareProfile",
+      });
+    case 12:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          excludeExtensions: S.optional(__S(6400, __c200, 0)),
+          isOverridable: S.optional(S.Boolean),
+        }),
+      ).annotate({ identifier: "SecurityPostureReference" });
+    case 13:
+      return S.suspend(() =>
+        S.Struct({
+          osProfile: S.optional(__S(8963, __c280, 3)),
+          storageProfile: S.optional(__S(8968, __c280, 8)),
+          networkProfile: S.optional(__S(8969, __c280, 9)),
+          securityProfile: S.optional(__S(2104, __c65, 24)),
+          diagnosticsProfile: S.optional(__S(2099, __c65, 19)),
+          extensionProfile: S.optional(__S(8970, __c280, 10)),
+          licenseType: S.optional(S.String),
+          priority: S.optional(S.String),
+          evictionPolicy: S.optional(S.String),
+          billingProfile: S.optional(__S(8032, __c251, 0)),
+          scheduledEventsProfile: S.optional(__S(8034, __c251, 2)),
+          userData: S.optional(S.String),
+          capacityReservation: S.optional(__S(8133, __c254, 5)),
+          interconnectBlockProfile: S.optional(__S(8134, __c254, 6)),
+          applicationProfile: S.optional(__S(8037, __c251, 5)),
+          hardwareProfile: S.optional(__S(8971, __c280, 11)),
+          serviceArtifactReference: S.optional(__S(1952, __c61, 0)),
+          securityPostureReference: S.optional(__S(8972, __c280, 12)),
+          timeCreated: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "VirtualMachineScaleSetVMProfile",
+      });
+    case 14:
+      return S.suspend(() =>
+        S.Struct({
+          rules: S.optional(__S(9152, __c286, 0)),
+          forceDeletion: S.optional(S.Boolean),
+          prioritizeUnhealthyVMs: S.optional(S.Boolean),
+        }),
+      ).annotate({ identifier: "ScaleInPolicy" });
+    case 15:
+      return S.suspend(() =>
+        S.Struct({
+          enabled: S.optional(S.Boolean),
+          restoreTimeout: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "SpotRestorePolicy" });
+    case 16:
+      return S.suspend(() =>
+        S.Struct({
+          baseRegularPriorityCount: S.optional(S.Number),
+          regularPriorityPercentageAboveBase: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "PriorityMixPolicy" });
+    case 17:
+      return S.suspend(() =>
+        S.Struct({
+          enabled: S.optional(S.Boolean),
+        }),
+      ).annotate({
+        identifier: "ResilientVMCreationPolicy",
+      });
+    case 18:
+      return S.suspend(() =>
+        S.Struct({
+          enabled: S.optional(S.Boolean),
+          rebalanceStrategy: S.optional(S.String),
+          rebalanceBehavior: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "AutomaticZoneRebalancingPolicy",
+      });
+    case 19:
+      return S.suspend(() =>
+        S.Struct({
+          enabled: S.optional(S.Boolean),
+          value: S.optional(S.Number),
+        }),
+      ).annotate({
+        identifier: "MaxInstancePercentPerZonePolicy",
+      });
+    case 20:
+      return S.suspend(() =>
+        S.Struct({
+          maxZoneCount: S.optional(S.Number),
+          maxInstancePercentPerZonePolicy: S.optional(__S(8979, __c280, 19)),
+        }),
+      ).annotate({ identifier: "ZoneAllocationPolicy" });
+    case 21:
+      return S.suspend(() =>
+        S.Struct({
+          enabled: S.optional(S.Boolean),
+        }),
+      ).annotate({ identifier: "RestartRecoveryPolicy" });
+    case 22:
+      return S.suspend(() =>
+        S.Struct({
+          restartRecoveryPolicy: S.optional(__S(8981, __c280, 21)),
+          startRecoveryPolicy: S.optional(__S(8981, __c280, 21)),
+          reimageRecoveryPolicy: S.optional(__S(8981, __c280, 21)),
+        }),
+      ).annotate({
+        identifier: "OperationRecoverySettings",
+      });
+    case 23:
+      return S.suspend(() =>
+        S.Struct({
+          resilientVMCreationPolicy: S.optional(__S(8977, __c280, 17)),
+          resilientVMDeletionPolicy: S.optional(__S(8977, __c280, 17)),
+          automaticZoneRebalancingPolicy: S.optional(__S(8978, __c280, 18)),
+          zoneAllocationPolicy: S.optional(__S(8980, __c280, 20)),
+          operationRecoverySettings: S.optional(__S(8982, __c280, 22)),
+        }),
+      ).annotate({ identifier: "ResiliencyPolicy" });
+    case 24:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.optional(S.String),
+          rank: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "SkuProfileVMSize" });
+    case 25:
+      return S.Array(__S(8984, __c280, 24));
+    case 26:
+      return S.suspend(() =>
+        S.Struct({
+          vmSizes: S.optional(__S(8985, __c280, 25)),
+          allocationStrategy: S.optional(S.String),
+          automaticSkuMigrationPolicy: S.optional(__S(8977, __c280, 17)),
+        }),
+      ).annotate({ identifier: "SkuProfile" });
+    case 27:
+      return S.suspend(() =>
+        S.Struct({
+          type: S.optional(S.String),
+          waitDuration: S.optional(S.String),
+          defaultAction: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "LifecycleHook" });
+    case 28:
+      return S.Array(__S(8987, __c280, 27));
+    case 29:
+      return S.suspend(() =>
+        S.Struct({
+          lifecycleHooks: S.optional(__S(8988, __c280, 28)),
+        }),
+      ).annotate({ identifier: "LifecycleHooksProfile" });
+    case 30:
+      return S.suspend(() =>
+        S.Struct({
+          enabled: S.optional(S.Boolean),
+          expiryDuration: S.optional(S.String),
+          gracePeriod: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ExternalHealthPolicy" });
+    case 31:
+      return S.suspend(() =>
+        S.Struct({
+          upgradePolicy: S.optional(__S(8961, __c280, 1)),
+          scheduledEventsPolicy: S.optional(__S(5091, __c159, 3)),
+          automaticRepairsPolicy: S.optional(__S(8962, __c280, 2)),
+          virtualMachineProfile: S.optional(__S(8973, __c280, 13)),
+          provisioningState: S.optional(S.String),
+          overprovision: S.optional(S.Boolean),
+          doNotRunExtensionsOnOverprovisionedVMs: S.optional(S.Boolean),
+          uniqueId: S.optional(S.String),
+          singlePlacementGroup: S.optional(S.Boolean),
+          zoneBalance: S.optional(S.Boolean),
+          platformFaultDomainCount: S.optional(S.Number),
+          proximityPlacementGroup: S.optional(__S(5216, __c163, 0)),
+          hostGroup: S.optional(__S(5216, __c163, 0)),
+          additionalCapabilities: S.optional(__S(8128, __c254, 0)),
+          scaleInPolicy: S.optional(__S(8974, __c280, 14)),
+          orchestrationMode: S.optional(S.String),
+          spotRestorePolicy: S.optional(__S(8975, __c280, 15)),
+          priorityMixPolicy: S.optional(__S(8976, __c280, 16)),
+          timeCreated: S.optional(S.String),
+          constrainedMaximumCapacity: S.optional(S.Boolean),
+          resiliencyPolicy: S.optional(__S(8983, __c280, 23)),
+          zonalPlatformFaultDomainAlignMode: S.optional(S.String),
+          skuProfile: S.optional(__S(8986, __c280, 26)),
+          highSpeedInterconnectPlacement: S.optional(S.String),
+          lifecycleHooksProfile: S.optional(__S(8989, __c280, 29)),
+          externalHealthPolicy: S.optional(__S(8990, __c280, 30)),
+        }),
+      ).annotate({
+        identifier: "VirtualMachineScaleSetProperties",
+      });
+  }
+}
+function __c281(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          principalId: S.optional(S.String),
+          tenantId: S.optional(S.String),
+          type: S.optional(S.String),
+          userAssignedIdentities: S.optional(__S(8137, __c254, 9)),
+        }),
+      ).annotate({
+        identifier: "VirtualMachineScaleSetIdentity",
+      });
+  }
+}
+function __c282(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(5184, __c162, 0)),
+          tags: S.optional(__S(5152, __c161, 0)),
+          location: S.String,
+          sku: S.optional(__S(5344, __c167, 0)),
+          plan: S.optional(__S(8135, __c254, 7)),
+          properties: S.optional(__S(8991, __c280, 31)),
+          identity: S.optional(__S(8992, __c281, 0)),
+          zones: S.optional(__S(6400, __c200, 0)),
+          extendedLocation: S.optional(__S(7264, __c227, 0)),
+          etag: S.optional(S.String),
+          placement: S.optional(__S(7392, __c231, 0)),
+        }),
+      ).annotate({
+        identifier: "GetVirtualMachineScaleSetResponse",
+      });
+  }
+}
+function __c283(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           forceUpdateTag: S.optional(S.String),
@@ -17459,283 +21541,145 @@ function __c44(j: number): any {
           settings: S.optional(S.Unknown),
           protectedSettings: S.optional(S.Unknown),
           provisioningState: S.optional(S.String),
-          provisionAfterExtensions: S.optional(__S(0, __c0, 0)),
+          provisionAfterExtensions: S.optional(__S(64, __c2, 0)),
           suppressFailures: S.optional(S.Boolean),
-          protectedSettingsFromKeyVault: S.optional(__S(101, __c12, 5)),
+          protectedSettingsFromKeyVault: S.optional(__S(2016, __c63, 0)),
         }),
       ).annotate({
         identifier: "VirtualMachineScaleSetExtensionProperties",
       });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          properties: S.optional(__S(356, __c44, 4)),
+          properties: S.optional(__S(9056, __c283, 0)),
         }),
       ).annotate({
         identifier: "VirtualMachineScaleSetExtension",
       });
-    case 6:
-      return S.Array(__S(357, __c44, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          extensions: S.optional(__S(358, __c44, 6)),
-          extensionsTimeBudget: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "VirtualMachineScaleSetExtensionProfile",
-      });
   }
 }
-function __c45(j: number): any {
+function __c284(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          vmSizeProperties: S.optional(__S(99, __c12, 3)),
-          processorMode: S.optional(S.String),
+          maxBatchInstancePercent: S.optional(S.Number),
+          maxUnhealthyInstancePercent: S.optional(S.Number),
+          maxUnhealthyUpgradedInstancePercent: S.optional(S.Number),
+          pauseTimeBetweenBatches: S.optional(S.String),
+          enableCrossZoneUpgrade: S.optional(S.Boolean),
+          prioritizeUnhealthyInstances: S.optional(S.Boolean),
+          rollbackFailedInstancesOnPolicyBreach: S.optional(S.Boolean),
+          maxSurge: S.optional(S.Boolean),
         }),
-      ).annotate({
-        identifier: "VirtualMachineScaleSetHardwareProfile",
-      });
-    case 1:
+      ).annotate({ identifier: "RollingUpgradePolicy" });
+  }
+}
+function __c285(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          id: S.String,
-          excludeExtensions: S.optional(__S(23, __c2, 7)),
-          isOverridable: S.optional(S.Boolean),
+          domainNameLabel: S.String,
+          domainNameLabelScope: S.optional(S.String),
         }),
-      ).annotate({ identifier: "SecurityPostureReference" });
+      ).annotate({
+        identifier: "VirtualMachineScaleSetPublicIPAddressConfigurationDnsSettings",
+      });
+    case 1:
+      return S.Array(__S(8130, __c254, 2));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          osProfile: S.optional(__S(339, __c42, 3)),
-          storageProfile: S.optional(__S(344, __c43, 0)),
-          networkProfile: S.optional(__S(355, __c44, 3)),
-          securityProfile: S.optional(__S(133, __c16, 5)),
-          diagnosticsProfile: S.optional(__S(128, __c16, 0)),
-          extensionProfile: S.optional(__S(359, __c44, 7)),
-          licenseType: S.optional(S.String),
-          priority: S.optional(S.String),
-          evictionPolicy: S.optional(S.String),
-          billingProfile: S.optional(__S(256, __c32, 0)),
-          scheduledEventsProfile: S.optional(__S(278, __c34, 6)),
-          userData: S.optional(S.String),
-          capacityReservation: S.optional(__S(279, __c34, 7)),
-          interconnectBlockProfile: S.optional(__S(280, __c35, 0)),
-          applicationProfile: S.optional(__S(283, __c35, 3)),
-          hardwareProfile: S.optional(__S(360, __c45, 0)),
-          serviceArtifactReference: S.optional(__S(84, __c10, 4)),
-          securityPostureReference: S.optional(__S(361, __c45, 1)),
-          timeCreated: S.optional(S.String),
+          idleTimeoutInMinutes: S.optional(S.Number),
+          dnsSettings: S.optional(__S(9120, __c285, 0)),
+          ipTags: S.optional(__S(9121, __c285, 1)),
+          publicIPPrefix: S.optional(__S(5216, __c163, 0)),
+          publicIPAddressVersion: S.optional(S.String),
+          deleteOption: S.optional(S.String),
         }),
       ).annotate({
-        identifier: "VirtualMachineScaleSetVMProfile",
+        identifier: "VirtualMachineScaleSetPublicIPAddressConfigurationProperties",
       });
     case 3:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String,
+          properties: S.optional(__S(9122, __c285, 2)),
+          sku: S.optional(__S(8131, __c254, 3)),
+          tags: S.optional(__S(5152, __c161, 0)),
+        }),
+      ).annotate({
+        identifier: "VirtualMachineScaleSetPublicIPAddressConfiguration",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          subnet: S.optional(__S(1952, __c61, 0)),
+          primary: S.optional(S.Boolean),
+          publicIPAddressConfiguration: S.optional(__S(9123, __c285, 3)),
+          privateIPAddressVersion: S.optional(S.String),
+          applicationGatewayBackendAddressPools: S.optional(__S(9408, __c294, 0)),
+          applicationSecurityGroups: S.optional(__S(9408, __c294, 0)),
+          loadBalancerBackendAddressPools: S.optional(__S(9408, __c294, 0)),
+          loadBalancerInboundNatPools: S.optional(__S(9408, __c294, 0)),
+        }),
+      ).annotate({
+        identifier: "VirtualMachineScaleSetIPConfigurationProperties",
+      });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String,
+          properties: S.optional(__S(9124, __c285, 4)),
+        }),
+      ).annotate({
+        identifier: "VirtualMachineScaleSetIPConfiguration",
+      });
+    case 6:
+      return S.Array(__S(9125, __c285, 5));
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          primary: S.optional(S.Boolean),
+          enableAcceleratedNetworking: S.optional(S.Boolean),
+          disableTcpStateTracking: S.optional(S.Boolean),
+          enableFpga: S.optional(S.Boolean),
+          networkSecurityGroup: S.optional(__S(5216, __c163, 0)),
+          dnsSettings: S.optional(__S(8129, __c254, 1)),
+          ipConfigurations: __S(9126, __c285, 6),
+          enableIPForwarding: S.optional(S.Boolean),
+          deleteOption: S.optional(S.String),
+          auxiliaryMode: S.optional(S.String),
+          auxiliarySku: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "VirtualMachineScaleSetNetworkConfigurationProperties",
+      });
+    case 8:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String,
+          properties: S.optional(__S(9127, __c285, 7)),
+          tags: S.optional(__S(5152, __c161, 0)),
+        }),
+      ).annotate({
+        identifier: "VirtualMachineScaleSetNetworkConfiguration",
+      });
+    case 9:
+      return S.Array(__S(9128, __c285, 8));
+  }
+}
+function __c286(j: number): any {
+  switch (j) {
+    case 0:
       return S.Array(S.String);
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          rules: S.optional(__S(363, __c45, 3)),
-          forceDeletion: S.optional(S.Boolean),
-          prioritizeUnhealthyVMs: S.optional(S.Boolean),
-        }),
-      ).annotate({ identifier: "ScaleInPolicy" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          enabled: S.optional(S.Boolean),
-          restoreTimeout: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "SpotRestorePolicy" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          baseRegularPriorityCount: S.optional(S.Number),
-          regularPriorityPercentageAboveBase: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "PriorityMixPolicy" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          enabled: S.optional(S.Boolean),
-        }),
-      ).annotate({
-        identifier: "ResilientVMCreationPolicy",
-      });
   }
 }
-function __c46(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          enabled: S.optional(S.Boolean),
-          rebalanceStrategy: S.optional(S.String),
-          rebalanceBehavior: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "AutomaticZoneRebalancingPolicy",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          enabled: S.optional(S.Boolean),
-          value: S.optional(S.Number),
-        }),
-      ).annotate({
-        identifier: "MaxInstancePercentPerZonePolicy",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          maxZoneCount: S.optional(S.Number),
-          maxInstancePercentPerZonePolicy: S.optional(__S(369, __c46, 1)),
-        }),
-      ).annotate({ identifier: "ZoneAllocationPolicy" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          enabled: S.optional(S.Boolean),
-        }),
-      ).annotate({ identifier: "RestartRecoveryPolicy" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          restartRecoveryPolicy: S.optional(__S(371, __c46, 3)),
-          startRecoveryPolicy: S.optional(__S(371, __c46, 3)),
-          reimageRecoveryPolicy: S.optional(__S(371, __c46, 3)),
-        }),
-      ).annotate({
-        identifier: "OperationRecoverySettings",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          resilientVMCreationPolicy: S.optional(__S(367, __c45, 7)),
-          resilientVMDeletionPolicy: S.optional(__S(367, __c45, 7)),
-          automaticZoneRebalancingPolicy: S.optional(__S(368, __c46, 0)),
-          zoneAllocationPolicy: S.optional(__S(370, __c46, 2)),
-          operationRecoverySettings: S.optional(__S(372, __c46, 4)),
-        }),
-      ).annotate({ identifier: "ResiliencyPolicy" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.optional(S.String),
-          rank: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "SkuProfileVMSize" });
-    case 7:
-      return S.Array(__S(374, __c46, 6));
-  }
-}
-function __c47(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          vmSizes: S.optional(__S(375, __c46, 7)),
-          allocationStrategy: S.optional(S.String),
-          automaticSkuMigrationPolicy: S.optional(__S(367, __c45, 7)),
-        }),
-      ).annotate({ identifier: "SkuProfile" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          type: S.optional(S.String),
-          waitDuration: S.optional(S.String),
-          defaultAction: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "LifecycleHook" });
-    case 2:
-      return S.Array(__S(377, __c47, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          lifecycleHooks: S.optional(__S(378, __c47, 2)),
-        }),
-      ).annotate({ identifier: "LifecycleHooksProfile" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          enabled: S.optional(S.Boolean),
-          expiryDuration: S.optional(S.String),
-          gracePeriod: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ExternalHealthPolicy" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          upgradePolicy: S.optional(__S(337, __c42, 1)),
-          scheduledEventsPolicy: S.optional(__S(10, __c1, 2)),
-          automaticRepairsPolicy: S.optional(__S(338, __c42, 2)),
-          virtualMachineProfile: S.optional(__S(362, __c45, 2)),
-          provisioningState: S.optional(S.String),
-          overprovision: S.optional(S.Boolean),
-          doNotRunExtensionsOnOverprovisionedVMs: S.optional(S.Boolean),
-          uniqueId: S.optional(S.String),
-          singlePlacementGroup: S.optional(S.Boolean),
-          zoneBalance: S.optional(S.Boolean),
-          platformFaultDomainCount: S.optional(S.Number),
-          proximityPlacementGroup: S.optional(__S(5, __c0, 5)),
-          hostGroup: S.optional(__S(5, __c0, 5)),
-          additionalCapabilities: S.optional(__S(237, __c29, 5)),
-          scaleInPolicy: S.optional(__S(364, __c45, 4)),
-          orchestrationMode: S.optional(S.String),
-          spotRestorePolicy: S.optional(__S(365, __c45, 5)),
-          priorityMixPolicy: S.optional(__S(366, __c45, 6)),
-          timeCreated: S.optional(S.String),
-          constrainedMaximumCapacity: S.optional(S.Boolean),
-          resiliencyPolicy: S.optional(__S(373, __c46, 5)),
-          zonalPlatformFaultDomainAlignMode: S.optional(S.String),
-          skuProfile: S.optional(__S(376, __c47, 0)),
-          highSpeedInterconnectPlacement: S.optional(S.String),
-          lifecycleHooksProfile: S.optional(__S(379, __c47, 3)),
-          externalHealthPolicy: S.optional(__S(380, __c47, 4)),
-        }),
-      ).annotate({
-        identifier: "VirtualMachineScaleSetProperties",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          principalId: S.optional(S.String),
-          tenantId: S.optional(S.String),
-          type: S.optional(S.String),
-          userAssignedIdentities: S.optional(__S(292, __c36, 4)),
-        }),
-      ).annotate({
-        identifier: "VirtualMachineScaleSetIdentity",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(14, __c1, 6)),
-          tags: S.optional(__S(4, __c0, 4)),
-          location: S.String,
-          sku: S.optional(__S(12, __c1, 4)),
-          plan: S.optional(__S(287, __c35, 7)),
-          properties: S.optional(__S(381, __c47, 5)),
-          identity: S.optional(__S(382, __c47, 6)),
-          zones: S.optional(__S(23, __c2, 7)),
-          extendedLocation: S.optional(__S(204, __c25, 4)),
-          etag: S.optional(S.String),
-          placement: S.optional(__S(209, __c26, 1)),
-        }),
-      ).annotate({
-        identifier: "GetVirtualMachineScaleSetResponse",
-      });
-  }
-}
-function __c48(j: number): any {
+function __c287(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -17756,7 +21700,11 @@ function __c48(j: number): any {
       ).annotate({
         identifier: "GetVirtualMachineScaleSetExtensionRequest",
       });
-    case 1:
+  }
+}
+function __c288(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -17773,7 +21721,7 @@ function __c48(j: number): any {
       ).annotate({
         identifier: "GetVirtualMachineScaleSetInstanceViewRequest",
       });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           code: S.optional(S.String),
@@ -17782,34 +21730,30 @@ function __c48(j: number): any {
       ).annotate({
         identifier: "VirtualMachineStatusCodeCount",
       });
+    case 2:
+      return S.Array(__S(9217, __c288, 1));
     case 3:
-      return S.Array(__S(386, __c48, 2));
-    case 4:
       return S.suspend(() =>
         S.Struct({
-          statusesSummary: S.optional(__S(387, __c48, 3)),
+          statusesSummary: S.optional(__S(9218, __c288, 2)),
         }),
       ).annotate({
         identifier: "VirtualMachineScaleSetInstanceViewStatusesSummary",
       });
+    case 4:
+      return S.Array(__S(9217, __c288, 1));
     case 5:
-      return S.Array(__S(386, __c48, 2));
-    case 6:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
-          statusesSummary: S.optional(__S(389, __c48, 5)),
+          statusesSummary: S.optional(__S(9220, __c288, 4)),
         }),
       ).annotate({
         identifier: "VirtualMachineScaleSetVMExtensionsSummary",
       });
+    case 6:
+      return S.Array(__S(9221, __c288, 5));
     case 7:
-      return S.Array(__S(390, __c48, 6));
-  }
-}
-function __c49(j: number): any {
-  switch (j) {
-    case 0:
       return S.suspend(() =>
         S.Struct({
           serviceName: S.optional(S.String),
@@ -17820,20 +21764,24 @@ function __c49(j: number): any {
       ).annotate({
         identifier: "OrchestrationServiceSummary",
       });
-    case 1:
-      return S.Array(__S(392, __c49, 0));
-    case 2:
+    case 8:
+      return S.Array(__S(9223, __c288, 7));
+    case 9:
       return S.suspend(() =>
         S.Struct({
-          virtualMachine: S.optional(__S(388, __c48, 4)),
-          extensions: S.optional(__S(391, __c48, 7)),
-          statuses: S.optional(__S(16, __c2, 0)),
-          orchestrationServices: S.optional(__S(393, __c49, 1)),
+          virtualMachine: S.optional(__S(9219, __c288, 3)),
+          extensions: S.optional(__S(9222, __c288, 6)),
+          statuses: S.optional(__S(5280, __c165, 0)),
+          orchestrationServices: S.optional(__S(9224, __c288, 8)),
         }),
       ).annotate({
         identifier: "VirtualMachineScaleSetInstanceView",
       });
-    case 3:
+  }
+}
+function __c289(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -17851,18 +21799,22 @@ function __c49(j: number): any {
       ).annotate({
         identifier: "GetVirtualMachineScaleSetLifeCycleHookEventRequest",
       });
-    case 4:
+  }
+}
+function __c290(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          resource: S.optional(__S(84, __c10, 4)),
+          resource: S.optional(__S(1952, __c61, 0)),
           actionState: S.optional(S.String),
         }),
       ).annotate({
         identifier: "VMScaleSetLifecycleHookEventTargetResource",
       });
-    case 5:
-      return S.Array(__S(396, __c49, 4));
-    case 6:
+    case 1:
+      return S.Array(__S(9280, __c290, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           priority: S.optional(S.String),
@@ -17870,7 +21822,7 @@ function __c49(j: number): any {
       ).annotate({
         identifier: "VMScaleSetLifecycleHookEventAdditionalContext",
       });
-    case 7:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           type: S.optional(S.String),
@@ -17878,16 +21830,66 @@ function __c49(j: number): any {
           maxWaitUntil: S.optional(S.String),
           timeCreated: S.optional(S.String),
           defaultAction: S.optional(S.String),
-          targetResources: S.optional(__S(397, __c49, 5)),
-          additionalContext: S.optional(__S(398, __c49, 6)),
+          targetResources: S.optional(__S(9281, __c290, 1)),
+          additionalContext: S.optional(__S(9282, __c290, 2)),
           state: S.optional(S.String),
         }),
       ).annotate({
         identifier: "VMScaleSetLifecycleHookEventProperties",
       });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(5184, __c162, 0)),
+          properties: S.optional(__S(9283, __c290, 3)),
+        }),
+      ).annotate({
+        identifier: "GetVirtualMachineScaleSetLifeCycleHookEventResponse",
+      });
   }
 }
-function __c50(j: number): any {
+function __c291(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          capacityReservationGroupName: S.String.pipe(T.Label()),
+          tags: S.optional(__S(5152, __c161, 0)),
+          location: S.String,
+          properties: S.optional(__S(9344, __c292, 0)),
+          zones: S.optional(__S(6400, __c200, 0)),
+        }).pipe(
+          T.Http({
+            method: "PUT",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/capacityReservationGroups/{capacityReservationGroupName}",
+            code: 200,
+            apiVersion: "2026-04-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "CapacityReservationGroupsCreateOrUpdateRequest",
+      });
+  }
+}
+function __c292(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          sharingProfile: S.optional(__S(9440, __c295, 0)),
+          reservationType: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "CapacityReservationGroupPropertiesInput",
+      });
+  }
+}
+function __c293(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -17895,13 +21897,94 @@ function __c50(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(14, __c1, 6)),
-          properties: S.optional(__S(399, __c49, 7)),
+          systemData: S.optional(__S(5184, __c162, 0)),
+          tags: S.optional(__S(5152, __c161, 0)),
+          location: S.String,
+          properties: S.optional(__S(9444, __c295, 4)),
+          zones: S.optional(__S(6400, __c200, 0)),
         }),
       ).annotate({
-        identifier: "GetVirtualMachineScaleSetLifeCycleHookEventResponse",
+        identifier: "CapacityReservationGroupsCreateOrUpdateResponse",
       });
+  }
+}
+function __c294(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(5216, __c163, 0));
+  }
+}
+function __c295(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionIds: S.optional(__S(5312, __c166, 0)),
+        }),
+      ).annotate({ identifier: "ResourceSharingProfile" });
     case 1:
+      return S.suspend(() =>
+        S.Struct({
+          utilizationInfo: S.optional(__S(9473, __c296, 1)),
+          statuses: S.optional(__S(5280, __c165, 0)),
+          reservationStateInfo: S.optional(__S(9474, __c296, 2)),
+          name: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "CapacityReservationInstanceViewWithName",
+      });
+    case 2:
+      return S.Array(__S(9441, __c295, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          capacityReservations: S.optional(__S(9442, __c295, 2)),
+          sharedSubscriptionIds: S.optional(__S(5312, __c166, 0)),
+        }),
+      ).annotate({
+        identifier: "CapacityReservationGroupInstanceView",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          capacityReservations: S.optional(__S(5312, __c166, 0)),
+          virtualMachinesAssociated: S.optional(__S(9408, __c294, 0)),
+          instanceView: S.optional(__S(9443, __c295, 3)),
+          sharingProfile: S.optional(__S(9440, __c295, 0)),
+          reservationType: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "CapacityReservationGroupProperties",
+      });
+  }
+}
+function __c296(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, S.Number);
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          currentCapacity: S.optional(S.Number),
+          virtualMachinesAllocated: S.optional(__S(5312, __c166, 0)),
+          usedReservedCountBySubscription: S.optional(__S(9472, __c296, 0)),
+        }),
+      ).annotate({
+        identifier: "CapacityReservationUtilization",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          reservationState: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "CapacityReservationStateInfo",
+      });
+  }
+}
+function __c297(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -17918,7 +22001,7 @@ function __c50(j: number): any {
       ).annotate({
         identifier: "GetVirtualMachineScaleSetOSUpgradeHistoryRequest",
       });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           code: S.optional(S.String),
@@ -17928,7 +22011,53 @@ function __c50(j: number): any {
       ).annotate({
         identifier: "UpgradeOperationHistoryStatus",
       });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          successfullyRolledbackInstanceCount: S.optional(S.Number),
+          failedRolledbackInstanceCount: S.optional(S.Number),
+          rollbackError: S.optional(__S(8163, __c255, 3)),
+        }),
+      ).annotate({ identifier: "RollbackStatusInfo" });
     case 3:
+      return S.suspend(() =>
+        S.Struct({
+          runningStatus: S.optional(__S(9505, __c297, 1)),
+          progress: S.optional(__S(9536, __c298, 0)),
+          error: S.optional(__S(8163, __c255, 3)),
+          startedBy: S.optional(S.String),
+          targetImageReference: S.optional(__S(8064, __c252, 0)),
+          rollbackInfo: S.optional(__S(9506, __c297, 2)),
+        }),
+      ).annotate({
+        identifier: "UpgradeOperationHistoricalStatusInfoProperties",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          properties: S.optional(__S(9507, __c297, 3)),
+          type: S.optional(S.String),
+          location: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "UpgradeOperationHistoricalStatusInfo",
+      });
+    case 5:
+      return S.Array(__S(9508, __c297, 4));
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          value: __S(9509, __c297, 5),
+          nextLink: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "VirtualMachineScaleSetListOSUpgradeHistory",
+      });
+  }
+}
+function __c298(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           successfulInstanceCount: S.optional(S.Number),
@@ -17939,53 +22068,11 @@ function __c50(j: number): any {
       ).annotate({
         identifier: "RollingUpgradeProgressInfo",
       });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          successfullyRolledbackInstanceCount: S.optional(S.Number),
-          failedRolledbackInstanceCount: S.optional(S.Number),
-          rollbackError: S.optional(__S(271, __c33, 7)),
-        }),
-      ).annotate({ identifier: "RollbackStatusInfo" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          runningStatus: S.optional(__S(402, __c50, 2)),
-          progress: S.optional(__S(403, __c50, 3)),
-          error: S.optional(__S(271, __c33, 7)),
-          startedBy: S.optional(S.String),
-          targetImageReference: S.optional(__S(230, __c28, 6)),
-          rollbackInfo: S.optional(__S(404, __c50, 4)),
-        }),
-      ).annotate({
-        identifier: "UpgradeOperationHistoricalStatusInfoProperties",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          properties: S.optional(__S(405, __c50, 5)),
-          type: S.optional(S.String),
-          location: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "UpgradeOperationHistoricalStatusInfo",
-      });
-    case 7:
-      return S.Array(__S(406, __c50, 6));
   }
 }
-function __c51(j: number): any {
+function __c299(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() =>
-        S.Struct({
-          value: __S(407, __c50, 7),
-          nextLink: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "VirtualMachineScaleSetListOSUpgradeHistory",
-      });
-    case 1:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -18002,7 +22089,7 @@ function __c51(j: number): any {
       ).annotate({
         identifier: "GetVirtualMachineScaleSetRollingUpgradeLatestRequest",
       });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           code: S.optional(S.String),
@@ -18013,32 +22100,36 @@ function __c51(j: number): any {
       ).annotate({
         identifier: "RollingUpgradeRunningStatus",
       });
-    case 3:
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          policy: S.optional(__S(335, __c41, 7)),
-          runningStatus: S.optional(__S(410, __c51, 2)),
-          progress: S.optional(__S(403, __c50, 3)),
-          error: S.optional(__S(271, __c33, 7)),
+          policy: S.optional(__S(9088, __c284, 0)),
+          runningStatus: S.optional(__S(9569, __c299, 1)),
+          progress: S.optional(__S(9536, __c298, 0)),
+          error: S.optional(__S(8163, __c255, 3)),
         }),
       ).annotate({
         identifier: "RollingUpgradeStatusInfoProperties",
       });
-    case 4:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(14, __c1, 6)),
-          tags: S.optional(__S(4, __c0, 4)),
+          systemData: S.optional(__S(5184, __c162, 0)),
+          tags: S.optional(__S(5152, __c161, 0)),
           location: S.String,
-          properties: S.optional(__S(411, __c51, 3)),
+          properties: S.optional(__S(9570, __c299, 2)),
         }),
       ).annotate({
         identifier: "GetVirtualMachineScaleSetRollingUpgradeLatestResponse",
       });
-    case 5:
+  }
+}
+function __c300(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -18057,45 +22148,20 @@ function __c51(j: number): any {
       ).annotate({
         identifier: "GetVirtualMachineScaleSetVMRequest",
       });
-    case 6:
+  }
+}
+function __c301(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          platformUpdateDomain: S.optional(S.Number),
-          platformFaultDomain: S.optional(S.Number),
-          rdpThumbPrint: S.optional(S.String),
-          vmAgent: S.optional(__S(259, __c32, 3)),
-          maintenanceRedeployStatus: S.optional(__S(260, __c32, 4)),
-          disks: S.optional(__S(263, __c32, 7)),
-          extensions: S.optional(__S(265, __c33, 1)),
-          vmHealth: S.optional(__S(266, __c33, 2)),
-          bootDiagnostics: S.optional(__S(267, __c33, 3)),
-          statuses: S.optional(__S(16, __c2, 0)),
-          assignedHost: S.optional(S.String),
-          placementGroupId: S.optional(S.String),
-          computerName: S.optional(S.String),
-          osName: S.optional(S.String),
-          osVersion: S.optional(S.String),
-          hyperVGeneration: S.optional(S.String),
-          interconnectInstanceView: S.optional(__S(275, __c34, 3)),
-          capacityReservationType: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "VirtualMachineScaleSetVMInstanceView",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          networkInterfaceConfigurations: S.optional(__S(354, __c44, 2)),
-          interconnectGroupProfile: S.optional(__S(254, __c31, 6)),
+          networkInterfaceConfigurations: S.optional(__S(9129, __c285, 9)),
+          interconnectGroupProfile: S.optional(__S(8132, __c254, 4)),
         }),
       ).annotate({
         identifier: "VirtualMachineScaleSetVMNetworkProfileConfiguration",
       });
-  }
-}
-function __c52(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           protectFromScaleIn: S.optional(S.Boolean),
@@ -18104,57 +22170,94 @@ function __c52(j: number): any {
       ).annotate({
         identifier: "VirtualMachineScaleSetVMProtectionPolicy",
       });
-    case 1:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           latestModelApplied: S.optional(S.Boolean),
           vmId: S.optional(S.String),
-          instanceView: S.optional(__S(414, __c51, 6)),
-          hardwareProfile: S.optional(__S(100, __c12, 4)),
+          instanceView: S.optional(__S(9696, __c303, 0)),
+          hardwareProfile: S.optional(__S(2144, __c67, 0)),
           resilientVMDeletionStatus: S.optional(S.String),
-          storageProfile: S.optional(__S(236, __c29, 4)),
-          additionalCapabilities: S.optional(__S(237, __c29, 5)),
-          osProfile: S.optional(__S(126, __c15, 6)),
-          securityProfile: S.optional(__S(133, __c16, 5)),
-          networkProfile: S.optional(__S(255, __c31, 7)),
-          networkProfileConfiguration: S.optional(__S(415, __c51, 7)),
-          diagnosticsProfile: S.optional(__S(128, __c16, 0)),
-          availabilitySet: S.optional(__S(5, __c0, 5)),
+          storageProfile: S.optional(__S(8227, __c257, 3)),
+          additionalCapabilities: S.optional(__S(8128, __c254, 0)),
+          osProfile: S.optional(__S(2145, __c67, 1)),
+          securityProfile: S.optional(__S(2104, __c65, 24)),
+          networkProfile: S.optional(__S(8269, __c258, 13)),
+          networkProfileConfiguration: S.optional(__S(9632, __c301, 0)),
+          diagnosticsProfile: S.optional(__S(2099, __c65, 19)),
+          availabilitySet: S.optional(__S(5216, __c163, 0)),
           provisioningState: S.optional(S.String),
           licenseType: S.optional(S.String),
           modelDefinitionApplied: S.optional(S.String),
-          protectionPolicy: S.optional(__S(416, __c52, 0)),
+          protectionPolicy: S.optional(__S(9633, __c301, 1)),
           userData: S.optional(S.String),
           timeCreated: S.optional(S.String),
           virtualMachineResourceId: S.optional(S.String),
-          interconnectBlockProfile: S.optional(__S(280, __c35, 0)),
-          capacityReservation: S.optional(__S(279, __c34, 7)),
+          interconnectBlockProfile: S.optional(__S(8134, __c254, 6)),
+          capacityReservation: S.optional(__S(8133, __c254, 5)),
         }),
       ).annotate({
         identifier: "VirtualMachineScaleSetVMProperties",
       });
-    case 2:
+  }
+}
+function __c302(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(14, __c1, 6)),
-          tags: S.optional(__S(4, __c0, 4)),
+          systemData: S.optional(__S(5184, __c162, 0)),
+          tags: S.optional(__S(5152, __c161, 0)),
           location: S.String,
-          properties: S.optional(__S(417, __c52, 1)),
+          properties: S.optional(__S(9634, __c301, 2)),
           instanceId: S.optional(S.String),
-          sku: S.optional(__S(12, __c1, 4)),
-          plan: S.optional(__S(287, __c35, 7)),
-          resources: S.optional(__S(290, __c36, 2)),
-          zones: S.optional(__S(23, __c2, 7)),
-          identity: S.optional(__S(293, __c36, 5)),
+          sku: S.optional(__S(5344, __c167, 0)),
+          plan: S.optional(__S(8135, __c254, 7)),
+          resources: S.optional(__S(8193, __c256, 1)),
+          zones: S.optional(__S(6400, __c200, 0)),
+          identity: S.optional(__S(8270, __c258, 14)),
           etag: S.optional(S.String),
         }),
       ).annotate({
         identifier: "GetVirtualMachineScaleSetVMResponse",
       });
-    case 3:
+  }
+}
+function __c303(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          platformUpdateDomain: S.optional(S.Number),
+          platformFaultDomain: S.optional(S.Number),
+          rdpThumbPrint: S.optional(S.String),
+          vmAgent: S.optional(__S(8290, __c259, 2)),
+          maintenanceRedeployStatus: S.optional(__S(8291, __c259, 3)),
+          disks: S.optional(__S(8294, __c259, 6)),
+          extensions: S.optional(__S(8295, __c259, 7)),
+          vmHealth: S.optional(__S(8296, __c259, 8)),
+          bootDiagnostics: S.optional(__S(8297, __c259, 9)),
+          statuses: S.optional(__S(5280, __c165, 0)),
+          assignedHost: S.optional(S.String),
+          placementGroupId: S.optional(S.String),
+          computerName: S.optional(S.String),
+          osName: S.optional(S.String),
+          osVersion: S.optional(S.String),
+          hyperVGeneration: S.optional(S.String),
+          interconnectInstanceView: S.optional(__S(8298, __c259, 10)),
+          capacityReservationType: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "VirtualMachineScaleSetVMInstanceView",
+      });
+  }
+}
+function __c304(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -18173,7 +22276,11 @@ function __c52(j: number): any {
       ).annotate({
         identifier: "GetVirtualMachineScaleSetVMBootDiagnosticsDataRequest",
       });
-    case 4:
+  }
+}
+function __c305(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -18193,21 +22300,25 @@ function __c52(j: number): any {
       ).annotate({
         identifier: "GetVirtualMachineScaleSetVMDiagnosticRunCommandRequest",
       });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(14, __c1, 6)),
-          tags: S.optional(__S(298, __c37, 2)),
+          systemData: S.optional(__S(5184, __c162, 0)),
+          tags: S.optional(__S(8512, __c266, 0)),
           location: S.String,
-          properties: S.optional(__S(304, __c38, 0)),
+          properties: S.optional(__S(8483, __c265, 3)),
         }),
       ).annotate({
         identifier: "GetVirtualMachineScaleSetVMDiagnosticRunCommandResponse",
       });
-    case 6:
+  }
+}
+function __c306(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -18227,11 +22338,15 @@ function __c52(j: number): any {
       ).annotate({
         identifier: "GetVirtualMachineScaleSetVMExtensionRequest",
       });
-    case 7:
+  }
+}
+function __c307(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
-          properties: S.optional(__S(288, __c36, 0)),
+          properties: S.optional(__S(7968, __c249, 0)),
           location: S.optional(S.String),
           type: S.optional(S.String),
           name: S.optional(S.String),
@@ -18241,7 +22356,7 @@ function __c52(j: number): any {
       });
   }
 }
-function __c53(j: number): any {
+function __c308(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -18261,7 +22376,11 @@ function __c53(j: number): any {
       ).annotate({
         identifier: "GetVirtualMachineScaleSetVMInstanceViewRequest",
       });
-    case 1:
+  }
+}
+function __c309(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -18281,24 +22400,20 @@ function __c53(j: number): any {
       ).annotate({
         identifier: "GetVirtualMachineScaleSetVMRunCommandRequest",
       });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          sourceVirtualMachine: S.optional(__S(5, __c0, 5)),
-          storageProfile: S.optional(__S(202, __c25, 2)),
-          hyperVGeneration: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ImagePropertiesInput" });
-    case 3:
+  }
+}
+function __c310(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           imageName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(4, __c0, 4)),
+          tags: S.optional(__S(5152, __c161, 0)),
           location: S.String,
-          properties: S.optional(__S(426, __c53, 2)),
-          extendedLocation: S.optional(__S(204, __c25, 4)),
+          properties: S.optional(__S(9952, __c311, 0)),
+          extendedLocation: S.optional(__S(7264, __c227, 0)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -18310,43 +22425,59 @@ function __c53(j: number): any {
       ).annotate({
         identifier: "ImagesCreateOrUpdateRequest",
       });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(14, __c1, 6)),
-          tags: S.optional(__S(4, __c0, 4)),
+          systemData: S.optional(__S(5184, __c162, 0)),
+          tags: S.optional(__S(5152, __c161, 0)),
           location: S.String,
-          properties: S.optional(__S(203, __c25, 3)),
-          extendedLocation: S.optional(__S(204, __c25, 4)),
+          properties: S.optional(__S(7300, __c228, 4)),
+          extendedLocation: S.optional(__S(7264, __c227, 0)),
         }),
       ).annotate({
         identifier: "ImagesCreateOrUpdateResponse",
       });
-    case 5:
+  }
+}
+function __c311(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          classificationsToInclude: S.optional(__S(363, __c45, 3)),
-          kbNumbersToInclude: S.optional(__S(23, __c2, 7)),
-          kbNumbersToExclude: S.optional(__S(23, __c2, 7)),
+          sourceVirtualMachine: S.optional(__S(5216, __c163, 0)),
+          storageProfile: S.optional(__S(7299, __c228, 3)),
+          hyperVGeneration: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ImagePropertiesInput" });
+  }
+}
+function __c312(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          classificationsToInclude: S.optional(__S(9152, __c286, 0)),
+          kbNumbersToInclude: S.optional(__S(6400, __c200, 0)),
+          kbNumbersToExclude: S.optional(__S(6400, __c200, 0)),
           excludeKbsRequiringReboot: S.optional(S.Boolean),
           maxPatchPublishDate: S.optional(S.String),
-          patchNameMasksToInclude: S.optional(__S(23, __c2, 7)),
-          patchNameMasksToExclude: S.optional(__S(23, __c2, 7)),
+          patchNameMasksToInclude: S.optional(__S(6400, __c200, 0)),
+          patchNameMasksToExclude: S.optional(__S(6400, __c200, 0)),
         }),
       ).annotate({ identifier: "WindowsParameters" });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          classificationsToInclude: S.optional(__S(363, __c45, 3)),
-          packageNameMasksToInclude: S.optional(__S(23, __c2, 7)),
-          packageNameMasksToExclude: S.optional(__S(23, __c2, 7)),
+          classificationsToInclude: S.optional(__S(9152, __c286, 0)),
+          packageNameMasksToInclude: S.optional(__S(6400, __c200, 0)),
+          packageNameMasksToExclude: S.optional(__S(6400, __c200, 0)),
           maintenanceRunId: S.optional(S.String),
         }),
       ).annotate({ identifier: "LinuxParameters" });
-    case 7:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -18354,8 +22485,8 @@ function __c53(j: number): any {
           vmName: S.String.pipe(T.Label()),
           maximumDuration: S.optional(S.String),
           rebootSetting: S.String,
-          windowsParameters: S.optional(__S(429, __c53, 5)),
-          linuxParameters: S.optional(__S(430, __c53, 6)),
+          windowsParameters: S.optional(__S(9984, __c312, 0)),
+          linuxParameters: S.optional(__S(9985, __c312, 1)),
         }).pipe(
           T.Http({
             method: "POST",
@@ -18367,24 +22498,20 @@ function __c53(j: number): any {
       ).annotate({
         identifier: "InstallVirtualMachinePatchesRequest",
       });
-  }
-}
-function __c54(j: number): any {
-  switch (j) {
-    case 0:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           patchId: S.optional(S.String),
           name: S.optional(S.String),
           version: S.optional(S.String),
           kbId: S.optional(S.String),
-          classifications: S.optional(__S(23, __c2, 7)),
+          classifications: S.optional(__S(6400, __c200, 0)),
           installationState: S.optional(S.String),
         }),
       ).annotate({ identifier: "PatchInstallationDetail" });
-    case 1:
-      return S.Array(__S(432, __c54, 0));
-    case 2:
+    case 4:
+      return S.Array(__S(9987, __c312, 3));
+    case 5:
       return S.suspend(() =>
         S.Struct({
           status: S.optional(S.String),
@@ -18396,33 +22523,142 @@ function __c54(j: number): any {
           pendingPatchCount: S.optional(S.Number),
           installedPatchCount: S.optional(S.Number),
           failedPatchCount: S.optional(S.Number),
-          patches: S.optional(__S(433, __c54, 1)),
+          patches: S.optional(__S(9988, __c312, 4)),
           startDateTime: S.optional(S.String),
-          error: S.optional(__S(271, __c33, 7)),
+          error: S.optional(__S(8163, __c255, 3)),
         }),
       ).annotate({
         identifier: "VirtualMachineInstallPatchesResult",
       });
-    case 3:
+  }
+}
+function __c313(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          interconnectGroup: __S(84, __c10, 4),
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          capacityReservationGroupName: S.String.pipe(T.Label()),
+          capacityReservationName: S.String.pipe(T.Label()),
+          tags: S.optional(__S(5152, __c161, 0)),
+          location: S.String,
+          properties: S.optional(__S(10049, __c314, 1)),
+          sku: __S(5344, __c167, 0),
+          zones: S.optional(__S(6400, __c200, 0)),
+        }).pipe(
+          T.Http({
+            method: "PUT",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/capacityReservationGroups/{capacityReservationGroupName}/capacityReservations/{capacityReservationName}",
+            code: 200,
+            apiVersion: "2026-04-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "CapacityReservationsCreateOrUpdateRequest",
+      });
+  }
+}
+function __c314(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          start: S.optional(S.String),
+          end: S.optional(S.String),
+          minimumCommitmentDays: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "ScheduleProfileInput" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          scheduleProfile: S.optional(__S(10048, __c314, 0)),
+        }),
+      ).annotate({
+        identifier: "CapacityReservationPropertiesInput",
+      });
+  }
+}
+function __c315(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(5184, __c162, 0)),
+          tags: S.optional(__S(5152, __c161, 0)),
+          location: S.String,
+          properties: S.optional(__S(10114, __c316, 2)),
+          sku: __S(5344, __c167, 0),
+          zones: S.optional(__S(6400, __c200, 0)),
+        }),
+      ).annotate({
+        identifier: "CapacityReservationsCreateOrUpdateResponse",
+      });
+  }
+}
+function __c316(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          utilizationInfo: S.optional(__S(9473, __c296, 1)),
+          statuses: S.optional(__S(5280, __c165, 0)),
+          reservationStateInfo: S.optional(__S(9474, __c296, 2)),
+        }),
+      ).annotate({
+        identifier: "CapacityReservationInstanceView",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          start: S.optional(S.String),
+          end: S.optional(S.String),
+          minimumCommitmentDays: S.optional(S.Number),
+          modifiableUntil: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ScheduleProfile" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          reservationId: S.optional(S.String),
+          platformFaultDomainCount: S.optional(S.Number),
+          virtualMachinesAssociated: S.optional(__S(5312, __c166, 0)),
+          provisioningTime: S.optional(S.String),
+          provisioningState: S.optional(S.String),
+          instanceView: S.optional(__S(10112, __c316, 0)),
+          timeCreated: S.optional(S.String),
+          scheduleProfile: S.optional(__S(10113, __c316, 1)),
+        }),
+      ).annotate({
+        identifier: "CapacityReservationProperties",
+      });
+  }
+}
+function __c317(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          interconnectGroup: __S(1952, __c61, 0),
         }),
       ).annotate({
         identifier: "InterconnectBlockPropertiesInput",
       });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           interconnectBlockName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(4, __c0, 4)),
+          tags: S.optional(__S(5152, __c161, 0)),
           location: S.String,
-          properties: S.optional(__S(435, __c54, 3)),
-          sku: __S(12, __c1, 4),
-          zones: S.optional(__S(23, __c2, 7)),
-          placement: S.optional(__S(209, __c26, 1)),
+          properties: S.optional(__S(10144, __c317, 0)),
+          sku: __S(5344, __c167, 0),
+          zones: S.optional(__S(6400, __c200, 0)),
+          placement: S.optional(__S(7392, __c231, 0)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -18434,7 +22670,11 @@ function __c54(j: number): any {
       ).annotate({
         identifier: "InterconnectBlocksCreateOrUpdateRequest",
       });
-    case 5:
+  }
+}
+function __c318(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -18451,7 +22691,11 @@ function __c54(j: number): any {
       ).annotate({
         identifier: "ListAvailabilitySetAvailableSizesRequest",
       });
-    case 6:
+  }
+}
+function __c319(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
@@ -18462,22 +22706,22 @@ function __c54(j: number): any {
           maxDataDiskCount: S.optional(S.Number),
         }),
       ).annotate({ identifier: "VirtualMachineSize" });
-    case 7:
-      return S.Array(__S(438, __c54, 6));
-  }
-}
-function __c55(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
+      return S.Array(__S(10208, __c319, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(439, __c54, 7)),
+          value: S.optional(__S(10209, __c319, 1)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
         identifier: "VirtualMachineSizeListResult",
       });
-    case 1:
+  }
+}
+function __c320(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -18493,31 +22737,39 @@ function __c55(j: number): any {
       ).annotate({
         identifier: "ListAvailabilitySetBySubscriptionRequest",
       });
-    case 2:
+  }
+}
+function __c321(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(14, __c1, 6)),
-          tags: S.optional(__S(4, __c0, 4)),
+          systemData: S.optional(__S(5184, __c162, 0)),
+          tags: S.optional(__S(5152, __c161, 0)),
           location: S.String,
-          properties: S.optional(__S(19, __c2, 3)),
-          sku: S.optional(__S(12, __c1, 4)),
+          properties: S.optional(__S(5122, __c160, 2)),
+          sku: S.optional(__S(5344, __c167, 0)),
         }),
       ).annotate({ identifier: "AvailabilitySet" });
-    case 3:
-      return S.Array(__S(442, __c55, 2));
-    case 4:
+    case 1:
+      return S.Array(__S(10272, __c321, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          value: __S(443, __c55, 3),
+          value: __S(10273, __c321, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
         identifier: "AvailabilitySetListResult",
       });
-    case 5:
+  }
+}
+function __c322(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -18533,7 +22785,11 @@ function __c55(j: number): any {
       ).annotate({
         identifier: "ListAvailabilitySetsRequest",
       });
-    case 6:
+  }
+}
+function __c323(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -18551,36 +22807,36 @@ function __c55(j: number): any {
       ).annotate({
         identifier: "ListCapacityReservationByCapacityReservationGroupRequest",
       });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(14, __c1, 6)),
-          tags: S.optional(__S(4, __c0, 4)),
+          systemData: S.optional(__S(5184, __c162, 0)),
+          tags: S.optional(__S(5152, __c161, 0)),
           location: S.String,
-          properties: S.optional(__S(53, __c6, 5)),
-          sku: __S(12, __c1, 4),
-          zones: S.optional(__S(23, __c2, 7)),
+          properties: S.optional(__S(10114, __c316, 2)),
+          sku: __S(5344, __c167, 0),
+          zones: S.optional(__S(6400, __c200, 0)),
         }),
       ).annotate({ identifier: "CapacityReservation" });
-  }
-}
-function __c56(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(447, __c55, 7));
-    case 1:
+    case 2:
+      return S.Array(__S(10337, __c323, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          value: __S(448, __c56, 0),
+          value: __S(10338, __c323, 2),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
         identifier: "CapacityReservationListResult",
       });
-    case 2:
+  }
+}
+function __c324(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -18597,31 +22853,39 @@ function __c56(j: number): any {
       ).annotate({
         identifier: "ListCapacityReservationGroupByResourceGroupRequest",
       });
-    case 3:
+  }
+}
+function __c325(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(14, __c1, 6)),
-          tags: S.optional(__S(4, __c0, 4)),
+          systemData: S.optional(__S(5184, __c162, 0)),
+          tags: S.optional(__S(5152, __c161, 0)),
           location: S.String,
-          properties: S.optional(__S(46, __c5, 6)),
-          zones: S.optional(__S(23, __c2, 7)),
+          properties: S.optional(__S(9444, __c295, 4)),
+          zones: S.optional(__S(6400, __c200, 0)),
         }),
       ).annotate({ identifier: "CapacityReservationGroup" });
-    case 4:
-      return S.Array(__S(451, __c56, 3));
-    case 5:
+    case 1:
+      return S.Array(__S(10400, __c325, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          value: __S(452, __c56, 4),
+          value: __S(10401, __c325, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
         identifier: "CapacityReservationGroupListResult",
       });
-    case 6:
+  }
+}
+function __c326(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -18638,7 +22902,11 @@ function __c56(j: number): any {
       ).annotate({
         identifier: "ListCapacityReservationGroupBySubscriptionRequest",
       });
-    case 7:
+  }
+}
+function __c327(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -18656,7 +22924,7 @@ function __c56(j: number): any {
       });
   }
 }
-function __c57(j: number): any {
+function __c328(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -18665,22 +22933,26 @@ function __c57(j: number): any {
           name: S.optional(S.String),
           type: S.optional(S.String),
           location: S.String,
-          tags: S.optional(__S(4, __c0, 4)),
-          properties: S.optional(__S(78, __c9, 6)),
+          tags: S.optional(__S(5152, __c161, 0)),
+          properties: S.optional(__S(205, __c6, 13)),
         }),
       ).annotate({ identifier: "ContainerService" });
     case 1:
-      return S.Array(__S(456, __c57, 0));
+      return S.Array(__S(10496, __c328, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(457, __c57, 1)),
+          value: S.optional(__S(10497, __c328, 1)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
         identifier: "ContainerServiceListResult",
       });
-    case 3:
+  }
+}
+function __c329(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -18695,7 +22967,11 @@ function __c57(j: number): any {
       ).annotate({
         identifier: "ListContainerServicesRequest",
       });
-    case 4:
+  }
+}
+function __c330(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -18713,16 +22989,58 @@ function __c57(j: number): any {
       ).annotate({
         identifier: "ListDedicatedHostAvailableSizesRequest",
       });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(23, __c2, 7)),
+          value: S.optional(__S(6400, __c200, 0)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
         identifier: "DedicatedHostSizeListResult",
       });
-    case 6:
+  }
+}
+function __c331(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          vmName: S.String.pipe(T.Label()),
+          vhdPrefix: S.String,
+          destinationContainerName: S.String,
+          overwriteVhds: S.Boolean,
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachines/{vmName}/capture",
+            code: 200,
+            apiVersion: "2026-04-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "CaptureVirtualMachineRequest",
+      });
+    case 1:
+      return S.Array(S.Unknown);
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          _schema: S.optional(S.String.pipe(T.Body("$schema"))),
+          contentVersion: S.optional(S.String),
+          parameters: S.optional(S.Unknown),
+          resources: S.optional(__S(10593, __c331, 1)),
+        }),
+      ).annotate({
+        identifier: "CaptureVirtualMachineResponse",
+      });
+  }
+}
+function __c332(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -18739,20 +23057,20 @@ function __c57(j: number): any {
       ).annotate({
         identifier: "ListDedicatedHostByHostGroupRequest",
       });
-    case 7:
-      return S.Array(__S(196, __c24, 4));
-  }
-}
-function __c58(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
+      return S.Array(__S(7104, __c222, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          value: __S(463, __c57, 7),
+          value: __S(10625, __c332, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "DedicatedHostListResult" });
-    case 1:
+  }
+}
+function __c333(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -18768,31 +23086,39 @@ function __c58(j: number): any {
       ).annotate({
         identifier: "ListDedicatedHostGroupByResourceGroupRequest",
       });
-    case 2:
+  }
+}
+function __c334(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(14, __c1, 6)),
-          tags: S.optional(__S(4, __c0, 4)),
+          systemData: S.optional(__S(5184, __c162, 0)),
+          tags: S.optional(__S(5152, __c161, 0)),
           location: S.String,
-          properties: S.optional(__S(153, __c19, 1)),
-          zones: S.optional(__S(23, __c2, 7)),
+          properties: S.optional(__S(3140, __c98, 4)),
+          zones: S.optional(__S(6400, __c200, 0)),
         }),
       ).annotate({ identifier: "DedicatedHostGroup" });
-    case 3:
-      return S.Array(__S(466, __c58, 2));
-    case 4:
+    case 1:
+      return S.Array(__S(10688, __c334, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          value: __S(467, __c58, 3),
+          value: __S(10689, __c334, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
         identifier: "DedicatedHostGroupListResult",
       });
-    case 5:
+  }
+}
+function __c335(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -18807,7 +23133,11 @@ function __c58(j: number): any {
       ).annotate({
         identifier: "ListDedicatedHostGroupBySubscriptionRequest",
       });
-    case 6:
+  }
+}
+function __c336(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -18823,20 +23153,24 @@ function __c58(j: number): any {
       ).annotate({
         identifier: "ListImageByResourceGroupRequest",
       });
-    case 7:
-      return S.Array(__S(205, __c25, 5));
   }
 }
-function __c59(j: number): any {
+function __c337(j: number): any {
   switch (j) {
     case 0:
+      return S.Array(__S(7328, __c229, 0));
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          value: __S(471, __c58, 7),
+          value: __S(10784, __c337, 0),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ImageListResult" });
-    case 1:
+  }
+}
+function __c338(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -18849,7 +23183,11 @@ function __c59(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ListImagesRequest" });
-    case 2:
+  }
+}
+function __c339(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -18865,33 +23203,41 @@ function __c59(j: number): any {
       ).annotate({
         identifier: "ListInterconnectBlockByResourceGroupRequest",
       });
-    case 3:
+  }
+}
+function __c340(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(14, __c1, 6)),
-          tags: S.optional(__S(4, __c0, 4)),
+          systemData: S.optional(__S(5184, __c162, 0)),
+          tags: S.optional(__S(5152, __c161, 0)),
           location: S.String,
-          properties: S.optional(__S(208, __c26, 0)),
-          sku: __S(12, __c1, 4),
-          zones: S.optional(__S(23, __c2, 7)),
-          placement: S.optional(__S(209, __c26, 1)),
+          properties: S.optional(__S(7457, __c233, 1)),
+          sku: __S(5344, __c167, 0),
+          zones: S.optional(__S(6400, __c200, 0)),
+          placement: S.optional(__S(7392, __c231, 0)),
         }),
       ).annotate({ identifier: "InterconnectBlock" });
-    case 4:
-      return S.Array(__S(475, __c59, 3));
-    case 5:
+    case 1:
+      return S.Array(__S(10880, __c340, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          value: __S(476, __c59, 4),
+          value: __S(10881, __c340, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
         identifier: "InterconnectBlockListResult",
       });
-    case 6:
+  }
+}
+function __c341(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -18906,7 +23252,11 @@ function __c59(j: number): any {
       ).annotate({
         identifier: "ListInterconnectBlockBySubscriptionRequest",
       });
-    case 7:
+  }
+}
+function __c342(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({}).pipe(
           T.Http({
@@ -18917,11 +23267,7 @@ function __c59(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ListOperationsRequest" });
-  }
-}
-function __c60(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           provider: S.optional(S.String),
@@ -18930,26 +23276,30 @@ function __c60(j: number): any {
           description: S.optional(S.String),
         }),
       ).annotate({ identifier: "OperationDisplay" });
-    case 1:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
           isDataAction: S.optional(S.Boolean),
-          display: S.optional(__S(480, __c60, 0)),
+          display: S.optional(__S(10945, __c342, 1)),
           origin: S.optional(S.String),
           actionType: S.optional(S.String),
         }),
       ).annotate({ identifier: "Operation" });
-    case 2:
-      return S.Array(__S(481, __c60, 1));
     case 3:
+      return S.Array(__S(10946, __c342, 2));
+    case 4:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(482, __c60, 2)),
+          value: S.optional(__S(10947, __c342, 3)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListOperationsResponse" });
-    case 4:
+  }
+}
+function __c343(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -18965,25 +23315,29 @@ function __c60(j: number): any {
       ).annotate({
         identifier: "ListProximityPlacementGroupByResourceGroupRequest",
       });
-    case 5:
+  }
+}
+function __c344(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(14, __c1, 6)),
-          tags: S.optional(__S(4, __c0, 4)),
+          systemData: S.optional(__S(5184, __c162, 0)),
+          tags: S.optional(__S(5152, __c161, 0)),
           location: S.String,
-          properties: S.optional(__S(215, __c26, 7)),
-          zones: S.optional(__S(23, __c2, 7)),
+          properties: S.optional(__S(7555, __c236, 3)),
+          zones: S.optional(__S(6400, __c200, 0)),
         }),
       ).annotate({ identifier: "ProximityPlacementGroup" });
-    case 6:
-      return S.Array(__S(485, __c60, 5));
-    case 7:
+    case 1:
+      return S.Array(__S(11008, __c344, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          value: __S(486, __c60, 6),
+          value: __S(11009, __c344, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
@@ -18991,7 +23345,7 @@ function __c60(j: number): any {
       });
   }
 }
-function __c61(j: number): any {
+function __c345(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -19008,3303 +23362,8 @@ function __c61(j: number): any {
       ).annotate({
         identifier: "ListProximityPlacementGroupBySubscriptionRequest",
       });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/providers/Microsoft.Compute/restorePointCollections",
-            code: 200,
-            apiVersion: "2026-04-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListRestorePointCollectionAllRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(14, __c1, 6)),
-          tags: S.optional(__S(4, __c0, 4)),
-          location: S.String,
-          properties: S.optional(__S(222, __c27, 6)),
-        }),
-      ).annotate({ identifier: "RestorePointCollection" });
-    case 3:
-      return S.Array(__S(490, __c61, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          value: __S(491, __c61, 3),
-          nextLink: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "RestorePointCollectionListResult",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/restorePointCollections",
-            code: 200,
-            apiVersion: "2026-04-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListRestorePointCollectionsRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/sshPublicKeys",
-            code: 200,
-            apiVersion: "2026-04-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListSshPublicKeyByResourceGroupRequest",
-      });
-    case 7:
-      return S.Array(__S(228, __c28, 4));
   }
 }
-function __c62(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          value: __S(495, __c61, 7),
-          nextLink: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "SshPublicKeysGroupListResult",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/providers/Microsoft.Compute/sshPublicKeys",
-            code: 200,
-            apiVersion: "2026-04-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListSshPublicKeyBySubscriptionRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          location: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/providers/Microsoft.Compute/locations/{location}/usages",
-            code: 200,
-            apiVersion: "2026-04-01",
-          }),
-        ),
-      ).annotate({ identifier: "ListUsageRequest" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          value: S.optional(S.String),
-          localizedValue: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "UsageName" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          unit: S.String,
-          currentValue: S.Number,
-          limit: S.Number,
-          name: __S(499, __c62, 3),
-        }),
-      ).annotate({ identifier: "Usage" });
-    case 5:
-      return S.Array(__S(500, __c62, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          value: __S(501, __c62, 5),
-          nextLink: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ListUsagesResult" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          statusOnly: S.optional(S.String.pipe(T.Query())),
-          _filter: S.optional(S.String.pipe(T.Query("$filter"))),
-          _expand: S.optional(S.String.pipe(T.Query("$expand"))),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/providers/Microsoft.Compute/virtualMachines",
-            code: 200,
-            apiVersion: "2026-04-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListVirtualMachineAllRequest",
-      });
-  }
-}
-function __c63(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(14, __c1, 6)),
-          tags: S.optional(__S(4, __c0, 4)),
-          location: S.String,
-          properties: S.optional(__S(286, __c35, 6)),
-          plan: S.optional(__S(287, __c35, 7)),
-          resources: S.optional(__S(290, __c36, 2)),
-          identity: S.optional(__S(293, __c36, 5)),
-          zones: S.optional(__S(23, __c2, 7)),
-          extendedLocation: S.optional(__S(204, __c25, 4)),
-          managedBy: S.optional(S.String),
-          etag: S.optional(S.String),
-          placement: S.optional(__S(209, __c26, 1)),
-        }),
-      ).annotate({ identifier: "VirtualMachine" });
-    case 1:
-      return S.Array(__S(504, __c63, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          value: __S(505, __c63, 1),
-          nextLink: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "VirtualMachineListResult" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          vmName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachines/{vmName}/vmSizes",
-            code: 200,
-            apiVersion: "2026-04-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListVirtualMachineAvailableSizesRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          location: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/providers/Microsoft.Compute/locations/{location}/virtualMachines",
-            code: 200,
-            apiVersion: "2026-04-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListVirtualMachineByLocationRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          location: S.String.pipe(T.Label()),
-          publisherName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/providers/Microsoft.Compute/locations/{location}/publishers/{publisherName}/artifacttypes/vmextension/types",
-            code: 200,
-            apiVersion: "2026-04-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListVirtualMachineExtensionImageTypesRequest",
-      });
-    case 6:
-      return S.Array(__S(313, __c39, 1));
-    case 7:
-      return S.suspend(() => __S(510, __c63, 6).pipe(T.RawResponseRoot())).annotate({
-        identifier: "ListVirtualMachineExtensionImageTypesResponse",
-      });
-  }
-}
-function __c64(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          location: S.String.pipe(T.Label()),
-          publisherName: S.String.pipe(T.Label()),
-          type: S.String.pipe(T.Label()),
-          _filter: S.optional(S.String.pipe(T.Query("$filter"))),
-          _top: S.optional(S.Number.pipe(T.Query("$top"))),
-          _orderby: S.optional(S.String.pipe(T.Query("$orderby"))),
-          _expand: S.optional(S.String.pipe(T.Query("$expand"))),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/providers/Microsoft.Compute/locations/{location}/publishers/{publisherName}/artifacttypes/vmextension/types/{type}/versions",
-            code: 200,
-            apiVersion: "2026-04-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListVirtualMachineExtensionImageVersionsRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          vmName: S.String.pipe(T.Label()),
-          _expand: S.optional(S.String.pipe(T.Query("$expand"))),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachines/{vmName}/extensions",
-            code: 200,
-            apiVersion: "2026-04-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListVirtualMachineExtensionsRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          value: S.optional(__S(290, __c36, 2)),
-        }),
-      ).annotate({
-        identifier: "VirtualMachineExtensionsListResult",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          location: S.String.pipe(T.Label()),
-          edgeZone: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/providers/Microsoft.Compute/locations/{location}/edgeZones/{edgeZone}/vmimages",
-            code: 200,
-            apiVersion: "2026-04-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListVirtualMachineImageByEdgeZoneRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.String,
-          location: S.String,
-          tags: S.optional(__S(4, __c0, 4)),
-          extendedLocation: S.optional(__S(204, __c25, 4)),
-        }),
-      ).annotate({
-        identifier: "VirtualMachineImageResource",
-      });
-    case 5:
-      return S.Array(__S(516, __c64, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          value: S.optional(__S(517, __c64, 5)),
-          nextLink: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "VmImagesInEdgeZoneListResult",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          location: S.String.pipe(T.Label()),
-          publisherName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/providers/Microsoft.Compute/locations/{location}/publishers/{publisherName}/artifacttypes/vmimage/offers",
-            code: 200,
-            apiVersion: "2026-04-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListVirtualMachineImageOffersRequest",
-      });
-  }
-}
-function __c65(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() => __S(517, __c64, 5).pipe(T.RawResponseRoot())).annotate({
-        identifier: "ListVirtualMachineImageOffersResponse",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          location: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/providers/Microsoft.Compute/locations/{location}/publishers",
-            code: 200,
-            apiVersion: "2026-04-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListVirtualMachineImagePublishersRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          location: S.String.pipe(T.Label()),
-          publisherName: S.String.pipe(T.Label()),
-          offer: S.String.pipe(T.Label()),
-          skus: S.String.pipe(T.Label()),
-          _expand: S.optional(S.String.pipe(T.Query("$expand"))),
-          _top: S.optional(S.Number.pipe(T.Query("$top"))),
-          _orderby: S.optional(S.String.pipe(T.Query("$orderby"))),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/providers/Microsoft.Compute/locations/{location}/publishers/{publisherName}/artifacttypes/vmimage/offers/{offer}/skus/{skus}/versions",
-            code: 200,
-            apiVersion: "2026-04-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListVirtualMachineImagesRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          location: S.String.pipe(T.Label()),
-          edgeZone: S.String.pipe(T.Label()),
-          publisherName: S.String.pipe(T.Label()),
-          offer: S.String.pipe(T.Label()),
-          skus: S.String.pipe(T.Label()),
-          _expand: S.optional(S.String.pipe(T.Query("$expand"))),
-          _top: S.optional(S.Number.pipe(T.Query("$top"))),
-          _orderby: S.optional(S.String.pipe(T.Query("$orderby"))),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/providers/Microsoft.Compute/locations/{location}/edgeZones/{edgeZone}/publishers/{publisherName}/artifacttypes/vmimage/offers/{offer}/skus/{skus}/versions",
-            code: 200,
-            apiVersion: "2026-04-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListVirtualMachineImagesEdgeZoneRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          location: S.String.pipe(T.Label()),
-          edgeZone: S.String.pipe(T.Label()),
-          publisherName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/providers/Microsoft.Compute/locations/{location}/edgeZones/{edgeZone}/publishers/{publisherName}/artifacttypes/vmimage/offers",
-            code: 200,
-            apiVersion: "2026-04-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListVirtualMachineImagesEdgeZoneOffersRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          location: S.String.pipe(T.Label()),
-          edgeZone: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/providers/Microsoft.Compute/locations/{location}/edgeZones/{edgeZone}/publishers",
-            code: 200,
-            apiVersion: "2026-04-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListVirtualMachineImagesEdgeZonePublishersRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          location: S.String.pipe(T.Label()),
-          edgeZone: S.String.pipe(T.Label()),
-          publisherName: S.String.pipe(T.Label()),
-          offer: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/providers/Microsoft.Compute/locations/{location}/edgeZones/{edgeZone}/publishers/{publisherName}/artifacttypes/vmimage/offers/{offer}/skus",
-            code: 200,
-            apiVersion: "2026-04-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListVirtualMachineImagesEdgeZoneSkusRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          location: S.String.pipe(T.Label()),
-          publisherName: S.String.pipe(T.Label()),
-          offer: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/providers/Microsoft.Compute/locations/{location}/publishers/{publisherName}/artifacttypes/vmimage/offers/{offer}/skus",
-            code: 200,
-            apiVersion: "2026-04-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListVirtualMachineImageSkusRequest",
-      });
-  }
-}
-function __c66(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          vmName: S.String.pipe(T.Label()),
-          _expand: S.optional(S.String.pipe(T.Query("$expand"))),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachines/{vmName}/runCommands",
-            code: 200,
-            apiVersion: "2026-04-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListVirtualMachineRunCommandByVirtualMachineRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(14, __c1, 6)),
-          tags: S.optional(__S(4, __c0, 4)),
-          location: S.String,
-          properties: S.optional(__S(304, __c38, 0)),
-        }),
-      ).annotate({ identifier: "VirtualMachineRunCommand" });
-    case 2:
-      return S.Array(__S(529, __c66, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          value: __S(530, __c66, 2),
-          nextLink: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "VirtualMachineRunCommandsListResult",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          location: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/providers/Microsoft.Compute/locations/{location}/runCommands",
-            code: 200,
-            apiVersion: "2026-04-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListVirtualMachineRunCommandsRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          _schema: S.String.pipe(T.Body("$schema")),
-          id: S.String,
-          osType: S.String,
-          label: S.String,
-          description: S.String,
-        }),
-      ).annotate({ identifier: "RunCommandDocumentBase" });
-    case 6:
-      return S.Array(__S(533, __c66, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          value: __S(534, __c66, 6),
-          nextLink: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "RunCommandListResult" });
-  }
-}
-function __c67(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          _filter: S.optional(S.String.pipe(T.Query("$filter"))),
-          _expand: S.optional(S.String.pipe(T.Query("$expand"))),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachines",
-            code: 200,
-            apiVersion: "2026-04-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListVirtualMachinesRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/providers/Microsoft.Compute/virtualMachineScaleSets",
-            code: 200,
-            apiVersion: "2026-04-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListVirtualMachineScaleSetAllRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(14, __c1, 6)),
-          tags: S.optional(__S(4, __c0, 4)),
-          location: S.String,
-          sku: S.optional(__S(12, __c1, 4)),
-          plan: S.optional(__S(287, __c35, 7)),
-          properties: S.optional(__S(381, __c47, 5)),
-          identity: S.optional(__S(382, __c47, 6)),
-          zones: S.optional(__S(23, __c2, 7)),
-          extendedLocation: S.optional(__S(204, __c25, 4)),
-          etag: S.optional(S.String),
-          placement: S.optional(__S(209, __c26, 1)),
-        }),
-      ).annotate({ identifier: "VirtualMachineScaleSet" });
-    case 3:
-      return S.Array(__S(538, __c67, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          value: __S(539, __c67, 3),
-          nextLink: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "VirtualMachineScaleSetListWithLinkResult",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          location: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/providers/Microsoft.Compute/locations/{location}/virtualMachineScaleSets",
-            code: 200,
-            apiVersion: "2026-04-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListVirtualMachineScaleSetByLocationRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          vmScaleSetName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}/extensions",
-            code: 200,
-            apiVersion: "2026-04-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListVirtualMachineScaleSetExtensionsRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          value: __S(358, __c44, 6),
-          nextLink: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "VirtualMachineScaleSetExtensionListResult",
-      });
-  }
-}
-function __c68(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          vmScaleSetName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}/lifecycleHookEvents",
-            code: 200,
-            apiVersion: "2026-04-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListVirtualMachineScaleSetLifeCycleHookEventsRequest",
-      });
-    case 1:
-      return S.Array(__S(400, __c50, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          value: __S(545, __c68, 1),
-          nextLink: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "VMScaleSetLifecycleHookEventListResult",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets",
-            code: 200,
-            apiVersion: "2026-04-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListVirtualMachineScaleSetsRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          vmScaleSetName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}/skus",
-            code: 200,
-            apiVersion: "2026-04-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListVirtualMachineScaleSetSkusRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          minimum: S.optional(S.Number),
-          maximum: S.optional(S.Number),
-          defaultCapacity: S.optional(S.Number),
-          scaleType: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "VirtualMachineScaleSetSkuCapacity",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          resourceType: S.optional(S.String),
-          sku: S.optional(__S(12, __c1, 4)),
-          capacity: S.optional(__S(549, __c68, 5)),
-        }),
-      ).annotate({
-        identifier: "VirtualMachineScaleSetSku",
-      });
-    case 7:
-      return S.Array(__S(550, __c68, 6));
-  }
-}
-function __c69(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          value: __S(551, __c68, 7),
-          nextLink: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "VirtualMachineScaleSetListSkusResult",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          vmScaleSetName: S.String.pipe(T.Label()),
-          instanceId: S.String.pipe(T.Label()),
-          _expand: S.optional(S.String.pipe(T.Query("$expand"))),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}/virtualMachines/{instanceId}/diagnosticRunCommands",
-            code: 200,
-            apiVersion: "2026-04-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListVirtualMachineScaleSetVMDiagnosticRunCommandsRequest",
-      });
-    case 2:
-      return S.Array(__S(333, __c41, 5));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          value: __S(554, __c69, 2),
-          nextLink: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "VirtualMachineDiagnosticRunCommandsListResult",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          vmScaleSetName: S.String.pipe(T.Label()),
-          instanceId: S.String.pipe(T.Label()),
-          _expand: S.optional(S.String.pipe(T.Query("$expand"))),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}/virtualMachines/{instanceId}/extensions",
-            code: 200,
-            apiVersion: "2026-04-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListVirtualMachineScaleSetVMExtensionsRequest",
-      });
-    case 5:
-      return S.Array(__S(423, __c52, 7));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          value: S.optional(__S(557, __c69, 5)),
-        }),
-      ).annotate({
-        identifier: "VirtualMachineScaleSetVMExtensionsListResult",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          vmScaleSetName: S.String.pipe(T.Label()),
-          instanceId: S.String.pipe(T.Label()),
-          _expand: S.optional(S.String.pipe(T.Query("$expand"))),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}/virtualMachines/{instanceId}/runCommands",
-            code: 200,
-            apiVersion: "2026-04-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListVirtualMachineScaleSetVMRunCommandsRequest",
-      });
-  }
-}
-function __c70(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          virtualMachineScaleSetName: S.String.pipe(T.Label()),
-          _filter: S.optional(S.String.pipe(T.Query("$filter"))),
-          _select: S.optional(S.String.pipe(T.Query("$select"))),
-          _expand: S.optional(S.String.pipe(T.Query("$expand"))),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{virtualMachineScaleSetName}/virtualMachines",
-            code: 200,
-            apiVersion: "2026-04-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListVirtualMachineScaleSetVMsRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(14, __c1, 6)),
-          tags: S.optional(__S(4, __c0, 4)),
-          location: S.String,
-          properties: S.optional(__S(417, __c52, 1)),
-          instanceId: S.optional(S.String),
-          sku: S.optional(__S(12, __c1, 4)),
-          plan: S.optional(__S(287, __c35, 7)),
-          resources: S.optional(__S(290, __c36, 2)),
-          zones: S.optional(__S(23, __c2, 7)),
-          identity: S.optional(__S(293, __c36, 5)),
-          etag: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "VirtualMachineScaleSetVM" });
-    case 2:
-      return S.Array(__S(561, __c70, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          value: __S(562, __c70, 2),
-          nextLink: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "VirtualMachineScaleSetVMListResult",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          location: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/providers/Microsoft.Compute/locations/{location}/vmSizes",
-            code: 200,
-            apiVersion: "2026-04-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListVirtualMachineSizesRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          vmScaleSetName: S.String.pipe(T.Label()),
-          instanceIds: __S(0, __c0, 0),
-          targetZone: S.optional(S.String),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}/migrateVMAvailabilityZone",
-            code: 200,
-            apiVersion: "2026-04-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "MigrateVirtualMachineScaleSetVMAvailabilityZoneRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          vmName: S.String.pipe(T.Label()),
-          targetZone: S.optional(S.String),
-          targetFaultDomain: S.optional(S.Number),
-          targetVMSize: S.optional(S.String),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachines/{vmName}/migrateToVirtualMachineScaleSet",
-            code: 200,
-            apiVersion: "2026-04-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "MigrateVirtualMachineToVMScaleSetRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          sku: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ResourceSize" });
-  }
-}
-function __c71(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(567, __c70, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          location: S.String.pipe(T.Label()),
-          desiredLocations: S.optional(__S(23, __c2, 7)),
-          desiredSizes: S.optional(__S(568, __c71, 0)),
-          desiredCount: S.optional(S.Number),
-          availabilityZones: S.optional(S.Boolean),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/subscriptions/{subscriptionId}/providers/Microsoft.Compute/locations/{location}/placementScores/spot/generate",
-            code: 200,
-            apiVersion: "2025-06-05",
-          }),
-        ),
-      ).annotate({
-        identifier: "PostSpotPlacementScoreRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          sku: S.optional(S.String),
-          region: S.optional(S.String),
-          availabilityZone: S.optional(S.String),
-          score: S.optional(S.String),
-          isQuotaAvailable: S.optional(S.Boolean),
-        }),
-      ).annotate({ identifier: "PlacementScore" });
-    case 3:
-      return S.Array(__S(570, __c71, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          desiredLocations: S.optional(__S(23, __c2, 7)),
-          desiredSizes: S.optional(__S(568, __c71, 0)),
-          desiredCount: S.optional(S.Number),
-          availabilityZones: S.optional(S.Boolean),
-          placementScores: S.optional(__S(571, __c71, 3)),
-        }),
-      ).annotate({
-        identifier: "SpotPlacementScoresResponse",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          proximityPlacementGroupType: S.optional(S.String),
-          colocationStatus: S.optional(__S(15, __c1, 7)),
-          intent: S.optional(__S(214, __c26, 6)),
-        }),
-      ).annotate({
-        identifier: "ProximityPlacementGroupPropertiesInput",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          proximityPlacementGroupName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(4, __c0, 4)),
-          location: S.String,
-          properties: S.optional(__S(573, __c71, 5)),
-          zones: S.optional(__S(23, __c2, 7)),
-        }).pipe(
-          T.Http({
-            method: "PUT",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/proximityPlacementGroups/{proximityPlacementGroupName}",
-            code: 200,
-            apiVersion: "2026-04-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "ProximityPlacementGroupsCreateOrUpdateRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          hostGroupName: S.String.pipe(T.Label()),
-          hostName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/hostGroups/{hostGroupName}/hosts/{hostName}/redeploy",
-            code: 200,
-            apiVersion: "2026-04-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "RedeployDedicatedHostRequest",
-      });
-  }
-}
-function __c72(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          vmName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachines/{vmName}/redeploy",
-            code: 200,
-            apiVersion: "2026-04-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "RedeployVirtualMachineRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          vmScaleSetName: S.String.pipe(T.Label()),
-          instanceIds: S.optional(__S(23, __c2, 7)),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}/redeploy",
-            code: 200,
-            apiVersion: "2026-04-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "RedeployVirtualMachineScaleSetRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          vmScaleSetName: S.String.pipe(T.Label()),
-          instanceId: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}/virtualMachines/{instanceId}/redeploy",
-            code: 200,
-            apiVersion: "2026-04-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "RedeployVirtualMachineScaleSetVMRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          hostGroupName: S.String.pipe(T.Label()),
-          hostName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/hostGroups/{hostGroupName}/hosts/{hostName}/restart",
-            code: 200,
-            apiVersion: "2026-04-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "RestartDedicatedHostRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          vmName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachines/{vmName}/restart",
-            code: 200,
-            apiVersion: "2026-04-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "RestartVirtualMachineRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          vmScaleSetName: S.String.pipe(T.Label()),
-          instanceIds: S.optional(__S(23, __c2, 7)),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}/restart",
-            code: 200,
-            apiVersion: "2026-04-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "RestartVirtualMachineScaleSetRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          vmScaleSetName: S.String.pipe(T.Label()),
-          instanceId: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}/virtualMachines/{instanceId}/restart",
-            code: 200,
-            apiVersion: "2026-04-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "RestartVirtualMachineScaleSetVMRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          source: S.optional(__S(5, __c0, 5)),
-          instantAccess: S.optional(S.Boolean),
-        }),
-      ).annotate({
-        identifier: "RestorePointCollectionPropertiesInput",
-      });
-  }
-}
-function __c73(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          restorePointCollectionName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(4, __c0, 4)),
-          location: S.String,
-          properties: S.optional(__S(583, __c72, 7)),
-        }).pipe(
-          T.Http({
-            method: "PUT",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/restorePointCollections/{restorePointCollectionName}",
-            code: 200,
-            apiVersion: "2026-04-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "RestorePointCollectionsCreateOrUpdateRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          vmName: S.String.pipe(T.Label()),
-          commandId: S.String,
-          script: S.optional(__S(23, __c2, 7)),
-          parameters: S.optional(__S(302, __c37, 6)),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachines/{vmName}/runCommand",
-            code: 200,
-            apiVersion: "2026-04-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "RunVirtualMachineCommandRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          value: S.optional(__S(16, __c2, 0)),
-        }),
-      ).annotate({ identifier: "RunCommandResult" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          vmScaleSetName: S.String.pipe(T.Label()),
-          instanceId: S.String.pipe(T.Label()),
-          commandId: S.String,
-          script: S.optional(__S(23, __c2, 7)),
-          parameters: S.optional(__S(302, __c37, 6)),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}/virtualMachines/{instanceId}/runCommand",
-            code: 200,
-            apiVersion: "2026-04-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "RunVirtualMachineScaleSetVMCommandRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          zone: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "VMScaleSetScaleOutInputProperties",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          vmScaleSetName: S.String.pipe(T.Label()),
-          capacity: S.Number,
-          properties: S.optional(__S(588, __c73, 4)),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}/scaleOut",
-            code: 200,
-            apiVersion: "2026-04-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "ScaleVirtualMachineScaleSetOutRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          vmScaleSetName: S.String.pipe(T.Label()),
-          serviceName: S.String,
-          action: S.String,
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}/setOrchestrationServiceState",
-            code: 200,
-            apiVersion: "2026-04-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "SetVirtualMachineScaleSetOrchestrationServiceStateRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          availabilitySetName: S.String.pipe(T.Label()),
-          virtualMachineScaleSetFlexible: __S(5, __c0, 5),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/availabilitySets/{availabilitySetName}/startMigrationToVirtualMachineScaleSet",
-            code: 200,
-            apiVersion: "2026-04-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "StartAvailabilitySetMigrationToVirtualMachineScaleSetRequest",
-      });
-  }
-}
-function __c74(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          vmName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachines/{vmName}/start",
-            code: 200,
-            apiVersion: "2026-04-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "StartVirtualMachineRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          vmScaleSetName: S.String.pipe(T.Label()),
-          instanceIds: S.optional(__S(23, __c2, 7)),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}/start",
-            code: 200,
-            apiVersion: "2026-04-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "StartVirtualMachineScaleSetRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          vmScaleSetName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}/extensionRollingUpgrade",
-            code: 200,
-            apiVersion: "2026-04-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "StartVirtualMachineScaleSetRollingUpgradeExtensionUpgradeRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          vmScaleSetName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}/osRollingUpgrade",
-            code: 200,
-            apiVersion: "2026-04-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "StartVirtualMachineScaleSetRollingUpgradeOSUpgradeRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          vmScaleSetName: S.String.pipe(T.Label()),
-          instanceId: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}/virtualMachines/{instanceId}/start",
-            code: 200,
-            apiVersion: "2026-04-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "StartVirtualMachineScaleSetVMRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          availabilitySetName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(4, __c0, 4)),
-          properties: S.optional(__S(11, __c1, 3)),
-          sku: S.optional(__S(12, __c1, 4)),
-        }).pipe(
-          T.Http({
-            method: "PATCH",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/availabilitySets/{availabilitySetName}",
-            code: 200,
-            apiVersion: "2026-04-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "UpdateAvailabilitySetRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          capacityReservationGroupName: S.String.pipe(T.Label()),
-          capacityReservationName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(4, __c0, 4)),
-          properties: S.optional(__S(49, __c6, 1)),
-          sku: S.optional(__S(12, __c1, 4)),
-        }).pipe(
-          T.Http({
-            method: "PATCH",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/capacityReservationGroups/{capacityReservationGroupName}/capacityReservations/{capacityReservationName}",
-            code: 200,
-            apiVersion: "2026-04-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "UpdateCapacityReservationRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          capacityReservationGroupName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(4, __c0, 4)),
-          properties: S.optional(__S(37, __c4, 5)),
-        }).pipe(
-          T.Http({
-            method: "PATCH",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/capacityReservationGroups/{capacityReservationGroupName}",
-            code: 200,
-            apiVersion: "2026-04-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "UpdateCapacityReservationGroupRequest",
-      });
-  }
-}
-function __c75(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          hostGroupName: S.String.pipe(T.Label()),
-          hostName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(4, __c0, 4)),
-          properties: S.optional(__S(155, __c19, 3)),
-          sku: S.optional(__S(12, __c1, 4)),
-        }).pipe(
-          T.Http({
-            method: "PATCH",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/hostGroups/{hostGroupName}/hosts/{hostName}",
-            code: 200,
-            apiVersion: "2026-04-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "UpdateDedicatedHostRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          hostGroupName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(4, __c0, 4)),
-          properties: S.optional(__S(145, __c18, 1)),
-          zones: S.optional(__S(23, __c2, 7)),
-        }).pipe(
-          T.Http({
-            method: "PATCH",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/hostGroups/{hostGroupName}",
-            code: 200,
-            apiVersion: "2026-04-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "UpdateDedicatedHostGroupRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          imageName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(4, __c0, 4)),
-          properties: S.optional(__S(426, __c53, 2)),
-        }).pipe(
-          T.Http({
-            method: "PATCH",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/images/{imageName}",
-            code: 200,
-            apiVersion: "2026-04-01",
-          }),
-        ),
-      ).annotate({ identifier: "UpdateImageRequest" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          interconnectBlockName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(4, __c0, 4)),
-          sku: S.optional(__S(12, __c1, 4)),
-        }).pipe(
-          T.Http({
-            method: "PATCH",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/interconnectBlocks/{interconnectBlockName}",
-            code: 200,
-            apiVersion: "2026-04-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "UpdateInterconnectBlockRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          proximityPlacementGroupName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(4, __c0, 4)),
-        }).pipe(
-          T.Http({
-            method: "PATCH",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/proximityPlacementGroups/{proximityPlacementGroupName}",
-            code: 200,
-            apiVersion: "2026-04-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "UpdateProximityPlacementGroupRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          restorePointCollectionName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(4, __c0, 4)),
-          properties: S.optional(__S(583, __c72, 7)),
-        }).pipe(
-          T.Http({
-            method: "PATCH",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/restorePointCollections/{restorePointCollectionName}",
-            code: 200,
-            apiVersion: "2026-04-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "UpdateRestorePointCollectionRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          sshPublicKeyName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(4, __c0, 4)),
-          properties: S.optional(__S(141, __c17, 5)),
-        }).pipe(
-          T.Http({
-            method: "PATCH",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/sshPublicKeys/{sshPublicKeyName}",
-            code: 200,
-            apiVersion: "2026-04-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "UpdateSshPublicKeyRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          publisher: S.optional(S.String),
-          offer: S.optional(S.String),
-          sku: S.optional(S.String),
-          version: S.optional(S.String),
-          sharedGalleryImageId: S.optional(S.String),
-          communityGalleryImageId: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ImageReferenceInput" });
-  }
-}
-function __c76(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          imageReference: S.optional(__S(607, __c75, 7)),
-          osDisk: S.optional(__S(233, __c29, 1)),
-          dataDisks: S.optional(__S(235, __c29, 3)),
-          diskControllerType: S.optional(S.String),
-          alignRegionalDisksToVMZone: S.optional(S.Boolean),
-          diskApiVersion: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "StorageProfileInput" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          provisionVMAgent: S.optional(S.Boolean),
-          enableAutomaticUpdates: S.optional(S.Boolean),
-          timeZone: S.optional(S.String),
-          additionalUnattendContent: S.optional(__S(110, __c13, 6)),
-          patchSettings: S.optional(__S(112, __c14, 0)),
-          winRM: S.optional(__S(115, __c14, 3)),
-        }),
-      ).annotate({
-        identifier: "WindowsConfigurationInput",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          computerName: S.optional(S.String),
-          adminUsername: S.optional(S.String),
-          adminPassword: S.optional(S.String.pipe(T.SensitiveValue({}))),
-          customData: S.optional(S.String),
-          windowsConfiguration: S.optional(__S(609, __c76, 1)),
-          linuxConfiguration: S.optional(__S(121, __c15, 1)),
-          secrets: S.optional(__S(125, __c15, 5)),
-          allowExtensionOperations: S.optional(S.Boolean),
-          requireGuestProvisionSignal: S.optional(S.Boolean),
-        }),
-      ).annotate({ identifier: "OSProfileInput" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          hardwareProfile: S.optional(__S(100, __c12, 4)),
-          scheduledEventsPolicy: S.optional(__S(10, __c1, 2)),
-          storageProfile: S.optional(__S(608, __c76, 0)),
-          additionalCapabilities: S.optional(__S(237, __c29, 5)),
-          osProfile: S.optional(__S(610, __c76, 2)),
-          networkProfile: S.optional(__S(255, __c31, 7)),
-          securityProfile: S.optional(__S(133, __c16, 5)),
-          diagnosticsProfile: S.optional(__S(128, __c16, 0)),
-          availabilitySet: S.optional(__S(5, __c0, 5)),
-          virtualMachineScaleSet: S.optional(__S(5, __c0, 5)),
-          proximityPlacementGroup: S.optional(__S(5, __c0, 5)),
-          priority: S.optional(S.String),
-          evictionPolicy: S.optional(S.String),
-          billingProfile: S.optional(__S(256, __c32, 0)),
-          host: S.optional(__S(5, __c0, 5)),
-          hostGroup: S.optional(__S(5, __c0, 5)),
-          licenseType: S.optional(S.String),
-          extensionsTimeBudget: S.optional(S.String),
-          platformFaultDomain: S.optional(S.Number),
-          scheduledEventsProfile: S.optional(__S(278, __c34, 6)),
-          userData: S.optional(S.String),
-          capacityReservation: S.optional(__S(279, __c34, 7)),
-          interconnectBlockProfile: S.optional(__S(280, __c35, 0)),
-          applicationProfile: S.optional(__S(283, __c35, 3)),
-          resiliencyProfile: S.optional(__S(285, __c35, 5)),
-        }),
-      ).annotate({
-        identifier: "VirtualMachinePropertiesInput",
-      });
-    case 4:
-      return S.Record(S.String, __S(2, __c0, 2));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          type: S.optional(S.String),
-          userAssignedIdentities: S.optional(__S(612, __c76, 4)),
-        }),
-      ).annotate({
-        identifier: "VirtualMachineIdentityInput",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          vmName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(4, __c0, 4)),
-          plan: S.optional(__S(287, __c35, 7)),
-          properties: S.optional(__S(611, __c76, 3)),
-          identity: S.optional(__S(613, __c76, 5)),
-          zones: S.optional(__S(23, __c2, 7)),
-        }).pipe(
-          T.Http({
-            method: "PATCH",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachines/{vmName}",
-            code: 200,
-            apiVersion: "2026-04-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "UpdateVirtualMachineRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          source: S.optional(__S(300, __c37, 4)),
-          parameters: S.optional(__S(302, __c37, 6)),
-          protectedParameters: S.optional(__S(302, __c37, 6)),
-          asyncExecution: S.optional(S.Boolean),
-          runAsUser: S.optional(S.String),
-          runAsPassword: S.optional(S.String.pipe(T.SensitiveValue({}))),
-          timeoutInSeconds: S.optional(S.Number),
-          outputBlobUri: S.optional(S.String),
-          errorBlobUri: S.optional(S.String),
-          outputBlobManagedIdentity: S.optional(__S(299, __c37, 3)),
-          errorBlobManagedIdentity: S.optional(__S(299, __c37, 3)),
-          treatFailureAsDeploymentFailure: S.optional(S.Boolean),
-        }),
-      ).annotate({
-        identifier: "VirtualMachineRunCommandPropertiesInput",
-      });
-  }
-}
-function __c77(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          vmName: S.String.pipe(T.Label()),
-          runCommandName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(4, __c0, 4)),
-          properties: S.optional(__S(615, __c76, 7)),
-        }).pipe(
-          T.Http({
-            method: "PATCH",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachines/{vmName}/diagnosticRunCommands/{runCommandName}",
-            code: 200,
-            apiVersion: "2026-04-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "UpdateVirtualMachineDiagnosticRunCommandRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          forceUpdateTag: S.optional(S.String),
-          publisher: S.optional(S.String),
-          type: S.optional(S.String),
-          typeHandlerVersion: S.optional(S.String),
-          autoUpgradeMinorVersion: S.optional(S.Boolean),
-          enableAutomaticUpgrade: S.optional(S.Boolean),
-          settings: S.optional(S.Unknown),
-          protectedSettings: S.optional(S.Unknown),
-          suppressFailures: S.optional(S.Boolean),
-          protectedSettingsFromKeyVault: S.optional(__S(101, __c12, 5)),
-        }),
-      ).annotate({
-        identifier: "VirtualMachineExtensionUpdateProperties",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          vmName: S.String.pipe(T.Label()),
-          vmExtensionName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(4, __c0, 4)),
-          properties: S.optional(__S(617, __c77, 1)),
-        }).pipe(
-          T.Http({
-            method: "PATCH",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachines/{vmName}/extensions/{vmExtensionName}",
-            code: 200,
-            apiVersion: "2026-04-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "UpdateVirtualMachineExtensionRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          vmName: S.String.pipe(T.Label()),
-          runCommandName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(4, __c0, 4)),
-          properties: S.optional(__S(615, __c76, 7)),
-        }).pipe(
-          T.Http({
-            method: "PATCH",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachines/{vmName}/runCommands/{runCommandName}",
-            code: 200,
-            apiVersion: "2026-04-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "UpdateVirtualMachineRunCommandRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          customData: S.optional(S.String),
-          windowsConfiguration: S.optional(__S(609, __c76, 1)),
-          linuxConfiguration: S.optional(__S(121, __c15, 1)),
-          secrets: S.optional(__S(125, __c15, 5)),
-        }),
-      ).annotate({
-        identifier: "VirtualMachineScaleSetUpdateOSProfileInput",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          caching: S.optional(S.String),
-          writeAcceleratorEnabled: S.optional(S.Boolean),
-          diffDiskSettings: S.optional(__S(232, __c29, 0)),
-          diskSizeGB: S.optional(S.Number),
-          storageFaultDomainAlignment: S.optional(S.String),
-          image: S.optional(__S(231, __c28, 7)),
-          vhdContainers: S.optional(__S(23, __c2, 7)),
-          managedDisk: S.optional(__S(340, __c42, 4)),
-          deleteOption: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "VirtualMachineScaleSetUpdateOSDisk",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          imageReference: S.optional(__S(607, __c75, 7)),
-          osDisk: S.optional(__S(621, __c77, 5)),
-          dataDisks: S.optional(__S(343, __c42, 7)),
-          diskControllerType: S.optional(S.String),
-          diskApiVersion: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "VirtualMachineScaleSetUpdateStorageProfileInput",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          idleTimeoutInMinutes: S.optional(S.Number),
-          dnsSettings: S.optional(__S(345, __c43, 1)),
-          publicIPPrefix: S.optional(__S(5, __c0, 5)),
-          deleteOption: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "VirtualMachineScaleSetUpdatePublicIPAddressConfigurationProperties",
-      });
-  }
-}
-function __c78(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.optional(S.String),
-          properties: S.optional(__S(623, __c77, 7)),
-          tags: S.optional(__S(298, __c37, 2)),
-        }),
-      ).annotate({
-        identifier: "VirtualMachineScaleSetUpdatePublicIPAddressConfiguration",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          subnet: S.optional(__S(84, __c10, 4)),
-          primary: S.optional(S.Boolean),
-          publicIPAddressConfiguration: S.optional(__S(624, __c78, 0)),
-          privateIPAddressVersion: S.optional(S.String),
-          applicationGatewayBackendAddressPools: S.optional(__S(39, __c4, 7)),
-          applicationSecurityGroups: S.optional(__S(39, __c4, 7)),
-          loadBalancerBackendAddressPools: S.optional(__S(39, __c4, 7)),
-          loadBalancerInboundNatPools: S.optional(__S(39, __c4, 7)),
-        }),
-      ).annotate({
-        identifier: "VirtualMachineScaleSetUpdateIPConfigurationProperties",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.optional(S.String),
-          properties: S.optional(__S(625, __c78, 1)),
-        }),
-      ).annotate({
-        identifier: "VirtualMachineScaleSetUpdateIPConfiguration",
-      });
-    case 3:
-      return S.Array(__S(626, __c78, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          primary: S.optional(S.Boolean),
-          enableAcceleratedNetworking: S.optional(S.Boolean),
-          disableTcpStateTracking: S.optional(S.Boolean),
-          enableFpga: S.optional(S.Boolean),
-          networkSecurityGroup: S.optional(__S(5, __c0, 5)),
-          dnsSettings: S.optional(__S(241, __c30, 1)),
-          ipConfigurations: S.optional(__S(627, __c78, 3)),
-          enableIPForwarding: S.optional(S.Boolean),
-          deleteOption: S.optional(S.String),
-          auxiliaryMode: S.optional(S.String),
-          auxiliarySku: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "VirtualMachineScaleSetUpdateNetworkConfigurationProperties",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.optional(S.String),
-          properties: S.optional(__S(628, __c78, 4)),
-          tags: S.optional(__S(4, __c0, 4)),
-        }),
-      ).annotate({
-        identifier: "VirtualMachineScaleSetUpdateNetworkConfiguration",
-      });
-    case 6:
-      return S.Array(__S(629, __c78, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          healthProbe: S.optional(__S(84, __c10, 4)),
-          networkInterfaceConfigurations: S.optional(__S(630, __c78, 6)),
-          networkApiVersion: S.optional(S.String),
-          interconnectGroupProfile: S.optional(__S(254, __c31, 6)),
-        }),
-      ).annotate({
-        identifier: "VirtualMachineScaleSetUpdateNetworkProfile",
-      });
-  }
-}
-function __c79(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          excludeExtensions: S.optional(__S(23, __c2, 7)),
-          isOverridable: S.optional(S.Boolean),
-        }),
-      ).annotate({
-        identifier: "SecurityPostureReferenceUpdate",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          forceUpdateTag: S.optional(S.String),
-          publisher: S.optional(S.String),
-          type: S.optional(S.String),
-          typeHandlerVersion: S.optional(S.String),
-          autoUpgradeMinorVersion: S.optional(S.Boolean),
-          enableAutomaticUpgrade: S.optional(S.Boolean),
-          settings: S.optional(S.Unknown),
-          protectedSettings: S.optional(S.Unknown),
-          provisionAfterExtensions: S.optional(__S(0, __c0, 0)),
-          suppressFailures: S.optional(S.Boolean),
-          protectedSettingsFromKeyVault: S.optional(__S(101, __c12, 5)),
-        }),
-      ).annotate({
-        identifier: "VirtualMachineScaleSetExtensionPropertiesInput",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.optional(S.String),
-          properties: S.optional(__S(633, __c79, 1)),
-        }),
-      ).annotate({
-        identifier: "VirtualMachineScaleSetExtensionInput",
-      });
-    case 3:
-      return S.Array(__S(634, __c79, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          extensions: S.optional(__S(635, __c79, 3)),
-          extensionsTimeBudget: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "VirtualMachineScaleSetExtensionProfileInput",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          osProfile: S.optional(__S(620, __c77, 4)),
-          storageProfile: S.optional(__S(622, __c77, 6)),
-          networkProfile: S.optional(__S(631, __c78, 7)),
-          securityPostureReference: S.optional(__S(632, __c79, 0)),
-          securityProfile: S.optional(__S(133, __c16, 5)),
-          diagnosticsProfile: S.optional(__S(128, __c16, 0)),
-          extensionProfile: S.optional(__S(636, __c79, 4)),
-          licenseType: S.optional(S.String),
-          billingProfile: S.optional(__S(256, __c32, 0)),
-          scheduledEventsProfile: S.optional(__S(278, __c34, 6)),
-          userData: S.optional(S.String),
-          hardwareProfile: S.optional(__S(360, __c45, 0)),
-          interconnectBlockProfile: S.optional(__S(280, __c35, 0)),
-        }),
-      ).annotate({
-        identifier: "VirtualMachineScaleSetUpdateVMProfileInput",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          upgradePolicy: S.optional(__S(337, __c42, 1)),
-          automaticRepairsPolicy: S.optional(__S(338, __c42, 2)),
-          virtualMachineProfile: S.optional(__S(637, __c79, 5)),
-          overprovision: S.optional(S.Boolean),
-          doNotRunExtensionsOnOverprovisionedVMs: S.optional(S.Boolean),
-          singlePlacementGroup: S.optional(S.Boolean),
-          additionalCapabilities: S.optional(__S(237, __c29, 5)),
-          scaleInPolicy: S.optional(__S(364, __c45, 4)),
-          proximityPlacementGroup: S.optional(__S(5, __c0, 5)),
-          priorityMixPolicy: S.optional(__S(366, __c45, 6)),
-          spotRestorePolicy: S.optional(__S(365, __c45, 5)),
-          resiliencyPolicy: S.optional(__S(373, __c46, 5)),
-          zonalPlatformFaultDomainAlignMode: S.optional(S.String),
-          skuProfile: S.optional(__S(376, __c47, 0)),
-          lifecycleHooksProfile: S.optional(__S(379, __c47, 3)),
-        }),
-      ).annotate({
-        identifier: "VirtualMachineScaleSetUpdatePropertiesInput",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          type: S.optional(S.String),
-          userAssignedIdentities: S.optional(__S(612, __c76, 4)),
-        }),
-      ).annotate({
-        identifier: "VirtualMachineScaleSetIdentityInput",
-      });
-  }
-}
-function __c80(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          vmScaleSetName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(4, __c0, 4)),
-          sku: S.optional(__S(12, __c1, 4)),
-          plan: S.optional(__S(287, __c35, 7)),
-          properties: S.optional(__S(638, __c79, 6)),
-          identity: S.optional(__S(639, __c79, 7)),
-          zones: S.optional(__S(23, __c2, 7)),
-          placement: S.optional(__S(209, __c26, 1)),
-        }).pipe(
-          T.Http({
-            method: "PATCH",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}",
-            code: 200,
-            apiVersion: "2026-04-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "UpdateVirtualMachineScaleSetRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          vmScaleSetName: S.String.pipe(T.Label()),
-          vmssExtensionName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(633, __c79, 1)),
-        }).pipe(
-          T.Http({
-            method: "PATCH",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}/extensions/{vmssExtensionName}",
-            code: 200,
-            apiVersion: "2026-04-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "UpdateVirtualMachineScaleSetExtensionRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          vmScaleSetName: S.String.pipe(T.Label()),
-          instanceIds: __S(23, __c2, 7),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}/manualupgrade",
-            code: 200,
-            apiVersion: "2026-04-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "UpdateVirtualMachineScaleSetInstancesRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          type: S.optional(S.String),
-          waitUntil: S.optional(S.String),
-          targetResources: S.optional(__S(397, __c49, 5)),
-          additionalContext: S.optional(__S(398, __c49, 6)),
-        }),
-      ).annotate({
-        identifier: "VMScaleSetLifecycleHookEventPropertiesInput",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          vmScaleSetName: S.String.pipe(T.Label()),
-          lifecycleHookEventName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(643, __c80, 3)),
-        }).pipe(
-          T.Http({
-            method: "PATCH",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}/lifecycleHookEvents/{lifecycleHookEventName}",
-            code: 200,
-            apiVersion: "2026-04-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "UpdateVirtualMachineScaleSetLifeCycleHookEventRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          hardwareProfile: S.optional(__S(100, __c12, 4)),
-          resilientVMDeletionStatus: S.optional(S.String),
-          storageProfile: S.optional(__S(608, __c76, 0)),
-          additionalCapabilities: S.optional(__S(237, __c29, 5)),
-          osProfile: S.optional(__S(610, __c76, 2)),
-          securityProfile: S.optional(__S(133, __c16, 5)),
-          networkProfile: S.optional(__S(255, __c31, 7)),
-          networkProfileConfiguration: S.optional(__S(415, __c51, 7)),
-          diagnosticsProfile: S.optional(__S(128, __c16, 0)),
-          availabilitySet: S.optional(__S(5, __c0, 5)),
-          licenseType: S.optional(S.String),
-          protectionPolicy: S.optional(__S(416, __c52, 0)),
-          userData: S.optional(S.String),
-          interconnectBlockProfile: S.optional(__S(280, __c35, 0)),
-          capacityReservation: S.optional(__S(279, __c34, 7)),
-        }),
-      ).annotate({
-        identifier: "VirtualMachineScaleSetVMPropertiesInput",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          vmScaleSetName: S.String.pipe(T.Label()),
-          instanceId: S.String.pipe(T.Label()),
-          tags: S.optional(__S(4, __c0, 4)),
-          location: S.String,
-          properties: S.optional(__S(645, __c80, 5)),
-          plan: S.optional(__S(287, __c35, 7)),
-          identity: S.optional(__S(613, __c76, 5)),
-        }).pipe(
-          T.Http({
-            method: "PUT",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}/virtualMachines/{instanceId}",
-            code: 200,
-            apiVersion: "2026-04-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "UpdateVirtualMachineScaleSetVMRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          vmScaleSetName: S.String.pipe(T.Label()),
-          instanceId: S.String.pipe(T.Label()),
-          runCommandName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(298, __c37, 2)),
-          properties: S.optional(__S(615, __c76, 7)),
-        }).pipe(
-          T.Http({
-            method: "PATCH",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}/virtualMachines/{instanceId}/diagnosticRunCommands/{runCommandName}",
-            code: 200,
-            apiVersion: "2026-04-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "UpdateVirtualMachineScaleSetVMDiagnosticRunCommandRequest",
-      });
-  }
-}
-function __c81(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(14, __c1, 6)),
-          tags: S.optional(__S(298, __c37, 2)),
-          location: S.String,
-          properties: S.optional(__S(304, __c38, 0)),
-        }),
-      ).annotate({
-        identifier: "UpdateVirtualMachineScaleSetVMDiagnosticRunCommandResponse",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          vmScaleSetName: S.String.pipe(T.Label()),
-          instanceId: S.String.pipe(T.Label()),
-          vmExtensionName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(617, __c77, 1)),
-        }).pipe(
-          T.Http({
-            method: "PATCH",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}/virtualMachines/{instanceId}/extensions/{vmExtensionName}",
-            code: 200,
-            apiVersion: "2026-04-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "UpdateVirtualMachineScaleSetVMExtensionRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          vmScaleSetName: S.String.pipe(T.Label()),
-          instanceId: S.String.pipe(T.Label()),
-          runCommandName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(4, __c0, 4)),
-          properties: S.optional(__S(615, __c76, 7)),
-        }).pipe(
-          T.Http({
-            method: "PATCH",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}/virtualMachines/{instanceId}/runCommands/{runCommandName}",
-            code: 200,
-            apiVersion: "2026-04-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "UpdateVirtualMachineScaleSetVMRunCommandRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          availabilitySetName: S.String.pipe(T.Label()),
-          virtualMachineScaleSetFlexible: __S(5, __c0, 5),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/availabilitySets/{availabilitySetName}/validateMigrationToVirtualMachineScaleSet",
-            code: 200,
-            apiVersion: "2026-04-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "ValidateAvailabilitySetMigrationToVirtualMachineScaleSetRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          location: S.String.pipe(T.Label()),
-          operationIds: __S(23, __c2, 7),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/locations/{location}/virtualMachinesBulkCancel",
-            code: 200,
-            apiVersion: "2026-06-06",
-          }),
-        ),
-      ).annotate({
-        identifier: "VirtualMachineBulkOperationsBulkCancelRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          results: __S(30, __c3, 6),
-        }),
-      ).annotate({ identifier: "CancelOperationsResponse" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          location: S.String.pipe(T.Label()),
-          executionParameters: __S(22, __c2, 6),
-          resources: __S(24, __c3, 0),
-          forceDeletion: S.optional(S.Boolean),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/locations/{location}/virtualMachinesBulkDelete",
-            code: 200,
-            apiVersion: "2026-06-06",
-          }),
-        ),
-      ).annotate({
-        identifier: "VirtualMachineBulkOperationsBulkDeleteRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          location: S.String.pipe(T.Label()),
-          operationIds: __S(0, __c0, 0),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/locations/{location}/virtualMachinesBulkGetOperationStatus",
-            code: 200,
-            apiVersion: "2026-06-06",
-          }),
-        ),
-      ).annotate({
-        identifier: "VirtualMachineBulkOperationsBulkGetOperationsStatusRequest",
-      });
-  }
-}
-function __c82(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          results: __S(30, __c3, 6),
-        }),
-      ).annotate({
-        identifier: "GetOperationStatusResponse",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          location: S.String.pipe(T.Label()),
-          executionParameters: __S(22, __c2, 6),
-          resources: __S(24, __c3, 0),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/locations/{location}/virtualMachinesBulkStart",
-            code: 200,
-            apiVersion: "2026-06-06",
-          }),
-        ),
-      ).annotate({
-        identifier: "VirtualMachineBulkOperationsBulkStartRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          vmName: S.String.pipe(T.Label()),
-          runCommandName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(298, __c37, 2)),
-          location: S.String,
-          properties: S.optional(__S(615, __c76, 7)),
-        }).pipe(
-          T.Http({
-            method: "PUT",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachines/{vmName}/diagnosticRunCommands/{runCommandName}",
-            code: 200,
-            apiVersion: "2026-04-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "VirtualMachineDiagnosticRunCommandsCreateOrUpdateRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          vmName: S.String.pipe(T.Label()),
-          _expand: S.optional(S.String.pipe(T.Query("$expand"))),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachines/{vmName}/diagnosticRunCommands",
-            code: 200,
-            apiVersion: "2026-04-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "VirtualMachineDiagnosticRunCommandsDiagnosticListByVirtualMachineRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          forceUpdateTag: S.optional(S.String),
-          publisher: S.optional(S.String),
-          type: S.optional(S.String),
-          typeHandlerVersion: S.optional(S.String),
-          autoUpgradeMinorVersion: S.optional(S.Boolean),
-          enableAutomaticUpgrade: S.optional(S.Boolean),
-          settings: S.optional(S.Unknown),
-          protectedSettings: S.optional(S.Unknown),
-          instanceView: S.optional(__S(264, __c33, 0)),
-          suppressFailures: S.optional(S.Boolean),
-          protectedSettingsFromKeyVault: S.optional(__S(101, __c12, 5)),
-          provisionAfterExtensions: S.optional(__S(0, __c0, 0)),
-        }),
-      ).annotate({
-        identifier: "VirtualMachineExtensionPropertiesInput",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          vmName: S.String.pipe(T.Label()),
-          vmExtensionName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(4, __c0, 4)),
-          location: S.String,
-          properties: S.optional(__S(660, __c82, 4)),
-        }).pipe(
-          T.Http({
-            method: "PUT",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachines/{vmName}/extensions/{vmExtensionName}",
-            code: 200,
-            apiVersion: "2026-04-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "VirtualMachineExtensionsCreateOrUpdateRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          vmName: S.String.pipe(T.Label()),
-          runCommandName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(4, __c0, 4)),
-          location: S.String,
-          properties: S.optional(__S(615, __c76, 7)),
-        }).pipe(
-          T.Http({
-            method: "PUT",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachines/{vmName}/runCommands/{runCommandName}",
-            code: 200,
-            apiVersion: "2026-04-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "VirtualMachineRunCommandsCreateOrUpdateRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          vmName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachines/{vmName}/assessPatches",
-            code: 200,
-            apiVersion: "2026-04-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "VirtualMachinesAssessPatchesRequest",
-      });
-  }
-}
-function __c83(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          patchId: S.optional(S.String),
-          name: S.optional(S.String),
-          version: S.optional(S.String),
-          kbId: S.optional(S.String),
-          classifications: S.optional(__S(23, __c2, 7)),
-          rebootBehavior: S.optional(S.String),
-          activityId: S.optional(S.String),
-          publishedDate: S.optional(S.String),
-          lastModifiedDateTime: S.optional(S.String),
-          assessmentState: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "VirtualMachineSoftwarePatchProperties",
-      });
-    case 1:
-      return S.Array(__S(664, __c83, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          status: S.optional(S.String),
-          assessmentActivityId: S.optional(S.String),
-          rebootPending: S.optional(S.Boolean),
-          criticalAndSecurityPatchCount: S.optional(S.Number),
-          otherPatchCount: S.optional(S.Number),
-          startDateTime: S.optional(S.String),
-          availablePatches: S.optional(__S(665, __c83, 1)),
-          error: S.optional(__S(271, __c33, 7)),
-        }),
-      ).annotate({
-        identifier: "VirtualMachineAssessPatchesResult",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          diskId: S.String,
-          lun: S.optional(S.Number),
-          caching: S.optional(S.String),
-          deleteOption: S.optional(S.String),
-          diskEncryptionSet: S.optional(__S(5, __c0, 5)),
-          writeAcceleratorEnabled: S.optional(S.Boolean),
-        }),
-      ).annotate({ identifier: "DataDisksToAttach" });
-    case 4:
-      return S.Array(__S(667, __c83, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          diskId: S.String,
-          detachOption: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "DataDisksToDetach" });
-    case 6:
-      return S.Array(__S(669, __c83, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          vmName: S.String.pipe(T.Label()),
-          dataDisksToAttach: S.optional(__S(668, __c83, 4)),
-          dataDisksToDetach: S.optional(__S(670, __c83, 6)),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachines/{vmName}/attachDetachDataDisks",
-            code: 200,
-            apiVersion: "2026-04-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "VirtualMachinesAttachDetachDataDisksRequest",
-      });
-  }
-}
-function __c84(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          vmScaleSetName: S.String.pipe(T.Label()),
-          vmssExtensionName: S.String.pipe(T.Label()),
-          name: S.optional(S.String),
-          properties: S.optional(__S(633, __c79, 1)),
-        }).pipe(
-          T.Http({
-            method: "PUT",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}/extensions/{vmssExtensionName}",
-            code: 200,
-            apiVersion: "2026-04-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "VirtualMachineScaleSetExtensionsCreateOrUpdateRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          computerNamePrefix: S.optional(S.String),
-          adminUsername: S.optional(S.String),
-          adminPassword: S.optional(S.String.pipe(T.SensitiveValue({}))),
-          customData: S.optional(S.String),
-          windowsConfiguration: S.optional(__S(609, __c76, 1)),
-          linuxConfiguration: S.optional(__S(121, __c15, 1)),
-          secrets: S.optional(__S(125, __c15, 5)),
-          allowExtensionOperations: S.optional(S.Boolean),
-          requireGuestProvisionSignal: S.optional(S.Boolean),
-        }),
-      ).annotate({
-        identifier: "VirtualMachineScaleSetOSProfileInput",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          imageReference: S.optional(__S(607, __c75, 7)),
-          osDisk: S.optional(__S(341, __c42, 5)),
-          dataDisks: S.optional(__S(343, __c42, 7)),
-          diskControllerType: S.optional(S.String),
-          diskApiVersion: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "VirtualMachineScaleSetStorageProfileInput",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          osProfile: S.optional(__S(673, __c84, 1)),
-          storageProfile: S.optional(__S(674, __c84, 2)),
-          networkProfile: S.optional(__S(355, __c44, 3)),
-          securityProfile: S.optional(__S(133, __c16, 5)),
-          diagnosticsProfile: S.optional(__S(128, __c16, 0)),
-          extensionProfile: S.optional(__S(636, __c79, 4)),
-          licenseType: S.optional(S.String),
-          priority: S.optional(S.String),
-          evictionPolicy: S.optional(S.String),
-          billingProfile: S.optional(__S(256, __c32, 0)),
-          scheduledEventsProfile: S.optional(__S(278, __c34, 6)),
-          userData: S.optional(S.String),
-          capacityReservation: S.optional(__S(279, __c34, 7)),
-          interconnectBlockProfile: S.optional(__S(280, __c35, 0)),
-          applicationProfile: S.optional(__S(283, __c35, 3)),
-          hardwareProfile: S.optional(__S(360, __c45, 0)),
-          serviceArtifactReference: S.optional(__S(84, __c10, 4)),
-          securityPostureReference: S.optional(__S(361, __c45, 1)),
-        }),
-      ).annotate({
-        identifier: "VirtualMachineScaleSetVMProfileInput",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          upgradePolicy: S.optional(__S(337, __c42, 1)),
-          scheduledEventsPolicy: S.optional(__S(10, __c1, 2)),
-          automaticRepairsPolicy: S.optional(__S(338, __c42, 2)),
-          virtualMachineProfile: S.optional(__S(675, __c84, 3)),
-          overprovision: S.optional(S.Boolean),
-          doNotRunExtensionsOnOverprovisionedVMs: S.optional(S.Boolean),
-          singlePlacementGroup: S.optional(S.Boolean),
-          zoneBalance: S.optional(S.Boolean),
-          platformFaultDomainCount: S.optional(S.Number),
-          proximityPlacementGroup: S.optional(__S(5, __c0, 5)),
-          hostGroup: S.optional(__S(5, __c0, 5)),
-          additionalCapabilities: S.optional(__S(237, __c29, 5)),
-          scaleInPolicy: S.optional(__S(364, __c45, 4)),
-          orchestrationMode: S.optional(S.String),
-          spotRestorePolicy: S.optional(__S(365, __c45, 5)),
-          priorityMixPolicy: S.optional(__S(366, __c45, 6)),
-          constrainedMaximumCapacity: S.optional(S.Boolean),
-          resiliencyPolicy: S.optional(__S(373, __c46, 5)),
-          zonalPlatformFaultDomainAlignMode: S.optional(S.String),
-          skuProfile: S.optional(__S(376, __c47, 0)),
-          highSpeedInterconnectPlacement: S.optional(S.String),
-          lifecycleHooksProfile: S.optional(__S(379, __c47, 3)),
-          externalHealthPolicy: S.optional(__S(380, __c47, 4)),
-        }),
-      ).annotate({
-        identifier: "VirtualMachineScaleSetPropertiesInput",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          vmScaleSetName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(4, __c0, 4)),
-          location: S.String,
-          sku: S.optional(__S(12, __c1, 4)),
-          plan: S.optional(__S(287, __c35, 7)),
-          properties: S.optional(__S(676, __c84, 4)),
-          identity: S.optional(__S(639, __c79, 7)),
-          zones: S.optional(__S(23, __c2, 7)),
-          extendedLocation: S.optional(__S(204, __c25, 4)),
-          placement: S.optional(__S(209, __c26, 1)),
-        }).pipe(
-          T.Http({
-            method: "PUT",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}",
-            code: 200,
-            apiVersion: "2026-04-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "VirtualMachineScaleSetsCreateOrUpdateRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          vmScaleSetName: S.String.pipe(T.Label()),
-          hibernate: S.optional(S.Boolean.pipe(T.Query())),
-          instanceIds: S.optional(__S(23, __c2, 7)),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}/deallocate",
-            code: 200,
-            apiVersion: "2026-04-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "VirtualMachineScaleSetsDeallocateRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          vmScaleSetName: S.String.pipe(T.Label()),
-          platformUpdateDomain: S.Number.pipe(T.Query()),
-          zone: S.optional(S.String.pipe(T.Query())),
-          placementGroupId: S.optional(S.String.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}/forceRecoveryServiceFabricPlatformUpdateDomainWalk",
-            code: 200,
-            apiVersion: "2026-04-01",
-          }),
-        ),
-      ).annotate({
-        identifier:
-          "VirtualMachineScaleSetsForceRecoveryServiceFabricPlatformUpdateDomainWalkRequest",
-      });
-  }
-}
-function __c85(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          walkPerformed: S.optional(S.Boolean),
-          nextPlatformUpdateDomain: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "RecoveryWalkResponse" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          vmScaleSetName: S.String.pipe(T.Label()),
-          instanceIds: S.optional(__S(0, __c0, 0)),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}/performMaintenance",
-            code: 200,
-            apiVersion: "2026-04-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "VirtualMachineScaleSetsPerformMaintenanceRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          vmScaleSetName: S.String.pipe(T.Label()),
-          skipShutdown: S.optional(S.Boolean.pipe(T.Query())),
-          instanceIds: S.optional(__S(23, __c2, 7)),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}/poweroff",
-            code: 200,
-            apiVersion: "2026-04-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "VirtualMachineScaleSetsPowerOffRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          vmScaleSetName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}/reapply",
-            code: 200,
-            apiVersion: "2026-04-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "VirtualMachineScaleSetsReapplyRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          adminPassword: S.optional(S.String.pipe(T.SensitiveValue({}))),
-          customData: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "OSProfileProvisioningData",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          vmScaleSetName: S.String.pipe(T.Label()),
-          tempDisk: S.optional(S.Boolean),
-          exactVersion: S.optional(S.String),
-          osProfile: S.optional(__S(684, __c85, 4)),
-          forceUpdateOSDiskForEphemeral: S.optional(S.Boolean),
-          instanceIds: S.optional(__S(23, __c2, 7)),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}/reimage",
-            code: 200,
-            apiVersion: "2026-04-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "VirtualMachineScaleSetsReimageRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          vmScaleSetName: S.String.pipe(T.Label()),
-          instanceIds: S.optional(__S(23, __c2, 7)),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}/reimageall",
-            code: 200,
-            apiVersion: "2026-04-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "VirtualMachineScaleSetsReimageAllRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          vmScaleSetName: S.String.pipe(T.Label()),
-          instanceId: S.String.pipe(T.Label()),
-          runCommandName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(298, __c37, 2)),
-          location: S.String,
-          properties: S.optional(__S(615, __c76, 7)),
-        }).pipe(
-          T.Http({
-            method: "PUT",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}/virtualMachines/{instanceId}/diagnosticRunCommands/{runCommandName}",
-            code: 200,
-            apiVersion: "2026-04-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "VirtualMachineScaleSetVMDiagnosticRunCommandsCreateOrUpdateRequest",
-      });
-  }
-}
-function __c86(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          vmScaleSetName: S.String.pipe(T.Label()),
-          instanceId: S.String.pipe(T.Label()),
-          vmExtensionName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(660, __c82, 4)),
-          location: S.optional(S.String),
-        }).pipe(
-          T.Http({
-            method: "PUT",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}/virtualMachines/{instanceId}/extensions/{vmExtensionName}",
-            code: 200,
-            apiVersion: "2026-04-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "VirtualMachineScaleSetVMExtensionsCreateOrUpdateRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          properties: S.optional(__S(288, __c36, 0)),
-          location: S.optional(S.String),
-          type: S.optional(S.String),
-          name: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "VirtualMachineScaleSetVMExtensionsCreateOrUpdateResponse",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          vmScaleSetName: S.String.pipe(T.Label()),
-          instanceId: S.String.pipe(T.Label()),
-          runCommandName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(298, __c37, 2)),
-          location: S.String,
-          properties: S.optional(__S(615, __c76, 7)),
-        }).pipe(
-          T.Http({
-            method: "PUT",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}/virtualMachines/{instanceId}/runCommands/{runCommandName}",
-            code: 200,
-            apiVersion: "2026-04-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "VirtualMachineScaleSetVMRunCommandsCreateOrUpdateRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          vmScaleSetName: S.String.pipe(T.Label()),
-          instanceId: S.String.pipe(T.Label()),
-          dataDisksToAttach: S.optional(__S(668, __c83, 4)),
-          dataDisksToDetach: S.optional(__S(670, __c83, 6)),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}/virtualMachines/{instanceId}/attachDetachDataDisks",
-            code: 200,
-            apiVersion: "2026-04-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "VirtualMachineScaleSetVMsAttachDetachDataDisksRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          vmScaleSetName: S.String.pipe(T.Label()),
-          instanceId: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}/virtualMachines/{instanceId}/deallocate",
-            code: 200,
-            apiVersion: "2026-04-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "VirtualMachineScaleSetVMsDeallocateRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          vmScaleSetName: S.String.pipe(T.Label()),
-          instanceId: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}/virtualMachines/{instanceId}/performMaintenance",
-            code: 200,
-            apiVersion: "2026-04-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "VirtualMachineScaleSetVMsPerformMaintenanceRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          vmScaleSetName: S.String.pipe(T.Label()),
-          instanceId: S.String.pipe(T.Label()),
-          skipShutdown: S.optional(S.Boolean.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}/virtualMachines/{instanceId}/powerOff",
-            code: 200,
-            apiVersion: "2026-04-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "VirtualMachineScaleSetVMsPowerOffRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          vmScaleSetName: S.String.pipe(T.Label()),
-          instanceId: S.String.pipe(T.Label()),
-          tempDisk: S.optional(S.Boolean),
-          exactVersion: S.optional(S.String),
-          osProfile: S.optional(__S(684, __c85, 4)),
-          forceUpdateOSDiskForEphemeral: S.optional(S.Boolean),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}/virtualMachines/{instanceId}/reimage",
-            code: 200,
-            apiVersion: "2026-04-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "VirtualMachineScaleSetVMsReimageRequest",
-      });
-  }
-}
-function __c87(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          vmScaleSetName: S.String.pipe(T.Label()),
-          instanceId: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}/virtualMachines/{instanceId}/reimageall",
-            code: 200,
-            apiVersion: "2026-04-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "VirtualMachineScaleSetVMsReimageAllRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          vmScaleSetName: S.String.pipe(T.Label()),
-          instanceId: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}/virtualMachines/{instanceId}/simulateEviction",
-            code: 200,
-            apiVersion: "2026-04-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "VirtualMachineScaleSetVMsSimulateEvictionRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          vmName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(4, __c0, 4)),
-          location: S.String,
-          properties: S.optional(__S(611, __c76, 3)),
-          plan: S.optional(__S(287, __c35, 7)),
-          identity: S.optional(__S(613, __c76, 5)),
-          zones: S.optional(__S(23, __c2, 7)),
-          extendedLocation: S.optional(__S(204, __c25, 4)),
-          placement: S.optional(__S(209, __c26, 1)),
-        }).pipe(
-          T.Http({
-            method: "PUT",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachines/{vmName}",
-            code: 200,
-            apiVersion: "2026-04-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "VirtualMachinesCreateOrUpdateRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          vmName: S.String.pipe(T.Label()),
-          hibernate: S.optional(S.Boolean.pipe(T.Query())),
-          forceDeallocate: S.optional(S.Boolean.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachines/{vmName}/deallocate",
-            code: 200,
-            apiVersion: "2026-04-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "VirtualMachinesDeallocateRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          vmName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachines/{vmName}/generalize",
-            code: 200,
-            apiVersion: "2026-04-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "VirtualMachinesGeneralizeRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          vmName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachines/{vmName}/instanceView",
-            code: 200,
-            apiVersion: "2026-04-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "VirtualMachinesInstanceViewRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          vmName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachines/{vmName}/performMaintenance",
-            code: 200,
-            apiVersion: "2026-04-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "VirtualMachinesPerformMaintenanceRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          vmName: S.String.pipe(T.Label()),
-          skipShutdown: S.optional(S.Boolean.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachines/{vmName}/powerOff",
-            code: 200,
-            apiVersion: "2026-04-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "VirtualMachinesPowerOffRequest",
-      });
-  }
-}
-function __c88(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          vmName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachines/{vmName}/reapply",
-            code: 200,
-            apiVersion: "2026-04-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "VirtualMachinesReapplyRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          vmName: S.String.pipe(T.Label()),
-          tempDisk: S.optional(S.Boolean),
-          exactVersion: S.optional(S.String),
-          osProfile: S.optional(__S(684, __c85, 4)),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachines/{vmName}/reimage",
-            code: 200,
-            apiVersion: "2026-04-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "VirtualMachinesReimageRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          vmName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachines/{vmName}/simulateEviction",
-            code: 200,
-            apiVersion: "2026-04-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "VirtualMachinesSimulateEvictionRequest",
-      });
-  }
-}
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

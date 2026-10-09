@@ -344,8 +344,8 @@ export const acceptAccountsInvitations: API.OperationMethod<
   AcceptAccountsInvitationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1, __c0, 1) as any as S.Schema<AcceptAccountsInvitationsRequest>,
-  output: __S(0, __c0, 0) as any as S.Schema<Empty>,
+  input: __S(88, __c11, 0) as any as S.Schema<AcceptAccountsInvitationsRequest>,
+  output: __S(96, __c12, 0) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -359,8 +359,8 @@ export const createAccounts: API.OperationMethod<
   CreateAccountsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(6, __c0, 6) as any as S.Schema<CreateAccountsRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<Account>,
+  input: __S(104, __c13, 0) as any as S.Schema<CreateAccountsRequest>,
+  output: __S(115, __c14, 3) as any as S.Schema<Account>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -374,8 +374,8 @@ export const createAccountsAdmins: API.OperationMethod<
   CreateAccountsAdminsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(8, __c1, 0) as any as S.Schema<CreateAccountsAdminsRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<Admin>,
+  input: __S(120, __c15, 0) as any as S.Schema<CreateAccountsAdminsRequest>,
+  output: __S(128, __c16, 0) as any as S.Schema<Admin>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -389,8 +389,8 @@ export const createLocationsAdmins: API.OperationMethod<
   CreateLocationsAdminsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(9, __c1, 1) as any as S.Schema<CreateLocationsAdminsRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<Admin>,
+  input: __S(136, __c17, 0) as any as S.Schema<CreateLocationsAdminsRequest>,
+  output: __S(128, __c16, 0) as any as S.Schema<Admin>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -409,8 +409,8 @@ export const declineAccountsInvitations: API.OperationMethod<
   DeclineAccountsInvitationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(10, __c1, 2) as any as S.Schema<DeclineAccountsInvitationsRequest>,
-  output: __S(0, __c0, 0) as any as S.Schema<Empty>,
+  input: __S(144, __c18, 0) as any as S.Schema<DeclineAccountsInvitationsRequest>,
+  output: __S(96, __c12, 0) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -424,8 +424,8 @@ export const deleteAccountsAdmins: API.OperationMethod<
   DeleteAccountsAdminsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(11, __c1, 3) as any as S.Schema<DeleteAccountsAdminsRequest>,
-  output: __S(0, __c0, 0) as any as S.Schema<Empty>,
+  input: __S(152, __c19, 0) as any as S.Schema<DeleteAccountsAdminsRequest>,
+  output: __S(96, __c12, 0) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -439,8 +439,8 @@ export const deleteLocationsAdmins: API.OperationMethod<
   DeleteLocationsAdminsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(12, __c1, 4) as any as S.Schema<DeleteLocationsAdminsRequest>,
-  output: __S(0, __c0, 0) as any as S.Schema<Empty>,
+  input: __S(0, __c0, 0) as any as S.Schema<DeleteLocationsAdminsRequest>,
+  output: __S(96, __c12, 0) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -454,8 +454,8 @@ export const getAccounts: API.OperationMethod<
   GetAccountsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(13, __c1, 5) as any as S.Schema<GetAccountsRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<Account>,
+  input: __S(8, __c1, 0) as any as S.Schema<GetAccountsRequest>,
+  output: __S(115, __c14, 3) as any as S.Schema<Account>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -470,8 +470,8 @@ export const listAccounts: API.PaginatedOperationMethod<
   GcpOpContext,
   ListAccountsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(14, __c1, 6) as any as S.Schema<ListAccountsRequest>,
-  output: __S(16, __c2, 0) as any as S.Schema<ListAccountsResponse>,
+  input: __S(16, __c2, 0) as any as S.Schema<ListAccountsRequest>,
+  output: __S(18, __c2, 2) as any as S.Schema<ListAccountsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -486,8 +486,8 @@ export const listAccountsAdmins: API.OperationMethod<
   ListAccountsAdminsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(17, __c2, 1) as any as S.Schema<ListAccountsAdminsRequest>,
-  output: __S(19, __c2, 3) as any as S.Schema<ListAccountAdminsResponse>,
+  input: __S(24, __c3, 0) as any as S.Schema<ListAccountsAdminsRequest>,
+  output: __S(25, __c3, 1) as any as S.Schema<ListAccountAdminsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -501,8 +501,8 @@ export const listAccountsInvitations: API.OperationMethod<
   ListAccountsInvitationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(20, __c2, 4) as any as S.Schema<ListAccountsInvitationsRequest>,
-  output: __S(24, __c3, 0) as any as S.Schema<ListInvitationsResponse>,
+  input: __S(40, __c5, 0) as any as S.Schema<ListAccountsInvitationsRequest>,
+  output: __S(44, __c5, 4) as any as S.Schema<ListInvitationsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -516,8 +516,8 @@ export const listLocationsAdmins: API.OperationMethod<
   ListLocationsAdminsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(25, __c3, 1) as any as S.Schema<ListLocationsAdminsRequest>,
-  output: __S(26, __c3, 2) as any as S.Schema<ListLocationAdminsResponse>,
+  input: __S(48, __c6, 0) as any as S.Schema<ListLocationsAdminsRequest>,
+  output: __S(49, __c6, 1) as any as S.Schema<ListLocationAdminsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -531,8 +531,8 @@ export const patchAccounts: API.OperationMethod<
   PatchAccountsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(27, __c3, 3) as any as S.Schema<PatchAccountsRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<Account>,
+  input: __S(56, __c7, 0) as any as S.Schema<PatchAccountsRequest>,
+  output: __S(115, __c14, 3) as any as S.Schema<Account>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -546,8 +546,8 @@ export const patchAccountsAdmins: API.OperationMethod<
   PatchAccountsAdminsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(28, __c3, 4) as any as S.Schema<PatchAccountsAdminsRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<Admin>,
+  input: __S(64, __c8, 0) as any as S.Schema<PatchAccountsAdminsRequest>,
+  output: __S(128, __c16, 0) as any as S.Schema<Admin>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -561,8 +561,8 @@ export const patchLocationsAdmins: API.OperationMethod<
   PatchLocationsAdminsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(29, __c3, 5) as any as S.Schema<PatchLocationsAdminsRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<Admin>,
+  input: __S(72, __c9, 0) as any as S.Schema<PatchLocationsAdminsRequest>,
+  output: __S(128, __c16, 0) as any as S.Schema<Admin>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -576,8 +576,8 @@ export const transferLocations: API.OperationMethod<
   TransferLocationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(31, __c3, 7) as any as S.Schema<TransferLocationsRequest>,
-  output: __S(0, __c0, 0) as any as S.Schema<Empty>,
+  input: __S(81, __c10, 1) as any as S.Schema<TransferLocationsRequest>,
+  output: __S(96, __c12, 0) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -587,151 +587,6 @@ export const transferLocations: API.OperationMethod<
 function __c0(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "AcceptInvitationRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-          body: S.optional(__S(0, __c0, 0).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/{+name}:accept",
-            baseUrl: "https://mybusinessaccountmanagement.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "AcceptAccountsInvitationsRequest",
-      });
-    case 2:
-      return S.Array(S.String);
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          administrativeArea: S.optional(S.String),
-          postalCode: S.optional(S.String),
-          locality: S.optional(S.String),
-          addressLines: S.optional(__S(2, __c0, 2)),
-          recipients: S.optional(__S(2, __c0, 2)),
-          sortingCode: S.optional(S.String),
-          regionCode: S.optional(S.String),
-          organization: S.optional(S.String),
-          sublocality: S.optional(S.String),
-          revision: S.optional(S.Number),
-          languageCode: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "PostalAddress" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          address: S.optional(__S(3, __c0, 3)),
-          phoneNumber: S.optional(S.String),
-          registeredDomain: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "OrganizationInfo" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          type: S.optional(S.String),
-          organizationInfo: S.optional(__S(4, __c0, 4)),
-          vettedState: S.optional(S.String),
-          permissionLevel: S.optional(S.String),
-          primaryOwner: S.optional(S.String),
-          role: S.optional(S.String),
-          verificationState: S.optional(S.String),
-          accountNumber: S.optional(S.String),
-          name: S.optional(S.String),
-          accountName: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Account" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          body: S.optional(__S(5, __c0, 5).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/accounts",
-            baseUrl: "https://mybusinessaccountmanagement.googleapis.com/",
-          }),
-        ),
-      ).annotate({ identifier: "CreateAccountsRequest" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          account: S.optional(S.String),
-          role: S.optional(S.String),
-          admin: S.optional(S.String),
-          name: S.optional(S.String),
-          pendingInvitation: S.optional(S.Boolean),
-        }),
-      ).annotate({ identifier: "Admin" });
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(7, __c0, 7).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/{+parent}/admins",
-            baseUrl: "https://mybusinessaccountmanagement.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateAccountsAdminsRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(7, __c0, 7).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/{+parent}/admins",
-            baseUrl: "https://mybusinessaccountmanagement.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateLocationsAdminsRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-          body: S.optional(__S(0, __c0, 0).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/{+name}:decline",
-            baseUrl: "https://mybusinessaccountmanagement.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeclineAccountsInvitationsRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "v1/{+name}",
-            baseUrl: "https://mybusinessaccountmanagement.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteAccountsAdminsRequest",
-      });
-    case 4:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -745,7 +600,11 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "DeleteLocationsAdminsRequest",
       });
-    case 5:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -757,7 +616,11 @@ function __c1(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetAccountsRequest" });
-    case 6:
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           parentAccount: S.optional(S.String.pipe(T.Query())),
@@ -772,20 +635,20 @@ function __c1(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ListAccountsRequest" });
-    case 7:
-      return S.Array(__S(5, __c0, 5));
-  }
-}
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
+      return S.Array(__S(115, __c14, 3));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          accounts: S.optional(__S(15, __c1, 7)),
+          accounts: S.optional(__S(17, __c2, 1)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListAccountsResponse" });
-    case 1:
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
@@ -799,17 +662,25 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "ListAccountsAdminsRequest",
       });
-    case 2:
-      return S.Array(__S(7, __c0, 7));
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          accountAdmins: S.optional(__S(18, __c2, 2)),
+          accountAdmins: S.optional(__S(32, __c4, 0)),
         }),
       ).annotate({
         identifier: "ListAccountAdminsResponse",
       });
-    case 4:
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(128, __c16, 0));
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
@@ -824,7 +695,7 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "ListAccountsInvitationsRequest",
       });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           placeId: S.optional(S.String),
@@ -832,29 +703,29 @@ function __c2(j: number): any {
           locationName: S.optional(S.String),
         }),
       ).annotate({ identifier: "TargetLocation" });
-    case 6:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           role: S.optional(S.String),
           targetType: S.optional(S.String),
-          targetLocation: S.optional(__S(21, __c2, 5)),
-          targetAccount: S.optional(__S(5, __c0, 5)),
+          targetLocation: S.optional(__S(41, __c5, 1)),
+          targetAccount: S.optional(__S(115, __c14, 3)),
           name: S.optional(S.String),
         }),
       ).annotate({ identifier: "Invitation" });
-    case 7:
-      return S.Array(__S(22, __c2, 6));
-  }
-}
-function __c3(j: number): any {
-  switch (j) {
-    case 0:
+    case 3:
+      return S.Array(__S(42, __c5, 2));
+    case 4:
       return S.suspend(() =>
         S.Struct({
-          invitations: S.optional(__S(23, __c2, 7)),
+          invitations: S.optional(__S(43, __c5, 3)),
         }),
       ).annotate({ identifier: "ListInvitationsResponse" });
-    case 1:
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
@@ -868,21 +739,25 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "ListLocationsAdminsRequest",
       });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          admins: S.optional(__S(18, __c2, 2)),
+          admins: S.optional(__S(32, __c4, 0)),
         }),
       ).annotate({
         identifier: "ListLocationAdminsResponse",
       });
-    case 3:
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
           validateOnly: S.optional(S.Boolean.pipe(T.Query())),
           updateMask: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(5, __c0, 5).pipe(T.HttpBody())),
+          body: S.optional(__S(115, __c14, 3).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -891,12 +766,16 @@ function __c3(j: number): any {
           }),
         ),
       ).annotate({ identifier: "PatchAccountsRequest" });
-    case 4:
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
           updateMask: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(7, __c0, 7).pipe(T.HttpBody())),
+          body: S.optional(__S(128, __c16, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -907,12 +786,16 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "PatchAccountsAdminsRequest",
       });
-    case 5:
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
           updateMask: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(7, __c0, 7).pipe(T.HttpBody())),
+          body: S.optional(__S(128, __c16, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -923,17 +806,21 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "PatchLocationsAdminsRequest",
       });
-    case 6:
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           destinationAccount: S.optional(S.String),
         }),
       ).annotate({ identifier: "TransferLocationRequest" });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(30, __c3, 6).pipe(T.HttpBody())),
+          body: S.optional(__S(80, __c10, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -944,7 +831,183 @@ function __c3(j: number): any {
       ).annotate({ identifier: "TransferLocationsRequest" });
   }
 }
-
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+          body: S.optional(__S(96, __c12, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/{+name}:accept",
+            baseUrl: "https://mybusinessaccountmanagement.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "AcceptAccountsInvitationsRequest",
+      });
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "AcceptInvitationRequest",
+      });
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          body: S.optional(__S(115, __c14, 3).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/accounts",
+            baseUrl: "https://mybusinessaccountmanagement.googleapis.com/",
+          }),
+        ),
+      ).annotate({ identifier: "CreateAccountsRequest" });
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          administrativeArea: S.optional(S.String),
+          postalCode: S.optional(S.String),
+          locality: S.optional(S.String),
+          addressLines: S.optional(__S(112, __c14, 0)),
+          recipients: S.optional(__S(112, __c14, 0)),
+          sortingCode: S.optional(S.String),
+          regionCode: S.optional(S.String),
+          organization: S.optional(S.String),
+          sublocality: S.optional(S.String),
+          revision: S.optional(S.Number),
+          languageCode: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "PostalAddress" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          address: S.optional(__S(113, __c14, 1)),
+          phoneNumber: S.optional(S.String),
+          registeredDomain: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "OrganizationInfo" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          type: S.optional(S.String),
+          organizationInfo: S.optional(__S(114, __c14, 2)),
+          vettedState: S.optional(S.String),
+          permissionLevel: S.optional(S.String),
+          primaryOwner: S.optional(S.String),
+          role: S.optional(S.String),
+          verificationState: S.optional(S.String),
+          accountNumber: S.optional(S.String),
+          name: S.optional(S.String),
+          accountName: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Account" });
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          parent: S.String.pipe(T.Label()),
+          body: S.optional(__S(128, __c16, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/{+parent}/admins",
+            baseUrl: "https://mybusinessaccountmanagement.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateAccountsAdminsRequest",
+      });
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          account: S.optional(S.String),
+          role: S.optional(S.String),
+          admin: S.optional(S.String),
+          name: S.optional(S.String),
+          pendingInvitation: S.optional(S.Boolean),
+        }),
+      ).annotate({ identifier: "Admin" });
+  }
+}
+function __c17(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          parent: S.String.pipe(T.Label()),
+          body: S.optional(__S(128, __c16, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/{+parent}/admins",
+            baseUrl: "https://mybusinessaccountmanagement.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateLocationsAdminsRequest",
+      });
+  }
+}
+function __c18(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+          body: S.optional(__S(96, __c12, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/{+name}:decline",
+            baseUrl: "https://mybusinessaccountmanagement.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeclineAccountsInvitationsRequest",
+      });
+  }
+}
+function __c19(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "v1/{+name}",
+            baseUrl: "https://mybusinessaccountmanagement.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteAccountsAdminsRequest",
+      });
+  }
+}
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

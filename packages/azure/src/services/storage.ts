@@ -6152,8 +6152,8 @@ export const AdvancedPlatformMetricsCreateOrUpdate: API.OperationMethod<
   AdvancedPlatformMetricsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(6, __c0, 6) as any as S.Schema<AdvancedPlatformMetricsCreateOrUpdateRequest>,
-  output: __S(9, __c1, 1) as any as S.Schema<AdvancedPlatformMetricsCreateOrUpdateResponse>,
+  input: __S(33, __c1, 1) as any as S.Schema<AdvancedPlatformMetricsCreateOrUpdateRequest>,
+  output: __S(130, __c4, 2) as any as S.Schema<AdvancedPlatformMetricsCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6167,11 +6167,15 @@ export const BlobContainersCreateOrUpdateImmutabilityPolicy: API.OperationMethod
   BlobContainersCreateOrUpdateImmutabilityPolicyError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(11, __c1, 3) as any as S.Schema<BlobContainersCreateOrUpdateImmutabilityPolicyRequest>,
+  input: __S(
+    2784,
+    __c87,
+    0,
+  ) as any as S.Schema<BlobContainersCreateOrUpdateImmutabilityPolicyRequest>,
   output: __S(
-    12,
-    __c1,
-    4,
+    2848,
+    __c89,
+    0,
   ) as any as S.Schema<BlobContainersCreateOrUpdateImmutabilityPolicyResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -6186,8 +6190,8 @@ export const BlobContainersLease: API.OperationMethod<
   BlobContainersLeaseError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(13, __c1, 5) as any as S.Schema<BlobContainersLeaseRequest>,
-  output: __S(14, __c1, 6) as any as S.Schema<LeaseContainerResponse>,
+  input: __S(3200, __c100, 0) as any as S.Schema<BlobContainersLeaseRequest>,
+  output: __S(3232, __c101, 0) as any as S.Schema<LeaseContainerResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6201,8 +6205,8 @@ export const BlobContainersObjectLevelWorm: API.OperationMethod<
   BlobContainersObjectLevelWormError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(15, __c1, 7) as any as S.Schema<BlobContainersObjectLevelWormRequest>,
-  output: __S(16, __c2, 0) as any as S.Schema<BlobContainersObjectLevelWormResponse>,
+  input: __S(3584, __c112, 0) as any as S.Schema<BlobContainersObjectLevelWormRequest>,
+  output: __S(3616, __c113, 0) as any as S.Schema<BlobContainersObjectLevelWormResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6216,8 +6220,8 @@ export const BlobInventoryPoliciesCreateOrUpdate: API.OperationMethod<
   BlobInventoryPoliciesCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(24, __c3, 0) as any as S.Schema<BlobInventoryPoliciesCreateOrUpdateRequest>,
-  output: __S(27, __c3, 3) as any as S.Schema<BlobInventoryPoliciesCreateOrUpdateResponse>,
+  input: __S(4130, __c129, 2) as any as S.Schema<BlobInventoryPoliciesCreateOrUpdateRequest>,
+  output: __S(4160, __c130, 0) as any as S.Schema<BlobInventoryPoliciesCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6231,8 +6235,8 @@ export const CheckContextCachNameAvailability: API.OperationMethod<
   CheckContextCachNameAvailabilityError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(28, __c3, 4) as any as S.Schema<CheckContextCachNameAvailabilityRequest>,
-  output: __S(29, __c3, 5) as any as S.Schema<ContextCacheCheckNameAvailabilityResult>,
+  input: __S(4960, __c155, 0) as any as S.Schema<CheckContextCachNameAvailabilityRequest>,
+  output: __S(4961, __c155, 1) as any as S.Schema<ContextCacheCheckNameAvailabilityResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6246,8 +6250,8 @@ export const CheckStorageAccountNameAvailability: API.OperationMethod<
   CheckStorageAccountNameAvailabilityError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(30, __c3, 6) as any as S.Schema<CheckStorageAccountNameAvailabilityRequest>,
-  output: __S(31, __c3, 7) as any as S.Schema<CheckNameAvailabilityResult>,
+  input: __S(5376, __c168, 0) as any as S.Schema<CheckStorageAccountNameAvailabilityRequest>,
+  output: __S(5377, __c168, 1) as any as S.Schema<CheckNameAvailabilityResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6261,8 +6265,8 @@ export const ClearBlobContainerLegalHold: API.OperationMethod<
   ClearBlobContainerLegalHoldError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(32, __c4, 0) as any as S.Schema<ClearBlobContainerLegalHoldRequest>,
-  output: __S(33, __c4, 1) as any as S.Schema<LegalHold>,
+  input: __S(5760, __c180, 0) as any as S.Schema<ClearBlobContainerLegalHoldRequest>,
+  output: __S(5792, __c181, 0) as any as S.Schema<LegalHold>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6276,8 +6280,8 @@ export const ContextCacheContainersCreateOrUpdate: API.OperationMethod<
   ContextCacheContainersCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(35, __c4, 3) as any as S.Schema<ContextCacheContainersCreateOrUpdateRequest>,
-  output: __S(37, __c4, 5) as any as S.Schema<ContextCacheContainersCreateOrUpdateResponse>,
+  input: __S(6145, __c192, 1) as any as S.Schema<ContextCacheContainersCreateOrUpdateRequest>,
+  output: __S(6176, __c193, 0) as any as S.Schema<ContextCacheContainersCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6291,8 +6295,8 @@ export const ContextCachesCreateOrUpdate: API.OperationMethod<
   ContextCachesCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(46, __c5, 6) as any as S.Schema<ContextCachesCreateOrUpdateRequest>,
-  output: __S(51, __c6, 3) as any as S.Schema<ContextCachesCreateOrUpdateResponse>,
+  input: __S(193, __c6, 1) as any as S.Schema<ContextCachesCreateOrUpdateRequest>,
+  output: __S(258, __c8, 2) as any as S.Schema<ContextCachesCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6306,8 +6310,8 @@ export const CreateBlobAccessPointConfiguration: API.OperationMethod<
   CreateBlobAccessPointConfigurationError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(54, __c6, 6) as any as S.Schema<CreateBlobAccessPointConfigurationRequest>,
-  output: __S(56, __c7, 0) as any as S.Schema<CreateBlobAccessPointConfigurationResponse>,
+  input: __S(737, __c23, 1) as any as S.Schema<CreateBlobAccessPointConfigurationRequest>,
+  output: __S(801, __c25, 1) as any as S.Schema<CreateBlobAccessPointConfigurationResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6321,8 +6325,8 @@ export const CreateBlobContainer: API.OperationMethod<
   CreateBlobContainerError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(60, __c7, 4) as any as S.Schema<CreateBlobContainerRequest>,
-  output: __S(70, __c8, 6) as any as S.Schema<CreateBlobContainerResponse>,
+  input: __S(1152, __c36, 0) as any as S.Schema<CreateBlobContainerRequest>,
+  output: __S(1185, __c37, 1) as any as S.Schema<CreateBlobContainerResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6336,8 +6340,8 @@ export const CreateConnector: API.OperationMethod<
   CreateConnectorError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(75, __c9, 3) as any as S.Schema<CreateConnectorRequest>,
-  output: __S(77, __c9, 5) as any as S.Schema<CreateConnectorResponse>,
+  input: __S(1633, __c51, 1) as any as S.Schema<CreateConnectorRequest>,
+  output: __S(1668, __c52, 4) as any as S.Schema<CreateConnectorResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6351,8 +6355,8 @@ export const CreateDataShare: API.OperationMethod<
   CreateDataShareError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(83, __c10, 3) as any as S.Schema<CreateDataShareRequest>,
-  output: __S(85, __c10, 5) as any as S.Schema<CreateDataShareResponse>,
+  input: __S(1985, __c62, 1) as any as S.Schema<CreateDataShareRequest>,
+  output: __S(2021, __c63, 5) as any as S.Schema<CreateDataShareResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6366,8 +6370,8 @@ export const CreateFileShare: API.OperationMethod<
   CreateFileShareError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(91, __c11, 3) as any as S.Schema<CreateFileShareRequest>,
-  output: __S(93, __c11, 5) as any as S.Schema<CreateFileShareResponse>,
+  input: __S(2048, __c64, 0) as any as S.Schema<CreateFileShareRequest>,
+  output: __S(2112, __c66, 0) as any as S.Schema<CreateFileShareResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6381,8 +6385,8 @@ export const CreateQueue: API.OperationMethod<
   CreateQueueError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(95, __c11, 7) as any as S.Schema<CreateQueueRequest>,
-  output: __S(97, __c12, 1) as any as S.Schema<CreateQueueResponse>,
+  input: __S(2176, __c68, 0) as any as S.Schema<CreateQueueRequest>,
+  output: __S(2209, __c69, 1) as any as S.Schema<CreateQueueResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6396,8 +6400,8 @@ export const CreateStorageAccount: API.OperationMethod<
   CreateStorageAccountError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(130, __c16, 2) as any as S.Schema<CreateStorageAccountRequest>,
-  output: __S(157, __c19, 5) as any as S.Schema<CreateStorageAccountResponse>,
+  input: __S(2273, __c71, 1) as any as S.Schema<CreateStorageAccountRequest>,
+  output: __S(2400, __c75, 0) as any as S.Schema<CreateStorageAccountResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6411,8 +6415,8 @@ export const CreateStorageTaskAssignment: API.OperationMethod<
   CreateStorageTaskAssignmentError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(164, __c20, 4) as any as S.Schema<CreateStorageTaskAssignmentRequest>,
-  output: __S(167, __c20, 7) as any as S.Schema<CreateStorageTaskAssignmentResponse>,
+  input: __S(2561, __c80, 1) as any as S.Schema<CreateStorageTaskAssignmentRequest>,
+  output: __S(2592, __c81, 0) as any as S.Schema<CreateStorageTaskAssignmentResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6426,8 +6430,8 @@ export const CreateTable: API.OperationMethod<
   CreateTableError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(172, __c21, 4) as any as S.Schema<CreateTableRequest>,
-  output: __S(174, __c21, 6) as any as S.Schema<CreateTableResponse>,
+  input: __S(2688, __c84, 0) as any as S.Schema<CreateTableRequest>,
+  output: __S(2756, __c86, 4) as any as S.Schema<CreateTableResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6441,8 +6445,8 @@ export const DeleteAdvancedPlatformMetrics: API.OperationMethod<
   DeleteAdvancedPlatformMetricsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(175, __c21, 7) as any as S.Schema<DeleteAdvancedPlatformMetricsRequest>,
-  output: __S(16, __c2, 0) as any as S.Schema<DeleteAdvancedPlatformMetricsResponse>,
+  input: __S(2880, __c90, 0) as any as S.Schema<DeleteAdvancedPlatformMetricsRequest>,
+  output: __S(3616, __c113, 0) as any as S.Schema<DeleteAdvancedPlatformMetricsResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6456,8 +6460,8 @@ export const DeleteBlobAccessPointConfiguration: API.OperationMethod<
   DeleteBlobAccessPointConfigurationError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(176, __c22, 0) as any as S.Schema<DeleteBlobAccessPointConfigurationRequest>,
-  output: __S(16, __c2, 0) as any as S.Schema<DeleteBlobAccessPointConfigurationResponse>,
+  input: __S(2912, __c91, 0) as any as S.Schema<DeleteBlobAccessPointConfigurationRequest>,
+  output: __S(3616, __c113, 0) as any as S.Schema<DeleteBlobAccessPointConfigurationResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6471,8 +6475,8 @@ export const DeleteBlobContainer: API.OperationMethod<
   DeleteBlobContainerError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(177, __c22, 1) as any as S.Schema<DeleteBlobContainerRequest>,
-  output: __S(43, __c5, 3) as any as S.Schema<DeleteBlobContainerResponse>,
+  input: __S(2944, __c92, 0) as any as S.Schema<DeleteBlobContainerRequest>,
+  output: __S(288, __c9, 0) as any as S.Schema<DeleteBlobContainerResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6486,8 +6490,8 @@ export const DeleteBlobContainerImmutabilityPolicy: API.OperationMethod<
   DeleteBlobContainerImmutabilityPolicyError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(178, __c22, 2) as any as S.Schema<DeleteBlobContainerImmutabilityPolicyRequest>,
-  output: __S(12, __c1, 4) as any as S.Schema<DeleteBlobContainerImmutabilityPolicyResponse>,
+  input: __S(2976, __c93, 0) as any as S.Schema<DeleteBlobContainerImmutabilityPolicyRequest>,
+  output: __S(2848, __c89, 0) as any as S.Schema<DeleteBlobContainerImmutabilityPolicyResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6501,8 +6505,8 @@ export const DeleteBlobInventoryPolicy: API.OperationMethod<
   DeleteBlobInventoryPolicyError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(179, __c22, 3) as any as S.Schema<DeleteBlobInventoryPolicyRequest>,
-  output: __S(16, __c2, 0) as any as S.Schema<DeleteBlobInventoryPolicyResponse>,
+  input: __S(3008, __c94, 0) as any as S.Schema<DeleteBlobInventoryPolicyRequest>,
+  output: __S(3616, __c113, 0) as any as S.Schema<DeleteBlobInventoryPolicyResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6516,8 +6520,8 @@ export const DeleteConnector: API.OperationMethod<
   DeleteConnectorError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(180, __c22, 4) as any as S.Schema<DeleteConnectorRequest>,
-  output: __S(43, __c5, 3) as any as S.Schema<DeleteConnectorResponse>,
+  input: __S(3040, __c95, 0) as any as S.Schema<DeleteConnectorRequest>,
+  output: __S(288, __c9, 0) as any as S.Schema<DeleteConnectorResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6531,8 +6535,8 @@ export const DeleteContextCach: API.OperationMethod<
   DeleteContextCachError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(181, __c22, 5) as any as S.Schema<DeleteContextCachRequest>,
-  output: __S(43, __c5, 3) as any as S.Schema<DeleteContextCachResponse>,
+  input: __S(3072, __c96, 0) as any as S.Schema<DeleteContextCachRequest>,
+  output: __S(288, __c9, 0) as any as S.Schema<DeleteContextCachResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6546,8 +6550,8 @@ export const DeleteContextCacheContainer: API.OperationMethod<
   DeleteContextCacheContainerError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(182, __c22, 6) as any as S.Schema<DeleteContextCacheContainerRequest>,
-  output: __S(16, __c2, 0) as any as S.Schema<DeleteContextCacheContainerResponse>,
+  input: __S(3104, __c97, 0) as any as S.Schema<DeleteContextCacheContainerRequest>,
+  output: __S(3616, __c113, 0) as any as S.Schema<DeleteContextCacheContainerResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6561,8 +6565,8 @@ export const DeleteDataShare: API.OperationMethod<
   DeleteDataShareError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(183, __c22, 7) as any as S.Schema<DeleteDataShareRequest>,
-  output: __S(43, __c5, 3) as any as S.Schema<DeleteDataShareResponse>,
+  input: __S(3136, __c98, 0) as any as S.Schema<DeleteDataShareRequest>,
+  output: __S(288, __c9, 0) as any as S.Schema<DeleteDataShareResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6576,8 +6580,8 @@ export const DeleteFileShare: API.OperationMethod<
   DeleteFileShareError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(184, __c23, 0) as any as S.Schema<DeleteFileShareRequest>,
-  output: __S(43, __c5, 3) as any as S.Schema<DeleteFileShareResponse>,
+  input: __S(3168, __c99, 0) as any as S.Schema<DeleteFileShareRequest>,
+  output: __S(288, __c9, 0) as any as S.Schema<DeleteFileShareResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6591,8 +6595,8 @@ export const DeleteLocalUser: API.OperationMethod<
   DeleteLocalUserError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(185, __c23, 1) as any as S.Schema<DeleteLocalUserRequest>,
-  output: __S(43, __c5, 3) as any as S.Schema<DeleteLocalUserResponse>,
+  input: __S(3264, __c102, 0) as any as S.Schema<DeleteLocalUserRequest>,
+  output: __S(288, __c9, 0) as any as S.Schema<DeleteLocalUserResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6606,8 +6610,8 @@ export const DeleteManagementPolicy: API.OperationMethod<
   DeleteManagementPolicyError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(186, __c23, 2) as any as S.Schema<DeleteManagementPolicyRequest>,
-  output: __S(43, __c5, 3) as any as S.Schema<DeleteManagementPolicyResponse>,
+  input: __S(3296, __c103, 0) as any as S.Schema<DeleteManagementPolicyRequest>,
+  output: __S(288, __c9, 0) as any as S.Schema<DeleteManagementPolicyResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6621,8 +6625,8 @@ export const DeleteObjectReplicationPolicy: API.OperationMethod<
   DeleteObjectReplicationPolicyError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(187, __c23, 3) as any as S.Schema<DeleteObjectReplicationPolicyRequest>,
-  output: __S(16, __c2, 0) as any as S.Schema<DeleteObjectReplicationPolicyResponse>,
+  input: __S(3328, __c104, 0) as any as S.Schema<DeleteObjectReplicationPolicyRequest>,
+  output: __S(3616, __c113, 0) as any as S.Schema<DeleteObjectReplicationPolicyResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6636,8 +6640,8 @@ export const DeletePrivateEndpointConnection: API.OperationMethod<
   DeletePrivateEndpointConnectionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(188, __c23, 4) as any as S.Schema<DeletePrivateEndpointConnectionRequest>,
-  output: __S(16, __c2, 0) as any as S.Schema<DeletePrivateEndpointConnectionResponse>,
+  input: __S(3360, __c105, 0) as any as S.Schema<DeletePrivateEndpointConnectionRequest>,
+  output: __S(3616, __c113, 0) as any as S.Schema<DeletePrivateEndpointConnectionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6651,8 +6655,8 @@ export const DeleteQueue: API.OperationMethod<
   DeleteQueueError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(189, __c23, 5) as any as S.Schema<DeleteQueueRequest>,
-  output: __S(43, __c5, 3) as any as S.Schema<DeleteQueueResponse>,
+  input: __S(3392, __c106, 0) as any as S.Schema<DeleteQueueRequest>,
+  output: __S(288, __c9, 0) as any as S.Schema<DeleteQueueResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6666,8 +6670,8 @@ export const DeleteStorageAccount: API.OperationMethod<
   DeleteStorageAccountError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(190, __c23, 6) as any as S.Schema<DeleteStorageAccountRequest>,
-  output: __S(43, __c5, 3) as any as S.Schema<DeleteStorageAccountResponse>,
+  input: __S(3424, __c107, 0) as any as S.Schema<DeleteStorageAccountRequest>,
+  output: __S(288, __c9, 0) as any as S.Schema<DeleteStorageAccountResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6681,8 +6685,8 @@ export const DeleteStorageTaskAssignment: API.OperationMethod<
   DeleteStorageTaskAssignmentError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(191, __c23, 7) as any as S.Schema<DeleteStorageTaskAssignmentRequest>,
-  output: __S(16, __c2, 0) as any as S.Schema<DeleteStorageTaskAssignmentResponse>,
+  input: __S(3456, __c108, 0) as any as S.Schema<DeleteStorageTaskAssignmentRequest>,
+  output: __S(3616, __c113, 0) as any as S.Schema<DeleteStorageTaskAssignmentResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6696,8 +6700,8 @@ export const DeleteTable: API.OperationMethod<
   DeleteTableError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(192, __c24, 0) as any as S.Schema<DeleteTableRequest>,
-  output: __S(43, __c5, 3) as any as S.Schema<DeleteTableResponse>,
+  input: __S(3488, __c109, 0) as any as S.Schema<DeleteTableRequest>,
+  output: __S(288, __c9, 0) as any as S.Schema<DeleteTableResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6711,8 +6715,8 @@ export const ExtendBlobContainerImmutabilityPolicy: API.OperationMethod<
   ExtendBlobContainerImmutabilityPolicyError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(193, __c24, 1) as any as S.Schema<ExtendBlobContainerImmutabilityPolicyRequest>,
-  output: __S(12, __c1, 4) as any as S.Schema<ExtendBlobContainerImmutabilityPolicyResponse>,
+  input: __S(3520, __c110, 0) as any as S.Schema<ExtendBlobContainerImmutabilityPolicyRequest>,
+  output: __S(2848, __c89, 0) as any as S.Schema<ExtendBlobContainerImmutabilityPolicyResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6726,8 +6730,8 @@ export const FileSharesLease: API.OperationMethod<
   FileSharesLeaseError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(194, __c24, 2) as any as S.Schema<FileSharesLeaseRequest>,
-  output: __S(14, __c1, 6) as any as S.Schema<LeaseShareResponse>,
+  input: __S(3552, __c111, 0) as any as S.Schema<FileSharesLeaseRequest>,
+  output: __S(3232, __c101, 0) as any as S.Schema<LeaseShareResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6741,8 +6745,8 @@ export const GetAdvancedPlatformMetrics: API.OperationMethod<
   GetAdvancedPlatformMetricsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(195, __c24, 3) as any as S.Schema<GetAdvancedPlatformMetricsRequest>,
-  output: __S(9, __c1, 1) as any as S.Schema<GetAdvancedPlatformMetricsResponse>,
+  input: __S(3648, __c114, 0) as any as S.Schema<GetAdvancedPlatformMetricsRequest>,
+  output: __S(130, __c4, 2) as any as S.Schema<GetAdvancedPlatformMetricsResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6756,8 +6760,8 @@ export const GetBlobAccessPointConfiguration: API.OperationMethod<
   GetBlobAccessPointConfigurationError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(196, __c24, 4) as any as S.Schema<GetBlobAccessPointConfigurationRequest>,
-  output: __S(56, __c7, 0) as any as S.Schema<GetBlobAccessPointConfigurationResponse>,
+  input: __S(3680, __c115, 0) as any as S.Schema<GetBlobAccessPointConfigurationRequest>,
+  output: __S(801, __c25, 1) as any as S.Schema<GetBlobAccessPointConfigurationResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6771,8 +6775,8 @@ export const GetBlobContainer: API.OperationMethod<
   GetBlobContainerError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(197, __c24, 5) as any as S.Schema<GetBlobContainerRequest>,
-  output: __S(198, __c24, 6) as any as S.Schema<GetBlobContainerResponse>,
+  input: __S(3712, __c116, 0) as any as S.Schema<GetBlobContainerRequest>,
+  output: __S(3713, __c116, 1) as any as S.Schema<GetBlobContainerResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6786,8 +6790,8 @@ export const GetBlobContainerImmutabilityPolicy: API.OperationMethod<
   GetBlobContainerImmutabilityPolicyError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(199, __c24, 7) as any as S.Schema<GetBlobContainerImmutabilityPolicyRequest>,
-  output: __S(12, __c1, 4) as any as S.Schema<GetBlobContainerImmutabilityPolicyResponse>,
+  input: __S(3744, __c117, 0) as any as S.Schema<GetBlobContainerImmutabilityPolicyRequest>,
+  output: __S(2848, __c89, 0) as any as S.Schema<GetBlobContainerImmutabilityPolicyResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6801,8 +6805,8 @@ export const GetBlobInventoryPolicy: API.OperationMethod<
   GetBlobInventoryPolicyError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(200, __c25, 0) as any as S.Schema<GetBlobInventoryPolicyRequest>,
-  output: __S(27, __c3, 3) as any as S.Schema<GetBlobInventoryPolicyResponse>,
+  input: __S(3776, __c118, 0) as any as S.Schema<GetBlobInventoryPolicyRequest>,
+  output: __S(4160, __c130, 0) as any as S.Schema<GetBlobInventoryPolicyResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6816,8 +6820,8 @@ export const GetBlobServiceServiceProperties: API.OperationMethod<
   GetBlobServiceServicePropertiesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(201, __c25, 1) as any as S.Schema<GetBlobServiceServicePropertiesRequest>,
-  output: __S(211, __c26, 3) as any as S.Schema<GetBlobServiceServicePropertiesResponse>,
+  input: __S(3808, __c119, 0) as any as S.Schema<GetBlobServiceServicePropertiesRequest>,
+  output: __S(3840, __c120, 0) as any as S.Schema<GetBlobServiceServicePropertiesResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6831,8 +6835,8 @@ export const GetConnector: API.OperationMethod<
   GetConnectorError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(212, __c26, 4) as any as S.Schema<GetConnectorRequest>,
-  output: __S(77, __c9, 5) as any as S.Schema<GetConnectorResponse>,
+  input: __S(3968, __c124, 0) as any as S.Schema<GetConnectorRequest>,
+  output: __S(1668, __c52, 4) as any as S.Schema<GetConnectorResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6846,8 +6850,8 @@ export const GetContextCach: API.OperationMethod<
   GetContextCachError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(213, __c26, 5) as any as S.Schema<GetContextCachRequest>,
-  output: __S(214, __c26, 6) as any as S.Schema<GetContextCachResponse>,
+  input: __S(4000, __c125, 0) as any as S.Schema<GetContextCachRequest>,
+  output: __S(4032, __c126, 0) as any as S.Schema<GetContextCachResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6861,8 +6865,8 @@ export const GetContextCacheContainer: API.OperationMethod<
   GetContextCacheContainerError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(215, __c26, 7) as any as S.Schema<GetContextCacheContainerRequest>,
-  output: __S(37, __c4, 5) as any as S.Schema<GetContextCacheContainerResponse>,
+  input: __S(4064, __c127, 0) as any as S.Schema<GetContextCacheContainerRequest>,
+  output: __S(6176, __c193, 0) as any as S.Schema<GetContextCacheContainerResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6876,8 +6880,8 @@ export const GetDataShare: API.OperationMethod<
   GetDataShareError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(216, __c27, 0) as any as S.Schema<GetDataShareRequest>,
-  output: __S(85, __c10, 5) as any as S.Schema<GetDataShareResponse>,
+  input: __S(4096, __c128, 0) as any as S.Schema<GetDataShareRequest>,
+  output: __S(2021, __c63, 5) as any as S.Schema<GetDataShareResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6891,8 +6895,8 @@ export const GetDeletedAccount: API.OperationMethod<
   GetDeletedAccountError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(217, __c27, 1) as any as S.Schema<GetDeletedAccountRequest>,
-  output: __S(219, __c27, 3) as any as S.Schema<GetDeletedAccountResponse>,
+  input: __S(4224, __c132, 0) as any as S.Schema<GetDeletedAccountRequest>,
+  output: __S(4225, __c132, 1) as any as S.Schema<GetDeletedAccountResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6906,8 +6910,8 @@ export const GetEncryptionScope: API.OperationMethod<
   GetEncryptionScopeError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(220, __c27, 4) as any as S.Schema<GetEncryptionScopeRequest>,
-  output: __S(223, __c27, 7) as any as S.Schema<GetEncryptionScopeResponse>,
+  input: __S(4288, __c134, 0) as any as S.Schema<GetEncryptionScopeRequest>,
+  output: __S(4320, __c135, 0) as any as S.Schema<GetEncryptionScopeResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6921,8 +6925,8 @@ export const GetFileServiceServiceProperties: API.OperationMethod<
   GetFileServiceServicePropertiesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(224, __c28, 0) as any as S.Schema<GetFileServiceServicePropertiesRequest>,
-  output: __S(231, __c28, 7) as any as S.Schema<GetFileServiceServicePropertiesResponse>,
+  input: __S(4384, __c137, 0) as any as S.Schema<GetFileServiceServicePropertiesRequest>,
+  output: __S(4416, __c138, 0) as any as S.Schema<GetFileServiceServicePropertiesResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6936,8 +6940,8 @@ export const GetFileServiceServiceUsage: API.OperationMethod<
   GetFileServiceServiceUsageError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(232, __c29, 0) as any as S.Schema<GetFileServiceServiceUsageRequest>,
-  output: __S(240, __c30, 0) as any as S.Schema<GetFileServiceServiceUsageResponse>,
+  input: __S(4480, __c140, 0) as any as S.Schema<GetFileServiceServiceUsageRequest>,
+  output: __S(4481, __c140, 1) as any as S.Schema<GetFileServiceServiceUsageResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6951,8 +6955,8 @@ export const GetFileShare: API.OperationMethod<
   GetFileShareError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(241, __c30, 1) as any as S.Schema<GetFileShareRequest>,
-  output: __S(93, __c11, 5) as any as S.Schema<GetFileShareResponse>,
+  input: __S(4544, __c142, 0) as any as S.Schema<GetFileShareRequest>,
+  output: __S(2112, __c66, 0) as any as S.Schema<GetFileShareResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6966,8 +6970,8 @@ export const GetLocalUser: API.OperationMethod<
   GetLocalUserError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(242, __c30, 2) as any as S.Schema<GetLocalUserRequest>,
-  output: __S(249, __c31, 1) as any as S.Schema<GetLocalUserResponse>,
+  input: __S(4576, __c143, 0) as any as S.Schema<GetLocalUserRequest>,
+  output: __S(4640, __c145, 0) as any as S.Schema<GetLocalUserResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6981,8 +6985,8 @@ export const GetManagementPolicy: API.OperationMethod<
   GetManagementPolicyError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(250, __c31, 2) as any as S.Schema<GetManagementPolicyRequest>,
-  output: __S(264, __c33, 0) as any as S.Schema<GetManagementPolicyResponse>,
+  input: __S(4704, __c147, 0) as any as S.Schema<GetManagementPolicyRequest>,
+  output: __S(4749, __c148, 13) as any as S.Schema<GetManagementPolicyResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6996,8 +7000,12 @@ export const GetNetworkSecurityPerimeterConfiguration: API.OperationMethod<
   GetNetworkSecurityPerimeterConfigurationError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(265, __c33, 1) as any as S.Schema<GetNetworkSecurityPerimeterConfigurationRequest>,
-  output: __S(280, __c35, 0) as any as S.Schema<GetNetworkSecurityPerimeterConfigurationResponse>,
+  input: __S(4768, __c149, 0) as any as S.Schema<GetNetworkSecurityPerimeterConfigurationRequest>,
+  output: __S(
+    4814,
+    __c150,
+    14,
+  ) as any as S.Schema<GetNetworkSecurityPerimeterConfigurationResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7011,8 +7019,8 @@ export const GetObjectReplicationPolicy: API.OperationMethod<
   GetObjectReplicationPolicyError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(281, __c35, 1) as any as S.Schema<GetObjectReplicationPolicyRequest>,
-  output: __S(286, __c35, 6) as any as S.Schema<GetObjectReplicationPolicyResponse>,
+  input: __S(4832, __c151, 0) as any as S.Schema<GetObjectReplicationPolicyRequest>,
+  output: __S(4864, __c152, 0) as any as S.Schema<GetObjectReplicationPolicyResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7026,8 +7034,8 @@ export const GetPrivateEndpointConnection: API.OperationMethod<
   GetPrivateEndpointConnectionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(287, __c35, 7) as any as S.Schema<GetPrivateEndpointConnectionRequest>,
-  output: __S(147, __c18, 3) as any as S.Schema<GetPrivateEndpointConnectionResponse>,
+  input: __S(4928, __c154, 0) as any as S.Schema<GetPrivateEndpointConnectionRequest>,
+  output: __S(2371, __c74, 3) as any as S.Schema<GetPrivateEndpointConnectionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7041,8 +7049,8 @@ export const GetQueue: API.OperationMethod<
   GetQueueError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(288, __c36, 0) as any as S.Schema<GetQueueRequest>,
-  output: __S(97, __c12, 1) as any as S.Schema<GetQueueResponse>,
+  input: __S(4992, __c156, 0) as any as S.Schema<GetQueueRequest>,
+  output: __S(2209, __c69, 1) as any as S.Schema<GetQueueResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7056,8 +7064,8 @@ export const GetQueueServiceServiceProperties: API.OperationMethod<
   GetQueueServiceServicePropertiesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(289, __c36, 1) as any as S.Schema<GetQueueServiceServicePropertiesRequest>,
-  output: __S(291, __c36, 3) as any as S.Schema<GetQueueServiceServicePropertiesResponse>,
+  input: __S(5024, __c157, 0) as any as S.Schema<GetQueueServiceServicePropertiesRequest>,
+  output: __S(5056, __c158, 0) as any as S.Schema<GetQueueServiceServicePropertiesResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7071,11 +7079,15 @@ export const GetStorageAccountCustomerInitiatedMigration: API.OperationMethod<
   GetStorageAccountCustomerInitiatedMigrationError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(292, __c36, 4) as any as S.Schema<GetStorageAccountCustomerInitiatedMigrationRequest>,
+  input: __S(
+    5120,
+    __c160,
+    0,
+  ) as any as S.Schema<GetStorageAccountCustomerInitiatedMigrationRequest>,
   output: __S(
-    294,
-    __c36,
-    6,
+    5122,
+    __c160,
+    2,
   ) as any as S.Schema<GetStorageAccountCustomerInitiatedMigrationResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -7090,8 +7102,8 @@ export const GetStorageAccountProperties: API.OperationMethod<
   GetStorageAccountPropertiesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(295, __c36, 7) as any as S.Schema<GetStorageAccountPropertiesRequest>,
-  output: __S(157, __c19, 5) as any as S.Schema<GetStorageAccountPropertiesResponse>,
+  input: __S(5152, __c161, 0) as any as S.Schema<GetStorageAccountPropertiesRequest>,
+  output: __S(2400, __c75, 0) as any as S.Schema<GetStorageAccountPropertiesResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7105,8 +7117,8 @@ export const GetStorageTaskAssignment: API.OperationMethod<
   GetStorageTaskAssignmentError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(296, __c37, 0) as any as S.Schema<GetStorageTaskAssignmentRequest>,
-  output: __S(167, __c20, 7) as any as S.Schema<GetStorageTaskAssignmentResponse>,
+  input: __S(5184, __c162, 0) as any as S.Schema<GetStorageTaskAssignmentRequest>,
+  output: __S(2592, __c81, 0) as any as S.Schema<GetStorageTaskAssignmentResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7120,8 +7132,8 @@ export const GetTable: API.OperationMethod<
   GetTableError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(297, __c37, 1) as any as S.Schema<GetTableRequest>,
-  output: __S(174, __c21, 6) as any as S.Schema<GetTableResponse>,
+  input: __S(5216, __c163, 0) as any as S.Schema<GetTableRequest>,
+  output: __S(2756, __c86, 4) as any as S.Schema<GetTableResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7135,8 +7147,8 @@ export const GetTableServiceServiceProperties: API.OperationMethod<
   GetTableServiceServicePropertiesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(298, __c37, 2) as any as S.Schema<GetTableServiceServicePropertiesRequest>,
-  output: __S(291, __c36, 3) as any as S.Schema<GetTableServiceServicePropertiesResponse>,
+  input: __S(5248, __c164, 0) as any as S.Schema<GetTableServiceServicePropertiesRequest>,
+  output: __S(5056, __c158, 0) as any as S.Schema<GetTableServiceServicePropertiesResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7150,8 +7162,8 @@ export const ListAdvancedPlatformMetrics: API.OperationMethod<
   ListAdvancedPlatformMetricsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(299, __c37, 3) as any as S.Schema<ListAdvancedPlatformMetricsRequest>,
-  output: __S(301, __c37, 5) as any as S.Schema<AdvancedPlatformMetricsRuleListResult>,
+  input: __S(5280, __c165, 0) as any as S.Schema<ListAdvancedPlatformMetricsRequest>,
+  output: __S(5282, __c165, 2) as any as S.Schema<AdvancedPlatformMetricsRuleListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7166,11 +7178,11 @@ export const ListBlobAccessPointConfigurationByStorageAccount: API.OperationMeth
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    302,
-    __c37,
-    6,
+    5312,
+    __c166,
+    0,
   ) as any as S.Schema<ListBlobAccessPointConfigurationByStorageAccountRequest>,
-  output: __S(304, __c38, 0) as any as S.Schema<BlobAccessPointConfigurationListResult>,
+  output: __S(5314, __c166, 2) as any as S.Schema<BlobAccessPointConfigurationListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7184,8 +7196,8 @@ export const ListBlobContainers: API.OperationMethod<
   ListBlobContainersError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(305, __c38, 1) as any as S.Schema<ListBlobContainersRequest>,
-  output: __S(308, __c38, 4) as any as S.Schema<ListContainerItems>,
+  input: __S(5344, __c167, 0) as any as S.Schema<ListBlobContainersRequest>,
+  output: __S(5347, __c167, 3) as any as S.Schema<ListContainerItems>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7199,8 +7211,8 @@ export const ListBlobInventoryPolicies: API.OperationMethod<
   ListBlobInventoryPoliciesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(309, __c38, 5) as any as S.Schema<ListBlobInventoryPoliciesRequest>,
-  output: __S(312, __c39, 0) as any as S.Schema<ListBlobInventoryPolicy>,
+  input: __S(5408, __c169, 0) as any as S.Schema<ListBlobInventoryPoliciesRequest>,
+  output: __S(5411, __c169, 3) as any as S.Schema<ListBlobInventoryPolicy>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7214,8 +7226,8 @@ export const ListBlobServices: API.OperationMethod<
   ListBlobServicesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(313, __c39, 1) as any as S.Schema<ListBlobServicesRequest>,
-  output: __S(316, __c39, 4) as any as S.Schema<BlobServiceItems>,
+  input: __S(5440, __c170, 0) as any as S.Schema<ListBlobServicesRequest>,
+  output: __S(5443, __c170, 3) as any as S.Schema<BlobServiceItems>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7229,8 +7241,8 @@ export const ListConnectorByStorageAccount: API.OperationMethod<
   ListConnectorByStorageAccountError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(317, __c39, 5) as any as S.Schema<ListConnectorByStorageAccountRequest>,
-  output: __S(319, __c39, 7) as any as S.Schema<ConnectorListResult>,
+  input: __S(5472, __c171, 0) as any as S.Schema<ListConnectorByStorageAccountRequest>,
+  output: __S(5474, __c171, 2) as any as S.Schema<ConnectorListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7244,8 +7256,8 @@ export const ListContextCachByResourceGroup: API.OperationMethod<
   ListContextCachByResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(320, __c40, 0) as any as S.Schema<ListContextCachByResourceGroupRequest>,
-  output: __S(322, __c40, 2) as any as S.Schema<ContextCacheListResult>,
+  input: __S(5504, __c172, 0) as any as S.Schema<ListContextCachByResourceGroupRequest>,
+  output: __S(5537, __c173, 1) as any as S.Schema<ContextCacheListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7259,8 +7271,8 @@ export const ListContextCachBySubscription: API.OperationMethod<
   ListContextCachBySubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(323, __c40, 3) as any as S.Schema<ListContextCachBySubscriptionRequest>,
-  output: __S(322, __c40, 2) as any as S.Schema<ContextCacheListResult>,
+  input: __S(5568, __c174, 0) as any as S.Schema<ListContextCachBySubscriptionRequest>,
+  output: __S(5537, __c173, 1) as any as S.Schema<ContextCacheListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7274,8 +7286,8 @@ export const ListContextCacheContainerByContextCache: API.OperationMethod<
   ListContextCacheContainerByContextCacheError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(324, __c40, 4) as any as S.Schema<ListContextCacheContainerByContextCacheRequest>,
-  output: __S(327, __c40, 7) as any as S.Schema<ContextCacheContainerListResult>,
+  input: __S(5600, __c175, 0) as any as S.Schema<ListContextCacheContainerByContextCacheRequest>,
+  output: __S(5603, __c175, 3) as any as S.Schema<ContextCacheContainerListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7289,8 +7301,8 @@ export const ListDataShareByStorageAccount: API.OperationMethod<
   ListDataShareByStorageAccountError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(328, __c41, 0) as any as S.Schema<ListDataShareByStorageAccountRequest>,
-  output: __S(330, __c41, 2) as any as S.Schema<DataShareListResult>,
+  input: __S(5632, __c176, 0) as any as S.Schema<ListDataShareByStorageAccountRequest>,
+  output: __S(5634, __c176, 2) as any as S.Schema<DataShareListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7304,8 +7316,8 @@ export const ListDeletedAccounts: API.OperationMethod<
   ListDeletedAccountsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(331, __c41, 3) as any as S.Schema<ListDeletedAccountsRequest>,
-  output: __S(334, __c41, 6) as any as S.Schema<DeletedAccountListResult>,
+  input: __S(5664, __c177, 0) as any as S.Schema<ListDeletedAccountsRequest>,
+  output: __S(5667, __c177, 3) as any as S.Schema<DeletedAccountListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7319,8 +7331,8 @@ export const ListEncryptionScopes: API.OperationMethod<
   ListEncryptionScopesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(335, __c41, 7) as any as S.Schema<ListEncryptionScopesRequest>,
-  output: __S(338, __c42, 2) as any as S.Schema<EncryptionScopeListResult>,
+  input: __S(5696, __c178, 0) as any as S.Schema<ListEncryptionScopesRequest>,
+  output: __S(5699, __c178, 3) as any as S.Schema<EncryptionScopeListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7334,8 +7346,8 @@ export const ListFileServices: API.OperationMethod<
   ListFileServicesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(339, __c42, 3) as any as S.Schema<ListFileServicesRequest>,
-  output: __S(342, __c42, 6) as any as S.Schema<FileServiceItems>,
+  input: __S(5728, __c179, 0) as any as S.Schema<ListFileServicesRequest>,
+  output: __S(5731, __c179, 3) as any as S.Schema<FileServiceItems>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7349,8 +7361,8 @@ export const ListFileServiceServiceUsages: API.OperationMethod<
   ListFileServiceServiceUsagesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(343, __c42, 7) as any as S.Schema<ListFileServiceServiceUsagesRequest>,
-  output: __S(346, __c43, 2) as any as S.Schema<FileServiceUsages>,
+  input: __S(5824, __c182, 0) as any as S.Schema<ListFileServiceServiceUsagesRequest>,
+  output: __S(5827, __c182, 3) as any as S.Schema<FileServiceUsages>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7364,8 +7376,8 @@ export const ListFileShares: API.OperationMethod<
   ListFileSharesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(347, __c43, 3) as any as S.Schema<ListFileSharesRequest>,
-  output: __S(350, __c43, 6) as any as S.Schema<FileShareItems>,
+  input: __S(5856, __c183, 0) as any as S.Schema<ListFileSharesRequest>,
+  output: __S(5859, __c183, 3) as any as S.Schema<FileShareItems>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7379,8 +7391,8 @@ export const ListLocalUserKeys: API.OperationMethod<
   ListLocalUserKeysError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(351, __c43, 7) as any as S.Schema<ListLocalUserKeysRequest>,
-  output: __S(352, __c44, 0) as any as S.Schema<LocalUserKeys>,
+  input: __S(5888, __c184, 0) as any as S.Schema<ListLocalUserKeysRequest>,
+  output: __S(5889, __c184, 1) as any as S.Schema<LocalUserKeys>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7394,8 +7406,8 @@ export const ListLocalUsers: API.OperationMethod<
   ListLocalUsersError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(353, __c44, 1) as any as S.Schema<ListLocalUsersRequest>,
-  output: __S(355, __c44, 3) as any as S.Schema<LocalUsers>,
+  input: __S(5920, __c185, 0) as any as S.Schema<ListLocalUsersRequest>,
+  output: __S(5922, __c185, 2) as any as S.Schema<LocalUsers>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7409,8 +7421,8 @@ export const ListNetworkSecurityPerimeterConfigurations: API.OperationMethod<
   ListNetworkSecurityPerimeterConfigurationsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(356, __c44, 4) as any as S.Schema<ListNetworkSecurityPerimeterConfigurationsRequest>,
-  output: __S(358, __c44, 6) as any as S.Schema<NetworkSecurityPerimeterConfigurationList>,
+  input: __S(5952, __c186, 0) as any as S.Schema<ListNetworkSecurityPerimeterConfigurationsRequest>,
+  output: __S(5954, __c186, 2) as any as S.Schema<NetworkSecurityPerimeterConfigurationList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7424,8 +7436,8 @@ export const ListObjectReplicationPolicies: API.OperationMethod<
   ListObjectReplicationPoliciesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(359, __c44, 7) as any as S.Schema<ListObjectReplicationPoliciesRequest>,
-  output: __S(362, __c45, 2) as any as S.Schema<ObjectReplicationPolicies>,
+  input: __S(5984, __c187, 0) as any as S.Schema<ListObjectReplicationPoliciesRequest>,
+  output: __S(5987, __c187, 3) as any as S.Schema<ObjectReplicationPolicies>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7439,8 +7451,8 @@ export const ListOperations: API.OperationMethod<
   ListOperationsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(363, __c45, 3) as any as S.Schema<ListOperationsRequest>,
-  output: __S(373, __c46, 5) as any as S.Schema<OperationListResult>,
+  input: __S(6016, __c188, 0) as any as S.Schema<ListOperationsRequest>,
+  output: __S(6026, __c188, 10) as any as S.Schema<OperationListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7454,8 +7466,8 @@ export const ListPrivateEndpointConnections: API.OperationMethod<
   ListPrivateEndpointConnectionsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(374, __c46, 6) as any as S.Schema<ListPrivateEndpointConnectionsRequest>,
-  output: __S(375, __c46, 7) as any as S.Schema<PrivateEndpointConnectionListResult>,
+  input: __S(6048, __c189, 0) as any as S.Schema<ListPrivateEndpointConnectionsRequest>,
+  output: __S(6049, __c189, 1) as any as S.Schema<PrivateEndpointConnectionListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7469,8 +7481,8 @@ export const ListPrivateLinkResourceByStorageAccount: API.OperationMethod<
   ListPrivateLinkResourceByStorageAccountError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(376, __c47, 0) as any as S.Schema<ListPrivateLinkResourceByStorageAccountRequest>,
-  output: __S(380, __c47, 4) as any as S.Schema<PrivateLinkResourceListResult>,
+  input: __S(6080, __c190, 0) as any as S.Schema<ListPrivateLinkResourceByStorageAccountRequest>,
+  output: __S(6084, __c190, 4) as any as S.Schema<PrivateLinkResourceListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7484,8 +7496,8 @@ export const ListQueue2: API.OperationMethod<
   ListQueue2Error,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(381, __c47, 5) as any as S.Schema<ListQueueRequest>,
-  output: __S(384, __c48, 0) as any as S.Schema<ListQueueResource>,
+  input: __S(6112, __c191, 0) as any as S.Schema<ListQueueRequest>,
+  output: __S(6115, __c191, 3) as any as S.Schema<ListQueueResource>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7499,8 +7511,8 @@ export const ListQueueServices2: API.OperationMethod<
   ListQueueServices2Error,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(385, __c48, 1) as any as S.Schema<ListQueueServicesRequest>,
-  output: __S(388, __c48, 4) as any as S.Schema<ListQueueServices>,
+  input: __S(6240, __c195, 0) as any as S.Schema<ListQueueServicesRequest>,
+  output: __S(6274, __c196, 2) as any as S.Schema<ListQueueServices>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7514,8 +7526,8 @@ export const ListSkus: API.OperationMethod<
   ListSkusError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(389, __c48, 5) as any as S.Schema<ListSkusRequest>,
-  output: __S(398, __c49, 6) as any as S.Schema<StorageSkuListResult>,
+  input: __S(6304, __c197, 0) as any as S.Schema<ListSkusRequest>,
+  output: __S(6313, __c197, 9) as any as S.Schema<StorageSkuListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7529,8 +7541,8 @@ export const ListStorageAccountAccountSAS: API.OperationMethod<
   ListStorageAccountAccountSASError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(399, __c49, 7) as any as S.Schema<ListStorageAccountAccountSASRequest>,
-  output: __S(400, __c50, 0) as any as S.Schema<ListAccountSasResponse>,
+  input: __S(6336, __c198, 0) as any as S.Schema<ListStorageAccountAccountSASRequest>,
+  output: __S(6337, __c198, 1) as any as S.Schema<ListAccountSasResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7544,8 +7556,8 @@ export const ListStorageAccountByResourceGroup: API.OperationMethod<
   ListStorageAccountByResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(401, __c50, 1) as any as S.Schema<ListStorageAccountByResourceGroupRequest>,
-  output: __S(404, __c50, 4) as any as S.Schema<StorageAccountListResult>,
+  input: __S(6368, __c199, 0) as any as S.Schema<ListStorageAccountByResourceGroupRequest>,
+  output: __S(6402, __c200, 2) as any as S.Schema<StorageAccountListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7559,8 +7571,8 @@ export const ListStorageAccountKeys: API.OperationMethod<
   ListStorageAccountKeysError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(405, __c50, 5) as any as S.Schema<ListStorageAccountKeysRequest>,
-  output: __S(408, __c51, 0) as any as S.Schema<StorageAccountListKeysResult>,
+  input: __S(6432, __c201, 0) as any as S.Schema<ListStorageAccountKeysRequest>,
+  output: __S(6466, __c202, 2) as any as S.Schema<StorageAccountListKeysResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7574,8 +7586,8 @@ export const ListStorageAccounts: API.OperationMethod<
   ListStorageAccountsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(409, __c51, 1) as any as S.Schema<ListStorageAccountsRequest>,
-  output: __S(404, __c50, 4) as any as S.Schema<StorageAccountListResult>,
+  input: __S(6496, __c203, 0) as any as S.Schema<ListStorageAccountsRequest>,
+  output: __S(6402, __c200, 2) as any as S.Schema<StorageAccountListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7589,8 +7601,8 @@ export const ListStorageAccountServiceSAS: API.OperationMethod<
   ListStorageAccountServiceSASError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(410, __c51, 2) as any as S.Schema<ListStorageAccountServiceSASRequest>,
-  output: __S(411, __c51, 3) as any as S.Schema<ListServiceSasResponse>,
+  input: __S(6528, __c204, 0) as any as S.Schema<ListStorageAccountServiceSASRequest>,
+  output: __S(6529, __c204, 1) as any as S.Schema<ListServiceSasResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7604,8 +7616,8 @@ export const ListStorageTaskAssignmentInstancesReport: API.OperationMethod<
   ListStorageTaskAssignmentInstancesReportError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(412, __c51, 4) as any as S.Schema<ListStorageTaskAssignmentInstancesReportRequest>,
-  output: __S(415, __c51, 7) as any as S.Schema<StorageTaskReportSummary>,
+  input: __S(6560, __c205, 0) as any as S.Schema<ListStorageTaskAssignmentInstancesReportRequest>,
+  output: __S(6594, __c206, 2) as any as S.Schema<StorageTaskReportSummary>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7619,8 +7631,8 @@ export const ListStorageTaskAssignments: API.OperationMethod<
   ListStorageTaskAssignmentsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(416, __c52, 0) as any as S.Schema<ListStorageTaskAssignmentsRequest>,
-  output: __S(419, __c52, 3) as any as S.Schema<StorageTaskAssignmentsList>,
+  input: __S(6624, __c207, 0) as any as S.Schema<ListStorageTaskAssignmentsRequest>,
+  output: __S(6627, __c207, 3) as any as S.Schema<StorageTaskAssignmentsList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7634,8 +7646,8 @@ export const ListStorageTaskAssignmentsInstancesReport: API.OperationMethod<
   ListStorageTaskAssignmentsInstancesReportError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(420, __c52, 4) as any as S.Schema<ListStorageTaskAssignmentsInstancesReportRequest>,
-  output: __S(415, __c51, 7) as any as S.Schema<StorageTaskReportSummary>,
+  input: __S(6656, __c208, 0) as any as S.Schema<ListStorageTaskAssignmentsInstancesReportRequest>,
+  output: __S(6594, __c206, 2) as any as S.Schema<StorageTaskReportSummary>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7649,8 +7661,8 @@ export const ListTable: API.OperationMethod<
   ListTableError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(421, __c52, 5) as any as S.Schema<ListTableRequest>,
-  output: __S(423, __c52, 7) as any as S.Schema<ListTableResource>,
+  input: __S(384, __c12, 0) as any as S.Schema<ListTableRequest>,
+  output: __S(386, __c12, 2) as any as S.Schema<ListTableResource>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7664,8 +7676,8 @@ export const ListTableServices2: API.OperationMethod<
   ListTableServices2Error,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(424, __c53, 0) as any as S.Schema<ListTableServicesRequest>,
-  output: __S(388, __c48, 4) as any as S.Schema<ListTableServices>,
+  input: __S(416, __c13, 0) as any as S.Schema<ListTableServicesRequest>,
+  output: __S(6274, __c196, 2) as any as S.Schema<ListTableServices>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7679,8 +7691,8 @@ export const ListUsageByLocation: API.OperationMethod<
   ListUsageByLocationError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(425, __c53, 1) as any as S.Schema<ListUsageByLocationRequest>,
-  output: __S(429, __c53, 5) as any as S.Schema<UsageListResult>,
+  input: __S(448, __c14, 0) as any as S.Schema<ListUsageByLocationRequest>,
+  output: __S(452, __c14, 4) as any as S.Schema<UsageListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7694,8 +7706,8 @@ export const LocalUsersCreateOrUpdate: API.OperationMethod<
   LocalUsersCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(431, __c53, 7) as any as S.Schema<LocalUsersCreateOrUpdateRequest>,
-  output: __S(432, __c54, 0) as any as S.Schema<LocalUsersCreateOrUpdateResponse>,
+  input: __S(481, __c15, 1) as any as S.Schema<LocalUsersCreateOrUpdateRequest>,
+  output: __S(482, __c15, 2) as any as S.Schema<LocalUsersCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7709,8 +7721,8 @@ export const LockBlobContainerImmutabilityPolicy: API.OperationMethod<
   LockBlobContainerImmutabilityPolicyError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(433, __c54, 1) as any as S.Schema<LockBlobContainerImmutabilityPolicyRequest>,
-  output: __S(12, __c1, 4) as any as S.Schema<LockBlobContainerImmutabilityPolicyResponse>,
+  input: __S(512, __c16, 0) as any as S.Schema<LockBlobContainerImmutabilityPolicyRequest>,
+  output: __S(2848, __c89, 0) as any as S.Schema<LockBlobContainerImmutabilityPolicyResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7724,8 +7736,8 @@ export const ManagementPoliciesCreateOrUpdate: API.OperationMethod<
   ManagementPoliciesCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(435, __c54, 3) as any as S.Schema<ManagementPoliciesCreateOrUpdateRequest>,
-  output: __S(264, __c33, 0) as any as S.Schema<ManagementPoliciesCreateOrUpdateResponse>,
+  input: __S(545, __c17, 1) as any as S.Schema<ManagementPoliciesCreateOrUpdateRequest>,
+  output: __S(4749, __c148, 13) as any as S.Schema<ManagementPoliciesCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7740,13 +7752,13 @@ export const NetworkSecurityPerimeterConfigurationsReconcile: API.OperationMetho
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    436,
-    __c54,
-    4,
+    576,
+    __c18,
+    0,
   ) as any as S.Schema<NetworkSecurityPerimeterConfigurationsReconcileRequest>,
   output: __S(
-    16,
-    __c2,
+    3616,
+    __c113,
     0,
   ) as any as S.Schema<NetworkSecurityPerimeterConfigurationsReconcileResponse>,
   errors: [UnknownAzureError],
@@ -7762,8 +7774,8 @@ export const ObjectReplicationPoliciesCreateOrUpdate: API.OperationMethod<
   ObjectReplicationPoliciesCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(438, __c54, 6) as any as S.Schema<ObjectReplicationPoliciesCreateOrUpdateRequest>,
-  output: __S(286, __c35, 6) as any as S.Schema<ObjectReplicationPoliciesCreateOrUpdateResponse>,
+  input: __S(609, __c19, 1) as any as S.Schema<ObjectReplicationPoliciesCreateOrUpdateRequest>,
+  output: __S(4864, __c152, 0) as any as S.Schema<ObjectReplicationPoliciesCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7777,8 +7789,8 @@ export const PatchEncryptionScope: API.OperationMethod<
   PatchEncryptionScopeError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(441, __c55, 1) as any as S.Schema<PatchEncryptionScopeRequest>,
-  output: __S(223, __c27, 7) as any as S.Schema<PatchEncryptionScopeResponse>,
+  input: __S(640, __c20, 0) as any as S.Schema<PatchEncryptionScopeRequest>,
+  output: __S(4320, __c135, 0) as any as S.Schema<PatchEncryptionScopeResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7792,8 +7804,8 @@ export const PutEncryptionScope: API.OperationMethod<
   PutEncryptionScopeError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(442, __c55, 2) as any as S.Schema<PutEncryptionScopeRequest>,
-  output: __S(223, __c27, 7) as any as S.Schema<PutEncryptionScopeResponse>,
+  input: __S(704, __c22, 0) as any as S.Schema<PutEncryptionScopeRequest>,
+  output: __S(4320, __c135, 0) as any as S.Schema<PutEncryptionScopeResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7807,8 +7819,8 @@ export const PutPrivateEndpointConnection: API.OperationMethod<
   PutPrivateEndpointConnectionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(444, __c55, 4) as any as S.Schema<PutPrivateEndpointConnectionRequest>,
-  output: __S(147, __c18, 3) as any as S.Schema<PutPrivateEndpointConnectionResponse>,
+  input: __S(833, __c26, 1) as any as S.Schema<PutPrivateEndpointConnectionRequest>,
+  output: __S(2371, __c74, 3) as any as S.Schema<PutPrivateEndpointConnectionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7822,8 +7834,8 @@ export const RegenerateLocalUserPassword: API.OperationMethod<
   RegenerateLocalUserPasswordError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(445, __c55, 5) as any as S.Schema<RegenerateLocalUserPasswordRequest>,
-  output: __S(446, __c55, 6) as any as S.Schema<LocalUserRegeneratePasswordResult>,
+  input: __S(864, __c27, 0) as any as S.Schema<RegenerateLocalUserPasswordRequest>,
+  output: __S(865, __c27, 1) as any as S.Schema<LocalUserRegeneratePasswordResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7837,8 +7849,8 @@ export const RegenerateStorageAccountKey: API.OperationMethod<
   RegenerateStorageAccountKeyError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(447, __c55, 7) as any as S.Schema<RegenerateStorageAccountKeyRequest>,
-  output: __S(408, __c51, 0) as any as S.Schema<StorageAccountListKeysResult>,
+  input: __S(896, __c28, 0) as any as S.Schema<RegenerateStorageAccountKeyRequest>,
+  output: __S(6466, __c202, 2) as any as S.Schema<StorageAccountListKeysResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7852,8 +7864,8 @@ export const RestoreFileShare: API.OperationMethod<
   RestoreFileShareError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(448, __c56, 0) as any as S.Schema<RestoreFileShareRequest>,
-  output: __S(43, __c5, 3) as any as S.Schema<RestoreFileShareResponse>,
+  input: __S(928, __c29, 0) as any as S.Schema<RestoreFileShareRequest>,
+  output: __S(288, __c9, 0) as any as S.Schema<RestoreFileShareResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7867,8 +7879,8 @@ export const RestoreStorageAccountBlobRanges: API.OperationMethod<
   RestoreStorageAccountBlobRangesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(449, __c56, 1) as any as S.Schema<RestoreStorageAccountBlobRangesRequest>,
-  output: __S(152, __c19, 0) as any as S.Schema<BlobRestoreStatus>,
+  input: __S(960, __c30, 0) as any as S.Schema<RestoreStorageAccountBlobRangesRequest>,
+  output: __S(2467, __c77, 3) as any as S.Schema<BlobRestoreStatus>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7882,8 +7894,8 @@ export const RevokeStorageAccountUserDelegationKeys: API.OperationMethod<
   RevokeStorageAccountUserDelegationKeysError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(450, __c56, 2) as any as S.Schema<RevokeStorageAccountUserDelegationKeysRequest>,
-  output: __S(16, __c2, 0) as any as S.Schema<RevokeStorageAccountUserDelegationKeysResponse>,
+  input: __S(992, __c31, 0) as any as S.Schema<RevokeStorageAccountUserDelegationKeysRequest>,
+  output: __S(3616, __c113, 0) as any as S.Schema<RevokeStorageAccountUserDelegationKeysResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7897,8 +7909,8 @@ export const SetBlobContainerLegalHold: API.OperationMethod<
   SetBlobContainerLegalHoldError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(451, __c56, 3) as any as S.Schema<SetBlobContainerLegalHoldRequest>,
-  output: __S(33, __c4, 1) as any as S.Schema<LegalHold>,
+  input: __S(1024, __c32, 0) as any as S.Schema<SetBlobContainerLegalHoldRequest>,
+  output: __S(5792, __c181, 0) as any as S.Schema<LegalHold>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7912,8 +7924,8 @@ export const SetBlobServiceServiceProperties: API.OperationMethod<
   SetBlobServiceServicePropertiesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(454, __c56, 6) as any as S.Schema<SetBlobServiceServicePropertiesRequest>,
-  output: __S(211, __c26, 3) as any as S.Schema<SetBlobServiceServicePropertiesResponse>,
+  input: __S(1058, __c33, 2) as any as S.Schema<SetBlobServiceServicePropertiesRequest>,
+  output: __S(3840, __c120, 0) as any as S.Schema<SetBlobServiceServicePropertiesResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7927,8 +7939,8 @@ export const SetFileServiceServiceProperties: API.OperationMethod<
   SetFileServiceServicePropertiesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(455, __c56, 7) as any as S.Schema<SetFileServiceServicePropertiesRequest>,
-  output: __S(231, __c28, 7) as any as S.Schema<SetFileServiceServicePropertiesResponse>,
+  input: __S(1088, __c34, 0) as any as S.Schema<SetFileServiceServicePropertiesRequest>,
+  output: __S(4416, __c138, 0) as any as S.Schema<SetFileServiceServicePropertiesResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7942,8 +7954,8 @@ export const SetQueueServiceServiceProperties: API.OperationMethod<
   SetQueueServiceServicePropertiesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(456, __c57, 0) as any as S.Schema<SetQueueServiceServicePropertiesRequest>,
-  output: __S(291, __c36, 3) as any as S.Schema<SetQueueServiceServicePropertiesResponse>,
+  input: __S(1120, __c35, 0) as any as S.Schema<SetQueueServiceServicePropertiesRequest>,
+  output: __S(5056, __c158, 0) as any as S.Schema<SetQueueServiceServicePropertiesResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7957,8 +7969,8 @@ export const SetTableServiceServiceProperties: API.OperationMethod<
   SetTableServiceServicePropertiesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(457, __c57, 1) as any as S.Schema<SetTableServiceServicePropertiesRequest>,
-  output: __S(291, __c36, 3) as any as S.Schema<SetTableServiceServicePropertiesResponse>,
+  input: __S(1280, __c40, 0) as any as S.Schema<SetTableServiceServicePropertiesRequest>,
+  output: __S(5056, __c158, 0) as any as S.Schema<SetTableServiceServicePropertiesResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7972,8 +7984,8 @@ export const StopStorageTaskAssignmentAssignment: API.OperationMethod<
   StopStorageTaskAssignmentAssignmentError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(458, __c57, 2) as any as S.Schema<StopStorageTaskAssignmentAssignmentRequest>,
-  output: __S(16, __c2, 0) as any as S.Schema<StopStorageTaskAssignmentAssignmentResponse>,
+  input: __S(1312, __c41, 0) as any as S.Schema<StopStorageTaskAssignmentAssignmentRequest>,
+  output: __S(3616, __c113, 0) as any as S.Schema<StopStorageTaskAssignmentAssignmentResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7987,8 +7999,12 @@ export const StorageAccountsCustomerInitiatedMigration: API.OperationMethod<
   StorageAccountsCustomerInitiatedMigrationError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(460, __c57, 4) as any as S.Schema<StorageAccountsCustomerInitiatedMigrationRequest>,
-  output: __S(16, __c2, 0) as any as S.Schema<StorageAccountsCustomerInitiatedMigrationResponse>,
+  input: __S(1345, __c42, 1) as any as S.Schema<StorageAccountsCustomerInitiatedMigrationRequest>,
+  output: __S(
+    3616,
+    __c113,
+    0,
+  ) as any as S.Schema<StorageAccountsCustomerInitiatedMigrationResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8002,8 +8018,8 @@ export const StorageAccountsFailover: API.OperationMethod<
   StorageAccountsFailoverError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(461, __c57, 5) as any as S.Schema<StorageAccountsFailoverRequest>,
-  output: __S(462, __c57, 6) as any as S.Schema<StorageAccountsFailoverResponse>,
+  input: __S(1376, __c43, 0) as any as S.Schema<StorageAccountsFailoverRequest>,
+  output: __S(1377, __c43, 1) as any as S.Schema<StorageAccountsFailoverResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8018,13 +8034,13 @@ export const StorageAccountsHierarchicalNamespaceMigration: API.OperationMethod<
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    463,
-    __c57,
-    7,
+    1408,
+    __c44,
+    0,
   ) as any as S.Schema<StorageAccountsHierarchicalNamespaceMigrationRequest>,
   output: __S(
-    16,
-    __c2,
+    3616,
+    __c113,
     0,
   ) as any as S.Schema<StorageAccountsHierarchicalNamespaceMigrationResponse>,
   errors: [UnknownAzureError],
@@ -8041,11 +8057,11 @@ export const TestBlobAccessPointConfigurationExistingConnection: API.OperationMe
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    464,
-    __c58,
+    1440,
+    __c45,
     0,
   ) as any as S.Schema<TestBlobAccessPointConfigurationExistingConnectionRequest>,
-  output: __S(465, __c58, 1) as any as S.Schema<BlobAccessPointConnectionTestResponse>,
+  output: __S(1472, __c46, 0) as any as S.Schema<BlobAccessPointConnectionTestResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8060,11 +8076,11 @@ export const TestBlobAccessPointConnectionTestProposedConnection: API.OperationM
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    466,
-    __c58,
-    2,
+    1504,
+    __c47,
+    0,
   ) as any as S.Schema<TestBlobAccessPointConnectionTestProposedConnectionRequest>,
-  output: __S(465, __c58, 1) as any as S.Schema<BlobAccessPointConnectionTestResponse>,
+  output: __S(1472, __c46, 0) as any as S.Schema<BlobAccessPointConnectionTestResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8078,8 +8094,8 @@ export const TestConnectorExistingConnection: API.OperationMethod<
   TestConnectorExistingConnectionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(467, __c58, 3) as any as S.Schema<TestConnectorExistingConnectionRequest>,
-  output: __S(468, __c58, 4) as any as S.Schema<TestConnectionResponse>,
+  input: __S(1536, __c48, 0) as any as S.Schema<TestConnectorExistingConnectionRequest>,
+  output: __S(1537, __c48, 1) as any as S.Schema<TestConnectionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8093,8 +8109,8 @@ export const UpdateBlobAccessPointConfiguration: API.OperationMethod<
   UpdateBlobAccessPointConfigurationError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(470, __c58, 6) as any as S.Schema<UpdateBlobAccessPointConfigurationRequest>,
-  output: __S(56, __c7, 0) as any as S.Schema<UpdateBlobAccessPointConfigurationResponse>,
+  input: __S(1569, __c49, 1) as any as S.Schema<UpdateBlobAccessPointConfigurationRequest>,
+  output: __S(801, __c25, 1) as any as S.Schema<UpdateBlobAccessPointConfigurationResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8108,8 +8124,8 @@ export const UpdateBlobContainer: API.OperationMethod<
   UpdateBlobContainerError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(471, __c58, 7) as any as S.Schema<UpdateBlobContainerRequest>,
-  output: __S(70, __c8, 6) as any as S.Schema<UpdateBlobContainerResponse>,
+  input: __S(1600, __c50, 0) as any as S.Schema<UpdateBlobContainerRequest>,
+  output: __S(1185, __c37, 1) as any as S.Schema<UpdateBlobContainerResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8123,8 +8139,8 @@ export const UpdateConnector: API.OperationMethod<
   UpdateConnectorError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(474, __c59, 2) as any as S.Schema<UpdateConnectorRequest>,
-  output: __S(77, __c9, 5) as any as S.Schema<UpdateConnectorResponse>,
+  input: __S(1698, __c53, 2) as any as S.Schema<UpdateConnectorRequest>,
+  output: __S(1668, __c52, 4) as any as S.Schema<UpdateConnectorResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8138,8 +8154,8 @@ export const UpdateContextCach: API.OperationMethod<
   UpdateContextCachError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(476, __c59, 4) as any as S.Schema<UpdateContextCachRequest>,
-  output: __S(51, __c6, 3) as any as S.Schema<UpdateContextCachResponse>,
+  input: __S(1729, __c54, 1) as any as S.Schema<UpdateContextCachRequest>,
+  output: __S(258, __c8, 2) as any as S.Schema<UpdateContextCachResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8153,8 +8169,8 @@ export const UpdateContextCacheContainer: API.OperationMethod<
   UpdateContextCacheContainerError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(478, __c59, 6) as any as S.Schema<UpdateContextCacheContainerRequest>,
-  output: __S(37, __c4, 5) as any as S.Schema<UpdateContextCacheContainerResponse>,
+  input: __S(1761, __c55, 1) as any as S.Schema<UpdateContextCacheContainerRequest>,
+  output: __S(6176, __c193, 0) as any as S.Schema<UpdateContextCacheContainerResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8168,8 +8184,8 @@ export const UpdateDataShare: API.OperationMethod<
   UpdateDataShareError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(480, __c60, 0) as any as S.Schema<UpdateDataShareRequest>,
-  output: __S(85, __c10, 5) as any as S.Schema<UpdateDataShareResponse>,
+  input: __S(1793, __c56, 1) as any as S.Schema<UpdateDataShareRequest>,
+  output: __S(2021, __c63, 5) as any as S.Schema<UpdateDataShareResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8183,8 +8199,8 @@ export const UpdateFileShare: API.OperationMethod<
   UpdateFileShareError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(481, __c60, 1) as any as S.Schema<UpdateFileShareRequest>,
-  output: __S(93, __c11, 5) as any as S.Schema<UpdateFileShareResponse>,
+  input: __S(1824, __c57, 0) as any as S.Schema<UpdateFileShareRequest>,
+  output: __S(2112, __c66, 0) as any as S.Schema<UpdateFileShareResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8198,8 +8214,8 @@ export const UpdateQueue: API.OperationMethod<
   UpdateQueueError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(482, __c60, 2) as any as S.Schema<UpdateQueueRequest>,
-  output: __S(97, __c12, 1) as any as S.Schema<UpdateQueueResponse>,
+  input: __S(1856, __c58, 0) as any as S.Schema<UpdateQueueRequest>,
+  output: __S(2209, __c69, 1) as any as S.Schema<UpdateQueueResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8213,8 +8229,8 @@ export const UpdateStorageAccount: API.OperationMethod<
   UpdateStorageAccountError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(484, __c60, 4) as any as S.Schema<UpdateStorageAccountRequest>,
-  output: __S(157, __c19, 5) as any as S.Schema<UpdateStorageAccountResponse>,
+  input: __S(1889, __c59, 1) as any as S.Schema<UpdateStorageAccountRequest>,
+  output: __S(2400, __c75, 0) as any as S.Schema<UpdateStorageAccountResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8228,8 +8244,8 @@ export const UpdateStorageTaskAssignment: API.OperationMethod<
   UpdateStorageTaskAssignmentError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(489, __c61, 1) as any as S.Schema<UpdateStorageTaskAssignmentRequest>,
-  output: __S(167, __c20, 7) as any as S.Schema<UpdateStorageTaskAssignmentResponse>,
+  input: __S(1924, __c60, 4) as any as S.Schema<UpdateStorageTaskAssignmentRequest>,
+  output: __S(2592, __c81, 0) as any as S.Schema<UpdateStorageTaskAssignmentResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8243,8 +8259,8 @@ export const UpdateTable: API.OperationMethod<
   UpdateTableError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(490, __c61, 2) as any as S.Schema<UpdateTableRequest>,
-  output: __S(174, __c21, 6) as any as S.Schema<UpdateTableResponse>,
+  input: __S(1952, __c61, 0) as any as S.Schema<UpdateTableRequest>,
+  output: __S(2756, __c86, 4) as any as S.Schema<UpdateTableResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8274,37 +8290,28 @@ function __c0(j: number): any {
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "AbortStorageAccountHierarchicalNamespaceMigrationResponse",
       });
-    case 2:
-      return S.Array(S.String);
-    case 3:
-      return S.Array(S.String);
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          filterType: S.optional(S.String),
-          filterValues: S.optional(__S(3, __c0, 3)),
-        }),
-      ).annotate({
-        identifier: "AdvancedPlatformMetricsRuleConfig",
-      });
-    case 5:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           enabled: S.Boolean,
-          metricsToEmit: S.optional(__S(2, __c0, 2)),
-          ruleConfig: __S(4, __c0, 4),
+          metricsToEmit: S.optional(__S(96, __c3, 0)),
+          ruleConfig: __S(128, __c4, 0),
         }),
       ).annotate({
         identifier: "AdvancedPlatformMetricsRulePropertiesInput",
       });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           accountName: S.String.pipe(T.Label()),
           advancedPlatformMetricsRuleType: S.String.pipe(T.Label()),
-          properties: S.optional(__S(5, __c0, 5)),
+          properties: S.optional(__S(32, __c1, 0)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -8316,7 +8323,11 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "AdvancedPlatformMetricsCreateOrUpdateRequest",
       });
-    case 7:
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           createdBy: S.optional(S.String),
@@ -8329,20 +8340,586 @@ function __c0(j: number): any {
       ).annotate({ identifier: "SystemData" });
   }
 }
-function __c1(j: number): any {
+function __c3(j: number): any {
   switch (j) {
     case 0:
+      return S.Array(S.String);
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          filterType: S.optional(S.String),
+          filterValues: S.optional(__S(160, __c5, 0)),
+        }),
+      ).annotate({
+        identifier: "AdvancedPlatformMetricsRuleConfig",
+      });
+    case 1:
       return S.suspend(() =>
         S.Struct({
           ruleType: S.optional(S.String),
           enabled: S.Boolean,
           lastModifiedTime: S.optional(S.String),
-          metricsToEmit: S.optional(__S(2, __c0, 2)),
-          metricsEmitted: S.optional(__S(2, __c0, 2)),
-          ruleConfig: __S(4, __c0, 4),
+          metricsToEmit: S.optional(__S(96, __c3, 0)),
+          metricsEmitted: S.optional(__S(96, __c3, 0)),
+          ruleConfig: __S(128, __c4, 0),
         }),
       ).annotate({
         identifier: "AdvancedPlatformMetricsRuleProperties",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(64, __c2, 0)),
+          properties: S.optional(__S(129, __c4, 1)),
+        }),
+      ).annotate({
+        identifier: "AdvancedPlatformMetricsCreateOrUpdateResponse",
+      });
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          accountKind: S.String,
+          description: S.optional(S.String),
+          encryption: S.optional(__S(354, __c11, 2)),
+        }),
+      ).annotate({
+        identifier: "ContextCachePropertiesInput",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          contextCacheName: S.String.pipe(T.Label()),
+          tags: S.optional(__S(224, __c7, 0)),
+          location: S.String,
+          properties: __S(192, __c6, 0),
+          identity: S.optional(__S(257, __c8, 1)),
+        }).pipe(
+          T.Http({
+            method: "PUT",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/contextCaches/{contextCacheName}",
+            code: 200,
+            apiVersion: "2026-09-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "ContextCachesCreateOrUpdateRequest",
+      });
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, S.String);
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, /*@__PURE__*/ S.NullOr(__S(288, __c9, 0)));
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          type: S.String,
+          userAssignedIdentities: S.optional(__S(256, __c8, 0)),
+        }),
+      ).annotate({
+        identifier: "ContextCachesCreateOrUpdateRequestIdentity",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(64, __c2, 0)),
+          tags: S.optional(__S(224, __c7, 0)),
+          location: S.String,
+          properties: __S(355, __c11, 3),
+          identity: S.optional(__S(357, __c11, 5)),
+        }),
+      ).annotate({
+        identifier: "ContextCachesCreateOrUpdateResponse",
+      });
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "UserAssignedIdentityInput",
+      });
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          principalId: S.optional(S.String),
+          clientId: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "UserAssignedIdentity" });
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          identityType: S.optional(S.String),
+          userAssignedIdentityResourceId: S.optional(S.String),
+          federatedClientId: S.optional(S.String),
+          delegatedIdentityClientId: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "AzureResourceManagerCommonTypesKeyEncryptionKeyIdentity",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          keyEncryptionKeyIdentity: S.optional(__S(352, __c11, 0)),
+          keyEncryptionKeyUrl: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "AzureResourceManagerCommonTypesCustomerManagedKeyEncryption",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          infrastructureEncryption: S.optional(S.String),
+          customerManagedKeyEncryption: S.optional(__S(353, __c11, 1)),
+        }),
+      ).annotate({
+        identifier: "AzureResourceManagerCommonTypesEncryption",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          accountKind: S.String,
+          description: S.optional(S.String),
+          provisioningState: S.optional(S.String),
+          encryption: S.optional(__S(354, __c11, 2)),
+        }),
+      ).annotate({ identifier: "ContextCacheProperties" });
+    case 4:
+      return S.Record(S.String, /*@__PURE__*/ S.NullOr(__S(320, __c10, 0)));
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          principalId: S.optional(S.String),
+          tenantId: S.optional(S.String),
+          type: S.String,
+          userAssignedIdentities: S.optional(__S(356, __c11, 4)),
+        }),
+      ).annotate({
+        identifier: "ContextCachesCreateOrUpdateResponseIdentity",
+      });
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          accountName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/tableServices/default/tables",
+            code: 200,
+            apiVersion: "2026-09-01",
+          }),
+        ),
+      ).annotate({ identifier: "ListTableRequest" });
+    case 1:
+      return S.Array(__S(2756, __c86, 4));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          value: __S(385, __c12, 1),
+          nextLink: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ListTableResource" });
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          accountName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/tableServices",
+            code: 200,
+            apiVersion: "2026-09-01",
+          }),
+        ),
+      ).annotate({ identifier: "ListTableServicesRequest" });
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          location: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/providers/Microsoft.Storage/locations/{location}/usages",
+            code: 200,
+            apiVersion: "2026-09-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListUsageByLocationRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          value: S.optional(S.String),
+          localizedValue: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "UsageName" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          unit: S.optional(S.String),
+          currentValue: S.optional(S.Number),
+          limit: S.optional(S.Number),
+          name: S.optional(__S(449, __c14, 1)),
+        }),
+      ).annotate({ identifier: "Usage" });
+    case 3:
+      return S.Array(__S(450, __c14, 2));
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          value: S.optional(__S(451, __c14, 3)),
+          nextLink: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "UsageListResult" });
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          permissionScopes: S.optional(__S(4673, __c146, 1)),
+          homeDirectory: S.optional(S.String),
+          sshAuthorizedKeys: S.optional(__S(4609, __c144, 1)),
+          hasSharedKey: S.optional(S.Boolean),
+          hasSshKey: S.optional(S.Boolean),
+          hasSshPassword: S.optional(S.Boolean),
+          groupId: S.optional(S.Number),
+          allowAclAuthorization: S.optional(S.Boolean),
+          extendedGroups: S.optional(__S(4674, __c146, 2)),
+          isNFSv3Enabled: S.optional(S.Boolean),
+        }),
+      ).annotate({ identifier: "LocalUserPropertiesInput" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          accountName: S.String.pipe(T.Label()),
+          username: S.String.pipe(T.Label()),
+          properties: S.optional(__S(480, __c15, 0)),
+        }).pipe(
+          T.Http({
+            method: "PUT",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/localUsers/{username}",
+            code: 200,
+            apiVersion: "2026-09-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "LocalUsersCreateOrUpdateRequest",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(64, __c2, 0)),
+          properties: S.optional(__S(4675, __c146, 3)),
+        }),
+      ).annotate({
+        identifier: "LocalUsersCreateOrUpdateResponse",
+      });
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          accountName: S.String.pipe(T.Label()),
+          containerName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/blobServices/default/containers/{containerName}/immutabilityPolicies/default/lock",
+            code: 200,
+            apiVersion: "2026-09-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "LockBlobContainerImmutabilityPolicyRequest",
+      });
+  }
+}
+function __c17(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          policy: __S(4747, __c148, 11),
+        }),
+      ).annotate({
+        identifier: "ManagementPolicyPropertiesInput",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          accountName: S.String.pipe(T.Label()),
+          managementPolicyName: S.String.pipe(T.Label()),
+          properties: S.optional(__S(544, __c17, 0)),
+        }).pipe(
+          T.Http({
+            method: "PUT",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/managementPolicies/{managementPolicyName}",
+            code: 200,
+            apiVersion: "2026-09-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "ManagementPoliciesCreateOrUpdateRequest",
+      });
+  }
+}
+function __c18(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          accountName: S.String.pipe(T.Label()),
+          networkSecurityPerimeterConfigurationName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/networkSecurityPerimeterConfigurations/{networkSecurityPerimeterConfigurationName}/reconcile",
+            code: 200,
+            apiVersion: "2026-09-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "NetworkSecurityPerimeterConfigurationsReconcileRequest",
+      });
+  }
+}
+function __c19(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          sourceAccount: S.String,
+          destinationAccount: S.String,
+          rules: S.optional(__S(4898, __c153, 2)),
+          metrics: S.optional(__S(1216, __c38, 0)),
+          priorityReplication: S.optional(__S(1216, __c38, 0)),
+          tagsReplication: S.optional(__S(1216, __c38, 0)),
+        }),
+      ).annotate({
+        identifier: "ObjectReplicationPolicyPropertiesInput",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          accountName: S.String.pipe(T.Label()),
+          objectReplicationPolicyId: S.String.pipe(T.Label()),
+          properties: S.optional(__S(608, __c19, 0)),
+        }).pipe(
+          T.Http({
+            method: "PUT",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/objectReplicationPolicies/{objectReplicationPolicyId}",
+            code: 200,
+            apiVersion: "2026-09-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "ObjectReplicationPoliciesCreateOrUpdateRequest",
+      });
+  }
+}
+function __c20(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          accountName: S.String.pipe(T.Label()),
+          encryptionScopeName: S.String.pipe(T.Label()),
+          properties: S.optional(__S(673, __c21, 1)),
+        }).pipe(
+          T.Http({
+            method: "PATCH",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/encryptionScopes/{encryptionScopeName}",
+            code: 200,
+            apiVersion: "2026-09-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "PatchEncryptionScopeRequest",
+      });
+  }
+}
+function __c21(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          keyUri: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "EncryptionScopeKeyVaultPropertiesInput",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          source: S.optional(S.String),
+          state: S.optional(S.String),
+          keyVaultProperties: S.optional(__S(672, __c21, 0)),
+          requireInfrastructureEncryption: S.optional(S.Boolean),
+        }),
+      ).annotate({
+        identifier: "EncryptionScopePropertiesInput",
+      });
+  }
+}
+function __c22(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          accountName: S.String.pipe(T.Label()),
+          encryptionScopeName: S.String.pipe(T.Label()),
+          properties: S.optional(__S(673, __c21, 1)),
+        }).pipe(
+          T.Http({
+            method: "PUT",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/encryptionScopes/{encryptionScopeName}",
+            code: 200,
+            apiVersion: "2026-09-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "PutEncryptionScopeRequest",
+      });
+  }
+}
+function __c23(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          state: S.optional(S.String),
+          description: S.optional(S.String),
+          source: __S(768, __c24, 0),
+        }),
+      ).annotate({
+        identifier: "BlobAccessPointConfigurationPropertiesInput",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          accountName: S.String.pipe(T.Label()),
+          blobAccessPointConfigurationName: S.String.pipe(T.Label()),
+          tags: S.optional(__S(224, __c7, 0)),
+          location: S.String,
+          properties: __S(736, __c23, 0),
+        }).pipe(
+          T.Http({
+            method: "PUT",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/blobAccessPointConfigurations/{blobAccessPointConfigurationName}",
+            code: 200,
+            apiVersion: "2026-09-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateBlobAccessPointConfigurationRequest",
+      });
+  }
+}
+function __c24(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          sourceType: S.String,
+        }),
+      ).annotate({
+        identifier: "BlobAccessPointSourceProperties",
+      });
+  }
+}
+function __c25(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          uniqueId: S.optional(S.String),
+          state: S.optional(S.String),
+          description: S.optional(S.String),
+          lastConnectionTestStatus: S.optional(S.String),
+          lastConnectionTestTimestamp: S.optional(S.String),
+          lastConnectionTestErrorMessage: S.optional(S.String),
+          source: __S(768, __c24, 0),
+          provisioningState: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "BlobAccessPointConfigurationProperties",
       });
     case 1:
       return S.suspend(() =>
@@ -8350,31 +8927,2219 @@ function __c1(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(7, __c0, 7)),
-          properties: S.optional(__S(8, __c1, 0)),
+          systemData: S.optional(__S(64, __c2, 0)),
+          tags: S.optional(__S(224, __c7, 0)),
+          location: S.String,
+          properties: __S(800, __c25, 0),
         }),
       ).annotate({
-        identifier: "AdvancedPlatformMetricsCreateOrUpdateResponse",
+        identifier: "CreateBlobAccessPointConfigurationResponse",
       });
-    case 2:
+  }
+}
+function __c26(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          immutabilityPeriodSinceCreationInDays: S.optional(S.Number),
-          state: S.optional(S.String),
-          allowProtectedAppendWrites: S.optional(S.Boolean),
-          allowProtectedAppendWritesAll: S.optional(S.Boolean),
+          privateEndpoint: S.optional(__S(288, __c9, 0)),
+          privateLinkServiceConnectionState: __S(2369, __c74, 1),
         }),
       ).annotate({
-        identifier: "ImmutabilityPolicyProperty",
+        identifier: "PrivateEndpointConnectionPropertiesInput",
       });
-    case 3:
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          accountName: S.String.pipe(T.Label()),
+          privateEndpointConnectionName: S.String.pipe(T.Label()),
+          properties: S.optional(__S(832, __c26, 0)),
+        }).pipe(
+          T.Http({
+            method: "PUT",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/privateEndpointConnections/{privateEndpointConnectionName}",
+            code: 200,
+            apiVersion: "2026-09-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "PutPrivateEndpointConnectionRequest",
+      });
+  }
+}
+function __c27(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          accountName: S.String.pipe(T.Label()),
+          username: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/localUsers/{username}/regeneratePassword",
+            code: 200,
+            apiVersion: "2026-09-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "RegenerateLocalUserPasswordRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          sshPassword: S.optional(S.String.pipe(T.SensitiveValue({}))),
+        }),
+      ).annotate({
+        identifier: "LocalUserRegeneratePasswordResult",
+      });
+  }
+}
+function __c28(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          accountName: S.String.pipe(T.Label()),
+          keyName: S.String,
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/regenerateKey",
+            code: 200,
+            apiVersion: "2026-09-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "RegenerateStorageAccountKeyRequest",
+      });
+  }
+}
+function __c29(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          accountName: S.String.pipe(T.Label()),
+          shareName: S.String.pipe(T.Label()),
+          deletedShareName: S.String,
+          deletedShareVersion: S.String,
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/fileServices/default/shares/{shareName}/restore",
+            code: 200,
+            apiVersion: "2026-09-01",
+          }),
+        ),
+      ).annotate({ identifier: "RestoreFileShareRequest" });
+  }
+}
+function __c30(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          accountName: S.String.pipe(T.Label()),
+          timeToRestore: S.String,
+          blobRanges: __S(2465, __c77, 1),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/restoreBlobRanges",
+            code: 200,
+            apiVersion: "2026-09-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "RestoreStorageAccountBlobRangesRequest",
+      });
+  }
+}
+function __c31(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          accountName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/revokeUserDelegationKeys",
+            code: 200,
+            apiVersion: "2026-09-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "RevokeStorageAccountUserDelegationKeysRequest",
+      });
+  }
+}
+function __c32(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           accountName: S.String.pipe(T.Label()),
           containerName: S.String.pipe(T.Label()),
-          properties: __S(10, __c1, 2),
+          tags: __S(160, __c5, 0),
+          allowProtectedAppendWritesAll: S.optional(S.Boolean),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/blobServices/default/containers/{containerName}/setLegalHold",
+            code: 200,
+            apiVersion: "2026-09-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "SetBlobContainerLegalHoldRequest",
+      });
+  }
+}
+function __c33(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          enabled: S.Boolean,
+          days: S.optional(S.Number),
+        }),
+      ).annotate({
+        identifier: "RestorePolicyPropertiesInput",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          cors: S.optional(__S(3874, __c121, 2)),
+          defaultServiceVersion: S.optional(S.String),
+          deleteRetentionPolicy: S.optional(__S(3904, __c122, 0)),
+          staticWebsite: S.optional(__S(3936, __c123, 0)),
+          isVersioningEnabled: S.optional(S.Boolean),
+          automaticSnapshotPolicyEnabled: S.optional(S.Boolean),
+          changeFeed: S.optional(__S(3937, __c123, 1)),
+          restorePolicy: S.optional(__S(1056, __c33, 0)),
+          containerDeleteRetentionPolicy: S.optional(__S(3904, __c122, 0)),
+          lastAccessTimeTrackingPolicy: S.optional(__S(3939, __c123, 3)),
+        }),
+      ).annotate({
+        identifier: "BlobServicePropertiesPropertiesInput",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          accountName: S.String.pipe(T.Label()),
+          properties: S.optional(__S(1057, __c33, 1)),
+        }).pipe(
+          T.Http({
+            method: "PUT",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/blobServices/default",
+            code: 200,
+            apiVersion: "2026-09-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "SetBlobServiceServicePropertiesRequest",
+      });
+  }
+}
+function __c34(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          accountName: S.String.pipe(T.Label()),
+          properties: S.optional(__S(4453, __c139, 5)),
+        }).pipe(
+          T.Http({
+            method: "PUT",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/fileServices/default",
+            code: 200,
+            apiVersion: "2026-09-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "SetFileServiceServicePropertiesRequest",
+      });
+  }
+}
+function __c35(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          accountName: S.String.pipe(T.Label()),
+          properties: S.optional(__S(5088, __c159, 0)),
+        }).pipe(
+          T.Http({
+            method: "PUT",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/queueServices/default",
+            code: 200,
+            apiVersion: "2026-09-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "SetQueueServiceServicePropertiesRequest",
+      });
+  }
+}
+function __c36(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          accountName: S.String.pipe(T.Label()),
+          containerName: S.String.pipe(T.Label()),
+          properties: S.optional(__S(1184, __c37, 0)),
+        }).pipe(
+          T.Http({
+            method: "PUT",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/blobServices/default/containers/{containerName}",
+            code: 200,
+            apiVersion: "2026-09-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateBlobContainerRequest",
+      });
+  }
+}
+function __c37(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          defaultEncryptionScope: S.optional(S.String),
+          denyEncryptionScopeOverride: S.optional(S.Boolean),
+          publicAccess: S.optional(S.String),
+          metadata: S.optional(__S(224, __c7, 0)),
+          immutableStorageWithVersioning: S.optional(__S(1216, __c38, 0)),
+          enableNfsV3RootSquash: S.optional(S.Boolean),
+          enableNfsV3AllSquash: S.optional(S.Boolean),
+          blobAccessPointConfiguration: S.optional(__S(1248, __c39, 0)),
+        }),
+      ).annotate({ identifier: "ContainerPropertiesInput" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(64, __c2, 0)),
+          properties: S.optional(__S(1257, __c39, 9)),
+          etag: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "CreateBlobContainerResponse",
+      });
+  }
+}
+function __c38(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          enabled: S.optional(S.Boolean),
+        }),
+      ).annotate({
+        identifier: "ImmutableStorageWithVersioningInput",
+      });
+  }
+}
+function __c39(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          blobAccessPointConfigurationName: S.optional(S.String),
+          blobAccessPointConfigurationUniqueId: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "BlobAccessPointConfigurationConnection",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          update: S.optional(S.String),
+          immutabilityPeriodSinceCreationInDays: S.optional(S.Number),
+          timestamp: S.optional(S.String),
+          objectIdentifier: S.optional(S.String),
+          tenantId: S.optional(S.String),
+          upn: S.optional(S.String),
+          allowProtectedAppendWrites: S.optional(S.Boolean),
+          allowProtectedAppendWritesAll: S.optional(S.Boolean),
+        }),
+      ).annotate({ identifier: "UpdateHistoryProperty" });
+    case 2:
+      return S.Array(__S(1249, __c39, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          properties: S.optional(__S(2816, __c88, 0)),
+          etag: S.optional(S.String),
+          updateHistory: S.optional(__S(1250, __c39, 2)),
+        }),
+      ).annotate({
+        identifier: "ImmutabilityPolicyProperties",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          tag: S.optional(S.String),
+          timestamp: S.optional(S.String),
+          objectIdentifier: S.optional(S.String),
+          tenantId: S.optional(S.String),
+          upn: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "TagProperty" });
+    case 5:
+      return S.Array(__S(1252, __c39, 4));
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          allowProtectedAppendWritesAll: S.optional(S.Boolean),
+          timestamp: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "ProtectedAppendWritesHistory",
+      });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          hasLegalHold: S.optional(S.Boolean),
+          tags: S.optional(__S(1253, __c39, 5)),
+          protectedAppendWritesHistory: S.optional(__S(1254, __c39, 6)),
+        }),
+      ).annotate({ identifier: "LegalHoldProperties" });
+    case 8:
+      return S.suspend(() =>
+        S.Struct({
+          enabled: S.optional(S.Boolean),
+          timeStamp: S.optional(S.String),
+          migrationState: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "ImmutableStorageWithVersioning",
+      });
+    case 9:
+      return S.suspend(() =>
+        S.Struct({
+          version: S.optional(S.String),
+          deleted: S.optional(S.Boolean),
+          deletedTime: S.optional(S.String),
+          remainingRetentionDays: S.optional(S.Number),
+          defaultEncryptionScope: S.optional(S.String),
+          denyEncryptionScopeOverride: S.optional(S.Boolean),
+          publicAccess: S.optional(S.String),
+          lastModifiedTime: S.optional(S.String),
+          leaseStatus: S.optional(S.String),
+          leaseState: S.optional(S.String),
+          leaseDuration: S.optional(S.String),
+          metadata: S.optional(__S(224, __c7, 0)),
+          immutabilityPolicy: S.optional(__S(1251, __c39, 3)),
+          legalHold: S.optional(__S(1255, __c39, 7)),
+          hasLegalHold: S.optional(S.Boolean),
+          hasImmutabilityPolicy: S.optional(S.Boolean),
+          immutableStorageWithVersioning: S.optional(__S(1256, __c39, 8)),
+          enableNfsV3RootSquash: S.optional(S.Boolean),
+          enableNfsV3AllSquash: S.optional(S.Boolean),
+          blobAccessPointConfiguration: S.optional(__S(1248, __c39, 0)),
+        }),
+      ).annotate({ identifier: "ContainerProperties" });
+  }
+}
+function __c40(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          accountName: S.String.pipe(T.Label()),
+          properties: S.optional(__S(5088, __c159, 0)),
+        }).pipe(
+          T.Http({
+            method: "PUT",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/tableServices/default",
+            code: 200,
+            apiVersion: "2026-09-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "SetTableServiceServicePropertiesRequest",
+      });
+  }
+}
+function __c41(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          accountName: S.String.pipe(T.Label()),
+          storageTaskAssignmentName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/storageTaskAssignments/{storageTaskAssignmentName}/stopAssignment",
+            code: 200,
+            apiVersion: "2026-09-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "StopStorageTaskAssignmentAssignmentRequest",
+      });
+  }
+}
+function __c42(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          targetSkuName: S.String,
+        }),
+      ).annotate({
+        identifier: "StorageAccountMigrationPropertiesInput",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          accountName: S.String.pipe(T.Label()),
+          properties: __S(1344, __c42, 0),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/startAccountMigration",
+            code: 200,
+            apiVersion: "2026-09-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "StorageAccountsCustomerInitiatedMigrationRequest",
+      });
+  }
+}
+function __c43(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          accountName: S.String.pipe(T.Label()),
+          failoverType: S.optional(S.String.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/failover",
+            code: 200,
+            apiVersion: "2026-09-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "StorageAccountsFailoverRequest",
+      });
+    case 1:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "StorageAccountsFailoverResponse",
+      });
+  }
+}
+function __c44(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          accountName: S.String.pipe(T.Label()),
+          requestType: S.String.pipe(T.Query()),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/hnsonmigration",
+            code: 200,
+            apiVersion: "2026-09-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "StorageAccountsHierarchicalNamespaceMigrationRequest",
+      });
+  }
+}
+function __c45(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          accountName: S.String.pipe(T.Label()),
+          blobAccessPointConfigurationName: S.String.pipe(T.Label()),
+          uniqueId: S.String,
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/blobAccessPointConfigurations/{blobAccessPointConfigurationName}/testExistingConnection",
+            code: 200,
+            apiVersion: "2026-09-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "TestBlobAccessPointConfigurationExistingConnectionRequest",
+      });
+  }
+}
+function __c46(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          methodName: S.String,
+          errorMessage: S.optional(S.String),
+          requestId: S.String,
+        }),
+      ).annotate({
+        identifier: "BlobAccessPointConnectionTestResponse",
+      });
+  }
+}
+function __c47(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          accountName: S.String.pipe(T.Label()),
+          source: __S(768, __c24, 0),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/testBlobAccessPointConfigurationProposedConnection",
+            code: 200,
+            apiVersion: "2026-09-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "TestBlobAccessPointConnectionTestProposedConnectionRequest",
+      });
+  }
+}
+function __c48(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          accountName: S.String.pipe(T.Label()),
+          connectorName: S.String.pipe(T.Label()),
+          uniqueId: S.String,
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/connectors/{connectorName}/testExistingConnection",
+            code: 200,
+            apiVersion: "2026-09-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "TestConnectorExistingConnectionRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          storageConnectorMethodName: S.String,
+          storageConnectorErrorMessage: S.optional(S.String),
+          storageConnectorRequestId: S.String,
+        }),
+      ).annotate({ identifier: "TestConnectionResponse" });
+  }
+}
+function __c49(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          state: S.optional(S.String),
+          description: S.optional(S.String),
+          source: S.optional(__S(768, __c24, 0)),
+        }),
+      ).annotate({
+        identifier: "BlobAccessPointConfigurationPropertiesUpdate",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          accountName: S.String.pipe(T.Label()),
+          blobAccessPointConfigurationName: S.String.pipe(T.Label()),
+          tags: S.optional(__S(224, __c7, 0)),
+          properties: S.optional(__S(1568, __c49, 0)),
+        }).pipe(
+          T.Http({
+            method: "PATCH",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/blobAccessPointConfigurations/{blobAccessPointConfigurationName}",
+            code: 200,
+            apiVersion: "2026-09-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "UpdateBlobAccessPointConfigurationRequest",
+      });
+  }
+}
+function __c50(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          accountName: S.String.pipe(T.Label()),
+          containerName: S.String.pipe(T.Label()),
+          properties: S.optional(__S(1184, __c37, 0)),
+        }).pipe(
+          T.Http({
+            method: "PATCH",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/blobServices/default/containers/{containerName}",
+            code: 200,
+            apiVersion: "2026-09-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "UpdateBlobContainerRequest",
+      });
+  }
+}
+function __c51(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          state: S.optional(S.String),
+          description: S.optional(S.String),
+          testConnection: S.optional(S.Boolean),
+          dataSourceType: S.String,
+          source: __S(1666, __c52, 2),
+        }),
+      ).annotate({
+        identifier: "StorageConnectorPropertiesInput",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          accountName: S.String.pipe(T.Label()),
+          connectorName: S.String.pipe(T.Label()),
+          tags: S.optional(__S(224, __c7, 0)),
+          location: S.String,
+          properties: __S(1632, __c51, 0),
+        }).pipe(
+          T.Http({
+            method: "PUT",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/connectors/{connectorName}",
+            code: 200,
+            apiVersion: "2026-09-01",
+          }),
+        ),
+      ).annotate({ identifier: "CreateConnectorRequest" });
+  }
+}
+function __c52(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          type: S.String,
+          dataShareUri: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "StorageConnectorConnection",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          type: S.String,
+          identityResourceId: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "StorageConnectorAuthProperties",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          type: S.String,
+          connection: S.optional(__S(1664, __c52, 0)),
+          authProperties: S.optional(__S(1665, __c52, 1)),
+        }),
+      ).annotate({ identifier: "StorageConnectorSource" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          uniqueId: S.optional(S.String),
+          state: S.optional(S.String),
+          creationTime: S.optional(S.String),
+          description: S.optional(S.String),
+          testConnection: S.optional(S.Boolean),
+          dataSourceType: S.String,
+          source: __S(1666, __c52, 2),
+          provisioningState: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "StorageConnectorProperties",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(64, __c2, 0)),
+          tags: S.optional(__S(224, __c7, 0)),
+          location: S.String,
+          properties: __S(1667, __c52, 3),
+        }),
+      ).annotate({ identifier: "CreateConnectorResponse" });
+  }
+}
+function __c53(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          type: S.String,
+          authProperties: S.optional(__S(1665, __c52, 1)),
+        }),
+      ).annotate({
+        identifier: "StorageConnectorSourceUpdate",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          state: S.optional(S.String),
+          description: S.optional(S.String),
+          testConnection: S.optional(S.Boolean),
+          source: S.optional(__S(1696, __c53, 0)),
+        }),
+      ).annotate({
+        identifier: "StorageConnectorPropertiesUpdate",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          accountName: S.String.pipe(T.Label()),
+          connectorName: S.String.pipe(T.Label()),
+          tags: S.optional(__S(224, __c7, 0)),
+          properties: S.optional(__S(1697, __c53, 1)),
+        }).pipe(
+          T.Http({
+            method: "PATCH",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/connectors/{connectorName}",
+            code: 200,
+            apiVersion: "2026-09-01",
+          }),
+        ),
+      ).annotate({ identifier: "UpdateConnectorRequest" });
+  }
+}
+function __c54(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          description: S.optional(S.String),
+          encryption: S.optional(__S(354, __c11, 2)),
+        }),
+      ).annotate({
+        identifier: "ContextCachePropertiesUpdate",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          contextCacheName: S.String.pipe(T.Label()),
+          tags: S.optional(__S(224, __c7, 0)),
+          identity: S.optional(__S(257, __c8, 1)),
+          properties: S.optional(__S(1728, __c54, 0)),
+        }).pipe(
+          T.Http({
+            method: "PATCH",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/contextCaches/{contextCacheName}",
+            code: 200,
+            apiVersion: "2026-09-01",
+          }),
+        ),
+      ).annotate({ identifier: "UpdateContextCachRequest" });
+  }
+}
+function __c55(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          description: S.optional(S.String),
+          timeToLive: S.optional(S.Number),
+        }),
+      ).annotate({
+        identifier: "ContextCacheContainerPropertiesUpdate",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          contextCacheName: S.String.pipe(T.Label()),
+          contextCacheContainerName: S.String.pipe(T.Label()),
+          properties: S.optional(__S(1760, __c55, 0)),
+        }).pipe(
+          T.Http({
+            method: "PATCH",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/contextCaches/{contextCacheName}/contextCacheContainers/{contextCacheContainerName}",
+            code: 200,
+            apiVersion: "2026-09-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "UpdateContextCacheContainerRequest",
+      });
+  }
+}
+function __c56(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          description: S.optional(S.String),
+          accessPolicies: S.optional(__S(2017, __c63, 1)),
+          assets: S.optional(__S(2019, __c63, 3)),
+        }),
+      ).annotate({
+        identifier: "StorageDataSharePropertiesUpdate",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          accountName: S.String.pipe(T.Label()),
+          dataShareName: S.String.pipe(T.Label()),
+          tags: S.optional(__S(224, __c7, 0)),
+          properties: S.optional(__S(1792, __c56, 0)),
+        }).pipe(
+          T.Http({
+            method: "PATCH",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/dataShares/{dataShareName}",
+            code: 200,
+            apiVersion: "2026-09-01",
+          }),
+        ),
+      ).annotate({ identifier: "UpdateDataShareRequest" });
+  }
+}
+function __c57(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          accountName: S.String.pipe(T.Label()),
+          shareName: S.String.pipe(T.Label()),
+          properties: S.optional(__S(2080, __c65, 0)),
+        }).pipe(
+          T.Http({
+            method: "PATCH",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/fileServices/default/shares/{shareName}",
+            code: 200,
+            apiVersion: "2026-09-01",
+          }),
+        ),
+      ).annotate({ identifier: "UpdateFileShareRequest" });
+  }
+}
+function __c58(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          accountName: S.String.pipe(T.Label()),
+          queueName: S.String.pipe(T.Label()),
+          properties: S.optional(__S(2240, __c70, 0)),
+        }).pipe(
+          T.Http({
+            method: "PATCH",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/queueServices/default/queues/{queueName}",
+            code: 200,
+            apiVersion: "2026-09-01",
+          }),
+        ),
+      ).annotate({ identifier: "UpdateQueueRequest" });
+  }
+}
+function __c59(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          customDomain: S.optional(__S(2500, __c78, 4)),
+          encryption: S.optional(__S(2309, __c72, 5)),
+          sasPolicy: S.optional(__S(2498, __c78, 2)),
+          keyPolicy: S.optional(__S(2499, __c78, 3)),
+          accessTier: S.optional(S.String),
+          turboTier: S.optional(__S(2506, __c78, 10)),
+          azureFilesIdentityBasedAuthentication: S.optional(__S(2509, __c78, 13)),
+          supportsHttpsTrafficOnly: S.optional(S.Boolean),
+          isSftpEnabled: S.optional(S.Boolean),
+          isLocalUserEnabled: S.optional(S.Boolean),
+          enableExtendedGroups: S.optional(S.Boolean),
+          networkAcls: S.optional(__S(2312, __c72, 8)),
+          largeFileSharesState: S.optional(S.String),
+          routingPreference: S.optional(__S(2510, __c78, 14)),
+          dualStackEndpointPreference: S.optional(__S(2511, __c78, 15)),
+          allowBlobPublicAccess: S.optional(S.Boolean),
+          minimumTlsVersion: S.optional(S.String),
+          allowSharedKeyAccess: S.optional(S.Boolean),
+          allowCrossTenantReplication: S.optional(S.Boolean),
+          defaultToOAuthAuthentication: S.optional(S.Boolean),
+          publicNetworkAccess: S.optional(S.String),
+          immutableStorageWithVersioning: S.optional(__S(2513, __c78, 17)),
+          allowedCopyScope: S.optional(S.String),
+          dnsEndpointType: S.optional(S.String),
+          geoPriorityReplicationStatus: S.optional(__S(2514, __c78, 18)),
+          allowSharedKeyAccessForServices: S.optional(__S(2515, __c78, 19)),
+          dataCollaborationPolicyProperties: S.optional(__S(2516, __c78, 20)),
+          allowCrossTenantDelegationSas: S.optional(S.Boolean),
+        }),
+      ).annotate({
+        identifier: "StorageAccountPropertiesUpdateParametersInput",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          accountName: S.String.pipe(T.Label()),
+          sku: S.optional(__S(2336, __c73, 0)),
+          tags: S.optional(__S(224, __c7, 0)),
+          identity: S.optional(__S(2305, __c72, 1)),
+          properties: S.optional(__S(1888, __c59, 0)),
+          kind: S.optional(S.String),
+          zones: S.optional(__S(160, __c5, 0)),
+          placement: S.optional(__S(2497, __c78, 1)),
+        }).pipe(
+          T.Http({
+            method: "PATCH",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}",
+            code: 200,
+            apiVersion: "2026-09-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "UpdateStorageAccountRequest",
+      });
+  }
+}
+function __c60(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          type: S.optional(S.String),
+          parameters: S.optional(__S(2657, __c83, 1)),
+        }),
+      ).annotate({ identifier: "ExecutionTriggerUpdate" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          target: S.optional(__S(2656, __c83, 0)),
+          trigger: S.optional(__S(1920, __c60, 0)),
+        }),
+      ).annotate({
+        identifier: "StorageTaskAssignmentUpdateExecutionContext",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          prefix: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "StorageTaskAssignmentUpdateReport",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          enabled: S.optional(S.Boolean),
+          description: S.optional(S.String),
+          executionContext: S.optional(__S(1921, __c60, 1)),
+          report: S.optional(__S(1922, __c60, 2)),
+          runStatus: S.optional(__S(288, __c9, 0)),
+        }),
+      ).annotate({
+        identifier: "StorageTaskAssignmentUpdatePropertiesInput",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          accountName: S.String.pipe(T.Label()),
+          storageTaskAssignmentName: S.String.pipe(T.Label()),
+          properties: S.optional(__S(1923, __c60, 3)),
+        }).pipe(
+          T.Http({
+            method: "PATCH",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/storageTaskAssignments/{storageTaskAssignmentName}",
+            code: 200,
+            apiVersion: "2026-09-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "UpdateStorageTaskAssignmentRequest",
+      });
+  }
+}
+function __c61(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          accountName: S.String.pipe(T.Label()),
+          tableName: S.String.pipe(T.Label()),
+          properties: S.optional(__S(2720, __c85, 0)),
+        }).pipe(
+          T.Http({
+            method: "PATCH",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/tableServices/default/tables/{tableName}",
+            code: 200,
+            apiVersion: "2026-09-01",
+          }),
+        ),
+      ).annotate({ identifier: "UpdateTableRequest" });
+  }
+}
+function __c62(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          description: S.optional(S.String),
+          accessPolicies: __S(2017, __c63, 1),
+          assets: __S(2019, __c63, 3),
+        }),
+      ).annotate({
+        identifier: "StorageDataSharePropertiesInput",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          accountName: S.String.pipe(T.Label()),
+          dataShareName: S.String.pipe(T.Label()),
+          tags: S.optional(__S(224, __c7, 0)),
+          location: S.String,
+          properties: __S(1984, __c62, 0),
+        }).pipe(
+          T.Http({
+            method: "PUT",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/dataShares/{dataShareName}",
+            code: 200,
+            apiVersion: "2026-09-01",
+          }),
+        ),
+      ).annotate({ identifier: "CreateDataShareRequest" });
+  }
+}
+function __c63(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          principalId: S.String,
+          tenantId: S.String,
+          permission: S.String,
+        }),
+      ).annotate({
+        identifier: "StorageDataShareAccessPolicy",
+      });
+    case 1:
+      return S.Array(__S(2016, __c63, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          assetPath: S.String,
+          displayName: S.String,
+        }),
+      ).annotate({ identifier: "StorageDataShareAsset" });
+    case 3:
+      return S.Array(__S(2018, __c63, 2));
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          dataShareIdentifier: S.optional(S.String),
+          description: S.optional(S.String),
+          dataShareUri: S.optional(S.String),
+          accessPolicies: __S(2017, __c63, 1),
+          assets: __S(2019, __c63, 3),
+          provisioningState: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "StorageDataShareProperties",
+      });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(64, __c2, 0)),
+          tags: S.optional(__S(224, __c7, 0)),
+          location: S.String,
+          properties: __S(2020, __c63, 4),
+        }),
+      ).annotate({ identifier: "CreateDataShareResponse" });
+  }
+}
+function __c64(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          accountName: S.String.pipe(T.Label()),
+          shareName: S.String.pipe(T.Label()),
+          _expand: S.optional(S.String.pipe(T.Query("$expand"))),
+          properties: S.optional(__S(2080, __c65, 0)),
+        }).pipe(
+          T.Http({
+            method: "PUT",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/fileServices/default/shares/{shareName}",
+            code: 200,
+            apiVersion: "2026-09-01",
+          }),
+        ),
+      ).annotate({ identifier: "CreateFileShareRequest" });
+  }
+}
+function __c65(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          metadata: S.optional(__S(224, __c7, 0)),
+          shareQuota: S.optional(S.Number),
+          provisionedIops: S.optional(S.Number),
+          provisionedBandwidthMibps: S.optional(S.Number),
+          enabledProtocols: S.optional(S.String),
+          rootSquash: S.optional(S.String),
+          accessTier: S.optional(S.String),
+          signedIdentifiers: S.optional(__S(2146, __c67, 2)),
+          fileSharePaidBursting: S.optional(__S(2147, __c67, 3)),
+        }),
+      ).annotate({ identifier: "FileSharePropertiesInput" });
+  }
+}
+function __c66(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(64, __c2, 0)),
+          properties: S.optional(__S(2148, __c67, 4)),
+          etag: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "CreateFileShareResponse" });
+  }
+}
+function __c67(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          startTime: S.optional(S.String),
+          expiryTime: S.optional(S.String),
+          permission: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "AccessPolicy" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          accessPolicy: S.optional(__S(2144, __c67, 0)),
+        }),
+      ).annotate({ identifier: "SignedIdentifier" });
+    case 2:
+      return S.Array(__S(2145, __c67, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          paidBurstingEnabled: S.optional(S.Boolean),
+          paidBurstingMaxIops: S.optional(S.Number),
+          paidBurstingMaxBandwidthMibps: S.optional(S.Number),
+        }),
+      ).annotate({
+        identifier: "FileSharePropertiesFileSharePaidBursting",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          lastModifiedTime: S.optional(S.String),
+          metadata: S.optional(__S(224, __c7, 0)),
+          shareQuota: S.optional(S.Number),
+          provisionedIops: S.optional(S.Number),
+          provisionedBandwidthMibps: S.optional(S.Number),
+          includedBurstIops: S.optional(S.Number),
+          maxBurstCreditsForIops: S.optional(S.Number),
+          nextAllowedQuotaDowngradeTime: S.optional(S.String),
+          nextAllowedProvisionedIopsDowngradeTime: S.optional(S.String),
+          nextAllowedProvisionedBandwidthDowngradeTime: S.optional(S.String),
+          enabledProtocols: S.optional(S.String),
+          rootSquash: S.optional(S.String),
+          version: S.optional(S.String),
+          deleted: S.optional(S.Boolean),
+          deletedTime: S.optional(S.String),
+          remainingRetentionDays: S.optional(S.Number),
+          accessTier: S.optional(S.String),
+          accessTierChangeTime: S.optional(S.String),
+          accessTierStatus: S.optional(S.String),
+          shareUsageBytes: S.optional(S.Number),
+          leaseStatus: S.optional(S.String),
+          leaseState: S.optional(S.String),
+          leaseDuration: S.optional(S.String),
+          signedIdentifiers: S.optional(__S(2146, __c67, 2)),
+          snapshotTime: S.optional(S.String),
+          fileSharePaidBursting: S.optional(__S(2147, __c67, 3)),
+        }),
+      ).annotate({ identifier: "FileShareProperties" });
+  }
+}
+function __c68(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          accountName: S.String.pipe(T.Label()),
+          queueName: S.String.pipe(T.Label()),
+          properties: S.optional(__S(2240, __c70, 0)),
+        }).pipe(
+          T.Http({
+            method: "PUT",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/queueServices/default/queues/{queueName}",
+            code: 200,
+            apiVersion: "2026-09-01",
+          }),
+        ),
+      ).annotate({ identifier: "CreateQueueRequest" });
+  }
+}
+function __c69(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          metadata: S.optional(__S(224, __c7, 0)),
+          approximateMessageCount: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "QueueProperties" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(64, __c2, 0)),
+          properties: S.optional(__S(2208, __c69, 0)),
+        }),
+      ).annotate({ identifier: "CreateQueueResponse" });
+  }
+}
+function __c70(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          metadata: S.optional(__S(224, __c7, 0)),
+        }),
+      ).annotate({ identifier: "QueuePropertiesInput" });
+  }
+}
+function __c71(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          allowedCopyScope: S.optional(S.String),
+          publicNetworkAccess: S.optional(S.String),
+          sasPolicy: S.optional(__S(2498, __c78, 2)),
+          keyPolicy: S.optional(__S(2499, __c78, 3)),
+          customDomain: S.optional(__S(2500, __c78, 4)),
+          encryption: S.optional(__S(2309, __c72, 5)),
+          networkAcls: S.optional(__S(2312, __c72, 8)),
+          accessTier: S.optional(S.String),
+          turboTier: S.optional(__S(2506, __c78, 10)),
+          azureFilesIdentityBasedAuthentication: S.optional(__S(2509, __c78, 13)),
+          supportsHttpsTrafficOnly: S.optional(S.Boolean),
+          isSftpEnabled: S.optional(S.Boolean),
+          isLocalUserEnabled: S.optional(S.Boolean),
+          enableExtendedGroups: S.optional(S.Boolean),
+          isHnsEnabled: S.optional(S.Boolean),
+          largeFileSharesState: S.optional(S.String),
+          routingPreference: S.optional(__S(2510, __c78, 14)),
+          dualStackEndpointPreference: S.optional(__S(2511, __c78, 15)),
+          allowBlobPublicAccess: S.optional(S.Boolean),
+          minimumTlsVersion: S.optional(S.String),
+          allowSharedKeyAccess: S.optional(S.Boolean),
+          isNfsV3Enabled: S.optional(S.Boolean),
+          allowCrossTenantReplication: S.optional(S.Boolean),
+          defaultToOAuthAuthentication: S.optional(S.Boolean),
+          immutableStorageWithVersioning: S.optional(__S(2513, __c78, 17)),
+          dnsEndpointType: S.optional(S.String),
+          geoPriorityReplicationStatus: S.optional(__S(2514, __c78, 18)),
+          allowSharedKeyAccessForServices: S.optional(__S(2515, __c78, 19)),
+          dataCollaborationPolicyProperties: S.optional(__S(2516, __c78, 20)),
+          allowCrossTenantDelegationSas: S.optional(S.Boolean),
+        }),
+      ).annotate({
+        identifier: "StorageAccountPropertiesCreateParametersInput",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          accountName: S.String.pipe(T.Label()),
+          sku: __S(2336, __c73, 0),
+          kind: S.String,
+          location: S.String,
+          extendedLocation: S.optional(__S(2496, __c78, 0)),
+          zones: S.optional(__S(160, __c5, 0)),
+          placement: S.optional(__S(2497, __c78, 1)),
+          tags: S.optional(__S(224, __c7, 0)),
+          identity: S.optional(__S(2305, __c72, 1)),
+          properties: S.optional(__S(2272, __c71, 0)),
+        }).pipe(
+          T.Http({
+            method: "PUT",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}",
+            code: 200,
+            apiVersion: "2026-09-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateStorageAccountRequest",
+      });
+  }
+}
+function __c72(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, __S(288, __c9, 0));
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          type: S.String,
+          userAssignedIdentities: S.optional(__S(2304, __c72, 0)),
+        }),
+      ).annotate({ identifier: "IdentityInput" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          enabled: S.optional(S.Boolean),
+          keyType: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "EncryptionServiceInput" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          blob: S.optional(__S(2306, __c72, 2)),
+          file: S.optional(__S(2306, __c72, 2)),
+          table: S.optional(__S(2306, __c72, 2)),
+          queue: S.optional(__S(2306, __c72, 2)),
+        }),
+      ).annotate({ identifier: "EncryptionServicesInput" });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          keyname: S.optional(S.String),
+          keyversion: S.optional(S.String),
+          keyvaulturi: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "KeyVaultPropertiesInput" });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          services: S.optional(__S(2307, __c72, 3)),
+          keySource: S.optional(S.String),
+          requireInfrastructureEncryption: S.optional(S.Boolean),
+          keyvaultproperties: S.optional(__S(2308, __c72, 4)),
+          identity: S.optional(__S(2501, __c78, 5)),
+        }),
+      ).annotate({ identifier: "EncryptionInput" });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          action: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "VirtualNetworkRuleInput" });
+    case 7:
+      return S.Array(__S(2310, __c72, 6));
+    case 8:
+      return S.suspend(() =>
+        S.Struct({
+          bypass: S.optional(S.String),
+          resourceAccessRules: S.optional(__S(2503, __c78, 7)),
+          virtualNetworkRules: S.optional(__S(2311, __c72, 7)),
+          ipRules: S.optional(__S(2505, __c78, 9)),
+          ipv6Rules: S.optional(__S(2505, __c78, 9)),
+          defaultAction: S.String,
+        }),
+      ).annotate({ identifier: "NetworkRuleSetInput" });
+  }
+}
+function __c73(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String,
+          tier: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Sku" });
+  }
+}
+function __c74(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "PrivateEndpoint" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          status: S.optional(S.String),
+          description: S.optional(S.String),
+          actionRequired: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "PrivateLinkServiceConnectionState",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          privateEndpoint: S.optional(__S(2368, __c74, 0)),
+          privateLinkServiceConnectionState: __S(2369, __c74, 1),
+          provisioningState: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "PrivateEndpointConnectionProperties",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(64, __c2, 0)),
+          properties: S.optional(__S(2370, __c74, 2)),
+        }),
+      ).annotate({
+        identifier: "PrivateEndpointConnection",
+      });
+  }
+}
+function __c75(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(64, __c2, 0)),
+          tags: S.optional(__S(224, __c7, 0)),
+          location: S.String,
+          properties: S.optional(__S(2531, __c79, 3)),
+          sku: S.optional(__S(2336, __c73, 0)),
+          kind: S.optional(S.String),
+          identity: S.optional(__S(2533, __c79, 5)),
+          extendedLocation: S.optional(__S(2496, __c78, 0)),
+          zones: S.optional(__S(160, __c5, 0)),
+          placement: S.optional(__S(2497, __c78, 1)),
+        }),
+      ).annotate({
+        identifier: "CreateStorageAccountResponse",
+      });
+  }
+}
+function __c76(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(2371, __c74, 3));
+  }
+}
+function __c77(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          startRange: S.String,
+          endRange: S.String,
+        }),
+      ).annotate({ identifier: "BlobRestoreRange" });
+    case 1:
+      return S.Array(__S(2464, __c77, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          timeToRestore: S.String,
+          blobRanges: __S(2465, __c77, 1),
+        }),
+      ).annotate({ identifier: "BlobRestoreParameters" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          status: S.optional(S.String),
+          failureReason: S.optional(S.String),
+          restoreId: S.optional(S.String),
+          parameters: S.optional(__S(2466, __c77, 2)),
+        }),
+      ).annotate({ identifier: "BlobRestoreStatus" });
+  }
+}
+function __c78(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ExtendedLocation" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          zonePlacementPolicy: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Placement" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          sasExpirationPeriod: S.String,
+          expirationAction: S.String,
+          requireUserBoundUserDelegationSas: S.optional(S.Boolean),
+          requireUserBoundUserDelegationSasAction: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "SasPolicy" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          keyExpirationPeriodInDays: S.Number,
+        }),
+      ).annotate({ identifier: "KeyPolicy" });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String,
+          useSubDomainName: S.optional(S.Boolean),
+        }),
+      ).annotate({ identifier: "CustomDomain" });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          userAssignedIdentity: S.optional(S.String),
+          federatedIdentityClientId: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "EncryptionIdentity" });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          tenantId: S.optional(S.String),
+          resourceId: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ResourceAccessRule" });
+    case 7:
+      return S.Array(__S(2502, __c78, 6));
+    case 8:
+      return S.suspend(() =>
+        S.Struct({
+          value: S.String,
+          action: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "IPRule" });
+    case 9:
+      return S.Array(__S(2504, __c78, 8));
+    case 10:
+      return S.suspend(() =>
+        S.Struct({
+          status: S.optional(S.String),
+          targetPercent: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "TurboTier" });
+    case 11:
+      return S.suspend(() =>
+        S.Struct({
+          domainName: S.optional(S.String),
+          netBiosDomainName: S.optional(S.String),
+          forestName: S.optional(S.String),
+          domainGuid: S.optional(S.String),
+          domainSid: S.optional(S.String),
+          azureStorageSid: S.optional(S.String),
+          samAccountName: S.optional(S.String),
+          accountType: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "ActiveDirectoryProperties",
+      });
+    case 12:
+      return S.suspend(() =>
+        S.Struct({
+          isSmbOAuthEnabled: S.optional(S.Boolean),
+        }),
+      ).annotate({ identifier: "SmbOAuthSettings" });
+    case 13:
+      return S.suspend(() =>
+        S.Struct({
+          directoryServiceOptions: S.String,
+          activeDirectoryProperties: S.optional(__S(2507, __c78, 11)),
+          defaultSharePermission: S.optional(S.String),
+          smbOAuthSettings: S.optional(__S(2508, __c78, 12)),
+        }),
+      ).annotate({
+        identifier: "AzureFilesIdentityBasedAuthentication",
+      });
+    case 14:
+      return S.suspend(() =>
+        S.Struct({
+          routingChoice: S.optional(S.String),
+          publishMicrosoftEndpoints: S.optional(S.Boolean),
+          publishInternetEndpoints: S.optional(S.Boolean),
+        }),
+      ).annotate({ identifier: "RoutingPreference" });
+    case 15:
+      return S.suspend(() =>
+        S.Struct({
+          publishIpv6Endpoint: S.optional(S.Boolean),
+        }),
+      ).annotate({
+        identifier: "DualStackEndpointPreference",
+      });
+    case 16:
+      return S.suspend(() =>
+        S.Struct({
+          immutabilityPeriodSinceCreationInDays: S.optional(S.Number),
+          state: S.optional(S.String),
+          allowProtectedAppendWrites: S.optional(S.Boolean),
+        }),
+      ).annotate({
+        identifier: "AccountImmutabilityPolicyProperties",
+      });
+    case 17:
+      return S.suspend(() =>
+        S.Struct({
+          enabled: S.optional(S.Boolean),
+          immutabilityPolicy: S.optional(__S(2512, __c78, 16)),
+        }),
+      ).annotate({ identifier: "ImmutableStorageAccount" });
+    case 18:
+      return S.suspend(() =>
+        S.Struct({
+          isBlobEnabled: S.optional(S.Boolean),
+        }),
+      ).annotate({
+        identifier: "GeoPriorityReplicationStatus",
+      });
+    case 19:
+      return S.suspend(() =>
+        S.Struct({
+          blob: S.optional(__S(1216, __c38, 0)),
+          file: S.optional(__S(1216, __c38, 0)),
+          table: S.optional(__S(1216, __c38, 0)),
+          queue: S.optional(__S(1216, __c38, 0)),
+        }),
+      ).annotate({
+        identifier: "StorageAccountSharedKeyAccessProperties",
+      });
+    case 20:
+      return S.suspend(() =>
+        S.Struct({
+          allowStorageConnectors: S.optional(S.Boolean),
+          allowBlobAccessPoints: S.optional(S.Boolean),
+          allowStorageDataShares: S.optional(S.Boolean),
+          allowCrossTenantDataSharing: S.optional(S.Boolean),
+        }),
+      ).annotate({
+        identifier: "StorageDataCollaborationPolicyProperties",
+      });
+    case 21:
+      return S.suspend(() =>
+        S.Struct({
+          blob: S.optional(S.String),
+          queue: S.optional(S.String),
+          table: S.optional(S.String),
+          file: S.optional(S.String),
+          web: S.optional(S.String),
+          dfs: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "StorageAccountMicrosoftEndpoints",
+      });
+    case 22:
+      return S.suspend(() =>
+        S.Struct({
+          blob: S.optional(S.String),
+          file: S.optional(S.String),
+          web: S.optional(S.String),
+          dfs: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "StorageAccountInternetEndpoints",
+      });
+    case 23:
+      return S.suspend(() =>
+        S.Struct({
+          blob: S.optional(S.String),
+          queue: S.optional(S.String),
+          table: S.optional(S.String),
+          file: S.optional(S.String),
+          web: S.optional(S.String),
+          dfs: S.optional(S.String),
+          microsoftEndpoints: S.optional(__S(2517, __c78, 21)),
+          internetEndpoints: S.optional(__S(2518, __c78, 22)),
+        }),
+      ).annotate({
+        identifier: "StorageAccountIpv6Endpoints",
+      });
+    case 24:
+      return S.suspend(() =>
+        S.Struct({
+          blob: S.optional(S.String),
+          queue: S.optional(S.String),
+          table: S.optional(S.String),
+          file: S.optional(S.String),
+          web: S.optional(S.String),
+          dfs: S.optional(S.String),
+          microsoftEndpoints: S.optional(__S(2517, __c78, 21)),
+          internetEndpoints: S.optional(__S(2518, __c78, 22)),
+          ipv6Endpoints: S.optional(__S(2519, __c78, 23)),
+        }),
+      ).annotate({ identifier: "Endpoints" });
+    case 25:
+      return S.suspend(() =>
+        S.Struct({
+          key1: S.optional(S.String),
+          key2: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "KeyCreationTime" });
+    case 26:
+      return S.suspend(() =>
+        S.Struct({
+          enabled: S.optional(S.Boolean),
+          lastEnabledTime: S.optional(S.String),
+          keyType: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "EncryptionService" });
+    case 27:
+      return S.suspend(() =>
+        S.Struct({
+          blob: S.optional(__S(2522, __c78, 26)),
+          file: S.optional(__S(2522, __c78, 26)),
+          table: S.optional(__S(2522, __c78, 26)),
+          queue: S.optional(__S(2522, __c78, 26)),
+        }),
+      ).annotate({ identifier: "EncryptionServices" });
+    case 28:
+      return S.suspend(() =>
+        S.Struct({
+          keyname: S.optional(S.String),
+          keyversion: S.optional(S.String),
+          keyvaulturi: S.optional(S.String),
+          currentVersionedKeyIdentifier: S.optional(S.String),
+          lastKeyRotationTimestamp: S.optional(S.String),
+          currentVersionedKeyExpirationTimestamp: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "KeyVaultProperties" });
+    case 29:
+      return S.suspend(() =>
+        S.Struct({
+          services: S.optional(__S(2523, __c78, 27)),
+          keySource: S.optional(S.String),
+          requireInfrastructureEncryption: S.optional(S.Boolean),
+          keyvaultproperties: S.optional(__S(2524, __c78, 28)),
+          identity: S.optional(__S(2501, __c78, 5)),
+        }),
+      ).annotate({ identifier: "Encryption" });
+    case 30:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          action: S.optional(S.String),
+          state: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "VirtualNetworkRule" });
+    case 31:
+      return S.Array(__S(2526, __c78, 30));
+  }
+}
+function __c79(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          bypass: S.optional(S.String),
+          resourceAccessRules: S.optional(__S(2503, __c78, 7)),
+          virtualNetworkRules: S.optional(__S(2527, __c78, 31)),
+          ipRules: S.optional(__S(2505, __c78, 9)),
+          ipv6Rules: S.optional(__S(2505, __c78, 9)),
+          defaultAction: S.String,
+        }),
+      ).annotate({ identifier: "NetworkRuleSet" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          status: S.optional(S.String),
+          lastSyncTime: S.optional(S.String),
+          canFailover: S.optional(S.Boolean),
+          canPlannedFailover: S.optional(S.Boolean),
+          postFailoverRedundancy: S.optional(S.String),
+          postPlannedFailoverRedundancy: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "GeoReplicationStats" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          skuConversionStatus: S.optional(S.String),
+          targetSkuName: S.optional(S.String),
+          startTime: S.optional(S.String),
+          endTime: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "StorageAccountSkuConversionStatus",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          provisioningState: S.optional(S.String),
+          primaryEndpoints: S.optional(__S(2520, __c78, 24)),
+          primaryLocation: S.optional(S.String),
+          statusOfPrimary: S.optional(S.String),
+          lastGeoFailoverTime: S.optional(S.String),
+          secondaryLocation: S.optional(S.String),
+          statusOfSecondary: S.optional(S.String),
+          creationTime: S.optional(S.String),
+          customDomain: S.optional(__S(2500, __c78, 4)),
+          sasPolicy: S.optional(__S(2498, __c78, 2)),
+          keyPolicy: S.optional(__S(2499, __c78, 3)),
+          keyCreationTime: S.optional(__S(2521, __c78, 25)),
+          secondaryEndpoints: S.optional(__S(2520, __c78, 24)),
+          encryption: S.optional(__S(2525, __c78, 29)),
+          accessTier: S.optional(S.String),
+          turboTier: S.optional(__S(2506, __c78, 10)),
+          azureFilesIdentityBasedAuthentication: S.optional(__S(2509, __c78, 13)),
+          supportsHttpsTrafficOnly: S.optional(S.Boolean),
+          networkAcls: S.optional(__S(2528, __c79, 0)),
+          isSftpEnabled: S.optional(S.Boolean),
+          isLocalUserEnabled: S.optional(S.Boolean),
+          enableExtendedGroups: S.optional(S.Boolean),
+          isHnsEnabled: S.optional(S.Boolean),
+          geoReplicationStats: S.optional(__S(2529, __c79, 1)),
+          failoverInProgress: S.optional(S.Boolean),
+          largeFileSharesState: S.optional(S.String),
+          privateEndpointConnections: S.optional(__S(2432, __c76, 0)),
+          routingPreference: S.optional(__S(2510, __c78, 14)),
+          dualStackEndpointPreference: S.optional(__S(2511, __c78, 15)),
+          blobRestoreStatus: S.optional(__S(2467, __c77, 3)),
+          allowBlobPublicAccess: S.optional(S.Boolean),
+          minimumTlsVersion: S.optional(S.String),
+          allowSharedKeyAccess: S.optional(S.Boolean),
+          isNfsV3Enabled: S.optional(S.Boolean),
+          allowCrossTenantReplication: S.optional(S.Boolean),
+          defaultToOAuthAuthentication: S.optional(S.Boolean),
+          publicNetworkAccess: S.optional(S.String),
+          immutableStorageWithVersioning: S.optional(__S(2513, __c78, 17)),
+          allowedCopyScope: S.optional(S.String),
+          storageAccountSkuConversionStatus: S.optional(__S(2530, __c79, 2)),
+          dnsEndpointType: S.optional(S.String),
+          isSkuConversionBlocked: S.optional(S.Boolean),
+          accountMigrationInProgress: S.optional(S.Boolean),
+          geoPriorityReplicationStatus: S.optional(__S(2514, __c78, 18)),
+          allowSharedKeyAccessForServices: S.optional(__S(2515, __c78, 19)),
+          dataCollaborationPolicyProperties: S.optional(__S(2516, __c78, 20)),
+          allowCrossTenantDelegationSas: S.optional(S.Boolean),
+        }),
+      ).annotate({ identifier: "StorageAccountProperties" });
+    case 4:
+      return S.Record(S.String, __S(320, __c10, 0));
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          principalId: S.optional(S.String),
+          tenantId: S.optional(S.String),
+          type: S.String,
+          userAssignedIdentities: S.optional(__S(2532, __c79, 4)),
+        }),
+      ).annotate({ identifier: "Identity" });
+  }
+}
+function __c80(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          taskId: S.String,
+          enabled: S.Boolean,
+          description: S.String,
+          executionContext: __S(2659, __c83, 3),
+          report: __S(2660, __c83, 4),
+          runStatus: S.optional(__S(288, __c9, 0)),
+        }),
+      ).annotate({
+        identifier: "StorageTaskAssignmentPropertiesInput",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          accountName: S.String.pipe(T.Label()),
+          storageTaskAssignmentName: S.String.pipe(T.Label()),
+          properties: S.optional(__S(2560, __c80, 0)),
+        }).pipe(
+          T.Http({
+            method: "PUT",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/storageTaskAssignments/{storageTaskAssignmentName}",
+            code: 200,
+            apiVersion: "2026-09-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateStorageTaskAssignmentRequest",
+      });
+  }
+}
+function __c81(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(64, __c2, 0)),
+          properties: S.optional(__S(2661, __c83, 5)),
+        }),
+      ).annotate({
+        identifier: "CreateStorageTaskAssignmentResponse",
+      });
+  }
+}
+function __c82(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          taskAssignmentId: S.optional(S.String),
+          storageAccountId: S.optional(S.String),
+          startTime: S.optional(S.String),
+          finishTime: S.optional(S.String),
+          objectsTargetedCount: S.optional(S.String),
+          objectsOperatedOnCount: S.optional(S.String),
+          objectFailedCount: S.optional(S.String),
+          objectsSucceededCount: S.optional(S.String),
+          runStatusError: S.optional(S.String),
+          runStatusEnum: S.optional(S.String),
+          summaryReportPath: S.optional(S.String),
+          taskId: S.optional(S.String),
+          taskVersion: S.optional(S.String),
+          runResult: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "StorageTaskReportProperties",
+      });
+  }
+}
+function __c83(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          prefix: S.optional(__S(160, __c5, 0)),
+          excludePrefix: S.optional(__S(160, __c5, 0)),
+        }),
+      ).annotate({ identifier: "ExecutionTarget" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          startFrom: S.optional(S.String),
+          interval: S.optional(S.Number),
+          intervalUnit: S.optional(S.String),
+          endBy: S.optional(S.String),
+          startOn: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "TriggerParameters" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          type: S.String,
+          parameters: __S(2657, __c83, 1),
+        }),
+      ).annotate({ identifier: "ExecutionTrigger" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          target: S.optional(__S(2656, __c83, 0)),
+          trigger: __S(2658, __c83, 2),
+        }),
+      ).annotate({
+        identifier: "StorageTaskAssignmentExecutionContext",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          prefix: S.String,
+        }),
+      ).annotate({
+        identifier: "StorageTaskAssignmentReport",
+      });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          taskId: S.String,
+          enabled: S.Boolean,
+          description: S.String,
+          executionContext: __S(2659, __c83, 3),
+          report: __S(2660, __c83, 4),
+          provisioningState: S.optional(S.String),
+          runStatus: S.optional(__S(2624, __c82, 0)),
+        }),
+      ).annotate({
+        identifier: "StorageTaskAssignmentProperties",
+      });
+  }
+}
+function __c84(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          accountName: S.String.pipe(T.Label()),
+          tableName: S.String.pipe(T.Label()),
+          properties: S.optional(__S(2720, __c85, 0)),
+        }).pipe(
+          T.Http({
+            method: "PUT",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/tableServices/default/tables/{tableName}",
+            code: 200,
+            apiVersion: "2026-09-01",
+          }),
+        ),
+      ).annotate({ identifier: "CreateTableRequest" });
+  }
+}
+function __c85(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          signedIdentifiers: S.optional(__S(2754, __c86, 2)),
+        }),
+      ).annotate({ identifier: "TablePropertiesInput" });
+  }
+}
+function __c86(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          startTime: S.optional(S.String),
+          expiryTime: S.optional(S.String),
+          permission: S.String,
+        }),
+      ).annotate({ identifier: "TableAccessPolicy" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          accessPolicy: S.optional(__S(2752, __c86, 0)),
+        }),
+      ).annotate({ identifier: "TableSignedIdentifier" });
+    case 2:
+      return S.Array(__S(2753, __c86, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          tableName: S.optional(S.String),
+          signedIdentifiers: S.optional(__S(2754, __c86, 2)),
+        }),
+      ).annotate({ identifier: "TableProperties" });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(64, __c2, 0)),
+          properties: S.optional(__S(2755, __c86, 3)),
+        }),
+      ).annotate({ identifier: "CreateTableResponse" });
+  }
+}
+function __c87(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          accountName: S.String.pipe(T.Label()),
+          containerName: S.String.pipe(T.Label()),
+          properties: __S(2816, __c88, 0),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -8386,20 +11151,256 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "BlobContainersCreateOrUpdateImmutabilityPolicyRequest",
       });
-    case 4:
+  }
+}
+function __c88(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          immutabilityPeriodSinceCreationInDays: S.optional(S.Number),
+          state: S.optional(S.String),
+          allowProtectedAppendWrites: S.optional(S.Boolean),
+          allowProtectedAppendWritesAll: S.optional(S.Boolean),
+        }),
+      ).annotate({
+        identifier: "ImmutabilityPolicyProperty",
+      });
+  }
+}
+function __c89(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(7, __c0, 7)),
-          properties: __S(10, __c1, 2),
+          systemData: S.optional(__S(64, __c2, 0)),
+          properties: __S(2816, __c88, 0),
           etag: S.optional(S.String),
         }),
       ).annotate({
         identifier: "BlobContainersCreateOrUpdateImmutabilityPolicyResponse",
       });
-    case 5:
+  }
+}
+function __c90(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          accountName: S.String.pipe(T.Label()),
+          advancedPlatformMetricsRuleType: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/advancedPlatformMetrics/{advancedPlatformMetricsRuleType}",
+            code: 200,
+            apiVersion: "2026-09-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteAdvancedPlatformMetricsRequest",
+      });
+  }
+}
+function __c91(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          accountName: S.String.pipe(T.Label()),
+          blobAccessPointConfigurationName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/blobAccessPointConfigurations/{blobAccessPointConfigurationName}",
+            code: 200,
+            apiVersion: "2026-09-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteBlobAccessPointConfigurationRequest",
+      });
+  }
+}
+function __c92(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          accountName: S.String.pipe(T.Label()),
+          containerName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/blobServices/default/containers/{containerName}",
+            code: 200,
+            apiVersion: "2026-09-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteBlobContainerRequest",
+      });
+  }
+}
+function __c93(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          accountName: S.String.pipe(T.Label()),
+          containerName: S.String.pipe(T.Label()),
+          ifMatch: S.String.pipe(T.Header("If-Match")),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/blobServices/default/containers/{containerName}/immutabilityPolicies/default",
+            code: 200,
+            apiVersion: "2026-09-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteBlobContainerImmutabilityPolicyRequest",
+      });
+  }
+}
+function __c94(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          accountName: S.String.pipe(T.Label()),
+          blobInventoryPolicyName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/inventoryPolicies/{blobInventoryPolicyName}",
+            code: 200,
+            apiVersion: "2026-09-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteBlobInventoryPolicyRequest",
+      });
+  }
+}
+function __c95(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          accountName: S.String.pipe(T.Label()),
+          connectorName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/connectors/{connectorName}",
+            code: 200,
+            apiVersion: "2026-09-01",
+          }),
+        ),
+      ).annotate({ identifier: "DeleteConnectorRequest" });
+  }
+}
+function __c96(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          contextCacheName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/contextCaches/{contextCacheName}",
+            code: 200,
+            apiVersion: "2026-09-01",
+          }),
+        ),
+      ).annotate({ identifier: "DeleteContextCachRequest" });
+  }
+}
+function __c97(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          contextCacheName: S.String.pipe(T.Label()),
+          contextCacheContainerName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/contextCaches/{contextCacheName}/contextCacheContainers/{contextCacheContainerName}",
+            code: 200,
+            apiVersion: "2026-09-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteContextCacheContainerRequest",
+      });
+  }
+}
+function __c98(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          accountName: S.String.pipe(T.Label()),
+          dataShareName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/dataShares/{dataShareName}",
+            code: 200,
+            apiVersion: "2026-09-01",
+          }),
+        ),
+      ).annotate({ identifier: "DeleteDataShareRequest" });
+  }
+}
+function __c99(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          accountName: S.String.pipe(T.Label()),
+          shareName: S.String.pipe(T.Label()),
+          _include: S.optional(S.String.pipe(T.Query("$include"))),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/fileServices/default/shares/{shareName}",
+            code: 200,
+            apiVersion: "2026-09-01",
+          }),
+        ),
+      ).annotate({ identifier: "DeleteFileShareRequest" });
+  }
+}
+function __c100(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -8422,1948 +11423,22 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "BlobContainersLeaseRequest",
       });
-    case 6:
+  }
+}
+function __c101(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           leaseId: S.optional(S.String),
           leaseTimeSeconds: S.optional(S.String),
         }),
       ).annotate({ identifier: "LeaseContainerResponse" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          accountName: S.String.pipe(T.Label()),
-          containerName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/blobServices/default/containers/{containerName}/migrate",
-            code: 200,
-            apiVersion: "2026-09-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "BlobContainersObjectLevelWormRequest",
-      });
   }
 }
-function __c2(j: number): any {
+function __c102(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "BlobContainersObjectLevelWormResponse",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          lastNDays: S.optional(S.Number),
-        }),
-      ).annotate({
-        identifier: "BlobInventoryCreationTime",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          prefixMatch: S.optional(__S(3, __c0, 3)),
-          excludePrefix: S.optional(__S(3, __c0, 3)),
-          blobTypes: S.optional(__S(3, __c0, 3)),
-          includeBlobVersions: S.optional(S.Boolean),
-          includeSnapshots: S.optional(S.Boolean),
-          includeDeleted: S.optional(S.Boolean),
-          creationTime: S.optional(__S(17, __c2, 1)),
-        }),
-      ).annotate({
-        identifier: "BlobInventoryPolicyFilter",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          filters: S.optional(__S(18, __c2, 2)),
-          format: S.String,
-          schedule: S.String,
-          objectType: S.String,
-          schemaFields: __S(3, __c0, 3),
-        }),
-      ).annotate({
-        identifier: "BlobInventoryPolicyDefinition",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          enabled: S.Boolean,
-          name: S.String,
-          destination: S.String,
-          definition: __S(19, __c2, 3),
-        }),
-      ).annotate({ identifier: "BlobInventoryPolicyRule" });
-    case 5:
-      return S.Array(__S(20, __c2, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          enabled: S.Boolean,
-          type: S.String,
-          rules: __S(21, __c2, 5),
-        }),
-      ).annotate({
-        identifier: "BlobInventoryPolicySchemaInput",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          policy: __S(22, __c2, 6),
-        }),
-      ).annotate({
-        identifier: "BlobInventoryPolicyPropertiesInput",
-      });
-  }
-}
-function __c3(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          accountName: S.String.pipe(T.Label()),
-          blobInventoryPolicyName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(23, __c2, 7)),
-        }).pipe(
-          T.Http({
-            method: "PUT",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/inventoryPolicies/{blobInventoryPolicyName}",
-            code: 200,
-            apiVersion: "2026-09-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "BlobInventoryPoliciesCreateOrUpdateRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          enabled: S.Boolean,
-          destination: S.optional(S.String),
-          type: S.String,
-          rules: __S(21, __c2, 5),
-        }),
-      ).annotate({
-        identifier: "BlobInventoryPolicySchema",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          lastModifiedTime: S.optional(S.String),
-          policy: __S(25, __c3, 1),
-        }),
-      ).annotate({
-        identifier: "BlobInventoryPolicyProperties",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(7, __c0, 7)),
-          properties: S.optional(__S(26, __c3, 2)),
-        }),
-      ).annotate({
-        identifier: "BlobInventoryPoliciesCreateOrUpdateResponse",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          name: S.String,
-          type: S.String,
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/subscriptions/{subscriptionId}/providers/Microsoft.Storage/contextCacheCheckNameAvailability",
-            code: 200,
-            apiVersion: "2026-09-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "CheckContextCachNameAvailabilityRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          nameAvailable: S.Boolean,
-          reason: S.optional(S.String),
-          message: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "ContextCacheCheckNameAvailabilityResult",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          name: S.String,
-          type: S.String,
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/subscriptions/{subscriptionId}/providers/Microsoft.Storage/checkNameAvailability",
-            code: 200,
-            apiVersion: "2026-09-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "CheckStorageAccountNameAvailabilityRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          nameAvailable: S.optional(S.Boolean),
-          reason: S.optional(S.String),
-          message: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "CheckNameAvailabilityResult",
-      });
-  }
-}
-function __c4(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          accountName: S.String.pipe(T.Label()),
-          containerName: S.String.pipe(T.Label()),
-          tags: __S(3, __c0, 3),
-          allowProtectedAppendWritesAll: S.optional(S.Boolean),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/blobServices/default/containers/{containerName}/clearLegalHold",
-            code: 200,
-            apiVersion: "2026-09-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "ClearBlobContainerLegalHoldRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          hasLegalHold: S.optional(S.Boolean),
-          tags: __S(3, __c0, 3),
-          allowProtectedAppendWritesAll: S.optional(S.Boolean),
-        }),
-      ).annotate({ identifier: "LegalHold" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          description: S.optional(S.String),
-          modelName: S.String,
-          provider: S.String,
-          timeToLive: S.optional(S.Number),
-        }),
-      ).annotate({
-        identifier: "ContextCacheContainerPropertiesInput",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          contextCacheName: S.String.pipe(T.Label()),
-          contextCacheContainerName: S.String.pipe(T.Label()),
-          properties: __S(34, __c4, 2),
-        }).pipe(
-          T.Http({
-            method: "PUT",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/contextCaches/{contextCacheName}/contextCacheContainers/{contextCacheContainerName}",
-            code: 200,
-            apiVersion: "2026-09-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "ContextCacheContainersCreateOrUpdateRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          description: S.optional(S.String),
-          modelName: S.String,
-          provider: S.String,
-          timeToLive: S.optional(S.Number),
-          provisioningState: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "ContextCacheContainerProperties",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(7, __c0, 7)),
-          properties: __S(36, __c4, 4),
-        }),
-      ).annotate({
-        identifier: "ContextCacheContainersCreateOrUpdateResponse",
-      });
-    case 6:
-      return S.Record(S.String, S.String);
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          identityType: S.optional(S.String),
-          userAssignedIdentityResourceId: S.optional(S.String),
-          federatedClientId: S.optional(S.String),
-          delegatedIdentityClientId: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "AzureResourceManagerCommonTypesKeyEncryptionKeyIdentity",
-      });
-  }
-}
-function __c5(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          keyEncryptionKeyIdentity: S.optional(__S(39, __c4, 7)),
-          keyEncryptionKeyUrl: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "AzureResourceManagerCommonTypesCustomerManagedKeyEncryption",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          infrastructureEncryption: S.optional(S.String),
-          customerManagedKeyEncryption: S.optional(__S(40, __c5, 0)),
-        }),
-      ).annotate({
-        identifier: "AzureResourceManagerCommonTypesEncryption",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          accountKind: S.String,
-          description: S.optional(S.String),
-          encryption: S.optional(__S(41, __c5, 1)),
-        }),
-      ).annotate({
-        identifier: "ContextCachePropertiesInput",
-      });
-    case 3:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "UserAssignedIdentityInput",
-      });
-    case 4:
-      return S.Record(S.String, /*@__PURE__*/ S.NullOr(__S(43, __c5, 3)));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          type: S.String,
-          userAssignedIdentities: S.optional(__S(44, __c5, 4)),
-        }),
-      ).annotate({
-        identifier: "ContextCachesCreateOrUpdateRequestIdentity",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          contextCacheName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(38, __c4, 6)),
-          location: S.String,
-          properties: __S(42, __c5, 2),
-          identity: S.optional(__S(45, __c5, 5)),
-        }).pipe(
-          T.Http({
-            method: "PUT",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/contextCaches/{contextCacheName}",
-            code: 200,
-            apiVersion: "2026-09-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "ContextCachesCreateOrUpdateRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          accountKind: S.String,
-          description: S.optional(S.String),
-          provisioningState: S.optional(S.String),
-          encryption: S.optional(__S(41, __c5, 1)),
-        }),
-      ).annotate({ identifier: "ContextCacheProperties" });
-  }
-}
-function __c6(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          principalId: S.optional(S.String),
-          clientId: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "UserAssignedIdentity" });
-    case 1:
-      return S.Record(S.String, /*@__PURE__*/ S.NullOr(__S(48, __c6, 0)));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          principalId: S.optional(S.String),
-          tenantId: S.optional(S.String),
-          type: S.String,
-          userAssignedIdentities: S.optional(__S(49, __c6, 1)),
-        }),
-      ).annotate({
-        identifier: "ContextCachesCreateOrUpdateResponseIdentity",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(7, __c0, 7)),
-          tags: S.optional(__S(38, __c4, 6)),
-          location: S.String,
-          properties: __S(47, __c5, 7),
-          identity: S.optional(__S(50, __c6, 2)),
-        }),
-      ).annotate({
-        identifier: "ContextCachesCreateOrUpdateResponse",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          sourceType: S.String,
-        }),
-      ).annotate({
-        identifier: "BlobAccessPointSourceProperties",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          state: S.optional(S.String),
-          description: S.optional(S.String),
-          source: __S(52, __c6, 4),
-        }),
-      ).annotate({
-        identifier: "BlobAccessPointConfigurationPropertiesInput",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          accountName: S.String.pipe(T.Label()),
-          blobAccessPointConfigurationName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(38, __c4, 6)),
-          location: S.String,
-          properties: __S(53, __c6, 5),
-        }).pipe(
-          T.Http({
-            method: "PUT",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/blobAccessPointConfigurations/{blobAccessPointConfigurationName}",
-            code: 200,
-            apiVersion: "2026-09-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateBlobAccessPointConfigurationRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          uniqueId: S.optional(S.String),
-          state: S.optional(S.String),
-          description: S.optional(S.String),
-          lastConnectionTestStatus: S.optional(S.String),
-          lastConnectionTestTimestamp: S.optional(S.String),
-          lastConnectionTestErrorMessage: S.optional(S.String),
-          source: __S(52, __c6, 4),
-          provisioningState: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "BlobAccessPointConfigurationProperties",
-      });
-  }
-}
-function __c7(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(7, __c0, 7)),
-          tags: S.optional(__S(38, __c4, 6)),
-          location: S.String,
-          properties: __S(55, __c6, 7),
-        }),
-      ).annotate({
-        identifier: "CreateBlobAccessPointConfigurationResponse",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          enabled: S.optional(S.Boolean),
-        }),
-      ).annotate({
-        identifier: "ImmutableStorageWithVersioningInput",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          blobAccessPointConfigurationName: S.optional(S.String),
-          blobAccessPointConfigurationUniqueId: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "BlobAccessPointConfigurationConnection",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          defaultEncryptionScope: S.optional(S.String),
-          denyEncryptionScopeOverride: S.optional(S.Boolean),
-          publicAccess: S.optional(S.String),
-          metadata: S.optional(__S(38, __c4, 6)),
-          immutableStorageWithVersioning: S.optional(__S(57, __c7, 1)),
-          enableNfsV3RootSquash: S.optional(S.Boolean),
-          enableNfsV3AllSquash: S.optional(S.Boolean),
-          blobAccessPointConfiguration: S.optional(__S(58, __c7, 2)),
-        }),
-      ).annotate({ identifier: "ContainerPropertiesInput" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          accountName: S.String.pipe(T.Label()),
-          containerName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(59, __c7, 3)),
-        }).pipe(
-          T.Http({
-            method: "PUT",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/blobServices/default/containers/{containerName}",
-            code: 200,
-            apiVersion: "2026-09-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateBlobContainerRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          update: S.optional(S.String),
-          immutabilityPeriodSinceCreationInDays: S.optional(S.Number),
-          timestamp: S.optional(S.String),
-          objectIdentifier: S.optional(S.String),
-          tenantId: S.optional(S.String),
-          upn: S.optional(S.String),
-          allowProtectedAppendWrites: S.optional(S.Boolean),
-          allowProtectedAppendWritesAll: S.optional(S.Boolean),
-        }),
-      ).annotate({ identifier: "UpdateHistoryProperty" });
-    case 6:
-      return S.Array(__S(61, __c7, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          properties: S.optional(__S(10, __c1, 2)),
-          etag: S.optional(S.String),
-          updateHistory: S.optional(__S(62, __c7, 6)),
-        }),
-      ).annotate({
-        identifier: "ImmutabilityPolicyProperties",
-      });
-  }
-}
-function __c8(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          tag: S.optional(S.String),
-          timestamp: S.optional(S.String),
-          objectIdentifier: S.optional(S.String),
-          tenantId: S.optional(S.String),
-          upn: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "TagProperty" });
-    case 1:
-      return S.Array(__S(64, __c8, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          allowProtectedAppendWritesAll: S.optional(S.Boolean),
-          timestamp: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "ProtectedAppendWritesHistory",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          hasLegalHold: S.optional(S.Boolean),
-          tags: S.optional(__S(65, __c8, 1)),
-          protectedAppendWritesHistory: S.optional(__S(66, __c8, 2)),
-        }),
-      ).annotate({ identifier: "LegalHoldProperties" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          enabled: S.optional(S.Boolean),
-          timeStamp: S.optional(S.String),
-          migrationState: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "ImmutableStorageWithVersioning",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          version: S.optional(S.String),
-          deleted: S.optional(S.Boolean),
-          deletedTime: S.optional(S.String),
-          remainingRetentionDays: S.optional(S.Number),
-          defaultEncryptionScope: S.optional(S.String),
-          denyEncryptionScopeOverride: S.optional(S.Boolean),
-          publicAccess: S.optional(S.String),
-          lastModifiedTime: S.optional(S.String),
-          leaseStatus: S.optional(S.String),
-          leaseState: S.optional(S.String),
-          leaseDuration: S.optional(S.String),
-          metadata: S.optional(__S(38, __c4, 6)),
-          immutabilityPolicy: S.optional(__S(63, __c7, 7)),
-          legalHold: S.optional(__S(67, __c8, 3)),
-          hasLegalHold: S.optional(S.Boolean),
-          hasImmutabilityPolicy: S.optional(S.Boolean),
-          immutableStorageWithVersioning: S.optional(__S(68, __c8, 4)),
-          enableNfsV3RootSquash: S.optional(S.Boolean),
-          enableNfsV3AllSquash: S.optional(S.Boolean),
-          blobAccessPointConfiguration: S.optional(__S(58, __c7, 2)),
-        }),
-      ).annotate({ identifier: "ContainerProperties" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(7, __c0, 7)),
-          properties: S.optional(__S(69, __c8, 5)),
-          etag: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "CreateBlobContainerResponse",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          type: S.String,
-          dataShareUri: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "StorageConnectorConnection",
-      });
-  }
-}
-function __c9(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          type: S.String,
-          identityResourceId: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "StorageConnectorAuthProperties",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          type: S.String,
-          connection: S.optional(__S(71, __c8, 7)),
-          authProperties: S.optional(__S(72, __c9, 0)),
-        }),
-      ).annotate({ identifier: "StorageConnectorSource" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          state: S.optional(S.String),
-          description: S.optional(S.String),
-          testConnection: S.optional(S.Boolean),
-          dataSourceType: S.String,
-          source: __S(73, __c9, 1),
-        }),
-      ).annotate({
-        identifier: "StorageConnectorPropertiesInput",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          accountName: S.String.pipe(T.Label()),
-          connectorName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(38, __c4, 6)),
-          location: S.String,
-          properties: __S(74, __c9, 2),
-        }).pipe(
-          T.Http({
-            method: "PUT",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/connectors/{connectorName}",
-            code: 200,
-            apiVersion: "2026-09-01",
-          }),
-        ),
-      ).annotate({ identifier: "CreateConnectorRequest" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          uniqueId: S.optional(S.String),
-          state: S.optional(S.String),
-          creationTime: S.optional(S.String),
-          description: S.optional(S.String),
-          testConnection: S.optional(S.Boolean),
-          dataSourceType: S.String,
-          source: __S(73, __c9, 1),
-          provisioningState: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "StorageConnectorProperties",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(7, __c0, 7)),
-          tags: S.optional(__S(38, __c4, 6)),
-          location: S.String,
-          properties: __S(76, __c9, 4),
-        }),
-      ).annotate({ identifier: "CreateConnectorResponse" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          principalId: S.String,
-          tenantId: S.String,
-          permission: S.String,
-        }),
-      ).annotate({
-        identifier: "StorageDataShareAccessPolicy",
-      });
-    case 7:
-      return S.Array(__S(78, __c9, 6));
-  }
-}
-function __c10(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          assetPath: S.String,
-          displayName: S.String,
-        }),
-      ).annotate({ identifier: "StorageDataShareAsset" });
-    case 1:
-      return S.Array(__S(80, __c10, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          description: S.optional(S.String),
-          accessPolicies: __S(79, __c9, 7),
-          assets: __S(81, __c10, 1),
-        }),
-      ).annotate({
-        identifier: "StorageDataSharePropertiesInput",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          accountName: S.String.pipe(T.Label()),
-          dataShareName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(38, __c4, 6)),
-          location: S.String,
-          properties: __S(82, __c10, 2),
-        }).pipe(
-          T.Http({
-            method: "PUT",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/dataShares/{dataShareName}",
-            code: 200,
-            apiVersion: "2026-09-01",
-          }),
-        ),
-      ).annotate({ identifier: "CreateDataShareRequest" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          dataShareIdentifier: S.optional(S.String),
-          description: S.optional(S.String),
-          dataShareUri: S.optional(S.String),
-          accessPolicies: __S(79, __c9, 7),
-          assets: __S(81, __c10, 1),
-          provisioningState: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "StorageDataShareProperties",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(7, __c0, 7)),
-          tags: S.optional(__S(38, __c4, 6)),
-          location: S.String,
-          properties: __S(84, __c10, 4),
-        }),
-      ).annotate({ identifier: "CreateDataShareResponse" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          startTime: S.optional(S.String),
-          expiryTime: S.optional(S.String),
-          permission: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "AccessPolicy" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          accessPolicy: S.optional(__S(86, __c10, 6)),
-        }),
-      ).annotate({ identifier: "SignedIdentifier" });
-  }
-}
-function __c11(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(87, __c10, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          paidBurstingEnabled: S.optional(S.Boolean),
-          paidBurstingMaxIops: S.optional(S.Number),
-          paidBurstingMaxBandwidthMibps: S.optional(S.Number),
-        }),
-      ).annotate({
-        identifier: "FileSharePropertiesFileSharePaidBursting",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          metadata: S.optional(__S(38, __c4, 6)),
-          shareQuota: S.optional(S.Number),
-          provisionedIops: S.optional(S.Number),
-          provisionedBandwidthMibps: S.optional(S.Number),
-          enabledProtocols: S.optional(S.String),
-          rootSquash: S.optional(S.String),
-          accessTier: S.optional(S.String),
-          signedIdentifiers: S.optional(__S(88, __c11, 0)),
-          fileSharePaidBursting: S.optional(__S(89, __c11, 1)),
-        }),
-      ).annotate({ identifier: "FileSharePropertiesInput" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          accountName: S.String.pipe(T.Label()),
-          shareName: S.String.pipe(T.Label()),
-          _expand: S.optional(S.String.pipe(T.Query("$expand"))),
-          properties: S.optional(__S(90, __c11, 2)),
-        }).pipe(
-          T.Http({
-            method: "PUT",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/fileServices/default/shares/{shareName}",
-            code: 200,
-            apiVersion: "2026-09-01",
-          }),
-        ),
-      ).annotate({ identifier: "CreateFileShareRequest" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          lastModifiedTime: S.optional(S.String),
-          metadata: S.optional(__S(38, __c4, 6)),
-          shareQuota: S.optional(S.Number),
-          provisionedIops: S.optional(S.Number),
-          provisionedBandwidthMibps: S.optional(S.Number),
-          includedBurstIops: S.optional(S.Number),
-          maxBurstCreditsForIops: S.optional(S.Number),
-          nextAllowedQuotaDowngradeTime: S.optional(S.String),
-          nextAllowedProvisionedIopsDowngradeTime: S.optional(S.String),
-          nextAllowedProvisionedBandwidthDowngradeTime: S.optional(S.String),
-          enabledProtocols: S.optional(S.String),
-          rootSquash: S.optional(S.String),
-          version: S.optional(S.String),
-          deleted: S.optional(S.Boolean),
-          deletedTime: S.optional(S.String),
-          remainingRetentionDays: S.optional(S.Number),
-          accessTier: S.optional(S.String),
-          accessTierChangeTime: S.optional(S.String),
-          accessTierStatus: S.optional(S.String),
-          shareUsageBytes: S.optional(S.Number),
-          leaseStatus: S.optional(S.String),
-          leaseState: S.optional(S.String),
-          leaseDuration: S.optional(S.String),
-          signedIdentifiers: S.optional(__S(88, __c11, 0)),
-          snapshotTime: S.optional(S.String),
-          fileSharePaidBursting: S.optional(__S(89, __c11, 1)),
-        }),
-      ).annotate({ identifier: "FileShareProperties" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(7, __c0, 7)),
-          properties: S.optional(__S(92, __c11, 4)),
-          etag: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "CreateFileShareResponse" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          metadata: S.optional(__S(38, __c4, 6)),
-        }),
-      ).annotate({ identifier: "QueuePropertiesInput" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          accountName: S.String.pipe(T.Label()),
-          queueName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(94, __c11, 6)),
-        }).pipe(
-          T.Http({
-            method: "PUT",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/queueServices/default/queues/{queueName}",
-            code: 200,
-            apiVersion: "2026-09-01",
-          }),
-        ),
-      ).annotate({ identifier: "CreateQueueRequest" });
-  }
-}
-function __c12(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          metadata: S.optional(__S(38, __c4, 6)),
-          approximateMessageCount: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "QueueProperties" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(7, __c0, 7)),
-          properties: S.optional(__S(96, __c12, 0)),
-        }),
-      ).annotate({ identifier: "CreateQueueResponse" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String,
-          tier: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Sku" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ExtendedLocation" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          zonePlacementPolicy: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Placement" });
-    case 5:
-      return S.Record(S.String, __S(43, __c5, 3));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          type: S.String,
-          userAssignedIdentities: S.optional(__S(101, __c12, 5)),
-        }),
-      ).annotate({ identifier: "IdentityInput" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          sasExpirationPeriod: S.String,
-          expirationAction: S.String,
-          requireUserBoundUserDelegationSas: S.optional(S.Boolean),
-          requireUserBoundUserDelegationSasAction: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "SasPolicy" });
-  }
-}
-function __c13(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          keyExpirationPeriodInDays: S.Number,
-        }),
-      ).annotate({ identifier: "KeyPolicy" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String,
-          useSubDomainName: S.optional(S.Boolean),
-        }),
-      ).annotate({ identifier: "CustomDomain" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          enabled: S.optional(S.Boolean),
-          keyType: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "EncryptionServiceInput" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          blob: S.optional(__S(106, __c13, 2)),
-          file: S.optional(__S(106, __c13, 2)),
-          table: S.optional(__S(106, __c13, 2)),
-          queue: S.optional(__S(106, __c13, 2)),
-        }),
-      ).annotate({ identifier: "EncryptionServicesInput" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          keyname: S.optional(S.String),
-          keyversion: S.optional(S.String),
-          keyvaulturi: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "KeyVaultPropertiesInput" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          userAssignedIdentity: S.optional(S.String),
-          federatedIdentityClientId: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "EncryptionIdentity" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          services: S.optional(__S(107, __c13, 3)),
-          keySource: S.optional(S.String),
-          requireInfrastructureEncryption: S.optional(S.Boolean),
-          keyvaultproperties: S.optional(__S(108, __c13, 4)),
-          identity: S.optional(__S(109, __c13, 5)),
-        }),
-      ).annotate({ identifier: "EncryptionInput" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          tenantId: S.optional(S.String),
-          resourceId: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ResourceAccessRule" });
-  }
-}
-function __c14(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(111, __c13, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String,
-          action: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "VirtualNetworkRuleInput" });
-    case 2:
-      return S.Array(__S(113, __c14, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          value: S.String,
-          action: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "IPRule" });
-    case 4:
-      return S.Array(__S(115, __c14, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          bypass: S.optional(S.String),
-          resourceAccessRules: S.optional(__S(112, __c14, 0)),
-          virtualNetworkRules: S.optional(__S(114, __c14, 2)),
-          ipRules: S.optional(__S(116, __c14, 4)),
-          ipv6Rules: S.optional(__S(116, __c14, 4)),
-          defaultAction: S.String,
-        }),
-      ).annotate({ identifier: "NetworkRuleSetInput" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          status: S.optional(S.String),
-          targetPercent: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "TurboTier" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          domainName: S.optional(S.String),
-          netBiosDomainName: S.optional(S.String),
-          forestName: S.optional(S.String),
-          domainGuid: S.optional(S.String),
-          domainSid: S.optional(S.String),
-          azureStorageSid: S.optional(S.String),
-          samAccountName: S.optional(S.String),
-          accountType: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "ActiveDirectoryProperties",
-      });
-  }
-}
-function __c15(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          isSmbOAuthEnabled: S.optional(S.Boolean),
-        }),
-      ).annotate({ identifier: "SmbOAuthSettings" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          directoryServiceOptions: S.String,
-          activeDirectoryProperties: S.optional(__S(119, __c14, 7)),
-          defaultSharePermission: S.optional(S.String),
-          smbOAuthSettings: S.optional(__S(120, __c15, 0)),
-        }),
-      ).annotate({
-        identifier: "AzureFilesIdentityBasedAuthentication",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          routingChoice: S.optional(S.String),
-          publishMicrosoftEndpoints: S.optional(S.Boolean),
-          publishInternetEndpoints: S.optional(S.Boolean),
-        }),
-      ).annotate({ identifier: "RoutingPreference" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          publishIpv6Endpoint: S.optional(S.Boolean),
-        }),
-      ).annotate({
-        identifier: "DualStackEndpointPreference",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          immutabilityPeriodSinceCreationInDays: S.optional(S.Number),
-          state: S.optional(S.String),
-          allowProtectedAppendWrites: S.optional(S.Boolean),
-        }),
-      ).annotate({
-        identifier: "AccountImmutabilityPolicyProperties",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          enabled: S.optional(S.Boolean),
-          immutabilityPolicy: S.optional(__S(124, __c15, 4)),
-        }),
-      ).annotate({ identifier: "ImmutableStorageAccount" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          isBlobEnabled: S.optional(S.Boolean),
-        }),
-      ).annotate({
-        identifier: "GeoPriorityReplicationStatus",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          blob: S.optional(__S(57, __c7, 1)),
-          file: S.optional(__S(57, __c7, 1)),
-          table: S.optional(__S(57, __c7, 1)),
-          queue: S.optional(__S(57, __c7, 1)),
-        }),
-      ).annotate({
-        identifier: "StorageAccountSharedKeyAccessProperties",
-      });
-  }
-}
-function __c16(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          allowStorageConnectors: S.optional(S.Boolean),
-          allowBlobAccessPoints: S.optional(S.Boolean),
-          allowStorageDataShares: S.optional(S.Boolean),
-          allowCrossTenantDataSharing: S.optional(S.Boolean),
-        }),
-      ).annotate({
-        identifier: "StorageDataCollaborationPolicyProperties",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          allowedCopyScope: S.optional(S.String),
-          publicNetworkAccess: S.optional(S.String),
-          sasPolicy: S.optional(__S(103, __c12, 7)),
-          keyPolicy: S.optional(__S(104, __c13, 0)),
-          customDomain: S.optional(__S(105, __c13, 1)),
-          encryption: S.optional(__S(110, __c13, 6)),
-          networkAcls: S.optional(__S(117, __c14, 5)),
-          accessTier: S.optional(S.String),
-          turboTier: S.optional(__S(118, __c14, 6)),
-          azureFilesIdentityBasedAuthentication: S.optional(__S(121, __c15, 1)),
-          supportsHttpsTrafficOnly: S.optional(S.Boolean),
-          isSftpEnabled: S.optional(S.Boolean),
-          isLocalUserEnabled: S.optional(S.Boolean),
-          enableExtendedGroups: S.optional(S.Boolean),
-          isHnsEnabled: S.optional(S.Boolean),
-          largeFileSharesState: S.optional(S.String),
-          routingPreference: S.optional(__S(122, __c15, 2)),
-          dualStackEndpointPreference: S.optional(__S(123, __c15, 3)),
-          allowBlobPublicAccess: S.optional(S.Boolean),
-          minimumTlsVersion: S.optional(S.String),
-          allowSharedKeyAccess: S.optional(S.Boolean),
-          isNfsV3Enabled: S.optional(S.Boolean),
-          allowCrossTenantReplication: S.optional(S.Boolean),
-          defaultToOAuthAuthentication: S.optional(S.Boolean),
-          immutableStorageWithVersioning: S.optional(__S(125, __c15, 5)),
-          dnsEndpointType: S.optional(S.String),
-          geoPriorityReplicationStatus: S.optional(__S(126, __c15, 6)),
-          allowSharedKeyAccessForServices: S.optional(__S(127, __c15, 7)),
-          dataCollaborationPolicyProperties: S.optional(__S(128, __c16, 0)),
-          allowCrossTenantDelegationSas: S.optional(S.Boolean),
-        }),
-      ).annotate({
-        identifier: "StorageAccountPropertiesCreateParametersInput",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          accountName: S.String.pipe(T.Label()),
-          sku: __S(98, __c12, 2),
-          kind: S.String,
-          location: S.String,
-          extendedLocation: S.optional(__S(99, __c12, 3)),
-          zones: S.optional(__S(3, __c0, 3)),
-          placement: S.optional(__S(100, __c12, 4)),
-          tags: S.optional(__S(38, __c4, 6)),
-          identity: S.optional(__S(102, __c12, 6)),
-          properties: S.optional(__S(129, __c16, 1)),
-        }).pipe(
-          T.Http({
-            method: "PUT",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}",
-            code: 200,
-            apiVersion: "2026-09-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateStorageAccountRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          blob: S.optional(S.String),
-          queue: S.optional(S.String),
-          table: S.optional(S.String),
-          file: S.optional(S.String),
-          web: S.optional(S.String),
-          dfs: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "StorageAccountMicrosoftEndpoints",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          blob: S.optional(S.String),
-          file: S.optional(S.String),
-          web: S.optional(S.String),
-          dfs: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "StorageAccountInternetEndpoints",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          blob: S.optional(S.String),
-          queue: S.optional(S.String),
-          table: S.optional(S.String),
-          file: S.optional(S.String),
-          web: S.optional(S.String),
-          dfs: S.optional(S.String),
-          microsoftEndpoints: S.optional(__S(131, __c16, 3)),
-          internetEndpoints: S.optional(__S(132, __c16, 4)),
-        }),
-      ).annotate({
-        identifier: "StorageAccountIpv6Endpoints",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          blob: S.optional(S.String),
-          queue: S.optional(S.String),
-          table: S.optional(S.String),
-          file: S.optional(S.String),
-          web: S.optional(S.String),
-          dfs: S.optional(S.String),
-          microsoftEndpoints: S.optional(__S(131, __c16, 3)),
-          internetEndpoints: S.optional(__S(132, __c16, 4)),
-          ipv6Endpoints: S.optional(__S(133, __c16, 5)),
-        }),
-      ).annotate({ identifier: "Endpoints" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          key1: S.optional(S.String),
-          key2: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "KeyCreationTime" });
-  }
-}
-function __c17(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          enabled: S.optional(S.Boolean),
-          lastEnabledTime: S.optional(S.String),
-          keyType: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "EncryptionService" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          blob: S.optional(__S(136, __c17, 0)),
-          file: S.optional(__S(136, __c17, 0)),
-          table: S.optional(__S(136, __c17, 0)),
-          queue: S.optional(__S(136, __c17, 0)),
-        }),
-      ).annotate({ identifier: "EncryptionServices" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          keyname: S.optional(S.String),
-          keyversion: S.optional(S.String),
-          keyvaulturi: S.optional(S.String),
-          currentVersionedKeyIdentifier: S.optional(S.String),
-          lastKeyRotationTimestamp: S.optional(S.String),
-          currentVersionedKeyExpirationTimestamp: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "KeyVaultProperties" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          services: S.optional(__S(137, __c17, 1)),
-          keySource: S.optional(S.String),
-          requireInfrastructureEncryption: S.optional(S.Boolean),
-          keyvaultproperties: S.optional(__S(138, __c17, 2)),
-          identity: S.optional(__S(109, __c13, 5)),
-        }),
-      ).annotate({ identifier: "Encryption" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String,
-          action: S.optional(S.String),
-          state: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "VirtualNetworkRule" });
-    case 5:
-      return S.Array(__S(140, __c17, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          bypass: S.optional(S.String),
-          resourceAccessRules: S.optional(__S(112, __c14, 0)),
-          virtualNetworkRules: S.optional(__S(141, __c17, 5)),
-          ipRules: S.optional(__S(116, __c14, 4)),
-          ipv6Rules: S.optional(__S(116, __c14, 4)),
-          defaultAction: S.String,
-        }),
-      ).annotate({ identifier: "NetworkRuleSet" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          status: S.optional(S.String),
-          lastSyncTime: S.optional(S.String),
-          canFailover: S.optional(S.Boolean),
-          canPlannedFailover: S.optional(S.Boolean),
-          postFailoverRedundancy: S.optional(S.String),
-          postPlannedFailoverRedundancy: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "GeoReplicationStats" });
-  }
-}
-function __c18(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "PrivateEndpoint" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          status: S.optional(S.String),
-          description: S.optional(S.String),
-          actionRequired: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "PrivateLinkServiceConnectionState",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          privateEndpoint: S.optional(__S(144, __c18, 0)),
-          privateLinkServiceConnectionState: __S(145, __c18, 1),
-          provisioningState: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "PrivateEndpointConnectionProperties",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(7, __c0, 7)),
-          properties: S.optional(__S(146, __c18, 2)),
-        }),
-      ).annotate({
-        identifier: "PrivateEndpointConnection",
-      });
-    case 4:
-      return S.Array(__S(147, __c18, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          startRange: S.String,
-          endRange: S.String,
-        }),
-      ).annotate({ identifier: "BlobRestoreRange" });
-    case 6:
-      return S.Array(__S(149, __c18, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          timeToRestore: S.String,
-          blobRanges: __S(150, __c18, 6),
-        }),
-      ).annotate({ identifier: "BlobRestoreParameters" });
-  }
-}
-function __c19(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          status: S.optional(S.String),
-          failureReason: S.optional(S.String),
-          restoreId: S.optional(S.String),
-          parameters: S.optional(__S(151, __c18, 7)),
-        }),
-      ).annotate({ identifier: "BlobRestoreStatus" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          skuConversionStatus: S.optional(S.String),
-          targetSkuName: S.optional(S.String),
-          startTime: S.optional(S.String),
-          endTime: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "StorageAccountSkuConversionStatus",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          provisioningState: S.optional(S.String),
-          primaryEndpoints: S.optional(__S(134, __c16, 6)),
-          primaryLocation: S.optional(S.String),
-          statusOfPrimary: S.optional(S.String),
-          lastGeoFailoverTime: S.optional(S.String),
-          secondaryLocation: S.optional(S.String),
-          statusOfSecondary: S.optional(S.String),
-          creationTime: S.optional(S.String),
-          customDomain: S.optional(__S(105, __c13, 1)),
-          sasPolicy: S.optional(__S(103, __c12, 7)),
-          keyPolicy: S.optional(__S(104, __c13, 0)),
-          keyCreationTime: S.optional(__S(135, __c16, 7)),
-          secondaryEndpoints: S.optional(__S(134, __c16, 6)),
-          encryption: S.optional(__S(139, __c17, 3)),
-          accessTier: S.optional(S.String),
-          turboTier: S.optional(__S(118, __c14, 6)),
-          azureFilesIdentityBasedAuthentication: S.optional(__S(121, __c15, 1)),
-          supportsHttpsTrafficOnly: S.optional(S.Boolean),
-          networkAcls: S.optional(__S(142, __c17, 6)),
-          isSftpEnabled: S.optional(S.Boolean),
-          isLocalUserEnabled: S.optional(S.Boolean),
-          enableExtendedGroups: S.optional(S.Boolean),
-          isHnsEnabled: S.optional(S.Boolean),
-          geoReplicationStats: S.optional(__S(143, __c17, 7)),
-          failoverInProgress: S.optional(S.Boolean),
-          largeFileSharesState: S.optional(S.String),
-          privateEndpointConnections: S.optional(__S(148, __c18, 4)),
-          routingPreference: S.optional(__S(122, __c15, 2)),
-          dualStackEndpointPreference: S.optional(__S(123, __c15, 3)),
-          blobRestoreStatus: S.optional(__S(152, __c19, 0)),
-          allowBlobPublicAccess: S.optional(S.Boolean),
-          minimumTlsVersion: S.optional(S.String),
-          allowSharedKeyAccess: S.optional(S.Boolean),
-          isNfsV3Enabled: S.optional(S.Boolean),
-          allowCrossTenantReplication: S.optional(S.Boolean),
-          defaultToOAuthAuthentication: S.optional(S.Boolean),
-          publicNetworkAccess: S.optional(S.String),
-          immutableStorageWithVersioning: S.optional(__S(125, __c15, 5)),
-          allowedCopyScope: S.optional(S.String),
-          storageAccountSkuConversionStatus: S.optional(__S(153, __c19, 1)),
-          dnsEndpointType: S.optional(S.String),
-          isSkuConversionBlocked: S.optional(S.Boolean),
-          accountMigrationInProgress: S.optional(S.Boolean),
-          geoPriorityReplicationStatus: S.optional(__S(126, __c15, 6)),
-          allowSharedKeyAccessForServices: S.optional(__S(127, __c15, 7)),
-          dataCollaborationPolicyProperties: S.optional(__S(128, __c16, 0)),
-          allowCrossTenantDelegationSas: S.optional(S.Boolean),
-        }),
-      ).annotate({ identifier: "StorageAccountProperties" });
-    case 3:
-      return S.Record(S.String, __S(48, __c6, 0));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          principalId: S.optional(S.String),
-          tenantId: S.optional(S.String),
-          type: S.String,
-          userAssignedIdentities: S.optional(__S(155, __c19, 3)),
-        }),
-      ).annotate({ identifier: "Identity" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(7, __c0, 7)),
-          tags: S.optional(__S(38, __c4, 6)),
-          location: S.String,
-          properties: S.optional(__S(154, __c19, 2)),
-          sku: S.optional(__S(98, __c12, 2)),
-          kind: S.optional(S.String),
-          identity: S.optional(__S(156, __c19, 4)),
-          extendedLocation: S.optional(__S(99, __c12, 3)),
-          zones: S.optional(__S(3, __c0, 3)),
-          placement: S.optional(__S(100, __c12, 4)),
-        }),
-      ).annotate({
-        identifier: "CreateStorageAccountResponse",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          prefix: S.optional(__S(3, __c0, 3)),
-          excludePrefix: S.optional(__S(3, __c0, 3)),
-        }),
-      ).annotate({ identifier: "ExecutionTarget" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          startFrom: S.optional(S.String),
-          interval: S.optional(S.Number),
-          intervalUnit: S.optional(S.String),
-          endBy: S.optional(S.String),
-          startOn: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "TriggerParameters" });
-  }
-}
-function __c20(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          type: S.String,
-          parameters: __S(159, __c19, 7),
-        }),
-      ).annotate({ identifier: "ExecutionTrigger" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          target: S.optional(__S(158, __c19, 6)),
-          trigger: __S(160, __c20, 0),
-        }),
-      ).annotate({
-        identifier: "StorageTaskAssignmentExecutionContext",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          prefix: S.String,
-        }),
-      ).annotate({
-        identifier: "StorageTaskAssignmentReport",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          taskId: S.String,
-          enabled: S.Boolean,
-          description: S.String,
-          executionContext: __S(161, __c20, 1),
-          report: __S(162, __c20, 2),
-          runStatus: S.optional(__S(43, __c5, 3)),
-        }),
-      ).annotate({
-        identifier: "StorageTaskAssignmentPropertiesInput",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          accountName: S.String.pipe(T.Label()),
-          storageTaskAssignmentName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(163, __c20, 3)),
-        }).pipe(
-          T.Http({
-            method: "PUT",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/storageTaskAssignments/{storageTaskAssignmentName}",
-            code: 200,
-            apiVersion: "2026-09-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateStorageTaskAssignmentRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          taskAssignmentId: S.optional(S.String),
-          storageAccountId: S.optional(S.String),
-          startTime: S.optional(S.String),
-          finishTime: S.optional(S.String),
-          objectsTargetedCount: S.optional(S.String),
-          objectsOperatedOnCount: S.optional(S.String),
-          objectFailedCount: S.optional(S.String),
-          objectsSucceededCount: S.optional(S.String),
-          runStatusError: S.optional(S.String),
-          runStatusEnum: S.optional(S.String),
-          summaryReportPath: S.optional(S.String),
-          taskId: S.optional(S.String),
-          taskVersion: S.optional(S.String),
-          runResult: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "StorageTaskReportProperties",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          taskId: S.String,
-          enabled: S.Boolean,
-          description: S.String,
-          executionContext: __S(161, __c20, 1),
-          report: __S(162, __c20, 2),
-          provisioningState: S.optional(S.String),
-          runStatus: S.optional(__S(165, __c20, 5)),
-        }),
-      ).annotate({
-        identifier: "StorageTaskAssignmentProperties",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(7, __c0, 7)),
-          properties: S.optional(__S(166, __c20, 6)),
-        }),
-      ).annotate({
-        identifier: "CreateStorageTaskAssignmentResponse",
-      });
-  }
-}
-function __c21(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          startTime: S.optional(S.String),
-          expiryTime: S.optional(S.String),
-          permission: S.String,
-        }),
-      ).annotate({ identifier: "TableAccessPolicy" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String,
-          accessPolicy: S.optional(__S(168, __c21, 0)),
-        }),
-      ).annotate({ identifier: "TableSignedIdentifier" });
-    case 2:
-      return S.Array(__S(169, __c21, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          signedIdentifiers: S.optional(__S(170, __c21, 2)),
-        }),
-      ).annotate({ identifier: "TablePropertiesInput" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          accountName: S.String.pipe(T.Label()),
-          tableName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(171, __c21, 3)),
-        }).pipe(
-          T.Http({
-            method: "PUT",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/tableServices/default/tables/{tableName}",
-            code: 200,
-            apiVersion: "2026-09-01",
-          }),
-        ),
-      ).annotate({ identifier: "CreateTableRequest" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          tableName: S.optional(S.String),
-          signedIdentifiers: S.optional(__S(170, __c21, 2)),
-        }),
-      ).annotate({ identifier: "TableProperties" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(7, __c0, 7)),
-          properties: S.optional(__S(173, __c21, 5)),
-        }),
-      ).annotate({ identifier: "CreateTableResponse" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          accountName: S.String.pipe(T.Label()),
-          advancedPlatformMetricsRuleType: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/advancedPlatformMetrics/{advancedPlatformMetricsRuleType}",
-            code: 200,
-            apiVersion: "2026-09-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteAdvancedPlatformMetricsRequest",
-      });
-  }
-}
-function __c22(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          accountName: S.String.pipe(T.Label()),
-          blobAccessPointConfigurationName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/blobAccessPointConfigurations/{blobAccessPointConfigurationName}",
-            code: 200,
-            apiVersion: "2026-09-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteBlobAccessPointConfigurationRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          accountName: S.String.pipe(T.Label()),
-          containerName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/blobServices/default/containers/{containerName}",
-            code: 200,
-            apiVersion: "2026-09-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteBlobContainerRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          accountName: S.String.pipe(T.Label()),
-          containerName: S.String.pipe(T.Label()),
-          ifMatch: S.String.pipe(T.Header("If-Match")),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/blobServices/default/containers/{containerName}/immutabilityPolicies/default",
-            code: 200,
-            apiVersion: "2026-09-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteBlobContainerImmutabilityPolicyRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          accountName: S.String.pipe(T.Label()),
-          blobInventoryPolicyName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/inventoryPolicies/{blobInventoryPolicyName}",
-            code: 200,
-            apiVersion: "2026-09-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteBlobInventoryPolicyRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          accountName: S.String.pipe(T.Label()),
-          connectorName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/connectors/{connectorName}",
-            code: 200,
-            apiVersion: "2026-09-01",
-          }),
-        ),
-      ).annotate({ identifier: "DeleteConnectorRequest" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          contextCacheName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/contextCaches/{contextCacheName}",
-            code: 200,
-            apiVersion: "2026-09-01",
-          }),
-        ),
-      ).annotate({ identifier: "DeleteContextCachRequest" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          contextCacheName: S.String.pipe(T.Label()),
-          contextCacheContainerName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/contextCaches/{contextCacheName}/contextCacheContainers/{contextCacheContainerName}",
-            code: 200,
-            apiVersion: "2026-09-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteContextCacheContainerRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          accountName: S.String.pipe(T.Label()),
-          dataShareName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/dataShares/{dataShareName}",
-            code: 200,
-            apiVersion: "2026-09-01",
-          }),
-        ),
-      ).annotate({ identifier: "DeleteDataShareRequest" });
-  }
-}
-function __c23(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          accountName: S.String.pipe(T.Label()),
-          shareName: S.String.pipe(T.Label()),
-          _include: S.optional(S.String.pipe(T.Query("$include"))),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/fileServices/default/shares/{shareName}",
-            code: 200,
-            apiVersion: "2026-09-01",
-          }),
-        ),
-      ).annotate({ identifier: "DeleteFileShareRequest" });
-    case 1:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -10379,7 +11454,11 @@ function __c23(j: number): any {
           }),
         ),
       ).annotate({ identifier: "DeleteLocalUserRequest" });
-    case 2:
+  }
+}
+function __c103(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -10397,7 +11476,11 @@ function __c23(j: number): any {
       ).annotate({
         identifier: "DeleteManagementPolicyRequest",
       });
-    case 3:
+  }
+}
+function __c104(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -10415,7 +11498,11 @@ function __c23(j: number): any {
       ).annotate({
         identifier: "DeleteObjectReplicationPolicyRequest",
       });
-    case 4:
+  }
+}
+function __c105(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -10433,7 +11520,11 @@ function __c23(j: number): any {
       ).annotate({
         identifier: "DeletePrivateEndpointConnectionRequest",
       });
-    case 5:
+  }
+}
+function __c106(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -10449,7 +11540,11 @@ function __c23(j: number): any {
           }),
         ),
       ).annotate({ identifier: "DeleteQueueRequest" });
-    case 6:
+  }
+}
+function __c107(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -10466,7 +11561,11 @@ function __c23(j: number): any {
       ).annotate({
         identifier: "DeleteStorageAccountRequest",
       });
-    case 7:
+  }
+}
+function __c108(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -10486,7 +11585,7 @@ function __c23(j: number): any {
       });
   }
 }
-function __c24(j: number): any {
+function __c109(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -10504,14 +11603,18 @@ function __c24(j: number): any {
           }),
         ),
       ).annotate({ identifier: "DeleteTableRequest" });
-    case 1:
+  }
+}
+function __c110(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           accountName: S.String.pipe(T.Label()),
           containerName: S.String.pipe(T.Label()),
-          properties: __S(10, __c1, 2),
+          properties: __S(2816, __c88, 0),
         }).pipe(
           T.Http({
             method: "POST",
@@ -10523,7 +11626,11 @@ function __c24(j: number): any {
       ).annotate({
         identifier: "ExtendBlobContainerImmutabilityPolicyRequest",
       });
-    case 2:
+  }
+}
+function __c111(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -10544,7 +11651,41 @@ function __c24(j: number): any {
           }),
         ),
       ).annotate({ identifier: "FileSharesLeaseRequest" });
-    case 3:
+  }
+}
+function __c112(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          accountName: S.String.pipe(T.Label()),
+          containerName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/blobServices/default/containers/{containerName}/migrate",
+            code: 200,
+            apiVersion: "2026-09-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "BlobContainersObjectLevelWormRequest",
+      });
+  }
+}
+function __c113(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "BlobContainersObjectLevelWormResponse",
+      });
+  }
+}
+function __c114(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -10562,7 +11703,11 @@ function __c24(j: number): any {
       ).annotate({
         identifier: "GetAdvancedPlatformMetricsRequest",
       });
-    case 4:
+  }
+}
+function __c115(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -10580,7 +11725,11 @@ function __c24(j: number): any {
       ).annotate({
         identifier: "GetBlobAccessPointConfigurationRequest",
       });
-    case 5:
+  }
+}
+function __c116(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -10596,18 +11745,22 @@ function __c24(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetBlobContainerRequest" });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(7, __c0, 7)),
-          properties: S.optional(__S(69, __c8, 5)),
+          systemData: S.optional(__S(64, __c2, 0)),
+          properties: S.optional(__S(1257, __c39, 9)),
           etag: S.optional(S.String),
         }),
       ).annotate({ identifier: "GetBlobContainerResponse" });
-    case 7:
+  }
+}
+function __c117(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -10627,7 +11780,7 @@ function __c24(j: number): any {
       });
   }
 }
-function __c25(j: number): any {
+function __c118(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -10647,7 +11800,11 @@ function __c25(j: number): any {
       ).annotate({
         identifier: "GetBlobInventoryPolicyRequest",
       });
-    case 1:
+  }
+}
+function __c119(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -10664,25 +11821,50 @@ function __c25(j: number): any {
       ).annotate({
         identifier: "GetBlobServiceServicePropertiesRequest",
       });
+  }
+}
+function __c120(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(64, __c2, 0)),
+          properties: S.optional(__S(3940, __c123, 4)),
+          sku: S.optional(__S(2336, __c73, 0)),
+        }),
+      ).annotate({
+        identifier: "GetBlobServiceServicePropertiesResponse",
+      });
+  }
+}
+function __c121(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          allowedOrigins: __S(160, __c5, 0),
+          allowedMethods: __S(96, __c3, 0),
+          maxAgeInSeconds: S.Number,
+          exposedHeaders: __S(160, __c5, 0),
+          allowedHeaders: __S(160, __c5, 0),
+        }),
+      ).annotate({ identifier: "CorsRule" });
+    case 1:
+      return S.Array(__S(3872, __c121, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          allowedOrigins: __S(3, __c0, 3),
-          allowedMethods: __S(2, __c0, 2),
-          maxAgeInSeconds: S.Number,
-          exposedHeaders: __S(3, __c0, 3),
-          allowedHeaders: __S(3, __c0, 3),
-        }),
-      ).annotate({ identifier: "CorsRule" });
-    case 3:
-      return S.Array(__S(202, __c25, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          corsRules: S.optional(__S(203, __c25, 3)),
+          corsRules: S.optional(__S(3873, __c121, 1)),
         }),
       ).annotate({ identifier: "CorsRules" });
-    case 5:
+  }
+}
+function __c122(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           enabled: S.optional(S.Boolean),
@@ -10690,7 +11872,11 @@ function __c25(j: number): any {
           allowPermanentDelete: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "DeleteRetentionPolicy" });
-    case 6:
+  }
+}
+function __c123(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           enabled: S.Boolean,
@@ -10699,18 +11885,14 @@ function __c25(j: number): any {
           errorDocument404Path: S.optional(S.String),
         }),
       ).annotate({ identifier: "StaticWebsite" });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           enabled: S.optional(S.Boolean),
           retentionInDays: S.optional(S.Number),
         }),
       ).annotate({ identifier: "ChangeFeed" });
-  }
-}
-function __c26(j: number): any {
-  switch (j) {
-    case 0:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           enabled: S.Boolean,
@@ -10719,48 +11901,39 @@ function __c26(j: number): any {
           minRestoreTime: S.optional(S.String),
         }),
       ).annotate({ identifier: "RestorePolicyProperties" });
-    case 1:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           enable: S.Boolean,
           name: S.optional(S.String),
           trackingGranularityInDays: S.optional(S.Number),
-          blobType: S.optional(__S(3, __c0, 3)),
+          blobType: S.optional(__S(160, __c5, 0)),
         }),
       ).annotate({
         identifier: "LastAccessTimeTrackingPolicy",
       });
-    case 2:
+    case 4:
       return S.suspend(() =>
         S.Struct({
-          cors: S.optional(__S(204, __c25, 4)),
+          cors: S.optional(__S(3874, __c121, 2)),
           defaultServiceVersion: S.optional(S.String),
-          deleteRetentionPolicy: S.optional(__S(205, __c25, 5)),
-          staticWebsite: S.optional(__S(206, __c25, 6)),
+          deleteRetentionPolicy: S.optional(__S(3904, __c122, 0)),
+          staticWebsite: S.optional(__S(3936, __c123, 0)),
           isVersioningEnabled: S.optional(S.Boolean),
           automaticSnapshotPolicyEnabled: S.optional(S.Boolean),
-          changeFeed: S.optional(__S(207, __c25, 7)),
-          restorePolicy: S.optional(__S(208, __c26, 0)),
-          containerDeleteRetentionPolicy: S.optional(__S(205, __c25, 5)),
-          lastAccessTimeTrackingPolicy: S.optional(__S(209, __c26, 1)),
+          changeFeed: S.optional(__S(3937, __c123, 1)),
+          restorePolicy: S.optional(__S(3938, __c123, 2)),
+          containerDeleteRetentionPolicy: S.optional(__S(3904, __c122, 0)),
+          lastAccessTimeTrackingPolicy: S.optional(__S(3939, __c123, 3)),
         }),
       ).annotate({
         identifier: "BlobServicePropertiesProperties",
       });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(7, __c0, 7)),
-          properties: S.optional(__S(210, __c26, 2)),
-          sku: S.optional(__S(98, __c12, 2)),
-        }),
-      ).annotate({
-        identifier: "GetBlobServiceServicePropertiesResponse",
-      });
-    case 4:
+  }
+}
+function __c124(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -10776,7 +11949,11 @@ function __c26(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetConnectorRequest" });
-    case 5:
+  }
+}
+function __c125(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -10791,20 +11968,28 @@ function __c26(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetContextCachRequest" });
-    case 6:
+  }
+}
+function __c126(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(7, __c0, 7)),
-          tags: S.optional(__S(38, __c4, 6)),
+          systemData: S.optional(__S(64, __c2, 0)),
+          tags: S.optional(__S(224, __c7, 0)),
           location: S.String,
-          properties: __S(47, __c5, 7),
-          identity: S.optional(__S(50, __c6, 2)),
+          properties: __S(355, __c11, 3),
+          identity: S.optional(__S(357, __c11, 5)),
         }),
       ).annotate({ identifier: "GetContextCachResponse" });
-    case 7:
+  }
+}
+function __c127(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -10824,7 +12009,7 @@ function __c26(j: number): any {
       });
   }
 }
-function __c27(j: number): any {
+function __c128(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -10842,7 +12027,137 @@ function __c27(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetDataShareRequest" });
+  }
+}
+function __c129(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          enabled: S.Boolean,
+          type: S.String,
+          rules: __S(4196, __c131, 4),
+        }),
+      ).annotate({
+        identifier: "BlobInventoryPolicySchemaInput",
+      });
     case 1:
+      return S.suspend(() =>
+        S.Struct({
+          policy: __S(4128, __c129, 0),
+        }),
+      ).annotate({
+        identifier: "BlobInventoryPolicyPropertiesInput",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          accountName: S.String.pipe(T.Label()),
+          blobInventoryPolicyName: S.String.pipe(T.Label()),
+          properties: S.optional(__S(4129, __c129, 1)),
+        }).pipe(
+          T.Http({
+            method: "PUT",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/inventoryPolicies/{blobInventoryPolicyName}",
+            code: 200,
+            apiVersion: "2026-09-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "BlobInventoryPoliciesCreateOrUpdateRequest",
+      });
+  }
+}
+function __c130(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(64, __c2, 0)),
+          properties: S.optional(__S(4198, __c131, 6)),
+        }),
+      ).annotate({
+        identifier: "BlobInventoryPoliciesCreateOrUpdateResponse",
+      });
+  }
+}
+function __c131(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          lastNDays: S.optional(S.Number),
+        }),
+      ).annotate({
+        identifier: "BlobInventoryCreationTime",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          prefixMatch: S.optional(__S(160, __c5, 0)),
+          excludePrefix: S.optional(__S(160, __c5, 0)),
+          blobTypes: S.optional(__S(160, __c5, 0)),
+          includeBlobVersions: S.optional(S.Boolean),
+          includeSnapshots: S.optional(S.Boolean),
+          includeDeleted: S.optional(S.Boolean),
+          creationTime: S.optional(__S(4192, __c131, 0)),
+        }),
+      ).annotate({
+        identifier: "BlobInventoryPolicyFilter",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          filters: S.optional(__S(4193, __c131, 1)),
+          format: S.String,
+          schedule: S.String,
+          objectType: S.String,
+          schemaFields: __S(160, __c5, 0),
+        }),
+      ).annotate({
+        identifier: "BlobInventoryPolicyDefinition",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          enabled: S.Boolean,
+          name: S.String,
+          destination: S.String,
+          definition: __S(4194, __c131, 2),
+        }),
+      ).annotate({ identifier: "BlobInventoryPolicyRule" });
+    case 4:
+      return S.Array(__S(4195, __c131, 3));
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          enabled: S.Boolean,
+          destination: S.optional(S.String),
+          type: S.String,
+          rules: __S(4196, __c131, 4),
+        }),
+      ).annotate({
+        identifier: "BlobInventoryPolicySchema",
+      });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          lastModifiedTime: S.optional(S.String),
+          policy: __S(4197, __c131, 5),
+        }),
+      ).annotate({
+        identifier: "BlobInventoryPolicyProperties",
+      });
+  }
+}
+function __c132(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -10857,7 +12172,23 @@ function __c27(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetDeletedAccountRequest" });
-    case 2:
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(64, __c2, 0)),
+          properties: S.optional(__S(4256, __c133, 0)),
+        }),
+      ).annotate({
+        identifier: "GetDeletedAccountResponse",
+      });
+  }
+}
+function __c133(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           storageAccountResourceId: S.optional(S.String),
@@ -10867,19 +12198,11 @@ function __c27(j: number): any {
           deletionTime: S.optional(S.String),
         }),
       ).annotate({ identifier: "DeletedAccountProperties" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(7, __c0, 7)),
-          properties: S.optional(__S(218, __c27, 2)),
-        }),
-      ).annotate({
-        identifier: "GetDeletedAccountResponse",
-      });
-    case 4:
+  }
+}
+function __c134(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -10897,7 +12220,27 @@ function __c27(j: number): any {
       ).annotate({
         identifier: "GetEncryptionScopeRequest",
       });
-    case 5:
+  }
+}
+function __c135(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(64, __c2, 0)),
+          properties: S.optional(__S(4353, __c136, 1)),
+        }),
+      ).annotate({
+        identifier: "GetEncryptionScopeResponse",
+      });
+  }
+}
+function __c136(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           keyUri: S.optional(S.String),
@@ -10907,34 +12250,22 @@ function __c27(j: number): any {
       ).annotate({
         identifier: "EncryptionScopeKeyVaultProperties",
       });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           source: S.optional(S.String),
           state: S.optional(S.String),
           creationTime: S.optional(S.String),
           lastModifiedTime: S.optional(S.String),
-          keyVaultProperties: S.optional(__S(221, __c27, 5)),
+          keyVaultProperties: S.optional(__S(4352, __c136, 0)),
           requireInfrastructureEncryption: S.optional(S.Boolean),
         }),
       ).annotate({
         identifier: "EncryptionScopeProperties",
       });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(7, __c0, 7)),
-          properties: S.optional(__S(222, __c27, 6)),
-        }),
-      ).annotate({
-        identifier: "GetEncryptionScopeResponse",
-      });
   }
 }
-function __c28(j: number): any {
+function __c137(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -10953,68 +12284,76 @@ function __c28(j: number): any {
       ).annotate({
         identifier: "GetFileServiceServicePropertiesRequest",
       });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          enabled: S.optional(S.Boolean),
-        }),
-      ).annotate({ identifier: "Multichannel" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          required: S.optional(S.Boolean),
-        }),
-      ).annotate({ identifier: "EncryptionInTransit" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          multichannel: S.optional(__S(225, __c28, 1)),
-          versions: S.optional(S.String),
-          authenticationMethods: S.optional(S.String),
-          kerberosTicketEncryption: S.optional(S.String),
-          channelEncryption: S.optional(S.String),
-          encryptionInTransit: S.optional(__S(226, __c28, 2)),
-        }),
-      ).annotate({ identifier: "SmbSetting" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          encryptionInTransit: S.optional(__S(226, __c28, 2)),
-        }),
-      ).annotate({ identifier: "NfsSetting" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          smb: S.optional(__S(227, __c28, 3)),
-          nfs: S.optional(__S(228, __c28, 4)),
-        }),
-      ).annotate({ identifier: "ProtocolSettings" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          cors: S.optional(__S(204, __c25, 4)),
-          shareDeleteRetentionPolicy: S.optional(__S(205, __c25, 5)),
-          protocolSettings: S.optional(__S(229, __c28, 5)),
-        }),
-      ).annotate({
-        identifier: "FileServicePropertiesProperties",
-      });
-    case 7:
+  }
+}
+function __c138(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(7, __c0, 7)),
-          properties: S.optional(__S(230, __c28, 6)),
-          sku: S.optional(__S(98, __c12, 2)),
+          systemData: S.optional(__S(64, __c2, 0)),
+          properties: S.optional(__S(4453, __c139, 5)),
+          sku: S.optional(__S(2336, __c73, 0)),
         }),
       ).annotate({
         identifier: "GetFileServiceServicePropertiesResponse",
       });
   }
 }
-function __c29(j: number): any {
+function __c139(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          enabled: S.optional(S.Boolean),
+        }),
+      ).annotate({ identifier: "Multichannel" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          required: S.optional(S.Boolean),
+        }),
+      ).annotate({ identifier: "EncryptionInTransit" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          multichannel: S.optional(__S(4448, __c139, 0)),
+          versions: S.optional(S.String),
+          authenticationMethods: S.optional(S.String),
+          kerberosTicketEncryption: S.optional(S.String),
+          channelEncryption: S.optional(S.String),
+          encryptionInTransit: S.optional(__S(4449, __c139, 1)),
+        }),
+      ).annotate({ identifier: "SmbSetting" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          encryptionInTransit: S.optional(__S(4449, __c139, 1)),
+        }),
+      ).annotate({ identifier: "NfsSetting" });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          smb: S.optional(__S(4450, __c139, 2)),
+          nfs: S.optional(__S(4451, __c139, 3)),
+        }),
+      ).annotate({ identifier: "ProtocolSettings" });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          cors: S.optional(__S(3874, __c121, 2)),
+          shareDeleteRetentionPolicy: S.optional(__S(3904, __c122, 0)),
+          protocolSettings: S.optional(__S(4452, __c139, 4)),
+        }),
+      ).annotate({
+        identifier: "FileServicePropertiesProperties",
+      });
+  }
+}
+function __c140(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -11036,13 +12375,29 @@ function __c29(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(64, __c2, 0)),
+          properties: S.optional(__S(4518, __c141, 6)),
+        }),
+      ).annotate({
+        identifier: "GetFileServiceServiceUsageResponse",
+      });
+  }
+}
+function __c141(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
           maxFileShares: S.optional(S.Number),
           maxProvisionedStorageGiB: S.optional(S.Number),
           maxProvisionedIOPS: S.optional(S.Number),
           maxProvisionedBandwidthMiBPerSec: S.optional(S.Number),
         }),
       ).annotate({ identifier: "AccountLimits" });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           minProvisionedStorageGiB: S.optional(S.Number),
@@ -11055,7 +12410,7 @@ function __c29(j: number): any {
           guardrailBandwidthScalar: S.optional(S.Number),
         }),
       ).annotate({ identifier: "FileShareLimits" });
-    case 3:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           baseIOPS: S.optional(S.Number),
@@ -11064,7 +12419,7 @@ function __c29(j: number): any {
           bandwidthScalar: S.optional(S.Number),
         }),
       ).annotate({ identifier: "FileShareRecommendations" });
-    case 4:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           burstFloorIOPS: S.optional(S.Number),
@@ -11072,7 +12427,7 @@ function __c29(j: number): any {
           burstTimeframeSeconds: S.optional(S.Number),
         }),
       ).annotate({ identifier: "BurstingConstants" });
-    case 5:
+    case 4:
       return S.suspend(() =>
         S.Struct({
           fileShareCount: S.optional(S.Number),
@@ -11081,42 +12436,30 @@ function __c29(j: number): any {
           provisionedBandwidthMiBPerSec: S.optional(S.Number),
         }),
       ).annotate({ identifier: "AccountUsageElements" });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          liveShares: S.optional(__S(4516, __c141, 4)),
+          softDeletedShares: S.optional(__S(4516, __c141, 4)),
+        }),
+      ).annotate({ identifier: "AccountUsage" });
     case 6:
       return S.suspend(() =>
         S.Struct({
-          liveShares: S.optional(__S(237, __c29, 5)),
-          softDeletedShares: S.optional(__S(237, __c29, 5)),
-        }),
-      ).annotate({ identifier: "AccountUsage" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          storageAccountLimits: S.optional(__S(233, __c29, 1)),
-          fileShareLimits: S.optional(__S(234, __c29, 2)),
-          fileShareRecommendations: S.optional(__S(235, __c29, 3)),
-          burstingConstants: S.optional(__S(236, __c29, 4)),
-          storageAccountUsage: S.optional(__S(238, __c29, 6)),
+          storageAccountLimits: S.optional(__S(4512, __c141, 0)),
+          fileShareLimits: S.optional(__S(4513, __c141, 1)),
+          fileShareRecommendations: S.optional(__S(4514, __c141, 2)),
+          burstingConstants: S.optional(__S(4515, __c141, 3)),
+          storageAccountUsage: S.optional(__S(4517, __c141, 5)),
         }),
       ).annotate({
         identifier: "FileServiceUsageProperties",
       });
   }
 }
-function __c30(j: number): any {
+function __c142(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(7, __c0, 7)),
-          properties: S.optional(__S(239, __c29, 7)),
-        }),
-      ).annotate({
-        identifier: "GetFileServiceServiceUsageResponse",
-      });
-    case 1:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -11133,7 +12476,11 @@ function __c30(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetFileShareRequest" });
-    case 2:
+  }
+}
+function __c143(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -11149,7 +12496,38 @@ function __c30(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetLocalUserRequest" });
-    case 3:
+  }
+}
+function __c144(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          description: S.optional(S.String),
+          key: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "SshPublicKey" });
+    case 1:
+      return S.Array(__S(4608, __c144, 0));
+  }
+}
+function __c145(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(64, __c2, 0)),
+          properties: S.optional(__S(4675, __c146, 3)),
+        }),
+      ).annotate({ identifier: "GetLocalUserResponse" });
+  }
+}
+function __c146(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           permissions: S.String,
@@ -11157,29 +12535,16 @@ function __c30(j: number): any {
           resourceName: S.String,
         }),
       ).annotate({ identifier: "PermissionScope" });
-    case 4:
-      return S.Array(__S(243, __c30, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          description: S.optional(S.String),
-          key: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "SshPublicKey" });
-    case 6:
-      return S.Array(__S(245, __c30, 5));
-    case 7:
+    case 1:
+      return S.Array(__S(4672, __c146, 0));
+    case 2:
       return S.Array(S.Number);
-  }
-}
-function __c31(j: number): any {
-  switch (j) {
-    case 0:
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          permissionScopes: S.optional(__S(244, __c30, 4)),
+          permissionScopes: S.optional(__S(4673, __c146, 1)),
           homeDirectory: S.optional(S.String),
-          sshAuthorizedKeys: S.optional(__S(246, __c30, 6)),
+          sshAuthorizedKeys: S.optional(__S(4609, __c144, 1)),
           sid: S.optional(S.String),
           hasSharedKey: S.optional(S.Boolean),
           hasSshKey: S.optional(S.Boolean),
@@ -11187,21 +12552,15 @@ function __c31(j: number): any {
           userId: S.optional(S.Number),
           groupId: S.optional(S.Number),
           allowAclAuthorization: S.optional(S.Boolean),
-          extendedGroups: S.optional(__S(247, __c30, 7)),
+          extendedGroups: S.optional(__S(4674, __c146, 2)),
           isNFSv3Enabled: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "LocalUserProperties" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(7, __c0, 7)),
-          properties: S.optional(__S(248, __c31, 0)),
-        }),
-      ).annotate({ identifier: "GetLocalUserResponse" });
-    case 2:
+  }
+}
+function __c147(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -11219,7 +12578,11 @@ function __c31(j: number): any {
       ).annotate({
         identifier: "GetManagementPolicyRequest",
       });
-    case 3:
+  }
+}
+function __c148(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           daysAfterModificationGreaterThan: S.optional(S.Number),
@@ -11228,47 +12591,43 @@ function __c31(j: number): any {
           daysAfterCreationGreaterThan: S.optional(S.Number),
         }),
       ).annotate({ identifier: "DateAfterModification" });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          tierToCool: S.optional(__S(251, __c31, 3)),
-          tierToArchive: S.optional(__S(251, __c31, 3)),
-          tierToCold: S.optional(__S(251, __c31, 3)),
-          tierToHot: S.optional(__S(251, __c31, 3)),
-          delete: S.optional(__S(251, __c31, 3)),
+          tierToCool: S.optional(__S(4736, __c148, 0)),
+          tierToArchive: S.optional(__S(4736, __c148, 0)),
+          tierToCold: S.optional(__S(4736, __c148, 0)),
+          tierToHot: S.optional(__S(4736, __c148, 0)),
+          delete: S.optional(__S(4736, __c148, 0)),
           enableAutoTierToHotFromCool: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "ManagementPolicyBaseBlob" });
-    case 5:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           daysAfterCreationGreaterThan: S.Number,
           daysAfterLastTierChangeGreaterThan: S.optional(S.Number),
         }),
       ).annotate({ identifier: "DateAfterCreation" });
-    case 6:
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          tierToCool: S.optional(__S(253, __c31, 5)),
-          tierToArchive: S.optional(__S(253, __c31, 5)),
-          tierToCold: S.optional(__S(253, __c31, 5)),
-          tierToHot: S.optional(__S(253, __c31, 5)),
-          delete: S.optional(__S(253, __c31, 5)),
+          tierToCool: S.optional(__S(4738, __c148, 2)),
+          tierToArchive: S.optional(__S(4738, __c148, 2)),
+          tierToCold: S.optional(__S(4738, __c148, 2)),
+          tierToHot: S.optional(__S(4738, __c148, 2)),
+          delete: S.optional(__S(4738, __c148, 2)),
         }),
       ).annotate({ identifier: "ManagementPolicySnapShot" });
-    case 7:
+    case 4:
       return S.suspend(() =>
         S.Struct({
-          baseBlob: S.optional(__S(252, __c31, 4)),
-          snapshot: S.optional(__S(254, __c31, 6)),
-          version: S.optional(__S(254, __c31, 6)),
+          baseBlob: S.optional(__S(4737, __c148, 1)),
+          snapshot: S.optional(__S(4739, __c148, 3)),
+          version: S.optional(__S(4739, __c148, 3)),
         }),
       ).annotate({ identifier: "ManagementPolicyAction" });
-  }
-}
-function __c32(j: number): any {
-  switch (j) {
-    case 0:
+    case 5:
       return S.suspend(() =>
         S.Struct({
           name: S.String,
@@ -11276,68 +12635,68 @@ function __c32(j: number): any {
           value: S.String,
         }),
       ).annotate({ identifier: "TagFilter" });
-    case 1:
-      return S.Array(__S(256, __c32, 0));
-    case 2:
+    case 6:
+      return S.Array(__S(4741, __c148, 5));
+    case 7:
       return S.suspend(() =>
         S.Struct({
-          prefixMatch: S.optional(__S(3, __c0, 3)),
-          blobTypes: __S(3, __c0, 3),
-          blobIndexMatch: S.optional(__S(257, __c32, 1)),
+          prefixMatch: S.optional(__S(160, __c5, 0)),
+          blobTypes: __S(160, __c5, 0),
+          blobIndexMatch: S.optional(__S(4742, __c148, 6)),
         }),
       ).annotate({ identifier: "ManagementPolicyFilter" });
-    case 3:
+    case 8:
       return S.suspend(() =>
         S.Struct({
-          actions: __S(255, __c31, 7),
-          filters: S.optional(__S(258, __c32, 2)),
+          actions: __S(4740, __c148, 4),
+          filters: S.optional(__S(4743, __c148, 7)),
         }),
       ).annotate({
         identifier: "ManagementPolicyDefinition",
       });
-    case 4:
+    case 9:
       return S.suspend(() =>
         S.Struct({
           enabled: S.optional(S.Boolean),
           name: S.String,
           type: S.String,
-          definition: __S(259, __c32, 3),
+          definition: __S(4744, __c148, 8),
         }),
       ).annotate({ identifier: "ManagementPolicyRule" });
-    case 5:
-      return S.Array(__S(260, __c32, 4));
-    case 6:
+    case 10:
+      return S.Array(__S(4745, __c148, 9));
+    case 11:
       return S.suspend(() =>
         S.Struct({
-          rules: __S(261, __c32, 5),
+          rules: __S(4746, __c148, 10),
         }),
       ).annotate({ identifier: "ManagementPolicySchema" });
-    case 7:
+    case 12:
       return S.suspend(() =>
         S.Struct({
           lastModifiedTime: S.optional(S.String),
-          policy: __S(262, __c32, 6),
+          policy: __S(4747, __c148, 11),
         }),
       ).annotate({
         identifier: "ManagementPolicyProperties",
       });
-  }
-}
-function __c33(j: number): any {
-  switch (j) {
-    case 0:
+    case 13:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(7, __c0, 7)),
-          properties: S.optional(__S(263, __c32, 7)),
+          systemData: S.optional(__S(64, __c2, 0)),
+          properties: S.optional(__S(4748, __c148, 12)),
         }),
       ).annotate({
         identifier: "GetManagementPolicyResponse",
       });
-    case 1:
+  }
+}
+function __c149(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -11355,7 +12714,11 @@ function __c33(j: number): any {
       ).annotate({
         identifier: "GetNetworkSecurityPerimeterConfigurationRequest",
       });
-    case 2:
+  }
+}
+function __c150(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           issueType: S.optional(S.String),
@@ -11365,16 +12728,16 @@ function __c33(j: number): any {
       ).annotate({
         identifier: "ProvisioningIssueProperties",
       });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
-          properties: S.optional(__S(266, __c33, 2)),
+          properties: S.optional(__S(4800, __c150, 0)),
         }),
       ).annotate({ identifier: "ProvisioningIssue" });
-    case 4:
-      return S.Array(__S(267, __c33, 3));
-    case 5:
+    case 2:
+      return S.Array(__S(4801, __c150, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
@@ -11382,7 +12745,7 @@ function __c33(j: number): any {
           location: S.optional(S.String),
         }),
       ).annotate({ identifier: "NetworkSecurityPerimeter" });
-    case 6:
+    case 4:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
@@ -11391,7 +12754,7 @@ function __c33(j: number): any {
       ).annotate({
         identifier: "NetworkSecurityPerimeterConfigurationPropertiesResourceAssociation",
       });
-    case 7:
+    case 5:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
@@ -11399,77 +12762,73 @@ function __c33(j: number): any {
       ).annotate({
         identifier: "NspAccessRulePropertiesSubscriptionsItem",
       });
-  }
-}
-function __c34(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(271, __c33, 7));
-    case 1:
-      return S.Array(__S(269, __c33, 5));
-    case 2:
+    case 6:
+      return S.Array(__S(4805, __c150, 5));
+    case 7:
+      return S.Array(__S(4803, __c150, 3));
+    case 8:
       return S.suspend(() =>
         S.Struct({
           direction: S.optional(S.String),
-          addressPrefixes: S.optional(__S(3, __c0, 3)),
-          subscriptions: S.optional(__S(272, __c34, 0)),
-          networkSecurityPerimeters: S.optional(__S(273, __c34, 1)),
-          fullyQualifiedDomainNames: S.optional(__S(3, __c0, 3)),
-          serviceTags: S.optional(__S(3, __c0, 3)),
+          addressPrefixes: S.optional(__S(160, __c5, 0)),
+          subscriptions: S.optional(__S(4806, __c150, 6)),
+          networkSecurityPerimeters: S.optional(__S(4807, __c150, 7)),
+          fullyQualifiedDomainNames: S.optional(__S(160, __c5, 0)),
+          serviceTags: S.optional(__S(160, __c5, 0)),
         }),
       ).annotate({ identifier: "NspAccessRuleProperties" });
-    case 3:
+    case 9:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
-          properties: S.optional(__S(274, __c34, 2)),
+          properties: S.optional(__S(4808, __c150, 8)),
         }),
       ).annotate({ identifier: "NspAccessRule" });
-    case 4:
-      return S.Array(__S(275, __c34, 3));
-    case 5:
+    case 10:
+      return S.Array(__S(4809, __c150, 9));
+    case 11:
       return S.Array(S.String);
-    case 6:
+    case 12:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
           accessRulesVersion: S.optional(S.Number),
-          accessRules: S.optional(__S(276, __c34, 4)),
+          accessRules: S.optional(__S(4810, __c150, 10)),
           diagnosticSettingsVersion: S.optional(S.Number),
-          enabledLogCategories: S.optional(__S(277, __c34, 5)),
+          enabledLogCategories: S.optional(__S(4811, __c150, 11)),
         }),
       ).annotate({
         identifier: "NetworkSecurityPerimeterConfigurationPropertiesProfile",
       });
-    case 7:
+    case 13:
       return S.suspend(() =>
         S.Struct({
           provisioningState: S.optional(S.String),
-          provisioningIssues: S.optional(__S(268, __c33, 4)),
-          networkSecurityPerimeter: S.optional(__S(269, __c33, 5)),
-          resourceAssociation: S.optional(__S(270, __c33, 6)),
-          profile: S.optional(__S(278, __c34, 6)),
+          provisioningIssues: S.optional(__S(4802, __c150, 2)),
+          networkSecurityPerimeter: S.optional(__S(4803, __c150, 3)),
+          resourceAssociation: S.optional(__S(4804, __c150, 4)),
+          profile: S.optional(__S(4812, __c150, 12)),
         }),
       ).annotate({
         identifier: "NetworkSecurityPerimeterConfigurationProperties",
       });
-  }
-}
-function __c35(j: number): any {
-  switch (j) {
-    case 0:
+    case 14:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(7, __c0, 7)),
-          properties: S.optional(__S(279, __c34, 7)),
+          systemData: S.optional(__S(64, __c2, 0)),
+          properties: S.optional(__S(4813, __c150, 13)),
         }),
       ).annotate({
         identifier: "GetNetworkSecurityPerimeterConfigurationResponse",
       });
-    case 1:
+  }
+}
+function __c151(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -11487,56 +12846,68 @@ function __c35(j: number): any {
       ).annotate({
         identifier: "GetObjectReplicationPolicyRequest",
       });
-    case 2:
+  }
+}
+function __c152(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          prefixMatch: S.optional(__S(3, __c0, 3)),
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(64, __c2, 0)),
+          properties: S.optional(__S(4899, __c153, 3)),
+        }),
+      ).annotate({
+        identifier: "GetObjectReplicationPolicyResponse",
+      });
+  }
+}
+function __c153(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          prefixMatch: S.optional(__S(160, __c5, 0)),
           minCreationTime: S.optional(S.String),
         }),
       ).annotate({
         identifier: "ObjectReplicationPolicyFilter",
       });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           ruleId: S.optional(S.String),
           sourceContainer: S.String,
           destinationContainer: S.String,
-          filters: S.optional(__S(282, __c35, 2)),
+          filters: S.optional(__S(4896, __c153, 0)),
         }),
       ).annotate({
         identifier: "ObjectReplicationPolicyRule",
       });
-    case 4:
-      return S.Array(__S(283, __c35, 3));
-    case 5:
+    case 2:
+      return S.Array(__S(4897, __c153, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
           policyId: S.optional(S.String),
           enabledTime: S.optional(S.String),
           sourceAccount: S.String,
           destinationAccount: S.String,
-          rules: S.optional(__S(284, __c35, 4)),
-          metrics: S.optional(__S(57, __c7, 1)),
-          priorityReplication: S.optional(__S(57, __c7, 1)),
-          tagsReplication: S.optional(__S(57, __c7, 1)),
+          rules: S.optional(__S(4898, __c153, 2)),
+          metrics: S.optional(__S(1216, __c38, 0)),
+          priorityReplication: S.optional(__S(1216, __c38, 0)),
+          tagsReplication: S.optional(__S(1216, __c38, 0)),
         }),
       ).annotate({
         identifier: "ObjectReplicationPolicyProperties",
       });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(7, __c0, 7)),
-          properties: S.optional(__S(285, __c35, 5)),
-        }),
-      ).annotate({
-        identifier: "GetObjectReplicationPolicyResponse",
-      });
-    case 7:
+  }
+}
+function __c154(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -11556,7 +12927,38 @@ function __c35(j: number): any {
       });
   }
 }
-function __c36(j: number): any {
+function __c155(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          name: S.String,
+          type: S.String,
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/subscriptions/{subscriptionId}/providers/Microsoft.Storage/contextCacheCheckNameAvailability",
+            code: 200,
+            apiVersion: "2026-09-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "CheckContextCachNameAvailabilityRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          nameAvailable: S.Boolean,
+          reason: S.optional(S.String),
+          message: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "ContextCacheCheckNameAvailabilityResult",
+      });
+  }
+}
+function __c156(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -11574,7 +12976,11 @@ function __c36(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetQueueRequest" });
-    case 1:
+  }
+}
+function __c157(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -11591,27 +12997,39 @@ function __c36(j: number): any {
       ).annotate({
         identifier: "GetQueueServiceServicePropertiesRequest",
       });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          cors: S.optional(__S(204, __c25, 4)),
-        }),
-      ).annotate({
-        identifier: "QueueServicePropertiesProperties",
-      });
-    case 3:
+  }
+}
+function __c158(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(7, __c0, 7)),
-          properties: S.optional(__S(290, __c36, 2)),
+          systemData: S.optional(__S(64, __c2, 0)),
+          properties: S.optional(__S(5088, __c159, 0)),
         }),
       ).annotate({
         identifier: "GetQueueServiceServicePropertiesResponse",
       });
-    case 4:
+  }
+}
+function __c159(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          cors: S.optional(__S(3874, __c121, 2)),
+        }),
+      ).annotate({
+        identifier: "QueueServicePropertiesProperties",
+      });
+  }
+}
+function __c160(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -11629,7 +13047,7 @@ function __c36(j: number): any {
       ).annotate({
         identifier: "GetStorageAccountCustomerInitiatedMigrationRequest",
       });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           targetSkuName: S.String,
@@ -11640,19 +13058,23 @@ function __c36(j: number): any {
       ).annotate({
         identifier: "StorageAccountMigrationProperties",
       });
-    case 6:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(7, __c0, 7)),
-          properties: __S(293, __c36, 5),
+          systemData: S.optional(__S(64, __c2, 0)),
+          properties: __S(5121, __c160, 1),
         }),
       ).annotate({
         identifier: "GetStorageAccountCustomerInitiatedMigrationResponse",
       });
-    case 7:
+  }
+}
+function __c161(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -11672,7 +13094,7 @@ function __c36(j: number): any {
       });
   }
 }
-function __c37(j: number): any {
+function __c162(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -11692,7 +13114,11 @@ function __c37(j: number): any {
       ).annotate({
         identifier: "GetStorageTaskAssignmentRequest",
       });
-    case 1:
+  }
+}
+function __c163(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -11708,7 +13134,11 @@ function __c37(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetTableRequest" });
-    case 2:
+  }
+}
+function __c164(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -11725,7 +13155,11 @@ function __c37(j: number): any {
       ).annotate({
         identifier: "GetTableServiceServicePropertiesRequest",
       });
-    case 3:
+  }
+}
+function __c165(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -11742,18 +13176,22 @@ function __c37(j: number): any {
       ).annotate({
         identifier: "ListAdvancedPlatformMetricsRequest",
       });
-    case 4:
-      return S.Array(__S(9, __c1, 1));
-    case 5:
+    case 1:
+      return S.Array(__S(130, __c4, 2));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          value: __S(300, __c37, 4),
+          value: __S(5281, __c165, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
         identifier: "AdvancedPlatformMetricsRuleListResult",
       });
-    case 6:
+  }
+}
+function __c166(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -11770,22 +13208,22 @@ function __c37(j: number): any {
       ).annotate({
         identifier: "ListBlobAccessPointConfigurationByStorageAccountRequest",
       });
-    case 7:
-      return S.Array(__S(56, __c7, 0));
-  }
-}
-function __c38(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
+      return S.Array(__S(801, __c25, 1));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          value: __S(303, __c37, 7),
+          value: __S(5313, __c166, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
         identifier: "BlobAccessPointConfigurationListResult",
       });
-    case 1:
+  }
+}
+function __c167(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -11805,27 +13243,62 @@ function __c38(j: number): any {
       ).annotate({
         identifier: "ListBlobContainersRequest",
       });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(7, __c0, 7)),
+          systemData: S.optional(__S(64, __c2, 0)),
           etag: S.optional(S.String),
-          properties: S.optional(__S(69, __c8, 5)),
+          properties: S.optional(__S(1257, __c39, 9)),
         }),
       ).annotate({ identifier: "ListContainerItem" });
+    case 2:
+      return S.Array(__S(5345, __c167, 1));
     case 3:
-      return S.Array(__S(306, __c38, 2));
-    case 4:
       return S.suspend(() =>
         S.Struct({
-          value: __S(307, __c38, 3),
+          value: __S(5346, __c167, 2),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListContainerItems" });
-    case 5:
+  }
+}
+function __c168(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          name: S.String,
+          type: S.String,
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/subscriptions/{subscriptionId}/providers/Microsoft.Storage/checkNameAvailability",
+            code: 200,
+            apiVersion: "2026-09-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "CheckStorageAccountNameAvailabilityRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          nameAvailable: S.optional(S.Boolean),
+          reason: S.optional(S.String),
+          message: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "CheckNameAvailabilityResult",
+      });
+  }
+}
+function __c169(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -11842,30 +13315,30 @@ function __c38(j: number): any {
       ).annotate({
         identifier: "ListBlobInventoryPoliciesRequest",
       });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(7, __c0, 7)),
-          properties: S.optional(__S(26, __c3, 2)),
+          systemData: S.optional(__S(64, __c2, 0)),
+          properties: S.optional(__S(4198, __c131, 6)),
         }),
       ).annotate({ identifier: "BlobInventoryPolicy" });
-    case 7:
-      return S.Array(__S(310, __c38, 6));
-  }
-}
-function __c39(j: number): any {
-  switch (j) {
-    case 0:
+    case 2:
+      return S.Array(__S(5409, __c169, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(311, __c38, 7)),
+          value: S.optional(__S(5410, __c169, 2)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListBlobInventoryPolicy" });
-    case 1:
+  }
+}
+function __c170(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -11880,27 +13353,31 @@ function __c39(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ListBlobServicesRequest" });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(7, __c0, 7)),
-          properties: S.optional(__S(210, __c26, 2)),
-          sku: S.optional(__S(98, __c12, 2)),
+          systemData: S.optional(__S(64, __c2, 0)),
+          properties: S.optional(__S(3940, __c123, 4)),
+          sku: S.optional(__S(2336, __c73, 0)),
         }),
       ).annotate({ identifier: "BlobServiceProperties" });
+    case 2:
+      return S.Array(__S(5441, __c170, 1));
     case 3:
-      return S.Array(__S(314, __c39, 2));
-    case 4:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(315, __c39, 3)),
+          value: S.optional(__S(5442, __c170, 2)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "BlobServiceItems" });
-    case 5:
+  }
+}
+function __c171(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -11917,18 +13394,18 @@ function __c39(j: number): any {
       ).annotate({
         identifier: "ListConnectorByStorageAccountRequest",
       });
-    case 6:
-      return S.Array(__S(77, __c9, 5));
-    case 7:
+    case 1:
+      return S.Array(__S(1668, __c52, 4));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          value: __S(318, __c39, 6),
+          value: __S(5473, __c171, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ConnectorListResult" });
   }
 }
-function __c40(j: number): any {
+function __c172(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -11946,16 +13423,24 @@ function __c40(j: number): any {
       ).annotate({
         identifier: "ListContextCachByResourceGroupRequest",
       });
+  }
+}
+function __c173(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(4032, __c126, 0));
     case 1:
-      return S.Array(__S(214, __c26, 6));
-    case 2:
       return S.suspend(() =>
         S.Struct({
-          value: __S(321, __c40, 1),
+          value: __S(5536, __c173, 0),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ContextCacheListResult" });
-    case 3:
+  }
+}
+function __c174(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -11970,7 +13455,11 @@ function __c40(j: number): any {
       ).annotate({
         identifier: "ListContextCachBySubscriptionRequest",
       });
-    case 4:
+  }
+}
+function __c175(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -11987,22 +13476,22 @@ function __c40(j: number): any {
       ).annotate({
         identifier: "ListContextCacheContainerByContextCacheRequest",
       });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(7, __c0, 7)),
-          properties: __S(36, __c4, 4),
+          systemData: S.optional(__S(64, __c2, 0)),
+          properties: __S(6208, __c194, 0),
         }),
       ).annotate({ identifier: "ContextCacheContainer" });
-    case 6:
-      return S.Array(__S(325, __c40, 5));
-    case 7:
+    case 2:
+      return S.Array(__S(5601, __c175, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          value: __S(326, __c40, 6),
+          value: __S(5602, __c175, 2),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
@@ -12010,7 +13499,7 @@ function __c40(j: number): any {
       });
   }
 }
-function __c41(j: number): any {
+function __c176(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -12030,15 +13519,19 @@ function __c41(j: number): any {
         identifier: "ListDataShareByStorageAccountRequest",
       });
     case 1:
-      return S.Array(__S(85, __c10, 5));
+      return S.Array(__S(2021, __c63, 5));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: __S(329, __c41, 1),
+          value: __S(5633, __c176, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "DataShareListResult" });
-    case 3:
+  }
+}
+function __c177(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -12053,26 +13546,30 @@ function __c41(j: number): any {
       ).annotate({
         identifier: "ListDeletedAccountsRequest",
       });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(7, __c0, 7)),
-          properties: S.optional(__S(218, __c27, 2)),
+          systemData: S.optional(__S(64, __c2, 0)),
+          properties: S.optional(__S(4256, __c133, 0)),
         }),
       ).annotate({ identifier: "DeletedAccount" });
-    case 5:
-      return S.Array(__S(332, __c41, 4));
-    case 6:
+    case 2:
+      return S.Array(__S(5665, __c177, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          value: __S(333, __c41, 5),
+          value: __S(5666, __c177, 2),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "DeletedAccountListResult" });
-    case 7:
+  }
+}
+function __c178(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -12092,32 +13589,32 @@ function __c41(j: number): any {
       ).annotate({
         identifier: "ListEncryptionScopesRequest",
       });
-  }
-}
-function __c42(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(7, __c0, 7)),
-          properties: S.optional(__S(222, __c27, 6)),
+          systemData: S.optional(__S(64, __c2, 0)),
+          properties: S.optional(__S(4353, __c136, 1)),
         }),
       ).annotate({ identifier: "EncryptionScope" });
-    case 1:
-      return S.Array(__S(336, __c42, 0));
     case 2:
+      return S.Array(__S(5697, __c178, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          value: __S(337, __c42, 1),
+          value: __S(5698, __c178, 2),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
         identifier: "EncryptionScopeListResult",
       });
-    case 3:
+  }
+}
+function __c179(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -12132,26 +13629,66 @@ function __c42(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ListFileServicesRequest" });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(7, __c0, 7)),
-          properties: S.optional(__S(230, __c28, 6)),
-          sku: S.optional(__S(98, __c12, 2)),
+          systemData: S.optional(__S(64, __c2, 0)),
+          properties: S.optional(__S(4453, __c139, 5)),
+          sku: S.optional(__S(2336, __c73, 0)),
         }),
       ).annotate({ identifier: "FileServiceProperties" });
-    case 5:
-      return S.Array(__S(340, __c42, 4));
-    case 6:
+    case 2:
+      return S.Array(__S(5729, __c179, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(341, __c42, 5)),
+          value: S.optional(__S(5730, __c179, 2)),
         }),
       ).annotate({ identifier: "FileServiceItems" });
-    case 7:
+  }
+}
+function __c180(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          accountName: S.String.pipe(T.Label()),
+          containerName: S.String.pipe(T.Label()),
+          tags: __S(160, __c5, 0),
+          allowProtectedAppendWritesAll: S.optional(S.Boolean),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/blobServices/default/containers/{containerName}/clearLegalHold",
+            code: 200,
+            apiVersion: "2026-09-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "ClearBlobContainerLegalHoldRequest",
+      });
+  }
+}
+function __c181(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          hasLegalHold: S.optional(S.Boolean),
+          tags: __S(160, __c5, 0),
+          allowProtectedAppendWritesAll: S.optional(S.Boolean),
+        }),
+      ).annotate({ identifier: "LegalHold" });
+  }
+}
+function __c182(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -12169,30 +13706,30 @@ function __c42(j: number): any {
       ).annotate({
         identifier: "ListFileServiceServiceUsagesRequest",
       });
-  }
-}
-function __c43(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(7, __c0, 7)),
-          properties: S.optional(__S(239, __c29, 7)),
+          systemData: S.optional(__S(64, __c2, 0)),
+          properties: S.optional(__S(4518, __c141, 6)),
         }),
       ).annotate({ identifier: "FileServiceUsage" });
-    case 1:
-      return S.Array(__S(344, __c43, 0));
     case 2:
+      return S.Array(__S(5825, __c182, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          value: __S(345, __c43, 1),
+          value: __S(5826, __c182, 2),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "FileServiceUsages" });
-    case 3:
+  }
+}
+function __c183(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -12210,27 +13747,31 @@ function __c43(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ListFileSharesRequest" });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(7, __c0, 7)),
+          systemData: S.optional(__S(64, __c2, 0)),
           etag: S.optional(S.String),
-          properties: S.optional(__S(92, __c11, 4)),
+          properties: S.optional(__S(2148, __c67, 4)),
         }),
       ).annotate({ identifier: "FileShareItem" });
-    case 5:
-      return S.Array(__S(348, __c43, 4));
-    case 6:
+    case 2:
+      return S.Array(__S(5857, __c183, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          value: __S(349, __c43, 5),
+          value: __S(5858, __c183, 2),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "FileShareItems" });
-    case 7:
+  }
+}
+function __c184(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -12246,18 +13787,18 @@ function __c43(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ListLocalUserKeysRequest" });
-  }
-}
-function __c44(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          sshAuthorizedKeys: S.optional(__S(246, __c30, 6)),
+          sshAuthorizedKeys: S.optional(__S(4609, __c144, 1)),
           sharedKey: S.optional(S.String),
         }),
       ).annotate({ identifier: "LocalUserKeys" });
-    case 1:
+  }
+}
+function __c185(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -12275,16 +13816,20 @@ function __c44(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ListLocalUsersRequest" });
+    case 1:
+      return S.Array(__S(4640, __c145, 0));
     case 2:
-      return S.Array(__S(249, __c31, 1));
-    case 3:
       return S.suspend(() =>
         S.Struct({
-          value: __S(354, __c44, 2),
+          value: __S(5921, __c185, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "LocalUsers" });
-    case 4:
+  }
+}
+function __c186(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -12301,18 +13846,22 @@ function __c44(j: number): any {
       ).annotate({
         identifier: "ListNetworkSecurityPerimeterConfigurationsRequest",
       });
-    case 5:
-      return S.Array(__S(280, __c35, 0));
-    case 6:
+    case 1:
+      return S.Array(__S(4814, __c150, 14));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          value: __S(357, __c44, 5),
+          value: __S(5953, __c186, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
         identifier: "NetworkSecurityPerimeterConfigurationList",
       });
-    case 7:
+  }
+}
+function __c187(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -12329,32 +13878,32 @@ function __c44(j: number): any {
       ).annotate({
         identifier: "ListObjectReplicationPoliciesRequest",
       });
-  }
-}
-function __c45(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(7, __c0, 7)),
-          properties: S.optional(__S(285, __c35, 5)),
+          systemData: S.optional(__S(64, __c2, 0)),
+          properties: S.optional(__S(4899, __c153, 3)),
         }),
       ).annotate({ identifier: "ObjectReplicationPolicy" });
-    case 1:
-      return S.Array(__S(360, __c45, 0));
     case 2:
+      return S.Array(__S(5985, __c187, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(361, __c45, 1)),
+          value: S.optional(__S(5986, __c187, 2)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
         identifier: "ObjectReplicationPolicies",
       });
-    case 3:
+  }
+}
+function __c188(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({}).pipe(
           T.Http({
@@ -12365,7 +13914,7 @@ function __c45(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ListOperationsRequest" });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           provider: S.optional(S.String),
@@ -12374,66 +13923,66 @@ function __c45(j: number): any {
           description: S.optional(S.String),
         }),
       ).annotate({ identifier: "OperationDisplay" });
-    case 5:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
           displayName: S.optional(S.String),
         }),
       ).annotate({ identifier: "Dimension" });
-    case 6:
-      return S.Array(__S(365, __c45, 5));
-    case 7:
+    case 3:
+      return S.Array(__S(6018, __c188, 2));
+    case 4:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
           displayName: S.optional(S.String),
           displayDescription: S.optional(S.String),
           unit: S.optional(S.String),
-          dimensions: S.optional(__S(366, __c45, 6)),
+          dimensions: S.optional(__S(6019, __c188, 3)),
           aggregationType: S.optional(S.String),
           fillGapWithZero: S.optional(S.Boolean),
           category: S.optional(S.String),
           resourceIdDimensionNameOverride: S.optional(S.String),
         }),
       ).annotate({ identifier: "MetricSpecification" });
-  }
-}
-function __c46(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(367, __c45, 7));
-    case 1:
+    case 5:
+      return S.Array(__S(6020, __c188, 4));
+    case 6:
       return S.suspend(() =>
         S.Struct({
-          metricSpecifications: S.optional(__S(368, __c46, 0)),
+          metricSpecifications: S.optional(__S(6021, __c188, 5)),
         }),
       ).annotate({ identifier: "ServiceSpecification" });
-    case 2:
+    case 7:
       return S.suspend(() =>
         S.Struct({
-          serviceSpecification: S.optional(__S(369, __c46, 1)),
+          serviceSpecification: S.optional(__S(6022, __c188, 6)),
         }),
       ).annotate({ identifier: "OperationProperties" });
-    case 3:
+    case 8:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
-          display: S.optional(__S(364, __c45, 4)),
+          display: S.optional(__S(6017, __c188, 1)),
           origin: S.optional(S.String),
-          properties: S.optional(__S(370, __c46, 2)),
+          properties: S.optional(__S(6023, __c188, 7)),
         }),
       ).annotate({ identifier: "Operation" });
-    case 4:
-      return S.Array(__S(371, __c46, 3));
-    case 5:
+    case 9:
+      return S.Array(__S(6024, __c188, 8));
+    case 10:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(372, __c46, 4)),
+          value: S.optional(__S(6025, __c188, 9)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "OperationListResult" });
-    case 6:
+  }
+}
+function __c189(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -12450,10 +13999,10 @@ function __c46(j: number): any {
       ).annotate({
         identifier: "ListPrivateEndpointConnectionsRequest",
       });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(148, __c18, 4)),
+          value: S.optional(__S(2432, __c76, 0)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
@@ -12461,7 +14010,7 @@ function __c46(j: number): any {
       });
   }
 }
-function __c47(j: number): any {
+function __c190(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -12484,8 +14033,8 @@ function __c47(j: number): any {
       return S.suspend(() =>
         S.Struct({
           groupId: S.optional(S.String),
-          requiredMembers: S.optional(__S(3, __c0, 3)),
-          requiredZoneNames: S.optional(__S(3, __c0, 3)),
+          requiredMembers: S.optional(__S(160, __c5, 0)),
+          requiredZoneNames: S.optional(__S(160, __c5, 0)),
         }),
       ).annotate({
         identifier: "PrivateLinkResourceProperties",
@@ -12496,21 +14045,25 @@ function __c47(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(7, __c0, 7)),
-          properties: S.optional(__S(377, __c47, 1)),
+          systemData: S.optional(__S(64, __c2, 0)),
+          properties: S.optional(__S(6081, __c190, 1)),
         }),
       ).annotate({ identifier: "PrivateLinkResource" });
     case 3:
-      return S.Array(__S(378, __c47, 2));
+      return S.Array(__S(6082, __c190, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(379, __c47, 3)),
+          value: S.optional(__S(6083, __c190, 3)),
         }),
       ).annotate({
         identifier: "PrivateLinkResourceListResult",
       });
-    case 5:
+  }
+}
+function __c191(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -12527,30 +14080,96 @@ function __c47(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ListQueueRequest" });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(7, __c0, 7)),
-          properties: S.optional(__S(94, __c11, 6)),
+          systemData: S.optional(__S(64, __c2, 0)),
+          properties: S.optional(__S(2240, __c70, 0)),
         }),
       ).annotate({ identifier: "ListQueue" });
-    case 7:
-      return S.Array(__S(382, __c47, 6));
+    case 2:
+      return S.Array(__S(6113, __c191, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          value: __S(6114, __c191, 2),
+          nextLink: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ListQueueResource" });
   }
 }
-function __c48(j: number): any {
+function __c192(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          value: __S(383, __c47, 7),
-          nextLink: S.optional(S.String),
+          description: S.optional(S.String),
+          modelName: S.String,
+          provider: S.String,
+          timeToLive: S.optional(S.Number),
         }),
-      ).annotate({ identifier: "ListQueueResource" });
+      ).annotate({
+        identifier: "ContextCacheContainerPropertiesInput",
+      });
     case 1:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          contextCacheName: S.String.pipe(T.Label()),
+          contextCacheContainerName: S.String.pipe(T.Label()),
+          properties: __S(6144, __c192, 0),
+        }).pipe(
+          T.Http({
+            method: "PUT",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/contextCaches/{contextCacheName}/contextCacheContainers/{contextCacheContainerName}",
+            code: 200,
+            apiVersion: "2026-09-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "ContextCacheContainersCreateOrUpdateRequest",
+      });
+  }
+}
+function __c193(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(64, __c2, 0)),
+          properties: __S(6208, __c194, 0),
+        }),
+      ).annotate({
+        identifier: "ContextCacheContainersCreateOrUpdateResponse",
+      });
+  }
+}
+function __c194(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          description: S.optional(S.String),
+          modelName: S.String,
+          provider: S.String,
+          timeToLive: S.optional(S.Number),
+          provisioningState: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "ContextCacheContainerProperties",
+      });
+  }
+}
+function __c195(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -12565,25 +14184,33 @@ function __c48(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ListQueueServicesRequest" });
-    case 2:
+  }
+}
+function __c196(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(7, __c0, 7)),
-          properties: S.optional(__S(290, __c36, 2)),
+          systemData: S.optional(__S(64, __c2, 0)),
+          properties: S.optional(__S(5088, __c159, 0)),
         }),
       ).annotate({ identifier: "QueueServiceProperties" });
-    case 3:
-      return S.Array(__S(386, __c48, 2));
-    case 4:
+    case 1:
+      return S.Array(__S(6272, __c196, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(387, __c48, 3)),
+          value: S.optional(__S(6273, __c196, 1)),
         }),
       ).annotate({ identifier: "ListQueueServices" });
-    case 5:
+  }
+}
+function __c197(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -12596,63 +14223,63 @@ function __c48(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ListSkusRequest" });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           location: S.optional(S.String),
-          zones: S.optional(__S(3, __c0, 3)),
+          zones: S.optional(__S(160, __c5, 0)),
         }),
       ).annotate({
         identifier: "SkuInformationLocationInfoItem",
       });
-    case 7:
-      return S.Array(__S(390, __c48, 6));
-  }
-}
-function __c49(j: number): any {
-  switch (j) {
-    case 0:
+    case 2:
+      return S.Array(__S(6305, __c197, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
           value: S.optional(S.String),
         }),
       ).annotate({ identifier: "SKUCapability" });
-    case 1:
-      return S.Array(__S(392, __c49, 0));
-    case 2:
+    case 4:
+      return S.Array(__S(6307, __c197, 3));
+    case 5:
       return S.suspend(() =>
         S.Struct({
           type: S.optional(S.String),
-          values: S.optional(__S(3, __c0, 3)),
+          values: S.optional(__S(160, __c5, 0)),
           reasonCode: S.optional(S.String),
         }),
       ).annotate({ identifier: "Restriction" });
-    case 3:
-      return S.Array(__S(394, __c49, 2));
-    case 4:
+    case 6:
+      return S.Array(__S(6309, __c197, 5));
+    case 7:
       return S.suspend(() =>
         S.Struct({
           name: S.String,
           tier: S.optional(S.String),
           resourceType: S.optional(S.String),
           kind: S.optional(S.String),
-          locations: S.optional(__S(3, __c0, 3)),
-          locationInfo: S.optional(__S(391, __c48, 7)),
-          capabilities: S.optional(__S(393, __c49, 1)),
-          restrictions: S.optional(__S(395, __c49, 3)),
+          locations: S.optional(__S(160, __c5, 0)),
+          locationInfo: S.optional(__S(6306, __c197, 2)),
+          capabilities: S.optional(__S(6308, __c197, 4)),
+          restrictions: S.optional(__S(6310, __c197, 6)),
         }),
       ).annotate({ identifier: "SkuInformation" });
-    case 5:
-      return S.Array(__S(396, __c49, 4));
-    case 6:
+    case 8:
+      return S.Array(__S(6311, __c197, 7));
+    case 9:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(397, __c49, 5)),
+          value: S.optional(__S(6312, __c197, 8)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "StorageSkuListResult" });
-    case 7:
+  }
+}
+function __c198(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -12677,17 +14304,17 @@ function __c49(j: number): any {
       ).annotate({
         identifier: "ListStorageAccountAccountSASRequest",
       });
-  }
-}
-function __c50(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           accountSasToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListAccountSasResponse" });
-    case 1:
+  }
+}
+function __c199(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -12703,34 +14330,42 @@ function __c50(j: number): any {
       ).annotate({
         identifier: "ListStorageAccountByResourceGroupRequest",
       });
-    case 2:
+  }
+}
+function __c200(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(7, __c0, 7)),
-          tags: S.optional(__S(38, __c4, 6)),
+          systemData: S.optional(__S(64, __c2, 0)),
+          tags: S.optional(__S(224, __c7, 0)),
           location: S.String,
-          properties: S.optional(__S(154, __c19, 2)),
-          sku: S.optional(__S(98, __c12, 2)),
+          properties: S.optional(__S(2531, __c79, 3)),
+          sku: S.optional(__S(2336, __c73, 0)),
           kind: S.optional(S.String),
-          identity: S.optional(__S(156, __c19, 4)),
-          extendedLocation: S.optional(__S(99, __c12, 3)),
-          zones: S.optional(__S(3, __c0, 3)),
-          placement: S.optional(__S(100, __c12, 4)),
+          identity: S.optional(__S(2533, __c79, 5)),
+          extendedLocation: S.optional(__S(2496, __c78, 0)),
+          zones: S.optional(__S(160, __c5, 0)),
+          placement: S.optional(__S(2497, __c78, 1)),
         }),
       ).annotate({ identifier: "StorageAccount" });
-    case 3:
-      return S.Array(__S(402, __c50, 2));
-    case 4:
+    case 1:
+      return S.Array(__S(6400, __c200, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          value: __S(403, __c50, 3),
+          value: __S(6401, __c200, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "StorageAccountListResult" });
-    case 5:
+  }
+}
+function __c201(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -12748,7 +14383,11 @@ function __c50(j: number): any {
       ).annotate({
         identifier: "ListStorageAccountKeysRequest",
       });
-    case 6:
+  }
+}
+function __c202(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           keyName: S.optional(S.String),
@@ -12757,21 +14396,21 @@ function __c50(j: number): any {
           creationTime: S.optional(S.String),
         }),
       ).annotate({ identifier: "StorageAccountKey" });
-    case 7:
-      return S.Array(__S(406, __c50, 6));
-  }
-}
-function __c51(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
+      return S.Array(__S(6464, __c202, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          keys: S.optional(__S(407, __c50, 7)),
+          keys: S.optional(__S(6465, __c202, 1)),
         }),
       ).annotate({
         identifier: "StorageAccountListKeysResult",
       });
-    case 1:
+  }
+}
+function __c203(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -12786,7 +14425,11 @@ function __c51(j: number): any {
       ).annotate({
         identifier: "ListStorageAccountsRequest",
       });
-    case 2:
+  }
+}
+function __c204(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -12821,13 +14464,17 @@ function __c51(j: number): any {
       ).annotate({
         identifier: "ListStorageAccountServiceSASRequest",
       });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           serviceSasToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListServiceSasResponse" });
-    case 4:
+  }
+}
+function __c205(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -12847,30 +14494,34 @@ function __c51(j: number): any {
       ).annotate({
         identifier: "ListStorageTaskAssignmentInstancesReportRequest",
       });
-    case 5:
+  }
+}
+function __c206(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(7, __c0, 7)),
-          properties: S.optional(__S(165, __c20, 5)),
+          systemData: S.optional(__S(64, __c2, 0)),
+          properties: S.optional(__S(2624, __c82, 0)),
         }),
       ).annotate({
         identifier: "StorageTaskReportInstance",
       });
-    case 6:
-      return S.Array(__S(413, __c51, 5));
-    case 7:
+    case 1:
+      return S.Array(__S(6592, __c206, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          value: __S(414, __c51, 6),
+          value: __S(6593, __c206, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "StorageTaskReportSummary" });
   }
 }
-function __c52(j: number): any {
+function __c207(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -12896,22 +14547,26 @@ function __c52(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(7, __c0, 7)),
-          properties: S.optional(__S(166, __c20, 6)),
+          systemData: S.optional(__S(64, __c2, 0)),
+          properties: S.optional(__S(2661, __c83, 5)),
         }),
       ).annotate({ identifier: "StorageTaskAssignment" });
     case 2:
-      return S.Array(__S(417, __c52, 1));
+      return S.Array(__S(6625, __c207, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          value: __S(418, __c52, 2),
+          value: __S(6626, __c207, 2),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
         identifier: "StorageTaskAssignmentsList",
       });
-    case 4:
+  }
+}
+function __c208(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -12930,1060 +14585,8 @@ function __c52(j: number): any {
       ).annotate({
         identifier: "ListStorageTaskAssignmentsInstancesReportRequest",
       });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          accountName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/tableServices/default/tables",
-            code: 200,
-            apiVersion: "2026-09-01",
-          }),
-        ),
-      ).annotate({ identifier: "ListTableRequest" });
-    case 6:
-      return S.Array(__S(174, __c21, 6));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          value: __S(422, __c52, 6),
-          nextLink: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ListTableResource" });
   }
 }
-function __c53(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          accountName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/tableServices",
-            code: 200,
-            apiVersion: "2026-09-01",
-          }),
-        ),
-      ).annotate({ identifier: "ListTableServicesRequest" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          location: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/providers/Microsoft.Storage/locations/{location}/usages",
-            code: 200,
-            apiVersion: "2026-09-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListUsageByLocationRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          value: S.optional(S.String),
-          localizedValue: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "UsageName" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          unit: S.optional(S.String),
-          currentValue: S.optional(S.Number),
-          limit: S.optional(S.Number),
-          name: S.optional(__S(426, __c53, 2)),
-        }),
-      ).annotate({ identifier: "Usage" });
-    case 4:
-      return S.Array(__S(427, __c53, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          value: S.optional(__S(428, __c53, 4)),
-          nextLink: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "UsageListResult" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          permissionScopes: S.optional(__S(244, __c30, 4)),
-          homeDirectory: S.optional(S.String),
-          sshAuthorizedKeys: S.optional(__S(246, __c30, 6)),
-          hasSharedKey: S.optional(S.Boolean),
-          hasSshKey: S.optional(S.Boolean),
-          hasSshPassword: S.optional(S.Boolean),
-          groupId: S.optional(S.Number),
-          allowAclAuthorization: S.optional(S.Boolean),
-          extendedGroups: S.optional(__S(247, __c30, 7)),
-          isNFSv3Enabled: S.optional(S.Boolean),
-        }),
-      ).annotate({ identifier: "LocalUserPropertiesInput" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          accountName: S.String.pipe(T.Label()),
-          username: S.String.pipe(T.Label()),
-          properties: S.optional(__S(430, __c53, 6)),
-        }).pipe(
-          T.Http({
-            method: "PUT",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/localUsers/{username}",
-            code: 200,
-            apiVersion: "2026-09-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "LocalUsersCreateOrUpdateRequest",
-      });
-  }
-}
-function __c54(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(7, __c0, 7)),
-          properties: S.optional(__S(248, __c31, 0)),
-        }),
-      ).annotate({
-        identifier: "LocalUsersCreateOrUpdateResponse",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          accountName: S.String.pipe(T.Label()),
-          containerName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/blobServices/default/containers/{containerName}/immutabilityPolicies/default/lock",
-            code: 200,
-            apiVersion: "2026-09-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "LockBlobContainerImmutabilityPolicyRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          policy: __S(262, __c32, 6),
-        }),
-      ).annotate({
-        identifier: "ManagementPolicyPropertiesInput",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          accountName: S.String.pipe(T.Label()),
-          managementPolicyName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(434, __c54, 2)),
-        }).pipe(
-          T.Http({
-            method: "PUT",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/managementPolicies/{managementPolicyName}",
-            code: 200,
-            apiVersion: "2026-09-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "ManagementPoliciesCreateOrUpdateRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          accountName: S.String.pipe(T.Label()),
-          networkSecurityPerimeterConfigurationName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/networkSecurityPerimeterConfigurations/{networkSecurityPerimeterConfigurationName}/reconcile",
-            code: 200,
-            apiVersion: "2026-09-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "NetworkSecurityPerimeterConfigurationsReconcileRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          sourceAccount: S.String,
-          destinationAccount: S.String,
-          rules: S.optional(__S(284, __c35, 4)),
-          metrics: S.optional(__S(57, __c7, 1)),
-          priorityReplication: S.optional(__S(57, __c7, 1)),
-          tagsReplication: S.optional(__S(57, __c7, 1)),
-        }),
-      ).annotate({
-        identifier: "ObjectReplicationPolicyPropertiesInput",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          accountName: S.String.pipe(T.Label()),
-          objectReplicationPolicyId: S.String.pipe(T.Label()),
-          properties: S.optional(__S(437, __c54, 5)),
-        }).pipe(
-          T.Http({
-            method: "PUT",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/objectReplicationPolicies/{objectReplicationPolicyId}",
-            code: 200,
-            apiVersion: "2026-09-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "ObjectReplicationPoliciesCreateOrUpdateRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          keyUri: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "EncryptionScopeKeyVaultPropertiesInput",
-      });
-  }
-}
-function __c55(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          source: S.optional(S.String),
-          state: S.optional(S.String),
-          keyVaultProperties: S.optional(__S(439, __c54, 7)),
-          requireInfrastructureEncryption: S.optional(S.Boolean),
-        }),
-      ).annotate({
-        identifier: "EncryptionScopePropertiesInput",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          accountName: S.String.pipe(T.Label()),
-          encryptionScopeName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(440, __c55, 0)),
-        }).pipe(
-          T.Http({
-            method: "PATCH",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/encryptionScopes/{encryptionScopeName}",
-            code: 200,
-            apiVersion: "2026-09-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "PatchEncryptionScopeRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          accountName: S.String.pipe(T.Label()),
-          encryptionScopeName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(440, __c55, 0)),
-        }).pipe(
-          T.Http({
-            method: "PUT",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/encryptionScopes/{encryptionScopeName}",
-            code: 200,
-            apiVersion: "2026-09-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "PutEncryptionScopeRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          privateEndpoint: S.optional(__S(43, __c5, 3)),
-          privateLinkServiceConnectionState: __S(145, __c18, 1),
-        }),
-      ).annotate({
-        identifier: "PrivateEndpointConnectionPropertiesInput",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          accountName: S.String.pipe(T.Label()),
-          privateEndpointConnectionName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(443, __c55, 3)),
-        }).pipe(
-          T.Http({
-            method: "PUT",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/privateEndpointConnections/{privateEndpointConnectionName}",
-            code: 200,
-            apiVersion: "2026-09-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "PutPrivateEndpointConnectionRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          accountName: S.String.pipe(T.Label()),
-          username: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/localUsers/{username}/regeneratePassword",
-            code: 200,
-            apiVersion: "2026-09-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "RegenerateLocalUserPasswordRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          sshPassword: S.optional(S.String.pipe(T.SensitiveValue({}))),
-        }),
-      ).annotate({
-        identifier: "LocalUserRegeneratePasswordResult",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          accountName: S.String.pipe(T.Label()),
-          keyName: S.String,
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/regenerateKey",
-            code: 200,
-            apiVersion: "2026-09-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "RegenerateStorageAccountKeyRequest",
-      });
-  }
-}
-function __c56(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          accountName: S.String.pipe(T.Label()),
-          shareName: S.String.pipe(T.Label()),
-          deletedShareName: S.String,
-          deletedShareVersion: S.String,
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/fileServices/default/shares/{shareName}/restore",
-            code: 200,
-            apiVersion: "2026-09-01",
-          }),
-        ),
-      ).annotate({ identifier: "RestoreFileShareRequest" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          accountName: S.String.pipe(T.Label()),
-          timeToRestore: S.String,
-          blobRanges: __S(150, __c18, 6),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/restoreBlobRanges",
-            code: 200,
-            apiVersion: "2026-09-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "RestoreStorageAccountBlobRangesRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          accountName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/revokeUserDelegationKeys",
-            code: 200,
-            apiVersion: "2026-09-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "RevokeStorageAccountUserDelegationKeysRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          accountName: S.String.pipe(T.Label()),
-          containerName: S.String.pipe(T.Label()),
-          tags: __S(3, __c0, 3),
-          allowProtectedAppendWritesAll: S.optional(S.Boolean),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/blobServices/default/containers/{containerName}/setLegalHold",
-            code: 200,
-            apiVersion: "2026-09-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "SetBlobContainerLegalHoldRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          enabled: S.Boolean,
-          days: S.optional(S.Number),
-        }),
-      ).annotate({
-        identifier: "RestorePolicyPropertiesInput",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          cors: S.optional(__S(204, __c25, 4)),
-          defaultServiceVersion: S.optional(S.String),
-          deleteRetentionPolicy: S.optional(__S(205, __c25, 5)),
-          staticWebsite: S.optional(__S(206, __c25, 6)),
-          isVersioningEnabled: S.optional(S.Boolean),
-          automaticSnapshotPolicyEnabled: S.optional(S.Boolean),
-          changeFeed: S.optional(__S(207, __c25, 7)),
-          restorePolicy: S.optional(__S(452, __c56, 4)),
-          containerDeleteRetentionPolicy: S.optional(__S(205, __c25, 5)),
-          lastAccessTimeTrackingPolicy: S.optional(__S(209, __c26, 1)),
-        }),
-      ).annotate({
-        identifier: "BlobServicePropertiesPropertiesInput",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          accountName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(453, __c56, 5)),
-        }).pipe(
-          T.Http({
-            method: "PUT",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/blobServices/default",
-            code: 200,
-            apiVersion: "2026-09-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "SetBlobServiceServicePropertiesRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          accountName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(230, __c28, 6)),
-        }).pipe(
-          T.Http({
-            method: "PUT",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/fileServices/default",
-            code: 200,
-            apiVersion: "2026-09-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "SetFileServiceServicePropertiesRequest",
-      });
-  }
-}
-function __c57(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          accountName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(290, __c36, 2)),
-        }).pipe(
-          T.Http({
-            method: "PUT",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/queueServices/default",
-            code: 200,
-            apiVersion: "2026-09-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "SetQueueServiceServicePropertiesRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          accountName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(290, __c36, 2)),
-        }).pipe(
-          T.Http({
-            method: "PUT",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/tableServices/default",
-            code: 200,
-            apiVersion: "2026-09-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "SetTableServiceServicePropertiesRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          accountName: S.String.pipe(T.Label()),
-          storageTaskAssignmentName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/storageTaskAssignments/{storageTaskAssignmentName}/stopAssignment",
-            code: 200,
-            apiVersion: "2026-09-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "StopStorageTaskAssignmentAssignmentRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          targetSkuName: S.String,
-        }),
-      ).annotate({
-        identifier: "StorageAccountMigrationPropertiesInput",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          accountName: S.String.pipe(T.Label()),
-          properties: __S(459, __c57, 3),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/startAccountMigration",
-            code: 200,
-            apiVersion: "2026-09-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "StorageAccountsCustomerInitiatedMigrationRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          accountName: S.String.pipe(T.Label()),
-          failoverType: S.optional(S.String.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/failover",
-            code: 200,
-            apiVersion: "2026-09-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "StorageAccountsFailoverRequest",
-      });
-    case 6:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "StorageAccountsFailoverResponse",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          accountName: S.String.pipe(T.Label()),
-          requestType: S.String.pipe(T.Query()),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/hnsonmigration",
-            code: 200,
-            apiVersion: "2026-09-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "StorageAccountsHierarchicalNamespaceMigrationRequest",
-      });
-  }
-}
-function __c58(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          accountName: S.String.pipe(T.Label()),
-          blobAccessPointConfigurationName: S.String.pipe(T.Label()),
-          uniqueId: S.String,
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/blobAccessPointConfigurations/{blobAccessPointConfigurationName}/testExistingConnection",
-            code: 200,
-            apiVersion: "2026-09-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "TestBlobAccessPointConfigurationExistingConnectionRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          methodName: S.String,
-          errorMessage: S.optional(S.String),
-          requestId: S.String,
-        }),
-      ).annotate({
-        identifier: "BlobAccessPointConnectionTestResponse",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          accountName: S.String.pipe(T.Label()),
-          source: __S(52, __c6, 4),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/testBlobAccessPointConfigurationProposedConnection",
-            code: 200,
-            apiVersion: "2026-09-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "TestBlobAccessPointConnectionTestProposedConnectionRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          accountName: S.String.pipe(T.Label()),
-          connectorName: S.String.pipe(T.Label()),
-          uniqueId: S.String,
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/connectors/{connectorName}/testExistingConnection",
-            code: 200,
-            apiVersion: "2026-09-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "TestConnectorExistingConnectionRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          storageConnectorMethodName: S.String,
-          storageConnectorErrorMessage: S.optional(S.String),
-          storageConnectorRequestId: S.String,
-        }),
-      ).annotate({ identifier: "TestConnectionResponse" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          state: S.optional(S.String),
-          description: S.optional(S.String),
-          source: S.optional(__S(52, __c6, 4)),
-        }),
-      ).annotate({
-        identifier: "BlobAccessPointConfigurationPropertiesUpdate",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          accountName: S.String.pipe(T.Label()),
-          blobAccessPointConfigurationName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(38, __c4, 6)),
-          properties: S.optional(__S(469, __c58, 5)),
-        }).pipe(
-          T.Http({
-            method: "PATCH",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/blobAccessPointConfigurations/{blobAccessPointConfigurationName}",
-            code: 200,
-            apiVersion: "2026-09-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "UpdateBlobAccessPointConfigurationRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          accountName: S.String.pipe(T.Label()),
-          containerName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(59, __c7, 3)),
-        }).pipe(
-          T.Http({
-            method: "PATCH",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/blobServices/default/containers/{containerName}",
-            code: 200,
-            apiVersion: "2026-09-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "UpdateBlobContainerRequest",
-      });
-  }
-}
-function __c59(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          type: S.String,
-          authProperties: S.optional(__S(72, __c9, 0)),
-        }),
-      ).annotate({
-        identifier: "StorageConnectorSourceUpdate",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          state: S.optional(S.String),
-          description: S.optional(S.String),
-          testConnection: S.optional(S.Boolean),
-          source: S.optional(__S(472, __c59, 0)),
-        }),
-      ).annotate({
-        identifier: "StorageConnectorPropertiesUpdate",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          accountName: S.String.pipe(T.Label()),
-          connectorName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(38, __c4, 6)),
-          properties: S.optional(__S(473, __c59, 1)),
-        }).pipe(
-          T.Http({
-            method: "PATCH",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/connectors/{connectorName}",
-            code: 200,
-            apiVersion: "2026-09-01",
-          }),
-        ),
-      ).annotate({ identifier: "UpdateConnectorRequest" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          description: S.optional(S.String),
-          encryption: S.optional(__S(41, __c5, 1)),
-        }),
-      ).annotate({
-        identifier: "ContextCachePropertiesUpdate",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          contextCacheName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(38, __c4, 6)),
-          identity: S.optional(__S(45, __c5, 5)),
-          properties: S.optional(__S(475, __c59, 3)),
-        }).pipe(
-          T.Http({
-            method: "PATCH",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/contextCaches/{contextCacheName}",
-            code: 200,
-            apiVersion: "2026-09-01",
-          }),
-        ),
-      ).annotate({ identifier: "UpdateContextCachRequest" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          description: S.optional(S.String),
-          timeToLive: S.optional(S.Number),
-        }),
-      ).annotate({
-        identifier: "ContextCacheContainerPropertiesUpdate",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          contextCacheName: S.String.pipe(T.Label()),
-          contextCacheContainerName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(477, __c59, 5)),
-        }).pipe(
-          T.Http({
-            method: "PATCH",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/contextCaches/{contextCacheName}/contextCacheContainers/{contextCacheContainerName}",
-            code: 200,
-            apiVersion: "2026-09-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "UpdateContextCacheContainerRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          description: S.optional(S.String),
-          accessPolicies: S.optional(__S(79, __c9, 7)),
-          assets: S.optional(__S(81, __c10, 1)),
-        }),
-      ).annotate({
-        identifier: "StorageDataSharePropertiesUpdate",
-      });
-  }
-}
-function __c60(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          accountName: S.String.pipe(T.Label()),
-          dataShareName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(38, __c4, 6)),
-          properties: S.optional(__S(479, __c59, 7)),
-        }).pipe(
-          T.Http({
-            method: "PATCH",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/dataShares/{dataShareName}",
-            code: 200,
-            apiVersion: "2026-09-01",
-          }),
-        ),
-      ).annotate({ identifier: "UpdateDataShareRequest" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          accountName: S.String.pipe(T.Label()),
-          shareName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(90, __c11, 2)),
-        }).pipe(
-          T.Http({
-            method: "PATCH",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/fileServices/default/shares/{shareName}",
-            code: 200,
-            apiVersion: "2026-09-01",
-          }),
-        ),
-      ).annotate({ identifier: "UpdateFileShareRequest" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          accountName: S.String.pipe(T.Label()),
-          queueName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(94, __c11, 6)),
-        }).pipe(
-          T.Http({
-            method: "PATCH",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/queueServices/default/queues/{queueName}",
-            code: 200,
-            apiVersion: "2026-09-01",
-          }),
-        ),
-      ).annotate({ identifier: "UpdateQueueRequest" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          customDomain: S.optional(__S(105, __c13, 1)),
-          encryption: S.optional(__S(110, __c13, 6)),
-          sasPolicy: S.optional(__S(103, __c12, 7)),
-          keyPolicy: S.optional(__S(104, __c13, 0)),
-          accessTier: S.optional(S.String),
-          turboTier: S.optional(__S(118, __c14, 6)),
-          azureFilesIdentityBasedAuthentication: S.optional(__S(121, __c15, 1)),
-          supportsHttpsTrafficOnly: S.optional(S.Boolean),
-          isSftpEnabled: S.optional(S.Boolean),
-          isLocalUserEnabled: S.optional(S.Boolean),
-          enableExtendedGroups: S.optional(S.Boolean),
-          networkAcls: S.optional(__S(117, __c14, 5)),
-          largeFileSharesState: S.optional(S.String),
-          routingPreference: S.optional(__S(122, __c15, 2)),
-          dualStackEndpointPreference: S.optional(__S(123, __c15, 3)),
-          allowBlobPublicAccess: S.optional(S.Boolean),
-          minimumTlsVersion: S.optional(S.String),
-          allowSharedKeyAccess: S.optional(S.Boolean),
-          allowCrossTenantReplication: S.optional(S.Boolean),
-          defaultToOAuthAuthentication: S.optional(S.Boolean),
-          publicNetworkAccess: S.optional(S.String),
-          immutableStorageWithVersioning: S.optional(__S(125, __c15, 5)),
-          allowedCopyScope: S.optional(S.String),
-          dnsEndpointType: S.optional(S.String),
-          geoPriorityReplicationStatus: S.optional(__S(126, __c15, 6)),
-          allowSharedKeyAccessForServices: S.optional(__S(127, __c15, 7)),
-          dataCollaborationPolicyProperties: S.optional(__S(128, __c16, 0)),
-          allowCrossTenantDelegationSas: S.optional(S.Boolean),
-        }),
-      ).annotate({
-        identifier: "StorageAccountPropertiesUpdateParametersInput",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          accountName: S.String.pipe(T.Label()),
-          sku: S.optional(__S(98, __c12, 2)),
-          tags: S.optional(__S(38, __c4, 6)),
-          identity: S.optional(__S(102, __c12, 6)),
-          properties: S.optional(__S(483, __c60, 3)),
-          kind: S.optional(S.String),
-          zones: S.optional(__S(3, __c0, 3)),
-          placement: S.optional(__S(100, __c12, 4)),
-        }).pipe(
-          T.Http({
-            method: "PATCH",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}",
-            code: 200,
-            apiVersion: "2026-09-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "UpdateStorageAccountRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          type: S.optional(S.String),
-          parameters: S.optional(__S(159, __c19, 7)),
-        }),
-      ).annotate({ identifier: "ExecutionTriggerUpdate" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          target: S.optional(__S(158, __c19, 6)),
-          trigger: S.optional(__S(485, __c60, 5)),
-        }),
-      ).annotate({
-        identifier: "StorageTaskAssignmentUpdateExecutionContext",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          prefix: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "StorageTaskAssignmentUpdateReport",
-      });
-  }
-}
-function __c61(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          enabled: S.optional(S.Boolean),
-          description: S.optional(S.String),
-          executionContext: S.optional(__S(486, __c60, 6)),
-          report: S.optional(__S(487, __c60, 7)),
-          runStatus: S.optional(__S(43, __c5, 3)),
-        }),
-      ).annotate({
-        identifier: "StorageTaskAssignmentUpdatePropertiesInput",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          accountName: S.String.pipe(T.Label()),
-          storageTaskAssignmentName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(488, __c61, 0)),
-        }).pipe(
-          T.Http({
-            method: "PATCH",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/storageTaskAssignments/{storageTaskAssignmentName}",
-            code: 200,
-            apiVersion: "2026-09-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "UpdateStorageTaskAssignmentRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          accountName: S.String.pipe(T.Label()),
-          tableName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(171, __c21, 3)),
-        }).pipe(
-          T.Http({
-            method: "PATCH",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/tableServices/default/tables/{tableName}",
-            code: 200,
-            apiVersion: "2026-09-01",
-          }),
-        ),
-      ).annotate({ identifier: "UpdateTableRequest" });
-  }
-}
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

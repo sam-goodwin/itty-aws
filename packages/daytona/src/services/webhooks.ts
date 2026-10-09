@@ -76,8 +76,8 @@ export const getWebhookControllerInitializationStatus: API.OperationMethod<
   GetWebhookControllerInitializationStatusError,
   DaytonaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2, __c0, 2) as any as S.Schema<GetWebhookControllerInitializationStatusRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<WebhookInitializationStatus>,
+  input: __S(2, __c1, 0) as any as S.Schema<GetWebhookControllerInitializationStatusRequest>,
+  output: __S(4, __c2, 0) as any as S.Schema<WebhookInitializationStatus>,
   errors: [UnknownDaytonaError],
   protocol: DaytonaProtocol,
   retry: Retry.Retry,
@@ -91,8 +91,8 @@ export const refreshWebhookControllerEndpoints: API.OperationMethod<
   RefreshWebhookControllerEndpointsError,
   DaytonaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(4, __c0, 4) as any as S.Schema<RefreshWebhookControllerEndpointsRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<RefreshWebhookControllerEndpointsResponse>,
+  input: __S(6, __c3, 0) as any as S.Schema<RefreshWebhookControllerEndpointsRequest>,
+  output: __S(7, __c3, 1) as any as S.Schema<RefreshWebhookControllerEndpointsResponse>,
   errors: [UnknownDaytonaError],
   protocol: DaytonaProtocol,
   retry: Retry.Retry,
@@ -106,8 +106,8 @@ export const webhookControllerInitializeWebhooks: API.OperationMethod<
   WebhookControllerInitializeWebhooksError,
   DaytonaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(6, __c0, 6) as any as S.Schema<WebhookControllerInitializeWebhooksRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<WebhookInitializationStatus>,
+  input: __S(8, __c4, 0) as any as S.Schema<WebhookControllerInitializeWebhooksRequest>,
+  output: __S(4, __c2, 0) as any as S.Schema<WebhookInitializationStatus>,
   errors: [UnknownDaytonaError],
   protocol: DaytonaProtocol,
   retry: Retry.Retry,
@@ -138,7 +138,11 @@ function __c0(j: number): any {
           url: S.String,
         }),
       ).annotate({ identifier: "WebhookAppPortalAccess" });
-    case 2:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           organizationId: S.String.pipe(T.Label()),
@@ -153,7 +157,11 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "GetWebhookControllerInitializationStatusRequest",
       });
-    case 3:
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           organizationId: S.String,
@@ -166,7 +174,11 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "WebhookInitializationStatus",
       });
-    case 4:
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           organizationId: S.String.pipe(T.Label()),
@@ -181,11 +193,15 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "RefreshWebhookControllerEndpointsRequest",
       });
-    case 5:
+    case 1:
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "RefreshWebhookControllerEndpointsResponse",
       });
-    case 6:
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           organizationId: S.String.pipe(T.Label()),
@@ -202,7 +218,6 @@ function __c0(j: number): any {
       });
   }
 }
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

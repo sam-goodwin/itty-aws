@@ -2069,8 +2069,8 @@ export const deleteRecommendationPreferences: API.OperationMethod<
   DeleteRecommendationPreferencesError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2, __c0, 2) as any as S.Schema<DeleteRecommendationPreferencesRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<DeleteRecommendationPreferencesResponse>,
+  input: __S(768, __c48, 0) as any as S.Schema<DeleteRecommendationPreferencesRequest>,
+  output: __S(816, __c51, 0) as any as S.Schema<DeleteRecommendationPreferencesResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -2110,8 +2110,8 @@ export const describeRecommendationExportJobs: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   RecommendationExportJob
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(7, __c0, 7) as any as S.Schema<DescribeRecommendationExportJobsRequest>,
-  output: __S(12, __c1, 4) as any as S.Schema<DescribeRecommendationExportJobsResponse>,
+  input: __S(0, __c0, 0) as any as S.Schema<DescribeRecommendationExportJobsRequest>,
+  output: __S(4, __c0, 4) as any as S.Schema<DescribeRecommendationExportJobsResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -2159,8 +2159,8 @@ export const exportAutoScalingGroupRecommendations: API.OperationMethod<
   ExportAutoScalingGroupRecommendationsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(16, __c2, 0) as any as S.Schema<ExportAutoScalingGroupRecommendationsRequest>,
-  output: __S(17, __c2, 1) as any as S.Schema<ExportAutoScalingGroupRecommendationsResponse>,
+  input: __S(64, __c4, 0) as any as S.Schema<ExportAutoScalingGroupRecommendationsRequest>,
+  output: __S(81, __c5, 1) as any as S.Schema<ExportAutoScalingGroupRecommendationsResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -2202,8 +2202,8 @@ export const exportEBSVolumeRecommendations: API.OperationMethod<
   ExportEBSVolumeRecommendationsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(18, __c2, 2) as any as S.Schema<ExportEBSVolumeRecommendationsRequest>,
-  output: __S(17, __c2, 1) as any as S.Schema<ExportEBSVolumeRecommendationsResponse>,
+  input: __S(128, __c8, 0) as any as S.Schema<ExportEBSVolumeRecommendationsRequest>,
+  output: __S(81, __c5, 1) as any as S.Schema<ExportEBSVolumeRecommendationsResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -2245,8 +2245,8 @@ export const exportEC2InstanceRecommendations: API.OperationMethod<
   ExportEC2InstanceRecommendationsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(19, __c2, 3) as any as S.Schema<ExportEC2InstanceRecommendationsRequest>,
-  output: __S(17, __c2, 1) as any as S.Schema<ExportEC2InstanceRecommendationsResponse>,
+  input: __S(144, __c9, 0) as any as S.Schema<ExportEC2InstanceRecommendationsRequest>,
+  output: __S(81, __c5, 1) as any as S.Schema<ExportEC2InstanceRecommendationsResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -2288,8 +2288,8 @@ export const exportECSServiceRecommendations: API.OperationMethod<
   ExportECSServiceRecommendationsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(22, __c2, 6) as any as S.Schema<ExportECSServiceRecommendationsRequest>,
-  output: __S(17, __c2, 1) as any as S.Schema<ExportECSServiceRecommendationsResponse>,
+  input: __S(160, __c10, 0) as any as S.Schema<ExportECSServiceRecommendationsRequest>,
+  output: __S(81, __c5, 1) as any as S.Schema<ExportECSServiceRecommendationsResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -2331,8 +2331,8 @@ export const exportIdleRecommendations: API.OperationMethod<
   ExportIdleRecommendationsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(23, __c2, 7) as any as S.Schema<ExportIdleRecommendationsRequest>,
-  output: __S(17, __c2, 1) as any as S.Schema<ExportIdleRecommendationsResponse>,
+  input: __S(192, __c12, 0) as any as S.Schema<ExportIdleRecommendationsRequest>,
+  output: __S(81, __c5, 1) as any as S.Schema<ExportIdleRecommendationsResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -2374,8 +2374,8 @@ export const exportLambdaFunctionRecommendations: API.OperationMethod<
   ExportLambdaFunctionRecommendationsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(24, __c3, 0) as any as S.Schema<ExportLambdaFunctionRecommendationsRequest>,
-  output: __S(17, __c2, 1) as any as S.Schema<ExportLambdaFunctionRecommendationsResponse>,
+  input: __S(208, __c13, 0) as any as S.Schema<ExportLambdaFunctionRecommendationsRequest>,
+  output: __S(81, __c5, 1) as any as S.Schema<ExportLambdaFunctionRecommendationsResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -2417,8 +2417,8 @@ export const exportLicenseRecommendations: API.OperationMethod<
   ExportLicenseRecommendationsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(27, __c3, 3) as any as S.Schema<ExportLicenseRecommendationsRequest>,
-  output: __S(17, __c2, 1) as any as S.Schema<ExportLicenseRecommendationsResponse>,
+  input: __S(224, __c14, 0) as any as S.Schema<ExportLicenseRecommendationsRequest>,
+  output: __S(81, __c5, 1) as any as S.Schema<ExportLicenseRecommendationsResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -2460,8 +2460,8 @@ export const exportRDSDatabaseRecommendations: API.OperationMethod<
   ExportRDSDatabaseRecommendationsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(28, __c3, 4) as any as S.Schema<ExportRDSDatabaseRecommendationsRequest>,
-  output: __S(17, __c2, 1) as any as S.Schema<ExportRDSDatabaseRecommendationsResponse>,
+  input: __S(256, __c16, 0) as any as S.Schema<ExportRDSDatabaseRecommendationsRequest>,
+  output: __S(81, __c5, 1) as any as S.Schema<ExportRDSDatabaseRecommendationsResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -2501,8 +2501,8 @@ export const getAutoScalingGroupRecommendations: API.OperationMethod<
   GetAutoScalingGroupRecommendationsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(29, __c3, 5) as any as S.Schema<GetAutoScalingGroupRecommendationsRequest>,
-  output: __S(53, __c6, 5) as any as S.Schema<GetAutoScalingGroupRecommendationsResponse>,
+  input: __S(272, __c17, 0) as any as S.Schema<GetAutoScalingGroupRecommendationsRequest>,
+  output: __S(278, __c17, 6) as any as S.Schema<GetAutoScalingGroupRecommendationsResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -2542,8 +2542,8 @@ export const getEBSVolumeRecommendations: API.OperationMethod<
   GetEBSVolumeRecommendationsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(54, __c6, 6) as any as S.Schema<GetEBSVolumeRecommendationsRequest>,
-  output: __S(64, __c8, 0) as any as S.Schema<GetEBSVolumeRecommendationsResponse>,
+  input: __S(416, __c26, 0) as any as S.Schema<GetEBSVolumeRecommendationsRequest>,
+  output: __S(422, __c26, 6) as any as S.Schema<GetEBSVolumeRecommendationsResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -2583,8 +2583,8 @@ export const getEC2InstanceRecommendations: API.OperationMethod<
   GetEC2InstanceRecommendationsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(65, __c8, 1) as any as S.Schema<GetEC2InstanceRecommendationsRequest>,
-  output: __S(73, __c9, 1) as any as S.Schema<GetEC2InstanceRecommendationsResponse>,
+  input: __S(480, __c30, 0) as any as S.Schema<GetEC2InstanceRecommendationsRequest>,
+  output: __S(488, __c30, 8) as any as S.Schema<GetEC2InstanceRecommendationsResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -2625,8 +2625,8 @@ export const getEC2RecommendationProjectedMetrics: API.OperationMethod<
   GetEC2RecommendationProjectedMetricsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(74, __c9, 2) as any as S.Schema<GetEC2RecommendationProjectedMetricsRequest>,
-  output: __S(81, __c10, 1) as any as S.Schema<GetEC2RecommendationProjectedMetricsResponse>,
+  input: __S(496, __c31, 0) as any as S.Schema<GetEC2RecommendationProjectedMetricsRequest>,
+  output: __S(501, __c31, 5) as any as S.Schema<GetEC2RecommendationProjectedMetricsResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -2661,8 +2661,12 @@ export const getECSServiceRecommendationProjectedMetrics: API.OperationMethod<
   GetECSServiceRecommendationProjectedMetricsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(82, __c10, 2) as any as S.Schema<GetECSServiceRecommendationProjectedMetricsRequest>,
-  output: __S(87, __c10, 7) as any as S.Schema<GetECSServiceRecommendationProjectedMetricsResponse>,
+  input: __S(528, __c33, 0) as any as S.Schema<GetECSServiceRecommendationProjectedMetricsRequest>,
+  output: __S(
+    533,
+    __c33,
+    5,
+  ) as any as S.Schema<GetECSServiceRecommendationProjectedMetricsResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -2703,8 +2707,8 @@ export const getECSServiceRecommendations: API.OperationMethod<
   GetECSServiceRecommendationsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(88, __c11, 0) as any as S.Schema<GetECSServiceRecommendationsRequest>,
-  output: __S(101, __c12, 5) as any as S.Schema<GetECSServiceRecommendationsResponse>,
+  input: __S(544, __c34, 0) as any as S.Schema<GetECSServiceRecommendationsRequest>,
+  output: __S(556, __c34, 12) as any as S.Schema<GetECSServiceRecommendationsResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -2745,8 +2749,8 @@ export const getEffectiveRecommendationPreferences: API.OperationMethod<
   GetEffectiveRecommendationPreferencesError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(102, __c12, 6) as any as S.Schema<GetEffectiveRecommendationPreferencesRequest>,
-  output: __S(103, __c12, 7) as any as S.Schema<GetEffectiveRecommendationPreferencesResponse>,
+  input: __S(576, __c36, 0) as any as S.Schema<GetEffectiveRecommendationPreferencesRequest>,
+  output: __S(577, __c36, 1) as any as S.Schema<GetEffectiveRecommendationPreferencesResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -2784,8 +2788,8 @@ export const getEnrollmentStatus: API.OperationMethod<
   GetEnrollmentStatusError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(104, __c13, 0) as any as S.Schema<GetEnrollmentStatusRequest>,
-  output: __S(105, __c13, 1) as any as S.Schema<GetEnrollmentStatusResponse>,
+  input: __S(592, __c37, 0) as any as S.Schema<GetEnrollmentStatusRequest>,
+  output: __S(593, __c37, 1) as any as S.Schema<GetEnrollmentStatusResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -2820,8 +2824,8 @@ export const getEnrollmentStatusesForOrganization: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   AccountEnrollmentStatus
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(106, __c13, 2) as any as S.Schema<GetEnrollmentStatusesForOrganizationRequest>,
-  output: __S(109, __c13, 5) as any as S.Schema<GetEnrollmentStatusesForOrganizationResponse>,
+  input: __S(608, __c38, 0) as any as S.Schema<GetEnrollmentStatusesForOrganizationRequest>,
+  output: __S(611, __c38, 3) as any as S.Schema<GetEnrollmentStatusesForOrganizationResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -2863,8 +2867,8 @@ export const getIdleRecommendations: API.OperationMethod<
   GetIdleRecommendationsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(111, __c13, 7) as any as S.Schema<GetIdleRecommendationsRequest>,
-  output: __S(121, __c15, 1) as any as S.Schema<GetIdleRecommendationsResponse>,
+  input: __S(625, __c39, 1) as any as S.Schema<GetIdleRecommendationsRequest>,
+  output: __S(635, __c39, 11) as any as S.Schema<GetIdleRecommendationsResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -2905,8 +2909,8 @@ export const getLambdaFunctionRecommendations: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   LambdaFunctionRecommendation
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(122, __c15, 2) as any as S.Schema<GetLambdaFunctionRecommendationsRequest>,
-  output: __S(129, __c16, 1) as any as S.Schema<GetLambdaFunctionRecommendationsResponse>,
+  input: __S(640, __c40, 0) as any as S.Schema<GetLambdaFunctionRecommendationsRequest>,
+  output: __S(647, __c40, 7) as any as S.Schema<GetLambdaFunctionRecommendationsResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -2952,8 +2956,8 @@ export const getLicenseRecommendations: API.OperationMethod<
   GetLicenseRecommendationsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(130, __c16, 2) as any as S.Schema<GetLicenseRecommendationsRequest>,
-  output: __S(138, __c17, 2) as any as S.Schema<GetLicenseRecommendationsResponse>,
+  input: __S(656, __c41, 0) as any as S.Schema<GetLicenseRecommendationsRequest>,
+  output: __S(664, __c41, 8) as any as S.Schema<GetLicenseRecommendationsResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -2988,11 +2992,11 @@ export const getRDSDatabaseRecommendationProjectedMetrics: API.OperationMethod<
   GetRDSDatabaseRecommendationProjectedMetricsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(139, __c17, 3) as any as S.Schema<GetRDSDatabaseRecommendationProjectedMetricsRequest>,
+  input: __S(672, __c42, 0) as any as S.Schema<GetRDSDatabaseRecommendationProjectedMetricsRequest>,
   output: __S(
-    144,
-    __c18,
-    0,
+    677,
+    __c42,
+    5,
   ) as any as S.Schema<GetRDSDatabaseRecommendationProjectedMetricsResponse>,
   errors: [
     AccessDeniedException,
@@ -3034,8 +3038,8 @@ export const getRDSDatabaseRecommendations: API.OperationMethod<
   GetRDSDatabaseRecommendationsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(145, __c18, 1) as any as S.Schema<GetRDSDatabaseRecommendationsRequest>,
-  output: __S(154, __c19, 2) as any as S.Schema<GetRDSDatabaseRecommendationsResponse>,
+  input: __S(688, __c43, 0) as any as S.Schema<GetRDSDatabaseRecommendationsRequest>,
+  output: __S(697, __c43, 9) as any as S.Schema<GetRDSDatabaseRecommendationsResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -3080,8 +3084,8 @@ export const getRecommendationPreferences: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   RecommendationPreferencesDetail
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(155, __c19, 3) as any as S.Schema<GetRecommendationPreferencesRequest>,
-  output: __S(158, __c19, 6) as any as S.Schema<GetRecommendationPreferencesResponse>,
+  input: __S(704, __c44, 0) as any as S.Schema<GetRecommendationPreferencesRequest>,
+  output: __S(707, __c44, 3) as any as S.Schema<GetRecommendationPreferencesResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -3146,8 +3150,8 @@ export const getRecommendationSummaries: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   RecommendationSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(159, __c19, 7) as any as S.Schema<GetRecommendationSummariesRequest>,
-  output: __S(169, __c21, 1) as any as S.Schema<GetRecommendationSummariesResponse>,
+  input: __S(720, __c45, 0) as any as S.Schema<GetRecommendationSummariesRequest>,
+  output: __S(730, __c45, 10) as any as S.Schema<GetRecommendationSummariesResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -3192,8 +3196,8 @@ export const putRecommendationPreferences: API.OperationMethod<
   PutRecommendationPreferencesError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(172, __c21, 4) as any as S.Schema<PutRecommendationPreferencesRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<PutRecommendationPreferencesResponse>,
+  input: __S(738, __c46, 2) as any as S.Schema<PutRecommendationPreferencesRequest>,
+  output: __S(816, __c51, 0) as any as S.Schema<PutRecommendationPreferencesResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -3236,8 +3240,8 @@ export const updateEnrollmentStatus: API.OperationMethod<
   UpdateEnrollmentStatusError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(173, __c21, 5) as any as S.Schema<UpdateEnrollmentStatusRequest>,
-  output: __S(174, __c21, 6) as any as S.Schema<UpdateEnrollmentStatusResponse>,
+  input: __S(752, __c47, 0) as any as S.Schema<UpdateEnrollmentStatusRequest>,
+  output: __S(753, __c47, 1) as any as S.Schema<UpdateEnrollmentStatusResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -3256,42 +3260,41 @@ function __c0(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({ name: S.optional(S.String), value: S.optional(S.String) }),
-      ).annotate({ identifier: "Scope" });
-    case 1:
-      return S.Array(S.String);
-    case 2:
-      return S.suspend(() =>
         S.Struct({
-          resourceType: S.String,
-          scope: S.optional(__S(0, __c0, 0)),
-          recommendationPreferenceNames: __S(1, __c0, 1),
-        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "DeleteRecommendationPreferencesRequest",
-      });
-    case 3:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "DeleteRecommendationPreferencesResponse",
-      });
-    case 4:
-      return S.Array(S.String);
-    case 5:
-      return S.suspend(() =>
-        S.Struct({ name: S.optional(S.String), values: S.optional(__S(4, __c0, 4)) }),
-      ).annotate({ identifier: "JobFilter" });
-    case 6:
-      return S.Array(__S(5, __c0, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          jobIds: S.optional(__S(4, __c0, 4)),
-          filters: S.optional(__S(6, __c0, 6)),
+          jobIds: S.optional(__S(32, __c2, 0)),
+          filters: S.optional(__S(49, __c3, 1)),
           nextToken: S.optional(S.String),
           maxResults: S.optional(S.Number),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "DescribeRecommendationExportJobsRequest",
+      });
+    case 1:
+      return S.suspend(() => S.Struct({ s3: S.optional(__S(16, __c1, 0)) })).annotate({
+        identifier: "ExportDestination",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          jobId: S.optional(S.String),
+          destination: S.optional(__S(1, __c0, 1)),
+          resourceType: S.optional(S.String),
+          status: S.optional(S.String),
+          creationTimestamp: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          lastUpdatedTimestamp: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          failureReason: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "RecommendationExportJob" });
+    case 3:
+      return S.Array(__S(2, __c0, 2));
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          recommendationExportJobs: S.optional(__S(3, __c0, 3)),
+          nextToken: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "DescribeRecommendationExportJobsResponse",
       });
   }
 }
@@ -3305,127 +3308,148 @@ function __c1(j: number): any {
           metadataKey: S.optional(S.String),
         }),
       ).annotate({ identifier: "S3Destination" });
-    case 1:
-      return S.suspend(() => S.Struct({ s3: S.optional(__S(8, __c1, 0)) })).annotate({
-        identifier: "ExportDestination",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          jobId: S.optional(S.String),
-          destination: S.optional(__S(9, __c1, 1)),
-          resourceType: S.optional(S.String),
-          status: S.optional(S.String),
-          creationTimestamp: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          lastUpdatedTimestamp: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          failureReason: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "RecommendationExportJob" });
-    case 3:
-      return S.Array(__S(10, __c1, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          recommendationExportJobs: S.optional(__S(11, __c1, 3)),
-          nextToken: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "DescribeRecommendationExportJobsResponse",
-      });
-    case 5:
-      return S.Array(S.String);
-    case 6:
-      return S.suspend(() =>
-        S.Struct({ bucket: S.optional(S.String), keyPrefix: S.optional(S.String) }),
-      ).annotate({ identifier: "S3DestinationConfig" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({ cpuVendorArchitectures: S.optional(__S(1, __c0, 1)) }),
-      ).annotate({
-        identifier: "RecommendationPreferences",
-      });
   }
 }
 function __c2(j: number): any {
   switch (j) {
     case 0:
+      return S.Array(S.String);
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ name: S.optional(S.String), values: S.optional(__S(32, __c2, 0)) }),
+      ).annotate({ identifier: "JobFilter" });
+    case 1:
+      return S.Array(__S(48, __c3, 0));
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          accountIds: S.optional(__S(4, __c0, 4)),
-          filters: S.optional(__S(6, __c0, 6)),
-          fieldsToExport: S.optional(__S(13, __c1, 5)),
-          s3DestinationConfig: __S(14, __c1, 6),
+          accountIds: S.optional(__S(32, __c2, 0)),
+          filters: S.optional(__S(49, __c3, 1)),
+          fieldsToExport: S.optional(__S(112, __c7, 0)),
+          s3DestinationConfig: __S(80, __c5, 0),
           fileFormat: S.optional(S.String),
           includeMemberAccounts: S.optional(S.Boolean),
-          recommendationPreferences: S.optional(__S(15, __c1, 7)),
+          recommendationPreferences: S.optional(__S(96, __c6, 0)),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "ExportAutoScalingGroupRecommendationsRequest",
       });
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ bucket: S.optional(S.String), keyPrefix: S.optional(S.String) }),
+      ).annotate({ identifier: "S3DestinationConfig" });
     case 1:
       return S.suspend(() =>
-        S.Struct({ jobId: S.optional(S.String), s3Destination: S.optional(__S(8, __c1, 0)) }),
+        S.Struct({ jobId: S.optional(S.String), s3Destination: S.optional(__S(16, __c1, 0)) }),
       ).annotate({
         identifier: "ExportAutoScalingGroupRecommendationsResponse",
       });
-    case 2:
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ cpuVendorArchitectures: S.optional(__S(784, __c49, 0)) }),
+      ).annotate({
+        identifier: "RecommendationPreferences",
+      });
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          accountIds: S.optional(__S(4, __c0, 4)),
-          filters: S.optional(__S(6, __c0, 6)),
-          fieldsToExport: S.optional(__S(1, __c0, 1)),
-          s3DestinationConfig: __S(14, __c1, 6),
+          accountIds: S.optional(__S(32, __c2, 0)),
+          filters: S.optional(__S(49, __c3, 1)),
+          fieldsToExport: S.optional(__S(784, __c49, 0)),
+          s3DestinationConfig: __S(80, __c5, 0),
           fileFormat: S.optional(S.String),
           includeMemberAccounts: S.optional(S.Boolean),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "ExportEBSVolumeRecommendationsRequest",
       });
-    case 3:
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          accountIds: S.optional(__S(4, __c0, 4)),
-          filters: S.optional(__S(6, __c0, 6)),
-          fieldsToExport: S.optional(__S(1, __c0, 1)),
-          s3DestinationConfig: __S(14, __c1, 6),
+          accountIds: S.optional(__S(32, __c2, 0)),
+          filters: S.optional(__S(49, __c3, 1)),
+          fieldsToExport: S.optional(__S(784, __c49, 0)),
+          s3DestinationConfig: __S(80, __c5, 0),
           fileFormat: S.optional(S.String),
           includeMemberAccounts: S.optional(S.Boolean),
-          recommendationPreferences: S.optional(__S(15, __c1, 7)),
+          recommendationPreferences: S.optional(__S(96, __c6, 0)),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "ExportEC2InstanceRecommendationsRequest",
       });
-    case 4:
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          name: S.optional(S.String),
-          values: S.optional(__S(4, __c0, 4)),
-        }),
-      ).annotate({
-        identifier: "ECSServiceRecommendationFilter",
-      });
-    case 5:
-      return S.Array(__S(20, __c2, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          accountIds: S.optional(__S(4, __c0, 4)),
-          filters: S.optional(__S(21, __c2, 5)),
-          fieldsToExport: S.optional(__S(1, __c0, 1)),
-          s3DestinationConfig: __S(14, __c1, 6),
+          accountIds: S.optional(__S(32, __c2, 0)),
+          filters: S.optional(__S(177, __c11, 1)),
+          fieldsToExport: S.optional(__S(784, __c49, 0)),
+          s3DestinationConfig: __S(80, __c5, 0),
           fileFormat: S.optional(S.String),
           includeMemberAccounts: S.optional(S.Boolean),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "ExportECSServiceRecommendationsRequest",
       });
-    case 7:
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          accountIds: S.optional(__S(4, __c0, 4)),
-          filters: S.optional(__S(6, __c0, 6)),
-          fieldsToExport: S.optional(__S(1, __c0, 1)),
-          s3DestinationConfig: __S(14, __c1, 6),
+          name: S.optional(S.String),
+          values: S.optional(__S(32, __c2, 0)),
+        }),
+      ).annotate({
+        identifier: "ECSServiceRecommendationFilter",
+      });
+    case 1:
+      return S.Array(__S(176, __c11, 0));
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          accountIds: S.optional(__S(32, __c2, 0)),
+          filters: S.optional(__S(49, __c3, 1)),
+          fieldsToExport: S.optional(__S(784, __c49, 0)),
+          s3DestinationConfig: __S(80, __c5, 0),
           fileFormat: S.optional(S.String),
           includeMemberAccounts: S.optional(S.Boolean),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
@@ -3434,87 +3458,86 @@ function __c2(j: number): any {
       });
   }
 }
-function __c3(j: number): any {
+function __c13(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          accountIds: S.optional(__S(4, __c0, 4)),
-          filters: S.optional(__S(21, __c2, 5)),
-          fieldsToExport: S.optional(__S(1, __c0, 1)),
-          s3DestinationConfig: __S(14, __c1, 6),
+          accountIds: S.optional(__S(32, __c2, 0)),
+          filters: S.optional(__S(177, __c11, 1)),
+          fieldsToExport: S.optional(__S(784, __c49, 0)),
+          s3DestinationConfig: __S(80, __c5, 0),
           fileFormat: S.optional(S.String),
           includeMemberAccounts: S.optional(S.Boolean),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "ExportLambdaFunctionRecommendationsRequest",
       });
-    case 1:
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          name: S.optional(S.String),
-          values: S.optional(__S(4, __c0, 4)),
-        }),
-      ).annotate({
-        identifier: "LicenseRecommendationFilter",
-      });
-    case 2:
-      return S.Array(__S(25, __c3, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          accountIds: S.optional(__S(4, __c0, 4)),
-          filters: S.optional(__S(26, __c3, 2)),
-          fieldsToExport: S.optional(__S(1, __c0, 1)),
-          s3DestinationConfig: __S(14, __c1, 6),
+          accountIds: S.optional(__S(32, __c2, 0)),
+          filters: S.optional(__S(241, __c15, 1)),
+          fieldsToExport: S.optional(__S(784, __c49, 0)),
+          s3DestinationConfig: __S(80, __c5, 0),
           fileFormat: S.optional(S.String),
           includeMemberAccounts: S.optional(S.Boolean),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "ExportLicenseRecommendationsRequest",
       });
-    case 4:
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ name: S.optional(S.String), values: S.optional(__S(32, __c2, 0)) }),
+      ).annotate({
+        identifier: "LicenseRecommendationFilter",
+      });
+    case 1:
+      return S.Array(__S(240, __c15, 0));
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          accountIds: S.optional(__S(4, __c0, 4)),
-          filters: S.optional(__S(26, __c3, 2)),
-          fieldsToExport: S.optional(__S(1, __c0, 1)),
-          s3DestinationConfig: __S(14, __c1, 6),
+          accountIds: S.optional(__S(32, __c2, 0)),
+          filters: S.optional(__S(241, __c15, 1)),
+          fieldsToExport: S.optional(__S(784, __c49, 0)),
+          s3DestinationConfig: __S(80, __c5, 0),
           fileFormat: S.optional(S.String),
           includeMemberAccounts: S.optional(S.Boolean),
-          recommendationPreferences: S.optional(__S(15, __c1, 7)),
+          recommendationPreferences: S.optional(__S(96, __c6, 0)),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "ExportRDSDatabaseRecommendationsRequest",
       });
-    case 5:
+  }
+}
+function __c17(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          accountIds: S.optional(__S(4, __c0, 4)),
-          autoScalingGroupArns: S.optional(__S(4, __c0, 4)),
+          accountIds: S.optional(__S(32, __c2, 0)),
+          autoScalingGroupArns: S.optional(__S(32, __c2, 0)),
           nextToken: S.optional(S.String),
           maxResults: S.optional(S.Number),
-          filters: S.optional(__S(6, __c0, 6)),
-          recommendationPreferences: S.optional(__S(15, __c1, 7)),
+          filters: S.optional(__S(49, __c3, 1)),
+          recommendationPreferences: S.optional(__S(96, __c6, 0)),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "GetAutoScalingGroupRecommendationsRequest",
       });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.optional(S.String),
-          statistic: S.optional(S.String),
-          value: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "UtilizationMetric" });
-    case 7:
-      return S.Array(__S(30, __c3, 6));
-  }
-}
-function __c4(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           desiredCapacity: S.optional(S.Number),
@@ -3524,73 +3547,181 @@ function __c4(j: number): any {
           allocationStrategy: S.optional(S.String),
           estimatedInstanceHourReductionPercentage: S.optional(S.Number),
           type: S.optional(S.String),
-          mixedInstanceTypes: S.optional(__S(4, __c0, 4)),
+          mixedInstanceTypes: S.optional(__S(32, __c2, 0)),
         }),
       ).annotate({
         identifier: "AutoScalingGroupConfiguration",
       });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({ gpuCount: S.optional(S.Number), gpuMemorySizeInMiB: S.optional(S.Number) }),
-      ).annotate({ identifier: "Gpu" });
     case 2:
-      return S.Array(__S(33, __c4, 1));
-    case 3:
-      return S.suspend(() => S.Struct({ gpus: S.optional(__S(34, __c4, 2)) })).annotate({
-        identifier: "GpuInfo",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({ currency: S.optional(S.String), value: S.optional(S.Number) }),
-      ).annotate({ identifier: "EstimatedMonthlySavings" });
-    case 5:
       return S.suspend(() =>
         S.Struct({
-          savingsOpportunityPercentage: S.optional(S.Number),
-          estimatedMonthlySavings: S.optional(__S(36, __c4, 4)),
+          configuration: S.optional(__S(273, __c17, 1)),
+          instanceGpuInfo: S.optional(__S(354, __c22, 2)),
+          projectedUtilizationMetrics: S.optional(__S(337, __c21, 1)),
+          performanceRisk: S.optional(S.Number),
+          rank: S.optional(S.Number),
+          savingsOpportunity: S.optional(__S(305, __c19, 1)),
+          savingsOpportunityAfterDiscounts: S.optional(__S(289, __c18, 1)),
+          migrationEffort: S.optional(S.String),
         }),
-      ).annotate({ identifier: "SavingsOpportunity" });
+      ).annotate({
+        identifier: "AutoScalingGroupRecommendationOption",
+      });
+    case 3:
+      return S.Array(__S(274, __c17, 2));
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          accountId: S.optional(S.String),
+          autoScalingGroupArn: S.optional(S.String),
+          autoScalingGroupName: S.optional(S.String),
+          finding: S.optional(S.String),
+          utilizationMetrics: S.optional(__S(337, __c21, 1)),
+          lookBackPeriodInDays: S.optional(S.Number),
+          currentConfiguration: S.optional(__S(273, __c17, 1)),
+          currentInstanceGpuInfo: S.optional(__S(354, __c22, 2)),
+          recommendationOptions: S.optional(__S(275, __c17, 3)),
+          lastRefreshTimestamp: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          currentPerformanceRisk: S.optional(S.String),
+          effectiveRecommendationPreferences: S.optional(__S(355, __c22, 3)),
+          inferredWorkloadTypes: S.optional(__S(784, __c49, 0)),
+        }),
+      ).annotate({
+        identifier: "AutoScalingGroupRecommendation",
+      });
+    case 5:
+      return S.Array(__S(276, __c17, 4));
     case 6:
+      return S.suspend(() =>
+        S.Struct({
+          nextToken: S.optional(S.String),
+          autoScalingGroupRecommendations: S.optional(__S(277, __c17, 5)),
+          errors: S.optional(__S(321, __c20, 1)),
+        }),
+      ).annotate({
+        identifier: "GetAutoScalingGroupRecommendationsResponse",
+      });
+  }
+}
+function __c18(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ currency: S.optional(S.String), value: S.optional(S.Number) }),
       ).annotate({
         identifier: "AutoScalingGroupEstimatedMonthlySavings",
       });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           savingsOpportunityPercentage: S.optional(S.Number),
-          estimatedMonthlySavings: S.optional(__S(38, __c4, 6)),
+          estimatedMonthlySavings: S.optional(__S(288, __c18, 0)),
         }),
       ).annotate({
         identifier: "AutoScalingGroupSavingsOpportunityAfterDiscounts",
       });
   }
 }
-function __c5(j: number): any {
+function __c19(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ currency: S.optional(S.String), value: S.optional(S.Number) }),
+      ).annotate({ identifier: "EstimatedMonthlySavings" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          savingsOpportunityPercentage: S.optional(S.Number),
+          estimatedMonthlySavings: S.optional(__S(304, __c19, 0)),
+        }),
+      ).annotate({ identifier: "SavingsOpportunity" });
+  }
+}
+function __c20(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          configuration: S.optional(__S(32, __c4, 0)),
-          instanceGpuInfo: S.optional(__S(35, __c4, 3)),
-          projectedUtilizationMetrics: S.optional(__S(31, __c3, 7)),
-          performanceRisk: S.optional(S.Number),
-          rank: S.optional(S.Number),
-          savingsOpportunity: S.optional(__S(37, __c4, 5)),
-          savingsOpportunityAfterDiscounts: S.optional(__S(39, __c4, 7)),
-          migrationEffort: S.optional(S.String),
+          identifier: S.optional(S.String),
+          code: S.optional(S.String),
+          message: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "GetRecommendationError" });
+    case 1:
+      return S.Array(__S(320, __c20, 0));
+  }
+}
+function __c21(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.optional(S.String),
+          statistic: S.optional(S.String),
+          value: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "UtilizationMetric" });
+    case 1:
+      return S.Array(__S(336, __c21, 0));
+  }
+}
+function __c22(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ gpuCount: S.optional(S.Number), gpuMemorySizeInMiB: S.optional(S.Number) }),
+      ).annotate({ identifier: "Gpu" });
+    case 1:
+      return S.Array(__S(352, __c22, 0));
+    case 2:
+      return S.suspend(() => S.Struct({ gpus: S.optional(__S(353, __c22, 1)) })).annotate({
+        identifier: "GpuInfo",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          cpuVendorArchitectures: S.optional(__S(784, __c49, 0)),
+          enhancedInfrastructureMetrics: S.optional(S.String),
+          inferredWorkloadTypes: S.optional(S.String),
+          externalMetricsPreference: S.optional(__S(368, __c23, 0)),
+          lookBackPeriod: S.optional(S.String),
+          utilizationPreferences: S.optional(__S(402, __c25, 2)),
+          preferredResources: S.optional(__S(385, __c24, 1)),
+          savingsEstimationMode: S.optional(__S(368, __c23, 0)),
         }),
       ).annotate({
-        identifier: "AutoScalingGroupRecommendationOption",
+        identifier: "EffectiveRecommendationPreferences",
       });
-    case 1:
-      return S.Array(__S(40, __c5, 0));
-    case 2:
+  }
+}
+function __c23(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() => S.Struct({ source: S.optional(S.String) })).annotate({
         identifier: "ExternalMetricsPreference",
       });
-    case 3:
+  }
+}
+function __c24(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.optional(S.String),
+          includeList: S.optional(__S(32, __c2, 0)),
+          effectiveIncludeList: S.optional(__S(32, __c2, 0)),
+          excludeList: S.optional(__S(32, __c2, 0)),
+        }),
+      ).annotate({
+        identifier: "EffectivePreferredResource",
+      });
+    case 1:
+      return S.Array(__S(384, __c24, 0));
+  }
+}
+function __c25(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           threshold: S.optional(S.String),
@@ -3599,102 +3730,32 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "CustomizableMetricParameters",
       });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           metricName: S.optional(S.String),
-          metricParameters: S.optional(__S(43, __c5, 3)),
+          metricParameters: S.optional(__S(400, __c25, 0)),
         }),
       ).annotate({ identifier: "UtilizationPreference" });
-    case 5:
-      return S.Array(__S(44, __c5, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.optional(S.String),
-          includeList: S.optional(__S(4, __c0, 4)),
-          effectiveIncludeList: S.optional(__S(4, __c0, 4)),
-          excludeList: S.optional(__S(4, __c0, 4)),
-        }),
-      ).annotate({
-        identifier: "EffectivePreferredResource",
-      });
-    case 7:
-      return S.Array(__S(46, __c5, 6));
+    case 2:
+      return S.Array(__S(401, __c25, 1));
   }
 }
-function __c6(j: number): any {
+function __c26(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          cpuVendorArchitectures: S.optional(__S(1, __c0, 1)),
-          enhancedInfrastructureMetrics: S.optional(S.String),
-          inferredWorkloadTypes: S.optional(S.String),
-          externalMetricsPreference: S.optional(__S(42, __c5, 2)),
-          lookBackPeriod: S.optional(S.String),
-          utilizationPreferences: S.optional(__S(45, __c5, 5)),
-          preferredResources: S.optional(__S(47, __c5, 7)),
-          savingsEstimationMode: S.optional(__S(42, __c5, 2)),
-        }),
-      ).annotate({
-        identifier: "EffectiveRecommendationPreferences",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          accountId: S.optional(S.String),
-          autoScalingGroupArn: S.optional(S.String),
-          autoScalingGroupName: S.optional(S.String),
-          finding: S.optional(S.String),
-          utilizationMetrics: S.optional(__S(31, __c3, 7)),
-          lookBackPeriodInDays: S.optional(S.Number),
-          currentConfiguration: S.optional(__S(32, __c4, 0)),
-          currentInstanceGpuInfo: S.optional(__S(35, __c4, 3)),
-          recommendationOptions: S.optional(__S(41, __c5, 1)),
-          lastRefreshTimestamp: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          currentPerformanceRisk: S.optional(S.String),
-          effectiveRecommendationPreferences: S.optional(__S(48, __c6, 0)),
-          inferredWorkloadTypes: S.optional(__S(1, __c0, 1)),
-        }),
-      ).annotate({
-        identifier: "AutoScalingGroupRecommendation",
-      });
-    case 2:
-      return S.Array(__S(49, __c6, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          identifier: S.optional(S.String),
-          code: S.optional(S.String),
-          message: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "GetRecommendationError" });
-    case 4:
-      return S.Array(__S(51, __c6, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          nextToken: S.optional(S.String),
-          autoScalingGroupRecommendations: S.optional(__S(50, __c6, 2)),
-          errors: S.optional(__S(52, __c6, 4)),
-        }),
-      ).annotate({
-        identifier: "GetAutoScalingGroupRecommendationsResponse",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          volumeArns: S.optional(__S(4, __c0, 4)),
+          volumeArns: S.optional(__S(32, __c2, 0)),
           nextToken: S.optional(S.String),
           maxResults: S.optional(S.Number),
-          filters: S.optional(__S(6, __c0, 6)),
-          accountIds: S.optional(__S(4, __c0, 4)),
+          filters: S.optional(__S(49, __c3, 1)),
+          accountIds: S.optional(__S(32, __c2, 0)),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "GetEBSVolumeRecommendationsRequest",
       });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           volumeType: S.optional(S.String),
@@ -3706,123 +3767,131 @@ function __c6(j: number): any {
           rootVolume: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "VolumeConfiguration" });
-  }
-}
-function __c7(j: number): any {
-  switch (j) {
-    case 0:
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          configuration: S.optional(__S(55, __c6, 7)),
+          configuration: S.optional(__S(417, __c26, 1)),
           performanceRisk: S.optional(S.Number),
           rank: S.optional(S.Number),
-          savingsOpportunity: S.optional(__S(37, __c4, 5)),
-          savingsOpportunityAfterDiscounts: S.optional(__S(39, __c4, 7)),
+          savingsOpportunity: S.optional(__S(305, __c19, 1)),
+          savingsOpportunityAfterDiscounts: S.optional(__S(289, __c18, 1)),
         }),
       ).annotate({
         identifier: "VolumeRecommendationOption",
       });
-    case 1:
-      return S.Array(__S(56, __c7, 0));
-    case 2:
-      return S.suspend(() => S.Struct({ source: S.optional(S.String) })).annotate({
-        identifier: "EBSSavingsEstimationMode",
-      });
     case 3:
+      return S.Array(__S(418, __c26, 2));
+    case 4:
       return S.suspend(() =>
         S.Struct({
-          savingsEstimationMode: S.optional(__S(58, __c7, 2)),
+          volumeArn: S.optional(S.String),
+          accountId: S.optional(S.String),
+          currentConfiguration: S.optional(__S(417, __c26, 1)),
+          finding: S.optional(S.String),
+          utilizationMetrics: S.optional(__S(337, __c21, 1)),
+          lookBackPeriodInDays: S.optional(S.Number),
+          volumeRecommendationOptions: S.optional(__S(419, __c26, 3)),
+          lastRefreshTimestamp: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          currentPerformanceRisk: S.optional(S.String),
+          effectiveRecommendationPreferences: S.optional(__S(448, __c28, 0)),
+          tags: S.optional(__S(433, __c27, 1)),
+        }),
+      ).annotate({ identifier: "VolumeRecommendation" });
+    case 5:
+      return S.Array(__S(420, __c26, 4));
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          nextToken: S.optional(S.String),
+          volumeRecommendations: S.optional(__S(421, __c26, 5)),
+          errors: S.optional(__S(321, __c20, 1)),
+        }),
+      ).annotate({
+        identifier: "GetEBSVolumeRecommendationsResponse",
+      });
+  }
+}
+function __c27(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ key: S.optional(S.String), value: S.optional(S.String) }),
+      ).annotate({ identifier: "Tag" });
+    case 1:
+      return S.Array(__S(432, __c27, 0));
+  }
+}
+function __c28(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          savingsEstimationMode: S.optional(__S(464, __c29, 0)),
           lookBackPeriod: S.optional(S.String),
         }),
       ).annotate({
         identifier: "EBSEffectiveRecommendationPreferences",
       });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({ key: S.optional(S.String), value: S.optional(S.String) }),
-      ).annotate({ identifier: "Tag" });
-    case 5:
-      return S.Array(__S(60, __c7, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          volumeArn: S.optional(S.String),
-          accountId: S.optional(S.String),
-          currentConfiguration: S.optional(__S(55, __c6, 7)),
-          finding: S.optional(S.String),
-          utilizationMetrics: S.optional(__S(31, __c3, 7)),
-          lookBackPeriodInDays: S.optional(S.Number),
-          volumeRecommendationOptions: S.optional(__S(57, __c7, 1)),
-          lastRefreshTimestamp: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          currentPerformanceRisk: S.optional(S.String),
-          effectiveRecommendationPreferences: S.optional(__S(59, __c7, 3)),
-          tags: S.optional(__S(61, __c7, 5)),
-        }),
-      ).annotate({ identifier: "VolumeRecommendation" });
-    case 7:
-      return S.Array(__S(62, __c7, 6));
   }
 }
-function __c8(j: number): any {
+function __c29(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({ source: S.optional(S.String) })).annotate({
+        identifier: "EBSSavingsEstimationMode",
+      });
+  }
+}
+function __c30(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          nextToken: S.optional(S.String),
-          volumeRecommendations: S.optional(__S(63, __c7, 7)),
-          errors: S.optional(__S(52, __c6, 4)),
-        }),
-      ).annotate({
-        identifier: "GetEBSVolumeRecommendationsResponse",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          instanceArns: S.optional(__S(4, __c0, 4)),
+          instanceArns: S.optional(__S(32, __c2, 0)),
           nextToken: S.optional(S.String),
           maxResults: S.optional(S.Number),
-          filters: S.optional(__S(6, __c0, 6)),
-          accountIds: S.optional(__S(4, __c0, 4)),
-          recommendationPreferences: S.optional(__S(15, __c1, 7)),
+          filters: S.optional(__S(49, __c3, 1)),
+          accountIds: S.optional(__S(32, __c2, 0)),
+          recommendationPreferences: S.optional(__S(96, __c6, 0)),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "GetEC2InstanceRecommendationsRequest",
       });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           instanceType: S.optional(S.String),
-          instanceGpuInfo: S.optional(__S(35, __c4, 3)),
-          projectedUtilizationMetrics: S.optional(__S(31, __c3, 7)),
-          platformDifferences: S.optional(__S(1, __c0, 1)),
+          instanceGpuInfo: S.optional(__S(354, __c22, 2)),
+          projectedUtilizationMetrics: S.optional(__S(337, __c21, 1)),
+          platformDifferences: S.optional(__S(784, __c49, 0)),
           performanceRisk: S.optional(S.Number),
           rank: S.optional(S.Number),
-          savingsOpportunity: S.optional(__S(37, __c4, 5)),
-          savingsOpportunityAfterDiscounts: S.optional(__S(39, __c4, 7)),
+          savingsOpportunity: S.optional(__S(305, __c19, 1)),
+          savingsOpportunityAfterDiscounts: S.optional(__S(289, __c18, 1)),
           migrationEffort: S.optional(S.String),
         }),
       ).annotate({
         identifier: "InstanceRecommendationOption",
       });
+    case 2:
+      return S.Array(__S(481, __c30, 1));
     case 3:
-      return S.Array(__S(66, __c8, 2));
-    case 4:
       return S.suspend(() =>
         S.Struct({
           recommendationSourceArn: S.optional(S.String),
           recommendationSourceType: S.optional(S.String),
         }),
       ).annotate({ identifier: "RecommendationSource" });
+    case 4:
+      return S.Array(__S(483, __c30, 3));
     case 5:
-      return S.Array(__S(68, __c8, 4));
-    case 6:
       return S.suspend(() =>
         S.Struct({
           statusCode: S.optional(S.String),
           statusReason: S.optional(S.String),
         }),
       ).annotate({ identifier: "ExternalMetricStatus" });
-    case 7:
+    case 6:
       return S.suspend(() =>
         S.Struct({
           instanceArn: S.optional(S.String),
@@ -3830,39 +3899,39 @@ function __c8(j: number): any {
           instanceName: S.optional(S.String),
           currentInstanceType: S.optional(S.String),
           finding: S.optional(S.String),
-          findingReasonCodes: S.optional(__S(13, __c1, 5)),
-          utilizationMetrics: S.optional(__S(31, __c3, 7)),
+          findingReasonCodes: S.optional(__S(112, __c7, 0)),
+          utilizationMetrics: S.optional(__S(337, __c21, 1)),
           lookBackPeriodInDays: S.optional(S.Number),
-          recommendationOptions: S.optional(__S(67, __c8, 3)),
-          recommendationSources: S.optional(__S(69, __c8, 5)),
+          recommendationOptions: S.optional(__S(482, __c30, 2)),
+          recommendationSources: S.optional(__S(484, __c30, 4)),
           lastRefreshTimestamp: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           currentPerformanceRisk: S.optional(S.String),
-          effectiveRecommendationPreferences: S.optional(__S(48, __c6, 0)),
-          inferredWorkloadTypes: S.optional(__S(1, __c0, 1)),
+          effectiveRecommendationPreferences: S.optional(__S(355, __c22, 3)),
+          inferredWorkloadTypes: S.optional(__S(784, __c49, 0)),
           instanceState: S.optional(S.String),
-          tags: S.optional(__S(61, __c7, 5)),
-          externalMetricStatus: S.optional(__S(70, __c8, 6)),
-          currentInstanceGpuInfo: S.optional(__S(35, __c4, 3)),
+          tags: S.optional(__S(433, __c27, 1)),
+          externalMetricStatus: S.optional(__S(485, __c30, 5)),
+          currentInstanceGpuInfo: S.optional(__S(354, __c22, 2)),
           idle: S.optional(S.String),
         }),
       ).annotate({ identifier: "InstanceRecommendation" });
-  }
-}
-function __c9(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(71, __c8, 7));
-    case 1:
+    case 7:
+      return S.Array(__S(486, __c30, 6));
+    case 8:
       return S.suspend(() =>
         S.Struct({
           nextToken: S.optional(S.String),
-          instanceRecommendations: S.optional(__S(72, __c9, 0)),
-          errors: S.optional(__S(52, __c6, 4)),
+          instanceRecommendations: S.optional(__S(487, __c30, 7)),
+          errors: S.optional(__S(321, __c20, 1)),
         }),
       ).annotate({
         identifier: "GetEC2InstanceRecommendationsResponse",
       });
-    case 2:
+  }
+}
+function __c31(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           instanceArn: S.String,
@@ -3870,50 +3939,52 @@ function __c9(j: number): any {
           period: S.Number,
           startTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
           endTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-          recommendationPreferences: S.optional(__S(15, __c1, 7)),
+          recommendationPreferences: S.optional(__S(96, __c6, 0)),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "GetEC2RecommendationProjectedMetricsRequest",
       });
-    case 3:
-      return S.Array(/*@__PURE__*/ S.Date.pipe(/*@__PURE__*/ T.TimestampFormat("epoch-seconds")));
-    case 4:
-      return S.Array(S.Number);
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
-          timestamps: S.optional(__S(75, __c9, 3)),
-          values: S.optional(__S(76, __c9, 4)),
+          timestamps: S.optional(__S(512, __c32, 0)),
+          values: S.optional(__S(513, __c32, 1)),
         }),
       ).annotate({ identifier: "ProjectedMetric" });
-    case 6:
-      return S.Array(__S(77, __c9, 5));
-    case 7:
+    case 2:
+      return S.Array(__S(497, __c31, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
           recommendedInstanceType: S.optional(S.String),
           rank: S.optional(S.Number),
-          projectedMetrics: S.optional(__S(78, __c9, 6)),
+          projectedMetrics: S.optional(__S(498, __c31, 2)),
         }),
       ).annotate({
         identifier: "RecommendedOptionProjectedMetric",
       });
-  }
-}
-function __c10(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(79, __c9, 7));
-    case 1:
+    case 4:
+      return S.Array(__S(499, __c31, 3));
+    case 5:
       return S.suspend(() =>
-        S.Struct({
-          recommendedOptionProjectedMetrics: S.optional(__S(80, __c10, 0)),
-        }),
+        S.Struct({ recommendedOptionProjectedMetrics: S.optional(__S(500, __c31, 4)) }),
       ).annotate({
         identifier: "GetEC2RecommendationProjectedMetricsResponse",
       });
-    case 2:
+  }
+}
+function __c32(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(/*@__PURE__*/ S.Date.pipe(/*@__PURE__*/ T.TimestampFormat("epoch-seconds")));
+    case 1:
+      return S.Array(S.Number);
+  }
+}
+function __c33(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           serviceArn: S.String,
@@ -3925,51 +3996,51 @@ function __c10(j: number): any {
       ).annotate({
         identifier: "GetECSServiceRecommendationProjectedMetricsRequest",
       });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
-          timestamps: S.optional(__S(75, __c9, 3)),
-          upperBoundValues: S.optional(__S(76, __c9, 4)),
-          lowerBoundValues: S.optional(__S(76, __c9, 4)),
+          timestamps: S.optional(__S(512, __c32, 0)),
+          upperBoundValues: S.optional(__S(513, __c32, 1)),
+          lowerBoundValues: S.optional(__S(513, __c32, 1)),
         }),
       ).annotate({
         identifier: "ECSServiceProjectedMetric",
       });
-    case 4:
-      return S.Array(__S(83, __c10, 3));
-    case 5:
+    case 2:
+      return S.Array(__S(529, __c33, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
           recommendedCpuUnits: S.optional(S.Number),
           recommendedMemorySize: S.optional(S.Number),
-          projectedMetrics: S.optional(__S(84, __c10, 4)),
+          projectedMetrics: S.optional(__S(530, __c33, 2)),
         }),
       ).annotate({
         identifier: "ECSServiceRecommendedOptionProjectedMetric",
       });
-    case 6:
-      return S.Array(__S(85, __c10, 5));
-    case 7:
+    case 4:
+      return S.Array(__S(531, __c33, 3));
+    case 5:
       return S.suspend(() =>
         S.Struct({
-          recommendedOptionProjectedMetrics: S.optional(__S(86, __c10, 6)),
+          recommendedOptionProjectedMetrics: S.optional(__S(532, __c33, 4)),
         }),
       ).annotate({
         identifier: "GetECSServiceRecommendationProjectedMetricsResponse",
       });
   }
 }
-function __c11(j: number): any {
+function __c34(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          serviceArns: S.optional(__S(4, __c0, 4)),
+          serviceArns: S.optional(__S(32, __c2, 0)),
           nextToken: S.optional(S.String),
           maxResults: S.optional(S.Number),
-          filters: S.optional(__S(21, __c2, 5)),
-          accountIds: S.optional(__S(4, __c0, 4)),
+          filters: S.optional(__S(177, __c11, 1)),
+          accountIds: S.optional(__S(32, __c2, 0)),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "GetECSServiceRecommendationsRequest",
@@ -3982,35 +4053,25 @@ function __c11(j: number): any {
       return S.suspend(() =>
         S.Struct({
           containerName: S.optional(S.String),
-          memorySizeConfiguration: S.optional(__S(89, __c11, 1)),
+          memorySizeConfiguration: S.optional(__S(545, __c34, 1)),
           cpu: S.optional(S.Number),
         }),
       ).annotate({ identifier: "ContainerConfiguration" });
     case 3:
-      return S.Array(__S(90, __c11, 2));
+      return S.Array(__S(546, __c34, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
           memory: S.optional(S.Number),
           cpu: S.optional(S.Number),
-          containerConfigurations: S.optional(__S(91, __c11, 3)),
+          containerConfigurations: S.optional(__S(547, __c34, 3)),
           autoScalingConfiguration: S.optional(S.String),
           taskDefinitionArn: S.optional(S.String),
         }),
       ).annotate({ identifier: "ServiceConfiguration" });
     case 5:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.optional(S.String),
-          statistic: S.optional(S.String),
-          value: S.optional(S.Number),
-        }),
-      ).annotate({
-        identifier: "ECSServiceUtilizationMetric",
-      });
+      return S.Array(__S(560, __c35, 0));
     case 6:
-      return S.Array(__S(93, __c11, 5));
-    case 7:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
@@ -4021,58 +4082,72 @@ function __c11(j: number): any {
       ).annotate({
         identifier: "ECSServiceProjectedUtilizationMetric",
       });
-  }
-}
-function __c12(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(95, __c11, 7));
-    case 1:
+    case 7:
+      return S.Array(__S(550, __c34, 6));
+    case 8:
       return S.suspend(() =>
         S.Struct({
           memory: S.optional(S.Number),
           cpu: S.optional(S.Number),
-          savingsOpportunity: S.optional(__S(37, __c4, 5)),
-          savingsOpportunityAfterDiscounts: S.optional(__S(39, __c4, 7)),
-          projectedUtilizationMetrics: S.optional(__S(96, __c12, 0)),
-          containerRecommendations: S.optional(__S(91, __c11, 3)),
+          savingsOpportunity: S.optional(__S(305, __c19, 1)),
+          savingsOpportunityAfterDiscounts: S.optional(__S(289, __c18, 1)),
+          projectedUtilizationMetrics: S.optional(__S(551, __c34, 7)),
+          containerRecommendations: S.optional(__S(547, __c34, 3)),
         }),
       ).annotate({
         identifier: "ECSServiceRecommendationOption",
       });
-    case 2:
-      return S.Array(__S(97, __c12, 1));
-    case 3:
+    case 9:
+      return S.Array(__S(552, __c34, 8));
+    case 10:
       return S.suspend(() =>
         S.Struct({
           serviceArn: S.optional(S.String),
           accountId: S.optional(S.String),
-          currentServiceConfiguration: S.optional(__S(92, __c11, 4)),
-          utilizationMetrics: S.optional(__S(94, __c11, 6)),
+          currentServiceConfiguration: S.optional(__S(548, __c34, 4)),
+          utilizationMetrics: S.optional(__S(549, __c34, 5)),
           lookbackPeriodInDays: S.optional(S.Number),
           launchType: S.optional(S.String),
           lastRefreshTimestamp: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           finding: S.optional(S.String),
-          findingReasonCodes: S.optional(__S(13, __c1, 5)),
-          serviceRecommendationOptions: S.optional(__S(98, __c12, 2)),
+          findingReasonCodes: S.optional(__S(112, __c7, 0)),
+          serviceRecommendationOptions: S.optional(__S(553, __c34, 9)),
           currentPerformanceRisk: S.optional(S.String),
-          effectiveRecommendationPreferences: S.optional(__S(59, __c7, 3)),
-          tags: S.optional(__S(61, __c7, 5)),
+          effectiveRecommendationPreferences: S.optional(__S(448, __c28, 0)),
+          tags: S.optional(__S(433, __c27, 1)),
         }),
       ).annotate({ identifier: "ECSServiceRecommendation" });
-    case 4:
-      return S.Array(__S(99, __c12, 3));
-    case 5:
+    case 11:
+      return S.Array(__S(554, __c34, 10));
+    case 12:
       return S.suspend(() =>
         S.Struct({
           nextToken: S.optional(S.String),
-          ecsServiceRecommendations: S.optional(__S(100, __c12, 4)),
-          errors: S.optional(__S(52, __c6, 4)),
+          ecsServiceRecommendations: S.optional(__S(555, __c34, 11)),
+          errors: S.optional(__S(321, __c20, 1)),
         }),
       ).annotate({
         identifier: "GetECSServiceRecommendationsResponse",
       });
-    case 6:
+  }
+}
+function __c35(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.optional(S.String),
+          statistic: S.optional(S.String),
+          value: S.optional(S.Number),
+        }),
+      ).annotate({
+        identifier: "ECSServiceUtilizationMetric",
+      });
+  }
+}
+function __c36(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ resourceArn: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
@@ -4080,21 +4155,21 @@ function __c12(j: number): any {
       ).annotate({
         identifier: "GetEffectiveRecommendationPreferencesRequest",
       });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           enhancedInfrastructureMetrics: S.optional(S.String),
-          externalMetricsPreference: S.optional(__S(42, __c5, 2)),
+          externalMetricsPreference: S.optional(__S(368, __c23, 0)),
           lookBackPeriod: S.optional(S.String),
-          utilizationPreferences: S.optional(__S(45, __c5, 5)),
-          preferredResources: S.optional(__S(47, __c5, 7)),
+          utilizationPreferences: S.optional(__S(402, __c25, 2)),
+          preferredResources: S.optional(__S(385, __c24, 1)),
         }),
       ).annotate({
         identifier: "GetEffectiveRecommendationPreferencesResponse",
       });
   }
 }
-function __c13(j: number): any {
+function __c37(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4116,17 +4191,21 @@ function __c13(j: number): any {
       ).annotate({
         identifier: "GetEnrollmentStatusResponse",
       });
-    case 2:
+  }
+}
+function __c38(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          filters: S.optional(__S(6, __c0, 6)),
+          filters: S.optional(__S(49, __c3, 1)),
           nextToken: S.optional(S.String),
           maxResults: S.optional(S.Number),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "GetEnrollmentStatusesForOrganizationRequest",
       });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           accountId: S.optional(S.String),
@@ -4135,63 +4214,63 @@ function __c13(j: number): any {
           lastUpdatedTimestamp: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
         }),
       ).annotate({ identifier: "AccountEnrollmentStatus" });
-    case 4:
-      return S.Array(__S(107, __c13, 3));
-    case 5:
+    case 2:
+      return S.Array(__S(609, __c38, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          accountEnrollmentStatuses: S.optional(__S(108, __c13, 4)),
+          accountEnrollmentStatuses: S.optional(__S(610, __c38, 2)),
           nextToken: S.optional(S.String),
         }),
       ).annotate({
         identifier: "GetEnrollmentStatusesForOrganizationResponse",
       });
-    case 6:
+  }
+}
+function __c39(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ dimension: S.optional(S.String), order: S.optional(S.String) }),
       ).annotate({ identifier: "OrderBy" });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          resourceArns: S.optional(__S(4, __c0, 4)),
+          resourceArns: S.optional(__S(32, __c2, 0)),
           nextToken: S.optional(S.String),
           maxResults: S.optional(S.Number),
-          filters: S.optional(__S(6, __c0, 6)),
-          accountIds: S.optional(__S(4, __c0, 4)),
-          orderBy: S.optional(__S(110, __c13, 6)),
+          filters: S.optional(__S(49, __c3, 1)),
+          accountIds: S.optional(__S(32, __c2, 0)),
+          orderBy: S.optional(__S(624, __c39, 0)),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "GetIdleRecommendationsRequest",
       });
-  }
-}
-function __c14(j: number): any {
-  switch (j) {
-    case 0:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           savingsOpportunityPercentage: S.optional(S.Number),
-          estimatedMonthlySavings: S.optional(__S(38, __c4, 6)),
+          estimatedMonthlySavings: S.optional(__S(288, __c18, 0)),
         }),
       ).annotate({ identifier: "IdleSavingsOpportunity" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({ key: S.optional(S.String), values: S.optional(__S(4, __c0, 4)) }),
-      ).annotate({ identifier: "IdleDimension" });
-    case 2:
-      return S.Array(__S(113, __c14, 1));
     case 3:
+      return S.suspend(() =>
+        S.Struct({ key: S.optional(S.String), values: S.optional(__S(32, __c2, 0)) }),
+      ).annotate({ identifier: "IdleDimension" });
+    case 4:
+      return S.Array(__S(627, __c39, 3));
+    case 5:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
           statistic: S.optional(S.String),
           value: S.optional(S.Number),
-          dimensions: S.optional(__S(114, __c14, 2)),
+          dimensions: S.optional(__S(628, __c39, 4)),
         }),
       ).annotate({ identifier: "IdleUtilizationMetric" });
-    case 4:
-      return S.Array(__S(115, __c14, 3));
-    case 5:
+    case 6:
+      return S.Array(__S(629, __c39, 5));
+    case 7:
       return S.suspend(() =>
         S.Struct({
           resourceArn: S.optional(S.String),
@@ -4200,17 +4279,17 @@ function __c14(j: number): any {
           accountId: S.optional(S.String),
           finding: S.optional(S.String),
           findingDescription: S.optional(S.String),
-          savingsOpportunity: S.optional(__S(112, __c14, 0)),
-          savingsOpportunityAfterDiscounts: S.optional(__S(39, __c4, 7)),
-          utilizationMetrics: S.optional(__S(116, __c14, 4)),
+          savingsOpportunity: S.optional(__S(626, __c39, 2)),
+          savingsOpportunityAfterDiscounts: S.optional(__S(289, __c18, 1)),
+          utilizationMetrics: S.optional(__S(630, __c39, 6)),
           lookBackPeriodInDays: S.optional(S.Number),
           lastRefreshTimestamp: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          tags: S.optional(__S(61, __c7, 5)),
+          tags: S.optional(__S(433, __c27, 1)),
         }),
       ).annotate({ identifier: "IdleRecommendation" });
-    case 6:
-      return S.Array(__S(117, __c14, 5));
-    case 7:
+    case 8:
+      return S.Array(__S(631, __c39, 7));
+    case 9:
       return S.suspend(() =>
         S.Struct({
           identifier: S.optional(S.String),
@@ -4219,57 +4298,57 @@ function __c14(j: number): any {
           resourceType: S.optional(S.String),
         }),
       ).annotate({ identifier: "IdleRecommendationError" });
-  }
-}
-function __c15(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(119, __c14, 7));
-    case 1:
+    case 10:
+      return S.Array(__S(633, __c39, 9));
+    case 11:
       return S.suspend(() =>
         S.Struct({
           nextToken: S.optional(S.String),
-          idleRecommendations: S.optional(__S(118, __c14, 6)),
-          errors: S.optional(__S(120, __c15, 0)),
+          idleRecommendations: S.optional(__S(632, __c39, 8)),
+          errors: S.optional(__S(634, __c39, 10)),
         }),
       ).annotate({
         identifier: "GetIdleRecommendationsResponse",
       });
-    case 2:
+  }
+}
+function __c40(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          functionArns: S.optional(__S(4, __c0, 4)),
-          accountIds: S.optional(__S(4, __c0, 4)),
-          filters: S.optional(__S(21, __c2, 5)),
+          functionArns: S.optional(__S(32, __c2, 0)),
+          accountIds: S.optional(__S(32, __c2, 0)),
+          filters: S.optional(__S(177, __c11, 1)),
           nextToken: S.optional(S.String),
           maxResults: S.optional(S.Number),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "GetLambdaFunctionRecommendationsRequest",
       });
-    case 3:
-      return S.Array(__S(93, __c11, 5));
-    case 4:
+    case 1:
+      return S.Array(__S(560, __c35, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           rank: S.optional(S.Number),
           memorySize: S.optional(S.Number),
-          projectedUtilizationMetrics: S.optional(__S(123, __c15, 3)),
-          savingsOpportunity: S.optional(__S(37, __c4, 5)),
-          savingsOpportunityAfterDiscounts: S.optional(__S(39, __c4, 7)),
+          projectedUtilizationMetrics: S.optional(__S(641, __c40, 1)),
+          savingsOpportunity: S.optional(__S(305, __c19, 1)),
+          savingsOpportunityAfterDiscounts: S.optional(__S(289, __c18, 1)),
         }),
       ).annotate({
         identifier: "LambdaFunctionMemoryRecommendationOption",
       });
-    case 5:
-      return S.Array(__S(124, __c15, 4));
-    case 6:
+    case 3:
+      return S.Array(__S(642, __c40, 2));
+    case 4:
       return S.suspend(() =>
-        S.Struct({ savingsEstimationMode: S.optional(__S(42, __c5, 2)) }),
+        S.Struct({ savingsEstimationMode: S.optional(__S(368, __c23, 0)) }),
       ).annotate({
         identifier: "LambdaEffectiveRecommendationPreferences",
       });
-    case 7:
+    case 5:
       return S.suspend(() =>
         S.Struct({
           functionArn: S.optional(S.String),
@@ -4277,53 +4356,53 @@ function __c15(j: number): any {
           accountId: S.optional(S.String),
           currentMemorySize: S.optional(S.Number),
           numberOfInvocations: S.optional(S.Number),
-          utilizationMetrics: S.optional(__S(123, __c15, 3)),
+          utilizationMetrics: S.optional(__S(641, __c40, 1)),
           lookbackPeriodInDays: S.optional(S.Number),
           lastRefreshTimestamp: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           finding: S.optional(S.String),
-          findingReasonCodes: S.optional(__S(13, __c1, 5)),
-          memorySizeRecommendationOptions: S.optional(__S(125, __c15, 5)),
+          findingReasonCodes: S.optional(__S(112, __c7, 0)),
+          memorySizeRecommendationOptions: S.optional(__S(643, __c40, 3)),
           currentPerformanceRisk: S.optional(S.String),
-          effectiveRecommendationPreferences: S.optional(__S(126, __c15, 6)),
-          tags: S.optional(__S(61, __c7, 5)),
+          effectiveRecommendationPreferences: S.optional(__S(644, __c40, 4)),
+          tags: S.optional(__S(433, __c27, 1)),
         }),
       ).annotate({
         identifier: "LambdaFunctionRecommendation",
       });
-  }
-}
-function __c16(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(127, __c15, 7));
-    case 1:
+    case 6:
+      return S.Array(__S(645, __c40, 5));
+    case 7:
       return S.suspend(() =>
         S.Struct({
           nextToken: S.optional(S.String),
-          lambdaFunctionRecommendations: S.optional(__S(128, __c16, 0)),
+          lambdaFunctionRecommendations: S.optional(__S(646, __c40, 6)),
         }),
       ).annotate({
         identifier: "GetLambdaFunctionRecommendationsResponse",
       });
-    case 2:
+  }
+}
+function __c41(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          resourceArns: S.optional(__S(4, __c0, 4)),
+          resourceArns: S.optional(__S(32, __c2, 0)),
           nextToken: S.optional(S.String),
           maxResults: S.optional(S.Number),
-          filters: S.optional(__S(26, __c3, 2)),
-          accountIds: S.optional(__S(4, __c0, 4)),
+          filters: S.optional(__S(241, __c15, 1)),
+          accountIds: S.optional(__S(32, __c2, 0)),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "GetLicenseRecommendationsRequest",
       });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({ provider: S.optional(S.String), providerArn: S.optional(S.String) }),
       ).annotate({ identifier: "MetricSource" });
-    case 4:
-      return S.Array(__S(131, __c16, 3));
-    case 5:
+    case 2:
+      return S.Array(__S(657, __c41, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
           numberOfCores: S.optional(S.Number),
@@ -4333,54 +4412,54 @@ function __c16(j: number): any {
           licenseName: S.optional(S.String),
           licenseModel: S.optional(S.String),
           licenseVersion: S.optional(S.String),
-          metricsSource: S.optional(__S(132, __c16, 4)),
+          metricsSource: S.optional(__S(658, __c41, 2)),
         }),
       ).annotate({ identifier: "LicenseConfiguration" });
-    case 6:
+    case 4:
       return S.suspend(() =>
         S.Struct({
           rank: S.optional(S.Number),
           operatingSystem: S.optional(S.String),
           licenseEdition: S.optional(S.String),
           licenseModel: S.optional(S.String),
-          savingsOpportunity: S.optional(__S(37, __c4, 5)),
+          savingsOpportunity: S.optional(__S(305, __c19, 1)),
         }),
       ).annotate({
         identifier: "LicenseRecommendationOption",
       });
-    case 7:
-      return S.Array(__S(134, __c16, 6));
-  }
-}
-function __c17(j: number): any {
-  switch (j) {
-    case 0:
+    case 5:
+      return S.Array(__S(660, __c41, 4));
+    case 6:
       return S.suspend(() =>
         S.Struct({
           resourceArn: S.optional(S.String),
           accountId: S.optional(S.String),
-          currentLicenseConfiguration: S.optional(__S(133, __c16, 5)),
+          currentLicenseConfiguration: S.optional(__S(659, __c41, 3)),
           lookbackPeriodInDays: S.optional(S.Number),
           lastRefreshTimestamp: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           finding: S.optional(S.String),
-          findingReasonCodes: S.optional(__S(1, __c0, 1)),
-          licenseRecommendationOptions: S.optional(__S(135, __c16, 7)),
-          tags: S.optional(__S(61, __c7, 5)),
+          findingReasonCodes: S.optional(__S(784, __c49, 0)),
+          licenseRecommendationOptions: S.optional(__S(661, __c41, 5)),
+          tags: S.optional(__S(433, __c27, 1)),
         }),
       ).annotate({ identifier: "LicenseRecommendation" });
-    case 1:
-      return S.Array(__S(136, __c17, 0));
-    case 2:
+    case 7:
+      return S.Array(__S(662, __c41, 6));
+    case 8:
       return S.suspend(() =>
         S.Struct({
           nextToken: S.optional(S.String),
-          licenseRecommendations: S.optional(__S(137, __c17, 1)),
-          errors: S.optional(__S(52, __c6, 4)),
+          licenseRecommendations: S.optional(__S(663, __c41, 7)),
+          errors: S.optional(__S(321, __c20, 1)),
         }),
       ).annotate({
         identifier: "GetLicenseRecommendationsResponse",
       });
-    case 3:
+  }
+}
+function __c42(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           resourceArn: S.String,
@@ -4388,61 +4467,61 @@ function __c17(j: number): any {
           period: S.Number,
           startTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
           endTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-          recommendationPreferences: S.optional(__S(15, __c1, 7)),
+          recommendationPreferences: S.optional(__S(96, __c6, 0)),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "GetRDSDatabaseRecommendationProjectedMetricsRequest",
       });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
-          timestamps: S.optional(__S(75, __c9, 3)),
-          values: S.optional(__S(76, __c9, 4)),
+          timestamps: S.optional(__S(512, __c32, 0)),
+          values: S.optional(__S(513, __c32, 1)),
         }),
       ).annotate({
         identifier: "RDSDatabaseProjectedMetric",
       });
-    case 5:
-      return S.Array(__S(140, __c17, 4));
-    case 6:
+    case 2:
+      return S.Array(__S(673, __c42, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
           recommendedDBInstanceClass: S.optional(S.String),
           rank: S.optional(S.Number),
-          projectedMetrics: S.optional(__S(141, __c17, 5)),
+          projectedMetrics: S.optional(__S(674, __c42, 2)),
         }),
       ).annotate({
         identifier: "RDSDatabaseRecommendedOptionProjectedMetric",
       });
-    case 7:
-      return S.Array(__S(142, __c17, 6));
-  }
-}
-function __c18(j: number): any {
-  switch (j) {
-    case 0:
+    case 4:
+      return S.Array(__S(675, __c42, 3));
+    case 5:
       return S.suspend(() =>
         S.Struct({
-          recommendedOptionProjectedMetrics: S.optional(__S(143, __c17, 7)),
+          recommendedOptionProjectedMetrics: S.optional(__S(676, __c42, 4)),
         }),
       ).annotate({
         identifier: "GetRDSDatabaseRecommendationProjectedMetricsResponse",
       });
-    case 1:
+  }
+}
+function __c43(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          resourceArns: S.optional(__S(4, __c0, 4)),
+          resourceArns: S.optional(__S(32, __c2, 0)),
           nextToken: S.optional(S.String),
           maxResults: S.optional(S.Number),
-          filters: S.optional(__S(26, __c3, 2)),
-          accountIds: S.optional(__S(4, __c0, 4)),
-          recommendationPreferences: S.optional(__S(15, __c1, 7)),
+          filters: S.optional(__S(241, __c15, 1)),
+          accountIds: S.optional(__S(32, __c2, 0)),
+          recommendationPreferences: S.optional(__S(96, __c6, 0)),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "GetRDSDatabaseRecommendationsRequest",
       });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           storageType: S.optional(S.String),
@@ -4452,51 +4531,47 @@ function __c18(j: number): any {
           storageThroughput: S.optional(S.Number),
         }),
       ).annotate({ identifier: "DBStorageConfiguration" });
-    case 3:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           dbInstanceClass: S.optional(S.String),
-          projectedUtilizationMetrics: S.optional(__S(31, __c3, 7)),
+          projectedUtilizationMetrics: S.optional(__S(337, __c21, 1)),
           performanceRisk: S.optional(S.Number),
           rank: S.optional(S.Number),
-          savingsOpportunity: S.optional(__S(37, __c4, 5)),
-          savingsOpportunityAfterDiscounts: S.optional(__S(39, __c4, 7)),
+          savingsOpportunity: S.optional(__S(305, __c19, 1)),
+          savingsOpportunityAfterDiscounts: S.optional(__S(289, __c18, 1)),
         }),
       ).annotate({
         identifier: "RDSDBInstanceRecommendationOption",
       });
+    case 3:
+      return S.Array(__S(690, __c43, 2));
     case 4:
-      return S.Array(__S(147, __c18, 3));
-    case 5:
       return S.suspend(() =>
         S.Struct({
-          storageConfiguration: S.optional(__S(146, __c18, 2)),
+          storageConfiguration: S.optional(__S(689, __c43, 1)),
           rank: S.optional(S.Number),
-          savingsOpportunity: S.optional(__S(37, __c4, 5)),
-          savingsOpportunityAfterDiscounts: S.optional(__S(39, __c4, 7)),
+          savingsOpportunity: S.optional(__S(305, __c19, 1)),
+          savingsOpportunityAfterDiscounts: S.optional(__S(289, __c18, 1)),
           estimatedMonthlyVolumeIOPsCostVariation: S.optional(S.String),
         }),
       ).annotate({
         identifier: "RDSDBStorageRecommendationOption",
       });
+    case 5:
+      return S.Array(__S(692, __c43, 4));
     case 6:
-      return S.Array(__S(149, __c18, 5));
-    case 7:
       return S.suspend(() =>
         S.Struct({
-          cpuVendorArchitectures: S.optional(__S(1, __c0, 1)),
+          cpuVendorArchitectures: S.optional(__S(784, __c49, 0)),
           enhancedInfrastructureMetrics: S.optional(S.String),
           lookBackPeriod: S.optional(S.String),
-          savingsEstimationMode: S.optional(__S(58, __c7, 2)),
+          savingsEstimationMode: S.optional(__S(464, __c29, 0)),
         }),
       ).annotate({
         identifier: "RDSEffectiveRecommendationPreferences",
       });
-  }
-}
-function __c19(j: number): any {
-  switch (j) {
-    case 0:
+    case 7:
       return S.suspend(() =>
         S.Struct({
           resourceArn: S.optional(S.String),
@@ -4505,105 +4580,109 @@ function __c19(j: number): any {
           engineVersion: S.optional(S.String),
           promotionTier: S.optional(S.Number),
           currentDBInstanceClass: S.optional(S.String),
-          currentStorageConfiguration: S.optional(__S(146, __c18, 2)),
+          currentStorageConfiguration: S.optional(__S(689, __c43, 1)),
           dbClusterIdentifier: S.optional(S.String),
           idle: S.optional(S.String),
           instanceFinding: S.optional(S.String),
           storageFinding: S.optional(S.String),
-          instanceFindingReasonCodes: S.optional(__S(1, __c0, 1)),
+          instanceFindingReasonCodes: S.optional(__S(784, __c49, 0)),
           currentInstancePerformanceRisk: S.optional(S.String),
           currentStorageEstimatedMonthlyVolumeIOPsCostVariation: S.optional(S.String),
-          storageFindingReasonCodes: S.optional(__S(1, __c0, 1)),
-          instanceRecommendationOptions: S.optional(__S(148, __c18, 4)),
-          storageRecommendationOptions: S.optional(__S(150, __c18, 6)),
-          utilizationMetrics: S.optional(__S(31, __c3, 7)),
-          effectiveRecommendationPreferences: S.optional(__S(151, __c18, 7)),
+          storageFindingReasonCodes: S.optional(__S(784, __c49, 0)),
+          instanceRecommendationOptions: S.optional(__S(691, __c43, 3)),
+          storageRecommendationOptions: S.optional(__S(693, __c43, 5)),
+          utilizationMetrics: S.optional(__S(337, __c21, 1)),
+          effectiveRecommendationPreferences: S.optional(__S(694, __c43, 6)),
           lookbackPeriodInDays: S.optional(S.Number),
           lastRefreshTimestamp: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          tags: S.optional(__S(61, __c7, 5)),
+          tags: S.optional(__S(433, __c27, 1)),
         }),
       ).annotate({ identifier: "RDSDBRecommendation" });
-    case 1:
-      return S.Array(__S(152, __c19, 0));
-    case 2:
+    case 8:
+      return S.Array(__S(695, __c43, 7));
+    case 9:
       return S.suspend(() =>
         S.Struct({
           nextToken: S.optional(S.String),
-          rdsDBRecommendations: S.optional(__S(153, __c19, 1)),
-          errors: S.optional(__S(52, __c6, 4)),
+          rdsDBRecommendations: S.optional(__S(696, __c43, 8)),
+          errors: S.optional(__S(321, __c20, 1)),
         }),
       ).annotate({
         identifier: "GetRDSDatabaseRecommendationsResponse",
       });
-    case 3:
+  }
+}
+function __c44(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           resourceType: S.String,
-          scope: S.optional(__S(0, __c0, 0)),
+          scope: S.optional(__S(800, __c50, 0)),
           nextToken: S.optional(S.String),
           maxResults: S.optional(S.Number),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "GetRecommendationPreferencesRequest",
       });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          scope: S.optional(__S(0, __c0, 0)),
+          scope: S.optional(__S(800, __c50, 0)),
           resourceType: S.optional(S.String),
           enhancedInfrastructureMetrics: S.optional(S.String),
           inferredWorkloadTypes: S.optional(S.String),
-          externalMetricsPreference: S.optional(__S(42, __c5, 2)),
+          externalMetricsPreference: S.optional(__S(368, __c23, 0)),
           lookBackPeriod: S.optional(S.String),
-          utilizationPreferences: S.optional(__S(45, __c5, 5)),
-          preferredResources: S.optional(__S(47, __c5, 7)),
+          utilizationPreferences: S.optional(__S(402, __c25, 2)),
+          preferredResources: S.optional(__S(385, __c24, 1)),
           savingsEstimationMode: S.optional(S.String),
         }),
       ).annotate({
         identifier: "RecommendationPreferencesDetail",
       });
-    case 5:
-      return S.Array(__S(156, __c19, 4));
-    case 6:
+    case 2:
+      return S.Array(__S(705, __c44, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
           nextToken: S.optional(S.String),
-          recommendationPreferencesDetails: S.optional(__S(157, __c19, 5)),
+          recommendationPreferencesDetails: S.optional(__S(706, __c44, 2)),
         }),
       ).annotate({
         identifier: "GetRecommendationPreferencesResponse",
       });
-    case 7:
+  }
+}
+function __c45(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          accountIds: S.optional(__S(4, __c0, 4)),
+          accountIds: S.optional(__S(32, __c2, 0)),
           nextToken: S.optional(S.String),
           maxResults: S.optional(S.Number),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "GetRecommendationSummariesRequest",
       });
-  }
-}
-function __c20(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({ name: S.optional(S.String), value: S.optional(S.Number) }),
       ).annotate({ identifier: "ReasonCodeSummary" });
-    case 1:
-      return S.Array(__S(160, __c20, 0));
     case 2:
+      return S.Array(__S(721, __c45, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
           value: S.optional(S.Number),
-          reasonCodeSummaries: S.optional(__S(161, __c20, 1)),
+          reasonCodeSummaries: S.optional(__S(722, __c45, 2)),
         }),
       ).annotate({ identifier: "Summary" });
-    case 3:
-      return S.Array(__S(162, __c20, 2));
     case 4:
+      return S.Array(__S(723, __c45, 3));
+    case 5:
       return S.suspend(() =>
         S.Struct({
           high: S.optional(S.Number),
@@ -4614,71 +4693,75 @@ function __c20(j: number): any {
       ).annotate({
         identifier: "CurrentPerformanceRiskRatings",
       });
-    case 5:
+    case 6:
       return S.suspend(() =>
         S.Struct({
-          inferredWorkloadTypes: S.optional(__S(1, __c0, 1)),
-          estimatedMonthlySavings: S.optional(__S(36, __c4, 4)),
+          inferredWorkloadTypes: S.optional(__S(784, __c49, 0)),
+          estimatedMonthlySavings: S.optional(__S(304, __c19, 0)),
         }),
       ).annotate({ identifier: "InferredWorkloadSaving" });
-    case 6:
-      return S.Array(__S(165, __c20, 5));
     case 7:
+      return S.Array(__S(726, __c45, 6));
+    case 8:
       return S.suspend(() =>
         S.Struct({
-          summaries: S.optional(__S(163, __c20, 3)),
-          idleSummaries: S.optional(__S(161, __c20, 1)),
+          summaries: S.optional(__S(724, __c45, 4)),
+          idleSummaries: S.optional(__S(722, __c45, 2)),
           recommendationResourceType: S.optional(S.String),
           accountId: S.optional(S.String),
-          savingsOpportunity: S.optional(__S(37, __c4, 5)),
-          idleSavingsOpportunity: S.optional(__S(37, __c4, 5)),
-          aggregatedSavingsOpportunity: S.optional(__S(37, __c4, 5)),
-          currentPerformanceRiskRatings: S.optional(__S(164, __c20, 4)),
-          inferredWorkloadSavings: S.optional(__S(166, __c20, 6)),
+          savingsOpportunity: S.optional(__S(305, __c19, 1)),
+          idleSavingsOpportunity: S.optional(__S(305, __c19, 1)),
+          aggregatedSavingsOpportunity: S.optional(__S(305, __c19, 1)),
+          currentPerformanceRiskRatings: S.optional(__S(725, __c45, 5)),
+          inferredWorkloadSavings: S.optional(__S(727, __c45, 7)),
         }),
       ).annotate({ identifier: "RecommendationSummary" });
-  }
-}
-function __c21(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(167, __c20, 7));
-    case 1:
+    case 9:
+      return S.Array(__S(728, __c45, 8));
+    case 10:
       return S.suspend(() =>
         S.Struct({
           nextToken: S.optional(S.String),
-          recommendationSummaries: S.optional(__S(168, __c21, 0)),
+          recommendationSummaries: S.optional(__S(729, __c45, 9)),
         }),
       ).annotate({
         identifier: "GetRecommendationSummariesResponse",
       });
-    case 2:
+  }
+}
+function __c46(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
-          includeList: S.optional(__S(4, __c0, 4)),
-          excludeList: S.optional(__S(4, __c0, 4)),
+          includeList: S.optional(__S(32, __c2, 0)),
+          excludeList: S.optional(__S(32, __c2, 0)),
         }),
       ).annotate({ identifier: "PreferredResource" });
-    case 3:
-      return S.Array(__S(170, __c21, 2));
-    case 4:
+    case 1:
+      return S.Array(__S(736, __c46, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           resourceType: S.String,
-          scope: S.optional(__S(0, __c0, 0)),
+          scope: S.optional(__S(800, __c50, 0)),
           enhancedInfrastructureMetrics: S.optional(S.String),
           inferredWorkloadTypes: S.optional(S.String),
-          externalMetricsPreference: S.optional(__S(42, __c5, 2)),
+          externalMetricsPreference: S.optional(__S(368, __c23, 0)),
           lookBackPeriod: S.optional(S.String),
-          utilizationPreferences: S.optional(__S(45, __c5, 5)),
-          preferredResources: S.optional(__S(171, __c21, 3)),
+          utilizationPreferences: S.optional(__S(402, __c25, 2)),
+          preferredResources: S.optional(__S(737, __c46, 1)),
           savingsEstimationMode: S.optional(S.String),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "PutRecommendationPreferencesRequest",
       });
-    case 5:
+  }
+}
+function __c47(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ status: S.String, includeMemberAccounts: S.optional(S.Boolean) }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
@@ -4686,7 +4769,7 @@ function __c21(j: number): any {
       ).annotate({
         identifier: "UpdateEnrollmentStatusRequest",
       });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({ status: S.optional(S.String), statusReason: S.optional(S.String) }),
       ).annotate({
@@ -4694,7 +4777,42 @@ function __c21(j: number): any {
       });
   }
 }
-
+function __c48(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          resourceType: S.String,
+          scope: S.optional(__S(800, __c50, 0)),
+          recommendationPreferenceNames: __S(784, __c49, 0),
+        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({
+        identifier: "DeleteRecommendationPreferencesRequest",
+      });
+  }
+}
+function __c49(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c50(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ name: S.optional(S.String), value: S.optional(S.String) }),
+      ).annotate({ identifier: "Scope" });
+  }
+}
+function __c51(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "DeleteRecommendationPreferencesResponse",
+      });
+  }
+}
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

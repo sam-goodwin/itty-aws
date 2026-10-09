@@ -2068,8 +2068,8 @@ export const deleteAgent: API.OperationMethod<
   DeleteAgentError,
   NotionOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(4, __c0, 4) as any as S.Schema<DeleteAgentRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<DeleteAgentResponse>,
+  input: __S(16, __c1, 0) as any as S.Schema<DeleteAgentRequest>,
+  output: __S(17, __c1, 1) as any as S.Schema<DeleteAgentResponse>,
   errors: [UnknownNotionError],
   protocol: NotionProtocol,
   retry: Retry.Retry,
@@ -2083,8 +2083,8 @@ export const getAgent: API.OperationMethod<
   GetAgentError,
   NotionOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(6, __c0, 6) as any as S.Schema<GetAgentRequest>,
-  output: __S(16, __c2, 0) as any as S.Schema<GetAgentResponse>,
+  input: __S(32, __c2, 0) as any as S.Schema<GetAgentRequest>,
+  output: __S(42, __c2, 10) as any as S.Schema<GetAgentResponse>,
   errors: [UnknownNotionError],
   protocol: NotionProtocol,
   retry: Retry.Retry,
@@ -2098,8 +2098,8 @@ export const getAgentInsights: API.OperationMethod<
   GetAgentInsightsError,
   NotionOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(17, __c2, 1) as any as S.Schema<GetAgentInsightsRequest>,
-  output: __S(19, __c2, 3) as any as S.Schema<GetAgentInsightsResponse>,
+  input: __S(48, __c3, 0) as any as S.Schema<GetAgentInsightsRequest>,
+  output: __S(50, __c3, 2) as any as S.Schema<GetAgentInsightsResponse>,
   errors: [UnknownNotionError],
   protocol: NotionProtocol,
   retry: Retry.Retry,
@@ -2115,8 +2115,8 @@ export const queryAgents: API.PaginatedOperationMethod<
   QueryAgentsResponseResultsItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(22, __c2, 6) as any as S.Schema<QueryAgentsRequest>,
-    output: __S(24, __c3, 0) as any as S.Schema<QueryAgentsResponse>,
+    input: __S(66, __c4, 2) as any as S.Schema<QueryAgentsRequest>,
+    output: __S(68, __c4, 4) as any as S.Schema<QueryAgentsResponse>,
     errors: [UnknownNotionError],
     protocol: NotionProtocol,
     retry: Retry.Retry,
@@ -2138,8 +2138,8 @@ export const updateAgentCreditLimit: API.OperationMethod<
   UpdateAgentCreditLimitError,
   NotionOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(25, __c3, 1) as any as S.Schema<UpdateAgentCreditLimitRequest>,
-  output: __S(26, __c3, 2) as any as S.Schema<UpdateAgentCreditLimitResponse>,
+  input: __S(80, __c5, 0) as any as S.Schema<UpdateAgentCreditLimitRequest>,
+  output: __S(81, __c5, 1) as any as S.Schema<UpdateAgentCreditLimitResponse>,
   errors: [UnknownNotionError],
   protocol: NotionProtocol,
   retry: Retry.Retry,
@@ -2153,8 +2153,8 @@ export const updateAgentStatus: API.OperationMethod<
   UpdateAgentStatusError,
   NotionOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(27, __c3, 3) as any as S.Schema<UpdateAgentStatusRequest>,
-  output: __S(28, __c3, 4) as any as S.Schema<UpdateAgentStatusResponse>,
+  input: __S(96, __c6, 0) as any as S.Schema<UpdateAgentStatusRequest>,
+  output: __S(97, __c6, 1) as any as S.Schema<UpdateAgentStatusResponse>,
   errors: [UnknownNotionError],
   protocol: NotionProtocol,
   retry: Retry.Retry,
@@ -2192,13 +2192,17 @@ function __c0(j: number): any {
           poll_after_seconds: S.Number,
         }),
       ).annotate({ identifier: "BatchAgentsResponse" });
-    case 4:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           agent_id: S.String.pipe(T.Label()),
         }).pipe(T.Http({ method: "DELETE", uri: "/v1/agents/{agent_id}", code: 200 })),
       ).annotate({ identifier: "DeleteAgentRequest" });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           agent_id: S.String,
@@ -2206,22 +2210,22 @@ function __c0(j: number): any {
           deleted_at: S.String,
         }),
       ).annotate({ identifier: "DeleteAgentResponse" });
-    case 6:
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           agent_id: S.String.pipe(T.Label()),
           verbose: S.optional(S.Boolean.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/v1/agents/{agent_id}", code: 200 })),
       ).annotate({ identifier: "GetAgentRequest" });
-    case 7:
-      return S.Array(S.String);
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(S.Unknown);
     case 1:
+      return S.Array(S.String);
+    case 2:
+      return S.Array(S.Unknown);
+    case 3:
       return S.suspend(() =>
         S.Struct({
           object: S.String,
@@ -2231,7 +2235,7 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "GetAgentResponseCreatedBy",
       });
-    case 2:
+    case 4:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
@@ -2239,16 +2243,16 @@ function __c1(j: number): any {
           published_at: S.String,
         }),
       ).annotate({ identifier: "GetAgentResponseVersion" });
-    case 3:
+    case 5:
       return S.Array(S.Number);
-    case 4:
+    case 6:
       return S.suspend(() =>
         S.Struct({
           frequency: S.String,
           interval: S.Number,
-          weekdays: S.optional(__S(7, __c0, 7)),
-          monthdays: S.optional(__S(11, __c1, 3)),
-          week_numbers: S.optional(__S(11, __c1, 3)),
+          weekdays: S.optional(__S(33, __c2, 1)),
+          monthdays: S.optional(__S(37, __c2, 5)),
+          week_numbers: S.optional(__S(37, __c2, 5)),
           hour: S.optional(S.Number),
           minute: S.optional(S.Number),
           timezone: S.optional(S.String),
@@ -2258,26 +2262,22 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "GetAgentResponseTriggersItemSchedule",
       });
-    case 5:
+    case 7:
       return S.Record(S.String, S.Unknown);
-    case 6:
+    case 8:
       return S.suspend(() =>
         S.Struct({
           type: S.String,
           enabled: S.Boolean,
-          schedule: S.optional(__S(12, __c1, 4)),
-          config: S.optional(__S(13, __c1, 5)),
+          schedule: S.optional(__S(38, __c2, 6)),
+          config: S.optional(__S(39, __c2, 7)),
         }),
       ).annotate({
         identifier: "GetAgentResponseTriggersItem",
       });
-    case 7:
-      return S.Array(__S(14, __c1, 6));
-  }
-}
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
+    case 9:
+      return S.Array(__S(40, __c2, 8));
+    case 10:
       return S.suspend(() =>
         S.Struct({
           object: S.String,
@@ -2288,24 +2288,28 @@ function __c2(j: number): any {
           instructions_page_id: S.NullOr(S.String),
           icon: S.NullOr(S.Unknown),
           model: S.Unknown,
-          connections: __S(8, __c1, 0),
+          connections: __S(34, __c2, 2),
           status: S.String,
           pause_reason: S.NullOr(S.String),
-          created_by: S.NullOr(__S(9, __c1, 1)),
-          version: S.NullOr(__S(10, __c1, 2)),
-          agent_version: S.NullOr(__S(10, __c1, 2)),
+          created_by: S.NullOr(__S(35, __c2, 3)),
+          version: S.NullOr(__S(36, __c2, 4)),
+          agent_version: S.NullOr(__S(36, __c2, 4)),
           has_unpublished_changes: S.Unknown,
           last_run_time: S.NullOr(S.String),
           last_run_at: S.NullOr(S.String),
           credit_limit: S.NullOr(S.Unknown),
-          triggers: __S(15, __c1, 7),
+          triggers: __S(41, __c2, 9),
           is_favorited: S.NullOr(S.Boolean),
           created_time: S.optional(S.String),
           last_edited_time: S.optional(S.String),
           instructions: S.optional(S.NullOr(S.String)),
         }),
       ).annotate({ identifier: "GetAgentResponse" });
-    case 1:
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           agent_id: S.String.pipe(T.Label()),
@@ -2313,7 +2317,7 @@ function __c2(j: number): any {
           end_time: S.optional(S.Number.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/v1/agents/{agent_id}/insights", code: 200 })),
       ).annotate({ identifier: "GetAgentInsightsRequest" });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
@@ -2322,7 +2326,7 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "GetAgentInsightsResponseCreatedBy",
       });
-    case 3:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           object: S.String,
@@ -2331,13 +2335,17 @@ function __c2(j: number): any {
           agent_type: S.String,
           status: S.String,
           pause_reason: S.NullOr(S.String),
-          created_by: S.NullOr(__S(18, __c2, 2)),
+          created_by: S.NullOr(__S(49, __c3, 1)),
           total_credits_used: S.Number,
           credit_limit: S.NullOr(S.Unknown),
           runs_completed: S.Number,
         }),
       ).annotate({ identifier: "GetAgentInsightsResponse" });
-    case 4:
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           property: S.String,
@@ -2346,37 +2354,37 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "QueryAgentsRequestSortsItem",
       });
-    case 5:
-      return S.Array(__S(20, __c2, 4));
-    case 6:
+    case 1:
+      return S.Array(__S(64, __c4, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           query: S.optional(S.String),
           filter: S.optional(S.Unknown),
-          sorts: S.optional(__S(21, __c2, 5)),
+          sorts: S.optional(__S(65, __c4, 1)),
           start_cursor: S.optional(S.String),
           page_size: S.optional(S.Number),
           verbose: S.optional(S.Boolean),
           include_deleted: S.optional(S.Boolean),
         }).pipe(T.Http({ method: "POST", uri: "/v1/agents/query", code: 200 })),
       ).annotate({ identifier: "QueryAgentsRequest" });
-    case 7:
+    case 3:
       return S.Array(S.Unknown);
-  }
-}
-function __c3(j: number): any {
-  switch (j) {
-    case 0:
+    case 4:
       return S.suspend(() =>
         S.Struct({
           object: S.String,
           type: S.String,
-          results: __S(23, __c2, 7),
+          results: __S(67, __c4, 3),
           has_more: S.Boolean,
           next_cursor: S.NullOr(S.String),
         }),
       ).annotate({ identifier: "QueryAgentsResponse" });
-    case 1:
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           agent_id: S.String.pipe(T.Label()),
@@ -2385,7 +2393,7 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "UpdateAgentCreditLimitRequest",
       });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           agent_id: S.String,
@@ -2395,14 +2403,18 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "UpdateAgentCreditLimitResponse",
       });
-    case 3:
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           agent_id: S.String.pipe(T.Label()),
           status: S.String,
         }).pipe(T.Http({ method: "PATCH", uri: "/v1/agents/{agent_id}/status", code: 200 })),
       ).annotate({ identifier: "UpdateAgentStatusRequest" });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           agent_id: S.String,
@@ -2415,7 +2427,6 @@ function __c3(j: number): any {
       });
   }
 }
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

@@ -888,8 +888,8 @@ export const generateInsightsV1beta: API.OperationMethod<
   GenerateInsightsV1betaError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(4, __c0, 4) as any as S.Schema<GenerateInsightsV1betaRequest>,
-  output: __S(32, __c4, 0) as any as S.Schema<GenerateInsightsResponse>,
+  input: __S(452, __c14, 4) as any as S.Schema<GenerateInsightsV1betaRequest>,
+  output: __S(480, __c15, 0) as any as S.Schema<GenerateInsightsResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -903,11 +903,11 @@ export const getBillingAccountsServices: API.OperationMethod<
   GetBillingAccountsServicesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(33, __c4, 1) as any as S.Schema<GetBillingAccountsServicesRequest>,
+  input: __S(512, __c16, 0) as any as S.Schema<GetBillingAccountsServicesRequest>,
   output: __S(
-    34,
-    __c4,
-    2,
+    544,
+    __c17,
+    0,
   ) as any as S.Schema<GoogleCloudBillingBillingaccountservicesV1betaBillingAccountService>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
@@ -922,11 +922,11 @@ export const getBillingAccountsSkuGroups: API.OperationMethod<
   GetBillingAccountsSkuGroupsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(35, __c4, 3) as any as S.Schema<GetBillingAccountsSkuGroupsRequest>,
+  input: __S(576, __c18, 0) as any as S.Schema<GetBillingAccountsSkuGroupsRequest>,
   output: __S(
-    36,
-    __c4,
-    4,
+    608,
+    __c19,
+    0,
   ) as any as S.Schema<GoogleCloudBillingBillingaccountskugroupsV1betaBillingAccountSkuGroup>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
@@ -941,11 +941,11 @@ export const getBillingAccountsSkuGroupsSkus: API.OperationMethod<
   GetBillingAccountsSkuGroupsSkusError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(37, __c4, 5) as any as S.Schema<GetBillingAccountsSkuGroupsSkusRequest>,
+  input: __S(640, __c20, 0) as any as S.Schema<GetBillingAccountsSkuGroupsSkusRequest>,
   output: __S(
-    47,
-    __c5,
-    7,
+    675,
+    __c21,
+    3,
   ) as any as S.Schema<GoogleCloudBillingBillingaccountskugroupskusV1betaBillingAccountSkuGroupSku>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
@@ -960,11 +960,11 @@ export const getBillingAccountsSkus: API.OperationMethod<
   GetBillingAccountsSkusError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(48, __c6, 0) as any as S.Schema<GetBillingAccountsSkusRequest>,
+  input: __S(800, __c25, 0) as any as S.Schema<GetBillingAccountsSkusRequest>,
   output: __S(
-    52,
-    __c6,
-    4,
+    866,
+    __c27,
+    2,
   ) as any as S.Schema<GoogleCloudBillingBillingaccountskusV1betaBillingAccountSku>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
@@ -979,11 +979,11 @@ export const getBillingAccountsSkusPrice: API.OperationMethod<
   GetBillingAccountsSkusPriceError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(53, __c6, 5) as any as S.Schema<GetBillingAccountsSkusPriceRequest>,
+  input: __S(896, __c28, 0) as any as S.Schema<GetBillingAccountsSkusPriceRequest>,
   output: __S(
-    65,
-    __c8,
-    1,
+    968,
+    __c30,
+    8,
   ) as any as S.Schema<GoogleCloudBillingBillingaccountpricesV1betaBillingAccountPrice>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
@@ -998,8 +998,8 @@ export const getSkuGroups: API.OperationMethod<
   GetSkuGroupsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(66, __c8, 2) as any as S.Schema<GetSkuGroupsRequest>,
-  output: __S(67, __c8, 3) as any as S.Schema<GoogleCloudBillingSkugroupsV1betaSkuGroup>,
+  input: __S(0, __c0, 0) as any as S.Schema<GetSkuGroupsRequest>,
+  output: __S(32, __c1, 0) as any as S.Schema<GoogleCloudBillingSkugroupsV1betaSkuGroup>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1013,8 +1013,8 @@ export const getSkuGroupsSkus: API.OperationMethod<
   GetSkuGroupsSkusError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(68, __c8, 4) as any as S.Schema<GetSkuGroupsSkusRequest>,
-  output: __S(73, __c9, 1) as any as S.Schema<GoogleCloudBillingSkugroupskusV1betaSkuGroupSku>,
+  input: __S(64, __c2, 0) as any as S.Schema<GetSkuGroupsSkusRequest>,
+  output: __S(100, __c3, 4) as any as S.Schema<GoogleCloudBillingSkugroupskusV1betaSkuGroupSku>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1028,8 +1028,8 @@ export const getSkusPrice: API.OperationMethod<
   GetSkusPriceError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(74, __c9, 2) as any as S.Schema<GetSkusPriceRequest>,
-  output: __S(79, __c9, 7) as any as S.Schema<GoogleCloudBillingPricesV1betaPrice>,
+  input: __S(128, __c4, 0) as any as S.Schema<GetSkusPriceRequest>,
+  output: __S(164, __c5, 4) as any as S.Schema<GoogleCloudBillingPricesV1betaPrice>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1044,10 +1044,10 @@ export const listBillingAccountsServices: API.PaginatedOperationMethod<
   GcpOpContext,
   GoogleCloudBillingBillingaccountservicesV1betaListBillingAccountServicesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(80, __c10, 0) as any as S.Schema<ListBillingAccountsServicesRequest>,
+  input: __S(192, __c6, 0) as any as S.Schema<ListBillingAccountsServicesRequest>,
   output: __S(
-    82,
-    __c10,
+    194,
+    __c6,
     2,
   ) as any as S.Schema<GoogleCloudBillingBillingaccountservicesV1betaListBillingAccountServicesResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
@@ -1065,11 +1065,11 @@ export const listBillingAccountsSkuGroups: API.PaginatedOperationMethod<
   GcpOpContext,
   GoogleCloudBillingBillingaccountskugroupsV1betaListBillingAccountSkuGroupsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(83, __c10, 3) as any as S.Schema<ListBillingAccountsSkuGroupsRequest>,
+  input: __S(224, __c7, 0) as any as S.Schema<ListBillingAccountsSkuGroupsRequest>,
   output: __S(
-    85,
-    __c10,
-    5,
+    226,
+    __c7,
+    2,
   ) as any as S.Schema<GoogleCloudBillingBillingaccountskugroupsV1betaListBillingAccountSkuGroupsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
@@ -1086,11 +1086,11 @@ export const listBillingAccountsSkuGroupsSkus: API.PaginatedOperationMethod<
   GcpOpContext,
   GoogleCloudBillingBillingaccountskugroupskusV1betaListBillingAccountSkuGroupSkusResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(86, __c10, 6) as any as S.Schema<ListBillingAccountsSkuGroupsSkusRequest>,
+  input: __S(256, __c8, 0) as any as S.Schema<ListBillingAccountsSkuGroupsSkusRequest>,
   output: __S(
-    88,
-    __c11,
-    0,
+    258,
+    __c8,
+    2,
   ) as any as S.Schema<GoogleCloudBillingBillingaccountskugroupskusV1betaListBillingAccountSkuGroupSkusResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
@@ -1107,11 +1107,11 @@ export const listBillingAccountsSkus: API.PaginatedOperationMethod<
   GcpOpContext,
   GoogleCloudBillingBillingaccountskusV1betaListBillingAccountSkusResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(89, __c11, 1) as any as S.Schema<ListBillingAccountsSkusRequest>,
+  input: __S(288, __c9, 0) as any as S.Schema<ListBillingAccountsSkusRequest>,
   output: __S(
-    91,
-    __c11,
-    3,
+    290,
+    __c9,
+    2,
   ) as any as S.Schema<GoogleCloudBillingBillingaccountskusV1betaListBillingAccountSkusResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
@@ -1128,11 +1128,11 @@ export const listBillingAccountsSkusPrices: API.PaginatedOperationMethod<
   GcpOpContext,
   GoogleCloudBillingBillingaccountpricesV1betaListBillingAccountPricesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(92, __c11, 4) as any as S.Schema<ListBillingAccountsSkusPricesRequest>,
+  input: __S(320, __c10, 0) as any as S.Schema<ListBillingAccountsSkusPricesRequest>,
   output: __S(
-    94,
-    __c11,
-    6,
+    322,
+    __c10,
+    2,
   ) as any as S.Schema<GoogleCloudBillingBillingaccountpricesV1betaListBillingAccountPricesResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
@@ -1149,11 +1149,11 @@ export const listSkuGroups: API.PaginatedOperationMethod<
   GcpOpContext,
   GoogleCloudBillingSkugroupsV1betaListSkuGroupsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(95, __c11, 7) as any as S.Schema<ListSkuGroupsRequest>,
+  input: __S(352, __c11, 0) as any as S.Schema<ListSkuGroupsRequest>,
   output: __S(
-    97,
-    __c12,
-    1,
+    354,
+    __c11,
+    2,
   ) as any as S.Schema<GoogleCloudBillingSkugroupsV1betaListSkuGroupsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
@@ -1170,11 +1170,11 @@ export const listSkuGroupsSkus: API.PaginatedOperationMethod<
   GcpOpContext,
   GoogleCloudBillingSkugroupskusV1betaListSkuGroupSkusResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(98, __c12, 2) as any as S.Schema<ListSkuGroupsSkusRequest>,
+  input: __S(384, __c12, 0) as any as S.Schema<ListSkuGroupsSkusRequest>,
   output: __S(
-    100,
+    386,
     __c12,
-    4,
+    2,
   ) as any as S.Schema<GoogleCloudBillingSkugroupskusV1betaListSkuGroupSkusResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
@@ -1191,8 +1191,8 @@ export const listSkusPrices: API.PaginatedOperationMethod<
   GcpOpContext,
   GoogleCloudBillingPricesV1betaListPricesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(101, __c12, 5) as any as S.Schema<ListSkusPricesRequest>,
-  output: __S(103, __c12, 7) as any as S.Schema<GoogleCloudBillingPricesV1betaListPricesResponse>,
+  input: __S(416, __c13, 0) as any as S.Schema<ListSkusPricesRequest>,
+  output: __S(418, __c13, 2) as any as S.Schema<GoogleCloudBillingPricesV1betaListPricesResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1201,6 +1201,406 @@ export const listSkusPrices: API.PaginatedOperationMethod<
 
 // Schema builders: each runs one schema initializer, on that schema's first use.
 function __c0(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v1beta/{+name}",
+            baseUrl: "https://cloudbilling.googleapis.com/",
+          }),
+        ),
+      ).annotate({ identifier: "GetSkuGroupsRequest" });
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          displayName: S.optional(S.String),
+          name: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudBillingSkugroupsV1betaSkuGroup",
+      });
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v1beta/{+name}",
+            baseUrl: "https://cloudbilling.googleapis.com/",
+          }),
+        ),
+      ).annotate({ identifier: "GetSkuGroupsSkusRequest" });
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          taxonomyCategories: S.optional(__S(832, __c26, 0)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudBillingSkugroupskusV1betaProductTaxonomy",
+      });
+    case 1:
+      return S.Array(__S(704, __c22, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          regions: S.optional(__S(97, __c3, 1)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudBillingSkugroupskusV1betaGeoTaxonomyMultiRegional",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          regionalMetadata: S.optional(__S(705, __c22, 1)),
+          multiRegionalMetadata: S.optional(__S(98, __c3, 2)),
+          globalMetadata: S.optional(__S(768, __c24, 0)),
+          type: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudBillingSkugroupskusV1betaGeoTaxonomy",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          skuId: S.optional(S.String),
+          productTaxonomy: S.optional(__S(96, __c3, 0)),
+          service: S.optional(S.String),
+          displayName: S.optional(S.String),
+          name: S.optional(S.String),
+          geoTaxonomy: S.optional(__S(99, __c3, 3)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudBillingSkugroupskusV1betaSkuGroupSku",
+      });
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+          currencyCode: S.optional(S.String.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v1beta/{+name}",
+            baseUrl: "https://cloudbilling.googleapis.com/",
+          }),
+        ),
+      ).annotate({ identifier: "GetSkusPriceRequest" });
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          level: S.optional(S.String),
+          interval: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudBillingPricesV1betaAggregationInfo",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          listPrice: S.optional(__S(930, __c29, 2)),
+          startAmount: S.optional(__S(928, __c29, 0)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudBillingPricesV1betaRateTier",
+      });
+    case 2:
+      return S.Array(__S(161, __c5, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          aggregationInfo: S.optional(__S(160, __c5, 0)),
+          unitInfo: S.optional(__S(929, __c29, 1)),
+          tiers: S.optional(__S(162, __c5, 2)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudBillingPricesV1betaRate",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          currencyCode: S.optional(S.String),
+          rate: S.optional(__S(163, __c5, 3)),
+          valueType: S.optional(S.String),
+          name: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudBillingPricesV1betaPrice",
+      });
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          pageToken: S.optional(S.String.pipe(T.Query())),
+          parent: S.String.pipe(T.Label()),
+          pageSize: S.optional(S.Number.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v1beta/{+parent}/services",
+            baseUrl: "https://cloudbilling.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListBillingAccountsServicesRequest",
+      });
+    case 1:
+      return S.Array(__S(544, __c17, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          billingAccountServices: S.optional(__S(193, __c6, 1)),
+          nextPageToken: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier:
+          "GoogleCloudBillingBillingaccountservicesV1betaListBillingAccountServicesResponse",
+      });
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          pageToken: S.optional(S.String.pipe(T.Query())),
+          pageSize: S.optional(S.Number.pipe(T.Query())),
+          parent: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v1beta/{+parent}/skuGroups",
+            baseUrl: "https://cloudbilling.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListBillingAccountsSkuGroupsRequest",
+      });
+    case 1:
+      return S.Array(__S(608, __c19, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          nextPageToken: S.optional(S.String),
+          billingAccountSkuGroups: S.optional(__S(225, __c7, 1)),
+        }),
+      ).annotate({
+        identifier:
+          "GoogleCloudBillingBillingaccountskugroupsV1betaListBillingAccountSkuGroupsResponse",
+      });
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          pageSize: S.optional(S.Number.pipe(T.Query())),
+          parent: S.String.pipe(T.Label()),
+          pageToken: S.optional(S.String.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v1beta/{+parent}/skus",
+            baseUrl: "https://cloudbilling.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListBillingAccountsSkuGroupsSkusRequest",
+      });
+    case 1:
+      return S.Array(__S(675, __c21, 3));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          billingAccountSkuGroupSkus: S.optional(__S(257, __c8, 1)),
+          nextPageToken: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier:
+          "GoogleCloudBillingBillingaccountskugroupskusV1betaListBillingAccountSkuGroupSkusResponse",
+      });
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          parent: S.String.pipe(T.Label()),
+          pageSize: S.optional(S.Number.pipe(T.Query())),
+          filter: S.optional(S.String.pipe(T.Query())),
+          pageToken: S.optional(S.String.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v1beta/{+parent}/skus",
+            baseUrl: "https://cloudbilling.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListBillingAccountsSkusRequest",
+      });
+    case 1:
+      return S.Array(__S(866, __c27, 2));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          billingAccountSkus: S.optional(__S(289, __c9, 1)),
+          nextPageToken: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudBillingBillingaccountskusV1betaListBillingAccountSkusResponse",
+      });
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          parent: S.String.pipe(T.Label()),
+          pageSize: S.optional(S.Number.pipe(T.Query())),
+          pageToken: S.optional(S.String.pipe(T.Query())),
+          currencyCode: S.optional(S.String.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v1beta/{+parent}/prices",
+            baseUrl: "https://cloudbilling.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListBillingAccountsSkusPricesRequest",
+      });
+    case 1:
+      return S.Array(__S(968, __c30, 8));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          billingAccountPrices: S.optional(__S(321, __c10, 1)),
+          nextPageToken: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudBillingBillingaccountpricesV1betaListBillingAccountPricesResponse",
+      });
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          pageToken: S.optional(S.String.pipe(T.Query())),
+          pageSize: S.optional(S.Number.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v1beta/skuGroups",
+            baseUrl: "https://cloudbilling.googleapis.com/",
+          }),
+        ),
+      ).annotate({ identifier: "ListSkuGroupsRequest" });
+    case 1:
+      return S.Array(__S(32, __c1, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          skuGroups: S.optional(__S(353, __c11, 1)),
+          nextPageToken: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudBillingSkugroupsV1betaListSkuGroupsResponse",
+      });
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          parent: S.String.pipe(T.Label()),
+          pageSize: S.optional(S.Number.pipe(T.Query())),
+          pageToken: S.optional(S.String.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v1beta/{+parent}/skus",
+            baseUrl: "https://cloudbilling.googleapis.com/",
+          }),
+        ),
+      ).annotate({ identifier: "ListSkuGroupsSkusRequest" });
+    case 1:
+      return S.Array(__S(100, __c3, 4));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          nextPageToken: S.optional(S.String),
+          skuGroupSkus: S.optional(__S(385, __c12, 1)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudBillingSkugroupskusV1betaListSkuGroupSkusResponse",
+      });
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          parent: S.String.pipe(T.Label()),
+          pageSize: S.optional(S.Number.pipe(T.Query())),
+          pageToken: S.optional(S.String.pipe(T.Query())),
+          currencyCode: S.optional(S.String.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v1beta/{+parent}/prices",
+            baseUrl: "https://cloudbilling.googleapis.com/",
+          }),
+        ),
+      ).annotate({ identifier: "ListSkusPricesRequest" });
+    case 1:
+      return S.Array(__S(164, __c5, 4));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          prices: S.optional(__S(417, __c13, 1)),
+          nextPageToken: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudBillingPricesV1betaListPricesResponse",
+      });
+  }
+}
+function __c14(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1217,21 +1617,21 @@ function __c0(j: number): any {
         }),
       ).annotate({ identifier: "BillingDataResource" });
     case 2:
-      return S.Array(__S(1, __c0, 1));
+      return S.Array(__S(449, __c14, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          userContext: S.optional(__S(0, __c0, 0)),
+          userContext: S.optional(__S(448, __c14, 0)),
           overriddenMaxIterationCounts: S.optional(S.Number),
           filter: S.optional(S.String),
-          parents: S.optional(__S(2, __c0, 2)),
+          parents: S.optional(__S(450, __c14, 2)),
           prompt: S.optional(S.String),
         }),
       ).annotate({ identifier: "GenerateInsightsRequest" });
     case 4:
       return S.suspend(() =>
         S.Struct({
-          body: S.optional(__S(3, __c0, 3).pipe(T.HttpBody())),
+          body: S.optional(__S(451, __c14, 3).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -1258,20 +1658,16 @@ function __c0(j: number): any {
         }),
       ).annotate({ identifier: "Insight" });
     case 7:
-      return S.Array(__S(6, __c0, 6));
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
+      return S.Array(__S(454, __c14, 6));
+    case 8:
       return S.suspend(() =>
         S.Struct({
           query: S.optional(S.String),
         }),
       ).annotate({ identifier: "SuggestedQuery" });
-    case 1:
-      return S.Array(__S(8, __c1, 0));
-    case 2:
+    case 9:
+      return S.Array(__S(456, __c14, 8));
+    case 10:
       return S.suspend(() =>
         S.Struct({
           label: S.optional(S.String),
@@ -1279,9 +1675,9 @@ function __c1(j: number): any {
           linkType: S.optional(S.String),
         }),
       ).annotate({ identifier: "InteropLink" });
-    case 3:
-      return S.Array(__S(10, __c1, 2));
-    case 4:
+    case 11:
+      return S.Array(__S(458, __c14, 10));
+    case 12:
       return S.suspend(() =>
         S.Struct({
           yAxisField: S.optional(S.String),
@@ -1293,55 +1689,51 @@ function __c1(j: number): any {
           xAxisLabel: S.optional(S.String),
         }),
       ).annotate({ identifier: "SuggestedChart" });
-    case 5:
+    case 13:
       return S.suspend(() =>
         S.Struct({
-          element: S.optional(S.suspend(() => __S(21, __c2, 5))),
+          element: S.optional(S.suspend(() => __S(469, __c14, 21))),
         }),
       ).annotate({ identifier: "Cloudbilling_Array" });
-    case 6:
+    case 14:
       return S.suspend(() =>
         S.Struct({
-          start: S.optional(S.suspend(() => __S(20, __c2, 4))),
-          end: S.optional(S.suspend(() => __S(20, __c2, 4))),
+          start: S.optional(S.suspend(() => __S(468, __c14, 20))),
+          end: S.optional(S.suspend(() => __S(468, __c14, 20))),
         }),
       ).annotate({ identifier: "Range" });
-    case 7:
+    case 15:
       return S.suspend(() =>
         S.Struct({
-          field: S.optional(S.suspend(() => __S(21, __c2, 5))),
+          field: S.optional(S.suspend(() => __S(469, __c14, 21))),
         }),
       ).annotate({ identifier: "Struct" });
-  }
-}
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
+    case 16:
       return S.suspend(() =>
         S.Struct({
-          key: S.optional(S.suspend(() => __S(20, __c2, 4))),
-          value: S.optional(S.suspend(() => __S(20, __c2, 4))),
+          key: S.optional(S.suspend(() => __S(468, __c14, 20))),
+          value: S.optional(S.suspend(() => __S(468, __c14, 20))),
         }),
       ).annotate({ identifier: "MapEntry" });
-    case 1:
-      return S.Array(__S(16, __c2, 0));
-    case 2:
+    case 17:
+      return S.Array(__S(464, __c14, 16));
+    case 18:
       return S.suspend(() =>
         S.Struct({
-          entry: S.optional(__S(17, __c2, 1)),
+          entry: S.optional(__S(465, __c14, 17)),
         }),
       ).annotate({ identifier: "Cloudbilling_Map" });
-    case 3:
+    case 19:
       return S.suspend(() =>
         S.Struct({
           nanos: S.optional(S.Number),
           bitFieldDatetimeSeconds: S.optional(S.String),
         }),
       ).annotate({ identifier: "Datetime" });
-    case 4:
+    case 20:
       return S.suspend(() =>
         S.Struct({
-          arrayValue: S.optional(__S(13, __c1, 5)),
+          arrayValue: S.optional(__S(461, __c14, 13)),
           bytesValue: S.optional(S.String),
           numericValue: S.optional(S.String),
           int64Value: S.optional(S.String),
@@ -1361,94 +1753,94 @@ function __c2(j: number): any {
           doubleValue: S.optional(S.Number),
           stringValue: S.optional(S.String),
           bignumericValue: S.optional(S.String),
-          rangeValue: S.optional(__S(14, __c1, 6)),
-          structValue: S.optional(__S(15, __c1, 7)),
-          mapValue: S.optional(__S(18, __c2, 2)),
-          datetimeValue: S.optional(__S(19, __c2, 3)),
+          rangeValue: S.optional(__S(462, __c14, 14)),
+          structValue: S.optional(__S(463, __c14, 15)),
+          mapValue: S.optional(__S(466, __c14, 18)),
+          datetimeValue: S.optional(__S(467, __c14, 19)),
           timeValue: S.optional(S.String),
           uint64Value: S.optional(S.String),
           int32Value: S.optional(S.Number),
           protoValue: S.optional(S.String),
         }),
       ).annotate({ identifier: "ValueProto" });
-    case 5:
-      return S.Array(__S(20, __c2, 4));
-    case 6:
+    case 21:
+      return S.Array(__S(468, __c14, 20));
+    case 22:
       return S.suspend(() =>
         S.Struct({
-          values: S.optional(__S(21, __c2, 5)),
+          values: S.optional(__S(469, __c14, 21)),
         }),
       ).annotate({ identifier: "Row" });
-    case 7:
-      return S.Array(__S(22, __c2, 6));
-  }
-}
-function __c3(j: number): any {
-  switch (j) {
-    case 0:
+    case 23:
+      return S.Array(__S(470, __c14, 22));
+    case 24:
       return S.suspend(() =>
         S.Struct({
           column: S.optional(S.String),
         }),
       ).annotate({ identifier: "ColumnInfo" });
-    case 1:
-      return S.Array(__S(24, __c3, 0));
-    case 2:
+    case 25:
+      return S.Array(__S(472, __c14, 24));
+    case 26:
       return S.suspend(() =>
         S.Struct({
-          rows: S.optional(__S(23, __c2, 7)),
-          columnInfo: S.optional(__S(25, __c3, 1)),
+          rows: S.optional(__S(471, __c14, 23)),
+          columnInfo: S.optional(__S(473, __c14, 25)),
         }),
       ).annotate({ identifier: "BillingData" });
-    case 3:
+    case 27:
       return S.Array(S.String);
-    case 4:
+    case 28:
       return S.suspend(() =>
         S.Struct({
           limit: S.optional(S.Number),
           filter: S.optional(S.String),
           groupBy: S.optional(S.String),
-          parents: S.optional(__S(27, __c3, 3)),
+          parents: S.optional(__S(475, __c14, 27)),
           orderBy: S.optional(S.String),
           columns: S.optional(S.String),
           view: S.optional(S.String),
         }),
       ).annotate({ identifier: "AgenticQueryInfo" });
-    case 5:
+    case 29:
       return S.suspend(() =>
         S.Struct({
-          suggestedChart: S.optional(__S(12, __c1, 4)),
-          billingData: S.optional(__S(26, __c3, 2)),
-          queryInfo: S.optional(__S(28, __c3, 4)),
+          suggestedChart: S.optional(__S(460, __c14, 12)),
+          billingData: S.optional(__S(474, __c14, 26)),
+          queryInfo: S.optional(__S(476, __c14, 28)),
         }),
       ).annotate({ identifier: "DataSet" });
-    case 6:
-      return S.Array(__S(29, __c3, 5));
-    case 7:
+    case 30:
+      return S.Array(__S(477, __c14, 29));
+    case 31:
       return S.suspend(() =>
         S.Struct({
-          insights: S.optional(__S(7, __c0, 7)),
-          suggestedQueries: S.optional(__S(9, __c1, 1)),
+          insights: S.optional(__S(455, __c14, 7)),
+          suggestedQueries: S.optional(__S(457, __c14, 9)),
           summary: S.optional(S.String),
           fullAnalysis: S.optional(S.String),
-          interopLinks: S.optional(__S(11, __c1, 3)),
-          dataSets: S.optional(__S(30, __c3, 6)),
+          interopLinks: S.optional(__S(459, __c14, 11)),
+          dataSets: S.optional(__S(478, __c14, 30)),
         }),
       ).annotate({ identifier: "FinalResult" });
   }
 }
-function __c4(j: number): any {
+function __c15(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           summaryChunk: S.optional(S.String),
-          rejection: S.optional(__S(5, __c0, 5)),
+          rejection: S.optional(__S(453, __c14, 5)),
           thoughtChunk: S.optional(S.String),
-          finalResult: S.optional(__S(31, __c3, 7)),
+          finalResult: S.optional(__S(479, __c14, 31)),
         }),
       ).annotate({ identifier: "GenerateInsightsResponse" });
-    case 1:
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -1462,7 +1854,11 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "GetBillingAccountsServicesRequest",
       });
-    case 2:
+  }
+}
+function __c17(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
@@ -1472,7 +1868,11 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "GoogleCloudBillingBillingaccountservicesV1betaBillingAccountService",
       });
-    case 3:
+  }
+}
+function __c18(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -1486,7 +1886,11 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "GetBillingAccountsSkuGroupsRequest",
       });
-    case 4:
+  }
+}
+function __c19(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
@@ -1495,7 +1899,11 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "GoogleCloudBillingBillingaccountskugroupsV1betaBillingAccountSkuGroup",
       });
-    case 5:
+  }
+}
+function __c20(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -1509,11 +1917,49 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "GetBillingAccountsSkuGroupsSkusRequest",
       });
-    case 6:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "GoogleCloudBillingBillingaccountskugroupskusV1betaGeoTaxonomyGlobal",
+  }
+}
+function __c21(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          type: S.optional(S.String),
+          globalMetadata: S.optional(__S(768, __c24, 0)),
+          multiRegionalMetadata: S.optional(__S(737, __c23, 1)),
+          regionalMetadata: S.optional(__S(705, __c22, 1)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudBillingBillingaccountskugroupskusV1betaGeoTaxonomy",
       });
-    case 7:
+    case 1:
+      return S.Array(__S(706, __c22, 2));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          taxonomyCategories: S.optional(__S(673, __c21, 1)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudBillingBillingaccountskugroupskusV1betaProductTaxonomy",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          displayName: S.optional(S.String),
+          name: S.optional(S.String),
+          billingAccountService: S.optional(S.String),
+          skuId: S.optional(S.String),
+          geoTaxonomy: S.optional(__S(672, __c21, 0)),
+          productTaxonomy: S.optional(__S(674, __c21, 2)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudBillingBillingaccountskugroupskusV1betaBillingAccountSkuGroupSku",
+      });
+  }
+}
+function __c22(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           region: S.optional(S.String),
@@ -1521,40 +1967,15 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "GoogleCloudBillingBillingaccountskugroupskusV1betaGeoTaxonomyRegion",
       });
-  }
-}
-function __c5(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(39, __c4, 7));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          regions: S.optional(__S(40, __c5, 0)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudBillingBillingaccountskugroupskusV1betaGeoTaxonomyMultiRegional",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          region: S.optional(__S(39, __c4, 7)),
+          region: S.optional(__S(704, __c22, 0)),
         }),
       ).annotate({
         identifier: "GoogleCloudBillingBillingaccountskugroupskusV1betaGeoTaxonomyRegional",
       });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          type: S.optional(S.String),
-          globalMetadata: S.optional(__S(38, __c4, 6)),
-          multiRegionalMetadata: S.optional(__S(41, __c5, 1)),
-          regionalMetadata: S.optional(__S(42, __c5, 2)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudBillingBillingaccountskugroupskusV1betaGeoTaxonomy",
-      });
-    case 4:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           category: S.optional(S.String),
@@ -1562,32 +1983,31 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "GoogleCloudBillingBillingaccountskugroupskusV1betaTaxonomyCategory",
       });
-    case 5:
-      return S.Array(__S(44, __c5, 4));
-    case 6:
+  }
+}
+function __c23(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(704, __c22, 0));
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          taxonomyCategories: S.optional(__S(45, __c5, 5)),
+          regions: S.optional(__S(736, __c23, 0)),
         }),
       ).annotate({
-        identifier: "GoogleCloudBillingBillingaccountskugroupskusV1betaProductTaxonomy",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          displayName: S.optional(S.String),
-          name: S.optional(S.String),
-          billingAccountService: S.optional(S.String),
-          skuId: S.optional(S.String),
-          geoTaxonomy: S.optional(__S(43, __c5, 3)),
-          productTaxonomy: S.optional(__S(46, __c5, 6)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudBillingBillingaccountskugroupskusV1betaBillingAccountSkuGroupSku",
+        identifier: "GoogleCloudBillingBillingaccountskugroupskusV1betaGeoTaxonomyMultiRegional",
       });
   }
 }
-function __c6(j: number): any {
+function __c24(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "GoogleCloudBillingBillingaccountskugroupskusV1betaGeoTaxonomyGlobal",
+      });
+  }
+}
+function __c25(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1603,33 +2023,41 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "GetBillingAccountsSkusRequest",
       });
-    case 1:
-      return S.Array(__S(44, __c5, 4));
-    case 2:
+  }
+}
+function __c26(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(706, __c22, 2));
+  }
+}
+function __c27(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          taxonomyCategories: S.optional(__S(49, __c6, 1)),
+          taxonomyCategories: S.optional(__S(832, __c26, 0)),
         }),
       ).annotate({
         identifier: "GoogleCloudBillingBillingaccountskusV1betaProductTaxonomy",
       });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          globalMetadata: S.optional(__S(38, __c4, 6)),
+          globalMetadata: S.optional(__S(768, __c24, 0)),
           type: S.optional(S.String),
-          regionalMetadata: S.optional(__S(42, __c5, 2)),
-          multiRegionalMetadata: S.optional(__S(41, __c5, 1)),
+          regionalMetadata: S.optional(__S(705, __c22, 1)),
+          multiRegionalMetadata: S.optional(__S(737, __c23, 1)),
         }),
       ).annotate({
         identifier: "GoogleCloudBillingBillingaccountskusV1betaGeoTaxonomy",
       });
-    case 4:
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          productTaxonomy: S.optional(__S(50, __c6, 2)),
+          productTaxonomy: S.optional(__S(864, __c27, 0)),
           billingAccountService: S.optional(S.String),
-          geoTaxonomy: S.optional(__S(51, __c6, 3)),
+          geoTaxonomy: S.optional(__S(865, __c27, 1)),
           skuId: S.optional(S.String),
           displayName: S.optional(S.String),
           name: S.optional(S.String),
@@ -1637,7 +2065,11 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "GoogleCloudBillingBillingaccountskusV1betaBillingAccountSku",
       });
-    case 5:
+  }
+}
+function __c28(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           currencyCode: S.optional(S.String.pipe(T.Query())),
@@ -1652,27 +2084,27 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "GetBillingAccountsSkusPriceRequest",
       });
-    case 6:
+  }
+}
+function __c29(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           value: S.optional(S.String),
         }),
       ).annotate({ identifier: "Decimal" });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          unitQuantity: S.optional(__S(54, __c6, 6)),
+          unitQuantity: S.optional(__S(928, __c29, 0)),
           unit: S.optional(S.String),
           unitDescription: S.optional(S.String),
         }),
       ).annotate({
         identifier: "GoogleCloudBillingBillingaccountpricesV1betaUnitInfo",
       });
-  }
-}
-function __c7(j: number): any {
-  switch (j) {
-    case 0:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           nanos: S.optional(S.Number),
@@ -1680,20 +2112,24 @@ function __c7(j: number): any {
           units: S.optional(S.String),
         }),
       ).annotate({ identifier: "Money" });
-    case 1:
+  }
+}
+function __c30(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          listPrice: S.optional(__S(56, __c7, 0)),
-          startAmount: S.optional(__S(54, __c6, 6)),
-          effectiveDiscountPercent: S.optional(__S(54, __c6, 6)),
-          contractPrice: S.optional(__S(56, __c7, 0)),
+          listPrice: S.optional(__S(930, __c29, 2)),
+          startAmount: S.optional(__S(928, __c29, 0)),
+          effectiveDiscountPercent: S.optional(__S(928, __c29, 0)),
+          contractPrice: S.optional(__S(930, __c29, 2)),
         }),
       ).annotate({
         identifier: "GoogleCloudBillingBillingaccountpricesV1betaRateTier",
       });
+    case 1:
+      return S.Array(__S(960, __c30, 0));
     case 2:
-      return S.Array(__S(57, __c7, 1));
-    case 3:
       return S.suspend(() =>
         S.Struct({
           interval: S.optional(S.String),
@@ -1702,17 +2138,17 @@ function __c7(j: number): any {
       ).annotate({
         identifier: "GoogleCloudBillingBillingaccountpricesV1betaAggregationInfo",
       });
-    case 4:
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          unitInfo: S.optional(__S(55, __c6, 7)),
-          tiers: S.optional(__S(58, __c7, 2)),
-          aggregationInfo: S.optional(__S(59, __c7, 3)),
+          unitInfo: S.optional(__S(929, __c29, 1)),
+          tiers: S.optional(__S(961, __c30, 1)),
+          aggregationInfo: S.optional(__S(962, __c30, 2)),
         }),
       ).annotate({
         identifier: "GoogleCloudBillingBillingaccountpricesV1betaRate",
       });
-    case 5:
+    case 4:
       return S.suspend(() =>
         S.Struct({
           sourceSku: S.optional(S.String),
@@ -1720,20 +2156,20 @@ function __c7(j: number): any {
       ).annotate({
         identifier: "GoogleCloudBillingBillingaccountpricesV1betaMigratedPrice",
       });
-    case 6:
+    case 5:
       return S.suspend(() =>
         S.Struct({
-          discountPercent: S.optional(__S(54, __c6, 6)),
+          discountPercent: S.optional(__S(928, __c29, 0)),
           skuGroup: S.optional(S.String),
           discountScopeType: S.optional(S.String),
         }),
       ).annotate({
         identifier: "GoogleCloudBillingBillingaccountpricesV1betaFloatingDiscount",
       });
-    case 7:
+    case 6:
       return S.suspend(() =>
         S.Struct({
-          discountPercent: S.optional(__S(54, __c6, 6)),
+          discountPercent: S.optional(__S(928, __c29, 0)),
           fixTime: S.optional(S.String),
           skuGroup: S.optional(S.String),
           discountScopeType: S.optional(S.String),
@@ -1741,400 +2177,35 @@ function __c7(j: number): any {
       ).annotate({
         identifier: "GoogleCloudBillingBillingaccountpricesV1betaFixedDiscount",
       });
-  }
-}
-function __c8(j: number): any {
-  switch (j) {
-    case 0:
+    case 7:
       return S.suspend(() =>
         S.Struct({
-          migratedPrice: S.optional(__S(61, __c7, 5)),
-          mergedPrice: S.optional(__S(38, __c4, 6)),
-          floatingDiscount: S.optional(__S(62, __c7, 6)),
-          listPriceAsCeiling: S.optional(__S(38, __c4, 6)),
-          fixedPrice: S.optional(__S(38, __c4, 6)),
+          migratedPrice: S.optional(__S(964, __c30, 4)),
+          mergedPrice: S.optional(__S(768, __c24, 0)),
+          floatingDiscount: S.optional(__S(965, __c30, 5)),
+          listPriceAsCeiling: S.optional(__S(768, __c24, 0)),
+          fixedPrice: S.optional(__S(768, __c24, 0)),
           type: S.optional(S.String),
-          fixedDiscount: S.optional(__S(63, __c7, 7)),
-          defaultPrice: S.optional(__S(38, __c4, 6)),
+          fixedDiscount: S.optional(__S(966, __c30, 6)),
+          defaultPrice: S.optional(__S(768, __c24, 0)),
         }),
       ).annotate({
         identifier: "GoogleCloudBillingBillingaccountpricesV1betaPriceReason",
       });
-    case 1:
+    case 8:
       return S.suspend(() =>
         S.Struct({
-          rate: S.optional(__S(60, __c7, 4)),
+          rate: S.optional(__S(963, __c30, 3)),
           name: S.optional(S.String),
-          priceReason: S.optional(__S(64, __c8, 0)),
+          priceReason: S.optional(__S(967, __c30, 7)),
           valueType: S.optional(S.String),
           currencyCode: S.optional(S.String),
         }),
       ).annotate({
         identifier: "GoogleCloudBillingBillingaccountpricesV1betaBillingAccountPrice",
       });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v1beta/{+name}",
-            baseUrl: "https://cloudbilling.googleapis.com/",
-          }),
-        ),
-      ).annotate({ identifier: "GetSkuGroupsRequest" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          displayName: S.optional(S.String),
-          name: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudBillingSkugroupsV1betaSkuGroup",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v1beta/{+name}",
-            baseUrl: "https://cloudbilling.googleapis.com/",
-          }),
-        ),
-      ).annotate({ identifier: "GetSkuGroupsSkusRequest" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          taxonomyCategories: S.optional(__S(49, __c6, 1)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudBillingSkugroupskusV1betaProductTaxonomy",
-      });
-    case 6:
-      return S.Array(__S(39, __c4, 7));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          regions: S.optional(__S(70, __c8, 6)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudBillingSkugroupskusV1betaGeoTaxonomyMultiRegional",
-      });
   }
 }
-function __c9(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          regionalMetadata: S.optional(__S(42, __c5, 2)),
-          multiRegionalMetadata: S.optional(__S(71, __c8, 7)),
-          globalMetadata: S.optional(__S(38, __c4, 6)),
-          type: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudBillingSkugroupskusV1betaGeoTaxonomy",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          skuId: S.optional(S.String),
-          productTaxonomy: S.optional(__S(69, __c8, 5)),
-          service: S.optional(S.String),
-          displayName: S.optional(S.String),
-          name: S.optional(S.String),
-          geoTaxonomy: S.optional(__S(72, __c9, 0)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudBillingSkugroupskusV1betaSkuGroupSku",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-          currencyCode: S.optional(S.String.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v1beta/{+name}",
-            baseUrl: "https://cloudbilling.googleapis.com/",
-          }),
-        ),
-      ).annotate({ identifier: "GetSkusPriceRequest" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          level: S.optional(S.String),
-          interval: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudBillingPricesV1betaAggregationInfo",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          listPrice: S.optional(__S(56, __c7, 0)),
-          startAmount: S.optional(__S(54, __c6, 6)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudBillingPricesV1betaRateTier",
-      });
-    case 5:
-      return S.Array(__S(76, __c9, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          aggregationInfo: S.optional(__S(75, __c9, 3)),
-          unitInfo: S.optional(__S(55, __c6, 7)),
-          tiers: S.optional(__S(77, __c9, 5)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudBillingPricesV1betaRate",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          currencyCode: S.optional(S.String),
-          rate: S.optional(__S(78, __c9, 6)),
-          valueType: S.optional(S.String),
-          name: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudBillingPricesV1betaPrice",
-      });
-  }
-}
-function __c10(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          pageToken: S.optional(S.String.pipe(T.Query())),
-          parent: S.String.pipe(T.Label()),
-          pageSize: S.optional(S.Number.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v1beta/{+parent}/services",
-            baseUrl: "https://cloudbilling.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListBillingAccountsServicesRequest",
-      });
-    case 1:
-      return S.Array(__S(34, __c4, 2));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          billingAccountServices: S.optional(__S(81, __c10, 1)),
-          nextPageToken: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier:
-          "GoogleCloudBillingBillingaccountservicesV1betaListBillingAccountServicesResponse",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          pageToken: S.optional(S.String.pipe(T.Query())),
-          pageSize: S.optional(S.Number.pipe(T.Query())),
-          parent: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v1beta/{+parent}/skuGroups",
-            baseUrl: "https://cloudbilling.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListBillingAccountsSkuGroupsRequest",
-      });
-    case 4:
-      return S.Array(__S(36, __c4, 4));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          nextPageToken: S.optional(S.String),
-          billingAccountSkuGroups: S.optional(__S(84, __c10, 4)),
-        }),
-      ).annotate({
-        identifier:
-          "GoogleCloudBillingBillingaccountskugroupsV1betaListBillingAccountSkuGroupsResponse",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          pageSize: S.optional(S.Number.pipe(T.Query())),
-          parent: S.String.pipe(T.Label()),
-          pageToken: S.optional(S.String.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v1beta/{+parent}/skus",
-            baseUrl: "https://cloudbilling.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListBillingAccountsSkuGroupsSkusRequest",
-      });
-    case 7:
-      return S.Array(__S(47, __c5, 7));
-  }
-}
-function __c11(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          billingAccountSkuGroupSkus: S.optional(__S(87, __c10, 7)),
-          nextPageToken: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier:
-          "GoogleCloudBillingBillingaccountskugroupskusV1betaListBillingAccountSkuGroupSkusResponse",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          parent: S.String.pipe(T.Label()),
-          pageSize: S.optional(S.Number.pipe(T.Query())),
-          filter: S.optional(S.String.pipe(T.Query())),
-          pageToken: S.optional(S.String.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v1beta/{+parent}/skus",
-            baseUrl: "https://cloudbilling.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListBillingAccountsSkusRequest",
-      });
-    case 2:
-      return S.Array(__S(52, __c6, 4));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          billingAccountSkus: S.optional(__S(90, __c11, 2)),
-          nextPageToken: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudBillingBillingaccountskusV1betaListBillingAccountSkusResponse",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          parent: S.String.pipe(T.Label()),
-          pageSize: S.optional(S.Number.pipe(T.Query())),
-          pageToken: S.optional(S.String.pipe(T.Query())),
-          currencyCode: S.optional(S.String.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v1beta/{+parent}/prices",
-            baseUrl: "https://cloudbilling.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListBillingAccountsSkusPricesRequest",
-      });
-    case 5:
-      return S.Array(__S(65, __c8, 1));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          billingAccountPrices: S.optional(__S(93, __c11, 5)),
-          nextPageToken: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudBillingBillingaccountpricesV1betaListBillingAccountPricesResponse",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          pageToken: S.optional(S.String.pipe(T.Query())),
-          pageSize: S.optional(S.Number.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v1beta/skuGroups",
-            baseUrl: "https://cloudbilling.googleapis.com/",
-          }),
-        ),
-      ).annotate({ identifier: "ListSkuGroupsRequest" });
-  }
-}
-function __c12(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(67, __c8, 3));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          skuGroups: S.optional(__S(96, __c12, 0)),
-          nextPageToken: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudBillingSkugroupsV1betaListSkuGroupsResponse",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          parent: S.String.pipe(T.Label()),
-          pageSize: S.optional(S.Number.pipe(T.Query())),
-          pageToken: S.optional(S.String.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v1beta/{+parent}/skus",
-            baseUrl: "https://cloudbilling.googleapis.com/",
-          }),
-        ),
-      ).annotate({ identifier: "ListSkuGroupsSkusRequest" });
-    case 3:
-      return S.Array(__S(73, __c9, 1));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          nextPageToken: S.optional(S.String),
-          skuGroupSkus: S.optional(__S(99, __c12, 3)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudBillingSkugroupskusV1betaListSkuGroupSkusResponse",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          parent: S.String.pipe(T.Label()),
-          pageSize: S.optional(S.Number.pipe(T.Query())),
-          pageToken: S.optional(S.String.pipe(T.Query())),
-          currencyCode: S.optional(S.String.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v1beta/{+parent}/prices",
-            baseUrl: "https://cloudbilling.googleapis.com/",
-          }),
-        ),
-      ).annotate({ identifier: "ListSkusPricesRequest" });
-    case 6:
-      return S.Array(__S(79, __c9, 7));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          prices: S.optional(__S(102, __c12, 6)),
-          nextPageToken: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudBillingPricesV1betaListPricesResponse",
-      });
-  }
-}
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

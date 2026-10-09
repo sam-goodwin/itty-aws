@@ -97,7 +97,7 @@ export class ValidationException
   extends /*@__PURE__*/ S.TaggedError<ValidationException>()("ValidationException", {
     message: /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.ErrorMessage()),
     fieldList: /*@__PURE__*/ S.optional(
-      /*@__PURE__*/ S.suspend(() => __S(353, __c44, 1)).annotate({
+      /*@__PURE__*/ S.suspend(() => __S(1281, __c80, 1)).annotate({
         identifier: "ValidationExceptionFieldList",
       }),
     ),
@@ -181,7 +181,7 @@ export interface BatchDeletePentestsInput {
 export interface Endpoint {
   uri?: string;
 }
-const Endpoint = /*@__PURE__*/ __L.at(__c2, 0) as any as S.Schema<Endpoint>;
+const Endpoint = /*@__PURE__*/ __L.at(__c93, 0) as any as S.Schema<Endpoint>;
 export type EndpointList = Endpoint[];
 export type UriList = string[];
 export type AuthenticationProviderType =
@@ -2551,8 +2551,8 @@ export const addArtifact: API.OperationMethod<
   AddArtifactError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(0, __c0, 0) as any as S.Schema<AddArtifactInput>,
-  output: __S(1, __c0, 1) as any as S.Schema<AddArtifactOutput>,
+  input: __S(1472, __c92, 0) as any as S.Schema<AddArtifactInput>,
+  output: __S(1473, __c92, 1) as any as S.Schema<AddArtifactOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -2583,8 +2583,8 @@ export const batchCreateSecurityRequirements: API.OperationMethod<
   BatchCreateSecurityRequirementsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(4, __c0, 4) as any as S.Schema<BatchCreateSecurityRequirementsInput>,
-  output: __S(9, __c1, 1) as any as S.Schema<BatchCreateSecurityRequirementsOutput>,
+  input: __S(1666, __c104, 2) as any as S.Schema<BatchCreateSecurityRequirementsInput>,
+  output: __S(1698, __c106, 2) as any as S.Schema<BatchCreateSecurityRequirementsOutput>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -2609,8 +2609,8 @@ export const batchDeleteCodeReviews: API.OperationMethod<
   BatchDeleteCodeReviewsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(11, __c1, 3) as any as S.Schema<BatchDeleteCodeReviewsInput>,
-  output: __S(14, __c1, 6) as any as S.Schema<BatchDeleteCodeReviewsOutput>,
+  input: __S(1872, __c117, 0) as any as S.Schema<BatchDeleteCodeReviewsInput>,
+  output: __S(1875, __c117, 3) as any as S.Schema<BatchDeleteCodeReviewsOutput>,
   errors: [],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2627,8 +2627,8 @@ export const batchDeletePentests: API.OperationMethod<
   BatchDeletePentestsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(15, __c1, 7) as any as S.Schema<BatchDeletePentestsInput>,
-  output: __S(47, __c5, 7) as any as S.Schema<BatchDeletePentestsOutput>,
+  input: __S(0, __c0, 0) as any as S.Schema<BatchDeletePentestsInput>,
+  output: __S(3, __c0, 3) as any as S.Schema<BatchDeletePentestsOutput>,
   errors: [],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2652,8 +2652,8 @@ export const batchDeleteSecurityRequirements: API.OperationMethod<
   BatchDeleteSecurityRequirementsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(48, __c6, 0) as any as S.Schema<BatchDeleteSecurityRequirementsInput>,
-  output: __S(49, __c6, 1) as any as S.Schema<BatchDeleteSecurityRequirementsOutput>,
+  input: __S(192, __c12, 0) as any as S.Schema<BatchDeleteSecurityRequirementsInput>,
+  output: __S(193, __c12, 1) as any as S.Schema<BatchDeleteSecurityRequirementsOutput>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -2677,8 +2677,8 @@ export const batchDeleteThreatModels: API.OperationMethod<
   BatchDeleteThreatModelsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(50, __c6, 2) as any as S.Schema<BatchDeleteThreatModelsInput>,
-  output: __S(53, __c6, 5) as any as S.Schema<BatchDeleteThreatModelsOutput>,
+  input: __S(208, __c13, 0) as any as S.Schema<BatchDeleteThreatModelsInput>,
+  output: __S(211, __c13, 3) as any as S.Schema<BatchDeleteThreatModelsOutput>,
   errors: [],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2695,8 +2695,8 @@ export const batchGetAgentSpaces: API.OperationMethod<
   BatchGetAgentSpacesError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(54, __c6, 6) as any as S.Schema<BatchGetAgentSpacesInput>,
-  output: __S(60, __c7, 4) as any as S.Schema<BatchGetAgentSpacesOutput>,
+  input: __S(224, __c14, 0) as any as S.Schema<BatchGetAgentSpacesInput>,
+  output: __S(226, __c14, 2) as any as S.Schema<BatchGetAgentSpacesOutput>,
   errors: [],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2719,8 +2719,8 @@ export const batchGetArtifactMetadata: API.OperationMethod<
   BatchGetArtifactMetadataError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(61, __c7, 5) as any as S.Schema<BatchGetArtifactMetadataInput>,
-  output: __S(64, __c8, 0) as any as S.Schema<BatchGetArtifactMetadataOutput>,
+  input: __S(272, __c17, 0) as any as S.Schema<BatchGetArtifactMetadataInput>,
+  output: __S(275, __c17, 3) as any as S.Schema<BatchGetArtifactMetadataOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -2743,8 +2743,8 @@ export const batchGetCodeReviewJobs: API.OperationMethod<
   BatchGetCodeReviewJobsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(65, __c8, 1) as any as S.Schema<BatchGetCodeReviewJobsInput>,
-  output: __S(73, __c9, 1) as any as S.Schema<BatchGetCodeReviewJobsOutput>,
+  input: __S(288, __c18, 0) as any as S.Schema<BatchGetCodeReviewJobsInput>,
+  output: __S(291, __c18, 3) as any as S.Schema<BatchGetCodeReviewJobsOutput>,
   errors: [],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2761,8 +2761,8 @@ export const batchGetCodeReviewJobTasks: API.OperationMethod<
   BatchGetCodeReviewJobTasksError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(74, __c9, 2) as any as S.Schema<BatchGetCodeReviewJobTasksInput>,
-  output: __S(80, __c10, 0) as any as S.Schema<BatchGetCodeReviewJobTasksOutput>,
+  input: __S(336, __c21, 0) as any as S.Schema<BatchGetCodeReviewJobTasksInput>,
+  output: __S(339, __c21, 3) as any as S.Schema<BatchGetCodeReviewJobTasksOutput>,
   errors: [],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2779,8 +2779,8 @@ export const batchGetCodeReviews: API.OperationMethod<
   BatchGetCodeReviewsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(81, __c10, 1) as any as S.Schema<BatchGetCodeReviewsInput>,
-  output: __S(84, __c10, 4) as any as S.Schema<BatchGetCodeReviewsOutput>,
+  input: __S(384, __c24, 0) as any as S.Schema<BatchGetCodeReviewsInput>,
+  output: __S(387, __c24, 3) as any as S.Schema<BatchGetCodeReviewsOutput>,
   errors: [],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2797,8 +2797,8 @@ export const batchGetFindings: API.OperationMethod<
   BatchGetFindingsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(85, __c10, 5) as any as S.Schema<BatchGetFindingsInput>,
-  output: __S(94, __c11, 6) as any as S.Schema<BatchGetFindingsOutput>,
+  input: __S(400, __c25, 0) as any as S.Schema<BatchGetFindingsInput>,
+  output: __S(409, __c25, 9) as any as S.Schema<BatchGetFindingsOutput>,
   errors: [],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2815,8 +2815,8 @@ export const batchGetPentestJobs: API.OperationMethod<
   BatchGetPentestJobsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(95, __c11, 7) as any as S.Schema<BatchGetPentestJobsInput>,
-  output: __S(101, __c12, 5) as any as S.Schema<BatchGetPentestJobsOutput>,
+  input: __S(416, __c26, 0) as any as S.Schema<BatchGetPentestJobsInput>,
+  output: __S(420, __c26, 4) as any as S.Schema<BatchGetPentestJobsOutput>,
   errors: [],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2833,8 +2833,8 @@ export const batchGetPentestJobTasks: API.OperationMethod<
   BatchGetPentestJobTasksError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(102, __c12, 6) as any as S.Schema<BatchGetPentestJobTasksInput>,
-  output: __S(105, __c13, 1) as any as S.Schema<BatchGetPentestJobTasksOutput>,
+  input: __S(448, __c28, 0) as any as S.Schema<BatchGetPentestJobTasksInput>,
+  output: __S(451, __c28, 3) as any as S.Schema<BatchGetPentestJobTasksOutput>,
   errors: [],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2851,8 +2851,8 @@ export const batchGetPentests: API.OperationMethod<
   BatchGetPentestsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(106, __c13, 2) as any as S.Schema<BatchGetPentestsInput>,
-  output: __S(107, __c13, 3) as any as S.Schema<BatchGetPentestsOutput>,
+  input: __S(464, __c29, 0) as any as S.Schema<BatchGetPentestsInput>,
+  output: __S(465, __c29, 1) as any as S.Schema<BatchGetPentestsOutput>,
   errors: [],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2875,8 +2875,8 @@ export const batchGetSecurityRequirements: API.OperationMethod<
   BatchGetSecurityRequirementsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(108, __c13, 4) as any as S.Schema<BatchGetSecurityRequirementsInput>,
-  output: __S(9, __c1, 1) as any as S.Schema<BatchGetSecurityRequirementsOutput>,
+  input: __S(480, __c30, 0) as any as S.Schema<BatchGetSecurityRequirementsInput>,
+  output: __S(1698, __c106, 2) as any as S.Schema<BatchGetSecurityRequirementsOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -2899,8 +2899,8 @@ export const batchGetTargetDomains: API.OperationMethod<
   BatchGetTargetDomainsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(109, __c13, 5) as any as S.Schema<BatchGetTargetDomainsInput>,
-  output: __S(115, __c14, 3) as any as S.Schema<BatchGetTargetDomainsOutput>,
+  input: __S(496, __c31, 0) as any as S.Schema<BatchGetTargetDomainsInput>,
+  output: __S(499, __c31, 3) as any as S.Schema<BatchGetTargetDomainsOutput>,
   errors: [],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2917,8 +2917,8 @@ export const batchGetThreatModelJobs: API.OperationMethod<
   BatchGetThreatModelJobsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(116, __c14, 4) as any as S.Schema<BatchGetThreatModelJobsInput>,
-  output: __S(119, __c14, 7) as any as S.Schema<BatchGetThreatModelJobsOutput>,
+  input: __S(528, __c33, 0) as any as S.Schema<BatchGetThreatModelJobsInput>,
+  output: __S(531, __c33, 3) as any as S.Schema<BatchGetThreatModelJobsOutput>,
   errors: [],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2935,8 +2935,8 @@ export const batchGetThreatModelJobTasks: API.OperationMethod<
   BatchGetThreatModelJobTasksError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(120, __c15, 0) as any as S.Schema<BatchGetThreatModelJobTasksInput>,
-  output: __S(123, __c15, 3) as any as S.Schema<BatchGetThreatModelJobTasksOutput>,
+  input: __S(544, __c34, 0) as any as S.Schema<BatchGetThreatModelJobTasksInput>,
+  output: __S(547, __c34, 3) as any as S.Schema<BatchGetThreatModelJobTasksOutput>,
   errors: [],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2953,8 +2953,8 @@ export const batchGetThreatModels: API.OperationMethod<
   BatchGetThreatModelsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(124, __c15, 4) as any as S.Schema<BatchGetThreatModelsInput>,
-  output: __S(127, __c15, 7) as any as S.Schema<BatchGetThreatModelsOutput>,
+  input: __S(560, __c35, 0) as any as S.Schema<BatchGetThreatModelsInput>,
+  output: __S(563, __c35, 3) as any as S.Schema<BatchGetThreatModelsOutput>,
   errors: [],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2971,8 +2971,8 @@ export const batchGetThreats: API.OperationMethod<
   BatchGetThreatsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(128, __c16, 0) as any as S.Schema<BatchGetThreatsInput>,
-  output: __S(134, __c16, 6) as any as S.Schema<BatchGetThreatsOutput>,
+  input: __S(576, __c36, 0) as any as S.Schema<BatchGetThreatsInput>,
+  output: __S(579, __c36, 3) as any as S.Schema<BatchGetThreatsOutput>,
   errors: [],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2996,8 +2996,8 @@ export const batchUpdateSecurityRequirements: API.OperationMethod<
   BatchUpdateSecurityRequirementsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(137, __c17, 1) as any as S.Schema<BatchUpdateSecurityRequirementsInput>,
-  output: __S(138, __c17, 2) as any as S.Schema<BatchUpdateSecurityRequirementsOutput>,
+  input: __S(610, __c38, 2) as any as S.Schema<BatchUpdateSecurityRequirementsInput>,
+  output: __S(611, __c38, 3) as any as S.Schema<BatchUpdateSecurityRequirementsOutput>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -3021,8 +3021,8 @@ export const createAgentSpace: API.OperationMethod<
   CreateAgentSpaceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(140, __c17, 4) as any as S.Schema<CreateAgentSpaceInput>,
-  output: __S(58, __c7, 2) as any as S.Schema<CreateAgentSpaceOutput>,
+  input: __S(624, __c39, 0) as any as S.Schema<CreateAgentSpaceInput>,
+  output: __S(240, __c15, 0) as any as S.Schema<CreateAgentSpaceOutput>,
   errors: [],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3039,8 +3039,8 @@ export const createApplication: API.OperationMethod<
   CreateApplicationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(141, __c17, 5) as any as S.Schema<CreateApplicationRequest>,
-  output: __S(142, __c17, 6) as any as S.Schema<CreateApplicationResponse>,
+  input: __S(656, __c41, 0) as any as S.Schema<CreateApplicationRequest>,
+  output: __S(672, __c42, 0) as any as S.Schema<CreateApplicationResponse>,
   errors: [],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3057,8 +3057,8 @@ export const createCodeReview: API.OperationMethod<
   CreateCodeReviewError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(143, __c17, 7) as any as S.Schema<CreateCodeReviewInput>,
-  output: __S(144, __c18, 0) as any as S.Schema<CreateCodeReviewOutput>,
+  input: __S(688, __c43, 0) as any as S.Schema<CreateCodeReviewInput>,
+  output: __S(704, __c44, 0) as any as S.Schema<CreateCodeReviewOutput>,
   errors: [],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3082,8 +3082,8 @@ export const createIntegration: API.OperationMethod<
   CreateIntegrationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(152, __c19, 0) as any as S.Schema<CreateIntegrationInput>,
-  output: __S(153, __c19, 1) as any as S.Schema<CreateIntegrationOutput>,
+  input: __S(727, __c45, 7) as any as S.Schema<CreateIntegrationInput>,
+  output: __S(728, __c45, 8) as any as S.Schema<CreateIntegrationOutput>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -3107,8 +3107,8 @@ export const createMembership: API.OperationMethod<
   CreateMembershipError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(156, __c19, 4) as any as S.Schema<CreateMembershipRequest>,
-  output: __S(157, __c19, 5) as any as S.Schema<CreateMembershipResponse>,
+  input: __S(736, __c46, 0) as any as S.Schema<CreateMembershipRequest>,
+  output: __S(752, __c47, 0) as any as S.Schema<CreateMembershipResponse>,
   errors: [],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3125,8 +3125,8 @@ export const createPentest: API.OperationMethod<
   CreatePentestError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(158, __c19, 6) as any as S.Schema<CreatePentestInput>,
-  output: __S(159, __c19, 7) as any as S.Schema<CreatePentestOutput>,
+  input: __S(784, __c49, 0) as any as S.Schema<CreatePentestInput>,
+  output: __S(800, __c50, 0) as any as S.Schema<CreatePentestOutput>,
   errors: [],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3150,8 +3150,8 @@ export const createPrivateConnection: API.OperationMethod<
   CreatePrivateConnectionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(163, __c20, 3) as any as S.Schema<CreatePrivateConnectionInput>,
-  output: __S(164, __c20, 4) as any as S.Schema<CreatePrivateConnectionOutput>,
+  input: __S(819, __c51, 3) as any as S.Schema<CreatePrivateConnectionInput>,
+  output: __S(832, __c52, 0) as any as S.Schema<CreatePrivateConnectionOutput>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -3182,8 +3182,8 @@ export const createSecurityRequirementPack: API.OperationMethod<
   CreateSecurityRequirementPackError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(165, __c20, 5) as any as S.Schema<CreateSecurityRequirementPackInput>,
-  output: __S(166, __c20, 6) as any as S.Schema<CreateSecurityRequirementPackOutput>,
+  input: __S(848, __c53, 0) as any as S.Schema<CreateSecurityRequirementPackInput>,
+  output: __S(849, __c53, 1) as any as S.Schema<CreateSecurityRequirementPackOutput>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -3207,8 +3207,8 @@ export const createTargetDomain: API.OperationMethod<
   CreateTargetDomainError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(167, __c20, 7) as any as S.Schema<CreateTargetDomainInput>,
-  output: __S(168, __c21, 0) as any as S.Schema<CreateTargetDomainOutput>,
+  input: __S(864, __c54, 0) as any as S.Schema<CreateTargetDomainInput>,
+  output: __S(880, __c55, 0) as any as S.Schema<CreateTargetDomainOutput>,
   errors: [],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3225,8 +3225,8 @@ export const createThreat: API.OperationMethod<
   CreateThreatError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(169, __c21, 1) as any as S.Schema<CreateThreatInput>,
-  output: __S(170, __c21, 2) as any as S.Schema<CreateThreatOutput>,
+  input: __S(896, __c56, 0) as any as S.Schema<CreateThreatInput>,
+  output: __S(912, __c57, 0) as any as S.Schema<CreateThreatOutput>,
   errors: [],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3243,8 +3243,8 @@ export const createThreatModel: API.OperationMethod<
   CreateThreatModelError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(171, __c21, 3) as any as S.Schema<CreateThreatModelInput>,
-  output: __S(172, __c21, 4) as any as S.Schema<CreateThreatModelOutput>,
+  input: __S(928, __c58, 0) as any as S.Schema<CreateThreatModelInput>,
+  output: __S(944, __c59, 0) as any as S.Schema<CreateThreatModelOutput>,
   errors: [],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3261,8 +3261,8 @@ export const deleteAgentSpace: API.OperationMethod<
   DeleteAgentSpaceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(173, __c21, 5) as any as S.Schema<DeleteAgentSpaceInput>,
-  output: __S(174, __c21, 6) as any as S.Schema<DeleteAgentSpaceOutput>,
+  input: __S(960, __c60, 0) as any as S.Schema<DeleteAgentSpaceInput>,
+  output: __S(961, __c60, 1) as any as S.Schema<DeleteAgentSpaceOutput>,
   errors: [],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3279,8 +3279,8 @@ export const deleteApplication: API.OperationMethod<
   DeleteApplicationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(175, __c21, 7) as any as S.Schema<DeleteApplicationRequest>,
-  output: __S(157, __c19, 5) as any as S.Schema<DeleteApplicationResponse>,
+  input: __S(976, __c61, 0) as any as S.Schema<DeleteApplicationRequest>,
+  output: __S(752, __c47, 0) as any as S.Schema<DeleteApplicationResponse>,
   errors: [],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3303,8 +3303,8 @@ export const deleteArtifact: API.OperationMethod<
   DeleteArtifactError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(176, __c22, 0) as any as S.Schema<DeleteArtifactInput>,
-  output: __S(157, __c19, 5) as any as S.Schema<DeleteArtifactOutput>,
+  input: __S(992, __c62, 0) as any as S.Schema<DeleteArtifactInput>,
+  output: __S(752, __c47, 0) as any as S.Schema<DeleteArtifactOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -3334,8 +3334,8 @@ export const deleteIntegration: API.OperationMethod<
   DeleteIntegrationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(177, __c22, 1) as any as S.Schema<DeleteIntegrationInput>,
-  output: __S(157, __c19, 5) as any as S.Schema<DeleteIntegrationOutput>,
+  input: __S(1008, __c63, 0) as any as S.Schema<DeleteIntegrationInput>,
+  output: __S(752, __c47, 0) as any as S.Schema<DeleteIntegrationOutput>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -3359,8 +3359,8 @@ export const deleteMembership: API.OperationMethod<
   DeleteMembershipError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(178, __c22, 2) as any as S.Schema<DeleteMembershipRequest>,
-  output: __S(157, __c19, 5) as any as S.Schema<DeleteMembershipResponse>,
+  input: __S(1024, __c64, 0) as any as S.Schema<DeleteMembershipRequest>,
+  output: __S(752, __c47, 0) as any as S.Schema<DeleteMembershipResponse>,
   errors: [],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3384,8 +3384,8 @@ export const deletePrivateConnection: API.OperationMethod<
   DeletePrivateConnectionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(179, __c22, 3) as any as S.Schema<DeletePrivateConnectionInput>,
-  output: __S(164, __c20, 4) as any as S.Schema<DeletePrivateConnectionOutput>,
+  input: __S(1040, __c65, 0) as any as S.Schema<DeletePrivateConnectionInput>,
+  output: __S(832, __c52, 0) as any as S.Schema<DeletePrivateConnectionOutput>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -3416,8 +3416,8 @@ export const deleteSecurityRequirementPack: API.OperationMethod<
   DeleteSecurityRequirementPackError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(180, __c22, 4) as any as S.Schema<DeleteSecurityRequirementPackInput>,
-  output: __S(181, __c22, 5) as any as S.Schema<DeleteSecurityRequirementPackOutput>,
+  input: __S(1056, __c66, 0) as any as S.Schema<DeleteSecurityRequirementPackInput>,
+  output: __S(1057, __c66, 1) as any as S.Schema<DeleteSecurityRequirementPackOutput>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -3441,8 +3441,8 @@ export const deleteTargetDomain: API.OperationMethod<
   DeleteTargetDomainError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(182, __c22, 6) as any as S.Schema<DeleteTargetDomainInput>,
-  output: __S(183, __c22, 7) as any as S.Schema<DeleteTargetDomainOutput>,
+  input: __S(1072, __c67, 0) as any as S.Schema<DeleteTargetDomainInput>,
+  output: __S(1073, __c67, 1) as any as S.Schema<DeleteTargetDomainOutput>,
   errors: [],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3465,8 +3465,8 @@ export const describePrivateConnection: API.OperationMethod<
   DescribePrivateConnectionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(184, __c23, 0) as any as S.Schema<DescribePrivateConnectionInput>,
-  output: __S(164, __c20, 4) as any as S.Schema<DescribePrivateConnectionOutput>,
+  input: __S(1088, __c68, 0) as any as S.Schema<DescribePrivateConnectionInput>,
+  output: __S(832, __c52, 0) as any as S.Schema<DescribePrivateConnectionOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -3489,8 +3489,8 @@ export const getApplication: API.OperationMethod<
   GetApplicationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(185, __c23, 1) as any as S.Schema<GetApplicationRequest>,
-  output: __S(187, __c23, 3) as any as S.Schema<GetApplicationResponse>,
+  input: __S(1104, __c69, 0) as any as S.Schema<GetApplicationRequest>,
+  output: __S(1106, __c69, 2) as any as S.Schema<GetApplicationResponse>,
   errors: [],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3513,8 +3513,8 @@ export const getArtifact: API.OperationMethod<
   GetArtifactError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(188, __c23, 4) as any as S.Schema<GetArtifactInput>,
-  output: __S(190, __c23, 6) as any as S.Schema<GetArtifactOutput>,
+  input: __S(1120, __c70, 0) as any as S.Schema<GetArtifactInput>,
+  output: __S(1122, __c70, 2) as any as S.Schema<GetArtifactOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -3543,8 +3543,8 @@ export const getIntegration: API.OperationMethod<
   GetIntegrationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(191, __c23, 7) as any as S.Schema<GetIntegrationInput>,
-  output: __S(192, __c24, 0) as any as S.Schema<GetIntegrationOutput>,
+  input: __S(1136, __c71, 0) as any as S.Schema<GetIntegrationInput>,
+  output: __S(1137, __c71, 1) as any as S.Schema<GetIntegrationOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -3573,8 +3573,8 @@ export const getSecurityRequirementPack: API.OperationMethod<
   GetSecurityRequirementPackError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(193, __c24, 1) as any as S.Schema<GetSecurityRequirementPackInput>,
-  output: __S(194, __c24, 2) as any as S.Schema<GetSecurityRequirementPackOutput>,
+  input: __S(1152, __c72, 0) as any as S.Schema<GetSecurityRequirementPackInput>,
+  output: __S(1153, __c72, 1) as any as S.Schema<GetSecurityRequirementPackOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -3605,8 +3605,8 @@ export const importSecurityRequirements: API.OperationMethod<
   ImportSecurityRequirementsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(198, __c24, 6) as any as S.Schema<ImportSecurityRequirementsInput>,
-  output: __S(199, __c24, 7) as any as S.Schema<ImportSecurityRequirementsOutput>,
+  input: __S(1171, __c73, 3) as any as S.Schema<ImportSecurityRequirementsInput>,
+  output: __S(1172, __c73, 4) as any as S.Schema<ImportSecurityRequirementsOutput>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -3638,8 +3638,8 @@ export const initiateProviderRegistration: API.OperationMethod<
   InitiateProviderRegistrationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(200, __c25, 0) as any as S.Schema<InitiateProviderRegistrationInput>,
-  output: __S(201, __c25, 1) as any as S.Schema<InitiateProviderRegistrationOutput>,
+  input: __S(1184, __c74, 0) as any as S.Schema<InitiateProviderRegistrationInput>,
+  output: __S(1185, __c74, 1) as any as S.Schema<InitiateProviderRegistrationOutput>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -3664,8 +3664,8 @@ export const listActorMessages: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   ActorMessage
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(202, __c25, 2) as any as S.Schema<ListActorMessagesInput>,
-  output: __S(205, __c25, 5) as any as S.Schema<ListActorMessagesOutput>,
+  input: __S(1200, __c75, 0) as any as S.Schema<ListActorMessagesInput>,
+  output: __S(1203, __c75, 3) as any as S.Schema<ListActorMessagesOutput>,
   errors: [],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3689,8 +3689,8 @@ export const listAgentSpaces: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   AgentSpaceSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(206, __c25, 6) as any as S.Schema<ListAgentSpacesInput>,
-  output: __S(209, __c26, 1) as any as S.Schema<ListAgentSpacesOutput>,
+  input: __S(1216, __c76, 0) as any as S.Schema<ListAgentSpacesInput>,
+  output: __S(1219, __c76, 3) as any as S.Schema<ListAgentSpacesOutput>,
   errors: [],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3714,8 +3714,8 @@ export const listApplications: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   ApplicationSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(210, __c26, 2) as any as S.Schema<ListApplicationsRequest>,
-  output: __S(213, __c26, 5) as any as S.Schema<ListApplicationsResponse>,
+  input: __S(1232, __c77, 0) as any as S.Schema<ListApplicationsRequest>,
+  output: __S(1235, __c77, 3) as any as S.Schema<ListApplicationsResponse>,
   errors: [],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3745,8 +3745,8 @@ export const listArtifacts: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   ArtifactSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(214, __c26, 6) as any as S.Schema<ListArtifactsInput>,
-  output: __S(217, __c27, 1) as any as S.Schema<ListArtifactsOutput>,
+  input: __S(1248, __c78, 0) as any as S.Schema<ListArtifactsInput>,
+  output: __S(1251, __c78, 3) as any as S.Schema<ListArtifactsOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -3776,8 +3776,8 @@ export const listCodeReviewJobsForCodeReview: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   CodeReviewJobSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(218, __c27, 2) as any as S.Schema<ListCodeReviewJobsForCodeReviewInput>,
-  output: __S(221, __c27, 5) as any as S.Schema<ListCodeReviewJobsForCodeReviewOutput>,
+  input: __S(1264, __c79, 0) as any as S.Schema<ListCodeReviewJobsForCodeReviewInput>,
+  output: __S(1267, __c79, 3) as any as S.Schema<ListCodeReviewJobsForCodeReviewOutput>,
   errors: [],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3801,8 +3801,8 @@ export const listCodeReviewJobTasks: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   CodeReviewJobTaskSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(222, __c27, 6) as any as S.Schema<ListCodeReviewJobTasksInput>,
-  output: __S(225, __c28, 1) as any as S.Schema<ListCodeReviewJobTasksOutput>,
+  input: __S(1296, __c81, 0) as any as S.Schema<ListCodeReviewJobTasksInput>,
+  output: __S(1299, __c81, 3) as any as S.Schema<ListCodeReviewJobTasksOutput>,
   errors: [],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3826,8 +3826,8 @@ export const listCodeReviews: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   CodeReviewSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(226, __c28, 2) as any as S.Schema<ListCodeReviewsInput>,
-  output: __S(229, __c28, 5) as any as S.Schema<ListCodeReviewsOutput>,
+  input: __S(1312, __c82, 0) as any as S.Schema<ListCodeReviewsInput>,
+  output: __S(1315, __c82, 3) as any as S.Schema<ListCodeReviewsOutput>,
   errors: [],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3851,8 +3851,8 @@ export const listDiscoveredEndpoints: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   DiscoveredEndpoint
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(230, __c28, 6) as any as S.Schema<ListDiscoveredEndpointsInput>,
-  output: __S(233, __c29, 1) as any as S.Schema<ListDiscoveredEndpointsOutput>,
+  input: __S(1328, __c83, 0) as any as S.Schema<ListDiscoveredEndpointsInput>,
+  output: __S(1331, __c83, 3) as any as S.Schema<ListDiscoveredEndpointsOutput>,
   errors: [],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3876,8 +3876,8 @@ export const listFindings: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   FindingSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(234, __c29, 2) as any as S.Schema<ListFindingsInput>,
-  output: __S(237, __c29, 5) as any as S.Schema<ListFindingsOutput>,
+  input: __S(1344, __c84, 0) as any as S.Schema<ListFindingsInput>,
+  output: __S(1347, __c84, 3) as any as S.Schema<ListFindingsOutput>,
   errors: [],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3907,8 +3907,8 @@ export const listIntegratedResources: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   IntegratedResourceSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(238, __c29, 6) as any as S.Schema<ListIntegratedResourcesInput>,
-  output: __S(254, __c31, 6) as any as S.Schema<ListIntegratedResourcesOutput>,
+  input: __S(1360, __c85, 0) as any as S.Schema<ListIntegratedResourcesInput>,
+  output: __S(1369, __c85, 9) as any as S.Schema<ListIntegratedResourcesOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -3944,8 +3944,8 @@ export const listIntegrations: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   IntegrationSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(256, __c32, 0) as any as S.Schema<ListIntegrationsInput>,
-  output: __S(259, __c32, 3) as any as S.Schema<ListIntegrationsOutput>,
+  input: __S(1393, __c87, 1) as any as S.Schema<ListIntegrationsInput>,
+  output: __S(1396, __c87, 4) as any as S.Schema<ListIntegrationsOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -3975,8 +3975,8 @@ export const listMemberships: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   MembershipSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(260, __c32, 4) as any as S.Schema<ListMembershipsRequest>,
-  output: __S(265, __c33, 1) as any as S.Schema<ListMembershipsResponse>,
+  input: __S(1408, __c88, 0) as any as S.Schema<ListMembershipsRequest>,
+  output: __S(1413, __c88, 5) as any as S.Schema<ListMembershipsResponse>,
   errors: [],
   protocol: AwsProtocol,
   retry: Retry,
@@ -4000,8 +4000,8 @@ export const listPentestJobsForPentest: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   PentestJobSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(266, __c33, 2) as any as S.Schema<ListPentestJobsForPentestInput>,
-  output: __S(269, __c33, 5) as any as S.Schema<ListPentestJobsForPentestOutput>,
+  input: __S(1424, __c89, 0) as any as S.Schema<ListPentestJobsForPentestInput>,
+  output: __S(1427, __c89, 3) as any as S.Schema<ListPentestJobsForPentestOutput>,
   errors: [],
   protocol: AwsProtocol,
   retry: Retry,
@@ -4025,8 +4025,8 @@ export const listPentestJobTasks: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   TaskSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(270, __c33, 6) as any as S.Schema<ListPentestJobTasksInput>,
-  output: __S(273, __c34, 1) as any as S.Schema<ListPentestJobTasksOutput>,
+  input: __S(1440, __c90, 0) as any as S.Schema<ListPentestJobTasksInput>,
+  output: __S(1443, __c90, 3) as any as S.Schema<ListPentestJobTasksOutput>,
   errors: [],
   protocol: AwsProtocol,
   retry: Retry,
@@ -4050,8 +4050,8 @@ export const listPentests: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   PentestSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(274, __c34, 2) as any as S.Schema<ListPentestsInput>,
-  output: __S(277, __c34, 5) as any as S.Schema<ListPentestsOutput>,
+  input: __S(1456, __c91, 0) as any as S.Schema<ListPentestsInput>,
+  output: __S(1459, __c91, 3) as any as S.Schema<ListPentestsOutput>,
   errors: [],
   protocol: AwsProtocol,
   retry: Retry,
@@ -4080,8 +4080,8 @@ export const listPrivateConnections: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   PrivateConnectionSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(278, __c34, 6) as any as S.Schema<ListPrivateConnectionsInput>,
-  output: __S(281, __c35, 1) as any as S.Schema<ListPrivateConnectionsOutput>,
+  input: __S(1504, __c94, 0) as any as S.Schema<ListPrivateConnectionsInput>,
+  output: __S(1507, __c94, 3) as any as S.Schema<ListPrivateConnectionsOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -4115,8 +4115,8 @@ export const listSecurityRequirementPacks: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   SecurityRequirementPackSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(283, __c35, 3) as any as S.Schema<ListSecurityRequirementPacksInput>,
-  output: __S(286, __c35, 6) as any as S.Schema<ListSecurityRequirementPacksOutput>,
+  input: __S(1521, __c95, 1) as any as S.Schema<ListSecurityRequirementPacksInput>,
+  output: __S(1524, __c95, 4) as any as S.Schema<ListSecurityRequirementPacksOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -4151,8 +4151,8 @@ export const listSecurityRequirements: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   SecurityRequirementSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(287, __c35, 7) as any as S.Schema<ListSecurityRequirementsInput>,
-  output: __S(290, __c36, 2) as any as S.Schema<ListSecurityRequirementsOutput>,
+  input: __S(1536, __c96, 0) as any as S.Schema<ListSecurityRequirementsInput>,
+  output: __S(1539, __c96, 3) as any as S.Schema<ListSecurityRequirementsOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -4181,8 +4181,8 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(291, __c36, 3) as any as S.Schema<ListTagsForResourceInput>,
-  output: __S(292, __c36, 4) as any as S.Schema<ListTagsForResourceOutput>,
+  input: __S(1552, __c97, 0) as any as S.Schema<ListTagsForResourceInput>,
+  output: __S(1553, __c97, 1) as any as S.Schema<ListTagsForResourceOutput>,
   errors: [],
   protocol: AwsProtocol,
   retry: Retry,
@@ -4200,8 +4200,8 @@ export const listTargetDomains: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   TargetDomainSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(293, __c36, 5) as any as S.Schema<ListTargetDomainsInput>,
-  output: __S(296, __c37, 0) as any as S.Schema<ListTargetDomainsOutput>,
+  input: __S(1568, __c98, 0) as any as S.Schema<ListTargetDomainsInput>,
+  output: __S(1571, __c98, 3) as any as S.Schema<ListTargetDomainsOutput>,
   errors: [],
   protocol: AwsProtocol,
   retry: Retry,
@@ -4225,8 +4225,8 @@ export const listThreatModelJobs: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   ThreatModelJobSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(297, __c37, 1) as any as S.Schema<ListThreatModelJobsInput>,
-  output: __S(300, __c37, 4) as any as S.Schema<ListThreatModelJobsOutput>,
+  input: __S(1584, __c99, 0) as any as S.Schema<ListThreatModelJobsInput>,
+  output: __S(1587, __c99, 3) as any as S.Schema<ListThreatModelJobsOutput>,
   errors: [],
   protocol: AwsProtocol,
   retry: Retry,
@@ -4250,8 +4250,8 @@ export const listThreatModelJobTasks: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   ThreatModelJobTaskSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(301, __c37, 5) as any as S.Schema<ListThreatModelJobTasksInput>,
-  output: __S(304, __c38, 0) as any as S.Schema<ListThreatModelJobTasksOutput>,
+  input: __S(1600, __c100, 0) as any as S.Schema<ListThreatModelJobTasksInput>,
+  output: __S(1603, __c100, 3) as any as S.Schema<ListThreatModelJobTasksOutput>,
   errors: [],
   protocol: AwsProtocol,
   retry: Retry,
@@ -4275,8 +4275,8 @@ export const listThreatModels: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   ThreatModelSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(305, __c38, 1) as any as S.Schema<ListThreatModelsInput>,
-  output: __S(308, __c38, 4) as any as S.Schema<ListThreatModelsOutput>,
+  input: __S(1616, __c101, 0) as any as S.Schema<ListThreatModelsInput>,
+  output: __S(1619, __c101, 3) as any as S.Schema<ListThreatModelsOutput>,
   errors: [],
   protocol: AwsProtocol,
   retry: Retry,
@@ -4300,8 +4300,8 @@ export const listThreats: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   ThreatSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(309, __c38, 5) as any as S.Schema<ListThreatsInput>,
-  output: __S(312, __c39, 0) as any as S.Schema<ListThreatsOutput>,
+  input: __S(1632, __c102, 0) as any as S.Schema<ListThreatsInput>,
+  output: __S(1635, __c102, 3) as any as S.Schema<ListThreatsOutput>,
   errors: [],
   protocol: AwsProtocol,
   retry: Retry,
@@ -4324,8 +4324,8 @@ export const startCodeRemediation: API.OperationMethod<
   StartCodeRemediationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(313, __c39, 1) as any as S.Schema<StartCodeRemediationInput>,
-  output: __S(157, __c19, 5) as any as S.Schema<StartCodeRemediationOutput>,
+  input: __S(1648, __c103, 0) as any as S.Schema<StartCodeRemediationInput>,
+  output: __S(752, __c47, 0) as any as S.Schema<StartCodeRemediationOutput>,
   errors: [],
   protocol: AwsProtocol,
   retry: Retry,
@@ -4342,8 +4342,8 @@ export const startCodeReviewJob: API.OperationMethod<
   StartCodeReviewJobError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(315, __c39, 3) as any as S.Schema<StartCodeReviewJobInput>,
-  output: __S(316, __c39, 4) as any as S.Schema<StartCodeReviewJobOutput>,
+  input: __S(1713, __c107, 1) as any as S.Schema<StartCodeReviewJobInput>,
+  output: __S(1714, __c107, 2) as any as S.Schema<StartCodeReviewJobOutput>,
   errors: [],
   protocol: AwsProtocol,
   retry: Retry,
@@ -4360,8 +4360,8 @@ export const startPentestJob: API.OperationMethod<
   StartPentestJobError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(317, __c39, 5) as any as S.Schema<StartPentestJobInput>,
-  output: __S(318, __c39, 6) as any as S.Schema<StartPentestJobOutput>,
+  input: __S(1728, __c108, 0) as any as S.Schema<StartPentestJobInput>,
+  output: __S(1729, __c108, 1) as any as S.Schema<StartPentestJobOutput>,
   errors: [],
   protocol: AwsProtocol,
   retry: Retry,
@@ -4378,8 +4378,8 @@ export const startThreatModelJob: API.OperationMethod<
   StartThreatModelJobError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(319, __c39, 7) as any as S.Schema<StartThreatModelJobInput>,
-  output: __S(320, __c40, 0) as any as S.Schema<StartThreatModelJobOutput>,
+  input: __S(1744, __c109, 0) as any as S.Schema<StartThreatModelJobInput>,
+  output: __S(1745, __c109, 1) as any as S.Schema<StartThreatModelJobOutput>,
   errors: [],
   protocol: AwsProtocol,
   retry: Retry,
@@ -4396,8 +4396,8 @@ export const stopCodeReviewJob: API.OperationMethod<
   StopCodeReviewJobError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(321, __c40, 1) as any as S.Schema<StopCodeReviewJobInput>,
-  output: __S(157, __c19, 5) as any as S.Schema<StopCodeReviewJobOutput>,
+  input: __S(1760, __c110, 0) as any as S.Schema<StopCodeReviewJobInput>,
+  output: __S(752, __c47, 0) as any as S.Schema<StopCodeReviewJobOutput>,
   errors: [],
   protocol: AwsProtocol,
   retry: Retry,
@@ -4414,8 +4414,8 @@ export const stopPentestJob: API.OperationMethod<
   StopPentestJobError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(322, __c40, 2) as any as S.Schema<StopPentestJobInput>,
-  output: __S(157, __c19, 5) as any as S.Schema<StopPentestJobOutput>,
+  input: __S(1776, __c111, 0) as any as S.Schema<StopPentestJobInput>,
+  output: __S(752, __c47, 0) as any as S.Schema<StopPentestJobOutput>,
   errors: [],
   protocol: AwsProtocol,
   retry: Retry,
@@ -4432,8 +4432,8 @@ export const stopThreatModelJob: API.OperationMethod<
   StopThreatModelJobError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(323, __c40, 3) as any as S.Schema<StopThreatModelJobInput>,
-  output: __S(157, __c19, 5) as any as S.Schema<StopThreatModelJobOutput>,
+  input: __S(1792, __c112, 0) as any as S.Schema<StopThreatModelJobInput>,
+  output: __S(752, __c47, 0) as any as S.Schema<StopThreatModelJobOutput>,
   errors: [],
   protocol: AwsProtocol,
   retry: Retry,
@@ -4450,8 +4450,8 @@ export const tagResource: API.OperationMethod<
   TagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(324, __c40, 4) as any as S.Schema<TagResourceInput>,
-  output: __S(157, __c19, 5) as any as S.Schema<TagResourceOutput>,
+  input: __S(1808, __c113, 0) as any as S.Schema<TagResourceInput>,
+  output: __S(752, __c47, 0) as any as S.Schema<TagResourceOutput>,
   errors: [],
   protocol: AwsProtocol,
   retry: Retry,
@@ -4468,8 +4468,8 @@ export const untagResource: API.OperationMethod<
   UntagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(325, __c40, 5) as any as S.Schema<UntagResourceInput>,
-  output: __S(157, __c19, 5) as any as S.Schema<UntagResourceOutput>,
+  input: __S(1824, __c114, 0) as any as S.Schema<UntagResourceInput>,
+  output: __S(752, __c47, 0) as any as S.Schema<UntagResourceOutput>,
   errors: [],
   protocol: AwsProtocol,
   retry: Retry,
@@ -4486,8 +4486,8 @@ export const updateAgentSpace: API.OperationMethod<
   UpdateAgentSpaceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(326, __c40, 6) as any as S.Schema<UpdateAgentSpaceInput>,
-  output: __S(327, __c40, 7) as any as S.Schema<UpdateAgentSpaceOutput>,
+  input: __S(1840, __c115, 0) as any as S.Schema<UpdateAgentSpaceInput>,
+  output: __S(1841, __c115, 1) as any as S.Schema<UpdateAgentSpaceOutput>,
   errors: [],
   protocol: AwsProtocol,
   retry: Retry,
@@ -4504,8 +4504,8 @@ export const updateApplication: API.OperationMethod<
   UpdateApplicationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(328, __c41, 0) as any as S.Schema<UpdateApplicationRequest>,
-  output: __S(142, __c17, 6) as any as S.Schema<UpdateApplicationResponse>,
+  input: __S(1856, __c116, 0) as any as S.Schema<UpdateApplicationRequest>,
+  output: __S(672, __c42, 0) as any as S.Schema<UpdateApplicationResponse>,
   errors: [],
   protocol: AwsProtocol,
   retry: Retry,
@@ -4522,8 +4522,8 @@ export const updateCodeReview: API.OperationMethod<
   UpdateCodeReviewError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(329, __c41, 1) as any as S.Schema<UpdateCodeReviewInput>,
-  output: __S(144, __c18, 0) as any as S.Schema<UpdateCodeReviewOutput>,
+  input: __S(1904, __c119, 0) as any as S.Schema<UpdateCodeReviewInput>,
+  output: __S(704, __c44, 0) as any as S.Schema<UpdateCodeReviewOutput>,
   errors: [],
   protocol: AwsProtocol,
   retry: Retry,
@@ -4540,8 +4540,8 @@ export const updateFinding: API.OperationMethod<
   UpdateFindingError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(330, __c41, 2) as any as S.Schema<UpdateFindingInput>,
-  output: __S(157, __c19, 5) as any as S.Schema<UpdateFindingOutput>,
+  input: __S(1920, __c120, 0) as any as S.Schema<UpdateFindingInput>,
+  output: __S(752, __c47, 0) as any as S.Schema<UpdateFindingOutput>,
   errors: [],
   protocol: AwsProtocol,
   retry: Retry,
@@ -4565,8 +4565,8 @@ export const updateIntegratedResources: API.OperationMethod<
   UpdateIntegratedResourcesError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(339, __c42, 3) as any as S.Schema<UpdateIntegratedResourcesInput>,
-  output: __S(340, __c42, 4) as any as S.Schema<UpdateIntegratedResourcesOutput>,
+  input: __S(1944, __c121, 8) as any as S.Schema<UpdateIntegratedResourcesInput>,
+  output: __S(1945, __c121, 9) as any as S.Schema<UpdateIntegratedResourcesOutput>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -4597,8 +4597,8 @@ export const updateIntegration: API.OperationMethod<
   UpdateIntegrationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(341, __c42, 5) as any as S.Schema<UpdateIntegrationInput>,
-  output: __S(342, __c42, 6) as any as S.Schema<UpdateIntegrationOutput>,
+  input: __S(1952, __c122, 0) as any as S.Schema<UpdateIntegrationInput>,
+  output: __S(1953, __c122, 1) as any as S.Schema<UpdateIntegrationOutput>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -4622,8 +4622,8 @@ export const updatePentest: API.OperationMethod<
   UpdatePentestError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(343, __c42, 7) as any as S.Schema<UpdatePentestInput>,
-  output: __S(159, __c19, 7) as any as S.Schema<UpdatePentestOutput>,
+  input: __S(1968, __c123, 0) as any as S.Schema<UpdatePentestInput>,
+  output: __S(800, __c50, 0) as any as S.Schema<UpdatePentestOutput>,
   errors: [],
   protocol: AwsProtocol,
   retry: Retry,
@@ -4647,8 +4647,8 @@ export const updatePrivateConnectionCertificate: API.OperationMethod<
   UpdatePrivateConnectionCertificateError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(344, __c43, 0) as any as S.Schema<UpdatePrivateConnectionCertificateInput>,
-  output: __S(164, __c20, 4) as any as S.Schema<UpdatePrivateConnectionCertificateOutput>,
+  input: __S(1984, __c124, 0) as any as S.Schema<UpdatePrivateConnectionCertificateInput>,
+  output: __S(832, __c52, 0) as any as S.Schema<UpdatePrivateConnectionCertificateOutput>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -4679,8 +4679,8 @@ export const updateSecurityRequirementPack: API.OperationMethod<
   UpdateSecurityRequirementPackError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(345, __c43, 1) as any as S.Schema<UpdateSecurityRequirementPackInput>,
-  output: __S(346, __c43, 2) as any as S.Schema<UpdateSecurityRequirementPackOutput>,
+  input: __S(2000, __c125, 0) as any as S.Schema<UpdateSecurityRequirementPackInput>,
+  output: __S(2001, __c125, 1) as any as S.Schema<UpdateSecurityRequirementPackOutput>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -4704,8 +4704,8 @@ export const updateTargetDomain: API.OperationMethod<
   UpdateTargetDomainError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(347, __c43, 3) as any as S.Schema<UpdateTargetDomainInput>,
-  output: __S(168, __c21, 0) as any as S.Schema<UpdateTargetDomainOutput>,
+  input: __S(2016, __c126, 0) as any as S.Schema<UpdateTargetDomainInput>,
+  output: __S(880, __c55, 0) as any as S.Schema<UpdateTargetDomainOutput>,
   errors: [],
   protocol: AwsProtocol,
   retry: Retry,
@@ -4722,8 +4722,8 @@ export const updateThreat: API.OperationMethod<
   UpdateThreatError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(348, __c43, 4) as any as S.Schema<UpdateThreatInput>,
-  output: __S(170, __c21, 2) as any as S.Schema<UpdateThreatOutput>,
+  input: __S(2032, __c127, 0) as any as S.Schema<UpdateThreatInput>,
+  output: __S(912, __c57, 0) as any as S.Schema<UpdateThreatOutput>,
   errors: [],
   protocol: AwsProtocol,
   retry: Retry,
@@ -4740,8 +4740,8 @@ export const updateThreatModel: API.OperationMethod<
   UpdateThreatModelError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(349, __c43, 5) as any as S.Schema<UpdateThreatModelInput>,
-  output: __S(172, __c21, 4) as any as S.Schema<UpdateThreatModelOutput>,
+  input: __S(2048, __c128, 0) as any as S.Schema<UpdateThreatModelInput>,
+  output: __S(944, __c59, 0) as any as S.Schema<UpdateThreatModelOutput>,
   errors: [],
   protocol: AwsProtocol,
   retry: Retry,
@@ -4758,8 +4758,8 @@ export const verifyTargetDomain: API.OperationMethod<
   VerifyTargetDomainError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(350, __c43, 6) as any as S.Schema<VerifyTargetDomainInput>,
-  output: __S(351, __c43, 7) as any as S.Schema<VerifyTargetDomainOutput>,
+  input: __S(176, __c11, 0) as any as S.Schema<VerifyTargetDomainInput>,
+  output: __S(177, __c11, 1) as any as S.Schema<VerifyTargetDomainOutput>,
   errors: [],
   protocol: AwsProtocol,
   retry: Retry,
@@ -4771,124 +4771,7 @@ function __c0(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({
-          agentSpaceId: S.String,
-          artifactContent: T.Blob,
-          artifactType: S.String,
-          fileName: S.String,
-        }).pipe(
-          T.all(T.Http({ method: "POST", uri: "/AddArtifact" }), svc, auth, proto, ver, rules),
-        ),
-      ).annotate({ identifier: "AddArtifactInput" });
-    case 1:
-      return S.suspend(() => S.Struct({ artifactId: S.String })).annotate({
-        identifier: "AddArtifactOutput",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String,
-          description: S.String,
-          domain: S.String,
-          evaluation: S.String,
-          remediation: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "CreateSecurityRequirementEntry",
-      });
-    case 3:
-      return S.Array(__S(2, __c0, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          packId: S.String,
-          securityRequirements: __S(3, __c0, 3),
-        }).pipe(
-          T.all(
-            T.Http({ method: "POST", uri: "/BatchCreateSecurityRequirements" }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({
-        identifier: "BatchCreateSecurityRequirementsInput",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          packId: S.String,
-          name: S.String,
-          description: S.String,
-          domain: S.String,
-          evaluation: S.String,
-          remediation: S.optional(S.String),
-          createdAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
-          updatedAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
-        }),
-      ).annotate({
-        identifier: "BatchCreateSecurityRequirementResult",
-      });
-    case 6:
-      return S.Array(__S(5, __c0, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({ securityRequirementName: S.String, code: S.String, message: S.String }),
-      ).annotate({
-        identifier: "BatchSecurityRequirementError",
-      });
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(7, __c0, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          securityRequirements: __S(6, __c0, 6),
-          errors: __S(8, __c1, 0),
-        }),
-      ).annotate({
-        identifier: "BatchCreateSecurityRequirementsOutput",
-      });
-    case 2:
-      return S.Array(S.String);
-    case 3:
-      return S.suspend(() =>
-        S.Struct({ codeReviewIds: __S(10, __c1, 2), agentSpaceId: S.String }).pipe(
-          T.all(
-            T.Http({ method: "POST", uri: "/BatchDeleteCodeReviews" }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({
-        identifier: "BatchDeleteCodeReviewsInput",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({ codeReviewId: S.optional(S.String), reason: S.optional(S.String) }),
-      ).annotate({ identifier: "DeleteCodeReviewFailure" });
-    case 5:
-      return S.Array(__S(12, __c1, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          deleted: S.optional(__S(10, __c1, 2)),
-          failed: S.optional(__S(13, __c1, 5)),
-        }),
-      ).annotate({
-        identifier: "BatchDeleteCodeReviewsOutput",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({ pentestIds: __S(10, __c1, 2), agentSpaceId: S.String }).pipe(
+        S.Struct({ pentestIds: __S(1888, __c118, 0), agentSpaceId: S.String }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/BatchDeletePentests" }),
             svc,
@@ -4899,61 +4782,63 @@ function __c1(j: number): any {
           ),
         ),
       ).annotate({ identifier: "BatchDeletePentestsInput" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({ pentestId: S.optional(S.String), reason: S.optional(S.String) }),
+      ).annotate({ identifier: "DeletePentestFailure" });
+    case 2:
+      return S.Array(__S(1, __c0, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({ deleted: S.optional(__S(161, __c10, 1)), failed: S.optional(__S(2, __c0, 2)) }),
+      ).annotate({
+        identifier: "BatchDeletePentestsOutput",
+      });
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          vpcArn: S.optional(S.String),
+          securityGroupArns: S.optional(__S(1888, __c118, 0)),
+          subnetArns: S.optional(__S(1888, __c118, 0)),
+        }),
+      ).annotate({ identifier: "VpcConfig" });
   }
 }
 function __c2(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => S.Struct({ uri: S.optional(S.String) })).annotate({
-        identifier: "Endpoint",
-      });
-    case 1:
-      return S.Array(Endpoint);
-    case 2:
       return S.suspend(() =>
-        S.Struct({
-          providerType: S.optional(S.String),
-          value: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Authentication" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          identifier: S.optional(S.String),
-          uris: S.optional(__S(10, __c1, 2)),
-          authentication: S.optional(__S(18, __c2, 2)),
-          description: S.optional(S.String),
-          enableEmailMfa: S.optional(S.Boolean),
-          mfaForwardingAddress: S.optional(SensitiveString),
-        }),
-      ).annotate({ identifier: "Actor" });
-    case 4:
-      return S.Array(__S(19, __c2, 3));
-    case 5:
-      return S.suspend(() => S.Struct({ integrationId: S.String, resourceId: S.String })).annotate({
-        identifier: "IntegratedDocument",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          s3Location: S.optional(S.String),
-          artifactId: S.optional(S.String),
-          integratedDocument: S.optional(__S(21, __c2, 5)),
-        }),
-      ).annotate({ identifier: "DocumentInfo" });
-    case 7:
-      return S.Array(__S(22, __c2, 6));
+        S.Struct({ logGroup: S.optional(S.String), logStream: S.optional(S.String) }),
+      ).annotate({ identifier: "CloudWatchLog" });
   }
 }
 function __c3(j: number): any {
   switch (j) {
     case 0:
+      return S.suspend(() => S.Struct({ integrationId: S.String, resourceId: S.String })).annotate({
+        identifier: "IntegratedDocument",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          s3Location: S.optional(S.String),
+          artifactId: S.optional(S.String),
+          integratedDocument: S.optional(__S(48, __c3, 0)),
+        }),
+      ).annotate({ identifier: "DocumentInfo" });
+    case 2:
+      return S.Array(__S(49, __c3, 1));
+    case 3:
       return S.suspend(() => S.Struct({ s3Location: S.optional(S.String) })).annotate({
         identifier: "SourceCodeRepository",
       });
-    case 1:
-      return S.Array(__S(24, __c3, 0));
-    case 2:
+    case 4:
+      return S.Array(__S(51, __c3, 3));
+    case 5:
       return S.suspend(() =>
         S.Struct({
           integrationId: S.String,
@@ -4961,77 +4846,9 @@ function __c3(j: number): any {
           branch: S.optional(S.String),
         }),
       ).annotate({ identifier: "IntegratedRepository" });
-    case 3:
-      return S.Array(__S(26, __c3, 2));
-    case 4:
-      return S.Union([
-        /*@__PURE__*/ S.Struct({ inlinePem: SensitiveString }),
-        /*@__PURE__*/ S.Struct({ artifactId: S.String }),
-        /*@__PURE__*/ S.Struct({ s3Location: S.String }),
-      ]);
-    case 5:
-      return S.suspend(() => S.Struct({ source: __S(28, __c3, 4) })).annotate({
-        identifier: "TrustedCaCertificate",
-      });
     case 6:
-      return S.Array(__S(29, __c3, 5));
+      return S.Array(__S(53, __c3, 5));
     case 7:
-      return S.suspend(() =>
-        S.Struct({
-          endpoints: S.optional(__S(17, __c2, 1)),
-          actors: S.optional(__S(20, __c2, 4)),
-          documents: S.optional(__S(23, __c2, 7)),
-          sourceCode: S.optional(__S(25, __c3, 1)),
-          integratedRepositories: S.optional(__S(27, __c3, 3)),
-          trustedCaCertificates: S.optional(__S(30, __c3, 6)),
-        }),
-      ).annotate({ identifier: "Assets" });
-  }
-}
-function __c4(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(S.String);
-    case 1:
-      return S.suspend(() =>
-        S.Struct({ logGroup: S.optional(S.String), logStream: S.optional(S.String) }),
-      ).annotate({ identifier: "CloudWatchLog" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          vpcArn: S.optional(S.String),
-          securityGroupArns: S.optional(__S(10, __c1, 2)),
-          subnetArns: S.optional(__S(10, __c1, 2)),
-        }),
-      ).annotate({ identifier: "VpcConfig" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          effect: S.optional(S.String),
-          pattern: S.optional(S.String),
-          networkTrafficRuleType: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "NetworkTrafficRule" });
-    case 4:
-      return S.Array(__S(35, __c4, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({ name: S.optional(S.String), value: S.optional(S.String) }),
-      ).annotate({ identifier: "CustomHeader" });
-    case 6:
-      return S.Array(__S(37, __c4, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          rules: S.optional(__S(36, __c4, 4)),
-          customHeaders: S.optional(__S(38, __c4, 6)),
-        }),
-      ).annotate({ identifier: "NetworkTrafficConfig" });
-  }
-}
-function __c5(j: number): any {
-  switch (j) {
-    case 0:
       return S.suspend(() =>
         S.Struct({
           integrationId: S.String,
@@ -5040,70 +4857,179 @@ function __c5(j: number): any {
           documentId: S.optional(S.String),
         }),
       ).annotate({ identifier: "ReportDestination" });
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(Endpoint);
     case 1:
       return S.suspend(() =>
-        S.Struct({
-          riskLevels: S.optional(__S(32, __c4, 0)),
-          confidenceLevels: S.optional(__S(32, __c4, 0)),
-          statuses: S.optional(__S(32, __c4, 0)),
-          riskTypes: S.optional(__S(32, __c4, 0)),
-          findingTypes: S.optional(__S(10, __c1, 2)),
-          taskStatuses: S.optional(__S(32, __c4, 0)),
-          annotationNotes: S.optional(S.Boolean),
-          complianceReport: S.optional(S.Boolean),
-        }),
-      ).annotate({ identifier: "ReportFilters" });
+        S.Struct({ providerType: S.optional(S.String), value: S.optional(S.String) }),
+      ).annotate({ identifier: "Authentication" });
     case 2:
-      return S.suspend(() => S.Struct({ enabled: S.optional(S.Boolean) })).annotate({
-        identifier: "CiCdConfiguration",
-      });
+      return S.suspend(() =>
+        S.Struct({
+          identifier: S.optional(S.String),
+          uris: S.optional(__S(1888, __c118, 0)),
+          authentication: S.optional(__S(65, __c4, 1)),
+          description: S.optional(S.String),
+          enableEmailMfa: S.optional(S.Boolean),
+          mfaForwardingAddress: S.optional(SensitiveString),
+        }),
+      ).annotate({ identifier: "Actor" });
     case 3:
-      return S.suspend(() =>
-        S.Struct({
-          pentestId: S.String,
-          agentSpaceId: S.String,
-          title: S.String,
-          assets: __S(31, __c3, 7),
-          excludeRiskTypes: S.optional(__S(32, __c4, 0)),
-          serviceRole: S.optional(S.String),
-          logConfig: S.optional(__S(33, __c4, 1)),
-          vpcConfig: S.optional(__S(34, __c4, 2)),
-          networkTrafficConfig: S.optional(__S(39, __c4, 7)),
-          codeRemediationStrategy: S.optional(S.String),
-          cleanUpStrategy: S.optional(S.String),
-          disableManagedSkills: S.optional(__S(32, __c4, 0)),
-          maxTaskHours: S.optional(S.Number),
-          reportDestination: S.optional(__S(40, __c5, 0)),
-          reportFilters: S.optional(__S(41, __c5, 1)),
-          cicdConfiguration: S.optional(__S(42, __c5, 2)),
-          createdAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-          updatedAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-        }),
-      ).annotate({ identifier: "Pentest" });
+      return S.Array(__S(66, __c4, 2));
     case 4:
-      return S.Array(__S(43, __c5, 3));
+      return S.Union([
+        /*@__PURE__*/ S.Struct({ inlinePem: SensitiveString }),
+        /*@__PURE__*/ S.Struct({ artifactId: S.String }),
+        /*@__PURE__*/ S.Struct({ s3Location: S.String }),
+      ]);
     case 5:
-      return S.suspend(() =>
-        S.Struct({ pentestId: S.optional(S.String), reason: S.optional(S.String) }),
-      ).annotate({ identifier: "DeletePentestFailure" });
-    case 6:
-      return S.Array(__S(45, __c5, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          deleted: S.optional(__S(44, __c5, 4)),
-          failed: S.optional(__S(46, __c5, 6)),
-        }),
-      ).annotate({
-        identifier: "BatchDeletePentestsOutput",
+      return S.suspend(() => S.Struct({ source: __S(68, __c4, 4) })).annotate({
+        identifier: "TrustedCaCertificate",
       });
+    case 6:
+      return S.Array(__S(69, __c4, 5));
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
   }
 }
 function __c6(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({ packId: S.String, securityRequirementNames: __S(10, __c1, 2) }).pipe(
+        S.Struct({
+          endpoints: S.optional(__S(64, __c4, 0)),
+          actors: S.optional(__S(67, __c4, 3)),
+          documents: S.optional(__S(50, __c3, 2)),
+          sourceCode: S.optional(__S(52, __c3, 4)),
+          integratedRepositories: S.optional(__S(54, __c3, 6)),
+          trustedCaCertificates: S.optional(__S(70, __c4, 6)),
+        }),
+      ).annotate({ identifier: "Assets" });
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          riskLevels: S.optional(__S(80, __c5, 0)),
+          confidenceLevels: S.optional(__S(80, __c5, 0)),
+          statuses: S.optional(__S(80, __c5, 0)),
+          riskTypes: S.optional(__S(80, __c5, 0)),
+          findingTypes: S.optional(__S(1888, __c118, 0)),
+          taskStatuses: S.optional(__S(80, __c5, 0)),
+          annotationNotes: S.optional(S.Boolean),
+          complianceReport: S.optional(S.Boolean),
+        }),
+      ).annotate({ identifier: "ReportFilters" });
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ name: S.optional(S.String), value: S.optional(S.String) }),
+      ).annotate({ identifier: "CustomHeader" });
+    case 1:
+      return S.Array(__S(128, __c8, 0));
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          effect: S.optional(S.String),
+          pattern: S.optional(S.String),
+          networkTrafficRuleType: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "NetworkTrafficRule" });
+    case 1:
+      return S.Array(__S(144, __c9, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          rules: S.optional(__S(145, __c9, 1)),
+          customHeaders: S.optional(__S(129, __c8, 1)),
+        }),
+      ).annotate({ identifier: "NetworkTrafficConfig" });
+    case 3:
+      return S.suspend(() => S.Struct({ enabled: S.optional(S.Boolean) })).annotate({
+        identifier: "CiCdConfiguration",
+      });
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          pentestId: S.String,
+          agentSpaceId: S.String,
+          title: S.String,
+          assets: __S(96, __c6, 0),
+          excludeRiskTypes: S.optional(__S(80, __c5, 0)),
+          serviceRole: S.optional(S.String),
+          logConfig: S.optional(__S(32, __c2, 0)),
+          vpcConfig: S.optional(__S(16, __c1, 0)),
+          networkTrafficConfig: S.optional(__S(146, __c9, 2)),
+          codeRemediationStrategy: S.optional(S.String),
+          cleanUpStrategy: S.optional(S.String),
+          disableManagedSkills: S.optional(__S(80, __c5, 0)),
+          maxTaskHours: S.optional(S.Number),
+          reportDestination: S.optional(__S(55, __c3, 7)),
+          reportFilters: S.optional(__S(112, __c7, 0)),
+          cicdConfiguration: S.optional(__S(147, __c9, 3)),
+          createdAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
+          updatedAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
+        }),
+      ).annotate({ identifier: "Pentest" });
+    case 1:
+      return S.Array(__S(160, __c10, 0));
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ targetDomainId: S.String }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/VerifyTargetDomain" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "VerifyTargetDomainInput" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          targetDomainId: S.optional(S.String),
+          domainName: S.optional(S.String),
+          createdAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
+          updatedAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
+          verifiedAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
+          status: S.optional(S.String),
+          verificationStatusReason: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "VerifyTargetDomainOutput" });
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ packId: S.String, securityRequirementNames: __S(1888, __c118, 0) }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/BatchDeleteSecurityRequirements" }),
             svc,
@@ -5119,15 +5045,19 @@ function __c6(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          deletedSecurityRequirementNames: __S(10, __c1, 2),
-          errors: __S(8, __c1, 0),
+          deletedSecurityRequirementNames: __S(1888, __c118, 0),
+          errors: __S(1681, __c105, 1),
         }),
       ).annotate({
         identifier: "BatchDeleteSecurityRequirementsOutput",
       });
-    case 2:
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
-        S.Struct({ threatModelIds: __S(10, __c1, 2), agentSpaceId: S.String }).pipe(
+        S.Struct({ threatModelIds: __S(1888, __c118, 0), agentSpaceId: S.String }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/BatchDeleteThreatModels" }),
             svc,
@@ -5140,24 +5070,28 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "BatchDeleteThreatModelsInput",
       });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({ threatModelId: S.optional(S.String), reason: S.optional(S.String) }),
       ).annotate({ identifier: "DeleteThreatModelFailure" });
-    case 4:
-      return S.Array(__S(51, __c6, 3));
-    case 5:
+    case 2:
+      return S.Array(__S(209, __c13, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          deleted: S.optional(__S(10, __c1, 2)),
-          failed: S.optional(__S(52, __c6, 4)),
+          deleted: S.optional(__S(1888, __c118, 0)),
+          failed: S.optional(__S(210, __c13, 2)),
         }),
       ).annotate({
         identifier: "BatchDeleteThreatModelsOutput",
       });
-    case 6:
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
-        S.Struct({ agentSpaceIds: __S(10, __c1, 2) }).pipe(
+        S.Struct({ agentSpaceIds: __S(1888, __c118, 0) }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/BatchGetAgentSpaces" }),
             svc,
@@ -5168,55 +5102,63 @@ function __c6(j: number): any {
           ),
         ),
       ).annotate({ identifier: "BatchGetAgentSpacesInput" });
-    case 7:
-      return S.Array(__S(34, __c4, 2));
-  }
-}
-function __c7(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
+      return S.Array(__S(240, __c15, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          vpcs: S.optional(__S(55, __c6, 7)),
-          logGroups: S.optional(__S(10, __c1, 2)),
-          s3Buckets: S.optional(__S(10, __c1, 2)),
-          secretArns: S.optional(__S(10, __c1, 2)),
-          lambdaFunctionArns: S.optional(__S(10, __c1, 2)),
-          iamRoles: S.optional(__S(10, __c1, 2)),
+          agentSpaces: S.optional(__S(225, __c14, 1)),
+          notFound: S.optional(__S(1888, __c118, 0)),
         }),
-      ).annotate({ identifier: "AWSResources" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({ controlsScanning: S.Boolean, generalPurposeScanning: S.Boolean }),
-      ).annotate({ identifier: "CodeReviewSettings" });
-    case 2:
+      ).annotate({
+        identifier: "BatchGetAgentSpacesOutput",
+      });
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           agentSpaceId: S.String,
           name: S.String,
           description: S.optional(S.String),
-          awsResources: S.optional(__S(56, __c7, 0)),
-          targetDomainIds: S.optional(__S(10, __c1, 2)),
-          codeReviewSettings: S.optional(__S(57, __c7, 1)),
+          awsResources: S.optional(__S(257, __c16, 1)),
+          targetDomainIds: S.optional(__S(1888, __c118, 0)),
+          codeReviewSettings: S.optional(__S(258, __c16, 2)),
           kmsKeyId: S.optional(S.String),
           createdAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
           updatedAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
         }),
       ).annotate({ identifier: "AgentSpace" });
-    case 3:
-      return S.Array(__S(58, __c7, 2));
-    case 4:
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(16, __c1, 0));
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          agentSpaces: S.optional(__S(59, __c7, 3)),
-          notFound: S.optional(__S(10, __c1, 2)),
+          vpcs: S.optional(__S(256, __c16, 0)),
+          logGroups: S.optional(__S(1888, __c118, 0)),
+          s3Buckets: S.optional(__S(1888, __c118, 0)),
+          secretArns: S.optional(__S(1888, __c118, 0)),
+          lambdaFunctionArns: S.optional(__S(1888, __c118, 0)),
+          iamRoles: S.optional(__S(1888, __c118, 0)),
         }),
-      ).annotate({
-        identifier: "BatchGetAgentSpacesOutput",
-      });
-    case 5:
+      ).annotate({ identifier: "AWSResources" });
+    case 2:
       return S.suspend(() =>
-        S.Struct({ agentSpaceId: S.String, artifactIds: __S(10, __c1, 2) }).pipe(
+        S.Struct({ controlsScanning: S.Boolean, generalPurposeScanning: S.Boolean }),
+      ).annotate({ identifier: "CodeReviewSettings" });
+  }
+}
+function __c17(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ agentSpaceId: S.String, artifactIds: __S(1888, __c118, 0) }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/BatchGetArtifactMetadata" }),
             svc,
@@ -5229,7 +5171,7 @@ function __c7(j: number): any {
       ).annotate({
         identifier: "BatchGetArtifactMetadataInput",
       });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           agentSpaceId: S.String,
@@ -5238,19 +5180,19 @@ function __c7(j: number): any {
           updatedAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
         }),
       ).annotate({ identifier: "ArtifactMetadataItem" });
-    case 7:
-      return S.Array(__S(62, __c7, 6));
-  }
-}
-function __c8(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() => S.Struct({ artifactMetadataList: __S(63, __c7, 7) })).annotate({
+    case 2:
+      return S.Array(__S(273, __c17, 1));
+    case 3:
+      return S.suspend(() => S.Struct({ artifactMetadataList: __S(274, __c17, 2) })).annotate({
         identifier: "BatchGetArtifactMetadataOutput",
       });
-    case 1:
+  }
+}
+function __c18(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
-        S.Struct({ codeReviewJobIds: __S(10, __c1, 2), agentSpaceId: S.String }).pipe(
+        S.Struct({ codeReviewJobIds: __S(1888, __c118, 0), agentSpaceId: S.String }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/BatchGetCodeReviewJobs" }),
             svc,
@@ -5263,7 +5205,45 @@ function __c8(j: number): any {
       ).annotate({
         identifier: "BatchGetCodeReviewJobsInput",
       });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          codeReviewJobId: S.optional(S.String),
+          codeReviewId: S.optional(S.String),
+          title: S.optional(S.String),
+          overview: S.optional(S.String),
+          status: S.optional(S.String),
+          documents: S.optional(__S(50, __c3, 2)),
+          sourceCode: S.optional(__S(52, __c3, 4)),
+          steps: S.optional(__S(305, __c19, 1)),
+          executionContext: S.optional(__S(307, __c19, 3)),
+          serviceRole: S.optional(S.String),
+          logConfig: S.optional(__S(32, __c2, 0)),
+          errorInformation: S.optional(__S(320, __c20, 0)),
+          integratedRepositories: S.optional(__S(54, __c3, 6)),
+          codeRemediationStrategy: S.optional(S.String),
+          maxTaskHours: S.optional(S.Number),
+          reportDestination: S.optional(__S(55, __c3, 7)),
+          createdAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
+          updatedAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
+        }),
+      ).annotate({ identifier: "CodeReviewJob" });
     case 2:
+      return S.Array(__S(289, __c18, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          codeReviewJobs: S.optional(__S(290, __c18, 2)),
+          notFound: S.optional(__S(1888, __c118, 0)),
+        }),
+      ).annotate({
+        identifier: "BatchGetCodeReviewJobsOutput",
+      });
+  }
+}
+function __c19(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
@@ -5272,9 +5252,9 @@ function __c8(j: number): any {
           updatedAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
         }),
       ).annotate({ identifier: "Step" });
-    case 3:
-      return S.Array(__S(66, __c8, 2));
-    case 4:
+    case 1:
+      return S.Array(__S(304, __c19, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           contextType: S.optional(S.String),
@@ -5282,53 +5262,23 @@ function __c8(j: number): any {
           timestamp: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
         }),
       ).annotate({ identifier: "ExecutionContext" });
-    case 5:
-      return S.Array(__S(68, __c8, 4));
-    case 6:
+    case 3:
+      return S.Array(__S(306, __c19, 2));
+  }
+}
+function __c20(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ code: S.optional(S.String), message: S.optional(S.String) }),
       ).annotate({ identifier: "ErrorInformation" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          codeReviewJobId: S.optional(S.String),
-          codeReviewId: S.optional(S.String),
-          title: S.optional(S.String),
-          overview: S.optional(S.String),
-          status: S.optional(S.String),
-          documents: S.optional(__S(23, __c2, 7)),
-          sourceCode: S.optional(__S(25, __c3, 1)),
-          steps: S.optional(__S(67, __c8, 3)),
-          executionContext: S.optional(__S(69, __c8, 5)),
-          serviceRole: S.optional(S.String),
-          logConfig: S.optional(__S(33, __c4, 1)),
-          errorInformation: S.optional(__S(70, __c8, 6)),
-          integratedRepositories: S.optional(__S(27, __c3, 3)),
-          codeRemediationStrategy: S.optional(S.String),
-          maxTaskHours: S.optional(S.Number),
-          reportDestination: S.optional(__S(40, __c5, 0)),
-          createdAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-          updatedAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-        }),
-      ).annotate({ identifier: "CodeReviewJob" });
   }
 }
-function __c9(j: number): any {
+function __c21(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(71, __c8, 7));
-    case 1:
       return S.suspend(() =>
-        S.Struct({
-          codeReviewJobs: S.optional(__S(72, __c9, 0)),
-          notFound: S.optional(__S(10, __c1, 2)),
-        }),
-      ).annotate({
-        identifier: "BatchGetCodeReviewJobsOutput",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({ agentSpaceId: S.String, codeReviewJobTaskIds: __S(10, __c1, 2) }).pipe(
+        S.Struct({ agentSpaceId: S.String, codeReviewJobTaskIds: __S(1888, __c118, 0) }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/BatchGetCodeReviewJobTasks" }),
             svc,
@@ -5341,17 +5291,7 @@ function __c9(j: number): any {
       ).annotate({
         identifier: "BatchGetCodeReviewJobTasksInput",
       });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({ name: S.optional(S.String), isPrimary: S.optional(S.Boolean) }),
-      ).annotate({ identifier: "Category" });
-    case 4:
-      return S.Array(__S(75, __c9, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({ logType: S.optional(S.String), cloudWatchLog: S.optional(__S(33, __c4, 1)) }),
-      ).annotate({ identifier: "LogLocation" });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           taskId: S.String,
@@ -5360,32 +5300,50 @@ function __c9(j: number): any {
           agentSpaceId: S.optional(S.String),
           title: S.optional(S.String),
           description: S.optional(S.String),
-          categories: S.optional(__S(76, __c9, 4)),
+          categories: S.optional(__S(353, __c22, 1)),
           riskType: S.optional(S.String),
           executionStatus: S.optional(S.String),
-          logsLocation: S.optional(__S(77, __c9, 5)),
+          logsLocation: S.optional(__S(368, __c23, 0)),
           createdAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
           updatedAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
         }),
       ).annotate({ identifier: "CodeReviewJobTask" });
-    case 7:
-      return S.Array(__S(78, __c9, 6));
-  }
-}
-function __c10(j: number): any {
-  switch (j) {
-    case 0:
+    case 2:
+      return S.Array(__S(337, __c21, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          codeReviewJobTasks: S.optional(__S(79, __c9, 7)),
-          notFound: S.optional(__S(10, __c1, 2)),
+          codeReviewJobTasks: S.optional(__S(338, __c21, 2)),
+          notFound: S.optional(__S(1888, __c118, 0)),
         }),
       ).annotate({
         identifier: "BatchGetCodeReviewJobTasksOutput",
       });
-    case 1:
+  }
+}
+function __c22(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
-        S.Struct({ codeReviewIds: __S(10, __c1, 2), agentSpaceId: S.String }).pipe(
+        S.Struct({ name: S.optional(S.String), isPrimary: S.optional(S.Boolean) }),
+      ).annotate({ identifier: "Category" });
+    case 1:
+      return S.Array(__S(352, __c22, 0));
+  }
+}
+function __c23(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ logType: S.optional(S.String), cloudWatchLog: S.optional(__S(32, __c2, 0)) }),
+      ).annotate({ identifier: "LogLocation" });
+  }
+}
+function __c24(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ codeReviewIds: __S(1888, __c118, 0), agentSpaceId: S.String }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/BatchGetCodeReviews" }),
             svc,
@@ -5396,42 +5354,46 @@ function __c10(j: number): any {
           ),
         ),
       ).annotate({ identifier: "BatchGetCodeReviewsInput" });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           codeReviewId: S.String,
           agentSpaceId: S.String,
           title: S.String,
-          assets: __S(31, __c3, 7),
+          assets: __S(96, __c6, 0),
           serviceRole: S.optional(S.String),
-          logConfig: S.optional(__S(33, __c4, 1)),
+          logConfig: S.optional(__S(32, __c2, 0)),
           codeRemediationStrategy: S.optional(S.String),
           validationMode: S.optional(S.String),
           maxTaskHours: S.optional(S.Number),
-          reportDestination: S.optional(__S(40, __c5, 0)),
-          reportFilters: S.optional(__S(41, __c5, 1)),
+          reportDestination: S.optional(__S(55, __c3, 7)),
+          reportFilters: S.optional(__S(112, __c7, 0)),
           createdAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
           updatedAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
         }),
       ).annotate({ identifier: "CodeReview" });
+    case 2:
+      return S.Array(__S(385, __c24, 1));
     case 3:
-      return S.Array(__S(82, __c10, 2));
-    case 4:
       return S.suspend(() =>
         S.Struct({
-          codeReviews: S.optional(__S(83, __c10, 3)),
-          notFound: S.optional(__S(10, __c1, 2)),
+          codeReviews: S.optional(__S(386, __c24, 2)),
+          notFound: S.optional(__S(1888, __c118, 0)),
         }),
       ).annotate({
         identifier: "BatchGetCodeReviewsOutput",
       });
-    case 5:
+  }
+}
+function __c25(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
-        S.Struct({ findingIds: __S(10, __c1, 2), agentSpaceId: S.String }).pipe(
+        S.Struct({ findingIds: __S(1888, __c118, 0), agentSpaceId: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/BatchGetFindings" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "BatchGetFindingsInput" });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           repoName: S.optional(S.String),
@@ -5441,21 +5403,17 @@ function __c10(j: number): any {
       ).annotate({
         identifier: "CodeRemediationTaskDetails",
       });
-    case 7:
-      return S.Array(__S(86, __c10, 6));
-  }
-}
-function __c11(j: number): any {
-  switch (j) {
-    case 0:
+    case 2:
+      return S.Array(__S(401, __c25, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
           status: S.String,
           statusReason: S.optional(S.String),
-          taskDetails: S.optional(__S(87, __c10, 7)),
+          taskDetails: S.optional(__S(402, __c25, 2)),
         }),
       ).annotate({ identifier: "CodeRemediationTask" });
-    case 1:
+    case 4:
       return S.suspend(() =>
         S.Struct({
           filePath: S.String,
@@ -5464,18 +5422,18 @@ function __c11(j: number): any {
           label: S.optional(S.String),
         }),
       ).annotate({ identifier: "CodeLocation" });
-    case 2:
-      return S.Array(__S(89, __c11, 1));
-    case 3:
+    case 5:
+      return S.Array(__S(404, __c25, 4));
+    case 6:
       return S.suspend(() =>
         S.Struct({
           scriptType: S.optional(S.String),
           scriptUrl: S.optional(S.String),
           instructions: S.optional(S.String),
-          envVars: S.optional(__S(38, __c4, 6)),
+          envVars: S.optional(__S(129, __c8, 1)),
         }),
       ).annotate({ identifier: "VerificationScript" });
-    case 4:
+    case 7:
       return S.suspend(() =>
         S.Struct({
           findingId: S.String,
@@ -5495,30 +5453,34 @@ function __c11(j: number): any {
           confidence: S.optional(S.String),
           validationStatus: S.optional(S.String),
           attackScript: S.optional(S.String),
-          codeRemediationTask: S.optional(__S(88, __c11, 0)),
+          codeRemediationTask: S.optional(__S(403, __c25, 3)),
           lastUpdatedBy: S.optional(S.String),
           customerNote: S.optional(S.String),
-          codeLocations: S.optional(__S(90, __c11, 2)),
-          verificationScript: S.optional(__S(91, __c11, 3)),
+          codeLocations: S.optional(__S(405, __c25, 5)),
+          verificationScript: S.optional(__S(406, __c25, 6)),
           alignmentRationale: S.optional(S.String),
-          revalidationJobIds: S.optional(__S(10, __c1, 2)),
+          revalidationJobIds: S.optional(__S(1888, __c118, 0)),
           originalFindingId: S.optional(S.String),
           createdAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
           updatedAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
         }),
       ).annotate({ identifier: "Finding" });
-    case 5:
-      return S.Array(__S(92, __c11, 4));
-    case 6:
+    case 8:
+      return S.Array(__S(407, __c25, 7));
+    case 9:
       return S.suspend(() =>
         S.Struct({
-          findings: S.optional(__S(93, __c11, 5)),
-          notFound: S.optional(__S(10, __c1, 2)),
+          findings: S.optional(__S(408, __c25, 8)),
+          notFound: S.optional(__S(1888, __c118, 0)),
         }),
       ).annotate({ identifier: "BatchGetFindingsOutput" });
-    case 7:
+  }
+}
+function __c26(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
-        S.Struct({ pentestJobIds: __S(10, __c1, 2), agentSpaceId: S.String }).pipe(
+        S.Struct({ pentestJobIds: __S(1888, __c118, 0), agentSpaceId: S.String }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/BatchGetPentestJobs" }),
             svc,
@@ -5529,15 +5491,65 @@ function __c11(j: number): any {
           ),
         ),
       ).annotate({ identifier: "BatchGetPentestJobsInput" });
-  }
-}
-function __c12(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() => S.Struct({ decision: S.String, reason: S.String })).annotate({
         identifier: "ScopeResult",
       });
-    case 1:
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          pentestJobId: S.optional(S.String),
+          pentestId: S.optional(S.String),
+          title: S.optional(S.String),
+          overview: S.optional(S.String),
+          status: S.optional(S.String),
+          endpoints: S.optional(__S(64, __c4, 0)),
+          actors: S.optional(__S(67, __c4, 3)),
+          documents: S.optional(__S(50, __c3, 2)),
+          sourceCode: S.optional(__S(52, __c3, 4)),
+          excludePaths: S.optional(__S(64, __c4, 0)),
+          allowedDomains: S.optional(__S(64, __c4, 0)),
+          excludeRiskTypes: S.optional(__S(80, __c5, 0)),
+          steps: S.optional(__S(305, __c19, 1)),
+          executionContext: S.optional(__S(307, __c19, 3)),
+          serviceRole: S.optional(S.String),
+          logConfig: S.optional(__S(32, __c2, 0)),
+          vpcConfig: S.optional(__S(16, __c1, 0)),
+          networkTrafficConfig: S.optional(__S(146, __c9, 2)),
+          errorInformation: S.optional(__S(320, __c20, 0)),
+          integratedRepositories: S.optional(__S(54, __c3, 6)),
+          trustedCaCertificates: S.optional(__S(70, __c4, 6)),
+          codeRemediationStrategy: S.optional(S.String),
+          cleanUpStrategy: S.optional(S.String),
+          disableManagedSkills: S.optional(__S(80, __c5, 0)),
+          maxTaskHours: S.optional(S.Number),
+          jobType: S.optional(S.String),
+          selectedFindingIds: S.optional(__S(1888, __c118, 0)),
+          reportDestination: S.optional(__S(55, __c3, 7)),
+          reportUrl: S.optional(S.String),
+          scopeResult: S.optional(__S(417, __c26, 1)),
+          scopeChanges: S.optional(__S(433, __c27, 1)),
+          cicdConfiguration: S.optional(__S(147, __c9, 3)),
+          createdAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
+          updatedAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
+        }),
+      ).annotate({ identifier: "PentestJob" });
+    case 3:
+      return S.Array(__S(418, __c26, 2));
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          pentestJobs: S.optional(__S(419, __c26, 3)),
+          notFound: S.optional(__S(1888, __c118, 0)),
+        }),
+      ).annotate({
+        identifier: "BatchGetPentestJobsOutput",
+      });
+  }
+}
+function __c27(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           integrationId: S.String,
@@ -5547,61 +5559,15 @@ function __c12(j: number): any {
           triggerRunId: S.optional(S.String),
         }),
       ).annotate({ identifier: "ScopeChange" });
-    case 2:
-      return S.Array(__S(97, __c12, 1));
-    case 3:
+    case 1:
+      return S.Array(__S(432, __c27, 0));
+  }
+}
+function __c28(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
-        S.Struct({
-          pentestJobId: S.optional(S.String),
-          pentestId: S.optional(S.String),
-          title: S.optional(S.String),
-          overview: S.optional(S.String),
-          status: S.optional(S.String),
-          endpoints: S.optional(__S(17, __c2, 1)),
-          actors: S.optional(__S(20, __c2, 4)),
-          documents: S.optional(__S(23, __c2, 7)),
-          sourceCode: S.optional(__S(25, __c3, 1)),
-          excludePaths: S.optional(__S(17, __c2, 1)),
-          allowedDomains: S.optional(__S(17, __c2, 1)),
-          excludeRiskTypes: S.optional(__S(32, __c4, 0)),
-          steps: S.optional(__S(67, __c8, 3)),
-          executionContext: S.optional(__S(69, __c8, 5)),
-          serviceRole: S.optional(S.String),
-          logConfig: S.optional(__S(33, __c4, 1)),
-          vpcConfig: S.optional(__S(34, __c4, 2)),
-          networkTrafficConfig: S.optional(__S(39, __c4, 7)),
-          errorInformation: S.optional(__S(70, __c8, 6)),
-          integratedRepositories: S.optional(__S(27, __c3, 3)),
-          trustedCaCertificates: S.optional(__S(30, __c3, 6)),
-          codeRemediationStrategy: S.optional(S.String),
-          cleanUpStrategy: S.optional(S.String),
-          disableManagedSkills: S.optional(__S(32, __c4, 0)),
-          maxTaskHours: S.optional(S.Number),
-          jobType: S.optional(S.String),
-          selectedFindingIds: S.optional(__S(10, __c1, 2)),
-          reportDestination: S.optional(__S(40, __c5, 0)),
-          reportUrl: S.optional(S.String),
-          scopeResult: S.optional(__S(96, __c12, 0)),
-          scopeChanges: S.optional(__S(98, __c12, 2)),
-          cicdConfiguration: S.optional(__S(42, __c5, 2)),
-          createdAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-          updatedAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-        }),
-      ).annotate({ identifier: "PentestJob" });
-    case 4:
-      return S.Array(__S(99, __c12, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          pentestJobs: S.optional(__S(100, __c12, 4)),
-          notFound: S.optional(__S(10, __c1, 2)),
-        }),
-      ).annotate({
-        identifier: "BatchGetPentestJobsOutput",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({ agentSpaceId: S.String, taskIds: __S(10, __c1, 2) }).pipe(
+        S.Struct({ agentSpaceId: S.String, taskIds: __S(1888, __c118, 0) }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/BatchGetPentestJobTasks" }),
             svc,
@@ -5614,7 +5580,7 @@ function __c12(j: number): any {
       ).annotate({
         identifier: "BatchGetPentestJobTasksInput",
       });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           taskId: S.String,
@@ -5623,44 +5589,51 @@ function __c12(j: number): any {
           agentSpaceId: S.optional(S.String),
           title: S.optional(S.String),
           description: S.optional(S.String),
-          categories: S.optional(__S(76, __c9, 4)),
+          categories: S.optional(__S(353, __c22, 1)),
           riskType: S.optional(S.String),
           targetEndpoint: S.optional(Endpoint),
           executionStatus: S.optional(S.String),
-          logsLocation: S.optional(__S(77, __c9, 5)),
+          logsLocation: S.optional(__S(368, __c23, 0)),
           taskHours: S.optional(S.Number),
           createdAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
           updatedAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
         }),
       ).annotate({ identifier: "Task" });
-  }
-}
-function __c13(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(103, __c12, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({ tasks: S.optional(__S(104, __c13, 0)), notFound: S.optional(__S(10, __c1, 2)) }),
-      ).annotate({
-        identifier: "BatchGetPentestJobTasksOutput",
-      });
     case 2:
-      return S.suspend(() =>
-        S.Struct({ pentestIds: __S(10, __c1, 2), agentSpaceId: S.String }).pipe(
-          T.all(T.Http({ method: "POST", uri: "/BatchGetPentests" }), svc, auth, proto, ver, rules),
-        ),
-      ).annotate({ identifier: "BatchGetPentestsInput" });
+      return S.Array(__S(449, __c28, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          pentests: S.optional(__S(44, __c5, 4)),
-          notFound: S.optional(__S(10, __c1, 2)),
+          tasks: S.optional(__S(450, __c28, 2)),
+          notFound: S.optional(__S(1888, __c118, 0)),
+        }),
+      ).annotate({
+        identifier: "BatchGetPentestJobTasksOutput",
+      });
+  }
+}
+function __c29(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ pentestIds: __S(1888, __c118, 0), agentSpaceId: S.String }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/BatchGetPentests" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "BatchGetPentestsInput" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          pentests: S.optional(__S(161, __c10, 1)),
+          notFound: S.optional(__S(1888, __c118, 0)),
         }),
       ).annotate({ identifier: "BatchGetPentestsOutput" });
-    case 4:
+  }
+}
+function __c30(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
-        S.Struct({ packId: S.String, securityRequirementNames: __S(10, __c1, 2) }).pipe(
+        S.Struct({ packId: S.String, securityRequirementNames: __S(1888, __c118, 0) }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/BatchGetSecurityRequirements" }),
             svc,
@@ -5673,9 +5646,13 @@ function __c13(j: number): any {
       ).annotate({
         identifier: "BatchGetSecurityRequirementsInput",
       });
-    case 5:
+  }
+}
+function __c31(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
-        S.Struct({ targetDomainIds: __S(10, __c1, 2) }).pipe(
+        S.Struct({ targetDomainIds: __S(1888, __c118, 0) }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/BatchGetTargetDomains" }),
             svc,
@@ -5688,30 +5665,6 @@ function __c13(j: number): any {
       ).annotate({
         identifier: "BatchGetTargetDomainsInput",
       });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          token: S.optional(S.String),
-          dnsRecordName: S.optional(S.String),
-          dnsRecordType: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "DnsVerification" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({ token: S.optional(S.String), routePath: S.optional(S.String) }),
-      ).annotate({ identifier: "HttpVerification" });
-  }
-}
-function __c14(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          method: S.optional(S.String),
-          dnsTxt: S.optional(__S(110, __c13, 6)),
-          httpRoute: S.optional(__S(111, __c13, 7)),
-        }),
-      ).annotate({ identifier: "VerificationDetails" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -5719,25 +5672,53 @@ function __c14(j: number): any {
           domainName: S.String,
           verificationStatus: S.optional(S.String),
           verificationStatusReason: S.optional(S.String),
-          verificationDetails: S.optional(__S(112, __c14, 0)),
+          verificationDetails: S.optional(__S(514, __c32, 2)),
           createdAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
           verifiedAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
         }),
       ).annotate({ identifier: "TargetDomain" });
     case 2:
-      return S.Array(__S(113, __c14, 1));
+      return S.Array(__S(497, __c31, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          targetDomains: S.optional(__S(114, __c14, 2)),
-          notFound: S.optional(__S(10, __c1, 2)),
+          targetDomains: S.optional(__S(498, __c31, 2)),
+          notFound: S.optional(__S(1888, __c118, 0)),
         }),
       ).annotate({
         identifier: "BatchGetTargetDomainsOutput",
       });
-    case 4:
+  }
+}
+function __c32(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
-        S.Struct({ threatModelJobIds: __S(10, __c1, 2), agentSpaceId: S.String }).pipe(
+        S.Struct({
+          token: S.optional(S.String),
+          dnsRecordName: S.optional(S.String),
+          dnsRecordType: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "DnsVerification" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({ token: S.optional(S.String), routePath: S.optional(S.String) }),
+      ).annotate({ identifier: "HttpVerification" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          method: S.optional(S.String),
+          dnsTxt: S.optional(__S(512, __c32, 0)),
+          httpRoute: S.optional(__S(513, __c32, 1)),
+        }),
+      ).annotate({ identifier: "VerificationDetails" });
+  }
+}
+function __c33(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ threatModelJobIds: __S(1888, __c118, 0), agentSpaceId: S.String }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/BatchGetThreatModelJobs" }),
             svc,
@@ -5750,7 +5731,7 @@ function __c14(j: number): any {
       ).annotate({
         identifier: "BatchGetThreatModelJobsInput",
       });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           threatModelJobId: S.optional(S.String),
@@ -5762,33 +5743,33 @@ function __c14(j: number): any {
           updatedAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
           executionStartTime: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
           executionEndTime: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-          sourceCode: S.optional(__S(25, __c3, 1)),
-          integratedRepositories: S.optional(__S(27, __c3, 3)),
-          documents: S.optional(__S(23, __c2, 7)),
-          scopeDocs: S.optional(__S(23, __c2, 7)),
-          errorInformation: S.optional(__S(70, __c8, 6)),
+          sourceCode: S.optional(__S(52, __c3, 4)),
+          integratedRepositories: S.optional(__S(54, __c3, 6)),
+          documents: S.optional(__S(50, __c3, 2)),
+          scopeDocs: S.optional(__S(50, __c3, 2)),
+          errorInformation: S.optional(__S(320, __c20, 0)),
           systemOverview: S.optional(S.String),
-          reportDestination: S.optional(__S(40, __c5, 0)),
+          reportDestination: S.optional(__S(55, __c3, 7)),
         }),
       ).annotate({ identifier: "ThreatModelJob" });
-    case 6:
-      return S.Array(__S(117, __c14, 5));
-    case 7:
+    case 2:
+      return S.Array(__S(529, __c33, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          threatModelJobs: S.optional(__S(118, __c14, 6)),
-          notFound: S.optional(__S(10, __c1, 2)),
+          threatModelJobs: S.optional(__S(530, __c33, 2)),
+          notFound: S.optional(__S(1888, __c118, 0)),
         }),
       ).annotate({
         identifier: "BatchGetThreatModelJobsOutput",
       });
   }
 }
-function __c15(j: number): any {
+function __c34(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({ agentSpaceId: S.String, threatModelJobTaskIds: __S(10, __c1, 2) }).pipe(
+        S.Struct({ agentSpaceId: S.String, threatModelJobTaskIds: __S(1888, __c118, 0) }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/BatchGetThreatModelJobTasks" }),
             svc,
@@ -5811,25 +5792,29 @@ function __c15(j: number): any {
           title: S.optional(S.String),
           description: S.optional(S.String),
           executionStatus: S.optional(S.String),
-          logsLocation: S.optional(__S(77, __c9, 5)),
+          logsLocation: S.optional(__S(368, __c23, 0)),
           createdAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
           updatedAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
         }),
       ).annotate({ identifier: "ThreatModelJobTask" });
     case 2:
-      return S.Array(__S(121, __c15, 1));
+      return S.Array(__S(545, __c34, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          threatModelJobTasks: S.optional(__S(122, __c15, 2)),
-          notFound: S.optional(__S(10, __c1, 2)),
+          threatModelJobTasks: S.optional(__S(546, __c34, 2)),
+          notFound: S.optional(__S(1888, __c118, 0)),
         }),
       ).annotate({
         identifier: "BatchGetThreatModelJobTasksOutput",
       });
-    case 4:
+  }
+}
+function __c35(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
-        S.Struct({ threatModelIds: __S(10, __c1, 2), agentSpaceId: S.String }).pipe(
+        S.Struct({ threatModelIds: __S(1888, __c118, 0), agentSpaceId: S.String }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/BatchGetThreatModels" }),
             svc,
@@ -5842,58 +5827,44 @@ function __c15(j: number): any {
       ).annotate({
         identifier: "BatchGetThreatModelsInput",
       });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           threatModelId: S.String,
           agentSpaceId: S.String,
           title: S.String,
           description: S.optional(S.String),
-          assets: __S(31, __c3, 7),
-          scopeDocs: S.optional(__S(23, __c2, 7)),
+          assets: __S(96, __c6, 0),
+          scopeDocs: S.optional(__S(50, __c3, 2)),
           serviceRole: S.optional(S.String),
-          logConfig: S.optional(__S(33, __c4, 1)),
-          reportDestination: S.optional(__S(40, __c5, 0)),
+          logConfig: S.optional(__S(32, __c2, 0)),
+          reportDestination: S.optional(__S(55, __c3, 7)),
           createdAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
           updatedAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
         }),
       ).annotate({ identifier: "ThreatModel" });
-    case 6:
-      return S.Array(__S(125, __c15, 5));
-    case 7:
+    case 2:
+      return S.Array(__S(561, __c35, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          threatModels: S.optional(__S(126, __c15, 6)),
-          notFound: S.optional(__S(10, __c1, 2)),
+          threatModels: S.optional(__S(562, __c35, 2)),
+          notFound: S.optional(__S(1888, __c118, 0)),
         }),
       ).annotate({
         identifier: "BatchGetThreatModelsOutput",
       });
   }
 }
-function __c16(j: number): any {
+function __c36(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({ threatIds: __S(10, __c1, 2), agentSpaceId: S.String }).pipe(
+        S.Struct({ threatIds: __S(1888, __c118, 0), agentSpaceId: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/BatchGetThreats" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "BatchGetThreatsInput" });
     case 1:
-      return S.suspend(() =>
-        S.Struct({
-          kind: S.optional(S.String),
-          id: S.optional(S.String),
-          packageId: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ThreatAnchorShape" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({ packageId: S.optional(S.String), path: S.optional(S.String) }),
-      ).annotate({ identifier: "ThreatEvidenceShape" });
-    case 3:
-      return S.Array(__S(130, __c16, 2));
-    case 4:
       return S.suspend(() =>
         S.Struct({
           threatId: S.optional(S.String),
@@ -5907,11 +5878,11 @@ function __c16(j: number): any {
           prerequisites: S.optional(S.String),
           threatAction: S.optional(S.String),
           threatImpact: S.optional(S.String),
-          impactedGoal: S.optional(__S(10, __c1, 2)),
-          impactedAssets: S.optional(__S(10, __c1, 2)),
-          anchor: S.optional(__S(129, __c16, 1)),
-          evidence: S.optional(__S(131, __c16, 3)),
-          stride: S.optional(__S(32, __c4, 0)),
+          impactedGoal: S.optional(__S(1888, __c118, 0)),
+          impactedAssets: S.optional(__S(1888, __c118, 0)),
+          anchor: S.optional(__S(592, __c37, 0)),
+          evidence: S.optional(__S(594, __c37, 2)),
+          stride: S.optional(__S(80, __c5, 0)),
           recommendation: S.optional(S.String),
           createdBy: S.optional(S.String),
           updatedBy: S.optional(S.String),
@@ -5919,16 +5890,38 @@ function __c16(j: number): any {
           updatedAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
         }),
       ).annotate({ identifier: "Threat" });
-    case 5:
-      return S.Array(__S(132, __c16, 4));
-    case 6:
+    case 2:
+      return S.Array(__S(577, __c36, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          threats: S.optional(__S(133, __c16, 5)),
-          notFound: S.optional(__S(10, __c1, 2)),
+          threats: S.optional(__S(578, __c36, 2)),
+          notFound: S.optional(__S(1888, __c118, 0)),
         }),
       ).annotate({ identifier: "BatchGetThreatsOutput" });
-    case 7:
+  }
+}
+function __c37(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          kind: S.optional(S.String),
+          id: S.optional(S.String),
+          packageId: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ThreatAnchorShape" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({ packageId: S.optional(S.String), path: S.optional(S.String) }),
+      ).annotate({ identifier: "ThreatEvidenceShape" });
+    case 2:
+      return S.Array(__S(593, __c37, 1));
+  }
+}
+function __c38(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String,
@@ -5940,18 +5933,11 @@ function __c16(j: number): any {
       ).annotate({
         identifier: "UpdateSecurityRequirementEntry",
       });
-  }
-}
-function __c17(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(135, __c16, 7));
     case 1:
+      return S.Array(__S(608, __c38, 0));
+    case 2:
       return S.suspend(() =>
-        S.Struct({
-          packId: S.String,
-          securityRequirements: __S(136, __c17, 0),
-        }).pipe(
+        S.Struct({ packId: S.String, securityRequirements: __S(609, __c38, 1) }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/BatchUpdateSecurityRequirements" }),
             svc,
@@ -5964,38 +5950,50 @@ function __c17(j: number): any {
       ).annotate({
         identifier: "BatchUpdateSecurityRequirementsInput",
       });
-    case 2:
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          updatedSecurityRequirementNames: __S(10, __c1, 2),
-          errors: __S(8, __c1, 0),
+          updatedSecurityRequirementNames: __S(1888, __c118, 0),
+          errors: __S(1681, __c105, 1),
         }),
       ).annotate({
         identifier: "BatchUpdateSecurityRequirementsOutput",
       });
-    case 3:
-      return S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
-    case 4:
+  }
+}
+function __c39(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String,
           description: S.optional(S.String),
-          awsResources: S.optional(__S(56, __c7, 0)),
-          targetDomainIds: S.optional(__S(10, __c1, 2)),
-          codeReviewSettings: S.optional(__S(57, __c7, 1)),
+          awsResources: S.optional(__S(257, __c16, 1)),
+          targetDomainIds: S.optional(__S(1888, __c118, 0)),
+          codeReviewSettings: S.optional(__S(258, __c16, 2)),
           kmsKeyId: S.optional(S.String),
-          tags: S.optional(__S(139, __c17, 3)),
+          tags: S.optional(__S(640, __c40, 0)),
         }).pipe(
           T.all(T.Http({ method: "POST", uri: "/CreateAgentSpace" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "CreateAgentSpaceInput" });
-    case 5:
+  }
+}
+function __c40(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
+  }
+}
+function __c41(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           idcInstanceArn: S.optional(S.String),
           roleArn: S.optional(S.String),
           defaultKmsKeyId: S.optional(S.String),
-          tags: S.optional(__S(139, __c17, 3)),
+          tags: S.optional(__S(640, __c40, 0)),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/CreateApplication" }),
@@ -6007,30 +6005,38 @@ function __c17(j: number): any {
           ),
         ),
       ).annotate({ identifier: "CreateApplicationRequest" });
-    case 6:
+  }
+}
+function __c42(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() => S.Struct({ applicationId: S.String })).annotate({
         identifier: "CreateApplicationResponse",
       });
-    case 7:
+  }
+}
+function __c43(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           title: S.String,
           agentSpaceId: S.String,
-          assets: __S(31, __c3, 7),
+          assets: __S(96, __c6, 0),
           serviceRole: S.optional(S.String),
-          logConfig: S.optional(__S(33, __c4, 1)),
+          logConfig: S.optional(__S(32, __c2, 0)),
           codeRemediationStrategy: S.optional(S.String),
           validationMode: S.optional(S.String),
           maxTaskHours: S.optional(S.Number),
-          reportDestination: S.optional(__S(40, __c5, 0)),
-          reportFilters: S.optional(__S(41, __c5, 1)),
+          reportDestination: S.optional(__S(55, __c3, 7)),
+          reportFilters: S.optional(__S(112, __c7, 0)),
         }).pipe(
           T.all(T.Http({ method: "POST", uri: "/CreateCodeReview" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "CreateCodeReviewInput" });
   }
 }
-function __c18(j: number): any {
+function __c44(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -6039,18 +6045,22 @@ function __c18(j: number): any {
           title: S.optional(S.String),
           createdAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
           updatedAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-          assets: S.optional(__S(31, __c3, 7)),
+          assets: S.optional(__S(96, __c6, 0)),
           serviceRole: S.optional(S.String),
-          logConfig: S.optional(__S(33, __c4, 1)),
+          logConfig: S.optional(__S(32, __c2, 0)),
           agentSpaceId: S.optional(S.String),
           codeRemediationStrategy: S.optional(S.String),
           validationMode: S.optional(S.String),
           maxTaskHours: S.optional(S.Number),
-          reportDestination: S.optional(__S(40, __c5, 0)),
-          reportFilters: S.optional(__S(41, __c5, 1)),
+          reportDestination: S.optional(__S(55, __c3, 7)),
+          reportFilters: S.optional(__S(112, __c7, 0)),
         }),
       ).annotate({ identifier: "CreateCodeReviewOutput" });
-    case 1:
+  }
+}
+function __c45(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           code: S.String,
@@ -6060,7 +6070,7 @@ function __c18(j: number): any {
           installationId: S.optional(S.String),
         }),
       ).annotate({ identifier: "GitHubIntegrationInput" });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           accessToken: SensitiveString,
@@ -6069,7 +6079,7 @@ function __c18(j: number): any {
           groupId: S.optional(S.String),
         }),
       ).annotate({ identifier: "GitLabIntegrationInput" });
-    case 3:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           installationId: S.String,
@@ -6080,45 +6090,41 @@ function __c18(j: number): any {
       ).annotate({
         identifier: "BitbucketIntegrationInput",
       });
-    case 4:
+    case 3:
       return S.suspend(() =>
         S.Struct({ installationId: S.String, code: S.String, state: S.String, siteUrl: S.String }),
       ).annotate({
         identifier: "ConfluenceIntegrationInput",
       });
-    case 5:
+    case 4:
       return S.suspend(() =>
         S.Struct({ code: S.String, state: S.String, organizationName: S.String }),
       ).annotate({
         identifier: "AzureDevOpsIntegrationInput",
       });
-    case 6:
+    case 5:
       return S.suspend(() =>
         S.Struct({ targetUrl: S.String, code: S.String, state: S.String }),
       ).annotate({
         identifier: "BitbucketDataCenterIntegrationInput",
       });
-    case 7:
+    case 6:
       return S.Union([
-        /*@__PURE__*/ S.Struct({ github: __S(145, __c18, 1) }),
-        /*@__PURE__*/ S.Struct({ gitlab: __S(146, __c18, 2) }),
-        /*@__PURE__*/ S.Struct({ bitbucket: __S(147, __c18, 3) }),
-        /*@__PURE__*/ S.Struct({ confluence: __S(148, __c18, 4) }),
-        /*@__PURE__*/ S.Struct({ azureDevOps: __S(149, __c18, 5) }),
-        /*@__PURE__*/ S.Struct({ bitbucketDataCenter: __S(150, __c18, 6) }),
+        /*@__PURE__*/ S.Struct({ github: __S(720, __c45, 0) }),
+        /*@__PURE__*/ S.Struct({ gitlab: __S(721, __c45, 1) }),
+        /*@__PURE__*/ S.Struct({ bitbucket: __S(722, __c45, 2) }),
+        /*@__PURE__*/ S.Struct({ confluence: __S(723, __c45, 3) }),
+        /*@__PURE__*/ S.Struct({ azureDevOps: __S(724, __c45, 4) }),
+        /*@__PURE__*/ S.Struct({ bitbucketDataCenter: __S(725, __c45, 5) }),
       ]);
-  }
-}
-function __c19(j: number): any {
-  switch (j) {
-    case 0:
+    case 7:
       return S.suspend(() =>
         S.Struct({
           provider: S.String,
-          input: __S(151, __c18, 7),
+          input: __S(726, __c45, 6),
           integrationDisplayName: S.String,
           kmsKeyId: S.optional(S.String),
-          tags: S.optional(__S(139, __c17, 3)),
+          tags: S.optional(__S(640, __c40, 0)),
           privateConnectionName: S.optional(S.String),
         }).pipe(
           T.all(
@@ -6131,84 +6137,104 @@ function __c19(j: number): any {
           ),
         ),
       ).annotate({ identifier: "CreateIntegrationInput" });
-    case 1:
+    case 8:
       return S.suspend(() => S.Struct({ integrationId: S.String })).annotate({
         identifier: "CreateIntegrationOutput",
       });
-    case 2:
-      return S.suspend(() => S.Struct({ role: S.optional(S.String) })).annotate({
-        identifier: "UserConfig",
-      });
-    case 3:
-      return S.Union([/*@__PURE__*/ S.Struct({ user: __S(154, __c19, 2) })]);
-    case 4:
+  }
+}
+function __c46(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           applicationId: S.String,
           agentSpaceId: S.String,
           membershipId: S.String,
           memberType: S.String,
-          config: S.optional(__S(155, __c19, 3)),
+          config: S.optional(__S(769, __c48, 1)),
         }).pipe(
           T.all(T.Http({ method: "POST", uri: "/CreateMembership" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "CreateMembershipRequest" });
-    case 5:
+  }
+}
+function __c47(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "CreateMembershipResponse",
       });
-    case 6:
+  }
+}
+function __c48(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({ role: S.optional(S.String) })).annotate({
+        identifier: "UserConfig",
+      });
+    case 1:
+      return S.Union([/*@__PURE__*/ S.Struct({ user: __S(768, __c48, 0) })]);
+  }
+}
+function __c49(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           title: S.String,
           agentSpaceId: S.String,
-          assets: S.optional(__S(31, __c3, 7)),
-          excludeRiskTypes: S.optional(__S(32, __c4, 0)),
+          assets: S.optional(__S(96, __c6, 0)),
+          excludeRiskTypes: S.optional(__S(80, __c5, 0)),
           serviceRole: S.optional(S.String),
-          logConfig: S.optional(__S(33, __c4, 1)),
-          vpcConfig: S.optional(__S(34, __c4, 2)),
-          networkTrafficConfig: S.optional(__S(39, __c4, 7)),
+          logConfig: S.optional(__S(32, __c2, 0)),
+          vpcConfig: S.optional(__S(16, __c1, 0)),
+          networkTrafficConfig: S.optional(__S(146, __c9, 2)),
           codeRemediationStrategy: S.optional(S.String),
-          disableManagedSkills: S.optional(__S(32, __c4, 0)),
+          disableManagedSkills: S.optional(__S(80, __c5, 0)),
           maxTaskHours: S.optional(S.Number),
-          reportDestination: S.optional(__S(40, __c5, 0)),
-          reportFilters: S.optional(__S(41, __c5, 1)),
-          cicdConfiguration: S.optional(__S(42, __c5, 2)),
+          reportDestination: S.optional(__S(55, __c3, 7)),
+          reportFilters: S.optional(__S(112, __c7, 0)),
+          cicdConfiguration: S.optional(__S(147, __c9, 3)),
         }).pipe(
           T.all(T.Http({ method: "POST", uri: "/CreatePentest" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "CreatePentestInput" });
-    case 7:
+  }
+}
+function __c50(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           pentestId: S.optional(S.String),
           title: S.optional(S.String),
           createdAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
           updatedAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-          assets: S.optional(__S(31, __c3, 7)),
-          excludeRiskTypes: S.optional(__S(32, __c4, 0)),
+          assets: S.optional(__S(96, __c6, 0)),
+          excludeRiskTypes: S.optional(__S(80, __c5, 0)),
           serviceRole: S.optional(S.String),
-          logConfig: S.optional(__S(33, __c4, 1)),
+          logConfig: S.optional(__S(32, __c2, 0)),
           agentSpaceId: S.optional(S.String),
-          reportDestination: S.optional(__S(40, __c5, 0)),
-          reportFilters: S.optional(__S(41, __c5, 1)),
-          cicdConfiguration: S.optional(__S(42, __c5, 2)),
+          reportDestination: S.optional(__S(55, __c3, 7)),
+          reportFilters: S.optional(__S(112, __c7, 0)),
+          cicdConfiguration: S.optional(__S(147, __c9, 3)),
         }),
       ).annotate({ identifier: "CreatePentestOutput" });
   }
 }
-function __c20(j: number): any {
+function __c51(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           hostAddress: S.String,
           vpcId: S.String,
-          subnetIds: __S(10, __c1, 2),
-          securityGroupIds: S.optional(__S(10, __c1, 2)),
+          subnetIds: __S(1888, __c118, 0),
+          securityGroupIds: S.optional(__S(1888, __c118, 0)),
           ipAddressType: S.optional(S.String),
           ipv4AddressesPerEni: S.optional(S.Number),
-          portRanges: S.optional(__S(10, __c1, 2)),
+          portRanges: S.optional(__S(1888, __c118, 0)),
           certificate: S.optional(SensitiveString),
           dnsResolution: S.optional(S.String),
         }),
@@ -6219,15 +6245,15 @@ function __c20(j: number): any {
       ).annotate({ identifier: "SelfManagedInput" });
     case 2:
       return S.Union([
-        /*@__PURE__*/ S.Struct({ serviceManaged: __S(160, __c20, 0) }),
-        /*@__PURE__*/ S.Struct({ selfManaged: __S(161, __c20, 1) }),
+        /*@__PURE__*/ S.Struct({ serviceManaged: __S(816, __c51, 0) }),
+        /*@__PURE__*/ S.Struct({ selfManaged: __S(817, __c51, 1) }),
       ]);
     case 3:
       return S.suspend(() =>
         S.Struct({
           privateConnectionName: S.String,
-          mode: __S(162, __c20, 2),
-          tags: S.optional(__S(139, __c17, 3)),
+          mode: __S(818, __c51, 2),
+          tags: S.optional(__S(640, __c40, 0)),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/CreatePrivateConnection" }),
@@ -6241,7 +6267,11 @@ function __c20(j: number): any {
       ).annotate({
         identifier: "CreatePrivateConnectionInput",
       });
-    case 4:
+  }
+}
+function __c52(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String,
@@ -6254,19 +6284,23 @@ function __c20(j: number): any {
           certificateExpiryTime: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
           dnsResolution: S.optional(S.String),
           failureMessage: S.optional(S.String),
-          tags: S.optional(__S(139, __c17, 3)),
+          tags: S.optional(__S(640, __c40, 0)),
         }),
       ).annotate({
         identifier: "CreatePrivateConnectionOutput",
       });
-    case 5:
+  }
+}
+function __c53(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String,
           description: S.optional(S.String),
           status: S.optional(S.String),
           kmsKeyId: S.optional(S.String),
-          tags: S.optional(__S(139, __c17, 3)),
+          tags: S.optional(__S(640, __c40, 0)),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/CreateSecurityRequirementPack" }),
@@ -6280,7 +6314,7 @@ function __c20(j: number): any {
       ).annotate({
         identifier: "CreateSecurityRequirementPackInput",
       });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           packId: S.String,
@@ -6290,12 +6324,16 @@ function __c20(j: number): any {
       ).annotate({
         identifier: "CreateSecurityRequirementPackOutput",
       });
-    case 7:
+  }
+}
+function __c54(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           targetDomainName: S.String,
           verificationMethod: S.String,
-          tags: S.optional(__S(139, __c17, 3)),
+          tags: S.optional(__S(640, __c40, 0)),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/CreateTargetDomain" }),
@@ -6309,7 +6347,7 @@ function __c20(j: number): any {
       ).annotate({ identifier: "CreateTargetDomainInput" });
   }
 }
-function __c21(j: number): any {
+function __c55(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -6318,12 +6356,16 @@ function __c21(j: number): any {
           domainName: S.String,
           verificationStatus: S.String,
           verificationStatusReason: S.optional(S.String),
-          verificationDetails: S.optional(__S(112, __c14, 0)),
+          verificationDetails: S.optional(__S(514, __c32, 2)),
           createdAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
           verifiedAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
         }),
       ).annotate({ identifier: "CreateTargetDomainOutput" });
-    case 1:
+  }
+}
+function __c56(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           agentSpaceId: S.String,
@@ -6332,21 +6374,25 @@ function __c21(j: number): any {
           statement: S.optional(S.String),
           severity: S.optional(S.String),
           comments: S.optional(S.String),
-          stride: S.optional(__S(32, __c4, 0)),
+          stride: S.optional(__S(80, __c5, 0)),
           threatSource: S.optional(S.String),
           prerequisites: S.optional(S.String),
           threatAction: S.optional(S.String),
           threatImpact: S.optional(S.String),
-          impactedGoal: S.optional(__S(10, __c1, 2)),
-          impactedAssets: S.optional(__S(10, __c1, 2)),
-          anchor: S.optional(__S(129, __c16, 1)),
-          evidence: S.optional(__S(131, __c16, 3)),
+          impactedGoal: S.optional(__S(1888, __c118, 0)),
+          impactedAssets: S.optional(__S(1888, __c118, 0)),
+          anchor: S.optional(__S(592, __c37, 0)),
+          evidence: S.optional(__S(594, __c37, 2)),
           recommendation: S.optional(S.String),
         }).pipe(
           T.all(T.Http({ method: "POST", uri: "/CreateThreat" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "CreateThreatInput" });
-    case 2:
+  }
+}
+function __c57(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           threatId: S.String,
@@ -6356,15 +6402,15 @@ function __c21(j: number): any {
           severity: S.optional(S.String),
           status: S.optional(S.String),
           comments: S.optional(S.String),
-          stride: S.optional(__S(32, __c4, 0)),
+          stride: S.optional(__S(80, __c5, 0)),
           threatSource: S.optional(S.String),
           prerequisites: S.optional(S.String),
           threatAction: S.optional(S.String),
           threatImpact: S.optional(S.String),
-          impactedGoal: S.optional(__S(10, __c1, 2)),
-          impactedAssets: S.optional(__S(10, __c1, 2)),
-          anchor: S.optional(__S(129, __c16, 1)),
-          evidence: S.optional(__S(131, __c16, 3)),
+          impactedGoal: S.optional(__S(1888, __c118, 0)),
+          impactedAssets: S.optional(__S(1888, __c118, 0)),
+          anchor: S.optional(__S(592, __c37, 0)),
+          evidence: S.optional(__S(594, __c37, 2)),
           recommendation: S.optional(S.String),
           createdBy: S.optional(S.String),
           updatedBy: S.optional(S.String),
@@ -6372,17 +6418,21 @@ function __c21(j: number): any {
           updatedAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
         }),
       ).annotate({ identifier: "CreateThreatOutput" });
-    case 3:
+  }
+}
+function __c58(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           title: S.String,
           agentSpaceId: S.String,
           description: S.optional(S.String),
-          assets: S.optional(__S(31, __c3, 7)),
-          scopeDocs: S.optional(__S(23, __c2, 7)),
+          assets: S.optional(__S(96, __c6, 0)),
+          scopeDocs: S.optional(__S(50, __c3, 2)),
           serviceRole: S.String,
-          logConfig: S.optional(__S(33, __c4, 1)),
-          reportDestination: S.optional(__S(40, __c5, 0)),
+          logConfig: S.optional(__S(32, __c2, 0)),
+          reportDestination: S.optional(__S(55, __c3, 7)),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/CreateThreatModel" }),
@@ -6394,33 +6444,45 @@ function __c21(j: number): any {
           ),
         ),
       ).annotate({ identifier: "CreateThreatModelInput" });
-    case 4:
+  }
+}
+function __c59(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           threatModelId: S.String,
           title: S.optional(S.String),
           agentSpaceId: S.optional(S.String),
           description: S.optional(S.String),
-          assets: S.optional(__S(31, __c3, 7)),
-          scopeDocs: S.optional(__S(23, __c2, 7)),
+          assets: S.optional(__S(96, __c6, 0)),
+          scopeDocs: S.optional(__S(50, __c3, 2)),
           serviceRole: S.optional(S.String),
-          logConfig: S.optional(__S(33, __c4, 1)),
+          logConfig: S.optional(__S(32, __c2, 0)),
           createdAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
           updatedAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-          reportDestination: S.optional(__S(40, __c5, 0)),
+          reportDestination: S.optional(__S(55, __c3, 7)),
         }),
       ).annotate({ identifier: "CreateThreatModelOutput" });
-    case 5:
+  }
+}
+function __c60(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ agentSpaceId: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/DeleteAgentSpace" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "DeleteAgentSpaceInput" });
-    case 6:
+    case 1:
       return S.suspend(() => S.Struct({ agentSpaceId: S.optional(S.String) })).annotate({
         identifier: "DeleteAgentSpaceOutput",
       });
-    case 7:
+  }
+}
+function __c61(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ applicationId: S.String }).pipe(
           T.all(
@@ -6435,7 +6497,7 @@ function __c21(j: number): any {
       ).annotate({ identifier: "DeleteApplicationRequest" });
   }
 }
-function __c22(j: number): any {
+function __c62(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -6443,7 +6505,11 @@ function __c22(j: number): any {
           T.all(T.Http({ method: "POST", uri: "/DeleteArtifact" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "DeleteArtifactInput" });
-    case 1:
+  }
+}
+function __c63(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ integrationId: S.String }).pipe(
           T.all(
@@ -6456,7 +6522,11 @@ function __c22(j: number): any {
           ),
         ),
       ).annotate({ identifier: "DeleteIntegrationInput" });
-    case 2:
+  }
+}
+function __c64(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           applicationId: S.String,
@@ -6467,7 +6537,11 @@ function __c22(j: number): any {
           T.all(T.Http({ method: "POST", uri: "/DeleteMembership" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "DeleteMembershipRequest" });
-    case 3:
+  }
+}
+function __c65(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ privateConnectionName: S.String }).pipe(
           T.all(
@@ -6482,7 +6556,11 @@ function __c22(j: number): any {
       ).annotate({
         identifier: "DeletePrivateConnectionInput",
       });
-    case 4:
+  }
+}
+function __c66(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ packId: S.String }).pipe(
           T.all(
@@ -6497,11 +6575,15 @@ function __c22(j: number): any {
       ).annotate({
         identifier: "DeleteSecurityRequirementPackInput",
       });
-    case 5:
+    case 1:
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "DeleteSecurityRequirementPackOutput",
       });
-    case 6:
+  }
+}
+function __c67(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ targetDomainId: S.String }).pipe(
           T.all(
@@ -6514,13 +6596,13 @@ function __c22(j: number): any {
           ),
         ),
       ).annotate({ identifier: "DeleteTargetDomainInput" });
-    case 7:
+    case 1:
       return S.suspend(() => S.Struct({ targetDomainId: S.optional(S.String) })).annotate({
         identifier: "DeleteTargetDomainOutput",
       });
   }
 }
-function __c23(j: number): any {
+function __c68(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -6537,58 +6619,66 @@ function __c23(j: number): any {
       ).annotate({
         identifier: "DescribePrivateConnectionInput",
       });
-    case 1:
+  }
+}
+function __c69(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ applicationId: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/GetApplication" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "GetApplicationRequest" });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({ idcApplicationArn: S.optional(S.String), idcInstanceArn: S.optional(S.String) }),
       ).annotate({ identifier: "IdCConfiguration" });
-    case 3:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           applicationId: S.String,
           domain: S.String,
           applicationName: S.optional(S.String),
-          idcConfiguration: S.optional(__S(186, __c23, 2)),
+          idcConfiguration: S.optional(__S(1105, __c69, 1)),
           roleArn: S.optional(S.String),
           defaultKmsKeyId: S.optional(S.String),
         }),
       ).annotate({ identifier: "GetApplicationResponse" });
-    case 4:
+  }
+}
+function __c70(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ agentSpaceId: S.String, artifactId: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/GetArtifact" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "GetArtifactInput" });
-    case 5:
+    case 1:
       return S.suspend(() => S.Struct({ contents: S.String, type: S.String })).annotate({
         identifier: "Artifact",
       });
-    case 6:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           agentSpaceId: S.String,
           artifactId: S.String,
-          artifact: __S(189, __c23, 5),
+          artifact: __S(1121, __c70, 1),
           fileName: S.String,
           updatedAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
         }),
       ).annotate({ identifier: "GetArtifactOutput" });
-    case 7:
+  }
+}
+function __c71(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ integrationId: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/GetIntegration" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "GetIntegrationInput" });
-  }
-}
-function __c24(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           integrationId: S.String,
@@ -6602,7 +6692,11 @@ function __c24(j: number): any {
           privateConnectionName: S.optional(S.String),
         }),
       ).annotate({ identifier: "GetIntegrationOutput" });
-    case 1:
+  }
+}
+function __c72(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ packId: S.String }).pipe(
           T.all(
@@ -6617,7 +6711,7 @@ function __c24(j: number): any {
       ).annotate({
         identifier: "GetSecurityRequirementPackInput",
       });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           packId: S.String,
@@ -6634,23 +6728,23 @@ function __c24(j: number): any {
       ).annotate({
         identifier: "GetSecurityRequirementPackOutput",
       });
-    case 3:
+  }
+}
+function __c73(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
-        S.Struct({
-          name: S.String,
-          format: S.String,
-          content: SensitiveBlob,
-        }),
+        S.Struct({ name: S.String, format: S.String, content: SensitiveBlob }),
       ).annotate({
         identifier: "SecurityRequirementArtifact",
       });
-    case 4:
-      return S.Array(__S(195, __c24, 3));
-    case 5:
-      return S.Union([/*@__PURE__*/ S.Struct({ documents: __S(196, __c24, 4) })]);
-    case 6:
+    case 1:
+      return S.Array(__S(1168, __c73, 0));
+    case 2:
+      return S.Union([/*@__PURE__*/ S.Struct({ documents: __S(1169, __c73, 1) })]);
+    case 3:
       return S.suspend(() =>
-        S.Struct({ packId: S.String, input: __S(197, __c24, 5) }).pipe(
+        S.Struct({ packId: S.String, input: __S(1170, __c73, 2) }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/ImportSecurityRequirements" }),
             svc,
@@ -6663,13 +6757,13 @@ function __c24(j: number): any {
       ).annotate({
         identifier: "ImportSecurityRequirementsInput",
       });
-    case 7:
+    case 4:
       return S.suspend(() => S.Struct({ packId: S.String, importStatus: S.String })).annotate({
         identifier: "ImportSecurityRequirementsOutput",
       });
   }
 }
-function __c25(j: number): any {
+function __c74(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -6696,7 +6790,11 @@ function __c25(j: number): any {
       return S.suspend(() => S.Struct({ redirectTo: S.String, csrfState: S.String })).annotate({
         identifier: "InitiateProviderRegistrationOutput",
       });
-    case 2:
+  }
+}
+function __c75(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           maxResults: S.optional(S.Number),
@@ -6715,7 +6813,7 @@ function __c25(j: number): any {
           ),
         ),
       ).annotate({ identifier: "ListActorMessagesInput" });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           sender: S.optional(SensitiveString),
@@ -6724,19 +6822,23 @@ function __c25(j: number): any {
           receivedAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
         }),
       ).annotate({ identifier: "ActorMessage" });
-    case 4:
-      return S.Array(__S(203, __c25, 3));
-    case 5:
+    case 2:
+      return S.Array(__S(1201, __c75, 1));
+    case 3:
       return S.suspend(() =>
-        S.Struct({ messages: S.optional(__S(204, __c25, 4)), nextToken: S.optional(S.String) }),
+        S.Struct({ messages: S.optional(__S(1202, __c75, 2)), nextToken: S.optional(S.String) }),
       ).annotate({ identifier: "ListActorMessagesOutput" });
-    case 6:
+  }
+}
+function __c76(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ nextToken: S.optional(S.String), maxResults: S.optional(S.Number) }).pipe(
           T.all(T.Http({ method: "POST", uri: "/ListAgentSpaces" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "ListAgentSpacesInput" });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           agentSpaceId: S.String,
@@ -6745,26 +6847,26 @@ function __c25(j: number): any {
           updatedAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
         }),
       ).annotate({ identifier: "AgentSpaceSummary" });
-  }
-}
-function __c26(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(207, __c25, 7));
-    case 1:
+    case 2:
+      return S.Array(__S(1217, __c76, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          agentSpaceSummaries: S.optional(__S(208, __c26, 0)),
+          agentSpaceSummaries: S.optional(__S(1218, __c76, 2)),
           nextToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListAgentSpacesOutput" });
-    case 2:
+  }
+}
+function __c77(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ nextToken: S.optional(S.String), maxResults: S.optional(S.Number) }).pipe(
           T.all(T.Http({ method: "POST", uri: "/ListApplications" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "ListApplicationsRequest" });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           applicationId: S.String,
@@ -6773,13 +6875,17 @@ function __c26(j: number): any {
           defaultKmsKeyId: S.optional(S.String),
         }),
       ).annotate({ identifier: "ApplicationSummary" });
-    case 4:
-      return S.Array(__S(211, __c26, 3));
-    case 5:
+    case 2:
+      return S.Array(__S(1233, __c77, 1));
+    case 3:
       return S.suspend(() =>
-        S.Struct({ applicationSummaries: __S(212, __c26, 4), nextToken: S.optional(S.String) }),
+        S.Struct({ applicationSummaries: __S(1234, __c77, 2), nextToken: S.optional(S.String) }),
       ).annotate({ identifier: "ListApplicationsResponse" });
-    case 6:
+  }
+}
+function __c78(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           agentSpaceId: S.String,
@@ -6789,21 +6895,21 @@ function __c26(j: number): any {
           T.all(T.Http({ method: "POST", uri: "/ListArtifacts" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "ListArtifactsInput" });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({ artifactId: S.String, fileName: S.String, artifactType: S.String }),
       ).annotate({ identifier: "ArtifactSummary" });
+    case 2:
+      return S.Array(__S(1249, __c78, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({ artifactSummaries: __S(1250, __c78, 2), nextToken: S.optional(S.String) }),
+      ).annotate({ identifier: "ListArtifactsOutput" });
   }
 }
-function __c27(j: number): any {
+function __c79(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(215, __c26, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({ artifactSummaries: __S(216, __c27, 0), nextToken: S.optional(S.String) }),
-      ).annotate({ identifier: "ListArtifactsOutput" });
-    case 2:
       return S.suspend(() =>
         S.Struct({
           maxResults: S.optional(S.Number),
@@ -6823,7 +6929,7 @@ function __c27(j: number): any {
       ).annotate({
         identifier: "ListCodeReviewJobsForCodeReviewInput",
       });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           codeReviewJobId: S.String,
@@ -6834,18 +6940,32 @@ function __c27(j: number): any {
           updatedAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
         }),
       ).annotate({ identifier: "CodeReviewJobSummary" });
-    case 4:
-      return S.Array(__S(219, __c27, 3));
-    case 5:
+    case 2:
+      return S.Array(__S(1265, __c79, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          codeReviewJobSummaries: S.optional(__S(220, __c27, 4)),
+          codeReviewJobSummaries: S.optional(__S(1266, __c79, 2)),
           nextToken: S.optional(S.String),
         }),
       ).annotate({
         identifier: "ListCodeReviewJobsForCodeReviewOutput",
       });
-    case 6:
+  }
+}
+function __c80(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({ path: S.String, message: S.String })).annotate({
+        identifier: "ValidationExceptionField",
+      });
+    case 1:
+      return S.Array(__S(1280, __c80, 0));
+  }
+}
+function __c81(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           agentSpaceId: S.String,
@@ -6867,7 +6987,7 @@ function __c27(j: number): any {
       ).annotate({
         identifier: "ListCodeReviewJobTasksInput",
       });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           taskId: S.String,
@@ -6881,22 +7001,22 @@ function __c27(j: number): any {
           updatedAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
         }),
       ).annotate({ identifier: "CodeReviewJobTaskSummary" });
-  }
-}
-function __c28(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(223, __c27, 7));
-    case 1:
+    case 2:
+      return S.Array(__S(1297, __c81, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          codeReviewJobTaskSummaries: S.optional(__S(224, __c28, 0)),
+          codeReviewJobTaskSummaries: S.optional(__S(1298, __c81, 2)),
           nextToken: S.optional(S.String),
         }),
       ).annotate({
         identifier: "ListCodeReviewJobTasksOutput",
       });
-    case 2:
+  }
+}
+function __c82(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           maxResults: S.optional(S.Number),
@@ -6906,7 +7026,7 @@ function __c28(j: number): any {
           T.all(T.Http({ method: "POST", uri: "/ListCodeReviews" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "ListCodeReviewsInput" });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           codeReviewId: S.String,
@@ -6916,16 +7036,20 @@ function __c28(j: number): any {
           updatedAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
         }),
       ).annotate({ identifier: "CodeReviewSummary" });
-    case 4:
-      return S.Array(__S(227, __c28, 3));
-    case 5:
+    case 2:
+      return S.Array(__S(1313, __c82, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          codeReviewSummaries: S.optional(__S(228, __c28, 4)),
+          codeReviewSummaries: S.optional(__S(1314, __c82, 2)),
           nextToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListCodeReviewsOutput" });
-    case 6:
+  }
+}
+function __c83(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           maxResults: S.optional(S.Number),
@@ -6946,7 +7070,7 @@ function __c28(j: number): any {
       ).annotate({
         identifier: "ListDiscoveredEndpointsInput",
       });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           uri: S.String,
@@ -6958,22 +7082,22 @@ function __c28(j: number): any {
           description: S.optional(S.String),
         }),
       ).annotate({ identifier: "DiscoveredEndpoint" });
-  }
-}
-function __c29(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(231, __c28, 7));
-    case 1:
+    case 2:
+      return S.Array(__S(1329, __c83, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          discoveredEndpoints: S.optional(__S(232, __c29, 0)),
+          discoveredEndpoints: S.optional(__S(1330, __c83, 2)),
           nextToken: S.optional(S.String),
         }),
       ).annotate({
         identifier: "ListDiscoveredEndpointsOutput",
       });
-    case 2:
+  }
+}
+function __c84(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           maxResults: S.optional(S.Number),
@@ -6990,7 +7114,7 @@ function __c29(j: number): any {
           T.all(T.Http({ method: "POST", uri: "/ListFindings" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "ListFindingsInput" });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           findingId: S.String,
@@ -7009,16 +7133,20 @@ function __c29(j: number): any {
           updatedAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
         }),
       ).annotate({ identifier: "FindingSummary" });
-    case 4:
-      return S.Array(__S(235, __c29, 3));
-    case 5:
+    case 2:
+      return S.Array(__S(1345, __c84, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          findingsSummaries: S.optional(__S(236, __c29, 4)),
+          findingsSummaries: S.optional(__S(1346, __c84, 2)),
           nextToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListFindingsOutput" });
-    case 6:
+  }
+}
+function __c85(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           agentSpaceId: S.String,
@@ -7039,7 +7167,7 @@ function __c29(j: number): any {
       ).annotate({
         identifier: "ListIntegratedResourcesInput",
       });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           name: S.String,
@@ -7048,11 +7176,7 @@ function __c29(j: number): any {
           accessType: S.optional(S.String),
         }),
       ).annotate({ identifier: "GitHubRepositoryMetadata" });
-  }
-}
-function __c30(j: number): any {
-  switch (j) {
-    case 0:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           name: S.String,
@@ -7061,7 +7185,7 @@ function __c30(j: number): any {
           accessType: S.optional(S.String),
         }),
       ).annotate({ identifier: "GitLabRepositoryMetadata" });
-    case 1:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           name: S.String,
@@ -7072,7 +7196,7 @@ function __c30(j: number): any {
       ).annotate({
         identifier: "BitbucketRepositoryMetadata",
       });
-    case 2:
+    case 4:
       return S.suspend(() =>
         S.Struct({
           name: S.String,
@@ -7085,7 +7209,7 @@ function __c30(j: number): any {
       ).annotate({
         identifier: "ConfluenceDocumentMetadata",
       });
-    case 3:
+    case 5:
       return S.suspend(() =>
         S.Struct({
           name: S.String,
@@ -7098,45 +7222,69 @@ function __c30(j: number): any {
       ).annotate({
         identifier: "AzureDevOpsRepositoryMetadata",
       });
-    case 4:
+    case 6:
       return S.Union([
-        /*@__PURE__*/ S.Struct({ githubRepository: __S(239, __c29, 7) }),
-        /*@__PURE__*/ S.Struct({ gitlabRepository: __S(240, __c30, 0) }),
-        /*@__PURE__*/ S.Struct({ bitbucketRepository: __S(241, __c30, 1) }),
-        /*@__PURE__*/ S.Struct({ confluenceDocument: __S(242, __c30, 2) }),
-        /*@__PURE__*/ S.Struct({ azureDevOpsRepository: __S(243, __c30, 3) }),
+        /*@__PURE__*/ S.Struct({ githubRepository: __S(1361, __c85, 1) }),
+        /*@__PURE__*/ S.Struct({ gitlabRepository: __S(1362, __c85, 2) }),
+        /*@__PURE__*/ S.Struct({ bitbucketRepository: __S(1363, __c85, 3) }),
+        /*@__PURE__*/ S.Struct({ confluenceDocument: __S(1364, __c85, 4) }),
+        /*@__PURE__*/ S.Struct({ azureDevOpsRepository: __S(1365, __c85, 5) }),
       ]);
-    case 5:
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          integrationId: S.String,
+          resource: __S(1366, __c85, 6),
+          capabilities: S.optional(__S(1382, __c86, 6)),
+        }),
+      ).annotate({
+        identifier: "IntegratedResourceSummary",
+      });
+    case 8:
+      return S.Array(__S(1367, __c85, 7));
+    case 9:
+      return S.suspend(() =>
+        S.Struct({
+          integratedResourceSummaries: __S(1368, __c85, 8),
+          nextToken: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "ListIntegratedResourcesOutput",
+      });
+  }
+}
+function __c86(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           type: S.String,
-          patterns: __S(10, __c1, 2),
+          patterns: __S(1888, __c118, 0),
           matchMode: S.optional(S.String),
         }),
       ).annotate({ identifier: "TriggerFilter" });
-    case 6:
-      return S.Array(__S(245, __c30, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({ events: S.optional(__S(32, __c4, 0)), filters: S.optional(__S(246, __c30, 6)) }),
-      ).annotate({ identifier: "TriggerFilterGroup" });
-  }
-}
-function __c31(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(247, __c30, 7));
     case 1:
+      return S.Array(__S(1376, __c86, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          triggerFilterGroups: S.optional(__S(248, __c31, 0)),
+          events: S.optional(__S(80, __c5, 0)),
+          filters: S.optional(__S(1377, __c86, 1)),
+        }),
+      ).annotate({ identifier: "TriggerFilterGroup" });
+    case 3:
+      return S.Array(__S(1378, __c86, 2));
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          triggerFilterGroups: S.optional(__S(1379, __c86, 3)),
           leaveComments: S.optional(S.Boolean),
           remediateCode: S.optional(S.Boolean),
         }),
       ).annotate({
         identifier: "GitHubResourceCapabilities",
       });
-    case 2:
+    case 5:
       return S.suspend(() =>
         S.Struct({
           fetchDocument: S.optional(S.Boolean),
@@ -7146,55 +7294,34 @@ function __c31(j: number): any {
       ).annotate({
         identifier: "ConfluenceResourceCapabilities",
       });
-    case 3:
-      return S.Union([
-        /*@__PURE__*/ S.Struct({ github: __S(249, __c31, 1) }),
-        /*@__PURE__*/ S.Struct({ gitlab: __S(249, __c31, 1) }),
-        /*@__PURE__*/ S.Struct({ bitbucket: __S(249, __c31, 1) }),
-        /*@__PURE__*/ S.Struct({ confluence: __S(250, __c31, 2) }),
-        /*@__PURE__*/ S.Struct({ azureDevOps: __S(249, __c31, 1) }),
-      ]);
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          integrationId: S.String,
-          resource: __S(244, __c30, 4),
-          capabilities: S.optional(__S(251, __c31, 3)),
-        }),
-      ).annotate({
-        identifier: "IntegratedResourceSummary",
-      });
-    case 5:
-      return S.Array(__S(252, __c31, 4));
     case 6:
-      return S.suspend(() =>
-        S.Struct({
-          integratedResourceSummaries: __S(253, __c31, 5),
-          nextToken: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "ListIntegratedResourcesOutput",
-      });
-    case 7:
+      return S.Union([
+        /*@__PURE__*/ S.Struct({ github: __S(1380, __c86, 4) }),
+        /*@__PURE__*/ S.Struct({ gitlab: __S(1380, __c86, 4) }),
+        /*@__PURE__*/ S.Struct({ bitbucket: __S(1380, __c86, 4) }),
+        /*@__PURE__*/ S.Struct({ confluence: __S(1381, __c86, 5) }),
+        /*@__PURE__*/ S.Struct({ azureDevOps: __S(1380, __c86, 4) }),
+      ]);
+  }
+}
+function __c87(j: number): any {
+  switch (j) {
+    case 0:
       return S.Union([
         /*@__PURE__*/ S.Struct({ provider: S.String }),
         /*@__PURE__*/ S.Struct({ providerType: S.String }),
       ]);
-  }
-}
-function __c32(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          filter: S.optional(__S(255, __c31, 7)),
+          filter: S.optional(__S(1392, __c87, 0)),
           nextToken: S.optional(S.String),
           maxResults: S.optional(S.Number),
         }).pipe(
           T.all(T.Http({ method: "POST", uri: "/ListIntegrations" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "ListIntegrationsInput" });
-    case 1:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           integrationId: S.String,
@@ -7207,13 +7334,17 @@ function __c32(j: number): any {
           privateConnectionName: S.optional(S.String),
         }),
       ).annotate({ identifier: "IntegrationSummary" });
-    case 2:
-      return S.Array(__S(257, __c32, 1));
     case 3:
-      return S.suspend(() =>
-        S.Struct({ integrationSummaries: __S(258, __c32, 2), nextToken: S.optional(S.String) }),
-      ).annotate({ identifier: "ListIntegrationsOutput" });
+      return S.Array(__S(1394, __c87, 2));
     case 4:
+      return S.suspend(() =>
+        S.Struct({ integrationSummaries: __S(1395, __c87, 3), nextToken: S.optional(S.String) }),
+      ).annotate({ identifier: "ListIntegrationsOutput" });
+  }
+}
+function __c88(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           applicationId: S.String,
@@ -7225,38 +7356,38 @@ function __c32(j: number): any {
           T.all(T.Http({ method: "POST", uri: "/ListMemberships" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "ListMembershipsRequest" });
-    case 5:
+    case 1:
       return S.suspend(() => S.Struct({ username: S.String, email: S.String })).annotate({
         identifier: "UserMetadata",
       });
-    case 6:
-      return S.Union([/*@__PURE__*/ S.Struct({ user: __S(261, __c32, 5) })]);
-    case 7:
+    case 2:
+      return S.Union([/*@__PURE__*/ S.Struct({ user: __S(1409, __c88, 1) })]);
+    case 3:
       return S.suspend(() =>
         S.Struct({
           membershipId: S.String,
           applicationId: S.String,
           agentSpaceId: S.String,
           memberType: S.String,
-          config: S.optional(__S(155, __c19, 3)),
-          metadata: S.optional(__S(262, __c32, 6)),
+          config: S.optional(__S(769, __c48, 1)),
+          metadata: S.optional(__S(1410, __c88, 2)),
           createdAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
           updatedAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
           createdBy: S.String,
           updatedBy: S.String,
         }),
       ).annotate({ identifier: "MembershipSummary" });
+    case 4:
+      return S.Array(__S(1411, __c88, 3));
+    case 5:
+      return S.suspend(() =>
+        S.Struct({ membershipSummaries: __S(1412, __c88, 4), nextToken: S.optional(S.String) }),
+      ).annotate({ identifier: "ListMembershipsResponse" });
   }
 }
-function __c33(j: number): any {
+function __c89(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(263, __c32, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({ membershipSummaries: __S(264, __c33, 0), nextToken: S.optional(S.String) }),
-      ).annotate({ identifier: "ListMembershipsResponse" });
-    case 2:
       return S.suspend(() =>
         S.Struct({
           maxResults: S.optional(S.Number),
@@ -7277,7 +7408,7 @@ function __c33(j: number): any {
       ).annotate({
         identifier: "ListPentestJobsForPentestInput",
       });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           pentestJobId: S.String,
@@ -7290,18 +7421,22 @@ function __c33(j: number): any {
           reportUrl: S.optional(S.String),
         }),
       ).annotate({ identifier: "PentestJobSummary" });
-    case 4:
-      return S.Array(__S(267, __c33, 3));
-    case 5:
+    case 2:
+      return S.Array(__S(1425, __c89, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          pentestJobSummaries: S.optional(__S(268, __c33, 4)),
+          pentestJobSummaries: S.optional(__S(1426, __c89, 2)),
           nextToken: S.optional(S.String),
         }),
       ).annotate({
         identifier: "ListPentestJobsForPentestOutput",
       });
-    case 6:
+  }
+}
+function __c90(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           agentSpaceId: S.String,
@@ -7321,7 +7456,7 @@ function __c33(j: number): any {
           ),
         ),
       ).annotate({ identifier: "ListPentestJobTasksInput" });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           taskId: S.String,
@@ -7336,22 +7471,22 @@ function __c33(j: number): any {
           updatedAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
         }),
       ).annotate({ identifier: "TaskSummary" });
-  }
-}
-function __c34(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(271, __c33, 7));
-    case 1:
+    case 2:
+      return S.Array(__S(1441, __c90, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          taskSummaries: S.optional(__S(272, __c34, 0)),
+          taskSummaries: S.optional(__S(1442, __c90, 2)),
           nextToken: S.optional(S.String),
         }),
       ).annotate({
         identifier: "ListPentestJobTasksOutput",
       });
-    case 2:
+  }
+}
+function __c91(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           maxResults: S.optional(S.Number),
@@ -7361,7 +7496,7 @@ function __c34(j: number): any {
           T.all(T.Http({ method: "POST", uri: "/ListPentests" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "ListPentestsInput" });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           pentestId: S.String,
@@ -7371,16 +7506,47 @@ function __c34(j: number): any {
           updatedAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
         }),
       ).annotate({ identifier: "PentestSummary" });
-    case 4:
-      return S.Array(__S(275, __c34, 3));
-    case 5:
+    case 2:
+      return S.Array(__S(1457, __c91, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          pentestSummaries: S.optional(__S(276, __c34, 4)),
+          pentestSummaries: S.optional(__S(1458, __c91, 2)),
           nextToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListPentestsOutput" });
-    case 6:
+  }
+}
+function __c92(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          agentSpaceId: S.String,
+          artifactContent: T.Blob,
+          artifactType: S.String,
+          fileName: S.String,
+        }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/AddArtifact" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "AddArtifactInput" });
+    case 1:
+      return S.suspend(() => S.Struct({ artifactId: S.String })).annotate({
+        identifier: "AddArtifactOutput",
+      });
+  }
+}
+function __c93(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({ uri: S.optional(S.String) })).annotate({
+        identifier: "Endpoint",
+      });
+  }
+}
+function __c94(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ maxResults: S.optional(S.Number), nextToken: S.optional(S.String) }).pipe(
           T.all(
@@ -7395,7 +7561,7 @@ function __c34(j: number): any {
       ).annotate({
         identifier: "ListPrivateConnectionsInput",
       });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           name: S.String,
@@ -7408,22 +7574,22 @@ function __c34(j: number): any {
           certificateExpiryTime: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
           dnsResolution: S.optional(S.String),
           failureMessage: S.optional(S.String),
-          tags: S.optional(__S(139, __c17, 3)),
+          tags: S.optional(__S(640, __c40, 0)),
         }),
       ).annotate({ identifier: "PrivateConnectionSummary" });
-  }
-}
-function __c35(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(279, __c34, 7));
-    case 1:
+    case 2:
+      return S.Array(__S(1505, __c94, 1));
+    case 3:
       return S.suspend(() =>
-        S.Struct({ privateConnections: __S(280, __c35, 0), nextToken: S.optional(S.String) }),
+        S.Struct({ privateConnections: __S(1506, __c94, 2), nextToken: S.optional(S.String) }),
       ).annotate({
         identifier: "ListPrivateConnectionsOutput",
       });
-    case 2:
+  }
+}
+function __c95(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           managementType: S.optional(S.String),
@@ -7432,10 +7598,10 @@ function __c35(j: number): any {
       ).annotate({
         identifier: "ListSecurityRequirementPackFilter",
       });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          filter: S.optional(__S(282, __c35, 2)),
+          filter: S.optional(__S(1520, __c95, 0)),
           nextToken: S.optional(S.String),
           maxResults: S.optional(S.Number),
         }).pipe(
@@ -7451,7 +7617,7 @@ function __c35(j: number): any {
       ).annotate({
         identifier: "ListSecurityRequirementPacksInput",
       });
-    case 4:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           packId: S.String,
@@ -7466,18 +7632,22 @@ function __c35(j: number): any {
       ).annotate({
         identifier: "SecurityRequirementPackSummary",
       });
-    case 5:
-      return S.Array(__S(284, __c35, 4));
-    case 6:
+    case 3:
+      return S.Array(__S(1522, __c95, 2));
+    case 4:
       return S.suspend(() =>
         S.Struct({
-          securityRequirementPackSummaries: __S(285, __c35, 5),
+          securityRequirementPackSummaries: __S(1523, __c95, 3),
           nextToken: S.optional(S.String),
         }),
       ).annotate({
         identifier: "ListSecurityRequirementPacksOutput",
       });
-    case 7:
+  }
+}
+function __c96(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           packId: S.String,
@@ -7496,11 +7666,7 @@ function __c35(j: number): any {
       ).annotate({
         identifier: "ListSecurityRequirementsInput",
       });
-  }
-}
-function __c36(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           packId: S.String,
@@ -7512,18 +7678,22 @@ function __c36(j: number): any {
       ).annotate({
         identifier: "SecurityRequirementSummary",
       });
-    case 1:
-      return S.Array(__S(288, __c36, 0));
     case 2:
+      return S.Array(__S(1537, __c96, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          securityRequirementSummaries: __S(289, __c36, 1),
+          securityRequirementSummaries: __S(1538, __c96, 2),
           nextToken: S.optional(S.String),
         }),
       ).annotate({
         identifier: "ListSecurityRequirementsOutput",
       });
-    case 3:
+  }
+}
+function __c97(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ resourceArn: S.String.pipe(T.HttpLabel("resourceArn")) }).pipe(
           T.all(
@@ -7536,11 +7706,15 @@ function __c36(j: number): any {
           ),
         ),
       ).annotate({ identifier: "ListTagsForResourceInput" });
-    case 4:
-      return S.suspend(() => S.Struct({ tags: S.optional(__S(139, __c17, 3)) })).annotate({
+    case 1:
+      return S.suspend(() => S.Struct({ tags: S.optional(__S(640, __c40, 0)) })).annotate({
         identifier: "ListTagsForResourceOutput",
       });
-    case 5:
+  }
+}
+function __c98(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ nextToken: S.optional(S.String), maxResults: S.optional(S.Number) }).pipe(
           T.all(
@@ -7553,7 +7727,7 @@ function __c36(j: number): any {
           ),
         ),
       ).annotate({ identifier: "ListTargetDomainsInput" });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           targetDomainId: S.String,
@@ -7561,20 +7735,20 @@ function __c36(j: number): any {
           verificationStatus: S.optional(S.String),
         }),
       ).annotate({ identifier: "TargetDomainSummary" });
-    case 7:
-      return S.Array(__S(294, __c36, 6));
-  }
-}
-function __c37(j: number): any {
-  switch (j) {
-    case 0:
+    case 2:
+      return S.Array(__S(1569, __c98, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          targetDomainSummaries: S.optional(__S(295, __c36, 7)),
+          targetDomainSummaries: S.optional(__S(1570, __c98, 2)),
           nextToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListTargetDomainsOutput" });
-    case 1:
+  }
+}
+function __c99(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           maxResults: S.optional(S.Number),
@@ -7592,7 +7766,7 @@ function __c37(j: number): any {
           ),
         ),
       ).annotate({ identifier: "ListThreatModelJobsInput" });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           threatModelJobId: S.String,
@@ -7604,18 +7778,22 @@ function __c37(j: number): any {
           updatedAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
         }),
       ).annotate({ identifier: "ThreatModelJobSummary" });
+    case 2:
+      return S.Array(__S(1585, __c99, 1));
     case 3:
-      return S.Array(__S(298, __c37, 2));
-    case 4:
       return S.suspend(() =>
         S.Struct({
-          threatModelJobSummaries: S.optional(__S(299, __c37, 3)),
+          threatModelJobSummaries: S.optional(__S(1586, __c99, 2)),
           nextToken: S.optional(S.String),
         }),
       ).annotate({
         identifier: "ListThreatModelJobsOutput",
       });
-    case 5:
+  }
+}
+function __c100(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           agentSpaceId: S.String,
@@ -7635,7 +7813,7 @@ function __c37(j: number): any {
       ).annotate({
         identifier: "ListThreatModelJobTasksInput",
       });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           taskId: S.String,
@@ -7650,22 +7828,22 @@ function __c37(j: number): any {
       ).annotate({
         identifier: "ThreatModelJobTaskSummary",
       });
-    case 7:
-      return S.Array(__S(302, __c37, 6));
-  }
-}
-function __c38(j: number): any {
-  switch (j) {
-    case 0:
+    case 2:
+      return S.Array(__S(1601, __c100, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          threatModelJobTaskSummaries: S.optional(__S(303, __c37, 7)),
+          threatModelJobTaskSummaries: S.optional(__S(1602, __c100, 2)),
           nextToken: S.optional(S.String),
         }),
       ).annotate({
         identifier: "ListThreatModelJobTasksOutput",
       });
-    case 1:
+  }
+}
+function __c101(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           maxResults: S.optional(S.Number),
@@ -7675,7 +7853,7 @@ function __c38(j: number): any {
           T.all(T.Http({ method: "POST", uri: "/ListThreatModels" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "ListThreatModelsInput" });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           threatModelId: S.String,
@@ -7685,16 +7863,20 @@ function __c38(j: number): any {
           updatedAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
         }),
       ).annotate({ identifier: "ThreatModelSummary" });
+    case 2:
+      return S.Array(__S(1617, __c101, 1));
     case 3:
-      return S.Array(__S(306, __c38, 2));
-    case 4:
       return S.suspend(() =>
         S.Struct({
-          threatModelSummaries: S.optional(__S(307, __c38, 3)),
+          threatModelSummaries: S.optional(__S(1618, __c101, 2)),
           nextToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListThreatModelsOutput" });
-    case 5:
+  }
+}
+function __c102(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           threatJobId: S.String,
@@ -7705,7 +7887,7 @@ function __c38(j: number): any {
           T.all(T.Http({ method: "POST", uri: "/ListThreats" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "ListThreatsInput" });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           threatId: S.optional(S.String),
@@ -7714,30 +7896,30 @@ function __c38(j: number): any {
           statement: S.optional(S.String),
           severity: S.optional(S.String),
           status: S.optional(S.String),
-          stride: S.optional(__S(32, __c4, 0)),
+          stride: S.optional(__S(80, __c5, 0)),
           createdBy: S.optional(S.String),
           updatedBy: S.optional(S.String),
           createdAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
           updatedAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
         }),
       ).annotate({ identifier: "ThreatSummary" });
-    case 7:
-      return S.Array(__S(310, __c38, 6));
+    case 2:
+      return S.Array(__S(1633, __c102, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({ threats: S.optional(__S(1634, __c102, 2)), nextToken: S.optional(S.String) }),
+      ).annotate({ identifier: "ListThreatsOutput" });
   }
 }
-function __c39(j: number): any {
+function __c103(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() =>
-        S.Struct({ threats: S.optional(__S(311, __c38, 7)), nextToken: S.optional(S.String) }),
-      ).annotate({ identifier: "ListThreatsOutput" });
-    case 1:
       return S.suspend(() =>
         S.Struct({
           agentSpaceId: S.String,
           pentestJobId: S.optional(S.String),
           codeReviewJobId: S.optional(S.String),
-          findingIds: __S(10, __c1, 2),
+          findingIds: __S(1888, __c118, 0),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/StartCodeRemediation" }),
@@ -7751,14 +7933,93 @@ function __c39(j: number): any {
       ).annotate({
         identifier: "StartCodeRemediationInput",
       });
+  }
+}
+function __c104(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String,
+          description: S.String,
+          domain: S.String,
+          evaluation: S.String,
+          remediation: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "CreateSecurityRequirementEntry",
+      });
+    case 1:
+      return S.Array(__S(1664, __c104, 0));
     case 2:
+      return S.suspend(() =>
+        S.Struct({ packId: S.String, securityRequirements: __S(1665, __c104, 1) }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/BatchCreateSecurityRequirements" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "BatchCreateSecurityRequirementsInput",
+      });
+  }
+}
+function __c105(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ securityRequirementName: S.String, code: S.String, message: S.String }),
+      ).annotate({
+        identifier: "BatchSecurityRequirementError",
+      });
+    case 1:
+      return S.Array(__S(1680, __c105, 0));
+  }
+}
+function __c106(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          packId: S.String,
+          name: S.String,
+          description: S.String,
+          domain: S.String,
+          evaluation: S.String,
+          remediation: S.optional(S.String),
+          createdAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
+          updatedAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
+        }),
+      ).annotate({
+        identifier: "BatchCreateSecurityRequirementResult",
+      });
+    case 1:
+      return S.Array(__S(1696, __c106, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          securityRequirements: __S(1697, __c106, 1),
+          errors: __S(1681, __c105, 1),
+        }),
+      ).annotate({
+        identifier: "BatchCreateSecurityRequirementsOutput",
+      });
+  }
+}
+function __c107(j: number): any {
+  switch (j) {
+    case 0:
       return S.Union([/*@__PURE__*/ S.Struct({ s3Uri: S.String })]);
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           agentSpaceId: S.String,
           codeReviewId: S.String,
-          diffSource: S.optional(__S(314, __c39, 2)),
+          diffSource: S.optional(__S(1712, __c107, 0)),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/StartCodeReviewJob" }),
@@ -7770,7 +8031,7 @@ function __c39(j: number): any {
           ),
         ),
       ).annotate({ identifier: "StartCodeReviewJobInput" });
-    case 4:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           title: S.optional(S.String),
@@ -7782,19 +8043,23 @@ function __c39(j: number): any {
           agentSpaceId: S.optional(S.String),
         }),
       ).annotate({ identifier: "StartCodeReviewJobOutput" });
-    case 5:
+  }
+}
+function __c108(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           agentSpaceId: S.String,
           pentestId: S.String,
           jobType: S.optional(S.String),
-          selectedFindingIds: S.optional(__S(10, __c1, 2)),
-          scopeChanges: S.optional(__S(98, __c12, 2)),
+          selectedFindingIds: S.optional(__S(1888, __c118, 0)),
+          scopeChanges: S.optional(__S(433, __c27, 1)),
         }).pipe(
           T.all(T.Http({ method: "POST", uri: "/StartPentestJob" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "StartPentestJobInput" });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           title: S.optional(S.String),
@@ -7806,7 +8071,11 @@ function __c39(j: number): any {
           agentSpaceId: S.optional(S.String),
         }),
       ).annotate({ identifier: "StartPentestJobOutput" });
-    case 7:
+  }
+}
+function __c109(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ agentSpaceId: S.String, threatModelId: S.String }).pipe(
           T.all(
@@ -7819,11 +8088,7 @@ function __c39(j: number): any {
           ),
         ),
       ).annotate({ identifier: "StartThreatModelJobInput" });
-  }
-}
-function __c40(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           title: S.optional(S.String),
@@ -7837,7 +8102,11 @@ function __c40(j: number): any {
       ).annotate({
         identifier: "StartThreatModelJobOutput",
       });
-    case 1:
+  }
+}
+function __c110(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ agentSpaceId: S.String, codeReviewJobId: S.String }).pipe(
           T.all(
@@ -7850,13 +8119,21 @@ function __c40(j: number): any {
           ),
         ),
       ).annotate({ identifier: "StopCodeReviewJobInput" });
-    case 2:
+  }
+}
+function __c111(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ agentSpaceId: S.String, pentestJobId: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/StopPentestJob" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "StopPentestJobInput" });
-    case 3:
+  }
+}
+function __c112(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ agentSpaceId: S.String, threatModelJobId: S.String }).pipe(
           T.all(
@@ -7869,11 +8146,15 @@ function __c40(j: number): any {
           ),
         ),
       ).annotate({ identifier: "StopThreatModelJobInput" });
-    case 4:
+  }
+}
+function __c113(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           resourceArn: S.String.pipe(T.HttpLabel("resourceArn")),
-          tags: __S(139, __c17, 3),
+          tags: __S(640, __c40, 0),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/tags/{resourceArn}" }),
@@ -7885,11 +8166,15 @@ function __c40(j: number): any {
           ),
         ),
       ).annotate({ identifier: "TagResourceInput" });
-    case 5:
+  }
+}
+function __c114(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           resourceArn: S.String.pipe(T.HttpLabel("resourceArn")),
-          tagKeys: __S(10, __c1, 2).pipe(T.HttpQuery("tagKeys")),
+          tagKeys: __S(1888, __c118, 0).pipe(T.HttpQuery("tagKeys")),
         }).pipe(
           T.all(
             T.Http({ method: "DELETE", uri: "/tags/{resourceArn}" }),
@@ -7901,35 +8186,39 @@ function __c40(j: number): any {
           ),
         ),
       ).annotate({ identifier: "UntagResourceInput" });
-    case 6:
+  }
+}
+function __c115(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           agentSpaceId: S.String,
           name: S.optional(S.String),
           description: S.optional(S.String),
-          awsResources: S.optional(__S(56, __c7, 0)),
-          targetDomainIds: S.optional(__S(10, __c1, 2)),
-          codeReviewSettings: S.optional(__S(57, __c7, 1)),
+          awsResources: S.optional(__S(257, __c16, 1)),
+          targetDomainIds: S.optional(__S(1888, __c118, 0)),
+          codeReviewSettings: S.optional(__S(258, __c16, 2)),
         }).pipe(
           T.all(T.Http({ method: "POST", uri: "/UpdateAgentSpace" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "UpdateAgentSpaceInput" });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           agentSpaceId: S.String,
           name: S.String,
           description: S.optional(S.String),
-          awsResources: S.optional(__S(56, __c7, 0)),
-          targetDomainIds: S.optional(__S(10, __c1, 2)),
-          codeReviewSettings: S.optional(__S(57, __c7, 1)),
+          awsResources: S.optional(__S(257, __c16, 1)),
+          targetDomainIds: S.optional(__S(1888, __c118, 0)),
+          codeReviewSettings: S.optional(__S(258, __c16, 2)),
           createdAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
           updatedAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
         }),
       ).annotate({ identifier: "UpdateAgentSpaceOutput" });
   }
 }
-function __c41(j: number): any {
+function __c116(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -7948,25 +8237,73 @@ function __c41(j: number): any {
           ),
         ),
       ).annotate({ identifier: "UpdateApplicationRequest" });
+  }
+}
+function __c117(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ codeReviewIds: __S(1888, __c118, 0), agentSpaceId: S.String }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/BatchDeleteCodeReviews" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "BatchDeleteCodeReviewsInput",
+      });
     case 1:
+      return S.suspend(() =>
+        S.Struct({ codeReviewId: S.optional(S.String), reason: S.optional(S.String) }),
+      ).annotate({ identifier: "DeleteCodeReviewFailure" });
+    case 2:
+      return S.Array(__S(1873, __c117, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          deleted: S.optional(__S(1888, __c118, 0)),
+          failed: S.optional(__S(1874, __c117, 2)),
+        }),
+      ).annotate({
+        identifier: "BatchDeleteCodeReviewsOutput",
+      });
+  }
+}
+function __c118(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c119(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           codeReviewId: S.String,
           agentSpaceId: S.String,
           title: S.optional(S.String),
-          assets: S.optional(__S(31, __c3, 7)),
+          assets: S.optional(__S(96, __c6, 0)),
           serviceRole: S.optional(S.String),
-          logConfig: S.optional(__S(33, __c4, 1)),
+          logConfig: S.optional(__S(32, __c2, 0)),
           codeRemediationStrategy: S.optional(S.String),
           validationMode: S.optional(S.String),
           maxTaskHours: S.optional(S.Number),
-          reportDestination: S.optional(__S(40, __c5, 0)),
-          reportFilters: S.optional(__S(41, __c5, 1)),
+          reportDestination: S.optional(__S(55, __c3, 7)),
+          reportFilters: S.optional(__S(112, __c7, 0)),
         }).pipe(
           T.all(T.Http({ method: "POST", uri: "/UpdateCodeReview" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "UpdateCodeReviewInput" });
-    case 2:
+  }
+}
+function __c120(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           findingId: S.String,
@@ -7984,19 +8321,23 @@ function __c41(j: number): any {
           T.all(T.Http({ method: "POST", uri: "/UpdateFinding" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "UpdateFindingInput" });
-    case 3:
+  }
+}
+function __c121(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() => S.Struct({ name: S.String, owner: S.String })).annotate({
         identifier: "GitHubRepositoryResource",
       });
-    case 4:
+    case 1:
       return S.suspend(() => S.Struct({ name: S.String, namespace: S.String })).annotate({
         identifier: "GitLabRepositoryResource",
       });
-    case 5:
+    case 2:
       return S.suspend(() => S.Struct({ name: S.String, workspace: S.String })).annotate({
         identifier: "BitbucketRepositoryResource",
       });
-    case 6:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           name: S.String,
@@ -8008,41 +8349,37 @@ function __c41(j: number): any {
       ).annotate({
         identifier: "ConfluenceDocumentResource",
       });
-    case 7:
+    case 4:
       return S.suspend(() =>
         S.Struct({ name: S.String, organization: S.String, project: S.optional(S.String) }),
       ).annotate({
         identifier: "AzureDevOpsRepositoryResource",
       });
-  }
-}
-function __c42(j: number): any {
-  switch (j) {
-    case 0:
+    case 5:
       return S.Union([
-        /*@__PURE__*/ S.Struct({ githubRepository: __S(331, __c41, 3) }),
-        /*@__PURE__*/ S.Struct({ gitlabRepository: __S(332, __c41, 4) }),
-        /*@__PURE__*/ S.Struct({ bitbucketRepository: __S(333, __c41, 5) }),
-        /*@__PURE__*/ S.Struct({ confluenceDocument: __S(334, __c41, 6) }),
-        /*@__PURE__*/ S.Struct({ azureDevOpsRepository: __S(335, __c41, 7) }),
+        /*@__PURE__*/ S.Struct({ githubRepository: __S(1936, __c121, 0) }),
+        /*@__PURE__*/ S.Struct({ gitlabRepository: __S(1937, __c121, 1) }),
+        /*@__PURE__*/ S.Struct({ bitbucketRepository: __S(1938, __c121, 2) }),
+        /*@__PURE__*/ S.Struct({ confluenceDocument: __S(1939, __c121, 3) }),
+        /*@__PURE__*/ S.Struct({ azureDevOpsRepository: __S(1940, __c121, 4) }),
       ]);
-    case 1:
+    case 6:
       return S.suspend(() =>
         S.Struct({
-          resource: __S(336, __c42, 0),
-          capabilities: S.optional(__S(251, __c31, 3)),
+          resource: __S(1941, __c121, 5),
+          capabilities: S.optional(__S(1382, __c86, 6)),
         }),
       ).annotate({
         identifier: "IntegratedResourceInputItem",
       });
-    case 2:
-      return S.Array(__S(337, __c42, 1));
-    case 3:
+    case 7:
+      return S.Array(__S(1942, __c121, 6));
+    case 8:
       return S.suspend(() =>
         S.Struct({
           agentSpaceId: S.String,
           integrationId: S.String,
-          items: __S(338, __c42, 2),
+          items: __S(1943, __c121, 7),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/UpdateIntegratedResources" }),
@@ -8056,11 +8393,15 @@ function __c42(j: number): any {
       ).annotate({
         identifier: "UpdateIntegratedResourcesInput",
       });
-    case 4:
+    case 9:
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "UpdateIntegratedResourcesOutput",
       });
-    case 5:
+  }
+}
+function __c122(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ integrationId: S.String, webhookAction: S.String }).pipe(
           T.all(
@@ -8073,7 +8414,7 @@ function __c42(j: number): any {
           ),
         ),
       ).annotate({ identifier: "UpdateIntegrationInput" });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           integrationId: S.String,
@@ -8081,31 +8422,35 @@ function __c42(j: number): any {
           secret: S.optional(SensitiveString),
         }),
       ).annotate({ identifier: "UpdateIntegrationOutput" });
-    case 7:
+  }
+}
+function __c123(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           pentestId: S.String,
           agentSpaceId: S.String,
           title: S.optional(S.String),
-          assets: S.optional(__S(31, __c3, 7)),
-          excludeRiskTypes: S.optional(__S(32, __c4, 0)),
+          assets: S.optional(__S(96, __c6, 0)),
+          excludeRiskTypes: S.optional(__S(80, __c5, 0)),
           serviceRole: S.optional(S.String),
-          logConfig: S.optional(__S(33, __c4, 1)),
-          vpcConfig: S.optional(__S(34, __c4, 2)),
-          networkTrafficConfig: S.optional(__S(39, __c4, 7)),
+          logConfig: S.optional(__S(32, __c2, 0)),
+          vpcConfig: S.optional(__S(16, __c1, 0)),
+          networkTrafficConfig: S.optional(__S(146, __c9, 2)),
           codeRemediationStrategy: S.optional(S.String),
-          disableManagedSkills: S.optional(__S(32, __c4, 0)),
+          disableManagedSkills: S.optional(__S(80, __c5, 0)),
           maxTaskHours: S.optional(S.Number),
-          reportDestination: S.optional(__S(40, __c5, 0)),
-          reportFilters: S.optional(__S(41, __c5, 1)),
-          cicdConfiguration: S.optional(__S(42, __c5, 2)),
+          reportDestination: S.optional(__S(55, __c3, 7)),
+          reportFilters: S.optional(__S(112, __c7, 0)),
+          cicdConfiguration: S.optional(__S(147, __c9, 3)),
         }).pipe(
           T.all(T.Http({ method: "POST", uri: "/UpdatePentest" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "UpdatePentestInput" });
   }
 }
-function __c43(j: number): any {
+function __c124(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -8122,7 +8467,11 @@ function __c43(j: number): any {
       ).annotate({
         identifier: "UpdatePrivateConnectionCertificateInput",
       });
-    case 1:
+  }
+}
+function __c125(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           packId: S.String,
@@ -8142,7 +8491,7 @@ function __c43(j: number): any {
       ).annotate({
         identifier: "UpdateSecurityRequirementPackInput",
       });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           packId: S.String,
@@ -8153,7 +8502,11 @@ function __c43(j: number): any {
       ).annotate({
         identifier: "UpdateSecurityRequirementPackOutput",
       });
-    case 3:
+  }
+}
+function __c126(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ targetDomainId: S.String, verificationMethod: S.String }).pipe(
           T.all(
@@ -8166,7 +8519,11 @@ function __c43(j: number): any {
           ),
         ),
       ).annotate({ identifier: "UpdateTargetDomainInput" });
-    case 4:
+  }
+}
+function __c127(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           threatId: S.String,
@@ -8180,27 +8537,31 @@ function __c43(j: number): any {
           prerequisites: S.optional(S.String),
           threatAction: S.optional(S.String),
           threatImpact: S.optional(S.String),
-          impactedGoal: S.optional(__S(10, __c1, 2)),
-          impactedAssets: S.optional(__S(10, __c1, 2)),
-          anchor: S.optional(__S(129, __c16, 1)),
-          evidence: S.optional(__S(131, __c16, 3)),
+          impactedGoal: S.optional(__S(1888, __c118, 0)),
+          impactedAssets: S.optional(__S(1888, __c118, 0)),
+          anchor: S.optional(__S(592, __c37, 0)),
+          evidence: S.optional(__S(594, __c37, 2)),
           recommendation: S.optional(S.String),
         }).pipe(
           T.all(T.Http({ method: "POST", uri: "/UpdateThreat" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "UpdateThreatInput" });
-    case 5:
+  }
+}
+function __c128(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           threatModelId: S.String,
           agentSpaceId: S.String,
           title: S.optional(S.String),
           description: S.optional(S.String),
-          assets: S.optional(__S(31, __c3, 7)),
-          scopeDocs: S.optional(__S(23, __c2, 7)),
+          assets: S.optional(__S(96, __c6, 0)),
+          scopeDocs: S.optional(__S(50, __c3, 2)),
           serviceRole: S.optional(S.String),
-          logConfig: S.optional(__S(33, __c4, 1)),
-          reportDestination: S.optional(__S(40, __c5, 0)),
+          logConfig: S.optional(__S(32, __c2, 0)),
+          reportDestination: S.optional(__S(55, __c3, 7)),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/UpdateThreatModel" }),
@@ -8212,44 +8573,8 @@ function __c43(j: number): any {
           ),
         ),
       ).annotate({ identifier: "UpdateThreatModelInput" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({ targetDomainId: S.String }).pipe(
-          T.all(
-            T.Http({ method: "POST", uri: "/VerifyTargetDomain" }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({ identifier: "VerifyTargetDomainInput" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          targetDomainId: S.optional(S.String),
-          domainName: S.optional(S.String),
-          createdAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-          updatedAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-          verifiedAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-          status: S.optional(S.String),
-          verificationStatusReason: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "VerifyTargetDomainOutput" });
   }
 }
-function __c44(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() => S.Struct({ path: S.String, message: S.String })).annotate({
-        identifier: "ValidationExceptionField",
-      });
-    case 1:
-      return S.Array(__S(352, __c44, 0));
-  }
-}
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

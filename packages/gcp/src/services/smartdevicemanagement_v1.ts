@@ -176,8 +176,8 @@ export const executeCommandEnterprisesDevices: API.OperationMethod<
   ExecuteCommandEnterprisesDevicesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2, __c0, 2) as any as S.Schema<ExecuteCommandEnterprisesDevicesRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<GoogleHomeEnterpriseSdmV1ExecuteDeviceCommandResponse>,
+  input: __S(5, __c1, 1) as any as S.Schema<ExecuteCommandEnterprisesDevicesRequest>,
+  output: __S(6, __c1, 2) as any as S.Schema<GoogleHomeEnterpriseSdmV1ExecuteDeviceCommandResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -191,8 +191,8 @@ export const getEnterprisesDevices: API.OperationMethod<
   GetEnterprisesDevicesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(4, __c0, 4) as any as S.Schema<GetEnterprisesDevicesRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<GoogleHomeEnterpriseSdmV1Device>,
+  input: __S(12, __c3, 0) as any as S.Schema<GetEnterprisesDevicesRequest>,
+  output: __S(18, __c4, 2) as any as S.Schema<GoogleHomeEnterpriseSdmV1Device>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -206,8 +206,8 @@ export const getEnterprisesStructures: API.OperationMethod<
   GetEnterprisesStructuresError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(8, __c1, 0) as any as S.Schema<GetEnterprisesStructuresRequest>,
-  output: __S(9, __c1, 1) as any as S.Schema<GoogleHomeEnterpriseSdmV1Structure>,
+  input: __S(20, __c5, 0) as any as S.Schema<GetEnterprisesStructuresRequest>,
+  output: __S(24, __c6, 0) as any as S.Schema<GoogleHomeEnterpriseSdmV1Structure>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -221,8 +221,8 @@ export const getEnterprisesStructuresRooms: API.OperationMethod<
   GetEnterprisesStructuresRoomsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(10, __c1, 2) as any as S.Schema<GetEnterprisesStructuresRoomsRequest>,
-  output: __S(9, __c1, 1) as any as S.Schema<GoogleHomeEnterpriseSdmV1Room>,
+  input: __S(28, __c7, 0) as any as S.Schema<GetEnterprisesStructuresRoomsRequest>,
+  output: __S(24, __c6, 0) as any as S.Schema<GoogleHomeEnterpriseSdmV1Room>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -236,8 +236,8 @@ export const listEnterprisesDevices: API.OperationMethod<
   ListEnterprisesDevicesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(11, __c1, 3) as any as S.Schema<ListEnterprisesDevicesRequest>,
-  output: __S(13, __c1, 5) as any as S.Schema<GoogleHomeEnterpriseSdmV1ListDevicesResponse>,
+  input: __S(32, __c8, 0) as any as S.Schema<ListEnterprisesDevicesRequest>,
+  output: __S(34, __c8, 2) as any as S.Schema<GoogleHomeEnterpriseSdmV1ListDevicesResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -251,8 +251,8 @@ export const listEnterprisesStructures: API.OperationMethod<
   ListEnterprisesStructuresError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(14, __c1, 6) as any as S.Schema<ListEnterprisesStructuresRequest>,
-  output: __S(16, __c2, 0) as any as S.Schema<GoogleHomeEnterpriseSdmV1ListStructuresResponse>,
+  input: __S(36, __c9, 0) as any as S.Schema<ListEnterprisesStructuresRequest>,
+  output: __S(37, __c9, 1) as any as S.Schema<GoogleHomeEnterpriseSdmV1ListStructuresResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -266,8 +266,8 @@ export const listEnterprisesStructuresRooms: API.OperationMethod<
   ListEnterprisesStructuresRoomsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(17, __c2, 1) as any as S.Schema<ListEnterprisesStructuresRoomsRequest>,
-  output: __S(18, __c2, 2) as any as S.Schema<GoogleHomeEnterpriseSdmV1ListRoomsResponse>,
+  input: __S(0, __c0, 0) as any as S.Schema<ListEnterprisesStructuresRoomsRequest>,
+  output: __S(1, __c0, 1) as any as S.Schema<GoogleHomeEnterpriseSdmV1ListRoomsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -277,21 +277,45 @@ export const listEnterprisesStructuresRooms: API.OperationMethod<
 function __c0(j: number): any {
   switch (j) {
     case 0:
-      return S.Record(S.String, S.Unknown);
+      return S.suspend(() =>
+        S.Struct({
+          parent: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v1/{+parent}/rooms",
+            baseUrl: "https://smartdevicemanagement.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListEnterprisesStructuresRoomsRequest",
+      });
     case 1:
       return S.suspend(() =>
         S.Struct({
+          rooms: S.optional(__S(40, __c10, 0)),
+        }),
+      ).annotate({
+        identifier: "GoogleHomeEnterpriseSdmV1ListRoomsResponse",
+      });
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
           command: S.optional(S.String),
-          params: S.optional(__S(0, __c0, 0)),
+          params: S.optional(__S(8, __c2, 0)),
         }),
       ).annotate({
         identifier: "GoogleHomeEnterpriseSdmV1ExecuteDeviceCommandRequest",
       });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(1, __c0, 1).pipe(T.HttpBody())),
+          body: S.optional(__S(4, __c1, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -302,15 +326,25 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "ExecuteCommandEnterprisesDevicesRequest",
       });
-    case 3:
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          results: S.optional(__S(0, __c0, 0)),
+          results: S.optional(__S(8, __c2, 0)),
         }),
       ).annotate({
         identifier: "GoogleHomeEnterpriseSdmV1ExecuteDeviceCommandResponse",
       });
-    case 4:
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, S.Unknown);
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -324,7 +358,11 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "GetEnterprisesDevicesRequest",
       });
-    case 5:
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           displayName: S.optional(S.String),
@@ -333,22 +371,22 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "GoogleHomeEnterpriseSdmV1ParentRelation",
       });
-    case 6:
-      return S.Array(__S(5, __c0, 5));
-    case 7:
+    case 1:
+      return S.Array(__S(16, __c4, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          traits: S.optional(__S(0, __c0, 0)),
+          traits: S.optional(__S(8, __c2, 0)),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          parentRelations: S.optional(__S(6, __c0, 6)),
+          parentRelations: S.optional(__S(17, __c4, 1)),
         }),
       ).annotate({
         identifier: "GoogleHomeEnterpriseSdmV1Device",
       });
   }
 }
-function __c1(j: number): any {
+function __c5(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -364,16 +402,24 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "GetEnterprisesStructuresRequest",
       });
-    case 1:
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
-          traits: S.optional(__S(0, __c0, 0)),
+          traits: S.optional(__S(8, __c2, 0)),
         }),
       ).annotate({
         identifier: "GoogleHomeEnterpriseSdmV1Structure",
       });
-    case 2:
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -387,7 +433,11 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "GetEnterprisesStructuresRoomsRequest",
       });
-    case 3:
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
@@ -402,17 +452,21 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "ListEnterprisesDevicesRequest",
       });
-    case 4:
-      return S.Array(__S(7, __c0, 7));
-    case 5:
+    case 1:
+      return S.Array(__S(18, __c4, 2));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          devices: S.optional(__S(12, __c1, 4)),
+          devices: S.optional(__S(33, __c8, 1)),
         }),
       ).annotate({
         identifier: "GoogleHomeEnterpriseSdmV1ListDevicesResponse",
       });
-    case 6:
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
@@ -427,45 +481,22 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "ListEnterprisesStructuresRequest",
       });
-    case 7:
-      return S.Array(__S(9, __c1, 1));
-  }
-}
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          structures: S.optional(__S(15, __c1, 7)),
+          structures: S.optional(__S(40, __c10, 0)),
         }),
       ).annotate({
         identifier: "GoogleHomeEnterpriseSdmV1ListStructuresResponse",
       });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          parent: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v1/{+parent}/rooms",
-            baseUrl: "https://smartdevicemanagement.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListEnterprisesStructuresRoomsRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          rooms: S.optional(__S(15, __c1, 7)),
-        }),
-      ).annotate({
-        identifier: "GoogleHomeEnterpriseSdmV1ListRoomsResponse",
-      });
   }
 }
-
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(24, __c6, 0));
+  }
+}
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

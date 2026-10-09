@@ -975,8 +975,8 @@ export type CreateAdError = BadRequest | NotFound | Conflict | WhopOpError;
 /** Create an Ad Creates an ad in an ad group. Any campaign status other than `draft` launches the campaign, which requires an ads payment method on the account. */
 export const createAd: API.OperationMethod<CreateAdRequest, Ad, CreateAdError, WhopOpContext> =
   /*@__PURE__*/ API.make(() => ({
-    input: __S(23, __c2, 7) as any as S.Schema<CreateAdRequest>,
-    output: __S(48, __c6, 0) as any as S.Schema<Ad>,
+    input: __S(33, __c1, 1) as any as S.Schema<CreateAdRequest>,
+    output: __S(122, __c3, 26) as any as S.Schema<Ad>,
     errors: [BadRequest, NotFound, Conflict],
     protocol: WhopProtocol,
     retry: Retry.Retry,
@@ -990,8 +990,8 @@ export const deleteAd: API.OperationMethod<
   DeleteAdError,
   WhopOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(49, __c6, 1) as any as S.Schema<DeleteAdRequest>,
-  output: __S(50, __c6, 2) as any as S.Schema<DeleteAdResponse>,
+  input: __S(128, __c4, 0) as any as S.Schema<DeleteAdRequest>,
+  output: __S(129, __c4, 1) as any as S.Schema<DeleteAdResponse>,
   errors: [NotFound],
   protocol: WhopProtocol,
   retry: Retry.Retry,
@@ -1005,8 +1005,8 @@ export const duplicateAd: API.OperationMethod<
   DuplicateAdError,
   WhopOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(51, __c6, 3) as any as S.Schema<DuplicateAdRequest>,
-  output: __S(53, __c6, 5) as any as S.Schema<DuplicateAdResponse>,
+  input: __S(160, __c5, 0) as any as S.Schema<DuplicateAdRequest>,
+  output: __S(161, __c5, 1) as any as S.Schema<DuplicateAdResponse>,
   errors: [BadRequest, NotFound, Conflict],
   protocol: WhopProtocol,
   retry: Retry.Retry,
@@ -1016,8 +1016,8 @@ export type GetAdError = NotFound | WhopOpError;
 /** Retrieve an Ad Retrieves a single ad with stats over the requested window. */
 export const getAd: API.OperationMethod<GetAdRequest, Ad, GetAdError, WhopOpContext> =
   /*@__PURE__*/ API.make(() => ({
-    input: __S(54, __c6, 6) as any as S.Schema<GetAdRequest>,
-    output: __S(48, __c6, 0) as any as S.Schema<Ad>,
+    input: __S(224, __c7, 0) as any as S.Schema<GetAdRequest>,
+    output: __S(122, __c3, 26) as any as S.Schema<Ad>,
     errors: [NotFound],
     protocol: WhopProtocol,
     retry: Retry.Retry,
@@ -1033,8 +1033,8 @@ export const listAds: API.PaginatedOperationMethod<
   Ad
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(55, __c6, 7) as any as S.Schema<ListAdsRequest>,
-    output: __S(57, __c7, 1) as any as S.Schema<ListAdsResponse>,
+    input: __S(256, __c8, 0) as any as S.Schema<ListAdsRequest>,
+    output: __S(258, __c8, 2) as any as S.Schema<ListAdsResponse>,
     errors: [BadRequest],
     protocol: WhopProtocol,
     retry: Retry.Retry,
@@ -1054,8 +1054,8 @@ export type PauseAdError = Conflict | WhopOpError;
 /** Pause an Ad Pauses an active ad. */
 export const pauseAd: API.OperationMethod<PauseAdRequest, Ad, PauseAdError, WhopOpContext> =
   /*@__PURE__*/ API.make(() => ({
-    input: __S(58, __c7, 2) as any as S.Schema<PauseAdRequest>,
-    output: __S(48, __c6, 0) as any as S.Schema<Ad>,
+    input: __S(288, __c9, 0) as any as S.Schema<PauseAdRequest>,
+    output: __S(122, __c3, 26) as any as S.Schema<Ad>,
     errors: [Conflict],
     protocol: WhopProtocol,
     retry: Retry.Retry,
@@ -1065,8 +1065,8 @@ export type UnpauseAdError = Conflict | WhopOpError;
 /** Unpause an Ad Resumes a paused ad. */
 export const unpauseAd: API.OperationMethod<UnpauseAdRequest, Ad, UnpauseAdError, WhopOpContext> =
   /*@__PURE__*/ API.make(() => ({
-    input: __S(59, __c7, 3) as any as S.Schema<UnpauseAdRequest>,
-    output: __S(48, __c6, 0) as any as S.Schema<Ad>,
+    input: __S(320, __c10, 0) as any as S.Schema<UnpauseAdRequest>,
+    output: __S(122, __c3, 26) as any as S.Schema<Ad>,
     errors: [Conflict],
     protocol: WhopProtocol,
     retry: Retry.Retry,
@@ -1076,8 +1076,8 @@ export type UpdateAdError = WhopOpError;
 /** Update an Ad Updates an ad's editable fields. */
 export const updateAd: API.OperationMethod<UpdateAdRequest, Ad, UpdateAdError, WhopOpContext> =
   /*@__PURE__*/ API.make(() => ({
-    input: __S(61, __c7, 5) as any as S.Schema<UpdateAdRequest>,
-    output: __S(48, __c6, 0) as any as S.Schema<Ad>,
+    input: __S(1, __c0, 1) as any as S.Schema<UpdateAdRequest>,
+    output: __S(122, __c3, 26) as any as S.Schema<Ad>,
     errors: [],
     protocol: WhopProtocol,
     retry: Retry.Retry,
@@ -1085,6 +1085,88 @@ export const updateAd: API.OperationMethod<UpdateAdRequest, Ad, UpdateAdError, W
 
 // Schema builders: each runs one schema initializer, on that schema's first use.
 function __c0(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          completion: S.optional(__S(69, __c2, 5)),
+          disclaimer: S.optional(__S(72, __c2, 8)),
+          form_type: S.optional(S.String),
+          intro: S.optional(__S(73, __c2, 9)),
+          name: S.optional(S.String),
+          phone_verification: S.optional(S.Boolean),
+          privacy_policy: S.optional(__S(74, __c2, 10)),
+          questions: S.optional(__S(79, __c2, 15)),
+        }),
+      ).annotate({ identifier: "UpdateAdRequestLeadForm" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String.pipe(T.Label()),
+          call_to_action: S.optional(S.String),
+          creatives: S.optional(__S(66, __c2, 2)),
+          descriptions: S.optional(__S(68, __c2, 4)),
+          existing_post_id: S.optional(S.String),
+          headlines: S.optional(__S(68, __c2, 4)),
+          lead_form: S.optional(__S(0, __c0, 0)),
+          lead_form_id: S.optional(S.String),
+          messaging_config: S.optional(__S(80, __c2, 16)),
+          multi_advertiser_ads: S.optional(S.Boolean),
+          music: S.optional(S.NullOr(__S(96, __c3, 0))),
+          post_source: S.optional(S.String),
+          primary_texts: S.optional(__S(68, __c2, 4)),
+          social_accounts: S.optional(__S(82, __c2, 18)),
+          title: S.optional(S.String),
+          translations: S.optional(S.NullOr(__S(83, __c2, 19))),
+          url: S.optional(S.String),
+          url_parameters: S.optional(S.Unknown),
+        }).pipe(T.Http({ method: "PATCH", uri: "/ads/{id}", code: 200 })),
+      ).annotate({ identifier: "UpdateAdRequest" });
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          completion: S.optional(__S(69, __c2, 5)),
+          disclaimer: S.optional(__S(72, __c2, 8)),
+          form_type: S.optional(S.String),
+          intro: S.optional(__S(73, __c2, 9)),
+          name: S.optional(S.String),
+          phone_verification: S.optional(S.Boolean),
+          privacy_policy: S.optional(__S(74, __c2, 10)),
+          questions: S.optional(__S(79, __c2, 15)),
+        }),
+      ).annotate({ identifier: "CreateAdRequestLeadForm" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          ad_group: S.optional(S.Unknown),
+          ad_group_id: S.optional(S.String),
+          call_to_action: S.optional(S.String),
+          creatives: S.optional(__S(66, __c2, 2)),
+          descriptions: S.optional(__S(68, __c2, 4)),
+          existing_post_id: S.optional(S.String),
+          headlines: S.optional(__S(68, __c2, 4)),
+          lead_form: S.optional(__S(32, __c1, 0)),
+          lead_form_id: S.optional(S.String),
+          messaging_config: S.optional(__S(80, __c2, 16)),
+          multi_advertiser_ads: S.optional(S.Boolean),
+          music: S.optional(S.NullOr(__S(96, __c3, 0))),
+          post_source: S.optional(S.String),
+          primary_texts: S.optional(__S(68, __c2, 4)),
+          social_accounts: S.optional(__S(82, __c2, 18)),
+          title: S.optional(S.String),
+          translations: S.optional(S.NullOr(__S(83, __c2, 19))),
+          url: S.optional(S.String),
+          url_parameters: S.optional(S.Unknown),
+          idempotency_key: S.optional(S.String.pipe(T.Header("Idempotency-Key"))),
+        }).pipe(T.Http({ method: "POST", uri: "/ads", code: 200 })),
+      ).annotate({ identifier: "CreateAdRequest" });
+  }
+}
+function __c2(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1100,7 +1182,7 @@ function __c0(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          crop: S.optional(__S(0, __c0, 0)),
+          crop: S.optional(__S(64, __c2, 0)),
           format: S.optional(S.String),
           id: S.optional(S.String),
           language: S.optional(S.String),
@@ -1109,7 +1191,7 @@ function __c0(j: number): any {
         identifier: "CreateAdRequestCreativesItem",
       });
     case 2:
-      return S.Array(__S(1, __c0, 1));
+      return S.Array(__S(65, __c2, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
@@ -1120,7 +1202,7 @@ function __c0(j: number): any {
         identifier: "CreateAdRequestDescriptionsItem",
       });
     case 4:
-      return S.Array(__S(3, __c0, 3));
+      return S.Array(__S(67, __c2, 3));
     case 5:
       return S.suspend(() =>
         S.Struct({
@@ -1147,22 +1229,18 @@ function __c0(j: number): any {
         identifier: "CreateAdRequestLeadFormDisclaimerCheckboxesItem",
       });
     case 7:
-      return S.Array(__S(6, __c0, 6));
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
+      return S.Array(__S(70, __c2, 6));
+    case 8:
       return S.suspend(() =>
         S.Struct({
           body: S.optional(S.String),
-          checkboxes: S.optional(__S(7, __c0, 7)),
+          checkboxes: S.optional(__S(71, __c2, 7)),
           title: S.optional(S.String),
         }),
       ).annotate({
         identifier: "CreateAdRequestLeadFormDisclaimer",
       });
-    case 1:
+    case 9:
       return S.suspend(() =>
         S.Struct({
           description: S.optional(S.String),
@@ -1171,7 +1249,7 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "CreateAdRequestLeadFormIntro",
       });
-    case 2:
+    case 10:
       return S.suspend(() =>
         S.Struct({
           link_text: S.optional(S.String),
@@ -1180,7 +1258,7 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "CreateAdRequestLeadFormPrivacyPolicy",
       });
-    case 3:
+    case 11:
       return S.suspend(() =>
         S.Struct({
           action: S.optional(S.String),
@@ -1190,49 +1268,32 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "CreateAdRequestLeadFormQuestionsItemOptionsItemLogic",
       });
-    case 4:
+    case 12:
       return S.suspend(() =>
         S.Struct({
           key: S.optional(S.String),
-          logic: S.optional(__S(11, __c1, 3)),
+          logic: S.optional(__S(75, __c2, 11)),
           value: S.optional(S.String),
         }),
       ).annotate({
         identifier: "CreateAdRequestLeadFormQuestionsItemOptionsItem",
       });
-    case 5:
-      return S.Array(__S(12, __c1, 4));
-    case 6:
+    case 13:
+      return S.Array(__S(76, __c2, 12));
+    case 14:
       return S.suspend(() =>
         S.Struct({
           format: S.optional(S.String),
           label: S.optional(S.String),
-          options: S.optional(__S(13, __c1, 5)),
+          options: S.optional(__S(77, __c2, 13)),
           type: S.optional(S.String),
         }),
       ).annotate({
         identifier: "CreateAdRequestLeadFormQuestionsItem",
       });
-    case 7:
-      return S.Array(__S(14, __c1, 6));
-  }
-}
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          completion: S.optional(__S(5, __c0, 5)),
-          disclaimer: S.optional(__S(8, __c1, 0)),
-          form_type: S.optional(S.String),
-          intro: S.optional(__S(9, __c1, 1)),
-          name: S.optional(S.String),
-          phone_verification: S.optional(S.Boolean),
-          privacy_policy: S.optional(__S(10, __c1, 2)),
-          questions: S.optional(__S(15, __c1, 7)),
-        }),
-      ).annotate({ identifier: "CreateAdRequestLeadForm" });
-    case 1:
+    case 15:
+      return S.Array(__S(78, __c2, 14));
+    case 16:
       return S.suspend(() =>
         S.Struct({
           keyword: S.optional(S.String),
@@ -1241,13 +1302,7 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "CreateAdRequestMessagingConfig",
       });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String,
-        }),
-      ).annotate({ identifier: "CreateAdRequestMusic" });
-    case 3:
+    case 17:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
@@ -1255,49 +1310,30 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "CreateAdRequestSocialAccountsItem",
       });
-    case 4:
-      return S.Array(__S(19, __c2, 3));
-    case 5:
-      return S.Array(S.String);
-    case 6:
+    case 18:
+      return S.Array(__S(81, __c2, 17));
+    case 19:
       return S.suspend(() =>
         S.Struct({
-          automatic_languages: S.optional(__S(21, __c2, 5)),
+          automatic_languages: S.optional(__S(97, __c3, 1)),
           source_language: S.String,
         }),
       ).annotate({
         identifier: "CreateAdRequestTranslations",
       });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          ad_group: S.optional(S.Unknown),
-          ad_group_id: S.optional(S.String),
-          call_to_action: S.optional(S.String),
-          creatives: S.optional(__S(2, __c0, 2)),
-          descriptions: S.optional(__S(4, __c0, 4)),
-          existing_post_id: S.optional(S.String),
-          headlines: S.optional(__S(4, __c0, 4)),
-          lead_form: S.optional(__S(16, __c2, 0)),
-          lead_form_id: S.optional(S.String),
-          messaging_config: S.optional(__S(17, __c2, 1)),
-          multi_advertiser_ads: S.optional(S.Boolean),
-          music: S.optional(S.NullOr(__S(18, __c2, 2))),
-          post_source: S.optional(S.String),
-          primary_texts: S.optional(__S(4, __c0, 4)),
-          social_accounts: S.optional(__S(20, __c2, 4)),
-          title: S.optional(S.String),
-          translations: S.optional(S.NullOr(__S(22, __c2, 6))),
-          url: S.optional(S.String),
-          url_parameters: S.optional(S.Unknown),
-          idempotency_key: S.optional(S.String.pipe(T.Header("Idempotency-Key"))),
-        }).pipe(T.Http({ method: "POST", uri: "/ads", code: 200 })),
-      ).annotate({ identifier: "CreateAdRequest" });
   }
 }
 function __c3(j: number): any {
   switch (j) {
     case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+        }),
+      ).annotate({ identifier: "CreateAdRequestMusic" });
+    case 1:
+      return S.Array(S.String);
+    case 2:
       return S.suspend(() =>
         S.Struct({
           height: S.Number,
@@ -1306,10 +1342,10 @@ function __c3(j: number): any {
           y: S.Number,
         }),
       ).annotate({ identifier: "AdCreativeCrop" });
-    case 1:
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          crop: S.NullOr(__S(24, __c3, 0)),
+          crop: S.NullOr(__S(98, __c3, 2)),
           format: S.NullOr(S.String),
           id: S.String,
           language: S.NullOr(S.String),
@@ -1317,20 +1353,20 @@ function __c3(j: number): any {
           url: S.NullOr(S.String),
         }),
       ).annotate({ identifier: "AdCreative" });
-    case 2:
-      return S.Array(__S(25, __c3, 1));
-    case 3:
+    case 4:
+      return S.Array(__S(99, __c3, 3));
+    case 5:
       return S.suspend(() =>
         S.Struct({
           language: S.NullOr(S.String),
           text: S.String,
         }),
       ).annotate({ identifier: "AdText" });
-    case 4:
-      return S.Array(__S(27, __c3, 3));
-    case 5:
-      return S.Array(__S(27, __c3, 3));
     case 6:
+      return S.Array(__S(101, __c3, 5));
+    case 7:
+      return S.Array(__S(101, __c3, 5));
+    case 8:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
@@ -1339,13 +1375,9 @@ function __c3(j: number): any {
           resource_type: S.String,
         }),
       ).annotate({ identifier: "AdPlatformIssue" });
-    case 7:
-      return S.Array(__S(30, __c3, 6));
-  }
-}
-function __c4(j: number): any {
-  switch (j) {
-    case 0:
+    case 9:
+      return S.Array(__S(104, __c3, 8));
+    case 10:
       return S.suspend(() =>
         S.Struct({
           button_text: S.NullOr(S.String),
@@ -1357,7 +1389,7 @@ function __c4(j: number): any {
           url: S.NullOr(S.String),
         }),
       ).annotate({ identifier: "AdLeadFormCompletion" });
-    case 1:
+    case 11:
       return S.suspend(() =>
         S.Struct({
           checked_by_default: S.NullOr(S.Boolean),
@@ -1368,31 +1400,31 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "AdLeadFormDisclaimerCheckbox",
       });
-    case 2:
-      return S.Array(__S(33, __c4, 1));
-    case 3:
+    case 12:
+      return S.Array(__S(107, __c3, 11));
+    case 13:
       return S.suspend(() =>
         S.Struct({
           body: S.NullOr(S.String),
-          checkboxes: __S(34, __c4, 2),
+          checkboxes: __S(108, __c3, 12),
           title: S.NullOr(S.String),
         }),
       ).annotate({ identifier: "AdLeadFormDisclaimer" });
-    case 4:
+    case 14:
       return S.suspend(() =>
         S.Struct({
           description: S.NullOr(S.String),
           headline: S.NullOr(S.String),
         }),
       ).annotate({ identifier: "AdLeadFormIntro" });
-    case 5:
+    case 15:
       return S.suspend(() =>
         S.Struct({
           link_text: S.NullOr(S.String),
           url: S.String,
         }),
       ).annotate({ identifier: "AdLeadFormPrivacyPolicy" });
-    case 6:
+    case 16:
       return S.suspend(() =>
         S.Struct({
           action: S.String,
@@ -1400,52 +1432,48 @@ function __c4(j: number): any {
           target_question_index: S.optional(S.Number),
         }),
       ).annotate({ identifier: "AdLeadFormOptionLogic" });
-    case 7:
+    case 17:
       return S.suspend(() =>
         S.Struct({
           key: S.optional(S.NullOr(S.String)),
-          logic: S.optional(__S(38, __c4, 6)),
+          logic: S.optional(__S(112, __c3, 16)),
           value: S.String,
         }),
       ).annotate({ identifier: "AdLeadFormQuestionOption" });
-  }
-}
-function __c5(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(39, __c4, 7));
-    case 1:
+    case 18:
+      return S.Array(__S(113, __c3, 17));
+    case 19:
       return S.suspend(() =>
         S.Struct({
           format: S.optional(S.String),
           label: S.optional(S.String),
-          options: S.optional(__S(40, __c5, 0)),
+          options: S.optional(__S(114, __c3, 18)),
           type: S.String,
         }),
       ).annotate({ identifier: "AdLeadFormQuestion" });
-    case 2:
-      return S.Array(__S(41, __c5, 1));
-    case 3:
+    case 20:
+      return S.Array(__S(115, __c3, 19));
+    case 21:
       return S.suspend(() =>
         S.Struct({
-          completion: S.NullOr(__S(32, __c4, 0)),
-          disclaimer: S.NullOr(__S(35, __c4, 3)),
+          completion: S.NullOr(__S(106, __c3, 10)),
+          disclaimer: S.NullOr(__S(109, __c3, 13)),
           form_type: S.String,
-          intro: S.NullOr(__S(36, __c4, 4)),
+          intro: S.NullOr(__S(110, __c3, 14)),
           name: S.NullOr(S.String),
           phone_verification: S.Boolean,
-          privacy_policy: S.NullOr(__S(37, __c4, 5)),
-          questions: __S(42, __c5, 2),
+          privacy_policy: S.NullOr(__S(111, __c3, 15)),
+          questions: __S(116, __c3, 20),
         }),
       ).annotate({ identifier: "AdLeadForm" });
-    case 4:
+    case 22:
       return S.suspend(() =>
         S.Struct({
           keyword: S.NullOr(S.String),
           message: S.NullOr(S.String),
         }),
       ).annotate({ identifier: "AdMessagingConfig" });
-    case 5:
+    case 23:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
@@ -1453,24 +1481,20 @@ function __c5(j: number): any {
           url: S.NullOr(S.String),
         }),
       ).annotate({ identifier: "AdMusic" });
-    case 6:
-      return S.Array(__S(18, __c2, 2));
-    case 7:
+    case 24:
+      return S.Array(__S(96, __c3, 0));
+    case 25:
       return S.suspend(() =>
         S.Struct({
-          automatic_languages: __S(21, __c2, 5),
+          automatic_languages: __S(97, __c3, 1),
           source_language: S.String,
         }),
       ).annotate({ identifier: "AdTranslations" });
-  }
-}
-function __c6(j: number): any {
-  switch (j) {
-    case 0:
+    case 26:
       return S.suspend(() =>
         S.Struct({
-          ad_campaign: __S(18, __c2, 2),
-          ad_group: __S(18, __c2, 2),
+          ad_campaign: __S(96, __c3, 0),
+          ad_group: __S(96, __c3, 0),
           added_to_cart_value: S.Number,
           added_to_carts: S.Number,
           call_to_action: S.NullOr(S.String),
@@ -1493,31 +1517,31 @@ function __c6(j: number): any {
           cost_per_unique_click: S.NullOr(S.Number),
           cost_per_viewed_content: S.NullOr(S.Number),
           created_at: S.String,
-          creatives: __S(26, __c3, 2),
+          creatives: __S(100, __c3, 4),
           custom_conversions: S.Number,
           custom_event_counts: S.Unknown,
           custom_event_values: S.Unknown,
           delivery_status: S.String,
-          descriptions: __S(28, __c3, 4),
+          descriptions: __S(102, __c3, 6),
           existing_post_id: S.NullOr(S.String),
           frequency: S.NullOr(S.Number),
-          headlines: __S(29, __c3, 5),
+          headlines: __S(103, __c3, 7),
           id: S.String,
           impressions: S.Number,
-          issues: __S(31, __c3, 7),
-          lead_form: S.optional(S.NullOr(__S(43, __c5, 3))),
+          issues: __S(105, __c3, 9),
+          lead_form: S.optional(S.NullOr(__S(117, __c3, 21))),
           lead_form_id: S.optional(S.NullOr(S.String)),
           lead_value: S.Number,
           leads: S.Number,
           link_clicks: S.Number,
-          messaging_config: S.optional(S.NullOr(__S(44, __c5, 4))),
+          messaging_config: S.optional(S.NullOr(__S(118, __c3, 22))),
           multi_advertiser_ads: S.optional(S.Boolean),
-          music: S.optional(S.NullOr(__S(45, __c5, 5))),
+          music: S.optional(S.NullOr(__S(119, __c3, 23))),
           platform: S.String,
           post_id: S.NullOr(S.String),
           post_source: S.NullOr(S.String),
           post_thumbnail_url: S.NullOr(S.String),
-          primary_texts: __S(28, __c3, 4),
+          primary_texts: __S(102, __c3, 6),
           purchase_value: S.Number,
           purchases: S.Number,
           reach: S.Number,
@@ -1527,14 +1551,14 @@ function __c6(j: number): any {
           return_on_ad_spend: S.Number,
           schedule_value: S.Number,
           schedules: S.Number,
-          social_accounts: __S(46, __c5, 6),
+          social_accounts: __S(120, __c3, 24),
           spend: S.Number,
           spend_currency: S.NullOr(S.String),
           status: S.String,
           submitted_application_value: S.Number,
           submitted_applications: S.Number,
           title: S.NullOr(S.String),
-          translations: S.optional(S.NullOr(__S(47, __c5, 7))),
+          translations: S.optional(S.NullOr(__S(121, __c3, 25))),
           unique_click_through_rate: S.NullOr(S.Number),
           unique_clicks: S.Number,
           updated_at: S.String,
@@ -1544,20 +1568,28 @@ function __c6(j: number): any {
           viewed_contents: S.Number,
         }),
       ).annotate({ identifier: "Ad" });
-    case 1:
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.String.pipe(T.Label()),
         }).pipe(T.Http({ method: "DELETE", uri: "/ads/{id}", code: 200 })),
       ).annotate({ identifier: "DeleteAdRequest" });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           deleted: S.Boolean,
           id: S.String,
         }),
       ).annotate({ identifier: "DeleteAdResponse" });
-    case 3:
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.String.pipe(T.Label()),
@@ -1567,15 +1599,23 @@ function __c6(j: number): any {
           idempotency_key: S.optional(S.String.pipe(T.Header("Idempotency-Key"))),
         }).pipe(T.Http({ method: "POST", uri: "/ads/{id}/duplicate", code: 200 })),
       ).annotate({ identifier: "DuplicateAdRequest" });
-    case 4:
-      return S.Array(__S(48, __c6, 0));
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          data: __S(52, __c6, 4),
+          data: __S(192, __c6, 0),
         }),
       ).annotate({ identifier: "DuplicateAdResponse" });
-    case 6:
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(122, __c3, 26));
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.String.pipe(T.Label()),
@@ -1585,14 +1625,18 @@ function __c6(j: number): any {
           attribution_model: S.optional(S.String.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/ads/{id}", code: 200 })),
       ).annotate({ identifier: "GetAdRequest" });
-    case 7:
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           account_id: S.optional(S.String.pipe(T.Query())),
           ad_campaign_id: S.optional(S.String.pipe(T.Query())),
-          ad_campaign_ids: S.optional(__S(21, __c2, 5).pipe(T.Query())),
+          ad_campaign_ids: S.optional(__S(97, __c3, 1).pipe(T.Query())),
           ad_group_id: S.optional(S.String.pipe(T.Query())),
-          ad_group_ids: S.optional(__S(21, __c2, 5).pipe(T.Query())),
+          ad_group_ids: S.optional(__S(97, __c3, 1).pipe(T.Query())),
           status: S.optional(S.String.pipe(T.Query())),
           query: S.optional(S.String.pipe(T.Query())),
           order: S.optional(S.String.pipe(T.Query())),
@@ -1609,11 +1653,7 @@ function __c6(j: number): any {
           before: S.optional(S.String.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/ads", code: 200 })),
       ).annotate({ identifier: "ListAdsRequest" });
-  }
-}
-function __c7(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           end_cursor: S.NullOr(S.String),
@@ -1622,66 +1662,37 @@ function __c7(j: number): any {
           start_cursor: S.NullOr(S.String),
         }),
       ).annotate({ identifier: "ListAdsResponsePageInfo" });
-    case 1:
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          data: __S(52, __c6, 4),
-          page_info: __S(56, __c7, 0),
+          data: __S(192, __c6, 0),
+          page_info: __S(257, __c8, 1),
         }),
       ).annotate({ identifier: "ListAdsResponse" });
-    case 2:
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.String.pipe(T.Label()),
           idempotency_key: S.optional(S.String.pipe(T.Header("Idempotency-Key"))),
         }).pipe(T.Http({ method: "POST", uri: "/ads/{id}/pause", code: 200 })),
       ).annotate({ identifier: "PauseAdRequest" });
-    case 3:
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.String.pipe(T.Label()),
           idempotency_key: S.optional(S.String.pipe(T.Header("Idempotency-Key"))),
         }).pipe(T.Http({ method: "POST", uri: "/ads/{id}/unpause", code: 200 })),
       ).annotate({ identifier: "UnpauseAdRequest" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          completion: S.optional(__S(5, __c0, 5)),
-          disclaimer: S.optional(__S(8, __c1, 0)),
-          form_type: S.optional(S.String),
-          intro: S.optional(__S(9, __c1, 1)),
-          name: S.optional(S.String),
-          phone_verification: S.optional(S.Boolean),
-          privacy_policy: S.optional(__S(10, __c1, 2)),
-          questions: S.optional(__S(15, __c1, 7)),
-        }),
-      ).annotate({ identifier: "UpdateAdRequestLeadForm" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String.pipe(T.Label()),
-          call_to_action: S.optional(S.String),
-          creatives: S.optional(__S(2, __c0, 2)),
-          descriptions: S.optional(__S(4, __c0, 4)),
-          existing_post_id: S.optional(S.String),
-          headlines: S.optional(__S(4, __c0, 4)),
-          lead_form: S.optional(__S(60, __c7, 4)),
-          lead_form_id: S.optional(S.String),
-          messaging_config: S.optional(__S(17, __c2, 1)),
-          multi_advertiser_ads: S.optional(S.Boolean),
-          music: S.optional(S.NullOr(__S(18, __c2, 2))),
-          post_source: S.optional(S.String),
-          primary_texts: S.optional(__S(4, __c0, 4)),
-          social_accounts: S.optional(__S(20, __c2, 4)),
-          title: S.optional(S.String),
-          translations: S.optional(S.NullOr(__S(22, __c2, 6))),
-          url: S.optional(S.String),
-          url_parameters: S.optional(S.Unknown),
-        }).pipe(T.Http({ method: "PATCH", uri: "/ads/{id}", code: 200 })),
-      ).annotate({ identifier: "UpdateAdRequest" });
   }
 }
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

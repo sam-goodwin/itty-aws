@@ -222,7 +222,7 @@ export const getGroups: API.OperationMethod<
   GoogleWorkspaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(0, __c0, 0) as any as S.Schema<GetGroupsRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<Groups>,
+  output: __S(2, __c1, 0) as any as S.Schema<Groups>,
   errors: [NotFound, Forbidden, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -241,8 +241,8 @@ export const patchGroups: API.OperationMethod<
   PatchGroupsError,
   GoogleWorkspaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2, __c0, 2) as any as S.Schema<PatchGroupsRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<Groups>,
+  input: __S(4, __c2, 0) as any as S.Schema<PatchGroupsRequest>,
+  output: __S(2, __c1, 0) as any as S.Schema<Groups>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -261,8 +261,8 @@ export const updateGroups: API.OperationMethod<
   UpdateGroupsError,
   GoogleWorkspaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3, __c0, 3) as any as S.Schema<UpdateGroupsRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<Groups>,
+  input: __S(6, __c3, 0) as any as S.Schema<UpdateGroupsRequest>,
+  output: __S(2, __c1, 0) as any as S.Schema<Groups>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -283,7 +283,11 @@ function __c0(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetGroupsRequest" });
-    case 1:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           whoCanEnterFreeFormTags: S.optional(S.String),
@@ -351,11 +355,15 @@ function __c0(j: number): any {
           whoCanAddReferences: S.optional(S.String),
         }),
       ).annotate({ identifier: "Groups" });
-    case 2:
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           groupUniqueId: S.String.pipe(T.Label()),
-          body: S.optional(__S(1, __c0, 1).pipe(T.HttpBody())),
+          body: S.optional(__S(2, __c1, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -364,11 +372,15 @@ function __c0(j: number): any {
           }),
         ),
       ).annotate({ identifier: "PatchGroupsRequest" });
-    case 3:
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           groupUniqueId: S.String.pipe(T.Label()),
-          body: S.optional(__S(1, __c0, 1).pipe(T.HttpBody())),
+          body: S.optional(__S(2, __c1, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -379,7 +391,6 @@ function __c0(j: number): any {
       ).annotate({ identifier: "UpdateGroupsRequest" });
   }
 }
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

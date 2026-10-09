@@ -236,8 +236,8 @@ export const createConfigurationSet: API.OperationMethod<
   CreateConfigurationSetError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(0, __c0, 0) as any as S.Schema<CreateConfigurationSetRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<CreateConfigurationSetResponse>,
+  input: __S(32, __c4, 0) as any as S.Schema<CreateConfigurationSetRequest>,
+  output: __S(40, __c5, 0) as any as S.Schema<CreateConfigurationSetResponse>,
   errors: [
     AlreadyExistsException,
     BadRequestException,
@@ -267,8 +267,8 @@ export const createConfigurationSetEventDestination: API.OperationMethod<
   CreateConfigurationSetEventDestinationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(7, __c0, 7) as any as S.Schema<CreateConfigurationSetEventDestinationRequest>,
-  output: __S(8, __c1, 0) as any as S.Schema<CreateConfigurationSetEventDestinationResponse>,
+  input: __S(48, __c6, 0) as any as S.Schema<CreateConfigurationSetEventDestinationRequest>,
+  output: __S(72, __c9, 0) as any as S.Schema<CreateConfigurationSetEventDestinationResponse>,
   errors: [
     AlreadyExistsException,
     BadRequestException,
@@ -297,8 +297,8 @@ export const deleteConfigurationSet: API.OperationMethod<
   DeleteConfigurationSetError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(9, __c1, 1) as any as S.Schema<DeleteConfigurationSetRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<DeleteConfigurationSetResponse>,
+  input: __S(80, __c10, 0) as any as S.Schema<DeleteConfigurationSetRequest>,
+  output: __S(40, __c5, 0) as any as S.Schema<DeleteConfigurationSetResponse>,
   errors: [
     BadRequestException,
     InternalServiceErrorException,
@@ -325,8 +325,8 @@ export const deleteConfigurationSetEventDestination: API.OperationMethod<
   DeleteConfigurationSetEventDestinationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(10, __c1, 2) as any as S.Schema<DeleteConfigurationSetEventDestinationRequest>,
-  output: __S(8, __c1, 0) as any as S.Schema<DeleteConfigurationSetEventDestinationResponse>,
+  input: __S(88, __c11, 0) as any as S.Schema<DeleteConfigurationSetEventDestinationRequest>,
+  output: __S(72, __c9, 0) as any as S.Schema<DeleteConfigurationSetEventDestinationResponse>,
   errors: [
     BadRequestException,
     InternalServiceErrorException,
@@ -353,8 +353,8 @@ export const getConfigurationSetEventDestinations: API.OperationMethod<
   GetConfigurationSetEventDestinationsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(11, __c1, 3) as any as S.Schema<GetConfigurationSetEventDestinationsRequest>,
-  output: __S(14, __c1, 6) as any as S.Schema<GetConfigurationSetEventDestinationsResponse>,
+  input: __S(0, __c0, 0) as any as S.Schema<GetConfigurationSetEventDestinationsRequest>,
+  output: __S(3, __c0, 3) as any as S.Schema<GetConfigurationSetEventDestinationsResponse>,
   errors: [
     BadRequestException,
     InternalServiceErrorException,
@@ -380,8 +380,8 @@ export const listConfigurationSets: API.OperationMethod<
   ListConfigurationSetsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(15, __c1, 7) as any as S.Schema<ListConfigurationSetsRequest>,
-  output: __S(17, __c2, 1) as any as S.Schema<ListConfigurationSetsResponse>,
+  input: __S(8, __c1, 0) as any as S.Schema<ListConfigurationSetsRequest>,
+  output: __S(10, __c1, 2) as any as S.Schema<ListConfigurationSetsResponse>,
   errors: [BadRequestException, InternalServiceErrorException, TooManyRequestsException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -402,8 +402,8 @@ export const sendVoiceMessage: API.OperationMethod<
   SendVoiceMessageError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(21, __c2, 5) as any as S.Schema<SendVoiceMessageRequest>,
-  output: __S(22, __c2, 6) as any as S.Schema<SendVoiceMessageResponse>,
+  input: __S(19, __c2, 3) as any as S.Schema<SendVoiceMessageRequest>,
+  output: __S(20, __c2, 4) as any as S.Schema<SendVoiceMessageResponse>,
   errors: [BadRequestException, InternalServiceErrorException, TooManyRequestsException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -425,8 +425,8 @@ export const updateConfigurationSetEventDestination: API.OperationMethod<
   UpdateConfigurationSetEventDestinationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(23, __c2, 7) as any as S.Schema<UpdateConfigurationSetEventDestinationRequest>,
-  output: __S(8, __c1, 0) as any as S.Schema<UpdateConfigurationSetEventDestinationResponse>,
+  input: __S(24, __c3, 0) as any as S.Schema<UpdateConfigurationSetEventDestinationRequest>,
+  output: __S(72, __c9, 0) as any as S.Schema<UpdateConfigurationSetEventDestinationResponse>,
   errors: [
     BadRequestException,
     InternalServiceErrorException,
@@ -443,6 +443,153 @@ function __c0(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
+        S.Struct({ ConfigurationSetName: S.String.pipe(T.HttpLabel("ConfigurationSetName")) }).pipe(
+          T.all(
+            T.Http({
+              method: "GET",
+              uri: "/v1/sms-voice/configuration-sets/{ConfigurationSetName}/event-destinations",
+            }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "GetConfigurationSetEventDestinationsRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          CloudWatchLogsDestination: S.optional(__S(56, __c7, 0)),
+          Enabled: S.optional(S.Boolean),
+          KinesisFirehoseDestination: S.optional(__S(57, __c7, 1)),
+          MatchingEventTypes: S.optional(__S(58, __c7, 2)),
+          Name: S.optional(S.String),
+          SnsDestination: S.optional(__S(59, __c7, 3)),
+        }),
+      ).annotate({ identifier: "EventDestination" });
+    case 2:
+      return S.Array(__S(1, __c0, 1));
+    case 3:
+      return S.suspend(() => S.Struct({ EventDestinations: S.optional(__S(2, __c0, 2)) })).annotate(
+        {
+          identifier: "GetConfigurationSetEventDestinationsResponse",
+        },
+      );
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          NextToken: S.optional(S.String).pipe(T.HttpQuery("NextToken")),
+          PageSize: S.optional(S.String).pipe(T.HttpQuery("PageSize")),
+        }).pipe(
+          T.all(
+            T.Http({ method: "GET", uri: "/v1/sms-voice/configuration-sets" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "ListConfigurationSetsRequest",
+      });
+    case 1:
+      return S.Array(S.String);
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          ConfigurationSets: S.optional(__S(9, __c1, 1)),
+          NextToken: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "ListConfigurationSetsResponse",
+      });
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({ Text: S.optional(S.String) })).annotate({
+        identifier: "CallInstructionsMessageType",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          LanguageCode: S.optional(S.String),
+          Text: S.optional(S.String),
+          VoiceId: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "PlainTextMessageType" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          CallInstructionsMessage: S.optional(__S(16, __c2, 0)),
+          PlainTextMessage: S.optional(__S(17, __c2, 1)),
+          SSMLMessage: S.optional(__S(17, __c2, 1)),
+        }),
+      ).annotate({ identifier: "VoiceMessageContent" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          CallerId: S.optional(S.String),
+          ConfigurationSetName: S.optional(S.String),
+          Content: S.optional(__S(18, __c2, 2)),
+          DestinationPhoneNumber: S.optional(S.String),
+          OriginationPhoneNumber: S.optional(S.String),
+        }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/v1/sms-voice/voice/message" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "SendVoiceMessageRequest" });
+    case 4:
+      return S.suspend(() => S.Struct({ MessageId: S.optional(S.String) })).annotate({
+        identifier: "SendVoiceMessageResponse",
+      });
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          ConfigurationSetName: S.String.pipe(T.HttpLabel("ConfigurationSetName")),
+          EventDestination: S.optional(__S(64, __c8, 0)),
+          EventDestinationName: S.String.pipe(T.HttpLabel("EventDestinationName")),
+        }).pipe(
+          T.all(
+            T.Http({
+              method: "PUT",
+              uri: "/v1/sms-voice/configuration-sets/{ConfigurationSetName}/event-destinations/{EventDestinationName}",
+            }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "UpdateConfigurationSetEventDestinationRequest",
+      });
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
         S.Struct({ ConfigurationSetName: S.optional(S.String) }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/v1/sms-voice/configuration-sets" }),
@@ -456,45 +603,23 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "CreateConfigurationSetRequest",
       });
-    case 1:
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "CreateConfigurationSetResponse",
       });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({ IamRoleArn: S.optional(S.String), LogGroupArn: S.optional(S.String) }),
-      ).annotate({
-        identifier: "CloudWatchLogsDestination",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({ DeliveryStreamArn: S.optional(S.String), IamRoleArn: S.optional(S.String) }),
-      ).annotate({
-        identifier: "KinesisFirehoseDestination",
-      });
-    case 4:
-      return S.Array(S.String);
-    case 5:
-      return S.suspend(() => S.Struct({ TopicArn: S.optional(S.String) })).annotate({
-        identifier: "SnsDestination",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          CloudWatchLogsDestination: S.optional(__S(2, __c0, 2)),
-          Enabled: S.optional(S.Boolean),
-          KinesisFirehoseDestination: S.optional(__S(3, __c0, 3)),
-          MatchingEventTypes: S.optional(__S(4, __c0, 4)),
-          SnsDestination: S.optional(__S(5, __c0, 5)),
-        }),
-      ).annotate({
-        identifier: "EventDestinationDefinition",
-      });
-    case 7:
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           ConfigurationSetName: S.String.pipe(T.HttpLabel("ConfigurationSetName")),
-          EventDestination: S.optional(__S(6, __c0, 6)),
+          EventDestination: S.optional(__S(64, __c8, 0)),
           EventDestinationName: S.optional(S.String),
         }).pipe(
           T.all(
@@ -514,13 +639,55 @@ function __c0(j: number): any {
       });
   }
 }
-function __c1(j: number): any {
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ IamRoleArn: S.optional(S.String), LogGroupArn: S.optional(S.String) }),
+      ).annotate({
+        identifier: "CloudWatchLogsDestination",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({ DeliveryStreamArn: S.optional(S.String), IamRoleArn: S.optional(S.String) }),
+      ).annotate({
+        identifier: "KinesisFirehoseDestination",
+      });
+    case 2:
+      return S.Array(S.String);
+    case 3:
+      return S.suspend(() => S.Struct({ TopicArn: S.optional(S.String) })).annotate({
+        identifier: "SnsDestination",
+      });
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          CloudWatchLogsDestination: S.optional(__S(56, __c7, 0)),
+          Enabled: S.optional(S.Boolean),
+          KinesisFirehoseDestination: S.optional(__S(57, __c7, 1)),
+          MatchingEventTypes: S.optional(__S(58, __c7, 2)),
+          SnsDestination: S.optional(__S(59, __c7, 3)),
+        }),
+      ).annotate({
+        identifier: "EventDestinationDefinition",
+      });
+  }
+}
+function __c9(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "CreateConfigurationSetEventDestinationResponse",
       });
-    case 1:
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ ConfigurationSetName: S.String.pipe(T.HttpLabel("ConfigurationSetName")) }).pipe(
           T.all(
@@ -538,7 +705,11 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "DeleteConfigurationSetRequest",
       });
-    case 2:
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           ConfigurationSetName: S.String.pipe(T.HttpLabel("ConfigurationSetName")),
@@ -559,144 +730,8 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "DeleteConfigurationSetEventDestinationRequest",
       });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({ ConfigurationSetName: S.String.pipe(T.HttpLabel("ConfigurationSetName")) }).pipe(
-          T.all(
-            T.Http({
-              method: "GET",
-              uri: "/v1/sms-voice/configuration-sets/{ConfigurationSetName}/event-destinations",
-            }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({
-        identifier: "GetConfigurationSetEventDestinationsRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          CloudWatchLogsDestination: S.optional(__S(2, __c0, 2)),
-          Enabled: S.optional(S.Boolean),
-          KinesisFirehoseDestination: S.optional(__S(3, __c0, 3)),
-          MatchingEventTypes: S.optional(__S(4, __c0, 4)),
-          Name: S.optional(S.String),
-          SnsDestination: S.optional(__S(5, __c0, 5)),
-        }),
-      ).annotate({ identifier: "EventDestination" });
-    case 5:
-      return S.Array(__S(12, __c1, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({ EventDestinations: S.optional(__S(13, __c1, 5)) }),
-      ).annotate({
-        identifier: "GetConfigurationSetEventDestinationsResponse",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          NextToken: S.optional(S.String).pipe(T.HttpQuery("NextToken")),
-          PageSize: S.optional(S.String).pipe(T.HttpQuery("PageSize")),
-        }).pipe(
-          T.all(
-            T.Http({ method: "GET", uri: "/v1/sms-voice/configuration-sets" }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({
-        identifier: "ListConfigurationSetsRequest",
-      });
   }
 }
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(S.String);
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          ConfigurationSets: S.optional(__S(16, __c2, 0)),
-          NextToken: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "ListConfigurationSetsResponse",
-      });
-    case 2:
-      return S.suspend(() => S.Struct({ Text: S.optional(S.String) })).annotate({
-        identifier: "CallInstructionsMessageType",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          LanguageCode: S.optional(S.String),
-          Text: S.optional(S.String),
-          VoiceId: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "PlainTextMessageType" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          CallInstructionsMessage: S.optional(__S(18, __c2, 2)),
-          PlainTextMessage: S.optional(__S(19, __c2, 3)),
-          SSMLMessage: S.optional(__S(19, __c2, 3)),
-        }),
-      ).annotate({ identifier: "VoiceMessageContent" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          CallerId: S.optional(S.String),
-          ConfigurationSetName: S.optional(S.String),
-          Content: S.optional(__S(20, __c2, 4)),
-          DestinationPhoneNumber: S.optional(S.String),
-          OriginationPhoneNumber: S.optional(S.String),
-        }).pipe(
-          T.all(
-            T.Http({ method: "POST", uri: "/v1/sms-voice/voice/message" }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({ identifier: "SendVoiceMessageRequest" });
-    case 6:
-      return S.suspend(() => S.Struct({ MessageId: S.optional(S.String) })).annotate({
-        identifier: "SendVoiceMessageResponse",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          ConfigurationSetName: S.String.pipe(T.HttpLabel("ConfigurationSetName")),
-          EventDestination: S.optional(__S(6, __c0, 6)),
-          EventDestinationName: S.String.pipe(T.HttpLabel("EventDestinationName")),
-        }).pipe(
-          T.all(
-            T.Http({
-              method: "PUT",
-              uri: "/v1/sms-voice/configuration-sets/{ConfigurationSetName}/event-destinations/{EventDestinationName}",
-            }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({
-        identifier: "UpdateConfigurationSetEventDestinationRequest",
-      });
-  }
-}
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

@@ -164,8 +164,8 @@ export const getEntitlementsPublicationsReaders: API.OperationMethod<
   GetEntitlementsPublicationsReadersError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2, __c0, 2) as any as S.Schema<GetEntitlementsPublicationsReadersRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<ReaderEntitlements>,
+  input: __S(4, __c1, 0) as any as S.Schema<GetEntitlementsPublicationsReadersRequest>,
+  output: __S(10, __c2, 2) as any as S.Schema<ReaderEntitlements>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -179,8 +179,8 @@ export const getPublicationsReaders: API.OperationMethod<
   GetPublicationsReadersError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(6, __c0, 6) as any as S.Schema<GetPublicationsReadersRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<Reader>,
+  input: __S(12, __c3, 0) as any as S.Schema<GetPublicationsReadersRequest>,
+  output: __S(13, __c3, 1) as any as S.Schema<Reader>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -195,8 +195,8 @@ export const listPublications_ReadersEntitlements: API.PaginatedOperationMethod<
   GcpOpContext,
   ListReaderEntitlementsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(8, __c1, 0) as any as S.Schema<ListPublications_ReadersEntitlementsRequest>,
-  output: __S(10, __c1, 2) as any as S.Schema<ListReaderEntitlementsResponse>,
+  input: __S(16, __c4, 0) as any as S.Schema<ListPublications_ReadersEntitlementsRequest>,
+  output: __S(18, __c4, 2) as any as S.Schema<ListReaderEntitlementsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -216,8 +216,8 @@ export const updateEntitlementsPublicationsReaders: API.OperationMethod<
   UpdateEntitlementsPublicationsReadersError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(11, __c1, 3) as any as S.Schema<UpdateEntitlementsPublicationsReadersRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<ReaderEntitlements>,
+  input: __S(20, __c5, 0) as any as S.Schema<UpdateEntitlementsPublicationsReadersRequest>,
+  output: __S(10, __c2, 2) as any as S.Schema<ReaderEntitlements>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -245,7 +245,11 @@ function __c0(j: number): any {
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "DeleteReaderResponse",
       });
-    case 2:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -259,7 +263,11 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "GetEntitlementsPublicationsReadersRequest",
       });
-    case 3:
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionToken: S.optional(S.String),
@@ -268,16 +276,20 @@ function __c0(j: number): any {
           expireTime: S.optional(S.String),
         }),
       ).annotate({ identifier: "Entitlement" });
-    case 4:
-      return S.Array(__S(3, __c0, 3));
-    case 5:
+    case 1:
+      return S.Array(__S(8, __c2, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
-          entitlements: S.optional(__S(4, __c0, 4)),
+          entitlements: S.optional(__S(9, __c2, 1)),
         }),
       ).annotate({ identifier: "ReaderEntitlements" });
-    case 6:
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -291,7 +303,7 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "GetPublicationsReadersRequest",
       });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
@@ -303,7 +315,7 @@ function __c0(j: number): any {
       ).annotate({ identifier: "Reader" });
   }
 }
-function __c1(j: number): any {
+function __c4(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -322,22 +334,26 @@ function __c1(j: number): any {
         identifier: "ListPublications_ReadersEntitlementsRequest",
       });
     case 1:
-      return S.Array(__S(5, __c0, 5));
+      return S.Array(__S(10, __c2, 2));
     case 2:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          readerEntitlements: S.optional(__S(9, __c1, 1)),
+          readerEntitlements: S.optional(__S(17, __c4, 1)),
         }),
       ).annotate({
         identifier: "ListReaderEntitlementsResponse",
       });
-    case 3:
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           updateMask: S.optional(S.String.pipe(T.Query())),
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(5, __c0, 5).pipe(T.HttpBody())),
+          body: S.optional(__S(10, __c2, 2).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -350,7 +366,6 @@ function __c1(j: number): any {
       });
   }
 }
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

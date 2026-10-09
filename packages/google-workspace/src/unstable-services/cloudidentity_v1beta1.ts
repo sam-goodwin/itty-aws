@@ -1654,8 +1654,8 @@ export const addInboundSamlSsoProfilesIdpCredentials: API.OperationMethod<
   AddInboundSamlSsoProfilesIdpCredentialsError,
   GoogleWorkspaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1, __c0, 1) as any as S.Schema<AddInboundSamlSsoProfilesIdpCredentialsRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<Operation>,
+  input: __S(1505, __c47, 1) as any as S.Schema<AddInboundSamlSsoProfilesIdpCredentialsRequest>,
+  output: __S(1570, __c49, 2) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -1674,8 +1674,8 @@ export const approveDevicesDeviceUsers: API.OperationMethod<
   ApproveDevicesDeviceUsersError,
   GoogleWorkspaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(7, __c0, 7) as any as S.Schema<ApproveDevicesDeviceUsersRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<Operation>,
+  input: __S(1984, __c62, 0) as any as S.Schema<ApproveDevicesDeviceUsersRequest>,
+  output: __S(1570, __c49, 2) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -1694,8 +1694,8 @@ export const blockDevicesDeviceUsers: API.OperationMethod<
   BlockDevicesDeviceUsersError,
   GoogleWorkspaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(8, __c1, 0) as any as S.Schema<BlockDevicesDeviceUsersRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<Operation>,
+  input: __S(2368, __c74, 0) as any as S.Schema<BlockDevicesDeviceUsersRequest>,
+  output: __S(1570, __c49, 2) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -1714,8 +1714,8 @@ export const cancelCustomersUserinvitations: API.OperationMethod<
   CancelCustomersUserinvitationsError,
   GoogleWorkspaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(10, __c1, 2) as any as S.Schema<CancelCustomersUserinvitationsRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<Operation>,
+  input: __S(2752, __c86, 0) as any as S.Schema<CancelCustomersUserinvitationsRequest>,
+  output: __S(1570, __c49, 2) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -1734,8 +1734,8 @@ export const cancelWipeDevices: API.OperationMethod<
   CancelWipeDevicesError,
   GoogleWorkspaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(11, __c1, 3) as any as S.Schema<CancelWipeDevicesRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<Operation>,
+  input: __S(2976, __c93, 0) as any as S.Schema<CancelWipeDevicesRequest>,
+  output: __S(1570, __c49, 2) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -1754,8 +1754,8 @@ export const cancelWipeDevicesDeviceUsers: API.OperationMethod<
   CancelWipeDevicesDeviceUsersError,
   GoogleWorkspaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(12, __c1, 4) as any as S.Schema<CancelWipeDevicesDeviceUsersRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<Operation>,
+  input: __S(3008, __c94, 0) as any as S.Schema<CancelWipeDevicesDeviceUsersRequest>,
+  output: __S(1570, __c49, 2) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -1772,8 +1772,8 @@ export const checkTransitiveMembershipGroupsMemberships: API.OperationMethod<
   CheckTransitiveMembershipGroupsMembershipsError,
   GoogleWorkspaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(13, __c1, 5) as any as S.Schema<CheckTransitiveMembershipGroupsMembershipsRequest>,
-  output: __S(14, __c1, 6) as any as S.Schema<CheckTransitiveMembershipResponse>,
+  input: __S(0, __c0, 0) as any as S.Schema<CheckTransitiveMembershipGroupsMembershipsRequest>,
+  output: __S(1, __c0, 1) as any as S.Schema<CheckTransitiveMembershipResponse>,
   errors: [NotFound, Forbidden, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -1792,8 +1792,8 @@ export const createAllowlistedDomains: API.OperationMethod<
   CreateAllowlistedDomainsError,
   GoogleWorkspaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(16, __c2, 0) as any as S.Schema<CreateAllowlistedDomainsRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<Operation>,
+  input: __S(32, __c1, 0) as any as S.Schema<CreateAllowlistedDomainsRequest>,
+  output: __S(1570, __c49, 2) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -1812,8 +1812,8 @@ export const createDevices: API.OperationMethod<
   CreateDevicesError,
   GoogleWorkspaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(36, __c4, 4) as any as S.Schema<CreateDevicesRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<Operation>,
+  input: __S(97, __c3, 1) as any as S.Schema<CreateDevicesRequest>,
+  output: __S(1570, __c49, 2) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -1832,8 +1832,8 @@ export const createGroups: API.OperationMethod<
   CreateGroupsError,
   GoogleWorkspaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(47, __c5, 7) as any as S.Schema<CreateGroupsRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<Operation>,
+  input: __S(192, __c6, 0) as any as S.Schema<CreateGroupsRequest>,
+  output: __S(1570, __c49, 2) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -1852,8 +1852,8 @@ export const createGroupsMemberships: API.OperationMethod<
   CreateGroupsMembershipsError,
   GoogleWorkspaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(54, __c6, 6) as any as S.Schema<CreateGroupsMembershipsRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<Operation>,
+  input: __S(352, __c11, 0) as any as S.Schema<CreateGroupsMembershipsRequest>,
+  output: __S(1570, __c49, 2) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -1872,8 +1872,8 @@ export const createInboundOidcSsoProfiles: API.OperationMethod<
   CreateInboundOidcSsoProfilesError,
   GoogleWorkspaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(58, __c7, 2) as any as S.Schema<CreateInboundOidcSsoProfilesRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<Operation>,
+  input: __S(448, __c14, 0) as any as S.Schema<CreateInboundOidcSsoProfilesRequest>,
+  output: __S(1570, __c49, 2) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -1892,8 +1892,8 @@ export const createInboundSamlSsoProfiles: API.OperationMethod<
   CreateInboundSamlSsoProfilesError,
   GoogleWorkspaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(62, __c7, 6) as any as S.Schema<CreateInboundSamlSsoProfilesRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<Operation>,
+  input: __S(512, __c16, 0) as any as S.Schema<CreateInboundSamlSsoProfilesRequest>,
+  output: __S(1570, __c49, 2) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -1912,8 +1912,8 @@ export const createInboundSsoAssignments: API.OperationMethod<
   CreateInboundSsoAssignmentsError,
   GoogleWorkspaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(67, __c8, 3) as any as S.Schema<CreateInboundSsoAssignmentsRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<Operation>,
+  input: __S(576, __c18, 0) as any as S.Schema<CreateInboundSsoAssignmentsRequest>,
+  output: __S(1570, __c49, 2) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -1932,8 +1932,8 @@ export const createPolicies: API.OperationMethod<
   CreatePoliciesError,
   GoogleWorkspaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(71, __c8, 7) as any as S.Schema<CreatePoliciesRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<Operation>,
+  input: __S(640, __c20, 0) as any as S.Schema<CreatePoliciesRequest>,
+  output: __S(1570, __c49, 2) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -1952,8 +1952,8 @@ export const deleteAllowlistedDomains: API.OperationMethod<
   DeleteAllowlistedDomainsError,
   GoogleWorkspaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(72, __c9, 0) as any as S.Schema<DeleteAllowlistedDomainsRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<Operation>,
+  input: __S(704, __c22, 0) as any as S.Schema<DeleteAllowlistedDomainsRequest>,
+  output: __S(1570, __c49, 2) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -1972,8 +1972,8 @@ export const deleteDevices: API.OperationMethod<
   DeleteDevicesError,
   GoogleWorkspaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(73, __c9, 1) as any as S.Schema<DeleteDevicesRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<Operation>,
+  input: __S(736, __c23, 0) as any as S.Schema<DeleteDevicesRequest>,
+  output: __S(1570, __c49, 2) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -1992,8 +1992,8 @@ export const deleteDevicesDeviceUsers: API.OperationMethod<
   DeleteDevicesDeviceUsersError,
   GoogleWorkspaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(74, __c9, 2) as any as S.Schema<DeleteDevicesDeviceUsersRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<Operation>,
+  input: __S(768, __c24, 0) as any as S.Schema<DeleteDevicesDeviceUsersRequest>,
+  output: __S(1570, __c49, 2) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -2012,8 +2012,8 @@ export const deleteGroups: API.OperationMethod<
   DeleteGroupsError,
   GoogleWorkspaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(75, __c9, 3) as any as S.Schema<DeleteGroupsRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<Operation>,
+  input: __S(800, __c25, 0) as any as S.Schema<DeleteGroupsRequest>,
+  output: __S(1570, __c49, 2) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -2032,8 +2032,8 @@ export const deleteGroupsMemberships: API.OperationMethod<
   DeleteGroupsMembershipsError,
   GoogleWorkspaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(76, __c9, 4) as any as S.Schema<DeleteGroupsMembershipsRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<Operation>,
+  input: __S(832, __c26, 0) as any as S.Schema<DeleteGroupsMembershipsRequest>,
+  output: __S(1570, __c49, 2) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -2052,8 +2052,8 @@ export const deleteInboundOidcSsoProfiles: API.OperationMethod<
   DeleteInboundOidcSsoProfilesError,
   GoogleWorkspaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(77, __c9, 5) as any as S.Schema<DeleteInboundOidcSsoProfilesRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<Operation>,
+  input: __S(864, __c27, 0) as any as S.Schema<DeleteInboundOidcSsoProfilesRequest>,
+  output: __S(1570, __c49, 2) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -2072,8 +2072,8 @@ export const deleteInboundSamlSsoProfiles: API.OperationMethod<
   DeleteInboundSamlSsoProfilesError,
   GoogleWorkspaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(78, __c9, 6) as any as S.Schema<DeleteInboundSamlSsoProfilesRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<Operation>,
+  input: __S(896, __c28, 0) as any as S.Schema<DeleteInboundSamlSsoProfilesRequest>,
+  output: __S(1570, __c49, 2) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -2092,8 +2092,8 @@ export const deleteInboundSamlSsoProfilesIdpCredentials: API.OperationMethod<
   DeleteInboundSamlSsoProfilesIdpCredentialsError,
   GoogleWorkspaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(79, __c9, 7) as any as S.Schema<DeleteInboundSamlSsoProfilesIdpCredentialsRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<Operation>,
+  input: __S(928, __c29, 0) as any as S.Schema<DeleteInboundSamlSsoProfilesIdpCredentialsRequest>,
+  output: __S(1570, __c49, 2) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -2112,8 +2112,8 @@ export const deleteInboundSsoAssignments: API.OperationMethod<
   DeleteInboundSsoAssignmentsError,
   GoogleWorkspaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(80, __c10, 0) as any as S.Schema<DeleteInboundSsoAssignmentsRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<Operation>,
+  input: __S(960, __c30, 0) as any as S.Schema<DeleteInboundSsoAssignmentsRequest>,
+  output: __S(1570, __c49, 2) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -2132,8 +2132,8 @@ export const deletePolicies: API.OperationMethod<
   DeletePoliciesError,
   GoogleWorkspaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(81, __c10, 1) as any as S.Schema<DeletePoliciesRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<Operation>,
+  input: __S(992, __c31, 0) as any as S.Schema<DeletePoliciesRequest>,
+  output: __S(1570, __c49, 2) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -2147,8 +2147,8 @@ export const getAllowlistedDomains: API.OperationMethod<
   GetAllowlistedDomainsError,
   GoogleWorkspaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(82, __c10, 2) as any as S.Schema<GetAllowlistedDomainsRequest>,
-  output: __S(15, __c1, 7) as any as S.Schema<AllowlistedDomain>,
+  input: __S(1024, __c32, 0) as any as S.Schema<GetAllowlistedDomainsRequest>,
+  output: __S(64, __c2, 0) as any as S.Schema<AllowlistedDomain>,
   errors: [NotFound, Forbidden, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -2162,8 +2162,8 @@ export const getCustomersUserinvitations: API.OperationMethod<
   GetCustomersUserinvitationsError,
   GoogleWorkspaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(83, __c10, 3) as any as S.Schema<GetCustomersUserinvitationsRequest>,
-  output: __S(84, __c10, 4) as any as S.Schema<UserInvitation>,
+  input: __S(1056, __c33, 0) as any as S.Schema<GetCustomersUserinvitationsRequest>,
+  output: __S(1088, __c34, 0) as any as S.Schema<UserInvitation>,
   errors: [NotFound, Forbidden, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -2177,8 +2177,8 @@ export const getDevices: API.OperationMethod<
   GetDevicesError,
   GoogleWorkspaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(85, __c10, 5) as any as S.Schema<GetDevicesRequest>,
-  output: __S(34, __c4, 2) as any as S.Schema<Device>,
+  input: __S(1120, __c35, 0) as any as S.Schema<GetDevicesRequest>,
+  output: __S(176, __c5, 16) as any as S.Schema<Device>,
   errors: [NotFound, Forbidden, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -2192,8 +2192,8 @@ export const getDevicesDeviceUsers: API.OperationMethod<
   GetDevicesDeviceUsersError,
   GoogleWorkspaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(86, __c10, 6) as any as S.Schema<GetDevicesDeviceUsersRequest>,
-  output: __S(87, __c10, 7) as any as S.Schema<DeviceUser>,
+  input: __S(1152, __c36, 0) as any as S.Schema<GetDevicesDeviceUsersRequest>,
+  output: __S(1184, __c37, 0) as any as S.Schema<DeviceUser>,
   errors: [NotFound, Forbidden, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -2207,8 +2207,8 @@ export const getDevicesDeviceUsersClientStates: API.OperationMethod<
   GetDevicesDeviceUsersClientStatesError,
   GoogleWorkspaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(88, __c11, 0) as any as S.Schema<GetDevicesDeviceUsersClientStatesRequest>,
-  output: __S(91, __c11, 3) as any as S.Schema<ClientState>,
+  input: __S(1216, __c38, 0) as any as S.Schema<GetDevicesDeviceUsersClientStatesRequest>,
+  output: __S(1250, __c39, 2) as any as S.Schema<ClientState>,
   errors: [NotFound, Forbidden, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -2222,8 +2222,8 @@ export const getGroups: API.OperationMethod<
   GetGroupsError,
   GoogleWorkspaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(92, __c11, 4) as any as S.Schema<GetGroupsRequest>,
-  output: __S(46, __c5, 6) as any as S.Schema<Group>,
+  input: __S(1280, __c40, 0) as any as S.Schema<GetGroupsRequest>,
+  output: __S(294, __c9, 6) as any as S.Schema<Group>,
   errors: [NotFound, Forbidden, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -2237,8 +2237,8 @@ export const getGroupsMemberships: API.OperationMethod<
   GetGroupsMembershipsError,
   GoogleWorkspaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(93, __c11, 5) as any as S.Schema<GetGroupsMembershipsRequest>,
-  output: __S(53, __c6, 5) as any as S.Schema<Membership>,
+  input: __S(1312, __c41, 0) as any as S.Schema<GetGroupsMembershipsRequest>,
+  output: __S(384, __c12, 0) as any as S.Schema<Membership>,
   errors: [NotFound, Forbidden, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -2252,8 +2252,8 @@ export const getInboundOidcSsoProfiles: API.OperationMethod<
   GetInboundOidcSsoProfilesError,
   GoogleWorkspaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(94, __c11, 6) as any as S.Schema<GetInboundOidcSsoProfilesRequest>,
-  output: __S(57, __c7, 1) as any as S.Schema<InboundOidcSsoProfile>,
+  input: __S(1344, __c42, 0) as any as S.Schema<GetInboundOidcSsoProfilesRequest>,
+  output: __S(482, __c15, 2) as any as S.Schema<InboundOidcSsoProfile>,
   errors: [NotFound, Forbidden, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -2267,8 +2267,8 @@ export const getInboundSamlSsoProfiles: API.OperationMethod<
   GetInboundSamlSsoProfilesError,
   GoogleWorkspaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(95, __c11, 7) as any as S.Schema<GetInboundSamlSsoProfilesRequest>,
-  output: __S(61, __c7, 5) as any as S.Schema<InboundSamlSsoProfile>,
+  input: __S(1376, __c43, 0) as any as S.Schema<GetInboundSamlSsoProfilesRequest>,
+  output: __S(546, __c17, 2) as any as S.Schema<InboundSamlSsoProfile>,
   errors: [NotFound, Forbidden, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -2285,8 +2285,8 @@ export const getInboundSamlSsoProfilesIdpCredentials: API.OperationMethod<
   GetInboundSamlSsoProfilesIdpCredentialsError,
   GoogleWorkspaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(96, __c12, 0) as any as S.Schema<GetInboundSamlSsoProfilesIdpCredentialsRequest>,
-  output: __S(98, __c12, 2) as any as S.Schema<IdpCredential>,
+  input: __S(1408, __c44, 0) as any as S.Schema<GetInboundSamlSsoProfilesIdpCredentialsRequest>,
+  output: __S(1441, __c45, 1) as any as S.Schema<IdpCredential>,
   errors: [NotFound, Forbidden, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -2300,8 +2300,8 @@ export const getInboundSsoAssignments: API.OperationMethod<
   GetInboundSsoAssignmentsError,
   GoogleWorkspaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(99, __c12, 3) as any as S.Schema<GetInboundSsoAssignmentsRequest>,
-  output: __S(66, __c8, 2) as any as S.Schema<InboundSsoAssignment>,
+  input: __S(1472, __c46, 0) as any as S.Schema<GetInboundSsoAssignmentsRequest>,
+  output: __S(611, __c19, 3) as any as S.Schema<InboundSsoAssignment>,
   errors: [NotFound, Forbidden, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -2318,8 +2318,8 @@ export const getMembershipGraphGroupsMemberships: API.OperationMethod<
   GetMembershipGraphGroupsMembershipsError,
   GoogleWorkspaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(100, __c12, 4) as any as S.Schema<GetMembershipGraphGroupsMembershipsRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<Operation>,
+  input: __S(1600, __c50, 0) as any as S.Schema<GetMembershipGraphGroupsMembershipsRequest>,
+  output: __S(1570, __c49, 2) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -2333,8 +2333,8 @@ export const getPolicies: API.OperationMethod<
   GetPoliciesError,
   GoogleWorkspaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(101, __c12, 5) as any as S.Schema<GetPoliciesRequest>,
-  output: __S(70, __c8, 6) as any as S.Schema<Policy>,
+  input: __S(1632, __c51, 0) as any as S.Schema<GetPoliciesRequest>,
+  output: __S(674, __c21, 2) as any as S.Schema<Policy>,
   errors: [NotFound, Forbidden, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -2348,8 +2348,8 @@ export const getSecuritySettingsGroups: API.OperationMethod<
   GetSecuritySettingsGroupsError,
   GoogleWorkspaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(102, __c12, 6) as any as S.Schema<GetSecuritySettingsGroupsRequest>,
-  output: __S(105, __c13, 1) as any as S.Schema<SecuritySettings>,
+  input: __S(1664, __c52, 0) as any as S.Schema<GetSecuritySettingsGroupsRequest>,
+  output: __S(1698, __c53, 2) as any as S.Schema<SecuritySettings>,
   errors: [NotFound, Forbidden, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -2366,8 +2366,8 @@ export const isInvitableUserCustomersUserinvitations: API.OperationMethod<
   IsInvitableUserCustomersUserinvitationsError,
   GoogleWorkspaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(106, __c13, 2) as any as S.Schema<IsInvitableUserCustomersUserinvitationsRequest>,
-  output: __S(107, __c13, 3) as any as S.Schema<IsInvitableUserResponse>,
+  input: __S(1728, __c54, 0) as any as S.Schema<IsInvitableUserCustomersUserinvitationsRequest>,
+  output: __S(1729, __c54, 1) as any as S.Schema<IsInvitableUserResponse>,
   errors: [NotFound, Forbidden, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -2382,8 +2382,8 @@ export const listAllowlistedDomains: API.PaginatedOperationMethod<
   GoogleWorkspaceOpContext,
   ListAllowlistedDomainsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(108, __c13, 4) as any as S.Schema<ListAllowlistedDomainsRequest>,
-  output: __S(110, __c13, 6) as any as S.Schema<ListAllowlistedDomainsResponse>,
+  input: __S(1760, __c55, 0) as any as S.Schema<ListAllowlistedDomainsRequest>,
+  output: __S(1762, __c55, 2) as any as S.Schema<ListAllowlistedDomainsResponse>,
   errors: [NotFound, Forbidden, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -2399,8 +2399,8 @@ export const listCustomersUserinvitations: API.PaginatedOperationMethod<
   GoogleWorkspaceOpContext,
   ListUserInvitationsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(111, __c13, 7) as any as S.Schema<ListCustomersUserinvitationsRequest>,
-  output: __S(113, __c14, 1) as any as S.Schema<ListUserInvitationsResponse>,
+  input: __S(1792, __c56, 0) as any as S.Schema<ListCustomersUserinvitationsRequest>,
+  output: __S(1794, __c56, 2) as any as S.Schema<ListUserInvitationsResponse>,
   errors: [NotFound, Forbidden, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -2416,8 +2416,8 @@ export const listDevices: API.PaginatedOperationMethod<
   GoogleWorkspaceOpContext,
   ListDevicesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(114, __c14, 2) as any as S.Schema<ListDevicesRequest>,
-  output: __S(116, __c14, 4) as any as S.Schema<ListDevicesResponse>,
+  input: __S(1824, __c57, 0) as any as S.Schema<ListDevicesRequest>,
+  output: __S(1826, __c57, 2) as any as S.Schema<ListDevicesResponse>,
   errors: [NotFound, Forbidden, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -2433,8 +2433,8 @@ export const listDevicesDeviceUsers: API.PaginatedOperationMethod<
   GoogleWorkspaceOpContext,
   ListDeviceUsersResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(117, __c14, 5) as any as S.Schema<ListDevicesDeviceUsersRequest>,
-  output: __S(119, __c14, 7) as any as S.Schema<ListDeviceUsersResponse>,
+  input: __S(1856, __c58, 0) as any as S.Schema<ListDevicesDeviceUsersRequest>,
+  output: __S(1858, __c58, 2) as any as S.Schema<ListDeviceUsersResponse>,
   errors: [NotFound, Forbidden, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -2450,8 +2450,8 @@ export const listGroups: API.PaginatedOperationMethod<
   GoogleWorkspaceOpContext,
   ListGroupsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(120, __c15, 0) as any as S.Schema<ListGroupsRequest>,
-  output: __S(122, __c15, 2) as any as S.Schema<ListGroupsResponse>,
+  input: __S(1888, __c59, 0) as any as S.Schema<ListGroupsRequest>,
+  output: __S(1921, __c60, 1) as any as S.Schema<ListGroupsResponse>,
   errors: [NotFound, Forbidden, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -2467,8 +2467,8 @@ export const listGroupsMemberships: API.PaginatedOperationMethod<
   GoogleWorkspaceOpContext,
   ListMembershipsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(123, __c15, 3) as any as S.Schema<ListGroupsMembershipsRequest>,
-  output: __S(125, __c15, 5) as any as S.Schema<ListMembershipsResponse>,
+  input: __S(1952, __c61, 0) as any as S.Schema<ListGroupsMembershipsRequest>,
+  output: __S(1954, __c61, 2) as any as S.Schema<ListMembershipsResponse>,
   errors: [NotFound, Forbidden, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -2484,8 +2484,8 @@ export const listInboundOidcSsoProfiles: API.PaginatedOperationMethod<
   GoogleWorkspaceOpContext,
   ListInboundOidcSsoProfilesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(126, __c15, 6) as any as S.Schema<ListInboundOidcSsoProfilesRequest>,
-  output: __S(128, __c16, 0) as any as S.Schema<ListInboundOidcSsoProfilesResponse>,
+  input: __S(2048, __c64, 0) as any as S.Schema<ListInboundOidcSsoProfilesRequest>,
+  output: __S(2050, __c64, 2) as any as S.Schema<ListInboundOidcSsoProfilesResponse>,
   errors: [NotFound, Forbidden, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -2501,8 +2501,8 @@ export const listInboundSamlSsoProfiles: API.PaginatedOperationMethod<
   GoogleWorkspaceOpContext,
   ListInboundSamlSsoProfilesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(129, __c16, 1) as any as S.Schema<ListInboundSamlSsoProfilesRequest>,
-  output: __S(131, __c16, 3) as any as S.Schema<ListInboundSamlSsoProfilesResponse>,
+  input: __S(2080, __c65, 0) as any as S.Schema<ListInboundSamlSsoProfilesRequest>,
+  output: __S(2082, __c65, 2) as any as S.Schema<ListInboundSamlSsoProfilesResponse>,
   errors: [NotFound, Forbidden, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -2521,8 +2521,8 @@ export const listInboundSamlSsoProfilesIdpCredentials: API.PaginatedOperationMet
   GoogleWorkspaceOpContext,
   ListIdpCredentialsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(132, __c16, 4) as any as S.Schema<ListInboundSamlSsoProfilesIdpCredentialsRequest>,
-  output: __S(134, __c16, 6) as any as S.Schema<ListIdpCredentialsResponse>,
+  input: __S(2112, __c66, 0) as any as S.Schema<ListInboundSamlSsoProfilesIdpCredentialsRequest>,
+  output: __S(2114, __c66, 2) as any as S.Schema<ListIdpCredentialsResponse>,
   errors: [NotFound, Forbidden, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -2538,8 +2538,8 @@ export const listInboundSsoAssignments: API.PaginatedOperationMethod<
   GoogleWorkspaceOpContext,
   ListInboundSsoAssignmentsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(135, __c16, 7) as any as S.Schema<ListInboundSsoAssignmentsRequest>,
-  output: __S(137, __c17, 1) as any as S.Schema<ListInboundSsoAssignmentsResponse>,
+  input: __S(2144, __c67, 0) as any as S.Schema<ListInboundSsoAssignmentsRequest>,
+  output: __S(2146, __c67, 2) as any as S.Schema<ListInboundSsoAssignmentsResponse>,
   errors: [NotFound, Forbidden, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -2555,8 +2555,8 @@ export const listOrgUnitsMemberships: API.PaginatedOperationMethod<
   GoogleWorkspaceOpContext,
   ListOrgMembershipsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(138, __c17, 2) as any as S.Schema<ListOrgUnitsMembershipsRequest>,
-  output: __S(141, __c17, 5) as any as S.Schema<ListOrgMembershipsResponse>,
+  input: __S(2176, __c68, 0) as any as S.Schema<ListOrgUnitsMembershipsRequest>,
+  output: __S(2179, __c68, 3) as any as S.Schema<ListOrgMembershipsResponse>,
   errors: [NotFound, Forbidden, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -2572,8 +2572,8 @@ export const listPolicies: API.PaginatedOperationMethod<
   GoogleWorkspaceOpContext,
   ListPoliciesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(142, __c17, 6) as any as S.Schema<ListPoliciesRequest>,
-  output: __S(144, __c18, 0) as any as S.Schema<ListPoliciesResponse>,
+  input: __S(2208, __c69, 0) as any as S.Schema<ListPoliciesRequest>,
+  output: __S(2210, __c69, 2) as any as S.Schema<ListPoliciesResponse>,
   errors: [NotFound, Forbidden, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -2589,8 +2589,8 @@ export const lookupDevicesDeviceUsers: API.PaginatedOperationMethod<
   GoogleWorkspaceOpContext,
   LookupSelfDeviceUsersResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(145, __c18, 1) as any as S.Schema<LookupDevicesDeviceUsersRequest>,
-  output: __S(146, __c18, 2) as any as S.Schema<LookupSelfDeviceUsersResponse>,
+  input: __S(2240, __c70, 0) as any as S.Schema<LookupDevicesDeviceUsersRequest>,
+  output: __S(2241, __c70, 1) as any as S.Schema<LookupSelfDeviceUsersResponse>,
   errors: [NotFound, Forbidden, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -2605,8 +2605,8 @@ export const lookupGroups: API.OperationMethod<
   LookupGroupsError,
   GoogleWorkspaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(147, __c18, 3) as any as S.Schema<LookupGroupsRequest>,
-  output: __S(148, __c18, 4) as any as S.Schema<LookupGroupNameResponse>,
+  input: __S(2272, __c71, 0) as any as S.Schema<LookupGroupsRequest>,
+  output: __S(2273, __c71, 1) as any as S.Schema<LookupGroupNameResponse>,
   errors: [NotFound, Forbidden, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -2620,8 +2620,8 @@ export const lookupGroupsMemberships: API.OperationMethod<
   LookupGroupsMembershipsError,
   GoogleWorkspaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(149, __c18, 5) as any as S.Schema<LookupGroupsMembershipsRequest>,
-  output: __S(150, __c18, 6) as any as S.Schema<LookupMembershipNameResponse>,
+  input: __S(2304, __c72, 0) as any as S.Schema<LookupGroupsMembershipsRequest>,
+  output: __S(2305, __c72, 1) as any as S.Schema<LookupMembershipNameResponse>,
   errors: [NotFound, Forbidden, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -2640,8 +2640,8 @@ export const modifyMembershipRolesGroupsMemberships: API.OperationMethod<
   ModifyMembershipRolesGroupsMembershipsError,
   GoogleWorkspaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(154, __c19, 2) as any as S.Schema<ModifyMembershipRolesGroupsMembershipsRequest>,
-  output: __S(155, __c19, 3) as any as S.Schema<ModifyMembershipRolesResponse>,
+  input: __S(2339, __c73, 3) as any as S.Schema<ModifyMembershipRolesGroupsMembershipsRequest>,
+  output: __S(2340, __c73, 4) as any as S.Schema<ModifyMembershipRolesResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -2660,8 +2660,8 @@ export const moveOrgUnitsMemberships: API.OperationMethod<
   MoveOrgUnitsMembershipsError,
   GoogleWorkspaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(157, __c19, 5) as any as S.Schema<MoveOrgUnitsMembershipsRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<Operation>,
+  input: __S(2401, __c75, 1) as any as S.Schema<MoveOrgUnitsMembershipsRequest>,
+  output: __S(1570, __c49, 2) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -2680,8 +2680,8 @@ export const patchDevicesDeviceUsersClientStates: API.OperationMethod<
   PatchDevicesDeviceUsersClientStatesError,
   GoogleWorkspaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(158, __c19, 6) as any as S.Schema<PatchDevicesDeviceUsersClientStatesRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<Operation>,
+  input: __S(2432, __c76, 0) as any as S.Schema<PatchDevicesDeviceUsersClientStatesRequest>,
+  output: __S(1570, __c49, 2) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -2700,8 +2700,8 @@ export const patchGroups: API.OperationMethod<
   PatchGroupsError,
   GoogleWorkspaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(159, __c19, 7) as any as S.Schema<PatchGroupsRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<Operation>,
+  input: __S(2464, __c77, 0) as any as S.Schema<PatchGroupsRequest>,
+  output: __S(1570, __c49, 2) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -2720,8 +2720,8 @@ export const patchInboundOidcSsoProfiles: API.OperationMethod<
   PatchInboundOidcSsoProfilesError,
   GoogleWorkspaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(160, __c20, 0) as any as S.Schema<PatchInboundOidcSsoProfilesRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<Operation>,
+  input: __S(2496, __c78, 0) as any as S.Schema<PatchInboundOidcSsoProfilesRequest>,
+  output: __S(1570, __c49, 2) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -2740,8 +2740,8 @@ export const patchInboundSamlSsoProfiles: API.OperationMethod<
   PatchInboundSamlSsoProfilesError,
   GoogleWorkspaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(161, __c20, 1) as any as S.Schema<PatchInboundSamlSsoProfilesRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<Operation>,
+  input: __S(2528, __c79, 0) as any as S.Schema<PatchInboundSamlSsoProfilesRequest>,
+  output: __S(1570, __c49, 2) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -2760,8 +2760,8 @@ export const patchInboundSsoAssignments: API.OperationMethod<
   PatchInboundSsoAssignmentsError,
   GoogleWorkspaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(162, __c20, 2) as any as S.Schema<PatchInboundSsoAssignmentsRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<Operation>,
+  input: __S(2560, __c80, 0) as any as S.Schema<PatchInboundSsoAssignmentsRequest>,
+  output: __S(1570, __c49, 2) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -2780,8 +2780,8 @@ export const patchPolicies: API.OperationMethod<
   PatchPoliciesError,
   GoogleWorkspaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(163, __c20, 3) as any as S.Schema<PatchPoliciesRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<Operation>,
+  input: __S(2592, __c81, 0) as any as S.Schema<PatchPoliciesRequest>,
+  output: __S(1570, __c49, 2) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -2799,8 +2799,8 @@ export const searchDirectGroupsGroupsMemberships: API.PaginatedOperationMethod<
   GoogleWorkspaceOpContext,
   SearchDirectGroupsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(164, __c20, 4) as any as S.Schema<SearchDirectGroupsGroupsMembershipsRequest>,
-  output: __S(167, __c20, 7) as any as S.Schema<SearchDirectGroupsResponse>,
+  input: __S(2624, __c82, 0) as any as S.Schema<SearchDirectGroupsGroupsMembershipsRequest>,
+  output: __S(2627, __c82, 3) as any as S.Schema<SearchDirectGroupsResponse>,
   errors: [NotFound, Forbidden, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -2816,8 +2816,8 @@ export const searchGroups: API.PaginatedOperationMethod<
   GoogleWorkspaceOpContext,
   SearchGroupsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(168, __c21, 0) as any as S.Schema<SearchGroupsRequest>,
-  output: __S(122, __c15, 2) as any as S.Schema<SearchGroupsResponse>,
+  input: __S(2656, __c83, 0) as any as S.Schema<SearchGroupsRequest>,
+  output: __S(1921, __c60, 1) as any as S.Schema<SearchGroupsResponse>,
   errors: [NotFound, Forbidden, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -2836,8 +2836,8 @@ export const searchTransitiveGroupsGroupsMemberships: API.PaginatedOperationMeth
   GoogleWorkspaceOpContext,
   SearchTransitiveGroupsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(169, __c21, 1) as any as S.Schema<SearchTransitiveGroupsGroupsMembershipsRequest>,
-  output: __S(174, __c21, 6) as any as S.Schema<SearchTransitiveGroupsResponse>,
+  input: __S(2688, __c84, 0) as any as S.Schema<SearchTransitiveGroupsGroupsMembershipsRequest>,
+  output: __S(2691, __c84, 3) as any as S.Schema<SearchTransitiveGroupsResponse>,
   errors: [NotFound, Forbidden, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -2856,8 +2856,12 @@ export const searchTransitiveMembershipsGroupsMemberships: API.PaginatedOperatio
   GoogleWorkspaceOpContext,
   SearchTransitiveMembershipsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(175, __c21, 7) as any as S.Schema<SearchTransitiveMembershipsGroupsMembershipsRequest>,
-  output: __S(178, __c22, 2) as any as S.Schema<SearchTransitiveMembershipsResponse>,
+  input: __S(
+    2816,
+    __c88,
+    0,
+  ) as any as S.Schema<SearchTransitiveMembershipsGroupsMembershipsRequest>,
+  output: __S(2819, __c88, 3) as any as S.Schema<SearchTransitiveMembershipsResponse>,
   errors: [NotFound, Forbidden, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -2877,8 +2881,8 @@ export const sendCustomersUserinvitations: API.OperationMethod<
   SendCustomersUserinvitationsError,
   GoogleWorkspaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(179, __c22, 3) as any as S.Schema<SendCustomersUserinvitationsRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<Operation>,
+  input: __S(2848, __c89, 0) as any as S.Schema<SendCustomersUserinvitationsRequest>,
+  output: __S(1570, __c49, 2) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -2897,8 +2901,8 @@ export const updateSecuritySettingsGroups: API.OperationMethod<
   UpdateSecuritySettingsGroupsError,
   GoogleWorkspaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(180, __c22, 4) as any as S.Schema<UpdateSecuritySettingsGroupsRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<Operation>,
+  input: __S(2880, __c90, 0) as any as S.Schema<UpdateSecuritySettingsGroupsRequest>,
+  output: __S(1570, __c49, 2) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -2917,8 +2921,8 @@ export const wipeDevices: API.OperationMethod<
   WipeDevicesError,
   GoogleWorkspaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(182, __c22, 6) as any as S.Schema<WipeDevicesRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<Operation>,
+  input: __S(2913, __c91, 1) as any as S.Schema<WipeDevicesRequest>,
+  output: __S(1570, __c49, 2) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -2937,8 +2941,8 @@ export const wipeDevicesDeviceUsers: API.OperationMethod<
   WipeDevicesDeviceUsersError,
   GoogleWorkspaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(183, __c22, 7) as any as S.Schema<WipeDevicesDeviceUsersRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<Operation>,
+  input: __S(2944, __c92, 0) as any as S.Schema<WipeDevicesDeviceUsersRequest>,
+  output: __S(1570, __c49, 2) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -2948,136 +2952,6 @@ export const wipeDevicesDeviceUsers: API.OperationMethod<
 function __c0(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() =>
-        S.Struct({
-          pemData: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "AddIdpCredentialRequest" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(0, __c0, 0).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1beta1/{+parent}/idpCredentials:add",
-            baseUrl: "https://cloudidentity.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "AddInboundSamlSsoProfilesIdpCredentialsRequest",
-      });
-    case 2:
-      return S.Record(S.String, S.Unknown);
-    case 3:
-      return S.Array(__S(2, __c0, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          details: S.optional(__S(3, __c0, 3)),
-          code: S.optional(S.Number),
-          message: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Status" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          metadata: S.optional(__S(2, __c0, 2)),
-          name: S.optional(S.String),
-          done: S.optional(S.Boolean),
-          error: S.optional(__S(4, __c0, 4)),
-          response: S.optional(__S(2, __c0, 2)),
-        }),
-      ).annotate({ identifier: "Operation" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          customer: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ApproveDeviceUserRequest" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-          body: S.optional(__S(6, __c0, 6).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1beta1/{+name}:approve",
-            baseUrl: "https://cloudidentity.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "ApproveDevicesDeviceUsersRequest",
-      });
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-          body: S.optional(__S(6, __c0, 6).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1beta1/{+name}:block",
-            baseUrl: "https://cloudidentity.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "BlockDevicesDeviceUsersRequest",
-      });
-    case 1:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "CancelUserInvitationRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-          body: S.optional(__S(9, __c1, 1).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1beta1/{+name}:cancel",
-            baseUrl: "https://cloudidentity.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "CancelCustomersUserinvitationsRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-          body: S.optional(__S(6, __c0, 6).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1beta1/{+name}:cancelWipe",
-            baseUrl: "https://cloudidentity.googleapis.com/",
-          }),
-        ),
-      ).annotate({ identifier: "CancelWipeDevicesRequest" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-          body: S.optional(__S(6, __c0, 6).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1beta1/{+name}:cancelWipe",
-            baseUrl: "https://cloudidentity.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "CancelWipeDevicesDeviceUsersRequest",
-      });
-    case 5:
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
@@ -3092,7 +2966,7 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "CheckTransitiveMembershipGroupsMembershipsRequest",
       });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           hasMembership: S.optional(S.Boolean),
@@ -3100,21 +2974,14 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "CheckTransitiveMembershipResponse",
       });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.optional(S.String),
-          domain: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "AllowlistedDomain" });
   }
 }
-function __c2(j: number): any {
+function __c1(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          body: S.optional(__S(15, __c1, 7).pipe(T.HttpBody())),
+          body: S.optional(__S(64, __c2, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -3125,9 +2992,51 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "CreateAllowlistedDomainsRequest",
       });
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.optional(S.String),
+          domain: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "AllowlistedDomain" });
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          device: S.optional(__S(176, __c5, 16)),
+          customer: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "CreateDeviceRequest" });
     case 1:
+      return S.suspend(() =>
+        S.Struct({
+          body: S.optional(__S(96, __c3, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1beta1/devices",
+            baseUrl: "https://cloudidentity.googleapis.com/",
+          }),
+        ),
+      ).annotate({ identifier: "CreateDevicesRequest" });
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
       return S.Array(S.String);
-    case 2:
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           ownershipPrivilege: S.optional(S.String),
@@ -3140,7 +3049,7 @@ function __c2(j: number): any {
           enabledUnknownSources: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "AndroidAttributes" });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           displayName: S.optional(S.String),
@@ -3148,9 +3057,9 @@ function __c2(j: number): any {
           productState: S.optional(S.String),
         }),
       ).annotate({ identifier: "AntivirusInfo" });
-    case 4:
-      return S.Array(__S(19, __c2, 3));
-    case 5:
+    case 2:
+      return S.Array(__S(161, __c5, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
@@ -3158,7 +3067,7 @@ function __c2(j: number): any {
           majorVersion: S.optional(S.Number),
         }),
       ).annotate({ identifier: "CertificateTemplate" });
-    case 6:
+    case 4:
       return S.suspend(() =>
         S.Struct({
           validityExpirationTime: S.optional(S.String),
@@ -3169,16 +3078,12 @@ function __c2(j: number): any {
           fingerprint: S.optional(S.String),
           validityStartTime: S.optional(S.String),
           validationState: S.optional(S.String),
-          certificateTemplate: S.optional(__S(21, __c2, 5)),
+          certificateTemplate: S.optional(__S(163, __c5, 3)),
         }),
       ).annotate({ identifier: "CertificateAttributes" });
-    case 7:
-      return S.Array(__S(22, __c2, 6));
-  }
-}
-function __c3(j: number): any {
-  switch (j) {
-    case 0:
+    case 5:
+      return S.Array(__S(164, __c5, 4));
+    case 6:
       return S.suspend(() =>
         S.Struct({
           source: S.optional(S.String),
@@ -3186,21 +3091,21 @@ function __c3(j: number): any {
           scope: S.optional(S.String),
         }),
       ).annotate({ identifier: "PolicyConflict" });
-    case 1:
-      return S.Array(__S(24, __c3, 0));
-    case 2:
+    case 7:
+      return S.Array(__S(166, __c5, 6));
+    case 8:
       return S.suspend(() =>
         S.Struct({
           scope: S.optional(S.String),
           value: S.optional(S.String),
           source: S.optional(S.String),
           name: S.optional(S.String),
-          conflicts: S.optional(__S(25, __c3, 1)),
+          conflicts: S.optional(__S(167, __c5, 7)),
         }),
       ).annotate({ identifier: "ChromePolicy" });
-    case 3:
-      return S.Array(__S(26, __c3, 2));
-    case 4:
+    case 9:
+      return S.Array(__S(168, __c5, 8));
+    case 10:
       return S.suspend(() =>
         S.Struct({
           isRealtimeUrlCheckEnabled: S.optional(S.Boolean),
@@ -3216,55 +3121,51 @@ function __c3(j: number): any {
           isSiteIsolationEnabled: S.optional(S.Boolean),
           isBuiltInDnsClientEnabled: S.optional(S.Boolean),
           isChromeRemoteDesktopAppBlocked: S.optional(S.Boolean),
-          policies: S.optional(__S(27, __c3, 3)),
+          policies: S.optional(__S(169, __c5, 9)),
           browserVersion: S.optional(S.String),
         }),
       ).annotate({ identifier: "BrowserInfo" });
-    case 5:
+    case 11:
       return S.suspend(() =>
         S.Struct({
           chromeProfileId: S.optional(S.String),
           lastProfileSyncTime: S.optional(S.String),
-          chromeBrowserInfo: S.optional(__S(28, __c3, 4)),
+          chromeBrowserInfo: S.optional(__S(170, __c5, 10)),
         }),
       ).annotate({ identifier: "BrowserAttributes" });
-    case 6:
-      return S.Array(__S(29, __c3, 5));
-    case 7:
+    case 12:
+      return S.Array(__S(171, __c5, 11));
+    case 13:
       return S.suspend(() =>
         S.Struct({
-          certificateAttributes: S.optional(__S(23, __c2, 7)),
-          browserAttributes: S.optional(__S(30, __c3, 6)),
-          additionalSignals: S.optional(__S(2, __c0, 2)),
+          certificateAttributes: S.optional(__S(165, __c5, 5)),
+          browserAttributes: S.optional(__S(172, __c5, 12)),
+          additionalSignals: S.optional(__S(1536, __c48, 0)),
         }),
       ).annotate({
         identifier: "EndpointVerificationSpecificAttributes",
       });
-  }
-}
-function __c4(j: number): any {
-  switch (j) {
-    case 0:
+    case 14:
       return S.suspend(() =>
         S.Struct({
           windowsMachineDomain: S.optional(S.String),
           secureBootMode: S.optional(S.String),
           windowsUserDomain: S.optional(S.String),
-          hotfixes: S.optional(__S(17, __c2, 1)),
+          hotfixes: S.optional(__S(128, __c4, 0)),
         }),
       ).annotate({
         identifier: "WindowsSpecificDeviceAttributes",
       });
-    case 1:
+    case 15:
       return S.Array(S.String);
-    case 2:
+    case 16:
       return S.suspend(() =>
         S.Struct({
           securityPatchTime: S.optional(S.String),
           model: S.optional(S.String),
           buildNumber: S.optional(S.String),
           kernelVersion: S.optional(S.String),
-          wifiMacAddresses: S.optional(__S(17, __c2, 1)),
+          wifiMacAddresses: S.optional(__S(128, __c4, 0)),
           networkOperator: S.optional(S.String),
           serialNumber: S.optional(S.String),
           createTime: S.optional(S.String),
@@ -3277,117 +3178,37 @@ function __c4(j: number): any {
           imei: S.optional(S.String),
           managementState: S.optional(S.String),
           enabledDeveloperOptions: S.optional(S.Boolean),
-          androidSpecificAttributes: S.optional(__S(18, __c2, 2)),
+          androidSpecificAttributes: S.optional(__S(160, __c5, 0)),
           manufacturer: S.optional(S.String),
           releaseVersion: S.optional(S.String),
           assetTag: S.optional(S.String),
-          otherAccounts: S.optional(__S(17, __c2, 1)),
-          antivirusInfo: S.optional(__S(20, __c2, 4)),
+          otherAccounts: S.optional(__S(128, __c4, 0)),
+          antivirusInfo: S.optional(__S(162, __c5, 2)),
           ownerType: S.optional(S.String),
           osFirewallStatus: S.optional(S.String),
-          endpointVerificationSpecificAttributes: S.optional(__S(31, __c3, 7)),
+          endpointVerificationSpecificAttributes: S.optional(__S(173, __c5, 13)),
           unifiedDeviceId: S.optional(S.String),
-          windowsSpecificDeviceAttributes: S.optional(__S(32, __c4, 0)),
+          windowsSpecificDeviceAttributes: S.optional(__S(174, __c5, 14)),
           compromisedState: S.optional(S.String),
           name: S.optional(S.String),
           brand: S.optional(S.String),
           deviceId: S.optional(S.String),
           meid: S.optional(S.String),
-          browserProfiles: S.optional(__S(30, __c3, 6)),
+          browserProfiles: S.optional(__S(172, __c5, 12)),
           lastSyncTime: S.optional(S.String),
           enabledUsbDebugging: S.optional(S.Boolean),
-          clientTypes: S.optional(__S(33, __c4, 1)),
+          clientTypes: S.optional(__S(175, __c5, 15)),
         }),
       ).annotate({ identifier: "Device" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          device: S.optional(__S(34, __c4, 2)),
-          customer: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "CreateDeviceRequest" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          body: S.optional(__S(35, __c4, 3).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1beta1/devices",
-            baseUrl: "https://cloudidentity.googleapis.com/",
-          }),
-        ),
-      ).annotate({ identifier: "CreateDevicesRequest" });
-    case 5:
-      return S.Record(S.String, S.String);
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          namespace: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ExternalId" });
-    case 7:
-      return S.Array(__S(38, __c4, 6));
   }
 }
-function __c5(j: number): any {
+function __c6(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          gid: S.optional(S.String),
-          systemId: S.optional(S.String),
-          name: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "PosixGroup" });
-    case 1:
-      return S.Array(__S(40, __c5, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          resourceType: S.optional(S.String),
-          query: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "DynamicGroupQuery" });
-    case 3:
-      return S.Array(__S(42, __c5, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          statusTime: S.optional(S.String),
-          status: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "DynamicGroupStatus" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          queries: S.optional(__S(43, __c5, 3)),
-          status: S.optional(__S(44, __c5, 4)),
-        }),
-      ).annotate({ identifier: "DynamicGroupMetadata" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          labels: S.optional(__S(37, __c4, 5)),
-          externalIds: S.optional(__S(39, __c4, 7)),
-          name: S.optional(S.String),
-          groupKey: S.optional(__S(38, __c4, 6)),
-          description: S.optional(S.String),
-          additionalGroupKeys: S.optional(__S(39, __c4, 7)),
-          posixGroups: S.optional(__S(41, __c5, 1)),
-          createTime: S.optional(S.String),
-          displayName: S.optional(S.String),
-          dynamicGroupMetadata: S.optional(__S(45, __c5, 5)),
-          updateTime: S.optional(S.String),
-          parent: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Group" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
           initialGroupConfig: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(46, __c5, 6).pipe(T.HttpBody())),
+          body: S.optional(__S(294, __c9, 6).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -3398,7 +3219,120 @@ function __c5(j: number): any {
       ).annotate({ identifier: "CreateGroupsRequest" });
   }
 }
-function __c6(j: number): any {
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          namespace: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ExternalId" });
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, S.String);
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          gid: S.optional(S.String),
+          systemId: S.optional(S.String),
+          name: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "PosixGroup" });
+    case 1:
+      return S.Array(__S(288, __c9, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          resourceType: S.optional(S.String),
+          query: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "DynamicGroupQuery" });
+    case 3:
+      return S.Array(__S(290, __c9, 2));
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          statusTime: S.optional(S.String),
+          status: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "DynamicGroupStatus" });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          queries: S.optional(__S(291, __c9, 3)),
+          status: S.optional(__S(292, __c9, 4)),
+        }),
+      ).annotate({ identifier: "DynamicGroupMetadata" });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          labels: S.optional(__S(256, __c8, 0)),
+          externalIds: S.optional(__S(320, __c10, 0)),
+          name: S.optional(S.String),
+          groupKey: S.optional(__S(224, __c7, 0)),
+          description: S.optional(S.String),
+          additionalGroupKeys: S.optional(__S(320, __c10, 0)),
+          posixGroups: S.optional(__S(289, __c9, 1)),
+          createTime: S.optional(S.String),
+          displayName: S.optional(S.String),
+          dynamicGroupMetadata: S.optional(__S(293, __c9, 5)),
+          updateTime: S.optional(S.String),
+          parent: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Group" });
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(224, __c7, 0));
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          parent: S.String.pipe(T.Label()),
+          body: S.optional(__S(384, __c12, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1beta1/{+parent}/memberships",
+            baseUrl: "https://cloudidentity.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateGroupsMembershipsRequest",
+      });
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          updateTime: S.optional(S.String),
+          type: S.optional(S.String),
+          deliverySetting: S.optional(S.String),
+          roles: S.optional(__S(420, __c13, 4)),
+          createTime: S.optional(S.String),
+          memberKey: S.optional(__S(224, __c7, 0)),
+          preferredMemberKey: S.optional(__S(224, __c7, 0)),
+          name: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Membership" });
+  }
+}
+function __c13(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3417,80 +3351,27 @@ function __c6(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          memberRestrictionEvaluation: S.optional(__S(49, __c6, 1)),
+          memberRestrictionEvaluation: S.optional(__S(417, __c13, 1)),
         }),
       ).annotate({ identifier: "RestrictionEvaluations" });
     case 3:
       return S.suspend(() =>
         S.Struct({
-          expiryDetail: S.optional(__S(48, __c6, 0)),
+          expiryDetail: S.optional(__S(416, __c13, 0)),
           name: S.optional(S.String),
-          restrictionEvaluations: S.optional(__S(50, __c6, 2)),
+          restrictionEvaluations: S.optional(__S(418, __c13, 2)),
         }),
       ).annotate({ identifier: "MembershipRole" });
     case 4:
-      return S.Array(__S(51, __c6, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          updateTime: S.optional(S.String),
-          type: S.optional(S.String),
-          deliverySetting: S.optional(S.String),
-          roles: S.optional(__S(52, __c6, 4)),
-          createTime: S.optional(S.String),
-          memberKey: S.optional(__S(38, __c4, 6)),
-          preferredMemberKey: S.optional(__S(38, __c4, 6)),
-          name: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Membership" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(53, __c6, 5).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1beta1/{+parent}/memberships",
-            baseUrl: "https://cloudidentity.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateGroupsMembershipsRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          changePasswordUri: S.optional(S.String),
-          issuerUri: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "OidcIdpConfig" });
+      return S.Array(__S(419, __c13, 3));
   }
 }
-function __c7(j: number): any {
+function __c14(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          clientSecret: S.optional(S.String),
-          clientId: S.optional(S.String),
-          redirectUris: S.optional(__S(17, __c2, 1)),
-        }),
-      ).annotate({ identifier: "OidcRpConfig" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          idpConfig: S.optional(__S(55, __c6, 7)),
-          name: S.optional(S.String),
-          displayName: S.optional(S.String),
-          customer: S.optional(S.String),
-          rpConfig: S.optional(__S(56, __c7, 0)),
-        }),
-      ).annotate({ identifier: "InboundOidcSsoProfile" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          body: S.optional(__S(57, __c7, 1).pipe(T.HttpBody())),
+          body: S.optional(__S(482, __c15, 2).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -3501,36 +3382,43 @@ function __c7(j: number): any {
       ).annotate({
         identifier: "CreateInboundOidcSsoProfilesRequest",
       });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          assertionConsumerServiceUri: S.optional(S.String),
-          entityId: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "SamlSpConfig" });
-    case 4:
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           changePasswordUri: S.optional(S.String),
-          singleSignOnServiceUri: S.optional(S.String),
-          entityId: S.optional(S.String),
-          logoutRedirectUri: S.optional(S.String),
+          issuerUri: S.optional(S.String),
         }),
-      ).annotate({ identifier: "SamlIdpConfig" });
-    case 5:
+      ).annotate({ identifier: "OidcIdpConfig" });
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          spConfig: S.optional(__S(59, __c7, 3)),
-          idpConfig: S.optional(__S(60, __c7, 4)),
+          clientSecret: S.optional(S.String),
+          clientId: S.optional(S.String),
+          redirectUris: S.optional(__S(128, __c4, 0)),
+        }),
+      ).annotate({ identifier: "OidcRpConfig" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          idpConfig: S.optional(__S(480, __c15, 0)),
           name: S.optional(S.String),
           displayName: S.optional(S.String),
           customer: S.optional(S.String),
+          rpConfig: S.optional(__S(481, __c15, 1)),
         }),
-      ).annotate({ identifier: "InboundSamlSsoProfile" });
-    case 6:
+      ).annotate({ identifier: "InboundOidcSsoProfile" });
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          body: S.optional(__S(61, __c7, 5).pipe(T.HttpBody())),
+          body: S.optional(__S(546, __c17, 2).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -3541,46 +3429,44 @@ function __c7(j: number): any {
       ).annotate({
         identifier: "CreateInboundSamlSsoProfilesRequest",
       });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          redirectCondition: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "SignInBehavior" });
   }
 }
-function __c8(j: number): any {
+function __c17(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          inboundOidcSsoProfile: S.optional(S.String),
+          assertionConsumerServiceUri: S.optional(S.String),
+          entityId: S.optional(S.String),
         }),
-      ).annotate({ identifier: "OidcSsoInfo" });
+      ).annotate({ identifier: "SamlSpConfig" });
     case 1:
       return S.suspend(() =>
         S.Struct({
-          inboundSamlSsoProfile: S.optional(S.String),
+          changePasswordUri: S.optional(S.String),
+          singleSignOnServiceUri: S.optional(S.String),
+          entityId: S.optional(S.String),
+          logoutRedirectUri: S.optional(S.String),
         }),
-      ).annotate({ identifier: "SamlSsoInfo" });
+      ).annotate({ identifier: "SamlIdpConfig" });
     case 2:
       return S.suspend(() =>
         S.Struct({
-          rank: S.optional(S.Number),
-          signInBehavior: S.optional(__S(63, __c7, 7)),
-          ssoMode: S.optional(S.String),
-          targetOrgUnit: S.optional(S.String),
-          customer: S.optional(S.String),
-          targetGroup: S.optional(S.String),
-          oidcSsoInfo: S.optional(__S(64, __c8, 0)),
+          spConfig: S.optional(__S(544, __c17, 0)),
+          idpConfig: S.optional(__S(545, __c17, 1)),
           name: S.optional(S.String),
-          samlSsoInfo: S.optional(__S(65, __c8, 1)),
+          displayName: S.optional(S.String),
+          customer: S.optional(S.String),
         }),
-      ).annotate({ identifier: "InboundSsoAssignment" });
-    case 3:
+      ).annotate({ identifier: "InboundSamlSsoProfile" });
+  }
+}
+function __c18(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          body: S.optional(__S(66, __c8, 2).pipe(T.HttpBody())),
+          body: S.optional(__S(611, __c19, 3).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -3591,36 +3477,50 @@ function __c8(j: number): any {
       ).annotate({
         identifier: "CreateInboundSsoAssignmentsRequest",
       });
-    case 4:
+  }
+}
+function __c19(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          query: S.optional(S.String),
-          group: S.optional(S.String),
-          sortOrder: S.optional(S.Number),
-          orgUnit: S.optional(S.String),
+          redirectCondition: S.optional(S.String),
         }),
-      ).annotate({ identifier: "PolicyQuery" });
-    case 5:
+      ).annotate({ identifier: "SignInBehavior" });
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          type: S.optional(S.String),
-          value: S.optional(__S(2, __c0, 2)),
+          inboundOidcSsoProfile: S.optional(S.String),
         }),
-      ).annotate({ identifier: "Setting" });
-    case 6:
+      ).annotate({ identifier: "OidcSsoInfo" });
+    case 2:
       return S.suspend(() =>
         S.Struct({
+          inboundSamlSsoProfile: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "SamlSsoInfo" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          rank: S.optional(S.Number),
+          signInBehavior: S.optional(__S(608, __c19, 0)),
+          ssoMode: S.optional(S.String),
+          targetOrgUnit: S.optional(S.String),
           customer: S.optional(S.String),
-          policyQuery: S.optional(__S(68, __c8, 4)),
+          targetGroup: S.optional(S.String),
+          oidcSsoInfo: S.optional(__S(609, __c19, 1)),
           name: S.optional(S.String),
-          setting: S.optional(__S(69, __c8, 5)),
-          type: S.optional(S.String),
+          samlSsoInfo: S.optional(__S(610, __c19, 2)),
         }),
-      ).annotate({ identifier: "Policy" });
-    case 7:
+      ).annotate({ identifier: "InboundSsoAssignment" });
+  }
+}
+function __c20(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          body: S.optional(__S(70, __c8, 6).pipe(T.HttpBody())),
+          body: S.optional(__S(674, __c21, 2).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -3631,7 +3531,37 @@ function __c8(j: number): any {
       ).annotate({ identifier: "CreatePoliciesRequest" });
   }
 }
-function __c9(j: number): any {
+function __c21(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          query: S.optional(S.String),
+          group: S.optional(S.String),
+          sortOrder: S.optional(S.Number),
+          orgUnit: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "PolicyQuery" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          type: S.optional(S.String),
+          value: S.optional(__S(1536, __c48, 0)),
+        }),
+      ).annotate({ identifier: "Setting" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          customer: S.optional(S.String),
+          policyQuery: S.optional(__S(672, __c21, 0)),
+          name: S.optional(S.String),
+          setting: S.optional(__S(673, __c21, 1)),
+          type: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Policy" });
+  }
+}
+function __c22(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3647,7 +3577,11 @@ function __c9(j: number): any {
       ).annotate({
         identifier: "DeleteAllowlistedDomainsRequest",
       });
-    case 1:
+  }
+}
+function __c23(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -3660,7 +3594,11 @@ function __c9(j: number): any {
           }),
         ),
       ).annotate({ identifier: "DeleteDevicesRequest" });
-    case 2:
+  }
+}
+function __c24(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -3675,7 +3613,11 @@ function __c9(j: number): any {
       ).annotate({
         identifier: "DeleteDevicesDeviceUsersRequest",
       });
-    case 3:
+  }
+}
+function __c25(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -3687,7 +3629,11 @@ function __c9(j: number): any {
           }),
         ),
       ).annotate({ identifier: "DeleteGroupsRequest" });
-    case 4:
+  }
+}
+function __c26(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -3701,7 +3647,11 @@ function __c9(j: number): any {
       ).annotate({
         identifier: "DeleteGroupsMembershipsRequest",
       });
-    case 5:
+  }
+}
+function __c27(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -3715,7 +3665,11 @@ function __c9(j: number): any {
       ).annotate({
         identifier: "DeleteInboundOidcSsoProfilesRequest",
       });
-    case 6:
+  }
+}
+function __c28(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -3729,7 +3683,11 @@ function __c9(j: number): any {
       ).annotate({
         identifier: "DeleteInboundSamlSsoProfilesRequest",
       });
-    case 7:
+  }
+}
+function __c29(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -3745,7 +3703,7 @@ function __c9(j: number): any {
       });
   }
 }
-function __c10(j: number): any {
+function __c30(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3761,7 +3719,11 @@ function __c10(j: number): any {
       ).annotate({
         identifier: "DeleteInboundSsoAssignmentsRequest",
       });
-    case 1:
+  }
+}
+function __c31(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -3773,7 +3735,11 @@ function __c10(j: number): any {
           }),
         ),
       ).annotate({ identifier: "DeletePoliciesRequest" });
-    case 2:
+  }
+}
+function __c32(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -3787,7 +3753,11 @@ function __c10(j: number): any {
       ).annotate({
         identifier: "GetAllowlistedDomainsRequest",
       });
-    case 3:
+  }
+}
+function __c33(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -3801,7 +3771,11 @@ function __c10(j: number): any {
       ).annotate({
         identifier: "GetCustomersUserinvitationsRequest",
       });
-    case 4:
+  }
+}
+function __c34(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           mailsSentCount: S.optional(S.String),
@@ -3810,7 +3784,11 @@ function __c10(j: number): any {
           updateTime: S.optional(S.String),
         }),
       ).annotate({ identifier: "UserInvitation" });
-    case 5:
+  }
+}
+function __c35(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           customer: S.optional(S.String.pipe(T.Query())),
@@ -3823,7 +3801,11 @@ function __c10(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetDevicesRequest" });
-    case 6:
+  }
+}
+function __c36(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           customer: S.optional(S.String.pipe(T.Query())),
@@ -3838,7 +3820,11 @@ function __c10(j: number): any {
       ).annotate({
         identifier: "GetDevicesDeviceUsersRequest",
       });
-    case 7:
+  }
+}
+function __c37(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           languageCode: S.optional(S.String),
@@ -3855,7 +3841,7 @@ function __c10(j: number): any {
       ).annotate({ identifier: "DeviceUser" });
   }
 }
-function __c11(j: number): any {
+function __c38(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3872,7 +3858,11 @@ function __c11(j: number): any {
       ).annotate({
         identifier: "GetDevicesDeviceUsersClientStatesRequest",
       });
-    case 1:
+  }
+}
+function __c39(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           boolValue: S.optional(S.Boolean),
@@ -3880,26 +3870,30 @@ function __c11(j: number): any {
           stringValue: S.optional(S.String),
         }),
       ).annotate({ identifier: "CustomAttributeValue" });
+    case 1:
+      return S.Record(S.String, __S(1248, __c39, 0));
     case 2:
-      return S.Record(S.String, __S(89, __c11, 1));
-    case 3:
       return S.suspend(() =>
         S.Struct({
           ownerType: S.optional(S.String),
           healthScore: S.optional(S.String),
           complianceState: S.optional(S.String),
           scoreReason: S.optional(S.String),
-          assetTags: S.optional(__S(17, __c2, 1)),
+          assetTags: S.optional(__S(128, __c4, 0)),
           name: S.optional(S.String),
           etag: S.optional(S.String),
           createTime: S.optional(S.String),
-          keyValuePairs: S.optional(__S(90, __c11, 2)),
+          keyValuePairs: S.optional(__S(1249, __c39, 1)),
           customId: S.optional(S.String),
           lastUpdateTime: S.optional(S.String),
           managed: S.optional(S.String),
         }),
       ).annotate({ identifier: "ClientState" });
-    case 4:
+  }
+}
+function __c40(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -3911,7 +3905,11 @@ function __c11(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetGroupsRequest" });
-    case 5:
+  }
+}
+function __c41(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -3925,7 +3923,11 @@ function __c11(j: number): any {
       ).annotate({
         identifier: "GetGroupsMembershipsRequest",
       });
-    case 6:
+  }
+}
+function __c42(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -3939,7 +3941,11 @@ function __c11(j: number): any {
       ).annotate({
         identifier: "GetInboundOidcSsoProfilesRequest",
       });
-    case 7:
+  }
+}
+function __c43(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -3955,7 +3961,7 @@ function __c11(j: number): any {
       });
   }
 }
-function __c12(j: number): any {
+function __c44(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3971,22 +3977,30 @@ function __c12(j: number): any {
       ).annotate({
         identifier: "GetInboundSamlSsoProfilesIdpCredentialsRequest",
       });
-    case 1:
+  }
+}
+function __c45(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           keySize: S.optional(S.Number),
         }),
       ).annotate({ identifier: "RsaPublicKeyInfo" });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           updateTime: S.optional(S.String),
-          rsaKeyInfo: S.optional(__S(97, __c12, 1)),
-          dsaKeyInfo: S.optional(__S(97, __c12, 1)),
+          rsaKeyInfo: S.optional(__S(1440, __c45, 0)),
+          dsaKeyInfo: S.optional(__S(1440, __c45, 0)),
           name: S.optional(S.String),
         }),
       ).annotate({ identifier: "IdpCredential" });
-    case 3:
+  }
+}
+function __c46(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -4000,7 +4014,66 @@ function __c12(j: number): any {
       ).annotate({
         identifier: "GetInboundSsoAssignmentsRequest",
       });
-    case 4:
+  }
+}
+function __c47(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          pemData: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "AddIdpCredentialRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          parent: S.String.pipe(T.Label()),
+          body: S.optional(__S(1504, __c47, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1beta1/{+parent}/idpCredentials:add",
+            baseUrl: "https://cloudidentity.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "AddInboundSamlSsoProfilesIdpCredentialsRequest",
+      });
+  }
+}
+function __c48(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, S.Unknown);
+  }
+}
+function __c49(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(1536, __c48, 0));
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          details: S.optional(__S(1568, __c49, 0)),
+          code: S.optional(S.Number),
+          message: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Status" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          metadata: S.optional(__S(1536, __c48, 0)),
+          name: S.optional(S.String),
+          done: S.optional(S.Boolean),
+          error: S.optional(__S(1569, __c49, 1)),
+          response: S.optional(__S(1536, __c48, 0)),
+        }),
+      ).annotate({ identifier: "Operation" });
+  }
+}
+function __c50(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           query: S.optional(S.String.pipe(T.Query())),
@@ -4015,7 +4088,11 @@ function __c12(j: number): any {
       ).annotate({
         identifier: "GetMembershipGraphGroupsMembershipsRequest",
       });
-    case 5:
+  }
+}
+function __c51(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -4027,7 +4104,11 @@ function __c12(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetPoliciesRequest" });
-    case 6:
+  }
+}
+function __c52(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           readMask: S.optional(S.String.pipe(T.Query())),
@@ -4042,31 +4123,35 @@ function __c12(j: number): any {
       ).annotate({
         identifier: "GetSecuritySettingsGroupsRequest",
       });
-    case 7:
+  }
+}
+function __c53(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           state: S.optional(S.String),
         }),
       ).annotate({ identifier: "RestrictionEvaluation" });
-  }
-}
-function __c13(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          query: S.optional(S.String),
-          evaluation: S.optional(__S(103, __c12, 7)),
-        }),
-      ).annotate({ identifier: "MemberRestriction" });
     case 1:
       return S.suspend(() =>
         S.Struct({
-          memberRestriction: S.optional(__S(104, __c13, 0)),
+          query: S.optional(S.String),
+          evaluation: S.optional(__S(1696, __c53, 0)),
+        }),
+      ).annotate({ identifier: "MemberRestriction" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          memberRestriction: S.optional(__S(1697, __c53, 1)),
           name: S.optional(S.String),
         }),
       ).annotate({ identifier: "SecuritySettings" });
-    case 2:
+  }
+}
+function __c54(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -4080,13 +4165,17 @@ function __c13(j: number): any {
       ).annotate({
         identifier: "IsInvitableUserCustomersUserinvitationsRequest",
       });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           isInvitableUser: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "IsInvitableUserResponse" });
-    case 4:
+  }
+}
+function __c55(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           pageToken: S.optional(S.String.pipe(T.Query())),
@@ -4102,18 +4191,22 @@ function __c13(j: number): any {
       ).annotate({
         identifier: "ListAllowlistedDomainsRequest",
       });
-    case 5:
-      return S.Array(__S(15, __c1, 7));
-    case 6:
+    case 1:
+      return S.Array(__S(64, __c2, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          allowlistedDomains: S.optional(__S(109, __c13, 5)),
+          allowlistedDomains: S.optional(__S(1761, __c55, 1)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({
         identifier: "ListAllowlistedDomainsResponse",
       });
-    case 7:
+  }
+}
+function __c56(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           orderBy: S.optional(S.String.pipe(T.Query())),
@@ -4131,22 +4224,22 @@ function __c13(j: number): any {
       ).annotate({
         identifier: "ListCustomersUserinvitationsRequest",
       });
-  }
-}
-function __c14(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(84, __c10, 4));
     case 1:
+      return S.Array(__S(1088, __c34, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          userInvitations: S.optional(__S(112, __c14, 0)),
+          userInvitations: S.optional(__S(1793, __c56, 1)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({
         identifier: "ListUserInvitationsResponse",
       });
-    case 2:
+  }
+}
+function __c57(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           orderBy: S.optional(S.String.pipe(T.Query())),
@@ -4163,16 +4256,20 @@ function __c14(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ListDevicesRequest" });
-    case 3:
-      return S.Array(__S(34, __c4, 2));
-    case 4:
+    case 1:
+      return S.Array(__S(176, __c5, 16));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          devices: S.optional(__S(115, __c14, 3)),
+          devices: S.optional(__S(1825, __c57, 1)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListDevicesResponse" });
-    case 5:
+  }
+}
+function __c58(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
@@ -4191,18 +4288,18 @@ function __c14(j: number): any {
       ).annotate({
         identifier: "ListDevicesDeviceUsersRequest",
       });
-    case 6:
-      return S.Array(__S(87, __c10, 7));
-    case 7:
+    case 1:
+      return S.Array(__S(1184, __c37, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          deviceUsers: S.optional(__S(118, __c14, 6)),
+          deviceUsers: S.optional(__S(1857, __c58, 1)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListDeviceUsersResponse" });
   }
 }
-function __c15(j: number): any {
+function __c59(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4219,16 +4316,24 @@ function __c15(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ListGroupsRequest" });
+  }
+}
+function __c60(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(294, __c9, 6));
     case 1:
-      return S.Array(__S(46, __c5, 6));
-    case 2:
       return S.suspend(() =>
         S.Struct({
-          groups: S.optional(__S(121, __c15, 1)),
+          groups: S.optional(__S(1920, __c60, 0)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListGroupsResponse" });
-    case 3:
+  }
+}
+function __c61(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
@@ -4245,16 +4350,49 @@ function __c15(j: number): any {
       ).annotate({
         identifier: "ListGroupsMembershipsRequest",
       });
-    case 4:
-      return S.Array(__S(53, __c6, 5));
-    case 5:
+    case 1:
+      return S.Array(__S(384, __c12, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          memberships: S.optional(__S(124, __c15, 4)),
+          memberships: S.optional(__S(1953, __c61, 1)),
         }),
       ).annotate({ identifier: "ListMembershipsResponse" });
-    case 6:
+  }
+}
+function __c62(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+          body: S.optional(__S(2016, __c63, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1beta1/{+name}:approve",
+            baseUrl: "https://cloudidentity.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "ApproveDevicesDeviceUsersRequest",
+      });
+  }
+}
+function __c63(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          customer: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ApproveDeviceUserRequest" });
+  }
+}
+function __c64(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -4270,22 +4408,22 @@ function __c15(j: number): any {
       ).annotate({
         identifier: "ListInboundOidcSsoProfilesRequest",
       });
-    case 7:
-      return S.Array(__S(57, __c7, 1));
-  }
-}
-function __c16(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
+      return S.Array(__S(482, __c15, 2));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          inboundOidcSsoProfiles: S.optional(__S(127, __c15, 7)),
+          inboundOidcSsoProfiles: S.optional(__S(2049, __c64, 1)),
         }),
       ).annotate({
         identifier: "ListInboundOidcSsoProfilesResponse",
       });
-    case 1:
+  }
+}
+function __c65(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           pageToken: S.optional(S.String.pipe(T.Query())),
@@ -4301,18 +4439,22 @@ function __c16(j: number): any {
       ).annotate({
         identifier: "ListInboundSamlSsoProfilesRequest",
       });
+    case 1:
+      return S.Array(__S(546, __c17, 2));
     case 2:
-      return S.Array(__S(61, __c7, 5));
-    case 3:
       return S.suspend(() =>
         S.Struct({
-          inboundSamlSsoProfiles: S.optional(__S(130, __c16, 2)),
+          inboundSamlSsoProfiles: S.optional(__S(2081, __c65, 1)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({
         identifier: "ListInboundSamlSsoProfilesResponse",
       });
-    case 4:
+  }
+}
+function __c66(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -4328,18 +4470,22 @@ function __c16(j: number): any {
       ).annotate({
         identifier: "ListInboundSamlSsoProfilesIdpCredentialsRequest",
       });
-    case 5:
-      return S.Array(__S(98, __c12, 2));
-    case 6:
+    case 1:
+      return S.Array(__S(1441, __c45, 1));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          idpCredentials: S.optional(__S(133, __c16, 5)),
+          idpCredentials: S.optional(__S(2113, __c66, 1)),
         }),
       ).annotate({
         identifier: "ListIdpCredentialsResponse",
       });
-    case 7:
+  }
+}
+function __c67(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           filter: S.optional(S.String.pipe(T.Query())),
@@ -4355,22 +4501,22 @@ function __c16(j: number): any {
       ).annotate({
         identifier: "ListInboundSsoAssignmentsRequest",
       });
-  }
-}
-function __c17(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(66, __c8, 2));
     case 1:
+      return S.Array(__S(611, __c19, 3));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          inboundSsoAssignments: S.optional(__S(136, __c17, 0)),
+          inboundSsoAssignments: S.optional(__S(2145, __c67, 1)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({
         identifier: "ListInboundSsoAssignmentsResponse",
       });
-    case 2:
+  }
+}
+function __c68(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           customer: S.optional(S.String.pipe(T.Query())),
@@ -4388,7 +4534,7 @@ function __c17(j: number): any {
       ).annotate({
         identifier: "ListOrgUnitsMembershipsRequest",
       });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           memberUri: S.optional(S.String),
@@ -4397,18 +4543,22 @@ function __c17(j: number): any {
           type: S.optional(S.String),
         }),
       ).annotate({ identifier: "OrgMembership" });
-    case 4:
-      return S.Array(__S(139, __c17, 3));
-    case 5:
+    case 2:
+      return S.Array(__S(2177, __c68, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          orgMemberships: S.optional(__S(140, __c17, 4)),
+          orgMemberships: S.optional(__S(2178, __c68, 2)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({
         identifier: "ListOrgMembershipsResponse",
       });
-    case 6:
+  }
+}
+function __c69(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -4422,20 +4572,20 @@ function __c17(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ListPoliciesRequest" });
-    case 7:
-      return S.Array(__S(70, __c8, 6));
-  }
-}
-function __c18(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
+      return S.Array(__S(674, __c21, 2));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          policies: S.optional(__S(143, __c17, 7)),
+          policies: S.optional(__S(2209, __c69, 1)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListPoliciesResponse" });
-    case 1:
+  }
+}
+function __c70(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
@@ -4456,17 +4606,21 @@ function __c18(j: number): any {
       ).annotate({
         identifier: "LookupDevicesDeviceUsersRequest",
       });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          names: S.optional(__S(17, __c2, 1)),
+          names: S.optional(__S(128, __c4, 0)),
           nextPageToken: S.optional(S.String),
           customer: S.optional(S.String),
         }),
       ).annotate({
         identifier: "LookupSelfDeviceUsersResponse",
       });
-    case 3:
+  }
+}
+function __c71(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           "groupKey.namespace": S.optional(S.String.pipe(T.Query())),
@@ -4479,13 +4633,17 @@ function __c18(j: number): any {
           }),
         ),
       ).annotate({ identifier: "LookupGroupsRequest" });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
         }),
       ).annotate({ identifier: "LookupGroupNameResponse" });
-    case 5:
+  }
+}
+function __c72(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           "memberKey.id": S.optional(S.String.pipe(T.Query())),
@@ -4501,7 +4659,7 @@ function __c18(j: number): any {
       ).annotate({
         identifier: "LookupGroupsMembershipsRequest",
       });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
@@ -4509,36 +4667,36 @@ function __c18(j: number): any {
       ).annotate({
         identifier: "LookupMembershipNameResponse",
       });
-    case 7:
+  }
+}
+function __c73(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           fieldMask: S.optional(S.String),
-          membershipRole: S.optional(__S(51, __c6, 3)),
+          membershipRole: S.optional(__S(419, __c13, 3)),
         }),
       ).annotate({
         identifier: "UpdateMembershipRolesParams",
       });
-  }
-}
-function __c19(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(151, __c18, 7));
     case 1:
+      return S.Array(__S(2336, __c73, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          addRoles: S.optional(__S(52, __c6, 4)),
-          updateRolesParams: S.optional(__S(152, __c19, 0)),
-          removeRoles: S.optional(__S(17, __c2, 1)),
+          addRoles: S.optional(__S(420, __c13, 4)),
+          updateRolesParams: S.optional(__S(2337, __c73, 1)),
+          removeRoles: S.optional(__S(128, __c4, 0)),
         }),
       ).annotate({
         identifier: "ModifyMembershipRolesRequest",
       });
-    case 2:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(153, __c19, 1).pipe(T.HttpBody())),
+          body: S.optional(__S(2338, __c73, 2).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -4549,26 +4707,49 @@ function __c19(j: number): any {
       ).annotate({
         identifier: "ModifyMembershipRolesGroupsMembershipsRequest",
       });
-    case 3:
+    case 4:
       return S.suspend(() =>
         S.Struct({
-          membership: S.optional(__S(53, __c6, 5)),
+          membership: S.optional(__S(384, __c12, 0)),
         }),
       ).annotate({
         identifier: "ModifyMembershipRolesResponse",
       });
-    case 4:
+  }
+}
+function __c74(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+          body: S.optional(__S(2016, __c63, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1beta1/{+name}:block",
+            baseUrl: "https://cloudidentity.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "BlockDevicesDeviceUsersRequest",
+      });
+  }
+}
+function __c75(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           customer: S.optional(S.String),
           destinationOrgUnit: S.optional(S.String),
         }),
       ).annotate({ identifier: "MoveOrgMembershipRequest" });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(156, __c19, 4).pipe(T.HttpBody())),
+          body: S.optional(__S(2400, __c75, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -4579,13 +4760,17 @@ function __c19(j: number): any {
       ).annotate({
         identifier: "MoveOrgUnitsMembershipsRequest",
       });
-    case 6:
+  }
+}
+function __c76(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
           customer: S.optional(S.String.pipe(T.Query())),
           updateMask: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(91, __c11, 3).pipe(T.HttpBody())),
+          body: S.optional(__S(1250, __c39, 2).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -4596,12 +4781,16 @@ function __c19(j: number): any {
       ).annotate({
         identifier: "PatchDevicesDeviceUsersClientStatesRequest",
       });
-    case 7:
+  }
+}
+function __c77(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           updateMask: S.optional(S.String.pipe(T.Query())),
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(46, __c5, 6).pipe(T.HttpBody())),
+          body: S.optional(__S(294, __c9, 6).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -4612,14 +4801,14 @@ function __c19(j: number): any {
       ).annotate({ identifier: "PatchGroupsRequest" });
   }
 }
-function __c20(j: number): any {
+function __c78(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
           updateMask: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(57, __c7, 1).pipe(T.HttpBody())),
+          body: S.optional(__S(482, __c15, 2).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -4630,12 +4819,16 @@ function __c20(j: number): any {
       ).annotate({
         identifier: "PatchInboundOidcSsoProfilesRequest",
       });
-    case 1:
+  }
+}
+function __c79(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
           updateMask: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(61, __c7, 5).pipe(T.HttpBody())),
+          body: S.optional(__S(546, __c17, 2).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -4646,12 +4839,16 @@ function __c20(j: number): any {
       ).annotate({
         identifier: "PatchInboundSamlSsoProfilesRequest",
       });
-    case 2:
+  }
+}
+function __c80(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           updateMask: S.optional(S.String.pipe(T.Query())),
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(66, __c8, 2).pipe(T.HttpBody())),
+          body: S.optional(__S(611, __c19, 3).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -4662,11 +4859,15 @@ function __c20(j: number): any {
       ).annotate({
         identifier: "PatchInboundSsoAssignmentsRequest",
       });
-    case 3:
+  }
+}
+function __c81(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(70, __c8, 6).pipe(T.HttpBody())),
+          body: S.optional(__S(674, __c21, 2).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -4675,7 +4876,11 @@ function __c20(j: number): any {
           }),
         ),
       ).annotate({ identifier: "PatchPoliciesRequest" });
-    case 4:
+  }
+}
+function __c82(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           query: S.optional(S.String.pipe(T.Query())),
@@ -4693,24 +4898,24 @@ function __c20(j: number): any {
       ).annotate({
         identifier: "SearchDirectGroupsGroupsMembershipsRequest",
       });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          groupKey: S.optional(__S(38, __c4, 6)),
+          groupKey: S.optional(__S(224, __c7, 0)),
           group: S.optional(S.String),
-          roles: S.optional(__S(52, __c6, 4)),
-          labels: S.optional(__S(37, __c4, 5)),
+          roles: S.optional(__S(420, __c13, 4)),
+          labels: S.optional(__S(256, __c8, 0)),
           description: S.optional(S.String),
           membership: S.optional(S.String),
           displayName: S.optional(S.String),
         }),
       ).annotate({ identifier: "MembershipRelation" });
-    case 6:
-      return S.Array(__S(165, __c20, 5));
-    case 7:
+    case 2:
+      return S.Array(__S(2625, __c82, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          memberships: S.optional(__S(166, __c20, 6)),
+          memberships: S.optional(__S(2626, __c82, 2)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({
@@ -4718,7 +4923,7 @@ function __c20(j: number): any {
       });
   }
 }
-function __c21(j: number): any {
+function __c83(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4736,7 +4941,11 @@ function __c21(j: number): any {
           }),
         ),
       ).annotate({ identifier: "SearchGroupsRequest" });
-    case 1:
+  }
+}
+function __c84(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           pageToken: S.optional(S.String.pipe(T.Query())),
@@ -4753,37 +4962,72 @@ function __c21(j: number): any {
       ).annotate({
         identifier: "SearchTransitiveGroupsGroupsMembershipsRequest",
       });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          relationType: S.optional(S.String),
+          labels: S.optional(__S(256, __c8, 0)),
+          displayName: S.optional(S.String),
+          group: S.optional(S.String),
+          groupKey: S.optional(__S(224, __c7, 0)),
+          roles: S.optional(__S(2721, __c85, 1)),
+        }),
+      ).annotate({ identifier: "GroupRelation" });
     case 2:
+      return S.Array(__S(2689, __c84, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          nextPageToken: S.optional(S.String),
+          memberships: S.optional(__S(2690, __c84, 2)),
+        }),
+      ).annotate({
+        identifier: "SearchTransitiveGroupsResponse",
+      });
+  }
+}
+function __c85(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           role: S.optional(S.String),
         }),
       ).annotate({ identifier: "TransitiveMembershipRole" });
-    case 3:
-      return S.Array(__S(170, __c21, 2));
-    case 4:
+    case 1:
+      return S.Array(__S(2720, __c85, 0));
+  }
+}
+function __c86(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          relationType: S.optional(S.String),
-          labels: S.optional(__S(37, __c4, 5)),
-          displayName: S.optional(S.String),
-          group: S.optional(S.String),
-          groupKey: S.optional(__S(38, __c4, 6)),
-          roles: S.optional(__S(171, __c21, 3)),
-        }),
-      ).annotate({ identifier: "GroupRelation" });
-    case 5:
-      return S.Array(__S(172, __c21, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          nextPageToken: S.optional(S.String),
-          memberships: S.optional(__S(173, __c21, 5)),
-        }),
+          name: S.String.pipe(T.Label()),
+          body: S.optional(__S(2784, __c87, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1beta1/{+name}:cancel",
+            baseUrl: "https://cloudidentity.googleapis.com/",
+          }),
+        ),
       ).annotate({
-        identifier: "SearchTransitiveGroupsResponse",
+        identifier: "CancelCustomersUserinvitationsRequest",
       });
-    case 7:
+  }
+}
+function __c87(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "CancelUserInvitationRequest",
+      });
+  }
+}
+function __c88(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
@@ -4799,35 +5043,35 @@ function __c21(j: number): any {
       ).annotate({
         identifier: "SearchTransitiveMembershipsGroupsMembershipsRequest",
       });
-  }
-}
-function __c22(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           relationType: S.optional(S.String),
           member: S.optional(S.String),
-          preferredMemberKey: S.optional(__S(39, __c4, 7)),
-          roles: S.optional(__S(171, __c21, 3)),
+          preferredMemberKey: S.optional(__S(320, __c10, 0)),
+          roles: S.optional(__S(2721, __c85, 1)),
         }),
       ).annotate({ identifier: "MemberRelation" });
-    case 1:
-      return S.Array(__S(176, __c22, 0));
     case 2:
+      return S.Array(__S(2817, __c88, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          memberships: S.optional(__S(177, __c22, 1)),
+          memberships: S.optional(__S(2818, __c88, 2)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({
         identifier: "SearchTransitiveMembershipsResponse",
       });
-    case 3:
+  }
+}
+function __c89(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(9, __c1, 1).pipe(T.HttpBody())),
+          body: S.optional(__S(2784, __c87, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -4838,12 +5082,16 @@ function __c22(j: number): any {
       ).annotate({
         identifier: "SendCustomersUserinvitationsRequest",
       });
-    case 4:
+  }
+}
+function __c90(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
           updateMask: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(105, __c13, 1).pipe(T.HttpBody())),
+          body: S.optional(__S(1698, __c53, 2).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -4854,18 +5102,22 @@ function __c22(j: number): any {
       ).annotate({
         identifier: "UpdateSecuritySettingsGroupsRequest",
       });
-    case 5:
+  }
+}
+function __c91(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           customer: S.optional(S.String),
           removeResetLock: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "WipeDeviceRequest" });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(181, __c22, 5).pipe(T.HttpBody())),
+          body: S.optional(__S(2912, __c91, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -4874,11 +5126,15 @@ function __c22(j: number): any {
           }),
         ),
       ).annotate({ identifier: "WipeDevicesRequest" });
-    case 7:
+  }
+}
+function __c92(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(6, __c0, 6).pipe(T.HttpBody())),
+          body: S.optional(__S(2016, __c63, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -4891,7 +5147,42 @@ function __c22(j: number): any {
       });
   }
 }
-
+function __c93(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+          body: S.optional(__S(2016, __c63, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1beta1/{+name}:cancelWipe",
+            baseUrl: "https://cloudidentity.googleapis.com/",
+          }),
+        ),
+      ).annotate({ identifier: "CancelWipeDevicesRequest" });
+  }
+}
+function __c94(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+          body: S.optional(__S(2016, __c63, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1beta1/{+name}:cancelWipe",
+            baseUrl: "https://cloudidentity.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "CancelWipeDevicesDeviceUsersRequest",
+      });
+  }
+}
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

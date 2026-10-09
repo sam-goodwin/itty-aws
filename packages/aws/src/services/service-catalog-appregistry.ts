@@ -474,8 +474,8 @@ export const associateAttributeGroup: API.OperationMethod<
   AssociateAttributeGroupError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(0, __c0, 0) as any as S.Schema<AssociateAttributeGroupRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<AssociateAttributeGroupResponse>,
+  input: __S(208, __c26, 0) as any as S.Schema<AssociateAttributeGroupRequest>,
+  output: __S(216, __c27, 0) as any as S.Schema<AssociateAttributeGroupResponse>,
   errors: [
     ConflictException,
     InternalServerException,
@@ -528,8 +528,8 @@ export const associateResource: API.OperationMethod<
   AssociateResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3, __c0, 3) as any as S.Schema<AssociateResourceRequest>,
-  output: __S(4, __c0, 4) as any as S.Schema<AssociateResourceResponse>,
+  input: __S(224, __c28, 0) as any as S.Schema<AssociateResourceRequest>,
+  output: __S(225, __c28, 1) as any as S.Schema<AssociateResourceResponse>,
   errors: [
     ConflictException,
     InternalServerException,
@@ -559,8 +559,8 @@ export const createApplication: API.OperationMethod<
   CreateApplicationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(6, __c0, 6) as any as S.Schema<CreateApplicationRequest>,
-  output: __S(9, __c1, 1) as any as S.Schema<CreateApplicationResponse>,
+  input: __S(240, __c30, 0) as any as S.Schema<CreateApplicationRequest>,
+  output: __S(257, __c32, 1) as any as S.Schema<CreateApplicationResponse>,
   errors: [
     ConflictException,
     InternalServerException,
@@ -591,8 +591,8 @@ export const createAttributeGroup: API.OperationMethod<
   CreateAttributeGroupError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(10, __c1, 2) as any as S.Schema<CreateAttributeGroupRequest>,
-  output: __S(12, __c1, 4) as any as S.Schema<CreateAttributeGroupResponse>,
+  input: __S(272, __c34, 0) as any as S.Schema<CreateAttributeGroupRequest>,
+  output: __S(281, __c35, 1) as any as S.Schema<CreateAttributeGroupResponse>,
   errors: [
     ConflictException,
     InternalServerException,
@@ -618,8 +618,8 @@ export const deleteApplication: API.OperationMethod<
   DeleteApplicationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(13, __c1, 5) as any as S.Schema<DeleteApplicationRequest>,
-  output: __S(15, __c1, 7) as any as S.Schema<DeleteApplicationResponse>,
+  input: __S(0, __c0, 0) as any as S.Schema<DeleteApplicationRequest>,
+  output: __S(1, __c0, 1) as any as S.Schema<DeleteApplicationResponse>,
   errors: [InternalServerException, ResourceNotFoundException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -641,7 +641,7 @@ export const deleteAttributeGroup: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(16, __c2, 0) as any as S.Schema<DeleteAttributeGroupRequest>,
-  output: __S(18, __c2, 2) as any as S.Schema<DeleteAttributeGroupResponse>,
+  output: __S(17, __c2, 1) as any as S.Schema<DeleteAttributeGroupResponse>,
   errors: [InternalServerException, ResourceNotFoundException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -662,8 +662,8 @@ export const disassociateAttributeGroup: API.OperationMethod<
   DisassociateAttributeGroupError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(19, __c2, 3) as any as S.Schema<DisassociateAttributeGroupRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<DisassociateAttributeGroupResponse>,
+  input: __S(32, __c4, 0) as any as S.Schema<DisassociateAttributeGroupRequest>,
+  output: __S(216, __c27, 0) as any as S.Schema<DisassociateAttributeGroupResponse>,
   errors: [InternalServerException, ResourceNotFoundException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -706,8 +706,8 @@ export const disassociateResource: API.OperationMethod<
   DisassociateResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(20, __c2, 4) as any as S.Schema<DisassociateResourceRequest>,
-  output: __S(21, __c2, 5) as any as S.Schema<DisassociateResourceResponse>,
+  input: __S(40, __c5, 0) as any as S.Schema<DisassociateResourceRequest>,
+  output: __S(41, __c5, 1) as any as S.Schema<DisassociateResourceResponse>,
   errors: [
     InternalServerException,
     ResourceNotFoundException,
@@ -750,8 +750,8 @@ export const getApplication: API.OperationMethod<
   GetApplicationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(22, __c2, 6) as any as S.Schema<GetApplicationRequest>,
-  output: __S(25, __c3, 1) as any as S.Schema<GetApplicationResponse>,
+  input: __S(48, __c6, 0) as any as S.Schema<GetApplicationRequest>,
+  output: __S(50, __c6, 2) as any as S.Schema<GetApplicationResponse>,
   errors: [
     ConflictException,
     InternalServerException,
@@ -777,8 +777,8 @@ export const getAssociatedResource: API.OperationMethod<
   GetAssociatedResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(26, __c3, 2) as any as S.Schema<GetAssociatedResourceRequest>,
-  output: __S(32, __c4, 0) as any as S.Schema<GetAssociatedResourceResponse>,
+  input: __S(64, __c8, 0) as any as S.Schema<GetAssociatedResourceRequest>,
+  output: __S(70, __c8, 6) as any as S.Schema<GetAssociatedResourceResponse>,
   errors: [InternalServerException, ResourceNotFoundException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -803,8 +803,8 @@ export const getAttributeGroup: API.OperationMethod<
   GetAttributeGroupError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(33, __c4, 1) as any as S.Schema<GetAttributeGroupRequest>,
-  output: __S(34, __c4, 2) as any as S.Schema<GetAttributeGroupResponse>,
+  input: __S(72, __c9, 0) as any as S.Schema<GetAttributeGroupRequest>,
+  output: __S(73, __c9, 1) as any as S.Schema<GetAttributeGroupResponse>,
   errors: [
     ConflictException,
     InternalServerException,
@@ -827,8 +827,8 @@ export const getConfiguration: API.OperationMethod<
   GetConfigurationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(35, __c4, 3) as any as S.Schema<GetConfigurationRequest>,
-  output: __S(38, __c4, 6) as any as S.Schema<GetConfigurationResponse>,
+  input: __S(80, __c10, 0) as any as S.Schema<GetConfigurationRequest>,
+  output: __S(81, __c10, 1) as any as S.Schema<GetConfigurationResponse>,
   errors: [InternalServerException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -846,8 +846,8 @@ export const listApplications: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   ApplicationSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(39, __c4, 7) as any as S.Schema<ListApplicationsRequest>,
-  output: __S(41, __c5, 1) as any as S.Schema<ListApplicationsResponse>,
+  input: __S(96, __c12, 0) as any as S.Schema<ListApplicationsRequest>,
+  output: __S(98, __c12, 2) as any as S.Schema<ListApplicationsResponse>,
   errors: [InternalServerException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -875,8 +875,8 @@ export const listAssociatedAttributeGroups: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   AttributeGroupId
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(42, __c5, 2) as any as S.Schema<ListAssociatedAttributeGroupsRequest>,
-  output: __S(44, __c5, 4) as any as S.Schema<ListAssociatedAttributeGroupsResponse>,
+  input: __S(104, __c13, 0) as any as S.Schema<ListAssociatedAttributeGroupsRequest>,
+  output: __S(105, __c13, 1) as any as S.Schema<ListAssociatedAttributeGroupsResponse>,
   errors: [InternalServerException, ResourceNotFoundException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -919,8 +919,8 @@ export const listAssociatedResources: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   ResourceInfo
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(45, __c5, 5) as any as S.Schema<ListAssociatedResourcesRequest>,
-  output: __S(49, __c6, 1) as any as S.Schema<ListAssociatedResourcesResponse>,
+  input: __S(120, __c15, 0) as any as S.Schema<ListAssociatedResourcesRequest>,
+  output: __S(124, __c15, 4) as any as S.Schema<ListAssociatedResourcesResponse>,
   errors: [InternalServerException, ResourceNotFoundException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -944,8 +944,8 @@ export const listAttributeGroups: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   AttributeGroupSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(50, __c6, 2) as any as S.Schema<ListAttributeGroupsRequest>,
-  output: __S(52, __c6, 4) as any as S.Schema<ListAttributeGroupsResponse>,
+  input: __S(128, __c16, 0) as any as S.Schema<ListAttributeGroupsRequest>,
+  output: __S(130, __c16, 2) as any as S.Schema<ListAttributeGroupsResponse>,
   errors: [InternalServerException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -973,8 +973,8 @@ export const listAttributeGroupsForApplication: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   AttributeGroupDetails
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(53, __c6, 5) as any as S.Schema<ListAttributeGroupsForApplicationRequest>,
-  output: __S(56, __c7, 0) as any as S.Schema<ListAttributeGroupsForApplicationResponse>,
+  input: __S(136, __c17, 0) as any as S.Schema<ListAttributeGroupsForApplicationRequest>,
+  output: __S(139, __c17, 3) as any as S.Schema<ListAttributeGroupsForApplicationResponse>,
   errors: [InternalServerException, ResourceNotFoundException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1001,8 +1001,8 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(57, __c7, 1) as any as S.Schema<ListTagsForResourceRequest>,
-  output: __S(58, __c7, 2) as any as S.Schema<ListTagsForResourceResponse>,
+  input: __S(144, __c18, 0) as any as S.Schema<ListTagsForResourceRequest>,
+  output: __S(145, __c18, 1) as any as S.Schema<ListTagsForResourceResponse>,
   errors: [InternalServerException, ResourceNotFoundException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1024,8 +1024,8 @@ export const putConfiguration: API.OperationMethod<
   PutConfigurationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(59, __c7, 3) as any as S.Schema<PutConfigurationRequest>,
-  output: __S(60, __c7, 4) as any as S.Schema<PutConfigurationResponse>,
+  input: __S(152, __c19, 0) as any as S.Schema<PutConfigurationRequest>,
+  output: __S(160, __c20, 0) as any as S.Schema<PutConfigurationResponse>,
   errors: [ConflictException, InternalServerException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1050,8 +1050,8 @@ export const syncResource: API.OperationMethod<
   SyncResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(61, __c7, 5) as any as S.Schema<SyncResourceRequest>,
-  output: __S(62, __c7, 6) as any as S.Schema<SyncResourceResponse>,
+  input: __S(168, __c21, 0) as any as S.Schema<SyncResourceRequest>,
+  output: __S(169, __c21, 1) as any as S.Schema<SyncResourceResponse>,
   errors: [
     ConflictException,
     InternalServerException,
@@ -1082,8 +1082,8 @@ export const tagResource: API.OperationMethod<
   TagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(63, __c7, 7) as any as S.Schema<TagResourceRequest>,
-  output: __S(60, __c7, 4) as any as S.Schema<TagResourceResponse>,
+  input: __S(176, __c22, 0) as any as S.Schema<TagResourceRequest>,
+  output: __S(160, __c20, 0) as any as S.Schema<TagResourceResponse>,
   errors: [InternalServerException, ResourceNotFoundException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1106,8 +1106,8 @@ export const untagResource: API.OperationMethod<
   UntagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(64, __c8, 0) as any as S.Schema<UntagResourceRequest>,
-  output: __S(60, __c7, 4) as any as S.Schema<UntagResourceResponse>,
+  input: __S(184, __c23, 0) as any as S.Schema<UntagResourceRequest>,
+  output: __S(160, __c20, 0) as any as S.Schema<UntagResourceResponse>,
   errors: [InternalServerException, ResourceNotFoundException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1130,8 +1130,8 @@ export const updateApplication: API.OperationMethod<
   UpdateApplicationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(65, __c8, 1) as any as S.Schema<UpdateApplicationRequest>,
-  output: __S(9, __c1, 1) as any as S.Schema<UpdateApplicationResponse>,
+  input: __S(192, __c24, 0) as any as S.Schema<UpdateApplicationRequest>,
+  output: __S(257, __c32, 1) as any as S.Schema<UpdateApplicationResponse>,
   errors: [
     ConflictException,
     InternalServerException,
@@ -1159,8 +1159,8 @@ export const updateAttributeGroup: API.OperationMethod<
   UpdateAttributeGroupError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(66, __c8, 2) as any as S.Schema<UpdateAttributeGroupRequest>,
-  output: __S(12, __c1, 4) as any as S.Schema<UpdateAttributeGroupResponse>,
+  input: __S(200, __c25, 0) as any as S.Schema<UpdateAttributeGroupRequest>,
+  output: __S(281, __c35, 1) as any as S.Schema<UpdateAttributeGroupResponse>,
   errors: [
     ConflictException,
     InternalServerException,
@@ -1174,6 +1174,645 @@ export const updateAttributeGroup: API.OperationMethod<
 
 // Schema builders: each runs one schema initializer, on that schema's first use.
 function __c0(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ application: S.String.pipe(T.HttpLabel("application")) }).pipe(
+          T.all(
+            T.Http({ method: "DELETE", uri: "/applications/{application}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "DeleteApplicationRequest" });
+    case 1:
+      return S.suspend(() => S.Struct({ application: S.optional(__S(8, __c1, 0)) })).annotate({
+        identifier: "DeleteApplicationResponse",
+      });
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          arn: S.optional(S.String),
+          name: S.optional(S.String),
+          description: S.optional(S.String),
+          creationTime: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
+          lastUpdateTime: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
+        }),
+      ).annotate({ identifier: "ApplicationSummary" });
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ attributeGroup: S.String.pipe(T.HttpLabel("attributeGroup")) }).pipe(
+          T.all(
+            T.Http({ method: "DELETE", uri: "/attribute-groups/{attributeGroup}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "DeleteAttributeGroupRequest",
+      });
+    case 1:
+      return S.suspend(() => S.Struct({ attributeGroup: S.optional(__S(24, __c3, 0)) })).annotate({
+        identifier: "DeleteAttributeGroupResponse",
+      });
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          arn: S.optional(S.String),
+          name: S.optional(S.String),
+          description: S.optional(S.String),
+          creationTime: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
+          lastUpdateTime: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
+          createdBy: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "AttributeGroupSummary" });
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          application: S.String.pipe(T.HttpLabel("application")),
+          attributeGroup: S.String.pipe(T.HttpLabel("attributeGroup")),
+        }).pipe(
+          T.all(
+            T.Http({
+              method: "DELETE",
+              uri: "/applications/{application}/attribute-groups/{attributeGroup}",
+            }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "DisassociateAttributeGroupRequest",
+      });
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          application: S.String.pipe(T.HttpLabel("application")),
+          resourceType: S.String.pipe(T.HttpLabel("resourceType")),
+          resource: S.String.pipe(T.HttpLabel("resource")),
+        }).pipe(
+          T.all(
+            T.Http({
+              method: "DELETE",
+              uri: "/applications/{application}/resources/{resourceType}/{resource}",
+            }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "DisassociateResourceRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({ applicationArn: S.optional(S.String), resourceArn: S.optional(S.String) }),
+      ).annotate({
+        identifier: "DisassociateResourceResponse",
+      });
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ application: S.String.pipe(T.HttpLabel("application")) }).pipe(
+          T.all(
+            T.Http({ method: "GET", uri: "/applications/{application}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "GetApplicationRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          resourceGroup: S.optional(__S(56, __c7, 0)),
+          applicationTagResourceGroup: S.optional(__S(56, __c7, 0)),
+        }),
+      ).annotate({ identifier: "Integrations" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          arn: S.optional(S.String),
+          name: S.optional(S.String),
+          description: S.optional(S.String),
+          creationTime: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
+          lastUpdateTime: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
+          associatedResourceCount: S.optional(S.Number),
+          tags: S.optional(__S(264, __c33, 0)),
+          integrations: S.optional(__S(49, __c6, 1)),
+          applicationTag: S.optional(__S(248, __c31, 0)),
+        }),
+      ).annotate({ identifier: "GetApplicationResponse" });
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          state: S.optional(S.String),
+          arn: S.optional(S.String),
+          errorMessage: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ResourceGroup" });
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          application: S.String.pipe(T.HttpLabel("application")),
+          resourceType: S.String.pipe(T.HttpLabel("resourceType")),
+          resource: S.String.pipe(T.HttpLabel("resource")),
+          nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
+          resourceTagStatus: S.optional(__S(232, __c29, 0)).pipe(T.HttpQuery("resourceTagStatus")),
+          maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
+        }).pipe(
+          T.all(
+            T.Http({
+              method: "GET",
+              uri: "/applications/{application}/resources/{resourceType}/{resource}",
+            }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "GetAssociatedResourceRequest",
+      });
+    case 1:
+      return S.suspend(() => S.Struct({ resourceGroup: S.optional(__S(56, __c7, 0)) })).annotate({
+        identifier: "ResourceIntegrations",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.optional(S.String),
+          arn: S.optional(S.String),
+          associationTime: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
+          integrations: S.optional(__S(65, __c8, 1)),
+        }),
+      ).annotate({ identifier: "Resource" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          resourceArn: S.optional(S.String),
+          errorMessage: S.optional(S.String),
+          status: S.optional(S.String),
+          resourceType: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ResourcesListItem" });
+    case 4:
+      return S.Array(__S(67, __c8, 3));
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          applicationTagStatus: S.optional(S.String),
+          errorMessage: S.optional(S.String),
+          resources: S.optional(__S(68, __c8, 4)),
+          nextToken: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ApplicationTagResult" });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          resource: S.optional(__S(66, __c8, 2)),
+          options: S.optional(__S(232, __c29, 0)),
+          applicationTagResult: S.optional(__S(69, __c8, 5)),
+        }),
+      ).annotate({
+        identifier: "GetAssociatedResourceResponse",
+      });
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ attributeGroup: S.String.pipe(T.HttpLabel("attributeGroup")) }).pipe(
+          T.all(
+            T.Http({ method: "GET", uri: "/attribute-groups/{attributeGroup}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "GetAttributeGroupRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          arn: S.optional(S.String),
+          name: S.optional(S.String),
+          description: S.optional(S.String),
+          attributes: S.optional(S.String),
+          creationTime: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
+          lastUpdateTime: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
+          tags: S.optional(__S(264, __c33, 0)),
+          createdBy: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GetAttributeGroupResponse",
+      });
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({}).pipe(
+          T.all(T.Http({ method: "GET", uri: "/configuration" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "GetConfigurationRequest" });
+    case 1:
+      return S.suspend(() => S.Struct({ configuration: S.optional(__S(89, __c11, 1)) })).annotate({
+        identifier: "GetConfigurationResponse",
+      });
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({ tagKey: S.optional(S.String) })).annotate({
+        identifier: "TagQueryConfiguration",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({ tagQueryConfiguration: S.optional(__S(88, __c11, 0)) }),
+      ).annotate({ identifier: "AppRegistryConfiguration" });
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
+          maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
+        }).pipe(
+          T.all(T.Http({ method: "GET", uri: "/applications" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "ListApplicationsRequest" });
+    case 1:
+      return S.Array(__S(8, __c1, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({ applications: S.optional(__S(97, __c12, 1)), nextToken: S.optional(S.String) }),
+      ).annotate({ identifier: "ListApplicationsResponse" });
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          application: S.String.pipe(T.HttpLabel("application")),
+          nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
+          maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
+        }).pipe(
+          T.all(
+            T.Http({ method: "GET", uri: "/applications/{application}/attribute-groups" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "ListAssociatedAttributeGroupsRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          attributeGroups: S.optional(__S(112, __c14, 0)),
+          nextToken: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "ListAssociatedAttributeGroupsResponse",
+      });
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          application: S.String.pipe(T.HttpLabel("application")),
+          nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
+          maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
+        }).pipe(
+          T.all(
+            T.Http({ method: "GET", uri: "/applications/{application}/resources" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "ListAssociatedResourcesRequest",
+      });
+    case 1:
+      return S.suspend(() => S.Struct({ tagValue: S.optional(S.String) })).annotate({
+        identifier: "ResourceDetails",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.optional(S.String),
+          arn: S.optional(S.String),
+          resourceType: S.optional(S.String),
+          resourceDetails: S.optional(__S(121, __c15, 1)),
+          options: S.optional(__S(232, __c29, 0)),
+        }),
+      ).annotate({ identifier: "ResourceInfo" });
+    case 3:
+      return S.Array(__S(122, __c15, 2));
+    case 4:
+      return S.suspend(() =>
+        S.Struct({ resources: S.optional(__S(123, __c15, 3)), nextToken: S.optional(S.String) }),
+      ).annotate({
+        identifier: "ListAssociatedResourcesResponse",
+      });
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
+          maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
+        }).pipe(
+          T.all(T.Http({ method: "GET", uri: "/attribute-groups" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({
+        identifier: "ListAttributeGroupsRequest",
+      });
+    case 1:
+      return S.Array(__S(24, __c3, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          attributeGroups: S.optional(__S(129, __c16, 1)),
+          nextToken: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "ListAttributeGroupsResponse",
+      });
+  }
+}
+function __c17(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          application: S.String.pipe(T.HttpLabel("application")),
+          nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
+          maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
+        }).pipe(
+          T.all(
+            T.Http({ method: "GET", uri: "/applications/{application}/attribute-group-details" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "ListAttributeGroupsForApplicationRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          arn: S.optional(S.String),
+          name: S.optional(S.String),
+          createdBy: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "AttributeGroupDetails" });
+    case 2:
+      return S.Array(__S(137, __c17, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          attributeGroupsDetails: S.optional(__S(138, __c17, 2)),
+          nextToken: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "ListAttributeGroupsForApplicationResponse",
+      });
+  }
+}
+function __c18(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ resourceArn: S.String.pipe(T.HttpLabel("resourceArn")) }).pipe(
+          T.all(
+            T.Http({ method: "GET", uri: "/tags/{resourceArn}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "ListTagsForResourceRequest",
+      });
+    case 1:
+      return S.suspend(() => S.Struct({ tags: S.optional(__S(264, __c33, 0)) })).annotate({
+        identifier: "ListTagsForResourceResponse",
+      });
+  }
+}
+function __c19(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ configuration: __S(89, __c11, 1) }).pipe(
+          T.all(T.Http({ method: "PUT", uri: "/configuration" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "PutConfigurationRequest" });
+  }
+}
+function __c20(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "PutConfigurationResponse",
+      });
+  }
+}
+function __c21(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          resourceType: S.String.pipe(T.HttpLabel("resourceType")),
+          resource: S.String.pipe(T.HttpLabel("resource")),
+        }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/sync/{resourceType}/{resource}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "SyncResourceRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          applicationArn: S.optional(S.String),
+          resourceArn: S.optional(S.String),
+          actionTaken: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "SyncResourceResponse" });
+  }
+}
+function __c22(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          resourceArn: S.String.pipe(T.HttpLabel("resourceArn")),
+          tags: __S(264, __c33, 0),
+        }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/tags/{resourceArn}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "TagResourceRequest" });
+  }
+}
+function __c23(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          resourceArn: S.String.pipe(T.HttpLabel("resourceArn")),
+          tagKeys: __S(112, __c14, 0).pipe(T.HttpQuery("tagKeys")),
+        }).pipe(
+          T.all(
+            T.Http({ method: "DELETE", uri: "/tags/{resourceArn}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "UntagResourceRequest" });
+  }
+}
+function __c24(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          application: S.String.pipe(T.HttpLabel("application")),
+          name: S.optional(S.String),
+          description: S.optional(S.String),
+        }).pipe(
+          T.all(
+            T.Http({ method: "PATCH", uri: "/applications/{application}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "UpdateApplicationRequest" });
+  }
+}
+function __c25(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          attributeGroup: S.String.pipe(T.HttpLabel("attributeGroup")),
+          name: S.optional(S.String),
+          description: S.optional(S.String),
+          attributes: S.optional(S.String),
+        }).pipe(
+          T.all(
+            T.Http({ method: "PATCH", uri: "/attribute-groups/{attributeGroup}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "UpdateAttributeGroupRequest",
+      });
+  }
+}
+function __c26(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1196,21 +1835,27 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "AssociateAttributeGroupRequest",
       });
-    case 1:
+  }
+}
+function __c27(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ applicationArn: S.optional(S.String), attributeGroupArn: S.optional(S.String) }),
       ).annotate({
         identifier: "AssociateAttributeGroupResponse",
       });
-    case 2:
-      return S.Array(S.String);
-    case 3:
+  }
+}
+function __c28(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           application: S.String.pipe(T.HttpLabel("application")),
           resourceType: S.String.pipe(T.HttpLabel("resourceType")),
           resource: S.String.pipe(T.HttpLabel("resource")),
-          options: S.optional(__S(2, __c0, 2)),
+          options: S.optional(__S(232, __c29, 0)),
         }).pipe(
           T.all(
             T.Http({
@@ -1225,34 +1870,46 @@ function __c0(j: number): any {
           ),
         ),
       ).annotate({ identifier: "AssociateResourceRequest" });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           applicationArn: S.optional(S.String),
           resourceArn: S.optional(S.String),
-          options: S.optional(__S(2, __c0, 2)),
+          options: S.optional(__S(232, __c29, 0)),
         }),
       ).annotate({
         identifier: "AssociateResourceResponse",
       });
-    case 5:
-      return S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
-    case 6:
+  }
+}
+function __c29(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c30(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String,
           description: S.optional(S.String),
-          tags: S.optional(__S(5, __c0, 5)),
+          tags: S.optional(__S(264, __c33, 0)),
           clientToken: S.String.pipe(T.IdempotencyToken()),
         }).pipe(
           T.all(T.Http({ method: "POST", uri: "/applications" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "CreateApplicationRequest" });
-    case 7:
+  }
+}
+function __c31(j: number): any {
+  switch (j) {
+    case 0:
       return S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
   }
 }
-function __c1(j: number): any {
+function __c32(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1263,21 +1920,31 @@ function __c1(j: number): any {
           description: S.optional(S.String),
           creationTime: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
           lastUpdateTime: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-          tags: S.optional(__S(5, __c0, 5)),
-          applicationTag: S.optional(__S(7, __c0, 7)),
+          tags: S.optional(__S(264, __c33, 0)),
+          applicationTag: S.optional(__S(248, __c31, 0)),
         }),
       ).annotate({ identifier: "Application" });
     case 1:
-      return S.suspend(() => S.Struct({ application: S.optional(__S(8, __c1, 0)) })).annotate({
+      return S.suspend(() => S.Struct({ application: S.optional(__S(256, __c32, 0)) })).annotate({
         identifier: "CreateApplicationResponse",
       });
-    case 2:
+  }
+}
+function __c33(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
+  }
+}
+function __c34(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String,
           description: S.optional(S.String),
           attributes: S.String,
-          tags: S.optional(__S(5, __c0, 5)),
+          tags: S.optional(__S(264, __c33, 0)),
           clientToken: S.String.pipe(T.IdempotencyToken()),
         }).pipe(
           T.all(T.Http({ method: "POST", uri: "/attribute-groups" }), svc, auth, proto, ver, rules),
@@ -1285,7 +1952,11 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "CreateAttributeGroupRequest",
       });
-    case 3:
+  }
+}
+function __c35(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
@@ -1294,582 +1965,17 @@ function __c1(j: number): any {
           description: S.optional(S.String),
           creationTime: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
           lastUpdateTime: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-          tags: S.optional(__S(5, __c0, 5)),
+          tags: S.optional(__S(264, __c33, 0)),
         }),
       ).annotate({ identifier: "AttributeGroup" });
-    case 4:
-      return S.suspend(() => S.Struct({ attributeGroup: S.optional(__S(11, __c1, 3)) })).annotate({
-        identifier: "CreateAttributeGroupResponse",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({ application: S.String.pipe(T.HttpLabel("application")) }).pipe(
-          T.all(
-            T.Http({ method: "DELETE", uri: "/applications/{application}" }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({ identifier: "DeleteApplicationRequest" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          arn: S.optional(S.String),
-          name: S.optional(S.String),
-          description: S.optional(S.String),
-          creationTime: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-          lastUpdateTime: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-        }),
-      ).annotate({ identifier: "ApplicationSummary" });
-    case 7:
-      return S.suspend(() => S.Struct({ application: S.optional(__S(14, __c1, 6)) })).annotate({
-        identifier: "DeleteApplicationResponse",
-      });
-  }
-}
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({ attributeGroup: S.String.pipe(T.HttpLabel("attributeGroup")) }).pipe(
-          T.all(
-            T.Http({ method: "DELETE", uri: "/attribute-groups/{attributeGroup}" }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({
-        identifier: "DeleteAttributeGroupRequest",
-      });
     case 1:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          arn: S.optional(S.String),
-          name: S.optional(S.String),
-          description: S.optional(S.String),
-          creationTime: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-          lastUpdateTime: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-          createdBy: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "AttributeGroupSummary" });
-    case 2:
-      return S.suspend(() => S.Struct({ attributeGroup: S.optional(__S(17, __c2, 1)) })).annotate({
-        identifier: "DeleteAttributeGroupResponse",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          application: S.String.pipe(T.HttpLabel("application")),
-          attributeGroup: S.String.pipe(T.HttpLabel("attributeGroup")),
-        }).pipe(
-          T.all(
-            T.Http({
-              method: "DELETE",
-              uri: "/applications/{application}/attribute-groups/{attributeGroup}",
-            }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({
-        identifier: "DisassociateAttributeGroupRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          application: S.String.pipe(T.HttpLabel("application")),
-          resourceType: S.String.pipe(T.HttpLabel("resourceType")),
-          resource: S.String.pipe(T.HttpLabel("resource")),
-        }).pipe(
-          T.all(
-            T.Http({
-              method: "DELETE",
-              uri: "/applications/{application}/resources/{resourceType}/{resource}",
-            }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({
-        identifier: "DisassociateResourceRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({ applicationArn: S.optional(S.String), resourceArn: S.optional(S.String) }),
-      ).annotate({
-        identifier: "DisassociateResourceResponse",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({ application: S.String.pipe(T.HttpLabel("application")) }).pipe(
-          T.all(
-            T.Http({ method: "GET", uri: "/applications/{application}" }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({ identifier: "GetApplicationRequest" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          state: S.optional(S.String),
-          arn: S.optional(S.String),
-          errorMessage: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ResourceGroup" });
+      return S.suspend(() => S.Struct({ attributeGroup: S.optional(__S(280, __c35, 0)) })).annotate(
+        {
+          identifier: "CreateAttributeGroupResponse",
+        },
+      );
   }
 }
-function __c3(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          resourceGroup: S.optional(__S(23, __c2, 7)),
-          applicationTagResourceGroup: S.optional(__S(23, __c2, 7)),
-        }),
-      ).annotate({ identifier: "Integrations" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          arn: S.optional(S.String),
-          name: S.optional(S.String),
-          description: S.optional(S.String),
-          creationTime: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-          lastUpdateTime: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-          associatedResourceCount: S.optional(S.Number),
-          tags: S.optional(__S(5, __c0, 5)),
-          integrations: S.optional(__S(24, __c3, 0)),
-          applicationTag: S.optional(__S(7, __c0, 7)),
-        }),
-      ).annotate({ identifier: "GetApplicationResponse" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          application: S.String.pipe(T.HttpLabel("application")),
-          resourceType: S.String.pipe(T.HttpLabel("resourceType")),
-          resource: S.String.pipe(T.HttpLabel("resource")),
-          nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
-          resourceTagStatus: S.optional(__S(2, __c0, 2)).pipe(T.HttpQuery("resourceTagStatus")),
-          maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
-        }).pipe(
-          T.all(
-            T.Http({
-              method: "GET",
-              uri: "/applications/{application}/resources/{resourceType}/{resource}",
-            }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({
-        identifier: "GetAssociatedResourceRequest",
-      });
-    case 3:
-      return S.suspend(() => S.Struct({ resourceGroup: S.optional(__S(23, __c2, 7)) })).annotate({
-        identifier: "ResourceIntegrations",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.optional(S.String),
-          arn: S.optional(S.String),
-          associationTime: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-          integrations: S.optional(__S(27, __c3, 3)),
-        }),
-      ).annotate({ identifier: "Resource" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          resourceArn: S.optional(S.String),
-          errorMessage: S.optional(S.String),
-          status: S.optional(S.String),
-          resourceType: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ResourcesListItem" });
-    case 6:
-      return S.Array(__S(29, __c3, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          applicationTagStatus: S.optional(S.String),
-          errorMessage: S.optional(S.String),
-          resources: S.optional(__S(30, __c3, 6)),
-          nextToken: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ApplicationTagResult" });
-  }
-}
-function __c4(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          resource: S.optional(__S(28, __c3, 4)),
-          options: S.optional(__S(2, __c0, 2)),
-          applicationTagResult: S.optional(__S(31, __c3, 7)),
-        }),
-      ).annotate({
-        identifier: "GetAssociatedResourceResponse",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({ attributeGroup: S.String.pipe(T.HttpLabel("attributeGroup")) }).pipe(
-          T.all(
-            T.Http({ method: "GET", uri: "/attribute-groups/{attributeGroup}" }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({ identifier: "GetAttributeGroupRequest" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          arn: S.optional(S.String),
-          name: S.optional(S.String),
-          description: S.optional(S.String),
-          attributes: S.optional(S.String),
-          creationTime: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-          lastUpdateTime: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-          tags: S.optional(__S(5, __c0, 5)),
-          createdBy: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GetAttributeGroupResponse",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({}).pipe(
-          T.all(T.Http({ method: "GET", uri: "/configuration" }), svc, auth, proto, ver, rules),
-        ),
-      ).annotate({ identifier: "GetConfigurationRequest" });
-    case 4:
-      return S.suspend(() => S.Struct({ tagKey: S.optional(S.String) })).annotate({
-        identifier: "TagQueryConfiguration",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({ tagQueryConfiguration: S.optional(__S(36, __c4, 4)) }),
-      ).annotate({ identifier: "AppRegistryConfiguration" });
-    case 6:
-      return S.suspend(() => S.Struct({ configuration: S.optional(__S(37, __c4, 5)) })).annotate({
-        identifier: "GetConfigurationResponse",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
-          maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
-        }).pipe(
-          T.all(T.Http({ method: "GET", uri: "/applications" }), svc, auth, proto, ver, rules),
-        ),
-      ).annotate({ identifier: "ListApplicationsRequest" });
-  }
-}
-function __c5(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(14, __c1, 6));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          applications: S.optional(__S(40, __c5, 0)),
-          nextToken: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ListApplicationsResponse" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          application: S.String.pipe(T.HttpLabel("application")),
-          nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
-          maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
-        }).pipe(
-          T.all(
-            T.Http({ method: "GET", uri: "/applications/{application}/attribute-groups" }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({
-        identifier: "ListAssociatedAttributeGroupsRequest",
-      });
-    case 3:
-      return S.Array(S.String);
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          attributeGroups: S.optional(__S(43, __c5, 3)),
-          nextToken: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "ListAssociatedAttributeGroupsResponse",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          application: S.String.pipe(T.HttpLabel("application")),
-          nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
-          maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
-        }).pipe(
-          T.all(
-            T.Http({ method: "GET", uri: "/applications/{application}/resources" }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({
-        identifier: "ListAssociatedResourcesRequest",
-      });
-    case 6:
-      return S.suspend(() => S.Struct({ tagValue: S.optional(S.String) })).annotate({
-        identifier: "ResourceDetails",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.optional(S.String),
-          arn: S.optional(S.String),
-          resourceType: S.optional(S.String),
-          resourceDetails: S.optional(__S(46, __c5, 6)),
-          options: S.optional(__S(2, __c0, 2)),
-        }),
-      ).annotate({ identifier: "ResourceInfo" });
-  }
-}
-function __c6(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(47, __c5, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({ resources: S.optional(__S(48, __c6, 0)), nextToken: S.optional(S.String) }),
-      ).annotate({
-        identifier: "ListAssociatedResourcesResponse",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
-          maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
-        }).pipe(
-          T.all(T.Http({ method: "GET", uri: "/attribute-groups" }), svc, auth, proto, ver, rules),
-        ),
-      ).annotate({
-        identifier: "ListAttributeGroupsRequest",
-      });
-    case 3:
-      return S.Array(__S(17, __c2, 1));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          attributeGroups: S.optional(__S(51, __c6, 3)),
-          nextToken: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "ListAttributeGroupsResponse",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          application: S.String.pipe(T.HttpLabel("application")),
-          nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
-          maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
-        }).pipe(
-          T.all(
-            T.Http({ method: "GET", uri: "/applications/{application}/attribute-group-details" }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({
-        identifier: "ListAttributeGroupsForApplicationRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          arn: S.optional(S.String),
-          name: S.optional(S.String),
-          createdBy: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "AttributeGroupDetails" });
-    case 7:
-      return S.Array(__S(54, __c6, 6));
-  }
-}
-function __c7(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          attributeGroupsDetails: S.optional(__S(55, __c6, 7)),
-          nextToken: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "ListAttributeGroupsForApplicationResponse",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({ resourceArn: S.String.pipe(T.HttpLabel("resourceArn")) }).pipe(
-          T.all(
-            T.Http({ method: "GET", uri: "/tags/{resourceArn}" }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({
-        identifier: "ListTagsForResourceRequest",
-      });
-    case 2:
-      return S.suspend(() => S.Struct({ tags: S.optional(__S(5, __c0, 5)) })).annotate({
-        identifier: "ListTagsForResourceResponse",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({ configuration: __S(37, __c4, 5) }).pipe(
-          T.all(T.Http({ method: "PUT", uri: "/configuration" }), svc, auth, proto, ver, rules),
-        ),
-      ).annotate({ identifier: "PutConfigurationRequest" });
-    case 4:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "PutConfigurationResponse",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          resourceType: S.String.pipe(T.HttpLabel("resourceType")),
-          resource: S.String.pipe(T.HttpLabel("resource")),
-        }).pipe(
-          T.all(
-            T.Http({ method: "POST", uri: "/sync/{resourceType}/{resource}" }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({ identifier: "SyncResourceRequest" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          applicationArn: S.optional(S.String),
-          resourceArn: S.optional(S.String),
-          actionTaken: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "SyncResourceResponse" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          resourceArn: S.String.pipe(T.HttpLabel("resourceArn")),
-          tags: __S(5, __c0, 5),
-        }).pipe(
-          T.all(
-            T.Http({ method: "POST", uri: "/tags/{resourceArn}" }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({ identifier: "TagResourceRequest" });
-  }
-}
-function __c8(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          resourceArn: S.String.pipe(T.HttpLabel("resourceArn")),
-          tagKeys: __S(43, __c5, 3).pipe(T.HttpQuery("tagKeys")),
-        }).pipe(
-          T.all(
-            T.Http({ method: "DELETE", uri: "/tags/{resourceArn}" }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({ identifier: "UntagResourceRequest" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          application: S.String.pipe(T.HttpLabel("application")),
-          name: S.optional(S.String),
-          description: S.optional(S.String),
-        }).pipe(
-          T.all(
-            T.Http({ method: "PATCH", uri: "/applications/{application}" }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({ identifier: "UpdateApplicationRequest" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          attributeGroup: S.String.pipe(T.HttpLabel("attributeGroup")),
-          name: S.optional(S.String),
-          description: S.optional(S.String),
-          attributes: S.optional(S.String),
-        }).pipe(
-          T.all(
-            T.Http({ method: "PATCH", uri: "/attribute-groups/{attributeGroup}" }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({
-        identifier: "UpdateAttributeGroupRequest",
-      });
-  }
-}
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

@@ -1252,8 +1252,8 @@ export const createAccountTypesAccountsPartnerLinks: API.OperationMethod<
   CreateAccountTypesAccountsPartnerLinksError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(5, __c0, 5) as any as S.Schema<CreateAccountTypesAccountsPartnerLinksRequest>,
-  output: __S(4, __c0, 4) as any as S.Schema<PartnerLink>,
+  input: __S(1024, __c32, 0) as any as S.Schema<CreateAccountTypesAccountsPartnerLinksRequest>,
+  output: __S(1091, __c34, 3) as any as S.Schema<PartnerLink>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1272,11 +1272,11 @@ export const createAccountTypesAccountsUserListDirectLicenses: API.OperationMeth
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    10,
-    __c1,
-    2,
+    1120,
+    __c35,
+    0,
   ) as any as S.Schema<CreateAccountTypesAccountsUserListDirectLicensesRequest>,
-  output: __S(9, __c1, 1) as any as S.Schema<UserListDirectLicense>,
+  output: __S(1152, __c36, 0) as any as S.Schema<UserListDirectLicense>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1295,11 +1295,11 @@ export const createAccountTypesAccountsUserListGlobalLicenses: API.OperationMeth
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    12,
-    __c1,
-    4,
+    1216,
+    __c38,
+    0,
   ) as any as S.Schema<CreateAccountTypesAccountsUserListGlobalLicensesRequest>,
-  output: __S(11, __c1, 3) as any as S.Schema<UserListGlobalLicense>,
+  output: __S(1248, __c39, 0) as any as S.Schema<UserListGlobalLicense>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1318,8 +1318,8 @@ export const createAccountTypesAccountsUserLists: API.OperationMethod<
   CreateAccountTypesAccountsUserListsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(24, __c3, 0) as any as S.Schema<CreateAccountTypesAccountsUserListsRequest>,
-  output: __S(23, __c2, 7) as any as S.Schema<UserList>,
+  input: __S(1280, __c40, 0) as any as S.Schema<CreateAccountTypesAccountsUserListsRequest>,
+  output: __S(1322, __c41, 10) as any as S.Schema<UserList>,
   errors: [
     NotFound,
     Forbidden,
@@ -1344,8 +1344,8 @@ export const deleteAccountTypesAccountsPartnerLinks: API.OperationMethod<
   DeleteAccountTypesAccountsPartnerLinksError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(25, __c3, 1) as any as S.Schema<DeleteAccountTypesAccountsPartnerLinksRequest>,
-  output: __S(26, __c3, 2) as any as S.Schema<Empty>,
+  input: __S(1344, __c42, 0) as any as S.Schema<DeleteAccountTypesAccountsPartnerLinksRequest>,
+  output: __S(1376, __c43, 0) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1364,8 +1364,8 @@ export const deleteAccountTypesAccountsUserLists: API.OperationMethod<
   DeleteAccountTypesAccountsUserListsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(27, __c3, 3) as any as S.Schema<DeleteAccountTypesAccountsUserListsRequest>,
-  output: __S(26, __c3, 2) as any as S.Schema<Empty>,
+  input: __S(0, __c0, 0) as any as S.Schema<DeleteAccountTypesAccountsUserListsRequest>,
+  output: __S(1376, __c43, 0) as any as S.Schema<Empty>,
   errors: [
     NotFound,
     Forbidden,
@@ -1390,8 +1390,8 @@ export const getAccountTypesAccountsInsights: API.OperationMethod<
   GetAccountTypesAccountsInsightsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(32, __c4, 0) as any as S.Schema<GetAccountTypesAccountsInsightsRequest>,
-  output: __S(37, __c4, 5) as any as S.Schema<RetrieveInsightsResponse>,
+  input: __S(35, __c1, 3) as any as S.Schema<GetAccountTypesAccountsInsightsRequest>,
+  output: __S(40, __c1, 8) as any as S.Schema<RetrieveInsightsResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1404,8 +1404,8 @@ export const getAccountTypesAccountsUserListDirectLicenses: API.OperationMethod<
   GetAccountTypesAccountsUserListDirectLicensesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(38, __c4, 6) as any as S.Schema<GetAccountTypesAccountsUserListDirectLicensesRequest>,
-  output: __S(9, __c1, 1) as any as S.Schema<UserListDirectLicense>,
+  input: __S(96, __c3, 0) as any as S.Schema<GetAccountTypesAccountsUserListDirectLicensesRequest>,
+  output: __S(1152, __c36, 0) as any as S.Schema<UserListDirectLicense>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1418,8 +1418,8 @@ export const getAccountTypesAccountsUserListGlobalLicenses: API.OperationMethod<
   GetAccountTypesAccountsUserListGlobalLicensesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(39, __c4, 7) as any as S.Schema<GetAccountTypesAccountsUserListGlobalLicensesRequest>,
-  output: __S(11, __c1, 3) as any as S.Schema<UserListGlobalLicense>,
+  input: __S(128, __c4, 0) as any as S.Schema<GetAccountTypesAccountsUserListGlobalLicensesRequest>,
+  output: __S(1248, __c39, 0) as any as S.Schema<UserListGlobalLicense>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1436,8 +1436,8 @@ export const getAccountTypesAccountsUserLists: API.OperationMethod<
   GetAccountTypesAccountsUserListsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(40, __c5, 0) as any as S.Schema<GetAccountTypesAccountsUserListsRequest>,
-  output: __S(23, __c2, 7) as any as S.Schema<UserList>,
+  input: __S(160, __c5, 0) as any as S.Schema<GetAccountTypesAccountsUserListsRequest>,
+  output: __S(1322, __c41, 10) as any as S.Schema<UserList>,
   errors: [NotFound, Forbidden, DataManagerScopeInsufficient, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1450,8 +1450,8 @@ export const getRequestStatus: API.OperationMethod<
   GetRequestStatusError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(41, __c5, 1) as any as S.Schema<GetRequestStatusRequest>,
-  output: __S(68, __c8, 4) as any as S.Schema<GetRequestStatusResponse>,
+  input: __S(192, __c6, 0) as any as S.Schema<GetRequestStatusRequest>,
+  output: __S(218, __c6, 26) as any as S.Schema<GetRequestStatusResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1464,8 +1464,8 @@ export const ingestAdEvents: API.OperationMethod<
   IngestAdEventsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(82, __c10, 2) as any as S.Schema<IngestAdEventsRequest_>,
-  output: __S(26, __c3, 2) as any as S.Schema<IngestAdEventsResponse>,
+  input: __S(260, __c8, 4) as any as S.Schema<IngestAdEventsRequest_>,
+  output: __S(1376, __c43, 0) as any as S.Schema<IngestAdEventsResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1478,8 +1478,8 @@ export const ingestAudienceMembers: API.OperationMethod<
   IngestAudienceMembersError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(98, __c12, 2) as any as S.Schema<IngestAudienceMembersRequest_>,
-  output: __S(101, __c12, 5) as any as S.Schema<IngestAudienceMembersResponse>,
+  input: __S(354, __c11, 2) as any as S.Schema<IngestAudienceMembersRequest_>,
+  output: __S(355, __c11, 3) as any as S.Schema<IngestAudienceMembersResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1492,8 +1492,8 @@ export const ingestEvents: API.OperationMethod<
   IngestEventsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(125, __c15, 5) as any as S.Schema<IngestEventsRequest_>,
-  output: __S(126, __c15, 6) as any as S.Schema<IngestEventsResponse>,
+  input: __S(567, __c17, 23) as any as S.Schema<IngestEventsRequest_>,
+  output: __S(568, __c17, 24) as any as S.Schema<IngestEventsResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1506,8 +1506,8 @@ export const ingestUsers: API.OperationMethod<
   IngestUsersError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(130, __c16, 2) as any as S.Schema<IngestUsersRequest_>,
-  output: __S(131, __c16, 3) as any as S.Schema<IngestUsersResponse>,
+  input: __S(579, __c18, 3) as any as S.Schema<IngestUsersRequest_>,
+  output: __S(608, __c19, 0) as any as S.Schema<IngestUsersResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1522,11 +1522,11 @@ export const listAccountTypesAccountsUserListDirectLicenses: API.PaginatedOperat
   ListUserListDirectLicensesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(
-    132,
-    __c16,
-    4,
+    640,
+    __c20,
+    0,
   ) as any as S.Schema<ListAccountTypesAccountsUserListDirectLicensesRequest>,
-  output: __S(134, __c16, 6) as any as S.Schema<ListUserListDirectLicensesResponse>,
+  output: __S(642, __c20, 2) as any as S.Schema<ListUserListDirectLicensesResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1542,11 +1542,11 @@ export const listAccountTypesAccountsUserListGlobalLicenses: API.PaginatedOperat
   ListUserListGlobalLicensesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(
-    135,
-    __c16,
-    7,
+    672,
+    __c21,
+    0,
   ) as any as S.Schema<ListAccountTypesAccountsUserListGlobalLicensesRequest>,
-  output: __S(137, __c17, 1) as any as S.Schema<ListUserListGlobalLicensesResponse>,
+  output: __S(674, __c21, 2) as any as S.Schema<ListUserListGlobalLicensesResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1565,11 +1565,11 @@ export const listAccountTypesAccountsUserListGlobalLicensesUserListGlobalLicense
   ListUserListGlobalLicenseCustomerInfosResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(
-    138,
-    __c17,
-    2,
+    704,
+    __c22,
+    0,
   ) as any as S.Schema<ListAccountTypesAccountsUserListGlobalLicensesUserListGlobalLicenseCustomerInfosRequest>,
-  output: __S(141, __c17, 5) as any as S.Schema<ListUserListGlobalLicenseCustomerInfosResponse>,
+  output: __S(707, __c22, 3) as any as S.Schema<ListUserListGlobalLicenseCustomerInfosResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1588,8 +1588,8 @@ export const listAccountTypesAccountsUserLists: API.PaginatedOperationMethod<
   GcpOpContext,
   ListUserListsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(142, __c17, 6) as any as S.Schema<ListAccountTypesAccountsUserListsRequest>,
-  output: __S(144, __c18, 0) as any as S.Schema<ListUserListsResponse>,
+  input: __S(736, __c23, 0) as any as S.Schema<ListAccountTypesAccountsUserListsRequest>,
+  output: __S(738, __c23, 2) as any as S.Schema<ListUserListsResponse>,
   errors: [NotFound, Forbidden, DataManagerScopeInsufficient, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1609,11 +1609,11 @@ export const patchAccountTypesAccountsUserListDirectLicenses: API.OperationMetho
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    145,
-    __c18,
-    1,
+    768,
+    __c24,
+    0,
   ) as any as S.Schema<PatchAccountTypesAccountsUserListDirectLicensesRequest>,
-  output: __S(9, __c1, 1) as any as S.Schema<UserListDirectLicense>,
+  output: __S(1152, __c36, 0) as any as S.Schema<UserListDirectLicense>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1632,11 +1632,11 @@ export const patchAccountTypesAccountsUserListGlobalLicenses: API.OperationMetho
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    146,
-    __c18,
-    2,
+    800,
+    __c25,
+    0,
   ) as any as S.Schema<PatchAccountTypesAccountsUserListGlobalLicensesRequest>,
-  output: __S(11, __c1, 3) as any as S.Schema<UserListGlobalLicense>,
+  output: __S(1248, __c39, 0) as any as S.Schema<UserListGlobalLicense>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1655,8 +1655,8 @@ export const patchAccountTypesAccountsUserLists: API.OperationMethod<
   PatchAccountTypesAccountsUserListsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(147, __c18, 3) as any as S.Schema<PatchAccountTypesAccountsUserListsRequest>,
-  output: __S(23, __c2, 7) as any as S.Schema<UserList>,
+  input: __S(832, __c26, 0) as any as S.Schema<PatchAccountTypesAccountsUserListsRequest>,
+  output: __S(1322, __c41, 10) as any as S.Schema<UserList>,
   errors: [
     NotFound,
     Forbidden,
@@ -1681,8 +1681,8 @@ export const removeAllAudienceMembers: API.OperationMethod<
   RemoveAllAudienceMembersError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(149, __c18, 5) as any as S.Schema<RemoveAllAudienceMembersRequest_>,
-  output: __S(150, __c18, 6) as any as S.Schema<RemoveAllAudienceMembersResponse>,
+  input: __S(865, __c27, 1) as any as S.Schema<RemoveAllAudienceMembersRequest_>,
+  output: __S(896, __c28, 0) as any as S.Schema<RemoveAllAudienceMembersResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1695,8 +1695,8 @@ export const removeAudienceMembers: API.OperationMethod<
   RemoveAudienceMembersError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(152, __c19, 0) as any as S.Schema<RemoveAudienceMembersRequest_>,
-  output: __S(150, __c18, 6) as any as S.Schema<RemoveAudienceMembersResponse>,
+  input: __S(929, __c29, 1) as any as S.Schema<RemoveAudienceMembersRequest_>,
+  output: __S(896, __c28, 0) as any as S.Schema<RemoveAudienceMembersResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1709,8 +1709,8 @@ export const removeUsers: API.OperationMethod<
   RemoveUsersError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(155, __c19, 3) as any as S.Schema<RemoveUsersRequest_>,
-  output: __S(131, __c16, 3) as any as S.Schema<RemoveUsersResponse>,
+  input: __S(962, __c30, 2) as any as S.Schema<RemoveUsersRequest_>,
+  output: __S(608, __c19, 0) as any as S.Schema<RemoveUsersResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1724,8 +1724,8 @@ export const searchAccountTypesAccountsPartnerLinks: API.PaginatedOperationMetho
   GcpOpContext,
   SearchPartnerLinksResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(156, __c19, 4) as any as S.Schema<SearchAccountTypesAccountsPartnerLinksRequest>,
-  output: __S(158, __c19, 6) as any as S.Schema<SearchPartnerLinksResponse>,
+  input: __S(992, __c31, 0) as any as S.Schema<SearchAccountTypesAccountsPartnerLinksRequest>,
+  output: __S(994, __c31, 2) as any as S.Schema<SearchPartnerLinksResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1736,281 +1736,6 @@ export const searchAccountTypesAccountsPartnerLinks: API.PaginatedOperationMetho
 function __c0(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() =>
-        S.Struct({
-          accountType: S.optional(S.String),
-          accountId: S.optional(S.String),
-          product: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ProductAccount" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          accountId: S.optional(S.String),
-          accountName: S.optional(S.String),
-          accountType: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "PartnerCustomerAccount" });
-    case 2:
-      return S.Array(__S(1, __c0, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          implicitAccounts: S.optional(__S(2, __c0, 2)),
-        }),
-      ).annotate({ identifier: "PartnerLinkMetadata" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          partnerAccount: S.optional(__S(0, __c0, 0)),
-          featureSet: S.optional(S.String),
-          partnerLinkId: S.optional(S.String),
-          owningAccount: S.optional(__S(0, __c0, 0)),
-          partnerCustomerAccount: S.optional(__S(1, __c0, 1)),
-          name: S.optional(S.String),
-          partnerLinkMetadata: S.optional(__S(3, __c0, 3)),
-        }),
-      ).annotate({ identifier: "PartnerLink" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(4, __c0, 4).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/{+parent}/partnerLinks",
-            baseUrl: "https://datamanager.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateAccountTypesAccountsPartnerLinksRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          impressionCount: S.optional(S.String),
-          endDate: S.optional(S.String),
-          clickCount: S.optional(S.String),
-          revenueUsdMicros: S.optional(S.String),
-          startDate: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "UserListLicenseMetrics" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          maxCostMicros: S.optional(S.String),
-          pricingId: S.optional(S.String),
-          currencyCode: S.optional(S.String),
-          costType: S.optional(S.String),
-          costMicros: S.optional(S.String),
-          pricingActive: S.optional(S.Boolean),
-          startTime: S.optional(S.String),
-          buyerApprovalState: S.optional(S.String),
-          endTime: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "UserListLicensePricing" });
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(7, __c0, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          status: S.optional(S.String),
-          userListId: S.optional(S.String),
-          clientAccountId: S.optional(S.String),
-          clientAccountType: S.optional(S.String),
-          metrics: S.optional(__S(6, __c0, 6)),
-          clientAccountDisplayName: S.optional(S.String),
-          historicalPricings: S.optional(__S(8, __c1, 0)),
-          pricing: S.optional(__S(7, __c0, 7)),
-          userListDisplayName: S.optional(S.String),
-          name: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "UserListDirectLicense" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(9, __c1, 1).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/{+parent}/userListDirectLicenses",
-            baseUrl: "https://datamanager.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateAccountTypesAccountsUserListDirectLicensesRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          userListDisplayName: S.optional(S.String),
-          pricing: S.optional(__S(7, __c0, 7)),
-          name: S.optional(S.String),
-          historicalPricings: S.optional(__S(8, __c1, 0)),
-          userListId: S.optional(S.String),
-          status: S.optional(S.String),
-          metrics: S.optional(__S(6, __c0, 6)),
-          licenseType: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "UserListGlobalLicense" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(11, __c1, 3).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/{+parent}/userListGlobalLicenses",
-            baseUrl: "https://datamanager.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateAccountTypesAccountsUserListGlobalLicensesRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          gmailMembersCount: S.optional(S.String),
-          youtubeMembersCount: S.optional(S.String),
-          displayNetworkMembersCount: S.optional(S.String),
-          searchNetworkMembersCount: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "SizeInfo" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          eligibleForDisplay: S.optional(S.Boolean),
-          eligibleForSearch: S.optional(S.Boolean),
-        }),
-      ).annotate({ identifier: "TargetNetworkInfo" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          partnerAudienceSource: S.optional(S.String),
-          commercePartner: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "PartnerAudienceInfo" });
-  }
-}
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          matchRatePercentage: S.optional(S.Number),
-          cleanRoomIdentifier: S.optional(S.String),
-          publisherId: S.optional(S.String),
-          advertiserIdentifierCount: S.optional(S.String),
-          publisherName: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "PairIdInfo" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          keySpace: S.optional(S.String),
-          dataSourceType: S.optional(S.String),
-          appId: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "MobileIdInfo" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          dataSourceType: S.optional(S.String),
-          matchRatePercentage: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "ContactIdInfo" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          syncStatus: S.optional(S.String),
-          billableRecordCount: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "PseudonymousIdInfo" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          dataSourceType: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "UserIdInfo" });
-    case 5:
-      return S.Array(S.String);
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          partnerAudienceInfo: S.optional(__S(15, __c1, 7)),
-          pairIdInfo: S.optional(__S(16, __c2, 0)),
-          mobileIdInfo: S.optional(__S(17, __c2, 1)),
-          contactIdInfo: S.optional(__S(18, __c2, 2)),
-          pseudonymousIdInfo: S.optional(__S(19, __c2, 3)),
-          userIdInfo: S.optional(__S(20, __c2, 4)),
-          uploadKeyTypes: S.optional(__S(21, __c2, 5)),
-        }),
-      ).annotate({ identifier: "IngestedUserListInfo" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          accessReason: S.optional(S.String),
-          displayName: S.optional(S.String),
-          integrationCode: S.optional(S.String),
-          closingReason: S.optional(S.String),
-          membershipDuration: S.optional(S.String),
-          sizeInfo: S.optional(__S(13, __c1, 5)),
-          membershipStatus: S.optional(S.String),
-          accountAccessStatus: S.optional(S.String),
-          description: S.optional(S.String),
-          name: S.optional(S.String),
-          targetNetworkInfo: S.optional(__S(14, __c1, 6)),
-          id: S.optional(S.String),
-          ingestedUserListInfo: S.optional(__S(22, __c2, 6)),
-          readOnly: S.optional(S.Boolean),
-        }),
-      ).annotate({ identifier: "UserList" });
-  }
-}
-function __c3(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          validateOnly: S.optional(S.Boolean.pipe(T.Query())),
-          parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(23, __c2, 7).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/{+parent}/userLists",
-            baseUrl: "https://datamanager.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateAccountTypesAccountsUserListsRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "v1/{+name}",
-            baseUrl: "https://datamanager.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteAccountTypesAccountsPartnerLinksRequest",
-      });
-    case 2:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "Empty",
-      });
-    case 3:
       return S.suspend(() =>
         S.Struct({
           validateOnly: S.optional(S.Boolean.pipe(T.Query())),
@@ -2025,37 +1750,35 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "DeleteAccountTypesAccountsUserListsRequest",
       });
-    case 4:
-      return S.Array(S.String);
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          regionCodes: S.optional(__S(28, __c3, 4)),
-        }),
-      ).annotate({ identifier: "Location" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          baselineLocation: S.optional(__S(29, __c3, 5)),
-          locationAutoDetectionEnabled: S.optional(S.Boolean),
-        }),
-      ).annotate({ identifier: "Baseline" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          userListId: S.optional(S.String),
-          baseline: S.optional(__S(30, __c3, 6)),
-        }),
-      ).annotate({ identifier: "RetrieveInsightsRequest" });
   }
 }
-function __c4(j: number): any {
+function __c1(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
+          regionCodes: S.optional(__S(64, __c2, 0)),
+        }),
+      ).annotate({ identifier: "Location" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          baselineLocation: S.optional(__S(32, __c1, 0)),
+          locationAutoDetectionEnabled: S.optional(S.Boolean),
+        }),
+      ).annotate({ identifier: "Baseline" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          userListId: S.optional(S.String),
+          baseline: S.optional(__S(33, __c1, 1)),
+        }),
+      ).annotate({ identifier: "RetrieveInsightsRequest" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
           parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(31, __c3, 7).pipe(T.HttpBody())),
+          body: S.optional(__S(34, __c1, 2).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -2066,7 +1789,7 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "GetAccountTypesAccountsInsightsRequest",
       });
-    case 1:
+    case 4:
       return S.suspend(() =>
         S.Struct({
           ageRange: S.optional(S.String),
@@ -2077,24 +1800,34 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "MarketingDataInsightsAttribute",
       });
-    case 2:
-      return S.Array(__S(33, __c4, 1));
-    case 3:
+    case 5:
+      return S.Array(__S(36, __c1, 4));
+    case 6:
       return S.suspend(() =>
         S.Struct({
-          attributes: S.optional(__S(34, __c4, 2)),
+          attributes: S.optional(__S(37, __c1, 5)),
           dimension: S.optional(S.String),
         }),
       ).annotate({ identifier: "MarketingDataInsight" });
-    case 4:
-      return S.Array(__S(35, __c4, 3));
-    case 5:
+    case 7:
+      return S.Array(__S(38, __c1, 6));
+    case 8:
       return S.suspend(() =>
         S.Struct({
-          marketingDataInsights: S.optional(__S(36, __c4, 4)),
+          marketingDataInsights: S.optional(__S(39, __c1, 7)),
         }),
       ).annotate({ identifier: "RetrieveInsightsResponse" });
-    case 6:
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -2108,7 +1841,11 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "GetAccountTypesAccountsUserListDirectLicensesRequest",
       });
-    case 7:
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -2140,7 +1877,11 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "GetAccountTypesAccountsUserListsRequest",
       });
-    case 1:
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           requestId: S.optional(S.String.pipe(T.Query())),
@@ -2152,72 +1893,68 @@ function __c5(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetRequestStatusRequest" });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           recordCount: S.optional(S.String),
           reason: S.optional(S.String),
         }),
       ).annotate({ identifier: "WarningCount" });
+    case 2:
+      return S.Array(__S(193, __c6, 1));
     case 3:
-      return S.Array(__S(42, __c5, 2));
-    case 4:
       return S.suspend(() =>
         S.Struct({
-          warningCounts: S.optional(__S(43, __c5, 3)),
+          warningCounts: S.optional(__S(194, __c6, 2)),
         }),
       ).annotate({ identifier: "WarningInfo" });
-    case 5:
+    case 4:
       return S.suspend(() =>
         S.Struct({
           recordCount: S.optional(S.String),
           userIdCount: S.optional(S.String),
         }),
       ).annotate({ identifier: "RemoveUserIdDataStatus" });
-    case 6:
+    case 5:
       return S.suspend(() =>
         S.Struct({
           recordCount: S.optional(S.String),
           userIdentifierCount: S.optional(S.String),
         }),
       ).annotate({ identifier: "RemoveUserDataStatus" });
-    case 7:
+    case 6:
       return S.suspend(() =>
         S.Struct({
           recordCount: S.optional(S.String),
           pairIdCount: S.optional(S.String),
         }),
       ).annotate({ identifier: "RemovePairDataStatus" });
-  }
-}
-function __c6(j: number): any {
-  switch (j) {
-    case 0:
+    case 7:
       return S.suspend(() =>
         S.Struct({
           ppidCount: S.optional(S.String),
           recordCount: S.optional(S.String),
         }),
       ).annotate({ identifier: "RemovePpidDataStatus" });
-    case 1:
+    case 8:
       return S.suspend(() =>
         S.Struct({
           type: S.optional(S.String),
           count: S.optional(S.String),
         }),
       ).annotate({ identifier: "DataTypeCount" });
-    case 2:
-      return S.Array(__S(49, __c6, 1));
-    case 3:
+    case 9:
+      return S.Array(__S(200, __c6, 8));
+    case 10:
       return S.suspend(() =>
         S.Struct({
-          dataTypeCounts: S.optional(__S(50, __c6, 2)),
+          dataTypeCounts: S.optional(__S(201, __c6, 9)),
           recordCount: S.optional(S.String),
         }),
       ).annotate({
         identifier: "RemoveCompositeDataStatus",
       });
-    case 4:
+    case 11:
       return S.suspend(() =>
         S.Struct({
           googleUserIdCount: S.optional(S.String),
@@ -2226,14 +1963,14 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "RemoveGoogleUserIdDataStatus",
       });
-    case 5:
+    case 12:
       return S.suspend(() =>
         S.Struct({
           recordCount: S.optional(S.String),
           mobileIdCount: S.optional(S.String),
         }),
       ).annotate({ identifier: "RemoveMobileDataStatus" });
-    case 6:
+    case 13:
       return S.suspend(() =>
         S.Struct({
           recordCount: S.optional(S.String),
@@ -2242,33 +1979,29 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "RemovePartnerProvidedIdDataStatus",
       });
-    case 7:
+    case 14:
       return S.suspend(() =>
         S.Struct({
-          userIdDataRemovalStatus: S.optional(__S(45, __c5, 5)),
-          userDataRemovalStatus: S.optional(__S(46, __c5, 6)),
-          pairDataRemovalStatus: S.optional(__S(47, __c5, 7)),
-          ppidDataRemovalStatus: S.optional(__S(48, __c6, 0)),
-          compositeDataRemovalStatus: S.optional(__S(51, __c6, 3)),
-          googleUserIdDataRemovalStatus: S.optional(__S(52, __c6, 4)),
-          mobileDataRemovalStatus: S.optional(__S(53, __c6, 5)),
-          partnerProvidedIdDataRemovalStatus: S.optional(__S(54, __c6, 6)),
+          userIdDataRemovalStatus: S.optional(__S(196, __c6, 4)),
+          userDataRemovalStatus: S.optional(__S(197, __c6, 5)),
+          pairDataRemovalStatus: S.optional(__S(198, __c6, 6)),
+          ppidDataRemovalStatus: S.optional(__S(199, __c6, 7)),
+          compositeDataRemovalStatus: S.optional(__S(202, __c6, 10)),
+          googleUserIdDataRemovalStatus: S.optional(__S(203, __c6, 11)),
+          mobileDataRemovalStatus: S.optional(__S(204, __c6, 12)),
+          partnerProvidedIdDataRemovalStatus: S.optional(__S(205, __c6, 13)),
         }),
       ).annotate({
         identifier: "RemoveAudienceMembersStatus",
       });
-  }
-}
-function __c7(j: number): any {
-  switch (j) {
-    case 0:
+    case 15:
       return S.suspend(() =>
         S.Struct({
           mobileIdCount: S.optional(S.String),
           recordCount: S.optional(S.String),
         }),
       ).annotate({ identifier: "IngestMobileDataStatus" });
-    case 1:
+    case 16:
       return S.suspend(() =>
         S.Struct({
           partnerProvidedIdCount: S.optional(S.String),
@@ -2277,7 +2010,7 @@ function __c7(j: number): any {
       ).annotate({
         identifier: "IngestPartnerProvidedIdDataStatus",
       });
-    case 2:
+    case 17:
       return S.suspend(() =>
         S.Struct({
           uploadMatchRateRange: S.optional(S.String),
@@ -2285,122 +2018,94 @@ function __c7(j: number): any {
           recordCount: S.optional(S.String),
         }),
       ).annotate({ identifier: "IngestUserDataStatus" });
-    case 3:
+    case 18:
       return S.suspend(() =>
         S.Struct({
           pairIdCount: S.optional(S.String),
           recordCount: S.optional(S.String),
         }),
       ).annotate({ identifier: "IngestPairDataStatus" });
-    case 4:
+    case 19:
       return S.suspend(() =>
         S.Struct({
           uploadMatchRateRange: S.optional(S.String),
           recordCount: S.optional(S.String),
-          dataTypeCounts: S.optional(__S(50, __c6, 2)),
+          dataTypeCounts: S.optional(__S(201, __c6, 9)),
         }),
       ).annotate({
         identifier: "IngestCompositeDataStatus",
       });
-    case 5:
+    case 20:
       return S.suspend(() =>
         S.Struct({
-          mobileDataIngestionStatus: S.optional(__S(56, __c7, 0)),
-          userIdDataIngestionStatus: S.optional(__S(45, __c5, 5)),
-          partnerProvidedIdDataIngestionStatus: S.optional(__S(57, __c7, 1)),
-          userDataIngestionStatus: S.optional(__S(58, __c7, 2)),
-          pairDataIngestionStatus: S.optional(__S(59, __c7, 3)),
-          ppidDataIngestionStatus: S.optional(__S(48, __c6, 0)),
-          compositeDataIngestionStatus: S.optional(__S(60, __c7, 4)),
-          googleUserIdDataIngestionStatus: S.optional(__S(52, __c6, 4)),
+          mobileDataIngestionStatus: S.optional(__S(207, __c6, 15)),
+          userIdDataIngestionStatus: S.optional(__S(196, __c6, 4)),
+          partnerProvidedIdDataIngestionStatus: S.optional(__S(208, __c6, 16)),
+          userDataIngestionStatus: S.optional(__S(209, __c6, 17)),
+          pairDataIngestionStatus: S.optional(__S(210, __c6, 18)),
+          ppidDataIngestionStatus: S.optional(__S(199, __c6, 7)),
+          compositeDataIngestionStatus: S.optional(__S(211, __c6, 19)),
+          googleUserIdDataIngestionStatus: S.optional(__S(203, __c6, 11)),
         }),
       ).annotate({
         identifier: "IngestAudienceMembersStatus",
       });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          reference: S.optional(S.String),
-          productDestinationId: S.optional(S.String),
-          loginAccount: S.optional(__S(0, __c0, 0)),
-          operatingAccount: S.optional(__S(0, __c0, 0)),
-          linkedAccount: S.optional(__S(0, __c0, 0)),
-        }),
-      ).annotate({ identifier: "Destination" });
-    case 7:
+    case 21:
       return S.suspend(() =>
         S.Struct({
           recordCount: S.optional(S.String),
         }),
       ).annotate({ identifier: "IngestEventsStatus" });
+    case 22:
+      return S.Array(__S(193, __c6, 1));
+    case 23:
+      return S.suspend(() =>
+        S.Struct({
+          errorCounts: S.optional(__S(214, __c6, 22)),
+        }),
+      ).annotate({ identifier: "ErrorInfo" });
+    case 24:
+      return S.suspend(() =>
+        S.Struct({
+          requestStatus: S.optional(S.String),
+          warningInfo: S.optional(__S(195, __c6, 3)),
+          audienceMembersRemovalStatus: S.optional(__S(206, __c6, 14)),
+          removeAllAudienceMembersStatus: S.optional(__S(1376, __c43, 0)),
+          audienceMembersIngestionStatus: S.optional(__S(212, __c6, 20)),
+          destination: S.optional(__S(224, __c7, 0)),
+          eventsIngestionStatus: S.optional(__S(213, __c6, 21)),
+          errorInfo: S.optional(__S(215, __c6, 23)),
+        }),
+      ).annotate({
+        identifier: "RequestStatusPerDestination",
+      });
+    case 25:
+      return S.Array(__S(216, __c6, 24));
+    case 26:
+      return S.suspend(() =>
+        S.Struct({
+          requestStatusPerDestination: S.optional(__S(217, __c6, 25)),
+        }),
+      ).annotate({ identifier: "GetRequestStatusResponse" });
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          reference: S.optional(S.String),
+          productDestinationId: S.optional(S.String),
+          loginAccount: S.optional(__S(1056, __c33, 0)),
+          operatingAccount: S.optional(__S(1056, __c33, 0)),
+          linkedAccount: S.optional(__S(1056, __c33, 0)),
+        }),
+      ).annotate({ identifier: "Destination" });
   }
 }
 function __c8(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(42, __c5, 2));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          errorCounts: S.optional(__S(64, __c8, 0)),
-        }),
-      ).annotate({ identifier: "ErrorInfo" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          requestStatus: S.optional(S.String),
-          warningInfo: S.optional(__S(44, __c5, 4)),
-          audienceMembersRemovalStatus: S.optional(__S(55, __c6, 7)),
-          removeAllAudienceMembersStatus: S.optional(__S(26, __c3, 2)),
-          audienceMembersIngestionStatus: S.optional(__S(61, __c7, 5)),
-          destination: S.optional(__S(62, __c7, 6)),
-          eventsIngestionStatus: S.optional(__S(63, __c7, 7)),
-          errorInfo: S.optional(__S(65, __c8, 1)),
-        }),
-      ).annotate({
-        identifier: "RequestStatusPerDestination",
-      });
-    case 3:
-      return S.Array(__S(66, __c8, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          requestStatusPerDestination: S.optional(__S(67, __c8, 3)),
-        }),
-      ).annotate({ identifier: "GetRequestStatusResponse" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          addressLine: S.optional(S.String),
-          city: S.optional(S.String),
-          administrativeArea: S.optional(S.String),
-          familyName: S.optional(S.String),
-          postalCode: S.optional(S.String),
-          givenName: S.optional(S.String),
-          regionCode: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "AddressInfo" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          emailAddress: S.optional(S.String),
-          phoneNumber: S.optional(S.String),
-          address: S.optional(__S(69, __c8, 5)),
-        }),
-      ).annotate({ identifier: "UserIdentifier" });
-    case 7:
-      return S.Array(__S(70, __c8, 6));
-  }
-}
-function __c9(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          userIdentifiers: S.optional(__S(71, __c8, 7)),
-        }),
-      ).annotate({ identifier: "UserData" });
-    case 1:
       return S.suspend(() =>
         S.Struct({
           mediaQuartile: S.optional(S.String),
@@ -2413,7 +2118,136 @@ function __c9(j: number): any {
           playbackDuration: S.optional(S.String),
         }),
       ).annotate({ identifier: "ViewabilityInfo" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          regionCode: S.optional(S.String),
+          measurementAllowed: S.optional(S.Boolean),
+          adHeight: S.optional(S.Number),
+          campaignName: S.optional(S.String),
+          adTypeString: S.optional(S.String),
+          eventType: S.optional(S.String),
+          attributionHint: S.optional(S.String),
+          adType: S.optional(S.String),
+          ipAddress: S.optional(S.String),
+          platformString: S.optional(S.String),
+          eventSubtype: S.optional(S.String),
+          platformType: S.optional(S.String),
+          advertiserId: S.optional(S.String),
+          userData: S.optional(__S(291, __c9, 3)),
+          eventSubtypeString: S.optional(S.String),
+          targetingType: S.optional(S.String),
+          adGroupId: S.optional(S.String),
+          viewabilityInfo: S.optional(__S(256, __c8, 0)),
+          adFormatString: S.optional(S.String),
+          adPlacement: S.optional(S.String),
+          adFormat: S.optional(S.String),
+          platformTypeString: S.optional(S.String),
+          timestamp: S.optional(S.String),
+          targetingTypeString: S.optional(S.String),
+          source: S.optional(S.String),
+          platform: S.optional(S.String),
+          adPlacementString: S.optional(S.String),
+          deviceInfo: S.optional(__S(320, __c10, 0)),
+          campaignId: S.optional(S.String),
+          mobileDeviceId: S.optional(S.String),
+          adId: S.optional(S.String),
+          medium: S.optional(S.String),
+          eventId: S.optional(S.String),
+          adWidth: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "AdEvent" });
     case 2:
+      return S.Array(__S(257, __c8, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          adEvents: S.optional(__S(258, __c8, 2)),
+          validateOnly: S.optional(S.Boolean),
+          encryptionInfo: S.optional(__S(295, __c9, 7)),
+        }),
+      ).annotate({ identifier: "IngestAdEventsRequest" });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          body: S.optional(__S(259, __c8, 3).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/adEvents:ingest",
+            baseUrl: "https://datamanager.googleapis.com/",
+          }),
+        ),
+      ).annotate({ identifier: "IngestAdEventsRequest_" });
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          addressLine: S.optional(S.String),
+          city: S.optional(S.String),
+          administrativeArea: S.optional(S.String),
+          familyName: S.optional(S.String),
+          postalCode: S.optional(S.String),
+          givenName: S.optional(S.String),
+          regionCode: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "AddressInfo" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          emailAddress: S.optional(S.String),
+          phoneNumber: S.optional(S.String),
+          address: S.optional(__S(288, __c9, 0)),
+        }),
+      ).annotate({ identifier: "UserIdentifier" });
+    case 2:
+      return S.Array(__S(289, __c9, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          userIdentifiers: S.optional(__S(290, __c9, 2)),
+        }),
+      ).annotate({ identifier: "UserData" });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          roleArn: S.optional(S.String),
+          kekUri: S.optional(S.String),
+          keyType: S.optional(S.String),
+          encryptedDek: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "AwsWrappedKeyInfo" });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          encryptedDek: S.optional(S.String),
+          wipProvider: S.optional(S.String),
+          keyType: S.optional(S.String),
+          kekUri: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "GcpWrappedKeyInfo" });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          keyId: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "CoordinatorKeyInfo" });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          awsWrappedKeyInfo: S.optional(__S(292, __c9, 4)),
+          gcpWrappedKeyInfo: S.optional(__S(293, __c9, 5)),
+          coordinatorKeyInfo: S.optional(__S(294, __c9, 6)),
+        }),
+      ).annotate({ identifier: "EncryptionInfo" });
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           browser: S.optional(S.String),
@@ -2430,189 +2264,9 @@ function __c9(j: number): any {
           languageCode: S.optional(S.String),
         }),
       ).annotate({ identifier: "DeviceInfo" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          regionCode: S.optional(S.String),
-          measurementAllowed: S.optional(S.Boolean),
-          adHeight: S.optional(S.Number),
-          campaignName: S.optional(S.String),
-          adTypeString: S.optional(S.String),
-          eventType: S.optional(S.String),
-          attributionHint: S.optional(S.String),
-          adType: S.optional(S.String),
-          ipAddress: S.optional(S.String),
-          platformString: S.optional(S.String),
-          eventSubtype: S.optional(S.String),
-          platformType: S.optional(S.String),
-          advertiserId: S.optional(S.String),
-          userData: S.optional(__S(72, __c9, 0)),
-          eventSubtypeString: S.optional(S.String),
-          targetingType: S.optional(S.String),
-          adGroupId: S.optional(S.String),
-          viewabilityInfo: S.optional(__S(73, __c9, 1)),
-          adFormatString: S.optional(S.String),
-          adPlacement: S.optional(S.String),
-          adFormat: S.optional(S.String),
-          platformTypeString: S.optional(S.String),
-          timestamp: S.optional(S.String),
-          targetingTypeString: S.optional(S.String),
-          source: S.optional(S.String),
-          platform: S.optional(S.String),
-          adPlacementString: S.optional(S.String),
-          deviceInfo: S.optional(__S(74, __c9, 2)),
-          campaignId: S.optional(S.String),
-          mobileDeviceId: S.optional(S.String),
-          adId: S.optional(S.String),
-          medium: S.optional(S.String),
-          eventId: S.optional(S.String),
-          adWidth: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "AdEvent" });
-    case 4:
-      return S.Array(__S(75, __c9, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          roleArn: S.optional(S.String),
-          kekUri: S.optional(S.String),
-          keyType: S.optional(S.String),
-          encryptedDek: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "AwsWrappedKeyInfo" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          encryptedDek: S.optional(S.String),
-          wipProvider: S.optional(S.String),
-          keyType: S.optional(S.String),
-          kekUri: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "GcpWrappedKeyInfo" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          keyId: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "CoordinatorKeyInfo" });
-  }
-}
-function __c10(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          awsWrappedKeyInfo: S.optional(__S(77, __c9, 5)),
-          gcpWrappedKeyInfo: S.optional(__S(78, __c9, 6)),
-          coordinatorKeyInfo: S.optional(__S(79, __c9, 7)),
-        }),
-      ).annotate({ identifier: "EncryptionInfo" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          adEvents: S.optional(__S(76, __c9, 4)),
-          validateOnly: S.optional(S.Boolean),
-          encryptionInfo: S.optional(__S(80, __c10, 0)),
-        }),
-      ).annotate({ identifier: "IngestAdEventsRequest" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          body: S.optional(__S(81, __c10, 1).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/adEvents:ingest",
-            baseUrl: "https://datamanager.googleapis.com/",
-          }),
-        ),
-      ).annotate({ identifier: "IngestAdEventsRequest_" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          partnerProvidedIds: S.optional(__S(28, __c3, 4)),
-        }),
-      ).annotate({ identifier: "PartnerProvidedIdData" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          googleUserIds: S.optional(__S(28, __c3, 4)),
-        }),
-      ).annotate({ identifier: "GoogleUserIdData" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          pairIds: S.optional(__S(28, __c3, 4)),
-        }),
-      ).annotate({ identifier: "PairData" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          mobileIds: S.optional(__S(28, __c3, 4)),
-        }),
-      ).annotate({ identifier: "MobileData" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          ppids: S.optional(__S(28, __c3, 4)),
-        }),
-      ).annotate({ identifier: "PpidData" });
   }
 }
 function __c11(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          adUserData: S.optional(S.String),
-          adPersonalization: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Consent" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          ipAddress: S.optional(S.String),
-          observeStartTime: S.optional(S.String),
-          observeEndTime: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "IpData" });
-    case 2:
-      return S.Array(__S(89, __c11, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          ipData: S.optional(__S(90, __c11, 2)),
-          userData: S.optional(__S(72, __c9, 0)),
-        }),
-      ).annotate({ identifier: "CompositeData" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          userId: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "UserIdData" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          destinationReferences: S.optional(__S(28, __c3, 4)),
-          partnerProvidedIdData: S.optional(__S(83, __c10, 3)),
-          googleUserIdData: S.optional(__S(84, __c10, 4)),
-          userData: S.optional(__S(72, __c9, 0)),
-          pairData: S.optional(__S(85, __c10, 5)),
-          mobileData: S.optional(__S(86, __c10, 6)),
-          ppidData: S.optional(__S(87, __c10, 7)),
-          consent: S.optional(__S(88, __c11, 0)),
-          compositeData: S.optional(__S(91, __c11, 3)),
-          userIdData: S.optional(__S(92, __c11, 4)),
-        }),
-      ).annotate({ identifier: "AudienceMember" });
-    case 6:
-      return S.Array(__S(93, __c11, 5));
-    case 7:
-      return S.Array(__S(62, __c7, 6));
-  }
-}
-function __c12(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2623,13 +2277,13 @@ function __c12(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          audienceMembers: S.optional(__S(94, __c11, 6)),
+          audienceMembers: S.optional(__S(521, __c16, 9)),
           encoding: S.optional(S.String),
-          destinations: S.optional(__S(95, __c11, 7)),
-          consent: S.optional(__S(88, __c11, 0)),
-          termsOfService: S.optional(__S(96, __c12, 0)),
+          destinations: S.optional(__S(416, __c13, 0)),
+          consent: S.optional(__S(448, __c14, 0)),
+          termsOfService: S.optional(__S(352, __c11, 0)),
           validateOnly: S.optional(S.Boolean),
-          encryptionInfo: S.optional(__S(80, __c10, 0)),
+          encryptionInfo: S.optional(__S(295, __c9, 7)),
         }),
       ).annotate({
         identifier: "IngestAudienceMembersRequest",
@@ -2637,7 +2291,7 @@ function __c12(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          body: S.optional(__S(97, __c12, 1).pipe(T.HttpBody())),
+          body: S.optional(__S(353, __c11, 1).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -2651,123 +2305,218 @@ function __c12(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          reason: S.optional(S.String),
-          field: S.optional(S.String),
-          description: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "FieldWarning" });
-    case 4:
-      return S.Array(__S(99, __c12, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          fieldWarnings: S.optional(__S(100, __c12, 4)),
+          fieldWarnings: S.optional(__S(385, __c12, 1)),
           requestId: S.optional(S.String),
         }),
       ).annotate({
         identifier: "IngestAudienceMembersResponse",
       });
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          reason: S.optional(S.String),
+          field: S.optional(S.String),
+          description: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "FieldWarning" });
+    case 1:
+      return S.Array(__S(384, __c12, 0));
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(224, __c7, 0));
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          adUserData: S.optional(S.String),
+          adPersonalization: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Consent" });
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          mobileIds: S.optional(__S(64, __c2, 0)),
+        }),
+      ).annotate({ identifier: "MobileData" });
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          partnerProvidedIds: S.optional(__S(64, __c2, 0)),
+        }),
+      ).annotate({ identifier: "PartnerProvidedIdData" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          googleUserIds: S.optional(__S(64, __c2, 0)),
+        }),
+      ).annotate({ identifier: "GoogleUserIdData" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          pairIds: S.optional(__S(64, __c2, 0)),
+        }),
+      ).annotate({ identifier: "PairData" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          ppids: S.optional(__S(64, __c2, 0)),
+        }),
+      ).annotate({ identifier: "PpidData" });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          ipAddress: S.optional(S.String),
+          observeStartTime: S.optional(S.String),
+          observeEndTime: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "IpData" });
+    case 5:
+      return S.Array(__S(516, __c16, 4));
     case 6:
+      return S.suspend(() =>
+        S.Struct({
+          ipData: S.optional(__S(517, __c16, 5)),
+          userData: S.optional(__S(291, __c9, 3)),
+        }),
+      ).annotate({ identifier: "CompositeData" });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          userId: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "UserIdData" });
+    case 8:
+      return S.suspend(() =>
+        S.Struct({
+          destinationReferences: S.optional(__S(64, __c2, 0)),
+          partnerProvidedIdData: S.optional(__S(512, __c16, 0)),
+          googleUserIdData: S.optional(__S(513, __c16, 1)),
+          userData: S.optional(__S(291, __c9, 3)),
+          pairData: S.optional(__S(514, __c16, 2)),
+          mobileData: S.optional(__S(480, __c15, 0)),
+          ppidData: S.optional(__S(515, __c16, 3)),
+          consent: S.optional(__S(448, __c14, 0)),
+          compositeData: S.optional(__S(518, __c16, 6)),
+          userIdData: S.optional(__S(519, __c16, 7)),
+        }),
+      ).annotate({ identifier: "AudienceMember" });
+    case 9:
+      return S.Array(__S(520, __c16, 8));
+  }
+}
+function __c17(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           propertyName: S.optional(S.String),
           value: S.optional(S.String),
         }),
       ).annotate({ identifier: "UserProperty" });
-    case 7:
-      return S.Array(__S(102, __c12, 6));
-  }
-}
-function __c13(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
+      return S.Array(__S(544, __c17, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           customerValueBucket: S.optional(S.String),
           customerType: S.optional(S.String),
-          additionalUserProperties: S.optional(__S(103, __c12, 7)),
+          additionalUserProperties: S.optional(__S(545, __c17, 1)),
         }),
       ).annotate({ identifier: "UserProperties" });
-    case 1:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           variable: S.optional(S.String),
           value: S.optional(S.String),
-          destinationReferences: S.optional(__S(28, __c3, 4)),
+          destinationReferences: S.optional(__S(64, __c2, 0)),
         }),
       ).annotate({ identifier: "CustomVariable" });
-    case 2:
-      return S.Array(__S(105, __c13, 1));
-    case 3:
+    case 4:
+      return S.Array(__S(547, __c17, 3));
+    case 5:
       return S.suspend(() =>
         S.Struct({
           parameterName: S.optional(S.String),
           value: S.optional(S.String),
         }),
       ).annotate({ identifier: "ItemParameter" });
-    case 4:
-      return S.Array(__S(107, __c13, 3));
-    case 5:
+    case 6:
+      return S.Array(__S(549, __c17, 5));
+    case 7:
       return S.suspend(() =>
         S.Struct({
-          destinationReferences: S.optional(__S(28, __c3, 4)),
+          destinationReferences: S.optional(__S(64, __c2, 0)),
           value: S.optional(S.String),
           variable: S.optional(S.String),
         }),
       ).annotate({ identifier: "ItemCustomVariable" });
-    case 6:
-      return S.Array(__S(109, __c13, 5));
-    case 7:
+    case 8:
+      return S.Array(__S(551, __c17, 7));
+    case 9:
       return S.suspend(() =>
         S.Struct({
           conversionValue: S.optional(S.Number),
-          additionalItemParameters: S.optional(__S(108, __c13, 4)),
+          additionalItemParameters: S.optional(__S(550, __c17, 6)),
           merchantFeedLabel: S.optional(S.String),
           quantity: S.optional(S.String),
           merchantProductId: S.optional(S.String),
           unitPrice: S.optional(S.Number),
           itemId: S.optional(S.String),
-          customVariables: S.optional(__S(110, __c13, 6)),
+          customVariables: S.optional(__S(552, __c17, 8)),
           merchantFeedLanguageCode: S.optional(S.String),
           merchantId: S.optional(S.String),
         }),
       ).annotate({ identifier: "Item" });
-  }
-}
-function __c14(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(111, __c13, 7));
-    case 1:
+    case 10:
+      return S.Array(__S(553, __c17, 9));
+    case 11:
       return S.suspend(() =>
         S.Struct({
-          couponCodes: S.optional(__S(28, __c3, 4)),
+          couponCodes: S.optional(__S(64, __c2, 0)),
           merchantFeedLanguageCode: S.optional(S.String),
           merchantId: S.optional(S.String),
           transactionDiscount: S.optional(S.Number),
-          items: S.optional(__S(112, __c14, 0)),
+          items: S.optional(__S(554, __c17, 10)),
           merchantFeedLabel: S.optional(S.String),
         }),
       ).annotate({ identifier: "CartData" });
-    case 2:
+    case 12:
       return S.suspend(() =>
         S.Struct({
           field: S.optional(S.String),
           value: S.optional(S.String),
         }),
       ).annotate({ identifier: "ExperimentalField" });
-    case 3:
-      return S.Array(__S(114, __c14, 2));
-    case 4:
+    case 13:
+      return S.Array(__S(556, __c17, 12));
+    case 14:
       return S.suspend(() =>
         S.Struct({
           value: S.optional(S.String),
           parameterName: S.optional(S.String),
         }),
       ).annotate({ identifier: "EventParameter" });
-    case 5:
-      return S.Array(__S(116, __c14, 4));
-    case 6:
+    case 15:
+      return S.Array(__S(558, __c17, 14));
+    case 16:
       return S.suspend(() =>
         S.Struct({
           entityType: S.optional(S.String),
@@ -2776,30 +2525,26 @@ function __c14(j: number): any {
           encryptedId: S.optional(S.String),
         }),
       ).annotate({ identifier: "EncryptedUserId" });
-    case 7:
-      return S.Array(__S(118, __c14, 6));
-  }
-}
-function __c15(j: number): any {
-  switch (j) {
-    case 0:
+    case 17:
+      return S.Array(__S(560, __c17, 16));
+    case 18:
       return S.suspend(() =>
         S.Struct({
           sessionAttributes: S.optional(S.String),
           visitorPpid: S.optional(S.String),
-          encryptedUserIds: S.optional(__S(119, __c14, 7)),
+          encryptedUserIds: S.optional(__S(561, __c17, 17)),
           gclid: S.optional(S.String),
           dclid: S.optional(S.String),
           wbraid: S.optional(S.String),
           impressionId: S.optional(S.String),
           mobileDeviceId: S.optional(S.String),
           gbraid: S.optional(S.String),
-          landingPageDeviceInfo: S.optional(__S(74, __c9, 2)),
+          landingPageDeviceInfo: S.optional(__S(320, __c10, 0)),
           matchId: S.optional(S.String),
           ppid: S.optional(S.String),
         }),
       ).annotate({ identifier: "AdIdentifiers" });
-    case 1:
+    case 19:
       return S.suspend(() =>
         S.Struct({
           city: S.optional(S.String),
@@ -2810,51 +2555,51 @@ function __c15(j: number): any {
           continentCode: S.optional(S.String),
         }),
       ).annotate({ identifier: "EventLocation" });
-    case 2:
+    case 20:
       return S.suspend(() =>
         S.Struct({
           eventName: S.optional(S.String),
           userId: S.optional(S.String),
           conversionCount: S.optional(S.Number),
           eventSource: S.optional(S.String),
-          userProperties: S.optional(__S(104, __c13, 0)),
-          thirdPartyUserData: S.optional(__S(72, __c9, 0)),
+          userProperties: S.optional(__S(546, __c17, 2)),
+          thirdPartyUserData: S.optional(__S(291, __c9, 3)),
           currency: S.optional(S.String),
           clientId: S.optional(S.String),
-          customVariables: S.optional(__S(106, __c13, 2)),
+          customVariables: S.optional(__S(548, __c17, 4)),
           appInstanceId: S.optional(S.String),
           eventTimestamp: S.optional(S.String),
-          cartData: S.optional(__S(113, __c14, 1)),
+          cartData: S.optional(__S(555, __c17, 11)),
           conversionValue: S.optional(S.Number),
           lastUpdatedTimestamp: S.optional(S.String),
-          experimentalFields: S.optional(__S(115, __c14, 3)),
-          userData: S.optional(__S(72, __c9, 0)),
-          additionalEventParameters: S.optional(__S(117, __c14, 5)),
-          adIdentifiers: S.optional(__S(120, __c15, 0)),
-          consent: S.optional(__S(88, __c11, 0)),
-          eventLocation: S.optional(__S(121, __c15, 1)),
-          destinationReferences: S.optional(__S(28, __c3, 4)),
-          eventDeviceInfo: S.optional(__S(74, __c9, 2)),
+          experimentalFields: S.optional(__S(557, __c17, 13)),
+          userData: S.optional(__S(291, __c9, 3)),
+          additionalEventParameters: S.optional(__S(559, __c17, 15)),
+          adIdentifiers: S.optional(__S(562, __c17, 18)),
+          consent: S.optional(__S(448, __c14, 0)),
+          eventLocation: S.optional(__S(563, __c17, 19)),
+          destinationReferences: S.optional(__S(64, __c2, 0)),
+          eventDeviceInfo: S.optional(__S(320, __c10, 0)),
           transactionId: S.optional(S.String),
         }),
       ).annotate({ identifier: "Event" });
-    case 3:
-      return S.Array(__S(122, __c15, 2));
-    case 4:
+    case 21:
+      return S.Array(__S(564, __c17, 20));
+    case 22:
       return S.suspend(() =>
         S.Struct({
-          events: S.optional(__S(123, __c15, 3)),
-          destinations: S.optional(__S(95, __c11, 7)),
-          consent: S.optional(__S(88, __c11, 0)),
+          events: S.optional(__S(565, __c17, 21)),
+          destinations: S.optional(__S(416, __c13, 0)),
+          consent: S.optional(__S(448, __c14, 0)),
           encoding: S.optional(S.String),
           validateOnly: S.optional(S.Boolean),
-          encryptionInfo: S.optional(__S(80, __c10, 0)),
+          encryptionInfo: S.optional(__S(295, __c9, 7)),
         }),
       ).annotate({ identifier: "IngestEventsRequest" });
-    case 5:
+    case 23:
       return S.suspend(() =>
         S.Struct({
-          body: S.optional(__S(124, __c15, 4).pipe(T.HttpBody())),
+          body: S.optional(__S(566, __c17, 22).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -2863,40 +2608,40 @@ function __c15(j: number): any {
           }),
         ),
       ).annotate({ identifier: "IngestEventsRequest_" });
-    case 6:
+    case 24:
       return S.suspend(() =>
         S.Struct({
-          fieldWarnings: S.optional(__S(100, __c12, 4)),
+          fieldWarnings: S.optional(__S(385, __c12, 1)),
           requestId: S.optional(S.String),
         }),
       ).annotate({ identifier: "IngestEventsResponse" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          mobileData: S.optional(__S(86, __c10, 6)),
-          userData: S.optional(__S(72, __c9, 0)),
-        }),
-      ).annotate({ identifier: "User" });
   }
 }
-function __c16(j: number): any {
+function __c18(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(127, __c15, 7));
-    case 1:
       return S.suspend(() =>
         S.Struct({
-          encryptionInfo: S.optional(__S(80, __c10, 0)),
-          users: S.optional(__S(128, __c16, 0)),
-          destinations: S.optional(__S(95, __c11, 7)),
+          mobileData: S.optional(__S(480, __c15, 0)),
+          userData: S.optional(__S(291, __c9, 3)),
+        }),
+      ).annotate({ identifier: "User" });
+    case 1:
+      return S.Array(__S(576, __c18, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          encryptionInfo: S.optional(__S(295, __c9, 7)),
+          users: S.optional(__S(577, __c18, 1)),
+          destinations: S.optional(__S(416, __c13, 0)),
           encoding: S.optional(S.String),
           validateOnly: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "IngestUsersRequest" });
-    case 2:
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          body: S.optional(__S(129, __c16, 1).pipe(T.HttpBody())),
+          body: S.optional(__S(578, __c18, 2).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -2905,13 +2650,21 @@ function __c16(j: number): any {
           }),
         ),
       ).annotate({ identifier: "IngestUsersRequest_" });
-    case 3:
+  }
+}
+function __c19(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           requestId: S.optional(S.String),
         }),
       ).annotate({ identifier: "IngestUsersResponse" });
-    case 4:
+  }
+}
+function __c20(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -2928,18 +2681,22 @@ function __c16(j: number): any {
       ).annotate({
         identifier: "ListAccountTypesAccountsUserListDirectLicensesRequest",
       });
-    case 5:
-      return S.Array(__S(9, __c1, 1));
-    case 6:
+    case 1:
+      return S.Array(__S(1152, __c36, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          userListDirectLicenses: S.optional(__S(133, __c16, 5)),
+          userListDirectLicenses: S.optional(__S(641, __c20, 1)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({
         identifier: "ListUserListDirectLicensesResponse",
       });
-    case 7:
+  }
+}
+function __c21(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
@@ -2956,22 +2713,22 @@ function __c16(j: number): any {
       ).annotate({
         identifier: "ListAccountTypesAccountsUserListGlobalLicensesRequest",
       });
-  }
-}
-function __c17(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(11, __c1, 3));
     case 1:
+      return S.Array(__S(1248, __c39, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          userListGlobalLicenses: S.optional(__S(136, __c17, 0)),
+          userListGlobalLicenses: S.optional(__S(673, __c21, 1)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({
         identifier: "ListUserListGlobalLicensesResponse",
       });
-    case 2:
+  }
+}
+function __c22(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
@@ -2989,36 +2746,40 @@ function __c17(j: number): any {
         identifier:
           "ListAccountTypesAccountsUserListGlobalLicensesUserListGlobalLicenseCustomerInfosRequest",
       });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           userListId: S.optional(S.String),
           status: S.optional(S.String),
           clientAccountId: S.optional(S.String),
           clientAccountDisplayName: S.optional(S.String),
-          historicalPricings: S.optional(__S(8, __c1, 0)),
+          historicalPricings: S.optional(__S(1186, __c37, 2)),
           userListDisplayName: S.optional(S.String),
-          pricing: S.optional(__S(7, __c0, 7)),
+          pricing: S.optional(__S(1185, __c37, 1)),
           name: S.optional(S.String),
-          metrics: S.optional(__S(6, __c0, 6)),
+          metrics: S.optional(__S(1184, __c37, 0)),
           clientAccountType: S.optional(S.String),
           licenseType: S.optional(S.String),
         }),
       ).annotate({
         identifier: "UserListGlobalLicenseCustomerInfo",
       });
-    case 4:
-      return S.Array(__S(139, __c17, 3));
-    case 5:
+    case 2:
+      return S.Array(__S(705, __c22, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          userListGlobalLicenseCustomerInfos: S.optional(__S(140, __c17, 4)),
+          userListGlobalLicenseCustomerInfos: S.optional(__S(706, __c22, 2)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({
         identifier: "ListUserListGlobalLicenseCustomerInfosResponse",
       });
-    case 6:
+  }
+}
+function __c23(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           pageToken: S.optional(S.String.pipe(T.Query())),
@@ -3035,25 +2796,25 @@ function __c17(j: number): any {
       ).annotate({
         identifier: "ListAccountTypesAccountsUserListsRequest",
       });
-    case 7:
-      return S.Array(__S(23, __c2, 7));
+    case 1:
+      return S.Array(__S(1322, __c41, 10));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          userLists: S.optional(__S(737, __c23, 1)),
+          nextPageToken: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ListUserListsResponse" });
   }
 }
-function __c18(j: number): any {
+function __c24(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          userLists: S.optional(__S(143, __c17, 7)),
-          nextPageToken: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ListUserListsResponse" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
           updateMask: S.optional(S.String.pipe(T.Query())),
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(9, __c1, 1).pipe(T.HttpBody())),
+          body: S.optional(__S(1152, __c36, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -3064,12 +2825,16 @@ function __c18(j: number): any {
       ).annotate({
         identifier: "PatchAccountTypesAccountsUserListDirectLicensesRequest",
       });
-    case 2:
+  }
+}
+function __c25(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           updateMask: S.optional(S.String.pipe(T.Query())),
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(11, __c1, 3).pipe(T.HttpBody())),
+          body: S.optional(__S(1248, __c39, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -3080,13 +2845,17 @@ function __c18(j: number): any {
       ).annotate({
         identifier: "PatchAccountTypesAccountsUserListGlobalLicensesRequest",
       });
-    case 3:
+  }
+}
+function __c26(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           validateOnly: S.optional(S.Boolean.pipe(T.Query())),
           name: S.String.pipe(T.Label()),
           updateMask: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(23, __c2, 7).pipe(T.HttpBody())),
+          body: S.optional(__S(1322, __c41, 10).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -3097,20 +2866,24 @@ function __c18(j: number): any {
       ).annotate({
         identifier: "PatchAccountTypesAccountsUserListsRequest",
       });
-    case 4:
+  }
+}
+function __c27(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          destinations: S.optional(__S(95, __c11, 7)),
+          destinations: S.optional(__S(416, __c13, 0)),
           validateOnly: S.optional(S.Boolean),
           removeAsOfTime: S.optional(S.String),
         }),
       ).annotate({
         identifier: "RemoveAllAudienceMembersRequest",
       });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          body: S.optional(__S(148, __c18, 4).pipe(T.HttpBody())),
+          body: S.optional(__S(864, __c27, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -3121,7 +2894,11 @@ function __c18(j: number): any {
       ).annotate({
         identifier: "RemoveAllAudienceMembersRequest_",
       });
-    case 6:
+  }
+}
+function __c28(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           requestId: S.optional(S.String),
@@ -3129,26 +2906,26 @@ function __c18(j: number): any {
       ).annotate({
         identifier: "RemoveAllAudienceMembersResponse",
       });
-    case 7:
+  }
+}
+function __c29(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          destinations: S.optional(__S(95, __c11, 7)),
-          encryptionInfo: S.optional(__S(80, __c10, 0)),
-          audienceMembers: S.optional(__S(94, __c11, 6)),
+          destinations: S.optional(__S(416, __c13, 0)),
+          encryptionInfo: S.optional(__S(295, __c9, 7)),
+          audienceMembers: S.optional(__S(521, __c16, 9)),
           validateOnly: S.optional(S.Boolean),
           encoding: S.optional(S.String),
         }),
       ).annotate({
         identifier: "RemoveAudienceMembersRequest",
       });
-  }
-}
-function __c19(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          body: S.optional(__S(151, __c18, 7).pipe(T.HttpBody())),
+          body: S.optional(__S(928, __c29, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -3159,22 +2936,26 @@ function __c19(j: number): any {
       ).annotate({
         identifier: "RemoveAudienceMembersRequest_",
       });
+  }
+}
+function __c30(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(291, __c9, 3));
     case 1:
-      return S.Array(__S(72, __c9, 0));
+      return S.suspend(() =>
+        S.Struct({
+          destinations: S.optional(__S(416, __c13, 0)),
+          encoding: S.optional(S.String),
+          encryptionInfo: S.optional(__S(295, __c9, 7)),
+          validateOnly: S.optional(S.Boolean),
+          userData: S.optional(__S(960, __c30, 0)),
+        }),
+      ).annotate({ identifier: "RemoveUsersRequest" });
     case 2:
       return S.suspend(() =>
         S.Struct({
-          destinations: S.optional(__S(95, __c11, 7)),
-          encoding: S.optional(S.String),
-          encryptionInfo: S.optional(__S(80, __c10, 0)),
-          validateOnly: S.optional(S.Boolean),
-          userData: S.optional(__S(153, __c19, 1)),
-        }),
-      ).annotate({ identifier: "RemoveUsersRequest" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          body: S.optional(__S(154, __c19, 2).pipe(T.HttpBody())),
+          body: S.optional(__S(961, __c30, 1).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -3183,7 +2964,11 @@ function __c19(j: number): any {
           }),
         ),
       ).annotate({ identifier: "RemoveUsersRequest_" });
-    case 4:
+  }
+}
+function __c31(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           filter: S.optional(S.String.pipe(T.Query())),
@@ -3200,20 +2985,330 @@ function __c19(j: number): any {
       ).annotate({
         identifier: "SearchAccountTypesAccountsPartnerLinksRequest",
       });
-    case 5:
-      return S.Array(__S(4, __c0, 4));
-    case 6:
+    case 1:
+      return S.Array(__S(1091, __c34, 3));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          partnerLinks: S.optional(__S(157, __c19, 5)),
+          partnerLinks: S.optional(__S(993, __c31, 1)),
         }),
       ).annotate({
         identifier: "SearchPartnerLinksResponse",
       });
   }
 }
-
+function __c32(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          parent: S.String.pipe(T.Label()),
+          body: S.optional(__S(1091, __c34, 3).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/{+parent}/partnerLinks",
+            baseUrl: "https://datamanager.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateAccountTypesAccountsPartnerLinksRequest",
+      });
+  }
+}
+function __c33(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          accountType: S.optional(S.String),
+          accountId: S.optional(S.String),
+          product: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ProductAccount" });
+  }
+}
+function __c34(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          accountId: S.optional(S.String),
+          accountName: S.optional(S.String),
+          accountType: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "PartnerCustomerAccount" });
+    case 1:
+      return S.Array(__S(1088, __c34, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          implicitAccounts: S.optional(__S(1089, __c34, 1)),
+        }),
+      ).annotate({ identifier: "PartnerLinkMetadata" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          partnerAccount: S.optional(__S(1056, __c33, 0)),
+          featureSet: S.optional(S.String),
+          partnerLinkId: S.optional(S.String),
+          owningAccount: S.optional(__S(1056, __c33, 0)),
+          partnerCustomerAccount: S.optional(__S(1088, __c34, 0)),
+          name: S.optional(S.String),
+          partnerLinkMetadata: S.optional(__S(1090, __c34, 2)),
+        }),
+      ).annotate({ identifier: "PartnerLink" });
+  }
+}
+function __c35(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          parent: S.String.pipe(T.Label()),
+          body: S.optional(__S(1152, __c36, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/{+parent}/userListDirectLicenses",
+            baseUrl: "https://datamanager.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateAccountTypesAccountsUserListDirectLicensesRequest",
+      });
+  }
+}
+function __c36(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          status: S.optional(S.String),
+          userListId: S.optional(S.String),
+          clientAccountId: S.optional(S.String),
+          clientAccountType: S.optional(S.String),
+          metrics: S.optional(__S(1184, __c37, 0)),
+          clientAccountDisplayName: S.optional(S.String),
+          historicalPricings: S.optional(__S(1186, __c37, 2)),
+          pricing: S.optional(__S(1185, __c37, 1)),
+          userListDisplayName: S.optional(S.String),
+          name: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "UserListDirectLicense" });
+  }
+}
+function __c37(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          impressionCount: S.optional(S.String),
+          endDate: S.optional(S.String),
+          clickCount: S.optional(S.String),
+          revenueUsdMicros: S.optional(S.String),
+          startDate: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "UserListLicenseMetrics" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          maxCostMicros: S.optional(S.String),
+          pricingId: S.optional(S.String),
+          currencyCode: S.optional(S.String),
+          costType: S.optional(S.String),
+          costMicros: S.optional(S.String),
+          pricingActive: S.optional(S.Boolean),
+          startTime: S.optional(S.String),
+          buyerApprovalState: S.optional(S.String),
+          endTime: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "UserListLicensePricing" });
+    case 2:
+      return S.Array(__S(1185, __c37, 1));
+  }
+}
+function __c38(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          parent: S.String.pipe(T.Label()),
+          body: S.optional(__S(1248, __c39, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/{+parent}/userListGlobalLicenses",
+            baseUrl: "https://datamanager.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateAccountTypesAccountsUserListGlobalLicensesRequest",
+      });
+  }
+}
+function __c39(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          userListDisplayName: S.optional(S.String),
+          pricing: S.optional(__S(1185, __c37, 1)),
+          name: S.optional(S.String),
+          historicalPricings: S.optional(__S(1186, __c37, 2)),
+          userListId: S.optional(S.String),
+          status: S.optional(S.String),
+          metrics: S.optional(__S(1184, __c37, 0)),
+          licenseType: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "UserListGlobalLicense" });
+  }
+}
+function __c40(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          validateOnly: S.optional(S.Boolean.pipe(T.Query())),
+          parent: S.String.pipe(T.Label()),
+          body: S.optional(__S(1322, __c41, 10).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/{+parent}/userLists",
+            baseUrl: "https://datamanager.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateAccountTypesAccountsUserListsRequest",
+      });
+  }
+}
+function __c41(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          gmailMembersCount: S.optional(S.String),
+          youtubeMembersCount: S.optional(S.String),
+          displayNetworkMembersCount: S.optional(S.String),
+          searchNetworkMembersCount: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "SizeInfo" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          eligibleForDisplay: S.optional(S.Boolean),
+          eligibleForSearch: S.optional(S.Boolean),
+        }),
+      ).annotate({ identifier: "TargetNetworkInfo" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          partnerAudienceSource: S.optional(S.String),
+          commercePartner: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "PartnerAudienceInfo" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          matchRatePercentage: S.optional(S.Number),
+          cleanRoomIdentifier: S.optional(S.String),
+          publisherId: S.optional(S.String),
+          advertiserIdentifierCount: S.optional(S.String),
+          publisherName: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "PairIdInfo" });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          keySpace: S.optional(S.String),
+          dataSourceType: S.optional(S.String),
+          appId: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "MobileIdInfo" });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          dataSourceType: S.optional(S.String),
+          matchRatePercentage: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "ContactIdInfo" });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          syncStatus: S.optional(S.String),
+          billableRecordCount: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "PseudonymousIdInfo" });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          dataSourceType: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "UserIdInfo" });
+    case 8:
+      return S.Array(S.String);
+    case 9:
+      return S.suspend(() =>
+        S.Struct({
+          partnerAudienceInfo: S.optional(__S(1314, __c41, 2)),
+          pairIdInfo: S.optional(__S(1315, __c41, 3)),
+          mobileIdInfo: S.optional(__S(1316, __c41, 4)),
+          contactIdInfo: S.optional(__S(1317, __c41, 5)),
+          pseudonymousIdInfo: S.optional(__S(1318, __c41, 6)),
+          userIdInfo: S.optional(__S(1319, __c41, 7)),
+          uploadKeyTypes: S.optional(__S(1320, __c41, 8)),
+        }),
+      ).annotate({ identifier: "IngestedUserListInfo" });
+    case 10:
+      return S.suspend(() =>
+        S.Struct({
+          accessReason: S.optional(S.String),
+          displayName: S.optional(S.String),
+          integrationCode: S.optional(S.String),
+          closingReason: S.optional(S.String),
+          membershipDuration: S.optional(S.String),
+          sizeInfo: S.optional(__S(1312, __c41, 0)),
+          membershipStatus: S.optional(S.String),
+          accountAccessStatus: S.optional(S.String),
+          description: S.optional(S.String),
+          name: S.optional(S.String),
+          targetNetworkInfo: S.optional(__S(1313, __c41, 1)),
+          id: S.optional(S.String),
+          ingestedUserListInfo: S.optional(__S(1321, __c41, 9)),
+          readOnly: S.optional(S.Boolean),
+        }),
+      ).annotate({ identifier: "UserList" });
+  }
+}
+function __c42(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "v1/{+name}",
+            baseUrl: "https://datamanager.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteAccountTypesAccountsPartnerLinksRequest",
+      });
+  }
+}
+function __c43(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "Empty",
+      });
+  }
+}
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

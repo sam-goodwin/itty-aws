@@ -623,7 +623,7 @@ export type ListCseError = NotFound | Forbidden | GcpOpError;
 export const listCse: API.OperationMethod<ListCseRequest, Search, ListCseError, GcpOpContext> =
   /*@__PURE__*/ API.make(() => ({
     input: __S(0, __c0, 0) as any as S.Schema<ListCseRequest>,
-    output: __S(22, __c2, 6) as any as S.Schema<Search>,
+    output: __S(53, __c1, 21) as any as S.Schema<Search>,
     errors: [NotFound, Forbidden, UnknownGCPError],
     protocol: GcpProtocol,
     retry: Retry.Retry,
@@ -637,8 +637,8 @@ export const listCseSiterestrict: API.OperationMethod<
   ListCseSiterestrictError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(23, __c2, 7) as any as S.Schema<ListCseSiterestrictRequest>,
-  output: __S(22, __c2, 6) as any as S.Schema<Search>,
+  input: __S(64, __c2, 0) as any as S.Schema<ListCseSiterestrictRequest>,
+  output: __S(53, __c1, 21) as any as S.Schema<Search>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -691,16 +691,20 @@ function __c0(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ListCseRequest" });
-    case 1:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           type: S.optional(S.String),
           template: S.optional(S.String),
         }),
       ).annotate({ identifier: "SearchUrl" });
-    case 2:
+    case 1:
       return S.Record(S.String, S.Unknown);
-    case 3:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           title: S.optional(S.String),
@@ -743,9 +747,9 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "SearchQueriesNextPageItem",
       });
+    case 3:
+      return S.Array(__S(34, __c1, 2));
     case 4:
-      return S.Array(__S(3, __c0, 3));
-    case 5:
       return S.suspend(() =>
         S.Struct({
           orTerms: S.optional(S.String),
@@ -786,9 +790,9 @@ function __c0(j: number): any {
           disableCnTwTranslation: S.optional(S.String),
         }),
       ).annotate({ identifier: "SearchQueriesRequestItem" });
+    case 5:
+      return S.Array(__S(36, __c1, 4));
     case 6:
-      return S.Array(__S(5, __c0, 5));
-    case 7:
       return S.suspend(() =>
         S.Struct({
           imgColorType: S.optional(S.String),
@@ -831,28 +835,24 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "SearchQueriesPreviousPageItem",
       });
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(7, __c0, 7));
-    case 1:
+    case 7:
+      return S.Array(__S(38, __c1, 6));
+    case 8:
       return S.suspend(() =>
         S.Struct({
-          nextPage: S.optional(__S(4, __c0, 4)),
-          request: S.optional(__S(6, __c0, 6)),
-          previousPage: S.optional(__S(8, __c1, 0)),
+          nextPage: S.optional(__S(35, __c1, 3)),
+          request: S.optional(__S(37, __c1, 5)),
+          previousPage: S.optional(__S(39, __c1, 7)),
         }),
       ).annotate({ identifier: "SearchQueries" });
-    case 2:
+    case 9:
       return S.suspend(() =>
         S.Struct({
           correctedQuery: S.optional(S.String),
           htmlCorrectedQuery: S.optional(S.String),
         }),
       ).annotate({ identifier: "SearchSpelling" });
-    case 3:
+    case 10:
       return S.suspend(() =>
         S.Struct({
           formattedSearchTime: S.optional(S.String),
@@ -861,7 +861,7 @@ function __c1(j: number): any {
           searchTime: S.optional(S.Number),
         }),
       ).annotate({ identifier: "SearchSearchInformation" });
-    case 4:
+    case 11:
       return S.suspend(() =>
         S.Struct({
           width: S.optional(S.Number),
@@ -873,7 +873,7 @@ function __c1(j: number): any {
           height: S.optional(S.Number),
         }),
       ).annotate({ identifier: "ResultImage" });
-    case 5:
+    case 12:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
@@ -881,20 +881,20 @@ function __c1(j: number): any {
           displayName: S.optional(S.String),
         }),
       ).annotate({ identifier: "ResultLabelsItem" });
-    case 6:
-      return S.Array(__S(13, __c1, 5));
-    case 7:
+    case 13:
+      return S.Array(__S(44, __c1, 12));
+    case 14:
       return S.suspend(() =>
         S.Struct({
           displayLink: S.optional(S.String),
           title: S.optional(S.String),
           htmlTitle: S.optional(S.String),
           link: S.optional(S.String),
-          image: S.optional(__S(12, __c1, 4)),
-          labels: S.optional(__S(14, __c1, 6)),
+          image: S.optional(__S(43, __c1, 11)),
+          labels: S.optional(__S(45, __c1, 13)),
           htmlFormattedUrl: S.optional(S.String),
           kind: S.optional(S.String),
-          pagemap: S.optional(__S(2, __c0, 2)),
+          pagemap: S.optional(__S(33, __c1, 1)),
           formattedUrl: S.optional(S.String),
           htmlSnippet: S.optional(S.String),
           fileFormat: S.optional(S.String),
@@ -903,13 +903,9 @@ function __c1(j: number): any {
           snippet: S.optional(S.String),
         }),
       ).annotate({ identifier: "Result" });
-  }
-}
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(15, __c1, 7));
-    case 1:
+    case 15:
+      return S.Array(__S(46, __c1, 14));
+    case 16:
       return S.suspend(() =>
         S.Struct({
           url: S.optional(S.String),
@@ -918,9 +914,9 @@ function __c2(j: number): any {
           title: S.optional(S.String),
         }),
       ).annotate({ identifier: "PromotionBodyLinesItem" });
-    case 2:
-      return S.Array(__S(17, __c2, 1));
-    case 3:
+    case 17:
+      return S.Array(__S(48, __c1, 16));
+    case 18:
       return S.suspend(() =>
         S.Struct({
           height: S.optional(S.Number),
@@ -928,33 +924,37 @@ function __c2(j: number): any {
           source: S.optional(S.String),
         }),
       ).annotate({ identifier: "PromotionImage" });
-    case 4:
+    case 19:
       return S.suspend(() =>
         S.Struct({
           displayLink: S.optional(S.String),
-          bodyLines: S.optional(__S(18, __c2, 2)),
-          image: S.optional(__S(19, __c2, 3)),
+          bodyLines: S.optional(__S(49, __c1, 17)),
+          image: S.optional(__S(50, __c1, 18)),
           htmlTitle: S.optional(S.String),
           title: S.optional(S.String),
           link: S.optional(S.String),
         }),
       ).annotate({ identifier: "Promotion" });
-    case 5:
-      return S.Array(__S(20, __c2, 4));
-    case 6:
+    case 20:
+      return S.Array(__S(51, __c1, 19));
+    case 21:
       return S.suspend(() =>
         S.Struct({
-          url: S.optional(__S(1, __c0, 1)),
-          context: S.optional(__S(2, __c0, 2)),
-          queries: S.optional(__S(9, __c1, 1)),
+          url: S.optional(__S(32, __c1, 0)),
+          context: S.optional(__S(33, __c1, 1)),
+          queries: S.optional(__S(40, __c1, 8)),
           kind: S.optional(S.String),
-          spelling: S.optional(__S(10, __c1, 2)),
-          searchInformation: S.optional(__S(11, __c1, 3)),
-          items: S.optional(__S(16, __c2, 0)),
-          promotions: S.optional(__S(21, __c2, 5)),
+          spelling: S.optional(__S(41, __c1, 9)),
+          searchInformation: S.optional(__S(42, __c1, 10)),
+          items: S.optional(__S(47, __c1, 15)),
+          promotions: S.optional(__S(52, __c1, 20)),
         }),
       ).annotate({ identifier: "Search" });
-    case 7:
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           highRange: S.optional(S.String.pipe(T.Query())),
@@ -1002,7 +1002,6 @@ function __c2(j: number): any {
       });
   }
 }
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

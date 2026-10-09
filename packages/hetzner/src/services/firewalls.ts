@@ -492,8 +492,8 @@ export const createFirewall: API.OperationMethod<
   CreateFirewallError,
   HetznerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(8, __c1, 0) as any as S.Schema<CreateFirewallRequest>,
-  output: __S(21, __c2, 5) as any as S.Schema<CreateFirewallResponse>,
+  input: __S(4, __c0, 4) as any as S.Schema<CreateFirewallRequest>,
+  output: __S(13, __c0, 13) as any as S.Schema<CreateFirewallResponse>,
   errors: [UnknownHetznerError],
   protocol: HetznerProtocol,
   retry: Retry.Retry,
@@ -507,8 +507,8 @@ export const deleteFirewall: API.OperationMethod<
   DeleteFirewallError,
   HetznerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(22, __c2, 6) as any as S.Schema<DeleteFirewallRequest>,
-  output: __S(23, __c2, 7) as any as S.Schema<DeleteFirewallResponse>,
+  input: __S(48, __c3, 0) as any as S.Schema<DeleteFirewallRequest>,
+  output: __S(49, __c3, 1) as any as S.Schema<DeleteFirewallResponse>,
   errors: [UnknownHetznerError],
   protocol: HetznerProtocol,
   retry: Retry.Retry,
@@ -522,8 +522,8 @@ export const getFirewall: API.OperationMethod<
   GetFirewallError,
   HetznerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(24, __c3, 0) as any as S.Schema<GetFirewallRequest>,
-  output: __S(31, __c3, 7) as any as S.Schema<GetFirewallResponse>,
+  input: __S(64, __c4, 0) as any as S.Schema<GetFirewallRequest>,
+  output: __S(71, __c4, 7) as any as S.Schema<GetFirewallResponse>,
   errors: [UnknownHetznerError],
   protocol: HetznerProtocol,
   retry: Retry.Retry,
@@ -539,8 +539,8 @@ export const listFirewalls: API.PaginatedOperationMethod<
   ListFirewallsResponseFirewallsItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(33, __c4, 1) as any as S.Schema<ListFirewallsRequest>,
-    output: __S(40, __c5, 0) as any as S.Schema<ListFirewallsResponse>,
+    input: __S(81, __c5, 1) as any as S.Schema<ListFirewallsRequest>,
+    output: __S(88, __c5, 8) as any as S.Schema<ListFirewallsResponse>,
     errors: [UnknownHetznerError],
     protocol: HetznerProtocol,
     retry: Retry.Retry,
@@ -563,8 +563,8 @@ export const updateFirewall: API.OperationMethod<
   UpdateFirewallError,
   HetznerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(41, __c5, 1) as any as S.Schema<UpdateFirewallRequest>,
-  output: __S(45, __c5, 5) as any as S.Schema<UpdateFirewallResponse>,
+  input: __S(96, __c6, 0) as any as S.Schema<UpdateFirewallRequest>,
+  output: __S(100, __c6, 4) as any as S.Schema<UpdateFirewallResponse>,
   errors: [UnknownHetznerError],
   protocol: HetznerProtocol,
   retry: Retry.Retry,
@@ -574,122 +574,70 @@ export const updateFirewall: API.OperationMethod<
 function __c0(j: number): any {
   switch (j) {
     case 0:
-      return S.Record(S.String, S.String);
-    case 1:
-      return S.Array(S.String);
-    case 2:
       return S.suspend(() =>
         S.Struct({
           description: S.optional(S.NullOr(S.String)),
           direction: S.String,
-          source_ips: S.optional(__S(1, __c0, 1)),
-          destination_ips: S.optional(__S(1, __c0, 1)),
+          source_ips: S.optional(__S(17, __c1, 1)),
+          destination_ips: S.optional(__S(17, __c1, 1)),
           protocol: S.String,
           port: S.optional(S.String),
         }),
       ).annotate({
         identifier: "CreateFirewallRequestRulesItem",
       });
+    case 1:
+      return S.Array(__S(0, __c0, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          type: S.String,
+          server: S.optional(__S(18, __c1, 2)),
+          label_selector: S.optional(__S(19, __c1, 3)),
+        }),
+      ).annotate({
+        identifier: "CreateFirewallRequestApplyToItem",
+      });
     case 3:
       return S.Array(__S(2, __c0, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          id: S.Number,
-        }),
-      ).annotate({
-        identifier: "CreateFirewallRequestApplyToItemServer",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          selector: S.String,
-        }),
-      ).annotate({
-        identifier: "CreateFirewallRequestApplyToItemLabelSelector",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          type: S.String,
-          server: S.optional(__S(4, __c0, 4)),
-          label_selector: S.optional(__S(5, __c0, 5)),
-        }),
-      ).annotate({
-        identifier: "CreateFirewallRequestApplyToItem",
-      });
-    case 7:
-      return S.Array(__S(6, __c0, 6));
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
           name: S.String,
-          labels: S.optional(__S(0, __c0, 0)),
-          rules: S.optional(__S(3, __c0, 3)),
-          apply_to: S.optional(__S(7, __c0, 7)),
+          labels: S.optional(__S(16, __c1, 0)),
+          rules: S.optional(__S(1, __c0, 1)),
+          apply_to: S.optional(__S(3, __c0, 3)),
         }).pipe(T.Http({ method: "POST", uri: "/firewalls", code: 200 })),
       ).annotate({ identifier: "CreateFirewallRequest" });
-    case 1:
+    case 5:
       return S.suspend(() =>
         S.Struct({
           description: S.optional(S.NullOr(S.String)),
           direction: S.String,
-          source_ips: __S(1, __c0, 1),
-          destination_ips: __S(1, __c0, 1),
+          source_ips: __S(17, __c1, 1),
+          destination_ips: __S(17, __c1, 1),
           protocol: S.String,
           port: S.NullOr(S.String),
         }),
       ).annotate({
         identifier: "CreateFirewallResponseFirewallRulesItem",
       });
-    case 2:
-      return S.Array(__S(9, __c1, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          type: S.optional(S.String),
-          server: S.optional(__S(4, __c0, 4)),
-        }),
-      ).annotate({
-        identifier: "CreateFirewallResponseFirewallAppliedToItemAppliedToResourcesItem",
-      });
-    case 4:
-      return S.Array(__S(11, __c1, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          type: S.String,
-          server: S.optional(__S(4, __c0, 4)),
-          label_selector: S.optional(__S(5, __c0, 5)),
-          applied_to_resources: S.optional(__S(12, __c1, 4)),
-        }),
-      ).annotate({
-        identifier: "CreateFirewallResponseFirewallAppliedToItem",
-      });
     case 6:
-      return S.Array(__S(13, __c1, 5));
+      return S.Array(__S(5, __c0, 5));
     case 7:
       return S.suspend(() =>
         S.Struct({
           id: S.Number,
           name: S.String,
-          labels: S.optional(__S(0, __c0, 0)),
+          labels: S.optional(__S(16, __c1, 0)),
           created: S.String,
-          rules: __S(10, __c1, 2),
-          applied_to: __S(14, __c1, 6),
+          rules: __S(6, __c0, 6),
+          applied_to: __S(34, __c2, 2),
         }),
       ).annotate({
         identifier: "CreateFirewallResponseFirewall",
       });
-  }
-}
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
+    case 8:
       return S.suspend(() =>
         S.Struct({
           id: S.Number,
@@ -698,9 +646,9 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "CreateFirewallResponseActionsItemResourcesItem",
       });
-    case 1:
-      return S.Array(__S(16, __c2, 0));
-    case 2:
+    case 9:
+      return S.Array(__S(8, __c0, 8));
+    case 10:
       return S.suspend(() =>
         S.Struct({
           code: S.String,
@@ -709,7 +657,7 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "CreateFirewallResponseActionsItemError",
       });
-    case 3:
+    case 11:
       return S.suspend(() =>
         S.Struct({
           id: S.Number,
@@ -718,34 +666,90 @@ function __c2(j: number): any {
           started: S.String,
           finished: S.NullOr(S.String),
           progress: S.Number,
-          resources: __S(17, __c2, 1),
-          error: S.NullOr(__S(18, __c2, 2)),
+          resources: __S(9, __c0, 9),
+          error: S.NullOr(__S(10, __c0, 10)),
         }),
       ).annotate({
         identifier: "CreateFirewallResponseActionsItem",
       });
-    case 4:
-      return S.Array(__S(19, __c2, 3));
-    case 5:
+    case 12:
+      return S.Array(__S(11, __c0, 11));
+    case 13:
       return S.suspend(() =>
         S.Struct({
-          firewall: S.optional(__S(15, __c1, 7)),
-          actions: S.optional(__S(20, __c2, 4)),
+          firewall: S.optional(__S(7, __c0, 7)),
+          actions: S.optional(__S(12, __c0, 12)),
         }),
       ).annotate({ identifier: "CreateFirewallResponse" });
-    case 6:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, S.String);
+    case 1:
+      return S.Array(S.String);
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.Number,
+        }),
+      ).annotate({
+        identifier: "CreateFirewallRequestApplyToItemServer",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          selector: S.String,
+        }),
+      ).annotate({
+        identifier: "CreateFirewallRequestApplyToItemLabelSelector",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          type: S.optional(S.String),
+          server: S.optional(__S(18, __c1, 2)),
+        }),
+      ).annotate({
+        identifier: "CreateFirewallResponseFirewallAppliedToItemAppliedToResourcesItem",
+      });
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(20, __c1, 4));
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          type: S.String,
+          server: S.optional(__S(18, __c1, 2)),
+          label_selector: S.optional(__S(19, __c1, 3)),
+          applied_to_resources: S.optional(__S(32, __c2, 0)),
+        }),
+      ).annotate({
+        identifier: "CreateFirewallResponseFirewallAppliedToItem",
+      });
+    case 2:
+      return S.Array(__S(33, __c2, 1));
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.Number.pipe(T.Label()),
         }).pipe(T.Http({ method: "DELETE", uri: "/firewalls/{id}", code: 200 })),
       ).annotate({ identifier: "DeleteFirewallRequest" });
-    case 7:
+    case 1:
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "DeleteFirewallResponse",
       });
   }
 }
-function __c3(j: number): any {
+function __c4(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -758,8 +762,8 @@ function __c3(j: number): any {
         S.Struct({
           description: S.optional(S.NullOr(S.String)),
           direction: S.String,
-          source_ips: __S(1, __c0, 1),
-          destination_ips: __S(1, __c0, 1),
+          source_ips: __S(17, __c1, 1),
+          destination_ips: __S(17, __c1, 1),
           protocol: S.String,
           port: S.NullOr(S.String),
         }),
@@ -767,31 +771,31 @@ function __c3(j: number): any {
         identifier: "GetFirewallResponseFirewallRulesItem",
       });
     case 2:
-      return S.Array(__S(25, __c3, 1));
+      return S.Array(__S(65, __c4, 1));
     case 3:
-      return S.Array(__S(11, __c1, 3));
+      return S.Array(__S(20, __c1, 4));
     case 4:
       return S.suspend(() =>
         S.Struct({
           type: S.String,
-          server: S.optional(__S(4, __c0, 4)),
-          label_selector: S.optional(__S(5, __c0, 5)),
-          applied_to_resources: S.optional(__S(27, __c3, 3)),
+          server: S.optional(__S(18, __c1, 2)),
+          label_selector: S.optional(__S(19, __c1, 3)),
+          applied_to_resources: S.optional(__S(67, __c4, 3)),
         }),
       ).annotate({
         identifier: "GetFirewallResponseFirewallAppliedToItem",
       });
     case 5:
-      return S.Array(__S(28, __c3, 4));
+      return S.Array(__S(68, __c4, 4));
     case 6:
       return S.suspend(() =>
         S.Struct({
           id: S.Number,
           name: S.String,
-          labels: S.optional(__S(0, __c0, 0)),
+          labels: S.optional(__S(16, __c1, 0)),
           created: S.String,
-          rules: __S(26, __c3, 2),
-          applied_to: __S(29, __c3, 5),
+          rules: __S(66, __c4, 2),
+          applied_to: __S(69, __c4, 5),
         }),
       ).annotate({
         identifier: "GetFirewallResponseFirewall",
@@ -799,19 +803,19 @@ function __c3(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          firewall: __S(30, __c3, 6),
+          firewall: __S(70, __c4, 6),
         }),
       ).annotate({ identifier: "GetFirewallResponse" });
   }
 }
-function __c4(j: number): any {
+function __c5(j: number): any {
   switch (j) {
     case 0:
       return S.Array(S.String);
     case 1:
       return S.suspend(() =>
         S.Struct({
-          sort: S.optional(__S(32, __c4, 0).pipe(T.Query())),
+          sort: S.optional(__S(80, __c5, 0).pipe(T.Query())),
           name: S.optional(S.String.pipe(T.Query())),
           label_selector: S.optional(S.String.pipe(T.Query())),
           page: S.optional(S.Number.pipe(T.Query())),
@@ -823,8 +827,8 @@ function __c4(j: number): any {
         S.Struct({
           description: S.optional(S.NullOr(S.String)),
           direction: S.String,
-          source_ips: __S(1, __c0, 1),
-          destination_ips: __S(1, __c0, 1),
+          source_ips: __S(17, __c1, 1),
+          destination_ips: __S(17, __c1, 1),
           protocol: S.String,
           port: S.NullOr(S.String),
         }),
@@ -832,22 +836,22 @@ function __c4(j: number): any {
         identifier: "ListFirewallsResponseFirewallsItemRulesItem",
       });
     case 3:
-      return S.Array(__S(34, __c4, 2));
+      return S.Array(__S(82, __c5, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
           id: S.Number,
           name: S.String,
-          labels: S.optional(__S(0, __c0, 0)),
+          labels: S.optional(__S(16, __c1, 0)),
           created: S.String,
-          rules: __S(35, __c4, 3),
-          applied_to: __S(14, __c1, 6),
+          rules: __S(83, __c5, 3),
+          applied_to: __S(34, __c2, 2),
         }),
       ).annotate({
         identifier: "ListFirewallsResponseFirewallsItem",
       });
     case 5:
-      return S.Array(__S(36, __c4, 4));
+      return S.Array(__S(84, __c5, 4));
     case 6:
       return S.suspend(() =>
         S.Struct({
@@ -864,67 +868,66 @@ function __c4(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          pagination: __S(38, __c4, 6),
+          pagination: __S(86, __c5, 6),
         }),
       ).annotate({
         identifier: "ListFirewallsResponseMeta",
       });
+    case 8:
+      return S.suspend(() =>
+        S.Struct({
+          firewalls: __S(85, __c5, 5),
+          meta: __S(87, __c5, 7),
+        }),
+      ).annotate({ identifier: "ListFirewallsResponse" });
   }
 }
-function __c5(j: number): any {
+function __c6(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          firewalls: __S(37, __c4, 5),
-          meta: __S(39, __c4, 7),
-        }),
-      ).annotate({ identifier: "ListFirewallsResponse" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
           id: S.Number.pipe(T.Label()),
           name: S.optional(S.String),
-          labels: S.optional(__S(0, __c0, 0)),
+          labels: S.optional(__S(16, __c1, 0)),
         }).pipe(T.Http({ method: "PUT", uri: "/firewalls/{id}", code: 200 })),
       ).annotate({ identifier: "UpdateFirewallRequest" });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           description: S.optional(S.NullOr(S.String)),
           direction: S.String,
-          source_ips: __S(1, __c0, 1),
-          destination_ips: __S(1, __c0, 1),
+          source_ips: __S(17, __c1, 1),
+          destination_ips: __S(17, __c1, 1),
           protocol: S.String,
           port: S.NullOr(S.String),
         }),
       ).annotate({
         identifier: "UpdateFirewallResponseFirewallRulesItem",
       });
+    case 2:
+      return S.Array(__S(97, __c6, 1));
     case 3:
-      return S.Array(__S(42, __c5, 2));
-    case 4:
       return S.suspend(() =>
         S.Struct({
           id: S.Number,
           name: S.String,
-          labels: S.optional(__S(0, __c0, 0)),
+          labels: S.optional(__S(16, __c1, 0)),
           created: S.String,
-          rules: __S(43, __c5, 3),
-          applied_to: __S(14, __c1, 6),
+          rules: __S(98, __c6, 2),
+          applied_to: __S(34, __c2, 2),
         }),
       ).annotate({
         identifier: "UpdateFirewallResponseFirewall",
       });
-    case 5:
+    case 4:
       return S.suspend(() =>
         S.Struct({
-          firewall: __S(44, __c5, 4),
+          firewall: __S(99, __c6, 3),
         }),
       ).annotate({ identifier: "UpdateFirewallResponse" });
   }
 }
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

@@ -1184,8 +1184,8 @@ export const cancelProjectsDeviceSessions: API.OperationMethod<
   CancelProjectsDeviceSessionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1, __c0, 1) as any as S.Schema<CancelProjectsDeviceSessionsRequest>,
-  output: __S(0, __c0, 0) as any as S.Schema<Empty>,
+  input: __S(160, __c5, 0) as any as S.Schema<CancelProjectsDeviceSessionsRequest>,
+  output: __S(192, __c6, 0) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1204,8 +1204,8 @@ export const cancelProjectsTestMatrices: API.OperationMethod<
   CancelProjectsTestMatricesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2, __c0, 2) as any as S.Schema<CancelProjectsTestMatricesRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<CancelTestMatrixResponse>,
+  input: __S(224, __c7, 0) as any as S.Schema<CancelProjectsTestMatricesRequest>,
+  output: __S(225, __c7, 1) as any as S.Schema<CancelTestMatrixResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1224,8 +1224,8 @@ export const createProjectsDeviceSessions: API.OperationMethod<
   CreateProjectsDeviceSessionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(8, __c1, 0) as any as S.Schema<CreateProjectsDeviceSessionsRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<DeviceSession>,
+  input: __S(256, __c8, 0) as any as S.Schema<CreateProjectsDeviceSessionsRequest>,
+  output: __S(322, __c10, 2) as any as S.Schema<DeviceSession>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1244,8 +1244,8 @@ export const createProjectsTestMatrices: API.OperationMethod<
   CreateProjectsTestMatricesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(67, __c8, 3) as any as S.Schema<CreateProjectsTestMatricesRequest>,
-  output: __S(66, __c8, 2) as any as S.Schema<TestMatrix>,
+  input: __S(352, __c11, 0) as any as S.Schema<CreateProjectsTestMatricesRequest>,
+  output: __S(439, __c13, 23) as any as S.Schema<TestMatrix>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1264,8 +1264,8 @@ export const getApkDetailsApplicationDetailService: API.OperationMethod<
   GetApkDetailsApplicationDetailServiceError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(68, __c8, 4) as any as S.Schema<GetApkDetailsApplicationDetailServiceRequest>,
-  output: __S(81, __c10, 1) as any as S.Schema<GetApkDetailsResponse>,
+  input: __S(512, __c16, 0) as any as S.Schema<GetApkDetailsApplicationDetailServiceRequest>,
+  output: __S(525, __c16, 13) as any as S.Schema<GetApkDetailsResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1279,8 +1279,8 @@ export const getProjectsDeviceSessions: API.OperationMethod<
   GetProjectsDeviceSessionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(82, __c10, 2) as any as S.Schema<GetProjectsDeviceSessionsRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<DeviceSession>,
+  input: __S(544, __c17, 0) as any as S.Schema<GetProjectsDeviceSessionsRequest>,
+  output: __S(322, __c10, 2) as any as S.Schema<DeviceSession>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1294,8 +1294,8 @@ export const getProjectsTestMatrices: API.OperationMethod<
   GetProjectsTestMatricesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(83, __c10, 3) as any as S.Schema<GetProjectsTestMatricesRequest>,
-  output: __S(66, __c8, 2) as any as S.Schema<TestMatrix>,
+  input: __S(0, __c0, 0) as any as S.Schema<GetProjectsTestMatricesRequest>,
+  output: __S(439, __c13, 23) as any as S.Schema<TestMatrix>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1309,8 +1309,8 @@ export const getTestEnvironmentCatalog: API.OperationMethod<
   GetTestEnvironmentCatalogError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(84, __c10, 4) as any as S.Schema<GetTestEnvironmentCatalogRequest>,
-  output: __S(119, __c14, 7) as any as S.Schema<TestEnvironmentCatalog>,
+  input: __S(32, __c1, 0) as any as S.Schema<GetTestEnvironmentCatalogRequest>,
+  output: __S(67, __c2, 3) as any as S.Schema<TestEnvironmentCatalog>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1325,8 +1325,8 @@ export const listProjectsDeviceSessions: API.PaginatedOperationMethod<
   GcpOpContext,
   ListDeviceSessionsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(120, __c15, 0) as any as S.Schema<ListProjectsDeviceSessionsRequest>,
-  output: __S(122, __c15, 2) as any as S.Schema<ListDeviceSessionsResponse>,
+  input: __S(96, __c3, 0) as any as S.Schema<ListProjectsDeviceSessionsRequest>,
+  output: __S(98, __c3, 2) as any as S.Schema<ListDeviceSessionsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1346,8 +1346,8 @@ export const patchProjectsDeviceSessions: API.OperationMethod<
   PatchProjectsDeviceSessionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(123, __c15, 3) as any as S.Schema<PatchProjectsDeviceSessionsRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<DeviceSession>,
+  input: __S(128, __c4, 0) as any as S.Schema<PatchProjectsDeviceSessionsRequest>,
+  output: __S(322, __c10, 2) as any as S.Schema<DeviceSession>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1357,659 +1357,6 @@ export const patchProjectsDeviceSessions: API.OperationMethod<
 function __c0(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "CancelDeviceSessionRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-          body: S.optional(__S(0, __c0, 0).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/{+name}:cancel",
-            baseUrl: "https://testing.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "CancelProjectsDeviceSessionsRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          testMatrixId: S.String.pipe(T.Label()),
-          projectId: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/projects/{projectId}/testMatrices/{testMatrixId}:cancel",
-            baseUrl: "https://testing.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "CancelProjectsTestMatricesRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          testState: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "CancelTestMatrixResponse" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          orientation: S.optional(S.String),
-          androidVersionId: S.optional(S.String),
-          androidModelId: S.optional(S.String),
-          locale: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "AndroidDevice" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          stateMessage: S.optional(S.String),
-          eventTime: S.optional(S.String),
-          sessionState: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "SessionStateEvent" });
-    case 6:
-      return S.Array(__S(5, __c0, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          displayName: S.optional(S.String),
-          expireTime: S.optional(S.String),
-          createTime: S.optional(S.String),
-          ttl: S.optional(S.String),
-          activeStartTime: S.optional(S.String),
-          inactivityTimeout: S.optional(S.String),
-          androidDevice: S.optional(__S(4, __c0, 4)),
-          stateHistories: S.optional(__S(6, __c0, 6)),
-          name: S.optional(S.String),
-          state: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "DeviceSession" });
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(7, __c0, 7).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/{+parent}/deviceSessions",
-            baseUrl: "https://testing.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateProjectsDeviceSessionsRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          projectId: S.optional(S.String),
-          executionId: S.optional(S.String),
-          historyId: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ToolResultsExecution" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          gcsPath: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "GoogleCloudStorage" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          projectId: S.optional(S.String),
-          historyId: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ToolResultsHistory" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          toolResultsExecution: S.optional(__S(9, __c1, 1)),
-          googleCloudStorage: S.optional(__S(10, __c1, 2)),
-          resultsUrl: S.optional(S.String),
-          toolResultsHistory: S.optional(__S(11, __c1, 3)),
-        }),
-      ).annotate({ identifier: "ResultStorage" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          value: S.optional(S.String),
-          key: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ClientInfoDetail" });
-    case 6:
-      return S.Array(__S(13, __c1, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.optional(S.String),
-          clientInfoDetails: S.optional(__S(14, __c1, 6)),
-        }),
-      ).annotate({ identifier: "ClientInfo" });
-  }
-}
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          reason: S.optional(S.String),
-          message: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "MatrixErrorDetail" });
-    case 1:
-      return S.Array(__S(16, __c2, 0));
-    case 2:
-      return S.Array(__S(4, __c0, 4));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          androidDevices: S.optional(__S(18, __c2, 2)),
-        }),
-      ).annotate({ identifier: "AndroidDeviceList" });
-    case 4:
-      return S.Array(S.String);
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          locales: S.optional(__S(20, __c2, 4)),
-          orientations: S.optional(__S(20, __c2, 4)),
-          androidVersionIds: S.optional(__S(20, __c2, 4)),
-          androidModelIds: S.optional(__S(20, __c2, 4)),
-        }),
-      ).annotate({ identifier: "AndroidMatrix" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          locale: S.optional(S.String),
-          iosModelId: S.optional(S.String),
-          orientation: S.optional(S.String),
-          iosVersionId: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "IosDevice" });
-    case 7:
-      return S.Array(__S(22, __c2, 6));
-  }
-}
-function __c3(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          iosDevices: S.optional(__S(23, __c2, 7)),
-        }),
-      ).annotate({ identifier: "IosDeviceList" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          androidDeviceList: S.optional(__S(19, __c2, 3)),
-          androidMatrix: S.optional(__S(21, __c2, 5)),
-          iosDeviceList: S.optional(__S(24, __c3, 0)),
-        }),
-      ).annotate({ identifier: "EnvironmentMatrix" });
-    case 2:
-      return S.Array(__S(10, __c1, 2));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          content: S.optional(__S(10, __c1, 2)),
-          bundleId: S.optional(S.String),
-          devicePath: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "IosDeviceFile" });
-    case 4:
-      return S.Array(__S(27, __c3, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          networkProfile: S.optional(S.String),
-          additionalIpas: S.optional(__S(26, __c3, 2)),
-          pushFiles: S.optional(__S(28, __c3, 4)),
-          pullDirectories: S.optional(__S(28, __c3, 4)),
-        }),
-      ).annotate({ identifier: "IosTestSetup" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          bundleSplits: S.optional(__S(26, __c3, 2)),
-        }),
-      ).annotate({ identifier: "ApkSplits" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          bundleLocation: S.optional(__S(10, __c1, 2)),
-          apks: S.optional(__S(30, __c3, 6)),
-        }),
-      ).annotate({ identifier: "AppBundle" });
-  }
-}
-function __c4(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          actionType: S.optional(S.String),
-          inputText: S.optional(S.String),
-          resourceName: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "RoboDirective" });
-    case 1:
-      return S.Array(__S(32, __c4, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          categories: S.optional(__S(20, __c2, 4)),
-          action: S.optional(S.String),
-          uri: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "StartActivityIntent" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          noActivity: S.optional(__S(0, __c0, 0)),
-          timeout: S.optional(S.String),
-          startActivity: S.optional(__S(34, __c4, 2)),
-          launcherActivity: S.optional(__S(0, __c0, 0)),
-        }),
-      ).annotate({ identifier: "RoboStartingIntent" });
-    case 4:
-      return S.Array(__S(35, __c4, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          appBundle: S.optional(__S(31, __c3, 7)),
-          roboDirectives: S.optional(__S(33, __c4, 1)),
-          maxDepth: S.optional(S.Number),
-          roboMode: S.optional(S.String),
-          startingIntents: S.optional(__S(36, __c4, 4)),
-          appInitialActivity: S.optional(S.String),
-          appApk: S.optional(__S(10, __c1, 2)),
-          maxSteps: S.optional(S.Number),
-          appPackageId: S.optional(S.String),
-          roboScript: S.optional(__S(10, __c1, 2)),
-        }),
-      ).annotate({ identifier: "AndroidRoboTest" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          targetedShardDuration: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "SmartSharding" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          numShards: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "UniformSharding" });
-  }
-}
-function __c5(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          testTargets: S.optional(__S(20, __c2, 4)),
-        }),
-      ).annotate({ identifier: "TestTargetsForShard" });
-    case 1:
-      return S.Array(__S(40, __c5, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          testTargetsForShard: S.optional(__S(41, __c5, 1)),
-        }),
-      ).annotate({ identifier: "ManualSharding" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          smartSharding: S.optional(__S(38, __c4, 6)),
-          uniformSharding: S.optional(__S(39, __c4, 7)),
-          manualSharding: S.optional(__S(42, __c5, 2)),
-        }),
-      ).annotate({ identifier: "ShardingOption" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          appBundle: S.optional(__S(31, __c3, 7)),
-          testRunnerClass: S.optional(S.String),
-          testPackageId: S.optional(S.String),
-          appPackageId: S.optional(S.String),
-          appApk: S.optional(__S(10, __c1, 2)),
-          testTargets: S.optional(__S(20, __c2, 4)),
-          testApk: S.optional(__S(10, __c1, 2)),
-          orchestratorOption: S.optional(S.String),
-          shardingOption: S.optional(__S(43, __c5, 3)),
-        }),
-      ).annotate({
-        identifier: "AndroidInstrumentationTest",
-      });
-    case 5:
-      return S.Array(S.Number);
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          scenarios: S.optional(__S(45, __c5, 5)),
-          appIpa: S.optional(__S(10, __c1, 2)),
-          appBundleId: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "IosTestLoop" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          testsZip: S.optional(__S(10, __c1, 2)),
-          xcodeVersion: S.optional(S.String),
-          appBundleId: S.optional(S.String),
-          testSpecialEntitlements: S.optional(S.Boolean),
-          xctestrun: S.optional(__S(10, __c1, 2)),
-        }),
-      ).annotate({ identifier: "IosXcTest" });
-  }
-}
-function __c6(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          appBundle: S.optional(__S(31, __c3, 7)),
-          appPackageId: S.optional(S.String),
-          scenarioLabels: S.optional(__S(20, __c2, 4)),
-          appApk: S.optional(__S(10, __c1, 2)),
-          scenarios: S.optional(__S(45, __c5, 5)),
-        }),
-      ).annotate({ identifier: "AndroidTestLoop" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          roboScript: S.optional(__S(10, __c1, 2)),
-          appIpa: S.optional(__S(10, __c1, 2)),
-          appBundleId: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "IosRoboTest" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          googleAuto: S.optional(__S(0, __c0, 0)),
-        }),
-      ).annotate({ identifier: "Account" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          location: S.optional(__S(10, __c1, 2)),
-          packageName: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Apk" });
-    case 4:
-      return S.Array(__S(51, __c6, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          durationSeconds: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "SystraceSetup" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          content: S.optional(__S(10, __c1, 2)),
-          devicePath: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "RegularFile" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          obbFileName: S.optional(S.String),
-          obb: S.optional(__S(10, __c1, 2)),
-        }),
-      ).annotate({ identifier: "ObbFile" });
-  }
-}
-function __c7(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          regularFile: S.optional(__S(54, __c6, 6)),
-          obbFile: S.optional(__S(55, __c6, 7)),
-        }),
-      ).annotate({ identifier: "DeviceFile" });
-    case 1:
-      return S.Array(__S(56, __c7, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          environmentVariables: S.optional(__S(14, __c1, 6)),
-          account: S.optional(__S(50, __c6, 2)),
-          additionalApks: S.optional(__S(52, __c6, 4)),
-          directoriesToPull: S.optional(__S(20, __c2, 4)),
-          initialSetupApks: S.optional(__S(52, __c6, 4)),
-          systrace: S.optional(__S(53, __c6, 5)),
-          networkProfile: S.optional(S.String),
-          filesToPush: S.optional(__S(57, __c7, 1)),
-          dontAutograntPermissions: S.optional(S.Boolean),
-        }),
-      ).annotate({ identifier: "TestSetup" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          iosTestSetup: S.optional(__S(29, __c3, 5)),
-          androidRoboTest: S.optional(__S(37, __c4, 5)),
-          disableVideoRecording: S.optional(S.Boolean),
-          androidInstrumentationTest: S.optional(__S(44, __c5, 4)),
-          testTimeout: S.optional(S.String),
-          iosTestLoop: S.optional(__S(46, __c5, 6)),
-          iosXcTest: S.optional(__S(47, __c5, 7)),
-          androidTestLoop: S.optional(__S(48, __c6, 0)),
-          disablePerformanceMetrics: S.optional(S.Boolean),
-          iosRoboTest: S.optional(__S(49, __c6, 1)),
-          testSetup: S.optional(__S(58, __c7, 2)),
-        }),
-      ).annotate({ identifier: "TestSpecification" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          progressMessages: S.optional(__S(20, __c2, 4)),
-          errorMessage: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "TestDetails" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          stepId: S.optional(S.String),
-          historyId: S.optional(S.String),
-          projectId: S.optional(S.String),
-          executionId: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ToolResultsStep" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          estimatedShardDuration: S.optional(S.String),
-          shardIndex: S.optional(S.Number),
-          testTargetsForShard: S.optional(__S(40, __c5, 0)),
-          numShards: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "Shard" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          iosDevice: S.optional(__S(22, __c2, 6)),
-          androidDevice: S.optional(__S(4, __c0, 4)),
-        }),
-      ).annotate({ identifier: "Environment" });
-  }
-}
-function __c8(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          state: S.optional(S.String),
-          testDetails: S.optional(__S(60, __c7, 4)),
-          toolResultsStep: S.optional(__S(61, __c7, 5)),
-          shard: S.optional(__S(62, __c7, 6)),
-          id: S.optional(S.String),
-          projectId: S.optional(S.String),
-          environment: S.optional(__S(63, __c7, 7)),
-          testSpecification: S.optional(__S(59, __c7, 3)),
-          matrixId: S.optional(S.String),
-          timestamp: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "TestExecution" });
-    case 1:
-      return S.Array(__S(64, __c8, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          resultStorage: S.optional(__S(12, __c1, 4)),
-          clientInfo: S.optional(__S(15, __c1, 7)),
-          timestamp: S.optional(S.String),
-          failFast: S.optional(S.Boolean),
-          extendedInvalidMatrixDetails: S.optional(__S(17, __c2, 1)),
-          environmentMatrix: S.optional(__S(25, __c3, 1)),
-          invalidMatrixDetails: S.optional(S.String),
-          testSpecification: S.optional(__S(59, __c7, 3)),
-          testExecutions: S.optional(__S(65, __c8, 1)),
-          state: S.optional(S.String),
-          testMatrixId: S.optional(S.String),
-          outcomeSummary: S.optional(S.String),
-          projectId: S.optional(S.String),
-          flakyTestAttempts: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "TestMatrix" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          projectId: S.String.pipe(T.Label()),
-          requestId: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(66, __c8, 2).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/projects/{projectId}/testMatrices",
-            baseUrl: "https://testing.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateProjectsTestMatricesRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          "bundleLocation.gcsPath": S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(10, __c1, 2).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/applicationDetailService/getApkDetails",
-            baseUrl: "https://testing.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetApkDetailsApplicationDetailServiceRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          actionNames: S.optional(__S(20, __c2, 4)),
-          categoryNames: S.optional(__S(20, __c2, 4)),
-          mimeType: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "IntentFilter" });
-    case 6:
-      return S.Array(__S(69, __c8, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          maxSdkVersion: S.optional(S.Number),
-          name: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "UsesPermissionTag" });
-  }
-}
-function __c9(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(71, __c8, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.optional(S.String),
-          isRequired: S.optional(S.Boolean),
-        }),
-      ).annotate({ identifier: "UsesFeature" });
-    case 2:
-      return S.Array(__S(73, __c9, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          value: S.optional(S.String),
-          name: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Metadata" });
-    case 4:
-      return S.Array(__S(75, __c9, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          intentFilter: S.optional(__S(70, __c8, 6)),
-          name: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Service" });
-    case 6:
-      return S.Array(__S(77, __c9, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          minSdkVersion: S.optional(S.Number),
-          maxSdkVersion: S.optional(S.Number),
-          targetSdkVersion: S.optional(S.Number),
-          applicationLabel: S.optional(S.String),
-          usesPermission: S.optional(__S(20, __c2, 4)),
-          intentFilters: S.optional(__S(70, __c8, 6)),
-          usesPermissionTags: S.optional(__S(72, __c9, 0)),
-          packageName: S.optional(S.String),
-          usesFeature: S.optional(__S(74, __c9, 2)),
-          metadata: S.optional(__S(76, __c9, 4)),
-          versionName: S.optional(S.String),
-          versionCode: S.optional(S.String),
-          services: S.optional(__S(78, __c9, 6)),
-        }),
-      ).annotate({ identifier: "ApkManifest" });
-  }
-}
-function __c10(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          apkManifest: S.optional(__S(79, __c9, 7)),
-        }),
-      ).annotate({ identifier: "ApkDetail" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          apkDetail: S.optional(__S(80, __c10, 0)),
-        }),
-      ).annotate({ identifier: "GetApkDetailsResponse" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({ method: "GET", uri: "v1/{+name}", baseUrl: "https://testing.googleapis.com/" }),
-        ),
-      ).annotate({
-        identifier: "GetProjectsDeviceSessionsRequest",
-      });
-    case 3:
       return S.suspend(() =>
         S.Struct({
           testMatrixId: S.String.pipe(T.Label()),
@@ -2024,7 +1371,11 @@ function __c10(j: number): any {
       ).annotate({
         identifier: "GetProjectsTestMatricesRequest",
       });
-    case 4:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           includeViewableModels: S.optional(S.Boolean.pipe(T.Query())),
@@ -2040,48 +1391,44 @@ function __c10(j: number): any {
       ).annotate({
         identifier: "GetTestEnvironmentCatalogRequest",
       });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           orchestratorVersion: S.optional(S.String),
           androidxOrchestratorVersion: S.optional(S.String),
         }),
       ).annotate({ identifier: "ProvidedSoftwareCatalog" });
-    case 6:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
-          tags: S.optional(__S(20, __c2, 4)),
+          tags: S.optional(__S(480, __c15, 0)),
           name: S.optional(S.String),
         }),
       ).annotate({ identifier: "Orientation" });
-    case 7:
-      return S.Array(__S(86, __c10, 6));
-  }
-}
-function __c11(j: number): any {
-  switch (j) {
-    case 0:
+    case 3:
+      return S.Array(__S(34, __c1, 2));
+    case 4:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
           id: S.optional(S.String),
           region: S.optional(S.String),
-          tags: S.optional(__S(20, __c2, 4)),
+          tags: S.optional(__S(480, __c15, 0)),
         }),
       ).annotate({ identifier: "Locale" });
-    case 1:
-      return S.Array(__S(88, __c11, 0));
-    case 2:
+    case 5:
+      return S.Array(__S(36, __c1, 4));
+    case 6:
       return S.suspend(() =>
         S.Struct({
-          orientations: S.optional(__S(87, __c10, 7)),
-          locales: S.optional(__S(89, __c11, 1)),
+          orientations: S.optional(__S(35, __c1, 3)),
+          locales: S.optional(__S(37, __c1, 5)),
         }),
       ).annotate({
         identifier: "AndroidRuntimeConfiguration",
       });
-    case 3:
+    case 7:
       return S.suspend(() =>
         S.Struct({
           year: S.optional(S.Number),
@@ -2089,92 +1436,88 @@ function __c11(j: number): any {
           month: S.optional(S.Number),
         }),
       ).annotate({ identifier: "Testing_Date" });
-    case 4:
+    case 8:
       return S.suspend(() =>
         S.Struct({
           measurementTime: S.optional(S.String),
           marketShare: S.optional(S.Number),
         }),
       ).annotate({ identifier: "Distribution" });
-    case 5:
+    case 9:
       return S.suspend(() =>
         S.Struct({
-          releaseDate: S.optional(__S(91, __c11, 3)),
+          releaseDate: S.optional(__S(39, __c1, 7)),
           codeName: S.optional(S.String),
-          distribution: S.optional(__S(92, __c11, 4)),
-          tags: S.optional(__S(20, __c2, 4)),
+          distribution: S.optional(__S(40, __c1, 8)),
+          tags: S.optional(__S(480, __c15, 0)),
           id: S.optional(S.String),
           versionString: S.optional(S.String),
           apiLevel: S.optional(S.Number),
         }),
       ).annotate({ identifier: "AndroidVersion" });
-    case 6:
-      return S.Array(__S(93, __c11, 5));
-    case 7:
+    case 10:
+      return S.Array(__S(41, __c1, 9));
+    case 11:
       return S.suspend(() =>
         S.Struct({
           directAccessSupported: S.optional(S.Boolean),
           minimumAndroidStudioVersion: S.optional(S.String),
         }),
       ).annotate({ identifier: "DirectAccessVersionInfo" });
-  }
-}
-function __c12(j: number): any {
-  switch (j) {
-    case 0:
+    case 12:
       return S.suspend(() =>
         S.Struct({
           interactiveDeviceAvailabilityEstimate: S.optional(S.String),
-          directAccessVersionInfo: S.optional(__S(95, __c11, 7)),
+          directAccessVersionInfo: S.optional(__S(43, __c1, 11)),
           deviceCapacity: S.optional(S.String),
           versionId: S.optional(S.String),
         }),
       ).annotate({ identifier: "PerAndroidVersionInfo" });
-    case 1:
-      return S.Array(__S(96, __c12, 0));
-    case 2:
+    case 13:
+      return S.Array(__S(44, __c1, 12));
+    case 14:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
           regionCode: S.optional(S.String),
         }),
       ).annotate({ identifier: "LabInfo" });
-    case 3:
+    case 15:
       return S.Array(S.String);
-    case 4:
+    case 16:
       return S.suspend(() =>
         S.Struct({
           form: S.optional(S.String),
-          supportedAbis: S.optional(__S(20, __c2, 4)),
-          tags: S.optional(__S(20, __c2, 4)),
-          perVersionInfo: S.optional(__S(97, __c12, 1)),
+          supportedAbis: S.optional(__S(480, __c15, 0)),
+          tags: S.optional(__S(480, __c15, 0)),
+          perVersionInfo: S.optional(__S(45, __c1, 13)),
           formFactor: S.optional(S.String),
           brand: S.optional(S.String),
           screenY: S.optional(S.Number),
           screenDensity: S.optional(S.Number),
-          supportedVersionIds: S.optional(__S(20, __c2, 4)),
+          supportedVersionIds: S.optional(__S(480, __c15, 0)),
           lowFpsVideoRecording: S.optional(S.Boolean),
           codename: S.optional(S.String),
           manufacturer: S.optional(S.String),
           screenX: S.optional(S.Number),
           thumbnailUrl: S.optional(S.String),
-          labInfo: S.optional(__S(98, __c12, 2)),
+          labInfo: S.optional(__S(46, __c1, 14)),
           name: S.optional(S.String),
           id: S.optional(S.String),
-          accessDeniedReasons: S.optional(__S(99, __c12, 3)),
+          accessDeniedReasons: S.optional(__S(47, __c1, 15)),
         }),
       ).annotate({ identifier: "AndroidModel" });
-    case 5:
-      return S.Array(__S(100, __c12, 4));
-    case 6:
+    case 17:
+      return S.Array(__S(48, __c1, 16));
+    case 18:
       return S.suspend(() =>
         S.Struct({
-          runtimeConfiguration: S.optional(__S(90, __c11, 2)),
-          versions: S.optional(__S(94, __c11, 6)),
-          models: S.optional(__S(101, __c12, 5)),
+          runtimeConfiguration: S.optional(__S(38, __c1, 6)),
+          versions: S.optional(__S(42, __c1, 10)),
+          models: S.optional(__S(49, __c1, 17)),
         }),
       ).annotate({ identifier: "AndroidDeviceCatalog" });
-    case 7:
+    case 19:
       return S.suspend(() =>
         S.Struct({
           delay: S.optional(S.String),
@@ -2184,117 +1527,113 @@ function __c12(j: number): any {
           bandwidth: S.optional(S.Number),
         }),
       ).annotate({ identifier: "TrafficRule" });
-  }
-}
-function __c13(j: number): any {
-  switch (j) {
-    case 0:
+    case 20:
       return S.suspend(() =>
         S.Struct({
-          downRule: S.optional(__S(103, __c12, 7)),
+          downRule: S.optional(__S(51, __c1, 19)),
           id: S.optional(S.String),
-          upRule: S.optional(__S(103, __c12, 7)),
+          upRule: S.optional(__S(51, __c1, 19)),
         }),
       ).annotate({ identifier: "NetworkConfiguration" });
-    case 1:
-      return S.Array(__S(104, __c13, 0));
-    case 2:
+    case 21:
+      return S.Array(__S(52, __c1, 20));
+    case 22:
       return S.suspend(() =>
         S.Struct({
-          configurations: S.optional(__S(105, __c13, 1)),
+          configurations: S.optional(__S(53, __c1, 21)),
         }),
       ).annotate({
         identifier: "NetworkConfigurationCatalog",
       });
-    case 3:
+    case 23:
       return S.suspend(() =>
         S.Struct({
           form: S.optional(S.String),
           block: S.optional(S.String),
-          addedDate: S.optional(__S(91, __c11, 3)),
+          addedDate: S.optional(__S(39, __c1, 7)),
         }),
       ).annotate({ identifier: "DeviceIpBlock" });
-    case 4:
-      return S.Array(__S(107, __c13, 3));
-    case 5:
+    case 24:
+      return S.Array(__S(55, __c1, 23));
+    case 25:
       return S.suspend(() =>
         S.Struct({
-          ipBlocks: S.optional(__S(108, __c13, 4)),
+          ipBlocks: S.optional(__S(56, __c1, 24)),
         }),
       ).annotate({ identifier: "DeviceIpBlockCatalog" });
-    case 6:
+    case 26:
       return S.suspend(() =>
         S.Struct({
           versionId: S.optional(S.String),
           deviceCapacity: S.optional(S.String),
         }),
       ).annotate({ identifier: "PerIosVersionInfo" });
-    case 7:
-      return S.Array(__S(110, __c13, 6));
-  }
-}
-function __c14(j: number): any {
-  switch (j) {
-    case 0:
+    case 27:
+      return S.Array(__S(58, __c1, 26));
+    case 28:
       return S.suspend(() =>
         S.Struct({
-          supportedVersionIds: S.optional(__S(20, __c2, 4)),
+          supportedVersionIds: S.optional(__S(480, __c15, 0)),
           formFactor: S.optional(S.String),
           screenX: S.optional(S.Number),
-          perVersionInfo: S.optional(__S(111, __c13, 7)),
-          tags: S.optional(__S(20, __c2, 4)),
+          perVersionInfo: S.optional(__S(59, __c1, 27)),
+          tags: S.optional(__S(480, __c15, 0)),
           id: S.optional(S.String),
           screenY: S.optional(S.Number),
           name: S.optional(S.String),
           screenDensity: S.optional(S.Number),
-          deviceCapabilities: S.optional(__S(20, __c2, 4)),
+          deviceCapabilities: S.optional(__S(480, __c15, 0)),
         }),
       ).annotate({ identifier: "IosModel" });
-    case 1:
-      return S.Array(__S(112, __c14, 0));
-    case 2:
+    case 29:
+      return S.Array(__S(60, __c1, 28));
+    case 30:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           majorVersion: S.optional(S.Number),
-          supportedXcodeVersionIds: S.optional(__S(20, __c2, 4)),
+          supportedXcodeVersionIds: S.optional(__S(480, __c15, 0)),
           minorVersion: S.optional(S.Number),
-          tags: S.optional(__S(20, __c2, 4)),
+          tags: S.optional(__S(480, __c15, 0)),
         }),
       ).annotate({ identifier: "IosVersion" });
-    case 3:
-      return S.Array(__S(114, __c14, 2));
-    case 4:
+    case 31:
+      return S.Array(__S(62, __c1, 30));
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           version: S.optional(S.String),
-          tags: S.optional(__S(20, __c2, 4)),
+          tags: S.optional(__S(480, __c15, 0)),
         }),
       ).annotate({ identifier: "XcodeVersion" });
-    case 5:
-      return S.Array(__S(116, __c14, 4));
-    case 6:
+    case 1:
+      return S.Array(__S(64, __c2, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          models: S.optional(__S(113, __c14, 1)),
-          versions: S.optional(__S(115, __c14, 3)),
-          xcodeVersions: S.optional(__S(117, __c14, 5)),
-          runtimeConfiguration: S.optional(__S(90, __c11, 2)),
+          models: S.optional(__S(61, __c1, 29)),
+          versions: S.optional(__S(63, __c1, 31)),
+          xcodeVersions: S.optional(__S(65, __c2, 1)),
+          runtimeConfiguration: S.optional(__S(38, __c1, 6)),
         }),
       ).annotate({ identifier: "IosDeviceCatalog" });
-    case 7:
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          softwareCatalog: S.optional(__S(85, __c10, 5)),
-          androidDeviceCatalog: S.optional(__S(102, __c12, 6)),
-          networkConfigurationCatalog: S.optional(__S(106, __c13, 2)),
-          deviceIpBlockCatalog: S.optional(__S(109, __c13, 5)),
-          iosDeviceCatalog: S.optional(__S(118, __c14, 6)),
+          softwareCatalog: S.optional(__S(33, __c1, 1)),
+          androidDeviceCatalog: S.optional(__S(50, __c1, 18)),
+          networkConfigurationCatalog: S.optional(__S(54, __c1, 22)),
+          deviceIpBlockCatalog: S.optional(__S(57, __c1, 25)),
+          iosDeviceCatalog: S.optional(__S(66, __c2, 2)),
         }),
       ).annotate({ identifier: "TestEnvironmentCatalog" });
   }
 }
-function __c15(j: number): any {
+function __c3(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2314,22 +1653,26 @@ function __c15(j: number): any {
         identifier: "ListProjectsDeviceSessionsRequest",
       });
     case 1:
-      return S.Array(__S(7, __c0, 7));
+      return S.Array(__S(322, __c10, 2));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          deviceSessions: S.optional(__S(121, __c15, 1)),
+          deviceSessions: S.optional(__S(97, __c3, 1)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({
         identifier: "ListDeviceSessionsResponse",
       });
-    case 3:
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           updateMask: S.optional(S.String.pipe(T.Query())),
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(7, __c0, 7).pipe(T.HttpBody())),
+          body: S.optional(__S(322, __c10, 2).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -2342,7 +1685,671 @@ function __c15(j: number): any {
       });
   }
 }
-
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+          body: S.optional(__S(192, __c6, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/{+name}:cancel",
+            baseUrl: "https://testing.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "CancelProjectsDeviceSessionsRequest",
+      });
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "CancelDeviceSessionRequest",
+      });
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          testMatrixId: S.String.pipe(T.Label()),
+          projectId: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/projects/{projectId}/testMatrices/{testMatrixId}:cancel",
+            baseUrl: "https://testing.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "CancelProjectsTestMatricesRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          testState: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "CancelTestMatrixResponse" });
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          parent: S.String.pipe(T.Label()),
+          body: S.optional(__S(322, __c10, 2).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/{+parent}/deviceSessions",
+            baseUrl: "https://testing.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateProjectsDeviceSessionsRequest",
+      });
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          orientation: S.optional(S.String),
+          androidVersionId: S.optional(S.String),
+          androidModelId: S.optional(S.String),
+          locale: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "AndroidDevice" });
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          stateMessage: S.optional(S.String),
+          eventTime: S.optional(S.String),
+          sessionState: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "SessionStateEvent" });
+    case 1:
+      return S.Array(__S(320, __c10, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          displayName: S.optional(S.String),
+          expireTime: S.optional(S.String),
+          createTime: S.optional(S.String),
+          ttl: S.optional(S.String),
+          activeStartTime: S.optional(S.String),
+          inactivityTimeout: S.optional(S.String),
+          androidDevice: S.optional(__S(288, __c9, 0)),
+          stateHistories: S.optional(__S(321, __c10, 1)),
+          name: S.optional(S.String),
+          state: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "DeviceSession" });
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          projectId: S.String.pipe(T.Label()),
+          requestId: S.optional(S.String.pipe(T.Query())),
+          body: S.optional(__S(439, __c13, 23).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/projects/{projectId}/testMatrices",
+            baseUrl: "https://testing.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateProjectsTestMatricesRequest",
+      });
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          projectId: S.optional(S.String),
+          executionId: S.optional(S.String),
+          historyId: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ToolResultsExecution" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          projectId: S.optional(S.String),
+          historyId: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ToolResultsHistory" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          toolResultsExecution: S.optional(__S(384, __c12, 0)),
+          googleCloudStorage: S.optional(__S(448, __c14, 0)),
+          resultsUrl: S.optional(S.String),
+          toolResultsHistory: S.optional(__S(385, __c12, 1)),
+        }),
+      ).annotate({ identifier: "ResultStorage" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          value: S.optional(S.String),
+          key: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ClientInfoDetail" });
+    case 4:
+      return S.Array(__S(387, __c12, 3));
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.optional(S.String),
+          clientInfoDetails: S.optional(__S(388, __c12, 4)),
+        }),
+      ).annotate({ identifier: "ClientInfo" });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          reason: S.optional(S.String),
+          message: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "MatrixErrorDetail" });
+    case 7:
+      return S.Array(__S(390, __c12, 6));
+    case 8:
+      return S.Array(__S(288, __c9, 0));
+    case 9:
+      return S.suspend(() =>
+        S.Struct({
+          androidDevices: S.optional(__S(392, __c12, 8)),
+        }),
+      ).annotate({ identifier: "AndroidDeviceList" });
+    case 10:
+      return S.suspend(() =>
+        S.Struct({
+          locales: S.optional(__S(480, __c15, 0)),
+          orientations: S.optional(__S(480, __c15, 0)),
+          androidVersionIds: S.optional(__S(480, __c15, 0)),
+          androidModelIds: S.optional(__S(480, __c15, 0)),
+        }),
+      ).annotate({ identifier: "AndroidMatrix" });
+    case 11:
+      return S.suspend(() =>
+        S.Struct({
+          locale: S.optional(S.String),
+          iosModelId: S.optional(S.String),
+          orientation: S.optional(S.String),
+          iosVersionId: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "IosDevice" });
+    case 12:
+      return S.Array(__S(395, __c12, 11));
+    case 13:
+      return S.suspend(() =>
+        S.Struct({
+          iosDevices: S.optional(__S(396, __c12, 12)),
+        }),
+      ).annotate({ identifier: "IosDeviceList" });
+    case 14:
+      return S.suspend(() =>
+        S.Struct({
+          androidDeviceList: S.optional(__S(393, __c12, 9)),
+          androidMatrix: S.optional(__S(394, __c12, 10)),
+          iosDeviceList: S.optional(__S(397, __c12, 13)),
+        }),
+      ).annotate({ identifier: "EnvironmentMatrix" });
+    case 15:
+      return S.Array(__S(448, __c14, 0));
+    case 16:
+      return S.suspend(() =>
+        S.Struct({
+          content: S.optional(__S(448, __c14, 0)),
+          bundleId: S.optional(S.String),
+          devicePath: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "IosDeviceFile" });
+    case 17:
+      return S.Array(__S(400, __c12, 16));
+    case 18:
+      return S.suspend(() =>
+        S.Struct({
+          networkProfile: S.optional(S.String),
+          additionalIpas: S.optional(__S(399, __c12, 15)),
+          pushFiles: S.optional(__S(401, __c12, 17)),
+          pullDirectories: S.optional(__S(401, __c12, 17)),
+        }),
+      ).annotate({ identifier: "IosTestSetup" });
+    case 19:
+      return S.suspend(() =>
+        S.Struct({
+          bundleSplits: S.optional(__S(399, __c12, 15)),
+        }),
+      ).annotate({ identifier: "ApkSplits" });
+    case 20:
+      return S.suspend(() =>
+        S.Struct({
+          bundleLocation: S.optional(__S(448, __c14, 0)),
+          apks: S.optional(__S(403, __c12, 19)),
+        }),
+      ).annotate({ identifier: "AppBundle" });
+    case 21:
+      return S.suspend(() =>
+        S.Struct({
+          actionType: S.optional(S.String),
+          inputText: S.optional(S.String),
+          resourceName: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "RoboDirective" });
+    case 22:
+      return S.Array(__S(405, __c12, 21));
+    case 23:
+      return S.suspend(() =>
+        S.Struct({
+          categories: S.optional(__S(480, __c15, 0)),
+          action: S.optional(S.String),
+          uri: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "StartActivityIntent" });
+    case 24:
+      return S.suspend(() =>
+        S.Struct({
+          noActivity: S.optional(__S(192, __c6, 0)),
+          timeout: S.optional(S.String),
+          startActivity: S.optional(__S(407, __c12, 23)),
+          launcherActivity: S.optional(__S(192, __c6, 0)),
+        }),
+      ).annotate({ identifier: "RoboStartingIntent" });
+    case 25:
+      return S.Array(__S(408, __c12, 24));
+    case 26:
+      return S.suspend(() =>
+        S.Struct({
+          appBundle: S.optional(__S(404, __c12, 20)),
+          roboDirectives: S.optional(__S(406, __c12, 22)),
+          maxDepth: S.optional(S.Number),
+          roboMode: S.optional(S.String),
+          startingIntents: S.optional(__S(409, __c12, 25)),
+          appInitialActivity: S.optional(S.String),
+          appApk: S.optional(__S(448, __c14, 0)),
+          maxSteps: S.optional(S.Number),
+          appPackageId: S.optional(S.String),
+          roboScript: S.optional(__S(448, __c14, 0)),
+        }),
+      ).annotate({ identifier: "AndroidRoboTest" });
+    case 27:
+      return S.suspend(() =>
+        S.Struct({
+          targetedShardDuration: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "SmartSharding" });
+    case 28:
+      return S.suspend(() =>
+        S.Struct({
+          numShards: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "UniformSharding" });
+    case 29:
+      return S.suspend(() =>
+        S.Struct({
+          testTargets: S.optional(__S(480, __c15, 0)),
+        }),
+      ).annotate({ identifier: "TestTargetsForShard" });
+    case 30:
+      return S.Array(__S(413, __c12, 29));
+    case 31:
+      return S.suspend(() =>
+        S.Struct({
+          testTargetsForShard: S.optional(__S(414, __c12, 30)),
+        }),
+      ).annotate({ identifier: "ManualSharding" });
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          smartSharding: S.optional(__S(411, __c12, 27)),
+          uniformSharding: S.optional(__S(412, __c12, 28)),
+          manualSharding: S.optional(__S(415, __c12, 31)),
+        }),
+      ).annotate({ identifier: "ShardingOption" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          appBundle: S.optional(__S(404, __c12, 20)),
+          testRunnerClass: S.optional(S.String),
+          testPackageId: S.optional(S.String),
+          appPackageId: S.optional(S.String),
+          appApk: S.optional(__S(448, __c14, 0)),
+          testTargets: S.optional(__S(480, __c15, 0)),
+          testApk: S.optional(__S(448, __c14, 0)),
+          orchestratorOption: S.optional(S.String),
+          shardingOption: S.optional(__S(416, __c13, 0)),
+        }),
+      ).annotate({
+        identifier: "AndroidInstrumentationTest",
+      });
+    case 2:
+      return S.Array(S.Number);
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          scenarios: S.optional(__S(418, __c13, 2)),
+          appIpa: S.optional(__S(448, __c14, 0)),
+          appBundleId: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "IosTestLoop" });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          testsZip: S.optional(__S(448, __c14, 0)),
+          xcodeVersion: S.optional(S.String),
+          appBundleId: S.optional(S.String),
+          testSpecialEntitlements: S.optional(S.Boolean),
+          xctestrun: S.optional(__S(448, __c14, 0)),
+        }),
+      ).annotate({ identifier: "IosXcTest" });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          appBundle: S.optional(__S(404, __c12, 20)),
+          appPackageId: S.optional(S.String),
+          scenarioLabels: S.optional(__S(480, __c15, 0)),
+          appApk: S.optional(__S(448, __c14, 0)),
+          scenarios: S.optional(__S(418, __c13, 2)),
+        }),
+      ).annotate({ identifier: "AndroidTestLoop" });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          roboScript: S.optional(__S(448, __c14, 0)),
+          appIpa: S.optional(__S(448, __c14, 0)),
+          appBundleId: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "IosRoboTest" });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          googleAuto: S.optional(__S(192, __c6, 0)),
+        }),
+      ).annotate({ identifier: "Account" });
+    case 8:
+      return S.suspend(() =>
+        S.Struct({
+          location: S.optional(__S(448, __c14, 0)),
+          packageName: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Apk" });
+    case 9:
+      return S.Array(__S(424, __c13, 8));
+    case 10:
+      return S.suspend(() =>
+        S.Struct({
+          durationSeconds: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "SystraceSetup" });
+    case 11:
+      return S.suspend(() =>
+        S.Struct({
+          content: S.optional(__S(448, __c14, 0)),
+          devicePath: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "RegularFile" });
+    case 12:
+      return S.suspend(() =>
+        S.Struct({
+          obbFileName: S.optional(S.String),
+          obb: S.optional(__S(448, __c14, 0)),
+        }),
+      ).annotate({ identifier: "ObbFile" });
+    case 13:
+      return S.suspend(() =>
+        S.Struct({
+          regularFile: S.optional(__S(427, __c13, 11)),
+          obbFile: S.optional(__S(428, __c13, 12)),
+        }),
+      ).annotate({ identifier: "DeviceFile" });
+    case 14:
+      return S.Array(__S(429, __c13, 13));
+    case 15:
+      return S.suspend(() =>
+        S.Struct({
+          environmentVariables: S.optional(__S(388, __c12, 4)),
+          account: S.optional(__S(423, __c13, 7)),
+          additionalApks: S.optional(__S(425, __c13, 9)),
+          directoriesToPull: S.optional(__S(480, __c15, 0)),
+          initialSetupApks: S.optional(__S(425, __c13, 9)),
+          systrace: S.optional(__S(426, __c13, 10)),
+          networkProfile: S.optional(S.String),
+          filesToPush: S.optional(__S(430, __c13, 14)),
+          dontAutograntPermissions: S.optional(S.Boolean),
+        }),
+      ).annotate({ identifier: "TestSetup" });
+    case 16:
+      return S.suspend(() =>
+        S.Struct({
+          iosTestSetup: S.optional(__S(402, __c12, 18)),
+          androidRoboTest: S.optional(__S(410, __c12, 26)),
+          disableVideoRecording: S.optional(S.Boolean),
+          androidInstrumentationTest: S.optional(__S(417, __c13, 1)),
+          testTimeout: S.optional(S.String),
+          iosTestLoop: S.optional(__S(419, __c13, 3)),
+          iosXcTest: S.optional(__S(420, __c13, 4)),
+          androidTestLoop: S.optional(__S(421, __c13, 5)),
+          disablePerformanceMetrics: S.optional(S.Boolean),
+          iosRoboTest: S.optional(__S(422, __c13, 6)),
+          testSetup: S.optional(__S(431, __c13, 15)),
+        }),
+      ).annotate({ identifier: "TestSpecification" });
+    case 17:
+      return S.suspend(() =>
+        S.Struct({
+          progressMessages: S.optional(__S(480, __c15, 0)),
+          errorMessage: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "TestDetails" });
+    case 18:
+      return S.suspend(() =>
+        S.Struct({
+          stepId: S.optional(S.String),
+          historyId: S.optional(S.String),
+          projectId: S.optional(S.String),
+          executionId: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ToolResultsStep" });
+    case 19:
+      return S.suspend(() =>
+        S.Struct({
+          estimatedShardDuration: S.optional(S.String),
+          shardIndex: S.optional(S.Number),
+          testTargetsForShard: S.optional(__S(413, __c12, 29)),
+          numShards: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "Shard" });
+    case 20:
+      return S.suspend(() =>
+        S.Struct({
+          iosDevice: S.optional(__S(395, __c12, 11)),
+          androidDevice: S.optional(__S(288, __c9, 0)),
+        }),
+      ).annotate({ identifier: "Environment" });
+    case 21:
+      return S.suspend(() =>
+        S.Struct({
+          state: S.optional(S.String),
+          testDetails: S.optional(__S(433, __c13, 17)),
+          toolResultsStep: S.optional(__S(434, __c13, 18)),
+          shard: S.optional(__S(435, __c13, 19)),
+          id: S.optional(S.String),
+          projectId: S.optional(S.String),
+          environment: S.optional(__S(436, __c13, 20)),
+          testSpecification: S.optional(__S(432, __c13, 16)),
+          matrixId: S.optional(S.String),
+          timestamp: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "TestExecution" });
+    case 22:
+      return S.Array(__S(437, __c13, 21));
+    case 23:
+      return S.suspend(() =>
+        S.Struct({
+          resultStorage: S.optional(__S(386, __c12, 2)),
+          clientInfo: S.optional(__S(389, __c12, 5)),
+          timestamp: S.optional(S.String),
+          failFast: S.optional(S.Boolean),
+          extendedInvalidMatrixDetails: S.optional(__S(391, __c12, 7)),
+          environmentMatrix: S.optional(__S(398, __c12, 14)),
+          invalidMatrixDetails: S.optional(S.String),
+          testSpecification: S.optional(__S(432, __c13, 16)),
+          testExecutions: S.optional(__S(438, __c13, 22)),
+          state: S.optional(S.String),
+          testMatrixId: S.optional(S.String),
+          outcomeSummary: S.optional(S.String),
+          projectId: S.optional(S.String),
+          flakyTestAttempts: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "TestMatrix" });
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          gcsPath: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "GoogleCloudStorage" });
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          "bundleLocation.gcsPath": S.optional(S.String.pipe(T.Query())),
+          body: S.optional(__S(448, __c14, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/applicationDetailService/getApkDetails",
+            baseUrl: "https://testing.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetApkDetailsApplicationDetailServiceRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          actionNames: S.optional(__S(480, __c15, 0)),
+          categoryNames: S.optional(__S(480, __c15, 0)),
+          mimeType: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "IntentFilter" });
+    case 2:
+      return S.Array(__S(513, __c16, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          maxSdkVersion: S.optional(S.Number),
+          name: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "UsesPermissionTag" });
+    case 4:
+      return S.Array(__S(515, __c16, 3));
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.optional(S.String),
+          isRequired: S.optional(S.Boolean),
+        }),
+      ).annotate({ identifier: "UsesFeature" });
+    case 6:
+      return S.Array(__S(517, __c16, 5));
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          value: S.optional(S.String),
+          name: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Metadata" });
+    case 8:
+      return S.Array(__S(519, __c16, 7));
+    case 9:
+      return S.suspend(() =>
+        S.Struct({
+          intentFilter: S.optional(__S(514, __c16, 2)),
+          name: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Service" });
+    case 10:
+      return S.Array(__S(521, __c16, 9));
+    case 11:
+      return S.suspend(() =>
+        S.Struct({
+          minSdkVersion: S.optional(S.Number),
+          maxSdkVersion: S.optional(S.Number),
+          targetSdkVersion: S.optional(S.Number),
+          applicationLabel: S.optional(S.String),
+          usesPermission: S.optional(__S(480, __c15, 0)),
+          intentFilters: S.optional(__S(514, __c16, 2)),
+          usesPermissionTags: S.optional(__S(516, __c16, 4)),
+          packageName: S.optional(S.String),
+          usesFeature: S.optional(__S(518, __c16, 6)),
+          metadata: S.optional(__S(520, __c16, 8)),
+          versionName: S.optional(S.String),
+          versionCode: S.optional(S.String),
+          services: S.optional(__S(522, __c16, 10)),
+        }),
+      ).annotate({ identifier: "ApkManifest" });
+    case 12:
+      return S.suspend(() =>
+        S.Struct({
+          apkManifest: S.optional(__S(523, __c16, 11)),
+        }),
+      ).annotate({ identifier: "ApkDetail" });
+    case 13:
+      return S.suspend(() =>
+        S.Struct({
+          apkDetail: S.optional(__S(524, __c16, 12)),
+        }),
+      ).annotate({ identifier: "GetApkDetailsResponse" });
+  }
+}
+function __c17(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({ method: "GET", uri: "v1/{+name}", baseUrl: "https://testing.googleapis.com/" }),
+        ),
+      ).annotate({
+        identifier: "GetProjectsDeviceSessionsRequest",
+      });
+  }
+}
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

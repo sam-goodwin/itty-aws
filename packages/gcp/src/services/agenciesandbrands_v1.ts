@@ -533,8 +533,8 @@ export const createAgenciesReports: API.OperationMethod<
   CreateAgenciesReportsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(19, __c2, 3) as any as S.Schema<CreateAgenciesReportsRequest>,
-  output: __S(18, __c2, 2) as any as S.Schema<Report>,
+  input: __S(32, __c2, 0) as any as S.Schema<CreateAgenciesReportsRequest>,
+  output: __S(74, __c4, 10) as any as S.Schema<Report>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -548,8 +548,8 @@ export const deleteAgenciesReports: API.OperationMethod<
   DeleteAgenciesReportsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(20, __c2, 4) as any as S.Schema<DeleteAgenciesReportsRequest>,
-  output: __S(21, __c2, 5) as any as S.Schema<Empty>,
+  input: __S(80, __c5, 0) as any as S.Schema<DeleteAgenciesReportsRequest>,
+  output: __S(96, __c6, 0) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -564,8 +564,8 @@ export const fetchRowsAgenciesReportsResults: API.PaginatedOperationMethod<
   GcpOpContext,
   FetchReportResultRowsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(22, __c2, 6) as any as S.Schema<FetchRowsAgenciesReportsResultsRequest>,
-  output: __S(28, __c3, 4) as any as S.Schema<FetchReportResultRowsResponse>,
+  input: __S(112, __c7, 0) as any as S.Schema<FetchRowsAgenciesReportsResultsRequest>,
+  output: __S(118, __c7, 6) as any as S.Schema<FetchReportResultRowsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -580,8 +580,8 @@ export const getAgenciesReports: API.OperationMethod<
   GetAgenciesReportsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(29, __c3, 5) as any as S.Schema<GetAgenciesReportsRequest>,
-  output: __S(18, __c2, 2) as any as S.Schema<Report>,
+  input: __S(128, __c8, 0) as any as S.Schema<GetAgenciesReportsRequest>,
+  output: __S(74, __c4, 10) as any as S.Schema<Report>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -595,8 +595,8 @@ export const getAgenciesReportsOperations: API.OperationMethod<
   GetAgenciesReportsOperationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(30, __c3, 6) as any as S.Schema<GetAgenciesReportsOperationsRequest>,
-  output: __S(34, __c4, 2) as any as S.Schema<Operation>,
+  input: __S(144, __c9, 0) as any as S.Schema<GetAgenciesReportsOperationsRequest>,
+  output: __S(163, __c10, 3) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -611,8 +611,8 @@ export const listAgenciesReports: API.PaginatedOperationMethod<
   GcpOpContext,
   ListReportsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(35, __c4, 3) as any as S.Schema<ListAgenciesReportsRequest>,
-  output: __S(37, __c4, 5) as any as S.Schema<ListReportsResponse>,
+  input: __S(176, __c11, 0) as any as S.Schema<ListAgenciesReportsRequest>,
+  output: __S(178, __c11, 2) as any as S.Schema<ListReportsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -627,8 +627,8 @@ export const patchAgenciesReports: API.OperationMethod<
   PatchAgenciesReportsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(38, __c4, 6) as any as S.Schema<PatchAgenciesReportsRequest>,
-  output: __S(18, __c2, 2) as any as S.Schema<Report>,
+  input: __S(0, __c0, 0) as any as S.Schema<PatchAgenciesReportsRequest>,
+  output: __S(74, __c4, 10) as any as S.Schema<Report>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -642,8 +642,8 @@ export const runAgenciesReports: API.OperationMethod<
   RunAgenciesReportsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(39, __c4, 7) as any as S.Schema<RunAgenciesReportsRequest>,
-  output: __S(34, __c4, 2) as any as S.Schema<Operation>,
+  input: __S(16, __c1, 0) as any as S.Schema<RunAgenciesReportsRequest>,
+  output: __S(163, __c10, 3) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -653,139 +653,49 @@ export const runAgenciesReports: API.OperationMethod<
 function __c0(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(S.String);
-    case 1:
       return S.suspend(() =>
         S.Struct({
-          month: S.optional(S.Number),
-          day: S.optional(S.Number),
-          year: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "Agenciesandbrands_Date" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          endDate: S.optional(__S(1, __c0, 1)),
-          startDate: S.optional(__S(1, __c0, 1)),
-        }),
-      ).annotate({ identifier: "FixedDateRange" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          fixed: S.optional(__S(2, __c0, 2)),
-          relative: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "DateRange" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          filters: S.optional(S.suspend(() => __S(14, __c1, 6))),
-        }),
-      ).annotate({ identifier: "FilterList" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          metric: S.optional(S.String),
-          dimension: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Field" });
-    case 6:
-      return S.Array(S.String);
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          values: S.optional(__S(6, __c0, 6)),
-        }),
-      ).annotate({ identifier: "StringList" });
+          name: S.String.pipe(T.Label()),
+          updateMask: S.optional(S.String.pipe(T.Query())),
+          body: S.optional(__S(74, __c4, 10).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "PATCH",
+            uri: "v1/{+name}",
+            baseUrl: "https://agenciesandbrands.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "PatchAgenciesReportsRequest",
+      });
   }
 }
 function __c1(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(S.Number);
-    case 1:
       return S.suspend(() =>
         S.Struct({
-          values: S.optional(__S(8, __c1, 0)),
-        }),
-      ).annotate({ identifier: "DoubleList" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          stringListValue: S.optional(__S(7, __c0, 7)),
-          intValue: S.optional(S.String),
-          intListValue: S.optional(__S(7, __c0, 7)),
-          bytesValue: S.optional(S.String),
-          stringValue: S.optional(S.String),
-          doubleListValue: S.optional(__S(9, __c1, 1)),
-          boolValue: S.optional(S.Boolean),
-          doubleValue: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "ReportValue" });
-    case 3:
-      return S.Array(__S(10, __c1, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          field: S.optional(__S(5, __c0, 5)),
-          operation: S.optional(S.String),
-          values: S.optional(__S(11, __c1, 3)),
-        }),
-      ).annotate({ identifier: "FieldFilter" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          notFilter: S.optional(__S(13, __c1, 5)),
-          andFilter: S.optional(__S(4, __c0, 4)),
-          orFilter: S.optional(__S(4, __c0, 4)),
-          fieldFilter: S.optional(__S(12, __c1, 4)),
-        }),
-      ).annotate({ identifier: "Filter" });
-    case 6:
-      return S.Array(__S(13, __c1, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          descending: S.optional(S.Boolean),
-          field: S.optional(__S(5, __c0, 5)),
-        }),
-      ).annotate({ identifier: "Sort" });
+          name: S.String.pipe(T.Label()),
+          body: S.optional(__S(96, __c6, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/{+name}:run",
+            baseUrl: "https://agenciesandbrands.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "RunAgenciesReportsRequest",
+      });
   }
 }
 function __c2(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(15, __c1, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          metrics: S.optional(__S(0, __c0, 0)),
-          currencyCode: S.optional(S.String),
-          dimensions: S.optional(__S(0, __c0, 0)),
-          dateRange: S.optional(__S(3, __c0, 3)),
-          filters: S.optional(__S(14, __c1, 6)),
-          timeZoneSource: S.optional(S.String),
-          timeZone: S.optional(S.String),
-          sorts: S.optional(__S(16, __c2, 0)),
-        }),
-      ).annotate({ identifier: "ReportDefinition" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          displayName: S.optional(S.String),
-          reportDefinition: S.optional(__S(17, __c2, 1)),
-          name: S.optional(S.String),
-          updateTime: S.optional(S.String),
-          locale: S.optional(S.String),
-          createTime: S.optional(S.String),
-          reportId: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Report" });
-    case 3:
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(18, __c2, 2).pipe(T.HttpBody())),
+          body: S.optional(__S(74, __c4, 10).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -796,7 +706,140 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "CreateAgenciesReportsRequest",
       });
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          month: S.optional(S.Number),
+          day: S.optional(S.Number),
+          year: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "Agenciesandbrands_Date" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          endDate: S.optional(__S(48, __c3, 0)),
+          startDate: S.optional(__S(48, __c3, 0)),
+        }),
+      ).annotate({ identifier: "FixedDateRange" });
+    case 2:
+      return S.Array(S.String);
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          values: S.optional(__S(50, __c3, 2)),
+        }),
+      ).annotate({ identifier: "StringList" });
     case 4:
+      return S.Array(S.Number);
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          values: S.optional(__S(52, __c3, 4)),
+        }),
+      ).annotate({ identifier: "DoubleList" });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          stringListValue: S.optional(__S(51, __c3, 3)),
+          intValue: S.optional(S.String),
+          intListValue: S.optional(__S(51, __c3, 3)),
+          bytesValue: S.optional(S.String),
+          stringValue: S.optional(S.String),
+          doubleListValue: S.optional(__S(53, __c3, 5)),
+          boolValue: S.optional(S.Boolean),
+          doubleValue: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "ReportValue" });
+    case 7:
+      return S.Array(__S(54, __c3, 6));
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          fixed: S.optional(__S(49, __c3, 1)),
+          relative: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "DateRange" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          filters: S.optional(S.suspend(() => __S(70, __c4, 6))),
+        }),
+      ).annotate({ identifier: "FilterList" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          metric: S.optional(S.String),
+          dimension: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Field" });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          field: S.optional(__S(67, __c4, 3)),
+          operation: S.optional(S.String),
+          values: S.optional(__S(55, __c3, 7)),
+        }),
+      ).annotate({ identifier: "FieldFilter" });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          notFilter: S.optional(__S(69, __c4, 5)),
+          andFilter: S.optional(__S(66, __c4, 2)),
+          orFilter: S.optional(__S(66, __c4, 2)),
+          fieldFilter: S.optional(__S(68, __c4, 4)),
+        }),
+      ).annotate({ identifier: "Filter" });
+    case 6:
+      return S.Array(__S(69, __c4, 5));
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          descending: S.optional(S.Boolean),
+          field: S.optional(__S(67, __c4, 3)),
+        }),
+      ).annotate({ identifier: "Sort" });
+    case 8:
+      return S.Array(__S(71, __c4, 7));
+    case 9:
+      return S.suspend(() =>
+        S.Struct({
+          metrics: S.optional(__S(64, __c4, 0)),
+          currencyCode: S.optional(S.String),
+          dimensions: S.optional(__S(64, __c4, 0)),
+          dateRange: S.optional(__S(65, __c4, 1)),
+          filters: S.optional(__S(70, __c4, 6)),
+          timeZoneSource: S.optional(S.String),
+          timeZone: S.optional(S.String),
+          sorts: S.optional(__S(72, __c4, 8)),
+        }),
+      ).annotate({ identifier: "ReportDefinition" });
+    case 10:
+      return S.suspend(() =>
+        S.Struct({
+          displayName: S.optional(S.String),
+          reportDefinition: S.optional(__S(73, __c4, 9)),
+          name: S.optional(S.String),
+          updateTime: S.optional(S.String),
+          locale: S.optional(S.String),
+          createTime: S.optional(S.String),
+          reportId: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Report" });
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -810,11 +853,19 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "DeleteAgenciesReportsRequest",
       });
-    case 5:
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "Empty",
       });
-    case 6:
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           pageToken: S.optional(S.String.pipe(T.Query())),
@@ -830,42 +881,42 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "FetchRowsAgenciesReportsResultsRequest",
       });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          primaryValues: S.optional(__S(11, __c1, 3)),
-        }),
-      ).annotate({ identifier: "MetricValueGroup" });
-  }
-}
-function __c3(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(23, __c2, 7));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          dimensionValues: S.optional(__S(11, __c1, 3)),
-          metricValueGroups: S.optional(__S(24, __c3, 0)),
+          primaryValues: S.optional(__S(55, __c3, 7)),
+        }),
+      ).annotate({ identifier: "MetricValueGroup" });
+    case 2:
+      return S.Array(__S(113, __c7, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          dimensionValues: S.optional(__S(55, __c3, 7)),
+          metricValueGroups: S.optional(__S(114, __c7, 2)),
         }),
       ).annotate({ identifier: "Row" });
-    case 2:
-      return S.Array(__S(25, __c3, 1));
-    case 3:
-      return S.Array(__S(2, __c0, 2));
     case 4:
+      return S.Array(__S(115, __c7, 3));
+    case 5:
+      return S.Array(__S(49, __c3, 1));
+    case 6:
       return S.suspend(() =>
         S.Struct({
           runTime: S.optional(S.String),
           totalRowCount: S.optional(S.Number),
-          rows: S.optional(__S(26, __c3, 2)),
-          dateRanges: S.optional(__S(27, __c3, 3)),
+          rows: S.optional(__S(116, __c7, 4)),
+          dateRanges: S.optional(__S(117, __c7, 5)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({
         identifier: "FetchReportResultRowsResponse",
       });
-    case 5:
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -879,7 +930,11 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "GetAgenciesReportsRequest",
       });
-    case 6:
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -893,33 +948,37 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "GetAgenciesReportsOperationsRequest",
       });
-    case 7:
-      return S.Record(S.String, S.Unknown);
   }
 }
-function __c4(j: number): any {
+function __c10(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(31, __c3, 7));
+      return S.Record(S.String, S.Unknown);
     case 1:
+      return S.Array(__S(160, __c10, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           message: S.optional(S.String),
           code: S.optional(S.Number),
-          details: S.optional(__S(32, __c4, 0)),
+          details: S.optional(__S(161, __c10, 1)),
         }),
       ).annotate({ identifier: "Status" });
-    case 2:
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          metadata: S.optional(__S(31, __c3, 7)),
-          error: S.optional(__S(33, __c4, 1)),
+          metadata: S.optional(__S(160, __c10, 0)),
+          error: S.optional(__S(162, __c10, 2)),
           name: S.optional(S.String),
-          response: S.optional(__S(31, __c3, 7)),
+          response: S.optional(__S(160, __c10, 0)),
           done: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "Operation" });
-    case 3:
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           filter: S.optional(S.String.pipe(T.Query())),
@@ -938,50 +997,18 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "ListAgenciesReportsRequest",
       });
-    case 4:
-      return S.Array(__S(18, __c2, 2));
-    case 5:
+    case 1:
+      return S.Array(__S(74, __c4, 10));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          reports: S.optional(__S(36, __c4, 4)),
+          reports: S.optional(__S(177, __c11, 1)),
           totalSize: S.optional(S.Number),
         }),
       ).annotate({ identifier: "ListReportsResponse" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-          updateMask: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(18, __c2, 2).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "PATCH",
-            uri: "v1/{+name}",
-            baseUrl: "https://agenciesandbrands.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "PatchAgenciesReportsRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-          body: S.optional(__S(21, __c2, 5).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/{+name}:run",
-            baseUrl: "https://agenciesandbrands.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "RunAgenciesReportsRequest",
-      });
   }
 }
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

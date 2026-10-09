@@ -244,8 +244,8 @@ export const createInstance: API.OperationMethod<
   CreateInstanceError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(0, __c0, 0) as any as S.Schema<CreateInstanceRequest>,
-  output: __S(4, __c0, 4) as any as S.Schema<Instance>,
+  input: __S(32, __c8, 0) as any as S.Schema<CreateInstanceRequest>,
+  output: __S(39, __c9, 3) as any as S.Schema<Instance>,
   errors: [BadRequest, Conflict, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -259,8 +259,8 @@ export const deleteInstance: API.OperationMethod<
   DeleteInstanceError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(5, __c0, 5) as any as S.Schema<DeleteInstanceRequest>,
-  output: __S(6, __c0, 6) as any as S.Schema<DeleteInstanceResponse>,
+  input: __S(40, __c10, 0) as any as S.Schema<DeleteInstanceRequest>,
+  output: __S(44, __c11, 0) as any as S.Schema<DeleteInstanceResponse>,
   errors: [BadRequest, NotFound, Conflict, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -274,8 +274,8 @@ export const deleteInstanceByName: API.OperationMethod<
   DeleteInstanceByNameError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(7, __c0, 7) as any as S.Schema<DeleteInstanceByNameRequest>,
-  output: __S(6, __c0, 6) as any as S.Schema<DeleteInstanceByNameResponse>,
+  input: __S(48, __c12, 0) as any as S.Schema<DeleteInstanceByNameRequest>,
+  output: __S(44, __c11, 0) as any as S.Schema<DeleteInstanceByNameResponse>,
   errors: [BadRequest, NotFound, Conflict, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -289,8 +289,8 @@ export const getInstance: API.OperationMethod<
   GetInstanceError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(8, __c1, 0) as any as S.Schema<GetInstanceRequest>,
-  output: __S(4, __c0, 4) as any as S.Schema<Instance>,
+  input: __S(52, __c13, 0) as any as S.Schema<GetInstanceRequest>,
+  output: __S(39, __c9, 3) as any as S.Schema<Instance>,
   errors: [BadRequest, NotFound, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -304,8 +304,8 @@ export const getInstanceByName: API.OperationMethod<
   GetInstanceByNameError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(9, __c1, 1) as any as S.Schema<GetInstanceByNameRequest>,
-  output: __S(4, __c0, 4) as any as S.Schema<Instance>,
+  input: __S(56, __c14, 0) as any as S.Schema<GetInstanceByNameRequest>,
+  output: __S(39, __c9, 3) as any as S.Schema<Instance>,
   errors: [BadRequest, NotFound, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -319,8 +319,8 @@ export const getKubeconfigByInstanceId: API.OperationMethod<
   GetKubeconfigByInstanceIdError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(10, __c1, 2) as any as S.Schema<GetKubeconfigByInstanceIdRequest>,
-  output: __S(12, __c1, 4) as any as S.Schema<Kubeconfig>,
+  input: __S(60, __c15, 0) as any as S.Schema<GetKubeconfigByInstanceIdRequest>,
+  output: __S(65, __c16, 1) as any as S.Schema<Kubeconfig>,
   errors: [BadRequest, NotFound, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -334,8 +334,8 @@ export const getKubeconfigByInstanceName: API.OperationMethod<
   GetKubeconfigByInstanceNameError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(13, __c1, 5) as any as S.Schema<GetKubeconfigByInstanceNameRequest>,
-  output: __S(12, __c1, 4) as any as S.Schema<Kubeconfig>,
+  input: __S(68, __c17, 0) as any as S.Schema<GetKubeconfigByInstanceNameRequest>,
+  output: __S(65, __c16, 1) as any as S.Schema<Kubeconfig>,
   errors: [BadRequest, NotFound, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -349,8 +349,8 @@ export const getTokenByInstanceId: API.OperationMethod<
   GetTokenByInstanceIdError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(14, __c1, 6) as any as S.Schema<GetTokenByInstanceIdRequest>,
-  output: __S(15, __c1, 7) as any as S.Schema<Token>,
+  input: __S(0, __c0, 0) as any as S.Schema<GetTokenByInstanceIdRequest>,
+  output: __S(4, __c1, 0) as any as S.Schema<Token>,
   errors: [BadRequest, NotFound, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -364,8 +364,8 @@ export const getTokenByInstanceName: API.OperationMethod<
   GetTokenByInstanceNameError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(16, __c2, 0) as any as S.Schema<GetTokenByInstanceNameRequest>,
-  output: __S(15, __c1, 7) as any as S.Schema<Token>,
+  input: __S(8, __c2, 0) as any as S.Schema<GetTokenByInstanceNameRequest>,
+  output: __S(4, __c1, 0) as any as S.Schema<Token>,
   errors: [BadRequest, NotFound, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -378,8 +378,8 @@ export const listCompatibleKubernetesReleases: API.OperationMethod<
   ListCompatibleKubernetesReleasesError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(17, __c2, 1) as any as S.Schema<ListCompatibleKubernetesReleasesRequest>,
-  output: __S(19, __c2, 3) as any as S.Schema<KubernetesReleaseList>,
+  input: __S(12, __c3, 0) as any as S.Schema<ListCompatibleKubernetesReleasesRequest>,
+  output: __S(14, __c3, 2) as any as S.Schema<KubernetesReleaseList>,
   errors: [BadRequest, NotFound, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -393,8 +393,8 @@ export const listInstances: API.OperationMethod<
   ListInstancesError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(20, __c2, 4) as any as S.Schema<ListInstancesRequest>,
-  output: __S(22, __c2, 6) as any as S.Schema<InstanceList>,
+  input: __S(16, __c4, 0) as any as S.Schema<ListInstancesRequest>,
+  output: __S(18, __c4, 2) as any as S.Schema<InstanceList>,
   errors: [BadRequest, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -408,8 +408,8 @@ export const listPlansProject: API.OperationMethod<
   ListPlansProjectError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(23, __c2, 7) as any as S.Schema<ListPlansProjectRequest>,
-  output: __S(26, __c3, 2) as any as S.Schema<PlanList>,
+  input: __S(20, __c5, 0) as any as S.Schema<ListPlansProjectRequest>,
+  output: __S(23, __c5, 3) as any as S.Schema<PlanList>,
   errors: [BadRequest, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -423,8 +423,8 @@ export const updateInstance: API.OperationMethod<
   UpdateInstanceError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(27, __c3, 3) as any as S.Schema<UpdateInstanceRequest>,
-  output: __S(6, __c0, 6) as any as S.Schema<UpdateInstanceResponse>,
+  input: __S(24, __c6, 0) as any as S.Schema<UpdateInstanceRequest>,
+  output: __S(44, __c11, 0) as any as S.Schema<UpdateInstanceResponse>,
   errors: [BadRequest, NotFound, Conflict, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -438,8 +438,8 @@ export const updateInstanceByName: API.OperationMethod<
   UpdateInstanceByNameError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(28, __c3, 4) as any as S.Schema<UpdateInstanceByNameRequest>,
-  output: __S(6, __c0, 6) as any as S.Schema<UpdateInstanceByNameResponse>,
+  input: __S(28, __c7, 0) as any as S.Schema<UpdateInstanceByNameRequest>,
+  output: __S(44, __c11, 0) as any as S.Schema<UpdateInstanceByNameResponse>,
   errors: [BadRequest, NotFound, Conflict, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -449,168 +449,6 @@ export const updateInstanceByName: API.OperationMethod<
 function __c0(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() =>
-        S.Struct({
-          projectId: S.String.pipe(T.Label()),
-          regionId: S.String.pipe(T.Label()),
-          description: S.optional(S.String),
-          displayName: S.String,
-          planId: S.String,
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/v1beta1/projects/{projectId}/regions/{regionId}/instances",
-            code: 200,
-            baseUrl: "https://edge.api.stackit.cloud",
-          }),
-        ),
-      ).annotate({ identifier: "CreateInstanceRequest" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          createdAt: S.optional(S.String),
-          description: S.optional(S.String),
-          ipRange: S.String,
-          updatedAt: S.optional(S.String),
-          uuid: S.String,
-        }),
-      ).annotate({ identifier: "IpAllowListEntry" });
-    case 2:
-      return S.Array(__S(1, __c0, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          ipAllowList: S.optional(__S(2, __c0, 2)),
-        }),
-      ).annotate({ identifier: "Acl" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          acl: S.optional(__S(3, __c0, 3)),
-          created: S.String,
-          description: S.optional(S.String),
-          displayName: S.String,
-          frontendUrl: S.String,
-          id: S.String,
-          planId: S.String,
-          status: S.String,
-        }),
-      ).annotate({ identifier: "Instance" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          projectId: S.String.pipe(T.Label()),
-          regionId: S.String.pipe(T.Label()),
-          instanceId: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/v1beta1/projects/{projectId}/regions/{regionId}/instances/{instanceId}",
-            code: 200,
-            baseUrl: "https://edge.api.stackit.cloud",
-          }),
-        ),
-      ).annotate({ identifier: "DeleteInstanceRequest" });
-    case 6:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "DeleteInstanceResponse",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          projectId: S.String.pipe(T.Label()),
-          regionId: S.String.pipe(T.Label()),
-          displayName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/v1beta1/projects/{projectId}/regions/{regionId}/instancesbyname/{displayName}",
-            code: 200,
-            baseUrl: "https://edge.api.stackit.cloud",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteInstanceByNameRequest",
-      });
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          projectId: S.String.pipe(T.Label()),
-          regionId: S.String.pipe(T.Label()),
-          instanceId: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/v1beta1/projects/{projectId}/regions/{regionId}/instances/{instanceId}",
-            code: 200,
-            baseUrl: "https://edge.api.stackit.cloud",
-          }),
-        ),
-      ).annotate({ identifier: "GetInstanceRequest" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          projectId: S.String.pipe(T.Label()),
-          regionId: S.String.pipe(T.Label()),
-          displayName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/v1beta1/projects/{projectId}/regions/{regionId}/instancesbyname/{displayName}",
-            code: 200,
-            baseUrl: "https://edge.api.stackit.cloud",
-          }),
-        ),
-      ).annotate({ identifier: "GetInstanceByNameRequest" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          projectId: S.String.pipe(T.Label()),
-          regionId: S.String.pipe(T.Label()),
-          instanceId: S.String.pipe(T.Label()),
-          expirationSeconds: S.optional(S.Number.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/v1beta1/projects/{projectId}/regions/{regionId}/instances/{instanceId}/kubeconfig",
-            code: 200,
-            baseUrl: "https://edge.api.stackit.cloud",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetKubeconfigByInstanceIdRequest",
-      });
-    case 3:
-      return S.Record(S.String, S.Unknown);
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          kubeconfig: __S(11, __c1, 3),
-        }),
-      ).annotate({ identifier: "Kubeconfig" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          projectId: S.String.pipe(T.Label()),
-          regionId: S.String.pipe(T.Label()),
-          displayName: S.String.pipe(T.Label()),
-          expirationSeconds: S.optional(S.Number.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/v1beta1/projects/{projectId}/regions/{regionId}/instancesbyname/{displayName}/kubeconfig",
-            code: 200,
-            baseUrl: "https://edge.api.stackit.cloud",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetKubeconfigByInstanceNameRequest",
-      });
-    case 6:
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.Label()),
@@ -628,7 +466,11 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "GetTokenByInstanceIdRequest",
       });
-    case 7:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           token: S.String,
@@ -656,7 +498,11 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "GetTokenByInstanceNameRequest",
       });
-    case 1:
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           talosVersion: S.String.pipe(T.Query()),
@@ -671,15 +517,19 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "ListCompatibleKubernetesReleasesRequest",
       });
-    case 2:
+    case 1:
       return S.Array(S.String);
-    case 3:
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          k8s_releases: __S(18, __c2, 2),
+          k8s_releases: __S(13, __c3, 1),
         }),
       ).annotate({ identifier: "KubernetesReleaseList" });
-    case 4:
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.Label()),
@@ -693,15 +543,19 @@ function __c2(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ListInstancesRequest" });
-    case 5:
-      return S.Array(__S(4, __c0, 4));
-    case 6:
+    case 1:
+      return S.Array(__S(39, __c9, 3));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          instances: __S(21, __c2, 5),
+          instances: __S(17, __c4, 1),
         }),
       ).annotate({ identifier: "InstanceList" });
-    case 7:
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.Label()),
@@ -714,11 +568,7 @@ function __c2(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ListPlansProjectRequest" });
-  }
-}
-function __c3(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           description: S.optional(S.String),
@@ -728,15 +578,19 @@ function __c3(j: number): any {
           name: S.optional(S.String),
         }),
       ).annotate({ identifier: "Plan" });
-    case 1:
-      return S.Array(__S(24, __c3, 0));
     case 2:
+      return S.Array(__S(21, __c5, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          validPlans: S.optional(__S(25, __c3, 1)),
+          validPlans: S.optional(__S(22, __c5, 2)),
         }),
       ).annotate({ identifier: "PlanList" });
-    case 3:
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.Label()),
@@ -753,7 +607,11 @@ function __c3(j: number): any {
           }),
         ),
       ).annotate({ identifier: "UpdateInstanceRequest" });
-    case 4:
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.Label()),
@@ -774,7 +632,204 @@ function __c3(j: number): any {
       });
   }
 }
-
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          projectId: S.String.pipe(T.Label()),
+          regionId: S.String.pipe(T.Label()),
+          description: S.optional(S.String),
+          displayName: S.String,
+          planId: S.String,
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/v1beta1/projects/{projectId}/regions/{regionId}/instances",
+            code: 200,
+            baseUrl: "https://edge.api.stackit.cloud",
+          }),
+        ),
+      ).annotate({ identifier: "CreateInstanceRequest" });
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          createdAt: S.optional(S.String),
+          description: S.optional(S.String),
+          ipRange: S.String,
+          updatedAt: S.optional(S.String),
+          uuid: S.String,
+        }),
+      ).annotate({ identifier: "IpAllowListEntry" });
+    case 1:
+      return S.Array(__S(36, __c9, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          ipAllowList: S.optional(__S(37, __c9, 1)),
+        }),
+      ).annotate({ identifier: "Acl" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          acl: S.optional(__S(38, __c9, 2)),
+          created: S.String,
+          description: S.optional(S.String),
+          displayName: S.String,
+          frontendUrl: S.String,
+          id: S.String,
+          planId: S.String,
+          status: S.String,
+        }),
+      ).annotate({ identifier: "Instance" });
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          projectId: S.String.pipe(T.Label()),
+          regionId: S.String.pipe(T.Label()),
+          instanceId: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/v1beta1/projects/{projectId}/regions/{regionId}/instances/{instanceId}",
+            code: 200,
+            baseUrl: "https://edge.api.stackit.cloud",
+          }),
+        ),
+      ).annotate({ identifier: "DeleteInstanceRequest" });
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "DeleteInstanceResponse",
+      });
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          projectId: S.String.pipe(T.Label()),
+          regionId: S.String.pipe(T.Label()),
+          displayName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/v1beta1/projects/{projectId}/regions/{regionId}/instancesbyname/{displayName}",
+            code: 200,
+            baseUrl: "https://edge.api.stackit.cloud",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteInstanceByNameRequest",
+      });
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          projectId: S.String.pipe(T.Label()),
+          regionId: S.String.pipe(T.Label()),
+          instanceId: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/v1beta1/projects/{projectId}/regions/{regionId}/instances/{instanceId}",
+            code: 200,
+            baseUrl: "https://edge.api.stackit.cloud",
+          }),
+        ),
+      ).annotate({ identifier: "GetInstanceRequest" });
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          projectId: S.String.pipe(T.Label()),
+          regionId: S.String.pipe(T.Label()),
+          displayName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/v1beta1/projects/{projectId}/regions/{regionId}/instancesbyname/{displayName}",
+            code: 200,
+            baseUrl: "https://edge.api.stackit.cloud",
+          }),
+        ),
+      ).annotate({ identifier: "GetInstanceByNameRequest" });
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          projectId: S.String.pipe(T.Label()),
+          regionId: S.String.pipe(T.Label()),
+          instanceId: S.String.pipe(T.Label()),
+          expirationSeconds: S.optional(S.Number.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/v1beta1/projects/{projectId}/regions/{regionId}/instances/{instanceId}/kubeconfig",
+            code: 200,
+            baseUrl: "https://edge.api.stackit.cloud",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetKubeconfigByInstanceIdRequest",
+      });
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, S.Unknown);
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          kubeconfig: __S(64, __c16, 0),
+        }),
+      ).annotate({ identifier: "Kubeconfig" });
+  }
+}
+function __c17(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          projectId: S.String.pipe(T.Label()),
+          regionId: S.String.pipe(T.Label()),
+          displayName: S.String.pipe(T.Label()),
+          expirationSeconds: S.optional(S.Number.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/v1beta1/projects/{projectId}/regions/{regionId}/instancesbyname/{displayName}/kubeconfig",
+            code: 200,
+            baseUrl: "https://edge.api.stackit.cloud",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetKubeconfigByInstanceNameRequest",
+      });
+  }
+}
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

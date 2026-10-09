@@ -496,7 +496,7 @@ export const DeleteRegistrationAssignment: API.OperationMethod<
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(0, __c0, 0) as any as S.Schema<DeleteRegistrationAssignmentRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<DeleteRegistrationAssignmentResponse>,
+  output: __S(8, __c1, 0) as any as S.Schema<DeleteRegistrationAssignmentResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -510,8 +510,8 @@ export const DeleteRegistrationDefinition: API.OperationMethod<
   DeleteRegistrationDefinitionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2, __c0, 2) as any as S.Schema<DeleteRegistrationDefinitionRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<DeleteRegistrationDefinitionResponse>,
+  input: __S(16, __c2, 0) as any as S.Schema<DeleteRegistrationDefinitionRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<DeleteRegistrationDefinitionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -525,8 +525,8 @@ export const GetMarketplaceRegistrationDefinition: API.OperationMethod<
   GetMarketplaceRegistrationDefinitionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3, __c0, 3) as any as S.Schema<GetMarketplaceRegistrationDefinitionRequest>,
-  output: __S(14, __c1, 6) as any as S.Schema<MarketplaceRegistrationDefinition>,
+  input: __S(56, __c7, 0) as any as S.Schema<GetMarketplaceRegistrationDefinitionRequest>,
+  output: __S(89, __c11, 1) as any as S.Schema<MarketplaceRegistrationDefinition>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -541,11 +541,11 @@ export const GetMarketplaceRegistrationDefinitionsWithoutScope: API.OperationMet
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    15,
-    __c1,
-    7,
+    96,
+    __c12,
+    0,
   ) as any as S.Schema<GetMarketplaceRegistrationDefinitionsWithoutScopeRequest>,
-  output: __S(14, __c1, 6) as any as S.Schema<MarketplaceRegistrationDefinition>,
+  output: __S(89, __c11, 1) as any as S.Schema<MarketplaceRegistrationDefinition>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -559,8 +559,8 @@ export const GetRegistrationAssignment: API.OperationMethod<
   GetRegistrationAssignmentError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(16, __c2, 0) as any as S.Schema<GetRegistrationAssignmentRequest>,
-  output: __S(23, __c2, 7) as any as S.Schema<RegistrationAssignment>,
+  input: __S(104, __c13, 0) as any as S.Schema<GetRegistrationAssignmentRequest>,
+  output: __S(117, __c14, 5) as any as S.Schema<RegistrationAssignment>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -574,8 +574,8 @@ export const GetRegistrationDefinition: API.OperationMethod<
   GetRegistrationDefinitionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(24, __c3, 0) as any as S.Schema<GetRegistrationDefinitionRequest>,
-  output: __S(27, __c3, 3) as any as S.Schema<RegistrationDefinition>,
+  input: __S(128, __c16, 0) as any as S.Schema<GetRegistrationDefinitionRequest>,
+  output: __S(138, __c17, 2) as any as S.Schema<RegistrationDefinition>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -589,8 +589,8 @@ export const ListMarketplaceRegistrationDefinitions: API.OperationMethod<
   ListMarketplaceRegistrationDefinitionsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(28, __c3, 4) as any as S.Schema<ListMarketplaceRegistrationDefinitionsRequest>,
-  output: __S(30, __c3, 6) as any as S.Schema<MarketplaceRegistrationDefinitionList>,
+  input: __S(144, __c18, 0) as any as S.Schema<ListMarketplaceRegistrationDefinitionsRequest>,
+  output: __S(153, __c19, 1) as any as S.Schema<MarketplaceRegistrationDefinitionList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -605,11 +605,11 @@ export const ListMarketplaceRegistrationDefinitionsWithoutScope: API.OperationMe
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    31,
-    __c3,
-    7,
+    160,
+    __c20,
+    0,
   ) as any as S.Schema<ListMarketplaceRegistrationDefinitionsWithoutScopeRequest>,
-  output: __S(30, __c3, 6) as any as S.Schema<MarketplaceRegistrationDefinitionList>,
+  output: __S(153, __c19, 1) as any as S.Schema<MarketplaceRegistrationDefinitionList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -623,8 +623,8 @@ export const ListOperations: API.OperationMethod<
   ListOperationsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(32, __c4, 0) as any as S.Schema<ListOperationsRequest>,
-  output: __S(36, __c4, 4) as any as S.Schema<OperationList>,
+  input: __S(168, __c21, 0) as any as S.Schema<ListOperationsRequest>,
+  output: __S(179, __c22, 3) as any as S.Schema<OperationList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -638,8 +638,8 @@ export const ListOperationsWithScope: API.OperationMethod<
   ListOperationsWithScopeError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(37, __c4, 5) as any as S.Schema<ListOperationsWithScopeRequest>,
-  output: __S(36, __c4, 4) as any as S.Schema<OperationList>,
+  input: __S(184, __c23, 0) as any as S.Schema<ListOperationsWithScopeRequest>,
+  output: __S(179, __c22, 3) as any as S.Schema<OperationList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -653,8 +653,8 @@ export const ListRegistrationAssignments: API.OperationMethod<
   ListRegistrationAssignmentsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(38, __c4, 6) as any as S.Schema<ListRegistrationAssignmentsRequest>,
-  output: __S(40, __c5, 0) as any as S.Schema<RegistrationAssignmentList>,
+  input: __S(24, __c3, 0) as any as S.Schema<ListRegistrationAssignmentsRequest>,
+  output: __S(26, __c3, 2) as any as S.Schema<RegistrationAssignmentList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -668,8 +668,8 @@ export const ListRegistrationDefinitions: API.OperationMethod<
   ListRegistrationDefinitionsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(41, __c5, 1) as any as S.Schema<ListRegistrationDefinitionsRequest>,
-  output: __S(43, __c5, 3) as any as S.Schema<RegistrationDefinitionList>,
+  input: __S(32, __c4, 0) as any as S.Schema<ListRegistrationDefinitionsRequest>,
+  output: __S(34, __c4, 2) as any as S.Schema<RegistrationDefinitionList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -683,8 +683,8 @@ export const RegistrationAssignmentsCreateOrUpdate: API.OperationMethod<
   RegistrationAssignmentsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(45, __c5, 5) as any as S.Schema<RegistrationAssignmentsCreateOrUpdateRequest>,
-  output: __S(23, __c2, 7) as any as S.Schema<RegistrationAssignment>,
+  input: __S(41, __c5, 1) as any as S.Schema<RegistrationAssignmentsCreateOrUpdateRequest>,
+  output: __S(117, __c14, 5) as any as S.Schema<RegistrationAssignment>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -698,8 +698,8 @@ export const RegistrationDefinitionsCreateOrUpdate: API.OperationMethod<
   RegistrationDefinitionsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(47, __c5, 7) as any as S.Schema<RegistrationDefinitionsCreateOrUpdateRequest>,
-  output: __S(27, __c3, 3) as any as S.Schema<RegistrationDefinition>,
+  input: __S(49, __c6, 1) as any as S.Schema<RegistrationDefinitionsCreateOrUpdateRequest>,
+  output: __S(138, __c17, 2) as any as S.Schema<RegistrationDefinition>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -724,11 +724,19 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "DeleteRegistrationAssignmentRequest",
       });
-    case 1:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "DeleteRegistrationAssignmentResponse",
       });
-    case 2:
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           scope: S.String.pipe(T.Label()),
@@ -744,7 +752,139 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "DeleteRegistrationDefinitionRequest",
       });
-    case 3:
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          scope: S.String.pipe(T.Label()),
+          _expandRegistrationDefinition: S.optional(
+            S.Boolean.pipe(T.Query("$expandRegistrationDefinition")),
+          ),
+          _filter: S.optional(S.String.pipe(T.Query("$filter"))),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/{scope+}/providers/Microsoft.ManagedServices/registrationAssignments",
+            code: 200,
+            apiVersion: "2022-10-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListRegistrationAssignmentsRequest",
+      });
+    case 1:
+      return S.Array(__S(117, __c14, 5));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          value: S.optional(__S(25, __c3, 1)),
+          nextLink: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "RegistrationAssignmentList",
+      });
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          scope: S.String.pipe(T.Label()),
+          _filter: S.optional(S.String.pipe(T.Query("$filter"))),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/{scope+}/providers/Microsoft.ManagedServices/registrationDefinitions",
+            code: 200,
+            apiVersion: "2022-10-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListRegistrationDefinitionsRequest",
+      });
+    case 1:
+      return S.Array(__S(138, __c17, 2));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          value: S.optional(__S(33, __c4, 1)),
+          nextLink: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "RegistrationDefinitionList",
+      });
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          registrationDefinitionId: S.String,
+        }),
+      ).annotate({
+        identifier: "RegistrationAssignmentPropertiesInput",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          scope: S.String.pipe(T.Label()),
+          registrationAssignmentId: S.String.pipe(T.Label()),
+          properties: S.optional(__S(40, __c5, 0)),
+        }).pipe(
+          T.Http({
+            method: "PUT",
+            uri: "/{scope+}/providers/Microsoft.ManagedServices/registrationAssignments/{registrationAssignmentId}",
+            code: 200,
+            apiVersion: "2022-10-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "RegistrationAssignmentsCreateOrUpdateRequest",
+      });
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          description: S.optional(S.String),
+          authorizations: __S(80, __c10, 0),
+          eligibleAuthorizations: S.optional(__S(72, __c9, 0)),
+          registrationDefinitionName: S.optional(S.String),
+          managedByTenantId: S.String,
+        }),
+      ).annotate({
+        identifier: "RegistrationDefinitionPropertiesInput",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          scope: S.String.pipe(T.Label()),
+          registrationDefinitionId: S.String.pipe(T.Label()),
+          properties: S.optional(__S(48, __c6, 0)),
+          plan: S.optional(__S(70, __c8, 6)),
+        }).pipe(
+          T.Http({
+            method: "PUT",
+            uri: "/{scope+}/providers/Microsoft.ManagedServices/registrationDefinitions/{registrationDefinitionId}",
+            code: 200,
+            apiVersion: "2022-10-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "RegistrationDefinitionsCreateOrUpdateRequest",
+      });
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           scope: S.String.pipe(T.Label()),
@@ -760,65 +900,48 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "GetMarketplaceRegistrationDefinitionRequest",
       });
-    case 4:
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
       return S.Array(S.String);
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           principalId: S.String,
           principalIdDisplayName: S.optional(S.String),
           roleDefinitionId: S.String,
-          delegatedRoleDefinitionIds: S.optional(__S(4, __c0, 4)),
+          delegatedRoleDefinitionIds: S.optional(__S(64, __c8, 0)),
         }),
       ).annotate({ identifier: "Authorization" });
-    case 6:
-      return S.Array(__S(5, __c0, 5));
-    case 7:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           principalId: S.String,
           principalIdDisplayName: S.optional(S.String),
         }),
       ).annotate({ identifier: "EligibleApprover" });
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(7, __c0, 7));
-    case 1:
+    case 3:
+      return S.Array(__S(66, __c8, 2));
+    case 4:
       return S.suspend(() =>
         S.Struct({
           multiFactorAuthProvider: S.String,
           maximumActivationDuration: S.optional(S.String),
-          managedByTenantApprovers: S.optional(__S(8, __c1, 0)),
+          managedByTenantApprovers: S.optional(__S(67, __c8, 3)),
         }),
       ).annotate({ identifier: "JustInTimeAccessPolicy" });
-    case 2:
+    case 5:
       return S.suspend(() =>
         S.Struct({
           principalId: S.String,
           principalIdDisplayName: S.optional(S.String),
           roleDefinitionId: S.String,
-          justInTimeAccessPolicy: S.optional(__S(9, __c1, 1)),
+          justInTimeAccessPolicy: S.optional(__S(68, __c8, 4)),
         }),
       ).annotate({ identifier: "EligibleAuthorization" });
-    case 3:
-      return S.Array(__S(10, __c1, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          managedByTenantId: S.String,
-          authorizations: __S(6, __c0, 6),
-          eligibleAuthorizations: S.optional(__S(11, __c1, 3)),
-          offerDisplayName: S.optional(S.String),
-          publisherDisplayName: S.optional(S.String),
-          planDisplayName: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "MarketplaceRegistrationDefinitionProperties",
-      });
-    case 5:
+    case 6:
       return S.suspend(() =>
         S.Struct({
           name: S.String,
@@ -827,11 +950,40 @@ function __c1(j: number): any {
           version: S.String,
         }),
       ).annotate({ identifier: "Plan" });
-    case 6:
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(69, __c8, 5));
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(65, __c8, 1));
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          properties: S.optional(__S(12, __c1, 4)),
-          plan: S.optional(__S(13, __c1, 5)),
+          managedByTenantId: S.String,
+          authorizations: __S(80, __c10, 0),
+          eligibleAuthorizations: S.optional(__S(72, __c9, 0)),
+          offerDisplayName: S.optional(S.String),
+          publisherDisplayName: S.optional(S.String),
+          planDisplayName: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "MarketplaceRegistrationDefinitionProperties",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          properties: S.optional(__S(88, __c11, 0)),
+          plan: S.optional(__S(70, __c8, 6)),
           id: S.optional(S.String),
           type: S.optional(S.String),
           name: S.optional(S.String),
@@ -839,7 +991,11 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "MarketplaceRegistrationDefinition",
       });
-    case 7:
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           marketplaceIdentifier: S.String.pipe(T.Label()),
@@ -856,7 +1012,7 @@ function __c1(j: number): any {
       });
   }
 }
-function __c2(j: number): any {
+function __c13(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -877,14 +1033,18 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "GetRegistrationAssignmentRequest",
       });
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(65, __c8, 1));
     case 1:
-      return S.Array(__S(5, __c0, 5));
-    case 2:
       return S.suspend(() =>
         S.Struct({
           description: S.optional(S.String),
-          authorizations: S.optional(__S(17, __c2, 1)),
-          eligibleAuthorizations: S.optional(__S(11, __c1, 3)),
+          authorizations: S.optional(__S(112, __c14, 0)),
+          eligibleAuthorizations: S.optional(__S(72, __c9, 0)),
           registrationDefinitionName: S.optional(S.String),
           provisioningState: S.optional(S.String),
           manageeTenantId: S.optional(S.String),
@@ -895,7 +1055,7 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "RegistrationAssignmentPropertiesRegistrationDefinitionProperties",
       });
-    case 3:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           createdBy: S.optional(S.String),
@@ -908,30 +1068,44 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "RegistrationAssignmentPropertiesRegistrationDefinitionSystemData",
       });
-    case 4:
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          properties: S.optional(__S(18, __c2, 2)),
-          plan: S.optional(__S(13, __c1, 5)),
+          properties: S.optional(__S(113, __c14, 1)),
+          plan: S.optional(__S(70, __c8, 6)),
           id: S.optional(S.String),
           type: S.optional(S.String),
           name: S.optional(S.String),
-          systemData: S.optional(__S(19, __c2, 3)),
+          systemData: S.optional(__S(114, __c14, 2)),
         }),
       ).annotate({
         identifier: "RegistrationAssignmentPropertiesRegistrationDefinition",
       });
-    case 5:
+    case 4:
       return S.suspend(() =>
         S.Struct({
           registrationDefinitionId: S.String,
           provisioningState: S.optional(S.String),
-          registrationDefinition: S.optional(__S(20, __c2, 4)),
+          registrationDefinition: S.optional(__S(115, __c14, 3)),
         }),
       ).annotate({
         identifier: "RegistrationAssignmentProperties",
       });
-    case 6:
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          properties: S.optional(__S(116, __c14, 4)),
+          id: S.optional(S.String),
+          type: S.optional(S.String),
+          name: S.optional(S.String),
+          systemData: S.optional(__S(120, __c15, 0)),
+        }),
+      ).annotate({ identifier: "RegistrationAssignment" });
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           createdBy: S.optional(S.String),
@@ -944,19 +1118,9 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "RegistrationAssignmentSystemData",
       });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          properties: S.optional(__S(21, __c2, 5)),
-          id: S.optional(S.String),
-          type: S.optional(S.String),
-          name: S.optional(S.String),
-          systemData: S.optional(__S(22, __c2, 6)),
-        }),
-      ).annotate({ identifier: "RegistrationAssignment" });
   }
 }
-function __c3(j: number): any {
+function __c16(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -974,14 +1138,18 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "GetRegistrationDefinitionRequest",
       });
+  }
+}
+function __c17(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(69, __c8, 5));
     case 1:
-      return S.Array(__S(10, __c1, 2));
-    case 2:
       return S.suspend(() =>
         S.Struct({
           description: S.optional(S.String),
-          authorizations: __S(6, __c0, 6),
-          eligibleAuthorizations: S.optional(__S(25, __c3, 1)),
+          authorizations: __S(80, __c10, 0),
+          eligibleAuthorizations: S.optional(__S(136, __c17, 0)),
           registrationDefinitionName: S.optional(S.String),
           managedByTenantId: S.String,
           provisioningState: S.optional(S.String),
@@ -992,18 +1160,22 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "RegistrationDefinitionProperties",
       });
-    case 3:
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          properties: S.optional(__S(26, __c3, 2)),
-          plan: S.optional(__S(13, __c1, 5)),
+          properties: S.optional(__S(137, __c17, 1)),
+          plan: S.optional(__S(70, __c8, 6)),
           id: S.optional(S.String),
           type: S.optional(S.String),
           name: S.optional(S.String),
-          systemData: S.optional(__S(22, __c2, 6)),
+          systemData: S.optional(__S(120, __c15, 0)),
         }),
       ).annotate({ identifier: "RegistrationDefinition" });
-    case 4:
+  }
+}
+function __c18(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           scope: S.String.pipe(T.Label()),
@@ -1019,18 +1191,26 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "ListMarketplaceRegistrationDefinitionsRequest",
       });
-    case 5:
-      return S.Array(__S(14, __c1, 6));
-    case 6:
+  }
+}
+function __c19(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(89, __c11, 1));
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(29, __c3, 5)),
+          value: S.optional(__S(152, __c19, 0)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
         identifier: "MarketplaceRegistrationDefinitionList",
       });
-    case 7:
+  }
+}
+function __c20(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           _filter: S.optional(S.String.pipe(T.Query("$filter"))),
@@ -1047,7 +1227,7 @@ function __c3(j: number): any {
       });
   }
 }
-function __c4(j: number): any {
+function __c21(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1060,7 +1240,11 @@ function __c4(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ListOperationsRequest" });
-    case 1:
+  }
+}
+function __c22(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           provider: S.optional(S.String),
@@ -1069,22 +1253,26 @@ function __c4(j: number): any {
           description: S.optional(S.String),
         }),
       ).annotate({ identifier: "OperationDisplay" });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
-          display: S.optional(__S(33, __c4, 1)),
+          display: S.optional(__S(176, __c22, 0)),
         }),
       ).annotate({ identifier: "Operation" });
+    case 2:
+      return S.Array(__S(177, __c22, 1));
     case 3:
-      return S.Array(__S(34, __c4, 2));
-    case 4:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(35, __c4, 3)),
+          value: S.optional(__S(178, __c22, 2)),
         }),
       ).annotate({ identifier: "OperationList" });
-    case 5:
+  }
+}
+function __c23(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           scope: S.String.pipe(T.Label()),
@@ -1099,125 +1287,8 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "ListOperationsWithScopeRequest",
       });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          scope: S.String.pipe(T.Label()),
-          _expandRegistrationDefinition: S.optional(
-            S.Boolean.pipe(T.Query("$expandRegistrationDefinition")),
-          ),
-          _filter: S.optional(S.String.pipe(T.Query("$filter"))),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/{scope+}/providers/Microsoft.ManagedServices/registrationAssignments",
-            code: 200,
-            apiVersion: "2022-10-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListRegistrationAssignmentsRequest",
-      });
-    case 7:
-      return S.Array(__S(23, __c2, 7));
   }
 }
-function __c5(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          value: S.optional(__S(39, __c4, 7)),
-          nextLink: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "RegistrationAssignmentList",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          scope: S.String.pipe(T.Label()),
-          _filter: S.optional(S.String.pipe(T.Query("$filter"))),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/{scope+}/providers/Microsoft.ManagedServices/registrationDefinitions",
-            code: 200,
-            apiVersion: "2022-10-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListRegistrationDefinitionsRequest",
-      });
-    case 2:
-      return S.Array(__S(27, __c3, 3));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          value: S.optional(__S(42, __c5, 2)),
-          nextLink: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "RegistrationDefinitionList",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          registrationDefinitionId: S.String,
-        }),
-      ).annotate({
-        identifier: "RegistrationAssignmentPropertiesInput",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          scope: S.String.pipe(T.Label()),
-          registrationAssignmentId: S.String.pipe(T.Label()),
-          properties: S.optional(__S(44, __c5, 4)),
-        }).pipe(
-          T.Http({
-            method: "PUT",
-            uri: "/{scope+}/providers/Microsoft.ManagedServices/registrationAssignments/{registrationAssignmentId}",
-            code: 200,
-            apiVersion: "2022-10-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "RegistrationAssignmentsCreateOrUpdateRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          description: S.optional(S.String),
-          authorizations: __S(6, __c0, 6),
-          eligibleAuthorizations: S.optional(__S(11, __c1, 3)),
-          registrationDefinitionName: S.optional(S.String),
-          managedByTenantId: S.String,
-        }),
-      ).annotate({
-        identifier: "RegistrationDefinitionPropertiesInput",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          scope: S.String.pipe(T.Label()),
-          registrationDefinitionId: S.String.pipe(T.Label()),
-          properties: S.optional(__S(46, __c5, 6)),
-          plan: S.optional(__S(13, __c1, 5)),
-        }).pipe(
-          T.Http({
-            method: "PUT",
-            uri: "/{scope+}/providers/Microsoft.ManagedServices/registrationDefinitions/{registrationDefinitionId}",
-            code: 200,
-            apiVersion: "2022-10-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "RegistrationDefinitionsCreateOrUpdateRequest",
-      });
-  }
-}
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

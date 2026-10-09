@@ -753,7 +753,7 @@ export const DeletePrivateZone: API.OperationMethod<
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(0, __c0, 0) as any as S.Schema<DeletePrivateZoneRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<DeletePrivateZoneResponse>,
+  output: __S(16, __c1, 0) as any as S.Schema<DeletePrivateZoneResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -767,8 +767,8 @@ export const DeleteRecordSet: API.OperationMethod<
   DeleteRecordSetError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2, __c0, 2) as any as S.Schema<DeleteRecordSetRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<DeleteRecordSetResponse>,
+  input: __S(32, __c2, 0) as any as S.Schema<DeleteRecordSetRequest>,
+  output: __S(16, __c1, 0) as any as S.Schema<DeleteRecordSetResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -782,8 +782,8 @@ export const DeleteVirtualNetworkLink: API.OperationMethod<
   DeleteVirtualNetworkLinkError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3, __c0, 3) as any as S.Schema<DeleteVirtualNetworkLinkRequest>,
-  output: __S(4, __c0, 4) as any as S.Schema<DeleteVirtualNetworkLinkResponse>,
+  input: __S(208, __c13, 0) as any as S.Schema<DeleteVirtualNetworkLinkRequest>,
+  output: __S(209, __c13, 1) as any as S.Schema<DeleteVirtualNetworkLinkResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -797,8 +797,8 @@ export const GetPrivateZone: API.OperationMethod<
   GetPrivateZoneError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(5, __c0, 5) as any as S.Schema<GetPrivateZoneRequest>,
-  output: __S(9, __c1, 1) as any as S.Schema<GetPrivateZoneResponse>,
+  input: __S(224, __c14, 0) as any as S.Schema<GetPrivateZoneRequest>,
+  output: __S(256, __c16, 0) as any as S.Schema<GetPrivateZoneResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -812,8 +812,8 @@ export const GetRecordSet: API.OperationMethod<
   GetRecordSetError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(10, __c1, 2) as any as S.Schema<GetRecordSetRequest>,
-  output: __S(27, __c3, 3) as any as S.Schema<GetRecordSetResponse>,
+  input: __S(288, __c18, 0) as any as S.Schema<GetRecordSetRequest>,
+  output: __S(320, __c20, 0) as any as S.Schema<GetRecordSetResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -827,8 +827,8 @@ export const GetVirtualNetworkLink: API.OperationMethod<
   GetVirtualNetworkLinkError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(28, __c3, 4) as any as S.Schema<GetVirtualNetworkLinkRequest>,
-  output: __S(31, __c3, 7) as any as S.Schema<GetVirtualNetworkLinkResponse>,
+  input: __S(336, __c21, 0) as any as S.Schema<GetVirtualNetworkLinkRequest>,
+  output: __S(368, __c23, 0) as any as S.Schema<GetVirtualNetworkLinkResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -842,8 +842,8 @@ export const ListPrivateZoneByResourceGroup: API.OperationMethod<
   ListPrivateZoneByResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(32, __c4, 0) as any as S.Schema<ListPrivateZoneByResourceGroupRequest>,
-  output: __S(34, __c4, 2) as any as S.Schema<PrivateZoneListResult>,
+  input: __S(384, __c24, 0) as any as S.Schema<ListPrivateZoneByResourceGroupRequest>,
+  output: __S(401, __c25, 1) as any as S.Schema<PrivateZoneListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -857,8 +857,8 @@ export const ListPrivateZones: API.OperationMethod<
   ListPrivateZonesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(35, __c4, 3) as any as S.Schema<ListPrivateZonesRequest>,
-  output: __S(34, __c4, 2) as any as S.Schema<PrivateZoneListResult>,
+  input: __S(416, __c26, 0) as any as S.Schema<ListPrivateZonesRequest>,
+  output: __S(401, __c25, 1) as any as S.Schema<PrivateZoneListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -872,8 +872,8 @@ export const ListRecordSetByType: API.OperationMethod<
   ListRecordSetByTypeError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(36, __c4, 4) as any as S.Schema<ListRecordSetByTypeRequest>,
-  output: __S(38, __c4, 6) as any as S.Schema<RecordSetListResult>,
+  input: __S(432, __c27, 0) as any as S.Schema<ListRecordSetByTypeRequest>,
+  output: __S(449, __c28, 1) as any as S.Schema<RecordSetListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -887,8 +887,8 @@ export const ListRecordSets: API.OperationMethod<
   ListRecordSetsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(39, __c4, 7) as any as S.Schema<ListRecordSetsRequest>,
-  output: __S(38, __c4, 6) as any as S.Schema<RecordSetListResult>,
+  input: __S(464, __c29, 0) as any as S.Schema<ListRecordSetsRequest>,
+  output: __S(449, __c28, 1) as any as S.Schema<RecordSetListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -902,8 +902,8 @@ export const ListVirtualNetworkLinks: API.OperationMethod<
   ListVirtualNetworkLinksError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(40, __c5, 0) as any as S.Schema<ListVirtualNetworkLinksRequest>,
-  output: __S(43, __c5, 3) as any as S.Schema<VirtualNetworkLinkListResult>,
+  input: __S(48, __c3, 0) as any as S.Schema<ListVirtualNetworkLinksRequest>,
+  output: __S(51, __c3, 3) as any as S.Schema<VirtualNetworkLinkListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -917,8 +917,8 @@ export const PrivateZonesCreateOrUpdate: API.OperationMethod<
   PrivateZonesCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(44, __c5, 4) as any as S.Schema<PrivateZonesCreateOrUpdateRequest>,
-  output: __S(45, __c5, 5) as any as S.Schema<PrivateZonesCreateOrUpdateResponse>,
+  input: __S(64, __c4, 0) as any as S.Schema<PrivateZonesCreateOrUpdateRequest>,
+  output: __S(80, __c5, 0) as any as S.Schema<PrivateZonesCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -932,8 +932,8 @@ export const RecordSetsCreateOrUpdate: API.OperationMethod<
   RecordSetsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(47, __c5, 7) as any as S.Schema<RecordSetsCreateOrUpdateRequest>,
-  output: __S(48, __c6, 0) as any as S.Schema<RecordSetsCreateOrUpdateResponse>,
+  input: __S(96, __c6, 0) as any as S.Schema<RecordSetsCreateOrUpdateRequest>,
+  output: __S(97, __c6, 1) as any as S.Schema<RecordSetsCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -947,8 +947,8 @@ export const UpdatePrivateZone: API.OperationMethod<
   UpdatePrivateZoneError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(49, __c6, 1) as any as S.Schema<UpdatePrivateZoneRequest>,
-  output: __S(45, __c5, 5) as any as S.Schema<UpdatePrivateZoneResponse>,
+  input: __S(128, __c8, 0) as any as S.Schema<UpdatePrivateZoneRequest>,
+  output: __S(80, __c5, 0) as any as S.Schema<UpdatePrivateZoneResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -962,8 +962,8 @@ export const UpdateRecordSet: API.OperationMethod<
   UpdateRecordSetError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(50, __c6, 2) as any as S.Schema<UpdateRecordSetRequest>,
-  output: __S(27, __c3, 3) as any as S.Schema<UpdateRecordSetResponse>,
+  input: __S(144, __c9, 0) as any as S.Schema<UpdateRecordSetRequest>,
+  output: __S(320, __c20, 0) as any as S.Schema<UpdateRecordSetResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -977,8 +977,8 @@ export const UpdateVirtualNetworkLink: API.OperationMethod<
   UpdateVirtualNetworkLinkError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(52, __c6, 4) as any as S.Schema<UpdateVirtualNetworkLinkRequest>,
-  output: __S(31, __c3, 7) as any as S.Schema<UpdateVirtualNetworkLinkResponse>,
+  input: __S(160, __c10, 0) as any as S.Schema<UpdateVirtualNetworkLinkRequest>,
+  output: __S(368, __c23, 0) as any as S.Schema<UpdateVirtualNetworkLinkResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -992,8 +992,8 @@ export const VirtualNetworkLinksCreateOrUpdate: API.OperationMethod<
   VirtualNetworkLinksCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(53, __c6, 5) as any as S.Schema<VirtualNetworkLinksCreateOrUpdateRequest>,
-  output: __S(31, __c3, 7) as any as S.Schema<VirtualNetworkLinksCreateOrUpdateResponse>,
+  input: __S(192, __c12, 0) as any as S.Schema<VirtualNetworkLinksCreateOrUpdateRequest>,
+  output: __S(368, __c23, 0) as any as S.Schema<VirtualNetworkLinksCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1017,11 +1017,19 @@ function __c0(j: number): any {
           }),
         ),
       ).annotate({ identifier: "DeletePrivateZoneRequest" });
-    case 1:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "DeletePrivateZoneResponse",
       });
-    case 2:
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -1038,355 +1046,9 @@ function __c0(j: number): any {
           }),
         ),
       ).annotate({ identifier: "DeleteRecordSetRequest" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          privateZoneName: S.String.pipe(T.Label()),
-          virtualNetworkLinkName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/privateDnsZones/{privateZoneName}/virtualNetworkLinks/{virtualNetworkLinkName}",
-            code: 200,
-            apiVersion: "2024-06-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteVirtualNetworkLinkRequest",
-      });
-    case 4:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "DeleteVirtualNetworkLinkResponse",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          privateZoneName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/privateDnsZones/{privateZoneName}",
-            code: 200,
-            apiVersion: "2024-06-01",
-          }),
-        ),
-      ).annotate({ identifier: "GetPrivateZoneRequest" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          createdBy: S.optional(S.String),
-          createdByType: S.optional(S.String),
-          createdAt: S.optional(S.String),
-          lastModifiedBy: S.optional(S.String),
-          lastModifiedByType: S.optional(S.String),
-          lastModifiedAt: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "SystemData" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          maxNumberOfRecordSets: S.optional(S.Number),
-          numberOfRecordSets: S.optional(S.Number),
-          maxNumberOfVirtualNetworkLinks: S.optional(S.Number),
-          numberOfVirtualNetworkLinks: S.optional(S.Number),
-          maxNumberOfVirtualNetworkLinksWithRegistration: S.optional(S.Number),
-          numberOfVirtualNetworkLinksWithRegistration: S.optional(S.Number),
-          provisioningState: S.optional(S.String),
-          internalId: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "PrivateZoneProperties" });
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Record(S.String, S.String);
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(6, __c0, 6)),
-          properties: S.optional(__S(7, __c0, 7)),
-          tags: S.optional(__S(8, __c1, 0)),
-          location: S.optional(S.String),
-          etag: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "GetPrivateZoneResponse" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          privateZoneName: S.String.pipe(T.Label()),
-          recordType: S.String.pipe(T.Label()),
-          relativeRecordSetName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/privateDnsZones/{privateZoneName}/{recordType}/{relativeRecordSetName}",
-            code: 200,
-            apiVersion: "2024-06-01",
-          }),
-        ),
-      ).annotate({ identifier: "GetRecordSetRequest" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          ipv4Address: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ARecord" });
-    case 4:
-      return S.Array(__S(11, __c1, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          ipv6Address: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "AaaaRecord" });
-    case 6:
-      return S.Array(__S(13, __c1, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          cname: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "CnameRecord" });
-  }
-}
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          preference: S.optional(S.Number),
-          exchange: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "MxRecord" });
-    case 1:
-      return S.Array(__S(16, __c2, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          ptrdname: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "PtrRecord" });
-    case 3:
-      return S.Array(__S(18, __c2, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          host: S.optional(S.String),
-          email: S.optional(S.String),
-          serialNumber: S.optional(S.Number),
-          refreshTime: S.optional(S.Number),
-          retryTime: S.optional(S.Number),
-          expireTime: S.optional(S.Number),
-          minimumTtl: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "SoaRecord" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          priority: S.optional(S.Number),
-          weight: S.optional(S.Number),
-          port: S.optional(S.Number),
-          target: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "SrvRecord" });
-    case 6:
-      return S.Array(__S(21, __c2, 5));
-    case 7:
-      return S.Array(S.String);
   }
 }
 function __c3(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          value: S.optional(__S(23, __c2, 7)),
-        }),
-      ).annotate({ identifier: "TxtRecord" });
-    case 1:
-      return S.Array(__S(24, __c3, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          metadata: S.optional(__S(8, __c1, 0)),
-          ttl: S.optional(S.Number),
-          fqdn: S.optional(S.String),
-          isAutoRegistered: S.optional(S.Boolean),
-          aRecords: S.optional(__S(12, __c1, 4)),
-          aaaaRecords: S.optional(__S(14, __c1, 6)),
-          cnameRecord: S.optional(__S(15, __c1, 7)),
-          mxRecords: S.optional(__S(17, __c2, 1)),
-          ptrRecords: S.optional(__S(19, __c2, 3)),
-          soaRecord: S.optional(__S(20, __c2, 4)),
-          srvRecords: S.optional(__S(22, __c2, 6)),
-          txtRecords: S.optional(__S(25, __c3, 1)),
-        }),
-      ).annotate({ identifier: "RecordSetProperties" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(6, __c0, 6)),
-          properties: S.optional(__S(26, __c3, 2)),
-          etag: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "GetRecordSetResponse" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          privateZoneName: S.String.pipe(T.Label()),
-          virtualNetworkLinkName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/privateDnsZones/{privateZoneName}/virtualNetworkLinks/{virtualNetworkLinkName}",
-            code: 200,
-            apiVersion: "2024-06-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetVirtualNetworkLinkRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "SubResource" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          virtualNetwork: S.optional(__S(29, __c3, 5)),
-          registrationEnabled: S.optional(S.Boolean),
-          resolutionPolicy: S.optional(S.String),
-          virtualNetworkLinkState: S.optional(S.String),
-          provisioningState: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "VirtualNetworkLinkProperties",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(6, __c0, 6)),
-          properties: S.optional(__S(30, __c3, 6)),
-          tags: S.optional(__S(8, __c1, 0)),
-          location: S.optional(S.String),
-          etag: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GetVirtualNetworkLinkResponse",
-      });
-  }
-}
-function __c4(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          _top: S.optional(S.Number.pipe(T.Query("$top"))),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/privateDnsZones",
-            code: 200,
-            apiVersion: "2024-06-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListPrivateZoneByResourceGroupRequest",
-      });
-    case 1:
-      return S.Array(__S(9, __c1, 1));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          value: __S(33, __c4, 1),
-          nextLink: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "PrivateZoneListResult" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          _top: S.optional(S.Number.pipe(T.Query("$top"))),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/providers/Microsoft.Network/privateDnsZones",
-            code: 200,
-            apiVersion: "2024-06-01",
-          }),
-        ),
-      ).annotate({ identifier: "ListPrivateZonesRequest" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          privateZoneName: S.String.pipe(T.Label()),
-          recordType: S.String.pipe(T.Label()),
-          _top: S.optional(S.Number.pipe(T.Query("$top"))),
-          _recordsetnamesuffix: S.optional(S.String.pipe(T.Query("$recordsetnamesuffix"))),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/privateDnsZones/{privateZoneName}/{recordType}",
-            code: 200,
-            apiVersion: "2024-06-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListRecordSetByTypeRequest",
-      });
-    case 5:
-      return S.Array(__S(27, __c3, 3));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          value: __S(37, __c4, 5),
-          nextLink: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "RecordSetListResult" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          privateZoneName: S.String.pipe(T.Label()),
-          _top: S.optional(S.Number.pipe(T.Query("$top"))),
-          _recordsetnamesuffix: S.optional(S.String.pipe(T.Query("$recordsetnamesuffix"))),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/privateDnsZones/{privateZoneName}/aLL",
-            code: 200,
-            apiVersion: "2024-06-01",
-          }),
-        ),
-      ).annotate({ identifier: "ListRecordSetsRequest" });
-  }
-}
-function __c5(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1412,32 +1074,36 @@ function __c5(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(6, __c0, 6)),
-          properties: S.optional(__S(30, __c3, 6)),
-          tags: S.optional(__S(8, __c1, 0)),
+          systemData: S.optional(__S(240, __c15, 0)),
+          properties: S.optional(__S(353, __c22, 1)),
+          tags: S.optional(__S(241, __c15, 1)),
           location: S.optional(S.String),
           etag: S.optional(S.String),
         }),
       ).annotate({ identifier: "VirtualNetworkLink" });
     case 2:
-      return S.Array(__S(41, __c5, 1));
+      return S.Array(__S(49, __c3, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          value: __S(42, __c5, 2),
+          value: __S(50, __c3, 2),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
         identifier: "VirtualNetworkLinkListResult",
       });
-    case 4:
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           privateZoneName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(1, __c0, 1)),
-          tags: S.optional(__S(8, __c1, 0)),
+          properties: S.optional(__S(16, __c1, 0)),
+          tags: S.optional(__S(241, __c15, 1)),
           location: S.optional(S.String),
           etag: S.optional(S.String),
         }).pipe(
@@ -1451,37 +1117,30 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "PrivateZonesCreateOrUpdateRequest",
       });
-    case 5:
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(6, __c0, 6)),
-          properties: S.optional(__S(7, __c0, 7)),
-          tags: S.optional(__S(8, __c1, 0)),
+          systemData: S.optional(__S(240, __c15, 0)),
+          properties: S.optional(__S(272, __c17, 0)),
+          tags: S.optional(__S(241, __c15, 1)),
           location: S.optional(S.String),
           etag: S.optional(S.String),
         }),
       ).annotate({
         identifier: "PrivateZonesCreateOrUpdateResponse",
       });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          metadata: S.optional(__S(8, __c1, 0)),
-          ttl: S.optional(S.Number),
-          aRecords: S.optional(__S(12, __c1, 4)),
-          aaaaRecords: S.optional(__S(14, __c1, 6)),
-          cnameRecord: S.optional(__S(15, __c1, 7)),
-          mxRecords: S.optional(__S(17, __c2, 1)),
-          ptrRecords: S.optional(__S(19, __c2, 3)),
-          soaRecord: S.optional(__S(20, __c2, 4)),
-          srvRecords: S.optional(__S(22, __c2, 6)),
-          txtRecords: S.optional(__S(25, __c3, 1)),
-        }),
-      ).annotate({ identifier: "RecordSetPropertiesInput" });
-    case 7:
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -1489,7 +1148,7 @@ function __c5(j: number): any {
           privateZoneName: S.String.pipe(T.Label()),
           recordType: S.String.pipe(T.Label()),
           relativeRecordSetName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(46, __c5, 6)),
+          properties: S.optional(__S(112, __c7, 0)),
           etag: S.optional(S.String),
         }).pipe(
           T.Http({
@@ -1502,31 +1161,50 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "RecordSetsCreateOrUpdateRequest",
       });
-  }
-}
-function __c6(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(6, __c0, 6)),
-          properties: S.optional(__S(26, __c3, 2)),
+          systemData: S.optional(__S(240, __c15, 0)),
+          properties: S.optional(__S(319, __c19, 15)),
           etag: S.optional(S.String),
         }),
       ).annotate({
         identifier: "RecordSetsCreateOrUpdateResponse",
       });
-    case 1:
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          metadata: S.optional(__S(241, __c15, 1)),
+          ttl: S.optional(S.Number),
+          aRecords: S.optional(__S(305, __c19, 1)),
+          aaaaRecords: S.optional(__S(307, __c19, 3)),
+          cnameRecord: S.optional(__S(308, __c19, 4)),
+          mxRecords: S.optional(__S(310, __c19, 6)),
+          ptrRecords: S.optional(__S(312, __c19, 8)),
+          soaRecord: S.optional(__S(313, __c19, 9)),
+          srvRecords: S.optional(__S(315, __c19, 11)),
+          txtRecords: S.optional(__S(318, __c19, 14)),
+        }),
+      ).annotate({ identifier: "RecordSetPropertiesInput" });
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           privateZoneName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(1, __c0, 1)),
-          tags: S.optional(__S(8, __c1, 0)),
+          properties: S.optional(__S(16, __c1, 0)),
+          tags: S.optional(__S(241, __c15, 1)),
           location: S.optional(S.String),
           etag: S.optional(S.String),
         }).pipe(
@@ -1538,7 +1216,11 @@ function __c6(j: number): any {
           }),
         ),
       ).annotate({ identifier: "UpdatePrivateZoneRequest" });
-    case 2:
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -1546,7 +1228,7 @@ function __c6(j: number): any {
           privateZoneName: S.String.pipe(T.Label()),
           recordType: S.String.pipe(T.Label()),
           relativeRecordSetName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(46, __c5, 6)),
+          properties: S.optional(__S(112, __c7, 0)),
           etag: S.optional(S.String),
         }).pipe(
           T.Http({
@@ -1557,25 +1239,19 @@ function __c6(j: number): any {
           }),
         ),
       ).annotate({ identifier: "UpdateRecordSetRequest" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          virtualNetwork: S.optional(__S(29, __c3, 5)),
-          registrationEnabled: S.optional(S.Boolean),
-          resolutionPolicy: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "VirtualNetworkLinkPropertiesInput",
-      });
-    case 4:
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           privateZoneName: S.String.pipe(T.Label()),
           virtualNetworkLinkName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(51, __c6, 3)),
-          tags: S.optional(__S(8, __c1, 0)),
+          properties: S.optional(__S(176, __c11, 0)),
+          tags: S.optional(__S(241, __c15, 1)),
           location: S.optional(S.String),
           etag: S.optional(S.String),
         }).pipe(
@@ -1589,15 +1265,33 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "UpdateVirtualNetworkLinkRequest",
       });
-    case 5:
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          virtualNetwork: S.optional(__S(352, __c22, 0)),
+          registrationEnabled: S.optional(S.Boolean),
+          resolutionPolicy: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "VirtualNetworkLinkPropertiesInput",
+      });
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           privateZoneName: S.String.pipe(T.Label()),
           virtualNetworkLinkName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(51, __c6, 3)),
-          tags: S.optional(__S(8, __c1, 0)),
+          properties: S.optional(__S(176, __c11, 0)),
+          tags: S.optional(__S(241, __c15, 1)),
           location: S.optional(S.String),
           etag: S.optional(S.String),
         }).pipe(
@@ -1613,7 +1307,404 @@ function __c6(j: number): any {
       });
   }
 }
-
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          privateZoneName: S.String.pipe(T.Label()),
+          virtualNetworkLinkName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/privateDnsZones/{privateZoneName}/virtualNetworkLinks/{virtualNetworkLinkName}",
+            code: 200,
+            apiVersion: "2024-06-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteVirtualNetworkLinkRequest",
+      });
+    case 1:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "DeleteVirtualNetworkLinkResponse",
+      });
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          privateZoneName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/privateDnsZones/{privateZoneName}",
+            code: 200,
+            apiVersion: "2024-06-01",
+          }),
+        ),
+      ).annotate({ identifier: "GetPrivateZoneRequest" });
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          createdBy: S.optional(S.String),
+          createdByType: S.optional(S.String),
+          createdAt: S.optional(S.String),
+          lastModifiedBy: S.optional(S.String),
+          lastModifiedByType: S.optional(S.String),
+          lastModifiedAt: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "SystemData" });
+    case 1:
+      return S.Record(S.String, S.String);
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(240, __c15, 0)),
+          properties: S.optional(__S(272, __c17, 0)),
+          tags: S.optional(__S(241, __c15, 1)),
+          location: S.optional(S.String),
+          etag: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "GetPrivateZoneResponse" });
+  }
+}
+function __c17(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          maxNumberOfRecordSets: S.optional(S.Number),
+          numberOfRecordSets: S.optional(S.Number),
+          maxNumberOfVirtualNetworkLinks: S.optional(S.Number),
+          numberOfVirtualNetworkLinks: S.optional(S.Number),
+          maxNumberOfVirtualNetworkLinksWithRegistration: S.optional(S.Number),
+          numberOfVirtualNetworkLinksWithRegistration: S.optional(S.Number),
+          provisioningState: S.optional(S.String),
+          internalId: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "PrivateZoneProperties" });
+  }
+}
+function __c18(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          privateZoneName: S.String.pipe(T.Label()),
+          recordType: S.String.pipe(T.Label()),
+          relativeRecordSetName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/privateDnsZones/{privateZoneName}/{recordType}/{relativeRecordSetName}",
+            code: 200,
+            apiVersion: "2024-06-01",
+          }),
+        ),
+      ).annotate({ identifier: "GetRecordSetRequest" });
+  }
+}
+function __c19(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          ipv4Address: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ARecord" });
+    case 1:
+      return S.Array(__S(304, __c19, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          ipv6Address: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "AaaaRecord" });
+    case 3:
+      return S.Array(__S(306, __c19, 2));
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          cname: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "CnameRecord" });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          preference: S.optional(S.Number),
+          exchange: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "MxRecord" });
+    case 6:
+      return S.Array(__S(309, __c19, 5));
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          ptrdname: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "PtrRecord" });
+    case 8:
+      return S.Array(__S(311, __c19, 7));
+    case 9:
+      return S.suspend(() =>
+        S.Struct({
+          host: S.optional(S.String),
+          email: S.optional(S.String),
+          serialNumber: S.optional(S.Number),
+          refreshTime: S.optional(S.Number),
+          retryTime: S.optional(S.Number),
+          expireTime: S.optional(S.Number),
+          minimumTtl: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "SoaRecord" });
+    case 10:
+      return S.suspend(() =>
+        S.Struct({
+          priority: S.optional(S.Number),
+          weight: S.optional(S.Number),
+          port: S.optional(S.Number),
+          target: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "SrvRecord" });
+    case 11:
+      return S.Array(__S(314, __c19, 10));
+    case 12:
+      return S.Array(S.String);
+    case 13:
+      return S.suspend(() =>
+        S.Struct({
+          value: S.optional(__S(316, __c19, 12)),
+        }),
+      ).annotate({ identifier: "TxtRecord" });
+    case 14:
+      return S.Array(__S(317, __c19, 13));
+    case 15:
+      return S.suspend(() =>
+        S.Struct({
+          metadata: S.optional(__S(241, __c15, 1)),
+          ttl: S.optional(S.Number),
+          fqdn: S.optional(S.String),
+          isAutoRegistered: S.optional(S.Boolean),
+          aRecords: S.optional(__S(305, __c19, 1)),
+          aaaaRecords: S.optional(__S(307, __c19, 3)),
+          cnameRecord: S.optional(__S(308, __c19, 4)),
+          mxRecords: S.optional(__S(310, __c19, 6)),
+          ptrRecords: S.optional(__S(312, __c19, 8)),
+          soaRecord: S.optional(__S(313, __c19, 9)),
+          srvRecords: S.optional(__S(315, __c19, 11)),
+          txtRecords: S.optional(__S(318, __c19, 14)),
+        }),
+      ).annotate({ identifier: "RecordSetProperties" });
+  }
+}
+function __c20(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(240, __c15, 0)),
+          properties: S.optional(__S(319, __c19, 15)),
+          etag: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "GetRecordSetResponse" });
+  }
+}
+function __c21(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          privateZoneName: S.String.pipe(T.Label()),
+          virtualNetworkLinkName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/privateDnsZones/{privateZoneName}/virtualNetworkLinks/{virtualNetworkLinkName}",
+            code: 200,
+            apiVersion: "2024-06-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetVirtualNetworkLinkRequest",
+      });
+  }
+}
+function __c22(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "SubResource" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          virtualNetwork: S.optional(__S(352, __c22, 0)),
+          registrationEnabled: S.optional(S.Boolean),
+          resolutionPolicy: S.optional(S.String),
+          virtualNetworkLinkState: S.optional(S.String),
+          provisioningState: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "VirtualNetworkLinkProperties",
+      });
+  }
+}
+function __c23(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(240, __c15, 0)),
+          properties: S.optional(__S(353, __c22, 1)),
+          tags: S.optional(__S(241, __c15, 1)),
+          location: S.optional(S.String),
+          etag: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GetVirtualNetworkLinkResponse",
+      });
+  }
+}
+function __c24(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          _top: S.optional(S.Number.pipe(T.Query("$top"))),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/privateDnsZones",
+            code: 200,
+            apiVersion: "2024-06-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListPrivateZoneByResourceGroupRequest",
+      });
+  }
+}
+function __c25(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(256, __c16, 0));
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          value: __S(400, __c25, 0),
+          nextLink: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "PrivateZoneListResult" });
+  }
+}
+function __c26(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          _top: S.optional(S.Number.pipe(T.Query("$top"))),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/providers/Microsoft.Network/privateDnsZones",
+            code: 200,
+            apiVersion: "2024-06-01",
+          }),
+        ),
+      ).annotate({ identifier: "ListPrivateZonesRequest" });
+  }
+}
+function __c27(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          privateZoneName: S.String.pipe(T.Label()),
+          recordType: S.String.pipe(T.Label()),
+          _top: S.optional(S.Number.pipe(T.Query("$top"))),
+          _recordsetnamesuffix: S.optional(S.String.pipe(T.Query("$recordsetnamesuffix"))),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/privateDnsZones/{privateZoneName}/{recordType}",
+            code: 200,
+            apiVersion: "2024-06-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListRecordSetByTypeRequest",
+      });
+  }
+}
+function __c28(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(320, __c20, 0));
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          value: __S(448, __c28, 0),
+          nextLink: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "RecordSetListResult" });
+  }
+}
+function __c29(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          privateZoneName: S.String.pipe(T.Label()),
+          _top: S.optional(S.Number.pipe(T.Query("$top"))),
+          _recordsetnamesuffix: S.optional(S.String.pipe(T.Query("$recordsetnamesuffix"))),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/privateDnsZones/{privateZoneName}/aLL",
+            code: 200,
+            apiVersion: "2024-06-01",
+          }),
+        ),
+      ).annotate({ identifier: "ListRecordSetsRequest" });
+  }
+}
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

@@ -2160,7 +2160,7 @@ export const cancelImageCreation: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(0, __c0, 0) as any as S.Schema<CancelImageCreationRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<CancelImageCreationResponse>,
+  output: __S(16, __c1, 0) as any as S.Schema<CancelImageCreationResponse>,
   errors: [
     CallRateLimitExceededException,
     ClientException,
@@ -2200,8 +2200,8 @@ export const cancelLifecycleExecution: API.OperationMethod<
   CancelLifecycleExecutionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2, __c0, 2) as any as S.Schema<CancelLifecycleExecutionRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<CancelLifecycleExecutionResponse>,
+  input: __S(32, __c2, 0) as any as S.Schema<CancelLifecycleExecutionRequest>,
+  output: __S(33, __c2, 1) as any as S.Schema<CancelLifecycleExecutionResponse>,
   errors: [
     CallRateLimitExceededException,
     ClientException,
@@ -2251,8 +2251,8 @@ export const createComponent: API.OperationMethod<
   CreateComponentError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(6, __c0, 6) as any as S.Schema<CreateComponentRequest>,
-  output: __S(8, __c1, 0) as any as S.Schema<CreateComponentResponse>,
+  input: __S(48, __c3, 0) as any as S.Schema<CreateComponentRequest>,
+  output: __S(49, __c3, 1) as any as S.Schema<CreateComponentResponse>,
   errors: [
     CallRateLimitExceededException,
     ClientException,
@@ -2296,8 +2296,8 @@ export const createContainerRecipe: API.OperationMethod<
   CreateContainerRecipeError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(18, __c2, 2) as any as S.Schema<CreateContainerRecipeRequest>,
-  output: __S(19, __c2, 3) as any as S.Schema<CreateContainerRecipeResponse>,
+  input: __S(112, __c7, 0) as any as S.Schema<CreateContainerRecipeRequest>,
+  output: __S(113, __c7, 1) as any as S.Schema<CreateContainerRecipeResponse>,
   errors: [
     CallRateLimitExceededException,
     ClientException,
@@ -2342,8 +2342,8 @@ export const createDistributionConfiguration: API.OperationMethod<
   CreateDistributionConfigurationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(34, __c4, 2) as any as S.Schema<CreateDistributionConfigurationRequest>,
-  output: __S(35, __c4, 3) as any as S.Schema<CreateDistributionConfigurationResponse>,
+  input: __S(192, __c12, 0) as any as S.Schema<CreateDistributionConfigurationRequest>,
+  output: __S(224, __c14, 0) as any as S.Schema<CreateDistributionConfigurationResponse>,
   errors: [
     CallRateLimitExceededException,
     ClientException,
@@ -2389,8 +2389,8 @@ export const createImage: API.OperationMethod<
   CreateImageError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(42, __c5, 2) as any as S.Schema<CreateImageRequest>,
-  output: __S(43, __c5, 3) as any as S.Schema<CreateImageResponse>,
+  input: __S(240, __c15, 0) as any as S.Schema<CreateImageRequest>,
+  output: __S(241, __c15, 1) as any as S.Schema<CreateImageResponse>,
   errors: [
     CallRateLimitExceededException,
     ClientException,
@@ -2432,8 +2432,8 @@ export const createImagePipeline: API.OperationMethod<
   CreateImagePipelineError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(47, __c5, 7) as any as S.Schema<CreateImagePipelineRequest>,
-  output: __S(48, __c6, 0) as any as S.Schema<CreateImagePipelineResponse>,
+  input: __S(288, __c18, 0) as any as S.Schema<CreateImagePipelineRequest>,
+  output: __S(320, __c20, 0) as any as S.Schema<CreateImagePipelineResponse>,
   errors: [
     CallRateLimitExceededException,
     ClientException,
@@ -2476,8 +2476,8 @@ export const createImageRecipe: API.OperationMethod<
   CreateImageRecipeError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(51, __c6, 3) as any as S.Schema<CreateImageRecipeRequest>,
-  output: __S(52, __c6, 4) as any as S.Schema<CreateImageRecipeResponse>,
+  input: __S(336, __c21, 0) as any as S.Schema<CreateImageRecipeRequest>,
+  output: __S(337, __c21, 1) as any as S.Schema<CreateImageRecipeResponse>,
   errors: [
     CallRateLimitExceededException,
     ClientException,
@@ -2521,8 +2521,8 @@ export const createInfrastructureConfiguration: API.OperationMethod<
   CreateInfrastructureConfigurationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(58, __c7, 2) as any as S.Schema<CreateInfrastructureConfigurationRequest>,
-  output: __S(59, __c7, 3) as any as S.Schema<CreateInfrastructureConfigurationResponse>,
+  input: __S(368, __c23, 0) as any as S.Schema<CreateInfrastructureConfigurationRequest>,
+  output: __S(416, __c26, 0) as any as S.Schema<CreateInfrastructureConfigurationResponse>,
   errors: [
     CallRateLimitExceededException,
     ClientException,
@@ -2564,8 +2564,8 @@ export const createLifecyclePolicy: API.OperationMethod<
   CreateLifecyclePolicyError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(71, __c8, 7) as any as S.Schema<CreateLifecyclePolicyRequest>,
-  output: __S(72, __c9, 0) as any as S.Schema<CreateLifecyclePolicyResponse>,
+  input: __S(432, __c27, 0) as any as S.Schema<CreateLifecyclePolicyRequest>,
+  output: __S(433, __c27, 1) as any as S.Schema<CreateLifecyclePolicyResponse>,
   errors: [
     CallRateLimitExceededException,
     ClientException,
@@ -2611,8 +2611,8 @@ export const createWorkflow: API.OperationMethod<
   CreateWorkflowError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(73, __c9, 1) as any as S.Schema<CreateWorkflowRequest>,
-  output: __S(74, __c9, 2) as any as S.Schema<CreateWorkflowResponse>,
+  input: __S(480, __c30, 0) as any as S.Schema<CreateWorkflowRequest>,
+  output: __S(481, __c30, 1) as any as S.Schema<CreateWorkflowResponse>,
   errors: [
     CallRateLimitExceededException,
     ClientException,
@@ -2654,8 +2654,8 @@ export const deleteComponent: API.OperationMethod<
   DeleteComponentError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(75, __c9, 3) as any as S.Schema<DeleteComponentRequest>,
-  output: __S(76, __c9, 4) as any as S.Schema<DeleteComponentResponse>,
+  input: __S(496, __c31, 0) as any as S.Schema<DeleteComponentRequest>,
+  output: __S(497, __c31, 1) as any as S.Schema<DeleteComponentResponse>,
   errors: [
     CallRateLimitExceededException,
     ClientException,
@@ -2691,8 +2691,8 @@ export const deleteContainerRecipe: API.OperationMethod<
   DeleteContainerRecipeError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(77, __c9, 5) as any as S.Schema<DeleteContainerRecipeRequest>,
-  output: __S(78, __c9, 6) as any as S.Schema<DeleteContainerRecipeResponse>,
+  input: __S(512, __c32, 0) as any as S.Schema<DeleteContainerRecipeRequest>,
+  output: __S(528, __c33, 0) as any as S.Schema<DeleteContainerRecipeResponse>,
   errors: [
     CallRateLimitExceededException,
     ClientException,
@@ -2729,8 +2729,8 @@ export const deleteDistributionConfiguration: API.OperationMethod<
   DeleteDistributionConfigurationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(79, __c9, 7) as any as S.Schema<DeleteDistributionConfigurationRequest>,
-  output: __S(80, __c10, 0) as any as S.Schema<DeleteDistributionConfigurationResponse>,
+  input: __S(544, __c34, 0) as any as S.Schema<DeleteDistributionConfigurationRequest>,
+  output: __S(545, __c34, 1) as any as S.Schema<DeleteDistributionConfigurationResponse>,
   errors: [
     CallRateLimitExceededException,
     ClientException,
@@ -2786,8 +2786,8 @@ export const deleteImage: API.OperationMethod<
   DeleteImageError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(81, __c10, 1) as any as S.Schema<DeleteImageRequest>,
-  output: __S(82, __c10, 2) as any as S.Schema<DeleteImageResponse>,
+  input: __S(560, __c35, 0) as any as S.Schema<DeleteImageRequest>,
+  output: __S(561, __c35, 1) as any as S.Schema<DeleteImageResponse>,
   errors: [
     CallRateLimitExceededException,
     ClientException,
@@ -2825,8 +2825,8 @@ export const deleteImagePipeline: API.OperationMethod<
   DeleteImagePipelineError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(83, __c10, 3) as any as S.Schema<DeleteImagePipelineRequest>,
-  output: __S(84, __c10, 4) as any as S.Schema<DeleteImagePipelineResponse>,
+  input: __S(576, __c36, 0) as any as S.Schema<DeleteImagePipelineRequest>,
+  output: __S(577, __c36, 1) as any as S.Schema<DeleteImagePipelineResponse>,
   errors: [
     CallRateLimitExceededException,
     ClientException,
@@ -2861,8 +2861,8 @@ export const deleteImageRecipe: API.OperationMethod<
   DeleteImageRecipeError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(85, __c10, 5) as any as S.Schema<DeleteImageRecipeRequest>,
-  output: __S(86, __c10, 6) as any as S.Schema<DeleteImageRecipeResponse>,
+  input: __S(592, __c37, 0) as any as S.Schema<DeleteImageRecipeRequest>,
+  output: __S(608, __c38, 0) as any as S.Schema<DeleteImageRecipeResponse>,
   errors: [
     CallRateLimitExceededException,
     ClientException,
@@ -2900,8 +2900,8 @@ export const deleteInfrastructureConfiguration: API.OperationMethod<
   DeleteInfrastructureConfigurationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(87, __c10, 7) as any as S.Schema<DeleteInfrastructureConfigurationRequest>,
-  output: __S(88, __c11, 0) as any as S.Schema<DeleteInfrastructureConfigurationResponse>,
+  input: __S(624, __c39, 0) as any as S.Schema<DeleteInfrastructureConfigurationRequest>,
+  output: __S(625, __c39, 1) as any as S.Schema<DeleteInfrastructureConfigurationResponse>,
   errors: [
     CallRateLimitExceededException,
     ClientException,
@@ -2939,8 +2939,8 @@ export const deleteLifecyclePolicy: API.OperationMethod<
   DeleteLifecyclePolicyError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(89, __c11, 1) as any as S.Schema<DeleteLifecyclePolicyRequest>,
-  output: __S(90, __c11, 2) as any as S.Schema<DeleteLifecyclePolicyResponse>,
+  input: __S(640, __c40, 0) as any as S.Schema<DeleteLifecyclePolicyRequest>,
+  output: __S(656, __c41, 0) as any as S.Schema<DeleteLifecyclePolicyResponse>,
   errors: [
     CallRateLimitExceededException,
     ClientException,
@@ -2975,8 +2975,8 @@ export const deleteWorkflow: API.OperationMethod<
   DeleteWorkflowError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(91, __c11, 3) as any as S.Schema<DeleteWorkflowRequest>,
-  output: __S(92, __c11, 4) as any as S.Schema<DeleteWorkflowResponse>,
+  input: __S(672, __c42, 0) as any as S.Schema<DeleteWorkflowRequest>,
+  output: __S(673, __c42, 1) as any as S.Schema<DeleteWorkflowResponse>,
   errors: [
     CallRateLimitExceededException,
     ClientException,
@@ -3016,8 +3016,8 @@ export const distributeImage: API.OperationMethod<
   DistributeImageError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(93, __c11, 5) as any as S.Schema<DistributeImageRequest>,
-  output: __S(94, __c11, 6) as any as S.Schema<DistributeImageResponse>,
+  input: __S(688, __c43, 0) as any as S.Schema<DistributeImageRequest>,
+  output: __S(704, __c44, 0) as any as S.Schema<DistributeImageResponse>,
   errors: [
     AccessDeniedException,
     CallRateLimitExceededException,
@@ -3055,8 +3055,8 @@ export const getComponent: API.OperationMethod<
   GetComponentError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(95, __c11, 7) as any as S.Schema<GetComponentRequest>,
-  output: __S(102, __c12, 6) as any as S.Schema<GetComponentResponse>,
+  input: __S(720, __c45, 0) as any as S.Schema<GetComponentRequest>,
+  output: __S(722, __c45, 2) as any as S.Schema<GetComponentResponse>,
   errors: [
     CallRateLimitExceededException,
     ClientException,
@@ -3088,8 +3088,8 @@ export const getComponentPolicy: API.OperationMethod<
   GetComponentPolicyError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(103, __c12, 7) as any as S.Schema<GetComponentPolicyRequest>,
-  output: __S(104, __c13, 0) as any as S.Schema<GetComponentPolicyResponse>,
+  input: __S(784, __c49, 0) as any as S.Schema<GetComponentPolicyRequest>,
+  output: __S(800, __c50, 0) as any as S.Schema<GetComponentPolicyResponse>,
   errors: [
     CallRateLimitExceededException,
     ForbiddenException,
@@ -3120,8 +3120,8 @@ export const getContainerRecipe: API.OperationMethod<
   GetContainerRecipeError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(105, __c13, 1) as any as S.Schema<GetContainerRecipeRequest>,
-  output: __S(107, __c13, 3) as any as S.Schema<GetContainerRecipeResponse>,
+  input: __S(816, __c51, 0) as any as S.Schema<GetContainerRecipeRequest>,
+  output: __S(817, __c51, 1) as any as S.Schema<GetContainerRecipeResponse>,
   errors: [
     CallRateLimitExceededException,
     ClientException,
@@ -3152,8 +3152,8 @@ export const getContainerRecipePolicy: API.OperationMethod<
   GetContainerRecipePolicyError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(108, __c13, 4) as any as S.Schema<GetContainerRecipePolicyRequest>,
-  output: __S(104, __c13, 0) as any as S.Schema<GetContainerRecipePolicyResponse>,
+  input: __S(848, __c53, 0) as any as S.Schema<GetContainerRecipePolicyRequest>,
+  output: __S(800, __c50, 0) as any as S.Schema<GetContainerRecipePolicyResponse>,
   errors: [
     CallRateLimitExceededException,
     ForbiddenException,
@@ -3185,8 +3185,8 @@ export const getDistributionConfiguration: API.OperationMethod<
   GetDistributionConfigurationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(109, __c13, 5) as any as S.Schema<GetDistributionConfigurationRequest>,
-  output: __S(111, __c13, 7) as any as S.Schema<GetDistributionConfigurationResponse>,
+  input: __S(864, __c54, 0) as any as S.Schema<GetDistributionConfigurationRequest>,
+  output: __S(865, __c54, 1) as any as S.Schema<GetDistributionConfigurationResponse>,
   errors: [
     CallRateLimitExceededException,
     ClientException,
@@ -3219,8 +3219,8 @@ export const getImage: API.OperationMethod<
   GetImageError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(112, __c14, 0) as any as S.Schema<GetImageRequest>,
-  output: __S(127, __c15, 7) as any as S.Schema<GetImageResponse>,
+  input: __S(896, __c56, 0) as any as S.Schema<GetImageRequest>,
+  output: __S(898, __c56, 2) as any as S.Schema<GetImageResponse>,
   errors: [
     CallRateLimitExceededException,
     ClientException,
@@ -3253,8 +3253,8 @@ export const getImagePipeline: API.OperationMethod<
   GetImagePipelineError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(128, __c16, 0) as any as S.Schema<GetImagePipelineRequest>,
-  output: __S(130, __c16, 2) as any as S.Schema<GetImagePipelineResponse>,
+  input: __S(960, __c60, 0) as any as S.Schema<GetImagePipelineRequest>,
+  output: __S(961, __c60, 1) as any as S.Schema<GetImagePipelineResponse>,
   errors: [
     CallRateLimitExceededException,
     ClientException,
@@ -3286,8 +3286,8 @@ export const getImagePolicy: API.OperationMethod<
   GetImagePolicyError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(131, __c16, 3) as any as S.Schema<GetImagePolicyRequest>,
-  output: __S(132, __c16, 4) as any as S.Schema<GetImagePolicyResponse>,
+  input: __S(992, __c62, 0) as any as S.Schema<GetImagePolicyRequest>,
+  output: __S(993, __c62, 1) as any as S.Schema<GetImagePolicyResponse>,
   errors: [
     CallRateLimitExceededException,
     ForbiddenException,
@@ -3319,8 +3319,8 @@ export const getImageRecipe: API.OperationMethod<
   GetImageRecipeError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(133, __c16, 5) as any as S.Schema<GetImageRecipeRequest>,
-  output: __S(134, __c16, 6) as any as S.Schema<GetImageRecipeResponse>,
+  input: __S(1008, __c63, 0) as any as S.Schema<GetImageRecipeRequest>,
+  output: __S(1009, __c63, 1) as any as S.Schema<GetImageRecipeResponse>,
   errors: [
     CallRateLimitExceededException,
     ClientException,
@@ -3352,8 +3352,8 @@ export const getImageRecipePolicy: API.OperationMethod<
   GetImageRecipePolicyError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(135, __c16, 7) as any as S.Schema<GetImageRecipePolicyRequest>,
-  output: __S(104, __c13, 0) as any as S.Schema<GetImageRecipePolicyResponse>,
+  input: __S(1024, __c64, 0) as any as S.Schema<GetImageRecipePolicyRequest>,
+  output: __S(800, __c50, 0) as any as S.Schema<GetImageRecipePolicyResponse>,
   errors: [
     CallRateLimitExceededException,
     ForbiddenException,
@@ -3385,8 +3385,8 @@ export const getInfrastructureConfiguration: API.OperationMethod<
   GetInfrastructureConfigurationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(136, __c17, 0) as any as S.Schema<GetInfrastructureConfigurationRequest>,
-  output: __S(137, __c17, 1) as any as S.Schema<GetInfrastructureConfigurationResponse>,
+  input: __S(1040, __c65, 0) as any as S.Schema<GetInfrastructureConfigurationRequest>,
+  output: __S(1041, __c65, 1) as any as S.Schema<GetInfrastructureConfigurationResponse>,
   errors: [
     CallRateLimitExceededException,
     ClientException,
@@ -3420,8 +3420,8 @@ export const getLifecycleExecution: API.OperationMethod<
   GetLifecycleExecutionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(138, __c17, 2) as any as S.Schema<GetLifecycleExecutionRequest>,
-  output: __S(141, __c17, 5) as any as S.Schema<GetLifecycleExecutionResponse>,
+  input: __S(1056, __c66, 0) as any as S.Schema<GetLifecycleExecutionRequest>,
+  output: __S(1057, __c66, 1) as any as S.Schema<GetLifecycleExecutionResponse>,
   errors: [
     CallRateLimitExceededException,
     ClientException,
@@ -3452,8 +3452,8 @@ export const getLifecyclePolicy: API.OperationMethod<
   GetLifecyclePolicyError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(142, __c17, 6) as any as S.Schema<GetLifecyclePolicyRequest>,
-  output: __S(144, __c18, 0) as any as S.Schema<GetLifecyclePolicyResponse>,
+  input: __S(1088, __c68, 0) as any as S.Schema<GetLifecyclePolicyRequest>,
+  output: __S(1090, __c68, 2) as any as S.Schema<GetLifecyclePolicyResponse>,
   errors: [
     CallRateLimitExceededException,
     ClientException,
@@ -3487,8 +3487,8 @@ export const getMarketplaceResource: API.OperationMethod<
   GetMarketplaceResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(145, __c18, 1) as any as S.Schema<GetMarketplaceResourceRequest>,
-  output: __S(146, __c18, 2) as any as S.Schema<GetMarketplaceResourceResponse>,
+  input: __S(1104, __c69, 0) as any as S.Schema<GetMarketplaceResourceRequest>,
+  output: __S(1105, __c69, 1) as any as S.Schema<GetMarketplaceResourceResponse>,
   errors: [
     CallRateLimitExceededException,
     ClientException,
@@ -3519,8 +3519,8 @@ export const getWorkflow: API.OperationMethod<
   GetWorkflowError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(147, __c18, 3) as any as S.Schema<GetWorkflowRequest>,
-  output: __S(149, __c18, 5) as any as S.Schema<GetWorkflowResponse>,
+  input: __S(1120, __c70, 0) as any as S.Schema<GetWorkflowRequest>,
+  output: __S(1122, __c70, 2) as any as S.Schema<GetWorkflowResponse>,
   errors: [
     CallRateLimitExceededException,
     ClientException,
@@ -3552,8 +3552,8 @@ export const getWorkflowExecution: API.OperationMethod<
   GetWorkflowExecutionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(150, __c18, 6) as any as S.Schema<GetWorkflowExecutionRequest>,
-  output: __S(151, __c18, 7) as any as S.Schema<GetWorkflowExecutionResponse>,
+  input: __S(1136, __c71, 0) as any as S.Schema<GetWorkflowExecutionRequest>,
+  output: __S(1137, __c71, 1) as any as S.Schema<GetWorkflowExecutionResponse>,
   errors: [
     CallRateLimitExceededException,
     ClientException,
@@ -3585,8 +3585,8 @@ export const getWorkflowStepExecution: API.OperationMethod<
   GetWorkflowStepExecutionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(152, __c19, 0) as any as S.Schema<GetWorkflowStepExecutionRequest>,
-  output: __S(153, __c19, 1) as any as S.Schema<GetWorkflowStepExecutionResponse>,
+  input: __S(1152, __c72, 0) as any as S.Schema<GetWorkflowStepExecutionRequest>,
+  output: __S(1153, __c72, 1) as any as S.Schema<GetWorkflowStepExecutionResponse>,
   errors: [
     CallRateLimitExceededException,
     ClientException,
@@ -3623,8 +3623,8 @@ export const importComponent: API.OperationMethod<
   ImportComponentError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(154, __c19, 2) as any as S.Schema<ImportComponentRequest>,
-  output: __S(155, __c19, 3) as any as S.Schema<ImportComponentResponse>,
+  input: __S(1168, __c73, 0) as any as S.Schema<ImportComponentRequest>,
+  output: __S(1169, __c73, 1) as any as S.Schema<ImportComponentResponse>,
   errors: [
     CallRateLimitExceededException,
     ClientException,
@@ -3666,8 +3666,8 @@ export const importDiskImage: API.OperationMethod<
   ImportDiskImageError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(158, __c19, 6) as any as S.Schema<ImportDiskImageRequest>,
-  output: __S(94, __c11, 6) as any as S.Schema<ImportDiskImageResponse>,
+  input: __S(1186, __c74, 2) as any as S.Schema<ImportDiskImageRequest>,
+  output: __S(704, __c44, 0) as any as S.Schema<ImportDiskImageResponse>,
   errors: [
     AccessDeniedException,
     ClientException,
@@ -3704,8 +3704,8 @@ export const importVmImage: API.OperationMethod<
   ImportVmImageError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(159, __c19, 7) as any as S.Schema<ImportVmImageRequest>,
-  output: __S(160, __c20, 0) as any as S.Schema<ImportVmImageResponse>,
+  input: __S(1200, __c75, 0) as any as S.Schema<ImportVmImageRequest>,
+  output: __S(1201, __c75, 1) as any as S.Schema<ImportVmImageResponse>,
   errors: [ClientException, ServiceException, ServiceUnavailableException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3735,8 +3735,8 @@ export const listComponentBuildVersions: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   ComponentSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(161, __c20, 1) as any as S.Schema<ListComponentBuildVersionsRequest>,
-  output: __S(164, __c20, 4) as any as S.Schema<ListComponentBuildVersionsResponse>,
+  input: __S(1216, __c76, 0) as any as S.Schema<ListComponentBuildVersionsRequest>,
+  output: __S(1219, __c76, 3) as any as S.Schema<ListComponentBuildVersionsResponse>,
   errors: [
     CallRateLimitExceededException,
     ClientException,
@@ -3787,8 +3787,8 @@ export const listComponents: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   ComponentVersion
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(167, __c20, 7) as any as S.Schema<ListComponentsRequest>,
-  output: __S(170, __c21, 2) as any as S.Schema<ListComponentsResponse>,
+  input: __S(1232, __c77, 0) as any as S.Schema<ListComponentsRequest>,
+  output: __S(1235, __c77, 3) as any as S.Schema<ListComponentsResponse>,
   errors: [
     CallRateLimitExceededException,
     ClientException,
@@ -3828,8 +3828,8 @@ export const listContainerRecipes: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   ContainerRecipeSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(171, __c21, 3) as any as S.Schema<ListContainerRecipesRequest>,
-  output: __S(174, __c21, 6) as any as S.Schema<ListContainerRecipesResponse>,
+  input: __S(1280, __c80, 0) as any as S.Schema<ListContainerRecipesRequest>,
+  output: __S(1283, __c80, 3) as any as S.Schema<ListContainerRecipesResponse>,
   errors: [
     CallRateLimitExceededException,
     ClientException,
@@ -3869,8 +3869,8 @@ export const listDistributionConfigurations: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   DistributionConfigurationSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(175, __c21, 7) as any as S.Schema<ListDistributionConfigurationsRequest>,
-  output: __S(178, __c22, 2) as any as S.Schema<ListDistributionConfigurationsResponse>,
+  input: __S(1296, __c81, 0) as any as S.Schema<ListDistributionConfigurationsRequest>,
+  output: __S(1299, __c81, 3) as any as S.Schema<ListDistributionConfigurationsResponse>,
   errors: [
     CallRateLimitExceededException,
     ClientException,
@@ -3910,8 +3910,8 @@ export const listImageBuildVersions: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   ImageSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(179, __c22, 3) as any as S.Schema<ListImageBuildVersionsRequest>,
-  output: __S(182, __c22, 6) as any as S.Schema<ListImageBuildVersionsResponse>,
+  input: __S(1312, __c82, 0) as any as S.Schema<ListImageBuildVersionsRequest>,
+  output: __S(1330, __c83, 2) as any as S.Schema<ListImageBuildVersionsResponse>,
   errors: [
     CallRateLimitExceededException,
     ClientException,
@@ -3953,8 +3953,8 @@ export const listImagePackages: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   ImagePackage
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(183, __c22, 7) as any as S.Schema<ListImagePackagesRequest>,
-  output: __S(186, __c23, 2) as any as S.Schema<ListImagePackagesResponse>,
+  input: __S(1344, __c84, 0) as any as S.Schema<ListImagePackagesRequest>,
+  output: __S(1347, __c84, 3) as any as S.Schema<ListImagePackagesResponse>,
   errors: [
     CallRateLimitExceededException,
     ClientException,
@@ -3996,8 +3996,8 @@ export const listImagePipelineImages: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   ImageSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(187, __c23, 3) as any as S.Schema<ListImagePipelineImagesRequest>,
-  output: __S(182, __c22, 6) as any as S.Schema<ListImagePipelineImagesResponse>,
+  input: __S(1360, __c85, 0) as any as S.Schema<ListImagePipelineImagesRequest>,
+  output: __S(1330, __c83, 2) as any as S.Schema<ListImagePipelineImagesResponse>,
   errors: [
     CallRateLimitExceededException,
     ClientException,
@@ -4038,8 +4038,8 @@ export const listImagePipelines: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   ImagePipeline
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(188, __c23, 4) as any as S.Schema<ListImagePipelinesRequest>,
-  output: __S(190, __c23, 6) as any as S.Schema<ListImagePipelinesResponse>,
+  input: __S(1376, __c86, 0) as any as S.Schema<ListImagePipelinesRequest>,
+  output: __S(1378, __c86, 2) as any as S.Schema<ListImagePipelinesResponse>,
   errors: [
     CallRateLimitExceededException,
     ClientException,
@@ -4079,8 +4079,8 @@ export const listImageRecipes: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   ImageRecipeSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(191, __c23, 7) as any as S.Schema<ListImageRecipesRequest>,
-  output: __S(194, __c24, 2) as any as S.Schema<ListImageRecipesResponse>,
+  input: __S(1392, __c87, 0) as any as S.Schema<ListImageRecipesRequest>,
+  output: __S(1395, __c87, 3) as any as S.Schema<ListImageRecipesResponse>,
   errors: [
     CallRateLimitExceededException,
     ClientException,
@@ -4120,8 +4120,8 @@ export const listImages: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   ImageVersion
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(195, __c24, 3) as any as S.Schema<ListImagesRequest>,
-  output: __S(198, __c24, 6) as any as S.Schema<ListImagesResponse>,
+  input: __S(1408, __c88, 0) as any as S.Schema<ListImagesRequest>,
+  output: __S(1411, __c88, 3) as any as S.Schema<ListImagesResponse>,
   errors: [
     CallRateLimitExceededException,
     ClientException,
@@ -4173,8 +4173,8 @@ export const listImageScanFindingAggregations: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   ImageScanFindingAggregation
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(199, __c24, 7) as any as S.Schema<ListImageScanFindingAggregationsRequest>,
-  output: __S(207, __c25, 7) as any as S.Schema<ListImageScanFindingAggregationsResponse>,
+  input: __S(1424, __c89, 0) as any as S.Schema<ListImageScanFindingAggregationsRequest>,
+  output: __S(1432, __c89, 8) as any as S.Schema<ListImageScanFindingAggregationsResponse>,
   errors: [
     CallRateLimitExceededException,
     ClientException,
@@ -4210,8 +4210,8 @@ export const listImageScanFindings: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   ImageScanFinding
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(208, __c26, 0) as any as S.Schema<ListImageScanFindingsRequest>,
-  output: __S(222, __c27, 6) as any as S.Schema<ListImageScanFindingsResponse>,
+  input: __S(1440, __c90, 0) as any as S.Schema<ListImageScanFindingsRequest>,
+  output: __S(1454, __c90, 14) as any as S.Schema<ListImageScanFindingsResponse>,
   errors: [
     CallRateLimitExceededException,
     ClientException,
@@ -4251,8 +4251,8 @@ export const listInfrastructureConfigurations: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   InfrastructureConfigurationSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(223, __c27, 7) as any as S.Schema<ListInfrastructureConfigurationsRequest>,
-  output: __S(226, __c28, 2) as any as S.Schema<ListInfrastructureConfigurationsResponse>,
+  input: __S(1456, __c91, 0) as any as S.Schema<ListInfrastructureConfigurationsRequest>,
+  output: __S(1459, __c91, 3) as any as S.Schema<ListInfrastructureConfigurationsResponse>,
   errors: [
     CallRateLimitExceededException,
     ClientException,
@@ -4292,8 +4292,8 @@ export const listLifecycleExecutionResources: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   LifecycleExecutionResource
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(227, __c28, 3) as any as S.Schema<ListLifecycleExecutionResourcesRequest>,
-  output: __S(234, __c29, 2) as any as S.Schema<ListLifecycleExecutionResourcesResponse>,
+  input: __S(1472, __c92, 0) as any as S.Schema<ListLifecycleExecutionResourcesRequest>,
+  output: __S(1479, __c92, 7) as any as S.Schema<ListLifecycleExecutionResourcesResponse>,
   errors: [
     CallRateLimitExceededException,
     ClientException,
@@ -4333,8 +4333,8 @@ export const listLifecycleExecutions: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   LifecycleExecution
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(235, __c29, 3) as any as S.Schema<ListLifecycleExecutionsRequest>,
-  output: __S(237, __c29, 5) as any as S.Schema<ListLifecycleExecutionsResponse>,
+  input: __S(1488, __c93, 0) as any as S.Schema<ListLifecycleExecutionsRequest>,
+  output: __S(1490, __c93, 2) as any as S.Schema<ListLifecycleExecutionsResponse>,
   errors: [
     CallRateLimitExceededException,
     ClientException,
@@ -4374,8 +4374,8 @@ export const listLifecyclePolicies: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   LifecyclePolicySummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(238, __c29, 6) as any as S.Schema<ListLifecyclePoliciesRequest>,
-  output: __S(241, __c30, 1) as any as S.Schema<ListLifecyclePoliciesResponse>,
+  input: __S(1504, __c94, 0) as any as S.Schema<ListLifecyclePoliciesRequest>,
+  output: __S(1507, __c94, 3) as any as S.Schema<ListLifecyclePoliciesResponse>,
   errors: [
     CallRateLimitExceededException,
     ClientException,
@@ -4410,8 +4410,8 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(242, __c30, 2) as any as S.Schema<ListTagsForResourceRequest>,
-  output: __S(243, __c30, 3) as any as S.Schema<ListTagsForResourceResponse>,
+  input: __S(1520, __c95, 0) as any as S.Schema<ListTagsForResourceRequest>,
+  output: __S(1521, __c95, 1) as any as S.Schema<ListTagsForResourceResponse>,
   errors: [InvalidParameterException, ResourceNotFoundException, ServiceException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -4439,8 +4439,8 @@ export const listWaitingWorkflowSteps: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   WorkflowStepExecution
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(244, __c30, 4) as any as S.Schema<ListWaitingWorkflowStepsRequest>,
-  output: __S(247, __c30, 7) as any as S.Schema<ListWaitingWorkflowStepsResponse>,
+  input: __S(1536, __c96, 0) as any as S.Schema<ListWaitingWorkflowStepsRequest>,
+  output: __S(1539, __c96, 3) as any as S.Schema<ListWaitingWorkflowStepsResponse>,
   errors: [
     CallRateLimitExceededException,
     ClientException,
@@ -4480,8 +4480,8 @@ export const listWorkflowBuildVersions: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   WorkflowSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(248, __c31, 0) as any as S.Schema<ListWorkflowBuildVersionsRequest>,
-  output: __S(251, __c31, 3) as any as S.Schema<ListWorkflowBuildVersionsResponse>,
+  input: __S(1552, __c97, 0) as any as S.Schema<ListWorkflowBuildVersionsRequest>,
+  output: __S(1555, __c97, 3) as any as S.Schema<ListWorkflowBuildVersionsResponse>,
   errors: [
     CallRateLimitExceededException,
     ClientException,
@@ -4522,8 +4522,8 @@ export const listWorkflowExecutions: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   WorkflowExecutionMetadata
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(252, __c31, 4) as any as S.Schema<ListWorkflowExecutionsRequest>,
-  output: __S(255, __c31, 7) as any as S.Schema<ListWorkflowExecutionsResponse>,
+  input: __S(1568, __c98, 0) as any as S.Schema<ListWorkflowExecutionsRequest>,
+  output: __S(1571, __c98, 3) as any as S.Schema<ListWorkflowExecutionsResponse>,
   errors: [
     CallRateLimitExceededException,
     ClientException,
@@ -4565,8 +4565,8 @@ export const listWorkflows: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   WorkflowVersion
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(256, __c32, 0) as any as S.Schema<ListWorkflowsRequest>,
-  output: __S(259, __c32, 3) as any as S.Schema<ListWorkflowsResponse>,
+  input: __S(1584, __c99, 0) as any as S.Schema<ListWorkflowsRequest>,
+  output: __S(1587, __c99, 3) as any as S.Schema<ListWorkflowsResponse>,
   errors: [
     CallRateLimitExceededException,
     ClientException,
@@ -4607,8 +4607,8 @@ export const listWorkflowStepExecutions: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   WorkflowStepMetadata
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(260, __c32, 4) as any as S.Schema<ListWorkflowStepExecutionsRequest>,
-  output: __S(263, __c32, 7) as any as S.Schema<ListWorkflowStepExecutionsResponse>,
+  input: __S(1600, __c100, 0) as any as S.Schema<ListWorkflowStepExecutionsRequest>,
+  output: __S(1603, __c100, 3) as any as S.Schema<ListWorkflowStepExecutionsResponse>,
   errors: [
     CallRateLimitExceededException,
     ClientException,
@@ -4651,8 +4651,8 @@ export const putComponentPolicy: API.OperationMethod<
   PutComponentPolicyError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(264, __c33, 0) as any as S.Schema<PutComponentPolicyRequest>,
-  output: __S(265, __c33, 1) as any as S.Schema<PutComponentPolicyResponse>,
+  input: __S(1616, __c101, 0) as any as S.Schema<PutComponentPolicyRequest>,
+  output: __S(1617, __c101, 1) as any as S.Schema<PutComponentPolicyResponse>,
   errors: [
     CallRateLimitExceededException,
     ClientException,
@@ -4690,8 +4690,8 @@ export const putContainerRecipePolicy: API.OperationMethod<
   PutContainerRecipePolicyError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(266, __c33, 2) as any as S.Schema<PutContainerRecipePolicyRequest>,
-  output: __S(78, __c9, 6) as any as S.Schema<PutContainerRecipePolicyResponse>,
+  input: __S(1632, __c102, 0) as any as S.Schema<PutContainerRecipePolicyRequest>,
+  output: __S(528, __c33, 0) as any as S.Schema<PutContainerRecipePolicyResponse>,
   errors: [
     CallRateLimitExceededException,
     ClientException,
@@ -4729,8 +4729,8 @@ export const putImagePolicy: API.OperationMethod<
   PutImagePolicyError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(267, __c33, 3) as any as S.Schema<PutImagePolicyRequest>,
-  output: __S(268, __c33, 4) as any as S.Schema<PutImagePolicyResponse>,
+  input: __S(1648, __c103, 0) as any as S.Schema<PutImagePolicyRequest>,
+  output: __S(1649, __c103, 1) as any as S.Schema<PutImagePolicyResponse>,
   errors: [
     CallRateLimitExceededException,
     ClientException,
@@ -4768,8 +4768,8 @@ export const putImageRecipePolicy: API.OperationMethod<
   PutImageRecipePolicyError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(269, __c33, 5) as any as S.Schema<PutImageRecipePolicyRequest>,
-  output: __S(86, __c10, 6) as any as S.Schema<PutImageRecipePolicyResponse>,
+  input: __S(1664, __c104, 0) as any as S.Schema<PutImageRecipePolicyRequest>,
+  output: __S(608, __c38, 0) as any as S.Schema<PutImageRecipePolicyResponse>,
   errors: [
     CallRateLimitExceededException,
     ClientException,
@@ -4808,8 +4808,8 @@ export const retryImage: API.OperationMethod<
   RetryImageError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(270, __c33, 6) as any as S.Schema<RetryImageRequest>,
-  output: __S(94, __c11, 6) as any as S.Schema<RetryImageResponse>,
+  input: __S(1680, __c105, 0) as any as S.Schema<RetryImageRequest>,
+  output: __S(704, __c44, 0) as any as S.Schema<RetryImageResponse>,
   errors: [
     CallRateLimitExceededException,
     ClientException,
@@ -4849,8 +4849,8 @@ export const sendWorkflowStepAction: API.OperationMethod<
   SendWorkflowStepActionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(271, __c33, 7) as any as S.Schema<SendWorkflowStepActionRequest>,
-  output: __S(272, __c34, 0) as any as S.Schema<SendWorkflowStepActionResponse>,
+  input: __S(1696, __c106, 0) as any as S.Schema<SendWorkflowStepActionRequest>,
+  output: __S(1697, __c106, 1) as any as S.Schema<SendWorkflowStepActionResponse>,
   errors: [
     CallRateLimitExceededException,
     ClientException,
@@ -4892,8 +4892,8 @@ export const startImagePipelineExecution: API.OperationMethod<
   StartImagePipelineExecutionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(273, __c34, 1) as any as S.Schema<StartImagePipelineExecutionRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<StartImagePipelineExecutionResponse>,
+  input: __S(1712, __c107, 0) as any as S.Schema<StartImagePipelineExecutionRequest>,
+  output: __S(16, __c1, 0) as any as S.Schema<StartImagePipelineExecutionResponse>,
   errors: [
     CallRateLimitExceededException,
     ClientException,
@@ -4938,8 +4938,8 @@ export const startResourceStateUpdate: API.OperationMethod<
   StartResourceStateUpdateError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(276, __c34, 4) as any as S.Schema<StartResourceStateUpdateRequest>,
-  output: __S(277, __c34, 5) as any as S.Schema<StartResourceStateUpdateResponse>,
+  input: __S(1730, __c108, 2) as any as S.Schema<StartResourceStateUpdateRequest>,
+  output: __S(1731, __c108, 3) as any as S.Schema<StartResourceStateUpdateResponse>,
   errors: [
     CallRateLimitExceededException,
     ClientException,
@@ -4970,8 +4970,8 @@ export const tagResource: API.OperationMethod<
   TagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(278, __c34, 6) as any as S.Schema<TagResourceRequest>,
-  output: __S(279, __c34, 7) as any as S.Schema<TagResourceResponse>,
+  input: __S(1744, __c109, 0) as any as S.Schema<TagResourceRequest>,
+  output: __S(1760, __c110, 0) as any as S.Schema<TagResourceResponse>,
   errors: [InvalidParameterException, ResourceNotFoundException, ServiceException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -4992,8 +4992,8 @@ export const untagResource: API.OperationMethod<
   UntagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(280, __c35, 0) as any as S.Schema<UntagResourceRequest>,
-  output: __S(279, __c34, 7) as any as S.Schema<UntagResourceResponse>,
+  input: __S(1776, __c111, 0) as any as S.Schema<UntagResourceRequest>,
+  output: __S(1760, __c110, 0) as any as S.Schema<UntagResourceResponse>,
   errors: [InvalidParameterException, ResourceNotFoundException, ServiceException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -5027,8 +5027,8 @@ export const updateDistributionConfiguration: API.OperationMethod<
   UpdateDistributionConfigurationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(281, __c35, 1) as any as S.Schema<UpdateDistributionConfigurationRequest>,
-  output: __S(35, __c4, 3) as any as S.Schema<UpdateDistributionConfigurationResponse>,
+  input: __S(1792, __c112, 0) as any as S.Schema<UpdateDistributionConfigurationRequest>,
+  output: __S(224, __c14, 0) as any as S.Schema<UpdateDistributionConfigurationResponse>,
   errors: [
     CallRateLimitExceededException,
     ClientException,
@@ -5075,8 +5075,8 @@ export const updateImagePipeline: API.OperationMethod<
   UpdateImagePipelineError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(282, __c35, 2) as any as S.Schema<UpdateImagePipelineRequest>,
-  output: __S(48, __c6, 0) as any as S.Schema<UpdateImagePipelineResponse>,
+  input: __S(1808, __c113, 0) as any as S.Schema<UpdateImagePipelineRequest>,
+  output: __S(320, __c20, 0) as any as S.Schema<UpdateImagePipelineResponse>,
   errors: [
     CallRateLimitExceededException,
     ClientException,
@@ -5119,8 +5119,8 @@ export const updateInfrastructureConfiguration: API.OperationMethod<
   UpdateInfrastructureConfigurationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(283, __c35, 3) as any as S.Schema<UpdateInfrastructureConfigurationRequest>,
-  output: __S(59, __c7, 3) as any as S.Schema<UpdateInfrastructureConfigurationResponse>,
+  input: __S(1824, __c114, 0) as any as S.Schema<UpdateInfrastructureConfigurationRequest>,
+  output: __S(416, __c26, 0) as any as S.Schema<UpdateInfrastructureConfigurationResponse>,
   errors: [
     CallRateLimitExceededException,
     ClientException,
@@ -5161,8 +5161,8 @@ export const updateLifecyclePolicy: API.OperationMethod<
   UpdateLifecyclePolicyError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(284, __c35, 4) as any as S.Schema<UpdateLifecyclePolicyRequest>,
-  output: __S(90, __c11, 2) as any as S.Schema<UpdateLifecyclePolicyResponse>,
+  input: __S(1840, __c115, 0) as any as S.Schema<UpdateLifecyclePolicyRequest>,
+  output: __S(656, __c41, 0) as any as S.Schema<UpdateLifecyclePolicyResponse>,
   errors: [
     CallRateLimitExceededException,
     ClientException,
@@ -5200,7 +5200,11 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "CancelImageCreationRequest",
       });
-    case 1:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           requestId: S.optional(S.String),
@@ -5210,7 +5214,11 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "CancelImageCreationResponse",
       });
-    case 2:
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           lifecycleExecutionId: S.String,
@@ -5228,15 +5236,15 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "CancelLifecycleExecutionRequest",
       });
-    case 3:
+    case 1:
       return S.suspend(() => S.Struct({ lifecycleExecutionId: S.optional(S.String) })).annotate({
         identifier: "CancelLifecycleExecutionResponse",
       });
-    case 4:
-      return S.Array(S.String);
-    case 5:
-      return S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
-    case 6:
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String,
@@ -5244,18 +5252,43 @@ function __c0(j: number): any {
           description: S.optional(S.String),
           changeDescription: S.optional(S.String),
           platform: S.String,
-          supportedOsVersions: S.optional(__S(4, __c0, 4)),
+          supportedOsVersions: S.optional(__S(80, __c5, 0)),
           data: S.optional(S.String),
           uri: S.optional(S.String),
           kmsKeyId: S.optional(S.String),
-          tags: S.optional(__S(5, __c0, 5)),
+          tags: S.optional(__S(64, __c4, 0)),
           clientToken: S.String.pipe(T.IdempotencyToken()),
           dryRun: S.optional(S.Boolean),
         }).pipe(
           T.all(T.Http({ method: "PUT", uri: "/CreateComponent" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "CreateComponentRequest" });
-    case 7:
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          requestId: S.optional(S.String),
+          clientToken: S.optional(S.String),
+          componentBuildVersionArn: S.optional(S.String),
+          latestVersionReferences: S.optional(__S(96, __c6, 0)),
+        }),
+      ).annotate({ identifier: "CreateComponentResponse" });
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           latestVersionArn: S.optional(S.String),
@@ -5266,89 +5299,25 @@ function __c0(j: number): any {
       ).annotate({ identifier: "LatestVersionReferences" });
   }
 }
-function __c1(j: number): any {
+function __c7(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() =>
-        S.Struct({
-          requestId: S.optional(S.String),
-          clientToken: S.optional(S.String),
-          componentBuildVersionArn: S.optional(S.String),
-          latestVersionReferences: S.optional(__S(7, __c0, 7)),
-        }),
-      ).annotate({ identifier: "CreateComponentResponse" });
-    case 1:
-      return S.suspend(() => S.Struct({ name: S.String, value: __S(4, __c0, 4) })).annotate({
-        identifier: "ComponentParameter",
-      });
-    case 2:
-      return S.Array(__S(9, __c1, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({ componentArn: S.String, parameters: S.optional(__S(10, __c1, 2)) }),
-      ).annotate({ identifier: "ComponentConfiguration" });
-    case 4:
-      return S.Array(__S(11, __c1, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          encrypted: S.optional(S.Boolean),
-          deleteOnTermination: S.optional(S.Boolean),
-          iops: S.optional(S.Number),
-          kmsKeyId: S.optional(S.String),
-          snapshotId: S.optional(S.String),
-          volumeSize: S.optional(S.Number),
-          volumeType: S.optional(S.String),
-          throughput: S.optional(S.Number),
-        }),
-      ).annotate({
-        identifier: "EbsInstanceBlockDeviceSpecification",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          deviceName: S.optional(S.String),
-          ebs: S.optional(__S(13, __c1, 5)),
-          virtualName: S.optional(S.String),
-          noDevice: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "InstanceBlockDeviceMapping",
-      });
-    case 7:
-      return S.Array(__S(14, __c1, 6));
-  }
-}
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          image: S.optional(S.String),
-          blockDeviceMappings: S.optional(__S(15, __c1, 7)),
-        }),
-      ).annotate({ identifier: "InstanceConfiguration" });
-    case 1:
-      return S.suspend(() => S.Struct({ service: S.String, repositoryName: S.String })).annotate({
-        identifier: "TargetContainerRepository",
-      });
-    case 2:
       return S.suspend(() =>
         S.Struct({
           containerType: S.String,
           name: S.String,
           description: S.optional(S.String),
           semanticVersion: S.String,
-          components: S.optional(__S(12, __c1, 4)),
-          instanceConfiguration: S.optional(__S(16, __c2, 0)),
+          components: S.optional(__S(161, __c10, 1)),
+          instanceConfiguration: S.optional(__S(176, __c11, 0)),
           dockerfileTemplateData: S.optional(S.String),
           dockerfileTemplateUri: S.optional(S.String),
           platformOverride: S.optional(S.String),
           imageOsVersionOverride: S.optional(S.String),
           parentImage: S.String,
-          tags: S.optional(__S(5, __c0, 5)),
+          tags: S.optional(__S(64, __c4, 0)),
           workingDirectory: S.optional(S.String),
-          targetRepository: __S(17, __c2, 1),
+          targetRepository: __S(128, __c8, 0),
           kmsKeyId: S.optional(S.String),
           clientToken: S.String.pipe(T.IdempotencyToken()),
           dryRun: S.optional(S.Boolean),
@@ -5365,140 +5334,95 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "CreateContainerRecipeRequest",
       });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           requestId: S.optional(S.String),
           clientToken: S.optional(S.String),
           containerRecipeArn: S.optional(S.String),
-          latestVersionReferences: S.optional(__S(7, __c0, 7)),
+          latestVersionReferences: S.optional(__S(96, __c6, 0)),
         }),
       ).annotate({
         identifier: "CreateContainerRecipeResponse",
       });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          userIds: S.optional(__S(4, __c0, 4)),
-          userGroups: S.optional(__S(4, __c0, 4)),
-          organizationArns: S.optional(__S(4, __c0, 4)),
-          organizationalUnitArns: S.optional(__S(4, __c0, 4)),
-        }),
-      ).annotate({
-        identifier: "LaunchPermissionConfiguration",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.optional(S.String),
-          description: S.optional(S.String),
-          targetAccountIds: S.optional(__S(4, __c0, 4)),
-          amiTags: S.optional(__S(5, __c0, 5)),
-          kmsKeyId: S.optional(S.String),
-          launchPermission: S.optional(__S(20, __c2, 4)),
-        }),
-      ).annotate({
-        identifier: "AmiDistributionConfiguration",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          description: S.optional(S.String),
-          containerTags: S.optional(__S(4, __c0, 4)),
-          targetRepository: __S(17, __c2, 1),
-        }),
-      ).annotate({
-        identifier: "ContainerDistributionConfiguration",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          launchTemplateId: S.String,
-          accountId: S.optional(S.String),
-          setDefaultVersion: S.optional(S.Boolean),
-        }),
-      ).annotate({
-        identifier: "LaunchTemplateConfiguration",
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({ service: S.String, repositoryName: S.String })).annotate({
+        identifier: "TargetContainerRepository",
       });
   }
 }
-function __c3(j: number): any {
+function __c9(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(23, __c2, 7));
+      return S.suspend(() => S.Struct({ name: S.String, value: __S(80, __c5, 0) })).annotate({
+        identifier: "ComponentParameter",
+      });
     case 1:
+      return S.Array(__S(144, __c9, 0));
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ componentArn: S.String, parameters: S.optional(__S(145, __c9, 1)) }),
+      ).annotate({ identifier: "ComponentConfiguration" });
+    case 1:
+      return S.Array(__S(160, __c10, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          roleName: S.String,
-          diskImageFormat: S.String,
-          s3Bucket: S.String,
-          s3Prefix: S.optional(S.String),
+          encrypted: S.optional(S.Boolean),
+          deleteOnTermination: S.optional(S.Boolean),
+          iops: S.optional(S.Number),
+          kmsKeyId: S.optional(S.String),
+          snapshotId: S.optional(S.String),
+          volumeSize: S.optional(S.Number),
+          volumeType: S.optional(S.String),
+          throughput: S.optional(S.Number),
         }),
-      ).annotate({ identifier: "S3ExportConfiguration" });
-    case 2:
-      return S.suspend(() => S.Struct({ targetResourceCount: S.optional(S.Number) })).annotate({
-        identifier: "FastLaunchSnapshotConfiguration",
+      ).annotate({
+        identifier: "EbsInstanceBlockDeviceSpecification",
       });
     case 3:
       return S.suspend(() =>
         S.Struct({
-          launchTemplateId: S.optional(S.String),
-          launchTemplateName: S.optional(S.String),
-          launchTemplateVersion: S.optional(S.String),
+          deviceName: S.optional(S.String),
+          ebs: S.optional(__S(162, __c10, 2)),
+          virtualName: S.optional(S.String),
+          noDevice: S.optional(S.String),
         }),
       ).annotate({
-        identifier: "FastLaunchLaunchTemplateSpecification",
+        identifier: "InstanceBlockDeviceMapping",
       });
     case 4:
-      return S.suspend(() =>
-        S.Struct({
-          enabled: S.Boolean,
-          snapshotConfiguration: S.optional(__S(26, __c3, 2)),
-          maxParallelLaunches: S.optional(S.Number),
-          launchTemplate: S.optional(__S(27, __c3, 3)),
-          accountId: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "FastLaunchConfiguration" });
-    case 5:
-      return S.Array(__S(28, __c3, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          amiAccountId: S.optional(S.String),
-          parameterName: S.String,
-          dataType: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "SsmParameterConfiguration",
-      });
-    case 7:
-      return S.Array(__S(30, __c3, 6));
+      return S.Array(__S(163, __c10, 3));
   }
 }
-function __c4(j: number): any {
+function __c11(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          region: S.String,
-          amiDistributionConfiguration: S.optional(__S(21, __c2, 5)),
-          containerDistributionConfiguration: S.optional(__S(22, __c2, 6)),
-          licenseConfigurationArns: S.optional(__S(4, __c0, 4)),
-          launchTemplateConfigurations: S.optional(__S(24, __c3, 0)),
-          s3ExportConfiguration: S.optional(__S(25, __c3, 1)),
-          fastLaunchConfigurations: S.optional(__S(29, __c3, 5)),
-          ssmParameterConfigurations: S.optional(__S(31, __c3, 7)),
+          image: S.optional(S.String),
+          blockDeviceMappings: S.optional(__S(164, __c10, 4)),
         }),
-      ).annotate({ identifier: "Distribution" });
-    case 1:
-      return S.Array(__S(32, __c4, 0));
-    case 2:
+      ).annotate({ identifier: "InstanceConfiguration" });
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String,
           description: S.optional(S.String),
-          distributions: __S(33, __c4, 1),
-          tags: S.optional(__S(5, __c0, 5)),
+          distributions: __S(221, __c13, 13),
+          tags: S.optional(__S(64, __c4, 0)),
           clientToken: S.String.pipe(T.IdempotencyToken()),
           dryRun: S.optional(S.Boolean),
         }).pipe(
@@ -5514,7 +5438,123 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "CreateDistributionConfigurationRequest",
       });
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          userIds: S.optional(__S(80, __c5, 0)),
+          userGroups: S.optional(__S(80, __c5, 0)),
+          organizationArns: S.optional(__S(80, __c5, 0)),
+          organizationalUnitArns: S.optional(__S(80, __c5, 0)),
+        }),
+      ).annotate({
+        identifier: "LaunchPermissionConfiguration",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.optional(S.String),
+          description: S.optional(S.String),
+          targetAccountIds: S.optional(__S(80, __c5, 0)),
+          amiTags: S.optional(__S(64, __c4, 0)),
+          kmsKeyId: S.optional(S.String),
+          launchPermission: S.optional(__S(208, __c13, 0)),
+        }),
+      ).annotate({
+        identifier: "AmiDistributionConfiguration",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          description: S.optional(S.String),
+          containerTags: S.optional(__S(80, __c5, 0)),
+          targetRepository: __S(128, __c8, 0),
+        }),
+      ).annotate({
+        identifier: "ContainerDistributionConfiguration",
+      });
     case 3:
+      return S.suspend(() =>
+        S.Struct({
+          launchTemplateId: S.String,
+          accountId: S.optional(S.String),
+          setDefaultVersion: S.optional(S.Boolean),
+        }),
+      ).annotate({
+        identifier: "LaunchTemplateConfiguration",
+      });
+    case 4:
+      return S.Array(__S(211, __c13, 3));
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          roleName: S.String,
+          diskImageFormat: S.String,
+          s3Bucket: S.String,
+          s3Prefix: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "S3ExportConfiguration" });
+    case 6:
+      return S.suspend(() => S.Struct({ targetResourceCount: S.optional(S.Number) })).annotate({
+        identifier: "FastLaunchSnapshotConfiguration",
+      });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          launchTemplateId: S.optional(S.String),
+          launchTemplateName: S.optional(S.String),
+          launchTemplateVersion: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "FastLaunchLaunchTemplateSpecification",
+      });
+    case 8:
+      return S.suspend(() =>
+        S.Struct({
+          enabled: S.Boolean,
+          snapshotConfiguration: S.optional(__S(214, __c13, 6)),
+          maxParallelLaunches: S.optional(S.Number),
+          launchTemplate: S.optional(__S(215, __c13, 7)),
+          accountId: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "FastLaunchConfiguration" });
+    case 9:
+      return S.Array(__S(216, __c13, 8));
+    case 10:
+      return S.suspend(() =>
+        S.Struct({
+          amiAccountId: S.optional(S.String),
+          parameterName: S.String,
+          dataType: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "SsmParameterConfiguration",
+      });
+    case 11:
+      return S.Array(__S(218, __c13, 10));
+    case 12:
+      return S.suspend(() =>
+        S.Struct({
+          region: S.String,
+          amiDistributionConfiguration: S.optional(__S(209, __c13, 1)),
+          containerDistributionConfiguration: S.optional(__S(210, __c13, 2)),
+          licenseConfigurationArns: S.optional(__S(80, __c5, 0)),
+          launchTemplateConfigurations: S.optional(__S(212, __c13, 4)),
+          s3ExportConfiguration: S.optional(__S(213, __c13, 5)),
+          fastLaunchConfigurations: S.optional(__S(217, __c13, 9)),
+          ssmParameterConfigurations: S.optional(__S(219, __c13, 11)),
+        }),
+      ).annotate({ identifier: "Distribution" });
+    case 13:
+      return S.Array(__S(220, __c13, 12));
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           requestId: S.optional(S.String),
@@ -5524,99 +5564,89 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "CreateDistributionConfigurationResponse",
       });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          imageTestsEnabled: S.optional(S.Boolean),
-          timeoutMinutes: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "ImageTestsConfiguration" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          repositoryName: S.optional(S.String),
-          containerTags: S.optional(__S(4, __c0, 4)),
-        }),
-      ).annotate({ identifier: "EcrConfiguration" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          imageScanningEnabled: S.optional(S.Boolean),
-          ecrConfiguration: S.optional(__S(37, __c4, 5)),
-        }),
-      ).annotate({
-        identifier: "ImageScanningConfiguration",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          workflowArn: S.String,
-          parameters: S.optional(__S(10, __c1, 2)),
-          parallelGroup: S.optional(S.String),
-          onFailure: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "WorkflowConfiguration" });
   }
 }
-function __c5(j: number): any {
+function __c15(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(39, __c4, 7));
-    case 1:
-      return S.suspend(() => S.Struct({ logGroupName: S.optional(S.String) })).annotate({
-        identifier: "ImageLoggingConfiguration",
-      });
-    case 2:
       return S.suspend(() =>
         S.Struct({
           imageRecipeArn: S.optional(S.String),
           containerRecipeArn: S.optional(S.String),
           distributionConfigurationArn: S.optional(S.String),
           infrastructureConfigurationArn: S.String,
-          imageTestsConfiguration: S.optional(__S(36, __c4, 4)),
+          imageTestsConfiguration: S.optional(__S(256, __c16, 0)),
           enhancedImageMetadataEnabled: S.optional(S.Boolean),
-          tags: S.optional(__S(5, __c0, 5)),
+          tags: S.optional(__S(64, __c4, 0)),
           clientToken: S.String.pipe(T.IdempotencyToken()),
-          imageScanningConfiguration: S.optional(__S(38, __c4, 6)),
-          workflows: S.optional(__S(40, __c5, 0)),
+          imageScanningConfiguration: S.optional(__S(258, __c16, 2)),
+          workflows: S.optional(__S(260, __c16, 4)),
           executionRole: S.optional(S.String),
-          loggingConfiguration: S.optional(__S(41, __c5, 1)),
+          loggingConfiguration: S.optional(__S(272, __c17, 0)),
         }).pipe(
           T.all(T.Http({ method: "PUT", uri: "/CreateImage" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "CreateImageRequest" });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           requestId: S.optional(S.String),
           clientToken: S.optional(S.String),
           imageBuildVersionArn: S.optional(S.String),
-          latestVersionReferences: S.optional(__S(7, __c0, 7)),
+          latestVersionReferences: S.optional(__S(96, __c6, 0)),
         }),
       ).annotate({ identifier: "CreateImageResponse" });
-    case 4:
-      return S.suspend(() => S.Struct({ failureCount: S.Number })).annotate({
-        identifier: "AutoDisablePolicy",
-      });
-    case 5:
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          scheduleExpression: S.optional(S.String),
-          timezone: S.optional(S.String),
-          pipelineExecutionStartCondition: S.optional(S.String),
-          autoDisablePolicy: S.optional(__S(44, __c5, 4)),
+          imageTestsEnabled: S.optional(S.Boolean),
+          timeoutMinutes: S.optional(S.Number),
         }),
-      ).annotate({ identifier: "Schedule" });
-    case 6:
+      ).annotate({ identifier: "ImageTestsConfiguration" });
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          imageLogGroupName: S.optional(S.String),
-          pipelineLogGroupName: S.optional(S.String),
+          repositoryName: S.optional(S.String),
+          containerTags: S.optional(__S(80, __c5, 0)),
+        }),
+      ).annotate({ identifier: "EcrConfiguration" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          imageScanningEnabled: S.optional(S.Boolean),
+          ecrConfiguration: S.optional(__S(257, __c16, 1)),
         }),
       ).annotate({
-        identifier: "PipelineLoggingConfiguration",
+        identifier: "ImageScanningConfiguration",
       });
-    case 7:
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          workflowArn: S.String,
+          parameters: S.optional(__S(145, __c9, 1)),
+          parallelGroup: S.optional(S.String),
+          onFailure: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "WorkflowConfiguration" });
+    case 4:
+      return S.Array(__S(259, __c16, 3));
+  }
+}
+function __c17(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({ logGroupName: S.optional(S.String) })).annotate({
+        identifier: "ImageLoggingConfiguration",
+      });
+  }
+}
+function __c18(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String,
@@ -5625,17 +5655,17 @@ function __c5(j: number): any {
           containerRecipeArn: S.optional(S.String),
           infrastructureConfigurationArn: S.String,
           distributionConfigurationArn: S.optional(S.String),
-          imageTestsConfiguration: S.optional(__S(36, __c4, 4)),
+          imageTestsConfiguration: S.optional(__S(256, __c16, 0)),
           enhancedImageMetadataEnabled: S.optional(S.Boolean),
-          schedule: S.optional(__S(45, __c5, 5)),
+          schedule: S.optional(__S(305, __c19, 1)),
           status: S.optional(S.String),
-          tags: S.optional(__S(5, __c0, 5)),
-          imageTags: S.optional(__S(5, __c0, 5)),
+          tags: S.optional(__S(64, __c4, 0)),
+          imageTags: S.optional(__S(64, __c4, 0)),
           clientToken: S.String.pipe(T.IdempotencyToken()),
-          imageScanningConfiguration: S.optional(__S(38, __c4, 6)),
-          workflows: S.optional(__S(40, __c5, 0)),
+          imageScanningConfiguration: S.optional(__S(258, __c16, 2)),
+          workflows: S.optional(__S(260, __c16, 4)),
           executionRole: S.optional(S.String),
-          loggingConfiguration: S.optional(__S(46, __c5, 6)),
+          loggingConfiguration: S.optional(__S(306, __c19, 2)),
           dryRun: S.optional(S.Boolean),
         }).pipe(
           T.all(
@@ -5652,7 +5682,33 @@ function __c5(j: number): any {
       });
   }
 }
-function __c6(j: number): any {
+function __c19(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({ failureCount: S.Number })).annotate({
+        identifier: "AutoDisablePolicy",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          scheduleExpression: S.optional(S.String),
+          timezone: S.optional(S.String),
+          pipelineExecutionStartCondition: S.optional(S.String),
+          autoDisablePolicy: S.optional(__S(304, __c19, 0)),
+        }),
+      ).annotate({ identifier: "Schedule" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          imageLogGroupName: S.optional(S.String),
+          pipelineLogGroupName: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "PipelineLoggingConfiguration",
+      });
+  }
+}
+function __c20(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5664,97 +5720,79 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "CreateImagePipelineResponse",
       });
-    case 1:
-      return S.suspend(() => S.Struct({ uninstallAfterBuild: S.optional(S.Boolean) })).annotate({
-        identifier: "SystemsManagerAgent",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          systemsManagerAgent: S.optional(__S(49, __c6, 1)),
-          userDataOverride: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "AdditionalInstanceConfiguration",
-      });
-    case 3:
+  }
+}
+function __c21(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String,
           description: S.optional(S.String),
           semanticVersion: S.String,
-          components: S.optional(__S(12, __c1, 4)),
+          components: S.optional(__S(161, __c10, 1)),
           parentImage: S.String,
-          blockDeviceMappings: S.optional(__S(15, __c1, 7)),
-          tags: S.optional(__S(5, __c0, 5)),
+          blockDeviceMappings: S.optional(__S(164, __c10, 4)),
+          tags: S.optional(__S(64, __c4, 0)),
           workingDirectory: S.optional(S.String),
-          additionalInstanceConfiguration: S.optional(__S(50, __c6, 2)),
-          amiTags: S.optional(__S(5, __c0, 5)),
-          amiWatermarks: S.optional(__S(4, __c0, 4)),
+          additionalInstanceConfiguration: S.optional(__S(353, __c22, 1)),
+          amiTags: S.optional(__S(64, __c4, 0)),
+          amiWatermarks: S.optional(__S(80, __c5, 0)),
           clientToken: S.String.pipe(T.IdempotencyToken()),
           dryRun: S.optional(S.Boolean),
         }).pipe(
           T.all(T.Http({ method: "PUT", uri: "/CreateImageRecipe" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "CreateImageRecipeRequest" });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           requestId: S.optional(S.String),
           clientToken: S.optional(S.String),
           imageRecipeArn: S.optional(S.String),
-          latestVersionReferences: S.optional(__S(7, __c0, 7)),
+          latestVersionReferences: S.optional(__S(96, __c6, 0)),
         }),
       ).annotate({
         identifier: "CreateImageRecipeResponse",
       });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({ s3BucketName: S.optional(S.String), s3KeyPrefix: S.optional(S.String) }),
-      ).annotate({ identifier: "S3Logs" });
-    case 6:
-      return S.suspend(() => S.Struct({ s3Logs: S.optional(__S(53, __c6, 5)) })).annotate({
-        identifier: "Logging",
-      });
-    case 7:
-      return S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
   }
 }
-function __c7(j: number): any {
+function __c22(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({ uninstallAfterBuild: S.optional(S.Boolean) })).annotate({
+        identifier: "SystemsManagerAgent",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          systemsManagerAgent: S.optional(__S(352, __c22, 0)),
+          userDataOverride: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "AdditionalInstanceConfiguration",
+      });
+  }
+}
+function __c23(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          httpTokens: S.optional(S.String),
-          httpPutResponseHopLimit: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "InstanceMetadataOptions" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          availabilityZone: S.optional(S.String),
-          tenancy: S.optional(S.String),
-          hostId: S.optional(S.String),
-          hostResourceGroupArn: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Placement" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
           name: S.String,
           description: S.optional(S.String),
-          instanceTypes: S.optional(__S(4, __c0, 4)),
+          instanceTypes: S.optional(__S(80, __c5, 0)),
           instanceProfileName: S.String,
-          securityGroupIds: S.optional(__S(4, __c0, 4)),
+          securityGroupIds: S.optional(__S(80, __c5, 0)),
           subnetId: S.optional(S.String),
-          logging: S.optional(__S(54, __c6, 6)),
+          logging: S.optional(__S(401, __c25, 1)),
           keyPair: S.optional(S.String),
           terminateInstanceOnFailure: S.optional(S.Boolean),
           snsTopicArn: S.optional(S.String),
-          resourceTags: S.optional(__S(55, __c6, 7)),
-          instanceMetadataOptions: S.optional(__S(56, __c7, 0)),
-          tags: S.optional(__S(5, __c0, 5)),
-          placement: S.optional(__S(57, __c7, 1)),
+          resourceTags: S.optional(__S(384, __c24, 0)),
+          instanceMetadataOptions: S.optional(__S(402, __c25, 2)),
+          tags: S.optional(__S(64, __c4, 0)),
+          placement: S.optional(__S(385, __c24, 1)),
           clientToken: S.String.pipe(T.IdempotencyToken()),
           dryRun: S.optional(S.Boolean),
         }).pipe(
@@ -5770,7 +5808,45 @@ function __c7(j: number): any {
       ).annotate({
         identifier: "CreateInfrastructureConfigurationRequest",
       });
-    case 3:
+  }
+}
+function __c24(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          availabilityZone: S.optional(S.String),
+          tenancy: S.optional(S.String),
+          hostId: S.optional(S.String),
+          hostResourceGroupArn: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Placement" });
+  }
+}
+function __c25(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ s3BucketName: S.optional(S.String), s3KeyPrefix: S.optional(S.String) }),
+      ).annotate({ identifier: "S3Logs" });
+    case 1:
+      return S.suspend(() => S.Struct({ s3Logs: S.optional(__S(400, __c25, 0)) })).annotate({
+        identifier: "Logging",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          httpTokens: S.optional(S.String),
+          httpPutResponseHopLimit: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "InstanceMetadataOptions" });
+  }
+}
+function __c26(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           requestId: S.optional(S.String),
@@ -5780,91 +5856,11 @@ function __c7(j: number): any {
       ).annotate({
         identifier: "CreateInfrastructureConfigurationResponse",
       });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          amis: S.optional(S.Boolean),
-          snapshots: S.optional(S.Boolean),
-          containers: S.optional(S.Boolean),
-        }),
-      ).annotate({
-        identifier: "LifecyclePolicyDetailActionIncludeResources",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          type: S.String,
-          includeResources: S.optional(__S(60, __c7, 4)),
-        }),
-      ).annotate({
-        identifier: "LifecyclePolicyDetailAction",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          type: S.String,
-          value: S.Number,
-          unit: S.optional(S.String),
-          retainAtLeast: S.optional(S.Number),
-        }),
-      ).annotate({
-        identifier: "LifecyclePolicyDetailFilter",
-      });
-    case 7:
-      return S.suspend(() => S.Struct({ value: S.Number, unit: S.String })).annotate({
-        identifier: "LifecyclePolicyDetailExclusionRulesAmisLastLaunched",
-      });
   }
 }
-function __c8(j: number): any {
+function __c27(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() =>
-        S.Struct({
-          isPublic: S.optional(S.Boolean),
-          regions: S.optional(__S(4, __c0, 4)),
-          sharedAccounts: S.optional(__S(4, __c0, 4)),
-          lastLaunched: S.optional(__S(63, __c7, 7)),
-          tagMap: S.optional(__S(5, __c0, 5)),
-        }),
-      ).annotate({
-        identifier: "LifecyclePolicyDetailExclusionRulesAmis",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          tagMap: S.optional(__S(5, __c0, 5)),
-          amis: S.optional(__S(64, __c8, 0)),
-        }),
-      ).annotate({
-        identifier: "LifecyclePolicyDetailExclusionRules",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          action: __S(61, __c7, 5),
-          filter: __S(62, __c7, 6),
-          exclusionRules: S.optional(__S(65, __c8, 1)),
-        }),
-      ).annotate({ identifier: "LifecyclePolicyDetail" });
-    case 3:
-      return S.Array(__S(66, __c8, 2));
-    case 4:
-      return S.suspend(() => S.Struct({ name: S.String, semanticVersion: S.String })).annotate({
-        identifier: "LifecyclePolicyResourceSelectionRecipe",
-      });
-    case 5:
-      return S.Array(__S(68, __c8, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          recipes: S.optional(__S(69, __c8, 5)),
-          tagMap: S.optional(__S(5, __c0, 5)),
-        }),
-      ).annotate({
-        identifier: "LifecyclePolicyResourceSelection",
-      });
-    case 7:
       return S.suspend(() =>
         S.Struct({
           name: S.String,
@@ -5872,9 +5868,9 @@ function __c8(j: number): any {
           status: S.optional(S.String),
           executionRole: S.String,
           resourceType: S.String,
-          policyDetails: __S(67, __c8, 3),
-          resourceSelection: __S(70, __c8, 6),
-          tags: S.optional(__S(5, __c0, 5)),
+          policyDetails: __S(468, __c29, 4),
+          resourceSelection: __S(471, __c29, 7),
+          tags: S.optional(__S(64, __c4, 0)),
           clientToken: S.String.pipe(T.IdempotencyToken()),
           dryRun: S.optional(S.Boolean),
         }).pipe(
@@ -5890,17 +5886,105 @@ function __c8(j: number): any {
       ).annotate({
         identifier: "CreateLifecyclePolicyRequest",
       });
-  }
-}
-function __c9(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({ clientToken: S.optional(S.String), lifecyclePolicyArn: S.optional(S.String) }),
       ).annotate({
         identifier: "CreateLifecyclePolicyResponse",
       });
+  }
+}
+function __c28(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          amis: S.optional(S.Boolean),
+          snapshots: S.optional(S.Boolean),
+          containers: S.optional(S.Boolean),
+        }),
+      ).annotate({
+        identifier: "LifecyclePolicyDetailActionIncludeResources",
+      });
     case 1:
+      return S.suspend(() => S.Struct({ value: S.Number, unit: S.String })).annotate({
+        identifier: "LifecyclePolicyDetailExclusionRulesAmisLastLaunched",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          isPublic: S.optional(S.Boolean),
+          regions: S.optional(__S(80, __c5, 0)),
+          sharedAccounts: S.optional(__S(80, __c5, 0)),
+          lastLaunched: S.optional(__S(449, __c28, 1)),
+          tagMap: S.optional(__S(64, __c4, 0)),
+        }),
+      ).annotate({
+        identifier: "LifecyclePolicyDetailExclusionRulesAmis",
+      });
+  }
+}
+function __c29(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          type: S.String,
+          includeResources: S.optional(__S(448, __c28, 0)),
+        }),
+      ).annotate({
+        identifier: "LifecyclePolicyDetailAction",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          type: S.String,
+          value: S.Number,
+          unit: S.optional(S.String),
+          retainAtLeast: S.optional(S.Number),
+        }),
+      ).annotate({
+        identifier: "LifecyclePolicyDetailFilter",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          tagMap: S.optional(__S(64, __c4, 0)),
+          amis: S.optional(__S(450, __c28, 2)),
+        }),
+      ).annotate({
+        identifier: "LifecyclePolicyDetailExclusionRules",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          action: __S(464, __c29, 0),
+          filter: __S(465, __c29, 1),
+          exclusionRules: S.optional(__S(466, __c29, 2)),
+        }),
+      ).annotate({ identifier: "LifecyclePolicyDetail" });
+    case 4:
+      return S.Array(__S(467, __c29, 3));
+    case 5:
+      return S.suspend(() => S.Struct({ name: S.String, semanticVersion: S.String })).annotate({
+        identifier: "LifecyclePolicyResourceSelectionRecipe",
+      });
+    case 6:
+      return S.Array(__S(469, __c29, 5));
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          recipes: S.optional(__S(470, __c29, 6)),
+          tagMap: S.optional(__S(64, __c4, 0)),
+        }),
+      ).annotate({
+        identifier: "LifecyclePolicyResourceSelection",
+      });
+  }
+}
+function __c30(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String,
@@ -5910,7 +5994,7 @@ function __c9(j: number): any {
           data: S.optional(S.String),
           uri: S.optional(S.String),
           kmsKeyId: S.optional(S.String),
-          tags: S.optional(__S(5, __c0, 5)),
+          tags: S.optional(__S(64, __c4, 0)),
           clientToken: S.String.pipe(T.IdempotencyToken()),
           type: S.String,
           dryRun: S.optional(S.Boolean),
@@ -5918,15 +6002,19 @@ function __c9(j: number): any {
           T.all(T.Http({ method: "PUT", uri: "/CreateWorkflow" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "CreateWorkflowRequest" });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           clientToken: S.optional(S.String),
           workflowBuildVersionArn: S.optional(S.String),
-          latestVersionReferences: S.optional(__S(7, __c0, 7)),
+          latestVersionReferences: S.optional(__S(96, __c6, 0)),
         }),
       ).annotate({ identifier: "CreateWorkflowResponse" });
-    case 3:
+  }
+}
+function __c31(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           componentBuildVersionArn: S.String.pipe(T.HttpQuery("componentBuildVersionArn")),
@@ -5941,14 +6029,18 @@ function __c9(j: number): any {
           ),
         ),
       ).annotate({ identifier: "DeleteComponentRequest" });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           requestId: S.optional(S.String),
           componentBuildVersionArn: S.optional(S.String),
         }),
       ).annotate({ identifier: "DeleteComponentResponse" });
-    case 5:
+  }
+}
+function __c32(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ containerRecipeArn: S.String.pipe(T.HttpQuery("containerRecipeArn")) }).pipe(
           T.all(
@@ -5963,13 +6055,21 @@ function __c9(j: number): any {
       ).annotate({
         identifier: "DeleteContainerRecipeRequest",
       });
-    case 6:
+  }
+}
+function __c33(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ requestId: S.optional(S.String), containerRecipeArn: S.optional(S.String) }),
       ).annotate({
         identifier: "DeleteContainerRecipeResponse",
       });
-    case 7:
+  }
+}
+function __c34(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           distributionConfigurationArn: S.String.pipe(T.HttpQuery("distributionConfigurationArn")),
@@ -5986,11 +6086,7 @@ function __c9(j: number): any {
       ).annotate({
         identifier: "DeleteDistributionConfigurationRequest",
       });
-  }
-}
-function __c10(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           requestId: S.optional(S.String),
@@ -5999,17 +6095,25 @@ function __c10(j: number): any {
       ).annotate({
         identifier: "DeleteDistributionConfigurationResponse",
       });
-    case 1:
+  }
+}
+function __c35(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ imageBuildVersionArn: S.String.pipe(T.HttpQuery("imageBuildVersionArn")) }).pipe(
           T.all(T.Http({ method: "DELETE", uri: "/DeleteImage" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "DeleteImageRequest" });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({ requestId: S.optional(S.String), imageBuildVersionArn: S.optional(S.String) }),
       ).annotate({ identifier: "DeleteImageResponse" });
-    case 3:
+  }
+}
+function __c36(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ imagePipelineArn: S.String.pipe(T.HttpQuery("imagePipelineArn")) }).pipe(
           T.all(
@@ -6024,13 +6128,17 @@ function __c10(j: number): any {
       ).annotate({
         identifier: "DeleteImagePipelineRequest",
       });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({ requestId: S.optional(S.String), imagePipelineArn: S.optional(S.String) }),
       ).annotate({
         identifier: "DeleteImagePipelineResponse",
       });
-    case 5:
+  }
+}
+function __c37(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ imageRecipeArn: S.String.pipe(T.HttpQuery("imageRecipeArn")) }).pipe(
           T.all(
@@ -6043,13 +6151,21 @@ function __c10(j: number): any {
           ),
         ),
       ).annotate({ identifier: "DeleteImageRecipeRequest" });
-    case 6:
+  }
+}
+function __c38(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ requestId: S.optional(S.String), imageRecipeArn: S.optional(S.String) }),
       ).annotate({
         identifier: "DeleteImageRecipeResponse",
       });
-    case 7:
+  }
+}
+function __c39(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           infrastructureConfigurationArn: S.String.pipe(
@@ -6068,11 +6184,7 @@ function __c10(j: number): any {
       ).annotate({
         identifier: "DeleteInfrastructureConfigurationRequest",
       });
-  }
-}
-function __c11(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           requestId: S.optional(S.String),
@@ -6081,7 +6193,11 @@ function __c11(j: number): any {
       ).annotate({
         identifier: "DeleteInfrastructureConfigurationResponse",
       });
-    case 1:
+  }
+}
+function __c40(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ lifecyclePolicyArn: S.String.pipe(T.HttpQuery("lifecyclePolicyArn")) }).pipe(
           T.all(
@@ -6096,11 +6212,19 @@ function __c11(j: number): any {
       ).annotate({
         identifier: "DeleteLifecyclePolicyRequest",
       });
-    case 2:
+  }
+}
+function __c41(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() => S.Struct({ lifecyclePolicyArn: S.optional(S.String) })).annotate({
         identifier: "DeleteLifecyclePolicyResponse",
       });
-    case 3:
+  }
+}
+function __c42(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           workflowBuildVersionArn: S.String.pipe(T.HttpQuery("workflowBuildVersionArn")),
@@ -6108,28 +6232,40 @@ function __c11(j: number): any {
           T.all(T.Http({ method: "DELETE", uri: "/DeleteWorkflow" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "DeleteWorkflowRequest" });
-    case 4:
+    case 1:
       return S.suspend(() => S.Struct({ workflowBuildVersionArn: S.optional(S.String) })).annotate({
         identifier: "DeleteWorkflowResponse",
       });
-    case 5:
+  }
+}
+function __c43(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           sourceImage: S.String,
           distributionConfigurationArn: S.String,
           executionRole: S.String,
-          tags: S.optional(__S(5, __c0, 5)),
+          tags: S.optional(__S(64, __c4, 0)),
           clientToken: S.String.pipe(T.IdempotencyToken()),
-          loggingConfiguration: S.optional(__S(41, __c5, 1)),
+          loggingConfiguration: S.optional(__S(272, __c17, 0)),
         }).pipe(
           T.all(T.Http({ method: "PUT", uri: "/DistributeImage" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "DistributeImageRequest" });
-    case 6:
+  }
+}
+function __c44(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ clientToken: S.optional(S.String), imageBuildVersionArn: S.optional(S.String) }),
       ).annotate({ identifier: "DistributeImageResponse" });
-    case 7:
+  }
+}
+function __c45(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           componentBuildVersionArn: S.String.pipe(T.HttpQuery("componentBuildVersionArn")),
@@ -6137,32 +6273,7 @@ function __c11(j: number): any {
           T.all(T.Http({ method: "GET", uri: "/GetComponent" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "GetComponentRequest" });
-  }
-}
-function __c12(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({ status: S.optional(S.String), reason: S.optional(S.String) }),
-      ).annotate({ identifier: "ComponentState" });
     case 1:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String,
-          type: S.String,
-          defaultValue: S.optional(__S(4, __c0, 4)),
-          description: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ComponentParameterDetail" });
-    case 2:
-      return S.Array(__S(97, __c12, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({ productCodeId: S.String, productCodeType: S.String }),
-      ).annotate({ identifier: "ProductCodeListItem" });
-    case 4:
-      return S.Array(__S(99, __c12, 3));
-    case 5:
       return S.suspend(() =>
         S.Struct({
           arn: S.optional(S.String),
@@ -6172,29 +6283,66 @@ function __c12(j: number): any {
           changeDescription: S.optional(S.String),
           type: S.optional(S.String),
           platform: S.optional(S.String),
-          supportedOsVersions: S.optional(__S(4, __c0, 4)),
-          state: S.optional(__S(96, __c12, 0)),
-          parameters: S.optional(__S(98, __c12, 2)),
+          supportedOsVersions: S.optional(__S(80, __c5, 0)),
+          state: S.optional(__S(736, __c46, 0)),
+          parameters: S.optional(__S(753, __c47, 1)),
           owner: S.optional(S.String),
           data: S.optional(S.String),
           kmsKeyId: S.optional(S.String),
           encrypted: S.optional(S.Boolean),
           dateCreated: S.optional(S.String),
-          tags: S.optional(__S(5, __c0, 5)),
+          tags: S.optional(__S(64, __c4, 0)),
           publisher: S.optional(S.String),
           obfuscate: S.optional(S.Boolean),
-          productCodes: S.optional(__S(100, __c12, 4)),
+          productCodes: S.optional(__S(769, __c48, 1)),
         }),
       ).annotate({ identifier: "Component" });
-    case 6:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           requestId: S.optional(S.String),
-          component: S.optional(__S(101, __c12, 5)),
-          latestVersionReferences: S.optional(__S(7, __c0, 7)),
+          component: S.optional(__S(721, __c45, 1)),
+          latestVersionReferences: S.optional(__S(96, __c6, 0)),
         }),
       ).annotate({ identifier: "GetComponentResponse" });
-    case 7:
+  }
+}
+function __c46(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ status: S.optional(S.String), reason: S.optional(S.String) }),
+      ).annotate({ identifier: "ComponentState" });
+  }
+}
+function __c47(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String,
+          type: S.String,
+          defaultValue: S.optional(__S(80, __c5, 0)),
+          description: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ComponentParameterDetail" });
+    case 1:
+      return S.Array(__S(752, __c47, 0));
+  }
+}
+function __c48(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ productCodeId: S.String, productCodeType: S.String }),
+      ).annotate({ identifier: "ProductCodeListItem" });
+    case 1:
+      return S.Array(__S(768, __c48, 0));
+  }
+}
+function __c49(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ componentArn: S.String.pipe(T.HttpQuery("componentArn")) }).pipe(
           T.all(
@@ -6211,7 +6359,7 @@ function __c12(j: number): any {
       });
   }
 }
-function __c13(j: number): any {
+function __c50(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -6219,7 +6367,11 @@ function __c13(j: number): any {
       ).annotate({
         identifier: "GetComponentPolicyResponse",
       });
-    case 1:
+  }
+}
+function __c51(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ containerRecipeArn: S.String.pipe(T.HttpQuery("containerRecipeArn")) }).pipe(
           T.all(
@@ -6234,7 +6386,21 @@ function __c13(j: number): any {
       ).annotate({
         identifier: "GetContainerRecipeRequest",
       });
-    case 2:
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          requestId: S.optional(S.String),
+          containerRecipe: S.optional(__S(832, __c52, 0)),
+          latestVersionReferences: S.optional(__S(96, __c6, 0)),
+        }),
+      ).annotate({
+        identifier: "GetContainerRecipeResponse",
+      });
+  }
+}
+function __c52(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           arn: S.optional(S.String),
@@ -6244,29 +6410,23 @@ function __c13(j: number): any {
           platform: S.optional(S.String),
           owner: S.optional(S.String),
           version: S.optional(S.String),
-          components: S.optional(__S(12, __c1, 4)),
-          instanceConfiguration: S.optional(__S(16, __c2, 0)),
+          components: S.optional(__S(161, __c10, 1)),
+          instanceConfiguration: S.optional(__S(176, __c11, 0)),
           dockerfileTemplateData: S.optional(S.String),
           kmsKeyId: S.optional(S.String),
           encrypted: S.optional(S.Boolean),
           parentImage: S.optional(S.String),
           dateCreated: S.optional(S.String),
-          tags: S.optional(__S(5, __c0, 5)),
+          tags: S.optional(__S(64, __c4, 0)),
           workingDirectory: S.optional(S.String),
-          targetRepository: S.optional(__S(17, __c2, 1)),
+          targetRepository: S.optional(__S(128, __c8, 0)),
         }),
       ).annotate({ identifier: "ContainerRecipe" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          requestId: S.optional(S.String),
-          containerRecipe: S.optional(__S(106, __c13, 2)),
-          latestVersionReferences: S.optional(__S(7, __c0, 7)),
-        }),
-      ).annotate({
-        identifier: "GetContainerRecipeResponse",
-      });
-    case 4:
+  }
+}
+function __c53(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ containerRecipeArn: S.String.pipe(T.HttpQuery("containerRecipeArn")) }).pipe(
           T.all(
@@ -6281,7 +6441,11 @@ function __c13(j: number): any {
       ).annotate({
         identifier: "GetContainerRecipePolicyRequest",
       });
-    case 5:
+  }
+}
+function __c54(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           distributionConfigurationArn: S.String.pipe(T.HttpQuery("distributionConfigurationArn")),
@@ -6298,33 +6462,37 @@ function __c13(j: number): any {
       ).annotate({
         identifier: "GetDistributionConfigurationRequest",
       });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          arn: S.optional(S.String),
-          name: S.optional(S.String),
-          description: S.optional(S.String),
-          distributions: S.optional(__S(33, __c4, 1)),
-          timeoutMinutes: S.optional(S.Number),
-          dateCreated: S.optional(S.String),
-          dateUpdated: S.optional(S.String),
-          tags: S.optional(__S(5, __c0, 5)),
-        }),
-      ).annotate({
-        identifier: "DistributionConfiguration",
-      });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           requestId: S.optional(S.String),
-          distributionConfiguration: S.optional(__S(110, __c13, 6)),
+          distributionConfiguration: S.optional(__S(880, __c55, 0)),
         }),
       ).annotate({
         identifier: "GetDistributionConfigurationResponse",
       });
   }
 }
-function __c14(j: number): any {
+function __c55(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          arn: S.optional(S.String),
+          name: S.optional(S.String),
+          description: S.optional(S.String),
+          distributions: S.optional(__S(221, __c13, 13)),
+          timeoutMinutes: S.optional(S.Number),
+          dateCreated: S.optional(S.String),
+          dateUpdated: S.optional(S.String),
+          tags: S.optional(__S(64, __c4, 0)),
+        }),
+      ).annotate({
+        identifier: "DistributionConfiguration",
+      });
+  }
+}
+function __c56(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -6335,55 +6503,48 @@ function __c14(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          componentArn: S.optional(S.String),
-          phaseName: S.optional(S.String),
-          stepName: S.optional(S.String),
-          action: S.optional(S.String),
-          errorMessage: S.optional(S.String),
+          arn: S.optional(S.String),
+          type: S.optional(S.String),
+          name: S.optional(S.String),
+          version: S.optional(S.String),
+          platform: S.optional(S.String),
+          enhancedImageMetadataEnabled: S.optional(S.Boolean),
+          osVersion: S.optional(S.String),
+          state: S.optional(__S(949, __c59, 5)),
+          imageRecipe: S.optional(__S(912, __c57, 0)),
+          containerRecipe: S.optional(__S(832, __c52, 0)),
+          sourcePipelineName: S.optional(S.String),
+          sourcePipelineArn: S.optional(S.String),
+          infrastructureConfiguration: S.optional(__S(928, __c58, 0)),
+          distributionConfiguration: S.optional(__S(880, __c55, 0)),
+          imageTestsConfiguration: S.optional(__S(256, __c16, 0)),
+          dateCreated: S.optional(S.String),
+          outputResources: S.optional(__S(954, __c59, 10)),
+          tags: S.optional(__S(64, __c4, 0)),
+          buildType: S.optional(S.String),
+          imageSource: S.optional(S.String),
+          scanState: S.optional(__S(736, __c46, 0)),
+          imageScanningConfiguration: S.optional(__S(258, __c16, 2)),
+          deprecationTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          lifecycleExecutionId: S.optional(S.String),
+          executionRole: S.optional(S.String),
+          workflows: S.optional(__S(260, __c16, 4)),
+          loggingConfiguration: S.optional(__S(272, __c17, 0)),
         }),
-      ).annotate({ identifier: "ComponentFailureContext" });
+      ).annotate({ identifier: "Image" });
     case 2:
       return S.suspend(() =>
         S.Struct({
-          region: S.optional(S.String),
-          status: S.optional(S.String),
-          imageConfigurationStep: S.optional(S.String),
-          errorMessage: S.optional(S.String),
-          targetAccountId: S.optional(S.String),
+          requestId: S.optional(S.String),
+          image: S.optional(__S(897, __c56, 1)),
+          latestVersionReferences: S.optional(__S(96, __c6, 0)),
         }),
-      ).annotate({ identifier: "RegionFailure" });
-    case 3:
-      return S.Array(__S(114, __c14, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          errorMessage: S.optional(S.String),
-          regionFailures: S.optional(__S(115, __c14, 3)),
-        }),
-      ).annotate({
-        identifier: "DistributionFailureContext",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          imageStatus: S.optional(S.String),
-          workflowExecutionId: S.optional(S.String),
-          workflowArn: S.optional(S.String),
-          stepExecutionId: S.optional(S.String),
-          failedStep: S.optional(S.String),
-          componentFailure: S.optional(__S(113, __c14, 1)),
-          distributionFailure: S.optional(__S(116, __c14, 4)),
-        }),
-      ).annotate({ identifier: "ImageFailureContext" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          status: S.optional(S.String),
-          reason: S.optional(S.String),
-          failureContext: S.optional(__S(117, __c14, 5)),
-        }),
-      ).annotate({ identifier: "ImageState" });
-    case 7:
+      ).annotate({ identifier: "GetImageResponse" });
+  }
+}
+function __c57(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           arn: S.optional(S.String),
@@ -6393,20 +6554,20 @@ function __c14(j: number): any {
           platform: S.optional(S.String),
           owner: S.optional(S.String),
           version: S.optional(S.String),
-          components: S.optional(__S(12, __c1, 4)),
+          components: S.optional(__S(161, __c10, 1)),
           parentImage: S.optional(S.String),
-          blockDeviceMappings: S.optional(__S(15, __c1, 7)),
+          blockDeviceMappings: S.optional(__S(164, __c10, 4)),
           dateCreated: S.optional(S.String),
-          tags: S.optional(__S(5, __c0, 5)),
+          tags: S.optional(__S(64, __c4, 0)),
           workingDirectory: S.optional(S.String),
-          additionalInstanceConfiguration: S.optional(__S(50, __c6, 2)),
-          amiTags: S.optional(__S(5, __c0, 5)),
-          amiWatermarks: S.optional(__S(4, __c0, 4)),
+          additionalInstanceConfiguration: S.optional(__S(353, __c22, 1)),
+          amiTags: S.optional(__S(64, __c4, 0)),
+          amiWatermarks: S.optional(__S(80, __c5, 0)),
         }),
       ).annotate({ identifier: "ImageRecipe" });
   }
 }
-function __c15(j: number): any {
+function __c58(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -6414,93 +6575,108 @@ function __c15(j: number): any {
           arn: S.optional(S.String),
           name: S.optional(S.String),
           description: S.optional(S.String),
-          instanceTypes: S.optional(__S(4, __c0, 4)),
+          instanceTypes: S.optional(__S(80, __c5, 0)),
           instanceProfileName: S.optional(S.String),
-          securityGroupIds: S.optional(__S(4, __c0, 4)),
+          securityGroupIds: S.optional(__S(80, __c5, 0)),
           subnetId: S.optional(S.String),
-          logging: S.optional(__S(54, __c6, 6)),
+          logging: S.optional(__S(401, __c25, 1)),
           keyPair: S.optional(S.String),
           terminateInstanceOnFailure: S.optional(S.Boolean),
           snsTopicArn: S.optional(S.String),
           dateCreated: S.optional(S.String),
           dateUpdated: S.optional(S.String),
-          resourceTags: S.optional(__S(55, __c6, 7)),
-          instanceMetadataOptions: S.optional(__S(56, __c7, 0)),
-          tags: S.optional(__S(5, __c0, 5)),
-          placement: S.optional(__S(57, __c7, 1)),
+          resourceTags: S.optional(__S(384, __c24, 0)),
+          instanceMetadataOptions: S.optional(__S(402, __c25, 2)),
+          tags: S.optional(__S(64, __c4, 0)),
+          placement: S.optional(__S(385, __c24, 1)),
         }),
       ).annotate({
         identifier: "InfrastructureConfiguration",
       });
+  }
+}
+function __c59(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          componentArn: S.optional(S.String),
+          phaseName: S.optional(S.String),
+          stepName: S.optional(S.String),
+          action: S.optional(S.String),
+          errorMessage: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ComponentFailureContext" });
     case 1:
+      return S.suspend(() =>
+        S.Struct({
+          region: S.optional(S.String),
+          status: S.optional(S.String),
+          imageConfigurationStep: S.optional(S.String),
+          errorMessage: S.optional(S.String),
+          targetAccountId: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "RegionFailure" });
+    case 2:
+      return S.Array(__S(945, __c59, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          errorMessage: S.optional(S.String),
+          regionFailures: S.optional(__S(946, __c59, 2)),
+        }),
+      ).annotate({
+        identifier: "DistributionFailureContext",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          imageStatus: S.optional(S.String),
+          workflowExecutionId: S.optional(S.String),
+          workflowArn: S.optional(S.String),
+          stepExecutionId: S.optional(S.String),
+          failedStep: S.optional(S.String),
+          componentFailure: S.optional(__S(944, __c59, 0)),
+          distributionFailure: S.optional(__S(947, __c59, 3)),
+        }),
+      ).annotate({ identifier: "ImageFailureContext" });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          status: S.optional(S.String),
+          reason: S.optional(S.String),
+          failureContext: S.optional(__S(948, __c59, 4)),
+        }),
+      ).annotate({ identifier: "ImageState" });
+    case 6:
       return S.suspend(() =>
         S.Struct({
           region: S.optional(S.String),
           image: S.optional(S.String),
           name: S.optional(S.String),
           description: S.optional(S.String),
-          state: S.optional(__S(118, __c14, 6)),
+          state: S.optional(__S(949, __c59, 5)),
           accountId: S.optional(S.String),
         }),
       ).annotate({ identifier: "Ami" });
-    case 2:
-      return S.Array(__S(121, __c15, 1));
-    case 3:
+    case 7:
+      return S.Array(__S(950, __c59, 6));
+    case 8:
       return S.suspend(() =>
-        S.Struct({ region: S.optional(S.String), imageUris: S.optional(__S(4, __c0, 4)) }),
+        S.Struct({ region: S.optional(S.String), imageUris: S.optional(__S(80, __c5, 0)) }),
       ).annotate({ identifier: "Container" });
-    case 4:
-      return S.Array(__S(123, __c15, 3));
-    case 5:
+    case 9:
+      return S.Array(__S(952, __c59, 8));
+    case 10:
       return S.suspend(() =>
         S.Struct({
-          amis: S.optional(__S(122, __c15, 2)),
-          containers: S.optional(__S(124, __c15, 4)),
+          amis: S.optional(__S(951, __c59, 7)),
+          containers: S.optional(__S(953, __c59, 9)),
         }),
       ).annotate({ identifier: "OutputResources" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          arn: S.optional(S.String),
-          type: S.optional(S.String),
-          name: S.optional(S.String),
-          version: S.optional(S.String),
-          platform: S.optional(S.String),
-          enhancedImageMetadataEnabled: S.optional(S.Boolean),
-          osVersion: S.optional(S.String),
-          state: S.optional(__S(118, __c14, 6)),
-          imageRecipe: S.optional(__S(119, __c14, 7)),
-          containerRecipe: S.optional(__S(106, __c13, 2)),
-          sourcePipelineName: S.optional(S.String),
-          sourcePipelineArn: S.optional(S.String),
-          infrastructureConfiguration: S.optional(__S(120, __c15, 0)),
-          distributionConfiguration: S.optional(__S(110, __c13, 6)),
-          imageTestsConfiguration: S.optional(__S(36, __c4, 4)),
-          dateCreated: S.optional(S.String),
-          outputResources: S.optional(__S(125, __c15, 5)),
-          tags: S.optional(__S(5, __c0, 5)),
-          buildType: S.optional(S.String),
-          imageSource: S.optional(S.String),
-          scanState: S.optional(__S(96, __c12, 0)),
-          imageScanningConfiguration: S.optional(__S(38, __c4, 6)),
-          deprecationTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          lifecycleExecutionId: S.optional(S.String),
-          executionRole: S.optional(S.String),
-          workflows: S.optional(__S(40, __c5, 0)),
-          loggingConfiguration: S.optional(__S(41, __c5, 1)),
-        }),
-      ).annotate({ identifier: "Image" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          requestId: S.optional(S.String),
-          image: S.optional(__S(126, __c15, 6)),
-          latestVersionReferences: S.optional(__S(7, __c0, 7)),
-        }),
-      ).annotate({ identifier: "GetImageResponse" });
   }
 }
-function __c16(j: number): any {
+function __c60(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -6509,6 +6685,17 @@ function __c16(j: number): any {
         ),
       ).annotate({ identifier: "GetImagePipelineRequest" });
     case 1:
+      return S.suspend(() =>
+        S.Struct({
+          requestId: S.optional(S.String),
+          imagePipeline: S.optional(__S(976, __c61, 0)),
+        }),
+      ).annotate({ identifier: "GetImagePipelineResponse" });
+  }
+}
+function __c61(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           arn: S.optional(S.String),
@@ -6520,55 +6707,60 @@ function __c16(j: number): any {
           containerRecipeArn: S.optional(S.String),
           infrastructureConfigurationArn: S.optional(S.String),
           distributionConfigurationArn: S.optional(S.String),
-          imageTestsConfiguration: S.optional(__S(36, __c4, 4)),
-          schedule: S.optional(__S(45, __c5, 5)),
+          imageTestsConfiguration: S.optional(__S(256, __c16, 0)),
+          schedule: S.optional(__S(305, __c19, 1)),
           status: S.optional(S.String),
           dateCreated: S.optional(S.String),
           dateUpdated: S.optional(S.String),
           dateLastRun: S.optional(S.String),
           lastRunStatus: S.optional(S.String),
           dateNextRun: S.optional(S.String),
-          tags: S.optional(__S(5, __c0, 5)),
-          imageScanningConfiguration: S.optional(__S(38, __c4, 6)),
-          imageTags: S.optional(__S(5, __c0, 5)),
+          tags: S.optional(__S(64, __c4, 0)),
+          imageScanningConfiguration: S.optional(__S(258, __c16, 2)),
+          imageTags: S.optional(__S(64, __c4, 0)),
           executionRole: S.optional(S.String),
-          workflows: S.optional(__S(40, __c5, 0)),
-          loggingConfiguration: S.optional(__S(46, __c5, 6)),
+          workflows: S.optional(__S(260, __c16, 4)),
+          loggingConfiguration: S.optional(__S(306, __c19, 2)),
           consecutiveFailures: S.optional(S.Number),
         }),
       ).annotate({ identifier: "ImagePipeline" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          requestId: S.optional(S.String),
-          imagePipeline: S.optional(__S(129, __c16, 1)),
-        }),
-      ).annotate({ identifier: "GetImagePipelineResponse" });
-    case 3:
+  }
+}
+function __c62(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ imageArn: S.String.pipe(T.HttpQuery("imageArn")) }).pipe(
           T.all(T.Http({ method: "GET", uri: "/GetImagePolicy" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "GetImagePolicyRequest" });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({ requestId: S.optional(S.String), policy: S.optional(S.String) }),
       ).annotate({ identifier: "GetImagePolicyResponse" });
-    case 5:
+  }
+}
+function __c63(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ imageRecipeArn: S.String.pipe(T.HttpQuery("imageRecipeArn")) }).pipe(
           T.all(T.Http({ method: "GET", uri: "/GetImageRecipe" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "GetImageRecipeRequest" });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           requestId: S.optional(S.String),
-          imageRecipe: S.optional(__S(119, __c14, 7)),
-          latestVersionReferences: S.optional(__S(7, __c0, 7)),
+          imageRecipe: S.optional(__S(912, __c57, 0)),
+          latestVersionReferences: S.optional(__S(96, __c6, 0)),
         }),
       ).annotate({ identifier: "GetImageRecipeResponse" });
-    case 7:
+  }
+}
+function __c64(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ imageRecipeArn: S.String.pipe(T.HttpQuery("imageRecipeArn")) }).pipe(
           T.all(
@@ -6585,7 +6777,7 @@ function __c16(j: number): any {
       });
   }
 }
-function __c17(j: number): any {
+function __c65(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -6610,12 +6802,16 @@ function __c17(j: number): any {
       return S.suspend(() =>
         S.Struct({
           requestId: S.optional(S.String),
-          infrastructureConfiguration: S.optional(__S(120, __c15, 0)),
+          infrastructureConfiguration: S.optional(__S(928, __c58, 0)),
         }),
       ).annotate({
         identifier: "GetInfrastructureConfigurationResponse",
       });
-    case 2:
+  }
+}
+function __c66(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ lifecycleExecutionId: S.String.pipe(T.HttpQuery("lifecycleExecutionId")) }).pipe(
           T.all(
@@ -6630,28 +6826,36 @@ function __c17(j: number): any {
       ).annotate({
         identifier: "GetLifecycleExecutionRequest",
       });
-    case 3:
+    case 1:
+      return S.suspend(() =>
+        S.Struct({ lifecycleExecution: S.optional(__S(1073, __c67, 1)) }),
+      ).annotate({
+        identifier: "GetLifecycleExecutionResponse",
+      });
+  }
+}
+function __c67(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() => S.Struct({ hasImpactedResources: S.optional(S.Boolean) })).annotate({
         identifier: "LifecycleExecutionResourcesImpactedSummary",
       });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           lifecycleExecutionId: S.optional(S.String),
           lifecyclePolicyArn: S.optional(S.String),
-          resourcesImpactedSummary: S.optional(__S(139, __c17, 3)),
-          state: S.optional(__S(96, __c12, 0)),
+          resourcesImpactedSummary: S.optional(__S(1072, __c67, 0)),
+          state: S.optional(__S(736, __c46, 0)),
           startTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           endTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
         }),
       ).annotate({ identifier: "LifecycleExecution" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({ lifecycleExecution: S.optional(__S(140, __c17, 4)) }),
-      ).annotate({
-        identifier: "GetLifecycleExecutionResponse",
-      });
-    case 6:
+  }
+}
+function __c68(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ lifecyclePolicyArn: S.String.pipe(T.HttpQuery("lifecyclePolicyArn")) }).pipe(
           T.all(
@@ -6666,7 +6870,7 @@ function __c17(j: number): any {
       ).annotate({
         identifier: "GetLifecyclePolicyRequest",
       });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           arn: S.optional(S.String),
@@ -6675,25 +6879,25 @@ function __c17(j: number): any {
           status: S.optional(S.String),
           executionRole: S.optional(S.String),
           resourceType: S.optional(S.String),
-          policyDetails: S.optional(__S(67, __c8, 3)),
-          resourceSelection: S.optional(__S(70, __c8, 6)),
+          policyDetails: S.optional(__S(468, __c29, 4)),
+          resourceSelection: S.optional(__S(471, __c29, 7)),
           dateCreated: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           dateUpdated: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           dateLastRun: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          tags: S.optional(__S(5, __c0, 5)),
+          tags: S.optional(__S(64, __c4, 0)),
         }),
       ).annotate({ identifier: "LifecyclePolicy" });
-  }
-}
-function __c18(j: number): any {
-  switch (j) {
-    case 0:
+    case 2:
       return S.suspend(() =>
-        S.Struct({ lifecyclePolicy: S.optional(__S(143, __c17, 7)) }),
+        S.Struct({ lifecyclePolicy: S.optional(__S(1089, __c68, 1)) }),
       ).annotate({
         identifier: "GetLifecyclePolicyResponse",
       });
-    case 1:
+  }
+}
+function __c69(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           resourceType: S.String,
@@ -6712,7 +6916,7 @@ function __c18(j: number): any {
       ).annotate({
         identifier: "GetMarketplaceResourceRequest",
       });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           resourceArn: S.optional(S.String),
@@ -6722,7 +6926,11 @@ function __c18(j: number): any {
       ).annotate({
         identifier: "GetMarketplaceResourceResponse",
       });
-    case 3:
+  }
+}
+function __c70(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           workflowBuildVersionArn: S.String.pipe(T.HttpQuery("workflowBuildVersionArn")),
@@ -6730,7 +6938,7 @@ function __c18(j: number): any {
           T.all(T.Http({ method: "GET", uri: "/GetWorkflow" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "GetWorkflowRequest" });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           arn: S.optional(S.String),
@@ -6739,23 +6947,27 @@ function __c18(j: number): any {
           description: S.optional(S.String),
           changeDescription: S.optional(S.String),
           type: S.optional(S.String),
-          state: S.optional(__S(96, __c12, 0)),
+          state: S.optional(__S(736, __c46, 0)),
           owner: S.optional(S.String),
           data: S.optional(S.String),
           kmsKeyId: S.optional(S.String),
           dateCreated: S.optional(S.String),
-          tags: S.optional(__S(5, __c0, 5)),
-          parameters: S.optional(__S(98, __c12, 2)),
+          tags: S.optional(__S(64, __c4, 0)),
+          parameters: S.optional(__S(753, __c47, 1)),
         }),
       ).annotate({ identifier: "Workflow" });
-    case 5:
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          workflow: S.optional(__S(148, __c18, 4)),
-          latestVersionReferences: S.optional(__S(7, __c0, 7)),
+          workflow: S.optional(__S(1121, __c70, 1)),
+          latestVersionReferences: S.optional(__S(96, __c6, 0)),
         }),
       ).annotate({ identifier: "GetWorkflowResponse" });
-    case 6:
+  }
+}
+function __c71(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ workflowExecutionId: S.String.pipe(T.HttpQuery("workflowExecutionId")) }).pipe(
           T.all(
@@ -6770,7 +6982,7 @@ function __c18(j: number): any {
       ).annotate({
         identifier: "GetWorkflowExecutionRequest",
       });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           requestId: S.optional(S.String),
@@ -6793,7 +7005,7 @@ function __c18(j: number): any {
       });
   }
 }
-function __c19(j: number): any {
+function __c72(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -6836,7 +7048,11 @@ function __c19(j: number): any {
       ).annotate({
         identifier: "GetWorkflowStepExecutionResponse",
       });
-    case 2:
+  }
+}
+function __c73(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String,
@@ -6849,13 +7065,13 @@ function __c19(j: number): any {
           data: S.optional(S.String),
           uri: S.optional(S.String),
           kmsKeyId: S.optional(S.String),
-          tags: S.optional(__S(5, __c0, 5)),
+          tags: S.optional(__S(64, __c4, 0)),
           clientToken: S.String.pipe(T.IdempotencyToken()),
         }).pipe(
           T.all(T.Http({ method: "PUT", uri: "/ImportComponent" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "ImportComponentRequest" });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           requestId: S.optional(S.String),
@@ -6863,15 +7079,19 @@ function __c19(j: number): any {
           componentBuildVersionArn: S.optional(S.String),
         }),
       ).annotate({ identifier: "ImportComponentResponse" });
-    case 4:
+  }
+}
+function __c74(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ secureBootEnabled: S.optional(S.Boolean), uefiData: S.optional(S.String) }),
       ).annotate({ identifier: "RegisterImageOptions" });
-    case 5:
+    case 1:
       return S.suspend(() => S.Struct({ imageIndex: S.Number })).annotate({
         identifier: "WindowsConfiguration",
       });
-    case 6:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           name: S.String,
@@ -6882,16 +7102,20 @@ function __c19(j: number): any {
           executionRole: S.optional(S.String),
           infrastructureConfigurationArn: S.String,
           uri: S.String,
-          loggingConfiguration: S.optional(__S(41, __c5, 1)),
-          tags: S.optional(__S(5, __c0, 5)),
-          registerImageOptions: S.optional(__S(156, __c19, 4)),
-          windowsConfiguration: S.optional(__S(157, __c19, 5)),
+          loggingConfiguration: S.optional(__S(272, __c17, 0)),
+          tags: S.optional(__S(64, __c4, 0)),
+          registerImageOptions: S.optional(__S(1184, __c74, 0)),
+          windowsConfiguration: S.optional(__S(1185, __c74, 1)),
           clientToken: S.String.pipe(T.IdempotencyToken()),
         }).pipe(
           T.all(T.Http({ method: "PUT", uri: "/ImportDiskImage" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "ImportDiskImageRequest" });
-    case 7:
+  }
+}
+function __c75(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String,
@@ -6900,18 +7124,14 @@ function __c19(j: number): any {
           platform: S.String,
           osVersion: S.optional(S.String),
           vmImportTaskId: S.String,
-          loggingConfiguration: S.optional(__S(41, __c5, 1)),
-          tags: S.optional(__S(5, __c0, 5)),
+          loggingConfiguration: S.optional(__S(272, __c17, 0)),
+          tags: S.optional(__S(64, __c4, 0)),
           clientToken: S.String.pipe(T.IdempotencyToken()),
         }).pipe(
           T.all(T.Http({ method: "PUT", uri: "/ImportVmImage" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "ImportVmImageRequest" });
-  }
-}
-function __c20(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           requestId: S.optional(S.String),
@@ -6919,7 +7139,11 @@ function __c20(j: number): any {
           clientToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "ImportVmImageResponse" });
-    case 1:
+  }
+}
+function __c76(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           componentVersionArn: S.optional(S.String),
@@ -6938,48 +7162,46 @@ function __c20(j: number): any {
       ).annotate({
         identifier: "ListComponentBuildVersionsRequest",
       });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           arn: S.optional(S.String),
           name: S.optional(S.String),
           version: S.optional(S.String),
           platform: S.optional(S.String),
-          supportedOsVersions: S.optional(__S(4, __c0, 4)),
-          state: S.optional(__S(96, __c12, 0)),
+          supportedOsVersions: S.optional(__S(80, __c5, 0)),
+          state: S.optional(__S(736, __c46, 0)),
           type: S.optional(S.String),
           owner: S.optional(S.String),
           description: S.optional(S.String),
           changeDescription: S.optional(S.String),
           dateCreated: S.optional(S.String),
-          tags: S.optional(__S(5, __c0, 5)),
+          tags: S.optional(__S(64, __c4, 0)),
           publisher: S.optional(S.String),
           obfuscate: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "ComponentSummary" });
+    case 2:
+      return S.Array(__S(1217, __c76, 1));
     case 3:
-      return S.Array(__S(162, __c20, 2));
-    case 4:
       return S.suspend(() =>
         S.Struct({
           requestId: S.optional(S.String),
-          componentSummaryList: S.optional(__S(163, __c20, 3)),
+          componentSummaryList: S.optional(__S(1218, __c76, 2)),
           nextToken: S.optional(S.String),
         }),
       ).annotate({
         identifier: "ListComponentBuildVersionsResponse",
       });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({ name: S.optional(S.String), values: S.optional(__S(4, __c0, 4)) }),
-      ).annotate({ identifier: "Filter" });
-    case 6:
-      return S.Array(__S(165, __c20, 5));
-    case 7:
+  }
+}
+function __c77(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           owner: S.optional(S.String),
-          filters: S.optional(__S(166, __c20, 6)),
+          filters: S.optional(__S(1264, __c79, 0)),
           byName: S.optional(S.Boolean),
           maxResults: S.optional(S.Number),
           nextToken: S.optional(S.String),
@@ -6987,11 +7209,7 @@ function __c20(j: number): any {
           T.all(T.Http({ method: "POST", uri: "/ListComponents" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "ListComponentsRequest" });
-  }
-}
-function __c21(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           arn: S.optional(S.String),
@@ -6999,29 +7217,47 @@ function __c21(j: number): any {
           version: S.optional(S.String),
           description: S.optional(S.String),
           platform: S.optional(S.String),
-          supportedOsVersions: S.optional(__S(4, __c0, 4)),
+          supportedOsVersions: S.optional(__S(80, __c5, 0)),
           type: S.optional(S.String),
           owner: S.optional(S.String),
           dateCreated: S.optional(S.String),
           status: S.optional(S.String),
-          productCodes: S.optional(__S(100, __c12, 4)),
+          productCodes: S.optional(__S(769, __c48, 1)),
         }),
       ).annotate({ identifier: "ComponentVersion" });
-    case 1:
-      return S.Array(__S(168, __c21, 0));
     case 2:
-      return S.suspend(() =>
-        S.Struct({
-          requestId: S.optional(S.String),
-          componentVersionList: S.optional(__S(169, __c21, 1)),
-          nextToken: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ListComponentsResponse" });
+      return S.Array(__S(1233, __c77, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
+          requestId: S.optional(S.String),
+          componentVersionList: S.optional(__S(1234, __c77, 2)),
+          nextToken: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ListComponentsResponse" });
+  }
+}
+function __c78(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ name: S.optional(S.String), values: S.optional(__S(80, __c5, 0)) }),
+      ).annotate({ identifier: "Filter" });
+  }
+}
+function __c79(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(1248, __c78, 0));
+  }
+}
+function __c80(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
           owner: S.optional(S.String),
-          filters: S.optional(__S(166, __c20, 6)),
+          filters: S.optional(__S(1264, __c79, 0)),
           maxResults: S.optional(S.Number),
           nextToken: S.optional(S.String),
         }).pipe(
@@ -7037,7 +7273,7 @@ function __c21(j: number): any {
       ).annotate({
         identifier: "ListContainerRecipesRequest",
       });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           arn: S.optional(S.String),
@@ -7048,25 +7284,29 @@ function __c21(j: number): any {
           parentImage: S.optional(S.String),
           dateCreated: S.optional(S.String),
           instanceImage: S.optional(S.String),
-          tags: S.optional(__S(5, __c0, 5)),
+          tags: S.optional(__S(64, __c4, 0)),
         }),
       ).annotate({ identifier: "ContainerRecipeSummary" });
-    case 5:
-      return S.Array(__S(172, __c21, 4));
-    case 6:
+    case 2:
+      return S.Array(__S(1281, __c80, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
           requestId: S.optional(S.String),
-          containerRecipeSummaryList: S.optional(__S(173, __c21, 5)),
+          containerRecipeSummaryList: S.optional(__S(1282, __c80, 2)),
           nextToken: S.optional(S.String),
         }),
       ).annotate({
         identifier: "ListContainerRecipesResponse",
       });
-    case 7:
+  }
+}
+function __c81(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          filters: S.optional(__S(166, __c20, 6)),
+          filters: S.optional(__S(1264, __c79, 0)),
           maxResults: S.optional(S.Number),
           nextToken: S.optional(S.String),
         }).pipe(
@@ -7082,11 +7322,7 @@ function __c21(j: number): any {
       ).annotate({
         identifier: "ListDistributionConfigurationsRequest",
       });
-  }
-}
-function __c22(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           arn: S.optional(S.String),
@@ -7094,29 +7330,33 @@ function __c22(j: number): any {
           description: S.optional(S.String),
           dateCreated: S.optional(S.String),
           dateUpdated: S.optional(S.String),
-          tags: S.optional(__S(5, __c0, 5)),
-          regions: S.optional(__S(4, __c0, 4)),
+          tags: S.optional(__S(64, __c4, 0)),
+          regions: S.optional(__S(80, __c5, 0)),
         }),
       ).annotate({
         identifier: "DistributionConfigurationSummary",
       });
-    case 1:
-      return S.Array(__S(176, __c22, 0));
     case 2:
+      return S.Array(__S(1297, __c81, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
           requestId: S.optional(S.String),
-          distributionConfigurationSummaryList: S.optional(__S(177, __c22, 1)),
+          distributionConfigurationSummaryList: S.optional(__S(1298, __c81, 2)),
           nextToken: S.optional(S.String),
         }),
       ).annotate({
         identifier: "ListDistributionConfigurationsResponse",
       });
-    case 3:
+  }
+}
+function __c82(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           imageVersionArn: S.optional(S.String),
-          filters: S.optional(__S(166, __c20, 6)),
+          filters: S.optional(__S(1264, __c79, 0)),
           maxResults: S.optional(S.Number),
           nextToken: S.optional(S.String),
         }).pipe(
@@ -7132,7 +7372,11 @@ function __c22(j: number): any {
       ).annotate({
         identifier: "ListImageBuildVersionsRequest",
       });
-    case 4:
+  }
+}
+function __c83(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           arn: S.optional(S.String),
@@ -7141,31 +7385,35 @@ function __c22(j: number): any {
           version: S.optional(S.String),
           platform: S.optional(S.String),
           osVersion: S.optional(S.String),
-          state: S.optional(__S(118, __c14, 6)),
+          state: S.optional(__S(949, __c59, 5)),
           owner: S.optional(S.String),
           dateCreated: S.optional(S.String),
-          outputResources: S.optional(__S(125, __c15, 5)),
-          tags: S.optional(__S(5, __c0, 5)),
+          outputResources: S.optional(__S(954, __c59, 10)),
+          tags: S.optional(__S(64, __c4, 0)),
           buildType: S.optional(S.String),
           imageSource: S.optional(S.String),
           deprecationTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           lifecycleExecutionId: S.optional(S.String),
-          loggingConfiguration: S.optional(__S(41, __c5, 1)),
+          loggingConfiguration: S.optional(__S(272, __c17, 0)),
         }),
       ).annotate({ identifier: "ImageSummary" });
-    case 5:
-      return S.Array(__S(180, __c22, 4));
-    case 6:
+    case 1:
+      return S.Array(__S(1328, __c83, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           requestId: S.optional(S.String),
-          imageSummaryList: S.optional(__S(181, __c22, 5)),
+          imageSummaryList: S.optional(__S(1329, __c83, 1)),
           nextToken: S.optional(S.String),
         }),
       ).annotate({
         identifier: "ListImageBuildVersionsResponse",
       });
-    case 7:
+  }
+}
+function __c84(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           imageBuildVersionArn: S.String,
@@ -7182,31 +7430,31 @@ function __c22(j: number): any {
           ),
         ),
       ).annotate({ identifier: "ListImagePackagesRequest" });
-  }
-}
-function __c23(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({ packageName: S.optional(S.String), packageVersion: S.optional(S.String) }),
       ).annotate({ identifier: "ImagePackage" });
-    case 1:
-      return S.Array(__S(184, __c23, 0));
     case 2:
+      return S.Array(__S(1345, __c84, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
           requestId: S.optional(S.String),
-          imagePackageList: S.optional(__S(185, __c23, 1)),
+          imagePackageList: S.optional(__S(1346, __c84, 2)),
           nextToken: S.optional(S.String),
         }),
       ).annotate({
         identifier: "ListImagePackagesResponse",
       });
-    case 3:
+  }
+}
+function __c85(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           imagePipelineArn: S.String,
-          filters: S.optional(__S(166, __c20, 6)),
+          filters: S.optional(__S(1264, __c79, 0)),
           maxResults: S.optional(S.Number),
           nextToken: S.optional(S.String),
         }).pipe(
@@ -7222,10 +7470,14 @@ function __c23(j: number): any {
       ).annotate({
         identifier: "ListImagePipelineImagesRequest",
       });
-    case 4:
+  }
+}
+function __c86(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          filters: S.optional(__S(166, __c20, 6)),
+          filters: S.optional(__S(1264, __c79, 0)),
           maxResults: S.optional(S.Number),
           nextToken: S.optional(S.String),
         }).pipe(
@@ -7241,34 +7493,34 @@ function __c23(j: number): any {
       ).annotate({
         identifier: "ListImagePipelinesRequest",
       });
-    case 5:
-      return S.Array(__S(129, __c16, 1));
-    case 6:
+    case 1:
+      return S.Array(__S(976, __c61, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           requestId: S.optional(S.String),
-          imagePipelineList: S.optional(__S(189, __c23, 5)),
+          imagePipelineList: S.optional(__S(1377, __c86, 1)),
           nextToken: S.optional(S.String),
         }),
       ).annotate({
         identifier: "ListImagePipelinesResponse",
       });
-    case 7:
+  }
+}
+function __c87(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           owner: S.optional(S.String),
-          filters: S.optional(__S(166, __c20, 6)),
+          filters: S.optional(__S(1264, __c79, 0)),
           maxResults: S.optional(S.Number),
           nextToken: S.optional(S.String),
         }).pipe(
           T.all(T.Http({ method: "POST", uri: "/ListImageRecipes" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "ListImageRecipesRequest" });
-  }
-}
-function __c24(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           arn: S.optional(S.String),
@@ -7277,24 +7529,28 @@ function __c24(j: number): any {
           owner: S.optional(S.String),
           parentImage: S.optional(S.String),
           dateCreated: S.optional(S.String),
-          tags: S.optional(__S(5, __c0, 5)),
+          tags: S.optional(__S(64, __c4, 0)),
         }),
       ).annotate({ identifier: "ImageRecipeSummary" });
-    case 1:
-      return S.Array(__S(192, __c24, 0));
     case 2:
-      return S.suspend(() =>
-        S.Struct({
-          requestId: S.optional(S.String),
-          imageRecipeSummaryList: S.optional(__S(193, __c24, 1)),
-          nextToken: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ListImageRecipesResponse" });
+      return S.Array(__S(1393, __c87, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
+          requestId: S.optional(S.String),
+          imageRecipeSummaryList: S.optional(__S(1394, __c87, 2)),
+          nextToken: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ListImageRecipesResponse" });
+  }
+}
+function __c88(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
           owner: S.optional(S.String),
-          filters: S.optional(__S(166, __c20, 6)),
+          filters: S.optional(__S(1264, __c79, 0)),
           byName: S.optional(S.Boolean),
           maxResults: S.optional(S.Number),
           nextToken: S.optional(S.String),
@@ -7303,7 +7559,7 @@ function __c24(j: number): any {
           T.all(T.Http({ method: "POST", uri: "/ListImages" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "ListImagesRequest" });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           arn: S.optional(S.String),
@@ -7318,19 +7574,23 @@ function __c24(j: number): any {
           imageSource: S.optional(S.String),
         }),
       ).annotate({ identifier: "ImageVersion" });
-    case 5:
-      return S.Array(__S(196, __c24, 4));
-    case 6:
+    case 2:
+      return S.Array(__S(1409, __c88, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
           requestId: S.optional(S.String),
-          imageVersionList: S.optional(__S(197, __c24, 5)),
+          imageVersionList: S.optional(__S(1410, __c88, 2)),
           nextToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListImagesResponse" });
-    case 7:
+  }
+}
+function __c89(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
-        S.Struct({ filter: S.optional(__S(165, __c20, 5)), nextToken: S.optional(S.String) }).pipe(
+        S.Struct({ filter: S.optional(__S(1248, __c78, 0)), nextToken: S.optional(S.String) }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/ListImageScanFindingAggregations" }),
             svc,
@@ -7343,11 +7603,7 @@ function __c24(j: number): any {
       ).annotate({
         identifier: "ListImageScanFindingAggregationsRequest",
       });
-  }
-}
-function __c25(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           all: S.optional(S.Number),
@@ -7356,55 +7612,55 @@ function __c25(j: number): any {
           medium: S.optional(S.Number),
         }),
       ).annotate({ identifier: "SeverityCounts" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          accountId: S.optional(S.String),
-          severityCounts: S.optional(__S(200, __c25, 0)),
-        }),
-      ).annotate({ identifier: "AccountAggregation" });
     case 2:
       return S.suspend(() =>
         S.Struct({
-          imageBuildVersionArn: S.optional(S.String),
-          severityCounts: S.optional(__S(200, __c25, 0)),
+          accountId: S.optional(S.String),
+          severityCounts: S.optional(__S(1425, __c89, 1)),
         }),
-      ).annotate({ identifier: "ImageAggregation" });
+      ).annotate({ identifier: "AccountAggregation" });
     case 3:
       return S.suspend(() =>
         S.Struct({
-          imagePipelineArn: S.optional(S.String),
-          severityCounts: S.optional(__S(200, __c25, 0)),
+          imageBuildVersionArn: S.optional(S.String),
+          severityCounts: S.optional(__S(1425, __c89, 1)),
         }),
-      ).annotate({ identifier: "ImagePipelineAggregation" });
+      ).annotate({ identifier: "ImageAggregation" });
     case 4:
       return S.suspend(() =>
         S.Struct({
+          imagePipelineArn: S.optional(S.String),
+          severityCounts: S.optional(__S(1425, __c89, 1)),
+        }),
+      ).annotate({ identifier: "ImagePipelineAggregation" });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
           vulnerabilityId: S.optional(S.String),
-          severityCounts: S.optional(__S(200, __c25, 0)),
+          severityCounts: S.optional(__S(1425, __c89, 1)),
         }),
       ).annotate({
         identifier: "VulnerabilityIdAggregation",
       });
-    case 5:
+    case 6:
       return S.suspend(() =>
         S.Struct({
-          accountAggregation: S.optional(__S(201, __c25, 1)),
-          imageAggregation: S.optional(__S(202, __c25, 2)),
-          imagePipelineAggregation: S.optional(__S(203, __c25, 3)),
-          vulnerabilityIdAggregation: S.optional(__S(204, __c25, 4)),
+          accountAggregation: S.optional(__S(1426, __c89, 2)),
+          imageAggregation: S.optional(__S(1427, __c89, 3)),
+          imagePipelineAggregation: S.optional(__S(1428, __c89, 4)),
+          vulnerabilityIdAggregation: S.optional(__S(1429, __c89, 5)),
         }),
       ).annotate({
         identifier: "ImageScanFindingAggregation",
       });
-    case 6:
-      return S.Array(__S(205, __c25, 5));
     case 7:
+      return S.Array(__S(1430, __c89, 6));
+    case 8:
       return S.suspend(() =>
         S.Struct({
           requestId: S.optional(S.String),
           aggregationType: S.optional(S.String),
-          responses: S.optional(__S(206, __c25, 6)),
+          responses: S.optional(__S(1431, __c89, 7)),
           nextToken: S.optional(S.String),
         }),
       ).annotate({
@@ -7412,12 +7668,12 @@ function __c25(j: number): any {
       });
   }
 }
-function __c26(j: number): any {
+function __c90(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          filters: S.optional(__S(166, __c20, 6)),
+          filters: S.optional(__S(1264, __c79, 0)),
           maxResults: S.optional(S.Number),
           nextToken: S.optional(S.String),
         }).pipe(
@@ -7440,15 +7696,15 @@ function __c26(j: number): any {
         identifier: "RemediationRecommendation",
       });
     case 2:
-      return S.suspend(() => S.Struct({ recommendation: S.optional(__S(209, __c26, 1)) })).annotate(
-        { identifier: "Remediation" },
-      );
+      return S.suspend(() =>
+        S.Struct({ recommendation: S.optional(__S(1441, __c90, 1)) }),
+      ).annotate({ identifier: "Remediation" });
     case 3:
       return S.suspend(() =>
         S.Struct({ metric: S.optional(S.String), reason: S.optional(S.String) }),
       ).annotate({ identifier: "CvssScoreAdjustment" });
     case 4:
-      return S.Array(__S(211, __c26, 3));
+      return S.Array(__S(1443, __c90, 3));
     case 5:
       return S.suspend(() =>
         S.Struct({
@@ -7457,11 +7713,11 @@ function __c26(j: number): any {
           version: S.optional(S.String),
           score: S.optional(S.Number),
           scoringVector: S.optional(S.String),
-          adjustments: S.optional(__S(212, __c26, 4)),
+          adjustments: S.optional(__S(1444, __c90, 4)),
         }),
       ).annotate({ identifier: "CvssScoreDetails" });
     case 6:
-      return S.suspend(() => S.Struct({ adjustedCvss: S.optional(__S(213, __c26, 5)) })).annotate({
+      return S.suspend(() => S.Struct({ adjustedCvss: S.optional(__S(1445, __c90, 5)) })).annotate({
         identifier: "InspectorScoreDetails",
       });
     case 7:
@@ -7479,13 +7735,9 @@ function __c26(j: number): any {
           remediation: S.optional(S.String),
         }),
       ).annotate({ identifier: "VulnerablePackage" });
-  }
-}
-function __c27(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(215, __c26, 7));
-    case 1:
+    case 8:
+      return S.Array(__S(1447, __c90, 7));
+    case 9:
       return S.suspend(() =>
         S.Struct({
           baseScore: S.optional(S.Number),
@@ -7494,26 +7746,26 @@ function __c27(j: number): any {
           source: S.optional(S.String),
         }),
       ).annotate({ identifier: "CvssScore" });
-    case 2:
-      return S.Array(__S(217, __c27, 1));
-    case 3:
+    case 10:
+      return S.Array(__S(1449, __c90, 9));
+    case 11:
       return S.suspend(() =>
         S.Struct({
           vulnerabilityId: S.String,
-          vulnerablePackages: S.optional(__S(216, __c27, 0)),
+          vulnerablePackages: S.optional(__S(1448, __c90, 8)),
           source: S.optional(S.String),
-          cvss: S.optional(__S(218, __c27, 2)),
-          relatedVulnerabilities: S.optional(__S(4, __c0, 4)),
+          cvss: S.optional(__S(1450, __c90, 10)),
+          relatedVulnerabilities: S.optional(__S(80, __c5, 0)),
           sourceUrl: S.optional(S.String),
           vendorSeverity: S.optional(S.String),
           vendorCreatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           vendorUpdatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          referenceUrls: S.optional(__S(4, __c0, 4)),
+          referenceUrls: S.optional(__S(80, __c5, 0)),
         }),
       ).annotate({
         identifier: "PackageVulnerabilityDetails",
       });
-    case 4:
+    case 12:
       return S.suspend(() =>
         S.Struct({
           awsAccountId: S.optional(S.String),
@@ -7522,32 +7774,36 @@ function __c27(j: number): any {
           type: S.optional(S.String),
           description: S.optional(S.String),
           title: S.optional(S.String),
-          remediation: S.optional(__S(210, __c26, 2)),
+          remediation: S.optional(__S(1442, __c90, 2)),
           severity: S.optional(S.String),
           firstObservedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           updatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           inspectorScore: S.optional(S.Number),
-          inspectorScoreDetails: S.optional(__S(214, __c26, 6)),
-          packageVulnerabilityDetails: S.optional(__S(219, __c27, 3)),
+          inspectorScoreDetails: S.optional(__S(1446, __c90, 6)),
+          packageVulnerabilityDetails: S.optional(__S(1451, __c90, 11)),
           fixAvailable: S.optional(S.String),
         }),
       ).annotate({ identifier: "ImageScanFinding" });
-    case 5:
-      return S.Array(__S(220, __c27, 4));
-    case 6:
+    case 13:
+      return S.Array(__S(1452, __c90, 12));
+    case 14:
       return S.suspend(() =>
         S.Struct({
           requestId: S.optional(S.String),
-          findings: S.optional(__S(221, __c27, 5)),
+          findings: S.optional(__S(1453, __c90, 13)),
           nextToken: S.optional(S.String),
         }),
       ).annotate({
         identifier: "ListImageScanFindingsResponse",
       });
-    case 7:
+  }
+}
+function __c91(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          filters: S.optional(__S(166, __c20, 6)),
+          filters: S.optional(__S(1264, __c79, 0)),
           maxResults: S.optional(S.Number),
           nextToken: S.optional(S.String),
         }).pipe(
@@ -7563,11 +7819,7 @@ function __c27(j: number): any {
       ).annotate({
         identifier: "ListInfrastructureConfigurationsRequest",
       });
-  }
-}
-function __c28(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           arn: S.optional(S.String),
@@ -7575,28 +7827,32 @@ function __c28(j: number): any {
           description: S.optional(S.String),
           dateCreated: S.optional(S.String),
           dateUpdated: S.optional(S.String),
-          resourceTags: S.optional(__S(55, __c6, 7)),
-          tags: S.optional(__S(5, __c0, 5)),
-          instanceTypes: S.optional(__S(4, __c0, 4)),
+          resourceTags: S.optional(__S(384, __c24, 0)),
+          tags: S.optional(__S(64, __c4, 0)),
+          instanceTypes: S.optional(__S(80, __c5, 0)),
           instanceProfileName: S.optional(S.String),
-          placement: S.optional(__S(57, __c7, 1)),
+          placement: S.optional(__S(385, __c24, 1)),
         }),
       ).annotate({
         identifier: "InfrastructureConfigurationSummary",
       });
-    case 1:
-      return S.Array(__S(224, __c28, 0));
     case 2:
+      return S.Array(__S(1457, __c91, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
           requestId: S.optional(S.String),
-          infrastructureConfigurationSummaryList: S.optional(__S(225, __c28, 1)),
+          infrastructureConfigurationSummaryList: S.optional(__S(1458, __c91, 2)),
           nextToken: S.optional(S.String),
         }),
       ).annotate({
         identifier: "ListInfrastructureConfigurationsResponse",
       });
-    case 3:
+  }
+}
+function __c92(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           lifecycleExecutionId: S.String,
@@ -7616,16 +7872,13 @@ function __c28(j: number): any {
       ).annotate({
         identifier: "ListLifecycleExecutionResourcesRequest",
       });
-    case 4:
+    case 1:
       return S.suspend(() =>
-        S.Struct({
-          status: S.optional(S.String),
-          reason: S.optional(S.String),
-        }),
+        S.Struct({ status: S.optional(S.String), reason: S.optional(S.String) }),
       ).annotate({
         identifier: "LifecycleExecutionResourceState",
       });
-    case 5:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
@@ -7634,51 +7887,51 @@ function __c28(j: number): any {
       ).annotate({
         identifier: "LifecycleExecutionResourceAction",
       });
-    case 6:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           snapshotId: S.optional(S.String),
-          state: S.optional(__S(228, __c28, 4)),
+          state: S.optional(__S(1473, __c92, 1)),
         }),
       ).annotate({
         identifier: "LifecycleExecutionSnapshotResource",
       });
-    case 7:
-      return S.Array(__S(230, __c28, 6));
-  }
-}
-function __c29(j: number): any {
-  switch (j) {
-    case 0:
+    case 4:
+      return S.Array(__S(1475, __c92, 3));
+    case 5:
       return S.suspend(() =>
         S.Struct({
           accountId: S.optional(S.String),
           resourceId: S.optional(S.String),
-          state: S.optional(__S(228, __c28, 4)),
-          action: S.optional(__S(229, __c28, 5)),
+          state: S.optional(__S(1473, __c92, 1)),
+          action: S.optional(__S(1474, __c92, 2)),
           region: S.optional(S.String),
-          snapshots: S.optional(__S(231, __c28, 7)),
-          imageUris: S.optional(__S(4, __c0, 4)),
+          snapshots: S.optional(__S(1476, __c92, 4)),
+          imageUris: S.optional(__S(80, __c5, 0)),
           startTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           endTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
         }),
       ).annotate({
         identifier: "LifecycleExecutionResource",
       });
-    case 1:
-      return S.Array(__S(232, __c29, 0));
-    case 2:
+    case 6:
+      return S.Array(__S(1477, __c92, 5));
+    case 7:
       return S.suspend(() =>
         S.Struct({
           lifecycleExecutionId: S.optional(S.String),
-          lifecycleExecutionState: S.optional(__S(96, __c12, 0)),
-          resources: S.optional(__S(233, __c29, 1)),
+          lifecycleExecutionState: S.optional(__S(736, __c46, 0)),
+          resources: S.optional(__S(1478, __c92, 6)),
           nextToken: S.optional(S.String),
         }),
       ).annotate({
         identifier: "ListLifecycleExecutionResourcesResponse",
       });
-    case 3:
+  }
+}
+function __c93(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           maxResults: S.optional(S.Number),
@@ -7697,21 +7950,25 @@ function __c29(j: number): any {
       ).annotate({
         identifier: "ListLifecycleExecutionsRequest",
       });
-    case 4:
-      return S.Array(__S(140, __c17, 4));
-    case 5:
+    case 1:
+      return S.Array(__S(1073, __c67, 1));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          lifecycleExecutions: S.optional(__S(236, __c29, 4)),
+          lifecycleExecutions: S.optional(__S(1489, __c93, 1)),
           nextToken: S.optional(S.String),
         }),
       ).annotate({
         identifier: "ListLifecycleExecutionsResponse",
       });
-    case 6:
+  }
+}
+function __c94(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          filters: S.optional(__S(166, __c20, 6)),
+          filters: S.optional(__S(1264, __c79, 0)),
           maxResults: S.optional(S.Number),
           nextToken: S.optional(S.String),
         }).pipe(
@@ -7727,7 +7984,7 @@ function __c29(j: number): any {
       ).annotate({
         identifier: "ListLifecyclePoliciesRequest",
       });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           arn: S.optional(S.String),
@@ -7739,25 +7996,25 @@ function __c29(j: number): any {
           dateCreated: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           dateUpdated: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           dateLastRun: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          tags: S.optional(__S(5, __c0, 5)),
+          tags: S.optional(__S(64, __c4, 0)),
         }),
       ).annotate({ identifier: "LifecyclePolicySummary" });
-  }
-}
-function __c30(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(239, __c29, 7));
-    case 1:
+    case 2:
+      return S.Array(__S(1505, __c94, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          lifecyclePolicySummaryList: S.optional(__S(240, __c30, 0)),
+          lifecyclePolicySummaryList: S.optional(__S(1506, __c94, 2)),
           nextToken: S.optional(S.String),
         }),
       ).annotate({
         identifier: "ListLifecyclePoliciesResponse",
       });
-    case 2:
+  }
+}
+function __c95(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ resourceArn: S.String.pipe(T.HttpLabel("resourceArn")) }).pipe(
           T.all(
@@ -7772,11 +8029,15 @@ function __c30(j: number): any {
       ).annotate({
         identifier: "ListTagsForResourceRequest",
       });
-    case 3:
-      return S.suspend(() => S.Struct({ tags: S.optional(__S(5, __c0, 5)) })).annotate({
+    case 1:
+      return S.suspend(() => S.Struct({ tags: S.optional(__S(64, __c4, 0)) })).annotate({
         identifier: "ListTagsForResourceResponse",
       });
-    case 4:
+  }
+}
+function __c96(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ maxResults: S.optional(S.Number), nextToken: S.optional(S.String) }).pipe(
           T.all(
@@ -7791,7 +8052,7 @@ function __c30(j: number): any {
       ).annotate({
         identifier: "ListWaitingWorkflowStepsRequest",
       });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           stepExecutionId: S.optional(S.String),
@@ -7803,17 +8064,17 @@ function __c30(j: number): any {
           startTime: S.optional(S.String),
         }),
       ).annotate({ identifier: "WorkflowStepExecution" });
-    case 6:
-      return S.Array(__S(245, __c30, 5));
-    case 7:
+    case 2:
+      return S.Array(__S(1537, __c96, 1));
+    case 3:
       return S.suspend(() =>
-        S.Struct({ steps: S.optional(__S(246, __c30, 6)), nextToken: S.optional(S.String) }),
+        S.Struct({ steps: S.optional(__S(1538, __c96, 2)), nextToken: S.optional(S.String) }),
       ).annotate({
         identifier: "ListWaitingWorkflowStepsResponse",
       });
   }
 }
-function __c31(j: number): any {
+function __c97(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -7844,23 +8105,27 @@ function __c31(j: number): any {
           changeDescription: S.optional(S.String),
           type: S.optional(S.String),
           owner: S.optional(S.String),
-          state: S.optional(__S(96, __c12, 0)),
+          state: S.optional(__S(736, __c46, 0)),
           dateCreated: S.optional(S.String),
-          tags: S.optional(__S(5, __c0, 5)),
+          tags: S.optional(__S(64, __c4, 0)),
         }),
       ).annotate({ identifier: "WorkflowSummary" });
     case 2:
-      return S.Array(__S(249, __c31, 1));
+      return S.Array(__S(1553, __c97, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          workflowSummaryList: S.optional(__S(250, __c31, 2)),
+          workflowSummaryList: S.optional(__S(1554, __c97, 2)),
           nextToken: S.optional(S.String),
         }),
       ).annotate({
         identifier: "ListWorkflowBuildVersionsResponse",
       });
-    case 4:
+  }
+}
+function __c98(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           maxResults: S.optional(S.Number),
@@ -7879,7 +8144,7 @@ function __c31(j: number): any {
       ).annotate({
         identifier: "ListWorkflowExecutionsRequest",
       });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           workflowBuildVersionArn: S.optional(S.String),
@@ -7899,13 +8164,13 @@ function __c31(j: number): any {
       ).annotate({
         identifier: "WorkflowExecutionMetadata",
       });
-    case 6:
-      return S.Array(__S(253, __c31, 5));
-    case 7:
+    case 2:
+      return S.Array(__S(1569, __c98, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
           requestId: S.optional(S.String),
-          workflowExecutions: S.optional(__S(254, __c31, 6)),
+          workflowExecutions: S.optional(__S(1570, __c98, 2)),
           imageBuildVersionArn: S.optional(S.String),
           message: S.optional(S.String),
           nextToken: S.optional(S.String),
@@ -7915,13 +8180,13 @@ function __c31(j: number): any {
       });
   }
 }
-function __c32(j: number): any {
+function __c99(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           owner: S.optional(S.String),
-          filters: S.optional(__S(166, __c20, 6)),
+          filters: S.optional(__S(1264, __c79, 0)),
           byName: S.optional(S.Boolean),
           maxResults: S.optional(S.Number),
           nextToken: S.optional(S.String),
@@ -7942,15 +8207,19 @@ function __c32(j: number): any {
         }),
       ).annotate({ identifier: "WorkflowVersion" });
     case 2:
-      return S.Array(__S(257, __c32, 1));
+      return S.Array(__S(1585, __c99, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          workflowVersionList: S.optional(__S(258, __c32, 2)),
+          workflowVersionList: S.optional(__S(1586, __c99, 2)),
           nextToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListWorkflowsResponse" });
-    case 4:
+  }
+}
+function __c100(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           maxResults: S.optional(S.Number),
@@ -7969,7 +8238,7 @@ function __c32(j: number): any {
       ).annotate({
         identifier: "ListWorkflowStepExecutionsRequest",
       });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           stepExecutionId: S.optional(S.String),
@@ -7987,13 +8256,13 @@ function __c32(j: number): any {
           maxAttempts: S.optional(S.Number),
         }),
       ).annotate({ identifier: "WorkflowStepMetadata" });
-    case 6:
-      return S.Array(__S(261, __c32, 5));
-    case 7:
+    case 2:
+      return S.Array(__S(1601, __c100, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
           requestId: S.optional(S.String),
-          steps: S.optional(__S(262, __c32, 6)),
+          steps: S.optional(__S(1602, __c100, 2)),
           workflowBuildVersionArn: S.optional(S.String),
           workflowExecutionId: S.optional(S.String),
           imageBuildVersionArn: S.optional(S.String),
@@ -8005,7 +8274,7 @@ function __c32(j: number): any {
       });
   }
 }
-function __c33(j: number): any {
+function __c101(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -8028,7 +8297,11 @@ function __c33(j: number): any {
       ).annotate({
         identifier: "PutComponentPolicyResponse",
       });
-    case 2:
+  }
+}
+function __c102(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ containerRecipeArn: S.String, policy: S.String }).pipe(
           T.all(
@@ -8043,17 +8316,25 @@ function __c33(j: number): any {
       ).annotate({
         identifier: "PutContainerRecipePolicyRequest",
       });
-    case 3:
+  }
+}
+function __c103(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ imageArn: S.String, policy: S.String }).pipe(
           T.all(T.Http({ method: "PUT", uri: "/PutImagePolicy" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "PutImagePolicyRequest" });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({ requestId: S.optional(S.String), imageArn: S.optional(S.String) }),
       ).annotate({ identifier: "PutImagePolicyResponse" });
-    case 5:
+  }
+}
+function __c104(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ imageRecipeArn: S.String, policy: S.String }).pipe(
           T.all(
@@ -8068,14 +8349,22 @@ function __c33(j: number): any {
       ).annotate({
         identifier: "PutImageRecipePolicyRequest",
       });
-    case 6:
+  }
+}
+function __c105(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           imageBuildVersionArn: S.String,
           clientToken: S.String.pipe(T.IdempotencyToken()),
         }).pipe(T.all(T.Http({ method: "PUT", uri: "/RetryImage" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "RetryImageRequest" });
-    case 7:
+  }
+}
+function __c106(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           stepExecutionId: S.String,
@@ -8096,11 +8385,7 @@ function __c33(j: number): any {
       ).annotate({
         identifier: "SendWorkflowStepActionRequest",
       });
-  }
-}
-function __c34(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           stepExecutionId: S.optional(S.String),
@@ -8110,12 +8395,16 @@ function __c34(j: number): any {
       ).annotate({
         identifier: "SendWorkflowStepActionResponse",
       });
-    case 1:
+  }
+}
+function __c107(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           imagePipelineArn: S.String,
           clientToken: S.String.pipe(T.IdempotencyToken()),
-          tags: S.optional(__S(5, __c0, 5)),
+          tags: S.optional(__S(64, __c4, 0)),
         }).pipe(
           T.all(
             T.Http({ method: "PUT", uri: "/StartImagePipelineExecution" }),
@@ -8129,22 +8418,26 @@ function __c34(j: number): any {
       ).annotate({
         identifier: "StartImagePipelineExecutionRequest",
       });
-    case 2:
+  }
+}
+function __c108(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() => S.Struct({ status: S.optional(S.String) })).annotate({
         identifier: "ResourceState",
       });
-    case 3:
-      return S.suspend(() => S.Struct({ amis: S.optional(__S(64, __c8, 0)) })).annotate({
+    case 1:
+      return S.suspend(() => S.Struct({ amis: S.optional(__S(450, __c28, 2)) })).annotate({
         identifier: "ResourceStateUpdateExclusionRules",
       });
-    case 4:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           resourceArn: S.String,
-          state: __S(274, __c34, 2),
+          state: __S(1728, __c108, 0),
           executionRole: S.optional(S.String),
-          includeResources: S.optional(__S(60, __c7, 4)),
-          exclusionRules: S.optional(__S(275, __c34, 3)),
+          includeResources: S.optional(__S(448, __c28, 0)),
+          exclusionRules: S.optional(__S(1729, __c108, 1)),
           updateAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           clientToken: S.String.pipe(T.IdempotencyToken()),
         }).pipe(
@@ -8160,17 +8453,21 @@ function __c34(j: number): any {
       ).annotate({
         identifier: "StartResourceStateUpdateRequest",
       });
-    case 5:
+    case 3:
       return S.suspend(() =>
         S.Struct({ lifecycleExecutionId: S.optional(S.String), resourceArn: S.optional(S.String) }),
       ).annotate({
         identifier: "StartResourceStateUpdateResponse",
       });
-    case 6:
+  }
+}
+function __c109(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           resourceArn: S.String.pipe(T.HttpLabel("resourceArn")),
-          tags: __S(5, __c0, 5),
+          tags: __S(64, __c4, 0),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/tags/{resourceArn}" }),
@@ -8182,19 +8479,23 @@ function __c34(j: number): any {
           ),
         ),
       ).annotate({ identifier: "TagResourceRequest" });
-    case 7:
+  }
+}
+function __c110(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "TagResourceResponse",
       });
   }
 }
-function __c35(j: number): any {
+function __c111(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           resourceArn: S.String.pipe(T.HttpLabel("resourceArn")),
-          tagKeys: __S(4, __c0, 4).pipe(T.HttpQuery("tagKeys")),
+          tagKeys: __S(80, __c5, 0).pipe(T.HttpQuery("tagKeys")),
         }).pipe(
           T.all(
             T.Http({ method: "DELETE", uri: "/tags/{resourceArn}" }),
@@ -8206,12 +8507,16 @@ function __c35(j: number): any {
           ),
         ),
       ).annotate({ identifier: "UntagResourceRequest" });
-    case 1:
+  }
+}
+function __c112(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           distributionConfigurationArn: S.String,
           description: S.optional(S.String),
-          distributions: __S(33, __c4, 1),
+          distributions: __S(221, __c13, 13),
           clientToken: S.String.pipe(T.IdempotencyToken()),
         }).pipe(
           T.all(
@@ -8226,7 +8531,11 @@ function __c35(j: number): any {
       ).annotate({
         identifier: "UpdateDistributionConfigurationRequest",
       });
-    case 2:
+  }
+}
+function __c113(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           imagePipelineArn: S.String,
@@ -8235,16 +8544,16 @@ function __c35(j: number): any {
           containerRecipeArn: S.optional(S.String),
           infrastructureConfigurationArn: S.String,
           distributionConfigurationArn: S.optional(S.String),
-          imageTestsConfiguration: S.optional(__S(36, __c4, 4)),
+          imageTestsConfiguration: S.optional(__S(256, __c16, 0)),
           enhancedImageMetadataEnabled: S.optional(S.Boolean),
-          schedule: S.optional(__S(45, __c5, 5)),
+          schedule: S.optional(__S(305, __c19, 1)),
           status: S.optional(S.String),
           clientToken: S.String.pipe(T.IdempotencyToken()),
-          imageScanningConfiguration: S.optional(__S(38, __c4, 6)),
-          workflows: S.optional(__S(40, __c5, 0)),
-          loggingConfiguration: S.optional(__S(46, __c5, 6)),
+          imageScanningConfiguration: S.optional(__S(258, __c16, 2)),
+          workflows: S.optional(__S(260, __c16, 4)),
+          loggingConfiguration: S.optional(__S(306, __c19, 2)),
           executionRole: S.optional(S.String),
-          imageTags: S.optional(__S(5, __c0, 5)),
+          imageTags: S.optional(__S(64, __c4, 0)),
         }).pipe(
           T.all(
             T.Http({ method: "PUT", uri: "/UpdateImagePipeline" }),
@@ -8258,22 +8567,26 @@ function __c35(j: number): any {
       ).annotate({
         identifier: "UpdateImagePipelineRequest",
       });
-    case 3:
+  }
+}
+function __c114(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           infrastructureConfigurationArn: S.String,
           description: S.optional(S.String),
-          instanceTypes: S.optional(__S(4, __c0, 4)),
+          instanceTypes: S.optional(__S(80, __c5, 0)),
           instanceProfileName: S.String,
-          securityGroupIds: S.optional(__S(4, __c0, 4)),
+          securityGroupIds: S.optional(__S(80, __c5, 0)),
           subnetId: S.optional(S.String),
-          logging: S.optional(__S(54, __c6, 6)),
+          logging: S.optional(__S(401, __c25, 1)),
           keyPair: S.optional(S.String),
           terminateInstanceOnFailure: S.optional(S.Boolean),
           snsTopicArn: S.optional(S.String),
-          resourceTags: S.optional(__S(55, __c6, 7)),
-          instanceMetadataOptions: S.optional(__S(56, __c7, 0)),
-          placement: S.optional(__S(57, __c7, 1)),
+          resourceTags: S.optional(__S(384, __c24, 0)),
+          instanceMetadataOptions: S.optional(__S(402, __c25, 2)),
+          placement: S.optional(__S(385, __c24, 1)),
           clientToken: S.String.pipe(T.IdempotencyToken()),
         }).pipe(
           T.all(
@@ -8288,7 +8601,11 @@ function __c35(j: number): any {
       ).annotate({
         identifier: "UpdateInfrastructureConfigurationRequest",
       });
-    case 4:
+  }
+}
+function __c115(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           lifecyclePolicyArn: S.String,
@@ -8296,8 +8613,8 @@ function __c35(j: number): any {
           status: S.optional(S.String),
           executionRole: S.String,
           resourceType: S.String,
-          policyDetails: __S(67, __c8, 3),
-          resourceSelection: __S(70, __c8, 6),
+          policyDetails: __S(468, __c29, 4),
+          resourceSelection: __S(471, __c29, 7),
           clientToken: S.String.pipe(T.IdempotencyToken()),
         }).pipe(
           T.all(
@@ -8314,7 +8631,6 @@ function __c35(j: number): any {
       });
   }
 }
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

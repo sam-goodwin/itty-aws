@@ -125,7 +125,7 @@ export const getAccountsLimits: API.OperationMethod<
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(0, __c0, 0) as any as S.Schema<GetAccountsLimitsRequest>,
-  output: __S(2, __c0, 2) as any as S.Schema<AccountLimit>,
+  output: __S(9, __c1, 1) as any as S.Schema<AccountLimit>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -140,8 +140,8 @@ export const listAccountsLimits: API.PaginatedOperationMethod<
   GcpOpContext,
   ListAccountLimitsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(3, __c0, 3) as any as S.Schema<ListAccountsLimitsRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<ListAccountLimitsResponse>,
+  input: __S(16, __c2, 0) as any as S.Schema<ListAccountsLimitsRequest>,
+  output: __S(18, __c2, 2) as any as S.Schema<ListAccountLimitsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -157,8 +157,8 @@ export const listAccountsQuotas: API.PaginatedOperationMethod<
   GcpOpContext,
   ListQuotaGroupsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(6, __c0, 6) as any as S.Schema<ListAccountsQuotasRequest>,
-  output: __S(11, __c1, 3) as any as S.Schema<ListQuotaGroupsResponse>,
+  input: __S(24, __c3, 0) as any as S.Schema<ListAccountsQuotasRequest>,
+  output: __S(29, __c3, 5) as any as S.Schema<ListQuotaGroupsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -180,21 +180,29 @@ function __c0(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetAccountsLimitsRequest" });
-    case 1:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           scope: S.optional(S.String),
           limit: S.optional(S.String),
         }),
       ).annotate({ identifier: "ProductLimit" });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          products: S.optional(__S(1, __c0, 1)),
+          products: S.optional(__S(8, __c1, 0)),
           name: S.optional(S.String),
         }),
       ).annotate({ identifier: "AccountLimit" });
-    case 3:
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
@@ -211,18 +219,22 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "ListAccountsLimitsRequest",
       });
-    case 4:
-      return S.Array(__S(2, __c0, 2));
-    case 5:
+    case 1:
+      return S.Array(__S(9, __c1, 1));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          accountLimits: S.optional(__S(4, __c0, 4)),
+          accountLimits: S.optional(__S(17, __c2, 1)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({
         identifier: "ListAccountLimitsResponse",
       });
-    case 6:
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           pageToken: S.optional(S.String.pipe(T.Query())),
@@ -238,7 +250,7 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "ListAccountsQuotasRequest",
       });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           path: S.optional(S.String),
@@ -247,34 +259,29 @@ function __c0(j: number): any {
           subapi: S.optional(S.String),
         }),
       ).annotate({ identifier: "MethodDetails" });
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(7, __c0, 7));
-    case 1:
+    case 2:
+      return S.Array(__S(25, __c3, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
           quotaUsage: S.optional(S.String),
           quotaMinuteLimit: S.optional(S.String),
           quotaLimit: S.optional(S.String),
-          methodDetails: S.optional(__S(8, __c1, 0)),
+          methodDetails: S.optional(__S(26, __c3, 2)),
         }),
       ).annotate({ identifier: "QuotaGroup" });
-    case 2:
-      return S.Array(__S(9, __c1, 1));
-    case 3:
+    case 4:
+      return S.Array(__S(27, __c3, 3));
+    case 5:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          quotaGroups: S.optional(__S(10, __c1, 2)),
+          quotaGroups: S.optional(__S(28, __c3, 4)),
         }),
       ).annotate({ identifier: "ListQuotaGroupsResponse" });
   }
 }
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

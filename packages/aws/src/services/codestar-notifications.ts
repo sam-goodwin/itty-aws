@@ -341,8 +341,8 @@ export const createNotificationRule: API.OperationMethod<
   CreateNotificationRuleError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(4, __c0, 4) as any as S.Schema<CreateNotificationRuleRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<CreateNotificationRuleResult>,
+  input: __S(120, __c15, 0) as any as S.Schema<CreateNotificationRuleRequest>,
+  output: __S(160, __c20, 0) as any as S.Schema<CreateNotificationRuleResult>,
   errors: [
     AccessDeniedException,
     ConcurrentModificationException,
@@ -370,8 +370,8 @@ export const deleteNotificationRule: API.OperationMethod<
   DeleteNotificationRuleError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(6, __c0, 6) as any as S.Schema<DeleteNotificationRuleRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<DeleteNotificationRuleResult>,
+  input: __S(168, __c21, 0) as any as S.Schema<DeleteNotificationRuleRequest>,
+  output: __S(160, __c20, 0) as any as S.Schema<DeleteNotificationRuleResult>,
   errors: [ConcurrentModificationException, LimitExceededException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -388,7 +388,7 @@ export const deleteTarget: API.OperationMethod<
   DeleteTargetError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(7, __c0, 7) as any as S.Schema<DeleteTargetRequest>,
+  input: __S(0, __c0, 0) as any as S.Schema<DeleteTargetRequest>,
   output: __S(8, __c1, 0) as any as S.Schema<DeleteTargetResult>,
   errors: [ValidationException],
   protocol: AwsProtocol,
@@ -409,8 +409,8 @@ export const describeNotificationRule: API.OperationMethod<
   DescribeNotificationRuleError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(9, __c1, 1) as any as S.Schema<DescribeNotificationRuleRequest>,
-  output: __S(14, __c1, 6) as any as S.Schema<DescribeNotificationRuleResult>,
+  input: __S(16, __c2, 0) as any as S.Schema<DescribeNotificationRuleRequest>,
+  output: __S(17, __c2, 1) as any as S.Schema<DescribeNotificationRuleResult>,
   errors: [ResourceNotFoundException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -428,8 +428,8 @@ export const listEventTypes: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   EventTypeSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(17, __c2, 1) as any as S.Schema<ListEventTypesRequest>,
-  output: __S(18, __c2, 2) as any as S.Schema<ListEventTypesResult>,
+  input: __S(40, __c5, 0) as any as S.Schema<ListEventTypesRequest>,
+  output: __S(41, __c5, 1) as any as S.Schema<ListEventTypesResult>,
   errors: [InvalidNextTokenException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -456,8 +456,8 @@ export const listNotificationRules: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   NotificationRuleSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(21, __c2, 5) as any as S.Schema<ListNotificationRulesRequest>,
-  output: __S(24, __c3, 0) as any as S.Schema<ListNotificationRulesResult>,
+  input: __S(58, __c7, 2) as any as S.Schema<ListNotificationRulesRequest>,
+  output: __S(61, __c7, 5) as any as S.Schema<ListNotificationRulesResult>,
   errors: [InvalidNextTokenException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -483,8 +483,8 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(25, __c3, 1) as any as S.Schema<ListTagsForResourceRequest>,
-  output: __S(26, __c3, 2) as any as S.Schema<ListTagsForResourceResult>,
+  input: __S(64, __c8, 0) as any as S.Schema<ListTagsForResourceRequest>,
+  output: __S(65, __c8, 1) as any as S.Schema<ListTagsForResourceResult>,
   errors: [ResourceNotFoundException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -502,8 +502,8 @@ export const listTargets: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   TargetSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(27, __c3, 3) as any as S.Schema<ListTargetsRequest>,
-  output: __S(28, __c3, 4) as any as S.Schema<ListTargetsResult>,
+  input: __S(72, __c9, 0) as any as S.Schema<ListTargetsRequest>,
+  output: __S(73, __c9, 1) as any as S.Schema<ListTargetsResult>,
   errors: [InvalidNextTokenException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -532,8 +532,8 @@ export const subscribe: API.OperationMethod<
   SubscribeError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(29, __c3, 5) as any as S.Schema<SubscribeRequest>,
-  output: __S(30, __c3, 6) as any as S.Schema<SubscribeResult>,
+  input: __S(80, __c10, 0) as any as S.Schema<SubscribeRequest>,
+  output: __S(81, __c10, 1) as any as S.Schema<SubscribeResult>,
   errors: [ConfigurationException, ResourceNotFoundException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -555,8 +555,8 @@ export const tagResource: API.OperationMethod<
   TagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(31, __c3, 7) as any as S.Schema<TagResourceRequest>,
-  output: __S(32, __c4, 0) as any as S.Schema<TagResourceResult>,
+  input: __S(88, __c11, 0) as any as S.Schema<TagResourceRequest>,
+  output: __S(89, __c11, 1) as any as S.Schema<TagResourceResult>,
   errors: [
     ConcurrentModificationException,
     LimitExceededException,
@@ -580,8 +580,8 @@ export const unsubscribe: API.OperationMethod<
   UnsubscribeError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(33, __c4, 1) as any as S.Schema<UnsubscribeRequest>,
-  output: __S(34, __c4, 2) as any as S.Schema<UnsubscribeResult>,
+  input: __S(96, __c12, 0) as any as S.Schema<UnsubscribeRequest>,
+  output: __S(97, __c12, 1) as any as S.Schema<UnsubscribeResult>,
   errors: [ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -604,7 +604,7 @@ export const untagResource: API.OperationMethod<
   UntagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(35, __c4, 3) as any as S.Schema<UntagResourceRequest>,
+  input: __S(104, __c13, 0) as any as S.Schema<UntagResourceRequest>,
   output: __S(8, __c1, 0) as any as S.Schema<UntagResourceResult>,
   errors: [
     ConcurrentModificationException,
@@ -635,7 +635,7 @@ export const updateNotificationRule: API.OperationMethod<
   UpdateNotificationRuleError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(36, __c4, 4) as any as S.Schema<UpdateNotificationRuleRequest>,
+  input: __S(112, __c14, 0) as any as S.Schema<UpdateNotificationRuleRequest>,
   output: __S(8, __c1, 0) as any as S.Schema<UpdateNotificationRuleResult>,
   errors: [ConfigurationException, ResourceNotFoundException, ValidationException],
   protocol: AwsProtocol,
@@ -647,59 +647,6 @@ export const updateNotificationRule: API.OperationMethod<
 function __c0(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(S.String);
-    case 1:
-      return S.suspend(() =>
-        S.Struct({ TargetType: S.optional(S.String), TargetAddress: S.optional(SensitiveString) }),
-      ).annotate({ identifier: "Target" });
-    case 2:
-      return S.Array(__S(1, __c0, 1));
-    case 3:
-      return S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          Name: SensitiveString,
-          EventTypeIds: __S(0, __c0, 0),
-          Resource: S.String,
-          Targets: __S(2, __c0, 2),
-          DetailType: S.String,
-          ClientRequestToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-          Tags: S.optional(__S(3, __c0, 3)),
-          Status: S.optional(S.String),
-        }).pipe(
-          T.all(
-            T.Http({ method: "POST", uri: "/createNotificationRule" }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({
-        identifier: "CreateNotificationRuleRequest",
-      });
-    case 5:
-      return S.suspend(() => S.Struct({ Arn: S.optional(S.String) })).annotate({
-        identifier: "CreateNotificationRuleResult",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({ Arn: S.String }).pipe(
-          T.all(
-            T.Http({ method: "POST", uri: "/deleteNotificationRule" }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({
-        identifier: "DeleteNotificationRuleRequest",
-      });
-    case 7:
       return S.suspend(() =>
         S.Struct({
           TargetAddress: SensitiveString,
@@ -716,7 +663,11 @@ function __c1(j: number): any {
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "DeleteTargetResult",
       });
-    case 1:
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ Arn: S.String }).pipe(
           T.all(
@@ -731,7 +682,29 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "DescribeNotificationRuleRequest",
       });
-    case 2:
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          Arn: S.String,
+          Name: S.optional(SensitiveString),
+          EventTypes: S.optional(__S(25, __c3, 1)),
+          Resource: S.optional(S.String),
+          Targets: S.optional(__S(33, __c4, 1)),
+          DetailType: S.optional(S.String),
+          CreatedBy: S.optional(S.String),
+          Status: S.optional(S.String),
+          CreatedTimestamp: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          LastModifiedTimestamp: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          Tags: S.optional(__S(128, __c16, 0)),
+        }),
+      ).annotate({
+        identifier: "DescribeNotificationRuleResult",
+      });
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           EventTypeId: S.optional(S.String),
@@ -740,9 +713,13 @@ function __c1(j: number): any {
           ResourceType: S.optional(S.String),
         }),
       ).annotate({ identifier: "EventTypeSummary" });
-    case 3:
-      return S.Array(__S(10, __c1, 2));
-    case 4:
+    case 1:
+      return S.Array(__S(24, __c3, 0));
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           TargetAddress: S.optional(SensitiveString),
@@ -750,60 +727,50 @@ function __c1(j: number): any {
           TargetStatus: S.optional(S.String),
         }),
       ).annotate({ identifier: "TargetSummary" });
-    case 5:
-      return S.Array(__S(12, __c1, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          Arn: S.String,
-          Name: S.optional(SensitiveString),
-          EventTypes: S.optional(__S(11, __c1, 3)),
-          Resource: S.optional(S.String),
-          Targets: S.optional(__S(13, __c1, 5)),
-          DetailType: S.optional(S.String),
-          CreatedBy: S.optional(S.String),
-          Status: S.optional(S.String),
-          CreatedTimestamp: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          LastModifiedTimestamp: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          Tags: S.optional(__S(3, __c0, 3)),
-        }),
-      ).annotate({
-        identifier: "DescribeNotificationRuleResult",
-      });
-    case 7:
-      return S.suspend(() => S.Struct({ Name: S.String, Value: S.String })).annotate({
-        identifier: "ListEventTypesFilter",
-      });
+    case 1:
+      return S.Array(__S(32, __c4, 0));
   }
 }
-function __c2(j: number): any {
+function __c5(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(15, __c1, 7));
-    case 1:
       return S.suspend(() =>
         S.Struct({
-          Filters: S.optional(__S(16, __c2, 0)),
+          Filters: S.optional(__S(49, __c6, 1)),
           NextToken: S.optional(S.String),
           MaxResults: S.optional(S.Number),
         }).pipe(
           T.all(T.Http({ method: "POST", uri: "/listEventTypes" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "ListEventTypesRequest" });
-    case 2:
+    case 1:
       return S.suspend(() =>
-        S.Struct({ EventTypes: S.optional(__S(11, __c1, 3)), NextToken: S.optional(S.String) }),
+        S.Struct({ EventTypes: S.optional(__S(25, __c3, 1)), NextToken: S.optional(S.String) }),
       ).annotate({ identifier: "ListEventTypesResult" });
-    case 3:
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({ Name: S.String, Value: S.String })).annotate({
+        identifier: "ListEventTypesFilter",
+      });
+    case 1:
+      return S.Array(__S(48, __c6, 0));
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() => S.Struct({ Name: S.String, Value: S.String })).annotate({
         identifier: "ListNotificationRulesFilter",
       });
-    case 4:
-      return S.Array(__S(19, __c2, 3));
-    case 5:
+    case 1:
+      return S.Array(__S(56, __c7, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          Filters: S.optional(__S(20, __c2, 4)),
+          Filters: S.optional(__S(57, __c7, 1)),
           NextToken: S.optional(S.String),
           MaxResults: S.optional(S.Number),
         }).pipe(
@@ -819,26 +786,26 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "ListNotificationRulesRequest",
       });
-    case 6:
+    case 3:
       return S.suspend(() =>
         S.Struct({ Id: S.optional(S.String), Arn: S.optional(S.String) }),
       ).annotate({ identifier: "NotificationRuleSummary" });
-    case 7:
-      return S.Array(__S(22, __c2, 6));
-  }
-}
-function __c3(j: number): any {
-  switch (j) {
-    case 0:
+    case 4:
+      return S.Array(__S(59, __c7, 3));
+    case 5:
       return S.suspend(() =>
         S.Struct({
           NextToken: S.optional(S.String),
-          NotificationRules: S.optional(__S(23, __c2, 7)),
+          NotificationRules: S.optional(__S(60, __c7, 4)),
         }),
       ).annotate({
         identifier: "ListNotificationRulesResult",
       });
-    case 1:
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ Arn: S.String }).pipe(
           T.all(
@@ -853,65 +820,81 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "ListTagsForResourceRequest",
       });
-    case 2:
-      return S.suspend(() => S.Struct({ Tags: S.optional(__S(3, __c0, 3)) })).annotate({
+    case 1:
+      return S.suspend(() => S.Struct({ Tags: S.optional(__S(128, __c16, 0)) })).annotate({
         identifier: "ListTagsForResourceResult",
       });
-    case 3:
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          Filters: S.optional(__S(16, __c2, 0)),
+          Filters: S.optional(__S(49, __c6, 1)),
           NextToken: S.optional(S.String),
           MaxResults: S.optional(S.Number),
         }).pipe(
           T.all(T.Http({ method: "POST", uri: "/listTargets" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "ListTargetsRequest" });
-    case 4:
+    case 1:
       return S.suspend(() =>
-        S.Struct({ Targets: S.optional(__S(13, __c1, 5)), NextToken: S.optional(S.String) }),
+        S.Struct({ Targets: S.optional(__S(33, __c4, 1)), NextToken: S.optional(S.String) }),
       ).annotate({ identifier: "ListTargetsResult" });
-    case 5:
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           Arn: S.String,
-          Target: __S(1, __c0, 1),
+          Target: __S(136, __c17, 0),
           ClientRequestToken: S.optional(S.String),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/subscribe" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "SubscribeRequest" });
-    case 6:
+    case 1:
       return S.suspend(() => S.Struct({ Arn: S.optional(S.String) })).annotate({
         identifier: "SubscribeResult",
       });
-    case 7:
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
-        S.Struct({ Arn: S.String, Tags: __S(3, __c0, 3) }).pipe(
+        S.Struct({ Arn: S.String, Tags: __S(128, __c16, 0) }).pipe(
           T.all(T.Http({ method: "POST", uri: "/tagResource" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "TagResourceRequest" });
-  }
-}
-function __c4(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() => S.Struct({ Tags: S.optional(__S(3, __c0, 3)) })).annotate({
+    case 1:
+      return S.suspend(() => S.Struct({ Tags: S.optional(__S(128, __c16, 0)) })).annotate({
         identifier: "TagResourceResult",
       });
-    case 1:
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ Arn: S.String, TargetAddress: SensitiveString }).pipe(
           T.all(T.Http({ method: "POST", uri: "/unsubscribe" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "UnsubscribeRequest" });
-    case 2:
+    case 1:
       return S.suspend(() => S.Struct({ Arn: S.String })).annotate({
         identifier: "UnsubscribeResult",
       });
-    case 3:
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           Arn: S.String.pipe(T.HttpLabel("Arn")),
-          TagKeys: __S(0, __c0, 0).pipe(T.HttpQuery("tagKeys")),
+          TagKeys: __S(144, __c18, 0).pipe(T.HttpQuery("tagKeys")),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/untagResource/{Arn}" }),
@@ -923,14 +906,18 @@ function __c4(j: number): any {
           ),
         ),
       ).annotate({ identifier: "UntagResourceRequest" });
-    case 4:
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           Arn: S.String,
           Name: S.optional(SensitiveString),
           Status: S.optional(S.String),
-          EventTypeIds: S.optional(__S(0, __c0, 0)),
-          Targets: S.optional(__S(2, __c0, 2)),
+          EventTypeIds: S.optional(__S(144, __c18, 0)),
+          Targets: S.optional(__S(152, __c19, 0)),
           DetailType: S.optional(S.String),
         }).pipe(
           T.all(
@@ -947,7 +934,87 @@ function __c4(j: number): any {
       });
   }
 }
-
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          Name: SensitiveString,
+          EventTypeIds: __S(144, __c18, 0),
+          Resource: S.String,
+          Targets: __S(152, __c19, 0),
+          DetailType: S.String,
+          ClientRequestToken: S.optional(S.String).pipe(T.IdempotencyToken()),
+          Tags: S.optional(__S(128, __c16, 0)),
+          Status: S.optional(S.String),
+        }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/createNotificationRule" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "CreateNotificationRuleRequest",
+      });
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
+  }
+}
+function __c17(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ TargetType: S.optional(S.String), TargetAddress: S.optional(SensitiveString) }),
+      ).annotate({ identifier: "Target" });
+  }
+}
+function __c18(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c19(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(136, __c17, 0));
+  }
+}
+function __c20(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({ Arn: S.optional(S.String) })).annotate({
+        identifier: "CreateNotificationRuleResult",
+      });
+  }
+}
+function __c21(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ Arn: S.String }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/deleteNotificationRule" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "DeleteNotificationRuleRequest",
+      });
+  }
+}
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

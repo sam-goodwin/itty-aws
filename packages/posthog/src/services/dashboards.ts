@@ -9321,8 +9321,8 @@ export const createDashboard: API.OperationMethod<
   CreateDashboardError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(4, __c0, 4) as any as S.Schema<CreateDashboardRequest>,
-  output: __S(9, __c1, 1) as any as S.Schema<DashboardOutput>,
+  input: __S(336, __c21, 0) as any as S.Schema<CreateDashboardRequest>,
+  output: __S(404, __c25, 4) as any as S.Schema<DashboardOutput>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -9335,8 +9335,8 @@ export const createDashboardsCollaborator: API.OperationMethod<
   CreateDashboardsCollaboratorError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(10, __c1, 2) as any as S.Schema<CreateDashboardsCollaboratorRequest>,
-  output: __S(11, __c1, 3) as any as S.Schema<DashboardCollaboratorOutput>,
+  input: __S(416, __c26, 0) as any as S.Schema<CreateDashboardsCollaboratorRequest>,
+  output: __S(432, __c27, 0) as any as S.Schema<DashboardCollaboratorOutput>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -9349,8 +9349,8 @@ export const createDashboardsReorderTile: API.OperationMethod<
   CreateDashboardsReorderTileError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(13, __c1, 5) as any as S.Schema<CreateDashboardsReorderTileRequest>,
-  output: __S(9, __c1, 1) as any as S.Schema<DashboardOutput>,
+  input: __S(448, __c28, 0) as any as S.Schema<CreateDashboardsReorderTileRequest>,
+  output: __S(404, __c25, 4) as any as S.Schema<DashboardOutput>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -9368,8 +9368,8 @@ export const createDashboardsSharingPassword: API.OperationMethod<
   CreateDashboardsSharingPasswordError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(14, __c1, 6) as any as S.Schema<CreateDashboardsSharingPasswordRequest>,
-  output: __S(17, __c2, 1) as any as S.Schema<SharingConfiguration>,
+  input: __S(480, __c30, 0) as any as S.Schema<CreateDashboardsSharingPasswordRequest>,
+  output: __S(498, __c31, 2) as any as S.Schema<SharingConfiguration>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -9383,8 +9383,8 @@ export const createDashboardsWidgetsBatch: API.OperationMethod<
   CreateDashboardsWidgetsBatchError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(21, __c2, 5) as any as S.Schema<CreateDashboardsWidgetsBatchRequest>,
-  output: __S(40, __c5, 0) as any as S.Schema<AddDashboardWidgetsBatchResponseOutput>,
+  input: __S(513, __c32, 1) as any as S.Schema<CreateDashboardsWidgetsBatchRequest>,
+  output: __S(561, __c35, 1) as any as S.Schema<AddDashboardWidgetsBatchResponseOutput>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -9397,8 +9397,8 @@ export const dashboardsCollaboratorsDestroy: API.OperationMethod<
   DashboardsCollaboratorsDestroyError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(41, __c5, 1) as any as S.Schema<DashboardsCollaboratorsDestroyRequest>,
-  output: __S(42, __c5, 2) as any as S.Schema<DashboardsCollaboratorsDestroyResponse>,
+  input: __S(576, __c36, 0) as any as S.Schema<DashboardsCollaboratorsDestroyRequest>,
+  output: __S(592, __c37, 0) as any as S.Schema<DashboardsCollaboratorsDestroyResponse>,
   errors: [Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -9412,8 +9412,8 @@ export const dashboardsCopyTileCreate: API.OperationMethod<
   DashboardsCopyTileCreateError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(43, __c5, 3) as any as S.Schema<DashboardsCopyTileCreateRequest>,
-  output: __S(9, __c1, 1) as any as S.Schema<DashboardOutput>,
+  input: __S(608, __c38, 0) as any as S.Schema<DashboardsCopyTileCreateRequest>,
+  output: __S(404, __c25, 4) as any as S.Schema<DashboardOutput>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -9427,8 +9427,8 @@ export const dashboardsCreateTextTileCreate: API.OperationMethod<
   DashboardsCreateTextTileCreateError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(44, __c5, 4) as any as S.Schema<DashboardsCreateTextTileCreateRequest>,
-  output: __S(38, __c4, 6) as any as S.Schema<DashboardTileOutput>,
+  input: __S(0, __c0, 0) as any as S.Schema<DashboardsCreateTextTileCreateRequest>,
+  output: __S(559, __c34, 15) as any as S.Schema<DashboardTileOutput>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -9442,8 +9442,8 @@ export const dashboardsDestroy: API.OperationMethod<
   DashboardsDestroyError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(45, __c5, 5) as any as S.Schema<DashboardsDestroyRequest>,
-  output: __S(46, __c5, 6) as any as S.Schema<DashboardsDestroyResponse>,
+  input: __S(32, __c2, 0) as any as S.Schema<DashboardsDestroyRequest>,
+  output: __S(48, __c3, 0) as any as S.Schema<DashboardsDestroyResponse>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -9456,8 +9456,8 @@ export const dashboardsMoveTileCreate: API.OperationMethod<
   DashboardsMoveTileCreateError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(48, __c6, 0) as any as S.Schema<DashboardsMoveTileCreateRequest>,
-  output: __S(9, __c1, 1) as any as S.Schema<DashboardOutput>,
+  input: __S(65, __c4, 1) as any as S.Schema<DashboardsMoveTileCreateRequest>,
+  output: __S(404, __c25, 4) as any as S.Schema<DashboardOutput>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -9471,8 +9471,8 @@ export const dashboardsSharingPasswordsDestroy: API.OperationMethod<
   DashboardsSharingPasswordsDestroyError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(49, __c6, 1) as any as S.Schema<DashboardsSharingPasswordsDestroyRequest>,
-  output: __S(42, __c5, 2) as any as S.Schema<DashboardsSharingPasswordsDestroyResponse>,
+  input: __S(80, __c5, 0) as any as S.Schema<DashboardsSharingPasswordsDestroyRequest>,
+  output: __S(592, __c37, 0) as any as S.Schema<DashboardsSharingPasswordsDestroyResponse>,
   errors: [Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -9489,8 +9489,8 @@ export const dashboardsSharingRefreshCreate: API.OperationMethod<
   DashboardsSharingRefreshCreateError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(50, __c6, 2) as any as S.Schema<DashboardsSharingRefreshCreateRequest>,
-  output: __S(17, __c2, 1) as any as S.Schema<SharingConfiguration>,
+  input: __S(96, __c6, 0) as any as S.Schema<DashboardsSharingRefreshCreateRequest>,
+  output: __S(498, __c31, 2) as any as S.Schema<SharingConfiguration>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -9504,8 +9504,8 @@ export const dashboardsSubscribeNudgeCreate: API.OperationMethod<
   DashboardsSubscribeNudgeCreateError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(51, __c6, 3) as any as S.Schema<DashboardsSubscribeNudgeCreateRequest>,
-  output: __S(52, __c6, 4) as any as S.Schema<DashboardSubscribeNudgeResponse>,
+  input: __S(112, __c7, 0) as any as S.Schema<DashboardsSubscribeNudgeCreateRequest>,
+  output: __S(113, __c7, 1) as any as S.Schema<DashboardSubscribeNudgeResponse>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -9519,8 +9519,8 @@ export const dashboardsUpdateTextTileCreate: API.OperationMethod<
   DashboardsUpdateTextTileCreateError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(53, __c6, 5) as any as S.Schema<DashboardsUpdateTextTileCreateRequest>,
-  output: __S(38, __c4, 6) as any as S.Schema<DashboardTileOutput>,
+  input: __S(128, __c8, 0) as any as S.Schema<DashboardsUpdateTextTileCreateRequest>,
+  output: __S(559, __c34, 15) as any as S.Schema<DashboardTileOutput>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -9534,8 +9534,8 @@ export const deleteDashboardTile: API.OperationMethod<
   DeleteDashboardTileError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(54, __c6, 6) as any as S.Schema<DeleteDashboardTileRequest>,
-  output: __S(46, __c5, 6) as any as S.Schema<DeleteDashboardTileResponse>,
+  input: __S(144, __c9, 0) as any as S.Schema<DeleteDashboardTileRequest>,
+  output: __S(48, __c3, 0) as any as S.Schema<DeleteDashboardTileResponse>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -9548,8 +9548,8 @@ export const getDashboard: API.OperationMethod<
   GetDashboardError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(55, __c6, 7) as any as S.Schema<GetDashboardRequest>,
-  output: __S(9, __c1, 1) as any as S.Schema<DashboardOutput>,
+  input: __S(160, __c10, 0) as any as S.Schema<GetDashboardRequest>,
+  output: __S(404, __c25, 4) as any as S.Schema<DashboardOutput>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -9563,8 +9563,8 @@ export const getDashboardsRunInsight: API.OperationMethod<
   GetDashboardsRunInsightError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(56, __c7, 0) as any as S.Schema<GetDashboardsRunInsightRequest>,
-  output: __S(60, __c7, 4) as any as S.Schema<RunInsightsResponse>,
+  input: __S(176, __c11, 0) as any as S.Schema<GetDashboardsRunInsightRequest>,
+  output: __S(180, __c11, 4) as any as S.Schema<RunInsightsResponse>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -9577,8 +9577,8 @@ export const getDashboardsRunWidget: API.OperationMethod<
   GetDashboardsRunWidgetError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(61, __c7, 5) as any as S.Schema<GetDashboardsRunWidgetRequest>,
-  output: __S(64, __c8, 0) as any as S.Schema<RunWidgetsResponse>,
+  input: __S(192, __c12, 0) as any as S.Schema<GetDashboardsRunWidgetRequest>,
+  output: __S(195, __c12, 3) as any as S.Schema<RunWidgetsResponse>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -9592,8 +9592,8 @@ export const getDashboardsStreamTile: API.OperationMethod<
   GetDashboardsStreamTileError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(65, __c8, 1) as any as S.Schema<GetDashboardsStreamTileRequest>,
-  output: __S(66, __c8, 2) as any as S.Schema<GetDashboardsStreamTileResponse>,
+  input: __S(208, __c13, 0) as any as S.Schema<GetDashboardsStreamTileRequest>,
+  output: __S(209, __c13, 1) as any as S.Schema<GetDashboardsStreamTileResponse>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -9607,8 +9607,8 @@ export const getDashboardsWidgetCatalog: API.OperationMethod<
   GetDashboardsWidgetCatalogError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(67, __c8, 3) as any as S.Schema<GetDashboardsWidgetCatalogRequest>,
-  output: __S(69, __c8, 5) as any as S.Schema<WidgetCatalogResponse>,
+  input: __S(224, __c14, 0) as any as S.Schema<GetDashboardsWidgetCatalogRequest>,
+  output: __S(226, __c14, 2) as any as S.Schema<WidgetCatalogResponse>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -9621,8 +9621,8 @@ export const listDashboards: API.OperationMethod<
   ListDashboardsError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(70, __c8, 6) as any as S.Schema<ListDashboardsRequest>,
-  output: __S(73, __c9, 1) as any as S.Schema<PaginatedDashboardBasicList>,
+  input: __S(240, __c15, 0) as any as S.Schema<ListDashboardsRequest>,
+  output: __S(243, __c15, 3) as any as S.Schema<PaginatedDashboardBasicList>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -9635,8 +9635,8 @@ export const listDashboardsCollaborators: API.OperationMethod<
   ListDashboardsCollaboratorsError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(74, __c9, 2) as any as S.Schema<ListDashboardsCollaboratorsRequest>,
-  output: __S(76, __c9, 4) as any as S.Schema<ListDashboardsCollaboratorsResponse>,
+  input: __S(256, __c16, 0) as any as S.Schema<ListDashboardsCollaboratorsRequest>,
+  output: __S(258, __c16, 2) as any as S.Schema<ListDashboardsCollaboratorsResponse>,
   errors: [Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -9649,8 +9649,8 @@ export const listDashboardsSharing: API.OperationMethod<
   ListDashboardsSharingError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(77, __c9, 5) as any as S.Schema<ListDashboardsSharingRequest>,
-  output: __S(79, __c9, 7) as any as S.Schema<ListDashboardsSharingResponse>,
+  input: __S(272, __c17, 0) as any as S.Schema<ListDashboardsSharingRequest>,
+  output: __S(274, __c17, 2) as any as S.Schema<ListDashboardsSharingResponse>,
   errors: [Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -9663,8 +9663,8 @@ export const updateDashboard: API.OperationMethod<
   UpdateDashboardError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(80, __c10, 0) as any as S.Schema<UpdateDashboardRequest>,
-  output: __S(9, __c1, 1) as any as S.Schema<DashboardOutput>,
+  input: __S(288, __c18, 0) as any as S.Schema<UpdateDashboardRequest>,
+  output: __S(404, __c25, 4) as any as S.Schema<DashboardOutput>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -9677,8 +9677,8 @@ export const updateDashboardsPartial: API.OperationMethod<
   UpdateDashboardsPartialError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(87, __c10, 7) as any as S.Schema<UpdateDashboardsPartialRequest>,
-  output: __S(9, __c1, 1) as any as S.Schema<DashboardOutput>,
+  input: __S(310, __c19, 6) as any as S.Schema<UpdateDashboardsPartialRequest>,
+  output: __S(404, __c25, 4) as any as S.Schema<DashboardOutput>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -9692,8 +9692,8 @@ export const updateDashboardWidgetsBatch: API.OperationMethod<
   UpdateDashboardWidgetsBatchError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(89, __c11, 1) as any as S.Schema<UpdateDashboardWidgetsBatchRequest>,
-  output: __S(40, __c5, 0) as any as S.Schema<UpdateDashboardWidgetsBatchResponseOutput>,
+  input: __S(321, __c20, 1) as any as S.Schema<UpdateDashboardWidgetsBatchRequest>,
+  output: __S(561, __c35, 1) as any as S.Schema<UpdateDashboardWidgetsBatchResponseOutput>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -9705,500 +9705,13 @@ function __c0(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          breakdownValue: S.String,
-          colorToken: S.NullOr(S.String),
-          breakdownType: S.optional(S.NullOr(S.String)),
-          breakdownProperty: S.optional(S.NullOr(S.String)),
-          source: S.optional(S.NullOr(S.String)),
-        }),
-      ).annotate({ identifier: "BreakdownColorConfig" });
-    case 1:
-      return S.Array(__S(0, __c0, 0));
-    case 2:
-      return S.Array(S.Unknown);
-    case 3:
-      return S.Array(S.String);
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          project_id: S.String.pipe(T.Label()),
-          format: S.optional(S.String.pipe(T.Query())),
-          include_dashboards: S.optional(S.Boolean.pipe(T.Query())),
-          name: S.optional(S.NullOr(S.String)),
-          description: S.optional(S.String),
-          pinned: S.optional(S.Boolean),
-          last_accessed_at: S.optional(S.NullOr(S.String)),
-          deleted: S.optional(S.Boolean),
-          breakdown_colors: S.optional(S.NullOr(__S(1, __c0, 1))),
-          data_color_theme_id: S.optional(S.NullOr(S.Number)),
-          tags: S.optional(__S(2, __c0, 2)),
-          restriction_level: S.optional(S.Number),
-          last_refresh: S.optional(S.NullOr(S.String)),
-          quick_filter_ids: S.optional(S.NullOr(__S(3, __c0, 3))),
-          grid_spacing: S.optional(S.String),
-          layout_compaction: S.optional(S.String),
-          use_template: S.optional(S.String),
-          use_dashboard: S.optional(S.NullOr(S.Number)),
-          delete_insights: S.optional(S.Boolean),
-          _create_in_folder: S.optional(S.String),
-        }).pipe(
-          T.Http({ method: "POST", uri: "/api/projects/{project_id}/dashboards/", code: 200 }),
-        ),
-      ).annotate({ identifier: "CreateDashboardRequest" });
-    case 5:
-      return S.Record(S.String, S.Unknown);
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.Number),
-          uuid: S.optional(S.String),
-          distinct_id: S.optional(S.NullOr(S.String)),
-          first_name: S.optional(S.String),
-          last_name: S.optional(S.String),
-          email: S.optional(S.String),
-          is_email_verified: S.optional(S.NullOr(S.Boolean)),
-          hedgehog_config: S.optional(S.NullOr(__S(5, __c0, 5))),
-          role_at_organization: S.optional(S.NullOr(S.Unknown)),
-        }),
-      ).annotate({ identifier: "UserBasic" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          tile_spacing: S.optional(S.String),
-          layout_compaction: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "DashboardCustomization" });
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(5, __c0, 5));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.Number),
-          name: S.optional(S.NullOr(S.String)),
-          description: S.optional(S.String),
-          pinned: S.optional(S.Boolean),
-          created_at: S.optional(S.String),
-          created_by: S.optional(S.NullOr(__S(6, __c0, 6))),
-          last_accessed_at: S.optional(S.NullOr(S.String)),
-          last_viewed_at: S.optional(S.NullOr(S.String)),
-          folder: S.optional(S.NullOr(S.String)),
-          file_system_id: S.optional(S.NullOr(S.String)),
-          file_system_path: S.optional(S.NullOr(S.String)),
-          is_shared: S.optional(S.Boolean),
-          deleted: S.optional(S.Boolean),
-          creation_mode: S.optional(S.String),
-          filters: S.optional(__S(5, __c0, 5)),
-          variables: S.optional(S.NullOr(__S(5, __c0, 5))),
-          breakdown_colors: S.optional(S.NullOr(__S(1, __c0, 1))),
-          data_color_theme_id: S.optional(S.NullOr(S.Number)),
-          tags: S.optional(__S(2, __c0, 2)),
-          restriction_level: S.optional(S.Number),
-          effective_restriction_level: S.optional(S.Number),
-          effective_privilege_level: S.optional(S.Number),
-          user_access_level: S.optional(S.NullOr(S.String)),
-          access_control_version: S.optional(S.String),
-          last_refresh: S.optional(S.NullOr(S.String)),
-          persisted_filters: S.optional(S.NullOr(__S(5, __c0, 5))),
-          persisted_variables: S.optional(S.NullOr(__S(5, __c0, 5))),
-          team_id: S.optional(S.Number),
-          quick_filter_ids: S.optional(S.NullOr(__S(3, __c0, 3))),
-          customization: S.optional(__S(7, __c0, 7)),
-          tiles: S.optional(S.NullOr(__S(8, __c1, 0))),
-        }),
-      ).annotate({ identifier: "DashboardOutput" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          project_id: S.String.pipe(T.Label()),
-          dashboard_id: S.Number.pipe(T.Label()),
-          level: S.optional(S.Number),
-          user_uuid: S.optional(S.String),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/api/projects/{project_id}/dashboards/{dashboard_id}/collaborators/",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateDashboardsCollaboratorRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          dashboard_id: S.optional(S.Number),
-          user: S.optional(S.NullOr(__S(6, __c0, 6))),
-          level: S.optional(S.Number),
-          added_at: S.optional(S.String),
-          updated_at: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "DashboardCollaboratorOutput",
-      });
-    case 4:
-      return S.Array(S.Number);
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          project_id: S.String.pipe(T.Label()),
-          id: S.Number.pipe(T.Label()),
-          format: S.optional(S.String.pipe(T.Query())),
-          tile_order: S.optional(__S(12, __c1, 4)),
-          layout: S.optional(S.String),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/api/projects/{project_id}/dashboards/{id}/reorder_tiles/",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateDashboardsReorderTileRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          project_id: S.String.pipe(T.Label()),
-          dashboard_id: S.Number.pipe(T.Label()),
-          enabled: S.optional(S.Boolean),
-          settings: S.optional(S.Unknown),
-          password_required: S.optional(S.Boolean),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/api/projects/{project_id}/dashboards/{dashboard_id}/sharing/passwords/",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateDashboardsSharingPasswordRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.Number),
-          created_at: S.optional(S.String),
-          note: S.optional(S.NullOr(S.String)),
-          created_by_email: S.optional(S.String),
-          is_active: S.optional(S.Boolean),
-        }),
-      ).annotate({ identifier: "SharePassword" });
-  }
-}
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(15, __c1, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          created_at: S.optional(S.String),
-          enabled: S.optional(S.Boolean),
-          access_token: S.optional(S.NullOr(S.String).pipe(T.SensitiveValue({}))),
-          settings: S.optional(S.Unknown),
-          password_required: S.optional(S.Boolean),
-          share_passwords: S.optional(__S(16, __c2, 0)),
-          user_access_level: S.optional(S.NullOr(S.String)),
-        }),
-      ).annotate({ identifier: "SharingConfiguration" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          x: S.optional(S.Number),
-          y: S.optional(S.Number),
-          w: S.optional(S.Number),
-          h: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "TileLayoutBoxOpenApi" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          sm: S.optional(__S(18, __c2, 2)),
-          xs: S.optional(__S(18, __c2, 2)),
-        }),
-      ).annotate({ identifier: "TileLayoutsOpenApi" });
-    case 4:
-      return S.Array(S.Unknown);
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          project_id: S.String.pipe(T.Label()),
-          id: S.Number.pipe(T.Label()),
-          format: S.optional(S.String.pipe(T.Query())),
-          widgets: __S(20, __c2, 4),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/api/projects/{project_id}/dashboards/{id}/widgets/batch/",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateDashboardsWidgetsBatchRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          group_type_index: S.optional(S.NullOr(S.Number)),
-          histogram_bin_count: S.optional(S.NullOr(S.Number)),
-          normalize_url: S.optional(S.NullOr(S.Boolean)),
-          property: S.optional(S.Unknown),
-          type: S.optional(S.NullOr(S.String)),
-        }),
-      ).annotate({ identifier: "Breakdown" });
-    case 7:
-      return S.Array(__S(22, __c2, 6));
-  }
-}
-function __c3(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          breakdown: S.optional(S.NullOr(S.Unknown)),
-          breakdown_group_type_index: S.optional(S.NullOr(S.Number)),
-          breakdown_hide_other_aggregation: S.optional(S.NullOr(S.Boolean)),
-          breakdown_histogram_bin_count: S.optional(S.NullOr(S.Number)),
-          breakdown_limit: S.optional(S.NullOr(S.Number)),
-          breakdown_normalize_url: S.optional(S.NullOr(S.Boolean)),
-          breakdown_path_cleaning: S.optional(S.NullOr(S.Boolean)),
-          breakdown_type: S.optional(S.NullOr(S.String)),
-          breakdowns: S.optional(S.NullOr(__S(23, __c2, 7))),
-        }),
-      ).annotate({ identifier: "BreakdownFilter" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          date_from: S.optional(S.String),
-          date_to: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "ResolvedDateRangeResponse",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.Number),
-          dashboard_id: S.optional(S.Number),
-          deleted: S.optional(S.NullOr(S.Boolean)),
-        }),
-      ).annotate({ identifier: "DashboardTileBasic" });
-    case 3:
-      return S.Array(__S(26, __c3, 2));
-    case 4:
-      return S.Array(S.Unknown);
-    case 5:
-      return S.Array(S.Unknown);
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          breakdown_filter: S.optional(S.NullOr(__S(24, __c3, 0))),
-          date_from: S.optional(S.NullOr(S.String)),
-          date_to: S.optional(S.NullOr(S.String)),
-          explicitDate: S.optional(S.NullOr(S.Boolean)),
-          filterTestAccounts: S.optional(S.NullOr(S.Boolean)),
-          interval: S.optional(S.NullOr(S.String)),
-          properties: S.optional(S.NullOr(__S(29, __c3, 5))),
-        }),
-      ).annotate({ identifier: "DashboardFilter" });
-    case 7:
-      return S.Array(S.Unknown);
-  }
-}
-function __c4(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          breakdown_filter: S.optional(S.NullOr(__S(24, __c3, 0))),
-          date_from: S.optional(S.NullOr(S.String)),
-          date_to: S.optional(S.NullOr(S.String)),
-          explicitDate: S.optional(S.NullOr(S.Boolean)),
-          filterTestAccounts: S.optional(S.NullOr(S.Boolean)),
-          ignoreDashboardFilters: S.optional(S.NullOr(S.Boolean)),
-          interval: S.optional(S.NullOr(S.String)),
-          properties: S.optional(S.NullOr(__S(31, __c3, 7))),
-        }),
-      ).annotate({ identifier: "TileFilters" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          dashboard: S.optional(S.NullOr(__S(30, __c3, 6))),
-          tile: S.optional(S.NullOr(__S(32, __c4, 0))),
-          overridden_dashboard: S.optional(S.NullOr(__S(30, __c3, 6))),
-        }),
-      ).annotate({
-        identifier: "InsightFilterOverrideContext",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.Number),
-          short_id: S.optional(S.String),
-          name: S.optional(S.NullOr(S.String)),
-          derived_name: S.optional(S.NullOr(S.String)),
-          query: S.optional(S.NullOr(S.Unknown)),
-          order: S.optional(S.NullOr(S.Number)),
-          deleted: S.optional(S.Boolean),
-          dashboards: S.optional(__S(12, __c1, 4)),
-          dashboard_tiles: S.optional(__S(27, __c3, 3)),
-          last_refresh: S.optional(S.NullOr(S.String)),
-          cache_target_age: S.optional(S.NullOr(S.String)),
-          next_allowed_client_refresh: S.optional(S.NullOr(S.String)),
-          result: S.optional(S.Unknown),
-          hasMore: S.optional(S.NullOr(S.Boolean)),
-          columns: S.optional(S.NullOr(__S(3, __c0, 3))),
-          created_at: S.optional(S.NullOr(S.String)),
-          created_by: S.optional(S.NullOr(__S(6, __c0, 6))),
-          description: S.optional(S.NullOr(S.String)),
-          updated_at: S.optional(S.String),
-          tags: S.optional(__S(2, __c0, 2)),
-          favorited: S.optional(S.Boolean),
-          last_modified_at: S.optional(S.String),
-          last_modified_by: S.optional(S.NullOr(__S(6, __c0, 6))),
-          is_sample: S.optional(S.Boolean),
-          effective_restriction_level: S.optional(S.Number),
-          effective_privilege_level: S.optional(S.Number),
-          user_access_level: S.optional(S.NullOr(S.String)),
-          timezone: S.optional(S.NullOr(S.String)),
-          is_cached: S.optional(S.Boolean),
-          query_status: S.optional(S.Unknown),
-          hogql: S.optional(S.NullOr(S.String)),
-          types: S.optional(S.NullOr(__S(2, __c0, 2))),
-          resolved_date_range: S.optional(S.NullOr(__S(25, __c3, 1))),
-          query_scan: S.optional(S.Unknown),
-          warnings: S.optional(S.NullOr(__S(28, __c3, 4))),
-          alerts: S.optional(__S(2, __c0, 2)),
-          filter_override_context: S.optional(S.NullOr(__S(33, __c4, 1))),
-          last_viewed_at: S.optional(S.NullOr(S.String)),
-          search_match_type: S.optional(S.NullOr(S.String)),
-        }),
-      ).annotate({ identifier: "InsightOutput" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.Number,
-          created_by: __S(6, __c0, 6),
-          last_modified_by: __S(6, __c0, 6),
-          body: S.optional(S.NullOr(S.String)),
-          agent_context: S.optional(S.NullOr(S.String)),
-          dashboard_tiles: __S(27, __c3, 3),
-          last_modified_at: S.String,
-          team: S.Number,
-        }),
-      ).annotate({ identifier: "Text" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String,
-          created_by: __S(6, __c0, 6),
-          last_modified_by: __S(6, __c0, 6),
-          url: S.String,
-          text: S.String,
-          placement: S.optional(S.String),
-          dashboard_tiles: __S(27, __c3, 3),
-          style: S.optional(S.String),
-          last_modified_at: S.String,
-          team: S.Number,
-        }),
-      ).annotate({ identifier: "ButtonTile" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String,
-          created_by: __S(6, __c0, 6),
-          last_modified_by: __S(6, __c0, 6),
-          widget_type: S.String,
-          name: S.optional(S.NullOr(S.String)),
-          description: S.optional(S.String),
-          config: S.optional(S.Unknown),
-          dashboard_tiles: __S(27, __c3, 3),
-          last_modified_at: S.String,
-          team: S.Number,
-        }),
-      ).annotate({ identifier: "DashboardWidget" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.Number),
-          insight: __S(34, __c4, 2),
-          text: __S(35, __c4, 3),
-          button_tile: __S(36, __c4, 4),
-          widget: S.optional(S.NullOr(__S(37, __c4, 5))),
-          layouts: S.optional(S.Unknown),
-          color: S.optional(S.NullOr(S.String)),
-          filters_overrides: S.optional(S.Unknown),
-          show_description: S.optional(S.NullOr(S.Boolean)),
-          transparent_background: S.optional(S.NullOr(S.Boolean)),
-        }),
-      ).annotate({ identifier: "DashboardTileOutput" });
-    case 7:
-      return S.Array(__S(38, __c4, 6));
-  }
-}
-function __c5(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          tiles: __S(39, __c4, 7),
-        }),
-      ).annotate({
-        identifier: "AddDashboardWidgetsBatchResponseOutput",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          project_id: S.String.pipe(T.Label()),
-          dashboard_id: S.Number.pipe(T.Label()),
-          user__uuid: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/api/projects/{project_id}/dashboards/{dashboard_id}/collaborators/{user__uuid}/",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "DashboardsCollaboratorsDestroyRequest",
-      });
-    case 2:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "DashboardsCollaboratorsDestroyResponse",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          project_id: S.String.pipe(T.Label()),
-          id: S.Number.pipe(T.Label()),
-          format: S.optional(S.String.pipe(T.Query())),
-          fromDashboardId: S.optional(S.Number),
-          tileId: S.optional(S.Number),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/api/projects/{project_id}/dashboards/{id}/copy_tile/",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "DashboardsCopyTileCreateRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
           project_id: S.String.pipe(T.Label()),
           id: S.Number.pipe(T.Label()),
           format: S.optional(S.String.pipe(T.Query())),
           type: S.optional(S.String),
           body: S.String,
           agent_context: S.optional(S.NullOr(S.String)),
-          layouts: S.optional(__S(19, __c2, 3)),
+          layouts: S.optional(__S(17, __c1, 1)),
           color: S.optional(S.NullOr(S.String)),
         }).pipe(
           T.Http({
@@ -10210,7 +9723,31 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "DashboardsCreateTextTileCreateRequest",
       });
-    case 5:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          x: S.optional(S.Number),
+          y: S.optional(S.Number),
+          w: S.optional(S.Number),
+          h: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "TileLayoutBoxOpenApi" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          sm: S.optional(__S(16, __c1, 0)),
+          xs: S.optional(__S(16, __c1, 0)),
+        }),
+      ).annotate({ identifier: "TileLayoutsOpenApi" });
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -10224,28 +9761,32 @@ function __c5(j: number): any {
           }),
         ),
       ).annotate({ identifier: "DashboardsDestroyRequest" });
-    case 6:
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "DashboardsDestroyResponse",
       });
-    case 7:
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.Number,
         }),
       ).annotate({ identifier: "MoveTileTile" });
-  }
-}
-function __c6(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
           id: S.Number.pipe(T.Label()),
           format: S.optional(S.String.pipe(T.Query())),
           to_dashboard: S.Number,
-          tile: __S(47, __c5, 7),
+          tile: __S(64, __c4, 0),
         }).pipe(
           T.Http({
             method: "POST",
@@ -10256,7 +9797,11 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "DashboardsMoveTileCreateRequest",
       });
-    case 1:
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -10272,7 +9817,11 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "DashboardsSharingPasswordsDestroyRequest",
       });
-    case 2:
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -10290,7 +9839,11 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "DashboardsSharingRefreshCreateRequest",
       });
-    case 3:
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -10306,7 +9859,7 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "DashboardsSubscribeNudgeCreateRequest",
       });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           created: S.Boolean,
@@ -10314,7 +9867,11 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "DashboardSubscribeNudgeResponse",
       });
-    case 5:
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -10323,7 +9880,7 @@ function __c6(j: number): any {
           tile_id: S.Number,
           body: S.optional(S.String),
           agent_context: S.optional(S.NullOr(S.String)),
-          layouts: S.optional(__S(19, __c2, 3)),
+          layouts: S.optional(__S(17, __c1, 1)),
           color: S.optional(S.NullOr(S.String)),
         }).pipe(
           T.Http({
@@ -10335,7 +9892,11 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "DashboardsUpdateTextTileCreateRequest",
       });
-    case 6:
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -10352,7 +9913,11 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "DeleteDashboardTileRequest",
       });
-    case 7:
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -10367,7 +9932,7 @@ function __c6(j: number): any {
       ).annotate({ identifier: "GetDashboardRequest" });
   }
 }
-function __c7(j: number): any {
+function __c11(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -10399,25 +9964,29 @@ function __c7(j: number): any {
           name: S.optional(S.NullOr(S.String)),
           derived_name: S.optional(S.NullOr(S.String)),
           result: S.optional(S.Unknown),
-          warnings: S.optional(S.NullOr(__S(28, __c3, 4))),
+          warnings: S.optional(S.NullOr(__S(528, __c33, 0))),
         }),
       ).annotate({ identifier: "InsightResult" });
     case 2:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.Number),
-          insight: S.optional(__S(57, __c7, 1)),
+          insight: S.optional(__S(177, __c11, 1)),
         }),
       ).annotate({ identifier: "DashboardTileResult" });
     case 3:
-      return S.Array(__S(58, __c7, 2));
+      return S.Array(__S(178, __c11, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          results: S.optional(__S(59, __c7, 3)),
+          results: S.optional(__S(179, __c11, 3)),
         }),
       ).annotate({ identifier: "RunInsightsResponse" });
-    case 5:
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -10434,7 +10003,7 @@ function __c7(j: number): any {
       ).annotate({
         identifier: "GetDashboardsRunWidgetRequest",
       });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           tile_id: S.Number,
@@ -10443,19 +10012,19 @@ function __c7(j: number): any {
           error: S.NullOr(S.String),
         }),
       ).annotate({ identifier: "DashboardWidgetRunResult" });
-    case 7:
-      return S.Array(__S(62, __c7, 6));
-  }
-}
-function __c8(j: number): any {
-  switch (j) {
-    case 0:
+    case 2:
+      return S.Array(__S(193, __c12, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          results: __S(63, __c7, 7),
+          results: __S(194, __c12, 2),
         }),
       ).annotate({ identifier: "RunWidgetsResponse" });
-    case 1:
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -10474,11 +10043,15 @@ function __c8(j: number): any {
       ).annotate({
         identifier: "GetDashboardsStreamTileRequest",
       });
-    case 2:
+    case 1:
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "GetDashboardsStreamTileResponse",
       });
-    case 3:
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -10493,15 +10066,19 @@ function __c8(j: number): any {
       ).annotate({
         identifier: "GetDashboardsWidgetCatalogRequest",
       });
-    case 4:
+    case 1:
       return S.Array(S.Unknown);
-    case 5:
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          results: __S(68, __c8, 4),
+          results: __S(225, __c14, 1),
         }),
       ).annotate({ identifier: "WidgetCatalogResponse" });
-    case 6:
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -10517,7 +10094,7 @@ function __c8(j: number): any {
           T.Http({ method: "GET", uri: "/api/projects/{project_id}/dashboards/", code: 200 }),
         ),
       ).annotate({ identifier: "ListDashboardsRequest" });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.Number),
@@ -10525,7 +10102,7 @@ function __c8(j: number): any {
           description: S.optional(S.String),
           pinned: S.optional(S.Boolean),
           created_at: S.optional(S.String),
-          created_by: S.optional(S.NullOr(__S(6, __c0, 6))),
+          created_by: S.optional(S.NullOr(__S(353, __c22, 1))),
           last_accessed_at: S.optional(S.NullOr(S.String)),
           last_viewed_at: S.optional(S.NullOr(S.String)),
           folder: S.optional(S.NullOr(S.String)),
@@ -10534,7 +10111,7 @@ function __c8(j: number): any {
           is_shared: S.optional(S.Boolean),
           deleted: S.optional(S.Boolean),
           creation_mode: S.optional(S.String),
-          tags: S.optional(__S(2, __c0, 2)),
+          tags: S.optional(__S(368, __c23, 0)),
           restriction_level: S.optional(S.Number),
           effective_restriction_level: S.optional(S.Number),
           effective_privilege_level: S.optional(S.Number),
@@ -10545,24 +10122,24 @@ function __c8(j: number): any {
           search_match_type: S.optional(S.NullOr(S.String)),
         }),
       ).annotate({ identifier: "DashboardBasic" });
-  }
-}
-function __c9(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(71, __c8, 7));
-    case 1:
+    case 2:
+      return S.Array(__S(241, __c15, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
           count: S.optional(S.Number),
           next: S.optional(S.NullOr(S.String)),
           previous: S.optional(S.NullOr(S.String)),
-          results: S.optional(__S(72, __c9, 0)),
+          results: S.optional(__S(242, __c15, 2)),
         }),
       ).annotate({
         identifier: "PaginatedDashboardBasicList",
       });
-    case 2:
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -10577,13 +10154,17 @@ function __c9(j: number): any {
       ).annotate({
         identifier: "ListDashboardsCollaboratorsRequest",
       });
-    case 3:
-      return S.Array(__S(11, __c1, 3));
-    case 4:
-      return S.suspend(() => __S(75, __c9, 3).pipe(T.RawResponseRoot())).annotate({
+    case 1:
+      return S.Array(__S(432, __c27, 0));
+    case 2:
+      return S.suspend(() => __S(257, __c16, 1).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListDashboardsCollaboratorsResponse",
       });
-    case 5:
+  }
+}
+function __c17(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -10598,15 +10179,15 @@ function __c9(j: number): any {
       ).annotate({
         identifier: "ListDashboardsSharingRequest",
       });
-    case 6:
-      return S.Array(__S(17, __c2, 1));
-    case 7:
-      return S.suspend(() => __S(78, __c9, 6).pipe(T.RawResponseRoot())).annotate({
+    case 1:
+      return S.Array(__S(498, __c31, 2));
+    case 2:
+      return S.suspend(() => __S(273, __c17, 1).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListDashboardsSharingResponse",
       });
   }
 }
-function __c10(j: number): any {
+function __c18(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -10620,12 +10201,12 @@ function __c10(j: number): any {
           pinned: S.optional(S.Boolean),
           last_accessed_at: S.optional(S.NullOr(S.String)),
           deleted: S.optional(S.Boolean),
-          breakdown_colors: S.optional(S.NullOr(__S(1, __c0, 1))),
+          breakdown_colors: S.optional(S.NullOr(__S(401, __c25, 1))),
           data_color_theme_id: S.optional(S.NullOr(S.Number)),
-          tags: S.optional(__S(2, __c0, 2)),
+          tags: S.optional(__S(368, __c23, 0)),
           restriction_level: S.optional(S.Number),
           last_refresh: S.optional(S.NullOr(S.String)),
-          quick_filter_ids: S.optional(S.NullOr(__S(3, __c0, 3))),
+          quick_filter_ids: S.optional(S.NullOr(__S(384, __c24, 0))),
           grid_spacing: S.optional(S.String),
           layout_compaction: S.optional(S.String),
           use_template: S.optional(S.String),
@@ -10636,7 +10217,11 @@ function __c10(j: number): any {
           T.Http({ method: "PUT", uri: "/api/projects/{project_id}/dashboards/{id}/", code: 200 }),
         ),
       ).annotate({ identifier: "UpdateDashboardRequest" });
-    case 1:
+  }
+}
+function __c19(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           date_from: S.optional(S.NullOr(S.String)),
@@ -10644,7 +10229,7 @@ function __c10(j: number): any {
           properties: S.optional(S.Unknown),
         }),
       ).annotate({ identifier: "DashboardFiltersOpenApi" });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           x: S.Number,
@@ -10655,16 +10240,16 @@ function __c10(j: number): any {
       ).annotate({
         identifier: "DashboardPatchTileLayoutBoxOpenApi",
       });
-    case 3:
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          sm: __S(82, __c10, 2),
-          xs: S.optional(__S(82, __c10, 2)),
+          sm: __S(305, __c19, 1),
+          xs: S.optional(__S(305, __c19, 1)),
         }),
       ).annotate({
         identifier: "DashboardPatchTileLayoutsOpenApi",
       });
-    case 4:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
@@ -10676,19 +10261,19 @@ function __c10(j: number): any {
       ).annotate({
         identifier: "DashboardPatchWidgetOpenApi",
       });
-    case 5:
+    case 4:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.Number),
-          layouts: S.optional(__S(83, __c10, 3)),
-          widget: S.optional(__S(84, __c10, 4)),
+          layouts: S.optional(__S(306, __c19, 2)),
+          widget: S.optional(__S(307, __c19, 3)),
         }),
       ).annotate({
         identifier: "DashboardPatchTileOpenApi",
       });
+    case 5:
+      return S.Array(__S(308, __c19, 4));
     case 6:
-      return S.Array(__S(85, __c10, 5));
-    case 7:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -10698,15 +10283,15 @@ function __c10(j: number): any {
           name: S.optional(S.NullOr(S.String)),
           description: S.optional(S.String),
           pinned: S.optional(S.Boolean),
-          filters: S.optional(__S(81, __c10, 1)),
-          breakdown_colors: S.optional(S.NullOr(__S(1, __c0, 1))),
+          filters: S.optional(__S(304, __c19, 0)),
+          breakdown_colors: S.optional(S.NullOr(__S(401, __c25, 1))),
           data_color_theme_id: S.optional(S.NullOr(S.Number)),
-          tags: S.optional(__S(3, __c0, 3)),
+          tags: S.optional(__S(384, __c24, 0)),
           restriction_level: S.optional(S.Number),
-          quick_filter_ids: S.optional(S.NullOr(__S(3, __c0, 3))),
+          quick_filter_ids: S.optional(S.NullOr(__S(384, __c24, 0))),
           grid_spacing: S.optional(S.String),
           layout_compaction: S.optional(S.String),
-          tiles: S.optional(__S(86, __c10, 6)),
+          tiles: S.optional(__S(309, __c19, 5)),
           use_template: S.optional(S.String),
           use_dashboard: S.optional(S.NullOr(S.Number)),
           delete_insights: S.optional(S.Boolean),
@@ -10722,7 +10307,7 @@ function __c10(j: number): any {
       });
   }
 }
-function __c11(j: number): any {
+function __c20(j: number): any {
   switch (j) {
     case 0:
       return S.Array(S.Unknown);
@@ -10732,7 +10317,7 @@ function __c11(j: number): any {
           project_id: S.String.pipe(T.Label()),
           id: S.Number.pipe(T.Label()),
           format: S.optional(S.String.pipe(T.Query())),
-          widgets: S.optional(__S(88, __c11, 0)),
+          widgets: S.optional(__S(320, __c20, 0)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -10745,7 +10330,529 @@ function __c11(j: number): any {
       });
   }
 }
-
+function __c21(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          project_id: S.String.pipe(T.Label()),
+          format: S.optional(S.String.pipe(T.Query())),
+          include_dashboards: S.optional(S.Boolean.pipe(T.Query())),
+          name: S.optional(S.NullOr(S.String)),
+          description: S.optional(S.String),
+          pinned: S.optional(S.Boolean),
+          last_accessed_at: S.optional(S.NullOr(S.String)),
+          deleted: S.optional(S.Boolean),
+          breakdown_colors: S.optional(S.NullOr(__S(401, __c25, 1))),
+          data_color_theme_id: S.optional(S.NullOr(S.Number)),
+          tags: S.optional(__S(368, __c23, 0)),
+          restriction_level: S.optional(S.Number),
+          last_refresh: S.optional(S.NullOr(S.String)),
+          quick_filter_ids: S.optional(S.NullOr(__S(384, __c24, 0))),
+          grid_spacing: S.optional(S.String),
+          layout_compaction: S.optional(S.String),
+          use_template: S.optional(S.String),
+          use_dashboard: S.optional(S.NullOr(S.Number)),
+          delete_insights: S.optional(S.Boolean),
+          _create_in_folder: S.optional(S.String),
+        }).pipe(
+          T.Http({ method: "POST", uri: "/api/projects/{project_id}/dashboards/", code: 200 }),
+        ),
+      ).annotate({ identifier: "CreateDashboardRequest" });
+  }
+}
+function __c22(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, S.Unknown);
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.Number),
+          uuid: S.optional(S.String),
+          distinct_id: S.optional(S.NullOr(S.String)),
+          first_name: S.optional(S.String),
+          last_name: S.optional(S.String),
+          email: S.optional(S.String),
+          is_email_verified: S.optional(S.NullOr(S.Boolean)),
+          hedgehog_config: S.optional(S.NullOr(__S(352, __c22, 0))),
+          role_at_organization: S.optional(S.NullOr(S.Unknown)),
+        }),
+      ).annotate({ identifier: "UserBasic" });
+  }
+}
+function __c23(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.Unknown);
+  }
+}
+function __c24(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c25(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          breakdownValue: S.String,
+          colorToken: S.NullOr(S.String),
+          breakdownType: S.optional(S.NullOr(S.String)),
+          breakdownProperty: S.optional(S.NullOr(S.String)),
+          source: S.optional(S.NullOr(S.String)),
+        }),
+      ).annotate({ identifier: "BreakdownColorConfig" });
+    case 1:
+      return S.Array(__S(400, __c25, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          tile_spacing: S.optional(S.String),
+          layout_compaction: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "DashboardCustomization" });
+    case 3:
+      return S.Array(__S(352, __c22, 0));
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.Number),
+          name: S.optional(S.NullOr(S.String)),
+          description: S.optional(S.String),
+          pinned: S.optional(S.Boolean),
+          created_at: S.optional(S.String),
+          created_by: S.optional(S.NullOr(__S(353, __c22, 1))),
+          last_accessed_at: S.optional(S.NullOr(S.String)),
+          last_viewed_at: S.optional(S.NullOr(S.String)),
+          folder: S.optional(S.NullOr(S.String)),
+          file_system_id: S.optional(S.NullOr(S.String)),
+          file_system_path: S.optional(S.NullOr(S.String)),
+          is_shared: S.optional(S.Boolean),
+          deleted: S.optional(S.Boolean),
+          creation_mode: S.optional(S.String),
+          filters: S.optional(__S(352, __c22, 0)),
+          variables: S.optional(S.NullOr(__S(352, __c22, 0))),
+          breakdown_colors: S.optional(S.NullOr(__S(401, __c25, 1))),
+          data_color_theme_id: S.optional(S.NullOr(S.Number)),
+          tags: S.optional(__S(368, __c23, 0)),
+          restriction_level: S.optional(S.Number),
+          effective_restriction_level: S.optional(S.Number),
+          effective_privilege_level: S.optional(S.Number),
+          user_access_level: S.optional(S.NullOr(S.String)),
+          access_control_version: S.optional(S.String),
+          last_refresh: S.optional(S.NullOr(S.String)),
+          persisted_filters: S.optional(S.NullOr(__S(352, __c22, 0))),
+          persisted_variables: S.optional(S.NullOr(__S(352, __c22, 0))),
+          team_id: S.optional(S.Number),
+          quick_filter_ids: S.optional(S.NullOr(__S(384, __c24, 0))),
+          customization: S.optional(__S(402, __c25, 2)),
+          tiles: S.optional(S.NullOr(__S(403, __c25, 3))),
+        }),
+      ).annotate({ identifier: "DashboardOutput" });
+  }
+}
+function __c26(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          project_id: S.String.pipe(T.Label()),
+          dashboard_id: S.Number.pipe(T.Label()),
+          level: S.optional(S.Number),
+          user_uuid: S.optional(S.String),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/api/projects/{project_id}/dashboards/{dashboard_id}/collaborators/",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateDashboardsCollaboratorRequest",
+      });
+  }
+}
+function __c27(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          dashboard_id: S.optional(S.Number),
+          user: S.optional(S.NullOr(__S(353, __c22, 1))),
+          level: S.optional(S.Number),
+          added_at: S.optional(S.String),
+          updated_at: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "DashboardCollaboratorOutput",
+      });
+  }
+}
+function __c28(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          project_id: S.String.pipe(T.Label()),
+          id: S.Number.pipe(T.Label()),
+          format: S.optional(S.String.pipe(T.Query())),
+          tile_order: S.optional(__S(464, __c29, 0)),
+          layout: S.optional(S.String),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/api/projects/{project_id}/dashboards/{id}/reorder_tiles/",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateDashboardsReorderTileRequest",
+      });
+  }
+}
+function __c29(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.Number);
+  }
+}
+function __c30(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          project_id: S.String.pipe(T.Label()),
+          dashboard_id: S.Number.pipe(T.Label()),
+          enabled: S.optional(S.Boolean),
+          settings: S.optional(S.Unknown),
+          password_required: S.optional(S.Boolean),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/api/projects/{project_id}/dashboards/{dashboard_id}/sharing/passwords/",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateDashboardsSharingPasswordRequest",
+      });
+  }
+}
+function __c31(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.Number),
+          created_at: S.optional(S.String),
+          note: S.optional(S.NullOr(S.String)),
+          created_by_email: S.optional(S.String),
+          is_active: S.optional(S.Boolean),
+        }),
+      ).annotate({ identifier: "SharePassword" });
+    case 1:
+      return S.Array(__S(496, __c31, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          created_at: S.optional(S.String),
+          enabled: S.optional(S.Boolean),
+          access_token: S.optional(S.NullOr(S.String).pipe(T.SensitiveValue({}))),
+          settings: S.optional(S.Unknown),
+          password_required: S.optional(S.Boolean),
+          share_passwords: S.optional(__S(497, __c31, 1)),
+          user_access_level: S.optional(S.NullOr(S.String)),
+        }),
+      ).annotate({ identifier: "SharingConfiguration" });
+  }
+}
+function __c32(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.Unknown);
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          project_id: S.String.pipe(T.Label()),
+          id: S.Number.pipe(T.Label()),
+          format: S.optional(S.String.pipe(T.Query())),
+          widgets: __S(512, __c32, 0),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/api/projects/{project_id}/dashboards/{id}/widgets/batch/",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateDashboardsWidgetsBatchRequest",
+      });
+  }
+}
+function __c33(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.Unknown);
+  }
+}
+function __c34(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          group_type_index: S.optional(S.NullOr(S.Number)),
+          histogram_bin_count: S.optional(S.NullOr(S.Number)),
+          normalize_url: S.optional(S.NullOr(S.Boolean)),
+          property: S.optional(S.Unknown),
+          type: S.optional(S.NullOr(S.String)),
+        }),
+      ).annotate({ identifier: "Breakdown" });
+    case 1:
+      return S.Array(__S(544, __c34, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          breakdown: S.optional(S.NullOr(S.Unknown)),
+          breakdown_group_type_index: S.optional(S.NullOr(S.Number)),
+          breakdown_hide_other_aggregation: S.optional(S.NullOr(S.Boolean)),
+          breakdown_histogram_bin_count: S.optional(S.NullOr(S.Number)),
+          breakdown_limit: S.optional(S.NullOr(S.Number)),
+          breakdown_normalize_url: S.optional(S.NullOr(S.Boolean)),
+          breakdown_path_cleaning: S.optional(S.NullOr(S.Boolean)),
+          breakdown_type: S.optional(S.NullOr(S.String)),
+          breakdowns: S.optional(S.NullOr(__S(545, __c34, 1))),
+        }),
+      ).annotate({ identifier: "BreakdownFilter" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          date_from: S.optional(S.String),
+          date_to: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "ResolvedDateRangeResponse",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.Number),
+          dashboard_id: S.optional(S.Number),
+          deleted: S.optional(S.NullOr(S.Boolean)),
+        }),
+      ).annotate({ identifier: "DashboardTileBasic" });
+    case 5:
+      return S.Array(__S(548, __c34, 4));
+    case 6:
+      return S.Array(S.Unknown);
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          breakdown_filter: S.optional(S.NullOr(__S(546, __c34, 2))),
+          date_from: S.optional(S.NullOr(S.String)),
+          date_to: S.optional(S.NullOr(S.String)),
+          explicitDate: S.optional(S.NullOr(S.Boolean)),
+          filterTestAccounts: S.optional(S.NullOr(S.Boolean)),
+          interval: S.optional(S.NullOr(S.String)),
+          properties: S.optional(S.NullOr(__S(550, __c34, 6))),
+        }),
+      ).annotate({ identifier: "DashboardFilter" });
+    case 8:
+      return S.Array(S.Unknown);
+    case 9:
+      return S.suspend(() =>
+        S.Struct({
+          breakdown_filter: S.optional(S.NullOr(__S(546, __c34, 2))),
+          date_from: S.optional(S.NullOr(S.String)),
+          date_to: S.optional(S.NullOr(S.String)),
+          explicitDate: S.optional(S.NullOr(S.Boolean)),
+          filterTestAccounts: S.optional(S.NullOr(S.Boolean)),
+          ignoreDashboardFilters: S.optional(S.NullOr(S.Boolean)),
+          interval: S.optional(S.NullOr(S.String)),
+          properties: S.optional(S.NullOr(__S(552, __c34, 8))),
+        }),
+      ).annotate({ identifier: "TileFilters" });
+    case 10:
+      return S.suspend(() =>
+        S.Struct({
+          dashboard: S.optional(S.NullOr(__S(551, __c34, 7))),
+          tile: S.optional(S.NullOr(__S(553, __c34, 9))),
+          overridden_dashboard: S.optional(S.NullOr(__S(551, __c34, 7))),
+        }),
+      ).annotate({
+        identifier: "InsightFilterOverrideContext",
+      });
+    case 11:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.Number),
+          short_id: S.optional(S.String),
+          name: S.optional(S.NullOr(S.String)),
+          derived_name: S.optional(S.NullOr(S.String)),
+          query: S.optional(S.NullOr(S.Unknown)),
+          order: S.optional(S.NullOr(S.Number)),
+          deleted: S.optional(S.Boolean),
+          dashboards: S.optional(__S(464, __c29, 0)),
+          dashboard_tiles: S.optional(__S(549, __c34, 5)),
+          last_refresh: S.optional(S.NullOr(S.String)),
+          cache_target_age: S.optional(S.NullOr(S.String)),
+          next_allowed_client_refresh: S.optional(S.NullOr(S.String)),
+          result: S.optional(S.Unknown),
+          hasMore: S.optional(S.NullOr(S.Boolean)),
+          columns: S.optional(S.NullOr(__S(384, __c24, 0))),
+          created_at: S.optional(S.NullOr(S.String)),
+          created_by: S.optional(S.NullOr(__S(353, __c22, 1))),
+          description: S.optional(S.NullOr(S.String)),
+          updated_at: S.optional(S.String),
+          tags: S.optional(__S(368, __c23, 0)),
+          favorited: S.optional(S.Boolean),
+          last_modified_at: S.optional(S.String),
+          last_modified_by: S.optional(S.NullOr(__S(353, __c22, 1))),
+          is_sample: S.optional(S.Boolean),
+          effective_restriction_level: S.optional(S.Number),
+          effective_privilege_level: S.optional(S.Number),
+          user_access_level: S.optional(S.NullOr(S.String)),
+          timezone: S.optional(S.NullOr(S.String)),
+          is_cached: S.optional(S.Boolean),
+          query_status: S.optional(S.Unknown),
+          hogql: S.optional(S.NullOr(S.String)),
+          types: S.optional(S.NullOr(__S(368, __c23, 0))),
+          resolved_date_range: S.optional(S.NullOr(__S(547, __c34, 3))),
+          query_scan: S.optional(S.Unknown),
+          warnings: S.optional(S.NullOr(__S(528, __c33, 0))),
+          alerts: S.optional(__S(368, __c23, 0)),
+          filter_override_context: S.optional(S.NullOr(__S(554, __c34, 10))),
+          last_viewed_at: S.optional(S.NullOr(S.String)),
+          search_match_type: S.optional(S.NullOr(S.String)),
+        }),
+      ).annotate({ identifier: "InsightOutput" });
+    case 12:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.Number,
+          created_by: __S(353, __c22, 1),
+          last_modified_by: __S(353, __c22, 1),
+          body: S.optional(S.NullOr(S.String)),
+          agent_context: S.optional(S.NullOr(S.String)),
+          dashboard_tiles: __S(549, __c34, 5),
+          last_modified_at: S.String,
+          team: S.Number,
+        }),
+      ).annotate({ identifier: "Text" });
+    case 13:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          created_by: __S(353, __c22, 1),
+          last_modified_by: __S(353, __c22, 1),
+          url: S.String,
+          text: S.String,
+          placement: S.optional(S.String),
+          dashboard_tiles: __S(549, __c34, 5),
+          style: S.optional(S.String),
+          last_modified_at: S.String,
+          team: S.Number,
+        }),
+      ).annotate({ identifier: "ButtonTile" });
+    case 14:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          created_by: __S(353, __c22, 1),
+          last_modified_by: __S(353, __c22, 1),
+          widget_type: S.String,
+          name: S.optional(S.NullOr(S.String)),
+          description: S.optional(S.String),
+          config: S.optional(S.Unknown),
+          dashboard_tiles: __S(549, __c34, 5),
+          last_modified_at: S.String,
+          team: S.Number,
+        }),
+      ).annotate({ identifier: "DashboardWidget" });
+    case 15:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.Number),
+          insight: __S(555, __c34, 11),
+          text: __S(556, __c34, 12),
+          button_tile: __S(557, __c34, 13),
+          widget: S.optional(S.NullOr(__S(558, __c34, 14))),
+          layouts: S.optional(S.Unknown),
+          color: S.optional(S.NullOr(S.String)),
+          filters_overrides: S.optional(S.Unknown),
+          show_description: S.optional(S.NullOr(S.Boolean)),
+          transparent_background: S.optional(S.NullOr(S.Boolean)),
+        }),
+      ).annotate({ identifier: "DashboardTileOutput" });
+  }
+}
+function __c35(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(559, __c34, 15));
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          tiles: __S(560, __c35, 0),
+        }),
+      ).annotate({
+        identifier: "AddDashboardWidgetsBatchResponseOutput",
+      });
+  }
+}
+function __c36(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          project_id: S.String.pipe(T.Label()),
+          dashboard_id: S.Number.pipe(T.Label()),
+          user__uuid: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/api/projects/{project_id}/dashboards/{dashboard_id}/collaborators/{user__uuid}/",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "DashboardsCollaboratorsDestroyRequest",
+      });
+  }
+}
+function __c37(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "DashboardsCollaboratorsDestroyResponse",
+      });
+  }
+}
+function __c38(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          project_id: S.String.pipe(T.Label()),
+          id: S.Number.pipe(T.Label()),
+          format: S.optional(S.String.pipe(T.Query())),
+          fromDashboardId: S.optional(S.Number),
+          tileId: S.optional(S.Number),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/api/projects/{project_id}/dashboards/{id}/copy_tile/",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "DashboardsCopyTileCreateRequest",
+      });
+  }
+}
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

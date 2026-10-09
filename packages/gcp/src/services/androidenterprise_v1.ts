@@ -1635,8 +1635,8 @@ export const acknowledgeNotificationSetEnterprises: API.OperationMethod<
   AcknowledgeNotificationSetEnterprisesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(0, __c0, 0) as any as S.Schema<AcknowledgeNotificationSetEnterprisesRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<AcknowledgeNotificationSetEnterprisesResponse>,
+  input: __S(960, __c60, 0) as any as S.Schema<AcknowledgeNotificationSetEnterprisesRequest>,
+  output: __S(976, __c61, 0) as any as S.Schema<AcknowledgeNotificationSetEnterprisesResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1650,8 +1650,8 @@ export const approveProducts: API.OperationMethod<
   ApproveProductsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(4, __c0, 4) as any as S.Schema<ApproveProductsRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<ApproveProductsResponse>,
+  input: __S(1186, __c74, 2) as any as S.Schema<ApproveProductsRequest>,
+  output: __S(1200, __c75, 0) as any as S.Schema<ApproveProductsResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1670,8 +1670,8 @@ export const completeSignupEnterprises: API.OperationMethod<
   CompleteSignupEnterprisesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(6, __c0, 6) as any as S.Schema<CompleteSignupEnterprisesRequest>,
-  output: __S(10, __c1, 2) as any as S.Schema<Enterprise>,
+  input: __S(1376, __c86, 0) as any as S.Schema<CompleteSignupEnterprisesRequest>,
+  output: __S(1395, __c87, 3) as any as S.Schema<Enterprise>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1685,8 +1685,8 @@ export const createEnrollmentTokens: API.OperationMethod<
   CreateEnrollmentTokensError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(13, __c1, 5) as any as S.Schema<CreateEnrollmentTokensRequest>,
-  output: __S(12, __c1, 4) as any as S.Schema<EnrollmentToken>,
+  input: __S(1570, __c98, 2) as any as S.Schema<CreateEnrollmentTokensRequest>,
+  output: __S(1569, __c98, 1) as any as S.Schema<EnrollmentToken>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1705,8 +1705,8 @@ export const createWebTokenEnterprises: API.OperationMethod<
   CreateWebTokenEnterprisesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(18, __c2, 2) as any as S.Schema<CreateWebTokenEnterprisesRequest>,
-  output: __S(19, __c2, 3) as any as S.Schema<AdministratorWebToken>,
+  input: __S(1619, __c101, 3) as any as S.Schema<CreateWebTokenEnterprisesRequest>,
+  output: __S(1632, __c102, 0) as any as S.Schema<AdministratorWebToken>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1720,8 +1720,8 @@ export const deleteEntitlements: API.OperationMethod<
   DeleteEntitlementsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(20, __c2, 4) as any as S.Schema<DeleteEntitlementsRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<DeleteEntitlementsResponse>,
+  input: __S(0, __c0, 0) as any as S.Schema<DeleteEntitlementsRequest>,
+  output: __S(1200, __c75, 0) as any as S.Schema<DeleteEntitlementsResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1735,8 +1735,8 @@ export const deleteInstalls: API.OperationMethod<
   DeleteInstallsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(21, __c2, 5) as any as S.Schema<DeleteInstallsRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<DeleteInstallsResponse>,
+  input: __S(16, __c1, 0) as any as S.Schema<DeleteInstallsRequest>,
+  output: __S(1200, __c75, 0) as any as S.Schema<DeleteInstallsResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1755,8 +1755,8 @@ export const deleteManagedconfigurationsfordevice: API.OperationMethod<
   DeleteManagedconfigurationsfordeviceError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(22, __c2, 6) as any as S.Schema<DeleteManagedconfigurationsfordeviceRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<DeleteManagedconfigurationsfordeviceResponse>,
+  input: __S(32, __c2, 0) as any as S.Schema<DeleteManagedconfigurationsfordeviceRequest>,
+  output: __S(976, __c61, 0) as any as S.Schema<DeleteManagedconfigurationsfordeviceResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1775,8 +1775,8 @@ export const deleteManagedconfigurationsforuser: API.OperationMethod<
   DeleteManagedconfigurationsforuserError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(23, __c2, 7) as any as S.Schema<DeleteManagedconfigurationsforuserRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<DeleteManagedconfigurationsforuserResponse>,
+  input: __S(48, __c3, 0) as any as S.Schema<DeleteManagedconfigurationsforuserRequest>,
+  output: __S(976, __c61, 0) as any as S.Schema<DeleteManagedconfigurationsforuserResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1795,8 +1795,8 @@ export const deleteServiceaccountkeys: API.OperationMethod<
   DeleteServiceaccountkeysError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(24, __c3, 0) as any as S.Schema<DeleteServiceaccountkeysRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<DeleteServiceaccountkeysResponse>,
+  input: __S(64, __c4, 0) as any as S.Schema<DeleteServiceaccountkeysRequest>,
+  output: __S(976, __c61, 0) as any as S.Schema<DeleteServiceaccountkeysResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1816,8 +1816,8 @@ export const deleteStorelayoutclusters: API.OperationMethod<
   DeleteStorelayoutclustersError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(25, __c3, 1) as any as S.Schema<DeleteStorelayoutclustersRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<DeleteStorelayoutclustersResponse>,
+  input: __S(80, __c5, 0) as any as S.Schema<DeleteStorelayoutclustersRequest>,
+  output: __S(976, __c61, 0) as any as S.Schema<DeleteStorelayoutclustersResponse>,
   errors: [
     NotFound,
     Forbidden,
@@ -1844,8 +1844,8 @@ export const deleteStorelayoutpages: API.OperationMethod<
   DeleteStorelayoutpagesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(26, __c3, 2) as any as S.Schema<DeleteStorelayoutpagesRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<DeleteStorelayoutpagesResponse>,
+  input: __S(96, __c6, 0) as any as S.Schema<DeleteStorelayoutpagesRequest>,
+  output: __S(1200, __c75, 0) as any as S.Schema<DeleteStorelayoutpagesResponse>,
   errors: [
     NotFound,
     Forbidden,
@@ -1866,8 +1866,8 @@ export const deleteUsers: API.OperationMethod<
   DeleteUsersError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(27, __c3, 3) as any as S.Schema<DeleteUsersRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<DeleteUsersResponse>,
+  input: __S(112, __c7, 0) as any as S.Schema<DeleteUsersRequest>,
+  output: __S(1200, __c75, 0) as any as S.Schema<DeleteUsersResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1887,8 +1887,8 @@ export const deleteWebapps: API.OperationMethod<
   DeleteWebappsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(28, __c3, 4) as any as S.Schema<DeleteWebappsRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<DeleteWebappsResponse>,
+  input: __S(128, __c8, 0) as any as S.Schema<DeleteWebappsRequest>,
+  output: __S(1200, __c75, 0) as any as S.Schema<DeleteWebappsResponse>,
   errors: [
     NotFound,
     Forbidden,
@@ -1909,8 +1909,8 @@ export const enrollEnterprises: API.OperationMethod<
   EnrollEnterprisesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(29, __c3, 5) as any as S.Schema<EnrollEnterprisesRequest>,
-  output: __S(10, __c1, 2) as any as S.Schema<Enterprise>,
+  input: __S(144, __c9, 0) as any as S.Schema<EnrollEnterprisesRequest>,
+  output: __S(1395, __c87, 3) as any as S.Schema<Enterprise>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1929,8 +1929,8 @@ export const forceReportUploadDevices: API.OperationMethod<
   ForceReportUploadDevicesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(30, __c3, 6) as any as S.Schema<ForceReportUploadDevicesRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<ForceReportUploadDevicesResponse>,
+  input: __S(160, __c10, 0) as any as S.Schema<ForceReportUploadDevicesRequest>,
+  output: __S(976, __c61, 0) as any as S.Schema<ForceReportUploadDevicesResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1949,8 +1949,8 @@ export const generateApprovalUrlProducts: API.OperationMethod<
   GenerateApprovalUrlProductsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(31, __c3, 7) as any as S.Schema<GenerateApprovalUrlProductsRequest>,
-  output: __S(32, __c4, 0) as any as S.Schema<ProductsGenerateApprovalUrlResponse>,
+  input: __S(176, __c11, 0) as any as S.Schema<GenerateApprovalUrlProductsRequest>,
+  output: __S(192, __c12, 0) as any as S.Schema<ProductsGenerateApprovalUrlResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1969,8 +1969,8 @@ export const generateAuthenticationTokenUsers: API.OperationMethod<
   GenerateAuthenticationTokenUsersError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(33, __c4, 1) as any as S.Schema<GenerateAuthenticationTokenUsersRequest>,
-  output: __S(19, __c2, 3) as any as S.Schema<AuthenticationToken>,
+  input: __S(208, __c13, 0) as any as S.Schema<GenerateAuthenticationTokenUsersRequest>,
+  output: __S(1632, __c102, 0) as any as S.Schema<AuthenticationToken>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1989,8 +1989,8 @@ export const generateEnterpriseUpgradeUrlEnterprises: API.OperationMethod<
   GenerateEnterpriseUpgradeUrlEnterprisesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(35, __c4, 3) as any as S.Schema<GenerateEnterpriseUpgradeUrlEnterprisesRequest>,
-  output: __S(32, __c4, 0) as any as S.Schema<GenerateEnterpriseUpgradeUrlResponse>,
+  input: __S(224, __c14, 0) as any as S.Schema<GenerateEnterpriseUpgradeUrlEnterprisesRequest>,
+  output: __S(192, __c12, 0) as any as S.Schema<GenerateEnterpriseUpgradeUrlResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2009,8 +2009,8 @@ export const generateSignupUrlEnterprises: API.OperationMethod<
   GenerateSignupUrlEnterprisesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(36, __c4, 4) as any as S.Schema<GenerateSignupUrlEnterprisesRequest>,
-  output: __S(37, __c4, 5) as any as S.Schema<SignupInfo>,
+  input: __S(256, __c16, 0) as any as S.Schema<GenerateSignupUrlEnterprisesRequest>,
+  output: __S(257, __c16, 1) as any as S.Schema<SignupInfo>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2024,8 +2024,8 @@ export const getAppRestrictionsSchemaProducts: API.OperationMethod<
   GetAppRestrictionsSchemaProductsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(38, __c4, 6) as any as S.Schema<GetAppRestrictionsSchemaProductsRequest>,
-  output: __S(42, __c5, 2) as any as S.Schema<AppRestrictionsSchema>,
+  input: __S(272, __c17, 0) as any as S.Schema<GetAppRestrictionsSchemaProductsRequest>,
+  output: __S(291, __c18, 3) as any as S.Schema<AppRestrictionsSchema>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2039,8 +2039,8 @@ export const getAvailableProductSetUsers: API.OperationMethod<
   GetAvailableProductSetUsersError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(43, __c5, 3) as any as S.Schema<GetAvailableProductSetUsersRequest>,
-  output: __S(46, __c5, 6) as any as S.Schema<ProductSet>,
+  input: __S(304, __c19, 0) as any as S.Schema<GetAvailableProductSetUsersRequest>,
+  output: __S(322, __c20, 2) as any as S.Schema<ProductSet>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2054,8 +2054,8 @@ export const getDevices: API.OperationMethod<
   GetDevicesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(47, __c5, 7) as any as S.Schema<GetDevicesRequest>,
-  output: __S(70, __c8, 6) as any as S.Schema<Device>,
+  input: __S(336, __c21, 0) as any as S.Schema<GetDevicesRequest>,
+  output: __S(393, __c24, 9) as any as S.Schema<Device>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2073,8 +2073,8 @@ export const getEnterprises: API.OperationMethod<
   GetEnterprisesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(71, __c8, 7) as any as S.Schema<GetEnterprisesRequest>,
-  output: __S(10, __c1, 2) as any as S.Schema<Enterprise>,
+  input: __S(400, __c25, 0) as any as S.Schema<GetEnterprisesRequest>,
+  output: __S(1395, __c87, 3) as any as S.Schema<Enterprise>,
   errors: [NotFound, Forbidden, InsufficientAuthenticationScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2088,8 +2088,8 @@ export const getEntitlements: API.OperationMethod<
   GetEntitlementsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(72, __c9, 0) as any as S.Schema<GetEntitlementsRequest>,
-  output: __S(73, __c9, 1) as any as S.Schema<Entitlement>,
+  input: __S(416, __c26, 0) as any as S.Schema<GetEntitlementsRequest>,
+  output: __S(432, __c27, 0) as any as S.Schema<Entitlement>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2103,8 +2103,8 @@ export const getGrouplicenses: API.OperationMethod<
   GetGrouplicensesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(74, __c9, 2) as any as S.Schema<GetGrouplicensesRequest>,
-  output: __S(75, __c9, 3) as any as S.Schema<GroupLicense>,
+  input: __S(448, __c28, 0) as any as S.Schema<GetGrouplicensesRequest>,
+  output: __S(464, __c29, 0) as any as S.Schema<GroupLicense>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2118,8 +2118,8 @@ export const getInstalls: API.OperationMethod<
   GetInstallsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(76, __c9, 4) as any as S.Schema<GetInstallsRequest>,
-  output: __S(77, __c9, 5) as any as S.Schema<Install>,
+  input: __S(480, __c30, 0) as any as S.Schema<GetInstallsRequest>,
+  output: __S(496, __c31, 0) as any as S.Schema<Install>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2133,8 +2133,8 @@ export const getManagedconfigurationsfordevice: API.OperationMethod<
   GetManagedconfigurationsfordeviceError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(78, __c9, 6) as any as S.Schema<GetManagedconfigurationsfordeviceRequest>,
-  output: __S(61, __c7, 5) as any as S.Schema<ManagedConfiguration>,
+  input: __S(512, __c32, 0) as any as S.Schema<GetManagedconfigurationsfordeviceRequest>,
+  output: __S(359, __c22, 7) as any as S.Schema<ManagedConfiguration>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2148,8 +2148,8 @@ export const getManagedconfigurationsforuser: API.OperationMethod<
   GetManagedconfigurationsforuserError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(79, __c9, 7) as any as S.Schema<GetManagedconfigurationsforuserRequest>,
-  output: __S(61, __c7, 5) as any as S.Schema<ManagedConfiguration>,
+  input: __S(528, __c33, 0) as any as S.Schema<GetManagedconfigurationsforuserRequest>,
+  output: __S(359, __c22, 7) as any as S.Schema<ManagedConfiguration>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2163,8 +2163,8 @@ export const getPermissions: API.OperationMethod<
   GetPermissionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(80, __c10, 0) as any as S.Schema<GetPermissionsRequest>,
-  output: __S(81, __c10, 1) as any as S.Schema<Permission>,
+  input: __S(544, __c34, 0) as any as S.Schema<GetPermissionsRequest>,
+  output: __S(545, __c34, 1) as any as S.Schema<Permission>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2178,8 +2178,8 @@ export const getPermissionsProducts: API.OperationMethod<
   GetPermissionsProductsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(82, __c10, 2) as any as S.Schema<GetPermissionsProductsRequest>,
-  output: __S(85, __c10, 5) as any as S.Schema<ProductPermissions>,
+  input: __S(560, __c35, 0) as any as S.Schema<GetPermissionsProductsRequest>,
+  output: __S(561, __c35, 1) as any as S.Schema<ProductPermissions>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2193,8 +2193,8 @@ export const getProducts: API.OperationMethod<
   GetProductsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(86, __c10, 6) as any as S.Schema<GetProductsRequest>,
-  output: __S(92, __c11, 4) as any as S.Schema<Product>,
+  input: __S(592, __c37, 0) as any as S.Schema<GetProductsRequest>,
+  output: __S(613, __c38, 5) as any as S.Schema<Product>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2208,8 +2208,8 @@ export const getServiceAccountEnterprises: API.OperationMethod<
   GetServiceAccountEnterprisesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(93, __c11, 5) as any as S.Schema<GetServiceAccountEnterprisesRequest>,
-  output: __S(95, __c11, 7) as any as S.Schema<ServiceAccount>,
+  input: __S(624, __c39, 0) as any as S.Schema<GetServiceAccountEnterprisesRequest>,
+  output: __S(625, __c39, 1) as any as S.Schema<ServiceAccount>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2223,8 +2223,8 @@ export const getStateDevices: API.OperationMethod<
   GetStateDevicesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(96, __c12, 0) as any as S.Schema<GetStateDevicesRequest>,
-  output: __S(97, __c12, 1) as any as S.Schema<DeviceState>,
+  input: __S(656, __c41, 0) as any as S.Schema<GetStateDevicesRequest>,
+  output: __S(672, __c42, 0) as any as S.Schema<DeviceState>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2242,8 +2242,8 @@ export const getStorelayoutclusters: API.OperationMethod<
   GetStorelayoutclustersError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(98, __c12, 2) as any as S.Schema<GetStorelayoutclustersRequest>,
-  output: __S(101, __c12, 5) as any as S.Schema<StoreCluster>,
+  input: __S(688, __c43, 0) as any as S.Schema<GetStorelayoutclustersRequest>,
+  output: __S(720, __c45, 0) as any as S.Schema<StoreCluster>,
   errors: [NotFound, Forbidden, InsufficientAuthenticationScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2257,8 +2257,8 @@ export const getStoreLayoutEnterprises: API.OperationMethod<
   GetStoreLayoutEnterprisesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(102, __c12, 6) as any as S.Schema<GetStoreLayoutEnterprisesRequest>,
-  output: __S(103, __c12, 7) as any as S.Schema<StoreLayout>,
+  input: __S(736, __c46, 0) as any as S.Schema<GetStoreLayoutEnterprisesRequest>,
+  output: __S(752, __c47, 0) as any as S.Schema<StoreLayout>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2276,8 +2276,8 @@ export const getStorelayoutpages: API.OperationMethod<
   GetStorelayoutpagesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(104, __c13, 0) as any as S.Schema<GetStorelayoutpagesRequest>,
-  output: __S(105, __c13, 1) as any as S.Schema<StorePage>,
+  input: __S(768, __c48, 0) as any as S.Schema<GetStorelayoutpagesRequest>,
+  output: __S(784, __c49, 0) as any as S.Schema<StorePage>,
   errors: [NotFound, Forbidden, InsufficientAuthenticationScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2287,8 +2287,8 @@ export type GetUsersError = NotFound | Forbidden | GcpOpError;
 /** Retrieves a user's details. */
 export const getUsers: API.OperationMethod<GetUsersRequest, User, GetUsersError, GcpOpContext> =
   /*@__PURE__*/ API.make(() => ({
-    input: __S(106, __c13, 2) as any as S.Schema<GetUsersRequest>,
-    output: __S(107, __c13, 3) as any as S.Schema<User>,
+    input: __S(800, __c50, 0) as any as S.Schema<GetUsersRequest>,
+    output: __S(816, __c51, 0) as any as S.Schema<User>,
     errors: [NotFound, Forbidden, UnknownGCPError],
     protocol: GcpProtocol,
     retry: Retry.Retry,
@@ -2302,8 +2302,8 @@ export const getWebapps: API.OperationMethod<
   GetWebappsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(108, __c13, 4) as any as S.Schema<GetWebappsRequest>,
-  output: __S(111, __c13, 7) as any as S.Schema<WebApp>,
+  input: __S(832, __c52, 0) as any as S.Schema<GetWebappsRequest>,
+  output: __S(850, __c53, 2) as any as S.Schema<WebApp>,
   errors: [NotFound, Forbidden, InsufficientAuthenticationScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2322,8 +2322,8 @@ export const insertServiceaccountkeys: API.OperationMethod<
   InsertServiceaccountkeysError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(112, __c14, 0) as any as S.Schema<InsertServiceaccountkeysRequest>,
-  output: __S(94, __c11, 6) as any as S.Schema<ServiceAccountKey>,
+  input: __S(864, __c54, 0) as any as S.Schema<InsertServiceaccountkeysRequest>,
+  output: __S(640, __c40, 0) as any as S.Schema<ServiceAccountKey>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2343,8 +2343,8 @@ export const insertStorelayoutclusters: API.OperationMethod<
   InsertStorelayoutclustersError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(113, __c14, 1) as any as S.Schema<InsertStorelayoutclustersRequest>,
-  output: __S(101, __c12, 5) as any as S.Schema<StoreCluster>,
+  input: __S(880, __c55, 0) as any as S.Schema<InsertStorelayoutclustersRequest>,
+  output: __S(720, __c45, 0) as any as S.Schema<StoreCluster>,
   errors: [
     NotFound,
     Forbidden,
@@ -2371,8 +2371,8 @@ export const insertStorelayoutpages: API.OperationMethod<
   InsertStorelayoutpagesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(114, __c14, 2) as any as S.Schema<InsertStorelayoutpagesRequest>,
-  output: __S(105, __c13, 1) as any as S.Schema<StorePage>,
+  input: __S(896, __c56, 0) as any as S.Schema<InsertStorelayoutpagesRequest>,
+  output: __S(784, __c49, 0) as any as S.Schema<StorePage>,
   errors: [
     NotFound,
     Forbidden,
@@ -2393,8 +2393,8 @@ export const insertUsers: API.OperationMethod<
   InsertUsersError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(115, __c14, 3) as any as S.Schema<InsertUsersRequest>,
-  output: __S(107, __c13, 3) as any as S.Schema<User>,
+  input: __S(912, __c57, 0) as any as S.Schema<InsertUsersRequest>,
+  output: __S(816, __c51, 0) as any as S.Schema<User>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2414,8 +2414,8 @@ export const insertWebapps: API.OperationMethod<
   InsertWebappsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(116, __c14, 4) as any as S.Schema<InsertWebappsRequest>,
-  output: __S(111, __c13, 7) as any as S.Schema<WebApp>,
+  input: __S(928, __c58, 0) as any as S.Schema<InsertWebappsRequest>,
+  output: __S(850, __c53, 2) as any as S.Schema<WebApp>,
   errors: [
     NotFound,
     Forbidden,
@@ -2436,8 +2436,8 @@ export const listDevices: API.OperationMethod<
   ListDevicesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(117, __c14, 5) as any as S.Schema<ListDevicesRequest>,
-  output: __S(119, __c14, 7) as any as S.Schema<DevicesListResponse>,
+  input: __S(944, __c59, 0) as any as S.Schema<ListDevicesRequest>,
+  output: __S(946, __c59, 2) as any as S.Schema<DevicesListResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2455,8 +2455,8 @@ export const listEnterprises: API.OperationMethod<
   ListEnterprisesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(120, __c15, 0) as any as S.Schema<ListEnterprisesRequest>,
-  output: __S(122, __c15, 2) as any as S.Schema<EnterprisesListResponse>,
+  input: __S(992, __c62, 0) as any as S.Schema<ListEnterprisesRequest>,
+  output: __S(994, __c62, 2) as any as S.Schema<EnterprisesListResponse>,
   errors: [NotFound, Forbidden, InsufficientAuthenticationScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2470,8 +2470,8 @@ export const listEntitlements: API.OperationMethod<
   ListEntitlementsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(123, __c15, 3) as any as S.Schema<ListEntitlementsRequest>,
-  output: __S(125, __c15, 5) as any as S.Schema<EntitlementsListResponse>,
+  input: __S(1008, __c63, 0) as any as S.Schema<ListEntitlementsRequest>,
+  output: __S(1010, __c63, 2) as any as S.Schema<EntitlementsListResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2485,8 +2485,8 @@ export const listGrouplicenses: API.OperationMethod<
   ListGrouplicensesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(126, __c15, 6) as any as S.Schema<ListGrouplicensesRequest>,
-  output: __S(128, __c16, 0) as any as S.Schema<GroupLicensesListResponse>,
+  input: __S(1024, __c64, 0) as any as S.Schema<ListGrouplicensesRequest>,
+  output: __S(1026, __c64, 2) as any as S.Schema<GroupLicensesListResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2500,8 +2500,8 @@ export const listGrouplicenseusers: API.OperationMethod<
   ListGrouplicenseusersError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(129, __c16, 1) as any as S.Schema<ListGrouplicenseusersRequest>,
-  output: __S(131, __c16, 3) as any as S.Schema<GroupLicenseUsersListResponse>,
+  input: __S(1040, __c65, 0) as any as S.Schema<ListGrouplicenseusersRequest>,
+  output: __S(1041, __c65, 1) as any as S.Schema<GroupLicenseUsersListResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2515,8 +2515,8 @@ export const listInstalls: API.OperationMethod<
   ListInstallsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(132, __c16, 4) as any as S.Schema<ListInstallsRequest>,
-  output: __S(134, __c16, 6) as any as S.Schema<InstallsListResponse>,
+  input: __S(1072, __c67, 0) as any as S.Schema<ListInstallsRequest>,
+  output: __S(1074, __c67, 2) as any as S.Schema<InstallsListResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2530,8 +2530,8 @@ export const listManagedconfigurationsfordevice: API.OperationMethod<
   ListManagedconfigurationsfordeviceError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(135, __c16, 7) as any as S.Schema<ListManagedconfigurationsfordeviceRequest>,
-  output: __S(137, __c17, 1) as any as S.Schema<ManagedConfigurationsForDeviceListResponse>,
+  input: __S(1088, __c68, 0) as any as S.Schema<ListManagedconfigurationsfordeviceRequest>,
+  output: __S(1089, __c68, 1) as any as S.Schema<ManagedConfigurationsForDeviceListResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2545,8 +2545,8 @@ export const listManagedconfigurationsforuser: API.OperationMethod<
   ListManagedconfigurationsforuserError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(138, __c17, 2) as any as S.Schema<ListManagedconfigurationsforuserRequest>,
-  output: __S(139, __c17, 3) as any as S.Schema<ManagedConfigurationsForUserListResponse>,
+  input: __S(1120, __c70, 0) as any as S.Schema<ListManagedconfigurationsforuserRequest>,
+  output: __S(1121, __c70, 1) as any as S.Schema<ManagedConfigurationsForUserListResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2560,8 +2560,8 @@ export const listManagedconfigurationssettings: API.OperationMethod<
   ListManagedconfigurationssettingsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(140, __c17, 4) as any as S.Schema<ListManagedconfigurationssettingsRequest>,
-  output: __S(143, __c17, 7) as any as S.Schema<ManagedConfigurationsSettingsListResponse>,
+  input: __S(1136, __c71, 0) as any as S.Schema<ListManagedconfigurationssettingsRequest>,
+  output: __S(1139, __c71, 3) as any as S.Schema<ManagedConfigurationsSettingsListResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2575,8 +2575,8 @@ export const listProducts: API.OperationMethod<
   ListProductsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(144, __c18, 0) as any as S.Schema<ListProductsRequest>,
-  output: __S(148, __c18, 4) as any as S.Schema<ProductsListResponse>,
+  input: __S(1152, __c72, 0) as any as S.Schema<ListProductsRequest>,
+  output: __S(1156, __c72, 4) as any as S.Schema<ProductsListResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2590,8 +2590,8 @@ export const listServiceaccountkeys: API.OperationMethod<
   ListServiceaccountkeysError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(149, __c18, 5) as any as S.Schema<ListServiceaccountkeysRequest>,
-  output: __S(151, __c18, 7) as any as S.Schema<ServiceAccountKeysListResponse>,
+  input: __S(1168, __c73, 0) as any as S.Schema<ListServiceaccountkeysRequest>,
+  output: __S(1170, __c73, 2) as any as S.Schema<ServiceAccountKeysListResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2609,8 +2609,8 @@ export const listStorelayoutclusters: API.OperationMethod<
   ListStorelayoutclustersError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(152, __c19, 0) as any as S.Schema<ListStorelayoutclustersRequest>,
-  output: __S(154, __c19, 2) as any as S.Schema<StoreLayoutClustersListResponse>,
+  input: __S(1216, __c76, 0) as any as S.Schema<ListStorelayoutclustersRequest>,
+  output: __S(1218, __c76, 2) as any as S.Schema<StoreLayoutClustersListResponse>,
   errors: [NotFound, Forbidden, InsufficientAuthenticationScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2628,8 +2628,8 @@ export const listStorelayoutpages: API.OperationMethod<
   ListStorelayoutpagesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(155, __c19, 3) as any as S.Schema<ListStorelayoutpagesRequest>,
-  output: __S(157, __c19, 5) as any as S.Schema<StoreLayoutPagesListResponse>,
+  input: __S(1232, __c77, 0) as any as S.Schema<ListStorelayoutpagesRequest>,
+  output: __S(1234, __c77, 2) as any as S.Schema<StoreLayoutPagesListResponse>,
   errors: [NotFound, Forbidden, InsufficientAuthenticationScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2643,8 +2643,8 @@ export const listUsers: API.OperationMethod<
   ListUsersError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(158, __c19, 6) as any as S.Schema<ListUsersRequest>,
-  output: __S(159, __c19, 7) as any as S.Schema<UsersListResponse>,
+  input: __S(1248, __c78, 0) as any as S.Schema<ListUsersRequest>,
+  output: __S(1249, __c78, 1) as any as S.Schema<UsersListResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2658,8 +2658,8 @@ export const listWebapps: API.OperationMethod<
   ListWebappsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(160, __c20, 0) as any as S.Schema<ListWebappsRequest>,
-  output: __S(162, __c20, 2) as any as S.Schema<WebAppsListResponse>,
+  input: __S(1264, __c79, 0) as any as S.Schema<ListWebappsRequest>,
+  output: __S(1266, __c79, 2) as any as S.Schema<WebAppsListResponse>,
   errors: [NotFound, Forbidden, InsufficientAuthenticationScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2678,8 +2678,8 @@ export const pullNotificationSetEnterprises: API.OperationMethod<
   PullNotificationSetEnterprisesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(163, __c20, 3) as any as S.Schema<PullNotificationSetEnterprisesRequest>,
-  output: __S(175, __c21, 7) as any as S.Schema<NotificationSet>,
+  input: __S(1280, __c80, 0) as any as S.Schema<PullNotificationSetEnterprisesRequest>,
+  output: __S(1292, __c80, 12) as any as S.Schema<NotificationSet>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2698,8 +2698,8 @@ export const revokeDeviceAccessUsers: API.OperationMethod<
   RevokeDeviceAccessUsersError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(176, __c22, 0) as any as S.Schema<RevokeDeviceAccessUsersRequest>,
-  output: __S(177, __c22, 1) as any as S.Schema<RevokeDeviceAccessUsersResponse>,
+  input: __S(1296, __c81, 0) as any as S.Schema<RevokeDeviceAccessUsersRequest>,
+  output: __S(1297, __c81, 1) as any as S.Schema<RevokeDeviceAccessUsersResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2718,8 +2718,8 @@ export const sendTestPushNotificationEnterprises: API.OperationMethod<
   SendTestPushNotificationEnterprisesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(178, __c22, 2) as any as S.Schema<SendTestPushNotificationEnterprisesRequest>,
-  output: __S(179, __c22, 3) as any as S.Schema<EnterprisesSendTestPushNotificationResponse>,
+  input: __S(1312, __c82, 0) as any as S.Schema<SendTestPushNotificationEnterprisesRequest>,
+  output: __S(1313, __c82, 1) as any as S.Schema<EnterprisesSendTestPushNotificationResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2733,8 +2733,8 @@ export const setAccountEnterprises: API.OperationMethod<
   SetAccountEnterprisesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(181, __c22, 5) as any as S.Schema<SetAccountEnterprisesRequest>,
-  output: __S(180, __c22, 4) as any as S.Schema<EnterpriseAccount>,
+  input: __S(1329, __c83, 1) as any as S.Schema<SetAccountEnterprisesRequest>,
+  output: __S(1328, __c83, 0) as any as S.Schema<EnterpriseAccount>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2753,8 +2753,8 @@ export const setAvailableProductSetUsers: API.OperationMethod<
   SetAvailableProductSetUsersError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(182, __c22, 6) as any as S.Schema<SetAvailableProductSetUsersRequest>,
-  output: __S(46, __c5, 6) as any as S.Schema<ProductSet>,
+  input: __S(1344, __c84, 0) as any as S.Schema<SetAvailableProductSetUsersRequest>,
+  output: __S(322, __c20, 2) as any as S.Schema<ProductSet>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2768,8 +2768,8 @@ export const setStateDevices: API.OperationMethod<
   SetStateDevicesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(183, __c22, 7) as any as S.Schema<SetStateDevicesRequest>,
-  output: __S(97, __c12, 1) as any as S.Schema<DeviceState>,
+  input: __S(1360, __c85, 0) as any as S.Schema<SetStateDevicesRequest>,
+  output: __S(672, __c42, 0) as any as S.Schema<DeviceState>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2788,8 +2788,8 @@ export const setStoreLayoutEnterprises: API.OperationMethod<
   SetStoreLayoutEnterprisesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(184, __c23, 0) as any as S.Schema<SetStoreLayoutEnterprisesRequest>,
-  output: __S(103, __c12, 7) as any as S.Schema<StoreLayout>,
+  input: __S(1408, __c88, 0) as any as S.Schema<SetStoreLayoutEnterprisesRequest>,
+  output: __S(752, __c47, 0) as any as S.Schema<StoreLayout>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2803,8 +2803,8 @@ export const unapproveProducts: API.OperationMethod<
   UnapproveProductsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(185, __c23, 1) as any as S.Schema<UnapproveProductsRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<UnapproveProductsResponse>,
+  input: __S(1424, __c89, 0) as any as S.Schema<UnapproveProductsRequest>,
+  output: __S(1200, __c75, 0) as any as S.Schema<UnapproveProductsResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2818,8 +2818,8 @@ export const unenrollEnterprises: API.OperationMethod<
   UnenrollEnterprisesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(186, __c23, 2) as any as S.Schema<UnenrollEnterprisesRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<UnenrollEnterprisesResponse>,
+  input: __S(1440, __c90, 0) as any as S.Schema<UnenrollEnterprisesRequest>,
+  output: __S(1200, __c75, 0) as any as S.Schema<UnenrollEnterprisesResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2833,8 +2833,8 @@ export const updateDevices: API.OperationMethod<
   UpdateDevicesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(187, __c23, 3) as any as S.Schema<UpdateDevicesRequest>,
-  output: __S(70, __c8, 6) as any as S.Schema<Device>,
+  input: __S(1456, __c91, 0) as any as S.Schema<UpdateDevicesRequest>,
+  output: __S(393, __c24, 9) as any as S.Schema<Device>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2848,8 +2848,8 @@ export const updateEntitlements: API.OperationMethod<
   UpdateEntitlementsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(188, __c23, 4) as any as S.Schema<UpdateEntitlementsRequest>,
-  output: __S(73, __c9, 1) as any as S.Schema<Entitlement>,
+  input: __S(1472, __c92, 0) as any as S.Schema<UpdateEntitlementsRequest>,
+  output: __S(432, __c27, 0) as any as S.Schema<Entitlement>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2863,8 +2863,8 @@ export const updateInstalls: API.OperationMethod<
   UpdateInstallsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(189, __c23, 5) as any as S.Schema<UpdateInstallsRequest>,
-  output: __S(77, __c9, 5) as any as S.Schema<Install>,
+  input: __S(1488, __c93, 0) as any as S.Schema<UpdateInstallsRequest>,
+  output: __S(496, __c31, 0) as any as S.Schema<Install>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2883,8 +2883,8 @@ export const updateManagedconfigurationsfordevice: API.OperationMethod<
   UpdateManagedconfigurationsfordeviceError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(190, __c23, 6) as any as S.Schema<UpdateManagedconfigurationsfordeviceRequest>,
-  output: __S(61, __c7, 5) as any as S.Schema<ManagedConfiguration>,
+  input: __S(1504, __c94, 0) as any as S.Schema<UpdateManagedconfigurationsfordeviceRequest>,
+  output: __S(359, __c22, 7) as any as S.Schema<ManagedConfiguration>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2903,8 +2903,8 @@ export const updateManagedconfigurationsforuser: API.OperationMethod<
   UpdateManagedconfigurationsforuserError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(191, __c23, 7) as any as S.Schema<UpdateManagedconfigurationsforuserRequest>,
-  output: __S(61, __c7, 5) as any as S.Schema<ManagedConfiguration>,
+  input: __S(1520, __c95, 0) as any as S.Schema<UpdateManagedconfigurationsforuserRequest>,
+  output: __S(359, __c22, 7) as any as S.Schema<ManagedConfiguration>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2924,8 +2924,8 @@ export const updateStorelayoutclusters: API.OperationMethod<
   UpdateStorelayoutclustersError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(192, __c24, 0) as any as S.Schema<UpdateStorelayoutclustersRequest>,
-  output: __S(101, __c12, 5) as any as S.Schema<StoreCluster>,
+  input: __S(1536, __c96, 0) as any as S.Schema<UpdateStorelayoutclustersRequest>,
+  output: __S(720, __c45, 0) as any as S.Schema<StoreCluster>,
   errors: [
     NotFound,
     Forbidden,
@@ -2952,8 +2952,8 @@ export const updateStorelayoutpages: API.OperationMethod<
   UpdateStorelayoutpagesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(193, __c24, 1) as any as S.Schema<UpdateStorelayoutpagesRequest>,
-  output: __S(105, __c13, 1) as any as S.Schema<StorePage>,
+  input: __S(1552, __c97, 0) as any as S.Schema<UpdateStorelayoutpagesRequest>,
+  output: __S(784, __c49, 0) as any as S.Schema<StorePage>,
   errors: [
     NotFound,
     Forbidden,
@@ -2974,8 +2974,8 @@ export const updateUsers: API.OperationMethod<
   UpdateUsersError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(194, __c24, 2) as any as S.Schema<UpdateUsersRequest>,
-  output: __S(107, __c13, 3) as any as S.Schema<User>,
+  input: __S(1584, __c99, 0) as any as S.Schema<UpdateUsersRequest>,
+  output: __S(816, __c51, 0) as any as S.Schema<User>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2995,8 +2995,8 @@ export const updateWebapps: API.OperationMethod<
   UpdateWebappsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(195, __c24, 3) as any as S.Schema<UpdateWebappsRequest>,
-  output: __S(111, __c13, 7) as any as S.Schema<WebApp>,
+  input: __S(1600, __c100, 0) as any as S.Schema<UpdateWebappsRequest>,
+  output: __S(850, __c53, 2) as any as S.Schema<WebApp>,
   errors: [
     NotFound,
     Forbidden,
@@ -3015,194 +3015,6 @@ function __c0(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          notificationSetId: S.optional(S.String.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "androidenterprise/v1/enterprises/acknowledgeNotificationSet",
-            baseUrl: "https://androidenterprise.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "AcknowledgeNotificationSetEnterprisesRequest",
-      });
-    case 1:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "AcknowledgeNotificationSetEnterprisesResponse",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          approvalUrl: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ApprovalUrlInfo" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          approvalUrlInfo: S.optional(__S(2, __c0, 2)),
-          approvedPermissions: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ProductsApproveRequest" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          enterpriseId: S.String.pipe(T.Label()),
-          productId: S.String.pipe(T.Label()),
-          body: S.optional(__S(3, __c0, 3).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "androidenterprise/v1/enterprises/{enterpriseId}/products/{productId}/approve",
-            baseUrl: "https://androidenterprise.googleapis.com/",
-          }),
-        ),
-      ).annotate({ identifier: "ApproveProductsRequest" });
-    case 5:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "ApproveProductsResponse",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          completionToken: S.optional(S.String.pipe(T.Query())),
-          enterpriseToken: S.optional(S.String.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "androidenterprise/v1/enterprises/completeSignup",
-            baseUrl: "https://androidenterprise.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "CompleteSignupEnterprisesRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          email: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Administrator" });
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(7, __c0, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          googleAuthenticationRequired: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleAuthenticationSettings",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          administrator: S.optional(__S(8, __c1, 0)),
-          id: S.optional(S.String),
-          primaryDomain: S.optional(S.String),
-          googleAuthenticationSettings: S.optional(__S(9, __c1, 1)),
-          managedGoogleDomainType: S.optional(S.String),
-          name: S.optional(S.String),
-          enterpriseType: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Enterprise" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          requiredAccountEmail: S.optional(S.String),
-          authenticationRequirement: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "EnrollmentTokenGoogleAuthenticationOptions",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          enrollmentTokenType: S.optional(S.String),
-          duration: S.optional(S.String),
-          token: S.optional(S.String),
-          googleAuthenticationOptions: S.optional(__S(11, __c1, 3)),
-        }),
-      ).annotate({ identifier: "EnrollmentToken" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          enterpriseId: S.String.pipe(T.Label()),
-          body: S.optional(__S(12, __c1, 4).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "androidenterprise/v1/enterprises/{enterpriseId}/enrollmentTokens",
-            baseUrl: "https://androidenterprise.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateEnrollmentTokensRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          enabled: S.optional(S.Boolean),
-        }),
-      ).annotate({
-        identifier: "AdministratorWebTokenSpecPrivateApps",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          enabled: S.optional(S.Boolean),
-          approveApps: S.optional(S.Boolean),
-        }),
-      ).annotate({
-        identifier: "AdministratorWebTokenSpecPlaySearch",
-      });
-  }
-}
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(S.String);
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          privateApps: S.optional(__S(14, __c1, 6)),
-          parent: S.optional(S.String),
-          zeroTouch: S.optional(__S(14, __c1, 6)),
-          managedConfigurations: S.optional(__S(14, __c1, 6)),
-          playSearch: S.optional(__S(15, __c1, 7)),
-          storeBuilder: S.optional(__S(14, __c1, 6)),
-          webApps: S.optional(__S(14, __c1, 6)),
-          permission: S.optional(__S(16, __c2, 0)),
-        }),
-      ).annotate({
-        identifier: "AdministratorWebTokenSpec",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          enterpriseId: S.String.pipe(T.Label()),
-          body: S.optional(__S(17, __c2, 1).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "androidenterprise/v1/enterprises/{enterpriseId}/createWebToken",
-            baseUrl: "https://androidenterprise.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateWebTokenEnterprisesRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          token: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "AdministratorWebToken" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
           userId: S.String.pipe(T.Label()),
           enterpriseId: S.String.pipe(T.Label()),
           entitlementId: S.String.pipe(T.Label()),
@@ -3216,7 +3028,11 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "DeleteEntitlementsRequest",
       });
-    case 5:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           deviceId: S.String.pipe(T.Label()),
@@ -3231,7 +3047,11 @@ function __c2(j: number): any {
           }),
         ),
       ).annotate({ identifier: "DeleteInstallsRequest" });
-    case 6:
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           enterpriseId: S.String.pipe(T.Label()),
@@ -3248,7 +3068,11 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "DeleteManagedconfigurationsfordeviceRequest",
       });
-    case 7:
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           userId: S.String.pipe(T.Label()),
@@ -3266,7 +3090,7 @@ function __c2(j: number): any {
       });
   }
 }
-function __c3(j: number): any {
+function __c4(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3283,7 +3107,11 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "DeleteServiceaccountkeysRequest",
       });
-    case 1:
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           pageId: S.String.pipe(T.Label()),
@@ -3299,7 +3127,11 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "DeleteStorelayoutclustersRequest",
       });
-    case 2:
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           pageId: S.String.pipe(T.Label()),
@@ -3314,7 +3146,11 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "DeleteStorelayoutpagesRequest",
       });
-    case 3:
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           enterpriseId: S.String.pipe(T.Label()),
@@ -3327,7 +3163,11 @@ function __c3(j: number): any {
           }),
         ),
       ).annotate({ identifier: "DeleteUsersRequest" });
-    case 4:
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           enterpriseId: S.String.pipe(T.Label()),
@@ -3340,11 +3180,15 @@ function __c3(j: number): any {
           }),
         ),
       ).annotate({ identifier: "DeleteWebappsRequest" });
-    case 5:
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           token: S.String.pipe(T.Query()),
-          body: S.optional(__S(10, __c1, 2).pipe(T.HttpBody())),
+          body: S.optional(__S(1395, __c87, 3).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -3353,7 +3197,11 @@ function __c3(j: number): any {
           }),
         ),
       ).annotate({ identifier: "EnrollEnterprisesRequest" });
-    case 6:
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           deviceId: S.String.pipe(T.Label()),
@@ -3369,7 +3217,11 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "ForceReportUploadDevicesRequest",
       });
-    case 7:
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           productId: S.String.pipe(T.Label()),
@@ -3387,7 +3239,7 @@ function __c3(j: number): any {
       });
   }
 }
-function __c4(j: number): any {
+function __c12(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3397,7 +3249,11 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "ProductsGenerateApprovalUrlResponse",
       });
-    case 1:
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           enterpriseId: S.String.pipe(T.Label()),
@@ -3412,12 +3268,14 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "GenerateAuthenticationTokenUsersRequest",
       });
-    case 2:
-      return S.Array(S.String);
-    case 3:
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          allowedDomains: S.optional(__S(34, __c4, 2).pipe(T.Query())),
+          allowedDomains: S.optional(__S(240, __c15, 0).pipe(T.Query())),
           enterpriseId: S.String.pipe(T.Label()),
           adminEmail: S.optional(S.String.pipe(T.Query())),
         }).pipe(
@@ -3430,11 +3288,21 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "GenerateEnterpriseUpgradeUrlEnterprisesRequest",
       });
-    case 4:
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           adminEmail: S.optional(S.String.pipe(T.Query())),
-          allowedDomains: S.optional(__S(34, __c4, 2).pipe(T.Query())),
+          allowedDomains: S.optional(__S(240, __c15, 0).pipe(T.Query())),
           callbackUrl: S.optional(S.String.pipe(T.Query())),
         }).pipe(
           T.Http({
@@ -3446,7 +3314,7 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "GenerateSignupUrlEnterprisesRequest",
       });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           completionToken: S.optional(S.String),
@@ -3454,7 +3322,11 @@ function __c4(j: number): any {
           kind: S.optional(S.String),
         }),
       ).annotate({ identifier: "SignupInfo" });
-    case 6:
+  }
+}
+function __c17(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           language: S.optional(S.String.pipe(T.Query())),
@@ -3470,30 +3342,30 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "GetAppRestrictionsSchemaProductsRequest",
       });
-    case 7:
+  }
+}
+function __c18(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           valueString: S.optional(S.String),
           valueInteger: S.optional(S.Number),
           type: S.optional(S.String),
           valueBool: S.optional(S.Boolean),
-          valueMultiselect: S.optional(__S(34, __c4, 2)),
+          valueMultiselect: S.optional(__S(240, __c15, 0)),
         }),
       ).annotate({
         identifier: "AppRestrictionsSchemaRestrictionRestrictionValue",
       });
-  }
-}
-function __c5(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           restrictionType: S.optional(S.String),
-          entryValue: S.optional(__S(34, __c4, 2)),
-          entry: S.optional(__S(34, __c4, 2)),
-          nestedRestriction: S.optional(S.suspend(() => __S(41, __c5, 1))),
-          defaultValue: S.optional(__S(39, __c4, 7)),
+          entryValue: S.optional(__S(240, __c15, 0)),
+          entry: S.optional(__S(240, __c15, 0)),
+          nestedRestriction: S.optional(S.suspend(() => __S(290, __c18, 2))),
+          defaultValue: S.optional(__S(288, __c18, 0)),
           description: S.optional(S.String),
           key: S.optional(S.String),
           title: S.optional(S.String),
@@ -3501,16 +3373,20 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "AppRestrictionsSchemaRestriction",
       });
-    case 1:
-      return S.Array(__S(40, __c5, 0));
     case 2:
+      return S.Array(__S(289, __c18, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
           kind: S.optional(S.String),
-          restrictions: S.optional(__S(41, __c5, 1)),
+          restrictions: S.optional(__S(290, __c18, 2)),
         }),
       ).annotate({ identifier: "AppRestrictionsSchema" });
-    case 3:
+  }
+}
+function __c19(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           enterpriseId: S.String.pipe(T.Label()),
@@ -3525,25 +3401,33 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "GetAvailableProductSetUsersRequest",
       });
-    case 4:
+  }
+}
+function __c20(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           productId: S.optional(S.String),
-          tracks: S.optional(__S(16, __c2, 0)),
-          trackIds: S.optional(__S(34, __c4, 2)),
+          tracks: S.optional(__S(1648, __c103, 0)),
+          trackIds: S.optional(__S(240, __c15, 0)),
         }),
       ).annotate({ identifier: "ProductVisibility" });
-    case 5:
-      return S.Array(__S(44, __c5, 4));
-    case 6:
+    case 1:
+      return S.Array(__S(320, __c20, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           productSetBehavior: S.optional(S.String),
-          productVisibility: S.optional(__S(45, __c5, 5)),
-          productId: S.optional(__S(34, __c4, 2)),
+          productVisibility: S.optional(__S(321, __c20, 1)),
+          productId: S.optional(__S(240, __c15, 0)),
         }),
       ).annotate({ identifier: "ProductSet" });
-    case 7:
+  }
+}
+function __c21(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           deviceId: S.String.pipe(T.Label()),
@@ -3559,7 +3443,90 @@ function __c5(j: number): any {
       ).annotate({ identifier: "GetDevicesRequest" });
   }
 }
-function __c6(j: number): any {
+function __c22(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          managedProperty: S.optional(S.suspend(() => __S(355, __c22, 3))),
+        }),
+      ).annotate({ identifier: "ManagedPropertyBundle" });
+    case 1:
+      return S.Array(__S(352, __c22, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          valueString: S.optional(S.String),
+          valueStringArray: S.optional(__S(240, __c15, 0)),
+          key: S.optional(S.String),
+          valueBundleArray: S.optional(__S(353, __c22, 1)),
+          valueBundle: S.optional(__S(352, __c22, 0)),
+          valueBool: S.optional(S.Boolean),
+          valueInteger: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "ManagedProperty" });
+    case 3:
+      return S.Array(__S(354, __c22, 2));
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          userValue: S.optional(S.String),
+          placeholder: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "VariableSet" });
+    case 5:
+      return S.Array(__S(356, __c22, 4));
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          variableSet: S.optional(__S(357, __c22, 5)),
+          mcmId: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ConfigurationVariables" });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          productId: S.optional(S.String),
+          managedProperty: S.optional(__S(355, __c22, 3)),
+          kind: S.optional(S.String),
+          configurationVariables: S.optional(__S(358, __c22, 6)),
+        }),
+      ).annotate({ identifier: "ManagedConfiguration" });
+  }
+}
+function __c23(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          stateTimestampMillis: S.optional(S.String),
+          key: S.optional(S.String),
+          severity: S.optional(S.String),
+          message: S.optional(S.String),
+          data: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "KeyedAppState" });
+    case 1:
+      return S.Array(__S(368, __c23, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          keyedAppState: S.optional(__S(369, __c23, 1)),
+          packageName: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "AppState" });
+    case 3:
+      return S.Array(__S(370, __c23, 2));
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          lastUpdatedTimestampMillis: S.optional(S.String),
+          appState: S.optional(__S(371, __c23, 3)),
+        }),
+      ).annotate({ identifier: "DeviceReport" });
+  }
+}
+function __c24(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3577,7 +3544,7 @@ function __c6(j: number): any {
         identifier: "EnterpriseAuthenticationAppLinkConfig",
       });
     case 2:
-      return S.Array(__S(49, __c6, 1));
+      return S.Array(__S(385, __c24, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
@@ -3587,129 +3554,46 @@ function __c6(j: number): any {
         }),
       ).annotate({ identifier: "AutoInstallConstraint" });
     case 4:
-      return S.Array(__S(51, __c6, 3));
+      return S.Array(__S(387, __c24, 3));
     case 5:
       return S.suspend(() =>
         S.Struct({
           autoInstallMode: S.optional(S.String),
           autoInstallPriority: S.optional(S.Number),
-          autoInstallConstraint: S.optional(__S(52, __c6, 4)),
+          autoInstallConstraint: S.optional(__S(388, __c24, 4)),
           minimumVersionCode: S.optional(S.Number),
         }),
       ).annotate({ identifier: "AutoInstallPolicy" });
     case 6:
       return S.suspend(() =>
         S.Struct({
-          managedProperty: S.optional(S.suspend(() => __S(57, __c7, 1))),
-        }),
-      ).annotate({ identifier: "ManagedPropertyBundle" });
-    case 7:
-      return S.Array(__S(54, __c6, 6));
-  }
-}
-function __c7(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          valueString: S.optional(S.String),
-          valueStringArray: S.optional(__S(34, __c4, 2)),
-          key: S.optional(S.String),
-          valueBundleArray: S.optional(__S(55, __c6, 7)),
-          valueBundle: S.optional(__S(54, __c6, 6)),
-          valueBool: S.optional(S.Boolean),
-          valueInteger: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "ManagedProperty" });
-    case 1:
-      return S.Array(__S(56, __c7, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          userValue: S.optional(S.String),
-          placeholder: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "VariableSet" });
-    case 3:
-      return S.Array(__S(58, __c7, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          variableSet: S.optional(__S(59, __c7, 3)),
-          mcmId: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ConfigurationVariables" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
+          enterpriseAuthenticationAppLinkConfigs: S.optional(__S(386, __c24, 2)),
+          tracks: S.optional(__S(1648, __c103, 0)),
           productId: S.optional(S.String),
-          managedProperty: S.optional(__S(57, __c7, 1)),
-          kind: S.optional(S.String),
-          configurationVariables: S.optional(__S(60, __c7, 4)),
-        }),
-      ).annotate({ identifier: "ManagedConfiguration" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          enterpriseAuthenticationAppLinkConfigs: S.optional(__S(50, __c6, 2)),
-          tracks: S.optional(__S(16, __c2, 0)),
-          productId: S.optional(S.String),
-          autoInstallPolicy: S.optional(__S(53, __c6, 5)),
-          managedConfiguration: S.optional(__S(61, __c7, 5)),
-          trackIds: S.optional(__S(34, __c4, 2)),
+          autoInstallPolicy: S.optional(__S(389, __c24, 5)),
+          managedConfiguration: S.optional(__S(359, __c22, 7)),
+          trackIds: S.optional(__S(240, __c15, 0)),
           autoUpdateMode: S.optional(S.String),
         }),
       ).annotate({ identifier: "ProductPolicy" });
     case 7:
-      return S.Array(__S(62, __c7, 6));
-  }
-}
-function __c8(j: number): any {
-  switch (j) {
-    case 0:
+      return S.Array(__S(390, __c24, 6));
+    case 8:
       return S.suspend(() =>
         S.Struct({
           productAvailabilityPolicy: S.optional(S.String),
           deviceReportPolicy: S.optional(S.String),
-          maintenanceWindow: S.optional(__S(48, __c6, 0)),
+          maintenanceWindow: S.optional(__S(384, __c24, 0)),
           policyId: S.optional(S.String),
           autoUpdatePolicy: S.optional(S.String),
-          productPolicy: S.optional(__S(63, __c7, 7)),
+          productPolicy: S.optional(__S(391, __c24, 7)),
         }),
       ).annotate({ identifier: "Policy" });
-    case 1:
+    case 9:
       return S.suspend(() =>
         S.Struct({
-          stateTimestampMillis: S.optional(S.String),
-          key: S.optional(S.String),
-          severity: S.optional(S.String),
-          message: S.optional(S.String),
-          data: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "KeyedAppState" });
-    case 2:
-      return S.Array(__S(65, __c8, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          keyedAppState: S.optional(__S(66, __c8, 2)),
-          packageName: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "AppState" });
-    case 4:
-      return S.Array(__S(67, __c8, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          lastUpdatedTimestampMillis: S.optional(S.String),
-          appState: S.optional(__S(68, __c8, 4)),
-        }),
-      ).annotate({ identifier: "DeviceReport" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          policy: S.optional(__S(64, __c8, 0)),
-          report: S.optional(__S(69, __c8, 5)),
+          policy: S.optional(__S(392, __c24, 8)),
+          report: S.optional(__S(372, __c23, 4)),
           androidId: S.optional(S.String),
           device: S.optional(S.String),
           model: S.optional(S.String),
@@ -3721,7 +3605,11 @@ function __c8(j: number): any {
           retailBrand: S.optional(S.String),
         }),
       ).annotate({ identifier: "Device" });
-    case 7:
+  }
+}
+function __c25(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           enterpriseId: S.String.pipe(T.Label()),
@@ -3735,7 +3623,7 @@ function __c8(j: number): any {
       ).annotate({ identifier: "GetEnterprisesRequest" });
   }
 }
-function __c9(j: number): any {
+function __c26(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3751,14 +3639,22 @@ function __c9(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetEntitlementsRequest" });
-    case 1:
+  }
+}
+function __c27(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           reason: S.optional(S.String),
           productId: S.optional(S.String),
         }),
       ).annotate({ identifier: "Entitlement" });
-    case 2:
+  }
+}
+function __c28(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           enterpriseId: S.String.pipe(T.Label()),
@@ -3771,7 +3667,11 @@ function __c9(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetGrouplicensesRequest" });
-    case 3:
+  }
+}
+function __c29(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           productId: S.optional(S.String),
@@ -3782,7 +3682,11 @@ function __c9(j: number): any {
           acquisitionKind: S.optional(S.String),
         }),
       ).annotate({ identifier: "GroupLicense" });
-    case 4:
+  }
+}
+function __c30(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           enterpriseId: S.String.pipe(T.Label()),
@@ -3797,7 +3701,11 @@ function __c9(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetInstallsRequest" });
-    case 5:
+  }
+}
+function __c31(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           installState: S.optional(S.String),
@@ -3805,7 +3713,11 @@ function __c9(j: number): any {
           versionCode: S.optional(S.Number),
         }),
       ).annotate({ identifier: "Install" });
-    case 6:
+  }
+}
+function __c32(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           deviceId: S.String.pipe(T.Label()),
@@ -3822,7 +3734,11 @@ function __c9(j: number): any {
       ).annotate({
         identifier: "GetManagedconfigurationsfordeviceRequest",
       });
-    case 7:
+  }
+}
+function __c33(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           enterpriseId: S.String.pipe(T.Label()),
@@ -3840,7 +3756,7 @@ function __c9(j: number): any {
       });
   }
 }
-function __c10(j: number): any {
+function __c34(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3863,7 +3779,11 @@ function __c10(j: number): any {
           permissionId: S.optional(S.String),
         }),
       ).annotate({ identifier: "Permission" });
-    case 2:
+  }
+}
+function __c35(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           enterpriseId: S.String.pipe(T.Label()),
@@ -3878,23 +3798,31 @@ function __c10(j: number): any {
       ).annotate({
         identifier: "GetPermissionsProductsRequest",
       });
-    case 3:
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          productId: S.optional(S.String),
+          permission: S.optional(__S(577, __c36, 1)),
+        }),
+      ).annotate({ identifier: "ProductPermissions" });
+  }
+}
+function __c36(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           state: S.optional(S.String),
           permissionId: S.optional(S.String),
         }),
       ).annotate({ identifier: "ProductPermission" });
-    case 4:
-      return S.Array(__S(83, __c10, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          productId: S.optional(S.String),
-          permission: S.optional(__S(84, __c10, 4)),
-        }),
-      ).annotate({ identifier: "ProductPermissions" });
-    case 6:
+    case 1:
+      return S.Array(__S(576, __c36, 0));
+  }
+}
+function __c37(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           enterpriseId: S.String.pipe(T.Label()),
@@ -3908,24 +3836,24 @@ function __c10(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetProductsRequest" });
-    case 7:
+  }
+}
+function __c38(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           track: S.optional(S.String),
           versionString: S.optional(S.String),
-          trackId: S.optional(__S(34, __c4, 2)),
+          trackId: S.optional(__S(240, __c15, 0)),
           versionCode: S.optional(S.Number),
           isProduction: S.optional(S.Boolean),
           targetSdkVersion: S.optional(S.Number),
         }),
       ).annotate({ identifier: "AppVersion" });
-  }
-}
-function __c11(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(87, __c10, 7));
     case 1:
+      return S.Array(__S(608, __c38, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           certificateHashSha1: S.optional(S.String),
@@ -3934,25 +3862,25 @@ function __c11(j: number): any {
       ).annotate({
         identifier: "ProductSigningCertificate",
       });
-    case 2:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           trackId: S.optional(S.String),
           trackAlias: S.optional(S.String),
         }),
       ).annotate({ identifier: "TrackInfo" });
-    case 3:
-      return S.Array(__S(90, __c11, 2));
     case 4:
+      return S.Array(__S(611, __c38, 3));
+    case 5:
       return S.suspend(() =>
         S.Struct({
           recentChanges: S.optional(S.String),
-          appVersion: S.optional(__S(88, __c11, 0)),
-          signingCertificate: S.optional(__S(89, __c11, 1)),
-          features: S.optional(__S(16, __c2, 0)),
+          appVersion: S.optional(__S(609, __c38, 1)),
+          signingCertificate: S.optional(__S(610, __c38, 2)),
+          features: S.optional(__S(1648, __c103, 0)),
           contentRating: S.optional(S.String),
           minAndroidSdkVersion: S.optional(S.Number),
-          appTracks: S.optional(__S(91, __c11, 3)),
+          appTracks: S.optional(__S(612, __c38, 4)),
           category: S.optional(S.String),
           workDetailsUrl: S.optional(S.String),
           description: S.optional(S.String),
@@ -3962,19 +3890,23 @@ function __c11(j: number): any {
           smallIconUrl: S.optional(S.String),
           productPricing: S.optional(S.String),
           productId: S.optional(S.String),
-          appRestrictionsSchema: S.optional(__S(42, __c5, 2)),
-          availableCountries: S.optional(__S(34, __c4, 2)),
+          appRestrictionsSchema: S.optional(__S(291, __c18, 3)),
+          availableCountries: S.optional(__S(240, __c15, 0)),
           requiresContainerApp: S.optional(S.Boolean),
           iconUrl: S.optional(S.String),
-          availableTracks: S.optional(__S(16, __c2, 0)),
+          availableTracks: S.optional(__S(1648, __c103, 0)),
           fullDescription: S.optional(S.String),
           distributionChannel: S.optional(S.String),
           authorName: S.optional(S.String),
-          permissions: S.optional(__S(84, __c10, 4)),
-          screenshotUrls: S.optional(__S(34, __c4, 2)),
+          permissions: S.optional(__S(577, __c36, 1)),
+          screenshotUrls: S.optional(__S(240, __c15, 0)),
         }),
       ).annotate({ identifier: "Product" });
-    case 5:
+  }
+}
+function __c39(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           enterpriseId: S.String.pipe(T.Label()),
@@ -3989,7 +3921,18 @@ function __c11(j: number): any {
       ).annotate({
         identifier: "GetServiceAccountEnterprisesRequest",
       });
-    case 6:
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.optional(S.String),
+          key: S.optional(__S(640, __c40, 0)),
+        }),
+      ).annotate({ identifier: "ServiceAccount" });
+  }
+}
+function __c40(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
@@ -3998,16 +3941,9 @@ function __c11(j: number): any {
           publicData: S.optional(S.String),
         }),
       ).annotate({ identifier: "ServiceAccountKey" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.optional(S.String),
-          key: S.optional(__S(94, __c11, 6)),
-        }),
-      ).annotate({ identifier: "ServiceAccount" });
   }
 }
-function __c12(j: number): any {
+function __c41(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4023,13 +3959,21 @@ function __c12(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetStateDevicesRequest" });
-    case 1:
+  }
+}
+function __c42(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountState: S.optional(S.String),
         }),
       ).annotate({ identifier: "DeviceState" });
-    case 2:
+  }
+}
+function __c43(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           enterpriseId: S.String.pipe(T.Label()),
@@ -4045,25 +3989,37 @@ function __c12(j: number): any {
       ).annotate({
         identifier: "GetStorelayoutclustersRequest",
       });
-    case 3:
+  }
+}
+function __c44(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           locale: S.optional(S.String),
           text: S.optional(S.String),
         }),
       ).annotate({ identifier: "LocalizedText" });
-    case 4:
-      return S.Array(__S(99, __c12, 3));
-    case 5:
+    case 1:
+      return S.Array(__S(704, __c44, 0));
+  }
+}
+function __c45(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          name: S.optional(__S(100, __c12, 4)),
-          productId: S.optional(__S(34, __c4, 2)),
+          name: S.optional(__S(705, __c44, 1)),
+          productId: S.optional(__S(240, __c15, 0)),
           id: S.optional(S.String),
           orderInPage: S.optional(S.String),
         }),
       ).annotate({ identifier: "StoreCluster" });
-    case 6:
+  }
+}
+function __c46(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           enterpriseId: S.String.pipe(T.Label()),
@@ -4077,7 +4033,11 @@ function __c12(j: number): any {
       ).annotate({
         identifier: "GetStoreLayoutEnterprisesRequest",
       });
-    case 7:
+  }
+}
+function __c47(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           homepageId: S.optional(S.String),
@@ -4086,7 +4046,7 @@ function __c12(j: number): any {
       ).annotate({ identifier: "StoreLayout" });
   }
 }
-function __c13(j: number): any {
+function __c48(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4103,15 +4063,23 @@ function __c13(j: number): any {
       ).annotate({
         identifier: "GetStorelayoutpagesRequest",
       });
-    case 1:
+  }
+}
+function __c49(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
-          name: S.optional(__S(100, __c12, 4)),
-          link: S.optional(__S(34, __c4, 2)),
+          name: S.optional(__S(705, __c44, 1)),
+          link: S.optional(__S(240, __c15, 0)),
         }),
       ).annotate({ identifier: "StorePage" });
-    case 2:
+  }
+}
+function __c50(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           enterpriseId: S.String.pipe(T.Label()),
@@ -4124,7 +4092,11 @@ function __c13(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetUsersRequest" });
-    case 3:
+  }
+}
+function __c51(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           managementType: S.optional(S.String),
@@ -4135,7 +4107,11 @@ function __c13(j: number): any {
           id: S.optional(S.String),
         }),
       ).annotate({ identifier: "User" });
-    case 4:
+  }
+}
+function __c52(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           enterpriseId: S.String.pipe(T.Label()),
@@ -4148,35 +4124,39 @@ function __c13(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetWebappsRequest" });
-    case 5:
+  }
+}
+function __c53(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           imageData: S.optional(S.String),
         }),
       ).annotate({ identifier: "WebAppIcon" });
-    case 6:
-      return S.Array(__S(109, __c13, 5));
-    case 7:
+    case 1:
+      return S.Array(__S(848, __c53, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           webAppId: S.optional(S.String),
           startUrl: S.optional(S.String),
           title: S.optional(S.String),
           isPublished: S.optional(S.Boolean),
-          icons: S.optional(__S(110, __c13, 6)),
+          icons: S.optional(__S(849, __c53, 1)),
           displayMode: S.optional(S.String),
           versionCode: S.optional(S.String),
         }),
       ).annotate({ identifier: "WebApp" });
   }
 }
-function __c14(j: number): any {
+function __c54(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           enterpriseId: S.String.pipe(T.Label()),
-          body: S.optional(__S(94, __c11, 6).pipe(T.HttpBody())),
+          body: S.optional(__S(640, __c40, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -4187,12 +4167,16 @@ function __c14(j: number): any {
       ).annotate({
         identifier: "InsertServiceaccountkeysRequest",
       });
-    case 1:
+  }
+}
+function __c55(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           enterpriseId: S.String.pipe(T.Label()),
           pageId: S.String.pipe(T.Label()),
-          body: S.optional(__S(101, __c12, 5).pipe(T.HttpBody())),
+          body: S.optional(__S(720, __c45, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -4203,11 +4187,15 @@ function __c14(j: number): any {
       ).annotate({
         identifier: "InsertStorelayoutclustersRequest",
       });
-    case 2:
+  }
+}
+function __c56(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           enterpriseId: S.String.pipe(T.Label()),
-          body: S.optional(__S(105, __c13, 1).pipe(T.HttpBody())),
+          body: S.optional(__S(784, __c49, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -4218,11 +4206,15 @@ function __c14(j: number): any {
       ).annotate({
         identifier: "InsertStorelayoutpagesRequest",
       });
-    case 3:
+  }
+}
+function __c57(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           enterpriseId: S.String.pipe(T.Label()),
-          body: S.optional(__S(107, __c13, 3).pipe(T.HttpBody())),
+          body: S.optional(__S(816, __c51, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -4231,11 +4223,15 @@ function __c14(j: number): any {
           }),
         ),
       ).annotate({ identifier: "InsertUsersRequest" });
-    case 4:
+  }
+}
+function __c58(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           enterpriseId: S.String.pipe(T.Label()),
-          body: S.optional(__S(111, __c13, 7).pipe(T.HttpBody())),
+          body: S.optional(__S(850, __c53, 2).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -4244,7 +4240,11 @@ function __c14(j: number): any {
           }),
         ),
       ).annotate({ identifier: "InsertWebappsRequest" });
-    case 5:
+  }
+}
+function __c59(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           userId: S.String.pipe(T.Label()),
@@ -4257,17 +4257,43 @@ function __c14(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ListDevicesRequest" });
-    case 6:
-      return S.Array(__S(70, __c8, 6));
-    case 7:
+    case 1:
+      return S.Array(__S(393, __c24, 9));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          device: S.optional(__S(118, __c14, 6)),
+          device: S.optional(__S(945, __c59, 1)),
         }),
       ).annotate({ identifier: "DevicesListResponse" });
   }
 }
-function __c15(j: number): any {
+function __c60(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          notificationSetId: S.optional(S.String.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "androidenterprise/v1/enterprises/acknowledgeNotificationSet",
+            baseUrl: "https://androidenterprise.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "AcknowledgeNotificationSetEnterprisesRequest",
+      });
+  }
+}
+function __c61(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "AcknowledgeNotificationSetEnterprisesResponse",
+      });
+  }
+}
+function __c62(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4282,14 +4308,18 @@ function __c15(j: number): any {
         ),
       ).annotate({ identifier: "ListEnterprisesRequest" });
     case 1:
-      return S.Array(__S(10, __c1, 2));
+      return S.Array(__S(1395, __c87, 3));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          enterprise: S.optional(__S(121, __c15, 1)),
+          enterprise: S.optional(__S(993, __c62, 1)),
         }),
       ).annotate({ identifier: "EnterprisesListResponse" });
-    case 3:
+  }
+}
+function __c63(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           userId: S.String.pipe(T.Label()),
@@ -4302,15 +4332,19 @@ function __c15(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ListEntitlementsRequest" });
-    case 4:
-      return S.Array(__S(73, __c9, 1));
-    case 5:
+    case 1:
+      return S.Array(__S(432, __c27, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          entitlement: S.optional(__S(124, __c15, 4)),
+          entitlement: S.optional(__S(1009, __c63, 1)),
         }),
       ).annotate({ identifier: "EntitlementsListResponse" });
-    case 6:
+  }
+}
+function __c64(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           enterpriseId: S.String.pipe(T.Label()),
@@ -4322,21 +4356,21 @@ function __c15(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ListGrouplicensesRequest" });
-    case 7:
-      return S.Array(__S(75, __c9, 3));
-  }
-}
-function __c16(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
+      return S.Array(__S(464, __c29, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          groupLicense: S.optional(__S(127, __c15, 7)),
+          groupLicense: S.optional(__S(1025, __c64, 1)),
         }),
       ).annotate({
         identifier: "GroupLicensesListResponse",
       });
-    case 1:
+  }
+}
+function __c65(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           groupLicenseId: S.String.pipe(T.Label()),
@@ -4351,17 +4385,25 @@ function __c16(j: number): any {
       ).annotate({
         identifier: "ListGrouplicenseusersRequest",
       });
-    case 2:
-      return S.Array(__S(107, __c13, 3));
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          user: S.optional(__S(130, __c16, 2)),
+          user: S.optional(__S(1056, __c66, 0)),
         }),
       ).annotate({
         identifier: "GroupLicenseUsersListResponse",
       });
-    case 4:
+  }
+}
+function __c66(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(816, __c51, 0));
+  }
+}
+function __c67(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           userId: S.String.pipe(T.Label()),
@@ -4375,15 +4417,19 @@ function __c16(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ListInstallsRequest" });
-    case 5:
-      return S.Array(__S(77, __c9, 5));
-    case 6:
+    case 1:
+      return S.Array(__S(496, __c31, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          install: S.optional(__S(133, __c16, 5)),
+          install: S.optional(__S(1073, __c67, 1)),
         }),
       ).annotate({ identifier: "InstallsListResponse" });
-    case 7:
+  }
+}
+function __c68(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           enterpriseId: S.String.pipe(T.Label()),
@@ -4399,21 +4445,25 @@ function __c16(j: number): any {
       ).annotate({
         identifier: "ListManagedconfigurationsfordeviceRequest",
       });
-  }
-}
-function __c17(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(61, __c7, 5));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          managedConfigurationForDevice: S.optional(__S(136, __c17, 0)),
+          managedConfigurationForDevice: S.optional(__S(1104, __c69, 0)),
         }),
       ).annotate({
         identifier: "ManagedConfigurationsForDeviceListResponse",
       });
-    case 2:
+  }
+}
+function __c69(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(359, __c22, 7));
+  }
+}
+function __c70(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           userId: S.String.pipe(T.Label()),
@@ -4428,15 +4478,19 @@ function __c17(j: number): any {
       ).annotate({
         identifier: "ListManagedconfigurationsforuserRequest",
       });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          managedConfigurationForUser: S.optional(__S(136, __c17, 0)),
+          managedConfigurationForUser: S.optional(__S(1104, __c69, 0)),
         }),
       ).annotate({
         identifier: "ManagedConfigurationsForUserListResponse",
       });
-    case 4:
+  }
+}
+function __c71(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           enterpriseId: S.String.pipe(T.Label()),
@@ -4451,7 +4505,7 @@ function __c17(j: number): any {
       ).annotate({
         identifier: "ListManagedconfigurationssettingsRequest",
       });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           mcmId: S.optional(S.String),
@@ -4461,19 +4515,19 @@ function __c17(j: number): any {
       ).annotate({
         identifier: "ManagedConfigurationsSettings",
       });
-    case 6:
-      return S.Array(__S(141, __c17, 5));
-    case 7:
+    case 2:
+      return S.Array(__S(1137, __c71, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          managedConfigurationsSettings: S.optional(__S(142, __c17, 6)),
+          managedConfigurationsSettings: S.optional(__S(1138, __c71, 2)),
         }),
       ).annotate({
         identifier: "ManagedConfigurationsSettingsListResponse",
       });
   }
 }
-function __c18(j: number): any {
+function __c72(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4493,7 +4547,7 @@ function __c18(j: number): any {
         ),
       ).annotate({ identifier: "ListProductsRequest" });
     case 1:
-      return S.Array(__S(92, __c11, 4));
+      return S.Array(__S(613, __c38, 5));
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -4512,12 +4566,16 @@ function __c18(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          product: S.optional(__S(145, __c18, 1)),
-          pageInfo: S.optional(__S(146, __c18, 2)),
-          tokenPagination: S.optional(__S(147, __c18, 3)),
+          product: S.optional(__S(1153, __c72, 1)),
+          pageInfo: S.optional(__S(1154, __c72, 2)),
+          tokenPagination: S.optional(__S(1155, __c72, 3)),
         }),
       ).annotate({ identifier: "ProductsListResponse" });
-    case 5:
+  }
+}
+function __c73(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           enterpriseId: S.String.pipe(T.Label()),
@@ -4531,19 +4589,58 @@ function __c18(j: number): any {
       ).annotate({
         identifier: "ListServiceaccountkeysRequest",
       });
-    case 6:
-      return S.Array(__S(94, __c11, 6));
-    case 7:
+    case 1:
+      return S.Array(__S(640, __c40, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          serviceAccountKey: S.optional(__S(150, __c18, 6)),
+          serviceAccountKey: S.optional(__S(1169, __c73, 1)),
         }),
       ).annotate({
         identifier: "ServiceAccountKeysListResponse",
       });
   }
 }
-function __c19(j: number): any {
+function __c74(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          approvalUrl: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ApprovalUrlInfo" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          approvalUrlInfo: S.optional(__S(1184, __c74, 0)),
+          approvedPermissions: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ProductsApproveRequest" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          enterpriseId: S.String.pipe(T.Label()),
+          productId: S.String.pipe(T.Label()),
+          body: S.optional(__S(1185, __c74, 1).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "androidenterprise/v1/enterprises/{enterpriseId}/products/{productId}/approve",
+            baseUrl: "https://androidenterprise.googleapis.com/",
+          }),
+        ),
+      ).annotate({ identifier: "ApproveProductsRequest" });
+  }
+}
+function __c75(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "ApproveProductsResponse",
+      });
+  }
+}
+function __c76(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4561,16 +4658,20 @@ function __c19(j: number): any {
         identifier: "ListStorelayoutclustersRequest",
       });
     case 1:
-      return S.Array(__S(101, __c12, 5));
+      return S.Array(__S(720, __c45, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          cluster: S.optional(__S(153, __c19, 1)),
+          cluster: S.optional(__S(1217, __c76, 1)),
         }),
       ).annotate({
         identifier: "StoreLayoutClustersListResponse",
       });
-    case 3:
+  }
+}
+function __c77(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           enterpriseId: S.String.pipe(T.Label()),
@@ -4584,17 +4685,21 @@ function __c19(j: number): any {
       ).annotate({
         identifier: "ListStorelayoutpagesRequest",
       });
-    case 4:
-      return S.Array(__S(105, __c13, 1));
-    case 5:
+    case 1:
+      return S.Array(__S(784, __c49, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          page: S.optional(__S(156, __c19, 4)),
+          page: S.optional(__S(1233, __c77, 1)),
         }),
       ).annotate({
         identifier: "StoreLayoutPagesListResponse",
       });
-    case 6:
+  }
+}
+function __c78(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           enterpriseId: S.String.pipe(T.Label()),
@@ -4607,15 +4712,15 @@ function __c19(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ListUsersRequest" });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          user: S.optional(__S(130, __c16, 2)),
+          user: S.optional(__S(1056, __c66, 0)),
         }),
       ).annotate({ identifier: "UsersListResponse" });
   }
 }
-function __c20(j: number): any {
+function __c79(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4630,14 +4735,18 @@ function __c20(j: number): any {
         ),
       ).annotate({ identifier: "ListWebappsRequest" });
     case 1:
-      return S.Array(__S(111, __c13, 7));
+      return S.Array(__S(850, __c53, 2));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          webApp: S.optional(__S(161, __c20, 1)),
+          webApp: S.optional(__S(1265, __c79, 1)),
         }),
       ).annotate({ identifier: "WebAppsListResponse" });
-    case 3:
+  }
+}
+function __c80(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           requestMode: S.optional(S.String.pipe(T.Query())),
@@ -4651,30 +4760,30 @@ function __c20(j: number): any {
       ).annotate({
         identifier: "PullNotificationSetEnterprisesRequest",
       });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           productId: S.optional(S.String),
           approved: S.optional(S.String),
         }),
       ).annotate({ identifier: "ProductApprovalEvent" });
-    case 5:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           userId: S.optional(S.String),
           deviceId: S.optional(S.String),
-          report: S.optional(__S(69, __c8, 5)),
+          report: S.optional(__S(372, __c23, 4)),
         }),
       ).annotate({ identifier: "DeviceReportUpdateEvent" });
-    case 6:
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          requestedPermissions: S.optional(__S(34, __c4, 2)),
-          approvedPermissions: S.optional(__S(34, __c4, 2)),
+          requestedPermissions: S.optional(__S(240, __c15, 0)),
+          approvedPermissions: S.optional(__S(240, __c15, 0)),
           productId: S.optional(S.String),
         }),
       ).annotate({ identifier: "NewPermissionsEvent" });
-    case 7:
+    case 4:
       return S.suspend(() =>
         S.Struct({
           availabilityStatus: S.optional(S.String),
@@ -4683,17 +4792,13 @@ function __c20(j: number): any {
       ).annotate({
         identifier: "ProductAvailabilityChangeEvent",
       });
-  }
-}
-function __c21(j: number): any {
-  switch (j) {
-    case 0:
+    case 5:
       return S.suspend(() =>
         S.Struct({
           upgradeState: S.optional(S.String),
         }),
       ).annotate({ identifier: "EnterpriseUpgradeEvent" });
-    case 1:
+    case 6:
       return S.suspend(() =>
         S.Struct({
           productId: S.optional(S.String),
@@ -4701,13 +4806,13 @@ function __c21(j: number): any {
       ).annotate({
         identifier: "AppRestrictionsSchemaChangeEvent",
       });
-    case 2:
+    case 7:
       return S.suspend(() =>
         S.Struct({
           productId: S.optional(S.String),
         }),
       ).annotate({ identifier: "AppUpdateEvent" });
-    case 3:
+    case 8:
       return S.suspend(() =>
         S.Struct({
           userId: S.optional(S.String),
@@ -4717,7 +4822,7 @@ function __c21(j: number): any {
           failureDetails: S.optional(S.String),
         }),
       ).annotate({ identifier: "InstallFailureEvent" });
-    case 4:
+    case 9:
       return S.suspend(() =>
         S.Struct({
           managementType: S.optional(S.String),
@@ -4726,35 +4831,35 @@ function __c21(j: number): any {
           userId: S.optional(S.String),
         }),
       ).annotate({ identifier: "NewDeviceEvent" });
-    case 5:
+    case 10:
       return S.suspend(() =>
         S.Struct({
           timestampMillis: S.optional(S.String),
           enterpriseId: S.optional(S.String),
-          productApprovalEvent: S.optional(__S(164, __c20, 4)),
-          deviceReportUpdateEvent: S.optional(__S(165, __c20, 5)),
-          newPermissionsEvent: S.optional(__S(166, __c20, 6)),
-          productAvailabilityChangeEvent: S.optional(__S(167, __c20, 7)),
-          enterpriseUpgradeEvent: S.optional(__S(168, __c21, 0)),
+          productApprovalEvent: S.optional(__S(1281, __c80, 1)),
+          deviceReportUpdateEvent: S.optional(__S(1282, __c80, 2)),
+          newPermissionsEvent: S.optional(__S(1283, __c80, 3)),
+          productAvailabilityChangeEvent: S.optional(__S(1284, __c80, 4)),
+          enterpriseUpgradeEvent: S.optional(__S(1285, __c80, 5)),
           notificationType: S.optional(S.String),
-          appRestrictionsSchemaChangeEvent: S.optional(__S(169, __c21, 1)),
-          appUpdateEvent: S.optional(__S(170, __c21, 2)),
-          installFailureEvent: S.optional(__S(171, __c21, 3)),
-          newDeviceEvent: S.optional(__S(172, __c21, 4)),
+          appRestrictionsSchemaChangeEvent: S.optional(__S(1286, __c80, 6)),
+          appUpdateEvent: S.optional(__S(1287, __c80, 7)),
+          installFailureEvent: S.optional(__S(1288, __c80, 8)),
+          newDeviceEvent: S.optional(__S(1289, __c80, 9)),
         }),
       ).annotate({ identifier: "Notification" });
-    case 6:
-      return S.Array(__S(173, __c21, 5));
-    case 7:
+    case 11:
+      return S.Array(__S(1290, __c80, 10));
+    case 12:
       return S.suspend(() =>
         S.Struct({
-          notification: S.optional(__S(174, __c21, 6)),
+          notification: S.optional(__S(1291, __c80, 11)),
           notificationSetId: S.optional(S.String),
         }),
       ).annotate({ identifier: "NotificationSet" });
   }
 }
-function __c22(j: number): any {
+function __c81(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4775,7 +4880,11 @@ function __c22(j: number): any {
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "RevokeDeviceAccessUsersResponse",
       });
-    case 2:
+  }
+}
+function __c82(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           enterpriseId: S.String.pipe(T.Label()),
@@ -4789,7 +4898,7 @@ function __c22(j: number): any {
       ).annotate({
         identifier: "SendTestPushNotificationEnterprisesRequest",
       });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           topicName: S.optional(S.String),
@@ -4798,17 +4907,21 @@ function __c22(j: number): any {
       ).annotate({
         identifier: "EnterprisesSendTestPushNotificationResponse",
       });
-    case 4:
+  }
+}
+function __c83(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountEmail: S.optional(S.String),
         }),
       ).annotate({ identifier: "EnterpriseAccount" });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           enterpriseId: S.String.pipe(T.Label()),
-          body: S.optional(__S(180, __c22, 4).pipe(T.HttpBody())),
+          body: S.optional(__S(1328, __c83, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -4819,12 +4932,16 @@ function __c22(j: number): any {
       ).annotate({
         identifier: "SetAccountEnterprisesRequest",
       });
-    case 6:
+  }
+}
+function __c84(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           userId: S.String.pipe(T.Label()),
           enterpriseId: S.String.pipe(T.Label()),
-          body: S.optional(__S(46, __c5, 6).pipe(T.HttpBody())),
+          body: S.optional(__S(322, __c20, 2).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -4835,13 +4952,17 @@ function __c22(j: number): any {
       ).annotate({
         identifier: "SetAvailableProductSetUsersRequest",
       });
-    case 7:
+  }
+}
+function __c85(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           userId: S.String.pipe(T.Label()),
           enterpriseId: S.String.pipe(T.Label()),
           deviceId: S.String.pipe(T.Label()),
-          body: S.optional(__S(97, __c12, 1).pipe(T.HttpBody())),
+          body: S.optional(__S(672, __c42, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -4852,13 +4973,64 @@ function __c22(j: number): any {
       ).annotate({ identifier: "SetStateDevicesRequest" });
   }
 }
-function __c23(j: number): any {
+function __c86(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          completionToken: S.optional(S.String.pipe(T.Query())),
+          enterpriseToken: S.optional(S.String.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "androidenterprise/v1/enterprises/completeSignup",
+            baseUrl: "https://androidenterprise.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "CompleteSignupEnterprisesRequest",
+      });
+  }
+}
+function __c87(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          email: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Administrator" });
+    case 1:
+      return S.Array(__S(1392, __c87, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          googleAuthenticationRequired: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleAuthenticationSettings",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          administrator: S.optional(__S(1393, __c87, 1)),
+          id: S.optional(S.String),
+          primaryDomain: S.optional(S.String),
+          googleAuthenticationSettings: S.optional(__S(1394, __c87, 2)),
+          managedGoogleDomainType: S.optional(S.String),
+          name: S.optional(S.String),
+          enterpriseType: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Enterprise" });
+  }
+}
+function __c88(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           enterpriseId: S.String.pipe(T.Label()),
-          body: S.optional(__S(103, __c12, 7).pipe(T.HttpBody())),
+          body: S.optional(__S(752, __c47, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -4869,7 +5041,11 @@ function __c23(j: number): any {
       ).annotate({
         identifier: "SetStoreLayoutEnterprisesRequest",
       });
-    case 1:
+  }
+}
+function __c89(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           productId: S.String.pipe(T.Label()),
@@ -4882,7 +5058,11 @@ function __c23(j: number): any {
           }),
         ),
       ).annotate({ identifier: "UnapproveProductsRequest" });
-    case 2:
+  }
+}
+function __c90(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           enterpriseId: S.String.pipe(T.Label()),
@@ -4896,14 +5076,18 @@ function __c23(j: number): any {
       ).annotate({
         identifier: "UnenrollEnterprisesRequest",
       });
-    case 3:
+  }
+}
+function __c91(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           deviceId: S.String.pipe(T.Label()),
           updateMask: S.optional(S.String.pipe(T.Query())),
           enterpriseId: S.String.pipe(T.Label()),
           userId: S.String.pipe(T.Label()),
-          body: S.optional(__S(70, __c8, 6).pipe(T.HttpBody())),
+          body: S.optional(__S(393, __c24, 9).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -4912,14 +5096,18 @@ function __c23(j: number): any {
           }),
         ),
       ).annotate({ identifier: "UpdateDevicesRequest" });
-    case 4:
+  }
+}
+function __c92(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           entitlementId: S.String.pipe(T.Label()),
           install: S.optional(S.Boolean.pipe(T.Query())),
           enterpriseId: S.String.pipe(T.Label()),
           userId: S.String.pipe(T.Label()),
-          body: S.optional(__S(73, __c9, 1).pipe(T.HttpBody())),
+          body: S.optional(__S(432, __c27, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -4930,14 +5118,18 @@ function __c23(j: number): any {
       ).annotate({
         identifier: "UpdateEntitlementsRequest",
       });
-    case 5:
+  }
+}
+function __c93(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           userId: S.String.pipe(T.Label()),
           installId: S.String.pipe(T.Label()),
           deviceId: S.String.pipe(T.Label()),
           enterpriseId: S.String.pipe(T.Label()),
-          body: S.optional(__S(77, __c9, 5).pipe(T.HttpBody())),
+          body: S.optional(__S(496, __c31, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -4946,14 +5138,18 @@ function __c23(j: number): any {
           }),
         ),
       ).annotate({ identifier: "UpdateInstallsRequest" });
-    case 6:
+  }
+}
+function __c94(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           deviceId: S.String.pipe(T.Label()),
           enterpriseId: S.String.pipe(T.Label()),
           managedConfigurationForDeviceId: S.String.pipe(T.Label()),
           userId: S.String.pipe(T.Label()),
-          body: S.optional(__S(61, __c7, 5).pipe(T.HttpBody())),
+          body: S.optional(__S(359, __c22, 7).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -4964,13 +5160,17 @@ function __c23(j: number): any {
       ).annotate({
         identifier: "UpdateManagedconfigurationsfordeviceRequest",
       });
-    case 7:
+  }
+}
+function __c95(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           userId: S.String.pipe(T.Label()),
           managedConfigurationForUserId: S.String.pipe(T.Label()),
           enterpriseId: S.String.pipe(T.Label()),
-          body: S.optional(__S(61, __c7, 5).pipe(T.HttpBody())),
+          body: S.optional(__S(359, __c22, 7).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -4983,7 +5183,7 @@ function __c23(j: number): any {
       });
   }
 }
-function __c24(j: number): any {
+function __c96(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4991,7 +5191,7 @@ function __c24(j: number): any {
           pageId: S.String.pipe(T.Label()),
           clusterId: S.String.pipe(T.Label()),
           enterpriseId: S.String.pipe(T.Label()),
-          body: S.optional(__S(101, __c12, 5).pipe(T.HttpBody())),
+          body: S.optional(__S(720, __c45, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -5002,12 +5202,16 @@ function __c24(j: number): any {
       ).annotate({
         identifier: "UpdateStorelayoutclustersRequest",
       });
-    case 1:
+  }
+}
+function __c97(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           pageId: S.String.pipe(T.Label()),
           enterpriseId: S.String.pipe(T.Label()),
-          body: S.optional(__S(105, __c13, 1).pipe(T.HttpBody())),
+          body: S.optional(__S(784, __c49, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -5018,12 +5222,53 @@ function __c24(j: number): any {
       ).annotate({
         identifier: "UpdateStorelayoutpagesRequest",
       });
+  }
+}
+function __c98(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          requiredAccountEmail: S.optional(S.String),
+          authenticationRequirement: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "EnrollmentTokenGoogleAuthenticationOptions",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          enrollmentTokenType: S.optional(S.String),
+          duration: S.optional(S.String),
+          token: S.optional(S.String),
+          googleAuthenticationOptions: S.optional(__S(1568, __c98, 0)),
+        }),
+      ).annotate({ identifier: "EnrollmentToken" });
     case 2:
+      return S.suspend(() =>
+        S.Struct({
+          enterpriseId: S.String.pipe(T.Label()),
+          body: S.optional(__S(1569, __c98, 1).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "androidenterprise/v1/enterprises/{enterpriseId}/enrollmentTokens",
+            baseUrl: "https://androidenterprise.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateEnrollmentTokensRequest",
+      });
+  }
+}
+function __c99(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           userId: S.String.pipe(T.Label()),
           enterpriseId: S.String.pipe(T.Label()),
-          body: S.optional(__S(107, __c13, 3).pipe(T.HttpBody())),
+          body: S.optional(__S(816, __c51, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -5032,12 +5277,16 @@ function __c24(j: number): any {
           }),
         ),
       ).annotate({ identifier: "UpdateUsersRequest" });
-    case 3:
+  }
+}
+function __c100(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           enterpriseId: S.String.pipe(T.Label()),
           webAppId: S.String.pipe(T.Label()),
-          body: S.optional(__S(111, __c13, 7).pipe(T.HttpBody())),
+          body: S.optional(__S(850, __c53, 2).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -5048,7 +5297,73 @@ function __c24(j: number): any {
       ).annotate({ identifier: "UpdateWebappsRequest" });
   }
 }
-
+function __c101(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          enabled: S.optional(S.Boolean),
+        }),
+      ).annotate({
+        identifier: "AdministratorWebTokenSpecPrivateApps",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          enabled: S.optional(S.Boolean),
+          approveApps: S.optional(S.Boolean),
+        }),
+      ).annotate({
+        identifier: "AdministratorWebTokenSpecPlaySearch",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          privateApps: S.optional(__S(1616, __c101, 0)),
+          parent: S.optional(S.String),
+          zeroTouch: S.optional(__S(1616, __c101, 0)),
+          managedConfigurations: S.optional(__S(1616, __c101, 0)),
+          playSearch: S.optional(__S(1617, __c101, 1)),
+          storeBuilder: S.optional(__S(1616, __c101, 0)),
+          webApps: S.optional(__S(1616, __c101, 0)),
+          permission: S.optional(__S(1648, __c103, 0)),
+        }),
+      ).annotate({
+        identifier: "AdministratorWebTokenSpec",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          enterpriseId: S.String.pipe(T.Label()),
+          body: S.optional(__S(1618, __c101, 2).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "androidenterprise/v1/enterprises/{enterpriseId}/createWebToken",
+            baseUrl: "https://androidenterprise.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateWebTokenEnterprisesRequest",
+      });
+  }
+}
+function __c102(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          token: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "AdministratorWebToken" });
+  }
+}
+function __c103(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

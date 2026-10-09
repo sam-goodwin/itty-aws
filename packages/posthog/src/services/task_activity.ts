@@ -121,8 +121,8 @@ export const taskActivityMarkReadCreate: API.OperationMethod<
   TaskActivityMarkReadCreateError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(8, __c1, 0) as any as S.Schema<TaskActivityMarkReadCreateRequest>,
-  output: __S(9, __c1, 1) as any as S.Schema<TaskActivityMarkReadResponse>,
+  input: __S(10, __c1, 2) as any as S.Schema<TaskActivityMarkReadCreateRequest>,
+  output: __S(11, __c1, 3) as any as S.Schema<TaskActivityMarkReadResponse>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -188,16 +188,6 @@ function __c0(j: number): any {
           next_before_id: S.optional(S.NullOr(S.String)),
         }),
       ).annotate({ identifier: "TaskActivityPageDTO" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          task_id: S.optional(S.NullOr(S.String)),
-          activity_id: S.optional(S.NullOr(S.String)),
-          seen_before: S.String,
-        }),
-      ).annotate({ identifier: "TaskActivityReadMarker" });
-    case 7:
-      return S.Array(__S(6, __c0, 6));
   }
 }
 function __c1(j: number): any {
@@ -205,8 +195,18 @@ function __c1(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
+          task_id: S.optional(S.NullOr(S.String)),
+          activity_id: S.optional(S.NullOr(S.String)),
+          seen_before: S.String,
+        }),
+      ).annotate({ identifier: "TaskActivityReadMarker" });
+    case 1:
+      return S.Array(__S(8, __c1, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
           project_id: S.String.pipe(T.Label()),
-          activities: __S(7, __c0, 7),
+          activities: __S(9, __c1, 1),
         }).pipe(
           T.Http({
             method: "POST",
@@ -217,7 +217,7 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "TaskActivityMarkReadCreateRequest",
       });
-    case 1:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           marked_read: S.Number,
@@ -228,7 +228,6 @@ function __c1(j: number): any {
       });
   }
 }
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

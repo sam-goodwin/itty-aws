@@ -602,8 +602,8 @@ export const addSites: API.OperationMethod<
   AddSitesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(0, __c0, 0) as any as S.Schema<AddSitesRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<AddSitesResponse>,
+  input: __S(160, __c5, 0) as any as S.Schema<AddSitesRequest>,
+  output: __S(192, __c6, 0) as any as S.Schema<AddSitesResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -617,8 +617,8 @@ export const deleteSitemaps: API.OperationMethod<
   DeleteSitemapsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2, __c0, 2) as any as S.Schema<DeleteSitemapsRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<DeleteSitemapsResponse>,
+  input: __S(224, __c7, 0) as any as S.Schema<DeleteSitemapsRequest>,
+  output: __S(192, __c6, 0) as any as S.Schema<DeleteSitemapsResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -632,8 +632,8 @@ export const deleteSites: API.OperationMethod<
   DeleteSitesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3, __c0, 3) as any as S.Schema<DeleteSitesRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<DeleteSitesResponse>,
+  input: __S(256, __c8, 0) as any as S.Schema<DeleteSitesRequest>,
+  output: __S(192, __c6, 0) as any as S.Schema<DeleteSitesResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -647,8 +647,8 @@ export const getSitemaps: API.OperationMethod<
   GetSitemapsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(4, __c0, 4) as any as S.Schema<GetSitemapsRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<WmxSitemap>,
+  input: __S(288, __c9, 0) as any as S.Schema<GetSitemapsRequest>,
+  output: __S(322, __c10, 2) as any as S.Schema<WmxSitemap>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -658,8 +658,8 @@ export type GetSitesError = NotFound | Forbidden | GcpOpError;
 /** Retrieves information about specific site. */
 export const getSites: API.OperationMethod<GetSitesRequest, WmxSite, GetSitesError, GcpOpContext> =
   /*@__PURE__*/ API.make(() => ({
-    input: __S(8, __c1, 0) as any as S.Schema<GetSitesRequest>,
-    output: __S(9, __c1, 1) as any as S.Schema<WmxSite>,
+    input: __S(352, __c11, 0) as any as S.Schema<GetSitesRequest>,
+    output: __S(384, __c12, 0) as any as S.Schema<WmxSite>,
     errors: [NotFound, Forbidden, UnknownGCPError],
     protocol: GcpProtocol,
     retry: Retry.Retry,
@@ -678,8 +678,8 @@ export const inspectUrlInspectionIndex: API.OperationMethod<
   InspectUrlInspectionIndexError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(11, __c1, 3) as any as S.Schema<InspectUrlInspectionIndexRequest>,
-  output: __S(27, __c3, 3) as any as S.Schema<InspectUrlIndexResponse>,
+  input: __S(417, __c13, 1) as any as S.Schema<InspectUrlInspectionIndexRequest>,
+  output: __S(432, __c13, 16) as any as S.Schema<InspectUrlIndexResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -693,8 +693,8 @@ export const listSitemaps: API.OperationMethod<
   ListSitemapsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(28, __c3, 4) as any as S.Schema<ListSitemapsRequest>,
-  output: __S(30, __c3, 6) as any as S.Schema<SitemapsListResponse>,
+  input: __S(0, __c0, 0) as any as S.Schema<ListSitemapsRequest>,
+  output: __S(2, __c0, 2) as any as S.Schema<SitemapsListResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -708,8 +708,8 @@ export const listSites: API.OperationMethod<
   ListSitesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(31, __c3, 7) as any as S.Schema<ListSitesRequest>,
-  output: __S(33, __c4, 1) as any as S.Schema<SitesListResponse>,
+  input: __S(32, __c1, 0) as any as S.Schema<ListSitesRequest>,
+  output: __S(34, __c1, 2) as any as S.Schema<SitesListResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -723,8 +723,8 @@ export const querySearchanalytics: API.OperationMethod<
   QuerySearchanalyticsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(40, __c5, 0) as any as S.Schema<QuerySearchanalyticsRequest>,
-  output: __S(44, __c5, 4) as any as S.Schema<SearchAnalyticsQueryResponse>,
+  input: __S(70, __c2, 6) as any as S.Schema<QuerySearchanalyticsRequest>,
+  output: __S(74, __c2, 10) as any as S.Schema<SearchAnalyticsQueryResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -743,8 +743,8 @@ export const runUrlTestingToolsMobileFriendlyTest: API.OperationMethod<
   RunUrlTestingToolsMobileFriendlyTestError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(46, __c5, 6) as any as S.Schema<RunUrlTestingToolsMobileFriendlyTestRequest>,
-  output: __S(54, __c6, 6) as any as S.Schema<RunMobileFriendlyTestResponse>,
+  input: __S(97, __c3, 1) as any as S.Schema<RunUrlTestingToolsMobileFriendlyTestRequest>,
+  output: __S(105, __c3, 9) as any as S.Schema<RunMobileFriendlyTestResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -758,8 +758,8 @@ export const submitSitemaps: API.OperationMethod<
   SubmitSitemapsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(55, __c6, 7) as any as S.Schema<SubmitSitemapsRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<SubmitSitemapsResponse>,
+  input: __S(128, __c4, 0) as any as S.Schema<SubmitSitemapsRequest>,
+  output: __S(192, __c6, 0) as any as S.Schema<SubmitSitemapsResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -772,243 +772,6 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           siteUrl: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "PUT",
-            uri: "webmasters/v3/sites/{siteUrl}",
-            baseUrl: "https://searchconsole.googleapis.com/",
-          }),
-        ),
-      ).annotate({ identifier: "AddSitesRequest" });
-    case 1:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "AddSitesResponse",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          feedpath: S.String.pipe(T.Label()),
-          siteUrl: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "webmasters/v3/sites/{siteUrl}/sitemaps/{feedpath}",
-            baseUrl: "https://searchconsole.googleapis.com/",
-          }),
-        ),
-      ).annotate({ identifier: "DeleteSitemapsRequest" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          siteUrl: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "webmasters/v3/sites/{siteUrl}",
-            baseUrl: "https://searchconsole.googleapis.com/",
-          }),
-        ),
-      ).annotate({ identifier: "DeleteSitesRequest" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          feedpath: S.String.pipe(T.Label()),
-          siteUrl: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "webmasters/v3/sites/{siteUrl}/sitemaps/{feedpath}",
-            baseUrl: "https://searchconsole.googleapis.com/",
-          }),
-        ),
-      ).annotate({ identifier: "GetSitemapsRequest" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          submitted: S.optional(S.String),
-          indexed: S.optional(S.String),
-          type: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "WmxSitemapContent" });
-    case 6:
-      return S.Array(__S(5, __c0, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          path: S.optional(S.String),
-          lastSubmitted: S.optional(S.String),
-          lastDownloaded: S.optional(S.String),
-          errors: S.optional(S.String),
-          isPending: S.optional(S.Boolean),
-          isSitemapsIndex: S.optional(S.Boolean),
-          contents: S.optional(__S(6, __c0, 6)),
-          type: S.optional(S.String),
-          warnings: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "WmxSitemap" });
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          siteUrl: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "webmasters/v3/sites/{siteUrl}",
-            baseUrl: "https://searchconsole.googleapis.com/",
-          }),
-        ),
-      ).annotate({ identifier: "GetSitesRequest" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          siteUrl: S.optional(S.String),
-          permissionLevel: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "WmxSite" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          inspectionUrl: S.optional(S.String),
-          siteUrl: S.optional(S.String),
-          languageCode: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "InspectUrlIndexRequest" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          body: S.optional(__S(10, __c1, 2).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/urlInspection/index:inspect",
-            baseUrl: "https://searchconsole.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "InspectUrlInspectionIndexRequest",
-      });
-    case 4:
-      return S.Array(S.String);
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          userCanonical: S.optional(S.String),
-          googleCanonical: S.optional(S.String),
-          referringUrls: S.optional(__S(12, __c1, 4)),
-          verdict: S.optional(S.String),
-          crawledAs: S.optional(S.String),
-          indexingState: S.optional(S.String),
-          lastCrawlTime: S.optional(S.String),
-          sitemap: S.optional(__S(12, __c1, 4)),
-          pageFetchState: S.optional(S.String),
-          coverageState: S.optional(S.String),
-          robotsTxtState: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "IndexStatusInspectionResult",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          issueMessage: S.optional(S.String),
-          severity: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "AmpIssue" });
-    case 7:
-      return S.Array(__S(14, __c1, 6));
-  }
-}
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          ampUrl: S.optional(S.String),
-          ampIndexStatusVerdict: S.optional(S.String),
-          issues: S.optional(__S(15, __c1, 7)),
-          pageFetchState: S.optional(S.String),
-          robotsTxtState: S.optional(S.String),
-          verdict: S.optional(S.String),
-          indexingState: S.optional(S.String),
-          lastCrawlTime: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "AmpInspectionResult" });
-    case 1:
-      return S.Array(__S(14, __c1, 6));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          issues: S.optional(__S(17, __c2, 1)),
-          name: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Item" });
-    case 3:
-      return S.Array(__S(18, __c2, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          items: S.optional(__S(19, __c2, 3)),
-          richResultType: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "DetectedItems" });
-    case 5:
-      return S.Array(__S(20, __c2, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          detectedItems: S.optional(__S(21, __c2, 5)),
-          verdict: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "RichResultsInspectionResult",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          severity: S.optional(S.String),
-          message: S.optional(S.String),
-          issueType: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "MobileUsabilityIssue" });
-  }
-}
-function __c3(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(23, __c2, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          verdict: S.optional(S.String),
-          issues: S.optional(__S(24, __c3, 0)),
-        }),
-      ).annotate({
-        identifier: "MobileUsabilityInspectionResult",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          inspectionResultLink: S.optional(S.String),
-          indexStatusResult: S.optional(__S(13, __c1, 5)),
-          ampResult: S.optional(__S(16, __c2, 0)),
-          richResultsResult: S.optional(__S(22, __c2, 6)),
-          mobileUsabilityResult: S.optional(__S(25, __c3, 1)),
-        }),
-      ).annotate({ identifier: "UrlInspectionResult" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          inspectionResult: S.optional(__S(26, __c3, 2)),
-        }),
-      ).annotate({ identifier: "InspectUrlIndexResponse" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          siteUrl: S.String.pipe(T.Label()),
           sitemapIndex: S.optional(S.String.pipe(T.Query())),
         }).pipe(
           T.Http({
@@ -1018,15 +781,19 @@ function __c3(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ListSitemapsRequest" });
-    case 5:
-      return S.Array(__S(7, __c0, 7));
-    case 6:
+    case 1:
+      return S.Array(__S(322, __c10, 2));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          sitemap: S.optional(__S(29, __c3, 5)),
+          sitemap: S.optional(__S(1, __c0, 1)),
         }),
       ).annotate({ identifier: "SitemapsListResponse" });
-    case 7:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({}).pipe(
           T.Http({
@@ -1036,19 +803,19 @@ function __c3(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ListSitesRequest" });
-  }
-}
-function __c4(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(9, __c1, 1));
     case 1:
+      return S.Array(__S(384, __c12, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          siteEntry: S.optional(__S(32, __c4, 0)),
+          siteEntry: S.optional(__S(33, __c1, 1)),
         }),
       ).annotate({ identifier: "SitesListResponse" });
-    case 2:
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           operator: S.optional(S.String),
@@ -1056,29 +823,29 @@ function __c4(j: number): any {
           expression: S.optional(S.String),
         }),
       ).annotate({ identifier: "ApiDimensionFilter" });
-    case 3:
-      return S.Array(__S(34, __c4, 2));
-    case 4:
+    case 1:
+      return S.Array(__S(64, __c2, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           groupType: S.optional(S.String),
-          filters: S.optional(__S(35, __c4, 3)),
+          filters: S.optional(__S(65, __c2, 1)),
         }),
       ).annotate({ identifier: "ApiDimensionFilterGroup" });
-    case 5:
-      return S.Array(__S(36, __c4, 4));
-    case 6:
+    case 3:
+      return S.Array(__S(66, __c2, 2));
+    case 4:
       return S.Array(S.String);
-    case 7:
+    case 5:
       return S.suspend(() =>
         S.Struct({
           endDate: S.optional(S.String),
           rowLimit: S.optional(S.Number),
           startDate: S.optional(S.String),
-          dimensionFilterGroups: S.optional(__S(37, __c4, 5)),
+          dimensionFilterGroups: S.optional(__S(67, __c2, 3)),
           searchType: S.optional(S.String),
           aggregationType: S.optional(S.String),
-          dimensions: S.optional(__S(38, __c4, 6)),
+          dimensions: S.optional(__S(68, __c2, 4)),
           startRow: S.optional(S.Number),
           type: S.optional(S.String),
           dataState: S.optional(S.String),
@@ -1086,15 +853,11 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "SearchAnalyticsQueryRequest",
       });
-  }
-}
-function __c5(j: number): any {
-  switch (j) {
-    case 0:
+    case 6:
       return S.suspend(() =>
         S.Struct({
           siteUrl: S.String.pipe(T.Label()),
-          body: S.optional(__S(39, __c4, 7).pipe(T.HttpBody())),
+          body: S.optional(__S(69, __c2, 5).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -1105,36 +868,40 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "QuerySearchanalyticsRequest",
       });
-    case 1:
+    case 7:
       return S.suspend(() =>
         S.Struct({
           firstIncompleteDate: S.optional(S.String),
           firstIncompleteHour: S.optional(S.String),
         }),
       ).annotate({ identifier: "Metadata" });
-    case 2:
+    case 8:
       return S.suspend(() =>
         S.Struct({
           impressions: S.optional(S.Number),
           ctr: S.optional(S.Number),
           clicks: S.optional(S.Number),
           position: S.optional(S.Number),
-          keys: S.optional(__S(12, __c1, 4)),
+          keys: S.optional(__S(448, __c14, 0)),
         }),
       ).annotate({ identifier: "ApiDataRow" });
-    case 3:
-      return S.Array(__S(42, __c5, 2));
-    case 4:
+    case 9:
+      return S.Array(__S(72, __c2, 8));
+    case 10:
       return S.suspend(() =>
         S.Struct({
           responseAggregationType: S.optional(S.String),
-          metadata: S.optional(__S(41, __c5, 1)),
-          rows: S.optional(__S(43, __c5, 3)),
+          metadata: S.optional(__S(71, __c2, 7)),
+          rows: S.optional(__S(73, __c2, 9)),
         }),
       ).annotate({
         identifier: "SearchAnalyticsQueryResponse",
       });
-    case 5:
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           requestScreenshot: S.optional(S.Boolean),
@@ -1143,10 +910,10 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "RunMobileFriendlyTestRequest",
       });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          body: S.optional(__S(45, __c5, 5).pipe(T.HttpBody())),
+          body: S.optional(__S(96, __c3, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -1157,59 +924,59 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "RunUrlTestingToolsMobileFriendlyTestRequest",
       });
-    case 7:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           mimeType: S.optional(S.String),
           data: S.optional(S.String),
         }),
       ).annotate({ identifier: "Image" });
-  }
-}
-function __c6(j: number): any {
-  switch (j) {
-    case 0:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           url: S.optional(S.String),
         }),
       ).annotate({ identifier: "BlockedResource" });
-    case 1:
+    case 4:
       return S.suspend(() =>
         S.Struct({
-          blockedResource: S.optional(__S(48, __c6, 0)),
+          blockedResource: S.optional(__S(99, __c3, 3)),
         }),
       ).annotate({ identifier: "ResourceIssue" });
-    case 2:
-      return S.Array(__S(49, __c6, 1));
-    case 3:
+    case 5:
+      return S.Array(__S(100, __c3, 4));
+    case 6:
       return S.suspend(() =>
         S.Struct({
           rule: S.optional(S.String),
         }),
       ).annotate({ identifier: "MobileFriendlyIssue" });
-    case 4:
-      return S.Array(__S(51, __c6, 3));
-    case 5:
+    case 7:
+      return S.Array(__S(102, __c3, 6));
+    case 8:
       return S.suspend(() =>
         S.Struct({
           status: S.optional(S.String),
           details: S.optional(S.String),
         }),
       ).annotate({ identifier: "TestStatus" });
-    case 6:
+    case 9:
       return S.suspend(() =>
         S.Struct({
-          screenshot: S.optional(__S(47, __c5, 7)),
-          resourceIssues: S.optional(__S(50, __c6, 2)),
-          mobileFriendlyIssues: S.optional(__S(52, __c6, 4)),
+          screenshot: S.optional(__S(98, __c3, 2)),
+          resourceIssues: S.optional(__S(101, __c3, 5)),
+          mobileFriendlyIssues: S.optional(__S(103, __c3, 7)),
           mobileFriendliness: S.optional(S.String),
-          testStatus: S.optional(__S(53, __c6, 5)),
+          testStatus: S.optional(__S(104, __c3, 8)),
         }),
       ).annotate({
         identifier: "RunMobileFriendlyTestResponse",
       });
-    case 7:
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           feedpath: S.String.pipe(T.Label()),
@@ -1224,7 +991,271 @@ function __c6(j: number): any {
       ).annotate({ identifier: "SubmitSitemapsRequest" });
   }
 }
-
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          siteUrl: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "PUT",
+            uri: "webmasters/v3/sites/{siteUrl}",
+            baseUrl: "https://searchconsole.googleapis.com/",
+          }),
+        ),
+      ).annotate({ identifier: "AddSitesRequest" });
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "AddSitesResponse",
+      });
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          feedpath: S.String.pipe(T.Label()),
+          siteUrl: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "webmasters/v3/sites/{siteUrl}/sitemaps/{feedpath}",
+            baseUrl: "https://searchconsole.googleapis.com/",
+          }),
+        ),
+      ).annotate({ identifier: "DeleteSitemapsRequest" });
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          siteUrl: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "webmasters/v3/sites/{siteUrl}",
+            baseUrl: "https://searchconsole.googleapis.com/",
+          }),
+        ),
+      ).annotate({ identifier: "DeleteSitesRequest" });
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          feedpath: S.String.pipe(T.Label()),
+          siteUrl: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "webmasters/v3/sites/{siteUrl}/sitemaps/{feedpath}",
+            baseUrl: "https://searchconsole.googleapis.com/",
+          }),
+        ),
+      ).annotate({ identifier: "GetSitemapsRequest" });
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          submitted: S.optional(S.String),
+          indexed: S.optional(S.String),
+          type: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "WmxSitemapContent" });
+    case 1:
+      return S.Array(__S(320, __c10, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          path: S.optional(S.String),
+          lastSubmitted: S.optional(S.String),
+          lastDownloaded: S.optional(S.String),
+          errors: S.optional(S.String),
+          isPending: S.optional(S.Boolean),
+          isSitemapsIndex: S.optional(S.Boolean),
+          contents: S.optional(__S(321, __c10, 1)),
+          type: S.optional(S.String),
+          warnings: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "WmxSitemap" });
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          siteUrl: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "webmasters/v3/sites/{siteUrl}",
+            baseUrl: "https://searchconsole.googleapis.com/",
+          }),
+        ),
+      ).annotate({ identifier: "GetSitesRequest" });
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          siteUrl: S.optional(S.String),
+          permissionLevel: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "WmxSite" });
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          inspectionUrl: S.optional(S.String),
+          siteUrl: S.optional(S.String),
+          languageCode: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "InspectUrlIndexRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          body: S.optional(__S(416, __c13, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/urlInspection/index:inspect",
+            baseUrl: "https://searchconsole.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "InspectUrlInspectionIndexRequest",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          userCanonical: S.optional(S.String),
+          googleCanonical: S.optional(S.String),
+          referringUrls: S.optional(__S(448, __c14, 0)),
+          verdict: S.optional(S.String),
+          crawledAs: S.optional(S.String),
+          indexingState: S.optional(S.String),
+          lastCrawlTime: S.optional(S.String),
+          sitemap: S.optional(__S(448, __c14, 0)),
+          pageFetchState: S.optional(S.String),
+          coverageState: S.optional(S.String),
+          robotsTxtState: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "IndexStatusInspectionResult",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          issueMessage: S.optional(S.String),
+          severity: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "AmpIssue" });
+    case 4:
+      return S.Array(__S(419, __c13, 3));
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          ampUrl: S.optional(S.String),
+          ampIndexStatusVerdict: S.optional(S.String),
+          issues: S.optional(__S(420, __c13, 4)),
+          pageFetchState: S.optional(S.String),
+          robotsTxtState: S.optional(S.String),
+          verdict: S.optional(S.String),
+          indexingState: S.optional(S.String),
+          lastCrawlTime: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "AmpInspectionResult" });
+    case 6:
+      return S.Array(__S(419, __c13, 3));
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          issues: S.optional(__S(422, __c13, 6)),
+          name: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Item" });
+    case 8:
+      return S.Array(__S(423, __c13, 7));
+    case 9:
+      return S.suspend(() =>
+        S.Struct({
+          items: S.optional(__S(424, __c13, 8)),
+          richResultType: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "DetectedItems" });
+    case 10:
+      return S.Array(__S(425, __c13, 9));
+    case 11:
+      return S.suspend(() =>
+        S.Struct({
+          detectedItems: S.optional(__S(426, __c13, 10)),
+          verdict: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "RichResultsInspectionResult",
+      });
+    case 12:
+      return S.suspend(() =>
+        S.Struct({
+          severity: S.optional(S.String),
+          message: S.optional(S.String),
+          issueType: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "MobileUsabilityIssue" });
+    case 13:
+      return S.Array(__S(428, __c13, 12));
+    case 14:
+      return S.suspend(() =>
+        S.Struct({
+          verdict: S.optional(S.String),
+          issues: S.optional(__S(429, __c13, 13)),
+        }),
+      ).annotate({
+        identifier: "MobileUsabilityInspectionResult",
+      });
+    case 15:
+      return S.suspend(() =>
+        S.Struct({
+          inspectionResultLink: S.optional(S.String),
+          indexStatusResult: S.optional(__S(418, __c13, 2)),
+          ampResult: S.optional(__S(421, __c13, 5)),
+          richResultsResult: S.optional(__S(427, __c13, 11)),
+          mobileUsabilityResult: S.optional(__S(430, __c13, 14)),
+        }),
+      ).annotate({ identifier: "UrlInspectionResult" });
+    case 16:
+      return S.suspend(() =>
+        S.Struct({
+          inspectionResult: S.optional(__S(431, __c13, 15)),
+        }),
+      ).annotate({ identifier: "InspectUrlIndexResponse" });
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

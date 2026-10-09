@@ -172,8 +172,8 @@ export const queryForecast: API.OperationMethod<
   QueryForecastError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1, __c0, 1) as any as S.Schema<QueryForecastRequest>,
-  output: __S(6, __c0, 6) as any as S.Schema<QueryForecastResponse>,
+  input: __S(0, __c0, 0) as any as S.Schema<QueryForecastRequest>,
+  output: __S(1, __c0, 1) as any as S.Schema<QueryForecastResponse>,
   errors: [
     InvalidInputException,
     InvalidNextTokenException,
@@ -202,8 +202,8 @@ export const queryWhatIfForecast: API.OperationMethod<
   QueryWhatIfForecastError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(7, __c0, 7) as any as S.Schema<QueryWhatIfForecastRequest>,
-  output: __S(8, __c1, 0) as any as S.Schema<QueryWhatIfForecastResponse>,
+  input: __S(16, __c2, 0) as any as S.Schema<QueryWhatIfForecastRequest>,
+  output: __S(17, __c2, 1) as any as S.Schema<QueryWhatIfForecastResponse>,
   errors: [
     InvalidInputException,
     InvalidNextTokenException,
@@ -220,56 +220,59 @@ export const queryWhatIfForecast: API.OperationMethod<
 function __c0(j: number): any {
   switch (j) {
     case 0:
-      return S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
-    case 1:
       return S.suspend(() =>
         S.Struct({
           ForecastArn: S.String,
           StartDate: S.optional(S.String),
           EndDate: S.optional(S.String),
-          Filters: __S(0, __c0, 0),
+          Filters: __S(8, __c1, 0),
           NextToken: S.optional(S.String),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "QueryForecastRequest" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({ Timestamp: S.optional(S.String), Value: S.optional(S.Number) }),
-      ).annotate({ identifier: "DataPoint" });
-    case 3:
-      return S.Array(__S(2, __c0, 2));
-    case 4:
-      return S.Record(S.String, /*@__PURE__*/ __S(3, __c0, 3).pipe(S.optional));
-    case 5:
-      return S.suspend(() => S.Struct({ Predictions: S.optional(__S(4, __c0, 4)) })).annotate({
-        identifier: "Forecast",
-      });
-    case 6:
-      return S.suspend(() => S.Struct({ Forecast: S.optional(__S(5, __c0, 5)) })).annotate({
+    case 1:
+      return S.suspend(() => S.Struct({ Forecast: S.optional(__S(12, __c1, 4)) })).annotate({
         identifier: "QueryForecastResponse",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          WhatIfForecastArn: S.String,
-          StartDate: S.optional(S.String),
-          EndDate: S.optional(S.String),
-          Filters: __S(0, __c0, 0),
-          NextToken: S.optional(S.String),
-        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "QueryWhatIfForecastRequest",
       });
   }
 }
 function __c1(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => S.Struct({ Forecast: S.optional(__S(5, __c0, 5)) })).annotate({
+      return S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
+    case 1:
+      return S.suspend(() =>
+        S.Struct({ Timestamp: S.optional(S.String), Value: S.optional(S.Number) }),
+      ).annotate({ identifier: "DataPoint" });
+    case 2:
+      return S.Array(__S(9, __c1, 1));
+    case 3:
+      return S.Record(S.String, /*@__PURE__*/ __S(10, __c1, 2).pipe(S.optional));
+    case 4:
+      return S.suspend(() => S.Struct({ Predictions: S.optional(__S(11, __c1, 3)) })).annotate({
+        identifier: "Forecast",
+      });
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          WhatIfForecastArn: S.String,
+          StartDate: S.optional(S.String),
+          EndDate: S.optional(S.String),
+          Filters: __S(8, __c1, 0),
+          NextToken: S.optional(S.String),
+        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({
+        identifier: "QueryWhatIfForecastRequest",
+      });
+    case 1:
+      return S.suspend(() => S.Struct({ Forecast: S.optional(__S(12, __c1, 4)) })).annotate({
         identifier: "QueryWhatIfForecastResponse",
       });
   }
 }
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

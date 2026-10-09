@@ -1252,11 +1252,11 @@ export const accessibilityClustersProjectsHistoriesExecutionsSteps: API.Operatio
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    0,
-    __c0,
+    448,
+    __c28,
     0,
   ) as any as S.Schema<AccessibilityClustersProjectsHistoriesExecutionsStepsRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<ListStepAccessibilityClustersResponse>,
+  output: __S(455, __c28, 7) as any as S.Schema<ListStepAccessibilityClustersResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1276,11 +1276,11 @@ export const batchCreateProjectsHistoriesExecutionsStepsPerfSampleSeriesSamples:
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    12,
-    __c1,
-    4,
+    465,
+    __c29,
+    1,
   ) as any as S.Schema<BatchCreateProjectsHistoriesExecutionsStepsPerfSampleSeriesSamplesRequest>,
-  output: __S(11, __c1, 3) as any as S.Schema<BatchCreatePerfSamplesResponse>,
+  output: __S(464, __c29, 0) as any as S.Schema<BatchCreatePerfSamplesResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1299,8 +1299,8 @@ export const createProjectsHistories: API.OperationMethod<
   CreateProjectsHistoriesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(14, __c1, 6) as any as S.Schema<CreateProjectsHistoriesRequest>,
-  output: __S(13, __c1, 5) as any as S.Schema<History>,
+  input: __S(512, __c32, 0) as any as S.Schema<CreateProjectsHistoriesRequest>,
+  output: __S(528, __c33, 0) as any as S.Schema<History>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1319,8 +1319,8 @@ export const createProjectsHistoriesExecutions: API.OperationMethod<
   CreateProjectsHistoriesExecutionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(34, __c4, 2) as any as S.Schema<CreateProjectsHistoriesExecutionsRequest>,
-  output: __S(33, __c4, 1) as any as S.Schema<Execution>,
+  input: __S(544, __c34, 0) as any as S.Schema<CreateProjectsHistoriesExecutionsRequest>,
+  output: __S(585, __c36, 9) as any as S.Schema<Execution>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1339,8 +1339,8 @@ export const createProjectsHistoriesExecutionsSteps: API.OperationMethod<
   CreateProjectsHistoriesExecutionsStepsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(60, __c7, 4) as any as S.Schema<CreateProjectsHistoriesExecutionsStepsRequest>,
-  output: __S(59, __c7, 3) as any as S.Schema<Step>,
+  input: __S(640, __c40, 0) as any as S.Schema<CreateProjectsHistoriesExecutionsStepsRequest>,
+  output: __S(735, __c45, 15) as any as S.Schema<Step>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1360,11 +1360,11 @@ export const createProjectsHistoriesExecutionsStepsPerfMetricsSummary: API.Opera
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    70,
-    __c8,
-    6,
+    736,
+    __c46,
+    0,
   ) as any as S.Schema<CreateProjectsHistoriesExecutionsStepsPerfMetricsSummaryRequest>,
-  output: __S(69, __c8, 5) as any as S.Schema<PerfMetricsSummary>,
+  output: __S(760, __c47, 8) as any as S.Schema<PerfMetricsSummary>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1384,11 +1384,11 @@ export const createProjectsHistoriesExecutionsStepsPerfSampleSeries: API.Operati
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    73,
-    __c9,
-    1,
+    0,
+    __c0,
+    0,
   ) as any as S.Schema<CreateProjectsHistoriesExecutionsStepsPerfSampleSeriesRequest>,
-  output: __S(72, __c9, 0) as any as S.Schema<PerfSampleSeries>,
+  output: __S(17, __c1, 1) as any as S.Schema<PerfSampleSeries>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1406,11 +1406,11 @@ export const getPerfMetricsSummaryProjectsHistoriesExecutionsSteps: API.Operatio
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    74,
-    __c9,
-    2,
+    32,
+    __c2,
+    0,
   ) as any as S.Schema<GetPerfMetricsSummaryProjectsHistoriesExecutionsStepsRequest>,
-  output: __S(69, __c8, 5) as any as S.Schema<PerfMetricsSummary>,
+  output: __S(760, __c47, 8) as any as S.Schema<PerfMetricsSummary>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1424,8 +1424,8 @@ export const getProjectsHistories: API.OperationMethod<
   GetProjectsHistoriesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(75, __c9, 3) as any as S.Schema<GetProjectsHistoriesRequest>,
-  output: __S(13, __c1, 5) as any as S.Schema<History>,
+  input: __S(48, __c3, 0) as any as S.Schema<GetProjectsHistoriesRequest>,
+  output: __S(528, __c33, 0) as any as S.Schema<History>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1439,8 +1439,8 @@ export const getProjectsHistoriesExecutions: API.OperationMethod<
   GetProjectsHistoriesExecutionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(76, __c9, 4) as any as S.Schema<GetProjectsHistoriesExecutionsRequest>,
-  output: __S(33, __c4, 1) as any as S.Schema<Execution>,
+  input: __S(64, __c4, 0) as any as S.Schema<GetProjectsHistoriesExecutionsRequest>,
+  output: __S(585, __c36, 9) as any as S.Schema<Execution>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1454,8 +1454,8 @@ export const getProjectsHistoriesExecutionsClusters: API.OperationMethod<
   GetProjectsHistoriesExecutionsClustersError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(77, __c9, 5) as any as S.Schema<GetProjectsHistoriesExecutionsClustersRequest>,
-  output: __S(80, __c10, 0) as any as S.Schema<ScreenshotCluster>,
+  input: __S(80, __c5, 0) as any as S.Schema<GetProjectsHistoriesExecutionsClustersRequest>,
+  output: __S(98, __c6, 2) as any as S.Schema<ScreenshotCluster>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1469,8 +1469,8 @@ export const getProjectsHistoriesExecutionsEnvironments: API.OperationMethod<
   GetProjectsHistoriesExecutionsEnvironmentsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(81, __c10, 1) as any as S.Schema<GetProjectsHistoriesExecutionsEnvironmentsRequest>,
-  output: __S(86, __c10, 6) as any as S.Schema<Environment>,
+  input: __S(112, __c7, 0) as any as S.Schema<GetProjectsHistoriesExecutionsEnvironmentsRequest>,
+  output: __S(132, __c8, 4) as any as S.Schema<Environment>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1484,8 +1484,8 @@ export const getProjectsHistoriesExecutionsSteps: API.OperationMethod<
   GetProjectsHistoriesExecutionsStepsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(87, __c10, 7) as any as S.Schema<GetProjectsHistoriesExecutionsStepsRequest>,
-  output: __S(59, __c7, 3) as any as S.Schema<Step>,
+  input: __S(144, __c9, 0) as any as S.Schema<GetProjectsHistoriesExecutionsStepsRequest>,
+  output: __S(735, __c45, 15) as any as S.Schema<Step>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1503,11 +1503,11 @@ export const getProjectsHistoriesExecutionsStepsPerfSampleSeries: API.OperationM
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    88,
-    __c11,
+    160,
+    __c10,
     0,
   ) as any as S.Schema<GetProjectsHistoriesExecutionsStepsPerfSampleSeriesRequest>,
-  output: __S(72, __c9, 0) as any as S.Schema<PerfSampleSeries>,
+  output: __S(17, __c1, 1) as any as S.Schema<PerfSampleSeries>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1521,8 +1521,8 @@ export const getProjectsHistoriesExecutionsStepsTestCases: API.OperationMethod<
   GetProjectsHistoriesExecutionsStepsTestCasesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(89, __c11, 1) as any as S.Schema<GetProjectsHistoriesExecutionsStepsTestCasesRequest>,
-  output: __S(91, __c11, 3) as any as S.Schema<TestCase>,
+  input: __S(176, __c11, 0) as any as S.Schema<GetProjectsHistoriesExecutionsStepsTestCasesRequest>,
+  output: __S(193, __c12, 1) as any as S.Schema<TestCase>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1536,8 +1536,8 @@ export const getSettingsProjects: API.OperationMethod<
   GetSettingsProjectsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(92, __c11, 4) as any as S.Schema<GetSettingsProjectsRequest>,
-  output: __S(93, __c11, 5) as any as S.Schema<ProjectSettings>,
+  input: __S(208, __c13, 0) as any as S.Schema<GetSettingsProjectsRequest>,
+  output: __S(224, __c14, 0) as any as S.Schema<ProjectSettings>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1556,8 +1556,8 @@ export const initializeSettingsProjects: API.OperationMethod<
   InitializeSettingsProjectsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(94, __c11, 6) as any as S.Schema<InitializeSettingsProjectsRequest>,
-  output: __S(93, __c11, 5) as any as S.Schema<ProjectSettings>,
+  input: __S(240, __c15, 0) as any as S.Schema<InitializeSettingsProjectsRequest>,
+  output: __S(224, __c14, 0) as any as S.Schema<ProjectSettings>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1572,8 +1572,8 @@ export const listProjectsHistories: API.PaginatedOperationMethod<
   GcpOpContext,
   ListHistoriesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(95, __c11, 7) as any as S.Schema<ListProjectsHistoriesRequest>,
-  output: __S(97, __c12, 1) as any as S.Schema<ListHistoriesResponse>,
+  input: __S(256, __c16, 0) as any as S.Schema<ListProjectsHistoriesRequest>,
+  output: __S(258, __c16, 2) as any as S.Schema<ListHistoriesResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1589,8 +1589,8 @@ export const listProjectsHistoriesExecutions: API.PaginatedOperationMethod<
   GcpOpContext,
   ListExecutionsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(98, __c12, 2) as any as S.Schema<ListProjectsHistoriesExecutionsRequest>,
-  output: __S(100, __c12, 4) as any as S.Schema<ListExecutionsResponse>,
+  input: __S(272, __c17, 0) as any as S.Schema<ListProjectsHistoriesExecutionsRequest>,
+  output: __S(274, __c17, 2) as any as S.Schema<ListExecutionsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1605,8 +1605,8 @@ export const listProjectsHistoriesExecutionsClusters: API.OperationMethod<
   ListProjectsHistoriesExecutionsClustersError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(101, __c12, 5) as any as S.Schema<ListProjectsHistoriesExecutionsClustersRequest>,
-  output: __S(103, __c12, 7) as any as S.Schema<ListScreenshotClustersResponse>,
+  input: __S(288, __c18, 0) as any as S.Schema<ListProjectsHistoriesExecutionsClustersRequest>,
+  output: __S(290, __c18, 2) as any as S.Schema<ListScreenshotClustersResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1621,8 +1621,8 @@ export const listProjectsHistoriesExecutionsEnvironments: API.PaginatedOperation
   GcpOpContext,
   ListEnvironmentsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(104, __c13, 0) as any as S.Schema<ListProjectsHistoriesExecutionsEnvironmentsRequest>,
-  output: __S(106, __c13, 2) as any as S.Schema<ListEnvironmentsResponse>,
+  input: __S(304, __c19, 0) as any as S.Schema<ListProjectsHistoriesExecutionsEnvironmentsRequest>,
+  output: __S(306, __c19, 2) as any as S.Schema<ListEnvironmentsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1638,8 +1638,8 @@ export const listProjectsHistoriesExecutionsSteps: API.PaginatedOperationMethod<
   GcpOpContext,
   ListStepsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(107, __c13, 3) as any as S.Schema<ListProjectsHistoriesExecutionsStepsRequest>,
-  output: __S(109, __c13, 5) as any as S.Schema<ListStepsResponse>,
+  input: __S(320, __c20, 0) as any as S.Schema<ListProjectsHistoriesExecutionsStepsRequest>,
+  output: __S(322, __c20, 2) as any as S.Schema<ListStepsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1658,11 +1658,11 @@ export const listProjectsHistoriesExecutionsStepsPerfSampleSeries: API.Operation
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    111,
-    __c13,
-    7,
+    337,
+    __c21,
+    1,
   ) as any as S.Schema<ListProjectsHistoriesExecutionsStepsPerfSampleSeriesRequest>,
-  output: __S(113, __c14, 1) as any as S.Schema<ListPerfSampleSeriesResponse>,
+  output: __S(339, __c21, 3) as any as S.Schema<ListPerfSampleSeriesResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1681,11 +1681,11 @@ export const listProjectsHistoriesExecutionsStepsPerfSampleSeriesSamples: API.Pa
   ListPerfSamplesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(
-    114,
-    __c14,
-    2,
+    352,
+    __c22,
+    0,
   ) as any as S.Schema<ListProjectsHistoriesExecutionsStepsPerfSampleSeriesSamplesRequest>,
-  output: __S(115, __c14, 3) as any as S.Schema<ListPerfSamplesResponse>,
+  output: __S(353, __c22, 1) as any as S.Schema<ListPerfSamplesResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1702,11 +1702,11 @@ export const listProjectsHistoriesExecutionsStepsTestCases: API.PaginatedOperati
   ListTestCasesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(
-    116,
-    __c14,
-    4,
+    368,
+    __c23,
+    0,
   ) as any as S.Schema<ListProjectsHistoriesExecutionsStepsTestCasesRequest>,
-  output: __S(118, __c14, 6) as any as S.Schema<ListTestCasesResponse>,
+  output: __S(370, __c23, 2) as any as S.Schema<ListTestCasesResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1723,11 +1723,11 @@ export const listProjectsHistoriesExecutionsStepsThumbnails: API.PaginatedOperat
   ListStepThumbnailsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(
-    119,
-    __c14,
-    7,
+    384,
+    __c24,
+    0,
   ) as any as S.Schema<ListProjectsHistoriesExecutionsStepsThumbnailsRequest>,
-  output: __S(126, __c15, 6) as any as S.Schema<ListStepThumbnailsResponse>,
+  output: __S(391, __c24, 7) as any as S.Schema<ListStepThumbnailsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1747,8 +1747,8 @@ export const patchProjectsHistoriesExecutions: API.OperationMethod<
   PatchProjectsHistoriesExecutionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(127, __c15, 7) as any as S.Schema<PatchProjectsHistoriesExecutionsRequest>,
-  output: __S(33, __c4, 1) as any as S.Schema<Execution>,
+  input: __S(400, __c25, 0) as any as S.Schema<PatchProjectsHistoriesExecutionsRequest>,
+  output: __S(585, __c36, 9) as any as S.Schema<Execution>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1767,8 +1767,8 @@ export const patchProjectsHistoriesExecutionsSteps: API.OperationMethod<
   PatchProjectsHistoriesExecutionsStepsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(128, __c16, 0) as any as S.Schema<PatchProjectsHistoriesExecutionsStepsRequest>,
-  output: __S(59, __c7, 3) as any as S.Schema<Step>,
+  input: __S(416, __c26, 0) as any as S.Schema<PatchProjectsHistoriesExecutionsStepsRequest>,
+  output: __S(735, __c45, 15) as any as S.Schema<Step>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1788,11 +1788,11 @@ export const publishXunitXmlFilesProjectsHistoriesExecutionsSteps: API.Operation
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    130,
-    __c16,
-    2,
+    433,
+    __c27,
+    1,
   ) as any as S.Schema<PublishXunitXmlFilesProjectsHistoriesExecutionsStepsRequest>,
-  output: __S(59, __c7, 3) as any as S.Schema<Step>,
+  output: __S(735, __c45, 15) as any as S.Schema<Step>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1800,6 +1800,744 @@ export const publishXunitXmlFilesProjectsHistoriesExecutionsSteps: API.Operation
 
 // Schema builders: each runs one schema initializer, on that schema's first use.
 function __c0(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          stepId: S.String.pipe(T.Label()),
+          executionId: S.String.pipe(T.Label()),
+          projectId: S.String.pipe(T.Label()),
+          historyId: S.String.pipe(T.Label()),
+          body: S.optional(__S(17, __c1, 1).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "toolresults/v1beta3/projects/{projectId}/histories/{historyId}/executions/{executionId}/steps/{stepId}/perfSampleSeries",
+            baseUrl: "https://toolresults.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateProjectsHistoriesExecutionsStepsPerfSampleSeriesRequest",
+      });
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          perfUnit: S.optional(S.String),
+          sampleSeriesLabel: S.optional(S.String),
+          perfMetricType: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "BasicPerfSampleSeries" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          stepId: S.optional(S.String),
+          sampleSeriesId: S.optional(S.String),
+          projectId: S.optional(S.String),
+          basicPerfSampleSeries: S.optional(__S(16, __c1, 0)),
+          executionId: S.optional(S.String),
+          historyId: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "PerfSampleSeries" });
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          stepId: S.String.pipe(T.Label()),
+          projectId: S.String.pipe(T.Label()),
+          historyId: S.String.pipe(T.Label()),
+          executionId: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "toolresults/v1beta3/projects/{projectId}/histories/{historyId}/executions/{executionId}/steps/{stepId}/perfMetricsSummary",
+            baseUrl: "https://toolresults.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetPerfMetricsSummaryProjectsHistoriesExecutionsStepsRequest",
+      });
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          projectId: S.String.pipe(T.Label()),
+          historyId: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "toolresults/v1beta3/projects/{projectId}/histories/{historyId}",
+            baseUrl: "https://toolresults.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetProjectsHistoriesRequest",
+      });
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          projectId: S.String.pipe(T.Label()),
+          historyId: S.String.pipe(T.Label()),
+          executionId: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "toolresults/v1beta3/projects/{projectId}/histories/{historyId}/executions/{executionId}",
+            baseUrl: "https://toolresults.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetProjectsHistoriesExecutionsRequest",
+      });
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          clusterId: S.String.pipe(T.Label()),
+          projectId: S.String.pipe(T.Label()),
+          historyId: S.String.pipe(T.Label()),
+          executionId: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "toolresults/v1beta3/projects/{projectId}/histories/{historyId}/executions/{executionId}/clusters/{clusterId}",
+            baseUrl: "https://toolresults.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetProjectsHistoriesExecutionsClustersRequest",
+      });
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          version: S.optional(S.String),
+          fileReference: S.optional(S.String),
+          model: S.optional(S.String),
+          locale: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Screen" });
+    case 1:
+      return S.Array(__S(96, __c6, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          clusterId: S.optional(S.String),
+          activity: S.optional(S.String),
+          keyScreen: S.optional(__S(96, __c6, 0)),
+          screens: S.optional(__S(97, __c6, 1)),
+        }),
+      ).annotate({ identifier: "ScreenshotCluster" });
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          environmentId: S.String.pipe(T.Label()),
+          executionId: S.String.pipe(T.Label()),
+          projectId: S.String.pipe(T.Label()),
+          historyId: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "toolresults/v1beta3/projects/{projectId}/histories/{historyId}/executions/{executionId}/environments/{environmentId}",
+            baseUrl: "https://toolresults.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetProjectsHistoriesExecutionsEnvironmentsRequest",
+      });
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          state: S.optional(S.String),
+          testSuiteOverviews: S.optional(__S(673, __c42, 1)),
+          outcome: S.optional(__S(596, __c37, 4)),
+        }),
+      ).annotate({ identifier: "MergedResult" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          shardResult: S.optional(__S(128, __c8, 0)),
+          runs: S.optional(__S(561, __c35, 1)),
+        }),
+      ).annotate({ identifier: "ShardSummary" });
+    case 2:
+      return S.Array(__S(129, __c8, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          xunitXmlFile: S.optional(__S(656, __c41, 0)),
+          resultsStoragePath: S.optional(__S(656, __c41, 0)),
+        }),
+      ).annotate({ identifier: "ResultsStorage" });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          displayName: S.optional(S.String),
+          completionTime: S.optional(__S(496, __c31, 0)),
+          projectId: S.optional(S.String),
+          environmentResult: S.optional(__S(128, __c8, 0)),
+          dimensionValue: S.optional(__S(675, __c42, 3)),
+          shardSummaries: S.optional(__S(130, __c8, 2)),
+          historyId: S.optional(S.String),
+          executionId: S.optional(S.String),
+          environmentId: S.optional(S.String),
+          resultsStorage: S.optional(__S(131, __c8, 3)),
+          creationTime: S.optional(__S(496, __c31, 0)),
+        }),
+      ).annotate({ identifier: "Environment" });
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          executionId: S.String.pipe(T.Label()),
+          stepId: S.String.pipe(T.Label()),
+          projectId: S.String.pipe(T.Label()),
+          historyId: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "toolresults/v1beta3/projects/{projectId}/histories/{historyId}/executions/{executionId}/steps/{stepId}",
+            baseUrl: "https://toolresults.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetProjectsHistoriesExecutionsStepsRequest",
+      });
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          stepId: S.String.pipe(T.Label()),
+          executionId: S.String.pipe(T.Label()),
+          projectId: S.String.pipe(T.Label()),
+          sampleSeriesId: S.String.pipe(T.Label()),
+          historyId: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "toolresults/v1beta3/projects/{projectId}/histories/{historyId}/executions/{executionId}/steps/{stepId}/perfSampleSeries/{sampleSeriesId}",
+            baseUrl: "https://toolresults.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetProjectsHistoriesExecutionsStepsPerfSampleSeriesRequest",
+      });
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          executionId: S.String.pipe(T.Label()),
+          projectId: S.String.pipe(T.Label()),
+          stepId: S.String.pipe(T.Label()),
+          testCaseId: S.String.pipe(T.Label()),
+          historyId: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "toolresults/v1beta3/projects/{projectId}/histories/{historyId}/executions/{executionId}/steps/{stepId}/testCases/{testCaseId}",
+            baseUrl: "https://toolresults.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetProjectsHistoriesExecutionsStepsTestCasesRequest",
+      });
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(704, __c44, 0));
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          elapsedTime: S.optional(__S(624, __c39, 0)),
+          toolOutputs: S.optional(__S(705, __c44, 1)),
+          testCaseReference: S.optional(__S(688, __c43, 0)),
+          status: S.optional(S.String),
+          testCaseId: S.optional(S.String),
+          skippedMessage: S.optional(S.String),
+          endTime: S.optional(__S(496, __c31, 0)),
+          startTime: S.optional(__S(496, __c31, 0)),
+          stackTraces: S.optional(__S(192, __c12, 0)),
+        }),
+      ).annotate({ identifier: "TestCase" });
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          projectId: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "toolresults/v1beta3/projects/{projectId}/settings",
+            baseUrl: "https://toolresults.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetSettingsProjectsRequest",
+      });
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          defaultBucket: S.optional(S.String),
+          name: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ProjectSettings" });
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          projectId: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "toolresults/v1beta3/projects/{projectId}:initializeSettings",
+            baseUrl: "https://toolresults.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "InitializeSettingsProjectsRequest",
+      });
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          pageToken: S.optional(S.String.pipe(T.Query())),
+          pageSize: S.optional(S.Number.pipe(T.Query())),
+          projectId: S.String.pipe(T.Label()),
+          filterByName: S.optional(S.String.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "toolresults/v1beta3/projects/{projectId}/histories",
+            baseUrl: "https://toolresults.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListProjectsHistoriesRequest",
+      });
+    case 1:
+      return S.Array(__S(528, __c33, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          histories: S.optional(__S(257, __c16, 1)),
+          nextPageToken: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ListHistoriesResponse" });
+  }
+}
+function __c17(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          pageSize: S.optional(S.Number.pipe(T.Query())),
+          projectId: S.String.pipe(T.Label()),
+          historyId: S.String.pipe(T.Label()),
+          pageToken: S.optional(S.String.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "toolresults/v1beta3/projects/{projectId}/histories/{historyId}/executions",
+            baseUrl: "https://toolresults.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListProjectsHistoriesExecutionsRequest",
+      });
+    case 1:
+      return S.Array(__S(585, __c36, 9));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          executions: S.optional(__S(273, __c17, 1)),
+          nextPageToken: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ListExecutionsResponse" });
+  }
+}
+function __c18(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          projectId: S.String.pipe(T.Label()),
+          historyId: S.String.pipe(T.Label()),
+          executionId: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "toolresults/v1beta3/projects/{projectId}/histories/{historyId}/executions/{executionId}/clusters",
+            baseUrl: "https://toolresults.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListProjectsHistoriesExecutionsClustersRequest",
+      });
+    case 1:
+      return S.Array(__S(98, __c6, 2));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          clusters: S.optional(__S(289, __c18, 1)),
+        }),
+      ).annotate({
+        identifier: "ListScreenshotClustersResponse",
+      });
+  }
+}
+function __c19(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          historyId: S.String.pipe(T.Label()),
+          pageToken: S.optional(S.String.pipe(T.Query())),
+          pageSize: S.optional(S.Number.pipe(T.Query())),
+          executionId: S.String.pipe(T.Label()),
+          projectId: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "toolresults/v1beta3/projects/{projectId}/histories/{historyId}/executions/{executionId}/environments",
+            baseUrl: "https://toolresults.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListProjectsHistoriesExecutionsEnvironmentsRequest",
+      });
+    case 1:
+      return S.Array(__S(132, __c8, 4));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          environments: S.optional(__S(305, __c19, 1)),
+          nextPageToken: S.optional(S.String),
+          projectId: S.optional(S.String),
+          executionId: S.optional(S.String),
+          historyId: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ListEnvironmentsResponse" });
+  }
+}
+function __c20(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          historyId: S.String.pipe(T.Label()),
+          pageSize: S.optional(S.Number.pipe(T.Query())),
+          executionId: S.String.pipe(T.Label()),
+          projectId: S.String.pipe(T.Label()),
+          pageToken: S.optional(S.String.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "toolresults/v1beta3/projects/{projectId}/histories/{historyId}/executions/{executionId}/steps",
+            baseUrl: "https://toolresults.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListProjectsHistoriesExecutionsStepsRequest",
+      });
+    case 1:
+      return S.Array(__S(735, __c45, 15));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          nextPageToken: S.optional(S.String),
+          steps: S.optional(__S(321, __c20, 1)),
+        }),
+      ).annotate({ identifier: "ListStepsResponse" });
+  }
+}
+function __c21(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          projectId: S.String.pipe(T.Label()),
+          executionId: S.String.pipe(T.Label()),
+          stepId: S.String.pipe(T.Label()),
+          filter: S.optional(__S(336, __c21, 0).pipe(T.Query())),
+          historyId: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "toolresults/v1beta3/projects/{projectId}/histories/{historyId}/executions/{executionId}/steps/{stepId}/perfSampleSeries",
+            baseUrl: "https://toolresults.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListProjectsHistoriesExecutionsStepsPerfSampleSeriesRequest",
+      });
+    case 2:
+      return S.Array(__S(17, __c1, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          perfSampleSeries: S.optional(__S(338, __c21, 2)),
+        }),
+      ).annotate({
+        identifier: "ListPerfSampleSeriesResponse",
+      });
+  }
+}
+function __c22(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          pageToken: S.optional(S.String.pipe(T.Query())),
+          stepId: S.String.pipe(T.Label()),
+          executionId: S.String.pipe(T.Label()),
+          projectId: S.String.pipe(T.Label()),
+          pageSize: S.optional(S.Number.pipe(T.Query())),
+          historyId: S.String.pipe(T.Label()),
+          sampleSeriesId: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "toolresults/v1beta3/projects/{projectId}/histories/{historyId}/executions/{executionId}/steps/{stepId}/perfSampleSeries/{sampleSeriesId}/samples",
+            baseUrl: "https://toolresults.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListProjectsHistoriesExecutionsStepsPerfSampleSeriesSamplesRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          perfSamples: S.optional(__S(481, __c30, 1)),
+          nextPageToken: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ListPerfSamplesResponse" });
+  }
+}
+function __c23(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          historyId: S.String.pipe(T.Label()),
+          pageSize: S.optional(S.Number.pipe(T.Query())),
+          projectId: S.String.pipe(T.Label()),
+          executionId: S.String.pipe(T.Label()),
+          pageToken: S.optional(S.String.pipe(T.Query())),
+          stepId: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "toolresults/v1beta3/projects/{projectId}/histories/{historyId}/executions/{executionId}/steps/{stepId}/testCases",
+            baseUrl: "https://toolresults.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListProjectsHistoriesExecutionsStepsTestCasesRequest",
+      });
+    case 1:
+      return S.Array(__S(193, __c12, 1));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          testCases: S.optional(__S(369, __c23, 1)),
+          nextPageToken: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ListTestCasesResponse" });
+  }
+}
+function __c24(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          pageToken: S.optional(S.String.pipe(T.Query())),
+          projectId: S.String.pipe(T.Label()),
+          pageSize: S.optional(S.Number.pipe(T.Query())),
+          executionId: S.String.pipe(T.Label()),
+          stepId: S.String.pipe(T.Label()),
+          historyId: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "toolresults/v1beta3/projects/{projectId}/histories/{historyId}/executions/{executionId}/steps/{stepId}/thumbnails",
+            baseUrl: "https://toolresults.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListProjectsHistoriesExecutionsStepsThumbnailsRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          heightPx: S.optional(S.Number),
+          contentType: S.optional(S.String),
+          data: S.optional(S.String),
+          widthPx: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "Thumbnail" });
+    case 2:
+      return S.Record(S.String, S.Unknown);
+    case 3:
+      return S.Array(__S(386, __c24, 2));
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          details: S.optional(__S(387, __c24, 3)),
+          code: S.optional(S.Number),
+          message: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Status" });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          thumbnail: S.optional(__S(385, __c24, 1)),
+          error: S.optional(__S(388, __c24, 4)),
+          sourceImage: S.optional(__S(689, __c43, 1)),
+          stepId: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Image" });
+    case 6:
+      return S.Array(__S(389, __c24, 5));
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          nextPageToken: S.optional(S.String),
+          thumbnails: S.optional(__S(390, __c24, 6)),
+        }),
+      ).annotate({
+        identifier: "ListStepThumbnailsResponse",
+      });
+  }
+}
+function __c25(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          projectId: S.String.pipe(T.Label()),
+          historyId: S.String.pipe(T.Label()),
+          requestId: S.optional(S.String.pipe(T.Query())),
+          executionId: S.String.pipe(T.Label()),
+          body: S.optional(__S(585, __c36, 9).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "PATCH",
+            uri: "toolresults/v1beta3/projects/{projectId}/histories/{historyId}/executions/{executionId}",
+            baseUrl: "https://toolresults.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "PatchProjectsHistoriesExecutionsRequest",
+      });
+  }
+}
+function __c26(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          executionId: S.String.pipe(T.Label()),
+          projectId: S.String.pipe(T.Label()),
+          stepId: S.String.pipe(T.Label()),
+          requestId: S.optional(S.String.pipe(T.Query())),
+          historyId: S.String.pipe(T.Label()),
+          body: S.optional(__S(735, __c45, 15).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "PATCH",
+            uri: "toolresults/v1beta3/projects/{projectId}/histories/{historyId}/executions/{executionId}/steps/{stepId}",
+            baseUrl: "https://toolresults.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "PatchProjectsHistoriesExecutionsStepsRequest",
+      });
+  }
+}
+function __c27(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          xunitXmlFiles: S.optional(__S(724, __c45, 4)),
+        }),
+      ).annotate({
+        identifier: "PublishXunitXmlFilesRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          executionId: S.String.pipe(T.Label()),
+          projectId: S.String.pipe(T.Label()),
+          historyId: S.String.pipe(T.Label()),
+          stepId: S.String.pipe(T.Label()),
+          body: S.optional(__S(432, __c27, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "toolresults/v1beta3/projects/{projectId}/histories/{historyId}/executions/{executionId}/steps/{stepId}:publishXunitXmlFiles",
+            baseUrl: "https://toolresults.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "PublishXunitXmlFilesProjectsHistoriesExecutionsStepsRequest",
+      });
+  }
+}
+function __c28(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1837,64 +2575,48 @@ function __c0(j: number): any {
           resourceName: S.optional(S.String),
           priority: S.optional(S.String),
           screenId: S.optional(S.String),
-          shortMessage: S.optional(__S(1, __c0, 1)),
-          longMessage: S.optional(__S(1, __c0, 1)),
+          shortMessage: S.optional(__S(449, __c28, 1)),
+          longMessage: S.optional(__S(449, __c28, 1)),
           helpUrl: S.optional(S.String),
           title: S.optional(S.String),
           pseudoResourceId: S.optional(S.String),
           secondaryPriority: S.optional(S.Number),
-          region: S.optional(__S(2, __c0, 2)),
+          region: S.optional(__S(450, __c28, 2)),
         }),
       ).annotate({ identifier: "SuggestionProto" });
     case 4:
-      return S.Array(__S(3, __c0, 3));
+      return S.Array(__S(451, __c28, 3));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          suggestions: S.optional(__S(4, __c0, 4)),
+          suggestions: S.optional(__S(452, __c28, 4)),
           category: S.optional(S.String),
         }),
       ).annotate({ identifier: "SuggestionClusterProto" });
     case 6:
-      return S.Array(__S(5, __c0, 5));
+      return S.Array(__S(453, __c28, 5));
     case 7:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
-          clusters: S.optional(__S(6, __c0, 6)),
+          clusters: S.optional(__S(454, __c28, 6)),
         }),
       ).annotate({
         identifier: "ListStepAccessibilityClustersResponse",
       });
   }
 }
-function __c1(j: number): any {
+function __c29(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          seconds: S.optional(S.String),
-          nanos: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "Timestamp" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          sampleTime: S.optional(__S(8, __c1, 0)),
-          value: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "PerfSample" });
-    case 2:
-      return S.Array(__S(9, __c1, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          perfSamples: S.optional(__S(10, __c1, 2)),
+          perfSamples: S.optional(__S(481, __c30, 1)),
         }),
       ).annotate({
         identifier: "BatchCreatePerfSamplesRequest",
       });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.Label()),
@@ -1902,7 +2624,7 @@ function __c1(j: number): any {
           executionId: S.String.pipe(T.Label()),
           historyId: S.String.pipe(T.Label()),
           stepId: S.String.pipe(T.Label()),
-          body: S.optional(__S(11, __c1, 3).pipe(T.HttpBody())),
+          body: S.optional(__S(464, __c29, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -1913,21 +2635,40 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "BatchCreateProjectsHistoriesExecutionsStepsPerfSampleSeriesSamplesRequest",
       });
-    case 5:
+  }
+}
+function __c30(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          name: S.optional(S.String),
-          historyId: S.optional(S.String),
-          displayName: S.optional(S.String),
-          testPlatform: S.optional(S.String),
+          sampleTime: S.optional(__S(496, __c31, 0)),
+          value: S.optional(S.Number),
         }),
-      ).annotate({ identifier: "History" });
-    case 6:
+      ).annotate({ identifier: "PerfSample" });
+    case 1:
+      return S.Array(__S(480, __c30, 0));
+  }
+}
+function __c31(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          seconds: S.optional(S.String),
+          nanos: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "Timestamp" });
+  }
+}
+function __c32(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           requestId: S.optional(S.String.pipe(T.Query())),
           projectId: S.String.pipe(T.Label()),
-          body: S.optional(__S(13, __c1, 5).pipe(T.HttpBody())),
+          body: S.optional(__S(528, __c33, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -1938,31 +2679,66 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "CreateProjectsHistoriesRequest",
       });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          nanos: S.optional(S.Number),
-          seconds: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Duration" });
   }
 }
-function __c2(j: number): any {
+function __c33(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(S.String);
+      return S.suspend(() =>
+        S.Struct({
+          name: S.optional(S.String),
+          historyId: S.optional(S.String),
+          displayName: S.optional(S.String),
+          testPlatform: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "History" });
+  }
+}
+function __c34(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          requestId: S.optional(S.String.pipe(T.Query())),
+          projectId: S.String.pipe(T.Label()),
+          historyId: S.String.pipe(T.Label()),
+          body: S.optional(__S(585, __c36, 9).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "toolresults/v1beta3/projects/{projectId}/histories/{historyId}/executions",
+            baseUrl: "https://toolresults.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateProjectsHistoriesExecutionsRequest",
+      });
+  }
+}
+function __c35(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "AndroidTestLoop",
+      });
     case 1:
+      return S.Array(__S(560, __c35, 0));
+  }
+}
+function __c36(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           testPackageId: S.optional(S.String),
           useOrchestrator: S.optional(S.Boolean),
           testRunnerClass: S.optional(S.String),
-          testTargets: S.optional(__S(16, __c2, 0)),
+          testTargets: S.optional(__S(608, __c38, 0)),
         }),
       ).annotate({
         identifier: "AndroidInstrumentationTest",
       });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           bootstrapRunnerClass: S.optional(S.String),
@@ -1972,7 +2748,7 @@ function __c2(j: number): any {
           maxDepth: S.optional(S.Number),
         }),
       ).annotate({ identifier: "AndroidRoboTest" });
-    case 3:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           packageName: S.optional(S.String),
@@ -1981,69 +2757,76 @@ function __c2(j: number): any {
           name: S.optional(S.String),
         }),
       ).annotate({ identifier: "AndroidAppInfo" });
-    case 4:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "AndroidTestLoop",
-      });
-    case 5:
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          testTimeout: S.optional(__S(15, __c1, 7)),
-          androidInstrumentationTest: S.optional(__S(17, __c2, 1)),
-          androidRoboTest: S.optional(__S(18, __c2, 2)),
-          androidAppInfo: S.optional(__S(19, __c2, 3)),
-          androidTestLoop: S.optional(__S(20, __c2, 4)),
+          testTimeout: S.optional(__S(624, __c39, 0)),
+          androidInstrumentationTest: S.optional(__S(576, __c36, 0)),
+          androidRoboTest: S.optional(__S(577, __c36, 1)),
+          androidAppInfo: S.optional(__S(578, __c36, 2)),
+          androidTestLoop: S.optional(__S(560, __c35, 0)),
         }),
       ).annotate({ identifier: "AndroidTest" });
-    case 6:
+    case 4:
       return S.suspend(() =>
         S.Struct({
           xcodeVersion: S.optional(S.String),
           bundleId: S.optional(S.String),
         }),
       ).annotate({ identifier: "IosXcTest" });
-    case 7:
+    case 5:
       return S.suspend(() =>
         S.Struct({
           bundleId: S.optional(S.String),
         }),
       ).annotate({ identifier: "IosTestLoop" });
-  }
-}
-function __c3(j: number): any {
-  switch (j) {
-    case 0:
+    case 6:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
         }),
       ).annotate({ identifier: "IosAppInfo" });
-    case 1:
+    case 7:
       return S.suspend(() =>
         S.Struct({
-          testTimeout: S.optional(__S(15, __c1, 7)),
-          iosRoboTest: S.optional(__S(20, __c2, 4)),
-          iosXcTest: S.optional(__S(22, __c2, 6)),
-          iosTestLoop: S.optional(__S(23, __c2, 7)),
-          iosAppInfo: S.optional(__S(24, __c3, 0)),
+          testTimeout: S.optional(__S(624, __c39, 0)),
+          iosRoboTest: S.optional(__S(560, __c35, 0)),
+          iosXcTest: S.optional(__S(580, __c36, 4)),
+          iosTestLoop: S.optional(__S(581, __c36, 5)),
+          iosAppInfo: S.optional(__S(582, __c36, 6)),
         }),
       ).annotate({ identifier: "IosTest" });
-    case 2:
+    case 8:
       return S.suspend(() =>
         S.Struct({
-          androidTest: S.optional(__S(21, __c2, 5)),
-          iosTest: S.optional(__S(25, __c3, 1)),
+          androidTest: S.optional(__S(579, __c36, 3)),
+          iosTest: S.optional(__S(583, __c36, 7)),
         }),
       ).annotate({ identifier: "Specification" });
-    case 3:
-      return S.Array(__S(20, __c2, 4));
-    case 4:
+    case 9:
+      return S.suspend(() =>
+        S.Struct({
+          specification: S.optional(__S(584, __c36, 8)),
+          testExecutionMatrixId: S.optional(S.String),
+          executionId: S.optional(S.String),
+          state: S.optional(S.String),
+          completionTime: S.optional(__S(496, __c31, 0)),
+          dimensionDefinitions: S.optional(__S(561, __c35, 1)),
+          creationTime: S.optional(__S(496, __c31, 0)),
+          outcome: S.optional(__S(596, __c37, 4)),
+        }),
+      ).annotate({ identifier: "Execution" });
+  }
+}
+function __c37(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           otherNativeCrash: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "SuccessDetail" });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           crashed: S.optional(S.Boolean),
@@ -2055,7 +2838,7 @@ function __c3(j: number): any {
           deviceOutOfMemory: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "FailureDetail" });
-    case 6:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           pendingTimeout: S.optional(S.Boolean),
@@ -2064,7 +2847,7 @@ function __c3(j: number): any {
           incompatibleDevice: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "SkippedDetail" });
-    case 7:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           infrastructureFailure: S.optional(S.Boolean),
@@ -2072,237 +2855,45 @@ function __c3(j: number): any {
           hasErrorLogs: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "InconclusiveDetail" });
-  }
-}
-function __c4(j: number): any {
-  switch (j) {
-    case 0:
+    case 4:
       return S.suspend(() =>
         S.Struct({
-          successDetail: S.optional(__S(28, __c3, 4)),
-          failureDetail: S.optional(__S(29, __c3, 5)),
-          skippedDetail: S.optional(__S(30, __c3, 6)),
+          successDetail: S.optional(__S(592, __c37, 0)),
+          failureDetail: S.optional(__S(593, __c37, 1)),
+          skippedDetail: S.optional(__S(594, __c37, 2)),
           summary: S.optional(S.String),
-          inconclusiveDetail: S.optional(__S(31, __c3, 7)),
+          inconclusiveDetail: S.optional(__S(595, __c37, 3)),
         }),
       ).annotate({ identifier: "Outcome" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          specification: S.optional(__S(26, __c3, 2)),
-          testExecutionMatrixId: S.optional(S.String),
-          executionId: S.optional(S.String),
-          state: S.optional(S.String),
-          completionTime: S.optional(__S(8, __c1, 0)),
-          dimensionDefinitions: S.optional(__S(27, __c3, 3)),
-          creationTime: S.optional(__S(8, __c1, 0)),
-          outcome: S.optional(__S(32, __c4, 0)),
-        }),
-      ).annotate({ identifier: "Execution" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          requestId: S.optional(S.String.pipe(T.Query())),
-          projectId: S.String.pipe(T.Label()),
-          historyId: S.String.pipe(T.Label()),
-          body: S.optional(__S(33, __c4, 1).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "toolresults/v1beta3/projects/{projectId}/histories/{historyId}/executions",
-            baseUrl: "https://toolresults.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateProjectsHistoriesExecutionsRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          fileUri: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "FileReference" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          errorCount: S.optional(S.Number),
-          skippedCount: S.optional(S.Number),
-          xmlSource: S.optional(__S(35, __c4, 3)),
-          failureCount: S.optional(S.Number),
-          name: S.optional(S.String),
-          elapsedTime: S.optional(__S(15, __c1, 7)),
-          totalCount: S.optional(S.Number),
-          flakyCount: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "TestSuiteOverview" });
-    case 5:
-      return S.Array(__S(36, __c4, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          value: S.optional(S.String),
-          typeUrl: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Any" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          exception: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "StackTrace" });
   }
 }
-function __c5(j: number): any {
+function __c38(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c39(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          category: S.optional(S.String),
-          severity: S.optional(S.String),
-          warning_migration: S.optional(__S(38, __c4, 6)),
-          errorMessage: S.optional(S.String),
-          type: S.optional(S.String),
-          stackTrace: S.optional(__S(39, __c4, 7)),
+          nanos: S.optional(S.Number),
+          seconds: S.optional(S.String),
         }),
-      ).annotate({ identifier: "TestIssue" });
-    case 1:
-      return S.Array(__S(40, __c5, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          testProcessDuration: S.optional(__S(15, __c1, 7)),
-        }),
-      ).annotate({ identifier: "TestTiming" });
-    case 3:
-      return S.Array(__S(35, __c4, 3));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          number: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "ToolExitCode" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.optional(S.String),
-          className: S.optional(S.String),
-          testSuiteName: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "TestCaseReference" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          creationTime: S.optional(__S(8, __c1, 0)),
-          output: S.optional(__S(35, __c4, 3)),
-          testCase: S.optional(__S(45, __c5, 5)),
-        }),
-      ).annotate({ identifier: "ToolOutputReference" });
-    case 7:
-      return S.Array(__S(46, __c5, 6));
+      ).annotate({ identifier: "Duration" });
   }
 }
-function __c6(j: number): any {
+function __c40(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() =>
-        S.Struct({
-          toolLogs: S.optional(__S(43, __c5, 3)),
-          exitCode: S.optional(__S(44, __c5, 4)),
-          toolOutputs: S.optional(__S(47, __c5, 7)),
-          commandLineArguments: S.optional(__S(16, __c2, 0)),
-        }),
-      ).annotate({ identifier: "ToolExecution" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          testSuiteOverviews: S.optional(__S(37, __c4, 5)),
-          testIssues: S.optional(__S(41, __c5, 1)),
-          testTiming: S.optional(__S(42, __c5, 2)),
-          toolExecution: S.optional(__S(48, __c6, 0)),
-        }),
-      ).annotate({ identifier: "TestExecutionStep" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          multistepNumber: S.optional(S.Number),
-          stepId: S.optional(S.String),
-          runDuration: S.optional(__S(15, __c1, 7)),
-          outcomeSummary: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "IndividualOutcome" });
-    case 3:
-      return S.Array(__S(50, __c6, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          rollUp: S.optional(S.String),
-          individualOutcome: S.optional(__S(51, __c6, 3)),
-        }),
-      ).annotate({ identifier: "PrimaryStep" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          multistepNumber: S.optional(S.Number),
-          primaryStep: S.optional(__S(52, __c6, 4)),
-          primaryStepId: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "MultiStep" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          toolExecution: S.optional(__S(48, __c6, 0)),
-        }),
-      ).annotate({ identifier: "ToolExecutionStep" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          value: S.optional(S.String),
-          key: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "StepLabelsEntry" });
-  }
-}
-function __c7(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(55, __c6, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          key: S.optional(S.String),
-          value: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "StepDimensionValueEntry" });
-    case 2:
-      return S.Array(__S(57, __c7, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          testExecutionStep: S.optional(__S(49, __c6, 1)),
-          name: S.optional(S.String),
-          stepId: S.optional(S.String),
-          multiStep: S.optional(__S(53, __c6, 5)),
-          toolExecutionStep: S.optional(__S(54, __c6, 6)),
-          outcome: S.optional(__S(32, __c4, 0)),
-          runDuration: S.optional(__S(15, __c1, 7)),
-          hasImages: S.optional(S.Boolean),
-          labels: S.optional(__S(56, __c7, 0)),
-          dimensionValue: S.optional(__S(58, __c7, 2)),
-          deviceUsageDuration: S.optional(__S(15, __c1, 7)),
-          completionTime: S.optional(__S(8, __c1, 0)),
-          state: S.optional(S.String),
-          creationTime: S.optional(__S(8, __c1, 0)),
-          description: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Step" });
-    case 4:
       return S.suspend(() =>
         S.Struct({
           requestId: S.optional(S.String.pipe(T.Query())),
           projectId: S.String.pipe(T.Label()),
           historyId: S.String.pipe(T.Label()),
           executionId: S.String.pipe(T.Label()),
-          body: S.optional(__S(59, __c7, 3).pipe(T.HttpBody())),
+          body: S.optional(__S(735, __c45, 15).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -2313,88 +2904,205 @@ function __c7(j: number): any {
       ).annotate({
         identifier: "CreateProjectsHistoriesExecutionsStepsRequest",
       });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          memoryCapInKibibyte: S.optional(S.String),
-          memoryTotalInKibibyte: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "MemoryInfo" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          cpuSpeedInGhz: S.optional(S.Number),
-          numberOfCores: S.optional(S.Number),
-          cpuProcessor: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "CPUInfo" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          memoryInfo: S.optional(__S(61, __c7, 5)),
-          cpuInfo: S.optional(__S(62, __c7, 6)),
-        }),
-      ).annotate({ identifier: "PerfEnvironment" });
   }
 }
-function __c8(j: number): any {
+function __c41(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          fullyDrawnTime: S.optional(__S(15, __c1, 7)),
-          initialDisplayTime: S.optional(__S(15, __c1, 7)),
+          fileUri: S.optional(S.String),
         }),
-      ).annotate({ identifier: "AppStartTime" });
+      ).annotate({ identifier: "FileReference" });
+  }
+}
+function __c42(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          errorCount: S.optional(S.Number),
+          skippedCount: S.optional(S.Number),
+          xmlSource: S.optional(__S(656, __c41, 0)),
+          failureCount: S.optional(S.Number),
+          name: S.optional(S.String),
+          elapsedTime: S.optional(__S(624, __c39, 0)),
+          totalCount: S.optional(S.Number),
+          flakyCount: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "TestSuiteOverview" });
     case 1:
-      return S.Array(S.String);
+      return S.Array(__S(672, __c42, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          frameCount: S.optional(S.String),
-          renderMillis: S.optional(S.String),
+          key: S.optional(S.String),
+          value: S.optional(S.String),
         }),
-      ).annotate({ identifier: "GraphicsStatsBucket" });
+      ).annotate({ identifier: "StepDimensionValueEntry" });
     case 3:
-      return S.Array(__S(66, __c8, 2));
-    case 4:
+      return S.Array(__S(674, __c42, 2));
+  }
+}
+function __c43(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          slowDrawCount: S.optional(S.String),
-          p90Millis: S.optional(S.String),
-          p50Millis: S.optional(S.String),
-          slowUiThreadCount: S.optional(S.String),
-          totalFrames: S.optional(S.String),
-          missedVsyncCount: S.optional(S.String),
-          highInputLatencyCount: S.optional(S.String),
-          jankyFrames: S.optional(S.String),
-          buckets: S.optional(__S(67, __c8, 3)),
-          p95Millis: S.optional(S.String),
-          p99Millis: S.optional(S.String),
-          slowBitmapUploadCount: S.optional(S.String),
+          name: S.optional(S.String),
+          className: S.optional(S.String),
+          testSuiteName: S.optional(S.String),
         }),
-      ).annotate({ identifier: "GraphicsStats" });
+      ).annotate({ identifier: "TestCaseReference" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          creationTime: S.optional(__S(496, __c31, 0)),
+          output: S.optional(__S(656, __c41, 0)),
+          testCase: S.optional(__S(688, __c43, 0)),
+        }),
+      ).annotate({ identifier: "ToolOutputReference" });
+  }
+}
+function __c44(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          exception: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "StackTrace" });
+    case 1:
+      return S.Array(__S(689, __c43, 1));
+  }
+}
+function __c45(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          value: S.optional(S.String),
+          typeUrl: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Any" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          category: S.optional(S.String),
+          severity: S.optional(S.String),
+          warning_migration: S.optional(__S(720, __c45, 0)),
+          errorMessage: S.optional(S.String),
+          type: S.optional(S.String),
+          stackTrace: S.optional(__S(704, __c44, 0)),
+        }),
+      ).annotate({ identifier: "TestIssue" });
+    case 2:
+      return S.Array(__S(721, __c45, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          testProcessDuration: S.optional(__S(624, __c39, 0)),
+        }),
+      ).annotate({ identifier: "TestTiming" });
+    case 4:
+      return S.Array(__S(656, __c41, 0));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          executionId: S.optional(S.String),
-          projectId: S.optional(S.String),
-          perfEnvironment: S.optional(__S(63, __c7, 7)),
-          appStartTime: S.optional(__S(64, __c8, 0)),
-          stepId: S.optional(S.String),
-          perfMetrics: S.optional(__S(65, __c8, 1)),
-          historyId: S.optional(S.String),
-          graphicsStats: S.optional(__S(68, __c8, 4)),
+          number: S.optional(S.Number),
         }),
-      ).annotate({ identifier: "PerfMetricsSummary" });
+      ).annotate({ identifier: "ToolExitCode" });
     case 6:
+      return S.suspend(() =>
+        S.Struct({
+          toolLogs: S.optional(__S(724, __c45, 4)),
+          exitCode: S.optional(__S(725, __c45, 5)),
+          toolOutputs: S.optional(__S(705, __c44, 1)),
+          commandLineArguments: S.optional(__S(608, __c38, 0)),
+        }),
+      ).annotate({ identifier: "ToolExecution" });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          testSuiteOverviews: S.optional(__S(673, __c42, 1)),
+          testIssues: S.optional(__S(722, __c45, 2)),
+          testTiming: S.optional(__S(723, __c45, 3)),
+          toolExecution: S.optional(__S(726, __c45, 6)),
+        }),
+      ).annotate({ identifier: "TestExecutionStep" });
+    case 8:
+      return S.suspend(() =>
+        S.Struct({
+          multistepNumber: S.optional(S.Number),
+          stepId: S.optional(S.String),
+          runDuration: S.optional(__S(624, __c39, 0)),
+          outcomeSummary: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "IndividualOutcome" });
+    case 9:
+      return S.Array(__S(728, __c45, 8));
+    case 10:
+      return S.suspend(() =>
+        S.Struct({
+          rollUp: S.optional(S.String),
+          individualOutcome: S.optional(__S(729, __c45, 9)),
+        }),
+      ).annotate({ identifier: "PrimaryStep" });
+    case 11:
+      return S.suspend(() =>
+        S.Struct({
+          multistepNumber: S.optional(S.Number),
+          primaryStep: S.optional(__S(730, __c45, 10)),
+          primaryStepId: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "MultiStep" });
+    case 12:
+      return S.suspend(() =>
+        S.Struct({
+          toolExecution: S.optional(__S(726, __c45, 6)),
+        }),
+      ).annotate({ identifier: "ToolExecutionStep" });
+    case 13:
+      return S.suspend(() =>
+        S.Struct({
+          value: S.optional(S.String),
+          key: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "StepLabelsEntry" });
+    case 14:
+      return S.Array(__S(733, __c45, 13));
+    case 15:
+      return S.suspend(() =>
+        S.Struct({
+          testExecutionStep: S.optional(__S(727, __c45, 7)),
+          name: S.optional(S.String),
+          stepId: S.optional(S.String),
+          multiStep: S.optional(__S(731, __c45, 11)),
+          toolExecutionStep: S.optional(__S(732, __c45, 12)),
+          outcome: S.optional(__S(596, __c37, 4)),
+          runDuration: S.optional(__S(624, __c39, 0)),
+          hasImages: S.optional(S.Boolean),
+          labels: S.optional(__S(734, __c45, 14)),
+          dimensionValue: S.optional(__S(675, __c42, 3)),
+          deviceUsageDuration: S.optional(__S(624, __c39, 0)),
+          completionTime: S.optional(__S(496, __c31, 0)),
+          state: S.optional(S.String),
+          creationTime: S.optional(__S(496, __c31, 0)),
+          description: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Step" });
+  }
+}
+function __c46(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           executionId: S.String.pipe(T.Label()),
           stepId: S.String.pipe(T.Label()),
           projectId: S.String.pipe(T.Label()),
           historyId: S.String.pipe(T.Label()),
-          body: S.optional(__S(69, __c8, 5).pipe(T.HttpBody())),
+          body: S.optional(__S(760, __c47, 8).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -2405,667 +3113,82 @@ function __c8(j: number): any {
       ).annotate({
         identifier: "CreateProjectsHistoriesExecutionsStepsPerfMetricsSummaryRequest",
       });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          perfUnit: S.optional(S.String),
-          sampleSeriesLabel: S.optional(S.String),
-          perfMetricType: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "BasicPerfSampleSeries" });
   }
 }
-function __c9(j: number): any {
+function __c47(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          stepId: S.optional(S.String),
-          sampleSeriesId: S.optional(S.String),
-          projectId: S.optional(S.String),
-          basicPerfSampleSeries: S.optional(__S(71, __c8, 7)),
-          executionId: S.optional(S.String),
-          historyId: S.optional(S.String),
+          memoryCapInKibibyte: S.optional(S.String),
+          memoryTotalInKibibyte: S.optional(S.String),
         }),
-      ).annotate({ identifier: "PerfSampleSeries" });
+      ).annotate({ identifier: "MemoryInfo" });
     case 1:
       return S.suspend(() =>
         S.Struct({
-          stepId: S.String.pipe(T.Label()),
-          executionId: S.String.pipe(T.Label()),
-          projectId: S.String.pipe(T.Label()),
-          historyId: S.String.pipe(T.Label()),
-          body: S.optional(__S(72, __c9, 0).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "toolresults/v1beta3/projects/{projectId}/histories/{historyId}/executions/{executionId}/steps/{stepId}/perfSampleSeries",
-            baseUrl: "https://toolresults.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateProjectsHistoriesExecutionsStepsPerfSampleSeriesRequest",
-      });
+          cpuSpeedInGhz: S.optional(S.Number),
+          numberOfCores: S.optional(S.Number),
+          cpuProcessor: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "CPUInfo" });
     case 2:
       return S.suspend(() =>
         S.Struct({
-          stepId: S.String.pipe(T.Label()),
-          projectId: S.String.pipe(T.Label()),
-          historyId: S.String.pipe(T.Label()),
-          executionId: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "toolresults/v1beta3/projects/{projectId}/histories/{historyId}/executions/{executionId}/steps/{stepId}/perfMetricsSummary",
-            baseUrl: "https://toolresults.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetPerfMetricsSummaryProjectsHistoriesExecutionsStepsRequest",
-      });
+          memoryInfo: S.optional(__S(752, __c47, 0)),
+          cpuInfo: S.optional(__S(753, __c47, 1)),
+        }),
+      ).annotate({ identifier: "PerfEnvironment" });
     case 3:
       return S.suspend(() =>
         S.Struct({
-          projectId: S.String.pipe(T.Label()),
-          historyId: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "toolresults/v1beta3/projects/{projectId}/histories/{historyId}",
-            baseUrl: "https://toolresults.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetProjectsHistoriesRequest",
-      });
+          fullyDrawnTime: S.optional(__S(624, __c39, 0)),
+          initialDisplayTime: S.optional(__S(624, __c39, 0)),
+        }),
+      ).annotate({ identifier: "AppStartTime" });
     case 4:
-      return S.suspend(() =>
-        S.Struct({
-          projectId: S.String.pipe(T.Label()),
-          historyId: S.String.pipe(T.Label()),
-          executionId: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "toolresults/v1beta3/projects/{projectId}/histories/{historyId}/executions/{executionId}",
-            baseUrl: "https://toolresults.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetProjectsHistoriesExecutionsRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          clusterId: S.String.pipe(T.Label()),
-          projectId: S.String.pipe(T.Label()),
-          historyId: S.String.pipe(T.Label()),
-          executionId: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "toolresults/v1beta3/projects/{projectId}/histories/{historyId}/executions/{executionId}/clusters/{clusterId}",
-            baseUrl: "https://toolresults.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetProjectsHistoriesExecutionsClustersRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          version: S.optional(S.String),
-          fileReference: S.optional(S.String),
-          model: S.optional(S.String),
-          locale: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Screen" });
-    case 7:
-      return S.Array(__S(78, __c9, 6));
-  }
-}
-function __c10(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          clusterId: S.optional(S.String),
-          activity: S.optional(S.String),
-          keyScreen: S.optional(__S(78, __c9, 6)),
-          screens: S.optional(__S(79, __c9, 7)),
-        }),
-      ).annotate({ identifier: "ScreenshotCluster" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          environmentId: S.String.pipe(T.Label()),
-          executionId: S.String.pipe(T.Label()),
-          projectId: S.String.pipe(T.Label()),
-          historyId: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "toolresults/v1beta3/projects/{projectId}/histories/{historyId}/executions/{executionId}/environments/{environmentId}",
-            baseUrl: "https://toolresults.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetProjectsHistoriesExecutionsEnvironmentsRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          state: S.optional(S.String),
-          testSuiteOverviews: S.optional(__S(37, __c4, 5)),
-          outcome: S.optional(__S(32, __c4, 0)),
-        }),
-      ).annotate({ identifier: "MergedResult" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          shardResult: S.optional(__S(82, __c10, 2)),
-          runs: S.optional(__S(27, __c3, 3)),
-        }),
-      ).annotate({ identifier: "ShardSummary" });
-    case 4:
-      return S.Array(__S(83, __c10, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          xunitXmlFile: S.optional(__S(35, __c4, 3)),
-          resultsStoragePath: S.optional(__S(35, __c4, 3)),
-        }),
-      ).annotate({ identifier: "ResultsStorage" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          displayName: S.optional(S.String),
-          completionTime: S.optional(__S(8, __c1, 0)),
-          projectId: S.optional(S.String),
-          environmentResult: S.optional(__S(82, __c10, 2)),
-          dimensionValue: S.optional(__S(58, __c7, 2)),
-          shardSummaries: S.optional(__S(84, __c10, 4)),
-          historyId: S.optional(S.String),
-          executionId: S.optional(S.String),
-          environmentId: S.optional(S.String),
-          resultsStorage: S.optional(__S(85, __c10, 5)),
-          creationTime: S.optional(__S(8, __c1, 0)),
-        }),
-      ).annotate({ identifier: "Environment" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          executionId: S.String.pipe(T.Label()),
-          stepId: S.String.pipe(T.Label()),
-          projectId: S.String.pipe(T.Label()),
-          historyId: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "toolresults/v1beta3/projects/{projectId}/histories/{historyId}/executions/{executionId}/steps/{stepId}",
-            baseUrl: "https://toolresults.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetProjectsHistoriesExecutionsStepsRequest",
-      });
-  }
-}
-function __c11(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          stepId: S.String.pipe(T.Label()),
-          executionId: S.String.pipe(T.Label()),
-          projectId: S.String.pipe(T.Label()),
-          sampleSeriesId: S.String.pipe(T.Label()),
-          historyId: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "toolresults/v1beta3/projects/{projectId}/histories/{historyId}/executions/{executionId}/steps/{stepId}/perfSampleSeries/{sampleSeriesId}",
-            baseUrl: "https://toolresults.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetProjectsHistoriesExecutionsStepsPerfSampleSeriesRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          executionId: S.String.pipe(T.Label()),
-          projectId: S.String.pipe(T.Label()),
-          stepId: S.String.pipe(T.Label()),
-          testCaseId: S.String.pipe(T.Label()),
-          historyId: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "toolresults/v1beta3/projects/{projectId}/histories/{historyId}/executions/{executionId}/steps/{stepId}/testCases/{testCaseId}",
-            baseUrl: "https://toolresults.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetProjectsHistoriesExecutionsStepsTestCasesRequest",
-      });
-    case 2:
-      return S.Array(__S(39, __c4, 7));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          elapsedTime: S.optional(__S(15, __c1, 7)),
-          toolOutputs: S.optional(__S(47, __c5, 7)),
-          testCaseReference: S.optional(__S(45, __c5, 5)),
-          status: S.optional(S.String),
-          testCaseId: S.optional(S.String),
-          skippedMessage: S.optional(S.String),
-          endTime: S.optional(__S(8, __c1, 0)),
-          startTime: S.optional(__S(8, __c1, 0)),
-          stackTraces: S.optional(__S(90, __c11, 2)),
-        }),
-      ).annotate({ identifier: "TestCase" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          projectId: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "toolresults/v1beta3/projects/{projectId}/settings",
-            baseUrl: "https://toolresults.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetSettingsProjectsRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          defaultBucket: S.optional(S.String),
-          name: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ProjectSettings" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          projectId: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "toolresults/v1beta3/projects/{projectId}:initializeSettings",
-            baseUrl: "https://toolresults.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "InitializeSettingsProjectsRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          pageToken: S.optional(S.String.pipe(T.Query())),
-          pageSize: S.optional(S.Number.pipe(T.Query())),
-          projectId: S.String.pipe(T.Label()),
-          filterByName: S.optional(S.String.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "toolresults/v1beta3/projects/{projectId}/histories",
-            baseUrl: "https://toolresults.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListProjectsHistoriesRequest",
-      });
-  }
-}
-function __c12(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(13, __c1, 5));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          histories: S.optional(__S(96, __c12, 0)),
-          nextPageToken: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ListHistoriesResponse" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          pageSize: S.optional(S.Number.pipe(T.Query())),
-          projectId: S.String.pipe(T.Label()),
-          historyId: S.String.pipe(T.Label()),
-          pageToken: S.optional(S.String.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "toolresults/v1beta3/projects/{projectId}/histories/{historyId}/executions",
-            baseUrl: "https://toolresults.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListProjectsHistoriesExecutionsRequest",
-      });
-    case 3:
-      return S.Array(__S(33, __c4, 1));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          executions: S.optional(__S(99, __c12, 3)),
-          nextPageToken: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ListExecutionsResponse" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          projectId: S.String.pipe(T.Label()),
-          historyId: S.String.pipe(T.Label()),
-          executionId: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "toolresults/v1beta3/projects/{projectId}/histories/{historyId}/executions/{executionId}/clusters",
-            baseUrl: "https://toolresults.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListProjectsHistoriesExecutionsClustersRequest",
-      });
-    case 6:
-      return S.Array(__S(80, __c10, 0));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          clusters: S.optional(__S(102, __c12, 6)),
-        }),
-      ).annotate({
-        identifier: "ListScreenshotClustersResponse",
-      });
-  }
-}
-function __c13(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          historyId: S.String.pipe(T.Label()),
-          pageToken: S.optional(S.String.pipe(T.Query())),
-          pageSize: S.optional(S.Number.pipe(T.Query())),
-          executionId: S.String.pipe(T.Label()),
-          projectId: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "toolresults/v1beta3/projects/{projectId}/histories/{historyId}/executions/{executionId}/environments",
-            baseUrl: "https://toolresults.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListProjectsHistoriesExecutionsEnvironmentsRequest",
-      });
-    case 1:
-      return S.Array(__S(86, __c10, 6));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          environments: S.optional(__S(105, __c13, 1)),
-          nextPageToken: S.optional(S.String),
-          projectId: S.optional(S.String),
-          executionId: S.optional(S.String),
-          historyId: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ListEnvironmentsResponse" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          historyId: S.String.pipe(T.Label()),
-          pageSize: S.optional(S.Number.pipe(T.Query())),
-          executionId: S.String.pipe(T.Label()),
-          projectId: S.String.pipe(T.Label()),
-          pageToken: S.optional(S.String.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "toolresults/v1beta3/projects/{projectId}/histories/{historyId}/executions/{executionId}/steps",
-            baseUrl: "https://toolresults.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListProjectsHistoriesExecutionsStepsRequest",
-      });
-    case 4:
-      return S.Array(__S(59, __c7, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          nextPageToken: S.optional(S.String),
-          steps: S.optional(__S(108, __c13, 4)),
-        }),
-      ).annotate({ identifier: "ListStepsResponse" });
-    case 6:
       return S.Array(S.String);
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          projectId: S.String.pipe(T.Label()),
-          executionId: S.String.pipe(T.Label()),
-          stepId: S.String.pipe(T.Label()),
-          filter: S.optional(__S(110, __c13, 6).pipe(T.Query())),
-          historyId: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "toolresults/v1beta3/projects/{projectId}/histories/{historyId}/executions/{executionId}/steps/{stepId}/perfSampleSeries",
-            baseUrl: "https://toolresults.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListProjectsHistoriesExecutionsStepsPerfSampleSeriesRequest",
-      });
-  }
-}
-function __c14(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(72, __c9, 0));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          perfSampleSeries: S.optional(__S(112, __c14, 0)),
-        }),
-      ).annotate({
-        identifier: "ListPerfSampleSeriesResponse",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          pageToken: S.optional(S.String.pipe(T.Query())),
-          stepId: S.String.pipe(T.Label()),
-          executionId: S.String.pipe(T.Label()),
-          projectId: S.String.pipe(T.Label()),
-          pageSize: S.optional(S.Number.pipe(T.Query())),
-          historyId: S.String.pipe(T.Label()),
-          sampleSeriesId: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "toolresults/v1beta3/projects/{projectId}/histories/{historyId}/executions/{executionId}/steps/{stepId}/perfSampleSeries/{sampleSeriesId}/samples",
-            baseUrl: "https://toolresults.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListProjectsHistoriesExecutionsStepsPerfSampleSeriesSamplesRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          perfSamples: S.optional(__S(10, __c1, 2)),
-          nextPageToken: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ListPerfSamplesResponse" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          historyId: S.String.pipe(T.Label()),
-          pageSize: S.optional(S.Number.pipe(T.Query())),
-          projectId: S.String.pipe(T.Label()),
-          executionId: S.String.pipe(T.Label()),
-          pageToken: S.optional(S.String.pipe(T.Query())),
-          stepId: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "toolresults/v1beta3/projects/{projectId}/histories/{historyId}/executions/{executionId}/steps/{stepId}/testCases",
-            baseUrl: "https://toolresults.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListProjectsHistoriesExecutionsStepsTestCasesRequest",
-      });
     case 5:
-      return S.Array(__S(91, __c11, 3));
-    case 6:
       return S.suspend(() =>
         S.Struct({
-          testCases: S.optional(__S(117, __c14, 5)),
-          nextPageToken: S.optional(S.String),
+          frameCount: S.optional(S.String),
+          renderMillis: S.optional(S.String),
         }),
-      ).annotate({ identifier: "ListTestCasesResponse" });
+      ).annotate({ identifier: "GraphicsStatsBucket" });
+    case 6:
+      return S.Array(__S(757, __c47, 5));
     case 7:
       return S.suspend(() =>
         S.Struct({
-          pageToken: S.optional(S.String.pipe(T.Query())),
-          projectId: S.String.pipe(T.Label()),
-          pageSize: S.optional(S.Number.pipe(T.Query())),
-          executionId: S.String.pipe(T.Label()),
-          stepId: S.String.pipe(T.Label()),
-          historyId: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "toolresults/v1beta3/projects/{projectId}/histories/{historyId}/executions/{executionId}/steps/{stepId}/thumbnails",
-            baseUrl: "https://toolresults.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListProjectsHistoriesExecutionsStepsThumbnailsRequest",
-      });
-  }
-}
-function __c15(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          heightPx: S.optional(S.Number),
-          contentType: S.optional(S.String),
-          data: S.optional(S.String),
-          widthPx: S.optional(S.Number),
+          slowDrawCount: S.optional(S.String),
+          p90Millis: S.optional(S.String),
+          p50Millis: S.optional(S.String),
+          slowUiThreadCount: S.optional(S.String),
+          totalFrames: S.optional(S.String),
+          missedVsyncCount: S.optional(S.String),
+          highInputLatencyCount: S.optional(S.String),
+          jankyFrames: S.optional(S.String),
+          buckets: S.optional(__S(758, __c47, 6)),
+          p95Millis: S.optional(S.String),
+          p99Millis: S.optional(S.String),
+          slowBitmapUploadCount: S.optional(S.String),
         }),
-      ).annotate({ identifier: "Thumbnail" });
-    case 1:
-      return S.Record(S.String, S.Unknown);
-    case 2:
-      return S.Array(__S(121, __c15, 1));
-    case 3:
+      ).annotate({ identifier: "GraphicsStats" });
+    case 8:
       return S.suspend(() =>
         S.Struct({
-          details: S.optional(__S(122, __c15, 2)),
-          code: S.optional(S.Number),
-          message: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Status" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          thumbnail: S.optional(__S(120, __c15, 0)),
-          error: S.optional(__S(123, __c15, 3)),
-          sourceImage: S.optional(__S(46, __c5, 6)),
+          executionId: S.optional(S.String),
+          projectId: S.optional(S.String),
+          perfEnvironment: S.optional(__S(754, __c47, 2)),
+          appStartTime: S.optional(__S(755, __c47, 3)),
           stepId: S.optional(S.String),
+          perfMetrics: S.optional(__S(756, __c47, 4)),
+          historyId: S.optional(S.String),
+          graphicsStats: S.optional(__S(759, __c47, 7)),
         }),
-      ).annotate({ identifier: "Image" });
-    case 5:
-      return S.Array(__S(124, __c15, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          nextPageToken: S.optional(S.String),
-          thumbnails: S.optional(__S(125, __c15, 5)),
-        }),
-      ).annotate({
-        identifier: "ListStepThumbnailsResponse",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          projectId: S.String.pipe(T.Label()),
-          historyId: S.String.pipe(T.Label()),
-          requestId: S.optional(S.String.pipe(T.Query())),
-          executionId: S.String.pipe(T.Label()),
-          body: S.optional(__S(33, __c4, 1).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "PATCH",
-            uri: "toolresults/v1beta3/projects/{projectId}/histories/{historyId}/executions/{executionId}",
-            baseUrl: "https://toolresults.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "PatchProjectsHistoriesExecutionsRequest",
-      });
+      ).annotate({ identifier: "PerfMetricsSummary" });
   }
 }
-function __c16(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          executionId: S.String.pipe(T.Label()),
-          projectId: S.String.pipe(T.Label()),
-          stepId: S.String.pipe(T.Label()),
-          requestId: S.optional(S.String.pipe(T.Query())),
-          historyId: S.String.pipe(T.Label()),
-          body: S.optional(__S(59, __c7, 3).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "PATCH",
-            uri: "toolresults/v1beta3/projects/{projectId}/histories/{historyId}/executions/{executionId}/steps/{stepId}",
-            baseUrl: "https://toolresults.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "PatchProjectsHistoriesExecutionsStepsRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          xunitXmlFiles: S.optional(__S(43, __c5, 3)),
-        }),
-      ).annotate({
-        identifier: "PublishXunitXmlFilesRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          executionId: S.String.pipe(T.Label()),
-          projectId: S.String.pipe(T.Label()),
-          historyId: S.String.pipe(T.Label()),
-          stepId: S.String.pipe(T.Label()),
-          body: S.optional(__S(129, __c16, 1).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "toolresults/v1beta3/projects/{projectId}/histories/{historyId}/executions/{executionId}/steps/{stepId}:publishXunitXmlFiles",
-            baseUrl: "https://toolresults.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "PublishXunitXmlFilesProjectsHistoriesExecutionsStepsRequest",
-      });
-  }
-}
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

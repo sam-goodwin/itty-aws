@@ -3699,8 +3699,12 @@ export const batchDeleteProjectsLocationsAppsConversations: API.OperationMethod<
   BatchDeleteProjectsLocationsAppsConversationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2, __c0, 2) as any as S.Schema<BatchDeleteProjectsLocationsAppsConversationsRequest>,
-  output: __S(6, __c0, 6) as any as S.Schema<Operation>,
+  input: __S(
+    1665,
+    __c52,
+    1,
+  ) as any as S.Schema<BatchDeleteProjectsLocationsAppsConversationsRequest>,
+  output: __S(1760, __c55, 0) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3720,11 +3724,11 @@ export const cancelAssistantTurnProjectsLocationsAppsAssistantSessions: API.Oper
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    8,
-    __c1,
-    0,
+    2177,
+    __c68,
+    1,
   ) as any as S.Schema<CancelAssistantTurnProjectsLocationsAppsAssistantSessionsRequest>,
-  output: __S(9, __c1, 1) as any as S.Schema<CancelAssistantTurnResponse>,
+  output: __S(2178, __c68, 2) as any as S.Schema<CancelAssistantTurnResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3743,8 +3747,8 @@ export const cancelProjectsLocationsOperations: API.OperationMethod<
   CancelProjectsLocationsOperationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(11, __c1, 3) as any as S.Schema<CancelProjectsLocationsOperationsRequest>,
-  output: __S(10, __c1, 2) as any as S.Schema<Empty>,
+  input: __S(2528, __c79, 0) as any as S.Schema<CancelProjectsLocationsOperationsRequest>,
+  output: __S(2560, __c80, 0) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3763,8 +3767,8 @@ export const createProjectsLocationsApps: API.OperationMethod<
   CreateProjectsLocationsAppsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(58, __c7, 2) as any as S.Schema<CreateProjectsLocationsAppsRequest>,
-  output: __S(6, __c0, 6) as any as S.Schema<Operation>,
+  input: __S(3008, __c94, 0) as any as S.Schema<CreateProjectsLocationsAppsRequest>,
+  output: __S(1760, __c55, 0) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3783,8 +3787,8 @@ export const createProjectsLocationsAppsAgents: API.OperationMethod<
   CreateProjectsLocationsAppsAgentsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(83, __c10, 3) as any as S.Schema<CreateProjectsLocationsAppsAgentsRequest>,
-  output: __S(82, __c10, 2) as any as S.Schema<Agent>,
+  input: __S(3488, __c109, 0) as any as S.Schema<CreateProjectsLocationsAppsAgentsRequest>,
+  output: __S(3627, __c113, 11) as any as S.Schema<Agent>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3803,8 +3807,8 @@ export const createProjectsLocationsAppsDeployments: API.OperationMethod<
   CreateProjectsLocationsAppsDeploymentsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(92, __c11, 4) as any as S.Schema<CreateProjectsLocationsAppsDeploymentsRequest>,
-  output: __S(91, __c11, 3) as any as S.Schema<Deployment>,
+  input: __S(3648, __c114, 0) as any as S.Schema<CreateProjectsLocationsAppsDeploymentsRequest>,
+  output: __S(3687, __c115, 7) as any as S.Schema<Deployment>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3823,8 +3827,8 @@ export const createProjectsLocationsAppsExamples: API.OperationMethod<
   CreateProjectsLocationsAppsExamplesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(104, __c13, 0) as any as S.Schema<CreateProjectsLocationsAppsExamplesRequest>,
-  output: __S(103, __c12, 7) as any as S.Schema<Example>,
+  input: __S(0, __c0, 0) as any as S.Schema<CreateProjectsLocationsAppsExamplesRequest>,
+  output: __S(128, __c4, 0) as any as S.Schema<Example>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3843,8 +3847,8 @@ export const createProjectsLocationsAppsGuardrails: API.OperationMethod<
   CreateProjectsLocationsAppsGuardrailsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(121, __c15, 1) as any as S.Schema<CreateProjectsLocationsAppsGuardrailsRequest>,
-  output: __S(120, __c15, 0) as any as S.Schema<Guardrail>,
+  input: __S(160, __c5, 0) as any as S.Schema<CreateProjectsLocationsAppsGuardrailsRequest>,
+  output: __S(207, __c6, 15) as any as S.Schema<Guardrail>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3863,8 +3867,8 @@ export const createProjectsLocationsAppsTools: API.OperationMethod<
   CreateProjectsLocationsAppsToolsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(168, __c21, 0) as any as S.Schema<CreateProjectsLocationsAppsToolsRequest>,
-  output: __S(167, __c20, 7) as any as S.Schema<Tool>,
+  input: __S(224, __c7, 0) as any as S.Schema<CreateProjectsLocationsAppsToolsRequest>,
+  output: __S(323, __c10, 3) as any as S.Schema<Tool>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3883,8 +3887,8 @@ export const createProjectsLocationsAppsToolsets: API.OperationMethod<
   CreateProjectsLocationsAppsToolsetsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(177, __c22, 1) as any as S.Schema<CreateProjectsLocationsAppsToolsetsRequest>,
-  output: __S(176, __c22, 0) as any as S.Schema<Toolset>,
+  input: __S(352, __c11, 0) as any as S.Schema<CreateProjectsLocationsAppsToolsetsRequest>,
+  output: __S(391, __c12, 7) as any as S.Schema<Toolset>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3903,8 +3907,8 @@ export const createProjectsLocationsAppsVersions: API.OperationMethod<
   CreateProjectsLocationsAppsVersionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(185, __c23, 1) as any as S.Schema<CreateProjectsLocationsAppsVersionsRequest>,
-  output: __S(184, __c23, 0) as any as S.Schema<AppVersion>,
+  input: __S(416, __c13, 0) as any as S.Schema<CreateProjectsLocationsAppsVersionsRequest>,
+  output: __S(609, __c19, 1) as any as S.Schema<AppVersion>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3923,8 +3927,8 @@ export const deleteProjectsLocationsApps: API.OperationMethod<
   DeleteProjectsLocationsAppsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(186, __c23, 2) as any as S.Schema<DeleteProjectsLocationsAppsRequest>,
-  output: __S(6, __c0, 6) as any as S.Schema<Operation>,
+  input: __S(640, __c20, 0) as any as S.Schema<DeleteProjectsLocationsAppsRequest>,
+  output: __S(1760, __c55, 0) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3943,8 +3947,8 @@ export const deleteProjectsLocationsAppsAgents: API.OperationMethod<
   DeleteProjectsLocationsAppsAgentsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(187, __c23, 3) as any as S.Schema<DeleteProjectsLocationsAppsAgentsRequest>,
-  output: __S(10, __c1, 2) as any as S.Schema<Empty>,
+  input: __S(672, __c21, 0) as any as S.Schema<DeleteProjectsLocationsAppsAgentsRequest>,
+  output: __S(2560, __c80, 0) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3963,8 +3967,8 @@ export const deleteProjectsLocationsAppsConversations: API.OperationMethod<
   DeleteProjectsLocationsAppsConversationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(188, __c23, 4) as any as S.Schema<DeleteProjectsLocationsAppsConversationsRequest>,
-  output: __S(10, __c1, 2) as any as S.Schema<Empty>,
+  input: __S(704, __c22, 0) as any as S.Schema<DeleteProjectsLocationsAppsConversationsRequest>,
+  output: __S(2560, __c80, 0) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3983,8 +3987,8 @@ export const deleteProjectsLocationsAppsDeployments: API.OperationMethod<
   DeleteProjectsLocationsAppsDeploymentsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(189, __c23, 5) as any as S.Schema<DeleteProjectsLocationsAppsDeploymentsRequest>,
-  output: __S(10, __c1, 2) as any as S.Schema<Empty>,
+  input: __S(736, __c23, 0) as any as S.Schema<DeleteProjectsLocationsAppsDeploymentsRequest>,
+  output: __S(2560, __c80, 0) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4003,8 +4007,8 @@ export const deleteProjectsLocationsAppsExamples: API.OperationMethod<
   DeleteProjectsLocationsAppsExamplesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(190, __c23, 6) as any as S.Schema<DeleteProjectsLocationsAppsExamplesRequest>,
-  output: __S(10, __c1, 2) as any as S.Schema<Empty>,
+  input: __S(768, __c24, 0) as any as S.Schema<DeleteProjectsLocationsAppsExamplesRequest>,
+  output: __S(2560, __c80, 0) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4023,8 +4027,8 @@ export const deleteProjectsLocationsAppsGuardrails: API.OperationMethod<
   DeleteProjectsLocationsAppsGuardrailsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(191, __c23, 7) as any as S.Schema<DeleteProjectsLocationsAppsGuardrailsRequest>,
-  output: __S(10, __c1, 2) as any as S.Schema<Empty>,
+  input: __S(800, __c25, 0) as any as S.Schema<DeleteProjectsLocationsAppsGuardrailsRequest>,
+  output: __S(2560, __c80, 0) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4043,8 +4047,8 @@ export const deleteProjectsLocationsAppsTools: API.OperationMethod<
   DeleteProjectsLocationsAppsToolsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(192, __c24, 0) as any as S.Schema<DeleteProjectsLocationsAppsToolsRequest>,
-  output: __S(10, __c1, 2) as any as S.Schema<Empty>,
+  input: __S(832, __c26, 0) as any as S.Schema<DeleteProjectsLocationsAppsToolsRequest>,
+  output: __S(2560, __c80, 0) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4063,8 +4067,8 @@ export const deleteProjectsLocationsAppsToolsets: API.OperationMethod<
   DeleteProjectsLocationsAppsToolsetsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(193, __c24, 1) as any as S.Schema<DeleteProjectsLocationsAppsToolsetsRequest>,
-  output: __S(10, __c1, 2) as any as S.Schema<Empty>,
+  input: __S(864, __c27, 0) as any as S.Schema<DeleteProjectsLocationsAppsToolsetsRequest>,
+  output: __S(2560, __c80, 0) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4083,8 +4087,8 @@ export const deleteProjectsLocationsAppsVersions: API.OperationMethod<
   DeleteProjectsLocationsAppsVersionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(194, __c24, 2) as any as S.Schema<DeleteProjectsLocationsAppsVersionsRequest>,
-  output: __S(10, __c1, 2) as any as S.Schema<Empty>,
+  input: __S(896, __c28, 0) as any as S.Schema<DeleteProjectsLocationsAppsVersionsRequest>,
+  output: __S(2560, __c80, 0) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4103,8 +4107,8 @@ export const deleteProjectsLocationsOperations: API.OperationMethod<
   DeleteProjectsLocationsOperationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(195, __c24, 3) as any as S.Schema<DeleteProjectsLocationsOperationsRequest>,
-  output: __S(10, __c1, 2) as any as S.Schema<Empty>,
+  input: __S(928, __c29, 0) as any as S.Schema<DeleteProjectsLocationsOperationsRequest>,
+  output: __S(2560, __c80, 0) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4123,8 +4127,8 @@ export const executeToolProjectsLocationsApps: API.OperationMethod<
   ExecuteToolProjectsLocationsAppsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(200, __c25, 0) as any as S.Schema<ExecuteToolProjectsLocationsAppsRequest>,
-  output: __S(210, __c26, 2) as any as S.Schema<ExecuteToolResponse>,
+  input: __S(964, __c30, 4) as any as S.Schema<ExecuteToolProjectsLocationsAppsRequest>,
+  output: __S(965, __c30, 5) as any as S.Schema<ExecuteToolResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4143,8 +4147,8 @@ export const exportAppProjectsLocationsApps: API.OperationMethod<
   ExportAppProjectsLocationsAppsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(212, __c26, 4) as any as S.Schema<ExportAppProjectsLocationsAppsRequest>,
-  output: __S(6, __c0, 6) as any as S.Schema<Operation>,
+  input: __S(1025, __c32, 1) as any as S.Schema<ExportAppProjectsLocationsAppsRequest>,
+  output: __S(1760, __c55, 0) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4164,11 +4168,11 @@ export const generateChatTokenProjectsLocationsAppsSessions: API.OperationMethod
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    214,
-    __c26,
-    6,
+    1057,
+    __c33,
+    1,
   ) as any as S.Schema<GenerateChatTokenProjectsLocationsAppsSessionsRequest>,
-  output: __S(215, __c26, 7) as any as S.Schema<GenerateChatTokenResponse>,
+  output: __S(1058, __c33, 2) as any as S.Schema<GenerateChatTokenResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4188,11 +4192,11 @@ export const generateOnboardingSuggestionsProjectsLocationsApps: API.OperationMe
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    217,
-    __c27,
+    1089,
+    __c34,
     1,
   ) as any as S.Schema<GenerateOnboardingSuggestionsProjectsLocationsAppsRequest>,
-  output: __S(221, __c27, 5) as any as S.Schema<GenerateOnboardingSuggestionsResponse>,
+  output: __S(1093, __c34, 5) as any as S.Schema<GenerateOnboardingSuggestionsResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4206,8 +4210,8 @@ export const getExtendedAgentCardProjectsLocationsApps: API.OperationMethod<
   GetExtendedAgentCardProjectsLocationsAppsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(222, __c27, 6) as any as S.Schema<GetExtendedAgentCardProjectsLocationsAppsRequest>,
-  output: __S(250, __c31, 2) as any as S.Schema<LfA2aV1AgentCard>,
+  input: __S(1120, __c35, 0) as any as S.Schema<GetExtendedAgentCardProjectsLocationsAppsRequest>,
+  output: __S(1179, __c36, 27) as any as S.Schema<LfA2aV1AgentCard>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4225,11 +4229,11 @@ export const getExtendedAgentCardProjectsLocationsAppsDeployments: API.Operation
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    251,
-    __c31,
-    3,
+    1184,
+    __c37,
+    0,
   ) as any as S.Schema<GetExtendedAgentCardProjectsLocationsAppsDeploymentsRequest>,
-  output: __S(250, __c31, 2) as any as S.Schema<LfA2aV1AgentCard>,
+  output: __S(1179, __c36, 27) as any as S.Schema<LfA2aV1AgentCard>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4247,11 +4251,11 @@ export const getExtendedAgentCardProjectsLocationsAppsVersions: API.OperationMet
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    252,
-    __c31,
-    4,
+    1216,
+    __c38,
+    0,
   ) as any as S.Schema<GetExtendedAgentCardProjectsLocationsAppsVersionsRequest>,
-  output: __S(250, __c31, 2) as any as S.Schema<LfA2aV1AgentCard>,
+  output: __S(1179, __c36, 27) as any as S.Schema<LfA2aV1AgentCard>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4265,8 +4269,8 @@ export const getProjectsLocations: API.OperationMethod<
   GetProjectsLocationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(253, __c31, 5) as any as S.Schema<GetProjectsLocationsRequest>,
-  output: __S(254, __c31, 6) as any as S.Schema<Location>,
+  input: __S(1248, __c39, 0) as any as S.Schema<GetProjectsLocationsRequest>,
+  output: __S(1280, __c40, 0) as any as S.Schema<Location>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4280,8 +4284,8 @@ export const getProjectsLocationsApps: API.OperationMethod<
   GetProjectsLocationsAppsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(255, __c31, 7) as any as S.Schema<GetProjectsLocationsAppsRequest>,
-  output: __S(57, __c7, 1) as any as S.Schema<App>,
+  input: __S(1312, __c41, 0) as any as S.Schema<GetProjectsLocationsAppsRequest>,
+  output: __S(3106, __c97, 2) as any as S.Schema<App>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4295,8 +4299,8 @@ export const getProjectsLocationsAppsAgents: API.OperationMethod<
   GetProjectsLocationsAppsAgentsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(256, __c32, 0) as any as S.Schema<GetProjectsLocationsAppsAgentsRequest>,
-  output: __S(82, __c10, 2) as any as S.Schema<Agent>,
+  input: __S(1344, __c42, 0) as any as S.Schema<GetProjectsLocationsAppsAgentsRequest>,
+  output: __S(3627, __c113, 11) as any as S.Schema<Agent>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4310,8 +4314,8 @@ export const getProjectsLocationsAppsChangelogs: API.OperationMethod<
   GetProjectsLocationsAppsChangelogsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(257, __c32, 1) as any as S.Schema<GetProjectsLocationsAppsChangelogsRequest>,
-  output: __S(258, __c32, 2) as any as S.Schema<Changelog>,
+  input: __S(1376, __c43, 0) as any as S.Schema<GetProjectsLocationsAppsChangelogsRequest>,
+  output: __S(1408, __c44, 0) as any as S.Schema<Changelog>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4325,8 +4329,8 @@ export const getProjectsLocationsAppsConversations: API.OperationMethod<
   GetProjectsLocationsAppsConversationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(259, __c32, 3) as any as S.Schema<GetProjectsLocationsAppsConversationsRequest>,
-  output: __S(265, __c33, 1) as any as S.Schema<Conversation>,
+  input: __S(1440, __c45, 0) as any as S.Schema<GetProjectsLocationsAppsConversationsRequest>,
+  output: __S(1474, __c46, 2) as any as S.Schema<Conversation>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4340,8 +4344,8 @@ export const getProjectsLocationsAppsDeployments: API.OperationMethod<
   GetProjectsLocationsAppsDeploymentsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(266, __c33, 2) as any as S.Schema<GetProjectsLocationsAppsDeploymentsRequest>,
-  output: __S(91, __c11, 3) as any as S.Schema<Deployment>,
+  input: __S(1568, __c49, 0) as any as S.Schema<GetProjectsLocationsAppsDeploymentsRequest>,
+  output: __S(3687, __c115, 7) as any as S.Schema<Deployment>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4355,8 +4359,8 @@ export const getProjectsLocationsAppsExamples: API.OperationMethod<
   GetProjectsLocationsAppsExamplesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(267, __c33, 3) as any as S.Schema<GetProjectsLocationsAppsExamplesRequest>,
-  output: __S(103, __c12, 7) as any as S.Schema<Example>,
+  input: __S(1600, __c50, 0) as any as S.Schema<GetProjectsLocationsAppsExamplesRequest>,
+  output: __S(128, __c4, 0) as any as S.Schema<Example>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4370,8 +4374,8 @@ export const getProjectsLocationsAppsGuardrails: API.OperationMethod<
   GetProjectsLocationsAppsGuardrailsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(268, __c33, 4) as any as S.Schema<GetProjectsLocationsAppsGuardrailsRequest>,
-  output: __S(120, __c15, 0) as any as S.Schema<Guardrail>,
+  input: __S(1632, __c51, 0) as any as S.Schema<GetProjectsLocationsAppsGuardrailsRequest>,
+  output: __S(207, __c6, 15) as any as S.Schema<Guardrail>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4385,8 +4389,8 @@ export const getProjectsLocationsAppsTools: API.OperationMethod<
   GetProjectsLocationsAppsToolsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(269, __c33, 5) as any as S.Schema<GetProjectsLocationsAppsToolsRequest>,
-  output: __S(167, __c20, 7) as any as S.Schema<Tool>,
+  input: __S(1856, __c58, 0) as any as S.Schema<GetProjectsLocationsAppsToolsRequest>,
+  output: __S(323, __c10, 3) as any as S.Schema<Tool>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4400,8 +4404,8 @@ export const getProjectsLocationsAppsToolsets: API.OperationMethod<
   GetProjectsLocationsAppsToolsetsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(270, __c33, 6) as any as S.Schema<GetProjectsLocationsAppsToolsetsRequest>,
-  output: __S(176, __c22, 0) as any as S.Schema<Toolset>,
+  input: __S(1888, __c59, 0) as any as S.Schema<GetProjectsLocationsAppsToolsetsRequest>,
+  output: __S(391, __c12, 7) as any as S.Schema<Toolset>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4415,8 +4419,8 @@ export const getProjectsLocationsAppsVersions: API.OperationMethod<
   GetProjectsLocationsAppsVersionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(271, __c33, 7) as any as S.Schema<GetProjectsLocationsAppsVersionsRequest>,
-  output: __S(184, __c23, 0) as any as S.Schema<AppVersion>,
+  input: __S(1920, __c60, 0) as any as S.Schema<GetProjectsLocationsAppsVersionsRequest>,
+  output: __S(609, __c19, 1) as any as S.Schema<AppVersion>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4430,8 +4434,8 @@ export const getProjectsLocationsOperations: API.OperationMethod<
   GetProjectsLocationsOperationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(272, __c34, 0) as any as S.Schema<GetProjectsLocationsOperationsRequest>,
-  output: __S(6, __c0, 6) as any as S.Schema<Operation>,
+  input: __S(1952, __c61, 0) as any as S.Schema<GetProjectsLocationsOperationsRequest>,
+  output: __S(1760, __c55, 0) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4450,8 +4454,8 @@ export const getToolSchemaProjectsLocationsApps: API.OperationMethod<
   GetToolSchemaProjectsLocationsAppsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(274, __c34, 2) as any as S.Schema<GetToolSchemaProjectsLocationsAppsRequest>,
-  output: __S(275, __c34, 3) as any as S.Schema<RetrieveToolSchemaResponse>,
+  input: __S(1985, __c62, 1) as any as S.Schema<GetToolSchemaProjectsLocationsAppsRequest>,
+  output: __S(1986, __c62, 2) as any as S.Schema<RetrieveToolSchemaResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4470,8 +4474,8 @@ export const getToolsProjectsLocationsAppsToolsets: API.OperationMethod<
   GetToolsProjectsLocationsAppsToolsetsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(277, __c34, 5) as any as S.Schema<GetToolsProjectsLocationsAppsToolsetsRequest>,
-  output: __S(278, __c34, 6) as any as S.Schema<RetrieveToolsResponse>,
+  input: __S(2017, __c63, 1) as any as S.Schema<GetToolsProjectsLocationsAppsToolsetsRequest>,
+  output: __S(2018, __c63, 2) as any as S.Schema<RetrieveToolsResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4490,8 +4494,8 @@ export const importAppProjectsLocationsApps: API.OperationMethod<
   ImportAppProjectsLocationsAppsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(281, __c35, 1) as any as S.Schema<ImportAppProjectsLocationsAppsRequest>,
-  output: __S(6, __c0, 6) as any as S.Schema<Operation>,
+  input: __S(2050, __c64, 2) as any as S.Schema<ImportAppProjectsLocationsAppsRequest>,
+  output: __S(1760, __c55, 0) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4506,8 +4510,8 @@ export const listProjectsLocations: API.PaginatedOperationMethod<
   GcpOpContext,
   ListLocationsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(282, __c35, 2) as any as S.Schema<ListProjectsLocationsRequest>,
-  output: __S(284, __c35, 4) as any as S.Schema<ListLocationsResponse>,
+  input: __S(2080, __c65, 0) as any as S.Schema<ListProjectsLocationsRequest>,
+  output: __S(2082, __c65, 2) as any as S.Schema<ListLocationsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4523,8 +4527,8 @@ export const listProjectsLocationsApps: API.PaginatedOperationMethod<
   GcpOpContext,
   ListAppsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(285, __c35, 5) as any as S.Schema<ListProjectsLocationsAppsRequest>,
-  output: __S(287, __c35, 7) as any as S.Schema<ListAppsResponse>,
+  input: __S(2112, __c66, 0) as any as S.Schema<ListProjectsLocationsAppsRequest>,
+  output: __S(2114, __c66, 2) as any as S.Schema<ListAppsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4540,8 +4544,8 @@ export const listProjectsLocationsAppsAgents: API.PaginatedOperationMethod<
   GcpOpContext,
   ListAgentsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(288, __c36, 0) as any as S.Schema<ListProjectsLocationsAppsAgentsRequest>,
-  output: __S(289, __c36, 1) as any as S.Schema<ListAgentsResponse>,
+  input: __S(2144, __c67, 0) as any as S.Schema<ListProjectsLocationsAppsAgentsRequest>,
+  output: __S(2145, __c67, 1) as any as S.Schema<ListAgentsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4557,8 +4561,8 @@ export const listProjectsLocationsAppsChangelogs: API.PaginatedOperationMethod<
   GcpOpContext,
   ListChangelogsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(290, __c36, 2) as any as S.Schema<ListProjectsLocationsAppsChangelogsRequest>,
-  output: __S(292, __c36, 4) as any as S.Schema<ListChangelogsResponse>,
+  input: __S(2208, __c69, 0) as any as S.Schema<ListProjectsLocationsAppsChangelogsRequest>,
+  output: __S(2210, __c69, 2) as any as S.Schema<ListChangelogsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4574,8 +4578,8 @@ export const listProjectsLocationsAppsConversations: API.PaginatedOperationMetho
   GcpOpContext,
   ListConversationsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(293, __c36, 5) as any as S.Schema<ListProjectsLocationsAppsConversationsRequest>,
-  output: __S(295, __c36, 7) as any as S.Schema<ListConversationsResponse>,
+  input: __S(2240, __c70, 0) as any as S.Schema<ListProjectsLocationsAppsConversationsRequest>,
+  output: __S(2242, __c70, 2) as any as S.Schema<ListConversationsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4591,8 +4595,8 @@ export const listProjectsLocationsAppsDeployments: API.PaginatedOperationMethod<
   GcpOpContext,
   ListDeploymentsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(296, __c37, 0) as any as S.Schema<ListProjectsLocationsAppsDeploymentsRequest>,
-  output: __S(298, __c37, 2) as any as S.Schema<ListDeploymentsResponse>,
+  input: __S(2272, __c71, 0) as any as S.Schema<ListProjectsLocationsAppsDeploymentsRequest>,
+  output: __S(2274, __c71, 2) as any as S.Schema<ListDeploymentsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4608,8 +4612,8 @@ export const listProjectsLocationsAppsExamples: API.PaginatedOperationMethod<
   GcpOpContext,
   ListExamplesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(299, __c37, 3) as any as S.Schema<ListProjectsLocationsAppsExamplesRequest>,
-  output: __S(300, __c37, 4) as any as S.Schema<ListExamplesResponse>,
+  input: __S(2304, __c72, 0) as any as S.Schema<ListProjectsLocationsAppsExamplesRequest>,
+  output: __S(2305, __c72, 1) as any as S.Schema<ListExamplesResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4625,8 +4629,8 @@ export const listProjectsLocationsAppsGuardrails: API.PaginatedOperationMethod<
   GcpOpContext,
   ListGuardrailsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(301, __c37, 5) as any as S.Schema<ListProjectsLocationsAppsGuardrailsRequest>,
-  output: __S(302, __c37, 6) as any as S.Schema<ListGuardrailsResponse>,
+  input: __S(2336, __c73, 0) as any as S.Schema<ListProjectsLocationsAppsGuardrailsRequest>,
+  output: __S(2337, __c73, 1) as any as S.Schema<ListGuardrailsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4642,8 +4646,8 @@ export const listProjectsLocationsAppsTools: API.PaginatedOperationMethod<
   GcpOpContext,
   ListToolsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(303, __c37, 7) as any as S.Schema<ListProjectsLocationsAppsToolsRequest>,
-  output: __S(304, __c38, 0) as any as S.Schema<ListToolsResponse>,
+  input: __S(2368, __c74, 0) as any as S.Schema<ListProjectsLocationsAppsToolsRequest>,
+  output: __S(2369, __c74, 1) as any as S.Schema<ListToolsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4659,8 +4663,8 @@ export const listProjectsLocationsAppsToolsets: API.PaginatedOperationMethod<
   GcpOpContext,
   ListToolsetsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(305, __c38, 1) as any as S.Schema<ListProjectsLocationsAppsToolsetsRequest>,
-  output: __S(306, __c38, 2) as any as S.Schema<ListToolsetsResponse>,
+  input: __S(2400, __c75, 0) as any as S.Schema<ListProjectsLocationsAppsToolsetsRequest>,
+  output: __S(2401, __c75, 1) as any as S.Schema<ListToolsetsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4676,8 +4680,8 @@ export const listProjectsLocationsAppsVersions: API.PaginatedOperationMethod<
   GcpOpContext,
   ListAppVersionsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(307, __c38, 3) as any as S.Schema<ListProjectsLocationsAppsVersionsRequest>,
-  output: __S(309, __c38, 5) as any as S.Schema<ListAppVersionsResponse>,
+  input: __S(2432, __c76, 0) as any as S.Schema<ListProjectsLocationsAppsVersionsRequest>,
+  output: __S(2434, __c76, 2) as any as S.Schema<ListAppVersionsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4693,8 +4697,8 @@ export const listProjectsLocationsOperations: API.PaginatedOperationMethod<
   GcpOpContext,
   ListOperationsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(310, __c38, 6) as any as S.Schema<ListProjectsLocationsOperationsRequest>,
-  output: __S(312, __c39, 0) as any as S.Schema<ListOperationsResponse>,
+  input: __S(2464, __c77, 0) as any as S.Schema<ListProjectsLocationsOperationsRequest>,
+  output: __S(2466, __c77, 2) as any as S.Schema<ListOperationsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4714,8 +4718,8 @@ export const patchProjectsLocationsApps: API.OperationMethod<
   PatchProjectsLocationsAppsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(313, __c39, 1) as any as S.Schema<PatchProjectsLocationsAppsRequest>,
-  output: __S(57, __c7, 1) as any as S.Schema<App>,
+  input: __S(2496, __c78, 0) as any as S.Schema<PatchProjectsLocationsAppsRequest>,
+  output: __S(3106, __c97, 2) as any as S.Schema<App>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4734,8 +4738,8 @@ export const patchProjectsLocationsAppsAgents: API.OperationMethod<
   PatchProjectsLocationsAppsAgentsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(314, __c39, 2) as any as S.Schema<PatchProjectsLocationsAppsAgentsRequest>,
-  output: __S(82, __c10, 2) as any as S.Schema<Agent>,
+  input: __S(2592, __c81, 0) as any as S.Schema<PatchProjectsLocationsAppsAgentsRequest>,
+  output: __S(3627, __c113, 11) as any as S.Schema<Agent>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4754,8 +4758,8 @@ export const patchProjectsLocationsAppsDeployments: API.OperationMethod<
   PatchProjectsLocationsAppsDeploymentsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(315, __c39, 3) as any as S.Schema<PatchProjectsLocationsAppsDeploymentsRequest>,
-  output: __S(91, __c11, 3) as any as S.Schema<Deployment>,
+  input: __S(2624, __c82, 0) as any as S.Schema<PatchProjectsLocationsAppsDeploymentsRequest>,
+  output: __S(3687, __c115, 7) as any as S.Schema<Deployment>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4774,8 +4778,8 @@ export const patchProjectsLocationsAppsExamples: API.OperationMethod<
   PatchProjectsLocationsAppsExamplesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(316, __c39, 4) as any as S.Schema<PatchProjectsLocationsAppsExamplesRequest>,
-  output: __S(103, __c12, 7) as any as S.Schema<Example>,
+  input: __S(2656, __c83, 0) as any as S.Schema<PatchProjectsLocationsAppsExamplesRequest>,
+  output: __S(128, __c4, 0) as any as S.Schema<Example>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4794,8 +4798,8 @@ export const patchProjectsLocationsAppsGuardrails: API.OperationMethod<
   PatchProjectsLocationsAppsGuardrailsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(317, __c39, 5) as any as S.Schema<PatchProjectsLocationsAppsGuardrailsRequest>,
-  output: __S(120, __c15, 0) as any as S.Schema<Guardrail>,
+  input: __S(2688, __c84, 0) as any as S.Schema<PatchProjectsLocationsAppsGuardrailsRequest>,
+  output: __S(207, __c6, 15) as any as S.Schema<Guardrail>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4814,8 +4818,8 @@ export const patchProjectsLocationsAppsTools: API.OperationMethod<
   PatchProjectsLocationsAppsToolsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(318, __c39, 6) as any as S.Schema<PatchProjectsLocationsAppsToolsRequest>,
-  output: __S(167, __c20, 7) as any as S.Schema<Tool>,
+  input: __S(2720, __c85, 0) as any as S.Schema<PatchProjectsLocationsAppsToolsRequest>,
+  output: __S(323, __c10, 3) as any as S.Schema<Tool>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4834,8 +4838,8 @@ export const patchProjectsLocationsAppsToolsets: API.OperationMethod<
   PatchProjectsLocationsAppsToolsetsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(319, __c39, 7) as any as S.Schema<PatchProjectsLocationsAppsToolsetsRequest>,
-  output: __S(176, __c22, 0) as any as S.Schema<Toolset>,
+  input: __S(2752, __c86, 0) as any as S.Schema<PatchProjectsLocationsAppsToolsetsRequest>,
+  output: __S(391, __c12, 7) as any as S.Schema<Toolset>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4854,8 +4858,8 @@ export const patchProjectsLocationsAppsVersions: API.OperationMethod<
   PatchProjectsLocationsAppsVersionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(320, __c40, 0) as any as S.Schema<PatchProjectsLocationsAppsVersionsRequest>,
-  output: __S(184, __c23, 0) as any as S.Schema<AppVersion>,
+  input: __S(2784, __c87, 0) as any as S.Schema<PatchProjectsLocationsAppsVersionsRequest>,
+  output: __S(609, __c19, 1) as any as S.Schema<AppVersion>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4874,8 +4878,8 @@ export const restoreProjectsLocationsAppsVersions: API.OperationMethod<
   RestoreProjectsLocationsAppsVersionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(321, __c40, 1) as any as S.Schema<RestoreProjectsLocationsAppsVersionsRequest>,
-  output: __S(6, __c0, 6) as any as S.Schema<Operation>,
+  input: __S(2816, __c88, 0) as any as S.Schema<RestoreProjectsLocationsAppsVersionsRequest>,
+  output: __S(1760, __c55, 0) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4894,8 +4898,8 @@ export const runSessionProjectsLocationsAppsSessions: API.OperationMethod<
   RunSessionProjectsLocationsAppsSessionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(332, __c41, 4) as any as S.Schema<RunSessionProjectsLocationsAppsSessionsRequest>,
-  output: __S(339, __c42, 3) as any as S.Schema<RunSessionResponse>,
+  input: __S(2848, __c89, 0) as any as S.Schema<RunSessionProjectsLocationsAppsSessionsRequest>,
+  output: __S(2896, __c90, 16) as any as S.Schema<RunSessionResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4914,8 +4918,8 @@ export const sendProjectsLocationsAppsDeploymentsMessage: API.OperationMethod<
   SendProjectsLocationsAppsDeploymentsMessageError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(347, __c43, 3) as any as S.Schema<SendProjectsLocationsAppsDeploymentsMessageRequest>,
-  output: __S(353, __c44, 1) as any as S.Schema<LfA2aV1SendMessageResponse>,
+  input: __S(2912, __c91, 0) as any as S.Schema<SendProjectsLocationsAppsDeploymentsMessageRequest>,
+  output: __S(2944, __c92, 0) as any as S.Schema<LfA2aV1SendMessageResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4934,8 +4938,8 @@ export const sendProjectsLocationsAppsMessage: API.OperationMethod<
   SendProjectsLocationsAppsMessageError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(354, __c44, 2) as any as S.Schema<SendProjectsLocationsAppsMessageRequest>,
-  output: __S(353, __c44, 1) as any as S.Schema<LfA2aV1SendMessageResponse>,
+  input: __S(3232, __c101, 0) as any as S.Schema<SendProjectsLocationsAppsMessageRequest>,
+  output: __S(2944, __c92, 0) as any as S.Schema<LfA2aV1SendMessageResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4954,8 +4958,8 @@ export const sendProjectsLocationsAppsVersionsMessage: API.OperationMethod<
   SendProjectsLocationsAppsVersionsMessageError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(355, __c44, 3) as any as S.Schema<SendProjectsLocationsAppsVersionsMessageRequest>,
-  output: __S(353, __c44, 1) as any as S.Schema<LfA2aV1SendMessageResponse>,
+  input: __S(3264, __c102, 0) as any as S.Schema<SendProjectsLocationsAppsVersionsMessageRequest>,
+  output: __S(2944, __c92, 0) as any as S.Schema<LfA2aV1SendMessageResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4975,11 +4979,11 @@ export const streamChatAiAssistantProjectsLocationsAppsAssistantSessions: API.Op
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    359,
-    __c44,
-    7,
+    3299,
+    __c103,
+    3,
   ) as any as S.Schema<StreamChatAiAssistantProjectsLocationsAppsAssistantSessionsRequest>,
-  output: __S(374, __c46, 6) as any as S.Schema<StreamChatAiAssistantResponse>,
+  output: __S(3314, __c103, 18) as any as S.Schema<StreamChatAiAssistantResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4999,11 +5003,11 @@ export const streamProjectsLocationsAppsDeploymentsMessage: API.OperationMethod<
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    375,
-    __c46,
-    7,
+    3328,
+    __c104,
+    0,
   ) as any as S.Schema<StreamProjectsLocationsAppsDeploymentsMessageRequest>,
-  output: __S(378, __c47, 2) as any as S.Schema<LfA2aV1StreamResponse>,
+  output: __S(3362, __c105, 2) as any as S.Schema<LfA2aV1StreamResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5022,8 +5026,8 @@ export const streamProjectsLocationsAppsMessage: API.OperationMethod<
   StreamProjectsLocationsAppsMessageError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(379, __c47, 3) as any as S.Schema<StreamProjectsLocationsAppsMessageRequest>,
-  output: __S(378, __c47, 2) as any as S.Schema<LfA2aV1StreamResponse>,
+  input: __S(3392, __c106, 0) as any as S.Schema<StreamProjectsLocationsAppsMessageRequest>,
+  output: __S(3362, __c105, 2) as any as S.Schema<LfA2aV1StreamResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5042,8 +5046,8 @@ export const streamProjectsLocationsAppsVersionsMessage: API.OperationMethod<
   StreamProjectsLocationsAppsVersionsMessageError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(380, __c47, 4) as any as S.Schema<StreamProjectsLocationsAppsVersionsMessageRequest>,
-  output: __S(378, __c47, 2) as any as S.Schema<LfA2aV1StreamResponse>,
+  input: __S(3424, __c107, 0) as any as S.Schema<StreamProjectsLocationsAppsVersionsMessageRequest>,
+  output: __S(3362, __c105, 2) as any as S.Schema<LfA2aV1StreamResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5063,11 +5067,11 @@ export const streamRunSessionProjectsLocationsAppsSessions: API.OperationMethod<
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    381,
-    __c47,
-    5,
+    3456,
+    __c108,
+    0,
   ) as any as S.Schema<StreamRunSessionProjectsLocationsAppsSessionsRequest>,
-  output: __S(339, __c42, 3) as any as S.Schema<RunSessionResponse>,
+  output: __S(2896, __c90, 16) as any as S.Schema<RunSessionResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5077,20 +5081,1770 @@ export const streamRunSessionProjectsLocationsAppsSessions: API.OperationMethod<
 function __c0(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(S.String);
+      return S.suspend(() =>
+        S.Struct({
+          parent: S.String.pipe(T.Label()),
+          exampleId: S.optional(S.String.pipe(T.Query())),
+          body: S.optional(__S(128, __c4, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/{+parent}/examples",
+            baseUrl: "https://ces.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateProjectsLocationsAppsExamplesRequest",
+      });
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          toolId: S.optional(S.String),
+          toolset: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ToolsetTool" });
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          displayName: S.optional(S.String),
+          id: S.optional(S.String),
+          parentToolCallId: S.optional(S.String),
+          tool: S.optional(S.String),
+          agentName: S.optional(S.String),
+          args: S.optional(__S(1696, __c53, 0)),
+          toolsetTool: S.optional(__S(32, __c1, 0)),
+        }),
+      ).annotate({ identifier: "ToolCall" });
     case 1:
       return S.suspend(() =>
         S.Struct({
-          conversations: S.optional(__S(0, __c0, 0)),
+          parentToolCallId: S.optional(S.String),
+          displayName: S.optional(S.String),
+          agentName: S.optional(S.String),
+          response: S.optional(__S(1696, __c53, 0)),
+          tool: S.optional(S.String),
+          toolsetTool: S.optional(__S(32, __c1, 0)),
+          id: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ToolResponse" });
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          targetAgent: S.optional(S.String),
+          displayName: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "AgentTransfer" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          mimeType: S.optional(S.String),
+          data: S.optional(S.String),
+          altText: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Image" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          data: S.optional(S.String),
+          mimeType: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Blob" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          agentTransfer: S.optional(__S(96, __c3, 0)),
+          image: S.optional(__S(97, __c3, 1)),
+          toolCall: S.optional(__S(64, __c2, 0)),
+          updatedVariables: S.optional(__S(1696, __c53, 0)),
+          payload: S.optional(__S(1696, __c53, 0)),
+          transcript: S.optional(S.String),
+          blob: S.optional(__S(98, __c3, 2)),
+          text: S.optional(S.String),
+          toolResponse: S.optional(__S(65, __c2, 1)),
+          defaultVariables: S.optional(__S(1696, __c53, 0)),
+        }),
+      ).annotate({ identifier: "Chunk" });
+    case 4:
+      return S.Array(__S(99, __c3, 3));
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          eventTime: S.optional(S.String),
+          role: S.optional(S.String),
+          chunks: S.optional(__S(100, __c3, 4)),
+        }),
+      ).annotate({ identifier: "Message" });
+    case 6:
+      return S.Array(__S(101, __c3, 5));
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          etag: S.optional(S.String),
+          updateTime: S.optional(S.String),
+          invalid: S.optional(S.Boolean),
+          description: S.optional(S.String),
+          entryAgent: S.optional(S.String),
+          messages: S.optional(__S(102, __c3, 6)),
+          displayName: S.optional(S.String),
+          name: S.optional(S.String),
+          createTime: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Example" });
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          guardrailId: S.optional(S.String.pipe(T.Query())),
+          parent: S.String.pipe(T.Label()),
+          body: S.optional(__S(207, __c6, 15).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/{+parent}/guardrails",
+            baseUrl: "https://ces.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateProjectsLocationsAppsGuardrailsRequest",
+      });
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          matchType: S.optional(S.String),
+          disregardDiacritics: S.optional(S.Boolean),
+          bannedContents: S.optional(__S(1824, __c57, 0)),
+          bannedContentsInUserInput: S.optional(__S(1824, __c57, 0)),
+          bannedContentsInAgentResponse: S.optional(__S(1824, __c57, 0)),
+        }),
+      ).annotate({ identifier: "GuardrailContentFilter" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          threshold: S.optional(S.String),
+          category: S.optional(S.String),
         }),
       ).annotate({
-        identifier: "BatchDeleteConversationsRequest",
+        identifier: "GuardrailModelSafetySafetySetting",
+      });
+    case 2:
+      return S.Array(__S(193, __c6, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          safetySettings: S.optional(__S(194, __c6, 2)),
+        }),
+      ).annotate({ identifier: "GuardrailModelSafety" });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          disabled: S.optional(S.Boolean),
+          text: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "TriggerActionResponse" });
+    case 5:
+      return S.Array(__S(196, __c6, 4));
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          responses: S.optional(__S(197, __c6, 5)),
+        }),
+      ).annotate({
+        identifier: "TriggerActionRespondImmediately",
+      });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          agent: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "TriggerActionTransferAgent",
+      });
+    case 8:
+      return S.suspend(() =>
+        S.Struct({
+          prompt: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "TriggerActionGenerativeAnswer",
+      });
+    case 9:
+      return S.suspend(() =>
+        S.Struct({
+          respondImmediately: S.optional(__S(198, __c6, 6)),
+          transferAgent: S.optional(__S(199, __c6, 7)),
+          generativeAnswer: S.optional(__S(200, __c6, 8)),
+        }),
+      ).annotate({ identifier: "TriggerAction" });
+    case 10:
+      return S.suspend(() =>
+        S.Struct({
+          defaultPromptTemplate: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GuardrailLlmPromptSecurityDefaultSecuritySettings",
+      });
+    case 11:
+      return S.suspend(() =>
+        S.Struct({
+          allowShortUtterance: S.optional(S.Boolean),
+          modelSettings: S.optional(__S(3168, __c99, 0)),
+          prompt: S.optional(S.String),
+          policyScope: S.optional(S.String),
+          maxConversationMessages: S.optional(S.Number),
+          failOpen: S.optional(S.Boolean),
+        }),
+      ).annotate({ identifier: "GuardrailLlmPolicy" });
+    case 12:
+      return S.suspend(() =>
+        S.Struct({
+          failOpen: S.optional(S.Boolean),
+          defaultSettings: S.optional(__S(202, __c6, 10)),
+          customPolicy: S.optional(__S(203, __c6, 11)),
+        }),
+      ).annotate({
+        identifier: "GuardrailLlmPromptSecurity",
+      });
+    case 13:
+      return S.suspend(() =>
+        S.Struct({
+          beforeModelCallback: S.optional(__S(3520, __c110, 0)),
+          afterAgentCallback: S.optional(__S(3520, __c110, 0)),
+          afterModelCallback: S.optional(__S(3520, __c110, 0)),
+          beforeAgentCallback: S.optional(__S(3520, __c110, 0)),
+        }),
+      ).annotate({ identifier: "GuardrailCodeCallback" });
+    case 14:
+      return S.suspend(() =>
+        S.Struct({
+          type: S.optional(S.String),
+          detectionMode: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "GuardrailSupervisor" });
+    case 15:
+      return S.suspend(() =>
+        S.Struct({
+          contentFilter: S.optional(__S(192, __c6, 0)),
+          modelSafety: S.optional(__S(195, __c6, 3)),
+          displayName: S.optional(S.String),
+          updateTime: S.optional(S.String),
+          action: S.optional(__S(201, __c6, 9)),
+          createTime: S.optional(S.String),
+          llmPromptSecurity: S.optional(__S(204, __c6, 12)),
+          name: S.optional(S.String),
+          etag: S.optional(S.String),
+          enabled: S.optional(S.Boolean),
+          codeCallback: S.optional(__S(205, __c6, 13)),
+          description: S.optional(S.String),
+          llmPolicy: S.optional(__S(203, __c6, 11)),
+          supervisor: S.optional(__S(206, __c6, 14)),
+        }),
+      ).annotate({ identifier: "Guardrail" });
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          parent: S.String.pipe(T.Label()),
+          toolId: S.optional(S.String.pipe(T.Query())),
+          body: S.optional(__S(323, __c10, 3).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/{+parent}/tools",
+            baseUrl: "https://ces.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateProjectsLocationsAppsToolsRequest",
+      });
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          issuer: S.optional(S.String),
+          subject: S.optional(S.String),
+          clientKey: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "EndUserAuthConfigOauth2JwtBearerConfig",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          oauthToken: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "EndUserAuthConfigOauth2AuthCodeConfig",
       });
     case 2:
       return S.suspend(() =>
         S.Struct({
+          oauth2JwtBearerConfig: S.optional(__S(256, __c8, 0)),
+          oauth2AuthCodeConfig: S.optional(__S(257, __c8, 1)),
+        }),
+      ).annotate({ identifier: "EndUserAuthConfig" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          entityId: S.optional(S.String),
+          operation: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ActionEntityOperation" });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          connectionActionId: S.optional(S.String),
+          outputFields: S.optional(__S(1824, __c57, 0)),
+          entityOperation: S.optional(__S(259, __c8, 3)),
+          inputFields: S.optional(__S(1824, __c57, 0)),
+        }),
+      ).annotate({ identifier: "Action" });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          service: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ServiceDirectoryConfig" });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          cert: S.optional(S.String),
+          displayName: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "TlsConfigCaCert" });
+    case 7:
+      return S.Array(__S(262, __c8, 6));
+    case 8:
+      return S.suspend(() =>
+        S.Struct({
+          caCerts: S.optional(__S(263, __c8, 7)),
+        }),
+      ).annotate({ identifier: "TlsConfig" });
+    case 9:
+      return S.suspend(() =>
+        S.Struct({
+          codeBlock: S.optional(__S(3557, __c111, 5)),
+          enableFakeMode: S.optional(S.Boolean),
+        }),
+      ).annotate({ identifier: "ToolFakeConfig" });
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          agent: S.optional(S.String),
+          name: S.optional(S.String),
+          description: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "AgentTool" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          description: S.optional(S.String),
+          name: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "SystemTool" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.optional(S.String),
+          authConfig: S.optional(__S(258, __c8, 2)),
+          action: S.optional(__S(260, __c8, 4)),
+          description: S.optional(S.String),
+          connection: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ConnectorTool" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.optional(S.String),
+          parameters: S.optional(__S(3042, __c95, 2)),
+          response: S.optional(__S(3042, __c95, 2)),
+          description: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ClientFunction" });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          collectionDisplayName: S.optional(S.String),
+          dataSource: S.optional(S.String),
+          collection: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "DataStoreConnectorConfig" });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          type: S.optional(S.String),
+          documentProcessingMode: S.optional(S.String),
+          displayName: S.optional(S.String),
+          connectorConfig: S.optional(__S(292, __c9, 4)),
+          name: S.optional(S.String),
+          createTime: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "DataStore" });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          dataStore: S.optional(__S(293, __c9, 5)),
+          filter: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "DataStoreToolDataStoreSource",
+      });
+    case 7:
+      return S.Array(__S(294, __c9, 6));
+    case 8:
+      return S.suspend(() =>
+        S.Struct({
+          dataStoreSources: S.optional(__S(295, __c9, 7)),
+          engine: S.optional(S.String),
+          filter: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "DataStoreToolEngineSource",
+      });
+    case 9:
+      return S.suspend(() =>
+        S.Struct({
+          modelSettings: S.optional(__S(3168, __c99, 0)),
+          disabled: S.optional(S.Boolean),
+          prompt: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "DataStoreToolRewriterConfig",
+      });
+    case 10:
+      return S.suspend(() =>
+        S.Struct({
+          enableSnippets: S.optional(S.Boolean),
+          maxSnippets: S.optional(S.Number),
+        }),
+      ).annotate({
+        identifier: "DataStoreToolSnippetsConfig",
+      });
+    case 11:
+      return S.suspend(() =>
+        S.Struct({
+          prompt: S.optional(S.String),
+          disabled: S.optional(S.Boolean),
+          modelSettings: S.optional(__S(3168, __c99, 0)),
+        }),
+      ).annotate({
+        identifier: "DataStoreToolSummarizationConfig",
+      });
+    case 12:
+      return S.suspend(() =>
+        S.Struct({
+          groundingLevel: S.optional(S.Number),
+          disabled: S.optional(S.Boolean),
+        }),
+      ).annotate({
+        identifier: "DataStoreToolGroundingConfig",
+      });
+    case 13:
+      return S.suspend(() =>
+        S.Struct({
+          rewriterConfig: S.optional(__S(297, __c9, 9)),
+          snippetsConfig: S.optional(__S(298, __c9, 10)),
+          modalityType: S.optional(S.String),
+          summarizationConfig: S.optional(__S(299, __c9, 11)),
+          groundingConfig: S.optional(__S(300, __c9, 12)),
+        }),
+      ).annotate({
+        identifier: "DataStoreToolModalityConfig",
+      });
+    case 14:
+      return S.Array(__S(301, __c9, 13));
+    case 15:
+      return S.suspend(() =>
+        S.Struct({
+          attributeValue: S.optional(S.String),
+          boostAmount: S.optional(S.Number),
+        }),
+      ).annotate({
+        identifier: "DataStoreToolBoostSpecConditionBoostSpecBoostControlSpecControlPoint",
+      });
+    case 16:
+      return S.Array(__S(303, __c9, 15));
+    case 17:
+      return S.suspend(() =>
+        S.Struct({
+          attributeType: S.optional(S.String),
+          controlPoints: S.optional(__S(304, __c9, 16)),
+          fieldName: S.optional(S.String),
+          interpolationType: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "DataStoreToolBoostSpecConditionBoostSpecBoostControlSpec",
+      });
+    case 18:
+      return S.suspend(() =>
+        S.Struct({
+          boostControlSpec: S.optional(__S(305, __c9, 17)),
+          condition: S.optional(S.String),
+          boost: S.optional(S.Number),
+        }),
+      ).annotate({
+        identifier: "DataStoreToolBoostSpecConditionBoostSpec",
+      });
+    case 19:
+      return S.Array(__S(306, __c9, 18));
+    case 20:
+      return S.suspend(() =>
+        S.Struct({
+          conditionBoostSpecs: S.optional(__S(307, __c9, 19)),
+        }),
+      ).annotate({ identifier: "DataStoreToolBoostSpec" });
+    case 21:
+      return S.Array(__S(308, __c9, 20));
+    case 22:
+      return S.suspend(() =>
+        S.Struct({
+          spec: S.optional(__S(309, __c9, 21)),
+          dataStores: S.optional(__S(1824, __c57, 0)),
+        }),
+      ).annotate({ identifier: "DataStoreToolBoostSpecs" });
+    case 23:
+      return S.Array(__S(310, __c9, 22));
+    case 24:
+      return S.suspend(() =>
+        S.Struct({
+          engineSource: S.optional(__S(296, __c9, 8)),
+          modalityConfigs: S.optional(__S(302, __c9, 14)),
+          filterParameterBehavior: S.optional(S.String),
+          dataStoreSource: S.optional(__S(294, __c9, 6)),
+          name: S.optional(S.String),
+          boostSpecs: S.optional(__S(311, __c9, 23)),
+          description: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "DataStoreTool" });
+    case 25:
+      return S.suspend(() =>
+        S.Struct({
+          description: S.optional(S.String),
+          serviceDirectoryConfig: S.optional(__S(261, __c8, 5)),
+          name: S.optional(S.String),
+          pythonCode: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "PythonFunction" });
+    case 26:
+      return S.suspend(() =>
+        S.Struct({
+          inputSchema: S.optional(__S(3042, __c95, 2)),
+          state: S.optional(S.String),
+          description: S.optional(S.String),
+          name: S.optional(S.String),
+          apiAuthentication: S.optional(__S(3556, __c111, 4)),
+          nameOverride: S.optional(S.String),
+          serviceDirectoryConfig: S.optional(__S(261, __c8, 5)),
+          outputSchema: S.optional(__S(3042, __c95, 2)),
+          customHeaders: S.optional(__S(3136, __c98, 0)),
+          tlsConfig: S.optional(__S(264, __c8, 8)),
+          serverAddress: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "McpTool" });
+    case 27:
+      return S.suspend(() =>
+        S.Struct({
+          voicePrompt: S.optional(S.String),
+          textPrompt: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleSearchToolPromptConfig",
+      });
+    case 28:
+      return S.suspend(() =>
+        S.Struct({
+          excludeDomains: S.optional(__S(1824, __c57, 0)),
+          description: S.optional(S.String),
+          contextUrls: S.optional(__S(1824, __c57, 0)),
+          promptConfig: S.optional(__S(315, __c9, 27)),
+          name: S.optional(S.String),
+          preferredDomains: S.optional(__S(1824, __c57, 0)),
+        }),
+      ).annotate({ identifier: "GoogleSearchTool" });
+    case 29:
+      return S.suspend(() =>
+        S.Struct({
+          url: S.optional(S.String),
+          description: S.optional(S.String),
+          name: S.optional(S.String),
+          apiAuthentication: S.optional(__S(3556, __c111, 4)),
+          tlsConfig: S.optional(__S(264, __c8, 8)),
+          serviceDirectoryConfig: S.optional(__S(261, __c8, 5)),
+          openApiSchema: S.optional(S.String),
+          ignoreUnknownFields: S.optional(S.Boolean),
+        }),
+      ).annotate({ identifier: "OpenApiTool" });
+    case 30:
+      return S.suspend(() =>
+        S.Struct({
+          inputVariableMapping: S.optional(__S(3136, __c98, 0)),
+          outputVariableMapping: S.optional(__S(3136, __c98, 0)),
+          description: S.optional(S.String),
+          statefulAgent: S.optional(S.Boolean),
+          name: S.optional(S.String),
+          apiAuthentication: S.optional(__S(3556, __c111, 4)),
+          agentCard: S.optional(__S(3588, __c112, 4)),
+        }),
+      ).annotate({ identifier: "RemoteAgentTool" });
+    case 31:
+      return S.suspend(() =>
+        S.Struct({
+          sourceToolName: S.optional(S.String),
+          mode: S.optional(S.String),
+          fieldMappings: S.optional(__S(3136, __c98, 0)),
+          pythonScript: S.optional(S.String),
+          pythonFunction: S.optional(__S(313, __c9, 25)),
+        }),
+      ).annotate({ identifier: "WidgetToolDataMapping" });
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          staticText: S.optional(S.String),
+          textResponseInstruction: S.optional(S.String),
+          type: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "WidgetToolTextResponseConfig",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          uiConfig: S.optional(__S(1696, __c53, 0)),
+          dataMapping: S.optional(__S(319, __c9, 31)),
+          textResponseConfig: S.optional(__S(320, __c10, 0)),
+          widgetType: S.optional(S.String),
+          description: S.optional(S.String),
+          name: S.optional(S.String),
+          parameters: S.optional(__S(3042, __c95, 2)),
+        }),
+      ).annotate({ identifier: "WidgetTool" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          description: S.optional(S.String),
+          name: S.optional(S.String),
+          corpusType: S.optional(S.String),
+          fileCorpus: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "FileSearchTool" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          agentTool: S.optional(__S(288, __c9, 0)),
+          updateTime: S.optional(S.String),
+          readOnly: S.optional(S.Boolean),
+          systemTool: S.optional(__S(289, __c9, 1)),
+          connectorTool: S.optional(__S(290, __c9, 2)),
+          createTime: S.optional(S.String),
+          clientFunction: S.optional(__S(291, __c9, 3)),
+          generatedSummary: S.optional(S.String),
+          dataStoreTool: S.optional(__S(312, __c9, 24)),
+          pythonFunction: S.optional(__S(313, __c9, 25)),
+          mcpTool: S.optional(__S(314, __c9, 26)),
+          toolFakeConfig: S.optional(__S(265, __c8, 9)),
+          executionType: S.optional(S.String),
+          etag: S.optional(S.String),
+          googleSearchTool: S.optional(__S(316, __c9, 28)),
+          openApiTool: S.optional(__S(317, __c9, 29)),
+          remoteAgentTool: S.optional(__S(318, __c9, 30)),
+          name: S.optional(S.String),
+          displayName: S.optional(S.String),
+          widgetTool: S.optional(__S(321, __c10, 1)),
+          fileSearchTool: S.optional(__S(322, __c10, 2)),
+          timeout: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Tool" });
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
           parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(1, __c0, 1).pipe(T.HttpBody())),
+          toolsetId: S.optional(S.String.pipe(T.Query())),
+          body: S.optional(__S(391, __c12, 7).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/{+parent}/toolsets",
+            baseUrl: "https://ces.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateProjectsLocationsAppsToolsetsRequest",
+      });
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          serviceDirectoryConfig: S.optional(__S(261, __c8, 5)),
+          openApiSchema: S.optional(S.String),
+          tlsConfig: S.optional(__S(264, __c8, 8)),
+          ignoreUnknownFields: S.optional(S.Boolean),
+          url: S.optional(S.String),
+          apiAuthentication: S.optional(__S(3556, __c111, 4)),
+        }),
+      ).annotate({ identifier: "OpenApiToolset" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          outputSchema: S.optional(__S(3042, __c95, 2)),
+          description: S.optional(S.String),
+          inputSchema: S.optional(__S(3042, __c95, 2)),
+        }),
+      ).annotate({ identifier: "McpToolDefinition" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          snapshot: S.optional(__S(385, __c12, 1)),
+          nameOverride: S.optional(S.String),
+          tool: S.optional(S.String),
+          descriptionOverride: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "McpToolOverride" });
+    case 3:
+      return S.Array(__S(386, __c12, 2));
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          serviceDirectoryConfig: S.optional(__S(261, __c8, 5)),
+          customHeaders: S.optional(__S(3136, __c98, 0)),
+          tlsConfig: S.optional(__S(264, __c8, 8)),
+          serverAddress: S.optional(S.String),
+          apiAuthentication: S.optional(__S(3556, __c111, 4)),
+          toolOverrides: S.optional(__S(387, __c12, 3)),
+        }),
+      ).annotate({ identifier: "McpToolset" });
+    case 5:
+      return S.Array(__S(260, __c8, 4));
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          authConfig: S.optional(__S(258, __c8, 2)),
+          connection: S.optional(S.String),
+          connectorActions: S.optional(__S(389, __c12, 5)),
+        }),
+      ).annotate({ identifier: "ConnectorToolset" });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          toolFakeConfig: S.optional(__S(265, __c8, 9)),
+          openApiToolset: S.optional(__S(384, __c12, 0)),
+          mcpToolset: S.optional(__S(388, __c12, 4)),
+          updateTime: S.optional(S.String),
+          name: S.optional(S.String),
+          displayName: S.optional(S.String),
+          description: S.optional(S.String),
+          etag: S.optional(S.String),
+          connectorToolset: S.optional(__S(390, __c12, 6)),
+          timeout: S.optional(S.String),
+          executionType: S.optional(S.String),
+          createTime: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Toolset" });
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          appVersionId: S.optional(S.String.pipe(T.Query())),
+          parent: S.String.pipe(T.Label()),
+          body: S.optional(__S(609, __c19, 1).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/{+parent}/versions",
+            baseUrl: "https://ces.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateProjectsLocationsAppsVersionsRequest",
+      });
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(323, __c10, 3));
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(3627, __c113, 11));
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(128, __c4, 0));
+  }
+}
+function __c17(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(207, __c6, 15));
+  }
+}
+function __c18(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(391, __c12, 7));
+  }
+}
+function __c19(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          examples: S.optional(__S(512, __c16, 0)),
+          app: S.optional(__S(3106, __c97, 2)),
+          agents: S.optional(__S(480, __c15, 0)),
+          toolsets: S.optional(__S(576, __c18, 0)),
+          tools: S.optional(__S(448, __c14, 0)),
+          guardrails: S.optional(__S(544, __c17, 0)),
+        }),
+      ).annotate({ identifier: "AppSnapshot" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          description: S.optional(S.String),
+          creator: S.optional(S.String),
+          createTime: S.optional(S.String),
+          etag: S.optional(S.String),
+          updateTime: S.optional(S.String),
+          snapshot: S.optional(__S(608, __c19, 0)),
+          name: S.optional(S.String),
+          displayName: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "AppVersion" });
+  }
+}
+function __c20(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+          etag: S.optional(S.String.pipe(T.Query())),
+        }).pipe(
+          T.Http({ method: "DELETE", uri: "v1/{+name}", baseUrl: "https://ces.googleapis.com/" }),
+        ),
+      ).annotate({
+        identifier: "DeleteProjectsLocationsAppsRequest",
+      });
+  }
+}
+function __c21(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          force: S.optional(S.Boolean.pipe(T.Query())),
+          name: S.String.pipe(T.Label()),
+          etag: S.optional(S.String.pipe(T.Query())),
+        }).pipe(
+          T.Http({ method: "DELETE", uri: "v1/{+name}", baseUrl: "https://ces.googleapis.com/" }),
+        ),
+      ).annotate({
+        identifier: "DeleteProjectsLocationsAppsAgentsRequest",
+      });
+  }
+}
+function __c22(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+          source: S.optional(S.String.pipe(T.Query())),
+        }).pipe(
+          T.Http({ method: "DELETE", uri: "v1/{+name}", baseUrl: "https://ces.googleapis.com/" }),
+        ),
+      ).annotate({
+        identifier: "DeleteProjectsLocationsAppsConversationsRequest",
+      });
+  }
+}
+function __c23(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+          etag: S.optional(S.String.pipe(T.Query())),
+        }).pipe(
+          T.Http({ method: "DELETE", uri: "v1/{+name}", baseUrl: "https://ces.googleapis.com/" }),
+        ),
+      ).annotate({
+        identifier: "DeleteProjectsLocationsAppsDeploymentsRequest",
+      });
+  }
+}
+function __c24(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+          etag: S.optional(S.String.pipe(T.Query())),
+        }).pipe(
+          T.Http({ method: "DELETE", uri: "v1/{+name}", baseUrl: "https://ces.googleapis.com/" }),
+        ),
+      ).annotate({
+        identifier: "DeleteProjectsLocationsAppsExamplesRequest",
+      });
+  }
+}
+function __c25(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+          etag: S.optional(S.String.pipe(T.Query())),
+          force: S.optional(S.Boolean.pipe(T.Query())),
+        }).pipe(
+          T.Http({ method: "DELETE", uri: "v1/{+name}", baseUrl: "https://ces.googleapis.com/" }),
+        ),
+      ).annotate({
+        identifier: "DeleteProjectsLocationsAppsGuardrailsRequest",
+      });
+  }
+}
+function __c26(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          force: S.optional(S.Boolean.pipe(T.Query())),
+          name: S.String.pipe(T.Label()),
+          etag: S.optional(S.String.pipe(T.Query())),
+        }).pipe(
+          T.Http({ method: "DELETE", uri: "v1/{+name}", baseUrl: "https://ces.googleapis.com/" }),
+        ),
+      ).annotate({
+        identifier: "DeleteProjectsLocationsAppsToolsRequest",
+      });
+  }
+}
+function __c27(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+          etag: S.optional(S.String.pipe(T.Query())),
+          force: S.optional(S.Boolean.pipe(T.Query())),
+        }).pipe(
+          T.Http({ method: "DELETE", uri: "v1/{+name}", baseUrl: "https://ces.googleapis.com/" }),
+        ),
+      ).annotate({
+        identifier: "DeleteProjectsLocationsAppsToolsetsRequest",
+      });
+  }
+}
+function __c28(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+          etag: S.optional(S.String.pipe(T.Query())),
+        }).pipe(
+          T.Http({ method: "DELETE", uri: "v1/{+name}", baseUrl: "https://ces.googleapis.com/" }),
+        ),
+      ).annotate({
+        identifier: "DeleteProjectsLocationsAppsVersionsRequest",
+      });
+  }
+}
+function __c29(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({ method: "DELETE", uri: "v1/{+name}", baseUrl: "https://ces.googleapis.com/" }),
+        ),
+      ).annotate({
+        identifier: "DeleteProjectsLocationsOperationsRequest",
+      });
+  }
+}
+function __c30(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          mockResponse: S.optional(__S(1696, __c53, 0)),
+          tool: S.optional(S.String),
+          toolId: S.optional(S.String),
+          toolset: S.optional(__S(32, __c1, 0)),
+          expectedArgsPattern: S.optional(__S(1696, __c53, 0)),
+        }),
+      ).annotate({ identifier: "MockedToolCall" });
+    case 1:
+      return S.Array(__S(960, __c30, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          mockedToolCalls: S.optional(__S(961, __c30, 1)),
+          unmatchedToolCallBehavior: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "MockConfig" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          variables: S.optional(__S(1696, __c53, 0)),
+          mockConfig: S.optional(__S(962, __c30, 2)),
+          args: S.optional(__S(1696, __c53, 0)),
+          toolsetTool: S.optional(__S(32, __c1, 0)),
+          tool: S.optional(S.String),
+          context: S.optional(__S(1696, __c53, 0)),
+        }),
+      ).annotate({ identifier: "ExecuteToolRequest" });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          parent: S.String.pipe(T.Label()),
+          body: S.optional(__S(963, __c30, 3).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/{+parent}:executeTool",
+            baseUrl: "https://ces.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "ExecuteToolProjectsLocationsAppsRequest",
+      });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          toolsetTool: S.optional(__S(32, __c1, 0)),
+          variables: S.optional(__S(1696, __c53, 0)),
+          tool: S.optional(S.String),
+          googleSearchSuggestions: S.optional(__S(994, __c31, 2)),
+          citations: S.optional(__S(1000, __c31, 8)),
+          response: S.optional(__S(1696, __c53, 0)),
+        }),
+      ).annotate({ identifier: "ExecuteToolResponse" });
+  }
+}
+function __c31(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          query: S.optional(S.String),
+          uri: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "WebSearchQuery" });
+    case 1:
+      return S.Array(__S(992, __c31, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          webSearchQueries: S.optional(__S(993, __c31, 1)),
+          htmls: S.optional(__S(1824, __c57, 0)),
+        }),
+      ).annotate({ identifier: "GoogleSearchSuggestions" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          requiresAttribution: S.optional(S.Boolean),
+          uri: S.optional(S.String),
+          text: S.optional(S.String),
+          title: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "CitationsCitedChunk" });
+    case 4:
+      return S.Array(__S(995, __c31, 3));
+    case 5:
+      return S.Array(S.Number);
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          endIndex: S.optional(S.Number),
+          citedChunkIndices: S.optional(__S(997, __c31, 5)),
+          startIndex: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "CitationsInlineCitation" });
+    case 7:
+      return S.Array(__S(998, __c31, 6));
+    case 8:
+      return S.suspend(() =>
+        S.Struct({
+          citedChunks: S.optional(__S(996, __c31, 4)),
+          inlineCitations: S.optional(__S(999, __c31, 7)),
+        }),
+      ).annotate({ identifier: "Citations" });
+  }
+}
+function __c32(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          gcsUri: S.optional(S.String),
+          appVersion: S.optional(S.String),
+          exportFormat: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ExportAppRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+          body: S.optional(__S(1024, __c32, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/{+name}:exportApp",
+            baseUrl: "https://ces.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "ExportAppProjectsLocationsAppsRequest",
+      });
+  }
+}
+function __c33(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          recaptchaToken: S.optional(S.String),
+          liveHandoffEnabled: S.optional(S.Boolean),
+          deployment: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "GenerateChatTokenRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+          body: S.optional(__S(1056, __c33, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/{+name}:generateChatToken",
+            baseUrl: "https://ces.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "GenerateChatTokenProjectsLocationsAppsSessionsRequest",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          chatToken: S.optional(S.String),
+          expireTime: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GenerateChatTokenResponse",
+      });
+  }
+}
+function __c34(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          maxSuggestions: S.optional(S.Number),
+        }),
+      ).annotate({
+        identifier: "GenerateOnboardingSuggestionsRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+          body: S.optional(__S(1088, __c34, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/{+name}:generateOnboardingSuggestions",
+            baseUrl: "https://ces.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "GenerateOnboardingSuggestionsProjectsLocationsAppsRequest",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          assistantSessionId: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "AssistantSuggestionLoadSession",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          label: S.optional(S.String),
+          source: S.optional(S.String),
+          suggestionId: S.optional(S.String),
+          seedPrompt: S.optional(S.String),
+          rationale: S.optional(S.String),
+          icon: S.optional(S.String),
+          candidateType: S.optional(S.String),
+          sendMessage: S.optional(S.String),
+          loadSession: S.optional(__S(1090, __c34, 2)),
+        }),
+      ).annotate({ identifier: "AssistantSuggestion" });
+    case 4:
+      return S.Array(__S(1091, __c34, 3));
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          userProfile: S.optional(S.String),
+          suggestions: S.optional(__S(1092, __c34, 4)),
+          contextToken: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GenerateOnboardingSuggestionsResponse",
+      });
+  }
+}
+function __c35(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          tenant: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v1/{+tenant}/extendedAgentCard",
+            baseUrl: "https://ces.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetExtendedAgentCardProjectsLocationsAppsRequest",
+      });
+  }
+}
+function __c36(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          list: S.optional(__S(1824, __c57, 0)),
+        }),
+      ).annotate({ identifier: "LfA2aV1StringList" });
+    case 1:
+      return S.Record(S.String, __S(1152, __c36, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          schemes: S.optional(__S(1153, __c36, 1)),
+        }),
+      ).annotate({
+        identifier: "LfA2aV1SecurityRequirement",
+      });
+    case 3:
+      return S.Array(__S(1154, __c36, 2));
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          signature: S.optional(S.String),
+          header: S.optional(__S(1696, __c53, 0)),
+          protected: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "LfA2aV1AgentCardSignature",
+      });
+    case 5:
+      return S.Array(__S(1156, __c36, 4));
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          url: S.optional(S.String),
+          organization: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "LfA2aV1AgentProvider" });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          scopes: S.optional(__S(3136, __c98, 0)),
+          pkceRequired: S.optional(S.Boolean),
+          refreshUrl: S.optional(S.String),
+          tokenUrl: S.optional(S.String),
+          authorizationUrl: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "LfA2aV1AuthorizationCodeOAuthFlow",
+      });
+    case 8:
+      return S.suspend(() =>
+        S.Struct({
+          scopes: S.optional(__S(3136, __c98, 0)),
+          refreshUrl: S.optional(S.String),
+          tokenUrl: S.optional(S.String),
+          deviceAuthorizationUrl: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "LfA2aV1DeviceCodeOAuthFlow",
+      });
+    case 9:
+      return S.suspend(() =>
+        S.Struct({
+          tokenUrl: S.optional(S.String),
+          refreshUrl: S.optional(S.String),
+          scopes: S.optional(__S(3136, __c98, 0)),
+        }),
+      ).annotate({ identifier: "LfA2aV1PasswordOAuthFlow" });
+    case 10:
+      return S.suspend(() =>
+        S.Struct({
+          tokenUrl: S.optional(S.String),
+          scopes: S.optional(__S(3136, __c98, 0)),
+          refreshUrl: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "LfA2aV1ClientCredentialsOAuthFlow",
+      });
+    case 11:
+      return S.suspend(() =>
+        S.Struct({
+          scopes: S.optional(__S(3136, __c98, 0)),
+          refreshUrl: S.optional(S.String),
+          authorizationUrl: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "LfA2aV1ImplicitOAuthFlow" });
+    case 12:
+      return S.suspend(() =>
+        S.Struct({
+          authorizationCode: S.optional(__S(1159, __c36, 7)),
+          deviceCode: S.optional(__S(1160, __c36, 8)),
+          password: S.optional(__S(1161, __c36, 9)),
+          clientCredentials: S.optional(__S(1162, __c36, 10)),
+          implicit: S.optional(__S(1163, __c36, 11)),
+        }),
+      ).annotate({ identifier: "LfA2aV1OAuthFlows" });
+    case 13:
+      return S.suspend(() =>
+        S.Struct({
+          flows: S.optional(__S(1164, __c36, 12)),
+          description: S.optional(S.String),
+          oauth2MetadataUrl: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "LfA2aV1OAuth2SecurityScheme",
+      });
+    case 14:
+      return S.suspend(() =>
+        S.Struct({
+          openIdConnectUrl: S.optional(S.String),
+          description: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "LfA2aV1OpenIdConnectSecurityScheme",
+      });
+    case 15:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.optional(S.String),
+          description: S.optional(S.String),
+          location: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "LfA2aV1APIKeySecurityScheme",
+      });
+    case 16:
+      return S.suspend(() =>
+        S.Struct({
+          description: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "LfA2aV1MutualTlsSecurityScheme",
+      });
+    case 17:
+      return S.suspend(() =>
+        S.Struct({
+          description: S.optional(S.String),
+          bearerFormat: S.optional(S.String),
+          scheme: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "LfA2aV1HTTPAuthSecurityScheme",
+      });
+    case 18:
+      return S.suspend(() =>
+        S.Struct({
+          oauth2SecurityScheme: S.optional(__S(1165, __c36, 13)),
+          openIdConnectSecurityScheme: S.optional(__S(1166, __c36, 14)),
+          apiKeySecurityScheme: S.optional(__S(1167, __c36, 15)),
+          mtlsSecurityScheme: S.optional(__S(1168, __c36, 16)),
+          httpAuthSecurityScheme: S.optional(__S(1169, __c36, 17)),
+        }),
+      ).annotate({ identifier: "LfA2aV1SecurityScheme" });
+    case 19:
+      return S.Record(S.String, __S(1170, __c36, 18));
+    case 20:
+      return S.suspend(() =>
+        S.Struct({
+          tags: S.optional(__S(1824, __c57, 0)),
+          id: S.optional(S.String),
+          description: S.optional(S.String),
+          name: S.optional(S.String),
+          securityRequirements: S.optional(__S(1155, __c36, 3)),
+          inputModes: S.optional(__S(1824, __c57, 0)),
+          examples: S.optional(__S(1824, __c57, 0)),
+          outputModes: S.optional(__S(1824, __c57, 0)),
+        }),
+      ).annotate({ identifier: "LfA2aV1AgentSkill" });
+    case 21:
+      return S.Array(__S(1172, __c36, 20));
+    case 22:
+      return S.suspend(() =>
+        S.Struct({
+          required: S.optional(S.Boolean),
+          params: S.optional(__S(1696, __c53, 0)),
+          description: S.optional(S.String),
+          uri: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "LfA2aV1AgentExtension" });
+    case 23:
+      return S.Array(__S(1174, __c36, 22));
+    case 24:
+      return S.suspend(() =>
+        S.Struct({
+          streaming: S.optional(S.Boolean),
+          pushNotifications: S.optional(S.Boolean),
+          extensions: S.optional(__S(1175, __c36, 23)),
+          extendedAgentCard: S.optional(S.Boolean),
+        }),
+      ).annotate({ identifier: "LfA2aV1AgentCapabilities" });
+    case 25:
+      return S.suspend(() =>
+        S.Struct({
+          tenant: S.optional(S.String),
+          url: S.optional(S.String),
+          protocolBinding: S.optional(S.String),
+          protocolVersion: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "LfA2aV1AgentInterface" });
+    case 26:
+      return S.Array(__S(1177, __c36, 25));
+    case 27:
+      return S.suspend(() =>
+        S.Struct({
+          securityRequirements: S.optional(__S(1155, __c36, 3)),
+          signatures: S.optional(__S(1157, __c36, 5)),
+          provider: S.optional(__S(1158, __c36, 6)),
+          name: S.optional(S.String),
+          securitySchemes: S.optional(__S(1171, __c36, 19)),
+          description: S.optional(S.String),
+          skills: S.optional(__S(1173, __c36, 21)),
+          defaultOutputModes: S.optional(__S(1824, __c57, 0)),
+          version: S.optional(S.String),
+          iconUrl: S.optional(S.String),
+          capabilities: S.optional(__S(1176, __c36, 24)),
+          defaultInputModes: S.optional(__S(1824, __c57, 0)),
+          documentationUrl: S.optional(S.String),
+          supportedInterfaces: S.optional(__S(1178, __c36, 26)),
+        }),
+      ).annotate({ identifier: "LfA2aV1AgentCard" });
+  }
+}
+function __c37(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          tenant: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v1/{+tenant}/extendedAgentCard",
+            baseUrl: "https://ces.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetExtendedAgentCardProjectsLocationsAppsDeploymentsRequest",
+      });
+  }
+}
+function __c38(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          tenant: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v1/{+tenant}/extendedAgentCard",
+            baseUrl: "https://ces.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetExtendedAgentCardProjectsLocationsAppsVersionsRequest",
+      });
+  }
+}
+function __c39(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({ method: "GET", uri: "v1/{+name}", baseUrl: "https://ces.googleapis.com/" }),
+        ),
+      ).annotate({
+        identifier: "GetProjectsLocationsRequest",
+      });
+  }
+}
+function __c40(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.optional(S.String),
+          locationId: S.optional(S.String),
+          displayName: S.optional(S.String),
+          metadata: S.optional(__S(1696, __c53, 0)),
+          labels: S.optional(__S(3136, __c98, 0)),
+        }),
+      ).annotate({ identifier: "Location" });
+  }
+}
+function __c41(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({ method: "GET", uri: "v1/{+name}", baseUrl: "https://ces.googleapis.com/" }),
+        ),
+      ).annotate({
+        identifier: "GetProjectsLocationsAppsRequest",
+      });
+  }
+}
+function __c42(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({ method: "GET", uri: "v1/{+name}", baseUrl: "https://ces.googleapis.com/" }),
+        ),
+      ).annotate({
+        identifier: "GetProjectsLocationsAppsAgentsRequest",
+      });
+  }
+}
+function __c43(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({ method: "GET", uri: "v1/{+name}", baseUrl: "https://ces.googleapis.com/" }),
+        ),
+      ).annotate({
+        identifier: "GetProjectsLocationsAppsChangelogsRequest",
+      });
+  }
+}
+function __c44(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          resourceType: S.optional(S.String),
+          originalResource: S.optional(__S(1696, __c53, 0)),
+          name: S.optional(S.String),
+          createTime: S.optional(S.String),
+          newResource: S.optional(__S(1696, __c53, 0)),
+          author: S.optional(S.String),
+          action: S.optional(S.String),
+          displayName: S.optional(S.String),
+          resource: S.optional(S.String),
+          description: S.optional(S.String),
+          sequenceNumber: S.optional(S.String),
+          dependentResources: S.optional(__S(1728, __c54, 0)),
+        }),
+      ).annotate({ identifier: "Changelog" });
+  }
+}
+function __c45(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          source: S.optional(S.String.pipe(T.Query())),
+          name: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({ method: "GET", uri: "v1/{+name}", baseUrl: "https://ces.googleapis.com/" }),
+        ),
+      ).annotate({
+        identifier: "GetProjectsLocationsAppsConversationsRequest",
+      });
+  }
+}
+function __c46(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          userIntendedText: S.optional(S.String),
+          messages: S.optional(__S(102, __c3, 6)),
+          rootSpan: S.optional(__S(1505, __c47, 1)),
+        }),
+      ).annotate({ identifier: "ConversationTurn" });
+    case 1:
+      return S.Array(__S(1472, __c46, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          inputTypes: S.optional(__S(1536, __c48, 0)),
+          turnCount: S.optional(S.Number),
+          source: S.optional(S.String),
+          name: S.optional(S.String),
+          messages: S.optional(__S(102, __c3, 6)),
+          languageCode: S.optional(S.String),
+          turns: S.optional(__S(1473, __c46, 1)),
+          entryAgent: S.optional(S.String),
+          endTime: S.optional(S.String),
+          startTime: S.optional(S.String),
+          appVersion: S.optional(S.String),
+          channelType: S.optional(S.String),
+          deployment: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Conversation" });
+  }
+}
+function __c47(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(/*@__PURE__*/ S.suspend(() => __S(1505, __c47, 1)));
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          attributes: S.optional(__S(1696, __c53, 0)),
+          endTime: S.optional(S.String),
+          startTime: S.optional(S.String),
+          childSpans: S.optional(__S(1504, __c47, 0)),
+          duration: S.optional(S.String),
+          name: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Span" });
+  }
+}
+function __c48(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c49(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({ method: "GET", uri: "v1/{+name}", baseUrl: "https://ces.googleapis.com/" }),
+        ),
+      ).annotate({
+        identifier: "GetProjectsLocationsAppsDeploymentsRequest",
+      });
+  }
+}
+function __c50(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({ method: "GET", uri: "v1/{+name}", baseUrl: "https://ces.googleapis.com/" }),
+        ),
+      ).annotate({
+        identifier: "GetProjectsLocationsAppsExamplesRequest",
+      });
+  }
+}
+function __c51(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({ method: "GET", uri: "v1/{+name}", baseUrl: "https://ces.googleapis.com/" }),
+        ),
+      ).annotate({
+        identifier: "GetProjectsLocationsAppsGuardrailsRequest",
+      });
+  }
+}
+function __c52(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          conversations: S.optional(__S(1824, __c57, 0)),
+        }),
+      ).annotate({
+        identifier: "BatchDeleteConversationsRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          parent: S.String.pipe(T.Label()),
+          body: S.optional(__S(1664, __c52, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -5101,29 +6855,315 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "BatchDeleteProjectsLocationsAppsConversationsRequest",
       });
-    case 3:
+  }
+}
+function __c53(j: number): any {
+  switch (j) {
+    case 0:
       return S.Record(S.String, S.Unknown);
-    case 4:
-      return S.Array(__S(3, __c0, 3));
-    case 5:
+  }
+}
+function __c54(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(1696, __c53, 0));
+  }
+}
+function __c55(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          details: S.optional(__S(4, __c0, 4)),
+          error: S.optional(__S(1792, __c56, 0)),
+          metadata: S.optional(__S(1696, __c53, 0)),
+          name: S.optional(S.String),
+          done: S.optional(S.Boolean),
+          response: S.optional(__S(1696, __c53, 0)),
+        }),
+      ).annotate({ identifier: "Operation" });
+  }
+}
+function __c56(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          details: S.optional(__S(1728, __c54, 0)),
           code: S.optional(S.Number),
           message: S.optional(S.String),
         }),
       ).annotate({ identifier: "Status" });
-    case 6:
+  }
+}
+function __c57(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c58(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          error: S.optional(__S(5, __c0, 5)),
-          metadata: S.optional(__S(3, __c0, 3)),
-          name: S.optional(S.String),
-          done: S.optional(S.Boolean),
-          response: S.optional(__S(3, __c0, 3)),
+          name: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({ method: "GET", uri: "v1/{+name}", baseUrl: "https://ces.googleapis.com/" }),
+        ),
+      ).annotate({
+        identifier: "GetProjectsLocationsAppsToolsRequest",
+      });
+  }
+}
+function __c59(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({ method: "GET", uri: "v1/{+name}", baseUrl: "https://ces.googleapis.com/" }),
+        ),
+      ).annotate({
+        identifier: "GetProjectsLocationsAppsToolsetsRequest",
+      });
+  }
+}
+function __c60(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({ method: "GET", uri: "v1/{+name}", baseUrl: "https://ces.googleapis.com/" }),
+        ),
+      ).annotate({
+        identifier: "GetProjectsLocationsAppsVersionsRequest",
+      });
+  }
+}
+function __c61(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({ method: "GET", uri: "v1/{+name}", baseUrl: "https://ces.googleapis.com/" }),
+        ),
+      ).annotate({
+        identifier: "GetProjectsLocationsOperationsRequest",
+      });
+  }
+}
+function __c62(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          tool: S.optional(S.String),
+          toolsetTool: S.optional(__S(32, __c1, 0)),
         }),
-      ).annotate({ identifier: "Operation" });
-    case 7:
+      ).annotate({
+        identifier: "RetrieveToolSchemaRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          parent: S.String.pipe(T.Label()),
+          body: S.optional(__S(1984, __c62, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/{+parent}:retrieveToolSchema",
+            baseUrl: "https://ces.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetToolSchemaProjectsLocationsAppsRequest",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          outputSchema: S.optional(__S(3042, __c95, 2)),
+          toolsetTool: S.optional(__S(32, __c1, 0)),
+          inputSchema: S.optional(__S(3042, __c95, 2)),
+          tool: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "RetrieveToolSchemaResponse",
+      });
+  }
+}
+function __c63(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          toolIds: S.optional(__S(1824, __c57, 0)),
+          bypassPersistenceConfig: S.optional(S.Boolean),
+        }),
+      ).annotate({ identifier: "RetrieveToolsRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          toolset: S.String.pipe(T.Label()),
+          body: S.optional(__S(2016, __c63, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/{+toolset}:retrieveTools",
+            baseUrl: "https://ces.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetToolsProjectsLocationsAppsToolsetsRequest",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          tools: S.optional(__S(448, __c14, 0)),
+        }),
+      ).annotate({ identifier: "RetrieveToolsResponse" });
+  }
+}
+function __c64(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          validateOnly: S.optional(S.Boolean),
+          conflictResolutionStrategy: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "ImportAppRequestImportOptions",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          ignoreAppLock: S.optional(S.Boolean),
+          gcsUri: S.optional(S.String),
+          jsonPatchContent: S.optional(S.String),
+          importOptions: S.optional(__S(2048, __c64, 0)),
+          appId: S.optional(S.String),
+          jsonPatchGcsUri: S.optional(S.String),
+          displayName: S.optional(S.String),
+          appContent: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ImportAppRequest" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          parent: S.String.pipe(T.Label()),
+          body: S.optional(__S(2049, __c64, 1).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/{+parent}/apps:importApp",
+            baseUrl: "https://ces.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "ImportAppProjectsLocationsAppsRequest",
+      });
+  }
+}
+function __c65(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          pageToken: S.optional(S.String.pipe(T.Query())),
+          filter: S.optional(S.String.pipe(T.Query())),
+          name: S.String.pipe(T.Label()),
+          pageSize: S.optional(S.Number.pipe(T.Query())),
+          extraLocationTypes: S.optional(__S(1824, __c57, 0).pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v1/{+name}/locations",
+            baseUrl: "https://ces.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListProjectsLocationsRequest",
+      });
+    case 1:
+      return S.Array(__S(1280, __c40, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          nextPageToken: S.optional(S.String),
+          locations: S.optional(__S(2081, __c65, 1)),
+        }),
+      ).annotate({ identifier: "ListLocationsResponse" });
+  }
+}
+function __c66(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          orderBy: S.optional(S.String.pipe(T.Query())),
+          pageToken: S.optional(S.String.pipe(T.Query())),
+          filter: S.optional(S.String.pipe(T.Query())),
+          pageSize: S.optional(S.Number.pipe(T.Query())),
+          parent: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v1/{+parent}/apps",
+            baseUrl: "https://ces.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListProjectsLocationsAppsRequest",
+      });
+    case 1:
+      return S.Array(__S(3106, __c97, 2));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          unreachable: S.optional(__S(1824, __c57, 0)),
+          nextPageToken: S.optional(S.String),
+          apps: S.optional(__S(2113, __c66, 1)),
+        }),
+      ).annotate({ identifier: "ListAppsResponse" });
+  }
+}
+function __c67(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          filter: S.optional(S.String.pipe(T.Query())),
+          parent: S.String.pipe(T.Label()),
+          orderBy: S.optional(S.String.pipe(T.Query())),
+          pageToken: S.optional(S.String.pipe(T.Query())),
+          pageSize: S.optional(S.Number.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v1/{+parent}/agents",
+            baseUrl: "https://ces.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListProjectsLocationsAppsAgentsRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          nextPageToken: S.optional(S.String),
+          agents: S.optional(__S(480, __c15, 0)),
+        }),
+      ).annotate({ identifier: "ListAgentsResponse" });
+  }
+}
+function __c68(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           turnId: S.optional(S.String),
@@ -5131,15 +7171,11 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "CancelAssistantTurnRequest",
       });
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(7, __c0, 7).pipe(T.HttpBody())),
+          body: S.optional(__S(2176, __c68, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -5150,7 +7186,7 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "CancelAssistantTurnProjectsLocationsAppsAssistantSessionsRequest",
       });
-    case 1:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           cancelled: S.optional(S.Boolean),
@@ -5158,15 +7194,305 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "CancelAssistantTurnResponse",
       });
-    case 2:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "CancelOperationRequest",
+  }
+}
+function __c69(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          pageSize: S.optional(S.Number.pipe(T.Query())),
+          pageToken: S.optional(S.String.pipe(T.Query())),
+          orderBy: S.optional(S.String.pipe(T.Query())),
+          filter: S.optional(S.String.pipe(T.Query())),
+          parent: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v1/{+parent}/changelogs",
+            baseUrl: "https://ces.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListProjectsLocationsAppsChangelogsRequest",
       });
-    case 3:
+    case 1:
+      return S.Array(__S(1408, __c44, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          nextPageToken: S.optional(S.String),
+          changelogs: S.optional(__S(2209, __c69, 1)),
+        }),
+      ).annotate({ identifier: "ListChangelogsResponse" });
+  }
+}
+function __c70(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          sources: S.optional(__S(1536, __c48, 0).pipe(T.Query())),
+          pageSize: S.optional(S.Number.pipe(T.Query())),
+          filter: S.optional(S.String.pipe(T.Query())),
+          parent: S.String.pipe(T.Label()),
+          source: S.optional(S.String.pipe(T.Query())),
+          pageToken: S.optional(S.String.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v1/{+parent}/conversations",
+            baseUrl: "https://ces.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListProjectsLocationsAppsConversationsRequest",
+      });
+    case 1:
+      return S.Array(__S(1474, __c46, 2));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          conversations: S.optional(__S(2241, __c70, 1)),
+          nextPageToken: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "ListConversationsResponse",
+      });
+  }
+}
+function __c71(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          pageToken: S.optional(S.String.pipe(T.Query())),
+          pageSize: S.optional(S.Number.pipe(T.Query())),
+          parent: S.String.pipe(T.Label()),
+          orderBy: S.optional(S.String.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v1/{+parent}/deployments",
+            baseUrl: "https://ces.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListProjectsLocationsAppsDeploymentsRequest",
+      });
+    case 1:
+      return S.Array(__S(3687, __c115, 7));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          deployments: S.optional(__S(2273, __c71, 1)),
+          nextPageToken: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ListDeploymentsResponse" });
+  }
+}
+function __c72(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          orderBy: S.optional(S.String.pipe(T.Query())),
+          parent: S.String.pipe(T.Label()),
+          pageSize: S.optional(S.Number.pipe(T.Query())),
+          filter: S.optional(S.String.pipe(T.Query())),
+          pageToken: S.optional(S.String.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v1/{+parent}/examples",
+            baseUrl: "https://ces.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListProjectsLocationsAppsExamplesRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          nextPageToken: S.optional(S.String),
+          examples: S.optional(__S(512, __c16, 0)),
+        }),
+      ).annotate({ identifier: "ListExamplesResponse" });
+  }
+}
+function __c73(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          pageSize: S.optional(S.Number.pipe(T.Query())),
+          orderBy: S.optional(S.String.pipe(T.Query())),
+          parent: S.String.pipe(T.Label()),
+          pageToken: S.optional(S.String.pipe(T.Query())),
+          filter: S.optional(S.String.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v1/{+parent}/guardrails",
+            baseUrl: "https://ces.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListProjectsLocationsAppsGuardrailsRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          nextPageToken: S.optional(S.String),
+          guardrails: S.optional(__S(544, __c17, 0)),
+        }),
+      ).annotate({ identifier: "ListGuardrailsResponse" });
+  }
+}
+function __c74(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          orderBy: S.optional(S.String.pipe(T.Query())),
+          pageSize: S.optional(S.Number.pipe(T.Query())),
+          parent: S.String.pipe(T.Label()),
+          filter: S.optional(S.String.pipe(T.Query())),
+          pageToken: S.optional(S.String.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v1/{+parent}/tools",
+            baseUrl: "https://ces.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListProjectsLocationsAppsToolsRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          tools: S.optional(__S(448, __c14, 0)),
+          nextPageToken: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ListToolsResponse" });
+  }
+}
+function __c75(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          pageToken: S.optional(S.String.pipe(T.Query())),
+          parent: S.String.pipe(T.Label()),
+          orderBy: S.optional(S.String.pipe(T.Query())),
+          filter: S.optional(S.String.pipe(T.Query())),
+          pageSize: S.optional(S.Number.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v1/{+parent}/toolsets",
+            baseUrl: "https://ces.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListProjectsLocationsAppsToolsetsRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          nextPageToken: S.optional(S.String),
+          toolsets: S.optional(__S(576, __c18, 0)),
+        }),
+      ).annotate({ identifier: "ListToolsetsResponse" });
+  }
+}
+function __c76(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          pageToken: S.optional(S.String.pipe(T.Query())),
+          parent: S.String.pipe(T.Label()),
+          pageSize: S.optional(S.Number.pipe(T.Query())),
+          orderBy: S.optional(S.String.pipe(T.Query())),
+          filter: S.optional(S.String.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v1/{+parent}/versions",
+            baseUrl: "https://ces.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListProjectsLocationsAppsVersionsRequest",
+      });
+    case 1:
+      return S.Array(__S(609, __c19, 1));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          appVersions: S.optional(__S(2433, __c76, 1)),
+          nextPageToken: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ListAppVersionsResponse" });
+  }
+}
+function __c77(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          pageSize: S.optional(S.Number.pipe(T.Query())),
+          pageToken: S.optional(S.String.pipe(T.Query())),
+          name: S.String.pipe(T.Label()),
+          returnPartialSuccess: S.optional(S.Boolean.pipe(T.Query())),
+          filter: S.optional(S.String.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v1/{+name}/operations",
+            baseUrl: "https://ces.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListProjectsLocationsOperationsRequest",
+      });
+    case 1:
+      return S.Array(__S(1760, __c55, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          nextPageToken: S.optional(S.String),
+          unreachable: S.optional(__S(1824, __c57, 0)),
+          operations: S.optional(__S(2465, __c77, 1)),
+        }),
+      ).annotate({ identifier: "ListOperationsResponse" });
+  }
+}
+function __c78(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(10, __c1, 2).pipe(T.HttpBody())),
+          updateMask: S.optional(S.String.pipe(T.Query())),
+          body: S.optional(__S(3106, __c97, 2).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({ method: "PATCH", uri: "v1/{+name}", baseUrl: "https://ces.googleapis.com/" }),
+        ),
+      ).annotate({
+        identifier: "PatchProjectsLocationsAppsRequest",
+      });
+  }
+}
+function __c79(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+          body: S.optional(__S(2560, __c80, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -5177,57 +7503,507 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "CancelProjectsLocationsOperationsRequest",
       });
+  }
+}
+function __c80(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "CancelOperationRequest",
+      });
+  }
+}
+function __c81(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          updateMask: S.optional(S.String.pipe(T.Query())),
+          name: S.String.pipe(T.Label()),
+          body: S.optional(__S(3627, __c113, 11).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({ method: "PATCH", uri: "v1/{+name}", baseUrl: "https://ces.googleapis.com/" }),
+        ),
+      ).annotate({
+        identifier: "PatchProjectsLocationsAppsAgentsRequest",
+      });
+  }
+}
+function __c82(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          updateMask: S.optional(S.String.pipe(T.Query())),
+          name: S.String.pipe(T.Label()),
+          body: S.optional(__S(3687, __c115, 7).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({ method: "PATCH", uri: "v1/{+name}", baseUrl: "https://ces.googleapis.com/" }),
+        ),
+      ).annotate({
+        identifier: "PatchProjectsLocationsAppsDeploymentsRequest",
+      });
+  }
+}
+function __c83(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+          updateMask: S.optional(S.String.pipe(T.Query())),
+          body: S.optional(__S(128, __c4, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({ method: "PATCH", uri: "v1/{+name}", baseUrl: "https://ces.googleapis.com/" }),
+        ),
+      ).annotate({
+        identifier: "PatchProjectsLocationsAppsExamplesRequest",
+      });
+  }
+}
+function __c84(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+          updateMask: S.optional(S.String.pipe(T.Query())),
+          body: S.optional(__S(207, __c6, 15).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({ method: "PATCH", uri: "v1/{+name}", baseUrl: "https://ces.googleapis.com/" }),
+        ),
+      ).annotate({
+        identifier: "PatchProjectsLocationsAppsGuardrailsRequest",
+      });
+  }
+}
+function __c85(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          updateMask: S.optional(S.String.pipe(T.Query())),
+          name: S.String.pipe(T.Label()),
+          body: S.optional(__S(323, __c10, 3).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({ method: "PATCH", uri: "v1/{+name}", baseUrl: "https://ces.googleapis.com/" }),
+        ),
+      ).annotate({
+        identifier: "PatchProjectsLocationsAppsToolsRequest",
+      });
+  }
+}
+function __c86(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+          updateMask: S.optional(S.String.pipe(T.Query())),
+          body: S.optional(__S(391, __c12, 7).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({ method: "PATCH", uri: "v1/{+name}", baseUrl: "https://ces.googleapis.com/" }),
+        ),
+      ).annotate({
+        identifier: "PatchProjectsLocationsAppsToolsetsRequest",
+      });
+  }
+}
+function __c87(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          updateMask: S.optional(S.String.pipe(T.Query())),
+          name: S.String.pipe(T.Label()),
+          body: S.optional(__S(609, __c19, 1).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({ method: "PATCH", uri: "v1/{+name}", baseUrl: "https://ces.googleapis.com/" }),
+        ),
+      ).annotate({
+        identifier: "PatchProjectsLocationsAppsVersionsRequest",
+      });
+  }
+}
+function __c88(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+          body: S.optional(__S(2560, __c80, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/{+name}:restore",
+            baseUrl: "https://ces.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "RestoreProjectsLocationsAppsVersionsRequest",
+      });
+  }
+}
+function __c89(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          session: S.String.pipe(T.Label()),
+          body: S.optional(__S(2889, __c90, 9).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/{+session}:runSession",
+            baseUrl: "https://ces.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "RunSessionProjectsLocationsAppsSessionsRequest",
+      });
+  }
+}
+function __c90(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(65, __c2, 1));
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          toolResponses: S.optional(__S(2880, __c90, 0)),
+        }),
+      ).annotate({ identifier: "ToolResponses" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          variables: S.optional(__S(1696, __c53, 0)),
+          event: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Event" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          dtmf: S.optional(S.String),
+          variables: S.optional(__S(1696, __c53, 0)),
+          toolResponses: S.optional(__S(2881, __c90, 1)),
+          audio: S.optional(S.String),
+          event: S.optional(__S(2882, __c90, 2)),
+          image: S.optional(__S(97, __c3, 1)),
+          text: S.optional(S.String),
+          willContinue: S.optional(S.Boolean),
+          blob: S.optional(__S(98, __c3, 2)),
+        }),
+      ).annotate({ identifier: "SessionInput" });
     case 4:
-      return S.Record(
-        S.String,
-        /*@__PURE__*/ S.suspend(() => __S(14, __c1, 6)),
-      );
+      return S.Array(__S(2883, __c90, 3));
     case 5:
-      return S.Array(/*@__PURE__*/ S.suspend(() => __S(14, __c1, 6)));
+      return S.suspend(() =>
+        S.Struct({
+          sampleRateHertz: S.optional(S.Number),
+          audioEncoding: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "OutputAudioConfig" });
     case 6:
       return S.suspend(() =>
         S.Struct({
-          properties: S.optional(__S(12, __c1, 4)),
+          sampleRateHertz: S.optional(S.Number),
+          noiseSuppressionLevel: S.optional(S.String),
+          audioEncoding: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "InputAudioConfig" });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          endUserMetadata: S.optional(__S(1696, __c53, 0)),
+          payload: S.optional(__S(1696, __c53, 0)),
+          webhookHeaders: S.optional(__S(3136, __c98, 0)),
+        }),
+      ).annotate({
+        identifier: "SessionConfigRemoteDialogflowQueryParameters",
+      });
+    case 8:
+      return S.suspend(() =>
+        S.Struct({
+          entryAgent: S.optional(S.String),
+          useToolFakes: S.optional(S.Boolean),
+          outputAudioConfig: S.optional(__S(2885, __c90, 5)),
+          inputAudioConfig: S.optional(__S(2886, __c90, 6)),
+          excludeDiagnosticInfo: S.optional(S.Boolean),
+          remoteDialogflowQueryParameters: S.optional(__S(2887, __c90, 7)),
+          timeZone: S.optional(S.String),
+          historicalContexts: S.optional(__S(102, __c3, 6)),
+          enableTextStreaming: S.optional(S.Boolean),
+          deployment: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "SessionConfig" });
+    case 9:
+      return S.suspend(() =>
+        S.Struct({
+          inputs: S.optional(__S(2884, __c90, 4)),
+          config: S.optional(__S(2888, __c90, 8)),
+        }),
+      ).annotate({ identifier: "RunSessionRequest" });
+    case 10:
+      return S.suspend(() =>
+        S.Struct({
+          metadata: S.optional(__S(1696, __c53, 0)),
+        }),
+      ).annotate({ identifier: "EndSession" });
+    case 11:
+      return S.Array(__S(64, __c2, 0));
+    case 12:
+      return S.suspend(() =>
+        S.Struct({
+          toolCalls: S.optional(__S(2891, __c90, 11)),
+        }),
+      ).annotate({ identifier: "ToolCalls" });
+    case 13:
+      return S.suspend(() =>
+        S.Struct({
+          messages: S.optional(__S(102, __c3, 6)),
+          rootSpan: S.optional(__S(1505, __c47, 1)),
+        }),
+      ).annotate({
+        identifier: "SessionOutputDiagnosticInfo",
+      });
+    case 14:
+      return S.suspend(() =>
+        S.Struct({
+          progress: S.optional(S.String),
+          payload: S.optional(__S(1696, __c53, 0)),
+          turnCompleted: S.optional(S.Boolean),
+          image: S.optional(__S(97, __c3, 1)),
+          endSession: S.optional(__S(2890, __c90, 10)),
+          googleSearchSuggestions: S.optional(__S(994, __c31, 2)),
+          toolCalls: S.optional(__S(2892, __c90, 12)),
+          citations: S.optional(__S(1000, __c31, 8)),
+          audio: S.optional(S.String),
+          turnIndex: S.optional(S.Number),
+          text: S.optional(S.String),
+          diagnosticInfo: S.optional(__S(2893, __c90, 13)),
+        }),
+      ).annotate({ identifier: "SessionOutput" });
+    case 15:
+      return S.Array(__S(2894, __c90, 14));
+    case 16:
+      return S.suspend(() =>
+        S.Struct({
+          outputs: S.optional(__S(2895, __c90, 15)),
+        }),
+      ).annotate({ identifier: "RunSessionResponse" });
+  }
+}
+function __c91(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          tenant: S.String.pipe(T.Label()),
+          body: S.optional(__S(2982, __c93, 6).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/{+tenant}/message:send",
+            baseUrl: "https://ces.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "SendProjectsLocationsAppsDeploymentsMessageRequest",
+      });
+  }
+}
+function __c92(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          task: S.optional(__S(2987, __c93, 11)),
+          message: S.optional(__S(2978, __c93, 2)),
+        }),
+      ).annotate({
+        identifier: "LfA2aV1SendMessageResponse",
+      });
+  }
+}
+function __c93(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          mediaType: S.optional(S.String),
+          text: S.optional(S.String),
+          filename: S.optional(S.String),
+          url: S.optional(S.String),
+          data: S.optional(S.Unknown),
+          raw: S.optional(S.String),
+          metadata: S.optional(__S(1696, __c53, 0)),
+        }),
+      ).annotate({ identifier: "LfA2aV1Part" });
+    case 1:
+      return S.Array(__S(2976, __c93, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          metadata: S.optional(__S(1696, __c53, 0)),
+          role: S.optional(S.String),
+          contextId: S.optional(S.String),
+          referenceTaskIds: S.optional(__S(1824, __c57, 0)),
+          parts: S.optional(__S(2977, __c93, 1)),
+          extensions: S.optional(__S(1824, __c57, 0)),
+          messageId: S.optional(S.String),
+          taskId: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "LfA2aV1Message" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          scheme: S.optional(S.String),
+          credentials: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "LfA2aV1AuthenticationInfo",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          tenant: S.optional(S.String),
+          token: S.optional(S.String),
+          authentication: S.optional(__S(2979, __c93, 3)),
+          id: S.optional(S.String),
+          url: S.optional(S.String),
+          taskId: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "LfA2aV1TaskPushNotificationConfig",
+      });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          returnImmediately: S.optional(S.Boolean),
+          acceptedOutputModes: S.optional(__S(1824, __c57, 0)),
+          taskPushNotificationConfig: S.optional(__S(2980, __c93, 4)),
+          historyLength: S.optional(S.Number),
+        }),
+      ).annotate({
+        identifier: "LfA2aV1SendMessageConfiguration",
+      });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          message: S.optional(__S(2978, __c93, 2)),
+          configuration: S.optional(__S(2981, __c93, 5)),
+          metadata: S.optional(__S(1696, __c53, 0)),
+        }),
+      ).annotate({
+        identifier: "LfA2aV1SendMessageRequest",
+      });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.optional(S.String),
+          artifactId: S.optional(S.String),
+          extensions: S.optional(__S(1824, __c57, 0)),
+          description: S.optional(S.String),
+          metadata: S.optional(__S(1696, __c53, 0)),
+          parts: S.optional(__S(2977, __c93, 1)),
+        }),
+      ).annotate({ identifier: "LfA2aV1Artifact" });
+    case 8:
+      return S.Array(__S(2983, __c93, 7));
+    case 9:
+      return S.Array(__S(2978, __c93, 2));
+    case 10:
+      return S.suspend(() =>
+        S.Struct({
+          message: S.optional(__S(2978, __c93, 2)),
+          timestamp: S.optional(S.String),
+          state: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "LfA2aV1TaskStatus" });
+    case 11:
+      return S.suspend(() =>
+        S.Struct({
+          artifacts: S.optional(__S(2984, __c93, 8)),
+          history: S.optional(__S(2985, __c93, 9)),
+          contextId: S.optional(S.String),
+          status: S.optional(__S(2986, __c93, 10)),
+          metadata: S.optional(__S(1696, __c53, 0)),
+          id: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "LfA2aV1Task" });
+  }
+}
+function __c94(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          parent: S.String.pipe(T.Label()),
+          appId: S.optional(S.String.pipe(T.Query())),
+          body: S.optional(__S(3106, __c97, 2).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/{+parent}/apps",
+            baseUrl: "https://ces.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateProjectsLocationsAppsRequest",
+      });
+  }
+}
+function __c95(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(
+        S.String,
+        /*@__PURE__*/ S.suspend(() => __S(3042, __c95, 2)),
+      );
+    case 1:
+      return S.Array(/*@__PURE__*/ S.suspend(() => __S(3042, __c95, 2)));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          properties: S.optional(__S(3040, __c95, 0)),
           default: S.optional(S.Unknown),
           minItems: S.optional(S.String),
           minimum: S.optional(S.Number),
-          enum: S.optional(__S(0, __c0, 0)),
+          enum: S.optional(__S(1824, __c57, 0)),
           title: S.optional(S.String),
-          prefixItems: S.optional(__S(13, __c1, 5)),
-          required: S.optional(__S(0, __c0, 0)),
+          prefixItems: S.optional(__S(3041, __c95, 1)),
+          required: S.optional(__S(1824, __c57, 0)),
           type: S.optional(S.String),
-          defs: S.optional(__S(12, __c1, 4)),
+          defs: S.optional(__S(3040, __c95, 0)),
           maximum: S.optional(S.Number),
           uniqueItems: S.optional(S.Boolean),
-          items: S.optional(__S(14, __c1, 6)),
+          items: S.optional(__S(3042, __c95, 2)),
           description: S.optional(S.String),
           nullable: S.optional(S.Boolean),
           ref: S.optional(S.String),
           maxItems: S.optional(S.String),
-          anyOf: S.optional(__S(13, __c1, 5)),
-          additionalProperties: S.optional(__S(14, __c1, 6)),
+          anyOf: S.optional(__S(3041, __c95, 1)),
+          additionalProperties: S.optional(__S(3042, __c95, 2)),
         }),
       ).annotate({ identifier: "Ces_Schema" });
-    case 7:
+  }
+}
+function __c96(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          schema: S.optional(__S(14, __c1, 6)),
+          schema: S.optional(__S(3042, __c95, 2)),
           description: S.optional(S.String),
           name: S.optional(S.String),
         }),
       ).annotate({ identifier: "AppVariableDeclaration" });
-  }
-}
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(15, __c1, 7));
     case 1:
-      return S.Record(S.String, S.String);
+      return S.Array(__S(3072, __c96, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          allowedOrigins: S.optional(__S(0, __c0, 0)),
+          allowedOrigins: S.optional(__S(1824, __c57, 0)),
         }),
       ).annotate({ identifier: "VpcScSettings" });
     case 3:
@@ -5267,51 +8043,291 @@ function __c2(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          toolMatchingSettings: S.optional(__S(20, __c2, 4)),
-          turnLevelMetricsThresholds: S.optional(__S(21, __c2, 5)),
-          expectationLevelMetricsThresholds: S.optional(__S(22, __c2, 6)),
+          toolMatchingSettings: S.optional(__S(3076, __c96, 4)),
+          turnLevelMetricsThresholds: S.optional(__S(3077, __c96, 5)),
+          expectationLevelMetricsThresholds: S.optional(__S(3078, __c96, 6)),
         }),
       ).annotate({
         identifier: "EvaluationMetricsThresholdsGoldenEvaluationMetricsThresholds",
       });
-  }
-}
-function __c3(j: number): any {
-  switch (j) {
-    case 0:
+    case 8:
       return S.suspend(() =>
         S.Struct({
           hallucinationMetricBehavior: S.optional(S.String),
-          goldenEvaluationMetricsThresholds: S.optional(__S(23, __c2, 7)),
+          goldenEvaluationMetricsThresholds: S.optional(__S(3079, __c96, 7)),
           goldenHallucinationMetricBehavior: S.optional(S.String),
           scenarioHallucinationMetricBehavior: S.optional(S.String),
         }),
       ).annotate({
         identifier: "EvaluationMetricsThresholds",
       });
+    case 9:
+      return S.suspend(() =>
+        S.Struct({
+          supportedLanguageCodes: S.optional(__S(1824, __c57, 0)),
+          defaultLanguageCode: S.optional(S.String),
+          enableMultilingualSupport: S.optional(S.Boolean),
+          fallbackAction: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "LanguageSettings" });
+    case 10:
+      return S.suspend(() =>
+        S.Struct({
+          defaultDashboard: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "DashboardSettings" });
+    case 11:
+      return S.suspend(() =>
+        S.Struct({
+          customFallbackMessages: S.optional(__S(3136, __c98, 0)),
+          maxFallbackAttempts: S.optional(S.Number),
+        }),
+      ).annotate({
+        identifier: "ErrorHandlingSettingsFallbackResponseConfig",
+      });
+    case 12:
+      return S.suspend(() =>
+        S.Struct({
+          escalateSession: S.optional(S.Boolean),
+        }),
+      ).annotate({
+        identifier: "ErrorHandlingSettingsEndSessionConfig",
+      });
+    case 13:
+      return S.suspend(() =>
+        S.Struct({
+          errorHandlingStrategy: S.optional(S.String),
+          fallbackResponseConfig: S.optional(__S(3083, __c96, 11)),
+          endSessionConfig: S.optional(__S(3084, __c96, 12)),
+        }),
+      ).annotate({ identifier: "ErrorHandlingSettings" });
+    case 14:
+      return S.suspend(() =>
+        S.Struct({
+          prebuiltAmbientSound: S.optional(S.String),
+          volumeGainDb: S.optional(S.Number),
+          gcsUri: S.optional(S.String),
+          prebuiltAmbientNoise: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "AmbientSoundConfig" });
+    case 15:
+      return S.suspend(() =>
+        S.Struct({
+          disableBargeIn: S.optional(S.Boolean),
+          bargeInAwareness: S.optional(S.Boolean),
+        }),
+      ).annotate({ identifier: "BargeInConfig" });
+    case 16:
+      return S.suspend(() =>
+        S.Struct({
+          model: S.optional(S.String),
+          instruction: S.optional(S.String),
+          speakingRate: S.optional(S.Number),
+          voice: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "SynthesizeSpeechConfig" });
+    case 17:
+      return S.Record(S.String, __S(3088, __c96, 16));
+    case 18:
+      return S.suspend(() =>
+        S.Struct({
+          message: S.optional(S.String),
+          type: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "CustomVoiceSampleWarning" });
+    case 19:
+      return S.Array(__S(3090, __c96, 18));
+    case 20:
+      return S.suspend(() =>
+        S.Struct({
+          voiceSampleGcsUri: S.optional(S.String),
+          name: S.optional(S.String),
+          voiceInstructionMode: S.optional(S.String),
+          voiceInstruction: S.optional(S.String),
+          consentAudioGcsUri: S.optional(S.String),
+          previewText: S.optional(S.String),
+          warnings: S.optional(__S(3091, __c96, 19)),
+          previewAudioContent: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "CustomVoiceSample" });
+    case 21:
+      return S.Array(__S(3092, __c96, 20));
+    case 22:
+      return S.suspend(() =>
+        S.Struct({
+          ambientSoundConfig: S.optional(__S(3086, __c96, 14)),
+          inactivityTimeout: S.optional(S.String),
+          bargeInConfig: S.optional(__S(3087, __c96, 15)),
+          synthesizeSpeechConfigs: S.optional(__S(3089, __c96, 17)),
+          customVoiceSamples: S.optional(__S(3093, __c96, 21)),
+        }),
+      ).annotate({ identifier: "AudioProcessingConfig" });
+    case 23:
+      return S.suspend(() =>
+        S.Struct({
+          privateKey: S.optional(S.String),
+          tlsCertificate: S.optional(S.String),
+          passphrase: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "ClientCertificateSettings",
+      });
+    case 24:
+      return S.suspend(() =>
+        S.Struct({
+          gcsBucket: S.optional(S.String),
+          gcsPathPrefix: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "AudioRecordingConfig" });
+    case 25:
+      return S.suspend(() =>
+        S.Struct({
+          llmMetricsOptedOut: S.optional(S.Boolean),
+        }),
+      ).annotate({ identifier: "MetricAnalysisSettings" });
+    case 26:
+      return S.suspend(() =>
+        S.Struct({
+          enabled: S.optional(S.Boolean),
+          project: S.optional(S.String),
+          dataset: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "BigQueryExportSettings" });
+    case 27:
+      return S.suspend(() =>
+        S.Struct({
+          disableConversationLogging: S.optional(S.Boolean),
+          retentionWindow: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "ConversationLoggingSettings",
+      });
+    case 28:
+      return S.suspend(() =>
+        S.Struct({
+          enableCloudLogging: S.optional(S.Boolean),
+        }),
+      ).annotate({ identifier: "CloudLoggingSettings" });
+    case 29:
+      return S.suspend(() =>
+        S.Struct({
+          enableRedaction: S.optional(S.Boolean),
+          inspectTemplate: S.optional(S.String),
+          deidentifyTemplate: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "RedactionConfig" });
+    case 30:
+      return S.suspend(() =>
+        S.Struct({
+          unredactedAudioRecordingConfig: S.optional(__S(3096, __c96, 24)),
+          metricAnalysisSettings: S.optional(__S(3097, __c96, 25)),
+          audioRecordingConfig: S.optional(__S(3096, __c96, 24)),
+          bigqueryExportSettings: S.optional(__S(3098, __c96, 26)),
+          unredactedBigqueryExportSettings: S.optional(__S(3098, __c96, 26)),
+          conversationLoggingSettings: S.optional(__S(3099, __c96, 27)),
+          cloudLoggingSettings: S.optional(__S(3100, __c96, 28)),
+          evaluationAudioRecordingConfig: S.optional(__S(3096, __c96, 24)),
+          redactionConfig: S.optional(__S(3101, __c96, 29)),
+        }),
+      ).annotate({ identifier: "LoggingSettings" });
+    case 31:
+      return S.suspend(() =>
+        S.Struct({
+          type: S.optional(S.String),
+          name: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "DataStoreSettingsEngine" });
+  }
+}
+function __c97(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(3103, __c96, 31));
     case 1:
+      return S.suspend(() =>
+        S.Struct({
+          engines: S.optional(__S(3104, __c97, 0)),
+        }),
+      ).annotate({ identifier: "DataStoreSettings" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          toolExecutionMode: S.optional(S.String),
+          predefinedVariableDeclarations: S.optional(__S(3073, __c96, 1)),
+          locked: S.optional(S.Boolean),
+          updateTime: S.optional(S.String),
+          metadata: S.optional(__S(3136, __c98, 0)),
+          vpcScSettings: S.optional(__S(3074, __c96, 2)),
+          validationErrors: S.optional(__S(1824, __c57, 0)),
+          timeZoneSettings: S.optional(__S(3075, __c96, 3)),
+          evaluationMetricsThresholds: S.optional(__S(3080, __c96, 8)),
+          name: S.optional(S.String),
+          defaultChannelProfile: S.optional(__S(3205, __c100, 5)),
+          description: S.optional(S.String),
+          guardrails: S.optional(__S(1824, __c57, 0)),
+          languageSettings: S.optional(__S(3081, __c96, 9)),
+          createTime: S.optional(S.String),
+          displayName: S.optional(S.String),
+          pinned: S.optional(S.Boolean),
+          variableDeclarations: S.optional(__S(3073, __c96, 1)),
+          dashboardSettings: S.optional(__S(3082, __c96, 10)),
+          errorHandlingSettings: S.optional(__S(3085, __c96, 13)),
+          globalInstruction: S.optional(S.String),
+          audioProcessingConfig: S.optional(__S(3094, __c96, 22)),
+          deploymentCount: S.optional(S.Number),
+          clientCertificateSettings: S.optional(__S(3095, __c96, 23)),
+          rootAgent: S.optional(S.String),
+          loggingSettings: S.optional(__S(3102, __c96, 30)),
+          modelSettings: S.optional(__S(3168, __c99, 0)),
+          etag: S.optional(S.String),
+          dataStoreSettings: S.optional(__S(3105, __c97, 1)),
+        }),
+      ).annotate({ identifier: "App" });
+  }
+}
+function __c98(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, S.String);
+  }
+}
+function __c99(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          model: S.optional(S.String),
+          thinkingLevel: S.optional(S.String),
+          temperature: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "ModelSettings" });
+  }
+}
+function __c100(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           enableRecaptcha: S.optional(S.Boolean),
           enablePublicAccess: S.optional(S.Boolean),
           enableOriginCheck: S.optional(S.Boolean),
-          allowedOrigins: S.optional(__S(0, __c0, 0)),
+          allowedOrigins: S.optional(__S(1824, __c57, 0)),
         }),
       ).annotate({
         identifier: "ChannelProfileWebWidgetConfigSecuritySettings",
       });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           webWidgetTitle: S.optional(S.String),
           modality: S.optional(S.String),
           theme: S.optional(S.String),
-          securitySettings: S.optional(__S(25, __c3, 1)),
+          securitySettings: S.optional(__S(3200, __c100, 0)),
         }),
       ).annotate({
         identifier: "ChannelProfileWebWidgetConfig",
       });
-    case 3:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           description: S.optional(S.String),
@@ -5324,7 +8340,7 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "ChannelProfileWhatsAppConfig",
       });
-    case 4:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           persona: S.optional(S.String),
@@ -5332,7 +8348,7 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "ChannelProfilePersonaProperty",
       });
-    case 5:
+    case 4:
       return S.suspend(() =>
         S.Struct({
           displayName: S.optional(S.String),
@@ -5343,3111 +8359,29 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "ChannelProfileInstagramConfig",
       });
-    case 6:
+    case 5:
       return S.suspend(() =>
         S.Struct({
           noiseSuppressionLevel: S.optional(S.String),
-          webWidgetConfig: S.optional(__S(26, __c3, 2)),
+          webWidgetConfig: S.optional(__S(3201, __c100, 1)),
           profileId: S.optional(S.String),
           disableDtmf: S.optional(S.Boolean),
-          whatsappConfig: S.optional(__S(27, __c3, 3)),
-          personaProperty: S.optional(__S(28, __c3, 4)),
+          whatsappConfig: S.optional(__S(3202, __c100, 2)),
+          personaProperty: S.optional(__S(3203, __c100, 3)),
           channelType: S.optional(S.String),
-          instagramConfig: S.optional(__S(29, __c3, 5)),
+          instagramConfig: S.optional(__S(3204, __c100, 4)),
           disableBargeInControl: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "ChannelProfile" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          supportedLanguageCodes: S.optional(__S(0, __c0, 0)),
-          defaultLanguageCode: S.optional(S.String),
-          enableMultilingualSupport: S.optional(S.Boolean),
-          fallbackAction: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "LanguageSettings" });
   }
 }
-function __c4(j: number): any {
+function __c101(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() =>
-        S.Struct({
-          defaultDashboard: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "DashboardSettings" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          customFallbackMessages: S.optional(__S(17, __c2, 1)),
-          maxFallbackAttempts: S.optional(S.Number),
-        }),
-      ).annotate({
-        identifier: "ErrorHandlingSettingsFallbackResponseConfig",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          escalateSession: S.optional(S.Boolean),
-        }),
-      ).annotate({
-        identifier: "ErrorHandlingSettingsEndSessionConfig",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          errorHandlingStrategy: S.optional(S.String),
-          fallbackResponseConfig: S.optional(__S(33, __c4, 1)),
-          endSessionConfig: S.optional(__S(34, __c4, 2)),
-        }),
-      ).annotate({ identifier: "ErrorHandlingSettings" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          prebuiltAmbientSound: S.optional(S.String),
-          volumeGainDb: S.optional(S.Number),
-          gcsUri: S.optional(S.String),
-          prebuiltAmbientNoise: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "AmbientSoundConfig" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          disableBargeIn: S.optional(S.Boolean),
-          bargeInAwareness: S.optional(S.Boolean),
-        }),
-      ).annotate({ identifier: "BargeInConfig" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          model: S.optional(S.String),
-          instruction: S.optional(S.String),
-          speakingRate: S.optional(S.Number),
-          voice: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "SynthesizeSpeechConfig" });
-    case 7:
-      return S.Record(S.String, __S(38, __c4, 6));
-  }
-}
-function __c5(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          message: S.optional(S.String),
-          type: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "CustomVoiceSampleWarning" });
-    case 1:
-      return S.Array(__S(40, __c5, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          voiceSampleGcsUri: S.optional(S.String),
-          name: S.optional(S.String),
-          voiceInstructionMode: S.optional(S.String),
-          voiceInstruction: S.optional(S.String),
-          consentAudioGcsUri: S.optional(S.String),
-          previewText: S.optional(S.String),
-          warnings: S.optional(__S(41, __c5, 1)),
-          previewAudioContent: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "CustomVoiceSample" });
-    case 3:
-      return S.Array(__S(42, __c5, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          ambientSoundConfig: S.optional(__S(36, __c4, 4)),
-          inactivityTimeout: S.optional(S.String),
-          bargeInConfig: S.optional(__S(37, __c4, 5)),
-          synthesizeSpeechConfigs: S.optional(__S(39, __c4, 7)),
-          customVoiceSamples: S.optional(__S(43, __c5, 3)),
-        }),
-      ).annotate({ identifier: "AudioProcessingConfig" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          privateKey: S.optional(S.String),
-          tlsCertificate: S.optional(S.String),
-          passphrase: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "ClientCertificateSettings",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          gcsBucket: S.optional(S.String),
-          gcsPathPrefix: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "AudioRecordingConfig" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          llmMetricsOptedOut: S.optional(S.Boolean),
-        }),
-      ).annotate({ identifier: "MetricAnalysisSettings" });
-  }
-}
-function __c6(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          enabled: S.optional(S.Boolean),
-          project: S.optional(S.String),
-          dataset: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "BigQueryExportSettings" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          disableConversationLogging: S.optional(S.Boolean),
-          retentionWindow: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "ConversationLoggingSettings",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          enableCloudLogging: S.optional(S.Boolean),
-        }),
-      ).annotate({ identifier: "CloudLoggingSettings" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          enableRedaction: S.optional(S.Boolean),
-          inspectTemplate: S.optional(S.String),
-          deidentifyTemplate: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "RedactionConfig" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          unredactedAudioRecordingConfig: S.optional(__S(46, __c5, 6)),
-          metricAnalysisSettings: S.optional(__S(47, __c5, 7)),
-          audioRecordingConfig: S.optional(__S(46, __c5, 6)),
-          bigqueryExportSettings: S.optional(__S(48, __c6, 0)),
-          unredactedBigqueryExportSettings: S.optional(__S(48, __c6, 0)),
-          conversationLoggingSettings: S.optional(__S(49, __c6, 1)),
-          cloudLoggingSettings: S.optional(__S(50, __c6, 2)),
-          evaluationAudioRecordingConfig: S.optional(__S(46, __c5, 6)),
-          redactionConfig: S.optional(__S(51, __c6, 3)),
-        }),
-      ).annotate({ identifier: "LoggingSettings" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          model: S.optional(S.String),
-          thinkingLevel: S.optional(S.String),
-          temperature: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "ModelSettings" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          type: S.optional(S.String),
-          name: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "DataStoreSettingsEngine" });
-    case 7:
-      return S.Array(__S(54, __c6, 6));
-  }
-}
-function __c7(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          engines: S.optional(__S(55, __c6, 7)),
-        }),
-      ).annotate({ identifier: "DataStoreSettings" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          toolExecutionMode: S.optional(S.String),
-          predefinedVariableDeclarations: S.optional(__S(16, __c2, 0)),
-          locked: S.optional(S.Boolean),
-          updateTime: S.optional(S.String),
-          metadata: S.optional(__S(17, __c2, 1)),
-          vpcScSettings: S.optional(__S(18, __c2, 2)),
-          validationErrors: S.optional(__S(0, __c0, 0)),
-          timeZoneSettings: S.optional(__S(19, __c2, 3)),
-          evaluationMetricsThresholds: S.optional(__S(24, __c3, 0)),
-          name: S.optional(S.String),
-          defaultChannelProfile: S.optional(__S(30, __c3, 6)),
-          description: S.optional(S.String),
-          guardrails: S.optional(__S(0, __c0, 0)),
-          languageSettings: S.optional(__S(31, __c3, 7)),
-          createTime: S.optional(S.String),
-          displayName: S.optional(S.String),
-          pinned: S.optional(S.Boolean),
-          variableDeclarations: S.optional(__S(16, __c2, 0)),
-          dashboardSettings: S.optional(__S(32, __c4, 0)),
-          errorHandlingSettings: S.optional(__S(35, __c4, 3)),
-          globalInstruction: S.optional(S.String),
-          audioProcessingConfig: S.optional(__S(44, __c5, 4)),
-          deploymentCount: S.optional(S.Number),
-          clientCertificateSettings: S.optional(__S(45, __c5, 5)),
-          rootAgent: S.optional(S.String),
-          loggingSettings: S.optional(__S(52, __c6, 4)),
-          modelSettings: S.optional(__S(53, __c6, 5)),
-          etag: S.optional(S.String),
-          dataStoreSettings: S.optional(__S(56, __c7, 0)),
-        }),
-      ).annotate({ identifier: "App" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          parent: S.String.pipe(T.Label()),
-          appId: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(57, __c7, 1).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/{+parent}/apps",
-            baseUrl: "https://ces.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateProjectsLocationsAppsRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          pythonCode: S.optional(S.String),
-          disabled: S.optional(S.Boolean),
-          proactiveExecutionEnabled: S.optional(S.Boolean),
-          description: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Callback" });
-    case 4:
-      return S.Array(__S(59, __c7, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          url: S.optional(S.String),
-          protocolBinding: S.optional(S.String),
-          tenant: S.optional(S.String),
-          protocolVersion: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "AgentInterface" });
-    case 6:
-      return S.Array(__S(61, __c7, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          description: S.optional(S.String),
-          tags: S.optional(__S(0, __c0, 0)),
-          examples: S.optional(__S(0, __c0, 0)),
-          name: S.optional(S.String),
-          outputModes: S.optional(__S(0, __c0, 0)),
-          id: S.optional(S.String),
-          inputModes: S.optional(__S(0, __c0, 0)),
-        }),
-      ).annotate({ identifier: "AgentSkill" });
-  }
-}
-function __c8(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(63, __c7, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          version: S.optional(S.String),
-          supportedInterfaces: S.optional(__S(62, __c7, 6)),
-          skills: S.optional(__S(64, __c8, 0)),
-          description: S.optional(S.String),
-          name: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "AgentCard" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          keyName: S.optional(S.String),
-          apiKeySecretVersion: S.optional(S.String),
-          requestLocation: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ApiKeyConfig" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          scopes: S.optional(__S(0, __c0, 0)),
-          serviceAccount: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ServiceAccountAuthConfig" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          clientSecretVersion: S.optional(S.String),
-          clientId: S.optional(S.String),
-          oauthGrantType: S.optional(S.String),
-          scopes: S.optional(__S(0, __c0, 0)),
-          tokenEndpoint: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "OAuthConfig" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          token: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "BearerTokenConfig" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          apiKeyConfig: S.optional(__S(66, __c8, 2)),
-          serviceAccountAuthConfig: S.optional(__S(67, __c8, 3)),
-          oauthConfig: S.optional(__S(68, __c8, 4)),
-          serviceAgentIdTokenAuthConfig: S.optional(__S(10, __c1, 2)),
-          bearerTokenConfig: S.optional(__S(69, __c8, 5)),
-        }),
-      ).annotate({ identifier: "ApiAuthentication" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          agentRegistry: S.optional(S.String),
-          inputVariableMapping: S.optional(__S(17, __c2, 1)),
-          outputVariableMapping: S.optional(__S(17, __c2, 1)),
-          agentCard: S.optional(__S(65, __c8, 1)),
-          contextId: S.optional(S.String),
-          apiAuthentication: S.optional(__S(70, __c8, 6)),
-          streamingEnabled: S.optional(S.Boolean),
-        }),
-      ).annotate({ identifier: "RemoteA2aConfig" });
-  }
-}
-function __c9(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          a2aConfig: S.optional(__S(71, __c8, 7)),
-        }),
-      ).annotate({ identifier: "AgentRemoteA2aAgent" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          expression: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ExpressionCondition" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          expressionCondition: S.optional(__S(73, __c9, 1)),
-        }),
-      ).annotate({
-        identifier: "TransferRuleDisablePlannerTransfer",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          pythonCode: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "PythonCodeCondition" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          expressionCondition: S.optional(__S(73, __c9, 1)),
-          pythonCodeCondition: S.optional(__S(75, __c9, 3)),
-        }),
-      ).annotate({
-        identifier: "TransferRuleDeterministicTransfer",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          direction: S.optional(S.String),
-          disablePlannerTransfer: S.optional(__S(74, __c9, 2)),
-          deterministicTransfer: S.optional(__S(76, __c9, 4)),
-          childAgent: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "TransferRule" });
-    case 6:
-      return S.Array(__S(77, __c9, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          flowId: S.optional(S.String),
-          environmentId: S.optional(S.String),
-          inputVariableMapping: S.optional(__S(17, __c2, 1)),
-          languageCodeVariable: S.optional(S.String),
-          outputVariableMapping: S.optional(__S(17, __c2, 1)),
-          respectResponseInterruptionSettings: S.optional(S.Boolean),
-          agent: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "AgentRemoteDialogflowAgent",
-      });
-  }
-}
-function __c10(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          toolset: S.optional(S.String),
-          toolIds: S.optional(__S(0, __c0, 0)),
-        }),
-      ).annotate({ identifier: "AgentAgentToolset" });
-    case 1:
-      return S.Array(__S(80, __c10, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          llmAgent: S.optional(__S(10, __c1, 2)),
-          beforeToolCallbacks: S.optional(__S(60, __c7, 4)),
-          createTime: S.optional(S.String),
-          generatedSummary: S.optional(S.String),
-          remoteA2aAgent: S.optional(__S(72, __c9, 0)),
-          afterToolCallbacks: S.optional(__S(60, __c7, 4)),
-          validationErrors: S.optional(__S(0, __c0, 0)),
-          afterModelCallbacks: S.optional(__S(60, __c7, 4)),
-          description: S.optional(S.String),
-          childAgents: S.optional(__S(0, __c0, 0)),
-          modelSettings: S.optional(__S(53, __c6, 5)),
-          transferRules: S.optional(__S(78, __c9, 6)),
-          updateTime: S.optional(S.String),
-          tools: S.optional(__S(0, __c0, 0)),
-          afterAgentCallbacks: S.optional(__S(60, __c7, 4)),
-          displayName: S.optional(S.String),
-          name: S.optional(S.String),
-          instruction: S.optional(S.String),
-          remoteDialogflowAgent: S.optional(__S(79, __c9, 7)),
-          etag: S.optional(S.String),
-          beforeAgentCallbacks: S.optional(__S(60, __c7, 4)),
-          guardrails: S.optional(__S(0, __c0, 0)),
-          beforeModelCallbacks: S.optional(__S(60, __c7, 4)),
-          toolsets: S.optional(__S(81, __c10, 1)),
-        }),
-      ).annotate({ identifier: "Agent" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          parent: S.String.pipe(T.Label()),
-          agentId: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(82, __c10, 2).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/{+parent}/agents",
-            baseUrl: "https://ces.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateProjectsLocationsAppsAgentsRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          businessAccountId: S.optional(S.String),
-          authCode: S.optional(S.String),
-          pin: S.optional(S.String),
-          phoneNumber: S.optional(S.String),
-          conversationProfileId: S.optional(S.String),
-          wabaId: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "WhatsAppCredentials" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          authCode: S.optional(S.String),
-          conversationProfileId: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "InstagramCredentials" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          agentRegistryServiceName: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "AgentRegistryDeployment" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          appVersion: S.optional(S.String),
-          id: S.optional(S.String),
-          trafficPercentage: S.optional(S.Number),
-        }),
-      ).annotate({
-        identifier: "ExperimentConfigVersionReleaseTrafficAllocation",
-      });
-  }
-}
-function __c11(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(87, __c10, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          trafficAllocations: S.optional(__S(88, __c11, 0)),
-          state: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "ExperimentConfigVersionRelease",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          versionRelease: S.optional(__S(89, __c11, 1)),
-        }),
-      ).annotate({ identifier: "ExperimentConfig" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          appVersion: S.optional(S.String),
-          whatsappCredentials: S.optional(__S(84, __c10, 4)),
-          modelSettings: S.optional(__S(53, __c6, 5)),
-          modality: S.optional(S.String),
-          instagramCredentials: S.optional(__S(85, __c10, 5)),
-          agentRegistryDeployment: S.optional(__S(86, __c10, 6)),
-          name: S.optional(S.String),
-          updateTime: S.optional(S.String),
-          channelProfile: S.optional(__S(30, __c3, 6)),
-          etag: S.optional(S.String),
-          experimentConfig: S.optional(__S(90, __c11, 2)),
-          createTime: S.optional(S.String),
-          displayName: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Deployment" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          parent: S.String.pipe(T.Label()),
-          deploymentId: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(91, __c11, 3).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/{+parent}/deployments",
-            baseUrl: "https://ces.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateProjectsLocationsAppsDeploymentsRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          targetAgent: S.optional(S.String),
-          displayName: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "AgentTransfer" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          mimeType: S.optional(S.String),
-          data: S.optional(S.String),
-          altText: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Image" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          toolId: S.optional(S.String),
-          toolset: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ToolsetTool" });
-  }
-}
-function __c12(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          displayName: S.optional(S.String),
-          id: S.optional(S.String),
-          parentToolCallId: S.optional(S.String),
-          tool: S.optional(S.String),
-          agentName: S.optional(S.String),
-          args: S.optional(__S(3, __c0, 3)),
-          toolsetTool: S.optional(__S(95, __c11, 7)),
-        }),
-      ).annotate({ identifier: "ToolCall" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          data: S.optional(S.String),
-          mimeType: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Blob" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          parentToolCallId: S.optional(S.String),
-          displayName: S.optional(S.String),
-          agentName: S.optional(S.String),
-          response: S.optional(__S(3, __c0, 3)),
-          tool: S.optional(S.String),
-          toolsetTool: S.optional(__S(95, __c11, 7)),
-          id: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ToolResponse" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          agentTransfer: S.optional(__S(93, __c11, 5)),
-          image: S.optional(__S(94, __c11, 6)),
-          toolCall: S.optional(__S(96, __c12, 0)),
-          updatedVariables: S.optional(__S(3, __c0, 3)),
-          payload: S.optional(__S(3, __c0, 3)),
-          transcript: S.optional(S.String),
-          blob: S.optional(__S(97, __c12, 1)),
-          text: S.optional(S.String),
-          toolResponse: S.optional(__S(98, __c12, 2)),
-          defaultVariables: S.optional(__S(3, __c0, 3)),
-        }),
-      ).annotate({ identifier: "Chunk" });
-    case 4:
-      return S.Array(__S(99, __c12, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          eventTime: S.optional(S.String),
-          role: S.optional(S.String),
-          chunks: S.optional(__S(100, __c12, 4)),
-        }),
-      ).annotate({ identifier: "Message" });
-    case 6:
-      return S.Array(__S(101, __c12, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          etag: S.optional(S.String),
-          updateTime: S.optional(S.String),
-          invalid: S.optional(S.Boolean),
-          description: S.optional(S.String),
-          entryAgent: S.optional(S.String),
-          messages: S.optional(__S(102, __c12, 6)),
-          displayName: S.optional(S.String),
-          name: S.optional(S.String),
-          createTime: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Example" });
-  }
-}
-function __c13(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          parent: S.String.pipe(T.Label()),
-          exampleId: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(103, __c12, 7).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/{+parent}/examples",
-            baseUrl: "https://ces.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateProjectsLocationsAppsExamplesRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          matchType: S.optional(S.String),
-          disregardDiacritics: S.optional(S.Boolean),
-          bannedContents: S.optional(__S(0, __c0, 0)),
-          bannedContentsInUserInput: S.optional(__S(0, __c0, 0)),
-          bannedContentsInAgentResponse: S.optional(__S(0, __c0, 0)),
-        }),
-      ).annotate({ identifier: "GuardrailContentFilter" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          threshold: S.optional(S.String),
-          category: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GuardrailModelSafetySafetySetting",
-      });
-    case 3:
-      return S.Array(__S(106, __c13, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          safetySettings: S.optional(__S(107, __c13, 3)),
-        }),
-      ).annotate({ identifier: "GuardrailModelSafety" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          disabled: S.optional(S.Boolean),
-          text: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "TriggerActionResponse" });
-    case 6:
-      return S.Array(__S(109, __c13, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          responses: S.optional(__S(110, __c13, 6)),
-        }),
-      ).annotate({
-        identifier: "TriggerActionRespondImmediately",
-      });
-  }
-}
-function __c14(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          agent: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "TriggerActionTransferAgent",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          prompt: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "TriggerActionGenerativeAnswer",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          respondImmediately: S.optional(__S(111, __c13, 7)),
-          transferAgent: S.optional(__S(112, __c14, 0)),
-          generativeAnswer: S.optional(__S(113, __c14, 1)),
-        }),
-      ).annotate({ identifier: "TriggerAction" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          defaultPromptTemplate: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GuardrailLlmPromptSecurityDefaultSecuritySettings",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          allowShortUtterance: S.optional(S.Boolean),
-          modelSettings: S.optional(__S(53, __c6, 5)),
-          prompt: S.optional(S.String),
-          policyScope: S.optional(S.String),
-          maxConversationMessages: S.optional(S.Number),
-          failOpen: S.optional(S.Boolean),
-        }),
-      ).annotate({ identifier: "GuardrailLlmPolicy" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          failOpen: S.optional(S.Boolean),
-          defaultSettings: S.optional(__S(115, __c14, 3)),
-          customPolicy: S.optional(__S(116, __c14, 4)),
-        }),
-      ).annotate({
-        identifier: "GuardrailLlmPromptSecurity",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          beforeModelCallback: S.optional(__S(59, __c7, 3)),
-          afterAgentCallback: S.optional(__S(59, __c7, 3)),
-          afterModelCallback: S.optional(__S(59, __c7, 3)),
-          beforeAgentCallback: S.optional(__S(59, __c7, 3)),
-        }),
-      ).annotate({ identifier: "GuardrailCodeCallback" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          type: S.optional(S.String),
-          detectionMode: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "GuardrailSupervisor" });
-  }
-}
-function __c15(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          contentFilter: S.optional(__S(105, __c13, 1)),
-          modelSafety: S.optional(__S(108, __c13, 4)),
-          displayName: S.optional(S.String),
-          updateTime: S.optional(S.String),
-          action: S.optional(__S(114, __c14, 2)),
-          createTime: S.optional(S.String),
-          llmPromptSecurity: S.optional(__S(117, __c14, 5)),
-          name: S.optional(S.String),
-          etag: S.optional(S.String),
-          enabled: S.optional(S.Boolean),
-          codeCallback: S.optional(__S(118, __c14, 6)),
-          description: S.optional(S.String),
-          llmPolicy: S.optional(__S(116, __c14, 4)),
-          supervisor: S.optional(__S(119, __c14, 7)),
-        }),
-      ).annotate({ identifier: "Guardrail" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          guardrailId: S.optional(S.String.pipe(T.Query())),
-          parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(120, __c15, 0).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/{+parent}/guardrails",
-            baseUrl: "https://ces.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateProjectsLocationsAppsGuardrailsRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          agent: S.optional(S.String),
-          name: S.optional(S.String),
-          description: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "AgentTool" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          description: S.optional(S.String),
-          name: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "SystemTool" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          issuer: S.optional(S.String),
-          subject: S.optional(S.String),
-          clientKey: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "EndUserAuthConfigOauth2JwtBearerConfig",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          oauthToken: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "EndUserAuthConfigOauth2AuthCodeConfig",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          oauth2JwtBearerConfig: S.optional(__S(124, __c15, 4)),
-          oauth2AuthCodeConfig: S.optional(__S(125, __c15, 5)),
-        }),
-      ).annotate({ identifier: "EndUserAuthConfig" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          entityId: S.optional(S.String),
-          operation: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ActionEntityOperation" });
-  }
-}
-function __c16(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          connectionActionId: S.optional(S.String),
-          outputFields: S.optional(__S(0, __c0, 0)),
-          entityOperation: S.optional(__S(127, __c15, 7)),
-          inputFields: S.optional(__S(0, __c0, 0)),
-        }),
-      ).annotate({ identifier: "Action" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.optional(S.String),
-          authConfig: S.optional(__S(126, __c15, 6)),
-          action: S.optional(__S(128, __c16, 0)),
-          description: S.optional(S.String),
-          connection: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ConnectorTool" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.optional(S.String),
-          parameters: S.optional(__S(14, __c1, 6)),
-          response: S.optional(__S(14, __c1, 6)),
-          description: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ClientFunction" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          collectionDisplayName: S.optional(S.String),
-          dataSource: S.optional(S.String),
-          collection: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "DataStoreConnectorConfig" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          type: S.optional(S.String),
-          documentProcessingMode: S.optional(S.String),
-          displayName: S.optional(S.String),
-          connectorConfig: S.optional(__S(131, __c16, 3)),
-          name: S.optional(S.String),
-          createTime: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "DataStore" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          dataStore: S.optional(__S(132, __c16, 4)),
-          filter: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "DataStoreToolDataStoreSource",
-      });
-    case 6:
-      return S.Array(__S(133, __c16, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          dataStoreSources: S.optional(__S(134, __c16, 6)),
-          engine: S.optional(S.String),
-          filter: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "DataStoreToolEngineSource",
-      });
-  }
-}
-function __c17(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          modelSettings: S.optional(__S(53, __c6, 5)),
-          disabled: S.optional(S.Boolean),
-          prompt: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "DataStoreToolRewriterConfig",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          enableSnippets: S.optional(S.Boolean),
-          maxSnippets: S.optional(S.Number),
-        }),
-      ).annotate({
-        identifier: "DataStoreToolSnippetsConfig",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          prompt: S.optional(S.String),
-          disabled: S.optional(S.Boolean),
-          modelSettings: S.optional(__S(53, __c6, 5)),
-        }),
-      ).annotate({
-        identifier: "DataStoreToolSummarizationConfig",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          groundingLevel: S.optional(S.Number),
-          disabled: S.optional(S.Boolean),
-        }),
-      ).annotate({
-        identifier: "DataStoreToolGroundingConfig",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          rewriterConfig: S.optional(__S(136, __c17, 0)),
-          snippetsConfig: S.optional(__S(137, __c17, 1)),
-          modalityType: S.optional(S.String),
-          summarizationConfig: S.optional(__S(138, __c17, 2)),
-          groundingConfig: S.optional(__S(139, __c17, 3)),
-        }),
-      ).annotate({
-        identifier: "DataStoreToolModalityConfig",
-      });
-    case 5:
-      return S.Array(__S(140, __c17, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          attributeValue: S.optional(S.String),
-          boostAmount: S.optional(S.Number),
-        }),
-      ).annotate({
-        identifier: "DataStoreToolBoostSpecConditionBoostSpecBoostControlSpecControlPoint",
-      });
-    case 7:
-      return S.Array(__S(142, __c17, 6));
-  }
-}
-function __c18(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          attributeType: S.optional(S.String),
-          controlPoints: S.optional(__S(143, __c17, 7)),
-          fieldName: S.optional(S.String),
-          interpolationType: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "DataStoreToolBoostSpecConditionBoostSpecBoostControlSpec",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          boostControlSpec: S.optional(__S(144, __c18, 0)),
-          condition: S.optional(S.String),
-          boost: S.optional(S.Number),
-        }),
-      ).annotate({
-        identifier: "DataStoreToolBoostSpecConditionBoostSpec",
-      });
-    case 2:
-      return S.Array(__S(145, __c18, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          conditionBoostSpecs: S.optional(__S(146, __c18, 2)),
-        }),
-      ).annotate({ identifier: "DataStoreToolBoostSpec" });
-    case 4:
-      return S.Array(__S(147, __c18, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          spec: S.optional(__S(148, __c18, 4)),
-          dataStores: S.optional(__S(0, __c0, 0)),
-        }),
-      ).annotate({ identifier: "DataStoreToolBoostSpecs" });
-    case 6:
-      return S.Array(__S(149, __c18, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          engineSource: S.optional(__S(135, __c16, 7)),
-          modalityConfigs: S.optional(__S(141, __c17, 5)),
-          filterParameterBehavior: S.optional(S.String),
-          dataStoreSource: S.optional(__S(133, __c16, 5)),
-          name: S.optional(S.String),
-          boostSpecs: S.optional(__S(150, __c18, 6)),
-          description: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "DataStoreTool" });
-  }
-}
-function __c19(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          service: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ServiceDirectoryConfig" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          description: S.optional(S.String),
-          serviceDirectoryConfig: S.optional(__S(152, __c19, 0)),
-          name: S.optional(S.String),
-          pythonCode: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "PythonFunction" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          cert: S.optional(S.String),
-          displayName: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "TlsConfigCaCert" });
-    case 3:
-      return S.Array(__S(154, __c19, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          caCerts: S.optional(__S(155, __c19, 3)),
-        }),
-      ).annotate({ identifier: "TlsConfig" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          inputSchema: S.optional(__S(14, __c1, 6)),
-          state: S.optional(S.String),
-          description: S.optional(S.String),
-          name: S.optional(S.String),
-          apiAuthentication: S.optional(__S(70, __c8, 6)),
-          nameOverride: S.optional(S.String),
-          serviceDirectoryConfig: S.optional(__S(152, __c19, 0)),
-          outputSchema: S.optional(__S(14, __c1, 6)),
-          customHeaders: S.optional(__S(17, __c2, 1)),
-          tlsConfig: S.optional(__S(156, __c19, 4)),
-          serverAddress: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "McpTool" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          codeBlock: S.optional(__S(75, __c9, 3)),
-          enableFakeMode: S.optional(S.Boolean),
-        }),
-      ).annotate({ identifier: "ToolFakeConfig" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          voicePrompt: S.optional(S.String),
-          textPrompt: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleSearchToolPromptConfig",
-      });
-  }
-}
-function __c20(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          excludeDomains: S.optional(__S(0, __c0, 0)),
-          description: S.optional(S.String),
-          contextUrls: S.optional(__S(0, __c0, 0)),
-          promptConfig: S.optional(__S(159, __c19, 7)),
-          name: S.optional(S.String),
-          preferredDomains: S.optional(__S(0, __c0, 0)),
-        }),
-      ).annotate({ identifier: "GoogleSearchTool" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          url: S.optional(S.String),
-          description: S.optional(S.String),
-          name: S.optional(S.String),
-          apiAuthentication: S.optional(__S(70, __c8, 6)),
-          tlsConfig: S.optional(__S(156, __c19, 4)),
-          serviceDirectoryConfig: S.optional(__S(152, __c19, 0)),
-          openApiSchema: S.optional(S.String),
-          ignoreUnknownFields: S.optional(S.Boolean),
-        }),
-      ).annotate({ identifier: "OpenApiTool" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          inputVariableMapping: S.optional(__S(17, __c2, 1)),
-          outputVariableMapping: S.optional(__S(17, __c2, 1)),
-          description: S.optional(S.String),
-          statefulAgent: S.optional(S.Boolean),
-          name: S.optional(S.String),
-          apiAuthentication: S.optional(__S(70, __c8, 6)),
-          agentCard: S.optional(__S(65, __c8, 1)),
-        }),
-      ).annotate({ identifier: "RemoteAgentTool" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          sourceToolName: S.optional(S.String),
-          mode: S.optional(S.String),
-          fieldMappings: S.optional(__S(17, __c2, 1)),
-          pythonScript: S.optional(S.String),
-          pythonFunction: S.optional(__S(153, __c19, 1)),
-        }),
-      ).annotate({ identifier: "WidgetToolDataMapping" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          staticText: S.optional(S.String),
-          textResponseInstruction: S.optional(S.String),
-          type: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "WidgetToolTextResponseConfig",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          uiConfig: S.optional(__S(3, __c0, 3)),
-          dataMapping: S.optional(__S(163, __c20, 3)),
-          textResponseConfig: S.optional(__S(164, __c20, 4)),
-          widgetType: S.optional(S.String),
-          description: S.optional(S.String),
-          name: S.optional(S.String),
-          parameters: S.optional(__S(14, __c1, 6)),
-        }),
-      ).annotate({ identifier: "WidgetTool" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          description: S.optional(S.String),
-          name: S.optional(S.String),
-          corpusType: S.optional(S.String),
-          fileCorpus: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "FileSearchTool" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          agentTool: S.optional(__S(122, __c15, 2)),
-          updateTime: S.optional(S.String),
-          readOnly: S.optional(S.Boolean),
-          systemTool: S.optional(__S(123, __c15, 3)),
-          connectorTool: S.optional(__S(129, __c16, 1)),
-          createTime: S.optional(S.String),
-          clientFunction: S.optional(__S(130, __c16, 2)),
-          generatedSummary: S.optional(S.String),
-          dataStoreTool: S.optional(__S(151, __c18, 7)),
-          pythonFunction: S.optional(__S(153, __c19, 1)),
-          mcpTool: S.optional(__S(157, __c19, 5)),
-          toolFakeConfig: S.optional(__S(158, __c19, 6)),
-          executionType: S.optional(S.String),
-          etag: S.optional(S.String),
-          googleSearchTool: S.optional(__S(160, __c20, 0)),
-          openApiTool: S.optional(__S(161, __c20, 1)),
-          remoteAgentTool: S.optional(__S(162, __c20, 2)),
-          name: S.optional(S.String),
-          displayName: S.optional(S.String),
-          widgetTool: S.optional(__S(165, __c20, 5)),
-          fileSearchTool: S.optional(__S(166, __c20, 6)),
-          timeout: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Tool" });
-  }
-}
-function __c21(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          parent: S.String.pipe(T.Label()),
-          toolId: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(167, __c20, 7).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/{+parent}/tools",
-            baseUrl: "https://ces.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateProjectsLocationsAppsToolsRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          serviceDirectoryConfig: S.optional(__S(152, __c19, 0)),
-          openApiSchema: S.optional(S.String),
-          tlsConfig: S.optional(__S(156, __c19, 4)),
-          ignoreUnknownFields: S.optional(S.Boolean),
-          url: S.optional(S.String),
-          apiAuthentication: S.optional(__S(70, __c8, 6)),
-        }),
-      ).annotate({ identifier: "OpenApiToolset" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          outputSchema: S.optional(__S(14, __c1, 6)),
-          description: S.optional(S.String),
-          inputSchema: S.optional(__S(14, __c1, 6)),
-        }),
-      ).annotate({ identifier: "McpToolDefinition" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          snapshot: S.optional(__S(170, __c21, 2)),
-          nameOverride: S.optional(S.String),
-          tool: S.optional(S.String),
-          descriptionOverride: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "McpToolOverride" });
-    case 4:
-      return S.Array(__S(171, __c21, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          serviceDirectoryConfig: S.optional(__S(152, __c19, 0)),
-          customHeaders: S.optional(__S(17, __c2, 1)),
-          tlsConfig: S.optional(__S(156, __c19, 4)),
-          serverAddress: S.optional(S.String),
-          apiAuthentication: S.optional(__S(70, __c8, 6)),
-          toolOverrides: S.optional(__S(172, __c21, 4)),
-        }),
-      ).annotate({ identifier: "McpToolset" });
-    case 6:
-      return S.Array(__S(128, __c16, 0));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          authConfig: S.optional(__S(126, __c15, 6)),
-          connection: S.optional(S.String),
-          connectorActions: S.optional(__S(174, __c21, 6)),
-        }),
-      ).annotate({ identifier: "ConnectorToolset" });
-  }
-}
-function __c22(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          toolFakeConfig: S.optional(__S(158, __c19, 6)),
-          openApiToolset: S.optional(__S(169, __c21, 1)),
-          mcpToolset: S.optional(__S(173, __c21, 5)),
-          updateTime: S.optional(S.String),
-          name: S.optional(S.String),
-          displayName: S.optional(S.String),
-          description: S.optional(S.String),
-          etag: S.optional(S.String),
-          connectorToolset: S.optional(__S(175, __c21, 7)),
-          timeout: S.optional(S.String),
-          executionType: S.optional(S.String),
-          createTime: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Toolset" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          parent: S.String.pipe(T.Label()),
-          toolsetId: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(176, __c22, 0).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/{+parent}/toolsets",
-            baseUrl: "https://ces.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateProjectsLocationsAppsToolsetsRequest",
-      });
-    case 2:
-      return S.Array(__S(103, __c12, 7));
-    case 3:
-      return S.Array(__S(82, __c10, 2));
-    case 4:
-      return S.Array(__S(176, __c22, 0));
-    case 5:
-      return S.Array(__S(167, __c20, 7));
-    case 6:
-      return S.Array(__S(120, __c15, 0));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          examples: S.optional(__S(178, __c22, 2)),
-          app: S.optional(__S(57, __c7, 1)),
-          agents: S.optional(__S(179, __c22, 3)),
-          toolsets: S.optional(__S(180, __c22, 4)),
-          tools: S.optional(__S(181, __c22, 5)),
-          guardrails: S.optional(__S(182, __c22, 6)),
-        }),
-      ).annotate({ identifier: "AppSnapshot" });
-  }
-}
-function __c23(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          description: S.optional(S.String),
-          creator: S.optional(S.String),
-          createTime: S.optional(S.String),
-          etag: S.optional(S.String),
-          updateTime: S.optional(S.String),
-          snapshot: S.optional(__S(183, __c22, 7)),
-          name: S.optional(S.String),
-          displayName: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "AppVersion" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          appVersionId: S.optional(S.String.pipe(T.Query())),
-          parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(184, __c23, 0).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/{+parent}/versions",
-            baseUrl: "https://ces.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateProjectsLocationsAppsVersionsRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-          etag: S.optional(S.String.pipe(T.Query())),
-        }).pipe(
-          T.Http({ method: "DELETE", uri: "v1/{+name}", baseUrl: "https://ces.googleapis.com/" }),
-        ),
-      ).annotate({
-        identifier: "DeleteProjectsLocationsAppsRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          force: S.optional(S.Boolean.pipe(T.Query())),
-          name: S.String.pipe(T.Label()),
-          etag: S.optional(S.String.pipe(T.Query())),
-        }).pipe(
-          T.Http({ method: "DELETE", uri: "v1/{+name}", baseUrl: "https://ces.googleapis.com/" }),
-        ),
-      ).annotate({
-        identifier: "DeleteProjectsLocationsAppsAgentsRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-          source: S.optional(S.String.pipe(T.Query())),
-        }).pipe(
-          T.Http({ method: "DELETE", uri: "v1/{+name}", baseUrl: "https://ces.googleapis.com/" }),
-        ),
-      ).annotate({
-        identifier: "DeleteProjectsLocationsAppsConversationsRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-          etag: S.optional(S.String.pipe(T.Query())),
-        }).pipe(
-          T.Http({ method: "DELETE", uri: "v1/{+name}", baseUrl: "https://ces.googleapis.com/" }),
-        ),
-      ).annotate({
-        identifier: "DeleteProjectsLocationsAppsDeploymentsRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-          etag: S.optional(S.String.pipe(T.Query())),
-        }).pipe(
-          T.Http({ method: "DELETE", uri: "v1/{+name}", baseUrl: "https://ces.googleapis.com/" }),
-        ),
-      ).annotate({
-        identifier: "DeleteProjectsLocationsAppsExamplesRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-          etag: S.optional(S.String.pipe(T.Query())),
-          force: S.optional(S.Boolean.pipe(T.Query())),
-        }).pipe(
-          T.Http({ method: "DELETE", uri: "v1/{+name}", baseUrl: "https://ces.googleapis.com/" }),
-        ),
-      ).annotate({
-        identifier: "DeleteProjectsLocationsAppsGuardrailsRequest",
-      });
-  }
-}
-function __c24(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          force: S.optional(S.Boolean.pipe(T.Query())),
-          name: S.String.pipe(T.Label()),
-          etag: S.optional(S.String.pipe(T.Query())),
-        }).pipe(
-          T.Http({ method: "DELETE", uri: "v1/{+name}", baseUrl: "https://ces.googleapis.com/" }),
-        ),
-      ).annotate({
-        identifier: "DeleteProjectsLocationsAppsToolsRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-          etag: S.optional(S.String.pipe(T.Query())),
-          force: S.optional(S.Boolean.pipe(T.Query())),
-        }).pipe(
-          T.Http({ method: "DELETE", uri: "v1/{+name}", baseUrl: "https://ces.googleapis.com/" }),
-        ),
-      ).annotate({
-        identifier: "DeleteProjectsLocationsAppsToolsetsRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-          etag: S.optional(S.String.pipe(T.Query())),
-        }).pipe(
-          T.Http({ method: "DELETE", uri: "v1/{+name}", baseUrl: "https://ces.googleapis.com/" }),
-        ),
-      ).annotate({
-        identifier: "DeleteProjectsLocationsAppsVersionsRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({ method: "DELETE", uri: "v1/{+name}", baseUrl: "https://ces.googleapis.com/" }),
-        ),
-      ).annotate({
-        identifier: "DeleteProjectsLocationsOperationsRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          mockResponse: S.optional(__S(3, __c0, 3)),
-          tool: S.optional(S.String),
-          toolId: S.optional(S.String),
-          toolset: S.optional(__S(95, __c11, 7)),
-          expectedArgsPattern: S.optional(__S(3, __c0, 3)),
-        }),
-      ).annotate({ identifier: "MockedToolCall" });
-    case 5:
-      return S.Array(__S(196, __c24, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          mockedToolCalls: S.optional(__S(197, __c24, 5)),
-          unmatchedToolCallBehavior: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "MockConfig" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          variables: S.optional(__S(3, __c0, 3)),
-          mockConfig: S.optional(__S(198, __c24, 6)),
-          args: S.optional(__S(3, __c0, 3)),
-          toolsetTool: S.optional(__S(95, __c11, 7)),
-          tool: S.optional(S.String),
-          context: S.optional(__S(3, __c0, 3)),
-        }),
-      ).annotate({ identifier: "ExecuteToolRequest" });
-  }
-}
-function __c25(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(199, __c24, 7).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/{+parent}:executeTool",
-            baseUrl: "https://ces.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "ExecuteToolProjectsLocationsAppsRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          query: S.optional(S.String),
-          uri: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "WebSearchQuery" });
-    case 2:
-      return S.Array(__S(201, __c25, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          webSearchQueries: S.optional(__S(202, __c25, 2)),
-          htmls: S.optional(__S(0, __c0, 0)),
-        }),
-      ).annotate({ identifier: "GoogleSearchSuggestions" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          requiresAttribution: S.optional(S.Boolean),
-          uri: S.optional(S.String),
-          text: S.optional(S.String),
-          title: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "CitationsCitedChunk" });
-    case 5:
-      return S.Array(__S(204, __c25, 4));
-    case 6:
-      return S.Array(S.Number);
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          endIndex: S.optional(S.Number),
-          citedChunkIndices: S.optional(__S(206, __c25, 6)),
-          startIndex: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "CitationsInlineCitation" });
-  }
-}
-function __c26(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(207, __c25, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          citedChunks: S.optional(__S(205, __c25, 5)),
-          inlineCitations: S.optional(__S(208, __c26, 0)),
-        }),
-      ).annotate({ identifier: "Citations" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          toolsetTool: S.optional(__S(95, __c11, 7)),
-          variables: S.optional(__S(3, __c0, 3)),
-          tool: S.optional(S.String),
-          googleSearchSuggestions: S.optional(__S(203, __c25, 3)),
-          citations: S.optional(__S(209, __c26, 1)),
-          response: S.optional(__S(3, __c0, 3)),
-        }),
-      ).annotate({ identifier: "ExecuteToolResponse" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          gcsUri: S.optional(S.String),
-          appVersion: S.optional(S.String),
-          exportFormat: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ExportAppRequest" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-          body: S.optional(__S(211, __c26, 3).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/{+name}:exportApp",
-            baseUrl: "https://ces.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "ExportAppProjectsLocationsAppsRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          recaptchaToken: S.optional(S.String),
-          liveHandoffEnabled: S.optional(S.Boolean),
-          deployment: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "GenerateChatTokenRequest" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-          body: S.optional(__S(213, __c26, 5).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/{+name}:generateChatToken",
-            baseUrl: "https://ces.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "GenerateChatTokenProjectsLocationsAppsSessionsRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          chatToken: S.optional(S.String),
-          expireTime: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GenerateChatTokenResponse",
-      });
-  }
-}
-function __c27(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          maxSuggestions: S.optional(S.Number),
-        }),
-      ).annotate({
-        identifier: "GenerateOnboardingSuggestionsRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-          body: S.optional(__S(216, __c27, 0).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/{+name}:generateOnboardingSuggestions",
-            baseUrl: "https://ces.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "GenerateOnboardingSuggestionsProjectsLocationsAppsRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          assistantSessionId: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "AssistantSuggestionLoadSession",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          label: S.optional(S.String),
-          source: S.optional(S.String),
-          suggestionId: S.optional(S.String),
-          seedPrompt: S.optional(S.String),
-          rationale: S.optional(S.String),
-          icon: S.optional(S.String),
-          candidateType: S.optional(S.String),
-          sendMessage: S.optional(S.String),
-          loadSession: S.optional(__S(218, __c27, 2)),
-        }),
-      ).annotate({ identifier: "AssistantSuggestion" });
-    case 4:
-      return S.Array(__S(219, __c27, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          userProfile: S.optional(S.String),
-          suggestions: S.optional(__S(220, __c27, 4)),
-          contextToken: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GenerateOnboardingSuggestionsResponse",
-      });
-    case 6:
       return S.suspend(() =>
         S.Struct({
           tenant: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v1/{+tenant}/extendedAgentCard",
-            baseUrl: "https://ces.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetExtendedAgentCardProjectsLocationsAppsRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          list: S.optional(__S(0, __c0, 0)),
-        }),
-      ).annotate({ identifier: "LfA2aV1StringList" });
-  }
-}
-function __c28(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Record(S.String, __S(223, __c27, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          schemes: S.optional(__S(224, __c28, 0)),
-        }),
-      ).annotate({
-        identifier: "LfA2aV1SecurityRequirement",
-      });
-    case 2:
-      return S.Array(__S(225, __c28, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          signature: S.optional(S.String),
-          header: S.optional(__S(3, __c0, 3)),
-          protected: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "LfA2aV1AgentCardSignature",
-      });
-    case 4:
-      return S.Array(__S(227, __c28, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          url: S.optional(S.String),
-          organization: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "LfA2aV1AgentProvider" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          scopes: S.optional(__S(17, __c2, 1)),
-          pkceRequired: S.optional(S.Boolean),
-          refreshUrl: S.optional(S.String),
-          tokenUrl: S.optional(S.String),
-          authorizationUrl: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "LfA2aV1AuthorizationCodeOAuthFlow",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          scopes: S.optional(__S(17, __c2, 1)),
-          refreshUrl: S.optional(S.String),
-          tokenUrl: S.optional(S.String),
-          deviceAuthorizationUrl: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "LfA2aV1DeviceCodeOAuthFlow",
-      });
-  }
-}
-function __c29(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          tokenUrl: S.optional(S.String),
-          refreshUrl: S.optional(S.String),
-          scopes: S.optional(__S(17, __c2, 1)),
-        }),
-      ).annotate({ identifier: "LfA2aV1PasswordOAuthFlow" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          tokenUrl: S.optional(S.String),
-          scopes: S.optional(__S(17, __c2, 1)),
-          refreshUrl: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "LfA2aV1ClientCredentialsOAuthFlow",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          scopes: S.optional(__S(17, __c2, 1)),
-          refreshUrl: S.optional(S.String),
-          authorizationUrl: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "LfA2aV1ImplicitOAuthFlow" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          authorizationCode: S.optional(__S(230, __c28, 6)),
-          deviceCode: S.optional(__S(231, __c28, 7)),
-          password: S.optional(__S(232, __c29, 0)),
-          clientCredentials: S.optional(__S(233, __c29, 1)),
-          implicit: S.optional(__S(234, __c29, 2)),
-        }),
-      ).annotate({ identifier: "LfA2aV1OAuthFlows" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          flows: S.optional(__S(235, __c29, 3)),
-          description: S.optional(S.String),
-          oauth2MetadataUrl: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "LfA2aV1OAuth2SecurityScheme",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          openIdConnectUrl: S.optional(S.String),
-          description: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "LfA2aV1OpenIdConnectSecurityScheme",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.optional(S.String),
-          description: S.optional(S.String),
-          location: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "LfA2aV1APIKeySecurityScheme",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          description: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "LfA2aV1MutualTlsSecurityScheme",
-      });
-  }
-}
-function __c30(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          description: S.optional(S.String),
-          bearerFormat: S.optional(S.String),
-          scheme: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "LfA2aV1HTTPAuthSecurityScheme",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          oauth2SecurityScheme: S.optional(__S(236, __c29, 4)),
-          openIdConnectSecurityScheme: S.optional(__S(237, __c29, 5)),
-          apiKeySecurityScheme: S.optional(__S(238, __c29, 6)),
-          mtlsSecurityScheme: S.optional(__S(239, __c29, 7)),
-          httpAuthSecurityScheme: S.optional(__S(240, __c30, 0)),
-        }),
-      ).annotate({ identifier: "LfA2aV1SecurityScheme" });
-    case 2:
-      return S.Record(S.String, __S(241, __c30, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          tags: S.optional(__S(0, __c0, 0)),
-          id: S.optional(S.String),
-          description: S.optional(S.String),
-          name: S.optional(S.String),
-          securityRequirements: S.optional(__S(226, __c28, 2)),
-          inputModes: S.optional(__S(0, __c0, 0)),
-          examples: S.optional(__S(0, __c0, 0)),
-          outputModes: S.optional(__S(0, __c0, 0)),
-        }),
-      ).annotate({ identifier: "LfA2aV1AgentSkill" });
-    case 4:
-      return S.Array(__S(243, __c30, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          required: S.optional(S.Boolean),
-          params: S.optional(__S(3, __c0, 3)),
-          description: S.optional(S.String),
-          uri: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "LfA2aV1AgentExtension" });
-    case 6:
-      return S.Array(__S(245, __c30, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          streaming: S.optional(S.Boolean),
-          pushNotifications: S.optional(S.Boolean),
-          extensions: S.optional(__S(246, __c30, 6)),
-          extendedAgentCard: S.optional(S.Boolean),
-        }),
-      ).annotate({ identifier: "LfA2aV1AgentCapabilities" });
-  }
-}
-function __c31(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          tenant: S.optional(S.String),
-          url: S.optional(S.String),
-          protocolBinding: S.optional(S.String),
-          protocolVersion: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "LfA2aV1AgentInterface" });
-    case 1:
-      return S.Array(__S(248, __c31, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          securityRequirements: S.optional(__S(226, __c28, 2)),
-          signatures: S.optional(__S(228, __c28, 4)),
-          provider: S.optional(__S(229, __c28, 5)),
-          name: S.optional(S.String),
-          securitySchemes: S.optional(__S(242, __c30, 2)),
-          description: S.optional(S.String),
-          skills: S.optional(__S(244, __c30, 4)),
-          defaultOutputModes: S.optional(__S(0, __c0, 0)),
-          version: S.optional(S.String),
-          iconUrl: S.optional(S.String),
-          capabilities: S.optional(__S(247, __c30, 7)),
-          defaultInputModes: S.optional(__S(0, __c0, 0)),
-          documentationUrl: S.optional(S.String),
-          supportedInterfaces: S.optional(__S(249, __c31, 1)),
-        }),
-      ).annotate({ identifier: "LfA2aV1AgentCard" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          tenant: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v1/{+tenant}/extendedAgentCard",
-            baseUrl: "https://ces.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetExtendedAgentCardProjectsLocationsAppsDeploymentsRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          tenant: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v1/{+tenant}/extendedAgentCard",
-            baseUrl: "https://ces.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetExtendedAgentCardProjectsLocationsAppsVersionsRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({ method: "GET", uri: "v1/{+name}", baseUrl: "https://ces.googleapis.com/" }),
-        ),
-      ).annotate({
-        identifier: "GetProjectsLocationsRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.optional(S.String),
-          locationId: S.optional(S.String),
-          displayName: S.optional(S.String),
-          metadata: S.optional(__S(3, __c0, 3)),
-          labels: S.optional(__S(17, __c2, 1)),
-        }),
-      ).annotate({ identifier: "Location" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({ method: "GET", uri: "v1/{+name}", baseUrl: "https://ces.googleapis.com/" }),
-        ),
-      ).annotate({
-        identifier: "GetProjectsLocationsAppsRequest",
-      });
-  }
-}
-function __c32(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({ method: "GET", uri: "v1/{+name}", baseUrl: "https://ces.googleapis.com/" }),
-        ),
-      ).annotate({
-        identifier: "GetProjectsLocationsAppsAgentsRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({ method: "GET", uri: "v1/{+name}", baseUrl: "https://ces.googleapis.com/" }),
-        ),
-      ).annotate({
-        identifier: "GetProjectsLocationsAppsChangelogsRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          resourceType: S.optional(S.String),
-          originalResource: S.optional(__S(3, __c0, 3)),
-          name: S.optional(S.String),
-          createTime: S.optional(S.String),
-          newResource: S.optional(__S(3, __c0, 3)),
-          author: S.optional(S.String),
-          action: S.optional(S.String),
-          displayName: S.optional(S.String),
-          resource: S.optional(S.String),
-          description: S.optional(S.String),
-          sequenceNumber: S.optional(S.String),
-          dependentResources: S.optional(__S(4, __c0, 4)),
-        }),
-      ).annotate({ identifier: "Changelog" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          source: S.optional(S.String.pipe(T.Query())),
-          name: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({ method: "GET", uri: "v1/{+name}", baseUrl: "https://ces.googleapis.com/" }),
-        ),
-      ).annotate({
-        identifier: "GetProjectsLocationsAppsConversationsRequest",
-      });
-    case 4:
-      return S.Array(S.String);
-    case 5:
-      return S.Array(/*@__PURE__*/ S.suspend(() => __S(262, __c32, 6)));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          attributes: S.optional(__S(3, __c0, 3)),
-          endTime: S.optional(S.String),
-          startTime: S.optional(S.String),
-          childSpans: S.optional(__S(261, __c32, 5)),
-          duration: S.optional(S.String),
-          name: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Span" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          userIntendedText: S.optional(S.String),
-          messages: S.optional(__S(102, __c12, 6)),
-          rootSpan: S.optional(__S(262, __c32, 6)),
-        }),
-      ).annotate({ identifier: "ConversationTurn" });
-  }
-}
-function __c33(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(263, __c32, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          inputTypes: S.optional(__S(260, __c32, 4)),
-          turnCount: S.optional(S.Number),
-          source: S.optional(S.String),
-          name: S.optional(S.String),
-          messages: S.optional(__S(102, __c12, 6)),
-          languageCode: S.optional(S.String),
-          turns: S.optional(__S(264, __c33, 0)),
-          entryAgent: S.optional(S.String),
-          endTime: S.optional(S.String),
-          startTime: S.optional(S.String),
-          appVersion: S.optional(S.String),
-          channelType: S.optional(S.String),
-          deployment: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Conversation" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({ method: "GET", uri: "v1/{+name}", baseUrl: "https://ces.googleapis.com/" }),
-        ),
-      ).annotate({
-        identifier: "GetProjectsLocationsAppsDeploymentsRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({ method: "GET", uri: "v1/{+name}", baseUrl: "https://ces.googleapis.com/" }),
-        ),
-      ).annotate({
-        identifier: "GetProjectsLocationsAppsExamplesRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({ method: "GET", uri: "v1/{+name}", baseUrl: "https://ces.googleapis.com/" }),
-        ),
-      ).annotate({
-        identifier: "GetProjectsLocationsAppsGuardrailsRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({ method: "GET", uri: "v1/{+name}", baseUrl: "https://ces.googleapis.com/" }),
-        ),
-      ).annotate({
-        identifier: "GetProjectsLocationsAppsToolsRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({ method: "GET", uri: "v1/{+name}", baseUrl: "https://ces.googleapis.com/" }),
-        ),
-      ).annotate({
-        identifier: "GetProjectsLocationsAppsToolsetsRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({ method: "GET", uri: "v1/{+name}", baseUrl: "https://ces.googleapis.com/" }),
-        ),
-      ).annotate({
-        identifier: "GetProjectsLocationsAppsVersionsRequest",
-      });
-  }
-}
-function __c34(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({ method: "GET", uri: "v1/{+name}", baseUrl: "https://ces.googleapis.com/" }),
-        ),
-      ).annotate({
-        identifier: "GetProjectsLocationsOperationsRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          tool: S.optional(S.String),
-          toolsetTool: S.optional(__S(95, __c11, 7)),
-        }),
-      ).annotate({
-        identifier: "RetrieveToolSchemaRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(273, __c34, 1).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/{+parent}:retrieveToolSchema",
-            baseUrl: "https://ces.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetToolSchemaProjectsLocationsAppsRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          outputSchema: S.optional(__S(14, __c1, 6)),
-          toolsetTool: S.optional(__S(95, __c11, 7)),
-          inputSchema: S.optional(__S(14, __c1, 6)),
-          tool: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "RetrieveToolSchemaResponse",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          toolIds: S.optional(__S(0, __c0, 0)),
-          bypassPersistenceConfig: S.optional(S.Boolean),
-        }),
-      ).annotate({ identifier: "RetrieveToolsRequest" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          toolset: S.String.pipe(T.Label()),
-          body: S.optional(__S(276, __c34, 4).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/{+toolset}:retrieveTools",
-            baseUrl: "https://ces.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetToolsProjectsLocationsAppsToolsetsRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          tools: S.optional(__S(181, __c22, 5)),
-        }),
-      ).annotate({ identifier: "RetrieveToolsResponse" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          validateOnly: S.optional(S.Boolean),
-          conflictResolutionStrategy: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "ImportAppRequestImportOptions",
-      });
-  }
-}
-function __c35(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          ignoreAppLock: S.optional(S.Boolean),
-          gcsUri: S.optional(S.String),
-          jsonPatchContent: S.optional(S.String),
-          importOptions: S.optional(__S(279, __c34, 7)),
-          appId: S.optional(S.String),
-          jsonPatchGcsUri: S.optional(S.String),
-          displayName: S.optional(S.String),
-          appContent: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ImportAppRequest" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(280, __c35, 0).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/{+parent}/apps:importApp",
-            baseUrl: "https://ces.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "ImportAppProjectsLocationsAppsRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          pageToken: S.optional(S.String.pipe(T.Query())),
-          filter: S.optional(S.String.pipe(T.Query())),
-          name: S.String.pipe(T.Label()),
-          pageSize: S.optional(S.Number.pipe(T.Query())),
-          extraLocationTypes: S.optional(__S(0, __c0, 0).pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v1/{+name}/locations",
-            baseUrl: "https://ces.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListProjectsLocationsRequest",
-      });
-    case 3:
-      return S.Array(__S(254, __c31, 6));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          nextPageToken: S.optional(S.String),
-          locations: S.optional(__S(283, __c35, 3)),
-        }),
-      ).annotate({ identifier: "ListLocationsResponse" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          orderBy: S.optional(S.String.pipe(T.Query())),
-          pageToken: S.optional(S.String.pipe(T.Query())),
-          filter: S.optional(S.String.pipe(T.Query())),
-          pageSize: S.optional(S.Number.pipe(T.Query())),
-          parent: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v1/{+parent}/apps",
-            baseUrl: "https://ces.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListProjectsLocationsAppsRequest",
-      });
-    case 6:
-      return S.Array(__S(57, __c7, 1));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          unreachable: S.optional(__S(0, __c0, 0)),
-          nextPageToken: S.optional(S.String),
-          apps: S.optional(__S(286, __c35, 6)),
-        }),
-      ).annotate({ identifier: "ListAppsResponse" });
-  }
-}
-function __c36(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          filter: S.optional(S.String.pipe(T.Query())),
-          parent: S.String.pipe(T.Label()),
-          orderBy: S.optional(S.String.pipe(T.Query())),
-          pageToken: S.optional(S.String.pipe(T.Query())),
-          pageSize: S.optional(S.Number.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v1/{+parent}/agents",
-            baseUrl: "https://ces.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListProjectsLocationsAppsAgentsRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          nextPageToken: S.optional(S.String),
-          agents: S.optional(__S(179, __c22, 3)),
-        }),
-      ).annotate({ identifier: "ListAgentsResponse" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          pageSize: S.optional(S.Number.pipe(T.Query())),
-          pageToken: S.optional(S.String.pipe(T.Query())),
-          orderBy: S.optional(S.String.pipe(T.Query())),
-          filter: S.optional(S.String.pipe(T.Query())),
-          parent: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v1/{+parent}/changelogs",
-            baseUrl: "https://ces.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListProjectsLocationsAppsChangelogsRequest",
-      });
-    case 3:
-      return S.Array(__S(258, __c32, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          nextPageToken: S.optional(S.String),
-          changelogs: S.optional(__S(291, __c36, 3)),
-        }),
-      ).annotate({ identifier: "ListChangelogsResponse" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          sources: S.optional(__S(260, __c32, 4).pipe(T.Query())),
-          pageSize: S.optional(S.Number.pipe(T.Query())),
-          filter: S.optional(S.String.pipe(T.Query())),
-          parent: S.String.pipe(T.Label()),
-          source: S.optional(S.String.pipe(T.Query())),
-          pageToken: S.optional(S.String.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v1/{+parent}/conversations",
-            baseUrl: "https://ces.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListProjectsLocationsAppsConversationsRequest",
-      });
-    case 6:
-      return S.Array(__S(265, __c33, 1));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          conversations: S.optional(__S(294, __c36, 6)),
-          nextPageToken: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "ListConversationsResponse",
-      });
-  }
-}
-function __c37(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          pageToken: S.optional(S.String.pipe(T.Query())),
-          pageSize: S.optional(S.Number.pipe(T.Query())),
-          parent: S.String.pipe(T.Label()),
-          orderBy: S.optional(S.String.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v1/{+parent}/deployments",
-            baseUrl: "https://ces.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListProjectsLocationsAppsDeploymentsRequest",
-      });
-    case 1:
-      return S.Array(__S(91, __c11, 3));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          deployments: S.optional(__S(297, __c37, 1)),
-          nextPageToken: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ListDeploymentsResponse" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          orderBy: S.optional(S.String.pipe(T.Query())),
-          parent: S.String.pipe(T.Label()),
-          pageSize: S.optional(S.Number.pipe(T.Query())),
-          filter: S.optional(S.String.pipe(T.Query())),
-          pageToken: S.optional(S.String.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v1/{+parent}/examples",
-            baseUrl: "https://ces.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListProjectsLocationsAppsExamplesRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          nextPageToken: S.optional(S.String),
-          examples: S.optional(__S(178, __c22, 2)),
-        }),
-      ).annotate({ identifier: "ListExamplesResponse" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          pageSize: S.optional(S.Number.pipe(T.Query())),
-          orderBy: S.optional(S.String.pipe(T.Query())),
-          parent: S.String.pipe(T.Label()),
-          pageToken: S.optional(S.String.pipe(T.Query())),
-          filter: S.optional(S.String.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v1/{+parent}/guardrails",
-            baseUrl: "https://ces.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListProjectsLocationsAppsGuardrailsRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          nextPageToken: S.optional(S.String),
-          guardrails: S.optional(__S(182, __c22, 6)),
-        }),
-      ).annotate({ identifier: "ListGuardrailsResponse" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          orderBy: S.optional(S.String.pipe(T.Query())),
-          pageSize: S.optional(S.Number.pipe(T.Query())),
-          parent: S.String.pipe(T.Label()),
-          filter: S.optional(S.String.pipe(T.Query())),
-          pageToken: S.optional(S.String.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v1/{+parent}/tools",
-            baseUrl: "https://ces.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListProjectsLocationsAppsToolsRequest",
-      });
-  }
-}
-function __c38(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          tools: S.optional(__S(181, __c22, 5)),
-          nextPageToken: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ListToolsResponse" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          pageToken: S.optional(S.String.pipe(T.Query())),
-          parent: S.String.pipe(T.Label()),
-          orderBy: S.optional(S.String.pipe(T.Query())),
-          filter: S.optional(S.String.pipe(T.Query())),
-          pageSize: S.optional(S.Number.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v1/{+parent}/toolsets",
-            baseUrl: "https://ces.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListProjectsLocationsAppsToolsetsRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          nextPageToken: S.optional(S.String),
-          toolsets: S.optional(__S(180, __c22, 4)),
-        }),
-      ).annotate({ identifier: "ListToolsetsResponse" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          pageToken: S.optional(S.String.pipe(T.Query())),
-          parent: S.String.pipe(T.Label()),
-          pageSize: S.optional(S.Number.pipe(T.Query())),
-          orderBy: S.optional(S.String.pipe(T.Query())),
-          filter: S.optional(S.String.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v1/{+parent}/versions",
-            baseUrl: "https://ces.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListProjectsLocationsAppsVersionsRequest",
-      });
-    case 4:
-      return S.Array(__S(184, __c23, 0));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          appVersions: S.optional(__S(308, __c38, 4)),
-          nextPageToken: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ListAppVersionsResponse" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          pageSize: S.optional(S.Number.pipe(T.Query())),
-          pageToken: S.optional(S.String.pipe(T.Query())),
-          name: S.String.pipe(T.Label()),
-          returnPartialSuccess: S.optional(S.Boolean.pipe(T.Query())),
-          filter: S.optional(S.String.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v1/{+name}/operations",
-            baseUrl: "https://ces.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListProjectsLocationsOperationsRequest",
-      });
-    case 7:
-      return S.Array(__S(6, __c0, 6));
-  }
-}
-function __c39(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          nextPageToken: S.optional(S.String),
-          unreachable: S.optional(__S(0, __c0, 0)),
-          operations: S.optional(__S(311, __c38, 7)),
-        }),
-      ).annotate({ identifier: "ListOperationsResponse" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-          updateMask: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(57, __c7, 1).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({ method: "PATCH", uri: "v1/{+name}", baseUrl: "https://ces.googleapis.com/" }),
-        ),
-      ).annotate({
-        identifier: "PatchProjectsLocationsAppsRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          updateMask: S.optional(S.String.pipe(T.Query())),
-          name: S.String.pipe(T.Label()),
-          body: S.optional(__S(82, __c10, 2).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({ method: "PATCH", uri: "v1/{+name}", baseUrl: "https://ces.googleapis.com/" }),
-        ),
-      ).annotate({
-        identifier: "PatchProjectsLocationsAppsAgentsRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          updateMask: S.optional(S.String.pipe(T.Query())),
-          name: S.String.pipe(T.Label()),
-          body: S.optional(__S(91, __c11, 3).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({ method: "PATCH", uri: "v1/{+name}", baseUrl: "https://ces.googleapis.com/" }),
-        ),
-      ).annotate({
-        identifier: "PatchProjectsLocationsAppsDeploymentsRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-          updateMask: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(103, __c12, 7).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({ method: "PATCH", uri: "v1/{+name}", baseUrl: "https://ces.googleapis.com/" }),
-        ),
-      ).annotate({
-        identifier: "PatchProjectsLocationsAppsExamplesRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-          updateMask: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(120, __c15, 0).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({ method: "PATCH", uri: "v1/{+name}", baseUrl: "https://ces.googleapis.com/" }),
-        ),
-      ).annotate({
-        identifier: "PatchProjectsLocationsAppsGuardrailsRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          updateMask: S.optional(S.String.pipe(T.Query())),
-          name: S.String.pipe(T.Label()),
-          body: S.optional(__S(167, __c20, 7).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({ method: "PATCH", uri: "v1/{+name}", baseUrl: "https://ces.googleapis.com/" }),
-        ),
-      ).annotate({
-        identifier: "PatchProjectsLocationsAppsToolsRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-          updateMask: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(176, __c22, 0).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({ method: "PATCH", uri: "v1/{+name}", baseUrl: "https://ces.googleapis.com/" }),
-        ),
-      ).annotate({
-        identifier: "PatchProjectsLocationsAppsToolsetsRequest",
-      });
-  }
-}
-function __c40(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          updateMask: S.optional(S.String.pipe(T.Query())),
-          name: S.String.pipe(T.Label()),
-          body: S.optional(__S(184, __c23, 0).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({ method: "PATCH", uri: "v1/{+name}", baseUrl: "https://ces.googleapis.com/" }),
-        ),
-      ).annotate({
-        identifier: "PatchProjectsLocationsAppsVersionsRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-          body: S.optional(__S(10, __c1, 2).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/{+name}:restore",
-            baseUrl: "https://ces.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "RestoreProjectsLocationsAppsVersionsRequest",
-      });
-    case 2:
-      return S.Array(__S(98, __c12, 2));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          toolResponses: S.optional(__S(322, __c40, 2)),
-        }),
-      ).annotate({ identifier: "ToolResponses" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          variables: S.optional(__S(3, __c0, 3)),
-          event: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Event" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          dtmf: S.optional(S.String),
-          variables: S.optional(__S(3, __c0, 3)),
-          toolResponses: S.optional(__S(323, __c40, 3)),
-          audio: S.optional(S.String),
-          event: S.optional(__S(324, __c40, 4)),
-          image: S.optional(__S(94, __c11, 6)),
-          text: S.optional(S.String),
-          willContinue: S.optional(S.Boolean),
-          blob: S.optional(__S(97, __c12, 1)),
-        }),
-      ).annotate({ identifier: "SessionInput" });
-    case 6:
-      return S.Array(__S(325, __c40, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          sampleRateHertz: S.optional(S.Number),
-          audioEncoding: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "OutputAudioConfig" });
-  }
-}
-function __c41(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          sampleRateHertz: S.optional(S.Number),
-          noiseSuppressionLevel: S.optional(S.String),
-          audioEncoding: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "InputAudioConfig" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          endUserMetadata: S.optional(__S(3, __c0, 3)),
-          payload: S.optional(__S(3, __c0, 3)),
-          webhookHeaders: S.optional(__S(17, __c2, 1)),
-        }),
-      ).annotate({
-        identifier: "SessionConfigRemoteDialogflowQueryParameters",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          entryAgent: S.optional(S.String),
-          useToolFakes: S.optional(S.Boolean),
-          outputAudioConfig: S.optional(__S(327, __c40, 7)),
-          inputAudioConfig: S.optional(__S(328, __c41, 0)),
-          excludeDiagnosticInfo: S.optional(S.Boolean),
-          remoteDialogflowQueryParameters: S.optional(__S(329, __c41, 1)),
-          timeZone: S.optional(S.String),
-          historicalContexts: S.optional(__S(102, __c12, 6)),
-          enableTextStreaming: S.optional(S.Boolean),
-          deployment: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "SessionConfig" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          inputs: S.optional(__S(326, __c40, 6)),
-          config: S.optional(__S(330, __c41, 2)),
-        }),
-      ).annotate({ identifier: "RunSessionRequest" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          session: S.String.pipe(T.Label()),
-          body: S.optional(__S(331, __c41, 3).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/{+session}:runSession",
-            baseUrl: "https://ces.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "RunSessionProjectsLocationsAppsSessionsRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          metadata: S.optional(__S(3, __c0, 3)),
-        }),
-      ).annotate({ identifier: "EndSession" });
-    case 6:
-      return S.Array(__S(96, __c12, 0));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          toolCalls: S.optional(__S(334, __c41, 6)),
-        }),
-      ).annotate({ identifier: "ToolCalls" });
-  }
-}
-function __c42(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          messages: S.optional(__S(102, __c12, 6)),
-          rootSpan: S.optional(__S(262, __c32, 6)),
-        }),
-      ).annotate({
-        identifier: "SessionOutputDiagnosticInfo",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          progress: S.optional(S.String),
-          payload: S.optional(__S(3, __c0, 3)),
-          turnCompleted: S.optional(S.Boolean),
-          image: S.optional(__S(94, __c11, 6)),
-          endSession: S.optional(__S(333, __c41, 5)),
-          googleSearchSuggestions: S.optional(__S(203, __c25, 3)),
-          toolCalls: S.optional(__S(335, __c41, 7)),
-          citations: S.optional(__S(209, __c26, 1)),
-          audio: S.optional(S.String),
-          turnIndex: S.optional(S.Number),
-          text: S.optional(S.String),
-          diagnosticInfo: S.optional(__S(336, __c42, 0)),
-        }),
-      ).annotate({ identifier: "SessionOutput" });
-    case 2:
-      return S.Array(__S(337, __c42, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          outputs: S.optional(__S(338, __c42, 2)),
-        }),
-      ).annotate({ identifier: "RunSessionResponse" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          mediaType: S.optional(S.String),
-          text: S.optional(S.String),
-          filename: S.optional(S.String),
-          url: S.optional(S.String),
-          data: S.optional(S.Unknown),
-          raw: S.optional(S.String),
-          metadata: S.optional(__S(3, __c0, 3)),
-        }),
-      ).annotate({ identifier: "LfA2aV1Part" });
-    case 5:
-      return S.Array(__S(340, __c42, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          metadata: S.optional(__S(3, __c0, 3)),
-          role: S.optional(S.String),
-          contextId: S.optional(S.String),
-          referenceTaskIds: S.optional(__S(0, __c0, 0)),
-          parts: S.optional(__S(341, __c42, 5)),
-          extensions: S.optional(__S(0, __c0, 0)),
-          messageId: S.optional(S.String),
-          taskId: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "LfA2aV1Message" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          scheme: S.optional(S.String),
-          credentials: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "LfA2aV1AuthenticationInfo",
-      });
-  }
-}
-function __c43(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          tenant: S.optional(S.String),
-          token: S.optional(S.String),
-          authentication: S.optional(__S(343, __c42, 7)),
-          id: S.optional(S.String),
-          url: S.optional(S.String),
-          taskId: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "LfA2aV1TaskPushNotificationConfig",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          returnImmediately: S.optional(S.Boolean),
-          acceptedOutputModes: S.optional(__S(0, __c0, 0)),
-          taskPushNotificationConfig: S.optional(__S(344, __c43, 0)),
-          historyLength: S.optional(S.Number),
-        }),
-      ).annotate({
-        identifier: "LfA2aV1SendMessageConfiguration",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          message: S.optional(__S(342, __c42, 6)),
-          configuration: S.optional(__S(345, __c43, 1)),
-          metadata: S.optional(__S(3, __c0, 3)),
-        }),
-      ).annotate({
-        identifier: "LfA2aV1SendMessageRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          tenant: S.String.pipe(T.Label()),
-          body: S.optional(__S(346, __c43, 2).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/{+tenant}/message:send",
-            baseUrl: "https://ces.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "SendProjectsLocationsAppsDeploymentsMessageRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.optional(S.String),
-          artifactId: S.optional(S.String),
-          extensions: S.optional(__S(0, __c0, 0)),
-          description: S.optional(S.String),
-          metadata: S.optional(__S(3, __c0, 3)),
-          parts: S.optional(__S(341, __c42, 5)),
-        }),
-      ).annotate({ identifier: "LfA2aV1Artifact" });
-    case 5:
-      return S.Array(__S(348, __c43, 4));
-    case 6:
-      return S.Array(__S(342, __c42, 6));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          message: S.optional(__S(342, __c42, 6)),
-          timestamp: S.optional(S.String),
-          state: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "LfA2aV1TaskStatus" });
-  }
-}
-function __c44(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          artifacts: S.optional(__S(349, __c43, 5)),
-          history: S.optional(__S(350, __c43, 6)),
-          contextId: S.optional(S.String),
-          status: S.optional(__S(351, __c43, 7)),
-          metadata: S.optional(__S(3, __c0, 3)),
-          id: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "LfA2aV1Task" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          task: S.optional(__S(352, __c44, 0)),
-          message: S.optional(__S(342, __c42, 6)),
-        }),
-      ).annotate({
-        identifier: "LfA2aV1SendMessageResponse",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          tenant: S.String.pipe(T.Label()),
-          body: S.optional(__S(346, __c43, 2).pipe(T.HttpBody())),
+          body: S.optional(__S(2982, __c93, 6).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -8458,11 +8392,15 @@ function __c44(j: number): any {
       ).annotate({
         identifier: "SendProjectsLocationsAppsMessageRequest",
       });
-    case 3:
+  }
+}
+function __c102(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           tenant: S.String.pipe(T.Label()),
-          body: S.optional(__S(346, __c43, 2).pipe(T.HttpBody())),
+          body: S.optional(__S(2982, __c93, 6).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -8473,19 +8411,23 @@ function __c44(j: number): any {
       ).annotate({
         identifier: "SendProjectsLocationsAppsVersionsMessageRequest",
       });
-    case 4:
+  }
+}
+function __c103(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           operationName: S.optional(S.String),
-          metadata: S.optional(__S(3, __c0, 3)),
+          metadata: S.optional(__S(1696, __c53, 0)),
           targetResourceName: S.optional(S.String),
           status: S.optional(S.String),
-          error: S.optional(__S(5, __c0, 5)),
+          error: S.optional(__S(1792, __c56, 0)),
           operationType: S.optional(S.String),
           deduplicationToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "OperationCompletedEvent" });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           confirmationId: S.optional(S.String),
@@ -8495,26 +8437,26 @@ function __c44(j: number): any {
       ).annotate({
         identifier: "AssistantConfirmationResponse",
       });
-    case 6:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           attachOnly: S.optional(S.Boolean),
           contextToken: S.optional(S.String),
-          clientCapabilities: S.optional(__S(260, __c32, 4)),
-          operationCompletedEvent: S.optional(__S(356, __c44, 4)),
-          attachedGcsUris: S.optional(__S(0, __c0, 0)),
-          confirmationResponse: S.optional(__S(357, __c44, 5)),
+          clientCapabilities: S.optional(__S(1536, __c48, 0)),
+          operationCompletedEvent: S.optional(__S(3296, __c103, 0)),
+          attachedGcsUris: S.optional(__S(1824, __c57, 0)),
+          confirmationResponse: S.optional(__S(3297, __c103, 1)),
           resumeFromSequenceNumber: S.optional(S.String),
           message: S.optional(S.String),
         }),
       ).annotate({
         identifier: "StreamChatAiAssistantRequest",
       });
-    case 7:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(358, __c44, 6).pipe(T.HttpBody())),
+          body: S.optional(__S(3298, __c103, 2).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -8525,11 +8467,7 @@ function __c44(j: number): any {
       ).annotate({
         identifier: "StreamChatAiAssistantProjectsLocationsAppsAssistantSessionsRequest",
       });
-  }
-}
-function __c45(j: number): any {
-  switch (j) {
-    case 0:
+    case 4:
       return S.suspend(() =>
         S.Struct({
           contractRelated: S.optional(S.Boolean),
@@ -8538,7 +8476,7 @@ function __c45(j: number): any {
           contractFinalized: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "TurnMetadata" });
-    case 1:
+    case 5:
       return S.suspend(() =>
         S.Struct({
           title: S.optional(S.String),
@@ -8548,32 +8486,32 @@ function __c45(j: number): any {
       ).annotate({
         identifier: "OptionQuestionsChunkOption",
       });
-    case 2:
-      return S.Array(__S(361, __c45, 1));
-    case 3:
+    case 6:
+      return S.Array(__S(3301, __c103, 5));
+    case 7:
       return S.suspend(() =>
         S.Struct({
           question: S.optional(S.String),
-          options: S.optional(__S(362, __c45, 2)),
+          options: S.optional(__S(3302, __c103, 6)),
         }),
       ).annotate({
         identifier: "OptionQuestionsChunkQuestion",
       });
-    case 4:
-      return S.Array(__S(363, __c45, 3));
-    case 5:
+    case 8:
+      return S.Array(__S(3303, __c103, 7));
+    case 9:
       return S.suspend(() =>
         S.Struct({
-          questions: S.optional(__S(364, __c45, 4)),
+          questions: S.optional(__S(3304, __c103, 8)),
         }),
       ).annotate({ identifier: "OptionQuestionsChunk" });
-    case 6:
+    case 10:
       return S.suspend(() =>
         S.Struct({
           userIntent: S.optional(S.String),
         }),
       ).annotate({ identifier: "SessionCheckpoint" });
-    case 7:
+    case 11:
       return S.suspend(() =>
         S.Struct({
           reason: S.optional(S.String),
@@ -8581,22 +8519,18 @@ function __c45(j: number): any {
           turnId: S.optional(S.String),
         }),
       ).annotate({ identifier: "TurnCompletedEvent" });
-  }
-}
-function __c46(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(/*@__PURE__*/ S.suspend(() => __S(374, __c46, 6)));
-    case 1:
+    case 12:
+      return S.Array(/*@__PURE__*/ S.suspend(() => __S(3314, __c103, 18)));
+    case 13:
       return S.suspend(() =>
         S.Struct({
-          events: S.optional(__S(368, __c46, 0)),
+          events: S.optional(__S(3308, __c103, 12)),
           orphanDeadlineTime: S.optional(S.String),
           turnId: S.optional(S.String),
           resolvedSequenceNumber: S.optional(S.String),
         }),
       ).annotate({ identifier: "TurnResumeSnapshot" });
-    case 2:
+    case 14:
       return S.suspend(() =>
         S.Struct({
           gcsUri: S.optional(S.String),
@@ -8607,21 +8541,21 @@ function __c46(j: number): any {
           displayName: S.optional(S.String),
         }),
       ).annotate({ identifier: "ArtifactChunk" });
-    case 3:
+    case 15:
       return S.suspend(() =>
         S.Struct({
           jsonPayload: S.optional(S.String),
           mimeType: S.optional(S.String),
         }),
       ).annotate({ identifier: "UiEvent" });
-    case 4:
+    case 16:
       return S.suspend(() =>
         S.Struct({
           reason: S.optional(S.String),
           turnId: S.optional(S.String),
         }),
       ).annotate({ identifier: "TurnHandoffEvent" });
-    case 5:
+    case 17:
       return S.suspend(() =>
         S.Struct({
           expireTime: S.optional(S.String),
@@ -8631,41 +8565,45 @@ function __c46(j: number): any {
           agentName: S.optional(S.String),
           positiveLabel: S.optional(S.String),
           context: S.optional(S.String),
-          questions: S.optional(__S(364, __c45, 4)),
+          questions: S.optional(__S(3304, __c103, 8)),
         }),
       ).annotate({
         identifier: "AssistantConfirmationRequest",
       });
-    case 6:
+    case 18:
       return S.suspend(() =>
         S.Struct({
-          status: S.optional(__S(5, __c0, 5)),
+          status: S.optional(__S(1792, __c56, 0)),
           turnInProgress: S.optional(S.Boolean),
           sequenceNumber: S.optional(S.String),
-          toolResponse: S.optional(__S(98, __c12, 2)),
-          turnMetadata: S.optional(__S(360, __c45, 0)),
+          toolResponse: S.optional(__S(65, __c2, 1)),
+          turnMetadata: S.optional(__S(3300, __c103, 4)),
           eventId: S.optional(S.String),
           textChunk: S.optional(S.String),
-          optionQuestionsChunk: S.optional(__S(365, __c45, 5)),
-          toolCall: S.optional(__S(96, __c12, 0)),
+          optionQuestionsChunk: S.optional(__S(3305, __c103, 9)),
+          toolCall: S.optional(__S(64, __c2, 0)),
           thoughtChunk: S.optional(S.String),
-          sessionCheckpoint: S.optional(__S(366, __c45, 6)),
-          turnCompleted: S.optional(__S(367, __c45, 7)),
-          resumeSnapshot: S.optional(__S(369, __c46, 1)),
+          sessionCheckpoint: S.optional(__S(3306, __c103, 10)),
+          turnCompleted: S.optional(__S(3307, __c103, 11)),
+          resumeSnapshot: S.optional(__S(3309, __c103, 13)),
           eventTime: S.optional(S.String),
-          artifactChunk: S.optional(__S(370, __c46, 2)),
-          uiEvent: S.optional(__S(371, __c46, 3)),
-          handoff: S.optional(__S(372, __c46, 4)),
-          confirmationRequest: S.optional(__S(373, __c46, 5)),
+          artifactChunk: S.optional(__S(3310, __c103, 14)),
+          uiEvent: S.optional(__S(3311, __c103, 15)),
+          handoff: S.optional(__S(3312, __c103, 16)),
+          confirmationRequest: S.optional(__S(3313, __c103, 17)),
         }),
       ).annotate({
         identifier: "StreamChatAiAssistantResponse",
       });
-    case 7:
+  }
+}
+function __c104(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           tenant: S.String.pipe(T.Label()),
-          body: S.optional(__S(346, __c43, 2).pipe(T.HttpBody())),
+          body: S.optional(__S(2982, __c93, 6).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -8678,15 +8616,15 @@ function __c46(j: number): any {
       });
   }
 }
-function __c47(j: number): any {
+function __c105(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           taskId: S.optional(S.String),
-          status: S.optional(__S(351, __c43, 7)),
+          status: S.optional(__S(2986, __c93, 10)),
           contextId: S.optional(S.String),
-          metadata: S.optional(__S(3, __c0, 3)),
+          metadata: S.optional(__S(1696, __c53, 0)),
         }),
       ).annotate({
         identifier: "LfA2aV1TaskStatusUpdateEvent",
@@ -8694,10 +8632,10 @@ function __c47(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          artifact: S.optional(__S(348, __c43, 4)),
+          artifact: S.optional(__S(2983, __c93, 7)),
           taskId: S.optional(S.String),
           append: S.optional(S.Boolean),
-          metadata: S.optional(__S(3, __c0, 3)),
+          metadata: S.optional(__S(1696, __c53, 0)),
           contextId: S.optional(S.String),
           lastChunk: S.optional(S.Boolean),
         }),
@@ -8707,17 +8645,21 @@ function __c47(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          statusUpdate: S.optional(__S(376, __c47, 0)),
-          artifactUpdate: S.optional(__S(377, __c47, 1)),
-          task: S.optional(__S(352, __c44, 0)),
-          message: S.optional(__S(342, __c42, 6)),
+          statusUpdate: S.optional(__S(3360, __c105, 0)),
+          artifactUpdate: S.optional(__S(3361, __c105, 1)),
+          task: S.optional(__S(2987, __c93, 11)),
+          message: S.optional(__S(2978, __c93, 2)),
         }),
       ).annotate({ identifier: "LfA2aV1StreamResponse" });
-    case 3:
+  }
+}
+function __c106(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           tenant: S.String.pipe(T.Label()),
-          body: S.optional(__S(346, __c43, 2).pipe(T.HttpBody())),
+          body: S.optional(__S(2982, __c93, 6).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -8728,11 +8670,15 @@ function __c47(j: number): any {
       ).annotate({
         identifier: "StreamProjectsLocationsAppsMessageRequest",
       });
-    case 4:
+  }
+}
+function __c107(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           tenant: S.String.pipe(T.Label()),
-          body: S.optional(__S(346, __c43, 2).pipe(T.HttpBody())),
+          body: S.optional(__S(2982, __c93, 6).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -8743,11 +8689,15 @@ function __c47(j: number): any {
       ).annotate({
         identifier: "StreamProjectsLocationsAppsVersionsMessageRequest",
       });
-    case 5:
+  }
+}
+function __c108(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           session: S.String.pipe(T.Label()),
-          body: S.optional(__S(331, __c41, 3).pipe(T.HttpBody())),
+          body: S.optional(__S(2889, __c90, 9).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -8760,7 +8710,332 @@ function __c47(j: number): any {
       });
   }
 }
-
+function __c109(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          parent: S.String.pipe(T.Label()),
+          agentId: S.optional(S.String.pipe(T.Query())),
+          body: S.optional(__S(3627, __c113, 11).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/{+parent}/agents",
+            baseUrl: "https://ces.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateProjectsLocationsAppsAgentsRequest",
+      });
+  }
+}
+function __c110(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          pythonCode: S.optional(S.String),
+          disabled: S.optional(S.Boolean),
+          proactiveExecutionEnabled: S.optional(S.Boolean),
+          description: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Callback" });
+  }
+}
+function __c111(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          keyName: S.optional(S.String),
+          apiKeySecretVersion: S.optional(S.String),
+          requestLocation: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ApiKeyConfig" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          scopes: S.optional(__S(1824, __c57, 0)),
+          serviceAccount: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ServiceAccountAuthConfig" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          clientSecretVersion: S.optional(S.String),
+          clientId: S.optional(S.String),
+          oauthGrantType: S.optional(S.String),
+          scopes: S.optional(__S(1824, __c57, 0)),
+          tokenEndpoint: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "OAuthConfig" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          token: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "BearerTokenConfig" });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          apiKeyConfig: S.optional(__S(3552, __c111, 0)),
+          serviceAccountAuthConfig: S.optional(__S(3553, __c111, 1)),
+          oauthConfig: S.optional(__S(3554, __c111, 2)),
+          serviceAgentIdTokenAuthConfig: S.optional(__S(2560, __c80, 0)),
+          bearerTokenConfig: S.optional(__S(3555, __c111, 3)),
+        }),
+      ).annotate({ identifier: "ApiAuthentication" });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          pythonCode: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "PythonCodeCondition" });
+  }
+}
+function __c112(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          url: S.optional(S.String),
+          protocolBinding: S.optional(S.String),
+          tenant: S.optional(S.String),
+          protocolVersion: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "AgentInterface" });
+    case 1:
+      return S.Array(__S(3584, __c112, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          description: S.optional(S.String),
+          tags: S.optional(__S(1824, __c57, 0)),
+          examples: S.optional(__S(1824, __c57, 0)),
+          name: S.optional(S.String),
+          outputModes: S.optional(__S(1824, __c57, 0)),
+          id: S.optional(S.String),
+          inputModes: S.optional(__S(1824, __c57, 0)),
+        }),
+      ).annotate({ identifier: "AgentSkill" });
+    case 3:
+      return S.Array(__S(3586, __c112, 2));
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          version: S.optional(S.String),
+          supportedInterfaces: S.optional(__S(3585, __c112, 1)),
+          skills: S.optional(__S(3587, __c112, 3)),
+          description: S.optional(S.String),
+          name: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "AgentCard" });
+  }
+}
+function __c113(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(3520, __c110, 0));
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          agentRegistry: S.optional(S.String),
+          inputVariableMapping: S.optional(__S(3136, __c98, 0)),
+          outputVariableMapping: S.optional(__S(3136, __c98, 0)),
+          agentCard: S.optional(__S(3588, __c112, 4)),
+          contextId: S.optional(S.String),
+          apiAuthentication: S.optional(__S(3556, __c111, 4)),
+          streamingEnabled: S.optional(S.Boolean),
+        }),
+      ).annotate({ identifier: "RemoteA2aConfig" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          a2aConfig: S.optional(__S(3617, __c113, 1)),
+        }),
+      ).annotate({ identifier: "AgentRemoteA2aAgent" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          expression: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ExpressionCondition" });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          expressionCondition: S.optional(__S(3619, __c113, 3)),
+        }),
+      ).annotate({
+        identifier: "TransferRuleDisablePlannerTransfer",
+      });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          expressionCondition: S.optional(__S(3619, __c113, 3)),
+          pythonCodeCondition: S.optional(__S(3557, __c111, 5)),
+        }),
+      ).annotate({
+        identifier: "TransferRuleDeterministicTransfer",
+      });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          direction: S.optional(S.String),
+          disablePlannerTransfer: S.optional(__S(3620, __c113, 4)),
+          deterministicTransfer: S.optional(__S(3621, __c113, 5)),
+          childAgent: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "TransferRule" });
+    case 7:
+      return S.Array(__S(3622, __c113, 6));
+    case 8:
+      return S.suspend(() =>
+        S.Struct({
+          flowId: S.optional(S.String),
+          environmentId: S.optional(S.String),
+          inputVariableMapping: S.optional(__S(3136, __c98, 0)),
+          languageCodeVariable: S.optional(S.String),
+          outputVariableMapping: S.optional(__S(3136, __c98, 0)),
+          respectResponseInterruptionSettings: S.optional(S.Boolean),
+          agent: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "AgentRemoteDialogflowAgent",
+      });
+    case 9:
+      return S.suspend(() =>
+        S.Struct({
+          toolset: S.optional(S.String),
+          toolIds: S.optional(__S(1824, __c57, 0)),
+        }),
+      ).annotate({ identifier: "AgentAgentToolset" });
+    case 10:
+      return S.Array(__S(3625, __c113, 9));
+    case 11:
+      return S.suspend(() =>
+        S.Struct({
+          llmAgent: S.optional(__S(2560, __c80, 0)),
+          beforeToolCallbacks: S.optional(__S(3616, __c113, 0)),
+          createTime: S.optional(S.String),
+          generatedSummary: S.optional(S.String),
+          remoteA2aAgent: S.optional(__S(3618, __c113, 2)),
+          afterToolCallbacks: S.optional(__S(3616, __c113, 0)),
+          validationErrors: S.optional(__S(1824, __c57, 0)),
+          afterModelCallbacks: S.optional(__S(3616, __c113, 0)),
+          description: S.optional(S.String),
+          childAgents: S.optional(__S(1824, __c57, 0)),
+          modelSettings: S.optional(__S(3168, __c99, 0)),
+          transferRules: S.optional(__S(3623, __c113, 7)),
+          updateTime: S.optional(S.String),
+          tools: S.optional(__S(1824, __c57, 0)),
+          afterAgentCallbacks: S.optional(__S(3616, __c113, 0)),
+          displayName: S.optional(S.String),
+          name: S.optional(S.String),
+          instruction: S.optional(S.String),
+          remoteDialogflowAgent: S.optional(__S(3624, __c113, 8)),
+          etag: S.optional(S.String),
+          beforeAgentCallbacks: S.optional(__S(3616, __c113, 0)),
+          guardrails: S.optional(__S(1824, __c57, 0)),
+          beforeModelCallbacks: S.optional(__S(3616, __c113, 0)),
+          toolsets: S.optional(__S(3626, __c113, 10)),
+        }),
+      ).annotate({ identifier: "Agent" });
+  }
+}
+function __c114(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          parent: S.String.pipe(T.Label()),
+          deploymentId: S.optional(S.String.pipe(T.Query())),
+          body: S.optional(__S(3687, __c115, 7).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/{+parent}/deployments",
+            baseUrl: "https://ces.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateProjectsLocationsAppsDeploymentsRequest",
+      });
+  }
+}
+function __c115(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          businessAccountId: S.optional(S.String),
+          authCode: S.optional(S.String),
+          pin: S.optional(S.String),
+          phoneNumber: S.optional(S.String),
+          conversationProfileId: S.optional(S.String),
+          wabaId: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "WhatsAppCredentials" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          authCode: S.optional(S.String),
+          conversationProfileId: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "InstagramCredentials" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          agentRegistryServiceName: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "AgentRegistryDeployment" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          appVersion: S.optional(S.String),
+          id: S.optional(S.String),
+          trafficPercentage: S.optional(S.Number),
+        }),
+      ).annotate({
+        identifier: "ExperimentConfigVersionReleaseTrafficAllocation",
+      });
+    case 4:
+      return S.Array(__S(3683, __c115, 3));
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          trafficAllocations: S.optional(__S(3684, __c115, 4)),
+          state: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "ExperimentConfigVersionRelease",
+      });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          versionRelease: S.optional(__S(3685, __c115, 5)),
+        }),
+      ).annotate({ identifier: "ExperimentConfig" });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          appVersion: S.optional(S.String),
+          whatsappCredentials: S.optional(__S(3680, __c115, 0)),
+          modelSettings: S.optional(__S(3168, __c99, 0)),
+          modality: S.optional(S.String),
+          instagramCredentials: S.optional(__S(3681, __c115, 1)),
+          agentRegistryDeployment: S.optional(__S(3682, __c115, 2)),
+          name: S.optional(S.String),
+          updateTime: S.optional(S.String),
+          channelProfile: S.optional(__S(3205, __c100, 5)),
+          etag: S.optional(S.String),
+          experimentConfig: S.optional(__S(3686, __c115, 6)),
+          createTime: S.optional(S.String),
+          displayName: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Deployment" });
+  }
+}
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

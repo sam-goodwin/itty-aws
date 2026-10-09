@@ -587,8 +587,8 @@ export const createSubdomain: API.OperationMethod<
   CreateSubdomainError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(0, __c0, 0) as any as S.Schema<CreateSubdomainRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<CreateSubdomainResponse>,
+  input: __S(64, __c8, 0) as any as S.Schema<CreateSubdomainRequest>,
+  output: __S(72, __c9, 0) as any as S.Schema<CreateSubdomainResponse>,
   errors: [Forbidden, SendingSubdomainAlreadyExists, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -602,8 +602,8 @@ export const createSuppression: API.OperationMethod<
   CreateSuppressionError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3, __c0, 3) as any as S.Schema<CreateSuppressionRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<CreateSuppressionResponse>,
+  input: __S(81, __c10, 1) as any as S.Schema<CreateSuppressionRequest>,
+  output: __S(83, __c10, 3) as any as S.Schema<CreateSuppressionResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -617,8 +617,8 @@ export const deleteSubdomain: API.OperationMethod<
   DeleteSubdomainError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(6, __c0, 6) as any as S.Schema<DeleteSubdomainRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<DeleteSubdomainResponse>,
+  input: __S(88, __c11, 0) as any as S.Schema<DeleteSubdomainRequest>,
+  output: __S(89, __c11, 1) as any as S.Schema<DeleteSubdomainResponse>,
   errors: [Forbidden, SendingSubdomainNotFound, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -632,8 +632,8 @@ export const deleteSuppression: API.OperationMethod<
   DeleteSuppressionError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(8, __c1, 0) as any as S.Schema<DeleteSuppressionRequest>,
-  output: __S(10, __c1, 2) as any as S.Schema<DeleteSuppressionResponse>,
+  input: __S(96, __c12, 0) as any as S.Schema<DeleteSuppressionRequest>,
+  output: __S(98, __c12, 2) as any as S.Schema<DeleteSuppressionResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -647,8 +647,8 @@ export const editSubdomain: API.OperationMethod<
   EditSubdomainError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(11, __c1, 3) as any as S.Schema<EditSubdomainRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<EditSubdomainResponse>,
+  input: __S(104, __c13, 0) as any as S.Schema<EditSubdomainRequest>,
+  output: __S(72, __c9, 0) as any as S.Schema<EditSubdomainResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -662,8 +662,8 @@ export const editSuppression: API.OperationMethod<
   EditSuppressionError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(12, __c1, 4) as any as S.Schema<EditSuppressionRequest>,
-  output: __S(14, __c1, 6) as any as S.Schema<EditSuppressionResponse>,
+  input: __S(112, __c14, 0) as any as S.Schema<EditSuppressionRequest>,
+  output: __S(114, __c14, 2) as any as S.Schema<EditSuppressionResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -677,8 +677,8 @@ export const getSubdomain: API.OperationMethod<
   GetSubdomainError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(15, __c1, 7) as any as S.Schema<GetSubdomainRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<GetSubdomainResponse>,
+  input: __S(120, __c15, 0) as any as S.Schema<GetSubdomainRequest>,
+  output: __S(72, __c9, 0) as any as S.Schema<GetSubdomainResponse>,
   errors: [Forbidden, SendingSubdomainNotFound, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -694,8 +694,8 @@ export const getSubdomainDns: API.PaginatedOperationMethod<
   SubdomainsDnsGetResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(16, __c2, 0) as any as S.Schema<GetSubdomainDnsRequest>,
-    output: __S(19, __c2, 3) as any as S.Schema<GetSubdomainDnsResponse>,
+    input: __S(0, __c0, 0) as any as S.Schema<GetSubdomainDnsRequest>,
+    output: __S(3, __c0, 3) as any as S.Schema<GetSubdomainDnsResponse>,
     errors: [CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
     retry: Retry.Retry,
@@ -712,8 +712,8 @@ export const getSuppression: API.OperationMethod<
   GetSuppressionError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(20, __c2, 4) as any as S.Schema<GetSuppressionRequest>,
-  output: __S(22, __c2, 6) as any as S.Schema<GetSuppressionResponse>,
+  input: __S(8, __c1, 0) as any as S.Schema<GetSuppressionRequest>,
+  output: __S(10, __c1, 2) as any as S.Schema<GetSuppressionResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -727,8 +727,8 @@ export const importSuppression: API.OperationMethod<
   ImportSuppressionError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(26, __c3, 2) as any as S.Schema<ImportSuppressionRequest>,
-  output: __S(30, __c3, 6) as any as S.Schema<ImportSuppressionResponse>,
+  input: __S(19, __c2, 3) as any as S.Schema<ImportSuppressionRequest>,
+  output: __S(23, __c2, 7) as any as S.Schema<ImportSuppressionResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -744,8 +744,8 @@ export const listSubdomains: API.PaginatedOperationMethod<
   SubdomainsListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(31, __c3, 7) as any as S.Schema<ListSubdomainsRequest>,
-    output: __S(34, __c4, 2) as any as S.Schema<ListSubdomainsResponse>,
+    input: __S(24, __c3, 0) as any as S.Schema<ListSubdomainsRequest>,
+    output: __S(27, __c3, 3) as any as S.Schema<ListSubdomainsResponse>,
     errors: [Forbidden, CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
     retry: Retry.Retry,
@@ -762,8 +762,8 @@ export const listSuppressions: API.OperationMethod<
   ListSuppressionsError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(35, __c4, 3) as any as S.Schema<ListSuppressionsRequest>,
-  output: __S(39, __c4, 7) as any as S.Schema<ListSuppressionsResponse>,
+  input: __S(32, __c4, 0) as any as S.Schema<ListSuppressionsRequest>,
+  output: __S(36, __c4, 4) as any as S.Schema<ListSuppressionsResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -778,7 +778,7 @@ export const sendEmailSending: API.OperationMethod<
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(40, __c5, 0) as any as S.Schema<SendEmailSendingRequest>,
-  output: __S(42, __c5, 2) as any as S.Schema<SendEmailSendingResponse>,
+  output: __S(41, __c5, 1) as any as S.Schema<SendEmailSendingResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -792,8 +792,8 @@ export const sendRawEmailSending: API.OperationMethod<
   SendRawEmailSendingError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(43, __c5, 3) as any as S.Schema<SendRawEmailSendingRequest>,
-  output: __S(44, __c5, 4) as any as S.Schema<SendRawEmailSendingResponse>,
+  input: __S(56, __c7, 0) as any as S.Schema<SendRawEmailSendingRequest>,
+  output: __S(57, __c7, 1) as any as S.Schema<SendRawEmailSendingResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -801,204 +801,6 @@ export const sendRawEmailSending: API.OperationMethod<
 
 // Schema builders: each runs one schema initializer, on that schema's first use.
 function __c0(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          zoneId: S.String.pipe(T.Label("zone_id")),
-          name: S.String,
-        })
-          .pipe(
-            T.Http({ method: "POST", uri: "/zones/{zone_id}/email/sending/subdomains", code: 200 }),
-          )
-          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({ identifier: "CreateSubdomainRequest" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          enabled: S.Boolean,
-          name: S.String,
-          tag: S.String,
-          created: S.optional(S.NullOr(S.String)),
-          dkimSelector: S.optional(S.NullOr(S.String).pipe(T.Body("dkim_selector"))),
-          dropSuppressedRecipients: S.optional(
-            S.NullOr(S.Boolean).pipe(T.Body("drop_suppressed_recipients")),
-          ),
-          modified: S.optional(S.NullOr(S.String)),
-          previewEnabled: S.optional(S.NullOr(S.Boolean).pipe(T.Body("preview_enabled"))),
-          returnPathDomain: S.optional(S.NullOr(S.String).pipe(T.Body("return_path_domain"))),
-        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({ identifier: "CreateSubdomainResponse" });
-    case 2:
-      return S.Unknown.pipe(
-        /*@__PURE__*/ T.UnionCases([["type"], ["type", "value"]], {
-          key: "type",
-          values: ["account", "sending_domain"],
-        }),
-      );
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          accountId: S.String.pipe(T.Label("account_id")),
-          email: S.String,
-          expiresAt: S.optional(S.String.pipe(T.Body("expires_at"))),
-          note: S.optional(S.String),
-          scope: S.optional(__S(2, __c0, 2)),
-        })
-          .pipe(
-            T.Http({
-              method: "POST",
-              uri: "/accounts/{account_id}/email/sending/suppressions",
-              code: 200,
-            }),
-          )
-          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({ identifier: "CreateSuppressionRequest" });
-    case 4:
-      return S.Unknown.pipe(
-        /*@__PURE__*/ T.UnionCases([["type"], ["type", "value"]], {
-          key: "type",
-          values: ["account", "sending_domain"],
-        }),
-      );
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String,
-          scope: S.optional(S.NullOr(__S(4, __c0, 4))),
-        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({
-        identifier: "CreateSuppressionResponse",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          zoneId: S.String.pipe(T.Label("zone_id")),
-          subdomainId: S.String.pipe(T.Label("subdomain_id")),
-        })
-          .pipe(
-            T.Http({
-              method: "DELETE",
-              uri: "/zones/{zone_id}/email/sending/subdomains/{subdomain_id}",
-              code: 200,
-            }),
-          )
-          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({ identifier: "DeleteSubdomainRequest" });
-    case 7:
-      return S.suspend(() => S.Struct({}).pipe(T.KeyDictionary(KEY_DICTIONARY))).annotate({
-        identifier: "DeleteSubdomainResponse",
-      });
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          accountId: S.String.pipe(T.Label("account_id")),
-          suppressionId: S.String.pipe(T.Label("suppression_id")),
-        })
-          .pipe(
-            T.Http({
-              method: "DELETE",
-              uri: "/accounts/{account_id}/email/sending/suppressions/{suppression_id}",
-              code: 200,
-            }),
-          )
-          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({ identifier: "DeleteSuppressionRequest" });
-    case 1:
-      return S.Unknown.pipe(
-        /*@__PURE__*/ T.UnionCases([["type"], ["type", "value"]], {
-          key: "type",
-          values: ["account", "sending_domain"],
-        }),
-      );
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String,
-          scope: S.optional(S.NullOr(__S(9, __c1, 1))),
-        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({
-        identifier: "DeleteSuppressionResponse",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          zoneId: S.String.pipe(T.Label("zone_id")),
-          subdomainId: S.String.pipe(T.Label("subdomain_id")),
-          dropSuppressedRecipients: S.optional(
-            S.Boolean.pipe(T.Body("drop_suppressed_recipients")),
-          ),
-          previewEnabled: S.optional(S.Boolean.pipe(T.Body("preview_enabled"))),
-        })
-          .pipe(
-            T.Http({
-              method: "PATCH",
-              uri: "/zones/{zone_id}/email/sending/subdomains/{subdomain_id}",
-              code: 200,
-            }),
-          )
-          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({ identifier: "EditSubdomainRequest" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          accountId: S.String.pipe(T.Label("account_id")),
-          suppressionId: S.String.pipe(T.Label("suppression_id")),
-          expiresAt: S.optional(S.String.pipe(T.Body("expires_at"))),
-          note: S.optional(S.String),
-          scope: S.optional(S.Unknown),
-        })
-          .pipe(
-            T.Http({
-              method: "PATCH",
-              uri: "/accounts/{account_id}/email/sending/suppressions/{suppression_id}",
-              code: 200,
-            }),
-          )
-          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({ identifier: "EditSuppressionRequest" });
-    case 5:
-      return S.Unknown.pipe(
-        /*@__PURE__*/ T.UnionCases([["type"], ["type", "value"]], {
-          key: "type",
-          values: ["account", "sending_domain"],
-        }),
-      );
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String,
-          createdAt: S.String.pipe(T.Body("created_at")),
-          email: S.String,
-          expiresAt: S.String.pipe(T.Body("expires_at")),
-          readOnly: S.Boolean.pipe(T.Body("read_only")),
-          reason: S.String,
-          note: S.optional(S.NullOr(S.String)),
-          scope: S.optional(S.NullOr(__S(13, __c1, 5))),
-        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({ identifier: "EditSuppressionResponse" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          zoneId: S.String.pipe(T.Label("zone_id")),
-          subdomainId: S.String.pipe(T.Label("subdomain_id")),
-        })
-          .pipe(
-            T.Http({
-              method: "GET",
-              uri: "/zones/{zone_id}/email/sending/subdomains/{subdomain_id}",
-              code: 200,
-            }),
-          )
-          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({ identifier: "GetSubdomainRequest" });
-  }
-}
-function __c2(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1028,15 +830,19 @@ function __c2(j: number): any {
         identifier: "SubdomainsDnsGetResultItem",
       });
     case 2:
-      return S.Array(__S(17, __c2, 1));
+      return S.Array(__S(1, __c0, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          result: __S(18, __c2, 2).pipe(T.EnvelopePayload()),
+          result: __S(2, __c0, 2).pipe(T.EnvelopePayload()),
           resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "GetSubdomainDnsResponse" });
-    case 4:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -1051,14 +857,14 @@ function __c2(j: number): any {
           )
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "GetSuppressionRequest" });
-    case 5:
+    case 1:
       return S.Unknown.pipe(
         /*@__PURE__*/ T.UnionCases([["type"], ["type", "value"]], {
           key: "type",
           values: ["account", "sending_domain"],
         }),
       );
-    case 6:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
@@ -1068,38 +874,38 @@ function __c2(j: number): any {
           readOnly: S.Boolean.pipe(T.Body("read_only")),
           reason: S.String,
           note: S.optional(S.NullOr(S.String)),
-          scope: S.optional(S.NullOr(__S(21, __c2, 5))),
+          scope: S.optional(S.NullOr(__S(9, __c1, 1))),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "GetSuppressionResponse" });
-    case 7:
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
       return S.Unknown.pipe(
         /*@__PURE__*/ T.UnionCases([["type"], ["type", "value"]], {
           key: "type",
           values: ["account", "sending_domain"],
         }),
       );
-  }
-}
-function __c3(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           email: S.String,
           expiresAt: S.optional(S.String.pipe(T.Body("expires_at"))),
           note: S.optional(S.String),
-          scope: S.optional(__S(23, __c2, 7)),
+          scope: S.optional(__S(16, __c2, 0)),
         }),
       ).annotate({
         identifier: "ImportSuppressionRequestItemsItem",
       });
-    case 1:
-      return S.Array(__S(24, __c3, 0));
     case 2:
+      return S.Array(__S(17, __c2, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
-          items: __S(25, __c3, 1),
+          items: __S(18, __c2, 2),
         })
           .pipe(
             T.Http({
@@ -1110,14 +916,14 @@ function __c3(j: number): any {
           )
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "ImportSuppressionRequest" });
-    case 3:
+    case 4:
       return S.Unknown.pipe(
         /*@__PURE__*/ T.UnionCases([["type"], ["type", "value"]], {
           key: "type",
           values: ["account", "sending_domain"],
         }),
       );
-    case 4:
+    case 5:
       return S.suspend(() =>
         S.Struct({
           index: S.Number,
@@ -1125,20 +931,20 @@ function __c3(j: number): any {
           id: S.optional(S.NullOr(S.String)),
           email: S.optional(S.NullOr(S.String)),
           error: S.optional(S.NullOr(S.String)),
-          scope: S.optional(S.NullOr(__S(27, __c3, 3))),
+          scope: S.optional(S.NullOr(__S(20, __c2, 4))),
         }),
       ).annotate({
         identifier: "ImportSuppressionResponseItemsItem",
       });
-    case 5:
-      return S.Array(__S(28, __c3, 4));
     case 6:
+      return S.Array(__S(21, __c2, 5));
+    case 7:
       return S.suspend(() =>
         S.Struct({
           deduplicated: S.Number,
           errors: S.Number,
           invalid: S.Number,
-          items: __S(29, __c3, 5),
+          items: __S(22, __c2, 6),
           processed: S.Number,
           skipped: S.Number,
           total: S.Number,
@@ -1146,7 +952,11 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "ImportSuppressionResponse",
       });
-    case 7:
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           zoneId: S.String.pipe(T.Label("zone_id")),
@@ -1156,11 +966,7 @@ function __c3(j: number): any {
           )
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "ListSubdomainsRequest" });
-  }
-}
-function __c4(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           enabled: S.Boolean,
@@ -1176,16 +982,20 @@ function __c4(j: number): any {
           returnPathDomain: S.optional(S.NullOr(S.String).pipe(T.Body("return_path_domain"))),
         }),
       ).annotate({ identifier: "SubdomainsListResultItem" });
-    case 1:
-      return S.Array(__S(32, __c4, 0));
     case 2:
+      return S.Array(__S(25, __c3, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          result: __S(33, __c4, 1).pipe(T.EnvelopePayload()),
+          result: __S(26, __c3, 2).pipe(T.EnvelopePayload()),
           resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "ListSubdomainsResponse" });
-    case 3:
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -1206,14 +1016,14 @@ function __c4(j: number): any {
           )
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "ListSuppressionsRequest" });
-    case 4:
+    case 1:
       return S.Unknown.pipe(
         /*@__PURE__*/ T.UnionCases([["type"], ["type", "value"]], {
           key: "type",
           values: ["account", "sending_domain"],
         }),
       );
-    case 5:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
@@ -1223,16 +1033,16 @@ function __c4(j: number): any {
           readOnly: S.Boolean.pipe(T.Body("read_only")),
           reason: S.String,
           note: S.optional(S.NullOr(S.String)),
-          scope: S.optional(S.NullOr(__S(36, __c4, 4))),
+          scope: S.optional(S.NullOr(__S(33, __c4, 1))),
         }),
       ).annotate({
         identifier: "ListSuppressionsResultItem",
       });
-    case 6:
-      return S.Array(__S(37, __c4, 5));
-    case 7:
+    case 3:
+      return S.Array(__S(34, __c4, 2));
+    case 4:
       return S.suspend(() =>
-        __S(38, __c4, 6).pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
+        __S(35, __c4, 3).pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "ListSuppressionsResponse" });
   }
 }
@@ -1249,24 +1059,32 @@ function __c5(j: number): any {
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "SendEmailSendingRequest" });
     case 1:
-      return S.Array(S.String);
-    case 2:
       return S.suspend(() =>
         S.Struct({
-          delivered: __S(41, __c5, 1),
+          delivered: __S(48, __c6, 0),
           messageId: S.String.pipe(T.Body("message_id")),
-          permanentBounces: __S(41, __c5, 1).pipe(T.Body("permanent_bounces")),
-          queued: __S(41, __c5, 1),
-          suppressedRecipients: __S(41, __c5, 1).pipe(T.Body("suppressed_recipients")),
+          permanentBounces: __S(48, __c6, 0).pipe(T.Body("permanent_bounces")),
+          queued: __S(48, __c6, 0),
+          suppressedRecipients: __S(48, __c6, 0).pipe(T.Body("suppressed_recipients")),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "SendEmailSendingResponse" });
-    case 3:
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
           from: S.String,
           mimeMessage: S.String.pipe(T.Body("mime_message")),
-          recipients: __S(41, __c5, 1),
+          recipients: __S(48, __c6, 0),
         })
           .pipe(
             T.Http({
@@ -1279,21 +1097,242 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "SendRawEmailSendingRequest",
       });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          delivered: __S(41, __c5, 1),
+          delivered: __S(48, __c6, 0),
           messageId: S.String.pipe(T.Body("message_id")),
-          permanentBounces: __S(41, __c5, 1).pipe(T.Body("permanent_bounces")),
-          queued: __S(41, __c5, 1),
-          suppressedRecipients: __S(41, __c5, 1).pipe(T.Body("suppressed_recipients")),
+          permanentBounces: __S(48, __c6, 0).pipe(T.Body("permanent_bounces")),
+          queued: __S(48, __c6, 0),
+          suppressedRecipients: __S(48, __c6, 0).pipe(T.Body("suppressed_recipients")),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({
         identifier: "SendRawEmailSendingResponse",
       });
   }
 }
-
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          zoneId: S.String.pipe(T.Label("zone_id")),
+          name: S.String,
+        })
+          .pipe(
+            T.Http({ method: "POST", uri: "/zones/{zone_id}/email/sending/subdomains", code: 200 }),
+          )
+          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({ identifier: "CreateSubdomainRequest" });
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          enabled: S.Boolean,
+          name: S.String,
+          tag: S.String,
+          created: S.optional(S.NullOr(S.String)),
+          dkimSelector: S.optional(S.NullOr(S.String).pipe(T.Body("dkim_selector"))),
+          dropSuppressedRecipients: S.optional(
+            S.NullOr(S.Boolean).pipe(T.Body("drop_suppressed_recipients")),
+          ),
+          modified: S.optional(S.NullOr(S.String)),
+          previewEnabled: S.optional(S.NullOr(S.Boolean).pipe(T.Body("preview_enabled"))),
+          returnPathDomain: S.optional(S.NullOr(S.String).pipe(T.Body("return_path_domain"))),
+        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({ identifier: "CreateSubdomainResponse" });
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Unknown.pipe(
+        /*@__PURE__*/ T.UnionCases([["type"], ["type", "value"]], {
+          key: "type",
+          values: ["account", "sending_domain"],
+        }),
+      );
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          accountId: S.String.pipe(T.Label("account_id")),
+          email: S.String,
+          expiresAt: S.optional(S.String.pipe(T.Body("expires_at"))),
+          note: S.optional(S.String),
+          scope: S.optional(__S(80, __c10, 0)),
+        })
+          .pipe(
+            T.Http({
+              method: "POST",
+              uri: "/accounts/{account_id}/email/sending/suppressions",
+              code: 200,
+            }),
+          )
+          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({ identifier: "CreateSuppressionRequest" });
+    case 2:
+      return S.Unknown.pipe(
+        /*@__PURE__*/ T.UnionCases([["type"], ["type", "value"]], {
+          key: "type",
+          values: ["account", "sending_domain"],
+        }),
+      );
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          scope: S.optional(S.NullOr(__S(82, __c10, 2))),
+        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({
+        identifier: "CreateSuppressionResponse",
+      });
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          zoneId: S.String.pipe(T.Label("zone_id")),
+          subdomainId: S.String.pipe(T.Label("subdomain_id")),
+        })
+          .pipe(
+            T.Http({
+              method: "DELETE",
+              uri: "/zones/{zone_id}/email/sending/subdomains/{subdomain_id}",
+              code: 200,
+            }),
+          )
+          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({ identifier: "DeleteSubdomainRequest" });
+    case 1:
+      return S.suspend(() => S.Struct({}).pipe(T.KeyDictionary(KEY_DICTIONARY))).annotate({
+        identifier: "DeleteSubdomainResponse",
+      });
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          accountId: S.String.pipe(T.Label("account_id")),
+          suppressionId: S.String.pipe(T.Label("suppression_id")),
+        })
+          .pipe(
+            T.Http({
+              method: "DELETE",
+              uri: "/accounts/{account_id}/email/sending/suppressions/{suppression_id}",
+              code: 200,
+            }),
+          )
+          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({ identifier: "DeleteSuppressionRequest" });
+    case 1:
+      return S.Unknown.pipe(
+        /*@__PURE__*/ T.UnionCases([["type"], ["type", "value"]], {
+          key: "type",
+          values: ["account", "sending_domain"],
+        }),
+      );
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          scope: S.optional(S.NullOr(__S(97, __c12, 1))),
+        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({
+        identifier: "DeleteSuppressionResponse",
+      });
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          zoneId: S.String.pipe(T.Label("zone_id")),
+          subdomainId: S.String.pipe(T.Label("subdomain_id")),
+          dropSuppressedRecipients: S.optional(
+            S.Boolean.pipe(T.Body("drop_suppressed_recipients")),
+          ),
+          previewEnabled: S.optional(S.Boolean.pipe(T.Body("preview_enabled"))),
+        })
+          .pipe(
+            T.Http({
+              method: "PATCH",
+              uri: "/zones/{zone_id}/email/sending/subdomains/{subdomain_id}",
+              code: 200,
+            }),
+          )
+          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({ identifier: "EditSubdomainRequest" });
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          accountId: S.String.pipe(T.Label("account_id")),
+          suppressionId: S.String.pipe(T.Label("suppression_id")),
+          expiresAt: S.optional(S.String.pipe(T.Body("expires_at"))),
+          note: S.optional(S.String),
+          scope: S.optional(S.Unknown),
+        })
+          .pipe(
+            T.Http({
+              method: "PATCH",
+              uri: "/accounts/{account_id}/email/sending/suppressions/{suppression_id}",
+              code: 200,
+            }),
+          )
+          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({ identifier: "EditSuppressionRequest" });
+    case 1:
+      return S.Unknown.pipe(
+        /*@__PURE__*/ T.UnionCases([["type"], ["type", "value"]], {
+          key: "type",
+          values: ["account", "sending_domain"],
+        }),
+      );
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          createdAt: S.String.pipe(T.Body("created_at")),
+          email: S.String,
+          expiresAt: S.String.pipe(T.Body("expires_at")),
+          readOnly: S.Boolean.pipe(T.Body("read_only")),
+          reason: S.String,
+          note: S.optional(S.NullOr(S.String)),
+          scope: S.optional(S.NullOr(__S(113, __c14, 1))),
+        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({ identifier: "EditSuppressionResponse" });
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          zoneId: S.String.pipe(T.Label("zone_id")),
+          subdomainId: S.String.pipe(T.Label("subdomain_id")),
+        })
+          .pipe(
+            T.Http({
+              method: "GET",
+              uri: "/zones/{zone_id}/email/sending/subdomains/{subdomain_id}",
+              code: 200,
+            }),
+          )
+          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({ identifier: "GetSubdomainRequest" });
+  }
+}
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

@@ -737,8 +737,8 @@ export const buyDomains: API.OperationMethod<
   BuyDomainsError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3, __c0, 3) as any as S.Schema<BuyDomainsRequest>,
-  output: __S(6, __c0, 6) as any as S.Schema<BuyDomainsResponse>,
+  input: __S(58, __c14, 2) as any as S.Schema<BuyDomainsRequest>,
+  output: __S(66, __c16, 2) as any as S.Schema<BuyDomainsResponse>,
   errors: [BadRequest, Forbidden],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -752,8 +752,8 @@ export const buySingleDomain: API.OperationMethod<
   BuySingleDomainError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(7, __c0, 7) as any as S.Schema<BuySingleDomainRequest>,
-  output: __S(6, __c0, 6) as any as S.Schema<BuySingleDomainResponse>,
+  input: __S(68, __c17, 0) as any as S.Schema<BuySingleDomainRequest>,
+  output: __S(66, __c16, 2) as any as S.Schema<BuySingleDomainResponse>,
   errors: [BadRequest, Forbidden],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -767,8 +767,8 @@ export const getBulkAvailability: API.OperationMethod<
   GetBulkAvailabilityError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(9, __c1, 1) as any as S.Schema<GetBulkAvailabilityRequest>,
-  output: __S(12, __c1, 4) as any as S.Schema<GetBulkAvailabilityResponse>,
+  input: __S(72, __c18, 0) as any as S.Schema<GetBulkAvailabilityRequest>,
+  output: __S(75, __c18, 3) as any as S.Schema<GetBulkAvailabilityResponse>,
   errors: [BadRequest, Forbidden],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -782,8 +782,8 @@ export const getBulkPrice: API.OperationMethod<
   GetBulkPriceError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(13, __c1, 5) as any as S.Schema<GetBulkPriceRequest>,
-  output: __S(16, __c2, 0) as any as S.Schema<GetBulkPriceResponse>,
+  input: __S(80, __c20, 0) as any as S.Schema<GetBulkPriceRequest>,
+  output: __S(83, __c20, 3) as any as S.Schema<GetBulkPriceResponse>,
   errors: [BadRequest, Forbidden],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -797,8 +797,8 @@ export const getContactInfoSchema: API.OperationMethod<
   GetContactInfoSchemaError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(17, __c2, 1) as any as S.Schema<GetContactInfoSchemaRequest>,
-  output: __S(18, __c2, 2) as any as S.Schema<GetContactInfoSchemaResponse>,
+  input: __S(84, __c21, 0) as any as S.Schema<GetContactInfoSchemaRequest>,
+  output: __S(85, __c21, 1) as any as S.Schema<GetContactInfoSchemaResponse>,
   errors: [BadRequest, Forbidden],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -812,8 +812,8 @@ export const getDomainAuthCode: API.OperationMethod<
   GetDomainAuthCodeError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(19, __c2, 3) as any as S.Schema<GetDomainAuthCodeRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<GetDomainAuthCodeResponse>,
+  input: __S(88, __c22, 0) as any as S.Schema<GetDomainAuthCodeRequest>,
+  output: __S(89, __c22, 1) as any as S.Schema<GetDomainAuthCodeResponse>,
   errors: [BadRequest, Forbidden, NotFound, Conflict],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -827,8 +827,8 @@ export const getDomainAvailability: API.OperationMethod<
   GetDomainAvailabilityError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(21, __c2, 5) as any as S.Schema<GetDomainAvailabilityRequest>,
-  output: __S(22, __c2, 6) as any as S.Schema<GetDomainAvailabilityResponse>,
+  input: __S(0, __c0, 0) as any as S.Schema<GetDomainAvailabilityRequest>,
+  output: __S(1, __c0, 1) as any as S.Schema<GetDomainAvailabilityResponse>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -842,8 +842,8 @@ export const getDomainContactVerification: API.OperationMethod<
   GetDomainContactVerificationError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(23, __c2, 7) as any as S.Schema<GetDomainContactVerificationRequest>,
-  output: __S(24, __c3, 0) as any as S.Schema<GetDomainContactVerificationResponse>,
+  input: __S(4, __c1, 0) as any as S.Schema<GetDomainContactVerificationRequest>,
+  output: __S(5, __c1, 1) as any as S.Schema<GetDomainContactVerificationResponse>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -857,8 +857,8 @@ export const getDomainPrice: API.OperationMethod<
   GetDomainPriceError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(25, __c3, 1) as any as S.Schema<GetDomainPriceRequest>,
-  output: __S(26, __c3, 2) as any as S.Schema<GetDomainPriceResponse>,
+  input: __S(8, __c2, 0) as any as S.Schema<GetDomainPriceRequest>,
+  output: __S(9, __c2, 1) as any as S.Schema<GetDomainPriceResponse>,
   errors: [BadRequest, Forbidden],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -872,8 +872,8 @@ export const getDomainTransferIn: API.OperationMethod<
   GetDomainTransferInError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(27, __c3, 3) as any as S.Schema<GetDomainTransferInRequest>,
-  output: __S(28, __c3, 4) as any as S.Schema<GetDomainTransferInResponse>,
+  input: __S(12, __c3, 0) as any as S.Schema<GetDomainTransferInRequest>,
+  output: __S(13, __c3, 1) as any as S.Schema<GetDomainTransferInResponse>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -887,8 +887,8 @@ export const getOrder: API.OperationMethod<
   GetOrderError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(29, __c3, 5) as any as S.Schema<GetOrderRequest>,
-  output: __S(31, __c3, 7) as any as S.Schema<GetOrderResponse>,
+  input: __S(16, __c4, 0) as any as S.Schema<GetOrderRequest>,
+  output: __S(18, __c4, 2) as any as S.Schema<GetOrderResponse>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -902,8 +902,8 @@ export const getSupportedTlds: API.OperationMethod<
   GetSupportedTldsError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(32, __c4, 0) as any as S.Schema<GetSupportedTldsRequest>,
-  output: __S(33, __c4, 1) as any as S.Schema<GetSupportedTldsResponse>,
+  input: __S(20, __c5, 0) as any as S.Schema<GetSupportedTldsRequest>,
+  output: __S(21, __c5, 1) as any as S.Schema<GetSupportedTldsResponse>,
   errors: [BadRequest, Forbidden],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -917,8 +917,8 @@ export const getTld: API.OperationMethod<
   GetTldError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(34, __c4, 2) as any as S.Schema<GetTldRequest>,
-  output: __S(36, __c4, 4) as any as S.Schema<GetTldResponse>,
+  input: __S(24, __c6, 0) as any as S.Schema<GetTldRequest>,
+  output: __S(26, __c6, 2) as any as S.Schema<GetTldResponse>,
   errors: [BadRequest, Forbidden],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -932,8 +932,8 @@ export const getTldPrice: API.OperationMethod<
   GetTldPriceError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(37, __c4, 5) as any as S.Schema<GetTldPriceRequest>,
-  output: __S(38, __c4, 6) as any as S.Schema<GetTldPriceResponse>,
+  input: __S(28, __c7, 0) as any as S.Schema<GetTldPriceRequest>,
+  output: __S(29, __c7, 1) as any as S.Schema<GetTldPriceResponse>,
   errors: [BadRequest, Forbidden],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -947,8 +947,8 @@ export const renewDomain: API.OperationMethod<
   RenewDomainError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(40, __c5, 0) as any as S.Schema<RenewDomainRequest>,
-  output: __S(6, __c0, 6) as any as S.Schema<RenewDomainResponse>,
+  input: __S(32, __c8, 0) as any as S.Schema<RenewDomainRequest>,
+  output: __S(66, __c16, 2) as any as S.Schema<RenewDomainResponse>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -962,8 +962,8 @@ export const searchDomains: API.OperationMethod<
   SearchDomainsError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(41, __c5, 1) as any as S.Schema<SearchDomainsRequest>,
-  output: __S(43, __c5, 3) as any as S.Schema<SearchDomainsResponse>,
+  input: __S(40, __c10, 0) as any as S.Schema<SearchDomainsRequest>,
+  output: __S(42, __c10, 2) as any as S.Schema<SearchDomainsResponse>,
   errors: [BadRequest, Forbidden],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -977,8 +977,8 @@ export const transferInDomain: API.OperationMethod<
   TransferInDomainError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(44, __c5, 4) as any as S.Schema<TransferInDomainRequest>,
-  output: __S(6, __c0, 6) as any as S.Schema<TransferInDomainResponse>,
+  input: __S(44, __c11, 0) as any as S.Schema<TransferInDomainRequest>,
+  output: __S(66, __c16, 2) as any as S.Schema<TransferInDomainResponse>,
   errors: [BadRequest, Forbidden],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -992,8 +992,8 @@ export const updateDomainAutoRenew: API.OperationMethod<
   UpdateDomainAutoRenewError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(45, __c5, 5) as any as S.Schema<UpdateDomainAutoRenewRequest>,
-  output: __S(46, __c5, 6) as any as S.Schema<UpdateDomainAutoRenewResponse>,
+  input: __S(48, __c12, 0) as any as S.Schema<UpdateDomainAutoRenewRequest>,
+  output: __S(49, __c12, 1) as any as S.Schema<UpdateDomainAutoRenewResponse>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -1007,8 +1007,8 @@ export const updateDomainNameservers: API.OperationMethod<
   UpdateDomainNameserversError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(47, __c5, 7) as any as S.Schema<UpdateDomainNameserversRequest>,
-  output: __S(48, __c6, 0) as any as S.Schema<UpdateDomainNameserversResponse>,
+  input: __S(52, __c13, 0) as any as S.Schema<UpdateDomainNameserversRequest>,
+  output: __S(53, __c13, 1) as any as S.Schema<UpdateDomainNameserversResponse>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -1020,180 +1020,6 @@ function __c0(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          domainName: S.String,
-          autoRenew: S.Boolean,
-          years: S.Number,
-          expectedPrice: S.Number,
-          languageCode: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "BuyDomainsRequestDomainsItem",
-      });
-    case 1:
-      return S.Array(__S(0, __c0, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          firstName: S.String,
-          lastName: S.String,
-          email: S.String,
-          phone: S.String,
-          address1: S.String,
-          address2: S.optional(S.String),
-          city: S.String,
-          state: S.String,
-          zip: S.String,
-          country: S.String,
-          companyName: S.optional(S.String),
-          fax: S.optional(S.String),
-          additional: S.optional(S.Unknown),
-        }),
-      ).annotate({
-        identifier: "BuyDomainsRequestContactInformation",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          teamId: S.optional(S.String.pipe(T.Query())),
-          domains: __S(1, __c0, 1),
-          contactInformation: __S(2, __c0, 2),
-        }).pipe(T.Http({ method: "POST", uri: "/v1/registrar/domains/buy", code: 200 })),
-      ).annotate({ identifier: "BuyDomainsRequest" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          href: S.String,
-          method: S.String,
-        }),
-      ).annotate({
-        identifier: "BuyDomainsResponseLinksValue",
-      });
-    case 5:
-      return S.Record(S.String, __S(4, __c0, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          orderId: S.String,
-          _links: __S(5, __c0, 5),
-        }),
-      ).annotate({ identifier: "BuyDomainsResponse" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          domain: S.String.pipe(T.Label()),
-          teamId: S.optional(S.String.pipe(T.Query())),
-          autoRenew: S.Boolean,
-          years: S.Number,
-          expectedPrice: S.Number,
-          contactInformation: __S(2, __c0, 2),
-          languageCode: S.optional(S.String),
-        }).pipe(T.Http({ method: "POST", uri: "/v1/registrar/domains/{domain}/buy", code: 200 })),
-      ).annotate({ identifier: "BuySingleDomainRequest" });
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(S.String);
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          teamId: S.optional(S.String.pipe(T.Query())),
-          domains: __S(8, __c1, 0),
-        }).pipe(T.Http({ method: "POST", uri: "/v1/registrar/domains/availability", code: 200 })),
-      ).annotate({
-        identifier: "GetBulkAvailabilityRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          domain: S.String,
-          available: S.Boolean,
-        }),
-      ).annotate({
-        identifier: "GetBulkAvailabilityResponseResultsItem",
-      });
-    case 3:
-      return S.Array(__S(10, __c1, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          results: __S(11, __c1, 3),
-        }),
-      ).annotate({
-        identifier: "GetBulkAvailabilityResponse",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          teamId: S.optional(S.String.pipe(T.Query())),
-          domains: __S(8, __c1, 0),
-          years: S.optional(S.Number),
-        }).pipe(T.Http({ method: "POST", uri: "/v1/registrar/domains/price", code: 200 })),
-      ).annotate({ identifier: "GetBulkPriceRequest" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          domain: S.String,
-          years: S.Number,
-          purchasePrice: S.Unknown,
-          renewalPrice: S.Unknown,
-          transferPrice: S.Unknown,
-        }),
-      ).annotate({
-        identifier: "GetBulkPriceResponseResultsItem",
-      });
-    case 7:
-      return S.Array(__S(14, __c1, 6));
-  }
-}
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          results: __S(15, __c1, 7),
-        }),
-      ).annotate({ identifier: "GetBulkPriceResponse" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          domain: S.String.pipe(T.Label()),
-          teamId: S.optional(S.String.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/v1/registrar/domains/{domain}/contact-info/schema",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "GetContactInfoSchemaRequest",
-      });
-    case 2:
-      return S.suspend(() => S.Unknown.pipe(T.RawResponseRoot())).annotate({
-        identifier: "GetContactInfoSchemaResponse",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          domain: S.String.pipe(T.Label()),
-          teamId: S.optional(S.String.pipe(T.Query())),
-        }).pipe(
-          T.Http({ method: "GET", uri: "/v1/registrar/domains/{domain}/auth-code", code: 200 }),
-        ),
-      ).annotate({ identifier: "GetDomainAuthCodeRequest" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          authCode: S.String,
-        }),
-      ).annotate({
-        identifier: "GetDomainAuthCodeResponse",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
           domain: S.String.pipe(T.Label()),
           teamId: S.optional(S.String.pipe(T.Query())),
         }).pipe(
@@ -1202,7 +1028,7 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "GetDomainAvailabilityRequest",
       });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           available: S.Boolean,
@@ -1210,7 +1036,11 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "GetDomainAvailabilityResponse",
       });
-    case 7:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           domain: S.String.pipe(T.Label()),
@@ -1225,15 +1055,15 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "GetDomainContactVerificationRequest",
       });
-  }
-}
-function __c3(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() => S.Unknown.pipe(T.RawResponseRoot())).annotate({
         identifier: "GetDomainContactVerificationResponse",
       });
-    case 1:
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           domain: S.String.pipe(T.Label()),
@@ -1241,7 +1071,7 @@ function __c3(j: number): any {
           teamId: S.optional(S.String.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/v1/registrar/domains/{domain}/price", code: 200 })),
       ).annotate({ identifier: "GetDomainPriceRequest" });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           years: S.Number,
@@ -1250,7 +1080,11 @@ function __c3(j: number): any {
           transferPrice: S.Unknown,
         }),
       ).annotate({ identifier: "GetDomainPriceResponse" });
-    case 3:
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           domain: S.String.pipe(T.Label()),
@@ -1261,7 +1095,7 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "GetDomainTransferInRequest",
       });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           status: S.String,
@@ -1269,27 +1103,31 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "GetDomainTransferInResponse",
       });
-    case 5:
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           orderId: S.String.pipe(T.Label()),
           teamId: S.optional(S.String.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/v1/registrar/orders/{orderId}", code: 200 })),
       ).annotate({ identifier: "GetOrderRequest" });
-    case 6:
+    case 1:
       return S.Array(S.Unknown);
-    case 7:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           orderId: S.String,
-          domains: __S(30, __c3, 6),
+          domains: __S(17, __c4, 1),
           status: S.String,
           error: S.optional(S.Unknown),
         }),
       ).annotate({ identifier: "GetOrderResponse" });
   }
 }
-function __c4(j: number): any {
+function __c5(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1298,25 +1136,33 @@ function __c4(j: number): any {
         }).pipe(T.Http({ method: "GET", uri: "/v1/registrar/tlds/supported", code: 200 })),
       ).annotate({ identifier: "GetSupportedTldsRequest" });
     case 1:
-      return S.suspend(() => __S(8, __c1, 0).pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() => __S(76, __c19, 0).pipe(T.RawResponseRoot())).annotate({
         identifier: "GetSupportedTldsResponse",
       });
-    case 2:
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           tld: S.String.pipe(T.Label()),
           teamId: S.optional(S.String.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/v1/registrar/tlds/{tld}", code: 200 })),
       ).annotate({ identifier: "GetTldRequest" });
-    case 3:
+    case 1:
       return S.Record(S.String, S.String);
-    case 4:
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          supportedLanguageCodes: __S(35, __c4, 3),
+          supportedLanguageCodes: __S(25, __c6, 1),
         }),
       ).annotate({ identifier: "GetTldResponse" });
-    case 5:
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           tld: S.String.pipe(T.Label()),
@@ -1324,7 +1170,7 @@ function __c4(j: number): any {
           teamId: S.optional(S.String.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/v1/registrar/tlds/{tld}/price", code: 200 })),
       ).annotate({ identifier: "GetTldPriceRequest" });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           years: S.Number,
@@ -1333,7 +1179,25 @@ function __c4(j: number): any {
           transferPrice: S.Unknown,
         }),
       ).annotate({ identifier: "GetTldPriceResponse" });
-    case 7:
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          domain: S.String.pipe(T.Label()),
+          teamId: S.optional(S.String.pipe(T.Query())),
+          years: S.Number,
+          expectedPrice: S.Number,
+          contactInformation: S.optional(__S(36, __c9, 0)),
+        }).pipe(T.Http({ method: "POST", uri: "/v1/registrar/domains/{domain}/renew", code: 200 })),
+      ).annotate({ identifier: "RenewDomainRequest" });
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           firstName: S.String,
@@ -1354,34 +1218,28 @@ function __c4(j: number): any {
       });
   }
 }
-function __c5(j: number): any {
+function __c10(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          domain: S.String.pipe(T.Label()),
           teamId: S.optional(S.String.pipe(T.Query())),
-          years: S.Number,
-          expectedPrice: S.Number,
-          contactInformation: S.optional(__S(39, __c4, 7)),
-        }).pipe(T.Http({ method: "POST", uri: "/v1/registrar/domains/{domain}/renew", code: 200 })),
-      ).annotate({ identifier: "RenewDomainRequest" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          teamId: S.optional(S.String.pipe(T.Query())),
-          domains: __S(8, __c1, 0),
+          domains: __S(76, __c19, 0),
         }).pipe(T.Http({ method: "POST", uri: "/v1/registrar/domains/search", code: 200 })),
       ).annotate({ identifier: "SearchDomainsRequest" });
-    case 2:
+    case 1:
       return S.Array(S.Unknown);
-    case 3:
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          results: __S(42, __c5, 2),
+          results: __S(41, __c10, 1),
         }),
       ).annotate({ identifier: "SearchDomainsResponse" });
-    case 4:
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           domain: S.String.pipe(T.Label()),
@@ -1390,12 +1248,16 @@ function __c5(j: number): any {
           autoRenew: S.Boolean,
           years: S.Number,
           expectedPrice: S.Number,
-          contactInformation: __S(39, __c4, 7),
+          contactInformation: __S(36, __c9, 0),
         }).pipe(
           T.Http({ method: "POST", uri: "/v1/registrar/domains/{domain}/transfer", code: 200 }),
         ),
       ).annotate({ identifier: "TransferInDomainRequest" });
-    case 5:
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           domain: S.String.pipe(T.Label()),
@@ -1407,33 +1269,234 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "UpdateDomainAutoRenewRequest",
       });
-    case 6:
+    case 1:
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "UpdateDomainAutoRenewResponse",
       });
-    case 7:
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           domain: S.String.pipe(T.Label()),
           teamId: S.optional(S.String.pipe(T.Query())),
-          nameservers: __S(8, __c1, 0),
+          nameservers: __S(76, __c19, 0),
         }).pipe(
           T.Http({ method: "PATCH", uri: "/v1/registrar/domains/{domain}/nameservers", code: 200 }),
         ),
       ).annotate({
         identifier: "UpdateDomainNameserversRequest",
       });
-  }
-}
-function __c6(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "UpdateDomainNameserversResponse",
       });
   }
 }
-
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          domainName: S.String,
+          autoRenew: S.Boolean,
+          years: S.Number,
+          expectedPrice: S.Number,
+          languageCode: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "BuyDomainsRequestDomainsItem",
+      });
+    case 1:
+      return S.Array(__S(56, __c14, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          teamId: S.optional(S.String.pipe(T.Query())),
+          domains: __S(57, __c14, 1),
+          contactInformation: __S(60, __c15, 0),
+        }).pipe(T.Http({ method: "POST", uri: "/v1/registrar/domains/buy", code: 200 })),
+      ).annotate({ identifier: "BuyDomainsRequest" });
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          firstName: S.String,
+          lastName: S.String,
+          email: S.String,
+          phone: S.String,
+          address1: S.String,
+          address2: S.optional(S.String),
+          city: S.String,
+          state: S.String,
+          zip: S.String,
+          country: S.String,
+          companyName: S.optional(S.String),
+          fax: S.optional(S.String),
+          additional: S.optional(S.Unknown),
+        }),
+      ).annotate({
+        identifier: "BuyDomainsRequestContactInformation",
+      });
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          href: S.String,
+          method: S.String,
+        }),
+      ).annotate({
+        identifier: "BuyDomainsResponseLinksValue",
+      });
+    case 1:
+      return S.Record(S.String, __S(64, __c16, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          orderId: S.String,
+          _links: __S(65, __c16, 1),
+        }),
+      ).annotate({ identifier: "BuyDomainsResponse" });
+  }
+}
+function __c17(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          domain: S.String.pipe(T.Label()),
+          teamId: S.optional(S.String.pipe(T.Query())),
+          autoRenew: S.Boolean,
+          years: S.Number,
+          expectedPrice: S.Number,
+          contactInformation: __S(60, __c15, 0),
+          languageCode: S.optional(S.String),
+        }).pipe(T.Http({ method: "POST", uri: "/v1/registrar/domains/{domain}/buy", code: 200 })),
+      ).annotate({ identifier: "BuySingleDomainRequest" });
+  }
+}
+function __c18(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          teamId: S.optional(S.String.pipe(T.Query())),
+          domains: __S(76, __c19, 0),
+        }).pipe(T.Http({ method: "POST", uri: "/v1/registrar/domains/availability", code: 200 })),
+      ).annotate({
+        identifier: "GetBulkAvailabilityRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          domain: S.String,
+          available: S.Boolean,
+        }),
+      ).annotate({
+        identifier: "GetBulkAvailabilityResponseResultsItem",
+      });
+    case 2:
+      return S.Array(__S(73, __c18, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          results: __S(74, __c18, 2),
+        }),
+      ).annotate({
+        identifier: "GetBulkAvailabilityResponse",
+      });
+  }
+}
+function __c19(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c20(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          teamId: S.optional(S.String.pipe(T.Query())),
+          domains: __S(76, __c19, 0),
+          years: S.optional(S.Number),
+        }).pipe(T.Http({ method: "POST", uri: "/v1/registrar/domains/price", code: 200 })),
+      ).annotate({ identifier: "GetBulkPriceRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          domain: S.String,
+          years: S.Number,
+          purchasePrice: S.Unknown,
+          renewalPrice: S.Unknown,
+          transferPrice: S.Unknown,
+        }),
+      ).annotate({
+        identifier: "GetBulkPriceResponseResultsItem",
+      });
+    case 2:
+      return S.Array(__S(81, __c20, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          results: __S(82, __c20, 2),
+        }),
+      ).annotate({ identifier: "GetBulkPriceResponse" });
+  }
+}
+function __c21(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          domain: S.String.pipe(T.Label()),
+          teamId: S.optional(S.String.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/v1/registrar/domains/{domain}/contact-info/schema",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "GetContactInfoSchemaRequest",
+      });
+    case 1:
+      return S.suspend(() => S.Unknown.pipe(T.RawResponseRoot())).annotate({
+        identifier: "GetContactInfoSchemaResponse",
+      });
+  }
+}
+function __c22(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          domain: S.String.pipe(T.Label()),
+          teamId: S.optional(S.String.pipe(T.Query())),
+        }).pipe(
+          T.Http({ method: "GET", uri: "/v1/registrar/domains/{domain}/auth-code", code: 200 }),
+        ),
+      ).annotate({ identifier: "GetDomainAuthCodeRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          authCode: S.String,
+        }),
+      ).annotate({
+        identifier: "GetDomainAuthCodeResponse",
+      });
+  }
+}
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

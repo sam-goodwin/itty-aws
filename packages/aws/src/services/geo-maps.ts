@@ -169,7 +169,7 @@ export class ValidationException
       Reason: /*@__PURE__*/ S.suspend(() => S.String).annotate({
         identifier: "ValidationExceptionReason",
       }),
-      FieldList: /*@__PURE__*/ S.suspend(() => __S(10, __c1, 2)).annotate({
+      FieldList: /*@__PURE__*/ S.suspend(() => __S(1, __c0, 1)).annotate({
         identifier: "ValidationExceptionFieldList",
       }),
     },
@@ -342,8 +342,8 @@ export const getGlyphs: API.OperationMethod<
   GetGlyphsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(0, __c0, 0) as any as S.Schema<GetGlyphsRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<GetGlyphsResponse>,
+  input: __S(2, __c1, 0) as any as S.Schema<GetGlyphsRequest>,
+  output: __S(4, __c2, 0) as any as S.Schema<GetGlyphsResponse>,
   errors: [],
   protocol: AwsProtocol,
   retry: Retry,
@@ -362,8 +362,8 @@ export const getSprites: API.OperationMethod<
   GetSpritesError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2, __c0, 2) as any as S.Schema<GetSpritesRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<GetSpritesResponse>,
+  input: __S(6, __c3, 0) as any as S.Schema<GetSpritesRequest>,
+  output: __S(4, __c2, 0) as any as S.Schema<GetSpritesResponse>,
   errors: [],
   protocol: AwsProtocol,
   retry: Retry,
@@ -393,8 +393,8 @@ export const getStaticMap: API.OperationMethod<
   GetStaticMapError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3, __c0, 3) as any as S.Schema<GetStaticMapRequest>,
-  output: __S(4, __c0, 4) as any as S.Schema<GetStaticMapResponse>,
+  input: __S(8, __c4, 0) as any as S.Schema<GetStaticMapRequest>,
+  output: __S(10, __c5, 0) as any as S.Schema<GetStaticMapResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -418,8 +418,8 @@ export const getStyleDescriptor: API.OperationMethod<
   GetStyleDescriptorError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(6, __c0, 6) as any as S.Schema<GetStyleDescriptorRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<GetStyleDescriptorResponse>,
+  input: __S(12, __c6, 0) as any as S.Schema<GetStyleDescriptorRequest>,
+  output: __S(13, __c6, 1) as any as S.Schema<GetStyleDescriptorResponse>,
   errors: [],
   protocol: AwsProtocol,
   retry: Retry,
@@ -444,8 +444,8 @@ export const getTile: API.OperationMethod<
   GetTileError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(8, __c1, 0) as any as S.Schema<GetTileRequest>,
-  output: __S(4, __c0, 4) as any as S.Schema<GetTileResponse>,
+  input: __S(16, __c8, 0) as any as S.Schema<GetTileRequest>,
+  output: __S(10, __c5, 0) as any as S.Schema<GetTileResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -463,6 +463,18 @@ function __c0(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
+        S.Struct({ Name: S.String, Message: S.String }).pipe(
+          S.encodeKeys({ Name: "name", Message: "message" }),
+        ),
+      ).annotate({ identifier: "ValidationExceptionField" });
+    case 1:
+      return S.Array(__S(0, __c0, 0));
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
         S.Struct({
           FontStack: S.String.pipe(T.HttpLabel("FontStack")),
           FontUnicodeRange: S.String.pipe(T.HttpLabel("FontUnicodeRange")),
@@ -477,7 +489,11 @@ function __c0(j: number): any {
           ),
         ),
       ).annotate({ identifier: "GetGlyphsRequest" });
-    case 1:
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           Blob: S.optional(T.Blob).pipe(T.HttpPayload()),
@@ -486,7 +502,11 @@ function __c0(j: number): any {
           ETag: S.optional(S.String).pipe(T.HttpHeader("ETag")),
         }),
       ).annotate({ identifier: "GetGlyphsResponse" });
-    case 2:
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           FileName: S.String.pipe(T.HttpLabel("FileName")),
@@ -507,7 +527,11 @@ function __c0(j: number): any {
           ),
         ),
       ).annotate({ identifier: "GetSpritesRequest" });
-    case 3:
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           BoundingBox: S.optional(SensitiveString).pipe(T.HttpQuery("bounding-box")),
@@ -541,7 +565,11 @@ function __c0(j: number): any {
           ),
         ),
       ).annotate({ identifier: "GetStaticMapRequest" });
-    case 4:
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           Blob: S.optional(T.Blob).pipe(T.HttpPayload()),
@@ -551,9 +579,11 @@ function __c0(j: number): any {
           PricingBucket: S.String.pipe(T.HttpHeader("x-amz-geo-pricing-bucket")),
         }),
       ).annotate({ identifier: "GetStaticMapResponse" });
-    case 5:
-      return S.Array(S.String);
-    case 6:
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           Style: S.String.pipe(T.HttpLabel("Style")),
@@ -562,10 +592,10 @@ function __c0(j: number): any {
           Terrain: S.optional(S.String).pipe(T.HttpQuery("terrain")),
           ContourDensity: S.optional(S.String).pipe(T.HttpQuery("contour-density")),
           Traffic: S.optional(S.String).pipe(T.HttpQuery("traffic")),
-          TravelModes: S.optional(__S(5, __c0, 5)).pipe(T.HttpQuery("travel-modes")),
+          TravelModes: S.optional(__S(14, __c7, 0)).pipe(T.HttpQuery("travel-modes")),
           Buildings: S.optional(S.String).pipe(T.HttpQuery("buildings")),
           PoiDensity: S.optional(S.String).pipe(T.HttpQuery("poi-density")),
-          PoiCategories: S.optional(__S(5, __c0, 5)).pipe(T.HttpQuery("poi-categories")),
+          PoiCategories: S.optional(__S(14, __c7, 0)).pipe(T.HttpQuery("poi-categories")),
           Key: S.optional(SensitiveString).pipe(T.HttpQuery("key")),
         }).pipe(
           T.all(
@@ -580,7 +610,7 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "GetStyleDescriptorRequest",
       });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           Blob: S.optional(T.Blob).pipe(T.HttpPayload()),
@@ -593,12 +623,18 @@ function __c0(j: number): any {
       });
   }
 }
-function __c1(j: number): any {
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c8(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          AdditionalFeatures: S.optional(__S(5, __c0, 5)).pipe(T.HttpQuery("additional-features")),
+          AdditionalFeatures: S.optional(__S(14, __c7, 0)).pipe(T.HttpQuery("additional-features")),
           Tileset: S.String.pipe(T.HttpLabel("Tileset")),
           Z: SensitiveString.pipe(T.HttpLabel("Z")),
           X: SensitiveString.pipe(T.HttpLabel("X")),
@@ -615,17 +651,8 @@ function __c1(j: number): any {
           ),
         ),
       ).annotate({ identifier: "GetTileRequest" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({ Name: S.String, Message: S.String }).pipe(
-          S.encodeKeys({ Name: "name", Message: "message" }),
-        ),
-      ).annotate({ identifier: "ValidationExceptionField" });
-    case 2:
-      return S.Array(__S(9, __c1, 1));
   }
 }
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

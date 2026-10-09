@@ -145,8 +145,8 @@ export const generateMediaAsset: API.OperationMethod<
   GenerateMediaAssetError,
   WhopOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1, __c0, 1) as any as S.Schema<GenerateMediaAssetRequest>,
-  output: __S(4, __c0, 4) as any as S.Schema<MediaAsset>,
+  input: __S(0, __c0, 0) as any as S.Schema<GenerateMediaAssetRequest>,
+  output: __S(7, __c1, 3) as any as S.Schema<MediaAsset>,
   errors: [BadRequest, PaymentRequired, Forbidden, Conflict],
   protocol: WhopProtocol,
   retry: Retry.Retry,
@@ -160,8 +160,8 @@ export const getMediaAsset: API.OperationMethod<
   GetMediaAssetError,
   WhopOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(5, __c0, 5) as any as S.Schema<GetMediaAssetRequest>,
-  output: __S(4, __c0, 4) as any as S.Schema<MediaAsset>,
+  input: __S(8, __c2, 0) as any as S.Schema<GetMediaAssetRequest>,
+  output: __S(7, __c1, 3) as any as S.Schema<MediaAsset>,
   errors: [NotFound],
   protocol: WhopProtocol,
   retry: Retry.Retry,
@@ -171,14 +171,12 @@ export const getMediaAsset: API.OperationMethod<
 function __c0(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(S.String);
-    case 1:
       return S.suspend(() =>
         S.Struct({
           account_id: S.optional(S.String),
           duration_seconds: S.optional(S.Number),
           prompt: S.String,
-          reference_media: S.optional(__S(0, __c0, 0)),
+          reference_media: S.optional(__S(4, __c1, 0)),
           resolution: S.optional(S.String),
           type: S.String,
           idempotency_key: S.optional(S.String.pipe(T.Header("Idempotency-Key"))),
@@ -186,23 +184,29 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "GenerateMediaAssetRequest",
       });
-    case 2:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
           url: S.String,
         }),
       ).annotate({ identifier: "MediaAssetFile" });
-    case 3:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           duration_seconds: S.NullOr(S.Number),
           prompt: S.String,
-          reference_media: __S(0, __c0, 0),
+          reference_media: __S(4, __c1, 0),
           resolution: S.NullOr(S.String),
         }),
       ).annotate({ identifier: "MediaAssetGeneration" });
-    case 4:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           amount_charged: S.NullOr(S.Number),
@@ -210,15 +214,19 @@ function __c0(j: number): any {
           created_at: S.String,
           currency: S.String,
           error_message: S.NullOr(S.String),
-          file: S.NullOr(__S(2, __c0, 2)),
-          generation: __S(3, __c0, 3),
+          file: S.NullOr(__S(5, __c1, 1)),
+          generation: __S(6, __c1, 2),
           id: S.String,
           media_type: S.String,
           source: S.String,
           status: S.String,
         }),
       ).annotate({ identifier: "MediaAsset" });
-    case 5:
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.String.pipe(T.Label()),
@@ -226,7 +234,6 @@ function __c0(j: number): any {
       ).annotate({ identifier: "GetMediaAssetRequest" });
   }
 }
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

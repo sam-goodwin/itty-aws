@@ -648,8 +648,8 @@ export const appDeploymentHistory: API.OperationMethod<
   AppDeploymentHistoryError,
   ModalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(4, __c0, 4) as any as S.Schema<AppDeploymentHistoryRequest>,
-  output: __S(8, __c1, 0) as any as S.Schema<AppDeploymentHistoryResponse>,
+  input: __S(32, __c1, 0) as any as S.Schema<AppDeploymentHistoryRequest>,
+  output: __S(35, __c1, 3) as any as S.Schema<AppDeploymentHistoryResponse>,
   errors: [UnknownModalError],
   protocol: ModalProtocol,
   retry: Retry.Retry,
@@ -662,8 +662,8 @@ export const appFetchLogs: API.OperationMethod<
   AppFetchLogsError,
   ModalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(9, __c1, 1) as any as S.Schema<AppFetchLogsRequest>,
-  output: __S(15, __c1, 7) as any as S.Schema<AppFetchLogsResponse>,
+  input: __S(480, __c15, 0) as any as S.Schema<AppFetchLogsRequest>,
+  output: __S(486, __c15, 6) as any as S.Schema<AppFetchLogsResponse>,
   errors: [UnknownModalError],
   protocol: ModalProtocol,
   retry: Retry.Retry,
@@ -676,8 +676,8 @@ export const appGetByDeploymentName: API.OperationMethod<
   AppGetByDeploymentNameError,
   ModalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(16, __c2, 0) as any as S.Schema<AppGetByDeploymentNameRequest>,
-  output: __S(18, __c2, 2) as any as S.Schema<AppGetByDeploymentNameResponse>,
+  input: __S(608, __c19, 0) as any as S.Schema<AppGetByDeploymentNameRequest>,
+  output: __S(609, __c19, 1) as any as S.Schema<AppGetByDeploymentNameResponse>,
   errors: [UnknownModalError],
   protocol: ModalProtocol,
   retry: Retry.Retry,
@@ -690,8 +690,8 @@ export const appGetInfo: API.OperationMethod<
   AppGetInfoError,
   ModalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(19, __c2, 3) as any as S.Schema<AppGetInfoRequest>,
-  output: __S(29, __c3, 5) as any as S.Schema<AppGetInfoResponse>,
+  input: __S(672, __c21, 0) as any as S.Schema<AppGetInfoRequest>,
+  output: __S(680, __c21, 8) as any as S.Schema<AppGetInfoResponse>,
   errors: [UnknownModalError],
   protocol: ModalProtocol,
   retry: Retry.Retry,
@@ -704,8 +704,8 @@ export const appGetLayout: API.OperationMethod<
   AppGetLayoutError,
   ModalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(30, __c3, 6) as any as S.Schema<AppGetLayoutRequest>,
-  output: __S(52, __c6, 4) as any as S.Schema<AppGetLayoutResponse>,
+  input: __S(768, __c24, 0) as any as S.Schema<AppGetLayoutRequest>,
+  output: __S(771, __c24, 3) as any as S.Schema<AppGetLayoutResponse>,
   errors: [UnknownModalError],
   protocol: ModalProtocol,
   retry: Retry.Retry,
@@ -718,8 +718,8 @@ export const appGetLifecycle: API.OperationMethod<
   AppGetLifecycleError,
   ModalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(53, __c6, 5) as any as S.Schema<AppGetLifecycleRequest>,
-  output: __S(54, __c6, 6) as any as S.Schema<AppGetLifecycleResponse>,
+  input: __S(864, __c27, 0) as any as S.Schema<AppGetLifecycleRequest>,
+  output: __S(865, __c27, 1) as any as S.Schema<AppGetLifecycleResponse>,
   errors: [UnknownModalError],
   protocol: ModalProtocol,
   retry: Retry.Retry,
@@ -732,8 +732,8 @@ export const appGetObjects: API.OperationMethod<
   AppGetObjectsError,
   ModalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(55, __c6, 7) as any as S.Schema<AppGetObjectsRequest>,
-  output: __S(58, __c7, 2) as any as S.Schema<AppGetObjectsResponse>,
+  input: __S(896, __c28, 0) as any as S.Schema<AppGetObjectsRequest>,
+  output: __S(899, __c28, 3) as any as S.Schema<AppGetObjectsResponse>,
   errors: [UnknownModalError],
   protocol: ModalProtocol,
   retry: Retry.Retry,
@@ -746,8 +746,8 @@ export const appGetOrCreate: API.OperationMethod<
   AppGetOrCreateError,
   ModalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(59, __c7, 3) as any as S.Schema<AppGetOrCreateRequest>,
-  output: __S(60, __c7, 4) as any as S.Schema<AppGetOrCreateResponse>,
+  input: __S(928, __c29, 0) as any as S.Schema<AppGetOrCreateRequest>,
+  output: __S(929, __c29, 1) as any as S.Schema<AppGetOrCreateResponse>,
   errors: [UnknownModalError],
   protocol: ModalProtocol,
   retry: Retry.Retry,
@@ -760,8 +760,8 @@ export const appGetTags: API.OperationMethod<
   AppGetTagsError,
   ModalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(61, __c7, 5) as any as S.Schema<AppGetTagsRequest>,
-  output: __S(62, __c7, 6) as any as S.Schema<AppGetTagsResponse>,
+  input: __S(960, __c30, 0) as any as S.Schema<AppGetTagsRequest>,
+  output: __S(961, __c30, 1) as any as S.Schema<AppGetTagsResponse>,
   errors: [UnknownModalError],
   protocol: ModalProtocol,
   retry: Retry.Retry,
@@ -774,8 +774,8 @@ export const appHeartbeat: API.OperationMethod<
   AppHeartbeatError,
   ModalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(63, __c7, 7) as any as S.Schema<AppHeartbeatRequest>,
-  output: __S(64, __c8, 0) as any as S.Schema<AppHeartbeatResponse>,
+  input: __S(96, __c3, 0) as any as S.Schema<AppHeartbeatRequest>,
+  output: __S(128, __c4, 0) as any as S.Schema<AppHeartbeatResponse>,
   errors: [UnknownModalError],
   protocol: ModalProtocol,
   retry: Retry.Retry,
@@ -788,8 +788,8 @@ export const appRollback: API.OperationMethod<
   AppRollbackError,
   ModalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(65, __c8, 1) as any as S.Schema<AppRollbackRequest>,
-  output: __S(68, __c8, 4) as any as S.Schema<AppRollbackResponse>,
+  input: __S(160, __c5, 0) as any as S.Schema<AppRollbackRequest>,
+  output: __S(194, __c6, 2) as any as S.Schema<AppRollbackResponse>,
   errors: [UnknownModalError],
   protocol: ModalProtocol,
   retry: Retry.Retry,
@@ -802,8 +802,8 @@ export const appRollover: API.OperationMethod<
   AppRolloverError,
   ModalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(69, __c8, 5) as any as S.Schema<AppRolloverRequest>,
-  output: __S(68, __c8, 4) as any as S.Schema<AppRolloverResponse>,
+  input: __S(224, __c7, 0) as any as S.Schema<AppRolloverRequest>,
+  output: __S(194, __c6, 2) as any as S.Schema<AppRolloverResponse>,
   errors: [UnknownModalError],
   protocol: ModalProtocol,
   retry: Retry.Retry,
@@ -816,8 +816,8 @@ export const appSetObjects: API.OperationMethod<
   AppSetObjectsError,
   ModalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(70, __c8, 6) as any as S.Schema<AppSetObjectsRequest>,
-  output: __S(64, __c8, 0) as any as S.Schema<AppSetObjectsResponse>,
+  input: __S(256, __c8, 0) as any as S.Schema<AppSetObjectsRequest>,
+  output: __S(128, __c4, 0) as any as S.Schema<AppSetObjectsResponse>,
   errors: [UnknownModalError],
   protocol: ModalProtocol,
   retry: Retry.Retry,
@@ -830,8 +830,8 @@ export const appSetTags: API.OperationMethod<
   AppSetTagsError,
   ModalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(71, __c8, 7) as any as S.Schema<AppSetTagsRequest>,
-  output: __S(64, __c8, 0) as any as S.Schema<AppSetTagsResponse>,
+  input: __S(288, __c9, 0) as any as S.Schema<AppSetTagsRequest>,
+  output: __S(128, __c4, 0) as any as S.Schema<AppSetTagsResponse>,
   errors: [UnknownModalError],
   protocol: ModalProtocol,
   retry: Retry.Retry,
@@ -844,8 +844,8 @@ export const createApp: API.OperationMethod<
   CreateAppError,
   ModalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(72, __c9, 0) as any as S.Schema<CreateAppRequest>,
-  output: __S(73, __c9, 1) as any as S.Schema<CreateAppResponse>,
+  input: __S(320, __c10, 0) as any as S.Schema<CreateAppRequest>,
+  output: __S(321, __c10, 1) as any as S.Schema<CreateAppResponse>,
   errors: [UnknownModalError],
   protocol: ModalProtocol,
   retry: Retry.Retry,
@@ -858,8 +858,8 @@ export const deployApp: API.OperationMethod<
   DeployAppError,
   ModalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(74, __c9, 2) as any as S.Schema<DeployAppRequest>,
-  output: __S(75, __c9, 3) as any as S.Schema<DeployAppResponse>,
+  input: __S(352, __c11, 0) as any as S.Schema<DeployAppRequest>,
+  output: __S(353, __c11, 1) as any as S.Schema<DeployAppResponse>,
   errors: [UnknownModalError],
   protocol: ModalProtocol,
   retry: Retry.Retry,
@@ -873,8 +873,8 @@ export const disconnectAppClient: API.OperationMethod<
   DisconnectAppClientError,
   ModalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(76, __c9, 4) as any as S.Schema<DisconnectAppClientRequest>,
-  output: __S(64, __c8, 0) as any as S.Schema<DisconnectAppClientResponse>,
+  input: __S(384, __c12, 0) as any as S.Schema<DisconnectAppClientRequest>,
+  output: __S(128, __c4, 0) as any as S.Schema<DisconnectAppClientResponse>,
   errors: [UnknownModalError],
   protocol: ModalProtocol,
   retry: Retry.Retry,
@@ -887,8 +887,8 @@ export const listApp: API.OperationMethod<
   ListAppError,
   ModalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(77, __c9, 5) as any as S.Schema<ListAppRequest>,
-  output: __S(80, __c10, 0) as any as S.Schema<ListAppResponse>,
+  input: __S(416, __c13, 0) as any as S.Schema<ListAppRequest>,
+  output: __S(419, __c13, 3) as any as S.Schema<ListAppResponse>,
   errors: [UnknownModalError],
   protocol: ModalProtocol,
   retry: Retry.Retry,
@@ -901,8 +901,8 @@ export const lookupApp: API.OperationMethod<
   LookupAppError,
   ModalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(81, __c10, 1) as any as S.Schema<LookupAppRequest>,
-  output: __S(82, __c10, 2) as any as S.Schema<LookupAppResponse>,
+  input: __S(448, __c14, 0) as any as S.Schema<LookupAppRequest>,
+  output: __S(449, __c14, 1) as any as S.Schema<LookupAppResponse>,
   errors: [UnknownModalError],
   protocol: ModalProtocol,
   retry: Retry.Retry,
@@ -915,8 +915,8 @@ export const promoteApp: API.OperationMethod<
   PromoteAppError,
   ModalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(83, __c10, 3) as any as S.Schema<PromoteAppRequest>,
-  output: __S(68, __c8, 4) as any as S.Schema<PromoteAppResponse>,
+  input: __S(512, __c16, 0) as any as S.Schema<PromoteAppRequest>,
+  output: __S(194, __c6, 2) as any as S.Schema<PromoteAppResponse>,
   errors: [UnknownModalError],
   protocol: ModalProtocol,
   retry: Retry.Retry,
@@ -929,8 +929,8 @@ export const publishApp: API.OperationMethod<
   PublishAppError,
   ModalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(84, __c10, 4) as any as S.Schema<PublishAppRequest>,
-  output: __S(68, __c8, 4) as any as S.Schema<PublishAppResponse>,
+  input: __S(544, __c17, 0) as any as S.Schema<PublishAppRequest>,
+  output: __S(194, __c6, 2) as any as S.Schema<PublishAppResponse>,
   errors: [UnknownModalError],
   protocol: ModalProtocol,
   retry: Retry.Retry,
@@ -943,8 +943,8 @@ export const stopApp: API.OperationMethod<
   StopAppError,
   ModalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(85, __c10, 5) as any as S.Schema<StopAppRequest>,
-  output: __S(64, __c8, 0) as any as S.Schema<StopAppResponse>,
+  input: __S(576, __c18, 0) as any as S.Schema<StopAppRequest>,
+  output: __S(128, __c4, 0) as any as S.Schema<StopAppResponse>,
   errors: [UnknownModalError],
   protocol: ModalProtocol,
   retry: Retry.Retry,
@@ -991,7 +991,11 @@ function __c0(j: number): any {
           buckets: S.optional(__S(2, __c0, 2)),
         }),
       ).annotate({ identifier: "AppCountLogsResponse" });
-    case 4:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           appId: S.optional(S.String),
@@ -1005,7 +1009,38 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "AppDeploymentHistoryRequest",
       });
-    case 5:
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          appId: S.optional(S.String),
+          version: S.optional(S.Number),
+          clientVersion: S.optional(S.String),
+          deployedAt: S.optional(S.Number),
+          deployedBy: S.optional(S.String),
+          deployedByAvatarUrl: S.optional(S.String),
+          tag: S.optional(S.String),
+          rollbackVersion: S.optional(S.Number),
+          rollbackAllowed: S.optional(S.Boolean),
+          commitInfo: S.optional(__S(64, __c2, 0)),
+          deploymentType: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "AppDeploymentHistory2" });
+    case 2:
+      return S.Array(__S(33, __c1, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          appDeploymentHistories: S.optional(__S(34, __c1, 2)),
+          productionAppVersion: S.optional(S.Number),
+        }),
+      ).annotate({
+        identifier: "AppDeploymentHistoryResponse",
+      });
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           vcs: S.optional(S.String),
@@ -1018,38 +1053,216 @@ function __c0(j: number): any {
           repoUrl: S.optional(S.String),
         }),
       ).annotate({ identifier: "CommitInfo" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          appId: S.optional(S.String),
-          version: S.optional(S.Number),
-          clientVersion: S.optional(S.String),
-          deployedAt: S.optional(S.Number),
-          deployedBy: S.optional(S.String),
-          deployedByAvatarUrl: S.optional(S.String),
-          tag: S.optional(S.String),
-          rollbackVersion: S.optional(S.Number),
-          rollbackAllowed: S.optional(S.Boolean),
-          commitInfo: S.optional(__S(5, __c0, 5)),
-          deploymentType: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "AppDeploymentHistory2" });
-    case 7:
-      return S.Array(__S(6, __c0, 6));
   }
 }
-function __c1(j: number): any {
+function __c3(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          appDeploymentHistories: S.optional(__S(7, __c0, 7)),
-          productionAppVersion: S.optional(S.Number),
+          appId: S.optional(S.String),
+        }).pipe(
+          T.Http({ method: "POST", uri: "/modal.client.ModalClient/AppHeartbeat", code: 200 }),
+        ),
+      ).annotate({ identifier: "AppHeartbeatRequest" });
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "AppHeartbeatResponse",
+      });
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          appId: S.optional(S.String),
+          version: S.optional(S.Number),
+        }).pipe(
+          T.Http({ method: "POST", uri: "/modal.client.ModalClient/AppRollback", code: 200 }),
+        ),
+      ).annotate({ identifier: "AppRollbackRequest" });
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          type: S.optional(S.String),
+          message: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Warning" });
+    case 1:
+      return S.Array(__S(192, __c6, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          url: S.optional(S.String),
+          serverWarnings: S.optional(__S(193, __c6, 1)),
+          deployedAt: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "AppRollbackResponse" });
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          appId: S.optional(S.String),
+        }).pipe(
+          T.Http({ method: "POST", uri: "/modal.client.ModalClient/AppRollover", code: 200 }),
+        ),
+      ).annotate({ identifier: "AppRolloverRequest" });
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          appId: S.optional(S.String),
+          indexedObjectIds: S.optional(__S(704, __c22, 0)),
+          clientId: S.optional(S.String),
+          unindexedObjectIds: S.optional(__S(832, __c26, 0)),
+          newAppState: S.optional(S.String),
+        }).pipe(
+          T.Http({ method: "POST", uri: "/modal.client.ModalClient/AppSetObjects", code: 200 }),
+        ),
+      ).annotate({ identifier: "AppSetObjectsRequest" });
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          appId: S.optional(S.String),
+          tags: S.optional(__S(704, __c22, 0)),
+        }).pipe(T.Http({ method: "POST", uri: "/modal.client.ModalClient/AppSetTags", code: 200 })),
+      ).annotate({ identifier: "AppSetTagsRequest" });
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          clientId: S.optional(S.String),
+          description: S.optional(S.String),
+          environmentName: S.optional(S.String),
+          appState: S.optional(S.String),
+          tags: S.optional(__S(704, __c22, 0)),
+        }).pipe(T.Http({ method: "POST", uri: "/modal.client.ModalClient/AppCreate", code: 200 })),
+      ).annotate({ identifier: "CreateAppRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          appId: S.optional(S.String),
+          appPageUrl: S.optional(S.String),
+          appLogsUrl: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "CreateAppResponse" });
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          appId: S.optional(S.String),
+          name: S.optional(S.String),
+          objectEntity: S.optional(S.String),
+          visibility: S.optional(S.String),
+          tag: S.optional(S.String),
+        }).pipe(T.Http({ method: "POST", uri: "/modal.client.ModalClient/AppDeploy", code: 200 })),
+      ).annotate({ identifier: "DeployAppRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          url: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "DeployAppResponse" });
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          appId: S.optional(S.String),
+          reason: S.optional(S.String),
+          exception: S.optional(S.String),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/modal.client.ModalClient/AppClientDisconnect",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "DisconnectAppClientRequest",
+      });
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          environmentName: S.optional(S.String),
+        }).pipe(T.Http({ method: "POST", uri: "/modal.client.ModalClient/AppList", code: 200 })),
+      ).annotate({ identifier: "ListAppRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          appId: S.optional(S.String),
+          description: S.optional(S.String),
+          state: S.optional(S.String),
+          createdAt: S.optional(S.Number),
+          stoppedAt: S.optional(S.Number),
+          nRunningTasks: S.optional(S.Number),
+          name: S.optional(S.String),
+          metadata: S.optional(__S(736, __c23, 0)),
         }),
       ).annotate({
-        identifier: "AppDeploymentHistoryResponse",
+        identifier: "ListAppResponseAppListItem",
       });
+    case 2:
+      return S.Array(__S(417, __c13, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          apps: S.optional(__S(418, __c13, 2)),
+        }),
+      ).annotate({ identifier: "ListAppResponse" });
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          appName: S.optional(S.String),
+          environmentName: S.optional(S.String),
+        }).pipe(T.Http({ method: "POST", uri: "/modal.client.ModalClient/AppLookup", code: 200 })),
+      ).annotate({ identifier: "LookupAppRequest" });
     case 1:
+      return S.suspend(() =>
+        S.Struct({
+          appId: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "LookupAppResponse" });
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           appId: S.optional(S.String),
@@ -1067,7 +1280,7 @@ function __c1(j: number): any {
           T.Http({ method: "POST", uri: "/modal.client.ModalClient/AppFetchLogs", code: 200 }),
         ),
       ).annotate({ identifier: "AppFetchLogsRequest" });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           len: S.optional(S.String),
@@ -1076,14 +1289,14 @@ function __c1(j: number): any {
           description: S.optional(S.String),
         }),
       ).annotate({ identifier: "TaskProgress" });
-    case 3:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           data: S.optional(S.String),
           taskState: S.optional(S.String),
           timestamp: S.optional(S.Number),
           fileDescriptor: S.optional(S.String),
-          taskProgress: S.optional(__S(10, __c1, 2)),
+          taskProgress: S.optional(__S(481, __c15, 1)),
           functionCallId: S.optional(S.String),
           inputId: S.optional(S.String),
           timestampNs: S.optional(S.String),
@@ -1091,13 +1304,13 @@ function __c1(j: number): any {
           containerName: S.optional(S.String),
         }),
       ).annotate({ identifier: "TaskLogs" });
+    case 3:
+      return S.Array(__S(482, __c15, 2));
     case 4:
-      return S.Array(__S(11, __c1, 3));
-    case 5:
       return S.suspend(() =>
         S.Struct({
           taskId: S.optional(S.String),
-          items: S.optional(__S(12, __c1, 4)),
+          items: S.optional(__S(483, __c15, 3)),
           entryId: S.optional(S.String),
           appDone: S.optional(S.Boolean),
           functionId: S.optional(S.String),
@@ -1110,17 +1323,61 @@ function __c1(j: number): any {
           sandboxId: S.optional(S.String),
         }),
       ).annotate({ identifier: "TaskLogsBatch" });
+    case 5:
+      return S.Array(__S(484, __c15, 4));
     case 6:
-      return S.Array(__S(13, __c1, 5));
-    case 7:
       return S.suspend(() =>
         S.Struct({
-          batches: S.optional(__S(14, __c1, 6)),
+          batches: S.optional(__S(485, __c15, 5)),
         }),
       ).annotate({ identifier: "AppFetchLogsResponse" });
   }
 }
-function __c2(j: number): any {
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          appId: S.optional(S.String),
+          version: S.optional(S.Number),
+        }).pipe(T.Http({ method: "POST", uri: "/modal.client.ModalClient/AppPromote", code: 200 })),
+      ).annotate({ identifier: "PromoteAppRequest" });
+  }
+}
+function __c17(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          appId: S.optional(S.String),
+          name: S.optional(S.String),
+          deploymentTag: S.optional(S.String),
+          appState: S.optional(S.String),
+          functionIds: S.optional(__S(704, __c22, 0)),
+          classIds: S.optional(__S(704, __c22, 0)),
+          definitionIds: S.optional(__S(704, __c22, 0)),
+          rollbackVersion: S.optional(S.Number),
+          clientVersion: S.optional(S.String),
+          commitInfo: S.optional(__S(64, __c2, 0)),
+          tags: S.optional(__S(704, __c22, 0)),
+          staged: S.optional(S.Boolean),
+          deploymentType: S.optional(S.String),
+        }).pipe(T.Http({ method: "POST", uri: "/modal.client.ModalClient/AppPublish", code: 200 })),
+      ).annotate({ identifier: "PublishAppRequest" });
+  }
+}
+function __c18(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          appId: S.optional(S.String),
+          source: S.optional(S.String),
+        }).pipe(T.Http({ method: "POST", uri: "/modal.client.ModalClient/AppStop", code: 200 })),
+      ).annotate({ identifier: "StopAppRequest" });
+  }
+}
+function __c19(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1140,6 +1397,21 @@ function __c2(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
+          appId: S.optional(S.String),
+          previousAppId: S.optional(S.String),
+          environmentName: S.optional(S.String),
+          lifecycle: S.optional(__S(640, __c20, 0)),
+        }),
+      ).annotate({
+        identifier: "AppGetByDeploymentNameResponse",
+      });
+  }
+}
+function __c20(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
           appState: S.optional(S.String),
           createdAt: S.optional(S.Number),
           createdBy: S.optional(S.String),
@@ -1150,37 +1422,17 @@ function __c2(j: number): any {
           stoppedBy: S.optional(S.String),
         }),
       ).annotate({ identifier: "AppLifecycle" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          appId: S.optional(S.String),
-          previousAppId: S.optional(S.String),
-          environmentName: S.optional(S.String),
-          lifecycle: S.optional(__S(17, __c2, 1)),
-        }),
-      ).annotate({
-        identifier: "AppGetByDeploymentNameResponse",
-      });
-    case 3:
+  }
+}
+function __c21(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           appId: S.optional(S.String),
         }).pipe(T.Http({ method: "POST", uri: "/modal.client.ModalClient/AppGetInfo", code: 200 })),
       ).annotate({ identifier: "AppGetInfoRequest" });
-    case 4:
-      return S.Record(S.String, S.String);
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          description: S.optional(S.String),
-          appId: S.optional(S.String),
-          environmentName: S.optional(S.String),
-          lifecycle: S.optional(__S(17, __c2, 1)),
-          functions: S.optional(__S(20, __c2, 4)),
-          servers: S.optional(__S(20, __c2, 4)),
-        }),
-      ).annotate({ identifier: "AppHandleMetadata" });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           type: S.optional(S.String),
@@ -1188,20 +1440,16 @@ function __c2(j: number): any {
           gpuType: S.optional(S.String),
         }),
       ).annotate({ identifier: "GPUConfig" });
-    case 7:
-      return S.Array(__S(22, __c2, 6));
-  }
-}
-function __c3(j: number): any {
-  switch (j) {
-    case 0:
+    case 2:
+      return S.Array(__S(673, __c21, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
           cronString: S.optional(S.String),
           timezone: S.optional(S.String),
         }),
       ).annotate({ identifier: "ScheduleCron" });
-    case 1:
+    case 4:
       return S.suspend(() =>
         S.Struct({
           years: S.optional(S.Number),
@@ -1213,18 +1461,18 @@ function __c3(j: number): any {
           seconds: S.optional(S.Number),
         }),
       ).annotate({ identifier: "SchedulePeriod" });
-    case 2:
+    case 5:
       return S.suspend(() =>
         S.Struct({
-          cron: S.optional(__S(24, __c3, 0)),
-          period: S.optional(__S(25, __c3, 1)),
+          cron: S.optional(__S(675, __c21, 3)),
+          period: S.optional(__S(676, __c21, 4)),
         }),
       ).annotate({ identifier: "Schedule" });
-    case 3:
+    case 6:
       return S.suspend(() =>
         S.Struct({
-          gpuConfig: S.optional(__S(23, __c2, 7)),
-          schedule: S.optional(__S(26, __c3, 2)),
+          gpuConfig: S.optional(__S(674, __c21, 2)),
+          schedule: S.optional(__S(677, __c21, 5)),
           webFunction: S.optional(S.Boolean),
           requiresProxyAuth: S.optional(S.Boolean),
           isSessioned: S.optional(S.Boolean),
@@ -1232,16 +1480,41 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "AppGetInfoResponseFunctionInfoSummary",
       });
-    case 4:
-      return S.Record(S.String, __S(27, __c3, 3));
-    case 5:
+    case 7:
+      return S.Record(S.String, __S(678, __c21, 6));
+    case 8:
       return S.suspend(() =>
         S.Struct({
-          info: S.optional(__S(21, __c2, 5)),
-          functionInfoSummaries: S.optional(__S(28, __c3, 4)),
+          info: S.optional(__S(736, __c23, 0)),
+          functionInfoSummaries: S.optional(__S(679, __c21, 7)),
         }),
       ).annotate({ identifier: "AppGetInfoResponse" });
-    case 6:
+  }
+}
+function __c22(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, S.String);
+  }
+}
+function __c23(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          description: S.optional(S.String),
+          appId: S.optional(S.String),
+          environmentName: S.optional(S.String),
+          lifecycle: S.optional(__S(640, __c20, 0)),
+          functions: S.optional(__S(704, __c22, 0)),
+          servers: S.optional(__S(704, __c22, 0)),
+        }),
+      ).annotate({ identifier: "AppHandleMetadata" });
+  }
+}
+function __c24(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           appId: S.optional(S.String),
@@ -1249,20 +1522,36 @@ function __c3(j: number): any {
           T.Http({ method: "POST", uri: "/modal.client.ModalClient/AppGetLayout", code: 200 }),
         ),
       ).annotate({ identifier: "AppGetLayoutRequest" });
-    case 7:
-      return S.Array(/*@__PURE__*/ S.suspend(() => __S(32, __c4, 0)));
+    case 1:
+      return S.Array(__S(817, __c25, 17));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          objects: S.optional(__S(769, __c24, 1)),
+          functionIds: S.optional(__S(704, __c22, 0)),
+          classIds: S.optional(__S(704, __c22, 0)),
+        }),
+      ).annotate({ identifier: "AppLayout" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          appLayout: S.optional(__S(770, __c24, 2)),
+        }),
+      ).annotate({ identifier: "AppGetLayoutResponse" });
   }
 }
-function __c4(j: number): any {
+function __c25(j: number): any {
   switch (j) {
     case 0:
+      return S.Array(/*@__PURE__*/ S.suspend(() => __S(801, __c25, 1)));
+    case 1:
       return S.suspend(() =>
         S.Struct({
           baseType: S.optional(S.String),
-          subTypes: S.optional(__S(31, __c3, 7)),
+          subTypes: S.optional(__S(800, __c25, 0)),
         }),
       ).annotate({ identifier: "GenericPayloadType" });
-    case 1:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
@@ -1273,40 +1562,34 @@ function __c4(j: number): any {
           pickleDefault: S.optional(S.String),
           bytesDefault: S.optional(S.String),
           boolDefault: S.optional(S.Boolean),
-          fullType: S.optional(__S(32, __c4, 0)),
+          fullType: S.optional(__S(801, __c25, 1)),
         }),
       ).annotate({ identifier: "ClassParameterSpec" });
-    case 2:
-      return S.Array(__S(33, __c4, 1));
     case 3:
+      return S.Array(__S(802, __c25, 2));
+    case 4:
       return S.suspend(() =>
         S.Struct({
           format: S.optional(S.String),
-          schema: S.optional(__S(34, __c4, 2)),
+          schema: S.optional(__S(803, __c25, 3)),
         }),
       ).annotate({ identifier: "ClassParameterInfo" });
-    case 4:
+    case 5:
       return S.Record(
         S.String,
-        /*@__PURE__*/ S.suspend(() => __S(40, __c5, 0)),
+        /*@__PURE__*/ S.suspend(() => __S(808, __c25, 8)),
       );
-    case 5:
+    case 6:
       return S.suspend(() =>
         S.Struct({
           schemaType: S.optional(S.String),
-          arguments: S.optional(__S(34, __c4, 2)),
-          returnType: S.optional(__S(32, __c4, 0)),
+          arguments: S.optional(__S(803, __c25, 3)),
+          returnType: S.optional(__S(801, __c25, 1)),
         }),
       ).annotate({ identifier: "FunctionSchema" });
-    case 6:
-      return S.Array(S.String);
     case 7:
       return S.Array(S.String);
-  }
-}
-function __c5(j: number): any {
-  switch (j) {
-    case 0:
+    case 8:
       return S.suspend(() =>
         S.Struct({
           functionName: S.optional(S.String),
@@ -1315,45 +1598,45 @@ function __c5(j: number): any {
           isMethod: S.optional(S.Boolean),
           useMethodName: S.optional(S.String),
           definitionId: S.optional(S.String),
-          classParameterInfo: S.optional(__S(35, __c4, 3)),
-          methodHandleMetadata: S.optional(__S(36, __c4, 4)),
-          functionSchema: S.optional(__S(37, __c4, 5)),
+          classParameterInfo: S.optional(__S(804, __c25, 4)),
+          methodHandleMetadata: S.optional(__S(805, __c25, 5)),
+          functionSchema: S.optional(__S(806, __c25, 6)),
           inputPlaneUrl: S.optional(S.String),
           inputPlaneRegion: S.optional(S.String),
           maxObjectSizeBytes: S.optional(S.String),
           maxAsyncObjectSizeBytes: S.optional(S.String),
-          ExperimentalFlashUrls: S.optional(__S(38, __c4, 6)),
-          supportedInputFormats: S.optional(__S(39, __c4, 7)),
-          supportedOutputFormats: S.optional(__S(39, __c4, 7)),
+          ExperimentalFlashUrls: S.optional(__S(832, __c26, 0)),
+          supportedInputFormats: S.optional(__S(807, __c25, 7)),
+          supportedOutputFormats: S.optional(__S(807, __c25, 7)),
           appId: S.optional(S.String),
           baseFunctionId: S.optional(S.String),
         }),
       ).annotate({ identifier: "FunctionHandleMetadata" });
-    case 1:
+    case 9:
       return S.suspend(() =>
         S.Struct({
           contentChecksumSha256Hex: S.optional(S.String),
         }),
       ).annotate({ identifier: "MountHandleMetadata" });
-    case 2:
+    case 10:
       return S.suspend(() =>
         S.Struct({
           functionName: S.optional(S.String),
           functionId: S.optional(S.String),
-          functionHandleMetadata: S.optional(__S(40, __c5, 0)),
+          functionHandleMetadata: S.optional(__S(808, __c25, 8)),
         }),
       ).annotate({ identifier: "ClassMethod" });
-    case 3:
-      return S.Array(__S(42, __c5, 2));
-    case 4:
+    case 11:
+      return S.Array(__S(810, __c25, 10));
+    case 12:
       return S.suspend(() =>
         S.Struct({
-          methods: S.optional(__S(43, __c5, 3)),
+          methods: S.optional(__S(811, __c25, 11)),
           classFunctionId: S.optional(S.String),
-          classFunctionMetadata: S.optional(__S(40, __c5, 0)),
+          classFunctionMetadata: S.optional(__S(808, __c25, 8)),
         }),
       ).annotate({ identifier: "ClassHandleMetadata" });
-    case 5:
+    case 13:
       return S.suspend(() =>
         S.Struct({
           status: S.optional(S.String),
@@ -1367,60 +1650,50 @@ function __c5(j: number): any {
           propagationReason: S.optional(S.String),
         }),
       ).annotate({ identifier: "GenericResult" });
-    case 6:
+    case 14:
       return S.suspend(() =>
         S.Struct({
-          result: S.optional(__S(45, __c5, 5)),
+          result: S.optional(__S(813, __c25, 13)),
           appId: S.optional(S.String),
         }),
       ).annotate({ identifier: "SandboxHandleMetadata" });
-    case 7:
+    case 15:
       return S.suspend(() =>
         S.Struct({
           createdAt: S.optional(S.Number),
           createdBy: S.optional(S.String),
         }),
       ).annotate({ identifier: "CreationInfo" });
-  }
-}
-function __c6(j: number): any {
-  switch (j) {
-    case 0:
+    case 16:
       return S.suspend(() =>
         S.Struct({
           version: S.optional(S.String),
           name: S.optional(S.String),
-          creationInfo: S.optional(__S(47, __c5, 7)),
+          creationInfo: S.optional(__S(815, __c25, 15)),
         }),
       ).annotate({ identifier: "VolumeMetadata" });
-    case 1:
+    case 17:
       return S.suspend(() =>
         S.Struct({
           objectId: S.optional(S.String),
-          functionHandleMetadata: S.optional(__S(40, __c5, 0)),
-          mountHandleMetadata: S.optional(__S(41, __c5, 1)),
-          classHandleMetadata: S.optional(__S(44, __c5, 4)),
-          sandboxHandleMetadata: S.optional(__S(46, __c5, 6)),
-          volumeMetadata: S.optional(__S(48, __c6, 0)),
+          functionHandleMetadata: S.optional(__S(808, __c25, 8)),
+          mountHandleMetadata: S.optional(__S(809, __c25, 9)),
+          classHandleMetadata: S.optional(__S(812, __c25, 12)),
+          sandboxHandleMetadata: S.optional(__S(814, __c25, 14)),
+          volumeMetadata: S.optional(__S(816, __c25, 16)),
         }),
       ).annotate({ identifier: "Object" });
-    case 2:
-      return S.Array(__S(49, __c6, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          objects: S.optional(__S(50, __c6, 2)),
-          functionIds: S.optional(__S(20, __c2, 4)),
-          classIds: S.optional(__S(20, __c2, 4)),
-        }),
-      ).annotate({ identifier: "AppLayout" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          appLayout: S.optional(__S(51, __c6, 3)),
-        }),
-      ).annotate({ identifier: "AppGetLayoutResponse" });
-    case 5:
+  }
+}
+function __c26(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c27(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           appId: S.optional(S.String),
@@ -1428,13 +1701,17 @@ function __c6(j: number): any {
           T.Http({ method: "POST", uri: "/modal.client.ModalClient/AppGetLifecycle", code: 200 }),
         ),
       ).annotate({ identifier: "AppGetLifecycleRequest" });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          lifecycle: S.optional(__S(17, __c2, 1)),
+          lifecycle: S.optional(__S(640, __c20, 0)),
         }),
       ).annotate({ identifier: "AppGetLifecycleResponse" });
-    case 7:
+  }
+}
+function __c28(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           appId: S.optional(S.String),
@@ -1444,26 +1721,26 @@ function __c6(j: number): any {
           T.Http({ method: "POST", uri: "/modal.client.ModalClient/AppGetObjects", code: 200 }),
         ),
       ).annotate({ identifier: "AppGetObjectsRequest" });
-  }
-}
-function __c7(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           tag: S.optional(S.String),
-          object: S.optional(__S(49, __c6, 1)),
+          object: S.optional(__S(817, __c25, 17)),
         }),
       ).annotate({ identifier: "AppGetObjectsItem" });
-    case 1:
-      return S.Array(__S(56, __c7, 0));
     case 2:
+      return S.Array(__S(897, __c28, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          items: S.optional(__S(57, __c7, 1)),
+          items: S.optional(__S(898, __c28, 2)),
         }),
       ).annotate({ identifier: "AppGetObjectsResponse" });
-    case 3:
+  }
+}
+function __c29(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           appName: S.optional(S.String),
@@ -1473,229 +1750,31 @@ function __c7(j: number): any {
           T.Http({ method: "POST", uri: "/modal.client.ModalClient/AppGetOrCreate", code: 200 }),
         ),
       ).annotate({ identifier: "AppGetOrCreateRequest" });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           appId: S.optional(S.String),
-          handleMetadata: S.optional(__S(21, __c2, 5)),
+          handleMetadata: S.optional(__S(736, __c23, 0)),
         }),
       ).annotate({ identifier: "AppGetOrCreateResponse" });
-    case 5:
+  }
+}
+function __c30(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           appId: S.optional(S.String),
         }).pipe(T.Http({ method: "POST", uri: "/modal.client.ModalClient/AppGetTags", code: 200 })),
       ).annotate({ identifier: "AppGetTagsRequest" });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          tags: S.optional(__S(20, __c2, 4)),
+          tags: S.optional(__S(704, __c22, 0)),
         }),
       ).annotate({ identifier: "AppGetTagsResponse" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          appId: S.optional(S.String),
-        }).pipe(
-          T.Http({ method: "POST", uri: "/modal.client.ModalClient/AppHeartbeat", code: 200 }),
-        ),
-      ).annotate({ identifier: "AppHeartbeatRequest" });
   }
 }
-function __c8(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "AppHeartbeatResponse",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          appId: S.optional(S.String),
-          version: S.optional(S.Number),
-        }).pipe(
-          T.Http({ method: "POST", uri: "/modal.client.ModalClient/AppRollback", code: 200 }),
-        ),
-      ).annotate({ identifier: "AppRollbackRequest" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          type: S.optional(S.String),
-          message: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Warning" });
-    case 3:
-      return S.Array(__S(66, __c8, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          url: S.optional(S.String),
-          serverWarnings: S.optional(__S(67, __c8, 3)),
-          deployedAt: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "AppRollbackResponse" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          appId: S.optional(S.String),
-        }).pipe(
-          T.Http({ method: "POST", uri: "/modal.client.ModalClient/AppRollover", code: 200 }),
-        ),
-      ).annotate({ identifier: "AppRolloverRequest" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          appId: S.optional(S.String),
-          indexedObjectIds: S.optional(__S(20, __c2, 4)),
-          clientId: S.optional(S.String),
-          unindexedObjectIds: S.optional(__S(38, __c4, 6)),
-          newAppState: S.optional(S.String),
-        }).pipe(
-          T.Http({ method: "POST", uri: "/modal.client.ModalClient/AppSetObjects", code: 200 }),
-        ),
-      ).annotate({ identifier: "AppSetObjectsRequest" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          appId: S.optional(S.String),
-          tags: S.optional(__S(20, __c2, 4)),
-        }).pipe(T.Http({ method: "POST", uri: "/modal.client.ModalClient/AppSetTags", code: 200 })),
-      ).annotate({ identifier: "AppSetTagsRequest" });
-  }
-}
-function __c9(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          clientId: S.optional(S.String),
-          description: S.optional(S.String),
-          environmentName: S.optional(S.String),
-          appState: S.optional(S.String),
-          tags: S.optional(__S(20, __c2, 4)),
-        }).pipe(T.Http({ method: "POST", uri: "/modal.client.ModalClient/AppCreate", code: 200 })),
-      ).annotate({ identifier: "CreateAppRequest" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          appId: S.optional(S.String),
-          appPageUrl: S.optional(S.String),
-          appLogsUrl: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "CreateAppResponse" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          appId: S.optional(S.String),
-          name: S.optional(S.String),
-          objectEntity: S.optional(S.String),
-          visibility: S.optional(S.String),
-          tag: S.optional(S.String),
-        }).pipe(T.Http({ method: "POST", uri: "/modal.client.ModalClient/AppDeploy", code: 200 })),
-      ).annotate({ identifier: "DeployAppRequest" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          url: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "DeployAppResponse" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          appId: S.optional(S.String),
-          reason: S.optional(S.String),
-          exception: S.optional(S.String),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/modal.client.ModalClient/AppClientDisconnect",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "DisconnectAppClientRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          environmentName: S.optional(S.String),
-        }).pipe(T.Http({ method: "POST", uri: "/modal.client.ModalClient/AppList", code: 200 })),
-      ).annotate({ identifier: "ListAppRequest" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          appId: S.optional(S.String),
-          description: S.optional(S.String),
-          state: S.optional(S.String),
-          createdAt: S.optional(S.Number),
-          stoppedAt: S.optional(S.Number),
-          nRunningTasks: S.optional(S.Number),
-          name: S.optional(S.String),
-          metadata: S.optional(__S(21, __c2, 5)),
-        }),
-      ).annotate({
-        identifier: "ListAppResponseAppListItem",
-      });
-    case 7:
-      return S.Array(__S(78, __c9, 6));
-  }
-}
-function __c10(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          apps: S.optional(__S(79, __c9, 7)),
-        }),
-      ).annotate({ identifier: "ListAppResponse" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          appName: S.optional(S.String),
-          environmentName: S.optional(S.String),
-        }).pipe(T.Http({ method: "POST", uri: "/modal.client.ModalClient/AppLookup", code: 200 })),
-      ).annotate({ identifier: "LookupAppRequest" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          appId: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "LookupAppResponse" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          appId: S.optional(S.String),
-          version: S.optional(S.Number),
-        }).pipe(T.Http({ method: "POST", uri: "/modal.client.ModalClient/AppPromote", code: 200 })),
-      ).annotate({ identifier: "PromoteAppRequest" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          appId: S.optional(S.String),
-          name: S.optional(S.String),
-          deploymentTag: S.optional(S.String),
-          appState: S.optional(S.String),
-          functionIds: S.optional(__S(20, __c2, 4)),
-          classIds: S.optional(__S(20, __c2, 4)),
-          definitionIds: S.optional(__S(20, __c2, 4)),
-          rollbackVersion: S.optional(S.Number),
-          clientVersion: S.optional(S.String),
-          commitInfo: S.optional(__S(5, __c0, 5)),
-          tags: S.optional(__S(20, __c2, 4)),
-          staged: S.optional(S.Boolean),
-          deploymentType: S.optional(S.String),
-        }).pipe(T.Http({ method: "POST", uri: "/modal.client.ModalClient/AppPublish", code: 200 })),
-      ).annotate({ identifier: "PublishAppRequest" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          appId: S.optional(S.String),
-          source: S.optional(S.String),
-        }).pipe(T.Http({ method: "POST", uri: "/modal.client.ModalClient/AppStop", code: 200 })),
-      ).annotate({ identifier: "StopAppRequest" });
-  }
-}
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

@@ -1594,8 +1594,8 @@ export const addTagsToOnPremisesInstances: API.OperationMethod<
   AddTagsToOnPremisesInstancesError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3, __c0, 3) as any as S.Schema<AddTagsToOnPremisesInstancesInput>,
-  output: __S(4, __c0, 4) as any as S.Schema<AddTagsToOnPremisesInstancesResponse>,
+  input: __S(0, __c0, 0) as any as S.Schema<AddTagsToOnPremisesInstancesInput>,
+  output: __S(48, __c3, 0) as any as S.Schema<AddTagsToOnPremisesInstancesResponse>,
   errors: [
     InstanceLimitExceededException,
     InstanceNameRequiredException,
@@ -1628,8 +1628,8 @@ export const batchGetApplicationRevisions: API.OperationMethod<
   BatchGetApplicationRevisionsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(10, __c1, 2) as any as S.Schema<BatchGetApplicationRevisionsInput>,
-  output: __S(14, __c1, 6) as any as S.Schema<BatchGetApplicationRevisionsOutput>,
+  input: __S(64, __c4, 0) as any as S.Schema<BatchGetApplicationRevisionsInput>,
+  output: __S(67, __c4, 3) as any as S.Schema<BatchGetApplicationRevisionsOutput>,
   errors: [
     ApplicationDoesNotExistException,
     ApplicationNameRequiredException,
@@ -1659,8 +1659,8 @@ export const batchGetApplications: API.OperationMethod<
   BatchGetApplicationsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(15, __c1, 7) as any as S.Schema<BatchGetApplicationsInput>,
-  output: __S(18, __c2, 2) as any as S.Schema<BatchGetApplicationsOutput>,
+  input: __S(128, __c8, 0) as any as S.Schema<BatchGetApplicationsInput>,
+  output: __S(130, __c8, 2) as any as S.Schema<BatchGetApplicationsOutput>,
   errors: [
     ApplicationDoesNotExistException,
     ApplicationNameRequiredException,
@@ -1690,8 +1690,8 @@ export const batchGetDeploymentGroups: API.OperationMethod<
   BatchGetDeploymentGroupsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(19, __c2, 3) as any as S.Schema<BatchGetDeploymentGroupsInput>,
-  output: __S(48, __c6, 0) as any as S.Schema<BatchGetDeploymentGroupsOutput>,
+  input: __S(160, __c10, 0) as any as S.Schema<BatchGetDeploymentGroupsInput>,
+  output: __S(162, __c10, 2) as any as S.Schema<BatchGetDeploymentGroupsOutput>,
   errors: [
     ApplicationDoesNotExistException,
     ApplicationNameRequiredException,
@@ -1730,8 +1730,8 @@ export const batchGetDeploymentInstances: API.OperationMethod<
   BatchGetDeploymentInstancesError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(49, __c6, 1) as any as S.Schema<BatchGetDeploymentInstancesInput>,
-  output: __S(55, __c6, 7) as any as S.Schema<BatchGetDeploymentInstancesOutput>,
+  input: __S(304, __c19, 0) as any as S.Schema<BatchGetDeploymentInstancesInput>,
+  output: __S(306, __c19, 2) as any as S.Schema<BatchGetDeploymentInstancesOutput>,
   errors: [
     BatchLimitExceededException,
     DeploymentDoesNotExistException,
@@ -1761,8 +1761,8 @@ export const batchGetDeployments: API.OperationMethod<
   BatchGetDeploymentsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(56, __c7, 0) as any as S.Schema<BatchGetDeploymentsInput>,
-  output: __S(64, __c8, 0) as any as S.Schema<BatchGetDeploymentsOutput>,
+  input: __S(352, __c22, 0) as any as S.Schema<BatchGetDeploymentsInput>,
+  output: __S(354, __c22, 2) as any as S.Schema<BatchGetDeploymentsOutput>,
   errors: [
     BatchLimitExceededException,
     DeploymentIdRequiredException,
@@ -1810,8 +1810,8 @@ export const batchGetDeploymentTargets: API.OperationMethod<
   BatchGetDeploymentTargetsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(65, __c8, 1) as any as S.Schema<BatchGetDeploymentTargetsInput>,
-  output: __S(75, __c9, 3) as any as S.Schema<BatchGetDeploymentTargetsOutput>,
+  input: __S(400, __c25, 0) as any as S.Schema<BatchGetDeploymentTargetsInput>,
+  output: __S(402, __c25, 2) as any as S.Schema<BatchGetDeploymentTargetsOutput>,
   errors: [
     DeploymentDoesNotExistException,
     DeploymentIdRequiredException,
@@ -1843,8 +1843,8 @@ export const batchGetOnPremisesInstances: API.OperationMethod<
   BatchGetOnPremisesInstancesError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(76, __c9, 4) as any as S.Schema<BatchGetOnPremisesInstancesInput>,
-  output: __S(79, __c9, 7) as any as S.Schema<BatchGetOnPremisesInstancesOutput>,
+  input: __S(432, __c27, 0) as any as S.Schema<BatchGetOnPremisesInstancesInput>,
+  output: __S(434, __c27, 2) as any as S.Schema<BatchGetOnPremisesInstancesOutput>,
   errors: [
     BatchLimitExceededException,
     InstanceNameRequiredException,
@@ -1878,8 +1878,8 @@ export const continueDeployment: API.OperationMethod<
   ContinueDeploymentError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(80, __c10, 0) as any as S.Schema<ContinueDeploymentInput>,
-  output: __S(4, __c0, 4) as any as S.Schema<ContinueDeploymentResponse>,
+  input: __S(464, __c29, 0) as any as S.Schema<ContinueDeploymentInput>,
+  output: __S(48, __c3, 0) as any as S.Schema<ContinueDeploymentResponse>,
   errors: [
     DeploymentAlreadyCompletedException,
     DeploymentDoesNotExistException,
@@ -1913,8 +1913,8 @@ export const createApplication: API.OperationMethod<
   CreateApplicationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(81, __c10, 1) as any as S.Schema<CreateApplicationInput>,
-  output: __S(82, __c10, 2) as any as S.Schema<CreateApplicationOutput>,
+  input: __S(480, __c30, 0) as any as S.Schema<CreateApplicationInput>,
+  output: __S(481, __c30, 1) as any as S.Schema<CreateApplicationOutput>,
   errors: [
     ApplicationAlreadyExistsException,
     ApplicationLimitExceededException,
@@ -1969,8 +1969,8 @@ export const createDeployment: API.OperationMethod<
   CreateDeploymentError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(83, __c10, 3) as any as S.Schema<CreateDeploymentInput>,
-  output: __S(84, __c10, 4) as any as S.Schema<CreateDeploymentOutput>,
+  input: __S(496, __c31, 0) as any as S.Schema<CreateDeploymentInput>,
+  output: __S(497, __c31, 1) as any as S.Schema<CreateDeploymentOutput>,
   errors: [
     AlarmsLimitExceededException,
     ApplicationDoesNotExistException,
@@ -2026,8 +2026,8 @@ export const createDeploymentConfig: API.OperationMethod<
   CreateDeploymentConfigError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(91, __c11, 3) as any as S.Schema<CreateDeploymentConfigInput>,
-  output: __S(92, __c11, 4) as any as S.Schema<CreateDeploymentConfigOutput>,
+  input: __S(512, __c32, 0) as any as S.Schema<CreateDeploymentConfigInput>,
+  output: __S(513, __c32, 1) as any as S.Schema<CreateDeploymentConfigOutput>,
   errors: [
     DeploymentConfigAlreadyExistsException,
     DeploymentConfigLimitExceededException,
@@ -2087,8 +2087,8 @@ export const createDeploymentGroup: API.OperationMethod<
   CreateDeploymentGroupError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(93, __c11, 5) as any as S.Schema<CreateDeploymentGroupInput>,
-  output: __S(94, __c11, 6) as any as S.Schema<CreateDeploymentGroupOutput>,
+  input: __S(544, __c34, 0) as any as S.Schema<CreateDeploymentGroupInput>,
+  output: __S(545, __c34, 1) as any as S.Schema<CreateDeploymentGroupOutput>,
   errors: [
     AlarmsLimitExceededException,
     ApplicationDoesNotExistException,
@@ -2143,8 +2143,8 @@ export const deleteApplication: API.OperationMethod<
   DeleteApplicationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(95, __c11, 7) as any as S.Schema<DeleteApplicationInput>,
-  output: __S(4, __c0, 4) as any as S.Schema<DeleteApplicationResponse>,
+  input: __S(560, __c35, 0) as any as S.Schema<DeleteApplicationInput>,
+  output: __S(48, __c3, 0) as any as S.Schema<DeleteApplicationResponse>,
   errors: [ApplicationNameRequiredException, InvalidApplicationNameException, InvalidRoleException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2169,8 +2169,8 @@ export const deleteDeploymentConfig: API.OperationMethod<
   DeleteDeploymentConfigError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(96, __c12, 0) as any as S.Schema<DeleteDeploymentConfigInput>,
-  output: __S(4, __c0, 4) as any as S.Schema<DeleteDeploymentConfigResponse>,
+  input: __S(576, __c36, 0) as any as S.Schema<DeleteDeploymentConfigInput>,
+  output: __S(48, __c3, 0) as any as S.Schema<DeleteDeploymentConfigResponse>,
   errors: [
     DeploymentConfigInUseException,
     DeploymentConfigNameRequiredException,
@@ -2198,8 +2198,8 @@ export const deleteDeploymentGroup: API.OperationMethod<
   DeleteDeploymentGroupError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(97, __c12, 1) as any as S.Schema<DeleteDeploymentGroupInput>,
-  output: __S(98, __c12, 2) as any as S.Schema<DeleteDeploymentGroupOutput>,
+  input: __S(592, __c37, 0) as any as S.Schema<DeleteDeploymentGroupInput>,
+  output: __S(608, __c38, 0) as any as S.Schema<DeleteDeploymentGroupOutput>,
   errors: [
     ApplicationNameRequiredException,
     DeploymentGroupNameRequiredException,
@@ -2228,8 +2228,8 @@ export const deleteGitHubAccountToken: API.OperationMethod<
   DeleteGitHubAccountTokenError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(99, __c12, 3) as any as S.Schema<DeleteGitHubAccountTokenInput>,
-  output: __S(100, __c12, 4) as any as S.Schema<DeleteGitHubAccountTokenOutput>,
+  input: __S(624, __c39, 0) as any as S.Schema<DeleteGitHubAccountTokenInput>,
+  output: __S(625, __c39, 1) as any as S.Schema<DeleteGitHubAccountTokenOutput>,
   errors: [
     GitHubAccountTokenDoesNotExistException,
     GitHubAccountTokenNameRequiredException,
@@ -2258,8 +2258,8 @@ export const deleteResourcesByExternalId: API.OperationMethod<
   DeleteResourcesByExternalIdError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(101, __c12, 5) as any as S.Schema<DeleteResourcesByExternalIdInput>,
-  output: __S(4, __c0, 4) as any as S.Schema<DeleteResourcesByExternalIdOutput>,
+  input: __S(640, __c40, 0) as any as S.Schema<DeleteResourcesByExternalIdInput>,
+  output: __S(48, __c3, 0) as any as S.Schema<DeleteResourcesByExternalIdOutput>,
   errors: [],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2279,8 +2279,8 @@ export const deregisterOnPremisesInstance: API.OperationMethod<
   DeregisterOnPremisesInstanceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(102, __c12, 6) as any as S.Schema<DeregisterOnPremisesInstanceInput>,
-  output: __S(4, __c0, 4) as any as S.Schema<DeregisterOnPremisesInstanceResponse>,
+  input: __S(656, __c41, 0) as any as S.Schema<DeregisterOnPremisesInstanceInput>,
+  output: __S(48, __c3, 0) as any as S.Schema<DeregisterOnPremisesInstanceResponse>,
   errors: [InstanceNameRequiredException, InvalidInstanceNameException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2301,8 +2301,8 @@ export const getApplication: API.OperationMethod<
   GetApplicationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(103, __c12, 7) as any as S.Schema<GetApplicationInput>,
-  output: __S(104, __c13, 0) as any as S.Schema<GetApplicationOutput>,
+  input: __S(672, __c42, 0) as any as S.Schema<GetApplicationInput>,
+  output: __S(673, __c42, 1) as any as S.Schema<GetApplicationOutput>,
   errors: [
     ApplicationDoesNotExistException,
     ApplicationNameRequiredException,
@@ -2330,8 +2330,8 @@ export const getApplicationRevision: API.OperationMethod<
   GetApplicationRevisionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(105, __c13, 1) as any as S.Schema<GetApplicationRevisionInput>,
-  output: __S(106, __c13, 2) as any as S.Schema<GetApplicationRevisionOutput>,
+  input: __S(688, __c43, 0) as any as S.Schema<GetApplicationRevisionInput>,
+  output: __S(689, __c43, 1) as any as S.Schema<GetApplicationRevisionOutput>,
   errors: [
     ApplicationDoesNotExistException,
     ApplicationNameRequiredException,
@@ -2364,8 +2364,8 @@ export const getDeployment: API.OperationMethod<
   GetDeploymentError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(107, __c13, 3) as any as S.Schema<GetDeploymentInput>,
-  output: __S(108, __c13, 4) as any as S.Schema<GetDeploymentOutput>,
+  input: __S(704, __c44, 0) as any as S.Schema<GetDeploymentInput>,
+  output: __S(705, __c44, 1) as any as S.Schema<GetDeploymentOutput>,
   errors: [
     DeploymentDoesNotExistException,
     DeploymentIdRequiredException,
@@ -2391,8 +2391,8 @@ export const getDeploymentConfig: API.OperationMethod<
   GetDeploymentConfigError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(109, __c13, 5) as any as S.Schema<GetDeploymentConfigInput>,
-  output: __S(111, __c13, 7) as any as S.Schema<GetDeploymentConfigOutput>,
+  input: __S(720, __c45, 0) as any as S.Schema<GetDeploymentConfigInput>,
+  output: __S(722, __c45, 2) as any as S.Schema<GetDeploymentConfigOutput>,
   errors: [
     DeploymentConfigDoesNotExistException,
     DeploymentConfigNameRequiredException,
@@ -2422,8 +2422,8 @@ export const getDeploymentGroup: API.OperationMethod<
   GetDeploymentGroupError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(112, __c14, 0) as any as S.Schema<GetDeploymentGroupInput>,
-  output: __S(113, __c14, 1) as any as S.Schema<GetDeploymentGroupOutput>,
+  input: __S(736, __c46, 0) as any as S.Schema<GetDeploymentGroupInput>,
+  output: __S(737, __c46, 1) as any as S.Schema<GetDeploymentGroupOutput>,
   errors: [
     ApplicationDoesNotExistException,
     ApplicationNameRequiredException,
@@ -2456,8 +2456,8 @@ export const getDeploymentInstance: API.OperationMethod<
   GetDeploymentInstanceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(114, __c14, 2) as any as S.Schema<GetDeploymentInstanceInput>,
-  output: __S(115, __c14, 3) as any as S.Schema<GetDeploymentInstanceOutput>,
+  input: __S(752, __c47, 0) as any as S.Schema<GetDeploymentInstanceInput>,
+  output: __S(753, __c47, 1) as any as S.Schema<GetDeploymentInstanceOutput>,
   errors: [
     DeploymentDoesNotExistException,
     DeploymentIdRequiredException,
@@ -2491,8 +2491,8 @@ export const getDeploymentTarget: API.OperationMethod<
   GetDeploymentTargetError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(116, __c14, 4) as any as S.Schema<GetDeploymentTargetInput>,
-  output: __S(117, __c14, 5) as any as S.Schema<GetDeploymentTargetOutput>,
+  input: __S(768, __c48, 0) as any as S.Schema<GetDeploymentTargetInput>,
+  output: __S(769, __c48, 1) as any as S.Schema<GetDeploymentTargetOutput>,
   errors: [
     DeploymentDoesNotExistException,
     DeploymentIdRequiredException,
@@ -2522,8 +2522,8 @@ export const getOnPremisesInstance: API.OperationMethod<
   GetOnPremisesInstanceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(118, __c14, 6) as any as S.Schema<GetOnPremisesInstanceInput>,
-  output: __S(119, __c14, 7) as any as S.Schema<GetOnPremisesInstanceOutput>,
+  input: __S(784, __c49, 0) as any as S.Schema<GetOnPremisesInstanceInput>,
+  output: __S(785, __c49, 1) as any as S.Schema<GetOnPremisesInstanceOutput>,
   errors: [
     InstanceNameRequiredException,
     InstanceNotRegisteredException,
@@ -2556,8 +2556,8 @@ export const listApplicationRevisions: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   RevisionLocation
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(120, __c15, 0) as any as S.Schema<ListApplicationRevisionsInput>,
-  output: __S(121, __c15, 1) as any as S.Schema<ListApplicationRevisionsOutput>,
+  input: __S(800, __c50, 0) as any as S.Schema<ListApplicationRevisionsInput>,
+  output: __S(801, __c50, 1) as any as S.Schema<ListApplicationRevisionsOutput>,
   errors: [
     ApplicationDoesNotExistException,
     ApplicationNameRequiredException,
@@ -2587,8 +2587,8 @@ export const listApplications: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   ApplicationName
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(122, __c15, 2) as any as S.Schema<ListApplicationsInput>,
-  output: __S(123, __c15, 3) as any as S.Schema<ListApplicationsOutput>,
+  input: __S(816, __c51, 0) as any as S.Schema<ListApplicationsInput>,
+  output: __S(817, __c51, 1) as any as S.Schema<ListApplicationsOutput>,
   errors: [InvalidNextTokenException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2607,8 +2607,8 @@ export const listDeploymentConfigs: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   DeploymentConfigName
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(124, __c15, 4) as any as S.Schema<ListDeploymentConfigsInput>,
-  output: __S(125, __c15, 5) as any as S.Schema<ListDeploymentConfigsOutput>,
+  input: __S(832, __c52, 0) as any as S.Schema<ListDeploymentConfigsInput>,
+  output: __S(833, __c52, 1) as any as S.Schema<ListDeploymentConfigsOutput>,
   errors: [InvalidNextTokenException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2637,8 +2637,8 @@ export const listDeploymentGroups: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   DeploymentGroupName
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(126, __c15, 6) as any as S.Schema<ListDeploymentGroupsInput>,
-  output: __S(127, __c15, 7) as any as S.Schema<ListDeploymentGroupsOutput>,
+  input: __S(848, __c53, 0) as any as S.Schema<ListDeploymentGroupsInput>,
+  output: __S(849, __c53, 1) as any as S.Schema<ListDeploymentGroupsOutput>,
   errors: [
     ApplicationDoesNotExistException,
     ApplicationNameRequiredException,
@@ -2684,8 +2684,8 @@ export const listDeploymentInstances: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   InstanceId
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(128, __c16, 0) as any as S.Schema<ListDeploymentInstancesInput>,
-  output: __S(129, __c16, 1) as any as S.Schema<ListDeploymentInstancesOutput>,
+  input: __S(864, __c54, 0) as any as S.Schema<ListDeploymentInstancesInput>,
+  output: __S(865, __c54, 1) as any as S.Schema<ListDeploymentInstancesOutput>,
   errors: [
     ApplicationDoesNotExistException,
     DeploymentDoesNotExistException,
@@ -2734,8 +2734,8 @@ export const listDeployments: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   DeploymentId
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(131, __c16, 3) as any as S.Schema<ListDeploymentsInput>,
-  output: __S(132, __c16, 4) as any as S.Schema<ListDeploymentsOutput>,
+  input: __S(881, __c55, 1) as any as S.Schema<ListDeploymentsInput>,
+  output: __S(882, __c55, 2) as any as S.Schema<ListDeploymentsOutput>,
   errors: [
     ApplicationDoesNotExistException,
     ApplicationNameRequiredException,
@@ -2777,8 +2777,8 @@ export const listDeploymentTargets: API.OperationMethod<
   ListDeploymentTargetsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(134, __c16, 6) as any as S.Schema<ListDeploymentTargetsInput>,
-  output: __S(135, __c16, 7) as any as S.Schema<ListDeploymentTargetsOutput>,
+  input: __S(897, __c56, 1) as any as S.Schema<ListDeploymentTargetsInput>,
+  output: __S(898, __c56, 2) as any as S.Schema<ListDeploymentTargetsOutput>,
   errors: [
     ApplicationDoesNotExistException,
     DeploymentDoesNotExistException,
@@ -2811,8 +2811,8 @@ export const listGitHubAccountTokenNames: API.OperationMethod<
   ListGitHubAccountTokenNamesError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(136, __c17, 0) as any as S.Schema<ListGitHubAccountTokenNamesInput>,
-  output: __S(137, __c17, 1) as any as S.Schema<ListGitHubAccountTokenNamesOutput>,
+  input: __S(912, __c57, 0) as any as S.Schema<ListGitHubAccountTokenNamesInput>,
+  output: __S(913, __c57, 1) as any as S.Schema<ListGitHubAccountTokenNamesOutput>,
   errors: [InvalidNextTokenException, OperationNotSupportedException, ResourceValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2837,8 +2837,8 @@ export const listOnPremisesInstances: API.OperationMethod<
   ListOnPremisesInstancesError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(138, __c17, 2) as any as S.Schema<ListOnPremisesInstancesInput>,
-  output: __S(139, __c17, 3) as any as S.Schema<ListOnPremisesInstancesOutput>,
+  input: __S(928, __c58, 0) as any as S.Schema<ListOnPremisesInstancesInput>,
+  output: __S(929, __c58, 1) as any as S.Schema<ListOnPremisesInstancesOutput>,
   errors: [
     InvalidNextTokenException,
     InvalidRegistrationStatusException,
@@ -2864,8 +2864,8 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(140, __c17, 4) as any as S.Schema<ListTagsForResourceInput>,
-  output: __S(141, __c17, 5) as any as S.Schema<ListTagsForResourceOutput>,
+  input: __S(944, __c59, 0) as any as S.Schema<ListTagsForResourceInput>,
+  output: __S(945, __c59, 1) as any as S.Schema<ListTagsForResourceOutput>,
   errors: [ArnNotSupportedException, InvalidArnException, ResourceArnRequiredException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2898,8 +2898,8 @@ export const putLifecycleEventHookExecutionStatus: API.OperationMethod<
   PutLifecycleEventHookExecutionStatusError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(142, __c17, 6) as any as S.Schema<PutLifecycleEventHookExecutionStatusInput>,
-  output: __S(143, __c17, 7) as any as S.Schema<PutLifecycleEventHookExecutionStatusOutput>,
+  input: __S(960, __c60, 0) as any as S.Schema<PutLifecycleEventHookExecutionStatusInput>,
+  output: __S(961, __c60, 1) as any as S.Schema<PutLifecycleEventHookExecutionStatusOutput>,
   errors: [
     DeploymentDoesNotExistException,
     DeploymentIdRequiredException,
@@ -2931,8 +2931,8 @@ export const registerApplicationRevision: API.OperationMethod<
   RegisterApplicationRevisionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(144, __c18, 0) as any as S.Schema<RegisterApplicationRevisionInput>,
-  output: __S(4, __c0, 4) as any as S.Schema<RegisterApplicationRevisionResponse>,
+  input: __S(976, __c61, 0) as any as S.Schema<RegisterApplicationRevisionInput>,
+  output: __S(48, __c3, 0) as any as S.Schema<RegisterApplicationRevisionResponse>,
   errors: [
     ApplicationDoesNotExistException,
     ApplicationNameRequiredException,
@@ -2969,8 +2969,8 @@ export const registerOnPremisesInstance: API.OperationMethod<
   RegisterOnPremisesInstanceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(145, __c18, 1) as any as S.Schema<RegisterOnPremisesInstanceInput>,
-  output: __S(4, __c0, 4) as any as S.Schema<RegisterOnPremisesInstanceResponse>,
+  input: __S(992, __c62, 0) as any as S.Schema<RegisterOnPremisesInstanceInput>,
+  output: __S(48, __c3, 0) as any as S.Schema<RegisterOnPremisesInstanceResponse>,
   errors: [
     IamArnRequiredException,
     IamSessionArnAlreadyRegisteredException,
@@ -3006,8 +3006,8 @@ export const removeTagsFromOnPremisesInstances: API.OperationMethod<
   RemoveTagsFromOnPremisesInstancesError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(146, __c18, 2) as any as S.Schema<RemoveTagsFromOnPremisesInstancesInput>,
-  output: __S(4, __c0, 4) as any as S.Schema<RemoveTagsFromOnPremisesInstancesResponse>,
+  input: __S(1008, __c63, 0) as any as S.Schema<RemoveTagsFromOnPremisesInstancesInput>,
+  output: __S(48, __c3, 0) as any as S.Schema<RemoveTagsFromOnPremisesInstancesResponse>,
   errors: [
     InstanceLimitExceededException,
     InstanceNameRequiredException,
@@ -3040,8 +3040,8 @@ export const skipWaitTimeForInstanceTermination: API.OperationMethod<
   SkipWaitTimeForInstanceTerminationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(147, __c18, 3) as any as S.Schema<SkipWaitTimeForInstanceTerminationInput>,
-  output: __S(4, __c0, 4) as any as S.Schema<SkipWaitTimeForInstanceTerminationResponse>,
+  input: __S(1024, __c64, 0) as any as S.Schema<SkipWaitTimeForInstanceTerminationInput>,
+  output: __S(48, __c3, 0) as any as S.Schema<SkipWaitTimeForInstanceTerminationResponse>,
   errors: [
     DeploymentAlreadyCompletedException,
     DeploymentDoesNotExistException,
@@ -3072,8 +3072,8 @@ export const stopDeployment: API.OperationMethod<
   StopDeploymentError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(148, __c18, 4) as any as S.Schema<StopDeploymentInput>,
-  output: __S(149, __c18, 5) as any as S.Schema<StopDeploymentOutput>,
+  input: __S(1040, __c65, 0) as any as S.Schema<StopDeploymentInput>,
+  output: __S(1041, __c65, 1) as any as S.Schema<StopDeploymentOutput>,
   errors: [
     DeploymentAlreadyCompletedException,
     DeploymentDoesNotExistException,
@@ -3107,8 +3107,8 @@ export const tagResource: API.OperationMethod<
   TagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(150, __c18, 6) as any as S.Schema<TagResourceInput>,
-  output: __S(151, __c18, 7) as any as S.Schema<TagResourceOutput>,
+  input: __S(1056, __c66, 0) as any as S.Schema<TagResourceInput>,
+  output: __S(1072, __c67, 0) as any as S.Schema<TagResourceOutput>,
   errors: [
     ApplicationDoesNotExistException,
     ArnNotSupportedException,
@@ -3145,8 +3145,8 @@ export const untagResource: API.OperationMethod<
   UntagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(152, __c19, 0) as any as S.Schema<UntagResourceInput>,
-  output: __S(151, __c18, 7) as any as S.Schema<UntagResourceOutput>,
+  input: __S(1088, __c68, 0) as any as S.Schema<UntagResourceInput>,
+  output: __S(1072, __c67, 0) as any as S.Schema<UntagResourceOutput>,
   errors: [
     ApplicationDoesNotExistException,
     ArnNotSupportedException,
@@ -3177,8 +3177,8 @@ export const updateApplication: API.OperationMethod<
   UpdateApplicationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(153, __c19, 1) as any as S.Schema<UpdateApplicationInput>,
-  output: __S(4, __c0, 4) as any as S.Schema<UpdateApplicationResponse>,
+  input: __S(1104, __c69, 0) as any as S.Schema<UpdateApplicationInput>,
+  output: __S(48, __c3, 0) as any as S.Schema<UpdateApplicationResponse>,
   errors: [
     ApplicationAlreadyExistsException,
     ApplicationDoesNotExistException,
@@ -3232,8 +3232,8 @@ export const updateDeploymentGroup: API.OperationMethod<
   UpdateDeploymentGroupError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(154, __c19, 2) as any as S.Schema<UpdateDeploymentGroupInput>,
-  output: __S(98, __c12, 2) as any as S.Schema<UpdateDeploymentGroupOutput>,
+  input: __S(1120, __c70, 0) as any as S.Schema<UpdateDeploymentGroupInput>,
+  output: __S(608, __c38, 0) as any as S.Schema<UpdateDeploymentGroupOutput>,
   errors: [
     AlarmsLimitExceededException,
     ApplicationDoesNotExistException,
@@ -3277,25 +3277,72 @@ function __c0(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({ Key: S.optional(S.String), Value: S.optional(S.String) }),
-      ).annotate({ identifier: "Tag" });
-    case 1:
-      return S.Array(__S(0, __c0, 0));
-    case 2:
-      return S.Array(S.String);
-    case 3:
-      return S.suspend(() =>
-        S.Struct({ tags: __S(1, __c0, 1), instanceNames: __S(2, __c0, 2) }).pipe(
+        S.Struct({ tags: __S(33, __c2, 1), instanceNames: __S(16, __c1, 0) }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({
         identifier: "AddTagsToOnPremisesInstancesInput",
       });
-    case 4:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ Key: S.optional(S.String), Value: S.optional(S.String) }),
+      ).annotate({ identifier: "Tag" });
+    case 1:
+      return S.Array(__S(32, __c2, 0));
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
         identifier: "AddTagsToOnPremisesInstancesResponse",
       });
-    case 5:
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ applicationName: S.String, revisions: __S(112, __c7, 0) }).pipe(
+          T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({
+        identifier: "BatchGetApplicationRevisionsInput",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          revisionLocation: S.optional(__S(83, __c5, 3)),
+          genericRevisionInfo: S.optional(__S(96, __c6, 0)),
+        }),
+      ).annotate({ identifier: "RevisionInfo" });
+    case 2:
+      return S.Array(__S(65, __c4, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          applicationName: S.optional(S.String),
+          errorMessage: S.optional(S.String),
+          revisions: S.optional(__S(66, __c4, 2)),
+        }).pipe(ns),
+      ).annotate({
+        identifier: "BatchGetApplicationRevisionsOutput",
+      });
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           bucket: S.optional(S.String),
@@ -3305,78 +3352,67 @@ function __c0(j: number): any {
           eTag: S.optional(S.String),
         }),
       ).annotate({ identifier: "S3Location" });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({ repository: S.optional(S.String), commitId: S.optional(S.String) }),
       ).annotate({ identifier: "GitHubLocation" });
-    case 7:
+    case 2:
       return S.suspend(() =>
         S.Struct({ content: S.optional(S.String), sha256: S.optional(S.String) }),
       ).annotate({ identifier: "RawString" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          revisionType: S.optional(S.String),
+          s3Location: S.optional(__S(80, __c5, 0)),
+          gitHubLocation: S.optional(__S(81, __c5, 1)),
+          string: S.optional(__S(82, __c5, 2)),
+          appSpecContent: S.optional(__S(82, __c5, 2)),
+        }),
+      ).annotate({ identifier: "RevisionLocation" });
   }
 }
-function __c1(j: number): any {
+function __c6(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          revisionType: S.optional(S.String),
-          s3Location: S.optional(__S(5, __c0, 5)),
-          gitHubLocation: S.optional(__S(6, __c0, 6)),
-          string: S.optional(__S(7, __c0, 7)),
-          appSpecContent: S.optional(__S(7, __c0, 7)),
-        }),
-      ).annotate({ identifier: "RevisionLocation" });
-    case 1:
-      return S.Array(__S(8, __c1, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({ applicationName: S.String, revisions: __S(9, __c1, 1) }).pipe(
-          T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-        ),
-      ).annotate({
-        identifier: "BatchGetApplicationRevisionsInput",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
           description: S.optional(S.String),
-          deploymentGroups: S.optional(__S(2, __c0, 2)),
+          deploymentGroups: S.optional(__S(16, __c1, 0)),
           firstUsedTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           lastUsedTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           registerTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
         }),
       ).annotate({ identifier: "GenericRevisionInfo" });
-    case 4:
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(83, __c5, 3));
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
-        S.Struct({
-          revisionLocation: S.optional(__S(8, __c1, 0)),
-          genericRevisionInfo: S.optional(__S(11, __c1, 3)),
-        }),
-      ).annotate({ identifier: "RevisionInfo" });
-    case 5:
-      return S.Array(__S(12, __c1, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          applicationName: S.optional(S.String),
-          errorMessage: S.optional(S.String),
-          revisions: S.optional(__S(13, __c1, 5)),
-        }).pipe(ns),
-      ).annotate({
-        identifier: "BatchGetApplicationRevisionsOutput",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({ applicationNames: __S(2, __c0, 2) }).pipe(
+        S.Struct({ applicationNames: __S(16, __c1, 0) }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({
         identifier: "BatchGetApplicationsInput",
       });
+    case 1:
+      return S.Array(__S(144, __c9, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({ applicationsInfo: S.optional(__S(129, __c8, 1)) }).pipe(ns),
+      ).annotate({
+        identifier: "BatchGetApplicationsOutput",
+      });
   }
 }
-function __c2(j: number): any {
+function __c9(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3389,23 +3425,48 @@ function __c2(j: number): any {
           computePlatform: S.optional(S.String),
         }),
       ).annotate({ identifier: "ApplicationInfo" });
-    case 1:
-      return S.Array(__S(16, __c2, 0));
-    case 2:
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
-        S.Struct({ applicationsInfo: S.optional(__S(17, __c2, 1)) }).pipe(ns),
-      ).annotate({
-        identifier: "BatchGetApplicationsOutput",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({ applicationName: S.String, deploymentGroupNames: __S(2, __c0, 2) }).pipe(
+        S.Struct({ applicationName: S.String, deploymentGroupNames: __S(16, __c1, 0) }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({
         identifier: "BatchGetDeploymentGroupsInput",
       });
-    case 4:
+    case 1:
+      return S.Array(__S(289, __c18, 1));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          deploymentGroupsInfo: S.optional(__S(161, __c10, 1)),
+          errorMessage: S.optional(S.String),
+        }).pipe(ns),
+      ).annotate({
+        identifier: "BatchGetDeploymentGroupsOutput",
+      });
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({ name: S.optional(S.String) })).annotate({
+        identifier: "Alarm",
+      });
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           Key: S.optional(S.String),
@@ -3413,66 +3474,46 @@ function __c2(j: number): any {
           Type: S.optional(S.String),
         }),
       ).annotate({ identifier: "EC2TagFilter" });
-    case 5:
-      return S.Array(__S(20, __c2, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.optional(S.String),
-          hook: S.optional(S.String),
-          terminationHook: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "AutoScalingGroup" });
-    case 7:
-      return S.Array(__S(22, __c2, 6));
+    case 1:
+      return S.Array(__S(208, __c13, 0));
   }
 }
-function __c3(j: number): any {
+function __c14(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(S.String);
+      return S.Array(__S(176, __c11, 0));
     case 1:
-      return S.suspend(() =>
-        S.Struct({
-          triggerName: S.optional(S.String),
-          triggerTargetArn: S.optional(S.String),
-          triggerEvents: S.optional(__S(24, __c3, 0)),
-        }),
-      ).annotate({ identifier: "TriggerConfig" });
-    case 2:
-      return S.Array(__S(25, __c3, 1));
-    case 3:
-      return S.suspend(() => S.Struct({ name: S.optional(S.String) })).annotate({
-        identifier: "Alarm",
-      });
-    case 4:
-      return S.Array(__S(27, __c3, 3));
-    case 5:
       return S.suspend(() =>
         S.Struct({
           enabled: S.optional(S.Boolean),
           ignorePollAlarmFailure: S.optional(S.Boolean),
-          alarms: S.optional(__S(28, __c3, 4)),
+          alarms: S.optional(__S(224, __c14, 0)),
         }),
       ).annotate({ identifier: "AlarmConfiguration" });
-    case 6:
+    case 2:
       return S.suspend(() =>
-        S.Struct({ enabled: S.optional(S.Boolean), events: S.optional(__S(24, __c3, 0)) }),
+        S.Struct({ enabled: S.optional(S.Boolean), events: S.optional(__S(192, __c12, 0)) }),
       ).annotate({
         identifier: "AutoRollbackConfiguration",
       });
-    case 7:
+    case 3:
+      return S.Array(__S(209, __c13, 1));
+    case 4:
+      return S.suspend(() => S.Struct({ ec2TagSetList: S.optional(__S(227, __c14, 3)) })).annotate({
+        identifier: "EC2TagSet",
+      });
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           deploymentType: S.optional(S.String),
           deploymentOption: S.optional(S.String),
         }),
       ).annotate({ identifier: "DeploymentStyle" });
-  }
-}
-function __c4(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           action: S.optional(S.String),
@@ -3481,52 +3522,90 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "BlueInstanceTerminationOption",
       });
-    case 1:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           actionOnTimeout: S.optional(S.String),
           waitTimeInMinutes: S.optional(S.Number),
         }),
       ).annotate({ identifier: "DeploymentReadyOption" });
-    case 2:
+    case 3:
       return S.suspend(() => S.Struct({ action: S.optional(S.String) })).annotate({
         identifier: "GreenFleetProvisioningOption",
       });
-    case 3:
+    case 4:
       return S.suspend(() =>
         S.Struct({
-          terminateBlueInstancesOnDeploymentSuccess: S.optional(__S(32, __c4, 0)),
-          deploymentReadyOption: S.optional(__S(33, __c4, 1)),
-          greenFleetProvisioningOption: S.optional(__S(34, __c4, 2)),
+          terminateBlueInstancesOnDeploymentSuccess: S.optional(__S(241, __c15, 1)),
+          deploymentReadyOption: S.optional(__S(242, __c15, 2)),
+          greenFleetProvisioningOption: S.optional(__S(243, __c15, 3)),
         }),
       ).annotate({
         identifier: "BlueGreenDeploymentConfiguration",
       });
-    case 4:
-      return S.suspend(() => S.Struct({ listenerArns: S.optional(__S(2, __c0, 2)) })).annotate({
+    case 5:
+      return S.suspend(() => S.Struct({ listenerArns: S.optional(__S(16, __c1, 0)) })).annotate({
         identifier: "TrafficRoute",
       });
-    case 5:
+    case 6:
       return S.suspend(() =>
         S.Struct({
-          targetGroups: S.optional(__S(28, __c3, 4)),
-          prodTrafficRoute: S.optional(__S(36, __c4, 4)),
-          testTrafficRoute: S.optional(__S(36, __c4, 4)),
+          targetGroups: S.optional(__S(224, __c14, 0)),
+          prodTrafficRoute: S.optional(__S(245, __c15, 5)),
+          testTrafficRoute: S.optional(__S(245, __c15, 5)),
         }),
       ).annotate({ identifier: "TargetGroupPairInfo" });
-    case 6:
-      return S.Array(__S(37, __c4, 5));
     case 7:
+      return S.Array(__S(246, __c15, 6));
+    case 8:
       return S.suspend(() =>
         S.Struct({
-          elbInfoList: S.optional(__S(28, __c3, 4)),
-          targetGroupInfoList: S.optional(__S(28, __c3, 4)),
-          targetGroupPairInfoList: S.optional(__S(38, __c4, 6)),
+          elbInfoList: S.optional(__S(224, __c14, 0)),
+          targetGroupInfoList: S.optional(__S(224, __c14, 0)),
+          targetGroupPairInfoList: S.optional(__S(247, __c15, 7)),
         }),
       ).annotate({ identifier: "LoadBalancerInfo" });
   }
 }
-function __c5(j: number): any {
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          triggerName: S.optional(S.String),
+          triggerTargetArn: S.optional(S.String),
+          triggerEvents: S.optional(__S(192, __c12, 0)),
+        }),
+      ).annotate({ identifier: "TriggerConfig" });
+    case 1:
+      return S.Array(__S(256, __c16, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({ onPremisesTagSetList: S.optional(__S(227, __c14, 3)) }),
+      ).annotate({ identifier: "OnPremisesTagSet" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({ serviceName: S.optional(S.String), clusterName: S.optional(S.String) }),
+      ).annotate({ identifier: "ECSService" });
+    case 4:
+      return S.Array(__S(259, __c16, 3));
+  }
+}
+function __c17(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.optional(S.String),
+          hook: S.optional(S.String),
+          terminationHook: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "AutoScalingGroup" });
+    case 1:
+      return S.Array(__S(272, __c17, 0));
+  }
+}
+function __c18(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3538,73 +3617,61 @@ function __c5(j: number): any {
         }),
       ).annotate({ identifier: "LastDeploymentInfo" });
     case 1:
-      return S.Array(__S(21, __c2, 5));
-    case 2:
-      return S.suspend(() => S.Struct({ ec2TagSetList: S.optional(__S(41, __c5, 1)) })).annotate({
-        identifier: "EC2TagSet",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({ onPremisesTagSetList: S.optional(__S(41, __c5, 1)) }),
-      ).annotate({ identifier: "OnPremisesTagSet" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({ serviceName: S.optional(S.String), clusterName: S.optional(S.String) }),
-      ).annotate({ identifier: "ECSService" });
-    case 5:
-      return S.Array(__S(44, __c5, 4));
-    case 6:
       return S.suspend(() =>
         S.Struct({
           applicationName: S.optional(S.String),
           deploymentGroupId: S.optional(S.String),
           deploymentGroupName: S.optional(S.String),
           deploymentConfigName: S.optional(S.String),
-          ec2TagFilters: S.optional(__S(21, __c2, 5)),
-          onPremisesInstanceTagFilters: S.optional(__S(21, __c2, 5)),
-          autoScalingGroups: S.optional(__S(23, __c2, 7)),
+          ec2TagFilters: S.optional(__S(209, __c13, 1)),
+          onPremisesInstanceTagFilters: S.optional(__S(209, __c13, 1)),
+          autoScalingGroups: S.optional(__S(273, __c17, 1)),
           serviceRoleArn: S.optional(S.String),
-          targetRevision: S.optional(__S(8, __c1, 0)),
-          triggerConfigurations: S.optional(__S(26, __c3, 2)),
-          alarmConfiguration: S.optional(__S(29, __c3, 5)),
-          autoRollbackConfiguration: S.optional(__S(30, __c3, 6)),
-          deploymentStyle: S.optional(__S(31, __c3, 7)),
+          targetRevision: S.optional(__S(83, __c5, 3)),
+          triggerConfigurations: S.optional(__S(257, __c16, 1)),
+          alarmConfiguration: S.optional(__S(225, __c14, 1)),
+          autoRollbackConfiguration: S.optional(__S(226, __c14, 2)),
+          deploymentStyle: S.optional(__S(240, __c15, 0)),
           outdatedInstancesStrategy: S.optional(S.String),
-          blueGreenDeploymentConfiguration: S.optional(__S(35, __c4, 3)),
-          loadBalancerInfo: S.optional(__S(39, __c4, 7)),
-          lastSuccessfulDeployment: S.optional(__S(40, __c5, 0)),
-          lastAttemptedDeployment: S.optional(__S(40, __c5, 0)),
-          ec2TagSet: S.optional(__S(42, __c5, 2)),
-          onPremisesTagSet: S.optional(__S(43, __c5, 3)),
+          blueGreenDeploymentConfiguration: S.optional(__S(244, __c15, 4)),
+          loadBalancerInfo: S.optional(__S(248, __c15, 8)),
+          lastSuccessfulDeployment: S.optional(__S(288, __c18, 0)),
+          lastAttemptedDeployment: S.optional(__S(288, __c18, 0)),
+          ec2TagSet: S.optional(__S(228, __c14, 4)),
+          onPremisesTagSet: S.optional(__S(258, __c16, 2)),
           computePlatform: S.optional(S.String),
-          ecsServices: S.optional(__S(45, __c5, 5)),
+          ecsServices: S.optional(__S(260, __c16, 4)),
           terminationHookEnabled: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "DeploymentGroupInfo" });
-    case 7:
-      return S.Array(__S(46, __c5, 6));
   }
 }
-function __c6(j: number): any {
+function __c19(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({
-          deploymentGroupsInfo: S.optional(__S(47, __c5, 7)),
-          errorMessage: S.optional(S.String),
-        }).pipe(ns),
-      ).annotate({
-        identifier: "BatchGetDeploymentGroupsOutput",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({ deploymentId: S.String, instanceIds: __S(2, __c0, 2) }).pipe(
+        S.Struct({ deploymentId: S.String, instanceIds: __S(16, __c1, 0) }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({
         identifier: "BatchGetDeploymentInstancesInput",
       });
+    case 1:
+      return S.Array(__S(336, __c21, 0));
     case 2:
+      return S.suspend(() =>
+        S.Struct({
+          instancesSummary: S.optional(__S(305, __c19, 1)),
+          errorMessage: S.optional(S.String),
+        }).pipe(ns),
+      ).annotate({
+        identifier: "BatchGetDeploymentInstancesOutput",
+      });
+  }
+}
+function __c20(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           errorCode: S.optional(S.String),
@@ -3613,55 +3680,72 @@ function __c6(j: number): any {
           logTail: S.optional(S.String),
         }),
       ).annotate({ identifier: "Diagnostics" });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           lifecycleEventName: S.optional(S.String),
-          diagnostics: S.optional(__S(50, __c6, 2)),
+          diagnostics: S.optional(__S(320, __c20, 0)),
           startTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           endTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           status: S.optional(S.String),
         }),
       ).annotate({ identifier: "LifecycleEvent" });
-    case 4:
-      return S.Array(__S(51, __c6, 3));
-    case 5:
+    case 2:
+      return S.Array(__S(321, __c20, 1));
+  }
+}
+function __c21(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           deploymentId: S.optional(S.String),
           instanceId: S.optional(S.String),
           status: S.optional(S.String),
           lastUpdatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          lifecycleEvents: S.optional(__S(52, __c6, 4)),
+          lifecycleEvents: S.optional(__S(322, __c20, 2)),
           instanceType: S.optional(S.String),
         }),
       ).annotate({ identifier: "InstanceSummary" });
-    case 6:
-      return S.Array(__S(53, __c6, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          instancesSummary: S.optional(__S(54, __c6, 6)),
-          errorMessage: S.optional(S.String),
-        }).pipe(ns),
-      ).annotate({
-        identifier: "BatchGetDeploymentInstancesOutput",
-      });
   }
 }
-function __c7(j: number): any {
+function __c22(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({ deploymentIds: __S(2, __c0, 2) }).pipe(
+        S.Struct({ deploymentIds: __S(16, __c1, 0) }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "BatchGetDeploymentsInput" });
     case 1:
+      return S.Array(__S(388, __c24, 4));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({ deploymentsInfo: S.optional(__S(353, __c22, 1)) }).pipe(ns),
+      ).annotate({
+        identifier: "BatchGetDeploymentsOutput",
+      });
+  }
+}
+function __c23(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          tagFilters: S.optional(__S(209, __c13, 1)),
+          autoScalingGroups: S.optional(__S(16, __c1, 0)),
+          ec2TagSet: S.optional(__S(228, __c14, 4)),
+        }),
+      ).annotate({ identifier: "TargetInstances" });
+  }
+}
+function __c24(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ code: S.optional(S.String), message: S.optional(S.String) }),
       ).annotate({ identifier: "ErrorInformation" });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           Pending: S.optional(S.Number),
@@ -3672,7 +3756,7 @@ function __c7(j: number): any {
           Ready: S.optional(S.Number),
         }),
       ).annotate({ identifier: "DeploymentOverview" });
-    case 3:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           rollbackDeploymentId: S.optional(S.String),
@@ -3680,78 +3764,74 @@ function __c7(j: number): any {
           rollbackMessage: S.optional(S.String),
         }),
       ).annotate({ identifier: "RollbackInfo" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          tagFilters: S.optional(__S(21, __c2, 5)),
-          autoScalingGroups: S.optional(__S(2, __c0, 2)),
-          ec2TagSet: S.optional(__S(42, __c5, 2)),
-        }),
-      ).annotate({ identifier: "TargetInstances" });
-    case 5:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           autoUpdateOutdatedInstancesRootDeploymentId: S.optional(S.String),
-          autoUpdateOutdatedInstancesDeploymentIds: S.optional(__S(2, __c0, 2)),
+          autoUpdateOutdatedInstancesDeploymentIds: S.optional(__S(16, __c1, 0)),
         }),
       ).annotate({ identifier: "RelatedDeployments" });
-    case 6:
+    case 4:
       return S.suspend(() =>
         S.Struct({
           applicationName: S.optional(S.String),
           deploymentGroupName: S.optional(S.String),
           deploymentConfigName: S.optional(S.String),
           deploymentId: S.optional(S.String),
-          previousRevision: S.optional(__S(8, __c1, 0)),
-          revision: S.optional(__S(8, __c1, 0)),
+          previousRevision: S.optional(__S(83, __c5, 3)),
+          revision: S.optional(__S(83, __c5, 3)),
           status: S.optional(S.String),
-          errorInformation: S.optional(__S(57, __c7, 1)),
+          errorInformation: S.optional(__S(384, __c24, 0)),
           createTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           startTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           completeTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          deploymentOverview: S.optional(__S(58, __c7, 2)),
+          deploymentOverview: S.optional(__S(385, __c24, 1)),
           description: S.optional(S.String),
           creator: S.optional(S.String),
           ignoreApplicationStopFailures: S.optional(S.Boolean),
-          autoRollbackConfiguration: S.optional(__S(30, __c3, 6)),
+          autoRollbackConfiguration: S.optional(__S(226, __c14, 2)),
           updateOutdatedInstancesOnly: S.optional(S.Boolean),
-          rollbackInfo: S.optional(__S(59, __c7, 3)),
-          deploymentStyle: S.optional(__S(31, __c3, 7)),
-          targetInstances: S.optional(__S(60, __c7, 4)),
+          rollbackInfo: S.optional(__S(386, __c24, 2)),
+          deploymentStyle: S.optional(__S(240, __c15, 0)),
+          targetInstances: S.optional(__S(368, __c23, 0)),
           instanceTerminationWaitTimeStarted: S.optional(S.Boolean),
-          blueGreenDeploymentConfiguration: S.optional(__S(35, __c4, 3)),
-          loadBalancerInfo: S.optional(__S(39, __c4, 7)),
+          blueGreenDeploymentConfiguration: S.optional(__S(244, __c15, 4)),
+          loadBalancerInfo: S.optional(__S(248, __c15, 8)),
           additionalDeploymentStatusInfo: S.optional(S.String),
           fileExistsBehavior: S.optional(S.String),
           deploymentMode: S.optional(S.String),
-          deploymentStatusMessages: S.optional(__S(2, __c0, 2)),
+          deploymentStatusMessages: S.optional(__S(16, __c1, 0)),
           computePlatform: S.optional(S.String),
           externalId: S.optional(S.String),
-          relatedDeployments: S.optional(__S(61, __c7, 5)),
-          overrideAlarmConfiguration: S.optional(__S(29, __c3, 5)),
+          relatedDeployments: S.optional(__S(387, __c24, 3)),
+          overrideAlarmConfiguration: S.optional(__S(225, __c14, 1)),
         }),
       ).annotate({ identifier: "DeploymentInfo" });
-    case 7:
-      return S.Array(__S(62, __c7, 6));
   }
 }
-function __c8(j: number): any {
+function __c25(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({ deploymentsInfo: S.optional(__S(63, __c7, 7)) }).pipe(ns),
-      ).annotate({
-        identifier: "BatchGetDeploymentsOutput",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({ deploymentId: S.String, targetIds: __S(2, __c0, 2) }).pipe(
+        S.Struct({ deploymentId: S.String, targetIds: __S(16, __c1, 0) }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({
         identifier: "BatchGetDeploymentTargetsInput",
       });
+    case 1:
+      return S.Array(__S(423, __c26, 7));
     case 2:
+      return S.suspend(() =>
+        S.Struct({ deploymentTargets: S.optional(__S(401, __c25, 1)) }).pipe(ns),
+      ).annotate({
+        identifier: "BatchGetDeploymentTargetsOutput",
+      });
+  }
+}
+function __c26(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           deploymentId: S.optional(S.String),
@@ -3759,11 +3839,11 @@ function __c8(j: number): any {
           targetArn: S.optional(S.String),
           status: S.optional(S.String),
           lastUpdatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          lifecycleEvents: S.optional(__S(52, __c6, 4)),
+          lifecycleEvents: S.optional(__S(322, __c20, 2)),
           instanceLabel: S.optional(S.String),
         }),
       ).annotate({ identifier: "InstanceTarget" });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           functionName: S.optional(S.String),
@@ -3773,7 +3853,7 @@ function __c8(j: number): any {
           targetVersionWeight: S.optional(S.Number),
         }),
       ).annotate({ identifier: "LambdaFunctionInfo" });
-    case 4:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           deploymentId: S.optional(S.String),
@@ -3781,11 +3861,11 @@ function __c8(j: number): any {
           targetArn: S.optional(S.String),
           status: S.optional(S.String),
           lastUpdatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          lifecycleEvents: S.optional(__S(52, __c6, 4)),
-          lambdaFunctionInfo: S.optional(__S(67, __c8, 3)),
+          lifecycleEvents: S.optional(__S(322, __c20, 2)),
+          lambdaFunctionInfo: S.optional(__S(417, __c26, 1)),
         }),
       ).annotate({ identifier: "LambdaTarget" });
-    case 5:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           identifer: S.optional(S.String),
@@ -3794,67 +3874,71 @@ function __c8(j: number): any {
           runningCount: S.optional(S.Number),
           status: S.optional(S.String),
           trafficWeight: S.optional(S.Number),
-          targetGroup: S.optional(__S(27, __c3, 3)),
+          targetGroup: S.optional(__S(176, __c11, 0)),
           taskSetLabel: S.optional(S.String),
         }),
       ).annotate({ identifier: "ECSTaskSet" });
-    case 6:
-      return S.Array(__S(69, __c8, 5));
-    case 7:
+    case 4:
+      return S.Array(__S(419, __c26, 3));
+    case 5:
       return S.suspend(() =>
         S.Struct({
           deploymentId: S.optional(S.String),
           targetId: S.optional(S.String),
           targetArn: S.optional(S.String),
           lastUpdatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          lifecycleEvents: S.optional(__S(52, __c6, 4)),
+          lifecycleEvents: S.optional(__S(322, __c20, 2)),
           status: S.optional(S.String),
-          taskSetsInfo: S.optional(__S(70, __c8, 6)),
+          taskSetsInfo: S.optional(__S(420, __c26, 4)),
         }),
       ).annotate({ identifier: "ECSTarget" });
-  }
-}
-function __c9(j: number): any {
-  switch (j) {
-    case 0:
+    case 6:
       return S.suspend(() =>
         S.Struct({
           deploymentId: S.optional(S.String),
           targetId: S.optional(S.String),
           lastUpdatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          lifecycleEvents: S.optional(__S(52, __c6, 4)),
+          lifecycleEvents: S.optional(__S(322, __c20, 2)),
           status: S.optional(S.String),
           resourceType: S.optional(S.String),
           targetVersionWeight: S.optional(S.Number),
         }),
       ).annotate({ identifier: "CloudFormationTarget" });
-    case 1:
+    case 7:
       return S.suspend(() =>
         S.Struct({
           deploymentTargetType: S.optional(S.String),
-          instanceTarget: S.optional(__S(66, __c8, 2)),
-          lambdaTarget: S.optional(__S(68, __c8, 4)),
-          ecsTarget: S.optional(__S(71, __c8, 7)),
-          cloudFormationTarget: S.optional(__S(72, __c9, 0)),
+          instanceTarget: S.optional(__S(416, __c26, 0)),
+          lambdaTarget: S.optional(__S(418, __c26, 2)),
+          ecsTarget: S.optional(__S(421, __c26, 5)),
+          cloudFormationTarget: S.optional(__S(422, __c26, 6)),
         }),
       ).annotate({ identifier: "DeploymentTarget" });
-    case 2:
-      return S.Array(__S(73, __c9, 1));
-    case 3:
+  }
+}
+function __c27(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
-        S.Struct({ deploymentTargets: S.optional(__S(74, __c9, 2)) }).pipe(ns),
-      ).annotate({
-        identifier: "BatchGetDeploymentTargetsOutput",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({ instanceNames: __S(2, __c0, 2) }).pipe(
+        S.Struct({ instanceNames: __S(16, __c1, 0) }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({
         identifier: "BatchGetOnPremisesInstancesInput",
       });
-    case 5:
+    case 1:
+      return S.Array(__S(448, __c28, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({ instanceInfos: S.optional(__S(433, __c27, 1)) }).pipe(ns),
+      ).annotate({
+        identifier: "BatchGetOnPremisesInstancesOutput",
+      });
+  }
+}
+function __c28(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           instanceName: S.optional(S.String),
@@ -3863,20 +3947,12 @@ function __c9(j: number): any {
           instanceArn: S.optional(S.String),
           registerTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           deregisterTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          tags: S.optional(__S(1, __c0, 1)),
+          tags: S.optional(__S(33, __c2, 1)),
         }),
       ).annotate({ identifier: "InstanceInfo" });
-    case 6:
-      return S.Array(__S(77, __c9, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({ instanceInfos: S.optional(__S(78, __c9, 6)) }).pipe(ns),
-      ).annotate({
-        identifier: "BatchGetOnPremisesInstancesOutput",
-      });
   }
 }
-function __c10(j: number): any {
+function __c29(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3885,128 +3961,148 @@ function __c10(j: number): any {
           deploymentWaitType: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "ContinueDeploymentInput" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          applicationName: S.String,
-          computePlatform: S.optional(S.String),
-          tags: S.optional(__S(1, __c0, 1)),
-        }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({ identifier: "CreateApplicationInput" });
-    case 2:
-      return S.suspend(() => S.Struct({ applicationId: S.optional(S.String) }).pipe(ns)).annotate({
-        identifier: "CreateApplicationOutput",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          applicationName: S.String,
-          deploymentGroupName: S.optional(S.String),
-          revision: S.optional(__S(8, __c1, 0)),
-          deploymentConfigName: S.optional(S.String),
-          description: S.optional(S.String),
-          ignoreApplicationStopFailures: S.optional(S.Boolean),
-          targetInstances: S.optional(__S(60, __c7, 4)),
-          autoRollbackConfiguration: S.optional(__S(30, __c3, 6)),
-          updateOutdatedInstancesOnly: S.optional(S.Boolean),
-          fileExistsBehavior: S.optional(S.String),
-          deploymentMode: S.optional(S.String),
-          overrideAlarmConfiguration: S.optional(__S(29, __c3, 5)),
-        }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({ identifier: "CreateDeploymentInput" });
-    case 4:
-      return S.suspend(() => S.Struct({ deploymentId: S.optional(S.String) }).pipe(ns)).annotate({
-        identifier: "CreateDeploymentOutput",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({ type: S.optional(S.String), value: S.optional(S.Number) }),
-      ).annotate({ identifier: "MinimumHealthyHosts" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({ canaryPercentage: S.optional(S.Number), canaryInterval: S.optional(S.Number) }),
-      ).annotate({ identifier: "TimeBasedCanary" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({ linearPercentage: S.optional(S.Number), linearInterval: S.optional(S.Number) }),
-      ).annotate({ identifier: "TimeBasedLinear" });
   }
 }
-function __c11(j: number): any {
+function __c30(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          type: S.optional(S.String),
-          timeBasedCanary: S.optional(__S(86, __c10, 6)),
-          timeBasedLinear: S.optional(__S(87, __c10, 7)),
-        }),
-      ).annotate({ identifier: "TrafficRoutingConfig" });
+          applicationName: S.String,
+          computePlatform: S.optional(S.String),
+          tags: S.optional(__S(33, __c2, 1)),
+        }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({ identifier: "CreateApplicationInput" });
     case 1:
-      return S.suspend(() =>
-        S.Struct({ type: S.optional(S.String), value: S.optional(S.Number) }),
-      ).annotate({
-        identifier: "MinimumHealthyHostsPerZone",
+      return S.suspend(() => S.Struct({ applicationId: S.optional(S.String) }).pipe(ns)).annotate({
+        identifier: "CreateApplicationOutput",
       });
-    case 2:
+  }
+}
+function __c31(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          firstZoneMonitorDurationInSeconds: S.optional(S.Number),
-          monitorDurationInSeconds: S.optional(S.Number),
-          minimumHealthyHostsPerZone: S.optional(__S(89, __c11, 1)),
-        }),
-      ).annotate({ identifier: "ZonalConfig" });
-    case 3:
+          applicationName: S.String,
+          deploymentGroupName: S.optional(S.String),
+          revision: S.optional(__S(83, __c5, 3)),
+          deploymentConfigName: S.optional(S.String),
+          description: S.optional(S.String),
+          ignoreApplicationStopFailures: S.optional(S.Boolean),
+          targetInstances: S.optional(__S(368, __c23, 0)),
+          autoRollbackConfiguration: S.optional(__S(226, __c14, 2)),
+          updateOutdatedInstancesOnly: S.optional(S.Boolean),
+          fileExistsBehavior: S.optional(S.String),
+          deploymentMode: S.optional(S.String),
+          overrideAlarmConfiguration: S.optional(__S(225, __c14, 1)),
+        }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({ identifier: "CreateDeploymentInput" });
+    case 1:
+      return S.suspend(() => S.Struct({ deploymentId: S.optional(S.String) }).pipe(ns)).annotate({
+        identifier: "CreateDeploymentOutput",
+      });
+  }
+}
+function __c32(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           deploymentConfigName: S.String,
-          minimumHealthyHosts: S.optional(__S(85, __c10, 5)),
-          trafficRoutingConfig: S.optional(__S(88, __c11, 0)),
+          minimumHealthyHosts: S.optional(__S(528, __c33, 0)),
+          trafficRoutingConfig: S.optional(__S(531, __c33, 3)),
           computePlatform: S.optional(S.String),
-          zonalConfig: S.optional(__S(90, __c11, 2)),
+          zonalConfig: S.optional(__S(533, __c33, 5)),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "CreateDeploymentConfigInput",
       });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({ deploymentConfigId: S.optional(S.String) }).pipe(ns),
       ).annotate({
         identifier: "CreateDeploymentConfigOutput",
       });
+  }
+}
+function __c33(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ type: S.optional(S.String), value: S.optional(S.Number) }),
+      ).annotate({ identifier: "MinimumHealthyHosts" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({ canaryPercentage: S.optional(S.Number), canaryInterval: S.optional(S.Number) }),
+      ).annotate({ identifier: "TimeBasedCanary" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({ linearPercentage: S.optional(S.Number), linearInterval: S.optional(S.Number) }),
+      ).annotate({ identifier: "TimeBasedLinear" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          type: S.optional(S.String),
+          timeBasedCanary: S.optional(__S(529, __c33, 1)),
+          timeBasedLinear: S.optional(__S(530, __c33, 2)),
+        }),
+      ).annotate({ identifier: "TrafficRoutingConfig" });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({ type: S.optional(S.String), value: S.optional(S.Number) }),
+      ).annotate({
+        identifier: "MinimumHealthyHostsPerZone",
+      });
     case 5:
+      return S.suspend(() =>
+        S.Struct({
+          firstZoneMonitorDurationInSeconds: S.optional(S.Number),
+          monitorDurationInSeconds: S.optional(S.Number),
+          minimumHealthyHostsPerZone: S.optional(__S(532, __c33, 4)),
+        }),
+      ).annotate({ identifier: "ZonalConfig" });
+  }
+}
+function __c34(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           applicationName: S.String,
           deploymentGroupName: S.String,
           deploymentConfigName: S.optional(S.String),
-          ec2TagFilters: S.optional(__S(21, __c2, 5)),
-          onPremisesInstanceTagFilters: S.optional(__S(21, __c2, 5)),
-          autoScalingGroups: S.optional(__S(2, __c0, 2)),
+          ec2TagFilters: S.optional(__S(209, __c13, 1)),
+          onPremisesInstanceTagFilters: S.optional(__S(209, __c13, 1)),
+          autoScalingGroups: S.optional(__S(16, __c1, 0)),
           serviceRoleArn: S.String,
-          triggerConfigurations: S.optional(__S(26, __c3, 2)),
-          alarmConfiguration: S.optional(__S(29, __c3, 5)),
-          autoRollbackConfiguration: S.optional(__S(30, __c3, 6)),
+          triggerConfigurations: S.optional(__S(257, __c16, 1)),
+          alarmConfiguration: S.optional(__S(225, __c14, 1)),
+          autoRollbackConfiguration: S.optional(__S(226, __c14, 2)),
           outdatedInstancesStrategy: S.optional(S.String),
-          deploymentStyle: S.optional(__S(31, __c3, 7)),
-          blueGreenDeploymentConfiguration: S.optional(__S(35, __c4, 3)),
-          loadBalancerInfo: S.optional(__S(39, __c4, 7)),
-          ec2TagSet: S.optional(__S(42, __c5, 2)),
-          ecsServices: S.optional(__S(45, __c5, 5)),
-          onPremisesTagSet: S.optional(__S(43, __c5, 3)),
-          tags: S.optional(__S(1, __c0, 1)),
+          deploymentStyle: S.optional(__S(240, __c15, 0)),
+          blueGreenDeploymentConfiguration: S.optional(__S(244, __c15, 4)),
+          loadBalancerInfo: S.optional(__S(248, __c15, 8)),
+          ec2TagSet: S.optional(__S(228, __c14, 4)),
+          ecsServices: S.optional(__S(260, __c16, 4)),
+          onPremisesTagSet: S.optional(__S(258, __c16, 2)),
+          tags: S.optional(__S(33, __c2, 1)),
           terminationHookEnabled: S.optional(S.Boolean),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "CreateDeploymentGroupInput",
       });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({ deploymentGroupId: S.optional(S.String) }).pipe(ns),
       ).annotate({
         identifier: "CreateDeploymentGroupOutput",
       });
-    case 7:
+  }
+}
+function __c35(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ applicationName: S.String }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
@@ -4014,7 +4110,7 @@ function __c11(j: number): any {
       ).annotate({ identifier: "DeleteApplicationInput" });
   }
 }
-function __c12(j: number): any {
+function __c36(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4024,7 +4120,11 @@ function __c12(j: number): any {
       ).annotate({
         identifier: "DeleteDeploymentConfigInput",
       });
-    case 1:
+  }
+}
+function __c37(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ applicationName: S.String, deploymentGroupName: S.String }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
@@ -4032,13 +4132,21 @@ function __c12(j: number): any {
       ).annotate({
         identifier: "DeleteDeploymentGroupInput",
       });
-    case 2:
+  }
+}
+function __c38(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
-        S.Struct({ hooksNotCleanedUp: S.optional(__S(23, __c2, 7)) }).pipe(ns),
+        S.Struct({ hooksNotCleanedUp: S.optional(__S(273, __c17, 1)) }).pipe(ns),
       ).annotate({
         identifier: "DeleteDeploymentGroupOutput",
       });
-    case 3:
+  }
+}
+function __c39(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ tokenName: S.optional(S.String) }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
@@ -4046,11 +4154,15 @@ function __c12(j: number): any {
       ).annotate({
         identifier: "DeleteGitHubAccountTokenInput",
       });
-    case 4:
+    case 1:
       return S.suspend(() => S.Struct({ tokenName: S.optional(S.String) }).pipe(ns)).annotate({
         identifier: "DeleteGitHubAccountTokenOutput",
       });
-    case 5:
+  }
+}
+function __c40(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ externalId: S.optional(S.String) }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
@@ -4058,7 +4170,11 @@ function __c12(j: number): any {
       ).annotate({
         identifier: "DeleteResourcesByExternalIdInput",
       });
-    case 6:
+  }
+}
+function __c41(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ instanceName: S.String }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
@@ -4066,75 +4182,87 @@ function __c12(j: number): any {
       ).annotate({
         identifier: "DeregisterOnPremisesInstanceInput",
       });
-    case 7:
+  }
+}
+function __c42(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ applicationName: S.String }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "GetApplicationInput" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({ application: S.optional(__S(144, __c9, 0)) }).pipe(ns),
+      ).annotate({ identifier: "GetApplicationOutput" });
   }
 }
-function __c13(j: number): any {
+function __c43(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({ application: S.optional(__S(16, __c2, 0)) }).pipe(ns),
-      ).annotate({ identifier: "GetApplicationOutput" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({ applicationName: S.String, revision: __S(8, __c1, 0) }).pipe(
+        S.Struct({ applicationName: S.String, revision: __S(83, __c5, 3) }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({
         identifier: "GetApplicationRevisionInput",
       });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           applicationName: S.optional(S.String),
-          revision: S.optional(__S(8, __c1, 0)),
-          revisionInfo: S.optional(__S(11, __c1, 3)),
+          revision: S.optional(__S(83, __c5, 3)),
+          revisionInfo: S.optional(__S(96, __c6, 0)),
         }).pipe(ns),
       ).annotate({
         identifier: "GetApplicationRevisionOutput",
       });
-    case 3:
+  }
+}
+function __c44(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ deploymentId: S.String }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "GetDeploymentInput" });
-    case 4:
+    case 1:
       return S.suspend(() =>
-        S.Struct({ deploymentInfo: S.optional(__S(62, __c7, 6)) }).pipe(ns),
+        S.Struct({ deploymentInfo: S.optional(__S(388, __c24, 4)) }).pipe(ns),
       ).annotate({ identifier: "GetDeploymentOutput" });
-    case 5:
+  }
+}
+function __c45(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ deploymentConfigName: S.String }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "GetDeploymentConfigInput" });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           deploymentConfigId: S.optional(S.String),
           deploymentConfigName: S.optional(S.String),
-          minimumHealthyHosts: S.optional(__S(85, __c10, 5)),
+          minimumHealthyHosts: S.optional(__S(528, __c33, 0)),
           createTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           computePlatform: S.optional(S.String),
-          trafficRoutingConfig: S.optional(__S(88, __c11, 0)),
-          zonalConfig: S.optional(__S(90, __c11, 2)),
+          trafficRoutingConfig: S.optional(__S(531, __c33, 3)),
+          zonalConfig: S.optional(__S(533, __c33, 5)),
         }),
       ).annotate({ identifier: "DeploymentConfigInfo" });
-    case 7:
+    case 2:
       return S.suspend(() =>
-        S.Struct({ deploymentConfigInfo: S.optional(__S(110, __c13, 6)) }).pipe(ns),
+        S.Struct({ deploymentConfigInfo: S.optional(__S(721, __c45, 1)) }).pipe(ns),
       ).annotate({
         identifier: "GetDeploymentConfigOutput",
       });
   }
 }
-function __c14(j: number): any {
+function __c46(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4144,9 +4272,13 @@ function __c14(j: number): any {
       ).annotate({ identifier: "GetDeploymentGroupInput" });
     case 1:
       return S.suspend(() =>
-        S.Struct({ deploymentGroupInfo: S.optional(__S(46, __c5, 6)) }).pipe(ns),
+        S.Struct({ deploymentGroupInfo: S.optional(__S(289, __c18, 1)) }).pipe(ns),
       ).annotate({ identifier: "GetDeploymentGroupOutput" });
-    case 2:
+  }
+}
+function __c47(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ deploymentId: S.String, instanceId: S.String }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
@@ -4154,25 +4286,33 @@ function __c14(j: number): any {
       ).annotate({
         identifier: "GetDeploymentInstanceInput",
       });
-    case 3:
+    case 1:
       return S.suspend(() =>
-        S.Struct({ instanceSummary: S.optional(__S(53, __c6, 5)) }).pipe(ns),
+        S.Struct({ instanceSummary: S.optional(__S(336, __c21, 0)) }).pipe(ns),
       ).annotate({
         identifier: "GetDeploymentInstanceOutput",
       });
-    case 4:
+  }
+}
+function __c48(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ deploymentId: S.String, targetId: S.String }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "GetDeploymentTargetInput" });
-    case 5:
+    case 1:
       return S.suspend(() =>
-        S.Struct({ deploymentTarget: S.optional(__S(73, __c9, 1)) }).pipe(ns),
+        S.Struct({ deploymentTarget: S.optional(__S(423, __c26, 7)) }).pipe(ns),
       ).annotate({
         identifier: "GetDeploymentTargetOutput",
       });
-    case 6:
+  }
+}
+function __c49(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ instanceName: S.String }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
@@ -4180,15 +4320,15 @@ function __c14(j: number): any {
       ).annotate({
         identifier: "GetOnPremisesInstanceInput",
       });
-    case 7:
+    case 1:
       return S.suspend(() =>
-        S.Struct({ instanceInfo: S.optional(__S(77, __c9, 5)) }).pipe(ns),
+        S.Struct({ instanceInfo: S.optional(__S(448, __c28, 0)) }).pipe(ns),
       ).annotate({
         identifier: "GetOnPremisesInstanceOutput",
       });
   }
 }
-function __c15(j: number): any {
+function __c50(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4207,26 +4347,34 @@ function __c15(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          revisions: S.optional(__S(9, __c1, 1)),
+          revisions: S.optional(__S(112, __c7, 0)),
           nextToken: S.optional(S.String),
         }).pipe(ns),
       ).annotate({
         identifier: "ListApplicationRevisionsOutput",
       });
-    case 2:
+  }
+}
+function __c51(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ nextToken: S.optional(S.String) }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "ListApplicationsInput" });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          applications: S.optional(__S(2, __c0, 2)),
+          applications: S.optional(__S(16, __c1, 0)),
           nextToken: S.optional(S.String),
         }).pipe(ns),
       ).annotate({ identifier: "ListApplicationsOutput" });
-    case 4:
+  }
+}
+function __c52(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ nextToken: S.optional(S.String) }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
@@ -4234,16 +4382,20 @@ function __c15(j: number): any {
       ).annotate({
         identifier: "ListDeploymentConfigsInput",
       });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          deploymentConfigsList: S.optional(__S(2, __c0, 2)),
+          deploymentConfigsList: S.optional(__S(16, __c1, 0)),
           nextToken: S.optional(S.String),
         }).pipe(ns),
       ).annotate({
         identifier: "ListDeploymentConfigsOutput",
       });
-    case 6:
+  }
+}
+function __c53(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ applicationName: S.String, nextToken: S.optional(S.String) }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
@@ -4251,11 +4403,11 @@ function __c15(j: number): any {
       ).annotate({
         identifier: "ListDeploymentGroupsInput",
       });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           applicationName: S.optional(S.String),
-          deploymentGroups: S.optional(__S(2, __c0, 2)),
+          deploymentGroups: S.optional(__S(16, __c1, 0)),
           nextToken: S.optional(S.String),
         }).pipe(ns),
       ).annotate({
@@ -4263,15 +4415,15 @@ function __c15(j: number): any {
       });
   }
 }
-function __c16(j: number): any {
+function __c54(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           deploymentId: S.String,
           nextToken: S.optional(S.String),
-          instanceStatusFilter: S.optional(__S(24, __c3, 0)),
-          instanceTypeFilter: S.optional(__S(24, __c3, 0)),
+          instanceStatusFilter: S.optional(__S(192, __c12, 0)),
+          instanceTypeFilter: S.optional(__S(192, __c12, 0)),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "ListDeploymentInstancesInput",
@@ -4279,52 +4431,60 @@ function __c16(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          instancesList: S.optional(__S(2, __c0, 2)),
+          instancesList: S.optional(__S(16, __c1, 0)),
           nextToken: S.optional(S.String),
         }).pipe(ns),
       ).annotate({
         identifier: "ListDeploymentInstancesOutput",
       });
-    case 2:
+  }
+}
+function __c55(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           start: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           end: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
         }),
       ).annotate({ identifier: "TimeRange" });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           applicationName: S.optional(S.String),
           deploymentGroupName: S.optional(S.String),
           externalId: S.optional(S.String),
-          includeOnlyStatuses: S.optional(__S(24, __c3, 0)),
-          createTimeRange: S.optional(__S(130, __c16, 2)),
+          includeOnlyStatuses: S.optional(__S(192, __c12, 0)),
+          createTimeRange: S.optional(__S(880, __c55, 0)),
           nextToken: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "ListDeploymentsInput" });
-    case 4:
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          deployments: S.optional(__S(2, __c0, 2)),
+          deployments: S.optional(__S(16, __c1, 0)),
           nextToken: S.optional(S.String),
         }).pipe(ns),
       ).annotate({ identifier: "ListDeploymentsOutput" });
-    case 5:
-      return S.Record(S.String, /*@__PURE__*/ __S(2, __c0, 2).pipe(S.optional));
-    case 6:
+  }
+}
+function __c56(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, /*@__PURE__*/ __S(16, __c1, 0).pipe(S.optional));
+    case 1:
       return S.suspend(() =>
         S.Struct({
           deploymentId: S.String,
           nextToken: S.optional(S.String),
-          targetFilters: S.optional(__S(133, __c16, 5)),
+          targetFilters: S.optional(__S(896, __c56, 0)),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "ListDeploymentTargetsInput",
       });
-    case 7:
+    case 2:
       return S.suspend(() =>
-        S.Struct({ targetIds: S.optional(__S(2, __c0, 2)), nextToken: S.optional(S.String) }).pipe(
+        S.Struct({ targetIds: S.optional(__S(16, __c1, 0)), nextToken: S.optional(S.String) }).pipe(
           ns,
         ),
       ).annotate({
@@ -4332,7 +4492,7 @@ function __c16(j: number): any {
       });
   }
 }
-function __c17(j: number): any {
+function __c57(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4345,44 +4505,56 @@ function __c17(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          tokenNameList: S.optional(__S(2, __c0, 2)),
+          tokenNameList: S.optional(__S(16, __c1, 0)),
           nextToken: S.optional(S.String),
         }).pipe(ns),
       ).annotate({
         identifier: "ListGitHubAccountTokenNamesOutput",
       });
-    case 2:
+  }
+}
+function __c58(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           registrationStatus: S.optional(S.String),
-          tagFilters: S.optional(__S(21, __c2, 5)),
+          tagFilters: S.optional(__S(209, __c13, 1)),
           nextToken: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "ListOnPremisesInstancesInput",
       });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          instanceNames: S.optional(__S(2, __c0, 2)),
+          instanceNames: S.optional(__S(16, __c1, 0)),
           nextToken: S.optional(S.String),
         }).pipe(ns),
       ).annotate({
         identifier: "ListOnPremisesInstancesOutput",
       });
-    case 4:
+  }
+}
+function __c59(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ ResourceArn: S.String, NextToken: S.optional(S.String) }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "ListTagsForResourceInput" });
-    case 5:
+    case 1:
       return S.suspend(() =>
-        S.Struct({ Tags: S.optional(__S(1, __c0, 1)), NextToken: S.optional(S.String) }).pipe(ns),
+        S.Struct({ Tags: S.optional(__S(33, __c2, 1)), NextToken: S.optional(S.String) }).pipe(ns),
       ).annotate({
         identifier: "ListTagsForResourceOutput",
       });
-    case 6:
+  }
+}
+function __c60(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           deploymentId: S.optional(S.String),
@@ -4392,7 +4564,7 @@ function __c17(j: number): any {
       ).annotate({
         identifier: "PutLifecycleEventHookExecutionStatusInput",
       });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({ lifecycleEventHookExecutionId: S.optional(S.String) }).pipe(ns),
       ).annotate({
@@ -4400,19 +4572,23 @@ function __c17(j: number): any {
       });
   }
 }
-function __c18(j: number): any {
+function __c61(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           applicationName: S.String,
           description: S.optional(S.String),
-          revision: __S(8, __c1, 0),
+          revision: __S(83, __c5, 3),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "RegisterApplicationRevisionInput",
       });
-    case 1:
+  }
+}
+function __c62(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           instanceName: S.String,
@@ -4422,15 +4598,23 @@ function __c18(j: number): any {
       ).annotate({
         identifier: "RegisterOnPremisesInstanceInput",
       });
-    case 2:
+  }
+}
+function __c63(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
-        S.Struct({ tags: __S(1, __c0, 1), instanceNames: __S(2, __c0, 2) }).pipe(
+        S.Struct({ tags: __S(33, __c2, 1), instanceNames: __S(16, __c1, 0) }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({
         identifier: "RemoveTagsFromOnPremisesInstancesInput",
       });
-    case 3:
+  }
+}
+function __c64(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ deploymentId: S.optional(S.String) }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
@@ -4438,64 +4622,84 @@ function __c18(j: number): any {
       ).annotate({
         identifier: "SkipWaitTimeForInstanceTerminationInput",
       });
-    case 4:
+  }
+}
+function __c65(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ deploymentId: S.String, autoRollbackEnabled: S.optional(S.Boolean) }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "StopDeploymentInput" });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({ status: S.optional(S.String), statusMessage: S.optional(S.String) }).pipe(ns),
       ).annotate({ identifier: "StopDeploymentOutput" });
-    case 6:
+  }
+}
+function __c66(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
-        S.Struct({ ResourceArn: S.String, Tags: __S(1, __c0, 1) }).pipe(
+        S.Struct({ ResourceArn: S.String, Tags: __S(33, __c2, 1) }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "TagResourceInput" });
-    case 7:
+  }
+}
+function __c67(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
         identifier: "TagResourceOutput",
       });
   }
 }
-function __c19(j: number): any {
+function __c68(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({ ResourceArn: S.String, TagKeys: __S(2, __c0, 2) }).pipe(
+        S.Struct({ ResourceArn: S.String, TagKeys: __S(16, __c1, 0) }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "UntagResourceInput" });
-    case 1:
+  }
+}
+function __c69(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           applicationName: S.optional(S.String),
           newApplicationName: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "UpdateApplicationInput" });
-    case 2:
+  }
+}
+function __c70(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           applicationName: S.String,
           currentDeploymentGroupName: S.String,
           newDeploymentGroupName: S.optional(S.String),
           deploymentConfigName: S.optional(S.String),
-          ec2TagFilters: S.optional(__S(21, __c2, 5)),
-          onPremisesInstanceTagFilters: S.optional(__S(21, __c2, 5)),
-          autoScalingGroups: S.optional(__S(2, __c0, 2)),
+          ec2TagFilters: S.optional(__S(209, __c13, 1)),
+          onPremisesInstanceTagFilters: S.optional(__S(209, __c13, 1)),
+          autoScalingGroups: S.optional(__S(16, __c1, 0)),
           serviceRoleArn: S.optional(S.String),
-          triggerConfigurations: S.optional(__S(26, __c3, 2)),
-          alarmConfiguration: S.optional(__S(29, __c3, 5)),
-          autoRollbackConfiguration: S.optional(__S(30, __c3, 6)),
+          triggerConfigurations: S.optional(__S(257, __c16, 1)),
+          alarmConfiguration: S.optional(__S(225, __c14, 1)),
+          autoRollbackConfiguration: S.optional(__S(226, __c14, 2)),
           outdatedInstancesStrategy: S.optional(S.String),
-          deploymentStyle: S.optional(__S(31, __c3, 7)),
-          blueGreenDeploymentConfiguration: S.optional(__S(35, __c4, 3)),
-          loadBalancerInfo: S.optional(__S(39, __c4, 7)),
-          ec2TagSet: S.optional(__S(42, __c5, 2)),
-          ecsServices: S.optional(__S(45, __c5, 5)),
-          onPremisesTagSet: S.optional(__S(43, __c5, 3)),
+          deploymentStyle: S.optional(__S(240, __c15, 0)),
+          blueGreenDeploymentConfiguration: S.optional(__S(244, __c15, 4)),
+          loadBalancerInfo: S.optional(__S(248, __c15, 8)),
+          ec2TagSet: S.optional(__S(228, __c14, 4)),
+          ecsServices: S.optional(__S(260, __c16, 4)),
+          onPremisesTagSet: S.optional(__S(258, __c16, 2)),
           terminationHookEnabled: S.optional(S.Boolean),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
@@ -4503,7 +4707,6 @@ function __c19(j: number): any {
       });
   }
 }
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

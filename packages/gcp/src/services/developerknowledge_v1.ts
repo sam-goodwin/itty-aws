@@ -211,7 +211,7 @@ export const answerQueryV1: API.OperationMethod<
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(1, __c0, 1) as any as S.Schema<AnswerQueryV1Request>,
-  output: __S(12, __c1, 4) as any as S.Schema<AnswerQueryResponse>,
+  output: __S(10, __c0, 10) as any as S.Schema<AnswerQueryResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -225,8 +225,8 @@ export const batchGetDocuments: API.OperationMethod<
   BatchGetDocumentsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(14, __c1, 6) as any as S.Schema<BatchGetDocumentsRequest>,
-  output: __S(16, __c2, 0) as any as S.Schema<BatchGetDocumentsResponse>,
+  input: __S(49, __c3, 1) as any as S.Schema<BatchGetDocumentsRequest>,
+  output: __S(51, __c3, 3) as any as S.Schema<BatchGetDocumentsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -240,8 +240,8 @@ export const getDocuments: API.OperationMethod<
   GetDocumentsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(17, __c2, 1) as any as S.Schema<GetDocumentsRequest>,
-  output: __S(2, __c0, 2) as any as S.Schema<Document>,
+  input: __S(64, __c4, 0) as any as S.Schema<GetDocumentsRequest>,
+  output: __S(16, __c1, 0) as any as S.Schema<Document>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -256,8 +256,8 @@ export const searchDocumentChunksDocuments: API.PaginatedOperationMethod<
   GcpOpContext,
   SearchDocumentChunksResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(18, __c2, 2) as any as S.Schema<SearchDocumentChunksDocumentsRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<SearchDocumentChunksResponse>,
+  input: __S(80, __c5, 0) as any as S.Schema<SearchDocumentChunksDocumentsRequest>,
+  output: __S(82, __c5, 2) as any as S.Schema<SearchDocumentChunksResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -289,6 +289,56 @@ function __c0(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
+          documentChunk: S.optional(__S(32, __c2, 0)),
+        }),
+      ).annotate({ identifier: "DocumentReference" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          documentReference: S.optional(__S(2, __c0, 2)),
+        }),
+      ).annotate({ identifier: "AnswerReference" });
+    case 4:
+      return S.Array(__S(3, __c0, 3));
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          referenceIndex: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "CitationSource" });
+    case 6:
+      return S.Array(__S(5, __c0, 5));
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          startIndex: S.optional(S.Number),
+          endIndex: S.optional(S.Number),
+          sources: S.optional(__S(6, __c0, 6)),
+        }),
+      ).annotate({ identifier: "AnswerCitation" });
+    case 8:
+      return S.Array(__S(7, __c0, 7));
+    case 9:
+      return S.suspend(() =>
+        S.Struct({
+          references: S.optional(__S(4, __c0, 4)),
+          answerText: S.optional(S.String),
+          citations: S.optional(__S(8, __c0, 8)),
+        }),
+      ).annotate({ identifier: "Answer" });
+    case 10:
+      return S.suspend(() =>
+        S.Struct({
+          answer: S.optional(__S(9, __c0, 9)),
+        }),
+      ).annotate({ identifier: "AnswerQueryResponse" });
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
           content: S.optional(S.String),
           dataSource: S.optional(S.String),
           name: S.optional(S.String),
@@ -300,72 +350,30 @@ function __c0(j: number): any {
           title: S.optional(S.String),
         }),
       ).annotate({ identifier: "Document" });
-    case 3:
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           relevanceScore: S.optional(S.Number),
           content: S.optional(S.String),
           parent: S.optional(S.String),
-          document: S.optional(__S(2, __c0, 2)),
+          document: S.optional(__S(16, __c1, 0)),
         }),
       ).annotate({ identifier: "DocumentChunk" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          documentChunk: S.optional(__S(3, __c0, 3)),
-        }),
-      ).annotate({ identifier: "DocumentReference" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          documentReference: S.optional(__S(4, __c0, 4)),
-        }),
-      ).annotate({ identifier: "AnswerReference" });
-    case 6:
-      return S.Array(__S(5, __c0, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          referenceIndex: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "CitationSource" });
   }
 }
-function __c1(j: number): any {
+function __c3(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(7, __c0, 7));
+      return S.Array(S.String);
     case 1:
       return S.suspend(() =>
         S.Struct({
-          startIndex: S.optional(S.Number),
-          endIndex: S.optional(S.Number),
-          sources: S.optional(__S(8, __c1, 0)),
-        }),
-      ).annotate({ identifier: "AnswerCitation" });
-    case 2:
-      return S.Array(__S(9, __c1, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          references: S.optional(__S(6, __c0, 6)),
-          answerText: S.optional(S.String),
-          citations: S.optional(__S(10, __c1, 2)),
-        }),
-      ).annotate({ identifier: "Answer" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          answer: S.optional(__S(11, __c1, 3)),
-        }),
-      ).annotate({ identifier: "AnswerQueryResponse" });
-    case 5:
-      return S.Array(S.String);
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          names: S.optional(__S(13, __c1, 5).pipe(T.Query())),
+          names: S.optional(__S(48, __c3, 0).pipe(T.Query())),
           view: S.optional(S.String.pipe(T.Query())),
         }).pipe(
           T.Http({
@@ -375,21 +383,21 @@ function __c1(j: number): any {
           }),
         ),
       ).annotate({ identifier: "BatchGetDocumentsRequest" });
-    case 7:
-      return S.Array(__S(2, __c0, 2));
-  }
-}
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
+    case 2:
+      return S.Array(__S(16, __c1, 0));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          documents: S.optional(__S(15, __c1, 7)),
+          documents: S.optional(__S(50, __c3, 2)),
         }),
       ).annotate({
         identifier: "BatchGetDocumentsResponse",
       });
-    case 1:
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -402,7 +410,11 @@ function __c2(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetDocumentsRequest" });
-    case 2:
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           query: S.optional(S.String.pipe(T.Query())),
@@ -419,12 +431,12 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "SearchDocumentChunksDocumentsRequest",
       });
-    case 3:
-      return S.Array(__S(3, __c0, 3));
-    case 4:
+    case 1:
+      return S.Array(__S(32, __c2, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          results: S.optional(__S(19, __c2, 3)),
+          results: S.optional(__S(81, __c5, 1)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({
@@ -432,7 +444,6 @@ function __c2(j: number): any {
       });
   }
 }
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

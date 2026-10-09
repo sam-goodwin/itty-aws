@@ -53,8 +53,8 @@ export const healthControllerLive: API.OperationMethod<
   HealthControllerLiveError,
   DaytonaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(4, __c0, 4) as any as S.Schema<HealthControllerLiveRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<HealthControllerLiveResponse>,
+  input: __S(4, __c1, 0) as any as S.Schema<HealthControllerLiveRequest>,
+  output: __S(5, __c1, 1) as any as S.Schema<HealthControllerLiveResponse>,
   errors: [UnknownDaytonaError],
   protocol: DaytonaProtocol,
   retry: Retry.Retry,
@@ -90,19 +90,22 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "HealthControllerCheck200Response",
       });
-    case 4:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({}).pipe(T.Http({ method: "GET", uri: "/health", code: 200 })),
       ).annotate({
         identifier: "HealthControllerLiveRequest",
       });
-    case 5:
+    case 1:
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "HealthControllerLiveResponse",
       });
   }
 }
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

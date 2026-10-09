@@ -1496,8 +1496,8 @@ export const ContactProfilesCreateOrUpdate: API.OperationMethod<
   ContactProfilesCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(10, __c1, 2) as any as S.Schema<ContactProfilesCreateOrUpdateRequest>,
-  output: __S(13, __c1, 5) as any as S.Schema<ContactProfilesCreateOrUpdateResponse>,
+  input: __S(1, __c0, 1) as any as S.Schema<ContactProfilesCreateOrUpdateRequest>,
+  output: __S(48, __c3, 0) as any as S.Schema<ContactProfilesCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1511,8 +1511,8 @@ export const CreateContact: API.OperationMethod<
   CreateContactError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(16, __c2, 0) as any as S.Schema<CreateContactRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<CreateContactResponse>,
+  input: __S(81, __c5, 1) as any as S.Schema<CreateContactRequest>,
+  output: __S(115, __c7, 3) as any as S.Schema<CreateContactResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1526,8 +1526,8 @@ export const DeleteContact: API.OperationMethod<
   DeleteContactError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(21, __c2, 5) as any as S.Schema<DeleteContactRequest>,
-  output: __S(22, __c2, 6) as any as S.Schema<DeleteContactResponse>,
+  input: __S(448, __c28, 0) as any as S.Schema<DeleteContactRequest>,
+  output: __S(464, __c29, 0) as any as S.Schema<DeleteContactResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1541,8 +1541,8 @@ export const DeleteContactProfile: API.OperationMethod<
   DeleteContactProfileError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(23, __c2, 7) as any as S.Schema<DeleteContactProfileRequest>,
-  output: __S(22, __c2, 6) as any as S.Schema<DeleteContactProfileResponse>,
+  input: __S(704, __c44, 0) as any as S.Schema<DeleteContactProfileRequest>,
+  output: __S(464, __c29, 0) as any as S.Schema<DeleteContactProfileResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1556,8 +1556,8 @@ export const DeleteEdgeSite: API.OperationMethod<
   DeleteEdgeSiteError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(24, __c3, 0) as any as S.Schema<DeleteEdgeSiteRequest>,
-  output: __S(22, __c2, 6) as any as S.Schema<DeleteEdgeSiteResponse>,
+  input: __S(912, __c57, 0) as any as S.Schema<DeleteEdgeSiteRequest>,
+  output: __S(464, __c29, 0) as any as S.Schema<DeleteEdgeSiteResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1571,8 +1571,8 @@ export const DeleteGroundStation: API.OperationMethod<
   DeleteGroundStationError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(25, __c3, 1) as any as S.Schema<DeleteGroundStationRequest>,
-  output: __S(22, __c2, 6) as any as S.Schema<DeleteGroundStationResponse>,
+  input: __S(944, __c59, 0) as any as S.Schema<DeleteGroundStationRequest>,
+  output: __S(464, __c29, 0) as any as S.Schema<DeleteGroundStationResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1586,8 +1586,8 @@ export const DeleteL2Connection: API.OperationMethod<
   DeleteL2ConnectionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(26, __c3, 2) as any as S.Schema<DeleteL2ConnectionRequest>,
-  output: __S(22, __c2, 6) as any as S.Schema<DeleteL2ConnectionResponse>,
+  input: __S(960, __c60, 0) as any as S.Schema<DeleteL2ConnectionRequest>,
+  output: __S(464, __c29, 0) as any as S.Schema<DeleteL2ConnectionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1601,8 +1601,8 @@ export const DeleteSpacecraft: API.OperationMethod<
   DeleteSpacecraftError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(27, __c3, 3) as any as S.Schema<DeleteSpacecraftRequest>,
-  output: __S(22, __c2, 6) as any as S.Schema<DeleteSpacecraftResponse>,
+  input: __S(976, __c61, 0) as any as S.Schema<DeleteSpacecraftRequest>,
+  output: __S(464, __c29, 0) as any as S.Schema<DeleteSpacecraftResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1616,8 +1616,8 @@ export const EdgeSitesCreateOrUpdate: API.OperationMethod<
   EdgeSitesCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(29, __c3, 5) as any as S.Schema<EdgeSitesCreateOrUpdateRequest>,
-  output: __S(30, __c3, 6) as any as S.Schema<EdgeSitesCreateOrUpdateResponse>,
+  input: __S(992, __c62, 0) as any as S.Schema<EdgeSitesCreateOrUpdateRequest>,
+  output: __S(1024, __c64, 0) as any as S.Schema<EdgeSitesCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1631,8 +1631,8 @@ export const GetContact: API.OperationMethod<
   GetContactError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(31, __c3, 7) as any as S.Schema<GetContactRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<GetContactResponse>,
+  input: __S(1040, __c65, 0) as any as S.Schema<GetContactRequest>,
+  output: __S(115, __c7, 3) as any as S.Schema<GetContactResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1646,8 +1646,8 @@ export const GetContactProfile: API.OperationMethod<
   GetContactProfileError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(32, __c4, 0) as any as S.Schema<GetContactProfileRequest>,
-  output: __S(13, __c1, 5) as any as S.Schema<GetContactProfileResponse>,
+  input: __S(128, __c8, 0) as any as S.Schema<GetContactProfileRequest>,
+  output: __S(48, __c3, 0) as any as S.Schema<GetContactProfileResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1661,8 +1661,8 @@ export const GetEdgeSite: API.OperationMethod<
   GetEdgeSiteError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(33, __c4, 1) as any as S.Schema<GetEdgeSiteRequest>,
-  output: __S(34, __c4, 2) as any as S.Schema<GetEdgeSiteResponse>,
+  input: __S(144, __c9, 0) as any as S.Schema<GetEdgeSiteRequest>,
+  output: __S(160, __c10, 0) as any as S.Schema<GetEdgeSiteResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1676,8 +1676,8 @@ export const GetGroundStation: API.OperationMethod<
   GetGroundStationError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(35, __c4, 3) as any as S.Schema<GetGroundStationRequest>,
-  output: __S(38, __c4, 6) as any as S.Schema<GetGroundStationResponse>,
+  input: __S(176, __c11, 0) as any as S.Schema<GetGroundStationRequest>,
+  output: __S(208, __c13, 0) as any as S.Schema<GetGroundStationResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1691,8 +1691,8 @@ export const GetL2Connection: API.OperationMethod<
   GetL2ConnectionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(39, __c4, 7) as any as S.Schema<GetL2ConnectionRequest>,
-  output: __S(42, __c5, 2) as any as S.Schema<GetL2ConnectionResponse>,
+  input: __S(224, __c14, 0) as any as S.Schema<GetL2ConnectionRequest>,
+  output: __S(256, __c16, 0) as any as S.Schema<GetL2ConnectionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1706,8 +1706,8 @@ export const GetOperationsResult: API.OperationMethod<
   GetOperationsResultError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(43, __c5, 3) as any as S.Schema<GetOperationsResultRequest>,
-  output: __S(46, __c5, 6) as any as S.Schema<OperationResult>,
+  input: __S(272, __c17, 0) as any as S.Schema<GetOperationsResultRequest>,
+  output: __S(275, __c17, 3) as any as S.Schema<OperationResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1721,8 +1721,8 @@ export const GetSpacecraft: API.OperationMethod<
   GetSpacecraftError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(47, __c5, 7) as any as S.Schema<GetSpacecraftRequest>,
-  output: __S(53, __c6, 5) as any as S.Schema<GetSpacecraftResponse>,
+  input: __S(288, __c18, 0) as any as S.Schema<GetSpacecraftRequest>,
+  output: __S(304, __c19, 0) as any as S.Schema<GetSpacecraftResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1736,8 +1736,8 @@ export const GroundStationsCreateOrUpdate: API.OperationMethod<
   GroundStationsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(55, __c6, 7) as any as S.Schema<GroundStationsCreateOrUpdateRequest>,
-  output: __S(56, __c7, 0) as any as S.Schema<GroundStationsCreateOrUpdateResponse>,
+  input: __S(337, __c21, 1) as any as S.Schema<GroundStationsCreateOrUpdateRequest>,
+  output: __S(352, __c22, 0) as any as S.Schema<GroundStationsCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1751,8 +1751,8 @@ export const L2ConnectionsCreateOrUpdate: API.OperationMethod<
   L2ConnectionsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(58, __c7, 2) as any as S.Schema<L2ConnectionsCreateOrUpdateRequest>,
-  output: __S(59, __c7, 3) as any as S.Schema<L2ConnectionsCreateOrUpdateResponse>,
+  input: __S(369, __c23, 1) as any as S.Schema<L2ConnectionsCreateOrUpdateRequest>,
+  output: __S(384, __c24, 0) as any as S.Schema<L2ConnectionsCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1766,8 +1766,8 @@ export const ListAvailableGroundStationByCapability: API.OperationMethod<
   ListAvailableGroundStationByCapabilityError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(60, __c7, 4) as any as S.Schema<ListAvailableGroundStationByCapabilityRequest>,
-  output: __S(64, __c8, 0) as any as S.Schema<AvailableGroundStationListResult>,
+  input: __S(400, __c25, 0) as any as S.Schema<ListAvailableGroundStationByCapabilityRequest>,
+  output: __S(404, __c25, 4) as any as S.Schema<AvailableGroundStationListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1781,8 +1781,8 @@ export const ListContactProfileBySubscription: API.OperationMethod<
   ListContactProfileBySubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(65, __c8, 1) as any as S.Schema<ListContactProfileBySubscriptionRequest>,
-  output: __S(68, __c8, 4) as any as S.Schema<ContactProfileListResult>,
+  input: __S(416, __c26, 0) as any as S.Schema<ListContactProfileBySubscriptionRequest>,
+  output: __S(434, __c27, 2) as any as S.Schema<ContactProfileListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1796,8 +1796,8 @@ export const ListContactProfiles: API.OperationMethod<
   ListContactProfilesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(69, __c8, 5) as any as S.Schema<ListContactProfilesRequest>,
-  output: __S(68, __c8, 4) as any as S.Schema<ContactProfileListResult>,
+  input: __S(480, __c30, 0) as any as S.Schema<ListContactProfilesRequest>,
+  output: __S(434, __c27, 2) as any as S.Schema<ContactProfileListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1811,8 +1811,8 @@ export const ListContacts: API.OperationMethod<
   ListContactsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(70, __c8, 6) as any as S.Schema<ListContactsRequest>,
-  output: __S(72, __c9, 0) as any as S.Schema<ContactListResult>,
+  input: __S(496, __c31, 0) as any as S.Schema<ListContactsRequest>,
+  output: __S(498, __c31, 2) as any as S.Schema<ContactListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1826,8 +1826,8 @@ export const ListEdgeSiteBySubscription: API.OperationMethod<
   ListEdgeSiteBySubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(73, __c9, 1) as any as S.Schema<ListEdgeSiteBySubscriptionRequest>,
-  output: __S(75, __c9, 3) as any as S.Schema<EdgeSiteListResult>,
+  input: __S(512, __c32, 0) as any as S.Schema<ListEdgeSiteBySubscriptionRequest>,
+  output: __S(529, __c33, 1) as any as S.Schema<EdgeSiteListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1841,8 +1841,8 @@ export const ListEdgeSiteL2Connections: API.OperationMethod<
   ListEdgeSiteL2ConnectionsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(76, __c9, 4) as any as S.Schema<ListEdgeSiteL2ConnectionsRequest>,
-  output: __S(79, __c9, 7) as any as S.Schema<ResourceIdListResult>,
+  input: __S(544, __c34, 0) as any as S.Schema<ListEdgeSiteL2ConnectionsRequest>,
+  output: __S(562, __c35, 2) as any as S.Schema<ResourceIdListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1856,8 +1856,8 @@ export const ListEdgeSites: API.OperationMethod<
   ListEdgeSitesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(80, __c10, 0) as any as S.Schema<ListEdgeSitesRequest>,
-  output: __S(75, __c9, 3) as any as S.Schema<EdgeSiteListResult>,
+  input: __S(576, __c36, 0) as any as S.Schema<ListEdgeSitesRequest>,
+  output: __S(529, __c33, 1) as any as S.Schema<EdgeSiteListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1871,8 +1871,8 @@ export const ListGlobalCommunicationsSiteBySubscription: API.OperationMethod<
   ListGlobalCommunicationsSiteBySubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(81, __c10, 1) as any as S.Schema<ListGlobalCommunicationsSiteBySubscriptionRequest>,
-  output: __S(88, __c11, 0) as any as S.Schema<GlobalCommunicationsSiteListResult>,
+  input: __S(592, __c37, 0) as any as S.Schema<ListGlobalCommunicationsSiteBySubscriptionRequest>,
+  output: __S(599, __c37, 7) as any as S.Schema<GlobalCommunicationsSiteListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1886,8 +1886,8 @@ export const ListGroundStationBySubscription: API.OperationMethod<
   ListGroundStationBySubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(89, __c11, 1) as any as S.Schema<ListGroundStationBySubscriptionRequest>,
-  output: __S(91, __c11, 3) as any as S.Schema<GroundStationListResult>,
+  input: __S(608, __c38, 0) as any as S.Schema<ListGroundStationBySubscriptionRequest>,
+  output: __S(625, __c39, 1) as any as S.Schema<GroundStationListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1901,8 +1901,8 @@ export const ListGroundStationL2Connections: API.OperationMethod<
   ListGroundStationL2ConnectionsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(92, __c11, 4) as any as S.Schema<ListGroundStationL2ConnectionsRequest>,
-  output: __S(79, __c9, 7) as any as S.Schema<ResourceIdListResult>,
+  input: __S(640, __c40, 0) as any as S.Schema<ListGroundStationL2ConnectionsRequest>,
+  output: __S(562, __c35, 2) as any as S.Schema<ResourceIdListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1916,8 +1916,8 @@ export const ListGroundStations: API.OperationMethod<
   ListGroundStationsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(93, __c11, 5) as any as S.Schema<ListGroundStationsRequest>,
-  output: __S(91, __c11, 3) as any as S.Schema<GroundStationListResult>,
+  input: __S(656, __c41, 0) as any as S.Schema<ListGroundStationsRequest>,
+  output: __S(625, __c39, 1) as any as S.Schema<GroundStationListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1931,8 +1931,8 @@ export const ListL2ConnectionBySubscription: API.OperationMethod<
   ListL2ConnectionBySubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(94, __c11, 6) as any as S.Schema<ListL2ConnectionBySubscriptionRequest>,
-  output: __S(96, __c12, 0) as any as S.Schema<L2ConnectionListResult>,
+  input: __S(672, __c42, 0) as any as S.Schema<ListL2ConnectionBySubscriptionRequest>,
+  output: __S(689, __c43, 1) as any as S.Schema<L2ConnectionListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1946,8 +1946,8 @@ export const ListL2Connections: API.OperationMethod<
   ListL2ConnectionsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(97, __c12, 1) as any as S.Schema<ListL2ConnectionsRequest>,
-  output: __S(96, __c12, 0) as any as S.Schema<L2ConnectionListResult>,
+  input: __S(720, __c45, 0) as any as S.Schema<ListL2ConnectionsRequest>,
+  output: __S(689, __c43, 1) as any as S.Schema<L2ConnectionListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1961,8 +1961,8 @@ export const ListOperations: API.OperationMethod<
   ListOperationsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(98, __c12, 2) as any as S.Schema<ListOperationsRequest>,
-  output: __S(102, __c12, 6) as any as S.Schema<ListOperationsResponse>,
+  input: __S(736, __c46, 0) as any as S.Schema<ListOperationsRequest>,
+  output: __S(740, __c46, 4) as any as S.Schema<ListOperationsResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1976,8 +1976,8 @@ export const ListSpacecraftAvailableContacts: API.OperationMethod<
   ListSpacecraftAvailableContactsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(103, __c12, 7) as any as S.Schema<ListSpacecraftAvailableContactsRequest>,
-  output: __S(107, __c13, 3) as any as S.Schema<AvailableContactsListResult>,
+  input: __S(752, __c47, 0) as any as S.Schema<ListSpacecraftAvailableContactsRequest>,
+  output: __S(756, __c47, 4) as any as S.Schema<AvailableContactsListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1991,8 +1991,8 @@ export const ListSpacecraftBySubscription: API.OperationMethod<
   ListSpacecraftBySubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(108, __c13, 4) as any as S.Schema<ListSpacecraftBySubscriptionRequest>,
-  output: __S(110, __c13, 6) as any as S.Schema<SpacecraftListResult>,
+  input: __S(768, __c48, 0) as any as S.Schema<ListSpacecraftBySubscriptionRequest>,
+  output: __S(785, __c49, 1) as any as S.Schema<SpacecraftListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2006,8 +2006,8 @@ export const ListSpacecrafts: API.OperationMethod<
   ListSpacecraftsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(111, __c13, 7) as any as S.Schema<ListSpacecraftsRequest>,
-  output: __S(110, __c13, 6) as any as S.Schema<SpacecraftListResult>,
+  input: __S(800, __c50, 0) as any as S.Schema<ListSpacecraftsRequest>,
+  output: __S(785, __c49, 1) as any as S.Schema<SpacecraftListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2021,8 +2021,8 @@ export const SpacecraftsCreateOrUpdate: API.OperationMethod<
   SpacecraftsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(115, __c14, 3) as any as S.Schema<SpacecraftsCreateOrUpdateRequest>,
-  output: __S(116, __c14, 4) as any as S.Schema<SpacecraftsCreateOrUpdateResponse>,
+  input: __S(819, __c51, 3) as any as S.Schema<SpacecraftsCreateOrUpdateRequest>,
+  output: __S(832, __c52, 0) as any as S.Schema<SpacecraftsCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2036,8 +2036,8 @@ export const UpdateContactProfileTags: API.OperationMethod<
   UpdateContactProfileTagsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(117, __c14, 5) as any as S.Schema<UpdateContactProfileTagsRequest>,
-  output: __S(13, __c1, 5) as any as S.Schema<UpdateContactProfileTagsResponse>,
+  input: __S(848, __c53, 0) as any as S.Schema<UpdateContactProfileTagsRequest>,
+  output: __S(48, __c3, 0) as any as S.Schema<UpdateContactProfileTagsResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2051,8 +2051,8 @@ export const UpdateEdgeSiteTags: API.OperationMethod<
   UpdateEdgeSiteTagsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(118, __c14, 6) as any as S.Schema<UpdateEdgeSiteTagsRequest>,
-  output: __S(30, __c3, 6) as any as S.Schema<UpdateEdgeSiteTagsResponse>,
+  input: __S(864, __c54, 0) as any as S.Schema<UpdateEdgeSiteTagsRequest>,
+  output: __S(1024, __c64, 0) as any as S.Schema<UpdateEdgeSiteTagsResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2066,8 +2066,8 @@ export const UpdateGroundStationTags: API.OperationMethod<
   UpdateGroundStationTagsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(119, __c14, 7) as any as S.Schema<UpdateGroundStationTagsRequest>,
-  output: __S(56, __c7, 0) as any as S.Schema<UpdateGroundStationTagsResponse>,
+  input: __S(880, __c55, 0) as any as S.Schema<UpdateGroundStationTagsRequest>,
+  output: __S(352, __c22, 0) as any as S.Schema<UpdateGroundStationTagsResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2081,8 +2081,8 @@ export const UpdateL2ConnectionTags: API.OperationMethod<
   UpdateL2ConnectionTagsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(120, __c15, 0) as any as S.Schema<UpdateL2ConnectionTagsRequest>,
-  output: __S(59, __c7, 3) as any as S.Schema<UpdateL2ConnectionTagsResponse>,
+  input: __S(896, __c56, 0) as any as S.Schema<UpdateL2ConnectionTagsRequest>,
+  output: __S(384, __c24, 0) as any as S.Schema<UpdateL2ConnectionTagsResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2096,8 +2096,8 @@ export const UpdateSpacecraftTags: API.OperationMethod<
   UpdateSpacecraftTagsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(121, __c15, 1) as any as S.Schema<UpdateSpacecraftTagsRequest>,
-  output: __S(116, __c14, 4) as any as S.Schema<UpdateSpacecraftTagsResponse>,
+  input: __S(928, __c58, 0) as any as S.Schema<UpdateSpacecraftTagsRequest>,
+  output: __S(832, __c52, 0) as any as S.Schema<UpdateSpacecraftTagsResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2107,70 +2107,6 @@ export const UpdateSpacecraftTags: API.OperationMethod<
 function __c0(j: number): any {
   switch (j) {
     case 0:
-      return S.Record(S.String, S.String);
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          subnetId: S.String,
-        }),
-      ).annotate({
-        identifier: "ContactProfilesPropertiesInputNetworkConfiguration",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          providerName: S.String,
-          missionConfiguration: S.String,
-        }),
-      ).annotate({
-        identifier: "ContactProfileThirdPartyConfiguration",
-      });
-    case 3:
-      return S.Array(__S(2, __c0, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          ipAddress: S.String,
-          endPointName: S.String,
-          port: S.String,
-          protocol: S.String,
-        }),
-      ).annotate({ identifier: "EndPoint" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String,
-          centerFrequencyMHz: S.Number,
-          bandwidthMHz: S.Number,
-          endPoint: __S(4, __c0, 4),
-          modulationConfiguration: S.optional(S.String),
-          demodulationConfiguration: S.optional(S.String),
-          encodingConfiguration: S.optional(S.String),
-          decodingConfiguration: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "ContactProfileLinkChannel",
-      });
-    case 6:
-      return S.Array(__S(5, __c0, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String,
-          polarization: S.String,
-          direction: S.String,
-          gainOverTemperature: S.optional(S.Number),
-          eirpdBW: S.optional(S.Number),
-          channels: __S(6, __c0, 6),
-        }),
-      ).annotate({ identifier: "ContactProfileLink" });
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(7, __c0, 7));
-    case 1:
       return S.suspend(() =>
         S.Struct({
           provisioningState: S.optional(S.String),
@@ -2178,22 +2114,22 @@ function __c1(j: number): any {
           minimumElevationDegrees: S.optional(S.Number),
           autoTrackingConfiguration: S.optional(S.String),
           eventHubUri: S.optional(S.String),
-          networkConfiguration: __S(1, __c0, 1),
-          thirdPartyConfigurations: S.optional(__S(3, __c0, 3)),
-          links: __S(8, __c1, 0),
+          networkConfiguration: __S(32, __c2, 0),
+          thirdPartyConfigurations: S.optional(__S(34, __c2, 2)),
+          links: __S(39, __c2, 7),
         }),
       ).annotate({
         identifier: "ContactProfilesPropertiesInput",
       });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           contactProfileName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(0, __c0, 0)),
+          tags: S.optional(__S(64, __c4, 0)),
           location: S.String,
-          properties: __S(9, __c1, 1),
+          properties: __S(0, __c0, 0),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -2205,7 +2141,11 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "ContactProfilesCreateOrUpdateRequest",
       });
-    case 3:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           createdBy: S.optional(S.String),
@@ -2216,51 +2156,6 @@ function __c1(j: number): any {
           lastModifiedAt: S.optional(S.String),
         }),
       ).annotate({ identifier: "SystemData" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          provisioningState: S.optional(S.String),
-          minimumViableContactDuration: S.optional(S.String),
-          minimumElevationDegrees: S.optional(S.Number),
-          autoTrackingConfiguration: S.optional(S.String),
-          eventHubUri: S.optional(S.String),
-          networkConfiguration: __S(1, __c0, 1),
-          thirdPartyConfigurations: S.optional(__S(3, __c0, 3)),
-          links: __S(8, __c1, 0),
-        }),
-      ).annotate({
-        identifier: "ContactProfilesProperties",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(11, __c1, 3)),
-          tags: S.optional(__S(0, __c0, 0)),
-          location: S.String,
-          properties: __S(12, __c1, 4),
-        }),
-      ).annotate({
-        identifier: "ContactProfilesCreateOrUpdateResponse",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String,
-        }),
-      ).annotate({ identifier: "ResourceReference" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          provisioningState: S.optional(S.String),
-          reservationStartTime: S.String,
-          reservationEndTime: S.String,
-          groundStationName: S.String,
-          contactProfile: __S(14, __c1, 6),
-        }),
-      ).annotate({ identifier: "ContactsPropertiesInput" });
   }
 }
 function __c2(j: number): any {
@@ -2268,11 +2163,122 @@ function __c2(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
+          subnetId: S.String,
+        }),
+      ).annotate({
+        identifier: "ContactProfilesPropertiesInputNetworkConfiguration",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          providerName: S.String,
+          missionConfiguration: S.String,
+        }),
+      ).annotate({
+        identifier: "ContactProfileThirdPartyConfiguration",
+      });
+    case 2:
+      return S.Array(__S(33, __c2, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          ipAddress: S.String,
+          endPointName: S.String,
+          port: S.String,
+          protocol: S.String,
+        }),
+      ).annotate({ identifier: "EndPoint" });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String,
+          centerFrequencyMHz: S.Number,
+          bandwidthMHz: S.Number,
+          endPoint: __S(35, __c2, 3),
+          modulationConfiguration: S.optional(S.String),
+          demodulationConfiguration: S.optional(S.String),
+          encodingConfiguration: S.optional(S.String),
+          decodingConfiguration: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "ContactProfileLinkChannel",
+      });
+    case 5:
+      return S.Array(__S(36, __c2, 4));
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String,
+          polarization: S.String,
+          direction: S.String,
+          gainOverTemperature: S.optional(S.Number),
+          eirpdBW: S.optional(S.Number),
+          channels: __S(37, __c2, 5),
+        }),
+      ).annotate({ identifier: "ContactProfileLink" });
+    case 7:
+      return S.Array(__S(38, __c2, 6));
+    case 8:
+      return S.suspend(() =>
+        S.Struct({
+          provisioningState: S.optional(S.String),
+          minimumViableContactDuration: S.optional(S.String),
+          minimumElevationDegrees: S.optional(S.Number),
+          autoTrackingConfiguration: S.optional(S.String),
+          eventHubUri: S.optional(S.String),
+          networkConfiguration: __S(32, __c2, 0),
+          thirdPartyConfigurations: S.optional(__S(34, __c2, 2)),
+          links: __S(39, __c2, 7),
+        }),
+      ).annotate({
+        identifier: "ContactProfilesProperties",
+      });
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(16, __c1, 0)),
+          tags: S.optional(__S(64, __c4, 0)),
+          location: S.String,
+          properties: __S(40, __c2, 8),
+        }),
+      ).annotate({
+        identifier: "ContactProfilesCreateOrUpdateResponse",
+      });
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, S.String);
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          provisioningState: S.optional(S.String),
+          reservationStartTime: S.String,
+          reservationEndTime: S.String,
+          groundStationName: S.String,
+          contactProfile: __S(96, __c6, 0),
+        }),
+      ).annotate({ identifier: "ContactsPropertiesInput" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           spacecraftName: S.String.pipe(T.Label()),
           contactName: S.String.pipe(T.Label()),
-          properties: __S(15, __c1, 7),
+          properties: __S(80, __c5, 0),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -2282,18 +2288,32 @@ function __c2(j: number): any {
           }),
         ),
       ).annotate({ identifier: "CreateContactRequest" });
-    case 1:
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+        }),
+      ).annotate({ identifier: "ResourceReference" });
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
       return S.Array(S.String);
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           destinationIp: S.optional(S.String),
-          sourceIps: S.optional(__S(17, __c2, 1)),
+          sourceIps: S.optional(__S(112, __c7, 0)),
         }),
       ).annotate({
         identifier: "ContactsPropertiesAntennaConfiguration",
       });
-    case 3:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           provisioningState: S.optional(S.String),
@@ -2311,21 +2331,520 @@ function __c2(j: number): any {
           groundStationName: S.String,
           startElevationDegrees: S.optional(S.Number),
           endElevationDegrees: S.optional(S.Number),
-          antennaConfiguration: S.optional(__S(18, __c2, 2)),
-          contactProfile: __S(14, __c1, 6),
+          antennaConfiguration: S.optional(__S(113, __c7, 1)),
+          contactProfile: __S(96, __c6, 0),
         }),
       ).annotate({ identifier: "ContactsProperties" });
-    case 4:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(11, __c1, 3)),
-          properties: __S(19, __c2, 3),
+          systemData: S.optional(__S(16, __c1, 0)),
+          properties: __S(114, __c7, 2),
         }),
       ).annotate({ identifier: "CreateContactResponse" });
-    case 5:
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          contactProfileName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Orbital/contactProfiles/{contactProfileName}",
+            code: 200,
+            apiVersion: "2022-11-01",
+          }),
+        ),
+      ).annotate({ identifier: "GetContactProfileRequest" });
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          edgeSiteName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Orbital/edgeSites/{edgeSiteName}",
+            code: 200,
+            apiVersion: "2024-03-01",
+          }),
+        ),
+      ).annotate({ identifier: "GetEdgeSiteRequest" });
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(16, __c1, 0)),
+          tags: S.optional(__S(64, __c4, 0)),
+          location: S.String,
+          properties: __S(1008, __c63, 0),
+        }),
+      ).annotate({ identifier: "GetEdgeSiteResponse" });
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          groundStationName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Orbital/groundStations/{groundStationName}",
+            code: 200,
+            apiVersion: "2024-03-01",
+          }),
+        ),
+      ).annotate({ identifier: "GetGroundStationRequest" });
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          city: S.optional(S.String),
+          capabilities: __S(192, __c12, 0),
+          providerName: S.optional(S.String),
+          longitudeDegrees: S.optional(S.Number),
+          latitudeDegrees: S.optional(S.Number),
+          altitudeMeters: S.optional(S.Number),
+          releaseMode: S.optional(S.String),
+          globalCommunicationsSite: __S(96, __c6, 0),
+        }),
+      ).annotate({ identifier: "GroundStationsProperties" });
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(16, __c1, 0)),
+          tags: S.optional(__S(64, __c4, 0)),
+          location: S.String,
+          properties: S.optional(__S(193, __c12, 1)),
+        }),
+      ).annotate({ identifier: "GetGroundStationResponse" });
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          l2ConnectionName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Orbital/l2Connections/{l2ConnectionName}",
+            code: 200,
+            apiVersion: "2024-03-01",
+          }),
+        ),
+      ).annotate({ identifier: "GetL2ConnectionRequest" });
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String,
+        }),
+      ).annotate({
+        identifier: "L2ConnectionsPropertiesEdgeSitePartnerRouter",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          provisioningState: S.optional(S.String),
+          circuitId: S.optional(S.String),
+          edgeSite: __S(96, __c6, 0),
+          edgeSitePartnerRouter: __S(240, __c15, 0),
+          groundStation: __S(96, __c6, 0),
+          groundStationPartnerRouter: __S(240, __c15, 0),
+          vlanId: S.Number,
+        }),
+      ).annotate({ identifier: "L2ConnectionsProperties" });
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(16, __c1, 0)),
+          tags: S.optional(__S(64, __c4, 0)),
+          location: S.String,
+          properties: __S(241, __c15, 1),
+        }),
+      ).annotate({ identifier: "GetL2ConnectionResponse" });
+  }
+}
+function __c17(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          location: S.String.pipe(T.Label()),
+          operationId: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/providers/Microsoft.Orbital/locations/{location}/operationResults/{operationId}",
+            code: 200,
+            apiVersion: "2022-11-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetOperationsResultRequest",
+      });
+    case 1:
+      return S.Array(S.Unknown);
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          code: S.optional(S.String),
+          message: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "OperationResultErrorProperties",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          status: S.optional(S.String),
+          startTime: S.optional(S.String),
+          endTime: S.optional(S.String),
+          percentComplete: S.optional(S.Number),
+          value: S.optional(__S(273, __c17, 1)),
+          nextLink: S.optional(S.String),
+          properties: S.optional(S.Unknown),
+          error: S.optional(__S(274, __c17, 2)),
+        }),
+      ).annotate({ identifier: "OperationResult" });
+  }
+}
+function __c18(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          spacecraftName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Orbital/spacecrafts/{spacecraftName}",
+            code: 200,
+            apiVersion: "2022-11-01",
+          }),
+        ),
+      ).annotate({ identifier: "GetSpacecraftRequest" });
+  }
+}
+function __c19(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(16, __c1, 0)),
+          tags: S.optional(__S(64, __c4, 0)),
+          location: S.String,
+          properties: __S(324, __c20, 4),
+        }),
+      ).annotate({ identifier: "GetSpacecraftResponse" });
+  }
+}
+function __c20(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          groundStation: S.String,
+          expirationDate: S.String,
+        }),
+      ).annotate({ identifier: "AuthorizedGroundstation" });
+    case 1:
+      return S.Array(__S(320, __c20, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String,
+          centerFrequencyMHz: S.Number,
+          bandwidthMHz: S.Number,
+          direction: S.String,
+          polarization: S.String,
+          authorizations: S.optional(__S(321, __c20, 1)),
+        }),
+      ).annotate({ identifier: "SpacecraftLink" });
+    case 3:
+      return S.Array(__S(322, __c20, 2));
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          provisioningState: S.optional(S.String),
+          noradId: S.optional(S.String),
+          titleLine: S.String,
+          tleLine1: S.String,
+          tleLine2: S.String,
+          links: __S(323, __c20, 3),
+        }),
+      ).annotate({ identifier: "SpacecraftsProperties" });
+  }
+}
+function __c21(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          city: S.optional(S.String),
+          capabilities: __S(192, __c12, 0),
+          providerName: S.optional(S.String),
+          longitudeDegrees: S.optional(S.Number),
+          latitudeDegrees: S.optional(S.Number),
+          altitudeMeters: S.optional(S.Number),
+          globalCommunicationsSite: __S(96, __c6, 0),
+        }),
+      ).annotate({
+        identifier: "GroundStationsPropertiesInput",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          groundStationName: S.String.pipe(T.Label()),
+          tags: S.optional(__S(64, __c4, 0)),
+          location: S.String,
+          properties: S.optional(__S(336, __c21, 0)),
+        }).pipe(
+          T.Http({
+            method: "PUT",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Orbital/groundStations/{groundStationName}",
+            code: 200,
+            apiVersion: "2024-03-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "GroundStationsCreateOrUpdateRequest",
+      });
+  }
+}
+function __c22(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(16, __c1, 0)),
+          tags: S.optional(__S(64, __c4, 0)),
+          location: S.String,
+          properties: S.optional(__S(193, __c12, 1)),
+        }),
+      ).annotate({
+        identifier: "GroundStationsCreateOrUpdateResponse",
+      });
+  }
+}
+function __c23(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          edgeSite: __S(96, __c6, 0),
+          edgeSitePartnerRouter: __S(240, __c15, 0),
+          groundStation: __S(96, __c6, 0),
+          groundStationPartnerRouter: __S(240, __c15, 0),
+          vlanId: S.Number,
+        }),
+      ).annotate({
+        identifier: "L2ConnectionsPropertiesInput",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          l2ConnectionName: S.String.pipe(T.Label()),
+          tags: S.optional(__S(64, __c4, 0)),
+          location: S.String,
+          properties: __S(368, __c23, 0),
+        }).pipe(
+          T.Http({
+            method: "PUT",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Orbital/l2Connections/{l2ConnectionName}",
+            code: 200,
+            apiVersion: "2024-03-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "L2ConnectionsCreateOrUpdateRequest",
+      });
+  }
+}
+function __c24(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(16, __c1, 0)),
+          tags: S.optional(__S(64, __c4, 0)),
+          location: S.String,
+          properties: __S(241, __c15, 1),
+        }),
+      ).annotate({
+        identifier: "L2ConnectionsCreateOrUpdateResponse",
+      });
+  }
+}
+function __c25(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          capability: S.String.pipe(T.Query()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/providers/Microsoft.Orbital/availableGroundStations",
+            code: 200,
+            apiVersion: "2022-11-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListAvailableGroundStationByCapabilityRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          city: S.optional(S.String),
+          providerName: S.optional(S.String),
+          longitudeDegrees: S.optional(S.Number),
+          latitudeDegrees: S.optional(S.Number),
+          altitudeMeters: S.optional(S.Number),
+          releaseMode: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "AvailableGroundStationProperties",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          location: S.optional(S.String),
+          type: S.optional(S.String),
+          properties: __S(401, __c25, 1),
+        }),
+      ).annotate({ identifier: "AvailableGroundStation" });
+    case 3:
+      return S.Array(__S(402, __c25, 2));
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          value: S.optional(__S(403, __c25, 3)),
+          nextLink: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "AvailableGroundStationListResult",
+      });
+  }
+}
+function __c26(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          _skiptoken: S.optional(S.String.pipe(T.Query("$skiptoken"))),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/providers/Microsoft.Orbital/contactProfiles",
+            code: 200,
+            apiVersion: "2022-11-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListContactProfileBySubscriptionRequest",
+      });
+  }
+}
+function __c27(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(16, __c1, 0)),
+          tags: S.optional(__S(64, __c4, 0)),
+          location: S.String,
+          properties: __S(40, __c2, 8),
+        }),
+      ).annotate({ identifier: "ContactProfile" });
+    case 1:
+      return S.Array(__S(432, __c27, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          value: S.optional(__S(433, __c27, 1)),
+          nextLink: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ContactProfileListResult" });
+  }
+}
+function __c28(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -2341,11 +2860,340 @@ function __c2(j: number): any {
           }),
         ),
       ).annotate({ identifier: "DeleteContactRequest" });
-    case 6:
+  }
+}
+function __c29(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "DeleteContactResponse",
       });
+  }
+}
+function __c30(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          _skiptoken: S.optional(S.String.pipe(T.Query("$skiptoken"))),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Orbital/contactProfiles",
+            code: 200,
+            apiVersion: "2022-11-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListContactProfilesRequest",
+      });
+  }
+}
+function __c31(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          spacecraftName: S.String.pipe(T.Label()),
+          _skiptoken: S.optional(S.String.pipe(T.Query("$skiptoken"))),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Orbital/spacecrafts/{spacecraftName}/contacts",
+            code: 200,
+            apiVersion: "2022-11-01",
+          }),
+        ),
+      ).annotate({ identifier: "ListContactsRequest" });
+    case 1:
+      return S.Array(__S(115, __c7, 3));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          value: S.optional(__S(497, __c31, 1)),
+          nextLink: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ContactListResult" });
+  }
+}
+function __c32(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          _skiptoken: S.optional(S.String.pipe(T.Query("$skiptoken"))),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/providers/Microsoft.Orbital/edgeSites",
+            code: 200,
+            apiVersion: "2024-03-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListEdgeSiteBySubscriptionRequest",
+      });
+  }
+}
+function __c33(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(160, __c10, 0));
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          value: S.optional(__S(528, __c33, 0)),
+          nextLink: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "EdgeSiteListResult" });
+  }
+}
+function __c34(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          edgeSiteName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Orbital/edgeSites/{edgeSiteName}/listL2Connections",
+            code: 200,
+            apiVersion: "2024-03-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListEdgeSiteL2ConnectionsRequest",
+      });
+  }
+}
+function __c35(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "ResourceIdListResultValueItem",
+      });
+    case 1:
+      return S.Array(__S(560, __c35, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          value: S.optional(__S(561, __c35, 1)),
+          nextLink: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ResourceIdListResult" });
+  }
+}
+function __c36(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          _skiptoken: S.optional(S.String.pipe(T.Query("$skiptoken"))),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Orbital/edgeSites",
+            code: 200,
+            apiVersion: "2024-03-01",
+          }),
+        ),
+      ).annotate({ identifier: "ListEdgeSitesRequest" });
+  }
+}
+function __c37(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/providers/Microsoft.Orbital/globalCommunicationsSites",
+            code: 200,
+            apiVersion: "2024-03-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListGlobalCommunicationsSiteBySubscriptionRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          city: S.String,
+          district: S.String,
+          country: S.String,
+          closestAzureRegion: S.optional(S.String),
+          extra: S.optional(S.NullOr(S.String)),
+        }),
+      ).annotate({ identifier: "LocationData" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "PartnerRouter" });
+    case 3:
+      return S.Array(__S(594, __c37, 2));
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          locationData: S.optional(__S(593, __c37, 1)),
+          globalCommunicationsSiteType: S.optional(S.String),
+          partnerRouters: S.optional(__S(595, __c37, 3)),
+          partnerSiteBandwidth: S.optional(S.Number),
+        }),
+      ).annotate({
+        identifier: "GlobalCommunicationsSitesProperties",
+      });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(16, __c1, 0)),
+          properties: S.optional(__S(596, __c37, 4)),
+        }),
+      ).annotate({ identifier: "GlobalCommunicationsSite" });
+    case 6:
+      return S.Array(__S(597, __c37, 5));
     case 7:
+      return S.suspend(() =>
+        S.Struct({
+          value: S.optional(__S(598, __c37, 6)),
+          nextLink: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GlobalCommunicationsSiteListResult",
+      });
+  }
+}
+function __c38(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          _skiptoken: S.optional(S.String.pipe(T.Query("$skiptoken"))),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/providers/Microsoft.Orbital/groundStations",
+            code: 200,
+            apiVersion: "2024-03-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListGroundStationBySubscriptionRequest",
+      });
+  }
+}
+function __c39(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(208, __c13, 0));
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          value: S.optional(__S(624, __c39, 0)),
+          nextLink: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "GroundStationListResult" });
+  }
+}
+function __c40(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          groundStationName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Orbital/groundStations/{groundStationName}/listL2Connections",
+            code: 200,
+            apiVersion: "2024-03-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListGroundStationL2ConnectionsRequest",
+      });
+  }
+}
+function __c41(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          _skiptoken: S.optional(S.String.pipe(T.Query("$skiptoken"))),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Orbital/groundStations",
+            code: 200,
+            apiVersion: "2024-03-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListGroundStationsRequest",
+      });
+  }
+}
+function __c42(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          _skiptoken: S.optional(S.String.pipe(T.Query("$skiptoken"))),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/providers/Microsoft.Orbital/l2Connections",
+            code: 200,
+            apiVersion: "2024-03-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListL2ConnectionBySubscriptionRequest",
+      });
+  }
+}
+function __c43(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(256, __c16, 0));
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          value: S.optional(__S(688, __c43, 0)),
+          nextLink: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "L2ConnectionListResult" });
+  }
+}
+function __c44(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -2364,7 +3212,336 @@ function __c2(j: number): any {
       });
   }
 }
-function __c3(j: number): any {
+function __c45(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          _skiptoken: S.optional(S.String.pipe(T.Query("$skiptoken"))),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Orbital/l2Connections",
+            code: 200,
+            apiVersion: "2024-03-01",
+          }),
+        ),
+      ).annotate({ identifier: "ListL2ConnectionsRequest" });
+  }
+}
+function __c46(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({}).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/providers/Microsoft.Orbital/operations",
+            code: 200,
+            apiVersion: "2022-11-01",
+          }),
+        ),
+      ).annotate({ identifier: "ListOperationsRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          provider: S.optional(S.String),
+          resource: S.optional(S.String),
+          operation: S.optional(S.String),
+          description: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "OperationDisplay" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.optional(S.String),
+          isDataAction: S.optional(S.Boolean),
+          display: S.optional(__S(737, __c46, 1)),
+          origin: S.optional(S.String),
+          actionType: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Operation" });
+    case 3:
+      return S.Array(__S(738, __c46, 2));
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          value: S.optional(__S(739, __c46, 3)),
+          nextLink: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ListOperationsResponse" });
+  }
+}
+function __c47(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          spacecraftName: S.String.pipe(T.Label()),
+          contactProfile: __S(96, __c6, 0),
+          groundStationName: S.String,
+          startTime: S.String,
+          endTime: S.String,
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Orbital/spacecrafts/{spacecraftName}/listAvailableContacts",
+            code: 200,
+            apiVersion: "2022-11-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListSpacecraftAvailableContactsRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          maximumElevationDegrees: S.optional(S.Number),
+          txStartTime: S.optional(S.String),
+          txEndTime: S.optional(S.String),
+          rxStartTime: S.optional(S.String),
+          rxEndTime: S.optional(S.String),
+          startAzimuthDegrees: S.optional(S.Number),
+          endAzimuthDegrees: S.optional(S.Number),
+          startElevationDegrees: S.optional(S.Number),
+          endElevationDegrees: S.optional(S.Number),
+        }),
+      ).annotate({
+        identifier: "ContactInstanceProperties",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          spacecraft: S.optional(__S(96, __c6, 0)),
+          groundStationName: S.optional(S.String),
+          properties: S.optional(__S(753, __c47, 1)),
+        }),
+      ).annotate({ identifier: "AvailableContacts" });
+    case 3:
+      return S.Array(__S(754, __c47, 2));
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          value: S.optional(__S(755, __c47, 3)),
+          nextLink: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "AvailableContactsListResult",
+      });
+  }
+}
+function __c48(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          _skiptoken: S.optional(S.String.pipe(T.Query("$skiptoken"))),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/providers/Microsoft.Orbital/spacecrafts",
+            code: 200,
+            apiVersion: "2022-11-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListSpacecraftBySubscriptionRequest",
+      });
+  }
+}
+function __c49(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(304, __c19, 0));
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          value: S.optional(__S(784, __c49, 0)),
+          nextLink: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "SpacecraftListResult" });
+  }
+}
+function __c50(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          _skiptoken: S.optional(S.String.pipe(T.Query("$skiptoken"))),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Orbital/spacecrafts",
+            code: 200,
+            apiVersion: "2022-11-01",
+          }),
+        ),
+      ).annotate({ identifier: "ListSpacecraftsRequest" });
+  }
+}
+function __c51(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String,
+          centerFrequencyMHz: S.Number,
+          bandwidthMHz: S.Number,
+          direction: S.String,
+          polarization: S.String,
+        }),
+      ).annotate({ identifier: "SpacecraftLinkInput" });
+    case 1:
+      return S.Array(__S(816, __c51, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          provisioningState: S.optional(S.String),
+          noradId: S.optional(S.String),
+          titleLine: S.String,
+          tleLine1: S.String,
+          tleLine2: S.String,
+          links: __S(817, __c51, 1),
+        }),
+      ).annotate({
+        identifier: "SpacecraftsPropertiesInput",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          spacecraftName: S.String.pipe(T.Label()),
+          tags: S.optional(__S(64, __c4, 0)),
+          location: S.String,
+          properties: __S(818, __c51, 2),
+        }).pipe(
+          T.Http({
+            method: "PUT",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Orbital/spacecrafts/{spacecraftName}",
+            code: 200,
+            apiVersion: "2022-11-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "SpacecraftsCreateOrUpdateRequest",
+      });
+  }
+}
+function __c52(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(16, __c1, 0)),
+          tags: S.optional(__S(64, __c4, 0)),
+          location: S.String,
+          properties: __S(324, __c20, 4),
+        }),
+      ).annotate({
+        identifier: "SpacecraftsCreateOrUpdateResponse",
+      });
+  }
+}
+function __c53(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          contactProfileName: S.String.pipe(T.Label()),
+          tags: S.optional(__S(64, __c4, 0)),
+        }).pipe(
+          T.Http({
+            method: "PATCH",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Orbital/contactProfiles/{contactProfileName}",
+            code: 200,
+            apiVersion: "2022-11-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "UpdateContactProfileTagsRequest",
+      });
+  }
+}
+function __c54(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          edgeSiteName: S.String.pipe(T.Label()),
+          tags: S.optional(__S(64, __c4, 0)),
+        }).pipe(
+          T.Http({
+            method: "PATCH",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Orbital/edgeSites/{edgeSiteName}",
+            code: 200,
+            apiVersion: "2024-03-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "UpdateEdgeSiteTagsRequest",
+      });
+  }
+}
+function __c55(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          groundStationName: S.String.pipe(T.Label()),
+          tags: S.optional(__S(64, __c4, 0)),
+        }).pipe(
+          T.Http({
+            method: "PATCH",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Orbital/groundStations/{groundStationName}",
+            code: 200,
+            apiVersion: "2024-03-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "UpdateGroundStationTagsRequest",
+      });
+  }
+}
+function __c56(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          l2ConnectionName: S.String.pipe(T.Label()),
+          tags: S.optional(__S(64, __c4, 0)),
+        }).pipe(
+          T.Http({
+            method: "PATCH",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Orbital/l2Connections/{l2ConnectionName}",
+            code: 200,
+            apiVersion: "2024-03-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "UpdateL2ConnectionTagsRequest",
+      });
+  }
+}
+function __c57(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2381,7 +3558,33 @@ function __c3(j: number): any {
           }),
         ),
       ).annotate({ identifier: "DeleteEdgeSiteRequest" });
-    case 1:
+  }
+}
+function __c58(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          spacecraftName: S.String.pipe(T.Label()),
+          tags: S.optional(__S(64, __c4, 0)),
+        }).pipe(
+          T.Http({
+            method: "PATCH",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Orbital/spacecrafts/{spacecraftName}",
+            code: 200,
+            apiVersion: "2022-11-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "UpdateSpacecraftTagsRequest",
+      });
+  }
+}
+function __c59(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -2398,7 +3601,11 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "DeleteGroundStationRequest",
       });
-    case 2:
+  }
+}
+function __c60(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -2415,7 +3622,11 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "DeleteL2ConnectionRequest",
       });
-    case 3:
+  }
+}
+function __c61(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -2430,21 +3641,19 @@ function __c3(j: number): any {
           }),
         ),
       ).annotate({ identifier: "DeleteSpacecraftRequest" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          globalCommunicationsSite: __S(14, __c1, 6),
-        }),
-      ).annotate({ identifier: "EdgeSitesProperties" });
-    case 5:
+  }
+}
+function __c62(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           edgeSiteName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(0, __c0, 0)),
+          tags: S.optional(__S(64, __c4, 0)),
           location: S.String,
-          properties: __S(28, __c3, 4),
+          properties: __S(1008, __c63, 0),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -2456,21 +3665,39 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "EdgeSitesCreateOrUpdateRequest",
       });
-    case 6:
+  }
+}
+function __c63(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          globalCommunicationsSite: __S(96, __c6, 0),
+        }),
+      ).annotate({ identifier: "EdgeSitesProperties" });
+  }
+}
+function __c64(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(11, __c1, 3)),
-          tags: S.optional(__S(0, __c0, 0)),
+          systemData: S.optional(__S(16, __c1, 0)),
+          tags: S.optional(__S(64, __c4, 0)),
           location: S.String,
-          properties: __S(28, __c3, 4),
+          properties: __S(1008, __c63, 0),
         }),
       ).annotate({
         identifier: "EdgeSitesCreateOrUpdateResponse",
       });
-    case 7:
+  }
+}
+function __c65(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -2488,1034 +3715,6 @@ function __c3(j: number): any {
       ).annotate({ identifier: "GetContactRequest" });
   }
 }
-function __c4(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          contactProfileName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Orbital/contactProfiles/{contactProfileName}",
-            code: 200,
-            apiVersion: "2022-11-01",
-          }),
-        ),
-      ).annotate({ identifier: "GetContactProfileRequest" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          edgeSiteName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Orbital/edgeSites/{edgeSiteName}",
-            code: 200,
-            apiVersion: "2024-03-01",
-          }),
-        ),
-      ).annotate({ identifier: "GetEdgeSiteRequest" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(11, __c1, 3)),
-          tags: S.optional(__S(0, __c0, 0)),
-          location: S.String,
-          properties: __S(28, __c3, 4),
-        }),
-      ).annotate({ identifier: "GetEdgeSiteResponse" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          groundStationName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Orbital/groundStations/{groundStationName}",
-            code: 200,
-            apiVersion: "2024-03-01",
-          }),
-        ),
-      ).annotate({ identifier: "GetGroundStationRequest" });
-    case 4:
-      return S.Array(S.String);
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          city: S.optional(S.String),
-          capabilities: __S(36, __c4, 4),
-          providerName: S.optional(S.String),
-          longitudeDegrees: S.optional(S.Number),
-          latitudeDegrees: S.optional(S.Number),
-          altitudeMeters: S.optional(S.Number),
-          releaseMode: S.optional(S.String),
-          globalCommunicationsSite: __S(14, __c1, 6),
-        }),
-      ).annotate({ identifier: "GroundStationsProperties" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(11, __c1, 3)),
-          tags: S.optional(__S(0, __c0, 0)),
-          location: S.String,
-          properties: S.optional(__S(37, __c4, 5)),
-        }),
-      ).annotate({ identifier: "GetGroundStationResponse" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          l2ConnectionName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Orbital/l2Connections/{l2ConnectionName}",
-            code: 200,
-            apiVersion: "2024-03-01",
-          }),
-        ),
-      ).annotate({ identifier: "GetL2ConnectionRequest" });
-  }
-}
-function __c5(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String,
-        }),
-      ).annotate({
-        identifier: "L2ConnectionsPropertiesEdgeSitePartnerRouter",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          provisioningState: S.optional(S.String),
-          circuitId: S.optional(S.String),
-          edgeSite: __S(14, __c1, 6),
-          edgeSitePartnerRouter: __S(40, __c5, 0),
-          groundStation: __S(14, __c1, 6),
-          groundStationPartnerRouter: __S(40, __c5, 0),
-          vlanId: S.Number,
-        }),
-      ).annotate({ identifier: "L2ConnectionsProperties" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(11, __c1, 3)),
-          tags: S.optional(__S(0, __c0, 0)),
-          location: S.String,
-          properties: __S(41, __c5, 1),
-        }),
-      ).annotate({ identifier: "GetL2ConnectionResponse" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          location: S.String.pipe(T.Label()),
-          operationId: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/providers/Microsoft.Orbital/locations/{location}/operationResults/{operationId}",
-            code: 200,
-            apiVersion: "2022-11-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetOperationsResultRequest",
-      });
-    case 4:
-      return S.Array(S.Unknown);
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          code: S.optional(S.String),
-          message: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "OperationResultErrorProperties",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          status: S.optional(S.String),
-          startTime: S.optional(S.String),
-          endTime: S.optional(S.String),
-          percentComplete: S.optional(S.Number),
-          value: S.optional(__S(44, __c5, 4)),
-          nextLink: S.optional(S.String),
-          properties: S.optional(S.Unknown),
-          error: S.optional(__S(45, __c5, 5)),
-        }),
-      ).annotate({ identifier: "OperationResult" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          spacecraftName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Orbital/spacecrafts/{spacecraftName}",
-            code: 200,
-            apiVersion: "2022-11-01",
-          }),
-        ),
-      ).annotate({ identifier: "GetSpacecraftRequest" });
-  }
-}
-function __c6(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          groundStation: S.String,
-          expirationDate: S.String,
-        }),
-      ).annotate({ identifier: "AuthorizedGroundstation" });
-    case 1:
-      return S.Array(__S(48, __c6, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String,
-          centerFrequencyMHz: S.Number,
-          bandwidthMHz: S.Number,
-          direction: S.String,
-          polarization: S.String,
-          authorizations: S.optional(__S(49, __c6, 1)),
-        }),
-      ).annotate({ identifier: "SpacecraftLink" });
-    case 3:
-      return S.Array(__S(50, __c6, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          provisioningState: S.optional(S.String),
-          noradId: S.optional(S.String),
-          titleLine: S.String,
-          tleLine1: S.String,
-          tleLine2: S.String,
-          links: __S(51, __c6, 3),
-        }),
-      ).annotate({ identifier: "SpacecraftsProperties" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(11, __c1, 3)),
-          tags: S.optional(__S(0, __c0, 0)),
-          location: S.String,
-          properties: __S(52, __c6, 4),
-        }),
-      ).annotate({ identifier: "GetSpacecraftResponse" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          city: S.optional(S.String),
-          capabilities: __S(36, __c4, 4),
-          providerName: S.optional(S.String),
-          longitudeDegrees: S.optional(S.Number),
-          latitudeDegrees: S.optional(S.Number),
-          altitudeMeters: S.optional(S.Number),
-          globalCommunicationsSite: __S(14, __c1, 6),
-        }),
-      ).annotate({
-        identifier: "GroundStationsPropertiesInput",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          groundStationName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(0, __c0, 0)),
-          location: S.String,
-          properties: S.optional(__S(54, __c6, 6)),
-        }).pipe(
-          T.Http({
-            method: "PUT",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Orbital/groundStations/{groundStationName}",
-            code: 200,
-            apiVersion: "2024-03-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "GroundStationsCreateOrUpdateRequest",
-      });
-  }
-}
-function __c7(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(11, __c1, 3)),
-          tags: S.optional(__S(0, __c0, 0)),
-          location: S.String,
-          properties: S.optional(__S(37, __c4, 5)),
-        }),
-      ).annotate({
-        identifier: "GroundStationsCreateOrUpdateResponse",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          edgeSite: __S(14, __c1, 6),
-          edgeSitePartnerRouter: __S(40, __c5, 0),
-          groundStation: __S(14, __c1, 6),
-          groundStationPartnerRouter: __S(40, __c5, 0),
-          vlanId: S.Number,
-        }),
-      ).annotate({
-        identifier: "L2ConnectionsPropertiesInput",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          l2ConnectionName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(0, __c0, 0)),
-          location: S.String,
-          properties: __S(57, __c7, 1),
-        }).pipe(
-          T.Http({
-            method: "PUT",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Orbital/l2Connections/{l2ConnectionName}",
-            code: 200,
-            apiVersion: "2024-03-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "L2ConnectionsCreateOrUpdateRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(11, __c1, 3)),
-          tags: S.optional(__S(0, __c0, 0)),
-          location: S.String,
-          properties: __S(41, __c5, 1),
-        }),
-      ).annotate({
-        identifier: "L2ConnectionsCreateOrUpdateResponse",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          capability: S.String.pipe(T.Query()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/providers/Microsoft.Orbital/availableGroundStations",
-            code: 200,
-            apiVersion: "2022-11-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListAvailableGroundStationByCapabilityRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          city: S.optional(S.String),
-          providerName: S.optional(S.String),
-          longitudeDegrees: S.optional(S.Number),
-          latitudeDegrees: S.optional(S.Number),
-          altitudeMeters: S.optional(S.Number),
-          releaseMode: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "AvailableGroundStationProperties",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          location: S.optional(S.String),
-          type: S.optional(S.String),
-          properties: __S(61, __c7, 5),
-        }),
-      ).annotate({ identifier: "AvailableGroundStation" });
-    case 7:
-      return S.Array(__S(62, __c7, 6));
-  }
-}
-function __c8(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          value: S.optional(__S(63, __c7, 7)),
-          nextLink: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "AvailableGroundStationListResult",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          _skiptoken: S.optional(S.String.pipe(T.Query("$skiptoken"))),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/providers/Microsoft.Orbital/contactProfiles",
-            code: 200,
-            apiVersion: "2022-11-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListContactProfileBySubscriptionRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(11, __c1, 3)),
-          tags: S.optional(__S(0, __c0, 0)),
-          location: S.String,
-          properties: __S(12, __c1, 4),
-        }),
-      ).annotate({ identifier: "ContactProfile" });
-    case 3:
-      return S.Array(__S(66, __c8, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          value: S.optional(__S(67, __c8, 3)),
-          nextLink: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ContactProfileListResult" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          _skiptoken: S.optional(S.String.pipe(T.Query("$skiptoken"))),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Orbital/contactProfiles",
-            code: 200,
-            apiVersion: "2022-11-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListContactProfilesRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          spacecraftName: S.String.pipe(T.Label()),
-          _skiptoken: S.optional(S.String.pipe(T.Query("$skiptoken"))),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Orbital/spacecrafts/{spacecraftName}/contacts",
-            code: 200,
-            apiVersion: "2022-11-01",
-          }),
-        ),
-      ).annotate({ identifier: "ListContactsRequest" });
-    case 7:
-      return S.Array(__S(20, __c2, 4));
-  }
-}
-function __c9(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          value: S.optional(__S(71, __c8, 7)),
-          nextLink: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ContactListResult" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          _skiptoken: S.optional(S.String.pipe(T.Query("$skiptoken"))),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/providers/Microsoft.Orbital/edgeSites",
-            code: 200,
-            apiVersion: "2024-03-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListEdgeSiteBySubscriptionRequest",
-      });
-    case 2:
-      return S.Array(__S(34, __c4, 2));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          value: S.optional(__S(74, __c9, 2)),
-          nextLink: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "EdgeSiteListResult" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          edgeSiteName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Orbital/edgeSites/{edgeSiteName}/listL2Connections",
-            code: 200,
-            apiVersion: "2024-03-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListEdgeSiteL2ConnectionsRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "ResourceIdListResultValueItem",
-      });
-    case 6:
-      return S.Array(__S(77, __c9, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          value: S.optional(__S(78, __c9, 6)),
-          nextLink: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ResourceIdListResult" });
-  }
-}
-function __c10(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          _skiptoken: S.optional(S.String.pipe(T.Query("$skiptoken"))),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Orbital/edgeSites",
-            code: 200,
-            apiVersion: "2024-03-01",
-          }),
-        ),
-      ).annotate({ identifier: "ListEdgeSitesRequest" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/providers/Microsoft.Orbital/globalCommunicationsSites",
-            code: 200,
-            apiVersion: "2024-03-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListGlobalCommunicationsSiteBySubscriptionRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          city: S.String,
-          district: S.String,
-          country: S.String,
-          closestAzureRegion: S.optional(S.String),
-          extra: S.optional(S.NullOr(S.String)),
-        }),
-      ).annotate({ identifier: "LocationData" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "PartnerRouter" });
-    case 4:
-      return S.Array(__S(83, __c10, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          locationData: S.optional(__S(82, __c10, 2)),
-          globalCommunicationsSiteType: S.optional(S.String),
-          partnerRouters: S.optional(__S(84, __c10, 4)),
-          partnerSiteBandwidth: S.optional(S.Number),
-        }),
-      ).annotate({
-        identifier: "GlobalCommunicationsSitesProperties",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(11, __c1, 3)),
-          properties: S.optional(__S(85, __c10, 5)),
-        }),
-      ).annotate({ identifier: "GlobalCommunicationsSite" });
-    case 7:
-      return S.Array(__S(86, __c10, 6));
-  }
-}
-function __c11(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          value: S.optional(__S(87, __c10, 7)),
-          nextLink: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GlobalCommunicationsSiteListResult",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          _skiptoken: S.optional(S.String.pipe(T.Query("$skiptoken"))),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/providers/Microsoft.Orbital/groundStations",
-            code: 200,
-            apiVersion: "2024-03-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListGroundStationBySubscriptionRequest",
-      });
-    case 2:
-      return S.Array(__S(38, __c4, 6));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          value: S.optional(__S(90, __c11, 2)),
-          nextLink: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "GroundStationListResult" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          groundStationName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Orbital/groundStations/{groundStationName}/listL2Connections",
-            code: 200,
-            apiVersion: "2024-03-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListGroundStationL2ConnectionsRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          _skiptoken: S.optional(S.String.pipe(T.Query("$skiptoken"))),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Orbital/groundStations",
-            code: 200,
-            apiVersion: "2024-03-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListGroundStationsRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          _skiptoken: S.optional(S.String.pipe(T.Query("$skiptoken"))),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/providers/Microsoft.Orbital/l2Connections",
-            code: 200,
-            apiVersion: "2024-03-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListL2ConnectionBySubscriptionRequest",
-      });
-    case 7:
-      return S.Array(__S(42, __c5, 2));
-  }
-}
-function __c12(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          value: S.optional(__S(95, __c11, 7)),
-          nextLink: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "L2ConnectionListResult" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          _skiptoken: S.optional(S.String.pipe(T.Query("$skiptoken"))),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Orbital/l2Connections",
-            code: 200,
-            apiVersion: "2024-03-01",
-          }),
-        ),
-      ).annotate({ identifier: "ListL2ConnectionsRequest" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({}).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/providers/Microsoft.Orbital/operations",
-            code: 200,
-            apiVersion: "2022-11-01",
-          }),
-        ),
-      ).annotate({ identifier: "ListOperationsRequest" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          provider: S.optional(S.String),
-          resource: S.optional(S.String),
-          operation: S.optional(S.String),
-          description: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "OperationDisplay" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.optional(S.String),
-          isDataAction: S.optional(S.Boolean),
-          display: S.optional(__S(99, __c12, 3)),
-          origin: S.optional(S.String),
-          actionType: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Operation" });
-    case 5:
-      return S.Array(__S(100, __c12, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          value: S.optional(__S(101, __c12, 5)),
-          nextLink: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ListOperationsResponse" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          spacecraftName: S.String.pipe(T.Label()),
-          contactProfile: __S(14, __c1, 6),
-          groundStationName: S.String,
-          startTime: S.String,
-          endTime: S.String,
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Orbital/spacecrafts/{spacecraftName}/listAvailableContacts",
-            code: 200,
-            apiVersion: "2022-11-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListSpacecraftAvailableContactsRequest",
-      });
-  }
-}
-function __c13(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          maximumElevationDegrees: S.optional(S.Number),
-          txStartTime: S.optional(S.String),
-          txEndTime: S.optional(S.String),
-          rxStartTime: S.optional(S.String),
-          rxEndTime: S.optional(S.String),
-          startAzimuthDegrees: S.optional(S.Number),
-          endAzimuthDegrees: S.optional(S.Number),
-          startElevationDegrees: S.optional(S.Number),
-          endElevationDegrees: S.optional(S.Number),
-        }),
-      ).annotate({
-        identifier: "ContactInstanceProperties",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          spacecraft: S.optional(__S(14, __c1, 6)),
-          groundStationName: S.optional(S.String),
-          properties: S.optional(__S(104, __c13, 0)),
-        }),
-      ).annotate({ identifier: "AvailableContacts" });
-    case 2:
-      return S.Array(__S(105, __c13, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          value: S.optional(__S(106, __c13, 2)),
-          nextLink: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "AvailableContactsListResult",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          _skiptoken: S.optional(S.String.pipe(T.Query("$skiptoken"))),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/providers/Microsoft.Orbital/spacecrafts",
-            code: 200,
-            apiVersion: "2022-11-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListSpacecraftBySubscriptionRequest",
-      });
-    case 5:
-      return S.Array(__S(53, __c6, 5));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          value: S.optional(__S(109, __c13, 5)),
-          nextLink: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "SpacecraftListResult" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          _skiptoken: S.optional(S.String.pipe(T.Query("$skiptoken"))),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Orbital/spacecrafts",
-            code: 200,
-            apiVersion: "2022-11-01",
-          }),
-        ),
-      ).annotate({ identifier: "ListSpacecraftsRequest" });
-  }
-}
-function __c14(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String,
-          centerFrequencyMHz: S.Number,
-          bandwidthMHz: S.Number,
-          direction: S.String,
-          polarization: S.String,
-        }),
-      ).annotate({ identifier: "SpacecraftLinkInput" });
-    case 1:
-      return S.Array(__S(112, __c14, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          provisioningState: S.optional(S.String),
-          noradId: S.optional(S.String),
-          titleLine: S.String,
-          tleLine1: S.String,
-          tleLine2: S.String,
-          links: __S(113, __c14, 1),
-        }),
-      ).annotate({
-        identifier: "SpacecraftsPropertiesInput",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          spacecraftName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(0, __c0, 0)),
-          location: S.String,
-          properties: __S(114, __c14, 2),
-        }).pipe(
-          T.Http({
-            method: "PUT",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Orbital/spacecrafts/{spacecraftName}",
-            code: 200,
-            apiVersion: "2022-11-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "SpacecraftsCreateOrUpdateRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(11, __c1, 3)),
-          tags: S.optional(__S(0, __c0, 0)),
-          location: S.String,
-          properties: __S(52, __c6, 4),
-        }),
-      ).annotate({
-        identifier: "SpacecraftsCreateOrUpdateResponse",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          contactProfileName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(0, __c0, 0)),
-        }).pipe(
-          T.Http({
-            method: "PATCH",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Orbital/contactProfiles/{contactProfileName}",
-            code: 200,
-            apiVersion: "2022-11-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "UpdateContactProfileTagsRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          edgeSiteName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(0, __c0, 0)),
-        }).pipe(
-          T.Http({
-            method: "PATCH",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Orbital/edgeSites/{edgeSiteName}",
-            code: 200,
-            apiVersion: "2024-03-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "UpdateEdgeSiteTagsRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          groundStationName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(0, __c0, 0)),
-        }).pipe(
-          T.Http({
-            method: "PATCH",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Orbital/groundStations/{groundStationName}",
-            code: 200,
-            apiVersion: "2024-03-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "UpdateGroundStationTagsRequest",
-      });
-  }
-}
-function __c15(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          l2ConnectionName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(0, __c0, 0)),
-        }).pipe(
-          T.Http({
-            method: "PATCH",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Orbital/l2Connections/{l2ConnectionName}",
-            code: 200,
-            apiVersion: "2024-03-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "UpdateL2ConnectionTagsRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          spacecraftName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(0, __c0, 0)),
-        }).pipe(
-          T.Http({
-            method: "PATCH",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Orbital/spacecrafts/{spacecraftName}",
-            code: 200,
-            apiVersion: "2022-11-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "UpdateSpacecraftTagsRequest",
-      });
-  }
-}
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

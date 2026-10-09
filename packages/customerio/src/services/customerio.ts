@@ -17208,8 +17208,8 @@ export const addCollection: API.OperationMethod<
   AddCollectionError,
   CustomerioOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1, __c0, 1) as any as S.Schema<AddCollectionRequest>,
-  output: __S(4, __c0, 4) as any as S.Schema<AddCollectionResponse>,
+  input: __S(2896, __c181, 0) as any as S.Schema<AddCollectionRequest>,
+  output: __S(2912, __c182, 0) as any as S.Schema<AddCollectionResponse>,
   errors: [BadRequest, UnknownCustomerioError],
   protocol: CustomerioProtocol,
   retry: Retry.Retry,
@@ -17223,8 +17223,8 @@ export const broadcastActionLinks: API.OperationMethod<
   BroadcastActionLinksError,
   CustomerioOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(5, __c0, 5) as any as S.Schema<BroadcastActionLinksRequest>,
-  output: __S(13, __c1, 5) as any as S.Schema<BroadcastActionLinksResponse>,
+  input: __S(3168, __c198, 0) as any as S.Schema<BroadcastActionLinksRequest>,
+  output: __S(3173, __c198, 5) as any as S.Schema<BroadcastActionLinksResponse>,
   errors: [BadRequest, NotFound, UnknownCustomerioError],
   protocol: CustomerioProtocol,
   retry: Retry.Retry,
@@ -17238,8 +17238,8 @@ export const broadcastActionMetrics: API.OperationMethod<
   BroadcastActionMetricsError,
   CustomerioOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(14, __c1, 6) as any as S.Schema<BroadcastActionMetricsRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<BroadcastActionMetricsResponse>,
+  input: __S(3408, __c213, 0) as any as S.Schema<BroadcastActionMetricsRequest>,
+  output: __S(3411, __c213, 3) as any as S.Schema<BroadcastActionMetricsResponse>,
   errors: [BadRequest, NotFound, UnknownCustomerioError],
   protocol: CustomerioProtocol,
   retry: Retry.Retry,
@@ -17253,8 +17253,8 @@ export const broadcastActions: API.OperationMethod<
   BroadcastActionsError,
   CustomerioOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(21, __c2, 5) as any as S.Schema<BroadcastActionsRequest>,
-  output: __S(23, __c2, 7) as any as S.Schema<BroadcastActionsResponse>,
+  input: __S(3616, __c226, 0) as any as S.Schema<BroadcastActionsRequest>,
+  output: __S(3618, __c226, 2) as any as S.Schema<BroadcastActionsResponse>,
   errors: [BadRequest, NotFound, UnknownCustomerioError],
   protocol: CustomerioProtocol,
   retry: Retry.Retry,
@@ -17268,8 +17268,8 @@ export const broadcastErrors: API.OperationMethod<
   BroadcastErrorsError,
   CustomerioOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(24, __c3, 0) as any as S.Schema<BroadcastErrorsRequest>,
-  output: __S(25, __c3, 1) as any as S.Schema<BroadcastErrorsResponse>,
+  input: __S(3824, __c239, 0) as any as S.Schema<BroadcastErrorsRequest>,
+  output: __S(3825, __c239, 1) as any as S.Schema<BroadcastErrorsResponse>,
   errors: [BadRequest, NotFound, UnknownCustomerioError],
   protocol: CustomerioProtocol,
   retry: Retry.Retry,
@@ -17283,8 +17283,8 @@ export const broadcastLinks: API.OperationMethod<
   BroadcastLinksError,
   CustomerioOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(26, __c3, 2) as any as S.Schema<BroadcastLinksRequest>,
-  output: __S(31, __c3, 7) as any as S.Schema<BroadcastLinksResponse>,
+  input: __S(0, __c0, 0) as any as S.Schema<BroadcastLinksRequest>,
+  output: __S(20, __c1, 4) as any as S.Schema<BroadcastLinksResponse>,
   errors: [BadRequest, NotFound, UnknownCustomerioError],
   protocol: CustomerioProtocol,
   retry: Retry.Retry,
@@ -17298,8 +17298,8 @@ export const broadcastMessages: API.OperationMethod<
   BroadcastMessagesError,
   CustomerioOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(32, __c4, 0) as any as S.Schema<BroadcastMessagesRequest>,
-  output: __S(39, __c4, 7) as any as S.Schema<BroadcastMessagesResponse>,
+  input: __S(224, __c14, 0) as any as S.Schema<BroadcastMessagesRequest>,
+  output: __S(227, __c14, 3) as any as S.Schema<BroadcastMessagesResponse>,
   errors: [BadRequest, NotFound, UnknownCustomerioError],
   protocol: CustomerioProtocol,
   retry: Retry.Retry,
@@ -17313,8 +17313,8 @@ export const broadcastMetrics: API.OperationMethod<
   BroadcastMetricsError,
   CustomerioOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(40, __c5, 0) as any as S.Schema<BroadcastMetricsRequest>,
-  output: __S(43, __c5, 3) as any as S.Schema<BroadcastMetricsResponse>,
+  input: __S(512, __c32, 0) as any as S.Schema<BroadcastMetricsRequest>,
+  output: __S(513, __c32, 1) as any as S.Schema<BroadcastMetricsResponse>,
   errors: [BadRequest, NotFound, UnknownCustomerioError],
   protocol: CustomerioProtocol,
   retry: Retry.Retry,
@@ -17328,8 +17328,8 @@ export const broadcastStatus: API.OperationMethod<
   BroadcastStatusError,
   CustomerioOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(44, __c5, 4) as any as S.Schema<BroadcastStatusRequest>,
-  output: __S(45, __c5, 5) as any as S.Schema<BroadcastStatusResponse>,
+  input: __S(736, __c46, 0) as any as S.Schema<BroadcastStatusRequest>,
+  output: __S(737, __c46, 1) as any as S.Schema<BroadcastStatusResponse>,
   errors: [BadRequest, NotFound, UnknownCustomerioError],
   protocol: CustomerioProtocol,
   retry: Retry.Retry,
@@ -17343,8 +17343,8 @@ export const campaignActionLinks: API.OperationMethod<
   CampaignActionLinksError,
   CustomerioOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(46, __c5, 6) as any as S.Schema<CampaignActionLinksRequest>,
-  output: __S(51, __c6, 3) as any as S.Schema<CampaignActionLinksResponse>,
+  input: __S(928, __c58, 0) as any as S.Schema<CampaignActionLinksRequest>,
+  output: __S(948, __c59, 4) as any as S.Schema<CampaignActionLinksResponse>,
   errors: [BadRequest, NotFound, UnknownCustomerioError],
   protocol: CustomerioProtocol,
   retry: Retry.Retry,
@@ -17358,8 +17358,8 @@ export const campaignActionMetrics: API.OperationMethod<
   CampaignActionMetricsError,
   CustomerioOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(52, __c6, 4) as any as S.Schema<CampaignActionMetricsRequest>,
-  output: __S(55, __c6, 7) as any as S.Schema<CampaignActionMetricsResponse>,
+  input: __S(1120, __c70, 0) as any as S.Schema<CampaignActionMetricsRequest>,
+  output: __S(1121, __c70, 1) as any as S.Schema<CampaignActionMetricsResponse>,
   errors: [BadRequest, NotFound, UnknownCustomerioError],
   protocol: CustomerioProtocol,
   retry: Retry.Retry,
@@ -17373,8 +17373,8 @@ export const campaignJourneyMetrics: API.OperationMethod<
   CampaignJourneyMetricsError,
   CustomerioOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(56, __c7, 0) as any as S.Schema<CampaignJourneyMetricsRequest>,
-  output: __S(58, __c7, 2) as any as S.Schema<CampaignJourneyMetricsResponse>,
+  input: __S(1344, __c84, 0) as any as S.Schema<CampaignJourneyMetricsRequest>,
+  output: __S(1346, __c84, 2) as any as S.Schema<CampaignJourneyMetricsResponse>,
   errors: [BadRequest, NotFound, UnknownCustomerioError],
   protocol: CustomerioProtocol,
   retry: Retry.Retry,
@@ -17388,8 +17388,8 @@ export const campaignLinkMetrics: API.OperationMethod<
   CampaignLinkMetricsError,
   CustomerioOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(59, __c7, 3) as any as S.Schema<CampaignLinkMetricsRequest>,
-  output: __S(51, __c6, 3) as any as S.Schema<CampaignLinkMetricsResponse>,
+  input: __S(1520, __c95, 0) as any as S.Schema<CampaignLinkMetricsRequest>,
+  output: __S(948, __c59, 4) as any as S.Schema<CampaignLinkMetricsResponse>,
   errors: [BadRequest, NotFound, UnknownCustomerioError],
   protocol: CustomerioProtocol,
   retry: Retry.Retry,
@@ -17403,8 +17403,8 @@ export const campaignMetrics: API.OperationMethod<
   CampaignMetricsError,
   CustomerioOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(60, __c7, 4) as any as S.Schema<CampaignMetricsRequest>,
-  output: __S(61, __c7, 5) as any as S.Schema<CampaignMetricsResponse>,
+  input: __S(1696, __c106, 0) as any as S.Schema<CampaignMetricsRequest>,
+  output: __S(1697, __c106, 1) as any as S.Schema<CampaignMetricsResponse>,
   errors: [BadRequest, NotFound, UnknownCustomerioError],
   protocol: CustomerioProtocol,
   retry: Retry.Retry,
@@ -17418,8 +17418,8 @@ export const cancelBroadcastTrigger: API.OperationMethod<
   CancelBroadcastTriggerError,
   CustomerioOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(62, __c7, 6) as any as S.Schema<CancelBroadcastTriggerRequest>,
-  output: __S(64, __c8, 0) as any as S.Schema<CancelBroadcastTriggerResponse>,
+  input: __S(1872, __c117, 0) as any as S.Schema<CancelBroadcastTriggerRequest>,
+  output: __S(1873, __c117, 1) as any as S.Schema<CancelBroadcastTriggerResponse>,
   errors: [BadRequest, NotFound, Conflict, UnknownCustomerioError],
   protocol: CustomerioProtocol,
   retry: Retry.Retry,
@@ -17433,8 +17433,8 @@ export const checkUnpublishedChanges: API.OperationMethod<
   CheckUnpublishedChangesError,
   CustomerioOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(65, __c8, 1) as any as S.Schema<CheckUnpublishedChangesRequest>,
-  output: __S(66, __c8, 2) as any as S.Schema<CheckUnpublishedChangesResponse>,
+  input: __S(1952, __c122, 0) as any as S.Schema<CheckUnpublishedChangesRequest>,
+  output: __S(1953, __c122, 1) as any as S.Schema<CheckUnpublishedChangesResponse>,
   errors: [BadRequest, NotFound, UnknownCustomerioError],
   protocol: CustomerioProtocol,
   retry: Retry.Retry,
@@ -17448,8 +17448,8 @@ export const createAsset: API.OperationMethod<
   CreateAssetError,
   CustomerioOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(67, __c8, 3) as any as S.Schema<CreateAssetRequest>,
-  output: __S(69, __c8, 5) as any as S.Schema<CreateAssetResponse>,
+  input: __S(1968, __c123, 0) as any as S.Schema<CreateAssetRequest>,
+  output: __S(1984, __c124, 0) as any as S.Schema<CreateAssetResponse>,
   errors: [BadRequest, NotFound, Conflict, UnknownCustomerioError],
   protocol: CustomerioProtocol,
   retry: Retry.Retry,
@@ -17463,8 +17463,8 @@ export const createAssetFolder: API.OperationMethod<
   CreateAssetFolderError,
   CustomerioOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(70, __c8, 6) as any as S.Schema<CreateAssetFolderRequest>,
-  output: __S(72, __c9, 0) as any as S.Schema<CreateAssetFolderResponse>,
+  input: __S(2016, __c126, 0) as any as S.Schema<CreateAssetFolderRequest>,
+  output: __S(2017, __c126, 1) as any as S.Schema<CreateAssetFolderResponse>,
   errors: [BadRequest, NotFound, Conflict, UnknownCustomerioError],
   protocol: CustomerioProtocol,
   retry: Retry.Retry,
@@ -17478,8 +17478,8 @@ export const createComponent: API.OperationMethod<
   CreateComponentError,
   CustomerioOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(73, __c9, 1) as any as S.Schema<CreateComponentRequest>,
-  output: __S(75, __c9, 3) as any as S.Schema<CreateComponentResponse>,
+  input: __S(2048, __c128, 0) as any as S.Schema<CreateComponentRequest>,
+  output: __S(2065, __c129, 1) as any as S.Schema<CreateComponentResponse>,
   errors: [BadRequest, NotFound, Conflict, UnknownCustomerioError],
   protocol: CustomerioProtocol,
   retry: Retry.Retry,
@@ -17493,8 +17493,8 @@ export const createEmail: API.OperationMethod<
   CreateEmailError,
   CustomerioOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(95, __c11, 7) as any as S.Schema<CreateEmailRequest>,
-  output: __S(105, __c13, 1) as any as S.Schema<CreateEmailResponse>,
+  input: __S(2081, __c130, 1) as any as S.Schema<CreateEmailRequest>,
+  output: __S(2085, __c130, 5) as any as S.Schema<CreateEmailResponse>,
   errors: [BadRequest, NotFound, UnknownCustomerioError],
   protocol: CustomerioProtocol,
   retry: Retry.Retry,
@@ -17508,8 +17508,8 @@ export const createEmailTranslation: API.OperationMethod<
   CreateEmailTranslationError,
   CustomerioOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(111, __c13, 7) as any as S.Schema<CreateEmailTranslationRequest>,
-  output: __S(121, __c15, 1) as any as S.Schema<CreateEmailTranslationResponse>,
+  input: __S(2273, __c142, 1) as any as S.Schema<CreateEmailTranslationRequest>,
+  output: __S(2277, __c142, 5) as any as S.Schema<CreateEmailTranslationResponse>,
   errors: [BadRequest, NotFound, Conflict, UnknownCustomerioError],
   protocol: CustomerioProtocol,
   retry: Retry.Retry,
@@ -17523,8 +17523,8 @@ export const createFolder: API.OperationMethod<
   CreateFolderError,
   CustomerioOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(122, __c15, 2) as any as S.Schema<CreateFolderRequest>,
-  output: __S(124, __c15, 4) as any as S.Schema<CreateFolderResponse>,
+  input: __S(2352, __c147, 0) as any as S.Schema<CreateFolderRequest>,
+  output: __S(2368, __c148, 0) as any as S.Schema<CreateFolderResponse>,
   errors: [BadRequest, NotFound, UnknownCustomerioError],
   protocol: CustomerioProtocol,
   retry: Retry.Retry,
@@ -17538,8 +17538,8 @@ export const createManSegment: API.OperationMethod<
   CreateManSegmentError,
   CustomerioOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(126, __c15, 6) as any as S.Schema<CreateManSegmentRequest>,
-  output: __S(128, __c16, 0) as any as S.Schema<CreateManSegmentResponse>,
+  input: __S(2400, __c150, 0) as any as S.Schema<CreateManSegmentRequest>,
+  output: __S(2402, __c150, 2) as any as S.Schema<CreateManSegmentResponse>,
   errors: [BadRequest, UnknownCustomerioError],
   protocol: CustomerioProtocol,
   retry: Retry.Retry,
@@ -17553,8 +17553,8 @@ export const createNewsletter: API.OperationMethod<
   CreateNewsletterError,
   CustomerioOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(129, __c16, 1) as any as S.Schema<CreateNewsletterRequest>,
-  output: __S(131, __c16, 3) as any as S.Schema<CreateNewsletterResponse>,
+  input: __S(2448, __c153, 0) as any as S.Schema<CreateNewsletterRequest>,
+  output: __S(2450, __c153, 2) as any as S.Schema<CreateNewsletterResponse>,
   errors: [BadRequest, UnprocessableEntity, UnknownCustomerioError],
   protocol: CustomerioProtocol,
   retry: Retry.Retry,
@@ -17572,8 +17572,8 @@ export const createNewsletterLanguageVariant: API.OperationMethod<
   CreateNewsletterLanguageVariantError,
   CustomerioOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(132, __c16, 4) as any as S.Schema<CreateNewsletterLanguageVariantRequest>,
-  output: __S(134, __c16, 6) as any as S.Schema<CreateNewsletterLanguageVariantResponse>,
+  input: __S(2464, __c154, 0) as any as S.Schema<CreateNewsletterLanguageVariantRequest>,
+  output: __S(2466, __c154, 2) as any as S.Schema<CreateNewsletterLanguageVariantResponse>,
   errors: [BadRequest, NotFound, UnprocessableEntity, UnknownCustomerioError],
   protocol: CustomerioProtocol,
   retry: Retry.Retry,
@@ -17587,8 +17587,8 @@ export const createNewsletterTestGroup: API.OperationMethod<
   CreateNewsletterTestGroupError,
   CustomerioOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(135, __c16, 7) as any as S.Schema<CreateNewsletterTestGroupRequest>,
-  output: __S(137, __c17, 1) as any as S.Schema<CreateNewsletterTestGroupResponse>,
+  input: __S(2480, __c155, 0) as any as S.Schema<CreateNewsletterTestGroupRequest>,
+  output: __S(2482, __c155, 2) as any as S.Schema<CreateNewsletterTestGroupResponse>,
   errors: [BadRequest, NotFound, UnknownCustomerioError],
   protocol: CustomerioProtocol,
   retry: Retry.Retry,
@@ -17606,8 +17606,8 @@ export const createNewsletterTestLanguageVariant: API.OperationMethod<
   CreateNewsletterTestLanguageVariantError,
   CustomerioOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(138, __c17, 2) as any as S.Schema<CreateNewsletterTestLanguageVariantRequest>,
-  output: __S(140, __c17, 4) as any as S.Schema<CreateNewsletterTestLanguageVariantResponse>,
+  input: __S(2496, __c156, 0) as any as S.Schema<CreateNewsletterTestLanguageVariantRequest>,
+  output: __S(2498, __c156, 2) as any as S.Schema<CreateNewsletterTestLanguageVariantResponse>,
   errors: [BadRequest, NotFound, UnprocessableEntity, UnknownCustomerioError],
   protocol: CustomerioProtocol,
   retry: Retry.Retry,
@@ -17621,8 +17621,8 @@ export const createSnippet: API.OperationMethod<
   CreateSnippetError,
   CustomerioOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(141, __c17, 5) as any as S.Schema<CreateSnippetRequest>,
-  output: __S(143, __c17, 7) as any as S.Schema<CreateSnippetResponse>,
+  input: __S(2512, __c157, 0) as any as S.Schema<CreateSnippetRequest>,
+  output: __S(2544, __c159, 0) as any as S.Schema<CreateSnippetResponse>,
   errors: [UnprocessableEntity, UnknownCustomerioError],
   protocol: CustomerioProtocol,
   retry: Retry.Retry,
@@ -17636,8 +17636,8 @@ export const createWebhook: API.OperationMethod<
   CreateWebhookError,
   CustomerioOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(145, __c18, 1) as any as S.Schema<CreateWebhookRequest>,
-  output: __S(146, __c18, 2) as any as S.Schema<CreateWebhookResponse>,
+  input: __S(2560, __c160, 0) as any as S.Schema<CreateWebhookRequest>,
+  output: __S(2592, __c162, 0) as any as S.Schema<CreateWebhookResponse>,
   errors: [BadRequest, UnknownCustomerioError],
   protocol: CustomerioProtocol,
   retry: Retry.Retry,
@@ -17651,8 +17651,8 @@ export const deleteAsset: API.OperationMethod<
   DeleteAssetError,
   CustomerioOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(147, __c18, 3) as any as S.Schema<DeleteAssetRequest>,
-  output: __S(148, __c18, 4) as any as S.Schema<DeleteAssetResponse>,
+  input: __S(2608, __c163, 0) as any as S.Schema<DeleteAssetRequest>,
+  output: __S(2624, __c164, 0) as any as S.Schema<DeleteAssetResponse>,
   errors: [BadRequest, NotFound, UnknownCustomerioError],
   protocol: CustomerioProtocol,
   retry: Retry.Retry,
@@ -17666,8 +17666,8 @@ export const deleteAssetFolder: API.OperationMethod<
   DeleteAssetFolderError,
   CustomerioOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(149, __c18, 5) as any as S.Schema<DeleteAssetFolderRequest>,
-  output: __S(148, __c18, 4) as any as S.Schema<DeleteAssetFolderResponse>,
+  input: __S(2640, __c165, 0) as any as S.Schema<DeleteAssetFolderRequest>,
+  output: __S(2624, __c164, 0) as any as S.Schema<DeleteAssetFolderResponse>,
   errors: [BadRequest, NotFound, UnknownCustomerioError],
   protocol: CustomerioProtocol,
   retry: Retry.Retry,
@@ -17681,8 +17681,8 @@ export const deleteCollection: API.OperationMethod<
   DeleteCollectionError,
   CustomerioOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(150, __c18, 6) as any as S.Schema<DeleteCollectionRequest>,
-  output: __S(148, __c18, 4) as any as S.Schema<DeleteCollectionResponse>,
+  input: __S(2656, __c166, 0) as any as S.Schema<DeleteCollectionRequest>,
+  output: __S(2624, __c164, 0) as any as S.Schema<DeleteCollectionResponse>,
   errors: [NotFound, UnknownCustomerioError],
   protocol: CustomerioProtocol,
   retry: Retry.Retry,
@@ -17696,8 +17696,8 @@ export const deleteComponent: API.OperationMethod<
   DeleteComponentError,
   CustomerioOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(151, __c18, 7) as any as S.Schema<DeleteComponentRequest>,
-  output: __S(148, __c18, 4) as any as S.Schema<DeleteComponentResponse>,
+  input: __S(2672, __c167, 0) as any as S.Schema<DeleteComponentRequest>,
+  output: __S(2624, __c164, 0) as any as S.Schema<DeleteComponentResponse>,
   errors: [NotFound, UnknownCustomerioError],
   protocol: CustomerioProtocol,
   retry: Retry.Retry,
@@ -17711,8 +17711,8 @@ export const deleteEmail: API.OperationMethod<
   DeleteEmailError,
   CustomerioOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(152, __c19, 0) as any as S.Schema<DeleteEmailRequest>,
-  output: __S(148, __c18, 4) as any as S.Schema<DeleteEmailResponse>,
+  input: __S(2688, __c168, 0) as any as S.Schema<DeleteEmailRequest>,
+  output: __S(2624, __c164, 0) as any as S.Schema<DeleteEmailResponse>,
   errors: [NotFound, Conflict, UnknownCustomerioError],
   protocol: CustomerioProtocol,
   retry: Retry.Retry,
@@ -17726,8 +17726,8 @@ export const deleteEmailTranslation: API.OperationMethod<
   DeleteEmailTranslationError,
   CustomerioOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(153, __c19, 1) as any as S.Schema<DeleteEmailTranslationRequest>,
-  output: __S(148, __c18, 4) as any as S.Schema<DeleteEmailTranslationResponse>,
+  input: __S(2704, __c169, 0) as any as S.Schema<DeleteEmailTranslationRequest>,
+  output: __S(2624, __c164, 0) as any as S.Schema<DeleteEmailTranslationResponse>,
   errors: [NotFound, Conflict, UnknownCustomerioError],
   protocol: CustomerioProtocol,
   retry: Retry.Retry,
@@ -17741,8 +17741,8 @@ export const deleteFolder: API.OperationMethod<
   DeleteFolderError,
   CustomerioOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(154, __c19, 2) as any as S.Schema<DeleteFolderRequest>,
-  output: __S(148, __c18, 4) as any as S.Schema<DeleteFolderResponse>,
+  input: __S(2720, __c170, 0) as any as S.Schema<DeleteFolderRequest>,
+  output: __S(2624, __c164, 0) as any as S.Schema<DeleteFolderResponse>,
   errors: [NotFound, Conflict, UnknownCustomerioError],
   protocol: CustomerioProtocol,
   retry: Retry.Retry,
@@ -17756,8 +17756,8 @@ export const deleteManSegment: API.OperationMethod<
   DeleteManSegmentError,
   CustomerioOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(155, __c19, 3) as any as S.Schema<DeleteManSegmentRequest>,
-  output: __S(148, __c18, 4) as any as S.Schema<DeleteManSegmentResponse>,
+  input: __S(2736, __c171, 0) as any as S.Schema<DeleteManSegmentRequest>,
+  output: __S(2624, __c164, 0) as any as S.Schema<DeleteManSegmentResponse>,
   errors: [NotFound, UnprocessableEntity, UnknownCustomerioError],
   protocol: CustomerioProtocol,
   retry: Retry.Retry,
@@ -17771,8 +17771,8 @@ export const deleteNewsletterLanguageVariant: API.OperationMethod<
   DeleteNewsletterLanguageVariantError,
   CustomerioOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(156, __c19, 4) as any as S.Schema<DeleteNewsletterLanguageVariantRequest>,
-  output: __S(157, __c19, 5) as any as S.Schema<DeleteNewsletterLanguageVariantResponse>,
+  input: __S(2752, __c172, 0) as any as S.Schema<DeleteNewsletterLanguageVariantRequest>,
+  output: __S(2768, __c173, 0) as any as S.Schema<DeleteNewsletterLanguageVariantResponse>,
   errors: [BadRequest, NotFound, UnknownCustomerioError],
   protocol: CustomerioProtocol,
   retry: Retry.Retry,
@@ -17786,8 +17786,8 @@ export const deleteNewsletters: API.OperationMethod<
   DeleteNewslettersError,
   CustomerioOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(158, __c19, 6) as any as S.Schema<DeleteNewslettersRequest>,
-  output: __S(148, __c18, 4) as any as S.Schema<DeleteNewslettersResponse>,
+  input: __S(2784, __c174, 0) as any as S.Schema<DeleteNewslettersRequest>,
+  output: __S(2624, __c164, 0) as any as S.Schema<DeleteNewslettersResponse>,
   errors: [NotFound, UnknownCustomerioError],
   protocol: CustomerioProtocol,
   retry: Retry.Retry,
@@ -17801,8 +17801,8 @@ export const deleteNewsletterTestLanguageVariant: API.OperationMethod<
   DeleteNewsletterTestLanguageVariantError,
   CustomerioOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(159, __c19, 7) as any as S.Schema<DeleteNewsletterTestLanguageVariantRequest>,
-  output: __S(157, __c19, 5) as any as S.Schema<DeleteNewsletterTestLanguageVariantResponse>,
+  input: __S(2800, __c175, 0) as any as S.Schema<DeleteNewsletterTestLanguageVariantRequest>,
+  output: __S(2768, __c173, 0) as any as S.Schema<DeleteNewsletterTestLanguageVariantResponse>,
   errors: [BadRequest, NotFound, UnknownCustomerioError],
   protocol: CustomerioProtocol,
   retry: Retry.Retry,
@@ -17816,8 +17816,8 @@ export const deleteSnippet: API.OperationMethod<
   DeleteSnippetError,
   CustomerioOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(160, __c20, 0) as any as S.Schema<DeleteSnippetRequest>,
-  output: __S(148, __c18, 4) as any as S.Schema<DeleteSnippetResponse>,
+  input: __S(2816, __c176, 0) as any as S.Schema<DeleteSnippetRequest>,
+  output: __S(2624, __c164, 0) as any as S.Schema<DeleteSnippetResponse>,
   errors: [BadRequest, NotFound, UnknownCustomerioError],
   protocol: CustomerioProtocol,
   retry: Retry.Retry,
@@ -17831,8 +17831,8 @@ export const deleteSuppression: API.OperationMethod<
   DeleteSuppressionError,
   CustomerioOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(161, __c20, 1) as any as S.Schema<DeleteSuppressionRequest>,
-  output: __S(148, __c18, 4) as any as S.Schema<DeleteSuppressionResponse>,
+  input: __S(2832, __c177, 0) as any as S.Schema<DeleteSuppressionRequest>,
+  output: __S(2624, __c164, 0) as any as S.Schema<DeleteSuppressionResponse>,
   errors: [UnknownCustomerioError],
   protocol: CustomerioProtocol,
   retry: Retry.Retry,
@@ -17846,8 +17846,8 @@ export const deleteVersion: API.OperationMethod<
   DeleteVersionError,
   CustomerioOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(162, __c20, 2) as any as S.Schema<DeleteVersionRequest>,
-  output: __S(148, __c18, 4) as any as S.Schema<DeleteVersionResponse>,
+  input: __S(2848, __c178, 0) as any as S.Schema<DeleteVersionRequest>,
+  output: __S(2624, __c164, 0) as any as S.Schema<DeleteVersionResponse>,
   errors: [NotFound, Conflict, UnknownCustomerioError],
   protocol: CustomerioProtocol,
   retry: Retry.Retry,
@@ -17861,8 +17861,8 @@ export const deleteWebhook: API.OperationMethod<
   DeleteWebhookError,
   CustomerioOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(163, __c20, 3) as any as S.Schema<DeleteWebhookRequest>,
-  output: __S(148, __c18, 4) as any as S.Schema<DeleteWebhookResponse>,
+  input: __S(2864, __c179, 0) as any as S.Schema<DeleteWebhookRequest>,
+  output: __S(2624, __c164, 0) as any as S.Schema<DeleteWebhookResponse>,
   errors: [NotFound, UnknownCustomerioError],
   protocol: CustomerioProtocol,
   retry: Retry.Retry,
@@ -17876,8 +17876,8 @@ export const downloadExport: API.OperationMethod<
   DownloadExportError,
   CustomerioOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(164, __c20, 4) as any as S.Schema<DownloadExportRequest>,
-  output: __S(165, __c20, 5) as any as S.Schema<DownloadExportResponse>,
+  input: __S(2880, __c180, 0) as any as S.Schema<DownloadExportRequest>,
+  output: __S(2881, __c180, 1) as any as S.Schema<DownloadExportResponse>,
   errors: [NotFound, UnknownCustomerioError],
   protocol: CustomerioProtocol,
   retry: Retry.Retry,
@@ -17891,8 +17891,8 @@ export const endLiveNotification: API.OperationMethod<
   EndLiveNotificationError,
   CustomerioOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(168, __c21, 0) as any as S.Schema<EndLiveNotificationRequest>,
-  output: __S(169, __c21, 1) as any as S.Schema<EndLiveNotificationResponse>,
+  input: __S(2960, __c185, 0) as any as S.Schema<EndLiveNotificationRequest>,
+  output: __S(2978, __c186, 2) as any as S.Schema<EndLiveNotificationResponse>,
   errors: [BadRequest, NotFound, UnknownCustomerioError],
   protocol: CustomerioProtocol,
   retry: Retry.Retry,
@@ -17906,8 +17906,8 @@ export const exportDeliveriesData: API.OperationMethod<
   ExportDeliveriesDataError,
   CustomerioOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(170, __c21, 2) as any as S.Schema<ExportDeliveriesDataRequest>,
-  output: __S(172, __c21, 4) as any as S.Schema<ExportDeliveriesDataResponse>,
+  input: __S(2992, __c187, 0) as any as S.Schema<ExportDeliveriesDataRequest>,
+  output: __S(2993, __c187, 1) as any as S.Schema<ExportDeliveriesDataResponse>,
   errors: [BadRequest, UnknownCustomerioError],
   protocol: CustomerioProtocol,
   retry: Retry.Retry,
@@ -17921,8 +17921,8 @@ export const exportPeopleData: API.OperationMethod<
   ExportPeopleDataError,
   CustomerioOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(173, __c21, 5) as any as S.Schema<ExportPeopleDataRequest>,
-  output: __S(174, __c21, 6) as any as S.Schema<ExportPeopleDataResponse>,
+  input: __S(3024, __c189, 0) as any as S.Schema<ExportPeopleDataRequest>,
+  output: __S(3025, __c189, 1) as any as S.Schema<ExportPeopleDataResponse>,
   errors: [BadRequest, UnknownCustomerioError],
   protocol: CustomerioProtocol,
   retry: Retry.Retry,
@@ -17936,8 +17936,8 @@ export const getArchivedMessage: API.OperationMethod<
   GetArchivedMessageError,
   CustomerioOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(175, __c21, 7) as any as S.Schema<GetArchivedMessageRequest>,
-  output: __S(177, __c22, 1) as any as S.Schema<GetArchivedMessageResponse>,
+  input: __S(3040, __c190, 0) as any as S.Schema<GetArchivedMessageRequest>,
+  output: __S(3042, __c190, 2) as any as S.Schema<GetArchivedMessageResponse>,
   errors: [NotFound, UnknownCustomerioError],
   protocol: CustomerioProtocol,
   retry: Retry.Retry,
@@ -17951,8 +17951,8 @@ export const getAsset: API.OperationMethod<
   GetAssetError,
   CustomerioOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(178, __c22, 2) as any as S.Schema<GetAssetRequest>,
-  output: __S(69, __c8, 5) as any as S.Schema<GetAssetResponse>,
+  input: __S(3056, __c191, 0) as any as S.Schema<GetAssetRequest>,
+  output: __S(1984, __c124, 0) as any as S.Schema<GetAssetResponse>,
   errors: [BadRequest, NotFound, UnknownCustomerioError],
   protocol: CustomerioProtocol,
   retry: Retry.Retry,
@@ -17966,8 +17966,8 @@ export const getAssetFolder: API.OperationMethod<
   GetAssetFolderError,
   CustomerioOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(179, __c22, 3) as any as S.Schema<GetAssetFolderRequest>,
-  output: __S(180, __c22, 4) as any as S.Schema<GetAssetFolderResponse>,
+  input: __S(3072, __c192, 0) as any as S.Schema<GetAssetFolderRequest>,
+  output: __S(3073, __c192, 1) as any as S.Schema<GetAssetFolderResponse>,
   errors: [BadRequest, NotFound, UnknownCustomerioError],
   protocol: CustomerioProtocol,
   retry: Retry.Retry,
@@ -17981,8 +17981,8 @@ export const getBroadcast: API.OperationMethod<
   GetBroadcastError,
   CustomerioOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(181, __c22, 5) as any as S.Schema<GetBroadcastRequest>,
-  output: __S(185, __c23, 1) as any as S.Schema<GetBroadcastResponse>,
+  input: __S(3088, __c193, 0) as any as S.Schema<GetBroadcastRequest>,
+  output: __S(3090, __c193, 2) as any as S.Schema<GetBroadcastResponse>,
   errors: [BadRequest, NotFound, UnknownCustomerioError],
   protocol: CustomerioProtocol,
   retry: Retry.Retry,
@@ -17996,8 +17996,8 @@ export const getBroadcastAction: API.OperationMethod<
   GetBroadcastActionError,
   CustomerioOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(186, __c23, 2) as any as S.Schema<GetBroadcastActionRequest>,
-  output: __S(187, __c23, 3) as any as S.Schema<GetBroadcastActionResponse>,
+  input: __S(3120, __c195, 0) as any as S.Schema<GetBroadcastActionRequest>,
+  output: __S(3121, __c195, 1) as any as S.Schema<GetBroadcastActionResponse>,
   errors: [BadRequest, NotFound, UnknownCustomerioError],
   protocol: CustomerioProtocol,
   retry: Retry.Retry,
@@ -18011,8 +18011,8 @@ export const getBroadcastActionLanguage: API.OperationMethod<
   GetBroadcastActionLanguageError,
   CustomerioOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(188, __c23, 4) as any as S.Schema<GetBroadcastActionLanguageRequest>,
-  output: __S(189, __c23, 5) as any as S.Schema<GetBroadcastActionLanguageResponse>,
+  input: __S(3136, __c196, 0) as any as S.Schema<GetBroadcastActionLanguageRequest>,
+  output: __S(3137, __c196, 1) as any as S.Schema<GetBroadcastActionLanguageResponse>,
   errors: [BadRequest, NotFound, UnknownCustomerioError],
   protocol: CustomerioProtocol,
   retry: Retry.Retry,
@@ -18026,8 +18026,8 @@ export const getCampaignAction: API.OperationMethod<
   GetCampaignActionError,
   CustomerioOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(190, __c23, 6) as any as S.Schema<GetCampaignActionRequest>,
-  output: __S(191, __c23, 7) as any as S.Schema<GetCampaignActionResponse>,
+  input: __S(3152, __c197, 0) as any as S.Schema<GetCampaignActionRequest>,
+  output: __S(3153, __c197, 1) as any as S.Schema<GetCampaignActionResponse>,
   errors: [BadRequest, NotFound, UnknownCustomerioError],
   protocol: CustomerioProtocol,
   retry: Retry.Retry,
@@ -18041,8 +18041,8 @@ export const getCampaignActionTranslation: API.OperationMethod<
   GetCampaignActionTranslationError,
   CustomerioOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(192, __c24, 0) as any as S.Schema<GetCampaignActionTranslationRequest>,
-  output: __S(193, __c24, 1) as any as S.Schema<GetCampaignActionTranslationResponse>,
+  input: __S(3232, __c202, 0) as any as S.Schema<GetCampaignActionTranslationRequest>,
+  output: __S(3233, __c202, 1) as any as S.Schema<GetCampaignActionTranslationResponse>,
   errors: [BadRequest, NotFound, UnknownCustomerioError],
   protocol: CustomerioProtocol,
   retry: Retry.Retry,
@@ -18056,8 +18056,8 @@ export const getCampaignMessages: API.OperationMethod<
   GetCampaignMessagesError,
   CustomerioOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(194, __c24, 2) as any as S.Schema<GetCampaignMessagesRequest>,
-  output: __S(197, __c24, 5) as any as S.Schema<GetCampaignMessagesResponse>,
+  input: __S(3248, __c203, 0) as any as S.Schema<GetCampaignMessagesRequest>,
+  output: __S(3251, __c203, 3) as any as S.Schema<GetCampaignMessagesResponse>,
   errors: [BadRequest, NotFound, UnknownCustomerioError],
   protocol: CustomerioProtocol,
   retry: Retry.Retry,
@@ -18071,8 +18071,8 @@ export const getCampaigns: API.OperationMethod<
   GetCampaignsError,
   CustomerioOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(198, __c24, 6) as any as S.Schema<GetCampaignsRequest>,
-  output: __S(199, __c24, 7) as any as S.Schema<GetCampaignsResponse>,
+  input: __S(3264, __c204, 0) as any as S.Schema<GetCampaignsRequest>,
+  output: __S(3265, __c204, 1) as any as S.Schema<GetCampaignsResponse>,
   errors: [BadRequest, NotFound, UnknownCustomerioError],
   protocol: CustomerioProtocol,
   retry: Retry.Retry,
@@ -18086,8 +18086,8 @@ export const getChannels: API.OperationMethod<
   GetChannelsError,
   CustomerioOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(200, __c25, 0) as any as S.Schema<GetChannelsRequest>,
-  output: __S(203, __c25, 3) as any as S.Schema<GetChannelsResponse>,
+  input: __S(3280, __c205, 0) as any as S.Schema<GetChannelsRequest>,
+  output: __S(3283, __c205, 3) as any as S.Schema<GetChannelsResponse>,
   errors: [UnknownCustomerioError],
   protocol: CustomerioProtocol,
   retry: Retry.Retry,
@@ -18101,8 +18101,8 @@ export const getCioAllowlist: API.OperationMethod<
   GetCioAllowlistError,
   CustomerioOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(204, __c25, 4) as any as S.Schema<GetCioAllowlistRequest>,
-  output: __S(205, __c25, 5) as any as S.Schema<GetCioAllowlistResponse>,
+  input: __S(3296, __c206, 0) as any as S.Schema<GetCioAllowlistRequest>,
+  output: __S(3297, __c206, 1) as any as S.Schema<GetCioAllowlistResponse>,
   errors: [UnknownCustomerioError],
   protocol: CustomerioProtocol,
   retry: Retry.Retry,
@@ -18116,8 +18116,8 @@ export const getCollection: API.OperationMethod<
   GetCollectionError,
   CustomerioOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(206, __c25, 6) as any as S.Schema<GetCollectionRequest>,
-  output: __S(4, __c0, 4) as any as S.Schema<GetCollectionResponse>,
+  input: __S(3312, __c207, 0) as any as S.Schema<GetCollectionRequest>,
+  output: __S(2912, __c182, 0) as any as S.Schema<GetCollectionResponse>,
   errors: [NotFound, UnknownCustomerioError],
   protocol: CustomerioProtocol,
   retry: Retry.Retry,
@@ -18131,8 +18131,8 @@ export const getCollectionContents: API.OperationMethod<
   GetCollectionContentsError,
   CustomerioOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(207, __c25, 7) as any as S.Schema<GetCollectionContentsRequest>,
-  output: __S(208, __c26, 0) as any as S.Schema<GetCollectionContentsResponse>,
+  input: __S(3328, __c208, 0) as any as S.Schema<GetCollectionContentsRequest>,
+  output: __S(3329, __c208, 1) as any as S.Schema<GetCollectionContentsResponse>,
   errors: [NotFound, UnknownCustomerioError],
   protocol: CustomerioProtocol,
   retry: Retry.Retry,
@@ -18146,8 +18146,8 @@ export const getCollections: API.OperationMethod<
   GetCollectionsError,
   CustomerioOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(209, __c26, 1) as any as S.Schema<GetCollectionsRequest>,
-  output: __S(211, __c26, 3) as any as S.Schema<GetCollectionsResponse>,
+  input: __S(3344, __c209, 0) as any as S.Schema<GetCollectionsRequest>,
+  output: __S(3346, __c209, 2) as any as S.Schema<GetCollectionsResponse>,
   errors: [UnknownCustomerioError],
   protocol: CustomerioProtocol,
   retry: Retry.Retry,
@@ -18161,8 +18161,8 @@ export const getComponent: API.OperationMethod<
   GetComponentError,
   CustomerioOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(212, __c26, 4) as any as S.Schema<GetComponentRequest>,
-  output: __S(75, __c9, 3) as any as S.Schema<GetComponentResponse>,
+  input: __S(3360, __c210, 0) as any as S.Schema<GetComponentRequest>,
+  output: __S(2065, __c129, 1) as any as S.Schema<GetComponentResponse>,
   errors: [NotFound, UnknownCustomerioError],
   protocol: CustomerioProtocol,
   retry: Retry.Retry,
@@ -18176,8 +18176,8 @@ export const getDomainSuppressionsByType: API.OperationMethod<
   GetDomainSuppressionsByTypeError,
   CustomerioOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(213, __c26, 5) as any as S.Schema<GetDomainSuppressionsByTypeRequest>,
-  output: __S(216, __c27, 0) as any as S.Schema<GetDomainSuppressionsByTypeResponse>,
+  input: __S(3376, __c211, 0) as any as S.Schema<GetDomainSuppressionsByTypeRequest>,
+  output: __S(3377, __c211, 1) as any as S.Schema<GetDomainSuppressionsByTypeResponse>,
   errors: [UnknownCustomerioError],
   protocol: CustomerioProtocol,
   retry: Retry.Retry,
@@ -18191,8 +18191,8 @@ export const getEmail: API.OperationMethod<
   GetEmailError,
   CustomerioOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(217, __c27, 1) as any as S.Schema<GetEmailRequest>,
-  output: __S(220, __c27, 4) as any as S.Schema<GetEmailResponse>,
+  input: __S(3440, __c215, 0) as any as S.Schema<GetEmailRequest>,
+  output: __S(3443, __c215, 3) as any as S.Schema<GetEmailResponse>,
   errors: [NotFound, UnknownCustomerioError],
   protocol: CustomerioProtocol,
   retry: Retry.Retry,
@@ -18206,8 +18206,8 @@ export const getEmailTranslation: API.OperationMethod<
   GetEmailTranslationError,
   CustomerioOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(221, __c27, 5) as any as S.Schema<GetEmailTranslationRequest>,
-  output: __S(224, __c28, 0) as any as S.Schema<GetEmailTranslationResponse>,
+  input: __S(3456, __c216, 0) as any as S.Schema<GetEmailTranslationRequest>,
+  output: __S(3459, __c216, 3) as any as S.Schema<GetEmailTranslationResponse>,
   errors: [NotFound, UnknownCustomerioError],
   protocol: CustomerioProtocol,
   retry: Retry.Retry,
@@ -18221,8 +18221,8 @@ export const getExport: API.OperationMethod<
   GetExportError,
   CustomerioOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(225, __c28, 1) as any as S.Schema<GetExportRequest>,
-  output: __S(227, __c28, 3) as any as S.Schema<GetExportResponse>,
+  input: __S(3472, __c217, 0) as any as S.Schema<GetExportRequest>,
+  output: __S(3474, __c217, 2) as any as S.Schema<GetExportResponse>,
   errors: [NotFound, UnknownCustomerioError],
   protocol: CustomerioProtocol,
   retry: Retry.Retry,
@@ -18236,8 +18236,8 @@ export const getFolder: API.OperationMethod<
   GetFolderError,
   CustomerioOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(228, __c28, 4) as any as S.Schema<GetFolderRequest>,
-  output: __S(124, __c15, 4) as any as S.Schema<GetFolderResponse>,
+  input: __S(3488, __c218, 0) as any as S.Schema<GetFolderRequest>,
+  output: __S(2368, __c148, 0) as any as S.Schema<GetFolderResponse>,
   errors: [NotFound, UnknownCustomerioError],
   protocol: CustomerioProtocol,
   retry: Retry.Retry,
@@ -18251,8 +18251,8 @@ export const getImport: API.OperationMethod<
   GetImportError,
   CustomerioOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(229, __c28, 5) as any as S.Schema<GetImportRequest>,
-  output: __S(231, __c28, 7) as any as S.Schema<GetImportResponse>,
+  input: __S(3504, __c219, 0) as any as S.Schema<GetImportRequest>,
+  output: __S(3506, __c219, 2) as any as S.Schema<GetImportResponse>,
   errors: [UnknownCustomerioError],
   protocol: CustomerioProtocol,
   retry: Retry.Retry,
@@ -18266,8 +18266,8 @@ export const getInboxPreviewCapture: API.OperationMethod<
   GetInboxPreviewCaptureError,
   CustomerioOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(232, __c29, 0) as any as S.Schema<GetInboxPreviewCaptureRequest>,
-  output: __S(148, __c18, 4) as any as S.Schema<GetInboxPreviewCaptureResponse>,
+  input: __S(3520, __c220, 0) as any as S.Schema<GetInboxPreviewCaptureRequest>,
+  output: __S(2624, __c164, 0) as any as S.Schema<GetInboxPreviewCaptureResponse>,
   errors: [BadRequest, NotFound, UnknownCustomerioError],
   protocol: CustomerioProtocol,
   retry: Retry.Retry,
@@ -18281,8 +18281,8 @@ export const getInboxPreviewCredits: API.OperationMethod<
   GetInboxPreviewCreditsError,
   CustomerioOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(233, __c29, 1) as any as S.Schema<GetInboxPreviewCreditsRequest>,
-  output: __S(236, __c29, 4) as any as S.Schema<GetInboxPreviewCreditsResponse>,
+  input: __S(3536, __c221, 0) as any as S.Schema<GetInboxPreviewCreditsRequest>,
+  output: __S(3539, __c221, 3) as any as S.Schema<GetInboxPreviewCreditsResponse>,
   errors: [NotFound, UnknownCustomerioError],
   protocol: CustomerioProtocol,
   retry: Retry.Retry,
@@ -18296,8 +18296,8 @@ export const getInboxPreviewJob: API.OperationMethod<
   GetInboxPreviewJobError,
   CustomerioOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(237, __c29, 5) as any as S.Schema<GetInboxPreviewJobRequest>,
-  output: __S(242, __c30, 2) as any as S.Schema<GetInboxPreviewJobResponse>,
+  input: __S(3552, __c222, 0) as any as S.Schema<GetInboxPreviewJobRequest>,
+  output: __S(3556, __c222, 4) as any as S.Schema<GetInboxPreviewJobResponse>,
   errors: [NotFound, UnknownCustomerioError],
   protocol: CustomerioProtocol,
   retry: Retry.Retry,
@@ -18311,8 +18311,8 @@ export const getLiveNotification: API.OperationMethod<
   GetLiveNotificationError,
   CustomerioOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(243, __c30, 3) as any as S.Schema<GetLiveNotificationRequest>,
-  output: __S(245, __c30, 5) as any as S.Schema<GetLiveNotificationResponse>,
+  input: __S(3584, __c224, 0) as any as S.Schema<GetLiveNotificationRequest>,
+  output: __S(3586, __c224, 2) as any as S.Schema<GetLiveNotificationResponse>,
   errors: [BadRequest, NotFound, UnknownCustomerioError],
   protocol: CustomerioProtocol,
   retry: Retry.Retry,
@@ -18326,8 +18326,8 @@ export const getMessage: API.OperationMethod<
   GetMessageError,
   CustomerioOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(246, __c30, 6) as any as S.Schema<GetMessageRequest>,
-  output: __S(248, __c31, 0) as any as S.Schema<GetMessageResponse>,
+  input: __S(3600, __c225, 0) as any as S.Schema<GetMessageRequest>,
+  output: __S(3602, __c225, 2) as any as S.Schema<GetMessageResponse>,
   errors: [NotFound, UnknownCustomerioError],
   protocol: CustomerioProtocol,
   retry: Retry.Retry,
@@ -18341,8 +18341,8 @@ export const getNewsletterLinks: API.OperationMethod<
   GetNewsletterLinksError,
   CustomerioOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(249, __c31, 1) as any as S.Schema<GetNewsletterLinksRequest>,
-  output: __S(51, __c6, 3) as any as S.Schema<GetNewsletterLinksResponse>,
+  input: __S(3632, __c227, 0) as any as S.Schema<GetNewsletterLinksRequest>,
+  output: __S(948, __c59, 4) as any as S.Schema<GetNewsletterLinksResponse>,
   errors: [NotFound, UnknownCustomerioError],
   protocol: CustomerioProtocol,
   retry: Retry.Retry,
@@ -18356,8 +18356,8 @@ export const getNewsletterMetrics: API.OperationMethod<
   GetNewsletterMetricsError,
   CustomerioOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(250, __c31, 2) as any as S.Schema<GetNewsletterMetricsRequest>,
-  output: __S(252, __c31, 4) as any as S.Schema<GetNewsletterMetricsResponse>,
+  input: __S(3648, __c228, 0) as any as S.Schema<GetNewsletterMetricsRequest>,
+  output: __S(3650, __c228, 2) as any as S.Schema<GetNewsletterMetricsResponse>,
   errors: [NotFound, UnknownCustomerioError],
   protocol: CustomerioProtocol,
   retry: Retry.Retry,
@@ -18371,8 +18371,8 @@ export const getNewsletterMsgMeta: API.OperationMethod<
   GetNewsletterMsgMetaError,
   CustomerioOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(253, __c31, 5) as any as S.Schema<GetNewsletterMsgMetaRequest>,
-  output: __S(256, __c32, 0) as any as S.Schema<GetNewsletterMsgMetaResponse>,
+  input: __S(3664, __c229, 0) as any as S.Schema<GetNewsletterMsgMetaRequest>,
+  output: __S(3667, __c229, 3) as any as S.Schema<GetNewsletterMsgMetaResponse>,
   errors: [NotFound, UnknownCustomerioError],
   protocol: CustomerioProtocol,
   retry: Retry.Retry,
@@ -18386,8 +18386,8 @@ export const getNewsletters: API.OperationMethod<
   GetNewslettersError,
   CustomerioOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(257, __c32, 1) as any as S.Schema<GetNewslettersRequest>,
-  output: __S(259, __c32, 3) as any as S.Schema<GetNewslettersResponse>,
+  input: __S(3680, __c230, 0) as any as S.Schema<GetNewslettersRequest>,
+  output: __S(3682, __c230, 2) as any as S.Schema<GetNewslettersResponse>,
   errors: [NotFound, UnknownCustomerioError],
   protocol: CustomerioProtocol,
   retry: Retry.Retry,
@@ -18401,8 +18401,8 @@ export const getNewsletterTestGroups: API.OperationMethod<
   GetNewsletterTestGroupsError,
   CustomerioOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(260, __c32, 4) as any as S.Schema<GetNewsletterTestGroupsRequest>,
-  output: __S(263, __c32, 7) as any as S.Schema<GetNewsletterTestGroupsResponse>,
+  input: __S(3696, __c231, 0) as any as S.Schema<GetNewsletterTestGroupsRequest>,
+  output: __S(3699, __c231, 3) as any as S.Schema<GetNewsletterTestGroupsResponse>,
   errors: [NotFound, UnknownCustomerioError],
   protocol: CustomerioProtocol,
   retry: Retry.Retry,
@@ -18416,8 +18416,8 @@ export const getNewsletterVariant: API.OperationMethod<
   GetNewsletterVariantError,
   CustomerioOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(264, __c33, 0) as any as S.Schema<GetNewsletterVariantRequest>,
-  output: __S(266, __c33, 2) as any as S.Schema<GetNewsletterVariantResponse>,
+  input: __S(3712, __c232, 0) as any as S.Schema<GetNewsletterVariantRequest>,
+  output: __S(3744, __c234, 0) as any as S.Schema<GetNewsletterVariantResponse>,
   errors: [NotFound, UnknownCustomerioError],
   protocol: CustomerioProtocol,
   retry: Retry.Retry,
@@ -18431,8 +18431,8 @@ export const getNewsletterVariantTranslation: API.OperationMethod<
   GetNewsletterVariantTranslationError,
   CustomerioOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(267, __c33, 3) as any as S.Schema<GetNewsletterVariantTranslationRequest>,
-  output: __S(266, __c33, 2) as any as S.Schema<GetNewsletterVariantTranslationResponse>,
+  input: __S(3760, __c235, 0) as any as S.Schema<GetNewsletterVariantTranslationRequest>,
+  output: __S(3744, __c234, 0) as any as S.Schema<GetNewsletterVariantTranslationResponse>,
   errors: [BadRequest, NotFound, UnknownCustomerioError],
   protocol: CustomerioProtocol,
   retry: Retry.Retry,
@@ -18446,8 +18446,8 @@ export const getNewsletterVariantTranslationTest: API.OperationMethod<
   GetNewsletterVariantTranslationTestError,
   CustomerioOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(268, __c33, 4) as any as S.Schema<GetNewsletterVariantTranslationTestRequest>,
-  output: __S(266, __c33, 2) as any as S.Schema<GetNewsletterVariantTranslationTestResponse>,
+  input: __S(3776, __c236, 0) as any as S.Schema<GetNewsletterVariantTranslationTestRequest>,
+  output: __S(3744, __c234, 0) as any as S.Schema<GetNewsletterVariantTranslationTestResponse>,
   errors: [BadRequest, NotFound, UnknownCustomerioError],
   protocol: CustomerioProtocol,
   retry: Retry.Retry,
@@ -18461,8 +18461,8 @@ export const getObjectAttributes: API.OperationMethod<
   GetObjectAttributesError,
   CustomerioOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(269, __c33, 5) as any as S.Schema<GetObjectAttributesRequest>,
-  output: __S(273, __c34, 1) as any as S.Schema<GetObjectAttributesResponse>,
+  input: __S(3792, __c237, 0) as any as S.Schema<GetObjectAttributesRequest>,
+  output: __S(3796, __c237, 4) as any as S.Schema<GetObjectAttributesResponse>,
   errors: [UnknownCustomerioError],
   protocol: CustomerioProtocol,
   retry: Retry.Retry,
@@ -18476,8 +18476,8 @@ export const getObjectRelationships: API.OperationMethod<
   GetObjectRelationshipsError,
   CustomerioOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(274, __c34, 2) as any as S.Schema<GetObjectRelationshipsRequest>,
-  output: __S(278, __c34, 6) as any as S.Schema<GetObjectRelationshipsResponse>,
+  input: __S(3808, __c238, 0) as any as S.Schema<GetObjectRelationshipsRequest>,
+  output: __S(3812, __c238, 4) as any as S.Schema<GetObjectRelationshipsResponse>,
   errors: [UnknownCustomerioError],
   protocol: CustomerioProtocol,
   retry: Retry.Retry,
@@ -18491,8 +18491,8 @@ export const getObjectsFilter: API.OperationMethod<
   GetObjectsFilterError,
   CustomerioOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(279, __c34, 7) as any as S.Schema<GetObjectsFilterRequest>,
-  output: __S(282, __c35, 2) as any as S.Schema<GetObjectsFilterResponse>,
+  input: __S(3840, __c240, 0) as any as S.Schema<GetObjectsFilterRequest>,
+  output: __S(3843, __c240, 3) as any as S.Schema<GetObjectsFilterResponse>,
   errors: [UnknownCustomerioError],
   protocol: CustomerioProtocol,
   retry: Retry.Retry,
@@ -18506,8 +18506,8 @@ export const getObjectTypes: API.OperationMethod<
   GetObjectTypesError,
   CustomerioOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(283, __c35, 3) as any as S.Schema<GetObjectTypesRequest>,
-  output: __S(286, __c35, 6) as any as S.Schema<GetObjectTypesResponse>,
+  input: __S(3856, __c241, 0) as any as S.Schema<GetObjectTypesRequest>,
+  output: __S(3859, __c241, 3) as any as S.Schema<GetObjectTypesResponse>,
   errors: [UnknownCustomerioError],
   protocol: CustomerioProtocol,
   retry: Retry.Retry,
@@ -18521,8 +18521,8 @@ export const getOptouts: API.OperationMethod<
   GetOptoutsError,
   CustomerioOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(287, __c35, 7) as any as S.Schema<GetOptoutsRequest>,
-  output: __S(292, __c36, 4) as any as S.Schema<GetOptoutsResponse>,
+  input: __S(3872, __c242, 0) as any as S.Schema<GetOptoutsRequest>,
+  output: __S(3875, __c242, 3) as any as S.Schema<GetOptoutsResponse>,
   errors: [UnknownCustomerioError],
   protocol: CustomerioProtocol,
   retry: Retry.Retry,
@@ -18536,8 +18536,8 @@ export const getPeopleById: API.OperationMethod<
   GetPeopleByIdError,
   CustomerioOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(293, __c36, 5) as any as S.Schema<GetPeopleByIdRequest>,
-  output: __S(302, __c37, 6) as any as S.Schema<GetPeopleByIdResponse>,
+  input: __S(3904, __c244, 0) as any as S.Schema<GetPeopleByIdRequest>,
+  output: __S(3911, __c244, 7) as any as S.Schema<GetPeopleByIdResponse>,
   errors: [BadRequest, UnknownCustomerioError],
   protocol: CustomerioProtocol,
   retry: Retry.Retry,
@@ -18551,8 +18551,8 @@ export const getPeopleEmail: API.OperationMethod<
   GetPeopleEmailError,
   CustomerioOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(303, __c37, 7) as any as S.Schema<GetPeopleEmailRequest>,
-  output: __S(306, __c38, 2) as any as S.Schema<GetPeopleEmailResponse>,
+  input: __S(3936, __c246, 0) as any as S.Schema<GetPeopleEmailRequest>,
+  output: __S(3937, __c246, 1) as any as S.Schema<GetPeopleEmailResponse>,
   errors: [UnknownCustomerioError],
   protocol: CustomerioProtocol,
   retry: Retry.Retry,
@@ -18566,8 +18566,8 @@ export const getPeopleFilter: API.OperationMethod<
   GetPeopleFilterError,
   CustomerioOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(307, __c38, 3) as any as S.Schema<GetPeopleFilterRequest>,
-  output: __S(308, __c38, 4) as any as S.Schema<GetPeopleFilterResponse>,
+  input: __S(3968, __c248, 0) as any as S.Schema<GetPeopleFilterRequest>,
+  output: __S(3969, __c248, 1) as any as S.Schema<GetPeopleFilterResponse>,
   errors: [UnknownCustomerioError],
   protocol: CustomerioProtocol,
   retry: Retry.Retry,
@@ -18581,8 +18581,8 @@ export const getPersonActivities: API.OperationMethod<
   GetPersonActivitiesError,
   CustomerioOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(309, __c38, 5) as any as S.Schema<GetPersonActivitiesRequest>,
-  output: __S(312, __c39, 0) as any as S.Schema<GetPersonActivitiesResponse>,
+  input: __S(3984, __c249, 0) as any as S.Schema<GetPersonActivitiesRequest>,
+  output: __S(3987, __c249, 3) as any as S.Schema<GetPersonActivitiesResponse>,
   errors: [BadRequest, NotFound, UnknownCustomerioError],
   protocol: CustomerioProtocol,
   retry: Retry.Retry,
@@ -18596,8 +18596,8 @@ export const getPersonAttributes: API.OperationMethod<
   GetPersonAttributesError,
   CustomerioOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(313, __c39, 1) as any as S.Schema<GetPersonAttributesRequest>,
-  output: __S(318, __c39, 6) as any as S.Schema<GetPersonAttributesResponse>,
+  input: __S(4000, __c250, 0) as any as S.Schema<GetPersonAttributesRequest>,
+  output: __S(4005, __c250, 5) as any as S.Schema<GetPersonAttributesResponse>,
   errors: [NotFound, UnknownCustomerioError],
   protocol: CustomerioProtocol,
   retry: Retry.Retry,
@@ -18611,8 +18611,8 @@ export const getPersonMessages: API.OperationMethod<
   GetPersonMessagesError,
   CustomerioOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(319, __c39, 7) as any as S.Schema<GetPersonMessagesRequest>,
-  output: __S(323, __c40, 3) as any as S.Schema<GetPersonMessagesResponse>,
+  input: __S(4016, __c251, 0) as any as S.Schema<GetPersonMessagesRequest>,
+  output: __S(4020, __c251, 4) as any as S.Schema<GetPersonMessagesResponse>,
   errors: [NotFound, UnknownCustomerioError],
   protocol: CustomerioProtocol,
   retry: Retry.Retry,
@@ -18626,8 +18626,8 @@ export const getPersonOptouts: API.OperationMethod<
   GetPersonOptoutsError,
   CustomerioOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(324, __c40, 4) as any as S.Schema<GetPersonOptoutsRequest>,
-  output: __S(325, __c40, 5) as any as S.Schema<GetPersonOptoutsResponse>,
+  input: __S(4032, __c252, 0) as any as S.Schema<GetPersonOptoutsRequest>,
+  output: __S(4033, __c252, 1) as any as S.Schema<GetPersonOptoutsResponse>,
   errors: [NotFound, UnknownCustomerioError],
   protocol: CustomerioProtocol,
   retry: Retry.Retry,
@@ -18641,8 +18641,8 @@ export const getPersonRelationships: API.OperationMethod<
   GetPersonRelationshipsError,
   CustomerioOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(326, __c40, 6) as any as S.Schema<GetPersonRelationshipsRequest>,
-  output: __S(332, __c41, 4) as any as S.Schema<GetPersonRelationshipsResponse>,
+  input: __S(32, __c2, 0) as any as S.Schema<GetPersonRelationshipsRequest>,
+  output: __S(38, __c2, 6) as any as S.Schema<GetPersonRelationshipsResponse>,
   errors: [NotFound, UnknownCustomerioError],
   protocol: CustomerioProtocol,
   retry: Retry.Retry,
@@ -18656,8 +18656,8 @@ export const getPersonSegments: API.OperationMethod<
   GetPersonSegmentsError,
   CustomerioOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(333, __c41, 5) as any as S.Schema<GetPersonSegmentsRequest>,
-  output: __S(336, __c42, 0) as any as S.Schema<GetPersonSegmentsResponse>,
+  input: __S(48, __c3, 0) as any as S.Schema<GetPersonSegmentsRequest>,
+  output: __S(51, __c3, 3) as any as S.Schema<GetPersonSegmentsResponse>,
   errors: [NotFound, UnknownCustomerioError],
   protocol: CustomerioProtocol,
   retry: Retry.Retry,
@@ -18671,8 +18671,8 @@ export const getPersonSubscriptionPreferences: API.OperationMethod<
   GetPersonSubscriptionPreferencesError,
   CustomerioOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(337, __c42, 1) as any as S.Schema<GetPersonSubscriptionPreferencesRequest>,
-  output: __S(342, __c42, 6) as any as S.Schema<GetPersonSubscriptionPreferencesResponse>,
+  input: __S(64, __c4, 0) as any as S.Schema<GetPersonSubscriptionPreferencesRequest>,
+  output: __S(69, __c4, 5) as any as S.Schema<GetPersonSubscriptionPreferencesResponse>,
   errors: [BadRequest, NotFound, UnknownCustomerioError],
   protocol: CustomerioProtocol,
   retry: Retry.Retry,
@@ -18691,8 +18691,8 @@ export const getPublishStatus: API.OperationMethod<
   GetPublishStatusError,
   CustomerioOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(343, __c42, 7) as any as S.Schema<GetPublishStatusRequest>,
-  output: __S(346, __c43, 2) as any as S.Schema<GetPublishStatusResponse>,
+  input: __S(80, __c5, 0) as any as S.Schema<GetPublishStatusRequest>,
+  output: __S(81, __c5, 1) as any as S.Schema<GetPublishStatusResponse>,
   errors: [BadRequest, NotFound, Conflict, UnprocessableEntity, UnknownCustomerioError],
   protocol: CustomerioProtocol,
   retry: Retry.Retry,
@@ -18706,8 +18706,8 @@ export const getSegment: API.OperationMethod<
   GetSegmentError,
   CustomerioOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(347, __c43, 3) as any as S.Schema<GetSegmentRequest>,
-  output: __S(349, __c43, 5) as any as S.Schema<GetSegmentResponse>,
+  input: __S(112, __c7, 0) as any as S.Schema<GetSegmentRequest>,
+  output: __S(114, __c7, 2) as any as S.Schema<GetSegmentResponse>,
   errors: [NotFound, UnknownCustomerioError],
   protocol: CustomerioProtocol,
   retry: Retry.Retry,
@@ -18721,8 +18721,8 @@ export const getSegmentCount: API.OperationMethod<
   GetSegmentCountError,
   CustomerioOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(350, __c43, 6) as any as S.Schema<GetSegmentCountRequest>,
-  output: __S(351, __c43, 7) as any as S.Schema<GetSegmentCountResponse>,
+  input: __S(128, __c8, 0) as any as S.Schema<GetSegmentCountRequest>,
+  output: __S(129, __c8, 1) as any as S.Schema<GetSegmentCountResponse>,
   errors: [NotFound, UnknownCustomerioError],
   protocol: CustomerioProtocol,
   retry: Retry.Retry,
@@ -18736,8 +18736,8 @@ export const getSegmentDependencies: API.OperationMethod<
   GetSegmentDependenciesError,
   CustomerioOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(352, __c44, 0) as any as S.Schema<GetSegmentDependenciesRequest>,
-  output: __S(354, __c44, 2) as any as S.Schema<GetSegmentDependenciesResponse>,
+  input: __S(144, __c9, 0) as any as S.Schema<GetSegmentDependenciesRequest>,
+  output: __S(146, __c9, 2) as any as S.Schema<GetSegmentDependenciesResponse>,
   errors: [NotFound, UnknownCustomerioError],
   protocol: CustomerioProtocol,
   retry: Retry.Retry,
@@ -18751,8 +18751,8 @@ export const getSegmentMembership: API.OperationMethod<
   GetSegmentMembershipError,
   CustomerioOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(355, __c44, 3) as any as S.Schema<GetSegmentMembershipRequest>,
-  output: __S(356, __c44, 4) as any as S.Schema<GetSegmentMembershipResponse>,
+  input: __S(160, __c10, 0) as any as S.Schema<GetSegmentMembershipRequest>,
+  output: __S(161, __c10, 1) as any as S.Schema<GetSegmentMembershipResponse>,
   errors: [NotFound, UnknownCustomerioError],
   protocol: CustomerioProtocol,
   retry: Retry.Retry,
@@ -18766,8 +18766,8 @@ export const getSender: API.OperationMethod<
   GetSenderError,
   CustomerioOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(357, __c44, 5) as any as S.Schema<GetSenderRequest>,
-  output: __S(359, __c44, 7) as any as S.Schema<GetSenderResponse>,
+  input: __S(176, __c11, 0) as any as S.Schema<GetSenderRequest>,
+  output: __S(177, __c11, 1) as any as S.Schema<GetSenderResponse>,
   errors: [NotFound, UnknownCustomerioError],
   protocol: CustomerioProtocol,
   retry: Retry.Retry,
@@ -18781,8 +18781,8 @@ export const getSenderUsage: API.OperationMethod<
   GetSenderUsageError,
   CustomerioOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(360, __c45, 0) as any as S.Schema<GetSenderUsageRequest>,
-  output: __S(361, __c45, 1) as any as S.Schema<GetSenderUsageResponse>,
+  input: __S(208, __c13, 0) as any as S.Schema<GetSenderUsageRequest>,
+  output: __S(209, __c13, 1) as any as S.Schema<GetSenderUsageResponse>,
   errors: [NotFound, UnknownCustomerioError],
   protocol: CustomerioProtocol,
   retry: Retry.Retry,
@@ -18796,8 +18796,8 @@ export const getSubscriptionCenterToken: API.OperationMethod<
   GetSubscriptionCenterTokenError,
   CustomerioOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(362, __c45, 2) as any as S.Schema<GetSubscriptionCenterTokenRequest>,
-  output: __S(363, __c45, 3) as any as S.Schema<GetSubscriptionCenterTokenResponse>,
+  input: __S(272, __c17, 0) as any as S.Schema<GetSubscriptionCenterTokenRequest>,
+  output: __S(273, __c17, 1) as any as S.Schema<GetSubscriptionCenterTokenResponse>,
   errors: [BadRequest, UnknownCustomerioError],
   protocol: CustomerioProtocol,
   retry: Retry.Retry,
@@ -18811,8 +18811,8 @@ export const getSuppression: API.OperationMethod<
   GetSuppressionError,
   CustomerioOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(364, __c45, 4) as any as S.Schema<GetSuppressionRequest>,
-  output: __S(365, __c45, 5) as any as S.Schema<GetSuppressionResponse>,
+  input: __S(288, __c18, 0) as any as S.Schema<GetSuppressionRequest>,
+  output: __S(289, __c18, 1) as any as S.Schema<GetSuppressionResponse>,
   errors: [UnknownCustomerioError],
   protocol: CustomerioProtocol,
   retry: Retry.Retry,
@@ -18826,8 +18826,8 @@ export const getSuppressionByType: API.OperationMethod<
   GetSuppressionByTypeError,
   CustomerioOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(366, __c45, 6) as any as S.Schema<GetSuppressionByTypeRequest>,
-  output: __S(367, __c45, 7) as any as S.Schema<GetSuppressionByTypeResponse>,
+  input: __S(304, __c19, 0) as any as S.Schema<GetSuppressionByTypeRequest>,
+  output: __S(305, __c19, 1) as any as S.Schema<GetSuppressionByTypeResponse>,
   errors: [UnknownCustomerioError],
   protocol: CustomerioProtocol,
   retry: Retry.Retry,
@@ -18841,8 +18841,8 @@ export const getTopics: API.OperationMethod<
   GetTopicsError,
   CustomerioOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(368, __c46, 0) as any as S.Schema<GetTopicsRequest>,
-  output: __S(371, __c46, 3) as any as S.Schema<GetTopicsResponse>,
+  input: __S(320, __c20, 0) as any as S.Schema<GetTopicsRequest>,
+  output: __S(323, __c20, 3) as any as S.Schema<GetTopicsResponse>,
   errors: [UnknownCustomerioError],
   protocol: CustomerioProtocol,
   retry: Retry.Retry,
@@ -18856,8 +18856,8 @@ export const getTransactional: API.OperationMethod<
   GetTransactionalError,
   CustomerioOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(372, __c46, 4) as any as S.Schema<GetTransactionalRequest>,
-  output: __S(374, __c46, 6) as any as S.Schema<GetTransactionalResponse>,
+  input: __S(336, __c21, 0) as any as S.Schema<GetTransactionalRequest>,
+  output: __S(337, __c21, 1) as any as S.Schema<GetTransactionalResponse>,
   errors: [NotFound, UnknownCustomerioError],
   protocol: CustomerioProtocol,
   retry: Retry.Retry,
@@ -18871,8 +18871,8 @@ export const getTransactionalTranslationById: API.OperationMethod<
   GetTransactionalTranslationByIdError,
   CustomerioOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(375, __c46, 7) as any as S.Schema<GetTransactionalTranslationByIdRequest>,
-  output: __S(377, __c47, 1) as any as S.Schema<GetTransactionalTranslationByIdResponse>,
+  input: __S(368, __c23, 0) as any as S.Schema<GetTransactionalTranslationByIdRequest>,
+  output: __S(369, __c23, 1) as any as S.Schema<GetTransactionalTranslationByIdResponse>,
   errors: [BadRequest, NotFound, UnknownCustomerioError],
   protocol: CustomerioProtocol,
   retry: Retry.Retry,
@@ -18886,8 +18886,8 @@ export const getTransactionalVariant: API.OperationMethod<
   GetTransactionalVariantError,
   CustomerioOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(378, __c47, 2) as any as S.Schema<GetTransactionalVariantRequest>,
-  output: __S(380, __c47, 4) as any as S.Schema<GetTransactionalVariantResponse>,
+  input: __S(400, __c25, 0) as any as S.Schema<GetTransactionalVariantRequest>,
+  output: __S(432, __c27, 0) as any as S.Schema<GetTransactionalVariantResponse>,
   errors: [BadRequest, NotFound, UnknownCustomerioError],
   protocol: CustomerioProtocol,
   retry: Retry.Retry,
@@ -18901,8 +18901,8 @@ export const getVariantLinks: API.OperationMethod<
   GetVariantLinksError,
   CustomerioOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(381, __c47, 5) as any as S.Schema<GetVariantLinksRequest>,
-  output: __S(31, __c3, 7) as any as S.Schema<GetVariantLinksResponse>,
+  input: __S(448, __c28, 0) as any as S.Schema<GetVariantLinksRequest>,
+  output: __S(20, __c1, 4) as any as S.Schema<GetVariantLinksResponse>,
   errors: [NotFound, UnknownCustomerioError],
   protocol: CustomerioProtocol,
   retry: Retry.Retry,
@@ -18916,8 +18916,8 @@ export const getVariantMetrics: API.OperationMethod<
   GetVariantMetricsError,
   CustomerioOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(382, __c47, 6) as any as S.Schema<GetVariantMetricsRequest>,
-  output: __S(385, __c48, 1) as any as S.Schema<GetVariantMetricsResponse>,
+  input: __S(464, __c29, 0) as any as S.Schema<GetVariantMetricsRequest>,
+  output: __S(467, __c29, 3) as any as S.Schema<GetVariantMetricsResponse>,
   errors: [NotFound, UnknownCustomerioError],
   protocol: CustomerioProtocol,
   retry: Retry.Retry,
@@ -18931,8 +18931,8 @@ export const getVersion: API.OperationMethod<
   GetVersionError,
   CustomerioOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(386, __c48, 2) as any as S.Schema<GetVersionRequest>,
-  output: __S(393, __c49, 1) as any as S.Schema<GetVersionResponse>,
+  input: __S(480, __c30, 0) as any as S.Schema<GetVersionRequest>,
+  output: __S(486, __c30, 6) as any as S.Schema<GetVersionResponse>,
   errors: [BadRequest, NotFound, UnknownCustomerioError],
   protocol: CustomerioProtocol,
   retry: Retry.Retry,
@@ -18946,8 +18946,8 @@ export const getWebhook: API.OperationMethod<
   GetWebhookError,
   CustomerioOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(394, __c49, 2) as any as S.Schema<GetWebhookRequest>,
-  output: __S(146, __c18, 2) as any as S.Schema<GetWebhookResponse>,
+  input: __S(544, __c34, 0) as any as S.Schema<GetWebhookRequest>,
+  output: __S(2592, __c162, 0) as any as S.Schema<GetWebhookResponse>,
   errors: [NotFound, UnknownCustomerioError],
   protocol: CustomerioProtocol,
   retry: Retry.Retry,
@@ -18961,8 +18961,8 @@ export const Import: API.OperationMethod<
   ImportError,
   CustomerioOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(395, __c49, 3) as any as S.Schema<ImportRequest>,
-  output: __S(397, __c49, 5) as any as S.Schema<ImportResponse>,
+  input: __S(560, __c35, 0) as any as S.Schema<ImportRequest>,
+  output: __S(562, __c35, 2) as any as S.Schema<ImportResponse>,
   errors: [UnknownCustomerioError],
   protocol: CustomerioProtocol,
   retry: Retry.Retry,
@@ -18976,8 +18976,8 @@ export const linkEmail: API.OperationMethod<
   LinkEmailError,
   CustomerioOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(399, __c49, 7) as any as S.Schema<LinkEmailRequest>,
-  output: __S(400, __c50, 0) as any as S.Schema<LinkEmailResponse>,
+  input: __S(577, __c36, 1) as any as S.Schema<LinkEmailRequest>,
+  output: __S(578, __c36, 2) as any as S.Schema<LinkEmailResponse>,
   errors: [BadRequest, NotFound, Conflict, UnknownCustomerioError],
   protocol: CustomerioProtocol,
   retry: Retry.Retry,
@@ -18991,8 +18991,8 @@ export const listActivities: API.OperationMethod<
   ListActivitiesError,
   CustomerioOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(401, __c50, 1) as any as S.Schema<ListActivitiesRequest>,
-  output: __S(404, __c50, 4) as any as S.Schema<ListActivitiesResponse>,
+  input: __S(592, __c37, 0) as any as S.Schema<ListActivitiesRequest>,
+  output: __S(595, __c37, 3) as any as S.Schema<ListActivitiesResponse>,
   errors: [UnknownCustomerioError],
   protocol: CustomerioProtocol,
   retry: Retry.Retry,
@@ -19006,8 +19006,8 @@ export const listAssetFolders: API.OperationMethod<
   ListAssetFoldersError,
   CustomerioOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(405, __c50, 5) as any as S.Schema<ListAssetFoldersRequest>,
-  output: __S(410, __c51, 2) as any as S.Schema<ListAssetFoldersResponse>,
+  input: __S(608, __c38, 0) as any as S.Schema<ListAssetFoldersRequest>,
+  output: __S(610, __c38, 2) as any as S.Schema<ListAssetFoldersResponse>,
   errors: [BadRequest, NotFound, UnknownCustomerioError],
   protocol: CustomerioProtocol,
   retry: Retry.Retry,
@@ -19021,8 +19021,8 @@ export const listAssets: API.OperationMethod<
   ListAssetsError,
   CustomerioOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(411, __c51, 3) as any as S.Schema<ListAssetsRequest>,
-  output: __S(413, __c51, 5) as any as S.Schema<ListAssetsResponse>,
+  input: __S(656, __c41, 0) as any as S.Schema<ListAssetsRequest>,
+  output: __S(658, __c41, 2) as any as S.Schema<ListAssetsResponse>,
   errors: [BadRequest, NotFound, UnknownCustomerioError],
   protocol: CustomerioProtocol,
   retry: Retry.Retry,
@@ -19036,8 +19036,8 @@ export const listBroadcasts: API.OperationMethod<
   ListBroadcastsError,
   CustomerioOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(414, __c51, 6) as any as S.Schema<ListBroadcastsRequest>,
-  output: __S(417, __c52, 1) as any as S.Schema<ListBroadcastsResponse>,
+  input: __S(672, __c42, 0) as any as S.Schema<ListBroadcastsRequest>,
+  output: __S(675, __c42, 3) as any as S.Schema<ListBroadcastsResponse>,
   errors: [UnknownCustomerioError],
   protocol: CustomerioProtocol,
   retry: Retry.Retry,
@@ -19051,8 +19051,8 @@ export const listBroadcastTriggers: API.OperationMethod<
   ListBroadcastTriggersError,
   CustomerioOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(418, __c52, 2) as any as S.Schema<ListBroadcastTriggersRequest>,
-  output: __S(420, __c52, 4) as any as S.Schema<ListBroadcastTriggersResponse>,
+  input: __S(688, __c43, 0) as any as S.Schema<ListBroadcastTriggersRequest>,
+  output: __S(690, __c43, 2) as any as S.Schema<ListBroadcastTriggersResponse>,
   errors: [BadRequest, NotFound, UnknownCustomerioError],
   protocol: CustomerioProtocol,
   retry: Retry.Retry,
@@ -19066,8 +19066,8 @@ export const listCampaignActions: API.OperationMethod<
   ListCampaignActionsError,
   CustomerioOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(421, __c52, 5) as any as S.Schema<ListCampaignActionsRequest>,
-  output: __S(423, __c52, 7) as any as S.Schema<ListCampaignActionsResponse>,
+  input: __S(704, __c44, 0) as any as S.Schema<ListCampaignActionsRequest>,
+  output: __S(706, __c44, 2) as any as S.Schema<ListCampaignActionsResponse>,
   errors: [BadRequest, NotFound, UnknownCustomerioError],
   protocol: CustomerioProtocol,
   retry: Retry.Retry,
@@ -19081,8 +19081,8 @@ export const listCampaigns: API.OperationMethod<
   ListCampaignsError,
   CustomerioOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(424, __c53, 0) as any as S.Schema<ListCampaignsRequest>,
-  output: __S(426, __c53, 2) as any as S.Schema<ListCampaignsResponse>,
+  input: __S(720, __c45, 0) as any as S.Schema<ListCampaignsRequest>,
+  output: __S(722, __c45, 2) as any as S.Schema<ListCampaignsResponse>,
   errors: [UnknownCustomerioError],
   protocol: CustomerioProtocol,
   retry: Retry.Retry,
@@ -19096,8 +19096,8 @@ export const listComponents: API.OperationMethod<
   ListComponentsError,
   CustomerioOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(427, __c53, 3) as any as S.Schema<ListComponentsRequest>,
-  output: __S(432, __c54, 0) as any as S.Schema<ListComponentsResponse>,
+  input: __S(752, __c47, 0) as any as S.Schema<ListComponentsRequest>,
+  output: __S(755, __c47, 3) as any as S.Schema<ListComponentsResponse>,
   errors: [BadRequest, NotFound, UnknownCustomerioError],
   protocol: CustomerioProtocol,
   retry: Retry.Retry,
@@ -19111,8 +19111,8 @@ export const listEmails: API.OperationMethod<
   ListEmailsError,
   CustomerioOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(433, __c54, 1) as any as S.Schema<ListEmailsRequest>,
-  output: __S(436, __c54, 4) as any as S.Schema<ListEmailsResponse>,
+  input: __S(784, __c49, 0) as any as S.Schema<ListEmailsRequest>,
+  output: __S(787, __c49, 3) as any as S.Schema<ListEmailsResponse>,
   errors: [BadRequest, NotFound, UnknownCustomerioError],
   protocol: CustomerioProtocol,
   retry: Retry.Retry,
@@ -19126,8 +19126,8 @@ export const listEmailTranslations: API.OperationMethod<
   ListEmailTranslationsError,
   CustomerioOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(437, __c54, 5) as any as S.Schema<ListEmailTranslationsRequest>,
-  output: __S(443, __c55, 3) as any as S.Schema<ListEmailTranslationsResponse>,
+  input: __S(800, __c50, 0) as any as S.Schema<ListEmailTranslationsRequest>,
+  output: __S(806, __c50, 6) as any as S.Schema<ListEmailTranslationsResponse>,
   errors: [NotFound, UnknownCustomerioError],
   protocol: CustomerioProtocol,
   retry: Retry.Retry,
@@ -19141,8 +19141,8 @@ export const listExports: API.OperationMethod<
   ListExportsError,
   CustomerioOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(444, __c55, 4) as any as S.Schema<ListExportsRequest>,
-  output: __S(446, __c55, 6) as any as S.Schema<ListExportsResponse>,
+  input: __S(816, __c51, 0) as any as S.Schema<ListExportsRequest>,
+  output: __S(818, __c51, 2) as any as S.Schema<ListExportsResponse>,
   errors: [UnknownCustomerioError],
   protocol: CustomerioProtocol,
   retry: Retry.Retry,
@@ -19156,8 +19156,8 @@ export const listFolders: API.OperationMethod<
   ListFoldersError,
   CustomerioOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(447, __c55, 7) as any as S.Schema<ListFoldersRequest>,
-  output: __S(448, __c56, 0) as any as S.Schema<ListFoldersResponse>,
+  input: __S(832, __c52, 0) as any as S.Schema<ListFoldersRequest>,
+  output: __S(833, __c52, 1) as any as S.Schema<ListFoldersResponse>,
   errors: [BadRequest, NotFound, UnknownCustomerioError],
   protocol: CustomerioProtocol,
   retry: Retry.Retry,
@@ -19171,8 +19171,8 @@ export const listInboxPreviewClients: API.OperationMethod<
   ListInboxPreviewClientsError,
   CustomerioOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(449, __c56, 1) as any as S.Schema<ListInboxPreviewClientsRequest>,
-  output: __S(452, __c56, 4) as any as S.Schema<ListInboxPreviewClientsResponse>,
+  input: __S(848, __c53, 0) as any as S.Schema<ListInboxPreviewClientsRequest>,
+  output: __S(851, __c53, 3) as any as S.Schema<ListInboxPreviewClientsResponse>,
   errors: [NotFound, UnknownCustomerioError],
   protocol: CustomerioProtocol,
   retry: Retry.Retry,
@@ -19186,8 +19186,8 @@ export const listInboxPreviewJobs: API.OperationMethod<
   ListInboxPreviewJobsError,
   CustomerioOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(453, __c56, 5) as any as S.Schema<ListInboxPreviewJobsRequest>,
-  output: __S(458, __c57, 2) as any as S.Schema<ListInboxPreviewJobsResponse>,
+  input: __S(864, __c54, 0) as any as S.Schema<ListInboxPreviewJobsRequest>,
+  output: __S(869, __c54, 5) as any as S.Schema<ListInboxPreviewJobsResponse>,
   errors: [BadRequest, NotFound, UnknownCustomerioError],
   protocol: CustomerioProtocol,
   retry: Retry.Retry,
@@ -19201,8 +19201,8 @@ export const listMessages: API.OperationMethod<
   ListMessagesError,
   CustomerioOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(459, __c57, 3) as any as S.Schema<ListMessagesRequest>,
-  output: __S(462, __c57, 6) as any as S.Schema<ListMessagesResponse>,
+  input: __S(880, __c55, 0) as any as S.Schema<ListMessagesRequest>,
+  output: __S(883, __c55, 3) as any as S.Schema<ListMessagesResponse>,
   errors: [BadRequest, UnknownCustomerioError],
   protocol: CustomerioProtocol,
   retry: Retry.Retry,
@@ -19216,8 +19216,8 @@ export const listNewsletters: API.OperationMethod<
   ListNewslettersError,
   CustomerioOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(463, __c57, 7) as any as S.Schema<ListNewslettersRequest>,
-  output: __S(466, __c58, 2) as any as S.Schema<ListNewslettersResponse>,
+  input: __S(896, __c56, 0) as any as S.Schema<ListNewslettersRequest>,
+  output: __S(899, __c56, 3) as any as S.Schema<ListNewslettersResponse>,
   errors: [UnknownCustomerioError],
   protocol: CustomerioProtocol,
   retry: Retry.Retry,
@@ -19231,8 +19231,8 @@ export const listNewsletterVariants: API.OperationMethod<
   ListNewsletterVariantsError,
   CustomerioOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(467, __c58, 3) as any as S.Schema<ListNewsletterVariantsRequest>,
-  output: __S(469, __c58, 5) as any as S.Schema<ListNewsletterVariantsResponse>,
+  input: __S(912, __c57, 0) as any as S.Schema<ListNewsletterVariantsRequest>,
+  output: __S(914, __c57, 2) as any as S.Schema<ListNewsletterVariantsResponse>,
   errors: [NotFound, UnknownCustomerioError],
   protocol: CustomerioProtocol,
   retry: Retry.Retry,
@@ -19246,8 +19246,8 @@ export const listSegments: API.OperationMethod<
   ListSegmentsError,
   CustomerioOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(470, __c58, 6) as any as S.Schema<ListSegmentsRequest>,
-  output: __S(473, __c59, 1) as any as S.Schema<ListSegmentsResponse>,
+  input: __S(960, __c60, 0) as any as S.Schema<ListSegmentsRequest>,
+  output: __S(963, __c60, 3) as any as S.Schema<ListSegmentsResponse>,
   errors: [UnknownCustomerioError],
   protocol: CustomerioProtocol,
   retry: Retry.Retry,
@@ -19261,8 +19261,8 @@ export const listSenders: API.OperationMethod<
   ListSendersError,
   CustomerioOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(474, __c59, 2) as any as S.Schema<ListSendersRequest>,
-  output: __S(476, __c59, 4) as any as S.Schema<ListSendersResponse>,
+  input: __S(976, __c61, 0) as any as S.Schema<ListSendersRequest>,
+  output: __S(978, __c61, 2) as any as S.Schema<ListSendersResponse>,
   errors: [UnknownCustomerioError],
   protocol: CustomerioProtocol,
   retry: Retry.Retry,
@@ -19276,8 +19276,8 @@ export const listSnippets: API.OperationMethod<
   ListSnippetsError,
   CustomerioOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(477, __c59, 5) as any as S.Schema<ListSnippetsRequest>,
-  output: __S(479, __c59, 7) as any as S.Schema<ListSnippetsResponse>,
+  input: __S(992, __c62, 0) as any as S.Schema<ListSnippetsRequest>,
+  output: __S(994, __c62, 2) as any as S.Schema<ListSnippetsResponse>,
   errors: [UnknownCustomerioError],
   protocol: CustomerioProtocol,
   retry: Retry.Retry,
@@ -19291,8 +19291,8 @@ export const listTransactional: API.OperationMethod<
   ListTransactionalError,
   CustomerioOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(480, __c60, 0) as any as S.Schema<ListTransactionalRequest>,
-  output: __S(482, __c60, 2) as any as S.Schema<ListTransactionalResponse>,
+  input: __S(1008, __c63, 0) as any as S.Schema<ListTransactionalRequest>,
+  output: __S(1010, __c63, 2) as any as S.Schema<ListTransactionalResponse>,
   errors: [UnknownCustomerioError],
   protocol: CustomerioProtocol,
   retry: Retry.Retry,
@@ -19306,8 +19306,8 @@ export const listTransactionalVariants: API.OperationMethod<
   ListTransactionalVariantsError,
   CustomerioOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(483, __c60, 3) as any as S.Schema<ListTransactionalVariantsRequest>,
-  output: __S(484, __c60, 4) as any as S.Schema<ListTransactionalVariantsResponse>,
+  input: __S(1024, __c64, 0) as any as S.Schema<ListTransactionalVariantsRequest>,
+  output: __S(1025, __c64, 1) as any as S.Schema<ListTransactionalVariantsResponse>,
   errors: [BadRequest, NotFound, UnknownCustomerioError],
   protocol: CustomerioProtocol,
   retry: Retry.Retry,
@@ -19321,8 +19321,8 @@ export const listVersions: API.OperationMethod<
   ListVersionsError,
   CustomerioOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(485, __c60, 5) as any as S.Schema<ListVersionsRequest>,
-  output: __S(487, __c60, 7) as any as S.Schema<ListVersionsResponse>,
+  input: __S(1040, __c65, 0) as any as S.Schema<ListVersionsRequest>,
+  output: __S(1042, __c65, 2) as any as S.Schema<ListVersionsResponse>,
   errors: [BadRequest, NotFound, UnknownCustomerioError],
   protocol: CustomerioProtocol,
   retry: Retry.Retry,
@@ -19336,8 +19336,8 @@ export const listWebhooks: API.OperationMethod<
   ListWebhooksError,
   CustomerioOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(488, __c61, 0) as any as S.Schema<ListWebhooksRequest>,
-  output: __S(491, __c61, 3) as any as S.Schema<ListWebhooksResponse>,
+  input: __S(1056, __c66, 0) as any as S.Schema<ListWebhooksRequest>,
+  output: __S(1059, __c66, 3) as any as S.Schema<ListWebhooksResponse>,
   errors: [UnknownCustomerioError],
   protocol: CustomerioProtocol,
   retry: Retry.Retry,
@@ -19351,8 +19351,8 @@ export const listWorkspaces: API.OperationMethod<
   ListWorkspacesError,
   CustomerioOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(492, __c61, 4) as any as S.Schema<ListWorkspacesRequest>,
-  output: __S(495, __c61, 7) as any as S.Schema<ListWorkspacesResponse>,
+  input: __S(1072, __c67, 0) as any as S.Schema<ListWorkspacesRequest>,
+  output: __S(1075, __c67, 3) as any as S.Schema<ListWorkspacesResponse>,
   errors: [UnknownCustomerioError],
   protocol: CustomerioProtocol,
   retry: Retry.Retry,
@@ -19366,8 +19366,8 @@ export const postSuppression: API.OperationMethod<
   PostSuppressionError,
   CustomerioOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(496, __c62, 0) as any as S.Schema<PostSuppressionRequest>,
-  output: __S(497, __c62, 1) as any as S.Schema<PostSuppressionResponse>,
+  input: __S(1088, __c68, 0) as any as S.Schema<PostSuppressionRequest>,
+  output: __S(1089, __c68, 1) as any as S.Schema<PostSuppressionResponse>,
   errors: [UnknownCustomerioError],
   protocol: CustomerioProtocol,
   retry: Retry.Retry,
@@ -19381,8 +19381,8 @@ export const previewEmail: API.OperationMethod<
   PreviewEmailError,
   CustomerioOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(498, __c62, 2) as any as S.Schema<PreviewEmailRequest>,
-  output: __S(504, __c63, 0) as any as S.Schema<PreviewEmailResponse>,
+  input: __S(1104, __c69, 0) as any as S.Schema<PreviewEmailRequest>,
+  output: __S(1110, __c69, 6) as any as S.Schema<PreviewEmailResponse>,
   errors: [BadRequest, NotFound, UnknownCustomerioError],
   protocol: CustomerioProtocol,
   retry: Retry.Retry,
@@ -19401,8 +19401,8 @@ export const publishEmail: API.OperationMethod<
   PublishEmailError,
   CustomerioOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(505, __c63, 1) as any as S.Schema<PublishEmailRequest>,
-  output: __S(506, __c63, 2) as any as S.Schema<PublishEmailResponse>,
+  input: __S(1168, __c73, 0) as any as S.Schema<PublishEmailRequest>,
+  output: __S(1169, __c73, 1) as any as S.Schema<PublishEmailResponse>,
   errors: [BadRequest, NotFound, Conflict, UnprocessableEntity, UnknownCustomerioError],
   protocol: CustomerioProtocol,
   retry: Retry.Retry,
@@ -19416,8 +19416,8 @@ export const renderEmail: API.OperationMethod<
   RenderEmailError,
   CustomerioOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(507, __c63, 3) as any as S.Schema<RenderEmailRequest>,
-  output: __S(508, __c63, 4) as any as S.Schema<RenderEmailResponse>,
+  input: __S(1184, __c74, 0) as any as S.Schema<RenderEmailRequest>,
+  output: __S(1185, __c74, 1) as any as S.Schema<RenderEmailResponse>,
   errors: [BadRequest, NotFound, UnknownCustomerioError],
   protocol: CustomerioProtocol,
   retry: Retry.Retry,
@@ -19431,8 +19431,8 @@ export const restoreVersion: API.OperationMethod<
   RestoreVersionError,
   CustomerioOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(509, __c63, 5) as any as S.Schema<RestoreVersionRequest>,
-  output: __S(510, __c63, 6) as any as S.Schema<RestoreVersionResponse>,
+  input: __S(1200, __c75, 0) as any as S.Schema<RestoreVersionRequest>,
+  output: __S(1201, __c75, 1) as any as S.Schema<RestoreVersionResponse>,
   errors: [BadRequest, NotFound, UnknownCustomerioError],
   protocol: CustomerioProtocol,
   retry: Retry.Retry,
@@ -19446,8 +19446,8 @@ export const reviewEmail: API.OperationMethod<
   ReviewEmailError,
   CustomerioOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(511, __c63, 7) as any as S.Schema<ReviewEmailRequest>,
-  output: __S(518, __c64, 6) as any as S.Schema<ReviewEmailResponse>,
+  input: __S(1216, __c76, 0) as any as S.Schema<ReviewEmailRequest>,
+  output: __S(1223, __c76, 7) as any as S.Schema<ReviewEmailResponse>,
   errors: [BadRequest, NotFound, UnknownCustomerioError],
   protocol: CustomerioProtocol,
   retry: Retry.Retry,
@@ -19461,8 +19461,8 @@ export const saveVersion: API.OperationMethod<
   SaveVersionError,
   CustomerioOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(519, __c64, 7) as any as S.Schema<SaveVersionRequest>,
-  output: __S(520, __c65, 0) as any as S.Schema<SaveVersionResponse>,
+  input: __S(1232, __c77, 0) as any as S.Schema<SaveVersionRequest>,
+  output: __S(1233, __c77, 1) as any as S.Schema<SaveVersionResponse>,
   errors: [BadRequest, NotFound, UnknownCustomerioError],
   protocol: CustomerioProtocol,
   retry: Retry.Retry,
@@ -19480,8 +19480,8 @@ export const scheduleNewsletter: API.OperationMethod<
   ScheduleNewsletterError,
   CustomerioOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(521, __c65, 1) as any as S.Schema<ScheduleNewsletterRequest>,
-  output: __S(523, __c65, 3) as any as S.Schema<ScheduleNewsletterResponse>,
+  input: __S(1248, __c78, 0) as any as S.Schema<ScheduleNewsletterRequest>,
+  output: __S(1250, __c78, 2) as any as S.Schema<ScheduleNewsletterResponse>,
   errors: [BadRequest, NotFound, UnprocessableEntity, UnknownCustomerioError],
   protocol: CustomerioProtocol,
   retry: Retry.Retry,
@@ -19495,8 +19495,8 @@ export const sendEmail: API.OperationMethod<
   SendEmailError,
   CustomerioOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(525, __c65, 5) as any as S.Schema<SendEmailRequest>,
-  output: __S(526, __c65, 6) as any as S.Schema<SendEmailResponse>,
+  input: __S(1265, __c79, 1) as any as S.Schema<SendEmailRequest>,
+  output: __S(1280, __c80, 0) as any as S.Schema<SendEmailResponse>,
   errors: [BadRequest, Forbidden, UnknownCustomerioError],
   protocol: CustomerioProtocol,
   retry: Retry.Retry,
@@ -19510,8 +19510,8 @@ export const sendInApp: API.OperationMethod<
   SendInAppError,
   CustomerioOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(527, __c65, 7) as any as S.Schema<SendInAppRequest>,
-  output: __S(526, __c65, 6) as any as S.Schema<SendInAppResponse>,
+  input: __S(1296, __c81, 0) as any as S.Schema<SendInAppRequest>,
+  output: __S(1280, __c80, 0) as any as S.Schema<SendInAppResponse>,
   errors: [BadRequest, Forbidden, UnknownCustomerioError],
   protocol: CustomerioProtocol,
   retry: Retry.Retry,
@@ -19525,8 +19525,8 @@ export const sendInboxMessage: API.OperationMethod<
   SendInboxMessageError,
   CustomerioOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(528, __c66, 0) as any as S.Schema<SendInboxMessageRequest>,
-  output: __S(526, __c65, 6) as any as S.Schema<SendInboxMessageResponse>,
+  input: __S(1312, __c82, 0) as any as S.Schema<SendInboxMessageRequest>,
+  output: __S(1280, __c80, 0) as any as S.Schema<SendInboxMessageResponse>,
   errors: [BadRequest, Forbidden, UnknownCustomerioError],
   protocol: CustomerioProtocol,
   retry: Retry.Retry,
@@ -19540,8 +19540,8 @@ export const sendNewsletter: API.OperationMethod<
   SendNewsletterError,
   CustomerioOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(529, __c66, 1) as any as S.Schema<SendNewsletterRequest>,
-  output: __S(531, __c66, 3) as any as S.Schema<SendNewsletterResponse>,
+  input: __S(1328, __c83, 0) as any as S.Schema<SendNewsletterRequest>,
+  output: __S(1330, __c83, 2) as any as S.Schema<SendNewsletterResponse>,
   errors: [BadRequest, NotFound, UnprocessableEntity, UnknownCustomerioError],
   protocol: CustomerioProtocol,
   retry: Retry.Retry,
@@ -19555,8 +19555,8 @@ export const sendPush: API.OperationMethod<
   SendPushError,
   CustomerioOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(540, __c67, 4) as any as S.Schema<SendPushRequest>,
-  output: __S(526, __c65, 6) as any as S.Schema<SendPushResponse>,
+  input: __S(1368, __c85, 8) as any as S.Schema<SendPushRequest>,
+  output: __S(1280, __c80, 0) as any as S.Schema<SendPushResponse>,
   errors: [BadRequest, Forbidden, UnknownCustomerioError],
   protocol: CustomerioProtocol,
   retry: Retry.Retry,
@@ -19570,8 +19570,8 @@ export const sendSMS: API.OperationMethod<
   SendSMSError,
   CustomerioOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(541, __c67, 5) as any as S.Schema<SendSMSRequest>,
-  output: __S(526, __c65, 6) as any as S.Schema<SendSMSResponse>,
+  input: __S(1376, __c86, 0) as any as S.Schema<SendSMSRequest>,
+  output: __S(1280, __c80, 0) as any as S.Schema<SendSMSResponse>,
   errors: [BadRequest, Forbidden, UnknownCustomerioError],
   protocol: CustomerioProtocol,
   retry: Retry.Retry,
@@ -19585,8 +19585,8 @@ export const sendWhatsApp: API.OperationMethod<
   SendWhatsAppError,
   CustomerioOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(542, __c67, 6) as any as S.Schema<SendWhatsAppRequest>,
-  output: __S(526, __c65, 6) as any as S.Schema<SendWhatsAppResponse>,
+  input: __S(1392, __c87, 0) as any as S.Schema<SendWhatsAppRequest>,
+  output: __S(1280, __c80, 0) as any as S.Schema<SendWhatsAppResponse>,
   errors: [BadRequest, Forbidden, UnknownCustomerioError],
   protocol: CustomerioProtocol,
   retry: Retry.Retry,
@@ -19600,8 +19600,8 @@ export const startLiveNotification: API.OperationMethod<
   StartLiveNotificationError,
   CustomerioOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(544, __c68, 0) as any as S.Schema<StartLiveNotificationRequest>,
-  output: __S(169, __c21, 1) as any as S.Schema<StartLiveNotificationResponse>,
+  input: __S(1409, __c88, 1) as any as S.Schema<StartLiveNotificationRequest>,
+  output: __S(2978, __c186, 2) as any as S.Schema<StartLiveNotificationResponse>,
   errors: [BadRequest, NotFound, UnknownCustomerioError],
   protocol: CustomerioProtocol,
   retry: Retry.Retry,
@@ -19621,8 +19621,8 @@ export const submitInboxPreview: API.OperationMethod<
   SubmitInboxPreviewError,
   CustomerioOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(545, __c68, 1) as any as S.Schema<SubmitInboxPreviewRequest>,
-  output: __S(546, __c68, 2) as any as S.Schema<SubmitInboxPreviewResponse>,
+  input: __S(1424, __c89, 0) as any as S.Schema<SubmitInboxPreviewRequest>,
+  output: __S(1425, __c89, 1) as any as S.Schema<SubmitInboxPreviewResponse>,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnprocessableEntity, UnknownCustomerioError],
   protocol: CustomerioProtocol,
   retry: Retry.Retry,
@@ -19636,8 +19636,8 @@ export const testSendEmail: API.OperationMethod<
   TestSendEmailError,
   CustomerioOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(547, __c68, 3) as any as S.Schema<TestSendEmailRequest>,
-  output: __S(548, __c68, 4) as any as S.Schema<TestSendEmailResponse>,
+  input: __S(1440, __c90, 0) as any as S.Schema<TestSendEmailRequest>,
+  output: __S(1441, __c90, 1) as any as S.Schema<TestSendEmailResponse>,
   errors: [BadRequest, NotFound, UnprocessableEntity, UnknownCustomerioError],
   protocol: CustomerioProtocol,
   retry: Retry.Retry,
@@ -19651,8 +19651,8 @@ export const transactionalLinks: API.OperationMethod<
   TransactionalLinksError,
   CustomerioOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(549, __c68, 5) as any as S.Schema<TransactionalLinksRequest>,
-  output: __S(51, __c6, 3) as any as S.Schema<TransactionalLinksResponse>,
+  input: __S(1456, __c91, 0) as any as S.Schema<TransactionalLinksRequest>,
+  output: __S(948, __c59, 4) as any as S.Schema<TransactionalLinksResponse>,
   errors: [NotFound, UnknownCustomerioError],
   protocol: CustomerioProtocol,
   retry: Retry.Retry,
@@ -19666,8 +19666,8 @@ export const transactionalMessages: API.OperationMethod<
   TransactionalMessagesError,
   CustomerioOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(550, __c68, 6) as any as S.Schema<TransactionalMessagesRequest>,
-  output: __S(553, __c69, 1) as any as S.Schema<TransactionalMessagesResponse>,
+  input: __S(1472, __c92, 0) as any as S.Schema<TransactionalMessagesRequest>,
+  output: __S(1475, __c92, 3) as any as S.Schema<TransactionalMessagesResponse>,
   errors: [NotFound, UnknownCustomerioError],
   protocol: CustomerioProtocol,
   retry: Retry.Retry,
@@ -19681,8 +19681,8 @@ export const transactionalMetrics: API.OperationMethod<
   TransactionalMetricsError,
   CustomerioOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(554, __c69, 2) as any as S.Schema<TransactionalMetricsRequest>,
-  output: __S(555, __c69, 3) as any as S.Schema<TransactionalMetricsResponse>,
+  input: __S(1488, __c93, 0) as any as S.Schema<TransactionalMetricsRequest>,
+  output: __S(1489, __c93, 1) as any as S.Schema<TransactionalMetricsResponse>,
   errors: [NotFound, UnknownCustomerioError],
   protocol: CustomerioProtocol,
   retry: Retry.Retry,
@@ -19696,8 +19696,8 @@ export const triggerBroadcast: API.OperationMethod<
   TriggerBroadcastError,
   CustomerioOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(556, __c69, 4) as any as S.Schema<TriggerBroadcastRequest>,
-  output: __S(557, __c69, 5) as any as S.Schema<TriggerBroadcastResponse>,
+  input: __S(1504, __c94, 0) as any as S.Schema<TriggerBroadcastRequest>,
+  output: __S(1505, __c94, 1) as any as S.Schema<TriggerBroadcastResponse>,
   errors: [NotFound, UnprocessableEntity, UnknownCustomerioError],
   protocol: CustomerioProtocol,
   retry: Retry.Retry,
@@ -19711,8 +19711,8 @@ export const updateAsset: API.OperationMethod<
   UpdateAssetError,
   CustomerioOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(558, __c69, 6) as any as S.Schema<UpdateAssetRequest>,
-  output: __S(148, __c18, 4) as any as S.Schema<UpdateAssetResponse>,
+  input: __S(1536, __c96, 0) as any as S.Schema<UpdateAssetRequest>,
+  output: __S(2624, __c164, 0) as any as S.Schema<UpdateAssetResponse>,
   errors: [BadRequest, NotFound, Conflict, UnknownCustomerioError],
   protocol: CustomerioProtocol,
   retry: Retry.Retry,
@@ -19726,8 +19726,8 @@ export const updateAssetFolder: API.OperationMethod<
   UpdateAssetFolderError,
   CustomerioOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(559, __c69, 7) as any as S.Schema<UpdateAssetFolderRequest>,
-  output: __S(148, __c18, 4) as any as S.Schema<UpdateAssetFolderResponse>,
+  input: __S(1552, __c97, 0) as any as S.Schema<UpdateAssetFolderRequest>,
+  output: __S(2624, __c164, 0) as any as S.Schema<UpdateAssetFolderResponse>,
   errors: [BadRequest, NotFound, Conflict, UnknownCustomerioError],
   protocol: CustomerioProtocol,
   retry: Retry.Retry,
@@ -19741,8 +19741,8 @@ export const updateAttributeMetadata: API.OperationMethod<
   UpdateAttributeMetadataError,
   CustomerioOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(562, __c70, 2) as any as S.Schema<UpdateAttributeMetadataRequest>,
-  output: __S(563, __c70, 3) as any as S.Schema<UpdateAttributeMetadataResponse>,
+  input: __S(1570, __c98, 2) as any as S.Schema<UpdateAttributeMetadataRequest>,
+  output: __S(1571, __c98, 3) as any as S.Schema<UpdateAttributeMetadataResponse>,
   errors: [BadRequest, UnprocessableEntity, UnknownCustomerioError],
   protocol: CustomerioProtocol,
   retry: Retry.Retry,
@@ -19756,8 +19756,8 @@ export const updateBroadcastAction: API.OperationMethod<
   UpdateBroadcastActionError,
   CustomerioOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(564, __c70, 4) as any as S.Schema<UpdateBroadcastActionRequest>,
-  output: __S(565, __c70, 5) as any as S.Schema<UpdateBroadcastActionResponse>,
+  input: __S(1584, __c99, 0) as any as S.Schema<UpdateBroadcastActionRequest>,
+  output: __S(1585, __c99, 1) as any as S.Schema<UpdateBroadcastActionResponse>,
   errors: [BadRequest, NotFound, UnknownCustomerioError],
   protocol: CustomerioProtocol,
   retry: Retry.Retry,
@@ -19771,8 +19771,8 @@ export const updateBroadcastActionLanguage: API.OperationMethod<
   UpdateBroadcastActionLanguageError,
   CustomerioOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(566, __c70, 6) as any as S.Schema<UpdateBroadcastActionLanguageRequest>,
-  output: __S(567, __c70, 7) as any as S.Schema<UpdateBroadcastActionLanguageResponse>,
+  input: __S(1600, __c100, 0) as any as S.Schema<UpdateBroadcastActionLanguageRequest>,
+  output: __S(1601, __c100, 1) as any as S.Schema<UpdateBroadcastActionLanguageResponse>,
   errors: [BadRequest, NotFound, UnknownCustomerioError],
   protocol: CustomerioProtocol,
   retry: Retry.Retry,
@@ -19786,8 +19786,8 @@ export const updateCampaignAction: API.OperationMethod<
   UpdateCampaignActionError,
   CustomerioOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(568, __c71, 0) as any as S.Schema<UpdateCampaignActionRequest>,
-  output: __S(569, __c71, 1) as any as S.Schema<UpdateCampaignActionResponse>,
+  input: __S(1616, __c101, 0) as any as S.Schema<UpdateCampaignActionRequest>,
+  output: __S(1617, __c101, 1) as any as S.Schema<UpdateCampaignActionResponse>,
   errors: [BadRequest, NotFound, UnknownCustomerioError],
   protocol: CustomerioProtocol,
   retry: Retry.Retry,
@@ -19801,8 +19801,8 @@ export const updateCampaignActionTranslation: API.OperationMethod<
   UpdateCampaignActionTranslationError,
   CustomerioOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(570, __c71, 2) as any as S.Schema<UpdateCampaignActionTranslationRequest>,
-  output: __S(571, __c71, 3) as any as S.Schema<UpdateCampaignActionTranslationResponse>,
+  input: __S(1632, __c102, 0) as any as S.Schema<UpdateCampaignActionTranslationRequest>,
+  output: __S(1633, __c102, 1) as any as S.Schema<UpdateCampaignActionTranslationResponse>,
   errors: [BadRequest, NotFound, UnknownCustomerioError],
   protocol: CustomerioProtocol,
   retry: Retry.Retry,
@@ -19816,8 +19816,8 @@ export const updateCollection: API.OperationMethod<
   UpdateCollectionError,
   CustomerioOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(572, __c71, 4) as any as S.Schema<UpdateCollectionRequest>,
-  output: __S(4, __c0, 4) as any as S.Schema<UpdateCollectionResponse>,
+  input: __S(1648, __c103, 0) as any as S.Schema<UpdateCollectionRequest>,
+  output: __S(2912, __c182, 0) as any as S.Schema<UpdateCollectionResponse>,
   errors: [BadRequest, UnknownCustomerioError],
   protocol: CustomerioProtocol,
   retry: Retry.Retry,
@@ -19831,8 +19831,8 @@ export const updateCollectionContents: API.OperationMethod<
   UpdateCollectionContentsError,
   CustomerioOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(573, __c71, 5) as any as S.Schema<UpdateCollectionContentsRequest>,
-  output: __S(574, __c71, 6) as any as S.Schema<UpdateCollectionContentsResponse>,
+  input: __S(1664, __c104, 0) as any as S.Schema<UpdateCollectionContentsRequest>,
+  output: __S(1665, __c104, 1) as any as S.Schema<UpdateCollectionContentsResponse>,
   errors: [NotFound, UnknownCustomerioError],
   protocol: CustomerioProtocol,
   retry: Retry.Retry,
@@ -19846,8 +19846,8 @@ export const updateComponent: API.OperationMethod<
   UpdateComponentError,
   CustomerioOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(575, __c71, 7) as any as S.Schema<UpdateComponentRequest>,
-  output: __S(148, __c18, 4) as any as S.Schema<UpdateComponentResponse>,
+  input: __S(1680, __c105, 0) as any as S.Schema<UpdateComponentRequest>,
+  output: __S(2624, __c164, 0) as any as S.Schema<UpdateComponentResponse>,
   errors: [BadRequest, NotFound, Conflict, UnknownCustomerioError],
   protocol: CustomerioProtocol,
   retry: Retry.Retry,
@@ -19861,8 +19861,8 @@ export const updateEmail: API.OperationMethod<
   UpdateEmailError,
   CustomerioOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(577, __c72, 1) as any as S.Schema<UpdateEmailRequest>,
-  output: __S(148, __c18, 4) as any as S.Schema<UpdateEmailResponse>,
+  input: __S(1713, __c107, 1) as any as S.Schema<UpdateEmailRequest>,
+  output: __S(2624, __c164, 0) as any as S.Schema<UpdateEmailResponse>,
   errors: [BadRequest, NotFound, UnknownCustomerioError],
   protocol: CustomerioProtocol,
   retry: Retry.Retry,
@@ -19876,8 +19876,8 @@ export const updateEmailTranslation: API.OperationMethod<
   UpdateEmailTranslationError,
   CustomerioOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(579, __c72, 3) as any as S.Schema<UpdateEmailTranslationRequest>,
-  output: __S(148, __c18, 4) as any as S.Schema<UpdateEmailTranslationResponse>,
+  input: __S(1729, __c108, 1) as any as S.Schema<UpdateEmailTranslationRequest>,
+  output: __S(2624, __c164, 0) as any as S.Schema<UpdateEmailTranslationResponse>,
   errors: [BadRequest, NotFound, UnknownCustomerioError],
   protocol: CustomerioProtocol,
   retry: Retry.Retry,
@@ -19891,8 +19891,8 @@ export const updateEventMetadata: API.OperationMethod<
   UpdateEventMetadataError,
   CustomerioOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(581, __c72, 5) as any as S.Schema<UpdateEventMetadataRequest>,
-  output: __S(148, __c18, 4) as any as S.Schema<UpdateEventMetadataResponse>,
+  input: __S(1745, __c109, 1) as any as S.Schema<UpdateEventMetadataRequest>,
+  output: __S(2624, __c164, 0) as any as S.Schema<UpdateEventMetadataResponse>,
   errors: [BadRequest, UnprocessableEntity, UnknownCustomerioError],
   protocol: CustomerioProtocol,
   retry: Retry.Retry,
@@ -19906,8 +19906,8 @@ export const updateFolder: API.OperationMethod<
   UpdateFolderError,
   CustomerioOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(582, __c72, 6) as any as S.Schema<UpdateFolderRequest>,
-  output: __S(148, __c18, 4) as any as S.Schema<UpdateFolderResponse>,
+  input: __S(1760, __c110, 0) as any as S.Schema<UpdateFolderRequest>,
+  output: __S(2624, __c164, 0) as any as S.Schema<UpdateFolderResponse>,
   errors: [BadRequest, NotFound, UnknownCustomerioError],
   protocol: CustomerioProtocol,
   retry: Retry.Retry,
@@ -19921,8 +19921,8 @@ export const updateLiveNotification: API.OperationMethod<
   UpdateLiveNotificationError,
   CustomerioOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(583, __c72, 7) as any as S.Schema<UpdateLiveNotificationRequest>,
-  output: __S(169, __c21, 1) as any as S.Schema<UpdateLiveNotificationResponse>,
+  input: __S(1776, __c111, 0) as any as S.Schema<UpdateLiveNotificationRequest>,
+  output: __S(2978, __c186, 2) as any as S.Schema<UpdateLiveNotificationResponse>,
   errors: [BadRequest, NotFound, UnknownCustomerioError],
   protocol: CustomerioProtocol,
   retry: Retry.Retry,
@@ -19936,8 +19936,8 @@ export const updateNewsletterTestTranslation: API.OperationMethod<
   UpdateNewsletterTestTranslationError,
   CustomerioOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(584, __c73, 0) as any as S.Schema<UpdateNewsletterTestTranslationRequest>,
-  output: __S(266, __c33, 2) as any as S.Schema<UpdateNewsletterTestTranslationResponse>,
+  input: __S(1792, __c112, 0) as any as S.Schema<UpdateNewsletterTestTranslationRequest>,
+  output: __S(3744, __c234, 0) as any as S.Schema<UpdateNewsletterTestTranslationResponse>,
   errors: [BadRequest, NotFound, UnknownCustomerioError],
   protocol: CustomerioProtocol,
   retry: Retry.Retry,
@@ -19951,8 +19951,8 @@ export const updateNewsletterVariant: API.OperationMethod<
   UpdateNewsletterVariantError,
   CustomerioOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(585, __c73, 1) as any as S.Schema<UpdateNewsletterVariantRequest>,
-  output: __S(266, __c33, 2) as any as S.Schema<UpdateNewsletterVariantResponse>,
+  input: __S(1808, __c113, 0) as any as S.Schema<UpdateNewsletterVariantRequest>,
+  output: __S(3744, __c234, 0) as any as S.Schema<UpdateNewsletterVariantResponse>,
   errors: [BadRequest, NotFound, UnknownCustomerioError],
   protocol: CustomerioProtocol,
   retry: Retry.Retry,
@@ -19966,8 +19966,8 @@ export const updateNewsletterVariantTranslation: API.OperationMethod<
   UpdateNewsletterVariantTranslationError,
   CustomerioOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(586, __c73, 2) as any as S.Schema<UpdateNewsletterVariantTranslationRequest>,
-  output: __S(266, __c33, 2) as any as S.Schema<UpdateNewsletterVariantTranslationResponse>,
+  input: __S(1824, __c114, 0) as any as S.Schema<UpdateNewsletterVariantTranslationRequest>,
+  output: __S(3744, __c234, 0) as any as S.Schema<UpdateNewsletterVariantTranslationResponse>,
   errors: [BadRequest, NotFound, UnknownCustomerioError],
   protocol: CustomerioProtocol,
   retry: Retry.Retry,
@@ -19981,8 +19981,8 @@ export const updatePersonOptouts: API.OperationMethod<
   UpdatePersonOptoutsError,
   CustomerioOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(589, __c73, 5) as any as S.Schema<UpdatePersonOptoutsRequest>,
-  output: __S(148, __c18, 4) as any as S.Schema<UpdatePersonOptoutsResponse>,
+  input: __S(1842, __c115, 2) as any as S.Schema<UpdatePersonOptoutsRequest>,
+  output: __S(2624, __c164, 0) as any as S.Schema<UpdatePersonOptoutsResponse>,
   errors: [BadRequest, NotFound, UnknownCustomerioError],
   protocol: CustomerioProtocol,
   retry: Retry.Retry,
@@ -19996,8 +19996,8 @@ export const updateSnippets: API.OperationMethod<
   UpdateSnippetsError,
   CustomerioOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(590, __c73, 6) as any as S.Schema<UpdateSnippetsRequest>,
-  output: __S(143, __c17, 7) as any as S.Schema<UpdateSnippetsResponse>,
+  input: __S(1856, __c116, 0) as any as S.Schema<UpdateSnippetsRequest>,
+  output: __S(2544, __c159, 0) as any as S.Schema<UpdateSnippetsResponse>,
   errors: [BadRequest, UnknownCustomerioError],
   protocol: CustomerioProtocol,
   retry: Retry.Retry,
@@ -20011,8 +20011,8 @@ export const updateTransactional: API.OperationMethod<
   UpdateTransactionalError,
   CustomerioOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(591, __c73, 7) as any as S.Schema<UpdateTransactionalRequest>,
-  output: __S(380, __c47, 4) as any as S.Schema<UpdateTransactionalResponse>,
+  input: __S(1904, __c119, 0) as any as S.Schema<UpdateTransactionalRequest>,
+  output: __S(432, __c27, 0) as any as S.Schema<UpdateTransactionalResponse>,
   errors: [BadRequest, NotFound, UnknownCustomerioError],
   protocol: CustomerioProtocol,
   retry: Retry.Retry,
@@ -20026,8 +20026,8 @@ export const updateTransactionalVariant: API.OperationMethod<
   UpdateTransactionalVariantError,
   CustomerioOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(592, __c74, 0) as any as S.Schema<UpdateTransactionalVariantRequest>,
-  output: __S(380, __c47, 4) as any as S.Schema<UpdateTransactionalVariantResponse>,
+  input: __S(1920, __c120, 0) as any as S.Schema<UpdateTransactionalVariantRequest>,
+  output: __S(432, __c27, 0) as any as S.Schema<UpdateTransactionalVariantResponse>,
   errors: [BadRequest, UnknownCustomerioError],
   protocol: CustomerioProtocol,
   retry: Retry.Retry,
@@ -20041,8 +20041,8 @@ export const updateWebhook: API.OperationMethod<
   UpdateWebhookError,
   CustomerioOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(593, __c74, 1) as any as S.Schema<UpdateWebhookRequest>,
-  output: __S(146, __c18, 2) as any as S.Schema<UpdateWebhookResponse>,
+  input: __S(1936, __c121, 0) as any as S.Schema<UpdateWebhookRequest>,
+  output: __S(2592, __c162, 0) as any as S.Schema<UpdateWebhookResponse>,
   errors: [BadRequest, NotFound, UnknownCustomerioError],
   protocol: CustomerioProtocol,
   retry: Retry.Retry,
@@ -20052,265 +20052,6 @@ export const updateWebhook: API.OperationMethod<
 function __c0(j: number): any {
   switch (j) {
     case 0:
-      return S.Record(S.String, S.Unknown);
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          body: S.optional(S.Unknown.pipe(T.HttpBody())),
-        }).pipe(T.Http({ method: "POST", uri: "/v1/collections", code: 200 })),
-      ).annotate({ identifier: "AddCollectionRequest" });
-    case 2:
-      return S.Array(S.String);
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          bytes: S.optional(S.Number),
-          created_at: S.optional(S.Number),
-          id: S.optional(S.Number),
-          name: S.optional(S.String),
-          rows: S.optional(S.Number),
-          schema: S.optional(__S(2, __c0, 2)),
-          updated_at: S.optional(S.Number),
-        }),
-      ).annotate({
-        identifier: "AddCollectionResponseCollection",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          collection: S.optional(__S(3, __c0, 3)),
-        }),
-      ).annotate({ identifier: "AddCollectionResponse" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          broadcast_id: S.Number.pipe(T.Label()),
-          action_id: S.Number.pipe(T.Label()),
-          period: S.optional(S.String.pipe(T.Query())),
-          steps: S.optional(S.Number.pipe(T.Query())),
-          type: S.optional(S.String.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/v1/broadcasts/{broadcast_id}/actions/{action_id}/metrics/links",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "BroadcastActionLinksRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          href: S.optional(S.String),
-          id: S.optional(S.Number),
-        }),
-      ).annotate({
-        identifier: "BroadcastActionLinksResponseLinksItemLink",
-      });
-    case 7:
-      return S.Array(S.Number);
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(S.Number);
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          clicked: S.optional(__S(7, __c0, 7)),
-          human_clicked: S.optional(__S(8, __c1, 0)),
-          machine_clicked: S.optional(__S(8, __c1, 0)),
-        }),
-      ).annotate({
-        identifier: "BroadcastActionLinksResponseLinksItemMetricSeries",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          series: S.optional(__S(9, __c1, 1)),
-        }),
-      ).annotate({
-        identifier: "BroadcastActionLinksResponseLinksItemMetric",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          link: S.optional(__S(6, __c0, 6)),
-          metric: S.optional(__S(10, __c1, 2)),
-        }),
-      ).annotate({
-        identifier: "BroadcastActionLinksResponseLinksItem",
-      });
-    case 4:
-      return S.Array(__S(11, __c1, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          links: S.optional(__S(12, __c1, 4)),
-        }),
-      ).annotate({
-        identifier: "BroadcastActionLinksResponse",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          broadcast_id: S.Number.pipe(T.Label()),
-          action_id: S.Number.pipe(T.Label()),
-          period: S.optional(S.String.pipe(T.Query())),
-          steps: S.optional(S.Number.pipe(T.Query())),
-          type: S.optional(S.String.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/v1/broadcasts/{broadcast_id}/actions/{action_id}/metrics",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "BroadcastActionMetricsRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          attempted: S.optional(__S(8, __c1, 0)),
-          bounced: S.optional(__S(8, __c1, 0)),
-          clicked: S.optional(__S(8, __c1, 0)),
-          converted: S.optional(__S(8, __c1, 0)),
-          created: S.optional(__S(8, __c1, 0)),
-          deferred: S.optional(__S(8, __c1, 0)),
-          delivered: S.optional(__S(8, __c1, 0)),
-          drafted: S.optional(__S(8, __c1, 0)),
-          failed: S.optional(__S(8, __c1, 0)),
-          human_clicked: S.optional(__S(8, __c1, 0)),
-          human_opened: S.optional(__S(8, __c1, 0)),
-          link_untracked: S.optional(__S(8, __c1, 0)),
-          machine_clicked: S.optional(__S(8, __c1, 0)),
-          open_untracked: S.optional(__S(8, __c1, 0)),
-          opened: S.optional(__S(8, __c1, 0)),
-          prefetch_opened: S.optional(__S(8, __c1, 0)),
-          replied: S.optional(__S(8, __c1, 0)),
-          sent: S.optional(__S(8, __c1, 0)),
-          spammed: S.optional(__S(8, __c1, 0)),
-          suppressed: S.optional(__S(8, __c1, 0)),
-          topic_unsubscribed: S.optional(__S(8, __c1, 0)),
-          tracking_consent_denied: S.optional(__S(8, __c1, 0)),
-          tracking_consent_granted: S.optional(__S(8, __c1, 0)),
-          undeliverable: S.optional(__S(8, __c1, 0)),
-          unsubscribed: S.optional(__S(8, __c1, 0)),
-          untracked: S.optional(__S(8, __c1, 0)),
-        }),
-      ).annotate({
-        identifier: "BroadcastActionMetricsResponseLanguageVariantsValueSeries",
-      });
-  }
-}
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          default: S.optional(S.Boolean),
-          language: S.optional(S.String),
-          series: S.optional(__S(15, __c1, 7)),
-        }),
-      ).annotate({
-        identifier: "BroadcastActionMetricsResponseLanguageVariantsValue",
-      });
-    case 1:
-      return S.Record(S.String, __S(16, __c2, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          attempted: S.optional(__S(7, __c0, 7)),
-          bounced: S.optional(__S(7, __c0, 7)),
-          clicked: S.optional(__S(7, __c0, 7)),
-          converted: S.optional(__S(7, __c0, 7)),
-          created: S.optional(__S(7, __c0, 7)),
-          deferred: S.optional(__S(7, __c0, 7)),
-          delivered: S.optional(__S(7, __c0, 7)),
-          drafted: S.optional(__S(7, __c0, 7)),
-          failed: S.optional(__S(7, __c0, 7)),
-          human_clicked: S.optional(__S(7, __c0, 7)),
-          human_opened: S.optional(__S(7, __c0, 7)),
-          link_untracked: S.optional(__S(7, __c0, 7)),
-          machine_clicked: S.optional(__S(7, __c0, 7)),
-          open_untracked: S.optional(__S(7, __c0, 7)),
-          opened: S.optional(__S(7, __c0, 7)),
-          prefetch_opened: S.optional(__S(7, __c0, 7)),
-          replied: S.optional(__S(7, __c0, 7)),
-          sent: S.optional(__S(7, __c0, 7)),
-          spammed: S.optional(__S(7, __c0, 7)),
-          suppressed: S.optional(__S(7, __c0, 7)),
-          topic_unsubscribed: S.optional(__S(8, __c1, 0)),
-          tracking_consent_denied: S.optional(__S(8, __c1, 0)),
-          tracking_consent_granted: S.optional(__S(8, __c1, 0)),
-          undeliverable: S.optional(__S(7, __c0, 7)),
-          unsubscribed: S.optional(__S(7, __c0, 7)),
-          untracked: S.optional(__S(7, __c0, 7)),
-        }),
-      ).annotate({
-        identifier: "BroadcastActionMetricsResponseMetricSeries",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          series: S.optional(__S(18, __c2, 2)),
-        }),
-      ).annotate({
-        identifier: "BroadcastActionMetricsResponseMetric",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          language_variants: S.optional(__S(17, __c2, 1)),
-          metric: S.optional(__S(19, __c2, 3)),
-        }),
-      ).annotate({
-        identifier: "BroadcastActionMetricsResponse",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          broadcast_id: S.Number.pipe(T.Label()),
-        }).pipe(T.Http({ method: "GET", uri: "/v1/broadcasts/{broadcast_id}/actions", code: 200 })),
-      ).annotate({ identifier: "BroadcastActionsRequest" });
-    case 6:
-      return S.Array(S.Unknown);
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          actions: S.optional(__S(22, __c2, 6)),
-        }),
-      ).annotate({ identifier: "BroadcastActionsResponse" });
-  }
-}
-function __c3(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          broadcast_id: S.Number.pipe(T.Label()),
-          trigger_id: S.Number.pipe(T.Label()),
-          start: S.optional(S.String.pipe(T.Query())),
-          limit: S.optional(S.Number.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/v1/campaigns/{broadcast_id}/triggers/{trigger_id}/errors",
-            code: 200,
-          }),
-        ),
-      ).annotate({ identifier: "BroadcastErrorsRequest" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          errors: S.optional(__S(2, __c0, 2)),
-          next: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "BroadcastErrorsResponse" });
-    case 2:
       return S.suspend(() =>
         S.Struct({
           broadcast_id: S.Number.pipe(T.Label()),
@@ -20321,44 +20062,388 @@ function __c3(j: number): any {
           T.Http({ method: "GET", uri: "/v1/broadcasts/{broadcast_id}/metrics/links", code: 200 }),
         ),
       ).annotate({ identifier: "BroadcastLinksRequest" });
-    case 3:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          clicked: S.optional(__S(7, __c0, 7)),
-          human_clicked: S.optional(__S(7, __c0, 7)),
-          machine_clicked: S.optional(__S(7, __c0, 7)),
+          clicked: S.optional(__S(3200, __c200, 0)),
+          human_clicked: S.optional(__S(3200, __c200, 0)),
+          machine_clicked: S.optional(__S(3200, __c200, 0)),
         }),
       ).annotate({
         identifier: "BroadcastLinksResponseLinksItemMetricSeries",
       });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          series: S.optional(__S(27, __c3, 3)),
+          series: S.optional(__S(16, __c1, 0)),
         }),
       ).annotate({
         identifier: "BroadcastLinksResponseLinksItemMetric",
       });
-    case 5:
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          link: S.optional(__S(6, __c0, 6)),
-          metric: S.optional(__S(28, __c3, 4)),
+          link: S.optional(__S(3184, __c199, 0)),
+          metric: S.optional(__S(17, __c1, 1)),
         }),
       ).annotate({
         identifier: "BroadcastLinksResponseLinksItem",
       });
-    case 6:
-      return S.Array(__S(29, __c3, 5));
-    case 7:
+    case 3:
+      return S.Array(__S(18, __c1, 2));
+    case 4:
       return S.suspend(() =>
         S.Struct({
-          links: S.optional(__S(30, __c3, 6)),
+          links: S.optional(__S(19, __c1, 3)),
         }),
       ).annotate({ identifier: "BroadcastLinksResponse" });
   }
 }
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          customer_id: S.String.pipe(T.Label()),
+          id_type: S.optional(S.String.pipe(T.Query())),
+          start: S.optional(S.String.pipe(T.Query())),
+          limit: S.optional(S.Number.pipe(T.Query())),
+        }).pipe(
+          T.Http({ method: "GET", uri: "/v1/customers/{customer_id}/relationships", code: 200 }),
+        ),
+      ).annotate({
+        identifier: "GetPersonRelationshipsRequest",
+      });
+    case 1:
+      return S.Record(S.String, S.Unknown);
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          cio_object_id: S.optional(S.String),
+          object_id: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GetPersonRelationshipsResponseCioRelationshipsItemIdentifiers",
+      });
+    case 3:
+      return S.Record(S.String, S.Number);
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          attributes: S.optional(__S(33, __c2, 1)),
+          identifiers: S.optional(__S(34, __c2, 2)),
+          object_type_id: S.optional(S.Number),
+          timestamps: S.optional(__S(35, __c2, 3)),
+        }),
+      ).annotate({
+        identifier: "GetPersonRelationshipsResponseCioRelationshipsItem",
+      });
+    case 5:
+      return S.Array(__S(36, __c2, 4));
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          cio_relationships: S.optional(__S(37, __c2, 5)),
+          next: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GetPersonRelationshipsResponse",
+      });
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          customer_id: S.String.pipe(T.Label()),
+          id_type: S.optional(S.String.pipe(T.Query())),
+        }).pipe(T.Http({ method: "GET", uri: "/v1/customers/{customer_id}/segments", code: 200 })),
+      ).annotate({ identifier: "GetPersonSegmentsRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          description: S.optional(S.String),
+          id: S.optional(S.Number),
+          name: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GetPersonSegmentsResponseSegmentsItem",
+      });
+    case 2:
+      return S.Array(__S(49, __c3, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          segments: S.optional(__S(50, __c3, 2)),
+        }),
+      ).annotate({
+        identifier: "GetPersonSegmentsResponse",
+      });
+  }
+}
 function __c4(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          customer_id: S.String.pipe(T.Label()),
+          id_type: S.optional(S.String.pipe(T.Query())),
+          language: S.optional(S.String.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/v1/customers/{customer_id}/subscription_preferences",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "GetPersonSubscriptionPreferencesRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          subtitle: S.optional(S.String),
+          title: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GetPersonSubscriptionPreferencesResponseCustomerHeader",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          description: S.optional(S.String),
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          subscribed: S.optional(S.Boolean),
+        }),
+      ).annotate({
+        identifier: "GetPersonSubscriptionPreferencesResponseCustomerTopicsItem",
+      });
+    case 3:
+      return S.Array(__S(66, __c4, 2));
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          header: S.optional(__S(65, __c4, 1)),
+          id: S.optional(S.NullOr(S.String)),
+          identifiers: S.optional(__S(256, __c16, 0)),
+          topics: S.optional(__S(67, __c4, 3)),
+          unsubscribed: S.optional(S.Boolean),
+        }),
+      ).annotate({
+        identifier: "GetPersonSubscriptionPreferencesResponseCustomer",
+      });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          customer: S.optional(__S(68, __c4, 4)),
+        }),
+      ).annotate({
+        identifier: "GetPersonSubscriptionPreferencesResponse",
+      });
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String.pipe(T.Label()),
+          publish_id: S.String.pipe(T.Query()),
+        }).pipe(
+          T.Http({ method: "GET", uri: "/v1/design_studio/emails/{id}/publish_status", code: 200 }),
+        ),
+      ).annotate({ identifier: "GetPublishStatusRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          mappings: S.optional(__S(97, __c6, 1)),
+          status: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "GetPublishStatusResponse" });
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          language: S.optional(S.String),
+          node_id: S.optional(S.String),
+          template_id: S.optional(S.Number),
+          version_id: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GetPublishStatusResponseMappingsItem",
+      });
+    case 1:
+      return S.Array(__S(96, __c6, 0));
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          segment_id: S.Number.pipe(T.Label()),
+        }).pipe(T.Http({ method: "GET", uri: "/v1/segments/{segment_id}", code: 200 })),
+      ).annotate({ identifier: "GetSegmentRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          conditions: S.optional(__S(2432, __c152, 0)),
+          created_at: S.optional(S.Number),
+          deduplicate_id: S.optional(S.String),
+          description: S.optional(S.String),
+          id: S.optional(S.Number),
+          name: S.optional(S.String),
+          progress: S.optional(S.NullOr(S.Number)),
+          state: S.optional(S.String),
+          tags: S.optional(S.NullOr(__S(2944, __c184, 0))),
+          type: S.optional(S.String),
+          updated_at: S.optional(S.Number),
+        }),
+      ).annotate({
+        identifier: "GetSegmentResponseSegment",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          segment: S.optional(__S(113, __c7, 1)),
+        }),
+      ).annotate({ identifier: "GetSegmentResponse" });
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          segment_id: S.Number.pipe(T.Label()),
+        }).pipe(
+          T.Http({ method: "GET", uri: "/v1/segments/{segment_id}/customer_count", code: 200 }),
+        ),
+      ).annotate({ identifier: "GetSegmentCountRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          count: S.optional(S.Number),
+          segment_id: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "GetSegmentCountResponse" });
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          segment_id: S.Number.pipe(T.Label()),
+        }).pipe(T.Http({ method: "GET", uri: "/v1/segments/{segment_id}/used_by", code: 200 })),
+      ).annotate({
+        identifier: "GetSegmentDependenciesRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          campaigns: S.optional(__S(3200, __c200, 0)),
+          draft_newsletters: S.optional(__S(3200, __c200, 0)),
+          segment_id: S.optional(S.Number),
+          sent_newsletters: S.optional(__S(3200, __c200, 0)),
+        }),
+      ).annotate({
+        identifier: "GetSegmentDependenciesResponseUsedBy",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          used_by: S.optional(__S(145, __c9, 1)),
+        }),
+      ).annotate({
+        identifier: "GetSegmentDependenciesResponse",
+      });
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          segment_id: S.Number.pipe(T.Label()),
+          start: S.optional(S.String.pipe(T.Query())),
+          limit: S.optional(S.Number.pipe(T.Query())),
+        }).pipe(T.Http({ method: "GET", uri: "/v1/segments/{segment_id}/membership", code: 200 })),
+      ).annotate({
+        identifier: "GetSegmentMembershipRequest",
+      });
+    case 1:
+      return S.suspend(() => S.Unknown.pipe(T.RawResponseRoot())).annotate({
+        identifier: "GetSegmentMembershipResponse",
+      });
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          sender_id: S.Number.pipe(T.Label()),
+        }).pipe(T.Http({ method: "GET", uri: "/v1/sender_identities/{sender_id}", code: 200 })),
+      ).annotate({ identifier: "GetSenderRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          sender_identity: S.optional(__S(192, __c12, 0)),
+        }),
+      ).annotate({ identifier: "GetSenderResponse" });
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          address: S.optional(S.String),
+          auto_generated: S.optional(S.Boolean),
+          deduplicate_id: S.optional(S.String),
+          email: S.optional(S.String),
+          hidden: S.optional(S.Boolean),
+          id: S.optional(S.Number),
+          name: S.optional(S.String),
+          phone: S.optional(S.String),
+          template_type: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GetSenderResponseSenderIdentity",
+      });
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          sender_id: S.Number.pipe(T.Label()),
+        }).pipe(
+          T.Http({ method: "GET", uri: "/v1/sender_identities/{sender_id}/used_by", code: 200 }),
+        ),
+      ).annotate({ identifier: "GetSenderUsageRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          campaigns: S.optional(__S(3200, __c200, 0)),
+          draft_newsletters: S.optional(__S(3200, __c200, 0)),
+          sent_newsletters: S.optional(__S(3200, __c200, 0)),
+        }),
+      ).annotate({ identifier: "GetSenderUsageResponse" });
+  }
+}
+function __c14(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -20379,14 +20464,45 @@ function __c4(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          cio_id: S.String,
-          email: S.NullOr(S.String),
-          id: S.NullOr(S.String),
+          action_id: S.optional(S.Number),
+          broadcast_id: S.optional(S.NullOr(S.Number)),
+          campaign_id: S.optional(S.NullOr(S.Number)),
+          content_id: S.optional(S.Number),
+          created: S.optional(S.Number),
+          customer_id: S.optional(S.NullOr(S.String)),
+          customer_identifiers: S.optional(__S(256, __c16, 0)),
+          deduplicate_id: S.optional(S.String),
+          failure_message: S.optional(S.NullOr(S.String)),
+          forgotten: S.optional(S.Boolean),
+          id: S.optional(S.String),
+          message_template_id: S.optional(S.Number),
+          metrics: S.optional(__S(240, __c15, 0)),
+          newsletter_id: S.optional(S.NullOr(S.Number)),
+          parent_action_id: S.optional(S.Number),
+          recipient: S.optional(S.String),
+          subject: S.optional(S.String),
+          tracked_responses: S.optional(__S(242, __c15, 2)),
+          trigger_event_id: S.optional(S.String),
+          type: S.optional(S.String),
         }),
       ).annotate({
-        identifier: "BroadcastMessagesResponseMessagesItemCustomerIdentifiers",
+        identifier: "BroadcastMessagesResponseMessagesItem",
       });
     case 2:
+      return S.Array(__S(225, __c14, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          messages: S.optional(__S(226, __c14, 2)),
+        }),
+      ).annotate({
+        identifier: "BroadcastMessagesResponse",
+      });
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           bounced: S.optional(S.Number),
@@ -20410,7 +20526,7 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "BroadcastMessagesResponseMessagesItemMetrics",
       });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.Number),
@@ -20419,48 +20535,442 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "BroadcastMessagesResponseMessagesItemTrackedResponsesValue",
       });
-    case 4:
-      return S.Record(S.String, __S(35, __c4, 3));
-    case 5:
+    case 2:
+      return S.Record(S.String, __S(241, __c15, 1));
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          action_id: S.optional(S.Number),
-          broadcast_id: S.optional(S.NullOr(S.Number)),
-          campaign_id: S.optional(S.NullOr(S.Number)),
-          content_id: S.optional(S.Number),
-          created: S.optional(S.Number),
-          customer_id: S.optional(S.NullOr(S.String)),
-          customer_identifiers: S.optional(__S(33, __c4, 1)),
-          deduplicate_id: S.optional(S.String),
-          failure_message: S.optional(S.NullOr(S.String)),
-          forgotten: S.optional(S.Boolean),
-          id: S.optional(S.String),
-          message_template_id: S.optional(S.Number),
-          metrics: S.optional(__S(34, __c4, 2)),
-          newsletter_id: S.optional(S.NullOr(S.Number)),
-          parent_action_id: S.optional(S.Number),
-          recipient: S.optional(S.String),
-          subject: S.optional(S.String),
-          tracked_responses: S.optional(__S(36, __c4, 4)),
-          trigger_event_id: S.optional(S.String),
-          type: S.optional(S.String),
+          cio_id: S.String,
+          email: S.NullOr(S.String),
+          id: S.NullOr(S.String),
         }),
       ).annotate({
-        identifier: "BroadcastMessagesResponseMessagesItem",
-      });
-    case 6:
-      return S.Array(__S(37, __c4, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          messages: S.optional(__S(38, __c4, 6)),
-        }),
-      ).annotate({
-        identifier: "BroadcastMessagesResponse",
+        identifier: "BroadcastMessagesResponseMessagesItemCustomerIdentifiers",
       });
   }
 }
-function __c5(j: number): any {
+function __c17(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          customer_id: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({ method: "GET", uri: "/v1/subscription_center/{customer_id}/token", code: 200 }),
+        ),
+      ).annotate({
+        identifier: "GetSubscriptionCenterTokenRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          token: S.optional(S.String),
+          url: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GetSubscriptionCenterTokenResponse",
+      });
+  }
+}
+function __c18(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          email_address: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({ method: "GET", uri: "/v1/esp/search_suppression/{email_address}", code: 200 }),
+        ),
+      ).annotate({ identifier: "GetSuppressionRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          category: S.optional(S.String),
+          suppressions: S.optional(__S(3393, __c212, 1)),
+        }),
+      ).annotate({ identifier: "GetSuppressionResponse" });
+  }
+}
+function __c19(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          suppression_type: S.String.pipe(T.Label()),
+          limit: S.optional(S.Number.pipe(T.Query())),
+          offset: S.optional(S.Number.pipe(T.Query())),
+          domain: S.optional(S.String.pipe(T.Query())),
+        }).pipe(
+          T.Http({ method: "GET", uri: "/v1/esp/suppression/{suppression_type}", code: 200 }),
+        ),
+      ).annotate({
+        identifier: "GetSuppressionByTypeRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          category: S.optional(S.String),
+          suppressions: S.optional(__S(3393, __c212, 1)),
+        }),
+      ).annotate({
+        identifier: "GetSuppressionByTypeResponse",
+      });
+  }
+}
+function __c20(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({}).pipe(T.Http({ method: "GET", uri: "/v1/subscription_topics", code: 200 })),
+      ).annotate({ identifier: "GetTopicsRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          description: S.optional(S.String),
+          id: S.optional(S.Number),
+          identifier: S.optional(S.String),
+          name: S.optional(S.String),
+          subscribed_by_default: S.optional(S.Boolean),
+        }),
+      ).annotate({
+        identifier: "GetTopicsResponseTopicsItem",
+      });
+    case 2:
+      return S.Array(__S(321, __c20, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          topics: S.optional(__S(322, __c20, 2)),
+        }),
+      ).annotate({ identifier: "GetTopicsResponse" });
+  }
+}
+function __c21(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          transactional_id: S.Number.pipe(T.Label()),
+        }).pipe(T.Http({ method: "GET", uri: "/v1/transactional/{transactional_id}", code: 200 })),
+      ).annotate({ identifier: "GetTransactionalRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          message: S.optional(__S(352, __c22, 0)),
+        }),
+      ).annotate({ identifier: "GetTransactionalResponse" });
+  }
+}
+function __c22(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          created_at: S.optional(S.Number),
+          description: S.optional(S.String),
+          hide_message_body: S.optional(S.Boolean),
+          id: S.optional(S.Number),
+          link_tracking: S.optional(S.Boolean),
+          name: S.optional(S.String),
+          open_tracking: S.optional(S.Boolean),
+          queue_drafts: S.optional(S.Boolean),
+          send_to_unsubscribed: S.optional(S.Boolean),
+          updated_at: S.optional(S.Number),
+        }),
+      ).annotate({
+        identifier: "GetTransactionalResponseMessage",
+      });
+  }
+}
+function __c23(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          transactional_id: S.Number.pipe(T.Label()),
+          content_id: S.Number.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/v1/transactional/{transactional_id}/contents/{content_id}",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "GetTransactionalTranslationByIdRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          content: S.optional(__S(384, __c24, 0)),
+        }),
+      ).annotate({
+        identifier: "GetTransactionalTranslationByIdResponse",
+      });
+  }
+}
+function __c24(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          bcc: S.optional(S.String),
+          body: S.optional(S.String),
+          body_amp: S.optional(S.String),
+          cc: S.optional(S.String),
+          created: S.optional(S.Number),
+          fake_bcc: S.optional(S.Boolean),
+          from: S.optional(S.String),
+          from_id: S.optional(S.Number),
+          headers: S.optional(S.String),
+          id: S.optional(S.Number),
+          language: S.optional(S.String),
+          name: S.optional(S.String),
+          preheader_text: S.optional(S.String),
+          preprocessor: S.optional(S.String),
+          recipient: S.optional(S.String),
+          reply_to: S.optional(S.String),
+          reply_to_id: S.optional(S.NullOr(S.Number)),
+          subject: S.optional(S.String),
+          type: S.optional(S.String),
+          updated: S.optional(S.Number),
+        }),
+      ).annotate({
+        identifier: "GetTransactionalTranslationByIdResponseContent",
+      });
+  }
+}
+function __c25(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          transactional_id: S.Number.pipe(T.Label()),
+          language: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/v1/transactional/{transactional_id}/language/{language}",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "GetTransactionalVariantRequest",
+      });
+  }
+}
+function __c26(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(384, __c24, 0));
+  }
+}
+function __c27(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          content: S.optional(__S(416, __c26, 0)),
+        }),
+      ).annotate({
+        identifier: "GetTransactionalVariantResponse",
+      });
+  }
+}
+function __c28(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          newsletter_id: S.Number.pipe(T.Label()),
+          content_id: S.Number.pipe(T.Label()),
+          period: S.optional(S.String.pipe(T.Query())),
+          steps: S.optional(S.Number.pipe(T.Query())),
+          type: S.optional(S.String.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/v1/newsletters/{newsletter_id}/contents/{content_id}/metrics/links",
+            code: 200,
+          }),
+        ),
+      ).annotate({ identifier: "GetVariantLinksRequest" });
+  }
+}
+function __c29(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          newsletter_id: S.Number.pipe(T.Label()),
+          content_id: S.Number.pipe(T.Label()),
+          period: S.optional(S.String.pipe(T.Query())),
+          steps: S.optional(S.Number.pipe(T.Query())),
+          type: S.optional(S.String.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/v1/newsletters/{newsletter_id}/contents/{content_id}/metrics",
+            code: 200,
+          }),
+        ),
+      ).annotate({ identifier: "GetVariantMetricsRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          attempted: S.optional(__S(3200, __c200, 0)),
+          bounced: S.optional(__S(3200, __c200, 0)),
+          clicked: S.optional(__S(3200, __c200, 0)),
+          converted: S.optional(__S(3200, __c200, 0)),
+          created: S.optional(__S(3200, __c200, 0)),
+          deferred: S.optional(__S(3200, __c200, 0)),
+          delivered: S.optional(__S(3200, __c200, 0)),
+          drafted: S.optional(__S(3200, __c200, 0)),
+          failed: S.optional(__S(3200, __c200, 0)),
+          human_clicked: S.optional(__S(3200, __c200, 0)),
+          human_opened: S.optional(__S(3200, __c200, 0)),
+          link_untracked: S.optional(__S(3200, __c200, 0)),
+          machine_clicked: S.optional(__S(3200, __c200, 0)),
+          open_untracked: S.optional(__S(3200, __c200, 0)),
+          opened: S.optional(__S(3200, __c200, 0)),
+          prefetch_opened: S.optional(__S(3200, __c200, 0)),
+          replied: S.optional(__S(3200, __c200, 0)),
+          sent: S.optional(__S(3200, __c200, 0)),
+          spammed: S.optional(__S(3200, __c200, 0)),
+          suppressed: S.optional(__S(3200, __c200, 0)),
+          topic_unsubscribed: S.optional(__S(3200, __c200, 0)),
+          tracking_consent_denied: S.optional(__S(3200, __c200, 0)),
+          tracking_consent_granted: S.optional(__S(3216, __c201, 0)),
+          undeliverable: S.optional(__S(3200, __c200, 0)),
+          unsubscribed: S.optional(__S(3200, __c200, 0)),
+          untracked: S.optional(__S(3200, __c200, 0)),
+        }),
+      ).annotate({
+        identifier: "GetVariantMetricsResponseMetricSeries",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          series: S.optional(__S(465, __c29, 1)),
+          type: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GetVariantMetricsResponseMetric",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          metric: S.optional(__S(466, __c29, 2)),
+        }),
+      ).annotate({
+        identifier: "GetVariantMetricsResponse",
+      });
+  }
+}
+function __c30(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String.pipe(T.Label()),
+          version_id: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/v1/design_studio/emails/{id}/versions/{version_id}",
+            code: 200,
+          }),
+        ),
+      ).annotate({ identifier: "GetVersionRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          component_name: S.optional(S.NullOr(S.String)),
+          content: S.optional(S.String),
+          name: S.optional(S.String),
+          node_id: S.optional(S.String),
+          node_type: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GetVersionResponseDependenciesItem",
+      });
+    case 2:
+      return S.Array(__S(481, __c30, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          backend_markers: S.optional(__S(2150, __c134, 6)),
+          enabled: S.optional(S.Boolean),
+          uglify: S.optional(S.Boolean),
+          whitelist: S.optional(__S(2944, __c184, 0)),
+        }),
+      ).annotate({
+        identifier: "GetVersionResponseNodeTransformersRemoveUnusedCss",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          accessibility: S.optional(__S(2144, __c134, 0)),
+          css_inliner: S.optional(__S(2146, __c134, 2)),
+          css_variables: S.optional(__S(2147, __c134, 3)),
+          encode_entities: S.optional(__S(2148, __c134, 4)),
+          formatter: S.optional(__S(2097, __c131, 1)),
+          prevent_widows: S.optional(__S(2148, __c134, 4)),
+          remove_unused_css: S.optional(__S(483, __c30, 3)),
+          url_parameters: S.optional(__S(2226, __c139, 2)),
+        }),
+      ).annotate({
+        identifier: "GetVersionResponseNodeTransformers",
+      });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          amp: S.optional(S.String),
+          content: S.optional(S.String),
+          envelope: S.optional(__S(2256, __c141, 0)),
+          name: S.optional(S.String),
+          node_id: S.optional(S.String),
+          node_type: S.optional(S.String),
+          preheader_text: S.optional(S.String),
+          subject: S.optional(S.String),
+          text: S.optional(S.String),
+          transformers: S.optional(__S(484, __c30, 4)),
+        }),
+      ).annotate({ identifier: "GetVersionResponseNode" });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          dependencies: S.optional(__S(482, __c30, 2)),
+          node: S.optional(__S(485, __c30, 5)),
+          version: S.optional(__S(496, __c31, 0)),
+        }),
+      ).annotate({ identifier: "GetVersionResponse" });
+  }
+}
+function __c31(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          created: S.optional(S.Number),
+          created_on_publish: S.optional(S.Boolean),
+          description: S.optional(S.String),
+          feedback: S.optional(S.Boolean),
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          node_id: S.optional(S.String),
+          node_type: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GetVersionResponseVersion",
+      });
+  }
+}
+function __c32(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -20474,51 +20984,354 @@ function __c5(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          attempted: S.optional(__S(7, __c0, 7)),
-          bounced: S.optional(__S(7, __c0, 7)),
-          clicked: S.optional(__S(7, __c0, 7)),
-          converted: S.optional(__S(7, __c0, 7)),
-          created: S.optional(__S(7, __c0, 7)),
-          deferred: S.optional(__S(7, __c0, 7)),
-          delivered: S.optional(__S(7, __c0, 7)),
-          drafted: S.optional(__S(7, __c0, 7)),
-          failed: S.optional(__S(7, __c0, 7)),
-          human_clicked: S.optional(__S(7, __c0, 7)),
-          human_opened: S.optional(__S(7, __c0, 7)),
-          link_untracked: S.optional(__S(7, __c0, 7)),
-          machine_clicked: S.optional(__S(7, __c0, 7)),
-          open_untracked: S.optional(__S(7, __c0, 7)),
-          opened: S.optional(__S(7, __c0, 7)),
-          prefetch_opened: S.optional(__S(7, __c0, 7)),
-          replied: S.optional(__S(7, __c0, 7)),
-          sent: S.optional(__S(7, __c0, 7)),
-          spammed: S.optional(__S(7, __c0, 7)),
-          suppressed: S.optional(__S(7, __c0, 7)),
-          topic_unsubscribed: S.optional(__S(7, __c0, 7)),
-          tracking_consent_denied: S.optional(__S(7, __c0, 7)),
-          tracking_consent_granted: S.optional(__S(7, __c0, 7)),
-          undeliverable: S.optional(__S(7, __c0, 7)),
-          unsubscribed: S.optional(__S(7, __c0, 7)),
-          untracked: S.optional(__S(7, __c0, 7)),
+          metric: S.optional(__S(529, __c33, 1)),
+        }),
+      ).annotate({ identifier: "BroadcastMetricsResponse" });
+  }
+}
+function __c33(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          attempted: S.optional(__S(3200, __c200, 0)),
+          bounced: S.optional(__S(3200, __c200, 0)),
+          clicked: S.optional(__S(3200, __c200, 0)),
+          converted: S.optional(__S(3200, __c200, 0)),
+          created: S.optional(__S(3200, __c200, 0)),
+          deferred: S.optional(__S(3200, __c200, 0)),
+          delivered: S.optional(__S(3200, __c200, 0)),
+          drafted: S.optional(__S(3200, __c200, 0)),
+          failed: S.optional(__S(3200, __c200, 0)),
+          human_clicked: S.optional(__S(3200, __c200, 0)),
+          human_opened: S.optional(__S(3200, __c200, 0)),
+          link_untracked: S.optional(__S(3200, __c200, 0)),
+          machine_clicked: S.optional(__S(3200, __c200, 0)),
+          open_untracked: S.optional(__S(3200, __c200, 0)),
+          opened: S.optional(__S(3200, __c200, 0)),
+          prefetch_opened: S.optional(__S(3200, __c200, 0)),
+          replied: S.optional(__S(3200, __c200, 0)),
+          sent: S.optional(__S(3200, __c200, 0)),
+          spammed: S.optional(__S(3200, __c200, 0)),
+          suppressed: S.optional(__S(3200, __c200, 0)),
+          topic_unsubscribed: S.optional(__S(3200, __c200, 0)),
+          tracking_consent_denied: S.optional(__S(3200, __c200, 0)),
+          tracking_consent_granted: S.optional(__S(3200, __c200, 0)),
+          undeliverable: S.optional(__S(3200, __c200, 0)),
+          unsubscribed: S.optional(__S(3200, __c200, 0)),
+          untracked: S.optional(__S(3200, __c200, 0)),
         }),
       ).annotate({
         identifier: "BroadcastMetricsResponseMetricSeries",
       });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          series: S.optional(__S(41, __c5, 1)),
+          series: S.optional(__S(528, __c33, 0)),
         }),
       ).annotate({
         identifier: "BroadcastMetricsResponseMetric",
       });
+  }
+}
+function __c34(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          webhook_id: S.Number.pipe(T.Label()),
+        }).pipe(T.Http({ method: "GET", uri: "/v1/reporting_webhooks/{webhook_id}", code: 200 })),
+      ).annotate({ identifier: "GetWebhookRequest" });
+  }
+}
+function __c35(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          import: S.Unknown,
+        }).pipe(T.Http({ method: "POST", uri: "/v1/imports", code: 200 })),
+      ).annotate({ identifier: "ImportRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          created_at: S.optional(S.Number),
+          data_to_process: S.optional(S.String),
+          description: S.optional(S.String),
+          error: S.optional(S.String),
+          id: S.optional(S.Number),
+          identifier: S.optional(S.String),
+          name: S.optional(S.String),
+          object_type_id: S.optional(S.String),
+          people_to_process: S.optional(S.String),
+          rows_imported: S.optional(S.Number),
+          rows_to_import: S.optional(S.Number),
+          state: S.optional(S.String),
+          type: S.optional(S.String),
+          updated_at: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "ImportResponseImport" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          import: __S(561, __c35, 1),
+        }),
+      ).annotate({ identifier: "ImportResponse" });
+  }
+}
+function __c36(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          type: S.String,
+          action_id: S.optional(S.Number),
+          newsletter_id: S.optional(S.Number),
+          transactional_message_id: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "LinkEmailRequestTarget" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String.pipe(T.Label()),
+          target: __S(576, __c36, 0),
+          force: S.optional(S.Boolean),
+        }).pipe(T.Http({ method: "POST", uri: "/v1/design_studio/emails/{id}/link", code: 200 })),
+      ).annotate({ identifier: "LinkEmailRequest" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          node_id: S.optional(S.String),
+          target: S.optional(__S(576, __c36, 0)),
+          template_id: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "LinkEmailResponse" });
+  }
+}
+function __c37(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          start: S.optional(S.String.pipe(T.Query())),
+          type: S.optional(S.String.pipe(T.Query())),
+          name: S.optional(S.String.pipe(T.Query())),
+          deleted: S.optional(S.Boolean.pipe(T.Query())),
+          customer_id: S.optional(S.String.pipe(T.Query())),
+          id_type: S.optional(S.String.pipe(T.Query())),
+          limit: S.optional(S.Number.pipe(T.Query())),
+        }).pipe(T.Http({ method: "GET", uri: "/v1/activities", code: 200 })),
+      ).annotate({ identifier: "ListActivitiesRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          customer_id: S.optional(S.NullOr(S.String)),
+          customer_identifiers: S.optional(__S(256, __c16, 0)),
+          data: S.optional(S.Unknown),
+          delivery_id: S.optional(S.String),
+          delivery_type: S.optional(S.String),
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          timestamp: S.optional(S.Number),
+          type: S.optional(S.String),
+          url: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "ListActivitiesResponseActivitiesItem",
+      });
+    case 2:
+      return S.Array(__S(593, __c37, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          metric: S.optional(__S(42, __c5, 2)),
+          activities: S.optional(__S(594, __c37, 2)),
+          next: S.optional(S.String),
         }),
-      ).annotate({ identifier: "BroadcastMetricsResponse" });
-    case 4:
+      ).annotate({ identifier: "ListActivitiesResponse" });
+  }
+}
+function __c38(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          parent_folder_id: S.optional(S.Number.pipe(T.Query())),
+          direct_descendants_only: S.optional(S.Boolean.pipe(T.Query())),
+          page: S.optional(S.Number.pipe(T.Query())),
+          limit: S.optional(S.Number.pipe(T.Query())),
+        }).pipe(T.Http({ method: "GET", uri: "/v1/assets/folders", code: 200 })),
+      ).annotate({ identifier: "ListAssetFoldersRequest" });
+    case 1:
+      return S.Array(__S(2032, __c127, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          folders: S.optional(__S(609, __c38, 1)),
+          meta: S.optional(__S(625, __c39, 1)),
+        }),
+      ).annotate({ identifier: "ListAssetFoldersResponse" });
+  }
+}
+function __c39(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          direct_descendants_only: S.optional(S.Boolean),
+          parent_folder_id: S.optional(S.NullOr(S.Number)),
+        }),
+      ).annotate({
+        identifier: "ListAssetFoldersResponseMetaFilters",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          filters: S.optional(__S(624, __c39, 0)),
+          pagination: S.optional(__S(640, __c40, 0)),
+        }),
+      ).annotate({
+        identifier: "ListAssetFoldersResponseMeta",
+      });
+  }
+}
+function __c40(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          limit: S.optional(S.Number),
+          page: S.optional(S.Number),
+          total: S.optional(S.Number),
+        }),
+      ).annotate({
+        identifier: "ListAssetFoldersResponseMetaPagination",
+      });
+  }
+}
+function __c41(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          parent_folder_id: S.optional(S.Number.pipe(T.Query())),
+          direct_descendants_only: S.optional(S.Boolean.pipe(T.Query())),
+          page: S.optional(S.Number.pipe(T.Query())),
+          limit: S.optional(S.Number.pipe(T.Query())),
+        }).pipe(T.Http({ method: "GET", uri: "/v1/assets", code: 200 })),
+      ).annotate({ identifier: "ListAssetsRequest" });
+    case 1:
+      return S.Array(__S(2000, __c125, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          assets: S.optional(__S(657, __c41, 1)),
+          meta: S.optional(__S(625, __c39, 1)),
+        }),
+      ).annotate({ identifier: "ListAssetsResponse" });
+  }
+}
+function __c42(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({}).pipe(T.Http({ method: "GET", uri: "/v1/broadcasts", code: 200 })),
+      ).annotate({ identifier: "ListBroadcastsRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          actions: S.optional(__S(3105, __c194, 1)),
+          active: S.optional(S.Boolean),
+          created: S.optional(S.Number),
+          deduplicate_id: S.optional(S.String),
+          first_started: S.optional(S.Number),
+          id: S.optional(S.Number),
+          msg_template_ids: S.optional(__S(3105, __c194, 1)),
+          name: S.optional(S.String),
+          state: S.optional(S.String),
+          tags: S.optional(__S(2944, __c184, 0)),
+          type: S.optional(S.String),
+          updated: S.optional(S.Number),
+        }),
+      ).annotate({
+        identifier: "ListBroadcastsResponseBroadcastsItem",
+      });
+    case 2:
+      return S.Array(__S(673, __c42, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          broadcasts: S.optional(__S(674, __c42, 2)),
+        }),
+      ).annotate({ identifier: "ListBroadcastsResponse" });
+  }
+}
+function __c43(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          broadcast_id: S.Number.pipe(T.Label()),
+        }).pipe(
+          T.Http({ method: "GET", uri: "/v1/broadcasts/{broadcast_id}/triggers", code: 200 }),
+        ),
+      ).annotate({
+        identifier: "ListBroadcastTriggersRequest",
+      });
+    case 1:
+      return S.Array(__S(1888, __c118, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          triggers: S.optional(__S(689, __c43, 1)),
+        }),
+      ).annotate({
+        identifier: "ListBroadcastTriggersResponse",
+      });
+  }
+}
+function __c44(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          campaign_id: S.Number.pipe(T.Label()),
+          start: S.optional(S.String.pipe(T.Query())),
+        }).pipe(T.Http({ method: "GET", uri: "/v1/campaigns/{campaign_id}/actions", code: 200 })),
+      ).annotate({
+        identifier: "ListCampaignActionsRequest",
+      });
+    case 1:
+      return S.Array(S.Unknown);
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          actions: S.optional(__S(705, __c44, 1)),
+          next: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "ListCampaignActionsResponse",
+      });
+  }
+}
+function __c45(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({}).pipe(T.Http({ method: "GET", uri: "/v1/campaigns", code: 200 })),
+      ).annotate({ identifier: "ListCampaignsRequest" });
+    case 1:
+      return S.Array(S.Unknown);
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          campaigns: S.optional(__S(721, __c45, 1)),
+        }),
+      ).annotate({ identifier: "ListCampaignsResponse" });
+  }
+}
+function __c46(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           broadcast_id: S.Number.pipe(T.Label()),
@@ -20531,7 +21344,7 @@ function __c5(j: number): any {
           }),
         ),
       ).annotate({ identifier: "BroadcastStatusRequest" });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           broadcast_id: S.optional(S.Number),
@@ -20543,7 +21356,460 @@ function __c5(j: number): any {
           scheduled_at: S.optional(S.Number),
         }),
       ).annotate({ identifier: "BroadcastStatusResponse" });
+  }
+}
+function __c47(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          tag: S.optional(S.String.pipe(T.Query())),
+          page: S.optional(S.Number.pipe(T.Query())),
+          limit: S.optional(S.Number.pipe(T.Query())),
+          parent_folder_id: S.optional(S.String.pipe(T.Query())),
+          direct_descendants_only: S.optional(S.Boolean.pipe(T.Query())),
+          sort_by: S.optional(S.String.pipe(T.Query())),
+          sort_order: S.optional(S.String.pipe(T.Query())),
+          created_before: S.optional(S.Number.pipe(T.Query())),
+          created_after: S.optional(S.Number.pipe(T.Query())),
+          updated_before: S.optional(S.Number.pipe(T.Query())),
+          updated_after: S.optional(S.Number.pipe(T.Query())),
+        }).pipe(T.Http({ method: "GET", uri: "/v1/design_studio/components", code: 200 })),
+      ).annotate({ identifier: "ListComponentsRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          created: S.optional(S.Number),
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          parent_folder_id: S.optional(S.NullOr(S.String)),
+          tag: S.optional(S.String),
+          updated: S.optional(S.Number),
+        }),
+      ).annotate({
+        identifier: "ListComponentsResponseComponentsItem",
+      });
+    case 2:
+      return S.Array(__S(753, __c47, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          components: S.optional(__S(754, __c47, 2)),
+          folders: S.optional(__S(768, __c48, 0)),
+          meta: S.optional(__S(769, __c48, 1)),
+        }),
+      ).annotate({ identifier: "ListComponentsResponse" });
+  }
+}
+function __c48(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(2384, __c149, 0));
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          filters: S.optional(S.Unknown),
+          pagination: S.optional(__S(640, __c40, 0)),
+        }),
+      ).annotate({
+        identifier: "ListComponentsResponseMeta",
+      });
+  }
+}
+function __c49(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          page: S.optional(S.Number.pipe(T.Query())),
+          limit: S.optional(S.Number.pipe(T.Query())),
+          parent_folder_id: S.optional(S.String.pipe(T.Query())),
+          direct_descendants_only: S.optional(S.Boolean.pipe(T.Query())),
+          sort_by: S.optional(S.String.pipe(T.Query())),
+          sort_order: S.optional(S.String.pipe(T.Query())),
+          created_before: S.optional(S.Number.pipe(T.Query())),
+          created_after: S.optional(S.Number.pipe(T.Query())),
+          updated_before: S.optional(S.Number.pipe(T.Query())),
+          updated_after: S.optional(S.Number.pipe(T.Query())),
+          is_template: S.optional(S.String.pipe(T.Query())),
+          has_translations: S.optional(S.String.pipe(T.Query())),
+          is_linked: S.optional(S.String.pipe(T.Query())),
+        }).pipe(T.Http({ method: "GET", uri: "/v1/design_studio/emails", code: 200 })),
+      ).annotate({ identifier: "ListEmailsRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          created: S.optional(S.Number),
+          has_translations: S.optional(S.Boolean),
+          id: S.optional(S.String),
+          is_linked: S.optional(S.Boolean),
+          is_template: S.optional(S.Boolean),
+          name: S.optional(S.String),
+          parent_folder_id: S.optional(S.NullOr(S.String)),
+          updated: S.optional(S.Number),
+        }),
+      ).annotate({
+        identifier: "ListEmailsResponseEmailsItem",
+      });
+    case 2:
+      return S.Array(__S(785, __c49, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          emails: S.optional(__S(786, __c49, 2)),
+          folders: S.optional(__S(768, __c48, 0)),
+          meta: S.optional(__S(769, __c48, 1)),
+        }),
+      ).annotate({ identifier: "ListEmailsResponse" });
+  }
+}
+function __c50(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({ method: "GET", uri: "/v1/design_studio/emails/{id}/languages", code: 200 }),
+        ),
+      ).annotate({
+        identifier: "ListEmailTranslationsRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          bcc: S.optional(S.String),
+          fake_bcc: S.optional(S.Boolean),
+          from: S.optional(S.String),
+          from_id: S.optional(S.NullOr(S.Number)),
+          headers: S.optional(__S(2288, __c143, 0)),
+          recipient: S.optional(S.String),
+          reply_to: S.optional(S.String),
+          reply_to_id: S.optional(S.NullOr(S.Number)),
+        }),
+      ).annotate({
+        identifier: "ListEmailTranslationsResponseEmailTranslationsItemEnvelope",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          minify: S.optional(__S(2336, __c146, 0)),
+          prettify: S.optional(__S(2337, __c146, 1)),
+          type: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "ListEmailTranslationsResponseEmailTranslationsItemTransformersFormatter",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          accessibility: S.optional(__S(2144, __c134, 0)),
+          css_inliner: S.optional(__S(2146, __c134, 2)),
+          css_variables: S.optional(__S(2147, __c134, 3)),
+          encode_entities: S.optional(__S(2148, __c134, 4)),
+          formatter: S.optional(__S(802, __c50, 2)),
+          prevent_widows: S.optional(__S(2148, __c134, 4)),
+          remove_unused_css: S.optional(__S(2338, __c146, 2)),
+          url_parameters: S.optional(__S(2339, __c146, 3)),
+        }),
+      ).annotate({
+        identifier: "ListEmailTranslationsResponseEmailTranslationsItemTransformers",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          available_languages: S.optional(__S(2208, __c138, 0)),
+          content: S.optional(__S(2192, __c137, 0)),
+          created: S.optional(S.Number),
+          envelope: S.optional(__S(801, __c50, 1)),
+          is_linked: S.optional(S.Boolean),
+          is_template: S.optional(S.Boolean),
+          language: S.optional(S.String),
+          language_group_id: S.optional(S.String),
+          parent_folder_id: S.optional(S.NullOr(S.String)),
+          transformers: S.optional(__S(803, __c50, 3)),
+          updated: S.optional(S.Number),
+        }),
+      ).annotate({
+        identifier: "ListEmailTranslationsResponseEmailTranslationsItem",
+      });
+    case 5:
+      return S.Array(__S(804, __c50, 4));
     case 6:
+      return S.suspend(() =>
+        S.Struct({
+          email_translations: S.optional(__S(805, __c50, 5)),
+        }),
+      ).annotate({
+        identifier: "ListEmailTranslationsResponse",
+      });
+  }
+}
+function __c51(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({}).pipe(T.Http({ method: "GET", uri: "/v1/exports", code: 200 })),
+      ).annotate({ identifier: "ListExportsRequest" });
+    case 1:
+      return S.Array(__S(3008, __c188, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          exports: S.optional(__S(817, __c51, 1)),
+        }),
+      ).annotate({ identifier: "ListExportsResponse" });
+  }
+}
+function __c52(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          page: S.optional(S.Number.pipe(T.Query())),
+          limit: S.optional(S.Number.pipe(T.Query())),
+          parent_folder_id: S.optional(S.String.pipe(T.Query())),
+          direct_descendants_only: S.optional(S.Boolean.pipe(T.Query())),
+          sort_by: S.optional(S.String.pipe(T.Query())),
+          sort_order: S.optional(S.String.pipe(T.Query())),
+          created_before: S.optional(S.Number.pipe(T.Query())),
+          created_after: S.optional(S.Number.pipe(T.Query())),
+          updated_before: S.optional(S.Number.pipe(T.Query())),
+          updated_after: S.optional(S.Number.pipe(T.Query())),
+        }).pipe(T.Http({ method: "GET", uri: "/v1/design_studio/folders", code: 200 })),
+      ).annotate({ identifier: "ListFoldersRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          folders: S.optional(__S(768, __c48, 0)),
+          meta: S.optional(__S(769, __c48, 1)),
+        }),
+      ).annotate({ identifier: "ListFoldersResponse" });
+  }
+}
+function __c53(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({}).pipe(
+          T.Http({ method: "GET", uri: "/v1/design_studio/inbox_previews/clients", code: 200 }),
+        ),
+      ).annotate({
+        identifier: "ListInboxPreviewClientsRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          browser: S.optional(S.String),
+          category: S.optional(S.String),
+          client: S.optional(S.String),
+          id: S.optional(S.String),
+          os: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "ListInboxPreviewClientsResponseClientsItem",
+      });
+    case 2:
+      return S.Array(__S(849, __c53, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          clients: S.optional(__S(850, __c53, 2)),
+        }),
+      ).annotate({
+        identifier: "ListInboxPreviewClientsResponse",
+      });
+  }
+}
+function __c54(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          node_id: S.optional(S.String.pipe(T.Query())),
+          limit: S.optional(S.Number.pipe(T.Query())),
+          cursor: S.optional(S.String.pipe(T.Query())),
+        }).pipe(T.Http({ method: "GET", uri: "/v1/design_studio/inbox_previews/jobs", code: 200 })),
+      ).annotate({
+        identifier: "ListInboxPreviewJobsRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          limit: S.optional(S.Number),
+          next_cursor: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "ListInboxPreviewJobsResponseMetaPagination",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          pagination: S.optional(__S(865, __c54, 1)),
+        }),
+      ).annotate({
+        identifier: "ListInboxPreviewJobsResponseMeta",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          created_at: S.optional(S.Number),
+          is_processed: S.optional(S.Boolean),
+          name: S.optional(S.String),
+          node_count: S.optional(S.Number),
+          node_id: S.optional(S.String),
+          run_id: S.optional(S.Number),
+          total_previews_bounced: S.optional(S.Number),
+          total_previews_cached: S.optional(S.Number),
+          total_previews_ready: S.optional(S.Number),
+          total_previews_requested: S.optional(S.Number),
+          total_previews_succeeded: S.optional(S.Number),
+          updated_at: S.optional(S.Number),
+        }),
+      ).annotate({
+        identifier: "ListInboxPreviewJobsResponsePreviewJobsItem",
+      });
+    case 4:
+      return S.Array(__S(867, __c54, 3));
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          meta: S.optional(__S(866, __c54, 2)),
+          preview_jobs: S.optional(__S(868, __c54, 4)),
+        }),
+      ).annotate({
+        identifier: "ListInboxPreviewJobsResponse",
+      });
+  }
+}
+function __c55(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          start: S.optional(S.String.pipe(T.Query())),
+          limit: S.optional(S.Number.pipe(T.Query())),
+          type: S.optional(S.String.pipe(T.Query())),
+          metric: S.optional(S.String.pipe(T.Query())),
+          drafts: S.optional(S.Boolean.pipe(T.Query())),
+          campaign_id: S.optional(S.Number.pipe(T.Query())),
+          newsletter_id: S.optional(S.Number.pipe(T.Query())),
+          action_id: S.optional(S.Number.pipe(T.Query())),
+          start_ts: S.optional(S.Number.pipe(T.Query())),
+          end_ts: S.optional(S.Number.pipe(T.Query())),
+          get_tracked_responses: S.optional(S.Boolean.pipe(T.Query())),
+        }).pipe(T.Http({ method: "GET", uri: "/v1/messages", code: 200 })),
+      ).annotate({ identifier: "ListMessagesRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          action_id: S.optional(S.Number),
+          broadcast_id: S.optional(S.NullOr(S.Number)),
+          campaign_id: S.optional(S.NullOr(S.Number)),
+          content_id: S.optional(S.Number),
+          created: S.optional(S.Number),
+          customer_id: S.optional(S.NullOr(S.String)),
+          customer_identifiers: S.optional(__S(256, __c16, 0)),
+          deduplicate_id: S.optional(S.String),
+          failure_message: S.optional(S.NullOr(S.String)),
+          forgotten: S.optional(S.Boolean),
+          id: S.optional(S.String),
+          message_template_id: S.optional(S.Number),
+          metrics: S.optional(__S(240, __c15, 0)),
+          newsletter_id: S.optional(S.NullOr(S.Number)),
+          parent_action_id: S.optional(S.Number),
+          recipient: S.optional(S.String),
+          subject: S.optional(S.String),
+          tracked_responses: S.optional(__S(242, __c15, 2)),
+          trigger_event_id: S.optional(S.String),
+          type: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "ListMessagesResponseMessagesItem",
+      });
+    case 2:
+      return S.Array(__S(881, __c55, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          messages: S.optional(__S(882, __c55, 2)),
+        }),
+      ).annotate({ identifier: "ListMessagesResponse" });
+  }
+}
+function __c56(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          limit: S.optional(S.Number.pipe(T.Query())),
+          sort: S.optional(S.String.pipe(T.Query())),
+          start: S.optional(S.String.pipe(T.Query())),
+        }).pipe(T.Http({ method: "GET", uri: "/v1/newsletters", code: 200 })),
+      ).annotate({ identifier: "ListNewslettersRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          content_ids: S.optional(__S(3200, __c200, 0)),
+          created: S.optional(S.Number),
+          deduplicate_id: S.optional(S.String),
+          expires_after: S.optional(S.Number),
+          id: S.optional(S.Number),
+          name: S.optional(S.String),
+          recipient_file_error: S.optional(S.String),
+          recipient_file_status: S.optional(S.String),
+          recipient_segment_ids: S.optional(__S(3200, __c200, 0)),
+          scheduled_at: S.optional(S.NullOr(S.Number)),
+          send_state: S.optional(S.String),
+          sent_at: S.optional(S.NullOr(S.Number)),
+          subscription_topic_id: S.optional(S.Number),
+          tags: S.optional(__S(2944, __c184, 0)),
+          timezone: S.optional(S.String),
+          type: S.optional(S.String),
+          tz_match_enabled: S.optional(S.Boolean),
+          updated: S.optional(S.Number),
+        }),
+      ).annotate({
+        identifier: "ListNewslettersResponseNewslettersItem",
+      });
+    case 2:
+      return S.Array(__S(897, __c56, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          newsletters: S.optional(__S(898, __c56, 2)),
+          next: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ListNewslettersResponse" });
+  }
+}
+function __c57(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          newsletter_id: S.Number.pipe(T.Label()),
+        }).pipe(
+          T.Http({ method: "GET", uri: "/v1/newsletters/{newsletter_id}/contents", code: 200 }),
+        ),
+      ).annotate({
+        identifier: "ListNewsletterVariantsRequest",
+      });
+    case 1:
+      return S.Array(__S(3728, __c233, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          contents: S.optional(__S(913, __c57, 1)),
+        }),
+      ).annotate({
+        identifier: "ListNewsletterVariantsResponse",
+      });
+  }
+}
+function __c58(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           campaign_id: S.Number.pipe(T.Label()),
@@ -20562,48 +21828,356 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "CampaignActionLinksRequest",
       });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          clicked: S.optional(__S(7, __c0, 7)),
-          human_clicked: S.optional(__S(8, __c1, 0)),
-          machine_clicked: S.optional(__S(8, __c1, 0)),
-        }),
-      ).annotate({
-        identifier: "CampaignActionLinksResponseLinksItemMetricSeries",
-      });
   }
 }
-function __c6(j: number): any {
+function __c59(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          series: S.optional(__S(47, __c5, 7)),
+          clicked: S.optional(__S(3200, __c200, 0)),
+          human_clicked: S.optional(__S(3216, __c201, 0)),
+          machine_clicked: S.optional(__S(3216, __c201, 0)),
         }),
       ).annotate({
-        identifier: "CampaignActionLinksResponseLinksItemMetric",
+        identifier: "CampaignActionLinksResponseLinksItemMetricSeries",
       });
     case 1:
       return S.suspend(() =>
         S.Struct({
-          link: S.optional(__S(6, __c0, 6)),
-          metric: S.optional(__S(48, __c6, 0)),
+          series: S.optional(__S(944, __c59, 0)),
+        }),
+      ).annotate({
+        identifier: "CampaignActionLinksResponseLinksItemMetric",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          link: S.optional(__S(3184, __c199, 0)),
+          metric: S.optional(__S(945, __c59, 1)),
         }),
       ).annotate({
         identifier: "CampaignActionLinksResponseLinksItem",
       });
-    case 2:
-      return S.Array(__S(49, __c6, 1));
     case 3:
+      return S.Array(__S(946, __c59, 2));
+    case 4:
       return S.suspend(() =>
         S.Struct({
-          links: S.optional(__S(50, __c6, 2)),
+          links: S.optional(__S(947, __c59, 3)),
         }),
       ).annotate({
         identifier: "CampaignActionLinksResponse",
       });
+  }
+}
+function __c60(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({}).pipe(T.Http({ method: "GET", uri: "/v1/segments", code: 200 })),
+      ).annotate({ identifier: "ListSegmentsRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          conditions: S.optional(__S(2432, __c152, 0)),
+          created_at: S.optional(S.Number),
+          deduplicate_id: S.optional(S.String),
+          description: S.optional(S.String),
+          id: S.optional(S.Number),
+          name: S.optional(S.String),
+          progress: S.optional(S.NullOr(S.Number)),
+          state: S.optional(S.String),
+          tags: S.optional(S.NullOr(__S(2944, __c184, 0))),
+          type: S.optional(S.String),
+          updated_at: S.optional(S.Number),
+        }),
+      ).annotate({
+        identifier: "ListSegmentsResponseSegmentsItem",
+      });
+    case 2:
+      return S.Array(__S(961, __c60, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          segments: S.optional(__S(962, __c60, 2)),
+        }),
+      ).annotate({ identifier: "ListSegmentsResponse" });
+  }
+}
+function __c61(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          start: S.optional(S.String.pipe(T.Query())),
+          limit: S.optional(S.Number.pipe(T.Query())),
+          sort: S.optional(S.String.pipe(T.Query())),
+          hidden: S.optional(S.Boolean.pipe(T.Query())),
+        }).pipe(T.Http({ method: "GET", uri: "/v1/sender_identities", code: 200 })),
+      ).annotate({ identifier: "ListSendersRequest" });
+    case 1:
+      return S.Array(__S(192, __c12, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          next: S.optional(S.String),
+          sender_identities: S.optional(__S(977, __c61, 1)),
+        }),
+      ).annotate({ identifier: "ListSendersResponse" });
+  }
+}
+function __c62(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({}).pipe(T.Http({ method: "GET", uri: "/v1/snippets", code: 200 })),
+      ).annotate({ identifier: "ListSnippetsRequest" });
+    case 1:
+      return S.Array(__S(2528, __c158, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          snippets: S.optional(__S(993, __c62, 1)),
+        }),
+      ).annotate({ identifier: "ListSnippetsResponse" });
+  }
+}
+function __c63(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({}).pipe(T.Http({ method: "GET", uri: "/v1/transactional", code: 200 })),
+      ).annotate({ identifier: "ListTransactionalRequest" });
+    case 1:
+      return S.Array(__S(352, __c22, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          messages: S.optional(__S(1009, __c63, 1)),
+        }),
+      ).annotate({
+        identifier: "ListTransactionalResponse",
+      });
+  }
+}
+function __c64(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          transactional_id: S.Number.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/v1/transactional/{transactional_id}/contents",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "ListTransactionalVariantsRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          contents: S.optional(__S(416, __c26, 0)),
+        }),
+      ).annotate({
+        identifier: "ListTransactionalVariantsResponse",
+      });
+  }
+}
+function __c65(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String.pipe(T.Label()),
+          start_date: S.optional(S.Number.pipe(T.Query())),
+          end_date: S.optional(S.Number.pipe(T.Query())),
+        }).pipe(
+          T.Http({ method: "GET", uri: "/v1/design_studio/emails/{id}/versions", code: 200 }),
+        ),
+      ).annotate({ identifier: "ListVersionsRequest" });
+    case 1:
+      return S.Array(__S(496, __c31, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          versions: S.optional(__S(1041, __c65, 1)),
+        }),
+      ).annotate({ identifier: "ListVersionsResponse" });
+  }
+}
+function __c66(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({}).pipe(T.Http({ method: "GET", uri: "/v1/reporting_webhooks", code: 200 })),
+      ).annotate({ identifier: "ListWebhooksRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          endpoint: S.String,
+          events: __S(2576, __c161, 0),
+          name: S.String,
+          disabled: S.optional(S.Boolean),
+          full_resolution: S.optional(S.Boolean),
+          id: S.optional(S.Number),
+          type: S.optional(S.String),
+          with_content: S.optional(S.Boolean),
+        }),
+      ).annotate({
+        identifier: "ListWebhooksResponseReportingWebhooksItem",
+      });
+    case 2:
+      return S.Array(__S(1057, __c66, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          reporting_webhooks: S.optional(__S(1058, __c66, 2)),
+        }),
+      ).annotate({ identifier: "ListWebhooksResponse" });
+  }
+}
+function __c67(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({}).pipe(T.Http({ method: "GET", uri: "/v1/workspaces", code: 200 })),
+      ).annotate({ identifier: "ListWorkspacesRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          billable_messages_sent: S.optional(S.Number),
+          id: S.optional(S.Number),
+          messages_sent: S.optional(S.Number),
+          name: S.optional(S.String),
+          object_types: S.optional(S.Number),
+          objects: S.optional(S.Number),
+          people: S.optional(S.Number),
+        }),
+      ).annotate({
+        identifier: "ListWorkspacesResponseWorkspacesItem",
+      });
+    case 2:
+      return S.Array(__S(1073, __c67, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          workspaces: S.optional(__S(1074, __c67, 2)),
+        }),
+      ).annotate({ identifier: "ListWorkspacesResponse" });
+  }
+}
+function __c68(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          suppression_type: S.String.pipe(T.Label()),
+          email_address: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/v1/esp/suppression/{suppression_type}/{email_address}",
+            code: 200,
+          }),
+        ),
+      ).annotate({ identifier: "PostSuppressionRequest" });
+    case 1:
+      return S.suspend(() => S.Unknown.pipe(T.RawResponseRoot())).annotate({
+        identifier: "PostSuppressionResponse",
+      });
+  }
+}
+function __c69(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String.pipe(T.Label()),
+          campaign: S.optional(S.Unknown),
+          customer: S.optional(S.Unknown),
+          event: S.optional(S.Unknown),
+          journey: S.optional(S.Unknown),
+          lax: S.optional(S.Boolean),
+          message: S.optional(S.Unknown),
+          objects: S.optional(S.Unknown),
+          trigger: S.optional(S.Unknown),
+        }).pipe(
+          T.Http({ method: "POST", uri: "/v1/design_studio/emails/{id}/preview", code: 200 }),
+        ),
+      ).annotate({ identifier: "PreviewEmailRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          bcc: S.optional(__S(2944, __c184, 0)),
+          body: S.optional(__S(2944, __c184, 0)),
+          body_amp: S.optional(__S(2944, __c184, 0)),
+          body_plain: S.optional(__S(2944, __c184, 0)),
+          cc: S.optional(__S(2944, __c184, 0)),
+          event: S.optional(__S(2944, __c184, 0)),
+          from: S.optional(__S(2944, __c184, 0)),
+          layout: S.optional(__S(2944, __c184, 0)),
+          message: S.optional(__S(2944, __c184, 0)),
+          preheader_text: S.optional(__S(2944, __c184, 0)),
+          reply_to: S.optional(__S(2944, __c184, 0)),
+          snippets: S.optional(__S(2944, __c184, 0)),
+          subject: S.optional(__S(2944, __c184, 0)),
+          to: S.optional(__S(2944, __c184, 0)),
+          trigger: S.optional(__S(2944, __c184, 0)),
+        }),
+      ).annotate({
+        identifier: "PreviewEmailResponseErrors",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.optional(__S(2944, __c184, 0)),
+          value: S.optional(__S(2944, __c184, 0)),
+        }),
+      ).annotate({
+        identifier: "PreviewEmailResponseHeadersItem",
+      });
+    case 3:
+      return S.Array(__S(1106, __c69, 2));
     case 4:
+      return S.suspend(() =>
+        S.Struct({
+          errors: S.optional(__S(2944, __c184, 0)),
+          text: S.optional(S.String),
+          tracked: S.optional(S.Boolean),
+          url: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "PreviewEmailResponseLinksItem",
+      });
+    case 5:
+      return S.Array(__S(1108, __c69, 4));
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          amp: S.optional(S.String),
+          errors: S.optional(__S(1105, __c69, 1)),
+          from: S.optional(S.String),
+          headers: S.optional(__S(1107, __c69, 3)),
+          html: S.optional(S.String),
+          language: S.optional(S.String),
+          links: S.optional(__S(1109, __c69, 5)),
+          node_id: S.optional(S.String),
+          node_type: S.optional(S.String),
+          plaintext_body: S.optional(S.String),
+          preheader_text: S.optional(S.String),
+          subject: S.optional(S.String),
+          text: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "PreviewEmailResponse" });
+  }
+}
+function __c70(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           campaign_id: S.Number.pipe(T.Label()),
@@ -20626,53 +22200,12 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "CampaignActionMetricsRequest",
       });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          attempted: S.optional(__S(7, __c0, 7)),
-          bounced: S.optional(__S(7, __c0, 7)),
-          clicked: S.optional(__S(7, __c0, 7)),
-          converted: S.optional(__S(7, __c0, 7)),
-          created: S.optional(__S(7, __c0, 7)),
-          deferred: S.optional(__S(7, __c0, 7)),
-          delivered: S.optional(__S(7, __c0, 7)),
-          drafted: S.optional(__S(7, __c0, 7)),
-          failed: S.optional(__S(7, __c0, 7)),
-          human_clicked: S.optional(__S(7, __c0, 7)),
-          human_opened: S.optional(__S(7, __c0, 7)),
-          link_untracked: S.optional(__S(7, __c0, 7)),
-          machine_clicked: S.optional(__S(7, __c0, 7)),
-          open_untracked: S.optional(__S(7, __c0, 7)),
-          opened: S.optional(__S(7, __c0, 7)),
-          prefetch_opened: S.optional(__S(7, __c0, 7)),
-          replied: S.optional(__S(7, __c0, 7)),
-          sent: S.optional(__S(7, __c0, 7)),
-          spammed: S.optional(__S(7, __c0, 7)),
-          suppressed: S.optional(__S(7, __c0, 7)),
-          topic_unsubscribed: S.optional(__S(7, __c0, 7)),
-          tracking_consent_denied: S.optional(__S(8, __c1, 0)),
-          tracking_consent_granted: S.optional(__S(8, __c1, 0)),
-          undeliverable: S.optional(__S(7, __c0, 7)),
-          unsubscribed: S.optional(__S(7, __c0, 7)),
-          untracked: S.optional(__S(7, __c0, 7)),
-        }),
-      ).annotate({
-        identifier: "CampaignActionMetricsResponseMetricSeries",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          series: S.optional(__S(53, __c6, 5)),
-        }),
-      ).annotate({
-        identifier: "CampaignActionMetricsResponseMetric",
-      });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           end: S.optional(S.String),
-          language_variants: S.optional(__S(17, __c2, 1)),
-          metric: S.optional(__S(54, __c6, 6)),
+          language_variants: S.optional(__S(3426, __c214, 2)),
+          metric: S.optional(__S(1136, __c71, 0)),
           res: S.optional(S.String),
           start: S.optional(S.String),
         }),
@@ -20681,7 +22214,392 @@ function __c6(j: number): any {
       });
   }
 }
-function __c7(j: number): any {
+function __c71(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          series: S.optional(__S(1152, __c72, 0)),
+        }),
+      ).annotate({
+        identifier: "CampaignActionMetricsResponseMetric",
+      });
+  }
+}
+function __c72(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          attempted: S.optional(__S(3200, __c200, 0)),
+          bounced: S.optional(__S(3200, __c200, 0)),
+          clicked: S.optional(__S(3200, __c200, 0)),
+          converted: S.optional(__S(3200, __c200, 0)),
+          created: S.optional(__S(3200, __c200, 0)),
+          deferred: S.optional(__S(3200, __c200, 0)),
+          delivered: S.optional(__S(3200, __c200, 0)),
+          drafted: S.optional(__S(3200, __c200, 0)),
+          failed: S.optional(__S(3200, __c200, 0)),
+          human_clicked: S.optional(__S(3200, __c200, 0)),
+          human_opened: S.optional(__S(3200, __c200, 0)),
+          link_untracked: S.optional(__S(3200, __c200, 0)),
+          machine_clicked: S.optional(__S(3200, __c200, 0)),
+          open_untracked: S.optional(__S(3200, __c200, 0)),
+          opened: S.optional(__S(3200, __c200, 0)),
+          prefetch_opened: S.optional(__S(3200, __c200, 0)),
+          replied: S.optional(__S(3200, __c200, 0)),
+          sent: S.optional(__S(3200, __c200, 0)),
+          spammed: S.optional(__S(3200, __c200, 0)),
+          suppressed: S.optional(__S(3200, __c200, 0)),
+          topic_unsubscribed: S.optional(__S(3200, __c200, 0)),
+          tracking_consent_denied: S.optional(__S(3216, __c201, 0)),
+          tracking_consent_granted: S.optional(__S(3216, __c201, 0)),
+          undeliverable: S.optional(__S(3200, __c200, 0)),
+          unsubscribed: S.optional(__S(3200, __c200, 0)),
+          untracked: S.optional(__S(3200, __c200, 0)),
+        }),
+      ).annotate({
+        identifier: "CampaignActionMetricsResponseMetricSeries",
+      });
+  }
+}
+function __c73(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({ method: "POST", uri: "/v1/design_studio/emails/{id}/publish", code: 200 }),
+        ),
+      ).annotate({ identifier: "PublishEmailRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          mappings: S.optional(__S(97, __c6, 1)),
+          publish_id: S.optional(S.String),
+          status: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "PublishEmailResponse" });
+  }
+}
+function __c74(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String.pipe(T.Label()),
+        }).pipe(T.Http({ method: "GET", uri: "/v1/design_studio/emails/{id}/render", code: 200 })),
+      ).annotate({ identifier: "RenderEmailRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          amp: S.optional(S.String),
+          html: S.optional(S.String),
+          language: S.optional(S.String),
+          node_id: S.optional(S.String),
+          node_type: S.optional(S.String),
+          text: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "RenderEmailResponse" });
+  }
+}
+function __c75(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String.pipe(T.Label()),
+          version_id: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/v1/design_studio/emails/{id}/versions/{version_id}/restore",
+            code: 200,
+          }),
+        ),
+      ).annotate({ identifier: "RestoreVersionRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          node_id: S.optional(S.String),
+          restored_node_ids: S.optional(__S(2944, __c184, 0)),
+          version_id: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "RestoreVersionResponse" });
+  }
+}
+function __c76(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String.pipe(T.Label()),
+        }).pipe(T.Http({ method: "GET", uri: "/v1/design_studio/emails/{id}/review", code: 200 })),
+      ).annotate({ identifier: "ReviewEmailRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          error: S.optional(S.String),
+          status: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "ReviewEmailResponseChecksValue",
+      });
+    case 2:
+      return S.Record(S.String, __S(1217, __c76, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          check: S.optional(S.String),
+          details: S.optional(S.String),
+          id: S.optional(S.String),
+          severity: S.optional(S.String),
+          state: S.optional(S.String),
+          summary: S.optional(S.String),
+          title: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "ReviewEmailResponseFindingsItem",
+      });
+    case 4:
+      return S.Array(__S(1219, __c76, 3));
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          error: S.optional(S.Number),
+          tip: S.optional(S.Number),
+          warning: S.optional(S.Number),
+        }),
+      ).annotate({
+        identifier: "ReviewEmailResponseScoreCounts",
+      });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          counts: S.optional(__S(1221, __c76, 5)),
+          score: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "ReviewEmailResponseScore" });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          checks: S.optional(__S(1218, __c76, 2)),
+          findings: S.optional(__S(1220, __c76, 4)),
+          node_id: S.optional(S.String),
+          score: S.optional(__S(1222, __c76, 6)),
+          status: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ReviewEmailResponse" });
+  }
+}
+function __c77(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String.pipe(T.Label()),
+          name: S.String,
+          description: S.optional(S.String),
+        }).pipe(
+          T.Http({ method: "POST", uri: "/v1/design_studio/emails/{id}/versions", code: 200 }),
+        ),
+      ).annotate({ identifier: "SaveVersionRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          created: S.optional(S.Boolean),
+          version: S.optional(__S(496, __c31, 0)),
+        }),
+      ).annotate({ identifier: "SaveVersionResponse" });
+  }
+}
+function __c78(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          newsletter_id: S.Number.pipe(T.Label()),
+          scheduled_at: S.Number,
+          expires_after: S.optional(S.Number),
+          rate_limit_email_rate: S.optional(S.Number),
+          rate_limit_spread: S.optional(S.Boolean),
+          rate_limit_time_period: S.optional(S.Number),
+          timezone: S.optional(S.String),
+          tz_match_enabled: S.optional(S.Boolean),
+        }).pipe(
+          T.Http({ method: "POST", uri: "/v1/newsletters/{newsletter_id}/schedule", code: 200 }),
+        ),
+      ).annotate({
+        identifier: "ScheduleNewsletterRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          content_ids: S.optional(__S(3200, __c200, 0)),
+          created: S.optional(S.Number),
+          deduplicate_id: S.optional(S.String),
+          expires_after: S.optional(S.Number),
+          id: S.optional(S.Number),
+          name: S.optional(S.String),
+          recipient_file_error: S.optional(S.String),
+          recipient_file_status: S.optional(S.String),
+          recipient_segment_ids: S.optional(__S(3200, __c200, 0)),
+          scheduled_at: S.optional(S.NullOr(S.Number)),
+          send_state: S.optional(S.String),
+          sent_at: S.optional(S.NullOr(S.Number)),
+          subscription_topic_id: S.optional(S.Number),
+          tags: S.optional(__S(2944, __c184, 0)),
+          timezone: S.optional(S.String),
+          type: S.optional(S.String),
+          tz_match_enabled: S.optional(S.Boolean),
+          updated: S.optional(S.Number),
+        }),
+      ).annotate({
+        identifier: "ScheduleNewsletterResponseNewsletter",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          newsletter: S.optional(__S(1249, __c78, 1)),
+        }),
+      ).annotate({
+        identifier: "ScheduleNewsletterResponse",
+      });
+  }
+}
+function __c79(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          _file_name_: S.optional(S.String.pipe(T.Body("<file-name>"))),
+        }),
+      ).annotate({
+        identifier: "SendEmailRequestAttachments",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          to: S.String,
+          attachments: S.optional(__S(1264, __c79, 0)),
+          auto_create: S.optional(S.Boolean),
+          bcc: S.optional(S.String),
+          body: S.optional(S.String),
+          body_amp: S.optional(S.String),
+          body_plain: S.optional(S.String),
+          cc: S.optional(S.String),
+          disable_css_preprocessing: S.optional(S.Boolean),
+          disable_message_retention: S.optional(S.Boolean),
+          fake_bcc: S.optional(S.Boolean),
+          from: S.optional(S.String),
+          headers: S.optional(S.String),
+          identifiers: S.optional(S.Unknown),
+          language: S.optional(S.String),
+          message_data: S.optional(__S(2432, __c152, 0)),
+          preheader: S.optional(S.String),
+          queue_draft: S.optional(S.Boolean),
+          reply_to: S.optional(S.String),
+          send_at: S.optional(S.Number),
+          send_to_unsubscribed: S.optional(S.Boolean),
+          subject: S.optional(S.String),
+          tracked: S.optional(S.Boolean),
+          transactional_message_id: S.optional(S.Unknown),
+        }).pipe(T.Http({ method: "POST", uri: "/v1/send/email", code: 200 })),
+      ).annotate({ identifier: "SendEmailRequest" });
+  }
+}
+function __c80(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          delivery_id: S.optional(S.String),
+          queued_at: S.optional(S.Number),
+          send_at: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "SendEmailResponse" });
+  }
+}
+function __c81(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          identifiers: S.Unknown,
+          transactional_message_id: S.Unknown,
+          auto_create: S.optional(S.Boolean),
+          language: S.optional(S.String),
+          message_data: S.optional(__S(2432, __c152, 0)),
+          queue_draft: S.optional(S.Boolean),
+          send_at: S.optional(S.Number),
+        }).pipe(T.Http({ method: "POST", uri: "/v1/send/in_app", code: 200 })),
+      ).annotate({ identifier: "SendInAppRequest" });
+  }
+}
+function __c82(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          identifiers: S.Unknown,
+          transactional_message_id: S.Unknown,
+          auto_create: S.optional(S.Boolean),
+          language: S.optional(S.String),
+          message_data: S.optional(__S(2432, __c152, 0)),
+          queue_draft: S.optional(S.Boolean),
+          send_at: S.optional(S.Number),
+          to: S.optional(S.String),
+        }).pipe(T.Http({ method: "POST", uri: "/v1/send/inbox_message", code: 200 })),
+      ).annotate({ identifier: "SendInboxMessageRequest" });
+  }
+}
+function __c83(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          newsletter_id: S.Number.pipe(T.Label()),
+          expires_after: S.optional(S.Number),
+          rate_limit_email_rate: S.optional(S.Number),
+          rate_limit_spread: S.optional(S.Boolean),
+          rate_limit_time_period: S.optional(S.Number),
+        }).pipe(T.Http({ method: "POST", uri: "/v1/newsletters/{newsletter_id}/send", code: 200 })),
+      ).annotate({ identifier: "SendNewsletterRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          content_ids: S.optional(__S(3200, __c200, 0)),
+          created: S.optional(S.Number),
+          deduplicate_id: S.optional(S.String),
+          expires_after: S.optional(S.Number),
+          id: S.optional(S.Number),
+          name: S.optional(S.String),
+          recipient_file_error: S.optional(S.String),
+          recipient_file_status: S.optional(S.String),
+          recipient_segment_ids: S.optional(__S(3200, __c200, 0)),
+          scheduled_at: S.optional(S.NullOr(S.Number)),
+          send_state: S.optional(S.String),
+          sent_at: S.optional(S.NullOr(S.Number)),
+          subscription_topic_id: S.optional(S.Number),
+          tags: S.optional(__S(2944, __c184, 0)),
+          timezone: S.optional(S.String),
+          type: S.optional(S.String),
+          tz_match_enabled: S.optional(S.Boolean),
+          updated: S.optional(S.Number),
+        }),
+      ).annotate({
+        identifier: "SendNewsletterResponseNewsletter",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          newsletter: S.optional(__S(1329, __c83, 1)),
+        }),
+      ).annotate({ identifier: "SendNewsletterResponse" });
+  }
+}
+function __c84(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -20699,13 +22617,13 @@ function __c7(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          activated: S.optional(__S(7, __c0, 7)),
-          converted: S.optional(__S(7, __c0, 7)),
-          exited_early: S.optional(__S(7, __c0, 7)),
-          finished: S.optional(__S(7, __c0, 7)),
-          messaged: S.optional(__S(7, __c0, 7)),
-          never_activated: S.optional(__S(7, __c0, 7)),
-          started: S.optional(__S(7, __c0, 7)),
+          activated: S.optional(__S(3200, __c200, 0)),
+          converted: S.optional(__S(3200, __c200, 0)),
+          exited_early: S.optional(__S(3200, __c200, 0)),
+          finished: S.optional(__S(3200, __c200, 0)),
+          messaged: S.optional(__S(3200, __c200, 0)),
+          never_activated: S.optional(__S(3200, __c200, 0)),
+          started: S.optional(__S(3200, __c200, 0)),
         }),
       ).annotate({
         identifier: "CampaignJourneyMetricsResponseJourneyMetric",
@@ -20713,12 +22631,391 @@ function __c7(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          journey_metric: S.optional(__S(57, __c7, 1)),
+          journey_metric: S.optional(__S(1345, __c84, 1)),
         }),
       ).annotate({
         identifier: "CampaignJourneyMetricsResponse",
       });
+  }
+}
+function __c85(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          app_identifier: S.optional(S.String),
+          app_version: S.optional(S.String),
+          cio_sdk_version: S.optional(S.String),
+          device_locale: S.optional(S.String),
+          device_model: S.optional(S.String),
+          device_os: S.optional(S.String),
+          push_enabled: S.optional(S.Boolean.pipe(T.StringEncoded())),
+        }),
+      ).annotate({
+        identifier: "SendPushRequestCustomDeviceAttributes",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          platform: S.String,
+          token: S.String,
+          attributes: S.optional(__S(1360, __c85, 0)),
+          last_used: S.optional(S.Number),
+        }),
+      ).annotate({
+        identifier: "SendPushRequestCustomDevice",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          body_loc_arg: S.optional(S.String),
+          body_loc_key: S.optional(S.String),
+          click_action: S.optional(S.String),
+          color: S.optional(S.String),
+          icon: S.optional(S.String),
+          sound: S.optional(S.String),
+          tag: S.optional(S.String),
+          title_loc_arg: S.optional(S.String),
+          title_loc_key: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "SendPushRequestCustomPayloadAndroidMessageAndroidNotification",
+      });
     case 3:
+      return S.suspend(() =>
+        S.Struct({
+          notification: S.optional(__S(1362, __c85, 2)),
+        }),
+      ).annotate({
+        identifier: "SendPushRequestCustomPayloadAndroidMessageAndroid",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          body: S.optional(S.String),
+          title: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "SendPushRequestCustomPayloadAndroidMessageNotification",
+      });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          android: S.optional(__S(1363, __c85, 3)),
+          data: S.optional(__S(3568, __c223, 0)),
+          notification: S.optional(__S(1364, __c85, 4)),
+        }),
+      ).annotate({
+        identifier: "SendPushRequestCustomPayloadAndroidMessage",
+      });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          message: __S(1365, __c85, 5),
+        }),
+      ).annotate({
+        identifier: "SendPushRequestCustomPayloadAndroid",
+      });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          android: S.optional(__S(1366, __c85, 6)),
+          ios: S.optional(S.Unknown),
+        }),
+      ).annotate({
+        identifier: "SendPushRequestCustomPayload",
+      });
+    case 8:
+      return S.suspend(() =>
+        S.Struct({
+          identifiers: S.Unknown,
+          transactional_message_id: S.Unknown,
+          auto_create: S.optional(S.Boolean),
+          custom_data: S.optional(S.Unknown),
+          custom_device: S.optional(__S(1361, __c85, 1)),
+          custom_payload: S.optional(__S(1367, __c85, 7)),
+          disable_message_retention: S.optional(S.Boolean),
+          image_url: S.optional(S.String),
+          language: S.optional(S.String),
+          link: S.optional(S.String),
+          message: S.optional(S.String),
+          message_data: S.optional(__S(2432, __c152, 0)),
+          queue_draft: S.optional(S.Boolean),
+          send_at: S.optional(S.Number),
+          send_to_unsubscribed: S.optional(S.Boolean),
+          sound: S.optional(S.String),
+          title: S.optional(S.String),
+          to: S.optional(S.String),
+        }).pipe(T.Http({ method: "POST", uri: "/v1/send/push", code: 200 })),
+      ).annotate({ identifier: "SendPushRequest" });
+  }
+}
+function __c86(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          identifiers: S.Unknown,
+          to: S.String,
+          transactional_message_id: S.Unknown,
+          auto_create: S.optional(S.Boolean),
+          disable_message_retention: S.optional(S.Boolean),
+          from: S.optional(S.String),
+          language: S.optional(S.String),
+          message_data: S.optional(__S(2432, __c152, 0)),
+          queue_draft: S.optional(S.Boolean),
+          send_at: S.optional(S.Number),
+          send_to_unsubscribed: S.optional(S.Boolean),
+          tracked: S.optional(S.Boolean),
+        }).pipe(T.Http({ method: "POST", uri: "/v1/send/sms", code: 200 })),
+      ).annotate({ identifier: "SendSMSRequest" });
+  }
+}
+function __c87(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          identifiers: S.Unknown,
+          to: S.String,
+          transactional_message_id: S.Unknown,
+          disable_message_retention: S.optional(S.Boolean),
+          from: S.optional(S.String),
+          language: S.optional(S.String),
+          message_data: S.optional(__S(2432, __c152, 0)),
+          queue_draft: S.optional(S.Boolean),
+          send_at: S.optional(S.Number),
+          send_to_unsubscribed: S.optional(S.Boolean),
+          tracked: S.optional(S.Boolean),
+        }).pipe(T.Http({ method: "POST", uri: "/v1/send/whatsapp", code: 200 })),
+      ).annotate({ identifier: "SendWhatsAppRequest" });
+  }
+}
+function __c88(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          email: S.optional(S.String),
+          id: S.optional(S.String),
+          internal: S.optional(S.String),
+          phone: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "StartLiveNotificationRequestIdentifiers",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          attributes: S.Unknown,
+          content_state: S.Unknown,
+          identifiers: __S(1408, __c88, 0),
+          notification_type: S.String,
+          app_identifier: S.optional(S.String),
+          deep_link: S.optional(S.String),
+          device_id: S.optional(S.String),
+          expiration: S.optional(S.Number),
+          platform: S.optional(S.String),
+          push_payload: S.optional(__S(2977, __c186, 1)),
+        }).pipe(T.Http({ method: "POST", uri: "/v1/live_notifications/start", code: 200 })),
+      ).annotate({
+        identifier: "StartLiveNotificationRequest",
+      });
+  }
+}
+function __c89(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String.pipe(T.Label()),
+          client_ids: __S(2944, __c184, 0),
+          lax_mode: S.optional(S.Boolean),
+          name: S.optional(S.String),
+          sample_data: S.optional(__S(2432, __c152, 0)),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/v1/design_studio/emails/{id}/inbox_previews",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "SubmitInboxPreviewRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          replayed: S.optional(S.Boolean),
+          run_id: S.optional(S.Number),
+        }),
+      ).annotate({
+        identifier: "SubmitInboxPreviewResponse",
+      });
+  }
+}
+function __c90(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String.pipe(T.Label()),
+          to: __S(2944, __c184, 0),
+          customer: S.optional(S.NullOr(__S(2432, __c152, 0))),
+          customer_id: S.optional(S.NullOr(S.String)),
+          event: S.optional(S.NullOr(__S(2432, __c152, 0))),
+          lax: S.optional(S.Boolean),
+          prepend_test: S.optional(S.Boolean),
+          tracked: S.optional(S.Boolean),
+          trigger: S.optional(S.NullOr(__S(2432, __c152, 0))),
+        }).pipe(
+          T.Http({ method: "POST", uri: "/v1/design_studio/emails/{id}/test_send", code: 200 }),
+        ),
+      ).annotate({ identifier: "TestSendEmailRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          accepted: S.optional(S.Boolean),
+          from: S.optional(S.String),
+          language: S.optional(S.String),
+          node_id: S.optional(S.String),
+          node_type: S.optional(S.String),
+          subject: S.optional(S.String),
+          to: S.optional(__S(2944, __c184, 0)),
+          warnings: S.optional(__S(2944, __c184, 0)),
+        }),
+      ).annotate({ identifier: "TestSendEmailResponse" });
+  }
+}
+function __c91(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          transactional_id: S.Number.pipe(T.Label()),
+          period: S.optional(S.String.pipe(T.Query())),
+          steps: S.optional(S.Number.pipe(T.Query())),
+          unique: S.optional(S.Boolean.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/v1/transactional/{transactional_id}/metrics/links",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "TransactionalLinksRequest",
+      });
+  }
+}
+function __c92(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          transactional_id: S.Number.pipe(T.Label()),
+          start: S.optional(S.String.pipe(T.Query())),
+          limit: S.optional(S.Number.pipe(T.Query())),
+          metric: S.optional(S.String.pipe(T.Query())),
+          state: S.optional(S.String.pipe(T.Query())),
+          start_ts: S.optional(S.Number.pipe(T.Query())),
+          end_ts: S.optional(S.Number.pipe(T.Query())),
+          get_tracked_responses: S.optional(S.Boolean.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/v1/transactional/{transactional_id}/messages",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "TransactionalMessagesRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          action_id: S.optional(S.Number),
+          broadcast_id: S.optional(S.NullOr(S.Number)),
+          campaign_id: S.optional(S.NullOr(S.Number)),
+          content_id: S.optional(S.Number),
+          created: S.optional(S.Number),
+          customer_id: S.optional(S.NullOr(S.String)),
+          customer_identifiers: S.optional(__S(256, __c16, 0)),
+          deduplicate_id: S.optional(S.String),
+          failure_message: S.optional(S.NullOr(S.String)),
+          forgotten: S.optional(S.Boolean),
+          id: S.optional(S.String),
+          message_template_id: S.optional(S.Number),
+          metrics: S.optional(__S(240, __c15, 0)),
+          newsletter_id: S.optional(S.NullOr(S.Number)),
+          parent_action_id: S.optional(S.Number),
+          recipient: S.optional(S.String),
+          subject: S.optional(S.String),
+          tracked_responses: S.optional(__S(242, __c15, 2)),
+          trigger_event_id: S.optional(S.String),
+          type: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "TransactionalMessagesResponseMessagesItem",
+      });
+    case 2:
+      return S.Array(__S(1473, __c92, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          messages: S.optional(__S(1474, __c92, 2)),
+        }),
+      ).annotate({
+        identifier: "TransactionalMessagesResponse",
+      });
+  }
+}
+function __c93(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          transactional_id: S.Number.pipe(T.Label()),
+          period: S.optional(S.String.pipe(T.Query())),
+          steps: S.optional(S.Number.pipe(T.Query())),
+        }).pipe(
+          T.Http({ method: "GET", uri: "/v1/transactional/{transactional_id}/metrics", code: 200 }),
+        ),
+      ).annotate({
+        identifier: "TransactionalMetricsRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          metric: S.optional(__S(1136, __c71, 0)),
+        }),
+      ).annotate({
+        identifier: "TransactionalMetricsResponse",
+      });
+  }
+}
+function __c94(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          broadcast_id: S.Number.pipe(T.Label()),
+          body: S.optional(S.Unknown.pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({ method: "POST", uri: "/v1/campaigns/{broadcast_id}/triggers", code: 200 }),
+        ),
+      ).annotate({ identifier: "TriggerBroadcastRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "TriggerBroadcastResponse" });
+  }
+}
+function __c95(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           campaign_id: S.Number.pipe(T.Label()),
@@ -20731,7 +23028,225 @@ function __c7(j: number): any {
       ).annotate({
         identifier: "CampaignLinkMetricsRequest",
       });
-    case 4:
+  }
+}
+function __c96(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.Number.pipe(T.Label()),
+          name: S.optional(S.String),
+          parent_folder_id: S.optional(S.NullOr(S.Number)),
+        }).pipe(T.Http({ method: "PUT", uri: "/v1/assets/files/{id}", code: 200 })),
+      ).annotate({ identifier: "UpdateAssetRequest" });
+  }
+}
+function __c97(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.Number.pipe(T.Label()),
+          name: S.optional(S.String),
+          parent_folder_id: S.optional(S.NullOr(S.Number)),
+        }).pipe(T.Http({ method: "PUT", uri: "/v1/assets/folders/{id}", code: 200 })),
+      ).annotate({ identifier: "UpdateAssetFolderRequest" });
+  }
+}
+function __c98(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String,
+          description: S.optional(S.String),
+          privacy_level: S.optional(S.Number),
+        }),
+      ).annotate({
+        identifier: "UpdateAttributeMetadataRequestAttributesItem",
+      });
+    case 1:
+      return S.Array(__S(1568, __c98, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          attributes: __S(1569, __c98, 1),
+        }).pipe(T.Http({ method: "POST", uri: "/v1/data_index/attributes", code: 200 })),
+      ).annotate({
+        identifier: "UpdateAttributeMetadataRequest",
+      });
+    case 3:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "UpdateAttributeMetadataResponse",
+      });
+  }
+}
+function __c99(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          broadcast_id: S.Number.pipe(T.Label()),
+          action_id: S.Number.pipe(T.Label()),
+          body: S.optional(S.Unknown.pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "PUT",
+            uri: "/v1/broadcasts/{broadcast_id}/actions/{action_id}",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "UpdateBroadcastActionRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          action: S.optional(S.Unknown),
+        }),
+      ).annotate({
+        identifier: "UpdateBroadcastActionResponse",
+      });
+  }
+}
+function __c100(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          broadcast_id: S.Number.pipe(T.Label()),
+          action_id: S.Number.pipe(T.Label()),
+          language: S.String.pipe(T.Label()),
+          body: S.optional(S.Unknown.pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "PUT",
+            uri: "/v1/broadcasts/{broadcast_id}/actions/{action_id}/language/{language}",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "UpdateBroadcastActionLanguageRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          action: S.optional(S.Unknown),
+        }),
+      ).annotate({
+        identifier: "UpdateBroadcastActionLanguageResponse",
+      });
+  }
+}
+function __c101(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          campaign_id: S.Number.pipe(T.Label()),
+          action_id: S.Number.pipe(T.Label()),
+          body: S.optional(S.Unknown.pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "PUT",
+            uri: "/v1/campaigns/{campaign_id}/actions/{action_id}",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "UpdateCampaignActionRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          action: S.optional(S.Unknown),
+        }),
+      ).annotate({
+        identifier: "UpdateCampaignActionResponse",
+      });
+  }
+}
+function __c102(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          campaign_id: S.Number.pipe(T.Label()),
+          action_id: S.Number.pipe(T.Label()),
+          language: S.String.pipe(T.Label()),
+          body: S.optional(S.Unknown.pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "PUT",
+            uri: "/v1/campaigns/{campaign_id}/actions/{action_id}/language/{language}",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "UpdateCampaignActionTranslationRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          action: S.optional(S.Unknown),
+        }),
+      ).annotate({
+        identifier: "UpdateCampaignActionTranslationResponse",
+      });
+  }
+}
+function __c103(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          collection_id: S.Number.pipe(T.Label()),
+          body: S.optional(S.Unknown.pipe(T.HttpBody())),
+        }).pipe(T.Http({ method: "PUT", uri: "/v1/collections/{collection_id}", code: 200 })),
+      ).annotate({ identifier: "UpdateCollectionRequest" });
+  }
+}
+function __c104(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          collection_id: S.Number.pipe(T.Label()),
+          body: S.optional(__S(2432, __c152, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({ method: "PUT", uri: "/v1/collections/{collection_id}/content", code: 200 }),
+        ),
+      ).annotate({
+        identifier: "UpdateCollectionContentsRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          collection: S.optional(__S(2928, __c183, 0)),
+        }),
+      ).annotate({
+        identifier: "UpdateCollectionContentsResponse",
+      });
+  }
+}
+function __c105(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String.pipe(T.Label()),
+          content: S.optional(S.String),
+          name: S.optional(S.String),
+          parent_folder_id: S.optional(S.NullOr(S.String)),
+          tag: S.optional(S.String),
+        }).pipe(T.Http({ method: "PUT", uri: "/v1/design_studio/components/{id}", code: 200 })),
+      ).annotate({ identifier: "UpdateComponentRequest" });
+  }
+}
+function __c106(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           campaign_id: S.Number.pipe(T.Label()),
@@ -20745,16 +23260,228 @@ function __c7(j: number): any {
           type: S.optional(S.String.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/v1/campaigns/{campaign_id}/metrics", code: 200 })),
       ).annotate({ identifier: "CampaignMetricsRequest" });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           end: S.optional(S.String),
-          metric: S.optional(__S(42, __c5, 2)),
+          metric: S.optional(__S(529, __c33, 1)),
           res: S.optional(S.String),
           start: S.optional(S.String),
         }),
       ).annotate({ identifier: "CampaignMetricsResponse" });
-    case 6:
+  }
+}
+function __c107(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          accessibility: S.optional(__S(2144, __c134, 0)),
+          css_inliner: S.optional(__S(2146, __c134, 2)),
+          css_variables: S.optional(__S(2147, __c134, 3)),
+          encode_entities: S.optional(__S(2148, __c134, 4)),
+          formatter: S.optional(__S(2241, __c140, 1)),
+          prevent_widows: S.optional(__S(2148, __c134, 4)),
+          remove_unused_css: S.optional(__S(2242, __c140, 2)),
+          url_parameters: S.optional(__S(2226, __c139, 2)),
+        }),
+      ).annotate({
+        identifier: "UpdateEmailRequestTransformers",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String.pipe(T.Label()),
+          content: S.optional(__S(2192, __c137, 0)),
+          envelope: S.optional(__S(2112, __c132, 0)),
+          is_template: S.optional(S.Boolean),
+          name: S.optional(S.String),
+          parent_folder_id: S.optional(S.NullOr(S.String)),
+          transformers: S.optional(__S(1712, __c107, 0)),
+        }).pipe(T.Http({ method: "PUT", uri: "/v1/design_studio/emails/{id}", code: 200 })),
+      ).annotate({ identifier: "UpdateEmailRequest" });
+  }
+}
+function __c108(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          accessibility: S.optional(__S(2144, __c134, 0)),
+          css_inliner: S.optional(__S(2146, __c134, 2)),
+          css_variables: S.optional(__S(2147, __c134, 3)),
+          encode_entities: S.optional(__S(2148, __c134, 4)),
+          formatter: S.optional(__S(2306, __c144, 2)),
+          prevent_widows: S.optional(__S(2148, __c134, 4)),
+          remove_unused_css: S.optional(__S(2307, __c144, 3)),
+          url_parameters: S.optional(__S(2128, __c133, 0)),
+        }),
+      ).annotate({
+        identifier: "UpdateEmailTranslationRequestTransformers",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String.pipe(T.Label()),
+          language: S.String.pipe(T.Label()),
+          content: S.optional(__S(2192, __c137, 0)),
+          envelope: S.optional(__S(2112, __c132, 0)),
+          transformers: S.optional(__S(1728, __c108, 0)),
+        }).pipe(
+          T.Http({
+            method: "PUT",
+            uri: "/v1/design_studio/emails/{id}/languages/{language}",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "UpdateEmailTranslationRequest",
+      });
+  }
+}
+function __c109(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(2416, __c151, 0));
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          events: __S(1744, __c109, 0),
+        }).pipe(T.Http({ method: "POST", uri: "/v1/data_index/events", code: 200 })),
+      ).annotate({
+        identifier: "UpdateEventMetadataRequest",
+      });
+  }
+}
+function __c110(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String.pipe(T.Label()),
+          name: S.optional(S.String),
+          parent_folder_id: S.optional(S.NullOr(S.String)),
+        }).pipe(T.Http({ method: "PUT", uri: "/v1/design_studio/folders/{id}", code: 200 })),
+      ).annotate({ identifier: "UpdateFolderRequest" });
+  }
+}
+function __c111(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          content_state: S.Unknown,
+          instance_id: S.String,
+          attributes: S.optional(__S(2432, __c152, 0)),
+          deep_link: S.optional(S.String),
+          push_payload: S.optional(__S(2977, __c186, 1)),
+        }).pipe(T.Http({ method: "POST", uri: "/v1/live_notifications/update", code: 200 })),
+      ).annotate({
+        identifier: "UpdateLiveNotificationRequest",
+      });
+  }
+}
+function __c112(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          newsletter_id: S.Number.pipe(T.Label()),
+          test_group_id: S.String.pipe(T.Label()),
+          language: S.String.pipe(T.Label()),
+          body: S.optional(S.Unknown.pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "PUT",
+            uri: "/v1/newsletters/{newsletter_id}/test_group/{test_group_id}/language/{language}",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "UpdateNewsletterTestTranslationRequest",
+      });
+  }
+}
+function __c113(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          newsletter_id: S.Number.pipe(T.Label()),
+          content_id: S.Number.pipe(T.Label()),
+          body: S.optional(S.Unknown.pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "PUT",
+            uri: "/v1/newsletters/{newsletter_id}/contents/{content_id}",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "UpdateNewsletterVariantRequest",
+      });
+  }
+}
+function __c114(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          newsletter_id: S.Number.pipe(T.Label()),
+          language: S.String.pipe(T.Label()),
+          body: S.optional(S.Unknown.pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "PUT",
+            uri: "/v1/newsletters/{newsletter_id}/language/{language}",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "UpdateNewsletterVariantTranslationRequest",
+      });
+  }
+}
+function __c115(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          from: S.String,
+          optout: S.Boolean,
+          channel: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "UpdatePersonOptoutsRequestOptoutsItem",
+      });
+    case 1:
+      return S.Array(__S(1840, __c115, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          customer_id: S.String.pipe(T.Label()),
+          id_type: S.optional(S.String.pipe(T.Query())),
+          optouts: __S(1841, __c115, 1),
+        }).pipe(T.Http({ method: "PUT", uri: "/v1/customers/{customer_id}/optouts", code: 200 })),
+      ).annotate({
+        identifier: "UpdatePersonOptoutsRequest",
+      });
+  }
+}
+function __c116(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String,
+          value: S.String,
+        }).pipe(T.Http({ method: "PUT", uri: "/v1/snippets", code: 200 })),
+      ).annotate({ identifier: "UpdateSnippetsRequest" });
+  }
+}
+function __c117(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           broadcast_id: S.Number.pipe(T.Label()),
@@ -20769,7 +23496,19 @@ function __c7(j: number): any {
       ).annotate({
         identifier: "CancelBroadcastTriggerRequest",
       });
-    case 7:
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          trigger: S.optional(__S(1888, __c118, 0)),
+        }),
+      ).annotate({
+        identifier: "CancelBroadcastTriggerResponse",
+      });
+  }
+}
+function __c118(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           broadcast_id: S.optional(S.Number),
@@ -20785,17 +23524,79 @@ function __c7(j: number): any {
       });
   }
 }
-function __c8(j: number): any {
+function __c119(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          trigger: S.optional(__S(63, __c7, 7)),
-        }),
+          transactional_id: S.Number.pipe(T.Label()),
+          content_id: S.Number.pipe(T.Label()),
+          body: S.optional(S.String),
+          body_amp: S.optional(S.String),
+          from_id: S.optional(S.Number),
+          headers: S.optional(__S(2176, __c136, 0)),
+          preheader_text: S.optional(S.String),
+          recipient: S.optional(S.String),
+          reply_to_id: S.optional(S.NullOr(S.Number)),
+          subject: S.optional(S.String),
+        }).pipe(
+          T.Http({
+            method: "PUT",
+            uri: "/v1/transactional/{transactional_id}/content/{content_id}",
+            code: 200,
+          }),
+        ),
       ).annotate({
-        identifier: "CancelBroadcastTriggerResponse",
+        identifier: "UpdateTransactionalRequest",
       });
-    case 1:
+  }
+}
+function __c120(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          transactional_id: S.Number.pipe(T.Label()),
+          language: S.String.pipe(T.Label()),
+          body: S.optional(S.String),
+          body_amp: S.optional(S.String),
+          from_id: S.optional(S.Number),
+          headers: S.optional(__S(2176, __c136, 0)),
+          preheader_text: S.optional(S.String),
+          recipient: S.optional(S.String),
+          reply_to_id: S.optional(S.NullOr(S.Number)),
+          subject: S.optional(S.String),
+        }).pipe(
+          T.Http({
+            method: "PUT",
+            uri: "/v1/transactional/{transactional_id}/language/{language}",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "UpdateTransactionalVariantRequest",
+      });
+  }
+}
+function __c121(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          webhook_id: S.Number.pipe(T.Label()),
+          endpoint: S.String,
+          events: __S(2576, __c161, 0),
+          name: S.String,
+          disabled: S.optional(S.Boolean),
+          full_resolution: S.optional(S.Boolean),
+          with_content: S.optional(S.Boolean),
+        }).pipe(T.Http({ method: "PUT", uri: "/v1/reporting_webhooks/{webhook_id}", code: 200 })),
+      ).annotate({ identifier: "UpdateWebhookRequest" });
+  }
+}
+function __c122(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.String.pipe(T.Label()),
@@ -20809,7 +23610,7 @@ function __c8(j: number): any {
       ).annotate({
         identifier: "CheckUnpublishedChangesRequest",
       });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           has_unpublished_changes: S.optional(S.Boolean),
@@ -20817,7 +23618,11 @@ function __c8(j: number): any {
       ).annotate({
         identifier: "CheckUnpublishedChangesResponse",
       });
-    case 3:
+  }
+}
+function __c123(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           file: S.String,
@@ -20827,7 +23632,21 @@ function __c8(j: number): any {
           T.Http({ method: "POST", uri: "/v1/assets/files", code: 200, contentType: "multipart" }),
         ),
       ).annotate({ identifier: "CreateAssetRequest" });
-    case 4:
+  }
+}
+function __c124(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          asset: S.optional(__S(2000, __c125, 0)),
+        }),
+      ).annotate({ identifier: "CreateAssetResponse" });
+  }
+}
+function __c125(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           created: S.optional(S.Number),
@@ -20839,20 +23658,30 @@ function __c8(j: number): any {
           updated: S.optional(S.Number),
         }),
       ).annotate({ identifier: "CreateAssetResponseAsset" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          asset: S.optional(__S(68, __c8, 4)),
-        }),
-      ).annotate({ identifier: "CreateAssetResponse" });
-    case 6:
+  }
+}
+function __c126(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String,
           parent_folder_id: S.optional(S.NullOr(S.Number)),
         }).pipe(T.Http({ method: "POST", uri: "/v1/assets/folders", code: 200 })),
       ).annotate({ identifier: "CreateAssetFolderRequest" });
-    case 7:
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          folder: S.optional(__S(2032, __c127, 0)),
+        }),
+      ).annotate({
+        identifier: "CreateAssetFolderResponse",
+      });
+  }
+}
+function __c127(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           created: S.optional(S.Number),
@@ -20866,17 +23695,9 @@ function __c8(j: number): any {
       });
   }
 }
-function __c9(j: number): any {
+function __c128(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() =>
-        S.Struct({
-          folder: S.optional(__S(71, __c8, 7)),
-        }),
-      ).annotate({
-        identifier: "CreateAssetFolderResponse",
-      });
-    case 1:
       return S.suspend(() =>
         S.Struct({
           content: S.String,
@@ -20885,7 +23706,11 @@ function __c9(j: number): any {
           parent_folder_id: S.optional(S.NullOr(S.String)),
         }).pipe(T.Http({ method: "POST", uri: "/v1/design_studio/components", code: 200 })),
       ).annotate({ identifier: "CreateComponentRequest" });
-    case 2:
+  }
+}
+function __c129(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           content: S.optional(S.String),
@@ -20899,42 +23724,125 @@ function __c9(j: number): any {
       ).annotate({
         identifier: "CreateComponentResponseComponent",
       });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          component: S.optional(__S(2064, __c129, 0)),
+        }),
+      ).annotate({ identifier: "CreateComponentResponse" });
+  }
+}
+function __c130(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          accessibility: S.optional(__S(2144, __c134, 0)),
+          css_inliner: S.optional(__S(2146, __c134, 2)),
+          css_variables: S.optional(__S(2147, __c134, 3)),
+          encode_entities: S.optional(__S(2148, __c134, 4)),
+          formatter: S.optional(__S(2241, __c140, 1)),
+          prevent_widows: S.optional(__S(2148, __c134, 4)),
+          remove_unused_css: S.optional(__S(2242, __c140, 2)),
+          url_parameters: S.optional(__S(2226, __c139, 2)),
+        }),
+      ).annotate({
+        identifier: "CreateEmailRequestTransformers",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String,
+          content: S.optional(__S(2192, __c137, 0)),
+          envelope: S.optional(__S(2112, __c132, 0)),
+          is_template: S.optional(S.Boolean),
+          parent_folder_id: S.optional(S.NullOr(S.String)),
+          transformers: S.optional(__S(2080, __c130, 0)),
+        }).pipe(T.Http({ method: "POST", uri: "/v1/design_studio/emails", code: 200 })),
+      ).annotate({ identifier: "CreateEmailRequest" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          backend_markers: S.optional(__S(2150, __c134, 6)),
+          enabled: S.optional(S.Boolean),
+          uglify: S.optional(S.Boolean),
+          whitelist: S.optional(__S(2208, __c138, 0)),
+        }),
+      ).annotate({
+        identifier: "CreateEmailResponseEmailTransformersRemoveUnusedCss",
+      });
     case 3:
       return S.suspend(() =>
         S.Struct({
-          component: S.optional(__S(74, __c9, 2)),
+          accessibility: S.optional(__S(2144, __c134, 0)),
+          css_inliner: S.optional(__S(2146, __c134, 2)),
+          css_variables: S.optional(__S(2147, __c134, 3)),
+          encode_entities: S.optional(__S(2148, __c134, 4)),
+          formatter: S.optional(__S(2097, __c131, 1)),
+          prevent_widows: S.optional(__S(2148, __c134, 4)),
+          remove_unused_css: S.optional(__S(2082, __c130, 2)),
+          url_parameters: S.optional(__S(2128, __c133, 0)),
         }),
-      ).annotate({ identifier: "CreateComponentResponse" });
+      ).annotate({
+        identifier: "CreateEmailResponseEmailTransformers",
+      });
     case 4:
       return S.suspend(() =>
         S.Struct({
-          amp: S.optional(S.String),
-          html: S.optional(S.String),
-          preheader_text: S.optional(S.String),
-          subject: S.optional(S.String),
-          text: S.optional(S.String),
+          available_languages: S.optional(__S(2944, __c184, 0)),
+          content: S.optional(__S(2192, __c137, 0)),
+          created: S.optional(S.Number),
+          envelope: S.optional(__S(2256, __c141, 0)),
+          id: S.optional(S.String),
+          is_linked: S.optional(S.Boolean),
+          is_template: S.optional(S.Boolean),
+          name: S.optional(S.String),
+          parent_folder_id: S.optional(S.NullOr(S.String)),
+          transformers: S.optional(__S(2083, __c130, 3)),
+          updated: S.optional(S.Number),
         }),
-      ).annotate({
-        identifier: "CreateEmailRequestContent",
-      });
+      ).annotate({ identifier: "CreateEmailResponseEmail" });
     case 5:
       return S.suspend(() =>
         S.Struct({
-          name: S.optional(S.String),
-          value: S.optional(S.String),
+          email: S.optional(__S(2084, __c130, 4)),
+        }),
+      ).annotate({ identifier: "CreateEmailResponse" });
+  }
+}
+function __c131(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          indent_character: S.optional(S.String),
+          indent_size: S.optional(S.Number),
+          wrap_attributes: S.optional(S.Boolean),
         }),
       ).annotate({
-        identifier: "CreateEmailRequestEnvelopeHeadersItem",
+        identifier: "CreateEmailResponseEmailTransformersFormatterPrettify",
       });
-    case 6:
-      return S.Array(__S(77, __c9, 5));
-    case 7:
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          minify: S.optional(__S(2224, __c139, 0)),
+          prettify: S.optional(__S(2096, __c131, 0)),
+          type: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "CreateEmailResponseEmailTransformersFormatter",
+      });
+  }
+}
+function __c132(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           bcc: S.optional(S.String),
           fake_bcc: S.optional(S.Boolean),
           from_id: S.optional(S.NullOr(S.Number)),
-          headers: S.optional(__S(78, __c9, 6)),
+          headers: S.optional(__S(2176, __c136, 0)),
           recipient: S.optional(S.String),
           reply_to_id: S.optional(S.NullOr(S.Number)),
         }),
@@ -20943,7 +23851,20 @@ function __c9(j: number): any {
       });
   }
 }
-function __c10(j: number): any {
+function __c133(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          enabled: S.optional(S.Boolean),
+          parameters: S.optional(__S(2209, __c138, 1)),
+        }),
+      ).annotate({
+        identifier: "CreateEmailResponseEmailTransformersUrlParameters",
+      });
+  }
+}
+function __c134(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -20978,7 +23899,7 @@ function __c10(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          apply_html_attributes: S.optional(__S(81, __c10, 1)),
+          apply_html_attributes: S.optional(__S(2145, __c134, 1)),
           apply_style_tags: S.optional(S.Boolean),
           enabled: S.optional(S.Boolean),
           inline_pseudo_elements: S.optional(S.Boolean),
@@ -21012,62 +23933,15 @@ function __c10(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          line_length_limit: S.optional(S.Number),
-          remove_css_comments: S.optional(S.Boolean),
-          remove_html_comments: S.optional(S.String),
-          remove_indentations: S.optional(S.Boolean),
-          remove_line_breaks: S.optional(S.Boolean),
-        }),
-      ).annotate({
-        identifier: "CreateEmailRequestTransformersFormatterMinify",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          indent_character: S.optional(S.String),
-          indent_size: S.optional(S.Number),
-          wrap_attributes: S.optional(S.Boolean),
-        }),
-      ).annotate({
-        identifier: "CreateEmailRequestTransformersFormatterPrettify",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          minify: S.optional(__S(85, __c10, 5)),
-          prettify: S.optional(__S(86, __c10, 6)),
-          type: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "CreateEmailRequestTransformersFormatter",
-      });
-  }
-}
-function __c11(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
           heads: S.optional(S.String),
           tails: S.optional(S.String),
         }),
       ).annotate({
         identifier: "CreateEmailRequestTransformersRemoveUnusedCssBackendMarkersItem",
       });
-    case 1:
-      return S.Array(__S(88, __c11, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          backend_markers: S.optional(__S(89, __c11, 1)),
-          enabled: S.optional(S.Boolean),
-          uglify: S.optional(S.Boolean),
-          whitelist: S.optional(__S(2, __c0, 2)),
-        }),
-      ).annotate({
-        identifier: "CreateEmailRequestTransformersRemoveUnusedCss",
-      });
-    case 3:
+    case 6:
+      return S.Array(__S(2149, __c134, 5));
+    case 7:
       return S.suspend(() =>
         S.Struct({
           key: S.optional(S.String),
@@ -21077,46 +23951,114 @@ function __c11(j: number): any {
       ).annotate({
         identifier: "CreateEmailRequestTransformersUrlParametersParametersItem",
       });
-    case 4:
-      return S.Array(__S(91, __c11, 3));
-    case 5:
+  }
+}
+function __c135(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.optional(S.String),
+          value: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "CreateEmailRequestEnvelopeHeadersItem",
+      });
+  }
+}
+function __c136(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(2160, __c135, 0));
+  }
+}
+function __c137(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          amp: S.optional(S.String),
+          html: S.optional(S.String),
+          preheader_text: S.optional(S.String),
+          subject: S.optional(S.String),
+          text: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "CreateEmailRequestContent",
+      });
+  }
+}
+function __c138(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+    case 1:
+      return S.Array(__S(2151, __c134, 7));
+  }
+}
+function __c139(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          line_length_limit: S.optional(S.Number),
+          remove_css_comments: S.optional(S.Boolean),
+          remove_html_comments: S.optional(S.String),
+          remove_indentations: S.optional(S.Boolean),
+          remove_line_breaks: S.optional(S.Boolean),
+        }),
+      ).annotate({
+        identifier: "CreateEmailRequestTransformersFormatterMinify",
+      });
+    case 1:
+      return S.Array(__S(2151, __c134, 7));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           enabled: S.optional(S.Boolean),
-          parameters: S.optional(__S(92, __c11, 4)),
+          parameters: S.optional(__S(2225, __c139, 1)),
         }),
       ).annotate({
         identifier: "CreateEmailRequestTransformersUrlParameters",
       });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          accessibility: S.optional(__S(80, __c10, 0)),
-          css_inliner: S.optional(__S(82, __c10, 2)),
-          css_variables: S.optional(__S(83, __c10, 3)),
-          encode_entities: S.optional(__S(84, __c10, 4)),
-          formatter: S.optional(__S(87, __c10, 7)),
-          prevent_widows: S.optional(__S(84, __c10, 4)),
-          remove_unused_css: S.optional(__S(90, __c11, 2)),
-          url_parameters: S.optional(__S(93, __c11, 5)),
-        }),
-      ).annotate({
-        identifier: "CreateEmailRequestTransformers",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String,
-          content: S.optional(__S(76, __c9, 4)),
-          envelope: S.optional(__S(79, __c9, 7)),
-          is_template: S.optional(S.Boolean),
-          parent_folder_id: S.optional(S.NullOr(S.String)),
-          transformers: S.optional(__S(94, __c11, 6)),
-        }).pipe(T.Http({ method: "POST", uri: "/v1/design_studio/emails", code: 200 })),
-      ).annotate({ identifier: "CreateEmailRequest" });
   }
 }
-function __c12(j: number): any {
+function __c140(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          indent_character: S.optional(S.String),
+          indent_size: S.optional(S.Number),
+          wrap_attributes: S.optional(S.Boolean),
+        }),
+      ).annotate({
+        identifier: "CreateEmailRequestTransformersFormatterPrettify",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          minify: S.optional(__S(2224, __c139, 0)),
+          prettify: S.optional(__S(2240, __c140, 0)),
+          type: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "CreateEmailRequestTransformersFormatter",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          backend_markers: S.optional(__S(2150, __c134, 6)),
+          enabled: S.optional(S.Boolean),
+          uglify: S.optional(S.Boolean),
+          whitelist: S.optional(__S(2944, __c184, 0)),
+        }),
+      ).annotate({
+        identifier: "CreateEmailRequestTransformersRemoveUnusedCss",
+      });
+  }
+}
+function __c141(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -21125,7 +24067,7 @@ function __c12(j: number): any {
           fake_bcc: S.optional(S.Boolean),
           from: S.optional(S.String),
           from_id: S.optional(S.NullOr(S.Number)),
-          headers: S.optional(__S(78, __c9, 6)),
+          headers: S.optional(__S(2176, __c136, 0)),
           recipient: S.optional(S.String),
           reply_to: S.optional(S.String),
           reply_to_id: S.optional(S.NullOr(S.Number)),
@@ -21133,92 +24075,106 @@ function __c12(j: number): any {
       ).annotate({
         identifier: "CreateEmailResponseEmailEnvelope",
       });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          indent_character: S.optional(S.String),
-          indent_size: S.optional(S.Number),
-          wrap_attributes: S.optional(S.Boolean),
-        }),
-      ).annotate({
-        identifier: "CreateEmailResponseEmailTransformersFormatterPrettify",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          minify: S.optional(__S(85, __c10, 5)),
-          prettify: S.optional(__S(97, __c12, 1)),
-          type: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "CreateEmailResponseEmailTransformersFormatter",
-      });
-    case 3:
-      return S.Array(S.String);
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          backend_markers: S.optional(__S(89, __c11, 1)),
-          enabled: S.optional(S.Boolean),
-          uglify: S.optional(S.Boolean),
-          whitelist: S.optional(__S(99, __c12, 3)),
-        }),
-      ).annotate({
-        identifier: "CreateEmailResponseEmailTransformersRemoveUnusedCss",
-      });
-    case 5:
-      return S.Array(__S(91, __c11, 3));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          enabled: S.optional(S.Boolean),
-          parameters: S.optional(__S(101, __c12, 5)),
-        }),
-      ).annotate({
-        identifier: "CreateEmailResponseEmailTransformersUrlParameters",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          accessibility: S.optional(__S(80, __c10, 0)),
-          css_inliner: S.optional(__S(82, __c10, 2)),
-          css_variables: S.optional(__S(83, __c10, 3)),
-          encode_entities: S.optional(__S(84, __c10, 4)),
-          formatter: S.optional(__S(98, __c12, 2)),
-          prevent_widows: S.optional(__S(84, __c10, 4)),
-          remove_unused_css: S.optional(__S(100, __c12, 4)),
-          url_parameters: S.optional(__S(102, __c12, 6)),
-        }),
-      ).annotate({
-        identifier: "CreateEmailResponseEmailTransformers",
-      });
   }
 }
-function __c13(j: number): any {
+function __c142(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          available_languages: S.optional(__S(2, __c0, 2)),
-          content: S.optional(__S(76, __c9, 4)),
-          created: S.optional(S.Number),
-          envelope: S.optional(__S(96, __c12, 0)),
-          id: S.optional(S.String),
-          is_linked: S.optional(S.Boolean),
-          is_template: S.optional(S.Boolean),
-          name: S.optional(S.String),
-          parent_folder_id: S.optional(S.NullOr(S.String)),
-          transformers: S.optional(__S(103, __c12, 7)),
-          updated: S.optional(S.Number),
+          accessibility: S.optional(__S(2144, __c134, 0)),
+          css_inliner: S.optional(__S(2146, __c134, 2)),
+          css_variables: S.optional(__S(2147, __c134, 3)),
+          encode_entities: S.optional(__S(2148, __c134, 4)),
+          formatter: S.optional(__S(2306, __c144, 2)),
+          prevent_widows: S.optional(__S(2148, __c134, 4)),
+          remove_unused_css: S.optional(__S(2307, __c144, 3)),
+          url_parameters: S.optional(__S(2128, __c133, 0)),
         }),
-      ).annotate({ identifier: "CreateEmailResponseEmail" });
+      ).annotate({
+        identifier: "CreateEmailTranslationRequestTransformers",
+      });
     case 1:
       return S.suspend(() =>
         S.Struct({
-          email: S.optional(__S(104, __c13, 0)),
-        }),
-      ).annotate({ identifier: "CreateEmailResponse" });
+          id: S.String.pipe(T.Label()),
+          language: S.String,
+          content: S.optional(__S(2192, __c137, 0)),
+          envelope: S.optional(__S(2112, __c132, 0)),
+          transformers: S.optional(__S(2272, __c142, 0)),
+        }).pipe(
+          T.Http({ method: "POST", uri: "/v1/design_studio/emails/{id}/languages", code: 200 }),
+        ),
+      ).annotate({
+        identifier: "CreateEmailTranslationRequest",
+      });
     case 2:
+      return S.suspend(() =>
+        S.Struct({
+          bcc: S.optional(S.String),
+          fake_bcc: S.optional(S.Boolean),
+          from: S.optional(S.String),
+          from_id: S.optional(S.NullOr(S.Number)),
+          headers: S.optional(__S(2288, __c143, 0)),
+          recipient: S.optional(S.String),
+          reply_to: S.optional(S.String),
+          reply_to_id: S.optional(S.NullOr(S.Number)),
+        }),
+      ).annotate({
+        identifier: "CreateEmailTranslationResponseEmailTranslationEnvelope",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          accessibility: S.optional(__S(2144, __c134, 0)),
+          css_inliner: S.optional(__S(2146, __c134, 2)),
+          css_variables: S.optional(__S(2147, __c134, 3)),
+          encode_entities: S.optional(__S(2148, __c134, 4)),
+          formatter: S.optional(__S(2320, __c145, 0)),
+          prevent_widows: S.optional(__S(2148, __c134, 4)),
+          remove_unused_css: S.optional(__S(2338, __c146, 2)),
+          url_parameters: S.optional(__S(2339, __c146, 3)),
+        }),
+      ).annotate({
+        identifier: "CreateEmailTranslationResponseEmailTranslationTransformers",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          available_languages: S.optional(__S(2208, __c138, 0)),
+          content: S.optional(__S(2192, __c137, 0)),
+          created: S.optional(S.Number),
+          envelope: S.optional(__S(2274, __c142, 2)),
+          is_linked: S.optional(S.Boolean),
+          is_template: S.optional(S.Boolean),
+          language: S.optional(S.String),
+          language_group_id: S.optional(S.String),
+          parent_folder_id: S.optional(S.NullOr(S.String)),
+          transformers: S.optional(__S(2275, __c142, 3)),
+          updated: S.optional(S.Number),
+        }),
+      ).annotate({
+        identifier: "CreateEmailTranslationResponseEmailTranslation",
+      });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          email_translation: S.optional(__S(2276, __c142, 4)),
+        }),
+      ).annotate({
+        identifier: "CreateEmailTranslationResponse",
+      });
+  }
+}
+function __c143(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(2160, __c135, 0));
+  }
+}
+function __c144(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           line_length_limit: S.optional(S.Number),
@@ -21230,7 +24186,7 @@ function __c13(j: number): any {
       ).annotate({
         identifier: "CreateEmailTranslationRequestTransformersFormatterMinify",
       });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           indent_character: S.optional(S.String),
@@ -21240,78 +24196,46 @@ function __c13(j: number): any {
       ).annotate({
         identifier: "CreateEmailTranslationRequestTransformersFormatterPrettify",
       });
-    case 4:
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          minify: S.optional(__S(106, __c13, 2)),
-          prettify: S.optional(__S(107, __c13, 3)),
+          minify: S.optional(__S(2304, __c144, 0)),
+          prettify: S.optional(__S(2305, __c144, 1)),
           type: S.optional(S.String),
         }),
       ).annotate({
         identifier: "CreateEmailTranslationRequestTransformersFormatter",
       });
-    case 5:
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          backend_markers: S.optional(__S(89, __c11, 1)),
+          backend_markers: S.optional(__S(2150, __c134, 6)),
           enabled: S.optional(S.Boolean),
           uglify: S.optional(S.Boolean),
-          whitelist: S.optional(__S(99, __c12, 3)),
+          whitelist: S.optional(__S(2208, __c138, 0)),
         }),
       ).annotate({
         identifier: "CreateEmailTranslationRequestTransformersRemoveUnusedCss",
       });
-    case 6:
+  }
+}
+function __c145(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          accessibility: S.optional(__S(80, __c10, 0)),
-          css_inliner: S.optional(__S(82, __c10, 2)),
-          css_variables: S.optional(__S(83, __c10, 3)),
-          encode_entities: S.optional(__S(84, __c10, 4)),
-          formatter: S.optional(__S(108, __c13, 4)),
-          prevent_widows: S.optional(__S(84, __c10, 4)),
-          remove_unused_css: S.optional(__S(109, __c13, 5)),
-          url_parameters: S.optional(__S(102, __c12, 6)),
+          minify: S.optional(__S(2336, __c146, 0)),
+          prettify: S.optional(__S(2337, __c146, 1)),
+          type: S.optional(S.String),
         }),
       ).annotate({
-        identifier: "CreateEmailTranslationRequestTransformers",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String.pipe(T.Label()),
-          language: S.String,
-          content: S.optional(__S(76, __c9, 4)),
-          envelope: S.optional(__S(79, __c9, 7)),
-          transformers: S.optional(__S(110, __c13, 6)),
-        }).pipe(
-          T.Http({ method: "POST", uri: "/v1/design_studio/emails/{id}/languages", code: 200 }),
-        ),
-      ).annotate({
-        identifier: "CreateEmailTranslationRequest",
+        identifier: "CreateEmailTranslationResponseEmailTranslationTransformersFormatter",
       });
   }
 }
-function __c14(j: number): any {
+function __c146(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(77, __c9, 5));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          bcc: S.optional(S.String),
-          fake_bcc: S.optional(S.Boolean),
-          from: S.optional(S.String),
-          from_id: S.optional(S.NullOr(S.Number)),
-          headers: S.optional(__S(112, __c14, 0)),
-          recipient: S.optional(S.String),
-          reply_to: S.optional(S.String),
-          reply_to_id: S.optional(S.NullOr(S.Number)),
-        }),
-      ).annotate({
-        identifier: "CreateEmailTranslationResponseEmailTranslationEnvelope",
-      });
-    case 2:
       return S.suspend(() =>
         S.Struct({
           line_length_limit: S.optional(S.Number),
@@ -21323,7 +24247,7 @@ function __c14(j: number): any {
       ).annotate({
         identifier: "CreateEmailTranslationResponseEmailTranslationTransformersFormatterMinify",
       });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           indent_character: S.optional(S.String),
@@ -21333,89 +24257,52 @@ function __c14(j: number): any {
       ).annotate({
         identifier: "CreateEmailTranslationResponseEmailTranslationTransformersFormatterPrettify",
       });
-    case 4:
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          minify: S.optional(__S(114, __c14, 2)),
-          prettify: S.optional(__S(115, __c14, 3)),
-          type: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "CreateEmailTranslationResponseEmailTranslationTransformersFormatter",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          backend_markers: S.optional(__S(89, __c11, 1)),
+          backend_markers: S.optional(__S(2150, __c134, 6)),
           enabled: S.optional(S.Boolean),
           uglify: S.optional(S.Boolean),
-          whitelist: S.optional(__S(99, __c12, 3)),
+          whitelist: S.optional(__S(2208, __c138, 0)),
         }),
       ).annotate({
         identifier: "CreateEmailTranslationResponseEmailTranslationTransformersRemoveUnusedCss",
       });
-    case 6:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           enabled: S.optional(S.Boolean),
-          parameters: S.optional(__S(101, __c12, 5)),
+          parameters: S.optional(__S(2209, __c138, 1)),
         }),
       ).annotate({
         identifier: "CreateEmailTranslationResponseEmailTranslationTransformersUrlParameters",
       });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          accessibility: S.optional(__S(80, __c10, 0)),
-          css_inliner: S.optional(__S(82, __c10, 2)),
-          css_variables: S.optional(__S(83, __c10, 3)),
-          encode_entities: S.optional(__S(84, __c10, 4)),
-          formatter: S.optional(__S(116, __c14, 4)),
-          prevent_widows: S.optional(__S(84, __c10, 4)),
-          remove_unused_css: S.optional(__S(117, __c14, 5)),
-          url_parameters: S.optional(__S(118, __c14, 6)),
-        }),
-      ).annotate({
-        identifier: "CreateEmailTranslationResponseEmailTranslationTransformers",
-      });
   }
 }
-function __c15(j: number): any {
+function __c147(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() =>
-        S.Struct({
-          available_languages: S.optional(__S(99, __c12, 3)),
-          content: S.optional(__S(76, __c9, 4)),
-          created: S.optional(S.Number),
-          envelope: S.optional(__S(113, __c14, 1)),
-          is_linked: S.optional(S.Boolean),
-          is_template: S.optional(S.Boolean),
-          language: S.optional(S.String),
-          language_group_id: S.optional(S.String),
-          parent_folder_id: S.optional(S.NullOr(S.String)),
-          transformers: S.optional(__S(119, __c14, 7)),
-          updated: S.optional(S.Number),
-        }),
-      ).annotate({
-        identifier: "CreateEmailTranslationResponseEmailTranslation",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          email_translation: S.optional(__S(120, __c15, 0)),
-        }),
-      ).annotate({
-        identifier: "CreateEmailTranslationResponse",
-      });
-    case 2:
       return S.suspend(() =>
         S.Struct({
           name: S.String,
           parent_folder_id: S.optional(S.NullOr(S.String)),
         }).pipe(T.Http({ method: "POST", uri: "/v1/design_studio/folders", code: 200 })),
       ).annotate({ identifier: "CreateFolderRequest" });
-    case 3:
+  }
+}
+function __c148(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          folder: S.optional(__S(2384, __c149, 0)),
+        }),
+      ).annotate({ identifier: "CreateFolderResponse" });
+  }
+}
+function __c149(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           created: S.optional(S.Number),
@@ -21427,13 +24314,45 @@ function __c15(j: number): any {
       ).annotate({
         identifier: "CreateFolderResponseFolder",
       });
-    case 4:
+  }
+}
+function __c150(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          folder: S.optional(__S(123, __c15, 3)),
+          segment: __S(2416, __c151, 0),
+        }).pipe(T.Http({ method: "POST", uri: "/v1/segments", code: 200 })),
+      ).annotate({ identifier: "CreateManSegmentRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          conditions: S.optional(__S(2432, __c152, 0)),
+          created_at: S.optional(S.Number),
+          deduplicate_id: S.optional(S.String),
+          description: S.optional(S.String),
+          id: S.optional(S.Number),
+          name: S.optional(S.String),
+          progress: S.optional(S.NullOr(S.Number)),
+          state: S.optional(S.String),
+          tags: S.optional(S.NullOr(__S(2944, __c184, 0))),
+          type: S.optional(S.String),
+          updated_at: S.optional(S.Number),
         }),
-      ).annotate({ identifier: "CreateFolderResponse" });
-    case 5:
+      ).annotate({
+        identifier: "CreateManSegmentResponseSegment",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          segment: S.optional(__S(2401, __c150, 1)),
+        }),
+      ).annotate({ identifier: "CreateManSegmentResponse" });
+  }
+}
+function __c151(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String,
@@ -21442,50 +24361,26 @@ function __c15(j: number): any {
       ).annotate({
         identifier: "CreateManSegmentRequestSegment",
       });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          segment: __S(125, __c15, 5),
-        }).pipe(T.Http({ method: "POST", uri: "/v1/segments", code: 200 })),
-      ).annotate({ identifier: "CreateManSegmentRequest" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          conditions: S.optional(__S(0, __c0, 0)),
-          created_at: S.optional(S.Number),
-          deduplicate_id: S.optional(S.String),
-          description: S.optional(S.String),
-          id: S.optional(S.Number),
-          name: S.optional(S.String),
-          progress: S.optional(S.NullOr(S.Number)),
-          state: S.optional(S.String),
-          tags: S.optional(S.NullOr(__S(2, __c0, 2))),
-          type: S.optional(S.String),
-          updated_at: S.optional(S.Number),
-        }),
-      ).annotate({
-        identifier: "CreateManSegmentResponseSegment",
-      });
   }
 }
-function __c16(j: number): any {
+function __c152(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() =>
-        S.Struct({
-          segment: S.optional(__S(127, __c15, 7)),
-        }),
-      ).annotate({ identifier: "CreateManSegmentResponse" });
-    case 1:
+      return S.Record(S.String, S.Unknown);
+  }
+}
+function __c153(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           body: S.Unknown.pipe(T.HttpBody()),
         }).pipe(T.Http({ method: "POST", uri: "/v1/newsletters", code: 200 })),
       ).annotate({ identifier: "CreateNewsletterRequest" });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          content_ids: S.optional(__S(7, __c0, 7)),
+          content_ids: S.optional(__S(3200, __c200, 0)),
           created: S.optional(S.Number),
           deduplicate_id: S.optional(S.String),
           expires_after: S.optional(S.Number),
@@ -21493,12 +24388,12 @@ function __c16(j: number): any {
           name: S.optional(S.String),
           recipient_file_error: S.optional(S.String),
           recipient_file_status: S.optional(S.String),
-          recipient_segment_ids: S.optional(__S(7, __c0, 7)),
+          recipient_segment_ids: S.optional(__S(3200, __c200, 0)),
           scheduled_at: S.optional(S.NullOr(S.Number)),
           send_state: S.optional(S.String),
           sent_at: S.optional(S.NullOr(S.Number)),
           subscription_topic_id: S.optional(S.Number),
-          tags: S.optional(__S(2, __c0, 2)),
+          tags: S.optional(__S(2944, __c184, 0)),
           timezone: S.optional(S.String),
           type: S.optional(S.String),
           tz_match_enabled: S.optional(S.Boolean),
@@ -21507,13 +24402,17 @@ function __c16(j: number): any {
       ).annotate({
         identifier: "CreateNewsletterResponseNewsletter",
       });
-    case 3:
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          newsletter: S.optional(__S(130, __c16, 2)),
+          newsletter: S.optional(__S(2449, __c153, 1)),
         }),
       ).annotate({ identifier: "CreateNewsletterResponse" });
-    case 4:
+  }
+}
+function __c154(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           newsletter_id: S.Number.pipe(T.Label()),
@@ -21524,10 +24423,10 @@ function __c16(j: number): any {
       ).annotate({
         identifier: "CreateNewsletterLanguageVariantRequest",
       });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          content_ids: S.optional(__S(8, __c1, 0)),
+          content_ids: S.optional(__S(3216, __c201, 0)),
           created: S.optional(S.Number),
           deduplicate_id: S.optional(S.String),
           expires_after: S.optional(S.Number),
@@ -21535,12 +24434,12 @@ function __c16(j: number): any {
           name: S.optional(S.String),
           recipient_file_error: S.optional(S.String),
           recipient_file_status: S.optional(S.String),
-          recipient_segment_ids: S.optional(__S(8, __c1, 0)),
+          recipient_segment_ids: S.optional(__S(3216, __c201, 0)),
           scheduled_at: S.optional(S.NullOr(S.Number)),
           send_state: S.optional(S.String),
           sent_at: S.optional(S.NullOr(S.Number)),
           subscription_topic_id: S.optional(S.Number),
-          tags: S.optional(__S(2, __c0, 2)),
+          tags: S.optional(__S(2944, __c184, 0)),
           timezone: S.optional(S.String),
           type: S.optional(S.String),
           tz_match_enabled: S.optional(S.Boolean),
@@ -21549,15 +24448,19 @@ function __c16(j: number): any {
       ).annotate({
         identifier: "CreateNewsletterLanguageVariantResponseNewsletter",
       });
-    case 6:
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          newsletter: S.optional(__S(133, __c16, 5)),
+          newsletter: S.optional(__S(2465, __c154, 1)),
         }),
       ).annotate({
         identifier: "CreateNewsletterLanguageVariantResponse",
       });
-    case 7:
+  }
+}
+function __c155(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           newsletter_id: S.Number.pipe(T.Label()),
@@ -21567,14 +24470,10 @@ function __c16(j: number): any {
       ).annotate({
         identifier: "CreateNewsletterTestGroupRequest",
       });
-  }
-}
-function __c17(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          content_ids: S.optional(__S(7, __c0, 7)),
+          content_ids: S.optional(__S(3200, __c200, 0)),
           created: S.optional(S.Number),
           deduplicate_id: S.optional(S.String),
           expires_after: S.optional(S.Number),
@@ -21582,12 +24481,12 @@ function __c17(j: number): any {
           name: S.optional(S.String),
           recipient_file_error: S.optional(S.String),
           recipient_file_status: S.optional(S.String),
-          recipient_segment_ids: S.optional(__S(8, __c1, 0)),
+          recipient_segment_ids: S.optional(__S(3216, __c201, 0)),
           scheduled_at: S.optional(S.NullOr(S.Number)),
           send_state: S.optional(S.String),
           sent_at: S.optional(S.NullOr(S.Number)),
           subscription_topic_id: S.optional(S.Number),
-          tags: S.optional(__S(2, __c0, 2)),
+          tags: S.optional(__S(2944, __c184, 0)),
           timezone: S.optional(S.String),
           type: S.optional(S.String),
           tz_match_enabled: S.optional(S.Boolean),
@@ -21596,15 +24495,19 @@ function __c17(j: number): any {
       ).annotate({
         identifier: "CreateNewsletterTestGroupResponseNewsletter",
       });
-    case 1:
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          newsletter: S.optional(__S(136, __c17, 0)),
+          newsletter: S.optional(__S(2481, __c155, 1)),
         }),
       ).annotate({
         identifier: "CreateNewsletterTestGroupResponse",
       });
-    case 2:
+  }
+}
+function __c156(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           newsletter_id: S.Number.pipe(T.Label()),
@@ -21620,10 +24523,10 @@ function __c17(j: number): any {
       ).annotate({
         identifier: "CreateNewsletterTestLanguageVariantRequest",
       });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          content_ids: S.optional(__S(8, __c1, 0)),
+          content_ids: S.optional(__S(3216, __c201, 0)),
           created: S.optional(S.Number),
           deduplicate_id: S.optional(S.String),
           expires_after: S.optional(S.Number),
@@ -21631,12 +24534,12 @@ function __c17(j: number): any {
           name: S.optional(S.String),
           recipient_file_error: S.optional(S.String),
           recipient_file_status: S.optional(S.String),
-          recipient_segment_ids: S.optional(__S(8, __c1, 0)),
+          recipient_segment_ids: S.optional(__S(3216, __c201, 0)),
           scheduled_at: S.optional(S.NullOr(S.Number)),
           send_state: S.optional(S.String),
           sent_at: S.optional(S.NullOr(S.Number)),
           subscription_topic_id: S.optional(S.Number),
-          tags: S.optional(__S(2, __c0, 2)),
+          tags: S.optional(__S(2944, __c184, 0)),
           timezone: S.optional(S.String),
           type: S.optional(S.String),
           tz_match_enabled: S.optional(S.Boolean),
@@ -21645,22 +24548,30 @@ function __c17(j: number): any {
       ).annotate({
         identifier: "CreateNewsletterTestLanguageVariantResponseNewsletter",
       });
-    case 4:
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          newsletter: S.optional(__S(139, __c17, 3)),
+          newsletter: S.optional(__S(2497, __c156, 1)),
         }),
       ).annotate({
         identifier: "CreateNewsletterTestLanguageVariantResponse",
       });
-    case 5:
+  }
+}
+function __c157(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String,
           value: S.String,
         }).pipe(T.Http({ method: "POST", uri: "/v1/snippets", code: 200 })),
       ).annotate({ identifier: "CreateSnippetRequest" });
-    case 6:
+  }
+}
+function __c158(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String,
@@ -21670,34 +24581,46 @@ function __c17(j: number): any {
       ).annotate({
         identifier: "CreateSnippetResponseSnippet",
       });
-    case 7:
+  }
+}
+function __c159(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          snippet: S.optional(__S(142, __c17, 6)),
+          snippet: S.optional(__S(2528, __c158, 0)),
         }),
       ).annotate({ identifier: "CreateSnippetResponse" });
   }
 }
-function __c18(j: number): any {
+function __c160(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(S.String);
-    case 1:
       return S.suspend(() =>
         S.Struct({
           endpoint: S.String,
-          events: __S(144, __c18, 0),
+          events: __S(2576, __c161, 0),
           name: S.String,
           disabled: S.optional(S.Boolean),
           full_resolution: S.optional(S.Boolean),
           with_content: S.optional(S.Boolean),
         }).pipe(T.Http({ method: "POST", uri: "/v1/reporting_webhooks", code: 200 })),
       ).annotate({ identifier: "CreateWebhookRequest" });
-    case 2:
+  }
+}
+function __c161(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c162(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           endpoint: S.String,
-          events: __S(144, __c18, 0),
+          events: __S(2576, __c161, 0),
           name: S.String,
           disabled: S.optional(S.Boolean),
           full_resolution: S.optional(S.Boolean),
@@ -21706,29 +24629,49 @@ function __c18(j: number): any {
           with_content: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "CreateWebhookResponse" });
-    case 3:
+  }
+}
+function __c163(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.Number.pipe(T.Label()),
         }).pipe(T.Http({ method: "DELETE", uri: "/v1/assets/files/{id}", code: 200 })),
       ).annotate({ identifier: "DeleteAssetRequest" });
-    case 4:
+  }
+}
+function __c164(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "DeleteAssetResponse",
       });
-    case 5:
+  }
+}
+function __c165(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.Number.pipe(T.Label()),
         }).pipe(T.Http({ method: "DELETE", uri: "/v1/assets/folders/{id}", code: 200 })),
       ).annotate({ identifier: "DeleteAssetFolderRequest" });
-    case 6:
+  }
+}
+function __c166(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           collection_id: S.Number.pipe(T.Label()),
         }).pipe(T.Http({ method: "DELETE", uri: "/v1/collections/{collection_id}", code: 200 })),
       ).annotate({ identifier: "DeleteCollectionRequest" });
-    case 7:
+  }
+}
+function __c167(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.String.pipe(T.Label()),
@@ -21736,7 +24679,7 @@ function __c18(j: number): any {
       ).annotate({ identifier: "DeleteComponentRequest" });
   }
 }
-function __c19(j: number): any {
+function __c168(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -21744,7 +24687,11 @@ function __c19(j: number): any {
           id: S.String.pipe(T.Label()),
         }).pipe(T.Http({ method: "DELETE", uri: "/v1/design_studio/emails/{id}", code: 200 })),
       ).annotate({ identifier: "DeleteEmailRequest" });
-    case 1:
+  }
+}
+function __c169(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.String.pipe(T.Label()),
@@ -21759,19 +24706,31 @@ function __c19(j: number): any {
       ).annotate({
         identifier: "DeleteEmailTranslationRequest",
       });
-    case 2:
+  }
+}
+function __c170(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.String.pipe(T.Label()),
         }).pipe(T.Http({ method: "DELETE", uri: "/v1/design_studio/folders/{id}", code: 200 })),
       ).annotate({ identifier: "DeleteFolderRequest" });
-    case 3:
+  }
+}
+function __c171(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           segment_id: S.Number.pipe(T.Label()),
         }).pipe(T.Http({ method: "DELETE", uri: "/v1/segments/{segment_id}", code: 200 })),
       ).annotate({ identifier: "DeleteManSegmentRequest" });
-    case 4:
+  }
+}
+function __c172(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           newsletter_id: S.Number.pipe(T.Label()),
@@ -21786,17 +24745,29 @@ function __c19(j: number): any {
       ).annotate({
         identifier: "DeleteNewsletterLanguageVariantRequest",
       });
-    case 5:
+  }
+}
+function __c173(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "DeleteNewsletterLanguageVariantResponse",
       });
-    case 6:
+  }
+}
+function __c174(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           newsletter_id: S.Number.pipe(T.Label()),
         }).pipe(T.Http({ method: "DELETE", uri: "/v1/newsletters/{newsletter_id}", code: 200 })),
       ).annotate({ identifier: "DeleteNewslettersRequest" });
-    case 7:
+  }
+}
+function __c175(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           newsletter_id: S.Number.pipe(T.Label()),
@@ -21814,7 +24785,7 @@ function __c19(j: number): any {
       });
   }
 }
-function __c20(j: number): any {
+function __c176(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -21822,7 +24793,11 @@ function __c20(j: number): any {
           snippet_name: S.String.pipe(T.Label()),
         }).pipe(T.Http({ method: "DELETE", uri: "/v1/snippets/{snippet_name}", code: 200 })),
       ).annotate({ identifier: "DeleteSnippetRequest" });
-    case 1:
+  }
+}
+function __c177(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           suppression_type: S.String.pipe(T.Label()),
@@ -21835,7 +24810,11 @@ function __c20(j: number): any {
           }),
         ),
       ).annotate({ identifier: "DeleteSuppressionRequest" });
-    case 2:
+  }
+}
+function __c178(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.String.pipe(T.Label()),
@@ -21848,7 +24827,11 @@ function __c20(j: number): any {
           }),
         ),
       ).annotate({ identifier: "DeleteVersionRequest" });
-    case 3:
+  }
+}
+function __c179(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           webhook_id: S.Number.pipe(T.Label()),
@@ -21856,19 +24839,87 @@ function __c20(j: number): any {
           T.Http({ method: "DELETE", uri: "/v1/reporting_webhooks/{webhook_id}", code: 200 }),
         ),
       ).annotate({ identifier: "DeleteWebhookRequest" });
-    case 4:
+  }
+}
+function __c180(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           export_id: S.Number.pipe(T.Label()),
         }).pipe(T.Http({ method: "GET", uri: "/v1/exports/{export_id}/download", code: 200 })),
       ).annotate({ identifier: "DownloadExportRequest" });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           url: S.optional(S.String),
         }),
       ).annotate({ identifier: "DownloadExportResponse" });
-    case 6:
+  }
+}
+function __c181(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          body: S.optional(S.Unknown.pipe(T.HttpBody())),
+        }).pipe(T.Http({ method: "POST", uri: "/v1/collections", code: 200 })),
+      ).annotate({ identifier: "AddCollectionRequest" });
+  }
+}
+function __c182(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          collection: S.optional(__S(2928, __c183, 0)),
+        }),
+      ).annotate({ identifier: "AddCollectionResponse" });
+  }
+}
+function __c183(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          bytes: S.optional(S.Number),
+          created_at: S.optional(S.Number),
+          id: S.optional(S.Number),
+          name: S.optional(S.String),
+          rows: S.optional(S.Number),
+          schema: S.optional(__S(2944, __c184, 0)),
+          updated_at: S.optional(S.Number),
+        }),
+      ).annotate({
+        identifier: "AddCollectionResponseCollection",
+      });
+  }
+}
+function __c184(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c185(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          instance_id: S.String,
+          attributes: S.optional(__S(2432, __c152, 0)),
+          content_state: S.optional(S.Unknown),
+          deep_link: S.optional(S.String),
+          push_payload: S.optional(__S(2977, __c186, 1)),
+        }).pipe(T.Http({ method: "POST", uri: "/v1/live_notifications/end", code: 200 })),
+      ).annotate({
+        identifier: "EndLiveNotificationRequest",
+      });
+  }
+}
+function __c186(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           body: S.String,
@@ -21878,31 +24929,15 @@ function __c20(j: number): any {
       ).annotate({
         identifier: "EndLiveNotificationRequestPushPayloadAlert",
       });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          alert: S.optional(__S(166, __c20, 6)),
+          alert: S.optional(__S(2976, __c186, 0)),
         }),
       ).annotate({
         identifier: "EndLiveNotificationRequestPushPayload",
       });
-  }
-}
-function __c21(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          instance_id: S.String,
-          attributes: S.optional(__S(0, __c0, 0)),
-          content_state: S.optional(S.Unknown),
-          deep_link: S.optional(S.String),
-          push_payload: S.optional(__S(167, __c20, 7)),
-        }).pipe(T.Http({ method: "POST", uri: "/v1/live_notifications/end", code: 200 })),
-      ).annotate({
-        identifier: "EndLiveNotificationRequest",
-      });
-    case 1:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           instance_id: S.optional(S.String),
@@ -21910,7 +24945,11 @@ function __c21(j: number): any {
       ).annotate({
         identifier: "EndLiveNotificationResponse",
       });
-    case 2:
+  }
+}
+function __c187(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           body: S.optional(S.Unknown.pipe(T.HttpBody())),
@@ -21918,7 +24957,19 @@ function __c21(j: number): any {
       ).annotate({
         identifier: "ExportDeliveriesDataRequest",
       });
-    case 3:
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          export: S.optional(__S(3008, __c188, 0)),
+        }),
+      ).annotate({
+        identifier: "ExportDeliveriesDataResponse",
+      });
+  }
+}
+function __c188(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           created_at: S.optional(S.Number),
@@ -21937,28 +24988,28 @@ function __c21(j: number): any {
       ).annotate({
         identifier: "ExportDeliveriesDataResponseExport",
       });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          export: S.optional(__S(171, __c21, 3)),
-        }),
-      ).annotate({
-        identifier: "ExportDeliveriesDataResponse",
-      });
-    case 5:
+  }
+}
+function __c189(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           filters: S.Unknown,
-          attributes: S.optional(__S(2, __c0, 2)),
+          attributes: S.optional(__S(2944, __c184, 0)),
         }).pipe(T.Http({ method: "POST", uri: "/v1/exports/customers", code: 200 })),
       ).annotate({ identifier: "ExportPeopleDataRequest" });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          export: S.optional(__S(171, __c21, 3)),
+          export: S.optional(__S(3008, __c188, 0)),
         }),
       ).annotate({ identifier: "ExportPeopleDataResponse" });
-    case 7:
+  }
+}
+function __c190(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           message_id: S.String.pipe(T.Label()),
@@ -21968,11 +25019,7 @@ function __c21(j: number): any {
       ).annotate({
         identifier: "GetArchivedMessageRequest",
       });
-  }
-}
-function __c22(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           bcc: S.optional(S.String),
@@ -21993,39 +25040,80 @@ function __c22(j: number): any {
       ).annotate({
         identifier: "GetArchivedMessageResponseArchivedMessage",
       });
-    case 1:
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          archived_message: S.optional(__S(176, __c22, 0)),
+          archived_message: S.optional(__S(3041, __c190, 1)),
         }),
       ).annotate({
         identifier: "GetArchivedMessageResponse",
       });
-    case 2:
+  }
+}
+function __c191(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.Number.pipe(T.Label()),
         }).pipe(T.Http({ method: "GET", uri: "/v1/assets/files/{id}", code: 200 })),
       ).annotate({ identifier: "GetAssetRequest" });
-    case 3:
+  }
+}
+function __c192(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.Number.pipe(T.Label()),
         }).pipe(T.Http({ method: "GET", uri: "/v1/assets/folders/{id}", code: 200 })),
       ).annotate({ identifier: "GetAssetFolderRequest" });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          folder: S.optional(__S(71, __c8, 7)),
+          folder: S.optional(__S(2032, __c127, 0)),
         }),
       ).annotate({ identifier: "GetAssetFolderResponse" });
-    case 5:
+  }
+}
+function __c193(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           broadcast_id: S.Number.pipe(T.Label()),
         }).pipe(T.Http({ method: "GET", uri: "/v1/broadcasts/{broadcast_id}", code: 200 })),
       ).annotate({ identifier: "GetBroadcastRequest" });
-    case 6:
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          actions: S.optional(__S(3105, __c194, 1)),
+          active: S.optional(S.Boolean),
+          created: S.optional(S.Number),
+          deduplicate_id: S.optional(S.String),
+          first_started: S.optional(S.Number),
+          id: S.optional(S.Number),
+          msg_template_ids: S.optional(__S(3105, __c194, 1)),
+          name: S.optional(S.String),
+          state: S.optional(S.String),
+          tags: S.optional(__S(2944, __c184, 0)),
+          type: S.optional(S.String),
+          updated: S.optional(S.Number),
+        }),
+      ).annotate({
+        identifier: "GetBroadcastResponseBroadcast",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          broadcast: S.optional(__S(3089, __c193, 1)),
+        }),
+      ).annotate({ identifier: "GetBroadcastResponse" });
+  }
+}
+function __c194(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.Number),
@@ -22034,38 +25122,13 @@ function __c22(j: number): any {
       ).annotate({
         identifier: "GetBroadcastResponseBroadcastActionsItem",
       });
-    case 7:
-      return S.Array(__S(182, __c22, 6));
+    case 1:
+      return S.Array(__S(3104, __c194, 0));
   }
 }
-function __c23(j: number): any {
+function __c195(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() =>
-        S.Struct({
-          actions: S.optional(__S(183, __c22, 7)),
-          active: S.optional(S.Boolean),
-          created: S.optional(S.Number),
-          deduplicate_id: S.optional(S.String),
-          first_started: S.optional(S.Number),
-          id: S.optional(S.Number),
-          msg_template_ids: S.optional(__S(183, __c22, 7)),
-          name: S.optional(S.String),
-          state: S.optional(S.String),
-          tags: S.optional(__S(2, __c0, 2)),
-          type: S.optional(S.String),
-          updated: S.optional(S.Number),
-        }),
-      ).annotate({
-        identifier: "GetBroadcastResponseBroadcast",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          broadcast: S.optional(__S(184, __c23, 0)),
-        }),
-      ).annotate({ identifier: "GetBroadcastResponse" });
-    case 2:
       return S.suspend(() =>
         S.Struct({
           broadcast_id: S.Number.pipe(T.Label()),
@@ -22080,7 +25143,7 @@ function __c23(j: number): any {
       ).annotate({
         identifier: "GetBroadcastActionRequest",
       });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           action: S.optional(S.Unknown),
@@ -22088,7 +25151,11 @@ function __c23(j: number): any {
       ).annotate({
         identifier: "GetBroadcastActionResponse",
       });
-    case 4:
+  }
+}
+function __c196(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           broadcast_id: S.Number.pipe(T.Label()),
@@ -22104,7 +25171,7 @@ function __c23(j: number): any {
       ).annotate({
         identifier: "GetBroadcastActionLanguageRequest",
       });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           action: S.optional(S.Unknown),
@@ -22112,7 +25179,11 @@ function __c23(j: number): any {
       ).annotate({
         identifier: "GetBroadcastActionLanguageResponse",
       });
-    case 6:
+  }
+}
+function __c197(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           campaign_id: S.Number.pipe(T.Label()),
@@ -22125,7 +25196,7 @@ function __c23(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetCampaignActionRequest" });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           action: S.optional(S.Unknown),
@@ -22135,7 +25206,91 @@ function __c23(j: number): any {
       });
   }
 }
-function __c24(j: number): any {
+function __c198(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          broadcast_id: S.Number.pipe(T.Label()),
+          action_id: S.Number.pipe(T.Label()),
+          period: S.optional(S.String.pipe(T.Query())),
+          steps: S.optional(S.Number.pipe(T.Query())),
+          type: S.optional(S.String.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/v1/broadcasts/{broadcast_id}/actions/{action_id}/metrics/links",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "BroadcastActionLinksRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          clicked: S.optional(__S(3200, __c200, 0)),
+          human_clicked: S.optional(__S(3216, __c201, 0)),
+          machine_clicked: S.optional(__S(3216, __c201, 0)),
+        }),
+      ).annotate({
+        identifier: "BroadcastActionLinksResponseLinksItemMetricSeries",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          series: S.optional(__S(3169, __c198, 1)),
+        }),
+      ).annotate({
+        identifier: "BroadcastActionLinksResponseLinksItemMetric",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          link: S.optional(__S(3184, __c199, 0)),
+          metric: S.optional(__S(3170, __c198, 2)),
+        }),
+      ).annotate({
+        identifier: "BroadcastActionLinksResponseLinksItem",
+      });
+    case 4:
+      return S.Array(__S(3171, __c198, 3));
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          links: S.optional(__S(3172, __c198, 4)),
+        }),
+      ).annotate({
+        identifier: "BroadcastActionLinksResponse",
+      });
+  }
+}
+function __c199(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          href: S.optional(S.String),
+          id: S.optional(S.Number),
+        }),
+      ).annotate({
+        identifier: "BroadcastActionLinksResponseLinksItemLink",
+      });
+  }
+}
+function __c200(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.Number);
+  }
+}
+function __c201(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.Number);
+  }
+}
+function __c202(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -22161,7 +25316,11 @@ function __c24(j: number): any {
       ).annotate({
         identifier: "GetCampaignActionTranslationResponse",
       });
-    case 2:
+  }
+}
+function __c203(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           campaign_id: S.Number.pipe(T.Label()),
@@ -22177,7 +25336,7 @@ function __c24(j: number): any {
       ).annotate({
         identifier: "GetCampaignMessagesRequest",
       });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           action_id: S.optional(S.Number),
@@ -22186,41 +25345,45 @@ function __c24(j: number): any {
           content_id: S.optional(S.Number),
           created: S.optional(S.Number),
           customer_id: S.optional(S.NullOr(S.String)),
-          customer_identifiers: S.optional(__S(33, __c4, 1)),
+          customer_identifiers: S.optional(__S(256, __c16, 0)),
           deduplicate_id: S.optional(S.String),
           failure_message: S.optional(S.NullOr(S.String)),
           forgotten: S.optional(S.Boolean),
           id: S.optional(S.String),
           message_template_id: S.optional(S.Number),
-          metrics: S.optional(__S(34, __c4, 2)),
+          metrics: S.optional(__S(240, __c15, 0)),
           newsletter_id: S.optional(S.NullOr(S.Number)),
           parent_action_id: S.optional(S.Number),
           recipient: S.optional(S.String),
           subject: S.optional(S.String),
-          tracked_responses: S.optional(__S(36, __c4, 4)),
+          tracked_responses: S.optional(__S(242, __c15, 2)),
           trigger_event_id: S.optional(S.String),
           type: S.optional(S.String),
         }),
       ).annotate({
         identifier: "GetCampaignMessagesResponseMessagesItem",
       });
-    case 4:
-      return S.Array(__S(195, __c24, 3));
-    case 5:
+    case 2:
+      return S.Array(__S(3249, __c203, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          messages: S.optional(__S(196, __c24, 4)),
+          messages: S.optional(__S(3250, __c203, 2)),
         }),
       ).annotate({
         identifier: "GetCampaignMessagesResponse",
       });
-    case 6:
+  }
+}
+function __c204(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           campaign_id: S.Number.pipe(T.Label()),
         }).pipe(T.Http({ method: "GET", uri: "/v1/campaigns/{campaign_id}", code: 200 })),
       ).annotate({ identifier: "GetCampaignsRequest" });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           campaign: S.optional(S.Unknown),
@@ -22228,7 +25391,7 @@ function __c24(j: number): any {
       ).annotate({ identifier: "GetCampaignsResponse" });
   }
 }
-function __c25(j: number): any {
+function __c205(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -22247,30 +25410,42 @@ function __c25(j: number): any {
         identifier: "GetChannelsResponseChannelsItem",
       });
     case 2:
-      return S.Array(__S(201, __c25, 1));
+      return S.Array(__S(3281, __c205, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          channels: S.optional(__S(202, __c25, 2)),
+          channels: S.optional(__S(3282, __c205, 2)),
         }),
       ).annotate({ identifier: "GetChannelsResponse" });
-    case 4:
+  }
+}
+function __c206(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({}).pipe(T.Http({ method: "GET", uri: "/v1/info/ip_addresses", code: 200 })),
       ).annotate({ identifier: "GetCioAllowlistRequest" });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          ip_addresses: S.optional(__S(2, __c0, 2)),
+          ip_addresses: S.optional(__S(2944, __c184, 0)),
         }),
       ).annotate({ identifier: "GetCioAllowlistResponse" });
-    case 6:
+  }
+}
+function __c207(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           collection_id: S.Number.pipe(T.Label()),
         }).pipe(T.Http({ method: "GET", uri: "/v1/collections/{collection_id}", code: 200 })),
       ).annotate({ identifier: "GetCollectionRequest" });
-    case 7:
+  }
+}
+function __c208(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           collection_id: S.Number.pipe(T.Label()),
@@ -22280,33 +25455,41 @@ function __c25(j: number): any {
       ).annotate({
         identifier: "GetCollectionContentsRequest",
       });
-  }
-}
-function __c26(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() => __S(0, __c0, 0).pipe(T.RawResponseRoot())).annotate({
+    case 1:
+      return S.suspend(() => __S(2432, __c152, 0).pipe(T.RawResponseRoot())).annotate({
         identifier: "GetCollectionContentsResponse",
       });
-    case 1:
+  }
+}
+function __c209(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({}).pipe(T.Http({ method: "GET", uri: "/v1/collections", code: 200 })),
       ).annotate({ identifier: "GetCollectionsRequest" });
+    case 1:
+      return S.Array(__S(2928, __c183, 0));
     case 2:
-      return S.Array(__S(3, __c0, 3));
-    case 3:
       return S.suspend(() =>
         S.Struct({
-          collections: S.optional(__S(210, __c26, 2)),
+          collections: S.optional(__S(3345, __c209, 1)),
         }),
       ).annotate({ identifier: "GetCollectionsResponse" });
-    case 4:
+  }
+}
+function __c210(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.String.pipe(T.Label()),
         }).pipe(T.Http({ method: "GET", uri: "/v1/design_studio/components/{id}", code: 200 })),
       ).annotate({ identifier: "GetComponentRequest" });
-    case 5:
+  }
+}
+function __c211(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           domain_name: S.String.pipe(T.Label()),
@@ -22324,7 +25507,21 @@ function __c26(j: number): any {
       ).annotate({
         identifier: "GetDomainSuppressionsByTypeRequest",
       });
-    case 6:
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          category: S.optional(S.String),
+          next: S.optional(S.String),
+          suppressions: S.optional(__S(3393, __c212, 1)),
+        }),
+      ).annotate({
+        identifier: "GetDomainSuppressionsByTypeResponse",
+      });
+  }
+}
+function __c212(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           created: S.optional(S.Number),
@@ -22335,66 +25532,181 @@ function __c26(j: number): any {
       ).annotate({
         identifier: "GetDomainSuppressionsByTypeResponseSuppressionsItem",
       });
-    case 7:
-      return S.Array(__S(214, __c26, 6));
+    case 1:
+      return S.Array(__S(3392, __c212, 0));
   }
 }
-function __c27(j: number): any {
+function __c213(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          category: S.optional(S.String),
-          next: S.optional(S.String),
-          suppressions: S.optional(__S(215, __c26, 7)),
-        }),
+          broadcast_id: S.Number.pipe(T.Label()),
+          action_id: S.Number.pipe(T.Label()),
+          period: S.optional(S.String.pipe(T.Query())),
+          steps: S.optional(S.Number.pipe(T.Query())),
+          type: S.optional(S.String.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/v1/broadcasts/{broadcast_id}/actions/{action_id}/metrics",
+            code: 200,
+          }),
+        ),
       ).annotate({
-        identifier: "GetDomainSuppressionsByTypeResponse",
+        identifier: "BroadcastActionMetricsRequest",
       });
     case 1:
+      return S.suspend(() =>
+        S.Struct({
+          attempted: S.optional(__S(3200, __c200, 0)),
+          bounced: S.optional(__S(3200, __c200, 0)),
+          clicked: S.optional(__S(3200, __c200, 0)),
+          converted: S.optional(__S(3200, __c200, 0)),
+          created: S.optional(__S(3200, __c200, 0)),
+          deferred: S.optional(__S(3200, __c200, 0)),
+          delivered: S.optional(__S(3200, __c200, 0)),
+          drafted: S.optional(__S(3200, __c200, 0)),
+          failed: S.optional(__S(3200, __c200, 0)),
+          human_clicked: S.optional(__S(3200, __c200, 0)),
+          human_opened: S.optional(__S(3200, __c200, 0)),
+          link_untracked: S.optional(__S(3200, __c200, 0)),
+          machine_clicked: S.optional(__S(3200, __c200, 0)),
+          open_untracked: S.optional(__S(3200, __c200, 0)),
+          opened: S.optional(__S(3200, __c200, 0)),
+          prefetch_opened: S.optional(__S(3200, __c200, 0)),
+          replied: S.optional(__S(3200, __c200, 0)),
+          sent: S.optional(__S(3200, __c200, 0)),
+          spammed: S.optional(__S(3200, __c200, 0)),
+          suppressed: S.optional(__S(3200, __c200, 0)),
+          topic_unsubscribed: S.optional(__S(3216, __c201, 0)),
+          tracking_consent_denied: S.optional(__S(3216, __c201, 0)),
+          tracking_consent_granted: S.optional(__S(3216, __c201, 0)),
+          undeliverable: S.optional(__S(3200, __c200, 0)),
+          unsubscribed: S.optional(__S(3200, __c200, 0)),
+          untracked: S.optional(__S(3200, __c200, 0)),
+        }),
+      ).annotate({
+        identifier: "BroadcastActionMetricsResponseMetricSeries",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          series: S.optional(__S(3409, __c213, 1)),
+        }),
+      ).annotate({
+        identifier: "BroadcastActionMetricsResponseMetric",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          language_variants: S.optional(__S(3426, __c214, 2)),
+          metric: S.optional(__S(3410, __c213, 2)),
+        }),
+      ).annotate({
+        identifier: "BroadcastActionMetricsResponse",
+      });
+  }
+}
+function __c214(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          attempted: S.optional(__S(3216, __c201, 0)),
+          bounced: S.optional(__S(3216, __c201, 0)),
+          clicked: S.optional(__S(3216, __c201, 0)),
+          converted: S.optional(__S(3216, __c201, 0)),
+          created: S.optional(__S(3216, __c201, 0)),
+          deferred: S.optional(__S(3216, __c201, 0)),
+          delivered: S.optional(__S(3216, __c201, 0)),
+          drafted: S.optional(__S(3216, __c201, 0)),
+          failed: S.optional(__S(3216, __c201, 0)),
+          human_clicked: S.optional(__S(3216, __c201, 0)),
+          human_opened: S.optional(__S(3216, __c201, 0)),
+          link_untracked: S.optional(__S(3216, __c201, 0)),
+          machine_clicked: S.optional(__S(3216, __c201, 0)),
+          open_untracked: S.optional(__S(3216, __c201, 0)),
+          opened: S.optional(__S(3216, __c201, 0)),
+          prefetch_opened: S.optional(__S(3216, __c201, 0)),
+          replied: S.optional(__S(3216, __c201, 0)),
+          sent: S.optional(__S(3216, __c201, 0)),
+          spammed: S.optional(__S(3216, __c201, 0)),
+          suppressed: S.optional(__S(3216, __c201, 0)),
+          topic_unsubscribed: S.optional(__S(3216, __c201, 0)),
+          tracking_consent_denied: S.optional(__S(3216, __c201, 0)),
+          tracking_consent_granted: S.optional(__S(3216, __c201, 0)),
+          undeliverable: S.optional(__S(3216, __c201, 0)),
+          unsubscribed: S.optional(__S(3216, __c201, 0)),
+          untracked: S.optional(__S(3216, __c201, 0)),
+        }),
+      ).annotate({
+        identifier: "BroadcastActionMetricsResponseLanguageVariantsValueSeries",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          default: S.optional(S.Boolean),
+          language: S.optional(S.String),
+          series: S.optional(__S(3424, __c214, 0)),
+        }),
+      ).annotate({
+        identifier: "BroadcastActionMetricsResponseLanguageVariantsValue",
+      });
+    case 2:
+      return S.Record(S.String, __S(3425, __c214, 1));
+  }
+}
+function __c215(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.String.pipe(T.Label()),
         }).pipe(T.Http({ method: "GET", uri: "/v1/design_studio/emails/{id}", code: 200 })),
       ).annotate({ identifier: "GetEmailRequest" });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          accessibility: S.optional(__S(80, __c10, 0)),
-          css_inliner: S.optional(__S(82, __c10, 2)),
-          css_variables: S.optional(__S(83, __c10, 3)),
-          encode_entities: S.optional(__S(84, __c10, 4)),
-          formatter: S.optional(__S(87, __c10, 7)),
-          prevent_widows: S.optional(__S(84, __c10, 4)),
-          remove_unused_css: S.optional(__S(90, __c11, 2)),
-          url_parameters: S.optional(__S(93, __c11, 5)),
+          accessibility: S.optional(__S(2144, __c134, 0)),
+          css_inliner: S.optional(__S(2146, __c134, 2)),
+          css_variables: S.optional(__S(2147, __c134, 3)),
+          encode_entities: S.optional(__S(2148, __c134, 4)),
+          formatter: S.optional(__S(2241, __c140, 1)),
+          prevent_widows: S.optional(__S(2148, __c134, 4)),
+          remove_unused_css: S.optional(__S(2242, __c140, 2)),
+          url_parameters: S.optional(__S(2226, __c139, 2)),
         }),
       ).annotate({
         identifier: "GetEmailResponseEmailTransformers",
       });
-    case 3:
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          available_languages: S.optional(__S(2, __c0, 2)),
-          content: S.optional(__S(76, __c9, 4)),
+          available_languages: S.optional(__S(2944, __c184, 0)),
+          content: S.optional(__S(2192, __c137, 0)),
           created: S.optional(S.Number),
-          envelope: S.optional(__S(96, __c12, 0)),
+          envelope: S.optional(__S(2256, __c141, 0)),
           id: S.optional(S.String),
           is_linked: S.optional(S.Boolean),
           is_template: S.optional(S.Boolean),
           name: S.optional(S.String),
           parent_folder_id: S.optional(S.NullOr(S.String)),
-          transformers: S.optional(__S(218, __c27, 2)),
+          transformers: S.optional(__S(3441, __c215, 1)),
           updated: S.optional(S.Number),
         }),
       ).annotate({ identifier: "GetEmailResponseEmail" });
-    case 4:
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          email: S.optional(__S(219, __c27, 3)),
+          email: S.optional(__S(3442, __c215, 2)),
         }),
       ).annotate({ identifier: "GetEmailResponse" });
-    case 5:
+  }
+}
+function __c216(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.String.pipe(T.Label()),
@@ -22409,58 +25721,58 @@ function __c27(j: number): any {
       ).annotate({
         identifier: "GetEmailTranslationRequest",
       });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          accessibility: S.optional(__S(80, __c10, 0)),
-          css_inliner: S.optional(__S(82, __c10, 2)),
-          css_variables: S.optional(__S(83, __c10, 3)),
-          encode_entities: S.optional(__S(84, __c10, 4)),
-          formatter: S.optional(__S(116, __c14, 4)),
-          prevent_widows: S.optional(__S(84, __c10, 4)),
-          remove_unused_css: S.optional(__S(117, __c14, 5)),
-          url_parameters: S.optional(__S(118, __c14, 6)),
+          accessibility: S.optional(__S(2144, __c134, 0)),
+          css_inliner: S.optional(__S(2146, __c134, 2)),
+          css_variables: S.optional(__S(2147, __c134, 3)),
+          encode_entities: S.optional(__S(2148, __c134, 4)),
+          formatter: S.optional(__S(2320, __c145, 0)),
+          prevent_widows: S.optional(__S(2148, __c134, 4)),
+          remove_unused_css: S.optional(__S(2338, __c146, 2)),
+          url_parameters: S.optional(__S(2339, __c146, 3)),
         }),
       ).annotate({
         identifier: "GetEmailTranslationResponseEmailTranslationTransformers",
       });
-    case 7:
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          available_languages: S.optional(__S(99, __c12, 3)),
-          content: S.optional(__S(76, __c9, 4)),
+          available_languages: S.optional(__S(2208, __c138, 0)),
+          content: S.optional(__S(2192, __c137, 0)),
           created: S.optional(S.Number),
-          envelope: S.optional(__S(96, __c12, 0)),
+          envelope: S.optional(__S(2256, __c141, 0)),
           is_linked: S.optional(S.Boolean),
           is_template: S.optional(S.Boolean),
           language: S.optional(S.String),
           language_group_id: S.optional(S.String),
           parent_folder_id: S.optional(S.NullOr(S.String)),
-          transformers: S.optional(__S(222, __c27, 6)),
+          transformers: S.optional(__S(3457, __c216, 1)),
           updated: S.optional(S.Number),
         }),
       ).annotate({
         identifier: "GetEmailTranslationResponseEmailTranslation",
       });
-  }
-}
-function __c28(j: number): any {
-  switch (j) {
-    case 0:
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          email_translation: S.optional(__S(223, __c27, 7)),
+          email_translation: S.optional(__S(3458, __c216, 2)),
         }),
       ).annotate({
         identifier: "GetEmailTranslationResponse",
       });
-    case 1:
+  }
+}
+function __c217(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           export_id: S.Number.pipe(T.Label()),
         }).pipe(T.Http({ method: "GET", uri: "/v1/exports/{export_id}", code: 200 })),
       ).annotate({ identifier: "GetExportRequest" });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           created_at: S.optional(S.Number),
@@ -22477,25 +25789,33 @@ function __c28(j: number): any {
           user_id: S.optional(S.Number),
         }),
       ).annotate({ identifier: "GetExportResponseExport" });
-    case 3:
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          export: S.optional(__S(226, __c28, 2)),
+          export: S.optional(__S(3473, __c217, 1)),
         }),
       ).annotate({ identifier: "GetExportResponse" });
-    case 4:
+  }
+}
+function __c218(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.String.pipe(T.Label()),
         }).pipe(T.Http({ method: "GET", uri: "/v1/design_studio/folders/{id}", code: 200 })),
       ).annotate({ identifier: "GetFolderRequest" });
-    case 5:
+  }
+}
+function __c219(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           import_id: S.Number.pipe(T.Label()),
         }).pipe(T.Http({ method: "GET", uri: "/v1/imports/{import_id}", code: 200 })),
       ).annotate({ identifier: "GetImportRequest" });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           created_at: S.optional(S.Number),
@@ -22518,15 +25838,15 @@ function __c28(j: number): any {
           warning_export_id: S.optional(S.Number),
         }),
       ).annotate({ identifier: "GetImportResponseImport" });
-    case 7:
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          import: __S(230, __c28, 6),
+          import: __S(3505, __c219, 1),
         }),
       ).annotate({ identifier: "GetImportResponse" });
   }
 }
-function __c29(j: number): any {
+function __c220(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -22546,7 +25866,11 @@ function __c29(j: number): any {
       ).annotate({
         identifier: "GetInboxPreviewCaptureRequest",
       });
-    case 1:
+  }
+}
+function __c221(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({}).pipe(
           T.Http({ method: "GET", uri: "/v1/design_studio/inbox_previews/credits", code: 200 }),
@@ -22554,7 +25878,7 @@ function __c29(j: number): any {
       ).annotate({
         identifier: "GetInboxPreviewCreditsRequest",
       });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           credits_original: S.optional(S.Number),
@@ -22565,17 +25889,21 @@ function __c29(j: number): any {
       ).annotate({
         identifier: "GetInboxPreviewCreditsResponseCreditsItem",
       });
+    case 2:
+      return S.Array(__S(3537, __c221, 1));
     case 3:
-      return S.Array(__S(234, __c29, 2));
-    case 4:
       return S.suspend(() =>
         S.Struct({
-          credits: S.optional(__S(235, __c29, 3)),
+          credits: S.optional(__S(3538, __c221, 2)),
         }),
       ).annotate({
         identifier: "GetInboxPreviewCreditsResponse",
       });
-    case 5:
+  }
+}
+function __c222(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.String.pipe(T.Label()),
@@ -22590,7 +25918,7 @@ function __c29(j: number): any {
       ).annotate({
         identifier: "GetInboxPreviewJobRequest",
       });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           message: S.optional(S.String),
@@ -22599,13 +25927,7 @@ function __c29(j: number): any {
       ).annotate({
         identifier: "GetInboxPreviewJobResponsePreviewsItemError",
       });
-    case 7:
-      return S.Record(S.String, S.String);
-  }
-}
-function __c30(j: number): any {
-  switch (j) {
-    case 0:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           browser: S.optional(S.String),
@@ -22613,26 +25935,26 @@ function __c30(j: number): any {
           category: S.optional(S.String),
           client_id: S.optional(S.String),
           display_name: S.optional(S.String),
-          error: S.optional(__S(238, __c29, 6)),
+          error: S.optional(__S(3553, __c222, 1)),
           full_thumbnail: S.optional(S.String),
           os: S.optional(S.String),
-          screenshots: S.optional(__S(239, __c29, 7)),
+          screenshots: S.optional(__S(3568, __c223, 0)),
           status: S.optional(S.String),
           thumbnail: S.optional(S.String),
         }),
       ).annotate({
         identifier: "GetInboxPreviewJobResponsePreviewsItem",
       });
-    case 1:
-      return S.Array(__S(240, __c30, 0));
-    case 2:
+    case 3:
+      return S.Array(__S(3554, __c222, 2));
+    case 4:
       return S.suspend(() =>
         S.Struct({
-          client_ids: S.optional(__S(2, __c0, 2)),
+          client_ids: S.optional(__S(2944, __c184, 0)),
           created_at: S.optional(S.Number),
           is_processed: S.optional(S.Boolean),
           name: S.optional(S.String),
-          previews: S.optional(__S(241, __c30, 1)),
+          previews: S.optional(__S(3555, __c222, 3)),
           run_id: S.optional(S.Number),
           total_previews_bounced: S.optional(S.Number),
           total_previews_cached: S.optional(S.Number),
@@ -22644,7 +25966,17 @@ function __c30(j: number): any {
       ).annotate({
         identifier: "GetInboxPreviewJobResponse",
       });
-    case 3:
+  }
+}
+function __c223(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, S.String);
+  }
+}
+function __c224(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           instance_id: S.String.pipe(T.Label()),
@@ -22652,7 +25984,7 @@ function __c30(j: number): any {
       ).annotate({
         identifier: "GetLiveNotificationRequest",
       });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           created_at: S.optional(S.Number),
@@ -22664,14 +25996,14 @@ function __c30(j: number): any {
       ).annotate({
         identifier: "GetLiveNotificationResponseLastDelivery",
       });
-    case 5:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           ended_at: S.optional(S.NullOr(S.Number)),
           expires_at: S.optional(S.NullOr(S.Number)),
           failure_reason: S.optional(S.NullOr(S.String)),
           instance_id: S.optional(S.String),
-          last_delivery: S.optional(S.NullOr(__S(244, __c30, 4))),
+          last_delivery: S.optional(S.NullOr(__S(3585, __c224, 1))),
           notification_type: S.optional(S.String),
           platform: S.optional(S.String),
           started_at: S.optional(S.Number),
@@ -22680,14 +26012,18 @@ function __c30(j: number): any {
       ).annotate({
         identifier: "GetLiveNotificationResponse",
       });
-    case 6:
+  }
+}
+function __c225(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           message_id: S.String.pipe(T.Label()),
           get_tracked_responses: S.optional(S.Boolean.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/v1/messages/{message_id}", code: 200 })),
       ).annotate({ identifier: "GetMessageRequest" });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           action_id: S.optional(S.Number),
@@ -22696,35 +26032,53 @@ function __c30(j: number): any {
           content_id: S.optional(S.Number),
           created: S.optional(S.Number),
           customer_id: S.optional(S.NullOr(S.String)),
-          customer_identifiers: S.optional(__S(33, __c4, 1)),
+          customer_identifiers: S.optional(__S(256, __c16, 0)),
           deduplicate_id: S.optional(S.String),
           failure_message: S.optional(S.NullOr(S.String)),
           forgotten: S.optional(S.Boolean),
           id: S.optional(S.String),
           message_template_id: S.optional(S.Number),
-          metrics: S.optional(__S(34, __c4, 2)),
+          metrics: S.optional(__S(240, __c15, 0)),
           newsletter_id: S.optional(S.NullOr(S.Number)),
           parent_action_id: S.optional(S.Number),
           recipient: S.optional(S.String),
           subject: S.optional(S.String),
-          tracked_responses: S.optional(__S(36, __c4, 4)),
+          tracked_responses: S.optional(__S(242, __c15, 2)),
           trigger_event_id: S.optional(S.String),
           type: S.optional(S.String),
         }),
       ).annotate({
         identifier: "GetMessageResponseMessage",
       });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          message: S.optional(__S(3601, __c225, 1)),
+        }),
+      ).annotate({ identifier: "GetMessageResponse" });
   }
 }
-function __c31(j: number): any {
+function __c226(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          message: S.optional(__S(247, __c30, 7)),
-        }),
-      ).annotate({ identifier: "GetMessageResponse" });
+          broadcast_id: S.Number.pipe(T.Label()),
+        }).pipe(T.Http({ method: "GET", uri: "/v1/broadcasts/{broadcast_id}/actions", code: 200 })),
+      ).annotate({ identifier: "BroadcastActionsRequest" });
     case 1:
+      return S.Array(S.Unknown);
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          actions: S.optional(__S(3617, __c226, 1)),
+        }),
+      ).annotate({ identifier: "BroadcastActionsResponse" });
+  }
+}
+function __c227(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           newsletter_id: S.Number.pipe(T.Label()),
@@ -22741,7 +26095,11 @@ function __c31(j: number): any {
       ).annotate({
         identifier: "GetNewsletterLinksRequest",
       });
-    case 2:
+  }
+}
+function __c228(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           newsletter_id: S.Number.pipe(T.Label()),
@@ -22754,24 +26112,28 @@ function __c31(j: number): any {
       ).annotate({
         identifier: "GetNewsletterMetricsRequest",
       });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          series: S.optional(__S(53, __c6, 5)),
+          series: S.optional(__S(1152, __c72, 0)),
           type: S.optional(S.String),
         }),
       ).annotate({
         identifier: "GetNewsletterMetricsResponseMetric",
       });
-    case 4:
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          metric: S.optional(__S(251, __c31, 3)),
+          metric: S.optional(__S(3649, __c228, 1)),
         }),
       ).annotate({
         identifier: "GetNewsletterMetricsResponse",
       });
-    case 5:
+  }
+}
+function __c229(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           newsletter_id: S.Number.pipe(T.Label()),
@@ -22787,7 +26149,7 @@ function __c31(j: number): any {
       ).annotate({
         identifier: "GetNewsletterMsgMetaRequest",
       });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           action_id: S.optional(S.Number),
@@ -22796,48 +26158,48 @@ function __c31(j: number): any {
           content_id: S.optional(S.Number),
           created: S.optional(S.Number),
           customer_id: S.optional(S.NullOr(S.String)),
-          customer_identifiers: S.optional(__S(33, __c4, 1)),
+          customer_identifiers: S.optional(__S(256, __c16, 0)),
           deduplicate_id: S.optional(S.String),
           failure_message: S.optional(S.NullOr(S.String)),
           forgotten: S.optional(S.Boolean),
           id: S.optional(S.String),
           message_template_id: S.optional(S.Number),
-          metrics: S.optional(__S(34, __c4, 2)),
+          metrics: S.optional(__S(240, __c15, 0)),
           newsletter_id: S.optional(S.NullOr(S.Number)),
           parent_action_id: S.optional(S.Number),
           recipient: S.optional(S.String),
           subject: S.optional(S.String),
-          tracked_responses: S.optional(__S(36, __c4, 4)),
+          tracked_responses: S.optional(__S(242, __c15, 2)),
           trigger_event_id: S.optional(S.String),
           type: S.optional(S.String),
         }),
       ).annotate({
         identifier: "GetNewsletterMsgMetaResponseMessagesItem",
       });
-    case 7:
-      return S.Array(__S(254, __c31, 6));
-  }
-}
-function __c32(j: number): any {
-  switch (j) {
-    case 0:
+    case 2:
+      return S.Array(__S(3665, __c229, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          messages: S.optional(__S(255, __c31, 7)),
+          messages: S.optional(__S(3666, __c229, 2)),
         }),
       ).annotate({
         identifier: "GetNewsletterMsgMetaResponse",
       });
-    case 1:
+  }
+}
+function __c230(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           newsletter_id: S.Number.pipe(T.Label()),
         }).pipe(T.Http({ method: "GET", uri: "/v1/newsletters/{newsletter_id}", code: 200 })),
       ).annotate({ identifier: "GetNewslettersRequest" });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          content_ids: S.optional(__S(7, __c0, 7)),
+          content_ids: S.optional(__S(3200, __c200, 0)),
           created: S.optional(S.Number),
           deduplicate_id: S.optional(S.String),
           expires_after: S.optional(S.Number),
@@ -22845,12 +26207,12 @@ function __c32(j: number): any {
           name: S.optional(S.String),
           recipient_file_error: S.optional(S.String),
           recipient_file_status: S.optional(S.String),
-          recipient_segment_ids: S.optional(__S(7, __c0, 7)),
+          recipient_segment_ids: S.optional(__S(3200, __c200, 0)),
           scheduled_at: S.optional(S.NullOr(S.Number)),
           send_state: S.optional(S.String),
           sent_at: S.optional(S.NullOr(S.Number)),
           subscription_topic_id: S.optional(S.Number),
-          tags: S.optional(__S(2, __c0, 2)),
+          tags: S.optional(__S(2944, __c184, 0)),
           timezone: S.optional(S.String),
           type: S.optional(S.String),
           tz_match_enabled: S.optional(S.Boolean),
@@ -22859,13 +26221,17 @@ function __c32(j: number): any {
       ).annotate({
         identifier: "GetNewslettersResponseNewsletter",
       });
-    case 3:
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          newsletter: S.optional(__S(258, __c32, 2)),
+          newsletter: S.optional(__S(3681, __c230, 1)),
         }),
       ).annotate({ identifier: "GetNewslettersResponse" });
-    case 4:
+  }
+}
+function __c231(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           newsletter_id: S.Number.pipe(T.Label()),
@@ -22875,10 +26241,10 @@ function __c32(j: number): any {
       ).annotate({
         identifier: "GetNewsletterTestGroupsRequest",
       });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          content_ids: S.optional(__S(2, __c0, 2)),
+          content_ids: S.optional(__S(2944, __c184, 0)),
           id: S.optional(S.Number),
           label: S.optional(S.String),
           name: S.optional(S.String),
@@ -22887,19 +26253,19 @@ function __c32(j: number): any {
       ).annotate({
         identifier: "GetNewsletterTestGroupsResponseTestGroupsItem",
       });
-    case 6:
-      return S.Array(__S(261, __c32, 5));
-    case 7:
+    case 2:
+      return S.Array(__S(3697, __c231, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          test_groups: S.optional(__S(262, __c32, 6)),
+          test_groups: S.optional(__S(3698, __c231, 2)),
         }),
       ).annotate({
         identifier: "GetNewsletterTestGroupsResponse",
       });
   }
 }
-function __c33(j: number): any {
+function __c232(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -22916,7 +26282,11 @@ function __c33(j: number): any {
       ).annotate({
         identifier: "GetNewsletterVariantRequest",
       });
-    case 1:
+  }
+}
+function __c233(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           bcc: S.optional(S.String),
@@ -22944,15 +26314,23 @@ function __c33(j: number): any {
       ).annotate({
         identifier: "GetNewsletterVariantResponseContent",
       });
-    case 2:
+  }
+}
+function __c234(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          content: S.optional(__S(265, __c33, 1)),
+          content: S.optional(__S(3728, __c233, 0)),
         }),
       ).annotate({
         identifier: "GetNewsletterVariantResponse",
       });
-    case 3:
+  }
+}
+function __c235(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           newsletter_id: S.Number.pipe(T.Label()),
@@ -22967,7 +26345,11 @@ function __c33(j: number): any {
       ).annotate({
         identifier: "GetNewsletterVariantTranslationRequest",
       });
-    case 4:
+  }
+}
+function __c236(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           newsletter_id: S.Number.pipe(T.Label()),
@@ -22983,7 +26365,11 @@ function __c33(j: number): any {
       ).annotate({
         identifier: "GetNewsletterVariantTranslationTestRequest",
       });
-    case 5:
+  }
+}
+function __c237(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           object_type_id: S.Number.pipe(T.Label()),
@@ -22999,7 +26385,7 @@ function __c33(j: number): any {
       ).annotate({
         identifier: "GetObjectAttributesRequest",
       });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           cio_object_id: S.optional(S.String),
@@ -23009,32 +26395,32 @@ function __c33(j: number): any {
       ).annotate({
         identifier: "GetObjectAttributesResponseObjectIdentifiers",
       });
-    case 7:
+    case 2:
       return S.Record(S.String, S.Number);
-  }
-}
-function __c34(j: number): any {
-  switch (j) {
-    case 0:
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          attributes: S.optional(__S(0, __c0, 0)),
-          identifiers: S.optional(__S(270, __c33, 6)),
+          attributes: S.optional(__S(2432, __c152, 0)),
+          identifiers: S.optional(__S(3793, __c237, 1)),
           object_type_id: S.optional(S.String),
-          timestamps: S.optional(__S(271, __c33, 7)),
+          timestamps: S.optional(__S(3794, __c237, 2)),
         }),
       ).annotate({
         identifier: "GetObjectAttributesResponseObject",
       });
-    case 1:
+    case 4:
       return S.suspend(() =>
         S.Struct({
-          object: S.optional(__S(272, __c34, 0)),
+          object: S.optional(__S(3795, __c237, 3)),
         }),
       ).annotate({
         identifier: "GetObjectAttributesResponse",
       });
-    case 2:
+  }
+}
+function __c238(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           object_type_id: S.Number.pipe(T.Label()),
@@ -23052,7 +26438,7 @@ function __c34(j: number): any {
       ).annotate({
         identifier: "GetObjectRelationshipsRequest",
       });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           cio_id: S.optional(S.String),
@@ -23062,28 +26448,58 @@ function __c34(j: number): any {
       ).annotate({
         identifier: "GetObjectRelationshipsResponseCioRelationshipsItemIdentifiers",
       });
-    case 4:
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          identifiers: S.optional(__S(275, __c34, 3)),
+          identifiers: S.optional(__S(3809, __c238, 1)),
           object_type_disabled: S.optional(S.Boolean),
           object_type_id: S.optional(S.String),
         }),
       ).annotate({
         identifier: "GetObjectRelationshipsResponseCioRelationshipsItem",
       });
-    case 5:
-      return S.Array(__S(276, __c34, 4));
-    case 6:
+    case 3:
+      return S.Array(__S(3810, __c238, 2));
+    case 4:
       return S.suspend(() =>
         S.Struct({
-          cio_relationships: S.optional(__S(277, __c34, 5)),
+          cio_relationships: S.optional(__S(3811, __c238, 3)),
           next: S.optional(S.String),
         }),
       ).annotate({
         identifier: "GetObjectRelationshipsResponse",
       });
-    case 7:
+  }
+}
+function __c239(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          broadcast_id: S.Number.pipe(T.Label()),
+          trigger_id: S.Number.pipe(T.Label()),
+          start: S.optional(S.String.pipe(T.Query())),
+          limit: S.optional(S.Number.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/v1/campaigns/{broadcast_id}/triggers/{trigger_id}/errors",
+            code: 200,
+          }),
+        ),
+      ).annotate({ identifier: "BroadcastErrorsRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          errors: S.optional(__S(2944, __c184, 0)),
+          next: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "BroadcastErrorsResponse" });
+  }
+}
+function __c240(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           start: S.optional(S.String.pipe(T.Query())),
@@ -23092,11 +26508,7 @@ function __c34(j: number): any {
           object_type_id: S.String,
         }).pipe(T.Http({ method: "POST", uri: "/v1/objects", code: 200 })),
       ).annotate({ identifier: "GetObjectsFilterRequest" });
-  }
-}
-function __c35(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           cio_object_id: S.optional(S.String),
@@ -23105,21 +26517,25 @@ function __c35(j: number): any {
       ).annotate({
         identifier: "GetObjectsFilterResponseIdentifiersItem",
       });
-    case 1:
-      return S.Array(__S(280, __c35, 0));
     case 2:
+      return S.Array(__S(3841, __c240, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          identifiers: S.optional(__S(281, __c35, 1)),
-          ids: S.optional(__S(2, __c0, 2)),
+          identifiers: S.optional(__S(3842, __c240, 2)),
+          ids: S.optional(__S(2944, __c184, 0)),
           next: S.optional(S.String),
         }),
       ).annotate({ identifier: "GetObjectsFilterResponse" });
-    case 3:
+  }
+}
+function __c241(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({}).pipe(T.Http({ method: "GET", uri: "/v1/object_types", code: 200 })),
       ).annotate({ identifier: "GetObjectTypesRequest" });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           enabled: S.optional(S.Boolean),
@@ -23133,15 +26549,19 @@ function __c35(j: number): any {
       ).annotate({
         identifier: "GetObjectTypesResponseTypesItem",
       });
-    case 5:
-      return S.Array(__S(284, __c35, 4));
-    case 6:
+    case 2:
+      return S.Array(__S(3857, __c241, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          types: S.optional(__S(285, __c35, 5)),
+          types: S.optional(__S(3858, __c241, 2)),
         }),
       ).annotate({ identifier: "GetObjectTypesResponse" });
-    case 7:
+  }
+}
+function __c242(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           from: S.optional(S.String.pipe(T.Query())),
@@ -23149,9 +26569,28 @@ function __c35(j: number): any {
           limit: S.optional(S.Number.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/v1/optouts", code: 200 })),
       ).annotate({ identifier: "GetOptoutsRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          cio_id: S.optional(S.String),
+          customer_id: S.optional(S.String),
+          optouts: S.optional(__S(3889, __c243, 1)),
+        }),
+      ).annotate({
+        identifier: "GetOptoutsResponseOptoutsItem",
+      });
+    case 2:
+      return S.Array(__S(3873, __c242, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          next: S.optional(S.String),
+          optouts: S.optional(__S(3874, __c242, 2)),
+        }),
+      ).annotate({ identifier: "GetOptoutsResponse" });
   }
 }
-function __c36(j: number): any {
+function __c243(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -23163,46 +26602,19 @@ function __c36(j: number): any {
         identifier: "GetOptoutsResponseOptoutsItemOptoutsItem",
       });
     case 1:
-      return S.Array(__S(288, __c36, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          cio_id: S.optional(S.String),
-          customer_id: S.optional(S.String),
-          optouts: S.optional(__S(289, __c36, 1)),
-        }),
-      ).annotate({
-        identifier: "GetOptoutsResponseOptoutsItem",
-      });
-    case 3:
-      return S.Array(__S(290, __c36, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          next: S.optional(S.String),
-          optouts: S.optional(__S(291, __c36, 3)),
-        }),
-      ).annotate({ identifier: "GetOptoutsResponse" });
-    case 5:
+      return S.Array(__S(3888, __c243, 0));
+  }
+}
+function __c244(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id_type: S.optional(S.String.pipe(T.Query())),
-          ids: __S(2, __c0, 2),
+          ids: __S(2944, __c184, 0),
         }).pipe(T.Http({ method: "POST", uri: "/v1/customers/attributes", code: 200 })),
       ).annotate({ identifier: "GetPeopleByIdRequest" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          _cio_subscription_preferences_computed: S.optional(S.String),
-          cio_id: S.optional(S.String),
-          cio_subscription_preferences: S.optional(S.String),
-          email: S.optional(S.NullOr(S.String)),
-          id: S.optional(S.NullOr(S.String)),
-        }),
-      ).annotate({
-        identifier: "GetPeopleByIdResponseCustomersItemCustomerAttributes",
-      });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           _last_status: S.optional(S.String),
@@ -23217,24 +26629,65 @@ function __c36(j: number): any {
       ).annotate({
         identifier: "GetPeopleByIdResponseCustomersItemCustomerDevicesItemAttributes",
       });
-  }
-}
-function __c37(j: number): any {
-  switch (j) {
-    case 0:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
           platform: S.String,
-          attributes: S.optional(__S(295, __c36, 7)),
+          attributes: S.optional(__S(3905, __c244, 1)),
           last_used: S.optional(S.Number),
         }),
       ).annotate({
         identifier: "GetPeopleByIdResponseCustomersItemCustomerDevicesItem",
       });
+    case 3:
+      return S.Array(__S(3906, __c244, 2));
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          attributes: S.optional(__S(3920, __c245, 0)),
+          devices: S.optional(__S(3907, __c244, 3)),
+          id: S.optional(S.String),
+          identifiers: S.optional(__S(256, __c16, 0)),
+          timestamps: S.optional(__S(3921, __c245, 1)),
+          unsubscribed: S.optional(S.Boolean),
+        }),
+      ).annotate({
+        identifier: "GetPeopleByIdResponseCustomersItemCustomer",
+      });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          customer: S.optional(__S(3908, __c244, 4)),
+        }),
+      ).annotate({
+        identifier: "GetPeopleByIdResponseCustomersItem",
+      });
+    case 6:
+      return S.Array(__S(3909, __c244, 5));
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          customers: S.optional(__S(3910, __c244, 6)),
+        }),
+      ).annotate({ identifier: "GetPeopleByIdResponse" });
+  }
+}
+function __c245(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          _cio_subscription_preferences_computed: S.optional(S.String),
+          cio_id: S.optional(S.String),
+          cio_subscription_preferences: S.optional(S.String),
+          email: S.optional(S.NullOr(S.String)),
+          id: S.optional(S.NullOr(S.String)),
+        }),
+      ).annotate({
+        identifier: "GetPeopleByIdResponseCustomersItemCustomerAttributes",
+      });
     case 1:
-      return S.Array(__S(296, __c37, 0));
-    case 2:
       return S.suspend(() =>
         S.Struct({
           _cio_subscription_preferences_computed: S.optional(S.Number),
@@ -23249,44 +26702,25 @@ function __c37(j: number): any {
       ).annotate({
         identifier: "GetPeopleByIdResponseCustomersItemCustomerTimestamps",
       });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          attributes: S.optional(__S(294, __c36, 6)),
-          devices: S.optional(__S(297, __c37, 1)),
-          id: S.optional(S.String),
-          identifiers: S.optional(__S(33, __c4, 1)),
-          timestamps: S.optional(__S(298, __c37, 2)),
-          unsubscribed: S.optional(S.Boolean),
-        }),
-      ).annotate({
-        identifier: "GetPeopleByIdResponseCustomersItemCustomer",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          customer: S.optional(__S(299, __c37, 3)),
-        }),
-      ).annotate({
-        identifier: "GetPeopleByIdResponseCustomersItem",
-      });
-    case 5:
-      return S.Array(__S(300, __c37, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          customers: S.optional(__S(301, __c37, 5)),
-        }),
-      ).annotate({ identifier: "GetPeopleByIdResponse" });
-    case 7:
+  }
+}
+function __c246(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           email: S.String.pipe(T.Query()),
         }).pipe(T.Http({ method: "GET", uri: "/v1/customers", code: 200 })),
       ).annotate({ identifier: "GetPeopleEmailRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          results: S.optional(__S(3953, __c247, 1)),
+        }),
+      ).annotate({ identifier: "GetPeopleEmailResponse" });
   }
 }
-function __c38(j: number): any {
+function __c247(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -23299,14 +26733,12 @@ function __c38(j: number): any {
         identifier: "GetPeopleEmailResponseResultsItem",
       });
     case 1:
-      return S.Array(__S(304, __c38, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          results: S.optional(__S(305, __c38, 1)),
-        }),
-      ).annotate({ identifier: "GetPeopleEmailResponse" });
-    case 3:
+      return S.Array(__S(3952, __c247, 0));
+  }
+}
+function __c248(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           start: S.optional(S.String.pipe(T.Query())),
@@ -23314,15 +26746,19 @@ function __c38(j: number): any {
           filter: S.Unknown,
         }).pipe(T.Http({ method: "POST", uri: "/v1/customers", code: 200 })),
       ).annotate({ identifier: "GetPeopleFilterRequest" });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          identifiers: S.optional(__S(305, __c38, 1)),
-          ids: S.optional(__S(2, __c0, 2)),
+          identifiers: S.optional(__S(3953, __c247, 1)),
+          ids: S.optional(__S(2944, __c184, 0)),
           next: S.optional(S.String),
         }),
       ).annotate({ identifier: "GetPeopleFilterResponse" });
-    case 5:
+  }
+}
+function __c249(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           customer_id: S.String.pipe(T.Label()),
@@ -23337,11 +26773,11 @@ function __c38(j: number): any {
       ).annotate({
         identifier: "GetPersonActivitiesRequest",
       });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           customer_id: S.optional(S.NullOr(S.String)),
-          customer_identifiers: S.optional(__S(33, __c4, 1)),
+          customer_identifiers: S.optional(__S(256, __c16, 0)),
           data: S.optional(S.Unknown),
           delivery_id: S.optional(S.String),
           delivery_type: S.optional(S.String),
@@ -23354,21 +26790,21 @@ function __c38(j: number): any {
       ).annotate({
         identifier: "GetPersonActivitiesResponseActivitiesItem",
       });
-    case 7:
-      return S.Array(__S(310, __c38, 6));
-  }
-}
-function __c39(j: number): any {
-  switch (j) {
-    case 0:
+    case 2:
+      return S.Array(__S(3985, __c249, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          activities: S.optional(__S(311, __c38, 7)),
+          activities: S.optional(__S(3986, __c249, 2)),
         }),
       ).annotate({
         identifier: "GetPersonActivitiesResponse",
       });
-    case 1:
+  }
+}
+function __c250(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           customer_id: S.String.pipe(T.Label()),
@@ -23379,7 +26815,7 @@ function __c39(j: number): any {
       ).annotate({
         identifier: "GetPersonAttributesRequest",
       });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           _last_status: S.optional(S.String),
@@ -23394,41 +26830,45 @@ function __c39(j: number): any {
       ).annotate({
         identifier: "GetPersonAttributesResponseCustomerDevicesItemAttributes",
       });
-    case 3:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
           platform: S.String,
-          attributes: S.optional(__S(314, __c39, 2)),
+          attributes: S.optional(__S(4001, __c250, 1)),
           last_used: S.optional(S.Number),
         }),
       ).annotate({
         identifier: "GetPersonAttributesResponseCustomerDevicesItem",
       });
+    case 3:
+      return S.Array(__S(4002, __c250, 2));
     case 4:
-      return S.Array(__S(315, __c39, 3));
-    case 5:
       return S.suspend(() =>
         S.Struct({
-          attributes: S.optional(__S(294, __c36, 6)),
-          devices: S.optional(__S(316, __c39, 4)),
+          attributes: S.optional(__S(3920, __c245, 0)),
+          devices: S.optional(__S(4003, __c250, 3)),
           id: S.optional(S.String),
-          identifiers: S.optional(__S(33, __c4, 1)),
-          timestamps: S.optional(__S(298, __c37, 2)),
+          identifiers: S.optional(__S(256, __c16, 0)),
+          timestamps: S.optional(__S(3921, __c245, 1)),
           unsubscribed: S.optional(S.Boolean),
         }),
       ).annotate({
         identifier: "GetPersonAttributesResponseCustomer",
       });
-    case 6:
+    case 5:
       return S.suspend(() =>
         S.Struct({
-          customer: S.optional(__S(317, __c39, 5)),
+          customer: S.optional(__S(4004, __c250, 4)),
         }),
       ).annotate({
         identifier: "GetPersonAttributesResponse",
       });
-    case 7:
+  }
+}
+function __c251(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           customer_id: S.String.pipe(T.Label()),
@@ -23439,11 +26879,7 @@ function __c39(j: number): any {
           end_ts: S.optional(S.Number.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/v1/customers/{customer_id}/messages", code: 200 })),
       ).annotate({ identifier: "GetPersonMessagesRequest" });
-  }
-}
-function __c40(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           delivered: S.optional(S.Number),
@@ -23452,7 +26888,7 @@ function __c40(j: number): any {
       ).annotate({
         identifier: "GetPersonMessagesResponseMessagesItemMetrics",
       });
-    case 1:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           action_id: S.optional(S.Number),
@@ -23465,7 +26901,7 @@ function __c40(j: number): any {
           failure_message: S.optional(S.NullOr(S.String)),
           forgotten: S.optional(S.Boolean),
           id: S.optional(S.String),
-          metrics: S.optional(__S(320, __c40, 0)),
+          metrics: S.optional(__S(4017, __c251, 1)),
           msg_template_id: S.optional(S.String),
           newsletter_id: S.optional(S.NullOr(S.Number)),
           recipient: S.optional(S.String),
@@ -23475,2760 +26911,35 @@ function __c40(j: number): any {
       ).annotate({
         identifier: "GetPersonMessagesResponseMessagesItem",
       });
-    case 2:
-      return S.Array(__S(321, __c40, 1));
     case 3:
+      return S.Array(__S(4018, __c251, 2));
+    case 4:
       return S.suspend(() =>
         S.Struct({
-          messages: S.optional(__S(322, __c40, 2)),
+          messages: S.optional(__S(4019, __c251, 3)),
         }),
       ).annotate({
         identifier: "GetPersonMessagesResponse",
       });
-    case 4:
+  }
+}
+function __c252(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           customer_id: S.String.pipe(T.Label()),
           id_type: S.optional(S.String.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/v1/customers/{customer_id}/optouts", code: 200 })),
       ).annotate({ identifier: "GetPersonOptoutsRequest" });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          optouts: S.optional(__S(289, __c36, 1)),
+          optouts: S.optional(__S(3889, __c243, 1)),
         }),
       ).annotate({ identifier: "GetPersonOptoutsResponse" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          customer_id: S.String.pipe(T.Label()),
-          id_type: S.optional(S.String.pipe(T.Query())),
-          start: S.optional(S.String.pipe(T.Query())),
-          limit: S.optional(S.Number.pipe(T.Query())),
-        }).pipe(
-          T.Http({ method: "GET", uri: "/v1/customers/{customer_id}/relationships", code: 200 }),
-        ),
-      ).annotate({
-        identifier: "GetPersonRelationshipsRequest",
-      });
-    case 7:
-      return S.Record(S.String, S.Unknown);
   }
 }
-function __c41(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          cio_object_id: S.optional(S.String),
-          object_id: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GetPersonRelationshipsResponseCioRelationshipsItemIdentifiers",
-      });
-    case 1:
-      return S.Record(S.String, S.Number);
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          attributes: S.optional(__S(327, __c40, 7)),
-          identifiers: S.optional(__S(328, __c41, 0)),
-          object_type_id: S.optional(S.Number),
-          timestamps: S.optional(__S(329, __c41, 1)),
-        }),
-      ).annotate({
-        identifier: "GetPersonRelationshipsResponseCioRelationshipsItem",
-      });
-    case 3:
-      return S.Array(__S(330, __c41, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          cio_relationships: S.optional(__S(331, __c41, 3)),
-          next: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GetPersonRelationshipsResponse",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          customer_id: S.String.pipe(T.Label()),
-          id_type: S.optional(S.String.pipe(T.Query())),
-        }).pipe(T.Http({ method: "GET", uri: "/v1/customers/{customer_id}/segments", code: 200 })),
-      ).annotate({ identifier: "GetPersonSegmentsRequest" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          description: S.optional(S.String),
-          id: S.optional(S.Number),
-          name: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GetPersonSegmentsResponseSegmentsItem",
-      });
-    case 7:
-      return S.Array(__S(334, __c41, 6));
-  }
-}
-function __c42(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          segments: S.optional(__S(335, __c41, 7)),
-        }),
-      ).annotate({
-        identifier: "GetPersonSegmentsResponse",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          customer_id: S.String.pipe(T.Label()),
-          id_type: S.optional(S.String.pipe(T.Query())),
-          language: S.optional(S.String.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/v1/customers/{customer_id}/subscription_preferences",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "GetPersonSubscriptionPreferencesRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          subtitle: S.optional(S.String),
-          title: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GetPersonSubscriptionPreferencesResponseCustomerHeader",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          description: S.optional(S.String),
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          subscribed: S.optional(S.Boolean),
-        }),
-      ).annotate({
-        identifier: "GetPersonSubscriptionPreferencesResponseCustomerTopicsItem",
-      });
-    case 4:
-      return S.Array(__S(339, __c42, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          header: S.optional(__S(338, __c42, 2)),
-          id: S.optional(S.NullOr(S.String)),
-          identifiers: S.optional(__S(33, __c4, 1)),
-          topics: S.optional(__S(340, __c42, 4)),
-          unsubscribed: S.optional(S.Boolean),
-        }),
-      ).annotate({
-        identifier: "GetPersonSubscriptionPreferencesResponseCustomer",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          customer: S.optional(__S(341, __c42, 5)),
-        }),
-      ).annotate({
-        identifier: "GetPersonSubscriptionPreferencesResponse",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String.pipe(T.Label()),
-          publish_id: S.String.pipe(T.Query()),
-        }).pipe(
-          T.Http({ method: "GET", uri: "/v1/design_studio/emails/{id}/publish_status", code: 200 }),
-        ),
-      ).annotate({ identifier: "GetPublishStatusRequest" });
-  }
-}
-function __c43(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          language: S.optional(S.String),
-          node_id: S.optional(S.String),
-          template_id: S.optional(S.Number),
-          version_id: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GetPublishStatusResponseMappingsItem",
-      });
-    case 1:
-      return S.Array(__S(344, __c43, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          mappings: S.optional(__S(345, __c43, 1)),
-          status: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "GetPublishStatusResponse" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          segment_id: S.Number.pipe(T.Label()),
-        }).pipe(T.Http({ method: "GET", uri: "/v1/segments/{segment_id}", code: 200 })),
-      ).annotate({ identifier: "GetSegmentRequest" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          conditions: S.optional(__S(0, __c0, 0)),
-          created_at: S.optional(S.Number),
-          deduplicate_id: S.optional(S.String),
-          description: S.optional(S.String),
-          id: S.optional(S.Number),
-          name: S.optional(S.String),
-          progress: S.optional(S.NullOr(S.Number)),
-          state: S.optional(S.String),
-          tags: S.optional(S.NullOr(__S(2, __c0, 2))),
-          type: S.optional(S.String),
-          updated_at: S.optional(S.Number),
-        }),
-      ).annotate({
-        identifier: "GetSegmentResponseSegment",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          segment: S.optional(__S(348, __c43, 4)),
-        }),
-      ).annotate({ identifier: "GetSegmentResponse" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          segment_id: S.Number.pipe(T.Label()),
-        }).pipe(
-          T.Http({ method: "GET", uri: "/v1/segments/{segment_id}/customer_count", code: 200 }),
-        ),
-      ).annotate({ identifier: "GetSegmentCountRequest" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          count: S.optional(S.Number),
-          segment_id: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "GetSegmentCountResponse" });
-  }
-}
-function __c44(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          segment_id: S.Number.pipe(T.Label()),
-        }).pipe(T.Http({ method: "GET", uri: "/v1/segments/{segment_id}/used_by", code: 200 })),
-      ).annotate({
-        identifier: "GetSegmentDependenciesRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          campaigns: S.optional(__S(7, __c0, 7)),
-          draft_newsletters: S.optional(__S(7, __c0, 7)),
-          segment_id: S.optional(S.Number),
-          sent_newsletters: S.optional(__S(7, __c0, 7)),
-        }),
-      ).annotate({
-        identifier: "GetSegmentDependenciesResponseUsedBy",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          used_by: S.optional(__S(353, __c44, 1)),
-        }),
-      ).annotate({
-        identifier: "GetSegmentDependenciesResponse",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          segment_id: S.Number.pipe(T.Label()),
-          start: S.optional(S.String.pipe(T.Query())),
-          limit: S.optional(S.Number.pipe(T.Query())),
-        }).pipe(T.Http({ method: "GET", uri: "/v1/segments/{segment_id}/membership", code: 200 })),
-      ).annotate({
-        identifier: "GetSegmentMembershipRequest",
-      });
-    case 4:
-      return S.suspend(() => S.Unknown.pipe(T.RawResponseRoot())).annotate({
-        identifier: "GetSegmentMembershipResponse",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          sender_id: S.Number.pipe(T.Label()),
-        }).pipe(T.Http({ method: "GET", uri: "/v1/sender_identities/{sender_id}", code: 200 })),
-      ).annotate({ identifier: "GetSenderRequest" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          address: S.optional(S.String),
-          auto_generated: S.optional(S.Boolean),
-          deduplicate_id: S.optional(S.String),
-          email: S.optional(S.String),
-          hidden: S.optional(S.Boolean),
-          id: S.optional(S.Number),
-          name: S.optional(S.String),
-          phone: S.optional(S.String),
-          template_type: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GetSenderResponseSenderIdentity",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          sender_identity: S.optional(__S(358, __c44, 6)),
-        }),
-      ).annotate({ identifier: "GetSenderResponse" });
-  }
-}
-function __c45(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          sender_id: S.Number.pipe(T.Label()),
-        }).pipe(
-          T.Http({ method: "GET", uri: "/v1/sender_identities/{sender_id}/used_by", code: 200 }),
-        ),
-      ).annotate({ identifier: "GetSenderUsageRequest" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          campaigns: S.optional(__S(7, __c0, 7)),
-          draft_newsletters: S.optional(__S(7, __c0, 7)),
-          sent_newsletters: S.optional(__S(7, __c0, 7)),
-        }),
-      ).annotate({ identifier: "GetSenderUsageResponse" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          customer_id: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({ method: "GET", uri: "/v1/subscription_center/{customer_id}/token", code: 200 }),
-        ),
-      ).annotate({
-        identifier: "GetSubscriptionCenterTokenRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          token: S.optional(S.String),
-          url: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GetSubscriptionCenterTokenResponse",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          email_address: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({ method: "GET", uri: "/v1/esp/search_suppression/{email_address}", code: 200 }),
-        ),
-      ).annotate({ identifier: "GetSuppressionRequest" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          category: S.optional(S.String),
-          suppressions: S.optional(__S(215, __c26, 7)),
-        }),
-      ).annotate({ identifier: "GetSuppressionResponse" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          suppression_type: S.String.pipe(T.Label()),
-          limit: S.optional(S.Number.pipe(T.Query())),
-          offset: S.optional(S.Number.pipe(T.Query())),
-          domain: S.optional(S.String.pipe(T.Query())),
-        }).pipe(
-          T.Http({ method: "GET", uri: "/v1/esp/suppression/{suppression_type}", code: 200 }),
-        ),
-      ).annotate({
-        identifier: "GetSuppressionByTypeRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          category: S.optional(S.String),
-          suppressions: S.optional(__S(215, __c26, 7)),
-        }),
-      ).annotate({
-        identifier: "GetSuppressionByTypeResponse",
-      });
-  }
-}
-function __c46(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({}).pipe(T.Http({ method: "GET", uri: "/v1/subscription_topics", code: 200 })),
-      ).annotate({ identifier: "GetTopicsRequest" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          description: S.optional(S.String),
-          id: S.optional(S.Number),
-          identifier: S.optional(S.String),
-          name: S.optional(S.String),
-          subscribed_by_default: S.optional(S.Boolean),
-        }),
-      ).annotate({
-        identifier: "GetTopicsResponseTopicsItem",
-      });
-    case 2:
-      return S.Array(__S(369, __c46, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          topics: S.optional(__S(370, __c46, 2)),
-        }),
-      ).annotate({ identifier: "GetTopicsResponse" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          transactional_id: S.Number.pipe(T.Label()),
-        }).pipe(T.Http({ method: "GET", uri: "/v1/transactional/{transactional_id}", code: 200 })),
-      ).annotate({ identifier: "GetTransactionalRequest" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          created_at: S.optional(S.Number),
-          description: S.optional(S.String),
-          hide_message_body: S.optional(S.Boolean),
-          id: S.optional(S.Number),
-          link_tracking: S.optional(S.Boolean),
-          name: S.optional(S.String),
-          open_tracking: S.optional(S.Boolean),
-          queue_drafts: S.optional(S.Boolean),
-          send_to_unsubscribed: S.optional(S.Boolean),
-          updated_at: S.optional(S.Number),
-        }),
-      ).annotate({
-        identifier: "GetTransactionalResponseMessage",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          message: S.optional(__S(373, __c46, 5)),
-        }),
-      ).annotate({ identifier: "GetTransactionalResponse" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          transactional_id: S.Number.pipe(T.Label()),
-          content_id: S.Number.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/v1/transactional/{transactional_id}/contents/{content_id}",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "GetTransactionalTranslationByIdRequest",
-      });
-  }
-}
-function __c47(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          bcc: S.optional(S.String),
-          body: S.optional(S.String),
-          body_amp: S.optional(S.String),
-          cc: S.optional(S.String),
-          created: S.optional(S.Number),
-          fake_bcc: S.optional(S.Boolean),
-          from: S.optional(S.String),
-          from_id: S.optional(S.Number),
-          headers: S.optional(S.String),
-          id: S.optional(S.Number),
-          language: S.optional(S.String),
-          name: S.optional(S.String),
-          preheader_text: S.optional(S.String),
-          preprocessor: S.optional(S.String),
-          recipient: S.optional(S.String),
-          reply_to: S.optional(S.String),
-          reply_to_id: S.optional(S.NullOr(S.Number)),
-          subject: S.optional(S.String),
-          type: S.optional(S.String),
-          updated: S.optional(S.Number),
-        }),
-      ).annotate({
-        identifier: "GetTransactionalTranslationByIdResponseContent",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          content: S.optional(__S(376, __c47, 0)),
-        }),
-      ).annotate({
-        identifier: "GetTransactionalTranslationByIdResponse",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          transactional_id: S.Number.pipe(T.Label()),
-          language: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/v1/transactional/{transactional_id}/language/{language}",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "GetTransactionalVariantRequest",
-      });
-    case 3:
-      return S.Array(__S(376, __c47, 0));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          content: S.optional(__S(379, __c47, 3)),
-        }),
-      ).annotate({
-        identifier: "GetTransactionalVariantResponse",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          newsletter_id: S.Number.pipe(T.Label()),
-          content_id: S.Number.pipe(T.Label()),
-          period: S.optional(S.String.pipe(T.Query())),
-          steps: S.optional(S.Number.pipe(T.Query())),
-          type: S.optional(S.String.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/v1/newsletters/{newsletter_id}/contents/{content_id}/metrics/links",
-            code: 200,
-          }),
-        ),
-      ).annotate({ identifier: "GetVariantLinksRequest" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          newsletter_id: S.Number.pipe(T.Label()),
-          content_id: S.Number.pipe(T.Label()),
-          period: S.optional(S.String.pipe(T.Query())),
-          steps: S.optional(S.Number.pipe(T.Query())),
-          type: S.optional(S.String.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/v1/newsletters/{newsletter_id}/contents/{content_id}/metrics",
-            code: 200,
-          }),
-        ),
-      ).annotate({ identifier: "GetVariantMetricsRequest" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          attempted: S.optional(__S(7, __c0, 7)),
-          bounced: S.optional(__S(7, __c0, 7)),
-          clicked: S.optional(__S(7, __c0, 7)),
-          converted: S.optional(__S(7, __c0, 7)),
-          created: S.optional(__S(7, __c0, 7)),
-          deferred: S.optional(__S(7, __c0, 7)),
-          delivered: S.optional(__S(7, __c0, 7)),
-          drafted: S.optional(__S(7, __c0, 7)),
-          failed: S.optional(__S(7, __c0, 7)),
-          human_clicked: S.optional(__S(7, __c0, 7)),
-          human_opened: S.optional(__S(7, __c0, 7)),
-          link_untracked: S.optional(__S(7, __c0, 7)),
-          machine_clicked: S.optional(__S(7, __c0, 7)),
-          open_untracked: S.optional(__S(7, __c0, 7)),
-          opened: S.optional(__S(7, __c0, 7)),
-          prefetch_opened: S.optional(__S(7, __c0, 7)),
-          replied: S.optional(__S(7, __c0, 7)),
-          sent: S.optional(__S(7, __c0, 7)),
-          spammed: S.optional(__S(7, __c0, 7)),
-          suppressed: S.optional(__S(7, __c0, 7)),
-          topic_unsubscribed: S.optional(__S(7, __c0, 7)),
-          tracking_consent_denied: S.optional(__S(7, __c0, 7)),
-          tracking_consent_granted: S.optional(__S(8, __c1, 0)),
-          undeliverable: S.optional(__S(7, __c0, 7)),
-          unsubscribed: S.optional(__S(7, __c0, 7)),
-          untracked: S.optional(__S(7, __c0, 7)),
-        }),
-      ).annotate({
-        identifier: "GetVariantMetricsResponseMetricSeries",
-      });
-  }
-}
-function __c48(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          series: S.optional(__S(383, __c47, 7)),
-          type: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GetVariantMetricsResponseMetric",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          metric: S.optional(__S(384, __c48, 0)),
-        }),
-      ).annotate({
-        identifier: "GetVariantMetricsResponse",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String.pipe(T.Label()),
-          version_id: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/v1/design_studio/emails/{id}/versions/{version_id}",
-            code: 200,
-          }),
-        ),
-      ).annotate({ identifier: "GetVersionRequest" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          component_name: S.optional(S.NullOr(S.String)),
-          content: S.optional(S.String),
-          name: S.optional(S.String),
-          node_id: S.optional(S.String),
-          node_type: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GetVersionResponseDependenciesItem",
-      });
-    case 4:
-      return S.Array(__S(387, __c48, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          backend_markers: S.optional(__S(89, __c11, 1)),
-          enabled: S.optional(S.Boolean),
-          uglify: S.optional(S.Boolean),
-          whitelist: S.optional(__S(2, __c0, 2)),
-        }),
-      ).annotate({
-        identifier: "GetVersionResponseNodeTransformersRemoveUnusedCss",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          accessibility: S.optional(__S(80, __c10, 0)),
-          css_inliner: S.optional(__S(82, __c10, 2)),
-          css_variables: S.optional(__S(83, __c10, 3)),
-          encode_entities: S.optional(__S(84, __c10, 4)),
-          formatter: S.optional(__S(98, __c12, 2)),
-          prevent_widows: S.optional(__S(84, __c10, 4)),
-          remove_unused_css: S.optional(__S(389, __c48, 5)),
-          url_parameters: S.optional(__S(93, __c11, 5)),
-        }),
-      ).annotate({
-        identifier: "GetVersionResponseNodeTransformers",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          amp: S.optional(S.String),
-          content: S.optional(S.String),
-          envelope: S.optional(__S(96, __c12, 0)),
-          name: S.optional(S.String),
-          node_id: S.optional(S.String),
-          node_type: S.optional(S.String),
-          preheader_text: S.optional(S.String),
-          subject: S.optional(S.String),
-          text: S.optional(S.String),
-          transformers: S.optional(__S(390, __c48, 6)),
-        }),
-      ).annotate({ identifier: "GetVersionResponseNode" });
-  }
-}
-function __c49(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          created: S.optional(S.Number),
-          created_on_publish: S.optional(S.Boolean),
-          description: S.optional(S.String),
-          feedback: S.optional(S.Boolean),
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          node_id: S.optional(S.String),
-          node_type: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GetVersionResponseVersion",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          dependencies: S.optional(__S(388, __c48, 4)),
-          node: S.optional(__S(391, __c48, 7)),
-          version: S.optional(__S(392, __c49, 0)),
-        }),
-      ).annotate({ identifier: "GetVersionResponse" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          webhook_id: S.Number.pipe(T.Label()),
-        }).pipe(T.Http({ method: "GET", uri: "/v1/reporting_webhooks/{webhook_id}", code: 200 })),
-      ).annotate({ identifier: "GetWebhookRequest" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          import: S.Unknown,
-        }).pipe(T.Http({ method: "POST", uri: "/v1/imports", code: 200 })),
-      ).annotate({ identifier: "ImportRequest" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          created_at: S.optional(S.Number),
-          data_to_process: S.optional(S.String),
-          description: S.optional(S.String),
-          error: S.optional(S.String),
-          id: S.optional(S.Number),
-          identifier: S.optional(S.String),
-          name: S.optional(S.String),
-          object_type_id: S.optional(S.String),
-          people_to_process: S.optional(S.String),
-          rows_imported: S.optional(S.Number),
-          rows_to_import: S.optional(S.Number),
-          state: S.optional(S.String),
-          type: S.optional(S.String),
-          updated_at: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "ImportResponseImport" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          import: __S(396, __c49, 4),
-        }),
-      ).annotate({ identifier: "ImportResponse" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          type: S.String,
-          action_id: S.optional(S.Number),
-          newsletter_id: S.optional(S.Number),
-          transactional_message_id: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "LinkEmailRequestTarget" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String.pipe(T.Label()),
-          target: __S(398, __c49, 6),
-          force: S.optional(S.Boolean),
-        }).pipe(T.Http({ method: "POST", uri: "/v1/design_studio/emails/{id}/link", code: 200 })),
-      ).annotate({ identifier: "LinkEmailRequest" });
-  }
-}
-function __c50(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          node_id: S.optional(S.String),
-          target: S.optional(__S(398, __c49, 6)),
-          template_id: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "LinkEmailResponse" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          start: S.optional(S.String.pipe(T.Query())),
-          type: S.optional(S.String.pipe(T.Query())),
-          name: S.optional(S.String.pipe(T.Query())),
-          deleted: S.optional(S.Boolean.pipe(T.Query())),
-          customer_id: S.optional(S.String.pipe(T.Query())),
-          id_type: S.optional(S.String.pipe(T.Query())),
-          limit: S.optional(S.Number.pipe(T.Query())),
-        }).pipe(T.Http({ method: "GET", uri: "/v1/activities", code: 200 })),
-      ).annotate({ identifier: "ListActivitiesRequest" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          customer_id: S.optional(S.NullOr(S.String)),
-          customer_identifiers: S.optional(__S(33, __c4, 1)),
-          data: S.optional(S.Unknown),
-          delivery_id: S.optional(S.String),
-          delivery_type: S.optional(S.String),
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          timestamp: S.optional(S.Number),
-          type: S.optional(S.String),
-          url: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "ListActivitiesResponseActivitiesItem",
-      });
-    case 3:
-      return S.Array(__S(402, __c50, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          activities: S.optional(__S(403, __c50, 3)),
-          next: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ListActivitiesResponse" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          parent_folder_id: S.optional(S.Number.pipe(T.Query())),
-          direct_descendants_only: S.optional(S.Boolean.pipe(T.Query())),
-          page: S.optional(S.Number.pipe(T.Query())),
-          limit: S.optional(S.Number.pipe(T.Query())),
-        }).pipe(T.Http({ method: "GET", uri: "/v1/assets/folders", code: 200 })),
-      ).annotate({ identifier: "ListAssetFoldersRequest" });
-    case 6:
-      return S.Array(__S(71, __c8, 7));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          direct_descendants_only: S.optional(S.Boolean),
-          parent_folder_id: S.optional(S.NullOr(S.Number)),
-        }),
-      ).annotate({
-        identifier: "ListAssetFoldersResponseMetaFilters",
-      });
-  }
-}
-function __c51(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          limit: S.optional(S.Number),
-          page: S.optional(S.Number),
-          total: S.optional(S.Number),
-        }),
-      ).annotate({
-        identifier: "ListAssetFoldersResponseMetaPagination",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          filters: S.optional(__S(407, __c50, 7)),
-          pagination: S.optional(__S(408, __c51, 0)),
-        }),
-      ).annotate({
-        identifier: "ListAssetFoldersResponseMeta",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          folders: S.optional(__S(406, __c50, 6)),
-          meta: S.optional(__S(409, __c51, 1)),
-        }),
-      ).annotate({ identifier: "ListAssetFoldersResponse" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          parent_folder_id: S.optional(S.Number.pipe(T.Query())),
-          direct_descendants_only: S.optional(S.Boolean.pipe(T.Query())),
-          page: S.optional(S.Number.pipe(T.Query())),
-          limit: S.optional(S.Number.pipe(T.Query())),
-        }).pipe(T.Http({ method: "GET", uri: "/v1/assets", code: 200 })),
-      ).annotate({ identifier: "ListAssetsRequest" });
-    case 4:
-      return S.Array(__S(68, __c8, 4));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          assets: S.optional(__S(412, __c51, 4)),
-          meta: S.optional(__S(409, __c51, 1)),
-        }),
-      ).annotate({ identifier: "ListAssetsResponse" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({}).pipe(T.Http({ method: "GET", uri: "/v1/broadcasts", code: 200 })),
-      ).annotate({ identifier: "ListBroadcastsRequest" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          actions: S.optional(__S(183, __c22, 7)),
-          active: S.optional(S.Boolean),
-          created: S.optional(S.Number),
-          deduplicate_id: S.optional(S.String),
-          first_started: S.optional(S.Number),
-          id: S.optional(S.Number),
-          msg_template_ids: S.optional(__S(183, __c22, 7)),
-          name: S.optional(S.String),
-          state: S.optional(S.String),
-          tags: S.optional(__S(2, __c0, 2)),
-          type: S.optional(S.String),
-          updated: S.optional(S.Number),
-        }),
-      ).annotate({
-        identifier: "ListBroadcastsResponseBroadcastsItem",
-      });
-  }
-}
-function __c52(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(415, __c51, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          broadcasts: S.optional(__S(416, __c52, 0)),
-        }),
-      ).annotate({ identifier: "ListBroadcastsResponse" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          broadcast_id: S.Number.pipe(T.Label()),
-        }).pipe(
-          T.Http({ method: "GET", uri: "/v1/broadcasts/{broadcast_id}/triggers", code: 200 }),
-        ),
-      ).annotate({
-        identifier: "ListBroadcastTriggersRequest",
-      });
-    case 3:
-      return S.Array(__S(63, __c7, 7));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          triggers: S.optional(__S(419, __c52, 3)),
-        }),
-      ).annotate({
-        identifier: "ListBroadcastTriggersResponse",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          campaign_id: S.Number.pipe(T.Label()),
-          start: S.optional(S.String.pipe(T.Query())),
-        }).pipe(T.Http({ method: "GET", uri: "/v1/campaigns/{campaign_id}/actions", code: 200 })),
-      ).annotate({
-        identifier: "ListCampaignActionsRequest",
-      });
-    case 6:
-      return S.Array(S.Unknown);
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          actions: S.optional(__S(422, __c52, 6)),
-          next: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "ListCampaignActionsResponse",
-      });
-  }
-}
-function __c53(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({}).pipe(T.Http({ method: "GET", uri: "/v1/campaigns", code: 200 })),
-      ).annotate({ identifier: "ListCampaignsRequest" });
-    case 1:
-      return S.Array(S.Unknown);
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          campaigns: S.optional(__S(425, __c53, 1)),
-        }),
-      ).annotate({ identifier: "ListCampaignsResponse" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          tag: S.optional(S.String.pipe(T.Query())),
-          page: S.optional(S.Number.pipe(T.Query())),
-          limit: S.optional(S.Number.pipe(T.Query())),
-          parent_folder_id: S.optional(S.String.pipe(T.Query())),
-          direct_descendants_only: S.optional(S.Boolean.pipe(T.Query())),
-          sort_by: S.optional(S.String.pipe(T.Query())),
-          sort_order: S.optional(S.String.pipe(T.Query())),
-          created_before: S.optional(S.Number.pipe(T.Query())),
-          created_after: S.optional(S.Number.pipe(T.Query())),
-          updated_before: S.optional(S.Number.pipe(T.Query())),
-          updated_after: S.optional(S.Number.pipe(T.Query())),
-        }).pipe(T.Http({ method: "GET", uri: "/v1/design_studio/components", code: 200 })),
-      ).annotate({ identifier: "ListComponentsRequest" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          created: S.optional(S.Number),
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          parent_folder_id: S.optional(S.NullOr(S.String)),
-          tag: S.optional(S.String),
-          updated: S.optional(S.Number),
-        }),
-      ).annotate({
-        identifier: "ListComponentsResponseComponentsItem",
-      });
-    case 5:
-      return S.Array(__S(428, __c53, 4));
-    case 6:
-      return S.Array(__S(123, __c15, 3));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          filters: S.optional(S.Unknown),
-          pagination: S.optional(__S(408, __c51, 0)),
-        }),
-      ).annotate({
-        identifier: "ListComponentsResponseMeta",
-      });
-  }
-}
-function __c54(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          components: S.optional(__S(429, __c53, 5)),
-          folders: S.optional(__S(430, __c53, 6)),
-          meta: S.optional(__S(431, __c53, 7)),
-        }),
-      ).annotate({ identifier: "ListComponentsResponse" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          page: S.optional(S.Number.pipe(T.Query())),
-          limit: S.optional(S.Number.pipe(T.Query())),
-          parent_folder_id: S.optional(S.String.pipe(T.Query())),
-          direct_descendants_only: S.optional(S.Boolean.pipe(T.Query())),
-          sort_by: S.optional(S.String.pipe(T.Query())),
-          sort_order: S.optional(S.String.pipe(T.Query())),
-          created_before: S.optional(S.Number.pipe(T.Query())),
-          created_after: S.optional(S.Number.pipe(T.Query())),
-          updated_before: S.optional(S.Number.pipe(T.Query())),
-          updated_after: S.optional(S.Number.pipe(T.Query())),
-          is_template: S.optional(S.String.pipe(T.Query())),
-          has_translations: S.optional(S.String.pipe(T.Query())),
-          is_linked: S.optional(S.String.pipe(T.Query())),
-        }).pipe(T.Http({ method: "GET", uri: "/v1/design_studio/emails", code: 200 })),
-      ).annotate({ identifier: "ListEmailsRequest" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          created: S.optional(S.Number),
-          has_translations: S.optional(S.Boolean),
-          id: S.optional(S.String),
-          is_linked: S.optional(S.Boolean),
-          is_template: S.optional(S.Boolean),
-          name: S.optional(S.String),
-          parent_folder_id: S.optional(S.NullOr(S.String)),
-          updated: S.optional(S.Number),
-        }),
-      ).annotate({
-        identifier: "ListEmailsResponseEmailsItem",
-      });
-    case 3:
-      return S.Array(__S(434, __c54, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          emails: S.optional(__S(435, __c54, 3)),
-          folders: S.optional(__S(430, __c53, 6)),
-          meta: S.optional(__S(431, __c53, 7)),
-        }),
-      ).annotate({ identifier: "ListEmailsResponse" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({ method: "GET", uri: "/v1/design_studio/emails/{id}/languages", code: 200 }),
-        ),
-      ).annotate({
-        identifier: "ListEmailTranslationsRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          bcc: S.optional(S.String),
-          fake_bcc: S.optional(S.Boolean),
-          from: S.optional(S.String),
-          from_id: S.optional(S.NullOr(S.Number)),
-          headers: S.optional(__S(112, __c14, 0)),
-          recipient: S.optional(S.String),
-          reply_to: S.optional(S.String),
-          reply_to_id: S.optional(S.NullOr(S.Number)),
-        }),
-      ).annotate({
-        identifier: "ListEmailTranslationsResponseEmailTranslationsItemEnvelope",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          minify: S.optional(__S(114, __c14, 2)),
-          prettify: S.optional(__S(115, __c14, 3)),
-          type: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "ListEmailTranslationsResponseEmailTranslationsItemTransformersFormatter",
-      });
-  }
-}
-function __c55(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          accessibility: S.optional(__S(80, __c10, 0)),
-          css_inliner: S.optional(__S(82, __c10, 2)),
-          css_variables: S.optional(__S(83, __c10, 3)),
-          encode_entities: S.optional(__S(84, __c10, 4)),
-          formatter: S.optional(__S(439, __c54, 7)),
-          prevent_widows: S.optional(__S(84, __c10, 4)),
-          remove_unused_css: S.optional(__S(117, __c14, 5)),
-          url_parameters: S.optional(__S(118, __c14, 6)),
-        }),
-      ).annotate({
-        identifier: "ListEmailTranslationsResponseEmailTranslationsItemTransformers",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          available_languages: S.optional(__S(99, __c12, 3)),
-          content: S.optional(__S(76, __c9, 4)),
-          created: S.optional(S.Number),
-          envelope: S.optional(__S(438, __c54, 6)),
-          is_linked: S.optional(S.Boolean),
-          is_template: S.optional(S.Boolean),
-          language: S.optional(S.String),
-          language_group_id: S.optional(S.String),
-          parent_folder_id: S.optional(S.NullOr(S.String)),
-          transformers: S.optional(__S(440, __c55, 0)),
-          updated: S.optional(S.Number),
-        }),
-      ).annotate({
-        identifier: "ListEmailTranslationsResponseEmailTranslationsItem",
-      });
-    case 2:
-      return S.Array(__S(441, __c55, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          email_translations: S.optional(__S(442, __c55, 2)),
-        }),
-      ).annotate({
-        identifier: "ListEmailTranslationsResponse",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({}).pipe(T.Http({ method: "GET", uri: "/v1/exports", code: 200 })),
-      ).annotate({ identifier: "ListExportsRequest" });
-    case 5:
-      return S.Array(__S(171, __c21, 3));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          exports: S.optional(__S(445, __c55, 5)),
-        }),
-      ).annotate({ identifier: "ListExportsResponse" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          page: S.optional(S.Number.pipe(T.Query())),
-          limit: S.optional(S.Number.pipe(T.Query())),
-          parent_folder_id: S.optional(S.String.pipe(T.Query())),
-          direct_descendants_only: S.optional(S.Boolean.pipe(T.Query())),
-          sort_by: S.optional(S.String.pipe(T.Query())),
-          sort_order: S.optional(S.String.pipe(T.Query())),
-          created_before: S.optional(S.Number.pipe(T.Query())),
-          created_after: S.optional(S.Number.pipe(T.Query())),
-          updated_before: S.optional(S.Number.pipe(T.Query())),
-          updated_after: S.optional(S.Number.pipe(T.Query())),
-        }).pipe(T.Http({ method: "GET", uri: "/v1/design_studio/folders", code: 200 })),
-      ).annotate({ identifier: "ListFoldersRequest" });
-  }
-}
-function __c56(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          folders: S.optional(__S(430, __c53, 6)),
-          meta: S.optional(__S(431, __c53, 7)),
-        }),
-      ).annotate({ identifier: "ListFoldersResponse" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({}).pipe(
-          T.Http({ method: "GET", uri: "/v1/design_studio/inbox_previews/clients", code: 200 }),
-        ),
-      ).annotate({
-        identifier: "ListInboxPreviewClientsRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          browser: S.optional(S.String),
-          category: S.optional(S.String),
-          client: S.optional(S.String),
-          id: S.optional(S.String),
-          os: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "ListInboxPreviewClientsResponseClientsItem",
-      });
-    case 3:
-      return S.Array(__S(450, __c56, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          clients: S.optional(__S(451, __c56, 3)),
-        }),
-      ).annotate({
-        identifier: "ListInboxPreviewClientsResponse",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          node_id: S.optional(S.String.pipe(T.Query())),
-          limit: S.optional(S.Number.pipe(T.Query())),
-          cursor: S.optional(S.String.pipe(T.Query())),
-        }).pipe(T.Http({ method: "GET", uri: "/v1/design_studio/inbox_previews/jobs", code: 200 })),
-      ).annotate({
-        identifier: "ListInboxPreviewJobsRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          limit: S.optional(S.Number),
-          next_cursor: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "ListInboxPreviewJobsResponseMetaPagination",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          pagination: S.optional(__S(454, __c56, 6)),
-        }),
-      ).annotate({
-        identifier: "ListInboxPreviewJobsResponseMeta",
-      });
-  }
-}
-function __c57(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          created_at: S.optional(S.Number),
-          is_processed: S.optional(S.Boolean),
-          name: S.optional(S.String),
-          node_count: S.optional(S.Number),
-          node_id: S.optional(S.String),
-          run_id: S.optional(S.Number),
-          total_previews_bounced: S.optional(S.Number),
-          total_previews_cached: S.optional(S.Number),
-          total_previews_ready: S.optional(S.Number),
-          total_previews_requested: S.optional(S.Number),
-          total_previews_succeeded: S.optional(S.Number),
-          updated_at: S.optional(S.Number),
-        }),
-      ).annotate({
-        identifier: "ListInboxPreviewJobsResponsePreviewJobsItem",
-      });
-    case 1:
-      return S.Array(__S(456, __c57, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          meta: S.optional(__S(455, __c56, 7)),
-          preview_jobs: S.optional(__S(457, __c57, 1)),
-        }),
-      ).annotate({
-        identifier: "ListInboxPreviewJobsResponse",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          start: S.optional(S.String.pipe(T.Query())),
-          limit: S.optional(S.Number.pipe(T.Query())),
-          type: S.optional(S.String.pipe(T.Query())),
-          metric: S.optional(S.String.pipe(T.Query())),
-          drafts: S.optional(S.Boolean.pipe(T.Query())),
-          campaign_id: S.optional(S.Number.pipe(T.Query())),
-          newsletter_id: S.optional(S.Number.pipe(T.Query())),
-          action_id: S.optional(S.Number.pipe(T.Query())),
-          start_ts: S.optional(S.Number.pipe(T.Query())),
-          end_ts: S.optional(S.Number.pipe(T.Query())),
-          get_tracked_responses: S.optional(S.Boolean.pipe(T.Query())),
-        }).pipe(T.Http({ method: "GET", uri: "/v1/messages", code: 200 })),
-      ).annotate({ identifier: "ListMessagesRequest" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          action_id: S.optional(S.Number),
-          broadcast_id: S.optional(S.NullOr(S.Number)),
-          campaign_id: S.optional(S.NullOr(S.Number)),
-          content_id: S.optional(S.Number),
-          created: S.optional(S.Number),
-          customer_id: S.optional(S.NullOr(S.String)),
-          customer_identifiers: S.optional(__S(33, __c4, 1)),
-          deduplicate_id: S.optional(S.String),
-          failure_message: S.optional(S.NullOr(S.String)),
-          forgotten: S.optional(S.Boolean),
-          id: S.optional(S.String),
-          message_template_id: S.optional(S.Number),
-          metrics: S.optional(__S(34, __c4, 2)),
-          newsletter_id: S.optional(S.NullOr(S.Number)),
-          parent_action_id: S.optional(S.Number),
-          recipient: S.optional(S.String),
-          subject: S.optional(S.String),
-          tracked_responses: S.optional(__S(36, __c4, 4)),
-          trigger_event_id: S.optional(S.String),
-          type: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "ListMessagesResponseMessagesItem",
-      });
-    case 5:
-      return S.Array(__S(460, __c57, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          messages: S.optional(__S(461, __c57, 5)),
-        }),
-      ).annotate({ identifier: "ListMessagesResponse" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          limit: S.optional(S.Number.pipe(T.Query())),
-          sort: S.optional(S.String.pipe(T.Query())),
-          start: S.optional(S.String.pipe(T.Query())),
-        }).pipe(T.Http({ method: "GET", uri: "/v1/newsletters", code: 200 })),
-      ).annotate({ identifier: "ListNewslettersRequest" });
-  }
-}
-function __c58(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          content_ids: S.optional(__S(7, __c0, 7)),
-          created: S.optional(S.Number),
-          deduplicate_id: S.optional(S.String),
-          expires_after: S.optional(S.Number),
-          id: S.optional(S.Number),
-          name: S.optional(S.String),
-          recipient_file_error: S.optional(S.String),
-          recipient_file_status: S.optional(S.String),
-          recipient_segment_ids: S.optional(__S(7, __c0, 7)),
-          scheduled_at: S.optional(S.NullOr(S.Number)),
-          send_state: S.optional(S.String),
-          sent_at: S.optional(S.NullOr(S.Number)),
-          subscription_topic_id: S.optional(S.Number),
-          tags: S.optional(__S(2, __c0, 2)),
-          timezone: S.optional(S.String),
-          type: S.optional(S.String),
-          tz_match_enabled: S.optional(S.Boolean),
-          updated: S.optional(S.Number),
-        }),
-      ).annotate({
-        identifier: "ListNewslettersResponseNewslettersItem",
-      });
-    case 1:
-      return S.Array(__S(464, __c58, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          newsletters: S.optional(__S(465, __c58, 1)),
-          next: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ListNewslettersResponse" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          newsletter_id: S.Number.pipe(T.Label()),
-        }).pipe(
-          T.Http({ method: "GET", uri: "/v1/newsletters/{newsletter_id}/contents", code: 200 }),
-        ),
-      ).annotate({
-        identifier: "ListNewsletterVariantsRequest",
-      });
-    case 4:
-      return S.Array(__S(265, __c33, 1));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          contents: S.optional(__S(468, __c58, 4)),
-        }),
-      ).annotate({
-        identifier: "ListNewsletterVariantsResponse",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({}).pipe(T.Http({ method: "GET", uri: "/v1/segments", code: 200 })),
-      ).annotate({ identifier: "ListSegmentsRequest" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          conditions: S.optional(__S(0, __c0, 0)),
-          created_at: S.optional(S.Number),
-          deduplicate_id: S.optional(S.String),
-          description: S.optional(S.String),
-          id: S.optional(S.Number),
-          name: S.optional(S.String),
-          progress: S.optional(S.NullOr(S.Number)),
-          state: S.optional(S.String),
-          tags: S.optional(S.NullOr(__S(2, __c0, 2))),
-          type: S.optional(S.String),
-          updated_at: S.optional(S.Number),
-        }),
-      ).annotate({
-        identifier: "ListSegmentsResponseSegmentsItem",
-      });
-  }
-}
-function __c59(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(471, __c58, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          segments: S.optional(__S(472, __c59, 0)),
-        }),
-      ).annotate({ identifier: "ListSegmentsResponse" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          start: S.optional(S.String.pipe(T.Query())),
-          limit: S.optional(S.Number.pipe(T.Query())),
-          sort: S.optional(S.String.pipe(T.Query())),
-          hidden: S.optional(S.Boolean.pipe(T.Query())),
-        }).pipe(T.Http({ method: "GET", uri: "/v1/sender_identities", code: 200 })),
-      ).annotate({ identifier: "ListSendersRequest" });
-    case 3:
-      return S.Array(__S(358, __c44, 6));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          next: S.optional(S.String),
-          sender_identities: S.optional(__S(475, __c59, 3)),
-        }),
-      ).annotate({ identifier: "ListSendersResponse" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({}).pipe(T.Http({ method: "GET", uri: "/v1/snippets", code: 200 })),
-      ).annotate({ identifier: "ListSnippetsRequest" });
-    case 6:
-      return S.Array(__S(142, __c17, 6));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          snippets: S.optional(__S(478, __c59, 6)),
-        }),
-      ).annotate({ identifier: "ListSnippetsResponse" });
-  }
-}
-function __c60(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({}).pipe(T.Http({ method: "GET", uri: "/v1/transactional", code: 200 })),
-      ).annotate({ identifier: "ListTransactionalRequest" });
-    case 1:
-      return S.Array(__S(373, __c46, 5));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          messages: S.optional(__S(481, __c60, 1)),
-        }),
-      ).annotate({
-        identifier: "ListTransactionalResponse",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          transactional_id: S.Number.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/v1/transactional/{transactional_id}/contents",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "ListTransactionalVariantsRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          contents: S.optional(__S(379, __c47, 3)),
-        }),
-      ).annotate({
-        identifier: "ListTransactionalVariantsResponse",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String.pipe(T.Label()),
-          start_date: S.optional(S.Number.pipe(T.Query())),
-          end_date: S.optional(S.Number.pipe(T.Query())),
-        }).pipe(
-          T.Http({ method: "GET", uri: "/v1/design_studio/emails/{id}/versions", code: 200 }),
-        ),
-      ).annotate({ identifier: "ListVersionsRequest" });
-    case 6:
-      return S.Array(__S(392, __c49, 0));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          versions: S.optional(__S(486, __c60, 6)),
-        }),
-      ).annotate({ identifier: "ListVersionsResponse" });
-  }
-}
-function __c61(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({}).pipe(T.Http({ method: "GET", uri: "/v1/reporting_webhooks", code: 200 })),
-      ).annotate({ identifier: "ListWebhooksRequest" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          endpoint: S.String,
-          events: __S(144, __c18, 0),
-          name: S.String,
-          disabled: S.optional(S.Boolean),
-          full_resolution: S.optional(S.Boolean),
-          id: S.optional(S.Number),
-          type: S.optional(S.String),
-          with_content: S.optional(S.Boolean),
-        }),
-      ).annotate({
-        identifier: "ListWebhooksResponseReportingWebhooksItem",
-      });
-    case 2:
-      return S.Array(__S(489, __c61, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          reporting_webhooks: S.optional(__S(490, __c61, 2)),
-        }),
-      ).annotate({ identifier: "ListWebhooksResponse" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({}).pipe(T.Http({ method: "GET", uri: "/v1/workspaces", code: 200 })),
-      ).annotate({ identifier: "ListWorkspacesRequest" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          billable_messages_sent: S.optional(S.Number),
-          id: S.optional(S.Number),
-          messages_sent: S.optional(S.Number),
-          name: S.optional(S.String),
-          object_types: S.optional(S.Number),
-          objects: S.optional(S.Number),
-          people: S.optional(S.Number),
-        }),
-      ).annotate({
-        identifier: "ListWorkspacesResponseWorkspacesItem",
-      });
-    case 6:
-      return S.Array(__S(493, __c61, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          workspaces: S.optional(__S(494, __c61, 6)),
-        }),
-      ).annotate({ identifier: "ListWorkspacesResponse" });
-  }
-}
-function __c62(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          suppression_type: S.String.pipe(T.Label()),
-          email_address: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/v1/esp/suppression/{suppression_type}/{email_address}",
-            code: 200,
-          }),
-        ),
-      ).annotate({ identifier: "PostSuppressionRequest" });
-    case 1:
-      return S.suspend(() => S.Unknown.pipe(T.RawResponseRoot())).annotate({
-        identifier: "PostSuppressionResponse",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String.pipe(T.Label()),
-          campaign: S.optional(S.Unknown),
-          customer: S.optional(S.Unknown),
-          event: S.optional(S.Unknown),
-          journey: S.optional(S.Unknown),
-          lax: S.optional(S.Boolean),
-          message: S.optional(S.Unknown),
-          objects: S.optional(S.Unknown),
-          trigger: S.optional(S.Unknown),
-        }).pipe(
-          T.Http({ method: "POST", uri: "/v1/design_studio/emails/{id}/preview", code: 200 }),
-        ),
-      ).annotate({ identifier: "PreviewEmailRequest" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          bcc: S.optional(__S(2, __c0, 2)),
-          body: S.optional(__S(2, __c0, 2)),
-          body_amp: S.optional(__S(2, __c0, 2)),
-          body_plain: S.optional(__S(2, __c0, 2)),
-          cc: S.optional(__S(2, __c0, 2)),
-          event: S.optional(__S(2, __c0, 2)),
-          from: S.optional(__S(2, __c0, 2)),
-          layout: S.optional(__S(2, __c0, 2)),
-          message: S.optional(__S(2, __c0, 2)),
-          preheader_text: S.optional(__S(2, __c0, 2)),
-          reply_to: S.optional(__S(2, __c0, 2)),
-          snippets: S.optional(__S(2, __c0, 2)),
-          subject: S.optional(__S(2, __c0, 2)),
-          to: S.optional(__S(2, __c0, 2)),
-          trigger: S.optional(__S(2, __c0, 2)),
-        }),
-      ).annotate({
-        identifier: "PreviewEmailResponseErrors",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.optional(__S(2, __c0, 2)),
-          value: S.optional(__S(2, __c0, 2)),
-        }),
-      ).annotate({
-        identifier: "PreviewEmailResponseHeadersItem",
-      });
-    case 5:
-      return S.Array(__S(500, __c62, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          errors: S.optional(__S(2, __c0, 2)),
-          text: S.optional(S.String),
-          tracked: S.optional(S.Boolean),
-          url: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "PreviewEmailResponseLinksItem",
-      });
-    case 7:
-      return S.Array(__S(502, __c62, 6));
-  }
-}
-function __c63(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          amp: S.optional(S.String),
-          errors: S.optional(__S(499, __c62, 3)),
-          from: S.optional(S.String),
-          headers: S.optional(__S(501, __c62, 5)),
-          html: S.optional(S.String),
-          language: S.optional(S.String),
-          links: S.optional(__S(503, __c62, 7)),
-          node_id: S.optional(S.String),
-          node_type: S.optional(S.String),
-          plaintext_body: S.optional(S.String),
-          preheader_text: S.optional(S.String),
-          subject: S.optional(S.String),
-          text: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "PreviewEmailResponse" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({ method: "POST", uri: "/v1/design_studio/emails/{id}/publish", code: 200 }),
-        ),
-      ).annotate({ identifier: "PublishEmailRequest" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          mappings: S.optional(__S(345, __c43, 1)),
-          publish_id: S.optional(S.String),
-          status: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "PublishEmailResponse" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String.pipe(T.Label()),
-        }).pipe(T.Http({ method: "GET", uri: "/v1/design_studio/emails/{id}/render", code: 200 })),
-      ).annotate({ identifier: "RenderEmailRequest" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          amp: S.optional(S.String),
-          html: S.optional(S.String),
-          language: S.optional(S.String),
-          node_id: S.optional(S.String),
-          node_type: S.optional(S.String),
-          text: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "RenderEmailResponse" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String.pipe(T.Label()),
-          version_id: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/v1/design_studio/emails/{id}/versions/{version_id}/restore",
-            code: 200,
-          }),
-        ),
-      ).annotate({ identifier: "RestoreVersionRequest" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          node_id: S.optional(S.String),
-          restored_node_ids: S.optional(__S(2, __c0, 2)),
-          version_id: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "RestoreVersionResponse" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String.pipe(T.Label()),
-        }).pipe(T.Http({ method: "GET", uri: "/v1/design_studio/emails/{id}/review", code: 200 })),
-      ).annotate({ identifier: "ReviewEmailRequest" });
-  }
-}
-function __c64(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          error: S.optional(S.String),
-          status: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "ReviewEmailResponseChecksValue",
-      });
-    case 1:
-      return S.Record(S.String, __S(512, __c64, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          check: S.optional(S.String),
-          details: S.optional(S.String),
-          id: S.optional(S.String),
-          severity: S.optional(S.String),
-          state: S.optional(S.String),
-          summary: S.optional(S.String),
-          title: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "ReviewEmailResponseFindingsItem",
-      });
-    case 3:
-      return S.Array(__S(514, __c64, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          error: S.optional(S.Number),
-          tip: S.optional(S.Number),
-          warning: S.optional(S.Number),
-        }),
-      ).annotate({
-        identifier: "ReviewEmailResponseScoreCounts",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          counts: S.optional(__S(516, __c64, 4)),
-          score: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "ReviewEmailResponseScore" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          checks: S.optional(__S(513, __c64, 1)),
-          findings: S.optional(__S(515, __c64, 3)),
-          node_id: S.optional(S.String),
-          score: S.optional(__S(517, __c64, 5)),
-          status: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ReviewEmailResponse" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String.pipe(T.Label()),
-          name: S.String,
-          description: S.optional(S.String),
-        }).pipe(
-          T.Http({ method: "POST", uri: "/v1/design_studio/emails/{id}/versions", code: 200 }),
-        ),
-      ).annotate({ identifier: "SaveVersionRequest" });
-  }
-}
-function __c65(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          created: S.optional(S.Boolean),
-          version: S.optional(__S(392, __c49, 0)),
-        }),
-      ).annotate({ identifier: "SaveVersionResponse" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          newsletter_id: S.Number.pipe(T.Label()),
-          scheduled_at: S.Number,
-          expires_after: S.optional(S.Number),
-          rate_limit_email_rate: S.optional(S.Number),
-          rate_limit_spread: S.optional(S.Boolean),
-          rate_limit_time_period: S.optional(S.Number),
-          timezone: S.optional(S.String),
-          tz_match_enabled: S.optional(S.Boolean),
-        }).pipe(
-          T.Http({ method: "POST", uri: "/v1/newsletters/{newsletter_id}/schedule", code: 200 }),
-        ),
-      ).annotate({
-        identifier: "ScheduleNewsletterRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          content_ids: S.optional(__S(7, __c0, 7)),
-          created: S.optional(S.Number),
-          deduplicate_id: S.optional(S.String),
-          expires_after: S.optional(S.Number),
-          id: S.optional(S.Number),
-          name: S.optional(S.String),
-          recipient_file_error: S.optional(S.String),
-          recipient_file_status: S.optional(S.String),
-          recipient_segment_ids: S.optional(__S(7, __c0, 7)),
-          scheduled_at: S.optional(S.NullOr(S.Number)),
-          send_state: S.optional(S.String),
-          sent_at: S.optional(S.NullOr(S.Number)),
-          subscription_topic_id: S.optional(S.Number),
-          tags: S.optional(__S(2, __c0, 2)),
-          timezone: S.optional(S.String),
-          type: S.optional(S.String),
-          tz_match_enabled: S.optional(S.Boolean),
-          updated: S.optional(S.Number),
-        }),
-      ).annotate({
-        identifier: "ScheduleNewsletterResponseNewsletter",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          newsletter: S.optional(__S(522, __c65, 2)),
-        }),
-      ).annotate({
-        identifier: "ScheduleNewsletterResponse",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          _file_name_: S.optional(S.String.pipe(T.Body("<file-name>"))),
-        }),
-      ).annotate({
-        identifier: "SendEmailRequestAttachments",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          to: S.String,
-          attachments: S.optional(__S(524, __c65, 4)),
-          auto_create: S.optional(S.Boolean),
-          bcc: S.optional(S.String),
-          body: S.optional(S.String),
-          body_amp: S.optional(S.String),
-          body_plain: S.optional(S.String),
-          cc: S.optional(S.String),
-          disable_css_preprocessing: S.optional(S.Boolean),
-          disable_message_retention: S.optional(S.Boolean),
-          fake_bcc: S.optional(S.Boolean),
-          from: S.optional(S.String),
-          headers: S.optional(S.String),
-          identifiers: S.optional(S.Unknown),
-          language: S.optional(S.String),
-          message_data: S.optional(__S(0, __c0, 0)),
-          preheader: S.optional(S.String),
-          queue_draft: S.optional(S.Boolean),
-          reply_to: S.optional(S.String),
-          send_at: S.optional(S.Number),
-          send_to_unsubscribed: S.optional(S.Boolean),
-          subject: S.optional(S.String),
-          tracked: S.optional(S.Boolean),
-          transactional_message_id: S.optional(S.Unknown),
-        }).pipe(T.Http({ method: "POST", uri: "/v1/send/email", code: 200 })),
-      ).annotate({ identifier: "SendEmailRequest" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          delivery_id: S.optional(S.String),
-          queued_at: S.optional(S.Number),
-          send_at: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "SendEmailResponse" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          identifiers: S.Unknown,
-          transactional_message_id: S.Unknown,
-          auto_create: S.optional(S.Boolean),
-          language: S.optional(S.String),
-          message_data: S.optional(__S(0, __c0, 0)),
-          queue_draft: S.optional(S.Boolean),
-          send_at: S.optional(S.Number),
-        }).pipe(T.Http({ method: "POST", uri: "/v1/send/in_app", code: 200 })),
-      ).annotate({ identifier: "SendInAppRequest" });
-  }
-}
-function __c66(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          identifiers: S.Unknown,
-          transactional_message_id: S.Unknown,
-          auto_create: S.optional(S.Boolean),
-          language: S.optional(S.String),
-          message_data: S.optional(__S(0, __c0, 0)),
-          queue_draft: S.optional(S.Boolean),
-          send_at: S.optional(S.Number),
-          to: S.optional(S.String),
-        }).pipe(T.Http({ method: "POST", uri: "/v1/send/inbox_message", code: 200 })),
-      ).annotate({ identifier: "SendInboxMessageRequest" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          newsletter_id: S.Number.pipe(T.Label()),
-          expires_after: S.optional(S.Number),
-          rate_limit_email_rate: S.optional(S.Number),
-          rate_limit_spread: S.optional(S.Boolean),
-          rate_limit_time_period: S.optional(S.Number),
-        }).pipe(T.Http({ method: "POST", uri: "/v1/newsletters/{newsletter_id}/send", code: 200 })),
-      ).annotate({ identifier: "SendNewsletterRequest" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          content_ids: S.optional(__S(7, __c0, 7)),
-          created: S.optional(S.Number),
-          deduplicate_id: S.optional(S.String),
-          expires_after: S.optional(S.Number),
-          id: S.optional(S.Number),
-          name: S.optional(S.String),
-          recipient_file_error: S.optional(S.String),
-          recipient_file_status: S.optional(S.String),
-          recipient_segment_ids: S.optional(__S(7, __c0, 7)),
-          scheduled_at: S.optional(S.NullOr(S.Number)),
-          send_state: S.optional(S.String),
-          sent_at: S.optional(S.NullOr(S.Number)),
-          subscription_topic_id: S.optional(S.Number),
-          tags: S.optional(__S(2, __c0, 2)),
-          timezone: S.optional(S.String),
-          type: S.optional(S.String),
-          tz_match_enabled: S.optional(S.Boolean),
-          updated: S.optional(S.Number),
-        }),
-      ).annotate({
-        identifier: "SendNewsletterResponseNewsletter",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          newsletter: S.optional(__S(530, __c66, 2)),
-        }),
-      ).annotate({ identifier: "SendNewsletterResponse" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          app_identifier: S.optional(S.String),
-          app_version: S.optional(S.String),
-          cio_sdk_version: S.optional(S.String),
-          device_locale: S.optional(S.String),
-          device_model: S.optional(S.String),
-          device_os: S.optional(S.String),
-          push_enabled: S.optional(S.Boolean.pipe(T.StringEncoded())),
-        }),
-      ).annotate({
-        identifier: "SendPushRequestCustomDeviceAttributes",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          platform: S.String,
-          token: S.String,
-          attributes: S.optional(__S(532, __c66, 4)),
-          last_used: S.optional(S.Number),
-        }),
-      ).annotate({
-        identifier: "SendPushRequestCustomDevice",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          body_loc_arg: S.optional(S.String),
-          body_loc_key: S.optional(S.String),
-          click_action: S.optional(S.String),
-          color: S.optional(S.String),
-          icon: S.optional(S.String),
-          sound: S.optional(S.String),
-          tag: S.optional(S.String),
-          title_loc_arg: S.optional(S.String),
-          title_loc_key: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "SendPushRequestCustomPayloadAndroidMessageAndroidNotification",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          notification: S.optional(__S(534, __c66, 6)),
-        }),
-      ).annotate({
-        identifier: "SendPushRequestCustomPayloadAndroidMessageAndroid",
-      });
-  }
-}
-function __c67(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          body: S.optional(S.String),
-          title: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "SendPushRequestCustomPayloadAndroidMessageNotification",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          android: S.optional(__S(535, __c66, 7)),
-          data: S.optional(__S(239, __c29, 7)),
-          notification: S.optional(__S(536, __c67, 0)),
-        }),
-      ).annotate({
-        identifier: "SendPushRequestCustomPayloadAndroidMessage",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          message: __S(537, __c67, 1),
-        }),
-      ).annotate({
-        identifier: "SendPushRequestCustomPayloadAndroid",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          android: S.optional(__S(538, __c67, 2)),
-          ios: S.optional(S.Unknown),
-        }),
-      ).annotate({
-        identifier: "SendPushRequestCustomPayload",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          identifiers: S.Unknown,
-          transactional_message_id: S.Unknown,
-          auto_create: S.optional(S.Boolean),
-          custom_data: S.optional(S.Unknown),
-          custom_device: S.optional(__S(533, __c66, 5)),
-          custom_payload: S.optional(__S(539, __c67, 3)),
-          disable_message_retention: S.optional(S.Boolean),
-          image_url: S.optional(S.String),
-          language: S.optional(S.String),
-          link: S.optional(S.String),
-          message: S.optional(S.String),
-          message_data: S.optional(__S(0, __c0, 0)),
-          queue_draft: S.optional(S.Boolean),
-          send_at: S.optional(S.Number),
-          send_to_unsubscribed: S.optional(S.Boolean),
-          sound: S.optional(S.String),
-          title: S.optional(S.String),
-          to: S.optional(S.String),
-        }).pipe(T.Http({ method: "POST", uri: "/v1/send/push", code: 200 })),
-      ).annotate({ identifier: "SendPushRequest" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          identifiers: S.Unknown,
-          to: S.String,
-          transactional_message_id: S.Unknown,
-          auto_create: S.optional(S.Boolean),
-          disable_message_retention: S.optional(S.Boolean),
-          from: S.optional(S.String),
-          language: S.optional(S.String),
-          message_data: S.optional(__S(0, __c0, 0)),
-          queue_draft: S.optional(S.Boolean),
-          send_at: S.optional(S.Number),
-          send_to_unsubscribed: S.optional(S.Boolean),
-          tracked: S.optional(S.Boolean),
-        }).pipe(T.Http({ method: "POST", uri: "/v1/send/sms", code: 200 })),
-      ).annotate({ identifier: "SendSMSRequest" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          identifiers: S.Unknown,
-          to: S.String,
-          transactional_message_id: S.Unknown,
-          disable_message_retention: S.optional(S.Boolean),
-          from: S.optional(S.String),
-          language: S.optional(S.String),
-          message_data: S.optional(__S(0, __c0, 0)),
-          queue_draft: S.optional(S.Boolean),
-          send_at: S.optional(S.Number),
-          send_to_unsubscribed: S.optional(S.Boolean),
-          tracked: S.optional(S.Boolean),
-        }).pipe(T.Http({ method: "POST", uri: "/v1/send/whatsapp", code: 200 })),
-      ).annotate({ identifier: "SendWhatsAppRequest" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          email: S.optional(S.String),
-          id: S.optional(S.String),
-          internal: S.optional(S.String),
-          phone: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "StartLiveNotificationRequestIdentifiers",
-      });
-  }
-}
-function __c68(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          attributes: S.Unknown,
-          content_state: S.Unknown,
-          identifiers: __S(543, __c67, 7),
-          notification_type: S.String,
-          app_identifier: S.optional(S.String),
-          deep_link: S.optional(S.String),
-          device_id: S.optional(S.String),
-          expiration: S.optional(S.Number),
-          platform: S.optional(S.String),
-          push_payload: S.optional(__S(167, __c20, 7)),
-        }).pipe(T.Http({ method: "POST", uri: "/v1/live_notifications/start", code: 200 })),
-      ).annotate({
-        identifier: "StartLiveNotificationRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String.pipe(T.Label()),
-          client_ids: __S(2, __c0, 2),
-          lax_mode: S.optional(S.Boolean),
-          name: S.optional(S.String),
-          sample_data: S.optional(__S(0, __c0, 0)),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/v1/design_studio/emails/{id}/inbox_previews",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "SubmitInboxPreviewRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          replayed: S.optional(S.Boolean),
-          run_id: S.optional(S.Number),
-        }),
-      ).annotate({
-        identifier: "SubmitInboxPreviewResponse",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String.pipe(T.Label()),
-          to: __S(2, __c0, 2),
-          customer: S.optional(S.NullOr(__S(0, __c0, 0))),
-          customer_id: S.optional(S.NullOr(S.String)),
-          event: S.optional(S.NullOr(__S(0, __c0, 0))),
-          lax: S.optional(S.Boolean),
-          prepend_test: S.optional(S.Boolean),
-          tracked: S.optional(S.Boolean),
-          trigger: S.optional(S.NullOr(__S(0, __c0, 0))),
-        }).pipe(
-          T.Http({ method: "POST", uri: "/v1/design_studio/emails/{id}/test_send", code: 200 }),
-        ),
-      ).annotate({ identifier: "TestSendEmailRequest" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          accepted: S.optional(S.Boolean),
-          from: S.optional(S.String),
-          language: S.optional(S.String),
-          node_id: S.optional(S.String),
-          node_type: S.optional(S.String),
-          subject: S.optional(S.String),
-          to: S.optional(__S(2, __c0, 2)),
-          warnings: S.optional(__S(2, __c0, 2)),
-        }),
-      ).annotate({ identifier: "TestSendEmailResponse" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          transactional_id: S.Number.pipe(T.Label()),
-          period: S.optional(S.String.pipe(T.Query())),
-          steps: S.optional(S.Number.pipe(T.Query())),
-          unique: S.optional(S.Boolean.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/v1/transactional/{transactional_id}/metrics/links",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "TransactionalLinksRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          transactional_id: S.Number.pipe(T.Label()),
-          start: S.optional(S.String.pipe(T.Query())),
-          limit: S.optional(S.Number.pipe(T.Query())),
-          metric: S.optional(S.String.pipe(T.Query())),
-          state: S.optional(S.String.pipe(T.Query())),
-          start_ts: S.optional(S.Number.pipe(T.Query())),
-          end_ts: S.optional(S.Number.pipe(T.Query())),
-          get_tracked_responses: S.optional(S.Boolean.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/v1/transactional/{transactional_id}/messages",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "TransactionalMessagesRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          action_id: S.optional(S.Number),
-          broadcast_id: S.optional(S.NullOr(S.Number)),
-          campaign_id: S.optional(S.NullOr(S.Number)),
-          content_id: S.optional(S.Number),
-          created: S.optional(S.Number),
-          customer_id: S.optional(S.NullOr(S.String)),
-          customer_identifiers: S.optional(__S(33, __c4, 1)),
-          deduplicate_id: S.optional(S.String),
-          failure_message: S.optional(S.NullOr(S.String)),
-          forgotten: S.optional(S.Boolean),
-          id: S.optional(S.String),
-          message_template_id: S.optional(S.Number),
-          metrics: S.optional(__S(34, __c4, 2)),
-          newsletter_id: S.optional(S.NullOr(S.Number)),
-          parent_action_id: S.optional(S.Number),
-          recipient: S.optional(S.String),
-          subject: S.optional(S.String),
-          tracked_responses: S.optional(__S(36, __c4, 4)),
-          trigger_event_id: S.optional(S.String),
-          type: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "TransactionalMessagesResponseMessagesItem",
-      });
-  }
-}
-function __c69(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(551, __c68, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          messages: S.optional(__S(552, __c69, 0)),
-        }),
-      ).annotate({
-        identifier: "TransactionalMessagesResponse",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          transactional_id: S.Number.pipe(T.Label()),
-          period: S.optional(S.String.pipe(T.Query())),
-          steps: S.optional(S.Number.pipe(T.Query())),
-        }).pipe(
-          T.Http({ method: "GET", uri: "/v1/transactional/{transactional_id}/metrics", code: 200 }),
-        ),
-      ).annotate({
-        identifier: "TransactionalMetricsRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          metric: S.optional(__S(54, __c6, 6)),
-        }),
-      ).annotate({
-        identifier: "TransactionalMetricsResponse",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          broadcast_id: S.Number.pipe(T.Label()),
-          body: S.optional(S.Unknown.pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({ method: "POST", uri: "/v1/campaigns/{broadcast_id}/triggers", code: 200 }),
-        ),
-      ).annotate({ identifier: "TriggerBroadcastRequest" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "TriggerBroadcastResponse" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.Number.pipe(T.Label()),
-          name: S.optional(S.String),
-          parent_folder_id: S.optional(S.NullOr(S.Number)),
-        }).pipe(T.Http({ method: "PUT", uri: "/v1/assets/files/{id}", code: 200 })),
-      ).annotate({ identifier: "UpdateAssetRequest" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.Number.pipe(T.Label()),
-          name: S.optional(S.String),
-          parent_folder_id: S.optional(S.NullOr(S.Number)),
-        }).pipe(T.Http({ method: "PUT", uri: "/v1/assets/folders/{id}", code: 200 })),
-      ).annotate({ identifier: "UpdateAssetFolderRequest" });
-  }
-}
-function __c70(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String,
-          description: S.optional(S.String),
-          privacy_level: S.optional(S.Number),
-        }),
-      ).annotate({
-        identifier: "UpdateAttributeMetadataRequestAttributesItem",
-      });
-    case 1:
-      return S.Array(__S(560, __c70, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          attributes: __S(561, __c70, 1),
-        }).pipe(T.Http({ method: "POST", uri: "/v1/data_index/attributes", code: 200 })),
-      ).annotate({
-        identifier: "UpdateAttributeMetadataRequest",
-      });
-    case 3:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "UpdateAttributeMetadataResponse",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          broadcast_id: S.Number.pipe(T.Label()),
-          action_id: S.Number.pipe(T.Label()),
-          body: S.optional(S.Unknown.pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "PUT",
-            uri: "/v1/broadcasts/{broadcast_id}/actions/{action_id}",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "UpdateBroadcastActionRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          action: S.optional(S.Unknown),
-        }),
-      ).annotate({
-        identifier: "UpdateBroadcastActionResponse",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          broadcast_id: S.Number.pipe(T.Label()),
-          action_id: S.Number.pipe(T.Label()),
-          language: S.String.pipe(T.Label()),
-          body: S.optional(S.Unknown.pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "PUT",
-            uri: "/v1/broadcasts/{broadcast_id}/actions/{action_id}/language/{language}",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "UpdateBroadcastActionLanguageRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          action: S.optional(S.Unknown),
-        }),
-      ).annotate({
-        identifier: "UpdateBroadcastActionLanguageResponse",
-      });
-  }
-}
-function __c71(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          campaign_id: S.Number.pipe(T.Label()),
-          action_id: S.Number.pipe(T.Label()),
-          body: S.optional(S.Unknown.pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "PUT",
-            uri: "/v1/campaigns/{campaign_id}/actions/{action_id}",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "UpdateCampaignActionRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          action: S.optional(S.Unknown),
-        }),
-      ).annotate({
-        identifier: "UpdateCampaignActionResponse",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          campaign_id: S.Number.pipe(T.Label()),
-          action_id: S.Number.pipe(T.Label()),
-          language: S.String.pipe(T.Label()),
-          body: S.optional(S.Unknown.pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "PUT",
-            uri: "/v1/campaigns/{campaign_id}/actions/{action_id}/language/{language}",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "UpdateCampaignActionTranslationRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          action: S.optional(S.Unknown),
-        }),
-      ).annotate({
-        identifier: "UpdateCampaignActionTranslationResponse",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          collection_id: S.Number.pipe(T.Label()),
-          body: S.optional(S.Unknown.pipe(T.HttpBody())),
-        }).pipe(T.Http({ method: "PUT", uri: "/v1/collections/{collection_id}", code: 200 })),
-      ).annotate({ identifier: "UpdateCollectionRequest" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          collection_id: S.Number.pipe(T.Label()),
-          body: S.optional(__S(0, __c0, 0).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({ method: "PUT", uri: "/v1/collections/{collection_id}/content", code: 200 }),
-        ),
-      ).annotate({
-        identifier: "UpdateCollectionContentsRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          collection: S.optional(__S(3, __c0, 3)),
-        }),
-      ).annotate({
-        identifier: "UpdateCollectionContentsResponse",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String.pipe(T.Label()),
-          content: S.optional(S.String),
-          name: S.optional(S.String),
-          parent_folder_id: S.optional(S.NullOr(S.String)),
-          tag: S.optional(S.String),
-        }).pipe(T.Http({ method: "PUT", uri: "/v1/design_studio/components/{id}", code: 200 })),
-      ).annotate({ identifier: "UpdateComponentRequest" });
-  }
-}
-function __c72(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          accessibility: S.optional(__S(80, __c10, 0)),
-          css_inliner: S.optional(__S(82, __c10, 2)),
-          css_variables: S.optional(__S(83, __c10, 3)),
-          encode_entities: S.optional(__S(84, __c10, 4)),
-          formatter: S.optional(__S(87, __c10, 7)),
-          prevent_widows: S.optional(__S(84, __c10, 4)),
-          remove_unused_css: S.optional(__S(90, __c11, 2)),
-          url_parameters: S.optional(__S(93, __c11, 5)),
-        }),
-      ).annotate({
-        identifier: "UpdateEmailRequestTransformers",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String.pipe(T.Label()),
-          content: S.optional(__S(76, __c9, 4)),
-          envelope: S.optional(__S(79, __c9, 7)),
-          is_template: S.optional(S.Boolean),
-          name: S.optional(S.String),
-          parent_folder_id: S.optional(S.NullOr(S.String)),
-          transformers: S.optional(__S(576, __c72, 0)),
-        }).pipe(T.Http({ method: "PUT", uri: "/v1/design_studio/emails/{id}", code: 200 })),
-      ).annotate({ identifier: "UpdateEmailRequest" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          accessibility: S.optional(__S(80, __c10, 0)),
-          css_inliner: S.optional(__S(82, __c10, 2)),
-          css_variables: S.optional(__S(83, __c10, 3)),
-          encode_entities: S.optional(__S(84, __c10, 4)),
-          formatter: S.optional(__S(108, __c13, 4)),
-          prevent_widows: S.optional(__S(84, __c10, 4)),
-          remove_unused_css: S.optional(__S(109, __c13, 5)),
-          url_parameters: S.optional(__S(102, __c12, 6)),
-        }),
-      ).annotate({
-        identifier: "UpdateEmailTranslationRequestTransformers",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String.pipe(T.Label()),
-          language: S.String.pipe(T.Label()),
-          content: S.optional(__S(76, __c9, 4)),
-          envelope: S.optional(__S(79, __c9, 7)),
-          transformers: S.optional(__S(578, __c72, 2)),
-        }).pipe(
-          T.Http({
-            method: "PUT",
-            uri: "/v1/design_studio/emails/{id}/languages/{language}",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "UpdateEmailTranslationRequest",
-      });
-    case 4:
-      return S.Array(__S(125, __c15, 5));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          events: __S(580, __c72, 4),
-        }).pipe(T.Http({ method: "POST", uri: "/v1/data_index/events", code: 200 })),
-      ).annotate({
-        identifier: "UpdateEventMetadataRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String.pipe(T.Label()),
-          name: S.optional(S.String),
-          parent_folder_id: S.optional(S.NullOr(S.String)),
-        }).pipe(T.Http({ method: "PUT", uri: "/v1/design_studio/folders/{id}", code: 200 })),
-      ).annotate({ identifier: "UpdateFolderRequest" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          content_state: S.Unknown,
-          instance_id: S.String,
-          attributes: S.optional(__S(0, __c0, 0)),
-          deep_link: S.optional(S.String),
-          push_payload: S.optional(__S(167, __c20, 7)),
-        }).pipe(T.Http({ method: "POST", uri: "/v1/live_notifications/update", code: 200 })),
-      ).annotate({
-        identifier: "UpdateLiveNotificationRequest",
-      });
-  }
-}
-function __c73(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          newsletter_id: S.Number.pipe(T.Label()),
-          test_group_id: S.String.pipe(T.Label()),
-          language: S.String.pipe(T.Label()),
-          body: S.optional(S.Unknown.pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "PUT",
-            uri: "/v1/newsletters/{newsletter_id}/test_group/{test_group_id}/language/{language}",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "UpdateNewsletterTestTranslationRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          newsletter_id: S.Number.pipe(T.Label()),
-          content_id: S.Number.pipe(T.Label()),
-          body: S.optional(S.Unknown.pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "PUT",
-            uri: "/v1/newsletters/{newsletter_id}/contents/{content_id}",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "UpdateNewsletterVariantRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          newsletter_id: S.Number.pipe(T.Label()),
-          language: S.String.pipe(T.Label()),
-          body: S.optional(S.Unknown.pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "PUT",
-            uri: "/v1/newsletters/{newsletter_id}/language/{language}",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "UpdateNewsletterVariantTranslationRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          from: S.String,
-          optout: S.Boolean,
-          channel: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "UpdatePersonOptoutsRequestOptoutsItem",
-      });
-    case 4:
-      return S.Array(__S(587, __c73, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          customer_id: S.String.pipe(T.Label()),
-          id_type: S.optional(S.String.pipe(T.Query())),
-          optouts: __S(588, __c73, 4),
-        }).pipe(T.Http({ method: "PUT", uri: "/v1/customers/{customer_id}/optouts", code: 200 })),
-      ).annotate({
-        identifier: "UpdatePersonOptoutsRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String,
-          value: S.String,
-        }).pipe(T.Http({ method: "PUT", uri: "/v1/snippets", code: 200 })),
-      ).annotate({ identifier: "UpdateSnippetsRequest" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          transactional_id: S.Number.pipe(T.Label()),
-          content_id: S.Number.pipe(T.Label()),
-          body: S.optional(S.String),
-          body_amp: S.optional(S.String),
-          from_id: S.optional(S.Number),
-          headers: S.optional(__S(78, __c9, 6)),
-          preheader_text: S.optional(S.String),
-          recipient: S.optional(S.String),
-          reply_to_id: S.optional(S.NullOr(S.Number)),
-          subject: S.optional(S.String),
-        }).pipe(
-          T.Http({
-            method: "PUT",
-            uri: "/v1/transactional/{transactional_id}/content/{content_id}",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "UpdateTransactionalRequest",
-      });
-  }
-}
-function __c74(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          transactional_id: S.Number.pipe(T.Label()),
-          language: S.String.pipe(T.Label()),
-          body: S.optional(S.String),
-          body_amp: S.optional(S.String),
-          from_id: S.optional(S.Number),
-          headers: S.optional(__S(78, __c9, 6)),
-          preheader_text: S.optional(S.String),
-          recipient: S.optional(S.String),
-          reply_to_id: S.optional(S.NullOr(S.Number)),
-          subject: S.optional(S.String),
-        }).pipe(
-          T.Http({
-            method: "PUT",
-            uri: "/v1/transactional/{transactional_id}/language/{language}",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "UpdateTransactionalVariantRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          webhook_id: S.Number.pipe(T.Label()),
-          endpoint: S.String,
-          events: __S(144, __c18, 0),
-          name: S.String,
-          disabled: S.optional(S.Boolean),
-          full_resolution: S.optional(S.Boolean),
-          with_content: S.optional(S.Boolean),
-        }).pipe(T.Http({ method: "PUT", uri: "/v1/reporting_webhooks/{webhook_id}", code: 200 })),
-      ).annotate({ identifier: "UpdateWebhookRequest" });
-  }
-}
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

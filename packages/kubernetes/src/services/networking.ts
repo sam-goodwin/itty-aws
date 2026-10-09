@@ -1920,8 +1920,8 @@ export const createNetworkingV1IngressClass: API.OperationMethod<
   CreateNetworkingV1IngressClassError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(9, __c1, 1) as any as S.Schema<CreateNetworkingV1IngressClassRequest>,
-  output: __S(10, __c1, 2) as any as S.Schema<IoK8sApiNetworkingV1IngressClass>,
+  input: __S(704, __c22, 0) as any as S.Schema<CreateNetworkingV1IngressClassRequest>,
+  output: __S(738, __c23, 2) as any as S.Schema<IoK8sApiNetworkingV1IngressClass>,
   errors: [Conflict, UnprocessableEntity, UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -1935,8 +1935,8 @@ export const createNetworkingV1IPAddress: API.OperationMethod<
   CreateNetworkingV1IPAddressError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(13, __c1, 5) as any as S.Schema<CreateNetworkingV1IPAddressRequest>,
-  output: __S(14, __c1, 6) as any as S.Schema<IoK8sApiNetworkingV1IPAddress>,
+  input: __S(1152, __c36, 0) as any as S.Schema<CreateNetworkingV1IPAddressRequest>,
+  output: __S(1186, __c37, 2) as any as S.Schema<IoK8sApiNetworkingV1IPAddress>,
   errors: [Conflict, UnprocessableEntity, UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -1953,8 +1953,8 @@ export const createNetworkingV1NamespacedIngress: API.OperationMethod<
   CreateNetworkingV1NamespacedIngressError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(33, __c4, 1) as any as S.Schema<CreateNetworkingV1NamespacedIngressRequest>,
-  output: __S(34, __c4, 2) as any as S.Schema<IoK8sApiNetworkingV1Ingress>,
+  input: __S(1568, __c49, 0) as any as S.Schema<CreateNetworkingV1NamespacedIngressRequest>,
+  output: __S(1618, __c50, 18) as any as S.Schema<IoK8sApiNetworkingV1Ingress>,
   errors: [Conflict, UnprocessableEntity, UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -1971,8 +1971,8 @@ export const createNetworkingV1NamespacedNetworkPolicy: API.OperationMethod<
   CreateNetworkingV1NamespacedNetworkPolicyError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(49, __c6, 1) as any as S.Schema<CreateNetworkingV1NamespacedNetworkPolicyRequest>,
-  output: __S(50, __c6, 2) as any as S.Schema<IoK8sApiNetworkingV1NetworkPolicy>,
+  input: __S(1952, __c61, 0) as any as S.Schema<CreateNetworkingV1NamespacedNetworkPolicyRequest>,
+  output: __S(1998, __c62, 14) as any as S.Schema<IoK8sApiNetworkingV1NetworkPolicy>,
   errors: [Conflict, UnprocessableEntity, UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -1986,8 +1986,8 @@ export const createNetworkingV1ServiceCIDR: API.OperationMethod<
   CreateNetworkingV1ServiceCIDRError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(55, __c6, 7) as any as S.Schema<CreateNetworkingV1ServiceCIDRRequest>,
-  output: __S(56, __c7, 0) as any as S.Schema<IoK8sApiNetworkingV1ServiceCIDR>,
+  input: __S(2016, __c63, 0) as any as S.Schema<CreateNetworkingV1ServiceCIDRRequest>,
+  output: __S(2052, __c64, 4) as any as S.Schema<IoK8sApiNetworkingV1ServiceCIDR>,
   errors: [Conflict, UnprocessableEntity, UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -2001,8 +2001,8 @@ export const deleteNetworkingV1CollectionIngressClass: API.OperationMethod<
   DeleteNetworkingV1CollectionIngressClassError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(58, __c7, 2) as any as S.Schema<DeleteNetworkingV1CollectionIngressClassRequest>,
-  output: __S(64, __c8, 0) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1Status>,
+  input: __S(2080, __c65, 0) as any as S.Schema<DeleteNetworkingV1CollectionIngressClassRequest>,
+  output: __S(2116, __c66, 4) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1Status>,
   errors: [UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -2016,8 +2016,8 @@ export const deleteNetworkingV1CollectionIPAddress: API.OperationMethod<
   DeleteNetworkingV1CollectionIPAddressError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(65, __c8, 1) as any as S.Schema<DeleteNetworkingV1CollectionIPAddressRequest>,
-  output: __S(64, __c8, 0) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1Status>,
+  input: __S(2176, __c68, 0) as any as S.Schema<DeleteNetworkingV1CollectionIPAddressRequest>,
+  output: __S(2116, __c66, 4) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1Status>,
   errors: [UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -2031,8 +2031,8 @@ export const deleteNetworkingV1CollectionNamespacedIngress: API.OperationMethod<
   DeleteNetworkingV1CollectionNamespacedIngressError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(66, __c8, 2) as any as S.Schema<DeleteNetworkingV1CollectionNamespacedIngressRequest>,
-  output: __S(64, __c8, 0) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1Status>,
+  input: __S(0, __c0, 0) as any as S.Schema<DeleteNetworkingV1CollectionNamespacedIngressRequest>,
+  output: __S(2116, __c66, 4) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1Status>,
   errors: [UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -2047,11 +2047,11 @@ export const deleteNetworkingV1CollectionNamespacedNetworkPolicy: API.OperationM
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    67,
-    __c8,
-    3,
+    32,
+    __c1,
+    0,
   ) as any as S.Schema<DeleteNetworkingV1CollectionNamespacedNetworkPolicyRequest>,
-  output: __S(64, __c8, 0) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1Status>,
+  output: __S(2116, __c66, 4) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1Status>,
   errors: [UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -2065,8 +2065,8 @@ export const deleteNetworkingV1CollectionServiceCIDR: API.OperationMethod<
   DeleteNetworkingV1CollectionServiceCIDRError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(68, __c8, 4) as any as S.Schema<DeleteNetworkingV1CollectionServiceCIDRRequest>,
-  output: __S(64, __c8, 0) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1Status>,
+  input: __S(64, __c2, 0) as any as S.Schema<DeleteNetworkingV1CollectionServiceCIDRRequest>,
+  output: __S(2116, __c66, 4) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1Status>,
   errors: [UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -2080,8 +2080,8 @@ export const deleteNetworkingV1IngressClass: API.OperationMethod<
   DeleteNetworkingV1IngressClassError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(69, __c8, 5) as any as S.Schema<DeleteNetworkingV1IngressClassRequest>,
-  output: __S(64, __c8, 0) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1Status>,
+  input: __S(96, __c3, 0) as any as S.Schema<DeleteNetworkingV1IngressClassRequest>,
+  output: __S(2116, __c66, 4) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1Status>,
   errors: [NotFound, Conflict, UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -2095,8 +2095,8 @@ export const deleteNetworkingV1IPAddress: API.OperationMethod<
   DeleteNetworkingV1IPAddressError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(70, __c8, 6) as any as S.Schema<DeleteNetworkingV1IPAddressRequest>,
-  output: __S(64, __c8, 0) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1Status>,
+  input: __S(128, __c4, 0) as any as S.Schema<DeleteNetworkingV1IPAddressRequest>,
+  output: __S(2116, __c66, 4) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1Status>,
   errors: [NotFound, Conflict, UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -2110,8 +2110,8 @@ export const deleteNetworkingV1NamespacedIngress: API.OperationMethod<
   DeleteNetworkingV1NamespacedIngressError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(71, __c8, 7) as any as S.Schema<DeleteNetworkingV1NamespacedIngressRequest>,
-  output: __S(64, __c8, 0) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1Status>,
+  input: __S(160, __c5, 0) as any as S.Schema<DeleteNetworkingV1NamespacedIngressRequest>,
+  output: __S(2116, __c66, 4) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1Status>,
   errors: [NotFound, Conflict, UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -2128,8 +2128,8 @@ export const deleteNetworkingV1NamespacedNetworkPolicy: API.OperationMethod<
   DeleteNetworkingV1NamespacedNetworkPolicyError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(72, __c9, 0) as any as S.Schema<DeleteNetworkingV1NamespacedNetworkPolicyRequest>,
-  output: __S(64, __c8, 0) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1Status>,
+  input: __S(192, __c6, 0) as any as S.Schema<DeleteNetworkingV1NamespacedNetworkPolicyRequest>,
+  output: __S(2116, __c66, 4) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1Status>,
   errors: [NotFound, Conflict, UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -2143,8 +2143,8 @@ export const deleteNetworkingV1ServiceCIDR: API.OperationMethod<
   DeleteNetworkingV1ServiceCIDRError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(73, __c9, 1) as any as S.Schema<DeleteNetworkingV1ServiceCIDRRequest>,
-  output: __S(64, __c8, 0) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1Status>,
+  input: __S(224, __c7, 0) as any as S.Schema<DeleteNetworkingV1ServiceCIDRRequest>,
+  output: __S(2116, __c66, 4) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1Status>,
   errors: [NotFound, Conflict, UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -2158,8 +2158,8 @@ export const getNetworkingAPIGroup: API.OperationMethod<
   GetNetworkingAPIGroupError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(74, __c9, 2) as any as S.Schema<GetNetworkingAPIGroupRequest>,
-  output: __S(79, __c9, 7) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1APIGroup>,
+  input: __S(256, __c8, 0) as any as S.Schema<GetNetworkingAPIGroupRequest>,
+  output: __S(261, __c8, 5) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1APIGroup>,
   errors: [UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -2173,8 +2173,8 @@ export const getNetworkingV1APIResources: API.OperationMethod<
   GetNetworkingV1APIResourcesError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(80, __c10, 0) as any as S.Schema<GetNetworkingV1APIResourcesRequest>,
-  output: __S(83, __c10, 3) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1APIResourceList>,
+  input: __S(288, __c9, 0) as any as S.Schema<GetNetworkingV1APIResourcesRequest>,
+  output: __S(291, __c9, 3) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1APIResourceList>,
   errors: [UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -2188,8 +2188,8 @@ export const listNetworkingV1IngressClass: API.OperationMethod<
   ListNetworkingV1IngressClassError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(84, __c10, 4) as any as S.Schema<ListNetworkingV1IngressClassRequest>,
-  output: __S(86, __c10, 6) as any as S.Schema<IoK8sApiNetworkingV1IngressClassList>,
+  input: __S(320, __c10, 0) as any as S.Schema<ListNetworkingV1IngressClassRequest>,
+  output: __S(322, __c10, 2) as any as S.Schema<IoK8sApiNetworkingV1IngressClassList>,
   errors: [UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -2203,8 +2203,8 @@ export const listNetworkingV1IngressForAllNamespaces: API.OperationMethod<
   ListNetworkingV1IngressForAllNamespacesError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(87, __c10, 7) as any as S.Schema<ListNetworkingV1IngressForAllNamespacesRequest>,
-  output: __S(89, __c11, 1) as any as S.Schema<IoK8sApiNetworkingV1IngressList>,
+  input: __S(352, __c11, 0) as any as S.Schema<ListNetworkingV1IngressForAllNamespacesRequest>,
+  output: __S(385, __c12, 1) as any as S.Schema<IoK8sApiNetworkingV1IngressList>,
   errors: [UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -2218,8 +2218,8 @@ export const listNetworkingV1IPAddress: API.OperationMethod<
   ListNetworkingV1IPAddressError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(90, __c11, 2) as any as S.Schema<ListNetworkingV1IPAddressRequest>,
-  output: __S(92, __c11, 4) as any as S.Schema<IoK8sApiNetworkingV1IPAddressList>,
+  input: __S(416, __c13, 0) as any as S.Schema<ListNetworkingV1IPAddressRequest>,
+  output: __S(418, __c13, 2) as any as S.Schema<IoK8sApiNetworkingV1IPAddressList>,
   errors: [UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -2233,8 +2233,8 @@ export const listNetworkingV1NamespacedIngress: API.OperationMethod<
   ListNetworkingV1NamespacedIngressError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(93, __c11, 5) as any as S.Schema<ListNetworkingV1NamespacedIngressRequest>,
-  output: __S(89, __c11, 1) as any as S.Schema<IoK8sApiNetworkingV1IngressList>,
+  input: __S(448, __c14, 0) as any as S.Schema<ListNetworkingV1NamespacedIngressRequest>,
+  output: __S(385, __c12, 1) as any as S.Schema<IoK8sApiNetworkingV1IngressList>,
   errors: [UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -2248,8 +2248,8 @@ export const listNetworkingV1NamespacedNetworkPolicy: API.OperationMethod<
   ListNetworkingV1NamespacedNetworkPolicyError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(94, __c11, 6) as any as S.Schema<ListNetworkingV1NamespacedNetworkPolicyRequest>,
-  output: __S(96, __c12, 0) as any as S.Schema<IoK8sApiNetworkingV1NetworkPolicyList>,
+  input: __S(480, __c15, 0) as any as S.Schema<ListNetworkingV1NamespacedNetworkPolicyRequest>,
+  output: __S(513, __c16, 1) as any as S.Schema<IoK8sApiNetworkingV1NetworkPolicyList>,
   errors: [UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -2263,8 +2263,12 @@ export const listNetworkingV1NetworkPolicyForAllNamespaces: API.OperationMethod<
   ListNetworkingV1NetworkPolicyForAllNamespacesError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(97, __c12, 1) as any as S.Schema<ListNetworkingV1NetworkPolicyForAllNamespacesRequest>,
-  output: __S(96, __c12, 0) as any as S.Schema<IoK8sApiNetworkingV1NetworkPolicyList>,
+  input: __S(
+    544,
+    __c17,
+    0,
+  ) as any as S.Schema<ListNetworkingV1NetworkPolicyForAllNamespacesRequest>,
+  output: __S(513, __c16, 1) as any as S.Schema<IoK8sApiNetworkingV1NetworkPolicyList>,
   errors: [UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -2278,8 +2282,8 @@ export const listNetworkingV1ServiceCIDR: API.OperationMethod<
   ListNetworkingV1ServiceCIDRError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(98, __c12, 2) as any as S.Schema<ListNetworkingV1ServiceCIDRRequest>,
-  output: __S(100, __c12, 4) as any as S.Schema<IoK8sApiNetworkingV1ServiceCIDRList>,
+  input: __S(576, __c18, 0) as any as S.Schema<ListNetworkingV1ServiceCIDRRequest>,
+  output: __S(578, __c18, 2) as any as S.Schema<IoK8sApiNetworkingV1ServiceCIDRList>,
   errors: [UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -2297,8 +2301,8 @@ export const patchNetworkingV1IngressClass: API.OperationMethod<
   PatchNetworkingV1IngressClassError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(101, __c12, 5) as any as S.Schema<PatchNetworkingV1IngressClassRequest>,
-  output: __S(10, __c1, 2) as any as S.Schema<IoK8sApiNetworkingV1IngressClass>,
+  input: __S(608, __c19, 0) as any as S.Schema<PatchNetworkingV1IngressClassRequest>,
+  output: __S(738, __c23, 2) as any as S.Schema<IoK8sApiNetworkingV1IngressClass>,
   errors: [NotFound, Conflict, UnprocessableEntity, UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -2316,8 +2320,8 @@ export const patchNetworkingV1IPAddress: API.OperationMethod<
   PatchNetworkingV1IPAddressError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(102, __c12, 6) as any as S.Schema<PatchNetworkingV1IPAddressRequest>,
-  output: __S(14, __c1, 6) as any as S.Schema<IoK8sApiNetworkingV1IPAddress>,
+  input: __S(640, __c20, 0) as any as S.Schema<PatchNetworkingV1IPAddressRequest>,
+  output: __S(1186, __c37, 2) as any as S.Schema<IoK8sApiNetworkingV1IPAddress>,
   errors: [NotFound, Conflict, UnprocessableEntity, UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -2335,8 +2339,8 @@ export const patchNetworkingV1NamespacedIngress: API.OperationMethod<
   PatchNetworkingV1NamespacedIngressError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(103, __c12, 7) as any as S.Schema<PatchNetworkingV1NamespacedIngressRequest>,
-  output: __S(34, __c4, 2) as any as S.Schema<IoK8sApiNetworkingV1Ingress>,
+  input: __S(672, __c21, 0) as any as S.Schema<PatchNetworkingV1NamespacedIngressRequest>,
+  output: __S(1618, __c50, 18) as any as S.Schema<IoK8sApiNetworkingV1Ingress>,
   errors: [NotFound, Conflict, UnprocessableEntity, UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -2354,8 +2358,8 @@ export const patchNetworkingV1NamespacedIngressStatus: API.OperationMethod<
   PatchNetworkingV1NamespacedIngressStatusError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(104, __c13, 0) as any as S.Schema<PatchNetworkingV1NamespacedIngressStatusRequest>,
-  output: __S(34, __c4, 2) as any as S.Schema<IoK8sApiNetworkingV1Ingress>,
+  input: __S(832, __c26, 0) as any as S.Schema<PatchNetworkingV1NamespacedIngressStatusRequest>,
+  output: __S(1618, __c50, 18) as any as S.Schema<IoK8sApiNetworkingV1Ingress>,
   errors: [NotFound, Conflict, UnprocessableEntity, UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -2373,8 +2377,8 @@ export const patchNetworkingV1NamespacedNetworkPolicy: API.OperationMethod<
   PatchNetworkingV1NamespacedNetworkPolicyError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(105, __c13, 1) as any as S.Schema<PatchNetworkingV1NamespacedNetworkPolicyRequest>,
-  output: __S(50, __c6, 2) as any as S.Schema<IoK8sApiNetworkingV1NetworkPolicy>,
+  input: __S(864, __c27, 0) as any as S.Schema<PatchNetworkingV1NamespacedNetworkPolicyRequest>,
+  output: __S(1998, __c62, 14) as any as S.Schema<IoK8sApiNetworkingV1NetworkPolicy>,
   errors: [NotFound, Conflict, UnprocessableEntity, UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -2392,8 +2396,8 @@ export const patchNetworkingV1ServiceCIDR: API.OperationMethod<
   PatchNetworkingV1ServiceCIDRError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(106, __c13, 2) as any as S.Schema<PatchNetworkingV1ServiceCIDRRequest>,
-  output: __S(56, __c7, 0) as any as S.Schema<IoK8sApiNetworkingV1ServiceCIDR>,
+  input: __S(896, __c28, 0) as any as S.Schema<PatchNetworkingV1ServiceCIDRRequest>,
+  output: __S(2052, __c64, 4) as any as S.Schema<IoK8sApiNetworkingV1ServiceCIDR>,
   errors: [NotFound, Conflict, UnprocessableEntity, UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -2411,8 +2415,8 @@ export const patchNetworkingV1ServiceCIDRStatus: API.OperationMethod<
   PatchNetworkingV1ServiceCIDRStatusError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(107, __c13, 3) as any as S.Schema<PatchNetworkingV1ServiceCIDRStatusRequest>,
-  output: __S(56, __c7, 0) as any as S.Schema<IoK8sApiNetworkingV1ServiceCIDR>,
+  input: __S(928, __c29, 0) as any as S.Schema<PatchNetworkingV1ServiceCIDRStatusRequest>,
+  output: __S(2052, __c64, 4) as any as S.Schema<IoK8sApiNetworkingV1ServiceCIDR>,
   errors: [NotFound, Conflict, UnprocessableEntity, UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -2426,8 +2430,8 @@ export const readNetworkingV1IngressClass: API.OperationMethod<
   ReadNetworkingV1IngressClassError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(108, __c13, 4) as any as S.Schema<ReadNetworkingV1IngressClassRequest>,
-  output: __S(10, __c1, 2) as any as S.Schema<IoK8sApiNetworkingV1IngressClass>,
+  input: __S(960, __c30, 0) as any as S.Schema<ReadNetworkingV1IngressClassRequest>,
+  output: __S(738, __c23, 2) as any as S.Schema<IoK8sApiNetworkingV1IngressClass>,
   errors: [NotFound, UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -2441,8 +2445,8 @@ export const readNetworkingV1IPAddress: API.OperationMethod<
   ReadNetworkingV1IPAddressError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(109, __c13, 5) as any as S.Schema<ReadNetworkingV1IPAddressRequest>,
-  output: __S(14, __c1, 6) as any as S.Schema<IoK8sApiNetworkingV1IPAddress>,
+  input: __S(992, __c31, 0) as any as S.Schema<ReadNetworkingV1IPAddressRequest>,
+  output: __S(1186, __c37, 2) as any as S.Schema<IoK8sApiNetworkingV1IPAddress>,
   errors: [NotFound, UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -2456,8 +2460,8 @@ export const readNetworkingV1NamespacedIngress: API.OperationMethod<
   ReadNetworkingV1NamespacedIngressError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(110, __c13, 6) as any as S.Schema<ReadNetworkingV1NamespacedIngressRequest>,
-  output: __S(34, __c4, 2) as any as S.Schema<IoK8sApiNetworkingV1Ingress>,
+  input: __S(1024, __c32, 0) as any as S.Schema<ReadNetworkingV1NamespacedIngressRequest>,
+  output: __S(1618, __c50, 18) as any as S.Schema<IoK8sApiNetworkingV1Ingress>,
   errors: [NotFound, UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -2471,8 +2475,8 @@ export const readNetworkingV1NamespacedIngressStatus: API.OperationMethod<
   ReadNetworkingV1NamespacedIngressStatusError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(111, __c13, 7) as any as S.Schema<ReadNetworkingV1NamespacedIngressStatusRequest>,
-  output: __S(34, __c4, 2) as any as S.Schema<IoK8sApiNetworkingV1Ingress>,
+  input: __S(1056, __c33, 0) as any as S.Schema<ReadNetworkingV1NamespacedIngressStatusRequest>,
+  output: __S(1618, __c50, 18) as any as S.Schema<IoK8sApiNetworkingV1Ingress>,
   errors: [NotFound, UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -2486,8 +2490,8 @@ export const readNetworkingV1NamespacedNetworkPolicy: API.OperationMethod<
   ReadNetworkingV1NamespacedNetworkPolicyError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(112, __c14, 0) as any as S.Schema<ReadNetworkingV1NamespacedNetworkPolicyRequest>,
-  output: __S(50, __c6, 2) as any as S.Schema<IoK8sApiNetworkingV1NetworkPolicy>,
+  input: __S(1088, __c34, 0) as any as S.Schema<ReadNetworkingV1NamespacedNetworkPolicyRequest>,
+  output: __S(1998, __c62, 14) as any as S.Schema<IoK8sApiNetworkingV1NetworkPolicy>,
   errors: [NotFound, UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -2501,8 +2505,8 @@ export const readNetworkingV1ServiceCIDR: API.OperationMethod<
   ReadNetworkingV1ServiceCIDRError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(113, __c14, 1) as any as S.Schema<ReadNetworkingV1ServiceCIDRRequest>,
-  output: __S(56, __c7, 0) as any as S.Schema<IoK8sApiNetworkingV1ServiceCIDR>,
+  input: __S(1120, __c35, 0) as any as S.Schema<ReadNetworkingV1ServiceCIDRRequest>,
+  output: __S(2052, __c64, 4) as any as S.Schema<IoK8sApiNetworkingV1ServiceCIDR>,
   errors: [NotFound, UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -2516,8 +2520,8 @@ export const readNetworkingV1ServiceCIDRStatus: API.OperationMethod<
   ReadNetworkingV1ServiceCIDRStatusError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(114, __c14, 2) as any as S.Schema<ReadNetworkingV1ServiceCIDRStatusRequest>,
-  output: __S(56, __c7, 0) as any as S.Schema<IoK8sApiNetworkingV1ServiceCIDR>,
+  input: __S(1216, __c38, 0) as any as S.Schema<ReadNetworkingV1ServiceCIDRStatusRequest>,
+  output: __S(2052, __c64, 4) as any as S.Schema<IoK8sApiNetworkingV1ServiceCIDR>,
   errors: [NotFound, UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -2535,8 +2539,8 @@ export const replaceNetworkingV1IngressClass: API.OperationMethod<
   ReplaceNetworkingV1IngressClassError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(115, __c14, 3) as any as S.Schema<ReplaceNetworkingV1IngressClassRequest>,
-  output: __S(10, __c1, 2) as any as S.Schema<IoK8sApiNetworkingV1IngressClass>,
+  input: __S(1248, __c39, 0) as any as S.Schema<ReplaceNetworkingV1IngressClassRequest>,
+  output: __S(738, __c23, 2) as any as S.Schema<IoK8sApiNetworkingV1IngressClass>,
   errors: [NotFound, Conflict, UnprocessableEntity, UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -2554,8 +2558,8 @@ export const replaceNetworkingV1IPAddress: API.OperationMethod<
   ReplaceNetworkingV1IPAddressError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(116, __c14, 4) as any as S.Schema<ReplaceNetworkingV1IPAddressRequest>,
-  output: __S(14, __c1, 6) as any as S.Schema<IoK8sApiNetworkingV1IPAddress>,
+  input: __S(1280, __c40, 0) as any as S.Schema<ReplaceNetworkingV1IPAddressRequest>,
+  output: __S(1186, __c37, 2) as any as S.Schema<IoK8sApiNetworkingV1IPAddress>,
   errors: [NotFound, Conflict, UnprocessableEntity, UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -2573,8 +2577,8 @@ export const replaceNetworkingV1NamespacedIngress: API.OperationMethod<
   ReplaceNetworkingV1NamespacedIngressError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(117, __c14, 5) as any as S.Schema<ReplaceNetworkingV1NamespacedIngressRequest>,
-  output: __S(34, __c4, 2) as any as S.Schema<IoK8sApiNetworkingV1Ingress>,
+  input: __S(1312, __c41, 0) as any as S.Schema<ReplaceNetworkingV1NamespacedIngressRequest>,
+  output: __S(1618, __c50, 18) as any as S.Schema<IoK8sApiNetworkingV1Ingress>,
   errors: [NotFound, Conflict, UnprocessableEntity, UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -2592,8 +2596,8 @@ export const replaceNetworkingV1NamespacedIngressStatus: API.OperationMethod<
   ReplaceNetworkingV1NamespacedIngressStatusError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(118, __c14, 6) as any as S.Schema<ReplaceNetworkingV1NamespacedIngressStatusRequest>,
-  output: __S(34, __c4, 2) as any as S.Schema<IoK8sApiNetworkingV1Ingress>,
+  input: __S(1344, __c42, 0) as any as S.Schema<ReplaceNetworkingV1NamespacedIngressStatusRequest>,
+  output: __S(1618, __c50, 18) as any as S.Schema<IoK8sApiNetworkingV1Ingress>,
   errors: [NotFound, Conflict, UnprocessableEntity, UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -2611,8 +2615,8 @@ export const replaceNetworkingV1NamespacedNetworkPolicy: API.OperationMethod<
   ReplaceNetworkingV1NamespacedNetworkPolicyError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(119, __c14, 7) as any as S.Schema<ReplaceNetworkingV1NamespacedNetworkPolicyRequest>,
-  output: __S(50, __c6, 2) as any as S.Schema<IoK8sApiNetworkingV1NetworkPolicy>,
+  input: __S(1376, __c43, 0) as any as S.Schema<ReplaceNetworkingV1NamespacedNetworkPolicyRequest>,
+  output: __S(1998, __c62, 14) as any as S.Schema<IoK8sApiNetworkingV1NetworkPolicy>,
   errors: [NotFound, Conflict, UnprocessableEntity, UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -2630,8 +2634,8 @@ export const replaceNetworkingV1ServiceCIDR: API.OperationMethod<
   ReplaceNetworkingV1ServiceCIDRError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(120, __c15, 0) as any as S.Schema<ReplaceNetworkingV1ServiceCIDRRequest>,
-  output: __S(56, __c7, 0) as any as S.Schema<IoK8sApiNetworkingV1ServiceCIDR>,
+  input: __S(1408, __c44, 0) as any as S.Schema<ReplaceNetworkingV1ServiceCIDRRequest>,
+  output: __S(2052, __c64, 4) as any as S.Schema<IoK8sApiNetworkingV1ServiceCIDR>,
   errors: [NotFound, Conflict, UnprocessableEntity, UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -2649,8 +2653,8 @@ export const replaceNetworkingV1ServiceCIDRStatus: API.OperationMethod<
   ReplaceNetworkingV1ServiceCIDRStatusError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(121, __c15, 1) as any as S.Schema<ReplaceNetworkingV1ServiceCIDRStatusRequest>,
-  output: __S(56, __c7, 0) as any as S.Schema<IoK8sApiNetworkingV1ServiceCIDR>,
+  input: __S(1440, __c45, 0) as any as S.Schema<ReplaceNetworkingV1ServiceCIDRStatusRequest>,
+  output: __S(2052, __c64, 4) as any as S.Schema<IoK8sApiNetworkingV1ServiceCIDR>,
   errors: [NotFound, Conflict, UnprocessableEntity, UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -2664,8 +2668,8 @@ export const watchNetworkingV1IngressClass: API.OperationMethod<
   WatchNetworkingV1IngressClassError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(122, __c15, 2) as any as S.Schema<WatchNetworkingV1IngressClassRequest>,
-  output: __S(123, __c15, 3) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1WatchEvent>,
+  input: __S(1472, __c46, 0) as any as S.Schema<WatchNetworkingV1IngressClassRequest>,
+  output: __S(1504, __c47, 0) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1WatchEvent>,
   errors: [UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -2679,8 +2683,8 @@ export const watchNetworkingV1IngressClassList: API.OperationMethod<
   WatchNetworkingV1IngressClassListError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(124, __c15, 4) as any as S.Schema<WatchNetworkingV1IngressClassListRequest>,
-  output: __S(123, __c15, 3) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1WatchEvent>,
+  input: __S(1536, __c48, 0) as any as S.Schema<WatchNetworkingV1IngressClassListRequest>,
+  output: __S(1504, __c47, 0) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1WatchEvent>,
   errors: [UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -2694,8 +2698,12 @@ export const watchNetworkingV1IngressListForAllNamespaces: API.OperationMethod<
   WatchNetworkingV1IngressListForAllNamespacesError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(125, __c15, 5) as any as S.Schema<WatchNetworkingV1IngressListForAllNamespacesRequest>,
-  output: __S(123, __c15, 3) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1WatchEvent>,
+  input: __S(
+    1632,
+    __c51,
+    0,
+  ) as any as S.Schema<WatchNetworkingV1IngressListForAllNamespacesRequest>,
+  output: __S(1504, __c47, 0) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1WatchEvent>,
   errors: [UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -2709,8 +2717,8 @@ export const watchNetworkingV1IPAddress: API.OperationMethod<
   WatchNetworkingV1IPAddressError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(126, __c15, 6) as any as S.Schema<WatchNetworkingV1IPAddressRequest>,
-  output: __S(123, __c15, 3) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1WatchEvent>,
+  input: __S(1664, __c52, 0) as any as S.Schema<WatchNetworkingV1IPAddressRequest>,
+  output: __S(1504, __c47, 0) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1WatchEvent>,
   errors: [UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -2724,8 +2732,8 @@ export const watchNetworkingV1IPAddressList: API.OperationMethod<
   WatchNetworkingV1IPAddressListError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(127, __c15, 7) as any as S.Schema<WatchNetworkingV1IPAddressListRequest>,
-  output: __S(123, __c15, 3) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1WatchEvent>,
+  input: __S(1696, __c53, 0) as any as S.Schema<WatchNetworkingV1IPAddressListRequest>,
+  output: __S(1504, __c47, 0) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1WatchEvent>,
   errors: [UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -2739,8 +2747,8 @@ export const watchNetworkingV1NamespacedIngress: API.OperationMethod<
   WatchNetworkingV1NamespacedIngressError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(128, __c16, 0) as any as S.Schema<WatchNetworkingV1NamespacedIngressRequest>,
-  output: __S(123, __c15, 3) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1WatchEvent>,
+  input: __S(1728, __c54, 0) as any as S.Schema<WatchNetworkingV1NamespacedIngressRequest>,
+  output: __S(1504, __c47, 0) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1WatchEvent>,
   errors: [UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -2754,8 +2762,8 @@ export const watchNetworkingV1NamespacedIngressList: API.OperationMethod<
   WatchNetworkingV1NamespacedIngressListError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(129, __c16, 1) as any as S.Schema<WatchNetworkingV1NamespacedIngressListRequest>,
-  output: __S(123, __c15, 3) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1WatchEvent>,
+  input: __S(1760, __c55, 0) as any as S.Schema<WatchNetworkingV1NamespacedIngressListRequest>,
+  output: __S(1504, __c47, 0) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1WatchEvent>,
   errors: [UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -2769,8 +2777,8 @@ export const watchNetworkingV1NamespacedNetworkPolicy: API.OperationMethod<
   WatchNetworkingV1NamespacedNetworkPolicyError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(130, __c16, 2) as any as S.Schema<WatchNetworkingV1NamespacedNetworkPolicyRequest>,
-  output: __S(123, __c15, 3) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1WatchEvent>,
+  input: __S(1792, __c56, 0) as any as S.Schema<WatchNetworkingV1NamespacedNetworkPolicyRequest>,
+  output: __S(1504, __c47, 0) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1WatchEvent>,
   errors: [UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -2784,8 +2792,12 @@ export const watchNetworkingV1NamespacedNetworkPolicyList: API.OperationMethod<
   WatchNetworkingV1NamespacedNetworkPolicyListError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(131, __c16, 3) as any as S.Schema<WatchNetworkingV1NamespacedNetworkPolicyListRequest>,
-  output: __S(123, __c15, 3) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1WatchEvent>,
+  input: __S(
+    1824,
+    __c57,
+    0,
+  ) as any as S.Schema<WatchNetworkingV1NamespacedNetworkPolicyListRequest>,
+  output: __S(1504, __c47, 0) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1WatchEvent>,
   errors: [UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -2800,11 +2812,11 @@ export const watchNetworkingV1NetworkPolicyListForAllNamespaces: API.OperationMe
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    132,
-    __c16,
-    4,
+    1856,
+    __c58,
+    0,
   ) as any as S.Schema<WatchNetworkingV1NetworkPolicyListForAllNamespacesRequest>,
-  output: __S(123, __c15, 3) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1WatchEvent>,
+  output: __S(1504, __c47, 0) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1WatchEvent>,
   errors: [UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -2818,8 +2830,8 @@ export const watchNetworkingV1ServiceCIDR: API.OperationMethod<
   WatchNetworkingV1ServiceCIDRError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(133, __c16, 5) as any as S.Schema<WatchNetworkingV1ServiceCIDRRequest>,
-  output: __S(123, __c15, 3) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1WatchEvent>,
+  input: __S(1888, __c59, 0) as any as S.Schema<WatchNetworkingV1ServiceCIDRRequest>,
+  output: __S(1504, __c47, 0) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1WatchEvent>,
   errors: [UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -2833,8 +2845,8 @@ export const watchNetworkingV1ServiceCIDRList: API.OperationMethod<
   WatchNetworkingV1ServiceCIDRListError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(134, __c16, 6) as any as S.Schema<WatchNetworkingV1ServiceCIDRListRequest>,
-  output: __S(123, __c15, 3) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1WatchEvent>,
+  input: __S(1920, __c60, 0) as any as S.Schema<WatchNetworkingV1ServiceCIDRListRequest>,
+  output: __S(1504, __c47, 0) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1WatchEvent>,
   errors: [UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -2844,662 +2856,6 @@ export const watchNetworkingV1ServiceCIDRList: API.OperationMethod<
 function __c0(j: number): any {
   switch (j) {
     case 0:
-      return S.Record(S.String, S.String);
-    case 1:
-      return S.Array(S.String);
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          apiVersion: S.optional(S.String),
-          fieldsType: S.optional(S.String),
-          fieldsV1: S.optional(S.Unknown),
-          manager: S.optional(S.String),
-          operation: S.optional(S.String),
-          subresource: S.optional(S.String),
-          time: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "IoK8sApimachineryPkgApisMetaV1ManagedFieldsEntry",
-      });
-    case 3:
-      return S.Array(__S(2, __c0, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          apiVersion: S.String,
-          blockOwnerDeletion: S.optional(S.Boolean),
-          controller: S.optional(S.Boolean),
-          kind: S.String,
-          name: S.String,
-          uid: S.String,
-        }),
-      ).annotate({
-        identifier: "IoK8sApimachineryPkgApisMetaV1OwnerReference",
-      });
-    case 5:
-      return S.Array(__S(4, __c0, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          annotations: S.optional(__S(0, __c0, 0)),
-          creationTimestamp: S.optional(S.String),
-          deletionGracePeriodSeconds: S.optional(S.Number),
-          deletionTimestamp: S.optional(S.String),
-          finalizers: S.optional(__S(1, __c0, 1)),
-          generateName: S.optional(S.String),
-          generation: S.optional(S.Number),
-          labels: S.optional(__S(0, __c0, 0)),
-          managedFields: S.optional(__S(3, __c0, 3)),
-          name: S.optional(S.String),
-          namespace: S.optional(S.String),
-          ownerReferences: S.optional(__S(5, __c0, 5)),
-          resourceVersion: S.optional(S.String),
-          selfLink: S.optional(S.String),
-          uid: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "IoK8sApimachineryPkgApisMetaV1ObjectMeta",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          apiGroup: S.optional(S.String),
-          kind: S.String,
-          name: S.String,
-          namespace: S.optional(S.String),
-          scope: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "IoK8sApiNetworkingV1IngressClassParametersReference",
-      });
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          controller: S.String,
-          parameters: S.optional(__S(7, __c0, 7)),
-        }),
-      ).annotate({
-        identifier: "IoK8sApiNetworkingV1IngressClassSpec",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          pretty: S.optional(S.String.pipe(T.Query())),
-          dryRun: S.optional(S.String.pipe(T.Query())),
-          fieldManager: S.optional(S.String.pipe(T.Query())),
-          fieldValidation: S.optional(S.String.pipe(T.Query())),
-          apiVersion: S.optional(S.String),
-          kind: S.optional(S.String),
-          metadata: S.optional(__S(6, __c0, 6)),
-          spec: __S(8, __c1, 0),
-        }).pipe(
-          T.Http({ method: "POST", uri: "/apis/networking.k8s.io/v1/ingressclasses", code: 200 }),
-        ),
-      ).annotate({
-        identifier: "CreateNetworkingV1IngressClassRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          apiVersion: S.optional(S.String),
-          kind: S.optional(S.String),
-          metadata: S.optional(__S(6, __c0, 6)),
-          spec: __S(8, __c1, 0),
-        }),
-      ).annotate({
-        identifier: "IoK8sApiNetworkingV1IngressClass",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          group: S.optional(S.String),
-          name: S.String,
-          namespace: S.optional(S.String),
-          resource: S.String,
-        }),
-      ).annotate({
-        identifier: "IoK8sApiNetworkingV1ParentReference",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          parentRef: __S(11, __c1, 3),
-        }),
-      ).annotate({
-        identifier: "IoK8sApiNetworkingV1IPAddressSpec",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          pretty: S.optional(S.String.pipe(T.Query())),
-          dryRun: S.optional(S.String.pipe(T.Query())),
-          fieldManager: S.optional(S.String.pipe(T.Query())),
-          fieldValidation: S.optional(S.String.pipe(T.Query())),
-          apiVersion: S.optional(S.String),
-          kind: S.optional(S.String),
-          metadata: S.optional(__S(6, __c0, 6)),
-          spec: __S(12, __c1, 4),
-        }).pipe(
-          T.Http({ method: "POST", uri: "/apis/networking.k8s.io/v1/ipaddresses", code: 200 }),
-        ),
-      ).annotate({
-        identifier: "CreateNetworkingV1IPAddressRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          apiVersion: S.optional(S.String),
-          kind: S.optional(S.String),
-          metadata: S.optional(__S(6, __c0, 6)),
-          spec: __S(12, __c1, 4),
-        }),
-      ).annotate({
-        identifier: "IoK8sApiNetworkingV1IPAddress",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          apiGroup: S.optional(S.String),
-          kind: S.String,
-          name: S.String,
-        }),
-      ).annotate({
-        identifier: "IoK8sApiCoreV1TypedLocalObjectReference",
-      });
-  }
-}
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.optional(S.String),
-          number: S.optional(S.Number),
-        }),
-      ).annotate({
-        identifier: "IoK8sApiNetworkingV1ServiceBackendPort",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String,
-          port: S.optional(__S(16, __c2, 0)),
-        }),
-      ).annotate({
-        identifier: "IoK8sApiNetworkingV1IngressServiceBackend",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          resource: S.optional(__S(15, __c1, 7)),
-          service: S.optional(__S(17, __c2, 1)),
-        }),
-      ).annotate({
-        identifier: "IoK8sApiNetworkingV1IngressBackend",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          backend: __S(18, __c2, 2),
-          path: S.optional(S.String),
-          pathType: S.String,
-        }),
-      ).annotate({
-        identifier: "IoK8sApiNetworkingV1HTTPIngressPath",
-      });
-    case 4:
-      return S.Array(__S(19, __c2, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          paths: __S(20, __c2, 4),
-        }),
-      ).annotate({
-        identifier: "IoK8sApiNetworkingV1HTTPIngressRuleValue",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          host: S.optional(S.String),
-          http: S.optional(__S(21, __c2, 5)),
-        }),
-      ).annotate({
-        identifier: "IoK8sApiNetworkingV1IngressRule",
-      });
-    case 7:
-      return S.Array(__S(22, __c2, 6));
-  }
-}
-function __c3(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          hosts: S.optional(__S(1, __c0, 1)),
-          secretName: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "IoK8sApiNetworkingV1IngressTLS",
-      });
-    case 1:
-      return S.Array(__S(24, __c3, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          defaultBackend: S.optional(__S(18, __c2, 2)),
-          ingressClassName: S.optional(S.String),
-          rules: S.optional(__S(23, __c2, 7)),
-          tls: S.optional(__S(25, __c3, 1)),
-        }),
-      ).annotate({
-        identifier: "IoK8sApiNetworkingV1IngressSpec",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          error: S.optional(S.String),
-          port: S.optional(S.Number),
-          protocol: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "IoK8sApiNetworkingV1IngressPortStatus",
-      });
-    case 4:
-      return S.Array(__S(27, __c3, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          hostname: S.optional(S.String),
-          ip: S.optional(S.String),
-          ports: S.optional(__S(28, __c3, 4)),
-        }),
-      ).annotate({
-        identifier: "IoK8sApiNetworkingV1IngressLoadBalancerIngress",
-      });
-    case 6:
-      return S.Array(__S(29, __c3, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          ingress: S.optional(__S(30, __c3, 6)),
-        }),
-      ).annotate({
-        identifier: "IoK8sApiNetworkingV1IngressLoadBalancerStatus",
-      });
-  }
-}
-function __c4(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          loadBalancer: S.optional(__S(31, __c3, 7)),
-        }),
-      ).annotate({
-        identifier: "IoK8sApiNetworkingV1IngressStatus",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          namespace: S.String.pipe(T.Label()),
-          pretty: S.optional(S.String.pipe(T.Query())),
-          dryRun: S.optional(S.String.pipe(T.Query())),
-          fieldManager: S.optional(S.String.pipe(T.Query())),
-          fieldValidation: S.optional(S.String.pipe(T.Query())),
-          apiVersion: S.optional(S.String),
-          kind: S.optional(S.String),
-          metadata: S.optional(__S(6, __c0, 6)),
-          spec: S.optional(__S(26, __c3, 2)),
-          status: S.optional(__S(32, __c4, 0)),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/apis/networking.k8s.io/v1/namespaces/{namespace}/ingresses",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateNetworkingV1NamespacedIngressRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          apiVersion: S.optional(S.String),
-          kind: S.optional(S.String),
-          metadata: S.optional(__S(6, __c0, 6)),
-          spec: S.optional(__S(26, __c3, 2)),
-          status: S.optional(__S(32, __c4, 0)),
-        }),
-      ).annotate({
-        identifier: "IoK8sApiNetworkingV1Ingress",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          endPort: S.optional(S.Number),
-          port: S.optional(S.String),
-          protocol: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "IoK8sApiNetworkingV1NetworkPolicyPort",
-      });
-    case 4:
-      return S.Array(__S(35, __c4, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          cidr: S.String,
-          except: S.optional(__S(1, __c0, 1)),
-        }),
-      ).annotate({
-        identifier: "IoK8sApiNetworkingV1IPBlock",
-      });
-    case 6:
-      return S.Array(S.String);
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          key: S.String,
-          operator: S.String,
-          values: S.optional(__S(38, __c4, 6)),
-        }),
-      ).annotate({
-        identifier: "IoK8sApimachineryPkgApisMetaV1LabelSelectorRequirement",
-      });
-  }
-}
-function __c5(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(39, __c4, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          matchExpressions: S.optional(__S(40, __c5, 0)),
-          matchLabels: S.optional(__S(0, __c0, 0)),
-        }),
-      ).annotate({
-        identifier: "IoK8sApimachineryPkgApisMetaV1LabelSelector",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          ipBlock: S.optional(__S(37, __c4, 5)),
-          namespaceSelector: S.optional(__S(41, __c5, 1)),
-          podSelector: S.optional(__S(41, __c5, 1)),
-        }),
-      ).annotate({
-        identifier: "IoK8sApiNetworkingV1NetworkPolicyPeer",
-      });
-    case 3:
-      return S.Array(__S(42, __c5, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          ports: S.optional(__S(36, __c4, 4)),
-          to: S.optional(__S(43, __c5, 3)),
-        }),
-      ).annotate({
-        identifier: "IoK8sApiNetworkingV1NetworkPolicyEgressRule",
-      });
-    case 5:
-      return S.Array(__S(44, __c5, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          from: S.optional(__S(43, __c5, 3)),
-          ports: S.optional(__S(36, __c4, 4)),
-        }),
-      ).annotate({
-        identifier: "IoK8sApiNetworkingV1NetworkPolicyIngressRule",
-      });
-    case 7:
-      return S.Array(__S(46, __c5, 6));
-  }
-}
-function __c6(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          egress: S.optional(__S(45, __c5, 5)),
-          ingress: S.optional(__S(47, __c5, 7)),
-          podSelector: S.optional(__S(41, __c5, 1)),
-          policyTypes: S.optional(__S(1, __c0, 1)),
-        }),
-      ).annotate({
-        identifier: "IoK8sApiNetworkingV1NetworkPolicySpec",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          namespace: S.String.pipe(T.Label()),
-          pretty: S.optional(S.String.pipe(T.Query())),
-          dryRun: S.optional(S.String.pipe(T.Query())),
-          fieldManager: S.optional(S.String.pipe(T.Query())),
-          fieldValidation: S.optional(S.String.pipe(T.Query())),
-          apiVersion: S.optional(S.String),
-          kind: S.optional(S.String),
-          metadata: S.optional(__S(6, __c0, 6)),
-          spec: S.optional(__S(48, __c6, 0)),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/apis/networking.k8s.io/v1/namespaces/{namespace}/networkpolicies",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateNetworkingV1NamespacedNetworkPolicyRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          apiVersion: S.optional(S.String),
-          kind: S.optional(S.String),
-          metadata: S.optional(__S(6, __c0, 6)),
-          spec: S.optional(__S(48, __c6, 0)),
-        }),
-      ).annotate({
-        identifier: "IoK8sApiNetworkingV1NetworkPolicy",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          cidrs: S.optional(__S(1, __c0, 1)),
-        }),
-      ).annotate({
-        identifier: "IoK8sApiNetworkingV1ServiceCIDRSpec",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          lastTransitionTime: S.String,
-          message: S.optional(S.String),
-          observedGeneration: S.optional(S.Number),
-          reason: S.String,
-          status: S.String,
-          type: S.String,
-        }),
-      ).annotate({
-        identifier: "IoK8sApimachineryPkgApisMetaV1Condition",
-      });
-    case 5:
-      return S.Array(__S(52, __c6, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          conditions: S.optional(__S(53, __c6, 5)),
-        }),
-      ).annotate({
-        identifier: "IoK8sApiNetworkingV1ServiceCIDRStatus",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          pretty: S.optional(S.String.pipe(T.Query())),
-          dryRun: S.optional(S.String.pipe(T.Query())),
-          fieldManager: S.optional(S.String.pipe(T.Query())),
-          fieldValidation: S.optional(S.String.pipe(T.Query())),
-          apiVersion: S.optional(S.String),
-          kind: S.optional(S.String),
-          metadata: S.optional(__S(6, __c0, 6)),
-          spec: S.optional(__S(51, __c6, 3)),
-          status: S.optional(__S(54, __c6, 6)),
-        }).pipe(
-          T.Http({ method: "POST", uri: "/apis/networking.k8s.io/v1/servicecidrs", code: 200 }),
-        ),
-      ).annotate({
-        identifier: "CreateNetworkingV1ServiceCIDRRequest",
-      });
-  }
-}
-function __c7(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          apiVersion: S.optional(S.String),
-          kind: S.optional(S.String),
-          metadata: S.optional(__S(6, __c0, 6)),
-          spec: S.optional(__S(51, __c6, 3)),
-          status: S.optional(__S(54, __c6, 6)),
-        }),
-      ).annotate({
-        identifier: "IoK8sApiNetworkingV1ServiceCIDR",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          resourceVersion: S.optional(S.String),
-          uid: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "IoK8sApimachineryPkgApisMetaV1Preconditions",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          pretty: S.optional(S.String.pipe(T.Query())),
-          continue: S.optional(S.String.pipe(T.Query())),
-          dryRun: S.optional(S.String.pipe(T.Query())),
-          fieldSelector: S.optional(S.String.pipe(T.Query())),
-          gracePeriodSeconds: S.optional(S.Number.pipe(T.Query())),
-          ignoreStoreReadErrorWithClusterBreakingPotential: S.optional(S.Boolean.pipe(T.Query())),
-          labelSelector: S.optional(S.String.pipe(T.Query())),
-          limit: S.optional(S.Number.pipe(T.Query())),
-          orphanDependents: S.optional(S.Boolean.pipe(T.Query())),
-          propagationPolicy: S.optional(S.String.pipe(T.Query())),
-          resourceVersion: S.optional(S.String.pipe(T.Query())),
-          resourceVersionMatch: S.optional(S.String.pipe(T.Query())),
-          sendInitialEvents: S.optional(S.Boolean.pipe(T.Query())),
-          shardSelector: S.optional(S.String.pipe(T.Query())),
-          timeoutSeconds: S.optional(S.Number.pipe(T.Query())),
-          apiVersion: S.optional(S.String),
-          kind: S.optional(S.String),
-          preconditions: S.optional(__S(57, __c7, 1)),
-        }).pipe(
-          T.Http({ method: "DELETE", uri: "/apis/networking.k8s.io/v1/ingressclasses", code: 200 }),
-        ),
-      ).annotate({
-        identifier: "DeleteNetworkingV1CollectionIngressClassRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          field: S.optional(S.String),
-          message: S.optional(S.String),
-          reason: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "IoK8sApimachineryPkgApisMetaV1StatusCause",
-      });
-    case 4:
-      return S.Array(__S(59, __c7, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          causes: S.optional(__S(60, __c7, 4)),
-          group: S.optional(S.String),
-          kind: S.optional(S.String),
-          name: S.optional(S.String),
-          retryAfterSeconds: S.optional(S.Number),
-          uid: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "IoK8sApimachineryPkgApisMetaV1StatusDetails",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          selector: S.String,
-        }),
-      ).annotate({
-        identifier: "IoK8sApimachineryPkgApisMetaV1ShardInfo",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          continue: S.optional(S.String),
-          remainingItemCount: S.optional(S.Number),
-          resourceVersion: S.optional(S.String),
-          selfLink: S.optional(S.String),
-          shardInfo: S.optional(__S(62, __c7, 6)),
-        }),
-      ).annotate({
-        identifier: "IoK8sApimachineryPkgApisMetaV1ListMeta",
-      });
-  }
-}
-function __c8(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          apiVersion: S.optional(S.String),
-          code: S.optional(S.Number),
-          details: S.optional(__S(61, __c7, 5)),
-          kind: S.optional(S.String),
-          message: S.optional(S.String),
-          metadata: S.optional(__S(63, __c7, 7)),
-          reason: S.optional(S.String),
-          status: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "IoK8sApimachineryPkgApisMetaV1Status",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          pretty: S.optional(S.String.pipe(T.Query())),
-          continue: S.optional(S.String.pipe(T.Query())),
-          dryRun: S.optional(S.String.pipe(T.Query())),
-          fieldSelector: S.optional(S.String.pipe(T.Query())),
-          gracePeriodSeconds: S.optional(S.Number.pipe(T.Query())),
-          ignoreStoreReadErrorWithClusterBreakingPotential: S.optional(S.Boolean.pipe(T.Query())),
-          labelSelector: S.optional(S.String.pipe(T.Query())),
-          limit: S.optional(S.Number.pipe(T.Query())),
-          orphanDependents: S.optional(S.Boolean.pipe(T.Query())),
-          propagationPolicy: S.optional(S.String.pipe(T.Query())),
-          resourceVersion: S.optional(S.String.pipe(T.Query())),
-          resourceVersionMatch: S.optional(S.String.pipe(T.Query())),
-          sendInitialEvents: S.optional(S.Boolean.pipe(T.Query())),
-          shardSelector: S.optional(S.String.pipe(T.Query())),
-          timeoutSeconds: S.optional(S.Number.pipe(T.Query())),
-          apiVersion: S.optional(S.String),
-          kind: S.optional(S.String),
-          preconditions: S.optional(__S(57, __c7, 1)),
-        }).pipe(
-          T.Http({ method: "DELETE", uri: "/apis/networking.k8s.io/v1/ipaddresses", code: 200 }),
-        ),
-      ).annotate({
-        identifier: "DeleteNetworkingV1CollectionIPAddressRequest",
-      });
-    case 2:
       return S.suspend(() =>
         S.Struct({
           namespace: S.String.pipe(T.Label()),
@@ -3520,7 +2876,7 @@ function __c8(j: number): any {
           timeoutSeconds: S.optional(S.Number.pipe(T.Query())),
           apiVersion: S.optional(S.String),
           kind: S.optional(S.String),
-          preconditions: S.optional(__S(57, __c7, 1)),
+          preconditions: S.optional(__S(2112, __c66, 0)),
         }).pipe(
           T.Http({
             method: "DELETE",
@@ -3531,7 +2887,11 @@ function __c8(j: number): any {
       ).annotate({
         identifier: "DeleteNetworkingV1CollectionNamespacedIngressRequest",
       });
-    case 3:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           namespace: S.String.pipe(T.Label()),
@@ -3552,7 +2912,7 @@ function __c8(j: number): any {
           timeoutSeconds: S.optional(S.Number.pipe(T.Query())),
           apiVersion: S.optional(S.String),
           kind: S.optional(S.String),
-          preconditions: S.optional(__S(57, __c7, 1)),
+          preconditions: S.optional(__S(2112, __c66, 0)),
         }).pipe(
           T.Http({
             method: "DELETE",
@@ -3563,7 +2923,11 @@ function __c8(j: number): any {
       ).annotate({
         identifier: "DeleteNetworkingV1CollectionNamespacedNetworkPolicyRequest",
       });
-    case 4:
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           pretty: S.optional(S.String.pipe(T.Query())),
@@ -3583,14 +2947,18 @@ function __c8(j: number): any {
           timeoutSeconds: S.optional(S.Number.pipe(T.Query())),
           apiVersion: S.optional(S.String),
           kind: S.optional(S.String),
-          preconditions: S.optional(__S(57, __c7, 1)),
+          preconditions: S.optional(__S(2112, __c66, 0)),
         }).pipe(
           T.Http({ method: "DELETE", uri: "/apis/networking.k8s.io/v1/servicecidrs", code: 200 }),
         ),
       ).annotate({
         identifier: "DeleteNetworkingV1CollectionServiceCIDRRequest",
       });
-    case 5:
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -3602,7 +2970,7 @@ function __c8(j: number): any {
           propagationPolicy: S.optional(S.String.pipe(T.Query())),
           apiVersion: S.optional(S.String),
           kind: S.optional(S.String),
-          preconditions: S.optional(__S(57, __c7, 1)),
+          preconditions: S.optional(__S(2112, __c66, 0)),
         }).pipe(
           T.Http({
             method: "DELETE",
@@ -3613,7 +2981,11 @@ function __c8(j: number): any {
       ).annotate({
         identifier: "DeleteNetworkingV1IngressClassRequest",
       });
-    case 6:
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -3625,7 +2997,7 @@ function __c8(j: number): any {
           propagationPolicy: S.optional(S.String.pipe(T.Query())),
           apiVersion: S.optional(S.String),
           kind: S.optional(S.String),
-          preconditions: S.optional(__S(57, __c7, 1)),
+          preconditions: S.optional(__S(2112, __c66, 0)),
         }).pipe(
           T.Http({
             method: "DELETE",
@@ -3636,7 +3008,11 @@ function __c8(j: number): any {
       ).annotate({
         identifier: "DeleteNetworkingV1IPAddressRequest",
       });
-    case 7:
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           namespace: S.String.pipe(T.Label()),
@@ -3649,7 +3025,7 @@ function __c8(j: number): any {
           propagationPolicy: S.optional(S.String.pipe(T.Query())),
           apiVersion: S.optional(S.String),
           kind: S.optional(S.String),
-          preconditions: S.optional(__S(57, __c7, 1)),
+          preconditions: S.optional(__S(2112, __c66, 0)),
         }).pipe(
           T.Http({
             method: "DELETE",
@@ -3662,7 +3038,7 @@ function __c8(j: number): any {
       });
   }
 }
-function __c9(j: number): any {
+function __c6(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3677,7 +3053,7 @@ function __c9(j: number): any {
           propagationPolicy: S.optional(S.String.pipe(T.Query())),
           apiVersion: S.optional(S.String),
           kind: S.optional(S.String),
-          preconditions: S.optional(__S(57, __c7, 1)),
+          preconditions: S.optional(__S(2112, __c66, 0)),
         }).pipe(
           T.Http({
             method: "DELETE",
@@ -3688,7 +3064,11 @@ function __c9(j: number): any {
       ).annotate({
         identifier: "DeleteNetworkingV1NamespacedNetworkPolicyRequest",
       });
-    case 1:
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -3700,7 +3080,7 @@ function __c9(j: number): any {
           propagationPolicy: S.optional(S.String.pipe(T.Query())),
           apiVersion: S.optional(S.String),
           kind: S.optional(S.String),
-          preconditions: S.optional(__S(57, __c7, 1)),
+          preconditions: S.optional(__S(2112, __c66, 0)),
         }).pipe(
           T.Http({
             method: "DELETE",
@@ -3711,13 +3091,17 @@ function __c9(j: number): any {
       ).annotate({
         identifier: "DeleteNetworkingV1ServiceCIDRRequest",
       });
-    case 2:
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({}).pipe(T.Http({ method: "GET", uri: "/apis/networking.k8s.io/", code: 200 })),
       ).annotate({
         identifier: "GetNetworkingAPIGroupRequest",
       });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           groupVersion: S.String,
@@ -3726,7 +3110,7 @@ function __c9(j: number): any {
       ).annotate({
         identifier: "IoK8sApimachineryPkgApisMetaV1GroupVersionForDiscovery",
       });
-    case 4:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           clientCIDR: S.String,
@@ -3735,26 +3119,26 @@ function __c9(j: number): any {
       ).annotate({
         identifier: "IoK8sApimachineryPkgApisMetaV1ServerAddressByClientCIDR",
       });
+    case 3:
+      return S.Array(__S(258, __c8, 2));
+    case 4:
+      return S.Array(__S(257, __c8, 1));
     case 5:
-      return S.Array(__S(76, __c9, 4));
-    case 6:
-      return S.Array(__S(75, __c9, 3));
-    case 7:
       return S.suspend(() =>
         S.Struct({
           apiVersion: S.optional(S.String),
           kind: S.optional(S.String),
           name: S.String,
-          preferredVersion: S.optional(__S(75, __c9, 3)),
-          serverAddressByClientCIDRs: S.optional(__S(77, __c9, 5)),
-          versions: __S(78, __c9, 6),
+          preferredVersion: S.optional(__S(257, __c8, 1)),
+          serverAddressByClientCIDRs: S.optional(__S(259, __c8, 3)),
+          versions: __S(260, __c8, 4),
         }),
       ).annotate({
         identifier: "IoK8sApimachineryPkgApisMetaV1APIGroup",
       });
   }
 }
-function __c10(j: number): any {
+function __c9(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3765,34 +3149,38 @@ function __c10(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          categories: S.optional(__S(1, __c0, 1)),
+          categories: S.optional(__S(768, __c24, 0)),
           group: S.optional(S.String),
           kind: S.String,
           name: S.String,
           namespaced: S.Boolean,
-          shortNames: S.optional(__S(1, __c0, 1)),
+          shortNames: S.optional(__S(768, __c24, 0)),
           singularName: S.String,
           storageVersionHash: S.optional(S.String),
-          verbs: __S(1, __c0, 1),
+          verbs: __S(768, __c24, 0),
           version: S.optional(S.String),
         }),
       ).annotate({
         identifier: "IoK8sApimachineryPkgApisMetaV1APIResource",
       });
     case 2:
-      return S.Array(__S(81, __c10, 1));
+      return S.Array(__S(289, __c9, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
           apiVersion: S.optional(S.String),
           groupVersion: S.String,
           kind: S.optional(S.String),
-          resources: __S(82, __c10, 2),
+          resources: __S(290, __c9, 2),
         }),
       ).annotate({
         identifier: "IoK8sApimachineryPkgApisMetaV1APIResourceList",
       });
-    case 4:
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           pretty: S.optional(S.String.pipe(T.Query())),
@@ -3813,20 +3201,24 @@ function __c10(j: number): any {
       ).annotate({
         identifier: "ListNetworkingV1IngressClassRequest",
       });
-    case 5:
-      return S.Array(__S(10, __c1, 2));
-    case 6:
+    case 1:
+      return S.Array(__S(738, __c23, 2));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           apiVersion: S.optional(S.String),
-          items: __S(85, __c10, 5),
+          items: __S(321, __c10, 1),
           kind: S.optional(S.String),
-          metadata: S.optional(__S(63, __c7, 7)),
+          metadata: S.optional(__S(2145, __c67, 1)),
         }),
       ).annotate({
         identifier: "IoK8sApiNetworkingV1IngressClassList",
       });
-    case 7:
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           allowWatchBookmarks: S.optional(S.Boolean.pipe(T.Query())),
@@ -3847,22 +3239,26 @@ function __c10(j: number): any {
       });
   }
 }
-function __c11(j: number): any {
+function __c12(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(34, __c4, 2));
+      return S.Array(__S(1618, __c50, 18));
     case 1:
       return S.suspend(() =>
         S.Struct({
           apiVersion: S.optional(S.String),
-          items: __S(88, __c11, 0),
+          items: __S(384, __c12, 0),
           kind: S.optional(S.String),
-          metadata: S.optional(__S(63, __c7, 7)),
+          metadata: S.optional(__S(2145, __c67, 1)),
         }),
       ).annotate({
         identifier: "IoK8sApiNetworkingV1IngressList",
       });
-    case 2:
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           pretty: S.optional(S.String.pipe(T.Query())),
@@ -3883,20 +3279,24 @@ function __c11(j: number): any {
       ).annotate({
         identifier: "ListNetworkingV1IPAddressRequest",
       });
-    case 3:
-      return S.Array(__S(14, __c1, 6));
-    case 4:
+    case 1:
+      return S.Array(__S(1186, __c37, 2));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           apiVersion: S.optional(S.String),
-          items: __S(91, __c11, 3),
+          items: __S(417, __c13, 1),
           kind: S.optional(S.String),
-          metadata: S.optional(__S(63, __c7, 7)),
+          metadata: S.optional(__S(2145, __c67, 1)),
         }),
       ).annotate({
         identifier: "IoK8sApiNetworkingV1IPAddressList",
       });
-    case 5:
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           namespace: S.String.pipe(T.Label()),
@@ -3922,7 +3322,11 @@ function __c11(j: number): any {
       ).annotate({
         identifier: "ListNetworkingV1NamespacedIngressRequest",
       });
-    case 6:
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           namespace: S.String.pipe(T.Label()),
@@ -3948,24 +3352,28 @@ function __c11(j: number): any {
       ).annotate({
         identifier: "ListNetworkingV1NamespacedNetworkPolicyRequest",
       });
-    case 7:
-      return S.Array(__S(50, __c6, 2));
   }
 }
-function __c12(j: number): any {
+function __c16(j: number): any {
   switch (j) {
     case 0:
+      return S.Array(__S(1998, __c62, 14));
+    case 1:
       return S.suspend(() =>
         S.Struct({
           apiVersion: S.optional(S.String),
-          items: __S(95, __c11, 7),
+          items: __S(512, __c16, 0),
           kind: S.optional(S.String),
-          metadata: S.optional(__S(63, __c7, 7)),
+          metadata: S.optional(__S(2145, __c67, 1)),
         }),
       ).annotate({
         identifier: "IoK8sApiNetworkingV1NetworkPolicyList",
       });
-    case 1:
+  }
+}
+function __c17(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           allowWatchBookmarks: S.optional(S.Boolean.pipe(T.Query())),
@@ -3986,7 +3394,11 @@ function __c12(j: number): any {
       ).annotate({
         identifier: "ListNetworkingV1NetworkPolicyForAllNamespacesRequest",
       });
-    case 2:
+  }
+}
+function __c18(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           pretty: S.optional(S.String.pipe(T.Query())),
@@ -4007,20 +3419,24 @@ function __c12(j: number): any {
       ).annotate({
         identifier: "ListNetworkingV1ServiceCIDRRequest",
       });
-    case 3:
-      return S.Array(__S(56, __c7, 0));
-    case 4:
+    case 1:
+      return S.Array(__S(2052, __c64, 4));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           apiVersion: S.optional(S.String),
-          items: __S(99, __c12, 3),
+          items: __S(577, __c18, 1),
           kind: S.optional(S.String),
-          metadata: S.optional(__S(63, __c7, 7)),
+          metadata: S.optional(__S(2145, __c67, 1)),
         }),
       ).annotate({
         identifier: "IoK8sApiNetworkingV1ServiceCIDRList",
       });
-    case 5:
+  }
+}
+function __c19(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -4039,7 +3455,11 @@ function __c12(j: number): any {
       ).annotate({
         identifier: "PatchNetworkingV1IngressClassRequest",
       });
-    case 6:
+  }
+}
+function __c20(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -4058,7 +3478,11 @@ function __c12(j: number): any {
       ).annotate({
         identifier: "PatchNetworkingV1IPAddressRequest",
       });
-    case 7:
+  }
+}
+function __c21(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           namespace: S.String.pipe(T.Label()),
@@ -4080,7 +3504,129 @@ function __c12(j: number): any {
       });
   }
 }
-function __c13(j: number): any {
+function __c22(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          pretty: S.optional(S.String.pipe(T.Query())),
+          dryRun: S.optional(S.String.pipe(T.Query())),
+          fieldManager: S.optional(S.String.pipe(T.Query())),
+          fieldValidation: S.optional(S.String.pipe(T.Query())),
+          apiVersion: S.optional(S.String),
+          kind: S.optional(S.String),
+          metadata: S.optional(__S(805, __c25, 5)),
+          spec: __S(737, __c23, 1),
+        }).pipe(
+          T.Http({ method: "POST", uri: "/apis/networking.k8s.io/v1/ingressclasses", code: 200 }),
+        ),
+      ).annotate({
+        identifier: "CreateNetworkingV1IngressClassRequest",
+      });
+  }
+}
+function __c23(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          apiGroup: S.optional(S.String),
+          kind: S.String,
+          name: S.String,
+          namespace: S.optional(S.String),
+          scope: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "IoK8sApiNetworkingV1IngressClassParametersReference",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          controller: S.String,
+          parameters: S.optional(__S(736, __c23, 0)),
+        }),
+      ).annotate({
+        identifier: "IoK8sApiNetworkingV1IngressClassSpec",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          apiVersion: S.optional(S.String),
+          kind: S.optional(S.String),
+          metadata: S.optional(__S(805, __c25, 5)),
+          spec: __S(737, __c23, 1),
+        }),
+      ).annotate({
+        identifier: "IoK8sApiNetworkingV1IngressClass",
+      });
+  }
+}
+function __c24(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c25(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, S.String);
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          apiVersion: S.optional(S.String),
+          fieldsType: S.optional(S.String),
+          fieldsV1: S.optional(S.Unknown),
+          manager: S.optional(S.String),
+          operation: S.optional(S.String),
+          subresource: S.optional(S.String),
+          time: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "IoK8sApimachineryPkgApisMetaV1ManagedFieldsEntry",
+      });
+    case 2:
+      return S.Array(__S(801, __c25, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          apiVersion: S.String,
+          blockOwnerDeletion: S.optional(S.Boolean),
+          controller: S.optional(S.Boolean),
+          kind: S.String,
+          name: S.String,
+          uid: S.String,
+        }),
+      ).annotate({
+        identifier: "IoK8sApimachineryPkgApisMetaV1OwnerReference",
+      });
+    case 4:
+      return S.Array(__S(803, __c25, 3));
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          annotations: S.optional(__S(800, __c25, 0)),
+          creationTimestamp: S.optional(S.String),
+          deletionGracePeriodSeconds: S.optional(S.Number),
+          deletionTimestamp: S.optional(S.String),
+          finalizers: S.optional(__S(768, __c24, 0)),
+          generateName: S.optional(S.String),
+          generation: S.optional(S.Number),
+          labels: S.optional(__S(800, __c25, 0)),
+          managedFields: S.optional(__S(802, __c25, 2)),
+          name: S.optional(S.String),
+          namespace: S.optional(S.String),
+          ownerReferences: S.optional(__S(804, __c25, 4)),
+          resourceVersion: S.optional(S.String),
+          selfLink: S.optional(S.String),
+          uid: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "IoK8sApimachineryPkgApisMetaV1ObjectMeta",
+      });
+  }
+}
+function __c26(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4102,7 +3648,11 @@ function __c13(j: number): any {
       ).annotate({
         identifier: "PatchNetworkingV1NamespacedIngressStatusRequest",
       });
-    case 1:
+  }
+}
+function __c27(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           namespace: S.String.pipe(T.Label()),
@@ -4122,7 +3672,11 @@ function __c13(j: number): any {
       ).annotate({
         identifier: "PatchNetworkingV1NamespacedNetworkPolicyRequest",
       });
-    case 2:
+  }
+}
+function __c28(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -4141,7 +3695,11 @@ function __c13(j: number): any {
       ).annotate({
         identifier: "PatchNetworkingV1ServiceCIDRRequest",
       });
-    case 3:
+  }
+}
+function __c29(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -4160,7 +3718,11 @@ function __c13(j: number): any {
       ).annotate({
         identifier: "PatchNetworkingV1ServiceCIDRStatusRequest",
       });
-    case 4:
+  }
+}
+function __c30(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -4175,7 +3737,11 @@ function __c13(j: number): any {
       ).annotate({
         identifier: "ReadNetworkingV1IngressClassRequest",
       });
-    case 5:
+  }
+}
+function __c31(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -4190,7 +3756,11 @@ function __c13(j: number): any {
       ).annotate({
         identifier: "ReadNetworkingV1IPAddressRequest",
       });
-    case 6:
+  }
+}
+function __c32(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           namespace: S.String.pipe(T.Label()),
@@ -4206,7 +3776,11 @@ function __c13(j: number): any {
       ).annotate({
         identifier: "ReadNetworkingV1NamespacedIngressRequest",
       });
-    case 7:
+  }
+}
+function __c33(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           namespace: S.String.pipe(T.Label()),
@@ -4224,7 +3798,7 @@ function __c13(j: number): any {
       });
   }
 }
-function __c14(j: number): any {
+function __c34(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4242,7 +3816,11 @@ function __c14(j: number): any {
       ).annotate({
         identifier: "ReadNetworkingV1NamespacedNetworkPolicyRequest",
       });
-    case 1:
+  }
+}
+function __c35(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -4257,7 +3835,66 @@ function __c14(j: number): any {
       ).annotate({
         identifier: "ReadNetworkingV1ServiceCIDRRequest",
       });
+  }
+}
+function __c36(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          pretty: S.optional(S.String.pipe(T.Query())),
+          dryRun: S.optional(S.String.pipe(T.Query())),
+          fieldManager: S.optional(S.String.pipe(T.Query())),
+          fieldValidation: S.optional(S.String.pipe(T.Query())),
+          apiVersion: S.optional(S.String),
+          kind: S.optional(S.String),
+          metadata: S.optional(__S(805, __c25, 5)),
+          spec: __S(1185, __c37, 1),
+        }).pipe(
+          T.Http({ method: "POST", uri: "/apis/networking.k8s.io/v1/ipaddresses", code: 200 }),
+        ),
+      ).annotate({
+        identifier: "CreateNetworkingV1IPAddressRequest",
+      });
+  }
+}
+function __c37(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          group: S.optional(S.String),
+          name: S.String,
+          namespace: S.optional(S.String),
+          resource: S.String,
+        }),
+      ).annotate({
+        identifier: "IoK8sApiNetworkingV1ParentReference",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          parentRef: __S(1184, __c37, 0),
+        }),
+      ).annotate({
+        identifier: "IoK8sApiNetworkingV1IPAddressSpec",
+      });
     case 2:
+      return S.suspend(() =>
+        S.Struct({
+          apiVersion: S.optional(S.String),
+          kind: S.optional(S.String),
+          metadata: S.optional(__S(805, __c25, 5)),
+          spec: __S(1185, __c37, 1),
+        }),
+      ).annotate({
+        identifier: "IoK8sApiNetworkingV1IPAddress",
+      });
+  }
+}
+function __c38(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -4272,7 +3909,11 @@ function __c14(j: number): any {
       ).annotate({
         identifier: "ReadNetworkingV1ServiceCIDRStatusRequest",
       });
-    case 3:
+  }
+}
+function __c39(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -4282,8 +3923,8 @@ function __c14(j: number): any {
           fieldValidation: S.optional(S.String.pipe(T.Query())),
           apiVersion: S.optional(S.String),
           kind: S.optional(S.String),
-          metadata: S.optional(__S(6, __c0, 6)),
-          spec: __S(8, __c1, 0),
+          metadata: S.optional(__S(805, __c25, 5)),
+          spec: __S(737, __c23, 1),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -4294,7 +3935,11 @@ function __c14(j: number): any {
       ).annotate({
         identifier: "ReplaceNetworkingV1IngressClassRequest",
       });
-    case 4:
+  }
+}
+function __c40(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -4304,8 +3949,8 @@ function __c14(j: number): any {
           fieldValidation: S.optional(S.String.pipe(T.Query())),
           apiVersion: S.optional(S.String),
           kind: S.optional(S.String),
-          metadata: S.optional(__S(6, __c0, 6)),
-          spec: __S(12, __c1, 4),
+          metadata: S.optional(__S(805, __c25, 5)),
+          spec: __S(1185, __c37, 1),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -4316,7 +3961,11 @@ function __c14(j: number): any {
       ).annotate({
         identifier: "ReplaceNetworkingV1IPAddressRequest",
       });
-    case 5:
+  }
+}
+function __c41(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           namespace: S.String.pipe(T.Label()),
@@ -4327,9 +3976,9 @@ function __c14(j: number): any {
           fieldValidation: S.optional(S.String.pipe(T.Query())),
           apiVersion: S.optional(S.String),
           kind: S.optional(S.String),
-          metadata: S.optional(__S(6, __c0, 6)),
-          spec: S.optional(__S(26, __c3, 2)),
-          status: S.optional(__S(32, __c4, 0)),
+          metadata: S.optional(__S(805, __c25, 5)),
+          spec: S.optional(__S(1611, __c50, 11)),
+          status: S.optional(__S(1617, __c50, 17)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -4340,7 +3989,11 @@ function __c14(j: number): any {
       ).annotate({
         identifier: "ReplaceNetworkingV1NamespacedIngressRequest",
       });
-    case 6:
+  }
+}
+function __c42(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           namespace: S.String.pipe(T.Label()),
@@ -4351,9 +4004,9 @@ function __c14(j: number): any {
           fieldValidation: S.optional(S.String.pipe(T.Query())),
           apiVersion: S.optional(S.String),
           kind: S.optional(S.String),
-          metadata: S.optional(__S(6, __c0, 6)),
-          spec: S.optional(__S(26, __c3, 2)),
-          status: S.optional(__S(32, __c4, 0)),
+          metadata: S.optional(__S(805, __c25, 5)),
+          spec: S.optional(__S(1611, __c50, 11)),
+          status: S.optional(__S(1617, __c50, 17)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -4364,7 +4017,11 @@ function __c14(j: number): any {
       ).annotate({
         identifier: "ReplaceNetworkingV1NamespacedIngressStatusRequest",
       });
-    case 7:
+  }
+}
+function __c43(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           namespace: S.String.pipe(T.Label()),
@@ -4375,8 +4032,8 @@ function __c14(j: number): any {
           fieldValidation: S.optional(S.String.pipe(T.Query())),
           apiVersion: S.optional(S.String),
           kind: S.optional(S.String),
-          metadata: S.optional(__S(6, __c0, 6)),
-          spec: S.optional(__S(48, __c6, 0)),
+          metadata: S.optional(__S(805, __c25, 5)),
+          spec: S.optional(__S(1997, __c62, 13)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -4389,7 +4046,7 @@ function __c14(j: number): any {
       });
   }
 }
-function __c15(j: number): any {
+function __c44(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4401,9 +4058,9 @@ function __c15(j: number): any {
           fieldValidation: S.optional(S.String.pipe(T.Query())),
           apiVersion: S.optional(S.String),
           kind: S.optional(S.String),
-          metadata: S.optional(__S(6, __c0, 6)),
-          spec: S.optional(__S(51, __c6, 3)),
-          status: S.optional(__S(54, __c6, 6)),
+          metadata: S.optional(__S(805, __c25, 5)),
+          spec: S.optional(__S(2048, __c64, 0)),
+          status: S.optional(__S(2051, __c64, 3)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -4414,7 +4071,11 @@ function __c15(j: number): any {
       ).annotate({
         identifier: "ReplaceNetworkingV1ServiceCIDRRequest",
       });
-    case 1:
+  }
+}
+function __c45(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -4424,9 +4085,9 @@ function __c15(j: number): any {
           fieldValidation: S.optional(S.String.pipe(T.Query())),
           apiVersion: S.optional(S.String),
           kind: S.optional(S.String),
-          metadata: S.optional(__S(6, __c0, 6)),
-          spec: S.optional(__S(51, __c6, 3)),
-          status: S.optional(__S(54, __c6, 6)),
+          metadata: S.optional(__S(805, __c25, 5)),
+          spec: S.optional(__S(2048, __c64, 0)),
+          status: S.optional(__S(2051, __c64, 3)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -4437,7 +4098,11 @@ function __c15(j: number): any {
       ).annotate({
         identifier: "ReplaceNetworkingV1ServiceCIDRStatusRequest",
       });
-    case 2:
+  }
+}
+function __c46(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -4463,7 +4128,11 @@ function __c15(j: number): any {
       ).annotate({
         identifier: "WatchNetworkingV1IngressClassRequest",
       });
-    case 3:
+  }
+}
+function __c47(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           object: S.Unknown,
@@ -4472,7 +4141,11 @@ function __c15(j: number): any {
       ).annotate({
         identifier: "IoK8sApimachineryPkgApisMetaV1WatchEvent",
       });
-    case 4:
+  }
+}
+function __c48(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           allowWatchBookmarks: S.optional(S.Boolean.pipe(T.Query())),
@@ -4497,7 +4170,184 @@ function __c15(j: number): any {
       ).annotate({
         identifier: "WatchNetworkingV1IngressClassListRequest",
       });
+  }
+}
+function __c49(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          namespace: S.String.pipe(T.Label()),
+          pretty: S.optional(S.String.pipe(T.Query())),
+          dryRun: S.optional(S.String.pipe(T.Query())),
+          fieldManager: S.optional(S.String.pipe(T.Query())),
+          fieldValidation: S.optional(S.String.pipe(T.Query())),
+          apiVersion: S.optional(S.String),
+          kind: S.optional(S.String),
+          metadata: S.optional(__S(805, __c25, 5)),
+          spec: S.optional(__S(1611, __c50, 11)),
+          status: S.optional(__S(1617, __c50, 17)),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/apis/networking.k8s.io/v1/namespaces/{namespace}/ingresses",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateNetworkingV1NamespacedIngressRequest",
+      });
+  }
+}
+function __c50(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          apiGroup: S.optional(S.String),
+          kind: S.String,
+          name: S.String,
+        }),
+      ).annotate({
+        identifier: "IoK8sApiCoreV1TypedLocalObjectReference",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.optional(S.String),
+          number: S.optional(S.Number),
+        }),
+      ).annotate({
+        identifier: "IoK8sApiNetworkingV1ServiceBackendPort",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String,
+          port: S.optional(__S(1601, __c50, 1)),
+        }),
+      ).annotate({
+        identifier: "IoK8sApiNetworkingV1IngressServiceBackend",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          resource: S.optional(__S(1600, __c50, 0)),
+          service: S.optional(__S(1602, __c50, 2)),
+        }),
+      ).annotate({
+        identifier: "IoK8sApiNetworkingV1IngressBackend",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          backend: __S(1603, __c50, 3),
+          path: S.optional(S.String),
+          pathType: S.String,
+        }),
+      ).annotate({
+        identifier: "IoK8sApiNetworkingV1HTTPIngressPath",
+      });
     case 5:
+      return S.Array(__S(1604, __c50, 4));
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          paths: __S(1605, __c50, 5),
+        }),
+      ).annotate({
+        identifier: "IoK8sApiNetworkingV1HTTPIngressRuleValue",
+      });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          host: S.optional(S.String),
+          http: S.optional(__S(1606, __c50, 6)),
+        }),
+      ).annotate({
+        identifier: "IoK8sApiNetworkingV1IngressRule",
+      });
+    case 8:
+      return S.Array(__S(1607, __c50, 7));
+    case 9:
+      return S.suspend(() =>
+        S.Struct({
+          hosts: S.optional(__S(768, __c24, 0)),
+          secretName: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "IoK8sApiNetworkingV1IngressTLS",
+      });
+    case 10:
+      return S.Array(__S(1609, __c50, 9));
+    case 11:
+      return S.suspend(() =>
+        S.Struct({
+          defaultBackend: S.optional(__S(1603, __c50, 3)),
+          ingressClassName: S.optional(S.String),
+          rules: S.optional(__S(1608, __c50, 8)),
+          tls: S.optional(__S(1610, __c50, 10)),
+        }),
+      ).annotate({
+        identifier: "IoK8sApiNetworkingV1IngressSpec",
+      });
+    case 12:
+      return S.suspend(() =>
+        S.Struct({
+          error: S.optional(S.String),
+          port: S.optional(S.Number),
+          protocol: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "IoK8sApiNetworkingV1IngressPortStatus",
+      });
+    case 13:
+      return S.Array(__S(1612, __c50, 12));
+    case 14:
+      return S.suspend(() =>
+        S.Struct({
+          hostname: S.optional(S.String),
+          ip: S.optional(S.String),
+          ports: S.optional(__S(1613, __c50, 13)),
+        }),
+      ).annotate({
+        identifier: "IoK8sApiNetworkingV1IngressLoadBalancerIngress",
+      });
+    case 15:
+      return S.Array(__S(1614, __c50, 14));
+    case 16:
+      return S.suspend(() =>
+        S.Struct({
+          ingress: S.optional(__S(1615, __c50, 15)),
+        }),
+      ).annotate({
+        identifier: "IoK8sApiNetworkingV1IngressLoadBalancerStatus",
+      });
+    case 17:
+      return S.suspend(() =>
+        S.Struct({
+          loadBalancer: S.optional(__S(1616, __c50, 16)),
+        }),
+      ).annotate({
+        identifier: "IoK8sApiNetworkingV1IngressStatus",
+      });
+    case 18:
+      return S.suspend(() =>
+        S.Struct({
+          apiVersion: S.optional(S.String),
+          kind: S.optional(S.String),
+          metadata: S.optional(__S(805, __c25, 5)),
+          spec: S.optional(__S(1611, __c50, 11)),
+          status: S.optional(__S(1617, __c50, 17)),
+        }),
+      ).annotate({
+        identifier: "IoK8sApiNetworkingV1Ingress",
+      });
+  }
+}
+function __c51(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           allowWatchBookmarks: S.optional(S.Boolean.pipe(T.Query())),
@@ -4518,7 +4368,11 @@ function __c15(j: number): any {
       ).annotate({
         identifier: "WatchNetworkingV1IngressListForAllNamespacesRequest",
       });
-    case 6:
+  }
+}
+function __c52(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -4544,7 +4398,11 @@ function __c15(j: number): any {
       ).annotate({
         identifier: "WatchNetworkingV1IPAddressRequest",
       });
-    case 7:
+  }
+}
+function __c53(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           allowWatchBookmarks: S.optional(S.Boolean.pipe(T.Query())),
@@ -4567,7 +4425,7 @@ function __c15(j: number): any {
       });
   }
 }
-function __c16(j: number): any {
+function __c54(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4596,7 +4454,11 @@ function __c16(j: number): any {
       ).annotate({
         identifier: "WatchNetworkingV1NamespacedIngressRequest",
       });
-    case 1:
+  }
+}
+function __c55(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           namespace: S.String.pipe(T.Label()),
@@ -4622,7 +4484,11 @@ function __c16(j: number): any {
       ).annotate({
         identifier: "WatchNetworkingV1NamespacedIngressListRequest",
       });
-    case 2:
+  }
+}
+function __c56(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           namespace: S.String.pipe(T.Label()),
@@ -4649,7 +4515,11 @@ function __c16(j: number): any {
       ).annotate({
         identifier: "WatchNetworkingV1NamespacedNetworkPolicyRequest",
       });
-    case 3:
+  }
+}
+function __c57(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           namespace: S.String.pipe(T.Label()),
@@ -4675,7 +4545,11 @@ function __c16(j: number): any {
       ).annotate({
         identifier: "WatchNetworkingV1NamespacedNetworkPolicyListRequest",
       });
-    case 4:
+  }
+}
+function __c58(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           allowWatchBookmarks: S.optional(S.Boolean.pipe(T.Query())),
@@ -4700,7 +4574,11 @@ function __c16(j: number): any {
       ).annotate({
         identifier: "WatchNetworkingV1NetworkPolicyListForAllNamespacesRequest",
       });
-    case 5:
+  }
+}
+function __c59(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -4726,7 +4604,11 @@ function __c16(j: number): any {
       ).annotate({
         identifier: "WatchNetworkingV1ServiceCIDRRequest",
       });
-    case 6:
+  }
+}
+function __c60(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           allowWatchBookmarks: S.optional(S.Boolean.pipe(T.Query())),
@@ -4753,7 +4635,344 @@ function __c16(j: number): any {
       });
   }
 }
-
+function __c61(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          namespace: S.String.pipe(T.Label()),
+          pretty: S.optional(S.String.pipe(T.Query())),
+          dryRun: S.optional(S.String.pipe(T.Query())),
+          fieldManager: S.optional(S.String.pipe(T.Query())),
+          fieldValidation: S.optional(S.String.pipe(T.Query())),
+          apiVersion: S.optional(S.String),
+          kind: S.optional(S.String),
+          metadata: S.optional(__S(805, __c25, 5)),
+          spec: S.optional(__S(1997, __c62, 13)),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/apis/networking.k8s.io/v1/namespaces/{namespace}/networkpolicies",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateNetworkingV1NamespacedNetworkPolicyRequest",
+      });
+  }
+}
+function __c62(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          endPort: S.optional(S.Number),
+          port: S.optional(S.String),
+          protocol: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "IoK8sApiNetworkingV1NetworkPolicyPort",
+      });
+    case 1:
+      return S.Array(__S(1984, __c62, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          cidr: S.String,
+          except: S.optional(__S(768, __c24, 0)),
+        }),
+      ).annotate({
+        identifier: "IoK8sApiNetworkingV1IPBlock",
+      });
+    case 3:
+      return S.Array(S.String);
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          key: S.String,
+          operator: S.String,
+          values: S.optional(__S(1987, __c62, 3)),
+        }),
+      ).annotate({
+        identifier: "IoK8sApimachineryPkgApisMetaV1LabelSelectorRequirement",
+      });
+    case 5:
+      return S.Array(__S(1988, __c62, 4));
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          matchExpressions: S.optional(__S(1989, __c62, 5)),
+          matchLabels: S.optional(__S(800, __c25, 0)),
+        }),
+      ).annotate({
+        identifier: "IoK8sApimachineryPkgApisMetaV1LabelSelector",
+      });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          ipBlock: S.optional(__S(1986, __c62, 2)),
+          namespaceSelector: S.optional(__S(1990, __c62, 6)),
+          podSelector: S.optional(__S(1990, __c62, 6)),
+        }),
+      ).annotate({
+        identifier: "IoK8sApiNetworkingV1NetworkPolicyPeer",
+      });
+    case 8:
+      return S.Array(__S(1991, __c62, 7));
+    case 9:
+      return S.suspend(() =>
+        S.Struct({
+          ports: S.optional(__S(1985, __c62, 1)),
+          to: S.optional(__S(1992, __c62, 8)),
+        }),
+      ).annotate({
+        identifier: "IoK8sApiNetworkingV1NetworkPolicyEgressRule",
+      });
+    case 10:
+      return S.Array(__S(1993, __c62, 9));
+    case 11:
+      return S.suspend(() =>
+        S.Struct({
+          from: S.optional(__S(1992, __c62, 8)),
+          ports: S.optional(__S(1985, __c62, 1)),
+        }),
+      ).annotate({
+        identifier: "IoK8sApiNetworkingV1NetworkPolicyIngressRule",
+      });
+    case 12:
+      return S.Array(__S(1995, __c62, 11));
+    case 13:
+      return S.suspend(() =>
+        S.Struct({
+          egress: S.optional(__S(1994, __c62, 10)),
+          ingress: S.optional(__S(1996, __c62, 12)),
+          podSelector: S.optional(__S(1990, __c62, 6)),
+          policyTypes: S.optional(__S(768, __c24, 0)),
+        }),
+      ).annotate({
+        identifier: "IoK8sApiNetworkingV1NetworkPolicySpec",
+      });
+    case 14:
+      return S.suspend(() =>
+        S.Struct({
+          apiVersion: S.optional(S.String),
+          kind: S.optional(S.String),
+          metadata: S.optional(__S(805, __c25, 5)),
+          spec: S.optional(__S(1997, __c62, 13)),
+        }),
+      ).annotate({
+        identifier: "IoK8sApiNetworkingV1NetworkPolicy",
+      });
+  }
+}
+function __c63(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          pretty: S.optional(S.String.pipe(T.Query())),
+          dryRun: S.optional(S.String.pipe(T.Query())),
+          fieldManager: S.optional(S.String.pipe(T.Query())),
+          fieldValidation: S.optional(S.String.pipe(T.Query())),
+          apiVersion: S.optional(S.String),
+          kind: S.optional(S.String),
+          metadata: S.optional(__S(805, __c25, 5)),
+          spec: S.optional(__S(2048, __c64, 0)),
+          status: S.optional(__S(2051, __c64, 3)),
+        }).pipe(
+          T.Http({ method: "POST", uri: "/apis/networking.k8s.io/v1/servicecidrs", code: 200 }),
+        ),
+      ).annotate({
+        identifier: "CreateNetworkingV1ServiceCIDRRequest",
+      });
+  }
+}
+function __c64(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          cidrs: S.optional(__S(768, __c24, 0)),
+        }),
+      ).annotate({
+        identifier: "IoK8sApiNetworkingV1ServiceCIDRSpec",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          lastTransitionTime: S.String,
+          message: S.optional(S.String),
+          observedGeneration: S.optional(S.Number),
+          reason: S.String,
+          status: S.String,
+          type: S.String,
+        }),
+      ).annotate({
+        identifier: "IoK8sApimachineryPkgApisMetaV1Condition",
+      });
+    case 2:
+      return S.Array(__S(2049, __c64, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          conditions: S.optional(__S(2050, __c64, 2)),
+        }),
+      ).annotate({
+        identifier: "IoK8sApiNetworkingV1ServiceCIDRStatus",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          apiVersion: S.optional(S.String),
+          kind: S.optional(S.String),
+          metadata: S.optional(__S(805, __c25, 5)),
+          spec: S.optional(__S(2048, __c64, 0)),
+          status: S.optional(__S(2051, __c64, 3)),
+        }),
+      ).annotate({
+        identifier: "IoK8sApiNetworkingV1ServiceCIDR",
+      });
+  }
+}
+function __c65(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          pretty: S.optional(S.String.pipe(T.Query())),
+          continue: S.optional(S.String.pipe(T.Query())),
+          dryRun: S.optional(S.String.pipe(T.Query())),
+          fieldSelector: S.optional(S.String.pipe(T.Query())),
+          gracePeriodSeconds: S.optional(S.Number.pipe(T.Query())),
+          ignoreStoreReadErrorWithClusterBreakingPotential: S.optional(S.Boolean.pipe(T.Query())),
+          labelSelector: S.optional(S.String.pipe(T.Query())),
+          limit: S.optional(S.Number.pipe(T.Query())),
+          orphanDependents: S.optional(S.Boolean.pipe(T.Query())),
+          propagationPolicy: S.optional(S.String.pipe(T.Query())),
+          resourceVersion: S.optional(S.String.pipe(T.Query())),
+          resourceVersionMatch: S.optional(S.String.pipe(T.Query())),
+          sendInitialEvents: S.optional(S.Boolean.pipe(T.Query())),
+          shardSelector: S.optional(S.String.pipe(T.Query())),
+          timeoutSeconds: S.optional(S.Number.pipe(T.Query())),
+          apiVersion: S.optional(S.String),
+          kind: S.optional(S.String),
+          preconditions: S.optional(__S(2112, __c66, 0)),
+        }).pipe(
+          T.Http({ method: "DELETE", uri: "/apis/networking.k8s.io/v1/ingressclasses", code: 200 }),
+        ),
+      ).annotate({
+        identifier: "DeleteNetworkingV1CollectionIngressClassRequest",
+      });
+  }
+}
+function __c66(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          resourceVersion: S.optional(S.String),
+          uid: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "IoK8sApimachineryPkgApisMetaV1Preconditions",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          field: S.optional(S.String),
+          message: S.optional(S.String),
+          reason: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "IoK8sApimachineryPkgApisMetaV1StatusCause",
+      });
+    case 2:
+      return S.Array(__S(2113, __c66, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          causes: S.optional(__S(2114, __c66, 2)),
+          group: S.optional(S.String),
+          kind: S.optional(S.String),
+          name: S.optional(S.String),
+          retryAfterSeconds: S.optional(S.Number),
+          uid: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "IoK8sApimachineryPkgApisMetaV1StatusDetails",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          apiVersion: S.optional(S.String),
+          code: S.optional(S.Number),
+          details: S.optional(__S(2115, __c66, 3)),
+          kind: S.optional(S.String),
+          message: S.optional(S.String),
+          metadata: S.optional(__S(2145, __c67, 1)),
+          reason: S.optional(S.String),
+          status: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "IoK8sApimachineryPkgApisMetaV1Status",
+      });
+  }
+}
+function __c67(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          selector: S.String,
+        }),
+      ).annotate({
+        identifier: "IoK8sApimachineryPkgApisMetaV1ShardInfo",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          continue: S.optional(S.String),
+          remainingItemCount: S.optional(S.Number),
+          resourceVersion: S.optional(S.String),
+          selfLink: S.optional(S.String),
+          shardInfo: S.optional(__S(2144, __c67, 0)),
+        }),
+      ).annotate({
+        identifier: "IoK8sApimachineryPkgApisMetaV1ListMeta",
+      });
+  }
+}
+function __c68(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          pretty: S.optional(S.String.pipe(T.Query())),
+          continue: S.optional(S.String.pipe(T.Query())),
+          dryRun: S.optional(S.String.pipe(T.Query())),
+          fieldSelector: S.optional(S.String.pipe(T.Query())),
+          gracePeriodSeconds: S.optional(S.Number.pipe(T.Query())),
+          ignoreStoreReadErrorWithClusterBreakingPotential: S.optional(S.Boolean.pipe(T.Query())),
+          labelSelector: S.optional(S.String.pipe(T.Query())),
+          limit: S.optional(S.Number.pipe(T.Query())),
+          orphanDependents: S.optional(S.Boolean.pipe(T.Query())),
+          propagationPolicy: S.optional(S.String.pipe(T.Query())),
+          resourceVersion: S.optional(S.String.pipe(T.Query())),
+          resourceVersionMatch: S.optional(S.String.pipe(T.Query())),
+          sendInitialEvents: S.optional(S.Boolean.pipe(T.Query())),
+          shardSelector: S.optional(S.String.pipe(T.Query())),
+          timeoutSeconds: S.optional(S.Number.pipe(T.Query())),
+          apiVersion: S.optional(S.String),
+          kind: S.optional(S.String),
+          preconditions: S.optional(__S(2112, __c66, 0)),
+        }).pipe(
+          T.Http({ method: "DELETE", uri: "/apis/networking.k8s.io/v1/ipaddresses", code: 200 }),
+        ),
+      ).annotate({
+        identifier: "DeleteNetworkingV1CollectionIPAddressRequest",
+      });
+  }
+}
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

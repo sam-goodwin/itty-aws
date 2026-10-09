@@ -337,8 +337,8 @@ export const createTaskContainer: API.OperationMethod<
   CreateTaskContainerError,
   ModalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(9, __c1, 1) as any as S.Schema<CreateTaskContainerRequest>,
-  output: __S(10, __c1, 2) as any as S.Schema<CreateTaskContainerResponse>,
+  input: __S(2, __c0, 2) as any as S.Schema<CreateTaskContainerRequest>,
+  output: __S(3, __c0, 3) as any as S.Schema<CreateTaskContainerResponse>,
   errors: [UnknownModalError],
   protocol: ModalProtocol,
   retry: Retry.Retry,
@@ -352,8 +352,8 @@ export const getTaskContainer: API.OperationMethod<
   GetTaskContainerError,
   ModalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(11, __c1, 3) as any as S.Schema<GetTaskContainerRequest>,
-  output: __S(14, __c1, 6) as any as S.Schema<GetTaskContainerResponse>,
+  input: __S(20, __c5, 0) as any as S.Schema<GetTaskContainerRequest>,
+  output: __S(21, __c5, 1) as any as S.Schema<GetTaskContainerResponse>,
   errors: [UnknownModalError],
   protocol: ModalProtocol,
   retry: Retry.Retry,
@@ -367,8 +367,8 @@ export const listTaskContainer: API.OperationMethod<
   ListTaskContainerError,
   ModalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(15, __c1, 7) as any as S.Schema<ListTaskContainerRequest>,
-  output: __S(17, __c2, 1) as any as S.Schema<ListTaskContainerResponse>,
+  input: __S(76, __c19, 0) as any as S.Schema<ListTaskContainerRequest>,
+  output: __S(78, __c19, 2) as any as S.Schema<ListTaskContainerResponse>,
   errors: [UnknownModalError],
   protocol: ModalProtocol,
   retry: Retry.Retry,
@@ -381,8 +381,8 @@ export const sandboxStdinWriteV2: API.OperationMethod<
   SandboxStdinWriteV2Error,
   ModalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(18, __c2, 2) as any as S.Schema<SandboxStdinWriteV2Request>,
-  output: __S(19, __c2, 3) as any as S.Schema<SandboxStdinWriteV2Response>,
+  input: __S(80, __c20, 0) as any as S.Schema<SandboxStdinWriteV2Request>,
+  output: __S(84, __c21, 0) as any as S.Schema<SandboxStdinWriteV2Response>,
   errors: [UnknownModalError],
   protocol: ModalProtocol,
   retry: Retry.Retry,
@@ -395,8 +395,8 @@ export const sandboxWaitUntilReady: API.OperationMethod<
   SandboxWaitUntilReadyError,
   ModalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(20, __c2, 4) as any as S.Schema<SandboxWaitUntilReadyRequest>,
-  output: __S(21, __c2, 5) as any as S.Schema<SandboxWaitUntilReadyResponse>,
+  input: __S(88, __c22, 0) as any as S.Schema<SandboxWaitUntilReadyRequest>,
+  output: __S(89, __c22, 1) as any as S.Schema<SandboxWaitUntilReadyResponse>,
   errors: [UnknownModalError],
   protocol: ModalProtocol,
   retry: Retry.Retry,
@@ -410,8 +410,8 @@ export const taskExecPoll: API.OperationMethod<
   TaskExecPollError,
   ModalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(22, __c2, 6) as any as S.Schema<TaskExecPollRequest>,
-  output: __S(23, __c2, 7) as any as S.Schema<TaskExecPollResponse>,
+  input: __S(92, __c23, 0) as any as S.Schema<TaskExecPollRequest>,
+  output: __S(96, __c24, 0) as any as S.Schema<TaskExecPollResponse>,
   errors: [UnknownModalError],
   protocol: ModalProtocol,
   retry: Retry.Retry,
@@ -425,8 +425,8 @@ export const taskExecStart: API.OperationMethod<
   TaskExecStartError,
   ModalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(24, __c3, 0) as any as S.Schema<TaskExecStartRequest>,
-  output: __S(19, __c2, 3) as any as S.Schema<TaskExecStartResponse>,
+  input: __S(100, __c25, 0) as any as S.Schema<TaskExecStartRequest>,
+  output: __S(84, __c21, 0) as any as S.Schema<TaskExecStartResponse>,
   errors: [UnknownModalError],
   protocol: ModalProtocol,
   retry: Retry.Retry,
@@ -440,8 +440,8 @@ export const taskExecStdinStatus: API.OperationMethod<
   TaskExecStdinStatusError,
   ModalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(25, __c3, 1) as any as S.Schema<TaskExecStdinStatusRequest>,
-  output: __S(26, __c3, 2) as any as S.Schema<TaskExecStdinStatusResponse>,
+  input: __S(104, __c26, 0) as any as S.Schema<TaskExecStdinStatusRequest>,
+  output: __S(105, __c26, 1) as any as S.Schema<TaskExecStdinStatusResponse>,
   errors: [UnknownModalError],
   protocol: ModalProtocol,
   retry: Retry.Retry,
@@ -455,8 +455,8 @@ export const taskExecStdinWrite: API.OperationMethod<
   TaskExecStdinWriteError,
   ModalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(27, __c3, 3) as any as S.Schema<TaskExecStdinWriteRequest>,
-  output: __S(19, __c2, 3) as any as S.Schema<TaskExecStdinWriteResponse>,
+  input: __S(108, __c27, 0) as any as S.Schema<TaskExecStdinWriteRequest>,
+  output: __S(84, __c21, 0) as any as S.Schema<TaskExecStdinWriteResponse>,
   errors: [UnknownModalError],
   protocol: ModalProtocol,
   retry: Retry.Retry,
@@ -470,8 +470,8 @@ export const taskExecWait: API.OperationMethod<
   TaskExecWaitError,
   ModalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(28, __c3, 4) as any as S.Schema<TaskExecWaitRequest>,
-  output: __S(23, __c2, 7) as any as S.Schema<TaskExecWaitResponse>,
+  input: __S(112, __c28, 0) as any as S.Schema<TaskExecWaitRequest>,
+  output: __S(96, __c24, 0) as any as S.Schema<TaskExecWaitResponse>,
   errors: [UnknownModalError],
   protocol: ModalProtocol,
   retry: Retry.Retry,
@@ -485,8 +485,8 @@ export const taskMountDirectory: API.OperationMethod<
   TaskMountDirectoryError,
   ModalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(29, __c3, 5) as any as S.Schema<TaskMountDirectoryRequest>,
-  output: __S(19, __c2, 3) as any as S.Schema<TaskMountDirectoryResponse>,
+  input: __S(32, __c8, 0) as any as S.Schema<TaskMountDirectoryRequest>,
+  output: __S(84, __c21, 0) as any as S.Schema<TaskMountDirectoryResponse>,
   errors: [UnknownModalError],
   protocol: ModalProtocol,
   retry: Retry.Retry,
@@ -500,8 +500,8 @@ export const taskReloadVolumes: API.OperationMethod<
   TaskReloadVolumesError,
   ModalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(30, __c3, 6) as any as S.Schema<TaskReloadVolumesRequest>,
-  output: __S(19, __c2, 3) as any as S.Schema<TaskReloadVolumesResponse>,
+  input: __S(36, __c9, 0) as any as S.Schema<TaskReloadVolumesRequest>,
+  output: __S(84, __c21, 0) as any as S.Schema<TaskReloadVolumesResponse>,
   errors: [UnknownModalError],
   protocol: ModalProtocol,
   retry: Retry.Retry,
@@ -515,8 +515,8 @@ export const taskSetNetworkAccess: API.OperationMethod<
   TaskSetNetworkAccessError,
   ModalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(31, __c3, 7) as any as S.Schema<TaskSetNetworkAccessRequest>,
-  output: __S(19, __c2, 3) as any as S.Schema<TaskSetNetworkAccessResponse>,
+  input: __S(40, __c10, 0) as any as S.Schema<TaskSetNetworkAccessRequest>,
+  output: __S(84, __c21, 0) as any as S.Schema<TaskSetNetworkAccessResponse>,
   errors: [UnknownModalError],
   protocol: ModalProtocol,
   retry: Retry.Retry,
@@ -530,8 +530,8 @@ export const taskSetOutboundPolicy: API.OperationMethod<
   TaskSetOutboundPolicyError,
   ModalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(35, __c4, 3) as any as S.Schema<TaskSetOutboundPolicyRequest>,
-  output: __S(19, __c2, 3) as any as S.Schema<TaskSetOutboundPolicyResponse>,
+  input: __S(47, __c11, 3) as any as S.Schema<TaskSetOutboundPolicyRequest>,
+  output: __S(84, __c21, 0) as any as S.Schema<TaskSetOutboundPolicyResponse>,
   errors: [UnknownModalError],
   protocol: ModalProtocol,
   retry: Retry.Retry,
@@ -545,8 +545,8 @@ export const taskSnapshotDirectory: API.OperationMethod<
   TaskSnapshotDirectoryError,
   ModalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(36, __c4, 4) as any as S.Schema<TaskSnapshotDirectoryRequest>,
-  output: __S(37, __c4, 5) as any as S.Schema<TaskSnapshotDirectoryResponse>,
+  input: __S(48, __c12, 0) as any as S.Schema<TaskSnapshotDirectoryRequest>,
+  output: __S(52, __c13, 0) as any as S.Schema<TaskSnapshotDirectoryResponse>,
   errors: [UnknownModalError],
   protocol: ModalProtocol,
   retry: Retry.Retry,
@@ -560,8 +560,8 @@ export const taskSnapshotFilesystem: API.OperationMethod<
   TaskSnapshotFilesystemError,
   ModalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(38, __c4, 6) as any as S.Schema<TaskSnapshotFilesystemRequest>,
-  output: __S(37, __c4, 5) as any as S.Schema<TaskSnapshotFilesystemResponse>,
+  input: __S(56, __c14, 0) as any as S.Schema<TaskSnapshotFilesystemRequest>,
+  output: __S(52, __c13, 0) as any as S.Schema<TaskSnapshotFilesystemResponse>,
   errors: [UnknownModalError],
   protocol: ModalProtocol,
   retry: Retry.Retry,
@@ -575,8 +575,8 @@ export const taskSnapshotMemory: API.OperationMethod<
   TaskSnapshotMemoryError,
   ModalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(39, __c4, 7) as any as S.Schema<TaskSnapshotMemoryRequest>,
-  output: __S(40, __c5, 0) as any as S.Schema<TaskSnapshotMemoryResponse>,
+  input: __S(60, __c15, 0) as any as S.Schema<TaskSnapshotMemoryRequest>,
+  output: __S(61, __c15, 1) as any as S.Schema<TaskSnapshotMemoryResponse>,
   errors: [UnknownModalError],
   protocol: ModalProtocol,
   retry: Retry.Retry,
@@ -590,8 +590,8 @@ export const taskUnmountDirectory: API.OperationMethod<
   TaskUnmountDirectoryError,
   ModalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(41, __c5, 1) as any as S.Schema<TaskUnmountDirectoryRequest>,
-  output: __S(19, __c2, 3) as any as S.Schema<TaskUnmountDirectoryResponse>,
+  input: __S(64, __c16, 0) as any as S.Schema<TaskUnmountDirectoryRequest>,
+  output: __S(84, __c21, 0) as any as S.Schema<TaskUnmountDirectoryResponse>,
   errors: [UnknownModalError],
   protocol: ModalProtocol,
   retry: Retry.Retry,
@@ -605,8 +605,8 @@ export const terminateTaskContainer: API.OperationMethod<
   TerminateTaskContainerError,
   ModalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(42, __c5, 2) as any as S.Schema<TerminateTaskContainerRequest>,
-  output: __S(19, __c2, 3) as any as S.Schema<TerminateTaskContainerResponse>,
+  input: __S(68, __c17, 0) as any as S.Schema<TerminateTaskContainerRequest>,
+  output: __S(84, __c21, 0) as any as S.Schema<TerminateTaskContainerResponse>,
   errors: [UnknownModalError],
   protocol: ModalProtocol,
   retry: Retry.Retry,
@@ -620,8 +620,8 @@ export const waitTaskContainer: API.OperationMethod<
   WaitTaskContainerError,
   ModalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(43, __c5, 3) as any as S.Schema<WaitTaskContainerRequest>,
-  output: __S(44, __c5, 4) as any as S.Schema<WaitTaskContainerResponse>,
+  input: __S(72, __c18, 0) as any as S.Schema<WaitTaskContainerRequest>,
+  output: __S(73, __c18, 1) as any as S.Schema<WaitTaskContainerResponse>,
   errors: [UnknownModalError],
   protocol: ModalProtocol,
   retry: Retry.Retry,
@@ -631,10 +631,6 @@ export const waitTaskContainer: API.OperationMethod<
 function __c0(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(S.String);
-    case 1:
-      return S.Record(S.String, S.String);
-    case 2:
       return S.suspend(() =>
         S.Struct({
           volumeId: S.optional(S.String),
@@ -644,17 +640,59 @@ function __c0(j: number): any {
           subPath: S.optional(S.String),
         }),
       ).annotate({ identifier: "VolumeMount" });
+    case 1:
+      return S.Array(__S(0, __c0, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          taskId: S.optional(S.String),
+          containerName: S.optional(S.String),
+          imageId: S.optional(S.String),
+          args: S.optional(__S(12, __c3, 0)),
+          env: S.optional(__S(16, __c4, 0)),
+          workdir: S.optional(S.String),
+          secretIds: S.optional(__S(12, __c3, 0)),
+          volumeMounts: S.optional(__S(1, __c0, 1)),
+          networkAccess: S.optional(__S(4, __c1, 0)),
+          ptyInfo: S.optional(__S(8, __c2, 0)),
+          memoryReserveConsumeMib: S.optional(S.Number),
+          secretSources: S.optional(__S(11, __c2, 3)),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/modal.task_command_router.TaskCommandRouter/TaskContainerCreate",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateTaskContainerRequest",
+      });
     case 3:
-      return S.Array(__S(2, __c0, 2));
-    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          containerId: S.optional(S.String),
+          containerName: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "CreateTaskContainerResponse",
+      });
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           networkAccessType: S.optional(S.String),
-          allowedCidrs: S.optional(__S(0, __c0, 0)),
-          allowedDomains: S.optional(__S(0, __c0, 0)),
+          allowedCidrs: S.optional(__S(12, __c3, 0)),
+          allowedDomains: S.optional(__S(12, __c3, 0)),
         }),
       ).annotate({ identifier: "NetworkAccess" });
-    case 5:
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           enabled: S.optional(S.Boolean),
@@ -667,60 +705,38 @@ function __c0(j: number): any {
           noTerminateOnIdleStdin: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "PTYInfo" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          contents: S.optional(__S(1, __c0, 1)),
-        }),
-      ).annotate({ identifier: "StringMap2" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          secretId: S.optional(S.String),
-          env: S.optional(__S(6, __c0, 6)),
-        }),
-      ).annotate({ identifier: "SecretSource" });
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(7, __c0, 7));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          taskId: S.optional(S.String),
-          containerName: S.optional(S.String),
-          imageId: S.optional(S.String),
-          args: S.optional(__S(0, __c0, 0)),
-          env: S.optional(__S(1, __c0, 1)),
-          workdir: S.optional(S.String),
-          secretIds: S.optional(__S(0, __c0, 0)),
-          volumeMounts: S.optional(__S(3, __c0, 3)),
-          networkAccess: S.optional(__S(4, __c0, 4)),
-          ptyInfo: S.optional(__S(5, __c0, 5)),
-          memoryReserveConsumeMib: S.optional(S.Number),
-          secretSources: S.optional(__S(8, __c1, 0)),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/modal.task_command_router.TaskCommandRouter/TaskContainerCreate",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateTaskContainerRequest",
-      });
+          contents: S.optional(__S(16, __c4, 0)),
+        }),
+      ).annotate({ identifier: "StringMap2" });
     case 2:
       return S.suspend(() =>
         S.Struct({
-          containerId: S.optional(S.String),
-          containerName: S.optional(S.String),
+          secretId: S.optional(S.String),
+          env: S.optional(__S(9, __c2, 1)),
         }),
-      ).annotate({
-        identifier: "CreateTaskContainerResponse",
-      });
+      ).annotate({ identifier: "SecretSource" });
     case 3:
+      return S.Array(__S(10, __c2, 2));
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, S.String);
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           taskId: S.optional(S.String),
@@ -734,7 +750,30 @@ function __c1(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetTaskContainerRequest" });
-    case 4:
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          container: S.optional(__S(24, __c6, 0)),
+        }),
+      ).annotate({ identifier: "GetTaskContainerResponse" });
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          containerId: S.optional(S.String),
+          containerName: S.optional(S.String),
+          status: S.optional(S.String),
+          result: S.optional(__S(28, __c7, 0)),
+        }),
+      ).annotate({ identifier: "TaskContainerInfo" });
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           status: S.optional(S.String),
@@ -748,196 +787,11 @@ function __c1(j: number): any {
           propagationReason: S.optional(S.String),
         }),
       ).annotate({ identifier: "GenericResult" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          containerId: S.optional(S.String),
-          containerName: S.optional(S.String),
-          status: S.optional(S.String),
-          result: S.optional(__S(12, __c1, 4)),
-        }),
-      ).annotate({ identifier: "TaskContainerInfo" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          container: S.optional(__S(13, __c1, 5)),
-        }),
-      ).annotate({ identifier: "GetTaskContainerResponse" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          taskId: S.optional(S.String),
-          includeTerminated: S.optional(S.Boolean),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/modal.task_command_router.TaskCommandRouter/TaskContainerList",
-            code: 200,
-          }),
-        ),
-      ).annotate({ identifier: "ListTaskContainerRequest" });
   }
 }
-function __c2(j: number): any {
+function __c8(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(13, __c1, 5));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          containers: S.optional(__S(16, __c2, 0)),
-        }),
-      ).annotate({
-        identifier: "ListTaskContainerResponse",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          taskId: S.optional(S.String),
-          offset: S.optional(S.String),
-          data: S.optional(S.String),
-          eof: S.optional(S.Boolean),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/modal.task_command_router.TaskCommandRouter/SandboxStdinWriteV2",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "SandboxStdinWriteV2Request",
-      });
-    case 3:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "SandboxStdinWriteV2Response",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          taskId: S.optional(S.String),
-          timeout: S.optional(S.Number),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/modal.task_command_router.TaskCommandRouter/SandboxWaitUntilReady",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "SandboxWaitUntilReadyRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          readyAt: S.optional(S.Number),
-        }),
-      ).annotate({
-        identifier: "SandboxWaitUntilReadyResponse",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          taskId: S.optional(S.String),
-          execId: S.optional(S.String),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/modal.task_command_router.TaskCommandRouter/TaskExecPoll",
-            code: 200,
-          }),
-        ),
-      ).annotate({ identifier: "TaskExecPollRequest" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          code: S.optional(S.Number),
-          signal: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "TaskExecPollResponse" });
-  }
-}
-function __c3(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          taskId: S.optional(S.String),
-          execId: S.optional(S.String),
-          commandArgs: S.optional(__S(0, __c0, 0)),
-          stdoutConfig: S.optional(S.String),
-          stderrConfig: S.optional(S.String),
-          timeoutSecs: S.optional(S.Number),
-          workdir: S.optional(S.String),
-          secretIds: S.optional(__S(0, __c0, 0)),
-          ptyInfo: S.optional(__S(5, __c0, 5)),
-          runtimeDebug: S.optional(S.Boolean),
-          containerId: S.optional(S.String),
-          env: S.optional(__S(1, __c0, 1)),
-          secretSources: S.optional(__S(8, __c1, 0)),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/modal.task_command_router.TaskCommandRouter/TaskExecStart",
-            code: 200,
-          }),
-        ),
-      ).annotate({ identifier: "TaskExecStartRequest" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          taskId: S.optional(S.String),
-          execId: S.optional(S.String),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/modal.task_command_router.TaskCommandRouter/TaskExecStdinStatus",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "TaskExecStdinStatusRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          numBytesWritten: S.optional(S.String),
-          closed: S.optional(S.Boolean),
-        }),
-      ).annotate({
-        identifier: "TaskExecStdinStatusResponse",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          taskId: S.optional(S.String),
-          execId: S.optional(S.String),
-          offset: S.optional(S.String),
-          data: S.optional(S.String),
-          eof: S.optional(S.Boolean),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/modal.task_command_router.TaskCommandRouter/TaskExecStdinWrite",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "TaskExecStdinWriteRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          taskId: S.optional(S.String),
-          execId: S.optional(S.String),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/modal.task_command_router.TaskCommandRouter/TaskExecWait",
-            code: 200,
-          }),
-        ),
-      ).annotate({ identifier: "TaskExecWaitRequest" });
-    case 5:
       return S.suspend(() =>
         S.Struct({
           taskId: S.optional(S.String),
@@ -955,7 +809,11 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "TaskMountDirectoryRequest",
       });
-    case 6:
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           taskId: S.optional(S.String),
@@ -968,11 +826,15 @@ function __c3(j: number): any {
           }),
         ),
       ).annotate({ identifier: "TaskReloadVolumesRequest" });
-    case 7:
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           taskId: S.optional(S.String),
-          networkAccess: S.optional(__S(4, __c0, 4)),
+          networkAccess: S.optional(__S(4, __c1, 0)),
         }).pipe(
           T.Http({
             method: "POST",
@@ -985,31 +847,31 @@ function __c3(j: number): any {
       });
   }
 }
-function __c4(j: number): any {
+function __c11(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           domain: S.optional(S.String),
           secretId: S.optional(S.String),
-          headers: S.optional(__S(1, __c0, 1)),
+          headers: S.optional(__S(16, __c4, 0)),
         }),
       ).annotate({
         identifier: "OutboundPolicyHeaderReplacement",
       });
     case 1:
-      return S.Array(__S(32, __c4, 0));
+      return S.Array(__S(44, __c11, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          headerReplacements: S.optional(__S(33, __c4, 1)),
+          headerReplacements: S.optional(__S(45, __c11, 1)),
         }),
       ).annotate({ identifier: "OutboundPolicy" });
     case 3:
       return S.suspend(() =>
         S.Struct({
           taskId: S.optional(S.String),
-          outboundPolicy: S.optional(__S(34, __c4, 2)),
+          outboundPolicy: S.optional(__S(46, __c11, 2)),
         }).pipe(
           T.Http({
             method: "POST",
@@ -1020,7 +882,11 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "TaskSetOutboundPolicyRequest",
       });
-    case 4:
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           taskId: S.optional(S.String),
@@ -1039,7 +905,11 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "TaskSnapshotDirectoryRequest",
       });
-    case 5:
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           imageId: S.optional(S.String),
@@ -1047,7 +917,11 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "TaskSnapshotDirectoryResponse",
       });
-    case 6:
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           taskId: S.optional(S.String),
@@ -1065,7 +939,11 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "TaskSnapshotFilesystemRequest",
       });
-    case 7:
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           taskId: S.optional(S.String),
@@ -1080,11 +958,7 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "TaskSnapshotMemoryRequest",
       });
-  }
-}
-function __c5(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           snapshotId: S.optional(S.String),
@@ -1092,7 +966,11 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "TaskSnapshotMemoryResponse",
       });
-    case 1:
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           taskId: S.optional(S.String),
@@ -1108,7 +986,11 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "TaskUnmountDirectoryRequest",
       });
-    case 2:
+  }
+}
+function __c17(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           taskId: S.optional(S.String),
@@ -1123,7 +1005,11 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "TerminateTaskContainerRequest",
       });
-    case 3:
+  }
+}
+function __c18(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           taskId: S.optional(S.String),
@@ -1137,17 +1023,222 @@ function __c5(j: number): any {
           }),
         ),
       ).annotate({ identifier: "WaitTaskContainerRequest" });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          result: S.optional(__S(12, __c1, 4)),
+          result: S.optional(__S(28, __c7, 0)),
         }),
       ).annotate({
         identifier: "WaitTaskContainerResponse",
       });
   }
 }
-
+function __c19(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          taskId: S.optional(S.String),
+          includeTerminated: S.optional(S.Boolean),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/modal.task_command_router.TaskCommandRouter/TaskContainerList",
+            code: 200,
+          }),
+        ),
+      ).annotate({ identifier: "ListTaskContainerRequest" });
+    case 1:
+      return S.Array(__S(24, __c6, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          containers: S.optional(__S(77, __c19, 1)),
+        }),
+      ).annotate({
+        identifier: "ListTaskContainerResponse",
+      });
+  }
+}
+function __c20(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          taskId: S.optional(S.String),
+          offset: S.optional(S.String),
+          data: S.optional(S.String),
+          eof: S.optional(S.Boolean),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/modal.task_command_router.TaskCommandRouter/SandboxStdinWriteV2",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "SandboxStdinWriteV2Request",
+      });
+  }
+}
+function __c21(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "SandboxStdinWriteV2Response",
+      });
+  }
+}
+function __c22(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          taskId: S.optional(S.String),
+          timeout: S.optional(S.Number),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/modal.task_command_router.TaskCommandRouter/SandboxWaitUntilReady",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "SandboxWaitUntilReadyRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          readyAt: S.optional(S.Number),
+        }),
+      ).annotate({
+        identifier: "SandboxWaitUntilReadyResponse",
+      });
+  }
+}
+function __c23(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          taskId: S.optional(S.String),
+          execId: S.optional(S.String),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/modal.task_command_router.TaskCommandRouter/TaskExecPoll",
+            code: 200,
+          }),
+        ),
+      ).annotate({ identifier: "TaskExecPollRequest" });
+  }
+}
+function __c24(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          code: S.optional(S.Number),
+          signal: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "TaskExecPollResponse" });
+  }
+}
+function __c25(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          taskId: S.optional(S.String),
+          execId: S.optional(S.String),
+          commandArgs: S.optional(__S(12, __c3, 0)),
+          stdoutConfig: S.optional(S.String),
+          stderrConfig: S.optional(S.String),
+          timeoutSecs: S.optional(S.Number),
+          workdir: S.optional(S.String),
+          secretIds: S.optional(__S(12, __c3, 0)),
+          ptyInfo: S.optional(__S(8, __c2, 0)),
+          runtimeDebug: S.optional(S.Boolean),
+          containerId: S.optional(S.String),
+          env: S.optional(__S(16, __c4, 0)),
+          secretSources: S.optional(__S(11, __c2, 3)),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/modal.task_command_router.TaskCommandRouter/TaskExecStart",
+            code: 200,
+          }),
+        ),
+      ).annotate({ identifier: "TaskExecStartRequest" });
+  }
+}
+function __c26(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          taskId: S.optional(S.String),
+          execId: S.optional(S.String),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/modal.task_command_router.TaskCommandRouter/TaskExecStdinStatus",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "TaskExecStdinStatusRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          numBytesWritten: S.optional(S.String),
+          closed: S.optional(S.Boolean),
+        }),
+      ).annotate({
+        identifier: "TaskExecStdinStatusResponse",
+      });
+  }
+}
+function __c27(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          taskId: S.optional(S.String),
+          execId: S.optional(S.String),
+          offset: S.optional(S.String),
+          data: S.optional(S.String),
+          eof: S.optional(S.Boolean),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/modal.task_command_router.TaskCommandRouter/TaskExecStdinWrite",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "TaskExecStdinWriteRequest",
+      });
+  }
+}
+function __c28(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          taskId: S.optional(S.String),
+          execId: S.optional(S.String),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/modal.task_command_router.TaskCommandRouter/TaskExecWait",
+            code: 200,
+          }),
+        ),
+      ).annotate({ identifier: "TaskExecWaitRequest" });
+  }
+}
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

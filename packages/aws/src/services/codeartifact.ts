@@ -1013,8 +1013,8 @@ export const associateExternalConnection: API.OperationMethod<
   AssociateExternalConnectionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(0, __c0, 0) as any as S.Schema<AssociateExternalConnectionRequest>,
-  output: __S(6, __c0, 6) as any as S.Schema<AssociateExternalConnectionResult>,
+  input: __S(456, __c57, 0) as any as S.Schema<AssociateExternalConnectionRequest>,
+  output: __S(472, __c59, 0) as any as S.Schema<AssociateExternalConnectionResult>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1049,8 +1049,8 @@ export const copyPackageVersions: API.OperationMethod<
   CopyPackageVersionsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(9, __c1, 1) as any as S.Schema<CopyPackageVersionsRequest>,
-  output: __S(14, __c1, 6) as any as S.Schema<CopyPackageVersionsResult>,
+  input: __S(480, __c60, 0) as any as S.Schema<CopyPackageVersionsRequest>,
+  output: __S(500, __c62, 4) as any as S.Schema<CopyPackageVersionsResult>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1090,8 +1090,8 @@ export const createDomain: API.OperationMethod<
   CreateDomainError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(17, __c2, 1) as any as S.Schema<CreateDomainRequest>,
-  output: __S(19, __c2, 3) as any as S.Schema<CreateDomainResult>,
+  input: __S(512, __c64, 0) as any as S.Schema<CreateDomainRequest>,
+  output: __S(529, __c66, 1) as any as S.Schema<CreateDomainResult>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1124,8 +1124,8 @@ export const createPackageGroup: API.OperationMethod<
   CreatePackageGroupError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(20, __c2, 4) as any as S.Schema<CreatePackageGroupRequest>,
-  output: __S(26, __c3, 2) as any as S.Schema<CreatePackageGroupResult>,
+  input: __S(0, __c0, 0) as any as S.Schema<CreatePackageGroupRequest>,
+  output: __S(16, __c2, 0) as any as S.Schema<CreatePackageGroupResult>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1158,8 +1158,8 @@ export const createRepository: API.OperationMethod<
   CreateRepositoryError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(29, __c3, 5) as any as S.Schema<CreateRepositoryRequest>,
-  output: __S(30, __c3, 6) as any as S.Schema<CreateRepositoryResult>,
+  input: __S(24, __c3, 0) as any as S.Schema<CreateRepositoryRequest>,
+  output: __S(32, __c4, 0) as any as S.Schema<CreateRepositoryResult>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1191,8 +1191,8 @@ export const deleteDomain: API.OperationMethod<
   DeleteDomainError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(31, __c3, 7) as any as S.Schema<DeleteDomainRequest>,
-  output: __S(19, __c2, 3) as any as S.Schema<DeleteDomainResult>,
+  input: __S(48, __c6, 0) as any as S.Schema<DeleteDomainRequest>,
+  output: __S(529, __c66, 1) as any as S.Schema<DeleteDomainResult>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1222,8 +1222,8 @@ export const deleteDomainPermissionsPolicy: API.OperationMethod<
   DeleteDomainPermissionsPolicyError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(32, __c4, 0) as any as S.Schema<DeleteDomainPermissionsPolicyRequest>,
-  output: __S(34, __c4, 2) as any as S.Schema<DeleteDomainPermissionsPolicyResult>,
+  input: __S(56, __c7, 0) as any as S.Schema<DeleteDomainPermissionsPolicyRequest>,
+  output: __S(65, __c8, 1) as any as S.Schema<DeleteDomainPermissionsPolicyResult>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1255,8 +1255,8 @@ export const deletePackage: API.OperationMethod<
   DeletePackageError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(35, __c4, 3) as any as S.Schema<DeletePackageRequest>,
-  output: __S(39, __c4, 7) as any as S.Schema<DeletePackageResult>,
+  input: __S(72, __c9, 0) as any as S.Schema<DeletePackageRequest>,
+  output: __S(73, __c9, 1) as any as S.Schema<DeletePackageResult>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1292,8 +1292,8 @@ export const deletePackageGroup: API.OperationMethod<
   DeletePackageGroupError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(40, __c5, 0) as any as S.Schema<DeletePackageGroupRequest>,
-  output: __S(26, __c3, 2) as any as S.Schema<DeletePackageGroupResult>,
+  input: __S(96, __c12, 0) as any as S.Schema<DeletePackageGroupRequest>,
+  output: __S(16, __c2, 0) as any as S.Schema<DeletePackageGroupResult>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1329,8 +1329,8 @@ export const deletePackageVersions: API.OperationMethod<
   DeletePackageVersionsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(41, __c5, 1) as any as S.Schema<DeletePackageVersionsRequest>,
-  output: __S(14, __c1, 6) as any as S.Schema<DeletePackageVersionsResult>,
+  input: __S(104, __c13, 0) as any as S.Schema<DeletePackageVersionsRequest>,
+  output: __S(500, __c62, 4) as any as S.Schema<DeletePackageVersionsResult>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1361,8 +1361,8 @@ export const deleteRepository: API.OperationMethod<
   DeleteRepositoryError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(42, __c5, 2) as any as S.Schema<DeleteRepositoryRequest>,
-  output: __S(30, __c3, 6) as any as S.Schema<DeleteRepositoryResult>,
+  input: __S(112, __c14, 0) as any as S.Schema<DeleteRepositoryRequest>,
+  output: __S(32, __c4, 0) as any as S.Schema<DeleteRepositoryResult>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1397,8 +1397,8 @@ export const deleteRepositoryPermissionsPolicy: API.OperationMethod<
   DeleteRepositoryPermissionsPolicyError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(43, __c5, 3) as any as S.Schema<DeleteRepositoryPermissionsPolicyRequest>,
-  output: __S(34, __c4, 2) as any as S.Schema<DeleteRepositoryPermissionsPolicyResult>,
+  input: __S(120, __c15, 0) as any as S.Schema<DeleteRepositoryPermissionsPolicyRequest>,
+  output: __S(65, __c8, 1) as any as S.Schema<DeleteRepositoryPermissionsPolicyResult>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1430,8 +1430,8 @@ export const describeDomain: API.OperationMethod<
   DescribeDomainError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(44, __c5, 4) as any as S.Schema<DescribeDomainRequest>,
-  output: __S(19, __c2, 3) as any as S.Schema<DescribeDomainResult>,
+  input: __S(128, __c16, 0) as any as S.Schema<DescribeDomainRequest>,
+  output: __S(529, __c66, 1) as any as S.Schema<DescribeDomainResult>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1462,8 +1462,8 @@ export const describePackage: API.OperationMethod<
   DescribePackageError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(45, __c5, 5) as any as S.Schema<DescribePackageRequest>,
-  output: __S(47, __c5, 7) as any as S.Schema<DescribePackageResult>,
+  input: __S(136, __c17, 0) as any as S.Schema<DescribePackageRequest>,
+  output: __S(138, __c17, 2) as any as S.Schema<DescribePackageResult>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1493,8 +1493,8 @@ export const describePackageGroup: API.OperationMethod<
   DescribePackageGroupError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(48, __c6, 0) as any as S.Schema<DescribePackageGroupRequest>,
-  output: __S(49, __c6, 1) as any as S.Schema<DescribePackageGroupResult>,
+  input: __S(144, __c18, 0) as any as S.Schema<DescribePackageGroupRequest>,
+  output: __S(145, __c18, 1) as any as S.Schema<DescribePackageGroupResult>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1526,8 +1526,8 @@ export const describePackageVersion: API.OperationMethod<
   DescribePackageVersionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(50, __c6, 2) as any as S.Schema<DescribePackageVersionRequest>,
-  output: __S(56, __c7, 0) as any as S.Schema<DescribePackageVersionResult>,
+  input: __S(152, __c19, 0) as any as S.Schema<DescribePackageVersionRequest>,
+  output: __S(156, __c19, 4) as any as S.Schema<DescribePackageVersionResult>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1558,8 +1558,8 @@ export const describeRepository: API.OperationMethod<
   DescribeRepositoryError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(57, __c7, 1) as any as S.Schema<DescribeRepositoryRequest>,
-  output: __S(30, __c3, 6) as any as S.Schema<DescribeRepositoryResult>,
+  input: __S(168, __c21, 0) as any as S.Schema<DescribeRepositoryRequest>,
+  output: __S(32, __c4, 0) as any as S.Schema<DescribeRepositoryResult>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1590,8 +1590,8 @@ export const disassociateExternalConnection: API.OperationMethod<
   DisassociateExternalConnectionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(58, __c7, 2) as any as S.Schema<DisassociateExternalConnectionRequest>,
-  output: __S(6, __c0, 6) as any as S.Schema<DisassociateExternalConnectionResult>,
+  input: __S(176, __c22, 0) as any as S.Schema<DisassociateExternalConnectionRequest>,
+  output: __S(472, __c59, 0) as any as S.Schema<DisassociateExternalConnectionResult>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1630,8 +1630,8 @@ export const disposePackageVersions: API.OperationMethod<
   DisposePackageVersionsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(59, __c7, 3) as any as S.Schema<DisposePackageVersionsRequest>,
-  output: __S(14, __c1, 6) as any as S.Schema<DisposePackageVersionsResult>,
+  input: __S(184, __c23, 0) as any as S.Schema<DisposePackageVersionsRequest>,
+  output: __S(500, __c62, 4) as any as S.Schema<DisposePackageVersionsResult>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1666,8 +1666,8 @@ export const getAssociatedPackageGroup: API.OperationMethod<
   GetAssociatedPackageGroupError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(60, __c7, 4) as any as S.Schema<GetAssociatedPackageGroupRequest>,
-  output: __S(61, __c7, 5) as any as S.Schema<GetAssociatedPackageGroupResult>,
+  input: __S(192, __c24, 0) as any as S.Schema<GetAssociatedPackageGroupRequest>,
+  output: __S(193, __c24, 1) as any as S.Schema<GetAssociatedPackageGroupResult>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1714,8 +1714,8 @@ export const getAuthorizationToken: API.OperationMethod<
   GetAuthorizationTokenError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(62, __c7, 6) as any as S.Schema<GetAuthorizationTokenRequest>,
-  output: __S(63, __c7, 7) as any as S.Schema<GetAuthorizationTokenResult>,
+  input: __S(200, __c25, 0) as any as S.Schema<GetAuthorizationTokenRequest>,
+  output: __S(201, __c25, 1) as any as S.Schema<GetAuthorizationTokenResult>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1748,8 +1748,8 @@ export const getDomainPermissionsPolicy: API.OperationMethod<
   GetDomainPermissionsPolicyError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(64, __c8, 0) as any as S.Schema<GetDomainPermissionsPolicyRequest>,
-  output: __S(34, __c4, 2) as any as S.Schema<GetDomainPermissionsPolicyResult>,
+  input: __S(208, __c26, 0) as any as S.Schema<GetDomainPermissionsPolicyRequest>,
+  output: __S(65, __c8, 1) as any as S.Schema<GetDomainPermissionsPolicyResult>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1781,8 +1781,8 @@ export const getPackageVersionAsset: API.OperationMethod<
   GetPackageVersionAssetError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(65, __c8, 1) as any as S.Schema<GetPackageVersionAssetRequest>,
-  output: __S(66, __c8, 2) as any as S.Schema<GetPackageVersionAssetResult>,
+  input: __S(216, __c27, 0) as any as S.Schema<GetPackageVersionAssetRequest>,
+  output: __S(217, __c27, 1) as any as S.Schema<GetPackageVersionAssetResult>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1814,8 +1814,8 @@ export const getPackageVersionReadme: API.OperationMethod<
   GetPackageVersionReadmeError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(67, __c8, 3) as any as S.Schema<GetPackageVersionReadmeRequest>,
-  output: __S(68, __c8, 4) as any as S.Schema<GetPackageVersionReadmeResult>,
+  input: __S(224, __c28, 0) as any as S.Schema<GetPackageVersionReadmeRequest>,
+  output: __S(225, __c28, 1) as any as S.Schema<GetPackageVersionReadmeResult>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1861,8 +1861,8 @@ export const getRepositoryEndpoint: API.OperationMethod<
   GetRepositoryEndpointError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(69, __c8, 5) as any as S.Schema<GetRepositoryEndpointRequest>,
-  output: __S(70, __c8, 6) as any as S.Schema<GetRepositoryEndpointResult>,
+  input: __S(232, __c29, 0) as any as S.Schema<GetRepositoryEndpointRequest>,
+  output: __S(233, __c29, 1) as any as S.Schema<GetRepositoryEndpointResult>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1891,8 +1891,8 @@ export const getRepositoryPermissionsPolicy: API.OperationMethod<
   GetRepositoryPermissionsPolicyError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(71, __c8, 7) as any as S.Schema<GetRepositoryPermissionsPolicyRequest>,
-  output: __S(34, __c4, 2) as any as S.Schema<GetRepositoryPermissionsPolicyResult>,
+  input: __S(240, __c30, 0) as any as S.Schema<GetRepositoryPermissionsPolicyRequest>,
+  output: __S(65, __c8, 1) as any as S.Schema<GetRepositoryPermissionsPolicyResult>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1924,8 +1924,8 @@ export const listAllowedRepositoriesForGroup: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   RepositoryName
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(72, __c9, 0) as any as S.Schema<ListAllowedRepositoriesForGroupRequest>,
-  output: __S(73, __c9, 1) as any as S.Schema<ListAllowedRepositoriesForGroupResult>,
+  input: __S(248, __c31, 0) as any as S.Schema<ListAllowedRepositoriesForGroupRequest>,
+  output: __S(249, __c31, 1) as any as S.Schema<ListAllowedRepositoriesForGroupResult>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1963,8 +1963,8 @@ export const listAssociatedPackages: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   AssociatedPackage
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(74, __c9, 2) as any as S.Schema<ListAssociatedPackagesRequest>,
-  output: __S(77, __c9, 5) as any as S.Schema<ListAssociatedPackagesResult>,
+  input: __S(256, __c32, 0) as any as S.Schema<ListAssociatedPackagesRequest>,
+  output: __S(259, __c32, 3) as any as S.Schema<ListAssociatedPackagesResult>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -2000,8 +2000,8 @@ export const listDomains: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   DomainSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(78, __c9, 6) as any as S.Schema<ListDomainsRequest>,
-  output: __S(81, __c10, 1) as any as S.Schema<ListDomainsResult>,
+  input: __S(264, __c33, 0) as any as S.Schema<ListDomainsRequest>,
+  output: __S(267, __c33, 3) as any as S.Schema<ListDomainsResult>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -2036,8 +2036,8 @@ export const listPackageGroups: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   PackageGroupSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(82, __c10, 2) as any as S.Schema<ListPackageGroupsRequest>,
-  output: __S(84, __c10, 4) as any as S.Schema<ListPackageGroupsResult>,
+  input: __S(272, __c34, 0) as any as S.Schema<ListPackageGroupsRequest>,
+  output: __S(273, __c34, 1) as any as S.Schema<ListPackageGroupsResult>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -2075,8 +2075,8 @@ export const listPackages: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   PackageSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(85, __c10, 5) as any as S.Schema<ListPackagesRequest>,
-  output: __S(87, __c10, 7) as any as S.Schema<ListPackagesResult>,
+  input: __S(288, __c36, 0) as any as S.Schema<ListPackagesRequest>,
+  output: __S(290, __c36, 2) as any as S.Schema<ListPackagesResult>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -2114,8 +2114,8 @@ export const listPackageVersionAssets: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   AssetSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(88, __c11, 0) as any as S.Schema<ListPackageVersionAssetsRequest>,
-  output: __S(92, __c11, 4) as any as S.Schema<ListPackageVersionAssetsResult>,
+  input: __S(296, __c37, 0) as any as S.Schema<ListPackageVersionAssetsRequest>,
+  output: __S(298, __c37, 2) as any as S.Schema<ListPackageVersionAssetsResult>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -2154,8 +2154,8 @@ export const listPackageVersionDependencies: API.OperationMethod<
   ListPackageVersionDependenciesError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(93, __c11, 5) as any as S.Schema<ListPackageVersionDependenciesRequest>,
-  output: __S(96, __c12, 0) as any as S.Schema<ListPackageVersionDependenciesResult>,
+  input: __S(312, __c39, 0) as any as S.Schema<ListPackageVersionDependenciesRequest>,
+  output: __S(315, __c39, 3) as any as S.Schema<ListPackageVersionDependenciesResult>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -2187,8 +2187,8 @@ export const listPackageVersions: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   PackageVersionSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(97, __c12, 1) as any as S.Schema<ListPackageVersionsRequest>,
-  output: __S(100, __c12, 4) as any as S.Schema<ListPackageVersionsResult>,
+  input: __S(320, __c40, 0) as any as S.Schema<ListPackageVersionsRequest>,
+  output: __S(323, __c40, 3) as any as S.Schema<ListPackageVersionsResult>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -2226,8 +2226,8 @@ export const listRepositories: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   RepositorySummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(101, __c12, 5) as any as S.Schema<ListRepositoriesRequest>,
-  output: __S(104, __c13, 0) as any as S.Schema<ListRepositoriesResult>,
+  input: __S(328, __c41, 0) as any as S.Schema<ListRepositoriesRequest>,
+  output: __S(329, __c41, 1) as any as S.Schema<ListRepositoriesResult>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -2265,8 +2265,8 @@ export const listRepositoriesInDomain: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   RepositorySummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(105, __c13, 1) as any as S.Schema<ListRepositoriesInDomainRequest>,
-  output: __S(106, __c13, 2) as any as S.Schema<ListRepositoriesInDomainResult>,
+  input: __S(344, __c43, 0) as any as S.Schema<ListRepositoriesInDomainRequest>,
+  output: __S(345, __c43, 1) as any as S.Schema<ListRepositoriesInDomainResult>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -2306,8 +2306,8 @@ export const listSubPackageGroups: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   PackageGroupSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(107, __c13, 3) as any as S.Schema<ListSubPackageGroupsRequest>,
-  output: __S(108, __c13, 4) as any as S.Schema<ListSubPackageGroupsResult>,
+  input: __S(352, __c44, 0) as any as S.Schema<ListSubPackageGroupsRequest>,
+  output: __S(353, __c44, 1) as any as S.Schema<ListSubPackageGroupsResult>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -2341,8 +2341,8 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(109, __c13, 5) as any as S.Schema<ListTagsForResourceRequest>,
-  output: __S(110, __c13, 6) as any as S.Schema<ListTagsForResourceResult>,
+  input: __S(360, __c45, 0) as any as S.Schema<ListTagsForResourceRequest>,
+  output: __S(361, __c45, 1) as any as S.Schema<ListTagsForResourceResult>,
   errors: [
     AccessDeniedException,
     ResourceNotFoundException,
@@ -2381,8 +2381,8 @@ export const publishPackageVersion: API.OperationMethod<
   PublishPackageVersionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(111, __c13, 7) as any as S.Schema<PublishPackageVersionRequest>,
-  output: __S(112, __c14, 0) as any as S.Schema<PublishPackageVersionResult>,
+  input: __S(368, __c46, 0) as any as S.Schema<PublishPackageVersionRequest>,
+  output: __S(369, __c46, 1) as any as S.Schema<PublishPackageVersionResult>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -2419,8 +2419,8 @@ export const putDomainPermissionsPolicy: API.OperationMethod<
   PutDomainPermissionsPolicyError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(113, __c14, 1) as any as S.Schema<PutDomainPermissionsPolicyRequest>,
-  output: __S(34, __c4, 2) as any as S.Schema<PutDomainPermissionsPolicyResult>,
+  input: __S(376, __c47, 0) as any as S.Schema<PutDomainPermissionsPolicyRequest>,
+  output: __S(65, __c8, 1) as any as S.Schema<PutDomainPermissionsPolicyResult>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -2460,8 +2460,8 @@ export const putPackageOriginConfiguration: API.OperationMethod<
   PutPackageOriginConfigurationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(114, __c14, 2) as any as S.Schema<PutPackageOriginConfigurationRequest>,
-  output: __S(115, __c14, 3) as any as S.Schema<PutPackageOriginConfigurationResult>,
+  input: __S(384, __c48, 0) as any as S.Schema<PutPackageOriginConfigurationRequest>,
+  output: __S(385, __c48, 1) as any as S.Schema<PutPackageOriginConfigurationResult>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -2496,8 +2496,8 @@ export const putRepositoryPermissionsPolicy: API.OperationMethod<
   PutRepositoryPermissionsPolicyError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(116, __c14, 4) as any as S.Schema<PutRepositoryPermissionsPolicyRequest>,
-  output: __S(34, __c4, 2) as any as S.Schema<PutRepositoryPermissionsPolicyResult>,
+  input: __S(392, __c49, 0) as any as S.Schema<PutRepositoryPermissionsPolicyRequest>,
+  output: __S(65, __c8, 1) as any as S.Schema<PutRepositoryPermissionsPolicyResult>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -2528,8 +2528,8 @@ export const tagResource: API.OperationMethod<
   TagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(117, __c14, 5) as any as S.Schema<TagResourceRequest>,
-  output: __S(118, __c14, 6) as any as S.Schema<TagResourceResult>,
+  input: __S(400, __c50, 0) as any as S.Schema<TagResourceRequest>,
+  output: __S(408, __c51, 0) as any as S.Schema<TagResourceResult>,
   errors: [
     AccessDeniedException,
     ResourceNotFoundException,
@@ -2557,8 +2557,8 @@ export const untagResource: API.OperationMethod<
   UntagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(119, __c14, 7) as any as S.Schema<UntagResourceRequest>,
-  output: __S(118, __c14, 6) as any as S.Schema<UntagResourceResult>,
+  input: __S(416, __c52, 0) as any as S.Schema<UntagResourceRequest>,
+  output: __S(408, __c51, 0) as any as S.Schema<UntagResourceResult>,
   errors: [
     AccessDeniedException,
     ResourceNotFoundException,
@@ -2588,8 +2588,8 @@ export const updatePackageGroup: API.OperationMethod<
   UpdatePackageGroupError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(120, __c15, 0) as any as S.Schema<UpdatePackageGroupRequest>,
-  output: __S(26, __c3, 2) as any as S.Schema<UpdatePackageGroupResult>,
+  input: __S(424, __c53, 0) as any as S.Schema<UpdatePackageGroupRequest>,
+  output: __S(16, __c2, 0) as any as S.Schema<UpdatePackageGroupResult>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -2626,8 +2626,8 @@ export const updatePackageGroupOriginConfiguration: API.OperationMethod<
   UpdatePackageGroupOriginConfigurationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(124, __c15, 4) as any as S.Schema<UpdatePackageGroupOriginConfigurationRequest>,
-  output: __S(127, __c15, 7) as any as S.Schema<UpdatePackageGroupOriginConfigurationResult>,
+  input: __S(435, __c54, 3) as any as S.Schema<UpdatePackageGroupOriginConfigurationRequest>,
+  output: __S(438, __c54, 6) as any as S.Schema<UpdatePackageGroupOriginConfigurationResult>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -2661,8 +2661,8 @@ export const updatePackageVersionsStatus: API.OperationMethod<
   UpdatePackageVersionsStatusError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(128, __c16, 0) as any as S.Schema<UpdatePackageVersionsStatusRequest>,
-  output: __S(14, __c1, 6) as any as S.Schema<UpdatePackageVersionsStatusResult>,
+  input: __S(440, __c55, 0) as any as S.Schema<UpdatePackageVersionsStatusRequest>,
+  output: __S(500, __c62, 4) as any as S.Schema<UpdatePackageVersionsStatusResult>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -2694,8 +2694,8 @@ export const updateRepository: API.OperationMethod<
   UpdateRepositoryError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(129, __c16, 1) as any as S.Schema<UpdateRepositoryRequest>,
-  output: __S(30, __c3, 6) as any as S.Schema<UpdateRepositoryResult>,
+  input: __S(448, __c56, 0) as any as S.Schema<UpdateRepositoryRequest>,
+  output: __S(32, __c4, 0) as any as S.Schema<UpdateRepositoryResult>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -2718,195 +2718,42 @@ function __c0(j: number): any {
         S.Struct({
           domain: S.String.pipe(T.HttpQuery("domain")),
           domainOwner: S.optional(S.String).pipe(T.HttpQuery("domain-owner")),
-          repository: S.String.pipe(T.HttpQuery("repository")),
-          externalConnection: S.String.pipe(T.HttpQuery("external-connection")),
-        }).pipe(
-          T.all(
-            T.Http({ method: "POST", uri: "/v1/repository/external-connection" }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({
-        identifier: "AssociateExternalConnectionRequest",
-      });
-    case 1:
-      return S.suspend(() => S.Struct({ repositoryName: S.optional(S.String) })).annotate({
-        identifier: "UpstreamRepositoryInfo",
-      });
-    case 2:
-      return S.Array(__S(1, __c0, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          externalConnectionName: S.optional(S.String),
-          packageFormat: S.optional(S.String),
-          status: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "RepositoryExternalConnectionInfo",
-      });
-    case 4:
-      return S.Array(__S(3, __c0, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.optional(S.String),
-          administratorAccount: S.optional(S.String),
-          domainName: S.optional(S.String),
-          domainOwner: S.optional(S.String),
-          arn: S.optional(S.String),
-          description: S.optional(S.String),
-          upstreams: S.optional(__S(2, __c0, 2)),
-          externalConnections: S.optional(__S(4, __c0, 4)),
-          createdTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-        }),
-      ).annotate({ identifier: "RepositoryDescription" });
-    case 6:
-      return S.suspend(() => S.Struct({ repository: S.optional(__S(5, __c0, 5)) })).annotate({
-        identifier: "AssociateExternalConnectionResult",
-      });
-    case 7:
-      return S.Array(S.String);
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          domain: S.String.pipe(T.HttpQuery("domain")),
-          domainOwner: S.optional(S.String).pipe(T.HttpQuery("domain-owner")),
-          sourceRepository: S.String.pipe(T.HttpQuery("source-repository")),
-          destinationRepository: S.String.pipe(T.HttpQuery("destination-repository")),
-          format: S.String.pipe(T.HttpQuery("format")),
-          namespace: S.optional(S.String).pipe(T.HttpQuery("namespace")),
-          package: S.String.pipe(T.HttpQuery("package")),
-          versions: S.optional(__S(7, __c0, 7)),
-          versionRevisions: S.optional(__S(8, __c1, 0)),
-          allowOverwrite: S.optional(S.Boolean),
-          includeFromUpstream: S.optional(S.Boolean),
-        }).pipe(
-          T.all(
-            T.Http({ method: "POST", uri: "/v1/package/versions/copy" }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({
-        identifier: "CopyPackageVersionsRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({ revision: S.optional(S.String), status: S.optional(S.String) }),
-      ).annotate({
-        identifier: "SuccessfulPackageVersionInfo",
-      });
-    case 3:
-      return S.Record(S.String, /*@__PURE__*/ __S(10, __c1, 2).pipe(S.optional));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          errorCode: S.optional(S.String),
-          errorMessage: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "PackageVersionError" });
-    case 5:
-      return S.Record(S.String, /*@__PURE__*/ __S(12, __c1, 4).pipe(S.optional));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          successfulVersions: S.optional(__S(11, __c1, 3)),
-          failedVersions: S.optional(__S(13, __c1, 5)),
-        }),
-      ).annotate({
-        identifier: "CopyPackageVersionsResult",
-      });
-    case 7:
-      return S.suspend(() => S.Struct({ key: S.String, value: S.String })).annotate({
-        identifier: "Tag",
-      });
-  }
-}
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(15, __c1, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          domain: S.String.pipe(T.HttpQuery("domain")),
-          encryptionKey: S.optional(S.String),
-          tags: S.optional(__S(16, __c2, 0)),
-        }).pipe(T.all(T.Http({ method: "POST", uri: "/v1/domain" }), svc, auth, proto, ver, rules)),
-      ).annotate({ identifier: "CreateDomainRequest" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.optional(S.String),
-          owner: S.optional(S.String),
-          arn: S.optional(S.String),
-          status: S.optional(S.String),
-          createdTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          encryptionKey: S.optional(S.String),
-          repositoryCount: S.optional(S.Number),
-          assetSizeBytes: S.optional(S.Number),
-          s3BucketArn: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "DomainDescription" });
-    case 3:
-      return S.suspend(() => S.Struct({ domain: S.optional(__S(18, __c2, 2)) })).annotate({
-        identifier: "CreateDomainResult",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          domain: S.String.pipe(T.HttpQuery("domain")),
-          domainOwner: S.optional(S.String).pipe(T.HttpQuery("domain-owner")),
           packageGroup: S.String,
           contactInfo: S.optional(S.String),
           description: S.optional(S.String),
-          tags: S.optional(__S(16, __c2, 0)),
+          tags: S.optional(__S(521, __c65, 1)),
         }).pipe(
           T.all(T.Http({ method: "POST", uri: "/v1/package-group" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({
         identifier: "CreatePackageGroupRequest",
       });
-    case 5:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ arn: S.optional(S.String), pattern: S.optional(S.String) }),
       ).annotate({ identifier: "PackageGroupReference" });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           mode: S.optional(S.String),
           effectiveMode: S.optional(S.String),
-          inheritedFrom: S.optional(__S(21, __c2, 5)),
+          inheritedFrom: S.optional(__S(8, __c1, 0)),
           repositoriesCount: S.optional(S.Number),
         }),
       ).annotate({
         identifier: "PackageGroupOriginRestriction",
       });
-    case 7:
-      return S.Record(S.String, /*@__PURE__*/ __S(22, __c2, 6).pipe(S.optional));
-  }
-}
-function __c3(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() => S.Struct({ restrictions: S.optional(__S(23, __c2, 7)) })).annotate({
+    case 2:
+      return S.Record(S.String, /*@__PURE__*/ __S(9, __c1, 1).pipe(S.optional));
+    case 3:
+      return S.suspend(() => S.Struct({ restrictions: S.optional(__S(10, __c1, 2)) })).annotate({
         identifier: "PackageGroupOriginConfiguration",
       });
-    case 1:
+    case 4:
       return S.suspend(() =>
         S.Struct({
           arn: S.optional(S.String),
@@ -2916,38 +2763,58 @@ function __c3(j: number): any {
           createdTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           contactInfo: S.optional(S.String),
           description: S.optional(S.String),
-          originConfiguration: S.optional(__S(24, __c3, 0)),
-          parent: S.optional(__S(21, __c2, 5)),
+          originConfiguration: S.optional(__S(11, __c1, 3)),
+          parent: S.optional(__S(8, __c1, 0)),
         }),
       ).annotate({ identifier: "PackageGroupDescription" });
-    case 2:
-      return S.suspend(() => S.Struct({ packageGroup: S.optional(__S(25, __c3, 1)) })).annotate({
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({ packageGroup: S.optional(__S(12, __c1, 4)) })).annotate({
         identifier: "CreatePackageGroupResult",
       });
-    case 3:
-      return S.suspend(() => S.Struct({ repositoryName: S.String })).annotate({
-        identifier: "UpstreamRepository",
-      });
-    case 4:
-      return S.Array(__S(27, __c3, 3));
-    case 5:
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           domain: S.String.pipe(T.HttpQuery("domain")),
           domainOwner: S.optional(S.String).pipe(T.HttpQuery("domain-owner")),
           repository: S.String.pipe(T.HttpQuery("repository")),
           description: S.optional(S.String),
-          upstreams: S.optional(__S(28, __c3, 4)),
-          tags: S.optional(__S(16, __c2, 0)),
+          upstreams: S.optional(__S(41, __c5, 1)),
+          tags: S.optional(__S(521, __c65, 1)),
         }).pipe(
           T.all(T.Http({ method: "POST", uri: "/v1/repository" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "CreateRepositoryRequest" });
-    case 6:
-      return S.suspend(() => S.Struct({ repository: S.optional(__S(5, __c0, 5)) })).annotate({
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({ repository: S.optional(__S(468, __c58, 4)) })).annotate({
         identifier: "CreateRepositoryResult",
       });
-    case 7:
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({ repositoryName: S.String })).annotate({
+        identifier: "UpstreamRepository",
+      });
+    case 1:
+      return S.Array(__S(40, __c5, 0));
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           domain: S.String.pipe(T.HttpQuery("domain")),
@@ -2958,7 +2825,7 @@ function __c3(j: number): any {
       ).annotate({ identifier: "DeleteDomainRequest" });
   }
 }
-function __c4(j: number): any {
+function __c7(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2979,7 +2846,11 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "DeleteDomainPermissionsPolicyRequest",
       });
-    case 1:
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           resourceArn: S.optional(S.String),
@@ -2987,11 +2858,15 @@ function __c4(j: number): any {
           document: S.optional(S.String),
         }),
       ).annotate({ identifier: "ResourcePolicy" });
-    case 2:
-      return S.suspend(() => S.Struct({ policy: S.optional(__S(33, __c4, 1)) })).annotate({
+    case 1:
+      return S.suspend(() => S.Struct({ policy: S.optional(__S(64, __c8, 0)) })).annotate({
         identifier: "DeleteDomainPermissionsPolicyResult",
       });
-    case 3:
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           domain: S.String.pipe(T.HttpQuery("domain")),
@@ -3004,30 +2879,38 @@ function __c4(j: number): any {
           T.all(T.Http({ method: "DELETE", uri: "/v1/package" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "DeletePackageRequest" });
-    case 4:
+    case 1:
+      return S.suspend(() => S.Struct({ deletedPackage: S.optional(__S(88, __c11, 0)) })).annotate({
+        identifier: "DeletePackageResult",
+      });
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() => S.Struct({ publish: S.String, upstream: S.String })).annotate({
         identifier: "PackageOriginRestrictions",
       });
-    case 5:
-      return S.suspend(() => S.Struct({ restrictions: S.optional(__S(36, __c4, 4)) })).annotate({
+    case 1:
+      return S.suspend(() => S.Struct({ restrictions: S.optional(__S(80, __c10, 0)) })).annotate({
         identifier: "PackageOriginConfiguration",
       });
-    case 6:
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           format: S.optional(S.String),
           namespace: S.optional(S.String),
           package: S.optional(S.String),
-          originConfiguration: S.optional(__S(37, __c4, 5)),
+          originConfiguration: S.optional(__S(81, __c10, 1)),
         }),
       ).annotate({ identifier: "PackageSummary" });
-    case 7:
-      return S.suspend(() => S.Struct({ deletedPackage: S.optional(__S(38, __c4, 6)) })).annotate({
-        identifier: "DeletePackageResult",
-      });
   }
 }
-function __c5(j: number): any {
+function __c12(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3048,7 +2931,11 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "DeletePackageGroupRequest",
       });
-    case 1:
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           domain: S.String.pipe(T.HttpQuery("domain")),
@@ -3057,7 +2944,7 @@ function __c5(j: number): any {
           format: S.String.pipe(T.HttpQuery("format")),
           namespace: S.optional(S.String).pipe(T.HttpQuery("namespace")),
           package: S.String.pipe(T.HttpQuery("package")),
-          versions: __S(7, __c0, 7),
+          versions: __S(488, __c61, 0),
           expectedStatus: S.optional(S.String),
         }).pipe(
           T.all(
@@ -3072,7 +2959,11 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "DeletePackageVersionsRequest",
       });
-    case 2:
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           domain: S.String.pipe(T.HttpQuery("domain")),
@@ -3082,7 +2973,11 @@ function __c5(j: number): any {
           T.all(T.Http({ method: "DELETE", uri: "/v1/repository" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "DeleteRepositoryRequest" });
-    case 3:
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           domain: S.String.pipe(T.HttpQuery("domain")),
@@ -3102,14 +2997,22 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "DeleteRepositoryPermissionsPolicyRequest",
       });
-    case 4:
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           domain: S.String.pipe(T.HttpQuery("domain")),
           domainOwner: S.optional(S.String).pipe(T.HttpQuery("domain-owner")),
         }).pipe(T.all(T.Http({ method: "GET", uri: "/v1/domain" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "DescribeDomainRequest" });
-    case 5:
+  }
+}
+function __c17(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           domain: S.String.pipe(T.HttpQuery("domain")),
@@ -3120,22 +3023,22 @@ function __c5(j: number): any {
           package: S.String.pipe(T.HttpQuery("package")),
         }).pipe(T.all(T.Http({ method: "GET", uri: "/v1/package" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "DescribePackageRequest" });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           format: S.optional(S.String),
           namespace: S.optional(S.String),
           name: S.optional(S.String),
-          originConfiguration: S.optional(__S(37, __c4, 5)),
+          originConfiguration: S.optional(__S(81, __c10, 1)),
         }),
       ).annotate({ identifier: "PackageDescription" });
-    case 7:
-      return S.suspend(() => S.Struct({ package: __S(46, __c5, 6) })).annotate({
+    case 2:
+      return S.suspend(() => S.Struct({ package: __S(137, __c17, 1) })).annotate({
         identifier: "DescribePackageResult",
       });
   }
 }
-function __c6(j: number): any {
+function __c18(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3150,10 +3053,14 @@ function __c6(j: number): any {
         identifier: "DescribePackageGroupRequest",
       });
     case 1:
-      return S.suspend(() => S.Struct({ packageGroup: S.optional(__S(25, __c3, 1)) })).annotate({
+      return S.suspend(() => S.Struct({ packageGroup: S.optional(__S(12, __c1, 4)) })).annotate({
         identifier: "DescribePackageGroupResult",
       });
-    case 2:
+  }
+}
+function __c19(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           domain: S.String.pipe(T.HttpQuery("domain")),
@@ -3176,27 +3083,13 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "DescribePackageVersionRequest",
       });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({ name: S.optional(S.String), url: S.optional(S.String) }),
       ).annotate({ identifier: "LicenseInfo" });
-    case 4:
-      return S.Array(__S(51, __c6, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          repositoryName: S.optional(S.String),
-          externalConnectionName: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "DomainEntryPoint" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          domainEntryPoint: S.optional(__S(53, __c6, 5)),
-          originType: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "PackageVersionOrigin" });
-    case 7:
+    case 2:
+      return S.Array(__S(153, __c19, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
           format: S.optional(S.String),
@@ -3208,23 +3101,41 @@ function __c6(j: number): any {
           homePage: S.optional(S.String),
           sourceCodeRepository: S.optional(S.String),
           publishedTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          licenses: S.optional(__S(52, __c6, 4)),
+          licenses: S.optional(__S(154, __c19, 2)),
           revision: S.optional(S.String),
           status: S.optional(S.String),
-          origin: S.optional(__S(54, __c6, 6)),
+          origin: S.optional(__S(161, __c20, 1)),
         }),
       ).annotate({
         identifier: "PackageVersionDescription",
       });
-  }
-}
-function __c7(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() => S.Struct({ packageVersion: __S(55, __c6, 7) })).annotate({
+    case 4:
+      return S.suspend(() => S.Struct({ packageVersion: __S(155, __c19, 3) })).annotate({
         identifier: "DescribePackageVersionResult",
       });
+  }
+}
+function __c20(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          repositoryName: S.optional(S.String),
+          externalConnectionName: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "DomainEntryPoint" });
     case 1:
+      return S.suspend(() =>
+        S.Struct({
+          domainEntryPoint: S.optional(__S(160, __c20, 0)),
+          originType: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "PackageVersionOrigin" });
+  }
+}
+function __c21(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           domain: S.String.pipe(T.HttpQuery("domain")),
@@ -3236,7 +3147,11 @@ function __c7(j: number): any {
       ).annotate({
         identifier: "DescribeRepositoryRequest",
       });
-    case 2:
+  }
+}
+function __c22(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           domain: S.String.pipe(T.HttpQuery("domain")),
@@ -3256,7 +3171,11 @@ function __c7(j: number): any {
       ).annotate({
         identifier: "DisassociateExternalConnectionRequest",
       });
-    case 3:
+  }
+}
+function __c23(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           domain: S.String.pipe(T.HttpQuery("domain")),
@@ -3265,8 +3184,8 @@ function __c7(j: number): any {
           format: S.String.pipe(T.HttpQuery("format")),
           namespace: S.optional(S.String).pipe(T.HttpQuery("namespace")),
           package: S.String.pipe(T.HttpQuery("package")),
-          versions: __S(7, __c0, 7),
-          versionRevisions: S.optional(__S(8, __c1, 0)),
+          versions: __S(488, __c61, 0),
+          versionRevisions: S.optional(__S(504, __c63, 0)),
           expectedStatus: S.optional(S.String),
         }).pipe(
           T.all(
@@ -3281,7 +3200,11 @@ function __c7(j: number): any {
       ).annotate({
         identifier: "DisposePackageVersionsRequest",
       });
-    case 4:
+  }
+}
+function __c24(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           domain: S.String.pipe(T.HttpQuery("domain")),
@@ -3302,16 +3225,20 @@ function __c7(j: number): any {
       ).annotate({
         identifier: "GetAssociatedPackageGroupRequest",
       });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          packageGroup: S.optional(__S(25, __c3, 1)),
+          packageGroup: S.optional(__S(12, __c1, 4)),
           associationType: S.optional(S.String),
         }),
       ).annotate({
         identifier: "GetAssociatedPackageGroupResult",
       });
-    case 6:
+  }
+}
+function __c25(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           domain: S.String.pipe(T.HttpQuery("domain")),
@@ -3330,7 +3257,7 @@ function __c7(j: number): any {
       ).annotate({
         identifier: "GetAuthorizationTokenRequest",
       });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           authorizationToken: S.optional(SensitiveString),
@@ -3341,7 +3268,7 @@ function __c7(j: number): any {
       });
   }
 }
-function __c8(j: number): any {
+function __c26(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3361,7 +3288,11 @@ function __c8(j: number): any {
       ).annotate({
         identifier: "GetDomainPermissionsPolicyRequest",
       });
-    case 1:
+  }
+}
+function __c27(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           domain: S.String.pipe(T.HttpQuery("domain")),
@@ -3386,7 +3317,7 @@ function __c8(j: number): any {
       ).annotate({
         identifier: "GetPackageVersionAssetRequest",
       });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           asset: S.optional(T.StreamingOutput).pipe(T.HttpPayload()),
@@ -3399,7 +3330,11 @@ function __c8(j: number): any {
       ).annotate({
         identifier: "GetPackageVersionAssetResult",
       });
-    case 3:
+  }
+}
+function __c28(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           domain: S.String.pipe(T.HttpQuery("domain")),
@@ -3422,7 +3357,7 @@ function __c8(j: number): any {
       ).annotate({
         identifier: "GetPackageVersionReadmeRequest",
       });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           format: S.optional(S.String),
@@ -3435,7 +3370,11 @@ function __c8(j: number): any {
       ).annotate({
         identifier: "GetPackageVersionReadmeResult",
       });
-    case 5:
+  }
+}
+function __c29(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           domain: S.String.pipe(T.HttpQuery("domain")),
@@ -3456,11 +3395,15 @@ function __c8(j: number): any {
       ).annotate({
         identifier: "GetRepositoryEndpointRequest",
       });
-    case 6:
+    case 1:
       return S.suspend(() => S.Struct({ repositoryEndpoint: S.optional(S.String) })).annotate({
         identifier: "GetRepositoryEndpointResult",
       });
-    case 7:
+  }
+}
+function __c30(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           domain: S.String.pipe(T.HttpQuery("domain")),
@@ -3481,7 +3424,7 @@ function __c8(j: number): any {
       });
   }
 }
-function __c9(j: number): any {
+function __c31(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3508,13 +3451,17 @@ function __c9(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          allowedRepositories: S.optional(__S(7, __c0, 7)),
+          allowedRepositories: S.optional(__S(488, __c61, 0)),
           nextToken: S.optional(S.String),
         }),
       ).annotate({
         identifier: "ListAllowedRepositoriesForGroupResult",
       });
-    case 2:
+  }
+}
+function __c32(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           domain: S.String.pipe(T.HttpQuery("domain")),
@@ -3536,7 +3483,7 @@ function __c9(j: number): any {
       ).annotate({
         identifier: "ListAssociatedPackagesRequest",
       });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           format: S.optional(S.String),
@@ -3545,21 +3492,25 @@ function __c9(j: number): any {
           associationType: S.optional(S.String),
         }),
       ).annotate({ identifier: "AssociatedPackage" });
-    case 4:
-      return S.Array(__S(75, __c9, 3));
-    case 5:
+    case 2:
+      return S.Array(__S(257, __c32, 1));
+    case 3:
       return S.suspend(() =>
-        S.Struct({ packages: S.optional(__S(76, __c9, 4)), nextToken: S.optional(S.String) }),
+        S.Struct({ packages: S.optional(__S(258, __c32, 2)), nextToken: S.optional(S.String) }),
       ).annotate({
         identifier: "ListAssociatedPackagesResult",
       });
-    case 6:
+  }
+}
+function __c33(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ maxResults: S.optional(S.Number), nextToken: S.optional(S.String) }).pipe(
           T.all(T.Http({ method: "POST", uri: "/v1/domains" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "ListDomainsRequest" });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
@@ -3570,17 +3521,17 @@ function __c9(j: number): any {
           encryptionKey: S.optional(S.String),
         }),
       ).annotate({ identifier: "DomainSummary" });
+    case 2:
+      return S.Array(__S(265, __c33, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({ domains: S.optional(__S(266, __c33, 2)), nextToken: S.optional(S.String) }),
+      ).annotate({ identifier: "ListDomainsResult" });
   }
 }
-function __c10(j: number): any {
+function __c34(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(79, __c9, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({ domains: S.optional(__S(80, __c10, 0)), nextToken: S.optional(S.String) }),
-      ).annotate({ identifier: "ListDomainsResult" });
-    case 2:
       return S.suspend(() =>
         S.Struct({
           domain: S.String.pipe(T.HttpQuery("domain")),
@@ -3599,16 +3550,24 @@ function __c10(j: number): any {
           ),
         ),
       ).annotate({ identifier: "ListPackageGroupsRequest" });
-    case 3:
-      return S.Array(__S(25, __c3, 1));
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          packageGroups: S.optional(__S(83, __c10, 3)),
+          packageGroups: S.optional(__S(280, __c35, 0)),
           nextToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListPackageGroupsResult" });
-    case 5:
+  }
+}
+function __c35(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(12, __c1, 4));
+  }
+}
+function __c36(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           domain: S.String.pipe(T.HttpQuery("domain")),
@@ -3625,15 +3584,15 @@ function __c10(j: number): any {
           T.all(T.Http({ method: "POST", uri: "/v1/packages" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "ListPackagesRequest" });
-    case 6:
-      return S.Array(__S(38, __c4, 6));
-    case 7:
+    case 1:
+      return S.Array(__S(88, __c11, 0));
+    case 2:
       return S.suspend(() =>
-        S.Struct({ packages: S.optional(__S(86, __c10, 6)), nextToken: S.optional(S.String) }),
+        S.Struct({ packages: S.optional(__S(289, __c36, 1)), nextToken: S.optional(S.String) }),
       ).annotate({ identifier: "ListPackagesResult" });
   }
 }
-function __c11(j: number): any {
+function __c37(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3661,18 +3620,8 @@ function __c11(j: number): any {
         identifier: "ListPackageVersionAssetsRequest",
       });
     case 1:
-      return S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
+      return S.Array(__S(305, __c38, 1));
     case 2:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String,
-          size: S.optional(S.Number),
-          hashes: S.optional(__S(89, __c11, 1)),
-        }),
-      ).annotate({ identifier: "AssetSummary" });
-    case 3:
-      return S.Array(__S(90, __c11, 2));
-    case 4:
       return S.suspend(() =>
         S.Struct({
           format: S.optional(S.String),
@@ -3681,12 +3630,30 @@ function __c11(j: number): any {
           version: S.optional(S.String),
           versionRevision: S.optional(S.String),
           nextToken: S.optional(S.String),
-          assets: S.optional(__S(91, __c11, 3)),
+          assets: S.optional(__S(297, __c37, 1)),
         }),
       ).annotate({
         identifier: "ListPackageVersionAssetsResult",
       });
-    case 5:
+  }
+}
+function __c38(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String,
+          size: S.optional(S.Number),
+          hashes: S.optional(__S(304, __c38, 0)),
+        }),
+      ).annotate({ identifier: "AssetSummary" });
+  }
+}
+function __c39(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           domain: S.String.pipe(T.HttpQuery("domain")),
@@ -3710,7 +3677,7 @@ function __c11(j: number): any {
       ).annotate({
         identifier: "ListPackageVersionDependenciesRequest",
       });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           namespace: S.optional(S.String),
@@ -3719,13 +3686,9 @@ function __c11(j: number): any {
           versionRequirement: S.optional(S.String),
         }),
       ).annotate({ identifier: "PackageDependency" });
-    case 7:
-      return S.Array(__S(94, __c11, 6));
-  }
-}
-function __c12(j: number): any {
-  switch (j) {
-    case 0:
+    case 2:
+      return S.Array(__S(313, __c39, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
           format: S.optional(S.String),
@@ -3734,12 +3697,16 @@ function __c12(j: number): any {
           version: S.optional(S.String),
           versionRevision: S.optional(S.String),
           nextToken: S.optional(S.String),
-          dependencies: S.optional(__S(95, __c11, 7)),
+          dependencies: S.optional(__S(314, __c39, 2)),
         }),
       ).annotate({
         identifier: "ListPackageVersionDependenciesResult",
       });
-    case 1:
+  }
+}
+function __c40(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           domain: S.String.pipe(T.HttpQuery("domain")),
@@ -3766,31 +3733,35 @@ function __c12(j: number): any {
       ).annotate({
         identifier: "ListPackageVersionsRequest",
       });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           version: S.String,
           revision: S.optional(S.String),
           status: S.String,
-          origin: S.optional(__S(54, __c6, 6)),
+          origin: S.optional(__S(161, __c20, 1)),
         }),
       ).annotate({ identifier: "PackageVersionSummary" });
+    case 2:
+      return S.Array(__S(321, __c40, 1));
     case 3:
-      return S.Array(__S(98, __c12, 2));
-    case 4:
       return S.suspend(() =>
         S.Struct({
           defaultDisplayVersion: S.optional(S.String),
           format: S.optional(S.String),
           namespace: S.optional(S.String),
           package: S.optional(S.String),
-          versions: S.optional(__S(99, __c12, 3)),
+          versions: S.optional(__S(322, __c40, 2)),
           nextToken: S.optional(S.String),
         }),
       ).annotate({
         identifier: "ListPackageVersionsResult",
       });
-    case 5:
+  }
+}
+function __c41(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           repositoryPrefix: S.optional(S.String).pipe(T.HttpQuery("repository-prefix")),
@@ -3800,7 +3771,15 @@ function __c12(j: number): any {
           T.all(T.Http({ method: "POST", uri: "/v1/repositories" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "ListRepositoriesRequest" });
-    case 6:
+    case 1:
+      return S.suspend(() =>
+        S.Struct({ repositories: S.optional(__S(337, __c42, 1)), nextToken: S.optional(S.String) }),
+      ).annotate({ identifier: "ListRepositoriesResult" });
+  }
+}
+function __c42(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
@@ -3812,20 +3791,13 @@ function __c12(j: number): any {
           createdTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
         }),
       ).annotate({ identifier: "RepositorySummary" });
-    case 7:
-      return S.Array(__S(102, __c12, 6));
+    case 1:
+      return S.Array(__S(336, __c42, 0));
   }
 }
-function __c13(j: number): any {
+function __c43(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() =>
-        S.Struct({
-          repositories: S.optional(__S(103, __c12, 7)),
-          nextToken: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ListRepositoriesResult" });
-    case 1:
       return S.suspend(() =>
         S.Struct({
           domain: S.String.pipe(T.HttpQuery("domain")),
@@ -3847,16 +3819,17 @@ function __c13(j: number): any {
       ).annotate({
         identifier: "ListRepositoriesInDomainRequest",
       });
-    case 2:
+    case 1:
       return S.suspend(() =>
-        S.Struct({
-          repositories: S.optional(__S(103, __c12, 7)),
-          nextToken: S.optional(S.String),
-        }),
+        S.Struct({ repositories: S.optional(__S(337, __c42, 1)), nextToken: S.optional(S.String) }),
       ).annotate({
         identifier: "ListRepositoriesInDomainResult",
       });
-    case 3:
+  }
+}
+function __c44(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           domain: S.String.pipe(T.HttpQuery("domain")),
@@ -3877,16 +3850,20 @@ function __c13(j: number): any {
       ).annotate({
         identifier: "ListSubPackageGroupsRequest",
       });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          packageGroups: S.optional(__S(83, __c10, 3)),
+          packageGroups: S.optional(__S(280, __c35, 0)),
           nextToken: S.optional(S.String),
         }),
       ).annotate({
         identifier: "ListSubPackageGroupsResult",
       });
-    case 5:
+  }
+}
+function __c45(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ resourceArn: S.String.pipe(T.HttpQuery("resourceArn")) }).pipe(
           T.all(T.Http({ method: "POST", uri: "/v1/tags" }), svc, auth, proto, ver, rules),
@@ -3894,11 +3871,15 @@ function __c13(j: number): any {
       ).annotate({
         identifier: "ListTagsForResourceRequest",
       });
-    case 6:
-      return S.suspend(() => S.Struct({ tags: S.optional(__S(16, __c2, 0)) })).annotate({
+    case 1:
+      return S.suspend(() => S.Struct({ tags: S.optional(__S(521, __c65, 1)) })).annotate({
         identifier: "ListTagsForResourceResult",
       });
-    case 7:
+  }
+}
+function __c46(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           domain: S.String.pipe(T.HttpQuery("domain")),
@@ -3925,11 +3906,7 @@ function __c13(j: number): any {
       ).annotate({
         identifier: "PublishPackageVersionRequest",
       });
-  }
-}
-function __c14(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           format: S.optional(S.String),
@@ -3938,12 +3915,16 @@ function __c14(j: number): any {
           version: S.optional(S.String),
           versionRevision: S.optional(S.String),
           status: S.optional(S.String),
-          asset: S.optional(__S(90, __c11, 2)),
+          asset: S.optional(__S(305, __c38, 1)),
         }),
       ).annotate({
         identifier: "PublishPackageVersionResult",
       });
-    case 1:
+  }
+}
+function __c47(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           domain: S.String,
@@ -3963,7 +3944,11 @@ function __c14(j: number): any {
       ).annotate({
         identifier: "PutDomainPermissionsPolicyRequest",
       });
-    case 2:
+  }
+}
+function __c48(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           domain: S.String.pipe(T.HttpQuery("domain")),
@@ -3972,20 +3957,24 @@ function __c14(j: number): any {
           format: S.String.pipe(T.HttpQuery("format")),
           namespace: S.optional(S.String).pipe(T.HttpQuery("namespace")),
           package: S.String.pipe(T.HttpQuery("package")),
-          restrictions: __S(36, __c4, 4),
+          restrictions: __S(80, __c10, 0),
         }).pipe(
           T.all(T.Http({ method: "POST", uri: "/v1/package" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({
         identifier: "PutPackageOriginConfigurationRequest",
       });
-    case 3:
+    case 1:
       return S.suspend(() =>
-        S.Struct({ originConfiguration: S.optional(__S(37, __c4, 5)) }),
+        S.Struct({ originConfiguration: S.optional(__S(81, __c10, 1)) }),
       ).annotate({
         identifier: "PutPackageOriginConfigurationResult",
       });
-    case 4:
+  }
+}
+function __c49(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           domain: S.String.pipe(T.HttpQuery("domain")),
@@ -4006,27 +3995,39 @@ function __c14(j: number): any {
       ).annotate({
         identifier: "PutRepositoryPermissionsPolicyRequest",
       });
-    case 5:
+  }
+}
+function __c50(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           resourceArn: S.String.pipe(T.HttpQuery("resourceArn")),
-          tags: __S(16, __c2, 0),
+          tags: __S(521, __c65, 1),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/v1/tag" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "TagResourceRequest" });
-    case 6:
+  }
+}
+function __c51(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "TagResourceResult",
       });
-    case 7:
+  }
+}
+function __c52(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           resourceArn: S.String.pipe(T.HttpQuery("resourceArn")),
-          tagKeys: __S(7, __c0, 7),
+          tagKeys: __S(488, __c61, 0),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/v1/untag" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "UntagResourceRequest" });
   }
 }
-function __c15(j: number): any {
+function __c53(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4042,9 +4043,13 @@ function __c15(j: number): any {
       ).annotate({
         identifier: "UpdatePackageGroupRequest",
       });
-    case 1:
+  }
+}
+function __c54(j: number): any {
+  switch (j) {
+    case 0:
       return S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           repositoryName: S.optional(S.String),
@@ -4053,17 +4058,17 @@ function __c15(j: number): any {
       ).annotate({
         identifier: "PackageGroupAllowedRepository",
       });
+    case 2:
+      return S.Array(__S(433, __c54, 1));
     case 3:
-      return S.Array(__S(122, __c15, 2));
-    case 4:
       return S.suspend(() =>
         S.Struct({
           domain: S.String.pipe(T.HttpQuery("domain")),
           domainOwner: S.optional(S.String).pipe(T.HttpQuery("domain-owner")),
           packageGroup: S.String.pipe(T.HttpQuery("package-group")),
-          restrictions: S.optional(__S(121, __c15, 1)),
-          addAllowedRepositories: S.optional(__S(123, __c15, 3)),
-          removeAllowedRepositories: S.optional(__S(123, __c15, 3)),
+          restrictions: S.optional(__S(432, __c54, 0)),
+          addAllowedRepositories: S.optional(__S(434, __c54, 2)),
+          removeAllowedRepositories: S.optional(__S(434, __c54, 2)),
         }).pipe(
           T.all(
             T.Http({ method: "PUT", uri: "/v1/package-group-origin-configuration" }),
@@ -4077,22 +4082,22 @@ function __c15(j: number): any {
       ).annotate({
         identifier: "UpdatePackageGroupOriginConfigurationRequest",
       });
+    case 4:
+      return S.Record(S.String, /*@__PURE__*/ __S(488, __c61, 0).pipe(S.optional));
     case 5:
-      return S.Record(S.String, /*@__PURE__*/ __S(7, __c0, 7).pipe(S.optional));
+      return S.Record(S.String, /*@__PURE__*/ __S(436, __c54, 4).pipe(S.optional));
     case 6:
-      return S.Record(S.String, /*@__PURE__*/ __S(125, __c15, 5).pipe(S.optional));
-    case 7:
       return S.suspend(() =>
         S.Struct({
-          packageGroup: S.optional(__S(25, __c3, 1)),
-          allowedRepositoryUpdates: S.optional(__S(126, __c15, 6)),
+          packageGroup: S.optional(__S(12, __c1, 4)),
+          allowedRepositoryUpdates: S.optional(__S(437, __c54, 5)),
         }),
       ).annotate({
         identifier: "UpdatePackageGroupOriginConfigurationResult",
       });
   }
 }
-function __c16(j: number): any {
+function __c55(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4103,8 +4108,8 @@ function __c16(j: number): any {
           format: S.String.pipe(T.HttpQuery("format")),
           namespace: S.optional(S.String).pipe(T.HttpQuery("namespace")),
           package: S.String.pipe(T.HttpQuery("package")),
-          versions: __S(7, __c0, 7),
-          versionRevisions: S.optional(__S(8, __c1, 0)),
+          versions: __S(488, __c61, 0),
+          versionRevisions: S.optional(__S(504, __c63, 0)),
           expectedStatus: S.optional(S.String),
           targetStatus: S.String,
         }).pipe(
@@ -4120,21 +4125,206 @@ function __c16(j: number): any {
       ).annotate({
         identifier: "UpdatePackageVersionsStatusRequest",
       });
-    case 1:
+  }
+}
+function __c56(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           domain: S.String.pipe(T.HttpQuery("domain")),
           domainOwner: S.optional(S.String).pipe(T.HttpQuery("domain-owner")),
           repository: S.String.pipe(T.HttpQuery("repository")),
           description: S.optional(S.String),
-          upstreams: S.optional(__S(28, __c3, 4)),
+          upstreams: S.optional(__S(41, __c5, 1)),
         }).pipe(
           T.all(T.Http({ method: "PUT", uri: "/v1/repository" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "UpdateRepositoryRequest" });
   }
 }
-
+function __c57(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          domain: S.String.pipe(T.HttpQuery("domain")),
+          domainOwner: S.optional(S.String).pipe(T.HttpQuery("domain-owner")),
+          repository: S.String.pipe(T.HttpQuery("repository")),
+          externalConnection: S.String.pipe(T.HttpQuery("external-connection")),
+        }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/v1/repository/external-connection" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "AssociateExternalConnectionRequest",
+      });
+  }
+}
+function __c58(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({ repositoryName: S.optional(S.String) })).annotate({
+        identifier: "UpstreamRepositoryInfo",
+      });
+    case 1:
+      return S.Array(__S(464, __c58, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          externalConnectionName: S.optional(S.String),
+          packageFormat: S.optional(S.String),
+          status: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "RepositoryExternalConnectionInfo",
+      });
+    case 3:
+      return S.Array(__S(466, __c58, 2));
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.optional(S.String),
+          administratorAccount: S.optional(S.String),
+          domainName: S.optional(S.String),
+          domainOwner: S.optional(S.String),
+          arn: S.optional(S.String),
+          description: S.optional(S.String),
+          upstreams: S.optional(__S(465, __c58, 1)),
+          externalConnections: S.optional(__S(467, __c58, 3)),
+          createdTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+        }),
+      ).annotate({ identifier: "RepositoryDescription" });
+  }
+}
+function __c59(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({ repository: S.optional(__S(468, __c58, 4)) })).annotate({
+        identifier: "AssociateExternalConnectionResult",
+      });
+  }
+}
+function __c60(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          domain: S.String.pipe(T.HttpQuery("domain")),
+          domainOwner: S.optional(S.String).pipe(T.HttpQuery("domain-owner")),
+          sourceRepository: S.String.pipe(T.HttpQuery("source-repository")),
+          destinationRepository: S.String.pipe(T.HttpQuery("destination-repository")),
+          format: S.String.pipe(T.HttpQuery("format")),
+          namespace: S.optional(S.String).pipe(T.HttpQuery("namespace")),
+          package: S.String.pipe(T.HttpQuery("package")),
+          versions: S.optional(__S(488, __c61, 0)),
+          versionRevisions: S.optional(__S(504, __c63, 0)),
+          allowOverwrite: S.optional(S.Boolean),
+          includeFromUpstream: S.optional(S.Boolean),
+        }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/v1/package/versions/copy" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "CopyPackageVersionsRequest",
+      });
+  }
+}
+function __c61(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c62(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ revision: S.optional(S.String), status: S.optional(S.String) }),
+      ).annotate({
+        identifier: "SuccessfulPackageVersionInfo",
+      });
+    case 1:
+      return S.Record(S.String, /*@__PURE__*/ __S(496, __c62, 0).pipe(S.optional));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({ errorCode: S.optional(S.String), errorMessage: S.optional(S.String) }),
+      ).annotate({ identifier: "PackageVersionError" });
+    case 3:
+      return S.Record(S.String, /*@__PURE__*/ __S(498, __c62, 2).pipe(S.optional));
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          successfulVersions: S.optional(__S(497, __c62, 1)),
+          failedVersions: S.optional(__S(499, __c62, 3)),
+        }),
+      ).annotate({
+        identifier: "CopyPackageVersionsResult",
+      });
+  }
+}
+function __c63(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
+  }
+}
+function __c64(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          domain: S.String.pipe(T.HttpQuery("domain")),
+          encryptionKey: S.optional(S.String),
+          tags: S.optional(__S(521, __c65, 1)),
+        }).pipe(T.all(T.Http({ method: "POST", uri: "/v1/domain" }), svc, auth, proto, ver, rules)),
+      ).annotate({ identifier: "CreateDomainRequest" });
+  }
+}
+function __c65(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({ key: S.String, value: S.String })).annotate({
+        identifier: "Tag",
+      });
+    case 1:
+      return S.Array(__S(520, __c65, 0));
+  }
+}
+function __c66(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.optional(S.String),
+          owner: S.optional(S.String),
+          arn: S.optional(S.String),
+          status: S.optional(S.String),
+          createdTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          encryptionKey: S.optional(S.String),
+          repositoryCount: S.optional(S.Number),
+          assetSizeBytes: S.optional(S.Number),
+          s3BucketArn: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "DomainDescription" });
+    case 1:
+      return S.suspend(() => S.Struct({ domain: S.optional(__S(528, __c66, 0)) })).annotate({
+        identifier: "CreateDomainResult",
+      });
+  }
+}
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

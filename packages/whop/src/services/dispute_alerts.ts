@@ -127,7 +127,7 @@ export const getDisputeAlert: API.OperationMethod<
   WhopOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(0, __c0, 0) as any as S.Schema<GetDisputeAlertRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<DisputeAlert>,
+  output: __S(4, __c1, 0) as any as S.Schema<DisputeAlert>,
   errors: [Forbidden, NotFound],
   protocol: WhopProtocol,
   retry: Retry.Retry,
@@ -143,8 +143,8 @@ export const listDisputeAlerts: API.PaginatedOperationMethod<
   DisputeAlert
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(2, __c0, 2) as any as S.Schema<ListDisputeAlertsRequest>,
-    output: __S(5, __c0, 5) as any as S.Schema<ListDisputeAlertsResponse>,
+    input: __S(8, __c2, 0) as any as S.Schema<ListDisputeAlertsRequest>,
+    output: __S(11, __c2, 3) as any as S.Schema<ListDisputeAlertsResponse>,
     errors: [BadRequest, Forbidden],
     protocol: WhopProtocol,
     retry: Retry.Retry,
@@ -169,7 +169,11 @@ function __c0(j: number): any {
           id: S.String.pipe(T.Label()),
         }).pipe(T.Http({ method: "GET", uri: "/dispute_alerts/{id}", code: 200 })),
       ).annotate({ identifier: "GetDisputeAlertRequest" });
-    case 1:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           account_id: S.NullOr(S.String),
@@ -189,7 +193,11 @@ function __c0(j: number): any {
           updated_at: S.String,
         }),
       ).annotate({ identifier: "DisputeAlert" });
-    case 2:
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           account_id: S.optional(S.String.pipe(T.Query())),
@@ -205,9 +213,9 @@ function __c0(j: number): any {
           created_after: S.optional(S.String.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/dispute_alerts", code: 200 })),
       ).annotate({ identifier: "ListDisputeAlertsRequest" });
-    case 3:
-      return S.Array(__S(1, __c0, 1));
-    case 4:
+    case 1:
+      return S.Array(__S(4, __c1, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           end_cursor: S.NullOr(S.String),
@@ -218,18 +226,17 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "ListDisputeAlertsResponsePageInfo",
       });
-    case 5:
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          data: __S(3, __c0, 3),
-          page_info: __S(4, __c0, 4),
+          data: __S(9, __c2, 1),
+          page_info: __S(10, __c2, 2),
         }),
       ).annotate({
         identifier: "ListDisputeAlertsResponse",
       });
   }
 }
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

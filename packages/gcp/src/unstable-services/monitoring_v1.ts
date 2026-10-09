@@ -1138,8 +1138,8 @@ export const createLocationsGlobalMetricsScopesProjects: API.OperationMethod<
   CreateLocationsGlobalMetricsScopesProjectsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1, __c0, 1) as any as S.Schema<CreateLocationsGlobalMetricsScopesProjectsRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<Operation>,
+  input: __S(384, __c12, 0) as any as S.Schema<CreateLocationsGlobalMetricsScopesProjectsRequest>,
+  output: __S(417, __c13, 1) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1158,8 +1158,8 @@ export const createProjectsDashboards: API.OperationMethod<
   CreateProjectsDashboardsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(89, __c11, 1) as any as S.Schema<CreateProjectsDashboardsRequest>,
-  output: __S(88, __c11, 0) as any as S.Schema<Dashboard>,
+  input: __S(512, __c16, 0) as any as S.Schema<CreateProjectsDashboardsRequest>,
+  output: __S(625, __c19, 17) as any as S.Schema<Dashboard>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1178,8 +1178,8 @@ export const deleteLocationsGlobalMetricsScopesProjects: API.OperationMethod<
   DeleteLocationsGlobalMetricsScopesProjectsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(90, __c11, 2) as any as S.Schema<DeleteLocationsGlobalMetricsScopesProjectsRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<Operation>,
+  input: __S(672, __c21, 0) as any as S.Schema<DeleteLocationsGlobalMetricsScopesProjectsRequest>,
+  output: __S(417, __c13, 1) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1198,8 +1198,8 @@ export const deleteProjectsDashboards: API.OperationMethod<
   DeleteProjectsDashboardsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(91, __c11, 3) as any as S.Schema<DeleteProjectsDashboardsRequest>,
-  output: __S(60, __c7, 4) as any as S.Schema<Empty>,
+  input: __S(704, __c22, 0) as any as S.Schema<DeleteProjectsDashboardsRequest>,
+  output: __S(640, __c20, 0) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1213,8 +1213,8 @@ export const getLocationsGlobalMetricsScopes: API.OperationMethod<
   GetLocationsGlobalMetricsScopesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(92, __c11, 4) as any as S.Schema<GetLocationsGlobalMetricsScopesRequest>,
-  output: __S(94, __c11, 6) as any as S.Schema<MetricsScope>,
+  input: __S(736, __c23, 0) as any as S.Schema<GetLocationsGlobalMetricsScopesRequest>,
+  output: __S(769, __c24, 1) as any as S.Schema<MetricsScope>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1228,8 +1228,8 @@ export const getOperations: API.OperationMethod<
   GetOperationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(95, __c11, 7) as any as S.Schema<GetOperationsRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<Operation>,
+  input: __S(800, __c25, 0) as any as S.Schema<GetOperationsRequest>,
+  output: __S(417, __c13, 1) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1243,8 +1243,8 @@ export const getProjectsDashboards: API.OperationMethod<
   GetProjectsDashboardsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(96, __c12, 0) as any as S.Schema<GetProjectsDashboardsRequest>,
-  output: __S(88, __c11, 0) as any as S.Schema<Dashboard>,
+  input: __S(0, __c0, 0) as any as S.Schema<GetProjectsDashboardsRequest>,
+  output: __S(625, __c19, 17) as any as S.Schema<Dashboard>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1263,8 +1263,8 @@ export const labelsProjectsLocationPrometheusApiV1: API.OperationMethod<
   LabelsProjectsLocationPrometheusApiV1Error,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(98, __c12, 2) as any as S.Schema<LabelsProjectsLocationPrometheusApiV1Request>,
-  output: __S(99, __c12, 3) as any as S.Schema<HttpBody>,
+  input: __S(33, __c1, 1) as any as S.Schema<LabelsProjectsLocationPrometheusApiV1Request>,
+  output: __S(64, __c2, 0) as any as S.Schema<HttpBody>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1282,11 +1282,11 @@ export const listMetricsScopesByMonitoredProjectLocationsGlobalMetricsScopes: AP
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    100,
-    __c12,
-    4,
+    96,
+    __c3,
+    0,
   ) as any as S.Schema<ListMetricsScopesByMonitoredProjectLocationsGlobalMetricsScopesRequest>,
-  output: __S(102, __c12, 6) as any as S.Schema<ListMetricsScopesByMonitoredProjectResponse>,
+  output: __S(98, __c3, 2) as any as S.Schema<ListMetricsScopesByMonitoredProjectResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1301,8 +1301,8 @@ export const listProjectsDashboards: API.PaginatedOperationMethod<
   GcpOpContext,
   ListDashboardsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(103, __c12, 7) as any as S.Schema<ListProjectsDashboardsRequest>,
-  output: __S(105, __c13, 1) as any as S.Schema<ListDashboardsResponse>,
+  input: __S(128, __c4, 0) as any as S.Schema<ListProjectsDashboardsRequest>,
+  output: __S(130, __c4, 2) as any as S.Schema<ListDashboardsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1317,8 +1317,8 @@ export const listProjectsLocationPrometheusApiV1Metadata: API.OperationMethod<
   ListProjectsLocationPrometheusApiV1MetadataError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(106, __c13, 2) as any as S.Schema<ListProjectsLocationPrometheusApiV1MetadataRequest>,
-  output: __S(99, __c12, 3) as any as S.Schema<HttpBody>,
+  input: __S(160, __c5, 0) as any as S.Schema<ListProjectsLocationPrometheusApiV1MetadataRequest>,
+  output: __S(64, __c2, 0) as any as S.Schema<HttpBody>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1337,8 +1337,8 @@ export const patchProjectsDashboards: API.OperationMethod<
   PatchProjectsDashboardsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(107, __c13, 3) as any as S.Schema<PatchProjectsDashboardsRequest>,
-  output: __S(88, __c11, 0) as any as S.Schema<Dashboard>,
+  input: __S(192, __c6, 0) as any as S.Schema<PatchProjectsDashboardsRequest>,
+  output: __S(625, __c19, 17) as any as S.Schema<Dashboard>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1358,11 +1358,11 @@ export const query_exemplarsProjectsLocationPrometheusApiV1: API.OperationMethod
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    109,
-    __c13,
-    5,
+    225,
+    __c7,
+    1,
   ) as any as S.Schema<Query_exemplarsProjectsLocationPrometheusApiV1Request>,
-  output: __S(99, __c12, 3) as any as S.Schema<HttpBody>,
+  output: __S(64, __c2, 0) as any as S.Schema<HttpBody>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1381,8 +1381,8 @@ export const query_rangeProjectsLocationPrometheusApiV1: API.OperationMethod<
   Query_rangeProjectsLocationPrometheusApiV1Error,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(111, __c13, 7) as any as S.Schema<Query_rangeProjectsLocationPrometheusApiV1Request>,
-  output: __S(99, __c12, 3) as any as S.Schema<HttpBody>,
+  input: __S(257, __c8, 1) as any as S.Schema<Query_rangeProjectsLocationPrometheusApiV1Request>,
+  output: __S(64, __c2, 0) as any as S.Schema<HttpBody>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1401,8 +1401,8 @@ export const queryProjectsLocationPrometheusApiV1: API.OperationMethod<
   QueryProjectsLocationPrometheusApiV1Error,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(113, __c14, 1) as any as S.Schema<QueryProjectsLocationPrometheusApiV1Request>,
-  output: __S(99, __c12, 3) as any as S.Schema<HttpBody>,
+  input: __S(289, __c9, 1) as any as S.Schema<QueryProjectsLocationPrometheusApiV1Request>,
+  output: __S(64, __c2, 0) as any as S.Schema<HttpBody>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1421,8 +1421,8 @@ export const seriesProjectsLocationPrometheusApiV1: API.OperationMethod<
   SeriesProjectsLocationPrometheusApiV1Error,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(115, __c14, 3) as any as S.Schema<SeriesProjectsLocationPrometheusApiV1Request>,
-  output: __S(99, __c12, 3) as any as S.Schema<HttpBody>,
+  input: __S(321, __c10, 1) as any as S.Schema<SeriesProjectsLocationPrometheusApiV1Request>,
+  output: __S(64, __c2, 0) as any as S.Schema<HttpBody>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1436,8 +1436,8 @@ export const valuesProjectsLocationPrometheusApiV1Label: API.OperationMethod<
   ValuesProjectsLocationPrometheusApiV1LabelError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(116, __c14, 4) as any as S.Schema<ValuesProjectsLocationPrometheusApiV1LabelRequest>,
-  output: __S(99, __c12, 3) as any as S.Schema<HttpBody>,
+  input: __S(352, __c11, 0) as any as S.Schema<ValuesProjectsLocationPrometheusApiV1LabelRequest>,
+  output: __S(64, __c2, 0) as any as S.Schema<HttpBody>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1445,760 +1445,6 @@ export const valuesProjectsLocationPrometheusApiV1Label: API.OperationMethod<
 
 // Schema builders: each runs one schema initializer, on that schema's first use.
 function __c0(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          isTombstoned: S.optional(S.Boolean),
-          createTime: S.optional(S.String),
-          name: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "MonitoredProject" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(0, __c0, 0).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/{+parent}/projects",
-            baseUrl: "https://monitoring.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateLocationsGlobalMetricsScopesProjectsRequest",
-      });
-    case 2:
-      return S.Record(S.String, S.Unknown);
-    case 3:
-      return S.Array(__S(2, __c0, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          details: S.optional(__S(3, __c0, 3)),
-          message: S.optional(S.String),
-          code: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "Status" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          error: S.optional(__S(4, __c0, 4)),
-          done: S.optional(S.Boolean),
-          response: S.optional(__S(2, __c0, 2)),
-          metadata: S.optional(__S(2, __c0, 2)),
-          name: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Operation" });
-    case 6:
-      return S.Record(S.String, S.String);
-    case 7:
-      return S.Array(S.String);
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          type: S.optional(S.String),
-          labels: S.optional(__S(6, __c0, 6)),
-        }),
-      ).annotate({ identifier: "MonitoredResource" });
-    case 1:
-      return S.Array(__S(8, __c1, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          policyNames: S.optional(__S(7, __c0, 7)),
-          monitoredResources: S.optional(__S(9, __c1, 1)),
-        }),
-      ).annotate({ identifier: "IncidentList" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          templateVariable: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "FilterControl" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          comparator: S.optional(S.String),
-          templateVariable: S.optional(S.String),
-          templateVariableValue: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "TemplateVariableCondition",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          templateVariableCondition: S.optional(__S(12, __c1, 4)),
-        }),
-      ).annotate({ identifier: "VisibilityCondition" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          intValue: S.optional(S.String),
-          doubleValue: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "Parameter" });
-    case 7:
-      return S.Array(__S(14, __c1, 6));
-  }
-}
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          type: S.optional(S.String),
-          parameters: S.optional(__S(15, __c1, 7)),
-        }),
-      ).annotate({ identifier: "AggregationFunction" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          column: S.optional(S.String),
-          aggregationFunction: S.optional(__S(16, __c2, 0)),
-        }),
-      ).annotate({ identifier: "Measure" });
-    case 2:
-      return S.Array(__S(17, __c2, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          sql: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "OpsAnalyticsQuery" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          perSeriesAligner: S.optional(S.String),
-          alignmentPeriod: S.optional(S.String),
-          crossSeriesReducer: S.optional(S.String),
-          groupByFields: S.optional(__S(7, __c0, 7)),
-        }),
-      ).annotate({ identifier: "Aggregation" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          numTimeSeries: S.optional(S.Number),
-          rankingMethod: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "StatisticalTimeSeriesFilter",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          startTime: S.optional(S.String),
-          endTime: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Interval" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          rankingMethod: S.optional(S.String),
-          interval: S.optional(__S(22, __c2, 6)),
-          numTimeSeries: S.optional(S.Number),
-          direction: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "PickTimeSeriesFilter" });
-  }
-}
-function __c3(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          aggregation: S.optional(__S(20, __c2, 4)),
-          statisticalTimeSeriesFilter: S.optional(__S(21, __c2, 5)),
-          filter: S.optional(S.String),
-          pickTimeSeriesFilter: S.optional(__S(23, __c2, 7)),
-          secondaryAggregation: S.optional(__S(20, __c2, 4)),
-        }),
-      ).annotate({ identifier: "TimeSeriesFilter" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          value: S.optional(__S(7, __c0, 7)),
-          key: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "SpanAttributeFilter" });
-    case 2:
-      return S.Array(__S(25, __c3, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          displayNames: S.optional(__S(7, __c0, 7)),
-          applicationIds: S.optional(__S(7, __c0, 7)),
-          apphubWorkloads: S.optional(__S(7, __c0, 7)),
-          isRootSpan: S.optional(S.Boolean),
-          services: S.optional(__S(7, __c0, 7)),
-          kinds: S.optional(__S(7, __c0, 7)),
-          maxDuration: S.optional(S.String),
-          status: S.optional(__S(7, __c0, 7)),
-          apphubServices: S.optional(__S(7, __c0, 7)),
-          minDuration: S.optional(S.String),
-          attributes: S.optional(__S(26, __c3, 2)),
-        }),
-      ).annotate({ identifier: "SpanFilters" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          spanFilters: S.optional(__S(27, __c3, 3)),
-          spanDataValue: S.optional(S.String),
-          resourceContainer: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "TraceQuery" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          filter: S.optional(S.String),
-          aggregation: S.optional(__S(20, __c2, 4)),
-        }),
-      ).annotate({ identifier: "RatioPart" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          pickTimeSeriesFilter: S.optional(__S(23, __c2, 7)),
-          secondaryAggregation: S.optional(__S(20, __c2, 4)),
-          denominator: S.optional(__S(29, __c3, 5)),
-          numerator: S.optional(__S(29, __c3, 5)),
-          statisticalTimeSeriesFilter: S.optional(__S(21, __c2, 5)),
-        }),
-      ).annotate({ identifier: "TimeSeriesFilterRatio" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          timeSeriesQueryLanguage: S.optional(S.String),
-          prometheusQuery: S.optional(S.String),
-          opsAnalyticsQuery: S.optional(__S(19, __c2, 3)),
-          timeSeriesFilter: S.optional(__S(24, __c3, 0)),
-          traceQuery: S.optional(__S(28, __c3, 4)),
-          unitOverride: S.optional(S.String),
-          timeSeriesFilterRatio: S.optional(__S(30, __c3, 6)),
-          outputFullDuration: S.optional(S.Boolean),
-        }),
-      ).annotate({ identifier: "TimeSeriesQuery" });
-  }
-}
-function __c4(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          limit: S.optional(S.Number),
-          aggregationFunction: S.optional(__S(16, __c2, 0)),
-          sortOrder: S.optional(S.String),
-          column: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Breakdown" });
-    case 1:
-      return S.Array(__S(32, __c4, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          measures: S.optional(__S(18, __c2, 2)),
-          timeSeriesQuery: S.optional(__S(31, __c3, 7)),
-          breakdowns: S.optional(__S(33, __c4, 1)),
-        }),
-      ).annotate({ identifier: "TreemapDataSet" });
-    case 3:
-      return S.Array(__S(34, __c4, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          dataSets: S.optional(__S(35, __c4, 3)),
-          treemapHierarchy: S.optional(__S(7, __c0, 7)),
-        }),
-      ).annotate({ identifier: "Treemap" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          filter: S.optional(S.String),
-          resourceNames: S.optional(__S(7, __c0, 7)),
-        }),
-      ).annotate({ identifier: "LogsPanel" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          services: S.optional(__S(7, __c0, 7)),
-          projectNames: S.optional(__S(7, __c0, 7)),
-          versions: S.optional(__S(7, __c0, 7)),
-        }),
-      ).annotate({ identifier: "ErrorReportingPanel" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "AlertChart" });
-  }
-}
-function __c5(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          label: S.optional(S.String),
-          targetAxis: S.optional(S.String),
-          value: S.optional(S.Number),
-          color: S.optional(S.String),
-          direction: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Threshold" });
-    case 1:
-      return S.Array(__S(40, __c5, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          label: S.optional(S.String),
-          scale: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Axis" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          columnType: S.optional(S.String),
-          sortColumn: S.optional(S.String),
-          xMax: S.optional(S.Number),
-          timeBinSize: S.optional(S.String),
-          sortOrder: S.optional(S.String),
-          numericBinSize: S.optional(S.Number),
-          xMin: S.optional(S.Number),
-          column: S.optional(S.String),
-          floatBinSize: S.optional(S.Number),
-          maxBinCount: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "Dimension" });
-    case 4:
-      return S.Array(__S(43, __c5, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          column: S.optional(S.String),
-          direction: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ColumnSortingOptions" });
-    case 6:
-      return S.Array(__S(45, __c5, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          minAlignmentPeriod: S.optional(S.String),
-          timeSeriesQuery: S.optional(__S(31, __c3, 7)),
-          legendTemplate: S.optional(S.String),
-          dimensions: S.optional(__S(44, __c5, 4)),
-          targetAxis: S.optional(S.String),
-          plotType: S.optional(S.String),
-          breakdowns: S.optional(__S(33, __c4, 1)),
-          sort: S.optional(__S(46, __c5, 6)),
-          measures: S.optional(__S(18, __c2, 2)),
-        }),
-      ).annotate({ identifier: "DataSet" });
-  }
-}
-function __c6(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(47, __c5, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          mode: S.optional(S.String),
-          displayHorizontal: S.optional(S.Boolean),
-        }),
-      ).annotate({ identifier: "ChartOptions" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          thresholds: S.optional(__S(41, __c5, 1)),
-          xAxis: S.optional(__S(42, __c5, 2)),
-          yAxis: S.optional(__S(42, __c5, 2)),
-          dataSets: S.optional(__S(48, __c6, 0)),
-          y2Axis: S.optional(__S(42, __c5, 2)),
-          timeshiftDuration: S.optional(S.String),
-          chartOptions: S.optional(__S(49, __c6, 1)),
-        }),
-      ).annotate({ identifier: "XyChart" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          shownColumns: S.optional(__S(7, __c0, 7)),
-        }),
-      ).annotate({ identifier: "TableDisplayOptions" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          timeSeriesQuery: S.optional(__S(31, __c3, 7)),
-          tableDisplayOptions: S.optional(__S(51, __c6, 3)),
-          minAlignmentPeriod: S.optional(S.String),
-          tableTemplate: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "TableDataSet" });
-    case 5:
-      return S.Array(__S(52, __c6, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          thresholds: S.optional(__S(41, __c5, 1)),
-          displayName: S.optional(S.String),
-          alignment: S.optional(S.String),
-          visible: S.optional(S.Boolean),
-          column: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ColumnSettings" });
-    case 7:
-      return S.Array(__S(54, __c6, 6));
-  }
-}
-function __c7(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          metricVisualization: S.optional(S.String),
-          dataSets: S.optional(__S(53, __c6, 5)),
-          columnSettings: S.optional(__S(55, __c6, 7)),
-        }),
-      ).annotate({ identifier: "TimeSeriesTable" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          collapsed: S.optional(S.Boolean),
-        }),
-      ).annotate({ identifier: "CollapsibleGroup" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          absoluteWindow: S.optional(__S(22, __c2, 6)),
-          relativeDuration: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "TimeRange" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          subtitle: S.optional(S.String),
-          dividerBelow: S.optional(S.Boolean),
-        }),
-      ).annotate({ identifier: "SectionHeader" });
-    case 4:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "Empty",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          lowerBound: S.optional(S.Number),
-          upperBound: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "GaugeView" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          sparkChartType: S.optional(S.String),
-          minAlignmentPeriod: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "SparkChartView" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          dimensions: S.optional(__S(44, __c5, 4)),
-          timeSeriesQuery: S.optional(__S(31, __c3, 7)),
-          blankView: S.optional(__S(60, __c7, 4)),
-          gaugeView: S.optional(__S(61, __c7, 5)),
-          sparkChartView: S.optional(__S(62, __c7, 6)),
-          measures: S.optional(__S(18, __c2, 2)),
-          thresholds: S.optional(__S(41, __c5, 1)),
-          breakdowns: S.optional(__S(33, __c4, 1)),
-        }),
-      ).annotate({ identifier: "Scorecard" });
-  }
-}
-function __c8(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          timeSeriesQuery: S.optional(__S(31, __c3, 7)),
-          dimensions: S.optional(__S(44, __c5, 4)),
-          measures: S.optional(__S(18, __c2, 2)),
-          minAlignmentPeriod: S.optional(S.String),
-          sliceNameTemplate: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "PieChartDataSet" });
-    case 1:
-      return S.Array(__S(64, __c8, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          showLabels: S.optional(S.Boolean),
-          chartType: S.optional(S.String),
-          dataSets: S.optional(__S(65, __c8, 1)),
-        }),
-      ).annotate({ identifier: "PieChart" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          pointerLocation: S.optional(S.String),
-          textColor: S.optional(S.String),
-          verticalAlignment: S.optional(S.String),
-          padding: S.optional(S.String),
-          fontSize: S.optional(S.String),
-          horizontalAlignment: S.optional(S.String),
-          backgroundColor: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "TextStyle" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          content: S.optional(S.String),
-          style: S.optional(__S(67, __c8, 3)),
-          format: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Text" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          displayType: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "SingleViewGroup" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          incidentList: S.optional(__S(10, __c1, 2)),
-          id: S.optional(S.String),
-          filterControl: S.optional(__S(11, __c1, 3)),
-          visibilityCondition: S.optional(__S(13, __c1, 5)),
-          treemap: S.optional(__S(36, __c4, 4)),
-          logsPanel: S.optional(__S(37, __c4, 5)),
-          errorReportingPanel: S.optional(__S(38, __c4, 6)),
-          alertChart: S.optional(__S(39, __c4, 7)),
-          xyChart: S.optional(__S(50, __c6, 2)),
-          timeSeriesTable: S.optional(__S(56, __c7, 0)),
-          collapsibleGroup: S.optional(__S(57, __c7, 1)),
-          timeRange: S.optional(__S(58, __c7, 2)),
-          sectionHeader: S.optional(__S(59, __c7, 3)),
-          scorecard: S.optional(__S(63, __c7, 7)),
-          pieChart: S.optional(__S(66, __c8, 2)),
-          text: S.optional(__S(68, __c8, 4)),
-          title: S.optional(S.String),
-          singleViewGroup: S.optional(__S(69, __c8, 5)),
-          blank: S.optional(__S(60, __c7, 4)),
-        }),
-      ).annotate({ identifier: "Widget" });
-    case 7:
-      return S.Array(__S(70, __c8, 6));
-  }
-}
-function __c9(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          weight: S.optional(S.String),
-          widgets: S.optional(__S(71, __c8, 7)),
-        }),
-      ).annotate({ identifier: "Column" });
-    case 1:
-      return S.Array(__S(72, __c9, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          columns: S.optional(__S(73, __c9, 1)),
-        }),
-      ).annotate({ identifier: "ColumnLayout" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          yPos: S.optional(S.Number),
-          height: S.optional(S.Number),
-          width: S.optional(S.Number),
-          widget: S.optional(__S(70, __c8, 6)),
-          xPos: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "Tile" });
-    case 4:
-      return S.Array(__S(75, __c9, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          columns: S.optional(S.Number),
-          tiles: S.optional(__S(76, __c9, 4)),
-        }),
-      ).annotate({ identifier: "MosaicLayout" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          widgets: S.optional(__S(71, __c8, 7)),
-          weight: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Row" });
-    case 7:
-      return S.Array(__S(78, __c9, 6));
-  }
-}
-function __c10(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          rows: S.optional(__S(79, __c9, 7)),
-        }),
-      ).annotate({ identifier: "RowLayout" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          columns: S.optional(S.String),
-          widgets: S.optional(__S(71, __c8, 7)),
-        }),
-      ).annotate({ identifier: "GridLayout" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          enabled: S.optional(S.Boolean),
-          filter: S.optional(S.String),
-          displayName: S.optional(S.String),
-          resourceNames: S.optional(__S(7, __c0, 7)),
-          eventType: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "EventAnnotation" });
-    case 3:
-      return S.Array(__S(82, __c10, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          defaultResourceNames: S.optional(__S(7, __c0, 7)),
-          eventAnnotations: S.optional(__S(83, __c10, 3)),
-        }),
-      ).annotate({ identifier: "DashboardAnnotations" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          values: S.optional(__S(7, __c0, 7)),
-        }),
-      ).annotate({ identifier: "StringArray" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          filterType: S.optional(S.String),
-          labelKey: S.optional(S.String),
-          valueType: S.optional(S.String),
-          stringArrayValue: S.optional(__S(85, __c10, 5)),
-          stringValue: S.optional(S.String),
-          timeSeriesQuery: S.optional(__S(31, __c3, 7)),
-          templateVariable: S.optional(S.String),
-          stringArray: S.optional(__S(85, __c10, 5)),
-        }),
-      ).annotate({ identifier: "DashboardFilter" });
-    case 7:
-      return S.Array(__S(86, __c10, 6));
-  }
-}
-function __c11(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          labels: S.optional(__S(6, __c0, 6)),
-          etag: S.optional(S.String),
-          columnLayout: S.optional(__S(74, __c9, 2)),
-          mosaicLayout: S.optional(__S(77, __c9, 5)),
-          rowLayout: S.optional(__S(80, __c10, 0)),
-          name: S.optional(S.String),
-          displayName: S.optional(S.String),
-          gridLayout: S.optional(__S(81, __c10, 1)),
-          annotations: S.optional(__S(84, __c10, 4)),
-          dashboardFilters: S.optional(__S(87, __c10, 7)),
-        }),
-      ).annotate({ identifier: "Dashboard" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          validateOnly: S.optional(S.Boolean.pipe(T.Query())),
-          parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(88, __c11, 0).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/{+parent}/dashboards",
-            baseUrl: "https://monitoring.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateProjectsDashboardsRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "v1/{+name}",
-            baseUrl: "https://monitoring.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteLocationsGlobalMetricsScopesProjectsRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "v1/{+name}",
-            baseUrl: "https://monitoring.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteProjectsDashboardsRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v1/{+name}",
-            baseUrl: "https://monitoring.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetLocationsGlobalMetricsScopesRequest",
-      });
-    case 5:
-      return S.Array(__S(0, __c0, 0));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          updateTime: S.optional(S.String),
-          monitoredProjects: S.optional(__S(93, __c11, 5)),
-          name: S.optional(S.String),
-          createTime: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "MetricsScope" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v1/{+name}",
-            baseUrl: "https://monitoring.googleapis.com/",
-          }),
-        ),
-      ).annotate({ identifier: "GetOperationsRequest" });
-  }
-}
-function __c12(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2214,7 +1460,11 @@ function __c12(j: number): any {
       ).annotate({
         identifier: "GetProjectsDashboardsRequest",
       });
-    case 1:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           end: S.optional(S.String),
@@ -2222,12 +1472,12 @@ function __c12(j: number): any {
           start: S.optional(S.String),
         }),
       ).annotate({ identifier: "QueryLabelsRequest" });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
           location: S.String.pipe(T.Label()),
-          body: S.optional(__S(97, __c12, 1).pipe(T.HttpBody())),
+          body: S.optional(__S(32, __c1, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -2238,15 +1488,23 @@ function __c12(j: number): any {
       ).annotate({
         identifier: "LabelsProjectsLocationPrometheusApiV1Request",
       });
-    case 3:
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           contentType: S.optional(S.String),
           data: S.optional(S.String),
-          extensions: S.optional(__S(3, __c0, 3)),
+          extensions: S.optional(__S(449, __c14, 1)),
         }),
       ).annotate({ identifier: "HttpBody" });
-    case 4:
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           monitoredResourceContainer: S.optional(S.String.pipe(T.Query())),
@@ -2260,17 +1518,21 @@ function __c12(j: number): any {
       ).annotate({
         identifier: "ListMetricsScopesByMonitoredProjectLocationsGlobalMetricsScopesRequest",
       });
-    case 5:
-      return S.Array(__S(94, __c11, 6));
-    case 6:
+    case 1:
+      return S.Array(__S(769, __c24, 1));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          metricsScopes: S.optional(__S(101, __c12, 5)),
+          metricsScopes: S.optional(__S(97, __c3, 1)),
         }),
       ).annotate({
         identifier: "ListMetricsScopesByMonitoredProjectResponse",
       });
-    case 7:
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
@@ -2286,20 +1548,20 @@ function __c12(j: number): any {
       ).annotate({
         identifier: "ListProjectsDashboardsRequest",
       });
-  }
-}
-function __c13(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(88, __c11, 0));
     case 1:
+      return S.Array(__S(625, __c19, 17));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          dashboards: S.optional(__S(104, __c13, 0)),
+          dashboards: S.optional(__S(129, __c4, 1)),
         }),
       ).annotate({ identifier: "ListDashboardsResponse" });
-    case 2:
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           location: S.String.pipe(T.Label()),
@@ -2316,12 +1578,16 @@ function __c13(j: number): any {
       ).annotate({
         identifier: "ListProjectsLocationPrometheusApiV1MetadataRequest",
       });
-    case 3:
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
           validateOnly: S.optional(S.Boolean.pipe(T.Query())),
-          body: S.optional(__S(88, __c11, 0).pipe(T.HttpBody())),
+          body: S.optional(__S(625, __c19, 17).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -2332,7 +1598,11 @@ function __c13(j: number): any {
       ).annotate({
         identifier: "PatchProjectsDashboardsRequest",
       });
-    case 4:
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           start: S.optional(S.String),
@@ -2340,12 +1610,12 @@ function __c13(j: number): any {
           end: S.optional(S.String),
         }),
       ).annotate({ identifier: "QueryExemplarsRequest" });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
           location: S.String.pipe(T.Label()),
-          body: S.optional(__S(108, __c13, 4).pipe(T.HttpBody())),
+          body: S.optional(__S(224, __c7, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -2356,7 +1626,11 @@ function __c13(j: number): any {
       ).annotate({
         identifier: "Query_exemplarsProjectsLocationPrometheusApiV1Request",
       });
-    case 6:
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           end: S.optional(S.String),
@@ -2366,12 +1640,12 @@ function __c13(j: number): any {
           timeout: S.optional(S.String),
         }),
       ).annotate({ identifier: "QueryRangeRequest" });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           location: S.String.pipe(T.Label()),
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(110, __c13, 6).pipe(T.HttpBody())),
+          body: S.optional(__S(256, __c8, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -2384,7 +1658,7 @@ function __c13(j: number): any {
       });
   }
 }
-function __c14(j: number): any {
+function __c9(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2399,7 +1673,7 @@ function __c14(j: number): any {
         S.Struct({
           name: S.String.pipe(T.Label()),
           location: S.String.pipe(T.Label()),
-          body: S.optional(__S(112, __c14, 0).pipe(T.HttpBody())),
+          body: S.optional(__S(288, __c9, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -2410,19 +1684,23 @@ function __c14(j: number): any {
       ).annotate({
         identifier: "QueryProjectsLocationPrometheusApiV1Request",
       });
-    case 2:
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           end: S.optional(S.String),
           start: S.optional(S.String),
         }),
       ).annotate({ identifier: "QuerySeriesRequest" });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           location: S.String.pipe(T.Label()),
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(114, __c14, 2).pipe(T.HttpBody())),
+          body: S.optional(__S(320, __c10, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -2433,7 +1711,11 @@ function __c14(j: number): any {
       ).annotate({
         identifier: "SeriesProjectsLocationPrometheusApiV1Request",
       });
-    case 4:
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           end: S.optional(S.String.pipe(T.Query())),
@@ -2454,7 +1736,768 @@ function __c14(j: number): any {
       });
   }
 }
-
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          parent: S.String.pipe(T.Label()),
+          body: S.optional(__S(480, __c15, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/{+parent}/projects",
+            baseUrl: "https://monitoring.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateLocationsGlobalMetricsScopesProjectsRequest",
+      });
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          details: S.optional(__S(449, __c14, 1)),
+          message: S.optional(S.String),
+          code: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "Status" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          error: S.optional(__S(416, __c13, 0)),
+          done: S.optional(S.Boolean),
+          response: S.optional(__S(448, __c14, 0)),
+          metadata: S.optional(__S(448, __c14, 0)),
+          name: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Operation" });
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, S.Unknown);
+    case 1:
+      return S.Array(__S(448, __c14, 0));
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          isTombstoned: S.optional(S.Boolean),
+          createTime: S.optional(S.String),
+          name: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "MonitoredProject" });
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          validateOnly: S.optional(S.Boolean.pipe(T.Query())),
+          parent: S.String.pipe(T.Label()),
+          body: S.optional(__S(625, __c19, 17).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/{+parent}/dashboards",
+            baseUrl: "https://monitoring.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateProjectsDashboardsRequest",
+      });
+  }
+}
+function __c17(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, S.String);
+    case 1:
+      return S.Array(S.String);
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          type: S.optional(S.String),
+          labels: S.optional(__S(544, __c17, 0)),
+        }),
+      ).annotate({ identifier: "MonitoredResource" });
+    case 3:
+      return S.Array(__S(546, __c17, 2));
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          policyNames: S.optional(__S(545, __c17, 1)),
+          monitoredResources: S.optional(__S(547, __c17, 3)),
+        }),
+      ).annotate({ identifier: "IncidentList" });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          templateVariable: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "FilterControl" });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          comparator: S.optional(S.String),
+          templateVariable: S.optional(S.String),
+          templateVariableValue: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "TemplateVariableCondition",
+      });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          templateVariableCondition: S.optional(__S(550, __c17, 6)),
+        }),
+      ).annotate({ identifier: "VisibilityCondition" });
+    case 8:
+      return S.suspend(() =>
+        S.Struct({
+          intValue: S.optional(S.String),
+          doubleValue: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "Parameter" });
+    case 9:
+      return S.Array(__S(552, __c17, 8));
+    case 10:
+      return S.suspend(() =>
+        S.Struct({
+          type: S.optional(S.String),
+          parameters: S.optional(__S(553, __c17, 9)),
+        }),
+      ).annotate({ identifier: "AggregationFunction" });
+    case 11:
+      return S.suspend(() =>
+        S.Struct({
+          column: S.optional(S.String),
+          aggregationFunction: S.optional(__S(554, __c17, 10)),
+        }),
+      ).annotate({ identifier: "Measure" });
+    case 12:
+      return S.Array(__S(555, __c17, 11));
+    case 13:
+      return S.suspend(() =>
+        S.Struct({
+          sql: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "OpsAnalyticsQuery" });
+    case 14:
+      return S.suspend(() =>
+        S.Struct({
+          perSeriesAligner: S.optional(S.String),
+          alignmentPeriod: S.optional(S.String),
+          crossSeriesReducer: S.optional(S.String),
+          groupByFields: S.optional(__S(545, __c17, 1)),
+        }),
+      ).annotate({ identifier: "Aggregation" });
+    case 15:
+      return S.suspend(() =>
+        S.Struct({
+          numTimeSeries: S.optional(S.Number),
+          rankingMethod: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "StatisticalTimeSeriesFilter",
+      });
+    case 16:
+      return S.suspend(() =>
+        S.Struct({
+          startTime: S.optional(S.String),
+          endTime: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Interval" });
+    case 17:
+      return S.suspend(() =>
+        S.Struct({
+          rankingMethod: S.optional(S.String),
+          interval: S.optional(__S(560, __c17, 16)),
+          numTimeSeries: S.optional(S.Number),
+          direction: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "PickTimeSeriesFilter" });
+    case 18:
+      return S.suspend(() =>
+        S.Struct({
+          aggregation: S.optional(__S(558, __c17, 14)),
+          statisticalTimeSeriesFilter: S.optional(__S(559, __c17, 15)),
+          filter: S.optional(S.String),
+          pickTimeSeriesFilter: S.optional(__S(561, __c17, 17)),
+          secondaryAggregation: S.optional(__S(558, __c17, 14)),
+        }),
+      ).annotate({ identifier: "TimeSeriesFilter" });
+    case 19:
+      return S.suspend(() =>
+        S.Struct({
+          value: S.optional(__S(545, __c17, 1)),
+          key: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "SpanAttributeFilter" });
+    case 20:
+      return S.Array(__S(563, __c17, 19));
+    case 21:
+      return S.suspend(() =>
+        S.Struct({
+          displayNames: S.optional(__S(545, __c17, 1)),
+          applicationIds: S.optional(__S(545, __c17, 1)),
+          apphubWorkloads: S.optional(__S(545, __c17, 1)),
+          isRootSpan: S.optional(S.Boolean),
+          services: S.optional(__S(545, __c17, 1)),
+          kinds: S.optional(__S(545, __c17, 1)),
+          maxDuration: S.optional(S.String),
+          status: S.optional(__S(545, __c17, 1)),
+          apphubServices: S.optional(__S(545, __c17, 1)),
+          minDuration: S.optional(S.String),
+          attributes: S.optional(__S(564, __c17, 20)),
+        }),
+      ).annotate({ identifier: "SpanFilters" });
+    case 22:
+      return S.suspend(() =>
+        S.Struct({
+          spanFilters: S.optional(__S(565, __c17, 21)),
+          spanDataValue: S.optional(S.String),
+          resourceContainer: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "TraceQuery" });
+    case 23:
+      return S.suspend(() =>
+        S.Struct({
+          filter: S.optional(S.String),
+          aggregation: S.optional(__S(558, __c17, 14)),
+        }),
+      ).annotate({ identifier: "RatioPart" });
+    case 24:
+      return S.suspend(() =>
+        S.Struct({
+          pickTimeSeriesFilter: S.optional(__S(561, __c17, 17)),
+          secondaryAggregation: S.optional(__S(558, __c17, 14)),
+          denominator: S.optional(__S(567, __c17, 23)),
+          numerator: S.optional(__S(567, __c17, 23)),
+          statisticalTimeSeriesFilter: S.optional(__S(559, __c17, 15)),
+        }),
+      ).annotate({ identifier: "TimeSeriesFilterRatio" });
+    case 25:
+      return S.suspend(() =>
+        S.Struct({
+          timeSeriesQueryLanguage: S.optional(S.String),
+          prometheusQuery: S.optional(S.String),
+          opsAnalyticsQuery: S.optional(__S(557, __c17, 13)),
+          timeSeriesFilter: S.optional(__S(562, __c17, 18)),
+          traceQuery: S.optional(__S(566, __c17, 22)),
+          unitOverride: S.optional(S.String),
+          timeSeriesFilterRatio: S.optional(__S(568, __c17, 24)),
+          outputFullDuration: S.optional(S.Boolean),
+        }),
+      ).annotate({ identifier: "TimeSeriesQuery" });
+    case 26:
+      return S.suspend(() =>
+        S.Struct({
+          limit: S.optional(S.Number),
+          aggregationFunction: S.optional(__S(554, __c17, 10)),
+          sortOrder: S.optional(S.String),
+          column: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Breakdown" });
+    case 27:
+      return S.Array(__S(570, __c17, 26));
+    case 28:
+      return S.suspend(() =>
+        S.Struct({
+          measures: S.optional(__S(556, __c17, 12)),
+          timeSeriesQuery: S.optional(__S(569, __c17, 25)),
+          breakdowns: S.optional(__S(571, __c17, 27)),
+        }),
+      ).annotate({ identifier: "TreemapDataSet" });
+    case 29:
+      return S.Array(__S(572, __c17, 28));
+    case 30:
+      return S.suspend(() =>
+        S.Struct({
+          dataSets: S.optional(__S(573, __c17, 29)),
+          treemapHierarchy: S.optional(__S(545, __c17, 1)),
+        }),
+      ).annotate({ identifier: "Treemap" });
+    case 31:
+      return S.suspend(() =>
+        S.Struct({
+          filter: S.optional(S.String),
+          resourceNames: S.optional(__S(545, __c17, 1)),
+        }),
+      ).annotate({ identifier: "LogsPanel" });
+  }
+}
+function __c18(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          services: S.optional(__S(545, __c17, 1)),
+          projectNames: S.optional(__S(545, __c17, 1)),
+          versions: S.optional(__S(545, __c17, 1)),
+        }),
+      ).annotate({ identifier: "ErrorReportingPanel" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "AlertChart" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          label: S.optional(S.String),
+          targetAxis: S.optional(S.String),
+          value: S.optional(S.Number),
+          color: S.optional(S.String),
+          direction: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Threshold" });
+    case 3:
+      return S.Array(__S(578, __c18, 2));
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          label: S.optional(S.String),
+          scale: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Axis" });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          columnType: S.optional(S.String),
+          sortColumn: S.optional(S.String),
+          xMax: S.optional(S.Number),
+          timeBinSize: S.optional(S.String),
+          sortOrder: S.optional(S.String),
+          numericBinSize: S.optional(S.Number),
+          xMin: S.optional(S.Number),
+          column: S.optional(S.String),
+          floatBinSize: S.optional(S.Number),
+          maxBinCount: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "Dimension" });
+    case 6:
+      return S.Array(__S(581, __c18, 5));
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          column: S.optional(S.String),
+          direction: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ColumnSortingOptions" });
+    case 8:
+      return S.Array(__S(583, __c18, 7));
+    case 9:
+      return S.suspend(() =>
+        S.Struct({
+          minAlignmentPeriod: S.optional(S.String),
+          timeSeriesQuery: S.optional(__S(569, __c17, 25)),
+          legendTemplate: S.optional(S.String),
+          dimensions: S.optional(__S(582, __c18, 6)),
+          targetAxis: S.optional(S.String),
+          plotType: S.optional(S.String),
+          breakdowns: S.optional(__S(571, __c17, 27)),
+          sort: S.optional(__S(584, __c18, 8)),
+          measures: S.optional(__S(556, __c17, 12)),
+        }),
+      ).annotate({ identifier: "DataSet" });
+    case 10:
+      return S.Array(__S(585, __c18, 9));
+    case 11:
+      return S.suspend(() =>
+        S.Struct({
+          mode: S.optional(S.String),
+          displayHorizontal: S.optional(S.Boolean),
+        }),
+      ).annotate({ identifier: "ChartOptions" });
+    case 12:
+      return S.suspend(() =>
+        S.Struct({
+          thresholds: S.optional(__S(579, __c18, 3)),
+          xAxis: S.optional(__S(580, __c18, 4)),
+          yAxis: S.optional(__S(580, __c18, 4)),
+          dataSets: S.optional(__S(586, __c18, 10)),
+          y2Axis: S.optional(__S(580, __c18, 4)),
+          timeshiftDuration: S.optional(S.String),
+          chartOptions: S.optional(__S(587, __c18, 11)),
+        }),
+      ).annotate({ identifier: "XyChart" });
+    case 13:
+      return S.suspend(() =>
+        S.Struct({
+          shownColumns: S.optional(__S(545, __c17, 1)),
+        }),
+      ).annotate({ identifier: "TableDisplayOptions" });
+    case 14:
+      return S.suspend(() =>
+        S.Struct({
+          timeSeriesQuery: S.optional(__S(569, __c17, 25)),
+          tableDisplayOptions: S.optional(__S(589, __c18, 13)),
+          minAlignmentPeriod: S.optional(S.String),
+          tableTemplate: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "TableDataSet" });
+    case 15:
+      return S.Array(__S(590, __c18, 14));
+    case 16:
+      return S.suspend(() =>
+        S.Struct({
+          thresholds: S.optional(__S(579, __c18, 3)),
+          displayName: S.optional(S.String),
+          alignment: S.optional(S.String),
+          visible: S.optional(S.Boolean),
+          column: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ColumnSettings" });
+    case 17:
+      return S.Array(__S(592, __c18, 16));
+    case 18:
+      return S.suspend(() =>
+        S.Struct({
+          metricVisualization: S.optional(S.String),
+          dataSets: S.optional(__S(591, __c18, 15)),
+          columnSettings: S.optional(__S(593, __c18, 17)),
+        }),
+      ).annotate({ identifier: "TimeSeriesTable" });
+    case 19:
+      return S.suspend(() =>
+        S.Struct({
+          collapsed: S.optional(S.Boolean),
+        }),
+      ).annotate({ identifier: "CollapsibleGroup" });
+    case 20:
+      return S.suspend(() =>
+        S.Struct({
+          absoluteWindow: S.optional(__S(560, __c17, 16)),
+          relativeDuration: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "TimeRange" });
+    case 21:
+      return S.suspend(() =>
+        S.Struct({
+          subtitle: S.optional(S.String),
+          dividerBelow: S.optional(S.Boolean),
+        }),
+      ).annotate({ identifier: "SectionHeader" });
+    case 22:
+      return S.suspend(() =>
+        S.Struct({
+          lowerBound: S.optional(S.Number),
+          upperBound: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "GaugeView" });
+    case 23:
+      return S.suspend(() =>
+        S.Struct({
+          sparkChartType: S.optional(S.String),
+          minAlignmentPeriod: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "SparkChartView" });
+    case 24:
+      return S.suspend(() =>
+        S.Struct({
+          dimensions: S.optional(__S(582, __c18, 6)),
+          timeSeriesQuery: S.optional(__S(569, __c17, 25)),
+          blankView: S.optional(__S(640, __c20, 0)),
+          gaugeView: S.optional(__S(598, __c18, 22)),
+          sparkChartView: S.optional(__S(599, __c18, 23)),
+          measures: S.optional(__S(556, __c17, 12)),
+          thresholds: S.optional(__S(579, __c18, 3)),
+          breakdowns: S.optional(__S(571, __c17, 27)),
+        }),
+      ).annotate({ identifier: "Scorecard" });
+    case 25:
+      return S.suspend(() =>
+        S.Struct({
+          timeSeriesQuery: S.optional(__S(569, __c17, 25)),
+          dimensions: S.optional(__S(582, __c18, 6)),
+          measures: S.optional(__S(556, __c17, 12)),
+          minAlignmentPeriod: S.optional(S.String),
+          sliceNameTemplate: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "PieChartDataSet" });
+    case 26:
+      return S.Array(__S(601, __c18, 25));
+    case 27:
+      return S.suspend(() =>
+        S.Struct({
+          showLabels: S.optional(S.Boolean),
+          chartType: S.optional(S.String),
+          dataSets: S.optional(__S(602, __c18, 26)),
+        }),
+      ).annotate({ identifier: "PieChart" });
+    case 28:
+      return S.suspend(() =>
+        S.Struct({
+          pointerLocation: S.optional(S.String),
+          textColor: S.optional(S.String),
+          verticalAlignment: S.optional(S.String),
+          padding: S.optional(S.String),
+          fontSize: S.optional(S.String),
+          horizontalAlignment: S.optional(S.String),
+          backgroundColor: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "TextStyle" });
+    case 29:
+      return S.suspend(() =>
+        S.Struct({
+          content: S.optional(S.String),
+          style: S.optional(__S(604, __c18, 28)),
+          format: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Text" });
+    case 30:
+      return S.suspend(() =>
+        S.Struct({
+          displayType: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "SingleViewGroup" });
+    case 31:
+      return S.suspend(() =>
+        S.Struct({
+          incidentList: S.optional(__S(548, __c17, 4)),
+          id: S.optional(S.String),
+          filterControl: S.optional(__S(549, __c17, 5)),
+          visibilityCondition: S.optional(__S(551, __c17, 7)),
+          treemap: S.optional(__S(574, __c17, 30)),
+          logsPanel: S.optional(__S(575, __c17, 31)),
+          errorReportingPanel: S.optional(__S(576, __c18, 0)),
+          alertChart: S.optional(__S(577, __c18, 1)),
+          xyChart: S.optional(__S(588, __c18, 12)),
+          timeSeriesTable: S.optional(__S(594, __c18, 18)),
+          collapsibleGroup: S.optional(__S(595, __c18, 19)),
+          timeRange: S.optional(__S(596, __c18, 20)),
+          sectionHeader: S.optional(__S(597, __c18, 21)),
+          scorecard: S.optional(__S(600, __c18, 24)),
+          pieChart: S.optional(__S(603, __c18, 27)),
+          text: S.optional(__S(605, __c18, 29)),
+          title: S.optional(S.String),
+          singleViewGroup: S.optional(__S(606, __c18, 30)),
+          blank: S.optional(__S(640, __c20, 0)),
+        }),
+      ).annotate({ identifier: "Widget" });
+  }
+}
+function __c19(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(607, __c18, 31));
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          weight: S.optional(S.String),
+          widgets: S.optional(__S(608, __c19, 0)),
+        }),
+      ).annotate({ identifier: "Column" });
+    case 2:
+      return S.Array(__S(609, __c19, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          columns: S.optional(__S(610, __c19, 2)),
+        }),
+      ).annotate({ identifier: "ColumnLayout" });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          yPos: S.optional(S.Number),
+          height: S.optional(S.Number),
+          width: S.optional(S.Number),
+          widget: S.optional(__S(607, __c18, 31)),
+          xPos: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "Tile" });
+    case 5:
+      return S.Array(__S(612, __c19, 4));
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          columns: S.optional(S.Number),
+          tiles: S.optional(__S(613, __c19, 5)),
+        }),
+      ).annotate({ identifier: "MosaicLayout" });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          widgets: S.optional(__S(608, __c19, 0)),
+          weight: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Row" });
+    case 8:
+      return S.Array(__S(615, __c19, 7));
+    case 9:
+      return S.suspend(() =>
+        S.Struct({
+          rows: S.optional(__S(616, __c19, 8)),
+        }),
+      ).annotate({ identifier: "RowLayout" });
+    case 10:
+      return S.suspend(() =>
+        S.Struct({
+          columns: S.optional(S.String),
+          widgets: S.optional(__S(608, __c19, 0)),
+        }),
+      ).annotate({ identifier: "GridLayout" });
+    case 11:
+      return S.suspend(() =>
+        S.Struct({
+          enabled: S.optional(S.Boolean),
+          filter: S.optional(S.String),
+          displayName: S.optional(S.String),
+          resourceNames: S.optional(__S(545, __c17, 1)),
+          eventType: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "EventAnnotation" });
+    case 12:
+      return S.Array(__S(619, __c19, 11));
+    case 13:
+      return S.suspend(() =>
+        S.Struct({
+          defaultResourceNames: S.optional(__S(545, __c17, 1)),
+          eventAnnotations: S.optional(__S(620, __c19, 12)),
+        }),
+      ).annotate({ identifier: "DashboardAnnotations" });
+    case 14:
+      return S.suspend(() =>
+        S.Struct({
+          values: S.optional(__S(545, __c17, 1)),
+        }),
+      ).annotate({ identifier: "StringArray" });
+    case 15:
+      return S.suspend(() =>
+        S.Struct({
+          filterType: S.optional(S.String),
+          labelKey: S.optional(S.String),
+          valueType: S.optional(S.String),
+          stringArrayValue: S.optional(__S(622, __c19, 14)),
+          stringValue: S.optional(S.String),
+          timeSeriesQuery: S.optional(__S(569, __c17, 25)),
+          templateVariable: S.optional(S.String),
+          stringArray: S.optional(__S(622, __c19, 14)),
+        }),
+      ).annotate({ identifier: "DashboardFilter" });
+    case 16:
+      return S.Array(__S(623, __c19, 15));
+    case 17:
+      return S.suspend(() =>
+        S.Struct({
+          labels: S.optional(__S(544, __c17, 0)),
+          etag: S.optional(S.String),
+          columnLayout: S.optional(__S(611, __c19, 3)),
+          mosaicLayout: S.optional(__S(614, __c19, 6)),
+          rowLayout: S.optional(__S(617, __c19, 9)),
+          name: S.optional(S.String),
+          displayName: S.optional(S.String),
+          gridLayout: S.optional(__S(618, __c19, 10)),
+          annotations: S.optional(__S(621, __c19, 13)),
+          dashboardFilters: S.optional(__S(624, __c19, 16)),
+        }),
+      ).annotate({ identifier: "Dashboard" });
+  }
+}
+function __c20(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "Empty",
+      });
+  }
+}
+function __c21(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "v1/{+name}",
+            baseUrl: "https://monitoring.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteLocationsGlobalMetricsScopesProjectsRequest",
+      });
+  }
+}
+function __c22(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "v1/{+name}",
+            baseUrl: "https://monitoring.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteProjectsDashboardsRequest",
+      });
+  }
+}
+function __c23(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v1/{+name}",
+            baseUrl: "https://monitoring.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetLocationsGlobalMetricsScopesRequest",
+      });
+  }
+}
+function __c24(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(480, __c15, 0));
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          updateTime: S.optional(S.String),
+          monitoredProjects: S.optional(__S(768, __c24, 0)),
+          name: S.optional(S.String),
+          createTime: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "MetricsScope" });
+  }
+}
+function __c25(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v1/{+name}",
+            baseUrl: "https://monitoring.googleapis.com/",
+          }),
+        ),
+      ).annotate({ identifier: "GetOperationsRequest" });
+  }
+}
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

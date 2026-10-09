@@ -665,8 +665,8 @@ export const copyImageSet: API.OperationMethod<
   CopyImageSetError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(4, __c0, 4) as any as S.Schema<CopyImageSetRequest>,
-  output: __S(6, __c0, 6) as any as S.Schema<CopyImageSetResponse>,
+  input: __S(356, __c22, 4) as any as S.Schema<CopyImageSetRequest>,
+  output: __S(358, __c22, 6) as any as S.Schema<CopyImageSetResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -700,8 +700,8 @@ export const createDatastore: API.OperationMethod<
   CreateDatastoreError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(8, __c1, 0) as any as S.Schema<CreateDatastoreRequest>,
-  output: __S(9, __c1, 1) as any as S.Schema<CreateDatastoreResponse>,
+  input: __S(0, __c0, 0) as any as S.Schema<CreateDatastoreRequest>,
+  output: __S(16, __c1, 0) as any as S.Schema<CreateDatastoreResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -735,8 +735,8 @@ export const deleteDatastore: API.OperationMethod<
   DeleteDatastoreError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(10, __c1, 2) as any as S.Schema<DeleteDatastoreRequest>,
-  output: __S(9, __c1, 1) as any as S.Schema<DeleteDatastoreResponse>,
+  input: __S(48, __c3, 0) as any as S.Schema<DeleteDatastoreRequest>,
+  output: __S(16, __c1, 0) as any as S.Schema<DeleteDatastoreResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -767,8 +767,8 @@ export const deleteImageSet: API.OperationMethod<
   DeleteImageSetError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(11, __c1, 3) as any as S.Schema<DeleteImageSetRequest>,
-  output: __S(12, __c1, 4) as any as S.Schema<DeleteImageSetResponse>,
+  input: __S(64, __c4, 0) as any as S.Schema<DeleteImageSetRequest>,
+  output: __S(65, __c4, 1) as any as S.Schema<DeleteImageSetResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -799,8 +799,8 @@ export const getDatastore: API.OperationMethod<
   GetDatastoreError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(13, __c1, 5) as any as S.Schema<GetDatastoreRequest>,
-  output: __S(15, __c1, 7) as any as S.Schema<GetDatastoreResponse>,
+  input: __S(80, __c5, 0) as any as S.Schema<GetDatastoreRequest>,
+  output: __S(82, __c5, 2) as any as S.Schema<GetDatastoreResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -832,8 +832,8 @@ export const getDICOMImportJob: API.OperationMethod<
   GetDICOMImportJobError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(16, __c2, 0) as any as S.Schema<GetDICOMImportJobRequest>,
-  output: __S(22, __c2, 6) as any as S.Schema<GetDICOMImportJobResponse>,
+  input: __S(96, __c6, 0) as any as S.Schema<GetDICOMImportJobRequest>,
+  output: __S(98, __c6, 2) as any as S.Schema<GetDICOMImportJobResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -866,8 +866,8 @@ export const getImageFrame: API.OperationMethod<
   GetImageFrameError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(24, __c3, 0) as any as S.Schema<GetImageFrameRequest>,
-  output: __S(25, __c3, 1) as any as S.Schema<GetImageFrameResponse>,
+  input: __S(129, __c8, 1) as any as S.Schema<GetImageFrameRequest>,
+  output: __S(130, __c8, 2) as any as S.Schema<GetImageFrameResponse>,
   errors: [
     AccessDeniedException,
     BadRequestException,
@@ -901,8 +901,8 @@ export const getImageSet: API.OperationMethod<
   GetImageSetError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(26, __c3, 2) as any as S.Schema<GetImageSetRequest>,
-  output: __S(28, __c3, 4) as any as S.Schema<GetImageSetResponse>,
+  input: __S(144, __c9, 0) as any as S.Schema<GetImageSetRequest>,
+  output: __S(145, __c9, 1) as any as S.Schema<GetImageSetResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -934,8 +934,8 @@ export const getImageSetMetadata: API.OperationMethod<
   GetImageSetMetadataError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(29, __c3, 5) as any as S.Schema<GetImageSetMetadataRequest>,
-  output: __S(30, __c3, 6) as any as S.Schema<GetImageSetMetadataResponse>,
+  input: __S(176, __c11, 0) as any as S.Schema<GetImageSetMetadataRequest>,
+  output: __S(177, __c11, 1) as any as S.Schema<GetImageSetMetadataResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -966,8 +966,8 @@ export const listDatastores: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   DatastoreSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(31, __c3, 7) as any as S.Schema<ListDatastoresRequest>,
-  output: __S(34, __c4, 2) as any as S.Schema<ListDatastoresResponse>,
+  input: __S(192, __c12, 0) as any as S.Schema<ListDatastoresRequest>,
+  output: __S(195, __c12, 3) as any as S.Schema<ListDatastoresResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1003,8 +1003,8 @@ export const listDICOMImportJobs: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   DICOMImportJobSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(35, __c4, 3) as any as S.Schema<ListDICOMImportJobsRequest>,
-  output: __S(38, __c4, 6) as any as S.Schema<ListDICOMImportJobsResponse>,
+  input: __S(208, __c13, 0) as any as S.Schema<ListDICOMImportJobsRequest>,
+  output: __S(211, __c13, 3) as any as S.Schema<ListDICOMImportJobsResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1042,8 +1042,8 @@ export const listImageSetVersions: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   ImageSetProperties
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(39, __c4, 7) as any as S.Schema<ListImageSetVersionsRequest>,
-  output: __S(42, __c5, 2) as any as S.Schema<ListImageSetVersionsResponse>,
+  input: __S(224, __c14, 0) as any as S.Schema<ListImageSetVersionsRequest>,
+  output: __S(227, __c14, 3) as any as S.Schema<ListImageSetVersionsResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1080,8 +1080,8 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(43, __c5, 3) as any as S.Schema<ListTagsForResourceRequest>,
-  output: __S(44, __c5, 4) as any as S.Schema<ListTagsForResourceResponse>,
+  input: __S(240, __c15, 0) as any as S.Schema<ListTagsForResourceRequest>,
+  output: __S(241, __c15, 1) as any as S.Schema<ListTagsForResourceResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1116,8 +1116,8 @@ export const searchImageSets: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   ImageSetsMetadataSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(52, __c6, 4) as any as S.Schema<SearchImageSetsRequest>,
-  output: __S(56, __c7, 0) as any as S.Schema<SearchImageSetsResponse>,
+  input: __S(263, __c16, 7) as any as S.Schema<SearchImageSetsRequest>,
+  output: __S(267, __c16, 11) as any as S.Schema<SearchImageSetsResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1156,8 +1156,8 @@ export const startDICOMImportJob: API.OperationMethod<
   StartDICOMImportJobError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(57, __c7, 1) as any as S.Schema<StartDICOMImportJobRequest>,
-  output: __S(58, __c7, 2) as any as S.Schema<StartDICOMImportJobResponse>,
+  input: __S(272, __c17, 0) as any as S.Schema<StartDICOMImportJobRequest>,
+  output: __S(273, __c17, 1) as any as S.Schema<StartDICOMImportJobResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1188,8 +1188,8 @@ export const tagResource: API.OperationMethod<
   TagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(59, __c7, 3) as any as S.Schema<TagResourceRequest>,
-  output: __S(60, __c7, 4) as any as S.Schema<TagResourceResponse>,
+  input: __S(288, __c18, 0) as any as S.Schema<TagResourceRequest>,
+  output: __S(304, __c19, 0) as any as S.Schema<TagResourceResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1218,8 +1218,8 @@ export const untagResource: API.OperationMethod<
   UntagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(62, __c7, 6) as any as S.Schema<UntagResourceRequest>,
-  output: __S(60, __c7, 4) as any as S.Schema<UntagResourceResponse>,
+  input: __S(321, __c20, 1) as any as S.Schema<UntagResourceRequest>,
+  output: __S(304, __c19, 0) as any as S.Schema<UntagResourceResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1250,8 +1250,8 @@ export const updateImageSetMetadata: API.OperationMethod<
   UpdateImageSetMetadataError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(65, __c8, 1) as any as S.Schema<UpdateImageSetMetadataRequest>,
-  output: __S(66, __c8, 2) as any as S.Schema<UpdateImageSetMetadataResponse>,
+  input: __S(338, __c21, 2) as any as S.Schema<UpdateImageSetMetadataRequest>,
+  output: __S(339, __c21, 3) as any as S.Schema<UpdateImageSetMetadataResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1271,12 +1271,715 @@ export const updateImageSetMetadata: API.OperationMethod<
 function __c0(j: number): any {
   switch (j) {
     case 0:
+      return S.suspend(() =>
+        S.Struct({
+          datastoreName: S.optional(S.String),
+          clientToken: S.String.pipe(T.IdempotencyToken()),
+          tags: S.optional(__S(32, __c2, 0)),
+          kmsKeyArn: S.optional(S.String),
+          lambdaAuthorizerArn: S.optional(S.String),
+          losslessStorageFormat: S.optional(S.String),
+        }).pipe(T.all(T.Http({ method: "POST", uri: "/datastore" }), svc, auth, proto, ver, rules)),
+      ).annotate({ identifier: "CreateDatastoreRequest" });
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ datastoreId: S.String, datastoreStatus: S.String }),
+      ).annotate({ identifier: "CreateDatastoreResponse" });
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ datastoreId: S.String.pipe(T.HttpLabel("datastoreId")) }).pipe(
+          T.all(
+            T.Http({ method: "DELETE", uri: "/datastore/{datastoreId}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "DeleteDatastoreRequest" });
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          datastoreId: S.String.pipe(T.HttpLabel("datastoreId")),
+          imageSetId: S.String.pipe(T.HttpLabel("imageSetId")),
+        }).pipe(
+          T.all(
+            T.Http({
+              method: "POST",
+              uri: "/datastore/{datastoreId}/imageSet/{imageSetId}/deleteImageSet",
+            }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "DeleteImageSetRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          datastoreId: S.String,
+          imageSetId: S.String,
+          imageSetState: S.String,
+          imageSetWorkflowStatus: S.String,
+        }),
+      ).annotate({ identifier: "DeleteImageSetResponse" });
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ datastoreId: S.String.pipe(T.HttpLabel("datastoreId")) }).pipe(
+          T.all(
+            T.Http({ method: "GET", uri: "/datastore/{datastoreId}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "GetDatastoreRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          datastoreId: S.String,
+          datastoreName: S.String,
+          datastoreStatus: S.String,
+          kmsKeyArn: S.optional(S.String),
+          lambdaAuthorizerArn: S.optional(S.String),
+          losslessStorageFormat: S.optional(S.String),
+          datastoreArn: S.optional(S.String),
+          createdAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          updatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+        }),
+      ).annotate({ identifier: "DatastoreProperties" });
+    case 2:
+      return S.suspend(() => S.Struct({ datastoreProperties: __S(81, __c5, 1) })).annotate({
+        identifier: "GetDatastoreResponse",
+      });
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          datastoreId: S.String.pipe(T.HttpLabel("datastoreId")),
+          jobId: S.String.pipe(T.HttpLabel("jobId")),
+        }).pipe(
+          T.all(
+            T.Http({
+              method: "GET",
+              uri: "/getDICOMImportJob/datastore/{datastoreId}/job/{jobId}",
+            }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "GetDICOMImportJobRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          jobId: S.String,
+          jobName: S.String,
+          jobStatus: S.String,
+          datastoreId: S.String,
+          dataAccessRoleArn: S.String,
+          endedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          submittedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          inputS3Uri: S.String,
+          outputS3Uri: S.String,
+          message: S.optional(S.String),
+          importConfiguration: S.optional(__S(115, __c7, 3)),
+        }),
+      ).annotate({ identifier: "DICOMImportJobProperties" });
+    case 2:
+      return S.suspend(() => S.Struct({ jobProperties: __S(97, __c6, 1) })).annotate({
+        identifier: "GetDICOMImportJobResponse",
+      });
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          studyInstanceUID: SensitiveString,
+          seriesInstanceUID: S.optional(SensitiveString),
+          metadataFilePath: S.String,
+        }),
+      ).annotate({ identifier: "DicomMetadataMapping" });
+    case 1:
+      return S.Array(__S(112, __c7, 0));
+    case 2:
+      return S.suspend(() => S.Struct({ dicomMetadataMappings: __S(113, __c7, 1) })).annotate({
+        identifier: "DicomJsonMetadataImportConfiguration",
+      });
+    case 3:
+      return S.Union([
+        /*@__PURE__*/ S.Struct({
+          dicomJsonMetadataImportConfiguration: __S(114, __c7, 2),
+        }),
+      ]);
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({ imageFrameId: S.String })).annotate({
+        identifier: "ImageFrameInformation",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          datastoreId: S.String.pipe(T.HttpLabel("datastoreId")),
+          imageSetId: S.String.pipe(T.HttpLabel("imageSetId")),
+          imageFrameInformation: __S(128, __c8, 0).pipe(T.HttpPayload()).annotate({
+            identifier: "ImageFrameInformation",
+          }),
+        }).pipe(
+          T.all(
+            T.Http({
+              method: "POST",
+              uri: "/datastore/{datastoreId}/imageSet/{imageSetId}/getImageFrame",
+            }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "GetImageFrameRequest" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          imageFrameBlob: T.StreamingOutput.pipe(T.HttpPayload()),
+          contentType: S.optional(S.String).pipe(T.HttpHeader("Content-Type")),
+        }),
+      ).annotate({ identifier: "GetImageFrameResponse" });
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          datastoreId: S.String.pipe(T.HttpLabel("datastoreId")),
+          imageSetId: S.String.pipe(T.HttpLabel("imageSetId")),
+          versionId: S.optional(S.String).pipe(T.HttpQuery("version")),
+        }).pipe(
+          T.all(
+            T.Http({
+              method: "POST",
+              uri: "/datastore/{datastoreId}/imageSet/{imageSetId}/getImageSet",
+            }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "GetImageSetRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          datastoreId: S.String,
+          imageSetId: S.String,
+          versionId: S.String,
+          imageSetState: S.String,
+          imageSetWorkflowStatus: S.optional(S.String),
+          createdAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          updatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          deletedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          message: S.optional(S.String),
+          imageSetArn: S.optional(S.String),
+          overrides: S.optional(__S(160, __c10, 0)),
+          isPrimary: S.optional(S.Boolean),
+          lastAccessedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          storageTier: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "GetImageSetResponse" });
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({ forced: S.optional(S.Boolean) })).annotate({
+        identifier: "Overrides",
+      });
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          datastoreId: S.String.pipe(T.HttpLabel("datastoreId")),
+          imageSetId: S.String.pipe(T.HttpLabel("imageSetId")),
+          versionId: S.optional(S.String).pipe(T.HttpQuery("version")),
+        }).pipe(
+          T.all(
+            T.Http({
+              method: "POST",
+              uri: "/datastore/{datastoreId}/imageSet/{imageSetId}/getImageSetMetadata",
+            }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "GetImageSetMetadataRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          imageSetMetadataBlob: T.StreamingOutput.pipe(T.HttpPayload()),
+          contentType: S.optional(S.String).pipe(T.HttpHeader("Content-Type")),
+          contentEncoding: S.optional(S.String).pipe(T.HttpHeader("Content-Encoding")),
+        }),
+      ).annotate({
+        identifier: "GetImageSetMetadataResponse",
+      });
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          datastoreStatus: S.optional(S.String).pipe(T.HttpQuery("datastoreStatus")),
+          nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
+          maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
+        }).pipe(T.all(T.Http({ method: "GET", uri: "/datastore" }), svc, auth, proto, ver, rules)),
+      ).annotate({ identifier: "ListDatastoresRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          datastoreId: S.String,
+          datastoreName: S.String,
+          datastoreStatus: S.String,
+          datastoreArn: S.optional(S.String),
+          createdAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          updatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+        }),
+      ).annotate({ identifier: "DatastoreSummary" });
+    case 2:
+      return S.Array(__S(193, __c12, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          datastoreSummaries: S.optional(__S(194, __c12, 2)),
+          nextToken: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ListDatastoresResponse" });
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          datastoreId: S.String.pipe(T.HttpLabel("datastoreId")),
+          jobStatus: S.optional(S.String).pipe(T.HttpQuery("jobStatus")),
+          nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
+          maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
+        }).pipe(
+          T.all(
+            T.Http({ method: "GET", uri: "/listDICOMImportJobs/datastore/{datastoreId}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "ListDICOMImportJobsRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          jobId: S.String,
+          jobName: S.String,
+          jobStatus: S.String,
+          datastoreId: S.String,
+          dataAccessRoleArn: S.optional(S.String),
+          endedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          submittedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          message: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "DICOMImportJobSummary" });
+    case 2:
+      return S.Array(__S(209, __c13, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({ jobSummaries: __S(210, __c13, 2), nextToken: S.optional(S.String) }),
+      ).annotate({
+        identifier: "ListDICOMImportJobsResponse",
+      });
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          datastoreId: S.String.pipe(T.HttpLabel("datastoreId")),
+          imageSetId: S.String.pipe(T.HttpLabel("imageSetId")),
+          nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
+          maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
+        }).pipe(
+          T.all(
+            T.Http({
+              method: "POST",
+              uri: "/datastore/{datastoreId}/imageSet/{imageSetId}/listImageSetVersions",
+            }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "ListImageSetVersionsRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          imageSetId: S.String,
+          versionId: S.String,
+          imageSetState: S.String,
+          ImageSetWorkflowStatus: S.optional(S.String),
+          createdAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          updatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          deletedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          message: S.optional(S.String),
+          overrides: S.optional(__S(160, __c10, 0)),
+          isPrimary: S.optional(S.Boolean),
+        }),
+      ).annotate({ identifier: "ImageSetProperties" });
+    case 2:
+      return S.Array(__S(225, __c14, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({ imageSetPropertiesList: __S(226, __c14, 2), nextToken: S.optional(S.String) }),
+      ).annotate({
+        identifier: "ListImageSetVersionsResponse",
+      });
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ resourceArn: S.String.pipe(T.HttpLabel("resourceArn")) }).pipe(
+          T.all(
+            T.Http({ method: "GET", uri: "/tags/{resourceArn}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "ListTagsForResourceRequest",
+      });
+    case 1:
+      return S.suspend(() => S.Struct({ tags: __S(32, __c2, 0) })).annotate({
+        identifier: "ListTagsForResourceResponse",
+      });
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ DICOMStudyDate: SensitiveString, DICOMStudyTime: S.optional(SensitiveString) }),
+      ).annotate({ identifier: "DICOMStudyDateAndTime" });
+    case 1:
+      return S.Union([
+        /*@__PURE__*/ S.Struct({ DICOMPatientId: SensitiveString }),
+        /*@__PURE__*/ S.Struct({ DICOMAccessionNumber: SensitiveString }),
+        /*@__PURE__*/ S.Struct({ DICOMStudyId: SensitiveString }),
+        /*@__PURE__*/ S.Struct({ DICOMStudyInstanceUID: SensitiveString }),
+        /*@__PURE__*/ S.Struct({ DICOMSeriesInstanceUID: SensitiveString }),
+        /*@__PURE__*/ S.Struct({
+          createdAt: /*@__PURE__*/ S.Date.pipe(/*@__PURE__*/ T.TimestampFormat("epoch-seconds")),
+        }),
+        /*@__PURE__*/ S.Struct({
+          updatedAt: /*@__PURE__*/ S.Date.pipe(/*@__PURE__*/ T.TimestampFormat("epoch-seconds")),
+        }),
+        /*@__PURE__*/ S.Struct({ DICOMStudyDateAndTime: __S(256, __c16, 0) }),
+        /*@__PURE__*/ S.Struct({ isPrimary: S.Boolean }),
+      ]);
+    case 2:
+      return S.Array(__S(257, __c16, 1));
+    case 3:
+      return S.suspend(() => S.Struct({ values: __S(258, __c16, 2), operator: S.String })).annotate(
+        { identifier: "SearchFilter" },
+      );
+    case 4:
+      return S.Array(__S(259, __c16, 3));
+    case 5:
+      return S.suspend(() => S.Struct({ sortOrder: S.String, sortField: S.String })).annotate({
+        identifier: "Sort",
+      });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({ filters: S.optional(__S(260, __c16, 4)), sort: S.optional(__S(261, __c16, 5)) }),
+      ).annotate({ identifier: "SearchCriteria" });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          datastoreId: S.String.pipe(T.HttpLabel("datastoreId")),
+          searchCriteria: S.optional(__S(262, __c16, 6))
+            .pipe(T.HttpPayload())
+            .annotate({ identifier: "SearchCriteria" }),
+          maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
+          nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
+        }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/datastore/{datastoreId}/searchImageSets" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "SearchImageSetsRequest" });
+    case 8:
+      return S.suspend(() =>
+        S.Struct({
+          DICOMPatientId: S.optional(SensitiveString),
+          DICOMPatientName: S.optional(SensitiveString),
+          DICOMPatientBirthDate: S.optional(SensitiveString),
+          DICOMPatientSex: S.optional(SensitiveString),
+          DICOMStudyInstanceUID: S.optional(SensitiveString),
+          DICOMStudyId: S.optional(SensitiveString),
+          DICOMStudyDescription: S.optional(SensitiveString),
+          DICOMNumberOfStudyRelatedSeries: S.optional(S.Number),
+          DICOMNumberOfStudyRelatedInstances: S.optional(S.Number),
+          DICOMAccessionNumber: S.optional(SensitiveString),
+          DICOMSeriesInstanceUID: S.optional(SensitiveString),
+          DICOMSeriesModality: S.optional(SensitiveString),
+          DICOMSeriesBodyPart: S.optional(SensitiveString),
+          DICOMSeriesNumber: S.optional(S.Number),
+          DICOMStudyDate: S.optional(SensitiveString),
+          DICOMStudyTime: S.optional(SensitiveString),
+        }),
+      ).annotate({ identifier: "DICOMTags" });
+    case 9:
+      return S.suspend(() =>
+        S.Struct({
+          imageSetId: S.String,
+          version: S.optional(S.Number),
+          createdAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          updatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          lastAccessedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          storageTier: S.optional(S.String),
+          DICOMTags: S.optional(__S(264, __c16, 8)),
+          isPrimary: S.optional(S.Boolean),
+        }),
+      ).annotate({ identifier: "ImageSetsMetadataSummary" });
+    case 10:
+      return S.Array(__S(265, __c16, 9));
+    case 11:
+      return S.suspend(() =>
+        S.Struct({
+          imageSetsMetadataSummaries: __S(266, __c16, 10),
+          sort: S.optional(__S(261, __c16, 5)),
+          nextToken: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "SearchImageSetsResponse" });
+  }
+}
+function __c17(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          jobName: S.optional(S.String),
+          dataAccessRoleArn: S.String,
+          clientToken: S.String.pipe(T.IdempotencyToken()),
+          datastoreId: S.String.pipe(T.HttpLabel("datastoreId")),
+          inputS3Uri: S.String,
+          outputS3Uri: S.String,
+          inputOwnerAccountId: S.optional(S.String),
+          importConfiguration: S.optional(__S(115, __c7, 3)),
+        }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/startDICOMImportJob/datastore/{datastoreId}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "StartDICOMImportJobRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          datastoreId: S.String,
+          jobId: S.String,
+          jobStatus: S.String,
+          submittedAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+        }),
+      ).annotate({
+        identifier: "StartDICOMImportJobResponse",
+      });
+  }
+}
+function __c18(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          resourceArn: S.String.pipe(T.HttpLabel("resourceArn")),
+          tags: __S(32, __c2, 0),
+        }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/tags/{resourceArn}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "TagResourceRequest" });
+  }
+}
+function __c19(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "TagResourceResponse",
+      });
+  }
+}
+function __c20(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          resourceArn: S.String.pipe(T.HttpLabel("resourceArn")),
+          tagKeys: __S(320, __c20, 0).pipe(T.HttpQuery("tagKeys")),
+        }).pipe(
+          T.all(
+            T.Http({ method: "DELETE", uri: "/tags/{resourceArn}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "UntagResourceRequest" });
+  }
+}
+function __c21(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          removableAttributes: S.optional(SensitiveBlob),
+          updatableAttributes: S.optional(SensitiveBlob),
+        }),
+      ).annotate({ identifier: "DICOMUpdates" });
+    case 1:
+      return S.Union([
+        /*@__PURE__*/ S.Struct({ DICOMUpdates: __S(336, __c21, 0) }),
+        /*@__PURE__*/ S.Struct({ revertToVersionId: S.String }),
+      ]);
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          datastoreId: S.String.pipe(T.HttpLabel("datastoreId")),
+          imageSetId: S.String.pipe(T.HttpLabel("imageSetId")),
+          latestVersionId: S.String.pipe(T.HttpQuery("latestVersion")),
+          force: S.optional(S.Boolean).pipe(T.HttpQuery("force")),
+          includeStudyImageSets: S.optional(S.Boolean).pipe(T.HttpQuery("includeStudyImageSets")),
+          updateImageSetMetadataUpdates: __S(337, __c21, 1).pipe(T.HttpPayload()),
+        }).pipe(
+          T.all(
+            T.Http({
+              method: "POST",
+              uri: "/datastore/{datastoreId}/imageSet/{imageSetId}/updateImageSetMetadata",
+            }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "UpdateImageSetMetadataRequest",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          datastoreId: S.String,
+          imageSetId: S.String,
+          latestVersionId: S.String,
+          imageSetState: S.String,
+          imageSetWorkflowStatus: S.optional(S.String),
+          createdAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          updatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          message: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "UpdateImageSetMetadataResponse",
+      });
+  }
+}
+function __c22(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() => S.Struct({ copiableAttributes: SensitiveString })).annotate({
         identifier: "MetadataCopies",
       });
     case 1:
       return S.suspend(() =>
-        S.Struct({ latestVersionId: S.String, DICOMCopies: S.optional(__S(0, __c0, 0)) }),
+        S.Struct({ latestVersionId: S.String, DICOMCopies: S.optional(__S(352, __c22, 0)) }),
       ).annotate({
         identifier: "CopySourceImageSetInformation",
       });
@@ -1287,8 +1990,8 @@ function __c0(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          sourceImageSet: __S(1, __c0, 1),
-          destinationImageSet: S.optional(__S(2, __c0, 2)),
+          sourceImageSet: __S(353, __c22, 1),
+          destinationImageSet: S.optional(__S(354, __c22, 2)),
         }),
       ).annotate({ identifier: "CopyImageSetInformation" });
     case 4:
@@ -1296,7 +1999,7 @@ function __c0(j: number): any {
         S.Struct({
           datastoreId: S.String.pipe(T.HttpLabel("datastoreId")),
           sourceImageSetId: S.String.pipe(T.HttpLabel("sourceImageSetId")),
-          copyImageSetInformation: __S(3, __c0, 3).pipe(T.HttpPayload()).annotate({
+          copyImageSetInformation: __S(355, __c22, 3).pipe(T.HttpPayload()).annotate({
             identifier: "CopyImageSetInformation",
           }),
           force: S.optional(S.Boolean).pipe(T.HttpQuery("force")),
@@ -1333,663 +2036,12 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           datastoreId: S.String,
-          sourceImageSetProperties: __S(5, __c0, 5),
-          destinationImageSetProperties: __S(5, __c0, 5),
+          sourceImageSetProperties: __S(357, __c22, 5),
+          destinationImageSetProperties: __S(357, __c22, 5),
         }),
       ).annotate({ identifier: "CopyImageSetResponse" });
-    case 7:
-      return S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
   }
 }
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          datastoreName: S.optional(S.String),
-          clientToken: S.String.pipe(T.IdempotencyToken()),
-          tags: S.optional(__S(7, __c0, 7)),
-          kmsKeyArn: S.optional(S.String),
-          lambdaAuthorizerArn: S.optional(S.String),
-          losslessStorageFormat: S.optional(S.String),
-        }).pipe(T.all(T.Http({ method: "POST", uri: "/datastore" }), svc, auth, proto, ver, rules)),
-      ).annotate({ identifier: "CreateDatastoreRequest" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({ datastoreId: S.String, datastoreStatus: S.String }),
-      ).annotate({ identifier: "CreateDatastoreResponse" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({ datastoreId: S.String.pipe(T.HttpLabel("datastoreId")) }).pipe(
-          T.all(
-            T.Http({ method: "DELETE", uri: "/datastore/{datastoreId}" }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({ identifier: "DeleteDatastoreRequest" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          datastoreId: S.String.pipe(T.HttpLabel("datastoreId")),
-          imageSetId: S.String.pipe(T.HttpLabel("imageSetId")),
-        }).pipe(
-          T.all(
-            T.Http({
-              method: "POST",
-              uri: "/datastore/{datastoreId}/imageSet/{imageSetId}/deleteImageSet",
-            }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({ identifier: "DeleteImageSetRequest" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          datastoreId: S.String,
-          imageSetId: S.String,
-          imageSetState: S.String,
-          imageSetWorkflowStatus: S.String,
-        }),
-      ).annotate({ identifier: "DeleteImageSetResponse" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({ datastoreId: S.String.pipe(T.HttpLabel("datastoreId")) }).pipe(
-          T.all(
-            T.Http({ method: "GET", uri: "/datastore/{datastoreId}" }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({ identifier: "GetDatastoreRequest" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          datastoreId: S.String,
-          datastoreName: S.String,
-          datastoreStatus: S.String,
-          kmsKeyArn: S.optional(S.String),
-          lambdaAuthorizerArn: S.optional(S.String),
-          losslessStorageFormat: S.optional(S.String),
-          datastoreArn: S.optional(S.String),
-          createdAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          updatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-        }),
-      ).annotate({ identifier: "DatastoreProperties" });
-    case 7:
-      return S.suspend(() => S.Struct({ datastoreProperties: __S(14, __c1, 6) })).annotate({
-        identifier: "GetDatastoreResponse",
-      });
-  }
-}
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          datastoreId: S.String.pipe(T.HttpLabel("datastoreId")),
-          jobId: S.String.pipe(T.HttpLabel("jobId")),
-        }).pipe(
-          T.all(
-            T.Http({
-              method: "GET",
-              uri: "/getDICOMImportJob/datastore/{datastoreId}/job/{jobId}",
-            }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({ identifier: "GetDICOMImportJobRequest" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          studyInstanceUID: SensitiveString,
-          seriesInstanceUID: S.optional(SensitiveString),
-          metadataFilePath: S.String,
-        }),
-      ).annotate({ identifier: "DicomMetadataMapping" });
-    case 2:
-      return S.Array(__S(17, __c2, 1));
-    case 3:
-      return S.suspend(() => S.Struct({ dicomMetadataMappings: __S(18, __c2, 2) })).annotate({
-        identifier: "DicomJsonMetadataImportConfiguration",
-      });
-    case 4:
-      return S.Union([
-        /*@__PURE__*/ S.Struct({
-          dicomJsonMetadataImportConfiguration: __S(19, __c2, 3),
-        }),
-      ]);
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          jobId: S.String,
-          jobName: S.String,
-          jobStatus: S.String,
-          datastoreId: S.String,
-          dataAccessRoleArn: S.String,
-          endedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          submittedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          inputS3Uri: S.String,
-          outputS3Uri: S.String,
-          message: S.optional(S.String),
-          importConfiguration: S.optional(__S(20, __c2, 4)),
-        }),
-      ).annotate({ identifier: "DICOMImportJobProperties" });
-    case 6:
-      return S.suspend(() => S.Struct({ jobProperties: __S(21, __c2, 5) })).annotate({
-        identifier: "GetDICOMImportJobResponse",
-      });
-    case 7:
-      return S.suspend(() => S.Struct({ imageFrameId: S.String })).annotate({
-        identifier: "ImageFrameInformation",
-      });
-  }
-}
-function __c3(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          datastoreId: S.String.pipe(T.HttpLabel("datastoreId")),
-          imageSetId: S.String.pipe(T.HttpLabel("imageSetId")),
-          imageFrameInformation: __S(23, __c2, 7).pipe(T.HttpPayload()).annotate({
-            identifier: "ImageFrameInformation",
-          }),
-        }).pipe(
-          T.all(
-            T.Http({
-              method: "POST",
-              uri: "/datastore/{datastoreId}/imageSet/{imageSetId}/getImageFrame",
-            }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({ identifier: "GetImageFrameRequest" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          imageFrameBlob: T.StreamingOutput.pipe(T.HttpPayload()),
-          contentType: S.optional(S.String).pipe(T.HttpHeader("Content-Type")),
-        }),
-      ).annotate({ identifier: "GetImageFrameResponse" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          datastoreId: S.String.pipe(T.HttpLabel("datastoreId")),
-          imageSetId: S.String.pipe(T.HttpLabel("imageSetId")),
-          versionId: S.optional(S.String).pipe(T.HttpQuery("version")),
-        }).pipe(
-          T.all(
-            T.Http({
-              method: "POST",
-              uri: "/datastore/{datastoreId}/imageSet/{imageSetId}/getImageSet",
-            }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({ identifier: "GetImageSetRequest" });
-    case 3:
-      return S.suspend(() => S.Struct({ forced: S.optional(S.Boolean) })).annotate({
-        identifier: "Overrides",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          datastoreId: S.String,
-          imageSetId: S.String,
-          versionId: S.String,
-          imageSetState: S.String,
-          imageSetWorkflowStatus: S.optional(S.String),
-          createdAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          updatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          deletedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          message: S.optional(S.String),
-          imageSetArn: S.optional(S.String),
-          overrides: S.optional(__S(27, __c3, 3)),
-          isPrimary: S.optional(S.Boolean),
-          lastAccessedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          storageTier: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "GetImageSetResponse" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          datastoreId: S.String.pipe(T.HttpLabel("datastoreId")),
-          imageSetId: S.String.pipe(T.HttpLabel("imageSetId")),
-          versionId: S.optional(S.String).pipe(T.HttpQuery("version")),
-        }).pipe(
-          T.all(
-            T.Http({
-              method: "POST",
-              uri: "/datastore/{datastoreId}/imageSet/{imageSetId}/getImageSetMetadata",
-            }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({
-        identifier: "GetImageSetMetadataRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          imageSetMetadataBlob: T.StreamingOutput.pipe(T.HttpPayload()),
-          contentType: S.optional(S.String).pipe(T.HttpHeader("Content-Type")),
-          contentEncoding: S.optional(S.String).pipe(T.HttpHeader("Content-Encoding")),
-        }),
-      ).annotate({
-        identifier: "GetImageSetMetadataResponse",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          datastoreStatus: S.optional(S.String).pipe(T.HttpQuery("datastoreStatus")),
-          nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
-          maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
-        }).pipe(T.all(T.Http({ method: "GET", uri: "/datastore" }), svc, auth, proto, ver, rules)),
-      ).annotate({ identifier: "ListDatastoresRequest" });
-  }
-}
-function __c4(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          datastoreId: S.String,
-          datastoreName: S.String,
-          datastoreStatus: S.String,
-          datastoreArn: S.optional(S.String),
-          createdAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          updatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-        }),
-      ).annotate({ identifier: "DatastoreSummary" });
-    case 1:
-      return S.Array(__S(32, __c4, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          datastoreSummaries: S.optional(__S(33, __c4, 1)),
-          nextToken: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ListDatastoresResponse" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          datastoreId: S.String.pipe(T.HttpLabel("datastoreId")),
-          jobStatus: S.optional(S.String).pipe(T.HttpQuery("jobStatus")),
-          nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
-          maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
-        }).pipe(
-          T.all(
-            T.Http({ method: "GET", uri: "/listDICOMImportJobs/datastore/{datastoreId}" }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({
-        identifier: "ListDICOMImportJobsRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          jobId: S.String,
-          jobName: S.String,
-          jobStatus: S.String,
-          datastoreId: S.String,
-          dataAccessRoleArn: S.optional(S.String),
-          endedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          submittedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          message: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "DICOMImportJobSummary" });
-    case 5:
-      return S.Array(__S(36, __c4, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({ jobSummaries: __S(37, __c4, 5), nextToken: S.optional(S.String) }),
-      ).annotate({
-        identifier: "ListDICOMImportJobsResponse",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          datastoreId: S.String.pipe(T.HttpLabel("datastoreId")),
-          imageSetId: S.String.pipe(T.HttpLabel("imageSetId")),
-          nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
-          maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
-        }).pipe(
-          T.all(
-            T.Http({
-              method: "POST",
-              uri: "/datastore/{datastoreId}/imageSet/{imageSetId}/listImageSetVersions",
-            }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({
-        identifier: "ListImageSetVersionsRequest",
-      });
-  }
-}
-function __c5(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          imageSetId: S.String,
-          versionId: S.String,
-          imageSetState: S.String,
-          ImageSetWorkflowStatus: S.optional(S.String),
-          createdAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          updatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          deletedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          message: S.optional(S.String),
-          overrides: S.optional(__S(27, __c3, 3)),
-          isPrimary: S.optional(S.Boolean),
-        }),
-      ).annotate({ identifier: "ImageSetProperties" });
-    case 1:
-      return S.Array(__S(40, __c5, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          imageSetPropertiesList: __S(41, __c5, 1),
-          nextToken: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "ListImageSetVersionsResponse",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({ resourceArn: S.String.pipe(T.HttpLabel("resourceArn")) }).pipe(
-          T.all(
-            T.Http({ method: "GET", uri: "/tags/{resourceArn}" }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({
-        identifier: "ListTagsForResourceRequest",
-      });
-    case 4:
-      return S.suspend(() => S.Struct({ tags: __S(7, __c0, 7) })).annotate({
-        identifier: "ListTagsForResourceResponse",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({ DICOMStudyDate: SensitiveString, DICOMStudyTime: S.optional(SensitiveString) }),
-      ).annotate({ identifier: "DICOMStudyDateAndTime" });
-    case 6:
-      return S.Union([
-        /*@__PURE__*/ S.Struct({ DICOMPatientId: SensitiveString }),
-        /*@__PURE__*/ S.Struct({ DICOMAccessionNumber: SensitiveString }),
-        /*@__PURE__*/ S.Struct({ DICOMStudyId: SensitiveString }),
-        /*@__PURE__*/ S.Struct({ DICOMStudyInstanceUID: SensitiveString }),
-        /*@__PURE__*/ S.Struct({ DICOMSeriesInstanceUID: SensitiveString }),
-        /*@__PURE__*/ S.Struct({
-          createdAt: /*@__PURE__*/ S.Date.pipe(/*@__PURE__*/ T.TimestampFormat("epoch-seconds")),
-        }),
-        /*@__PURE__*/ S.Struct({
-          updatedAt: /*@__PURE__*/ S.Date.pipe(/*@__PURE__*/ T.TimestampFormat("epoch-seconds")),
-        }),
-        /*@__PURE__*/ S.Struct({ DICOMStudyDateAndTime: __S(45, __c5, 5) }),
-        /*@__PURE__*/ S.Struct({ isPrimary: S.Boolean }),
-      ]);
-    case 7:
-      return S.Array(__S(46, __c5, 6));
-  }
-}
-function __c6(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() => S.Struct({ values: __S(47, __c5, 7), operator: S.String })).annotate({
-        identifier: "SearchFilter",
-      });
-    case 1:
-      return S.Array(__S(48, __c6, 0));
-    case 2:
-      return S.suspend(() => S.Struct({ sortOrder: S.String, sortField: S.String })).annotate({
-        identifier: "Sort",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({ filters: S.optional(__S(49, __c6, 1)), sort: S.optional(__S(50, __c6, 2)) }),
-      ).annotate({ identifier: "SearchCriteria" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          datastoreId: S.String.pipe(T.HttpLabel("datastoreId")),
-          searchCriteria: S.optional(__S(51, __c6, 3))
-            .pipe(T.HttpPayload())
-            .annotate({ identifier: "SearchCriteria" }),
-          maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
-          nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
-        }).pipe(
-          T.all(
-            T.Http({ method: "POST", uri: "/datastore/{datastoreId}/searchImageSets" }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({ identifier: "SearchImageSetsRequest" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          DICOMPatientId: S.optional(SensitiveString),
-          DICOMPatientName: S.optional(SensitiveString),
-          DICOMPatientBirthDate: S.optional(SensitiveString),
-          DICOMPatientSex: S.optional(SensitiveString),
-          DICOMStudyInstanceUID: S.optional(SensitiveString),
-          DICOMStudyId: S.optional(SensitiveString),
-          DICOMStudyDescription: S.optional(SensitiveString),
-          DICOMNumberOfStudyRelatedSeries: S.optional(S.Number),
-          DICOMNumberOfStudyRelatedInstances: S.optional(S.Number),
-          DICOMAccessionNumber: S.optional(SensitiveString),
-          DICOMSeriesInstanceUID: S.optional(SensitiveString),
-          DICOMSeriesModality: S.optional(SensitiveString),
-          DICOMSeriesBodyPart: S.optional(SensitiveString),
-          DICOMSeriesNumber: S.optional(S.Number),
-          DICOMStudyDate: S.optional(SensitiveString),
-          DICOMStudyTime: S.optional(SensitiveString),
-        }),
-      ).annotate({ identifier: "DICOMTags" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          imageSetId: S.String,
-          version: S.optional(S.Number),
-          createdAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          updatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          lastAccessedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          storageTier: S.optional(S.String),
-          DICOMTags: S.optional(__S(53, __c6, 5)),
-          isPrimary: S.optional(S.Boolean),
-        }),
-      ).annotate({ identifier: "ImageSetsMetadataSummary" });
-    case 7:
-      return S.Array(__S(54, __c6, 6));
-  }
-}
-function __c7(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          imageSetsMetadataSummaries: __S(55, __c6, 7),
-          sort: S.optional(__S(50, __c6, 2)),
-          nextToken: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "SearchImageSetsResponse" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          jobName: S.optional(S.String),
-          dataAccessRoleArn: S.String,
-          clientToken: S.String.pipe(T.IdempotencyToken()),
-          datastoreId: S.String.pipe(T.HttpLabel("datastoreId")),
-          inputS3Uri: S.String,
-          outputS3Uri: S.String,
-          inputOwnerAccountId: S.optional(S.String),
-          importConfiguration: S.optional(__S(20, __c2, 4)),
-        }).pipe(
-          T.all(
-            T.Http({ method: "POST", uri: "/startDICOMImportJob/datastore/{datastoreId}" }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({
-        identifier: "StartDICOMImportJobRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          datastoreId: S.String,
-          jobId: S.String,
-          jobStatus: S.String,
-          submittedAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-        }),
-      ).annotate({
-        identifier: "StartDICOMImportJobResponse",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          resourceArn: S.String.pipe(T.HttpLabel("resourceArn")),
-          tags: __S(7, __c0, 7),
-        }).pipe(
-          T.all(
-            T.Http({ method: "POST", uri: "/tags/{resourceArn}" }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({ identifier: "TagResourceRequest" });
-    case 4:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "TagResourceResponse",
-      });
-    case 5:
-      return S.Array(S.String);
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          resourceArn: S.String.pipe(T.HttpLabel("resourceArn")),
-          tagKeys: __S(61, __c7, 5).pipe(T.HttpQuery("tagKeys")),
-        }).pipe(
-          T.all(
-            T.Http({ method: "DELETE", uri: "/tags/{resourceArn}" }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({ identifier: "UntagResourceRequest" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          removableAttributes: S.optional(SensitiveBlob),
-          updatableAttributes: S.optional(SensitiveBlob),
-        }),
-      ).annotate({ identifier: "DICOMUpdates" });
-  }
-}
-function __c8(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Union([
-        /*@__PURE__*/ S.Struct({ DICOMUpdates: __S(63, __c7, 7) }),
-        /*@__PURE__*/ S.Struct({ revertToVersionId: S.String }),
-      ]);
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          datastoreId: S.String.pipe(T.HttpLabel("datastoreId")),
-          imageSetId: S.String.pipe(T.HttpLabel("imageSetId")),
-          latestVersionId: S.String.pipe(T.HttpQuery("latestVersion")),
-          force: S.optional(S.Boolean).pipe(T.HttpQuery("force")),
-          includeStudyImageSets: S.optional(S.Boolean).pipe(T.HttpQuery("includeStudyImageSets")),
-          updateImageSetMetadataUpdates: __S(64, __c8, 0).pipe(T.HttpPayload()),
-        }).pipe(
-          T.all(
-            T.Http({
-              method: "POST",
-              uri: "/datastore/{datastoreId}/imageSet/{imageSetId}/updateImageSetMetadata",
-            }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({
-        identifier: "UpdateImageSetMetadataRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          datastoreId: S.String,
-          imageSetId: S.String,
-          latestVersionId: S.String,
-          imageSetState: S.String,
-          imageSetWorkflowStatus: S.optional(S.String),
-          createdAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          updatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          message: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "UpdateImageSetMetadataResponse",
-      });
-  }
-}
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

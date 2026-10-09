@@ -582,8 +582,8 @@ export const batchUpdateSpacesMembers: API.OperationMethod<
   BatchUpdateSpacesMembersError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(4, __c0, 4) as any as S.Schema<BatchUpdateSpacesMembersRequest>,
-  output: __S(6, __c0, 6) as any as S.Schema<BatchUpdateMembersResponse>,
+  input: __S(403, __c25, 3) as any as S.Schema<BatchUpdateSpacesMembersRequest>,
+  output: __S(404, __c25, 4) as any as S.Schema<BatchUpdateMembersResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -597,8 +597,8 @@ export const createSpaces: API.OperationMethod<
   CreateSpacesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(19, __c2, 3) as any as S.Schema<CreateSpacesRequest>,
-  output: __S(18, __c2, 2) as any as S.Schema<Space>,
+  input: __S(448, __c28, 0) as any as S.Schema<CreateSpacesRequest>,
+  output: __S(475, __c29, 11) as any as S.Schema<Space>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -612,8 +612,8 @@ export const createSpacesMembers: API.OperationMethod<
   CreateSpacesMembersError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(20, __c2, 4) as any as S.Schema<CreateSpacesMembersRequest>,
-  output: __S(0, __c0, 0) as any as S.Schema<Member>,
+  input: __S(480, __c30, 0) as any as S.Schema<CreateSpacesMembersRequest>,
+  output: __S(432, __c27, 0) as any as S.Schema<Member>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -627,8 +627,8 @@ export const deleteSpacesMembers: API.OperationMethod<
   DeleteSpacesMembersError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(21, __c2, 5) as any as S.Schema<DeleteSpacesMembersRequest>,
-  output: __S(22, __c2, 6) as any as S.Schema<Empty>,
+  input: __S(496, __c31, 0) as any as S.Schema<DeleteSpacesMembersRequest>,
+  output: __S(512, __c32, 0) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -647,8 +647,8 @@ export const endActiveConferenceSpaces: API.OperationMethod<
   EndActiveConferenceSpacesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(23, __c2, 7) as any as S.Schema<EndActiveConferenceSpacesRequest>,
-  output: __S(22, __c2, 6) as any as S.Schema<Empty>,
+  input: __S(528, __c33, 0) as any as S.Schema<EndActiveConferenceSpacesRequest>,
+  output: __S(512, __c32, 0) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -662,8 +662,8 @@ export const getConferenceRecords: API.OperationMethod<
   GetConferenceRecordsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(24, __c3, 0) as any as S.Schema<GetConferenceRecordsRequest>,
-  output: __S(25, __c3, 1) as any as S.Schema<ConferenceRecord>,
+  input: __S(544, __c34, 0) as any as S.Schema<GetConferenceRecordsRequest>,
+  output: __S(560, __c35, 0) as any as S.Schema<ConferenceRecord>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -677,8 +677,8 @@ export const getConferenceRecordsParticipants: API.OperationMethod<
   GetConferenceRecordsParticipantsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(26, __c3, 2) as any as S.Schema<GetConferenceRecordsParticipantsRequest>,
-  output: __S(29, __c3, 5) as any as S.Schema<Participant>,
+  input: __S(0, __c0, 0) as any as S.Schema<GetConferenceRecordsParticipantsRequest>,
+  output: __S(18, __c1, 2) as any as S.Schema<Participant>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -696,11 +696,11 @@ export const getConferenceRecordsParticipantsParticipantSessions: API.OperationM
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    30,
-    __c3,
-    6,
+    32,
+    __c2,
+    0,
   ) as any as S.Schema<GetConferenceRecordsParticipantsParticipantSessionsRequest>,
-  output: __S(31, __c3, 7) as any as S.Schema<ParticipantSession>,
+  output: __S(48, __c3, 0) as any as S.Schema<ParticipantSession>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -714,8 +714,8 @@ export const getConferenceRecordsRecordings: API.OperationMethod<
   GetConferenceRecordsRecordingsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(32, __c4, 0) as any as S.Schema<GetConferenceRecordsRecordingsRequest>,
-  output: __S(34, __c4, 2) as any as S.Schema<Recording>,
+  input: __S(64, __c4, 0) as any as S.Schema<GetConferenceRecordsRecordingsRequest>,
+  output: __S(81, __c5, 1) as any as S.Schema<Recording>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -729,8 +729,8 @@ export const getConferenceRecordsSmartNotes: API.OperationMethod<
   GetConferenceRecordsSmartNotesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(35, __c4, 3) as any as S.Schema<GetConferenceRecordsSmartNotesRequest>,
-  output: __S(37, __c4, 5) as any as S.Schema<SmartNote>,
+  input: __S(96, __c6, 0) as any as S.Schema<GetConferenceRecordsSmartNotesRequest>,
+  output: __S(128, __c8, 0) as any as S.Schema<SmartNote>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -744,8 +744,8 @@ export const getConferenceRecordsTranscripts: API.OperationMethod<
   GetConferenceRecordsTranscriptsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(38, __c4, 6) as any as S.Schema<GetConferenceRecordsTranscriptsRequest>,
-  output: __S(39, __c4, 7) as any as S.Schema<Transcript>,
+  input: __S(144, __c9, 0) as any as S.Schema<GetConferenceRecordsTranscriptsRequest>,
+  output: __S(160, __c10, 0) as any as S.Schema<Transcript>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -759,8 +759,8 @@ export const getConferenceRecordsTranscriptsEntries: API.OperationMethod<
   GetConferenceRecordsTranscriptsEntriesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(40, __c5, 0) as any as S.Schema<GetConferenceRecordsTranscriptsEntriesRequest>,
-  output: __S(41, __c5, 1) as any as S.Schema<TranscriptEntry>,
+  input: __S(176, __c11, 0) as any as S.Schema<GetConferenceRecordsTranscriptsEntriesRequest>,
+  output: __S(192, __c12, 0) as any as S.Schema<TranscriptEntry>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -770,8 +770,8 @@ export type GetSpacesError = NotFound | Forbidden | GcpOpError;
 /** Gets details about a meeting space. For more information, see [Manage meeting spaces](https://developers.google.com/workspace/meet/api/guides/manage-meeting-spaces). For an example, see [Get a meeting space](https://developers.google.com/workspace/meet/api/guides/meeting-spaces#get-meeting-space). */
 export const getSpaces: API.OperationMethod<GetSpacesRequest, Space, GetSpacesError, GcpOpContext> =
   /*@__PURE__*/ API.make(() => ({
-    input: __S(42, __c5, 2) as any as S.Schema<GetSpacesRequest>,
-    output: __S(18, __c2, 2) as any as S.Schema<Space>,
+    input: __S(208, __c13, 0) as any as S.Schema<GetSpacesRequest>,
+    output: __S(475, __c29, 11) as any as S.Schema<Space>,
     errors: [NotFound, Forbidden, UnknownGCPError],
     protocol: GcpProtocol,
     retry: Retry.Retry,
@@ -785,8 +785,8 @@ export const getSpacesMembers: API.OperationMethod<
   GetSpacesMembersError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(43, __c5, 3) as any as S.Schema<GetSpacesMembersRequest>,
-  output: __S(0, __c0, 0) as any as S.Schema<Member>,
+  input: __S(224, __c14, 0) as any as S.Schema<GetSpacesMembersRequest>,
+  output: __S(432, __c27, 0) as any as S.Schema<Member>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -801,8 +801,8 @@ export const listConferenceRecords: API.PaginatedOperationMethod<
   GcpOpContext,
   ListConferenceRecordsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(44, __c5, 4) as any as S.Schema<ListConferenceRecordsRequest>,
-  output: __S(46, __c5, 6) as any as S.Schema<ListConferenceRecordsResponse>,
+  input: __S(240, __c15, 0) as any as S.Schema<ListConferenceRecordsRequest>,
+  output: __S(242, __c15, 2) as any as S.Schema<ListConferenceRecordsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -818,8 +818,8 @@ export const listConferenceRecordsParticipants: API.PaginatedOperationMethod<
   GcpOpContext,
   ListParticipantsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(47, __c5, 7) as any as S.Schema<ListConferenceRecordsParticipantsRequest>,
-  output: __S(49, __c6, 1) as any as S.Schema<ListParticipantsResponse>,
+  input: __S(256, __c16, 0) as any as S.Schema<ListConferenceRecordsParticipantsRequest>,
+  output: __S(258, __c16, 2) as any as S.Schema<ListParticipantsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -839,11 +839,11 @@ export const listConferenceRecordsParticipantsParticipantSessions: API.Paginated
   ListParticipantSessionsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(
-    50,
-    __c6,
-    2,
+    272,
+    __c17,
+    0,
   ) as any as S.Schema<ListConferenceRecordsParticipantsParticipantSessionsRequest>,
-  output: __S(52, __c6, 4) as any as S.Schema<ListParticipantSessionsResponse>,
+  output: __S(274, __c17, 2) as any as S.Schema<ListParticipantSessionsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -859,8 +859,8 @@ export const listConferenceRecordsRecordings: API.PaginatedOperationMethod<
   GcpOpContext,
   ListRecordingsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(53, __c6, 5) as any as S.Schema<ListConferenceRecordsRecordingsRequest>,
-  output: __S(55, __c6, 7) as any as S.Schema<ListRecordingsResponse>,
+  input: __S(288, __c18, 0) as any as S.Schema<ListConferenceRecordsRecordingsRequest>,
+  output: __S(290, __c18, 2) as any as S.Schema<ListRecordingsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -876,8 +876,8 @@ export const listConferenceRecordsSmartNotes: API.PaginatedOperationMethod<
   GcpOpContext,
   ListSmartNotesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(56, __c7, 0) as any as S.Schema<ListConferenceRecordsSmartNotesRequest>,
-  output: __S(58, __c7, 2) as any as S.Schema<ListSmartNotesResponse>,
+  input: __S(304, __c19, 0) as any as S.Schema<ListConferenceRecordsSmartNotesRequest>,
+  output: __S(306, __c19, 2) as any as S.Schema<ListSmartNotesResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -893,8 +893,8 @@ export const listConferenceRecordsTranscripts: API.PaginatedOperationMethod<
   GcpOpContext,
   ListTranscriptsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(59, __c7, 3) as any as S.Schema<ListConferenceRecordsTranscriptsRequest>,
-  output: __S(61, __c7, 5) as any as S.Schema<ListTranscriptsResponse>,
+  input: __S(320, __c20, 0) as any as S.Schema<ListConferenceRecordsTranscriptsRequest>,
+  output: __S(322, __c20, 2) as any as S.Schema<ListTranscriptsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -910,8 +910,8 @@ export const listConferenceRecordsTranscriptsEntries: API.PaginatedOperationMeth
   GcpOpContext,
   ListTranscriptEntriesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(62, __c7, 6) as any as S.Schema<ListConferenceRecordsTranscriptsEntriesRequest>,
-  output: __S(64, __c8, 0) as any as S.Schema<ListTranscriptEntriesResponse>,
+  input: __S(336, __c21, 0) as any as S.Schema<ListConferenceRecordsTranscriptsEntriesRequest>,
+  output: __S(338, __c21, 2) as any as S.Schema<ListTranscriptEntriesResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -927,8 +927,8 @@ export const listSpacesMembers: API.PaginatedOperationMethod<
   GcpOpContext,
   ListMembersResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(65, __c8, 1) as any as S.Schema<ListSpacesMembersRequest>,
-  output: __S(66, __c8, 2) as any as S.Schema<ListMembersResponse>,
+  input: __S(352, __c22, 0) as any as S.Schema<ListSpacesMembersRequest>,
+  output: __S(353, __c22, 1) as any as S.Schema<ListMembersResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -943,8 +943,8 @@ export const patchSpaces: API.OperationMethod<
   PatchSpacesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(67, __c8, 3) as any as S.Schema<PatchSpacesRequest>,
-  output: __S(18, __c2, 2) as any as S.Schema<Space>,
+  input: __S(368, __c23, 0) as any as S.Schema<PatchSpacesRequest>,
+  output: __S(475, __c29, 11) as any as S.Schema<Space>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -958,8 +958,8 @@ export const patchSpacesMembers: API.OperationMethod<
   PatchSpacesMembersError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(68, __c8, 4) as any as S.Schema<PatchSpacesMembersRequest>,
-  output: __S(0, __c0, 0) as any as S.Schema<Member>,
+  input: __S(384, __c24, 0) as any as S.Schema<PatchSpacesMembersRequest>,
+  output: __S(432, __c27, 0) as any as S.Schema<Member>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -971,225 +971,6 @@ function __c0(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          email: S.optional(S.String),
-          name: S.optional(S.String),
-          role: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Member" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          member: S.optional(__S(0, __c0, 0)),
-          updateMask: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "UpdateMemberRequest" });
-    case 2:
-      return S.Array(__S(1, __c0, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          updateMask: S.optional(S.String),
-          requests: S.optional(__S(2, __c0, 2)),
-        }),
-      ).annotate({
-        identifier: "BatchUpdateMembersRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(3, __c0, 3).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v2/{+parent}/members:batchUpdate",
-            baseUrl: "https://meet.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "BatchUpdateSpacesMembersRequest",
-      });
-    case 5:
-      return S.Array(__S(0, __c0, 0));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          members: S.optional(__S(5, __c0, 5)),
-        }),
-      ).annotate({
-        identifier: "BatchUpdateMembersResponse",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          chatRestriction: S.optional(S.String),
-          defaultJoinAsViewerType: S.optional(S.String),
-          presentRestriction: S.optional(S.String),
-          reactionRestriction: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ModerationRestrictions" });
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          autoRecordingGeneration: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "RecordingConfig" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          autoSmartNotesGeneration: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "SmartNotesConfig" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          autoTranscriptionGeneration: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "TranscriptionConfig" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          recordingConfig: S.optional(__S(8, __c1, 0)),
-          smartNotesConfig: S.optional(__S(9, __c1, 1)),
-          transcriptionConfig: S.optional(__S(10, __c1, 2)),
-        }),
-      ).annotate({ identifier: "ArtifactConfig" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          accessType: S.optional(S.String),
-          moderation: S.optional(S.String),
-          entryPointAccess: S.optional(S.String),
-          moderationRestrictions: S.optional(__S(7, __c0, 7)),
-          attendanceReportGenerationType: S.optional(S.String),
-          artifactConfig: S.optional(__S(11, __c1, 3)),
-        }),
-      ).annotate({ identifier: "SpaceConfig" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          conferenceRecord: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ActiveConference" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          sipAccessCode: S.optional(S.String),
-          uri: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "GatewaySipAccess" });
-    case 7:
-      return S.Array(__S(14, __c1, 6));
-  }
-}
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          languageCode: S.optional(S.String),
-          pin: S.optional(S.String),
-          phoneNumber: S.optional(S.String),
-          regionCode: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "PhoneAccess" });
-    case 1:
-      return S.Array(__S(16, __c2, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          config: S.optional(__S(12, __c1, 4)),
-          activeConference: S.optional(__S(13, __c1, 5)),
-          meetingUri: S.optional(S.String),
-          gatewaySipAccess: S.optional(__S(15, __c1, 7)),
-          name: S.optional(S.String),
-          meetingCode: S.optional(S.String),
-          phoneAccess: S.optional(__S(17, __c2, 1)),
-        }),
-      ).annotate({ identifier: "Space" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          body: S.optional(__S(18, __c2, 2).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({ method: "POST", uri: "v2/spaces", baseUrl: "https://meet.googleapis.com/" }),
-        ),
-      ).annotate({ identifier: "CreateSpacesRequest" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(0, __c0, 0).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v2/{+parent}/members",
-            baseUrl: "https://meet.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateSpacesMembersRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({ method: "DELETE", uri: "v2/{+name}", baseUrl: "https://meet.googleapis.com/" }),
-        ),
-      ).annotate({
-        identifier: "DeleteSpacesMembersRequest",
-      });
-    case 6:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "Empty",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-          body: S.optional(__S(22, __c2, 6).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v2/{+name}:endActiveConference",
-            baseUrl: "https://meet.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "EndActiveConferenceSpacesRequest",
-      });
-  }
-}
-function __c3(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({ method: "GET", uri: "v2/{+name}", baseUrl: "https://meet.googleapis.com/" }),
-        ),
-      ).annotate({
-        identifier: "GetConferenceRecordsRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.optional(S.String),
-          space: S.optional(S.String),
-          endTime: S.optional(S.String),
-          expireTime: S.optional(S.String),
-          startTime: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ConferenceRecord" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
           name: S.String.pipe(T.Label()),
         }).pipe(
           T.Http({ method: "GET", uri: "v2/{+name}", baseUrl: "https://meet.googleapis.com/" }),
@@ -1197,31 +978,39 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "GetConferenceRecordsParticipantsRequest",
       });
-    case 3:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           user: S.optional(S.String),
           displayName: S.optional(S.String),
         }),
       ).annotate({ identifier: "SignedinUser" });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           displayName: S.optional(S.String),
         }),
       ).annotate({ identifier: "PhoneUser" });
-    case 5:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           earliestStartTime: S.optional(S.String),
           name: S.optional(S.String),
-          signedinUser: S.optional(__S(27, __c3, 3)),
-          phoneUser: S.optional(__S(28, __c3, 4)),
-          anonymousUser: S.optional(__S(28, __c3, 4)),
+          signedinUser: S.optional(__S(16, __c1, 0)),
+          phoneUser: S.optional(__S(17, __c1, 1)),
+          anonymousUser: S.optional(__S(17, __c1, 1)),
           latestEndTime: S.optional(S.String),
         }),
       ).annotate({ identifier: "Participant" });
-    case 6:
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -1231,7 +1020,11 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "GetConferenceRecordsParticipantsParticipantSessionsRequest",
       });
-    case 7:
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           endTime: S.optional(S.String),
@@ -1253,24 +1046,32 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "GetConferenceRecordsRecordingsRequest",
       });
-    case 1:
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           exportUri: S.optional(S.String),
           file: S.optional(S.String),
         }),
       ).annotate({ identifier: "DriveDestination" });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
-          driveDestination: S.optional(__S(33, __c4, 1)),
+          driveDestination: S.optional(__S(80, __c5, 0)),
           state: S.optional(S.String),
           endTime: S.optional(S.String),
           startTime: S.optional(S.String),
         }),
       ).annotate({ identifier: "Recording" });
-    case 3:
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -1280,24 +1081,36 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "GetConferenceRecordsSmartNotesRequest",
       });
-    case 4:
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           document: S.optional(S.String),
           exportUri: S.optional(S.String),
         }),
       ).annotate({ identifier: "DocsDestination" });
-    case 5:
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           endTime: S.optional(S.String),
           state: S.optional(S.String),
           name: S.optional(S.String),
-          docsDestination: S.optional(__S(36, __c4, 4)),
+          docsDestination: S.optional(__S(112, __c7, 0)),
           startTime: S.optional(S.String),
         }),
       ).annotate({ identifier: "SmartNote" });
-    case 6:
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -1307,19 +1120,23 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "GetConferenceRecordsTranscriptsRequest",
       });
-    case 7:
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           startTime: S.optional(S.String),
           endTime: S.optional(S.String),
-          docsDestination: S.optional(__S(36, __c4, 4)),
+          docsDestination: S.optional(__S(112, __c7, 0)),
           name: S.optional(S.String),
           state: S.optional(S.String),
         }),
       ).annotate({ identifier: "Transcript" });
   }
 }
-function __c5(j: number): any {
+function __c11(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1331,7 +1148,11 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "GetConferenceRecordsTranscriptsEntriesRequest",
       });
-    case 1:
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           participant: S.optional(S.String),
@@ -1342,7 +1163,11 @@ function __c5(j: number): any {
           startTime: S.optional(S.String),
         }),
       ).annotate({ identifier: "TranscriptEntry" });
-    case 2:
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -1350,7 +1175,11 @@ function __c5(j: number): any {
           T.Http({ method: "GET", uri: "v2/{+name}", baseUrl: "https://meet.googleapis.com/" }),
         ),
       ).annotate({ identifier: "GetSpacesRequest" });
-    case 3:
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -1358,7 +1187,11 @@ function __c5(j: number): any {
           T.Http({ method: "GET", uri: "v2/{+name}", baseUrl: "https://meet.googleapis.com/" }),
         ),
       ).annotate({ identifier: "GetSpacesMembersRequest" });
-    case 4:
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -1374,18 +1207,22 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "ListConferenceRecordsRequest",
       });
-    case 5:
-      return S.Array(__S(25, __c3, 1));
-    case 6:
+    case 1:
+      return S.Array(__S(560, __c35, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          conferenceRecords: S.optional(__S(45, __c5, 5)),
+          conferenceRecords: S.optional(__S(241, __c15, 1)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({
         identifier: "ListConferenceRecordsResponse",
       });
-    case 7:
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           filter: S.optional(S.String.pipe(T.Query())),
@@ -1402,21 +1239,21 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "ListConferenceRecordsParticipantsRequest",
       });
-  }
-}
-function __c6(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(29, __c3, 5));
     case 1:
+      return S.Array(__S(18, __c1, 2));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          participants: S.optional(__S(48, __c6, 0)),
+          participants: S.optional(__S(257, __c16, 1)),
           totalSize: S.optional(S.Number),
         }),
       ).annotate({ identifier: "ListParticipantsResponse" });
-    case 2:
+  }
+}
+function __c17(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
@@ -1433,18 +1270,22 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "ListConferenceRecordsParticipantsParticipantSessionsRequest",
       });
-    case 3:
-      return S.Array(__S(31, __c3, 7));
-    case 4:
+    case 1:
+      return S.Array(__S(48, __c3, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          participantSessions: S.optional(__S(51, __c6, 3)),
+          participantSessions: S.optional(__S(273, __c17, 1)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({
         identifier: "ListParticipantSessionsResponse",
       });
-    case 5:
+  }
+}
+function __c18(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           pageToken: S.optional(S.String.pipe(T.Query())),
@@ -1460,18 +1301,18 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "ListConferenceRecordsRecordingsRequest",
       });
-    case 6:
-      return S.Array(__S(34, __c4, 2));
-    case 7:
+    case 1:
+      return S.Array(__S(81, __c5, 1));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          recordings: S.optional(__S(54, __c6, 6)),
+          recordings: S.optional(__S(289, __c18, 1)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListRecordingsResponse" });
   }
 }
-function __c7(j: number): any {
+function __c19(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1490,15 +1331,19 @@ function __c7(j: number): any {
         identifier: "ListConferenceRecordsSmartNotesRequest",
       });
     case 1:
-      return S.Array(__S(37, __c4, 5));
+      return S.Array(__S(128, __c8, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          smartNotes: S.optional(__S(57, __c7, 1)),
+          smartNotes: S.optional(__S(305, __c19, 1)),
         }),
       ).annotate({ identifier: "ListSmartNotesResponse" });
-    case 3:
+  }
+}
+function __c20(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -1514,16 +1359,20 @@ function __c7(j: number): any {
       ).annotate({
         identifier: "ListConferenceRecordsTranscriptsRequest",
       });
-    case 4:
-      return S.Array(__S(39, __c4, 7));
-    case 5:
+    case 1:
+      return S.Array(__S(160, __c10, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          transcripts: S.optional(__S(60, __c7, 4)),
+          transcripts: S.optional(__S(321, __c20, 1)),
         }),
       ).annotate({ identifier: "ListTranscriptsResponse" });
-    case 6:
+  }
+}
+function __c21(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           pageToken: S.optional(S.String.pipe(T.Query())),
@@ -1539,22 +1388,22 @@ function __c7(j: number): any {
       ).annotate({
         identifier: "ListConferenceRecordsTranscriptsEntriesRequest",
       });
-    case 7:
-      return S.Array(__S(41, __c5, 1));
-  }
-}
-function __c8(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
+      return S.Array(__S(192, __c12, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          transcriptEntries: S.optional(__S(63, __c7, 7)),
+          transcriptEntries: S.optional(__S(337, __c21, 1)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({
         identifier: "ListTranscriptEntriesResponse",
       });
-    case 1:
+  }
+}
+function __c22(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           pageToken: S.optional(S.String.pipe(T.Query())),
@@ -1568,29 +1417,37 @@ function __c8(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ListSpacesMembersRequest" });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          members: S.optional(__S(5, __c0, 5)),
+          members: S.optional(__S(416, __c26, 0)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListMembersResponse" });
-    case 3:
+  }
+}
+function __c23(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
           updateMask: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(18, __c2, 2).pipe(T.HttpBody())),
+          body: S.optional(__S(475, __c29, 11).pipe(T.HttpBody())),
         }).pipe(
           T.Http({ method: "PATCH", uri: "v2/{+name}", baseUrl: "https://meet.googleapis.com/" }),
         ),
       ).annotate({ identifier: "PatchSpacesRequest" });
-    case 4:
+  }
+}
+function __c24(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           updateMask: S.optional(S.String.pipe(T.Query())),
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(0, __c0, 0).pipe(T.HttpBody())),
+          body: S.optional(__S(432, __c27, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({ method: "PATCH", uri: "v2/{+name}", baseUrl: "https://meet.googleapis.com/" }),
         ),
@@ -1599,7 +1456,257 @@ function __c8(j: number): any {
       });
   }
 }
-
+function __c25(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          member: S.optional(__S(432, __c27, 0)),
+          updateMask: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "UpdateMemberRequest" });
+    case 1:
+      return S.Array(__S(400, __c25, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          updateMask: S.optional(S.String),
+          requests: S.optional(__S(401, __c25, 1)),
+        }),
+      ).annotate({
+        identifier: "BatchUpdateMembersRequest",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          parent: S.String.pipe(T.Label()),
+          body: S.optional(__S(402, __c25, 2).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v2/{+parent}/members:batchUpdate",
+            baseUrl: "https://meet.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "BatchUpdateSpacesMembersRequest",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          members: S.optional(__S(416, __c26, 0)),
+        }),
+      ).annotate({
+        identifier: "BatchUpdateMembersResponse",
+      });
+  }
+}
+function __c26(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(432, __c27, 0));
+  }
+}
+function __c27(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          email: S.optional(S.String),
+          name: S.optional(S.String),
+          role: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Member" });
+  }
+}
+function __c28(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          body: S.optional(__S(475, __c29, 11).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({ method: "POST", uri: "v2/spaces", baseUrl: "https://meet.googleapis.com/" }),
+        ),
+      ).annotate({ identifier: "CreateSpacesRequest" });
+  }
+}
+function __c29(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          chatRestriction: S.optional(S.String),
+          defaultJoinAsViewerType: S.optional(S.String),
+          presentRestriction: S.optional(S.String),
+          reactionRestriction: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ModerationRestrictions" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          autoRecordingGeneration: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "RecordingConfig" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          autoSmartNotesGeneration: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "SmartNotesConfig" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          autoTranscriptionGeneration: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "TranscriptionConfig" });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          recordingConfig: S.optional(__S(465, __c29, 1)),
+          smartNotesConfig: S.optional(__S(466, __c29, 2)),
+          transcriptionConfig: S.optional(__S(467, __c29, 3)),
+        }),
+      ).annotate({ identifier: "ArtifactConfig" });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          accessType: S.optional(S.String),
+          moderation: S.optional(S.String),
+          entryPointAccess: S.optional(S.String),
+          moderationRestrictions: S.optional(__S(464, __c29, 0)),
+          attendanceReportGenerationType: S.optional(S.String),
+          artifactConfig: S.optional(__S(468, __c29, 4)),
+        }),
+      ).annotate({ identifier: "SpaceConfig" });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          conferenceRecord: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ActiveConference" });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          sipAccessCode: S.optional(S.String),
+          uri: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "GatewaySipAccess" });
+    case 8:
+      return S.Array(__S(471, __c29, 7));
+    case 9:
+      return S.suspend(() =>
+        S.Struct({
+          languageCode: S.optional(S.String),
+          pin: S.optional(S.String),
+          phoneNumber: S.optional(S.String),
+          regionCode: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "PhoneAccess" });
+    case 10:
+      return S.Array(__S(473, __c29, 9));
+    case 11:
+      return S.suspend(() =>
+        S.Struct({
+          config: S.optional(__S(469, __c29, 5)),
+          activeConference: S.optional(__S(470, __c29, 6)),
+          meetingUri: S.optional(S.String),
+          gatewaySipAccess: S.optional(__S(472, __c29, 8)),
+          name: S.optional(S.String),
+          meetingCode: S.optional(S.String),
+          phoneAccess: S.optional(__S(474, __c29, 10)),
+        }),
+      ).annotate({ identifier: "Space" });
+  }
+}
+function __c30(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          parent: S.String.pipe(T.Label()),
+          body: S.optional(__S(432, __c27, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v2/{+parent}/members",
+            baseUrl: "https://meet.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateSpacesMembersRequest",
+      });
+  }
+}
+function __c31(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({ method: "DELETE", uri: "v2/{+name}", baseUrl: "https://meet.googleapis.com/" }),
+        ),
+      ).annotate({
+        identifier: "DeleteSpacesMembersRequest",
+      });
+  }
+}
+function __c32(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "Empty",
+      });
+  }
+}
+function __c33(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+          body: S.optional(__S(512, __c32, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v2/{+name}:endActiveConference",
+            baseUrl: "https://meet.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "EndActiveConferenceSpacesRequest",
+      });
+  }
+}
+function __c34(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({ method: "GET", uri: "v2/{+name}", baseUrl: "https://meet.googleapis.com/" }),
+        ),
+      ).annotate({
+        identifier: "GetConferenceRecordsRequest",
+      });
+  }
+}
+function __c35(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.optional(S.String),
+          space: S.optional(S.String),
+          endTime: S.optional(S.String),
+          expireTime: S.optional(S.String),
+          startTime: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ConferenceRecord" });
+  }
+}
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

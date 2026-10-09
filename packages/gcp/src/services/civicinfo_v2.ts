@@ -428,7 +428,7 @@ export const electionQueryElections: API.OperationMethod<
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(0, __c0, 0) as any as S.Schema<ElectionQueryElectionsRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<CivicinfoApiprotosV2ElectionsQueryResponse>,
+  output: __S(1, __c0, 1) as any as S.Schema<CivicinfoApiprotosV2ElectionsQueryResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -442,8 +442,8 @@ export const queryDivisionByAddressDivisions: API.OperationMethod<
   QueryDivisionByAddressDivisionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(4, __c0, 4) as any as S.Schema<QueryDivisionByAddressDivisionsRequest>,
-  output: __S(10, __c1, 2) as any as S.Schema<CivicinfoApiprotosV2DivisionByAddressResponse>,
+  input: __S(64, __c2, 0) as any as S.Schema<QueryDivisionByAddressDivisionsRequest>,
+  output: __S(68, __c2, 4) as any as S.Schema<CivicinfoApiprotosV2DivisionByAddressResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -457,8 +457,8 @@ export const searchDivisions: API.OperationMethod<
   SearchDivisionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(11, __c1, 3) as any as S.Schema<SearchDivisionsRequest>,
-  output: __S(14, __c1, 6) as any as S.Schema<CivicinfoApiprotosV2DivisionSearchResponse>,
+  input: __S(160, __c5, 0) as any as S.Schema<SearchDivisionsRequest>,
+  output: __S(163, __c5, 3) as any as S.Schema<CivicinfoApiprotosV2DivisionSearchResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -472,8 +472,8 @@ export const voterInfoQueryElections: API.OperationMethod<
   VoterInfoQueryElectionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(15, __c1, 7) as any as S.Schema<VoterInfoQueryElectionsRequest>,
-  output: __S(35, __c4, 3) as any as S.Schema<CivicinfoApiprotosV2VoterInfoResponse>,
+  input: __S(192, __c6, 0) as any as S.Schema<VoterInfoQueryElectionsRequest>,
+  output: __S(212, __c6, 20) as any as S.Schema<CivicinfoApiprotosV2VoterInfoResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -499,6 +499,19 @@ function __c0(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
+          kind: S.optional(S.String),
+          elections: S.optional(__S(33, __c1, 1)),
+        }),
+      ).annotate({
+        identifier: "CivicinfoApiprotosV2ElectionsQueryResponse",
+      });
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
           ocdDivisionId: S.optional(S.String),
           shapeLookupBehavior: S.optional(S.String),
           id: S.optional(S.String),
@@ -508,18 +521,13 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "CivicinfoSchemaV2Election",
       });
-    case 2:
-      return S.Array(__S(1, __c0, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          kind: S.optional(S.String),
-          elections: S.optional(__S(2, __c0, 2)),
-        }),
-      ).annotate({
-        identifier: "CivicinfoApiprotosV2ElectionsQueryResponse",
-      });
-    case 4:
+    case 1:
+      return S.Array(__S(32, __c1, 0));
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           address: S.optional(S.String.pipe(T.Query())),
@@ -533,33 +541,46 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "QueryDivisionByAddressDivisionsRequest",
       });
-    case 5:
-      return S.Array(S.String);
-    case 6:
+    case 1:
       return S.Array(S.Number);
-    case 7:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
-          alsoKnownAs: S.optional(__S(5, __c0, 5)),
-          officeIndices: S.optional(__S(6, __c0, 6)),
+          alsoKnownAs: S.optional(__S(96, __c3, 0)),
+          officeIndices: S.optional(__S(65, __c2, 1)),
         }),
       ).annotate({
         identifier: "CivicinfoSchemaV2GeographicDivision",
       });
+    case 3:
+      return S.Record(S.String, __S(66, __c2, 2));
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          divisions: S.optional(__S(67, __c2, 3)),
+          normalizedInput: S.optional(__S(128, __c4, 0)),
+        }),
+      ).annotate({
+        identifier: "CivicinfoApiprotosV2DivisionByAddressResponse",
+      });
   }
 }
-function __c1(j: number): any {
+function __c3(j: number): any {
   switch (j) {
     case 0:
-      return S.Record(S.String, __S(7, __c0, 7));
-    case 1:
+      return S.Array(S.String);
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           locationName: S.optional(S.String),
           city: S.optional(S.String),
           zip: S.optional(S.String),
-          addressLine: S.optional(__S(5, __c0, 5)),
+          addressLine: S.optional(__S(96, __c3, 0)),
           line2: S.optional(S.String),
           state: S.optional(S.String),
           line3: S.optional(S.String),
@@ -568,16 +589,11 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "CivicinfoSchemaV2SimpleAddressType",
       });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          divisions: S.optional(__S(8, __c1, 0)),
-          normalizedInput: S.optional(__S(9, __c1, 1)),
-        }),
-      ).annotate({
-        identifier: "CivicinfoApiprotosV2DivisionByAddressResponse",
-      });
-    case 3:
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           query: S.optional(S.String.pipe(T.Query())),
@@ -589,28 +605,32 @@ function __c1(j: number): any {
           }),
         ),
       ).annotate({ identifier: "SearchDivisionsRequest" });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
-          aliases: S.optional(__S(5, __c0, 5)),
+          aliases: S.optional(__S(96, __c3, 0)),
           ocdId: S.optional(S.String),
         }),
       ).annotate({
         identifier: "CivicinfoApiprotosV2DivisionSearchResult",
       });
-    case 5:
-      return S.Array(__S(12, __c1, 4));
-    case 6:
+    case 2:
+      return S.Array(__S(161, __c5, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          results: S.optional(__S(13, __c1, 5)),
+          results: S.optional(__S(162, __c5, 2)),
           kind: S.optional(S.String),
         }),
       ).annotate({
         identifier: "CivicinfoApiprotosV2DivisionSearchResponse",
       });
-    case 7:
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           officialOnly: S.optional(S.Boolean.pipe(T.Query())),
@@ -628,79 +648,71 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "VoterInfoQueryElectionsRequest",
       });
-  }
-}
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
           official: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "CivicinfoSchemaV2Source" });
-    case 1:
-      return S.Array(__S(16, __c2, 0));
     case 2:
+      return S.Array(__S(193, __c6, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
           notes: S.optional(S.String),
           name: S.optional(S.String),
           voterServices: S.optional(S.String),
-          sources: S.optional(__S(17, __c2, 1)),
+          sources: S.optional(__S(194, __c6, 2)),
           startDate: S.optional(S.String),
           endDate: S.optional(S.String),
           longitude: S.optional(S.Number),
           latitude: S.optional(S.Number),
-          address: S.optional(__S(9, __c1, 1)),
+          address: S.optional(__S(128, __c4, 0)),
           pollingHours: S.optional(S.String),
         }),
       ).annotate({
         identifier: "CivicinfoSchemaV2PollingLocation",
       });
-    case 3:
-      return S.Array(__S(18, __c2, 2));
     case 4:
+      return S.Array(__S(195, __c6, 3));
+    case 5:
       return S.suspend(() =>
         S.Struct({
           mailOnly: S.optional(S.Boolean),
-          electoralDistrictId: S.optional(__S(5, __c0, 5)),
+          electoralDistrictId: S.optional(__S(96, __c3, 0)),
           ward: S.optional(S.String),
           administrationRegionId: S.optional(S.String),
-          pollingLocationId: S.optional(__S(5, __c0, 5)),
+          pollingLocationId: S.optional(__S(96, __c3, 0)),
           datasetId: S.optional(S.String),
           name: S.optional(S.String),
           id: S.optional(S.String),
-          earlyVoteSiteId: S.optional(__S(5, __c0, 5)),
+          earlyVoteSiteId: S.optional(__S(96, __c3, 0)),
           splitName: S.optional(S.String),
           number: S.optional(S.String),
-          ocdId: S.optional(__S(5, __c0, 5)),
-          spatialBoundaryId: S.optional(__S(5, __c0, 5)),
-          contestId: S.optional(__S(5, __c0, 5)),
+          ocdId: S.optional(__S(96, __c3, 0)),
+          spatialBoundaryId: S.optional(__S(96, __c3, 0)),
+          contestId: S.optional(__S(96, __c3, 0)),
         }),
       ).annotate({
         identifier: "CivicinfoSchemaV2Precinct",
       });
-    case 5:
-      return S.Array(__S(20, __c2, 4));
     case 6:
+      return S.Array(__S(197, __c6, 5));
+    case 7:
       return S.suspend(() =>
         S.Struct({
           type: S.optional(S.String),
           id: S.optional(S.String),
         }),
       ).annotate({ identifier: "CivicinfoSchemaV2Channel" });
-    case 7:
-      return S.Array(__S(22, __c2, 6));
-  }
-}
-function __c3(j: number): any {
-  switch (j) {
-    case 0:
+    case 8:
+      return S.Array(__S(199, __c6, 7));
+    case 9:
       return S.suspend(() =>
         S.Struct({
           orderOnBallot: S.optional(S.String),
-          channels: S.optional(__S(23, __c2, 7)),
+          channels: S.optional(__S(200, __c6, 8)),
           party: S.optional(S.String),
           phone: S.optional(S.String),
           email: S.optional(S.String),
@@ -711,11 +723,11 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "CivicinfoSchemaV2Candidate",
       });
-    case 1:
-      return S.Array(__S(24, __c3, 0));
-    case 2:
+    case 10:
+      return S.Array(__S(201, __c6, 9));
+    case 11:
       return S.Array(S.String);
-    case 3:
+    case 12:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
@@ -725,7 +737,7 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "CivicinfoSchemaV2ElectoralDistrict",
       });
-    case 4:
+    case 13:
       return S.suspend(() =>
         S.Struct({
           referendumBrief: S.optional(S.String),
@@ -735,28 +747,28 @@ function __c3(j: number): any {
           type: S.optional(S.String),
           office: S.optional(S.String),
           special: S.optional(S.String),
-          candidates: S.optional(__S(25, __c3, 1)),
-          referendumBallotResponses: S.optional(__S(5, __c0, 5)),
-          roles: S.optional(__S(26, __c3, 2)),
-          sources: S.optional(__S(17, __c2, 1)),
+          candidates: S.optional(__S(202, __c6, 10)),
+          referendumBallotResponses: S.optional(__S(96, __c3, 0)),
+          roles: S.optional(__S(203, __c6, 11)),
+          sources: S.optional(__S(194, __c6, 2)),
           numberElected: S.optional(S.String),
           referendumConStatement: S.optional(S.String),
-          level: S.optional(__S(26, __c3, 2)),
+          level: S.optional(__S(203, __c6, 11)),
           electorateSpecifications: S.optional(S.String),
           ballotPlacement: S.optional(S.String),
           referendumSubtitle: S.optional(S.String),
           referendumProStatement: S.optional(S.String),
-          district: S.optional(__S(27, __c3, 3)),
+          district: S.optional(__S(204, __c6, 12)),
           numberVotingFor: S.optional(S.String),
-          primaryParties: S.optional(__S(5, __c0, 5)),
+          primaryParties: S.optional(__S(96, __c3, 0)),
           referendumTitle: S.optional(S.String),
           referendumUrl: S.optional(S.String),
           referendumPassageThreshold: S.optional(S.String),
         }),
       ).annotate({ identifier: "CivicinfoSchemaV2Contest" });
-    case 5:
-      return S.Array(__S(28, __c3, 4));
-    case 6:
+    case 14:
+      return S.Array(__S(205, __c6, 13));
+    case 15:
       return S.suspend(() =>
         S.Struct({
           title: S.optional(S.String),
@@ -768,69 +780,64 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "CivicinfoSchemaV2ElectionOfficial",
       });
-    case 7:
-      return S.Array(__S(30, __c3, 6));
-  }
-}
-function __c4(j: number): any {
-  switch (j) {
-    case 0:
+    case 16:
+      return S.Array(__S(207, __c6, 15));
+    case 17:
       return S.suspend(() =>
         S.Struct({
           votingLocationFinderUrl: S.optional(S.String),
-          electionOfficials: S.optional(__S(31, __c3, 7)),
+          electionOfficials: S.optional(__S(208, __c6, 16)),
           hoursOfOperation: S.optional(S.String),
           ballotInfoUrl: S.optional(S.String),
           electionInfoUrl: S.optional(S.String),
           absenteeVotingInfoUrl: S.optional(S.String),
           electionNoticeText: S.optional(S.String),
           electionNoticeUrl: S.optional(S.String),
-          voter_services: S.optional(__S(5, __c0, 5)),
-          correspondenceAddress: S.optional(__S(9, __c1, 1)),
+          voter_services: S.optional(__S(96, __c3, 0)),
+          correspondenceAddress: S.optional(__S(128, __c4, 0)),
           electionRegistrationConfirmationUrl: S.optional(S.String),
           electionRegistrationUrl: S.optional(S.String),
-          physicalAddress: S.optional(__S(9, __c1, 1)),
+          physicalAddress: S.optional(__S(128, __c4, 0)),
           name: S.optional(S.String),
           electionRulesUrl: S.optional(S.String),
         }),
       ).annotate({
         identifier: "CivicinfoSchemaV2AdministrativeBody",
       });
-    case 1:
+    case 18:
       return S.suspend(() =>
         S.Struct({
-          local_jurisdiction: S.optional(__S(33, __c4, 1)),
-          electionAdministrationBody: S.optional(__S(32, __c4, 0)),
+          local_jurisdiction: S.optional(__S(210, __c6, 18)),
+          electionAdministrationBody: S.optional(__S(209, __c6, 17)),
           name: S.optional(S.String),
-          sources: S.optional(__S(17, __c2, 1)),
+          sources: S.optional(__S(194, __c6, 2)),
         }),
       ).annotate({
         identifier: "CivicinfoSchemaV2AdministrationRegion",
       });
-    case 2:
-      return S.Array(__S(33, __c4, 1));
-    case 3:
+    case 19:
+      return S.Array(__S(210, __c6, 18));
+    case 20:
       return S.suspend(() =>
         S.Struct({
           mailOnly: S.optional(S.Boolean),
-          pollingLocations: S.optional(__S(19, __c2, 3)),
-          precincts: S.optional(__S(21, __c2, 5)),
-          contests: S.optional(__S(29, __c3, 5)),
-          earlyVoteSites: S.optional(__S(19, __c2, 3)),
+          pollingLocations: S.optional(__S(196, __c6, 4)),
+          precincts: S.optional(__S(198, __c6, 6)),
+          contests: S.optional(__S(206, __c6, 14)),
+          earlyVoteSites: S.optional(__S(196, __c6, 4)),
           kind: S.optional(S.String),
-          otherElections: S.optional(__S(2, __c0, 2)),
-          election: S.optional(__S(1, __c0, 1)),
-          normalizedInput: S.optional(__S(9, __c1, 1)),
+          otherElections: S.optional(__S(33, __c1, 1)),
+          election: S.optional(__S(32, __c1, 0)),
+          normalizedInput: S.optional(__S(128, __c4, 0)),
           precinctId: S.optional(S.String),
-          dropOffLocations: S.optional(__S(19, __c2, 3)),
-          state: S.optional(__S(34, __c4, 2)),
+          dropOffLocations: S.optional(__S(196, __c6, 4)),
+          state: S.optional(__S(211, __c6, 19)),
         }),
       ).annotate({
         identifier: "CivicinfoApiprotosV2VoterInfoResponse",
       });
   }
 }
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

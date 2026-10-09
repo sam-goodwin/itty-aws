@@ -5914,7 +5914,7 @@ export const countActivityExecutions: API.OperationMethod<
   TemporalOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(0, __c0, 0) as any as S.Schema<CountActivityExecutionsRequest>,
-  output: __S(4, __c0, 4) as any as S.Schema<CountActivityExecutionsResponse>,
+  output: __S(96, __c3, 0) as any as S.Schema<CountActivityExecutionsResponse>,
   errors: [UnknownTemporalError],
   protocol: TemporalProtocol,
   retry: Retry.Retry,
@@ -5928,8 +5928,8 @@ export const countNexusOperationExecutions: API.OperationMethod<
   CountNexusOperationExecutionsError,
   TemporalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(5, __c0, 5) as any as S.Schema<CountNexusOperationExecutionsRequest>,
-  output: __S(9, __c1, 1) as any as S.Schema<CountNexusOperationExecutionsResponse>,
+  input: __S(128, __c4, 0) as any as S.Schema<CountNexusOperationExecutionsRequest>,
+  output: __S(132, __c4, 4) as any as S.Schema<CountNexusOperationExecutionsResponse>,
   errors: [UnknownTemporalError],
   protocol: TemporalProtocol,
   retry: Retry.Retry,
@@ -5943,8 +5943,8 @@ export const countSchedules: API.OperationMethod<
   CountSchedulesError,
   TemporalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(10, __c1, 2) as any as S.Schema<CountSchedulesRequest>,
-  output: __S(11, __c1, 3) as any as S.Schema<CountSchedulesResponse>,
+  input: __S(1088, __c34, 0) as any as S.Schema<CountSchedulesRequest>,
+  output: __S(1089, __c34, 1) as any as S.Schema<CountSchedulesResponse>,
   errors: [UnknownTemporalError],
   protocol: TemporalProtocol,
   retry: Retry.Retry,
@@ -5958,8 +5958,8 @@ export const countWorkflowExecutions: API.OperationMethod<
   CountWorkflowExecutionsError,
   TemporalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(12, __c1, 4) as any as S.Schema<CountWorkflowExecutionsRequest>,
-  output: __S(4, __c0, 4) as any as S.Schema<CountWorkflowExecutionsResponse>,
+  input: __S(1856, __c58, 0) as any as S.Schema<CountWorkflowExecutionsRequest>,
+  output: __S(96, __c3, 0) as any as S.Schema<CountWorkflowExecutionsResponse>,
   errors: [UnknownTemporalError],
   protocol: TemporalProtocol,
   retry: Retry.Retry,
@@ -5973,8 +5973,8 @@ export const createNexusEndpoint: API.OperationMethod<
   CreateNexusEndpointError,
   TemporalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(17, __c2, 1) as any as S.Schema<CreateNexusEndpointRequest>,
-  output: __S(19, __c2, 3) as any as S.Schema<CreateNexusEndpointResponse>,
+  input: __S(2432, __c76, 0) as any as S.Schema<CreateNexusEndpointRequest>,
+  output: __S(2496, __c78, 0) as any as S.Schema<CreateNexusEndpointResponse>,
   errors: [UnknownTemporalError],
   protocol: TemporalProtocol,
   retry: Retry.Retry,
@@ -5988,8 +5988,8 @@ export const createSchedule: API.OperationMethod<
   CreateScheduleError,
   TemporalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(52, __c6, 4) as any as S.Schema<CreateScheduleRequest>,
-  output: __S(53, __c6, 5) as any as S.Schema<CreateScheduleResponse>,
+  input: __S(2848, __c89, 0) as any as S.Schema<CreateScheduleRequest>,
+  output: __S(2849, __c89, 1) as any as S.Schema<CreateScheduleResponse>,
   errors: [UnknownTemporalError],
   protocol: TemporalProtocol,
   retry: Retry.Retry,
@@ -6003,8 +6003,8 @@ export const createWorkerDeployment: API.OperationMethod<
   CreateWorkerDeploymentError,
   TemporalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(54, __c6, 6) as any as S.Schema<CreateWorkerDeploymentRequest>,
-  output: __S(55, __c6, 7) as any as S.Schema<CreateWorkerDeploymentResponse>,
+  input: __S(3776, __c118, 0) as any as S.Schema<CreateWorkerDeploymentRequest>,
+  output: __S(3777, __c118, 1) as any as S.Schema<CreateWorkerDeploymentResponse>,
   errors: [UnknownTemporalError],
   protocol: TemporalProtocol,
   retry: Retry.Retry,
@@ -6018,8 +6018,8 @@ export const createWorkerDeploymentVersion: API.OperationMethod<
   CreateWorkerDeploymentVersionError,
   TemporalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(62, __c7, 6) as any as S.Schema<CreateWorkerDeploymentVersionRequest>,
-  output: __S(63, __c7, 7) as any as S.Schema<CreateWorkerDeploymentVersionResponse2>,
+  input: __S(4192, __c131, 0) as any as S.Schema<CreateWorkerDeploymentVersionRequest>,
+  output: __S(4320, __c135, 0) as any as S.Schema<CreateWorkerDeploymentVersionResponse2>,
   errors: [UnknownTemporalError],
   protocol: TemporalProtocol,
   retry: Retry.Retry,
@@ -6033,8 +6033,8 @@ export const createWorkflowRule: API.OperationMethod<
   CreateWorkflowRuleError,
   TemporalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(68, __c8, 4) as any as S.Schema<CreateWorkflowRuleRequest>,
-  output: __S(70, __c8, 6) as any as S.Schema<CreateWorkflowRuleResponse>,
+  input: __S(4704, __c147, 0) as any as S.Schema<CreateWorkflowRuleRequest>,
+  output: __S(4705, __c147, 1) as any as S.Schema<CreateWorkflowRuleResponse>,
   errors: [UnknownTemporalError],
   protocol: TemporalProtocol,
   retry: Retry.Retry,
@@ -6048,8 +6048,8 @@ export const deleteNexusEndpoint: API.OperationMethod<
   DeleteNexusEndpointError,
   TemporalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(71, __c8, 7) as any as S.Schema<DeleteNexusEndpointRequest>,
-  output: __S(63, __c7, 7) as any as S.Schema<DeleteNexusEndpointResponse2>,
+  input: __S(5152, __c161, 0) as any as S.Schema<DeleteNexusEndpointRequest>,
+  output: __S(4320, __c135, 0) as any as S.Schema<DeleteNexusEndpointResponse2>,
   errors: [UnknownTemporalError],
   protocol: TemporalProtocol,
   retry: Retry.Retry,
@@ -6063,8 +6063,8 @@ export const deleteSchedule: API.OperationMethod<
   DeleteScheduleError,
   TemporalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(72, __c9, 0) as any as S.Schema<DeleteScheduleRequest>,
-  output: __S(73, __c9, 1) as any as S.Schema<DeleteScheduleResponse2>,
+  input: __S(160, __c5, 0) as any as S.Schema<DeleteScheduleRequest>,
+  output: __S(192, __c6, 0) as any as S.Schema<DeleteScheduleResponse2>,
   errors: [UnknownTemporalError],
   protocol: TemporalProtocol,
   retry: Retry.Retry,
@@ -6078,8 +6078,8 @@ export const deleteWorkerDeployment: API.OperationMethod<
   DeleteWorkerDeploymentError,
   TemporalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(74, __c9, 2) as any as S.Schema<DeleteWorkerDeploymentRequest>,
-  output: __S(63, __c7, 7) as any as S.Schema<DeleteWorkerDeploymentResponse2>,
+  input: __S(352, __c11, 0) as any as S.Schema<DeleteWorkerDeploymentRequest>,
+  output: __S(4320, __c135, 0) as any as S.Schema<DeleteWorkerDeploymentResponse2>,
   errors: [UnknownTemporalError],
   protocol: TemporalProtocol,
   retry: Retry.Retry,
@@ -6093,8 +6093,8 @@ export const deleteWorkerDeploymentVersion: API.OperationMethod<
   DeleteWorkerDeploymentVersionError,
   TemporalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(75, __c9, 3) as any as S.Schema<DeleteWorkerDeploymentVersionRequest>,
-  output: __S(63, __c7, 7) as any as S.Schema<DeleteWorkerDeploymentVersionResponse2>,
+  input: __S(384, __c12, 0) as any as S.Schema<DeleteWorkerDeploymentVersionRequest>,
+  output: __S(4320, __c135, 0) as any as S.Schema<DeleteWorkerDeploymentVersionResponse2>,
   errors: [UnknownTemporalError],
   protocol: TemporalProtocol,
   retry: Retry.Retry,
@@ -6108,8 +6108,8 @@ export const deleteWorkflowRule: API.OperationMethod<
   DeleteWorkflowRuleError,
   TemporalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(76, __c9, 4) as any as S.Schema<DeleteWorkflowRuleRequest>,
-  output: __S(63, __c7, 7) as any as S.Schema<DeleteWorkflowRuleResponse2>,
+  input: __S(416, __c13, 0) as any as S.Schema<DeleteWorkflowRuleRequest>,
+  output: __S(4320, __c135, 0) as any as S.Schema<DeleteWorkflowRuleResponse2>,
   errors: [UnknownTemporalError],
   protocol: TemporalProtocol,
   retry: Retry.Retry,
@@ -6123,8 +6123,8 @@ export const describeActivityExecution: API.OperationMethod<
   DescribeActivityExecutionError,
   TemporalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(77, __c9, 5) as any as S.Schema<DescribeActivityExecutionRequest>,
-  output: __S(107, __c13, 3) as any as S.Schema<DescribeActivityExecutionResponse>,
+  input: __S(448, __c14, 0) as any as S.Schema<DescribeActivityExecutionRequest>,
+  output: __S(450, __c14, 2) as any as S.Schema<DescribeActivityExecutionResponse>,
   errors: [UnknownTemporalError],
   protocol: TemporalProtocol,
   retry: Retry.Retry,
@@ -6138,8 +6138,8 @@ export const describeBatchOperation: API.OperationMethod<
   DescribeBatchOperationError,
   TemporalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(108, __c13, 4) as any as S.Schema<DescribeBatchOperationRequest>,
-  output: __S(109, __c13, 5) as any as S.Schema<DescribeBatchOperationResponse>,
+  input: __S(736, __c23, 0) as any as S.Schema<DescribeBatchOperationRequest>,
+  output: __S(737, __c23, 1) as any as S.Schema<DescribeBatchOperationResponse>,
   errors: [UnknownTemporalError],
   protocol: TemporalProtocol,
   retry: Retry.Retry,
@@ -6153,8 +6153,8 @@ export const describeDeployment: API.OperationMethod<
   DescribeDeploymentError,
   TemporalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(110, __c13, 6) as any as S.Schema<DescribeDeploymentRequest>,
-  output: __S(114, __c14, 2) as any as S.Schema<DescribeDeploymentResponse>,
+  input: __S(768, __c24, 0) as any as S.Schema<DescribeDeploymentRequest>,
+  output: __S(769, __c24, 1) as any as S.Schema<DescribeDeploymentResponse>,
   errors: [UnknownTemporalError],
   protocol: TemporalProtocol,
   retry: Retry.Retry,
@@ -6168,8 +6168,8 @@ export const describeNamespace: API.OperationMethod<
   DescribeNamespaceError,
   TemporalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(115, __c14, 3) as any as S.Schema<DescribeNamespaceRequest>,
-  output: __S(128, __c16, 0) as any as S.Schema<DescribeNamespaceResponse>,
+  input: __S(832, __c26, 0) as any as S.Schema<DescribeNamespaceRequest>,
+  output: __S(866, __c27, 2) as any as S.Schema<DescribeNamespaceResponse>,
   errors: [UnknownTemporalError],
   protocol: TemporalProtocol,
   retry: Retry.Retry,
@@ -6183,8 +6183,8 @@ export const describeNexusOperationExecution: API.OperationMethod<
   DescribeNexusOperationExecutionError,
   TemporalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(129, __c16, 1) as any as S.Schema<DescribeNexusOperationExecutionRequest>,
-  output: __S(132, __c16, 4) as any as S.Schema<DescribeNexusOperationExecutionResponse>,
+  input: __S(960, __c30, 0) as any as S.Schema<DescribeNexusOperationExecutionRequest>,
+  output: __S(963, __c30, 3) as any as S.Schema<DescribeNexusOperationExecutionResponse>,
   errors: [UnknownTemporalError],
   protocol: TemporalProtocol,
   retry: Retry.Retry,
@@ -6198,8 +6198,8 @@ export const describeSchedule: API.OperationMethod<
   DescribeScheduleError,
   TemporalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(133, __c16, 5) as any as S.Schema<DescribeScheduleRequest>,
-  output: __S(138, __c17, 2) as any as S.Schema<DescribeScheduleResponse>,
+  input: __S(992, __c31, 0) as any as S.Schema<DescribeScheduleRequest>,
+  output: __S(994, __c31, 2) as any as S.Schema<DescribeScheduleResponse>,
   errors: [UnknownTemporalError],
   protocol: TemporalProtocol,
   retry: Retry.Retry,
@@ -6213,8 +6213,8 @@ export const describeTaskQueue: API.OperationMethod<
   DescribeTaskQueueError,
   TemporalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(139, __c17, 3) as any as S.Schema<DescribeTaskQueueRequest>,
-  output: __S(159, __c19, 7) as any as S.Schema<DescribeTaskQueueResponse>,
+  input: __S(1120, __c35, 0) as any as S.Schema<DescribeTaskQueueRequest>,
+  output: __S(1133, __c35, 13) as any as S.Schema<DescribeTaskQueueResponse>,
   errors: [UnknownTemporalError],
   protocol: TemporalProtocol,
   retry: Retry.Retry,
@@ -6228,8 +6228,8 @@ export const describeWorker: API.OperationMethod<
   DescribeWorkerError,
   TemporalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(160, __c20, 0) as any as S.Schema<DescribeWorkerRequest>,
-  output: __S(170, __c21, 2) as any as S.Schema<DescribeWorkerResponse>,
+  input: __S(1248, __c39, 0) as any as S.Schema<DescribeWorkerRequest>,
+  output: __S(1249, __c39, 1) as any as S.Schema<DescribeWorkerResponse>,
   errors: [UnknownTemporalError],
   protocol: TemporalProtocol,
   retry: Retry.Retry,
@@ -6243,8 +6243,8 @@ export const describeWorkerDeployment: API.OperationMethod<
   DescribeWorkerDeploymentError,
   TemporalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(171, __c21, 3) as any as S.Schema<DescribeWorkerDeploymentRequest>,
-  output: __S(180, __c22, 4) as any as S.Schema<DescribeWorkerDeploymentResponse>,
+  input: __S(1344, __c42, 0) as any as S.Schema<DescribeWorkerDeploymentRequest>,
+  output: __S(1347, __c42, 3) as any as S.Schema<DescribeWorkerDeploymentResponse>,
   errors: [UnknownTemporalError],
   protocol: TemporalProtocol,
   retry: Retry.Retry,
@@ -6258,8 +6258,8 @@ export const describeWorkerDeploymentVersion: API.OperationMethod<
   DescribeWorkerDeploymentVersionError,
   TemporalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(181, __c22, 5) as any as S.Schema<DescribeWorkerDeploymentVersionRequest>,
-  output: __S(189, __c23, 5) as any as S.Schema<DescribeWorkerDeploymentVersionResponse>,
+  input: __S(1440, __c45, 0) as any as S.Schema<DescribeWorkerDeploymentVersionRequest>,
+  output: __S(1447, __c45, 7) as any as S.Schema<DescribeWorkerDeploymentVersionResponse>,
   errors: [UnknownTemporalError],
   protocol: TemporalProtocol,
   retry: Retry.Retry,
@@ -6273,8 +6273,8 @@ export const describeWorkflowExecution: API.OperationMethod<
   DescribeWorkflowExecutionError,
   TemporalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(190, __c23, 6) as any as S.Schema<DescribeWorkflowExecutionRequest>,
-  output: __S(216, __c27, 0) as any as S.Schema<DescribeWorkflowExecutionResponse>,
+  input: __S(1504, __c47, 0) as any as S.Schema<DescribeWorkflowExecutionRequest>,
+  output: __S(1521, __c47, 17) as any as S.Schema<DescribeWorkflowExecutionResponse>,
   errors: [UnknownTemporalError],
   protocol: TemporalProtocol,
   retry: Retry.Retry,
@@ -6288,8 +6288,8 @@ export const describeWorkflowRule: API.OperationMethod<
   DescribeWorkflowRuleError,
   TemporalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(217, __c27, 1) as any as S.Schema<DescribeWorkflowRuleRequest>,
-  output: __S(218, __c27, 2) as any as S.Schema<DescribeWorkflowRuleResponse>,
+  input: __S(1664, __c52, 0) as any as S.Schema<DescribeWorkflowRuleRequest>,
+  output: __S(1665, __c52, 1) as any as S.Schema<DescribeWorkflowRuleResponse>,
   errors: [UnknownTemporalError],
   protocol: TemporalProtocol,
   retry: Retry.Retry,
@@ -6303,8 +6303,8 @@ export const fetchWorkerConfig: API.OperationMethod<
   FetchWorkerConfigError,
   TemporalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(220, __c27, 4) as any as S.Schema<FetchWorkerConfigRequest>,
-  output: __S(224, __c28, 0) as any as S.Schema<FetchWorkerConfigResponse>,
+  input: __S(1696, __c53, 0) as any as S.Schema<FetchWorkerConfigRequest>,
+  output: __S(1732, __c54, 4) as any as S.Schema<FetchWorkerConfigResponse>,
   errors: [UnknownTemporalError],
   protocol: TemporalProtocol,
   retry: Retry.Retry,
@@ -6318,8 +6318,8 @@ export const getClusterInfo: API.OperationMethod<
   GetClusterInfoError,
   TemporalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(225, __c28, 1) as any as S.Schema<GetClusterInfoRequest>,
-  output: __S(230, __c28, 6) as any as S.Schema<GetClusterInfoResponse>,
+  input: __S(1760, __c55, 0) as any as S.Schema<GetClusterInfoRequest>,
+  output: __S(1765, __c55, 5) as any as S.Schema<GetClusterInfoResponse>,
   errors: [UnknownTemporalError],
   protocol: TemporalProtocol,
   retry: Retry.Retry,
@@ -6333,8 +6333,8 @@ export const getCurrentDeployment: API.OperationMethod<
   GetCurrentDeploymentError,
   TemporalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(231, __c28, 7) as any as S.Schema<GetCurrentDeploymentRequest>,
-  output: __S(232, __c29, 0) as any as S.Schema<GetCurrentDeploymentResponse>,
+  input: __S(1792, __c56, 0) as any as S.Schema<GetCurrentDeploymentRequest>,
+  output: __S(1793, __c56, 1) as any as S.Schema<GetCurrentDeploymentResponse>,
   errors: [UnknownTemporalError],
   protocol: TemporalProtocol,
   retry: Retry.Retry,
@@ -6348,8 +6348,8 @@ export const getDeploymentReachability: API.OperationMethod<
   GetDeploymentReachabilityError,
   TemporalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(233, __c29, 1) as any as S.Schema<GetDeploymentReachabilityRequest>,
-  output: __S(234, __c29, 2) as any as S.Schema<GetDeploymentReachabilityResponse>,
+  input: __S(1824, __c57, 0) as any as S.Schema<GetDeploymentReachabilityRequest>,
+  output: __S(1825, __c57, 1) as any as S.Schema<GetDeploymentReachabilityResponse>,
   errors: [UnknownTemporalError],
   protocol: TemporalProtocol,
   retry: Retry.Retry,
@@ -6363,8 +6363,8 @@ export const getNexusEndpoint: API.OperationMethod<
   GetNexusEndpointError,
   TemporalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(235, __c29, 3) as any as S.Schema<GetNexusEndpointRequest>,
-  output: __S(236, __c29, 4) as any as S.Schema<GetNexusEndpointResponse>,
+  input: __S(1888, __c59, 0) as any as S.Schema<GetNexusEndpointRequest>,
+  output: __S(1889, __c59, 1) as any as S.Schema<GetNexusEndpointResponse>,
   errors: [UnknownTemporalError],
   protocol: TemporalProtocol,
   retry: Retry.Retry,
@@ -6378,8 +6378,8 @@ export const getSystemInfo: API.OperationMethod<
   GetSystemInfoError,
   TemporalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(237, __c29, 5) as any as S.Schema<GetSystemInfoRequest>,
-  output: __S(239, __c29, 7) as any as S.Schema<GetSystemInfoResponse>,
+  input: __S(1920, __c60, 0) as any as S.Schema<GetSystemInfoRequest>,
+  output: __S(1922, __c60, 2) as any as S.Schema<GetSystemInfoResponse>,
   errors: [UnknownTemporalError],
   protocol: TemporalProtocol,
   retry: Retry.Retry,
@@ -6393,8 +6393,8 @@ export const getWorkerBuildIdCompatibility: API.OperationMethod<
   GetWorkerBuildIdCompatibilityError,
   TemporalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(240, __c30, 0) as any as S.Schema<GetWorkerBuildIdCompatibilityRequest>,
-  output: __S(243, __c30, 3) as any as S.Schema<GetWorkerBuildIdCompatibilityResponse>,
+  input: __S(1952, __c61, 0) as any as S.Schema<GetWorkerBuildIdCompatibilityRequest>,
+  output: __S(1955, __c61, 3) as any as S.Schema<GetWorkerBuildIdCompatibilityResponse>,
   errors: [UnknownTemporalError],
   protocol: TemporalProtocol,
   retry: Retry.Retry,
@@ -6408,8 +6408,8 @@ export const getWorkerTaskReachability: API.OperationMethod<
   GetWorkerTaskReachabilityError,
   TemporalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(244, __c30, 4) as any as S.Schema<GetWorkerTaskReachabilityRequest>,
-  output: __S(249, __c31, 1) as any as S.Schema<GetWorkerTaskReachabilityResponse>,
+  input: __S(1984, __c62, 0) as any as S.Schema<GetWorkerTaskReachabilityRequest>,
+  output: __S(1989, __c62, 5) as any as S.Schema<GetWorkerTaskReachabilityResponse>,
   errors: [UnknownTemporalError],
   protocol: TemporalProtocol,
   retry: Retry.Retry,
@@ -6423,8 +6423,8 @@ export const getWorkerVersioningRules: API.OperationMethod<
   GetWorkerVersioningRulesError,
   TemporalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(250, __c31, 2) as any as S.Schema<GetWorkerVersioningRulesRequest>,
-  output: __S(258, __c32, 2) as any as S.Schema<GetWorkerVersioningRulesResponse>,
+  input: __S(2016, __c63, 0) as any as S.Schema<GetWorkerVersioningRulesRequest>,
+  output: __S(2024, __c63, 8) as any as S.Schema<GetWorkerVersioningRulesResponse>,
   errors: [UnknownTemporalError],
   protocol: TemporalProtocol,
   retry: Retry.Retry,
@@ -6438,8 +6438,8 @@ export const getWorkflowExecutionHistory: API.OperationMethod<
   GetWorkflowExecutionHistoryError,
   TemporalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(259, __c32, 3) as any as S.Schema<GetWorkflowExecutionHistoryRequest>,
-  output: __S(336, __c42, 0) as any as S.Schema<GetWorkflowExecutionHistoryResponse>,
+  input: __S(2048, __c64, 0) as any as S.Schema<GetWorkflowExecutionHistoryRequest>,
+  output: __S(2051, __c64, 3) as any as S.Schema<GetWorkflowExecutionHistoryResponse>,
   errors: [UnknownTemporalError],
   protocol: TemporalProtocol,
   retry: Retry.Retry,
@@ -6453,8 +6453,8 @@ export const getWorkflowExecutionHistoryReverse: API.OperationMethod<
   GetWorkflowExecutionHistoryReverseError,
   TemporalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(337, __c42, 1) as any as S.Schema<GetWorkflowExecutionHistoryReverseRequest>,
-  output: __S(338, __c42, 2) as any as S.Schema<GetWorkflowExecutionHistoryReverseResponse>,
+  input: __S(2272, __c71, 0) as any as S.Schema<GetWorkflowExecutionHistoryReverseRequest>,
+  output: __S(2273, __c71, 1) as any as S.Schema<GetWorkflowExecutionHistoryReverseResponse>,
   errors: [UnknownTemporalError],
   protocol: TemporalProtocol,
   retry: Retry.Retry,
@@ -6468,8 +6468,8 @@ export const listActivityExecutions: API.OperationMethod<
   ListActivityExecutionsError,
   TemporalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(339, __c42, 3) as any as S.Schema<ListActivityExecutionsRequest>,
-  output: __S(342, __c42, 6) as any as S.Schema<ListActivityExecutionsResponse>,
+  input: __S(2304, __c72, 0) as any as S.Schema<ListActivityExecutionsRequest>,
+  output: __S(2307, __c72, 3) as any as S.Schema<ListActivityExecutionsResponse>,
   errors: [UnknownTemporalError],
   protocol: TemporalProtocol,
   retry: Retry.Retry,
@@ -6483,8 +6483,8 @@ export const listArchivedWorkflowExecutions: API.OperationMethod<
   ListArchivedWorkflowExecutionsError,
   TemporalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(343, __c42, 7) as any as S.Schema<ListArchivedWorkflowExecutionsRequest>,
-  output: __S(345, __c43, 1) as any as S.Schema<ListArchivedWorkflowExecutionsResponse>,
+  input: __S(2336, __c73, 0) as any as S.Schema<ListArchivedWorkflowExecutionsRequest>,
+  output: __S(2369, __c74, 1) as any as S.Schema<ListArchivedWorkflowExecutionsResponse>,
   errors: [UnknownTemporalError],
   protocol: TemporalProtocol,
   retry: Retry.Retry,
@@ -6498,8 +6498,8 @@ export const listBatchOperations: API.OperationMethod<
   ListBatchOperationsError,
   TemporalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(346, __c43, 2) as any as S.Schema<ListBatchOperationsRequest>,
-  output: __S(349, __c43, 5) as any as S.Schema<ListBatchOperationsResponse>,
+  input: __S(2400, __c75, 0) as any as S.Schema<ListBatchOperationsRequest>,
+  output: __S(2403, __c75, 3) as any as S.Schema<ListBatchOperationsResponse>,
   errors: [UnknownTemporalError],
   protocol: TemporalProtocol,
   retry: Retry.Retry,
@@ -6513,8 +6513,8 @@ export const listDeployments: API.OperationMethod<
   ListDeploymentsError,
   TemporalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(350, __c43, 6) as any as S.Schema<ListDeploymentsRequest>,
-  output: __S(353, __c44, 1) as any as S.Schema<ListDeploymentsResponse>,
+  input: __S(2528, __c79, 0) as any as S.Schema<ListDeploymentsRequest>,
+  output: __S(2531, __c79, 3) as any as S.Schema<ListDeploymentsResponse>,
   errors: [UnknownTemporalError],
   protocol: TemporalProtocol,
   retry: Retry.Retry,
@@ -6528,8 +6528,8 @@ export const listNamespaces: API.OperationMethod<
   ListNamespacesError,
   TemporalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(354, __c44, 2) as any as S.Schema<ListNamespacesRequest>,
-  output: __S(356, __c44, 4) as any as S.Schema<ListNamespacesResponse>,
+  input: __S(2560, __c80, 0) as any as S.Schema<ListNamespacesRequest>,
+  output: __S(2562, __c80, 2) as any as S.Schema<ListNamespacesResponse>,
   errors: [UnknownTemporalError],
   protocol: TemporalProtocol,
   retry: Retry.Retry,
@@ -6543,8 +6543,8 @@ export const listNexusEndpoints: API.OperationMethod<
   ListNexusEndpointsError,
   TemporalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(357, __c44, 5) as any as S.Schema<ListNexusEndpointsRequest>,
-  output: __S(359, __c44, 7) as any as S.Schema<ListNexusEndpointsResponse>,
+  input: __S(2592, __c81, 0) as any as S.Schema<ListNexusEndpointsRequest>,
+  output: __S(2594, __c81, 2) as any as S.Schema<ListNexusEndpointsResponse>,
   errors: [UnknownTemporalError],
   protocol: TemporalProtocol,
   retry: Retry.Retry,
@@ -6558,8 +6558,8 @@ export const listNexusOperationExecutions: API.OperationMethod<
   ListNexusOperationExecutionsError,
   TemporalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(360, __c45, 0) as any as S.Schema<ListNexusOperationExecutionsRequest>,
-  output: __S(363, __c45, 3) as any as S.Schema<ListNexusOperationExecutionsResponse>,
+  input: __S(2624, __c82, 0) as any as S.Schema<ListNexusOperationExecutionsRequest>,
+  output: __S(2627, __c82, 3) as any as S.Schema<ListNexusOperationExecutionsResponse>,
   errors: [UnknownTemporalError],
   protocol: TemporalProtocol,
   retry: Retry.Retry,
@@ -6573,8 +6573,8 @@ export const listScheduleMatchingTimes: API.OperationMethod<
   ListScheduleMatchingTimesError,
   TemporalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(364, __c45, 4) as any as S.Schema<ListScheduleMatchingTimesRequest>,
-  output: __S(365, __c45, 5) as any as S.Schema<ListScheduleMatchingTimesResponse>,
+  input: __S(2656, __c83, 0) as any as S.Schema<ListScheduleMatchingTimesRequest>,
+  output: __S(2657, __c83, 1) as any as S.Schema<ListScheduleMatchingTimesResponse>,
   errors: [UnknownTemporalError],
   protocol: TemporalProtocol,
   retry: Retry.Retry,
@@ -6588,8 +6588,8 @@ export const listSchedules: API.OperationMethod<
   ListSchedulesError,
   TemporalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(366, __c45, 6) as any as S.Schema<ListSchedulesRequest>,
-  output: __S(370, __c46, 2) as any as S.Schema<ListSchedulesResponse>,
+  input: __S(2688, __c84, 0) as any as S.Schema<ListSchedulesRequest>,
+  output: __S(2692, __c84, 4) as any as S.Schema<ListSchedulesResponse>,
   errors: [UnknownTemporalError],
   protocol: TemporalProtocol,
   retry: Retry.Retry,
@@ -6603,8 +6603,8 @@ export const listSearchAttributes: API.OperationMethod<
   ListSearchAttributesError,
   TemporalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(371, __c46, 3) as any as S.Schema<ListSearchAttributesRequest>,
-  output: __S(373, __c46, 5) as any as S.Schema<ListSearchAttributesResponse>,
+  input: __S(2720, __c85, 0) as any as S.Schema<ListSearchAttributesRequest>,
+  output: __S(2722, __c85, 2) as any as S.Schema<ListSearchAttributesResponse>,
   errors: [UnknownTemporalError],
   protocol: TemporalProtocol,
   retry: Retry.Retry,
@@ -6618,8 +6618,8 @@ export const listWorkerDeployments: API.OperationMethod<
   ListWorkerDeploymentsError,
   TemporalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(374, __c46, 6) as any as S.Schema<ListWorkerDeploymentsRequest>,
-  output: __S(377, __c47, 1) as any as S.Schema<ListWorkerDeploymentsResponse>,
+  input: __S(2752, __c86, 0) as any as S.Schema<ListWorkerDeploymentsRequest>,
+  output: __S(2755, __c86, 3) as any as S.Schema<ListWorkerDeploymentsResponse>,
   errors: [UnknownTemporalError],
   protocol: TemporalProtocol,
   retry: Retry.Retry,
@@ -6633,8 +6633,8 @@ export const listWorkers: API.OperationMethod<
   ListWorkersError,
   TemporalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(378, __c47, 2) as any as S.Schema<ListWorkersRequest>,
-  output: __S(382, __c47, 6) as any as S.Schema<ListWorkersResponse>,
+  input: __S(2784, __c87, 0) as any as S.Schema<ListWorkersRequest>,
+  output: __S(2788, __c87, 4) as any as S.Schema<ListWorkersResponse>,
   errors: [UnknownTemporalError],
   protocol: TemporalProtocol,
   retry: Retry.Retry,
@@ -6648,8 +6648,8 @@ export const listWorkflowExecutions: API.OperationMethod<
   ListWorkflowExecutionsError,
   TemporalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(383, __c47, 7) as any as S.Schema<ListWorkflowExecutionsRequest>,
-  output: __S(345, __c43, 1) as any as S.Schema<ListWorkflowExecutionsResponse>,
+  input: __S(2816, __c88, 0) as any as S.Schema<ListWorkflowExecutionsRequest>,
+  output: __S(2369, __c74, 1) as any as S.Schema<ListWorkflowExecutionsResponse>,
   errors: [UnknownTemporalError],
   protocol: TemporalProtocol,
   retry: Retry.Retry,
@@ -6663,8 +6663,8 @@ export const listWorkflowRules: API.OperationMethod<
   ListWorkflowRulesError,
   TemporalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(384, __c48, 0) as any as S.Schema<ListWorkflowRulesRequest>,
-  output: __S(386, __c48, 2) as any as S.Schema<ListWorkflowRulesResponse>,
+  input: __S(3392, __c106, 0) as any as S.Schema<ListWorkflowRulesRequest>,
+  output: __S(3394, __c106, 2) as any as S.Schema<ListWorkflowRulesResponse>,
   errors: [UnknownTemporalError],
   protocol: TemporalProtocol,
   retry: Retry.Retry,
@@ -6678,8 +6678,8 @@ export const patchSchedule: API.OperationMethod<
   PatchScheduleError,
   TemporalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(387, __c48, 3) as any as S.Schema<PatchScheduleRequest>,
-  output: __S(73, __c9, 1) as any as S.Schema<PatchScheduleResponse2>,
+  input: __S(3424, __c107, 0) as any as S.Schema<PatchScheduleRequest>,
+  output: __S(192, __c6, 0) as any as S.Schema<PatchScheduleResponse2>,
   errors: [UnknownTemporalError],
   protocol: TemporalProtocol,
   retry: Retry.Retry,
@@ -6693,8 +6693,8 @@ export const pauseActivity: API.OperationMethod<
   PauseActivityError,
   TemporalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(388, __c48, 4) as any as S.Schema<PauseActivityRequest>,
-  output: __S(73, __c9, 1) as any as S.Schema<PauseActivityResponse2>,
+  input: __S(3456, __c108, 0) as any as S.Schema<PauseActivityRequest>,
+  output: __S(192, __c6, 0) as any as S.Schema<PauseActivityResponse2>,
   errors: [UnknownTemporalError],
   protocol: TemporalProtocol,
   retry: Retry.Retry,
@@ -6708,8 +6708,8 @@ export const pauseActivityExecution: API.OperationMethod<
   PauseActivityExecutionError,
   TemporalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(389, __c48, 5) as any as S.Schema<PauseActivityExecutionRequest>,
-  output: __S(63, __c7, 7) as any as S.Schema<PauseActivityExecutionResponse2>,
+  input: __S(3488, __c109, 0) as any as S.Schema<PauseActivityExecutionRequest>,
+  output: __S(4320, __c135, 0) as any as S.Schema<PauseActivityExecutionResponse2>,
   errors: [UnknownTemporalError],
   protocol: TemporalProtocol,
   retry: Retry.Retry,
@@ -6723,8 +6723,8 @@ export const pauseWorkflowExecution: API.OperationMethod<
   PauseWorkflowExecutionError,
   TemporalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(390, __c48, 6) as any as S.Schema<PauseWorkflowExecutionRequest>,
-  output: __S(63, __c7, 7) as any as S.Schema<PauseWorkflowExecutionResponse2>,
+  input: __S(3520, __c110, 0) as any as S.Schema<PauseWorkflowExecutionRequest>,
+  output: __S(4320, __c135, 0) as any as S.Schema<PauseWorkflowExecutionResponse2>,
   errors: [UnknownTemporalError],
   protocol: TemporalProtocol,
   retry: Retry.Retry,
@@ -6738,8 +6738,8 @@ export const pollActivityExecution: API.OperationMethod<
   PollActivityExecutionError,
   TemporalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(391, __c48, 7) as any as S.Schema<PollActivityExecutionRequest>,
-  output: __S(392, __c49, 0) as any as S.Schema<PollActivityExecutionResponse>,
+  input: __S(3552, __c111, 0) as any as S.Schema<PollActivityExecutionRequest>,
+  output: __S(3553, __c111, 1) as any as S.Schema<PollActivityExecutionResponse>,
   errors: [UnknownTemporalError],
   protocol: TemporalProtocol,
   retry: Retry.Retry,
@@ -6753,8 +6753,8 @@ export const pollNexusOperationExecution: API.OperationMethod<
   PollNexusOperationExecutionError,
   TemporalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(393, __c49, 1) as any as S.Schema<PollNexusOperationExecutionRequest>,
-  output: __S(394, __c49, 2) as any as S.Schema<PollNexusOperationExecutionResponse>,
+  input: __S(3584, __c112, 0) as any as S.Schema<PollNexusOperationExecutionRequest>,
+  output: __S(3585, __c112, 1) as any as S.Schema<PollNexusOperationExecutionResponse>,
   errors: [UnknownTemporalError],
   protocol: TemporalProtocol,
   retry: Retry.Retry,
@@ -6768,8 +6768,8 @@ export const queryWorkflow: API.OperationMethod<
   QueryWorkflowError,
   TemporalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(396, __c49, 4) as any as S.Schema<QueryWorkflowRequest>,
-  output: __S(398, __c49, 6) as any as S.Schema<QueryWorkflowResponse>,
+  input: __S(3616, __c113, 0) as any as S.Schema<QueryWorkflowRequest>,
+  output: __S(3618, __c113, 2) as any as S.Schema<QueryWorkflowResponse>,
   errors: [UnknownTemporalError],
   protocol: TemporalProtocol,
   retry: Retry.Retry,
@@ -6783,8 +6783,8 @@ export const recordActivityTaskHeartbeat: API.OperationMethod<
   RecordActivityTaskHeartbeatError,
   TemporalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(399, __c49, 7) as any as S.Schema<RecordActivityTaskHeartbeatRequest>,
-  output: __S(400, __c50, 0) as any as S.Schema<RecordActivityTaskHeartbeatResponse>,
+  input: __S(3680, __c115, 0) as any as S.Schema<RecordActivityTaskHeartbeatRequest>,
+  output: __S(3712, __c116, 0) as any as S.Schema<RecordActivityTaskHeartbeatResponse>,
   errors: [UnknownTemporalError],
   protocol: TemporalProtocol,
   retry: Retry.Retry,
@@ -6798,8 +6798,8 @@ export const recordActivityTaskHeartbeatById: API.OperationMethod<
   RecordActivityTaskHeartbeatByIdError,
   TemporalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(401, __c50, 1) as any as S.Schema<RecordActivityTaskHeartbeatByIdRequest>,
-  output: __S(400, __c50, 0) as any as S.Schema<RecordActivityTaskHeartbeatByIdResponse>,
+  input: __S(3744, __c117, 0) as any as S.Schema<RecordActivityTaskHeartbeatByIdRequest>,
+  output: __S(3712, __c116, 0) as any as S.Schema<RecordActivityTaskHeartbeatByIdResponse>,
   errors: [UnknownTemporalError],
   protocol: TemporalProtocol,
   retry: Retry.Retry,
@@ -6813,8 +6813,8 @@ export const recordWorkerHeartbeat: API.OperationMethod<
   RecordWorkerHeartbeatError,
   TemporalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(403, __c50, 3) as any as S.Schema<RecordWorkerHeartbeatRequest>,
-  output: __S(63, __c7, 7) as any as S.Schema<RecordWorkerHeartbeatResponse2>,
+  input: __S(3809, __c119, 1) as any as S.Schema<RecordWorkerHeartbeatRequest>,
+  output: __S(4320, __c135, 0) as any as S.Schema<RecordWorkerHeartbeatResponse2>,
   errors: [UnknownTemporalError],
   protocol: TemporalProtocol,
   retry: Retry.Retry,
@@ -6828,8 +6828,8 @@ export const registerNamespace: API.OperationMethod<
   RegisterNamespaceError,
   TemporalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(404, __c50, 4) as any as S.Schema<RegisterNamespaceRequest>,
-  output: __S(63, __c7, 7) as any as S.Schema<RegisterNamespaceResponse2>,
+  input: __S(3840, __c120, 0) as any as S.Schema<RegisterNamespaceRequest>,
+  output: __S(4320, __c135, 0) as any as S.Schema<RegisterNamespaceResponse2>,
   errors: [UnknownTemporalError],
   protocol: TemporalProtocol,
   retry: Retry.Retry,
@@ -6843,8 +6843,8 @@ export const requestCancelActivityExecution: API.OperationMethod<
   RequestCancelActivityExecutionError,
   TemporalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(405, __c50, 5) as any as S.Schema<RequestCancelActivityExecutionRequest>,
-  output: __S(63, __c7, 7) as any as S.Schema<RequestCancelActivityExecutionResponse2>,
+  input: __S(3872, __c121, 0) as any as S.Schema<RequestCancelActivityExecutionRequest>,
+  output: __S(4320, __c135, 0) as any as S.Schema<RequestCancelActivityExecutionResponse2>,
   errors: [UnknownTemporalError],
   protocol: TemporalProtocol,
   retry: Retry.Retry,
@@ -6858,8 +6858,8 @@ export const requestCancelNexusOperationExecution: API.OperationMethod<
   RequestCancelNexusOperationExecutionError,
   TemporalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(406, __c50, 6) as any as S.Schema<RequestCancelNexusOperationExecutionRequest>,
-  output: __S(63, __c7, 7) as any as S.Schema<RequestCancelNexusOperationExecutionResponse2>,
+  input: __S(3904, __c122, 0) as any as S.Schema<RequestCancelNexusOperationExecutionRequest>,
+  output: __S(4320, __c135, 0) as any as S.Schema<RequestCancelNexusOperationExecutionResponse2>,
   errors: [UnknownTemporalError],
   protocol: TemporalProtocol,
   retry: Retry.Retry,
@@ -6873,8 +6873,8 @@ export const requestCancelWorkflowExecution: API.OperationMethod<
   RequestCancelWorkflowExecutionError,
   TemporalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(407, __c50, 7) as any as S.Schema<RequestCancelWorkflowExecutionRequest>,
-  output: __S(63, __c7, 7) as any as S.Schema<RequestCancelWorkflowExecutionResponse2>,
+  input: __S(3936, __c123, 0) as any as S.Schema<RequestCancelWorkflowExecutionRequest>,
+  output: __S(4320, __c135, 0) as any as S.Schema<RequestCancelWorkflowExecutionResponse2>,
   errors: [UnknownTemporalError],
   protocol: TemporalProtocol,
   retry: Retry.Retry,
@@ -6888,8 +6888,8 @@ export const resetActivity: API.OperationMethod<
   ResetActivityError,
   TemporalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(408, __c51, 0) as any as S.Schema<ResetActivityRequest>,
-  output: __S(73, __c9, 1) as any as S.Schema<ResetActivityResponse2>,
+  input: __S(3968, __c124, 0) as any as S.Schema<ResetActivityRequest>,
+  output: __S(192, __c6, 0) as any as S.Schema<ResetActivityResponse2>,
   errors: [UnknownTemporalError],
   protocol: TemporalProtocol,
   retry: Retry.Retry,
@@ -6903,8 +6903,8 @@ export const resetActivityExecution: API.OperationMethod<
   ResetActivityExecutionError,
   TemporalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(409, __c51, 1) as any as S.Schema<ResetActivityExecutionRequest>,
-  output: __S(63, __c7, 7) as any as S.Schema<ResetActivityExecutionResponse2>,
+  input: __S(4000, __c125, 0) as any as S.Schema<ResetActivityExecutionRequest>,
+  output: __S(4320, __c135, 0) as any as S.Schema<ResetActivityExecutionResponse2>,
   errors: [UnknownTemporalError],
   protocol: TemporalProtocol,
   retry: Retry.Retry,
@@ -6918,8 +6918,8 @@ export const resetWorkflowExecution: API.OperationMethod<
   ResetWorkflowExecutionError,
   TemporalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(415, __c51, 7) as any as S.Schema<ResetWorkflowExecutionRequest>,
-  output: __S(416, __c52, 0) as any as S.Schema<ResetWorkflowExecutionResponse>,
+  input: __S(4032, __c126, 0) as any as S.Schema<ResetWorkflowExecutionRequest>,
+  output: __S(4033, __c126, 1) as any as S.Schema<ResetWorkflowExecutionResponse>,
   errors: [UnknownTemporalError],
   protocol: TemporalProtocol,
   retry: Retry.Retry,
@@ -6933,8 +6933,8 @@ export const respondActivityTaskCanceled: API.OperationMethod<
   RespondActivityTaskCanceledError,
   TemporalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(417, __c52, 1) as any as S.Schema<RespondActivityTaskCanceledRequest>,
-  output: __S(63, __c7, 7) as any as S.Schema<RespondActivityTaskCanceledResponse2>,
+  input: __S(4128, __c129, 0) as any as S.Schema<RespondActivityTaskCanceledRequest>,
+  output: __S(4320, __c135, 0) as any as S.Schema<RespondActivityTaskCanceledResponse2>,
   errors: [UnknownTemporalError],
   protocol: TemporalProtocol,
   retry: Retry.Retry,
@@ -6948,8 +6948,8 @@ export const respondActivityTaskCanceledById: API.OperationMethod<
   RespondActivityTaskCanceledByIdError,
   TemporalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(418, __c52, 2) as any as S.Schema<RespondActivityTaskCanceledByIdRequest>,
-  output: __S(63, __c7, 7) as any as S.Schema<RespondActivityTaskCanceledByIdResponse2>,
+  input: __S(4160, __c130, 0) as any as S.Schema<RespondActivityTaskCanceledByIdRequest>,
+  output: __S(4320, __c135, 0) as any as S.Schema<RespondActivityTaskCanceledByIdResponse2>,
   errors: [UnknownTemporalError],
   protocol: TemporalProtocol,
   retry: Retry.Retry,
@@ -6963,8 +6963,8 @@ export const respondActivityTaskCompleted: API.OperationMethod<
   RespondActivityTaskCompletedError,
   TemporalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(419, __c52, 3) as any as S.Schema<RespondActivityTaskCompletedRequest>,
-  output: __S(63, __c7, 7) as any as S.Schema<RespondActivityTaskCompletedResponse2>,
+  input: __S(4352, __c136, 0) as any as S.Schema<RespondActivityTaskCompletedRequest>,
+  output: __S(4320, __c135, 0) as any as S.Schema<RespondActivityTaskCompletedResponse2>,
   errors: [UnknownTemporalError],
   protocol: TemporalProtocol,
   retry: Retry.Retry,
@@ -6978,8 +6978,8 @@ export const respondActivityTaskCompletedById: API.OperationMethod<
   RespondActivityTaskCompletedByIdError,
   TemporalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(420, __c52, 4) as any as S.Schema<RespondActivityTaskCompletedByIdRequest>,
-  output: __S(63, __c7, 7) as any as S.Schema<RespondActivityTaskCompletedByIdResponse2>,
+  input: __S(4384, __c137, 0) as any as S.Schema<RespondActivityTaskCompletedByIdRequest>,
+  output: __S(4320, __c135, 0) as any as S.Schema<RespondActivityTaskCompletedByIdResponse2>,
   errors: [UnknownTemporalError],
   protocol: TemporalProtocol,
   retry: Retry.Retry,
@@ -6993,8 +6993,8 @@ export const respondActivityTaskFailed: API.OperationMethod<
   RespondActivityTaskFailedError,
   TemporalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(421, __c52, 5) as any as S.Schema<RespondActivityTaskFailedRequest>,
-  output: __S(423, __c52, 7) as any as S.Schema<RespondActivityTaskFailedResponse>,
+  input: __S(4416, __c138, 0) as any as S.Schema<RespondActivityTaskFailedRequest>,
+  output: __S(4449, __c139, 1) as any as S.Schema<RespondActivityTaskFailedResponse>,
   errors: [UnknownTemporalError],
   protocol: TemporalProtocol,
   retry: Retry.Retry,
@@ -7008,8 +7008,8 @@ export const respondActivityTaskFailedById: API.OperationMethod<
   RespondActivityTaskFailedByIdError,
   TemporalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(424, __c53, 0) as any as S.Schema<RespondActivityTaskFailedByIdRequest>,
-  output: __S(423, __c52, 7) as any as S.Schema<RespondActivityTaskFailedByIdResponse>,
+  input: __S(4480, __c140, 0) as any as S.Schema<RespondActivityTaskFailedByIdRequest>,
+  output: __S(4449, __c139, 1) as any as S.Schema<RespondActivityTaskFailedByIdResponse>,
   errors: [UnknownTemporalError],
   protocol: TemporalProtocol,
   retry: Retry.Retry,
@@ -7023,8 +7023,8 @@ export const setCurrentDeployment: API.OperationMethod<
   SetCurrentDeploymentError,
   TemporalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(426, __c53, 2) as any as S.Schema<SetCurrentDeploymentRequest>,
-  output: __S(427, __c53, 3) as any as S.Schema<SetCurrentDeploymentResponse>,
+  input: __S(4513, __c141, 1) as any as S.Schema<SetCurrentDeploymentRequest>,
+  output: __S(4514, __c141, 2) as any as S.Schema<SetCurrentDeploymentResponse>,
   errors: [UnknownTemporalError],
   protocol: TemporalProtocol,
   retry: Retry.Retry,
@@ -7038,8 +7038,8 @@ export const setWorkerDeploymentCurrentVersion: API.OperationMethod<
   SetWorkerDeploymentCurrentVersionError,
   TemporalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(428, __c53, 4) as any as S.Schema<SetWorkerDeploymentCurrentVersionRequest>,
-  output: __S(429, __c53, 5) as any as S.Schema<SetWorkerDeploymentCurrentVersionResponse>,
+  input: __S(4544, __c142, 0) as any as S.Schema<SetWorkerDeploymentCurrentVersionRequest>,
+  output: __S(4545, __c142, 1) as any as S.Schema<SetWorkerDeploymentCurrentVersionResponse>,
   errors: [UnknownTemporalError],
   protocol: TemporalProtocol,
   retry: Retry.Retry,
@@ -7053,8 +7053,8 @@ export const setWorkerDeploymentManager: API.OperationMethod<
   SetWorkerDeploymentManagerError,
   TemporalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(430, __c53, 6) as any as S.Schema<SetWorkerDeploymentManagerRequest>,
-  output: __S(431, __c53, 7) as any as S.Schema<SetWorkerDeploymentManagerResponse>,
+  input: __S(4576, __c143, 0) as any as S.Schema<SetWorkerDeploymentManagerRequest>,
+  output: __S(4577, __c143, 1) as any as S.Schema<SetWorkerDeploymentManagerResponse>,
   errors: [UnknownTemporalError],
   protocol: TemporalProtocol,
   retry: Retry.Retry,
@@ -7068,8 +7068,8 @@ export const setWorkerDeploymentRampingVersion: API.OperationMethod<
   SetWorkerDeploymentRampingVersionError,
   TemporalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(432, __c54, 0) as any as S.Schema<SetWorkerDeploymentRampingVersionRequest>,
-  output: __S(433, __c54, 1) as any as S.Schema<SetWorkerDeploymentRampingVersionResponse>,
+  input: __S(4608, __c144, 0) as any as S.Schema<SetWorkerDeploymentRampingVersionRequest>,
+  output: __S(4609, __c144, 1) as any as S.Schema<SetWorkerDeploymentRampingVersionResponse>,
   errors: [UnknownTemporalError],
   protocol: TemporalProtocol,
   retry: Retry.Retry,
@@ -7083,8 +7083,8 @@ export const signalWithStartWorkflowExecution: API.OperationMethod<
   SignalWithStartWorkflowExecutionError,
   TemporalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(434, __c54, 2) as any as S.Schema<SignalWithStartWorkflowExecutionRequest>,
-  output: __S(435, __c54, 3) as any as S.Schema<SignalWithStartWorkflowExecutionResponse>,
+  input: __S(4640, __c145, 0) as any as S.Schema<SignalWithStartWorkflowExecutionRequest>,
+  output: __S(4641, __c145, 1) as any as S.Schema<SignalWithStartWorkflowExecutionResponse>,
   errors: [UnknownTemporalError],
   protocol: TemporalProtocol,
   retry: Retry.Retry,
@@ -7098,8 +7098,8 @@ export const signalWorkflowExecution: API.OperationMethod<
   SignalWorkflowExecutionError,
   TemporalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(436, __c54, 4) as any as S.Schema<SignalWorkflowExecutionRequest>,
-  output: __S(437, __c54, 5) as any as S.Schema<SignalWorkflowExecutionResponse>,
+  input: __S(4672, __c146, 0) as any as S.Schema<SignalWorkflowExecutionRequest>,
+  output: __S(4673, __c146, 1) as any as S.Schema<SignalWorkflowExecutionResponse>,
   errors: [UnknownTemporalError],
   protocol: TemporalProtocol,
   retry: Retry.Retry,
@@ -7113,8 +7113,8 @@ export const startActivityExecution: API.OperationMethod<
   StartActivityExecutionError,
   TemporalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(439, __c54, 7) as any as S.Schema<StartActivityExecutionRequest>,
-  output: __S(440, __c55, 0) as any as S.Schema<StartActivityExecutionResponse>,
+  input: __S(4800, __c150, 0) as any as S.Schema<StartActivityExecutionRequest>,
+  output: __S(4801, __c150, 1) as any as S.Schema<StartActivityExecutionResponse>,
   errors: [UnknownTemporalError],
   protocol: TemporalProtocol,
   retry: Retry.Retry,
@@ -7128,8 +7128,8 @@ export const startBatchOperation: API.OperationMethod<
   StartBatchOperationError,
   TemporalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(450, __c56, 2) as any as S.Schema<StartBatchOperationRequest>,
-  output: __S(63, __c7, 7) as any as S.Schema<StartBatchOperationResponse2>,
+  input: __S(4873, __c152, 9) as any as S.Schema<StartBatchOperationRequest>,
+  output: __S(4320, __c135, 0) as any as S.Schema<StartBatchOperationResponse2>,
   errors: [UnknownTemporalError],
   protocol: TemporalProtocol,
   retry: Retry.Retry,
@@ -7143,8 +7143,8 @@ export const startNexusOperationExecution: API.OperationMethod<
   StartNexusOperationExecutionError,
   TemporalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(451, __c56, 3) as any as S.Schema<StartNexusOperationExecutionRequest>,
-  output: __S(452, __c56, 4) as any as S.Schema<StartNexusOperationExecutionResponse>,
+  input: __S(4896, __c153, 0) as any as S.Schema<StartNexusOperationExecutionRequest>,
+  output: __S(4897, __c153, 1) as any as S.Schema<StartNexusOperationExecutionResponse>,
   errors: [UnknownTemporalError],
   protocol: TemporalProtocol,
   retry: Retry.Retry,
@@ -7158,8 +7158,8 @@ export const startWorkflowExecution: API.OperationMethod<
   StartWorkflowExecutionError,
   TemporalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(453, __c56, 5) as any as S.Schema<StartWorkflowExecutionRequest>,
-  output: __S(462, __c57, 6) as any as S.Schema<StartWorkflowExecutionResponse>,
+  input: __S(4928, __c154, 0) as any as S.Schema<StartWorkflowExecutionRequest>,
+  output: __S(4937, __c154, 9) as any as S.Schema<StartWorkflowExecutionResponse>,
   errors: [UnknownTemporalError],
   protocol: TemporalProtocol,
   retry: Retry.Retry,
@@ -7173,8 +7173,8 @@ export const stopBatchOperation: API.OperationMethod<
   StopBatchOperationError,
   TemporalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(463, __c57, 7) as any as S.Schema<StopBatchOperationRequest>,
-  output: __S(63, __c7, 7) as any as S.Schema<StopBatchOperationResponse2>,
+  input: __S(4960, __c155, 0) as any as S.Schema<StopBatchOperationRequest>,
+  output: __S(4320, __c135, 0) as any as S.Schema<StopBatchOperationResponse2>,
   errors: [UnknownTemporalError],
   protocol: TemporalProtocol,
   retry: Retry.Retry,
@@ -7188,8 +7188,8 @@ export const terminateActivityExecution: API.OperationMethod<
   TerminateActivityExecutionError,
   TemporalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(464, __c58, 0) as any as S.Schema<TerminateActivityExecutionRequest>,
-  output: __S(63, __c7, 7) as any as S.Schema<TerminateActivityExecutionResponse2>,
+  input: __S(4992, __c156, 0) as any as S.Schema<TerminateActivityExecutionRequest>,
+  output: __S(4320, __c135, 0) as any as S.Schema<TerminateActivityExecutionResponse2>,
   errors: [UnknownTemporalError],
   protocol: TemporalProtocol,
   retry: Retry.Retry,
@@ -7203,8 +7203,8 @@ export const terminateNexusOperationExecution: API.OperationMethod<
   TerminateNexusOperationExecutionError,
   TemporalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(465, __c58, 1) as any as S.Schema<TerminateNexusOperationExecutionRequest>,
-  output: __S(63, __c7, 7) as any as S.Schema<TerminateNexusOperationExecutionResponse2>,
+  input: __S(5024, __c157, 0) as any as S.Schema<TerminateNexusOperationExecutionRequest>,
+  output: __S(4320, __c135, 0) as any as S.Schema<TerminateNexusOperationExecutionResponse2>,
   errors: [UnknownTemporalError],
   protocol: TemporalProtocol,
   retry: Retry.Retry,
@@ -7218,8 +7218,8 @@ export const terminateWorkflowExecution: API.OperationMethod<
   TerminateWorkflowExecutionError,
   TemporalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(466, __c58, 2) as any as S.Schema<TerminateWorkflowExecutionRequest>,
-  output: __S(63, __c7, 7) as any as S.Schema<TerminateWorkflowExecutionResponse2>,
+  input: __S(5056, __c158, 0) as any as S.Schema<TerminateWorkflowExecutionRequest>,
+  output: __S(4320, __c135, 0) as any as S.Schema<TerminateWorkflowExecutionResponse2>,
   errors: [UnknownTemporalError],
   protocol: TemporalProtocol,
   retry: Retry.Retry,
@@ -7233,8 +7233,8 @@ export const triggerWorkflowRule: API.OperationMethod<
   TriggerWorkflowRuleError,
   TemporalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(467, __c58, 3) as any as S.Schema<TriggerWorkflowRuleRequest>,
-  output: __S(468, __c58, 4) as any as S.Schema<TriggerWorkflowRuleResponse>,
+  input: __S(5088, __c159, 0) as any as S.Schema<TriggerWorkflowRuleRequest>,
+  output: __S(5089, __c159, 1) as any as S.Schema<TriggerWorkflowRuleResponse>,
   errors: [UnknownTemporalError],
   protocol: TemporalProtocol,
   retry: Retry.Retry,
@@ -7248,8 +7248,8 @@ export const unpauseActivity: API.OperationMethod<
   UnpauseActivityError,
   TemporalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(469, __c58, 5) as any as S.Schema<UnpauseActivityRequest>,
-  output: __S(73, __c9, 1) as any as S.Schema<UnpauseActivityResponse2>,
+  input: __S(5120, __c160, 0) as any as S.Schema<UnpauseActivityRequest>,
+  output: __S(192, __c6, 0) as any as S.Schema<UnpauseActivityResponse2>,
   errors: [UnknownTemporalError],
   protocol: TemporalProtocol,
   retry: Retry.Retry,
@@ -7263,8 +7263,8 @@ export const unpauseActivityExecution: API.OperationMethod<
   UnpauseActivityExecutionError,
   TemporalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(470, __c58, 6) as any as S.Schema<UnpauseActivityExecutionRequest>,
-  output: __S(63, __c7, 7) as any as S.Schema<UnpauseActivityExecutionResponse2>,
+  input: __S(5184, __c162, 0) as any as S.Schema<UnpauseActivityExecutionRequest>,
+  output: __S(4320, __c135, 0) as any as S.Schema<UnpauseActivityExecutionResponse2>,
   errors: [UnknownTemporalError],
   protocol: TemporalProtocol,
   retry: Retry.Retry,
@@ -7278,8 +7278,8 @@ export const unpauseWorkflowExecution: API.OperationMethod<
   UnpauseWorkflowExecutionError,
   TemporalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(471, __c58, 7) as any as S.Schema<UnpauseWorkflowExecutionRequest>,
-  output: __S(63, __c7, 7) as any as S.Schema<UnpauseWorkflowExecutionResponse2>,
+  input: __S(5216, __c163, 0) as any as S.Schema<UnpauseWorkflowExecutionRequest>,
+  output: __S(4320, __c135, 0) as any as S.Schema<UnpauseWorkflowExecutionResponse2>,
   errors: [UnknownTemporalError],
   protocol: TemporalProtocol,
   retry: Retry.Retry,
@@ -7293,8 +7293,8 @@ export const updateActivityExecutionOptions: API.OperationMethod<
   UpdateActivityExecutionOptionsError,
   TemporalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(472, __c59, 0) as any as S.Schema<UpdateActivityExecutionOptionsRequest>,
-  output: __S(473, __c59, 1) as any as S.Schema<UpdateActivityExecutionOptionsResponse>,
+  input: __S(5248, __c164, 0) as any as S.Schema<UpdateActivityExecutionOptionsRequest>,
+  output: __S(5280, __c165, 0) as any as S.Schema<UpdateActivityExecutionOptionsResponse>,
   errors: [UnknownTemporalError],
   protocol: TemporalProtocol,
   retry: Retry.Retry,
@@ -7308,8 +7308,8 @@ export const updateActivityOptions: API.OperationMethod<
   UpdateActivityOptionsError,
   TemporalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(474, __c59, 2) as any as S.Schema<UpdateActivityOptionsRequest>,
-  output: __S(473, __c59, 1) as any as S.Schema<UpdateActivityOptionsResponse>,
+  input: __S(5312, __c166, 0) as any as S.Schema<UpdateActivityOptionsRequest>,
+  output: __S(5280, __c165, 0) as any as S.Schema<UpdateActivityOptionsResponse>,
   errors: [UnknownTemporalError],
   protocol: TemporalProtocol,
   retry: Retry.Retry,
@@ -7323,8 +7323,8 @@ export const updateNamespace: API.OperationMethod<
   UpdateNamespaceError,
   TemporalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(476, __c59, 4) as any as S.Schema<UpdateNamespaceRequest>,
-  output: __S(477, __c59, 5) as any as S.Schema<UpdateNamespaceResponse>,
+  input: __S(5345, __c167, 1) as any as S.Schema<UpdateNamespaceRequest>,
+  output: __S(5346, __c167, 2) as any as S.Schema<UpdateNamespaceResponse>,
   errors: [UnknownTemporalError],
   protocol: TemporalProtocol,
   retry: Retry.Retry,
@@ -7338,8 +7338,8 @@ export const updateNexusEndpoint: API.OperationMethod<
   UpdateNexusEndpointError,
   TemporalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(478, __c59, 6) as any as S.Schema<UpdateNexusEndpointRequest>,
-  output: __S(19, __c2, 3) as any as S.Schema<UpdateNexusEndpointResponse>,
+  input: __S(5376, __c168, 0) as any as S.Schema<UpdateNexusEndpointRequest>,
+  output: __S(2496, __c78, 0) as any as S.Schema<UpdateNexusEndpointResponse>,
   errors: [UnknownTemporalError],
   protocol: TemporalProtocol,
   retry: Retry.Retry,
@@ -7353,8 +7353,8 @@ export const updateSchedule: API.OperationMethod<
   UpdateScheduleError,
   TemporalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(479, __c59, 7) as any as S.Schema<UpdateScheduleRequest>,
-  output: __S(73, __c9, 1) as any as S.Schema<UpdateScheduleResponse2>,
+  input: __S(5408, __c169, 0) as any as S.Schema<UpdateScheduleRequest>,
+  output: __S(192, __c6, 0) as any as S.Schema<UpdateScheduleResponse2>,
   errors: [UnknownTemporalError],
   protocol: TemporalProtocol,
   retry: Retry.Retry,
@@ -7368,8 +7368,8 @@ export const updateTaskQueueConfig: API.OperationMethod<
   UpdateTaskQueueConfigError,
   TemporalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(481, __c60, 1) as any as S.Schema<UpdateTaskQueueConfigRequest>,
-  output: __S(482, __c60, 2) as any as S.Schema<UpdateTaskQueueConfigResponse>,
+  input: __S(5441, __c170, 1) as any as S.Schema<UpdateTaskQueueConfigRequest>,
+  output: __S(5442, __c170, 2) as any as S.Schema<UpdateTaskQueueConfigResponse>,
   errors: [UnknownTemporalError],
   protocol: TemporalProtocol,
   retry: Retry.Retry,
@@ -7383,8 +7383,8 @@ export const updateWorkerConfig: API.OperationMethod<
   UpdateWorkerConfigError,
   TemporalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(483, __c60, 3) as any as S.Schema<UpdateWorkerConfigRequest>,
-  output: __S(224, __c28, 0) as any as S.Schema<UpdateWorkerConfigResponse>,
+  input: __S(5472, __c171, 0) as any as S.Schema<UpdateWorkerConfigRequest>,
+  output: __S(1732, __c54, 4) as any as S.Schema<UpdateWorkerConfigResponse>,
   errors: [UnknownTemporalError],
   protocol: TemporalProtocol,
   retry: Retry.Retry,
@@ -7398,8 +7398,12 @@ export const updateWorkerDeploymentVersionComputeConfig: API.OperationMethod<
   UpdateWorkerDeploymentVersionComputeConfigError,
   TemporalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(487, __c60, 7) as any as S.Schema<UpdateWorkerDeploymentVersionComputeConfigRequest>,
-  output: __S(63, __c7, 7) as any as S.Schema<UpdateWorkerDeploymentVersionComputeConfigResponse2>,
+  input: __S(5504, __c172, 0) as any as S.Schema<UpdateWorkerDeploymentVersionComputeConfigRequest>,
+  output: __S(
+    4320,
+    __c135,
+    0,
+  ) as any as S.Schema<UpdateWorkerDeploymentVersionComputeConfigResponse2>,
   errors: [UnknownTemporalError],
   protocol: TemporalProtocol,
   retry: Retry.Retry,
@@ -7413,8 +7417,8 @@ export const updateWorkerDeploymentVersionMetadata: API.OperationMethod<
   UpdateWorkerDeploymentVersionMetadataError,
   TemporalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(488, __c61, 0) as any as S.Schema<UpdateWorkerDeploymentVersionMetadataRequest>,
-  output: __S(489, __c61, 1) as any as S.Schema<UpdateWorkerDeploymentVersionMetadataResponse>,
+  input: __S(224, __c7, 0) as any as S.Schema<UpdateWorkerDeploymentVersionMetadataRequest>,
+  output: __S(225, __c7, 1) as any as S.Schema<UpdateWorkerDeploymentVersionMetadataResponse>,
   errors: [UnknownTemporalError],
   protocol: TemporalProtocol,
   retry: Retry.Retry,
@@ -7428,8 +7432,8 @@ export const updateWorkflowExecution: API.OperationMethod<
   UpdateWorkflowExecutionError,
   TemporalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(491, __c61, 3) as any as S.Schema<UpdateWorkflowExecutionRequest>,
-  output: __S(493, __c61, 5) as any as S.Schema<UpdateWorkflowExecutionResponse>,
+  input: __S(257, __c8, 1) as any as S.Schema<UpdateWorkflowExecutionRequest>,
+  output: __S(259, __c8, 3) as any as S.Schema<UpdateWorkflowExecutionResponse>,
   errors: [UnknownTemporalError],
   protocol: TemporalProtocol,
   retry: Retry.Retry,
@@ -7443,8 +7447,8 @@ export const updateWorkflowExecutionOptions: API.OperationMethod<
   UpdateWorkflowExecutionOptionsError,
   TemporalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(494, __c61, 6) as any as S.Schema<UpdateWorkflowExecutionOptionsRequest>,
-  output: __S(495, __c61, 7) as any as S.Schema<UpdateWorkflowExecutionOptionsResponse>,
+  input: __S(288, __c9, 0) as any as S.Schema<UpdateWorkflowExecutionOptionsRequest>,
+  output: __S(289, __c9, 1) as any as S.Schema<UpdateWorkflowExecutionOptionsResponse>,
   errors: [UnknownTemporalError],
   protocol: TemporalProtocol,
   retry: Retry.Retry,
@@ -7458,11 +7462,11 @@ export const validateWorkerDeploymentVersionComputeConfig: API.OperationMethod<
   ValidateWorkerDeploymentVersionComputeConfigError,
   TemporalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(496, __c62, 0) as any as S.Schema<ValidateWorkerDeploymentVersionComputeConfigRequest>,
+  input: __S(320, __c10, 0) as any as S.Schema<ValidateWorkerDeploymentVersionComputeConfigRequest>,
   output: __S(
-    63,
-    __c7,
-    7,
+    4320,
+    __c135,
+    0,
   ) as any as S.Schema<ValidateWorkerDeploymentVersionComputeConfigResponse2>,
   errors: [UnknownTemporalError],
   protocol: TemporalProtocol,
@@ -7487,29 +7491,45 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "CountActivityExecutionsRequest",
       });
-    case 1:
-      return S.Array(S.Unknown);
-    case 2:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          groupValues: S.optional(__S(1, __c0, 1)),
+          groupValues: S.optional(__S(64, __c2, 0)),
           count: S.optional(S.String),
         }),
       ).annotate({
         identifier: "CountActivityExecutionsResponseAggregationGroup",
       });
-    case 3:
-      return S.Array(__S(2, __c0, 2));
-    case 4:
+    case 1:
+      return S.Array(__S(32, __c1, 0));
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.Unknown);
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           count: S.optional(S.String),
-          groups: S.optional(__S(3, __c0, 3)),
+          groups: S.optional(__S(33, __c1, 1)),
         }),
       ).annotate({
         identifier: "CountActivityExecutionsResponse",
       });
-    case 5:
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           namespace: S.String.pipe(T.Label()),
@@ -7524,574 +7544,31 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "CountNexusOperationExecutionsRequest",
       });
-    case 6:
+    case 1:
       return S.Array(S.Unknown);
-    case 7:
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          groupValues: S.optional(__S(6, __c0, 6)),
+          groupValues: S.optional(__S(129, __c4, 1)),
           count: S.optional(S.String),
         }),
       ).annotate({
         identifier: "CountNexusOperationExecutionsResponseAggregationGroup",
       });
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(7, __c0, 7));
-    case 1:
+    case 3:
+      return S.Array(__S(130, __c4, 2));
+    case 4:
       return S.suspend(() =>
         S.Struct({
           count: S.optional(S.String),
-          groups: S.optional(__S(8, __c1, 0)),
+          groups: S.optional(__S(131, __c4, 3)),
         }),
       ).annotate({
         identifier: "CountNexusOperationExecutionsResponse",
       });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          namespace: S.String.pipe(T.Label()),
-          query: S.optional(S.String.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/api/v1/namespaces/{namespace}/schedule-count",
-            code: 200,
-          }),
-        ),
-      ).annotate({ identifier: "CountSchedulesRequest" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          count: S.optional(S.String),
-          groups: S.optional(__S(3, __c0, 3)),
-        }),
-      ).annotate({ identifier: "CountSchedulesResponse" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          namespace: S.String.pipe(T.Label()),
-          query: S.optional(S.String.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/api/v1/namespaces/{namespace}/workflow-count",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "CountWorkflowExecutionsRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          namespace: S.optional(S.String),
-          taskQueue: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "EndpointTargetWorker" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          url: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "EndpointTargetExternal" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          worker: S.optional(__S(13, __c1, 5)),
-          external: S.optional(__S(14, __c1, 6)),
-        }),
-      ).annotate({ identifier: "EndpointTarget" });
-  }
-}
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.optional(S.String),
-          description: S.optional(S.Unknown),
-          target: S.optional(__S(15, __c1, 7)),
-        }),
-      ).annotate({ identifier: "EndpointSpec" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          spec: S.optional(__S(16, __c2, 0)),
-        }).pipe(T.Http({ method: "POST", uri: "/api/v1/nexus/endpoints", code: 200 })),
-      ).annotate({
-        identifier: "CreateNexusEndpointRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          version: S.optional(S.String),
-          id: S.optional(S.String),
-          spec: S.optional(__S(16, __c2, 0)),
-          createdTime: S.optional(S.String),
-          lastModifiedTime: S.optional(S.String),
-          urlPrefix: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Endpoint" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          endpoint: S.optional(__S(18, __c2, 2)),
-        }),
-      ).annotate({
-        identifier: "CreateNexusEndpointResponse",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          start: S.optional(S.Number),
-          end: S.optional(S.Number),
-          step: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "Range" });
-    case 5:
-      return S.Array(__S(20, __c2, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          second: S.optional(__S(21, __c2, 5)),
-          minute: S.optional(__S(21, __c2, 5)),
-          hour: S.optional(__S(21, __c2, 5)),
-          dayOfMonth: S.optional(__S(21, __c2, 5)),
-          month: S.optional(__S(21, __c2, 5)),
-          year: S.optional(__S(21, __c2, 5)),
-          dayOfWeek: S.optional(__S(21, __c2, 5)),
-          comment: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "StructuredCalendarSpec" });
-    case 7:
-      return S.Array(__S(22, __c2, 6));
-  }
-}
-function __c3(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(S.String);
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          second: S.optional(S.String),
-          minute: S.optional(S.String),
-          hour: S.optional(S.String),
-          dayOfMonth: S.optional(S.String),
-          month: S.optional(S.String),
-          year: S.optional(S.String),
-          dayOfWeek: S.optional(S.String),
-          comment: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "CalendarSpec" });
-    case 2:
-      return S.Array(__S(25, __c3, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          interval: S.optional(S.String),
-          phase: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "IntervalSpec" });
-    case 4:
-      return S.Array(__S(27, __c3, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          structuredCalendar: S.optional(__S(23, __c2, 7)),
-          cronString: S.optional(__S(24, __c3, 0)),
-          calendar: S.optional(__S(26, __c3, 2)),
-          interval: S.optional(__S(28, __c3, 4)),
-          excludeCalendar: S.optional(__S(26, __c3, 2)),
-          excludeStructuredCalendar: S.optional(__S(23, __c2, 7)),
-          startTime: S.optional(S.String),
-          endTime: S.optional(S.String),
-          jitter: S.optional(S.String),
-          timezoneName: S.optional(S.String),
-          timezoneData: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ScheduleSpec" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "WorkflowType" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.optional(S.String),
-          kind: S.optional(S.String),
-          normalName: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "TaskQueue" });
-  }
-}
-function __c4(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          payloads: S.optional(__S(1, __c0, 1)),
-        }),
-      ).annotate({ identifier: "Payloads" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          initialInterval: S.optional(S.String),
-          backoffCoefficient: S.optional(S.Number),
-          maximumInterval: S.optional(S.String),
-          maximumAttempts: S.optional(S.Number),
-          nonRetryableErrorTypes: S.optional(__S(24, __c3, 0)),
-        }),
-      ).annotate({ identifier: "RetryPolicy" });
-    case 2:
-      return S.Record(S.String, S.Unknown);
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          fields: S.optional(__S(34, __c4, 2)),
-        }),
-      ).annotate({ identifier: "Memo" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          indexedFields: S.optional(__S(34, __c4, 2)),
-        }),
-      ).annotate({ identifier: "SearchAttributes" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          summary: S.optional(S.Unknown),
-          details: S.optional(S.Unknown),
-        }),
-      ).annotate({ identifier: "UserMetadata" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          buildId: S.optional(S.String),
-          deploymentName: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "WorkerDeploymentVersion" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          behavior: S.optional(S.String),
-          version: S.optional(__S(38, __c4, 6)),
-        }),
-      ).annotate({
-        identifier: "VersioningOverridePinnedOverride",
-      });
   }
 }
 function __c5(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          seriesName: S.optional(S.String),
-          buildId: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Deployment" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          pinned: S.optional(__S(39, __c4, 7)),
-          autoUpgrade: S.optional(S.Boolean),
-          behavior: S.optional(S.String),
-          deployment: S.optional(__S(40, __c5, 0)),
-          pinnedVersion: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "VersioningOverride" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          priorityKey: S.optional(S.Number),
-          fairnessKey: S.optional(S.String),
-          fairnessWeight: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "Priority" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          workflowId: S.optional(S.String),
-          workflowType: S.optional(__S(30, __c3, 6)),
-          taskQueue: S.optional(__S(31, __c3, 7)),
-          input: S.optional(__S(32, __c4, 0)),
-          workflowExecutionTimeout: S.optional(S.String),
-          workflowRunTimeout: S.optional(S.String),
-          workflowTaskTimeout: S.optional(S.String),
-          workflowIdReusePolicy: S.optional(S.String),
-          retryPolicy: S.optional(__S(33, __c4, 1)),
-          cronSchedule: S.optional(S.String),
-          memo: S.optional(__S(35, __c4, 3)),
-          searchAttributes: S.optional(__S(36, __c4, 4)),
-          header: S.optional(__S(35, __c4, 3)),
-          userMetadata: S.optional(__S(37, __c4, 5)),
-          versioningOverride: S.optional(__S(41, __c5, 1)),
-          priority: S.optional(__S(42, __c5, 2)),
-        }),
-      ).annotate({ identifier: "NewWorkflowExecutionInfo" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          startWorkflow: S.optional(__S(43, __c5, 3)),
-        }),
-      ).annotate({ identifier: "ScheduleAction" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          overlapPolicy: S.optional(S.String),
-          catchupWindow: S.optional(S.String),
-          pauseOnFailure: S.optional(S.Boolean),
-          keepOriginalWorkflowId: S.optional(S.Boolean),
-        }),
-      ).annotate({ identifier: "SchedulePolicies" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          notes: S.optional(S.String),
-          paused: S.optional(S.Boolean),
-          limitedActions: S.optional(S.Boolean),
-          remainingActions: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ScheduleState" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          spec: S.optional(__S(29, __c3, 5)),
-          action: S.optional(__S(44, __c5, 4)),
-          policies: S.optional(__S(45, __c5, 5)),
-          state: S.optional(__S(46, __c5, 6)),
-        }),
-      ).annotate({ identifier: "Schedule" });
-  }
-}
-function __c6(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          overlapPolicy: S.optional(S.String),
-          scheduledTime: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "TriggerImmediatelyRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          startTime: S.optional(S.String),
-          endTime: S.optional(S.String),
-          overlapPolicy: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "BackfillRequest" });
-    case 2:
-      return S.Array(__S(49, __c6, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          triggerImmediately: S.optional(__S(48, __c6, 0)),
-          backfillRequest: S.optional(__S(50, __c6, 2)),
-          pause: S.optional(S.String),
-          unpause: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "SchedulePatch" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          namespace: S.String.pipe(T.Label()),
-          scheduleId: S.String.pipe(T.Label()),
-          schedule: S.optional(__S(47, __c5, 7)),
-          initialPatch: S.optional(__S(51, __c6, 3)),
-          identity: S.optional(S.String),
-          requestId: S.optional(S.String),
-          memo: S.optional(__S(35, __c4, 3)),
-          searchAttributes: S.optional(__S(36, __c4, 4)),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/api/v1/namespaces/{namespace}/schedules/{scheduleId}",
-            code: 200,
-          }),
-        ),
-      ).annotate({ identifier: "CreateScheduleRequest" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          conflictToken: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "CreateScheduleResponse" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          namespace: S.String.pipe(T.Label()),
-          deploymentName: S.String.pipe(T.Label()),
-          identity: S.optional(S.String),
-          requestId: S.optional(S.String),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/api/v1/namespaces/{namespace}/worker-deployments/{deploymentName}",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateWorkerDeploymentRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          conflictToken: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "CreateWorkerDeploymentResponse",
-      });
-  }
-}
-function __c7(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(S.String);
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          type: S.optional(S.String),
-          details: S.optional(S.Unknown),
-          nexusEndpoint: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ComputeProvider" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          type: S.optional(S.String),
-          details: S.optional(S.Unknown),
-        }),
-      ).annotate({ identifier: "ComputeScaler" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          taskQueueTypes: S.optional(__S(56, __c7, 0)),
-          provider: S.optional(__S(57, __c7, 1)),
-          scaler: S.optional(__S(58, __c7, 2)),
-        }),
-      ).annotate({
-        identifier: "ComputeConfigScalingGroup",
-      });
-    case 4:
-      return S.Record(S.String, __S(59, __c7, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          scalingGroups: S.optional(__S(60, __c7, 4)),
-        }),
-      ).annotate({ identifier: "ComputeConfig" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          namespace: S.String.pipe(T.Label()),
-          deployment_version_deployment_name: S.String.pipe(T.Label()),
-          deploymentVersion: S.optional(__S(38, __c4, 6)),
-          computeConfig: S.optional(__S(61, __c7, 5)),
-          identity: S.optional(S.String),
-          requestId: S.optional(S.String),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/api/v1/namespaces/{namespace}/worker-deployment-versions/{deployment_version_deployment_name}",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateWorkerDeploymentVersionRequest",
-      });
-    case 7:
-      return S.suspend(() => S.Unknown.pipe(T.RawResponseRoot())).annotate({
-        identifier: "CreateWorkerDeploymentVersionResponse2",
-      });
-  }
-}
-function __c8(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          predicate: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "WorkflowRuleSpecActivityStartingTrigger",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          activityPause: S.optional(S.Unknown),
-        }),
-      ).annotate({ identifier: "WorkflowRuleAction" });
-    case 2:
-      return S.Array(__S(65, __c8, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          activityStart: S.optional(__S(64, __c8, 0)),
-          visibilityQuery: S.optional(S.String),
-          actions: S.optional(__S(66, __c8, 2)),
-          expirationTime: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "WorkflowRuleSpec" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          namespace: S.String.pipe(T.Label()),
-          spec: S.optional(__S(67, __c8, 3)),
-          forceScan: S.optional(S.Boolean),
-          requestId: S.optional(S.String),
-          identity: S.optional(S.String),
-          description: S.optional(S.String),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/api/v1/namespaces/{namespace}/workflow-rules",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateWorkflowRuleRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          createTime: S.optional(S.String),
-          spec: S.optional(__S(67, __c8, 3)),
-          createdByIdentity: S.optional(S.String),
-          description: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "WorkflowRule" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          rule: S.optional(__S(69, __c8, 5)),
-          jobId: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "CreateWorkflowRuleResponse",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String.pipe(T.Label()),
-          version: S.optional(S.String.pipe(T.Query())),
-        }).pipe(T.Http({ method: "DELETE", uri: "/api/v1/nexus/endpoints/{id}", code: 200 })),
-      ).annotate({
-        identifier: "DeleteNexusEndpointRequest",
-      });
-  }
-}
-function __c9(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -8107,11 +7584,154 @@ function __c9(j: number): any {
           }),
         ),
       ).annotate({ identifier: "DeleteScheduleRequest" });
-    case 1:
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() => S.Unknown.pipe(T.RawResponseRoot())).annotate({
         identifier: "DeleteScheduleResponse2",
       });
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          namespace: S.String.pipe(T.Label()),
+          deployment_version_deployment_name: S.String.pipe(T.Label()),
+          deployment_version_build_id: S.String.pipe(T.Label()),
+          version: S.optional(S.String),
+          deploymentVersion: S.optional(__S(3360, __c105, 0)),
+          upsertEntries: S.optional(__S(2880, __c90, 0)),
+          removeEntries: S.optional(__S(3040, __c95, 0)),
+          identity: S.optional(S.String),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/api/v1/namespaces/{namespace}/worker-deployment-versions/{deployment_version_deployment_name}/{deployment_version_build_id}/update-metadata",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "UpdateWorkerDeploymentVersionMetadataRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          metadata: S.optional(__S(1472, __c46, 0)),
+        }),
+      ).annotate({
+        identifier: "UpdateWorkerDeploymentVersionMetadataResponse",
+      });
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          lifecycleStage: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "WaitPolicy" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          namespace: S.String.pipe(T.Label()),
+          workflow_execution_workflow_id: S.String.pipe(T.Label()),
+          request_input_name: S.String.pipe(T.Label()),
+          workflowExecution: S.optional(__S(512, __c16, 0)),
+          firstExecutionRunId: S.optional(S.String),
+          waitPolicy: S.optional(__S(256, __c8, 0)),
+          request: S.optional(__S(2242, __c70, 2)),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/api/v1/namespaces/{namespace}/workflows/{workflow_execution_workflow_id}/update/{request_input_name}",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "UpdateWorkflowExecutionRequest",
+      });
     case 2:
+      return S.suspend(() =>
+        S.Struct({
+          workflowExecution: S.optional(__S(512, __c16, 0)),
+          updateId: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "UpdateRef" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          updateRef: S.optional(__S(258, __c8, 2)),
+          outcome: S.optional(__S(2243, __c70, 3)),
+          stage: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "UpdateWorkflowExecutionResponse",
+      });
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          namespace: S.String.pipe(T.Label()),
+          workflow_execution_workflow_id: S.String.pipe(T.Label()),
+          workflowExecution: S.optional(__S(512, __c16, 0)),
+          workflowExecutionOptions: S.optional(__S(4096, __c128, 0)),
+          updateMask: S.optional(S.String),
+          identity: S.optional(S.String),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/api/v1/namespaces/{namespace}/workflows/{workflow_execution_workflow_id}/update-options",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "UpdateWorkflowExecutionOptionsRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          workflowExecutionOptions: S.optional(__S(4096, __c128, 0)),
+        }),
+      ).annotate({
+        identifier: "UpdateWorkflowExecutionOptionsResponse",
+      });
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          namespace: S.String.pipe(T.Label()),
+          deployment_version_deployment_name: S.String.pipe(T.Label()),
+          deployment_version_build_id: S.String.pipe(T.Label()),
+          deploymentVersion: S.optional(__S(3360, __c105, 0)),
+          computeConfigScalingGroups: S.optional(__S(5537, __c173, 1)),
+          removeComputeConfigScalingGroups: S.optional(__S(5538, __c173, 2)),
+          identity: S.optional(S.String),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/api/v1/namespaces/{namespace}/worker-deployment-versions/{deployment_version_deployment_name}/{deployment_version_build_id}/validate-compute-config",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "ValidateWorkerDeploymentVersionComputeConfigRequest",
+      });
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           namespace: S.String.pipe(T.Label()),
@@ -8127,7 +7747,11 @@ function __c9(j: number): any {
       ).annotate({
         identifier: "DeleteWorkerDeploymentRequest",
       });
-    case 3:
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           namespace: S.String.pipe(T.Label()),
@@ -8152,7 +7776,11 @@ function __c9(j: number): any {
       ).annotate({
         identifier: "DeleteWorkerDeploymentVersionRequest",
       });
-    case 4:
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           namespace: S.String.pipe(T.Label()),
@@ -8167,7 +7795,11 @@ function __c9(j: number): any {
       ).annotate({
         identifier: "DeleteWorkflowRuleRequest",
       });
-    case 5:
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           namespace: S.String.pipe(T.Label()),
@@ -8186,76 +7818,138 @@ function __c9(j: number): any {
       ).annotate({
         identifier: "DescribeActivityExecutionRequest",
       });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          type: S.optional(S.String),
-          nonRetryable: S.optional(S.Boolean),
-          details: S.optional(__S(32, __c4, 0)),
-          nextRetryDelay: S.optional(S.String),
-          category: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ApplicationFailureInfo" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          timeoutType: S.optional(S.String),
-          lastHeartbeatDetails: S.optional(__S(32, __c4, 0)),
-        }),
-      ).annotate({ identifier: "TimeoutFailureInfo" });
-  }
-}
-function __c10(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          details: S.optional(__S(32, __c4, 0)),
-          identity: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "CanceledFailureInfo" });
     case 1:
       return S.suspend(() =>
         S.Struct({
-          identity: S.optional(S.String),
+          activityId: S.optional(S.String),
+          runId: S.optional(S.String),
+          activityType: S.optional(__S(2944, __c92, 0)),
+          status: S.optional(S.String),
+          runState: S.optional(S.String),
+          taskQueue: S.optional(S.String),
+          scheduleToCloseTimeout: S.optional(S.String),
+          scheduleToStartTimeout: S.optional(S.String),
+          startToCloseTimeout: S.optional(S.String),
+          heartbeatTimeout: S.optional(S.String),
+          retryPolicy: S.optional(__S(3136, __c98, 0)),
+          heartbeatDetails: S.optional(__S(2976, __c93, 0)),
+          lastHeartbeatTime: S.optional(S.String),
+          lastStartedTime: S.optional(S.String),
+          attempt: S.optional(S.Number),
+          executionDuration: S.optional(S.String),
+          scheduleTime: S.optional(S.String),
+          expirationTime: S.optional(S.String),
+          closeTime: S.optional(S.String),
+          lastFailure: S.optional(__S(554, __c17, 10)),
+          lastWorkerIdentity: S.optional(S.String),
+          currentRetryInterval: S.optional(S.String),
+          lastAttemptCompleteTime: S.optional(S.String),
+          nextAttemptScheduleTime: S.optional(S.String),
+          lastDeploymentVersion: S.optional(__S(3360, __c105, 0)),
+          priority: S.optional(__S(3104, __c97, 0)),
+          stateTransitionCount: S.optional(S.String),
+          stateSizeBytes: S.optional(S.String),
+          searchAttributes: S.optional(__S(2912, __c91, 0)),
+          header: S.optional(__S(3072, __c96, 0)),
+          userMetadata: S.optional(__S(3008, __c94, 0)),
+          canceledReason: S.optional(S.String),
+          links: S.optional(__S(608, __c19, 0)),
+          totalHeartbeatCount: S.optional(S.String),
         }),
-      ).annotate({ identifier: "TerminatedFailureInfo" });
+      ).annotate({ identifier: "ActivityExecutionInfo" });
     case 2:
       return S.suspend(() =>
         S.Struct({
-          nonRetryable: S.optional(S.Boolean),
+          runId: S.optional(S.String),
+          info: S.optional(__S(449, __c14, 1)),
+          input: S.optional(__S(2976, __c93, 0)),
+          outcome: S.optional(__S(704, __c22, 0)),
+          longPollToken: S.optional(S.String),
+          callbacks: S.optional(__S(641, __c20, 1)),
         }),
-      ).annotate({ identifier: "ServerFailureInfo" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          lastHeartbeatDetails: S.optional(__S(32, __c4, 0)),
-        }),
-      ).annotate({ identifier: "ResetWorkflowFailureInfo" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          scheduledEventId: S.optional(S.String),
-          startedEventId: S.optional(S.String),
-          identity: S.optional(S.String),
-          activityType: S.optional(__S(30, __c3, 6)),
-          activityId: S.optional(S.String),
-          retryState: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ActivityFailureInfo" });
-    case 5:
+      ).annotate({
+        identifier: "DescribeActivityExecutionResponse",
+      });
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, S.String);
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           workflowId: S.optional(S.String),
           runId: S.optional(S.String),
         }),
       ).annotate({ identifier: "WorkflowExecution" });
+  }
+}
+function __c17(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          type: S.optional(S.String),
+          nonRetryable: S.optional(S.Boolean),
+          details: S.optional(__S(2976, __c93, 0)),
+          nextRetryDelay: S.optional(S.String),
+          category: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ApplicationFailureInfo" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          timeoutType: S.optional(S.String),
+          lastHeartbeatDetails: S.optional(__S(2976, __c93, 0)),
+        }),
+      ).annotate({ identifier: "TimeoutFailureInfo" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          details: S.optional(__S(2976, __c93, 0)),
+          identity: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "CanceledFailureInfo" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          identity: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "TerminatedFailureInfo" });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          nonRetryable: S.optional(S.Boolean),
+        }),
+      ).annotate({ identifier: "ServerFailureInfo" });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          lastHeartbeatDetails: S.optional(__S(2976, __c93, 0)),
+        }),
+      ).annotate({ identifier: "ResetWorkflowFailureInfo" });
     case 6:
       return S.suspend(() =>
         S.Struct({
+          scheduledEventId: S.optional(S.String),
+          startedEventId: S.optional(S.String),
+          identity: S.optional(S.String),
+          activityType: S.optional(__S(2944, __c92, 0)),
+          activityId: S.optional(S.String),
+          retryState: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ActivityFailureInfo" });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
           namespace: S.optional(S.String),
-          workflowExecution: S.optional(__S(85, __c10, 5)),
-          workflowType: S.optional(__S(30, __c3, 6)),
+          workflowExecution: S.optional(__S(512, __c16, 0)),
+          workflowType: S.optional(__S(2944, __c92, 0)),
           initiatedEventId: S.optional(S.String),
           startedEventId: S.optional(S.String),
           retryState: S.optional(S.String),
@@ -8263,7 +7957,7 @@ function __c10(j: number): any {
       ).annotate({
         identifier: "ChildWorkflowExecutionFailureInfo",
       });
-    case 7:
+    case 8:
       return S.suspend(() =>
         S.Struct({
           scheduledEventId: S.optional(S.String),
@@ -8276,38 +7970,38 @@ function __c10(j: number): any {
       ).annotate({
         identifier: "NexusOperationFailureInfo",
       });
-  }
-}
-function __c11(j: number): any {
-  switch (j) {
-    case 0:
+    case 9:
       return S.suspend(() =>
         S.Struct({
           type: S.optional(S.String),
           retryBehavior: S.optional(S.String),
         }),
       ).annotate({ identifier: "NexusHandlerFailureInfo" });
-    case 1:
+    case 10:
       return S.suspend(() =>
         S.Struct({
           message: S.optional(S.String),
           source: S.optional(S.String),
           stackTrace: S.optional(S.String),
           encodedAttributes: S.optional(S.Unknown),
-          cause: S.optional(__S(89, __c11, 1)),
-          applicationFailureInfo: S.optional(__S(78, __c9, 6)),
-          timeoutFailureInfo: S.optional(__S(79, __c9, 7)),
-          canceledFailureInfo: S.optional(__S(80, __c10, 0)),
-          terminatedFailureInfo: S.optional(__S(81, __c10, 1)),
-          serverFailureInfo: S.optional(__S(82, __c10, 2)),
-          resetWorkflowFailureInfo: S.optional(__S(83, __c10, 3)),
-          activityFailureInfo: S.optional(__S(84, __c10, 4)),
-          childWorkflowExecutionFailureInfo: S.optional(__S(86, __c10, 6)),
-          nexusOperationExecutionFailureInfo: S.optional(__S(87, __c10, 7)),
-          nexusHandlerFailureInfo: S.optional(__S(88, __c11, 0)),
+          cause: S.optional(__S(554, __c17, 10)),
+          applicationFailureInfo: S.optional(__S(544, __c17, 0)),
+          timeoutFailureInfo: S.optional(__S(545, __c17, 1)),
+          canceledFailureInfo: S.optional(__S(546, __c17, 2)),
+          terminatedFailureInfo: S.optional(__S(547, __c17, 3)),
+          serverFailureInfo: S.optional(__S(548, __c17, 4)),
+          resetWorkflowFailureInfo: S.optional(__S(549, __c17, 5)),
+          activityFailureInfo: S.optional(__S(550, __c17, 6)),
+          childWorkflowExecutionFailureInfo: S.optional(__S(551, __c17, 7)),
+          nexusOperationExecutionFailureInfo: S.optional(__S(552, __c17, 8)),
+          nexusHandlerFailureInfo: S.optional(__S(553, __c17, 9)),
         }),
       ).annotate({ identifier: "Failure" });
-    case 2:
+  }
+}
+function __c18(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           eventId: S.optional(S.String),
@@ -8316,7 +8010,7 @@ function __c11(j: number): any {
       ).annotate({
         identifier: "WorkflowEventEventReference",
       });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           requestId: S.optional(S.String),
@@ -8325,23 +8019,23 @@ function __c11(j: number): any {
       ).annotate({
         identifier: "WorkflowEventRequestIdReference",
       });
-    case 4:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           namespace: S.optional(S.String),
           workflowId: S.optional(S.String),
           runId: S.optional(S.String),
-          eventRef: S.optional(__S(90, __c11, 2)),
-          requestIdRef: S.optional(__S(91, __c11, 3)),
+          eventRef: S.optional(__S(576, __c18, 0)),
+          requestIdRef: S.optional(__S(577, __c18, 1)),
         }),
       ).annotate({ identifier: "LinkWorkflowEvent" });
-    case 5:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           jobId: S.optional(S.String),
         }),
       ).annotate({ identifier: "LinkBatchJob" });
-    case 6:
+    case 4:
       return S.suspend(() =>
         S.Struct({
           namespace: S.optional(S.String),
@@ -8349,7 +8043,7 @@ function __c11(j: number): any {
           runId: S.optional(S.String),
         }),
       ).annotate({ identifier: "LinkActivity" });
-    case 7:
+    case 5:
       return S.suspend(() =>
         S.Struct({
           namespace: S.optional(S.String),
@@ -8357,125 +8051,83 @@ function __c11(j: number): any {
           runId: S.optional(S.String),
         }),
       ).annotate({ identifier: "LinkNexusOperation" });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          workflowEvent: S.optional(__S(578, __c18, 2)),
+          batchJob: S.optional(__S(579, __c18, 3)),
+          activity: S.optional(__S(580, __c18, 4)),
+          nexusOperation: S.optional(__S(581, __c18, 5)),
+        }),
+      ).annotate({ identifier: "Link" });
   }
 }
-function __c12(j: number): any {
+function __c19(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(582, __c18, 6));
+  }
+}
+function __c20(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          workflowEvent: S.optional(__S(92, __c11, 4)),
-          batchJob: S.optional(__S(93, __c11, 5)),
-          activity: S.optional(__S(94, __c11, 6)),
-          nexusOperation: S.optional(__S(95, __c11, 7)),
-        }),
-      ).annotate({ identifier: "Link" });
-    case 1:
-      return S.Array(__S(96, __c12, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          activityId: S.optional(S.String),
-          runId: S.optional(S.String),
-          activityType: S.optional(__S(30, __c3, 6)),
-          status: S.optional(S.String),
-          runState: S.optional(S.String),
-          taskQueue: S.optional(S.String),
-          scheduleToCloseTimeout: S.optional(S.String),
-          scheduleToStartTimeout: S.optional(S.String),
-          startToCloseTimeout: S.optional(S.String),
-          heartbeatTimeout: S.optional(S.String),
-          retryPolicy: S.optional(__S(33, __c4, 1)),
-          heartbeatDetails: S.optional(__S(32, __c4, 0)),
-          lastHeartbeatTime: S.optional(S.String),
-          lastStartedTime: S.optional(S.String),
+          callback: S.optional(__S(675, __c21, 3)),
+          registrationTime: S.optional(S.String),
+          state: S.optional(S.String),
           attempt: S.optional(S.Number),
-          executionDuration: S.optional(S.String),
-          scheduleTime: S.optional(S.String),
-          expirationTime: S.optional(S.String),
-          closeTime: S.optional(S.String),
-          lastFailure: S.optional(__S(89, __c11, 1)),
-          lastWorkerIdentity: S.optional(S.String),
-          currentRetryInterval: S.optional(S.String),
           lastAttemptCompleteTime: S.optional(S.String),
+          lastAttemptFailure: S.optional(__S(554, __c17, 10)),
           nextAttemptScheduleTime: S.optional(S.String),
-          lastDeploymentVersion: S.optional(__S(38, __c4, 6)),
-          priority: S.optional(__S(42, __c5, 2)),
-          stateTransitionCount: S.optional(S.String),
-          stateSizeBytes: S.optional(S.String),
-          searchAttributes: S.optional(__S(36, __c4, 4)),
-          header: S.optional(__S(35, __c4, 3)),
-          userMetadata: S.optional(__S(37, __c4, 5)),
-          canceledReason: S.optional(S.String),
-          links: S.optional(__S(97, __c12, 1)),
-          totalHeartbeatCount: S.optional(S.String),
+          blockedReason: S.optional(S.String),
         }),
-      ).annotate({ identifier: "ActivityExecutionInfo" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          result: S.optional(__S(32, __c4, 0)),
-          failure: S.optional(__S(89, __c11, 1)),
-        }),
-      ).annotate({ identifier: "ActivityExecutionOutcome" });
-    case 4:
-      return S.Record(S.String, S.String);
-    case 5:
+      ).annotate({ identifier: "CallbackInfo" });
+    case 1:
+      return S.Array(__S(640, __c20, 0));
+  }
+}
+function __c21(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           url: S.optional(S.String),
-          header: S.optional(__S(100, __c12, 4)),
+          header: S.optional(__S(480, __c15, 0)),
         }),
       ).annotate({ identifier: "CallbackNexus" });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           data: S.optional(S.String),
         }),
       ).annotate({ identifier: "CallbackInternal" });
-    case 7:
-      return S.Array(__S(96, __c12, 0));
+    case 2:
+      return S.Array(__S(582, __c18, 6));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          nexus: S.optional(__S(672, __c21, 0)),
+          internal: S.optional(__S(673, __c21, 1)),
+          links: S.optional(__S(674, __c21, 2)),
+        }),
+      ).annotate({ identifier: "Callback" });
   }
 }
-function __c13(j: number): any {
+function __c22(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          nexus: S.optional(__S(101, __c12, 5)),
-          internal: S.optional(__S(102, __c12, 6)),
-          links: S.optional(__S(103, __c12, 7)),
+          result: S.optional(__S(2976, __c93, 0)),
+          failure: S.optional(__S(554, __c17, 10)),
         }),
-      ).annotate({ identifier: "Callback" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          callback: S.optional(__S(104, __c13, 0)),
-          registrationTime: S.optional(S.String),
-          state: S.optional(S.String),
-          attempt: S.optional(S.Number),
-          lastAttemptCompleteTime: S.optional(S.String),
-          lastAttemptFailure: S.optional(__S(89, __c11, 1)),
-          nextAttemptScheduleTime: S.optional(S.String),
-          blockedReason: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "CallbackInfo" });
-    case 2:
-      return S.Array(__S(105, __c13, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          runId: S.optional(S.String),
-          info: S.optional(__S(98, __c12, 2)),
-          input: S.optional(__S(32, __c4, 0)),
-          outcome: S.optional(__S(99, __c12, 3)),
-          longPollToken: S.optional(S.String),
-          callbacks: S.optional(__S(106, __c13, 2)),
-        }),
-      ).annotate({
-        identifier: "DescribeActivityExecutionResponse",
-      });
-    case 4:
+      ).annotate({ identifier: "ActivityExecutionOutcome" });
+  }
+}
+function __c23(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           namespace: S.String.pipe(T.Label()),
@@ -8490,7 +8142,7 @@ function __c13(j: number): any {
       ).annotate({
         identifier: "DescribeBatchOperationRequest",
       });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           operationType: S.optional(S.String),
@@ -8507,7 +8159,11 @@ function __c13(j: number): any {
       ).annotate({
         identifier: "DescribeBatchOperationResponse",
       });
-    case 6:
+  }
+}
+function __c24(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           namespace: S.String.pipe(T.Label()),
@@ -8525,7 +8181,19 @@ function __c13(j: number): any {
       ).annotate({
         identifier: "DescribeDeploymentRequest",
       });
-    case 7:
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          deploymentInfo: S.optional(__S(802, __c25, 2)),
+        }),
+      ).annotate({
+        identifier: "DescribeDeploymentResponse",
+      });
+  }
+}
+function __c25(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
@@ -8535,31 +8203,23 @@ function __c13(j: number): any {
       ).annotate({
         identifier: "DeploymentInfoTaskQueueInfo",
       });
-  }
-}
-function __c14(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(111, __c13, 7));
     case 1:
-      return S.suspend(() =>
-        S.Struct({
-          deployment: S.optional(__S(40, __c5, 0)),
-          createTime: S.optional(S.String),
-          taskQueueInfos: S.optional(__S(112, __c14, 0)),
-          metadata: S.optional(__S(34, __c4, 2)),
-          isCurrent: S.optional(S.Boolean),
-        }),
-      ).annotate({ identifier: "DeploymentInfo" });
+      return S.Array(__S(800, __c25, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          deploymentInfo: S.optional(__S(113, __c14, 1)),
+          deployment: S.optional(__S(3168, __c99, 0)),
+          createTime: S.optional(S.String),
+          taskQueueInfos: S.optional(__S(801, __c25, 1)),
+          metadata: S.optional(__S(2880, __c90, 0)),
+          isCurrent: S.optional(S.Boolean),
         }),
-      ).annotate({
-        identifier: "DescribeDeploymentResponse",
-      });
-    case 3:
+      ).annotate({ identifier: "DeploymentInfo" });
+  }
+}
+function __c26(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           namespace: S.String.pipe(T.Label()),
@@ -8567,7 +8227,49 @@ function __c14(j: number): any {
           weakConsistency: S.optional(S.Boolean.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/api/v1/namespaces/{namespace}", code: 200 })),
       ).annotate({ identifier: "DescribeNamespaceRequest" });
-    case 4:
+  }
+}
+function __c27(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          failoverTime: S.optional(S.String),
+          failoverVersion: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "FailoverStatus" });
+    case 1:
+      return S.Array(__S(864, __c27, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          namespaceInfo: S.optional(__S(930, __c29, 2)),
+          config: S.optional(__S(934, __c29, 6)),
+          replicationConfig: S.optional(__S(935, __c29, 7)),
+          failoverVersion: S.optional(S.String),
+          isGlobalNamespace: S.optional(S.Boolean),
+          failoverHistory: S.optional(__S(865, __c27, 1)),
+        }),
+      ).annotate({
+        identifier: "DescribeNamespaceResponse",
+      });
+  }
+}
+function __c28(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          clusterName: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ClusterReplicationConfig" });
+    case 1:
+      return S.Array(__S(896, __c28, 0));
+  }
+}
+function __c29(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           eagerWorkflowStart: S.optional(S.Boolean),
@@ -8584,28 +8286,28 @@ function __c14(j: number): any {
       ).annotate({
         identifier: "NamespaceInfoCapabilities",
       });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           blobSizeLimitError: S.optional(S.String),
           memoSizeLimitError: S.optional(S.String),
         }),
       ).annotate({ identifier: "NamespaceInfoLimits" });
-    case 6:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
           state: S.optional(S.String),
           description: S.optional(S.String),
           ownerEmail: S.optional(S.String),
-          data: S.optional(__S(100, __c12, 4)),
+          data: S.optional(__S(480, __c15, 0)),
           id: S.optional(S.String),
-          capabilities: S.optional(__S(116, __c14, 4)),
-          limits: S.optional(__S(117, __c14, 5)),
+          capabilities: S.optional(__S(928, __c29, 0)),
+          limits: S.optional(__S(929, __c29, 1)),
           supportsSchedules: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "NamespaceInfo" });
-    case 7:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           reason: S.optional(S.String),
@@ -8613,75 +8315,41 @@ function __c14(j: number): any {
           createTime: S.optional(S.String),
         }),
       ).annotate({ identifier: "BadBinaryInfo" });
-  }
-}
-function __c15(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Record(S.String, __S(119, __c14, 7));
-    case 1:
+    case 4:
+      return S.Record(S.String, __S(931, __c29, 3));
+    case 5:
       return S.suspend(() =>
         S.Struct({
-          binaries: S.optional(__S(120, __c15, 0)),
+          binaries: S.optional(__S(932, __c29, 4)),
         }),
       ).annotate({ identifier: "BadBinaries" });
-    case 2:
+    case 6:
       return S.suspend(() =>
         S.Struct({
           workflowExecutionRetentionTtl: S.optional(S.String),
-          badBinaries: S.optional(__S(121, __c15, 1)),
+          badBinaries: S.optional(__S(933, __c29, 5)),
           historyArchivalState: S.optional(S.String),
           historyArchivalUri: S.optional(S.String),
           visibilityArchivalState: S.optional(S.String),
           visibilityArchivalUri: S.optional(S.String),
-          customSearchAttributeAliases: S.optional(__S(100, __c12, 4)),
+          customSearchAttributeAliases: S.optional(__S(480, __c15, 0)),
         }),
       ).annotate({ identifier: "NamespaceConfig" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          clusterName: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ClusterReplicationConfig" });
-    case 4:
-      return S.Array(__S(123, __c15, 3));
-    case 5:
+    case 7:
       return S.suspend(() =>
         S.Struct({
           activeClusterName: S.optional(S.String),
-          clusters: S.optional(__S(124, __c15, 4)),
+          clusters: S.optional(__S(897, __c28, 1)),
           state: S.optional(S.String),
         }),
       ).annotate({
         identifier: "NamespaceReplicationConfig",
       });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          failoverTime: S.optional(S.String),
-          failoverVersion: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "FailoverStatus" });
-    case 7:
-      return S.Array(__S(126, __c15, 6));
   }
 }
-function __c16(j: number): any {
+function __c30(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() =>
-        S.Struct({
-          namespaceInfo: S.optional(__S(118, __c14, 6)),
-          config: S.optional(__S(122, __c15, 2)),
-          replicationConfig: S.optional(__S(125, __c15, 5)),
-          failoverVersion: S.optional(S.String),
-          isGlobalNamespace: S.optional(S.Boolean),
-          failoverHistory: S.optional(__S(127, __c15, 7)),
-        }),
-      ).annotate({
-        identifier: "DescribeNamespaceResponse",
-      });
-    case 1:
       return S.suspend(() =>
         S.Struct({
           namespace: S.String.pipe(T.Label()),
@@ -8700,14 +8368,14 @@ function __c16(j: number): any {
       ).annotate({
         identifier: "DescribeNexusOperationExecutionRequest",
       });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           requestedTime: S.optional(S.String),
           state: S.optional(S.String),
           attempt: S.optional(S.Number),
           lastAttemptCompleteTime: S.optional(S.String),
-          lastAttemptFailure: S.optional(__S(89, __c11, 1)),
+          lastAttemptFailure: S.optional(__S(554, __c17, 10)),
           nextAttemptScheduleTime: S.optional(S.String),
           blockedReason: S.optional(S.String),
           reason: S.optional(S.String),
@@ -8715,7 +8383,7 @@ function __c16(j: number): any {
       ).annotate({
         identifier: "NexusOperationExecutionCancellationInfo",
       });
-    case 3:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           operationId: S.optional(S.String),
@@ -8733,37 +8401,41 @@ function __c16(j: number): any {
           expirationTime: S.optional(S.String),
           closeTime: S.optional(S.String),
           lastAttemptCompleteTime: S.optional(S.String),
-          lastAttemptFailure: S.optional(__S(89, __c11, 1)),
+          lastAttemptFailure: S.optional(__S(554, __c17, 10)),
           nextAttemptScheduleTime: S.optional(S.String),
           executionDuration: S.optional(S.String),
-          cancellationInfo: S.optional(__S(130, __c16, 2)),
+          cancellationInfo: S.optional(__S(961, __c30, 1)),
           blockedReason: S.optional(S.String),
           requestId: S.optional(S.String),
           operationToken: S.optional(S.String),
           stateTransitionCount: S.optional(S.String),
-          searchAttributes: S.optional(__S(36, __c4, 4)),
-          nexusHeader: S.optional(__S(100, __c12, 4)),
-          userMetadata: S.optional(__S(37, __c4, 5)),
-          links: S.optional(__S(97, __c12, 1)),
+          searchAttributes: S.optional(__S(2912, __c91, 0)),
+          nexusHeader: S.optional(__S(480, __c15, 0)),
+          userMetadata: S.optional(__S(3008, __c94, 0)),
+          links: S.optional(__S(608, __c19, 0)),
           identity: S.optional(S.String),
         }),
       ).annotate({
         identifier: "NexusOperationExecutionInfo",
       });
-    case 4:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           runId: S.optional(S.String),
-          info: S.optional(__S(131, __c16, 3)),
+          info: S.optional(__S(962, __c30, 2)),
           input: S.optional(S.Unknown),
           result: S.optional(S.Unknown),
-          failure: S.optional(__S(89, __c11, 1)),
+          failure: S.optional(__S(554, __c17, 10)),
           longPollToken: S.optional(S.String),
         }),
       ).annotate({
         identifier: "DescribeNexusOperationExecutionResponse",
       });
-    case 5:
+  }
+}
+function __c31(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           namespace: S.String.pipe(T.Label()),
@@ -8776,23 +8448,6 @@ function __c16(j: number): any {
           }),
         ),
       ).annotate({ identifier: "DescribeScheduleRequest" });
-    case 6:
-      return S.Array(__S(85, __c10, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          scheduleTime: S.optional(S.String),
-          actualTime: S.optional(S.String),
-          startWorkflowResult: S.optional(__S(85, __c10, 5)),
-          startWorkflowStatus: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ScheduleActionResult" });
-  }
-}
-function __c17(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(135, __c16, 7));
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -8801,9 +8456,9 @@ function __c17(j: number): any {
           overlapSkipped: S.optional(S.String),
           bufferDropped: S.optional(S.String),
           bufferSize: S.optional(S.String),
-          runningWorkflows: S.optional(__S(134, __c16, 6)),
-          recentActions: S.optional(__S(136, __c17, 0)),
-          futureActionTimes: S.optional(__S(24, __c3, 0)),
+          runningWorkflows: S.optional(__S(1056, __c33, 0)),
+          recentActions: S.optional(__S(1025, __c32, 1)),
+          futureActionTimes: S.optional(__S(3040, __c95, 0)),
           createTime: S.optional(S.String),
           updateTime: S.optional(S.String),
           invalidScheduleError: S.optional(S.String),
@@ -8812,14 +8467,63 @@ function __c17(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          schedule: S.optional(__S(47, __c5, 7)),
-          info: S.optional(__S(137, __c17, 1)),
-          memo: S.optional(__S(35, __c4, 3)),
-          searchAttributes: S.optional(__S(36, __c4, 4)),
+          schedule: S.optional(__S(3300, __c103, 4)),
+          info: S.optional(__S(993, __c31, 1)),
+          memo: S.optional(__S(3072, __c96, 0)),
+          searchAttributes: S.optional(__S(2912, __c91, 0)),
           conflictToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "DescribeScheduleResponse" });
-    case 3:
+  }
+}
+function __c32(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          scheduleTime: S.optional(S.String),
+          actualTime: S.optional(S.String),
+          startWorkflowResult: S.optional(__S(512, __c16, 0)),
+          startWorkflowStatus: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ScheduleActionResult" });
+    case 1:
+      return S.Array(__S(1024, __c32, 0));
+  }
+}
+function __c33(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(512, __c16, 0));
+  }
+}
+function __c34(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          namespace: S.String.pipe(T.Label()),
+          query: S.optional(S.String.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/api/v1/namespaces/{namespace}/schedule-count",
+            code: 200,
+          }),
+        ),
+      ).annotate({ identifier: "CountSchedulesRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          count: S.optional(S.String),
+          groups: S.optional(__S(33, __c1, 1)),
+        }),
+      ).annotate({ identifier: "CountSchedulesResponse" });
+  }
+}
+function __c35(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           namespace: S.String.pipe(T.Label()),
@@ -8832,10 +8536,10 @@ function __c17(j: number): any {
           reportConfig: S.optional(S.Boolean.pipe(T.Query())),
           includeTaskQueueStatus: S.optional(S.Boolean.pipe(T.Query())),
           apiMode: S.optional(S.String.pipe(T.Query())),
-          versions_buildIds: S.optional(__S(24, __c3, 0).pipe(T.Query("versions.buildIds"))),
+          versions_buildIds: S.optional(__S(3040, __c95, 0).pipe(T.Query("versions.buildIds"))),
           versions_unversioned: S.optional(S.Boolean.pipe(T.Query("versions.unversioned"))),
           versions_allActive: S.optional(S.Boolean.pipe(T.Query("versions.allActive"))),
-          taskQueueTypes: S.optional(__S(56, __c7, 0).pipe(T.Query())),
+          taskQueueTypes: S.optional(__S(4224, __c132, 0).pipe(T.Query())),
           reportPollers: S.optional(S.Boolean.pipe(T.Query())),
           reportTaskReachability: S.optional(S.Boolean.pipe(T.Query())),
         }).pipe(
@@ -8846,7 +8550,7 @@ function __c17(j: number): any {
           }),
         ),
       ).annotate({ identifier: "DescribeTaskQueueRequest" });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           buildId: S.optional(S.String),
@@ -8856,29 +8560,93 @@ function __c17(j: number): any {
       ).annotate({
         identifier: "WorkerVersionCapabilities",
       });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          deploymentName: S.optional(S.String),
-          buildId: S.optional(S.String),
-          workerVersioningMode: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "WorkerDeploymentOptions" });
-    case 6:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           lastAccessTime: S.optional(S.String),
           identity: S.optional(S.String),
           ratePerSecond: S.optional(S.Number),
-          workerVersionCapabilities: S.optional(__S(140, __c17, 4)),
-          deploymentOptions: S.optional(__S(141, __c17, 5)),
+          workerVersionCapabilities: S.optional(__S(1121, __c35, 1)),
+          deploymentOptions: S.optional(__S(1184, __c37, 0)),
         }),
       ).annotate({ identifier: "PollerInfo" });
+    case 3:
+      return S.Array(__S(1122, __c35, 2));
+    case 4:
+      return S.Record(S.String, __S(1152, __c36, 0));
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          currentDeploymentVersion: S.optional(__S(3360, __c105, 0)),
+          currentVersion: S.optional(S.String),
+          rampingDeploymentVersion: S.optional(__S(3360, __c105, 0)),
+          rampingVersion: S.optional(S.String),
+          rampingVersionPercentage: S.optional(S.Number),
+          updateTime: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "TaskQueueVersioningInfo" });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          requestsPerSecond: S.optional(S.Number),
+          rateLimitSource: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "DescribeTaskQueueResponseEffectiveRateLimit",
+      });
     case 7:
-      return S.Array(__S(142, __c17, 6));
+      return S.suspend(() =>
+        S.Struct({
+          startId: S.optional(S.String),
+          endId: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "TaskIdBlock" });
+    case 8:
+      return S.suspend(() =>
+        S.Struct({
+          backlogCountHint: S.optional(S.String),
+          readLevel: S.optional(S.String),
+          ackLevel: S.optional(S.String),
+          ratePerSecond: S.optional(S.Number),
+          taskIdBlock: S.optional(__S(1127, __c35, 7)),
+        }),
+      ).annotate({ identifier: "TaskQueueStatus" });
+    case 9:
+      return S.suspend(() =>
+        S.Struct({
+          pollers: S.optional(__S(1123, __c35, 3)),
+          stats: S.optional(__S(1152, __c36, 0)),
+        }),
+      ).annotate({ identifier: "TaskQueueTypeInfo" });
+    case 10:
+      return S.Record(S.String, __S(1129, __c35, 9));
+    case 11:
+      return S.suspend(() =>
+        S.Struct({
+          typesInfo: S.optional(__S(1130, __c35, 10)),
+          taskReachability: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "TaskQueueVersionInfo" });
+    case 12:
+      return S.Record(S.String, __S(1131, __c35, 11));
+    case 13:
+      return S.suspend(() =>
+        S.Struct({
+          pollers: S.optional(__S(1123, __c35, 3)),
+          stats: S.optional(__S(1152, __c36, 0)),
+          statsByPriorityKey: S.optional(__S(1124, __c35, 4)),
+          versioningInfo: S.optional(__S(1125, __c35, 5)),
+          config: S.optional(__S(1220, __c38, 4)),
+          effectiveRateLimit: S.optional(__S(1126, __c35, 6)),
+          taskQueueStatus: S.optional(__S(1128, __c35, 8)),
+          versionsInfo: S.optional(__S(1132, __c35, 12)),
+        }),
+      ).annotate({
+        identifier: "DescribeTaskQueueResponse",
+      });
   }
 }
-function __c18(j: number): any {
+function __c36(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -8889,26 +8657,29 @@ function __c18(j: number): any {
           tasksDispatchRate: S.optional(S.Number),
         }),
       ).annotate({ identifier: "TaskQueueStats" });
-    case 1:
-      return S.Record(S.String, __S(144, __c18, 0));
-    case 2:
+  }
+}
+function __c37(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          currentDeploymentVersion: S.optional(__S(38, __c4, 6)),
-          currentVersion: S.optional(S.String),
-          rampingDeploymentVersion: S.optional(__S(38, __c4, 6)),
-          rampingVersion: S.optional(S.String),
-          rampingVersionPercentage: S.optional(S.Number),
-          updateTime: S.optional(S.String),
+          deploymentName: S.optional(S.String),
+          buildId: S.optional(S.String),
+          workerVersioningMode: S.optional(S.String),
         }),
-      ).annotate({ identifier: "TaskQueueVersioningInfo" });
-    case 3:
+      ).annotate({ identifier: "WorkerDeploymentOptions" });
+  }
+}
+function __c38(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           requestsPerSecond: S.optional(S.Number),
         }),
       ).annotate({ identifier: "RateLimit" });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           reason: S.optional(S.String),
@@ -8916,89 +8687,26 @@ function __c18(j: number): any {
           updateTime: S.optional(S.String),
         }),
       ).annotate({ identifier: "ConfigMetadata" });
-    case 5:
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          rateLimit: S.optional(__S(147, __c18, 3)),
-          metadata: S.optional(__S(148, __c18, 4)),
+          rateLimit: S.optional(__S(1216, __c38, 0)),
+          metadata: S.optional(__S(1217, __c38, 1)),
         }),
       ).annotate({ identifier: "RateLimitConfig" });
-    case 6:
+    case 3:
       return S.Record(S.String, S.Number);
-    case 7:
+    case 4:
       return S.suspend(() =>
         S.Struct({
-          queueRateLimit: S.optional(__S(149, __c18, 5)),
-          fairnessKeysRateLimitDefault: S.optional(__S(149, __c18, 5)),
-          fairnessWeightOverrides: S.optional(__S(150, __c18, 6)),
+          queueRateLimit: S.optional(__S(1218, __c38, 2)),
+          fairnessKeysRateLimitDefault: S.optional(__S(1218, __c38, 2)),
+          fairnessWeightOverrides: S.optional(__S(1219, __c38, 3)),
         }),
       ).annotate({ identifier: "TaskQueueConfig" });
   }
 }
-function __c19(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          requestsPerSecond: S.optional(S.Number),
-          rateLimitSource: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "DescribeTaskQueueResponseEffectiveRateLimit",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          startId: S.optional(S.String),
-          endId: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "TaskIdBlock" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          backlogCountHint: S.optional(S.String),
-          readLevel: S.optional(S.String),
-          ackLevel: S.optional(S.String),
-          ratePerSecond: S.optional(S.Number),
-          taskIdBlock: S.optional(__S(153, __c19, 1)),
-        }),
-      ).annotate({ identifier: "TaskQueueStatus" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          pollers: S.optional(__S(143, __c17, 7)),
-          stats: S.optional(__S(144, __c18, 0)),
-        }),
-      ).annotate({ identifier: "TaskQueueTypeInfo" });
-    case 4:
-      return S.Record(S.String, __S(155, __c19, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          typesInfo: S.optional(__S(156, __c19, 4)),
-          taskReachability: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "TaskQueueVersionInfo" });
-    case 6:
-      return S.Record(S.String, __S(157, __c19, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          pollers: S.optional(__S(143, __c17, 7)),
-          stats: S.optional(__S(144, __c18, 0)),
-          statsByPriorityKey: S.optional(__S(145, __c18, 1)),
-          versioningInfo: S.optional(__S(146, __c18, 2)),
-          config: S.optional(__S(151, __c18, 7)),
-          effectiveRateLimit: S.optional(__S(152, __c19, 0)),
-          taskQueueStatus: S.optional(__S(154, __c19, 2)),
-          versionsInfo: S.optional(__S(158, __c19, 6)),
-        }),
-      ).annotate({
-        identifier: "DescribeTaskQueueResponse",
-      });
-  }
-}
-function __c20(j: number): any {
+function __c39(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -9016,6 +8724,26 @@ function __c20(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
+          workerInfo: S.optional(__S(1280, __c40, 0)),
+        }),
+      ).annotate({ identifier: "DescribeWorkerResponse" });
+  }
+}
+function __c40(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          workerHeartbeat: S.optional(__S(1319, __c41, 7)),
+        }),
+      ).annotate({ identifier: "WorkerInfo" });
+  }
+}
+function __c41(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
           hostName: S.optional(S.String),
           workerGroupingKey: S.optional(S.String),
           processId: S.optional(S.String),
@@ -9023,7 +8751,7 @@ function __c20(j: number): any {
           currentHostMemUsage: S.optional(S.Number),
         }),
       ).annotate({ identifier: "WorkerHostInfo" });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           currentAvailableSlots: S.optional(S.Number),
@@ -9035,7 +8763,7 @@ function __c20(j: number): any {
           lastIntervalFailureTasks: S.optional(S.Number),
         }),
       ).annotate({ identifier: "WorkerSlotsInfo" });
-    case 3:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           currentPollers: S.optional(S.Number),
@@ -9043,69 +8771,57 @@ function __c20(j: number): any {
           isAutoscaling: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "WorkerPollerInfo" });
-    case 4:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
           version: S.optional(S.String),
         }),
       ).annotate({ identifier: "PluginInfo" });
+    case 4:
+      return S.Array(__S(1315, __c41, 3));
     case 5:
-      return S.Array(__S(164, __c20, 4));
-    case 6:
       return S.suspend(() =>
         S.Struct({
           type: S.optional(S.String),
         }),
       ).annotate({ identifier: "StorageDriverInfo" });
+    case 6:
+      return S.Array(__S(1317, __c41, 5));
     case 7:
-      return S.Array(__S(166, __c20, 6));
-  }
-}
-function __c21(j: number): any {
-  switch (j) {
-    case 0:
       return S.suspend(() =>
         S.Struct({
           workerInstanceKey: S.optional(S.String),
           workerIdentity: S.optional(S.String),
-          hostInfo: S.optional(__S(161, __c20, 1)),
+          hostInfo: S.optional(__S(1312, __c41, 0)),
           taskQueue: S.optional(S.String),
-          deploymentVersion: S.optional(__S(38, __c4, 6)),
+          deploymentVersion: S.optional(__S(3360, __c105, 0)),
           sdkName: S.optional(S.String),
           sdkVersion: S.optional(S.String),
           status: S.optional(S.String),
           startTime: S.optional(S.String),
           heartbeatTime: S.optional(S.String),
           elapsedSinceLastHeartbeat: S.optional(S.String),
-          workflowTaskSlotsInfo: S.optional(__S(162, __c20, 2)),
-          activityTaskSlotsInfo: S.optional(__S(162, __c20, 2)),
-          nexusTaskSlotsInfo: S.optional(__S(162, __c20, 2)),
-          localActivitySlotsInfo: S.optional(__S(162, __c20, 2)),
-          workflowPollerInfo: S.optional(__S(163, __c20, 3)),
-          workflowStickyPollerInfo: S.optional(__S(163, __c20, 3)),
-          activityPollerInfo: S.optional(__S(163, __c20, 3)),
-          nexusPollerInfo: S.optional(__S(163, __c20, 3)),
+          workflowTaskSlotsInfo: S.optional(__S(1313, __c41, 1)),
+          activityTaskSlotsInfo: S.optional(__S(1313, __c41, 1)),
+          nexusTaskSlotsInfo: S.optional(__S(1313, __c41, 1)),
+          localActivitySlotsInfo: S.optional(__S(1313, __c41, 1)),
+          workflowPollerInfo: S.optional(__S(1314, __c41, 2)),
+          workflowStickyPollerInfo: S.optional(__S(1314, __c41, 2)),
+          activityPollerInfo: S.optional(__S(1314, __c41, 2)),
+          nexusPollerInfo: S.optional(__S(1314, __c41, 2)),
           totalStickyCacheHit: S.optional(S.Number),
           totalStickyCacheMiss: S.optional(S.Number),
           currentStickyCacheSize: S.optional(S.Number),
-          plugins: S.optional(__S(165, __c20, 5)),
-          drivers: S.optional(__S(167, __c20, 7)),
+          plugins: S.optional(__S(1316, __c41, 4)),
+          drivers: S.optional(__S(1318, __c41, 6)),
         }),
       ).annotate({ identifier: "WorkerHeartbeat" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          workerHeartbeat: S.optional(__S(168, __c21, 0)),
-        }),
-      ).annotate({ identifier: "WorkerInfo" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          workerInfo: S.optional(__S(169, __c21, 1)),
-        }),
-      ).annotate({ identifier: "DescribeWorkerResponse" });
-    case 3:
+  }
+}
+function __c42(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           namespace: S.String.pipe(T.Label()),
@@ -9120,7 +8836,34 @@ function __c21(j: number): any {
       ).annotate({
         identifier: "DescribeWorkerDeploymentRequest",
       });
-    case 4:
+    case 1:
+      return S.Array(__S(1411, __c44, 3));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.optional(S.String),
+          versionSummaries: S.optional(__S(1345, __c42, 1)),
+          createTime: S.optional(S.String),
+          routingConfig: S.optional(__S(1412, __c44, 4)),
+          lastModifierIdentity: S.optional(S.String),
+          managerIdentity: S.optional(S.String),
+          routingConfigUpdateState: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "WorkerDeploymentInfo" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          conflictToken: S.optional(S.String),
+          workerDeploymentInfo: S.optional(__S(1346, __c42, 2)),
+        }),
+      ).annotate({
+        identifier: "DescribeWorkerDeploymentResponse",
+      });
+  }
+}
+function __c43(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           status: S.optional(S.String),
@@ -9128,55 +8871,53 @@ function __c21(j: number): any {
           lastCheckedTime: S.optional(S.String),
         }),
       ).annotate({ identifier: "VersionDrainageInfo" });
-    case 5:
+  }
+}
+function __c44(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          taskQueueTypes: S.optional(__S(56, __c7, 0)),
+          taskQueueTypes: S.optional(__S(4224, __c132, 0)),
           providerType: S.optional(S.String),
         }),
       ).annotate({
         identifier: "ComputeConfigScalingGroupSummary",
       });
-    case 6:
-      return S.Record(S.String, __S(173, __c21, 5));
-    case 7:
+    case 1:
+      return S.Record(S.String, __S(1408, __c44, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          scalingGroups: S.optional(__S(174, __c21, 6)),
+          scalingGroups: S.optional(__S(1409, __c44, 1)),
         }),
       ).annotate({ identifier: "ComputeConfigSummary" });
-  }
-}
-function __c22(j: number): any {
-  switch (j) {
-    case 0:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           version: S.optional(S.String),
           status: S.optional(S.String),
-          deploymentVersion: S.optional(__S(38, __c4, 6)),
+          deploymentVersion: S.optional(__S(3360, __c105, 0)),
           createTime: S.optional(S.String),
           drainageStatus: S.optional(S.String),
-          drainageInfo: S.optional(__S(172, __c21, 4)),
+          drainageInfo: S.optional(__S(1376, __c43, 0)),
           currentSinceTime: S.optional(S.String),
           rampingSinceTime: S.optional(S.String),
           routingUpdateTime: S.optional(S.String),
           firstActivationTime: S.optional(S.String),
           lastCurrentTime: S.optional(S.String),
           lastDeactivationTime: S.optional(S.String),
-          computeConfig: S.optional(__S(175, __c21, 7)),
+          computeConfig: S.optional(__S(1410, __c44, 2)),
         }),
       ).annotate({
         identifier: "WorkerDeploymentInfoWorkerDeploymentVersionSummary",
       });
-    case 1:
-      return S.Array(__S(176, __c22, 0));
-    case 2:
+    case 4:
       return S.suspend(() =>
         S.Struct({
-          currentDeploymentVersion: S.optional(__S(38, __c4, 6)),
+          currentDeploymentVersion: S.optional(__S(3360, __c105, 0)),
           currentVersion: S.optional(S.String),
-          rampingDeploymentVersion: S.optional(__S(38, __c4, 6)),
+          rampingDeploymentVersion: S.optional(__S(3360, __c105, 0)),
           rampingVersion: S.optional(S.String),
           rampingVersionPercentage: S.optional(S.Number),
           currentVersionChangedTime: S.optional(S.String),
@@ -9185,28 +8926,11 @@ function __c22(j: number): any {
           revisionNumber: S.optional(S.String),
         }),
       ).annotate({ identifier: "RoutingConfig" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.optional(S.String),
-          versionSummaries: S.optional(__S(177, __c22, 1)),
-          createTime: S.optional(S.String),
-          routingConfig: S.optional(__S(178, __c22, 2)),
-          lastModifierIdentity: S.optional(S.String),
-          managerIdentity: S.optional(S.String),
-          routingConfigUpdateState: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "WorkerDeploymentInfo" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          conflictToken: S.optional(S.String),
-          workerDeploymentInfo: S.optional(__S(179, __c22, 3)),
-        }),
-      ).annotate({
-        identifier: "DescribeWorkerDeploymentResponse",
-      });
-    case 5:
+  }
+}
+function __c45(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           namespace: S.String.pipe(T.Label()),
@@ -9230,7 +8954,7 @@ function __c22(j: number): any {
       ).annotate({
         identifier: "DescribeWorkerDeploymentVersionRequest",
       });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
@@ -9239,24 +8963,14 @@ function __c22(j: number): any {
       ).annotate({
         identifier: "WorkerDeploymentVersionInfoVersionTaskQueueInfo",
       });
-    case 7:
-      return S.Array(__S(182, __c22, 6));
-  }
-}
-function __c23(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          entries: S.optional(__S(34, __c4, 2)),
-        }),
-      ).annotate({ identifier: "VersionMetadata" });
-    case 1:
+    case 2:
+      return S.Array(__S(1441, __c45, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
           version: S.optional(S.String),
           status: S.optional(S.String),
-          deploymentVersion: S.optional(__S(38, __c4, 6)),
+          deploymentVersion: S.optional(__S(3360, __c105, 0)),
           deploymentName: S.optional(S.String),
           createTime: S.optional(S.String),
           routingChangedTime: S.optional(S.String),
@@ -9266,40 +8980,54 @@ function __c23(j: number): any {
           lastCurrentTime: S.optional(S.String),
           lastDeactivationTime: S.optional(S.String),
           rampPercentage: S.optional(S.Number),
-          taskQueueInfos: S.optional(__S(183, __c22, 7)),
-          drainageInfo: S.optional(__S(172, __c21, 4)),
-          metadata: S.optional(__S(184, __c23, 0)),
-          computeConfig: S.optional(__S(61, __c7, 5)),
+          taskQueueInfos: S.optional(__S(1442, __c45, 2)),
+          drainageInfo: S.optional(__S(1376, __c43, 0)),
+          metadata: S.optional(__S(1472, __c46, 0)),
+          computeConfig: S.optional(__S(4257, __c133, 1)),
           lastModifierIdentity: S.optional(S.String),
         }),
       ).annotate({
         identifier: "WorkerDeploymentVersionInfo",
       });
-    case 2:
-      return S.Record(S.String, __S(144, __c18, 0));
-    case 3:
+    case 4:
+      return S.Record(S.String, __S(1152, __c36, 0));
+    case 5:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
           type: S.optional(S.String),
-          stats: S.optional(__S(144, __c18, 0)),
-          statsByPriorityKey: S.optional(__S(186, __c23, 2)),
+          stats: S.optional(__S(1152, __c36, 0)),
+          statsByPriorityKey: S.optional(__S(1444, __c45, 4)),
         }),
       ).annotate({
         identifier: "DescribeWorkerDeploymentVersionResponseVersionTaskQueue",
       });
-    case 4:
-      return S.Array(__S(187, __c23, 3));
-    case 5:
+    case 6:
+      return S.Array(__S(1445, __c45, 5));
+    case 7:
       return S.suspend(() =>
         S.Struct({
-          workerDeploymentVersionInfo: S.optional(__S(185, __c23, 1)),
-          versionTaskQueues: S.optional(__S(188, __c23, 4)),
+          workerDeploymentVersionInfo: S.optional(__S(1443, __c45, 3)),
+          versionTaskQueues: S.optional(__S(1446, __c45, 6)),
         }),
       ).annotate({
         identifier: "DescribeWorkerDeploymentVersionResponse",
       });
-    case 6:
+  }
+}
+function __c46(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          entries: S.optional(__S(2880, __c90, 0)),
+        }),
+      ).annotate({ identifier: "VersionMetadata" });
+  }
+}
+function __c47(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           namespace: S.String.pipe(T.Label()),
@@ -9316,19 +9044,200 @@ function __c23(j: number): any {
       ).annotate({
         identifier: "DescribeWorkflowExecutionRequest",
       });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          taskQueue: S.optional(__S(31, __c3, 7)),
+          taskQueue: S.optional(__S(3232, __c101, 0)),
           workflowExecutionTimeout: S.optional(S.String),
           workflowRunTimeout: S.optional(S.String),
           defaultWorkflowTaskTimeout: S.optional(S.String),
-          userMetadata: S.optional(__S(37, __c4, 5)),
+          userMetadata: S.optional(__S(3008, __c94, 0)),
         }),
       ).annotate({ identifier: "WorkflowExecutionConfig" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          identity: S.optional(S.String),
+          reason: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "PauseInfoManual" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          ruleId: S.optional(S.String),
+          identity: S.optional(S.String),
+          reason: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "PauseInfoRule" });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          pauseTime: S.optional(S.String),
+          manual: S.optional(__S(1506, __c47, 2)),
+          rule: S.optional(__S(1507, __c47, 3)),
+        }),
+      ).annotate({
+        identifier: "PendingActivityInfoPauseInfo",
+      });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          activityId: S.optional(S.String),
+          activityType: S.optional(__S(2944, __c92, 0)),
+          state: S.optional(S.String),
+          heartbeatDetails: S.optional(__S(2976, __c93, 0)),
+          lastHeartbeatTime: S.optional(S.String),
+          lastStartedTime: S.optional(S.String),
+          attempt: S.optional(S.Number),
+          maximumAttempts: S.optional(S.Number),
+          scheduledTime: S.optional(S.String),
+          expirationTime: S.optional(S.String),
+          lastFailure: S.optional(__S(554, __c17, 10)),
+          lastWorkerIdentity: S.optional(S.String),
+          lastIndependentlyAssignedBuildId: S.optional(S.String),
+          lastWorkerVersionStamp: S.optional(__S(1536, __c48, 0)),
+          currentRetryInterval: S.optional(S.String),
+          lastAttemptCompleteTime: S.optional(S.String),
+          nextAttemptScheduleTime: S.optional(S.String),
+          paused: S.optional(S.Boolean),
+          lastDeployment: S.optional(__S(3168, __c99, 0)),
+          lastWorkerDeploymentVersion: S.optional(S.String),
+          lastDeploymentVersion: S.optional(__S(3360, __c105, 0)),
+          priority: S.optional(__S(3104, __c97, 0)),
+          pauseInfo: S.optional(__S(1508, __c47, 4)),
+          activityOptions: S.optional(__S(1632, __c51, 0)),
+        }),
+      ).annotate({ identifier: "PendingActivityInfo" });
+    case 6:
+      return S.Array(__S(1509, __c47, 5));
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          workflowId: S.optional(S.String),
+          runId: S.optional(S.String),
+          workflowTypeName: S.optional(S.String),
+          initiatedId: S.optional(S.String),
+          parentClosePolicy: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "PendingChildExecutionInfo",
+      });
+    case 8:
+      return S.Array(__S(1511, __c47, 7));
+    case 9:
+      return S.suspend(() =>
+        S.Struct({
+          state: S.optional(S.String),
+          scheduledTime: S.optional(S.String),
+          originalScheduledTime: S.optional(S.String),
+          startedTime: S.optional(S.String),
+          attempt: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "PendingWorkflowTaskInfo" });
+    case 10:
+      return S.suspend(() =>
+        S.Struct({
+          requestedTime: S.optional(S.String),
+          state: S.optional(S.String),
+          attempt: S.optional(S.Number),
+          lastAttemptCompleteTime: S.optional(S.String),
+          lastAttemptFailure: S.optional(__S(554, __c17, 10)),
+          nextAttemptScheduleTime: S.optional(S.String),
+          blockedReason: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "NexusOperationCancellationInfo",
+      });
+    case 11:
+      return S.suspend(() =>
+        S.Struct({
+          endpoint: S.optional(S.String),
+          service: S.optional(S.String),
+          operation: S.optional(S.String),
+          operationId: S.optional(S.String),
+          scheduleToCloseTimeout: S.optional(S.String),
+          scheduledTime: S.optional(S.String),
+          state: S.optional(S.String),
+          attempt: S.optional(S.Number),
+          lastAttemptCompleteTime: S.optional(S.String),
+          lastAttemptFailure: S.optional(__S(554, __c17, 10)),
+          nextAttemptScheduleTime: S.optional(S.String),
+          cancellationInfo: S.optional(__S(1514, __c47, 10)),
+          scheduledEventId: S.optional(S.String),
+          blockedReason: S.optional(S.String),
+          operationToken: S.optional(S.String),
+          scheduleToStartTimeout: S.optional(S.String),
+          startToCloseTimeout: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "PendingNexusOperationInfo",
+      });
+    case 12:
+      return S.Array(__S(1515, __c47, 11));
+    case 13:
+      return S.suspend(() =>
+        S.Struct({
+          eventType: S.optional(S.String),
+          eventId: S.optional(S.String),
+          buffered: S.optional(S.Boolean),
+        }),
+      ).annotate({ identifier: "RequestIdInfo" });
+    case 14:
+      return S.Record(S.String, __S(1517, __c47, 13));
+    case 15:
+      return S.suspend(() =>
+        S.Struct({
+          identity: S.optional(S.String),
+          pausedTime: S.optional(S.String),
+          reason: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "WorkflowExecutionPauseInfo",
+      });
+    case 16:
+      return S.suspend(() =>
+        S.Struct({
+          executionExpirationTime: S.optional(S.String),
+          runExpirationTime: S.optional(S.String),
+          cancelRequested: S.optional(S.Boolean),
+          lastResetTime: S.optional(S.String),
+          originalStartTime: S.optional(S.String),
+          resetRunId: S.optional(S.String),
+          requestIdInfos: S.optional(__S(1518, __c47, 14)),
+          pauseInfo: S.optional(__S(1519, __c47, 15)),
+        }),
+      ).annotate({
+        identifier: "WorkflowExecutionExtendedInfo",
+      });
+    case 17:
+      return S.suspend(() =>
+        S.Struct({
+          executionConfig: S.optional(__S(1505, __c47, 1)),
+          workflowExecutionInfo: S.optional(__S(1603, __c50, 3)),
+          pendingActivities: S.optional(__S(1510, __c47, 6)),
+          pendingChildren: S.optional(__S(1512, __c47, 8)),
+          pendingWorkflowTask: S.optional(__S(1513, __c47, 9)),
+          callbacks: S.optional(__S(641, __c20, 1)),
+          pendingNexusOperations: S.optional(__S(1516, __c47, 12)),
+          workflowExtendedInfo: S.optional(__S(1520, __c47, 16)),
+        }),
+      ).annotate({
+        identifier: "DescribeWorkflowExecutionResponse",
+      });
   }
 }
-function __c24(j: number): any {
+function __c48(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          buildId: S.optional(S.String),
+          useVersioning: S.optional(S.Boolean),
+        }),
+      ).annotate({ identifier: "WorkerVersionStamp" });
+  }
+}
+function __c49(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -9343,277 +9252,100 @@ function __c24(j: number): any {
         }),
       ).annotate({ identifier: "ResetPointInfo" });
     case 1:
-      return S.Array(__S(192, __c24, 0));
+      return S.Array(__S(1568, __c49, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          points: S.optional(__S(193, __c24, 1)),
+          points: S.optional(__S(1569, __c49, 1)),
         }),
       ).annotate({ identifier: "ResetPoints" });
-    case 3:
+  }
+}
+function __c50(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          buildId: S.optional(S.String),
-          useVersioning: S.optional(S.Boolean),
-        }),
-      ).annotate({ identifier: "WorkerVersionStamp" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          deployment: S.optional(__S(40, __c5, 0)),
+          deployment: S.optional(__S(3168, __c99, 0)),
         }),
       ).annotate({ identifier: "DeploymentTransition" });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           version: S.optional(S.String),
-          deploymentVersion: S.optional(__S(38, __c4, 6)),
+          deploymentVersion: S.optional(__S(3360, __c105, 0)),
         }),
       ).annotate({
         identifier: "DeploymentVersionTransition",
       });
-    case 6:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           behavior: S.optional(S.String),
-          deployment: S.optional(__S(40, __c5, 0)),
+          deployment: S.optional(__S(3168, __c99, 0)),
           version: S.optional(S.String),
-          deploymentVersion: S.optional(__S(38, __c4, 6)),
-          versioningOverride: S.optional(__S(41, __c5, 1)),
-          deploymentTransition: S.optional(__S(196, __c24, 4)),
-          versionTransition: S.optional(__S(197, __c24, 5)),
+          deploymentVersion: S.optional(__S(3360, __c105, 0)),
+          versioningOverride: S.optional(__S(3201, __c100, 1)),
+          deploymentTransition: S.optional(__S(1600, __c50, 0)),
+          versionTransition: S.optional(__S(1601, __c50, 1)),
           revisionNumber: S.optional(S.String),
           continueAsNewInitialVersioningBehavior: S.optional(S.String),
         }),
       ).annotate({
         identifier: "WorkflowExecutionVersioningInfo",
       });
-    case 7:
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          execution: S.optional(__S(85, __c10, 5)),
-          type: S.optional(__S(30, __c3, 6)),
+          execution: S.optional(__S(512, __c16, 0)),
+          type: S.optional(__S(2944, __c92, 0)),
           startTime: S.optional(S.String),
           closeTime: S.optional(S.String),
           status: S.optional(S.String),
           historyLength: S.optional(S.String),
           parentNamespaceId: S.optional(S.String),
-          parentExecution: S.optional(__S(85, __c10, 5)),
+          parentExecution: S.optional(__S(512, __c16, 0)),
           executionTime: S.optional(S.String),
-          memo: S.optional(__S(35, __c4, 3)),
-          searchAttributes: S.optional(__S(36, __c4, 4)),
-          autoResetPoints: S.optional(__S(194, __c24, 2)),
+          memo: S.optional(__S(3072, __c96, 0)),
+          searchAttributes: S.optional(__S(2912, __c91, 0)),
+          autoResetPoints: S.optional(__S(1570, __c49, 2)),
           taskQueue: S.optional(S.String),
           stateTransitionCount: S.optional(S.String),
           historySizeBytes: S.optional(S.String),
-          mostRecentWorkerVersionStamp: S.optional(__S(195, __c24, 3)),
+          mostRecentWorkerVersionStamp: S.optional(__S(1536, __c48, 0)),
           executionDuration: S.optional(S.String),
-          rootExecution: S.optional(__S(85, __c10, 5)),
+          rootExecution: S.optional(__S(512, __c16, 0)),
           assignedBuildId: S.optional(S.String),
           inheritedBuildId: S.optional(S.String),
           firstRunId: S.optional(S.String),
-          versioningInfo: S.optional(__S(198, __c24, 6)),
+          versioningInfo: S.optional(__S(1602, __c50, 2)),
           workerDeploymentName: S.optional(S.String),
-          priority: S.optional(__S(42, __c5, 2)),
+          priority: S.optional(__S(3104, __c97, 0)),
           externalPayloadSizeBytes: S.optional(S.String),
           externalPayloadCount: S.optional(S.String),
         }),
       ).annotate({ identifier: "WorkflowExecutionInfo" });
   }
 }
-function __c25(j: number): any {
+function __c51(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          identity: S.optional(S.String),
-          reason: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "PauseInfoManual" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          ruleId: S.optional(S.String),
-          identity: S.optional(S.String),
-          reason: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "PauseInfoRule" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          pauseTime: S.optional(S.String),
-          manual: S.optional(__S(200, __c25, 0)),
-          rule: S.optional(__S(201, __c25, 1)),
-        }),
-      ).annotate({
-        identifier: "PendingActivityInfoPauseInfo",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          taskQueue: S.optional(__S(31, __c3, 7)),
+          taskQueue: S.optional(__S(3232, __c101, 0)),
           scheduleToCloseTimeout: S.optional(S.String),
           scheduleToStartTimeout: S.optional(S.String),
           startToCloseTimeout: S.optional(S.String),
           heartbeatTimeout: S.optional(S.String),
-          retryPolicy: S.optional(__S(33, __c4, 1)),
-          priority: S.optional(__S(42, __c5, 2)),
+          retryPolicy: S.optional(__S(3136, __c98, 0)),
+          priority: S.optional(__S(3104, __c97, 0)),
         }),
       ).annotate({ identifier: "ActivityOptions" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          activityId: S.optional(S.String),
-          activityType: S.optional(__S(30, __c3, 6)),
-          state: S.optional(S.String),
-          heartbeatDetails: S.optional(__S(32, __c4, 0)),
-          lastHeartbeatTime: S.optional(S.String),
-          lastStartedTime: S.optional(S.String),
-          attempt: S.optional(S.Number),
-          maximumAttempts: S.optional(S.Number),
-          scheduledTime: S.optional(S.String),
-          expirationTime: S.optional(S.String),
-          lastFailure: S.optional(__S(89, __c11, 1)),
-          lastWorkerIdentity: S.optional(S.String),
-          lastIndependentlyAssignedBuildId: S.optional(S.String),
-          lastWorkerVersionStamp: S.optional(__S(195, __c24, 3)),
-          currentRetryInterval: S.optional(S.String),
-          lastAttemptCompleteTime: S.optional(S.String),
-          nextAttemptScheduleTime: S.optional(S.String),
-          paused: S.optional(S.Boolean),
-          lastDeployment: S.optional(__S(40, __c5, 0)),
-          lastWorkerDeploymentVersion: S.optional(S.String),
-          lastDeploymentVersion: S.optional(__S(38, __c4, 6)),
-          priority: S.optional(__S(42, __c5, 2)),
-          pauseInfo: S.optional(__S(202, __c25, 2)),
-          activityOptions: S.optional(__S(203, __c25, 3)),
-        }),
-      ).annotate({ identifier: "PendingActivityInfo" });
-    case 5:
-      return S.Array(__S(204, __c25, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          workflowId: S.optional(S.String),
-          runId: S.optional(S.String),
-          workflowTypeName: S.optional(S.String),
-          initiatedId: S.optional(S.String),
-          parentClosePolicy: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "PendingChildExecutionInfo",
-      });
-    case 7:
-      return S.Array(__S(206, __c25, 6));
   }
 }
-function __c26(j: number): any {
+function __c52(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() =>
-        S.Struct({
-          state: S.optional(S.String),
-          scheduledTime: S.optional(S.String),
-          originalScheduledTime: S.optional(S.String),
-          startedTime: S.optional(S.String),
-          attempt: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "PendingWorkflowTaskInfo" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          requestedTime: S.optional(S.String),
-          state: S.optional(S.String),
-          attempt: S.optional(S.Number),
-          lastAttemptCompleteTime: S.optional(S.String),
-          lastAttemptFailure: S.optional(__S(89, __c11, 1)),
-          nextAttemptScheduleTime: S.optional(S.String),
-          blockedReason: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "NexusOperationCancellationInfo",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          endpoint: S.optional(S.String),
-          service: S.optional(S.String),
-          operation: S.optional(S.String),
-          operationId: S.optional(S.String),
-          scheduleToCloseTimeout: S.optional(S.String),
-          scheduledTime: S.optional(S.String),
-          state: S.optional(S.String),
-          attempt: S.optional(S.Number),
-          lastAttemptCompleteTime: S.optional(S.String),
-          lastAttemptFailure: S.optional(__S(89, __c11, 1)),
-          nextAttemptScheduleTime: S.optional(S.String),
-          cancellationInfo: S.optional(__S(209, __c26, 1)),
-          scheduledEventId: S.optional(S.String),
-          blockedReason: S.optional(S.String),
-          operationToken: S.optional(S.String),
-          scheduleToStartTimeout: S.optional(S.String),
-          startToCloseTimeout: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "PendingNexusOperationInfo",
-      });
-    case 3:
-      return S.Array(__S(210, __c26, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          eventType: S.optional(S.String),
-          eventId: S.optional(S.String),
-          buffered: S.optional(S.Boolean),
-        }),
-      ).annotate({ identifier: "RequestIdInfo" });
-    case 5:
-      return S.Record(S.String, __S(212, __c26, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          identity: S.optional(S.String),
-          pausedTime: S.optional(S.String),
-          reason: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "WorkflowExecutionPauseInfo",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          executionExpirationTime: S.optional(S.String),
-          runExpirationTime: S.optional(S.String),
-          cancelRequested: S.optional(S.Boolean),
-          lastResetTime: S.optional(S.String),
-          originalStartTime: S.optional(S.String),
-          resetRunId: S.optional(S.String),
-          requestIdInfos: S.optional(__S(213, __c26, 5)),
-          pauseInfo: S.optional(__S(214, __c26, 6)),
-        }),
-      ).annotate({
-        identifier: "WorkflowExecutionExtendedInfo",
-      });
-  }
-}
-function __c27(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          executionConfig: S.optional(__S(191, __c23, 7)),
-          workflowExecutionInfo: S.optional(__S(199, __c24, 7)),
-          pendingActivities: S.optional(__S(205, __c25, 5)),
-          pendingChildren: S.optional(__S(207, __c25, 7)),
-          pendingWorkflowTask: S.optional(__S(208, __c26, 0)),
-          callbacks: S.optional(__S(106, __c13, 2)),
-          pendingNexusOperations: S.optional(__S(211, __c26, 3)),
-          workflowExtendedInfo: S.optional(__S(215, __c26, 7)),
-        }),
-      ).annotate({
-        identifier: "DescribeWorkflowExecutionResponse",
-      });
-    case 1:
       return S.suspend(() =>
         S.Struct({
           namespace: S.String.pipe(T.Label()),
@@ -9628,27 +9360,25 @@ function __c27(j: number): any {
       ).annotate({
         identifier: "DescribeWorkflowRuleRequest",
       });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          rule: S.optional(__S(69, __c8, 5)),
+          rule: S.optional(__S(4736, __c148, 0)),
         }),
       ).annotate({
         identifier: "DescribeWorkflowRuleResponse",
       });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          workerInstanceKey: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "WorkerSelector" });
-    case 4:
+  }
+}
+function __c53(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           namespace: S.String.pipe(T.Label()),
           identity: S.optional(S.String),
           reason: S.optional(S.String),
-          selector: S.optional(__S(219, __c27, 3)),
+          selector: S.optional(__S(1728, __c54, 0)),
           resourceId: S.optional(S.String),
         }).pipe(
           T.Http({
@@ -9658,7 +9388,17 @@ function __c27(j: number): any {
           }),
         ),
       ).annotate({ identifier: "FetchWorkerConfigRequest" });
-    case 5:
+  }
+}
+function __c54(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          workerInstanceKey: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "WorkerSelector" });
+    case 1:
       return S.suspend(() =>
         S.Struct({
           maxPollers: S.optional(S.Number),
@@ -9666,7 +9406,7 @@ function __c27(j: number): any {
       ).annotate({
         identifier: "WorkerConfigSimplePollerBehavior",
       });
-    case 6:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           minPollers: S.optional(S.Number),
@@ -9676,31 +9416,31 @@ function __c27(j: number): any {
       ).annotate({
         identifier: "WorkerConfigAutoscalingPollerBehavior",
       });
-    case 7:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           workflowCacheSize: S.optional(S.Number),
-          simplePollerBehavior: S.optional(__S(221, __c27, 5)),
-          autoscalingPollerBehavior: S.optional(__S(222, __c27, 6)),
+          simplePollerBehavior: S.optional(__S(1729, __c54, 1)),
+          autoscalingPollerBehavior: S.optional(__S(1730, __c54, 2)),
         }),
       ).annotate({ identifier: "WorkerConfig" });
-  }
-}
-function __c28(j: number): any {
-  switch (j) {
-    case 0:
+    case 4:
       return S.suspend(() =>
         S.Struct({
-          workerConfig: S.optional(__S(223, __c27, 7)),
+          workerConfig: S.optional(__S(1731, __c54, 3)),
         }),
       ).annotate({
         identifier: "FetchWorkerConfigResponse",
       });
-    case 1:
+  }
+}
+function __c55(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({}).pipe(T.Http({ method: "GET", uri: "/api/v1/cluster-info", code: 200 })),
       ).annotate({ identifier: "GetClusterInfoRequest" });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           version: S.optional(S.String),
@@ -9708,32 +9448,32 @@ function __c28(j: number): any {
           notes: S.optional(S.String),
         }),
       ).annotate({ identifier: "ReleaseInfo" });
-    case 3:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           message: S.optional(S.String),
           severity: S.optional(S.String),
         }),
       ).annotate({ identifier: "Alert" });
+    case 3:
+      return S.Array(__S(1762, __c55, 2));
     case 4:
-      return S.Array(__S(227, __c28, 3));
-    case 5:
       return S.suspend(() =>
         S.Struct({
-          current: S.optional(__S(226, __c28, 2)),
-          recommended: S.optional(__S(226, __c28, 2)),
+          current: S.optional(__S(1761, __c55, 1)),
+          recommended: S.optional(__S(1761, __c55, 1)),
           instructions: S.optional(S.String),
-          alerts: S.optional(__S(228, __c28, 4)),
+          alerts: S.optional(__S(1763, __c55, 3)),
           lastUpdateTime: S.optional(S.String),
         }),
       ).annotate({ identifier: "VersionInfo" });
-    case 6:
+    case 5:
       return S.suspend(() =>
         S.Struct({
-          supportedClients: S.optional(__S(100, __c12, 4)),
+          supportedClients: S.optional(__S(480, __c15, 0)),
           serverVersion: S.optional(S.String),
           clusterId: S.optional(S.String),
-          versionInfo: S.optional(__S(229, __c28, 5)),
+          versionInfo: S.optional(__S(1764, __c55, 4)),
           clusterName: S.optional(S.String),
           historyShardCount: S.optional(S.Number),
           persistenceStore: S.optional(S.String),
@@ -9742,7 +9482,11 @@ function __c28(j: number): any {
           failoverVersionIncrement: S.optional(S.String),
         }),
       ).annotate({ identifier: "GetClusterInfoResponse" });
-    case 7:
+  }
+}
+function __c56(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           namespace: S.String.pipe(T.Label()),
@@ -9757,19 +9501,19 @@ function __c28(j: number): any {
       ).annotate({
         identifier: "GetCurrentDeploymentRequest",
       });
-  }
-}
-function __c29(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          currentDeploymentInfo: S.optional(__S(113, __c14, 1)),
+          currentDeploymentInfo: S.optional(__S(802, __c25, 2)),
         }),
       ).annotate({
         identifier: "GetCurrentDeploymentResponse",
       });
-    case 1:
+  }
+}
+function __c57(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           namespace: S.String.pipe(T.Label()),
@@ -9787,33 +9531,60 @@ function __c29(j: number): any {
       ).annotate({
         identifier: "GetDeploymentReachabilityRequest",
       });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          deploymentInfo: S.optional(__S(113, __c14, 1)),
+          deploymentInfo: S.optional(__S(802, __c25, 2)),
           reachability: S.optional(S.String),
           lastUpdateTime: S.optional(S.String),
         }),
       ).annotate({
         identifier: "GetDeploymentReachabilityResponse",
       });
-    case 3:
+  }
+}
+function __c58(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          namespace: S.String.pipe(T.Label()),
+          query: S.optional(S.String.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/api/v1/namespaces/{namespace}/workflow-count",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "CountWorkflowExecutionsRequest",
+      });
+  }
+}
+function __c59(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.String.pipe(T.Label()),
         }).pipe(T.Http({ method: "GET", uri: "/api/v1/nexus/endpoints/{id}", code: 200 })),
       ).annotate({ identifier: "GetNexusEndpointRequest" });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          endpoint: S.optional(__S(18, __c2, 2)),
+          endpoint: S.optional(__S(2468, __c77, 4)),
         }),
       ).annotate({ identifier: "GetNexusEndpointResponse" });
-    case 5:
+  }
+}
+function __c60(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({}).pipe(T.Http({ method: "GET", uri: "/api/v1/system-info", code: 200 })),
       ).annotate({ identifier: "GetSystemInfoRequest" });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           signalAndQueryHeader: S.optional(S.Boolean),
@@ -9832,16 +9603,16 @@ function __c29(j: number): any {
       ).annotate({
         identifier: "GetSystemInfoResponseCapabilities",
       });
-    case 7:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           serverVersion: S.optional(S.String),
-          capabilities: S.optional(__S(238, __c29, 6)),
+          capabilities: S.optional(__S(1921, __c60, 1)),
         }),
       ).annotate({ identifier: "GetSystemInfoResponse" });
   }
 }
-function __c30(j: number): any {
+function __c61(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -9862,25 +9633,29 @@ function __c30(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          buildIds: S.optional(__S(24, __c3, 0)),
+          buildIds: S.optional(__S(3040, __c95, 0)),
         }),
       ).annotate({ identifier: "CompatibleVersionSet" });
     case 2:
-      return S.Array(__S(241, __c30, 1));
+      return S.Array(__S(1953, __c61, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          majorVersionSets: S.optional(__S(242, __c30, 2)),
+          majorVersionSets: S.optional(__S(1954, __c61, 2)),
         }),
       ).annotate({
         identifier: "GetWorkerBuildIdCompatibilityResponse",
       });
-    case 4:
+  }
+}
+function __c62(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           namespace: S.String.pipe(T.Label()),
-          buildIds: S.optional(__S(24, __c3, 0).pipe(T.Query())),
-          taskQueues: S.optional(__S(24, __c3, 0).pipe(T.Query())),
+          buildIds: S.optional(__S(3040, __c95, 0).pipe(T.Query())),
+          taskQueues: S.optional(__S(3040, __c95, 0).pipe(T.Query())),
           reachability: S.optional(S.String.pipe(T.Query())),
         }).pipe(
           T.Http({
@@ -9892,37 +9667,37 @@ function __c30(j: number): any {
       ).annotate({
         identifier: "GetWorkerTaskReachabilityRequest",
       });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          taskQueue: S.optional(S.String),
-          reachability: S.optional(__S(56, __c7, 0)),
-        }),
-      ).annotate({ identifier: "TaskQueueReachability" });
-    case 6:
-      return S.Array(__S(245, __c30, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          buildId: S.optional(S.String),
-          taskQueueReachability: S.optional(__S(246, __c30, 6)),
-        }),
-      ).annotate({ identifier: "BuildIdReachability" });
-  }
-}
-function __c31(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(247, __c30, 7));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          buildIdReachability: S.optional(__S(248, __c31, 0)),
+          taskQueue: S.optional(S.String),
+          reachability: S.optional(__S(4224, __c132, 0)),
+        }),
+      ).annotate({ identifier: "TaskQueueReachability" });
+    case 2:
+      return S.Array(__S(1985, __c62, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          buildId: S.optional(S.String),
+          taskQueueReachability: S.optional(__S(1986, __c62, 2)),
+        }),
+      ).annotate({ identifier: "BuildIdReachability" });
+    case 4:
+      return S.Array(__S(1987, __c62, 3));
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          buildIdReachability: S.optional(__S(1988, __c62, 4)),
         }),
       ).annotate({
         identifier: "GetWorkerTaskReachabilityResponse",
       });
-    case 2:
+  }
+}
+function __c63(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           namespace: S.String.pipe(T.Label()),
@@ -9937,31 +9712,31 @@ function __c31(j: number): any {
       ).annotate({
         identifier: "GetWorkerVersioningRulesRequest",
       });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           rampPercentage: S.optional(S.Number),
         }),
       ).annotate({ identifier: "RampByPercentage" });
-    case 4:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           targetBuildId: S.optional(S.String),
-          percentageRamp: S.optional(__S(251, __c31, 3)),
+          percentageRamp: S.optional(__S(2017, __c63, 1)),
         }),
       ).annotate({ identifier: "BuildIdAssignmentRule" });
-    case 5:
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          rule: S.optional(__S(252, __c31, 4)),
+          rule: S.optional(__S(2018, __c63, 2)),
           createTime: S.optional(S.String),
         }),
       ).annotate({
         identifier: "TimestampedBuildIdAssignmentRule",
       });
-    case 6:
-      return S.Array(__S(253, __c31, 5));
-    case 7:
+    case 4:
+      return S.Array(__S(2019, __c63, 3));
+    case 5:
       return S.suspend(() =>
         S.Struct({
           sourceBuildId: S.optional(S.String),
@@ -9970,32 +9745,32 @@ function __c31(j: number): any {
       ).annotate({
         identifier: "CompatibleBuildIdRedirectRule",
       });
-  }
-}
-function __c32(j: number): any {
-  switch (j) {
-    case 0:
+    case 6:
       return S.suspend(() =>
         S.Struct({
-          rule: S.optional(__S(255, __c31, 7)),
+          rule: S.optional(__S(2021, __c63, 5)),
           createTime: S.optional(S.String),
         }),
       ).annotate({
         identifier: "TimestampedCompatibleBuildIdRedirectRule",
       });
-    case 1:
-      return S.Array(__S(256, __c32, 0));
-    case 2:
+    case 7:
+      return S.Array(__S(2022, __c63, 6));
+    case 8:
       return S.suspend(() =>
         S.Struct({
-          assignmentRules: S.optional(__S(254, __c31, 6)),
-          compatibleRedirectRules: S.optional(__S(257, __c32, 1)),
+          assignmentRules: S.optional(__S(2020, __c63, 4)),
+          compatibleRedirectRules: S.optional(__S(2023, __c63, 7)),
           conflictToken: S.optional(S.String),
         }),
       ).annotate({
         identifier: "GetWorkerVersioningRulesResponse",
       });
-    case 3:
+  }
+}
+function __c64(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           namespace: S.String.pipe(T.Label()),
@@ -10017,35 +9792,29 @@ function __c32(j: number): any {
       ).annotate({
         identifier: "GetWorkflowExecutionHistoryRequest",
       });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          type: S.optional(S.String),
-          name: S.optional(S.String),
+          encodingType: S.optional(S.String),
+          data: S.optional(S.String),
         }),
-      ).annotate({ identifier: "Principal" });
-    case 5:
-      return S.Array(__S(104, __c13, 0));
-    case 6:
+      ).annotate({ identifier: "DataBlob" });
+    case 2:
+      return S.Array(__S(2049, __c64, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          sourceDeploymentVersion: S.optional(__S(38, __c4, 6)),
-          sourceDeploymentRevisionNumber: S.optional(S.String),
-          continueAsNewInitialVersioningBehavior: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "InheritedAutoUpgradeInfo" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          deploymentVersion: S.optional(__S(38, __c4, 6)),
-          revisionNumber: S.optional(S.String),
+          history: S.optional(__S(2211, __c69, 3)),
+          rawHistory: S.optional(__S(2050, __c64, 2)),
+          nextPageToken: S.optional(S.String),
+          archived: S.optional(S.Boolean),
         }),
       ).annotate({
-        identifier: "DeclinedTargetVersionUpgrade",
+        identifier: "GetWorkflowExecutionHistoryResponse",
       });
   }
 }
-function __c33(j: number): any {
+function __c65(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -10055,68 +9824,102 @@ function __c33(j: number): any {
           maxElapsedDuration: S.optional(S.String),
         }),
       ).annotate({ identifier: "TimeSkippingConfig" });
+  }
+}
+function __c66(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(675, __c21, 3));
+  }
+}
+function __c67(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          type: S.optional(S.String),
+          name: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Principal" });
     case 1:
       return S.suspend(() =>
         S.Struct({
-          workflowType: S.optional(__S(30, __c3, 6)),
+          sourceDeploymentVersion: S.optional(__S(3360, __c105, 0)),
+          sourceDeploymentRevisionNumber: S.optional(S.String),
+          continueAsNewInitialVersioningBehavior: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "InheritedAutoUpgradeInfo" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          deploymentVersion: S.optional(__S(3360, __c105, 0)),
+          revisionNumber: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "DeclinedTargetVersionUpgrade",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          workflowType: S.optional(__S(2944, __c92, 0)),
           parentWorkflowNamespace: S.optional(S.String),
           parentWorkflowNamespaceId: S.optional(S.String),
-          parentWorkflowExecution: S.optional(__S(85, __c10, 5)),
+          parentWorkflowExecution: S.optional(__S(512, __c16, 0)),
           parentInitiatedEventId: S.optional(S.String),
-          taskQueue: S.optional(__S(31, __c3, 7)),
-          input: S.optional(__S(32, __c4, 0)),
+          taskQueue: S.optional(__S(3232, __c101, 0)),
+          input: S.optional(__S(2976, __c93, 0)),
           workflowExecutionTimeout: S.optional(S.String),
           workflowRunTimeout: S.optional(S.String),
           workflowTaskTimeout: S.optional(S.String),
           continuedExecutionRunId: S.optional(S.String),
           initiator: S.optional(S.String),
-          continuedFailure: S.optional(__S(89, __c11, 1)),
-          lastCompletionResult: S.optional(__S(32, __c4, 0)),
+          continuedFailure: S.optional(__S(554, __c17, 10)),
+          lastCompletionResult: S.optional(__S(2976, __c93, 0)),
           originalExecutionRunId: S.optional(S.String),
           identity: S.optional(S.String),
           firstExecutionRunId: S.optional(S.String),
-          retryPolicy: S.optional(__S(33, __c4, 1)),
+          retryPolicy: S.optional(__S(3136, __c98, 0)),
           attempt: S.optional(S.Number),
           workflowExecutionExpirationTime: S.optional(S.String),
           cronSchedule: S.optional(S.String),
           firstWorkflowTaskBackoff: S.optional(S.String),
-          memo: S.optional(__S(35, __c4, 3)),
-          searchAttributes: S.optional(__S(36, __c4, 4)),
-          prevAutoResetPoints: S.optional(__S(194, __c24, 2)),
-          header: S.optional(__S(35, __c4, 3)),
+          memo: S.optional(__S(3072, __c96, 0)),
+          searchAttributes: S.optional(__S(2912, __c91, 0)),
+          prevAutoResetPoints: S.optional(__S(1570, __c49, 2)),
+          header: S.optional(__S(3072, __c96, 0)),
           parentInitiatedEventVersion: S.optional(S.String),
           workflowId: S.optional(S.String),
-          sourceVersionStamp: S.optional(__S(195, __c24, 3)),
-          completionCallbacks: S.optional(__S(261, __c32, 5)),
-          rootWorkflowExecution: S.optional(__S(85, __c10, 5)),
+          sourceVersionStamp: S.optional(__S(1536, __c48, 0)),
+          completionCallbacks: S.optional(__S(2112, __c66, 0)),
+          rootWorkflowExecution: S.optional(__S(512, __c16, 0)),
           inheritedBuildId: S.optional(S.String),
-          versioningOverride: S.optional(__S(41, __c5, 1)),
+          versioningOverride: S.optional(__S(3201, __c100, 1)),
           parentPinnedWorkerDeploymentVersion: S.optional(S.String),
-          priority: S.optional(__S(42, __c5, 2)),
-          inheritedPinnedVersion: S.optional(__S(38, __c4, 6)),
-          inheritedAutoUpgradeInfo: S.optional(__S(262, __c32, 6)),
+          priority: S.optional(__S(3104, __c97, 0)),
+          inheritedPinnedVersion: S.optional(__S(3360, __c105, 0)),
+          inheritedAutoUpgradeInfo: S.optional(__S(2145, __c67, 1)),
           eagerExecutionAccepted: S.optional(S.Boolean),
-          declinedTargetVersionUpgrade: S.optional(__S(263, __c32, 7)),
-          timeSkippingConfig: S.optional(__S(264, __c33, 0)),
+          declinedTargetVersionUpgrade: S.optional(__S(2146, __c67, 2)),
+          timeSkippingConfig: S.optional(__S(2080, __c65, 0)),
           initialSkippedDuration: S.optional(S.String),
         }),
       ).annotate({
         identifier: "WorkflowExecutionStartedEventAttributes",
       });
-    case 2:
+    case 4:
       return S.suspend(() =>
         S.Struct({
-          result: S.optional(__S(32, __c4, 0)),
+          result: S.optional(__S(2976, __c93, 0)),
           workflowTaskCompletedEventId: S.optional(S.String),
           newExecutionRunId: S.optional(S.String),
         }),
       ).annotate({
         identifier: "WorkflowExecutionCompletedEventAttributes",
       });
-    case 3:
+    case 5:
       return S.suspend(() =>
         S.Struct({
-          failure: S.optional(__S(89, __c11, 1)),
+          failure: S.optional(__S(554, __c17, 10)),
           retryState: S.optional(S.String),
           workflowTaskCompletedEventId: S.optional(S.String),
           newExecutionRunId: S.optional(S.String),
@@ -10124,7 +9927,7 @@ function __c33(j: number): any {
       ).annotate({
         identifier: "WorkflowExecutionFailedEventAttributes",
       });
-    case 4:
+    case 6:
       return S.suspend(() =>
         S.Struct({
           retryState: S.optional(S.String),
@@ -10133,77 +9936,73 @@ function __c33(j: number): any {
       ).annotate({
         identifier: "WorkflowExecutionTimedOutEventAttributes",
       });
-    case 5:
+    case 7:
       return S.suspend(() =>
         S.Struct({
-          taskQueue: S.optional(__S(31, __c3, 7)),
+          taskQueue: S.optional(__S(3232, __c101, 0)),
           startToCloseTimeout: S.optional(S.String),
           attempt: S.optional(S.Number),
         }),
       ).annotate({
         identifier: "WorkflowTaskScheduledEventAttributes",
       });
-    case 6:
+    case 8:
       return S.Array(S.String);
-    case 7:
+    case 9:
       return S.suspend(() =>
         S.Struct({
           scheduledEventId: S.optional(S.String),
           identity: S.optional(S.String),
           requestId: S.optional(S.String),
           suggestContinueAsNew: S.optional(S.Boolean),
-          suggestContinueAsNewReasons: S.optional(__S(270, __c33, 6)),
+          suggestContinueAsNewReasons: S.optional(__S(2152, __c67, 8)),
           targetWorkerDeploymentVersionChanged: S.optional(S.Boolean),
           historySizeBytes: S.optional(S.String),
-          workerVersion: S.optional(__S(195, __c24, 3)),
+          workerVersion: S.optional(__S(1536, __c48, 0)),
           buildIdRedirectCounter: S.optional(S.String),
         }),
       ).annotate({
         identifier: "WorkflowTaskStartedEventAttributes",
       });
-  }
-}
-function __c34(j: number): any {
-  switch (j) {
-    case 0:
+    case 10:
       return S.Array(S.Number);
-    case 1:
+    case 11:
       return S.suspend(() =>
         S.Struct({
-          coreUsedFlags: S.optional(__S(272, __c34, 0)),
-          langUsedFlags: S.optional(__S(272, __c34, 0)),
+          coreUsedFlags: S.optional(__S(2154, __c67, 10)),
+          langUsedFlags: S.optional(__S(2154, __c67, 10)),
           sdkName: S.optional(S.String),
           sdkVersion: S.optional(S.String),
         }),
       ).annotate({
         identifier: "WorkflowTaskCompletedMetadata",
       });
-    case 2:
+    case 12:
       return S.suspend(() =>
         S.Struct({
           nonfirstLocalActivityExecutionAttempts: S.optional(S.Number),
         }),
       ).annotate({ identifier: "MeteringMetadata" });
-    case 3:
+    case 13:
       return S.suspend(() =>
         S.Struct({
           scheduledEventId: S.optional(S.String),
           startedEventId: S.optional(S.String),
           identity: S.optional(S.String),
           binaryChecksum: S.optional(S.String),
-          workerVersion: S.optional(__S(195, __c24, 3)),
-          sdkMetadata: S.optional(__S(273, __c34, 1)),
-          meteringMetadata: S.optional(__S(274, __c34, 2)),
-          deployment: S.optional(__S(40, __c5, 0)),
+          workerVersion: S.optional(__S(1536, __c48, 0)),
+          sdkMetadata: S.optional(__S(2155, __c67, 11)),
+          meteringMetadata: S.optional(__S(2156, __c67, 12)),
+          deployment: S.optional(__S(3168, __c99, 0)),
           versioningBehavior: S.optional(S.String),
           workerDeploymentVersion: S.optional(S.String),
           workerDeploymentName: S.optional(S.String),
-          deploymentVersion: S.optional(__S(38, __c4, 6)),
+          deploymentVersion: S.optional(__S(3360, __c105, 0)),
         }),
       ).annotate({
         identifier: "WorkflowTaskCompletedEventAttributes",
       });
-    case 4:
+    case 14:
       return S.suspend(() =>
         S.Struct({
           scheduledEventId: S.optional(S.String),
@@ -10213,90 +10012,86 @@ function __c34(j: number): any {
       ).annotate({
         identifier: "WorkflowTaskTimedOutEventAttributes",
       });
-    case 5:
+    case 15:
       return S.suspend(() =>
         S.Struct({
           scheduledEventId: S.optional(S.String),
           startedEventId: S.optional(S.String),
           cause: S.optional(S.String),
-          failure: S.optional(__S(89, __c11, 1)),
+          failure: S.optional(__S(554, __c17, 10)),
           identity: S.optional(S.String),
           baseRunId: S.optional(S.String),
           newRunId: S.optional(S.String),
           forkEventVersion: S.optional(S.String),
           binaryChecksum: S.optional(S.String),
-          workerVersion: S.optional(__S(195, __c24, 3)),
+          workerVersion: S.optional(__S(1536, __c48, 0)),
         }),
       ).annotate({
         identifier: "WorkflowTaskFailedEventAttributes",
       });
-    case 6:
+    case 16:
       return S.suspend(() =>
         S.Struct({
           activityId: S.optional(S.String),
-          activityType: S.optional(__S(30, __c3, 6)),
-          taskQueue: S.optional(__S(31, __c3, 7)),
-          header: S.optional(__S(35, __c4, 3)),
-          input: S.optional(__S(32, __c4, 0)),
+          activityType: S.optional(__S(2944, __c92, 0)),
+          taskQueue: S.optional(__S(3232, __c101, 0)),
+          header: S.optional(__S(3072, __c96, 0)),
+          input: S.optional(__S(2976, __c93, 0)),
           scheduleToCloseTimeout: S.optional(S.String),
           scheduleToStartTimeout: S.optional(S.String),
           startToCloseTimeout: S.optional(S.String),
           heartbeatTimeout: S.optional(S.String),
           workflowTaskCompletedEventId: S.optional(S.String),
-          retryPolicy: S.optional(__S(33, __c4, 1)),
+          retryPolicy: S.optional(__S(3136, __c98, 0)),
           useWorkflowBuildId: S.optional(S.Boolean),
-          priority: S.optional(__S(42, __c5, 2)),
+          priority: S.optional(__S(3104, __c97, 0)),
         }),
       ).annotate({
         identifier: "ActivityTaskScheduledEventAttributes",
       });
-    case 7:
+    case 17:
       return S.suspend(() =>
         S.Struct({
           scheduledEventId: S.optional(S.String),
           identity: S.optional(S.String),
           requestId: S.optional(S.String),
           attempt: S.optional(S.Number),
-          lastFailure: S.optional(__S(89, __c11, 1)),
-          workerVersion: S.optional(__S(195, __c24, 3)),
+          lastFailure: S.optional(__S(554, __c17, 10)),
+          workerVersion: S.optional(__S(1536, __c48, 0)),
           buildIdRedirectCounter: S.optional(S.String),
         }),
       ).annotate({
         identifier: "ActivityTaskStartedEventAttributes",
       });
-  }
-}
-function __c35(j: number): any {
-  switch (j) {
-    case 0:
+    case 18:
       return S.suspend(() =>
         S.Struct({
-          result: S.optional(__S(32, __c4, 0)),
+          result: S.optional(__S(2976, __c93, 0)),
           scheduledEventId: S.optional(S.String),
           startedEventId: S.optional(S.String),
           identity: S.optional(S.String),
-          workerVersion: S.optional(__S(195, __c24, 3)),
+          workerVersion: S.optional(__S(1536, __c48, 0)),
         }),
       ).annotate({
         identifier: "ActivityTaskCompletedEventAttributes",
       });
-    case 1:
+    case 19:
       return S.suspend(() =>
         S.Struct({
-          failure: S.optional(__S(89, __c11, 1)),
+          failure: S.optional(__S(554, __c17, 10)),
           scheduledEventId: S.optional(S.String),
           startedEventId: S.optional(S.String),
           identity: S.optional(S.String),
           retryState: S.optional(S.String),
-          workerVersion: S.optional(__S(195, __c24, 3)),
+          workerVersion: S.optional(__S(1536, __c48, 0)),
         }),
       ).annotate({
         identifier: "ActivityTaskFailedEventAttributes",
       });
-    case 2:
+    case 20:
       return S.suspend(() =>
         S.Struct({
-          failure: S.optional(__S(89, __c11, 1)),
+          failure: S.optional(__S(554, __c17, 10)),
           scheduledEventId: S.optional(S.String),
           startedEventId: S.optional(S.String),
           retryState: S.optional(S.String),
@@ -10304,7 +10099,7 @@ function __c35(j: number): any {
       ).annotate({
         identifier: "ActivityTaskTimedOutEventAttributes",
       });
-    case 3:
+    case 21:
       return S.suspend(() =>
         S.Struct({
           timerId: S.optional(S.String),
@@ -10314,7 +10109,7 @@ function __c35(j: number): any {
       ).annotate({
         identifier: "TimerStartedEventAttributes",
       });
-    case 4:
+    case 22:
       return S.suspend(() =>
         S.Struct({
           timerId: S.optional(S.String),
@@ -10323,7 +10118,7 @@ function __c35(j: number): any {
       ).annotate({
         identifier: "TimerFiredEventAttributes",
       });
-    case 5:
+    case 23:
       return S.suspend(() =>
         S.Struct({
           scheduledEventId: S.optional(S.String),
@@ -10332,20 +10127,20 @@ function __c35(j: number): any {
       ).annotate({
         identifier: "ActivityTaskCancelRequestedEventAttributes",
       });
-    case 6:
+    case 24:
       return S.suspend(() =>
         S.Struct({
-          details: S.optional(__S(32, __c4, 0)),
+          details: S.optional(__S(2976, __c93, 0)),
           latestCancelRequestedEventId: S.optional(S.String),
           scheduledEventId: S.optional(S.String),
           startedEventId: S.optional(S.String),
           identity: S.optional(S.String),
-          workerVersion: S.optional(__S(195, __c24, 3)),
+          workerVersion: S.optional(__S(1536, __c48, 0)),
         }),
       ).annotate({
         identifier: "ActivityTaskCanceledEventAttributes",
       });
-    case 7:
+    case 25:
       return S.suspend(() =>
         S.Struct({
           timerId: S.optional(S.String),
@@ -10356,75 +10151,75 @@ function __c35(j: number): any {
       ).annotate({
         identifier: "TimerCanceledEventAttributes",
       });
-  }
-}
-function __c36(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Record(S.String, __S(32, __c4, 0));
-    case 1:
+    case 26:
+      return S.Record(S.String, __S(2976, __c93, 0));
+    case 27:
       return S.suspend(() =>
         S.Struct({
           markerName: S.optional(S.String),
-          details: S.optional(__S(288, __c36, 0)),
+          details: S.optional(__S(2170, __c67, 26)),
           workflowTaskCompletedEventId: S.optional(S.String),
-          header: S.optional(__S(35, __c4, 3)),
-          failure: S.optional(__S(89, __c11, 1)),
+          header: S.optional(__S(3072, __c96, 0)),
+          failure: S.optional(__S(554, __c17, 10)),
         }),
       ).annotate({
         identifier: "MarkerRecordedEventAttributes",
       });
-    case 2:
+    case 28:
       return S.suspend(() =>
         S.Struct({
           signalName: S.optional(S.String),
-          input: S.optional(__S(32, __c4, 0)),
+          input: S.optional(__S(2976, __c93, 0)),
           identity: S.optional(S.String),
-          header: S.optional(__S(35, __c4, 3)),
+          header: S.optional(__S(3072, __c96, 0)),
           skipGenerateWorkflowTask: S.optional(S.Boolean),
-          externalWorkflowExecution: S.optional(__S(85, __c10, 5)),
+          externalWorkflowExecution: S.optional(__S(512, __c16, 0)),
           requestId: S.optional(S.String),
         }),
       ).annotate({
         identifier: "WorkflowExecutionSignaledEventAttributes",
       });
-    case 3:
+    case 29:
       return S.suspend(() =>
         S.Struct({
           reason: S.optional(S.String),
-          details: S.optional(__S(32, __c4, 0)),
+          details: S.optional(__S(2976, __c93, 0)),
           identity: S.optional(S.String),
         }),
       ).annotate({
         identifier: "WorkflowExecutionTerminatedEventAttributes",
       });
-    case 4:
+    case 30:
       return S.suspend(() =>
         S.Struct({
           cause: S.optional(S.String),
           externalInitiatedEventId: S.optional(S.String),
-          externalWorkflowExecution: S.optional(__S(85, __c10, 5)),
+          externalWorkflowExecution: S.optional(__S(512, __c16, 0)),
           identity: S.optional(S.String),
         }),
       ).annotate({
         identifier: "WorkflowExecutionCancelRequestedEventAttributes",
       });
-    case 5:
+    case 31:
       return S.suspend(() =>
         S.Struct({
           workflowTaskCompletedEventId: S.optional(S.String),
-          details: S.optional(__S(32, __c4, 0)),
+          details: S.optional(__S(2976, __c93, 0)),
         }),
       ).annotate({
         identifier: "WorkflowExecutionCanceledEventAttributes",
       });
-    case 6:
+  }
+}
+function __c68(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           workflowTaskCompletedEventId: S.optional(S.String),
           namespace: S.optional(S.String),
           namespaceId: S.optional(S.String),
-          workflowExecution: S.optional(__S(85, __c10, 5)),
+          workflowExecution: S.optional(__S(512, __c16, 0)),
           control: S.optional(S.String),
           childWorkflowOnly: S.optional(S.Boolean),
           reason: S.optional(S.String),
@@ -10432,67 +10227,63 @@ function __c36(j: number): any {
       ).annotate({
         identifier: "RequestCancelExternalWorkflowExecutionInitiatedEventAttributes",
       });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           cause: S.optional(S.String),
           workflowTaskCompletedEventId: S.optional(S.String),
           namespace: S.optional(S.String),
           namespaceId: S.optional(S.String),
-          workflowExecution: S.optional(__S(85, __c10, 5)),
+          workflowExecution: S.optional(__S(512, __c16, 0)),
           initiatedEventId: S.optional(S.String),
           control: S.optional(S.String),
         }),
       ).annotate({
         identifier: "RequestCancelExternalWorkflowExecutionFailedEventAttributes",
       });
-  }
-}
-function __c37(j: number): any {
-  switch (j) {
-    case 0:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           initiatedEventId: S.optional(S.String),
           namespace: S.optional(S.String),
           namespaceId: S.optional(S.String),
-          workflowExecution: S.optional(__S(85, __c10, 5)),
+          workflowExecution: S.optional(__S(512, __c16, 0)),
         }),
       ).annotate({
         identifier: "ExternalWorkflowExecutionCancelRequestedEventAttributes",
       });
-    case 1:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           newExecutionRunId: S.optional(S.String),
-          workflowType: S.optional(__S(30, __c3, 6)),
-          taskQueue: S.optional(__S(31, __c3, 7)),
-          input: S.optional(__S(32, __c4, 0)),
+          workflowType: S.optional(__S(2944, __c92, 0)),
+          taskQueue: S.optional(__S(3232, __c101, 0)),
+          input: S.optional(__S(2976, __c93, 0)),
           workflowRunTimeout: S.optional(S.String),
           workflowTaskTimeout: S.optional(S.String),
           workflowTaskCompletedEventId: S.optional(S.String),
           backoffStartInterval: S.optional(S.String),
           initiator: S.optional(S.String),
-          failure: S.optional(__S(89, __c11, 1)),
-          lastCompletionResult: S.optional(__S(32, __c4, 0)),
-          header: S.optional(__S(35, __c4, 3)),
-          memo: S.optional(__S(35, __c4, 3)),
-          searchAttributes: S.optional(__S(36, __c4, 4)),
+          failure: S.optional(__S(554, __c17, 10)),
+          lastCompletionResult: S.optional(__S(2976, __c93, 0)),
+          header: S.optional(__S(3072, __c96, 0)),
+          memo: S.optional(__S(3072, __c96, 0)),
+          searchAttributes: S.optional(__S(2912, __c91, 0)),
           inheritBuildId: S.optional(S.Boolean),
           initialVersioningBehavior: S.optional(S.String),
         }),
       ).annotate({
         identifier: "WorkflowExecutionContinuedAsNewEventAttributes",
       });
-    case 2:
+    case 4:
       return S.suspend(() =>
         S.Struct({
           namespace: S.optional(S.String),
           namespaceId: S.optional(S.String),
           workflowId: S.optional(S.String),
-          workflowType: S.optional(__S(30, __c3, 6)),
-          taskQueue: S.optional(__S(31, __c3, 7)),
-          input: S.optional(__S(32, __c4, 0)),
+          workflowType: S.optional(__S(2944, __c92, 0)),
+          taskQueue: S.optional(__S(3232, __c101, 0)),
+          input: S.optional(__S(2976, __c93, 0)),
           workflowExecutionTimeout: S.optional(S.String),
           workflowRunTimeout: S.optional(S.String),
           workflowTaskTimeout: S.optional(S.String),
@@ -10500,26 +10291,26 @@ function __c37(j: number): any {
           control: S.optional(S.String),
           workflowTaskCompletedEventId: S.optional(S.String),
           workflowIdReusePolicy: S.optional(S.String),
-          retryPolicy: S.optional(__S(33, __c4, 1)),
+          retryPolicy: S.optional(__S(3136, __c98, 0)),
           cronSchedule: S.optional(S.String),
-          header: S.optional(__S(35, __c4, 3)),
-          memo: S.optional(__S(35, __c4, 3)),
-          searchAttributes: S.optional(__S(36, __c4, 4)),
+          header: S.optional(__S(3072, __c96, 0)),
+          memo: S.optional(__S(3072, __c96, 0)),
+          searchAttributes: S.optional(__S(2912, __c91, 0)),
           inheritBuildId: S.optional(S.Boolean),
-          priority: S.optional(__S(42, __c5, 2)),
-          timeSkippingConfig: S.optional(__S(264, __c33, 0)),
+          priority: S.optional(__S(3104, __c97, 0)),
+          timeSkippingConfig: S.optional(__S(2080, __c65, 0)),
           initialSkippedDuration: S.optional(S.String),
         }),
       ).annotate({
         identifier: "StartChildWorkflowExecutionInitiatedEventAttributes",
       });
-    case 3:
+    case 5:
       return S.suspend(() =>
         S.Struct({
           namespace: S.optional(S.String),
           namespaceId: S.optional(S.String),
           workflowId: S.optional(S.String),
-          workflowType: S.optional(__S(30, __c3, 6)),
+          workflowType: S.optional(__S(2944, __c92, 0)),
           cause: S.optional(S.String),
           control: S.optional(S.String),
           initiatedEventId: S.optional(S.String),
@@ -10528,41 +10319,41 @@ function __c37(j: number): any {
       ).annotate({
         identifier: "StartChildWorkflowExecutionFailedEventAttributes",
       });
-    case 4:
+    case 6:
       return S.suspend(() =>
         S.Struct({
           namespace: S.optional(S.String),
           namespaceId: S.optional(S.String),
           initiatedEventId: S.optional(S.String),
-          workflowExecution: S.optional(__S(85, __c10, 5)),
-          workflowType: S.optional(__S(30, __c3, 6)),
-          header: S.optional(__S(35, __c4, 3)),
+          workflowExecution: S.optional(__S(512, __c16, 0)),
+          workflowType: S.optional(__S(2944, __c92, 0)),
+          header: S.optional(__S(3072, __c96, 0)),
         }),
       ).annotate({
         identifier: "ChildWorkflowExecutionStartedEventAttributes",
       });
-    case 5:
+    case 7:
       return S.suspend(() =>
         S.Struct({
-          result: S.optional(__S(32, __c4, 0)),
+          result: S.optional(__S(2976, __c93, 0)),
           namespace: S.optional(S.String),
           namespaceId: S.optional(S.String),
-          workflowExecution: S.optional(__S(85, __c10, 5)),
-          workflowType: S.optional(__S(30, __c3, 6)),
+          workflowExecution: S.optional(__S(512, __c16, 0)),
+          workflowType: S.optional(__S(2944, __c92, 0)),
           initiatedEventId: S.optional(S.String),
           startedEventId: S.optional(S.String),
         }),
       ).annotate({
         identifier: "ChildWorkflowExecutionCompletedEventAttributes",
       });
-    case 6:
+    case 8:
       return S.suspend(() =>
         S.Struct({
-          failure: S.optional(__S(89, __c11, 1)),
+          failure: S.optional(__S(554, __c17, 10)),
           namespace: S.optional(S.String),
           namespaceId: S.optional(S.String),
-          workflowExecution: S.optional(__S(85, __c10, 5)),
-          workflowType: S.optional(__S(30, __c3, 6)),
+          workflowExecution: S.optional(__S(512, __c16, 0)),
+          workflowType: S.optional(__S(2944, __c92, 0)),
           initiatedEventId: S.optional(S.String),
           startedEventId: S.optional(S.String),
           retryState: S.optional(S.String),
@@ -10570,31 +10361,27 @@ function __c37(j: number): any {
       ).annotate({
         identifier: "ChildWorkflowExecutionFailedEventAttributes",
       });
-    case 7:
+    case 9:
       return S.suspend(() =>
         S.Struct({
-          details: S.optional(__S(32, __c4, 0)),
+          details: S.optional(__S(2976, __c93, 0)),
           namespace: S.optional(S.String),
           namespaceId: S.optional(S.String),
-          workflowExecution: S.optional(__S(85, __c10, 5)),
-          workflowType: S.optional(__S(30, __c3, 6)),
+          workflowExecution: S.optional(__S(512, __c16, 0)),
+          workflowType: S.optional(__S(2944, __c92, 0)),
           initiatedEventId: S.optional(S.String),
           startedEventId: S.optional(S.String),
         }),
       ).annotate({
         identifier: "ChildWorkflowExecutionCanceledEventAttributes",
       });
-  }
-}
-function __c38(j: number): any {
-  switch (j) {
-    case 0:
+    case 10:
       return S.suspend(() =>
         S.Struct({
           namespace: S.optional(S.String),
           namespaceId: S.optional(S.String),
-          workflowExecution: S.optional(__S(85, __c10, 5)),
-          workflowType: S.optional(__S(30, __c3, 6)),
+          workflowExecution: S.optional(__S(512, __c16, 0)),
+          workflowType: S.optional(__S(2944, __c92, 0)),
           initiatedEventId: S.optional(S.String),
           startedEventId: S.optional(S.String),
           retryState: S.optional(S.String),
@@ -10602,180 +10389,143 @@ function __c38(j: number): any {
       ).annotate({
         identifier: "ChildWorkflowExecutionTimedOutEventAttributes",
       });
-    case 1:
+    case 11:
       return S.suspend(() =>
         S.Struct({
           namespace: S.optional(S.String),
           namespaceId: S.optional(S.String),
-          workflowExecution: S.optional(__S(85, __c10, 5)),
-          workflowType: S.optional(__S(30, __c3, 6)),
+          workflowExecution: S.optional(__S(512, __c16, 0)),
+          workflowType: S.optional(__S(2944, __c92, 0)),
           initiatedEventId: S.optional(S.String),
           startedEventId: S.optional(S.String),
         }),
       ).annotate({
         identifier: "ChildWorkflowExecutionTerminatedEventAttributes",
       });
-    case 2:
+    case 12:
       return S.suspend(() =>
         S.Struct({
           workflowTaskCompletedEventId: S.optional(S.String),
           namespace: S.optional(S.String),
           namespaceId: S.optional(S.String),
-          workflowExecution: S.optional(__S(85, __c10, 5)),
+          workflowExecution: S.optional(__S(512, __c16, 0)),
           signalName: S.optional(S.String),
-          input: S.optional(__S(32, __c4, 0)),
+          input: S.optional(__S(2976, __c93, 0)),
           control: S.optional(S.String),
           childWorkflowOnly: S.optional(S.Boolean),
-          header: S.optional(__S(35, __c4, 3)),
+          header: S.optional(__S(3072, __c96, 0)),
         }),
       ).annotate({
         identifier: "SignalExternalWorkflowExecutionInitiatedEventAttributes",
       });
-    case 3:
+    case 13:
       return S.suspend(() =>
         S.Struct({
           cause: S.optional(S.String),
           workflowTaskCompletedEventId: S.optional(S.String),
           namespace: S.optional(S.String),
           namespaceId: S.optional(S.String),
-          workflowExecution: S.optional(__S(85, __c10, 5)),
+          workflowExecution: S.optional(__S(512, __c16, 0)),
           initiatedEventId: S.optional(S.String),
           control: S.optional(S.String),
         }),
       ).annotate({
         identifier: "SignalExternalWorkflowExecutionFailedEventAttributes",
       });
-    case 4:
+    case 14:
       return S.suspend(() =>
         S.Struct({
           initiatedEventId: S.optional(S.String),
           namespace: S.optional(S.String),
           namespaceId: S.optional(S.String),
-          workflowExecution: S.optional(__S(85, __c10, 5)),
+          workflowExecution: S.optional(__S(512, __c16, 0)),
           control: S.optional(S.String),
         }),
       ).annotate({
         identifier: "ExternalWorkflowExecutionSignaledEventAttributes",
       });
-    case 5:
+    case 15:
       return S.suspend(() =>
         S.Struct({
           workflowTaskCompletedEventId: S.optional(S.String),
-          searchAttributes: S.optional(__S(36, __c4, 4)),
+          searchAttributes: S.optional(__S(2912, __c91, 0)),
         }),
       ).annotate({
         identifier: "UpsertWorkflowSearchAttributesEventAttributes",
       });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          updateId: S.optional(S.String),
-          identity: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Meta" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          header: S.optional(__S(35, __c4, 3)),
-          name: S.optional(S.String),
-          args: S.optional(__S(32, __c4, 0)),
-        }),
-      ).annotate({ identifier: "Input" });
-  }
-}
-function __c39(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          meta: S.optional(__S(310, __c38, 6)),
-          input: S.optional(__S(311, __c38, 7)),
-        }),
-      ).annotate({ identifier: "Request" });
-    case 1:
+    case 16:
       return S.suspend(() =>
         S.Struct({
           protocolInstanceId: S.optional(S.String),
           acceptedRequestMessageId: S.optional(S.String),
           acceptedRequestSequencingEventId: S.optional(S.String),
-          acceptedRequest: S.optional(__S(312, __c39, 0)),
+          acceptedRequest: S.optional(__S(2242, __c70, 2)),
         }),
       ).annotate({
         identifier: "WorkflowExecutionUpdateAcceptedEventAttributes",
       });
-    case 2:
+    case 17:
       return S.suspend(() =>
         S.Struct({
           protocolInstanceId: S.optional(S.String),
           rejectedRequestMessageId: S.optional(S.String),
           rejectedRequestSequencingEventId: S.optional(S.String),
-          rejectedRequest: S.optional(__S(312, __c39, 0)),
-          failure: S.optional(__S(89, __c11, 1)),
+          rejectedRequest: S.optional(__S(2242, __c70, 2)),
+          failure: S.optional(__S(554, __c17, 10)),
         }),
       ).annotate({
         identifier: "WorkflowExecutionUpdateRejectedEventAttributes",
       });
-    case 3:
+    case 18:
       return S.suspend(() =>
         S.Struct({
-          success: S.optional(__S(32, __c4, 0)),
-          failure: S.optional(__S(89, __c11, 1)),
-        }),
-      ).annotate({ identifier: "Outcome" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          meta: S.optional(__S(310, __c38, 6)),
+          meta: S.optional(__S(2240, __c70, 0)),
           acceptedEventId: S.optional(S.String),
-          outcome: S.optional(__S(315, __c39, 3)),
+          outcome: S.optional(__S(2243, __c70, 3)),
         }),
       ).annotate({
         identifier: "WorkflowExecutionUpdateCompletedEventAttributes",
       });
-    case 5:
+    case 19:
       return S.suspend(() =>
         S.Struct({
           newTaskQueue: S.optional(S.String),
           newWorkflowTaskTimeout: S.optional(S.String),
           newWorkflowRunTimeout: S.optional(S.String),
           newWorkflowExecutionTimeout: S.optional(S.String),
-          upsertedMemo: S.optional(__S(35, __c4, 3)),
+          upsertedMemo: S.optional(__S(3072, __c96, 0)),
         }),
       ).annotate({
         identifier: "WorkflowPropertiesModifiedExternallyEventAttributes",
       });
-    case 6:
+    case 20:
       return S.suspend(() =>
         S.Struct({
           scheduledEventId: S.optional(S.String),
-          newRetryPolicy: S.optional(__S(33, __c4, 1)),
+          newRetryPolicy: S.optional(__S(3136, __c98, 0)),
         }),
       ).annotate({
         identifier: "ActivityPropertiesModifiedExternallyEventAttributes",
       });
-    case 7:
+    case 21:
       return S.suspend(() =>
         S.Struct({
           workflowTaskCompletedEventId: S.optional(S.String),
-          upsertedMemo: S.optional(__S(35, __c4, 3)),
+          upsertedMemo: S.optional(__S(3072, __c96, 0)),
         }),
       ).annotate({
         identifier: "WorkflowPropertiesModifiedEventAttributes",
       });
-  }
-}
-function __c40(j: number): any {
-  switch (j) {
-    case 0:
+    case 22:
       return S.suspend(() =>
         S.Struct({
-          request: S.optional(__S(312, __c39, 0)),
+          request: S.optional(__S(2242, __c70, 2)),
           origin: S.optional(S.String),
         }),
       ).annotate({
         identifier: "WorkflowExecutionUpdateAdmittedEventAttributes",
       });
-    case 1:
+    case 23:
       return S.suspend(() =>
         S.Struct({
           endpoint: S.optional(S.String),
@@ -10783,7 +10533,7 @@ function __c40(j: number): any {
           operation: S.optional(S.String),
           input: S.optional(S.Unknown),
           scheduleToCloseTimeout: S.optional(S.String),
-          nexusHeader: S.optional(__S(100, __c12, 4)),
+          nexusHeader: S.optional(__S(480, __c15, 0)),
           workflowTaskCompletedEventId: S.optional(S.String),
           requestId: S.optional(S.String),
           endpointId: S.optional(S.String),
@@ -10793,7 +10543,7 @@ function __c40(j: number): any {
       ).annotate({
         identifier: "NexusOperationScheduledEventAttributes",
       });
-    case 2:
+    case 24:
       return S.suspend(() =>
         S.Struct({
           scheduledEventId: S.optional(S.String),
@@ -10804,7 +10554,7 @@ function __c40(j: number): any {
       ).annotate({
         identifier: "NexusOperationStartedEventAttributes",
       });
-    case 3:
+    case 25:
       return S.suspend(() =>
         S.Struct({
           scheduledEventId: S.optional(S.String),
@@ -10814,33 +10564,33 @@ function __c40(j: number): any {
       ).annotate({
         identifier: "NexusOperationCompletedEventAttributes",
       });
-    case 4:
+    case 26:
       return S.suspend(() =>
         S.Struct({
           scheduledEventId: S.optional(S.String),
-          failure: S.optional(__S(89, __c11, 1)),
+          failure: S.optional(__S(554, __c17, 10)),
           requestId: S.optional(S.String),
         }),
       ).annotate({
         identifier: "NexusOperationFailedEventAttributes",
       });
-    case 5:
-      return S.Array(__S(104, __c13, 0));
-    case 6:
+    case 27:
+      return S.Array(__S(675, __c21, 3));
+    case 28:
       return S.suspend(() =>
         S.Struct({
-          versioningOverride: S.optional(__S(41, __c5, 1)),
+          versioningOverride: S.optional(__S(3201, __c100, 1)),
           unsetVersioningOverride: S.optional(S.Boolean),
           attachedRequestId: S.optional(S.String),
-          attachedCompletionCallbacks: S.optional(__S(325, __c40, 5)),
+          attachedCompletionCallbacks: S.optional(__S(2203, __c68, 27)),
           identity: S.optional(S.String),
-          priority: S.optional(__S(42, __c5, 2)),
-          timeSkippingConfig: S.optional(__S(264, __c33, 0)),
+          priority: S.optional(__S(3104, __c97, 0)),
+          timeSkippingConfig: S.optional(__S(2080, __c65, 0)),
         }),
       ).annotate({
         identifier: "WorkflowExecutionOptionsUpdatedEventAttributes",
       });
-    case 7:
+    case 29:
       return S.suspend(() =>
         S.Struct({
           requestedEventId: S.optional(S.String),
@@ -10850,22 +10600,18 @@ function __c40(j: number): any {
       ).annotate({
         identifier: "NexusOperationCancelRequestCompletedEventAttributes",
       });
-  }
-}
-function __c41(j: number): any {
-  switch (j) {
-    case 0:
+    case 30:
       return S.suspend(() =>
         S.Struct({
           requestedEventId: S.optional(S.String),
           workflowTaskCompletedEventId: S.optional(S.String),
-          failure: S.optional(__S(89, __c11, 1)),
+          failure: S.optional(__S(554, __c17, 10)),
           scheduledEventId: S.optional(S.String),
         }),
       ).annotate({
         identifier: "NexusOperationCancelRequestFailedEventAttributes",
       });
-    case 1:
+    case 31:
       return S.suspend(() =>
         S.Struct({
           identity: S.optional(S.String),
@@ -10875,7 +10621,11 @@ function __c41(j: number): any {
       ).annotate({
         identifier: "WorkflowExecutionPausedEventAttributes",
       });
-    case 2:
+  }
+}
+function __c69(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           targetTime: S.optional(S.String),
@@ -10885,7 +10635,7 @@ function __c41(j: number): any {
       ).annotate({
         identifier: "WorkflowExecutionTimeSkippingTransitionedEventAttributes",
       });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           eventId: S.optional(S.String),
@@ -10894,108 +10644,121 @@ function __c41(j: number): any {
           version: S.optional(S.String),
           taskId: S.optional(S.String),
           workerMayIgnore: S.optional(S.Boolean),
-          userMetadata: S.optional(__S(37, __c4, 5)),
-          links: S.optional(__S(97, __c12, 1)),
-          principal: S.optional(__S(260, __c32, 4)),
-          workflowExecutionStartedEventAttributes: S.optional(__S(265, __c33, 1)),
-          workflowExecutionCompletedEventAttributes: S.optional(__S(266, __c33, 2)),
-          workflowExecutionFailedEventAttributes: S.optional(__S(267, __c33, 3)),
-          workflowExecutionTimedOutEventAttributes: S.optional(__S(268, __c33, 4)),
-          workflowTaskScheduledEventAttributes: S.optional(__S(269, __c33, 5)),
-          workflowTaskStartedEventAttributes: S.optional(__S(271, __c33, 7)),
-          workflowTaskCompletedEventAttributes: S.optional(__S(275, __c34, 3)),
-          workflowTaskTimedOutEventAttributes: S.optional(__S(276, __c34, 4)),
-          workflowTaskFailedEventAttributes: S.optional(__S(277, __c34, 5)),
-          activityTaskScheduledEventAttributes: S.optional(__S(278, __c34, 6)),
-          activityTaskStartedEventAttributes: S.optional(__S(279, __c34, 7)),
-          activityTaskCompletedEventAttributes: S.optional(__S(280, __c35, 0)),
-          activityTaskFailedEventAttributes: S.optional(__S(281, __c35, 1)),
-          activityTaskTimedOutEventAttributes: S.optional(__S(282, __c35, 2)),
-          timerStartedEventAttributes: S.optional(__S(283, __c35, 3)),
-          timerFiredEventAttributes: S.optional(__S(284, __c35, 4)),
-          activityTaskCancelRequestedEventAttributes: S.optional(__S(285, __c35, 5)),
-          activityTaskCanceledEventAttributes: S.optional(__S(286, __c35, 6)),
-          timerCanceledEventAttributes: S.optional(__S(287, __c35, 7)),
-          markerRecordedEventAttributes: S.optional(__S(289, __c36, 1)),
-          workflowExecutionSignaledEventAttributes: S.optional(__S(290, __c36, 2)),
-          workflowExecutionTerminatedEventAttributes: S.optional(__S(291, __c36, 3)),
-          workflowExecutionCancelRequestedEventAttributes: S.optional(__S(292, __c36, 4)),
-          workflowExecutionCanceledEventAttributes: S.optional(__S(293, __c36, 5)),
+          userMetadata: S.optional(__S(3008, __c94, 0)),
+          links: S.optional(__S(608, __c19, 0)),
+          principal: S.optional(__S(2144, __c67, 0)),
+          workflowExecutionStartedEventAttributes: S.optional(__S(2147, __c67, 3)),
+          workflowExecutionCompletedEventAttributes: S.optional(__S(2148, __c67, 4)),
+          workflowExecutionFailedEventAttributes: S.optional(__S(2149, __c67, 5)),
+          workflowExecutionTimedOutEventAttributes: S.optional(__S(2150, __c67, 6)),
+          workflowTaskScheduledEventAttributes: S.optional(__S(2151, __c67, 7)),
+          workflowTaskStartedEventAttributes: S.optional(__S(2153, __c67, 9)),
+          workflowTaskCompletedEventAttributes: S.optional(__S(2157, __c67, 13)),
+          workflowTaskTimedOutEventAttributes: S.optional(__S(2158, __c67, 14)),
+          workflowTaskFailedEventAttributes: S.optional(__S(2159, __c67, 15)),
+          activityTaskScheduledEventAttributes: S.optional(__S(2160, __c67, 16)),
+          activityTaskStartedEventAttributes: S.optional(__S(2161, __c67, 17)),
+          activityTaskCompletedEventAttributes: S.optional(__S(2162, __c67, 18)),
+          activityTaskFailedEventAttributes: S.optional(__S(2163, __c67, 19)),
+          activityTaskTimedOutEventAttributes: S.optional(__S(2164, __c67, 20)),
+          timerStartedEventAttributes: S.optional(__S(2165, __c67, 21)),
+          timerFiredEventAttributes: S.optional(__S(2166, __c67, 22)),
+          activityTaskCancelRequestedEventAttributes: S.optional(__S(2167, __c67, 23)),
+          activityTaskCanceledEventAttributes: S.optional(__S(2168, __c67, 24)),
+          timerCanceledEventAttributes: S.optional(__S(2169, __c67, 25)),
+          markerRecordedEventAttributes: S.optional(__S(2171, __c67, 27)),
+          workflowExecutionSignaledEventAttributes: S.optional(__S(2172, __c67, 28)),
+          workflowExecutionTerminatedEventAttributes: S.optional(__S(2173, __c67, 29)),
+          workflowExecutionCancelRequestedEventAttributes: S.optional(__S(2174, __c67, 30)),
+          workflowExecutionCanceledEventAttributes: S.optional(__S(2175, __c67, 31)),
           requestCancelExternalWorkflowExecutionInitiatedEventAttributes: S.optional(
-            __S(294, __c36, 6),
+            __S(2176, __c68, 0),
           ),
           requestCancelExternalWorkflowExecutionFailedEventAttributes: S.optional(
-            __S(295, __c36, 7),
+            __S(2177, __c68, 1),
           ),
-          externalWorkflowExecutionCancelRequestedEventAttributes: S.optional(__S(296, __c37, 0)),
-          workflowExecutionContinuedAsNewEventAttributes: S.optional(__S(297, __c37, 1)),
-          startChildWorkflowExecutionInitiatedEventAttributes: S.optional(__S(298, __c37, 2)),
-          startChildWorkflowExecutionFailedEventAttributes: S.optional(__S(299, __c37, 3)),
-          childWorkflowExecutionStartedEventAttributes: S.optional(__S(300, __c37, 4)),
-          childWorkflowExecutionCompletedEventAttributes: S.optional(__S(301, __c37, 5)),
-          childWorkflowExecutionFailedEventAttributes: S.optional(__S(302, __c37, 6)),
-          childWorkflowExecutionCanceledEventAttributes: S.optional(__S(303, __c37, 7)),
-          childWorkflowExecutionTimedOutEventAttributes: S.optional(__S(304, __c38, 0)),
-          childWorkflowExecutionTerminatedEventAttributes: S.optional(__S(305, __c38, 1)),
-          signalExternalWorkflowExecutionInitiatedEventAttributes: S.optional(__S(306, __c38, 2)),
-          signalExternalWorkflowExecutionFailedEventAttributes: S.optional(__S(307, __c38, 3)),
-          externalWorkflowExecutionSignaledEventAttributes: S.optional(__S(308, __c38, 4)),
-          upsertWorkflowSearchAttributesEventAttributes: S.optional(__S(309, __c38, 5)),
-          workflowExecutionUpdateAcceptedEventAttributes: S.optional(__S(313, __c39, 1)),
-          workflowExecutionUpdateRejectedEventAttributes: S.optional(__S(314, __c39, 2)),
-          workflowExecutionUpdateCompletedEventAttributes: S.optional(__S(316, __c39, 4)),
-          workflowPropertiesModifiedExternallyEventAttributes: S.optional(__S(317, __c39, 5)),
-          activityPropertiesModifiedExternallyEventAttributes: S.optional(__S(318, __c39, 6)),
-          workflowPropertiesModifiedEventAttributes: S.optional(__S(319, __c39, 7)),
-          workflowExecutionUpdateAdmittedEventAttributes: S.optional(__S(320, __c40, 0)),
-          nexusOperationScheduledEventAttributes: S.optional(__S(321, __c40, 1)),
-          nexusOperationStartedEventAttributes: S.optional(__S(322, __c40, 2)),
-          nexusOperationCompletedEventAttributes: S.optional(__S(323, __c40, 3)),
-          nexusOperationFailedEventAttributes: S.optional(__S(324, __c40, 4)),
-          nexusOperationCanceledEventAttributes: S.optional(__S(324, __c40, 4)),
-          nexusOperationTimedOutEventAttributes: S.optional(__S(324, __c40, 4)),
-          nexusOperationCancelRequestedEventAttributes: S.optional(__S(285, __c35, 5)),
-          workflowExecutionOptionsUpdatedEventAttributes: S.optional(__S(326, __c40, 6)),
-          nexusOperationCancelRequestCompletedEventAttributes: S.optional(__S(327, __c40, 7)),
-          nexusOperationCancelRequestFailedEventAttributes: S.optional(__S(328, __c41, 0)),
-          workflowExecutionPausedEventAttributes: S.optional(__S(329, __c41, 1)),
-          workflowExecutionUnpausedEventAttributes: S.optional(__S(329, __c41, 1)),
-          workflowExecutionTimeSkippingTransitionedEventAttributes: S.optional(__S(330, __c41, 2)),
+          externalWorkflowExecutionCancelRequestedEventAttributes: S.optional(__S(2178, __c68, 2)),
+          workflowExecutionContinuedAsNewEventAttributes: S.optional(__S(2179, __c68, 3)),
+          startChildWorkflowExecutionInitiatedEventAttributes: S.optional(__S(2180, __c68, 4)),
+          startChildWorkflowExecutionFailedEventAttributes: S.optional(__S(2181, __c68, 5)),
+          childWorkflowExecutionStartedEventAttributes: S.optional(__S(2182, __c68, 6)),
+          childWorkflowExecutionCompletedEventAttributes: S.optional(__S(2183, __c68, 7)),
+          childWorkflowExecutionFailedEventAttributes: S.optional(__S(2184, __c68, 8)),
+          childWorkflowExecutionCanceledEventAttributes: S.optional(__S(2185, __c68, 9)),
+          childWorkflowExecutionTimedOutEventAttributes: S.optional(__S(2186, __c68, 10)),
+          childWorkflowExecutionTerminatedEventAttributes: S.optional(__S(2187, __c68, 11)),
+          signalExternalWorkflowExecutionInitiatedEventAttributes: S.optional(__S(2188, __c68, 12)),
+          signalExternalWorkflowExecutionFailedEventAttributes: S.optional(__S(2189, __c68, 13)),
+          externalWorkflowExecutionSignaledEventAttributes: S.optional(__S(2190, __c68, 14)),
+          upsertWorkflowSearchAttributesEventAttributes: S.optional(__S(2191, __c68, 15)),
+          workflowExecutionUpdateAcceptedEventAttributes: S.optional(__S(2192, __c68, 16)),
+          workflowExecutionUpdateRejectedEventAttributes: S.optional(__S(2193, __c68, 17)),
+          workflowExecutionUpdateCompletedEventAttributes: S.optional(__S(2194, __c68, 18)),
+          workflowPropertiesModifiedExternallyEventAttributes: S.optional(__S(2195, __c68, 19)),
+          activityPropertiesModifiedExternallyEventAttributes: S.optional(__S(2196, __c68, 20)),
+          workflowPropertiesModifiedEventAttributes: S.optional(__S(2197, __c68, 21)),
+          workflowExecutionUpdateAdmittedEventAttributes: S.optional(__S(2198, __c68, 22)),
+          nexusOperationScheduledEventAttributes: S.optional(__S(2199, __c68, 23)),
+          nexusOperationStartedEventAttributes: S.optional(__S(2200, __c68, 24)),
+          nexusOperationCompletedEventAttributes: S.optional(__S(2201, __c68, 25)),
+          nexusOperationFailedEventAttributes: S.optional(__S(2202, __c68, 26)),
+          nexusOperationCanceledEventAttributes: S.optional(__S(2202, __c68, 26)),
+          nexusOperationTimedOutEventAttributes: S.optional(__S(2202, __c68, 26)),
+          nexusOperationCancelRequestedEventAttributes: S.optional(__S(2167, __c67, 23)),
+          workflowExecutionOptionsUpdatedEventAttributes: S.optional(__S(2204, __c68, 28)),
+          nexusOperationCancelRequestCompletedEventAttributes: S.optional(__S(2205, __c68, 29)),
+          nexusOperationCancelRequestFailedEventAttributes: S.optional(__S(2206, __c68, 30)),
+          workflowExecutionPausedEventAttributes: S.optional(__S(2207, __c68, 31)),
+          workflowExecutionUnpausedEventAttributes: S.optional(__S(2207, __c68, 31)),
+          workflowExecutionTimeSkippingTransitionedEventAttributes: S.optional(__S(2208, __c69, 0)),
         }),
       ).annotate({ identifier: "HistoryEvent" });
-    case 4:
-      return S.Array(__S(331, __c41, 3));
-    case 5:
+    case 2:
+      return S.Array(__S(2209, __c69, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          events: S.optional(__S(332, __c41, 4)),
+          events: S.optional(__S(2210, __c69, 2)),
         }),
       ).annotate({ identifier: "History" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          encodingType: S.optional(S.String),
-          data: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "DataBlob" });
-    case 7:
-      return S.Array(__S(334, __c41, 6));
   }
 }
-function __c42(j: number): any {
+function __c70(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          history: S.optional(__S(333, __c41, 5)),
-          rawHistory: S.optional(__S(335, __c41, 7)),
-          nextPageToken: S.optional(S.String),
-          archived: S.optional(S.Boolean),
+          updateId: S.optional(S.String),
+          identity: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "GetWorkflowExecutionHistoryResponse",
-      });
+      ).annotate({ identifier: "Meta" });
     case 1:
+      return S.suspend(() =>
+        S.Struct({
+          header: S.optional(__S(3072, __c96, 0)),
+          name: S.optional(S.String),
+          args: S.optional(__S(2976, __c93, 0)),
+        }),
+      ).annotate({ identifier: "Input" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          meta: S.optional(__S(2240, __c70, 0)),
+          input: S.optional(__S(2241, __c70, 1)),
+        }),
+      ).annotate({ identifier: "Request" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          success: S.optional(__S(2976, __c93, 0)),
+          failure: S.optional(__S(554, __c17, 10)),
+        }),
+      ).annotate({ identifier: "Outcome" });
+  }
+}
+function __c71(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           namespace: S.String.pipe(T.Label()),
@@ -11014,16 +10777,20 @@ function __c42(j: number): any {
       ).annotate({
         identifier: "GetWorkflowExecutionHistoryReverseRequest",
       });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          history: S.optional(__S(333, __c41, 5)),
+          history: S.optional(__S(2211, __c69, 3)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({
         identifier: "GetWorkflowExecutionHistoryReverseResponse",
       });
-    case 3:
+  }
+}
+function __c72(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           namespace: S.String.pipe(T.Label()),
@@ -11036,16 +10803,16 @@ function __c42(j: number): any {
       ).annotate({
         identifier: "ListActivityExecutionsRequest",
       });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           activityId: S.optional(S.String),
           runId: S.optional(S.String),
-          activityType: S.optional(__S(30, __c3, 6)),
+          activityType: S.optional(__S(2944, __c92, 0)),
           scheduleTime: S.optional(S.String),
           closeTime: S.optional(S.String),
           status: S.optional(S.String),
-          searchAttributes: S.optional(__S(36, __c4, 4)),
+          searchAttributes: S.optional(__S(2912, __c91, 0)),
           taskQueue: S.optional(S.String),
           stateTransitionCount: S.optional(S.String),
           stateSizeBytes: S.optional(S.String),
@@ -11054,18 +10821,22 @@ function __c42(j: number): any {
       ).annotate({
         identifier: "ActivityExecutionListInfo",
       });
-    case 5:
-      return S.Array(__S(340, __c42, 4));
-    case 6:
+    case 2:
+      return S.Array(__S(2305, __c72, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          executions: S.optional(__S(341, __c42, 5)),
+          executions: S.optional(__S(2306, __c72, 2)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({
         identifier: "ListActivityExecutionsResponse",
       });
-    case 7:
+  }
+}
+function __c73(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           namespace: S.String.pipe(T.Label()),
@@ -11084,20 +10855,24 @@ function __c42(j: number): any {
       });
   }
 }
-function __c43(j: number): any {
+function __c74(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(199, __c24, 7));
+      return S.Array(__S(1603, __c50, 3));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          executions: S.optional(__S(344, __c43, 0)),
+          executions: S.optional(__S(2368, __c74, 0)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({
         identifier: "ListArchivedWorkflowExecutionsResponse",
       });
-    case 2:
+  }
+}
+function __c75(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           namespace: S.String.pipe(T.Label()),
@@ -11113,7 +10888,7 @@ function __c43(j: number): any {
       ).annotate({
         identifier: "ListBatchOperationsRequest",
       });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           jobId: S.optional(S.String),
@@ -11122,18 +10897,89 @@ function __c43(j: number): any {
           closeTime: S.optional(S.String),
         }),
       ).annotate({ identifier: "BatchOperationInfo" });
-    case 4:
-      return S.Array(__S(347, __c43, 3));
-    case 5:
+    case 2:
+      return S.Array(__S(2401, __c75, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          operationInfo: S.optional(__S(348, __c43, 4)),
+          operationInfo: S.optional(__S(2402, __c75, 2)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({
         identifier: "ListBatchOperationsResponse",
       });
-    case 6:
+  }
+}
+function __c76(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          spec: S.optional(__S(2467, __c77, 3)),
+        }).pipe(T.Http({ method: "POST", uri: "/api/v1/nexus/endpoints", code: 200 })),
+      ).annotate({
+        identifier: "CreateNexusEndpointRequest",
+      });
+  }
+}
+function __c77(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          namespace: S.optional(S.String),
+          taskQueue: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "EndpointTargetWorker" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          url: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "EndpointTargetExternal" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          worker: S.optional(__S(2464, __c77, 0)),
+          external: S.optional(__S(2465, __c77, 1)),
+        }),
+      ).annotate({ identifier: "EndpointTarget" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.optional(S.String),
+          description: S.optional(S.Unknown),
+          target: S.optional(__S(2466, __c77, 2)),
+        }),
+      ).annotate({ identifier: "EndpointSpec" });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          version: S.optional(S.String),
+          id: S.optional(S.String),
+          spec: S.optional(__S(2467, __c77, 3)),
+          createdTime: S.optional(S.String),
+          lastModifiedTime: S.optional(S.String),
+          urlPrefix: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Endpoint" });
+  }
+}
+function __c78(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          endpoint: S.optional(__S(2468, __c77, 4)),
+        }),
+      ).annotate({
+        identifier: "CreateNexusEndpointResponse",
+      });
+  }
+}
+function __c79(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           namespace: S.String.pipe(T.Label()),
@@ -11144,28 +10990,28 @@ function __c43(j: number): any {
           T.Http({ method: "GET", uri: "/api/v1/namespaces/{namespace}/deployments", code: 200 }),
         ),
       ).annotate({ identifier: "ListDeploymentsRequest" });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          deployment: S.optional(__S(40, __c5, 0)),
+          deployment: S.optional(__S(3168, __c99, 0)),
           createTime: S.optional(S.String),
           isCurrent: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "DeploymentListInfo" });
-  }
-}
-function __c44(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(351, __c43, 7));
-    case 1:
+    case 2:
+      return S.Array(__S(2529, __c79, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          deployments: S.optional(__S(352, __c44, 0)),
+          deployments: S.optional(__S(2530, __c79, 2)),
         }),
       ).annotate({ identifier: "ListDeploymentsResponse" });
-    case 2:
+  }
+}
+function __c80(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -11175,16 +11021,20 @@ function __c44(j: number): any {
           ),
         }).pipe(T.Http({ method: "GET", uri: "/api/v1/namespaces", code: 200 })),
       ).annotate({ identifier: "ListNamespacesRequest" });
-    case 3:
-      return S.Array(__S(128, __c16, 0));
-    case 4:
+    case 1:
+      return S.Array(__S(866, __c27, 2));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          namespaces: S.optional(__S(355, __c44, 3)),
+          namespaces: S.optional(__S(2561, __c80, 1)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListNamespacesResponse" });
-    case 5:
+  }
+}
+function __c81(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -11194,20 +11044,20 @@ function __c44(j: number): any {
       ).annotate({
         identifier: "ListNexusEndpointsRequest",
       });
-    case 6:
-      return S.Array(__S(18, __c2, 2));
-    case 7:
+    case 1:
+      return S.Array(__S(2468, __c77, 4));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          endpoints: S.optional(__S(358, __c44, 6)),
+          endpoints: S.optional(__S(2593, __c81, 1)),
         }),
       ).annotate({
         identifier: "ListNexusEndpointsResponse",
       });
   }
 }
-function __c45(j: number): any {
+function __c82(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -11237,7 +11087,7 @@ function __c45(j: number): any {
           scheduleTime: S.optional(S.String),
           closeTime: S.optional(S.String),
           status: S.optional(S.String),
-          searchAttributes: S.optional(__S(36, __c4, 4)),
+          searchAttributes: S.optional(__S(2912, __c91, 0)),
           stateTransitionCount: S.optional(S.String),
           executionDuration: S.optional(S.String),
         }),
@@ -11245,17 +11095,21 @@ function __c45(j: number): any {
         identifier: "NexusOperationExecutionListInfo",
       });
     case 2:
-      return S.Array(__S(361, __c45, 1));
+      return S.Array(__S(2625, __c82, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          operations: S.optional(__S(362, __c45, 2)),
+          operations: S.optional(__S(2626, __c82, 2)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({
         identifier: "ListNexusOperationExecutionsResponse",
       });
-    case 4:
+  }
+}
+function __c83(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           namespace: S.String.pipe(T.Label()),
@@ -11272,15 +11126,19 @@ function __c45(j: number): any {
       ).annotate({
         identifier: "ListScheduleMatchingTimesRequest",
       });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          startTime: S.optional(__S(24, __c3, 0)),
+          startTime: S.optional(__S(3040, __c95, 0)),
         }),
       ).annotate({
         identifier: "ListScheduleMatchingTimesResponse",
       });
-    case 6:
+  }
+}
+function __c84(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           namespace: S.String.pipe(T.Label()),
@@ -11291,40 +11149,40 @@ function __c45(j: number): any {
           T.Http({ method: "GET", uri: "/api/v1/namespaces/{namespace}/schedules", code: 200 }),
         ),
       ).annotate({ identifier: "ListSchedulesRequest" });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          spec: S.optional(__S(29, __c3, 5)),
-          workflowType: S.optional(__S(30, __c3, 6)),
+          spec: S.optional(__S(3272, __c102, 8)),
+          workflowType: S.optional(__S(2944, __c92, 0)),
           notes: S.optional(S.String),
           paused: S.optional(S.Boolean),
-          recentActions: S.optional(__S(136, __c17, 0)),
-          futureActionTimes: S.optional(__S(24, __c3, 0)),
+          recentActions: S.optional(__S(1025, __c32, 1)),
+          futureActionTimes: S.optional(__S(3040, __c95, 0)),
         }),
       ).annotate({ identifier: "ScheduleListInfo" });
-  }
-}
-function __c46(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          scheduleId: S.optional(S.String),
-          memo: S.optional(__S(35, __c4, 3)),
-          searchAttributes: S.optional(__S(36, __c4, 4)),
-          info: S.optional(__S(367, __c45, 7)),
-        }),
-      ).annotate({ identifier: "ScheduleListEntry" });
-    case 1:
-      return S.Array(__S(368, __c46, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          schedules: S.optional(__S(369, __c46, 1)),
+          scheduleId: S.optional(S.String),
+          memo: S.optional(__S(3072, __c96, 0)),
+          searchAttributes: S.optional(__S(2912, __c91, 0)),
+          info: S.optional(__S(2689, __c84, 1)),
+        }),
+      ).annotate({ identifier: "ScheduleListEntry" });
+    case 3:
+      return S.Array(__S(2690, __c84, 2));
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          schedules: S.optional(__S(2691, __c84, 3)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListSchedulesResponse" });
-    case 3:
+  }
+}
+function __c85(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           namespace: S.String.pipe(T.Label()),
@@ -11338,19 +11196,23 @@ function __c46(j: number): any {
       ).annotate({
         identifier: "ListSearchAttributesRequest",
       });
-    case 4:
+    case 1:
       return S.Record(S.String, S.String);
-    case 5:
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          customAttributes: S.optional(__S(372, __c46, 4)),
-          systemAttributes: S.optional(__S(372, __c46, 4)),
-          storageSchema: S.optional(__S(100, __c12, 4)),
+          customAttributes: S.optional(__S(2721, __c85, 1)),
+          systemAttributes: S.optional(__S(2721, __c85, 1)),
+          storageSchema: S.optional(__S(480, __c15, 0)),
         }),
       ).annotate({
         identifier: "ListSearchAttributesResponse",
       });
-    case 6:
+  }
+}
+function __c86(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           namespace: S.String.pipe(T.Label()),
@@ -11366,35 +11228,35 @@ function __c46(j: number): any {
       ).annotate({
         identifier: "ListWorkerDeploymentsRequest",
       });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
           createTime: S.optional(S.String),
-          routingConfig: S.optional(__S(178, __c22, 2)),
-          latestVersionSummary: S.optional(__S(176, __c22, 0)),
-          currentVersionSummary: S.optional(__S(176, __c22, 0)),
-          rampingVersionSummary: S.optional(__S(176, __c22, 0)),
+          routingConfig: S.optional(__S(1412, __c44, 4)),
+          latestVersionSummary: S.optional(__S(1411, __c44, 3)),
+          currentVersionSummary: S.optional(__S(1411, __c44, 3)),
+          rampingVersionSummary: S.optional(__S(1411, __c44, 3)),
         }),
       ).annotate({
         identifier: "ListWorkerDeploymentsResponseWorkerDeploymentSummary",
       });
-  }
-}
-function __c47(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(375, __c46, 7));
-    case 1:
+    case 2:
+      return S.Array(__S(2753, __c86, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          workerDeployments: S.optional(__S(376, __c47, 0)),
+          workerDeployments: S.optional(__S(2754, __c86, 2)),
         }),
       ).annotate({
         identifier: "ListWorkerDeploymentsResponse",
       });
-    case 2:
+  }
+}
+function __c87(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           namespace: S.String.pipe(T.Label()),
@@ -11406,15 +11268,15 @@ function __c47(j: number): any {
           T.Http({ method: "GET", uri: "/api/v1/namespaces/{namespace}/workers", code: 200 }),
         ),
       ).annotate({ identifier: "ListWorkersRequest" });
-    case 3:
-      return S.Array(__S(169, __c21, 1));
-    case 4:
+    case 1:
+      return S.Array(__S(1280, __c40, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           workerInstanceKey: S.optional(S.String),
           workerIdentity: S.optional(S.String),
           taskQueue: S.optional(S.String),
-          deploymentVersion: S.optional(__S(38, __c4, 6)),
+          deploymentVersion: S.optional(__S(3360, __c105, 0)),
           sdkName: S.optional(S.String),
           sdkVersion: S.optional(S.String),
           status: S.optional(S.String),
@@ -11422,21 +11284,25 @@ function __c47(j: number): any {
           hostName: S.optional(S.String),
           workerGroupingKey: S.optional(S.String),
           processId: S.optional(S.String),
-          plugins: S.optional(__S(165, __c20, 5)),
-          drivers: S.optional(__S(167, __c20, 7)),
+          plugins: S.optional(__S(1316, __c41, 4)),
+          drivers: S.optional(__S(1318, __c41, 6)),
         }),
       ).annotate({ identifier: "WorkerListInfo" });
-    case 5:
-      return S.Array(__S(380, __c47, 4));
-    case 6:
+    case 3:
+      return S.Array(__S(2786, __c87, 2));
+    case 4:
       return S.suspend(() =>
         S.Struct({
-          workersInfo: S.optional(__S(379, __c47, 3)),
-          workers: S.optional(__S(381, __c47, 5)),
+          workersInfo: S.optional(__S(2785, __c87, 1)),
+          workers: S.optional(__S(2787, __c87, 3)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListWorkersResponse" });
-    case 7:
+  }
+}
+function __c88(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           namespace: S.String.pipe(T.Label()),
@@ -11451,7 +11317,341 @@ function __c47(j: number): any {
       });
   }
 }
-function __c48(j: number): any {
+function __c89(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          namespace: S.String.pipe(T.Label()),
+          scheduleId: S.String.pipe(T.Label()),
+          schedule: S.optional(__S(3300, __c103, 4)),
+          initialPatch: S.optional(__S(3331, __c104, 3)),
+          identity: S.optional(S.String),
+          requestId: S.optional(S.String),
+          memo: S.optional(__S(3072, __c96, 0)),
+          searchAttributes: S.optional(__S(2912, __c91, 0)),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/api/v1/namespaces/{namespace}/schedules/{scheduleId}",
+            code: 200,
+          }),
+        ),
+      ).annotate({ identifier: "CreateScheduleRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          conflictToken: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "CreateScheduleResponse" });
+  }
+}
+function __c90(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, S.Unknown);
+  }
+}
+function __c91(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          indexedFields: S.optional(__S(2880, __c90, 0)),
+        }),
+      ).annotate({ identifier: "SearchAttributes" });
+  }
+}
+function __c92(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "WorkflowType" });
+  }
+}
+function __c93(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          payloads: S.optional(__S(64, __c2, 0)),
+        }),
+      ).annotate({ identifier: "Payloads" });
+  }
+}
+function __c94(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          summary: S.optional(S.Unknown),
+          details: S.optional(S.Unknown),
+        }),
+      ).annotate({ identifier: "UserMetadata" });
+  }
+}
+function __c95(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c96(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          fields: S.optional(__S(2880, __c90, 0)),
+        }),
+      ).annotate({ identifier: "Memo" });
+  }
+}
+function __c97(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          priorityKey: S.optional(S.Number),
+          fairnessKey: S.optional(S.String),
+          fairnessWeight: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "Priority" });
+  }
+}
+function __c98(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          initialInterval: S.optional(S.String),
+          backoffCoefficient: S.optional(S.Number),
+          maximumInterval: S.optional(S.String),
+          maximumAttempts: S.optional(S.Number),
+          nonRetryableErrorTypes: S.optional(__S(3040, __c95, 0)),
+        }),
+      ).annotate({ identifier: "RetryPolicy" });
+  }
+}
+function __c99(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          seriesName: S.optional(S.String),
+          buildId: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Deployment" });
+  }
+}
+function __c100(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          behavior: S.optional(S.String),
+          version: S.optional(__S(3360, __c105, 0)),
+        }),
+      ).annotate({
+        identifier: "VersioningOverridePinnedOverride",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          pinned: S.optional(__S(3200, __c100, 0)),
+          autoUpgrade: S.optional(S.Boolean),
+          behavior: S.optional(S.String),
+          deployment: S.optional(__S(3168, __c99, 0)),
+          pinnedVersion: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "VersioningOverride" });
+  }
+}
+function __c101(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.optional(S.String),
+          kind: S.optional(S.String),
+          normalName: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "TaskQueue" });
+  }
+}
+function __c102(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          start: S.optional(S.Number),
+          end: S.optional(S.Number),
+          step: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "Range" });
+    case 1:
+      return S.Array(__S(3264, __c102, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          second: S.optional(__S(3265, __c102, 1)),
+          minute: S.optional(__S(3265, __c102, 1)),
+          hour: S.optional(__S(3265, __c102, 1)),
+          dayOfMonth: S.optional(__S(3265, __c102, 1)),
+          month: S.optional(__S(3265, __c102, 1)),
+          year: S.optional(__S(3265, __c102, 1)),
+          dayOfWeek: S.optional(__S(3265, __c102, 1)),
+          comment: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "StructuredCalendarSpec" });
+    case 3:
+      return S.Array(__S(3266, __c102, 2));
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          second: S.optional(S.String),
+          minute: S.optional(S.String),
+          hour: S.optional(S.String),
+          dayOfMonth: S.optional(S.String),
+          month: S.optional(S.String),
+          year: S.optional(S.String),
+          dayOfWeek: S.optional(S.String),
+          comment: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "CalendarSpec" });
+    case 5:
+      return S.Array(__S(3268, __c102, 4));
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          interval: S.optional(S.String),
+          phase: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "IntervalSpec" });
+    case 7:
+      return S.Array(__S(3270, __c102, 6));
+    case 8:
+      return S.suspend(() =>
+        S.Struct({
+          structuredCalendar: S.optional(__S(3267, __c102, 3)),
+          cronString: S.optional(__S(3040, __c95, 0)),
+          calendar: S.optional(__S(3269, __c102, 5)),
+          interval: S.optional(__S(3271, __c102, 7)),
+          excludeCalendar: S.optional(__S(3269, __c102, 5)),
+          excludeStructuredCalendar: S.optional(__S(3267, __c102, 3)),
+          startTime: S.optional(S.String),
+          endTime: S.optional(S.String),
+          jitter: S.optional(S.String),
+          timezoneName: S.optional(S.String),
+          timezoneData: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ScheduleSpec" });
+  }
+}
+function __c103(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          workflowId: S.optional(S.String),
+          workflowType: S.optional(__S(2944, __c92, 0)),
+          taskQueue: S.optional(__S(3232, __c101, 0)),
+          input: S.optional(__S(2976, __c93, 0)),
+          workflowExecutionTimeout: S.optional(S.String),
+          workflowRunTimeout: S.optional(S.String),
+          workflowTaskTimeout: S.optional(S.String),
+          workflowIdReusePolicy: S.optional(S.String),
+          retryPolicy: S.optional(__S(3136, __c98, 0)),
+          cronSchedule: S.optional(S.String),
+          memo: S.optional(__S(3072, __c96, 0)),
+          searchAttributes: S.optional(__S(2912, __c91, 0)),
+          header: S.optional(__S(3072, __c96, 0)),
+          userMetadata: S.optional(__S(3008, __c94, 0)),
+          versioningOverride: S.optional(__S(3201, __c100, 1)),
+          priority: S.optional(__S(3104, __c97, 0)),
+        }),
+      ).annotate({ identifier: "NewWorkflowExecutionInfo" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          startWorkflow: S.optional(__S(3296, __c103, 0)),
+        }),
+      ).annotate({ identifier: "ScheduleAction" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          overlapPolicy: S.optional(S.String),
+          catchupWindow: S.optional(S.String),
+          pauseOnFailure: S.optional(S.Boolean),
+          keepOriginalWorkflowId: S.optional(S.Boolean),
+        }),
+      ).annotate({ identifier: "SchedulePolicies" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          notes: S.optional(S.String),
+          paused: S.optional(S.Boolean),
+          limitedActions: S.optional(S.Boolean),
+          remainingActions: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ScheduleState" });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          spec: S.optional(__S(3272, __c102, 8)),
+          action: S.optional(__S(3297, __c103, 1)),
+          policies: S.optional(__S(3298, __c103, 2)),
+          state: S.optional(__S(3299, __c103, 3)),
+        }),
+      ).annotate({ identifier: "Schedule" });
+  }
+}
+function __c104(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          overlapPolicy: S.optional(S.String),
+          scheduledTime: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "TriggerImmediatelyRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          startTime: S.optional(S.String),
+          endTime: S.optional(S.String),
+          overlapPolicy: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "BackfillRequest" });
+    case 2:
+      return S.Array(__S(3329, __c104, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          triggerImmediately: S.optional(__S(3328, __c104, 0)),
+          backfillRequest: S.optional(__S(3330, __c104, 2)),
+          pause: S.optional(S.String),
+          unpause: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "SchedulePatch" });
+  }
+}
+function __c105(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          buildId: S.optional(S.String),
+          deploymentName: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "WorkerDeploymentVersion" });
+  }
+}
+function __c106(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -11467,22 +11667,26 @@ function __c48(j: number): any {
         ),
       ).annotate({ identifier: "ListWorkflowRulesRequest" });
     case 1:
-      return S.Array(__S(69, __c8, 5));
+      return S.Array(__S(4736, __c148, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          rules: S.optional(__S(385, __c48, 1)),
+          rules: S.optional(__S(3393, __c106, 1)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({
         identifier: "ListWorkflowRulesResponse",
       });
-    case 3:
+  }
+}
+function __c107(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           namespace: S.String.pipe(T.Label()),
           scheduleId: S.String.pipe(T.Label()),
-          patch: S.optional(__S(51, __c6, 3)),
+          patch: S.optional(__S(3331, __c104, 3)),
           identity: S.optional(S.String),
           requestId: S.optional(S.String),
         }).pipe(
@@ -11493,11 +11697,15 @@ function __c48(j: number): any {
           }),
         ),
       ).annotate({ identifier: "PatchScheduleRequest" });
-    case 4:
+  }
+}
+function __c108(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           namespace: S.String.pipe(T.Label()),
-          execution: S.optional(__S(85, __c10, 5)),
+          execution: S.optional(__S(512, __c16, 0)),
           identity: S.optional(S.String),
           id: S.optional(S.String),
           type: S.optional(S.String),
@@ -11511,7 +11719,11 @@ function __c48(j: number): any {
           }),
         ),
       ).annotate({ identifier: "PauseActivityRequest" });
-    case 5:
+  }
+}
+function __c109(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           namespace: S.String.pipe(T.Label()),
@@ -11532,7 +11744,11 @@ function __c48(j: number): any {
       ).annotate({
         identifier: "PauseActivityExecutionRequest",
       });
-    case 6:
+  }
+}
+function __c110(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           namespace: S.String.pipe(T.Label()),
@@ -11551,7 +11767,11 @@ function __c48(j: number): any {
       ).annotate({
         identifier: "PauseWorkflowExecutionRequest",
       });
-    case 7:
+  }
+}
+function __c111(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           namespace: S.String.pipe(T.Label()),
@@ -11567,20 +11787,20 @@ function __c48(j: number): any {
       ).annotate({
         identifier: "PollActivityExecutionRequest",
       });
-  }
-}
-function __c49(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           runId: S.optional(S.String),
-          outcome: S.optional(__S(99, __c12, 3)),
+          outcome: S.optional(__S(704, __c22, 0)),
         }),
       ).annotate({
         identifier: "PollActivityExecutionResponse",
       });
-    case 1:
+  }
+}
+function __c112(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           namespace: S.String.pipe(T.Label()),
@@ -11597,34 +11817,30 @@ function __c49(j: number): any {
       ).annotate({
         identifier: "PollNexusOperationExecutionRequest",
       });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           runId: S.optional(S.String),
           waitStage: S.optional(S.String),
           operationToken: S.optional(S.String),
           result: S.optional(S.Unknown),
-          failure: S.optional(__S(89, __c11, 1)),
+          failure: S.optional(__S(554, __c17, 10)),
         }),
       ).annotate({
         identifier: "PollNexusOperationExecutionResponse",
       });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          queryType: S.optional(S.String),
-          queryArgs: S.optional(__S(32, __c4, 0)),
-          header: S.optional(__S(35, __c4, 3)),
-        }),
-      ).annotate({ identifier: "WorkflowQuery" });
-    case 4:
+  }
+}
+function __c113(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           namespace: S.String.pipe(T.Label()),
           execution_workflow_id: S.String.pipe(T.Label()),
           query_query_type: S.String.pipe(T.Label()),
-          execution: S.optional(__S(85, __c10, 5)),
-          query: S.optional(__S(395, __c49, 3)),
+          execution: S.optional(__S(512, __c16, 0)),
+          query: S.optional(__S(3648, __c114, 0)),
           queryRejectCondition: S.optional(S.String),
         }).pipe(
           T.Http({
@@ -11634,25 +11850,41 @@ function __c49(j: number): any {
           }),
         ),
       ).annotate({ identifier: "QueryWorkflowRequest" });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           status: S.optional(S.String),
         }),
       ).annotate({ identifier: "QueryRejected" });
-    case 6:
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          queryResult: S.optional(__S(32, __c4, 0)),
-          queryRejected: S.optional(__S(397, __c49, 5)),
+          queryResult: S.optional(__S(2976, __c93, 0)),
+          queryRejected: S.optional(__S(3617, __c113, 1)),
         }),
       ).annotate({ identifier: "QueryWorkflowResponse" });
-    case 7:
+  }
+}
+function __c114(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          queryType: S.optional(S.String),
+          queryArgs: S.optional(__S(2976, __c93, 0)),
+          header: S.optional(__S(3072, __c96, 0)),
+        }),
+      ).annotate({ identifier: "WorkflowQuery" });
+  }
+}
+function __c115(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           namespace: S.String.pipe(T.Label()),
           taskToken: S.optional(S.String),
-          details: S.optional(__S(32, __c4, 0)),
+          details: S.optional(__S(2976, __c93, 0)),
           identity: S.optional(S.String),
           resourceId: S.optional(S.String),
         }).pipe(
@@ -11667,7 +11899,7 @@ function __c49(j: number): any {
       });
   }
 }
-function __c50(j: number): any {
+function __c116(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -11679,14 +11911,18 @@ function __c50(j: number): any {
       ).annotate({
         identifier: "RecordActivityTaskHeartbeatResponse",
       });
-    case 1:
+  }
+}
+function __c117(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           namespace: S.String.pipe(T.Label()),
           activityId: S.String.pipe(T.Label()),
           workflowId: S.optional(S.String),
           runId: S.optional(S.String),
-          details: S.optional(__S(32, __c4, 0)),
+          details: S.optional(__S(2976, __c93, 0)),
           identity: S.optional(S.String),
           resourceId: S.optional(S.String),
         }).pipe(
@@ -11699,14 +11935,47 @@ function __c50(j: number): any {
       ).annotate({
         identifier: "RecordActivityTaskHeartbeatByIdRequest",
       });
-    case 2:
-      return S.Array(__S(168, __c21, 0));
-    case 3:
+  }
+}
+function __c118(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          namespace: S.String.pipe(T.Label()),
+          deploymentName: S.String.pipe(T.Label()),
+          identity: S.optional(S.String),
+          requestId: S.optional(S.String),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/api/v1/namespaces/{namespace}/worker-deployments/{deploymentName}",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateWorkerDeploymentRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          conflictToken: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "CreateWorkerDeploymentResponse",
+      });
+  }
+}
+function __c119(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(1319, __c41, 7));
+    case 1:
       return S.suspend(() =>
         S.Struct({
           namespace: S.String.pipe(T.Label()),
           identity: S.optional(S.String),
-          workerHeartbeat: S.optional(__S(402, __c50, 2)),
+          workerHeartbeat: S.optional(__S(3808, __c119, 0)),
           resourceId: S.optional(S.String),
         }).pipe(
           T.Http({
@@ -11718,16 +11987,20 @@ function __c50(j: number): any {
       ).annotate({
         identifier: "RecordWorkerHeartbeatRequest",
       });
-    case 4:
+  }
+}
+function __c120(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           namespace: S.optional(S.String),
           description: S.optional(S.String),
           ownerEmail: S.optional(S.String),
           workflowExecutionRetentionPeriod: S.optional(S.String),
-          clusters: S.optional(__S(124, __c15, 4)),
+          clusters: S.optional(__S(897, __c28, 1)),
           activeClusterName: S.optional(S.String),
-          data: S.optional(__S(100, __c12, 4)),
+          data: S.optional(__S(480, __c15, 0)),
           securityToken: S.optional(S.String),
           isGlobalNamespace: S.optional(S.Boolean),
           historyArchivalState: S.optional(S.String),
@@ -11736,7 +12009,11 @@ function __c50(j: number): any {
           visibilityArchivalUri: S.optional(S.String),
         }).pipe(T.Http({ method: "POST", uri: "/api/v1/namespaces", code: 200 })),
       ).annotate({ identifier: "RegisterNamespaceRequest" });
-    case 5:
+  }
+}
+function __c121(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           namespace: S.String.pipe(T.Label()),
@@ -11755,7 +12032,11 @@ function __c50(j: number): any {
       ).annotate({
         identifier: "RequestCancelActivityExecutionRequest",
       });
-    case 6:
+  }
+}
+function __c122(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           namespace: S.String.pipe(T.Label()),
@@ -11774,17 +12055,21 @@ function __c50(j: number): any {
       ).annotate({
         identifier: "RequestCancelNexusOperationExecutionRequest",
       });
-    case 7:
+  }
+}
+function __c123(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           namespace: S.String.pipe(T.Label()),
           workflow_execution_workflow_id: S.String.pipe(T.Label()),
-          workflowExecution: S.optional(__S(85, __c10, 5)),
+          workflowExecution: S.optional(__S(512, __c16, 0)),
           identity: S.optional(S.String),
           requestId: S.optional(S.String),
           firstExecutionRunId: S.optional(S.String),
           reason: S.optional(S.String),
-          links: S.optional(__S(97, __c12, 1)),
+          links: S.optional(__S(608, __c19, 0)),
         }).pipe(
           T.Http({
             method: "POST",
@@ -11797,13 +12082,13 @@ function __c50(j: number): any {
       });
   }
 }
-function __c51(j: number): any {
+function __c124(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           namespace: S.String.pipe(T.Label()),
-          execution: S.optional(__S(85, __c10, 5)),
+          execution: S.optional(__S(512, __c16, 0)),
           identity: S.optional(S.String),
           id: S.optional(S.String),
           type: S.optional(S.String),
@@ -11820,7 +12105,11 @@ function __c51(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ResetActivityRequest" });
-    case 1:
+  }
+}
+function __c125(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           namespace: S.String.pipe(T.Label()),
@@ -11843,55 +12132,22 @@ function __c51(j: number): any {
       ).annotate({
         identifier: "ResetActivityExecutionRequest",
       });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          signalName: S.optional(S.String),
-          input: S.optional(__S(32, __c4, 0)),
-          header: S.optional(__S(35, __c4, 3)),
-          links: S.optional(__S(97, __c12, 1)),
-        }),
-      ).annotate({
-        identifier: "PostResetOperationSignalWorkflow",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          versioningOverride: S.optional(__S(41, __c5, 1)),
-          priority: S.optional(__S(42, __c5, 2)),
-          timeSkippingConfig: S.optional(__S(264, __c33, 0)),
-        }),
-      ).annotate({ identifier: "WorkflowExecutionOptions" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          workflowExecutionOptions: S.optional(__S(411, __c51, 3)),
-          updateMask: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "PostResetOperationUpdateWorkflowOptions",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          signalWorkflow: S.optional(__S(410, __c51, 2)),
-          updateWorkflowOptions: S.optional(__S(412, __c51, 4)),
-        }),
-      ).annotate({ identifier: "PostResetOperation" });
-    case 6:
-      return S.Array(__S(413, __c51, 5));
-    case 7:
+  }
+}
+function __c126(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           namespace: S.String.pipe(T.Label()),
           workflow_execution_workflow_id: S.String.pipe(T.Label()),
-          workflowExecution: S.optional(__S(85, __c10, 5)),
+          workflowExecution: S.optional(__S(512, __c16, 0)),
           reason: S.optional(S.String),
           workflowTaskFinishEventId: S.optional(S.String),
           requestId: S.optional(S.String),
           resetReapplyType: S.optional(S.String),
-          resetReapplyExcludeTypes: S.optional(__S(56, __c7, 0)),
-          postResetOperations: S.optional(__S(414, __c51, 6)),
+          resetReapplyExcludeTypes: S.optional(__S(4224, __c132, 0)),
+          postResetOperations: S.optional(__S(4067, __c127, 3)),
           identity: S.optional(S.String),
         }).pipe(
           T.Http({
@@ -11903,11 +12159,7 @@ function __c51(j: number): any {
       ).annotate({
         identifier: "ResetWorkflowExecutionRequest",
       });
-  }
-}
-function __c52(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           runId: S.optional(S.String),
@@ -11915,17 +12167,66 @@ function __c52(j: number): any {
       ).annotate({
         identifier: "ResetWorkflowExecutionResponse",
       });
+  }
+}
+function __c127(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          signalName: S.optional(S.String),
+          input: S.optional(__S(2976, __c93, 0)),
+          header: S.optional(__S(3072, __c96, 0)),
+          links: S.optional(__S(608, __c19, 0)),
+        }),
+      ).annotate({
+        identifier: "PostResetOperationSignalWorkflow",
+      });
     case 1:
+      return S.suspend(() =>
+        S.Struct({
+          workflowExecutionOptions: S.optional(__S(4096, __c128, 0)),
+          updateMask: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "PostResetOperationUpdateWorkflowOptions",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          signalWorkflow: S.optional(__S(4064, __c127, 0)),
+          updateWorkflowOptions: S.optional(__S(4065, __c127, 1)),
+        }),
+      ).annotate({ identifier: "PostResetOperation" });
+    case 3:
+      return S.Array(__S(4066, __c127, 2));
+  }
+}
+function __c128(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          versioningOverride: S.optional(__S(3201, __c100, 1)),
+          priority: S.optional(__S(3104, __c97, 0)),
+          timeSkippingConfig: S.optional(__S(2080, __c65, 0)),
+        }),
+      ).annotate({ identifier: "WorkflowExecutionOptions" });
+  }
+}
+function __c129(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           namespace: S.String.pipe(T.Label()),
           taskToken: S.optional(S.String),
-          details: S.optional(__S(32, __c4, 0)),
+          details: S.optional(__S(2976, __c93, 0)),
           identity: S.optional(S.String),
           resourceId: S.optional(S.String),
-          workerVersion: S.optional(__S(195, __c24, 3)),
-          deployment: S.optional(__S(40, __c5, 0)),
-          deploymentOptions: S.optional(__S(141, __c17, 5)),
+          workerVersion: S.optional(__S(1536, __c48, 0)),
+          deployment: S.optional(__S(3168, __c99, 0)),
+          deploymentOptions: S.optional(__S(1184, __c37, 0)),
         }).pipe(
           T.Http({
             method: "POST",
@@ -11936,16 +12237,20 @@ function __c52(j: number): any {
       ).annotate({
         identifier: "RespondActivityTaskCanceledRequest",
       });
-    case 2:
+  }
+}
+function __c130(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           namespace: S.String.pipe(T.Label()),
           activityId: S.String.pipe(T.Label()),
           workflowId: S.optional(S.String),
           runId: S.optional(S.String),
-          details: S.optional(__S(32, __c4, 0)),
+          details: S.optional(__S(2976, __c93, 0)),
           identity: S.optional(S.String),
-          deploymentOptions: S.optional(__S(141, __c17, 5)),
+          deploymentOptions: S.optional(__S(1184, __c37, 0)),
           resourceId: S.optional(S.String),
         }).pipe(
           T.Http({
@@ -11957,17 +12262,99 @@ function __c52(j: number): any {
       ).annotate({
         identifier: "RespondActivityTaskCanceledByIdRequest",
       });
-    case 3:
+  }
+}
+function __c131(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          namespace: S.String.pipe(T.Label()),
+          deployment_version_deployment_name: S.String.pipe(T.Label()),
+          deploymentVersion: S.optional(__S(3360, __c105, 0)),
+          computeConfig: S.optional(__S(4257, __c133, 1)),
+          identity: S.optional(S.String),
+          requestId: S.optional(S.String),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/api/v1/namespaces/{namespace}/worker-deployment-versions/{deployment_version_deployment_name}",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateWorkerDeploymentVersionRequest",
+      });
+  }
+}
+function __c132(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c133(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, __S(4290, __c134, 2));
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          scalingGroups: S.optional(__S(4256, __c133, 0)),
+        }),
+      ).annotate({ identifier: "ComputeConfig" });
+  }
+}
+function __c134(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          type: S.optional(S.String),
+          details: S.optional(S.Unknown),
+          nexusEndpoint: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ComputeProvider" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          type: S.optional(S.String),
+          details: S.optional(S.Unknown),
+        }),
+      ).annotate({ identifier: "ComputeScaler" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          taskQueueTypes: S.optional(__S(4224, __c132, 0)),
+          provider: S.optional(__S(4288, __c134, 0)),
+          scaler: S.optional(__S(4289, __c134, 1)),
+        }),
+      ).annotate({
+        identifier: "ComputeConfigScalingGroup",
+      });
+  }
+}
+function __c135(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Unknown.pipe(T.RawResponseRoot())).annotate({
+        identifier: "CreateWorkerDeploymentVersionResponse2",
+      });
+  }
+}
+function __c136(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           namespace: S.String.pipe(T.Label()),
           taskToken: S.optional(S.String),
-          result: S.optional(__S(32, __c4, 0)),
+          result: S.optional(__S(2976, __c93, 0)),
           identity: S.optional(S.String),
           resourceId: S.optional(S.String),
-          workerVersion: S.optional(__S(195, __c24, 3)),
-          deployment: S.optional(__S(40, __c5, 0)),
-          deploymentOptions: S.optional(__S(141, __c17, 5)),
+          workerVersion: S.optional(__S(1536, __c48, 0)),
+          deployment: S.optional(__S(3168, __c99, 0)),
+          deploymentOptions: S.optional(__S(1184, __c37, 0)),
         }).pipe(
           T.Http({
             method: "POST",
@@ -11978,14 +12365,18 @@ function __c52(j: number): any {
       ).annotate({
         identifier: "RespondActivityTaskCompletedRequest",
       });
-    case 4:
+  }
+}
+function __c137(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           namespace: S.String.pipe(T.Label()),
           activityId: S.String.pipe(T.Label()),
           workflowId: S.optional(S.String),
           runId: S.optional(S.String),
-          result: S.optional(__S(32, __c4, 0)),
+          result: S.optional(__S(2976, __c93, 0)),
           identity: S.optional(S.String),
           resourceId: S.optional(S.String),
         }).pipe(
@@ -11998,18 +12389,22 @@ function __c52(j: number): any {
       ).annotate({
         identifier: "RespondActivityTaskCompletedByIdRequest",
       });
-    case 5:
+  }
+}
+function __c138(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           namespace: S.String.pipe(T.Label()),
           taskToken: S.optional(S.String),
-          failure: S.optional(__S(89, __c11, 1)),
+          failure: S.optional(__S(554, __c17, 10)),
           identity: S.optional(S.String),
           resourceId: S.optional(S.String),
-          lastHeartbeatDetails: S.optional(__S(32, __c4, 0)),
-          workerVersion: S.optional(__S(195, __c24, 3)),
-          deployment: S.optional(__S(40, __c5, 0)),
-          deploymentOptions: S.optional(__S(141, __c17, 5)),
+          lastHeartbeatDetails: S.optional(__S(2976, __c93, 0)),
+          workerVersion: S.optional(__S(1536, __c48, 0)),
+          deployment: S.optional(__S(3168, __c99, 0)),
+          deploymentOptions: S.optional(__S(1184, __c37, 0)),
         }).pipe(
           T.Http({
             method: "POST",
@@ -12020,19 +12415,23 @@ function __c52(j: number): any {
       ).annotate({
         identifier: "RespondActivityTaskFailedRequest",
       });
-    case 6:
-      return S.Array(__S(89, __c11, 1));
-    case 7:
+  }
+}
+function __c139(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(554, __c17, 10));
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          failures: S.optional(__S(422, __c52, 6)),
+          failures: S.optional(__S(4448, __c139, 0)),
         }),
       ).annotate({
         identifier: "RespondActivityTaskFailedResponse",
       });
   }
 }
-function __c53(j: number): any {
+function __c140(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -12041,9 +12440,9 @@ function __c53(j: number): any {
           activityId: S.String.pipe(T.Label()),
           workflowId: S.optional(S.String),
           runId: S.optional(S.String),
-          failure: S.optional(__S(89, __c11, 1)),
+          failure: S.optional(__S(554, __c17, 10)),
           identity: S.optional(S.String),
-          lastHeartbeatDetails: S.optional(__S(32, __c4, 0)),
+          lastHeartbeatDetails: S.optional(__S(2976, __c93, 0)),
           resourceId: S.optional(S.String),
         }).pipe(
           T.Http({
@@ -12055,21 +12454,25 @@ function __c53(j: number): any {
       ).annotate({
         identifier: "RespondActivityTaskFailedByIdRequest",
       });
-    case 1:
+  }
+}
+function __c141(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          upsertEntries: S.optional(__S(34, __c4, 2)),
-          removeEntries: S.optional(__S(24, __c3, 0)),
+          upsertEntries: S.optional(__S(2880, __c90, 0)),
+          removeEntries: S.optional(__S(3040, __c95, 0)),
         }),
       ).annotate({ identifier: "UpdateDeploymentMetadata" });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           namespace: S.String.pipe(T.Label()),
           deployment_series_name: S.String.pipe(T.Label()),
-          deployment: S.optional(__S(40, __c5, 0)),
+          deployment: S.optional(__S(3168, __c99, 0)),
           identity: S.optional(S.String),
-          updateMetadata: S.optional(__S(425, __c53, 1)),
+          updateMetadata: S.optional(__S(4512, __c141, 0)),
         }).pipe(
           T.Http({
             method: "POST",
@@ -12080,16 +12483,20 @@ function __c53(j: number): any {
       ).annotate({
         identifier: "SetCurrentDeploymentRequest",
       });
-    case 3:
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          currentDeploymentInfo: S.optional(__S(113, __c14, 1)),
-          previousDeploymentInfo: S.optional(__S(113, __c14, 1)),
+          currentDeploymentInfo: S.optional(__S(802, __c25, 2)),
+          previousDeploymentInfo: S.optional(__S(802, __c25, 2)),
         }),
       ).annotate({
         identifier: "SetCurrentDeploymentResponse",
       });
-    case 4:
+  }
+}
+function __c142(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           namespace: S.String.pipe(T.Label()),
@@ -12110,17 +12517,21 @@ function __c53(j: number): any {
       ).annotate({
         identifier: "SetWorkerDeploymentCurrentVersionRequest",
       });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           conflictToken: S.optional(S.String),
           previousVersion: S.optional(S.String),
-          previousDeploymentVersion: S.optional(__S(38, __c4, 6)),
+          previousDeploymentVersion: S.optional(__S(3360, __c105, 0)),
         }),
       ).annotate({
         identifier: "SetWorkerDeploymentCurrentVersionResponse",
       });
-    case 6:
+  }
+}
+function __c143(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           namespace: S.String.pipe(T.Label()),
@@ -12139,7 +12550,7 @@ function __c53(j: number): any {
       ).annotate({
         identifier: "SetWorkerDeploymentManagerRequest",
       });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           conflictToken: S.optional(S.String),
@@ -12150,7 +12561,7 @@ function __c53(j: number): any {
       });
   }
 }
-function __c54(j: number): any {
+function __c144(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -12179,21 +12590,25 @@ function __c54(j: number): any {
         S.Struct({
           conflictToken: S.optional(S.String),
           previousVersion: S.optional(S.String),
-          previousDeploymentVersion: S.optional(__S(38, __c4, 6)),
+          previousDeploymentVersion: S.optional(__S(3360, __c105, 0)),
           previousPercentage: S.optional(S.Number),
         }),
       ).annotate({
         identifier: "SetWorkerDeploymentRampingVersionResponse",
       });
-    case 2:
+  }
+}
+function __c145(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           namespace: S.String.pipe(T.Label()),
           workflowId: S.String.pipe(T.Label()),
           signalName: S.String.pipe(T.Label()),
-          workflowType: S.optional(__S(30, __c3, 6)),
-          taskQueue: S.optional(__S(31, __c3, 7)),
-          input: S.optional(__S(32, __c4, 0)),
+          workflowType: S.optional(__S(2944, __c92, 0)),
+          taskQueue: S.optional(__S(3232, __c101, 0)),
+          input: S.optional(__S(2976, __c93, 0)),
           workflowExecutionTimeout: S.optional(S.String),
           workflowRunTimeout: S.optional(S.String),
           workflowTaskTimeout: S.optional(S.String),
@@ -12201,19 +12616,19 @@ function __c54(j: number): any {
           requestId: S.optional(S.String),
           workflowIdReusePolicy: S.optional(S.String),
           workflowIdConflictPolicy: S.optional(S.String),
-          signalInput: S.optional(__S(32, __c4, 0)),
+          signalInput: S.optional(__S(2976, __c93, 0)),
           control: S.optional(S.String),
-          retryPolicy: S.optional(__S(33, __c4, 1)),
+          retryPolicy: S.optional(__S(3136, __c98, 0)),
           cronSchedule: S.optional(S.String),
-          memo: S.optional(__S(35, __c4, 3)),
-          searchAttributes: S.optional(__S(36, __c4, 4)),
-          header: S.optional(__S(35, __c4, 3)),
+          memo: S.optional(__S(3072, __c96, 0)),
+          searchAttributes: S.optional(__S(2912, __c91, 0)),
+          header: S.optional(__S(3072, __c96, 0)),
           workflowStartDelay: S.optional(S.String),
-          userMetadata: S.optional(__S(37, __c4, 5)),
-          links: S.optional(__S(97, __c12, 1)),
-          versioningOverride: S.optional(__S(41, __c5, 1)),
-          priority: S.optional(__S(42, __c5, 2)),
-          timeSkippingConfig: S.optional(__S(264, __c33, 0)),
+          userMetadata: S.optional(__S(3008, __c94, 0)),
+          links: S.optional(__S(608, __c19, 0)),
+          versioningOverride: S.optional(__S(3201, __c100, 1)),
+          priority: S.optional(__S(3104, __c97, 0)),
+          timeSkippingConfig: S.optional(__S(2080, __c65, 0)),
         }).pipe(
           T.Http({
             method: "POST",
@@ -12224,29 +12639,33 @@ function __c54(j: number): any {
       ).annotate({
         identifier: "SignalWithStartWorkflowExecutionRequest",
       });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           runId: S.optional(S.String),
           started: S.optional(S.Boolean),
-          signalLink: S.optional(__S(96, __c12, 0)),
+          signalLink: S.optional(__S(582, __c18, 6)),
         }),
       ).annotate({
         identifier: "SignalWithStartWorkflowExecutionResponse",
       });
-    case 4:
+  }
+}
+function __c146(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           namespace: S.String.pipe(T.Label()),
           workflow_execution_workflow_id: S.String.pipe(T.Label()),
           signalName: S.String.pipe(T.Label()),
-          workflowExecution: S.optional(__S(85, __c10, 5)),
-          input: S.optional(__S(32, __c4, 0)),
+          workflowExecution: S.optional(__S(512, __c16, 0)),
+          input: S.optional(__S(2976, __c93, 0)),
           identity: S.optional(S.String),
           requestId: S.optional(S.String),
           control: S.optional(S.String),
-          header: S.optional(__S(35, __c4, 3)),
-          links: S.optional(__S(97, __c12, 1)),
+          header: S.optional(__S(3072, __c96, 0)),
+          links: S.optional(__S(608, __c19, 0)),
         }).pipe(
           T.Http({
             method: "POST",
@@ -12257,46 +12676,117 @@ function __c54(j: number): any {
       ).annotate({
         identifier: "SignalWorkflowExecutionRequest",
       });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          link: S.optional(__S(96, __c12, 0)),
+          link: S.optional(__S(582, __c18, 6)),
         }),
       ).annotate({
         identifier: "SignalWorkflowExecutionResponse",
       });
-    case 6:
+  }
+}
+function __c147(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          attachRequestId: S.optional(S.Boolean),
-          attachCompletionCallbacks: S.optional(S.Boolean),
-          attachLinks: S.optional(S.Boolean),
+          namespace: S.String.pipe(T.Label()),
+          spec: S.optional(__S(4771, __c149, 3)),
+          forceScan: S.optional(S.Boolean),
+          requestId: S.optional(S.String),
+          identity: S.optional(S.String),
+          description: S.optional(S.String),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/api/v1/namespaces/{namespace}/workflow-rules",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateWorkflowRuleRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          rule: S.optional(__S(4736, __c148, 0)),
+          jobId: S.optional(S.String),
         }),
-      ).annotate({ identifier: "OnConflictOptions" });
-    case 7:
+      ).annotate({
+        identifier: "CreateWorkflowRuleResponse",
+      });
+  }
+}
+function __c148(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          createTime: S.optional(S.String),
+          spec: S.optional(__S(4771, __c149, 3)),
+          createdByIdentity: S.optional(S.String),
+          description: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "WorkflowRule" });
+  }
+}
+function __c149(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          predicate: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "WorkflowRuleSpecActivityStartingTrigger",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          activityPause: S.optional(S.Unknown),
+        }),
+      ).annotate({ identifier: "WorkflowRuleAction" });
+    case 2:
+      return S.Array(__S(4769, __c149, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          activityStart: S.optional(__S(4768, __c149, 0)),
+          visibilityQuery: S.optional(S.String),
+          actions: S.optional(__S(4770, __c149, 2)),
+          expirationTime: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "WorkflowRuleSpec" });
+  }
+}
+function __c150(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           namespace: S.String.pipe(T.Label()),
           activityId: S.String.pipe(T.Label()),
           identity: S.optional(S.String),
           requestId: S.optional(S.String),
-          activityType: S.optional(__S(30, __c3, 6)),
-          taskQueue: S.optional(__S(31, __c3, 7)),
+          activityType: S.optional(__S(2944, __c92, 0)),
+          taskQueue: S.optional(__S(3232, __c101, 0)),
           scheduleToCloseTimeout: S.optional(S.String),
           scheduleToStartTimeout: S.optional(S.String),
           startToCloseTimeout: S.optional(S.String),
           heartbeatTimeout: S.optional(S.String),
-          retryPolicy: S.optional(__S(33, __c4, 1)),
-          input: S.optional(__S(32, __c4, 0)),
+          retryPolicy: S.optional(__S(3136, __c98, 0)),
+          input: S.optional(__S(2976, __c93, 0)),
           idReusePolicy: S.optional(S.String),
           idConflictPolicy: S.optional(S.String),
-          searchAttributes: S.optional(__S(36, __c4, 4)),
-          header: S.optional(__S(35, __c4, 3)),
-          userMetadata: S.optional(__S(37, __c4, 5)),
-          priority: S.optional(__S(42, __c5, 2)),
-          completionCallbacks: S.optional(__S(261, __c32, 5)),
-          links: S.optional(__S(97, __c12, 1)),
-          onConflictOptions: S.optional(__S(438, __c54, 6)),
+          searchAttributes: S.optional(__S(2912, __c91, 0)),
+          header: S.optional(__S(3072, __c96, 0)),
+          userMetadata: S.optional(__S(3008, __c94, 0)),
+          priority: S.optional(__S(3104, __c97, 0)),
+          completionCallbacks: S.optional(__S(2112, __c66, 0)),
+          links: S.optional(__S(608, __c19, 0)),
+          onConflictOptions: S.optional(__S(4832, __c151, 0)),
           startDelay: S.optional(S.String),
         }).pipe(
           T.Http({
@@ -12308,39 +12798,51 @@ function __c54(j: number): any {
       ).annotate({
         identifier: "StartActivityExecutionRequest",
       });
-  }
-}
-function __c55(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           runId: S.optional(S.String),
           started: S.optional(S.Boolean),
-          link: S.optional(__S(96, __c12, 0)),
+          link: S.optional(__S(582, __c18, 6)),
         }),
       ).annotate({
         identifier: "StartActivityExecutionResponse",
       });
-    case 1:
+  }
+}
+function __c151(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          details: S.optional(__S(32, __c4, 0)),
+          attachRequestId: S.optional(S.Boolean),
+          attachCompletionCallbacks: S.optional(S.Boolean),
+          attachLinks: S.optional(S.Boolean),
+        }),
+      ).annotate({ identifier: "OnConflictOptions" });
+  }
+}
+function __c152(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          details: S.optional(__S(2976, __c93, 0)),
           identity: S.optional(S.String),
         }),
       ).annotate({
         identifier: "BatchOperationTermination",
       });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           signal: S.optional(S.String),
-          input: S.optional(__S(32, __c4, 0)),
-          header: S.optional(__S(35, __c4, 3)),
+          input: S.optional(__S(2976, __c93, 0)),
+          header: S.optional(__S(3072, __c96, 0)),
           identity: S.optional(S.String),
         }),
       ).annotate({ identifier: "BatchOperationSignal" });
-    case 3:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           identity: S.optional(S.String),
@@ -12348,37 +12850,37 @@ function __c55(j: number): any {
       ).annotate({
         identifier: "BatchOperationCancellation",
       });
-    case 4:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           workflowTaskId: S.optional(S.String),
           buildId: S.optional(S.String),
           resetReapplyType: S.optional(S.String),
           currentRunOnly: S.optional(S.Boolean),
-          resetReapplyExcludeTypes: S.optional(__S(56, __c7, 0)),
+          resetReapplyExcludeTypes: S.optional(__S(4224, __c132, 0)),
         }),
       ).annotate({ identifier: "ResetOptions" });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          identity: S.optional(S.String),
+          options: S.optional(__S(4867, __c152, 3)),
+          resetType: S.optional(S.String),
+          resetReapplyType: S.optional(S.String),
+          postResetOperations: S.optional(__S(4067, __c127, 3)),
+        }),
+      ).annotate({ identifier: "BatchOperationReset" });
     case 5:
       return S.suspend(() =>
         S.Struct({
           identity: S.optional(S.String),
-          options: S.optional(__S(444, __c55, 4)),
-          resetType: S.optional(S.String),
-          resetReapplyType: S.optional(S.String),
-          postResetOperations: S.optional(__S(414, __c51, 6)),
-        }),
-      ).annotate({ identifier: "BatchOperationReset" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          identity: S.optional(S.String),
-          workflowExecutionOptions: S.optional(__S(411, __c51, 3)),
+          workflowExecutionOptions: S.optional(__S(4096, __c128, 0)),
           updateMask: S.optional(S.String),
         }),
       ).annotate({
         identifier: "BatchOperationUpdateWorkflowExecutionOptions",
       });
-    case 7:
+    case 6:
       return S.suspend(() =>
         S.Struct({
           identity: S.optional(S.String),
@@ -12391,11 +12893,7 @@ function __c55(j: number): any {
       ).annotate({
         identifier: "BatchOperationUnpauseActivities",
       });
-  }
-}
-function __c56(j: number): any {
-  switch (j) {
-    case 0:
+    case 7:
       return S.suspend(() =>
         S.Struct({
           identity: S.optional(S.String),
@@ -12410,37 +12908,37 @@ function __c56(j: number): any {
       ).annotate({
         identifier: "BatchOperationResetActivities",
       });
-    case 1:
+    case 8:
       return S.suspend(() =>
         S.Struct({
           identity: S.optional(S.String),
           type: S.optional(S.String),
           matchAll: S.optional(S.Boolean),
-          activityOptions: S.optional(__S(203, __c25, 3)),
+          activityOptions: S.optional(__S(1632, __c51, 0)),
           updateMask: S.optional(S.String),
           restoreOriginal: S.optional(S.Boolean),
         }),
       ).annotate({
         identifier: "BatchOperationUpdateActivityOptions",
       });
-    case 2:
+    case 9:
       return S.suspend(() =>
         S.Struct({
           namespace: S.String.pipe(T.Label()),
           jobId: S.String.pipe(T.Label()),
           visibilityQuery: S.optional(S.String),
           reason: S.optional(S.String),
-          executions: S.optional(__S(134, __c16, 6)),
+          executions: S.optional(__S(1056, __c33, 0)),
           maxOperationsPerSecond: S.optional(S.Number),
-          terminationOperation: S.optional(__S(441, __c55, 1)),
-          signalOperation: S.optional(__S(442, __c55, 2)),
-          cancellationOperation: S.optional(__S(443, __c55, 3)),
-          deletionOperation: S.optional(__S(443, __c55, 3)),
-          resetOperation: S.optional(__S(445, __c55, 5)),
-          updateWorkflowOptionsOperation: S.optional(__S(446, __c55, 6)),
-          unpauseActivitiesOperation: S.optional(__S(447, __c55, 7)),
-          resetActivitiesOperation: S.optional(__S(448, __c56, 0)),
-          updateActivityOptionsOperation: S.optional(__S(449, __c56, 1)),
+          terminationOperation: S.optional(__S(4864, __c152, 0)),
+          signalOperation: S.optional(__S(4865, __c152, 1)),
+          cancellationOperation: S.optional(__S(4866, __c152, 2)),
+          deletionOperation: S.optional(__S(4866, __c152, 2)),
+          resetOperation: S.optional(__S(4868, __c152, 4)),
+          updateWorkflowOptionsOperation: S.optional(__S(4869, __c152, 5)),
+          unpauseActivitiesOperation: S.optional(__S(4870, __c152, 6)),
+          resetActivitiesOperation: S.optional(__S(4871, __c152, 7)),
+          updateActivityOptionsOperation: S.optional(__S(4872, __c152, 8)),
         }).pipe(
           T.Http({
             method: "POST",
@@ -12451,7 +12949,11 @@ function __c56(j: number): any {
       ).annotate({
         identifier: "StartBatchOperationRequest",
       });
-    case 3:
+  }
+}
+function __c153(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           namespace: S.String.pipe(T.Label()),
@@ -12467,9 +12969,9 @@ function __c56(j: number): any {
           input: S.optional(S.Unknown),
           idReusePolicy: S.optional(S.String),
           idConflictPolicy: S.optional(S.String),
-          searchAttributes: S.optional(__S(36, __c4, 4)),
-          nexusHeader: S.optional(__S(100, __c12, 4)),
-          userMetadata: S.optional(__S(37, __c4, 5)),
+          searchAttributes: S.optional(__S(2912, __c91, 0)),
+          nexusHeader: S.optional(__S(480, __c15, 0)),
+          userMetadata: S.optional(__S(3008, __c94, 0)),
         }).pipe(
           T.Http({
             method: "POST",
@@ -12480,7 +12982,7 @@ function __c56(j: number): any {
       ).annotate({
         identifier: "StartNexusOperationExecutionRequest",
       });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           runId: S.optional(S.String),
@@ -12489,14 +12991,18 @@ function __c56(j: number): any {
       ).annotate({
         identifier: "StartNexusOperationExecutionResponse",
       });
-    case 5:
+  }
+}
+function __c154(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           namespace: S.String.pipe(T.Label()),
           workflowId: S.String.pipe(T.Label()),
-          workflowType: S.optional(__S(30, __c3, 6)),
-          taskQueue: S.optional(__S(31, __c3, 7)),
-          input: S.optional(__S(32, __c4, 0)),
+          workflowType: S.optional(__S(2944, __c92, 0)),
+          taskQueue: S.optional(__S(3232, __c101, 0)),
+          input: S.optional(__S(2976, __c93, 0)),
           workflowExecutionTimeout: S.optional(S.String),
           workflowRunTimeout: S.optional(S.String),
           workflowTaskTimeout: S.optional(S.String),
@@ -12504,23 +13010,23 @@ function __c56(j: number): any {
           requestId: S.optional(S.String),
           workflowIdReusePolicy: S.optional(S.String),
           workflowIdConflictPolicy: S.optional(S.String),
-          retryPolicy: S.optional(__S(33, __c4, 1)),
+          retryPolicy: S.optional(__S(3136, __c98, 0)),
           cronSchedule: S.optional(S.String),
-          memo: S.optional(__S(35, __c4, 3)),
-          searchAttributes: S.optional(__S(36, __c4, 4)),
-          header: S.optional(__S(35, __c4, 3)),
+          memo: S.optional(__S(3072, __c96, 0)),
+          searchAttributes: S.optional(__S(2912, __c91, 0)),
+          header: S.optional(__S(3072, __c96, 0)),
           requestEagerExecution: S.optional(S.Boolean),
-          continuedFailure: S.optional(__S(89, __c11, 1)),
-          lastCompletionResult: S.optional(__S(32, __c4, 0)),
+          continuedFailure: S.optional(__S(554, __c17, 10)),
+          lastCompletionResult: S.optional(__S(2976, __c93, 0)),
           workflowStartDelay: S.optional(S.String),
-          completionCallbacks: S.optional(__S(261, __c32, 5)),
-          userMetadata: S.optional(__S(37, __c4, 5)),
-          links: S.optional(__S(97, __c12, 1)),
-          versioningOverride: S.optional(__S(41, __c5, 1)),
-          onConflictOptions: S.optional(__S(438, __c54, 6)),
-          priority: S.optional(__S(42, __c5, 2)),
-          eagerWorkerDeploymentOptions: S.optional(__S(141, __c17, 5)),
-          timeSkippingConfig: S.optional(__S(264, __c33, 0)),
+          completionCallbacks: S.optional(__S(2112, __c66, 0)),
+          userMetadata: S.optional(__S(3008, __c94, 0)),
+          links: S.optional(__S(608, __c19, 0)),
+          versioningOverride: S.optional(__S(3201, __c100, 1)),
+          onConflictOptions: S.optional(__S(4832, __c151, 0)),
+          priority: S.optional(__S(3104, __c97, 0)),
+          eagerWorkerDeploymentOptions: S.optional(__S(1184, __c37, 0)),
+          timeSkippingConfig: S.optional(__S(2080, __c65, 0)),
         }).pipe(
           T.Http({
             method: "POST",
@@ -12531,83 +13037,83 @@ function __c56(j: number): any {
       ).annotate({
         identifier: "StartWorkflowExecutionRequest",
       });
-    case 6:
-      return S.Record(S.String, __S(395, __c49, 3));
-    case 7:
+    case 1:
+      return S.Record(S.String, __S(3648, __c114, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           _type: S.optional(S.String.pipe(T.Body("@type"))),
         }),
       ).annotate({ identifier: "GoogleProtobufAny" });
-  }
-}
-function __c57(j: number): any {
-  switch (j) {
-    case 0:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           protocolInstanceId: S.optional(S.String),
           eventId: S.optional(S.String),
           commandIndex: S.optional(S.String),
-          body: S.optional(__S(455, __c56, 7)),
+          body: S.optional(__S(4930, __c154, 2)),
         }),
       ).annotate({ identifier: "Message" });
-    case 1:
-      return S.Array(__S(456, __c57, 0));
-    case 2:
+    case 4:
+      return S.Array(__S(4931, __c154, 3));
+    case 5:
       return S.suspend(() =>
         S.Struct({
           pollRequestDeltaSuggestion: S.optional(S.Number),
         }),
       ).annotate({ identifier: "PollerScalingDecision" });
-    case 3:
+    case 6:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           weight: S.optional(S.Number),
         }),
       ).annotate({ identifier: "PollerGroupInfo" });
-    case 4:
-      return S.Array(__S(459, __c57, 3));
-    case 5:
+    case 7:
+      return S.Array(__S(4934, __c154, 6));
+    case 8:
       return S.suspend(() =>
         S.Struct({
           taskToken: S.optional(S.String),
-          workflowExecution: S.optional(__S(85, __c10, 5)),
-          workflowType: S.optional(__S(30, __c3, 6)),
+          workflowExecution: S.optional(__S(512, __c16, 0)),
+          workflowType: S.optional(__S(2944, __c92, 0)),
           previousStartedEventId: S.optional(S.String),
           startedEventId: S.optional(S.String),
           attempt: S.optional(S.Number),
           backlogCountHint: S.optional(S.String),
-          history: S.optional(__S(333, __c41, 5)),
+          history: S.optional(__S(2211, __c69, 3)),
           nextPageToken: S.optional(S.String),
-          query: S.optional(__S(395, __c49, 3)),
-          workflowExecutionTaskQueue: S.optional(__S(31, __c3, 7)),
+          query: S.optional(__S(3648, __c114, 0)),
+          workflowExecutionTaskQueue: S.optional(__S(3232, __c101, 0)),
           scheduledTime: S.optional(S.String),
           startedTime: S.optional(S.String),
-          queries: S.optional(__S(454, __c56, 6)),
-          messages: S.optional(__S(457, __c57, 1)),
-          pollerScalingDecision: S.optional(__S(458, __c57, 2)),
+          queries: S.optional(__S(4929, __c154, 1)),
+          messages: S.optional(__S(4932, __c154, 4)),
+          pollerScalingDecision: S.optional(__S(4933, __c154, 5)),
           pollerGroupId: S.optional(S.String),
-          pollerGroupInfos: S.optional(__S(460, __c57, 4)),
+          pollerGroupInfos: S.optional(__S(4935, __c154, 7)),
         }),
       ).annotate({
         identifier: "PollWorkflowTaskQueueResponse",
       });
-    case 6:
+    case 9:
       return S.suspend(() =>
         S.Struct({
           runId: S.optional(S.String),
           started: S.optional(S.Boolean),
           status: S.optional(S.String),
-          eagerWorkflowTask: S.optional(__S(461, __c57, 5)),
-          link: S.optional(__S(96, __c12, 0)),
+          eagerWorkflowTask: S.optional(__S(4936, __c154, 8)),
+          link: S.optional(__S(582, __c18, 6)),
         }),
       ).annotate({
         identifier: "StartWorkflowExecutionResponse",
       });
-    case 7:
+  }
+}
+function __c155(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           namespace: S.String.pipe(T.Label()),
@@ -12626,7 +13132,7 @@ function __c57(j: number): any {
       });
   }
 }
-function __c58(j: number): any {
+function __c156(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -12647,7 +13153,11 @@ function __c58(j: number): any {
       ).annotate({
         identifier: "TerminateActivityExecutionRequest",
       });
-    case 1:
+  }
+}
+function __c157(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           namespace: S.String.pipe(T.Label()),
@@ -12666,17 +13176,21 @@ function __c58(j: number): any {
       ).annotate({
         identifier: "TerminateNexusOperationExecutionRequest",
       });
-    case 2:
+  }
+}
+function __c158(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           namespace: S.String.pipe(T.Label()),
           workflow_execution_workflow_id: S.String.pipe(T.Label()),
-          workflowExecution: S.optional(__S(85, __c10, 5)),
+          workflowExecution: S.optional(__S(512, __c16, 0)),
           reason: S.optional(S.String),
-          details: S.optional(__S(32, __c4, 0)),
+          details: S.optional(__S(2976, __c93, 0)),
           identity: S.optional(S.String),
           firstExecutionRunId: S.optional(S.String),
-          links: S.optional(__S(97, __c12, 1)),
+          links: S.optional(__S(608, __c19, 0)),
         }).pipe(
           T.Http({
             method: "POST",
@@ -12687,14 +13201,18 @@ function __c58(j: number): any {
       ).annotate({
         identifier: "TerminateWorkflowExecutionRequest",
       });
-    case 3:
+  }
+}
+function __c159(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           namespace: S.String.pipe(T.Label()),
           execution_workflow_id: S.String.pipe(T.Label()),
-          execution: S.optional(__S(85, __c10, 5)),
+          execution: S.optional(__S(512, __c16, 0)),
           id: S.optional(S.String),
-          spec: S.optional(__S(67, __c8, 3)),
+          spec: S.optional(__S(4771, __c149, 3)),
           identity: S.optional(S.String),
         }).pipe(
           T.Http({
@@ -12706,7 +13224,7 @@ function __c58(j: number): any {
       ).annotate({
         identifier: "TriggerWorkflowRuleRequest",
       });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           applied: S.optional(S.Boolean),
@@ -12714,11 +13232,15 @@ function __c58(j: number): any {
       ).annotate({
         identifier: "TriggerWorkflowRuleResponse",
       });
-    case 5:
+  }
+}
+function __c160(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           namespace: S.String.pipe(T.Label()),
-          execution: S.optional(__S(85, __c10, 5)),
+          execution: S.optional(__S(512, __c16, 0)),
           identity: S.optional(S.String),
           id: S.optional(S.String),
           type: S.optional(S.String),
@@ -12734,7 +13256,24 @@ function __c58(j: number): any {
           }),
         ),
       ).annotate({ identifier: "UnpauseActivityRequest" });
-    case 6:
+  }
+}
+function __c161(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String.pipe(T.Label()),
+          version: S.optional(S.String.pipe(T.Query())),
+        }).pipe(T.Http({ method: "DELETE", uri: "/api/v1/nexus/endpoints/{id}", code: 200 })),
+      ).annotate({
+        identifier: "DeleteNexusEndpointRequest",
+      });
+  }
+}
+function __c162(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           namespace: S.String.pipe(T.Label()),
@@ -12757,7 +13296,11 @@ function __c58(j: number): any {
       ).annotate({
         identifier: "UnpauseActivityExecutionRequest",
       });
-    case 7:
+  }
+}
+function __c163(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           namespace: S.String.pipe(T.Label()),
@@ -12778,7 +13321,7 @@ function __c58(j: number): any {
       });
   }
 }
-function __c59(j: number): any {
+function __c164(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -12788,7 +13331,7 @@ function __c59(j: number): any {
           workflowId: S.optional(S.String),
           runId: S.optional(S.String),
           identity: S.optional(S.String),
-          activityOptions: S.optional(__S(203, __c25, 3)),
+          activityOptions: S.optional(__S(1632, __c51, 0)),
           updateMask: S.optional(S.String),
           restoreOriginal: S.optional(S.Boolean),
           resourceId: S.optional(S.String),
@@ -12802,21 +13345,29 @@ function __c59(j: number): any {
       ).annotate({
         identifier: "UpdateActivityExecutionOptionsRequest",
       });
-    case 1:
+  }
+}
+function __c165(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          activityOptions: S.optional(__S(203, __c25, 3)),
+          activityOptions: S.optional(__S(1632, __c51, 0)),
         }),
       ).annotate({
         identifier: "UpdateActivityExecutionOptionsResponse",
       });
-    case 2:
+  }
+}
+function __c166(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           namespace: S.String.pipe(T.Label()),
-          execution: S.optional(__S(85, __c10, 5)),
+          execution: S.optional(__S(512, __c16, 0)),
           identity: S.optional(S.String),
-          activityOptions: S.optional(__S(203, __c25, 3)),
+          activityOptions: S.optional(__S(1632, __c51, 0)),
           updateMask: S.optional(S.String),
           id: S.optional(S.String),
           type: S.optional(S.String),
@@ -12832,22 +13383,26 @@ function __c59(j: number): any {
       ).annotate({
         identifier: "UpdateActivityOptionsRequest",
       });
-    case 3:
+  }
+}
+function __c167(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           description: S.optional(S.String),
           ownerEmail: S.optional(S.String),
-          data: S.optional(__S(100, __c12, 4)),
+          data: S.optional(__S(480, __c15, 0)),
           state: S.optional(S.String),
         }),
       ).annotate({ identifier: "UpdateNamespaceInfo" });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           namespace: S.String.pipe(T.Label()),
-          updateInfo: S.optional(__S(475, __c59, 3)),
-          config: S.optional(__S(122, __c15, 2)),
-          replicationConfig: S.optional(__S(125, __c15, 5)),
+          updateInfo: S.optional(__S(5344, __c167, 0)),
+          config: S.optional(__S(934, __c29, 6)),
+          replicationConfig: S.optional(__S(935, __c29, 7)),
           securityToken: S.optional(S.String),
           deleteBadBinary: S.optional(S.String),
           promoteNamespace: S.optional(S.Boolean),
@@ -12855,37 +13410,45 @@ function __c59(j: number): any {
           T.Http({ method: "POST", uri: "/api/v1/namespaces/{namespace}/update", code: 200 }),
         ),
       ).annotate({ identifier: "UpdateNamespaceRequest" });
-    case 5:
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          namespaceInfo: S.optional(__S(118, __c14, 6)),
-          config: S.optional(__S(122, __c15, 2)),
-          replicationConfig: S.optional(__S(125, __c15, 5)),
+          namespaceInfo: S.optional(__S(930, __c29, 2)),
+          config: S.optional(__S(934, __c29, 6)),
+          replicationConfig: S.optional(__S(935, __c29, 7)),
           failoverVersion: S.optional(S.String),
           isGlobalNamespace: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "UpdateNamespaceResponse" });
-    case 6:
+  }
+}
+function __c168(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.String.pipe(T.Label()),
           version: S.optional(S.String),
-          spec: S.optional(__S(16, __c2, 0)),
+          spec: S.optional(__S(2467, __c77, 3)),
         }).pipe(T.Http({ method: "POST", uri: "/api/v1/nexus/endpoints/{id}/update", code: 200 })),
       ).annotate({
         identifier: "UpdateNexusEndpointRequest",
       });
-    case 7:
+  }
+}
+function __c169(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           namespace: S.String.pipe(T.Label()),
           scheduleId: S.String.pipe(T.Label()),
-          schedule: S.optional(__S(47, __c5, 7)),
+          schedule: S.optional(__S(3300, __c103, 4)),
           conflictToken: S.optional(S.String),
           identity: S.optional(S.String),
           requestId: S.optional(S.String),
-          searchAttributes: S.optional(__S(36, __c4, 4)),
-          memo: S.optional(__S(35, __c4, 3)),
+          searchAttributes: S.optional(__S(2912, __c91, 0)),
+          memo: S.optional(__S(3072, __c96, 0)),
         }).pipe(
           T.Http({
             method: "POST",
@@ -12896,12 +13459,12 @@ function __c59(j: number): any {
       ).annotate({ identifier: "UpdateScheduleRequest" });
   }
 }
-function __c60(j: number): any {
+function __c170(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          rateLimit: S.optional(__S(147, __c18, 3)),
+          rateLimit: S.optional(__S(1216, __c38, 0)),
           reason: S.optional(S.String),
         }),
       ).annotate({
@@ -12914,10 +13477,10 @@ function __c60(j: number): any {
           taskQueue: S.String.pipe(T.Label()),
           identity: S.optional(S.String),
           taskQueueType: S.optional(S.String),
-          updateQueueRateLimit: S.optional(__S(480, __c60, 0)),
-          updateFairnessKeyRateLimitDefault: S.optional(__S(480, __c60, 0)),
-          setFairnessWeightOverrides: S.optional(__S(150, __c18, 6)),
-          unsetFairnessWeightOverrides: S.optional(__S(24, __c3, 0)),
+          updateQueueRateLimit: S.optional(__S(5440, __c170, 0)),
+          updateFairnessKeyRateLimitDefault: S.optional(__S(5440, __c170, 0)),
+          setFairnessWeightOverrides: S.optional(__S(1219, __c38, 3)),
+          unsetFairnessWeightOverrides: S.optional(__S(3040, __c95, 0)),
         }).pipe(
           T.Http({
             method: "POST",
@@ -12931,20 +13494,24 @@ function __c60(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          config: S.optional(__S(151, __c18, 7)),
+          config: S.optional(__S(1220, __c38, 4)),
         }),
       ).annotate({
         identifier: "UpdateTaskQueueConfigResponse",
       });
-    case 3:
+  }
+}
+function __c171(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           namespace: S.String.pipe(T.Label()),
           identity: S.optional(S.String),
           reason: S.optional(S.String),
-          workerConfig: S.optional(__S(223, __c27, 7)),
+          workerConfig: S.optional(__S(1731, __c54, 3)),
           updateMask: S.optional(S.String),
-          selector: S.optional(__S(219, __c27, 3)),
+          selector: S.optional(__S(1728, __c54, 0)),
           resourceId: S.optional(S.String),
         }).pipe(
           T.Http({
@@ -12956,28 +13523,19 @@ function __c60(j: number): any {
       ).annotate({
         identifier: "UpdateWorkerConfigRequest",
       });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          scalingGroup: S.optional(__S(59, __c7, 3)),
-          updateMask: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "ComputeConfigScalingGroupUpdate",
-      });
-    case 5:
-      return S.Record(S.String, __S(484, __c60, 4));
-    case 6:
-      return S.Array(S.String);
-    case 7:
+  }
+}
+function __c172(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           namespace: S.String.pipe(T.Label()),
           deployment_version_deployment_name: S.String.pipe(T.Label()),
           deployment_version_build_id: S.String.pipe(T.Label()),
-          deploymentVersion: S.optional(__S(38, __c4, 6)),
-          computeConfigScalingGroups: S.optional(__S(485, __c60, 5)),
-          removeComputeConfigScalingGroups: S.optional(__S(486, __c60, 6)),
+          deploymentVersion: S.optional(__S(3360, __c105, 0)),
+          computeConfigScalingGroups: S.optional(__S(5537, __c173, 1)),
+          removeComputeConfigScalingGroups: S.optional(__S(5538, __c173, 2)),
           identity: S.optional(S.String),
           requestId: S.optional(S.String),
         }).pipe(
@@ -12992,134 +13550,23 @@ function __c60(j: number): any {
       });
   }
 }
-function __c61(j: number): any {
+function __c173(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          namespace: S.String.pipe(T.Label()),
-          deployment_version_deployment_name: S.String.pipe(T.Label()),
-          deployment_version_build_id: S.String.pipe(T.Label()),
-          version: S.optional(S.String),
-          deploymentVersion: S.optional(__S(38, __c4, 6)),
-          upsertEntries: S.optional(__S(34, __c4, 2)),
-          removeEntries: S.optional(__S(24, __c3, 0)),
-          identity: S.optional(S.String),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/api/v1/namespaces/{namespace}/worker-deployment-versions/{deployment_version_deployment_name}/{deployment_version_build_id}/update-metadata",
-            code: 200,
-          }),
-        ),
+          scalingGroup: S.optional(__S(4290, __c134, 2)),
+          updateMask: S.optional(S.String),
+        }),
       ).annotate({
-        identifier: "UpdateWorkerDeploymentVersionMetadataRequest",
+        identifier: "ComputeConfigScalingGroupUpdate",
       });
     case 1:
-      return S.suspend(() =>
-        S.Struct({
-          metadata: S.optional(__S(184, __c23, 0)),
-        }),
-      ).annotate({
-        identifier: "UpdateWorkerDeploymentVersionMetadataResponse",
-      });
+      return S.Record(S.String, __S(5536, __c173, 0));
     case 2:
-      return S.suspend(() =>
-        S.Struct({
-          lifecycleStage: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "WaitPolicy" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          namespace: S.String.pipe(T.Label()),
-          workflow_execution_workflow_id: S.String.pipe(T.Label()),
-          request_input_name: S.String.pipe(T.Label()),
-          workflowExecution: S.optional(__S(85, __c10, 5)),
-          firstExecutionRunId: S.optional(S.String),
-          waitPolicy: S.optional(__S(490, __c61, 2)),
-          request: S.optional(__S(312, __c39, 0)),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/api/v1/namespaces/{namespace}/workflows/{workflow_execution_workflow_id}/update/{request_input_name}",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "UpdateWorkflowExecutionRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          workflowExecution: S.optional(__S(85, __c10, 5)),
-          updateId: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "UpdateRef" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          updateRef: S.optional(__S(492, __c61, 4)),
-          outcome: S.optional(__S(315, __c39, 3)),
-          stage: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "UpdateWorkflowExecutionResponse",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          namespace: S.String.pipe(T.Label()),
-          workflow_execution_workflow_id: S.String.pipe(T.Label()),
-          workflowExecution: S.optional(__S(85, __c10, 5)),
-          workflowExecutionOptions: S.optional(__S(411, __c51, 3)),
-          updateMask: S.optional(S.String),
-          identity: S.optional(S.String),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/api/v1/namespaces/{namespace}/workflows/{workflow_execution_workflow_id}/update-options",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "UpdateWorkflowExecutionOptionsRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          workflowExecutionOptions: S.optional(__S(411, __c51, 3)),
-        }),
-      ).annotate({
-        identifier: "UpdateWorkflowExecutionOptionsResponse",
-      });
+      return S.Array(S.String);
   }
 }
-function __c62(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          namespace: S.String.pipe(T.Label()),
-          deployment_version_deployment_name: S.String.pipe(T.Label()),
-          deployment_version_build_id: S.String.pipe(T.Label()),
-          deploymentVersion: S.optional(__S(38, __c4, 6)),
-          computeConfigScalingGroups: S.optional(__S(485, __c60, 5)),
-          removeComputeConfigScalingGroups: S.optional(__S(486, __c60, 6)),
-          identity: S.optional(S.String),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/api/v1/namespaces/{namespace}/worker-deployment-versions/{deployment_version_deployment_name}/{deployment_version_build_id}/validate-compute-config",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "ValidateWorkerDeploymentVersionComputeConfigRequest",
-      });
-  }
-}
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

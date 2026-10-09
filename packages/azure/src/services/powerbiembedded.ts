@@ -215,8 +215,8 @@ export const CreateWorkspaceCollection: API.OperationMethod<
   CreateWorkspaceCollectionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(4, __c0, 4) as any as S.Schema<CreateWorkspaceCollectionRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<WorkspaceCollection>,
+  input: __S(8, __c1, 0) as any as S.Schema<CreateWorkspaceCollectionRequest>,
+  output: __S(18, __c2, 2) as any as S.Schema<WorkspaceCollection>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -230,8 +230,8 @@ export const DeleteWorkspaceCollection: API.OperationMethod<
   DeleteWorkspaceCollectionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(6, __c0, 6) as any as S.Schema<DeleteWorkspaceCollectionRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<DeleteWorkspaceCollectionResponse>,
+  input: __S(40, __c5, 0) as any as S.Schema<DeleteWorkspaceCollectionRequest>,
+  output: __S(48, __c6, 0) as any as S.Schema<DeleteWorkspaceCollectionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -245,8 +245,8 @@ export const GetAvailableOperations: API.OperationMethod<
   GetAvailableOperationsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(8, __c1, 0) as any as S.Schema<GetAvailableOperationsRequest>,
-  output: __S(12, __c1, 4) as any as S.Schema<OperationList>,
+  input: __S(56, __c7, 0) as any as S.Schema<GetAvailableOperationsRequest>,
+  output: __S(60, __c7, 4) as any as S.Schema<OperationList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -260,8 +260,8 @@ export const GetWorkspaceCollectionAccessKeys: API.OperationMethod<
   GetWorkspaceCollectionAccessKeysError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(13, __c1, 5) as any as S.Schema<GetWorkspaceCollectionAccessKeysRequest>,
-  output: __S(14, __c1, 6) as any as S.Schema<WorkspaceCollectionAccessKeys>,
+  input: __S(64, __c8, 0) as any as S.Schema<GetWorkspaceCollectionAccessKeysRequest>,
+  output: __S(72, __c9, 0) as any as S.Schema<WorkspaceCollectionAccessKeys>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -275,8 +275,8 @@ export const GetWorkspaceCollectionByName: API.OperationMethod<
   GetWorkspaceCollectionByNameError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(15, __c1, 7) as any as S.Schema<GetWorkspaceCollectionByNameRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<WorkspaceCollection>,
+  input: __S(80, __c10, 0) as any as S.Schema<GetWorkspaceCollectionByNameRequest>,
+  output: __S(18, __c2, 2) as any as S.Schema<WorkspaceCollection>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -290,8 +290,8 @@ export const ListWorkspaceCollectionByResourceGroup: API.OperationMethod<
   ListWorkspaceCollectionByResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(16, __c2, 0) as any as S.Schema<ListWorkspaceCollectionByResourceGroupRequest>,
-  output: __S(18, __c2, 2) as any as S.Schema<WorkspaceCollectionList>,
+  input: __S(88, __c11, 0) as any as S.Schema<ListWorkspaceCollectionByResourceGroupRequest>,
+  output: __S(97, __c12, 1) as any as S.Schema<WorkspaceCollectionList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -305,8 +305,8 @@ export const ListWorkspaceCollectionBySubscription: API.OperationMethod<
   ListWorkspaceCollectionBySubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(19, __c2, 3) as any as S.Schema<ListWorkspaceCollectionBySubscriptionRequest>,
-  output: __S(18, __c2, 2) as any as S.Schema<WorkspaceCollectionList>,
+  input: __S(104, __c13, 0) as any as S.Schema<ListWorkspaceCollectionBySubscriptionRequest>,
+  output: __S(97, __c12, 1) as any as S.Schema<WorkspaceCollectionList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -320,8 +320,8 @@ export const ListWorkspaces: API.OperationMethod<
   ListWorkspacesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(20, __c2, 4) as any as S.Schema<ListWorkspacesRequest>,
-  output: __S(23, __c2, 7) as any as S.Schema<WorkspaceList>,
+  input: __S(112, __c14, 0) as any as S.Schema<ListWorkspacesRequest>,
+  output: __S(115, __c14, 3) as any as S.Schema<WorkspaceList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -335,8 +335,8 @@ export const MigrateWorkspaceCollection: API.OperationMethod<
   MigrateWorkspaceCollectionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(25, __c3, 1) as any as S.Schema<MigrateWorkspaceCollectionRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<MigrateWorkspaceCollectionResponse>,
+  input: __S(121, __c15, 1) as any as S.Schema<MigrateWorkspaceCollectionRequest>,
+  output: __S(48, __c6, 0) as any as S.Schema<MigrateWorkspaceCollectionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -350,8 +350,8 @@ export const RegenerateWorkspaceCollectionKey: API.OperationMethod<
   RegenerateWorkspaceCollectionKeyError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(26, __c3, 2) as any as S.Schema<RegenerateWorkspaceCollectionKeyRequest>,
-  output: __S(14, __c1, 6) as any as S.Schema<WorkspaceCollectionAccessKeys>,
+  input: __S(24, __c3, 0) as any as S.Schema<RegenerateWorkspaceCollectionKeyRequest>,
+  output: __S(72, __c9, 0) as any as S.Schema<WorkspaceCollectionAccessKeys>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -365,8 +365,8 @@ export const UpdateWorkspaceCollection: API.OperationMethod<
   UpdateWorkspaceCollectionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(27, __c3, 3) as any as S.Schema<UpdateWorkspaceCollectionRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<WorkspaceCollection>,
+  input: __S(32, __c4, 0) as any as S.Schema<UpdateWorkspaceCollectionRequest>,
+  output: __S(18, __c2, 2) as any as S.Schema<WorkspaceCollection>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -401,24 +401,19 @@ function __c0(j: number): any {
           message: S.optional(S.String),
         }),
       ).annotate({ identifier: "CheckNameResponse" });
-    case 2:
-      return S.Record(S.String, S.String);
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String,
-          tier: S.String,
-        }),
-      ).annotate({ identifier: "AzureSku" });
-    case 4:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           workspaceCollectionName: S.String.pipe(T.Label()),
           location: S.optional(S.String),
-          tags: S.optional(__S(2, __c0, 2)),
-          sku: S.optional(__S(3, __c0, 3)),
+          tags: S.optional(__S(16, __c2, 0)),
+          sku: S.optional(__S(17, __c2, 1)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -430,19 +425,81 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "CreateWorkspaceCollectionRequest",
       });
-    case 5:
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, S.String);
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String,
+          tier: S.String,
+        }),
+      ).annotate({ identifier: "AzureSku" });
+    case 2:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
           location: S.optional(S.String),
-          tags: S.optional(__S(2, __c0, 2)),
-          sku: S.optional(__S(3, __c0, 3)),
+          tags: S.optional(__S(16, __c2, 0)),
+          sku: S.optional(__S(17, __c2, 1)),
           properties: S.optional(S.Unknown),
         }),
       ).annotate({ identifier: "WorkspaceCollection" });
-    case 6:
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          workspaceCollectionName: S.String.pipe(T.Label()),
+          keyName: S.optional(S.String),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.PowerBI/workspaceCollections/{workspaceCollectionName}/regenerateKey",
+            code: 200,
+            apiVersion: "2016-01-29",
+          }),
+        ),
+      ).annotate({
+        identifier: "RegenerateWorkspaceCollectionKeyRequest",
+      });
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          workspaceCollectionName: S.String.pipe(T.Label()),
+          tags: S.optional(__S(16, __c2, 0)),
+          sku: S.optional(__S(17, __c2, 1)),
+        }).pipe(
+          T.Http({
+            method: "PATCH",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.PowerBI/workspaceCollections/{workspaceCollectionName}",
+            code: 200,
+            apiVersion: "2016-01-29",
+          }),
+        ),
+      ).annotate({
+        identifier: "UpdateWorkspaceCollectionRequest",
+      });
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -459,13 +516,17 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "DeleteWorkspaceCollectionRequest",
       });
-    case 7:
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "DeleteWorkspaceCollectionResponse",
       });
   }
 }
-function __c1(j: number): any {
+function __c7(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -494,18 +555,22 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
-          display: S.optional(__S(9, __c1, 1)),
+          display: S.optional(__S(57, __c7, 1)),
         }),
       ).annotate({ identifier: "Operation" });
     case 3:
-      return S.Array(__S(10, __c1, 2));
+      return S.Array(__S(58, __c7, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(11, __c1, 3)),
+          value: S.optional(__S(59, __c7, 3)),
         }),
       ).annotate({ identifier: "OperationList" });
-    case 5:
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -522,7 +587,11 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "GetWorkspaceCollectionAccessKeysRequest",
       });
-    case 6:
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           key1: S.optional(S.String),
@@ -531,7 +600,11 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "WorkspaceCollectionAccessKeys",
       });
-    case 7:
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -550,7 +623,7 @@ function __c1(j: number): any {
       });
   }
 }
-function __c2(j: number): any {
+function __c11(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -568,15 +641,23 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "ListWorkspaceCollectionByResourceGroupRequest",
       });
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(18, __c2, 2));
     case 1:
-      return S.Array(__S(5, __c0, 5));
-    case 2:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(17, __c2, 1)),
+          value: S.optional(__S(96, __c12, 0)),
         }),
       ).annotate({ identifier: "WorkspaceCollectionList" });
-    case 3:
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -591,7 +672,11 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "ListWorkspaceCollectionBySubscriptionRequest",
       });
-    case 4:
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -606,7 +691,7 @@ function __c2(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ListWorkspacesRequest" });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
@@ -615,17 +700,17 @@ function __c2(j: number): any {
           properties: S.optional(S.Unknown),
         }),
       ).annotate({ identifier: "Workspace" });
-    case 6:
-      return S.Array(__S(21, __c2, 5));
-    case 7:
+    case 2:
+      return S.Array(__S(113, __c14, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(22, __c2, 6)),
+          value: S.optional(__S(114, __c14, 2)),
         }),
       ).annotate({ identifier: "WorkspaceList" });
   }
 }
-function __c3(j: number): any {
+function __c15(j: number): any {
   switch (j) {
     case 0:
       return S.Array(S.String);
@@ -635,7 +720,7 @@ function __c3(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           targetResourceGroup: S.optional(S.String),
-          resources: S.optional(__S(24, __c3, 0)),
+          resources: S.optional(__S(120, __c15, 0)),
         }).pipe(
           T.Http({
             method: "POST",
@@ -647,46 +732,8 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "MigrateWorkspaceCollectionRequest",
       });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          workspaceCollectionName: S.String.pipe(T.Label()),
-          keyName: S.optional(S.String),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.PowerBI/workspaceCollections/{workspaceCollectionName}/regenerateKey",
-            code: 200,
-            apiVersion: "2016-01-29",
-          }),
-        ),
-      ).annotate({
-        identifier: "RegenerateWorkspaceCollectionKeyRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          workspaceCollectionName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(2, __c0, 2)),
-          sku: S.optional(__S(3, __c0, 3)),
-        }).pipe(
-          T.Http({
-            method: "PATCH",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.PowerBI/workspaceCollections/{workspaceCollectionName}",
-            code: 200,
-            apiVersion: "2016-01-29",
-          }),
-        ),
-      ).annotate({
-        identifier: "UpdateWorkspaceCollectionRequest",
-      });
   }
 }
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

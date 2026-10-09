@@ -1356,8 +1356,8 @@ export const associateDelegateToResource: API.OperationMethod<
   AssociateDelegateToResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(0, __c0, 0) as any as S.Schema<AssociateDelegateToResourceRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<AssociateDelegateToResourceResponse>,
+  input: __S(112, __c14, 0) as any as S.Schema<AssociateDelegateToResourceRequest>,
+  output: __S(120, __c15, 0) as any as S.Schema<AssociateDelegateToResourceResponse>,
   errors: [
     EntityNotFoundException,
     EntityStateException,
@@ -1390,8 +1390,8 @@ export const associateMemberToGroup: API.OperationMethod<
   AssociateMemberToGroupError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2, __c0, 2) as any as S.Schema<AssociateMemberToGroupRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<AssociateMemberToGroupResponse>,
+  input: __S(128, __c16, 0) as any as S.Schema<AssociateMemberToGroupRequest>,
+  output: __S(136, __c17, 0) as any as S.Schema<AssociateMemberToGroupResponse>,
   errors: [
     DirectoryServiceAuthenticationFailedException,
     DirectoryUnavailableException,
@@ -1423,8 +1423,8 @@ export const assumeImpersonationRole: API.OperationMethod<
   AssumeImpersonationRoleError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(4, __c0, 4) as any as S.Schema<AssumeImpersonationRoleRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<AssumeImpersonationRoleResponse>,
+  input: __S(144, __c18, 0) as any as S.Schema<AssumeImpersonationRoleRequest>,
+  output: __S(145, __c18, 1) as any as S.Schema<AssumeImpersonationRoleResponse>,
   errors: [
     InvalidParameterException,
     OrganizationNotFoundException,
@@ -1454,8 +1454,8 @@ export const cancelMailboxExportJob: API.OperationMethod<
   CancelMailboxExportJobError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(6, __c0, 6) as any as S.Schema<CancelMailboxExportJobRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<CancelMailboxExportJobResponse>,
+  input: __S(152, __c19, 0) as any as S.Schema<CancelMailboxExportJobRequest>,
+  output: __S(136, __c17, 0) as any as S.Schema<CancelMailboxExportJobResponse>,
   errors: [
     EntityNotFoundException,
     InvalidParameterException,
@@ -1487,8 +1487,8 @@ export const createAlias: API.OperationMethod<
   CreateAliasError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(7, __c0, 7) as any as S.Schema<CreateAliasRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<CreateAliasResponse>,
+  input: __S(160, __c20, 0) as any as S.Schema<CreateAliasRequest>,
+  output: __S(136, __c17, 0) as any as S.Schema<CreateAliasResponse>,
   errors: [
     EmailAddressInUseException,
     EntityNotFoundException,
@@ -1521,8 +1521,8 @@ export const createAvailabilityConfiguration: API.OperationMethod<
   CreateAvailabilityConfigurationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(10, __c1, 2) as any as S.Schema<CreateAvailabilityConfigurationRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<CreateAvailabilityConfigurationResponse>,
+  input: __S(168, __c21, 0) as any as S.Schema<CreateAvailabilityConfigurationRequest>,
+  output: __S(120, __c15, 0) as any as S.Schema<CreateAvailabilityConfigurationResponse>,
   errors: [
     InvalidParameterException,
     LimitExceededException,
@@ -1554,8 +1554,8 @@ export const createGroup: API.OperationMethod<
   CreateGroupError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(11, __c1, 3) as any as S.Schema<CreateGroupRequest>,
-  output: __S(12, __c1, 4) as any as S.Schema<CreateGroupResponse>,
+  input: __S(192, __c24, 0) as any as S.Schema<CreateGroupRequest>,
+  output: __S(193, __c24, 1) as any as S.Schema<CreateGroupResponse>,
   errors: [
     DirectoryServiceAuthenticationFailedException,
     DirectoryUnavailableException,
@@ -1581,8 +1581,8 @@ export const createIdentityCenterApplication: API.OperationMethod<
   CreateIdentityCenterApplicationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(13, __c1, 5) as any as S.Schema<CreateIdentityCenterApplicationRequest>,
-  output: __S(14, __c1, 6) as any as S.Schema<CreateIdentityCenterApplicationResponse>,
+  input: __S(200, __c25, 0) as any as S.Schema<CreateIdentityCenterApplicationRequest>,
+  output: __S(201, __c25, 1) as any as S.Schema<CreateIdentityCenterApplicationResponse>,
   errors: [InvalidParameterException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1611,8 +1611,8 @@ export const createImpersonationRole: API.OperationMethod<
   CreateImpersonationRoleError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(18, __c2, 2) as any as S.Schema<CreateImpersonationRoleRequest>,
-  output: __S(19, __c2, 3) as any as S.Schema<CreateImpersonationRoleResponse>,
+  input: __S(208, __c26, 0) as any as S.Schema<CreateImpersonationRoleRequest>,
+  output: __S(209, __c26, 1) as any as S.Schema<CreateImpersonationRoleResponse>,
   errors: [
     EntityNotFoundException,
     EntityStateException,
@@ -1641,8 +1641,8 @@ export const createMobileDeviceAccessRule: API.OperationMethod<
   CreateMobileDeviceAccessRuleError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(20, __c2, 4) as any as S.Schema<CreateMobileDeviceAccessRuleRequest>,
-  output: __S(21, __c2, 5) as any as S.Schema<CreateMobileDeviceAccessRuleResponse>,
+  input: __S(232, __c29, 0) as any as S.Schema<CreateMobileDeviceAccessRuleRequest>,
+  output: __S(233, __c29, 1) as any as S.Schema<CreateMobileDeviceAccessRuleResponse>,
   errors: [
     InvalidParameterException,
     LimitExceededException,
@@ -1680,8 +1680,8 @@ export const createOrganization: API.OperationMethod<
   CreateOrganizationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(24, __c3, 0) as any as S.Schema<CreateOrganizationRequest>,
-  output: __S(25, __c3, 1) as any as S.Schema<CreateOrganizationResponse>,
+  input: __S(242, __c30, 2) as any as S.Schema<CreateOrganizationRequest>,
+  output: __S(243, __c30, 3) as any as S.Schema<CreateOrganizationResponse>,
   errors: [
     DirectoryInUseException,
     DirectoryUnavailableException,
@@ -1713,8 +1713,8 @@ export const createResource: API.OperationMethod<
   CreateResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(26, __c3, 2) as any as S.Schema<CreateResourceRequest>,
-  output: __S(27, __c3, 3) as any as S.Schema<CreateResourceResponse>,
+  input: __S(248, __c31, 0) as any as S.Schema<CreateResourceRequest>,
+  output: __S(249, __c31, 1) as any as S.Schema<CreateResourceResponse>,
   errors: [
     DirectoryServiceAuthenticationFailedException,
     DirectoryUnavailableException,
@@ -1750,8 +1750,8 @@ export const createUser: API.OperationMethod<
   CreateUserError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(28, __c3, 4) as any as S.Schema<CreateUserRequest>,
-  output: __S(29, __c3, 5) as any as S.Schema<CreateUserResponse>,
+  input: __S(256, __c32, 0) as any as S.Schema<CreateUserRequest>,
+  output: __S(257, __c32, 1) as any as S.Schema<CreateUserResponse>,
   errors: [
     DirectoryServiceAuthenticationFailedException,
     DirectoryUnavailableException,
@@ -1783,8 +1783,8 @@ export const deleteAccessControlRule: API.OperationMethod<
   DeleteAccessControlRuleError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(30, __c3, 6) as any as S.Schema<DeleteAccessControlRuleRequest>,
-  output: __S(31, __c3, 7) as any as S.Schema<DeleteAccessControlRuleResponse>,
+  input: __S(264, __c33, 0) as any as S.Schema<DeleteAccessControlRuleRequest>,
+  output: __S(272, __c34, 0) as any as S.Schema<DeleteAccessControlRuleResponse>,
   errors: [OrganizationNotFoundException, OrganizationStateException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1808,8 +1808,8 @@ export const deleteAlias: API.OperationMethod<
   DeleteAliasError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(32, __c4, 0) as any as S.Schema<DeleteAliasRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<DeleteAliasResponse>,
+  input: __S(280, __c35, 0) as any as S.Schema<DeleteAliasRequest>,
+  output: __S(136, __c17, 0) as any as S.Schema<DeleteAliasResponse>,
   errors: [
     EntityNotFoundException,
     EntityStateException,
@@ -1835,8 +1835,8 @@ export const deleteAvailabilityConfiguration: API.OperationMethod<
   DeleteAvailabilityConfigurationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(33, __c4, 1) as any as S.Schema<DeleteAvailabilityConfigurationRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<DeleteAvailabilityConfigurationResponse>,
+  input: __S(288, __c36, 0) as any as S.Schema<DeleteAvailabilityConfigurationRequest>,
+  output: __S(120, __c15, 0) as any as S.Schema<DeleteAvailabilityConfigurationResponse>,
   errors: [OrganizationNotFoundException, OrganizationStateException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1857,8 +1857,8 @@ export const deleteEmailMonitoringConfiguration: API.OperationMethod<
   DeleteEmailMonitoringConfigurationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(34, __c4, 2) as any as S.Schema<DeleteEmailMonitoringConfigurationRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<DeleteEmailMonitoringConfigurationResponse>,
+  input: __S(296, __c37, 0) as any as S.Schema<DeleteEmailMonitoringConfigurationRequest>,
+  output: __S(120, __c15, 0) as any as S.Schema<DeleteEmailMonitoringConfigurationResponse>,
   errors: [InvalidParameterException, OrganizationNotFoundException, OrganizationStateException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1883,8 +1883,8 @@ export const deleteGroup: API.OperationMethod<
   DeleteGroupError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(35, __c4, 3) as any as S.Schema<DeleteGroupRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<DeleteGroupResponse>,
+  input: __S(304, __c38, 0) as any as S.Schema<DeleteGroupRequest>,
+  output: __S(136, __c17, 0) as any as S.Schema<DeleteGroupResponse>,
   errors: [
     DirectoryServiceAuthenticationFailedException,
     DirectoryUnavailableException,
@@ -1912,8 +1912,8 @@ export const deleteIdentityCenterApplication: API.OperationMethod<
   DeleteIdentityCenterApplicationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(36, __c4, 4) as any as S.Schema<DeleteIdentityCenterApplicationRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<DeleteIdentityCenterApplicationResponse>,
+  input: __S(312, __c39, 0) as any as S.Schema<DeleteIdentityCenterApplicationRequest>,
+  output: __S(120, __c15, 0) as any as S.Schema<DeleteIdentityCenterApplicationResponse>,
   errors: [InvalidParameterException, OrganizationStateException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1934,8 +1934,8 @@ export const deleteIdentityProviderConfiguration: API.OperationMethod<
   DeleteIdentityProviderConfigurationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(37, __c4, 5) as any as S.Schema<DeleteIdentityProviderConfigurationRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<DeleteIdentityProviderConfigurationResponse>,
+  input: __S(320, __c40, 0) as any as S.Schema<DeleteIdentityProviderConfigurationRequest>,
+  output: __S(120, __c15, 0) as any as S.Schema<DeleteIdentityProviderConfigurationResponse>,
   errors: [InvalidParameterException, OrganizationNotFoundException, OrganizationStateException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1956,8 +1956,8 @@ export const deleteImpersonationRole: API.OperationMethod<
   DeleteImpersonationRoleError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(38, __c4, 6) as any as S.Schema<DeleteImpersonationRoleRequest>,
-  output: __S(31, __c3, 7) as any as S.Schema<DeleteImpersonationRoleResponse>,
+  input: __S(328, __c41, 0) as any as S.Schema<DeleteImpersonationRoleRequest>,
+  output: __S(272, __c34, 0) as any as S.Schema<DeleteImpersonationRoleResponse>,
   errors: [InvalidParameterException, OrganizationNotFoundException, OrganizationStateException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1980,8 +1980,8 @@ export const deleteMailboxPermissions: API.OperationMethod<
   DeleteMailboxPermissionsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(39, __c4, 7) as any as S.Schema<DeleteMailboxPermissionsRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<DeleteMailboxPermissionsResponse>,
+  input: __S(336, __c42, 0) as any as S.Schema<DeleteMailboxPermissionsRequest>,
+  output: __S(120, __c15, 0) as any as S.Schema<DeleteMailboxPermissionsResponse>,
   errors: [
     EntityNotFoundException,
     EntityStateException,
@@ -2011,8 +2011,8 @@ export const deleteMobileDeviceAccessOverride: API.OperationMethod<
   DeleteMobileDeviceAccessOverrideError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(40, __c5, 0) as any as S.Schema<DeleteMobileDeviceAccessOverrideRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<DeleteMobileDeviceAccessOverrideResponse>,
+  input: __S(344, __c43, 0) as any as S.Schema<DeleteMobileDeviceAccessOverrideRequest>,
+  output: __S(120, __c15, 0) as any as S.Schema<DeleteMobileDeviceAccessOverrideResponse>,
   errors: [
     EntityNotFoundException,
     InvalidParameterException,
@@ -2040,8 +2040,8 @@ export const deleteMobileDeviceAccessRule: API.OperationMethod<
   DeleteMobileDeviceAccessRuleError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(41, __c5, 1) as any as S.Schema<DeleteMobileDeviceAccessRuleRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<DeleteMobileDeviceAccessRuleResponse>,
+  input: __S(352, __c44, 0) as any as S.Schema<DeleteMobileDeviceAccessRuleRequest>,
+  output: __S(120, __c15, 0) as any as S.Schema<DeleteMobileDeviceAccessRuleResponse>,
   errors: [InvalidParameterException, OrganizationNotFoundException, OrganizationStateException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2062,8 +2062,8 @@ export const deleteOrganization: API.OperationMethod<
   DeleteOrganizationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(42, __c5, 2) as any as S.Schema<DeleteOrganizationRequest>,
-  output: __S(43, __c5, 3) as any as S.Schema<DeleteOrganizationResponse>,
+  input: __S(360, __c45, 0) as any as S.Schema<DeleteOrganizationRequest>,
+  output: __S(361, __c45, 1) as any as S.Schema<DeleteOrganizationResponse>,
   errors: [InvalidParameterException, OrganizationNotFoundException, OrganizationStateException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2084,8 +2084,8 @@ export const deletePersonalAccessToken: API.OperationMethod<
   DeletePersonalAccessTokenError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(44, __c5, 4) as any as S.Schema<DeletePersonalAccessTokenRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<DeletePersonalAccessTokenResponse>,
+  input: __S(368, __c46, 0) as any as S.Schema<DeletePersonalAccessTokenRequest>,
+  output: __S(120, __c15, 0) as any as S.Schema<DeletePersonalAccessTokenResponse>,
   errors: [InvalidParameterException, OrganizationNotFoundException, OrganizationStateException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2108,8 +2108,8 @@ export const deleteResource: API.OperationMethod<
   DeleteResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(45, __c5, 5) as any as S.Schema<DeleteResourceRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<DeleteResourceResponse>,
+  input: __S(376, __c47, 0) as any as S.Schema<DeleteResourceRequest>,
+  output: __S(136, __c17, 0) as any as S.Schema<DeleteResourceResponse>,
   errors: [
     EntityStateException,
     InvalidParameterException,
@@ -2136,8 +2136,8 @@ export const deleteRetentionPolicy: API.OperationMethod<
   DeleteRetentionPolicyError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(46, __c5, 6) as any as S.Schema<DeleteRetentionPolicyRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<DeleteRetentionPolicyResponse>,
+  input: __S(384, __c48, 0) as any as S.Schema<DeleteRetentionPolicyRequest>,
+  output: __S(136, __c17, 0) as any as S.Schema<DeleteRetentionPolicyResponse>,
   errors: [InvalidParameterException, OrganizationNotFoundException, OrganizationStateException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2167,8 +2167,8 @@ export const deleteUser: API.OperationMethod<
   DeleteUserError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(47, __c5, 7) as any as S.Schema<DeleteUserRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<DeleteUserResponse>,
+  input: __S(392, __c49, 0) as any as S.Schema<DeleteUserRequest>,
+  output: __S(136, __c17, 0) as any as S.Schema<DeleteUserResponse>,
   errors: [
     DirectoryServiceAuthenticationFailedException,
     DirectoryUnavailableException,
@@ -2202,8 +2202,8 @@ export const deregisterFromWorkMail: API.OperationMethod<
   DeregisterFromWorkMailError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(48, __c6, 0) as any as S.Schema<DeregisterFromWorkMailRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<DeregisterFromWorkMailResponse>,
+  input: __S(400, __c50, 0) as any as S.Schema<DeregisterFromWorkMailRequest>,
+  output: __S(136, __c17, 0) as any as S.Schema<DeregisterFromWorkMailResponse>,
   errors: [
     EntityNotFoundException,
     EntityStateException,
@@ -2233,8 +2233,8 @@ export const deregisterMailDomain: API.OperationMethod<
   DeregisterMailDomainError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(49, __c6, 1) as any as S.Schema<DeregisterMailDomainRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<DeregisterMailDomainResponse>,
+  input: __S(408, __c51, 0) as any as S.Schema<DeregisterMailDomainRequest>,
+  output: __S(136, __c17, 0) as any as S.Schema<DeregisterMailDomainResponse>,
   errors: [
     InvalidCustomSesConfigurationException,
     InvalidParameterException,
@@ -2262,8 +2262,8 @@ export const describeEmailMonitoringConfiguration: API.OperationMethod<
   DescribeEmailMonitoringConfigurationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(50, __c6, 2) as any as S.Schema<DescribeEmailMonitoringConfigurationRequest>,
-  output: __S(51, __c6, 3) as any as S.Schema<DescribeEmailMonitoringConfigurationResponse>,
+  input: __S(416, __c52, 0) as any as S.Schema<DescribeEmailMonitoringConfigurationRequest>,
+  output: __S(417, __c52, 1) as any as S.Schema<DescribeEmailMonitoringConfigurationResponse>,
   errors: [
     InvalidParameterException,
     OrganizationNotFoundException,
@@ -2290,8 +2290,8 @@ export const describeEntity: API.OperationMethod<
   DescribeEntityError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(52, __c6, 4) as any as S.Schema<DescribeEntityRequest>,
-  output: __S(53, __c6, 5) as any as S.Schema<DescribeEntityResponse>,
+  input: __S(424, __c53, 0) as any as S.Schema<DescribeEntityRequest>,
+  output: __S(425, __c53, 1) as any as S.Schema<DescribeEntityResponse>,
   errors: [
     EntityNotFoundException,
     InvalidParameterException,
@@ -2318,8 +2318,8 @@ export const describeGroup: API.OperationMethod<
   DescribeGroupError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(54, __c6, 6) as any as S.Schema<DescribeGroupRequest>,
-  output: __S(55, __c6, 7) as any as S.Schema<DescribeGroupResponse>,
+  input: __S(432, __c54, 0) as any as S.Schema<DescribeGroupRequest>,
+  output: __S(433, __c54, 1) as any as S.Schema<DescribeGroupResponse>,
   errors: [
     EntityNotFoundException,
     InvalidParameterException,
@@ -2346,8 +2346,8 @@ export const describeIdentityProviderConfiguration: API.OperationMethod<
   DescribeIdentityProviderConfigurationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(56, __c7, 0) as any as S.Schema<DescribeIdentityProviderConfigurationRequest>,
-  output: __S(59, __c7, 3) as any as S.Schema<DescribeIdentityProviderConfigurationResponse>,
+  input: __S(440, __c55, 0) as any as S.Schema<DescribeIdentityProviderConfigurationRequest>,
+  output: __S(441, __c55, 1) as any as S.Schema<DescribeIdentityProviderConfigurationResponse>,
   errors: [
     InvalidParameterException,
     OrganizationNotFoundException,
@@ -2372,8 +2372,8 @@ export const describeInboundDmarcSettings: API.OperationMethod<
   DescribeInboundDmarcSettingsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(60, __c7, 4) as any as S.Schema<DescribeInboundDmarcSettingsRequest>,
-  output: __S(61, __c7, 5) as any as S.Schema<DescribeInboundDmarcSettingsResponse>,
+  input: __S(456, __c57, 0) as any as S.Schema<DescribeInboundDmarcSettingsRequest>,
+  output: __S(457, __c57, 1) as any as S.Schema<DescribeInboundDmarcSettingsResponse>,
   errors: [OrganizationNotFoundException, OrganizationStateException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2395,8 +2395,8 @@ export const describeMailboxExportJob: API.OperationMethod<
   DescribeMailboxExportJobError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(62, __c7, 6) as any as S.Schema<DescribeMailboxExportJobRequest>,
-  output: __S(63, __c7, 7) as any as S.Schema<DescribeMailboxExportJobResponse>,
+  input: __S(464, __c58, 0) as any as S.Schema<DescribeMailboxExportJobRequest>,
+  output: __S(465, __c58, 1) as any as S.Schema<DescribeMailboxExportJobResponse>,
   errors: [
     EntityNotFoundException,
     InvalidParameterException,
@@ -2422,8 +2422,8 @@ export const describeOrganization: API.OperationMethod<
   DescribeOrganizationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(64, __c8, 0) as any as S.Schema<DescribeOrganizationRequest>,
-  output: __S(65, __c8, 1) as any as S.Schema<DescribeOrganizationResponse>,
+  input: __S(472, __c59, 0) as any as S.Schema<DescribeOrganizationRequest>,
+  output: __S(473, __c59, 1) as any as S.Schema<DescribeOrganizationResponse>,
   errors: [InvalidParameterException, OrganizationNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2446,8 +2446,8 @@ export const describeResource: API.OperationMethod<
   DescribeResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(66, __c8, 2) as any as S.Schema<DescribeResourceRequest>,
-  output: __S(68, __c8, 4) as any as S.Schema<DescribeResourceResponse>,
+  input: __S(480, __c60, 0) as any as S.Schema<DescribeResourceRequest>,
+  output: __S(481, __c60, 1) as any as S.Schema<DescribeResourceResponse>,
   errors: [
     EntityNotFoundException,
     InvalidParameterException,
@@ -2477,8 +2477,8 @@ export const describeUser: API.OperationMethod<
   DescribeUserError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(69, __c8, 5) as any as S.Schema<DescribeUserRequest>,
-  output: __S(70, __c8, 6) as any as S.Schema<DescribeUserResponse>,
+  input: __S(496, __c62, 0) as any as S.Schema<DescribeUserRequest>,
+  output: __S(497, __c62, 1) as any as S.Schema<DescribeUserResponse>,
   errors: [
     DirectoryServiceAuthenticationFailedException,
     DirectoryUnavailableException,
@@ -2509,8 +2509,8 @@ export const disassociateDelegateFromResource: API.OperationMethod<
   DisassociateDelegateFromResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(71, __c8, 7) as any as S.Schema<DisassociateDelegateFromResourceRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<DisassociateDelegateFromResourceResponse>,
+  input: __S(504, __c63, 0) as any as S.Schema<DisassociateDelegateFromResourceRequest>,
+  output: __S(120, __c15, 0) as any as S.Schema<DisassociateDelegateFromResourceResponse>,
   errors: [
     EntityNotFoundException,
     EntityStateException,
@@ -2543,8 +2543,8 @@ export const disassociateMemberFromGroup: API.OperationMethod<
   DisassociateMemberFromGroupError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(72, __c9, 0) as any as S.Schema<DisassociateMemberFromGroupRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<DisassociateMemberFromGroupResponse>,
+  input: __S(512, __c64, 0) as any as S.Schema<DisassociateMemberFromGroupRequest>,
+  output: __S(120, __c15, 0) as any as S.Schema<DisassociateMemberFromGroupResponse>,
   errors: [
     DirectoryServiceAuthenticationFailedException,
     DirectoryUnavailableException,
@@ -2577,8 +2577,8 @@ export const getAccessControlEffect: API.OperationMethod<
   GetAccessControlEffectError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(73, __c9, 1) as any as S.Schema<GetAccessControlEffectRequest>,
-  output: __S(74, __c9, 2) as any as S.Schema<GetAccessControlEffectResponse>,
+  input: __S(520, __c65, 0) as any as S.Schema<GetAccessControlEffectRequest>,
+  output: __S(521, __c65, 1) as any as S.Schema<GetAccessControlEffectResponse>,
   errors: [
     EntityNotFoundException,
     InvalidParameterException,
@@ -2606,8 +2606,8 @@ export const getDefaultRetentionPolicy: API.OperationMethod<
   GetDefaultRetentionPolicyError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(75, __c9, 3) as any as S.Schema<GetDefaultRetentionPolicyRequest>,
-  output: __S(78, __c9, 6) as any as S.Schema<GetDefaultRetentionPolicyResponse>,
+  input: __S(528, __c66, 0) as any as S.Schema<GetDefaultRetentionPolicyRequest>,
+  output: __S(529, __c66, 1) as any as S.Schema<GetDefaultRetentionPolicyResponse>,
   errors: [
     EntityNotFoundException,
     InvalidParameterException,
@@ -2634,8 +2634,8 @@ export const getImpersonationRole: API.OperationMethod<
   GetImpersonationRoleError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(79, __c9, 7) as any as S.Schema<GetImpersonationRoleRequest>,
-  output: __S(80, __c10, 0) as any as S.Schema<GetImpersonationRoleResponse>,
+  input: __S(544, __c68, 0) as any as S.Schema<GetImpersonationRoleRequest>,
+  output: __S(545, __c68, 1) as any as S.Schema<GetImpersonationRoleResponse>,
   errors: [
     InvalidParameterException,
     OrganizationNotFoundException,
@@ -2664,8 +2664,8 @@ export const getImpersonationRoleEffect: API.OperationMethod<
   GetImpersonationRoleEffectError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(81, __c10, 1) as any as S.Schema<GetImpersonationRoleEffectRequest>,
-  output: __S(84, __c10, 4) as any as S.Schema<GetImpersonationRoleEffectResponse>,
+  input: __S(552, __c69, 0) as any as S.Schema<GetImpersonationRoleEffectRequest>,
+  output: __S(555, __c69, 3) as any as S.Schema<GetImpersonationRoleEffectResponse>,
   errors: [
     EntityNotFoundException,
     EntityStateException,
@@ -2694,8 +2694,8 @@ export const getMailboxDetails: API.OperationMethod<
   GetMailboxDetailsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(85, __c10, 5) as any as S.Schema<GetMailboxDetailsRequest>,
-  output: __S(86, __c10, 6) as any as S.Schema<GetMailboxDetailsResponse>,
+  input: __S(560, __c70, 0) as any as S.Schema<GetMailboxDetailsRequest>,
+  output: __S(561, __c70, 1) as any as S.Schema<GetMailboxDetailsResponse>,
   errors: [
     EntityNotFoundException,
     InvalidParameterException,
@@ -2722,8 +2722,8 @@ export const getMailDomain: API.OperationMethod<
   GetMailDomainError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(87, __c10, 7) as any as S.Schema<GetMailDomainRequest>,
-  output: __S(90, __c11, 2) as any as S.Schema<GetMailDomainResponse>,
+  input: __S(568, __c71, 0) as any as S.Schema<GetMailDomainRequest>,
+  output: __S(571, __c71, 3) as any as S.Schema<GetMailDomainResponse>,
   errors: [
     InvalidParameterException,
     MailDomainNotFoundException,
@@ -2750,8 +2750,8 @@ export const getMobileDeviceAccessEffect: API.OperationMethod<
   GetMobileDeviceAccessEffectError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(91, __c11, 3) as any as S.Schema<GetMobileDeviceAccessEffectRequest>,
-  output: __S(94, __c11, 6) as any as S.Schema<GetMobileDeviceAccessEffectResponse>,
+  input: __S(576, __c72, 0) as any as S.Schema<GetMobileDeviceAccessEffectRequest>,
+  output: __S(579, __c72, 3) as any as S.Schema<GetMobileDeviceAccessEffectResponse>,
   errors: [InvalidParameterException, OrganizationNotFoundException, OrganizationStateException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2774,8 +2774,8 @@ export const getMobileDeviceAccessOverride: API.OperationMethod<
   GetMobileDeviceAccessOverrideError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(95, __c11, 7) as any as S.Schema<GetMobileDeviceAccessOverrideRequest>,
-  output: __S(96, __c12, 0) as any as S.Schema<GetMobileDeviceAccessOverrideResponse>,
+  input: __S(584, __c73, 0) as any as S.Schema<GetMobileDeviceAccessOverrideRequest>,
+  output: __S(592, __c74, 0) as any as S.Schema<GetMobileDeviceAccessOverrideResponse>,
   errors: [
     EntityNotFoundException,
     InvalidParameterException,
@@ -2803,8 +2803,8 @@ export const getPersonalAccessTokenMetadata: API.OperationMethod<
   GetPersonalAccessTokenMetadataError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(97, __c12, 1) as any as S.Schema<GetPersonalAccessTokenMetadataRequest>,
-  output: __S(98, __c12, 2) as any as S.Schema<GetPersonalAccessTokenMetadataResponse>,
+  input: __S(600, __c75, 0) as any as S.Schema<GetPersonalAccessTokenMetadataRequest>,
+  output: __S(608, __c76, 0) as any as S.Schema<GetPersonalAccessTokenMetadataResponse>,
   errors: [
     InvalidParameterException,
     OrganizationNotFoundException,
@@ -2829,8 +2829,8 @@ export const listAccessControlRules: API.OperationMethod<
   ListAccessControlRulesError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(99, __c12, 3) as any as S.Schema<ListAccessControlRulesRequest>,
-  output: __S(102, __c12, 6) as any as S.Schema<ListAccessControlRulesResponse>,
+  input: __S(616, __c77, 0) as any as S.Schema<ListAccessControlRulesRequest>,
+  output: __S(619, __c77, 3) as any as S.Schema<ListAccessControlRulesResponse>,
   errors: [OrganizationNotFoundException, OrganizationStateException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2855,8 +2855,8 @@ export const listAliases: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(103, __c12, 7) as any as S.Schema<ListAliasesRequest>,
-  output: __S(104, __c13, 0) as any as S.Schema<ListAliasesResponse>,
+  input: __S(624, __c78, 0) as any as S.Schema<ListAliasesRequest>,
+  output: __S(625, __c78, 1) as any as S.Schema<ListAliasesResponse>,
   errors: [
     EntityNotFoundException,
     EntityStateException,
@@ -2889,8 +2889,8 @@ export const listAvailabilityConfigurations: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   AvailabilityConfiguration
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(105, __c13, 1) as any as S.Schema<ListAvailabilityConfigurationsRequest>,
-  output: __S(109, __c13, 5) as any as S.Schema<ListAvailabilityConfigurationsResponse>,
+  input: __S(632, __c79, 0) as any as S.Schema<ListAvailabilityConfigurationsRequest>,
+  output: __S(636, __c79, 4) as any as S.Schema<ListAvailabilityConfigurationsResponse>,
   errors: [InvalidParameterException, OrganizationNotFoundException, OrganizationStateException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2921,8 +2921,8 @@ export const listGroupMembers: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(110, __c13, 6) as any as S.Schema<ListGroupMembersRequest>,
-  output: __S(113, __c14, 1) as any as S.Schema<ListGroupMembersResponse>,
+  input: __S(640, __c80, 0) as any as S.Schema<ListGroupMembersRequest>,
+  output: __S(643, __c80, 3) as any as S.Schema<ListGroupMembersResponse>,
   errors: [
     EntityNotFoundException,
     EntityStateException,
@@ -2956,8 +2956,8 @@ export const listGroups: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(115, __c14, 3) as any as S.Schema<ListGroupsRequest>,
-  output: __S(118, __c14, 6) as any as S.Schema<ListGroupsResponse>,
+  input: __S(648, __c81, 0) as any as S.Schema<ListGroupsRequest>,
+  output: __S(651, __c81, 3) as any as S.Schema<ListGroupsResponse>,
   errors: [
     EntityNotFoundException,
     InvalidParameterException,
@@ -2991,8 +2991,8 @@ export const listGroupsForEntity: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(120, __c15, 0) as any as S.Schema<ListGroupsForEntityRequest>,
-  output: __S(123, __c15, 3) as any as S.Schema<ListGroupsForEntityResponse>,
+  input: __S(665, __c83, 1) as any as S.Schema<ListGroupsForEntityRequest>,
+  output: __S(668, __c83, 4) as any as S.Schema<ListGroupsForEntityResponse>,
   errors: [
     EntityNotFoundException,
     EntityStateException,
@@ -3025,8 +3025,8 @@ export const listImpersonationRoles: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(124, __c15, 4) as any as S.Schema<ListImpersonationRolesRequest>,
-  output: __S(127, __c15, 7) as any as S.Schema<ListImpersonationRolesResponse>,
+  input: __S(672, __c84, 0) as any as S.Schema<ListImpersonationRolesRequest>,
+  output: __S(675, __c84, 3) as any as S.Schema<ListImpersonationRolesResponse>,
   errors: [InvalidParameterException, OrganizationNotFoundException, OrganizationStateException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3054,8 +3054,8 @@ export const listMailboxExportJobs: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(128, __c16, 0) as any as S.Schema<ListMailboxExportJobsRequest>,
-  output: __S(131, __c16, 3) as any as S.Schema<ListMailboxExportJobsResponse>,
+  input: __S(680, __c85, 0) as any as S.Schema<ListMailboxExportJobsRequest>,
+  output: __S(683, __c85, 3) as any as S.Schema<ListMailboxExportJobsResponse>,
   errors: [InvalidParameterException, OrganizationNotFoundException, OrganizationStateException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3084,8 +3084,8 @@ export const listMailboxPermissions: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(132, __c16, 4) as any as S.Schema<ListMailboxPermissionsRequest>,
-  output: __S(136, __c17, 0) as any as S.Schema<ListMailboxPermissionsResponse>,
+  input: __S(688, __c86, 0) as any as S.Schema<ListMailboxPermissionsRequest>,
+  output: __S(691, __c86, 3) as any as S.Schema<ListMailboxPermissionsResponse>,
   errors: [
     EntityNotFoundException,
     InvalidParameterException,
@@ -3117,8 +3117,8 @@ export const listMailDomains: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(137, __c17, 1) as any as S.Schema<ListMailDomainsRequest>,
-  output: __S(140, __c17, 4) as any as S.Schema<ListMailDomainsResponse>,
+  input: __S(704, __c88, 0) as any as S.Schema<ListMailDomainsRequest>,
+  output: __S(707, __c88, 3) as any as S.Schema<ListMailDomainsResponse>,
   errors: [InvalidParameterException, OrganizationNotFoundException, OrganizationStateException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3146,8 +3146,8 @@ export const listMobileDeviceAccessOverrides: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(141, __c17, 5) as any as S.Schema<ListMobileDeviceAccessOverridesRequest>,
-  output: __S(143, __c17, 7) as any as S.Schema<ListMobileDeviceAccessOverridesResponse>,
+  input: __S(712, __c89, 0) as any as S.Schema<ListMobileDeviceAccessOverridesRequest>,
+  output: __S(714, __c89, 2) as any as S.Schema<ListMobileDeviceAccessOverridesResponse>,
   errors: [
     EntityNotFoundException,
     InvalidParameterException,
@@ -3178,8 +3178,8 @@ export const listMobileDeviceAccessRules: API.OperationMethod<
   ListMobileDeviceAccessRulesError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(144, __c18, 0) as any as S.Schema<ListMobileDeviceAccessRulesRequest>,
-  output: __S(147, __c18, 3) as any as S.Schema<ListMobileDeviceAccessRulesResponse>,
+  input: __S(720, __c90, 0) as any as S.Schema<ListMobileDeviceAccessRulesRequest>,
+  output: __S(723, __c90, 3) as any as S.Schema<ListMobileDeviceAccessRulesResponse>,
   errors: [InvalidParameterException, OrganizationNotFoundException, OrganizationStateException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3197,8 +3197,8 @@ export const listOrganizations: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(148, __c18, 4) as any as S.Schema<ListOrganizationsRequest>,
-  output: __S(151, __c18, 7) as any as S.Schema<ListOrganizationsResponse>,
+  input: __S(728, __c91, 0) as any as S.Schema<ListOrganizationsRequest>,
+  output: __S(731, __c91, 3) as any as S.Schema<ListOrganizationsResponse>,
   errors: [InvalidParameterException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3227,8 +3227,8 @@ export const listPersonalAccessTokens: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   PersonalAccessTokenSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(152, __c19, 0) as any as S.Schema<ListPersonalAccessTokensRequest>,
-  output: __S(154, __c19, 2) as any as S.Schema<ListPersonalAccessTokensResponse>,
+  input: __S(736, __c92, 0) as any as S.Schema<ListPersonalAccessTokensRequest>,
+  output: __S(738, __c92, 2) as any as S.Schema<ListPersonalAccessTokensResponse>,
   errors: [
     EntityNotFoundException,
     EntityStateException,
@@ -3266,8 +3266,8 @@ export const listResourceDelegates: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(155, __c19, 3) as any as S.Schema<ListResourceDelegatesRequest>,
-  output: __S(158, __c19, 6) as any as S.Schema<ListResourceDelegatesResponse>,
+  input: __S(744, __c93, 0) as any as S.Schema<ListResourceDelegatesRequest>,
+  output: __S(747, __c93, 3) as any as S.Schema<ListResourceDelegatesResponse>,
   errors: [
     EntityNotFoundException,
     EntityStateException,
@@ -3302,8 +3302,8 @@ export const listResources: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(159, __c19, 7) as any as S.Schema<ListResourcesRequest>,
-  output: __S(162, __c20, 2) as any as S.Schema<ListResourcesResponse>,
+  input: __S(752, __c94, 0) as any as S.Schema<ListResourcesRequest>,
+  output: __S(755, __c94, 3) as any as S.Schema<ListResourcesResponse>,
   errors: [
     InvalidParameterException,
     OrganizationNotFoundException,
@@ -3330,8 +3330,8 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(163, __c20, 3) as any as S.Schema<ListTagsForResourceRequest>,
-  output: __S(166, __c20, 6) as any as S.Schema<ListTagsForResourceResponse>,
+  input: __S(760, __c95, 0) as any as S.Schema<ListTagsForResourceRequest>,
+  output: __S(761, __c95, 1) as any as S.Schema<ListTagsForResourceResponse>,
   errors: [ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3353,8 +3353,8 @@ export const listUsers: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(168, __c21, 0) as any as S.Schema<ListUsersRequest>,
-  output: __S(171, __c21, 3) as any as S.Schema<ListUsersResponse>,
+  input: __S(777, __c97, 1) as any as S.Schema<ListUsersRequest>,
+  output: __S(780, __c97, 4) as any as S.Schema<ListUsersResponse>,
   errors: [InvalidParameterException, OrganizationNotFoundException, OrganizationStateException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3386,8 +3386,8 @@ export const putAccessControlRule: API.OperationMethod<
   PutAccessControlRuleError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(172, __c21, 4) as any as S.Schema<PutAccessControlRuleRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<PutAccessControlRuleResponse>,
+  input: __S(784, __c98, 0) as any as S.Schema<PutAccessControlRuleRequest>,
+  output: __S(136, __c17, 0) as any as S.Schema<PutAccessControlRuleResponse>,
   errors: [
     EntityNotFoundException,
     InvalidParameterException,
@@ -3416,8 +3416,8 @@ export const putEmailMonitoringConfiguration: API.OperationMethod<
   PutEmailMonitoringConfigurationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(173, __c21, 5) as any as S.Schema<PutEmailMonitoringConfigurationRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<PutEmailMonitoringConfigurationResponse>,
+  input: __S(792, __c99, 0) as any as S.Schema<PutEmailMonitoringConfigurationRequest>,
+  output: __S(120, __c15, 0) as any as S.Schema<PutEmailMonitoringConfigurationResponse>,
   errors: [
     InvalidParameterException,
     OrganizationNotFoundException,
@@ -3445,8 +3445,8 @@ export const putIdentityProviderConfiguration: API.OperationMethod<
   PutIdentityProviderConfigurationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(174, __c21, 6) as any as S.Schema<PutIdentityProviderConfigurationRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<PutIdentityProviderConfigurationResponse>,
+  input: __S(800, __c100, 0) as any as S.Schema<PutIdentityProviderConfigurationRequest>,
+  output: __S(120, __c15, 0) as any as S.Schema<PutIdentityProviderConfigurationResponse>,
   errors: [
     InvalidParameterException,
     OrganizationNotFoundException,
@@ -3471,8 +3471,8 @@ export const putInboundDmarcSettings: API.OperationMethod<
   PutInboundDmarcSettingsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(175, __c21, 7) as any as S.Schema<PutInboundDmarcSettingsRequest>,
-  output: __S(31, __c3, 7) as any as S.Schema<PutInboundDmarcSettingsResponse>,
+  input: __S(808, __c101, 0) as any as S.Schema<PutInboundDmarcSettingsRequest>,
+  output: __S(272, __c34, 0) as any as S.Schema<PutInboundDmarcSettingsResponse>,
   errors: [OrganizationNotFoundException, OrganizationStateException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3496,8 +3496,8 @@ export const putMailboxPermissions: API.OperationMethod<
   PutMailboxPermissionsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(176, __c22, 0) as any as S.Schema<PutMailboxPermissionsRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<PutMailboxPermissionsResponse>,
+  input: __S(816, __c102, 0) as any as S.Schema<PutMailboxPermissionsRequest>,
+  output: __S(136, __c17, 0) as any as S.Schema<PutMailboxPermissionsResponse>,
   errors: [
     EntityNotFoundException,
     EntityStateException,
@@ -3526,8 +3526,8 @@ export const putMobileDeviceAccessOverride: API.OperationMethod<
   PutMobileDeviceAccessOverrideError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(177, __c22, 1) as any as S.Schema<PutMobileDeviceAccessOverrideRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<PutMobileDeviceAccessOverrideResponse>,
+  input: __S(824, __c103, 0) as any as S.Schema<PutMobileDeviceAccessOverrideRequest>,
+  output: __S(120, __c15, 0) as any as S.Schema<PutMobileDeviceAccessOverrideResponse>,
   errors: [
     EntityNotFoundException,
     EntityStateException,
@@ -3555,8 +3555,8 @@ export const putRetentionPolicy: API.OperationMethod<
   PutRetentionPolicyError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(178, __c22, 2) as any as S.Schema<PutRetentionPolicyRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<PutRetentionPolicyResponse>,
+  input: __S(832, __c104, 0) as any as S.Schema<PutRetentionPolicyRequest>,
+  output: __S(136, __c17, 0) as any as S.Schema<PutRetentionPolicyResponse>,
   errors: [
     InvalidParameterException,
     LimitExceededException,
@@ -3585,8 +3585,8 @@ export const registerMailDomain: API.OperationMethod<
   RegisterMailDomainError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(179, __c22, 3) as any as S.Schema<RegisterMailDomainRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<RegisterMailDomainResponse>,
+  input: __S(840, __c105, 0) as any as S.Schema<RegisterMailDomainRequest>,
+  output: __S(136, __c17, 0) as any as S.Schema<RegisterMailDomainResponse>,
   errors: [
     InvalidParameterException,
     LimitExceededException,
@@ -3629,8 +3629,8 @@ export const registerToWorkMail: API.OperationMethod<
   RegisterToWorkMailError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(180, __c22, 4) as any as S.Schema<RegisterToWorkMailRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<RegisterToWorkMailResponse>,
+  input: __S(848, __c106, 0) as any as S.Schema<RegisterToWorkMailRequest>,
+  output: __S(136, __c17, 0) as any as S.Schema<RegisterToWorkMailResponse>,
   errors: [
     DirectoryServiceAuthenticationFailedException,
     DirectoryUnavailableException,
@@ -3670,8 +3670,8 @@ export const resetPassword: API.OperationMethod<
   ResetPasswordError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(181, __c22, 5) as any as S.Schema<ResetPasswordRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<ResetPasswordResponse>,
+  input: __S(0, __c0, 0) as any as S.Schema<ResetPasswordRequest>,
+  output: __S(136, __c17, 0) as any as S.Schema<ResetPasswordResponse>,
   errors: [
     DirectoryServiceAuthenticationFailedException,
     DirectoryUnavailableException,
@@ -3707,8 +3707,8 @@ export const startMailboxExportJob: API.OperationMethod<
   StartMailboxExportJobError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(182, __c22, 6) as any as S.Schema<StartMailboxExportJobRequest>,
-  output: __S(183, __c22, 7) as any as S.Schema<StartMailboxExportJobResponse>,
+  input: __S(8, __c1, 0) as any as S.Schema<StartMailboxExportJobRequest>,
+  output: __S(9, __c1, 1) as any as S.Schema<StartMailboxExportJobResponse>,
   errors: [
     EntityNotFoundException,
     InvalidParameterException,
@@ -3737,8 +3737,8 @@ export const tagResource: API.OperationMethod<
   TagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(184, __c23, 0) as any as S.Schema<TagResourceRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<TagResourceResponse>,
+  input: __S(16, __c2, 0) as any as S.Schema<TagResourceRequest>,
+  output: __S(136, __c17, 0) as any as S.Schema<TagResourceResponse>,
   errors: [
     InvalidParameterException,
     OrganizationStateException,
@@ -3771,8 +3771,8 @@ export const testAvailabilityConfiguration: API.OperationMethod<
   TestAvailabilityConfigurationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(185, __c23, 1) as any as S.Schema<TestAvailabilityConfigurationRequest>,
-  output: __S(186, __c23, 2) as any as S.Schema<TestAvailabilityConfigurationResponse>,
+  input: __S(24, __c3, 0) as any as S.Schema<TestAvailabilityConfigurationRequest>,
+  output: __S(25, __c3, 1) as any as S.Schema<TestAvailabilityConfigurationResponse>,
   errors: [
     InvalidParameterException,
     OrganizationNotFoundException,
@@ -3795,8 +3795,8 @@ export const untagResource: API.OperationMethod<
   UntagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(187, __c23, 3) as any as S.Schema<UntagResourceRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<UntagResourceResponse>,
+  input: __S(32, __c4, 0) as any as S.Schema<UntagResourceRequest>,
+  output: __S(136, __c17, 0) as any as S.Schema<UntagResourceResponse>,
   errors: [ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3819,8 +3819,8 @@ export const updateAvailabilityConfiguration: API.OperationMethod<
   UpdateAvailabilityConfigurationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(188, __c23, 4) as any as S.Schema<UpdateAvailabilityConfigurationRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<UpdateAvailabilityConfigurationResponse>,
+  input: __S(40, __c5, 0) as any as S.Schema<UpdateAvailabilityConfigurationRequest>,
+  output: __S(120, __c15, 0) as any as S.Schema<UpdateAvailabilityConfigurationResponse>,
   errors: [
     InvalidParameterException,
     OrganizationNotFoundException,
@@ -3848,8 +3848,8 @@ export const updateDefaultMailDomain: API.OperationMethod<
   UpdateDefaultMailDomainError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(189, __c23, 5) as any as S.Schema<UpdateDefaultMailDomainRequest>,
-  output: __S(31, __c3, 7) as any as S.Schema<UpdateDefaultMailDomainResponse>,
+  input: __S(48, __c6, 0) as any as S.Schema<UpdateDefaultMailDomainRequest>,
+  output: __S(272, __c34, 0) as any as S.Schema<UpdateDefaultMailDomainResponse>,
   errors: [
     InvalidParameterException,
     MailDomainNotFoundException,
@@ -3879,8 +3879,8 @@ export const updateGroup: API.OperationMethod<
   UpdateGroupError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(190, __c23, 6) as any as S.Schema<UpdateGroupRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<UpdateGroupResponse>,
+  input: __S(56, __c7, 0) as any as S.Schema<UpdateGroupRequest>,
+  output: __S(136, __c17, 0) as any as S.Schema<UpdateGroupResponse>,
   errors: [
     EntityNotFoundException,
     EntityStateException,
@@ -3912,8 +3912,8 @@ export const updateImpersonationRole: API.OperationMethod<
   UpdateImpersonationRoleError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(191, __c23, 7) as any as S.Schema<UpdateImpersonationRoleRequest>,
-  output: __S(31, __c3, 7) as any as S.Schema<UpdateImpersonationRoleResponse>,
+  input: __S(64, __c8, 0) as any as S.Schema<UpdateImpersonationRoleRequest>,
+  output: __S(272, __c34, 0) as any as S.Schema<UpdateImpersonationRoleResponse>,
   errors: [
     EntityNotFoundException,
     EntityStateException,
@@ -3945,8 +3945,8 @@ export const updateMailboxQuota: API.OperationMethod<
   UpdateMailboxQuotaError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(192, __c24, 0) as any as S.Schema<UpdateMailboxQuotaRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<UpdateMailboxQuotaResponse>,
+  input: __S(72, __c9, 0) as any as S.Schema<UpdateMailboxQuotaRequest>,
+  output: __S(136, __c17, 0) as any as S.Schema<UpdateMailboxQuotaResponse>,
   errors: [
     EntityNotFoundException,
     EntityStateException,
@@ -3974,8 +3974,8 @@ export const updateMobileDeviceAccessRule: API.OperationMethod<
   UpdateMobileDeviceAccessRuleError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(193, __c24, 1) as any as S.Schema<UpdateMobileDeviceAccessRuleRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<UpdateMobileDeviceAccessRuleResponse>,
+  input: __S(80, __c10, 0) as any as S.Schema<UpdateMobileDeviceAccessRuleRequest>,
+  output: __S(120, __c15, 0) as any as S.Schema<UpdateMobileDeviceAccessRuleResponse>,
   errors: [
     EntityNotFoundException,
     InvalidParameterException,
@@ -4011,8 +4011,8 @@ export const updatePrimaryEmailAddress: API.OperationMethod<
   UpdatePrimaryEmailAddressError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(194, __c24, 2) as any as S.Schema<UpdatePrimaryEmailAddressRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<UpdatePrimaryEmailAddressResponse>,
+  input: __S(88, __c11, 0) as any as S.Schema<UpdatePrimaryEmailAddressRequest>,
+  output: __S(120, __c15, 0) as any as S.Schema<UpdatePrimaryEmailAddressResponse>,
   errors: [
     DirectoryServiceAuthenticationFailedException,
     DirectoryUnavailableException,
@@ -4056,8 +4056,8 @@ export const updateResource: API.OperationMethod<
   UpdateResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(195, __c24, 3) as any as S.Schema<UpdateResourceRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<UpdateResourceResponse>,
+  input: __S(96, __c12, 0) as any as S.Schema<UpdateResourceRequest>,
+  output: __S(136, __c17, 0) as any as S.Schema<UpdateResourceResponse>,
   errors: [
     DirectoryUnavailableException,
     EmailAddressInUseException,
@@ -4098,8 +4098,8 @@ export const updateUser: API.OperationMethod<
   UpdateUserError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(196, __c24, 4) as any as S.Schema<UpdateUserRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<UpdateUserResponse>,
+  input: __S(104, __c13, 0) as any as S.Schema<UpdateUserRequest>,
+  output: __S(136, __c17, 0) as any as S.Schema<UpdateUserResponse>,
   errors: [
     DirectoryServiceAuthenticationFailedException,
     DirectoryUnavailableException,
@@ -4120,17 +4120,246 @@ function __c0(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
+        S.Struct({ OrganizationId: S.String, UserId: S.String, Password: SensitiveString }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "ResetPasswordRequest" });
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          ClientToken: S.String.pipe(T.IdempotencyToken()),
+          OrganizationId: S.String,
+          EntityId: S.String,
+          Description: S.optional(S.String),
+          RoleArn: S.String,
+          KmsKeyArn: S.String,
+          S3BucketName: S.String,
+          S3Prefix: S.String,
+        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({
+        identifier: "StartMailboxExportJobRequest",
+      });
+    case 1:
+      return S.suspend(() => S.Struct({ JobId: S.optional(S.String) })).annotate({
+        identifier: "StartMailboxExportJobResponse",
+      });
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ ResourceARN: S.String, Tags: __S(769, __c96, 1) }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "TagResourceRequest" });
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          OrganizationId: S.String,
+          DomainName: S.optional(S.String),
+          EwsProvider: S.optional(__S(176, __c22, 0)),
+          LambdaProvider: S.optional(__S(184, __c23, 0)),
+        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({
+        identifier: "TestAvailabilityConfigurationRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({ TestPassed: S.optional(S.Boolean), FailureReason: S.optional(S.String) }),
+      ).annotate({
+        identifier: "TestAvailabilityConfigurationResponse",
+      });
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ ResourceARN: S.String, TagKeys: __S(216, __c27, 0) }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "UntagResourceRequest" });
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          OrganizationId: S.String,
+          DomainName: S.String,
+          EwsProvider: S.optional(__S(176, __c22, 0)),
+          LambdaProvider: S.optional(__S(184, __c23, 0)),
+        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({
+        identifier: "UpdateAvailabilityConfigurationRequest",
+      });
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ OrganizationId: S.String, DomainName: S.String }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({
+        identifier: "UpdateDefaultMailDomainRequest",
+      });
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          OrganizationId: S.String,
+          GroupId: S.String,
+          HiddenFromGlobalAddressList: S.optional(S.Boolean),
+        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({ identifier: "UpdateGroupRequest" });
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          OrganizationId: S.String,
+          ImpersonationRoleId: S.String,
+          Name: S.String,
+          Type: S.String,
+          Description: S.optional(S.String),
+          Rules: __S(225, __c28, 1),
+        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({
+        identifier: "UpdateImpersonationRoleRequest",
+      });
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ OrganizationId: S.String, UserId: S.String, MailboxQuota: S.Number }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({
+        identifier: "UpdateMailboxQuotaRequest",
+      });
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          OrganizationId: S.String,
+          MobileDeviceAccessRuleId: S.String,
+          Name: S.String,
+          Description: S.optional(S.String),
+          Effect: S.String,
+          DeviceTypes: S.optional(__S(216, __c27, 0)),
+          NotDeviceTypes: S.optional(__S(216, __c27, 0)),
+          DeviceModels: S.optional(__S(216, __c27, 0)),
+          NotDeviceModels: S.optional(__S(216, __c27, 0)),
+          DeviceOperatingSystems: S.optional(__S(216, __c27, 0)),
+          NotDeviceOperatingSystems: S.optional(__S(216, __c27, 0)),
+          DeviceUserAgents: S.optional(__S(216, __c27, 0)),
+          NotDeviceUserAgents: S.optional(__S(216, __c27, 0)),
+        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({
+        identifier: "UpdateMobileDeviceAccessRuleRequest",
+      });
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ OrganizationId: S.String, EntityId: S.String, Email: S.String }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({
+        identifier: "UpdatePrimaryEmailAddressRequest",
+      });
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          OrganizationId: S.String,
+          ResourceId: S.String,
+          Name: S.optional(S.String),
+          BookingOptions: S.optional(__S(488, __c61, 0)),
+          Description: S.optional(SensitiveString),
+          Type: S.optional(S.String),
+          HiddenFromGlobalAddressList: S.optional(S.Boolean),
+        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({ identifier: "UpdateResourceRequest" });
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          OrganizationId: S.String,
+          UserId: S.String,
+          Role: S.optional(S.String),
+          DisplayName: S.optional(SensitiveString),
+          FirstName: S.optional(SensitiveString),
+          LastName: S.optional(SensitiveString),
+          HiddenFromGlobalAddressList: S.optional(S.Boolean),
+          Initials: S.optional(SensitiveString),
+          Telephone: S.optional(SensitiveString),
+          Street: S.optional(SensitiveString),
+          JobTitle: S.optional(SensitiveString),
+          City: S.optional(SensitiveString),
+          Company: S.optional(SensitiveString),
+          ZipCode: S.optional(SensitiveString),
+          Department: S.optional(SensitiveString),
+          Country: S.optional(SensitiveString),
+          Office: S.optional(SensitiveString),
+          IdentityProviderUserId: S.optional(S.String),
+        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({ identifier: "UpdateUserRequest" });
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
         S.Struct({ OrganizationId: S.String, ResourceId: S.String, EntityId: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({
         identifier: "AssociateDelegateToResourceRequest",
       });
-    case 1:
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "AssociateDelegateToResourceResponse",
       });
-    case 2:
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ OrganizationId: S.String, GroupId: S.String, MemberId: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
@@ -4138,11 +4367,19 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "AssociateMemberToGroupRequest",
       });
-    case 3:
+  }
+}
+function __c17(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "AssociateMemberToGroupResponse",
       });
-    case 4:
+  }
+}
+function __c18(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ OrganizationId: S.String, ImpersonationRoleId: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
@@ -4150,13 +4387,17 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "AssumeImpersonationRoleRequest",
       });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({ Token: S.optional(S.String), ExpiresIn: S.optional(S.Number) }),
       ).annotate({
         identifier: "AssumeImpersonationRoleResponse",
       });
-    case 6:
+  }
+}
+function __c19(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           ClientToken: S.String.pipe(T.IdempotencyToken()),
@@ -4166,7 +4407,11 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "CancelMailboxExportJobRequest",
       });
-    case 7:
+  }
+}
+function __c20(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ OrganizationId: S.String, EntityId: S.String, Alias: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
@@ -4174,29 +4419,41 @@ function __c0(j: number): any {
       ).annotate({ identifier: "CreateAliasRequest" });
   }
 }
-function __c1(j: number): any {
+function __c21(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() =>
-        S.Struct({ EwsEndpoint: S.String, EwsUsername: S.String, EwsPassword: SensitiveString }),
-      ).annotate({ identifier: "EwsAvailabilityProvider" });
-    case 1:
-      return S.suspend(() => S.Struct({ LambdaArn: S.String })).annotate({
-        identifier: "LambdaAvailabilityProvider",
-      });
-    case 2:
       return S.suspend(() =>
         S.Struct({
           ClientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
           OrganizationId: S.String,
           DomainName: S.String,
-          EwsProvider: S.optional(__S(8, __c1, 0)),
-          LambdaProvider: S.optional(__S(9, __c1, 1)),
+          EwsProvider: S.optional(__S(176, __c22, 0)),
+          LambdaProvider: S.optional(__S(184, __c23, 0)),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "CreateAvailabilityConfigurationRequest",
       });
-    case 3:
+  }
+}
+function __c22(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ EwsEndpoint: S.String, EwsUsername: S.String, EwsPassword: SensitiveString }),
+      ).annotate({ identifier: "EwsAvailabilityProvider" });
+  }
+}
+function __c23(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({ LambdaArn: S.String })).annotate({
+        identifier: "LambdaAvailabilityProvider",
+      });
+  }
+}
+function __c24(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           OrganizationId: S.String,
@@ -4204,11 +4461,15 @@ function __c1(j: number): any {
           HiddenFromGlobalAddressList: S.optional(S.Boolean),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "CreateGroupRequest" });
-    case 4:
+    case 1:
       return S.suspend(() => S.Struct({ GroupId: S.optional(S.String) })).annotate({
         identifier: "CreateGroupResponse",
       });
-    case 5:
+  }
+}
+function __c25(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           Name: S.String,
@@ -4218,15 +4479,40 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "CreateIdentityCenterApplicationRequest",
       });
-    case 6:
+    case 1:
       return S.suspend(() => S.Struct({ ApplicationArn: S.optional(S.String) })).annotate({
         identifier: "CreateIdentityCenterApplicationResponse",
       });
-    case 7:
+  }
+}
+function __c26(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          ClientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
+          OrganizationId: S.String,
+          Name: S.String,
+          Type: S.String,
+          Description: S.optional(S.String),
+          Rules: __S(225, __c28, 1),
+        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({
+        identifier: "CreateImpersonationRoleRequest",
+      });
+    case 1:
+      return S.suspend(() => S.Struct({ ImpersonationRoleId: S.optional(S.String) })).annotate({
+        identifier: "CreateImpersonationRoleResponse",
+      });
+  }
+}
+function __c27(j: number): any {
+  switch (j) {
+    case 0:
       return S.Array(S.String);
   }
 }
-function __c2(j: number): any {
+function __c28(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4235,30 +4521,17 @@ function __c2(j: number): any {
           Name: S.optional(S.String),
           Description: S.optional(S.String),
           Effect: S.String,
-          TargetUsers: S.optional(__S(15, __c1, 7)),
-          NotTargetUsers: S.optional(__S(15, __c1, 7)),
+          TargetUsers: S.optional(__S(216, __c27, 0)),
+          NotTargetUsers: S.optional(__S(216, __c27, 0)),
         }),
       ).annotate({ identifier: "ImpersonationRule" });
     case 1:
-      return S.Array(__S(16, __c2, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          ClientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-          OrganizationId: S.String,
-          Name: S.String,
-          Type: S.String,
-          Description: S.optional(S.String),
-          Rules: __S(17, __c2, 1),
-        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "CreateImpersonationRoleRequest",
-      });
-    case 3:
-      return S.suspend(() => S.Struct({ ImpersonationRoleId: S.optional(S.String) })).annotate({
-        identifier: "CreateImpersonationRoleResponse",
-      });
-    case 4:
+      return S.Array(__S(224, __c28, 0));
+  }
+}
+function __c29(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           OrganizationId: S.String,
@@ -4266,52 +4539,56 @@ function __c2(j: number): any {
           Name: S.String,
           Description: S.optional(S.String),
           Effect: S.String,
-          DeviceTypes: S.optional(__S(15, __c1, 7)),
-          NotDeviceTypes: S.optional(__S(15, __c1, 7)),
-          DeviceModels: S.optional(__S(15, __c1, 7)),
-          NotDeviceModels: S.optional(__S(15, __c1, 7)),
-          DeviceOperatingSystems: S.optional(__S(15, __c1, 7)),
-          NotDeviceOperatingSystems: S.optional(__S(15, __c1, 7)),
-          DeviceUserAgents: S.optional(__S(15, __c1, 7)),
-          NotDeviceUserAgents: S.optional(__S(15, __c1, 7)),
+          DeviceTypes: S.optional(__S(216, __c27, 0)),
+          NotDeviceTypes: S.optional(__S(216, __c27, 0)),
+          DeviceModels: S.optional(__S(216, __c27, 0)),
+          NotDeviceModels: S.optional(__S(216, __c27, 0)),
+          DeviceOperatingSystems: S.optional(__S(216, __c27, 0)),
+          NotDeviceOperatingSystems: S.optional(__S(216, __c27, 0)),
+          DeviceUserAgents: S.optional(__S(216, __c27, 0)),
+          NotDeviceUserAgents: S.optional(__S(216, __c27, 0)),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "CreateMobileDeviceAccessRuleRequest",
       });
-    case 5:
+    case 1:
       return S.suspend(() => S.Struct({ MobileDeviceAccessRuleId: S.optional(S.String) })).annotate(
         {
           identifier: "CreateMobileDeviceAccessRuleResponse",
         },
       );
-    case 6:
+  }
+}
+function __c30(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ DomainName: S.String, HostedZoneId: S.optional(S.String) }),
       ).annotate({ identifier: "Domain" });
-    case 7:
-      return S.Array(__S(22, __c2, 6));
-  }
-}
-function __c3(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
+      return S.Array(__S(240, __c30, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           DirectoryId: S.optional(S.String),
           Alias: S.String,
           ClientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-          Domains: S.optional(__S(23, __c2, 7)),
+          Domains: S.optional(__S(241, __c30, 1)),
           KmsKeyArn: S.optional(S.String),
           EnableInteroperability: S.optional(S.Boolean),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "CreateOrganizationRequest",
       });
-    case 1:
+    case 3:
       return S.suspend(() => S.Struct({ OrganizationId: S.optional(S.String) })).annotate({
         identifier: "CreateOrganizationResponse",
       });
-    case 2:
+  }
+}
+function __c31(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           OrganizationId: S.String,
@@ -4321,11 +4598,15 @@ function __c3(j: number): any {
           HiddenFromGlobalAddressList: S.optional(S.Boolean),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "CreateResourceRequest" });
-    case 3:
+    case 1:
       return S.suspend(() => S.Struct({ ResourceId: S.optional(S.String) })).annotate({
         identifier: "CreateResourceResponse",
       });
-    case 4:
+  }
+}
+function __c32(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           OrganizationId: S.String,
@@ -4339,11 +4620,15 @@ function __c3(j: number): any {
           IdentityProviderUserId: S.optional(S.String),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "CreateUserRequest" });
-    case 5:
+    case 1:
       return S.suspend(() => S.Struct({ UserId: S.optional(S.String) })).annotate({
         identifier: "CreateUserResponse",
       });
-    case 6:
+  }
+}
+function __c33(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ OrganizationId: S.String, Name: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
@@ -4351,13 +4636,17 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "DeleteAccessControlRuleRequest",
       });
-    case 7:
+  }
+}
+function __c34(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "DeleteAccessControlRuleResponse",
       });
   }
 }
-function __c4(j: number): any {
+function __c35(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4365,7 +4654,11 @@ function __c4(j: number): any {
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "DeleteAliasRequest" });
-    case 1:
+  }
+}
+function __c36(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ OrganizationId: S.String, DomainName: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
@@ -4373,7 +4666,11 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "DeleteAvailabilityConfigurationRequest",
       });
-    case 2:
+  }
+}
+function __c37(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ OrganizationId: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
@@ -4381,13 +4678,21 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "DeleteEmailMonitoringConfigurationRequest",
       });
-    case 3:
+  }
+}
+function __c38(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ OrganizationId: S.String, GroupId: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "DeleteGroupRequest" });
-    case 4:
+  }
+}
+function __c39(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ ApplicationArn: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
@@ -4395,7 +4700,11 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "DeleteIdentityCenterApplicationRequest",
       });
-    case 5:
+  }
+}
+function __c40(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ OrganizationId: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
@@ -4403,7 +4712,11 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "DeleteIdentityProviderConfigurationRequest",
       });
-    case 6:
+  }
+}
+function __c41(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ OrganizationId: S.String, ImpersonationRoleId: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
@@ -4411,7 +4724,11 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "DeleteImpersonationRoleRequest",
       });
-    case 7:
+  }
+}
+function __c42(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ OrganizationId: S.String, EntityId: S.String, GranteeId: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
@@ -4421,7 +4738,7 @@ function __c4(j: number): any {
       });
   }
 }
-function __c5(j: number): any {
+function __c43(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4431,7 +4748,11 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "DeleteMobileDeviceAccessOverrideRequest",
       });
-    case 1:
+  }
+}
+function __c44(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ OrganizationId: S.String, MobileDeviceAccessRuleId: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
@@ -4439,7 +4760,11 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "DeleteMobileDeviceAccessRuleRequest",
       });
-    case 2:
+  }
+}
+function __c45(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           ClientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
@@ -4451,13 +4776,17 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "DeleteOrganizationRequest",
       });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({ OrganizationId: S.optional(S.String), State: S.optional(S.String) }),
       ).annotate({
         identifier: "DeleteOrganizationResponse",
       });
-    case 4:
+  }
+}
+function __c46(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ OrganizationId: S.String, PersonalAccessTokenId: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
@@ -4465,13 +4794,21 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "DeletePersonalAccessTokenRequest",
       });
-    case 5:
+  }
+}
+function __c47(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ OrganizationId: S.String, ResourceId: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "DeleteResourceRequest" });
-    case 6:
+  }
+}
+function __c48(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ OrganizationId: S.String, Id: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
@@ -4479,7 +4816,11 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "DeleteRetentionPolicyRequest",
       });
-    case 7:
+  }
+}
+function __c49(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ OrganizationId: S.String, UserId: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
@@ -4487,7 +4828,7 @@ function __c5(j: number): any {
       ).annotate({ identifier: "DeleteUserRequest" });
   }
 }
-function __c6(j: number): any {
+function __c50(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4497,7 +4838,11 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "DeregisterFromWorkMailRequest",
       });
-    case 1:
+  }
+}
+function __c51(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ OrganizationId: S.String, DomainName: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
@@ -4505,7 +4850,11 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "DeregisterMailDomainRequest",
       });
-    case 2:
+  }
+}
+function __c52(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ OrganizationId: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
@@ -4513,19 +4862,23 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "DescribeEmailMonitoringConfigurationRequest",
       });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({ RoleArn: S.optional(S.String), LogGroupArn: S.optional(S.String) }),
       ).annotate({
         identifier: "DescribeEmailMonitoringConfigurationResponse",
       });
-    case 4:
+  }
+}
+function __c53(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ OrganizationId: S.String, Email: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "DescribeEntityRequest" });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           EntityId: S.optional(S.String),
@@ -4533,13 +4886,17 @@ function __c6(j: number): any {
           Type: S.optional(S.String),
         }),
       ).annotate({ identifier: "DescribeEntityResponse" });
-    case 6:
+  }
+}
+function __c54(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ OrganizationId: S.String, GroupId: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "DescribeGroupRequest" });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           GroupId: S.optional(S.String),
@@ -4553,7 +4910,7 @@ function __c6(j: number): any {
       ).annotate({ identifier: "DescribeGroupResponse" });
   }
 }
-function __c7(j: number): any {
+function __c55(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4565,11 +4922,25 @@ function __c7(j: number): any {
       });
     case 1:
       return S.suspend(() =>
+        S.Struct({
+          AuthenticationMode: S.optional(S.String),
+          IdentityCenterConfiguration: S.optional(__S(448, __c56, 0)),
+          PersonalAccessTokenConfiguration: S.optional(__S(449, __c56, 1)),
+        }),
+      ).annotate({
+        identifier: "DescribeIdentityProviderConfigurationResponse",
+      });
+  }
+}
+function __c56(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
         S.Struct({ InstanceArn: S.String, ApplicationArn: S.String }),
       ).annotate({
         identifier: "IdentityCenterConfiguration",
       });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           Status: S.String,
@@ -4578,17 +4949,11 @@ function __c7(j: number): any {
       ).annotate({
         identifier: "PersonalAccessTokenConfiguration",
       });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          AuthenticationMode: S.optional(S.String),
-          IdentityCenterConfiguration: S.optional(__S(57, __c7, 1)),
-          PersonalAccessTokenConfiguration: S.optional(__S(58, __c7, 2)),
-        }),
-      ).annotate({
-        identifier: "DescribeIdentityProviderConfigurationResponse",
-      });
-    case 4:
+  }
+}
+function __c57(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ OrganizationId: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
@@ -4596,11 +4961,15 @@ function __c7(j: number): any {
       ).annotate({
         identifier: "DescribeInboundDmarcSettingsRequest",
       });
-    case 5:
+    case 1:
       return S.suspend(() => S.Struct({ Enforced: S.optional(S.Boolean) })).annotate({
         identifier: "DescribeInboundDmarcSettingsResponse",
       });
-    case 6:
+  }
+}
+function __c58(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ JobId: S.String, OrganizationId: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
@@ -4608,7 +4977,7 @@ function __c7(j: number): any {
       ).annotate({
         identifier: "DescribeMailboxExportJobRequest",
       });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           EntityId: S.optional(S.String),
@@ -4629,7 +4998,7 @@ function __c7(j: number): any {
       });
   }
 }
-function __c8(j: number): any {
+function __c59(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4657,28 +5026,24 @@ function __c8(j: number): any {
       ).annotate({
         identifier: "DescribeOrganizationResponse",
       });
-    case 2:
+  }
+}
+function __c60(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ OrganizationId: S.String, ResourceId: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "DescribeResourceRequest" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          AutoAcceptRequests: S.optional(S.Boolean),
-          AutoDeclineRecurringRequests: S.optional(S.Boolean),
-          AutoDeclineConflictingRequests: S.optional(S.Boolean),
-        }),
-      ).annotate({ identifier: "BookingOptions" });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           ResourceId: S.optional(S.String),
           Email: S.optional(S.String),
           Name: S.optional(S.String),
           Type: S.optional(S.String),
-          BookingOptions: S.optional(__S(67, __c8, 3)),
+          BookingOptions: S.optional(__S(488, __c61, 0)),
           State: S.optional(S.String),
           EnabledDate: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           DisabledDate: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
@@ -4686,13 +5051,29 @@ function __c8(j: number): any {
           HiddenFromGlobalAddressList: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "DescribeResourceResponse" });
-    case 5:
+  }
+}
+function __c61(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          AutoAcceptRequests: S.optional(S.Boolean),
+          AutoDeclineRecurringRequests: S.optional(S.Boolean),
+          AutoDeclineConflictingRequests: S.optional(S.Boolean),
+        }),
+      ).annotate({ identifier: "BookingOptions" });
+  }
+}
+function __c62(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ OrganizationId: S.String, UserId: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "DescribeUserRequest" });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           UserId: S.optional(S.String),
@@ -4722,7 +5103,11 @@ function __c8(j: number): any {
           IdentityProviderIdentityStoreId: S.optional(S.String),
         }),
       ).annotate({ identifier: "DescribeUserResponse" });
-    case 7:
+  }
+}
+function __c63(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ OrganizationId: S.String, ResourceId: S.String, EntityId: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
@@ -4732,7 +5117,7 @@ function __c8(j: number): any {
       });
   }
 }
-function __c9(j: number): any {
+function __c64(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4742,7 +5127,11 @@ function __c9(j: number): any {
       ).annotate({
         identifier: "DisassociateMemberFromGroupRequest",
       });
-    case 1:
+  }
+}
+function __c65(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           OrganizationId: S.String,
@@ -4754,16 +5143,20 @@ function __c9(j: number): any {
       ).annotate({
         identifier: "GetAccessControlEffectRequest",
       });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           Effect: S.optional(S.String),
-          MatchedRules: S.optional(__S(15, __c1, 7)),
+          MatchedRules: S.optional(__S(216, __c27, 0)),
         }),
       ).annotate({
         identifier: "GetAccessControlEffectResponse",
       });
-    case 3:
+  }
+}
+function __c66(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ OrganizationId: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
@@ -4771,24 +5164,32 @@ function __c9(j: number): any {
       ).annotate({
         identifier: "GetDefaultRetentionPolicyRequest",
       });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({ Name: S.String, Action: S.String, Period: S.optional(S.Number) }),
-      ).annotate({ identifier: "FolderConfiguration" });
-    case 5:
-      return S.Array(__S(76, __c9, 4));
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           Id: S.optional(S.String),
           Name: S.optional(S.String),
           Description: S.optional(S.String),
-          FolderConfigurations: S.optional(__S(77, __c9, 5)),
+          FolderConfigurations: S.optional(__S(537, __c67, 1)),
         }),
       ).annotate({
         identifier: "GetDefaultRetentionPolicyResponse",
       });
-    case 7:
+  }
+}
+function __c67(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ Name: S.String, Action: S.String, Period: S.optional(S.Number) }),
+      ).annotate({ identifier: "FolderConfiguration" });
+    case 1:
+      return S.Array(__S(536, __c67, 0));
+  }
+}
+function __c68(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ OrganizationId: S.String, ImpersonationRoleId: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
@@ -4796,25 +5197,25 @@ function __c9(j: number): any {
       ).annotate({
         identifier: "GetImpersonationRoleRequest",
       });
-  }
-}
-function __c10(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           ImpersonationRoleId: S.optional(S.String),
           Name: S.optional(S.String),
           Type: S.optional(S.String),
           Description: S.optional(S.String),
-          Rules: S.optional(__S(17, __c2, 1)),
+          Rules: S.optional(__S(225, __c28, 1)),
           DateCreated: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           DateModified: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
         }),
       ).annotate({
         identifier: "GetImpersonationRoleResponse",
       });
-    case 1:
+  }
+}
+function __c69(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           OrganizationId: S.String,
@@ -4824,45 +5225,49 @@ function __c10(j: number): any {
       ).annotate({
         identifier: "GetImpersonationRoleEffectRequest",
       });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({ ImpersonationRuleId: S.optional(S.String), Name: S.optional(S.String) }),
       ).annotate({ identifier: "ImpersonationMatchedRule" });
+    case 2:
+      return S.Array(__S(553, __c69, 1));
     case 3:
-      return S.Array(__S(82, __c10, 2));
-    case 4:
       return S.suspend(() =>
         S.Struct({
           Type: S.optional(S.String),
           Effect: S.optional(S.String),
-          MatchedRules: S.optional(__S(83, __c10, 3)),
+          MatchedRules: S.optional(__S(554, __c69, 2)),
         }),
       ).annotate({
         identifier: "GetImpersonationRoleEffectResponse",
       });
-    case 5:
+  }
+}
+function __c70(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ OrganizationId: S.String, UserId: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "GetMailboxDetailsRequest" });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({ MailboxQuota: S.optional(S.Number), MailboxSize: S.optional(S.Number) }),
       ).annotate({
         identifier: "GetMailboxDetailsResponse",
       });
-    case 7:
+  }
+}
+function __c71(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ OrganizationId: S.String, DomainName: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "GetMailDomainRequest" });
-  }
-}
-function __c11(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           Type: S.optional(S.String),
@@ -4870,19 +5275,23 @@ function __c11(j: number): any {
           Value: S.optional(S.String),
         }),
       ).annotate({ identifier: "DnsRecord" });
-    case 1:
-      return S.Array(__S(88, __c11, 0));
     case 2:
+      return S.Array(__S(569, __c71, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          Records: S.optional(__S(89, __c11, 1)),
+          Records: S.optional(__S(570, __c71, 2)),
           IsTestDomain: S.optional(S.Boolean),
           IsDefault: S.optional(S.Boolean),
           OwnershipVerificationStatus: S.optional(S.String),
           DkimVerificationStatus: S.optional(S.String),
         }),
       ).annotate({ identifier: "GetMailDomainResponse" });
-    case 3:
+  }
+}
+function __c72(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           OrganizationId: S.String,
@@ -4894,24 +5303,28 @@ function __c11(j: number): any {
       ).annotate({
         identifier: "GetMobileDeviceAccessEffectRequest",
       });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({ MobileDeviceAccessRuleId: S.optional(S.String), Name: S.optional(S.String) }),
       ).annotate({
         identifier: "MobileDeviceAccessMatchedRule",
       });
-    case 5:
-      return S.Array(__S(92, __c11, 4));
-    case 6:
+    case 2:
+      return S.Array(__S(577, __c72, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
           Effect: S.optional(S.String),
-          MatchedRules: S.optional(__S(93, __c11, 5)),
+          MatchedRules: S.optional(__S(578, __c72, 2)),
         }),
       ).annotate({
         identifier: "GetMobileDeviceAccessEffectResponse",
       });
-    case 7:
+  }
+}
+function __c73(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ OrganizationId: S.String, UserId: S.String, DeviceId: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
@@ -4921,7 +5334,7 @@ function __c11(j: number): any {
       });
   }
 }
-function __c12(j: number): any {
+function __c74(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4936,7 +5349,11 @@ function __c12(j: number): any {
       ).annotate({
         identifier: "GetMobileDeviceAccessOverrideResponse",
       });
-    case 1:
+  }
+}
+function __c75(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ OrganizationId: S.String, PersonalAccessTokenId: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
@@ -4944,7 +5361,11 @@ function __c12(j: number): any {
       ).annotate({
         identifier: "GetPersonalAccessTokenMetadataRequest",
       });
-    case 2:
+  }
+}
+function __c76(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           PersonalAccessTokenId: S.optional(S.String),
@@ -4953,12 +5374,16 @@ function __c12(j: number): any {
           DateCreated: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           DateLastUsed: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           ExpiresTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          Scopes: S.optional(__S(15, __c1, 7)),
+          Scopes: S.optional(__S(216, __c27, 0)),
         }),
       ).annotate({
         identifier: "GetPersonalAccessTokenMetadataResponse",
       });
-    case 3:
+  }
+}
+function __c77(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ OrganizationId: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
@@ -4966,31 +5391,35 @@ function __c12(j: number): any {
       ).annotate({
         identifier: "ListAccessControlRulesRequest",
       });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           Name: S.optional(S.String),
           Effect: S.optional(S.String),
           Description: S.optional(S.String),
-          IpRanges: S.optional(__S(15, __c1, 7)),
-          NotIpRanges: S.optional(__S(15, __c1, 7)),
-          Actions: S.optional(__S(15, __c1, 7)),
-          NotActions: S.optional(__S(15, __c1, 7)),
-          UserIds: S.optional(__S(15, __c1, 7)),
-          NotUserIds: S.optional(__S(15, __c1, 7)),
+          IpRanges: S.optional(__S(216, __c27, 0)),
+          NotIpRanges: S.optional(__S(216, __c27, 0)),
+          Actions: S.optional(__S(216, __c27, 0)),
+          NotActions: S.optional(__S(216, __c27, 0)),
+          UserIds: S.optional(__S(216, __c27, 0)),
+          NotUserIds: S.optional(__S(216, __c27, 0)),
           DateCreated: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           DateModified: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          ImpersonationRoleIds: S.optional(__S(15, __c1, 7)),
-          NotImpersonationRoleIds: S.optional(__S(15, __c1, 7)),
+          ImpersonationRoleIds: S.optional(__S(216, __c27, 0)),
+          NotImpersonationRoleIds: S.optional(__S(216, __c27, 0)),
         }),
       ).annotate({ identifier: "AccessControlRule" });
-    case 5:
-      return S.Array(__S(100, __c12, 4));
-    case 6:
-      return S.suspend(() => S.Struct({ Rules: S.optional(__S(101, __c12, 5)) })).annotate({
+    case 2:
+      return S.Array(__S(617, __c77, 1));
+    case 3:
+      return S.suspend(() => S.Struct({ Rules: S.optional(__S(618, __c77, 2)) })).annotate({
         identifier: "ListAccessControlRulesResponse",
       });
-    case 7:
+  }
+}
+function __c78(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           OrganizationId: S.String,
@@ -4999,15 +5428,15 @@ function __c12(j: number): any {
           MaxResults: S.optional(S.Number),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "ListAliasesRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({ Aliases: S.optional(__S(216, __c27, 0)), NextToken: S.optional(S.String) }),
+      ).annotate({ identifier: "ListAliasesResponse" });
   }
 }
-function __c13(j: number): any {
+function __c79(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() =>
-        S.Struct({ Aliases: S.optional(__S(15, __c1, 7)), NextToken: S.optional(S.String) }),
-      ).annotate({ identifier: "ListAliasesResponse" });
-    case 1:
       return S.suspend(() =>
         S.Struct({
           OrganizationId: S.String,
@@ -5017,37 +5446,41 @@ function __c13(j: number): any {
       ).annotate({
         identifier: "ListAvailabilityConfigurationsRequest",
       });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({ EwsEndpoint: S.optional(S.String), EwsUsername: S.optional(S.String) }),
       ).annotate({
         identifier: "RedactedEwsAvailabilityProvider",
       });
-    case 3:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           DomainName: S.optional(S.String),
           ProviderType: S.optional(S.String),
-          EwsProvider: S.optional(__S(106, __c13, 2)),
-          LambdaProvider: S.optional(__S(9, __c1, 1)),
+          EwsProvider: S.optional(__S(633, __c79, 1)),
+          LambdaProvider: S.optional(__S(184, __c23, 0)),
           DateCreated: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           DateModified: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
         }),
       ).annotate({
         identifier: "AvailabilityConfiguration",
       });
+    case 3:
+      return S.Array(__S(634, __c79, 2));
     case 4:
-      return S.Array(__S(107, __c13, 3));
-    case 5:
       return S.suspend(() =>
         S.Struct({
-          AvailabilityConfigurations: S.optional(__S(108, __c13, 4)),
+          AvailabilityConfigurations: S.optional(__S(635, __c79, 3)),
           NextToken: S.optional(S.String),
         }),
       ).annotate({
         identifier: "ListAvailabilityConfigurationsResponse",
       });
-    case 6:
+  }
+}
+function __c80(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           OrganizationId: S.String,
@@ -5056,7 +5489,7 @@ function __c13(j: number): any {
           MaxResults: S.optional(S.Number),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "ListGroupMembersRequest" });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           Id: S.optional(S.String),
@@ -5067,34 +5500,26 @@ function __c13(j: number): any {
           DisabledDate: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
         }),
       ).annotate({ identifier: "Member" });
+    case 2:
+      return S.Array(__S(641, __c80, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({ Members: S.optional(__S(642, __c80, 2)), NextToken: S.optional(S.String) }),
+      ).annotate({ identifier: "ListGroupMembersResponse" });
   }
 }
-function __c14(j: number): any {
+function __c81(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(111, __c13, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({ Members: S.optional(__S(112, __c14, 0)), NextToken: S.optional(S.String) }),
-      ).annotate({ identifier: "ListGroupMembersResponse" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          NamePrefix: S.optional(S.String),
-          PrimaryEmailPrefix: S.optional(S.String),
-          State: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ListGroupsFilters" });
-    case 3:
       return S.suspend(() =>
         S.Struct({
           OrganizationId: S.String,
           NextToken: S.optional(S.String),
           MaxResults: S.optional(S.Number),
-          Filters: S.optional(__S(114, __c14, 2)),
+          Filters: S.optional(__S(656, __c82, 0)),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "ListGroupsRequest" });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           Id: S.optional(S.String),
@@ -5105,45 +5530,61 @@ function __c14(j: number): any {
           DisabledDate: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
         }),
       ).annotate({ identifier: "Group" });
-    case 5:
-      return S.Array(__S(116, __c14, 4));
-    case 6:
+    case 2:
+      return S.Array(__S(649, __c81, 1));
+    case 3:
       return S.suspend(() =>
-        S.Struct({ Groups: S.optional(__S(117, __c14, 5)), NextToken: S.optional(S.String) }),
+        S.Struct({ Groups: S.optional(__S(650, __c81, 2)), NextToken: S.optional(S.String) }),
       ).annotate({ identifier: "ListGroupsResponse" });
-    case 7:
-      return S.suspend(() => S.Struct({ GroupNamePrefix: S.optional(S.String) })).annotate({
-        identifier: "ListGroupsForEntityFilters",
-      });
   }
 }
-function __c15(j: number): any {
+function __c82(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
+          NamePrefix: S.optional(S.String),
+          PrimaryEmailPrefix: S.optional(S.String),
+          State: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ListGroupsFilters" });
+  }
+}
+function __c83(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({ GroupNamePrefix: S.optional(S.String) })).annotate({
+        identifier: "ListGroupsForEntityFilters",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
           OrganizationId: S.String,
           EntityId: S.String,
-          Filters: S.optional(__S(119, __c14, 7)),
+          Filters: S.optional(__S(664, __c83, 0)),
           NextToken: S.optional(S.String),
           MaxResults: S.optional(S.Number),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "ListGroupsForEntityRequest",
       });
-    case 1:
+    case 2:
       return S.suspend(() =>
         S.Struct({ GroupId: S.optional(S.String), GroupName: S.optional(S.String) }),
       ).annotate({ identifier: "GroupIdentifier" });
-    case 2:
-      return S.Array(__S(121, __c15, 1));
     case 3:
+      return S.Array(__S(666, __c83, 2));
+    case 4:
       return S.suspend(() =>
-        S.Struct({ Groups: S.optional(__S(122, __c15, 2)), NextToken: S.optional(S.String) }),
+        S.Struct({ Groups: S.optional(__S(667, __c83, 3)), NextToken: S.optional(S.String) }),
       ).annotate({
         identifier: "ListGroupsForEntityResponse",
       });
-    case 4:
+  }
+}
+function __c84(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           OrganizationId: S.String,
@@ -5153,7 +5594,7 @@ function __c15(j: number): any {
       ).annotate({
         identifier: "ListImpersonationRolesRequest",
       });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           ImpersonationRoleId: S.optional(S.String),
@@ -5163,17 +5604,17 @@ function __c15(j: number): any {
           DateModified: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
         }),
       ).annotate({ identifier: "ImpersonationRole" });
-    case 6:
-      return S.Array(__S(125, __c15, 5));
-    case 7:
+    case 2:
+      return S.Array(__S(673, __c84, 1));
+    case 3:
       return S.suspend(() =>
-        S.Struct({ Roles: S.optional(__S(126, __c15, 6)), NextToken: S.optional(S.String) }),
+        S.Struct({ Roles: S.optional(__S(674, __c84, 2)), NextToken: S.optional(S.String) }),
       ).annotate({
         identifier: "ListImpersonationRolesResponse",
       });
   }
 }
-function __c16(j: number): any {
+function __c85(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5200,14 +5641,18 @@ function __c16(j: number): any {
         }),
       ).annotate({ identifier: "MailboxExportJob" });
     case 2:
-      return S.Array(__S(129, __c16, 1));
+      return S.Array(__S(681, __c85, 1));
     case 3:
       return S.suspend(() =>
-        S.Struct({ Jobs: S.optional(__S(130, __c16, 2)), NextToken: S.optional(S.String) }),
+        S.Struct({ Jobs: S.optional(__S(682, __c85, 2)), NextToken: S.optional(S.String) }),
       ).annotate({
         identifier: "ListMailboxExportJobsResponse",
       });
-    case 4:
+  }
+}
+function __c86(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           OrganizationId: S.String,
@@ -5218,29 +5663,33 @@ function __c16(j: number): any {
       ).annotate({
         identifier: "ListMailboxPermissionsRequest",
       });
-    case 5:
-      return S.Array(S.String);
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           GranteeId: S.String,
           GranteeType: S.String,
-          PermissionValues: __S(133, __c16, 5),
+          PermissionValues: __S(696, __c87, 0),
         }),
       ).annotate({ identifier: "Permission" });
-    case 7:
-      return S.Array(__S(134, __c16, 6));
-  }
-}
-function __c17(j: number): any {
-  switch (j) {
-    case 0:
+    case 2:
+      return S.Array(__S(689, __c86, 1));
+    case 3:
       return S.suspend(() =>
-        S.Struct({ Permissions: S.optional(__S(135, __c16, 7)), NextToken: S.optional(S.String) }),
+        S.Struct({ Permissions: S.optional(__S(690, __c86, 2)), NextToken: S.optional(S.String) }),
       ).annotate({
         identifier: "ListMailboxPermissionsResponse",
       });
-    case 1:
+  }
+}
+function __c87(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c88(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           OrganizationId: S.String,
@@ -5248,17 +5697,21 @@ function __c17(j: number): any {
           NextToken: S.optional(S.String),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "ListMailDomainsRequest" });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({ DomainName: S.optional(S.String), DefaultDomain: S.optional(S.Boolean) }),
       ).annotate({ identifier: "MailDomainSummary" });
+    case 2:
+      return S.Array(__S(705, __c88, 1));
     case 3:
-      return S.Array(__S(138, __c17, 2));
-    case 4:
       return S.suspend(() =>
-        S.Struct({ MailDomains: S.optional(__S(139, __c17, 3)), NextToken: S.optional(S.String) }),
+        S.Struct({ MailDomains: S.optional(__S(706, __c88, 2)), NextToken: S.optional(S.String) }),
       ).annotate({ identifier: "ListMailDomainsResponse" });
-    case 5:
+  }
+}
+function __c89(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           OrganizationId: S.String,
@@ -5270,12 +5723,12 @@ function __c17(j: number): any {
       ).annotate({
         identifier: "ListMobileDeviceAccessOverridesRequest",
       });
-    case 6:
-      return S.Array(__S(96, __c12, 0));
-    case 7:
+    case 1:
+      return S.Array(__S(592, __c74, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          Overrides: S.optional(__S(142, __c17, 6)),
+          Overrides: S.optional(__S(713, __c89, 1)),
           NextToken: S.optional(S.String),
         }),
       ).annotate({
@@ -5283,7 +5736,7 @@ function __c17(j: number): any {
       });
   }
 }
-function __c18(j: number): any {
+function __c90(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5300,31 +5753,35 @@ function __c18(j: number): any {
           Name: S.optional(S.String),
           Description: S.optional(S.String),
           Effect: S.optional(S.String),
-          DeviceTypes: S.optional(__S(15, __c1, 7)),
-          NotDeviceTypes: S.optional(__S(15, __c1, 7)),
-          DeviceModels: S.optional(__S(15, __c1, 7)),
-          NotDeviceModels: S.optional(__S(15, __c1, 7)),
-          DeviceOperatingSystems: S.optional(__S(15, __c1, 7)),
-          NotDeviceOperatingSystems: S.optional(__S(15, __c1, 7)),
-          DeviceUserAgents: S.optional(__S(15, __c1, 7)),
-          NotDeviceUserAgents: S.optional(__S(15, __c1, 7)),
+          DeviceTypes: S.optional(__S(216, __c27, 0)),
+          NotDeviceTypes: S.optional(__S(216, __c27, 0)),
+          DeviceModels: S.optional(__S(216, __c27, 0)),
+          NotDeviceModels: S.optional(__S(216, __c27, 0)),
+          DeviceOperatingSystems: S.optional(__S(216, __c27, 0)),
+          NotDeviceOperatingSystems: S.optional(__S(216, __c27, 0)),
+          DeviceUserAgents: S.optional(__S(216, __c27, 0)),
+          NotDeviceUserAgents: S.optional(__S(216, __c27, 0)),
           DateCreated: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           DateModified: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
         }),
       ).annotate({ identifier: "MobileDeviceAccessRule" });
     case 2:
-      return S.Array(__S(145, __c18, 1));
+      return S.Array(__S(721, __c90, 1));
     case 3:
-      return S.suspend(() => S.Struct({ Rules: S.optional(__S(146, __c18, 2)) })).annotate({
+      return S.suspend(() => S.Struct({ Rules: S.optional(__S(722, __c90, 2)) })).annotate({
         identifier: "ListMobileDeviceAccessRulesResponse",
       });
-    case 4:
+  }
+}
+function __c91(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ NextToken: S.optional(S.String), MaxResults: S.optional(S.Number) }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "ListOrganizationsRequest" });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           OrganizationId: S.optional(S.String),
@@ -5334,12 +5791,12 @@ function __c18(j: number): any {
           State: S.optional(S.String),
         }),
       ).annotate({ identifier: "OrganizationSummary" });
-    case 6:
-      return S.Array(__S(149, __c18, 5));
-    case 7:
+    case 2:
+      return S.Array(__S(729, __c91, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          OrganizationSummaries: S.optional(__S(150, __c18, 6)),
+          OrganizationSummaries: S.optional(__S(730, __c91, 2)),
           NextToken: S.optional(S.String),
         }),
       ).annotate({
@@ -5347,7 +5804,7 @@ function __c18(j: number): any {
       });
   }
 }
-function __c19(j: number): any {
+function __c92(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5361,17 +5818,21 @@ function __c19(j: number): any {
         identifier: "ListPersonalAccessTokensRequest",
       });
     case 1:
-      return S.Array(__S(98, __c12, 2));
+      return S.Array(__S(608, __c76, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
           NextToken: S.optional(S.String),
-          PersonalAccessTokenSummaries: S.optional(__S(153, __c19, 1)),
+          PersonalAccessTokenSummaries: S.optional(__S(737, __c92, 1)),
         }),
       ).annotate({
         identifier: "ListPersonalAccessTokensResponse",
       });
-    case 3:
+  }
+}
+function __c93(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           OrganizationId: S.String,
@@ -5382,32 +5843,32 @@ function __c19(j: number): any {
       ).annotate({
         identifier: "ListResourceDelegatesRequest",
       });
-    case 4:
+    case 1:
       return S.suspend(() => S.Struct({ Id: S.String, Type: S.String })).annotate({
         identifier: "Delegate",
       });
-    case 5:
-      return S.Array(__S(156, __c19, 4));
-    case 6:
+    case 2:
+      return S.Array(__S(745, __c93, 1));
+    case 3:
       return S.suspend(() =>
-        S.Struct({ Delegates: S.optional(__S(157, __c19, 5)), NextToken: S.optional(S.String) }),
+        S.Struct({ Delegates: S.optional(__S(746, __c93, 2)), NextToken: S.optional(S.String) }),
       ).annotate({
         identifier: "ListResourceDelegatesResponse",
       });
-    case 7:
+  }
+}
+function __c94(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           OrganizationId: S.String,
           NextToken: S.optional(S.String),
           MaxResults: S.optional(S.Number),
-          Filters: S.optional(__S(114, __c14, 2)),
+          Filters: S.optional(__S(656, __c82, 0)),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "ListResourcesRequest" });
-  }
-}
-function __c20(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           Id: S.optional(S.String),
@@ -5420,13 +5881,17 @@ function __c20(j: number): any {
           Description: S.optional(SensitiveString),
         }),
       ).annotate({ identifier: "Resource" });
-    case 1:
-      return S.Array(__S(160, __c20, 0));
     case 2:
-      return S.suspend(() =>
-        S.Struct({ Resources: S.optional(__S(161, __c20, 1)), NextToken: S.optional(S.String) }),
-      ).annotate({ identifier: "ListResourcesResponse" });
+      return S.Array(__S(753, __c94, 1));
     case 3:
+      return S.suspend(() =>
+        S.Struct({ Resources: S.optional(__S(754, __c94, 2)), NextToken: S.optional(S.String) }),
+      ).annotate({ identifier: "ListResourcesResponse" });
+  }
+}
+function __c95(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ ResourceARN: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
@@ -5434,17 +5899,25 @@ function __c20(j: number): any {
       ).annotate({
         identifier: "ListTagsForResourceRequest",
       });
-    case 4:
+    case 1:
+      return S.suspend(() => S.Struct({ Tags: S.optional(__S(769, __c96, 1)) })).annotate({
+        identifier: "ListTagsForResourceResponse",
+      });
+  }
+}
+function __c96(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() => S.Struct({ Key: S.String, Value: S.String })).annotate({
         identifier: "Tag",
       });
-    case 5:
-      return S.Array(__S(164, __c20, 4));
-    case 6:
-      return S.suspend(() => S.Struct({ Tags: S.optional(__S(165, __c20, 5)) })).annotate({
-        identifier: "ListTagsForResourceResponse",
-      });
-    case 7:
+    case 1:
+      return S.Array(__S(768, __c96, 0));
+  }
+}
+function __c97(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           UsernamePrefix: S.optional(S.String),
@@ -5454,20 +5927,16 @@ function __c20(j: number): any {
           IdentityProviderUserIdPrefix: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListUsersFilters" });
-  }
-}
-function __c21(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           OrganizationId: S.String,
           NextToken: S.optional(S.String),
           MaxResults: S.optional(S.Number),
-          Filters: S.optional(__S(167, __c20, 7)),
+          Filters: S.optional(__S(776, __c97, 0)),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "ListUsersRequest" });
-    case 1:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           Id: S.optional(S.String),
@@ -5482,32 +5951,40 @@ function __c21(j: number): any {
           IdentityProviderIdentityStoreId: S.optional(S.String),
         }),
       ).annotate({ identifier: "User" });
-    case 2:
-      return S.Array(__S(169, __c21, 1));
     case 3:
-      return S.suspend(() =>
-        S.Struct({ Users: S.optional(__S(170, __c21, 2)), NextToken: S.optional(S.String) }),
-      ).annotate({ identifier: "ListUsersResponse" });
+      return S.Array(__S(778, __c97, 2));
     case 4:
+      return S.suspend(() =>
+        S.Struct({ Users: S.optional(__S(779, __c97, 3)), NextToken: S.optional(S.String) }),
+      ).annotate({ identifier: "ListUsersResponse" });
+  }
+}
+function __c98(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           Name: S.String,
           Effect: S.String,
           Description: S.String,
-          IpRanges: S.optional(__S(15, __c1, 7)),
-          NotIpRanges: S.optional(__S(15, __c1, 7)),
-          Actions: S.optional(__S(15, __c1, 7)),
-          NotActions: S.optional(__S(15, __c1, 7)),
-          UserIds: S.optional(__S(15, __c1, 7)),
-          NotUserIds: S.optional(__S(15, __c1, 7)),
+          IpRanges: S.optional(__S(216, __c27, 0)),
+          NotIpRanges: S.optional(__S(216, __c27, 0)),
+          Actions: S.optional(__S(216, __c27, 0)),
+          NotActions: S.optional(__S(216, __c27, 0)),
+          UserIds: S.optional(__S(216, __c27, 0)),
+          NotUserIds: S.optional(__S(216, __c27, 0)),
           OrganizationId: S.String,
-          ImpersonationRoleIds: S.optional(__S(15, __c1, 7)),
-          NotImpersonationRoleIds: S.optional(__S(15, __c1, 7)),
+          ImpersonationRoleIds: S.optional(__S(216, __c27, 0)),
+          NotImpersonationRoleIds: S.optional(__S(216, __c27, 0)),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "PutAccessControlRuleRequest",
       });
-    case 5:
+  }
+}
+function __c99(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           OrganizationId: S.String,
@@ -5517,18 +5994,26 @@ function __c21(j: number): any {
       ).annotate({
         identifier: "PutEmailMonitoringConfigurationRequest",
       });
-    case 6:
+  }
+}
+function __c100(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           OrganizationId: S.String,
           AuthenticationMode: S.String,
-          IdentityCenterConfiguration: __S(57, __c7, 1),
-          PersonalAccessTokenConfiguration: __S(58, __c7, 2),
+          IdentityCenterConfiguration: __S(448, __c56, 0),
+          PersonalAccessTokenConfiguration: __S(449, __c56, 1),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "PutIdentityProviderConfigurationRequest",
       });
-    case 7:
+  }
+}
+function __c101(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ OrganizationId: S.String, Enforced: S.Boolean }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
@@ -5538,7 +6023,7 @@ function __c21(j: number): any {
       });
   }
 }
-function __c22(j: number): any {
+function __c102(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5546,12 +6031,16 @@ function __c22(j: number): any {
           OrganizationId: S.String,
           EntityId: S.String,
           GranteeId: S.String,
-          PermissionValues: __S(133, __c16, 5),
+          PermissionValues: __S(696, __c87, 0),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "PutMailboxPermissionsRequest",
       });
-    case 1:
+  }
+}
+function __c103(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           OrganizationId: S.String,
@@ -5563,19 +6052,27 @@ function __c22(j: number): any {
       ).annotate({
         identifier: "PutMobileDeviceAccessOverrideRequest",
       });
-    case 2:
+  }
+}
+function __c104(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           OrganizationId: S.String,
           Id: S.optional(S.String),
           Name: S.String,
           Description: S.optional(SensitiveString),
-          FolderConfigurations: __S(77, __c9, 5),
+          FolderConfigurations: __S(537, __c67, 1),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "PutRetentionPolicyRequest",
       });
-    case 3:
+  }
+}
+function __c105(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           ClientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
@@ -5585,7 +6082,11 @@ function __c22(j: number): any {
       ).annotate({
         identifier: "RegisterMailDomainRequest",
       });
-    case 4:
+  }
+}
+function __c106(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ OrganizationId: S.String, EntityId: S.String, Email: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
@@ -5593,182 +6094,8 @@ function __c22(j: number): any {
       ).annotate({
         identifier: "RegisterToWorkMailRequest",
       });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({ OrganizationId: S.String, UserId: S.String, Password: SensitiveString }).pipe(
-          T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-        ),
-      ).annotate({ identifier: "ResetPasswordRequest" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          ClientToken: S.String.pipe(T.IdempotencyToken()),
-          OrganizationId: S.String,
-          EntityId: S.String,
-          Description: S.optional(S.String),
-          RoleArn: S.String,
-          KmsKeyArn: S.String,
-          S3BucketName: S.String,
-          S3Prefix: S.String,
-        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "StartMailboxExportJobRequest",
-      });
-    case 7:
-      return S.suspend(() => S.Struct({ JobId: S.optional(S.String) })).annotate({
-        identifier: "StartMailboxExportJobResponse",
-      });
   }
 }
-function __c23(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({ ResourceARN: S.String, Tags: __S(165, __c20, 5) }).pipe(
-          T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-        ),
-      ).annotate({ identifier: "TagResourceRequest" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          OrganizationId: S.String,
-          DomainName: S.optional(S.String),
-          EwsProvider: S.optional(__S(8, __c1, 0)),
-          LambdaProvider: S.optional(__S(9, __c1, 1)),
-        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "TestAvailabilityConfigurationRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({ TestPassed: S.optional(S.Boolean), FailureReason: S.optional(S.String) }),
-      ).annotate({
-        identifier: "TestAvailabilityConfigurationResponse",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({ ResourceARN: S.String, TagKeys: __S(15, __c1, 7) }).pipe(
-          T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-        ),
-      ).annotate({ identifier: "UntagResourceRequest" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          OrganizationId: S.String,
-          DomainName: S.String,
-          EwsProvider: S.optional(__S(8, __c1, 0)),
-          LambdaProvider: S.optional(__S(9, __c1, 1)),
-        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "UpdateAvailabilityConfigurationRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({ OrganizationId: S.String, DomainName: S.String }).pipe(
-          T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-        ),
-      ).annotate({
-        identifier: "UpdateDefaultMailDomainRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          OrganizationId: S.String,
-          GroupId: S.String,
-          HiddenFromGlobalAddressList: S.optional(S.Boolean),
-        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({ identifier: "UpdateGroupRequest" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          OrganizationId: S.String,
-          ImpersonationRoleId: S.String,
-          Name: S.String,
-          Type: S.String,
-          Description: S.optional(S.String),
-          Rules: __S(17, __c2, 1),
-        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "UpdateImpersonationRoleRequest",
-      });
-  }
-}
-function __c24(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({ OrganizationId: S.String, UserId: S.String, MailboxQuota: S.Number }).pipe(
-          T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-        ),
-      ).annotate({
-        identifier: "UpdateMailboxQuotaRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          OrganizationId: S.String,
-          MobileDeviceAccessRuleId: S.String,
-          Name: S.String,
-          Description: S.optional(S.String),
-          Effect: S.String,
-          DeviceTypes: S.optional(__S(15, __c1, 7)),
-          NotDeviceTypes: S.optional(__S(15, __c1, 7)),
-          DeviceModels: S.optional(__S(15, __c1, 7)),
-          NotDeviceModels: S.optional(__S(15, __c1, 7)),
-          DeviceOperatingSystems: S.optional(__S(15, __c1, 7)),
-          NotDeviceOperatingSystems: S.optional(__S(15, __c1, 7)),
-          DeviceUserAgents: S.optional(__S(15, __c1, 7)),
-          NotDeviceUserAgents: S.optional(__S(15, __c1, 7)),
-        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "UpdateMobileDeviceAccessRuleRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({ OrganizationId: S.String, EntityId: S.String, Email: S.String }).pipe(
-          T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-        ),
-      ).annotate({
-        identifier: "UpdatePrimaryEmailAddressRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          OrganizationId: S.String,
-          ResourceId: S.String,
-          Name: S.optional(S.String),
-          BookingOptions: S.optional(__S(67, __c8, 3)),
-          Description: S.optional(SensitiveString),
-          Type: S.optional(S.String),
-          HiddenFromGlobalAddressList: S.optional(S.Boolean),
-        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({ identifier: "UpdateResourceRequest" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          OrganizationId: S.String,
-          UserId: S.String,
-          Role: S.optional(S.String),
-          DisplayName: S.optional(SensitiveString),
-          FirstName: S.optional(SensitiveString),
-          LastName: S.optional(SensitiveString),
-          HiddenFromGlobalAddressList: S.optional(S.Boolean),
-          Initials: S.optional(SensitiveString),
-          Telephone: S.optional(SensitiveString),
-          Street: S.optional(SensitiveString),
-          JobTitle: S.optional(SensitiveString),
-          City: S.optional(SensitiveString),
-          Company: S.optional(SensitiveString),
-          ZipCode: S.optional(SensitiveString),
-          Department: S.optional(SensitiveString),
-          Country: S.optional(SensitiveString),
-          Office: S.optional(SensitiveString),
-          IdentityProviderUserId: S.optional(S.String),
-        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({ identifier: "UpdateUserRequest" });
-  }
-}
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

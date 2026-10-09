@@ -91,7 +91,7 @@ export const createProxy: API.OperationMethod<
   ModalOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(0, __c0, 0) as any as S.Schema<CreateProxyRequest>,
-  output: __S(4, __c0, 4) as any as S.Schema<CreateProxyResponse>,
+  output: __S(4, __c1, 0) as any as S.Schema<CreateProxyResponse>,
   errors: [UnknownModalError],
   protocol: ModalProtocol,
   retry: Retry.Retry,
@@ -104,8 +104,8 @@ export const deleteProxy: API.OperationMethod<
   DeleteProxyError,
   ModalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(5, __c0, 5) as any as S.Schema<DeleteProxyRequest>,
-  output: __S(6, __c0, 6) as any as S.Schema<DeleteProxyResponse>,
+  input: __S(16, __c4, 0) as any as S.Schema<DeleteProxyRequest>,
+  output: __S(20, __c5, 0) as any as S.Schema<DeleteProxyResponse>,
   errors: [UnknownModalError],
   protocol: ModalProtocol,
   retry: Retry.Retry,
@@ -118,8 +118,8 @@ export const getProxy: API.OperationMethod<
   GetProxyError,
   ModalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(7, __c0, 7) as any as S.Schema<GetProxyRequest>,
-  output: __S(4, __c0, 4) as any as S.Schema<GetProxyResponse>,
+  input: __S(24, __c6, 0) as any as S.Schema<GetProxyRequest>,
+  output: __S(4, __c1, 0) as any as S.Schema<GetProxyResponse>,
   errors: [UnknownModalError],
   protocol: ModalProtocol,
   retry: Retry.Retry,
@@ -132,8 +132,8 @@ export const listProxy: API.OperationMethod<
   ListProxyError,
   ModalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(8, __c1, 0) as any as S.Schema<ListProxyRequest>,
-  output: __S(10, __c1, 2) as any as S.Schema<ListProxyResponse>,
+  input: __S(28, __c7, 0) as any as S.Schema<ListProxyRequest>,
+  output: __S(30, __c7, 2) as any as S.Schema<ListProxyResponse>,
   errors: [UnknownModalError],
   protocol: ModalProtocol,
   retry: Retry.Retry,
@@ -147,8 +147,8 @@ export const proxyAddIp: API.OperationMethod<
   ProxyAddIpError,
   ModalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(11, __c1, 3) as any as S.Schema<ProxyAddIpRequest>,
-  output: __S(12, __c1, 4) as any as S.Schema<ProxyAddIpResponse>,
+  input: __S(32, __c8, 0) as any as S.Schema<ProxyAddIpRequest>,
+  output: __S(33, __c8, 1) as any as S.Schema<ProxyAddIpResponse>,
   errors: [UnknownModalError],
   protocol: ModalProtocol,
   retry: Retry.Retry,
@@ -161,8 +161,8 @@ export const proxyGetOrCreate: API.OperationMethod<
   ProxyGetOrCreateError,
   ModalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(13, __c1, 5) as any as S.Schema<ProxyGetOrCreateRequest>,
-  output: __S(14, __c1, 6) as any as S.Schema<ProxyGetOrCreateResponse>,
+  input: __S(36, __c9, 0) as any as S.Schema<ProxyGetOrCreateRequest>,
+  output: __S(37, __c9, 1) as any as S.Schema<ProxyGetOrCreateResponse>,
   errors: [UnknownModalError],
   protocol: ModalProtocol,
   retry: Retry.Retry,
@@ -175,8 +175,8 @@ export const proxyRemoveIp: API.OperationMethod<
   ProxyRemoveIpError,
   ModalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(15, __c1, 7) as any as S.Schema<ProxyRemoveIpRequest>,
-  output: __S(6, __c0, 6) as any as S.Schema<ProxyRemoveIpResponse>,
+  input: __S(40, __c10, 0) as any as S.Schema<ProxyRemoveIpRequest>,
+  output: __S(20, __c5, 0) as any as S.Schema<ProxyRemoveIpResponse>,
   errors: [UnknownModalError],
   protocol: ModalProtocol,
   retry: Retry.Retry,
@@ -195,7 +195,38 @@ function __c0(j: number): any {
           T.Http({ method: "POST", uri: "/modal.client.ModalClient/ProxyCreate", code: 200 }),
         ),
       ).annotate({ identifier: "CreateProxyRequest" });
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          proxy: S.optional(__S(9, __c2, 1)),
+        }),
+      ).annotate({ identifier: "CreateProxyResponse" });
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(12, __c3, 0));
     case 1:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.optional(S.String),
+          createdAt: S.optional(S.Number),
+          environmentName: S.optional(S.String),
+          proxyIps: S.optional(__S(8, __c2, 0)),
+          proxyId: S.optional(S.String),
+          region: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Proxy" });
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           proxyIp: S.optional(S.String),
@@ -204,26 +235,11 @@ function __c0(j: number): any {
           environmentName: S.optional(S.String),
         }),
       ).annotate({ identifier: "ProxyIp" });
-    case 2:
-      return S.Array(__S(1, __c0, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.optional(S.String),
-          createdAt: S.optional(S.Number),
-          environmentName: S.optional(S.String),
-          proxyIps: S.optional(__S(2, __c0, 2)),
-          proxyId: S.optional(S.String),
-          region: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Proxy" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          proxy: S.optional(__S(3, __c0, 3)),
-        }),
-      ).annotate({ identifier: "CreateProxyResponse" });
-    case 5:
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           proxyId: S.optional(S.String),
@@ -231,11 +247,19 @@ function __c0(j: number): any {
           T.Http({ method: "POST", uri: "/modal.client.ModalClient/ProxyDelete", code: 200 }),
         ),
       ).annotate({ identifier: "DeleteProxyRequest" });
-    case 6:
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "DeleteProxyResponse",
       });
-    case 7:
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
@@ -244,7 +268,7 @@ function __c0(j: number): any {
       ).annotate({ identifier: "GetProxyRequest" });
   }
 }
-function __c1(j: number): any {
+function __c7(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -253,26 +277,34 @@ function __c1(j: number): any {
         ),
       ).annotate({ identifier: "ListProxyRequest" });
     case 1:
-      return S.Array(__S(3, __c0, 3));
+      return S.Array(__S(9, __c2, 1));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          proxies: S.optional(__S(9, __c1, 1)),
+          proxies: S.optional(__S(29, __c7, 1)),
         }),
       ).annotate({ identifier: "ListProxyResponse" });
-    case 3:
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           proxyId: S.optional(S.String),
         }).pipe(T.Http({ method: "POST", uri: "/modal.client.ModalClient/ProxyAddIp", code: 200 })),
       ).annotate({ identifier: "ProxyAddIpRequest" });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          proxyIp: S.optional(__S(1, __c0, 1)),
+          proxyIp: S.optional(__S(12, __c3, 0)),
         }),
       ).annotate({ identifier: "ProxyAddIpResponse" });
-    case 5:
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           deploymentName: S.optional(S.String),
@@ -282,13 +314,17 @@ function __c1(j: number): any {
           T.Http({ method: "POST", uri: "/modal.client.ModalClient/ProxyGetOrCreate", code: 200 }),
         ),
       ).annotate({ identifier: "ProxyGetOrCreateRequest" });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           proxyId: S.optional(S.String),
         }),
       ).annotate({ identifier: "ProxyGetOrCreateResponse" });
-    case 7:
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           proxyIp: S.optional(S.String),
@@ -298,7 +334,6 @@ function __c1(j: number): any {
       ).annotate({ identifier: "ProxyRemoveIpRequest" });
   }
 }
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

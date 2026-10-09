@@ -565,8 +565,8 @@ export const deleteAccountsLanguagesProductCertifications: API.OperationMethod<
   DeleteAccountsLanguagesProductCertificationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(0, __c0, 0) as any as S.Schema<DeleteAccountsLanguagesProductCertificationsRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<Empty>,
+  input: __S(32, __c2, 0) as any as S.Schema<DeleteAccountsLanguagesProductCertificationsRequest>,
+  output: __S(48, __c3, 0) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -580,8 +580,8 @@ export const deleteAccountsProducts: API.OperationMethod<
   DeleteAccountsProductsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2, __c0, 2) as any as S.Schema<DeleteAccountsProductsRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<Empty>,
+  input: __S(64, __c4, 0) as any as S.Schema<DeleteAccountsProductsRequest>,
+  output: __S(48, __c3, 0) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -595,8 +595,8 @@ export const getAccountsLanguagesProductCertifications: API.OperationMethod<
   GetAccountsLanguagesProductCertificationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3, __c0, 3) as any as S.Schema<GetAccountsLanguagesProductCertificationsRequest>,
-  output: __S(11, __c1, 3) as any as S.Schema<ProductCertification>,
+  input: __S(80, __c5, 0) as any as S.Schema<GetAccountsLanguagesProductCertificationsRequest>,
+  output: __S(130, __c8, 2) as any as S.Schema<ProductCertification>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -610,8 +610,8 @@ export const getAccountsProducts: API.OperationMethod<
   GetAccountsProductsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(13, __c1, 5) as any as S.Schema<GetAccountsProductsRequest>,
-  output: __S(30, __c3, 6) as any as S.Schema<Product>,
+  input: __S(144, __c9, 0) as any as S.Schema<GetAccountsProductsRequest>,
+  output: __S(161, __c10, 1) as any as S.Schema<Product>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -626,8 +626,8 @@ export const listAccountsLanguagesProductCertifications: API.PaginatedOperationM
   GcpOpContext,
   ListProductCertificationsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(31, __c3, 7) as any as S.Schema<ListAccountsLanguagesProductCertificationsRequest>,
-  output: __S(33, __c4, 1) as any as S.Schema<ListProductCertificationsResponse>,
+  input: __S(192, __c12, 0) as any as S.Schema<ListAccountsLanguagesProductCertificationsRequest>,
+  output: __S(194, __c12, 2) as any as S.Schema<ListProductCertificationsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -643,8 +643,8 @@ export const listAccountsProducts: API.PaginatedOperationMethod<
   GcpOpContext,
   ListProductsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(34, __c4, 2) as any as S.Schema<ListAccountsProductsRequest>,
-  output: __S(36, __c4, 4) as any as S.Schema<ListProductsResponse>,
+  input: __S(208, __c13, 0) as any as S.Schema<ListAccountsProductsRequest>,
+  output: __S(210, __c13, 2) as any as S.Schema<ListProductsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -664,8 +664,8 @@ export const patchAccountsLanguagesProductCertifications: API.OperationMethod<
   PatchAccountsLanguagesProductCertificationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(37, __c4, 5) as any as S.Schema<PatchAccountsLanguagesProductCertificationsRequest>,
-  output: __S(11, __c1, 3) as any as S.Schema<ProductCertification>,
+  input: __S(0, __c0, 0) as any as S.Schema<PatchAccountsLanguagesProductCertificationsRequest>,
+  output: __S(130, __c8, 2) as any as S.Schema<ProductCertification>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -679,8 +679,8 @@ export const updateAccountsProducts: API.OperationMethod<
   UpdateAccountsProductsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(38, __c4, 6) as any as S.Schema<UpdateAccountsProductsRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<Empty>,
+  input: __S(16, __c1, 0) as any as S.Schema<UpdateAccountsProductsRequest>,
+  output: __S(48, __c3, 0) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -688,6 +688,46 @@ export const updateAccountsProducts: API.OperationMethod<
 
 // Schema builders: each runs one schema initializer, on that schema's first use.
 function __c0(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+          updateMask: S.optional(S.String.pipe(T.Query())),
+          body: S.optional(__S(130, __c8, 2).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "PATCH",
+            uri: "v1/{+name}",
+            baseUrl: "https://manufacturers.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "PatchAccountsLanguagesProductCertificationsRequest",
+      });
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+          parent: S.String.pipe(T.Label()),
+          body: S.optional(__S(191, __c11, 15).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "PUT",
+            uri: "v1/{+parent}/products/{+name}",
+            baseUrl: "https://manufacturers.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "UpdateAccountsProductsRequest",
+      });
+  }
+}
+function __c2(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -703,11 +743,19 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "DeleteAccountsLanguagesProductCertificationsRequest",
       });
-    case 1:
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "Empty",
       });
-    case 2:
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
@@ -722,7 +770,11 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "DeleteAccountsProductsRequest",
       });
-    case 3:
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -736,7 +788,49 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "GetAccountsLanguagesProductCertificationsRequest",
       });
-    case 4:
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          approvedCountries: S.optional(__S(112, __c7, 0)),
+          pendingCountries: S.optional(__S(112, __c7, 0)),
+          status: S.optional(S.String),
+          disapprovedCountries: S.optional(__S(112, __c7, 0)),
+          destination: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "DestinationStatus" });
+    case 1:
+      return S.Array(__S(96, __c6, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          timestamp: S.optional(S.String),
+          description: S.optional(S.String),
+          destination: S.optional(S.String),
+          type: S.optional(S.String),
+          resolution: S.optional(S.String),
+          attribute: S.optional(S.String),
+          title: S.optional(S.String),
+          severity: S.optional(S.String),
+          applicableCountries: S.optional(__S(112, __c7, 0)),
+        }),
+      ).annotate({ identifier: "Issue" });
+    case 3:
+      return S.Array(__S(98, __c6, 2));
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           code: S.optional(S.String),
@@ -748,63 +842,31 @@ function __c0(j: number): any {
           link: S.optional(S.String),
         }),
       ).annotate({ identifier: "Certification" });
-    case 5:
-      return S.Array(__S(4, __c0, 4));
-    case 6:
-      return S.Array(S.String);
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          approvedCountries: S.optional(__S(6, __c0, 6)),
-          pendingCountries: S.optional(__S(6, __c0, 6)),
-          status: S.optional(S.String),
-          disapprovedCountries: S.optional(__S(6, __c0, 6)),
-          destination: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "DestinationStatus" });
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(7, __c0, 7));
     case 1:
-      return S.suspend(() =>
-        S.Struct({
-          timestamp: S.optional(S.String),
-          description: S.optional(S.String),
-          destination: S.optional(S.String),
-          type: S.optional(S.String),
-          resolution: S.optional(S.String),
-          attribute: S.optional(S.String),
-          title: S.optional(S.String),
-          severity: S.optional(S.String),
-          applicableCountries: S.optional(__S(6, __c0, 6)),
-        }),
-      ).annotate({ identifier: "Issue" });
+      return S.Array(__S(128, __c8, 0));
     case 2:
-      return S.Array(__S(9, __c1, 1));
-    case 3:
       return S.suspend(() =>
         S.Struct({
-          certification: S.optional(__S(5, __c0, 5)),
-          mpn: S.optional(__S(6, __c0, 6)),
-          countryCode: S.optional(__S(6, __c0, 6)),
+          certification: S.optional(__S(129, __c8, 1)),
+          mpn: S.optional(__S(112, __c7, 0)),
+          countryCode: S.optional(__S(112, __c7, 0)),
           name: S.optional(S.String),
           title: S.optional(S.String),
-          destinationStatuses: S.optional(__S(8, __c1, 0)),
+          destinationStatuses: S.optional(__S(97, __c6, 1)),
           brand: S.optional(S.String),
-          productCode: S.optional(__S(6, __c0, 6)),
-          productType: S.optional(__S(6, __c0, 6)),
-          issues: S.optional(__S(10, __c1, 2)),
+          productCode: S.optional(__S(112, __c7, 0)),
+          productType: S.optional(__S(112, __c7, 0)),
+          issues: S.optional(__S(99, __c6, 3)),
         }),
       ).annotate({ identifier: "ProductCertification" });
-    case 4:
-      return S.Array(S.String);
-    case 5:
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          include: S.optional(__S(12, __c1, 4).pipe(T.Query())),
+          include: S.optional(__S(160, __c10, 0).pipe(T.Query())),
           parent: S.String.pipe(T.Label()),
           name: S.String.pipe(T.Label()),
         }).pipe(
@@ -817,14 +879,38 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "GetAccountsProductsRequest",
       });
-    case 6:
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          attributes: S.optional(__S(191, __c11, 15)),
+          destinationStatuses: S.optional(__S(97, __c6, 1)),
+          feedLabel: S.optional(S.String),
+          issues: S.optional(__S(99, __c6, 3)),
+          contentLanguage: S.optional(S.String),
+          parent: S.optional(S.String),
+          productId: S.optional(S.String),
+          name: S.optional(S.String),
+          targetCountry: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Product" });
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           value: S.optional(S.String),
           unit: S.optional(S.String),
         }),
       ).annotate({ identifier: "Count" });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           type: S.optional(S.String),
@@ -832,11 +918,7 @@ function __c1(j: number): any {
           status: S.optional(S.String),
         }),
       ).annotate({ identifier: "Image" });
-  }
-}
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           attributeValue: S.optional(S.String),
@@ -844,111 +926,107 @@ function __c2(j: number): any {
           attributeName: S.optional(S.String),
         }),
       ).annotate({ identifier: "ProductDetail" });
-    case 1:
-      return S.Array(__S(16, __c2, 0));
-    case 2:
+    case 3:
+      return S.Array(__S(178, __c11, 2));
+    case 4:
       return S.suspend(() =>
         S.Struct({
           headline: S.optional(S.String),
           text: S.optional(S.String),
-          image: S.optional(__S(15, __c1, 7)),
+          image: S.optional(__S(177, __c11, 1)),
         }),
       ).annotate({ identifier: "FeatureDescription" });
-    case 3:
-      return S.Array(__S(18, __c2, 2));
-    case 4:
+    case 5:
+      return S.Array(__S(180, __c11, 4));
+    case 6:
       return S.suspend(() =>
         S.Struct({
-          nutritionClaim: S.optional(__S(6, __c0, 6)),
+          nutritionClaim: S.optional(__S(112, __c7, 0)),
           alcoholByVolume: S.optional(S.Number),
           storageInstructions: S.optional(S.String),
           allergens: S.optional(S.String),
           directions: S.optional(S.String),
           activeIngredients: S.optional(S.String),
           ingredients: S.optional(S.String),
-          derivedNutritionClaim: S.optional(__S(6, __c0, 6)),
+          derivedNutritionClaim: S.optional(__S(112, __c7, 0)),
           indications: S.optional(S.String),
         }),
       ).annotate({ identifier: "Grocery" });
-    case 5:
-      return S.Array(__S(15, __c1, 7));
-    case 6:
+    case 7:
+      return S.Array(__S(177, __c11, 1));
+    case 8:
       return S.suspend(() =>
         S.Struct({
           amount: S.optional(S.Number),
           unit: S.optional(S.String),
         }),
       ).annotate({ identifier: "FloatUnit" });
-    case 7:
+    case 9:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(22, __c2, 6)),
+          value: S.optional(__S(184, __c11, 8)),
           dailyPercentage: S.optional(S.Number),
           name: S.optional(S.String),
         }),
       ).annotate({ identifier: "VoluntaryNutritionFact" });
-  }
-}
-function __c3(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(23, __c2, 7));
-    case 1:
+    case 10:
+      return S.Array(__S(185, __c11, 9));
+    case 11:
       return S.suspend(() =>
         S.Struct({
-          polyunsaturatedFat: S.optional(__S(22, __c2, 6)),
+          polyunsaturatedFat: S.optional(__S(184, __c11, 8)),
           totalCarbohydrateDailyPercentage: S.optional(S.Number),
-          potassium: S.optional(__S(22, __c2, 6)),
+          potassium: S.optional(__S(184, __c11, 8)),
           ironDailyPercentage: S.optional(S.Number),
-          monounsaturatedFat: S.optional(__S(22, __c2, 6)),
-          folateFolicAcid: S.optional(__S(22, __c2, 6)),
+          monounsaturatedFat: S.optional(__S(184, __c11, 8)),
+          folateFolicAcid: S.optional(__S(184, __c11, 8)),
           nutritionFactMeasure: S.optional(S.String),
           potassiumDailyPercentage: S.optional(S.Number),
           servingSizeDescription: S.optional(S.String),
-          voluntaryNutritionFact: S.optional(__S(24, __c3, 0)),
-          cholesterol: S.optional(__S(22, __c2, 6)),
-          starch: S.optional(__S(22, __c2, 6)),
-          totalFat: S.optional(__S(22, __c2, 6)),
-          totalSugars: S.optional(__S(22, __c2, 6)),
+          voluntaryNutritionFact: S.optional(__S(186, __c11, 10)),
+          cholesterol: S.optional(__S(184, __c11, 8)),
+          starch: S.optional(__S(184, __c11, 8)),
+          totalFat: S.optional(__S(184, __c11, 8)),
+          totalSugars: S.optional(__S(184, __c11, 8)),
           servingsPerContainer: S.optional(S.String),
           folateMcgDfe: S.optional(S.Number),
-          dietaryFiber: S.optional(__S(22, __c2, 6)),
-          energyFromFat: S.optional(__S(22, __c2, 6)),
-          servingSizeMeasure: S.optional(__S(22, __c2, 6)),
-          energy: S.optional(__S(22, __c2, 6)),
-          vitaminD: S.optional(__S(22, __c2, 6)),
-          addedSugars: S.optional(__S(22, __c2, 6)),
+          dietaryFiber: S.optional(__S(184, __c11, 8)),
+          energyFromFat: S.optional(__S(184, __c11, 8)),
+          servingSizeMeasure: S.optional(__S(184, __c11, 8)),
+          energy: S.optional(__S(184, __c11, 8)),
+          vitaminD: S.optional(__S(184, __c11, 8)),
+          addedSugars: S.optional(__S(184, __c11, 8)),
           proteinDailyPercentage: S.optional(S.Number),
           totalSugarsDailyPercentage: S.optional(S.Number),
-          protein: S.optional(__S(22, __c2, 6)),
-          transFat: S.optional(__S(22, __c2, 6)),
+          protein: S.optional(__S(184, __c11, 8)),
+          transFat: S.optional(__S(184, __c11, 8)),
           dietaryFiberDailyPercentage: S.optional(S.Number),
-          saturatedFat: S.optional(__S(22, __c2, 6)),
+          saturatedFat: S.optional(__S(184, __c11, 8)),
           saturatedFatDailyPercentage: S.optional(S.Number),
           folateDailyPercentage: S.optional(S.Number),
           calciumDailyPercentage: S.optional(S.Number),
           cholesterolDailyPercentage: S.optional(S.Number),
           totalFatDailyPercentage: S.optional(S.Number),
-          polyols: S.optional(__S(22, __c2, 6)),
+          polyols: S.optional(__S(184, __c11, 8)),
           addedSugarsDailyPercentage: S.optional(S.Number),
-          iron: S.optional(__S(22, __c2, 6)),
+          iron: S.optional(__S(184, __c11, 8)),
           sodiumDailyPercentage: S.optional(S.Number),
           transFatDailyPercentage: S.optional(S.Number),
           preparedSizeDescription: S.optional(S.String),
-          totalCarbohydrate: S.optional(__S(22, __c2, 6)),
+          totalCarbohydrate: S.optional(__S(184, __c11, 8)),
           vitaminDDailyPercentage: S.optional(S.Number),
-          sodium: S.optional(__S(22, __c2, 6)),
-          calcium: S.optional(__S(22, __c2, 6)),
+          sodium: S.optional(__S(184, __c11, 8)),
+          calcium: S.optional(__S(184, __c11, 8)),
         }),
       ).annotate({ identifier: "Nutrition" });
-    case 2:
+    case 12:
       return S.suspend(() =>
         S.Struct({
           amount: S.optional(S.String),
           currency: S.optional(S.String),
         }),
       ).annotate({ identifier: "Price" });
-    case 3:
+    case 13:
       return S.suspend(() =>
         S.Struct({
           authority: S.optional(S.String),
@@ -962,70 +1040,60 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "GoogleShoppingManufacturersV1ProductCertification",
       });
-    case 4:
-      return S.Array(__S(27, __c3, 3));
-    case 5:
+    case 14:
+      return S.Array(__S(189, __c11, 13));
+    case 15:
       return S.suspend(() =>
         S.Struct({
           color: S.optional(S.String),
-          count: S.optional(__S(14, __c1, 6)),
+          count: S.optional(__S(176, __c11, 0)),
           theme: S.optional(S.String),
           flavor: S.optional(S.String),
-          capacity: S.optional(__S(14, __c1, 6)),
+          capacity: S.optional(__S(176, __c11, 0)),
           ageGroup: S.optional(S.String),
           material: S.optional(S.String),
           mpn: S.optional(S.String),
           releaseDate: S.optional(S.String),
           title: S.optional(S.String),
           productName: S.optional(S.String),
-          imageLink: S.optional(__S(15, __c1, 7)),
+          imageLink: S.optional(__S(177, __c11, 1)),
           disclosureDate: S.optional(S.String),
-          excludedDestination: S.optional(__S(6, __c0, 6)),
-          richProductContent: S.optional(__S(6, __c0, 6)),
+          excludedDestination: S.optional(__S(112, __c7, 0)),
+          richProductContent: S.optional(__S(112, __c7, 0)),
           size: S.optional(S.String),
           productLine: S.optional(S.String),
           productPageUrl: S.optional(S.String),
-          productDetail: S.optional(__S(17, __c2, 1)),
+          productDetail: S.optional(__S(179, __c11, 3)),
           gender: S.optional(S.String),
           scent: S.optional(S.String),
           virtualModelLink: S.optional(S.String),
-          gtin: S.optional(__S(6, __c0, 6)),
+          gtin: S.optional(__S(112, __c7, 0)),
           targetClientId: S.optional(S.String),
           format: S.optional(S.String),
           brand: S.optional(S.String),
-          featureDescription: S.optional(__S(19, __c2, 3)),
-          productType: S.optional(__S(6, __c0, 6)),
-          productHighlight: S.optional(__S(6, __c0, 6)),
+          featureDescription: S.optional(__S(181, __c11, 5)),
+          productType: S.optional(__S(112, __c7, 0)),
+          productHighlight: S.optional(__S(112, __c7, 0)),
           itemGroupId: S.optional(S.String),
-          grocery: S.optional(__S(20, __c2, 4)),
-          additionalImageLink: S.optional(__S(21, __c2, 5)),
-          nutrition: S.optional(__S(25, __c3, 1)),
-          videoLink: S.optional(__S(6, __c0, 6)),
-          suggestedRetailPrice: S.optional(__S(26, __c3, 2)),
-          includedDestination: S.optional(__S(6, __c0, 6)),
+          grocery: S.optional(__S(182, __c11, 6)),
+          additionalImageLink: S.optional(__S(183, __c11, 7)),
+          nutrition: S.optional(__S(187, __c11, 11)),
+          videoLink: S.optional(__S(112, __c7, 0)),
+          suggestedRetailPrice: S.optional(__S(188, __c11, 12)),
+          includedDestination: S.optional(__S(112, __c7, 0)),
           sizeSystem: S.optional(S.String),
-          certification: S.optional(__S(28, __c3, 4)),
+          certification: S.optional(__S(190, __c11, 14)),
           pattern: S.optional(S.String),
           description: S.optional(S.String),
-          sizeType: S.optional(__S(6, __c0, 6)),
-          intendedCountry: S.optional(__S(6, __c0, 6)),
+          sizeType: S.optional(__S(112, __c7, 0)),
+          intendedCountry: S.optional(__S(112, __c7, 0)),
         }),
       ).annotate({ identifier: "Attributes" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          attributes: S.optional(__S(29, __c3, 5)),
-          destinationStatuses: S.optional(__S(8, __c1, 0)),
-          feedLabel: S.optional(S.String),
-          issues: S.optional(__S(10, __c1, 2)),
-          contentLanguage: S.optional(S.String),
-          parent: S.optional(S.String),
-          productId: S.optional(S.String),
-          name: S.optional(S.String),
-          targetCountry: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Product" });
-    case 7:
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
@@ -1041,26 +1109,26 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "ListAccountsLanguagesProductCertificationsRequest",
       });
-  }
-}
-function __c4(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(11, __c1, 3));
     case 1:
+      return S.Array(__S(130, __c8, 2));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          productCertifications: S.optional(__S(32, __c4, 0)),
+          productCertifications: S.optional(__S(193, __c12, 1)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({
         identifier: "ListProductCertificationsResponse",
       });
-    case 2:
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
-          include: S.optional(__S(12, __c1, 4).pipe(T.Query())),
+          include: S.optional(__S(160, __c10, 0).pipe(T.Query())),
           pageSize: S.optional(S.Number.pipe(T.Query())),
           pageToken: S.optional(S.String.pipe(T.Query())),
         }).pipe(
@@ -1073,50 +1141,17 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "ListAccountsProductsRequest",
       });
-    case 3:
-      return S.Array(__S(30, __c3, 6));
-    case 4:
+    case 1:
+      return S.Array(__S(161, __c10, 1));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          products: S.optional(__S(35, __c4, 3)),
+          products: S.optional(__S(209, __c13, 1)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListProductsResponse" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-          updateMask: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(11, __c1, 3).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "PATCH",
-            uri: "v1/{+name}",
-            baseUrl: "https://manufacturers.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "PatchAccountsLanguagesProductCertificationsRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-          parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(29, __c3, 5).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "PUT",
-            uri: "v1/{+parent}/products/{+name}",
-            baseUrl: "https://manufacturers.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "UpdateAccountsProductsRequest",
-      });
   }
 }
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

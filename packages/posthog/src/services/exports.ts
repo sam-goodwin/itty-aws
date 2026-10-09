@@ -151,8 +151,8 @@ export const getExport: API.OperationMethod<
   GetExportError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2, __c0, 2) as any as S.Schema<GetExportRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<ExportedAsset>,
+  input: __S(4, __c1, 0) as any as S.Schema<GetExportRequest>,
+  output: __S(8, __c2, 0) as any as S.Schema<ExportedAsset>,
   errors: [Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -165,8 +165,8 @@ export const getExportsContent: API.OperationMethod<
   GetExportsContentError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(4, __c0, 4) as any as S.Schema<GetExportsContentRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<GetExportsContentResponse>,
+  input: __S(12, __c3, 0) as any as S.Schema<GetExportsContentRequest>,
+  output: __S(13, __c3, 1) as any as S.Schema<GetExportsContentResponse>,
   errors: [Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -179,8 +179,8 @@ export const listExports: API.OperationMethod<
   ListExportsError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(6, __c0, 6) as any as S.Schema<ListExportsRequest>,
-  output: __S(8, __c1, 0) as any as S.Schema<PaginatedExportedAssetList>,
+  input: __S(16, __c4, 0) as any as S.Schema<ListExportsRequest>,
+  output: __S(18, __c4, 2) as any as S.Schema<PaginatedExportedAssetList>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -215,7 +215,11 @@ function __c0(j: number): any {
           user_access_level: S.NullOr(S.String),
         }),
       ).annotate({ identifier: "ExportedAssetCreate" });
-    case 2:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -224,7 +228,11 @@ function __c0(j: number): any {
           T.Http({ method: "GET", uri: "/api/projects/{project_id}/exports/{id}/", code: 200 }),
         ),
       ).annotate({ identifier: "GetExportRequest" });
-    case 3:
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.Number),
@@ -240,7 +248,11 @@ function __c0(j: number): any {
           user_access_level: S.optional(S.NullOr(S.String)),
         }),
       ).annotate({ identifier: "ExportedAsset" });
-    case 4:
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -253,11 +265,15 @@ function __c0(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetExportsContentRequest" });
-    case 5:
+    case 1:
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "GetExportsContentResponse",
       });
-    case 6:
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -265,26 +281,21 @@ function __c0(j: number): any {
           offset: S.optional(S.Number.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/api/projects/{project_id}/exports/", code: 200 })),
       ).annotate({ identifier: "ListExportsRequest" });
-    case 7:
-      return S.Array(__S(3, __c0, 3));
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
+      return S.Array(__S(8, __c2, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           count: S.optional(S.Number),
           next: S.optional(S.NullOr(S.String)),
           previous: S.optional(S.NullOr(S.String)),
-          results: S.optional(__S(7, __c0, 7)),
+          results: S.optional(__S(17, __c4, 1)),
         }),
       ).annotate({
         identifier: "PaginatedExportedAssetList",
       });
   }
 }
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

@@ -399,8 +399,8 @@ export const createAuthentication: API.OperationMethod<
   CreateAuthenticationError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(0, __c0, 0) as any as S.Schema<CreateAuthenticationRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<Authentication>,
+  input: __S(104, __c13, 0) as any as S.Schema<CreateAuthenticationRequest>,
+  output: __S(112, __c14, 0) as any as S.Schema<Authentication>,
   errors: [BadRequest, NotFound, Conflict, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -414,8 +414,8 @@ export const createInstance: API.OperationMethod<
   CreateInstanceError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3, __c0, 3) as any as S.Schema<CreateInstanceRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<Instance>,
+  input: __S(120, __c15, 0) as any as S.Schema<CreateInstanceRequest>,
+  output: __S(132, __c16, 4) as any as S.Schema<Instance>,
   errors: [BadRequest, Conflict, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -429,8 +429,8 @@ export const createRunner: API.OperationMethod<
   CreateRunnerError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(9, __c1, 1) as any as S.Schema<CreateRunnerRequest>,
-  output: __S(10, __c1, 2) as any as S.Schema<Runner>,
+  input: __S(136, __c17, 0) as any as S.Schema<CreateRunnerRequest>,
+  output: __S(145, __c18, 1) as any as S.Schema<Runner>,
   errors: [BadRequest, Conflict, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -444,8 +444,8 @@ export const createUser: API.OperationMethod<
   CreateUserError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(11, __c1, 3) as any as S.Schema<CreateUserRequest>,
-  output: __S(12, __c1, 4) as any as S.Schema<User>,
+  input: __S(152, __c19, 0) as any as S.Schema<CreateUserRequest>,
+  output: __S(160, __c20, 0) as any as S.Schema<User>,
   errors: [BadRequest, Conflict, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -459,8 +459,8 @@ export const deleteAuthentication: API.OperationMethod<
   DeleteAuthenticationError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(13, __c1, 5) as any as S.Schema<DeleteAuthenticationRequest>,
-  output: __S(14, __c1, 6) as any as S.Schema<DeleteAuthenticationResponse>,
+  input: __S(168, __c21, 0) as any as S.Schema<DeleteAuthenticationRequest>,
+  output: __S(176, __c22, 0) as any as S.Schema<DeleteAuthenticationResponse>,
   errors: [BadRequest, NotFound, Conflict, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -474,8 +474,8 @@ export const deleteInstance: API.OperationMethod<
   DeleteInstanceError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(15, __c1, 7) as any as S.Schema<DeleteInstanceRequest>,
-  output: __S(14, __c1, 6) as any as S.Schema<DeleteInstanceResponse>,
+  input: __S(184, __c23, 0) as any as S.Schema<DeleteInstanceRequest>,
+  output: __S(176, __c22, 0) as any as S.Schema<DeleteInstanceResponse>,
   errors: [BadRequest, NotFound, Conflict, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -489,8 +489,8 @@ export const deleteRunner: API.OperationMethod<
   DeleteRunnerError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(16, __c2, 0) as any as S.Schema<DeleteRunnerRequest>,
-  output: __S(14, __c1, 6) as any as S.Schema<DeleteRunnerResponse>,
+  input: __S(192, __c24, 0) as any as S.Schema<DeleteRunnerRequest>,
+  output: __S(176, __c22, 0) as any as S.Schema<DeleteRunnerResponse>,
   errors: [BadRequest, NotFound, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -504,8 +504,8 @@ export const deleteUser: API.OperationMethod<
   DeleteUserError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(17, __c2, 1) as any as S.Schema<DeleteUserRequest>,
-  output: __S(14, __c1, 6) as any as S.Schema<DeleteUserResponse>,
+  input: __S(0, __c0, 0) as any as S.Schema<DeleteUserRequest>,
+  output: __S(176, __c22, 0) as any as S.Schema<DeleteUserResponse>,
   errors: [BadRequest, NotFound, Conflict, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -519,8 +519,8 @@ export const getAuthentication: API.OperationMethod<
   GetAuthenticationError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(18, __c2, 2) as any as S.Schema<GetAuthenticationRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<Authentication>,
+  input: __S(8, __c1, 0) as any as S.Schema<GetAuthenticationRequest>,
+  output: __S(112, __c14, 0) as any as S.Schema<Authentication>,
   errors: [BadRequest, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -534,8 +534,8 @@ export const getInstance: API.OperationMethod<
   GetInstanceError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(19, __c2, 3) as any as S.Schema<GetInstanceRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<Instance>,
+  input: __S(16, __c2, 0) as any as S.Schema<GetInstanceRequest>,
+  output: __S(132, __c16, 4) as any as S.Schema<Instance>,
   errors: [BadRequest, NotFound, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -549,8 +549,8 @@ export const getRunner: API.OperationMethod<
   GetRunnerError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(20, __c2, 4) as any as S.Schema<GetRunnerRequest>,
-  output: __S(10, __c1, 2) as any as S.Schema<Runner>,
+  input: __S(24, __c3, 0) as any as S.Schema<GetRunnerRequest>,
+  output: __S(145, __c18, 1) as any as S.Schema<Runner>,
   errors: [BadRequest, NotFound, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -564,8 +564,8 @@ export const getUser: API.OperationMethod<
   GetUserError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(21, __c2, 5) as any as S.Schema<GetUserRequest>,
-  output: __S(14, __c1, 6) as any as S.Schema<GetUserResponse>,
+  input: __S(32, __c4, 0) as any as S.Schema<GetUserRequest>,
+  output: __S(176, __c22, 0) as any as S.Schema<GetUserResponse>,
   errors: [BadRequest, NotFound, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -579,8 +579,8 @@ export const getUsers: API.OperationMethod<
   GetUsersError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(22, __c2, 6) as any as S.Schema<GetUsersRequest>,
-  output: __S(24, __c3, 0) as any as S.Schema<ListUsers>,
+  input: __S(40, __c5, 0) as any as S.Schema<GetUsersRequest>,
+  output: __S(42, __c5, 2) as any as S.Schema<ListUsers>,
   errors: [BadRequest, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -594,8 +594,8 @@ export const listAuthentication: API.OperationMethod<
   ListAuthenticationError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(25, __c3, 1) as any as S.Schema<ListAuthenticationRequest>,
-  output: __S(27, __c3, 3) as any as S.Schema<AuthenticationList>,
+  input: __S(48, __c6, 0) as any as S.Schema<ListAuthenticationRequest>,
+  output: __S(50, __c6, 2) as any as S.Schema<AuthenticationList>,
   errors: [BadRequest, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -609,8 +609,8 @@ export const listFlavors2: API.OperationMethod<
   ListFlavors2Error,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(28, __c3, 4) as any as S.Schema<ListFlavorsRequest>,
-  output: __S(31, __c3, 7) as any as S.Schema<ListFlavors>,
+  input: __S(56, __c7, 0) as any as S.Schema<ListFlavorsRequest>,
+  output: __S(59, __c7, 3) as any as S.Schema<ListFlavors>,
   errors: [BadRequest, NotFound, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -624,8 +624,8 @@ export const listInstances2: API.OperationMethod<
   ListInstances2Error,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(32, __c4, 0) as any as S.Schema<ListInstancesRequest>,
-  output: __S(34, __c4, 2) as any as S.Schema<ListInstances>,
+  input: __S(64, __c8, 0) as any as S.Schema<ListInstancesRequest>,
+  output: __S(66, __c8, 2) as any as S.Schema<ListInstances>,
   errors: [BadRequest, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -639,8 +639,8 @@ export const listRunnerRuntimes: API.OperationMethod<
   ListRunnerRuntimesError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(35, __c4, 3) as any as S.Schema<ListRunnerRuntimesRequest>,
-  output: __S(38, __c4, 6) as any as S.Schema<RunnerRuntimeList>,
+  input: __S(72, __c9, 0) as any as S.Schema<ListRunnerRuntimesRequest>,
+  output: __S(75, __c9, 3) as any as S.Schema<RunnerRuntimeList>,
   errors: [BadRequest, NotFound, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -654,8 +654,8 @@ export const patchAuthentication: API.OperationMethod<
   PatchAuthenticationError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(39, __c4, 7) as any as S.Schema<PatchAuthenticationRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<Authentication>,
+  input: __S(80, __c10, 0) as any as S.Schema<PatchAuthenticationRequest>,
+  output: __S(112, __c14, 0) as any as S.Schema<Authentication>,
   errors: [BadRequest, NotFound, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -669,8 +669,8 @@ export const patchInstance: API.OperationMethod<
   PatchInstanceError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(40, __c5, 0) as any as S.Schema<PatchInstanceRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<Instance>,
+  input: __S(88, __c11, 0) as any as S.Schema<PatchInstanceRequest>,
+  output: __S(132, __c16, 4) as any as S.Schema<Instance>,
   errors: [BadRequest, NotFound, Conflict, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -684,8 +684,8 @@ export const updateUser: API.OperationMethod<
   UpdateUserError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(41, __c5, 1) as any as S.Schema<UpdateUserRequest>,
-  output: __S(12, __c1, 4) as any as S.Schema<User>,
+  input: __S(96, __c12, 0) as any as S.Schema<UpdateUserRequest>,
+  output: __S(160, __c20, 0) as any as S.Schema<User>,
   errors: [BadRequest, NotFound, Conflict, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -695,208 +695,6 @@ export const updateUser: API.OperationMethod<
 function __c0(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() =>
-        S.Struct({
-          projectId: S.String.pipe(T.Label()),
-          instanceId: S.String.pipe(T.Label()),
-          auto_discover_url: S.String,
-          client_id: S.String,
-          client_secret: S.String.pipe(T.SensitiveValue({})),
-          icon_url: S.optional(S.String),
-          name: S.String,
-          provider: S.optional(S.String),
-          scopes: S.optional(S.String),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/v1beta/projects/{projectId}/instances/{instanceId}/authentications",
-            code: 200,
-            baseUrl: "https://git.api.stackit.cloud",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateAuthenticationRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          auto_discover_url: S.String,
-          client_id: S.String,
-          created_at: S.String,
-          icon_url: S.String,
-          id: S.String,
-          name: S.String,
-          provider: S.String,
-          scopes: S.String,
-          status: S.String,
-          status_message: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Authentication" });
-    case 2:
-      return S.Array(S.String);
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          projectId: S.String.pipe(T.Label()),
-          acl: S.optional(__S(2, __c0, 2)),
-          flavor: S.optional(S.String),
-          name: S.String,
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/v1beta/projects/{projectId}/instances",
-            code: 200,
-            baseUrl: "https://git.api.stackit.cloud",
-          }),
-        ),
-      ).annotate({ identifier: "CreateInstanceRequest" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          action_url: S.optional(S.NullOr(S.String)),
-          enabled: S.optional(S.NullOr(S.Boolean)),
-        }),
-      ).annotate({ identifier: "Pipelines" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          default_email_notifications: S.optional(S.NullOr(S.String)),
-          enable_local_login: S.optional(S.NullOr(S.Boolean)),
-          pipelines: S.optional(__S(4, __c0, 4)),
-        }),
-      ).annotate({ identifier: "FeatureToggle" });
-    case 6:
-      return S.Record(S.String, S.String);
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          acl: __S(2, __c0, 2),
-          admin_login: S.Boolean,
-          consumed_disk: S.String,
-          consumed_object_storage: S.String,
-          created: S.String,
-          feature_toggle: __S(5, __c0, 5),
-          flavor: S.String,
-          id: S.String,
-          labels: S.optional(__S(6, __c0, 6)),
-          name: S.String,
-          state: S.String,
-          url: S.String,
-          version: S.String,
-        }),
-      ).annotate({ identifier: "Instance" });
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(S.String);
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          projectId: S.String.pipe(T.Label()),
-          instanceId: S.String.pipe(T.Label()),
-          labels: __S(8, __c1, 0),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/v1beta/projects/{projectId}/instances/{instanceId}/runner",
-            code: 200,
-            baseUrl: "https://git.api.stackit.cloud",
-          }),
-        ),
-      ).annotate({ identifier: "CreateRunnerRequest" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          created_at: S.String,
-          id: S.String,
-          labels: __S(8, __c1, 0),
-          status: S.String,
-        }),
-      ).annotate({ identifier: "Runner" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          projectId: S.String.pipe(T.Label()),
-          instanceId: S.String.pipe(T.Label()),
-          email: S.String,
-          force_send_reset_password: S.optional(S.Boolean),
-          name: S.String,
-          password: S.String.pipe(T.SensitiveValue({})),
-          username: S.String,
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/v1beta/projects/{projectId}/instances/{instanceId}/users",
-            code: 200,
-            baseUrl: "https://git.api.stackit.cloud",
-          }),
-        ),
-      ).annotate({ identifier: "CreateUserRequest" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          email: S.String,
-          id: S.optional(S.Number),
-          name: S.String,
-          username: S.String,
-        }),
-      ).annotate({ identifier: "User" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          projectId: S.String.pipe(T.Label()),
-          instanceId: S.String.pipe(T.Label()),
-          authenticationId: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/v1beta/projects/{projectId}/instances/{instanceId}/authentications/{authenticationId}",
-            code: 200,
-            baseUrl: "https://git.api.stackit.cloud",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteAuthenticationRequest",
-      });
-    case 6:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "DeleteAuthenticationResponse",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          projectId: S.String.pipe(T.Label()),
-          instanceId: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/v1beta/projects/{projectId}/instances/{instanceId}",
-            code: 200,
-            baseUrl: "https://git.api.stackit.cloud",
-          }),
-        ),
-      ).annotate({ identifier: "DeleteInstanceRequest" });
-  }
-}
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          projectId: S.String.pipe(T.Label()),
-          instanceId: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/v1beta/projects/{projectId}/instances/{instanceId}/runner",
-            code: 200,
-            baseUrl: "https://git.api.stackit.cloud",
-          }),
-        ),
-      ).annotate({ identifier: "DeleteRunnerRequest" });
-    case 1:
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.Label()),
@@ -911,7 +709,11 @@ function __c2(j: number): any {
           }),
         ),
       ).annotate({ identifier: "DeleteUserRequest" });
-    case 2:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.Label()),
@@ -926,7 +728,11 @@ function __c2(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetAuthenticationRequest" });
-    case 3:
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.Label()),
@@ -940,7 +746,11 @@ function __c2(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetInstanceRequest" });
-    case 4:
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.Label()),
@@ -954,7 +764,11 @@ function __c2(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetRunnerRequest" });
-    case 5:
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.Label()),
@@ -969,7 +783,11 @@ function __c2(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetUserRequest" });
-    case 6:
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.Label()),
@@ -984,22 +802,22 @@ function __c2(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetUsersRequest" });
-    case 7:
-      return S.Array(__S(12, __c1, 4));
-  }
-}
-function __c3(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
+      return S.Array(__S(160, __c20, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           itemsCount: S.Number,
           offset: S.Number,
           totalPages: S.Number,
-          users: __S(23, __c2, 7),
+          users: __S(41, __c5, 1),
         }),
       ).annotate({ identifier: "ListUsers" });
-    case 1:
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.Label()),
@@ -1015,15 +833,19 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "ListAuthenticationRequest",
       });
+    case 1:
+      return S.Array(__S(112, __c14, 0));
     case 2:
-      return S.Array(__S(1, __c0, 1));
-    case 3:
       return S.suspend(() =>
         S.Struct({
-          authentication: __S(26, __c3, 2),
+          authentication: __S(49, __c6, 1),
         }),
       ).annotate({ identifier: "AuthenticationList" });
-    case 4:
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.Label()),
@@ -1036,7 +858,7 @@ function __c3(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ListFlavorsRequest" });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           availability: S.String,
@@ -1046,17 +868,17 @@ function __c3(j: number): any {
           sku: S.String,
         }),
       ).annotate({ identifier: "Flavor" });
-    case 6:
-      return S.Array(__S(29, __c3, 5));
-    case 7:
+    case 2:
+      return S.Array(__S(57, __c7, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          flavors: __S(30, __c3, 6),
+          flavors: __S(58, __c7, 2),
         }),
       ).annotate({ identifier: "ListFlavors" });
   }
 }
-function __c4(j: number): any {
+function __c8(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1072,14 +894,18 @@ function __c4(j: number): any {
         ),
       ).annotate({ identifier: "ListInstancesRequest" });
     case 1:
-      return S.Array(__S(7, __c0, 7));
+      return S.Array(__S(132, __c16, 4));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          instances: __S(33, __c4, 1),
+          instances: __S(65, __c8, 1),
         }),
       ).annotate({ identifier: "ListInstances" });
-    case 3:
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.Label()),
@@ -1094,7 +920,7 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "ListRunnerRuntimesRequest",
       });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           availability: S.String,
@@ -1104,15 +930,19 @@ function __c4(j: number): any {
           label: S.String,
         }),
       ).annotate({ identifier: "RunnerRuntime" });
-    case 5:
-      return S.Array(__S(36, __c4, 4));
-    case 6:
+    case 2:
+      return S.Array(__S(73, __c9, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          items: __S(37, __c4, 5),
+          items: __S(74, __c9, 2),
         }),
       ).annotate({ identifier: "RunnerRuntimeList" });
-    case 7:
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.Label()),
@@ -1137,17 +967,17 @@ function __c4(j: number): any {
       });
   }
 }
-function __c5(j: number): any {
+function __c11(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.Label()),
           instanceId: S.String.pipe(T.Label()),
-          acl: S.optional(S.NullOr(__S(2, __c0, 2))),
+          acl: S.optional(S.NullOr(__S(128, __c16, 0))),
           admin_login: S.optional(S.Boolean),
-          feature_toggle: S.optional(__S(5, __c0, 5)),
-          labels: S.optional(__S(6, __c0, 6)),
+          feature_toggle: S.optional(__S(130, __c16, 2)),
+          labels: S.optional(__S(131, __c16, 3)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -1157,7 +987,11 @@ function __c5(j: number): any {
           }),
         ),
       ).annotate({ identifier: "PatchInstanceRequest" });
-    case 1:
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.Label()),
@@ -1177,7 +1011,248 @@ function __c5(j: number): any {
       ).annotate({ identifier: "UpdateUserRequest" });
   }
 }
-
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          projectId: S.String.pipe(T.Label()),
+          instanceId: S.String.pipe(T.Label()),
+          auto_discover_url: S.String,
+          client_id: S.String,
+          client_secret: S.String.pipe(T.SensitiveValue({})),
+          icon_url: S.optional(S.String),
+          name: S.String,
+          provider: S.optional(S.String),
+          scopes: S.optional(S.String),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/v1beta/projects/{projectId}/instances/{instanceId}/authentications",
+            code: 200,
+            baseUrl: "https://git.api.stackit.cloud",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateAuthenticationRequest",
+      });
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          auto_discover_url: S.String,
+          client_id: S.String,
+          created_at: S.String,
+          icon_url: S.String,
+          id: S.String,
+          name: S.String,
+          provider: S.String,
+          scopes: S.String,
+          status: S.String,
+          status_message: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Authentication" });
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          projectId: S.String.pipe(T.Label()),
+          acl: S.optional(__S(128, __c16, 0)),
+          flavor: S.optional(S.String),
+          name: S.String,
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/v1beta/projects/{projectId}/instances",
+            code: 200,
+            baseUrl: "https://git.api.stackit.cloud",
+          }),
+        ),
+      ).annotate({ identifier: "CreateInstanceRequest" });
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          action_url: S.optional(S.NullOr(S.String)),
+          enabled: S.optional(S.NullOr(S.Boolean)),
+        }),
+      ).annotate({ identifier: "Pipelines" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          default_email_notifications: S.optional(S.NullOr(S.String)),
+          enable_local_login: S.optional(S.NullOr(S.Boolean)),
+          pipelines: S.optional(__S(129, __c16, 1)),
+        }),
+      ).annotate({ identifier: "FeatureToggle" });
+    case 3:
+      return S.Record(S.String, S.String);
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          acl: __S(128, __c16, 0),
+          admin_login: S.Boolean,
+          consumed_disk: S.String,
+          consumed_object_storage: S.String,
+          created: S.String,
+          feature_toggle: __S(130, __c16, 2),
+          flavor: S.String,
+          id: S.String,
+          labels: S.optional(__S(131, __c16, 3)),
+          name: S.String,
+          state: S.String,
+          url: S.String,
+          version: S.String,
+        }),
+      ).annotate({ identifier: "Instance" });
+  }
+}
+function __c17(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          projectId: S.String.pipe(T.Label()),
+          instanceId: S.String.pipe(T.Label()),
+          labels: __S(144, __c18, 0),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/v1beta/projects/{projectId}/instances/{instanceId}/runner",
+            code: 200,
+            baseUrl: "https://git.api.stackit.cloud",
+          }),
+        ),
+      ).annotate({ identifier: "CreateRunnerRequest" });
+  }
+}
+function __c18(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          created_at: S.String,
+          id: S.String,
+          labels: __S(144, __c18, 0),
+          status: S.String,
+        }),
+      ).annotate({ identifier: "Runner" });
+  }
+}
+function __c19(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          projectId: S.String.pipe(T.Label()),
+          instanceId: S.String.pipe(T.Label()),
+          email: S.String,
+          force_send_reset_password: S.optional(S.Boolean),
+          name: S.String,
+          password: S.String.pipe(T.SensitiveValue({})),
+          username: S.String,
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/v1beta/projects/{projectId}/instances/{instanceId}/users",
+            code: 200,
+            baseUrl: "https://git.api.stackit.cloud",
+          }),
+        ),
+      ).annotate({ identifier: "CreateUserRequest" });
+  }
+}
+function __c20(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          email: S.String,
+          id: S.optional(S.Number),
+          name: S.String,
+          username: S.String,
+        }),
+      ).annotate({ identifier: "User" });
+  }
+}
+function __c21(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          projectId: S.String.pipe(T.Label()),
+          instanceId: S.String.pipe(T.Label()),
+          authenticationId: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/v1beta/projects/{projectId}/instances/{instanceId}/authentications/{authenticationId}",
+            code: 200,
+            baseUrl: "https://git.api.stackit.cloud",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteAuthenticationRequest",
+      });
+  }
+}
+function __c22(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "DeleteAuthenticationResponse",
+      });
+  }
+}
+function __c23(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          projectId: S.String.pipe(T.Label()),
+          instanceId: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/v1beta/projects/{projectId}/instances/{instanceId}",
+            code: 200,
+            baseUrl: "https://git.api.stackit.cloud",
+          }),
+        ),
+      ).annotate({ identifier: "DeleteInstanceRequest" });
+  }
+}
+function __c24(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          projectId: S.String.pipe(T.Label()),
+          instanceId: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/v1beta/projects/{projectId}/instances/{instanceId}/runner",
+            code: 200,
+            baseUrl: "https://git.api.stackit.cloud",
+          }),
+        ),
+      ).annotate({ identifier: "DeleteRunnerRequest" });
+  }
+}
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

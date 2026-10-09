@@ -220,7 +220,7 @@ export const DeleteConsole: API.OperationMethod<
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(0, __c0, 0) as any as S.Schema<DeleteConsoleRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<DeleteConsoleResponse>,
+  output: __S(4, __c1, 0) as any as S.Schema<DeleteConsoleResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -234,8 +234,8 @@ export const DeleteConsoleWithLocation: API.OperationMethod<
   DeleteConsoleWithLocationError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2, __c0, 2) as any as S.Schema<DeleteConsoleWithLocationRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<DeleteConsoleWithLocationResponse>,
+  input: __S(8, __c2, 0) as any as S.Schema<DeleteConsoleWithLocationRequest>,
+  output: __S(12, __c3, 0) as any as S.Schema<DeleteConsoleWithLocationResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -249,8 +249,8 @@ export const DeleteUserSettings: API.OperationMethod<
   DeleteUserSettingsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(4, __c0, 4) as any as S.Schema<DeleteUserSettingsRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<DeleteUserSettingsResponse>,
+  input: __S(40, __c10, 0) as any as S.Schema<DeleteUserSettingsRequest>,
+  output: __S(4, __c1, 0) as any as S.Schema<DeleteUserSettingsResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -264,8 +264,8 @@ export const DeleteUserSettingsWithLocation: API.OperationMethod<
   DeleteUserSettingsWithLocationError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(5, __c0, 5) as any as S.Schema<DeleteUserSettingsWithLocationRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<DeleteUserSettingsWithLocationResponse>,
+  input: __S(44, __c11, 0) as any as S.Schema<DeleteUserSettingsWithLocationRequest>,
+  output: __S(12, __c3, 0) as any as S.Schema<DeleteUserSettingsWithLocationResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -279,8 +279,8 @@ export const GetConsole: API.OperationMethod<
   GetConsoleError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(6, __c0, 6) as any as S.Schema<GetConsoleRequest>,
-  output: __S(8, __c1, 0) as any as S.Schema<GetConsoleResponse>,
+  input: __S(48, __c12, 0) as any as S.Schema<GetConsoleRequest>,
+  output: __S(52, __c13, 0) as any as S.Schema<GetConsoleResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -294,8 +294,8 @@ export const GetConsoleWithLocation: API.OperationMethod<
   GetConsoleWithLocationError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(9, __c1, 1) as any as S.Schema<GetConsoleWithLocationRequest>,
-  output: __S(10, __c1, 2) as any as S.Schema<GetConsoleWithLocationResponse>,
+  input: __S(60, __c15, 0) as any as S.Schema<GetConsoleWithLocationRequest>,
+  output: __S(64, __c16, 0) as any as S.Schema<GetConsoleWithLocationResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -309,8 +309,8 @@ export const GetUserSettings: API.OperationMethod<
   GetUserSettingsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(11, __c1, 3) as any as S.Schema<GetUserSettingsRequest>,
-  output: __S(15, __c1, 7) as any as S.Schema<GetUserSettingsResponse>,
+  input: __S(68, __c17, 0) as any as S.Schema<GetUserSettingsRequest>,
+  output: __S(72, __c18, 0) as any as S.Schema<GetUserSettingsResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -324,8 +324,8 @@ export const GetUserSettingsWithLocation: API.OperationMethod<
   GetUserSettingsWithLocationError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(16, __c2, 0) as any as S.Schema<GetUserSettingsWithLocationRequest>,
-  output: __S(17, __c2, 1) as any as S.Schema<GetUserSettingsWithLocationResponse>,
+  input: __S(80, __c20, 0) as any as S.Schema<GetUserSettingsWithLocationRequest>,
+  output: __S(84, __c21, 0) as any as S.Schema<GetUserSettingsWithLocationResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -339,8 +339,8 @@ export const KeepAlive: API.OperationMethod<
   KeepAliveError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(18, __c2, 2) as any as S.Schema<KeepAliveRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<KeepAliveResponse>,
+  input: __S(88, __c22, 0) as any as S.Schema<KeepAliveRequest>,
+  output: __S(4, __c1, 0) as any as S.Schema<KeepAliveResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -354,8 +354,8 @@ export const KeepAliveWithLocation: API.OperationMethod<
   KeepAliveWithLocationError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(19, __c2, 3) as any as S.Schema<KeepAliveWithLocationRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<KeepAliveWithLocationResponse>,
+  input: __S(92, __c23, 0) as any as S.Schema<KeepAliveWithLocationRequest>,
+  output: __S(4, __c1, 0) as any as S.Schema<KeepAliveWithLocationResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -369,8 +369,8 @@ export const PatchUserSettings: API.OperationMethod<
   PatchUserSettingsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(20, __c2, 4) as any as S.Schema<PatchUserSettingsRequest>,
-  output: __S(17, __c2, 1) as any as S.Schema<PatchUserSettingsResponse>,
+  input: __S(16, __c4, 0) as any as S.Schema<PatchUserSettingsRequest>,
+  output: __S(84, __c21, 0) as any as S.Schema<PatchUserSettingsResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -384,8 +384,8 @@ export const PatchUserSettingsWithLocation: API.OperationMethod<
   PatchUserSettingsWithLocationError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(21, __c2, 5) as any as S.Schema<PatchUserSettingsWithLocationRequest>,
-  output: __S(17, __c2, 1) as any as S.Schema<PatchUserSettingsWithLocationResponse>,
+  input: __S(20, __c5, 0) as any as S.Schema<PatchUserSettingsWithLocationRequest>,
+  output: __S(84, __c21, 0) as any as S.Schema<PatchUserSettingsWithLocationResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -399,8 +399,8 @@ export const PutConsole: API.OperationMethod<
   PutConsoleError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(23, __c2, 7) as any as S.Schema<PutConsoleRequest>,
-  output: __S(8, __c1, 0) as any as S.Schema<PutConsoleResponse>,
+  input: __S(25, __c6, 1) as any as S.Schema<PutConsoleRequest>,
+  output: __S(52, __c13, 0) as any as S.Schema<PutConsoleResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -414,8 +414,8 @@ export const PutConsoleWithLocation: API.OperationMethod<
   PutConsoleWithLocationError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(24, __c3, 0) as any as S.Schema<PutConsoleWithLocationRequest>,
-  output: __S(10, __c1, 2) as any as S.Schema<PutConsoleWithLocationResponse>,
+  input: __S(28, __c7, 0) as any as S.Schema<PutConsoleWithLocationRequest>,
+  output: __S(64, __c16, 0) as any as S.Schema<PutConsoleWithLocationResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -429,8 +429,8 @@ export const PutUserSettings: API.OperationMethod<
   PutUserSettingsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(25, __c3, 1) as any as S.Schema<PutUserSettingsRequest>,
-  output: __S(15, __c1, 7) as any as S.Schema<PutUserSettingsResponse>,
+  input: __S(32, __c8, 0) as any as S.Schema<PutUserSettingsRequest>,
+  output: __S(72, __c18, 0) as any as S.Schema<PutUserSettingsResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -444,8 +444,8 @@ export const PutUserSettingsWithLocation: API.OperationMethod<
   PutUserSettingsWithLocationError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(26, __c3, 2) as any as S.Schema<PutUserSettingsWithLocationRequest>,
-  output: __S(17, __c2, 1) as any as S.Schema<PutUserSettingsWithLocationResponse>,
+  input: __S(36, __c9, 0) as any as S.Schema<PutUserSettingsWithLocationRequest>,
+  output: __S(84, __c21, 0) as any as S.Schema<PutUserSettingsWithLocationResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -467,11 +467,19 @@ function __c0(j: number): any {
           }),
         ),
       ).annotate({ identifier: "DeleteConsoleRequest" });
-    case 1:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "DeleteConsoleResponse",
       });
-    case 2:
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           location: S.String.pipe(T.Label()),
@@ -487,202 +495,23 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "DeleteConsoleWithLocationRequest",
       });
-    case 3:
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "DeleteConsoleWithLocationResponse",
       });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          userSettingsName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/providers/Microsoft.Portal/userSettings/{userSettingsName}",
-            code: 200,
-            apiVersion: "2018-10-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteUserSettingsRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          location: S.String.pipe(T.Label()),
-          userSettingsName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/providers/Microsoft.Portal/locations/{location}/userSettings/{userSettingsName}",
-            code: 200,
-            apiVersion: "2018-10-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteUserSettingsWithLocationRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          consoleName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/providers/Microsoft.Portal/consoles/{consoleName}",
-            code: 200,
-            apiVersion: "2018-10-01",
-          }),
-        ),
-      ).annotate({ identifier: "GetConsoleRequest" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          osType: S.String,
-          provisioningState: S.String,
-          uri: S.String,
-        }),
-      ).annotate({ identifier: "ConsoleProperties" });
   }
 }
-function __c1(j: number): any {
+function __c4(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          properties: __S(7, __c0, 7),
-        }),
-      ).annotate({ identifier: "GetConsoleResponse" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          location: S.String.pipe(T.Label()),
-          consoleName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/providers/Microsoft.Portal/locations/{location}/consoles/{consoleName}",
-            code: 200,
-            apiVersion: "2018-10-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetConsoleWithLocationRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          properties: __S(7, __c0, 7),
-        }),
-      ).annotate({
-        identifier: "GetConsoleWithLocationResponse",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
           userSettingsName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/providers/Microsoft.Portal/userSettings/{userSettingsName}",
-            code: 200,
-            apiVersion: "2018-10-01",
-          }),
-        ),
-      ).annotate({ identifier: "GetUserSettingsRequest" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          storageAccountResourceId: S.optional(S.String),
-          fileShareName: S.optional(S.String),
-          diskSizeInGB: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "StorageProfile" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          fontSize: S.optional(S.String),
-          fontStyle: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "TerminalSettings" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          preferredOsType: S.String,
-          preferredLocation: S.String,
-          storageProfile: __S(12, __c1, 4),
-          terminalSettings: __S(13, __c1, 5),
-          preferredShellType: S.String,
-        }),
-      ).annotate({ identifier: "UserProperties" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          properties: __S(14, __c1, 6),
-        }),
-      ).annotate({ identifier: "GetUserSettingsResponse" });
-  }
-}
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          location: S.String.pipe(T.Label()),
-          userSettingsName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/providers/Microsoft.Portal/locations/{location}/userSettings/{userSettingsName}",
-            code: 200,
-            apiVersion: "2018-10-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetUserSettingsWithLocationRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          properties: __S(14, __c1, 6),
-        }),
-      ).annotate({
-        identifier: "GetUserSettingsWithLocationResponse",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          consoleName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/providers/Microsoft.Portal/consoles/{consoleName}/keepAlive",
-            code: 200,
-            apiVersion: "2018-10-01",
-          }),
-        ),
-      ).annotate({ identifier: "KeepAliveRequest" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          location: S.String.pipe(T.Label()),
-          consoleName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/providers/Microsoft.Portal/locations/{location}/consoles/{consoleName}/keepAlive",
-            code: 200,
-            apiVersion: "2018-10-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "KeepAliveWithLocationRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          userSettingsName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(14, __c1, 6)),
+          properties: S.optional(__S(78, __c19, 2)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -692,12 +521,16 @@ function __c2(j: number): any {
           }),
         ),
       ).annotate({ identifier: "PatchUserSettingsRequest" });
-    case 5:
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           location: S.String.pipe(T.Label()),
           userSettingsName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(14, __c1, 6)),
+          properties: S.optional(__S(78, __c19, 2)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -709,7 +542,11 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "PatchUserSettingsWithLocationRequest",
       });
-    case 6:
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           osType: S.String,
@@ -717,11 +554,11 @@ function __c2(j: number): any {
           uri: S.optional(S.String),
         }),
       ).annotate({ identifier: "ConsoleCreateProperties" });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           consoleName: S.String.pipe(T.Label()),
-          properties: __S(22, __c2, 6),
+          properties: __S(24, __c6, 0),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -733,7 +570,7 @@ function __c2(j: number): any {
       ).annotate({ identifier: "PutConsoleRequest" });
   }
 }
-function __c3(j: number): any {
+function __c7(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -751,11 +588,15 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "PutConsoleWithLocationRequest",
       });
-    case 1:
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           userSettingsName: S.String.pipe(T.Label()),
-          properties: __S(14, __c1, 6),
+          properties: __S(78, __c19, 2),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -765,12 +606,16 @@ function __c3(j: number): any {
           }),
         ),
       ).annotate({ identifier: "PutUserSettingsRequest" });
-    case 2:
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           location: S.String.pipe(T.Label()),
           userSettingsName: S.String.pipe(T.Label()),
-          properties: __S(14, __c1, 6),
+          properties: __S(78, __c19, 2),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -784,7 +629,241 @@ function __c3(j: number): any {
       });
   }
 }
-
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          userSettingsName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/providers/Microsoft.Portal/userSettings/{userSettingsName}",
+            code: 200,
+            apiVersion: "2018-10-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteUserSettingsRequest",
+      });
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          location: S.String.pipe(T.Label()),
+          userSettingsName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/providers/Microsoft.Portal/locations/{location}/userSettings/{userSettingsName}",
+            code: 200,
+            apiVersion: "2018-10-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteUserSettingsWithLocationRequest",
+      });
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          consoleName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/providers/Microsoft.Portal/consoles/{consoleName}",
+            code: 200,
+            apiVersion: "2018-10-01",
+          }),
+        ),
+      ).annotate({ identifier: "GetConsoleRequest" });
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          properties: __S(56, __c14, 0),
+        }),
+      ).annotate({ identifier: "GetConsoleResponse" });
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          osType: S.String,
+          provisioningState: S.String,
+          uri: S.String,
+        }),
+      ).annotate({ identifier: "ConsoleProperties" });
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          location: S.String.pipe(T.Label()),
+          consoleName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/providers/Microsoft.Portal/locations/{location}/consoles/{consoleName}",
+            code: 200,
+            apiVersion: "2018-10-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetConsoleWithLocationRequest",
+      });
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          properties: __S(56, __c14, 0),
+        }),
+      ).annotate({
+        identifier: "GetConsoleWithLocationResponse",
+      });
+  }
+}
+function __c17(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          userSettingsName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/providers/Microsoft.Portal/userSettings/{userSettingsName}",
+            code: 200,
+            apiVersion: "2018-10-01",
+          }),
+        ),
+      ).annotate({ identifier: "GetUserSettingsRequest" });
+  }
+}
+function __c18(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          properties: __S(78, __c19, 2),
+        }),
+      ).annotate({ identifier: "GetUserSettingsResponse" });
+  }
+}
+function __c19(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          storageAccountResourceId: S.optional(S.String),
+          fileShareName: S.optional(S.String),
+          diskSizeInGB: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "StorageProfile" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          fontSize: S.optional(S.String),
+          fontStyle: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "TerminalSettings" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          preferredOsType: S.String,
+          preferredLocation: S.String,
+          storageProfile: __S(76, __c19, 0),
+          terminalSettings: __S(77, __c19, 1),
+          preferredShellType: S.String,
+        }),
+      ).annotate({ identifier: "UserProperties" });
+  }
+}
+function __c20(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          location: S.String.pipe(T.Label()),
+          userSettingsName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/providers/Microsoft.Portal/locations/{location}/userSettings/{userSettingsName}",
+            code: 200,
+            apiVersion: "2018-10-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetUserSettingsWithLocationRequest",
+      });
+  }
+}
+function __c21(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          properties: __S(78, __c19, 2),
+        }),
+      ).annotate({
+        identifier: "GetUserSettingsWithLocationResponse",
+      });
+  }
+}
+function __c22(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          consoleName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/providers/Microsoft.Portal/consoles/{consoleName}/keepAlive",
+            code: 200,
+            apiVersion: "2018-10-01",
+          }),
+        ),
+      ).annotate({ identifier: "KeepAliveRequest" });
+  }
+}
+function __c23(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          location: S.String.pipe(T.Label()),
+          consoleName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/providers/Microsoft.Portal/locations/{location}/consoles/{consoleName}/keepAlive",
+            code: 200,
+            apiVersion: "2018-10-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "KeepAliveWithLocationRequest",
+      });
+  }
+}
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

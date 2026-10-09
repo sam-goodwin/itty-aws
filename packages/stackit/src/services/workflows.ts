@@ -498,8 +498,8 @@ export const createDagBundle: API.OperationMethod<
   CreateDagBundleError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(0, __c0, 0) as any as S.Schema<CreateDagBundleRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<CreateDagBundleResponse>,
+  input: __S(64, __c8, 0) as any as S.Schema<CreateDagBundleRequest>,
+  output: __S(72, __c9, 0) as any as S.Schema<CreateDagBundleResponse>,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -513,8 +513,8 @@ export const createInstance: API.OperationMethod<
   CreateInstanceError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(5, __c0, 5) as any as S.Schema<CreateInstanceRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<Instance>,
+  input: __S(80, __c10, 0) as any as S.Schema<CreateInstanceRequest>,
+  output: __S(92, __c11, 4) as any as S.Schema<Instance>,
   errors: [BadRequest, Forbidden, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -528,8 +528,8 @@ export const deleteDagBundle: API.OperationMethod<
   DeleteDagBundleError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(8, __c1, 0) as any as S.Schema<DeleteDagBundleRequest>,
-  output: __S(9, __c1, 1) as any as S.Schema<DeleteDagBundleResponse>,
+  input: __S(96, __c12, 0) as any as S.Schema<DeleteDagBundleRequest>,
+  output: __S(104, __c13, 0) as any as S.Schema<DeleteDagBundleResponse>,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -543,8 +543,8 @@ export const deleteInstance: API.OperationMethod<
   DeleteInstanceError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(10, __c1, 2) as any as S.Schema<DeleteInstanceRequest>,
-  output: __S(9, __c1, 1) as any as S.Schema<DeleteInstanceResponse>,
+  input: __S(112, __c14, 0) as any as S.Schema<DeleteInstanceRequest>,
+  output: __S(104, __c13, 0) as any as S.Schema<DeleteInstanceResponse>,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -558,8 +558,8 @@ export const getDagBundle: API.OperationMethod<
   GetDagBundleError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(11, __c1, 3) as any as S.Schema<GetDagBundleRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<GetDagBundleResponse>,
+  input: __S(120, __c15, 0) as any as S.Schema<GetDagBundleRequest>,
+  output: __S(72, __c9, 0) as any as S.Schema<GetDagBundleResponse>,
   errors: [Forbidden, NotFound, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -573,8 +573,8 @@ export const getInstance: API.OperationMethod<
   GetInstanceError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(12, __c1, 4) as any as S.Schema<GetInstanceRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<Instance>,
+  input: __S(128, __c16, 0) as any as S.Schema<GetInstanceRequest>,
+  output: __S(92, __c11, 4) as any as S.Schema<Instance>,
   errors: [BadRequest, Forbidden, NotFound, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -588,8 +588,8 @@ export const getProviderOptions: API.OperationMethod<
   GetProviderOptionsError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(13, __c1, 5) as any as S.Schema<GetProviderOptionsRequest>,
-  output: __S(16, __c2, 0) as any as S.Schema<ProviderOptions>,
+  input: __S(0, __c0, 0) as any as S.Schema<GetProviderOptionsRequest>,
+  output: __S(3, __c0, 3) as any as S.Schema<ProviderOptions>,
   errors: [BadRequest, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -603,8 +603,8 @@ export const listDagBundles: API.OperationMethod<
   ListDagBundlesError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(17, __c2, 1) as any as S.Schema<ListDagBundlesRequest>,
-  output: __S(19, __c2, 3) as any as S.Schema<ListDagBundlesResponseOutput>,
+  input: __S(8, __c1, 0) as any as S.Schema<ListDagBundlesRequest>,
+  output: __S(10, __c1, 2) as any as S.Schema<ListDagBundlesResponseOutput>,
   errors: [BadRequest, Forbidden, NotFound, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -618,8 +618,8 @@ export const listInstances: API.OperationMethod<
   ListInstancesError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(20, __c2, 4) as any as S.Schema<ListInstancesRequest>,
-  output: __S(22, __c2, 6) as any as S.Schema<ListInstancesResponse>,
+  input: __S(16, __c2, 0) as any as S.Schema<ListInstancesRequest>,
+  output: __S(18, __c2, 2) as any as S.Schema<ListInstancesResponse>,
   errors: [BadRequest, Forbidden, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -633,8 +633,8 @@ export const updateDagBundle: API.OperationMethod<
   UpdateDagBundleError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(23, __c2, 7) as any as S.Schema<UpdateDagBundleRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<UpdateDagBundleResponse>,
+  input: __S(24, __c3, 0) as any as S.Schema<UpdateDagBundleRequest>,
+  output: __S(72, __c9, 0) as any as S.Schema<UpdateDagBundleResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -648,8 +648,8 @@ export const updateDagsRepository: API.OperationMethod<
   UpdateDagsRepositoryError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(24, __c3, 0) as any as S.Schema<UpdateDagsRepositoryRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<Instance>,
+  input: __S(32, __c4, 0) as any as S.Schema<UpdateDagsRepositoryRequest>,
+  output: __S(92, __c11, 4) as any as S.Schema<Instance>,
   errors: [BadRequest, Forbidden, NotFound, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -663,8 +663,8 @@ export const updateIdentityProvider: API.OperationMethod<
   UpdateIdentityProviderError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(25, __c3, 1) as any as S.Schema<UpdateIdentityProviderRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<Instance>,
+  input: __S(40, __c5, 0) as any as S.Schema<UpdateIdentityProviderRequest>,
+  output: __S(92, __c11, 4) as any as S.Schema<Instance>,
   errors: [BadRequest, Forbidden, NotFound, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -678,8 +678,8 @@ export const updateInstance: API.OperationMethod<
   UpdateInstanceError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(26, __c3, 2) as any as S.Schema<UpdateInstanceRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<Instance>,
+  input: __S(48, __c6, 0) as any as S.Schema<UpdateInstanceRequest>,
+  output: __S(92, __c11, 4) as any as S.Schema<Instance>,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -693,8 +693,8 @@ export const updateObservability: API.OperationMethod<
   UpdateObservabilityError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(27, __c3, 3) as any as S.Schema<UpdateObservabilityRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<Instance>,
+  input: __S(56, __c7, 0) as any as S.Schema<UpdateObservabilityRequest>,
+  output: __S(92, __c11, 4) as any as S.Schema<Instance>,
   errors: [BadRequest, Forbidden, NotFound, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -704,165 +704,6 @@ export const updateObservability: API.OperationMethod<
 function __c0(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() =>
-        S.Struct({
-          projectId: S.String.pipe(T.Label()),
-          regionId: S.String.pipe(T.Label()),
-          instanceId: S.String.pipe(T.Label()),
-          body: S.Unknown.pipe(T.HttpBody()),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/v1alpha/projects/{projectId}/regions/{regionId}/instances/{instanceId}/dag-bundles",
-            code: 200,
-            baseUrl: "https://workflows.api.stackit.cloud",
-          }),
-        ),
-      ).annotate({ identifier: "CreateDagBundleRequest" });
-    case 1:
-      return S.suspend(() => S.Unknown.pipe(T.RawResponseRoot())).annotate({
-        identifier: "CreateDagBundleResponse",
-      });
-    case 2:
-      return S.Array(S.Unknown);
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          auth: S.Unknown,
-          branch: S.String,
-          url: S.String,
-        }),
-      ).annotate({ identifier: "GitRepository" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Network" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          projectId: S.String.pipe(T.Label()),
-          regionId: S.String.pipe(T.Label()),
-          dagBundles: S.optional(__S(2, __c0, 2)),
-          dagsRepository: S.optional(__S(3, __c0, 3)),
-          description: S.optional(S.String),
-          displayName: S.String,
-          enableAirflowExampleDags: S.optional(S.Boolean),
-          enableStackitExampleDags: S.optional(S.Boolean),
-          identityProvider: S.optional(S.Unknown),
-          network: S.optional(__S(4, __c0, 4)),
-          observabilityId: S.optional(S.String),
-          version: S.String,
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/v1alpha/projects/{projectId}/regions/{regionId}/instances",
-            code: 200,
-            baseUrl: "https://workflows.api.stackit.cloud",
-          }),
-        ),
-      ).annotate({ identifier: "CreateInstanceRequest" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          redirectUrl: S.String,
-          url: S.String,
-        }),
-      ).annotate({ identifier: "Endpoints" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          createdAt: S.String,
-          dagBundles: S.optional(__S(2, __c0, 2)),
-          dagsRepository: S.optional(__S(3, __c0, 3)),
-          description: S.optional(S.String),
-          displayName: S.String,
-          enableAirflowExampleDags: S.optional(S.Boolean),
-          enableStackitExampleDags: S.optional(S.Boolean),
-          endpoints: __S(6, __c0, 6),
-          id: S.String,
-          identityProvider: S.Unknown,
-          network: S.optional(__S(4, __c0, 4)),
-          observabilityId: S.optional(S.String),
-          projectId: S.String,
-          regionId: S.String,
-          status: S.String,
-          statusMessage: S.optional(S.String),
-          version: S.String,
-        }),
-      ).annotate({ identifier: "Instance" });
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          projectId: S.String.pipe(T.Label()),
-          regionId: S.String.pipe(T.Label()),
-          instanceId: S.String.pipe(T.Label()),
-          bundleName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/v1alpha/projects/{projectId}/regions/{regionId}/instances/{instanceId}/dag-bundles/{bundleName}",
-            code: 200,
-            baseUrl: "https://workflows.api.stackit.cloud",
-          }),
-        ),
-      ).annotate({ identifier: "DeleteDagBundleRequest" });
-    case 1:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "DeleteDagBundleResponse",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          projectId: S.String.pipe(T.Label()),
-          regionId: S.String.pipe(T.Label()),
-          instanceId: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/v1alpha/projects/{projectId}/regions/{regionId}/instances/{instanceId}",
-            code: 200,
-            baseUrl: "https://workflows.api.stackit.cloud",
-          }),
-        ),
-      ).annotate({ identifier: "DeleteInstanceRequest" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          projectId: S.String.pipe(T.Label()),
-          regionId: S.String.pipe(T.Label()),
-          instanceId: S.String.pipe(T.Label()),
-          bundleName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/v1alpha/projects/{projectId}/regions/{regionId}/instances/{instanceId}/dag-bundles/{bundleName}",
-            code: 200,
-            baseUrl: "https://workflows.api.stackit.cloud",
-          }),
-        ),
-      ).annotate({ identifier: "GetDagBundleRequest" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          projectId: S.String.pipe(T.Label()),
-          regionId: S.String.pipe(T.Label()),
-          instanceId: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/v1alpha/projects/{projectId}/regions/{regionId}/instances/{instanceId}",
-            code: 200,
-            baseUrl: "https://workflows.api.stackit.cloud",
-          }),
-        ),
-      ).annotate({ identifier: "GetInstanceRequest" });
-    case 5:
       return S.suspend(() =>
         S.Struct({
           regionId: S.String.pipe(T.Label()),
@@ -877,7 +718,7 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "GetProviderOptionsRequest",
       });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           expirationDate: S.optional(S.String),
@@ -885,19 +726,19 @@ function __c1(j: number): any {
           version: S.String,
         }),
       ).annotate({ identifier: "SupportedVersion" });
-    case 7:
-      return S.Array(__S(14, __c1, 6));
-  }
-}
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
+    case 2:
+      return S.Array(__S(1, __c0, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          versions: __S(15, __c1, 7),
+          versions: __S(2, __c0, 2),
         }),
       ).annotate({ identifier: "ProviderOptions" });
-    case 1:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.Label()),
@@ -912,17 +753,21 @@ function __c2(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ListDagBundlesRequest" });
-    case 2:
+    case 1:
       return S.Array(S.Unknown);
-    case 3:
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          dagBundles: __S(18, __c2, 2),
+          dagBundles: __S(9, __c1, 1),
         }),
       ).annotate({
         identifier: "ListDagBundlesResponseOutput",
       });
-    case 4:
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.Label()),
@@ -936,15 +781,19 @@ function __c2(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ListInstancesRequest" });
-    case 5:
-      return S.Array(__S(7, __c0, 7));
-    case 6:
+    case 1:
+      return S.Array(__S(92, __c11, 4));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          instances: __S(21, __c2, 5),
+          instances: __S(17, __c2, 1),
         }),
       ).annotate({ identifier: "ListInstancesResponse" });
-    case 7:
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.Label()),
@@ -963,7 +812,7 @@ function __c2(j: number): any {
       ).annotate({ identifier: "UpdateDagBundleRequest" });
   }
 }
-function __c3(j: number): any {
+function __c4(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -985,7 +834,11 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "UpdateDagsRepositoryRequest",
       });
-    case 1:
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.Label()),
@@ -1003,7 +856,11 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "UpdateIdentityProviderRequest",
       });
-    case 2:
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.Label()),
@@ -1023,7 +880,11 @@ function __c3(j: number): any {
           }),
         ),
       ).annotate({ identifier: "UpdateInstanceRequest" });
-    case 3:
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.Label()),
@@ -1043,7 +904,197 @@ function __c3(j: number): any {
       });
   }
 }
-
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          projectId: S.String.pipe(T.Label()),
+          regionId: S.String.pipe(T.Label()),
+          instanceId: S.String.pipe(T.Label()),
+          body: S.Unknown.pipe(T.HttpBody()),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/v1alpha/projects/{projectId}/regions/{regionId}/instances/{instanceId}/dag-bundles",
+            code: 200,
+            baseUrl: "https://workflows.api.stackit.cloud",
+          }),
+        ),
+      ).annotate({ identifier: "CreateDagBundleRequest" });
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Unknown.pipe(T.RawResponseRoot())).annotate({
+        identifier: "CreateDagBundleResponse",
+      });
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          projectId: S.String.pipe(T.Label()),
+          regionId: S.String.pipe(T.Label()),
+          dagBundles: S.optional(__S(88, __c11, 0)),
+          dagsRepository: S.optional(__S(89, __c11, 1)),
+          description: S.optional(S.String),
+          displayName: S.String,
+          enableAirflowExampleDags: S.optional(S.Boolean),
+          enableStackitExampleDags: S.optional(S.Boolean),
+          identityProvider: S.optional(S.Unknown),
+          network: S.optional(__S(90, __c11, 2)),
+          observabilityId: S.optional(S.String),
+          version: S.String,
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/v1alpha/projects/{projectId}/regions/{regionId}/instances",
+            code: 200,
+            baseUrl: "https://workflows.api.stackit.cloud",
+          }),
+        ),
+      ).annotate({ identifier: "CreateInstanceRequest" });
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.Unknown);
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          auth: S.Unknown,
+          branch: S.String,
+          url: S.String,
+        }),
+      ).annotate({ identifier: "GitRepository" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Network" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          redirectUrl: S.String,
+          url: S.String,
+        }),
+      ).annotate({ identifier: "Endpoints" });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          createdAt: S.String,
+          dagBundles: S.optional(__S(88, __c11, 0)),
+          dagsRepository: S.optional(__S(89, __c11, 1)),
+          description: S.optional(S.String),
+          displayName: S.String,
+          enableAirflowExampleDags: S.optional(S.Boolean),
+          enableStackitExampleDags: S.optional(S.Boolean),
+          endpoints: __S(91, __c11, 3),
+          id: S.String,
+          identityProvider: S.Unknown,
+          network: S.optional(__S(90, __c11, 2)),
+          observabilityId: S.optional(S.String),
+          projectId: S.String,
+          regionId: S.String,
+          status: S.String,
+          statusMessage: S.optional(S.String),
+          version: S.String,
+        }),
+      ).annotate({ identifier: "Instance" });
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          projectId: S.String.pipe(T.Label()),
+          regionId: S.String.pipe(T.Label()),
+          instanceId: S.String.pipe(T.Label()),
+          bundleName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/v1alpha/projects/{projectId}/regions/{regionId}/instances/{instanceId}/dag-bundles/{bundleName}",
+            code: 200,
+            baseUrl: "https://workflows.api.stackit.cloud",
+          }),
+        ),
+      ).annotate({ identifier: "DeleteDagBundleRequest" });
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "DeleteDagBundleResponse",
+      });
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          projectId: S.String.pipe(T.Label()),
+          regionId: S.String.pipe(T.Label()),
+          instanceId: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/v1alpha/projects/{projectId}/regions/{regionId}/instances/{instanceId}",
+            code: 200,
+            baseUrl: "https://workflows.api.stackit.cloud",
+          }),
+        ),
+      ).annotate({ identifier: "DeleteInstanceRequest" });
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          projectId: S.String.pipe(T.Label()),
+          regionId: S.String.pipe(T.Label()),
+          instanceId: S.String.pipe(T.Label()),
+          bundleName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/v1alpha/projects/{projectId}/regions/{regionId}/instances/{instanceId}/dag-bundles/{bundleName}",
+            code: 200,
+            baseUrl: "https://workflows.api.stackit.cloud",
+          }),
+        ),
+      ).annotate({ identifier: "GetDagBundleRequest" });
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          projectId: S.String.pipe(T.Label()),
+          regionId: S.String.pipe(T.Label()),
+          instanceId: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/v1alpha/projects/{projectId}/regions/{regionId}/instances/{instanceId}",
+            code: 200,
+            baseUrl: "https://workflows.api.stackit.cloud",
+          }),
+        ),
+      ).annotate({ identifier: "GetInstanceRequest" });
+  }
+}
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

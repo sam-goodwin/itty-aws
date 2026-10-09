@@ -549,7 +549,7 @@ export const approveKernelAccess: API.OperationMethod<
   HuggingFaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(0, __c0, 0) as any as S.Schema<ApproveKernelAccessRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<ApproveKernelAccessResponse>,
+  output: __S(16, __c1, 0) as any as S.Schema<ApproveKernelAccessResponse>,
   errors: [],
   protocol: HuggingFaceProtocol,
   retry: Retry.Retry,
@@ -563,8 +563,8 @@ export const duplicateXetFiles: API.OperationMethod<
   DuplicateXetFilesError,
   HuggingFaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(5, __c0, 5) as any as S.Schema<DuplicateXetFilesRequest>,
-  output: __S(8, __c1, 0) as any as S.Schema<DuplicateXetFilesResponse>,
+  input: __S(35, __c2, 3) as any as S.Schema<DuplicateXetFilesRequest>,
+  output: __S(38, __c2, 6) as any as S.Schema<DuplicateXetFilesResponse>,
   errors: [],
   protocol: HuggingFaceProtocol,
   retry: Retry.Retry,
@@ -578,8 +578,8 @@ export const getKernel: API.OperationMethod<
   GetKernelError,
   HuggingFaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(9, __c1, 1) as any as S.Schema<GetKernelRequest>,
-  output: __S(13, __c1, 5) as any as S.Schema<GetKernelResponse>,
+  input: __S(48, __c3, 0) as any as S.Schema<GetKernelRequest>,
+  output: __S(49, __c3, 1) as any as S.Schema<GetKernelResponse>,
   errors: [],
   protocol: HuggingFaceProtocol,
   retry: Retry.Retry,
@@ -593,8 +593,8 @@ export const getKernelRevision: API.OperationMethod<
   GetKernelRevisionError,
   HuggingFaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(14, __c1, 6) as any as S.Schema<GetKernelRevisionRequest>,
-  output: __S(15, __c1, 7) as any as S.Schema<GetKernelRevisionResponse>,
+  input: __S(96, __c6, 0) as any as S.Schema<GetKernelRevisionRequest>,
+  output: __S(97, __c6, 1) as any as S.Schema<GetKernelRevisionResponse>,
   errors: [],
   protocol: HuggingFaceProtocol,
   retry: Retry.Retry,
@@ -608,8 +608,8 @@ export const getSecurityStatus: API.OperationMethod<
   GetSecurityStatusError,
   HuggingFaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(16, __c2, 0) as any as S.Schema<GetSecurityStatusRequest>,
-  output: __S(19, __c2, 3) as any as S.Schema<GetSecurityStatusResponse>,
+  input: __S(112, __c7, 0) as any as S.Schema<GetSecurityStatusRequest>,
+  output: __S(115, __c7, 3) as any as S.Schema<GetSecurityStatusResponse>,
   errors: [],
   protocol: HuggingFaceProtocol,
   retry: Retry.Retry,
@@ -623,8 +623,8 @@ export const listKernels: API.OperationMethod<
   ListKernelsError,
   HuggingFaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(20, __c2, 4) as any as S.Schema<ListKernelsRequest>,
-  output: __S(30, __c3, 6) as any as S.Schema<ListKernelsResponse>,
+  input: __S(128, __c8, 0) as any as S.Schema<ListKernelsRequest>,
+  output: __S(138, __c8, 10) as any as S.Schema<ListKernelsResponse>,
   errors: [],
   protocol: HuggingFaceProtocol,
   retry: Retry.Retry,
@@ -638,8 +638,8 @@ export const listLikers: API.OperationMethod<
   ListLikersError,
   HuggingFaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(31, __c3, 7) as any as S.Schema<ListLikersRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<ListLikersResponse>,
+  input: __S(144, __c9, 0) as any as S.Schema<ListLikersRequest>,
+  output: __S(16, __c1, 0) as any as S.Schema<ListLikersResponse>,
   errors: [],
   protocol: HuggingFaceProtocol,
   retry: Retry.Retry,
@@ -657,11 +657,19 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "ApproveKernelAccessRequest",
       });
-    case 1:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "ApproveKernelAccessResponse",
       });
-    case 2:
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           type: S.String,
@@ -670,7 +678,7 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "DuplicateXetFilesRequestTarget",
       });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           xetHash: S.String,
@@ -680,15 +688,15 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "DuplicateXetFilesRequestFilesItem",
       });
-    case 4:
-      return S.Array(__S(3, __c0, 3));
-    case 5:
+    case 2:
+      return S.Array(__S(33, __c2, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
           namespace: S.String.pipe(T.Label()),
           repo: S.String.pipe(T.Label()),
-          target: __S(2, __c0, 2),
-          files: __S(4, __c0, 4),
+          target: __S(32, __c2, 0),
+          files: __S(34, __c2, 2),
         }).pipe(
           T.Http({
             method: "POST",
@@ -697,7 +705,7 @@ function __c0(j: number): any {
           }),
         ),
       ).annotate({ identifier: "DuplicateXetFilesRequest" });
-    case 6:
+    case 4:
       return S.suspend(() =>
         S.Struct({
           xetHash: S.String,
@@ -707,45 +715,31 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "DuplicateXetFilesResponseFailedItem",
       });
-    case 7:
-      return S.Array(__S(6, __c0, 6));
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
+    case 5:
+      return S.Array(__S(36, __c2, 4));
+    case 6:
       return S.suspend(() =>
         S.Struct({
           success: S.Boolean,
           processed: S.Number,
           succeeded: S.Number,
-          failed: __S(7, __c0, 7),
+          failed: __S(37, __c2, 5),
         }),
       ).annotate({
         identifier: "DuplicateXetFilesResponse",
       });
-    case 1:
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           namespace: S.String.pipe(T.Label()),
           repo: S.String.pipe(T.Label()),
         }).pipe(T.Http({ method: "GET", uri: "/api/kernels/{namespace}/{repo}", code: 200 })),
       ).annotate({ identifier: "GetKernelRequest" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String,
-          name: S.String,
-          numUsers: S.optional(S.Number),
-        }),
-      ).annotate({
-        identifier: "GetKernelResponseResourceGroup",
-      });
-    case 3:
-      return S.Array(S.String);
-    case 4:
-      return S.Array(S.String);
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           _id: S.String,
@@ -759,14 +753,40 @@ function __c1(j: number): any {
           repoType: S.String,
           sha: S.String,
           gated: S.Unknown,
-          resourceGroup: S.optional(__S(10, __c1, 2)),
+          resourceGroup: S.optional(__S(64, __c4, 0)),
           authorData: S.optional(S.Unknown),
-          files: S.optional(__S(11, __c1, 3)),
-          supportedDriverFamilies: S.optional(__S(12, __c1, 4)),
+          files: S.optional(__S(65, __c4, 1)),
+          supportedDriverFamilies: S.optional(__S(80, __c5, 0)),
           trustedPublisher: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "GetKernelResponse" });
-    case 6:
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          name: S.String,
+          numUsers: S.optional(S.Number),
+        }),
+      ).annotate({
+        identifier: "GetKernelResponseResourceGroup",
+      });
+    case 1:
+      return S.Array(S.String);
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           namespace: S.String.pipe(T.Label()),
@@ -780,7 +800,7 @@ function __c1(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetKernelRevisionRequest" });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           _id: S.String,
@@ -794,10 +814,10 @@ function __c1(j: number): any {
           repoType: S.String,
           sha: S.String,
           gated: S.Unknown,
-          resourceGroup: S.optional(__S(10, __c1, 2)),
+          resourceGroup: S.optional(__S(64, __c4, 0)),
           authorData: S.optional(S.Unknown),
-          files: S.optional(__S(11, __c1, 3)),
-          supportedDriverFamilies: S.optional(__S(12, __c1, 4)),
+          files: S.optional(__S(65, __c4, 1)),
+          supportedDriverFamilies: S.optional(__S(80, __c5, 0)),
           trustedPublisher: S.optional(S.Boolean),
         }),
       ).annotate({
@@ -805,7 +825,7 @@ function __c1(j: number): any {
       });
   }
 }
-function __c2(j: number): any {
+function __c7(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -824,17 +844,21 @@ function __c2(j: number): any {
         identifier: "GetSecurityStatusResponseFilesWithIssuesItem",
       });
     case 2:
-      return S.Array(__S(17, __c2, 1));
+      return S.Array(__S(113, __c7, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
           scansDone: S.Boolean,
-          filesWithIssues: __S(18, __c2, 2),
+          filesWithIssues: __S(114, __c7, 2),
         }),
       ).annotate({
         identifier: "GetSecurityStatusResponse",
       });
-    case 4:
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           search: S.optional(S.String.pipe(T.Query())),
@@ -851,37 +875,33 @@ function __c2(j: number): any {
           expand: S.optional(S.Unknown.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/api/kernels", code: 200 })),
       ).annotate({ identifier: "ListKernelsRequest" });
-    case 5:
+    case 1:
       return S.Record(S.String, S.Unknown);
-    case 6:
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          torch: __S(12, __c1, 4),
-          os: __S(12, __c1, 4),
-          arch: __S(12, __c1, 4),
+          torch: __S(80, __c5, 0),
+          os: __S(80, __c5, 0),
+          arch: __S(80, __c5, 0),
         }),
       ).annotate({
         identifier: "ListKernelsResponseBodyItemBuildMetadataCompatibility",
       });
-    case 7:
+    case 3:
       return S.Array(S.String);
-  }
-}
-function __c3(j: number): any {
-  switch (j) {
-    case 0:
+    case 4:
       return S.suspend(() =>
         S.Struct({
           type: S.String,
-          hardwareTypes: __S(23, __c2, 7),
+          hardwareTypes: __S(131, __c8, 3),
           noArchs: S.optional(S.Boolean),
         }),
       ).annotate({
         identifier: "ListKernelsResponseBodyItemBuildMetadataBackendsItem",
       });
-    case 1:
-      return S.Array(__S(24, __c3, 0));
-    case 2:
+    case 5:
+      return S.Array(__S(132, __c8, 4));
+    case 6:
       return S.suspend(() =>
         S.Struct({
           version: S.String,
@@ -891,24 +911,24 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "ListKernelsResponseBodyItemBuildMetadataBuilder",
       });
-    case 3:
+    case 7:
       return S.suspend(() =>
         S.Struct({
-          compatibility: S.optional(__S(22, __c2, 6)),
-          backends: __S(25, __c3, 1),
-          builder: S.optional(__S(26, __c3, 2)),
+          compatibility: S.optional(__S(130, __c8, 2)),
+          backends: __S(133, __c8, 5),
+          builder: S.optional(__S(134, __c8, 6)),
         }),
       ).annotate({
         identifier: "ListKernelsResponseBodyItemBuildMetadata",
       });
-    case 4:
+    case 8:
       return S.suspend(() =>
         S.Struct({
           _id: S.String,
           id: S.String,
           author: S.optional(S.String),
           private: S.optional(S.Boolean),
-          cardData: S.optional(__S(21, __c2, 5)),
+          cardData: S.optional(__S(129, __c8, 1)),
           disabled: S.optional(S.Boolean),
           downloads: S.optional(S.Number),
           downloadsAllTime: S.optional(S.Number),
@@ -917,35 +937,38 @@ function __c3(j: number): any {
           createdAt: S.optional(S.String),
           likes: S.optional(S.Number),
           sha: S.optional(S.String),
-          files: S.optional(__S(11, __c1, 3)),
-          tags: S.optional(__S(11, __c1, 3)),
+          files: S.optional(__S(65, __c4, 1)),
+          tags: S.optional(__S(65, __c4, 1)),
           trendingScore: S.optional(S.Number),
-          buildMetadata: S.optional(__S(27, __c3, 3)),
-          supportedDriverFamilies: S.optional(__S(12, __c1, 4)),
-          resourceGroup: S.optional(__S(10, __c1, 2)),
+          buildMetadata: S.optional(__S(135, __c8, 7)),
+          supportedDriverFamilies: S.optional(__S(80, __c5, 0)),
+          resourceGroup: S.optional(__S(64, __c4, 0)),
         }),
       ).annotate({
         identifier: "ListKernelsResponseBodyItem",
       });
-    case 5:
-      return S.Array(__S(28, __c3, 4));
-    case 6:
-      return S.suspend(() => __S(29, __c3, 5).pipe(T.RawResponseRoot())).annotate({
+    case 9:
+      return S.Array(__S(136, __c8, 8));
+    case 10:
+      return S.suspend(() => __S(137, __c8, 9).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListKernelsResponse",
       });
-    case 7:
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           namespace: S.String.pipe(T.Label()),
           repo: S.String.pipe(T.Label()),
-          expand: S.optional(__S(12, __c1, 4).pipe(T.Query())),
+          expand: S.optional(__S(80, __c5, 0).pipe(T.Query())),
         }).pipe(
           T.Http({ method: "GET", uri: "/api/kernels/{namespace}/{repo}/likers", code: 200 }),
         ),
       ).annotate({ identifier: "ListLikersRequest" });
   }
 }
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

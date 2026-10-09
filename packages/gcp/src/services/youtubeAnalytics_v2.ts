@@ -283,8 +283,8 @@ export const deleteGroupItems: API.OperationMethod<
   DeleteGroupItemsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(0, __c0, 0) as any as S.Schema<DeleteGroupItemsRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<EmptyResponse>,
+  input: __S(16, __c2, 0) as any as S.Schema<DeleteGroupItemsRequest>,
+  output: __S(24, __c3, 0) as any as S.Schema<EmptyResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -298,8 +298,8 @@ export const deleteGroups: API.OperationMethod<
   DeleteGroupsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(6, __c0, 6) as any as S.Schema<DeleteGroupsRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<EmptyResponse>,
+  input: __S(40, __c5, 0) as any as S.Schema<DeleteGroupsRequest>,
+  output: __S(24, __c3, 0) as any as S.Schema<EmptyResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -313,8 +313,8 @@ export const insertGroupItems: API.OperationMethod<
   InsertGroupItemsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(9, __c1, 1) as any as S.Schema<InsertGroupItemsRequest>,
-  output: __S(8, __c1, 0) as any as S.Schema<GroupItem>,
+  input: __S(48, __c6, 0) as any as S.Schema<InsertGroupItemsRequest>,
+  output: __S(57, __c7, 1) as any as S.Schema<GroupItem>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -328,8 +328,8 @@ export const insertGroups: API.OperationMethod<
   InsertGroupsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(13, __c1, 5) as any as S.Schema<InsertGroupsRequest>,
-  output: __S(12, __c1, 4) as any as S.Schema<Group>,
+  input: __S(64, __c8, 0) as any as S.Schema<InsertGroupsRequest>,
+  output: __S(74, __c9, 2) as any as S.Schema<Group>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -343,8 +343,8 @@ export const listGroupItems: API.OperationMethod<
   ListGroupItemsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(14, __c1, 6) as any as S.Schema<ListGroupItemsRequest>,
-  output: __S(16, __c2, 0) as any as S.Schema<ListGroupItemsResponse>,
+  input: __S(80, __c10, 0) as any as S.Schema<ListGroupItemsRequest>,
+  output: __S(82, __c10, 2) as any as S.Schema<ListGroupItemsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -359,8 +359,8 @@ export const listGroups: API.PaginatedOperationMethod<
   GcpOpContext,
   Group
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(17, __c2, 1) as any as S.Schema<ListGroupsRequest>,
-  output: __S(19, __c2, 3) as any as S.Schema<ListGroupsResponse>,
+  input: __S(88, __c11, 0) as any as S.Schema<ListGroupsRequest>,
+  output: __S(90, __c11, 2) as any as S.Schema<ListGroupsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -375,8 +375,8 @@ export const queryReports: API.OperationMethod<
   QueryReportsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(20, __c2, 4) as any as S.Schema<QueryReportsRequest>,
-  output: __S(25, __c3, 1) as any as S.Schema<QueryResponse>,
+  input: __S(0, __c0, 0) as any as S.Schema<QueryReportsRequest>,
+  output: __S(5, __c0, 5) as any as S.Schema<QueryResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -390,8 +390,8 @@ export const updateGroups: API.OperationMethod<
   UpdateGroupsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(26, __c3, 2) as any as S.Schema<UpdateGroupsRequest>,
-  output: __S(12, __c1, 4) as any as S.Schema<Group>,
+  input: __S(8, __c1, 0) as any as S.Schema<UpdateGroupsRequest>,
+  output: __S(74, __c9, 2) as any as S.Schema<Group>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -401,190 +401,6 @@ export const updateGroups: API.OperationMethod<
 function __c0(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String.pipe(T.Query())),
-          onBehalfOfContentOwner: S.optional(S.String.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "v2/groupItems",
-            baseUrl: "https://youtubeanalytics.googleapis.com/",
-          }),
-        ),
-      ).annotate({ identifier: "DeleteGroupItemsRequest" });
-    case 1:
-      return S.Array(S.String);
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          argument: S.optional(__S(1, __c0, 1)),
-          code: S.optional(S.String),
-          externalErrorMessage: S.optional(S.String),
-          debugInfo: S.optional(S.String),
-          location: S.optional(S.String),
-          domain: S.optional(S.String),
-          locationType: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ErrorProto" });
-    case 3:
-      return S.Array(__S(2, __c0, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          code: S.optional(S.String),
-          requestId: S.optional(S.String),
-          error: S.optional(__S(3, __c0, 3)),
-        }),
-      ).annotate({ identifier: "Errors" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          errors: S.optional(__S(4, __c0, 4)),
-        }),
-      ).annotate({ identifier: "EmptyResponse" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          onBehalfOfContentOwner: S.optional(S.String.pipe(T.Query())),
-          id: S.optional(S.String.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "v2/groups",
-            baseUrl: "https://youtubeanalytics.googleapis.com/",
-          }),
-        ),
-      ).annotate({ identifier: "DeleteGroupsRequest" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          kind: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "GroupItemResource" });
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          etag: S.optional(S.String),
-          errors: S.optional(__S(4, __c0, 4)),
-          kind: S.optional(S.String),
-          resource: S.optional(__S(7, __c0, 7)),
-          groupId: S.optional(S.String),
-          id: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "GroupItem" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          onBehalfOfContentOwner: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(8, __c1, 0).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v2/groupItems",
-            baseUrl: "https://youtubeanalytics.googleapis.com/",
-          }),
-        ),
-      ).annotate({ identifier: "InsertGroupItemsRequest" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          title: S.optional(S.String),
-          publishedAt: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "GroupSnippet" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          itemType: S.optional(S.String),
-          itemCount: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "GroupContentDetails" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          snippet: S.optional(__S(10, __c1, 2)),
-          kind: S.optional(S.String),
-          contentDetails: S.optional(__S(11, __c1, 3)),
-          etag: S.optional(S.String),
-          id: S.optional(S.String),
-          errors: S.optional(__S(4, __c0, 4)),
-        }),
-      ).annotate({ identifier: "Group" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          onBehalfOfContentOwner: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(12, __c1, 4).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v2/groups",
-            baseUrl: "https://youtubeanalytics.googleapis.com/",
-          }),
-        ),
-      ).annotate({ identifier: "InsertGroupsRequest" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          groupId: S.optional(S.String.pipe(T.Query())),
-          onBehalfOfContentOwner: S.optional(S.String.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v2/groupItems",
-            baseUrl: "https://youtubeanalytics.googleapis.com/",
-          }),
-        ),
-      ).annotate({ identifier: "ListGroupItemsRequest" });
-    case 7:
-      return S.Array(__S(8, __c1, 0));
-  }
-}
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          items: S.optional(__S(15, __c1, 7)),
-          kind: S.optional(S.String),
-          etag: S.optional(S.String),
-          errors: S.optional(__S(4, __c0, 4)),
-        }),
-      ).annotate({ identifier: "ListGroupItemsResponse" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          onBehalfOfContentOwner: S.optional(S.String.pipe(T.Query())),
-          pageToken: S.optional(S.String.pipe(T.Query())),
-          mine: S.optional(S.Boolean.pipe(T.Query())),
-          id: S.optional(S.String.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v2/groups",
-            baseUrl: "https://youtubeanalytics.googleapis.com/",
-          }),
-        ),
-      ).annotate({ identifier: "ListGroupsRequest" });
-    case 2:
-      return S.Array(__S(12, __c1, 4));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          items: __S(18, __c2, 2),
-          etag: S.optional(S.String),
-          errors: S.optional(__S(4, __c0, 4)),
-          nextPageToken: S.optional(S.String),
-          kind: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ListGroupsResponse" });
-    case 4:
       return S.suspend(() =>
         S.Struct({
           currency: S.optional(S.String.pipe(T.Query())),
@@ -606,7 +422,7 @@ function __c2(j: number): any {
           }),
         ),
       ).annotate({ identifier: "QueryReportsRequest" });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
@@ -614,30 +430,30 @@ function __c2(j: number): any {
           dataType: S.optional(S.String),
         }),
       ).annotate({ identifier: "ResultTableColumnHeader" });
-    case 6:
-      return S.Array(__S(21, __c2, 5));
-    case 7:
+    case 2:
+      return S.Array(__S(1, __c0, 1));
+    case 3:
       return S.Array(S.Unknown);
-  }
-}
-function __c3(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(23, __c2, 7));
-    case 1:
+    case 4:
+      return S.Array(__S(3, __c0, 3));
+    case 5:
       return S.suspend(() =>
         S.Struct({
-          columnHeaders: S.optional(__S(22, __c2, 6)),
-          rows: S.optional(__S(24, __c3, 0)),
-          errors: S.optional(__S(4, __c0, 4)),
+          columnHeaders: S.optional(__S(2, __c0, 2)),
+          rows: S.optional(__S(4, __c0, 4)),
+          errors: S.optional(__S(35, __c4, 3)),
           kind: S.optional(S.String),
         }),
       ).annotate({ identifier: "QueryResponse" });
-    case 2:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           onBehalfOfContentOwner: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(12, __c1, 4).pipe(T.HttpBody())),
+          body: S.optional(__S(74, __c9, 2).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -648,7 +464,222 @@ function __c3(j: number): any {
       ).annotate({ identifier: "UpdateGroupsRequest" });
   }
 }
-
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String.pipe(T.Query())),
+          onBehalfOfContentOwner: S.optional(S.String.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "v2/groupItems",
+            baseUrl: "https://youtubeanalytics.googleapis.com/",
+          }),
+        ),
+      ).annotate({ identifier: "DeleteGroupItemsRequest" });
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          errors: S.optional(__S(35, __c4, 3)),
+        }),
+      ).annotate({ identifier: "EmptyResponse" });
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          argument: S.optional(__S(32, __c4, 0)),
+          code: S.optional(S.String),
+          externalErrorMessage: S.optional(S.String),
+          debugInfo: S.optional(S.String),
+          location: S.optional(S.String),
+          domain: S.optional(S.String),
+          locationType: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ErrorProto" });
+    case 2:
+      return S.Array(__S(33, __c4, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          code: S.optional(S.String),
+          requestId: S.optional(S.String),
+          error: S.optional(__S(34, __c4, 2)),
+        }),
+      ).annotate({ identifier: "Errors" });
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          onBehalfOfContentOwner: S.optional(S.String.pipe(T.Query())),
+          id: S.optional(S.String.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "v2/groups",
+            baseUrl: "https://youtubeanalytics.googleapis.com/",
+          }),
+        ),
+      ).annotate({ identifier: "DeleteGroupsRequest" });
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          onBehalfOfContentOwner: S.optional(S.String.pipe(T.Query())),
+          body: S.optional(__S(57, __c7, 1).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v2/groupItems",
+            baseUrl: "https://youtubeanalytics.googleapis.com/",
+          }),
+        ),
+      ).annotate({ identifier: "InsertGroupItemsRequest" });
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          kind: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "GroupItemResource" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          etag: S.optional(S.String),
+          errors: S.optional(__S(35, __c4, 3)),
+          kind: S.optional(S.String),
+          resource: S.optional(__S(56, __c7, 0)),
+          groupId: S.optional(S.String),
+          id: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "GroupItem" });
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          onBehalfOfContentOwner: S.optional(S.String.pipe(T.Query())),
+          body: S.optional(__S(74, __c9, 2).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v2/groups",
+            baseUrl: "https://youtubeanalytics.googleapis.com/",
+          }),
+        ),
+      ).annotate({ identifier: "InsertGroupsRequest" });
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          title: S.optional(S.String),
+          publishedAt: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "GroupSnippet" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          itemType: S.optional(S.String),
+          itemCount: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "GroupContentDetails" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          snippet: S.optional(__S(72, __c9, 0)),
+          kind: S.optional(S.String),
+          contentDetails: S.optional(__S(73, __c9, 1)),
+          etag: S.optional(S.String),
+          id: S.optional(S.String),
+          errors: S.optional(__S(35, __c4, 3)),
+        }),
+      ).annotate({ identifier: "Group" });
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          groupId: S.optional(S.String.pipe(T.Query())),
+          onBehalfOfContentOwner: S.optional(S.String.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v2/groupItems",
+            baseUrl: "https://youtubeanalytics.googleapis.com/",
+          }),
+        ),
+      ).annotate({ identifier: "ListGroupItemsRequest" });
+    case 1:
+      return S.Array(__S(57, __c7, 1));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          items: S.optional(__S(81, __c10, 1)),
+          kind: S.optional(S.String),
+          etag: S.optional(S.String),
+          errors: S.optional(__S(35, __c4, 3)),
+        }),
+      ).annotate({ identifier: "ListGroupItemsResponse" });
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          onBehalfOfContentOwner: S.optional(S.String.pipe(T.Query())),
+          pageToken: S.optional(S.String.pipe(T.Query())),
+          mine: S.optional(S.Boolean.pipe(T.Query())),
+          id: S.optional(S.String.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v2/groups",
+            baseUrl: "https://youtubeanalytics.googleapis.com/",
+          }),
+        ),
+      ).annotate({ identifier: "ListGroupsRequest" });
+    case 1:
+      return S.Array(__S(74, __c9, 2));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          items: __S(89, __c11, 1),
+          etag: S.optional(S.String),
+          errors: S.optional(__S(35, __c4, 3)),
+          nextPageToken: S.optional(S.String),
+          kind: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ListGroupsResponse" });
+  }
+}
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

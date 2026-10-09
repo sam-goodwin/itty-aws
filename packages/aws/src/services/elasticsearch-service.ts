@@ -1403,7 +1403,7 @@ export const acceptInboundCrossClusterSearchConnection: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(0, __c0, 0) as any as S.Schema<AcceptInboundCrossClusterSearchConnectionRequest>,
-  output: __S(4, __c0, 4) as any as S.Schema<AcceptInboundCrossClusterSearchConnectionResponse>,
+  output: __S(96, __c3, 0) as any as S.Schema<AcceptInboundCrossClusterSearchConnectionResponse>,
   errors: [DisabledOperationException, LimitExceededException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1426,8 +1426,8 @@ export const addTags: API.OperationMethod<
   AddTagsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(7, __c0, 7) as any as S.Schema<AddTagsRequest>,
-  output: __S(8, __c1, 0) as any as S.Schema<AddTagsResponse>,
+  input: __S(128, __c4, 0) as any as S.Schema<AddTagsRequest>,
+  output: __S(192, __c6, 0) as any as S.Schema<AddTagsResponse>,
   errors: [BaseException, InternalException, LimitExceededException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1451,8 +1451,8 @@ export const associatePackage: API.OperationMethod<
   AssociatePackageError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(9, __c1, 1) as any as S.Schema<AssociatePackageRequest>,
-  output: __S(12, __c1, 4) as any as S.Schema<AssociatePackageResponse>,
+  input: __S(224, __c7, 0) as any as S.Schema<AssociatePackageRequest>,
+  output: __S(225, __c7, 1) as any as S.Schema<AssociatePackageResponse>,
   errors: [
     AccessDeniedException,
     BaseException,
@@ -1483,8 +1483,8 @@ export const authorizeVpcEndpointAccess: API.OperationMethod<
   AuthorizeVpcEndpointAccessError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(13, __c1, 5) as any as S.Schema<AuthorizeVpcEndpointAccessRequest>,
-  output: __S(15, __c1, 7) as any as S.Schema<AuthorizeVpcEndpointAccessResponse>,
+  input: __S(320, __c10, 0) as any as S.Schema<AuthorizeVpcEndpointAccessRequest>,
+  output: __S(321, __c10, 1) as any as S.Schema<AuthorizeVpcEndpointAccessResponse>,
   errors: [
     BaseException,
     DisabledOperationException,
@@ -1514,8 +1514,8 @@ export const cancelDomainConfigChange: API.OperationMethod<
   CancelDomainConfigChangeError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(16, __c2, 0) as any as S.Schema<CancelDomainConfigChangeRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<CancelDomainConfigChangeResponse>,
+  input: __S(384, __c12, 0) as any as S.Schema<CancelDomainConfigChangeRequest>,
+  output: __S(387, __c12, 3) as any as S.Schema<CancelDomainConfigChangeResponse>,
   errors: [
     BaseException,
     DisabledOperationException,
@@ -1543,8 +1543,8 @@ export const cancelElasticsearchServiceSoftwareUpdate: API.OperationMethod<
   CancelElasticsearchServiceSoftwareUpdateError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(21, __c2, 5) as any as S.Schema<CancelElasticsearchServiceSoftwareUpdateRequest>,
-  output: __S(23, __c2, 7) as any as S.Schema<CancelElasticsearchServiceSoftwareUpdateResponse>,
+  input: __S(448, __c14, 0) as any as S.Schema<CancelElasticsearchServiceSoftwareUpdateRequest>,
+  output: __S(512, __c16, 0) as any as S.Schema<CancelElasticsearchServiceSoftwareUpdateResponse>,
   errors: [BaseException, InternalException, ResourceNotFoundException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1570,8 +1570,8 @@ export const createElasticsearchDomain: API.OperationMethod<
   CreateElasticsearchDomainError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(47, __c5, 7) as any as S.Schema<CreateElasticsearchDomainRequest>,
-  output: __S(57, __c7, 1) as any as S.Schema<CreateElasticsearchDomainResponse>,
+  input: __S(545, __c17, 1) as any as S.Schema<CreateElasticsearchDomainRequest>,
+  output: __S(640, __c20, 0) as any as S.Schema<CreateElasticsearchDomainResponse>,
   errors: [
     BaseException,
     DisabledOperationException,
@@ -1601,8 +1601,8 @@ export const createOutboundCrossClusterSearchConnection: API.OperationMethod<
   CreateOutboundCrossClusterSearchConnectionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(58, __c7, 2) as any as S.Schema<CreateOutboundCrossClusterSearchConnectionRequest>,
-  output: __S(59, __c7, 3) as any as S.Schema<CreateOutboundCrossClusterSearchConnectionResponse>,
+  input: __S(832, __c26, 0) as any as S.Schema<CreateOutboundCrossClusterSearchConnectionRequest>,
+  output: __S(833, __c26, 1) as any as S.Schema<CreateOutboundCrossClusterSearchConnectionResponse>,
   errors: [
     DisabledOperationException,
     InternalException,
@@ -1632,8 +1632,8 @@ export const createPackage: API.OperationMethod<
   CreatePackageError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(61, __c7, 5) as any as S.Schema<CreatePackageRequest>,
-  output: __S(63, __c7, 7) as any as S.Schema<CreatePackageResponse>,
+  input: __S(864, __c27, 0) as any as S.Schema<CreatePackageRequest>,
+  output: __S(928, __c29, 0) as any as S.Schema<CreatePackageResponse>,
   errors: [
     AccessDeniedException,
     BaseException,
@@ -1665,8 +1665,8 @@ export const createVpcEndpoint: API.OperationMethod<
   CreateVpcEndpointError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(64, __c8, 0) as any as S.Schema<CreateVpcEndpointRequest>,
-  output: __S(66, __c8, 2) as any as S.Schema<CreateVpcEndpointResponse>,
+  input: __S(992, __c31, 0) as any as S.Schema<CreateVpcEndpointRequest>,
+  output: __S(1056, __c33, 0) as any as S.Schema<CreateVpcEndpointResponse>,
   errors: [
     BaseException,
     ConflictException,
@@ -1695,8 +1695,8 @@ export const deleteElasticsearchDomain: API.OperationMethod<
   DeleteElasticsearchDomainError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(67, __c8, 3) as any as S.Schema<DeleteElasticsearchDomainRequest>,
-  output: __S(57, __c7, 1) as any as S.Schema<DeleteElasticsearchDomainResponse>,
+  input: __S(1088, __c34, 0) as any as S.Schema<DeleteElasticsearchDomainRequest>,
+  output: __S(640, __c20, 0) as any as S.Schema<DeleteElasticsearchDomainResponse>,
   errors: [BaseException, InternalException, ResourceNotFoundException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1717,8 +1717,8 @@ export const deleteElasticsearchServiceRole: API.OperationMethod<
   DeleteElasticsearchServiceRoleError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(68, __c8, 4) as any as S.Schema<DeleteElasticsearchServiceRoleRequest>,
-  output: __S(69, __c8, 5) as any as S.Schema<DeleteElasticsearchServiceRoleResponse>,
+  input: __S(1120, __c35, 0) as any as S.Schema<DeleteElasticsearchServiceRoleRequest>,
+  output: __S(1152, __c36, 0) as any as S.Schema<DeleteElasticsearchServiceRoleResponse>,
   errors: [BaseException, InternalException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1738,8 +1738,8 @@ export const deleteInboundCrossClusterSearchConnection: API.OperationMethod<
   DeleteInboundCrossClusterSearchConnectionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(70, __c8, 6) as any as S.Schema<DeleteInboundCrossClusterSearchConnectionRequest>,
-  output: __S(4, __c0, 4) as any as S.Schema<DeleteInboundCrossClusterSearchConnectionResponse>,
+  input: __S(1184, __c37, 0) as any as S.Schema<DeleteInboundCrossClusterSearchConnectionRequest>,
+  output: __S(96, __c3, 0) as any as S.Schema<DeleteInboundCrossClusterSearchConnectionResponse>,
   errors: [DisabledOperationException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1759,8 +1759,12 @@ export const deleteOutboundCrossClusterSearchConnection: API.OperationMethod<
   DeleteOutboundCrossClusterSearchConnectionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(71, __c8, 7) as any as S.Schema<DeleteOutboundCrossClusterSearchConnectionRequest>,
-  output: __S(73, __c9, 1) as any as S.Schema<DeleteOutboundCrossClusterSearchConnectionResponse>,
+  input: __S(1216, __c38, 0) as any as S.Schema<DeleteOutboundCrossClusterSearchConnectionRequest>,
+  output: __S(
+    1217,
+    __c38,
+    1,
+  ) as any as S.Schema<DeleteOutboundCrossClusterSearchConnectionResponse>,
   errors: [DisabledOperationException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1784,8 +1788,8 @@ export const deletePackage: API.OperationMethod<
   DeletePackageError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(74, __c9, 2) as any as S.Schema<DeletePackageRequest>,
-  output: __S(63, __c7, 7) as any as S.Schema<DeletePackageResponse>,
+  input: __S(1280, __c40, 0) as any as S.Schema<DeletePackageRequest>,
+  output: __S(928, __c29, 0) as any as S.Schema<DeletePackageResponse>,
   errors: [
     AccessDeniedException,
     BaseException,
@@ -1814,8 +1818,8 @@ export const deleteVpcEndpoint: API.OperationMethod<
   DeleteVpcEndpointError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(75, __c9, 3) as any as S.Schema<DeleteVpcEndpointRequest>,
-  output: __S(77, __c9, 5) as any as S.Schema<DeleteVpcEndpointResponse>,
+  input: __S(1312, __c41, 0) as any as S.Schema<DeleteVpcEndpointRequest>,
+  output: __S(1313, __c41, 1) as any as S.Schema<DeleteVpcEndpointResponse>,
   errors: [BaseException, DisabledOperationException, InternalException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1838,8 +1842,8 @@ export const describeDomainAutoTunes: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(78, __c9, 6) as any as S.Schema<DescribeDomainAutoTunesRequest>,
-  output: __S(83, __c10, 3) as any as S.Schema<DescribeDomainAutoTunesResponse>,
+  input: __S(1376, __c43, 0) as any as S.Schema<DescribeDomainAutoTunesRequest>,
+  output: __S(1381, __c43, 5) as any as S.Schema<DescribeDomainAutoTunesResponse>,
   errors: [BaseException, InternalException, ResourceNotFoundException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1867,8 +1871,8 @@ export const describeDomainChangeProgress: API.OperationMethod<
   DescribeDomainChangeProgressError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(84, __c10, 4) as any as S.Schema<DescribeDomainChangeProgressRequest>,
-  output: __S(88, __c11, 0) as any as S.Schema<DescribeDomainChangeProgressResponse>,
+  input: __S(1408, __c44, 0) as any as S.Schema<DescribeDomainChangeProgressRequest>,
+  output: __S(1412, __c44, 4) as any as S.Schema<DescribeDomainChangeProgressResponse>,
   errors: [BaseException, InternalException, ResourceNotFoundException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1890,8 +1894,8 @@ export const describeElasticsearchDomain: API.OperationMethod<
   DescribeElasticsearchDomainError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(89, __c11, 1) as any as S.Schema<DescribeElasticsearchDomainRequest>,
-  output: __S(90, __c11, 2) as any as S.Schema<DescribeElasticsearchDomainResponse>,
+  input: __S(1440, __c45, 0) as any as S.Schema<DescribeElasticsearchDomainRequest>,
+  output: __S(1441, __c45, 1) as any as S.Schema<DescribeElasticsearchDomainResponse>,
   errors: [BaseException, InternalException, ResourceNotFoundException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1913,8 +1917,8 @@ export const describeElasticsearchDomainConfig: API.OperationMethod<
   DescribeElasticsearchDomainConfigError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(91, __c11, 3) as any as S.Schema<DescribeElasticsearchDomainConfigRequest>,
-  output: __S(113, __c14, 1) as any as S.Schema<DescribeElasticsearchDomainConfigResponse>,
+  input: __S(1472, __c46, 0) as any as S.Schema<DescribeElasticsearchDomainConfigRequest>,
+  output: __S(1473, __c46, 1) as any as S.Schema<DescribeElasticsearchDomainConfigResponse>,
   errors: [BaseException, InternalException, ResourceNotFoundException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1935,8 +1939,8 @@ export const describeElasticsearchDomains: API.OperationMethod<
   DescribeElasticsearchDomainsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(114, __c14, 2) as any as S.Schema<DescribeElasticsearchDomainsRequest>,
-  output: __S(116, __c14, 4) as any as S.Schema<DescribeElasticsearchDomainsResponse>,
+  input: __S(1536, __c48, 0) as any as S.Schema<DescribeElasticsearchDomainsRequest>,
+  output: __S(1538, __c48, 2) as any as S.Schema<DescribeElasticsearchDomainsResponse>,
   errors: [BaseException, InternalException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1965,8 +1969,8 @@ export const describeElasticsearchInstanceTypeLimits: API.OperationMethod<
   DescribeElasticsearchInstanceTypeLimitsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(117, __c14, 5) as any as S.Schema<DescribeElasticsearchInstanceTypeLimitsRequest>,
-  output: __S(126, __c15, 6) as any as S.Schema<DescribeElasticsearchInstanceTypeLimitsResponse>,
+  input: __S(1568, __c49, 0) as any as S.Schema<DescribeElasticsearchInstanceTypeLimitsRequest>,
+  output: __S(1577, __c49, 9) as any as S.Schema<DescribeElasticsearchInstanceTypeLimitsResponse>,
   errors: [
     BaseException,
     InternalException,
@@ -1994,11 +1998,15 @@ export const describeInboundCrossClusterSearchConnections: API.PaginatedOperatio
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(129, __c16, 1) as any as S.Schema<DescribeInboundCrossClusterSearchConnectionsRequest>,
+  input: __S(
+    1600,
+    __c50,
+    0,
+  ) as any as S.Schema<DescribeInboundCrossClusterSearchConnectionsRequest>,
   output: __S(
-    131,
-    __c16,
-    3,
+    1602,
+    __c50,
+    2,
   ) as any as S.Schema<DescribeInboundCrossClusterSearchConnectionsResponse>,
   errors: [DisabledOperationException, InvalidPaginationTokenException],
   protocol: AwsProtocol,
@@ -2026,14 +2034,14 @@ export const describeOutboundCrossClusterSearchConnections: API.PaginatedOperati
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(
-    132,
-    __c16,
-    4,
+    1664,
+    __c52,
+    0,
   ) as any as S.Schema<DescribeOutboundCrossClusterSearchConnectionsRequest>,
   output: __S(
-    134,
-    __c16,
-    6,
+    1666,
+    __c52,
+    2,
   ) as any as S.Schema<DescribeOutboundCrossClusterSearchConnectionsResponse>,
   errors: [DisabledOperationException, InvalidPaginationTokenException],
   protocol: AwsProtocol,
@@ -2063,8 +2071,8 @@ export const describePackages: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(137, __c17, 1) as any as S.Schema<DescribePackagesRequest>,
-  output: __S(139, __c17, 3) as any as S.Schema<DescribePackagesResponse>,
+  input: __S(1698, __c53, 2) as any as S.Schema<DescribePackagesRequest>,
+  output: __S(1700, __c53, 4) as any as S.Schema<DescribePackagesResponse>,
   errors: [
     AccessDeniedException,
     BaseException,
@@ -2099,14 +2107,14 @@ export const describeReservedElasticsearchInstanceOfferings: API.PaginatedOperat
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(
-    140,
-    __c17,
-    4,
+    1728,
+    __c54,
+    0,
   ) as any as S.Schema<DescribeReservedElasticsearchInstanceOfferingsRequest>,
   output: __S(
-    145,
-    __c18,
-    1,
+    1731,
+    __c54,
+    3,
   ) as any as S.Schema<DescribeReservedElasticsearchInstanceOfferingsResponse>,
   errors: [
     DisabledOperationException,
@@ -2140,8 +2148,8 @@ export const describeReservedElasticsearchInstances: API.PaginatedOperationMetho
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(146, __c18, 2) as any as S.Schema<DescribeReservedElasticsearchInstancesRequest>,
-  output: __S(149, __c18, 5) as any as S.Schema<DescribeReservedElasticsearchInstancesResponse>,
+  input: __S(1792, __c56, 0) as any as S.Schema<DescribeReservedElasticsearchInstancesRequest>,
+  output: __S(1795, __c56, 3) as any as S.Schema<DescribeReservedElasticsearchInstancesResponse>,
   errors: [
     DisabledOperationException,
     InternalException,
@@ -2173,8 +2181,8 @@ export const describeVpcEndpoints: API.OperationMethod<
   DescribeVpcEndpointsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(150, __c18, 6) as any as S.Schema<DescribeVpcEndpointsRequest>,
-  output: __S(154, __c19, 2) as any as S.Schema<DescribeVpcEndpointsResponse>,
+  input: __S(1824, __c57, 0) as any as S.Schema<DescribeVpcEndpointsRequest>,
+  output: __S(1828, __c57, 4) as any as S.Schema<DescribeVpcEndpointsResponse>,
   errors: [BaseException, DisabledOperationException, InternalException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2198,8 +2206,8 @@ export const dissociatePackage: API.OperationMethod<
   DissociatePackageError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(155, __c19, 3) as any as S.Schema<DissociatePackageRequest>,
-  output: __S(156, __c19, 4) as any as S.Schema<DissociatePackageResponse>,
+  input: __S(1856, __c58, 0) as any as S.Schema<DissociatePackageRequest>,
+  output: __S(1857, __c58, 1) as any as S.Schema<DissociatePackageResponse>,
   errors: [
     AccessDeniedException,
     BaseException,
@@ -2234,8 +2242,8 @@ export const getCompatibleElasticsearchVersions: API.OperationMethod<
   GetCompatibleElasticsearchVersionsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(157, __c19, 5) as any as S.Schema<GetCompatibleElasticsearchVersionsRequest>,
-  output: __S(160, __c20, 0) as any as S.Schema<GetCompatibleElasticsearchVersionsResponse>,
+  input: __S(1888, __c59, 0) as any as S.Schema<GetCompatibleElasticsearchVersionsRequest>,
+  output: __S(1891, __c59, 3) as any as S.Schema<GetCompatibleElasticsearchVersionsResponse>,
   errors: [
     BaseException,
     DisabledOperationException,
@@ -2265,8 +2273,8 @@ export const getPackageVersionHistory: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(161, __c20, 1) as any as S.Schema<GetPackageVersionHistoryRequest>,
-  output: __S(164, __c20, 4) as any as S.Schema<GetPackageVersionHistoryResponse>,
+  input: __S(1920, __c60, 0) as any as S.Schema<GetPackageVersionHistoryRequest>,
+  output: __S(1923, __c60, 3) as any as S.Schema<GetPackageVersionHistoryResponse>,
   errors: [
     AccessDeniedException,
     BaseException,
@@ -2301,8 +2309,8 @@ export const getUpgradeHistory: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(165, __c20, 5) as any as S.Schema<GetUpgradeHistoryRequest>,
-  output: __S(170, __c21, 2) as any as S.Schema<GetUpgradeHistoryResponse>,
+  input: __S(1952, __c61, 0) as any as S.Schema<GetUpgradeHistoryRequest>,
+  output: __S(1957, __c61, 5) as any as S.Schema<GetUpgradeHistoryResponse>,
   errors: [
     BaseException,
     DisabledOperationException,
@@ -2336,8 +2344,8 @@ export const getUpgradeStatus: API.OperationMethod<
   GetUpgradeStatusError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(171, __c21, 3) as any as S.Schema<GetUpgradeStatusRequest>,
-  output: __S(172, __c21, 4) as any as S.Schema<GetUpgradeStatusResponse>,
+  input: __S(1984, __c62, 0) as any as S.Schema<GetUpgradeStatusRequest>,
+  output: __S(1985, __c62, 1) as any as S.Schema<GetUpgradeStatusResponse>,
   errors: [
     BaseException,
     DisabledOperationException,
@@ -2360,8 +2368,8 @@ export const listDomainNames: API.OperationMethod<
   ListDomainNamesError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(173, __c21, 5) as any as S.Schema<ListDomainNamesRequest>,
-  output: __S(176, __c22, 0) as any as S.Schema<ListDomainNamesResponse>,
+  input: __S(2016, __c63, 0) as any as S.Schema<ListDomainNamesRequest>,
+  output: __S(2019, __c63, 3) as any as S.Schema<ListDomainNamesResponse>,
   errors: [BaseException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2385,8 +2393,8 @@ export const listDomainsForPackage: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(177, __c22, 1) as any as S.Schema<ListDomainsForPackageRequest>,
-  output: __S(179, __c22, 3) as any as S.Schema<ListDomainsForPackageResponse>,
+  input: __S(2048, __c64, 0) as any as S.Schema<ListDomainsForPackageRequest>,
+  output: __S(2081, __c65, 1) as any as S.Schema<ListDomainsForPackageResponse>,
   errors: [
     AccessDeniedException,
     BaseException,
@@ -2420,8 +2428,8 @@ export const listElasticsearchInstanceTypes: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(180, __c22, 4) as any as S.Schema<ListElasticsearchInstanceTypesRequest>,
-  output: __S(182, __c22, 6) as any as S.Schema<ListElasticsearchInstanceTypesResponse>,
+  input: __S(2112, __c66, 0) as any as S.Schema<ListElasticsearchInstanceTypesRequest>,
+  output: __S(2114, __c66, 2) as any as S.Schema<ListElasticsearchInstanceTypesResponse>,
   errors: [BaseException, InternalException, ResourceNotFoundException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2449,8 +2457,8 @@ export const listElasticsearchVersions: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(183, __c22, 7) as any as S.Schema<ListElasticsearchVersionsRequest>,
-  output: __S(184, __c23, 0) as any as S.Schema<ListElasticsearchVersionsResponse>,
+  input: __S(2144, __c67, 0) as any as S.Schema<ListElasticsearchVersionsRequest>,
+  output: __S(2145, __c67, 1) as any as S.Schema<ListElasticsearchVersionsResponse>,
   errors: [BaseException, InternalException, ResourceNotFoundException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2479,8 +2487,8 @@ export const listPackagesForDomain: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(185, __c23, 1) as any as S.Schema<ListPackagesForDomainRequest>,
-  output: __S(179, __c22, 3) as any as S.Schema<ListPackagesForDomainResponse>,
+  input: __S(2176, __c68, 0) as any as S.Schema<ListPackagesForDomainRequest>,
+  output: __S(2081, __c65, 1) as any as S.Schema<ListPackagesForDomainResponse>,
   errors: [
     AccessDeniedException,
     BaseException,
@@ -2513,8 +2521,8 @@ export const listTags: API.OperationMethod<
   ListTagsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(186, __c23, 2) as any as S.Schema<ListTagsRequest>,
-  output: __S(187, __c23, 3) as any as S.Schema<ListTagsResponse>,
+  input: __S(2208, __c69, 0) as any as S.Schema<ListTagsRequest>,
+  output: __S(2209, __c69, 1) as any as S.Schema<ListTagsResponse>,
   errors: [BaseException, InternalException, ResourceNotFoundException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2537,8 +2545,8 @@ export const listVpcEndpointAccess: API.OperationMethod<
   ListVpcEndpointAccessError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(188, __c23, 4) as any as S.Schema<ListVpcEndpointAccessRequest>,
-  output: __S(190, __c23, 6) as any as S.Schema<ListVpcEndpointAccessResponse>,
+  input: __S(2240, __c70, 0) as any as S.Schema<ListVpcEndpointAccessRequest>,
+  output: __S(2242, __c70, 2) as any as S.Schema<ListVpcEndpointAccessResponse>,
   errors: [BaseException, DisabledOperationException, InternalException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2559,8 +2567,8 @@ export const listVpcEndpoints: API.OperationMethod<
   ListVpcEndpointsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(191, __c23, 7) as any as S.Schema<ListVpcEndpointsRequest>,
-  output: __S(193, __c24, 1) as any as S.Schema<ListVpcEndpointsResponse>,
+  input: __S(2272, __c71, 0) as any as S.Schema<ListVpcEndpointsRequest>,
+  output: __S(2273, __c71, 1) as any as S.Schema<ListVpcEndpointsResponse>,
   errors: [BaseException, DisabledOperationException, InternalException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2582,8 +2590,8 @@ export const listVpcEndpointsForDomain: API.OperationMethod<
   ListVpcEndpointsForDomainError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(194, __c24, 2) as any as S.Schema<ListVpcEndpointsForDomainRequest>,
-  output: __S(195, __c24, 3) as any as S.Schema<ListVpcEndpointsForDomainResponse>,
+  input: __S(2336, __c73, 0) as any as S.Schema<ListVpcEndpointsForDomainRequest>,
+  output: __S(2337, __c73, 1) as any as S.Schema<ListVpcEndpointsForDomainResponse>,
   errors: [BaseException, DisabledOperationException, InternalException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2608,14 +2616,14 @@ export const purchaseReservedElasticsearchInstanceOffering: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    196,
-    __c24,
-    4,
+    2368,
+    __c74,
+    0,
   ) as any as S.Schema<PurchaseReservedElasticsearchInstanceOfferingRequest>,
   output: __S(
-    197,
-    __c24,
-    5,
+    2369,
+    __c74,
+    1,
   ) as any as S.Schema<PurchaseReservedElasticsearchInstanceOfferingResponse>,
   errors: [
     DisabledOperationException,
@@ -2643,8 +2651,8 @@ export const rejectInboundCrossClusterSearchConnection: API.OperationMethod<
   RejectInboundCrossClusterSearchConnectionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(198, __c24, 6) as any as S.Schema<RejectInboundCrossClusterSearchConnectionRequest>,
-  output: __S(4, __c0, 4) as any as S.Schema<RejectInboundCrossClusterSearchConnectionResponse>,
+  input: __S(2400, __c75, 0) as any as S.Schema<RejectInboundCrossClusterSearchConnectionRequest>,
+  output: __S(96, __c3, 0) as any as S.Schema<RejectInboundCrossClusterSearchConnectionResponse>,
   errors: [DisabledOperationException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2665,8 +2673,8 @@ export const removeTags: API.OperationMethod<
   RemoveTagsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(199, __c24, 7) as any as S.Schema<RemoveTagsRequest>,
-  output: __S(8, __c1, 0) as any as S.Schema<RemoveTagsResponse>,
+  input: __S(2432, __c76, 0) as any as S.Schema<RemoveTagsRequest>,
+  output: __S(192, __c6, 0) as any as S.Schema<RemoveTagsResponse>,
   errors: [BaseException, InternalException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2690,8 +2698,8 @@ export const revokeVpcEndpointAccess: API.OperationMethod<
   RevokeVpcEndpointAccessError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(200, __c25, 0) as any as S.Schema<RevokeVpcEndpointAccessRequest>,
-  output: __S(69, __c8, 5) as any as S.Schema<RevokeVpcEndpointAccessResponse>,
+  input: __S(2464, __c77, 0) as any as S.Schema<RevokeVpcEndpointAccessRequest>,
+  output: __S(1152, __c36, 0) as any as S.Schema<RevokeVpcEndpointAccessResponse>,
   errors: [
     BaseException,
     DisabledOperationException,
@@ -2719,8 +2727,8 @@ export const startElasticsearchServiceSoftwareUpdate: API.OperationMethod<
   StartElasticsearchServiceSoftwareUpdateError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(201, __c25, 1) as any as S.Schema<StartElasticsearchServiceSoftwareUpdateRequest>,
-  output: __S(23, __c2, 7) as any as S.Schema<StartElasticsearchServiceSoftwareUpdateResponse>,
+  input: __S(2496, __c78, 0) as any as S.Schema<StartElasticsearchServiceSoftwareUpdateRequest>,
+  output: __S(512, __c16, 0) as any as S.Schema<StartElasticsearchServiceSoftwareUpdateResponse>,
   errors: [BaseException, InternalException, ResourceNotFoundException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2744,8 +2752,8 @@ export const updateElasticsearchDomainConfig: API.OperationMethod<
   UpdateElasticsearchDomainConfigError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(202, __c25, 2) as any as S.Schema<UpdateElasticsearchDomainConfigRequest>,
-  output: __S(204, __c25, 4) as any as S.Schema<UpdateElasticsearchDomainConfigResponse>,
+  input: __S(2528, __c79, 0) as any as S.Schema<UpdateElasticsearchDomainConfigRequest>,
+  output: __S(2530, __c79, 2) as any as S.Schema<UpdateElasticsearchDomainConfigResponse>,
   errors: [
     BaseException,
     InternalException,
@@ -2776,8 +2784,8 @@ export const updatePackage: API.OperationMethod<
   UpdatePackageError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(205, __c25, 5) as any as S.Schema<UpdatePackageRequest>,
-  output: __S(63, __c7, 7) as any as S.Schema<UpdatePackageResponse>,
+  input: __S(2560, __c80, 0) as any as S.Schema<UpdatePackageRequest>,
+  output: __S(928, __c29, 0) as any as S.Schema<UpdatePackageResponse>,
   errors: [
     AccessDeniedException,
     BaseException,
@@ -2808,8 +2816,8 @@ export const updateVpcEndpoint: API.OperationMethod<
   UpdateVpcEndpointError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(206, __c25, 6) as any as S.Schema<UpdateVpcEndpointRequest>,
-  output: __S(66, __c8, 2) as any as S.Schema<UpdateVpcEndpointResponse>,
+  input: __S(2592, __c81, 0) as any as S.Schema<UpdateVpcEndpointRequest>,
+  output: __S(1056, __c33, 0) as any as S.Schema<UpdateVpcEndpointResponse>,
   errors: [
     BaseException,
     ConflictException,
@@ -2840,8 +2848,8 @@ export const upgradeElasticsearchDomain: API.OperationMethod<
   UpgradeElasticsearchDomainError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(207, __c25, 7) as any as S.Schema<UpgradeElasticsearchDomainRequest>,
-  output: __S(208, __c26, 0) as any as S.Schema<UpgradeElasticsearchDomainResponse>,
+  input: __S(2624, __c82, 0) as any as S.Schema<UpgradeElasticsearchDomainRequest>,
+  output: __S(2625, __c82, 1) as any as S.Schema<UpgradeElasticsearchDomainResponse>,
   errors: [
     BaseException,
     DisabledOperationException,
@@ -2881,7 +2889,11 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "AcceptInboundCrossClusterSearchConnectionRequest",
       });
-    case 1:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           OwnerId: S.optional(S.String),
@@ -2889,7 +2901,7 @@ function __c0(j: number): any {
           Region: S.optional(S.String),
         }),
       ).annotate({ identifier: "DomainInformation" });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           StatusCode: S.optional(S.String),
@@ -2898,34 +2910,38 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "InboundCrossClusterSearchConnectionStatus",
       });
-    case 3:
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          SourceDomainInfo: S.optional(__S(1, __c0, 1)),
-          DestinationDomainInfo: S.optional(__S(1, __c0, 1)),
+          SourceDomainInfo: S.optional(__S(32, __c1, 0)),
+          DestinationDomainInfo: S.optional(__S(32, __c1, 0)),
           CrossClusterSearchConnectionId: S.optional(S.String),
-          ConnectionStatus: S.optional(__S(2, __c0, 2)),
+          ConnectionStatus: S.optional(__S(33, __c1, 1)),
         }),
       ).annotate({
         identifier: "InboundCrossClusterSearchConnection",
       });
-    case 4:
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
-        S.Struct({
-          CrossClusterSearchConnection: S.optional(__S(3, __c0, 3)),
-        }).pipe(ns),
+        S.Struct({ CrossClusterSearchConnection: S.optional(__S(64, __c2, 0)) }).pipe(ns),
       ).annotate({
         identifier: "AcceptInboundCrossClusterSearchConnectionResponse",
       });
-    case 5:
-      return S.suspend(() => S.Struct({ Key: S.String, Value: S.String })).annotate({
-        identifier: "Tag",
-      });
-    case 6:
-      return S.Array(__S(5, __c0, 5));
-    case 7:
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
-        S.Struct({ ARN: S.String, TagList: __S(6, __c0, 6) }).pipe(
+        S.Struct({ ARN: S.String, TagList: __S(161, __c5, 1) }).pipe(
           T.all(
             ns,
             T.Http({ method: "POST", uri: "/2015-01-01/tags" }),
@@ -2939,13 +2955,27 @@ function __c0(j: number): any {
       ).annotate({ identifier: "AddTagsRequest" });
   }
 }
-function __c1(j: number): any {
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({ Key: S.String, Value: S.String })).annotate({
+        identifier: "Tag",
+      });
+    case 1:
+      return S.Array(__S(160, __c5, 0));
+  }
+}
+function __c6(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
         identifier: "AddTagsResponse",
       });
-    case 1:
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           PackageID: S.String.pipe(T.HttpLabel("PackageID")),
@@ -2965,11 +2995,23 @@ function __c1(j: number): any {
           ),
         ),
       ).annotate({ identifier: "AssociatePackageRequest" });
-    case 2:
+    case 1:
+      return S.suspend(() =>
+        S.Struct({ DomainPackageDetails: S.optional(__S(288, __c9, 0)) }).pipe(ns),
+      ).annotate({ identifier: "AssociatePackageResponse" });
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ ErrorType: S.optional(S.String), ErrorMessage: S.optional(S.String) }),
       ).annotate({ identifier: "ErrorDetails" });
-    case 3:
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           PackageID: S.optional(S.String),
@@ -2980,14 +3022,14 @@ function __c1(j: number): any {
           DomainPackageStatus: S.optional(S.String),
           PackageVersion: S.optional(S.String),
           ReferencePath: S.optional(S.String),
-          ErrorDetails: S.optional(__S(10, __c1, 2)),
+          ErrorDetails: S.optional(__S(256, __c8, 0)),
         }),
       ).annotate({ identifier: "DomainPackageDetails" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({ DomainPackageDetails: S.optional(__S(11, __c1, 3)) }).pipe(ns),
-      ).annotate({ identifier: "AssociatePackageResponse" });
-    case 5:
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ DomainName: S.String.pipe(T.HttpLabel("DomainName")), Account: S.String }).pipe(
           T.all(
@@ -3006,19 +3048,23 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "AuthorizeVpcEndpointAccessRequest",
       });
-    case 6:
+    case 1:
+      return S.suspend(() =>
+        S.Struct({ AuthorizedPrincipal: __S(352, __c11, 0) }).pipe(ns),
+      ).annotate({
+        identifier: "AuthorizeVpcEndpointAccessResponse",
+      });
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ PrincipalType: S.optional(S.String), Principal: S.optional(S.String) }),
       ).annotate({ identifier: "AuthorizedPrincipal" });
-    case 7:
-      return S.suspend(() => S.Struct({ AuthorizedPrincipal: __S(14, __c1, 6) }).pipe(ns)).annotate(
-        {
-          identifier: "AuthorizeVpcEndpointAccessResponse",
-        },
-      );
   }
 }
-function __c2(j: number): any {
+function __c12(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3040,8 +3086,6 @@ function __c2(j: number): any {
         identifier: "CancelDomainConfigChangeRequest",
       });
     case 1:
-      return S.Array(S.String);
-    case 2:
       return S.suspend(() =>
         S.Struct({
           PropertyName: S.optional(S.String),
@@ -3049,19 +3093,29 @@ function __c2(j: number): any {
           ActiveValue: S.optional(S.String),
         }),
       ).annotate({ identifier: "CancelledChangeProperty" });
+    case 2:
+      return S.Array(__S(385, __c12, 1));
     case 3:
-      return S.Array(__S(18, __c2, 2));
-    case 4:
       return S.suspend(() =>
         S.Struct({
           DryRun: S.optional(S.Boolean),
-          CancelledChangeIds: S.optional(__S(17, __c2, 1)),
-          CancelledChangeProperties: S.optional(__S(19, __c2, 3)),
+          CancelledChangeIds: S.optional(__S(416, __c13, 0)),
+          CancelledChangeProperties: S.optional(__S(386, __c12, 2)),
         }).pipe(ns),
       ).annotate({
         identifier: "CancelDomainConfigChangeResponse",
       });
-    case 5:
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ DomainName: S.String }).pipe(
           T.all(
@@ -3077,7 +3131,11 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "CancelElasticsearchServiceSoftwareUpdateRequest",
       });
-    case 6:
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           CurrentVersion: S.optional(S.String),
@@ -3090,15 +3148,101 @@ function __c2(j: number): any {
           OptionalDeployment: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "ServiceSoftwareOptions" });
-    case 7:
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
-        S.Struct({ ServiceSoftwareOptions: S.optional(__S(22, __c2, 6)) }).pipe(ns),
+        S.Struct({ ServiceSoftwareOptions: S.optional(__S(480, __c15, 0)) }).pipe(ns),
       ).annotate({
         identifier: "CancelElasticsearchServiceSoftwareUpdateResponse",
       });
   }
 }
-function __c3(j: number): any {
+function __c17(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          DesiredState: S.optional(S.String),
+          MaintenanceSchedules: S.optional(__S(770, __c24, 2)),
+        }),
+      ).annotate({ identifier: "AutoTuneOptionsInput" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          DomainName: S.String,
+          ElasticsearchVersion: S.optional(S.String),
+          ElasticsearchClusterConfig: S.optional(__S(674, __c21, 2)),
+          EBSOptions: S.optional(__S(675, __c21, 3)),
+          AccessPolicies: S.optional(S.String),
+          SnapshotOptions: S.optional(__S(676, __c21, 4)),
+          VPCOptions: S.optional(__S(608, __c19, 0)),
+          CognitoOptions: S.optional(__S(677, __c21, 5)),
+          EncryptionAtRestOptions: S.optional(__S(678, __c21, 6)),
+          NodeToNodeEncryptionOptions: S.optional(__S(679, __c21, 7)),
+          AdvancedOptions: S.optional(__S(680, __c21, 8)),
+          LogPublishingOptions: S.optional(__S(682, __c21, 10)),
+          DomainEndpointOptions: S.optional(__S(683, __c21, 11)),
+          AdvancedSecurityOptions: S.optional(__S(802, __c25, 2)),
+          AutoTuneOptions: S.optional(__S(544, __c17, 0)),
+          TagList: S.optional(__S(161, __c5, 1)),
+          DeploymentStrategyOptions: S.optional(__S(685, __c21, 13)),
+          AutomatedSnapshotPauseOptions: S.optional(__S(803, __c25, 3)),
+          UseCase: S.optional(S.String),
+          EngineMode: S.optional(S.String),
+        }).pipe(
+          T.all(
+            ns,
+            T.Http({ method: "POST", uri: "/2015-01-01/es/domain" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "CreateElasticsearchDomainRequest",
+      });
+  }
+}
+function __c18(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          VPCId: S.optional(S.String),
+          SubnetIds: S.optional(__S(416, __c13, 0)),
+          AvailabilityZones: S.optional(__S(416, __c13, 0)),
+          SecurityGroupIds: S.optional(__S(416, __c13, 0)),
+        }),
+      ).annotate({ identifier: "VPCDerivedInfo" });
+  }
+}
+function __c19(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          SubnetIds: S.optional(__S(416, __c13, 0)),
+          SecurityGroupIds: S.optional(__S(416, __c13, 0)),
+        }),
+      ).annotate({ identifier: "VPCOptions" });
+  }
+}
+function __c20(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ DomainStatus: S.optional(__S(737, __c23, 1)) }).pipe(ns),
+      ).annotate({
+        identifier: "CreateElasticsearchDomainResponse",
+      });
+  }
+}
+function __c21(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() => S.Struct({ AvailabilityZoneCount: S.optional(S.Number) })).annotate({
@@ -3115,13 +3259,13 @@ function __c3(j: number): any {
           InstanceCount: S.optional(S.Number),
           DedicatedMasterEnabled: S.optional(S.Boolean),
           ZoneAwarenessEnabled: S.optional(S.Boolean),
-          ZoneAwarenessConfig: S.optional(__S(24, __c3, 0)),
+          ZoneAwarenessConfig: S.optional(__S(672, __c21, 0)),
           DedicatedMasterType: S.optional(S.String),
           DedicatedMasterCount: S.optional(S.Number),
           WarmEnabled: S.optional(S.Boolean),
           WarmType: S.optional(S.String),
           WarmCount: S.optional(S.Number),
-          ColdStorageOptions: S.optional(__S(25, __c3, 1)),
+          ColdStorageOptions: S.optional(__S(673, __c21, 1)),
         }),
       ).annotate({
         identifier: "ElasticsearchClusterConfig",
@@ -3143,43 +3287,32 @@ function __c3(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          SubnetIds: S.optional(__S(17, __c2, 1)),
-          SecurityGroupIds: S.optional(__S(17, __c2, 1)),
-        }),
-      ).annotate({ identifier: "VPCOptions" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
           Enabled: S.optional(S.Boolean),
           UserPoolId: S.optional(S.String),
           IdentityPoolId: S.optional(S.String),
           RoleArn: S.optional(S.String),
         }),
       ).annotate({ identifier: "CognitoOptions" });
-    case 7:
+    case 6:
       return S.suspend(() =>
         S.Struct({ Enabled: S.optional(S.Boolean), KmsKeyId: S.optional(S.String) }),
       ).annotate({ identifier: "EncryptionAtRestOptions" });
-  }
-}
-function __c4(j: number): any {
-  switch (j) {
-    case 0:
+    case 7:
       return S.suspend(() => S.Struct({ Enabled: S.optional(S.Boolean) })).annotate({
         identifier: "NodeToNodeEncryptionOptions",
       });
-    case 1:
+    case 8:
       return S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
-    case 2:
+    case 9:
       return S.suspend(() =>
         S.Struct({
           CloudWatchLogsLogGroupArn: S.optional(S.String),
           Enabled: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "LogPublishingOption" });
-    case 3:
-      return S.Record(S.String, /*@__PURE__*/ __S(34, __c4, 2).pipe(S.optional));
-    case 4:
+    case 10:
+      return S.Record(S.String, /*@__PURE__*/ __S(681, __c21, 9).pipe(S.optional));
+    case 11:
       return S.suspend(() =>
         S.Struct({
           EnforceHTTPS: S.optional(S.Boolean),
@@ -3189,169 +3322,35 @@ function __c4(j: number): any {
           CustomEndpointCertificateArn: S.optional(S.String),
         }),
       ).annotate({ identifier: "DomainEndpointOptions" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          MasterUserARN: S.optional(S.String),
-          MasterUserName: S.optional(SensitiveString),
-          MasterUserPassword: S.optional(SensitiveString),
-        }),
-      ).annotate({ identifier: "MasterUserOptions" });
-    case 6:
+    case 12:
       return S.suspend(() => S.Struct({ MetadataContent: S.String, EntityId: S.String })).annotate({
         identifier: "SAMLIdp",
       });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          Enabled: S.optional(S.Boolean),
-          Idp: S.optional(__S(38, __c4, 6)),
-          MasterUserName: S.optional(SensitiveString),
-          MasterBackendRole: S.optional(S.String),
-          SubjectKey: S.optional(S.String),
-          RolesKey: S.optional(S.String),
-          SessionTimeoutMinutes: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "SAMLOptionsInput" });
-  }
-}
-function __c5(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          Enabled: S.optional(S.Boolean),
-          InternalUserDatabaseEnabled: S.optional(S.Boolean),
-          MasterUserOptions: S.optional(__S(37, __c4, 5)),
-          SAMLOptions: S.optional(__S(39, __c4, 7)),
-          AnonymousAuthEnabled: S.optional(S.Boolean),
-        }),
-      ).annotate({
-        identifier: "AdvancedSecurityOptionsInput",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({ Value: S.optional(S.Number), Unit: S.optional(S.String) }),
-      ).annotate({ identifier: "Duration" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          StartAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          Duration: S.optional(__S(41, __c5, 1)),
-          CronExpressionForRecurrence: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "AutoTuneMaintenanceSchedule",
-      });
-    case 3:
-      return S.Array(__S(42, __c5, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          DesiredState: S.optional(S.String),
-          MaintenanceSchedules: S.optional(__S(43, __c5, 3)),
-        }),
-      ).annotate({ identifier: "AutoTuneOptionsInput" });
-    case 5:
+    case 13:
       return S.suspend(() => S.Struct({ DeploymentStrategy: S.String })).annotate({
         identifier: "DeploymentStrategyOptions",
       });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          Enabled: S.Boolean,
-          StartTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          EndTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-        }),
-      ).annotate({
-        identifier: "AutomatedSnapshotPauseRequestOptions",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          DomainName: S.String,
-          ElasticsearchVersion: S.optional(S.String),
-          ElasticsearchClusterConfig: S.optional(__S(26, __c3, 2)),
-          EBSOptions: S.optional(__S(27, __c3, 3)),
-          AccessPolicies: S.optional(S.String),
-          SnapshotOptions: S.optional(__S(28, __c3, 4)),
-          VPCOptions: S.optional(__S(29, __c3, 5)),
-          CognitoOptions: S.optional(__S(30, __c3, 6)),
-          EncryptionAtRestOptions: S.optional(__S(31, __c3, 7)),
-          NodeToNodeEncryptionOptions: S.optional(__S(32, __c4, 0)),
-          AdvancedOptions: S.optional(__S(33, __c4, 1)),
-          LogPublishingOptions: S.optional(__S(35, __c4, 3)),
-          DomainEndpointOptions: S.optional(__S(36, __c4, 4)),
-          AdvancedSecurityOptions: S.optional(__S(40, __c5, 0)),
-          AutoTuneOptions: S.optional(__S(44, __c5, 4)),
-          TagList: S.optional(__S(6, __c0, 6)),
-          DeploymentStrategyOptions: S.optional(__S(45, __c5, 5)),
-          AutomatedSnapshotPauseOptions: S.optional(__S(46, __c5, 6)),
-          UseCase: S.optional(S.String),
-          EngineMode: S.optional(S.String),
-        }).pipe(
-          T.all(
-            ns,
-            T.Http({ method: "POST", uri: "/2015-01-01/es/domain" }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({
-        identifier: "CreateElasticsearchDomainRequest",
-      });
-  }
-}
-function __c6(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          VPCId: S.optional(S.String),
-          SubnetIds: S.optional(__S(17, __c2, 1)),
-          AvailabilityZones: S.optional(__S(17, __c2, 1)),
-          SecurityGroupIds: S.optional(__S(17, __c2, 1)),
-        }),
-      ).annotate({ identifier: "VPCDerivedInfo" });
-    case 1:
+    case 14:
       return S.suspend(() =>
         S.Struct({
           Enabled: S.optional(S.Boolean),
-          Idp: S.optional(__S(38, __c4, 6)),
+          Idp: S.optional(__S(684, __c21, 12)),
           SubjectKey: S.optional(S.String),
           RolesKey: S.optional(S.String),
           SessionTimeoutMinutes: S.optional(S.Number),
         }),
       ).annotate({ identifier: "SAMLOptionsOutput" });
-    case 2:
+    case 15:
       return S.suspend(() =>
         S.Struct({
           Enabled: S.optional(S.Boolean),
           InternalUserDatabaseEnabled: S.optional(S.Boolean),
-          SAMLOptions: S.optional(__S(49, __c6, 1)),
+          SAMLOptions: S.optional(__S(686, __c21, 14)),
           AnonymousAuthDisableDate: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           AnonymousAuthEnabled: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "AdvancedSecurityOptions" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({ State: S.optional(S.String), ErrorMessage: S.optional(S.String) }),
-      ).annotate({ identifier: "AutoTuneOptionsOutput" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          ChangeId: S.optional(S.String),
-          Message: S.optional(S.String),
-          ConfigChangeStatus: S.optional(S.String),
-          StartTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          LastUpdatedTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          InitiatedBy: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ChangeProgressDetails" });
-    case 5:
+    case 16:
       return S.suspend(() =>
         S.Struct({
           Name: S.optional(S.String),
@@ -3360,9 +3359,9 @@ function __c6(j: number): any {
           ValueType: S.optional(S.String),
         }),
       ).annotate({ identifier: "ModifyingProperties" });
-    case 6:
-      return S.Array(__S(53, __c6, 5));
-    case 7:
+    case 17:
+      return S.Array(__S(688, __c21, 16));
+    case 18:
       return S.suspend(() =>
         S.Struct({
           Enabled: S.Boolean,
@@ -3375,9 +3374,28 @@ function __c6(j: number): any {
       });
   }
 }
-function __c7(j: number): any {
+function __c22(j: number): any {
   switch (j) {
     case 0:
+      return S.suspend(() =>
+        S.Struct({
+          ChangeId: S.optional(S.String),
+          Message: S.optional(S.String),
+          ConfigChangeStatus: S.optional(S.String),
+          StartTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          LastUpdatedTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          InitiatedBy: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ChangeProgressDetails" });
+  }
+}
+function __c23(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ State: S.optional(S.String), ErrorMessage: S.optional(S.String) }),
+      ).annotate({ identifier: "AutoTuneOptionsOutput" });
+    case 1:
       return S.suspend(() =>
         S.Struct({
           DomainId: S.String,
@@ -3386,46 +3404,110 @@ function __c7(j: number): any {
           Created: S.optional(S.Boolean),
           Deleted: S.optional(S.Boolean),
           Endpoint: S.optional(S.String),
-          Endpoints: S.optional(__S(33, __c4, 1)),
+          Endpoints: S.optional(__S(680, __c21, 8)),
           Processing: S.optional(S.Boolean),
           UpgradeProcessing: S.optional(S.Boolean),
           ElasticsearchVersion: S.optional(S.String),
-          ElasticsearchClusterConfig: __S(26, __c3, 2),
-          EBSOptions: S.optional(__S(27, __c3, 3)),
+          ElasticsearchClusterConfig: __S(674, __c21, 2),
+          EBSOptions: S.optional(__S(675, __c21, 3)),
           AccessPolicies: S.optional(S.String),
-          SnapshotOptions: S.optional(__S(28, __c3, 4)),
-          VPCOptions: S.optional(__S(48, __c6, 0)),
-          CognitoOptions: S.optional(__S(30, __c3, 6)),
-          EncryptionAtRestOptions: S.optional(__S(31, __c3, 7)),
-          NodeToNodeEncryptionOptions: S.optional(__S(32, __c4, 0)),
-          AdvancedOptions: S.optional(__S(33, __c4, 1)),
-          LogPublishingOptions: S.optional(__S(35, __c4, 3)),
-          ServiceSoftwareOptions: S.optional(__S(22, __c2, 6)),
-          DomainEndpointOptions: S.optional(__S(36, __c4, 4)),
-          AdvancedSecurityOptions: S.optional(__S(50, __c6, 2)),
-          AutoTuneOptions: S.optional(__S(51, __c6, 3)),
-          ChangeProgressDetails: S.optional(__S(52, __c6, 4)),
+          SnapshotOptions: S.optional(__S(676, __c21, 4)),
+          VPCOptions: S.optional(__S(576, __c18, 0)),
+          CognitoOptions: S.optional(__S(677, __c21, 5)),
+          EncryptionAtRestOptions: S.optional(__S(678, __c21, 6)),
+          NodeToNodeEncryptionOptions: S.optional(__S(679, __c21, 7)),
+          AdvancedOptions: S.optional(__S(680, __c21, 8)),
+          LogPublishingOptions: S.optional(__S(682, __c21, 10)),
+          ServiceSoftwareOptions: S.optional(__S(480, __c15, 0)),
+          DomainEndpointOptions: S.optional(__S(683, __c21, 11)),
+          AdvancedSecurityOptions: S.optional(__S(687, __c21, 15)),
+          AutoTuneOptions: S.optional(__S(736, __c23, 0)),
+          ChangeProgressDetails: S.optional(__S(704, __c22, 0)),
           DomainProcessingStatus: S.optional(S.String),
-          ModifyingProperties: S.optional(__S(54, __c6, 6)),
-          DeploymentStrategyOptions: S.optional(__S(45, __c5, 5)),
-          AutomatedSnapshotPauseOptions: S.optional(__S(55, __c6, 7)),
+          ModifyingProperties: S.optional(__S(689, __c21, 17)),
+          DeploymentStrategyOptions: S.optional(__S(685, __c21, 13)),
+          AutomatedSnapshotPauseOptions: S.optional(__S(690, __c21, 18)),
           UseCase: S.optional(S.String),
           EngineMode: S.optional(S.String),
         }),
       ).annotate({
         identifier: "ElasticsearchDomainStatus",
       });
+  }
+}
+function __c24(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ Value: S.optional(S.Number), Unit: S.optional(S.String) }),
+      ).annotate({ identifier: "Duration" });
     case 1:
       return S.suspend(() =>
-        S.Struct({ DomainStatus: S.optional(__S(56, __c7, 0)) }).pipe(ns),
+        S.Struct({
+          StartAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          Duration: S.optional(__S(768, __c24, 0)),
+          CronExpressionForRecurrence: S.optional(S.String),
+        }),
       ).annotate({
-        identifier: "CreateElasticsearchDomainResponse",
+        identifier: "AutoTuneMaintenanceSchedule",
       });
+    case 2:
+      return S.Array(__S(769, __c24, 1));
+  }
+}
+function __c25(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          MasterUserARN: S.optional(S.String),
+          MasterUserName: S.optional(SensitiveString),
+          MasterUserPassword: S.optional(SensitiveString),
+        }),
+      ).annotate({ identifier: "MasterUserOptions" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          Enabled: S.optional(S.Boolean),
+          Idp: S.optional(__S(684, __c21, 12)),
+          MasterUserName: S.optional(SensitiveString),
+          MasterBackendRole: S.optional(S.String),
+          SubjectKey: S.optional(S.String),
+          RolesKey: S.optional(S.String),
+          SessionTimeoutMinutes: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "SAMLOptionsInput" });
     case 2:
       return S.suspend(() =>
         S.Struct({
-          SourceDomainInfo: __S(1, __c0, 1),
-          DestinationDomainInfo: __S(1, __c0, 1),
+          Enabled: S.optional(S.Boolean),
+          InternalUserDatabaseEnabled: S.optional(S.Boolean),
+          MasterUserOptions: S.optional(__S(800, __c25, 0)),
+          SAMLOptions: S.optional(__S(801, __c25, 1)),
+          AnonymousAuthEnabled: S.optional(S.Boolean),
+        }),
+      ).annotate({
+        identifier: "AdvancedSecurityOptionsInput",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          Enabled: S.Boolean,
+          StartTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          EndTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+        }),
+      ).annotate({
+        identifier: "AutomatedSnapshotPauseRequestOptions",
+      });
+  }
+}
+function __c26(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          SourceDomainInfo: __S(32, __c1, 0),
+          DestinationDomainInfo: __S(32, __c1, 0),
           ConnectionAlias: S.String,
         }).pipe(
           T.all(
@@ -3441,29 +3523,29 @@ function __c7(j: number): any {
       ).annotate({
         identifier: "CreateOutboundCrossClusterSearchConnectionRequest",
       });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          SourceDomainInfo: S.optional(__S(1, __c0, 1)),
-          DestinationDomainInfo: S.optional(__S(1, __c0, 1)),
+          SourceDomainInfo: S.optional(__S(32, __c1, 0)),
+          DestinationDomainInfo: S.optional(__S(32, __c1, 0)),
           ConnectionAlias: S.optional(S.String),
-          ConnectionStatus: S.optional(__S(2, __c0, 2)),
+          ConnectionStatus: S.optional(__S(33, __c1, 1)),
           CrossClusterSearchConnectionId: S.optional(S.String),
         }).pipe(ns),
       ).annotate({
         identifier: "CreateOutboundCrossClusterSearchConnectionResponse",
       });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({ S3BucketName: S.optional(S.String), S3Key: S.optional(S.String) }),
-      ).annotate({ identifier: "PackageSource" });
-    case 5:
+  }
+}
+function __c27(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           PackageName: S.String,
           PackageType: S.String,
           PackageDescription: S.optional(S.String),
-          PackageSource: __S(60, __c7, 4),
+          PackageSource: __S(960, __c30, 0),
         }).pipe(
           T.all(
             ns,
@@ -3476,7 +3558,11 @@ function __c7(j: number): any {
           ),
         ),
       ).annotate({ identifier: "CreatePackageRequest" });
-    case 6:
+  }
+}
+function __c28(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           PackageID: S.optional(S.String),
@@ -3487,22 +3573,34 @@ function __c7(j: number): any {
           CreatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           LastUpdatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           AvailablePackageVersion: S.optional(S.String),
-          ErrorDetails: S.optional(__S(10, __c1, 2)),
+          ErrorDetails: S.optional(__S(256, __c8, 0)),
         }),
       ).annotate({ identifier: "PackageDetails" });
-    case 7:
+  }
+}
+function __c29(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
-        S.Struct({ PackageDetails: S.optional(__S(62, __c7, 6)) }).pipe(ns),
+        S.Struct({ PackageDetails: S.optional(__S(896, __c28, 0)) }).pipe(ns),
       ).annotate({ identifier: "CreatePackageResponse" });
   }
 }
-function __c8(j: number): any {
+function __c30(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ S3BucketName: S.optional(S.String), S3Key: S.optional(S.String) }),
+      ).annotate({ identifier: "PackageSource" });
+  }
+}
+function __c31(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           DomainArn: S.String,
-          VpcOptions: __S(29, __c3, 5),
+          VpcOptions: __S(608, __c19, 0),
           ClientToken: S.optional(S.String),
         }).pipe(
           T.all(
@@ -3516,22 +3614,34 @@ function __c8(j: number): any {
           ),
         ),
       ).annotate({ identifier: "CreateVpcEndpointRequest" });
-    case 1:
+  }
+}
+function __c32(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           VpcEndpointId: S.optional(S.String),
           VpcEndpointOwner: S.optional(S.String),
           DomainArn: S.optional(S.String),
-          VpcOptions: S.optional(__S(48, __c6, 0)),
+          VpcOptions: S.optional(__S(576, __c18, 0)),
           Status: S.optional(S.String),
           Endpoint: S.optional(S.String),
         }),
       ).annotate({ identifier: "VpcEndpoint" });
-    case 2:
-      return S.suspend(() => S.Struct({ VpcEndpoint: __S(65, __c8, 1) }).pipe(ns)).annotate({
+  }
+}
+function __c33(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({ VpcEndpoint: __S(1024, __c32, 0) }).pipe(ns)).annotate({
         identifier: "CreateVpcEndpointResponse",
       });
-    case 3:
+  }
+}
+function __c34(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ DomainName: S.String.pipe(T.HttpLabel("DomainName")) }).pipe(
           T.all(
@@ -3547,7 +3657,11 @@ function __c8(j: number): any {
       ).annotate({
         identifier: "DeleteElasticsearchDomainRequest",
       });
-    case 4:
+  }
+}
+function __c35(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({}).pipe(
           T.all(
@@ -3563,11 +3677,19 @@ function __c8(j: number): any {
       ).annotate({
         identifier: "DeleteElasticsearchServiceRoleRequest",
       });
-    case 5:
+  }
+}
+function __c36(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
         identifier: "DeleteElasticsearchServiceRoleResponse",
       });
-    case 6:
+  }
+}
+function __c37(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           CrossClusterSearchConnectionId: S.String.pipe(
@@ -3590,7 +3712,11 @@ function __c8(j: number): any {
       ).annotate({
         identifier: "DeleteInboundCrossClusterSearchConnectionRequest",
       });
-    case 7:
+  }
+}
+function __c38(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           CrossClusterSearchConnectionId: S.String.pipe(
@@ -3613,31 +3739,33 @@ function __c8(j: number): any {
       ).annotate({
         identifier: "DeleteOutboundCrossClusterSearchConnectionRequest",
       });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({ CrossClusterSearchConnection: S.optional(__S(1248, __c39, 0)) }).pipe(ns),
+      ).annotate({
+        identifier: "DeleteOutboundCrossClusterSearchConnectionResponse",
+      });
   }
 }
-function __c9(j: number): any {
+function __c39(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          SourceDomainInfo: S.optional(__S(1, __c0, 1)),
-          DestinationDomainInfo: S.optional(__S(1, __c0, 1)),
+          SourceDomainInfo: S.optional(__S(32, __c1, 0)),
+          DestinationDomainInfo: S.optional(__S(32, __c1, 0)),
           CrossClusterSearchConnectionId: S.optional(S.String),
           ConnectionAlias: S.optional(S.String),
-          ConnectionStatus: S.optional(__S(2, __c0, 2)),
+          ConnectionStatus: S.optional(__S(33, __c1, 1)),
         }),
       ).annotate({
         identifier: "OutboundCrossClusterSearchConnection",
       });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          CrossClusterSearchConnection: S.optional(__S(72, __c9, 0)),
-        }).pipe(ns),
-      ).annotate({
-        identifier: "DeleteOutboundCrossClusterSearchConnectionResponse",
-      });
-    case 2:
+  }
+}
+function __c40(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ PackageID: S.String.pipe(T.HttpLabel("PackageID")) }).pipe(
           T.all(
@@ -3651,7 +3779,11 @@ function __c9(j: number): any {
           ),
         ),
       ).annotate({ identifier: "DeletePackageRequest" });
-    case 3:
+  }
+}
+function __c41(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ VpcEndpointId: S.String.pipe(T.HttpLabel("VpcEndpointId")) }).pipe(
           T.all(
@@ -3665,7 +3797,17 @@ function __c9(j: number): any {
           ),
         ),
       ).annotate({ identifier: "DeleteVpcEndpointRequest" });
-    case 4:
+    case 1:
+      return S.suspend(() =>
+        S.Struct({ VpcEndpointSummary: __S(1344, __c42, 0) }).pipe(ns),
+      ).annotate({
+        identifier: "DeleteVpcEndpointResponse",
+      });
+  }
+}
+function __c42(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           VpcEndpointId: S.optional(S.String),
@@ -3674,11 +3816,11 @@ function __c9(j: number): any {
           Status: S.optional(S.String),
         }),
       ).annotate({ identifier: "VpcEndpointSummary" });
-    case 5:
-      return S.suspend(() => S.Struct({ VpcEndpointSummary: __S(76, __c9, 4) }).pipe(ns)).annotate({
-        identifier: "DeleteVpcEndpointResponse",
-      });
-    case 6:
+  }
+}
+function __c43(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           DomainName: S.String.pipe(T.HttpLabel("DomainName")),
@@ -3698,7 +3840,7 @@ function __c9(j: number): any {
       ).annotate({
         identifier: "DescribeDomainAutoTunesRequest",
       });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           Date: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
@@ -3707,33 +3849,33 @@ function __c9(j: number): any {
           Severity: S.optional(S.String),
         }),
       ).annotate({ identifier: "ScheduledAutoTuneDetails" });
-  }
-}
-function __c10(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({ ScheduledAutoTuneDetails: S.optional(__S(79, __c9, 7)) }),
-      ).annotate({ identifier: "AutoTuneDetails" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          AutoTuneType: S.optional(S.String),
-          AutoTuneDetails: S.optional(__S(80, __c10, 0)),
-        }),
-      ).annotate({ identifier: "AutoTune" });
     case 2:
-      return S.Array(__S(81, __c10, 1));
+      return S.suspend(() =>
+        S.Struct({ ScheduledAutoTuneDetails: S.optional(__S(1377, __c43, 1)) }),
+      ).annotate({ identifier: "AutoTuneDetails" });
     case 3:
       return S.suspend(() =>
         S.Struct({
-          AutoTunes: S.optional(__S(82, __c10, 2)),
+          AutoTuneType: S.optional(S.String),
+          AutoTuneDetails: S.optional(__S(1378, __c43, 2)),
+        }),
+      ).annotate({ identifier: "AutoTune" });
+    case 4:
+      return S.Array(__S(1379, __c43, 3));
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          AutoTunes: S.optional(__S(1380, __c43, 4)),
           NextToken: S.optional(S.String),
         }).pipe(ns),
       ).annotate({
         identifier: "DescribeDomainAutoTunesResponse",
       });
-    case 4:
+  }
+}
+function __c44(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           DomainName: S.String.pipe(T.HttpLabel("DomainName")),
@@ -3752,7 +3894,7 @@ function __c10(j: number): any {
       ).annotate({
         identifier: "DescribeDomainChangeProgressRequest",
       });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           Name: S.optional(S.String),
@@ -3761,18 +3903,18 @@ function __c10(j: number): any {
           LastUpdated: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
         }),
       ).annotate({ identifier: "ChangeProgressStage" });
-    case 6:
-      return S.Array(__S(85, __c10, 5));
-    case 7:
+    case 2:
+      return S.Array(__S(1409, __c44, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
           ChangeId: S.optional(S.String),
           StartTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           Status: S.optional(S.String),
-          PendingProperties: S.optional(__S(17, __c2, 1)),
-          CompletedProperties: S.optional(__S(17, __c2, 1)),
+          PendingProperties: S.optional(__S(416, __c13, 0)),
+          CompletedProperties: S.optional(__S(416, __c13, 0)),
           TotalNumberOfStages: S.optional(S.Number),
-          ChangeProgressStages: S.optional(__S(86, __c10, 6)),
+          ChangeProgressStages: S.optional(__S(1410, __c44, 2)),
           ConfigChangeStatus: S.optional(S.String),
           LastUpdatedTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           InitiatedBy: S.optional(S.String),
@@ -3780,17 +3922,17 @@ function __c10(j: number): any {
       ).annotate({
         identifier: "ChangeProgressStatusDetails",
       });
-  }
-}
-function __c11(j: number): any {
-  switch (j) {
-    case 0:
+    case 4:
       return S.suspend(() =>
-        S.Struct({ ChangeProgressStatus: S.optional(__S(87, __c10, 7)) }).pipe(ns),
+        S.Struct({ ChangeProgressStatus: S.optional(__S(1411, __c44, 3)) }).pipe(ns),
       ).annotate({
         identifier: "DescribeDomainChangeProgressResponse",
       });
-    case 1:
+  }
+}
+function __c45(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ DomainName: S.String.pipe(T.HttpLabel("DomainName")) }).pipe(
           T.all(
@@ -3806,11 +3948,15 @@ function __c11(j: number): any {
       ).annotate({
         identifier: "DescribeElasticsearchDomainRequest",
       });
-    case 2:
-      return S.suspend(() => S.Struct({ DomainStatus: __S(56, __c7, 0) }).pipe(ns)).annotate({
+    case 1:
+      return S.suspend(() => S.Struct({ DomainStatus: __S(737, __c23, 1) }).pipe(ns)).annotate({
         identifier: "DescribeElasticsearchDomainResponse",
       });
-    case 3:
+  }
+}
+function __c46(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ DomainName: S.String.pipe(T.HttpLabel("DomainName")) }).pipe(
           T.all(
@@ -3826,7 +3972,15 @@ function __c11(j: number): any {
       ).annotate({
         identifier: "DescribeElasticsearchDomainConfigRequest",
       });
-    case 4:
+    case 1:
+      return S.suspend(() => S.Struct({ DomainConfig: __S(1524, __c47, 20) }).pipe(ns)).annotate({
+        identifier: "DescribeElasticsearchDomainConfigResponse",
+      });
+  }
+}
+function __c47(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           CreationDate: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
@@ -3836,93 +3990,84 @@ function __c11(j: number): any {
           PendingDeletion: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "OptionStatus" });
-    case 5:
-      return S.suspend(() => S.Struct({ Options: S.String, Status: __S(92, __c11, 4) })).annotate({
-        identifier: "ElasticsearchVersionStatus",
-      });
-    case 6:
+    case 1:
+      return S.suspend(() => S.Struct({ Options: S.String, Status: __S(1504, __c47, 0) })).annotate(
+        {
+          identifier: "ElasticsearchVersionStatus",
+        },
+      );
+    case 2:
       return S.suspend(() =>
-        S.Struct({ Options: __S(26, __c3, 2), Status: __S(92, __c11, 4) }),
+        S.Struct({ Options: __S(674, __c21, 2), Status: __S(1504, __c47, 0) }),
       ).annotate({
         identifier: "ElasticsearchClusterConfigStatus",
       });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({ Options: __S(27, __c3, 3), Status: __S(92, __c11, 4) }),
-      ).annotate({
-        identifier: "EBSOptionsStatus",
-      });
-  }
-}
-function __c12(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() => S.Struct({ Options: S.String, Status: __S(92, __c11, 4) })).annotate({
-        identifier: "AccessPoliciesStatus",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({ Options: __S(28, __c3, 4), Status: __S(92, __c11, 4) }),
-      ).annotate({ identifier: "SnapshotOptionsStatus" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({ Options: __S(48, __c6, 0), Status: __S(92, __c11, 4) }),
-      ).annotate({
-        identifier: "VPCDerivedInfoStatus",
-      });
     case 3:
       return S.suspend(() =>
-        S.Struct({ Options: __S(30, __c3, 6), Status: __S(92, __c11, 4) }),
-      ).annotate({
-        identifier: "CognitoOptionsStatus",
-      });
+        S.Struct({ Options: __S(675, __c21, 3), Status: __S(1504, __c47, 0) }),
+      ).annotate({ identifier: "EBSOptionsStatus" });
     case 4:
+      return S.suspend(() => S.Struct({ Options: S.String, Status: __S(1504, __c47, 0) })).annotate(
+        { identifier: "AccessPoliciesStatus" },
+      );
+    case 5:
       return S.suspend(() =>
-        S.Struct({ Options: __S(31, __c3, 7), Status: __S(92, __c11, 4) }),
+        S.Struct({ Options: __S(676, __c21, 4), Status: __S(1504, __c47, 0) }),
+      ).annotate({ identifier: "SnapshotOptionsStatus" });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({ Options: __S(576, __c18, 0), Status: __S(1504, __c47, 0) }),
+      ).annotate({ identifier: "VPCDerivedInfoStatus" });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({ Options: __S(677, __c21, 5), Status: __S(1504, __c47, 0) }),
+      ).annotate({ identifier: "CognitoOptionsStatus" });
+    case 8:
+      return S.suspend(() =>
+        S.Struct({ Options: __S(678, __c21, 6), Status: __S(1504, __c47, 0) }),
       ).annotate({
         identifier: "EncryptionAtRestOptionsStatus",
       });
-    case 5:
+    case 9:
       return S.suspend(() =>
-        S.Struct({ Options: __S(32, __c4, 0), Status: __S(92, __c11, 4) }),
+        S.Struct({ Options: __S(679, __c21, 7), Status: __S(1504, __c47, 0) }),
       ).annotate({
         identifier: "NodeToNodeEncryptionOptionsStatus",
       });
-    case 6:
+    case 10:
       return S.suspend(() =>
-        S.Struct({ Options: __S(33, __c4, 1), Status: __S(92, __c11, 4) }),
+        S.Struct({ Options: __S(680, __c21, 8), Status: __S(1504, __c47, 0) }),
       ).annotate({ identifier: "AdvancedOptionsStatus" });
-    case 7:
+    case 11:
       return S.suspend(() =>
-        S.Struct({ Options: S.optional(__S(35, __c4, 3)), Status: S.optional(__S(92, __c11, 4)) }),
+        S.Struct({
+          Options: S.optional(__S(682, __c21, 10)),
+          Status: S.optional(__S(1504, __c47, 0)),
+        }),
       ).annotate({
         identifier: "LogPublishingOptionsStatus",
       });
-  }
-}
-function __c13(j: number): any {
-  switch (j) {
-    case 0:
+    case 12:
       return S.suspend(() =>
-        S.Struct({ Options: __S(36, __c4, 4), Status: __S(92, __c11, 4) }),
+        S.Struct({ Options: __S(683, __c21, 11), Status: __S(1504, __c47, 0) }),
       ).annotate({
         identifier: "DomainEndpointOptionsStatus",
       });
-    case 1:
+    case 13:
       return S.suspend(() =>
-        S.Struct({ Options: __S(50, __c6, 2), Status: __S(92, __c11, 4) }),
+        S.Struct({ Options: __S(687, __c21, 15), Status: __S(1504, __c47, 0) }),
       ).annotate({
         identifier: "AdvancedSecurityOptionsStatus",
       });
-    case 2:
+    case 14:
       return S.suspend(() =>
         S.Struct({
           DesiredState: S.optional(S.String),
           RollbackOnDisable: S.optional(S.String),
-          MaintenanceSchedules: S.optional(__S(43, __c5, 3)),
+          MaintenanceSchedules: S.optional(__S(770, __c24, 2)),
         }),
       ).annotate({ identifier: "AutoTuneOptions" });
-    case 3:
+    case 15:
       return S.suspend(() =>
         S.Struct({
           CreationDate: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
@@ -3933,67 +4078,63 @@ function __c13(j: number): any {
           PendingDeletion: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "AutoTuneStatus" });
-    case 4:
+    case 16:
       return S.suspend(() =>
         S.Struct({
-          Options: S.optional(__S(106, __c13, 2)),
-          Status: S.optional(__S(107, __c13, 3)),
+          Options: S.optional(__S(1518, __c47, 14)),
+          Status: S.optional(__S(1519, __c47, 15)),
         }),
       ).annotate({ identifier: "AutoTuneOptionsStatus" });
-    case 5:
+    case 17:
       return S.suspend(() =>
-        S.Struct({ Options: __S(45, __c5, 5), Status: __S(92, __c11, 4) }),
+        S.Struct({ Options: __S(685, __c21, 13), Status: __S(1504, __c47, 0) }),
       ).annotate({
         identifier: "DeploymentStrategyOptionsStatus",
       });
-    case 6:
+    case 18:
       return S.suspend(() =>
-        S.Struct({ Options: __S(55, __c6, 7), Status: __S(92, __c11, 4) }),
+        S.Struct({ Options: __S(690, __c21, 18), Status: __S(1504, __c47, 0) }),
       ).annotate({
         identifier: "AutomatedSnapshotPauseOptionsStatus",
       });
-    case 7:
-      return S.suspend(() => S.Struct({ Options: S.String, Status: __S(92, __c11, 4) })).annotate({
-        identifier: "UseCaseStatus",
-      });
-  }
-}
-function __c14(j: number): any {
-  switch (j) {
-    case 0:
+    case 19:
+      return S.suspend(() => S.Struct({ Options: S.String, Status: __S(1504, __c47, 0) })).annotate(
+        { identifier: "UseCaseStatus" },
+      );
+    case 20:
       return S.suspend(() =>
         S.Struct({
-          ElasticsearchVersion: S.optional(__S(93, __c11, 5)),
-          ElasticsearchClusterConfig: S.optional(__S(94, __c11, 6)),
-          EBSOptions: S.optional(__S(95, __c11, 7)),
-          AccessPolicies: S.optional(__S(96, __c12, 0)),
-          SnapshotOptions: S.optional(__S(97, __c12, 1)),
-          VPCOptions: S.optional(__S(98, __c12, 2)),
-          CognitoOptions: S.optional(__S(99, __c12, 3)),
-          EncryptionAtRestOptions: S.optional(__S(100, __c12, 4)),
-          NodeToNodeEncryptionOptions: S.optional(__S(101, __c12, 5)),
-          AdvancedOptions: S.optional(__S(102, __c12, 6)),
-          LogPublishingOptions: S.optional(__S(103, __c12, 7)),
-          DomainEndpointOptions: S.optional(__S(104, __c13, 0)),
-          AdvancedSecurityOptions: S.optional(__S(105, __c13, 1)),
-          AutoTuneOptions: S.optional(__S(108, __c13, 4)),
-          ChangeProgressDetails: S.optional(__S(52, __c6, 4)),
-          ModifyingProperties: S.optional(__S(54, __c6, 6)),
-          DeploymentStrategyOptions: S.optional(__S(109, __c13, 5)),
-          AutomatedSnapshotPauseOptions: S.optional(__S(110, __c13, 6)),
-          UseCase: S.optional(__S(111, __c13, 7)),
-          EngineMode: S.optional(__S(111, __c13, 7)),
+          ElasticsearchVersion: S.optional(__S(1505, __c47, 1)),
+          ElasticsearchClusterConfig: S.optional(__S(1506, __c47, 2)),
+          EBSOptions: S.optional(__S(1507, __c47, 3)),
+          AccessPolicies: S.optional(__S(1508, __c47, 4)),
+          SnapshotOptions: S.optional(__S(1509, __c47, 5)),
+          VPCOptions: S.optional(__S(1510, __c47, 6)),
+          CognitoOptions: S.optional(__S(1511, __c47, 7)),
+          EncryptionAtRestOptions: S.optional(__S(1512, __c47, 8)),
+          NodeToNodeEncryptionOptions: S.optional(__S(1513, __c47, 9)),
+          AdvancedOptions: S.optional(__S(1514, __c47, 10)),
+          LogPublishingOptions: S.optional(__S(1515, __c47, 11)),
+          DomainEndpointOptions: S.optional(__S(1516, __c47, 12)),
+          AdvancedSecurityOptions: S.optional(__S(1517, __c47, 13)),
+          AutoTuneOptions: S.optional(__S(1520, __c47, 16)),
+          ChangeProgressDetails: S.optional(__S(704, __c22, 0)),
+          ModifyingProperties: S.optional(__S(689, __c21, 17)),
+          DeploymentStrategyOptions: S.optional(__S(1521, __c47, 17)),
+          AutomatedSnapshotPauseOptions: S.optional(__S(1522, __c47, 18)),
+          UseCase: S.optional(__S(1523, __c47, 19)),
+          EngineMode: S.optional(__S(1523, __c47, 19)),
         }),
       ).annotate({
         identifier: "ElasticsearchDomainConfig",
       });
-    case 1:
-      return S.suspend(() => S.Struct({ DomainConfig: __S(112, __c14, 0) }).pipe(ns)).annotate({
-        identifier: "DescribeElasticsearchDomainConfigResponse",
-      });
-    case 2:
+  }
+}
+function __c48(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
-        S.Struct({ DomainNames: __S(17, __c2, 1) }).pipe(
+        S.Struct({ DomainNames: __S(416, __c13, 0) }).pipe(
           T.all(
             ns,
             T.Http({ method: "POST", uri: "/2015-01-01/es/domain-info" }),
@@ -4007,13 +4148,19 @@ function __c14(j: number): any {
       ).annotate({
         identifier: "DescribeElasticsearchDomainsRequest",
       });
-    case 3:
-      return S.Array(__S(56, __c7, 0));
-    case 4:
-      return S.suspend(() => S.Struct({ DomainStatusList: __S(115, __c14, 3) }).pipe(ns)).annotate({
-        identifier: "DescribeElasticsearchDomainsResponse",
-      });
-    case 5:
+    case 1:
+      return S.Array(__S(737, __c23, 1));
+    case 2:
+      return S.suspend(() => S.Struct({ DomainStatusList: __S(1537, __c48, 1) }).pipe(ns)).annotate(
+        {
+          identifier: "DescribeElasticsearchDomainsResponse",
+        },
+      );
+  }
+}
+function __c49(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           DomainName: S.optional(S.String).pipe(T.HttpQuery("domainName")),
@@ -4036,67 +4183,57 @@ function __c14(j: number): any {
       ).annotate({
         identifier: "DescribeElasticsearchInstanceTypeLimitsRequest",
       });
-    case 6:
+    case 1:
       return S.suspend(() =>
-        S.Struct({ LimitName: S.optional(S.String), LimitValues: S.optional(__S(17, __c2, 1)) }),
+        S.Struct({ LimitName: S.optional(S.String), LimitValues: S.optional(__S(416, __c13, 0)) }),
       ).annotate({ identifier: "StorageTypeLimit" });
-    case 7:
-      return S.Array(__S(118, __c14, 6));
-  }
-}
-function __c15(j: number): any {
-  switch (j) {
-    case 0:
+    case 2:
+      return S.Array(__S(1569, __c49, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
           StorageTypeName: S.optional(S.String),
           StorageSubTypeName: S.optional(S.String),
-          StorageTypeLimits: S.optional(__S(119, __c14, 7)),
+          StorageTypeLimits: S.optional(__S(1570, __c49, 2)),
         }),
       ).annotate({ identifier: "StorageType" });
-    case 1:
-      return S.Array(__S(120, __c15, 0));
-    case 2:
+    case 4:
+      return S.Array(__S(1571, __c49, 3));
+    case 5:
       return S.suspend(() =>
         S.Struct({
           MinimumInstanceCount: S.optional(S.Number),
           MaximumInstanceCount: S.optional(S.Number),
         }),
       ).annotate({ identifier: "InstanceCountLimits" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({ InstanceCountLimits: S.optional(__S(122, __c15, 2)) }),
-      ).annotate({ identifier: "InstanceLimits" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          StorageTypes: S.optional(__S(121, __c15, 1)),
-          InstanceLimits: S.optional(__S(123, __c15, 3)),
-          AdditionalLimits: S.optional(__S(119, __c14, 7)),
-        }),
-      ).annotate({ identifier: "Limits" });
-    case 5:
-      return S.Record(S.String, /*@__PURE__*/ __S(124, __c15, 4).pipe(S.optional));
     case 6:
       return S.suspend(() =>
-        S.Struct({ LimitsByRole: S.optional(__S(125, __c15, 5)) }).pipe(ns),
+        S.Struct({ InstanceCountLimits: S.optional(__S(1573, __c49, 5)) }),
+      ).annotate({ identifier: "InstanceLimits" });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          StorageTypes: S.optional(__S(1572, __c49, 4)),
+          InstanceLimits: S.optional(__S(1574, __c49, 6)),
+          AdditionalLimits: S.optional(__S(1570, __c49, 2)),
+        }),
+      ).annotate({ identifier: "Limits" });
+    case 8:
+      return S.Record(S.String, /*@__PURE__*/ __S(1575, __c49, 7).pipe(S.optional));
+    case 9:
+      return S.suspend(() =>
+        S.Struct({ LimitsByRole: S.optional(__S(1576, __c49, 8)) }).pipe(ns),
       ).annotate({
         identifier: "DescribeElasticsearchInstanceTypeLimitsResponse",
       });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({ Name: S.optional(S.String), Values: S.optional(__S(17, __c2, 1)) }),
-      ).annotate({ identifier: "Filter" });
   }
 }
-function __c16(j: number): any {
+function __c50(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(127, __c15, 7));
-    case 1:
       return S.suspend(() =>
         S.Struct({
-          Filters: S.optional(__S(128, __c16, 0)),
+          Filters: S.optional(__S(1633, __c51, 1)),
           MaxResults: S.optional(S.Number),
           NextToken: S.optional(S.String),
         }).pipe(
@@ -4113,21 +4250,35 @@ function __c16(j: number): any {
       ).annotate({
         identifier: "DescribeInboundCrossClusterSearchConnectionsRequest",
       });
+    case 1:
+      return S.Array(__S(64, __c2, 0));
     case 2:
-      return S.Array(__S(3, __c0, 3));
-    case 3:
       return S.suspend(() =>
         S.Struct({
-          CrossClusterSearchConnections: S.optional(__S(130, __c16, 2)),
+          CrossClusterSearchConnections: S.optional(__S(1601, __c50, 1)),
           NextToken: S.optional(S.String),
         }).pipe(ns),
       ).annotate({
         identifier: "DescribeInboundCrossClusterSearchConnectionsResponse",
       });
-    case 4:
+  }
+}
+function __c51(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ Name: S.optional(S.String), Values: S.optional(__S(416, __c13, 0)) }),
+      ).annotate({ identifier: "Filter" });
+    case 1:
+      return S.Array(__S(1632, __c51, 0));
+  }
+}
+function __c52(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          Filters: S.optional(__S(128, __c16, 0)),
+          Filters: S.optional(__S(1633, __c51, 1)),
           MaxResults: S.optional(S.Number),
           NextToken: S.optional(S.String),
         }).pipe(
@@ -4144,34 +4295,34 @@ function __c16(j: number): any {
       ).annotate({
         identifier: "DescribeOutboundCrossClusterSearchConnectionsRequest",
       });
-    case 5:
-      return S.Array(__S(72, __c9, 0));
-    case 6:
+    case 1:
+      return S.Array(__S(1248, __c39, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          CrossClusterSearchConnections: S.optional(__S(133, __c16, 5)),
+          CrossClusterSearchConnections: S.optional(__S(1665, __c52, 1)),
           NextToken: S.optional(S.String),
         }).pipe(ns),
       ).annotate({
         identifier: "DescribeOutboundCrossClusterSearchConnectionsResponse",
       });
-    case 7:
+  }
+}
+function __c53(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           Name: S.optional(S.String),
-          Value: S.optional(__S(17, __c2, 1)),
+          Value: S.optional(__S(416, __c13, 0)),
         }),
       ).annotate({ identifier: "DescribePackagesFilter" });
-  }
-}
-function __c17(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(135, __c16, 7));
     case 1:
+      return S.Array(__S(1696, __c53, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          Filters: S.optional(__S(136, __c17, 0)),
+          Filters: S.optional(__S(1697, __c53, 1)),
           MaxResults: S.optional(S.Number),
           NextToken: S.optional(S.String),
         }).pipe(
@@ -4186,16 +4337,20 @@ function __c17(j: number): any {
           ),
         ),
       ).annotate({ identifier: "DescribePackagesRequest" });
-    case 2:
-      return S.Array(__S(62, __c7, 6));
     case 3:
+      return S.Array(__S(896, __c28, 0));
+    case 4:
       return S.suspend(() =>
         S.Struct({
-          PackageDetailsList: S.optional(__S(138, __c17, 2)),
+          PackageDetailsList: S.optional(__S(1699, __c53, 3)),
           NextToken: S.optional(S.String),
         }).pipe(ns),
       ).annotate({ identifier: "DescribePackagesResponse" });
-    case 4:
+  }
+}
+function __c54(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           ReservedElasticsearchInstanceOfferingId: S.optional(S.String).pipe(
@@ -4217,20 +4372,7 @@ function __c17(j: number): any {
       ).annotate({
         identifier: "DescribeReservedElasticsearchInstanceOfferingsRequest",
       });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          RecurringChargeAmount: S.optional(S.Number),
-          RecurringChargeFrequency: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "RecurringCharge" });
-    case 6:
-      return S.Array(
-        /*@__PURE__*/ __S(141, __c17, 5).pipe(/*@__PURE__*/ T.XmlName("RecurringCharge")).annotate({
-          identifier: "RecurringCharge",
-        }),
-      );
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           ReservedElasticsearchInstanceOfferingId: S.optional(S.String),
@@ -4240,31 +4382,50 @@ function __c17(j: number): any {
           UsagePrice: S.optional(S.Number),
           CurrencyCode: S.optional(S.String),
           PaymentOption: S.optional(S.String),
-          RecurringCharges: S.optional(__S(142, __c17, 6)),
+          RecurringCharges: S.optional(__S(1761, __c55, 1)),
         }),
       ).annotate({
         identifier: "ReservedElasticsearchInstanceOffering",
       });
-  }
-}
-function __c18(j: number): any {
-  switch (j) {
-    case 0:
+    case 2:
       return S.Array(
-        /*@__PURE__*/ __S(143, __c17, 7)
+        /*@__PURE__*/ __S(1729, __c54, 1)
           .pipe(/*@__PURE__*/ T.XmlName("ReservedElasticsearchInstanceOffering"))
           .annotate({ identifier: "ReservedElasticsearchInstanceOffering" }),
       );
-    case 1:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           NextToken: S.optional(S.String),
-          ReservedElasticsearchInstanceOfferings: S.optional(__S(144, __c18, 0)),
+          ReservedElasticsearchInstanceOfferings: S.optional(__S(1730, __c54, 2)),
         }).pipe(ns),
       ).annotate({
         identifier: "DescribeReservedElasticsearchInstanceOfferingsResponse",
       });
-    case 2:
+  }
+}
+function __c55(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          RecurringChargeAmount: S.optional(S.Number),
+          RecurringChargeFrequency: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "RecurringCharge" });
+    case 1:
+      return S.Array(
+        /*@__PURE__*/ __S(1760, __c55, 0)
+          .pipe(/*@__PURE__*/ T.XmlName("RecurringCharge"))
+          .annotate({
+            identifier: "RecurringCharge",
+          }),
+      );
+  }
+}
+function __c56(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           ReservedElasticsearchInstanceId: S.optional(S.String).pipe(T.HttpQuery("reservationId")),
@@ -4284,7 +4445,7 @@ function __c18(j: number): any {
       ).annotate({
         identifier: "DescribeReservedElasticsearchInstancesRequest",
       });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           ReservationName: S.optional(S.String),
@@ -4299,25 +4460,29 @@ function __c18(j: number): any {
           ElasticsearchInstanceCount: S.optional(S.Number),
           State: S.optional(S.String),
           PaymentOption: S.optional(S.String),
-          RecurringCharges: S.optional(__S(142, __c17, 6)),
+          RecurringCharges: S.optional(__S(1761, __c55, 1)),
         }),
       ).annotate({
         identifier: "ReservedElasticsearchInstance",
       });
-    case 4:
-      return S.Array(__S(147, __c18, 3));
-    case 5:
+    case 2:
+      return S.Array(__S(1793, __c56, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
           NextToken: S.optional(S.String),
-          ReservedElasticsearchInstances: S.optional(__S(148, __c18, 4)),
+          ReservedElasticsearchInstances: S.optional(__S(1794, __c56, 2)),
         }).pipe(ns),
       ).annotate({
         identifier: "DescribeReservedElasticsearchInstancesResponse",
       });
-    case 6:
+  }
+}
+function __c57(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
-        S.Struct({ VpcEndpointIds: __S(17, __c2, 1) }).pipe(
+        S.Struct({ VpcEndpointIds: __S(416, __c13, 0) }).pipe(
           T.all(
             ns,
             T.Http({ method: "POST", uri: "/2015-01-01/es/vpcEndpoints/describe" }),
@@ -4331,13 +4496,9 @@ function __c18(j: number): any {
       ).annotate({
         identifier: "DescribeVpcEndpointsRequest",
       });
-    case 7:
-      return S.Array(__S(65, __c8, 1));
-  }
-}
-function __c19(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
+      return S.Array(__S(1024, __c32, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           VpcEndpointId: S.optional(S.String),
@@ -4345,17 +4506,22 @@ function __c19(j: number): any {
           ErrorMessage: S.optional(S.String),
         }),
       ).annotate({ identifier: "VpcEndpointError" });
-    case 1:
-      return S.Array(__S(152, __c19, 0));
-    case 2:
+    case 3:
+      return S.Array(__S(1826, __c57, 2));
+    case 4:
       return S.suspend(() =>
-        S.Struct({ VpcEndpoints: __S(151, __c18, 7), VpcEndpointErrors: __S(153, __c19, 1) }).pipe(
-          ns,
-        ),
+        S.Struct({
+          VpcEndpoints: __S(1825, __c57, 1),
+          VpcEndpointErrors: __S(1827, __c57, 3),
+        }).pipe(ns),
       ).annotate({
         identifier: "DescribeVpcEndpointsResponse",
       });
-    case 3:
+  }
+}
+function __c58(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           PackageID: S.String.pipe(T.HttpLabel("PackageID")),
@@ -4375,13 +4541,17 @@ function __c19(j: number): any {
           ),
         ),
       ).annotate({ identifier: "DissociatePackageRequest" });
-    case 4:
+    case 1:
       return S.suspend(() =>
-        S.Struct({ DomainPackageDetails: S.optional(__S(11, __c1, 3)) }).pipe(ns),
+        S.Struct({ DomainPackageDetails: S.optional(__S(288, __c9, 0)) }).pipe(ns),
       ).annotate({
         identifier: "DissociatePackageResponse",
       });
-    case 5:
+  }
+}
+function __c59(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ DomainName: S.optional(S.String).pipe(T.HttpQuery("domainName")) }).pipe(
           T.all(
@@ -4397,28 +4567,28 @@ function __c19(j: number): any {
       ).annotate({
         identifier: "GetCompatibleElasticsearchVersionsRequest",
       });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           SourceVersion: S.optional(S.String),
-          TargetVersions: S.optional(__S(17, __c2, 1)),
+          TargetVersions: S.optional(__S(416, __c13, 0)),
         }),
       ).annotate({ identifier: "CompatibleVersionsMap" });
-    case 7:
-      return S.Array(__S(158, __c19, 6));
-  }
-}
-function __c20(j: number): any {
-  switch (j) {
-    case 0:
+    case 2:
+      return S.Array(__S(1889, __c59, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          CompatibleElasticsearchVersions: S.optional(__S(159, __c19, 7)),
+          CompatibleElasticsearchVersions: S.optional(__S(1890, __c59, 2)),
         }).pipe(ns),
       ).annotate({
         identifier: "GetCompatibleElasticsearchVersionsResponse",
       });
-    case 1:
+  }
+}
+function __c60(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           PackageID: S.String.pipe(T.HttpLabel("PackageID")),
@@ -4438,7 +4608,7 @@ function __c20(j: number): any {
       ).annotate({
         identifier: "GetPackageVersionHistoryRequest",
       });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           PackageVersion: S.optional(S.String),
@@ -4446,19 +4616,23 @@ function __c20(j: number): any {
           CreatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
         }),
       ).annotate({ identifier: "PackageVersionHistory" });
+    case 2:
+      return S.Array(__S(1921, __c60, 1));
     case 3:
-      return S.Array(__S(162, __c20, 2));
-    case 4:
       return S.suspend(() =>
         S.Struct({
           PackageID: S.optional(S.String),
-          PackageVersionHistoryList: S.optional(__S(163, __c20, 3)),
+          PackageVersionHistoryList: S.optional(__S(1922, __c60, 2)),
           NextToken: S.optional(S.String),
         }).pipe(ns),
       ).annotate({
         identifier: "GetPackageVersionHistoryResponse",
       });
-    case 5:
+  }
+}
+function __c61(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           DomainName: S.String.pipe(T.HttpLabel("DomainName")),
@@ -4476,42 +4650,42 @@ function __c20(j: number): any {
           ),
         ),
       ).annotate({ identifier: "GetUpgradeHistoryRequest" });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           UpgradeStep: S.optional(S.String),
           UpgradeStepStatus: S.optional(S.String),
-          Issues: S.optional(__S(17, __c2, 1)),
+          Issues: S.optional(__S(416, __c13, 0)),
           ProgressPercent: S.optional(S.Number),
         }),
       ).annotate({ identifier: "UpgradeStepItem" });
-    case 7:
-      return S.Array(__S(166, __c20, 6));
-  }
-}
-function __c21(j: number): any {
-  switch (j) {
-    case 0:
+    case 2:
+      return S.Array(__S(1953, __c61, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
           UpgradeName: S.optional(S.String),
           StartTimestamp: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           UpgradeStatus: S.optional(S.String),
-          StepsList: S.optional(__S(167, __c20, 7)),
+          StepsList: S.optional(__S(1954, __c61, 2)),
         }),
       ).annotate({ identifier: "UpgradeHistory" });
-    case 1:
-      return S.Array(__S(168, __c21, 0));
-    case 2:
+    case 4:
+      return S.Array(__S(1955, __c61, 3));
+    case 5:
       return S.suspend(() =>
         S.Struct({
-          UpgradeHistories: S.optional(__S(169, __c21, 1)),
+          UpgradeHistories: S.optional(__S(1956, __c61, 4)),
           NextToken: S.optional(S.String),
         }).pipe(ns),
       ).annotate({
         identifier: "GetUpgradeHistoryResponse",
       });
-    case 3:
+  }
+}
+function __c62(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ DomainName: S.String.pipe(T.HttpLabel("DomainName")) }).pipe(
           T.all(
@@ -4525,7 +4699,7 @@ function __c21(j: number): any {
           ),
         ),
       ).annotate({ identifier: "GetUpgradeStatusRequest" });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           UpgradeStep: S.optional(S.String),
@@ -4533,7 +4707,11 @@ function __c21(j: number): any {
           UpgradeName: S.optional(S.String),
         }).pipe(ns),
       ).annotate({ identifier: "GetUpgradeStatusResponse" });
-    case 5:
+  }
+}
+function __c63(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ EngineType: S.optional(S.String).pipe(T.HttpQuery("engineType")) }).pipe(
           T.all(
@@ -4547,21 +4725,21 @@ function __c21(j: number): any {
           ),
         ),
       ).annotate({ identifier: "ListDomainNamesRequest" });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({ DomainName: S.optional(S.String), EngineType: S.optional(S.String) }),
       ).annotate({ identifier: "DomainInfo" });
-    case 7:
-      return S.Array(__S(174, __c21, 6));
+    case 2:
+      return S.Array(__S(2017, __c63, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({ DomainNames: S.optional(__S(2018, __c63, 2)) }).pipe(ns),
+      ).annotate({ identifier: "ListDomainNamesResponse" });
   }
 }
-function __c22(j: number): any {
+function __c64(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() =>
-        S.Struct({ DomainNames: S.optional(__S(175, __c21, 7)) }).pipe(ns),
-      ).annotate({ identifier: "ListDomainNamesResponse" });
-    case 1:
       return S.suspend(() =>
         S.Struct({
           PackageID: S.String.pipe(T.HttpLabel("PackageID")),
@@ -4581,18 +4759,26 @@ function __c22(j: number): any {
       ).annotate({
         identifier: "ListDomainsForPackageRequest",
       });
-    case 2:
-      return S.Array(__S(11, __c1, 3));
-    case 3:
+  }
+}
+function __c65(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(288, __c9, 0));
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          DomainPackageDetailsList: S.optional(__S(178, __c22, 2)),
+          DomainPackageDetailsList: S.optional(__S(2080, __c65, 0)),
           NextToken: S.optional(S.String),
         }).pipe(ns),
       ).annotate({
         identifier: "ListDomainsForPackageResponse",
       });
-    case 4:
+  }
+}
+function __c66(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           ElasticsearchVersion: S.String.pipe(T.HttpLabel("ElasticsearchVersion")),
@@ -4613,18 +4799,22 @@ function __c22(j: number): any {
       ).annotate({
         identifier: "ListElasticsearchInstanceTypesRequest",
       });
-    case 5:
+    case 1:
       return S.Array(S.String);
-    case 6:
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          ElasticsearchInstanceTypes: S.optional(__S(181, __c22, 5)),
+          ElasticsearchInstanceTypes: S.optional(__S(2113, __c66, 1)),
           NextToken: S.optional(S.String),
         }).pipe(ns),
       ).annotate({
         identifier: "ListElasticsearchInstanceTypesResponse",
       });
-    case 7:
+  }
+}
+function __c67(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           MaxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
@@ -4643,20 +4833,20 @@ function __c22(j: number): any {
       ).annotate({
         identifier: "ListElasticsearchVersionsRequest",
       });
-  }
-}
-function __c23(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          ElasticsearchVersions: S.optional(__S(17, __c2, 1)),
+          ElasticsearchVersions: S.optional(__S(416, __c13, 0)),
           NextToken: S.optional(S.String),
         }).pipe(ns),
       ).annotate({
         identifier: "ListElasticsearchVersionsResponse",
       });
-    case 1:
+  }
+}
+function __c68(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           DomainName: S.String.pipe(T.HttpLabel("DomainName")),
@@ -4676,7 +4866,11 @@ function __c23(j: number): any {
       ).annotate({
         identifier: "ListPackagesForDomainRequest",
       });
-    case 2:
+  }
+}
+function __c69(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ ARN: S.String.pipe(T.HttpQuery("arn")) }).pipe(
           T.all(
@@ -4690,11 +4884,15 @@ function __c23(j: number): any {
           ),
         ),
       ).annotate({ identifier: "ListTagsRequest" });
-    case 3:
-      return S.suspend(() => S.Struct({ TagList: S.optional(__S(6, __c0, 6)) }).pipe(ns)).annotate({
-        identifier: "ListTagsResponse",
-      });
-    case 4:
+    case 1:
+      return S.suspend(() =>
+        S.Struct({ TagList: S.optional(__S(161, __c5, 1)) }).pipe(ns),
+      ).annotate({ identifier: "ListTagsResponse" });
+  }
+}
+function __c70(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           DomainName: S.String.pipe(T.HttpLabel("DomainName")),
@@ -4716,15 +4914,19 @@ function __c23(j: number): any {
       ).annotate({
         identifier: "ListVpcEndpointAccessRequest",
       });
-    case 5:
-      return S.Array(__S(14, __c1, 6));
-    case 6:
+    case 1:
+      return S.Array(__S(352, __c11, 0));
+    case 2:
       return S.suspend(() =>
-        S.Struct({ AuthorizedPrincipalList: __S(189, __c23, 5), NextToken: S.String }).pipe(ns),
+        S.Struct({ AuthorizedPrincipalList: __S(2241, __c70, 1), NextToken: S.String }).pipe(ns),
       ).annotate({
         identifier: "ListVpcEndpointAccessResponse",
       });
-    case 7:
+  }
+}
+function __c71(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ NextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")) }).pipe(
           T.all(
@@ -4738,17 +4940,21 @@ function __c23(j: number): any {
           ),
         ),
       ).annotate({ identifier: "ListVpcEndpointsRequest" });
-  }
-}
-function __c24(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(76, __c9, 4));
     case 1:
       return S.suspend(() =>
-        S.Struct({ VpcEndpointSummaryList: __S(192, __c24, 0), NextToken: S.String }).pipe(ns),
+        S.Struct({ VpcEndpointSummaryList: __S(2304, __c72, 0), NextToken: S.String }).pipe(ns),
       ).annotate({ identifier: "ListVpcEndpointsResponse" });
-    case 2:
+  }
+}
+function __c72(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(1344, __c42, 0));
+  }
+}
+function __c73(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           DomainName: S.String.pipe(T.HttpLabel("DomainName")),
@@ -4767,13 +4973,17 @@ function __c24(j: number): any {
       ).annotate({
         identifier: "ListVpcEndpointsForDomainRequest",
       });
-    case 3:
+    case 1:
       return S.suspend(() =>
-        S.Struct({ VpcEndpointSummaryList: __S(192, __c24, 0), NextToken: S.String }).pipe(ns),
+        S.Struct({ VpcEndpointSummaryList: __S(2304, __c72, 0), NextToken: S.String }).pipe(ns),
       ).annotate({
         identifier: "ListVpcEndpointsForDomainResponse",
       });
-    case 4:
+  }
+}
+function __c74(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           ReservedElasticsearchInstanceOfferingId: S.String,
@@ -4793,7 +5003,7 @@ function __c24(j: number): any {
       ).annotate({
         identifier: "PurchaseReservedElasticsearchInstanceOfferingRequest",
       });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           ReservedElasticsearchInstanceId: S.optional(S.String),
@@ -4802,7 +5012,11 @@ function __c24(j: number): any {
       ).annotate({
         identifier: "PurchaseReservedElasticsearchInstanceOfferingResponse",
       });
-    case 6:
+  }
+}
+function __c75(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           CrossClusterSearchConnectionId: S.String.pipe(
@@ -4825,9 +5039,13 @@ function __c24(j: number): any {
       ).annotate({
         identifier: "RejectInboundCrossClusterSearchConnectionRequest",
       });
-    case 7:
+  }
+}
+function __c76(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
-        S.Struct({ ARN: S.String, TagKeys: __S(17, __c2, 1) }).pipe(
+        S.Struct({ ARN: S.String, TagKeys: __S(416, __c13, 0) }).pipe(
           T.all(
             ns,
             T.Http({ method: "POST", uri: "/2015-01-01/tags-removal" }),
@@ -4841,7 +5059,7 @@ function __c24(j: number): any {
       ).annotate({ identifier: "RemoveTagsRequest" });
   }
 }
-function __c25(j: number): any {
+function __c77(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4862,7 +5080,11 @@ function __c25(j: number): any {
       ).annotate({
         identifier: "RevokeVpcEndpointAccessRequest",
       });
-    case 1:
+  }
+}
+function __c78(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ DomainName: S.String }).pipe(
           T.all(
@@ -4878,26 +5100,30 @@ function __c25(j: number): any {
       ).annotate({
         identifier: "StartElasticsearchServiceSoftwareUpdateRequest",
       });
-    case 2:
+  }
+}
+function __c79(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           DomainName: S.String.pipe(T.HttpLabel("DomainName")),
-          ElasticsearchClusterConfig: S.optional(__S(26, __c3, 2)),
-          EBSOptions: S.optional(__S(27, __c3, 3)),
-          SnapshotOptions: S.optional(__S(28, __c3, 4)),
-          VPCOptions: S.optional(__S(29, __c3, 5)),
-          CognitoOptions: S.optional(__S(30, __c3, 6)),
-          AdvancedOptions: S.optional(__S(33, __c4, 1)),
+          ElasticsearchClusterConfig: S.optional(__S(674, __c21, 2)),
+          EBSOptions: S.optional(__S(675, __c21, 3)),
+          SnapshotOptions: S.optional(__S(676, __c21, 4)),
+          VPCOptions: S.optional(__S(608, __c19, 0)),
+          CognitoOptions: S.optional(__S(677, __c21, 5)),
+          AdvancedOptions: S.optional(__S(680, __c21, 8)),
           AccessPolicies: S.optional(S.String),
-          LogPublishingOptions: S.optional(__S(35, __c4, 3)),
-          DomainEndpointOptions: S.optional(__S(36, __c4, 4)),
-          AdvancedSecurityOptions: S.optional(__S(40, __c5, 0)),
-          NodeToNodeEncryptionOptions: S.optional(__S(32, __c4, 0)),
-          EncryptionAtRestOptions: S.optional(__S(31, __c3, 7)),
-          AutoTuneOptions: S.optional(__S(106, __c13, 2)),
+          LogPublishingOptions: S.optional(__S(682, __c21, 10)),
+          DomainEndpointOptions: S.optional(__S(683, __c21, 11)),
+          AdvancedSecurityOptions: S.optional(__S(802, __c25, 2)),
+          NodeToNodeEncryptionOptions: S.optional(__S(679, __c21, 7)),
+          EncryptionAtRestOptions: S.optional(__S(678, __c21, 6)),
+          AutoTuneOptions: S.optional(__S(1518, __c47, 14)),
           DryRun: S.optional(S.Boolean),
-          DeploymentStrategyOptions: S.optional(__S(45, __c5, 5)),
-          AutomatedSnapshotPauseOptions: S.optional(__S(46, __c5, 6)),
+          DeploymentStrategyOptions: S.optional(__S(685, __c21, 13)),
+          AutomatedSnapshotPauseOptions: S.optional(__S(803, __c25, 3)),
           UseCase: S.optional(S.String),
           EngineMode: S.optional(S.String),
         }).pipe(
@@ -4914,24 +5140,28 @@ function __c25(j: number): any {
       ).annotate({
         identifier: "UpdateElasticsearchDomainConfigRequest",
       });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({ DeploymentType: S.optional(S.String), Message: S.optional(S.String) }),
       ).annotate({ identifier: "DryRunResults" });
-    case 4:
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          DomainConfig: __S(112, __c14, 0),
-          DryRunResults: S.optional(__S(203, __c25, 3)),
+          DomainConfig: __S(1524, __c47, 20),
+          DryRunResults: S.optional(__S(2529, __c79, 1)),
         }).pipe(ns),
       ).annotate({
         identifier: "UpdateElasticsearchDomainConfigResponse",
       });
-    case 5:
+  }
+}
+function __c80(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           PackageID: S.String,
-          PackageSource: __S(60, __c7, 4),
+          PackageSource: __S(960, __c30, 0),
           PackageDescription: S.optional(S.String),
           CommitMessage: S.optional(S.String),
         }).pipe(
@@ -4946,9 +5176,13 @@ function __c25(j: number): any {
           ),
         ),
       ).annotate({ identifier: "UpdatePackageRequest" });
-    case 6:
+  }
+}
+function __c81(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
-        S.Struct({ VpcEndpointId: S.String, VpcOptions: __S(29, __c3, 5) }).pipe(
+        S.Struct({ VpcEndpointId: S.String, VpcOptions: __S(608, __c19, 0) }).pipe(
           T.all(
             ns,
             T.Http({ method: "POST", uri: "/2015-01-01/es/vpcEndpoints/update" }),
@@ -4960,7 +5194,11 @@ function __c25(j: number): any {
           ),
         ),
       ).annotate({ identifier: "UpdateVpcEndpointRequest" });
-    case 7:
+  }
+}
+function __c82(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           DomainName: S.String,
@@ -4980,24 +5218,19 @@ function __c25(j: number): any {
       ).annotate({
         identifier: "UpgradeElasticsearchDomainRequest",
       });
-  }
-}
-function __c26(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           DomainName: S.optional(S.String),
           TargetVersion: S.optional(S.String),
           PerformCheckOnly: S.optional(S.Boolean),
-          ChangeProgressDetails: S.optional(__S(52, __c6, 4)),
+          ChangeProgressDetails: S.optional(__S(704, __c22, 0)),
         }).pipe(ns),
       ).annotate({
         identifier: "UpgradeElasticsearchDomainResponse",
       });
   }
 }
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

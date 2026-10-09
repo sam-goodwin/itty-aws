@@ -13891,8 +13891,8 @@ export const benefitGrantsList: API.PaginatedOperationMethod<
   BenefitGrant
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(2, __c0, 2) as any as S.Schema<BenefitGrantsListRequest>,
-    output: __S(11, __c1, 3) as any as S.Schema<ListResourceBenefitGrant>,
+    input: __S(1440, __c180, 0) as any as S.Schema<BenefitGrantsListRequest>,
+    output: __S(1451, __c181, 3) as any as S.Schema<ListResourceBenefitGrant>,
     errors: [UnprocessableEntity, UnknownPolarError],
     protocol: PolarProtocol,
     retry: Retry.Retry,
@@ -13915,8 +13915,8 @@ export const benefitsCreate: API.OperationMethod<
   BenefitsCreateError,
   PolarOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(12, __c1, 4) as any as S.Schema<BenefitsCreateRequest>,
-  output: __S(13, __c1, 5) as any as S.Schema<BenefitsCreateResponse>,
+  input: __S(1632, __c204, 0) as any as S.Schema<BenefitsCreateRequest>,
+  output: __S(1640, __c205, 0) as any as S.Schema<BenefitsCreateResponse>,
   errors: [UnprocessableEntity, UnknownPolarError],
   protocol: PolarProtocol,
   retry: Retry.Retry,
@@ -13930,8 +13930,8 @@ export const benefitsDelete: API.OperationMethod<
   BenefitsDeleteError,
   PolarOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(14, __c1, 6) as any as S.Schema<BenefitsDeleteRequest>,
-  output: __S(15, __c1, 7) as any as S.Schema<BenefitsDeleteResponse>,
+  input: __S(1752, __c219, 0) as any as S.Schema<BenefitsDeleteRequest>,
+  output: __S(1760, __c220, 0) as any as S.Schema<BenefitsDeleteResponse>,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPolarError],
   protocol: PolarProtocol,
   retry: Retry.Retry,
@@ -13947,8 +13947,8 @@ export const benefitsFiles: API.PaginatedOperationMethod<
   BenefitDownloadableFile
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(16, __c2, 0) as any as S.Schema<BenefitsFilesRequest>,
-    output: __S(19, __c2, 3) as any as S.Schema<ListResourceBenefitDownloadableFile>,
+    input: __S(1848, __c231, 0) as any as S.Schema<BenefitsFilesRequest>,
+    output: __S(1851, __c231, 3) as any as S.Schema<ListResourceBenefitDownloadableFile>,
     errors: [NotFound, UnprocessableEntity, UnknownPolarError],
     protocol: PolarProtocol,
     retry: Retry.Retry,
@@ -13971,8 +13971,8 @@ export const benefitsGet: API.OperationMethod<
   BenefitsGetError,
   PolarOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(20, __c2, 4) as any as S.Schema<BenefitsGetRequest>,
-  output: __S(13, __c1, 5) as any as S.Schema<BenefitsGetResponse>,
+  input: __S(1960, __c245, 0) as any as S.Schema<BenefitsGetRequest>,
+  output: __S(1640, __c205, 0) as any as S.Schema<BenefitsGetResponse>,
   errors: [NotFound, UnprocessableEntity, UnknownPolarError],
   protocol: PolarProtocol,
   retry: Retry.Retry,
@@ -13988,8 +13988,8 @@ export const benefitsGrants: API.PaginatedOperationMethod<
   BenefitGrant
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(21, __c2, 5) as any as S.Schema<BenefitsGrantsRequest>,
-    output: __S(11, __c1, 3) as any as S.Schema<ListResourceBenefitGrant>,
+    input: __S(0, __c0, 0) as any as S.Schema<BenefitsGrantsRequest>,
+    output: __S(1451, __c181, 3) as any as S.Schema<ListResourceBenefitGrant>,
     errors: [NotFound, UnprocessableEntity, UnknownPolarError],
     protocol: PolarProtocol,
     retry: Retry.Retry,
@@ -14014,8 +14014,8 @@ export const benefitsList: API.PaginatedOperationMethod<
   Benefit
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(23, __c2, 7) as any as S.Schema<BenefitsListRequest>,
-    output: __S(25, __c3, 1) as any as S.Schema<ListResourceBenefit>,
+    input: __S(104, __c13, 0) as any as S.Schema<BenefitsListRequest>,
+    output: __S(105, __c13, 1) as any as S.Schema<ListResourceBenefit>,
     errors: [UnprocessableEntity, UnknownPolarError],
     protocol: PolarProtocol,
     retry: Retry.Retry,
@@ -14038,8 +14038,8 @@ export const benefitsUpdate: API.OperationMethod<
   BenefitsUpdateError,
   PolarOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(26, __c3, 2) as any as S.Schema<BenefitsUpdateRequest>,
-  output: __S(13, __c1, 5) as any as S.Schema<BenefitsUpdateResponse>,
+  input: __S(208, __c26, 0) as any as S.Schema<BenefitsUpdateRequest>,
+  output: __S(1640, __c205, 0) as any as S.Schema<BenefitsUpdateResponse>,
   errors: [NotFound, UnprocessableEntity, UnknownPolarError],
   protocol: PolarProtocol,
   retry: Retry.Retry,
@@ -14053,8 +14053,8 @@ export const checkoutLinksCreate: API.OperationMethod<
   CheckoutLinksCreateError,
   PolarOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(27, __c3, 3) as any as S.Schema<CheckoutLinksCreateRequest>,
-  output: __S(36, __c4, 4) as any as S.Schema<CheckoutLink>,
+  input: __S(312, __c39, 0) as any as S.Schema<CheckoutLinksCreateRequest>,
+  output: __S(323, __c40, 3) as any as S.Schema<CheckoutLink>,
   errors: [UnprocessableEntity, UnknownPolarError],
   protocol: PolarProtocol,
   retry: Retry.Retry,
@@ -14068,8 +14068,8 @@ export const checkoutLinksDelete: API.OperationMethod<
   CheckoutLinksDeleteError,
   PolarOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(37, __c4, 5) as any as S.Schema<CheckoutLinksDeleteRequest>,
-  output: __S(15, __c1, 7) as any as S.Schema<CheckoutLinksDeleteResponse>,
+  input: __S(440, __c55, 0) as any as S.Schema<CheckoutLinksDeleteRequest>,
+  output: __S(1760, __c220, 0) as any as S.Schema<CheckoutLinksDeleteResponse>,
   errors: [NotFound, UnprocessableEntity, UnknownPolarError],
   protocol: PolarProtocol,
   retry: Retry.Retry,
@@ -14083,8 +14083,8 @@ export const checkoutLinksGet: API.OperationMethod<
   CheckoutLinksGetError,
   PolarOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(38, __c4, 6) as any as S.Schema<CheckoutLinksGetRequest>,
-  output: __S(36, __c4, 4) as any as S.Schema<CheckoutLink>,
+  input: __S(536, __c67, 0) as any as S.Schema<CheckoutLinksGetRequest>,
+  output: __S(323, __c40, 3) as any as S.Schema<CheckoutLink>,
   errors: [NotFound, UnprocessableEntity, UnknownPolarError],
   protocol: PolarProtocol,
   retry: Retry.Retry,
@@ -14100,8 +14100,8 @@ export const checkoutLinksList: API.PaginatedOperationMethod<
   CheckoutLink
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(39, __c4, 7) as any as S.Schema<CheckoutLinksListRequest>,
-    output: __S(41, __c5, 1) as any as S.Schema<ListResourceCheckoutLink>,
+    input: __S(632, __c79, 0) as any as S.Schema<CheckoutLinksListRequest>,
+    output: __S(634, __c79, 2) as any as S.Schema<ListResourceCheckoutLink>,
     errors: [UnprocessableEntity, UnknownPolarError],
     protocol: PolarProtocol,
     retry: Retry.Retry,
@@ -14124,8 +14124,8 @@ export const checkoutLinksUpdate: API.OperationMethod<
   CheckoutLinksUpdateError,
   PolarOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(43, __c5, 3) as any as S.Schema<CheckoutLinksUpdateRequest>,
-  output: __S(36, __c4, 4) as any as S.Schema<CheckoutLink>,
+  input: __S(745, __c93, 1) as any as S.Schema<CheckoutLinksUpdateRequest>,
+  output: __S(323, __c40, 3) as any as S.Schema<CheckoutLink>,
   errors: [NotFound, UnprocessableEntity, UnknownPolarError],
   protocol: PolarProtocol,
   retry: Retry.Retry,
@@ -14139,8 +14139,8 @@ export const checkoutsCreate: API.OperationMethod<
   CheckoutsCreateError,
   PolarOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(49, __c6, 1) as any as S.Schema<CheckoutsCreateRequest>,
-  output: __S(60, __c7, 4) as any as S.Schema<Checkout>,
+  input: __S(861, __c107, 5) as any as S.Schema<CheckoutsCreateRequest>,
+  output: __S(868, __c108, 4) as any as S.Schema<Checkout>,
   errors: [UnprocessableEntity, UnknownPolarError],
   protocol: PolarProtocol,
   retry: Retry.Retry,
@@ -14154,8 +14154,8 @@ export const checkoutsGet: API.OperationMethod<
   CheckoutsGetError,
   PolarOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(61, __c7, 5) as any as S.Schema<CheckoutsGetRequest>,
-  output: __S(60, __c7, 4) as any as S.Schema<Checkout>,
+  input: __S(992, __c124, 0) as any as S.Schema<CheckoutsGetRequest>,
+  output: __S(868, __c108, 4) as any as S.Schema<Checkout>,
   errors: [NotFound, UnprocessableEntity, UnknownPolarError],
   protocol: PolarProtocol,
   retry: Retry.Retry,
@@ -14171,8 +14171,8 @@ export const checkoutsList: API.PaginatedOperationMethod<
   Checkout
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(62, __c7, 6) as any as S.Schema<CheckoutsListRequest>,
-    output: __S(64, __c8, 0) as any as S.Schema<ListResourceCheckout>,
+    input: __S(1040, __c130, 0) as any as S.Schema<CheckoutsListRequest>,
+    output: __S(1042, __c130, 2) as any as S.Schema<ListResourceCheckout>,
     errors: [UnprocessableEntity, UnknownPolarError],
     protocol: PolarProtocol,
     retry: Retry.Retry,
@@ -14195,8 +14195,8 @@ export const checkoutsUpdate: API.OperationMethod<
   CheckoutsUpdateError,
   PolarOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(68, __c8, 4) as any as S.Schema<CheckoutsUpdateRequest>,
-  output: __S(60, __c7, 4) as any as S.Schema<Checkout>,
+  input: __S(1051, __c131, 3) as any as S.Schema<CheckoutsUpdateRequest>,
+  output: __S(868, __c108, 4) as any as S.Schema<Checkout>,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPolarError],
   protocol: PolarProtocol,
   retry: Retry.Retry,
@@ -14215,8 +14215,8 @@ export const claimCustomerSeatsGetInfo: API.OperationMethod<
   ClaimCustomerSeatsGetInfoError,
   PolarOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(69, __c8, 5) as any as S.Schema<ClaimCustomerSeatsGetInfoRequest>,
-  output: __S(70, __c8, 6) as any as S.Schema<SeatClaimInfo>,
+  input: __S(1056, __c132, 0) as any as S.Schema<ClaimCustomerSeatsGetInfoRequest>,
+  output: __S(1057, __c132, 1) as any as S.Schema<SeatClaimInfo>,
   errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity, UnknownPolarError],
   protocol: PolarProtocol,
   retry: Retry.Retry,
@@ -14236,8 +14236,8 @@ export const confirmCheckoutsClient: API.OperationMethod<
   ConfirmCheckoutsClientError,
   PolarOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(72, __c9, 0) as any as S.Schema<ConfirmCheckoutsClientRequest>,
-  output: __S(77, __c9, 5) as any as S.Schema<CheckoutPublicConfirmed>,
+  input: __S(1065, __c133, 1) as any as S.Schema<ConfirmCheckoutsClientRequest>,
+  output: __S(1069, __c133, 5) as any as S.Schema<CheckoutPublicConfirmed>,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnprocessableEntity, UnknownPolarError],
   protocol: PolarProtocol,
   retry: Retry.Retry,
@@ -14251,8 +14251,8 @@ export const customerMetersGet: API.OperationMethod<
   CustomerMetersGetError,
   PolarOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(78, __c9, 6) as any as S.Schema<CustomerMetersGetRequest>,
-  output: __S(82, __c10, 2) as any as S.Schema<CustomerMeter>,
+  input: __S(1080, __c135, 0) as any as S.Schema<CustomerMetersGetRequest>,
+  output: __S(1088, __c136, 0) as any as S.Schema<CustomerMeter>,
   errors: [NotFound, UnprocessableEntity, UnknownPolarError],
   protocol: PolarProtocol,
   retry: Retry.Retry,
@@ -14268,8 +14268,8 @@ export const customerMetersList: API.PaginatedOperationMethod<
   CustomerMeter
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(83, __c10, 3) as any as S.Schema<CustomerMetersListRequest>,
-    output: __S(85, __c10, 5) as any as S.Schema<ListResourceCustomerMeter>,
+    input: __S(1104, __c138, 0) as any as S.Schema<CustomerMetersListRequest>,
+    output: __S(1106, __c138, 2) as any as S.Schema<ListResourceCustomerMeter>,
     errors: [UnprocessableEntity, UnknownPolarError],
     protocol: PolarProtocol,
     retry: Retry.Retry,
@@ -14292,8 +14292,8 @@ export const customerPortalBenefitGrantsGet: API.OperationMethod<
   CustomerPortalBenefitGrantsGetError,
   PolarOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(86, __c10, 6) as any as S.Schema<CustomerPortalBenefitGrantsGetRequest>,
-  output: __S(90, __c11, 2) as any as S.Schema<CustomerPortalBenefitGrantsGetResponse>,
+  input: __S(1112, __c139, 0) as any as S.Schema<CustomerPortalBenefitGrantsGetRequest>,
+  output: __S(1120, __c140, 0) as any as S.Schema<CustomerPortalBenefitGrantsGetResponse>,
   errors: [NotFound, UnprocessableEntity, UnknownPolarError],
   protocol: PolarProtocol,
   retry: Retry.Retry,
@@ -14309,8 +14309,8 @@ export const customerPortalBenefitGrantsList: API.PaginatedOperationMethod<
   CustomerBenefitGrant
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(91, __c11, 3) as any as S.Schema<CustomerPortalBenefitGrantsListRequest>,
-    output: __S(93, __c11, 5) as any as S.Schema<ListResourceCustomerBenefitGrant>,
+    input: __S(1128, __c141, 0) as any as S.Schema<CustomerPortalBenefitGrantsListRequest>,
+    output: __S(1130, __c141, 2) as any as S.Schema<ListResourceCustomerBenefitGrant>,
     errors: [UnprocessableEntity, UnknownPolarError],
     protocol: PolarProtocol,
     retry: Retry.Retry,
@@ -14337,8 +14337,8 @@ export const customerPortalBenefitGrantsUpdate: API.OperationMethod<
   CustomerPortalBenefitGrantsUpdateError,
   PolarOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(94, __c11, 6) as any as S.Schema<CustomerPortalBenefitGrantsUpdateRequest>,
-  output: __S(90, __c11, 2) as any as S.Schema<CustomerPortalBenefitGrantsUpdateResponse>,
+  input: __S(1136, __c142, 0) as any as S.Schema<CustomerPortalBenefitGrantsUpdateRequest>,
+  output: __S(1120, __c140, 0) as any as S.Schema<CustomerPortalBenefitGrantsUpdateResponse>,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPolarError],
   protocol: PolarProtocol,
   retry: Retry.Retry,
@@ -14352,8 +14352,8 @@ export const customerPortalCustomerMetersGet: API.OperationMethod<
   CustomerPortalCustomerMetersGetError,
   PolarOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(95, __c11, 7) as any as S.Schema<CustomerPortalCustomerMetersGetRequest>,
-  output: __S(97, __c12, 1) as any as S.Schema<CustomerCustomerMeter>,
+  input: __S(1144, __c143, 0) as any as S.Schema<CustomerPortalCustomerMetersGetRequest>,
+  output: __S(1152, __c144, 0) as any as S.Schema<CustomerCustomerMeter>,
   errors: [NotFound, UnprocessableEntity, UnknownPolarError],
   protocol: PolarProtocol,
   retry: Retry.Retry,
@@ -14369,8 +14369,8 @@ export const customerPortalCustomerMetersList: API.PaginatedOperationMethod<
   CustomerCustomerMeter
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(98, __c12, 2) as any as S.Schema<CustomerPortalCustomerMetersListRequest>,
-    output: __S(100, __c12, 4) as any as S.Schema<ListResourceCustomerCustomerMeter>,
+    input: __S(1168, __c146, 0) as any as S.Schema<CustomerPortalCustomerMetersListRequest>,
+    output: __S(1170, __c146, 2) as any as S.Schema<ListResourceCustomerCustomerMeter>,
     errors: [UnprocessableEntity, UnknownPolarError],
     protocol: PolarProtocol,
     retry: Retry.Retry,
@@ -14396,8 +14396,8 @@ export const customerPortalCustomersAddPaymentMethod: API.OperationMethod<
   CustomerPortalCustomersAddPaymentMethodError,
   PolarOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(101, __c12, 5) as any as S.Schema<CustomerPortalCustomersAddPaymentMethodRequest>,
-  output: __S(102, __c12, 6) as any as S.Schema<CustomerPortalCustomersAddPaymentMethodResponse>,
+  input: __S(1176, __c147, 0) as any as S.Schema<CustomerPortalCustomersAddPaymentMethodRequest>,
+  output: __S(1184, __c148, 0) as any as S.Schema<CustomerPortalCustomersAddPaymentMethodResponse>,
   errors: [BadRequest, UnprocessableEntity, UnknownPolarError],
   protocol: PolarProtocol,
   retry: Retry.Retry,
@@ -14414,11 +14414,15 @@ export const customerPortalCustomersConfirmPaymentMethod: API.OperationMethod<
   CustomerPortalCustomersConfirmPaymentMethodError,
   PolarOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(103, __c12, 7) as any as S.Schema<CustomerPortalCustomersConfirmPaymentMethodRequest>,
+  input: __S(
+    1192,
+    __c149,
+    0,
+  ) as any as S.Schema<CustomerPortalCustomersConfirmPaymentMethodRequest>,
   output: __S(
-    102,
-    __c12,
-    6,
+    1184,
+    __c148,
+    0,
   ) as any as S.Schema<CustomerPortalCustomersConfirmPaymentMethodResponse>,
   errors: [Forbidden, UnprocessableEntity, UnknownPolarError],
   protocol: PolarProtocol,
@@ -14437,8 +14441,12 @@ export const customerPortalCustomersDeletePaymentMethod: API.OperationMethod<
   CustomerPortalCustomersDeletePaymentMethodError,
   PolarOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(104, __c13, 0) as any as S.Schema<CustomerPortalCustomersDeletePaymentMethodRequest>,
-  output: __S(105, __c13, 1) as any as S.Schema<CustomerPortalCustomersDeletePaymentMethodResponse>,
+  input: __S(1200, __c150, 0) as any as S.Schema<CustomerPortalCustomersDeletePaymentMethodRequest>,
+  output: __S(
+    1208,
+    __c151,
+    0,
+  ) as any as S.Schema<CustomerPortalCustomersDeletePaymentMethodResponse>,
   errors: [BadRequest, NotFound, UnprocessableEntity, UnknownPolarError],
   protocol: PolarProtocol,
   retry: Retry.Retry,
@@ -14453,11 +14461,11 @@ export const customerPortalCustomerSessionGetAuthenticatedUser: API.OperationMet
   PolarOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    106,
-    __c13,
-    2,
+    1216,
+    __c152,
+    0,
   ) as any as S.Schema<CustomerPortalCustomerSessionGetAuthenticatedUserRequest>,
-  output: __S(107, __c13, 3) as any as S.Schema<PortalAuthenticatedUser>,
+  output: __S(1217, __c152, 1) as any as S.Schema<PortalAuthenticatedUser>,
   errors: [UnknownPolarError],
   protocol: PolarProtocol,
   retry: Retry.Retry,
@@ -14471,8 +14479,8 @@ export const customerPortalCustomerSessionIntrospect: API.OperationMethod<
   CustomerPortalCustomerSessionIntrospectError,
   PolarOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(108, __c13, 4) as any as S.Schema<CustomerPortalCustomerSessionIntrospectRequest>,
-  output: __S(109, __c13, 5) as any as S.Schema<CustomerCustomerSession>,
+  input: __S(1224, __c153, 0) as any as S.Schema<CustomerPortalCustomerSessionIntrospectRequest>,
+  output: __S(1225, __c153, 1) as any as S.Schema<CustomerCustomerSession>,
   errors: [UnknownPolarError],
   protocol: PolarProtocol,
   retry: Retry.Retry,
@@ -14486,8 +14494,8 @@ export const customerPortalCustomersGet: API.OperationMethod<
   CustomerPortalCustomersGetError,
   PolarOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(110, __c13, 6) as any as S.Schema<CustomerPortalCustomersGetRequest>,
-  output: __S(89, __c11, 1) as any as S.Schema<CustomerPortalCustomer>,
+  input: __S(1232, __c154, 0) as any as S.Schema<CustomerPortalCustomersGetRequest>,
+  output: __S(1242, __c155, 2) as any as S.Schema<CustomerPortalCustomer>,
   errors: [UnknownPolarError],
   protocol: PolarProtocol,
   retry: Retry.Retry,
@@ -14503,8 +14511,12 @@ export const customerPortalCustomersListPaymentMethods: API.PaginatedOperationMe
   CustomerPaymentMethod
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(111, __c13, 7) as any as S.Schema<CustomerPortalCustomersListPaymentMethodsRequest>,
-    output: __S(113, __c14, 1) as any as S.Schema<ListResourceCustomerPaymentMethod>,
+    input: __S(
+      1256,
+      __c157,
+      0,
+    ) as any as S.Schema<CustomerPortalCustomersListPaymentMethodsRequest>,
+    output: __S(1258, __c157, 2) as any as S.Schema<ListResourceCustomerPaymentMethod>,
     errors: [UnprocessableEntity, UnknownPolarError],
     protocol: PolarProtocol,
     retry: Retry.Retry,
@@ -14527,8 +14539,8 @@ export const customerPortalCustomersUpdate: API.OperationMethod<
   CustomerPortalCustomersUpdateError,
   PolarOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(114, __c14, 2) as any as S.Schema<CustomerPortalCustomersUpdateRequest>,
-  output: __S(89, __c11, 1) as any as S.Schema<CustomerPortalCustomer>,
+  input: __S(1264, __c158, 0) as any as S.Schema<CustomerPortalCustomersUpdateRequest>,
+  output: __S(1242, __c155, 2) as any as S.Schema<CustomerPortalCustomer>,
   errors: [UnprocessableEntity, UnknownPolarError],
   protocol: PolarProtocol,
   retry: Retry.Retry,
@@ -14544,8 +14556,8 @@ export const customerPortalDownloadablesList: API.PaginatedOperationMethod<
   DownloadableRead
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(115, __c14, 3) as any as S.Schema<CustomerPortalDownloadablesListRequest>,
-    output: __S(120, __c15, 0) as any as S.Schema<ListResourceDownloadableRead>,
+    input: __S(1272, __c159, 0) as any as S.Schema<CustomerPortalDownloadablesListRequest>,
+    output: __S(1277, __c159, 5) as any as S.Schema<ListResourceDownloadableRead>,
     errors: [UnprocessableEntity, UnknownPolarError],
     protocol: PolarProtocol,
     retry: Retry.Retry,
@@ -14572,8 +14584,8 @@ export const customerPortalLicenseKeysActivate: API.OperationMethod<
   CustomerPortalLicenseKeysActivateError,
   PolarOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(123, __c15, 3) as any as S.Schema<CustomerPortalLicenseKeysActivateRequest>,
-  output: __S(130, __c16, 2) as any as S.Schema<LicenseKeyActivationCreated>,
+  input: __S(1282, __c160, 2) as any as S.Schema<CustomerPortalLicenseKeysActivateRequest>,
+  output: __S(1290, __c161, 2) as any as S.Schema<LicenseKeyActivationCreated>,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPolarError],
   protocol: PolarProtocol,
   retry: Retry.Retry,
@@ -14590,8 +14602,8 @@ export const customerPortalLicenseKeysDeactivate: API.OperationMethod<
   CustomerPortalLicenseKeysDeactivateError,
   PolarOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(131, __c16, 3) as any as S.Schema<CustomerPortalLicenseKeysDeactivateRequest>,
-  output: __S(105, __c13, 1) as any as S.Schema<CustomerPortalLicenseKeysDeactivateResponse>,
+  input: __S(1320, __c165, 0) as any as S.Schema<CustomerPortalLicenseKeysDeactivateRequest>,
+  output: __S(1208, __c151, 0) as any as S.Schema<CustomerPortalLicenseKeysDeactivateResponse>,
   errors: [NotFound, UnprocessableEntity, UnknownPolarError],
   protocol: PolarProtocol,
   retry: Retry.Retry,
@@ -14605,8 +14617,8 @@ export const customerPortalLicenseKeysGet: API.OperationMethod<
   CustomerPortalLicenseKeysGetError,
   PolarOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(132, __c16, 4) as any as S.Schema<CustomerPortalLicenseKeysGetRequest>,
-  output: __S(136, __c17, 0) as any as S.Schema<LicenseKeyWithActivations>,
+  input: __S(1328, __c166, 0) as any as S.Schema<CustomerPortalLicenseKeysGetRequest>,
+  output: __S(1337, __c167, 1) as any as S.Schema<LicenseKeyWithActivations>,
   errors: [NotFound, UnprocessableEntity, UnknownPolarError],
   protocol: PolarProtocol,
   retry: Retry.Retry,
@@ -14622,8 +14634,8 @@ export const customerPortalLicenseKeysList: API.PaginatedOperationMethod<
   LicenseKeyRead
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(137, __c17, 1) as any as S.Schema<CustomerPortalLicenseKeysListRequest>,
-    output: __S(140, __c17, 4) as any as S.Schema<ListResourceLicenseKeyRead>,
+    input: __S(1352, __c169, 0) as any as S.Schema<CustomerPortalLicenseKeysListRequest>,
+    output: __S(1361, __c170, 1) as any as S.Schema<ListResourceLicenseKeyRead>,
     errors: [NotFound, UnprocessableEntity, UnknownPolarError],
     protocol: PolarProtocol,
     retry: Retry.Retry,
@@ -14650,8 +14662,8 @@ export const customerPortalLicenseKeysRotate: API.OperationMethod<
   CustomerPortalLicenseKeysRotateError,
   PolarOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(141, __c17, 5) as any as S.Schema<CustomerPortalLicenseKeysRotateRequest>,
-  output: __S(138, __c17, 2) as any as S.Schema<RotatedLicenseKey>,
+  input: __S(1376, __c172, 0) as any as S.Schema<CustomerPortalLicenseKeysRotateRequest>,
+  output: __S(1368, __c171, 0) as any as S.Schema<RotatedLicenseKey>,
   errors: [BadRequest, NotFound, UnprocessableEntity, UnknownPolarError],
   protocol: PolarProtocol,
   retry: Retry.Retry,
@@ -14669,8 +14681,8 @@ export const customerPortalLicenseKeysValidate: API.OperationMethod<
   CustomerPortalLicenseKeysValidateError,
   PolarOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(143, __c17, 7) as any as S.Schema<CustomerPortalLicenseKeysValidateRequest>,
-  output: __S(144, __c18, 0) as any as S.Schema<ValidatedLicenseKey>,
+  input: __S(1385, __c173, 1) as any as S.Schema<CustomerPortalLicenseKeysValidateRequest>,
+  output: __S(1392, __c174, 0) as any as S.Schema<ValidatedLicenseKey>,
   errors: [BadRequest, NotFound, UnprocessableEntity, UnknownPolarError],
   protocol: PolarProtocol,
   retry: Retry.Retry,
@@ -14688,8 +14700,8 @@ export const customerPortalMembersAddMember: API.OperationMethod<
   CustomerPortalMembersAddMemberError,
   PolarOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(145, __c18, 1) as any as S.Schema<CustomerPortalMembersAddMemberRequest>,
-  output: __S(146, __c18, 2) as any as S.Schema<CustomerPortalMember>,
+  input: __S(1400, __c175, 0) as any as S.Schema<CustomerPortalMembersAddMemberRequest>,
+  output: __S(1408, __c176, 0) as any as S.Schema<CustomerPortalMember>,
   errors: [BadRequest, Forbidden, UnprocessableEntity, UnknownPolarError],
   protocol: PolarProtocol,
   retry: Retry.Retry,
@@ -14705,8 +14717,8 @@ export const customerPortalMembersListMembers: API.PaginatedOperationMethod<
   CustomerPortalMember
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(147, __c18, 3) as any as S.Schema<CustomerPortalMembersListMembersRequest>,
-    output: __S(149, __c18, 5) as any as S.Schema<ListResourceCustomerPortalMember>,
+    input: __S(1416, __c177, 0) as any as S.Schema<CustomerPortalMembersListMembersRequest>,
+    output: __S(1418, __c177, 2) as any as S.Schema<ListResourceCustomerPortalMember>,
     errors: [Forbidden, UnprocessableEntity, UnknownPolarError],
     protocol: PolarProtocol,
     retry: Retry.Retry,
@@ -14734,8 +14746,8 @@ export const customerPortalMembersRemoveMember: API.OperationMethod<
   CustomerPortalMembersRemoveMemberError,
   PolarOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(150, __c18, 6) as any as S.Schema<CustomerPortalMembersRemoveMemberRequest>,
-  output: __S(105, __c13, 1) as any as S.Schema<CustomerPortalMembersRemoveMemberResponse>,
+  input: __S(1424, __c178, 0) as any as S.Schema<CustomerPortalMembersRemoveMemberRequest>,
+  output: __S(1208, __c151, 0) as any as S.Schema<CustomerPortalMembersRemoveMemberResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity, UnknownPolarError],
   protocol: PolarProtocol,
   retry: Retry.Retry,
@@ -14754,8 +14766,8 @@ export const customerPortalMembersUpdateMember: API.OperationMethod<
   CustomerPortalMembersUpdateMemberError,
   PolarOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(151, __c18, 7) as any as S.Schema<CustomerPortalMembersUpdateMemberRequest>,
-  output: __S(146, __c18, 2) as any as S.Schema<CustomerPortalMember>,
+  input: __S(1432, __c179, 0) as any as S.Schema<CustomerPortalMembersUpdateMemberRequest>,
+  output: __S(1408, __c176, 0) as any as S.Schema<CustomerPortalMember>,
   errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity, UnknownPolarError],
   protocol: PolarProtocol,
   retry: Retry.Retry,
@@ -14773,8 +14785,8 @@ export const customerPortalOrdersGenerateInvoice: API.OperationMethod<
   CustomerPortalOrdersGenerateInvoiceError,
   PolarOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(152, __c19, 0) as any as S.Schema<CustomerPortalOrdersGenerateInvoiceRequest>,
-  output: __S(105, __c13, 1) as any as S.Schema<CustomerPortalOrdersGenerateInvoiceResponse>,
+  input: __S(1480, __c185, 0) as any as S.Schema<CustomerPortalOrdersGenerateInvoiceRequest>,
+  output: __S(1208, __c151, 0) as any as S.Schema<CustomerPortalOrdersGenerateInvoiceResponse>,
   errors: [NotFound, Conflict, UnprocessableEntity, UnknownPolarError],
   protocol: PolarProtocol,
   retry: Retry.Retry,
@@ -14788,8 +14800,8 @@ export const customerPortalOrdersGet: API.OperationMethod<
   CustomerPortalOrdersGetError,
   PolarOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(153, __c19, 1) as any as S.Schema<CustomerPortalOrdersGetRequest>,
-  output: __S(165, __c20, 5) as any as S.Schema<CustomerOrder>,
+  input: __S(1488, __c186, 0) as any as S.Schema<CustomerPortalOrdersGetRequest>,
+  output: __S(1499, __c187, 3) as any as S.Schema<CustomerOrder>,
   errors: [NotFound, UnprocessableEntity, UnknownPolarError],
   protocol: PolarProtocol,
   retry: Retry.Retry,
@@ -14806,8 +14818,8 @@ export const customerPortalOrdersGetPaymentStatus: API.OperationMethod<
   CustomerPortalOrdersGetPaymentStatusError,
   PolarOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(166, __c20, 6) as any as S.Schema<CustomerPortalOrdersGetPaymentStatusRequest>,
-  output: __S(167, __c20, 7) as any as S.Schema<CustomerOrderPaymentStatus>,
+  input: __S(1528, __c191, 0) as any as S.Schema<CustomerPortalOrdersGetPaymentStatusRequest>,
+  output: __S(1529, __c191, 1) as any as S.Schema<CustomerOrderPaymentStatus>,
   errors: [NotFound, UnprocessableEntity, UnknownPolarError],
   protocol: PolarProtocol,
   retry: Retry.Retry,
@@ -14821,8 +14833,8 @@ export const customerPortalOrdersInvoice: API.OperationMethod<
   CustomerPortalOrdersInvoiceError,
   PolarOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(168, __c21, 0) as any as S.Schema<CustomerPortalOrdersInvoiceRequest>,
-  output: __S(169, __c21, 1) as any as S.Schema<CustomerOrderInvoice>,
+  input: __S(1536, __c192, 0) as any as S.Schema<CustomerPortalOrdersInvoiceRequest>,
+  output: __S(1544, __c193, 0) as any as S.Schema<CustomerOrderInvoice>,
   errors: [NotFound, UnprocessableEntity, UnknownPolarError],
   protocol: PolarProtocol,
   retry: Retry.Retry,
@@ -14838,8 +14850,8 @@ export const customerPortalOrdersList: API.PaginatedOperationMethod<
   CustomerOrder
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(170, __c21, 2) as any as S.Schema<CustomerPortalOrdersListRequest>,
-    output: __S(172, __c21, 4) as any as S.Schema<ListResourceCustomerOrder>,
+    input: __S(1552, __c194, 0) as any as S.Schema<CustomerPortalOrdersListRequest>,
+    output: __S(1554, __c194, 2) as any as S.Schema<ListResourceCustomerOrder>,
     errors: [UnprocessableEntity, UnknownPolarError],
     protocol: PolarProtocol,
     retry: Retry.Retry,
@@ -14862,8 +14874,8 @@ export const customerPortalOrdersReceipt: API.OperationMethod<
   CustomerPortalOrdersReceiptError,
   PolarOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(173, __c21, 5) as any as S.Schema<CustomerPortalOrdersReceiptRequest>,
-  output: __S(169, __c21, 1) as any as S.Schema<CustomerOrderReceipt>,
+  input: __S(1560, __c195, 0) as any as S.Schema<CustomerPortalOrdersReceiptRequest>,
+  output: __S(1544, __c193, 0) as any as S.Schema<CustomerOrderReceipt>,
   errors: [NotFound, UnprocessableEntity, UnknownPolarError],
   protocol: PolarProtocol,
   retry: Retry.Retry,
@@ -14877,8 +14889,8 @@ export const customerPortalOrdersUpdate: API.OperationMethod<
   CustomerPortalOrdersUpdateError,
   PolarOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(174, __c21, 6) as any as S.Schema<CustomerPortalOrdersUpdateRequest>,
-  output: __S(165, __c20, 5) as any as S.Schema<CustomerOrder>,
+  input: __S(1568, __c196, 0) as any as S.Schema<CustomerPortalOrdersUpdateRequest>,
+  output: __S(1499, __c187, 3) as any as S.Schema<CustomerOrder>,
   errors: [NotFound, UnprocessableEntity, UnknownPolarError],
   protocol: PolarProtocol,
   retry: Retry.Retry,
@@ -14892,8 +14904,8 @@ export const customerPortalOrganizationsGet: API.OperationMethod<
   CustomerPortalOrganizationsGetError,
   PolarOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(175, __c21, 7) as any as S.Schema<CustomerPortalOrganizationsGetRequest>,
-  output: __S(179, __c22, 3) as any as S.Schema<CustomerOrganizationData>,
+  input: __S(1576, __c197, 0) as any as S.Schema<CustomerPortalOrganizationsGetRequest>,
+  output: __S(1580, __c197, 4) as any as S.Schema<CustomerOrganizationData>,
   errors: [NotFound, UnprocessableEntity, UnknownPolarError],
   protocol: PolarProtocol,
   retry: Retry.Retry,
@@ -14912,8 +14924,8 @@ export const customerPortalSeatsAssignSeat: API.OperationMethod<
   CustomerPortalSeatsAssignSeatError,
   PolarOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(181, __c22, 5) as any as S.Schema<CustomerPortalSeatsAssignSeatRequest>,
-  output: __S(182, __c22, 6) as any as S.Schema<CustomerSeat>,
+  input: __S(1584, __c198, 0) as any as S.Schema<CustomerPortalSeatsAssignSeatRequest>,
+  output: __S(1593, __c199, 1) as any as S.Schema<CustomerSeat>,
   errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity, UnknownPolarError],
   protocol: PolarProtocol,
   retry: Retry.Retry,
@@ -14930,11 +14942,11 @@ export const customerPortalSeatsListClaimedSubscriptions: API.PaginatedOperation
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
     input: __S(
-      183,
-      __c22,
-      7,
+      1600,
+      __c200,
+      0,
     ) as any as S.Schema<CustomerPortalSeatsListClaimedSubscriptionsRequest>,
-    output: __S(192, __c24, 0) as any as S.Schema<ListResourceCustomerSubscription>,
+    output: __S(1625, __c203, 1) as any as S.Schema<ListResourceCustomerSubscription>,
     errors: [UnprocessableEntity, UnknownPolarError],
     protocol: PolarProtocol,
     retry: Retry.Retry,
@@ -14961,8 +14973,8 @@ export const customerPortalSeatsListSeats: API.OperationMethod<
   CustomerPortalSeatsListSeatsError,
   PolarOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(193, __c24, 1) as any as S.Schema<CustomerPortalSeatsListSeatsRequest>,
-  output: __S(195, __c24, 3) as any as S.Schema<SeatsList>,
+  input: __S(1648, __c206, 0) as any as S.Schema<CustomerPortalSeatsListSeatsRequest>,
+  output: __S(1657, __c207, 1) as any as S.Schema<SeatsList>,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPolarError],
   protocol: PolarProtocol,
   retry: Retry.Retry,
@@ -14981,8 +14993,8 @@ export const customerPortalSeatsResendInvitation: API.OperationMethod<
   CustomerPortalSeatsResendInvitationError,
   PolarOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(196, __c24, 4) as any as S.Schema<CustomerPortalSeatsResendInvitationRequest>,
-  output: __S(182, __c22, 6) as any as S.Schema<CustomerSeat>,
+  input: __S(1664, __c208, 0) as any as S.Schema<CustomerPortalSeatsResendInvitationRequest>,
+  output: __S(1593, __c199, 1) as any as S.Schema<CustomerSeat>,
   errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity, UnknownPolarError],
   protocol: PolarProtocol,
   retry: Retry.Retry,
@@ -15000,8 +15012,8 @@ export const customerPortalSeatsRevokeSeat: API.OperationMethod<
   CustomerPortalSeatsRevokeSeatError,
   PolarOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(197, __c24, 5) as any as S.Schema<CustomerPortalSeatsRevokeSeatRequest>,
-  output: __S(182, __c22, 6) as any as S.Schema<CustomerSeat>,
+  input: __S(1672, __c209, 0) as any as S.Schema<CustomerPortalSeatsRevokeSeatRequest>,
+  output: __S(1593, __c199, 1) as any as S.Schema<CustomerSeat>,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPolarError],
   protocol: PolarProtocol,
   retry: Retry.Retry,
@@ -15019,8 +15031,8 @@ export const customerPortalSubscriptionsCancel: API.OperationMethod<
   CustomerPortalSubscriptionsCancelError,
   PolarOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(198, __c24, 6) as any as S.Schema<CustomerPortalSubscriptionsCancelRequest>,
-  output: __S(190, __c23, 6) as any as S.Schema<CustomerSubscription>,
+  input: __S(1680, __c210, 0) as any as S.Schema<CustomerPortalSubscriptionsCancelRequest>,
+  output: __S(1613, __c201, 5) as any as S.Schema<CustomerSubscription>,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPolarError],
   protocol: PolarProtocol,
   retry: Retry.Retry,
@@ -15034,8 +15046,8 @@ export const customerPortalSubscriptionsGet: API.OperationMethod<
   CustomerPortalSubscriptionsGetError,
   PolarOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(199, __c24, 7) as any as S.Schema<CustomerPortalSubscriptionsGetRequest>,
-  output: __S(190, __c23, 6) as any as S.Schema<CustomerSubscription>,
+  input: __S(1688, __c211, 0) as any as S.Schema<CustomerPortalSubscriptionsGetRequest>,
+  output: __S(1613, __c201, 5) as any as S.Schema<CustomerSubscription>,
   errors: [NotFound, UnprocessableEntity, UnknownPolarError],
   protocol: PolarProtocol,
   retry: Retry.Retry,
@@ -15051,8 +15063,8 @@ export const customerPortalSubscriptionsList: API.PaginatedOperationMethod<
   CustomerSubscription
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(200, __c25, 0) as any as S.Schema<CustomerPortalSubscriptionsListRequest>,
-    output: __S(192, __c24, 0) as any as S.Schema<ListResourceCustomerSubscription>,
+    input: __S(1696, __c212, 0) as any as S.Schema<CustomerPortalSubscriptionsListRequest>,
+    output: __S(1625, __c203, 1) as any as S.Schema<ListResourceCustomerSubscription>,
     errors: [UnprocessableEntity, UnknownPolarError],
     protocol: PolarProtocol,
     retry: Retry.Retry,
@@ -15080,8 +15092,8 @@ export const customerPortalSubscriptionsUpdate: API.OperationMethod<
   CustomerPortalSubscriptionsUpdateError,
   PolarOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(201, __c25, 1) as any as S.Schema<CustomerPortalSubscriptionsUpdateRequest>,
-  output: __S(190, __c23, 6) as any as S.Schema<CustomerSubscription>,
+  input: __S(1704, __c213, 0) as any as S.Schema<CustomerPortalSubscriptionsUpdateRequest>,
+  output: __S(1613, __c201, 5) as any as S.Schema<CustomerSubscription>,
   errors: [Forbidden, NotFound, Conflict, UnprocessableEntity, UnknownPolarError],
   protocol: PolarProtocol,
   retry: Retry.Retry,
@@ -15095,8 +15107,8 @@ export const customerPortalWalletsGet: API.OperationMethod<
   CustomerPortalWalletsGetError,
   PolarOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(202, __c25, 2) as any as S.Schema<CustomerPortalWalletsGetRequest>,
-  output: __S(203, __c25, 3) as any as S.Schema<CustomerWallet>,
+  input: __S(1712, __c214, 0) as any as S.Schema<CustomerPortalWalletsGetRequest>,
+  output: __S(1720, __c215, 0) as any as S.Schema<CustomerWallet>,
   errors: [NotFound, UnprocessableEntity, UnknownPolarError],
   protocol: PolarProtocol,
   retry: Retry.Retry,
@@ -15112,8 +15124,8 @@ export const customerPortalWalletsList: API.PaginatedOperationMethod<
   CustomerWallet
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(204, __c25, 4) as any as S.Schema<CustomerPortalWalletsListRequest>,
-    output: __S(206, __c25, 6) as any as S.Schema<ListResourceCustomerWallet>,
+    input: __S(1728, __c216, 0) as any as S.Schema<CustomerPortalWalletsListRequest>,
+    output: __S(1730, __c216, 2) as any as S.Schema<ListResourceCustomerWallet>,
     errors: [UnprocessableEntity, UnknownPolarError],
     protocol: PolarProtocol,
     retry: Retry.Retry,
@@ -15136,8 +15148,8 @@ export const customersCreate: API.OperationMethod<
   CustomersCreateError,
   PolarOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(207, __c25, 7) as any as S.Schema<CustomersCreateRequest>,
-  output: __S(208, __c26, 0) as any as S.Schema<CustomersCreateResponse>,
+  input: __S(1736, __c217, 0) as any as S.Schema<CustomersCreateRequest>,
+  output: __S(1744, __c218, 0) as any as S.Schema<CustomersCreateResponse>,
   errors: [UnprocessableEntity, UnknownPolarError],
   protocol: PolarProtocol,
   retry: Retry.Retry,
@@ -15151,8 +15163,8 @@ export const customersDelete: API.OperationMethod<
   CustomersDeleteError,
   PolarOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(209, __c26, 1) as any as S.Schema<CustomersDeleteRequest>,
-  output: __S(15, __c1, 7) as any as S.Schema<CustomersDeleteResponse>,
+  input: __S(1768, __c221, 0) as any as S.Schema<CustomersDeleteRequest>,
+  output: __S(1760, __c220, 0) as any as S.Schema<CustomersDeleteResponse>,
   errors: [NotFound, UnprocessableEntity, UnknownPolarError],
   protocol: PolarProtocol,
   retry: Retry.Retry,
@@ -15166,8 +15178,8 @@ export const customersDeleteExternal: API.OperationMethod<
   CustomersDeleteExternalError,
   PolarOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(210, __c26, 2) as any as S.Schema<CustomersDeleteExternalRequest>,
-  output: __S(211, __c26, 3) as any as S.Schema<CustomersDeleteExternalResponse>,
+  input: __S(1776, __c222, 0) as any as S.Schema<CustomersDeleteExternalRequest>,
+  output: __S(1777, __c222, 1) as any as S.Schema<CustomersDeleteExternalResponse>,
   errors: [NotFound, UnprocessableEntity, UnknownPolarError],
   protocol: PolarProtocol,
   retry: Retry.Retry,
@@ -15186,8 +15198,8 @@ export const customerSeatsAssignSeat: API.OperationMethod<
   CustomerSeatsAssignSeatError,
   PolarOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(212, __c26, 4) as any as S.Schema<CustomerSeatsAssignSeatRequest>,
-  output: __S(182, __c22, 6) as any as S.Schema<CustomerSeat>,
+  input: __S(1784, __c223, 0) as any as S.Schema<CustomerSeatsAssignSeatRequest>,
+  output: __S(1593, __c199, 1) as any as S.Schema<CustomerSeat>,
   errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity, UnknownPolarError],
   protocol: PolarProtocol,
   retry: Retry.Retry,
@@ -15205,8 +15217,8 @@ export const customerSeatsClaimSeat: API.OperationMethod<
   CustomerSeatsClaimSeatError,
   PolarOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(213, __c26, 5) as any as S.Schema<CustomerSeatsClaimSeatRequest>,
-  output: __S(214, __c26, 6) as any as S.Schema<CustomerSeatClaimResponse>,
+  input: __S(1792, __c224, 0) as any as S.Schema<CustomerSeatsClaimSeatRequest>,
+  output: __S(1793, __c224, 1) as any as S.Schema<CustomerSeatClaimResponse>,
   errors: [BadRequest, Forbidden, UnprocessableEntity, UnknownPolarError],
   protocol: PolarProtocol,
   retry: Retry.Retry,
@@ -15220,8 +15232,8 @@ export const customerSeatsListSeats: API.OperationMethod<
   CustomerSeatsListSeatsError,
   PolarOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(215, __c26, 7) as any as S.Schema<CustomerSeatsListSeatsRequest>,
-  output: __S(195, __c24, 3) as any as S.Schema<SeatsList>,
+  input: __S(1800, __c225, 0) as any as S.Schema<CustomerSeatsListSeatsRequest>,
+  output: __S(1657, __c207, 1) as any as S.Schema<SeatsList>,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPolarError],
   protocol: PolarProtocol,
   retry: Retry.Retry,
@@ -15240,8 +15252,8 @@ export const customerSeatsResendInvitation: API.OperationMethod<
   CustomerSeatsResendInvitationError,
   PolarOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(216, __c27, 0) as any as S.Schema<CustomerSeatsResendInvitationRequest>,
-  output: __S(182, __c22, 6) as any as S.Schema<CustomerSeat>,
+  input: __S(1808, __c226, 0) as any as S.Schema<CustomerSeatsResendInvitationRequest>,
+  output: __S(1593, __c199, 1) as any as S.Schema<CustomerSeat>,
   errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity, UnknownPolarError],
   protocol: PolarProtocol,
   retry: Retry.Retry,
@@ -15259,8 +15271,8 @@ export const customerSeatsRevokeSeat: API.OperationMethod<
   CustomerSeatsRevokeSeatError,
   PolarOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(217, __c27, 1) as any as S.Schema<CustomerSeatsRevokeSeatRequest>,
-  output: __S(182, __c22, 6) as any as S.Schema<CustomerSeat>,
+  input: __S(1816, __c227, 0) as any as S.Schema<CustomerSeatsRevokeSeatRequest>,
+  output: __S(1593, __c199, 1) as any as S.Schema<CustomerSeat>,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPolarError],
   protocol: PolarProtocol,
   retry: Retry.Retry,
@@ -15274,8 +15286,8 @@ export const customerSessionsCreate: API.OperationMethod<
   CustomerSessionsCreateError,
   PolarOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(218, __c27, 2) as any as S.Schema<CustomerSessionsCreateRequest>,
-  output: __S(219, __c27, 3) as any as S.Schema<CustomerSession>,
+  input: __S(1824, __c228, 0) as any as S.Schema<CustomerSessionsCreateRequest>,
+  output: __S(1825, __c228, 1) as any as S.Schema<CustomerSession>,
   errors: [Conflict, UnprocessableEntity, UnknownPolarError],
   protocol: PolarProtocol,
   retry: Retry.Retry,
@@ -15289,8 +15301,8 @@ export const customersExport: API.OperationMethod<
   CustomersExportError,
   PolarOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(220, __c27, 4) as any as S.Schema<CustomersExportRequest>,
-  output: __S(15, __c1, 7) as any as S.Schema<CustomersExportResponse>,
+  input: __S(1832, __c229, 0) as any as S.Schema<CustomersExportRequest>,
+  output: __S(1760, __c220, 0) as any as S.Schema<CustomersExportResponse>,
   errors: [UnprocessableEntity, UnknownPolarError],
   protocol: PolarProtocol,
   retry: Retry.Retry,
@@ -15304,8 +15316,8 @@ export const customersGet: API.OperationMethod<
   CustomersGetError,
   PolarOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(221, __c27, 5) as any as S.Schema<CustomersGetRequest>,
-  output: __S(208, __c26, 0) as any as S.Schema<CustomersGetResponse>,
+  input: __S(1840, __c230, 0) as any as S.Schema<CustomersGetRequest>,
+  output: __S(1744, __c218, 0) as any as S.Schema<CustomersGetResponse>,
   errors: [NotFound, UnprocessableEntity, UnknownPolarError],
   protocol: PolarProtocol,
   retry: Retry.Retry,
@@ -15319,8 +15331,8 @@ export const customersGetExternal: API.OperationMethod<
   CustomersGetExternalError,
   PolarOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(222, __c27, 6) as any as S.Schema<CustomersGetExternalRequest>,
-  output: __S(223, __c27, 7) as any as S.Schema<CustomersGetExternalResponse>,
+  input: __S(1856, __c232, 0) as any as S.Schema<CustomersGetExternalRequest>,
+  output: __S(1864, __c233, 0) as any as S.Schema<CustomersGetExternalResponse>,
   errors: [NotFound, UnprocessableEntity, UnknownPolarError],
   protocol: PolarProtocol,
   retry: Retry.Retry,
@@ -15334,8 +15346,8 @@ export const customersGetState: API.OperationMethod<
   CustomersGetStateError,
   PolarOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(224, __c28, 0) as any as S.Schema<CustomersGetStateRequest>,
-  output: __S(225, __c28, 1) as any as S.Schema<CustomersGetStateResponse>,
+  input: __S(1872, __c234, 0) as any as S.Schema<CustomersGetStateRequest>,
+  output: __S(1880, __c235, 0) as any as S.Schema<CustomersGetStateResponse>,
   errors: [NotFound, UnprocessableEntity, UnknownPolarError],
   protocol: PolarProtocol,
   retry: Retry.Retry,
@@ -15349,8 +15361,8 @@ export const customersGetStateExternal: API.OperationMethod<
   CustomersGetStateExternalError,
   PolarOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(226, __c28, 2) as any as S.Schema<CustomersGetStateExternalRequest>,
-  output: __S(225, __c28, 1) as any as S.Schema<CustomersGetStateExternalResponse>,
+  input: __S(1888, __c236, 0) as any as S.Schema<CustomersGetStateExternalRequest>,
+  output: __S(1880, __c235, 0) as any as S.Schema<CustomersGetStateExternalResponse>,
   errors: [NotFound, UnprocessableEntity, UnknownPolarError],
   protocol: PolarProtocol,
   retry: Retry.Retry,
@@ -15366,8 +15378,8 @@ export const customersList: API.PaginatedOperationMethod<
   Customer
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(227, __c28, 3) as any as S.Schema<CustomersListRequest>,
-    output: __S(229, __c28, 5) as any as S.Schema<ListResourceCustomer>,
+    input: __S(1896, __c237, 0) as any as S.Schema<CustomersListRequest>,
+    output: __S(1898, __c237, 2) as any as S.Schema<ListResourceCustomer>,
     errors: [UnprocessableEntity, UnknownPolarError],
     protocol: PolarProtocol,
     retry: Retry.Retry,
@@ -15392,8 +15404,8 @@ export const customersListPaymentMethods: API.PaginatedOperationMethod<
   PaymentMethod
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(230, __c28, 6) as any as S.Schema<CustomersListPaymentMethodsRequest>,
-    output: __S(232, __c29, 0) as any as S.Schema<ListResourcePaymentMethod>,
+    input: __S(1904, __c238, 0) as any as S.Schema<CustomersListPaymentMethodsRequest>,
+    output: __S(1913, __c239, 1) as any as S.Schema<ListResourcePaymentMethod>,
     errors: [NotFound, UnprocessableEntity, UnknownPolarError],
     protocol: PolarProtocol,
     retry: Retry.Retry,
@@ -15421,8 +15433,8 @@ export const customersListPaymentMethodsExternal: API.PaginatedOperationMethod<
   PaymentMethod
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(233, __c29, 1) as any as S.Schema<CustomersListPaymentMethodsExternalRequest>,
-    output: __S(232, __c29, 0) as any as S.Schema<ListResourcePaymentMethod>,
+    input: __S(1920, __c240, 0) as any as S.Schema<CustomersListPaymentMethodsExternalRequest>,
+    output: __S(1913, __c239, 1) as any as S.Schema<ListResourcePaymentMethod>,
     errors: [NotFound, UnprocessableEntity, UnknownPolarError],
     protocol: PolarProtocol,
     retry: Retry.Retry,
@@ -15445,8 +15457,8 @@ export const customersMembersCreate: API.OperationMethod<
   CustomersMembersCreateError,
   PolarOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(234, __c29, 2) as any as S.Schema<CustomersMembersCreateRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<Member>,
+  input: __S(1928, __c241, 0) as any as S.Schema<CustomersMembersCreateRequest>,
+  output: __S(1456, __c182, 0) as any as S.Schema<Member>,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPolarError],
   protocol: PolarProtocol,
   retry: Retry.Retry,
@@ -15465,8 +15477,8 @@ export const customersMembersCreateExternal: API.OperationMethod<
   CustomersMembersCreateExternalError,
   PolarOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(235, __c29, 3) as any as S.Schema<CustomersMembersCreateExternalRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<Member>,
+  input: __S(1936, __c242, 0) as any as S.Schema<CustomersMembersCreateExternalRequest>,
+  output: __S(1456, __c182, 0) as any as S.Schema<Member>,
   errors: [Forbidden, NotFound, Conflict, UnprocessableEntity, UnknownPolarError],
   protocol: PolarProtocol,
   retry: Retry.Retry,
@@ -15480,8 +15492,8 @@ export const customersMembersDelete: API.OperationMethod<
   CustomersMembersDeleteError,
   PolarOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(236, __c29, 4) as any as S.Schema<CustomersMembersDeleteRequest>,
-  output: __S(15, __c1, 7) as any as S.Schema<CustomersMembersDeleteResponse>,
+  input: __S(1944, __c243, 0) as any as S.Schema<CustomersMembersDeleteRequest>,
+  output: __S(1760, __c220, 0) as any as S.Schema<CustomersMembersDeleteResponse>,
   errors: [NotFound, UnprocessableEntity, UnknownPolarError],
   protocol: PolarProtocol,
   retry: Retry.Retry,
@@ -15499,8 +15511,8 @@ export const customersMembersDeleteExternal: API.OperationMethod<
   CustomersMembersDeleteExternalError,
   PolarOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(237, __c29, 5) as any as S.Schema<CustomersMembersDeleteExternalRequest>,
-  output: __S(105, __c13, 1) as any as S.Schema<CustomersMembersDeleteExternalResponse>,
+  input: __S(1952, __c244, 0) as any as S.Schema<CustomersMembersDeleteExternalRequest>,
+  output: __S(1208, __c151, 0) as any as S.Schema<CustomersMembersDeleteExternalResponse>,
   errors: [NotFound, Conflict, UnprocessableEntity, UnknownPolarError],
   protocol: PolarProtocol,
   retry: Retry.Retry,
@@ -15514,8 +15526,8 @@ export const customersMembersGet: API.OperationMethod<
   CustomersMembersGetError,
   PolarOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(238, __c29, 6) as any as S.Schema<CustomersMembersGetRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<Member>,
+  input: __S(1968, __c246, 0) as any as S.Schema<CustomersMembersGetRequest>,
+  output: __S(1456, __c182, 0) as any as S.Schema<Member>,
   errors: [NotFound, UnprocessableEntity, UnknownPolarError],
   protocol: PolarProtocol,
   retry: Retry.Retry,
@@ -15533,8 +15545,8 @@ export const customersMembersGetExternal: API.OperationMethod<
   CustomersMembersGetExternalError,
   PolarOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(239, __c29, 7) as any as S.Schema<CustomersMembersGetExternalRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<Member>,
+  input: __S(1976, __c247, 0) as any as S.Schema<CustomersMembersGetExternalRequest>,
+  output: __S(1456, __c182, 0) as any as S.Schema<Member>,
   errors: [NotFound, Conflict, UnprocessableEntity, UnknownPolarError],
   protocol: PolarProtocol,
   retry: Retry.Retry,
@@ -15550,8 +15562,8 @@ export const customersMembersList: API.PaginatedOperationMethod<
   Member
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(240, __c30, 0) as any as S.Schema<CustomersMembersListRequest>,
-    output: __S(242, __c30, 2) as any as S.Schema<ListResourceMember>,
+    input: __S(1984, __c248, 0) as any as S.Schema<CustomersMembersListRequest>,
+    output: __S(1993, __c249, 1) as any as S.Schema<ListResourceMember>,
     errors: [NotFound, UnprocessableEntity, UnknownPolarError],
     protocol: PolarProtocol,
     retry: Retry.Retry,
@@ -15580,8 +15592,8 @@ export const customersMembersListExternal: API.PaginatedOperationMethod<
   Member
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(243, __c30, 3) as any as S.Schema<CustomersMembersListExternalRequest>,
-    output: __S(242, __c30, 2) as any as S.Schema<ListResourceMember>,
+    input: __S(2000, __c250, 0) as any as S.Schema<CustomersMembersListExternalRequest>,
+    output: __S(1993, __c249, 1) as any as S.Schema<ListResourceMember>,
     errors: [NotFound, Conflict, UnprocessableEntity, UnknownPolarError],
     protocol: PolarProtocol,
     retry: Retry.Retry,
@@ -15604,8 +15616,8 @@ export const customersMembersUpdate: API.OperationMethod<
   CustomersMembersUpdateError,
   PolarOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(244, __c30, 4) as any as S.Schema<CustomersMembersUpdateRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<Member>,
+  input: __S(2008, __c251, 0) as any as S.Schema<CustomersMembersUpdateRequest>,
+  output: __S(1456, __c182, 0) as any as S.Schema<Member>,
   errors: [NotFound, UnprocessableEntity, UnknownPolarError],
   protocol: PolarProtocol,
   retry: Retry.Retry,
@@ -15623,8 +15635,8 @@ export const customersMembersUpdateExternal: API.OperationMethod<
   CustomersMembersUpdateExternalError,
   PolarOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(245, __c30, 5) as any as S.Schema<CustomersMembersUpdateExternalRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<Member>,
+  input: __S(2016, __c252, 0) as any as S.Schema<CustomersMembersUpdateExternalRequest>,
+  output: __S(1456, __c182, 0) as any as S.Schema<Member>,
   errors: [NotFound, Conflict, UnprocessableEntity, UnknownPolarError],
   protocol: PolarProtocol,
   retry: Retry.Retry,
@@ -15638,8 +15650,8 @@ export const customersUpdate: API.OperationMethod<
   CustomersUpdateError,
   PolarOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(247, __c30, 7) as any as S.Schema<CustomersUpdateRequest>,
-  output: __S(208, __c26, 0) as any as S.Schema<CustomersUpdateResponse>,
+  input: __S(2025, __c253, 1) as any as S.Schema<CustomersUpdateRequest>,
+  output: __S(1744, __c218, 0) as any as S.Schema<CustomersUpdateResponse>,
   errors: [NotFound, UnprocessableEntity, UnknownPolarError],
   protocol: PolarProtocol,
   retry: Retry.Retry,
@@ -15653,8 +15665,8 @@ export const customersUpdateExternal: API.OperationMethod<
   CustomersUpdateExternalError,
   PolarOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(249, __c31, 1) as any as S.Schema<CustomersUpdateExternalRequest>,
-  output: __S(223, __c27, 7) as any as S.Schema<CustomersUpdateExternalResponse>,
+  input: __S(2033, __c254, 1) as any as S.Schema<CustomersUpdateExternalRequest>,
+  output: __S(1864, __c233, 0) as any as S.Schema<CustomersUpdateExternalResponse>,
   errors: [NotFound, UnprocessableEntity, UnknownPolarError],
   protocol: PolarProtocol,
   retry: Retry.Retry,
@@ -15668,8 +15680,8 @@ export const customFieldsCreate: API.OperationMethod<
   CustomFieldsCreateError,
   PolarOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(250, __c31, 2) as any as S.Schema<CustomFieldsCreateRequest>,
-  output: __S(251, __c31, 3) as any as S.Schema<CustomFieldsCreateResponse>,
+  input: __S(2040, __c255, 0) as any as S.Schema<CustomFieldsCreateRequest>,
+  output: __S(2048, __c256, 0) as any as S.Schema<CustomFieldsCreateResponse>,
   errors: [UnprocessableEntity, UnknownPolarError],
   protocol: PolarProtocol,
   retry: Retry.Retry,
@@ -15683,8 +15695,8 @@ export const customFieldsDelete: API.OperationMethod<
   CustomFieldsDeleteError,
   PolarOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(252, __c31, 4) as any as S.Schema<CustomFieldsDeleteRequest>,
-  output: __S(15, __c1, 7) as any as S.Schema<CustomFieldsDeleteResponse>,
+  input: __S(2056, __c257, 0) as any as S.Schema<CustomFieldsDeleteRequest>,
+  output: __S(1760, __c220, 0) as any as S.Schema<CustomFieldsDeleteResponse>,
   errors: [NotFound, UnprocessableEntity, UnknownPolarError],
   protocol: PolarProtocol,
   retry: Retry.Retry,
@@ -15698,8 +15710,8 @@ export const customFieldsGet: API.OperationMethod<
   CustomFieldsGetError,
   PolarOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(253, __c31, 5) as any as S.Schema<CustomFieldsGetRequest>,
-  output: __S(254, __c31, 6) as any as S.Schema<CustomFieldsGetResponse>,
+  input: __S(8, __c1, 0) as any as S.Schema<CustomFieldsGetRequest>,
+  output: __S(9, __c1, 1) as any as S.Schema<CustomFieldsGetResponse>,
   errors: [NotFound, UnprocessableEntity, UnknownPolarError],
   protocol: PolarProtocol,
   retry: Retry.Retry,
@@ -15715,8 +15727,8 @@ export const customFieldsList: API.PaginatedOperationMethod<
   CustomField
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(255, __c31, 7) as any as S.Schema<CustomFieldsListRequest>,
-    output: __S(257, __c32, 1) as any as S.Schema<ListResourceCustomField>,
+    input: __S(16, __c2, 0) as any as S.Schema<CustomFieldsListRequest>,
+    output: __S(18, __c2, 2) as any as S.Schema<ListResourceCustomField>,
     errors: [UnprocessableEntity, UnknownPolarError],
     protocol: PolarProtocol,
     retry: Retry.Retry,
@@ -15739,8 +15751,8 @@ export const customFieldsUpdate: API.OperationMethod<
   CustomFieldsUpdateError,
   PolarOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(258, __c32, 2) as any as S.Schema<CustomFieldsUpdateRequest>,
-  output: __S(251, __c31, 3) as any as S.Schema<CustomFieldsUpdateResponse>,
+  input: __S(24, __c3, 0) as any as S.Schema<CustomFieldsUpdateRequest>,
+  output: __S(2048, __c256, 0) as any as S.Schema<CustomFieldsUpdateResponse>,
   errors: [NotFound, UnprocessableEntity, UnknownPolarError],
   protocol: PolarProtocol,
   retry: Retry.Retry,
@@ -15754,8 +15766,8 @@ export const discountsCreate: API.OperationMethod<
   DiscountsCreateError,
   PolarOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(259, __c32, 3) as any as S.Schema<DiscountsCreateRequest>,
-  output: __S(261, __c32, 5) as any as S.Schema<DiscountsCreateResponse>,
+  input: __S(32, __c4, 0) as any as S.Schema<DiscountsCreateRequest>,
+  output: __S(40, __c5, 0) as any as S.Schema<DiscountsCreateResponse>,
   errors: [UnprocessableEntity, UnknownPolarError],
   protocol: PolarProtocol,
   retry: Retry.Retry,
@@ -15769,8 +15781,8 @@ export const discountsDelete: API.OperationMethod<
   DiscountsDeleteError,
   PolarOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(262, __c32, 6) as any as S.Schema<DiscountsDeleteRequest>,
-  output: __S(15, __c1, 7) as any as S.Schema<DiscountsDeleteResponse>,
+  input: __S(48, __c6, 0) as any as S.Schema<DiscountsDeleteRequest>,
+  output: __S(1760, __c220, 0) as any as S.Schema<DiscountsDeleteResponse>,
   errors: [NotFound, UnprocessableEntity, UnknownPolarError],
   protocol: PolarProtocol,
   retry: Retry.Retry,
@@ -15784,8 +15796,8 @@ export const discountsGet: API.OperationMethod<
   DiscountsGetError,
   PolarOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(263, __c32, 7) as any as S.Schema<DiscountsGetRequest>,
-  output: __S(261, __c32, 5) as any as S.Schema<DiscountsGetResponse>,
+  input: __S(56, __c7, 0) as any as S.Schema<DiscountsGetRequest>,
+  output: __S(40, __c5, 0) as any as S.Schema<DiscountsGetResponse>,
   errors: [NotFound, UnprocessableEntity, UnknownPolarError],
   protocol: PolarProtocol,
   retry: Retry.Retry,
@@ -15801,8 +15813,8 @@ export const discountsList: API.PaginatedOperationMethod<
   Discount
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(264, __c33, 0) as any as S.Schema<DiscountsListRequest>,
-    output: __S(266, __c33, 2) as any as S.Schema<ListResourceDiscount>,
+    input: __S(64, __c8, 0) as any as S.Schema<DiscountsListRequest>,
+    output: __S(66, __c8, 2) as any as S.Schema<ListResourceDiscount>,
     errors: [UnprocessableEntity, UnknownPolarError],
     protocol: PolarProtocol,
     retry: Retry.Retry,
@@ -15825,8 +15837,8 @@ export const discountsUpdate: API.OperationMethod<
   DiscountsUpdateError,
   PolarOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(268, __c33, 4) as any as S.Schema<DiscountsUpdateRequest>,
-  output: __S(261, __c32, 5) as any as S.Schema<DiscountsUpdateResponse>,
+  input: __S(74, __c9, 2) as any as S.Schema<DiscountsUpdateRequest>,
+  output: __S(40, __c5, 0) as any as S.Schema<DiscountsUpdateResponse>,
   errors: [NotFound, UnprocessableEntity, UnknownPolarError],
   protocol: PolarProtocol,
   retry: Retry.Retry,
@@ -15840,8 +15852,8 @@ export const disputesAccept: API.OperationMethod<
   DisputesAcceptError,
   PolarOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(269, __c33, 5) as any as S.Schema<DisputesAcceptRequest>,
-  output: __S(270, __c33, 6) as any as S.Schema<Dispute>,
+  input: __S(80, __c10, 0) as any as S.Schema<DisputesAcceptRequest>,
+  output: __S(88, __c11, 0) as any as S.Schema<Dispute>,
   errors: [NotFound, Conflict, UnprocessableEntity, UnknownPolarError],
   protocol: PolarProtocol,
   retry: Retry.Retry,
@@ -15855,8 +15867,8 @@ export const disputesGet: API.OperationMethod<
   DisputesGetError,
   PolarOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(271, __c33, 7) as any as S.Schema<DisputesGetRequest>,
-  output: __S(270, __c33, 6) as any as S.Schema<Dispute>,
+  input: __S(96, __c12, 0) as any as S.Schema<DisputesGetRequest>,
+  output: __S(88, __c11, 0) as any as S.Schema<Dispute>,
   errors: [NotFound, UnprocessableEntity, UnknownPolarError],
   protocol: PolarProtocol,
   retry: Retry.Retry,
@@ -15872,8 +15884,8 @@ export const disputesList: API.PaginatedOperationMethod<
   Dispute
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(272, __c34, 0) as any as S.Schema<DisputesListRequest>,
-    output: __S(274, __c34, 2) as any as S.Schema<ListResourceDispute>,
+    input: __S(128, __c16, 0) as any as S.Schema<DisputesListRequest>,
+    output: __S(130, __c16, 2) as any as S.Schema<ListResourceDispute>,
     errors: [UnprocessableEntity, UnknownPolarError],
     protocol: PolarProtocol,
     retry: Retry.Retry,
@@ -15896,8 +15908,8 @@ export const eventsGet: API.OperationMethod<
   EventsGetError,
   PolarOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(275, __c34, 3) as any as S.Schema<EventsGetRequest>,
-  output: __S(276, __c34, 4) as any as S.Schema<EventsGetResponse>,
+  input: __S(136, __c17, 0) as any as S.Schema<EventsGetRequest>,
+  output: __S(137, __c17, 1) as any as S.Schema<EventsGetResponse>,
   errors: [NotFound, UnprocessableEntity, UnknownPolarError],
   protocol: PolarProtocol,
   retry: Retry.Retry,
@@ -15911,8 +15923,8 @@ export const eventsIngest: API.OperationMethod<
   EventsIngestError,
   PolarOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(278, __c34, 6) as any as S.Schema<EventsIngestRequest>,
-  output: __S(279, __c34, 7) as any as S.Schema<EventsIngestResponse>,
+  input: __S(145, __c18, 1) as any as S.Schema<EventsIngestRequest>,
+  output: __S(146, __c18, 2) as any as S.Schema<EventsIngestResponse>,
   errors: [UnprocessableEntity, UnknownPolarError],
   protocol: PolarProtocol,
   retry: Retry.Retry,
@@ -15926,8 +15938,8 @@ export const eventsList: API.OperationMethod<
   EventsListError,
   PolarOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(280, __c35, 0) as any as S.Schema<EventsListRequest>,
-  output: __S(281, __c35, 1) as any as S.Schema<EventsListResponse>,
+  input: __S(152, __c19, 0) as any as S.Schema<EventsListRequest>,
+  output: __S(153, __c19, 1) as any as S.Schema<EventsListResponse>,
   errors: [UnprocessableEntity, UnknownPolarError],
   protocol: PolarProtocol,
   retry: Retry.Retry,
@@ -15943,8 +15955,8 @@ export const eventsListNames: API.PaginatedOperationMethod<
   EventName
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(282, __c35, 2) as any as S.Schema<EventsListNamesRequest>,
-    output: __S(285, __c35, 5) as any as S.Schema<ListResourceEventName>,
+    input: __S(160, __c20, 0) as any as S.Schema<EventsListNamesRequest>,
+    output: __S(163, __c20, 3) as any as S.Schema<ListResourceEventName>,
     errors: [UnprocessableEntity, UnknownPolarError],
     protocol: PolarProtocol,
     retry: Retry.Retry,
@@ -15969,8 +15981,8 @@ export const eventTypesList: API.PaginatedOperationMethod<
   EventTypeWithStats
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(286, __c35, 6) as any as S.Schema<EventTypesListRequest>,
-    output: __S(289, __c36, 1) as any as S.Schema<ListResourceEventTypeWithStats>,
+    input: __S(168, __c21, 0) as any as S.Schema<EventTypesListRequest>,
+    output: __S(171, __c21, 3) as any as S.Schema<ListResourceEventTypeWithStats>,
     errors: [UnprocessableEntity, UnknownPolarError],
     protocol: PolarProtocol,
     retry: Retry.Retry,
@@ -15993,8 +16005,8 @@ export const eventTypesUpdate: API.OperationMethod<
   EventTypesUpdateError,
   PolarOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(290, __c36, 2) as any as S.Schema<EventTypesUpdateRequest>,
-  output: __S(291, __c36, 3) as any as S.Schema<EventType>,
+  input: __S(176, __c22, 0) as any as S.Schema<EventTypesUpdateRequest>,
+  output: __S(177, __c22, 1) as any as S.Schema<EventType>,
   errors: [NotFound, UnprocessableEntity, UnknownPolarError],
   protocol: PolarProtocol,
   retry: Retry.Retry,
@@ -16008,8 +16020,8 @@ export const filesCreate: API.OperationMethod<
   FilesCreateError,
   PolarOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(292, __c36, 4) as any as S.Schema<FilesCreateRequest>,
-  output: __S(296, __c37, 0) as any as S.Schema<FileUpload>,
+  input: __S(184, __c23, 0) as any as S.Schema<FilesCreateRequest>,
+  output: __S(188, __c23, 4) as any as S.Schema<FileUpload>,
   errors: [UnprocessableEntity, UnknownPolarError],
   protocol: PolarProtocol,
   retry: Retry.Retry,
@@ -16023,8 +16035,8 @@ export const filesDelete: API.OperationMethod<
   FilesDeleteError,
   PolarOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(297, __c37, 1) as any as S.Schema<FilesDeleteRequest>,
-  output: __S(15, __c1, 7) as any as S.Schema<FilesDeleteResponse>,
+  input: __S(192, __c24, 0) as any as S.Schema<FilesDeleteRequest>,
+  output: __S(1760, __c220, 0) as any as S.Schema<FilesDeleteResponse>,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPolarError],
   protocol: PolarProtocol,
   retry: Retry.Retry,
@@ -16040,8 +16052,8 @@ export const filesList: API.PaginatedOperationMethod<
   FileRead
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(298, __c37, 2) as any as S.Schema<FilesListRequest>,
-    output: __S(300, __c37, 4) as any as S.Schema<ListResourceFileRead>,
+    input: __S(200, __c25, 0) as any as S.Schema<FilesListRequest>,
+    output: __S(202, __c25, 2) as any as S.Schema<ListResourceFileRead>,
     errors: [UnprocessableEntity, UnknownPolarError],
     protocol: PolarProtocol,
     retry: Retry.Retry,
@@ -16064,8 +16076,8 @@ export const filesUpdate: API.OperationMethod<
   FilesUpdateError,
   PolarOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(301, __c37, 5) as any as S.Schema<FilesUpdateRequest>,
-  output: __S(302, __c37, 6) as any as S.Schema<FilesUpdateResponse>,
+  input: __S(216, __c27, 0) as any as S.Schema<FilesUpdateRequest>,
+  output: __S(224, __c28, 0) as any as S.Schema<FilesUpdateResponse>,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPolarError],
   protocol: PolarProtocol,
   retry: Retry.Retry,
@@ -16079,8 +16091,8 @@ export const filesUploaded: API.OperationMethod<
   FilesUploadedError,
   PolarOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(305, __c38, 1) as any as S.Schema<FilesUploadedRequest>,
-  output: __S(302, __c37, 6) as any as S.Schema<FilesUploadedResponse>,
+  input: __S(234, __c29, 2) as any as S.Schema<FilesUploadedRequest>,
+  output: __S(224, __c28, 0) as any as S.Schema<FilesUploadedResponse>,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPolarError],
   protocol: PolarProtocol,
   retry: Retry.Retry,
@@ -16094,8 +16106,8 @@ export const getCheckoutsClient: API.OperationMethod<
   GetCheckoutsClientError,
   PolarOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(306, __c38, 2) as any as S.Schema<GetCheckoutsClientRequest>,
-  output: __S(310, __c38, 6) as any as S.Schema<CheckoutPublic>,
+  input: __S(240, __c30, 0) as any as S.Schema<GetCheckoutsClientRequest>,
+  output: __S(251, __c31, 3) as any as S.Schema<CheckoutPublic>,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPolarError],
   protocol: PolarProtocol,
   retry: Retry.Retry,
@@ -16109,8 +16121,8 @@ export const licenseKeysActivate: API.OperationMethod<
   LicenseKeysActivateError,
   PolarOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(313, __c39, 1) as any as S.Schema<LicenseKeysActivateRequest>,
-  output: __S(130, __c16, 2) as any as S.Schema<LicenseKeyActivationCreated>,
+  input: __S(258, __c32, 2) as any as S.Schema<LicenseKeysActivateRequest>,
+  output: __S(1290, __c161, 2) as any as S.Schema<LicenseKeyActivationCreated>,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPolarError],
   protocol: PolarProtocol,
   retry: Retry.Retry,
@@ -16124,8 +16136,8 @@ export const licenseKeysDeactivate: API.OperationMethod<
   LicenseKeysDeactivateError,
   PolarOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(314, __c39, 2) as any as S.Schema<LicenseKeysDeactivateRequest>,
-  output: __S(15, __c1, 7) as any as S.Schema<LicenseKeysDeactivateResponse>,
+  input: __S(264, __c33, 0) as any as S.Schema<LicenseKeysDeactivateRequest>,
+  output: __S(1760, __c220, 0) as any as S.Schema<LicenseKeysDeactivateResponse>,
   errors: [NotFound, UnprocessableEntity, UnknownPolarError],
   protocol: PolarProtocol,
   retry: Retry.Retry,
@@ -16139,8 +16151,8 @@ export const licenseKeysGet: API.OperationMethod<
   LicenseKeysGetError,
   PolarOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(315, __c39, 3) as any as S.Schema<LicenseKeysGetRequest>,
-  output: __S(136, __c17, 0) as any as S.Schema<LicenseKeyWithActivations>,
+  input: __S(272, __c34, 0) as any as S.Schema<LicenseKeysGetRequest>,
+  output: __S(1337, __c167, 1) as any as S.Schema<LicenseKeyWithActivations>,
   errors: [NotFound, UnprocessableEntity, UnknownPolarError],
   protocol: PolarProtocol,
   retry: Retry.Retry,
@@ -16154,8 +16166,8 @@ export const licenseKeysGetActivation: API.OperationMethod<
   LicenseKeysGetActivationError,
   PolarOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(316, __c39, 4) as any as S.Schema<LicenseKeysGetActivationRequest>,
-  output: __S(318, __c39, 6) as any as S.Schema<LicenseKeyActivationRead>,
+  input: __S(280, __c35, 0) as any as S.Schema<LicenseKeysGetActivationRequest>,
+  output: __S(282, __c35, 2) as any as S.Schema<LicenseKeyActivationRead>,
   errors: [NotFound, UnprocessableEntity, UnknownPolarError],
   protocol: PolarProtocol,
   retry: Retry.Retry,
@@ -16171,8 +16183,8 @@ export const licenseKeysList: API.PaginatedOperationMethod<
   LicenseKeyRead
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(319, __c39, 7) as any as S.Schema<LicenseKeysListRequest>,
-    output: __S(140, __c17, 4) as any as S.Schema<ListResourceLicenseKeyRead>,
+    input: __S(288, __c36, 0) as any as S.Schema<LicenseKeysListRequest>,
+    output: __S(1361, __c170, 1) as any as S.Schema<ListResourceLicenseKeyRead>,
     errors: [NotFound, UnprocessableEntity, UnknownPolarError],
     protocol: PolarProtocol,
     retry: Retry.Retry,
@@ -16195,8 +16207,8 @@ export const licenseKeysRotate: API.OperationMethod<
   LicenseKeysRotateError,
   PolarOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(320, __c40, 0) as any as S.Schema<LicenseKeysRotateRequest>,
-  output: __S(138, __c17, 2) as any as S.Schema<RotatedLicenseKey>,
+  input: __S(296, __c37, 0) as any as S.Schema<LicenseKeysRotateRequest>,
+  output: __S(1368, __c171, 0) as any as S.Schema<RotatedLicenseKey>,
   errors: [BadRequest, NotFound, UnprocessableEntity, UnknownPolarError],
   protocol: PolarProtocol,
   retry: Retry.Retry,
@@ -16210,8 +16222,8 @@ export const licenseKeysUpdate: API.OperationMethod<
   LicenseKeysUpdateError,
   PolarOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(321, __c40, 1) as any as S.Schema<LicenseKeysUpdateRequest>,
-  output: __S(138, __c17, 2) as any as S.Schema<LicenseKeyRead>,
+  input: __S(304, __c38, 0) as any as S.Schema<LicenseKeysUpdateRequest>,
+  output: __S(1368, __c171, 0) as any as S.Schema<LicenseKeyRead>,
   errors: [NotFound, UnprocessableEntity, UnknownPolarError],
   protocol: PolarProtocol,
   retry: Retry.Retry,
@@ -16225,8 +16237,8 @@ export const licenseKeysValidate: API.OperationMethod<
   LicenseKeysValidateError,
   PolarOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(323, __c40, 3) as any as S.Schema<LicenseKeysValidateRequest>,
-  output: __S(144, __c18, 0) as any as S.Schema<ValidatedLicenseKey>,
+  input: __S(353, __c44, 1) as any as S.Schema<LicenseKeysValidateRequest>,
+  output: __S(1392, __c174, 0) as any as S.Schema<ValidatedLicenseKey>,
   errors: [BadRequest, NotFound, UnprocessableEntity, UnknownPolarError],
   protocol: PolarProtocol,
   retry: Retry.Retry,
@@ -16240,8 +16252,8 @@ export const metersCreate: API.OperationMethod<
   MetersCreateError,
   PolarOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(325, __c40, 5) as any as S.Schema<MetersCreateRequest>,
-  output: __S(81, __c10, 1) as any as S.Schema<Meter>,
+  input: __S(361, __c45, 1) as any as S.Schema<MetersCreateRequest>,
+  output: __S(1098, __c137, 2) as any as S.Schema<Meter>,
   errors: [UnprocessableEntity, UnknownPolarError],
   protocol: PolarProtocol,
   retry: Retry.Retry,
@@ -16255,8 +16267,8 @@ export const metersGet: API.OperationMethod<
   MetersGetError,
   PolarOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(326, __c40, 6) as any as S.Schema<MetersGetRequest>,
-  output: __S(81, __c10, 1) as any as S.Schema<Meter>,
+  input: __S(368, __c46, 0) as any as S.Schema<MetersGetRequest>,
+  output: __S(1098, __c137, 2) as any as S.Schema<Meter>,
   errors: [NotFound, UnprocessableEntity, UnknownPolarError],
   protocol: PolarProtocol,
   retry: Retry.Retry,
@@ -16272,8 +16284,8 @@ export const metersList: API.PaginatedOperationMethod<
   Meter
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(327, __c40, 7) as any as S.Schema<MetersListRequest>,
-    output: __S(329, __c41, 1) as any as S.Schema<ListResourceMeter>,
+    input: __S(376, __c47, 0) as any as S.Schema<MetersListRequest>,
+    output: __S(378, __c47, 2) as any as S.Schema<ListResourceMeter>,
     errors: [UnprocessableEntity, UnknownPolarError],
     protocol: PolarProtocol,
     retry: Retry.Retry,
@@ -16296,8 +16308,8 @@ export const metersQuantities: API.OperationMethod<
   MetersQuantitiesError,
   PolarOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(330, __c41, 2) as any as S.Schema<MetersQuantitiesRequest>,
-  output: __S(333, __c41, 5) as any as S.Schema<MeterQuantities>,
+  input: __S(384, __c48, 0) as any as S.Schema<MetersQuantitiesRequest>,
+  output: __S(387, __c48, 3) as any as S.Schema<MeterQuantities>,
   errors: [NotFound, UnprocessableEntity, UnknownPolarError],
   protocol: PolarProtocol,
   retry: Retry.Retry,
@@ -16311,8 +16323,8 @@ export const metersUpdate: API.OperationMethod<
   MetersUpdateError,
   PolarOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(335, __c41, 7) as any as S.Schema<MetersUpdateRequest>,
-  output: __S(81, __c10, 1) as any as S.Schema<Meter>,
+  input: __S(393, __c49, 1) as any as S.Schema<MetersUpdateRequest>,
+  output: __S(1098, __c137, 2) as any as S.Schema<Meter>,
   errors: [NotFound, UnprocessableEntity, UnknownPolarError],
   protocol: PolarProtocol,
   retry: Retry.Retry,
@@ -16326,8 +16338,8 @@ export const metricsCreateDashboard: API.OperationMethod<
   MetricsCreateDashboardError,
   PolarOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(336, __c42, 0) as any as S.Schema<MetricsCreateDashboardRequest>,
-  output: __S(337, __c42, 1) as any as S.Schema<MetricDashboardSchema>,
+  input: __S(400, __c50, 0) as any as S.Schema<MetricsCreateDashboardRequest>,
+  output: __S(408, __c51, 0) as any as S.Schema<MetricDashboardSchema>,
   errors: [UnprocessableEntity, UnknownPolarError],
   protocol: PolarProtocol,
   retry: Retry.Retry,
@@ -16341,8 +16353,8 @@ export const metricsDeleteDashboard: API.OperationMethod<
   MetricsDeleteDashboardError,
   PolarOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(338, __c42, 2) as any as S.Schema<MetricsDeleteDashboardRequest>,
-  output: __S(15, __c1, 7) as any as S.Schema<MetricsDeleteDashboardResponse>,
+  input: __S(416, __c52, 0) as any as S.Schema<MetricsDeleteDashboardRequest>,
+  output: __S(1760, __c220, 0) as any as S.Schema<MetricsDeleteDashboardResponse>,
   errors: [UnprocessableEntity, UnknownPolarError],
   protocol: PolarProtocol,
   retry: Retry.Retry,
@@ -16356,8 +16368,8 @@ export const metricsExport: API.OperationMethod<
   MetricsExportError,
   PolarOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(339, __c42, 3) as any as S.Schema<MetricsExportRequest>,
-  output: __S(15, __c1, 7) as any as S.Schema<MetricsExportResponse>,
+  input: __S(424, __c53, 0) as any as S.Schema<MetricsExportRequest>,
+  output: __S(1760, __c220, 0) as any as S.Schema<MetricsExportResponse>,
   errors: [UnprocessableEntity, UnknownPolarError],
   protocol: PolarProtocol,
   retry: Retry.Retry,
@@ -16371,8 +16383,8 @@ export const metricsGet: API.OperationMethod<
   MetricsGetError,
   PolarOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(340, __c42, 4) as any as S.Schema<MetricsGetRequest>,
-  output: __S(346, __c43, 2) as any as S.Schema<MetricsResponse>,
+  input: __S(432, __c54, 0) as any as S.Schema<MetricsGetRequest>,
+  output: __S(438, __c54, 6) as any as S.Schema<MetricsResponse>,
   errors: [UnprocessableEntity, UnknownPolarError],
   protocol: PolarProtocol,
   retry: Retry.Retry,
@@ -16386,8 +16398,8 @@ export const metricsGetDashboard: API.OperationMethod<
   MetricsGetDashboardError,
   PolarOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(347, __c43, 3) as any as S.Schema<MetricsGetDashboardRequest>,
-  output: __S(337, __c42, 1) as any as S.Schema<MetricDashboardSchema>,
+  input: __S(448, __c56, 0) as any as S.Schema<MetricsGetDashboardRequest>,
+  output: __S(408, __c51, 0) as any as S.Schema<MetricDashboardSchema>,
   errors: [UnprocessableEntity, UnknownPolarError],
   protocol: PolarProtocol,
   retry: Retry.Retry,
@@ -16401,8 +16413,8 @@ export const metricsLimits2: API.OperationMethod<
   MetricsLimits2Error,
   PolarOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(348, __c43, 4) as any as S.Schema<MetricsLimits2Request>,
-  output: __S(351, __c43, 7) as any as S.Schema<MetricsLimits>,
+  input: __S(456, __c57, 0) as any as S.Schema<MetricsLimits2Request>,
+  output: __S(459, __c57, 3) as any as S.Schema<MetricsLimits>,
   errors: [UnknownPolarError],
   protocol: PolarProtocol,
   retry: Retry.Retry,
@@ -16416,8 +16428,8 @@ export const metricsListDashboards: API.OperationMethod<
   MetricsListDashboardsError,
   PolarOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(352, __c44, 0) as any as S.Schema<MetricsListDashboardsRequest>,
-  output: __S(354, __c44, 2) as any as S.Schema<MetricsListDashboardsResponse>,
+  input: __S(464, __c58, 0) as any as S.Schema<MetricsListDashboardsRequest>,
+  output: __S(466, __c58, 2) as any as S.Schema<MetricsListDashboardsResponse>,
   errors: [UnprocessableEntity, UnknownPolarError],
   protocol: PolarProtocol,
   retry: Retry.Retry,
@@ -16431,8 +16443,8 @@ export const metricsUpdateDashboard: API.OperationMethod<
   MetricsUpdateDashboardError,
   PolarOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(355, __c44, 3) as any as S.Schema<MetricsUpdateDashboardRequest>,
-  output: __S(337, __c42, 1) as any as S.Schema<MetricDashboardSchema>,
+  input: __S(472, __c59, 0) as any as S.Schema<MetricsUpdateDashboardRequest>,
+  output: __S(408, __c51, 0) as any as S.Schema<MetricDashboardSchema>,
   errors: [UnprocessableEntity, UnknownPolarError],
   protocol: PolarProtocol,
   retry: Retry.Retry,
@@ -16446,8 +16458,8 @@ export const oauth2Authorize: API.OperationMethod<
   Oauth2AuthorizeError,
   PolarOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(356, __c44, 4) as any as S.Schema<Oauth2AuthorizeRequest>,
-  output: __S(357, __c44, 5) as any as S.Schema<Oauth2AuthorizeResponse>,
+  input: __S(480, __c60, 0) as any as S.Schema<Oauth2AuthorizeRequest>,
+  output: __S(481, __c60, 1) as any as S.Schema<Oauth2AuthorizeResponse>,
   errors: [UnknownPolarError],
   protocol: PolarProtocol,
   retry: Retry.Retry,
@@ -16461,8 +16473,8 @@ export const oauth2ClientsOauth2CreateClient: API.OperationMethod<
   Oauth2ClientsOauth2CreateClientError,
   PolarOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(358, __c44, 6) as any as S.Schema<Oauth2ClientsOauth2CreateClientRequest>,
-  output: __S(359, __c44, 7) as any as S.Schema<Oauth2ClientsOauth2CreateClientResponse>,
+  input: __S(488, __c61, 0) as any as S.Schema<Oauth2ClientsOauth2CreateClientRequest>,
+  output: __S(496, __c62, 0) as any as S.Schema<Oauth2ClientsOauth2CreateClientResponse>,
   errors: [UnprocessableEntity, UnknownPolarError],
   protocol: PolarProtocol,
   retry: Retry.Retry,
@@ -16476,8 +16488,8 @@ export const oauth2ClientsOauth2DeleteClient: API.OperationMethod<
   Oauth2ClientsOauth2DeleteClientError,
   PolarOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(360, __c45, 0) as any as S.Schema<Oauth2ClientsOauth2DeleteClientRequest>,
-  output: __S(105, __c13, 1) as any as S.Schema<Oauth2ClientsOauth2DeleteClientResponse>,
+  input: __S(504, __c63, 0) as any as S.Schema<Oauth2ClientsOauth2DeleteClientRequest>,
+  output: __S(1208, __c151, 0) as any as S.Schema<Oauth2ClientsOauth2DeleteClientResponse>,
   errors: [UnprocessableEntity, UnknownPolarError],
   protocol: PolarProtocol,
   retry: Retry.Retry,
@@ -16491,8 +16503,8 @@ export const oauth2ClientsOauth2GetClient: API.OperationMethod<
   Oauth2ClientsOauth2GetClientError,
   PolarOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(361, __c45, 1) as any as S.Schema<Oauth2ClientsOauth2GetClientRequest>,
-  output: __S(359, __c44, 7) as any as S.Schema<Oauth2ClientsOauth2GetClientResponse>,
+  input: __S(512, __c64, 0) as any as S.Schema<Oauth2ClientsOauth2GetClientRequest>,
+  output: __S(496, __c62, 0) as any as S.Schema<Oauth2ClientsOauth2GetClientResponse>,
   errors: [UnprocessableEntity, UnknownPolarError],
   protocol: PolarProtocol,
   retry: Retry.Retry,
@@ -16506,8 +16518,8 @@ export const oauth2ClientsOauth2UpdateClient: API.OperationMethod<
   Oauth2ClientsOauth2UpdateClientError,
   PolarOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(362, __c45, 2) as any as S.Schema<Oauth2ClientsOauth2UpdateClientRequest>,
-  output: __S(359, __c44, 7) as any as S.Schema<Oauth2ClientsOauth2UpdateClientResponse>,
+  input: __S(520, __c65, 0) as any as S.Schema<Oauth2ClientsOauth2UpdateClientRequest>,
+  output: __S(496, __c62, 0) as any as S.Schema<Oauth2ClientsOauth2UpdateClientResponse>,
   errors: [UnprocessableEntity, UnknownPolarError],
   protocol: PolarProtocol,
   retry: Retry.Retry,
@@ -16521,8 +16533,8 @@ export const oauth2IntrospectToken: API.OperationMethod<
   Oauth2IntrospectTokenError,
   PolarOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(363, __c45, 3) as any as S.Schema<Oauth2IntrospectTokenRequest>,
-  output: __S(364, __c45, 4) as any as S.Schema<IntrospectTokenResponse>,
+  input: __S(528, __c66, 0) as any as S.Schema<Oauth2IntrospectTokenRequest>,
+  output: __S(529, __c66, 1) as any as S.Schema<IntrospectTokenResponse>,
   errors: [UnknownPolarError],
   protocol: PolarProtocol,
   retry: Retry.Retry,
@@ -16536,8 +16548,8 @@ export const oauth2RequestToken: API.OperationMethod<
   Oauth2RequestTokenError,
   PolarOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(365, __c45, 5) as any as S.Schema<Oauth2RequestTokenRequest>,
-  output: __S(366, __c45, 6) as any as S.Schema<TokenResponse>,
+  input: __S(544, __c68, 0) as any as S.Schema<Oauth2RequestTokenRequest>,
+  output: __S(545, __c68, 1) as any as S.Schema<TokenResponse>,
   errors: [UnknownPolarError],
   protocol: PolarProtocol,
   retry: Retry.Retry,
@@ -16551,8 +16563,8 @@ export const oauth2RevokeToken: API.OperationMethod<
   Oauth2RevokeTokenError,
   PolarOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(367, __c45, 7) as any as S.Schema<Oauth2RevokeTokenRequest>,
-  output: __S(359, __c44, 7) as any as S.Schema<Oauth2RevokeTokenResponse>,
+  input: __S(552, __c69, 0) as any as S.Schema<Oauth2RevokeTokenRequest>,
+  output: __S(496, __c62, 0) as any as S.Schema<Oauth2RevokeTokenResponse>,
   errors: [UnknownPolarError],
   protocol: PolarProtocol,
   retry: Retry.Retry,
@@ -16566,8 +16578,8 @@ export const oauth2Userinfo: API.OperationMethod<
   Oauth2UserinfoError,
   PolarOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(368, __c46, 0) as any as S.Schema<Oauth2UserinfoRequest>,
-  output: __S(369, __c46, 1) as any as S.Schema<Oauth2UserinfoResponse>,
+  input: __S(560, __c70, 0) as any as S.Schema<Oauth2UserinfoRequest>,
+  output: __S(561, __c70, 1) as any as S.Schema<Oauth2UserinfoResponse>,
   errors: [UnknownPolarError],
   protocol: PolarProtocol,
   retry: Retry.Retry,
@@ -16581,8 +16593,8 @@ export const ordersCreate: API.OperationMethod<
   OrdersCreateError,
   PolarOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(372, __c46, 4) as any as S.Schema<OrdersCreateRequest>,
-  output: __S(375, __c46, 7) as any as S.Schema<Order>,
+  input: __S(570, __c71, 2) as any as S.Schema<OrdersCreateRequest>,
+  output: __S(579, __c72, 3) as any as S.Schema<Order>,
   errors: [UnprocessableEntity, UnknownPolarError],
   protocol: PolarProtocol,
   retry: Retry.Retry,
@@ -16596,8 +16608,8 @@ export const ordersExport: API.OperationMethod<
   OrdersExportError,
   PolarOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(376, __c47, 0) as any as S.Schema<OrdersExportRequest>,
-  output: __S(15, __c1, 7) as any as S.Schema<OrdersExportResponse>,
+  input: __S(584, __c73, 0) as any as S.Schema<OrdersExportRequest>,
+  output: __S(1760, __c220, 0) as any as S.Schema<OrdersExportResponse>,
   errors: [UnprocessableEntity, UnknownPolarError],
   protocol: PolarProtocol,
   retry: Retry.Retry,
@@ -16611,8 +16623,8 @@ export const ordersFinalize: API.OperationMethod<
   OrdersFinalizeError,
   PolarOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(377, __c47, 1) as any as S.Schema<OrdersFinalizeRequest>,
-  output: __S(375, __c46, 7) as any as S.Schema<Order>,
+  input: __S(592, __c74, 0) as any as S.Schema<OrdersFinalizeRequest>,
+  output: __S(579, __c72, 3) as any as S.Schema<Order>,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPolarError],
   protocol: PolarProtocol,
   retry: Retry.Retry,
@@ -16626,8 +16638,8 @@ export const ordersGenerateInvoice: API.OperationMethod<
   OrdersGenerateInvoiceError,
   PolarOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(378, __c47, 2) as any as S.Schema<OrdersGenerateInvoiceRequest>,
-  output: __S(15, __c1, 7) as any as S.Schema<OrdersGenerateInvoiceResponse>,
+  input: __S(600, __c75, 0) as any as S.Schema<OrdersGenerateInvoiceRequest>,
+  output: __S(1760, __c220, 0) as any as S.Schema<OrdersGenerateInvoiceResponse>,
   errors: [NotFound, Conflict, UnprocessableEntity, UnknownPolarError],
   protocol: PolarProtocol,
   retry: Retry.Retry,
@@ -16641,8 +16653,8 @@ export const ordersGet: API.OperationMethod<
   OrdersGetError,
   PolarOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(379, __c47, 3) as any as S.Schema<OrdersGetRequest>,
-  output: __S(375, __c46, 7) as any as S.Schema<Order>,
+  input: __S(608, __c76, 0) as any as S.Schema<OrdersGetRequest>,
+  output: __S(579, __c72, 3) as any as S.Schema<Order>,
   errors: [NotFound, UnprocessableEntity, UnknownPolarError],
   protocol: PolarProtocol,
   retry: Retry.Retry,
@@ -16656,8 +16668,8 @@ export const ordersInvoice: API.OperationMethod<
   OrdersInvoiceError,
   PolarOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(380, __c47, 4) as any as S.Schema<OrdersInvoiceRequest>,
-  output: __S(169, __c21, 1) as any as S.Schema<OrderInvoice>,
+  input: __S(616, __c77, 0) as any as S.Schema<OrdersInvoiceRequest>,
+  output: __S(1544, __c193, 0) as any as S.Schema<OrderInvoice>,
   errors: [NotFound, UnprocessableEntity, UnknownPolarError],
   protocol: PolarProtocol,
   retry: Retry.Retry,
@@ -16673,8 +16685,8 @@ export const ordersList: API.PaginatedOperationMethod<
   Order
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(381, __c47, 5) as any as S.Schema<OrdersListRequest>,
-    output: __S(383, __c47, 7) as any as S.Schema<ListResourceOrder>,
+    input: __S(624, __c78, 0) as any as S.Schema<OrdersListRequest>,
+    output: __S(626, __c78, 2) as any as S.Schema<ListResourceOrder>,
     errors: [UnprocessableEntity, UnknownPolarError],
     protocol: PolarProtocol,
     retry: Retry.Retry,
@@ -16697,8 +16709,8 @@ export const ordersReceipt: API.OperationMethod<
   OrdersReceiptError,
   PolarOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(384, __c48, 0) as any as S.Schema<OrdersReceiptRequest>,
-  output: __S(169, __c21, 1) as any as S.Schema<OrderReceipt>,
+  input: __S(640, __c80, 0) as any as S.Schema<OrdersReceiptRequest>,
+  output: __S(1544, __c193, 0) as any as S.Schema<OrderReceipt>,
   errors: [NotFound, UnprocessableEntity, UnknownPolarError],
   protocol: PolarProtocol,
   retry: Retry.Retry,
@@ -16712,8 +16724,8 @@ export const ordersUpdate: API.OperationMethod<
   OrdersUpdateError,
   PolarOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(385, __c48, 1) as any as S.Schema<OrdersUpdateRequest>,
-  output: __S(375, __c46, 7) as any as S.Schema<Order>,
+  input: __S(648, __c81, 0) as any as S.Schema<OrdersUpdateRequest>,
+  output: __S(579, __c72, 3) as any as S.Schema<Order>,
   errors: [NotFound, UnprocessableEntity, UnknownPolarError],
   protocol: PolarProtocol,
   retry: Retry.Retry,
@@ -16727,8 +16739,8 @@ export const organizationsCreate: API.OperationMethod<
   OrganizationsCreateError,
   PolarOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(392, __c49, 0) as any as S.Schema<OrganizationsCreateRequest>,
-  output: __S(396, __c49, 4) as any as S.Schema<Organization>,
+  input: __S(656, __c82, 0) as any as S.Schema<OrganizationsCreateRequest>,
+  output: __S(671, __c83, 7) as any as S.Schema<Organization>,
   errors: [Forbidden, UnprocessableEntity, UnknownPolarError],
   protocol: PolarProtocol,
   retry: Retry.Retry,
@@ -16742,8 +16754,8 @@ export const organizationsGet: API.OperationMethod<
   OrganizationsGetError,
   PolarOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(397, __c49, 5) as any as S.Schema<OrganizationsGetRequest>,
-  output: __S(396, __c49, 4) as any as S.Schema<Organization>,
+  input: __S(680, __c85, 0) as any as S.Schema<OrganizationsGetRequest>,
+  output: __S(671, __c83, 7) as any as S.Schema<Organization>,
   errors: [NotFound, UnprocessableEntity, UnknownPolarError],
   protocol: PolarProtocol,
   retry: Retry.Retry,
@@ -16759,8 +16771,8 @@ export const organizationsList: API.PaginatedOperationMethod<
   Organization
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(398, __c49, 6) as any as S.Schema<OrganizationsListRequest>,
-    output: __S(400, __c50, 0) as any as S.Schema<ListResourceOrganization>,
+    input: __S(688, __c86, 0) as any as S.Schema<OrganizationsListRequest>,
+    output: __S(690, __c86, 2) as any as S.Schema<ListResourceOrganization>,
     errors: [UnprocessableEntity, UnknownPolarError],
     protocol: PolarProtocol,
     retry: Retry.Retry,
@@ -16788,8 +16800,8 @@ export const organizationsUpdate: API.OperationMethod<
   OrganizationsUpdateError,
   PolarOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(402, __c50, 2) as any as S.Schema<OrganizationsUpdateRequest>,
-  output: __S(396, __c49, 4) as any as S.Schema<Organization>,
+  input: __S(697, __c87, 1) as any as S.Schema<OrganizationsUpdateRequest>,
+  output: __S(671, __c83, 7) as any as S.Schema<Organization>,
   errors: [Forbidden, NotFound, Conflict, UnprocessableEntity, UnknownPolarError],
   protocol: PolarProtocol,
   retry: Retry.Retry,
@@ -16803,8 +16815,8 @@ export const paymentsGet: API.OperationMethod<
   PaymentsGetError,
   PolarOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(403, __c50, 3) as any as S.Schema<PaymentsGetRequest>,
-  output: __S(404, __c50, 4) as any as S.Schema<PaymentsGetResponse>,
+  input: __S(704, __c88, 0) as any as S.Schema<PaymentsGetRequest>,
+  output: __S(705, __c88, 1) as any as S.Schema<PaymentsGetResponse>,
   errors: [NotFound, UnprocessableEntity, UnknownPolarError],
   protocol: PolarProtocol,
   retry: Retry.Retry,
@@ -16820,8 +16832,8 @@ export const paymentsList: API.PaginatedOperationMethod<
   Payment
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(405, __c50, 5) as any as S.Schema<PaymentsListRequest>,
-    output: __S(407, __c50, 7) as any as S.Schema<ListResourcePayment>,
+    input: __S(712, __c89, 0) as any as S.Schema<PaymentsListRequest>,
+    output: __S(714, __c89, 2) as any as S.Schema<ListResourcePayment>,
     errors: [UnprocessableEntity, UnknownPolarError],
     protocol: PolarProtocol,
     retry: Retry.Retry,
@@ -16844,8 +16856,8 @@ export const productsCreate: API.OperationMethod<
   ProductsCreateError,
   PolarOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(410, __c51, 2) as any as S.Schema<ProductsCreateRequest>,
-  output: __S(412, __c51, 4) as any as S.Schema<Product>,
+  input: __S(720, __c90, 0) as any as S.Schema<ProductsCreateRequest>,
+  output: __S(729, __c91, 1) as any as S.Schema<Product>,
   errors: [UnprocessableEntity, UnknownPolarError],
   protocol: PolarProtocol,
   retry: Retry.Retry,
@@ -16864,8 +16876,8 @@ export const productsDelete: API.OperationMethod<
   ProductsDeleteError,
   PolarOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(413, __c51, 5) as any as S.Schema<ProductsDeleteRequest>,
-  output: __S(15, __c1, 7) as any as S.Schema<ProductsDeleteResponse>,
+  input: __S(736, __c92, 0) as any as S.Schema<ProductsDeleteRequest>,
+  output: __S(1760, __c220, 0) as any as S.Schema<ProductsDeleteResponse>,
   errors: [Forbidden, NotFound, Conflict, UnprocessableEntity, UnknownPolarError],
   protocol: PolarProtocol,
   retry: Retry.Retry,
@@ -16879,8 +16891,8 @@ export const productsGet: API.OperationMethod<
   ProductsGetError,
   PolarOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(414, __c51, 6) as any as S.Schema<ProductsGetRequest>,
-  output: __S(412, __c51, 4) as any as S.Schema<Product>,
+  input: __S(760, __c95, 0) as any as S.Schema<ProductsGetRequest>,
+  output: __S(729, __c91, 1) as any as S.Schema<Product>,
   errors: [NotFound, UnprocessableEntity, UnknownPolarError],
   protocol: PolarProtocol,
   retry: Retry.Retry,
@@ -16896,8 +16908,8 @@ export const productsList: API.PaginatedOperationMethod<
   Product
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(415, __c51, 7) as any as S.Schema<ProductsListRequest>,
-    output: __S(417, __c52, 1) as any as S.Schema<ListResourceProduct>,
+    input: __S(768, __c96, 0) as any as S.Schema<ProductsListRequest>,
+    output: __S(770, __c96, 2) as any as S.Schema<ListResourceProduct>,
     errors: [UnprocessableEntity, UnknownPolarError],
     protocol: PolarProtocol,
     retry: Retry.Retry,
@@ -16920,8 +16932,8 @@ export const productsUpdate: API.OperationMethod<
   ProductsUpdateError,
   PolarOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(420, __c52, 4) as any as S.Schema<ProductsUpdateRequest>,
-  output: __S(412, __c51, 4) as any as S.Schema<Product>,
+  input: __S(780, __c97, 4) as any as S.Schema<ProductsUpdateRequest>,
+  output: __S(729, __c91, 1) as any as S.Schema<Product>,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPolarError],
   protocol: PolarProtocol,
   retry: Retry.Retry,
@@ -16935,8 +16947,8 @@ export const productsUpdateBenefits: API.OperationMethod<
   ProductsUpdateBenefitsError,
   PolarOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(421, __c52, 5) as any as S.Schema<ProductsUpdateBenefitsRequest>,
-  output: __S(412, __c51, 4) as any as S.Schema<Product>,
+  input: __S(784, __c98, 0) as any as S.Schema<ProductsUpdateBenefitsRequest>,
+  output: __S(729, __c91, 1) as any as S.Schema<Product>,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownPolarError],
   protocol: PolarProtocol,
   retry: Retry.Retry,
@@ -16950,8 +16962,8 @@ export const refundsCreate: API.OperationMethod<
   RefundsCreateError,
   PolarOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(423, __c52, 7) as any as S.Schema<RefundsCreateRequest>,
-  output: __S(425, __c53, 1) as any as S.Schema<Refund>,
+  input: __S(793, __c99, 1) as any as S.Schema<RefundsCreateRequest>,
+  output: __S(801, __c100, 1) as any as S.Schema<Refund>,
   errors: [Forbidden, UnprocessableEntity, UnknownPolarError],
   protocol: PolarProtocol,
   retry: Retry.Retry,
@@ -16967,8 +16979,8 @@ export const refundsList: API.PaginatedOperationMethod<
   Refund
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(426, __c53, 2) as any as S.Schema<RefundsListRequest>,
-    output: __S(428, __c53, 4) as any as S.Schema<ListResourceRefund>,
+    input: __S(808, __c101, 0) as any as S.Schema<RefundsListRequest>,
+    output: __S(810, __c101, 2) as any as S.Schema<ListResourceRefund>,
     errors: [UnprocessableEntity, UnknownPolarError],
     protocol: PolarProtocol,
     retry: Retry.Retry,
@@ -16995,8 +17007,8 @@ export const retryCustomerPortalOrdersConfirmPayment: API.OperationMethod<
   RetryCustomerPortalOrdersConfirmPaymentError,
   PolarOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(429, __c53, 5) as any as S.Schema<RetryCustomerPortalOrdersConfirmPaymentRequest>,
-  output: __S(430, __c53, 6) as any as S.Schema<CustomerOrderPaymentConfirmation>,
+  input: __S(816, __c102, 0) as any as S.Schema<RetryCustomerPortalOrdersConfirmPaymentRequest>,
+  output: __S(817, __c102, 1) as any as S.Schema<CustomerOrderPaymentConfirmation>,
   errors: [NotFound, Conflict, UnprocessableEntity, UnknownPolarError],
   protocol: PolarProtocol,
   retry: Retry.Retry,
@@ -17010,8 +17022,8 @@ export const subscriptionsCreate: API.OperationMethod<
   SubscriptionsCreateError,
   PolarOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(431, __c53, 7) as any as S.Schema<SubscriptionsCreateRequest>,
-  output: __S(436, __c54, 4) as any as S.Schema<Subscription>,
+  input: __S(824, __c103, 0) as any as S.Schema<SubscriptionsCreateRequest>,
+  output: __S(836, __c104, 4) as any as S.Schema<Subscription>,
   errors: [UnprocessableEntity, UnknownPolarError],
   protocol: PolarProtocol,
   retry: Retry.Retry,
@@ -17025,8 +17037,8 @@ export const subscriptionsExport: API.OperationMethod<
   SubscriptionsExportError,
   PolarOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(437, __c54, 5) as any as S.Schema<SubscriptionsExportRequest>,
-  output: __S(15, __c1, 7) as any as S.Schema<SubscriptionsExportResponse>,
+  input: __S(840, __c105, 0) as any as S.Schema<SubscriptionsExportRequest>,
+  output: __S(1760, __c220, 0) as any as S.Schema<SubscriptionsExportResponse>,
   errors: [UnprocessableEntity, UnknownPolarError],
   protocol: PolarProtocol,
   retry: Retry.Retry,
@@ -17040,8 +17052,8 @@ export const subscriptionsGet: API.OperationMethod<
   SubscriptionsGetError,
   PolarOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(438, __c54, 6) as any as S.Schema<SubscriptionsGetRequest>,
-  output: __S(436, __c54, 4) as any as S.Schema<Subscription>,
+  input: __S(848, __c106, 0) as any as S.Schema<SubscriptionsGetRequest>,
+  output: __S(836, __c104, 4) as any as S.Schema<Subscription>,
   errors: [NotFound, UnprocessableEntity, UnknownPolarError],
   protocol: PolarProtocol,
   retry: Retry.Retry,
@@ -17057,8 +17069,8 @@ export const subscriptionsList: API.PaginatedOperationMethod<
   Subscription
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(439, __c54, 7) as any as S.Schema<SubscriptionsListRequest>,
-    output: __S(441, __c55, 1) as any as S.Schema<ListResourceSubscription>,
+    input: __S(904, __c113, 0) as any as S.Schema<SubscriptionsListRequest>,
+    output: __S(906, __c113, 2) as any as S.Schema<ListResourceSubscription>,
     errors: [UnprocessableEntity, UnknownPolarError],
     protocol: PolarProtocol,
     retry: Retry.Retry,
@@ -17086,8 +17098,8 @@ export const subscriptionsRevoke: API.OperationMethod<
   SubscriptionsRevokeError,
   PolarOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(442, __c55, 2) as any as S.Schema<SubscriptionsRevokeRequest>,
-  output: __S(436, __c54, 4) as any as S.Schema<Subscription>,
+  input: __S(912, __c114, 0) as any as S.Schema<SubscriptionsRevokeRequest>,
+  output: __S(836, __c104, 4) as any as S.Schema<Subscription>,
   errors: [Forbidden, NotFound, Conflict, UnprocessableEntity, UnknownPolarError],
   protocol: PolarProtocol,
   retry: Retry.Retry,
@@ -17106,8 +17118,8 @@ export const subscriptionsUpdate: API.OperationMethod<
   SubscriptionsUpdateError,
   PolarOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(443, __c55, 3) as any as S.Schema<SubscriptionsUpdateRequest>,
-  output: __S(436, __c54, 4) as any as S.Schema<Subscription>,
+  input: __S(920, __c115, 0) as any as S.Schema<SubscriptionsUpdateRequest>,
+  output: __S(836, __c104, 4) as any as S.Schema<Subscription>,
   errors: [Forbidden, NotFound, Conflict, UnprocessableEntity, UnknownPolarError],
   protocol: PolarProtocol,
   retry: Retry.Retry,
@@ -17126,8 +17138,8 @@ export const updateCheckoutsClient: API.OperationMethod<
   UpdateCheckoutsClientError,
   PolarOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(445, __c55, 5) as any as S.Schema<UpdateCheckoutsClientRequest>,
-  output: __S(310, __c38, 6) as any as S.Schema<CheckoutPublic>,
+  input: __S(929, __c116, 1) as any as S.Schema<UpdateCheckoutsClientRequest>,
+  output: __S(251, __c31, 3) as any as S.Schema<CheckoutPublic>,
   errors: [Forbidden, NotFound, Conflict, UnprocessableEntity, UnknownPolarError],
   protocol: PolarProtocol,
   retry: Retry.Retry,
@@ -17141,8 +17153,8 @@ export const updateCustomerPortalCustomersCheckEmail: API.OperationMethod<
   UpdateCustomerPortalCustomersCheckEmailError,
   PolarOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(446, __c55, 6) as any as S.Schema<UpdateCustomerPortalCustomersCheckEmailRequest>,
-  output: __S(105, __c13, 1) as any as S.Schema<UpdateCustomerPortalCustomersCheckEmailResponse>,
+  input: __S(936, __c117, 0) as any as S.Schema<UpdateCustomerPortalCustomersCheckEmailRequest>,
+  output: __S(1208, __c151, 0) as any as S.Schema<UpdateCustomerPortalCustomersCheckEmailResponse>,
   errors: [UnprocessableEntity, UnknownPolarError],
   protocol: PolarProtocol,
   retry: Retry.Retry,
@@ -17156,8 +17168,12 @@ export const updateCustomerPortalCustomersRequestEmail: API.OperationMethod<
   UpdateCustomerPortalCustomersRequestEmailError,
   PolarOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(447, __c55, 7) as any as S.Schema<UpdateCustomerPortalCustomersRequestEmailRequest>,
-  output: __S(105, __c13, 1) as any as S.Schema<UpdateCustomerPortalCustomersRequestEmailResponse>,
+  input: __S(944, __c118, 0) as any as S.Schema<UpdateCustomerPortalCustomersRequestEmailRequest>,
+  output: __S(
+    1208,
+    __c151,
+    0,
+  ) as any as S.Schema<UpdateCustomerPortalCustomersRequestEmailResponse>,
   errors: [UnprocessableEntity, UnknownPolarError],
   protocol: PolarProtocol,
   retry: Retry.Retry,
@@ -17171,8 +17187,8 @@ export const updateCustomerPortalCustomersVerifyEmail: API.OperationMethod<
   UpdateCustomerPortalCustomersVerifyEmailError,
   PolarOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(448, __c56, 0) as any as S.Schema<UpdateCustomerPortalCustomersVerifyEmailRequest>,
-  output: __S(449, __c56, 1) as any as S.Schema<CustomerEmailUpdateVerifyResponse>,
+  input: __S(952, __c119, 0) as any as S.Schema<UpdateCustomerPortalCustomersVerifyEmailRequest>,
+  output: __S(953, __c119, 1) as any as S.Schema<CustomerEmailUpdateVerifyResponse>,
   errors: [UnprocessableEntity, UnknownPolarError],
   protocol: PolarProtocol,
   retry: Retry.Retry,
@@ -17186,8 +17202,8 @@ export const webhooksCreateWebhookEndpoint: API.OperationMethod<
   WebhooksCreateWebhookEndpointError,
   PolarOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(450, __c56, 2) as any as S.Schema<WebhooksCreateWebhookEndpointRequest>,
-  output: __S(451, __c56, 3) as any as S.Schema<WebhookEndpoint>,
+  input: __S(960, __c120, 0) as any as S.Schema<WebhooksCreateWebhookEndpointRequest>,
+  output: __S(968, __c121, 0) as any as S.Schema<WebhookEndpoint>,
   errors: [UnprocessableEntity, UnknownPolarError],
   protocol: PolarProtocol,
   retry: Retry.Retry,
@@ -17201,8 +17217,8 @@ export const webhooksDeleteWebhookEndpoint: API.OperationMethod<
   WebhooksDeleteWebhookEndpointError,
   PolarOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(452, __c56, 4) as any as S.Schema<WebhooksDeleteWebhookEndpointRequest>,
-  output: __S(105, __c13, 1) as any as S.Schema<WebhooksDeleteWebhookEndpointResponse>,
+  input: __S(976, __c122, 0) as any as S.Schema<WebhooksDeleteWebhookEndpointRequest>,
+  output: __S(1208, __c151, 0) as any as S.Schema<WebhooksDeleteWebhookEndpointResponse>,
   errors: [NotFound, UnprocessableEntity, UnknownPolarError],
   protocol: PolarProtocol,
   retry: Retry.Retry,
@@ -17216,8 +17232,8 @@ export const webhooksGetWebhookEndpoint: API.OperationMethod<
   WebhooksGetWebhookEndpointError,
   PolarOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(453, __c56, 5) as any as S.Schema<WebhooksGetWebhookEndpointRequest>,
-  output: __S(451, __c56, 3) as any as S.Schema<WebhookEndpoint>,
+  input: __S(984, __c123, 0) as any as S.Schema<WebhooksGetWebhookEndpointRequest>,
+  output: __S(968, __c121, 0) as any as S.Schema<WebhookEndpoint>,
   errors: [NotFound, UnprocessableEntity, UnknownPolarError],
   protocol: PolarProtocol,
   retry: Retry.Retry,
@@ -17233,8 +17249,8 @@ export const webhooksListWebhookDeliveries: API.PaginatedOperationMethod<
   WebhookDelivery
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(454, __c56, 6) as any as S.Schema<WebhooksListWebhookDeliveriesRequest>,
-    output: __S(458, __c57, 2) as any as S.Schema<ListResourceWebhookDelivery>,
+    input: __S(1000, __c125, 0) as any as S.Schema<WebhooksListWebhookDeliveriesRequest>,
+    output: __S(1004, __c125, 4) as any as S.Schema<ListResourceWebhookDelivery>,
     errors: [UnprocessableEntity, UnknownPolarError],
     protocol: PolarProtocol,
     retry: Retry.Retry,
@@ -17259,8 +17275,8 @@ export const webhooksListWebhookEndpoints: API.PaginatedOperationMethod<
   WebhookEndpoint
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(459, __c57, 3) as any as S.Schema<WebhooksListWebhookEndpointsRequest>,
-    output: __S(461, __c57, 5) as any as S.Schema<ListResourceWebhookEndpoint>,
+    input: __S(1008, __c126, 0) as any as S.Schema<WebhooksListWebhookEndpointsRequest>,
+    output: __S(1010, __c126, 2) as any as S.Schema<ListResourceWebhookEndpoint>,
     errors: [UnprocessableEntity, UnknownPolarError],
     protocol: PolarProtocol,
     retry: Retry.Retry,
@@ -17283,8 +17299,8 @@ export const webhooksRedeliverWebhookEvent: API.OperationMethod<
   WebhooksRedeliverWebhookEventError,
   PolarOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(462, __c57, 6) as any as S.Schema<WebhooksRedeliverWebhookEventRequest>,
-  output: __S(105, __c13, 1) as any as S.Schema<WebhooksRedeliverWebhookEventResponse>,
+  input: __S(1016, __c127, 0) as any as S.Schema<WebhooksRedeliverWebhookEventRequest>,
+  output: __S(1208, __c151, 0) as any as S.Schema<WebhooksRedeliverWebhookEventResponse>,
   errors: [NotFound, UnprocessableEntity, UnknownPolarError],
   protocol: PolarProtocol,
   retry: Retry.Retry,
@@ -17298,8 +17314,8 @@ export const webhooksResetWebhookEndpointSecret: API.OperationMethod<
   WebhooksResetWebhookEndpointSecretError,
   PolarOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(463, __c57, 7) as any as S.Schema<WebhooksResetWebhookEndpointSecretRequest>,
-  output: __S(451, __c56, 3) as any as S.Schema<WebhookEndpoint>,
+  input: __S(1024, __c128, 0) as any as S.Schema<WebhooksResetWebhookEndpointSecretRequest>,
+  output: __S(968, __c121, 0) as any as S.Schema<WebhookEndpoint>,
   errors: [NotFound, UnprocessableEntity, UnknownPolarError],
   protocol: PolarProtocol,
   retry: Retry.Retry,
@@ -17313,8 +17329,8 @@ export const webhooksUpdateWebhookEndpoint: API.OperationMethod<
   WebhooksUpdateWebhookEndpointError,
   PolarOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(464, __c58, 0) as any as S.Schema<WebhooksUpdateWebhookEndpointRequest>,
-  output: __S(451, __c56, 3) as any as S.Schema<WebhookEndpoint>,
+  input: __S(1032, __c129, 0) as any as S.Schema<WebhooksUpdateWebhookEndpointRequest>,
+  output: __S(968, __c121, 0) as any as S.Schema<WebhookEndpoint>,
   errors: [NotFound, UnprocessableEntity, UnknownPolarError],
   protocol: PolarProtocol,
   retry: Retry.Retry,
@@ -17324,57 +17340,16 @@ export const webhooksUpdateWebhookEndpoint: API.OperationMethod<
 function __c0(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(S.String);
-    case 1:
-      return S.Array(S.String);
-    case 2:
       return S.suspend(() =>
         S.Struct({
-          organization_id: S.optional(S.Unknown.pipe(T.Query())),
-          customer_id: S.optional(S.Unknown.pipe(T.Query())),
-          external_customer_id: S.optional(S.Unknown.pipe(T.Query())),
+          id: S.String.pipe(T.Label()),
           is_granted: S.optional(S.Boolean.pipe(T.Query())),
+          customer_id: S.optional(S.Unknown.pipe(T.Query())),
+          member_id: S.optional(S.Unknown.pipe(T.Query())),
           page: S.optional(S.Number.pipe(T.Query())),
           limit: S.optional(S.Number.pipe(T.Query())),
-          sorting: S.optional(__S(1, __c0, 1).pipe(T.Query())),
-        }).pipe(T.Http({ method: "GET", uri: "/v1/benefit-grants/", code: 200 })),
-      ).annotate({ identifier: "BenefitGrantsListRequest" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          message: S.String,
-          type: S.String,
-          timestamp: S.String,
-        }),
-      ).annotate({ identifier: "BenefitGrantError" });
-    case 4:
-      return S.Record(S.String, S.Unknown);
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          line1: S.optional(S.NullOr(S.String)),
-          line2: S.optional(S.NullOr(S.String)),
-          postal_code: S.optional(S.NullOr(S.String)),
-          city: S.optional(S.NullOr(S.String)),
-          state: S.optional(S.NullOr(S.String)),
-          country: S.String,
-        }),
-      ).annotate({ identifier: "Address" });
-    case 6:
-      return S.Array(S.Unknown);
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String,
-          created_at: S.String,
-          modified_at: S.NullOr(S.String),
-          customer_id: S.String,
-          email: S.String,
-          name: S.NullOr(S.String),
-          external_id: S.NullOr(S.String),
-          role: S.String,
-        }),
-      ).annotate({ identifier: "Member" });
+        }).pipe(T.Http({ method: "GET", uri: "/v1/benefits/{id}/grants", code: 200 })),
+      ).annotate({ identifier: "BenefitsGrantsRequest" });
   }
 }
 function __c1(j: number): any {
@@ -17382,60 +17357,12 @@ function __c1(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          created_at: S.String,
-          modified_at: S.NullOr(S.String),
-          id: S.String,
-          granted_at: S.optional(S.NullOr(S.String)),
-          is_granted: S.Boolean,
-          revoked_at: S.optional(S.NullOr(S.String)),
-          is_revoked: S.Boolean,
-          subscription_id: S.NullOr(S.String),
-          order_id: S.NullOr(S.String),
-          customer_id: S.String,
-          member_id: S.optional(S.NullOr(S.String)),
-          benefit_id: S.String,
-          error: S.optional(S.NullOr(__S(3, __c0, 3))),
-          customer: S.Unknown,
-          member: S.optional(S.NullOr(__S(7, __c0, 7))),
-          benefit: S.Unknown,
-          properties: S.Unknown,
-        }),
-      ).annotate({ identifier: "BenefitGrant" });
-    case 1:
-      return S.Array(__S(8, __c1, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          total_count: S.Number,
-          max_page: S.Number,
-        }),
-      ).annotate({ identifier: "Pagination" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          items: __S(9, __c1, 1),
-          pagination: __S(10, __c1, 2),
-        }),
-      ).annotate({ identifier: "ListResourceBenefitGrant" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          body: S.Unknown.pipe(T.HttpBody()),
-        }).pipe(T.Http({ method: "POST", uri: "/v1/benefits/", code: 200 })),
-      ).annotate({ identifier: "BenefitsCreateRequest" });
-    case 5:
-      return S.suspend(() => S.Unknown.pipe(T.RawResponseRoot())).annotate({
-        identifier: "BenefitsCreateResponse",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
           id: S.String.pipe(T.Label()),
-        }).pipe(T.Http({ method: "DELETE", uri: "/v1/benefits/{id}", code: 200 })),
-      ).annotate({ identifier: "BenefitsDeleteRequest" });
-    case 7:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "BenefitsDeleteResponse",
+        }).pipe(T.Http({ method: "GET", uri: "/v1/custom-fields/{id}", code: 200 })),
+      ).annotate({ identifier: "CustomFieldsGetRequest" });
+    case 1:
+      return S.suspend(() => S.Unknown.pipe(T.RawResponseRoot())).annotate({
+        identifier: "CustomFieldsGetResponse",
       });
   }
 }
@@ -17444,12 +17371,434 @@ function __c2(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          id: S.String.pipe(T.Label()),
+          organization_id: S.optional(S.Unknown.pipe(T.Query())),
+          query: S.optional(S.String.pipe(T.Query())),
+          type: S.optional(S.Unknown.pipe(T.Query())),
           page: S.optional(S.Number.pipe(T.Query())),
           limit: S.optional(S.Number.pipe(T.Query())),
-        }).pipe(T.Http({ method: "GET", uri: "/v1/benefits/{id}/files", code: 200 })),
-      ).annotate({ identifier: "BenefitsFilesRequest" });
+          sorting: S.optional(__S(1464, __c183, 0).pipe(T.Query())),
+        }).pipe(T.Http({ method: "GET", uri: "/v1/custom-fields/", code: 200 })),
+      ).annotate({ identifier: "CustomFieldsListRequest" });
     case 1:
+      return S.Array(S.Unknown);
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          items: __S(17, __c2, 1),
+          pagination: __S(1472, __c184, 0),
+        }),
+      ).annotate({ identifier: "ListResourceCustomField" });
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String.pipe(T.Label()),
+          body: S.Unknown.pipe(T.HttpBody()),
+        }).pipe(T.Http({ method: "PATCH", uri: "/v1/custom-fields/{id}", code: 200 })),
+      ).annotate({
+        identifier: "CustomFieldsUpdateRequest",
+      });
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          body: S.Unknown.pipe(T.HttpBody()),
+        }).pipe(T.Http({ method: "POST", uri: "/v1/discounts/", code: 200 })),
+      ).annotate({ identifier: "DiscountsCreateRequest" });
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Unknown.pipe(T.RawResponseRoot())).annotate({
+        identifier: "DiscountsCreateResponse",
+      });
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String.pipe(T.Label()),
+        }).pipe(T.Http({ method: "DELETE", uri: "/v1/discounts/{id}", code: 200 })),
+      ).annotate({ identifier: "DiscountsDeleteRequest" });
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String.pipe(T.Label()),
+        }).pipe(T.Http({ method: "GET", uri: "/v1/discounts/{id}", code: 200 })),
+      ).annotate({ identifier: "DiscountsGetRequest" });
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          organization_id: S.optional(S.Unknown.pipe(T.Query())),
+          query: S.optional(S.String.pipe(T.Query())),
+          page: S.optional(S.Number.pipe(T.Query())),
+          limit: S.optional(S.Number.pipe(T.Query())),
+          sorting: S.optional(__S(1464, __c183, 0).pipe(T.Query())),
+        }).pipe(T.Http({ method: "GET", uri: "/v1/discounts/", code: 200 })),
+      ).annotate({ identifier: "DiscountsListRequest" });
+    case 1:
+      return S.Array(S.Unknown);
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          items: __S(65, __c8, 1),
+          pagination: __S(1472, __c184, 0),
+        }),
+      ).annotate({ identifier: "ListResourceDiscount" });
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, S.Number);
+    case 1:
+      return S.Record(S.String, S.Unknown);
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String.pipe(T.Label()),
+          metadata: S.optional(__S(73, __c9, 1)),
+          name: S.optional(S.NullOr(S.String)),
+          code: S.optional(S.NullOr(S.String)),
+          starts_at: S.optional(S.NullOr(S.String)),
+          ends_at: S.optional(S.NullOr(S.String)),
+          max_redemptions: S.optional(S.NullOr(S.Number)),
+          max_redemptions_per_customer: S.optional(S.NullOr(S.Number)),
+          duration: S.optional(S.NullOr(S.String)),
+          duration_in_months: S.optional(S.NullOr(S.Number)),
+          type: S.optional(S.NullOr(S.String)),
+          amount: S.optional(S.NullOr(S.Number)),
+          currency: S.optional(S.NullOr(S.String)),
+          amounts: S.optional(S.NullOr(__S(72, __c9, 0))),
+          basis_points: S.optional(S.NullOr(S.Number)),
+          products: S.optional(S.NullOr(__S(752, __c94, 0))),
+        }).pipe(T.Http({ method: "PATCH", uri: "/v1/discounts/{id}", code: 200 })),
+      ).annotate({ identifier: "DiscountsUpdateRequest" });
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String.pipe(T.Label()),
+        }).pipe(T.Http({ method: "POST", uri: "/v1/disputes/{id}/accept", code: 200 })),
+      ).annotate({ identifier: "DisputesAcceptRequest" });
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          created_at: S.String,
+          modified_at: S.NullOr(S.String),
+          id: S.String,
+          status: S.String,
+          resolved: S.Boolean,
+          closed: S.Boolean,
+          amount: S.Number,
+          tax_amount: S.Number,
+          currency: S.String,
+          reason: S.NullOr(S.String),
+          evidence_due_by: S.NullOr(S.String),
+          past_due: S.Boolean,
+          order_id: S.String,
+          payment_id: S.String,
+          customer: __S(1296, __c162, 0),
+          case_id: S.NullOr(S.String),
+        }),
+      ).annotate({ identifier: "Dispute" });
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String.pipe(T.Label()),
+        }).pipe(T.Http({ method: "GET", uri: "/v1/disputes/{id}", code: 200 })),
+      ).annotate({ identifier: "DisputesGetRequest" });
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          organization_id: S.optional(S.Unknown.pipe(T.Query())),
+          type: S.optional(S.Unknown.pipe(T.Query())),
+          id: S.optional(S.Unknown.pipe(T.Query())),
+          exclude_id: S.optional(S.Unknown.pipe(T.Query())),
+          query: S.optional(S.String.pipe(T.Query())),
+          page: S.optional(S.Number.pipe(T.Query())),
+          limit: S.optional(S.Number.pipe(T.Query())),
+          sorting: S.optional(__S(1464, __c183, 0).pipe(T.Query())),
+          metadata: S.optional(__S(120, __c15, 0).pipe(T.Query())),
+        }).pipe(T.Http({ method: "GET", uri: "/v1/benefits/", code: 200 })),
+      ).annotate({ identifier: "BenefitsListRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          items: __S(112, __c14, 0),
+          pagination: __S(1472, __c184, 0),
+        }),
+      ).annotate({ identifier: "ListResourceBenefit" });
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.Unknown);
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, S.Unknown);
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          organization_id: S.optional(S.Unknown.pipe(T.Query())),
+          order_id: S.optional(S.Unknown.pipe(T.Query())),
+          status: S.optional(S.Unknown.pipe(T.Query())),
+          page: S.optional(S.Number.pipe(T.Query())),
+          limit: S.optional(S.Number.pipe(T.Query())),
+          sorting: S.optional(__S(1464, __c183, 0).pipe(T.Query())),
+        }).pipe(T.Http({ method: "GET", uri: "/v1/disputes/", code: 200 })),
+      ).annotate({ identifier: "DisputesListRequest" });
+    case 1:
+      return S.Array(__S(88, __c11, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          items: __S(129, __c16, 1),
+          pagination: __S(1472, __c184, 0),
+        }),
+      ).annotate({ identifier: "ListResourceDispute" });
+  }
+}
+function __c17(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String.pipe(T.Label()),
+        }).pipe(T.Http({ method: "GET", uri: "/v1/events/{id}", code: 200 })),
+      ).annotate({ identifier: "EventsGetRequest" });
+    case 1:
+      return S.suspend(() => S.Unknown.pipe(T.RawResponseRoot())).annotate({
+        identifier: "EventsGetResponse",
+      });
+  }
+}
+function __c18(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.Unknown);
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          events: __S(144, __c18, 0),
+        }).pipe(T.Http({ method: "POST", uri: "/v1/events/ingest", code: 200 })),
+      ).annotate({ identifier: "EventsIngestRequest" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          inserted: S.Number,
+          duplicates: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "EventsIngestResponse" });
+  }
+}
+function __c19(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          filter: S.optional(S.String.pipe(T.Query())),
+          start_timestamp: S.optional(S.String.pipe(T.Query())),
+          end_timestamp: S.optional(S.String.pipe(T.Query())),
+          organization_id: S.optional(S.Unknown.pipe(T.Query())),
+          customer_id: S.optional(S.Unknown.pipe(T.Query())),
+          external_customer_id: S.optional(S.Unknown.pipe(T.Query())),
+          meter_id: S.optional(S.String.pipe(T.Query())),
+          name: S.optional(S.Unknown.pipe(T.Query())),
+          source: S.optional(S.Unknown.pipe(T.Query())),
+          query: S.optional(S.String.pipe(T.Query())),
+          parent_id: S.optional(S.String.pipe(T.Query())),
+          depth: S.optional(S.Number.pipe(T.Query())),
+          page: S.optional(S.Number.pipe(T.Query())),
+          limit: S.optional(S.Number.pipe(T.Query())),
+          sorting: S.optional(__S(1464, __c183, 0).pipe(T.Query())),
+          metadata: S.optional(__S(120, __c15, 0).pipe(T.Query())),
+        }).pipe(T.Http({ method: "GET", uri: "/v1/events/", code: 200 })),
+      ).annotate({ identifier: "EventsListRequest" });
+    case 1:
+      return S.suspend(() => S.Unknown.pipe(T.RawResponseRoot())).annotate({
+        identifier: "EventsListResponse",
+      });
+  }
+}
+function __c20(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          organization_id: S.optional(S.Unknown.pipe(T.Query())),
+          customer_id: S.optional(S.Unknown.pipe(T.Query())),
+          external_customer_id: S.optional(S.Unknown.pipe(T.Query())),
+          source: S.optional(S.Unknown.pipe(T.Query())),
+          query: S.optional(S.String.pipe(T.Query())),
+          page: S.optional(S.Number.pipe(T.Query())),
+          limit: S.optional(S.Number.pipe(T.Query())),
+          sorting: S.optional(__S(1464, __c183, 0).pipe(T.Query())),
+        }).pipe(T.Http({ method: "GET", uri: "/v1/events/names", code: 200 })),
+      ).annotate({ identifier: "EventsListNamesRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String,
+          label: S.String,
+          source: S.String,
+          occurrences: S.Number,
+          first_seen: S.String,
+          last_seen: S.String,
+        }),
+      ).annotate({ identifier: "EventName" });
+    case 2:
+      return S.Array(__S(161, __c20, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          items: __S(162, __c20, 2),
+          pagination: __S(1472, __c184, 0),
+        }),
+      ).annotate({ identifier: "ListResourceEventName" });
+  }
+}
+function __c21(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          organization_id: S.optional(S.Unknown.pipe(T.Query())),
+          customer_id: S.optional(S.Unknown.pipe(T.Query())),
+          external_customer_id: S.optional(S.Unknown.pipe(T.Query())),
+          query: S.optional(S.String.pipe(T.Query())),
+          root_events: S.optional(S.Boolean.pipe(T.Query())),
+          parent_id: S.optional(S.String.pipe(T.Query())),
+          source: S.optional(S.String.pipe(T.Query())),
+          page: S.optional(S.Number.pipe(T.Query())),
+          limit: S.optional(S.Number.pipe(T.Query())),
+          sorting: S.optional(__S(1464, __c183, 0).pipe(T.Query())),
+        }).pipe(T.Http({ method: "GET", uri: "/v1/event-types/", code: 200 })),
+      ).annotate({ identifier: "EventTypesListRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.NullOr(S.String)),
+          created_at: S.optional(S.NullOr(S.String)),
+          modified_at: S.optional(S.NullOr(S.String)),
+          name: S.String,
+          label: S.String,
+          label_property_selector: S.optional(S.NullOr(S.String)),
+          organization_id: S.String,
+          source: S.String,
+          occurrences: S.Number,
+          first_seen: S.String,
+          last_seen: S.String,
+        }),
+      ).annotate({ identifier: "EventTypeWithStats" });
+    case 2:
+      return S.Array(__S(169, __c21, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          items: __S(170, __c21, 2),
+          pagination: __S(1472, __c184, 0),
+        }),
+      ).annotate({
+        identifier: "ListResourceEventTypeWithStats",
+      });
+  }
+}
+function __c22(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String.pipe(T.Label()),
+          label: S.String,
+          label_property_selector: S.optional(S.NullOr(S.String)),
+        }).pipe(T.Http({ method: "PATCH", uri: "/v1/event-types/{id}", code: 200 })),
+      ).annotate({ identifier: "EventTypesUpdateRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          created_at: S.String,
+          modified_at: S.NullOr(S.String),
+          id: S.String,
+          name: S.String,
+          label: S.String,
+          label_property_selector: S.optional(S.NullOr(S.String)),
+          organization_id: S.String,
+        }),
+      ).annotate({ identifier: "EventType" });
+  }
+}
+function __c23(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          body: S.Unknown.pipe(T.HttpBody()),
+        }).pipe(T.Http({ method: "POST", uri: "/v1/files/", code: 200 })),
+      ).annotate({ identifier: "FilesCreateRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          number: S.Number,
+          chunk_start: S.Number,
+          chunk_end: S.Number,
+          checksum_sha256_base64: S.optional(S.NullOr(S.String)),
+          url: S.String,
+          expires_at: S.String,
+          headers: S.optional(__S(896, __c112, 0)),
+        }),
+      ).annotate({ identifier: "S3FileUploadPart" });
+    case 2:
+      return S.Array(__S(185, __c23, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          path: S.String,
+          parts: __S(186, __c23, 2),
+        }),
+      ).annotate({ identifier: "S3FileUploadMultipart" });
+    case 4:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
@@ -17463,81 +17812,307 @@ function __c2(j: number): any {
           checksum_sha256_base64: S.NullOr(S.String),
           checksum_sha256_hex: S.NullOr(S.String),
           last_modified_at: S.NullOr(S.String),
+          upload: __S(187, __c23, 3),
           version: S.NullOr(S.String),
+          is_uploaded: S.optional(S.Boolean),
           service: S.String,
-          is_uploaded: S.Boolean,
-          created_at: S.String,
-          flagged_malicious_at: S.NullOr(S.String),
-          downloaders: S.Number,
-          downloads: S.Number,
           size_readable: S.String,
         }),
-      ).annotate({ identifier: "BenefitDownloadableFile" });
-    case 2:
-      return S.Array(__S(17, __c2, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          items: __S(18, __c2, 2),
-          pagination: __S(10, __c1, 2),
-        }),
-      ).annotate({
-        identifier: "ListResourceBenefitDownloadableFile",
-      });
-    case 4:
+      ).annotate({ identifier: "FileUpload" });
+  }
+}
+function __c24(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.String.pipe(T.Label()),
-        }).pipe(T.Http({ method: "GET", uri: "/v1/benefits/{id}", code: 200 })),
-      ).annotate({ identifier: "BenefitsGetRequest" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String.pipe(T.Label()),
-          is_granted: S.optional(S.Boolean.pipe(T.Query())),
-          customer_id: S.optional(S.Unknown.pipe(T.Query())),
-          member_id: S.optional(S.Unknown.pipe(T.Query())),
-          page: S.optional(S.Number.pipe(T.Query())),
-          limit: S.optional(S.Number.pipe(T.Query())),
-        }).pipe(T.Http({ method: "GET", uri: "/v1/benefits/{id}/grants", code: 200 })),
-      ).annotate({ identifier: "BenefitsGrantsRequest" });
-    case 6:
-      return S.Record(S.String, S.Unknown);
-    case 7:
+        }).pipe(T.Http({ method: "DELETE", uri: "/v1/files/{id}", code: 200 })),
+      ).annotate({ identifier: "FilesDeleteRequest" });
+  }
+}
+function __c25(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           organization_id: S.optional(S.Unknown.pipe(T.Query())),
-          type: S.optional(S.Unknown.pipe(T.Query())),
-          id: S.optional(S.Unknown.pipe(T.Query())),
-          exclude_id: S.optional(S.Unknown.pipe(T.Query())),
-          query: S.optional(S.String.pipe(T.Query())),
+          ids: S.optional(S.Unknown.pipe(T.Query())),
           page: S.optional(S.Number.pipe(T.Query())),
           limit: S.optional(S.Number.pipe(T.Query())),
-          sorting: S.optional(__S(1, __c0, 1).pipe(T.Query())),
-          metadata: S.optional(__S(22, __c2, 6).pipe(T.Query())),
-        }).pipe(T.Http({ method: "GET", uri: "/v1/benefits/", code: 200 })),
-      ).annotate({ identifier: "BenefitsListRequest" });
-  }
-}
-function __c3(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(S.Unknown);
+        }).pipe(T.Http({ method: "GET", uri: "/v1/files/", code: 200 })),
+      ).annotate({ identifier: "FilesListRequest" });
     case 1:
+      return S.Array(S.Unknown);
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          items: __S(24, __c3, 0),
-          pagination: __S(10, __c1, 2),
+          items: __S(201, __c25, 1),
+          pagination: __S(1472, __c184, 0),
         }),
-      ).annotate({ identifier: "ListResourceBenefit" });
-    case 2:
+      ).annotate({ identifier: "ListResourceFileRead" });
+  }
+}
+function __c26(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.String.pipe(T.Label()),
           body: S.Unknown.pipe(T.HttpBody()),
         }).pipe(T.Http({ method: "PATCH", uri: "/v1/benefits/{id}", code: 200 })),
       ).annotate({ identifier: "BenefitsUpdateRequest" });
+  }
+}
+function __c27(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String.pipe(T.Label()),
+          name: S.optional(S.NullOr(S.String)),
+          version: S.optional(S.NullOr(S.String)),
+        }).pipe(T.Http({ method: "PATCH", uri: "/v1/files/{id}", code: 200 })),
+      ).annotate({ identifier: "FilesUpdateRequest" });
+  }
+}
+function __c28(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Unknown.pipe(T.RawResponseRoot())).annotate({
+        identifier: "FilesUpdateResponse",
+      });
+  }
+}
+function __c29(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          number: S.Number,
+          checksum_etag: S.String,
+          checksum_sha256_base64: S.NullOr(S.String),
+        }),
+      ).annotate({
+        identifier: "S3FileUploadCompletedPart",
+      });
+    case 1:
+      return S.Array(__S(232, __c29, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String.pipe(T.Label()),
+          path: S.String,
+          parts: __S(233, __c29, 1),
+        }).pipe(T.Http({ method: "POST", uri: "/v1/files/{id}/uploaded", code: 200 })),
+      ).annotate({ identifier: "FilesUploadedRequest" });
+  }
+}
+function __c30(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          client_secret: S.String.pipe(T.Label()),
+        }).pipe(T.Http({ method: "GET", uri: "/v1/checkouts/client/{client_secret}", code: 200 })),
+      ).annotate({
+        identifier: "GetCheckoutsClientRequest",
+      });
+  }
+}
+function __c31(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, /*@__PURE__*/ S.NullOr(S.Unknown));
+    case 1:
+      return S.Array(S.Unknown);
+    case 2:
+      return S.Record(S.String, __S(249, __c31, 1));
     case 3:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          created_at: S.String,
+          modified_at: S.NullOr(S.String),
+          custom_field_data: S.optional(__S(248, __c31, 0)),
+          payment_processor: S.String,
+          status: S.String,
+          client_secret: S.String.pipe(T.SensitiveValue({})),
+          url: S.String,
+          expires_at: S.String,
+          success_url: S.String,
+          return_url: S.NullOr(S.String),
+          embed_origin: S.NullOr(S.String),
+          amount: S.Number,
+          seats: S.optional(S.NullOr(S.Number)),
+          min_seats: S.optional(S.NullOr(S.Number)),
+          max_seats: S.optional(S.NullOr(S.Number)),
+          units: S.NullOr(S.Number),
+          min_units: S.NullOr(S.Number),
+          max_units: S.NullOr(S.Number),
+          discount_amount: S.Number,
+          net_amount: S.Number,
+          tax_amount: S.NullOr(S.Number),
+          tax_behavior: S.NullOr(S.String),
+          total_amount: S.Number,
+          currency: S.String,
+          allow_trial: S.NullOr(S.Boolean),
+          active_trial_interval: S.NullOr(S.String),
+          active_trial_interval_count: S.NullOr(S.Number),
+          trial_end: S.NullOr(S.String),
+          organization_id: S.String,
+          product_id: S.NullOr(S.String),
+          product_price_id: S.NullOr(S.String),
+          discount_id: S.NullOr(S.String),
+          allow_discount_codes: S.Boolean,
+          require_billing_address: S.Boolean,
+          is_discount_applicable: S.Boolean,
+          is_free_product_price: S.Boolean,
+          is_payment_required: S.Boolean,
+          is_payment_setup_required: S.Boolean,
+          is_payment_form_required: S.Boolean,
+          customer_id: S.NullOr(S.String),
+          is_business_customer: S.Boolean,
+          customer_name: S.NullOr(S.String),
+          customer_email: S.NullOr(S.String),
+          customer_ip_address: S.NullOr(S.String),
+          customer_billing_name: S.NullOr(S.String),
+          customer_billing_address: S.NullOr(__S(888, __c111, 0)),
+          customer_tax_id: S.NullOr(S.String),
+          locale: S.optional(S.NullOr(S.String)),
+          payment_method_type: S.NullOr(S.String),
+          payment_processor_metadata: __S(896, __c112, 0),
+          billing_address_fields: __S(880, __c110, 0),
+          products: __S(883, __c110, 3),
+          product: S.NullOr(__S(882, __c110, 2)),
+          product_price: S.NullOr(S.Unknown),
+          prices: S.NullOr(__S(250, __c31, 2)),
+          discount: S.NullOr(S.Unknown),
+          organization: __S(1072, __c134, 0),
+          attached_custom_fields: S.NullOr(__S(873, __c109, 1)),
+        }),
+      ).annotate({ identifier: "CheckoutPublic" });
+  }
+}
+function __c32(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, S.Unknown);
+    case 1:
+      return S.Record(S.String, S.Unknown);
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          key: S.String,
+          organization_id: S.String,
+          label: S.String,
+          conditions: S.optional(__S(256, __c32, 0)),
+          meta: S.optional(__S(257, __c32, 1)),
+        }).pipe(T.Http({ method: "POST", uri: "/v1/license-keys/activate", code: 200 })),
+      ).annotate({
+        identifier: "LicenseKeysActivateRequest",
+      });
+  }
+}
+function __c33(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          key: S.String,
+          organization_id: S.String,
+          activation_id: S.String,
+        }).pipe(T.Http({ method: "POST", uri: "/v1/license-keys/deactivate", code: 200 })),
+      ).annotate({
+        identifier: "LicenseKeysDeactivateRequest",
+      });
+  }
+}
+function __c34(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String.pipe(T.Label()),
+        }).pipe(T.Http({ method: "GET", uri: "/v1/license-keys/{id}", code: 200 })),
+      ).annotate({ identifier: "LicenseKeysGetRequest" });
+  }
+}
+function __c35(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String.pipe(T.Label()),
+          activation_id: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/v1/license-keys/{id}/activations/{activation_id}",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "LicenseKeysGetActivationRequest",
+      });
+    case 1:
+      return S.Record(S.String, S.Unknown);
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          license_key_id: S.String,
+          label: S.String,
+          meta: __S(281, __c35, 1),
+          created_at: S.String,
+          modified_at: S.NullOr(S.String),
+          license_key: __S(1368, __c171, 0),
+        }),
+      ).annotate({ identifier: "LicenseKeyActivationRead" });
+  }
+}
+function __c36(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          organization_id: S.optional(S.Unknown.pipe(T.Query())),
+          benefit_id: S.optional(S.Unknown.pipe(T.Query())),
+          status: S.optional(S.Unknown.pipe(T.Query())),
+          page: S.optional(S.Number.pipe(T.Query())),
+          limit: S.optional(S.Number.pipe(T.Query())),
+        }).pipe(T.Http({ method: "GET", uri: "/v1/license-keys/", code: 200 })),
+      ).annotate({ identifier: "LicenseKeysListRequest" });
+  }
+}
+function __c37(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String.pipe(T.Label()),
+        }).pipe(T.Http({ method: "POST", uri: "/v1/license-keys/{id}/rotate", code: 200 })),
+      ).annotate({ identifier: "LicenseKeysRotateRequest" });
+  }
+}
+function __c38(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String.pipe(T.Label()),
+          status: S.optional(S.NullOr(S.String)),
+          usage: S.optional(S.Number),
+          limit_activations: S.optional(S.NullOr(S.Number)),
+          limit_usage: S.optional(S.NullOr(S.Number)),
+          expires_at: S.optional(S.NullOr(S.String)),
+        }).pipe(T.Http({ method: "PATCH", uri: "/v1/license-keys/{id}", code: 200 })),
+      ).annotate({ identifier: "LicenseKeysUpdateRequest" });
+  }
+}
+function __c39(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           body: S.Unknown.pipe(T.HttpBody()),
@@ -17545,13 +18120,68 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "CheckoutLinksCreateRequest",
       });
-    case 4:
-      return S.Record(S.String, S.String);
-    case 5:
+  }
+}
+function __c40(j: number): any {
+  switch (j) {
+    case 0:
       return S.Array(S.Unknown);
-    case 6:
-      return S.Array(S.Unknown);
-    case 7:
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          metadata: __S(344, __c43, 0),
+          id: S.String,
+          created_at: S.String,
+          modified_at: S.NullOr(S.String),
+          trial_interval: S.NullOr(S.String),
+          trial_interval_count: S.NullOr(S.Number),
+          name: S.String,
+          description: S.NullOr(S.String),
+          visibility: S.String,
+          recurring_interval: S.NullOr(S.String),
+          recurring_interval_count: S.NullOr(S.Number),
+          meter_interval: S.NullOr(S.String),
+          meter_interval_count: S.NullOr(S.Number),
+          is_recurring: S.Boolean,
+          is_archived: S.Boolean,
+          organization_id: S.String,
+          prices: __S(320, __c40, 0),
+          benefits: __S(336, __c42, 0),
+          medias: __S(329, __c41, 1),
+        }),
+      ).annotate({ identifier: "CheckoutLinkProduct" });
+    case 2:
+      return S.Array(__S(321, __c40, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          created_at: S.String,
+          modified_at: S.NullOr(S.String),
+          trial_interval: S.NullOr(S.String),
+          trial_interval_count: S.NullOr(S.Number),
+          metadata: __S(344, __c43, 0),
+          payment_processor: S.String,
+          client_secret: S.String.pipe(T.SensitiveValue({})),
+          success_url: S.NullOr(S.String),
+          return_url: S.NullOr(S.String),
+          label: S.NullOr(S.String),
+          allow_discount_codes: S.Boolean,
+          require_billing_address: S.Boolean,
+          discount_id: S.NullOr(S.String),
+          seats: S.NullOr(S.Number),
+          units: S.NullOr(S.Number),
+          organization_id: S.String,
+          products: __S(322, __c40, 2),
+          discount: S.NullOr(S.Unknown),
+          url: S.String,
+        }),
+      ).annotate({ identifier: "CheckoutLink" });
+  }
+}
+function __c41(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
@@ -17573,1191 +18203,27 @@ function __c3(j: number): any {
           public_url: S.String,
         }),
       ).annotate({ identifier: "ProductMediaFileRead" });
-  }
-}
-function __c4(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(31, __c3, 7));
     case 1:
-      return S.suspend(() =>
-        S.Struct({
-          metadata: __S(4, __c0, 4),
-          id: S.String,
-          created_at: S.String,
-          modified_at: S.NullOr(S.String),
-          trial_interval: S.NullOr(S.String),
-          trial_interval_count: S.NullOr(S.Number),
-          name: S.String,
-          description: S.NullOr(S.String),
-          visibility: S.String,
-          recurring_interval: S.NullOr(S.String),
-          recurring_interval_count: S.NullOr(S.Number),
-          meter_interval: S.NullOr(S.String),
-          meter_interval_count: S.NullOr(S.Number),
-          is_recurring: S.Boolean,
-          is_archived: S.Boolean,
-          organization_id: S.String,
-          prices: __S(29, __c3, 5),
-          benefits: __S(30, __c3, 6),
-          medias: __S(32, __c4, 0),
-        }),
-      ).annotate({ identifier: "CheckoutLinkProduct" });
-    case 2:
-      return S.Array(__S(33, __c4, 1));
-    case 3:
-      return S.Record(S.String, S.Number);
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String,
-          created_at: S.String,
-          modified_at: S.NullOr(S.String),
-          trial_interval: S.NullOr(S.String),
-          trial_interval_count: S.NullOr(S.Number),
-          metadata: __S(4, __c0, 4),
-          payment_processor: S.String,
-          client_secret: S.String.pipe(T.SensitiveValue({})),
-          success_url: S.NullOr(S.String),
-          return_url: S.NullOr(S.String),
-          label: S.NullOr(S.String),
-          allow_discount_codes: S.Boolean,
-          require_billing_address: S.Boolean,
-          discount_id: S.NullOr(S.String),
-          seats: S.NullOr(S.Number),
-          units: S.NullOr(S.Number),
-          organization_id: S.String,
-          products: __S(34, __c4, 2),
-          discount: S.NullOr(S.Unknown),
-          url: S.String,
-        }),
-      ).annotate({ identifier: "CheckoutLink" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String.pipe(T.Label()),
-        }).pipe(T.Http({ method: "DELETE", uri: "/v1/checkout-links/{id}", code: 200 })),
-      ).annotate({
-        identifier: "CheckoutLinksDeleteRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String.pipe(T.Label()),
-        }).pipe(T.Http({ method: "GET", uri: "/v1/checkout-links/{id}", code: 200 })),
-      ).annotate({ identifier: "CheckoutLinksGetRequest" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          organization_id: S.optional(S.Unknown.pipe(T.Query())),
-          product_id: S.optional(S.Unknown.pipe(T.Query())),
-          page: S.optional(S.Number.pipe(T.Query())),
-          limit: S.optional(S.Number.pipe(T.Query())),
-          sorting: S.optional(__S(1, __c0, 1).pipe(T.Query())),
-        }).pipe(T.Http({ method: "GET", uri: "/v1/checkout-links/", code: 200 })),
-      ).annotate({ identifier: "CheckoutLinksListRequest" });
+      return S.Array(__S(328, __c41, 0));
   }
 }
-function __c5(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(36, __c4, 4));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          items: __S(40, __c5, 0),
-          pagination: __S(10, __c1, 2),
-        }),
-      ).annotate({ identifier: "ListResourceCheckoutLink" });
-    case 2:
-      return S.Record(S.String, S.Unknown);
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String.pipe(T.Label()),
-          trial_interval: S.optional(S.NullOr(S.String)),
-          trial_interval_count: S.optional(S.NullOr(S.Number)),
-          metadata: S.optional(__S(42, __c5, 2)),
-          products: S.optional(S.NullOr(__S(0, __c0, 0))),
-          label: S.optional(S.NullOr(S.String)),
-          allow_discount_codes: S.optional(S.NullOr(S.Boolean)),
-          require_billing_address: S.optional(S.NullOr(S.Boolean)),
-          discount_id: S.optional(S.NullOr(S.String)),
-          seats: S.optional(S.NullOr(S.Number)),
-          units: S.optional(S.NullOr(S.Number)),
-          success_url: S.optional(S.NullOr(S.String)),
-          return_url: S.optional(S.NullOr(S.String)),
-        }).pipe(T.Http({ method: "PATCH", uri: "/v1/checkout-links/{id}", code: 200 })),
-      ).annotate({
-        identifier: "CheckoutLinksUpdateRequest",
-      });
-    case 4:
-      return S.Record(S.String, S.Unknown);
-    case 5:
-      return S.Record(S.String, /*@__PURE__*/ S.NullOr(S.Unknown));
-    case 6:
-      return S.Record(S.String, S.Unknown);
-    case 7:
-      return S.Array(S.Unknown);
-  }
-}
-function __c6(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Record(S.String, __S(47, __c5, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          trial_interval: S.optional(S.NullOr(S.String)),
-          trial_interval_count: S.optional(S.NullOr(S.Number)),
-          metadata: S.optional(__S(44, __c5, 4)),
-          custom_field_data: S.optional(__S(45, __c5, 5)),
-          discount_id: S.optional(S.NullOr(S.String)),
-          allow_discount_codes: S.optional(S.Boolean),
-          require_billing_address: S.optional(S.Boolean),
-          amount: S.optional(S.NullOr(S.Number)),
-          seats: S.optional(S.NullOr(S.Number)),
-          min_seats: S.optional(S.NullOr(S.Number)),
-          max_seats: S.optional(S.NullOr(S.Number)),
-          units: S.optional(S.NullOr(S.Number)),
-          min_units: S.optional(S.NullOr(S.Number)),
-          max_units: S.optional(S.NullOr(S.Number)),
-          allow_trial: S.optional(S.Boolean),
-          customer_id: S.optional(S.NullOr(S.String)),
-          is_business_customer: S.optional(S.Boolean),
-          external_customer_id: S.optional(S.NullOr(S.String)),
-          customer_name: S.optional(S.NullOr(S.String)),
-          customer_email: S.optional(S.NullOr(S.String)),
-          customer_ip_address: S.optional(S.NullOr(S.String)),
-          customer_billing_name: S.optional(S.NullOr(S.String)),
-          customer_billing_address: S.optional(S.NullOr(__S(5, __c0, 5))),
-          customer_tax_id: S.optional(S.NullOr(S.String)),
-          customer_metadata: S.optional(__S(46, __c5, 6)),
-          subscription_id: S.optional(S.NullOr(S.String)),
-          success_url: S.optional(S.NullOr(S.String)),
-          return_url: S.optional(S.NullOr(S.String)),
-          embed_origin: S.optional(S.NullOr(S.String)),
-          locale: S.optional(S.NullOr(S.String)),
-          currency: S.optional(S.NullOr(S.String)),
-          products: __S(0, __c0, 0),
-          prices: S.optional(S.NullOr(__S(48, __c6, 0))),
-        }).pipe(T.Http({ method: "POST", uri: "/v1/checkouts/", code: 200 })),
-      ).annotate({ identifier: "CheckoutsCreateRequest" });
-    case 2:
-      return S.Record(S.String, /*@__PURE__*/ S.NullOr(S.Unknown));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          country: S.String,
-          state: S.String,
-          city: S.String,
-          postal_code: S.String,
-          line1: S.String,
-          line2: S.String,
-        }),
-      ).annotate({
-        identifier: "CheckoutBillingAddressFields",
-      });
-    case 4:
-      return S.Array(S.Unknown);
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String,
-          created_at: S.String,
-          modified_at: S.NullOr(S.String),
-          trial_interval: S.NullOr(S.String),
-          trial_interval_count: S.NullOr(S.Number),
-          name: S.String,
-          description: S.NullOr(S.String),
-          visibility: S.String,
-          recurring_interval: S.NullOr(S.String),
-          recurring_interval_count: S.NullOr(S.Number),
-          meter_interval: S.NullOr(S.String),
-          meter_interval_count: S.NullOr(S.Number),
-          is_recurring: S.Boolean,
-          is_archived: S.Boolean,
-          organization_id: S.String,
-          prices: __S(52, __c6, 4),
-          benefits: __S(30, __c3, 6),
-          medias: __S(32, __c4, 0),
-        }),
-      ).annotate({ identifier: "CheckoutProduct" });
-    case 6:
-      return S.Array(__S(53, __c6, 5));
-    case 7:
-      return S.Array(S.Unknown);
-  }
-}
-function __c7(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Record(S.String, __S(55, __c6, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          custom_field_id: S.String,
-          custom_field: S.Unknown,
-          order: S.Number,
-          required: S.Boolean,
-        }),
-      ).annotate({ identifier: "AttachedCustomField" });
-    case 2:
-      return S.Array(__S(57, __c7, 1));
-    case 3:
-      return S.Record(S.String, S.Unknown);
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String,
-          created_at: S.String,
-          modified_at: S.NullOr(S.String),
-          custom_field_data: S.optional(__S(50, __c6, 2)),
-          payment_processor: S.String,
-          status: S.String,
-          client_secret: S.String.pipe(T.SensitiveValue({})),
-          url: S.String,
-          expires_at: S.String,
-          success_url: S.String,
-          return_url: S.NullOr(S.String),
-          embed_origin: S.NullOr(S.String),
-          amount: S.Number,
-          seats: S.optional(S.NullOr(S.Number)),
-          min_seats: S.optional(S.NullOr(S.Number)),
-          max_seats: S.optional(S.NullOr(S.Number)),
-          units: S.NullOr(S.Number),
-          min_units: S.NullOr(S.Number),
-          max_units: S.NullOr(S.Number),
-          discount_amount: S.Number,
-          net_amount: S.Number,
-          tax_amount: S.NullOr(S.Number),
-          tax_behavior: S.NullOr(S.String),
-          total_amount: S.Number,
-          currency: S.String,
-          allow_trial: S.NullOr(S.Boolean),
-          active_trial_interval: S.NullOr(S.String),
-          active_trial_interval_count: S.NullOr(S.Number),
-          trial_end: S.NullOr(S.String),
-          organization_id: S.String,
-          product_id: S.NullOr(S.String),
-          product_price_id: S.NullOr(S.String),
-          discount_id: S.NullOr(S.String),
-          allow_discount_codes: S.Boolean,
-          require_billing_address: S.Boolean,
-          is_discount_applicable: S.Boolean,
-          is_free_product_price: S.Boolean,
-          is_payment_required: S.Boolean,
-          is_payment_setup_required: S.Boolean,
-          is_payment_form_required: S.Boolean,
-          customer_id: S.NullOr(S.String),
-          is_business_customer: S.Boolean,
-          customer_name: S.NullOr(S.String),
-          customer_email: S.NullOr(S.String),
-          customer_ip_address: S.NullOr(S.String),
-          customer_billing_name: S.NullOr(S.String),
-          customer_billing_address: S.NullOr(__S(5, __c0, 5)),
-          customer_tax_id: S.NullOr(S.String),
-          locale: S.optional(S.NullOr(S.String)),
-          payment_method_type: S.NullOr(S.String),
-          payment_processor_metadata: __S(28, __c3, 4),
-          billing_address_fields: __S(51, __c6, 3),
-          trial_interval: S.NullOr(S.String),
-          trial_interval_count: S.NullOr(S.Number),
-          metadata: __S(4, __c0, 4),
-          external_customer_id: S.NullOr(S.String),
-          products: __S(54, __c6, 6),
-          product: S.NullOr(__S(53, __c6, 5)),
-          product_price: S.NullOr(S.Unknown),
-          prices: S.NullOr(__S(56, __c7, 0)),
-          discount: S.NullOr(S.Unknown),
-          subscription_id: S.NullOr(S.String),
-          attached_custom_fields: S.NullOr(__S(58, __c7, 2)),
-          customer_metadata: __S(59, __c7, 3),
-        }),
-      ).annotate({ identifier: "Checkout" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String.pipe(T.Label()),
-        }).pipe(T.Http({ method: "GET", uri: "/v1/checkouts/{id}", code: 200 })),
-      ).annotate({ identifier: "CheckoutsGetRequest" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          organization_id: S.optional(S.Unknown.pipe(T.Query())),
-          product_id: S.optional(S.Unknown.pipe(T.Query())),
-          customer_id: S.optional(S.Unknown.pipe(T.Query())),
-          external_customer_id: S.optional(S.Unknown.pipe(T.Query())),
-          status: S.optional(S.Unknown.pipe(T.Query())),
-          query: S.optional(S.String.pipe(T.Query())),
-          page: S.optional(S.Number.pipe(T.Query())),
-          limit: S.optional(S.Number.pipe(T.Query())),
-          sorting: S.optional(__S(1, __c0, 1).pipe(T.Query())),
-        }).pipe(T.Http({ method: "GET", uri: "/v1/checkouts/", code: 200 })),
-      ).annotate({ identifier: "CheckoutsListRequest" });
-    case 7:
-      return S.Array(__S(60, __c7, 4));
-  }
-}
-function __c8(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          items: __S(63, __c7, 7),
-          pagination: __S(10, __c1, 2),
-        }),
-      ).annotate({ identifier: "ListResourceCheckout" });
-    case 1:
-      return S.Record(S.String, /*@__PURE__*/ S.NullOr(S.Unknown));
-    case 2:
-      return S.Record(S.String, S.Unknown);
-    case 3:
-      return S.Record(S.String, S.Unknown);
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String.pipe(T.Label()),
-          custom_field_data: S.optional(__S(65, __c8, 1)),
-          product_id: S.optional(S.NullOr(S.String)),
-          product_price_id: S.optional(S.NullOr(S.String)),
-          amount: S.optional(S.NullOr(S.Number)),
-          seats: S.optional(S.NullOr(S.Number)),
-          units: S.optional(S.NullOr(S.Number)),
-          is_business_customer: S.optional(S.NullOr(S.Boolean)),
-          customer_name: S.optional(S.NullOr(S.String)),
-          customer_email: S.optional(S.NullOr(S.String)),
-          customer_billing_name: S.optional(S.NullOr(S.String)),
-          customer_billing_address: S.optional(S.NullOr(__S(5, __c0, 5))),
-          customer_tax_id: S.optional(S.NullOr(S.String)),
-          locale: S.optional(S.NullOr(S.String)),
-          trial_interval: S.optional(S.NullOr(S.String)),
-          trial_interval_count: S.optional(S.NullOr(S.Number)),
-          metadata: S.optional(__S(66, __c8, 2)),
-          currency: S.optional(S.NullOr(S.String)),
-          discount_id: S.optional(S.NullOr(S.String)),
-          allow_discount_codes: S.optional(S.NullOr(S.Boolean)),
-          require_billing_address: S.optional(S.NullOr(S.Boolean)),
-          allow_trial: S.optional(S.NullOr(S.Boolean)),
-          customer_ip_address: S.optional(S.NullOr(S.String)),
-          customer_metadata: S.optional(S.NullOr(__S(67, __c8, 3))),
-          success_url: S.optional(S.NullOr(S.String)),
-          return_url: S.optional(S.NullOr(S.String)),
-          embed_origin: S.optional(S.NullOr(S.String)),
-        }).pipe(T.Http({ method: "PATCH", uri: "/v1/checkouts/{id}", code: 200 })),
-      ).annotate({ identifier: "CheckoutsUpdateRequest" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          invitation_token: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({ method: "GET", uri: "/v1/customer-seats/claim/{invitation_token}", code: 200 }),
-        ),
-      ).annotate({
-        identifier: "ClaimCustomerSeatsGetInfoRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          product_name: S.String,
-          product_id: S.String,
-          organization_name: S.String,
-          organization_slug: S.String,
-          customer_email: S.String,
-          can_claim: S.Boolean,
-        }),
-      ).annotate({ identifier: "SeatClaimInfo" });
-    case 7:
-      return S.Record(S.String, /*@__PURE__*/ S.NullOr(S.Unknown));
-  }
-}
-function __c9(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          client_secret: S.String.pipe(T.Label()),
-          custom_field_data: S.optional(__S(71, __c8, 7)),
-          product_id: S.optional(S.NullOr(S.String)),
-          product_price_id: S.optional(S.NullOr(S.String)),
-          amount: S.optional(S.NullOr(S.Number)),
-          seats: S.optional(S.NullOr(S.Number)),
-          units: S.optional(S.NullOr(S.Number)),
-          is_business_customer: S.optional(S.NullOr(S.Boolean)),
-          customer_name: S.optional(S.NullOr(S.String)),
-          customer_email: S.optional(S.NullOr(S.String)),
-          customer_billing_name: S.optional(S.NullOr(S.String)),
-          customer_billing_address: S.optional(S.NullOr(__S(5, __c0, 5))),
-          customer_tax_id: S.optional(S.NullOr(S.String)),
-          locale: S.optional(S.NullOr(S.String)),
-          payment_method_type: S.optional(S.NullOr(S.String)),
-          discount_code: S.optional(S.NullOr(S.String)),
-          allow_trial: S.optional(S.NullOr(S.Boolean)),
-          confirmation_token_id: S.optional(S.NullOr(S.String)),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/v1/checkouts/client/{client_secret}/confirm",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "ConfirmCheckoutsClientRequest",
-      });
-    case 1:
-      return S.Record(S.String, /*@__PURE__*/ S.NullOr(S.Unknown));
-    case 2:
-      return S.Array(S.Unknown);
-    case 3:
-      return S.Record(S.String, __S(74, __c9, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          created_at: S.String,
-          modified_at: S.NullOr(S.String),
-          id: S.String,
-          name: S.String,
-          slug: S.String,
-          avatar_url: S.NullOr(S.String),
-          proration_behavior: S.String,
-          allow_customer_updates: S.Boolean,
-        }),
-      ).annotate({ identifier: "CheckoutOrganization" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String,
-          created_at: S.String,
-          modified_at: S.NullOr(S.String),
-          custom_field_data: S.optional(__S(73, __c9, 1)),
-          payment_processor: S.String,
-          status: S.String,
-          client_secret: S.String.pipe(T.SensitiveValue({})),
-          url: S.String,
-          expires_at: S.String,
-          success_url: S.String,
-          return_url: S.NullOr(S.String),
-          embed_origin: S.NullOr(S.String),
-          amount: S.Number,
-          seats: S.optional(S.NullOr(S.Number)),
-          min_seats: S.optional(S.NullOr(S.Number)),
-          max_seats: S.optional(S.NullOr(S.Number)),
-          units: S.NullOr(S.Number),
-          min_units: S.NullOr(S.Number),
-          max_units: S.NullOr(S.Number),
-          discount_amount: S.Number,
-          net_amount: S.Number,
-          tax_amount: S.NullOr(S.Number),
-          tax_behavior: S.NullOr(S.String),
-          total_amount: S.Number,
-          currency: S.String,
-          allow_trial: S.NullOr(S.Boolean),
-          active_trial_interval: S.NullOr(S.String),
-          active_trial_interval_count: S.NullOr(S.Number),
-          trial_end: S.NullOr(S.String),
-          organization_id: S.String,
-          product_id: S.NullOr(S.String),
-          product_price_id: S.NullOr(S.String),
-          discount_id: S.NullOr(S.String),
-          allow_discount_codes: S.Boolean,
-          require_billing_address: S.Boolean,
-          is_discount_applicable: S.Boolean,
-          is_free_product_price: S.Boolean,
-          is_payment_required: S.Boolean,
-          is_payment_setup_required: S.Boolean,
-          is_payment_form_required: S.Boolean,
-          customer_id: S.NullOr(S.String),
-          is_business_customer: S.Boolean,
-          customer_name: S.NullOr(S.String),
-          customer_email: S.NullOr(S.String),
-          customer_ip_address: S.NullOr(S.String),
-          customer_billing_name: S.NullOr(S.String),
-          customer_billing_address: S.NullOr(__S(5, __c0, 5)),
-          customer_tax_id: S.NullOr(S.String),
-          locale: S.optional(S.NullOr(S.String)),
-          payment_method_type: S.NullOr(S.String),
-          payment_processor_metadata: __S(28, __c3, 4),
-          billing_address_fields: __S(51, __c6, 3),
-          products: __S(54, __c6, 6),
-          product: S.NullOr(__S(53, __c6, 5)),
-          product_price: S.NullOr(S.Unknown),
-          prices: S.NullOr(__S(75, __c9, 3)),
-          discount: S.NullOr(S.Unknown),
-          organization: __S(76, __c9, 4),
-          attached_custom_fields: S.NullOr(__S(58, __c7, 2)),
-          customer_session_token: S.NullOr(S.String),
-        }),
-      ).annotate({ identifier: "CheckoutPublicConfirmed" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String.pipe(T.Label()),
-        }).pipe(T.Http({ method: "GET", uri: "/v1/customer-meters/{id}", code: 200 })),
-      ).annotate({ identifier: "CustomerMetersGetRequest" });
-    case 7:
-      return S.Array(S.Unknown);
-  }
-}
-function __c10(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          conjunction: S.String,
-          clauses: __S(79, __c9, 7),
-        }),
-      ).annotate({ identifier: "Filter" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          metadata: __S(4, __c0, 4),
-          created_at: S.String,
-          modified_at: S.NullOr(S.String),
-          id: S.String,
-          name: S.String,
-          unit: S.String,
-          custom_label: S.optional(S.NullOr(S.String)),
-          custom_multiplier: S.optional(S.NullOr(S.Number)),
-          filter: __S(80, __c10, 0),
-          aggregation: S.Unknown,
-          organization_id: S.String,
-          archived_at: S.optional(S.NullOr(S.String)),
-        }),
-      ).annotate({ identifier: "Meter" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String,
-          created_at: S.String,
-          modified_at: S.NullOr(S.String),
-          customer_id: S.String,
-          meter_id: S.String,
-          consumed_units: S.Number,
-          credited_units: S.Number,
-          balance: S.Number,
-          customer: S.Unknown,
-          meter: __S(81, __c10, 1),
-        }),
-      ).annotate({ identifier: "CustomerMeter" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          organization_id: S.optional(S.Unknown.pipe(T.Query())),
-          customer_id: S.optional(S.Unknown.pipe(T.Query())),
-          external_customer_id: S.optional(S.Unknown.pipe(T.Query())),
-          meter_id: S.optional(S.Unknown.pipe(T.Query())),
-          page: S.optional(S.Number.pipe(T.Query())),
-          limit: S.optional(S.Number.pipe(T.Query())),
-          sorting: S.optional(__S(1, __c0, 1).pipe(T.Query())),
-        }).pipe(T.Http({ method: "GET", uri: "/v1/customer-meters/", code: 200 })),
-      ).annotate({
-        identifier: "CustomerMetersListRequest",
-      });
-    case 4:
-      return S.Array(__S(82, __c10, 2));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          items: __S(84, __c10, 4),
-          pagination: __S(10, __c1, 2),
-        }),
-      ).annotate({
-        identifier: "ListResourceCustomerMeter",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({ method: "GET", uri: "/v1/customer-portal/benefit-grants/{id}", code: 200 }),
-        ),
-      ).annotate({
-        identifier: "CustomerPortalBenefitGrantsGetRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          account_id: S.String,
-          account_username: S.NullOr(S.String),
-        }),
-      ).annotate({
-        identifier: "CustomerPortalOAuthAccount",
-      });
-  }
-}
-function __c11(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Record(S.String, __S(87, __c10, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          created_at: S.String,
-          modified_at: S.NullOr(S.String),
-          id: S.String,
-          email: S.NullOr(S.String),
-          email_verified: S.Boolean,
-          name: S.NullOr(S.String),
-          billing_name: S.NullOr(S.String),
-          billing_address: S.NullOr(__S(5, __c0, 5)),
-          tax_id: S.NullOr(__S(6, __c0, 6)),
-          oauth_accounts: __S(88, __c11, 0),
-          default_payment_method_id: S.optional(S.NullOr(S.String)),
-          type: S.optional(S.NullOr(S.String)),
-          locale: S.optional(S.NullOr(S.String)),
-        }),
-      ).annotate({ identifier: "CustomerPortalCustomer" });
-    case 2:
-      return S.suspend(() => S.Unknown.pipe(T.RawResponseRoot())).annotate({
-        identifier: "CustomerPortalBenefitGrantsGetResponse",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          query: S.optional(S.String.pipe(T.Query())),
-          type: S.optional(S.Unknown.pipe(T.Query())),
-          benefit_id: S.optional(S.Unknown.pipe(T.Query())),
-          checkout_id: S.optional(S.Unknown.pipe(T.Query())),
-          order_id: S.optional(S.Unknown.pipe(T.Query())),
-          subscription_id: S.optional(S.Unknown.pipe(T.Query())),
-          member_id: S.optional(S.Unknown.pipe(T.Query())),
-          page: S.optional(S.Number.pipe(T.Query())),
-          limit: S.optional(S.Number.pipe(T.Query())),
-          sorting: S.optional(__S(1, __c0, 1).pipe(T.Query())),
-        }).pipe(T.Http({ method: "GET", uri: "/v1/customer-portal/benefit-grants/", code: 200 })),
-      ).annotate({
-        identifier: "CustomerPortalBenefitGrantsListRequest",
-      });
-    case 4:
-      return S.Array(S.Unknown);
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          items: __S(92, __c11, 4),
-          pagination: __S(10, __c1, 2),
-        }),
-      ).annotate({
-        identifier: "ListResourceCustomerBenefitGrant",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String.pipe(T.Label()),
-          body: S.Unknown.pipe(T.HttpBody()),
-        }).pipe(
-          T.Http({ method: "PATCH", uri: "/v1/customer-portal/benefit-grants/{id}", code: 200 }),
-        ),
-      ).annotate({
-        identifier: "CustomerPortalBenefitGrantsUpdateRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String.pipe(T.Label()),
-        }).pipe(T.Http({ method: "GET", uri: "/v1/customer-portal/meters/{id}", code: 200 })),
-      ).annotate({
-        identifier: "CustomerPortalCustomerMetersGetRequest",
-      });
-  }
-}
-function __c12(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          created_at: S.String,
-          modified_at: S.NullOr(S.String),
-          id: S.String,
-          name: S.String,
-        }),
-      ).annotate({
-        identifier: "CustomerCustomerMeterMeter",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String,
-          created_at: S.String,
-          modified_at: S.NullOr(S.String),
-          customer_id: S.String,
-          meter_id: S.String,
-          consumed_units: S.Number,
-          credited_units: S.Number,
-          balance: S.Number,
-          meter: __S(96, __c12, 0),
-        }),
-      ).annotate({ identifier: "CustomerCustomerMeter" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          meter_id: S.optional(S.Unknown.pipe(T.Query())),
-          query: S.optional(S.String.pipe(T.Query())),
-          page: S.optional(S.Number.pipe(T.Query())),
-          limit: S.optional(S.Number.pipe(T.Query())),
-          sorting: S.optional(__S(1, __c0, 1).pipe(T.Query())),
-        }).pipe(T.Http({ method: "GET", uri: "/v1/customer-portal/meters/", code: 200 })),
-      ).annotate({
-        identifier: "CustomerPortalCustomerMetersListRequest",
-      });
-    case 3:
-      return S.Array(__S(97, __c12, 1));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          items: __S(99, __c12, 3),
-          pagination: __S(10, __c1, 2),
-        }),
-      ).annotate({
-        identifier: "ListResourceCustomerCustomerMeter",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          confirmation_token_id: S.String,
-          set_default: S.Boolean,
-          return_url: S.String,
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/v1/customer-portal/customers/me/payment-methods",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "CustomerPortalCustomersAddPaymentMethodRequest",
-      });
-    case 6:
-      return S.suspend(() => S.Unknown.pipe(T.RawResponseRoot())).annotate({
-        identifier: "CustomerPortalCustomersAddPaymentMethodResponse",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          setup_intent_id: S.String,
-          set_default: S.Boolean,
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/v1/customer-portal/customers/me/payment-methods/confirm",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "CustomerPortalCustomersConfirmPaymentMethodRequest",
-      });
-  }
-}
-function __c13(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/v1/customer-portal/customers/me/payment-methods/{id}",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "CustomerPortalCustomersDeletePaymentMethodRequest",
-      });
-    case 1:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "CustomerPortalCustomersDeletePaymentMethodResponse",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({}).pipe(
-          T.Http({ method: "GET", uri: "/v1/customer-portal/customer-session/user", code: 200 }),
-        ),
-      ).annotate({
-        identifier: "CustomerPortalCustomerSessionGetAuthenticatedUserRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          type: S.String,
-          name: S.NullOr(S.String),
-          email: S.String,
-          customer_id: S.String,
-          member_id: S.optional(S.NullOr(S.String)),
-          role: S.optional(S.NullOr(S.String)),
-        }),
-      ).annotate({ identifier: "PortalAuthenticatedUser" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({}).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/v1/customer-portal/customer-session/introspect",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "CustomerPortalCustomerSessionIntrospectRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          expires_at: S.String,
-          return_url: S.NullOr(S.String),
-        }),
-      ).annotate({ identifier: "CustomerCustomerSession" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({}).pipe(
-          T.Http({ method: "GET", uri: "/v1/customer-portal/customers/me", code: 200 }),
-        ),
-      ).annotate({
-        identifier: "CustomerPortalCustomersGetRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          page: S.optional(S.Number.pipe(T.Query())),
-          limit: S.optional(S.Number.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/v1/customer-portal/customers/me/payment-methods",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "CustomerPortalCustomersListPaymentMethodsRequest",
-      });
-  }
-}
-function __c14(j: number): any {
+function __c42(j: number): any {
   switch (j) {
     case 0:
       return S.Array(S.Unknown);
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          items: __S(112, __c14, 0),
-          pagination: __S(10, __c1, 2),
-        }),
-      ).annotate({
-        identifier: "ListResourceCustomerPaymentMethod",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          billing_name: S.optional(S.NullOr(S.String)),
-          billing_address: S.optional(S.NullOr(__S(5, __c0, 5))),
-          tax_id: S.optional(S.NullOr(S.String)),
-          default_payment_method_id: S.optional(S.NullOr(S.String)),
-        }).pipe(T.Http({ method: "PATCH", uri: "/v1/customer-portal/customers/me", code: 200 })),
-      ).annotate({
-        identifier: "CustomerPortalCustomersUpdateRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          benefit_id: S.optional(S.Unknown.pipe(T.Query())),
-          page: S.optional(S.Number.pipe(T.Query())),
-          limit: S.optional(S.Number.pipe(T.Query())),
-        }).pipe(T.Http({ method: "GET", uri: "/v1/customer-portal/downloadables/", code: 200 })),
-      ).annotate({
-        identifier: "CustomerPortalDownloadablesListRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          url: S.String,
-          headers: S.optional(__S(28, __c3, 4)),
-          expires_at: S.String,
-        }),
-      ).annotate({ identifier: "S3DownloadURL" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String,
-          organization_id: S.String,
-          name: S.String,
-          path: S.String,
-          mime_type: S.String,
-          size: S.Number,
-          storage_version: S.NullOr(S.String),
-          checksum_etag: S.NullOr(S.String),
-          checksum_sha256_base64: S.NullOr(S.String),
-          checksum_sha256_hex: S.NullOr(S.String),
-          last_modified_at: S.NullOr(S.String),
-          download: __S(116, __c14, 4),
-          version: S.NullOr(S.String),
-          is_uploaded: S.Boolean,
-          service: S.String,
-          size_readable: S.String,
-        }),
-      ).annotate({ identifier: "FileDownload" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String,
-          benefit_id: S.String,
-          file: __S(117, __c14, 5),
-        }),
-      ).annotate({ identifier: "DownloadableRead" });
-    case 7:
-      return S.Array(__S(118, __c14, 6));
   }
 }
-function __c15(j: number): any {
+function __c43(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() =>
-        S.Struct({
-          items: __S(119, __c14, 7),
-          pagination: __S(10, __c1, 2),
-        }),
-      ).annotate({
-        identifier: "ListResourceDownloadableRead",
-      });
-    case 1:
       return S.Record(S.String, S.Unknown);
-    case 2:
-      return S.Record(S.String, S.Unknown);
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          key: S.String,
-          organization_id: S.String,
-          label: S.String,
-          conditions: S.optional(__S(121, __c15, 1)),
-          meta: S.optional(__S(122, __c15, 2)),
-        }).pipe(
-          T.Http({ method: "POST", uri: "/v1/customer-portal/license-keys/activate", code: 200 }),
-        ),
-      ).annotate({
-        identifier: "CustomerPortalLicenseKeysActivateRequest",
-      });
-    case 4:
-      return S.Record(S.String, S.Unknown);
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String,
-          created_at: S.String,
-          modified_at: S.NullOr(S.String),
-          metadata: __S(4, __c0, 4),
-          external_id: S.optional(S.NullOr(S.String)),
-          email: S.optional(S.NullOr(S.String)),
-          email_verified: S.Boolean,
-          type: S.String,
-          name: S.NullOr(S.String),
-          billing_name: S.NullOr(S.String),
-          billing_address: S.NullOr(__S(5, __c0, 5)),
-          tax_id: S.NullOr(__S(6, __c0, 6)),
-          locale: S.optional(S.NullOr(S.String)),
-          organization_id: S.String,
-          default_payment_method_id: S.optional(S.NullOr(S.String)),
-          deleted_at: S.NullOr(S.String),
-          first_user_event_at: S.NullOr(S.String),
-          avatar_url: S.NullOr(S.String),
-        }),
-      ).annotate({ identifier: "LicenseKeyCustomer" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String,
-          email: S.String,
-          external_id: S.NullOr(S.String),
-        }),
-      ).annotate({ identifier: "LicenseKeyMember" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String,
-          status: S.String,
-          current_period_start: S.String,
-          current_period_end: S.String,
-          cancel_at_period_end: S.Boolean,
-          ends_at: S.NullOr(S.String),
-        }),
-      ).annotate({ identifier: "LicenseKeySubscription" });
   }
 }
-function __c16(j: number): any {
+function __c44(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String,
-          created_at: S.String,
-          status: S.String,
-          paid: S.Boolean,
-        }),
-      ).annotate({ identifier: "LicenseKeyOrder" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String,
-          created_at: S.String,
-          modified_at: S.NullOr(S.String),
-          organization_id: S.String,
-          customer_id: S.String,
-          customer: __S(125, __c15, 5),
-          member_id: S.NullOr(S.String),
-          member: S.NullOr(__S(126, __c15, 6)),
-          benefit_id: S.String,
-          key: S.String,
-          display_key: S.String,
-          status: S.String,
-          limit_activations: S.NullOr(S.Number),
-          usage: S.Number,
-          limit_usage: S.NullOr(S.Number),
-          validations: S.Number,
-          last_validated_at: S.NullOr(S.String),
-          expires_at: S.NullOr(S.String),
-          subscription_id: S.NullOr(S.String),
-          subscription: S.NullOr(__S(127, __c15, 7)),
-          order_id: S.NullOr(S.String),
-          order: S.NullOr(__S(128, __c16, 0)),
-        }),
-      ).annotate({ identifier: "GrantedLicenseKey" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String,
-          license_key_id: S.String,
-          label: S.String,
-          meta: __S(124, __c15, 4),
-          created_at: S.String,
-          modified_at: S.NullOr(S.String),
-          license_key: __S(129, __c16, 1),
-        }),
-      ).annotate({
-        identifier: "LicenseKeyActivationCreated",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          key: S.String,
-          organization_id: S.String,
-          activation_id: S.String,
-        }).pipe(
-          T.Http({ method: "POST", uri: "/v1/customer-portal/license-keys/deactivate", code: 200 }),
-        ),
-      ).annotate({
-        identifier: "CustomerPortalLicenseKeysDeactivateRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String.pipe(T.Label()),
-        }).pipe(T.Http({ method: "GET", uri: "/v1/customer-portal/license-keys/{id}", code: 200 })),
-      ).annotate({
-        identifier: "CustomerPortalLicenseKeysGetRequest",
-      });
-    case 5:
       return S.Record(S.String, S.Unknown);
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String,
-          license_key_id: S.String,
-          label: S.String,
-          meta: __S(133, __c16, 5),
-          created_at: S.String,
-          modified_at: S.NullOr(S.String),
-        }),
-      ).annotate({ identifier: "LicenseKeyActivationBase" });
-    case 7:
-      return S.Array(__S(134, __c16, 6));
-  }
-}
-function __c17(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String,
-          created_at: S.String,
-          modified_at: S.NullOr(S.String),
-          organization_id: S.String,
-          customer_id: S.String,
-          customer: __S(125, __c15, 5),
-          member_id: S.NullOr(S.String),
-          member: S.NullOr(__S(126, __c15, 6)),
-          benefit_id: S.String,
-          key: S.String,
-          display_key: S.String,
-          status: S.String,
-          limit_activations: S.NullOr(S.Number),
-          usage: S.Number,
-          limit_usage: S.NullOr(S.Number),
-          validations: S.Number,
-          last_validated_at: S.NullOr(S.String),
-          expires_at: S.NullOr(S.String),
-          activations: __S(135, __c16, 7),
-        }),
-      ).annotate({
-        identifier: "LicenseKeyWithActivations",
-      });
     case 1:
-      return S.suspend(() =>
-        S.Struct({
-          benefit_id: S.optional(S.String.pipe(T.Query())),
-          page: S.optional(S.Number.pipe(T.Query())),
-          limit: S.optional(S.Number.pipe(T.Query())),
-        }).pipe(T.Http({ method: "GET", uri: "/v1/customer-portal/license-keys/", code: 200 })),
-      ).annotate({
-        identifier: "CustomerPortalLicenseKeysListRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String,
-          created_at: S.String,
-          modified_at: S.NullOr(S.String),
-          organization_id: S.String,
-          customer_id: S.String,
-          customer: __S(125, __c15, 5),
-          member_id: S.NullOr(S.String),
-          member: S.NullOr(__S(126, __c15, 6)),
-          benefit_id: S.String,
-          key: S.String,
-          display_key: S.String,
-          status: S.String,
-          limit_activations: S.NullOr(S.Number),
-          usage: S.Number,
-          limit_usage: S.NullOr(S.Number),
-          validations: S.Number,
-          last_validated_at: S.NullOr(S.String),
-          expires_at: S.NullOr(S.String),
-        }),
-      ).annotate({ identifier: "LicenseKeyRead" });
-    case 3:
-      return S.Array(__S(138, __c17, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          items: __S(139, __c17, 3),
-          pagination: __S(10, __c1, 2),
-        }),
-      ).annotate({
-        identifier: "ListResourceLicenseKeyRead",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/v1/customer-portal/license-keys/{id}/rotate",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "CustomerPortalLicenseKeysRotateRequest",
-      });
-    case 6:
-      return S.Record(S.String, S.Unknown);
-    case 7:
       return S.suspend(() =>
         S.Struct({
           key: S.String,
@@ -18766,1853 +18232,45 @@ function __c17(j: number): any {
           benefit_id: S.optional(S.NullOr(S.String)),
           customer_id: S.optional(S.NullOr(S.String)),
           increment_usage: S.optional(S.NullOr(S.Number)),
-          conditions: S.optional(__S(142, __c17, 6)),
-        }).pipe(
-          T.Http({ method: "POST", uri: "/v1/customer-portal/license-keys/validate", code: 200 }),
-        ),
-      ).annotate({
-        identifier: "CustomerPortalLicenseKeysValidateRequest",
-      });
-  }
-}
-function __c18(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String,
-          created_at: S.String,
-          modified_at: S.NullOr(S.String),
-          organization_id: S.String,
-          customer_id: S.String,
-          customer: __S(125, __c15, 5),
-          member_id: S.NullOr(S.String),
-          member: S.NullOr(__S(126, __c15, 6)),
-          benefit_id: S.String,
-          key: S.String,
-          display_key: S.String,
-          status: S.String,
-          limit_activations: S.NullOr(S.Number),
-          usage: S.Number,
-          limit_usage: S.NullOr(S.Number),
-          validations: S.Number,
-          last_validated_at: S.NullOr(S.String),
-          expires_at: S.NullOr(S.String),
-          subscription_id: S.NullOr(S.String),
-          subscription: S.NullOr(__S(127, __c15, 7)),
-          order_id: S.NullOr(S.String),
-          order: S.NullOr(__S(128, __c16, 0)),
-          activation: S.optional(S.NullOr(__S(134, __c16, 6))),
-        }),
-      ).annotate({ identifier: "ValidatedLicenseKey" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          email: S.String,
-          name: S.optional(S.NullOr(S.String)),
-          role: S.optional(S.String),
-        }).pipe(T.Http({ method: "POST", uri: "/v1/customer-portal/members", code: 200 })),
-      ).annotate({
-        identifier: "CustomerPortalMembersAddMemberRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          created_at: S.String,
-          modified_at: S.NullOr(S.String),
-          id: S.String,
-          email: S.String,
-          name: S.NullOr(S.String),
-          role: S.String,
-        }),
-      ).annotate({ identifier: "CustomerPortalMember" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          page: S.optional(S.Number.pipe(T.Query())),
-          limit: S.optional(S.Number.pipe(T.Query())),
-        }).pipe(T.Http({ method: "GET", uri: "/v1/customer-portal/members", code: 200 })),
-      ).annotate({
-        identifier: "CustomerPortalMembersListMembersRequest",
-      });
-    case 4:
-      return S.Array(__S(146, __c18, 2));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          items: __S(148, __c18, 4),
-          pagination: __S(10, __c1, 2),
-        }),
-      ).annotate({
-        identifier: "ListResourceCustomerPortalMember",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String.pipe(T.Label()),
-        }).pipe(T.Http({ method: "DELETE", uri: "/v1/customer-portal/members/{id}", code: 200 })),
-      ).annotate({
-        identifier: "CustomerPortalMembersRemoveMemberRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String.pipe(T.Label()),
-          name: S.optional(S.NullOr(S.String)),
-          role: S.optional(S.NullOr(S.String)),
-        }).pipe(T.Http({ method: "PATCH", uri: "/v1/customer-portal/members/{id}", code: 200 })),
-      ).annotate({
-        identifier: "CustomerPortalMembersUpdateMemberRequest",
-      });
-  }
-}
-function __c19(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({ method: "POST", uri: "/v1/customer-portal/orders/{id}/invoice", code: 200 }),
-        ),
-      ).annotate({
-        identifier: "CustomerPortalOrdersGenerateInvoiceRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String.pipe(T.Label()),
-        }).pipe(T.Http({ method: "GET", uri: "/v1/customer-portal/orders/{id}", code: 200 })),
-      ).annotate({
-        identifier: "CustomerPortalOrdersGetRequest",
-      });
-    case 2:
-      return S.Array(S.Unknown);
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          show: S.Boolean,
-        }),
-      ).annotate({
-        identifier: "CustomerPortalUsageSettings",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          update_seats: S.Boolean,
-          update_plan: S.Boolean,
-          update_units: S.optional(S.Boolean),
-          pause: S.optional(S.Boolean),
-        }),
-      ).annotate({
-        identifier: "CustomerPortalSubscriptionSettings",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          allow_email_change: S.optional(S.Boolean),
-        }),
-      ).annotate({
-        identifier: "CustomerPortalCustomerSettings",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          usage: __S(155, __c19, 3),
-          subscription: __S(156, __c19, 4),
-          customer: S.optional(__S(157, __c19, 5)),
-        }),
-      ).annotate({
-        identifier: "OrganizationCustomerPortalSettings",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          member_model_enabled: S.optional(S.Boolean),
-          checkout_localization_enabled: S.optional(S.Boolean),
-        }),
-      ).annotate({
-        identifier: "CustomerOrganizationFeatureSettings",
-      });
-  }
-}
-function __c20(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          created_at: S.String,
-          modified_at: S.NullOr(S.String),
-          id: S.String,
-          name: S.String,
-          slug: S.String,
-          avatar_url: S.NullOr(S.String),
-          proration_behavior: S.String,
-          allow_customer_updates: S.Boolean,
-          customer_portal_settings: __S(158, __c19, 6),
-          organization_features: S.optional(__S(159, __c19, 7)),
-        }),
-      ).annotate({ identifier: "CustomerOrganization" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String,
-          created_at: S.String,
-          modified_at: S.NullOr(S.String),
-          trial_interval: S.NullOr(S.String),
-          trial_interval_count: S.NullOr(S.Number),
-          name: S.String,
-          description: S.NullOr(S.String),
-          visibility: S.String,
-          recurring_interval: S.NullOr(S.String),
-          recurring_interval_count: S.NullOr(S.Number),
-          meter_interval: S.NullOr(S.String),
-          meter_interval_count: S.NullOr(S.Number),
-          is_recurring: S.Boolean,
-          is_archived: S.Boolean,
-          organization_id: S.String,
-          prices: __S(154, __c19, 2),
-          benefits: __S(30, __c3, 6),
-          medias: __S(32, __c4, 0),
-          organization: __S(160, __c20, 0),
-        }),
-      ).annotate({ identifier: "CustomerOrderProduct" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          created_at: S.String,
-          modified_at: S.NullOr(S.String),
-          id: S.String,
-          amount: S.Number,
-          currency: S.String,
-          recurring_interval: S.String,
-          recurring_interval_count: S.Number,
-          status: S.String,
-          current_period_start: S.String,
-          current_period_end: S.String,
-          current_meter_period_start: S.NullOr(S.String),
-          current_meter_period_end: S.NullOr(S.String),
-          trial_start: S.NullOr(S.String),
-          trial_end: S.NullOr(S.String),
-          cancel_at_period_end: S.Boolean,
-          canceled_at: S.NullOr(S.String),
-          started_at: S.NullOr(S.String),
-          ends_at: S.NullOr(S.String),
-          ended_at: S.NullOr(S.String),
-          past_due_at: S.optional(S.NullOr(S.String)),
-          pause_at_period_end: S.Boolean,
-          paused_at: S.NullOr(S.String),
-          resumes_at: S.NullOr(S.String),
-          customer_id: S.String,
-          product_id: S.String,
-          discount_id: S.NullOr(S.String),
-          checkout_id: S.NullOr(S.String),
-          seats: S.optional(S.NullOr(S.Number)),
-          units: S.NullOr(S.Number),
-          customer_cancellation_reason: S.NullOr(S.String),
-          customer_cancellation_comment: S.NullOr(S.String),
-        }),
-      ).annotate({
-        identifier: "CustomerOrderSubscription",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          created_at: S.String,
-          modified_at: S.NullOr(S.String),
-          id: S.String,
-          label: S.String,
-          amount: S.Number,
-          tax_amount: S.Number,
-          proration: S.Boolean,
-          product_price_id: S.NullOr(S.String),
-          start_timestamp: S.NullOr(S.String),
-          end_timestamp: S.NullOr(S.String),
-        }),
-      ).annotate({ identifier: "OrderItemSchema" });
-    case 4:
-      return S.Array(__S(163, __c20, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String,
-          created_at: S.String,
-          modified_at: S.NullOr(S.String),
-          status: S.String,
-          paid: S.Boolean,
-          subtotal_amount: S.Number,
-          discount_amount: S.Number,
-          net_amount: S.Number,
-          tax_amount: S.Number,
-          total_amount: S.Number,
-          applied_balance_amount: S.Number,
-          due_amount: S.Number,
-          refunded_amount: S.Number,
-          refunded_tax_amount: S.Number,
-          currency: S.String,
-          billing_reason: S.String,
-          billing_name: S.NullOr(S.String),
-          billing_address: S.NullOr(__S(5, __c0, 5)),
-          invoice_number: S.NullOr(S.String),
-          is_invoice_generated: S.Boolean,
-          receipt_number: S.NullOr(S.String),
-          seats: S.optional(S.NullOr(S.Number)),
-          units: S.NullOr(S.Number),
-          customer_id: S.String,
-          product_id: S.NullOr(S.String),
-          discount_id: S.NullOr(S.String),
-          subscription_id: S.NullOr(S.String),
-          checkout_id: S.NullOr(S.String),
-          next_payment_attempt_at: S.optional(S.NullOr(S.String)),
-          product: S.NullOr(__S(161, __c20, 1)),
-          subscription: S.NullOr(__S(162, __c20, 2)),
-          items: __S(164, __c20, 4),
-          description: S.String,
-          refundable_amount: S.Number,
-          refundable_tax_amount: S.Number,
-        }),
-      ).annotate({ identifier: "CustomerOrder" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/v1/customer-portal/orders/{id}/payment-status",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "CustomerPortalOrdersGetPaymentStatusRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          status: S.String,
-          error: S.optional(S.NullOr(S.String)),
-        }),
-      ).annotate({
-        identifier: "CustomerOrderPaymentStatus",
-      });
-  }
-}
-function __c21(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({ method: "GET", uri: "/v1/customer-portal/orders/{id}/invoice", code: 200 }),
-        ),
-      ).annotate({
-        identifier: "CustomerPortalOrdersInvoiceRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          url: S.String,
-        }),
-      ).annotate({ identifier: "CustomerOrderInvoice" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          product_id: S.optional(S.Unknown.pipe(T.Query())),
-          product_billing_type: S.optional(S.Unknown.pipe(T.Query())),
-          subscription_id: S.optional(S.Unknown.pipe(T.Query())),
-          query: S.optional(S.String.pipe(T.Query())),
-          page: S.optional(S.Number.pipe(T.Query())),
-          limit: S.optional(S.Number.pipe(T.Query())),
-          sorting: S.optional(__S(1, __c0, 1).pipe(T.Query())),
-        }).pipe(T.Http({ method: "GET", uri: "/v1/customer-portal/orders/", code: 200 })),
-      ).annotate({
-        identifier: "CustomerPortalOrdersListRequest",
-      });
-    case 3:
-      return S.Array(__S(165, __c20, 5));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          items: __S(171, __c21, 3),
-          pagination: __S(10, __c1, 2),
-        }),
-      ).annotate({
-        identifier: "ListResourceCustomerOrder",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({ method: "GET", uri: "/v1/customer-portal/orders/{id}/receipt", code: 200 }),
-        ),
-      ).annotate({
-        identifier: "CustomerPortalOrdersReceiptRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String.pipe(T.Label()),
-          billing_name: S.optional(S.NullOr(S.String)),
-          billing_address: S.optional(S.NullOr(__S(5, __c0, 5))),
-        }).pipe(T.Http({ method: "PATCH", uri: "/v1/customer-portal/orders/{id}", code: 200 })),
-      ).annotate({
-        identifier: "CustomerPortalOrdersUpdateRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          slug: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({ method: "GET", uri: "/v1/customer-portal/organizations/{slug}", code: 200 }),
-        ),
-      ).annotate({
-        identifier: "CustomerPortalOrganizationsGetRequest",
-      });
-  }
-}
-function __c22(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(S.Unknown);
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String,
-          created_at: S.String,
-          modified_at: S.NullOr(S.String),
-          trial_interval: S.NullOr(S.String),
-          trial_interval_count: S.NullOr(S.Number),
-          name: S.String,
-          description: S.NullOr(S.String),
-          visibility: S.String,
-          recurring_interval: S.NullOr(S.String),
-          recurring_interval_count: S.NullOr(S.Number),
-          meter_interval: S.NullOr(S.String),
-          meter_interval_count: S.NullOr(S.Number),
-          is_recurring: S.Boolean,
-          is_archived: S.Boolean,
-          organization_id: S.String,
-          prices: __S(176, __c22, 0),
-          benefits: __S(30, __c3, 6),
-          medias: __S(32, __c4, 0),
-        }),
-      ).annotate({ identifier: "CustomerProduct" });
-    case 2:
-      return S.Array(__S(177, __c22, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          organization: __S(160, __c20, 0),
-          products: __S(178, __c22, 2),
-        }),
-      ).annotate({ identifier: "CustomerOrganizationData" });
-    case 4:
-      return S.Record(S.String, S.Unknown);
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          subscription_id: S.optional(S.NullOr(S.String)),
-          order_id: S.optional(S.NullOr(S.String)),
-          email: S.optional(S.NullOr(S.String)),
-          external_customer_id: S.optional(S.NullOr(S.String)),
-          customer_id: S.optional(S.NullOr(S.String)),
-          external_member_id: S.optional(S.NullOr(S.String)),
-          member_id: S.optional(S.NullOr(S.String)),
-          metadata: S.optional(S.NullOr(__S(180, __c22, 4))),
-          immediate_claim: S.optional(S.Boolean),
-          checkout_id: S.optional(S.NullOr(S.String)),
-        }).pipe(T.Http({ method: "POST", uri: "/v1/customer-portal/seats", code: 200 })),
-      ).annotate({
-        identifier: "CustomerPortalSeatsAssignSeatRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          created_at: S.String,
-          modified_at: S.NullOr(S.String),
-          id: S.String,
-          subscription_id: S.NullOr(S.String),
-          order_id: S.NullOr(S.String),
-          status: S.String,
-          customer_id: S.NullOr(S.String),
-          member_id: S.NullOr(S.String),
-          member: S.NullOr(__S(7, __c0, 7)),
-          email: S.NullOr(S.String),
-          customer_email: S.NullOr(S.String),
-          invitation_token_expires_at: S.NullOr(S.String),
-          claimed_at: S.NullOr(S.String),
-          revoked_at: S.NullOr(S.String),
-          seat_metadata: S.NullOr(__S(180, __c22, 4)),
-        }),
-      ).annotate({ identifier: "CustomerSeat" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          page: S.optional(S.Number.pipe(T.Query())),
-          limit: S.optional(S.Number.pipe(T.Query())),
-        }).pipe(
-          T.Http({ method: "GET", uri: "/v1/customer-portal/seats/subscriptions", code: 200 }),
-        ),
-      ).annotate({
-        identifier: "CustomerPortalSeatsListClaimedSubscriptionsRequest",
-      });
-  }
-}
-function __c23(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(S.Unknown);
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String,
-          created_at: S.String,
-          modified_at: S.NullOr(S.String),
-          trial_interval: S.NullOr(S.String),
-          trial_interval_count: S.NullOr(S.Number),
-          name: S.String,
-          description: S.NullOr(S.String),
-          visibility: S.String,
-          recurring_interval: S.NullOr(S.String),
-          recurring_interval_count: S.NullOr(S.Number),
-          meter_interval: S.NullOr(S.String),
-          meter_interval_count: S.NullOr(S.Number),
-          is_recurring: S.Boolean,
-          is_archived: S.Boolean,
-          organization_id: S.String,
-          prices: __S(184, __c23, 0),
-          benefits: __S(30, __c3, 6),
-          medias: __S(32, __c4, 0),
-          organization: __S(160, __c20, 0),
-        }),
-      ).annotate({
-        identifier: "CustomerSubscriptionProduct",
-      });
-    case 2:
-      return S.Array(S.Unknown);
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          created_at: S.String,
-          modified_at: S.NullOr(S.String),
-          id: S.String,
-          consumed_units: S.Number,
-          credited_units: S.Number,
-          amount: S.Number,
-          meter_id: S.String,
-          meter: __S(96, __c12, 0),
-        }),
-      ).annotate({
-        identifier: "CustomerSubscriptionMeter",
-      });
-    case 4:
-      return S.Array(__S(187, __c23, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          created_at: S.String,
-          modified_at: S.NullOr(S.String),
-          id: S.String,
-          applies_at: S.String,
-          product_id: S.NullOr(S.String),
-          seats: S.NullOr(S.Number),
-          units: S.NullOr(S.Number),
-        }),
-      ).annotate({
-        identifier: "PendingSubscriptionUpdate",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          created_at: S.String,
-          modified_at: S.NullOr(S.String),
-          id: S.String,
-          amount: S.Number,
-          currency: S.String,
-          recurring_interval: S.String,
-          recurring_interval_count: S.Number,
-          status: S.String,
-          current_period_start: S.String,
-          current_period_end: S.String,
-          current_meter_period_start: S.NullOr(S.String),
-          current_meter_period_end: S.NullOr(S.String),
-          trial_start: S.NullOr(S.String),
-          trial_end: S.NullOr(S.String),
-          cancel_at_period_end: S.Boolean,
-          canceled_at: S.NullOr(S.String),
-          started_at: S.NullOr(S.String),
-          ends_at: S.NullOr(S.String),
-          ended_at: S.NullOr(S.String),
-          past_due_at: S.optional(S.NullOr(S.String)),
-          pause_at_period_end: S.Boolean,
-          paused_at: S.NullOr(S.String),
-          resumes_at: S.NullOr(S.String),
-          customer_id: S.String,
-          product_id: S.String,
-          discount_id: S.NullOr(S.String),
-          checkout_id: S.NullOr(S.String),
-          seats: S.optional(S.NullOr(S.Number)),
-          units: S.NullOr(S.Number),
-          customer_cancellation_reason: S.NullOr(S.String),
-          customer_cancellation_comment: S.NullOr(S.String),
-          product: __S(185, __c23, 1),
-          prices: __S(186, __c23, 2),
-          meters: __S(188, __c23, 4),
-          pending_update: S.NullOr(__S(189, __c23, 5)),
-        }),
-      ).annotate({ identifier: "CustomerSubscription" });
-    case 7:
-      return S.Array(__S(190, __c23, 6));
-  }
-}
-function __c24(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          items: __S(191, __c23, 7),
-          pagination: __S(10, __c1, 2),
-        }),
-      ).annotate({
-        identifier: "ListResourceCustomerSubscription",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          subscription_id: S.optional(S.String.pipe(T.Query())),
-          order_id: S.optional(S.String.pipe(T.Query())),
-        }).pipe(T.Http({ method: "GET", uri: "/v1/customer-portal/seats", code: 200 })),
-      ).annotate({
-        identifier: "CustomerPortalSeatsListSeatsRequest",
-      });
-    case 2:
-      return S.Array(__S(182, __c22, 6));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          seats: __S(194, __c24, 2),
-          available_seats: S.Number,
-          total_seats: S.Number,
-        }),
-      ).annotate({ identifier: "SeatsList" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          seat_id: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({ method: "POST", uri: "/v1/customer-portal/seats/{seat_id}/resend", code: 200 }),
-        ),
-      ).annotate({
-        identifier: "CustomerPortalSeatsResendInvitationRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          seat_id: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({ method: "DELETE", uri: "/v1/customer-portal/seats/{seat_id}", code: 200 }),
-        ),
-      ).annotate({
-        identifier: "CustomerPortalSeatsRevokeSeatRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({ method: "DELETE", uri: "/v1/customer-portal/subscriptions/{id}", code: 200 }),
-        ),
-      ).annotate({
-        identifier: "CustomerPortalSubscriptionsCancelRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({ method: "GET", uri: "/v1/customer-portal/subscriptions/{id}", code: 200 }),
-        ),
-      ).annotate({
-        identifier: "CustomerPortalSubscriptionsGetRequest",
-      });
-  }
-}
-function __c25(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          product_id: S.optional(S.Unknown.pipe(T.Query())),
-          active: S.optional(S.Boolean.pipe(T.Query())),
-          query: S.optional(S.String.pipe(T.Query())),
-          page: S.optional(S.Number.pipe(T.Query())),
-          limit: S.optional(S.Number.pipe(T.Query())),
-          sorting: S.optional(__S(1, __c0, 1).pipe(T.Query())),
-        }).pipe(T.Http({ method: "GET", uri: "/v1/customer-portal/subscriptions/", code: 200 })),
-      ).annotate({
-        identifier: "CustomerPortalSubscriptionsListRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String.pipe(T.Label()),
-          body: S.Unknown.pipe(T.HttpBody()),
-        }).pipe(
-          T.Http({ method: "PATCH", uri: "/v1/customer-portal/subscriptions/{id}", code: 200 }),
-        ),
-      ).annotate({
-        identifier: "CustomerPortalSubscriptionsUpdateRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String.pipe(T.Label()),
-        }).pipe(T.Http({ method: "GET", uri: "/v1/customer-portal/wallets/{id}", code: 200 })),
-      ).annotate({
-        identifier: "CustomerPortalWalletsGetRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String,
-          created_at: S.String,
-          modified_at: S.NullOr(S.String),
-          customer_id: S.String,
-          balance: S.Number,
-          currency: S.String,
-        }),
-      ).annotate({ identifier: "CustomerWallet" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          page: S.optional(S.Number.pipe(T.Query())),
-          limit: S.optional(S.Number.pipe(T.Query())),
-          sorting: S.optional(__S(1, __c0, 1).pipe(T.Query())),
-        }).pipe(T.Http({ method: "GET", uri: "/v1/customer-portal/wallets/", code: 200 })),
-      ).annotate({
-        identifier: "CustomerPortalWalletsListRequest",
-      });
-    case 5:
-      return S.Array(__S(203, __c25, 3));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          items: __S(205, __c25, 5),
-          pagination: __S(10, __c1, 2),
-        }),
-      ).annotate({
-        identifier: "ListResourceCustomerWallet",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          body: S.Unknown.pipe(T.HttpBody()),
-        }).pipe(T.Http({ method: "POST", uri: "/v1/customers/", code: 200 })),
-      ).annotate({ identifier: "CustomersCreateRequest" });
-  }
-}
-function __c26(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() => S.Unknown.pipe(T.RawResponseRoot())).annotate({
-        identifier: "CustomersCreateResponse",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String.pipe(T.Label()),
-          anonymize: S.optional(S.Boolean.pipe(T.Query())),
-        }).pipe(T.Http({ method: "DELETE", uri: "/v1/customers/{id}", code: 200 })),
-      ).annotate({ identifier: "CustomersDeleteRequest" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          external_id: S.String.pipe(T.Label()),
-          anonymize: S.optional(S.Boolean.pipe(T.Query())),
-        }).pipe(
-          T.Http({ method: "DELETE", uri: "/v1/customers/external/{external_id}", code: 200 }),
-        ),
-      ).annotate({
-        identifier: "CustomersDeleteExternalRequest",
-      });
-    case 3:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "CustomersDeleteExternalResponse",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          subscription_id: S.optional(S.NullOr(S.String)),
-          order_id: S.optional(S.NullOr(S.String)),
-          email: S.optional(S.NullOr(S.String)),
-          external_customer_id: S.optional(S.NullOr(S.String)),
-          customer_id: S.optional(S.NullOr(S.String)),
-          external_member_id: S.optional(S.NullOr(S.String)),
-          member_id: S.optional(S.NullOr(S.String)),
-          metadata: S.optional(S.NullOr(__S(180, __c22, 4))),
-          immediate_claim: S.optional(S.Boolean),
-        }).pipe(T.Http({ method: "POST", uri: "/v1/customer-seats", code: 200 })),
-      ).annotate({
-        identifier: "CustomerSeatsAssignSeatRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          invitation_token: S.String,
-        }).pipe(T.Http({ method: "POST", uri: "/v1/customer-seats/claim", code: 200 })),
-      ).annotate({
-        identifier: "CustomerSeatsClaimSeatRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          seat: __S(182, __c22, 6),
-          customer_session_token: S.String,
-        }),
-      ).annotate({
-        identifier: "CustomerSeatClaimResponse",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          subscription_id: S.optional(S.String.pipe(T.Query())),
-          order_id: S.optional(S.String.pipe(T.Query())),
-        }).pipe(T.Http({ method: "GET", uri: "/v1/customer-seats", code: 200 })),
-      ).annotate({
-        identifier: "CustomerSeatsListSeatsRequest",
-      });
-  }
-}
-function __c27(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          seat_id: S.String.pipe(T.Label()),
-        }).pipe(T.Http({ method: "POST", uri: "/v1/customer-seats/{seat_id}/resend", code: 200 })),
-      ).annotate({
-        identifier: "CustomerSeatsResendInvitationRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          seat_id: S.String.pipe(T.Label()),
-        }).pipe(T.Http({ method: "DELETE", uri: "/v1/customer-seats/{seat_id}", code: 200 })),
-      ).annotate({
-        identifier: "CustomerSeatsRevokeSeatRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          body: S.Unknown.pipe(T.HttpBody()),
-        }).pipe(T.Http({ method: "POST", uri: "/v1/customer-sessions/", code: 200 })),
-      ).annotate({
-        identifier: "CustomerSessionsCreateRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          created_at: S.String,
-          modified_at: S.NullOr(S.String),
-          id: S.String,
-          token: S.String,
-          expires_at: S.String,
-          return_url: S.NullOr(S.String),
-          customer_portal_url: S.String,
-          customer_id: S.String,
-          customer: S.Unknown,
-        }),
-      ).annotate({ identifier: "CustomerSession" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          organization_id: S.optional(S.Unknown.pipe(T.Query())),
-        }).pipe(T.Http({ method: "GET", uri: "/v1/customers/export", code: 200 })),
-      ).annotate({ identifier: "CustomersExportRequest" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String.pipe(T.Label()),
-        }).pipe(T.Http({ method: "GET", uri: "/v1/customers/{id}", code: 200 })),
-      ).annotate({ identifier: "CustomersGetRequest" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          external_id: S.String.pipe(T.Label()),
-        }).pipe(T.Http({ method: "GET", uri: "/v1/customers/external/{external_id}", code: 200 })),
-      ).annotate({
-        identifier: "CustomersGetExternalRequest",
-      });
-    case 7:
-      return S.suspend(() => S.Unknown.pipe(T.RawResponseRoot())).annotate({
-        identifier: "CustomersGetExternalResponse",
-      });
-  }
-}
-function __c28(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String.pipe(T.Label()),
-        }).pipe(T.Http({ method: "GET", uri: "/v1/customers/{id}/state", code: 200 })),
-      ).annotate({ identifier: "CustomersGetStateRequest" });
-    case 1:
-      return S.suspend(() => S.Unknown.pipe(T.RawResponseRoot())).annotate({
-        identifier: "CustomersGetStateResponse",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          external_id: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({ method: "GET", uri: "/v1/customers/external/{external_id}/state", code: 200 }),
-        ),
-      ).annotate({
-        identifier: "CustomersGetStateExternalRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          organization_id: S.optional(S.Unknown.pipe(T.Query())),
-          email: S.optional(S.String.pipe(T.Query())),
-          query: S.optional(S.String.pipe(T.Query())),
-          active: S.optional(S.Boolean.pipe(T.Query())),
-          page: S.optional(S.Number.pipe(T.Query())),
-          limit: S.optional(S.Number.pipe(T.Query())),
-          sorting: S.optional(__S(1, __c0, 1).pipe(T.Query())),
-          metadata: S.optional(__S(22, __c2, 6).pipe(T.Query())),
-        }).pipe(T.Http({ method: "GET", uri: "/v1/customers/", code: 200 })),
-      ).annotate({ identifier: "CustomersListRequest" });
-    case 4:
-      return S.Array(S.Unknown);
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          items: __S(228, __c28, 4),
-          pagination: __S(10, __c1, 2),
-        }),
-      ).annotate({ identifier: "ListResourceCustomer" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String.pipe(T.Label()),
-          page: S.optional(S.Number.pipe(T.Query())),
-          limit: S.optional(S.Number.pipe(T.Query())),
-        }).pipe(T.Http({ method: "GET", uri: "/v1/customers/{id}/payment-methods", code: 200 })),
-      ).annotate({
-        identifier: "CustomersListPaymentMethodsRequest",
-      });
-    case 7:
-      return S.Array(S.Unknown);
-  }
-}
-function __c29(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          items: __S(231, __c28, 7),
-          pagination: __S(10, __c1, 2),
-        }),
-      ).annotate({
-        identifier: "ListResourcePaymentMethod",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          external_id: S.String.pipe(T.Label()),
-          page: S.optional(S.Number.pipe(T.Query())),
-          limit: S.optional(S.Number.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/v1/customers/external/{external_id}/payment-methods",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "CustomersListPaymentMethodsExternalRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String.pipe(T.Label()),
-          email: S.String,
-          name: S.optional(S.NullOr(S.String)),
-          external_id: S.optional(S.NullOr(S.String)),
-          role: S.optional(S.String),
-        }).pipe(T.Http({ method: "POST", uri: "/v1/customers/{id}/members", code: 200 })),
-      ).annotate({
-        identifier: "CustomersMembersCreateRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          external_id: S.String.pipe(T.Label()),
-          email: S.String,
-          name: S.optional(S.NullOr(S.String)),
-          role: S.optional(S.String),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/v1/customers/external/{external_id}/members",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "CustomersMembersCreateExternalRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String.pipe(T.Label()),
-          member_id: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({ method: "DELETE", uri: "/v1/customers/{id}/members/{member_id}", code: 200 }),
-        ),
-      ).annotate({
-        identifier: "CustomersMembersDeleteRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          external_id: S.String.pipe(T.Label()),
-          member_external_id: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/v1/customers/external/{external_id}/members/{member_external_id}",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "CustomersMembersDeleteExternalRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String.pipe(T.Label()),
-          member_id: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({ method: "GET", uri: "/v1/customers/{id}/members/{member_id}", code: 200 }),
-        ),
-      ).annotate({
-        identifier: "CustomersMembersGetRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          external_id: S.String.pipe(T.Label()),
-          member_external_id: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/v1/customers/external/{external_id}/members/{member_external_id}",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "CustomersMembersGetExternalRequest",
-      });
-  }
-}
-function __c30(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String.pipe(T.Label()),
-          role: S.optional(S.String.pipe(T.Query())),
-          page: S.optional(S.Number.pipe(T.Query())),
-          limit: S.optional(S.Number.pipe(T.Query())),
-          sorting: S.optional(__S(1, __c0, 1).pipe(T.Query())),
-        }).pipe(T.Http({ method: "GET", uri: "/v1/customers/{id}/members", code: 200 })),
-      ).annotate({
-        identifier: "CustomersMembersListRequest",
-      });
-    case 1:
-      return S.Array(__S(7, __c0, 7));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          items: __S(241, __c30, 1),
-          pagination: __S(10, __c1, 2),
-        }),
-      ).annotate({ identifier: "ListResourceMember" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          external_id: S.String.pipe(T.Label()),
-          role: S.optional(S.String.pipe(T.Query())),
-          page: S.optional(S.Number.pipe(T.Query())),
-          limit: S.optional(S.Number.pipe(T.Query())),
-          sorting: S.optional(__S(1, __c0, 1).pipe(T.Query())),
-        }).pipe(
-          T.Http({ method: "GET", uri: "/v1/customers/external/{external_id}/members", code: 200 }),
-        ),
-      ).annotate({
-        identifier: "CustomersMembersListExternalRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String.pipe(T.Label()),
-          member_id: S.String.pipe(T.Label()),
-          name: S.optional(S.NullOr(S.String)),
-          email: S.optional(S.NullOr(S.String)),
-          role: S.optional(S.NullOr(S.String)),
-        }).pipe(
-          T.Http({ method: "PATCH", uri: "/v1/customers/{id}/members/{member_id}", code: 200 }),
-        ),
-      ).annotate({
-        identifier: "CustomersMembersUpdateRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          external_id: S.String.pipe(T.Label()),
-          member_external_id: S.String.pipe(T.Label()),
-          name: S.optional(S.NullOr(S.String)),
-          email: S.optional(S.NullOr(S.String)),
-          role: S.optional(S.NullOr(S.String)),
-        }).pipe(
-          T.Http({
-            method: "PATCH",
-            uri: "/v1/customers/external/{external_id}/members/{member_external_id}",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "CustomersMembersUpdateExternalRequest",
-      });
-    case 6:
-      return S.Record(S.String, S.Unknown);
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String.pipe(T.Label()),
-          metadata: S.optional(__S(246, __c30, 6)),
-          email: S.optional(S.NullOr(S.String)),
-          name: S.optional(S.NullOr(S.String)),
-          billing_address: S.optional(S.NullOr(__S(5, __c0, 5))),
-          tax_id: S.optional(S.NullOr(S.String)),
-          locale: S.optional(S.NullOr(S.String)),
-          external_id: S.optional(S.NullOr(S.String)),
-          type: S.optional(S.NullOr(S.String)),
-        }).pipe(T.Http({ method: "PATCH", uri: "/v1/customers/{id}", code: 200 })),
-      ).annotate({ identifier: "CustomersUpdateRequest" });
-  }
-}
-function __c31(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Record(S.String, S.Unknown);
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          external_id: S.String.pipe(T.Label()),
-          metadata: S.optional(__S(248, __c31, 0)),
-          email: S.optional(S.NullOr(S.String)),
-          name: S.optional(S.NullOr(S.String)),
-          billing_address: S.optional(S.NullOr(__S(5, __c0, 5))),
-          tax_id: S.optional(S.NullOr(S.String)),
-          locale: S.optional(S.NullOr(S.String)),
-        }).pipe(
-          T.Http({ method: "PATCH", uri: "/v1/customers/external/{external_id}", code: 200 }),
-        ),
-      ).annotate({
-        identifier: "CustomersUpdateExternalRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          body: S.Unknown.pipe(T.HttpBody()),
-        }).pipe(T.Http({ method: "POST", uri: "/v1/custom-fields/", code: 200 })),
-      ).annotate({
-        identifier: "CustomFieldsCreateRequest",
-      });
-    case 3:
-      return S.suspend(() => S.Unknown.pipe(T.RawResponseRoot())).annotate({
-        identifier: "CustomFieldsCreateResponse",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String.pipe(T.Label()),
-        }).pipe(T.Http({ method: "DELETE", uri: "/v1/custom-fields/{id}", code: 200 })),
-      ).annotate({
-        identifier: "CustomFieldsDeleteRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String.pipe(T.Label()),
-        }).pipe(T.Http({ method: "GET", uri: "/v1/custom-fields/{id}", code: 200 })),
-      ).annotate({ identifier: "CustomFieldsGetRequest" });
-    case 6:
-      return S.suspend(() => S.Unknown.pipe(T.RawResponseRoot())).annotate({
-        identifier: "CustomFieldsGetResponse",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          organization_id: S.optional(S.Unknown.pipe(T.Query())),
-          query: S.optional(S.String.pipe(T.Query())),
-          type: S.optional(S.Unknown.pipe(T.Query())),
-          page: S.optional(S.Number.pipe(T.Query())),
-          limit: S.optional(S.Number.pipe(T.Query())),
-          sorting: S.optional(__S(1, __c0, 1).pipe(T.Query())),
-        }).pipe(T.Http({ method: "GET", uri: "/v1/custom-fields/", code: 200 })),
-      ).annotate({ identifier: "CustomFieldsListRequest" });
-  }
-}
-function __c32(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(S.Unknown);
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          items: __S(256, __c32, 0),
-          pagination: __S(10, __c1, 2),
-        }),
-      ).annotate({ identifier: "ListResourceCustomField" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String.pipe(T.Label()),
-          body: S.Unknown.pipe(T.HttpBody()),
-        }).pipe(T.Http({ method: "PATCH", uri: "/v1/custom-fields/{id}", code: 200 })),
-      ).annotate({
-        identifier: "CustomFieldsUpdateRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          body: S.Unknown.pipe(T.HttpBody()),
-        }).pipe(T.Http({ method: "POST", uri: "/v1/discounts/", code: 200 })),
-      ).annotate({ identifier: "DiscountsCreateRequest" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          metadata: __S(4, __c0, 4),
-          id: S.String,
-          created_at: S.String,
-          modified_at: S.NullOr(S.String),
-          trial_interval: S.NullOr(S.String),
-          trial_interval_count: S.NullOr(S.Number),
-          name: S.String,
-          description: S.NullOr(S.String),
-          visibility: S.String,
-          recurring_interval: S.NullOr(S.String),
-          recurring_interval_count: S.NullOr(S.Number),
-          meter_interval: S.NullOr(S.String),
-          meter_interval_count: S.NullOr(S.Number),
-          is_recurring: S.Boolean,
-          is_archived: S.Boolean,
-          organization_id: S.String,
-        }),
-      ).annotate({ identifier: "DiscountProduct" });
-    case 5:
-      return S.suspend(() => S.Unknown.pipe(T.RawResponseRoot())).annotate({
-        identifier: "DiscountsCreateResponse",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String.pipe(T.Label()),
-        }).pipe(T.Http({ method: "DELETE", uri: "/v1/discounts/{id}", code: 200 })),
-      ).annotate({ identifier: "DiscountsDeleteRequest" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String.pipe(T.Label()),
-        }).pipe(T.Http({ method: "GET", uri: "/v1/discounts/{id}", code: 200 })),
-      ).annotate({ identifier: "DiscountsGetRequest" });
-  }
-}
-function __c33(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          organization_id: S.optional(S.Unknown.pipe(T.Query())),
-          query: S.optional(S.String.pipe(T.Query())),
-          page: S.optional(S.Number.pipe(T.Query())),
-          limit: S.optional(S.Number.pipe(T.Query())),
-          sorting: S.optional(__S(1, __c0, 1).pipe(T.Query())),
-        }).pipe(T.Http({ method: "GET", uri: "/v1/discounts/", code: 200 })),
-      ).annotate({ identifier: "DiscountsListRequest" });
-    case 1:
-      return S.Array(S.Unknown);
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          items: __S(265, __c33, 1),
-          pagination: __S(10, __c1, 2),
-        }),
-      ).annotate({ identifier: "ListResourceDiscount" });
-    case 3:
-      return S.Record(S.String, S.Unknown);
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String.pipe(T.Label()),
-          metadata: S.optional(__S(267, __c33, 3)),
-          name: S.optional(S.NullOr(S.String)),
-          code: S.optional(S.NullOr(S.String)),
-          starts_at: S.optional(S.NullOr(S.String)),
-          ends_at: S.optional(S.NullOr(S.String)),
-          max_redemptions: S.optional(S.NullOr(S.Number)),
-          max_redemptions_per_customer: S.optional(S.NullOr(S.Number)),
-          duration: S.optional(S.NullOr(S.String)),
-          duration_in_months: S.optional(S.NullOr(S.Number)),
-          type: S.optional(S.NullOr(S.String)),
-          amount: S.optional(S.NullOr(S.Number)),
-          currency: S.optional(S.NullOr(S.String)),
-          amounts: S.optional(S.NullOr(__S(35, __c4, 3))),
-          basis_points: S.optional(S.NullOr(S.Number)),
-          products: S.optional(S.NullOr(__S(0, __c0, 0))),
-        }).pipe(T.Http({ method: "PATCH", uri: "/v1/discounts/{id}", code: 200 })),
-      ).annotate({ identifier: "DiscountsUpdateRequest" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String.pipe(T.Label()),
-        }).pipe(T.Http({ method: "POST", uri: "/v1/disputes/{id}/accept", code: 200 })),
-      ).annotate({ identifier: "DisputesAcceptRequest" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          created_at: S.String,
-          modified_at: S.NullOr(S.String),
-          id: S.String,
-          status: S.String,
-          resolved: S.Boolean,
-          closed: S.Boolean,
-          amount: S.Number,
-          tax_amount: S.Number,
-          currency: S.String,
-          reason: S.NullOr(S.String),
-          evidence_due_by: S.NullOr(S.String),
-          past_due: S.Boolean,
-          order_id: S.String,
-          payment_id: S.String,
-          customer: __S(125, __c15, 5),
-          case_id: S.NullOr(S.String),
-        }),
-      ).annotate({ identifier: "Dispute" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String.pipe(T.Label()),
-        }).pipe(T.Http({ method: "GET", uri: "/v1/disputes/{id}", code: 200 })),
-      ).annotate({ identifier: "DisputesGetRequest" });
-  }
-}
-function __c34(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          organization_id: S.optional(S.Unknown.pipe(T.Query())),
-          order_id: S.optional(S.Unknown.pipe(T.Query())),
-          status: S.optional(S.Unknown.pipe(T.Query())),
-          page: S.optional(S.Number.pipe(T.Query())),
-          limit: S.optional(S.Number.pipe(T.Query())),
-          sorting: S.optional(__S(1, __c0, 1).pipe(T.Query())),
-        }).pipe(T.Http({ method: "GET", uri: "/v1/disputes/", code: 200 })),
-      ).annotate({ identifier: "DisputesListRequest" });
-    case 1:
-      return S.Array(__S(270, __c33, 6));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          items: __S(273, __c34, 1),
-          pagination: __S(10, __c1, 2),
-        }),
-      ).annotate({ identifier: "ListResourceDispute" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String.pipe(T.Label()),
-        }).pipe(T.Http({ method: "GET", uri: "/v1/events/{id}", code: 200 })),
-      ).annotate({ identifier: "EventsGetRequest" });
-    case 4:
-      return S.suspend(() => S.Unknown.pipe(T.RawResponseRoot())).annotate({
-        identifier: "EventsGetResponse",
-      });
-    case 5:
-      return S.Array(S.Unknown);
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          events: __S(277, __c34, 5),
-        }).pipe(T.Http({ method: "POST", uri: "/v1/events/ingest", code: 200 })),
-      ).annotate({ identifier: "EventsIngestRequest" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          inserted: S.Number,
-          duplicates: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "EventsIngestResponse" });
-  }
-}
-function __c35(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          filter: S.optional(S.String.pipe(T.Query())),
-          start_timestamp: S.optional(S.String.pipe(T.Query())),
-          end_timestamp: S.optional(S.String.pipe(T.Query())),
-          organization_id: S.optional(S.Unknown.pipe(T.Query())),
-          customer_id: S.optional(S.Unknown.pipe(T.Query())),
-          external_customer_id: S.optional(S.Unknown.pipe(T.Query())),
-          meter_id: S.optional(S.String.pipe(T.Query())),
-          name: S.optional(S.Unknown.pipe(T.Query())),
-          source: S.optional(S.Unknown.pipe(T.Query())),
-          query: S.optional(S.String.pipe(T.Query())),
-          parent_id: S.optional(S.String.pipe(T.Query())),
-          depth: S.optional(S.Number.pipe(T.Query())),
-          page: S.optional(S.Number.pipe(T.Query())),
-          limit: S.optional(S.Number.pipe(T.Query())),
-          sorting: S.optional(__S(1, __c0, 1).pipe(T.Query())),
-          metadata: S.optional(__S(22, __c2, 6).pipe(T.Query())),
-        }).pipe(T.Http({ method: "GET", uri: "/v1/events/", code: 200 })),
-      ).annotate({ identifier: "EventsListRequest" });
-    case 1:
-      return S.suspend(() => S.Unknown.pipe(T.RawResponseRoot())).annotate({
-        identifier: "EventsListResponse",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          organization_id: S.optional(S.Unknown.pipe(T.Query())),
-          customer_id: S.optional(S.Unknown.pipe(T.Query())),
-          external_customer_id: S.optional(S.Unknown.pipe(T.Query())),
-          source: S.optional(S.Unknown.pipe(T.Query())),
-          query: S.optional(S.String.pipe(T.Query())),
-          page: S.optional(S.Number.pipe(T.Query())),
-          limit: S.optional(S.Number.pipe(T.Query())),
-          sorting: S.optional(__S(1, __c0, 1).pipe(T.Query())),
-        }).pipe(T.Http({ method: "GET", uri: "/v1/events/names", code: 200 })),
-      ).annotate({ identifier: "EventsListNamesRequest" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String,
-          label: S.String,
-          source: S.String,
-          occurrences: S.Number,
-          first_seen: S.String,
-          last_seen: S.String,
-        }),
-      ).annotate({ identifier: "EventName" });
-    case 4:
-      return S.Array(__S(283, __c35, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          items: __S(284, __c35, 4),
-          pagination: __S(10, __c1, 2),
-        }),
-      ).annotate({ identifier: "ListResourceEventName" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          organization_id: S.optional(S.Unknown.pipe(T.Query())),
-          customer_id: S.optional(S.Unknown.pipe(T.Query())),
-          external_customer_id: S.optional(S.Unknown.pipe(T.Query())),
-          query: S.optional(S.String.pipe(T.Query())),
-          root_events: S.optional(S.Boolean.pipe(T.Query())),
-          parent_id: S.optional(S.String.pipe(T.Query())),
-          source: S.optional(S.String.pipe(T.Query())),
-          page: S.optional(S.Number.pipe(T.Query())),
-          limit: S.optional(S.Number.pipe(T.Query())),
-          sorting: S.optional(__S(1, __c0, 1).pipe(T.Query())),
-        }).pipe(T.Http({ method: "GET", uri: "/v1/event-types/", code: 200 })),
-      ).annotate({ identifier: "EventTypesListRequest" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.NullOr(S.String)),
-          created_at: S.optional(S.NullOr(S.String)),
-          modified_at: S.optional(S.NullOr(S.String)),
-          name: S.String,
-          label: S.String,
-          label_property_selector: S.optional(S.NullOr(S.String)),
-          organization_id: S.String,
-          source: S.String,
-          occurrences: S.Number,
-          first_seen: S.String,
-          last_seen: S.String,
-        }),
-      ).annotate({ identifier: "EventTypeWithStats" });
-  }
-}
-function __c36(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(287, __c35, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          items: __S(288, __c36, 0),
-          pagination: __S(10, __c1, 2),
-        }),
-      ).annotate({
-        identifier: "ListResourceEventTypeWithStats",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String.pipe(T.Label()),
-          label: S.String,
-          label_property_selector: S.optional(S.NullOr(S.String)),
-        }).pipe(T.Http({ method: "PATCH", uri: "/v1/event-types/{id}", code: 200 })),
-      ).annotate({ identifier: "EventTypesUpdateRequest" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          created_at: S.String,
-          modified_at: S.NullOr(S.String),
-          id: S.String,
-          name: S.String,
-          label: S.String,
-          label_property_selector: S.optional(S.NullOr(S.String)),
-          organization_id: S.String,
-        }),
-      ).annotate({ identifier: "EventType" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          body: S.Unknown.pipe(T.HttpBody()),
-        }).pipe(T.Http({ method: "POST", uri: "/v1/files/", code: 200 })),
-      ).annotate({ identifier: "FilesCreateRequest" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          number: S.Number,
-          chunk_start: S.Number,
-          chunk_end: S.Number,
-          checksum_sha256_base64: S.optional(S.NullOr(S.String)),
-          url: S.String,
-          expires_at: S.String,
-          headers: S.optional(__S(28, __c3, 4)),
-        }),
-      ).annotate({ identifier: "S3FileUploadPart" });
-    case 6:
-      return S.Array(__S(293, __c36, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String,
-          path: S.String,
-          parts: __S(294, __c36, 6),
-        }),
-      ).annotate({ identifier: "S3FileUploadMultipart" });
-  }
-}
-function __c37(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String,
-          organization_id: S.String,
-          name: S.String,
-          path: S.String,
-          mime_type: S.String,
-          size: S.Number,
-          storage_version: S.NullOr(S.String),
-          checksum_etag: S.NullOr(S.String),
-          checksum_sha256_base64: S.NullOr(S.String),
-          checksum_sha256_hex: S.NullOr(S.String),
-          last_modified_at: S.NullOr(S.String),
-          upload: __S(295, __c36, 7),
-          version: S.NullOr(S.String),
-          is_uploaded: S.optional(S.Boolean),
-          service: S.String,
-          size_readable: S.String,
-        }),
-      ).annotate({ identifier: "FileUpload" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String.pipe(T.Label()),
-        }).pipe(T.Http({ method: "DELETE", uri: "/v1/files/{id}", code: 200 })),
-      ).annotate({ identifier: "FilesDeleteRequest" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          organization_id: S.optional(S.Unknown.pipe(T.Query())),
-          ids: S.optional(S.Unknown.pipe(T.Query())),
-          page: S.optional(S.Number.pipe(T.Query())),
-          limit: S.optional(S.Number.pipe(T.Query())),
-        }).pipe(T.Http({ method: "GET", uri: "/v1/files/", code: 200 })),
-      ).annotate({ identifier: "FilesListRequest" });
-    case 3:
-      return S.Array(S.Unknown);
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          items: __S(299, __c37, 3),
-          pagination: __S(10, __c1, 2),
-        }),
-      ).annotate({ identifier: "ListResourceFileRead" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String.pipe(T.Label()),
-          name: S.optional(S.NullOr(S.String)),
-          version: S.optional(S.NullOr(S.String)),
-        }).pipe(T.Http({ method: "PATCH", uri: "/v1/files/{id}", code: 200 })),
-      ).annotate({ identifier: "FilesUpdateRequest" });
-    case 6:
-      return S.suspend(() => S.Unknown.pipe(T.RawResponseRoot())).annotate({
-        identifier: "FilesUpdateResponse",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          number: S.Number,
-          checksum_etag: S.String,
-          checksum_sha256_base64: S.NullOr(S.String),
-        }),
-      ).annotate({
-        identifier: "S3FileUploadCompletedPart",
-      });
-  }
-}
-function __c38(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(303, __c37, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String.pipe(T.Label()),
-          path: S.String,
-          parts: __S(304, __c38, 0),
-        }).pipe(T.Http({ method: "POST", uri: "/v1/files/{id}/uploaded", code: 200 })),
-      ).annotate({ identifier: "FilesUploadedRequest" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          client_secret: S.String.pipe(T.Label()),
-        }).pipe(T.Http({ method: "GET", uri: "/v1/checkouts/client/{client_secret}", code: 200 })),
-      ).annotate({
-        identifier: "GetCheckoutsClientRequest",
-      });
-    case 3:
-      return S.Record(S.String, /*@__PURE__*/ S.NullOr(S.Unknown));
-    case 4:
-      return S.Array(S.Unknown);
-    case 5:
-      return S.Record(S.String, __S(308, __c38, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String,
-          created_at: S.String,
-          modified_at: S.NullOr(S.String),
-          custom_field_data: S.optional(__S(307, __c38, 3)),
-          payment_processor: S.String,
-          status: S.String,
-          client_secret: S.String.pipe(T.SensitiveValue({})),
-          url: S.String,
-          expires_at: S.String,
-          success_url: S.String,
-          return_url: S.NullOr(S.String),
-          embed_origin: S.NullOr(S.String),
-          amount: S.Number,
-          seats: S.optional(S.NullOr(S.Number)),
-          min_seats: S.optional(S.NullOr(S.Number)),
-          max_seats: S.optional(S.NullOr(S.Number)),
-          units: S.NullOr(S.Number),
-          min_units: S.NullOr(S.Number),
-          max_units: S.NullOr(S.Number),
-          discount_amount: S.Number,
-          net_amount: S.Number,
-          tax_amount: S.NullOr(S.Number),
-          tax_behavior: S.NullOr(S.String),
-          total_amount: S.Number,
-          currency: S.String,
-          allow_trial: S.NullOr(S.Boolean),
-          active_trial_interval: S.NullOr(S.String),
-          active_trial_interval_count: S.NullOr(S.Number),
-          trial_end: S.NullOr(S.String),
-          organization_id: S.String,
-          product_id: S.NullOr(S.String),
-          product_price_id: S.NullOr(S.String),
-          discount_id: S.NullOr(S.String),
-          allow_discount_codes: S.Boolean,
-          require_billing_address: S.Boolean,
-          is_discount_applicable: S.Boolean,
-          is_free_product_price: S.Boolean,
-          is_payment_required: S.Boolean,
-          is_payment_setup_required: S.Boolean,
-          is_payment_form_required: S.Boolean,
-          customer_id: S.NullOr(S.String),
-          is_business_customer: S.Boolean,
-          customer_name: S.NullOr(S.String),
-          customer_email: S.NullOr(S.String),
-          customer_ip_address: S.NullOr(S.String),
-          customer_billing_name: S.NullOr(S.String),
-          customer_billing_address: S.NullOr(__S(5, __c0, 5)),
-          customer_tax_id: S.NullOr(S.String),
-          locale: S.optional(S.NullOr(S.String)),
-          payment_method_type: S.NullOr(S.String),
-          payment_processor_metadata: __S(28, __c3, 4),
-          billing_address_fields: __S(51, __c6, 3),
-          products: __S(54, __c6, 6),
-          product: S.NullOr(__S(53, __c6, 5)),
-          product_price: S.NullOr(S.Unknown),
-          prices: S.NullOr(__S(309, __c38, 5)),
-          discount: S.NullOr(S.Unknown),
-          organization: __S(76, __c9, 4),
-          attached_custom_fields: S.NullOr(__S(58, __c7, 2)),
-        }),
-      ).annotate({ identifier: "CheckoutPublic" });
-    case 7:
-      return S.Record(S.String, S.Unknown);
-  }
-}
-function __c39(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Record(S.String, S.Unknown);
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          key: S.String,
-          organization_id: S.String,
-          label: S.String,
-          conditions: S.optional(__S(311, __c38, 7)),
-          meta: S.optional(__S(312, __c39, 0)),
-        }).pipe(T.Http({ method: "POST", uri: "/v1/license-keys/activate", code: 200 })),
-      ).annotate({
-        identifier: "LicenseKeysActivateRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          key: S.String,
-          organization_id: S.String,
-          activation_id: S.String,
-        }).pipe(T.Http({ method: "POST", uri: "/v1/license-keys/deactivate", code: 200 })),
-      ).annotate({
-        identifier: "LicenseKeysDeactivateRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String.pipe(T.Label()),
-        }).pipe(T.Http({ method: "GET", uri: "/v1/license-keys/{id}", code: 200 })),
-      ).annotate({ identifier: "LicenseKeysGetRequest" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String.pipe(T.Label()),
-          activation_id: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/v1/license-keys/{id}/activations/{activation_id}",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "LicenseKeysGetActivationRequest",
-      });
-    case 5:
-      return S.Record(S.String, S.Unknown);
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String,
-          license_key_id: S.String,
-          label: S.String,
-          meta: __S(317, __c39, 5),
-          created_at: S.String,
-          modified_at: S.NullOr(S.String),
-          license_key: __S(138, __c17, 2),
-        }),
-      ).annotate({ identifier: "LicenseKeyActivationRead" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          organization_id: S.optional(S.Unknown.pipe(T.Query())),
-          benefit_id: S.optional(S.Unknown.pipe(T.Query())),
-          status: S.optional(S.Unknown.pipe(T.Query())),
-          page: S.optional(S.Number.pipe(T.Query())),
-          limit: S.optional(S.Number.pipe(T.Query())),
-        }).pipe(T.Http({ method: "GET", uri: "/v1/license-keys/", code: 200 })),
-      ).annotate({ identifier: "LicenseKeysListRequest" });
-  }
-}
-function __c40(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String.pipe(T.Label()),
-        }).pipe(T.Http({ method: "POST", uri: "/v1/license-keys/{id}/rotate", code: 200 })),
-      ).annotate({ identifier: "LicenseKeysRotateRequest" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String.pipe(T.Label()),
-          status: S.optional(S.NullOr(S.String)),
-          usage: S.optional(S.Number),
-          limit_activations: S.optional(S.NullOr(S.Number)),
-          limit_usage: S.optional(S.NullOr(S.Number)),
-          expires_at: S.optional(S.NullOr(S.String)),
-        }).pipe(T.Http({ method: "PATCH", uri: "/v1/license-keys/{id}", code: 200 })),
-      ).annotate({ identifier: "LicenseKeysUpdateRequest" });
-    case 2:
-      return S.Record(S.String, S.Unknown);
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          key: S.String,
-          organization_id: S.String,
-          activation_id: S.optional(S.NullOr(S.String)),
-          benefit_id: S.optional(S.NullOr(S.String)),
-          customer_id: S.optional(S.NullOr(S.String)),
-          increment_usage: S.optional(S.NullOr(S.Number)),
-          conditions: S.optional(__S(322, __c40, 2)),
+          conditions: S.optional(__S(352, __c44, 0)),
         }).pipe(T.Http({ method: "POST", uri: "/v1/license-keys/validate", code: 200 })),
       ).annotate({
         identifier: "LicenseKeysValidateRequest",
       });
-    case 4:
+  }
+}
+function __c45(j: number): any {
+  switch (j) {
+    case 0:
       return S.Record(S.String, S.Unknown);
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          metadata: S.optional(__S(324, __c40, 4)),
+          metadata: S.optional(__S(360, __c45, 0)),
           name: S.String,
           unit: S.optional(S.String),
           custom_label: S.optional(S.NullOr(S.String)),
           custom_multiplier: S.optional(S.NullOr(S.Number)),
-          filter: __S(80, __c10, 0),
+          filter: __S(1097, __c137, 1),
           aggregation: S.Unknown,
           organization_id: S.optional(S.NullOr(S.String)),
         }).pipe(T.Http({ method: "POST", uri: "/v1/meters/", code: 200 })),
       ).annotate({ identifier: "MetersCreateRequest" });
-    case 6:
+  }
+}
+function __c46(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.String.pipe(T.Label()),
         }).pipe(T.Http({ method: "GET", uri: "/v1/meters/{id}", code: 200 })),
       ).annotate({ identifier: "MetersGetRequest" });
-    case 7:
+  }
+}
+function __c47(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           organization_id: S.optional(S.Unknown.pipe(T.Query())),
@@ -20620,24 +18278,24 @@ function __c40(j: number): any {
           is_archived: S.optional(S.Boolean.pipe(T.Query())),
           page: S.optional(S.Number.pipe(T.Query())),
           limit: S.optional(S.Number.pipe(T.Query())),
-          sorting: S.optional(__S(1, __c0, 1).pipe(T.Query())),
-          metadata: S.optional(__S(22, __c2, 6).pipe(T.Query())),
+          sorting: S.optional(__S(1464, __c183, 0).pipe(T.Query())),
+          metadata: S.optional(__S(120, __c15, 0).pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/v1/meters/", code: 200 })),
       ).annotate({ identifier: "MetersListRequest" });
-  }
-}
-function __c41(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(81, __c10, 1));
     case 1:
+      return S.Array(__S(1098, __c137, 2));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          items: __S(328, __c41, 0),
-          pagination: __S(10, __c1, 2),
+          items: __S(377, __c47, 1),
+          pagination: __S(1472, __c184, 0),
         }),
       ).annotate({ identifier: "ListResourceMeter" });
-    case 2:
+  }
+}
+function __c48(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.String.pipe(T.Label()),
@@ -20648,67 +18306,79 @@ function __c41(j: number): any {
           customer_id: S.optional(S.Unknown.pipe(T.Query())),
           external_customer_id: S.optional(S.Unknown.pipe(T.Query())),
           customer_aggregation_function: S.optional(S.String.pipe(T.Query())),
-          metadata: S.optional(__S(22, __c2, 6).pipe(T.Query())),
+          metadata: S.optional(__S(120, __c15, 0).pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/v1/meters/{id}/quantities", code: 200 })),
       ).annotate({ identifier: "MetersQuantitiesRequest" });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           timestamp: S.String,
           quantity: S.Number,
         }),
       ).annotate({ identifier: "MeterQuantity" });
-    case 4:
-      return S.Array(__S(331, __c41, 3));
-    case 5:
+    case 2:
+      return S.Array(__S(385, __c48, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          quantities: __S(332, __c41, 4),
+          quantities: __S(386, __c48, 2),
           total: S.Number,
         }),
       ).annotate({ identifier: "MeterQuantities" });
-    case 6:
+  }
+}
+function __c49(j: number): any {
+  switch (j) {
+    case 0:
       return S.Record(S.String, S.Unknown);
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.String.pipe(T.Label()),
-          metadata: S.optional(__S(334, __c41, 6)),
+          metadata: S.optional(__S(392, __c49, 0)),
           name: S.optional(S.NullOr(S.String)),
           unit: S.optional(S.NullOr(S.String)),
           custom_label: S.optional(S.NullOr(S.String)),
           custom_multiplier: S.optional(S.NullOr(S.Number)),
-          filter: S.optional(S.NullOr(__S(80, __c10, 0))),
+          filter: S.optional(S.NullOr(__S(1097, __c137, 1))),
           aggregation: S.optional(S.NullOr(S.Unknown)),
           is_archived: S.optional(S.NullOr(S.Boolean)),
         }).pipe(T.Http({ method: "PATCH", uri: "/v1/meters/{id}", code: 200 })),
       ).annotate({ identifier: "MetersUpdateRequest" });
   }
 }
-function __c42(j: number): any {
+function __c50(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String,
-          metrics: S.optional(__S(0, __c0, 0)),
+          metrics: S.optional(__S(752, __c94, 0)),
           organization_id: S.optional(S.NullOr(S.String)),
         }).pipe(T.Http({ method: "POST", uri: "/v1/metrics/dashboards", code: 200 })),
       ).annotate({
         identifier: "MetricsCreateDashboardRequest",
       });
-    case 1:
+  }
+}
+function __c51(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           created_at: S.String,
           modified_at: S.NullOr(S.String),
           id: S.String,
           name: S.String,
-          metrics: __S(0, __c0, 0),
+          metrics: __S(752, __c94, 0),
           organization_id: S.String,
         }),
       ).annotate({ identifier: "MetricDashboardSchema" });
-    case 2:
+  }
+}
+function __c52(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.String.pipe(T.Label()),
@@ -20716,7 +18386,11 @@ function __c42(j: number): any {
       ).annotate({
         identifier: "MetricsDeleteDashboardRequest",
       });
-    case 3:
+  }
+}
+function __c53(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           start_date: S.String.pipe(T.Query()),
@@ -20727,10 +18401,14 @@ function __c42(j: number): any {
           product_id: S.optional(S.Unknown.pipe(T.Query())),
           billing_type: S.optional(S.Unknown.pipe(T.Query())),
           customer_id: S.optional(S.Unknown.pipe(T.Query())),
-          metrics: S.optional(__S(0, __c0, 0).pipe(T.Query())),
+          metrics: S.optional(__S(752, __c94, 0).pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/v1/metrics/export", code: 200 })),
       ).annotate({ identifier: "MetricsExportRequest" });
-    case 4:
+  }
+}
+function __c54(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           start_date: S.String.pipe(T.Query()),
@@ -20741,10 +18419,10 @@ function __c42(j: number): any {
           product_id: S.optional(S.Unknown.pipe(T.Query())),
           billing_type: S.optional(S.Unknown.pipe(T.Query())),
           customer_id: S.optional(S.Unknown.pipe(T.Query())),
-          metrics: S.optional(__S(0, __c0, 0).pipe(T.Query())),
+          metrics: S.optional(__S(752, __c94, 0).pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/v1/metrics/", code: 200 })),
       ).annotate({ identifier: "MetricsGetRequest" });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           timestamp: S.String,
@@ -20805,9 +18483,9 @@ function __c42(j: number): any {
           seat_utilization_rate: S.optional(S.NullOr(S.Unknown)),
         }),
       ).annotate({ identifier: "MetricPeriod" });
-    case 6:
-      return S.Array(__S(341, __c42, 5));
-    case 7:
+    case 2:
+      return S.Array(__S(433, __c54, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
           active_subscriptions: S.optional(S.NullOr(S.Unknown)),
@@ -20867,11 +18545,7 @@ function __c42(j: number): any {
           seat_utilization_rate: S.optional(S.NullOr(S.Unknown)),
         }),
       ).annotate({ identifier: "MetricsTotals" });
-  }
-}
-function __c43(j: number): any {
-  switch (j) {
-    case 0:
+    case 4:
       return S.suspend(() =>
         S.Struct({
           slug: S.String,
@@ -20879,75 +18553,91 @@ function __c43(j: number): any {
           type: S.String,
         }),
       ).annotate({ identifier: "Metric" });
-    case 1:
+    case 5:
       return S.suspend(() =>
         S.Struct({
-          active_subscriptions: S.optional(S.NullOr(__S(344, __c43, 0))),
-          committed_subscriptions: S.optional(S.NullOr(__S(344, __c43, 0))),
-          monthly_recurring_revenue: S.optional(S.NullOr(__S(344, __c43, 0))),
-          trial_monthly_recurring_revenue: S.optional(S.NullOr(__S(344, __c43, 0))),
-          committed_monthly_recurring_revenue: S.optional(S.NullOr(__S(344, __c43, 0))),
-          trial_committed_monthly_recurring_revenue: S.optional(S.NullOr(__S(344, __c43, 0))),
-          average_revenue_per_user: S.optional(S.NullOr(__S(344, __c43, 0))),
-          checkouts: S.optional(S.NullOr(__S(344, __c43, 0))),
-          succeeded_checkouts: S.optional(S.NullOr(__S(344, __c43, 0))),
-          churned_subscriptions: S.optional(S.NullOr(__S(344, __c43, 0))),
-          churn_rate: S.optional(S.NullOr(__S(344, __c43, 0))),
-          seats_total: S.optional(S.NullOr(__S(344, __c43, 0))),
-          seats_claimed: S.optional(S.NullOr(__S(344, __c43, 0))),
-          seats_pending: S.optional(S.NullOr(__S(344, __c43, 0))),
-          seat_customers: S.optional(S.NullOr(__S(344, __c43, 0))),
-          new_seat_customers: S.optional(S.NullOr(__S(344, __c43, 0))),
-          churned_seat_customers: S.optional(S.NullOr(__S(344, __c43, 0))),
-          orders: S.optional(S.NullOr(__S(344, __c43, 0))),
-          revenue: S.optional(S.NullOr(__S(344, __c43, 0))),
-          net_revenue: S.optional(S.NullOr(__S(344, __c43, 0))),
-          cumulative_revenue: S.optional(S.NullOr(__S(344, __c43, 0))),
-          net_cumulative_revenue: S.optional(S.NullOr(__S(344, __c43, 0))),
-          costs: S.optional(S.NullOr(__S(344, __c43, 0))),
-          cumulative_costs: S.optional(S.NullOr(__S(344, __c43, 0))),
-          average_order_value: S.optional(S.NullOr(__S(344, __c43, 0))),
-          net_average_order_value: S.optional(S.NullOr(__S(344, __c43, 0))),
-          cost_per_user: S.optional(S.NullOr(__S(344, __c43, 0))),
-          active_user_by_event: S.optional(S.NullOr(__S(344, __c43, 0))),
-          one_time_products: S.optional(S.NullOr(__S(344, __c43, 0))),
-          one_time_products_revenue: S.optional(S.NullOr(__S(344, __c43, 0))),
-          one_time_products_net_revenue: S.optional(S.NullOr(__S(344, __c43, 0))),
-          new_subscriptions: S.optional(S.NullOr(__S(344, __c43, 0))),
-          new_subscriptions_revenue: S.optional(S.NullOr(__S(344, __c43, 0))),
-          new_subscriptions_net_revenue: S.optional(S.NullOr(__S(344, __c43, 0))),
-          renewed_subscriptions: S.optional(S.NullOr(__S(344, __c43, 0))),
-          renewed_subscriptions_revenue: S.optional(S.NullOr(__S(344, __c43, 0))),
-          renewed_subscriptions_net_revenue: S.optional(S.NullOr(__S(344, __c43, 0))),
-          canceled_subscriptions: S.optional(S.NullOr(__S(344, __c43, 0))),
-          canceled_subscriptions_customer_service: S.optional(S.NullOr(__S(344, __c43, 0))),
-          canceled_subscriptions_low_quality: S.optional(S.NullOr(__S(344, __c43, 0))),
-          canceled_subscriptions_missing_features: S.optional(S.NullOr(__S(344, __c43, 0))),
-          canceled_subscriptions_switched_service: S.optional(S.NullOr(__S(344, __c43, 0))),
-          canceled_subscriptions_too_complex: S.optional(S.NullOr(__S(344, __c43, 0))),
-          canceled_subscriptions_too_expensive: S.optional(S.NullOr(__S(344, __c43, 0))),
-          canceled_subscriptions_unused: S.optional(S.NullOr(__S(344, __c43, 0))),
-          canceled_subscriptions_other: S.optional(S.NullOr(__S(344, __c43, 0))),
-          annual_recurring_revenue: S.optional(S.NullOr(__S(344, __c43, 0))),
-          committed_annual_recurring_revenue: S.optional(S.NullOr(__S(344, __c43, 0))),
-          checkouts_conversion: S.optional(S.NullOr(__S(344, __c43, 0))),
-          ltv: S.optional(S.NullOr(__S(344, __c43, 0))),
-          gross_margin: S.optional(S.NullOr(__S(344, __c43, 0))),
-          gross_margin_percentage: S.optional(S.NullOr(__S(344, __c43, 0))),
-          cashflow: S.optional(S.NullOr(__S(344, __c43, 0))),
-          average_seats_per_customer: S.optional(S.NullOr(__S(344, __c43, 0))),
-          seat_utilization_rate: S.optional(S.NullOr(__S(344, __c43, 0))),
+          active_subscriptions: S.optional(S.NullOr(__S(436, __c54, 4))),
+          committed_subscriptions: S.optional(S.NullOr(__S(436, __c54, 4))),
+          monthly_recurring_revenue: S.optional(S.NullOr(__S(436, __c54, 4))),
+          trial_monthly_recurring_revenue: S.optional(S.NullOr(__S(436, __c54, 4))),
+          committed_monthly_recurring_revenue: S.optional(S.NullOr(__S(436, __c54, 4))),
+          trial_committed_monthly_recurring_revenue: S.optional(S.NullOr(__S(436, __c54, 4))),
+          average_revenue_per_user: S.optional(S.NullOr(__S(436, __c54, 4))),
+          checkouts: S.optional(S.NullOr(__S(436, __c54, 4))),
+          succeeded_checkouts: S.optional(S.NullOr(__S(436, __c54, 4))),
+          churned_subscriptions: S.optional(S.NullOr(__S(436, __c54, 4))),
+          churn_rate: S.optional(S.NullOr(__S(436, __c54, 4))),
+          seats_total: S.optional(S.NullOr(__S(436, __c54, 4))),
+          seats_claimed: S.optional(S.NullOr(__S(436, __c54, 4))),
+          seats_pending: S.optional(S.NullOr(__S(436, __c54, 4))),
+          seat_customers: S.optional(S.NullOr(__S(436, __c54, 4))),
+          new_seat_customers: S.optional(S.NullOr(__S(436, __c54, 4))),
+          churned_seat_customers: S.optional(S.NullOr(__S(436, __c54, 4))),
+          orders: S.optional(S.NullOr(__S(436, __c54, 4))),
+          revenue: S.optional(S.NullOr(__S(436, __c54, 4))),
+          net_revenue: S.optional(S.NullOr(__S(436, __c54, 4))),
+          cumulative_revenue: S.optional(S.NullOr(__S(436, __c54, 4))),
+          net_cumulative_revenue: S.optional(S.NullOr(__S(436, __c54, 4))),
+          costs: S.optional(S.NullOr(__S(436, __c54, 4))),
+          cumulative_costs: S.optional(S.NullOr(__S(436, __c54, 4))),
+          average_order_value: S.optional(S.NullOr(__S(436, __c54, 4))),
+          net_average_order_value: S.optional(S.NullOr(__S(436, __c54, 4))),
+          cost_per_user: S.optional(S.NullOr(__S(436, __c54, 4))),
+          active_user_by_event: S.optional(S.NullOr(__S(436, __c54, 4))),
+          one_time_products: S.optional(S.NullOr(__S(436, __c54, 4))),
+          one_time_products_revenue: S.optional(S.NullOr(__S(436, __c54, 4))),
+          one_time_products_net_revenue: S.optional(S.NullOr(__S(436, __c54, 4))),
+          new_subscriptions: S.optional(S.NullOr(__S(436, __c54, 4))),
+          new_subscriptions_revenue: S.optional(S.NullOr(__S(436, __c54, 4))),
+          new_subscriptions_net_revenue: S.optional(S.NullOr(__S(436, __c54, 4))),
+          renewed_subscriptions: S.optional(S.NullOr(__S(436, __c54, 4))),
+          renewed_subscriptions_revenue: S.optional(S.NullOr(__S(436, __c54, 4))),
+          renewed_subscriptions_net_revenue: S.optional(S.NullOr(__S(436, __c54, 4))),
+          canceled_subscriptions: S.optional(S.NullOr(__S(436, __c54, 4))),
+          canceled_subscriptions_customer_service: S.optional(S.NullOr(__S(436, __c54, 4))),
+          canceled_subscriptions_low_quality: S.optional(S.NullOr(__S(436, __c54, 4))),
+          canceled_subscriptions_missing_features: S.optional(S.NullOr(__S(436, __c54, 4))),
+          canceled_subscriptions_switched_service: S.optional(S.NullOr(__S(436, __c54, 4))),
+          canceled_subscriptions_too_complex: S.optional(S.NullOr(__S(436, __c54, 4))),
+          canceled_subscriptions_too_expensive: S.optional(S.NullOr(__S(436, __c54, 4))),
+          canceled_subscriptions_unused: S.optional(S.NullOr(__S(436, __c54, 4))),
+          canceled_subscriptions_other: S.optional(S.NullOr(__S(436, __c54, 4))),
+          annual_recurring_revenue: S.optional(S.NullOr(__S(436, __c54, 4))),
+          committed_annual_recurring_revenue: S.optional(S.NullOr(__S(436, __c54, 4))),
+          checkouts_conversion: S.optional(S.NullOr(__S(436, __c54, 4))),
+          ltv: S.optional(S.NullOr(__S(436, __c54, 4))),
+          gross_margin: S.optional(S.NullOr(__S(436, __c54, 4))),
+          gross_margin_percentage: S.optional(S.NullOr(__S(436, __c54, 4))),
+          cashflow: S.optional(S.NullOr(__S(436, __c54, 4))),
+          average_seats_per_customer: S.optional(S.NullOr(__S(436, __c54, 4))),
+          seat_utilization_rate: S.optional(S.NullOr(__S(436, __c54, 4))),
         }),
       ).annotate({ identifier: "Metrics" });
-    case 2:
+    case 6:
       return S.suspend(() =>
         S.Struct({
-          periods: __S(342, __c42, 6),
-          totals: __S(343, __c42, 7),
-          metrics: __S(345, __c43, 1),
+          periods: __S(434, __c54, 2),
+          totals: __S(435, __c54, 3),
+          metrics: __S(437, __c54, 5),
         }),
       ).annotate({ identifier: "MetricsResponse" });
-    case 3:
+  }
+}
+function __c55(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String.pipe(T.Label()),
+        }).pipe(T.Http({ method: "DELETE", uri: "/v1/checkout-links/{id}", code: 200 })),
+      ).annotate({
+        identifier: "CheckoutLinksDeleteRequest",
+      });
+  }
+}
+function __c56(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.String.pipe(T.Label()),
@@ -20955,37 +18645,41 @@ function __c43(j: number): any {
       ).annotate({
         identifier: "MetricsGetDashboardRequest",
       });
-    case 4:
+  }
+}
+function __c57(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({}).pipe(T.Http({ method: "GET", uri: "/v1/metrics/limits", code: 200 })),
       ).annotate({ identifier: "MetricsLimits2Request" });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           min_days: S.Number,
           max_days: S.Number,
         }),
       ).annotate({ identifier: "MetricsIntervalLimit" });
-    case 6:
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          hour: __S(349, __c43, 5),
-          day: __S(349, __c43, 5),
-          week: __S(349, __c43, 5),
-          month: __S(349, __c43, 5),
-          year: __S(349, __c43, 5),
+          hour: __S(457, __c57, 1),
+          day: __S(457, __c57, 1),
+          week: __S(457, __c57, 1),
+          month: __S(457, __c57, 1),
+          year: __S(457, __c57, 1),
         }),
       ).annotate({ identifier: "MetricsIntervalsLimits" });
-    case 7:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           min_date: S.String,
-          intervals: __S(350, __c43, 6),
+          intervals: __S(458, __c57, 2),
         }),
       ).annotate({ identifier: "MetricsLimits" });
   }
 }
-function __c44(j: number): any {
+function __c58(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -20996,36 +18690,48 @@ function __c44(j: number): any {
         identifier: "MetricsListDashboardsRequest",
       });
     case 1:
-      return S.Array(__S(337, __c42, 1));
+      return S.Array(__S(408, __c51, 0));
     case 2:
-      return S.suspend(() => __S(353, __c44, 1).pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() => __S(465, __c58, 1).pipe(T.RawResponseRoot())).annotate({
         identifier: "MetricsListDashboardsResponse",
       });
-    case 3:
+  }
+}
+function __c59(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.String.pipe(T.Label()),
           name: S.optional(S.NullOr(S.String)),
-          metrics: S.optional(S.NullOr(__S(0, __c0, 0))),
+          metrics: S.optional(S.NullOr(__S(752, __c94, 0))),
         }).pipe(T.Http({ method: "PATCH", uri: "/v1/metrics/dashboards/{id}", code: 200 })),
       ).annotate({
         identifier: "MetricsUpdateDashboardRequest",
       });
-    case 4:
+  }
+}
+function __c60(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({}).pipe(T.Http({ method: "GET", uri: "/v1/oauth2/authorize", code: 200 })),
       ).annotate({ identifier: "Oauth2AuthorizeRequest" });
-    case 5:
+    case 1:
       return S.suspend(() => S.Unknown.pipe(T.RawResponseRoot())).annotate({
         identifier: "Oauth2AuthorizeResponse",
       });
-    case 6:
+  }
+}
+function __c61(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          redirect_uris: __S(0, __c0, 0),
+          redirect_uris: __S(752, __c94, 0),
           token_endpoint_auth_method: S.optional(S.String),
-          grant_types: S.optional(__S(1, __c0, 1)),
-          response_types: S.optional(__S(0, __c0, 0)),
+          grant_types: S.optional(__S(1464, __c183, 0)),
+          response_types: S.optional(__S(752, __c94, 0)),
           scope: S.optional(S.String),
           client_name: S.String,
           client_uri: S.optional(S.NullOr(S.String)),
@@ -21037,13 +18743,17 @@ function __c44(j: number): any {
       ).annotate({
         identifier: "Oauth2ClientsOauth2CreateClientRequest",
       });
-    case 7:
+  }
+}
+function __c62(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() => S.Unknown.pipe(T.RawResponseRoot())).annotate({
         identifier: "Oauth2ClientsOauth2CreateClientResponse",
       });
   }
 }
-function __c45(j: number): any {
+function __c63(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -21053,7 +18763,11 @@ function __c45(j: number): any {
       ).annotate({
         identifier: "Oauth2ClientsOauth2DeleteClientRequest",
       });
-    case 1:
+  }
+}
+function __c64(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           client_id: S.String.pipe(T.Label()),
@@ -21061,14 +18775,18 @@ function __c45(j: number): any {
       ).annotate({
         identifier: "Oauth2ClientsOauth2GetClientRequest",
       });
-    case 2:
+  }
+}
+function __c65(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           client_id: S.String.pipe(T.Label()),
-          redirect_uris: __S(0, __c0, 0),
+          redirect_uris: __S(752, __c94, 0),
           token_endpoint_auth_method: S.optional(S.String),
-          grant_types: S.optional(__S(1, __c0, 1)),
-          response_types: S.optional(__S(0, __c0, 0)),
+          grant_types: S.optional(__S(1464, __c183, 0)),
+          response_types: S.optional(__S(752, __c94, 0)),
           scope: S.optional(S.String),
           client_name: S.String,
           client_uri: S.optional(S.NullOr(S.String)),
@@ -21080,7 +18798,11 @@ function __c45(j: number): any {
       ).annotate({
         identifier: "Oauth2ClientsOauth2UpdateClientRequest",
       });
-    case 3:
+  }
+}
+function __c66(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           token: S.String,
@@ -21091,7 +18813,7 @@ function __c45(j: number): any {
       ).annotate({
         identifier: "Oauth2IntrospectTokenRequest",
       });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           active: S.Boolean,
@@ -21100,14 +18822,28 @@ function __c45(j: number): any {
           scope: S.String,
           sub_type: S.String,
           sub: S.String,
-          organizations: __S(0, __c0, 0),
+          organizations: __S(752, __c94, 0),
           aud: S.String,
           iss: S.String,
           exp: S.Number,
           iat: S.Number,
         }),
       ).annotate({ identifier: "IntrospectTokenResponse" });
-    case 5:
+  }
+}
+function __c67(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String.pipe(T.Label()),
+        }).pipe(T.Http({ method: "GET", uri: "/v1/checkout-links/{id}", code: 200 })),
+      ).annotate({ identifier: "CheckoutLinksGetRequest" });
+  }
+}
+function __c68(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           body: S.Unknown.pipe(T.HttpBody()),
@@ -21115,7 +18851,7 @@ function __c45(j: number): any {
       ).annotate({
         identifier: "Oauth2RequestTokenRequest",
       });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           access_token: S.String.pipe(T.SensitiveValue({})),
@@ -21126,7 +18862,11 @@ function __c45(j: number): any {
           id_token: S.optional(S.NullOr(S.String)),
         }),
       ).annotate({ identifier: "TokenResponse" });
-    case 7:
+  }
+}
+function __c69(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           token: S.String,
@@ -21137,7 +18877,7 @@ function __c45(j: number): any {
       ).annotate({ identifier: "Oauth2RevokeTokenRequest" });
   }
 }
-function __c46(j: number): any {
+function __c70(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -21147,15 +18887,19 @@ function __c46(j: number): any {
       return S.suspend(() => S.Unknown.pipe(T.RawResponseRoot())).annotate({
         identifier: "Oauth2UserinfoResponse",
       });
-    case 2:
+  }
+}
+function __c71(j: number): any {
+  switch (j) {
+    case 0:
       return S.Record(S.String, /*@__PURE__*/ S.NullOr(S.Unknown));
-    case 3:
+    case 1:
       return S.Record(S.String, S.Unknown);
-    case 4:
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          custom_field_data: S.optional(__S(370, __c46, 2)),
-          metadata: S.optional(__S(371, __c46, 3)),
+          custom_field_data: S.optional(__S(568, __c71, 0)),
+          metadata: S.optional(__S(569, __c71, 1)),
           organization_id: S.optional(S.NullOr(S.String)),
           customer_id: S.String,
           product_id: S.String,
@@ -21165,12 +18909,37 @@ function __c46(j: number): any {
           description: S.optional(S.NullOr(S.String)),
         }).pipe(T.Http({ method: "POST", uri: "/v1/orders/", code: 200 })),
       ).annotate({ identifier: "OrdersCreateRequest" });
-    case 5:
-      return S.Record(S.String, /*@__PURE__*/ S.NullOr(S.Unknown));
-    case 6:
+  }
+}
+function __c72(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          metadata: __S(4, __c0, 4),
+          metadata: __S(344, __c43, 0),
+          id: S.String,
+          created_at: S.String,
+          modified_at: S.NullOr(S.String),
+          trial_interval: S.NullOr(S.String),
+          trial_interval_count: S.NullOr(S.Number),
+          name: S.String,
+          description: S.NullOr(S.String),
+          visibility: S.String,
+          recurring_interval: S.NullOr(S.String),
+          recurring_interval_count: S.NullOr(S.Number),
+          meter_interval: S.NullOr(S.String),
+          meter_interval_count: S.NullOr(S.Number),
+          is_recurring: S.Boolean,
+          is_archived: S.Boolean,
+          organization_id: S.String,
+        }),
+      ).annotate({ identifier: "DiscountProduct" });
+    case 1:
+      return S.Record(S.String, /*@__PURE__*/ S.NullOr(S.Unknown));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          metadata: __S(344, __c43, 0),
           created_at: S.String,
           modified_at: S.NullOr(S.String),
           id: S.String,
@@ -21204,7 +18973,7 @@ function __c46(j: number): any {
           customer_cancellation_comment: S.NullOr(S.String),
         }),
       ).annotate({ identifier: "OrderSubscription" });
-    case 7:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
@@ -21224,7 +18993,7 @@ function __c46(j: number): any {
           currency: S.String,
           billing_reason: S.String,
           billing_name: S.NullOr(S.String),
-          billing_address: S.NullOr(__S(5, __c0, 5)),
+          billing_address: S.NullOr(__S(888, __c111, 0)),
           invoice_number: S.NullOr(S.String),
           is_invoice_generated: S.Boolean,
           receipt_number: S.NullOr(S.String),
@@ -21236,15 +19005,15 @@ function __c46(j: number): any {
           subscription_id: S.NullOr(S.String),
           checkout_id: S.NullOr(S.String),
           next_payment_attempt_at: S.optional(S.NullOr(S.String)),
-          metadata: __S(4, __c0, 4),
-          custom_field_data: S.optional(__S(373, __c46, 5)),
+          metadata: __S(344, __c43, 0),
+          custom_field_data: S.optional(__S(577, __c72, 1)),
           platform_fee_amount: S.Number,
           platform_fee_currency: S.NullOr(S.String),
-          customer: __S(125, __c15, 5),
-          product: S.NullOr(__S(260, __c32, 4)),
+          customer: __S(1296, __c162, 0),
+          product: S.NullOr(__S(576, __c72, 0)),
           discount: S.NullOr(S.Unknown),
-          subscription: S.NullOr(__S(374, __c46, 6)),
-          items: __S(164, __c20, 4),
+          subscription: S.NullOr(__S(578, __c72, 2)),
+          items: __S(1505, __c188, 1),
           description: S.String,
           refundable_amount: S.Number,
           refundable_tax_amount: S.Number,
@@ -21252,7 +19021,7 @@ function __c46(j: number): any {
       ).annotate({ identifier: "Order" });
   }
 }
-function __c47(j: number): any {
+function __c73(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -21266,14 +19035,22 @@ function __c47(j: number): any {
           columns: S.optional(S.Unknown.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/v1/orders/export", code: 200 })),
       ).annotate({ identifier: "OrdersExportRequest" });
-    case 1:
+  }
+}
+function __c74(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.String.pipe(T.Label()),
           payment_method_id: S.optional(S.NullOr(S.String)),
         }).pipe(T.Http({ method: "POST", uri: "/v1/orders/{id}/finalize", code: 200 })),
       ).annotate({ identifier: "OrdersFinalizeRequest" });
-    case 2:
+  }
+}
+function __c75(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.String.pipe(T.Label()),
@@ -21281,19 +19058,31 @@ function __c47(j: number): any {
       ).annotate({
         identifier: "OrdersGenerateInvoiceRequest",
       });
-    case 3:
+  }
+}
+function __c76(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.String.pipe(T.Label()),
         }).pipe(T.Http({ method: "GET", uri: "/v1/orders/{id}", code: 200 })),
       ).annotate({ identifier: "OrdersGetRequest" });
-    case 4:
+  }
+}
+function __c77(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.String.pipe(T.Label()),
         }).pipe(T.Http({ method: "GET", uri: "/v1/orders/{id}/invoice", code: 200 })),
       ).annotate({ identifier: "OrdersInvoiceRequest" });
-    case 5:
+  }
+}
+function __c78(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           organization_id: S.optional(S.Unknown.pipe(T.Query())),
@@ -21309,22 +19098,45 @@ function __c47(j: number): any {
           created_before: S.optional(S.String.pipe(T.Query())),
           page: S.optional(S.Number.pipe(T.Query())),
           limit: S.optional(S.Number.pipe(T.Query())),
-          sorting: S.optional(__S(1, __c0, 1).pipe(T.Query())),
-          metadata: S.optional(__S(22, __c2, 6).pipe(T.Query())),
+          sorting: S.optional(__S(1464, __c183, 0).pipe(T.Query())),
+          metadata: S.optional(__S(120, __c15, 0).pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/v1/orders/", code: 200 })),
       ).annotate({ identifier: "OrdersListRequest" });
-    case 6:
-      return S.Array(__S(375, __c46, 7));
-    case 7:
+    case 1:
+      return S.Array(__S(579, __c72, 3));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          items: __S(382, __c47, 6),
-          pagination: __S(10, __c1, 2),
+          items: __S(625, __c78, 1),
+          pagination: __S(1472, __c184, 0),
         }),
       ).annotate({ identifier: "ListResourceOrder" });
   }
 }
-function __c48(j: number): any {
+function __c79(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          organization_id: S.optional(S.Unknown.pipe(T.Query())),
+          product_id: S.optional(S.Unknown.pipe(T.Query())),
+          page: S.optional(S.Number.pipe(T.Query())),
+          limit: S.optional(S.Number.pipe(T.Query())),
+          sorting: S.optional(__S(1464, __c183, 0).pipe(T.Query())),
+        }).pipe(T.Http({ method: "GET", uri: "/v1/checkout-links/", code: 200 })),
+      ).annotate({ identifier: "CheckoutLinksListRequest" });
+    case 1:
+      return S.Array(__S(323, __c40, 3));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          items: __S(633, __c79, 1),
+          pagination: __S(1472, __c184, 0),
+        }),
+      ).annotate({ identifier: "ListResourceCheckoutLink" });
+  }
+}
+function __c80(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -21332,49 +19144,58 @@ function __c48(j: number): any {
           id: S.String.pipe(T.Label()),
         }).pipe(T.Http({ method: "GET", uri: "/v1/orders/{id}/receipt", code: 200 })),
       ).annotate({ identifier: "OrdersReceiptRequest" });
-    case 1:
+  }
+}
+function __c81(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.String.pipe(T.Label()),
           billing_name: S.optional(S.NullOr(S.String)),
-          billing_address: S.optional(S.NullOr(__S(5, __c0, 5))),
+          billing_address: S.optional(S.NullOr(__S(888, __c111, 0))),
         }).pipe(T.Http({ method: "PATCH", uri: "/v1/orders/{id}", code: 200 })),
       ).annotate({ identifier: "OrdersUpdateRequest" });
-    case 2:
+  }
+}
+function __c82(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String,
+          slug: S.String,
+          avatar_url: S.optional(S.NullOr(S.String)),
+          legal_entity: S.optional(S.NullOr(S.Unknown)),
+          email: S.optional(S.NullOr(S.String)),
+          website: S.optional(S.NullOr(S.String)),
+          socials: S.optional(S.NullOr(__S(665, __c83, 1))),
+          details: S.optional(S.NullOr(__S(672, __c84, 0))),
+          country: S.optional(S.NullOr(S.String)),
+          feature_settings: S.optional(S.NullOr(__S(673, __c84, 1))),
+          subscription_settings: S.optional(S.NullOr(__S(666, __c83, 2))),
+          customer_email_settings: S.optional(S.NullOr(__S(667, __c83, 3))),
+          customer_portal_settings: S.optional(S.NullOr(__S(1523, __c190, 3))),
+          default_presentment_currency: S.optional(S.String),
+          default_tax_behavior: S.optional(S.String),
+        }).pipe(T.Http({ method: "POST", uri: "/v1/organizations/", code: 200 })),
+      ).annotate({
+        identifier: "OrganizationsCreateRequest",
+      });
+  }
+}
+function __c83(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           platform: S.String,
           url: S.String,
         }),
       ).annotate({ identifier: "OrganizationSocialLink" });
-    case 3:
-      return S.Array(__S(386, __c48, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          about: S.optional(S.NullOr(S.String)),
-          product_description: S.optional(S.NullOr(S.String)),
-          selling_categories: S.optional(__S(0, __c0, 0)),
-          pricing_models: S.optional(__S(0, __c0, 0)),
-          intended_use: S.optional(S.NullOr(S.String)),
-          customer_acquisition: S.optional(__S(0, __c0, 0)),
-          future_annual_revenue: S.optional(S.NullOr(S.Number)),
-          switching: S.optional(S.Boolean),
-          switching_from: S.optional(S.NullOr(S.String)),
-          previous_annual_revenue: S.optional(S.NullOr(S.Number)),
-        }),
-      ).annotate({ identifier: "OrganizationDetails" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          member_model_enabled: S.optional(S.Boolean),
-          checkout_localization_enabled: S.optional(S.Boolean),
-          overview_metrics: S.optional(S.NullOr(__S(0, __c0, 0))),
-        }),
-      ).annotate({
-        identifier: "OrganizationFeatureSettingsUpdate",
-      });
-    case 6:
+    case 1:
+      return S.Array(__S(664, __c83, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           allow_multiple_subscriptions: S.Boolean,
@@ -21386,7 +19207,7 @@ function __c48(j: number): any {
       ).annotate({
         identifier: "OrganizationSubscriptionSettings",
       });
-    case 7:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           order_confirmation: S.Boolean,
@@ -21407,40 +19228,14 @@ function __c48(j: number): any {
       ).annotate({
         identifier: "OrganizationCustomerEmailSettings",
       });
-  }
-}
-function __c49(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String,
-          slug: S.String,
-          avatar_url: S.optional(S.NullOr(S.String)),
-          legal_entity: S.optional(S.NullOr(S.Unknown)),
-          email: S.optional(S.NullOr(S.String)),
-          website: S.optional(S.NullOr(S.String)),
-          socials: S.optional(S.NullOr(__S(387, __c48, 3))),
-          details: S.optional(S.NullOr(__S(388, __c48, 4))),
-          country: S.optional(S.NullOr(S.String)),
-          feature_settings: S.optional(S.NullOr(__S(389, __c48, 5))),
-          subscription_settings: S.optional(S.NullOr(__S(390, __c48, 6))),
-          customer_email_settings: S.optional(S.NullOr(__S(391, __c48, 7))),
-          customer_portal_settings: S.optional(S.NullOr(__S(158, __c19, 6))),
-          default_presentment_currency: S.optional(S.String),
-          default_tax_behavior: S.optional(S.String),
-        }).pipe(T.Http({ method: "POST", uri: "/v1/organizations/", code: 200 })),
-      ).annotate({
-        identifier: "OrganizationsCreateRequest",
-      });
-    case 1:
+    case 4:
       return S.suspend(() =>
         S.Struct({
           issue_funding_enabled: S.optional(S.Boolean),
           wallets_enabled: S.optional(S.Boolean),
           member_model_enabled: S.optional(S.Boolean),
           checkout_localization_enabled: S.optional(S.Boolean),
-          overview_metrics: S.optional(S.NullOr(__S(0, __c0, 0))),
+          overview_metrics: S.optional(S.NullOr(__S(752, __c94, 0))),
           reset_proration_behavior_enabled: S.optional(S.Boolean),
           off_session_charges_enabled: S.optional(S.Boolean),
           meter_cycling_enabled: S.optional(S.Boolean),
@@ -21456,7 +19251,7 @@ function __c49(j: number): any {
       ).annotate({
         identifier: "OrganizationFeatureSettings",
       });
-    case 2:
+    case 5:
       return S.suspend(() =>
         S.Struct({
           auto_accept_below_amount: S.NullOr(S.Number),
@@ -21464,7 +19259,7 @@ function __c49(j: number): any {
       ).annotate({
         identifier: "OrganizationDisputeSettings",
       });
-    case 3:
+    case 6:
       return S.suspend(() =>
         S.Struct({
           checkout_payments: S.Boolean,
@@ -21475,7 +19270,7 @@ function __c49(j: number): any {
           dashboard_access: S.Boolean,
         }),
       ).annotate({ identifier: "OrganizationCapabilities" });
-    case 4:
+    case 7:
       return S.suspend(() =>
         S.Struct({
           created_at: S.String,
@@ -21488,54 +19283,91 @@ function __c49(j: number): any {
           allow_customer_updates: S.Boolean,
           email: S.NullOr(S.String),
           website: S.NullOr(S.String),
-          socials: __S(387, __c48, 3),
+          socials: __S(665, __c83, 1),
           status: S.String,
           details_submitted_at: S.NullOr(S.String),
           onboarding_resubmission_requested_at: S.NullOr(S.String),
           sso_enforced: S.Boolean,
           default_presentment_currency: S.String,
           default_tax_behavior: S.String,
-          feature_settings: S.NullOr(__S(393, __c49, 1)),
-          subscription_settings: __S(390, __c48, 6),
-          customer_email_settings: __S(391, __c48, 7),
-          customer_portal_settings: __S(158, __c19, 6),
-          dispute_settings: __S(394, __c49, 2),
-          embed_hosts: __S(0, __c0, 0),
+          feature_settings: S.NullOr(__S(668, __c83, 4)),
+          subscription_settings: __S(666, __c83, 2),
+          customer_email_settings: __S(667, __c83, 3),
+          customer_portal_settings: __S(1523, __c190, 3),
+          dispute_settings: __S(669, __c83, 5),
+          embed_hosts: __S(752, __c94, 0),
           country: S.optional(S.NullOr(S.String)),
           account_id: S.NullOr(S.String),
           payout_account_id: S.NullOr(S.String),
-          capabilities: __S(395, __c49, 3),
+          capabilities: __S(670, __c83, 6),
         }),
       ).annotate({ identifier: "Organization" });
-    case 5:
+  }
+}
+function __c84(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          about: S.optional(S.NullOr(S.String)),
+          product_description: S.optional(S.NullOr(S.String)),
+          selling_categories: S.optional(__S(752, __c94, 0)),
+          pricing_models: S.optional(__S(752, __c94, 0)),
+          intended_use: S.optional(S.NullOr(S.String)),
+          customer_acquisition: S.optional(__S(752, __c94, 0)),
+          future_annual_revenue: S.optional(S.NullOr(S.Number)),
+          switching: S.optional(S.Boolean),
+          switching_from: S.optional(S.NullOr(S.String)),
+          previous_annual_revenue: S.optional(S.NullOr(S.Number)),
+        }),
+      ).annotate({ identifier: "OrganizationDetails" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          member_model_enabled: S.optional(S.Boolean),
+          checkout_localization_enabled: S.optional(S.Boolean),
+          overview_metrics: S.optional(S.NullOr(__S(752, __c94, 0))),
+        }),
+      ).annotate({
+        identifier: "OrganizationFeatureSettingsUpdate",
+      });
+  }
+}
+function __c85(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.String.pipe(T.Label()),
         }).pipe(T.Http({ method: "GET", uri: "/v1/organizations/{id}", code: 200 })),
       ).annotate({ identifier: "OrganizationsGetRequest" });
-    case 6:
+  }
+}
+function __c86(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           slug: S.optional(S.String.pipe(T.Query())),
           page: S.optional(S.Number.pipe(T.Query())),
           limit: S.optional(S.Number.pipe(T.Query())),
-          sorting: S.optional(__S(1, __c0, 1).pipe(T.Query())),
+          sorting: S.optional(__S(1464, __c183, 0).pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/v1/organizations/", code: 200 })),
       ).annotate({ identifier: "OrganizationsListRequest" });
-    case 7:
-      return S.Array(__S(396, __c49, 4));
-  }
-}
-function __c50(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
+      return S.Array(__S(671, __c83, 7));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          items: __S(399, __c49, 7),
-          pagination: __S(10, __c1, 2),
+          items: __S(689, __c86, 1),
+          pagination: __S(1472, __c184, 0),
         }),
       ).annotate({ identifier: "ListResourceOrganization" });
-    case 1:
+  }
+}
+function __c87(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           auto_accept_below_amount: S.optional(S.NullOr(S.Number)),
@@ -21543,7 +19375,7 @@ function __c50(j: number): any {
       ).annotate({
         identifier: "OrganizationDisputeSettingsUpdate",
       });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.String.pipe(T.Label()),
@@ -21551,15 +19383,15 @@ function __c50(j: number): any {
           avatar_url: S.optional(S.NullOr(S.String)),
           email: S.optional(S.NullOr(S.String)),
           website: S.optional(S.NullOr(S.String)),
-          socials: S.optional(S.NullOr(__S(387, __c48, 3))),
-          details: S.optional(S.NullOr(__S(388, __c48, 4))),
+          socials: S.optional(S.NullOr(__S(665, __c83, 1))),
+          details: S.optional(S.NullOr(__S(672, __c84, 0))),
           country: S.optional(S.NullOr(S.String)),
-          feature_settings: S.optional(S.NullOr(__S(389, __c48, 5))),
-          subscription_settings: S.optional(S.NullOr(__S(390, __c48, 6))),
-          customer_email_settings: S.optional(S.NullOr(__S(391, __c48, 7))),
-          customer_portal_settings: S.optional(S.NullOr(__S(158, __c19, 6))),
-          dispute_settings: S.optional(S.NullOr(__S(401, __c50, 1))),
-          embed_hosts: S.optional(S.NullOr(__S(0, __c0, 0))),
+          feature_settings: S.optional(S.NullOr(__S(673, __c84, 1))),
+          subscription_settings: S.optional(S.NullOr(__S(666, __c83, 2))),
+          customer_email_settings: S.optional(S.NullOr(__S(667, __c83, 3))),
+          customer_portal_settings: S.optional(S.NullOr(__S(1523, __c190, 3))),
+          dispute_settings: S.optional(S.NullOr(__S(696, __c87, 0))),
+          embed_hosts: S.optional(S.NullOr(__S(752, __c94, 0))),
           default_presentment_currency: S.optional(S.NullOr(S.String)),
           default_tax_behavior: S.optional(S.NullOr(S.String)),
           sso_enforced: S.optional(S.NullOr(S.Boolean)),
@@ -21567,17 +19399,25 @@ function __c50(j: number): any {
       ).annotate({
         identifier: "OrganizationsUpdateRequest",
       });
-    case 3:
+  }
+}
+function __c88(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.String.pipe(T.Label()),
         }).pipe(T.Http({ method: "GET", uri: "/v1/payments/{id}", code: 200 })),
       ).annotate({ identifier: "PaymentsGetRequest" });
-    case 4:
+    case 1:
       return S.suspend(() => S.Unknown.pipe(T.RawResponseRoot())).annotate({
         identifier: "PaymentsGetResponse",
       });
-    case 5:
+  }
+}
+function __c89(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           organization_id: S.optional(S.Unknown.pipe(T.Query())),
@@ -21589,42 +19429,35 @@ function __c50(j: number): any {
           customer_email: S.optional(S.Unknown.pipe(T.Query())),
           page: S.optional(S.Number.pipe(T.Query())),
           limit: S.optional(S.Number.pipe(T.Query())),
-          sorting: S.optional(__S(1, __c0, 1).pipe(T.Query())),
+          sorting: S.optional(__S(1464, __c183, 0).pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/v1/payments/", code: 200 })),
       ).annotate({ identifier: "PaymentsListRequest" });
-    case 6:
+    case 1:
       return S.Array(S.Unknown);
-    case 7:
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          items: __S(406, __c50, 6),
-          pagination: __S(10, __c1, 2),
+          items: __S(713, __c89, 1),
+          pagination: __S(1472, __c184, 0),
         }),
       ).annotate({ identifier: "ListResourcePayment" });
   }
 }
-function __c51(j: number): any {
+function __c90(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() =>
-        S.Struct({
-          custom_field_id: S.String,
-          required: S.Boolean,
-        }),
-      ).annotate({
-        identifier: "AttachedCustomFieldCreate",
-      });
-    case 1:
-      return S.Array(__S(408, __c51, 0));
-    case 2:
       return S.suspend(() =>
         S.Struct({
           body: S.Unknown.pipe(T.HttpBody()),
         }).pipe(T.Http({ method: "POST", uri: "/v1/products/", code: 200 })),
       ).annotate({ identifier: "ProductsCreateRequest" });
-    case 3:
+  }
+}
+function __c91(j: number): any {
+  switch (j) {
+    case 0:
       return S.Array(S.Unknown);
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
@@ -21642,27 +19475,71 @@ function __c51(j: number): any {
           is_recurring: S.Boolean,
           is_archived: S.Boolean,
           organization_id: S.String,
-          metadata: __S(4, __c0, 4),
+          metadata: __S(344, __c43, 0),
           is_deletable: S.Boolean,
-          prices: __S(411, __c51, 3),
-          benefits: __S(24, __c3, 0),
-          medias: __S(32, __c4, 0),
-          attached_custom_fields: __S(58, __c7, 2),
+          prices: __S(728, __c91, 0),
+          benefits: __S(112, __c14, 0),
+          medias: __S(329, __c41, 1),
+          attached_custom_fields: __S(873, __c109, 1),
         }),
       ).annotate({ identifier: "Product" });
-    case 5:
+  }
+}
+function __c92(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.String.pipe(T.Label()),
         }).pipe(T.Http({ method: "DELETE", uri: "/v1/products/{id}", code: 200 })),
       ).annotate({ identifier: "ProductsDeleteRequest" });
-    case 6:
+  }
+}
+function __c93(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, S.Unknown);
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String.pipe(T.Label()),
+          trial_interval: S.optional(S.NullOr(S.String)),
+          trial_interval_count: S.optional(S.NullOr(S.Number)),
+          metadata: S.optional(__S(744, __c93, 0)),
+          products: S.optional(S.NullOr(__S(752, __c94, 0))),
+          label: S.optional(S.NullOr(S.String)),
+          allow_discount_codes: S.optional(S.NullOr(S.Boolean)),
+          require_billing_address: S.optional(S.NullOr(S.Boolean)),
+          discount_id: S.optional(S.NullOr(S.String)),
+          seats: S.optional(S.NullOr(S.Number)),
+          units: S.optional(S.NullOr(S.Number)),
+          success_url: S.optional(S.NullOr(S.String)),
+          return_url: S.optional(S.NullOr(S.String)),
+        }).pipe(T.Http({ method: "PATCH", uri: "/v1/checkout-links/{id}", code: 200 })),
+      ).annotate({
+        identifier: "CheckoutLinksUpdateRequest",
+      });
+  }
+}
+function __c94(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c95(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.String.pipe(T.Label()),
         }).pipe(T.Http({ method: "GET", uri: "/v1/products/{id}", code: 200 })),
       ).annotate({ identifier: "ProductsGetRequest" });
-    case 7:
+  }
+}
+function __c96(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.Unknown.pipe(T.Query())),
@@ -21671,26 +19548,37 @@ function __c51(j: number): any {
           is_archived: S.optional(S.Boolean.pipe(T.Query())),
           is_recurring: S.optional(S.Boolean.pipe(T.Query())),
           benefit_id: S.optional(S.Unknown.pipe(T.Query())),
-          visibility: S.optional(__S(1, __c0, 1).pipe(T.Query())),
+          visibility: S.optional(__S(1464, __c183, 0).pipe(T.Query())),
           page: S.optional(S.Number.pipe(T.Query())),
           limit: S.optional(S.Number.pipe(T.Query())),
-          sorting: S.optional(__S(1, __c0, 1).pipe(T.Query())),
-          metadata: S.optional(__S(22, __c2, 6).pipe(T.Query())),
+          sorting: S.optional(__S(1464, __c183, 0).pipe(T.Query())),
+          metadata: S.optional(__S(120, __c15, 0).pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/v1/products/", code: 200 })),
       ).annotate({ identifier: "ProductsListRequest" });
-  }
-}
-function __c52(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(412, __c51, 4));
     case 1:
+      return S.Array(__S(729, __c91, 1));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          items: __S(416, __c52, 0),
-          pagination: __S(10, __c1, 2),
+          items: __S(769, __c96, 1),
+          pagination: __S(1472, __c184, 0),
         }),
       ).annotate({ identifier: "ListResourceProduct" });
+  }
+}
+function __c97(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          custom_field_id: S.String,
+          required: S.Boolean,
+        }),
+      ).annotate({
+        identifier: "AttachedCustomFieldCreate",
+      });
+    case 1:
+      return S.Array(__S(776, __c97, 0));
     case 2:
       return S.Record(S.String, S.Unknown);
     case 3:
@@ -21699,7 +19587,7 @@ function __c52(j: number): any {
       return S.suspend(() =>
         S.Struct({
           id: S.String.pipe(T.Label()),
-          metadata: S.optional(__S(418, __c52, 2)),
+          metadata: S.optional(__S(778, __c97, 2)),
           trial_interval: S.optional(S.NullOr(S.String)),
           trial_interval_count: S.optional(S.NullOr(S.Number)),
           name: S.optional(S.NullOr(S.String)),
@@ -21708,26 +19596,34 @@ function __c52(j: number): any {
           recurring_interval_count: S.optional(S.NullOr(S.Number)),
           is_archived: S.optional(S.NullOr(S.Boolean)),
           visibility: S.optional(S.NullOr(S.String)),
-          prices: S.optional(S.NullOr(__S(419, __c52, 3))),
-          medias: S.optional(S.NullOr(__S(0, __c0, 0))),
-          attached_custom_fields: S.optional(S.NullOr(__S(409, __c51, 1))),
+          prices: S.optional(S.NullOr(__S(779, __c97, 3))),
+          medias: S.optional(S.NullOr(__S(752, __c94, 0))),
+          attached_custom_fields: S.optional(S.NullOr(__S(777, __c97, 1))),
         }).pipe(T.Http({ method: "PATCH", uri: "/v1/products/{id}", code: 200 })),
       ).annotate({ identifier: "ProductsUpdateRequest" });
-    case 5:
+  }
+}
+function __c98(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.String.pipe(T.Label()),
-          benefits: __S(0, __c0, 0),
+          benefits: __S(752, __c94, 0),
         }).pipe(T.Http({ method: "POST", uri: "/v1/products/{id}/benefits", code: 200 })),
       ).annotate({
         identifier: "ProductsUpdateBenefitsRequest",
       });
-    case 6:
+  }
+}
+function __c99(j: number): any {
+  switch (j) {
+    case 0:
       return S.Record(S.String, S.Unknown);
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          metadata: S.optional(__S(422, __c52, 6)),
+          metadata: S.optional(__S(792, __c99, 0)),
           order_id: S.String,
           reason: S.String,
           amount: S.Number,
@@ -21737,7 +19633,7 @@ function __c52(j: number): any {
       ).annotate({ identifier: "RefundsCreateRequest" });
   }
 }
-function __c53(j: number): any {
+function __c100(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -21764,7 +19660,7 @@ function __c53(j: number): any {
           created_at: S.String,
           modified_at: S.NullOr(S.String),
           id: S.String,
-          metadata: __S(4, __c0, 4),
+          metadata: __S(344, __c43, 0),
           status: S.String,
           reason: S.String,
           amount: S.Number,
@@ -21775,10 +19671,14 @@ function __c53(j: number): any {
           subscription_id: S.NullOr(S.String),
           customer_id: S.String,
           revoke_benefits: S.Boolean,
-          dispute: S.NullOr(__S(424, __c53, 0)),
+          dispute: S.NullOr(__S(800, __c100, 0)),
         }),
       ).annotate({ identifier: "Refund" });
-    case 2:
+  }
+}
+function __c101(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.Unknown.pipe(T.Query())),
@@ -21790,19 +19690,23 @@ function __c53(j: number): any {
           succeeded: S.optional(S.Boolean.pipe(T.Query())),
           page: S.optional(S.Number.pipe(T.Query())),
           limit: S.optional(S.Number.pipe(T.Query())),
-          sorting: S.optional(__S(1, __c0, 1).pipe(T.Query())),
+          sorting: S.optional(__S(1464, __c183, 0).pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/v1/refunds/", code: 200 })),
       ).annotate({ identifier: "RefundsListRequest" });
-    case 3:
-      return S.Array(__S(425, __c53, 1));
-    case 4:
+    case 1:
+      return S.Array(__S(801, __c100, 1));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          items: __S(427, __c53, 3),
-          pagination: __S(10, __c1, 2),
+          items: __S(809, __c101, 1),
+          pagination: __S(1472, __c184, 0),
         }),
       ).annotate({ identifier: "ListResourceRefund" });
-    case 5:
+  }
+}
+function __c102(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.String.pipe(T.Label()),
@@ -21819,7 +19723,7 @@ function __c53(j: number): any {
       ).annotate({
         identifier: "RetryCustomerPortalOrdersConfirmPaymentRequest",
       });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           status: S.String,
@@ -21829,7 +19733,11 @@ function __c53(j: number): any {
       ).annotate({
         identifier: "CustomerOrderPaymentConfirmation",
       });
-    case 7:
+  }
+}
+function __c103(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           body: S.Unknown.pipe(T.HttpBody()),
@@ -21839,7 +19747,7 @@ function __c53(j: number): any {
       });
   }
 }
-function __c54(j: number): any {
+function __c104(j: number): any {
   switch (j) {
     case 0:
       return S.Record(S.String, /*@__PURE__*/ S.NullOr(S.Unknown));
@@ -21855,11 +19763,11 @@ function __c54(j: number): any {
           credited_units: S.Number,
           amount: S.Number,
           meter_id: S.String,
-          meter: __S(81, __c10, 1),
+          meter: __S(1098, __c137, 2),
         }),
       ).annotate({ identifier: "SubscriptionMeter" });
     case 3:
-      return S.Array(__S(434, __c54, 2));
+      return S.Array(__S(834, __c104, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
@@ -21894,17 +19802,21 @@ function __c54(j: number): any {
           units: S.NullOr(S.Number),
           customer_cancellation_reason: S.NullOr(S.String),
           customer_cancellation_comment: S.NullOr(S.String),
-          metadata: __S(4, __c0, 4),
-          custom_field_data: S.optional(__S(432, __c54, 0)),
-          customer: __S(125, __c15, 5),
-          product: __S(412, __c51, 4),
+          metadata: __S(344, __c43, 0),
+          custom_field_data: S.optional(__S(832, __c104, 0)),
+          customer: __S(1296, __c162, 0),
+          product: __S(729, __c91, 1),
           discount: S.NullOr(S.Unknown),
-          prices: __S(433, __c54, 1),
-          meters: __S(435, __c54, 3),
-          pending_update: S.NullOr(__S(189, __c23, 5)),
+          prices: __S(833, __c104, 1),
+          meters: __S(835, __c104, 3),
+          pending_update: S.NullOr(__S(1616, __c202, 0)),
         }),
       ).annotate({ identifier: "Subscription" });
-    case 5:
+  }
+}
+function __c105(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           organization_id: S.optional(S.Unknown.pipe(T.Query())),
@@ -21919,13 +19831,234 @@ function __c54(j: number): any {
       ).annotate({
         identifier: "SubscriptionsExportRequest",
       });
-    case 6:
+  }
+}
+function __c106(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.String.pipe(T.Label()),
         }).pipe(T.Http({ method: "GET", uri: "/v1/subscriptions/{id}", code: 200 })),
       ).annotate({ identifier: "SubscriptionsGetRequest" });
-    case 7:
+  }
+}
+function __c107(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, S.Unknown);
+    case 1:
+      return S.Record(S.String, /*@__PURE__*/ S.NullOr(S.Unknown));
+    case 2:
+      return S.Record(S.String, S.Unknown);
+    case 3:
+      return S.Array(S.Unknown);
+    case 4:
+      return S.Record(S.String, __S(859, __c107, 3));
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          trial_interval: S.optional(S.NullOr(S.String)),
+          trial_interval_count: S.optional(S.NullOr(S.Number)),
+          metadata: S.optional(__S(856, __c107, 0)),
+          custom_field_data: S.optional(__S(857, __c107, 1)),
+          discount_id: S.optional(S.NullOr(S.String)),
+          allow_discount_codes: S.optional(S.Boolean),
+          require_billing_address: S.optional(S.Boolean),
+          amount: S.optional(S.NullOr(S.Number)),
+          seats: S.optional(S.NullOr(S.Number)),
+          min_seats: S.optional(S.NullOr(S.Number)),
+          max_seats: S.optional(S.NullOr(S.Number)),
+          units: S.optional(S.NullOr(S.Number)),
+          min_units: S.optional(S.NullOr(S.Number)),
+          max_units: S.optional(S.NullOr(S.Number)),
+          allow_trial: S.optional(S.Boolean),
+          customer_id: S.optional(S.NullOr(S.String)),
+          is_business_customer: S.optional(S.Boolean),
+          external_customer_id: S.optional(S.NullOr(S.String)),
+          customer_name: S.optional(S.NullOr(S.String)),
+          customer_email: S.optional(S.NullOr(S.String)),
+          customer_ip_address: S.optional(S.NullOr(S.String)),
+          customer_billing_name: S.optional(S.NullOr(S.String)),
+          customer_billing_address: S.optional(S.NullOr(__S(888, __c111, 0))),
+          customer_tax_id: S.optional(S.NullOr(S.String)),
+          customer_metadata: S.optional(__S(858, __c107, 2)),
+          subscription_id: S.optional(S.NullOr(S.String)),
+          success_url: S.optional(S.NullOr(S.String)),
+          return_url: S.optional(S.NullOr(S.String)),
+          embed_origin: S.optional(S.NullOr(S.String)),
+          locale: S.optional(S.NullOr(S.String)),
+          currency: S.optional(S.NullOr(S.String)),
+          products: __S(752, __c94, 0),
+          prices: S.optional(S.NullOr(__S(860, __c107, 4))),
+        }).pipe(T.Http({ method: "POST", uri: "/v1/checkouts/", code: 200 })),
+      ).annotate({ identifier: "CheckoutsCreateRequest" });
+  }
+}
+function __c108(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, /*@__PURE__*/ S.NullOr(S.Unknown));
+    case 1:
+      return S.Array(S.Unknown);
+    case 2:
+      return S.Record(S.String, __S(865, __c108, 1));
+    case 3:
+      return S.Record(S.String, S.Unknown);
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          created_at: S.String,
+          modified_at: S.NullOr(S.String),
+          custom_field_data: S.optional(__S(864, __c108, 0)),
+          payment_processor: S.String,
+          status: S.String,
+          client_secret: S.String.pipe(T.SensitiveValue({})),
+          url: S.String,
+          expires_at: S.String,
+          success_url: S.String,
+          return_url: S.NullOr(S.String),
+          embed_origin: S.NullOr(S.String),
+          amount: S.Number,
+          seats: S.optional(S.NullOr(S.Number)),
+          min_seats: S.optional(S.NullOr(S.Number)),
+          max_seats: S.optional(S.NullOr(S.Number)),
+          units: S.NullOr(S.Number),
+          min_units: S.NullOr(S.Number),
+          max_units: S.NullOr(S.Number),
+          discount_amount: S.Number,
+          net_amount: S.Number,
+          tax_amount: S.NullOr(S.Number),
+          tax_behavior: S.NullOr(S.String),
+          total_amount: S.Number,
+          currency: S.String,
+          allow_trial: S.NullOr(S.Boolean),
+          active_trial_interval: S.NullOr(S.String),
+          active_trial_interval_count: S.NullOr(S.Number),
+          trial_end: S.NullOr(S.String),
+          organization_id: S.String,
+          product_id: S.NullOr(S.String),
+          product_price_id: S.NullOr(S.String),
+          discount_id: S.NullOr(S.String),
+          allow_discount_codes: S.Boolean,
+          require_billing_address: S.Boolean,
+          is_discount_applicable: S.Boolean,
+          is_free_product_price: S.Boolean,
+          is_payment_required: S.Boolean,
+          is_payment_setup_required: S.Boolean,
+          is_payment_form_required: S.Boolean,
+          customer_id: S.NullOr(S.String),
+          is_business_customer: S.Boolean,
+          customer_name: S.NullOr(S.String),
+          customer_email: S.NullOr(S.String),
+          customer_ip_address: S.NullOr(S.String),
+          customer_billing_name: S.NullOr(S.String),
+          customer_billing_address: S.NullOr(__S(888, __c111, 0)),
+          customer_tax_id: S.NullOr(S.String),
+          locale: S.optional(S.NullOr(S.String)),
+          payment_method_type: S.NullOr(S.String),
+          payment_processor_metadata: __S(896, __c112, 0),
+          billing_address_fields: __S(880, __c110, 0),
+          trial_interval: S.NullOr(S.String),
+          trial_interval_count: S.NullOr(S.Number),
+          metadata: __S(344, __c43, 0),
+          external_customer_id: S.NullOr(S.String),
+          products: __S(883, __c110, 3),
+          product: S.NullOr(__S(882, __c110, 2)),
+          product_price: S.NullOr(S.Unknown),
+          prices: S.NullOr(__S(866, __c108, 2)),
+          discount: S.NullOr(S.Unknown),
+          subscription_id: S.NullOr(S.String),
+          attached_custom_fields: S.NullOr(__S(873, __c109, 1)),
+          customer_metadata: __S(867, __c108, 3),
+        }),
+      ).annotate({ identifier: "Checkout" });
+  }
+}
+function __c109(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          custom_field_id: S.String,
+          custom_field: S.Unknown,
+          order: S.Number,
+          required: S.Boolean,
+        }),
+      ).annotate({ identifier: "AttachedCustomField" });
+    case 1:
+      return S.Array(__S(872, __c109, 0));
+  }
+}
+function __c110(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          country: S.String,
+          state: S.String,
+          city: S.String,
+          postal_code: S.String,
+          line1: S.String,
+          line2: S.String,
+        }),
+      ).annotate({
+        identifier: "CheckoutBillingAddressFields",
+      });
+    case 1:
+      return S.Array(S.Unknown);
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          created_at: S.String,
+          modified_at: S.NullOr(S.String),
+          trial_interval: S.NullOr(S.String),
+          trial_interval_count: S.NullOr(S.Number),
+          name: S.String,
+          description: S.NullOr(S.String),
+          visibility: S.String,
+          recurring_interval: S.NullOr(S.String),
+          recurring_interval_count: S.NullOr(S.Number),
+          meter_interval: S.NullOr(S.String),
+          meter_interval_count: S.NullOr(S.Number),
+          is_recurring: S.Boolean,
+          is_archived: S.Boolean,
+          organization_id: S.String,
+          prices: __S(881, __c110, 1),
+          benefits: __S(336, __c42, 0),
+          medias: __S(329, __c41, 1),
+        }),
+      ).annotate({ identifier: "CheckoutProduct" });
+    case 3:
+      return S.Array(__S(882, __c110, 2));
+  }
+}
+function __c111(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          line1: S.optional(S.NullOr(S.String)),
+          line2: S.optional(S.NullOr(S.String)),
+          postal_code: S.optional(S.NullOr(S.String)),
+          city: S.optional(S.NullOr(S.String)),
+          state: S.optional(S.NullOr(S.String)),
+          country: S.String,
+        }),
+      ).annotate({ identifier: "Address" });
+  }
+}
+function __c112(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, S.String);
+  }
+}
+function __c113(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           organization_id: S.optional(S.Unknown.pipe(T.Query())),
@@ -21943,24 +20076,24 @@ function __c54(j: number): any {
           started_before: S.optional(S.String.pipe(T.Query())),
           page: S.optional(S.Number.pipe(T.Query())),
           limit: S.optional(S.Number.pipe(T.Query())),
-          sorting: S.optional(__S(1, __c0, 1).pipe(T.Query())),
-          metadata: S.optional(__S(22, __c2, 6).pipe(T.Query())),
+          sorting: S.optional(__S(1464, __c183, 0).pipe(T.Query())),
+          metadata: S.optional(__S(120, __c15, 0).pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/v1/subscriptions/", code: 200 })),
       ).annotate({ identifier: "SubscriptionsListRequest" });
-  }
-}
-function __c55(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(436, __c54, 4));
     case 1:
+      return S.Array(__S(836, __c104, 4));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          items: __S(440, __c55, 0),
-          pagination: __S(10, __c1, 2),
+          items: __S(905, __c113, 1),
+          pagination: __S(1472, __c184, 0),
         }),
       ).annotate({ identifier: "ListResourceSubscription" });
-    case 2:
+  }
+}
+function __c114(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.String.pipe(T.Label()),
@@ -21968,7 +20101,11 @@ function __c55(j: number): any {
       ).annotate({
         identifier: "SubscriptionsRevokeRequest",
       });
-    case 3:
+  }
+}
+function __c115(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.String.pipe(T.Label()),
@@ -21977,13 +20114,17 @@ function __c55(j: number): any {
       ).annotate({
         identifier: "SubscriptionsUpdateRequest",
       });
-    case 4:
+  }
+}
+function __c116(j: number): any {
+  switch (j) {
+    case 0:
       return S.Record(S.String, /*@__PURE__*/ S.NullOr(S.Unknown));
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           client_secret: S.String.pipe(T.Label()),
-          custom_field_data: S.optional(__S(444, __c55, 4)),
+          custom_field_data: S.optional(__S(928, __c116, 0)),
           product_id: S.optional(S.NullOr(S.String)),
           product_price_id: S.optional(S.NullOr(S.String)),
           amount: S.optional(S.NullOr(S.Number)),
@@ -21993,7 +20134,7 @@ function __c55(j: number): any {
           customer_name: S.optional(S.NullOr(S.String)),
           customer_email: S.optional(S.NullOr(S.String)),
           customer_billing_name: S.optional(S.NullOr(S.String)),
-          customer_billing_address: S.optional(S.NullOr(__S(5, __c0, 5))),
+          customer_billing_address: S.optional(S.NullOr(__S(888, __c111, 0))),
           customer_tax_id: S.optional(S.NullOr(S.String)),
           locale: S.optional(S.NullOr(S.String)),
           payment_method_type: S.optional(S.NullOr(S.String)),
@@ -22005,7 +20146,11 @@ function __c55(j: number): any {
       ).annotate({
         identifier: "UpdateCheckoutsClientRequest",
       });
-    case 6:
+  }
+}
+function __c117(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           token: S.String.pipe(T.Query()),
@@ -22019,7 +20164,11 @@ function __c55(j: number): any {
       ).annotate({
         identifier: "UpdateCustomerPortalCustomersCheckEmailRequest",
       });
-    case 7:
+  }
+}
+function __c118(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           email: S.String,
@@ -22035,7 +20184,7 @@ function __c55(j: number): any {
       });
   }
 }
-function __c56(j: number): any {
+function __c119(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -22059,20 +20208,28 @@ function __c56(j: number): any {
       ).annotate({
         identifier: "CustomerEmailUpdateVerifyResponse",
       });
-    case 2:
+  }
+}
+function __c120(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           url: S.String,
           name: S.optional(S.NullOr(S.String)),
           api_version: S.optional(S.String),
           format: S.String,
-          events: __S(1, __c0, 1),
+          events: __S(1464, __c183, 0),
           organization_id: S.optional(S.NullOr(S.String)),
         }).pipe(T.Http({ method: "POST", uri: "/v1/webhooks/endpoints", code: 200 })),
       ).annotate({
         identifier: "WebhooksCreateWebhookEndpointRequest",
       });
-    case 3:
+  }
+}
+function __c121(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           created_at: S.String,
@@ -22084,12 +20241,16 @@ function __c56(j: number): any {
           format: S.String,
           secret: S.String.pipe(T.SensitiveValue({})),
           organization_id: S.String,
-          events: __S(1, __c0, 1),
+          events: __S(1464, __c183, 0),
           enabled: S.Boolean,
           uses_standard_webhook_signature: S.Boolean,
         }),
       ).annotate({ identifier: "WebhookEndpoint" });
-    case 4:
+  }
+}
+function __c122(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.String.pipe(T.Label()),
@@ -22097,7 +20258,11 @@ function __c56(j: number): any {
       ).annotate({
         identifier: "WebhooksDeleteWebhookEndpointRequest",
       });
-    case 5:
+  }
+}
+function __c123(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.String.pipe(T.Label()),
@@ -22105,7 +20270,21 @@ function __c56(j: number): any {
       ).annotate({
         identifier: "WebhooksGetWebhookEndpointRequest",
       });
-    case 6:
+  }
+}
+function __c124(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String.pipe(T.Label()),
+        }).pipe(T.Http({ method: "GET", uri: "/v1/checkouts/{id}", code: 200 })),
+      ).annotate({ identifier: "CheckoutsGetRequest" });
+  }
+}
+function __c125(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           endpoint_id: S.optional(S.Unknown.pipe(T.Query())),
@@ -22121,7 +20300,7 @@ function __c56(j: number): any {
       ).annotate({
         identifier: "WebhooksListWebhookDeliveriesRequest",
       });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           created_at: S.String,
@@ -22136,11 +20315,7 @@ function __c56(j: number): any {
           is_archived: S.Boolean,
         }),
       ).annotate({ identifier: "WebhookEvent" });
-  }
-}
-function __c57(j: number): any {
-  switch (j) {
-    case 0:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           created_at: S.String,
@@ -22149,21 +20324,25 @@ function __c57(j: number): any {
           succeeded: S.Boolean,
           http_code: S.NullOr(S.Number),
           response: S.NullOr(S.String),
-          webhook_event: __S(455, __c56, 7),
+          webhook_event: __S(1001, __c125, 1),
         }),
       ).annotate({ identifier: "WebhookDelivery" });
-    case 1:
-      return S.Array(__S(456, __c57, 0));
-    case 2:
+    case 3:
+      return S.Array(__S(1002, __c125, 2));
+    case 4:
       return S.suspend(() =>
         S.Struct({
-          items: __S(457, __c57, 1),
-          pagination: __S(10, __c1, 2),
+          items: __S(1003, __c125, 3),
+          pagination: __S(1472, __c184, 0),
         }),
       ).annotate({
         identifier: "ListResourceWebhookDelivery",
       });
-    case 3:
+  }
+}
+function __c126(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           organization_id: S.optional(S.Unknown.pipe(T.Query())),
@@ -22173,18 +20352,22 @@ function __c57(j: number): any {
       ).annotate({
         identifier: "WebhooksListWebhookEndpointsRequest",
       });
-    case 4:
-      return S.Array(__S(451, __c56, 3));
-    case 5:
+    case 1:
+      return S.Array(__S(968, __c121, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          items: __S(460, __c57, 4),
-          pagination: __S(10, __c1, 2),
+          items: __S(1009, __c126, 1),
+          pagination: __S(1472, __c184, 0),
         }),
       ).annotate({
         identifier: "ListResourceWebhookEndpoint",
       });
-    case 6:
+  }
+}
+function __c127(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.String.pipe(T.Label()),
@@ -22192,7 +20375,11 @@ function __c57(j: number): any {
       ).annotate({
         identifier: "WebhooksRedeliverWebhookEventRequest",
       });
-    case 7:
+  }
+}
+function __c128(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.String.pipe(T.Label()),
@@ -22202,7 +20389,7 @@ function __c57(j: number): any {
       });
   }
 }
-function __c58(j: number): any {
+function __c129(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -22212,7 +20399,7 @@ function __c58(j: number): any {
           name: S.optional(S.NullOr(S.String)),
           api_version: S.optional(S.NullOr(S.String)),
           format: S.optional(S.NullOr(S.String)),
-          events: S.optional(S.NullOr(__S(1, __c0, 1))),
+          events: S.optional(S.NullOr(__S(1464, __c183, 0))),
           enabled: S.optional(S.NullOr(S.Boolean)),
         }).pipe(T.Http({ method: "PATCH", uri: "/v1/webhooks/endpoints/{id}", code: 200 })),
       ).annotate({
@@ -22220,7 +20407,2631 @@ function __c58(j: number): any {
       });
   }
 }
-
+function __c130(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          organization_id: S.optional(S.Unknown.pipe(T.Query())),
+          product_id: S.optional(S.Unknown.pipe(T.Query())),
+          customer_id: S.optional(S.Unknown.pipe(T.Query())),
+          external_customer_id: S.optional(S.Unknown.pipe(T.Query())),
+          status: S.optional(S.Unknown.pipe(T.Query())),
+          query: S.optional(S.String.pipe(T.Query())),
+          page: S.optional(S.Number.pipe(T.Query())),
+          limit: S.optional(S.Number.pipe(T.Query())),
+          sorting: S.optional(__S(1464, __c183, 0).pipe(T.Query())),
+        }).pipe(T.Http({ method: "GET", uri: "/v1/checkouts/", code: 200 })),
+      ).annotate({ identifier: "CheckoutsListRequest" });
+    case 1:
+      return S.Array(__S(868, __c108, 4));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          items: __S(1041, __c130, 1),
+          pagination: __S(1472, __c184, 0),
+        }),
+      ).annotate({ identifier: "ListResourceCheckout" });
+  }
+}
+function __c131(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, /*@__PURE__*/ S.NullOr(S.Unknown));
+    case 1:
+      return S.Record(S.String, S.Unknown);
+    case 2:
+      return S.Record(S.String, S.Unknown);
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String.pipe(T.Label()),
+          custom_field_data: S.optional(__S(1048, __c131, 0)),
+          product_id: S.optional(S.NullOr(S.String)),
+          product_price_id: S.optional(S.NullOr(S.String)),
+          amount: S.optional(S.NullOr(S.Number)),
+          seats: S.optional(S.NullOr(S.Number)),
+          units: S.optional(S.NullOr(S.Number)),
+          is_business_customer: S.optional(S.NullOr(S.Boolean)),
+          customer_name: S.optional(S.NullOr(S.String)),
+          customer_email: S.optional(S.NullOr(S.String)),
+          customer_billing_name: S.optional(S.NullOr(S.String)),
+          customer_billing_address: S.optional(S.NullOr(__S(888, __c111, 0))),
+          customer_tax_id: S.optional(S.NullOr(S.String)),
+          locale: S.optional(S.NullOr(S.String)),
+          trial_interval: S.optional(S.NullOr(S.String)),
+          trial_interval_count: S.optional(S.NullOr(S.Number)),
+          metadata: S.optional(__S(1049, __c131, 1)),
+          currency: S.optional(S.NullOr(S.String)),
+          discount_id: S.optional(S.NullOr(S.String)),
+          allow_discount_codes: S.optional(S.NullOr(S.Boolean)),
+          require_billing_address: S.optional(S.NullOr(S.Boolean)),
+          allow_trial: S.optional(S.NullOr(S.Boolean)),
+          customer_ip_address: S.optional(S.NullOr(S.String)),
+          customer_metadata: S.optional(S.NullOr(__S(1050, __c131, 2))),
+          success_url: S.optional(S.NullOr(S.String)),
+          return_url: S.optional(S.NullOr(S.String)),
+          embed_origin: S.optional(S.NullOr(S.String)),
+        }).pipe(T.Http({ method: "PATCH", uri: "/v1/checkouts/{id}", code: 200 })),
+      ).annotate({ identifier: "CheckoutsUpdateRequest" });
+  }
+}
+function __c132(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          invitation_token: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({ method: "GET", uri: "/v1/customer-seats/claim/{invitation_token}", code: 200 }),
+        ),
+      ).annotate({
+        identifier: "ClaimCustomerSeatsGetInfoRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          product_name: S.String,
+          product_id: S.String,
+          organization_name: S.String,
+          organization_slug: S.String,
+          customer_email: S.String,
+          can_claim: S.Boolean,
+        }),
+      ).annotate({ identifier: "SeatClaimInfo" });
+  }
+}
+function __c133(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, /*@__PURE__*/ S.NullOr(S.Unknown));
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          client_secret: S.String.pipe(T.Label()),
+          custom_field_data: S.optional(__S(1064, __c133, 0)),
+          product_id: S.optional(S.NullOr(S.String)),
+          product_price_id: S.optional(S.NullOr(S.String)),
+          amount: S.optional(S.NullOr(S.Number)),
+          seats: S.optional(S.NullOr(S.Number)),
+          units: S.optional(S.NullOr(S.Number)),
+          is_business_customer: S.optional(S.NullOr(S.Boolean)),
+          customer_name: S.optional(S.NullOr(S.String)),
+          customer_email: S.optional(S.NullOr(S.String)),
+          customer_billing_name: S.optional(S.NullOr(S.String)),
+          customer_billing_address: S.optional(S.NullOr(__S(888, __c111, 0))),
+          customer_tax_id: S.optional(S.NullOr(S.String)),
+          locale: S.optional(S.NullOr(S.String)),
+          payment_method_type: S.optional(S.NullOr(S.String)),
+          discount_code: S.optional(S.NullOr(S.String)),
+          allow_trial: S.optional(S.NullOr(S.Boolean)),
+          confirmation_token_id: S.optional(S.NullOr(S.String)),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/v1/checkouts/client/{client_secret}/confirm",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "ConfirmCheckoutsClientRequest",
+      });
+    case 2:
+      return S.Record(S.String, /*@__PURE__*/ S.NullOr(S.Unknown));
+    case 3:
+      return S.Array(S.Unknown);
+    case 4:
+      return S.Record(S.String, __S(1067, __c133, 3));
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          created_at: S.String,
+          modified_at: S.NullOr(S.String),
+          custom_field_data: S.optional(__S(1066, __c133, 2)),
+          payment_processor: S.String,
+          status: S.String,
+          client_secret: S.String.pipe(T.SensitiveValue({})),
+          url: S.String,
+          expires_at: S.String,
+          success_url: S.String,
+          return_url: S.NullOr(S.String),
+          embed_origin: S.NullOr(S.String),
+          amount: S.Number,
+          seats: S.optional(S.NullOr(S.Number)),
+          min_seats: S.optional(S.NullOr(S.Number)),
+          max_seats: S.optional(S.NullOr(S.Number)),
+          units: S.NullOr(S.Number),
+          min_units: S.NullOr(S.Number),
+          max_units: S.NullOr(S.Number),
+          discount_amount: S.Number,
+          net_amount: S.Number,
+          tax_amount: S.NullOr(S.Number),
+          tax_behavior: S.NullOr(S.String),
+          total_amount: S.Number,
+          currency: S.String,
+          allow_trial: S.NullOr(S.Boolean),
+          active_trial_interval: S.NullOr(S.String),
+          active_trial_interval_count: S.NullOr(S.Number),
+          trial_end: S.NullOr(S.String),
+          organization_id: S.String,
+          product_id: S.NullOr(S.String),
+          product_price_id: S.NullOr(S.String),
+          discount_id: S.NullOr(S.String),
+          allow_discount_codes: S.Boolean,
+          require_billing_address: S.Boolean,
+          is_discount_applicable: S.Boolean,
+          is_free_product_price: S.Boolean,
+          is_payment_required: S.Boolean,
+          is_payment_setup_required: S.Boolean,
+          is_payment_form_required: S.Boolean,
+          customer_id: S.NullOr(S.String),
+          is_business_customer: S.Boolean,
+          customer_name: S.NullOr(S.String),
+          customer_email: S.NullOr(S.String),
+          customer_ip_address: S.NullOr(S.String),
+          customer_billing_name: S.NullOr(S.String),
+          customer_billing_address: S.NullOr(__S(888, __c111, 0)),
+          customer_tax_id: S.NullOr(S.String),
+          locale: S.optional(S.NullOr(S.String)),
+          payment_method_type: S.NullOr(S.String),
+          payment_processor_metadata: __S(896, __c112, 0),
+          billing_address_fields: __S(880, __c110, 0),
+          products: __S(883, __c110, 3),
+          product: S.NullOr(__S(882, __c110, 2)),
+          product_price: S.NullOr(S.Unknown),
+          prices: S.NullOr(__S(1068, __c133, 4)),
+          discount: S.NullOr(S.Unknown),
+          organization: __S(1072, __c134, 0),
+          attached_custom_fields: S.NullOr(__S(873, __c109, 1)),
+          customer_session_token: S.NullOr(S.String),
+        }),
+      ).annotate({ identifier: "CheckoutPublicConfirmed" });
+  }
+}
+function __c134(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          created_at: S.String,
+          modified_at: S.NullOr(S.String),
+          id: S.String,
+          name: S.String,
+          slug: S.String,
+          avatar_url: S.NullOr(S.String),
+          proration_behavior: S.String,
+          allow_customer_updates: S.Boolean,
+        }),
+      ).annotate({ identifier: "CheckoutOrganization" });
+  }
+}
+function __c135(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String.pipe(T.Label()),
+        }).pipe(T.Http({ method: "GET", uri: "/v1/customer-meters/{id}", code: 200 })),
+      ).annotate({ identifier: "CustomerMetersGetRequest" });
+  }
+}
+function __c136(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          created_at: S.String,
+          modified_at: S.NullOr(S.String),
+          customer_id: S.String,
+          meter_id: S.String,
+          consumed_units: S.Number,
+          credited_units: S.Number,
+          balance: S.Number,
+          customer: S.Unknown,
+          meter: __S(1098, __c137, 2),
+        }),
+      ).annotate({ identifier: "CustomerMeter" });
+  }
+}
+function __c137(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.Unknown);
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          conjunction: S.String,
+          clauses: __S(1096, __c137, 0),
+        }),
+      ).annotate({ identifier: "Filter" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          metadata: __S(344, __c43, 0),
+          created_at: S.String,
+          modified_at: S.NullOr(S.String),
+          id: S.String,
+          name: S.String,
+          unit: S.String,
+          custom_label: S.optional(S.NullOr(S.String)),
+          custom_multiplier: S.optional(S.NullOr(S.Number)),
+          filter: __S(1097, __c137, 1),
+          aggregation: S.Unknown,
+          organization_id: S.String,
+          archived_at: S.optional(S.NullOr(S.String)),
+        }),
+      ).annotate({ identifier: "Meter" });
+  }
+}
+function __c138(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          organization_id: S.optional(S.Unknown.pipe(T.Query())),
+          customer_id: S.optional(S.Unknown.pipe(T.Query())),
+          external_customer_id: S.optional(S.Unknown.pipe(T.Query())),
+          meter_id: S.optional(S.Unknown.pipe(T.Query())),
+          page: S.optional(S.Number.pipe(T.Query())),
+          limit: S.optional(S.Number.pipe(T.Query())),
+          sorting: S.optional(__S(1464, __c183, 0).pipe(T.Query())),
+        }).pipe(T.Http({ method: "GET", uri: "/v1/customer-meters/", code: 200 })),
+      ).annotate({
+        identifier: "CustomerMetersListRequest",
+      });
+    case 1:
+      return S.Array(__S(1088, __c136, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          items: __S(1105, __c138, 1),
+          pagination: __S(1472, __c184, 0),
+        }),
+      ).annotate({
+        identifier: "ListResourceCustomerMeter",
+      });
+  }
+}
+function __c139(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({ method: "GET", uri: "/v1/customer-portal/benefit-grants/{id}", code: 200 }),
+        ),
+      ).annotate({
+        identifier: "CustomerPortalBenefitGrantsGetRequest",
+      });
+  }
+}
+function __c140(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Unknown.pipe(T.RawResponseRoot())).annotate({
+        identifier: "CustomerPortalBenefitGrantsGetResponse",
+      });
+  }
+}
+function __c141(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          query: S.optional(S.String.pipe(T.Query())),
+          type: S.optional(S.Unknown.pipe(T.Query())),
+          benefit_id: S.optional(S.Unknown.pipe(T.Query())),
+          checkout_id: S.optional(S.Unknown.pipe(T.Query())),
+          order_id: S.optional(S.Unknown.pipe(T.Query())),
+          subscription_id: S.optional(S.Unknown.pipe(T.Query())),
+          member_id: S.optional(S.Unknown.pipe(T.Query())),
+          page: S.optional(S.Number.pipe(T.Query())),
+          limit: S.optional(S.Number.pipe(T.Query())),
+          sorting: S.optional(__S(1464, __c183, 0).pipe(T.Query())),
+        }).pipe(T.Http({ method: "GET", uri: "/v1/customer-portal/benefit-grants/", code: 200 })),
+      ).annotate({
+        identifier: "CustomerPortalBenefitGrantsListRequest",
+      });
+    case 1:
+      return S.Array(S.Unknown);
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          items: __S(1129, __c141, 1),
+          pagination: __S(1472, __c184, 0),
+        }),
+      ).annotate({
+        identifier: "ListResourceCustomerBenefitGrant",
+      });
+  }
+}
+function __c142(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String.pipe(T.Label()),
+          body: S.Unknown.pipe(T.HttpBody()),
+        }).pipe(
+          T.Http({ method: "PATCH", uri: "/v1/customer-portal/benefit-grants/{id}", code: 200 }),
+        ),
+      ).annotate({
+        identifier: "CustomerPortalBenefitGrantsUpdateRequest",
+      });
+  }
+}
+function __c143(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String.pipe(T.Label()),
+        }).pipe(T.Http({ method: "GET", uri: "/v1/customer-portal/meters/{id}", code: 200 })),
+      ).annotate({
+        identifier: "CustomerPortalCustomerMetersGetRequest",
+      });
+  }
+}
+function __c144(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          created_at: S.String,
+          modified_at: S.NullOr(S.String),
+          customer_id: S.String,
+          meter_id: S.String,
+          consumed_units: S.Number,
+          credited_units: S.Number,
+          balance: S.Number,
+          meter: __S(1160, __c145, 0),
+        }),
+      ).annotate({ identifier: "CustomerCustomerMeter" });
+  }
+}
+function __c145(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          created_at: S.String,
+          modified_at: S.NullOr(S.String),
+          id: S.String,
+          name: S.String,
+        }),
+      ).annotate({
+        identifier: "CustomerCustomerMeterMeter",
+      });
+  }
+}
+function __c146(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          meter_id: S.optional(S.Unknown.pipe(T.Query())),
+          query: S.optional(S.String.pipe(T.Query())),
+          page: S.optional(S.Number.pipe(T.Query())),
+          limit: S.optional(S.Number.pipe(T.Query())),
+          sorting: S.optional(__S(1464, __c183, 0).pipe(T.Query())),
+        }).pipe(T.Http({ method: "GET", uri: "/v1/customer-portal/meters/", code: 200 })),
+      ).annotate({
+        identifier: "CustomerPortalCustomerMetersListRequest",
+      });
+    case 1:
+      return S.Array(__S(1152, __c144, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          items: __S(1169, __c146, 1),
+          pagination: __S(1472, __c184, 0),
+        }),
+      ).annotate({
+        identifier: "ListResourceCustomerCustomerMeter",
+      });
+  }
+}
+function __c147(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          confirmation_token_id: S.String,
+          set_default: S.Boolean,
+          return_url: S.String,
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/v1/customer-portal/customers/me/payment-methods",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "CustomerPortalCustomersAddPaymentMethodRequest",
+      });
+  }
+}
+function __c148(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Unknown.pipe(T.RawResponseRoot())).annotate({
+        identifier: "CustomerPortalCustomersAddPaymentMethodResponse",
+      });
+  }
+}
+function __c149(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          setup_intent_id: S.String,
+          set_default: S.Boolean,
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/v1/customer-portal/customers/me/payment-methods/confirm",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "CustomerPortalCustomersConfirmPaymentMethodRequest",
+      });
+  }
+}
+function __c150(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/v1/customer-portal/customers/me/payment-methods/{id}",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "CustomerPortalCustomersDeletePaymentMethodRequest",
+      });
+  }
+}
+function __c151(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "CustomerPortalCustomersDeletePaymentMethodResponse",
+      });
+  }
+}
+function __c152(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({}).pipe(
+          T.Http({ method: "GET", uri: "/v1/customer-portal/customer-session/user", code: 200 }),
+        ),
+      ).annotate({
+        identifier: "CustomerPortalCustomerSessionGetAuthenticatedUserRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          type: S.String,
+          name: S.NullOr(S.String),
+          email: S.String,
+          customer_id: S.String,
+          member_id: S.optional(S.NullOr(S.String)),
+          role: S.optional(S.NullOr(S.String)),
+        }),
+      ).annotate({ identifier: "PortalAuthenticatedUser" });
+  }
+}
+function __c153(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({}).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/v1/customer-portal/customer-session/introspect",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "CustomerPortalCustomerSessionIntrospectRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          expires_at: S.String,
+          return_url: S.NullOr(S.String),
+        }),
+      ).annotate({ identifier: "CustomerCustomerSession" });
+  }
+}
+function __c154(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({}).pipe(
+          T.Http({ method: "GET", uri: "/v1/customer-portal/customers/me", code: 200 }),
+        ),
+      ).annotate({
+        identifier: "CustomerPortalCustomersGetRequest",
+      });
+  }
+}
+function __c155(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          account_id: S.String,
+          account_username: S.NullOr(S.String),
+        }),
+      ).annotate({
+        identifier: "CustomerPortalOAuthAccount",
+      });
+    case 1:
+      return S.Record(S.String, __S(1240, __c155, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          created_at: S.String,
+          modified_at: S.NullOr(S.String),
+          id: S.String,
+          email: S.NullOr(S.String),
+          email_verified: S.Boolean,
+          name: S.NullOr(S.String),
+          billing_name: S.NullOr(S.String),
+          billing_address: S.NullOr(__S(888, __c111, 0)),
+          tax_id: S.NullOr(__S(1248, __c156, 0)),
+          oauth_accounts: __S(1241, __c155, 1),
+          default_payment_method_id: S.optional(S.NullOr(S.String)),
+          type: S.optional(S.NullOr(S.String)),
+          locale: S.optional(S.NullOr(S.String)),
+        }),
+      ).annotate({ identifier: "CustomerPortalCustomer" });
+  }
+}
+function __c156(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.Unknown);
+  }
+}
+function __c157(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          page: S.optional(S.Number.pipe(T.Query())),
+          limit: S.optional(S.Number.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/v1/customer-portal/customers/me/payment-methods",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "CustomerPortalCustomersListPaymentMethodsRequest",
+      });
+    case 1:
+      return S.Array(S.Unknown);
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          items: __S(1257, __c157, 1),
+          pagination: __S(1472, __c184, 0),
+        }),
+      ).annotate({
+        identifier: "ListResourceCustomerPaymentMethod",
+      });
+  }
+}
+function __c158(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          billing_name: S.optional(S.NullOr(S.String)),
+          billing_address: S.optional(S.NullOr(__S(888, __c111, 0))),
+          tax_id: S.optional(S.NullOr(S.String)),
+          default_payment_method_id: S.optional(S.NullOr(S.String)),
+        }).pipe(T.Http({ method: "PATCH", uri: "/v1/customer-portal/customers/me", code: 200 })),
+      ).annotate({
+        identifier: "CustomerPortalCustomersUpdateRequest",
+      });
+  }
+}
+function __c159(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          benefit_id: S.optional(S.Unknown.pipe(T.Query())),
+          page: S.optional(S.Number.pipe(T.Query())),
+          limit: S.optional(S.Number.pipe(T.Query())),
+        }).pipe(T.Http({ method: "GET", uri: "/v1/customer-portal/downloadables/", code: 200 })),
+      ).annotate({
+        identifier: "CustomerPortalDownloadablesListRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          url: S.String,
+          headers: S.optional(__S(896, __c112, 0)),
+          expires_at: S.String,
+        }),
+      ).annotate({ identifier: "S3DownloadURL" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          organization_id: S.String,
+          name: S.String,
+          path: S.String,
+          mime_type: S.String,
+          size: S.Number,
+          storage_version: S.NullOr(S.String),
+          checksum_etag: S.NullOr(S.String),
+          checksum_sha256_base64: S.NullOr(S.String),
+          checksum_sha256_hex: S.NullOr(S.String),
+          last_modified_at: S.NullOr(S.String),
+          download: __S(1273, __c159, 1),
+          version: S.NullOr(S.String),
+          is_uploaded: S.Boolean,
+          service: S.String,
+          size_readable: S.String,
+        }),
+      ).annotate({ identifier: "FileDownload" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          benefit_id: S.String,
+          file: __S(1274, __c159, 2),
+        }),
+      ).annotate({ identifier: "DownloadableRead" });
+    case 4:
+      return S.Array(__S(1275, __c159, 3));
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          items: __S(1276, __c159, 4),
+          pagination: __S(1472, __c184, 0),
+        }),
+      ).annotate({
+        identifier: "ListResourceDownloadableRead",
+      });
+  }
+}
+function __c160(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, S.Unknown);
+    case 1:
+      return S.Record(S.String, S.Unknown);
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          key: S.String,
+          organization_id: S.String,
+          label: S.String,
+          conditions: S.optional(__S(1280, __c160, 0)),
+          meta: S.optional(__S(1281, __c160, 1)),
+        }).pipe(
+          T.Http({ method: "POST", uri: "/v1/customer-portal/license-keys/activate", code: 200 }),
+        ),
+      ).annotate({
+        identifier: "CustomerPortalLicenseKeysActivateRequest",
+      });
+  }
+}
+function __c161(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, S.Unknown);
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          created_at: S.String,
+          modified_at: S.NullOr(S.String),
+          organization_id: S.String,
+          customer_id: S.String,
+          customer: __S(1296, __c162, 0),
+          member_id: S.NullOr(S.String),
+          member: S.NullOr(__S(1304, __c163, 0)),
+          benefit_id: S.String,
+          key: S.String,
+          display_key: S.String,
+          status: S.String,
+          limit_activations: S.NullOr(S.Number),
+          usage: S.Number,
+          limit_usage: S.NullOr(S.Number),
+          validations: S.Number,
+          last_validated_at: S.NullOr(S.String),
+          expires_at: S.NullOr(S.String),
+          subscription_id: S.NullOr(S.String),
+          subscription: S.NullOr(__S(1312, __c164, 0)),
+          order_id: S.NullOr(S.String),
+          order: S.NullOr(__S(1313, __c164, 1)),
+        }),
+      ).annotate({ identifier: "GrantedLicenseKey" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          license_key_id: S.String,
+          label: S.String,
+          meta: __S(1288, __c161, 0),
+          created_at: S.String,
+          modified_at: S.NullOr(S.String),
+          license_key: __S(1289, __c161, 1),
+        }),
+      ).annotate({
+        identifier: "LicenseKeyActivationCreated",
+      });
+  }
+}
+function __c162(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          created_at: S.String,
+          modified_at: S.NullOr(S.String),
+          metadata: __S(344, __c43, 0),
+          external_id: S.optional(S.NullOr(S.String)),
+          email: S.optional(S.NullOr(S.String)),
+          email_verified: S.Boolean,
+          type: S.String,
+          name: S.NullOr(S.String),
+          billing_name: S.NullOr(S.String),
+          billing_address: S.NullOr(__S(888, __c111, 0)),
+          tax_id: S.NullOr(__S(1248, __c156, 0)),
+          locale: S.optional(S.NullOr(S.String)),
+          organization_id: S.String,
+          default_payment_method_id: S.optional(S.NullOr(S.String)),
+          deleted_at: S.NullOr(S.String),
+          first_user_event_at: S.NullOr(S.String),
+          avatar_url: S.NullOr(S.String),
+        }),
+      ).annotate({ identifier: "LicenseKeyCustomer" });
+  }
+}
+function __c163(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          email: S.String,
+          external_id: S.NullOr(S.String),
+        }),
+      ).annotate({ identifier: "LicenseKeyMember" });
+  }
+}
+function __c164(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          status: S.String,
+          current_period_start: S.String,
+          current_period_end: S.String,
+          cancel_at_period_end: S.Boolean,
+          ends_at: S.NullOr(S.String),
+        }),
+      ).annotate({ identifier: "LicenseKeySubscription" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          created_at: S.String,
+          status: S.String,
+          paid: S.Boolean,
+        }),
+      ).annotate({ identifier: "LicenseKeyOrder" });
+  }
+}
+function __c165(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          key: S.String,
+          organization_id: S.String,
+          activation_id: S.String,
+        }).pipe(
+          T.Http({ method: "POST", uri: "/v1/customer-portal/license-keys/deactivate", code: 200 }),
+        ),
+      ).annotate({
+        identifier: "CustomerPortalLicenseKeysDeactivateRequest",
+      });
+  }
+}
+function __c166(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String.pipe(T.Label()),
+        }).pipe(T.Http({ method: "GET", uri: "/v1/customer-portal/license-keys/{id}", code: 200 })),
+      ).annotate({
+        identifier: "CustomerPortalLicenseKeysGetRequest",
+      });
+  }
+}
+function __c167(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(1345, __c168, 1));
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          created_at: S.String,
+          modified_at: S.NullOr(S.String),
+          organization_id: S.String,
+          customer_id: S.String,
+          customer: __S(1296, __c162, 0),
+          member_id: S.NullOr(S.String),
+          member: S.NullOr(__S(1304, __c163, 0)),
+          benefit_id: S.String,
+          key: S.String,
+          display_key: S.String,
+          status: S.String,
+          limit_activations: S.NullOr(S.Number),
+          usage: S.Number,
+          limit_usage: S.NullOr(S.Number),
+          validations: S.Number,
+          last_validated_at: S.NullOr(S.String),
+          expires_at: S.NullOr(S.String),
+          activations: __S(1336, __c167, 0),
+        }),
+      ).annotate({
+        identifier: "LicenseKeyWithActivations",
+      });
+  }
+}
+function __c168(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, S.Unknown);
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          license_key_id: S.String,
+          label: S.String,
+          meta: __S(1344, __c168, 0),
+          created_at: S.String,
+          modified_at: S.NullOr(S.String),
+        }),
+      ).annotate({ identifier: "LicenseKeyActivationBase" });
+  }
+}
+function __c169(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          benefit_id: S.optional(S.String.pipe(T.Query())),
+          page: S.optional(S.Number.pipe(T.Query())),
+          limit: S.optional(S.Number.pipe(T.Query())),
+        }).pipe(T.Http({ method: "GET", uri: "/v1/customer-portal/license-keys/", code: 200 })),
+      ).annotate({
+        identifier: "CustomerPortalLicenseKeysListRequest",
+      });
+  }
+}
+function __c170(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(1368, __c171, 0));
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          items: __S(1360, __c170, 0),
+          pagination: __S(1472, __c184, 0),
+        }),
+      ).annotate({
+        identifier: "ListResourceLicenseKeyRead",
+      });
+  }
+}
+function __c171(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          created_at: S.String,
+          modified_at: S.NullOr(S.String),
+          organization_id: S.String,
+          customer_id: S.String,
+          customer: __S(1296, __c162, 0),
+          member_id: S.NullOr(S.String),
+          member: S.NullOr(__S(1304, __c163, 0)),
+          benefit_id: S.String,
+          key: S.String,
+          display_key: S.String,
+          status: S.String,
+          limit_activations: S.NullOr(S.Number),
+          usage: S.Number,
+          limit_usage: S.NullOr(S.Number),
+          validations: S.Number,
+          last_validated_at: S.NullOr(S.String),
+          expires_at: S.NullOr(S.String),
+        }),
+      ).annotate({ identifier: "LicenseKeyRead" });
+  }
+}
+function __c172(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/v1/customer-portal/license-keys/{id}/rotate",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "CustomerPortalLicenseKeysRotateRequest",
+      });
+  }
+}
+function __c173(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, S.Unknown);
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          key: S.String,
+          organization_id: S.String,
+          activation_id: S.optional(S.NullOr(S.String)),
+          benefit_id: S.optional(S.NullOr(S.String)),
+          customer_id: S.optional(S.NullOr(S.String)),
+          increment_usage: S.optional(S.NullOr(S.Number)),
+          conditions: S.optional(__S(1384, __c173, 0)),
+        }).pipe(
+          T.Http({ method: "POST", uri: "/v1/customer-portal/license-keys/validate", code: 200 }),
+        ),
+      ).annotate({
+        identifier: "CustomerPortalLicenseKeysValidateRequest",
+      });
+  }
+}
+function __c174(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          created_at: S.String,
+          modified_at: S.NullOr(S.String),
+          organization_id: S.String,
+          customer_id: S.String,
+          customer: __S(1296, __c162, 0),
+          member_id: S.NullOr(S.String),
+          member: S.NullOr(__S(1304, __c163, 0)),
+          benefit_id: S.String,
+          key: S.String,
+          display_key: S.String,
+          status: S.String,
+          limit_activations: S.NullOr(S.Number),
+          usage: S.Number,
+          limit_usage: S.NullOr(S.Number),
+          validations: S.Number,
+          last_validated_at: S.NullOr(S.String),
+          expires_at: S.NullOr(S.String),
+          subscription_id: S.NullOr(S.String),
+          subscription: S.NullOr(__S(1312, __c164, 0)),
+          order_id: S.NullOr(S.String),
+          order: S.NullOr(__S(1313, __c164, 1)),
+          activation: S.optional(S.NullOr(__S(1345, __c168, 1))),
+        }),
+      ).annotate({ identifier: "ValidatedLicenseKey" });
+  }
+}
+function __c175(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          email: S.String,
+          name: S.optional(S.NullOr(S.String)),
+          role: S.optional(S.String),
+        }).pipe(T.Http({ method: "POST", uri: "/v1/customer-portal/members", code: 200 })),
+      ).annotate({
+        identifier: "CustomerPortalMembersAddMemberRequest",
+      });
+  }
+}
+function __c176(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          created_at: S.String,
+          modified_at: S.NullOr(S.String),
+          id: S.String,
+          email: S.String,
+          name: S.NullOr(S.String),
+          role: S.String,
+        }),
+      ).annotate({ identifier: "CustomerPortalMember" });
+  }
+}
+function __c177(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          page: S.optional(S.Number.pipe(T.Query())),
+          limit: S.optional(S.Number.pipe(T.Query())),
+        }).pipe(T.Http({ method: "GET", uri: "/v1/customer-portal/members", code: 200 })),
+      ).annotate({
+        identifier: "CustomerPortalMembersListMembersRequest",
+      });
+    case 1:
+      return S.Array(__S(1408, __c176, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          items: __S(1417, __c177, 1),
+          pagination: __S(1472, __c184, 0),
+        }),
+      ).annotate({
+        identifier: "ListResourceCustomerPortalMember",
+      });
+  }
+}
+function __c178(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String.pipe(T.Label()),
+        }).pipe(T.Http({ method: "DELETE", uri: "/v1/customer-portal/members/{id}", code: 200 })),
+      ).annotate({
+        identifier: "CustomerPortalMembersRemoveMemberRequest",
+      });
+  }
+}
+function __c179(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String.pipe(T.Label()),
+          name: S.optional(S.NullOr(S.String)),
+          role: S.optional(S.NullOr(S.String)),
+        }).pipe(T.Http({ method: "PATCH", uri: "/v1/customer-portal/members/{id}", code: 200 })),
+      ).annotate({
+        identifier: "CustomerPortalMembersUpdateMemberRequest",
+      });
+  }
+}
+function __c180(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          organization_id: S.optional(S.Unknown.pipe(T.Query())),
+          customer_id: S.optional(S.Unknown.pipe(T.Query())),
+          external_customer_id: S.optional(S.Unknown.pipe(T.Query())),
+          is_granted: S.optional(S.Boolean.pipe(T.Query())),
+          page: S.optional(S.Number.pipe(T.Query())),
+          limit: S.optional(S.Number.pipe(T.Query())),
+          sorting: S.optional(__S(1464, __c183, 0).pipe(T.Query())),
+        }).pipe(T.Http({ method: "GET", uri: "/v1/benefit-grants/", code: 200 })),
+      ).annotate({ identifier: "BenefitGrantsListRequest" });
+  }
+}
+function __c181(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          message: S.String,
+          type: S.String,
+          timestamp: S.String,
+        }),
+      ).annotate({ identifier: "BenefitGrantError" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          created_at: S.String,
+          modified_at: S.NullOr(S.String),
+          id: S.String,
+          granted_at: S.optional(S.NullOr(S.String)),
+          is_granted: S.Boolean,
+          revoked_at: S.optional(S.NullOr(S.String)),
+          is_revoked: S.Boolean,
+          subscription_id: S.NullOr(S.String),
+          order_id: S.NullOr(S.String),
+          customer_id: S.String,
+          member_id: S.optional(S.NullOr(S.String)),
+          benefit_id: S.String,
+          error: S.optional(S.NullOr(__S(1448, __c181, 0))),
+          customer: S.Unknown,
+          member: S.optional(S.NullOr(__S(1456, __c182, 0))),
+          benefit: S.Unknown,
+          properties: S.Unknown,
+        }),
+      ).annotate({ identifier: "BenefitGrant" });
+    case 2:
+      return S.Array(__S(1449, __c181, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          items: __S(1450, __c181, 2),
+          pagination: __S(1472, __c184, 0),
+        }),
+      ).annotate({ identifier: "ListResourceBenefitGrant" });
+  }
+}
+function __c182(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          created_at: S.String,
+          modified_at: S.NullOr(S.String),
+          customer_id: S.String,
+          email: S.String,
+          name: S.NullOr(S.String),
+          external_id: S.NullOr(S.String),
+          role: S.String,
+        }),
+      ).annotate({ identifier: "Member" });
+  }
+}
+function __c183(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c184(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          total_count: S.Number,
+          max_page: S.Number,
+        }),
+      ).annotate({ identifier: "Pagination" });
+  }
+}
+function __c185(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({ method: "POST", uri: "/v1/customer-portal/orders/{id}/invoice", code: 200 }),
+        ),
+      ).annotate({
+        identifier: "CustomerPortalOrdersGenerateInvoiceRequest",
+      });
+  }
+}
+function __c186(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String.pipe(T.Label()),
+        }).pipe(T.Http({ method: "GET", uri: "/v1/customer-portal/orders/{id}", code: 200 })),
+      ).annotate({
+        identifier: "CustomerPortalOrdersGetRequest",
+      });
+  }
+}
+function __c187(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.Unknown);
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          created_at: S.String,
+          modified_at: S.NullOr(S.String),
+          trial_interval: S.NullOr(S.String),
+          trial_interval_count: S.NullOr(S.Number),
+          name: S.String,
+          description: S.NullOr(S.String),
+          visibility: S.String,
+          recurring_interval: S.NullOr(S.String),
+          recurring_interval_count: S.NullOr(S.Number),
+          meter_interval: S.NullOr(S.String),
+          meter_interval_count: S.NullOr(S.Number),
+          is_recurring: S.Boolean,
+          is_archived: S.Boolean,
+          organization_id: S.String,
+          prices: __S(1496, __c187, 0),
+          benefits: __S(336, __c42, 0),
+          medias: __S(329, __c41, 1),
+          organization: __S(1513, __c189, 1),
+        }),
+      ).annotate({ identifier: "CustomerOrderProduct" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          created_at: S.String,
+          modified_at: S.NullOr(S.String),
+          id: S.String,
+          amount: S.Number,
+          currency: S.String,
+          recurring_interval: S.String,
+          recurring_interval_count: S.Number,
+          status: S.String,
+          current_period_start: S.String,
+          current_period_end: S.String,
+          current_meter_period_start: S.NullOr(S.String),
+          current_meter_period_end: S.NullOr(S.String),
+          trial_start: S.NullOr(S.String),
+          trial_end: S.NullOr(S.String),
+          cancel_at_period_end: S.Boolean,
+          canceled_at: S.NullOr(S.String),
+          started_at: S.NullOr(S.String),
+          ends_at: S.NullOr(S.String),
+          ended_at: S.NullOr(S.String),
+          past_due_at: S.optional(S.NullOr(S.String)),
+          pause_at_period_end: S.Boolean,
+          paused_at: S.NullOr(S.String),
+          resumes_at: S.NullOr(S.String),
+          customer_id: S.String,
+          product_id: S.String,
+          discount_id: S.NullOr(S.String),
+          checkout_id: S.NullOr(S.String),
+          seats: S.optional(S.NullOr(S.Number)),
+          units: S.NullOr(S.Number),
+          customer_cancellation_reason: S.NullOr(S.String),
+          customer_cancellation_comment: S.NullOr(S.String),
+        }),
+      ).annotate({
+        identifier: "CustomerOrderSubscription",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          created_at: S.String,
+          modified_at: S.NullOr(S.String),
+          status: S.String,
+          paid: S.Boolean,
+          subtotal_amount: S.Number,
+          discount_amount: S.Number,
+          net_amount: S.Number,
+          tax_amount: S.Number,
+          total_amount: S.Number,
+          applied_balance_amount: S.Number,
+          due_amount: S.Number,
+          refunded_amount: S.Number,
+          refunded_tax_amount: S.Number,
+          currency: S.String,
+          billing_reason: S.String,
+          billing_name: S.NullOr(S.String),
+          billing_address: S.NullOr(__S(888, __c111, 0)),
+          invoice_number: S.NullOr(S.String),
+          is_invoice_generated: S.Boolean,
+          receipt_number: S.NullOr(S.String),
+          seats: S.optional(S.NullOr(S.Number)),
+          units: S.NullOr(S.Number),
+          customer_id: S.String,
+          product_id: S.NullOr(S.String),
+          discount_id: S.NullOr(S.String),
+          subscription_id: S.NullOr(S.String),
+          checkout_id: S.NullOr(S.String),
+          next_payment_attempt_at: S.optional(S.NullOr(S.String)),
+          product: S.NullOr(__S(1497, __c187, 1)),
+          subscription: S.NullOr(__S(1498, __c187, 2)),
+          items: __S(1505, __c188, 1),
+          description: S.String,
+          refundable_amount: S.Number,
+          refundable_tax_amount: S.Number,
+        }),
+      ).annotate({ identifier: "CustomerOrder" });
+  }
+}
+function __c188(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          created_at: S.String,
+          modified_at: S.NullOr(S.String),
+          id: S.String,
+          label: S.String,
+          amount: S.Number,
+          tax_amount: S.Number,
+          proration: S.Boolean,
+          product_price_id: S.NullOr(S.String),
+          start_timestamp: S.NullOr(S.String),
+          end_timestamp: S.NullOr(S.String),
+        }),
+      ).annotate({ identifier: "OrderItemSchema" });
+    case 1:
+      return S.Array(__S(1504, __c188, 0));
+  }
+}
+function __c189(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          member_model_enabled: S.optional(S.Boolean),
+          checkout_localization_enabled: S.optional(S.Boolean),
+        }),
+      ).annotate({
+        identifier: "CustomerOrganizationFeatureSettings",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          created_at: S.String,
+          modified_at: S.NullOr(S.String),
+          id: S.String,
+          name: S.String,
+          slug: S.String,
+          avatar_url: S.NullOr(S.String),
+          proration_behavior: S.String,
+          allow_customer_updates: S.Boolean,
+          customer_portal_settings: __S(1523, __c190, 3),
+          organization_features: S.optional(__S(1512, __c189, 0)),
+        }),
+      ).annotate({ identifier: "CustomerOrganization" });
+  }
+}
+function __c190(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          show: S.Boolean,
+        }),
+      ).annotate({
+        identifier: "CustomerPortalUsageSettings",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          update_seats: S.Boolean,
+          update_plan: S.Boolean,
+          update_units: S.optional(S.Boolean),
+          pause: S.optional(S.Boolean),
+        }),
+      ).annotate({
+        identifier: "CustomerPortalSubscriptionSettings",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          allow_email_change: S.optional(S.Boolean),
+        }),
+      ).annotate({
+        identifier: "CustomerPortalCustomerSettings",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          usage: __S(1520, __c190, 0),
+          subscription: __S(1521, __c190, 1),
+          customer: S.optional(__S(1522, __c190, 2)),
+        }),
+      ).annotate({
+        identifier: "OrganizationCustomerPortalSettings",
+      });
+  }
+}
+function __c191(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/v1/customer-portal/orders/{id}/payment-status",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "CustomerPortalOrdersGetPaymentStatusRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          status: S.String,
+          error: S.optional(S.NullOr(S.String)),
+        }),
+      ).annotate({
+        identifier: "CustomerOrderPaymentStatus",
+      });
+  }
+}
+function __c192(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({ method: "GET", uri: "/v1/customer-portal/orders/{id}/invoice", code: 200 }),
+        ),
+      ).annotate({
+        identifier: "CustomerPortalOrdersInvoiceRequest",
+      });
+  }
+}
+function __c193(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          url: S.String,
+        }),
+      ).annotate({ identifier: "CustomerOrderInvoice" });
+  }
+}
+function __c194(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          product_id: S.optional(S.Unknown.pipe(T.Query())),
+          product_billing_type: S.optional(S.Unknown.pipe(T.Query())),
+          subscription_id: S.optional(S.Unknown.pipe(T.Query())),
+          query: S.optional(S.String.pipe(T.Query())),
+          page: S.optional(S.Number.pipe(T.Query())),
+          limit: S.optional(S.Number.pipe(T.Query())),
+          sorting: S.optional(__S(1464, __c183, 0).pipe(T.Query())),
+        }).pipe(T.Http({ method: "GET", uri: "/v1/customer-portal/orders/", code: 200 })),
+      ).annotate({
+        identifier: "CustomerPortalOrdersListRequest",
+      });
+    case 1:
+      return S.Array(__S(1499, __c187, 3));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          items: __S(1553, __c194, 1),
+          pagination: __S(1472, __c184, 0),
+        }),
+      ).annotate({
+        identifier: "ListResourceCustomerOrder",
+      });
+  }
+}
+function __c195(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({ method: "GET", uri: "/v1/customer-portal/orders/{id}/receipt", code: 200 }),
+        ),
+      ).annotate({
+        identifier: "CustomerPortalOrdersReceiptRequest",
+      });
+  }
+}
+function __c196(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String.pipe(T.Label()),
+          billing_name: S.optional(S.NullOr(S.String)),
+          billing_address: S.optional(S.NullOr(__S(888, __c111, 0))),
+        }).pipe(T.Http({ method: "PATCH", uri: "/v1/customer-portal/orders/{id}", code: 200 })),
+      ).annotate({
+        identifier: "CustomerPortalOrdersUpdateRequest",
+      });
+  }
+}
+function __c197(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          slug: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({ method: "GET", uri: "/v1/customer-portal/organizations/{slug}", code: 200 }),
+        ),
+      ).annotate({
+        identifier: "CustomerPortalOrganizationsGetRequest",
+      });
+    case 1:
+      return S.Array(S.Unknown);
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          created_at: S.String,
+          modified_at: S.NullOr(S.String),
+          trial_interval: S.NullOr(S.String),
+          trial_interval_count: S.NullOr(S.Number),
+          name: S.String,
+          description: S.NullOr(S.String),
+          visibility: S.String,
+          recurring_interval: S.NullOr(S.String),
+          recurring_interval_count: S.NullOr(S.Number),
+          meter_interval: S.NullOr(S.String),
+          meter_interval_count: S.NullOr(S.Number),
+          is_recurring: S.Boolean,
+          is_archived: S.Boolean,
+          organization_id: S.String,
+          prices: __S(1577, __c197, 1),
+          benefits: __S(336, __c42, 0),
+          medias: __S(329, __c41, 1),
+        }),
+      ).annotate({ identifier: "CustomerProduct" });
+    case 3:
+      return S.Array(__S(1578, __c197, 2));
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          organization: __S(1513, __c189, 1),
+          products: __S(1579, __c197, 3),
+        }),
+      ).annotate({ identifier: "CustomerOrganizationData" });
+  }
+}
+function __c198(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscription_id: S.optional(S.NullOr(S.String)),
+          order_id: S.optional(S.NullOr(S.String)),
+          email: S.optional(S.NullOr(S.String)),
+          external_customer_id: S.optional(S.NullOr(S.String)),
+          customer_id: S.optional(S.NullOr(S.String)),
+          external_member_id: S.optional(S.NullOr(S.String)),
+          member_id: S.optional(S.NullOr(S.String)),
+          metadata: S.optional(S.NullOr(__S(1592, __c199, 0))),
+          immediate_claim: S.optional(S.Boolean),
+          checkout_id: S.optional(S.NullOr(S.String)),
+        }).pipe(T.Http({ method: "POST", uri: "/v1/customer-portal/seats", code: 200 })),
+      ).annotate({
+        identifier: "CustomerPortalSeatsAssignSeatRequest",
+      });
+  }
+}
+function __c199(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, S.Unknown);
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          created_at: S.String,
+          modified_at: S.NullOr(S.String),
+          id: S.String,
+          subscription_id: S.NullOr(S.String),
+          order_id: S.NullOr(S.String),
+          status: S.String,
+          customer_id: S.NullOr(S.String),
+          member_id: S.NullOr(S.String),
+          member: S.NullOr(__S(1456, __c182, 0)),
+          email: S.NullOr(S.String),
+          customer_email: S.NullOr(S.String),
+          invitation_token_expires_at: S.NullOr(S.String),
+          claimed_at: S.NullOr(S.String),
+          revoked_at: S.NullOr(S.String),
+          seat_metadata: S.NullOr(__S(1592, __c199, 0)),
+        }),
+      ).annotate({ identifier: "CustomerSeat" });
+  }
+}
+function __c200(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          page: S.optional(S.Number.pipe(T.Query())),
+          limit: S.optional(S.Number.pipe(T.Query())),
+        }).pipe(
+          T.Http({ method: "GET", uri: "/v1/customer-portal/seats/subscriptions", code: 200 }),
+        ),
+      ).annotate({
+        identifier: "CustomerPortalSeatsListClaimedSubscriptionsRequest",
+      });
+  }
+}
+function __c201(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.Unknown);
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          created_at: S.String,
+          modified_at: S.NullOr(S.String),
+          trial_interval: S.NullOr(S.String),
+          trial_interval_count: S.NullOr(S.Number),
+          name: S.String,
+          description: S.NullOr(S.String),
+          visibility: S.String,
+          recurring_interval: S.NullOr(S.String),
+          recurring_interval_count: S.NullOr(S.Number),
+          meter_interval: S.NullOr(S.String),
+          meter_interval_count: S.NullOr(S.Number),
+          is_recurring: S.Boolean,
+          is_archived: S.Boolean,
+          organization_id: S.String,
+          prices: __S(1608, __c201, 0),
+          benefits: __S(336, __c42, 0),
+          medias: __S(329, __c41, 1),
+          organization: __S(1513, __c189, 1),
+        }),
+      ).annotate({
+        identifier: "CustomerSubscriptionProduct",
+      });
+    case 2:
+      return S.Array(S.Unknown);
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          created_at: S.String,
+          modified_at: S.NullOr(S.String),
+          id: S.String,
+          consumed_units: S.Number,
+          credited_units: S.Number,
+          amount: S.Number,
+          meter_id: S.String,
+          meter: __S(1160, __c145, 0),
+        }),
+      ).annotate({
+        identifier: "CustomerSubscriptionMeter",
+      });
+    case 4:
+      return S.Array(__S(1611, __c201, 3));
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          created_at: S.String,
+          modified_at: S.NullOr(S.String),
+          id: S.String,
+          amount: S.Number,
+          currency: S.String,
+          recurring_interval: S.String,
+          recurring_interval_count: S.Number,
+          status: S.String,
+          current_period_start: S.String,
+          current_period_end: S.String,
+          current_meter_period_start: S.NullOr(S.String),
+          current_meter_period_end: S.NullOr(S.String),
+          trial_start: S.NullOr(S.String),
+          trial_end: S.NullOr(S.String),
+          cancel_at_period_end: S.Boolean,
+          canceled_at: S.NullOr(S.String),
+          started_at: S.NullOr(S.String),
+          ends_at: S.NullOr(S.String),
+          ended_at: S.NullOr(S.String),
+          past_due_at: S.optional(S.NullOr(S.String)),
+          pause_at_period_end: S.Boolean,
+          paused_at: S.NullOr(S.String),
+          resumes_at: S.NullOr(S.String),
+          customer_id: S.String,
+          product_id: S.String,
+          discount_id: S.NullOr(S.String),
+          checkout_id: S.NullOr(S.String),
+          seats: S.optional(S.NullOr(S.Number)),
+          units: S.NullOr(S.Number),
+          customer_cancellation_reason: S.NullOr(S.String),
+          customer_cancellation_comment: S.NullOr(S.String),
+          product: __S(1609, __c201, 1),
+          prices: __S(1610, __c201, 2),
+          meters: __S(1612, __c201, 4),
+          pending_update: S.NullOr(__S(1616, __c202, 0)),
+        }),
+      ).annotate({ identifier: "CustomerSubscription" });
+  }
+}
+function __c202(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          created_at: S.String,
+          modified_at: S.NullOr(S.String),
+          id: S.String,
+          applies_at: S.String,
+          product_id: S.NullOr(S.String),
+          seats: S.NullOr(S.Number),
+          units: S.NullOr(S.Number),
+        }),
+      ).annotate({
+        identifier: "PendingSubscriptionUpdate",
+      });
+  }
+}
+function __c203(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(1613, __c201, 5));
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          items: __S(1624, __c203, 0),
+          pagination: __S(1472, __c184, 0),
+        }),
+      ).annotate({
+        identifier: "ListResourceCustomerSubscription",
+      });
+  }
+}
+function __c204(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          body: S.Unknown.pipe(T.HttpBody()),
+        }).pipe(T.Http({ method: "POST", uri: "/v1/benefits/", code: 200 })),
+      ).annotate({ identifier: "BenefitsCreateRequest" });
+  }
+}
+function __c205(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Unknown.pipe(T.RawResponseRoot())).annotate({
+        identifier: "BenefitsCreateResponse",
+      });
+  }
+}
+function __c206(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscription_id: S.optional(S.String.pipe(T.Query())),
+          order_id: S.optional(S.String.pipe(T.Query())),
+        }).pipe(T.Http({ method: "GET", uri: "/v1/customer-portal/seats", code: 200 })),
+      ).annotate({
+        identifier: "CustomerPortalSeatsListSeatsRequest",
+      });
+  }
+}
+function __c207(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(1593, __c199, 1));
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          seats: __S(1656, __c207, 0),
+          available_seats: S.Number,
+          total_seats: S.Number,
+        }),
+      ).annotate({ identifier: "SeatsList" });
+  }
+}
+function __c208(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          seat_id: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({ method: "POST", uri: "/v1/customer-portal/seats/{seat_id}/resend", code: 200 }),
+        ),
+      ).annotate({
+        identifier: "CustomerPortalSeatsResendInvitationRequest",
+      });
+  }
+}
+function __c209(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          seat_id: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({ method: "DELETE", uri: "/v1/customer-portal/seats/{seat_id}", code: 200 }),
+        ),
+      ).annotate({
+        identifier: "CustomerPortalSeatsRevokeSeatRequest",
+      });
+  }
+}
+function __c210(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({ method: "DELETE", uri: "/v1/customer-portal/subscriptions/{id}", code: 200 }),
+        ),
+      ).annotate({
+        identifier: "CustomerPortalSubscriptionsCancelRequest",
+      });
+  }
+}
+function __c211(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({ method: "GET", uri: "/v1/customer-portal/subscriptions/{id}", code: 200 }),
+        ),
+      ).annotate({
+        identifier: "CustomerPortalSubscriptionsGetRequest",
+      });
+  }
+}
+function __c212(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          product_id: S.optional(S.Unknown.pipe(T.Query())),
+          active: S.optional(S.Boolean.pipe(T.Query())),
+          query: S.optional(S.String.pipe(T.Query())),
+          page: S.optional(S.Number.pipe(T.Query())),
+          limit: S.optional(S.Number.pipe(T.Query())),
+          sorting: S.optional(__S(1464, __c183, 0).pipe(T.Query())),
+        }).pipe(T.Http({ method: "GET", uri: "/v1/customer-portal/subscriptions/", code: 200 })),
+      ).annotate({
+        identifier: "CustomerPortalSubscriptionsListRequest",
+      });
+  }
+}
+function __c213(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String.pipe(T.Label()),
+          body: S.Unknown.pipe(T.HttpBody()),
+        }).pipe(
+          T.Http({ method: "PATCH", uri: "/v1/customer-portal/subscriptions/{id}", code: 200 }),
+        ),
+      ).annotate({
+        identifier: "CustomerPortalSubscriptionsUpdateRequest",
+      });
+  }
+}
+function __c214(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String.pipe(T.Label()),
+        }).pipe(T.Http({ method: "GET", uri: "/v1/customer-portal/wallets/{id}", code: 200 })),
+      ).annotate({
+        identifier: "CustomerPortalWalletsGetRequest",
+      });
+  }
+}
+function __c215(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          created_at: S.String,
+          modified_at: S.NullOr(S.String),
+          customer_id: S.String,
+          balance: S.Number,
+          currency: S.String,
+        }),
+      ).annotate({ identifier: "CustomerWallet" });
+  }
+}
+function __c216(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          page: S.optional(S.Number.pipe(T.Query())),
+          limit: S.optional(S.Number.pipe(T.Query())),
+          sorting: S.optional(__S(1464, __c183, 0).pipe(T.Query())),
+        }).pipe(T.Http({ method: "GET", uri: "/v1/customer-portal/wallets/", code: 200 })),
+      ).annotate({
+        identifier: "CustomerPortalWalletsListRequest",
+      });
+    case 1:
+      return S.Array(__S(1720, __c215, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          items: __S(1729, __c216, 1),
+          pagination: __S(1472, __c184, 0),
+        }),
+      ).annotate({
+        identifier: "ListResourceCustomerWallet",
+      });
+  }
+}
+function __c217(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          body: S.Unknown.pipe(T.HttpBody()),
+        }).pipe(T.Http({ method: "POST", uri: "/v1/customers/", code: 200 })),
+      ).annotate({ identifier: "CustomersCreateRequest" });
+  }
+}
+function __c218(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Unknown.pipe(T.RawResponseRoot())).annotate({
+        identifier: "CustomersCreateResponse",
+      });
+  }
+}
+function __c219(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String.pipe(T.Label()),
+        }).pipe(T.Http({ method: "DELETE", uri: "/v1/benefits/{id}", code: 200 })),
+      ).annotate({ identifier: "BenefitsDeleteRequest" });
+  }
+}
+function __c220(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "BenefitsDeleteResponse",
+      });
+  }
+}
+function __c221(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String.pipe(T.Label()),
+          anonymize: S.optional(S.Boolean.pipe(T.Query())),
+        }).pipe(T.Http({ method: "DELETE", uri: "/v1/customers/{id}", code: 200 })),
+      ).annotate({ identifier: "CustomersDeleteRequest" });
+  }
+}
+function __c222(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          external_id: S.String.pipe(T.Label()),
+          anonymize: S.optional(S.Boolean.pipe(T.Query())),
+        }).pipe(
+          T.Http({ method: "DELETE", uri: "/v1/customers/external/{external_id}", code: 200 }),
+        ),
+      ).annotate({
+        identifier: "CustomersDeleteExternalRequest",
+      });
+    case 1:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "CustomersDeleteExternalResponse",
+      });
+  }
+}
+function __c223(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscription_id: S.optional(S.NullOr(S.String)),
+          order_id: S.optional(S.NullOr(S.String)),
+          email: S.optional(S.NullOr(S.String)),
+          external_customer_id: S.optional(S.NullOr(S.String)),
+          customer_id: S.optional(S.NullOr(S.String)),
+          external_member_id: S.optional(S.NullOr(S.String)),
+          member_id: S.optional(S.NullOr(S.String)),
+          metadata: S.optional(S.NullOr(__S(1592, __c199, 0))),
+          immediate_claim: S.optional(S.Boolean),
+        }).pipe(T.Http({ method: "POST", uri: "/v1/customer-seats", code: 200 })),
+      ).annotate({
+        identifier: "CustomerSeatsAssignSeatRequest",
+      });
+  }
+}
+function __c224(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          invitation_token: S.String,
+        }).pipe(T.Http({ method: "POST", uri: "/v1/customer-seats/claim", code: 200 })),
+      ).annotate({
+        identifier: "CustomerSeatsClaimSeatRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          seat: __S(1593, __c199, 1),
+          customer_session_token: S.String,
+        }),
+      ).annotate({
+        identifier: "CustomerSeatClaimResponse",
+      });
+  }
+}
+function __c225(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscription_id: S.optional(S.String.pipe(T.Query())),
+          order_id: S.optional(S.String.pipe(T.Query())),
+        }).pipe(T.Http({ method: "GET", uri: "/v1/customer-seats", code: 200 })),
+      ).annotate({
+        identifier: "CustomerSeatsListSeatsRequest",
+      });
+  }
+}
+function __c226(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          seat_id: S.String.pipe(T.Label()),
+        }).pipe(T.Http({ method: "POST", uri: "/v1/customer-seats/{seat_id}/resend", code: 200 })),
+      ).annotate({
+        identifier: "CustomerSeatsResendInvitationRequest",
+      });
+  }
+}
+function __c227(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          seat_id: S.String.pipe(T.Label()),
+        }).pipe(T.Http({ method: "DELETE", uri: "/v1/customer-seats/{seat_id}", code: 200 })),
+      ).annotate({
+        identifier: "CustomerSeatsRevokeSeatRequest",
+      });
+  }
+}
+function __c228(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          body: S.Unknown.pipe(T.HttpBody()),
+        }).pipe(T.Http({ method: "POST", uri: "/v1/customer-sessions/", code: 200 })),
+      ).annotate({
+        identifier: "CustomerSessionsCreateRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          created_at: S.String,
+          modified_at: S.NullOr(S.String),
+          id: S.String,
+          token: S.String,
+          expires_at: S.String,
+          return_url: S.NullOr(S.String),
+          customer_portal_url: S.String,
+          customer_id: S.String,
+          customer: S.Unknown,
+        }),
+      ).annotate({ identifier: "CustomerSession" });
+  }
+}
+function __c229(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          organization_id: S.optional(S.Unknown.pipe(T.Query())),
+        }).pipe(T.Http({ method: "GET", uri: "/v1/customers/export", code: 200 })),
+      ).annotate({ identifier: "CustomersExportRequest" });
+  }
+}
+function __c230(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String.pipe(T.Label()),
+        }).pipe(T.Http({ method: "GET", uri: "/v1/customers/{id}", code: 200 })),
+      ).annotate({ identifier: "CustomersGetRequest" });
+  }
+}
+function __c231(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String.pipe(T.Label()),
+          page: S.optional(S.Number.pipe(T.Query())),
+          limit: S.optional(S.Number.pipe(T.Query())),
+        }).pipe(T.Http({ method: "GET", uri: "/v1/benefits/{id}/files", code: 200 })),
+      ).annotate({ identifier: "BenefitsFilesRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          organization_id: S.String,
+          name: S.String,
+          path: S.String,
+          mime_type: S.String,
+          size: S.Number,
+          storage_version: S.NullOr(S.String),
+          checksum_etag: S.NullOr(S.String),
+          checksum_sha256_base64: S.NullOr(S.String),
+          checksum_sha256_hex: S.NullOr(S.String),
+          last_modified_at: S.NullOr(S.String),
+          version: S.NullOr(S.String),
+          service: S.String,
+          is_uploaded: S.Boolean,
+          created_at: S.String,
+          flagged_malicious_at: S.NullOr(S.String),
+          downloaders: S.Number,
+          downloads: S.Number,
+          size_readable: S.String,
+        }),
+      ).annotate({ identifier: "BenefitDownloadableFile" });
+    case 2:
+      return S.Array(__S(1849, __c231, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          items: __S(1850, __c231, 2),
+          pagination: __S(1472, __c184, 0),
+        }),
+      ).annotate({
+        identifier: "ListResourceBenefitDownloadableFile",
+      });
+  }
+}
+function __c232(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          external_id: S.String.pipe(T.Label()),
+        }).pipe(T.Http({ method: "GET", uri: "/v1/customers/external/{external_id}", code: 200 })),
+      ).annotate({
+        identifier: "CustomersGetExternalRequest",
+      });
+  }
+}
+function __c233(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Unknown.pipe(T.RawResponseRoot())).annotate({
+        identifier: "CustomersGetExternalResponse",
+      });
+  }
+}
+function __c234(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String.pipe(T.Label()),
+        }).pipe(T.Http({ method: "GET", uri: "/v1/customers/{id}/state", code: 200 })),
+      ).annotate({ identifier: "CustomersGetStateRequest" });
+  }
+}
+function __c235(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Unknown.pipe(T.RawResponseRoot())).annotate({
+        identifier: "CustomersGetStateResponse",
+      });
+  }
+}
+function __c236(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          external_id: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({ method: "GET", uri: "/v1/customers/external/{external_id}/state", code: 200 }),
+        ),
+      ).annotate({
+        identifier: "CustomersGetStateExternalRequest",
+      });
+  }
+}
+function __c237(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          organization_id: S.optional(S.Unknown.pipe(T.Query())),
+          email: S.optional(S.String.pipe(T.Query())),
+          query: S.optional(S.String.pipe(T.Query())),
+          active: S.optional(S.Boolean.pipe(T.Query())),
+          page: S.optional(S.Number.pipe(T.Query())),
+          limit: S.optional(S.Number.pipe(T.Query())),
+          sorting: S.optional(__S(1464, __c183, 0).pipe(T.Query())),
+          metadata: S.optional(__S(120, __c15, 0).pipe(T.Query())),
+        }).pipe(T.Http({ method: "GET", uri: "/v1/customers/", code: 200 })),
+      ).annotate({ identifier: "CustomersListRequest" });
+    case 1:
+      return S.Array(S.Unknown);
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          items: __S(1897, __c237, 1),
+          pagination: __S(1472, __c184, 0),
+        }),
+      ).annotate({ identifier: "ListResourceCustomer" });
+  }
+}
+function __c238(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String.pipe(T.Label()),
+          page: S.optional(S.Number.pipe(T.Query())),
+          limit: S.optional(S.Number.pipe(T.Query())),
+        }).pipe(T.Http({ method: "GET", uri: "/v1/customers/{id}/payment-methods", code: 200 })),
+      ).annotate({
+        identifier: "CustomersListPaymentMethodsRequest",
+      });
+  }
+}
+function __c239(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.Unknown);
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          items: __S(1912, __c239, 0),
+          pagination: __S(1472, __c184, 0),
+        }),
+      ).annotate({
+        identifier: "ListResourcePaymentMethod",
+      });
+  }
+}
+function __c240(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          external_id: S.String.pipe(T.Label()),
+          page: S.optional(S.Number.pipe(T.Query())),
+          limit: S.optional(S.Number.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/v1/customers/external/{external_id}/payment-methods",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "CustomersListPaymentMethodsExternalRequest",
+      });
+  }
+}
+function __c241(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String.pipe(T.Label()),
+          email: S.String,
+          name: S.optional(S.NullOr(S.String)),
+          external_id: S.optional(S.NullOr(S.String)),
+          role: S.optional(S.String),
+        }).pipe(T.Http({ method: "POST", uri: "/v1/customers/{id}/members", code: 200 })),
+      ).annotate({
+        identifier: "CustomersMembersCreateRequest",
+      });
+  }
+}
+function __c242(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          external_id: S.String.pipe(T.Label()),
+          email: S.String,
+          name: S.optional(S.NullOr(S.String)),
+          role: S.optional(S.String),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/v1/customers/external/{external_id}/members",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "CustomersMembersCreateExternalRequest",
+      });
+  }
+}
+function __c243(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String.pipe(T.Label()),
+          member_id: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({ method: "DELETE", uri: "/v1/customers/{id}/members/{member_id}", code: 200 }),
+        ),
+      ).annotate({
+        identifier: "CustomersMembersDeleteRequest",
+      });
+  }
+}
+function __c244(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          external_id: S.String.pipe(T.Label()),
+          member_external_id: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/v1/customers/external/{external_id}/members/{member_external_id}",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "CustomersMembersDeleteExternalRequest",
+      });
+  }
+}
+function __c245(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String.pipe(T.Label()),
+        }).pipe(T.Http({ method: "GET", uri: "/v1/benefits/{id}", code: 200 })),
+      ).annotate({ identifier: "BenefitsGetRequest" });
+  }
+}
+function __c246(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String.pipe(T.Label()),
+          member_id: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({ method: "GET", uri: "/v1/customers/{id}/members/{member_id}", code: 200 }),
+        ),
+      ).annotate({
+        identifier: "CustomersMembersGetRequest",
+      });
+  }
+}
+function __c247(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          external_id: S.String.pipe(T.Label()),
+          member_external_id: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/v1/customers/external/{external_id}/members/{member_external_id}",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "CustomersMembersGetExternalRequest",
+      });
+  }
+}
+function __c248(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String.pipe(T.Label()),
+          role: S.optional(S.String.pipe(T.Query())),
+          page: S.optional(S.Number.pipe(T.Query())),
+          limit: S.optional(S.Number.pipe(T.Query())),
+          sorting: S.optional(__S(1464, __c183, 0).pipe(T.Query())),
+        }).pipe(T.Http({ method: "GET", uri: "/v1/customers/{id}/members", code: 200 })),
+      ).annotate({
+        identifier: "CustomersMembersListRequest",
+      });
+  }
+}
+function __c249(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(1456, __c182, 0));
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          items: __S(1992, __c249, 0),
+          pagination: __S(1472, __c184, 0),
+        }),
+      ).annotate({ identifier: "ListResourceMember" });
+  }
+}
+function __c250(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          external_id: S.String.pipe(T.Label()),
+          role: S.optional(S.String.pipe(T.Query())),
+          page: S.optional(S.Number.pipe(T.Query())),
+          limit: S.optional(S.Number.pipe(T.Query())),
+          sorting: S.optional(__S(1464, __c183, 0).pipe(T.Query())),
+        }).pipe(
+          T.Http({ method: "GET", uri: "/v1/customers/external/{external_id}/members", code: 200 }),
+        ),
+      ).annotate({
+        identifier: "CustomersMembersListExternalRequest",
+      });
+  }
+}
+function __c251(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String.pipe(T.Label()),
+          member_id: S.String.pipe(T.Label()),
+          name: S.optional(S.NullOr(S.String)),
+          email: S.optional(S.NullOr(S.String)),
+          role: S.optional(S.NullOr(S.String)),
+        }).pipe(
+          T.Http({ method: "PATCH", uri: "/v1/customers/{id}/members/{member_id}", code: 200 }),
+        ),
+      ).annotate({
+        identifier: "CustomersMembersUpdateRequest",
+      });
+  }
+}
+function __c252(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          external_id: S.String.pipe(T.Label()),
+          member_external_id: S.String.pipe(T.Label()),
+          name: S.optional(S.NullOr(S.String)),
+          email: S.optional(S.NullOr(S.String)),
+          role: S.optional(S.NullOr(S.String)),
+        }).pipe(
+          T.Http({
+            method: "PATCH",
+            uri: "/v1/customers/external/{external_id}/members/{member_external_id}",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "CustomersMembersUpdateExternalRequest",
+      });
+  }
+}
+function __c253(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, S.Unknown);
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String.pipe(T.Label()),
+          metadata: S.optional(__S(2024, __c253, 0)),
+          email: S.optional(S.NullOr(S.String)),
+          name: S.optional(S.NullOr(S.String)),
+          billing_address: S.optional(S.NullOr(__S(888, __c111, 0))),
+          tax_id: S.optional(S.NullOr(S.String)),
+          locale: S.optional(S.NullOr(S.String)),
+          external_id: S.optional(S.NullOr(S.String)),
+          type: S.optional(S.NullOr(S.String)),
+        }).pipe(T.Http({ method: "PATCH", uri: "/v1/customers/{id}", code: 200 })),
+      ).annotate({ identifier: "CustomersUpdateRequest" });
+  }
+}
+function __c254(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, S.Unknown);
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          external_id: S.String.pipe(T.Label()),
+          metadata: S.optional(__S(2032, __c254, 0)),
+          email: S.optional(S.NullOr(S.String)),
+          name: S.optional(S.NullOr(S.String)),
+          billing_address: S.optional(S.NullOr(__S(888, __c111, 0))),
+          tax_id: S.optional(S.NullOr(S.String)),
+          locale: S.optional(S.NullOr(S.String)),
+        }).pipe(
+          T.Http({ method: "PATCH", uri: "/v1/customers/external/{external_id}", code: 200 }),
+        ),
+      ).annotate({
+        identifier: "CustomersUpdateExternalRequest",
+      });
+  }
+}
+function __c255(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          body: S.Unknown.pipe(T.HttpBody()),
+        }).pipe(T.Http({ method: "POST", uri: "/v1/custom-fields/", code: 200 })),
+      ).annotate({
+        identifier: "CustomFieldsCreateRequest",
+      });
+  }
+}
+function __c256(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Unknown.pipe(T.RawResponseRoot())).annotate({
+        identifier: "CustomFieldsCreateResponse",
+      });
+  }
+}
+function __c257(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String.pipe(T.Label()),
+        }).pipe(T.Http({ method: "DELETE", uri: "/v1/custom-fields/{id}", code: 200 })),
+      ).annotate({
+        identifier: "CustomFieldsDeleteRequest",
+      });
+  }
+}
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

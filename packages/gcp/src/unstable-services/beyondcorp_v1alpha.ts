@@ -1825,8 +1825,8 @@ export const cancelOrganizationsLocationsOperations: API.OperationMethod<
   CancelOrganizationsLocationsOperationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1, __c0, 1) as any as S.Schema<CancelOrganizationsLocationsOperationsRequest>,
-  output: __S(2, __c0, 2) as any as S.Schema<Empty>,
+  input: __S(768, __c48, 0) as any as S.Schema<CancelOrganizationsLocationsOperationsRequest>,
+  output: __S(800, __c50, 0) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1840,11 +1840,11 @@ export const cancelOrganizationsLocationsSubscriptions: API.OperationMethod<
   CancelOrganizationsLocationsSubscriptionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3, __c0, 3) as any as S.Schema<CancelOrganizationsLocationsSubscriptionsRequest>,
+  input: __S(1008, __c63, 0) as any as S.Schema<CancelOrganizationsLocationsSubscriptionsRequest>,
   output: __S(
-    4,
-    __c0,
-    4,
+    1009,
+    __c63,
+    1,
   ) as any as S.Schema<GoogleCloudBeyondcorpSaasplatformSubscriptionsV1alphaCancelSubscriptionResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
@@ -1864,8 +1864,8 @@ export const cancelProjectsLocationsOperations: API.OperationMethod<
   CancelProjectsLocationsOperationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(5, __c0, 5) as any as S.Schema<CancelProjectsLocationsOperationsRequest>,
-  output: __S(2, __c0, 2) as any as S.Schema<Empty>,
+  input: __S(1184, __c74, 0) as any as S.Schema<CancelProjectsLocationsOperationsRequest>,
+  output: __S(800, __c50, 0) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1883,11 +1883,15 @@ export const configuredInsightOrganizationsLocationsInsights: API.PaginatedOpera
   GcpOpContext,
   GoogleCloudBeyondcorpSaasplatformInsightsV1alphaConfiguredInsightResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(7, __c0, 7) as any as S.Schema<ConfiguredInsightOrganizationsLocationsInsightsRequest>,
+  input: __S(
+    1360,
+    __c85,
+    0,
+  ) as any as S.Schema<ConfiguredInsightOrganizationsLocationsInsightsRequest>,
   output: __S(
-    14,
-    __c1,
-    6,
+    1376,
+    __c86,
+    0,
   ) as any as S.Schema<GoogleCloudBeyondcorpSaasplatformInsightsV1alphaConfiguredInsightResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
@@ -1904,11 +1908,11 @@ export const configuredInsightProjectsLocationsInsights: API.PaginatedOperationM
   GcpOpContext,
   GoogleCloudBeyondcorpSaasplatformInsightsV1alphaConfiguredInsightResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(15, __c1, 7) as any as S.Schema<ConfiguredInsightProjectsLocationsInsightsRequest>,
+  input: __S(1600, __c100, 0) as any as S.Schema<ConfiguredInsightProjectsLocationsInsightsRequest>,
   output: __S(
-    14,
-    __c1,
-    6,
+    1376,
+    __c86,
+    0,
   ) as any as S.Schema<GoogleCloudBeyondcorpSaasplatformInsightsV1alphaConfiguredInsightResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
@@ -1929,10 +1933,10 @@ export const createOrganizationsLocationsSubscriptions: API.OperationMethod<
   CreateOrganizationsLocationsSubscriptionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(17, __c2, 1) as any as S.Schema<CreateOrganizationsLocationsSubscriptionsRequest>,
+  input: __S(1792, __c112, 0) as any as S.Schema<CreateOrganizationsLocationsSubscriptionsRequest>,
   output: __S(
-    16,
-    __c2,
+    1808,
+    __c113,
     0,
   ) as any as S.Schema<GoogleCloudBeyondcorpSaasplatformSubscriptionsV1alphaSubscription>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
@@ -1953,8 +1957,8 @@ export const createProjectsLocationsAppConnections: API.OperationMethod<
   CreateProjectsLocationsAppConnectionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(22, __c2, 6) as any as S.Schema<CreateProjectsLocationsAppConnectionsRequest>,
-  output: __S(26, __c3, 2) as any as S.Schema<GoogleLongrunningOperation>,
+  input: __S(0, __c0, 0) as any as S.Schema<CreateProjectsLocationsAppConnectionsRequest>,
+  output: __S(34, __c2, 2) as any as S.Schema<GoogleLongrunningOperation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1973,8 +1977,8 @@ export const createProjectsLocationsAppConnectors: API.OperationMethod<
   CreateProjectsLocationsAppConnectorsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(32, __c4, 0) as any as S.Schema<CreateProjectsLocationsAppConnectorsRequest>,
-  output: __S(26, __c3, 2) as any as S.Schema<GoogleLongrunningOperation>,
+  input: __S(96, __c6, 0) as any as S.Schema<CreateProjectsLocationsAppConnectorsRequest>,
+  output: __S(34, __c2, 2) as any as S.Schema<GoogleLongrunningOperation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1993,8 +1997,8 @@ export const createProjectsLocationsAppGateways: API.OperationMethod<
   CreateProjectsLocationsAppGatewaysError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(36, __c4, 4) as any as S.Schema<CreateProjectsLocationsAppGatewaysRequest>,
-  output: __S(26, __c3, 2) as any as S.Schema<GoogleLongrunningOperation>,
+  input: __S(160, __c10, 0) as any as S.Schema<CreateProjectsLocationsAppGatewaysRequest>,
+  output: __S(34, __c2, 2) as any as S.Schema<GoogleLongrunningOperation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2013,8 +2017,8 @@ export const createProjectsLocationsConnections: API.OperationMethod<
   CreateProjectsLocationsConnectionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(39, __c4, 7) as any as S.Schema<CreateProjectsLocationsConnectionsRequest>,
-  output: __S(26, __c3, 2) as any as S.Schema<GoogleLongrunningOperation>,
+  input: __S(192, __c12, 0) as any as S.Schema<CreateProjectsLocationsConnectionsRequest>,
+  output: __S(34, __c2, 2) as any as S.Schema<GoogleLongrunningOperation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2033,8 +2037,8 @@ export const createProjectsLocationsConnectors: API.OperationMethod<
   CreateProjectsLocationsConnectorsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(43, __c5, 3) as any as S.Schema<CreateProjectsLocationsConnectorsRequest>,
-  output: __S(26, __c3, 2) as any as S.Schema<GoogleLongrunningOperation>,
+  input: __S(224, __c14, 0) as any as S.Schema<CreateProjectsLocationsConnectorsRequest>,
+  output: __S(34, __c2, 2) as any as S.Schema<GoogleLongrunningOperation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2053,8 +2057,8 @@ export const createProjectsLocationsSecurityGateways: API.OperationMethod<
   CreateProjectsLocationsSecurityGatewaysError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(55, __c6, 7) as any as S.Schema<CreateProjectsLocationsSecurityGatewaysRequest>,
-  output: __S(26, __c3, 2) as any as S.Schema<GoogleLongrunningOperation>,
+  input: __S(272, __c17, 0) as any as S.Schema<CreateProjectsLocationsSecurityGatewaysRequest>,
+  output: __S(34, __c2, 2) as any as S.Schema<GoogleLongrunningOperation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2074,11 +2078,11 @@ export const createProjectsLocationsSecurityGatewaysApplications: API.OperationM
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    67,
-    __c8,
-    3,
+    320,
+    __c20,
+    0,
   ) as any as S.Schema<CreateProjectsLocationsSecurityGatewaysApplicationsRequest>,
-  output: __S(26, __c3, 2) as any as S.Schema<GoogleLongrunningOperation>,
+  output: __S(34, __c2, 2) as any as S.Schema<GoogleLongrunningOperation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2097,8 +2101,8 @@ export const deleteOrganizationsLocationsOperations: API.OperationMethod<
   DeleteOrganizationsLocationsOperationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(68, __c8, 4) as any as S.Schema<DeleteOrganizationsLocationsOperationsRequest>,
-  output: __S(2, __c0, 2) as any as S.Schema<Empty>,
+  input: __S(352, __c22, 0) as any as S.Schema<DeleteOrganizationsLocationsOperationsRequest>,
+  output: __S(800, __c50, 0) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2117,8 +2121,8 @@ export const deleteProjectsLocationsAppConnections: API.OperationMethod<
   DeleteProjectsLocationsAppConnectionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(69, __c8, 5) as any as S.Schema<DeleteProjectsLocationsAppConnectionsRequest>,
-  output: __S(26, __c3, 2) as any as S.Schema<GoogleLongrunningOperation>,
+  input: __S(368, __c23, 0) as any as S.Schema<DeleteProjectsLocationsAppConnectionsRequest>,
+  output: __S(34, __c2, 2) as any as S.Schema<GoogleLongrunningOperation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2137,8 +2141,8 @@ export const deleteProjectsLocationsAppConnectors: API.OperationMethod<
   DeleteProjectsLocationsAppConnectorsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(70, __c8, 6) as any as S.Schema<DeleteProjectsLocationsAppConnectorsRequest>,
-  output: __S(26, __c3, 2) as any as S.Schema<GoogleLongrunningOperation>,
+  input: __S(384, __c24, 0) as any as S.Schema<DeleteProjectsLocationsAppConnectorsRequest>,
+  output: __S(34, __c2, 2) as any as S.Schema<GoogleLongrunningOperation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2157,8 +2161,8 @@ export const deleteProjectsLocationsAppGateways: API.OperationMethod<
   DeleteProjectsLocationsAppGatewaysError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(71, __c8, 7) as any as S.Schema<DeleteProjectsLocationsAppGatewaysRequest>,
-  output: __S(26, __c3, 2) as any as S.Schema<GoogleLongrunningOperation>,
+  input: __S(400, __c25, 0) as any as S.Schema<DeleteProjectsLocationsAppGatewaysRequest>,
+  output: __S(34, __c2, 2) as any as S.Schema<GoogleLongrunningOperation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2177,8 +2181,8 @@ export const deleteProjectsLocationsConnections: API.OperationMethod<
   DeleteProjectsLocationsConnectionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(72, __c9, 0) as any as S.Schema<DeleteProjectsLocationsConnectionsRequest>,
-  output: __S(26, __c3, 2) as any as S.Schema<GoogleLongrunningOperation>,
+  input: __S(416, __c26, 0) as any as S.Schema<DeleteProjectsLocationsConnectionsRequest>,
+  output: __S(34, __c2, 2) as any as S.Schema<GoogleLongrunningOperation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2197,8 +2201,8 @@ export const deleteProjectsLocationsConnectors: API.OperationMethod<
   DeleteProjectsLocationsConnectorsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(73, __c9, 1) as any as S.Schema<DeleteProjectsLocationsConnectorsRequest>,
-  output: __S(26, __c3, 2) as any as S.Schema<GoogleLongrunningOperation>,
+  input: __S(432, __c27, 0) as any as S.Schema<DeleteProjectsLocationsConnectorsRequest>,
+  output: __S(34, __c2, 2) as any as S.Schema<GoogleLongrunningOperation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2217,8 +2221,8 @@ export const deleteProjectsLocationsOperations: API.OperationMethod<
   DeleteProjectsLocationsOperationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(74, __c9, 2) as any as S.Schema<DeleteProjectsLocationsOperationsRequest>,
-  output: __S(2, __c0, 2) as any as S.Schema<Empty>,
+  input: __S(448, __c28, 0) as any as S.Schema<DeleteProjectsLocationsOperationsRequest>,
+  output: __S(800, __c50, 0) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2237,8 +2241,8 @@ export const deleteProjectsLocationsSecurityGateways: API.OperationMethod<
   DeleteProjectsLocationsSecurityGatewaysError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(75, __c9, 3) as any as S.Schema<DeleteProjectsLocationsSecurityGatewaysRequest>,
-  output: __S(26, __c3, 2) as any as S.Schema<GoogleLongrunningOperation>,
+  input: __S(464, __c29, 0) as any as S.Schema<DeleteProjectsLocationsSecurityGatewaysRequest>,
+  output: __S(34, __c2, 2) as any as S.Schema<GoogleLongrunningOperation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2258,11 +2262,11 @@ export const deleteProjectsLocationsSecurityGatewaysApplications: API.OperationM
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    76,
-    __c9,
-    4,
+    480,
+    __c30,
+    0,
   ) as any as S.Schema<DeleteProjectsLocationsSecurityGatewaysApplicationsRequest>,
-  output: __S(26, __c3, 2) as any as S.Schema<GoogleLongrunningOperation>,
+  output: __S(34, __c2, 2) as any as S.Schema<GoogleLongrunningOperation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2276,8 +2280,8 @@ export const getIamPolicyProjectsLocationsAppConnections: API.OperationMethod<
   GetIamPolicyProjectsLocationsAppConnectionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(77, __c9, 5) as any as S.Schema<GetIamPolicyProjectsLocationsAppConnectionsRequest>,
-  output: __S(85, __c10, 5) as any as S.Schema<GoogleIamV1Policy>,
+  input: __S(496, __c31, 0) as any as S.Schema<GetIamPolicyProjectsLocationsAppConnectionsRequest>,
+  output: __S(519, __c32, 7) as any as S.Schema<GoogleIamV1Policy>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2291,8 +2295,8 @@ export const getIamPolicyProjectsLocationsAppConnectors: API.OperationMethod<
   GetIamPolicyProjectsLocationsAppConnectorsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(86, __c10, 6) as any as S.Schema<GetIamPolicyProjectsLocationsAppConnectorsRequest>,
-  output: __S(85, __c10, 5) as any as S.Schema<GoogleIamV1Policy>,
+  input: __S(528, __c33, 0) as any as S.Schema<GetIamPolicyProjectsLocationsAppConnectorsRequest>,
+  output: __S(519, __c32, 7) as any as S.Schema<GoogleIamV1Policy>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2306,8 +2310,8 @@ export const getIamPolicyProjectsLocationsAppGateways: API.OperationMethod<
   GetIamPolicyProjectsLocationsAppGatewaysError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(87, __c10, 7) as any as S.Schema<GetIamPolicyProjectsLocationsAppGatewaysRequest>,
-  output: __S(85, __c10, 5) as any as S.Schema<GoogleIamV1Policy>,
+  input: __S(544, __c34, 0) as any as S.Schema<GetIamPolicyProjectsLocationsAppGatewaysRequest>,
+  output: __S(519, __c32, 7) as any as S.Schema<GoogleIamV1Policy>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2325,11 +2329,11 @@ export const getIamPolicyProjectsLocationsApplicationDomains: API.OperationMetho
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    88,
-    __c11,
+    560,
+    __c35,
     0,
   ) as any as S.Schema<GetIamPolicyProjectsLocationsApplicationDomainsRequest>,
-  output: __S(85, __c10, 5) as any as S.Schema<GoogleIamV1Policy>,
+  output: __S(519, __c32, 7) as any as S.Schema<GoogleIamV1Policy>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2343,8 +2347,8 @@ export const getIamPolicyProjectsLocationsApplications: API.OperationMethod<
   GetIamPolicyProjectsLocationsApplicationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(89, __c11, 1) as any as S.Schema<GetIamPolicyProjectsLocationsApplicationsRequest>,
-  output: __S(85, __c10, 5) as any as S.Schema<GoogleIamV1Policy>,
+  input: __S(576, __c36, 0) as any as S.Schema<GetIamPolicyProjectsLocationsApplicationsRequest>,
+  output: __S(519, __c32, 7) as any as S.Schema<GoogleIamV1Policy>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2358,8 +2362,8 @@ export const getIamPolicyProjectsLocationsConnections: API.OperationMethod<
   GetIamPolicyProjectsLocationsConnectionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(90, __c11, 2) as any as S.Schema<GetIamPolicyProjectsLocationsConnectionsRequest>,
-  output: __S(85, __c10, 5) as any as S.Schema<GoogleIamV1Policy>,
+  input: __S(592, __c37, 0) as any as S.Schema<GetIamPolicyProjectsLocationsConnectionsRequest>,
+  output: __S(519, __c32, 7) as any as S.Schema<GoogleIamV1Policy>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2373,8 +2377,8 @@ export const getIamPolicyProjectsLocationsConnectors: API.OperationMethod<
   GetIamPolicyProjectsLocationsConnectorsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(91, __c11, 3) as any as S.Schema<GetIamPolicyProjectsLocationsConnectorsRequest>,
-  output: __S(85, __c10, 5) as any as S.Schema<GoogleIamV1Policy>,
+  input: __S(608, __c38, 0) as any as S.Schema<GetIamPolicyProjectsLocationsConnectorsRequest>,
+  output: __S(519, __c32, 7) as any as S.Schema<GoogleIamV1Policy>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2388,8 +2392,12 @@ export const getIamPolicyProjectsLocationsSecurityGateways: API.OperationMethod<
   GetIamPolicyProjectsLocationsSecurityGatewaysError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(92, __c11, 4) as any as S.Schema<GetIamPolicyProjectsLocationsSecurityGatewaysRequest>,
-  output: __S(85, __c10, 5) as any as S.Schema<GoogleIamV1Policy>,
+  input: __S(
+    624,
+    __c39,
+    0,
+  ) as any as S.Schema<GetIamPolicyProjectsLocationsSecurityGatewaysRequest>,
+  output: __S(519, __c32, 7) as any as S.Schema<GoogleIamV1Policy>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2407,11 +2415,11 @@ export const getIamPolicyProjectsLocationsSecurityGatewaysApplications: API.Oper
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    93,
-    __c11,
-    5,
+    640,
+    __c40,
+    0,
   ) as any as S.Schema<GetIamPolicyProjectsLocationsSecurityGatewaysApplicationsRequest>,
-  output: __S(85, __c10, 5) as any as S.Schema<GoogleIamV1Policy>,
+  output: __S(519, __c32, 7) as any as S.Schema<GoogleIamV1Policy>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2425,11 +2433,11 @@ export const getOrganizationsLocationsInsights: API.OperationMethod<
   GetOrganizationsLocationsInsightsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(94, __c11, 6) as any as S.Schema<GetOrganizationsLocationsInsightsRequest>,
+  input: __S(656, __c41, 0) as any as S.Schema<GetOrganizationsLocationsInsightsRequest>,
   output: __S(
-    99,
-    __c12,
-    3,
+    676,
+    __c42,
+    4,
   ) as any as S.Schema<GoogleCloudBeyondcorpSaasplatformInsightsV1alphaInsight>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
@@ -2444,8 +2452,8 @@ export const getOrganizationsLocationsOperations: API.OperationMethod<
   GetOrganizationsLocationsOperationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(100, __c12, 4) as any as S.Schema<GetOrganizationsLocationsOperationsRequest>,
-  output: __S(26, __c3, 2) as any as S.Schema<GoogleLongrunningOperation>,
+  input: __S(688, __c43, 0) as any as S.Schema<GetOrganizationsLocationsOperationsRequest>,
+  output: __S(34, __c2, 2) as any as S.Schema<GoogleLongrunningOperation>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2459,10 +2467,10 @@ export const getOrganizationsLocationsSubscriptions: API.OperationMethod<
   GetOrganizationsLocationsSubscriptionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(101, __c12, 5) as any as S.Schema<GetOrganizationsLocationsSubscriptionsRequest>,
+  input: __S(704, __c44, 0) as any as S.Schema<GetOrganizationsLocationsSubscriptionsRequest>,
   output: __S(
-    16,
-    __c2,
+    1808,
+    __c113,
     0,
   ) as any as S.Schema<GoogleCloudBeyondcorpSaasplatformSubscriptionsV1alphaSubscription>,
   errors: [NotFound, Forbidden, UnknownGCPError],
@@ -2478,8 +2486,8 @@ export const getProjectsLocations: API.OperationMethod<
   GetProjectsLocationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(102, __c12, 6) as any as S.Schema<GetProjectsLocationsRequest>,
-  output: __S(103, __c12, 7) as any as S.Schema<GoogleCloudLocationLocation>,
+  input: __S(720, __c45, 0) as any as S.Schema<GetProjectsLocationsRequest>,
+  output: __S(736, __c46, 0) as any as S.Schema<GoogleCloudLocationLocation>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2493,11 +2501,11 @@ export const getProjectsLocationsAppConnections: API.OperationMethod<
   GetProjectsLocationsAppConnectionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(104, __c13, 0) as any as S.Schema<GetProjectsLocationsAppConnectionsRequest>,
+  input: __S(752, __c47, 0) as any as S.Schema<GetProjectsLocationsAppConnectionsRequest>,
   output: __S(
-    21,
-    __c2,
-    5,
+    81,
+    __c5,
+    1,
   ) as any as S.Schema<GoogleCloudBeyondcorpAppconnectionsV1alphaAppConnection>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
@@ -2512,11 +2520,11 @@ export const getProjectsLocationsAppConnectors: API.OperationMethod<
   GetProjectsLocationsAppConnectorsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(105, __c13, 1) as any as S.Schema<GetProjectsLocationsAppConnectorsRequest>,
+  input: __S(816, __c51, 0) as any as S.Schema<GetProjectsLocationsAppConnectorsRequest>,
   output: __S(
-    31,
-    __c3,
-    7,
+    128,
+    __c8,
+    0,
   ) as any as S.Schema<GoogleCloudBeyondcorpAppconnectorsV1alphaAppConnector>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
@@ -2531,8 +2539,8 @@ export const getProjectsLocationsAppGateways: API.OperationMethod<
   GetProjectsLocationsAppGatewaysError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(106, __c13, 2) as any as S.Schema<GetProjectsLocationsAppGatewaysRequest>,
-  output: __S(35, __c4, 3) as any as S.Schema<AppGateway>,
+  input: __S(832, __c52, 0) as any as S.Schema<GetProjectsLocationsAppGatewaysRequest>,
+  output: __S(178, __c11, 2) as any as S.Schema<AppGateway>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2546,8 +2554,8 @@ export const getProjectsLocationsConnections: API.OperationMethod<
   GetProjectsLocationsConnectionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(107, __c13, 3) as any as S.Schema<GetProjectsLocationsConnectionsRequest>,
-  output: __S(38, __c4, 6) as any as S.Schema<Connection>,
+  input: __S(848, __c53, 0) as any as S.Schema<GetProjectsLocationsConnectionsRequest>,
+  output: __S(209, __c13, 1) as any as S.Schema<Connection>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2561,8 +2569,8 @@ export const getProjectsLocationsConnectors: API.OperationMethod<
   GetProjectsLocationsConnectorsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(108, __c13, 4) as any as S.Schema<GetProjectsLocationsConnectorsRequest>,
-  output: __S(42, __c5, 2) as any as S.Schema<Connector>,
+  input: __S(864, __c54, 0) as any as S.Schema<GetProjectsLocationsConnectorsRequest>,
+  output: __S(240, __c15, 0) as any as S.Schema<Connector>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2576,11 +2584,11 @@ export const getProjectsLocationsInsights: API.OperationMethod<
   GetProjectsLocationsInsightsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(109, __c13, 5) as any as S.Schema<GetProjectsLocationsInsightsRequest>,
+  input: __S(880, __c55, 0) as any as S.Schema<GetProjectsLocationsInsightsRequest>,
   output: __S(
-    99,
-    __c12,
-    3,
+    676,
+    __c42,
+    4,
   ) as any as S.Schema<GoogleCloudBeyondcorpSaasplatformInsightsV1alphaInsight>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
@@ -2595,8 +2603,8 @@ export const getProjectsLocationsOperations: API.OperationMethod<
   GetProjectsLocationsOperationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(110, __c13, 6) as any as S.Schema<GetProjectsLocationsOperationsRequest>,
-  output: __S(26, __c3, 2) as any as S.Schema<GoogleLongrunningOperation>,
+  input: __S(896, __c56, 0) as any as S.Schema<GetProjectsLocationsOperationsRequest>,
+  output: __S(34, __c2, 2) as any as S.Schema<GoogleLongrunningOperation>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2610,10 +2618,10 @@ export const getProjectsLocationsSecurityGateways: API.OperationMethod<
   GetProjectsLocationsSecurityGatewaysError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(111, __c13, 7) as any as S.Schema<GetProjectsLocationsSecurityGatewaysRequest>,
+  input: __S(912, __c57, 0) as any as S.Schema<GetProjectsLocationsSecurityGatewaysRequest>,
   output: __S(
-    54,
-    __c6,
+    310,
+    __c19,
     6,
   ) as any as S.Schema<GoogleCloudBeyondcorpSecuritygatewaysV1alphaSecurityGateway>,
   errors: [NotFound, Forbidden, UnknownGCPError],
@@ -2633,14 +2641,14 @@ export const getProjectsLocationsSecurityGatewaysApplications: API.OperationMeth
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    112,
-    __c14,
+    928,
+    __c58,
     0,
   ) as any as S.Schema<GetProjectsLocationsSecurityGatewaysApplicationsRequest>,
   output: __S(
-    66,
-    __c8,
-    2,
+    346,
+    __c21,
+    10,
   ) as any as S.Schema<GoogleCloudBeyondcorpSecuritygatewaysV1alphaApplication>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
@@ -2656,11 +2664,11 @@ export const listOrganizationsLocationsInsights: API.PaginatedOperationMethod<
   GcpOpContext,
   GoogleCloudBeyondcorpSaasplatformInsightsV1alphaListInsightsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(113, __c14, 1) as any as S.Schema<ListOrganizationsLocationsInsightsRequest>,
+  input: __S(944, __c59, 0) as any as S.Schema<ListOrganizationsLocationsInsightsRequest>,
   output: __S(
-    115,
-    __c14,
-    3,
+    961,
+    __c60,
+    1,
   ) as any as S.Schema<GoogleCloudBeyondcorpSaasplatformInsightsV1alphaListInsightsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
@@ -2677,8 +2685,8 @@ export const listOrganizationsLocationsOperations: API.PaginatedOperationMethod<
   GcpOpContext,
   GoogleLongrunningListOperationsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(116, __c14, 4) as any as S.Schema<ListOrganizationsLocationsOperationsRequest>,
-  output: __S(118, __c14, 6) as any as S.Schema<GoogleLongrunningListOperationsResponse>,
+  input: __S(976, __c61, 0) as any as S.Schema<ListOrganizationsLocationsOperationsRequest>,
+  output: __S(993, __c62, 1) as any as S.Schema<GoogleLongrunningListOperationsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2694,11 +2702,11 @@ export const listOrganizationsLocationsSubscriptions: API.PaginatedOperationMeth
   GcpOpContext,
   GoogleCloudBeyondcorpSaasplatformSubscriptionsV1alphaListSubscriptionsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(119, __c14, 7) as any as S.Schema<ListOrganizationsLocationsSubscriptionsRequest>,
+  input: __S(1024, __c64, 0) as any as S.Schema<ListOrganizationsLocationsSubscriptionsRequest>,
   output: __S(
-    121,
-    __c15,
-    1,
+    1026,
+    __c64,
+    2,
   ) as any as S.Schema<GoogleCloudBeyondcorpSaasplatformSubscriptionsV1alphaListSubscriptionsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
@@ -2715,8 +2723,8 @@ export const listProjectsLocations: API.PaginatedOperationMethod<
   GcpOpContext,
   GoogleCloudLocationListLocationsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(122, __c15, 2) as any as S.Schema<ListProjectsLocationsRequest>,
-  output: __S(124, __c15, 4) as any as S.Schema<GoogleCloudLocationListLocationsResponse>,
+  input: __S(1040, __c65, 0) as any as S.Schema<ListProjectsLocationsRequest>,
+  output: __S(1042, __c65, 2) as any as S.Schema<GoogleCloudLocationListLocationsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2732,11 +2740,11 @@ export const listProjectsLocationsAppConnections: API.PaginatedOperationMethod<
   GcpOpContext,
   GoogleCloudBeyondcorpAppconnectionsV1alphaListAppConnectionsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(125, __c15, 5) as any as S.Schema<ListProjectsLocationsAppConnectionsRequest>,
+  input: __S(1056, __c66, 0) as any as S.Schema<ListProjectsLocationsAppConnectionsRequest>,
   output: __S(
-    127,
-    __c15,
-    7,
+    1058,
+    __c66,
+    2,
   ) as any as S.Schema<GoogleCloudBeyondcorpAppconnectionsV1alphaListAppConnectionsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
@@ -2753,10 +2761,10 @@ export const listProjectsLocationsAppConnectors: API.PaginatedOperationMethod<
   GcpOpContext,
   GoogleCloudBeyondcorpAppconnectorsV1alphaListAppConnectorsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(128, __c16, 0) as any as S.Schema<ListProjectsLocationsAppConnectorsRequest>,
+  input: __S(1072, __c67, 0) as any as S.Schema<ListProjectsLocationsAppConnectorsRequest>,
   output: __S(
-    130,
-    __c16,
+    1074,
+    __c67,
     2,
   ) as any as S.Schema<GoogleCloudBeyondcorpAppconnectorsV1alphaListAppConnectorsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
@@ -2774,8 +2782,8 @@ export const listProjectsLocationsAppGateways: API.PaginatedOperationMethod<
   GcpOpContext,
   ListAppGatewaysResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(131, __c16, 3) as any as S.Schema<ListProjectsLocationsAppGatewaysRequest>,
-  output: __S(133, __c16, 5) as any as S.Schema<ListAppGatewaysResponse>,
+  input: __S(1088, __c68, 0) as any as S.Schema<ListProjectsLocationsAppGatewaysRequest>,
+  output: __S(1090, __c68, 2) as any as S.Schema<ListAppGatewaysResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2791,8 +2799,8 @@ export const listProjectsLocationsConnections: API.PaginatedOperationMethod<
   GcpOpContext,
   ListConnectionsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(134, __c16, 6) as any as S.Schema<ListProjectsLocationsConnectionsRequest>,
-  output: __S(136, __c17, 0) as any as S.Schema<ListConnectionsResponse>,
+  input: __S(1104, __c69, 0) as any as S.Schema<ListProjectsLocationsConnectionsRequest>,
+  output: __S(1106, __c69, 2) as any as S.Schema<ListConnectionsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2808,8 +2816,8 @@ export const listProjectsLocationsConnectors: API.PaginatedOperationMethod<
   GcpOpContext,
   ListConnectorsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(137, __c17, 1) as any as S.Schema<ListProjectsLocationsConnectorsRequest>,
-  output: __S(139, __c17, 3) as any as S.Schema<ListConnectorsResponse>,
+  input: __S(1120, __c70, 0) as any as S.Schema<ListProjectsLocationsConnectorsRequest>,
+  output: __S(1122, __c70, 2) as any as S.Schema<ListConnectorsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2825,11 +2833,11 @@ export const listProjectsLocationsInsights: API.PaginatedOperationMethod<
   GcpOpContext,
   GoogleCloudBeyondcorpSaasplatformInsightsV1alphaListInsightsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(140, __c17, 4) as any as S.Schema<ListProjectsLocationsInsightsRequest>,
+  input: __S(1136, __c71, 0) as any as S.Schema<ListProjectsLocationsInsightsRequest>,
   output: __S(
-    115,
-    __c14,
-    3,
+    961,
+    __c60,
+    1,
   ) as any as S.Schema<GoogleCloudBeyondcorpSaasplatformInsightsV1alphaListInsightsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
@@ -2846,8 +2854,8 @@ export const listProjectsLocationsOperations: API.PaginatedOperationMethod<
   GcpOpContext,
   GoogleLongrunningListOperationsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(141, __c17, 5) as any as S.Schema<ListProjectsLocationsOperationsRequest>,
-  output: __S(118, __c14, 6) as any as S.Schema<GoogleLongrunningListOperationsResponse>,
+  input: __S(1152, __c72, 0) as any as S.Schema<ListProjectsLocationsOperationsRequest>,
+  output: __S(993, __c62, 1) as any as S.Schema<GoogleLongrunningListOperationsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2863,11 +2871,11 @@ export const listProjectsLocationsSecurityGateways: API.PaginatedOperationMethod
   GcpOpContext,
   GoogleCloudBeyondcorpSecuritygatewaysV1alphaListSecurityGatewaysResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(142, __c17, 6) as any as S.Schema<ListProjectsLocationsSecurityGatewaysRequest>,
+  input: __S(1168, __c73, 0) as any as S.Schema<ListProjectsLocationsSecurityGatewaysRequest>,
   output: __S(
-    144,
-    __c18,
-    0,
+    1170,
+    __c73,
+    2,
   ) as any as S.Schema<GoogleCloudBeyondcorpSecuritygatewaysV1alphaListSecurityGatewaysResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
@@ -2888,14 +2896,14 @@ export const listProjectsLocationsSecurityGatewaysApplications: API.PaginatedOpe
   GoogleCloudBeyondcorpSecuritygatewaysV1alphaListApplicationsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(
-    145,
-    __c18,
-    1,
+    1200,
+    __c75,
+    0,
   ) as any as S.Schema<ListProjectsLocationsSecurityGatewaysApplicationsRequest>,
   output: __S(
-    147,
-    __c18,
-    3,
+    1202,
+    __c75,
+    2,
   ) as any as S.Schema<GoogleCloudBeyondcorpSecuritygatewaysV1alphaListApplicationsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
@@ -2916,10 +2924,10 @@ export const patchOrganizationsLocationsSubscriptions: API.OperationMethod<
   PatchOrganizationsLocationsSubscriptionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(148, __c18, 4) as any as S.Schema<PatchOrganizationsLocationsSubscriptionsRequest>,
+  input: __S(1216, __c76, 0) as any as S.Schema<PatchOrganizationsLocationsSubscriptionsRequest>,
   output: __S(
-    16,
-    __c2,
+    1808,
+    __c113,
     0,
   ) as any as S.Schema<GoogleCloudBeyondcorpSaasplatformSubscriptionsV1alphaSubscription>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
@@ -2940,8 +2948,8 @@ export const patchProjectsLocationsAppConnections: API.OperationMethod<
   PatchProjectsLocationsAppConnectionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(149, __c18, 5) as any as S.Schema<PatchProjectsLocationsAppConnectionsRequest>,
-  output: __S(26, __c3, 2) as any as S.Schema<GoogleLongrunningOperation>,
+  input: __S(1232, __c77, 0) as any as S.Schema<PatchProjectsLocationsAppConnectionsRequest>,
+  output: __S(34, __c2, 2) as any as S.Schema<GoogleLongrunningOperation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2960,8 +2968,8 @@ export const patchProjectsLocationsAppConnectors: API.OperationMethod<
   PatchProjectsLocationsAppConnectorsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(150, __c18, 6) as any as S.Schema<PatchProjectsLocationsAppConnectorsRequest>,
-  output: __S(26, __c3, 2) as any as S.Schema<GoogleLongrunningOperation>,
+  input: __S(1248, __c78, 0) as any as S.Schema<PatchProjectsLocationsAppConnectorsRequest>,
+  output: __S(34, __c2, 2) as any as S.Schema<GoogleLongrunningOperation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2980,8 +2988,8 @@ export const patchProjectsLocationsConnections: API.OperationMethod<
   PatchProjectsLocationsConnectionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(151, __c18, 7) as any as S.Schema<PatchProjectsLocationsConnectionsRequest>,
-  output: __S(26, __c3, 2) as any as S.Schema<GoogleLongrunningOperation>,
+  input: __S(1264, __c79, 0) as any as S.Schema<PatchProjectsLocationsConnectionsRequest>,
+  output: __S(34, __c2, 2) as any as S.Schema<GoogleLongrunningOperation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3000,8 +3008,8 @@ export const patchProjectsLocationsConnectors: API.OperationMethod<
   PatchProjectsLocationsConnectorsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(152, __c19, 0) as any as S.Schema<PatchProjectsLocationsConnectorsRequest>,
-  output: __S(26, __c3, 2) as any as S.Schema<GoogleLongrunningOperation>,
+  input: __S(1280, __c80, 0) as any as S.Schema<PatchProjectsLocationsConnectorsRequest>,
+  output: __S(34, __c2, 2) as any as S.Schema<GoogleLongrunningOperation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3020,8 +3028,8 @@ export const patchProjectsLocationsSecurityGateways: API.OperationMethod<
   PatchProjectsLocationsSecurityGatewaysError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(153, __c19, 1) as any as S.Schema<PatchProjectsLocationsSecurityGatewaysRequest>,
-  output: __S(26, __c3, 2) as any as S.Schema<GoogleLongrunningOperation>,
+  input: __S(1296, __c81, 0) as any as S.Schema<PatchProjectsLocationsSecurityGatewaysRequest>,
+  output: __S(34, __c2, 2) as any as S.Schema<GoogleLongrunningOperation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3041,11 +3049,11 @@ export const patchProjectsLocationsSecurityGatewaysApplications: API.OperationMe
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    154,
-    __c19,
-    2,
+    1312,
+    __c82,
+    0,
   ) as any as S.Schema<PatchProjectsLocationsSecurityGatewaysApplicationsRequest>,
-  output: __S(26, __c3, 2) as any as S.Schema<GoogleLongrunningOperation>,
+  output: __S(34, __c2, 2) as any as S.Schema<GoogleLongrunningOperation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3064,8 +3072,8 @@ export const reportStatusProjectsLocationsAppConnectors: API.OperationMethod<
   ReportStatusProjectsLocationsAppConnectorsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(156, __c19, 4) as any as S.Schema<ReportStatusProjectsLocationsAppConnectorsRequest>,
-  output: __S(26, __c3, 2) as any as S.Schema<GoogleLongrunningOperation>,
+  input: __S(1329, __c83, 1) as any as S.Schema<ReportStatusProjectsLocationsAppConnectorsRequest>,
+  output: __S(34, __c2, 2) as any as S.Schema<GoogleLongrunningOperation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3084,8 +3092,8 @@ export const reportStatusProjectsLocationsConnectors: API.OperationMethod<
   ReportStatusProjectsLocationsConnectorsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(158, __c19, 6) as any as S.Schema<ReportStatusProjectsLocationsConnectorsRequest>,
-  output: __S(26, __c3, 2) as any as S.Schema<GoogleLongrunningOperation>,
+  input: __S(1345, __c84, 1) as any as S.Schema<ReportStatusProjectsLocationsConnectorsRequest>,
+  output: __S(34, __c2, 2) as any as S.Schema<GoogleLongrunningOperation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3103,14 +3111,14 @@ export const resolveInstanceConfigProjectsLocationsAppConnectors: API.OperationM
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    159,
-    __c19,
-    7,
+    1424,
+    __c89,
+    0,
   ) as any as S.Schema<ResolveInstanceConfigProjectsLocationsAppConnectorsRequest>,
   output: __S(
-    164,
-    __c20,
-    4,
+    1429,
+    __c89,
+    5,
   ) as any as S.Schema<GoogleCloudBeyondcorpAppconnectorsV1alphaResolveInstanceConfigResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
@@ -3129,11 +3137,11 @@ export const resolveInstanceConfigProjectsLocationsConnectors: API.OperationMeth
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    165,
-    __c20,
-    5,
+    1440,
+    __c90,
+    0,
   ) as any as S.Schema<ResolveInstanceConfigProjectsLocationsConnectorsRequest>,
-  output: __S(170, __c21, 2) as any as S.Schema<ResolveInstanceConfigResponse>,
+  output: __S(1445, __c90, 5) as any as S.Schema<ResolveInstanceConfigResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3148,11 +3156,11 @@ export const resolveProjectsLocationsAppConnections: API.PaginatedOperationMetho
   GcpOpContext,
   GoogleCloudBeyondcorpAppconnectionsV1alphaResolveAppConnectionsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(171, __c21, 3) as any as S.Schema<ResolveProjectsLocationsAppConnectionsRequest>,
+  input: __S(1456, __c91, 0) as any as S.Schema<ResolveProjectsLocationsAppConnectionsRequest>,
   output: __S(
-    174,
-    __c21,
-    6,
+    1459,
+    __c91,
+    3,
   ) as any as S.Schema<GoogleCloudBeyondcorpAppconnectionsV1alphaResolveAppConnectionsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
@@ -3169,8 +3177,8 @@ export const resolveProjectsLocationsConnections: API.PaginatedOperationMethod<
   GcpOpContext,
   ResolveConnectionsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(175, __c21, 7) as any as S.Schema<ResolveProjectsLocationsConnectionsRequest>,
-  output: __S(178, __c22, 2) as any as S.Schema<ResolveConnectionsResponse>,
+  input: __S(1472, __c92, 0) as any as S.Schema<ResolveProjectsLocationsConnectionsRequest>,
+  output: __S(1475, __c92, 3) as any as S.Schema<ResolveConnectionsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3185,11 +3193,11 @@ export const restartOrganizationsLocationsSubscriptions: API.OperationMethod<
   RestartOrganizationsLocationsSubscriptionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(179, __c22, 3) as any as S.Schema<RestartOrganizationsLocationsSubscriptionsRequest>,
+  input: __S(1488, __c93, 0) as any as S.Schema<RestartOrganizationsLocationsSubscriptionsRequest>,
   output: __S(
-    180,
-    __c22,
-    4,
+    1489,
+    __c93,
+    1,
   ) as any as S.Schema<GoogleCloudBeyondcorpSaasplatformSubscriptionsV1alphaRestartSubscriptionResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
@@ -3209,8 +3217,8 @@ export const setIamPolicyProjectsLocationsAppConnections: API.OperationMethod<
   SetIamPolicyProjectsLocationsAppConnectionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(182, __c22, 6) as any as S.Schema<SetIamPolicyProjectsLocationsAppConnectionsRequest>,
-  output: __S(85, __c10, 5) as any as S.Schema<GoogleIamV1Policy>,
+  input: __S(1504, __c94, 0) as any as S.Schema<SetIamPolicyProjectsLocationsAppConnectionsRequest>,
+  output: __S(519, __c32, 7) as any as S.Schema<GoogleIamV1Policy>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3229,8 +3237,8 @@ export const setIamPolicyProjectsLocationsAppConnectors: API.OperationMethod<
   SetIamPolicyProjectsLocationsAppConnectorsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(183, __c22, 7) as any as S.Schema<SetIamPolicyProjectsLocationsAppConnectorsRequest>,
-  output: __S(85, __c10, 5) as any as S.Schema<GoogleIamV1Policy>,
+  input: __S(1536, __c96, 0) as any as S.Schema<SetIamPolicyProjectsLocationsAppConnectorsRequest>,
+  output: __S(519, __c32, 7) as any as S.Schema<GoogleIamV1Policy>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3249,8 +3257,8 @@ export const setIamPolicyProjectsLocationsAppGateways: API.OperationMethod<
   SetIamPolicyProjectsLocationsAppGatewaysError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(184, __c23, 0) as any as S.Schema<SetIamPolicyProjectsLocationsAppGatewaysRequest>,
-  output: __S(85, __c10, 5) as any as S.Schema<GoogleIamV1Policy>,
+  input: __S(1552, __c97, 0) as any as S.Schema<SetIamPolicyProjectsLocationsAppGatewaysRequest>,
+  output: __S(519, __c32, 7) as any as S.Schema<GoogleIamV1Policy>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3270,11 +3278,11 @@ export const setIamPolicyProjectsLocationsApplicationDomains: API.OperationMetho
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    185,
-    __c23,
-    1,
+    1568,
+    __c98,
+    0,
   ) as any as S.Schema<SetIamPolicyProjectsLocationsApplicationDomainsRequest>,
-  output: __S(85, __c10, 5) as any as S.Schema<GoogleIamV1Policy>,
+  output: __S(519, __c32, 7) as any as S.Schema<GoogleIamV1Policy>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3293,8 +3301,8 @@ export const setIamPolicyProjectsLocationsApplications: API.OperationMethod<
   SetIamPolicyProjectsLocationsApplicationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(186, __c23, 2) as any as S.Schema<SetIamPolicyProjectsLocationsApplicationsRequest>,
-  output: __S(85, __c10, 5) as any as S.Schema<GoogleIamV1Policy>,
+  input: __S(1584, __c99, 0) as any as S.Schema<SetIamPolicyProjectsLocationsApplicationsRequest>,
+  output: __S(519, __c32, 7) as any as S.Schema<GoogleIamV1Policy>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3313,8 +3321,8 @@ export const setIamPolicyProjectsLocationsConnections: API.OperationMethod<
   SetIamPolicyProjectsLocationsConnectionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(187, __c23, 3) as any as S.Schema<SetIamPolicyProjectsLocationsConnectionsRequest>,
-  output: __S(85, __c10, 5) as any as S.Schema<GoogleIamV1Policy>,
+  input: __S(1616, __c101, 0) as any as S.Schema<SetIamPolicyProjectsLocationsConnectionsRequest>,
+  output: __S(519, __c32, 7) as any as S.Schema<GoogleIamV1Policy>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3333,8 +3341,8 @@ export const setIamPolicyProjectsLocationsConnectors: API.OperationMethod<
   SetIamPolicyProjectsLocationsConnectorsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(188, __c23, 4) as any as S.Schema<SetIamPolicyProjectsLocationsConnectorsRequest>,
-  output: __S(85, __c10, 5) as any as S.Schema<GoogleIamV1Policy>,
+  input: __S(1632, __c102, 0) as any as S.Schema<SetIamPolicyProjectsLocationsConnectorsRequest>,
+  output: __S(519, __c32, 7) as any as S.Schema<GoogleIamV1Policy>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3354,11 +3362,11 @@ export const setIamPolicyProjectsLocationsSecurityGateways: API.OperationMethod<
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    189,
-    __c23,
-    5,
+    1648,
+    __c103,
+    0,
   ) as any as S.Schema<SetIamPolicyProjectsLocationsSecurityGatewaysRequest>,
-  output: __S(85, __c10, 5) as any as S.Schema<GoogleIamV1Policy>,
+  output: __S(519, __c32, 7) as any as S.Schema<GoogleIamV1Policy>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3378,11 +3386,11 @@ export const setIamPolicyProjectsLocationsSecurityGatewaysApplications: API.Oper
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    190,
-    __c23,
-    6,
+    1664,
+    __c104,
+    0,
   ) as any as S.Schema<SetIamPolicyProjectsLocationsSecurityGatewaysApplicationsRequest>,
-  output: __S(85, __c10, 5) as any as S.Schema<GoogleIamV1Policy>,
+  output: __S(519, __c32, 7) as any as S.Schema<GoogleIamV1Policy>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3402,11 +3410,11 @@ export const testIamPermissionsProjectsLocationsAppConnections: API.OperationMet
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    192,
-    __c24,
+    1680,
+    __c105,
     0,
   ) as any as S.Schema<TestIamPermissionsProjectsLocationsAppConnectionsRequest>,
-  output: __S(191, __c23, 7) as any as S.Schema<GoogleIamV1TestIamPermissionsResponse>,
+  output: __S(1696, __c106, 0) as any as S.Schema<GoogleIamV1TestIamPermissionsResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3426,11 +3434,11 @@ export const testIamPermissionsProjectsLocationsAppConnectors: API.OperationMeth
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    193,
-    __c24,
-    1,
+    1712,
+    __c107,
+    0,
   ) as any as S.Schema<TestIamPermissionsProjectsLocationsAppConnectorsRequest>,
-  output: __S(191, __c23, 7) as any as S.Schema<GoogleIamV1TestIamPermissionsResponse>,
+  output: __S(1696, __c106, 0) as any as S.Schema<GoogleIamV1TestIamPermissionsResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3450,11 +3458,11 @@ export const testIamPermissionsProjectsLocationsAppGateways: API.OperationMethod
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    194,
-    __c24,
-    2,
+    1728,
+    __c108,
+    0,
   ) as any as S.Schema<TestIamPermissionsProjectsLocationsAppGatewaysRequest>,
-  output: __S(191, __c23, 7) as any as S.Schema<GoogleIamV1TestIamPermissionsResponse>,
+  output: __S(1696, __c106, 0) as any as S.Schema<GoogleIamV1TestIamPermissionsResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3474,11 +3482,11 @@ export const testIamPermissionsProjectsLocationsApplicationDomains: API.Operatio
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    195,
-    __c24,
-    3,
+    1744,
+    __c109,
+    0,
   ) as any as S.Schema<TestIamPermissionsProjectsLocationsApplicationDomainsRequest>,
-  output: __S(191, __c23, 7) as any as S.Schema<GoogleIamV1TestIamPermissionsResponse>,
+  output: __S(1696, __c106, 0) as any as S.Schema<GoogleIamV1TestIamPermissionsResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3498,11 +3506,11 @@ export const testIamPermissionsProjectsLocationsApplications: API.OperationMetho
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    196,
-    __c24,
-    4,
+    1760,
+    __c110,
+    0,
   ) as any as S.Schema<TestIamPermissionsProjectsLocationsApplicationsRequest>,
-  output: __S(191, __c23, 7) as any as S.Schema<GoogleIamV1TestIamPermissionsResponse>,
+  output: __S(1696, __c106, 0) as any as S.Schema<GoogleIamV1TestIamPermissionsResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3522,11 +3530,11 @@ export const testIamPermissionsProjectsLocationsSecurityGateways: API.OperationM
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    197,
-    __c24,
-    5,
+    1776,
+    __c111,
+    0,
   ) as any as S.Schema<TestIamPermissionsProjectsLocationsSecurityGatewaysRequest>,
-  output: __S(191, __c23, 7) as any as S.Schema<GoogleIamV1TestIamPermissionsResponse>,
+  output: __S(1696, __c106, 0) as any as S.Schema<GoogleIamV1TestIamPermissionsResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3546,11 +3554,11 @@ export const testIamPermissionsProjectsLocationsSecurityGatewaysApplications: AP
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    198,
-    __c24,
-    6,
+    1824,
+    __c114,
+    0,
   ) as any as S.Schema<TestIamPermissionsProjectsLocationsSecurityGatewaysApplicationsRequest>,
-  output: __S(191, __c23, 7) as any as S.Schema<GoogleIamV1TestIamPermissionsResponse>,
+  output: __S(1696, __c106, 0) as any as S.Schema<GoogleIamV1TestIamPermissionsResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3560,214 +3568,66 @@ export const testIamPermissionsProjectsLocationsSecurityGatewaysApplications: AP
 function __c0(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "GoogleLongrunningCancelOperationRequest",
-      });
-    case 1:
       return S.suspend(() =>
         S.Struct({
-          name: S.String.pipe(T.Label()),
-          body: S.optional(__S(0, __c0, 0).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1alpha/{+name}:cancel",
-            baseUrl: "https://beyondcorp.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "CancelOrganizationsLocationsOperationsRequest",
-      });
-    case 2:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "Empty",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
           requestId: S.optional(S.String.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v1alpha/{+name}:cancel",
-            baseUrl: "https://beyondcorp.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "CancelOrganizationsLocationsSubscriptionsRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          effectiveCancellationTime: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier:
-          "GoogleCloudBeyondcorpSaasplatformSubscriptionsV1alphaCancelSubscriptionResponse",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-          body: S.optional(__S(0, __c0, 0).pipe(T.HttpBody())),
+          parent: S.String.pipe(T.Label()),
+          appConnectionId: S.optional(S.String.pipe(T.Query())),
+          validateOnly: S.optional(S.Boolean.pipe(T.Query())),
+          body: S.optional(__S(81, __c5, 1).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
-            uri: "v1alpha/{+name}:cancel",
+            uri: "v1alpha/{+parent}/appConnections",
             baseUrl: "https://beyondcorp.googleapis.com/",
           }),
         ),
       ).annotate({
-        identifier: "CancelProjectsLocationsOperationsRequest",
-      });
-    case 6:
-      return S.Array(S.String);
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          group: S.optional(S.String.pipe(T.Query())),
-          endTime: S.optional(S.String.pipe(T.Query())),
-          aggregation: S.optional(S.String.pipe(T.Query())),
-          pageToken: S.optional(S.String.pipe(T.Query())),
-          "customGrouping.fieldFilter": S.optional(S.String.pipe(T.Query())),
-          "customGrouping.groupFields": S.optional(__S(6, __c0, 6).pipe(T.Query())),
-          pageSize: S.optional(S.Number.pipe(T.Query())),
-          fieldFilter: S.optional(S.String.pipe(T.Query())),
-          insight: S.String.pipe(T.Label()),
-          startTime: S.optional(S.String.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v1alpha/{+insight}:configuredInsight",
-            baseUrl: "https://beyondcorp.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "ConfiguredInsightOrganizationsLocationsInsightsRequest",
+        identifier: "CreateProjectsLocationsAppConnectionsRequest",
       });
   }
 }
 function __c1(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() =>
-        S.Struct({
-          displayName: S.optional(S.String),
-          filterAlias: S.optional(S.String),
-          value: S.optional(S.String),
-          id: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudBeyondcorpSaasplatformInsightsV1alphaRowFieldVal",
-      });
-    case 1:
-      return S.Array(__S(8, __c1, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          fieldValues: S.optional(__S(9, __c1, 1)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudBeyondcorpSaasplatformInsightsV1alphaRow",
-      });
-    case 3:
-      return S.Array(__S(10, __c1, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          groupFields: S.optional(__S(6, __c0, 6)),
-          fieldFilter: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudBeyondcorpSaasplatformInsightsV1alphaCustomGrouping",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          customGrouping: S.optional(__S(12, __c1, 4)),
-          group: S.optional(S.String),
-          startTime: S.optional(S.String),
-          endTime: S.optional(S.String),
-          fieldFilter: S.optional(S.String),
-          aggregation: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudBeyondcorpSaasplatformInsightsV1alphaAppliedConfig",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          rows: S.optional(__S(11, __c1, 3)),
-          nextPageToken: S.optional(S.String),
-          appliedConfig: S.optional(__S(13, __c1, 5)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudBeyondcorpSaasplatformInsightsV1alphaConfiguredInsightResponse",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          endTime: S.optional(S.String.pipe(T.Query())),
-          fieldFilter: S.optional(S.String.pipe(T.Query())),
-          group: S.optional(S.String.pipe(T.Query())),
-          pageToken: S.optional(S.String.pipe(T.Query())),
-          pageSize: S.optional(S.Number.pipe(T.Query())),
-          startTime: S.optional(S.String.pipe(T.Query())),
-          insight: S.String.pipe(T.Label()),
-          "customGrouping.groupFields": S.optional(__S(6, __c0, 6).pipe(T.Query())),
-          "customGrouping.fieldFilter": S.optional(S.String.pipe(T.Query())),
-          aggregation: S.optional(S.String.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v1alpha/{+insight}:configuredInsight",
-            baseUrl: "https://beyondcorp.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "ConfiguredInsightProjectsLocationsInsightsRequest",
-      });
+      return S.Record(S.String, S.Unknown);
   }
 }
 function __c2(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() =>
-        S.Struct({
-          autoRenewEnabled: S.optional(S.Boolean),
-          seatCount: S.optional(S.String),
-          sku: S.optional(S.String),
-          endTime: S.optional(S.String),
-          signupSource: S.optional(S.String),
-          csgCustomer: S.optional(S.Boolean),
-          subscriberType: S.optional(S.String),
-          createTime: S.optional(S.String),
-          type: S.optional(S.String),
-          startTime: S.optional(S.String),
-          name: S.optional(S.String),
-          billingAccount: S.optional(S.String),
-          state: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudBeyondcorpSaasplatformSubscriptionsV1alphaSubscription",
-      });
+      return S.Array(__S(16, __c1, 0));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(16, __c2, 0).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1alpha/{+parent}/subscriptions",
-            baseUrl: "https://beyondcorp.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateOrganizationsLocationsSubscriptionsRequest",
-      });
+          details: S.optional(__S(32, __c2, 0)),
+          code: S.optional(S.Number),
+          message: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "GoogleRpcStatus" });
     case 2:
+      return S.suspend(() =>
+        S.Struct({
+          metadata: S.optional(__S(16, __c1, 0)),
+          name: S.optional(S.String),
+          error: S.optional(__S(33, __c2, 1)),
+          done: S.optional(S.Boolean),
+          response: S.optional(__S(16, __c1, 0)),
+        }),
+      ).annotate({
+        identifier: "GoogleLongrunningOperation",
+      });
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, S.String);
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           port: S.optional(S.Number),
@@ -3776,9 +3636,11 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "GoogleCloudBeyondcorpAppconnectionsV1alphaAppConnectionApplicationEndpoint",
       });
-    case 3:
-      return S.Record(S.String, S.String);
-    case 4:
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           type: S.optional(S.String),
@@ -3790,122 +3652,29 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "GoogleCloudBeyondcorpAppconnectionsV1alphaAppConnectionGateway",
       });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           displayName: S.optional(S.String),
-          applicationEndpoint: S.optional(__S(18, __c2, 2)),
+          applicationEndpoint: S.optional(__S(64, __c4, 0)),
           uid: S.optional(S.String),
-          connectors: S.optional(__S(6, __c0, 6)),
+          connectors: S.optional(__S(1392, __c87, 0)),
           state: S.optional(S.String),
-          labels: S.optional(__S(19, __c2, 3)),
+          labels: S.optional(__S(48, __c3, 0)),
           type: S.optional(S.String),
           satisfiesPzi: S.optional(S.Boolean),
           name: S.optional(S.String),
           satisfiesPzs: S.optional(S.Boolean),
-          gateway: S.optional(__S(20, __c2, 4)),
+          gateway: S.optional(__S(80, __c5, 0)),
           createTime: S.optional(S.String),
           updateTime: S.optional(S.String),
         }),
       ).annotate({
         identifier: "GoogleCloudBeyondcorpAppconnectionsV1alphaAppConnection",
       });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          requestId: S.optional(S.String.pipe(T.Query())),
-          parent: S.String.pipe(T.Label()),
-          appConnectionId: S.optional(S.String.pipe(T.Query())),
-          validateOnly: S.optional(S.Boolean.pipe(T.Query())),
-          body: S.optional(__S(21, __c2, 5).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1alpha/{+parent}/appConnections",
-            baseUrl: "https://beyondcorp.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateProjectsLocationsAppConnectionsRequest",
-      });
-    case 7:
-      return S.Record(S.String, S.Unknown);
   }
 }
-function __c3(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(23, __c2, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          details: S.optional(__S(24, __c3, 0)),
-          code: S.optional(S.Number),
-          message: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "GoogleRpcStatus" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          metadata: S.optional(__S(23, __c2, 7)),
-          name: S.optional(S.String),
-          error: S.optional(__S(25, __c3, 1)),
-          done: S.optional(S.Boolean),
-          response: S.optional(__S(23, __c2, 7)),
-        }),
-      ).annotate({
-        identifier: "GoogleLongrunningOperation",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          email: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier:
-          "GoogleCloudBeyondcorpAppconnectorsV1alphaAppConnectorPrincipalInfoServiceAccount",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          serviceAccount: S.optional(__S(27, __c3, 3)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudBeyondcorpAppconnectorsV1alphaAppConnectorPrincipalInfo",
-      });
-    case 5:
-      return S.Array(S.suspend(() => __S(30, __c3, 6)));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          sub: S.optional(__S(29, __c3, 5)),
-          status: S.optional(S.String),
-          id: S.optional(S.String),
-          time: S.optional(S.String),
-          resource: S.optional(__S(23, __c2, 7)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudBeyondcorpAppconnectorsV1alphaResourceInfo",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          principalInfo: S.optional(__S(28, __c3, 4)),
-          uid: S.optional(S.String),
-          state: S.optional(S.String),
-          updateTime: S.optional(S.String),
-          resourceInfo: S.optional(__S(30, __c3, 6)),
-          createTime: S.optional(S.String),
-          displayName: S.optional(S.String),
-          labels: S.optional(__S(19, __c2, 3)),
-          name: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudBeyondcorpAppconnectorsV1alphaAppConnector",
-      });
-  }
-}
-function __c4(j: number): any {
+function __c6(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3914,7 +3683,7 @@ function __c4(j: number): any {
           validateOnly: S.optional(S.Boolean.pipe(T.Query())),
           appConnectorId: S.optional(S.String.pipe(T.Query())),
           parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(31, __c3, 7).pipe(T.HttpBody())),
+          body: S.optional(__S(128, __c8, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -3925,41 +3694,77 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "CreateProjectsLocationsAppConnectorsRequest",
       });
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          email: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier:
+          "GoogleCloudBeyondcorpAppconnectorsV1alphaAppConnectorPrincipalInfoServiceAccount",
+      });
     case 1:
       return S.suspend(() =>
         S.Struct({
-          pscUri: S.optional(S.String),
-          ingressPort: S.optional(S.Number),
+          serviceAccount: S.optional(__S(112, __c7, 0)),
         }),
-      ).annotate({ identifier: "AllocatedConnection" });
-    case 2:
-      return S.Array(__S(33, __c4, 1));
-    case 3:
+      ).annotate({
+        identifier: "GoogleCloudBeyondcorpAppconnectorsV1alphaAppConnectorPrincipalInfo",
+      });
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          satisfiesPzi: S.optional(S.Boolean),
-          updateTime: S.optional(S.String),
-          hostType: S.optional(S.String),
-          uri: S.optional(S.String),
-          createTime: S.optional(S.String),
-          type: S.optional(S.String),
-          satisfiesPzs: S.optional(S.Boolean),
-          name: S.optional(S.String),
-          labels: S.optional(__S(19, __c2, 3)),
-          state: S.optional(S.String),
+          principalInfo: S.optional(__S(113, __c7, 1)),
           uid: S.optional(S.String),
-          allocatedConnections: S.optional(__S(34, __c4, 2)),
+          state: S.optional(S.String),
+          updateTime: S.optional(S.String),
+          resourceInfo: S.optional(__S(145, __c9, 1)),
+          createTime: S.optional(S.String),
           displayName: S.optional(S.String),
+          labels: S.optional(__S(48, __c3, 0)),
+          name: S.optional(S.String),
         }),
-      ).annotate({ identifier: "AppGateway" });
-    case 4:
+      ).annotate({
+        identifier: "GoogleCloudBeyondcorpAppconnectorsV1alphaAppConnector",
+      });
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.suspend(() => __S(145, __c9, 1)));
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          sub: S.optional(__S(144, __c9, 0)),
+          status: S.optional(S.String),
+          id: S.optional(S.String),
+          time: S.optional(S.String),
+          resource: S.optional(__S(16, __c1, 0)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudBeyondcorpAppconnectorsV1alphaResourceInfo",
+      });
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           validateOnly: S.optional(S.Boolean.pipe(T.Query())),
           parent: S.String.pipe(T.Label()),
           appGatewayId: S.optional(S.String.pipe(T.Query())),
           requestId: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(35, __c4, 3).pipe(T.HttpBody())),
+          body: S.optional(__S(178, __c11, 2).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -3970,38 +3775,49 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "CreateProjectsLocationsAppGatewaysRequest",
       });
-    case 5:
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          type: S.optional(S.String),
-          userPort: S.optional(S.Number),
-          uri: S.optional(S.String),
+          pscUri: S.optional(S.String),
+          ingressPort: S.optional(S.Number),
         }),
-      ).annotate({ identifier: "Gateway" });
-    case 6:
+      ).annotate({ identifier: "AllocatedConnection" });
+    case 1:
+      return S.Array(__S(176, __c11, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          type: S.optional(S.String),
-          applicationEndpoint: S.optional(__S(18, __c2, 2)),
-          uid: S.optional(S.String),
-          name: S.optional(S.String),
-          gateway: S.optional(__S(37, __c4, 5)),
+          satisfiesPzi: S.optional(S.Boolean),
           updateTime: S.optional(S.String),
+          hostType: S.optional(S.String),
+          uri: S.optional(S.String),
           createTime: S.optional(S.String),
-          displayName: S.optional(S.String),
-          labels: S.optional(__S(19, __c2, 3)),
-          connectors: S.optional(__S(6, __c0, 6)),
+          type: S.optional(S.String),
+          satisfiesPzs: S.optional(S.Boolean),
+          name: S.optional(S.String),
+          labels: S.optional(__S(48, __c3, 0)),
           state: S.optional(S.String),
+          uid: S.optional(S.String),
+          allocatedConnections: S.optional(__S(177, __c11, 1)),
+          displayName: S.optional(S.String),
         }),
-      ).annotate({ identifier: "Connection" });
-    case 7:
+      ).annotate({ identifier: "AppGateway" });
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           requestId: S.optional(S.String.pipe(T.Query())),
           connectionId: S.optional(S.String.pipe(T.Query())),
           validateOnly: S.optional(S.Boolean.pipe(T.Query())),
           parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(38, __c4, 6).pipe(T.HttpBody())),
+          body: S.optional(__S(209, __c13, 1).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -4014,42 +3830,44 @@ function __c4(j: number): any {
       });
   }
 }
-function __c5(j: number): any {
+function __c13(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(S.suspend(() => __S(41, __c5, 1)));
+      return S.suspend(() =>
+        S.Struct({
+          type: S.optional(S.String),
+          userPort: S.optional(S.Number),
+          uri: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Gateway" });
     case 1:
       return S.suspend(() =>
         S.Struct({
-          resource: S.optional(__S(23, __c2, 7)),
-          time: S.optional(S.String),
-          id: S.optional(S.String),
-          status: S.optional(S.String),
-          sub: S.optional(__S(40, __c5, 0)),
-        }),
-      ).annotate({ identifier: "ResourceInfo" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          resourceInfo: S.optional(__S(41, __c5, 1)),
-          principalInfo: S.optional(__S(28, __c3, 4)),
-          name: S.optional(S.String),
-          state: S.optional(S.String),
-          labels: S.optional(__S(19, __c2, 3)),
-          displayName: S.optional(S.String),
-          createTime: S.optional(S.String),
-          updateTime: S.optional(S.String),
+          type: S.optional(S.String),
+          applicationEndpoint: S.optional(__S(64, __c4, 0)),
           uid: S.optional(S.String),
+          name: S.optional(S.String),
+          gateway: S.optional(__S(208, __c13, 0)),
+          updateTime: S.optional(S.String),
+          createTime: S.optional(S.String),
+          displayName: S.optional(S.String),
+          labels: S.optional(__S(48, __c3, 0)),
+          connectors: S.optional(__S(1392, __c87, 0)),
+          state: S.optional(S.String),
         }),
-      ).annotate({ identifier: "Connector" });
-    case 3:
+      ).annotate({ identifier: "Connection" });
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           validateOnly: S.optional(S.Boolean.pipe(T.Query())),
           parent: S.String.pipe(T.Label()),
           connectorId: S.optional(S.String.pipe(T.Query())),
           requestId: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(42, __c5, 2).pipe(T.HttpBody())),
+          body: S.optional(__S(240, __c15, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -4060,7 +3878,66 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "CreateProjectsLocationsConnectorsRequest",
       });
-    case 4:
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          resourceInfo: S.optional(__S(257, __c16, 1)),
+          principalInfo: S.optional(__S(113, __c7, 1)),
+          name: S.optional(S.String),
+          state: S.optional(S.String),
+          labels: S.optional(__S(48, __c3, 0)),
+          displayName: S.optional(S.String),
+          createTime: S.optional(S.String),
+          updateTime: S.optional(S.String),
+          uid: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Connector" });
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.suspend(() => __S(257, __c16, 1)));
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          resource: S.optional(__S(16, __c1, 0)),
+          time: S.optional(S.String),
+          id: S.optional(S.String),
+          status: S.optional(S.String),
+          sub: S.optional(__S(256, __c16, 0)),
+        }),
+      ).annotate({ identifier: "ResourceInfo" });
+  }
+}
+function __c17(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          securityGatewayId: S.optional(S.String.pipe(T.Query())),
+          parent: S.String.pipe(T.Label()),
+          requestId: S.optional(S.String.pipe(T.Query())),
+          body: S.optional(__S(310, __c19, 6).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1alpha/{+parent}/securityGateways",
+            baseUrl: "https://beyondcorp.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateProjectsLocationsSecurityGatewaysRequest",
+      });
+  }
+}
+function __c18(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           outputType: S.optional(S.String),
@@ -4069,7 +3946,7 @@ function __c5(j: number): any {
         identifier:
           "GoogleCloudBeyondcorpSecuritygatewaysV1alphaContextualHeadersDelegatedGroupInfo",
       });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           outputType: S.optional(S.String),
@@ -4078,25 +3955,25 @@ function __c5(j: number): any {
         identifier:
           "GoogleCloudBeyondcorpSecuritygatewaysV1alphaContextualHeadersDelegatedDispatchInfo",
       });
-    case 6:
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          groupInfo: S.optional(__S(44, __c5, 4)),
+          groupInfo: S.optional(__S(288, __c18, 0)),
           outputType: S.optional(S.String),
-          userInfo: S.optional(__S(44, __c5, 4)),
-          deviceInfo: S.optional(__S(44, __c5, 4)),
-          dispatchInfo: S.optional(__S(45, __c5, 5)),
+          userInfo: S.optional(__S(288, __c18, 0)),
+          deviceInfo: S.optional(__S(288, __c18, 0)),
+          dispatchInfo: S.optional(__S(289, __c18, 1)),
         }),
       ).annotate({
         identifier: "GoogleCloudBeyondcorpSecuritygatewaysV1alphaContextualHeaders",
       });
-    case 7:
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          contextualHeaders: S.optional(__S(46, __c5, 6)),
-          allowedClientHeaders: S.optional(__S(6, __c0, 6)),
+          contextualHeaders: S.optional(__S(290, __c18, 2)),
+          allowedClientHeaders: S.optional(__S(1392, __c87, 0)),
           gatewayIdentity: S.optional(S.String),
-          metadataHeaders: S.optional(__S(19, __c2, 3)),
+          metadataHeaders: S.optional(__S(48, __c3, 0)),
           clientIp: S.optional(S.Boolean),
         }),
       ).annotate({
@@ -4104,7 +3981,7 @@ function __c5(j: number): any {
       });
   }
 }
-function __c6(j: number): any {
+function __c19(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4118,7 +3995,7 @@ function __c6(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          resourceOverride: S.optional(__S(48, __c6, 0)),
+          resourceOverride: S.optional(__S(304, __c19, 0)),
         }),
       ).annotate({
         identifier: "GoogleCloudBeyondcorpSecuritygatewaysV1alphaServiceDiscoveryApiGateway",
@@ -4126,7 +4003,7 @@ function __c6(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          apiGateway: S.optional(__S(49, __c6, 1)),
+          apiGateway: S.optional(__S(305, __c19, 1)),
         }),
       ).annotate({
         identifier: "GoogleCloudBeyondcorpSecuritygatewaysV1alphaServiceDiscovery",
@@ -4134,7 +4011,7 @@ function __c6(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          assignedIps: S.optional(__S(6, __c0, 6)),
+          assignedIps: S.optional(__S(1392, __c87, 0)),
         }),
       ).annotate({
         identifier: "GoogleCloudBeyondcorpSecuritygatewaysV1alphaInternetGateway",
@@ -4142,51 +4019,55 @@ function __c6(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          internetGateway: S.optional(__S(51, __c6, 3)),
+          internetGateway: S.optional(__S(307, __c19, 3)),
         }),
       ).annotate({
         identifier: "GoogleCloudBeyondcorpSecuritygatewaysV1alphaHub",
       });
     case 5:
-      return S.Record(S.String, __S(52, __c6, 4));
+      return S.Record(S.String, __S(308, __c19, 4));
     case 6:
       return S.suspend(() =>
         S.Struct({
-          proxyProtocolConfig: S.optional(__S(47, __c5, 7)),
+          proxyProtocolConfig: S.optional(__S(291, __c18, 3)),
           displayName: S.optional(S.String),
           state: S.optional(S.String),
-          logging: S.optional(__S(0, __c0, 0)),
+          logging: S.optional(__S(784, __c49, 0)),
           updateTime: S.optional(S.String),
           delegatingServiceAccount: S.optional(S.String),
-          serviceDiscovery: S.optional(__S(50, __c6, 2)),
+          serviceDiscovery: S.optional(__S(306, __c19, 2)),
           createTime: S.optional(S.String),
           name: S.optional(S.String),
-          hubs: S.optional(__S(53, __c6, 5)),
-          externalIps: S.optional(__S(6, __c0, 6)),
+          hubs: S.optional(__S(309, __c19, 5)),
+          externalIps: S.optional(__S(1392, __c87, 0)),
         }),
       ).annotate({
         identifier: "GoogleCloudBeyondcorpSecuritygatewaysV1alphaSecurityGateway",
       });
-    case 7:
+  }
+}
+function __c20(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          securityGatewayId: S.optional(S.String.pipe(T.Query())),
           parent: S.String.pipe(T.Label()),
+          applicationId: S.optional(S.String.pipe(T.Query())),
           requestId: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(54, __c6, 6).pipe(T.HttpBody())),
+          body: S.optional(__S(346, __c21, 10).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
-            uri: "v1alpha/{+parent}/securityGateways",
+            uri: "v1alpha/{+parent}/applications",
             baseUrl: "https://beyondcorp.googleapis.com/",
           }),
         ),
       ).annotate({
-        identifier: "CreateProjectsLocationsSecurityGatewaysRequest",
+        identifier: "CreateProjectsLocationsSecurityGatewaysApplicationsRequest",
       });
   }
 }
-function __c7(j: number): any {
+function __c21(j: number): any {
   switch (j) {
     case 0:
       return S.Array(S.Number);
@@ -4194,13 +4075,13 @@ function __c7(j: number): any {
       return S.suspend(() =>
         S.Struct({
           hostname: S.optional(S.String),
-          ports: S.optional(__S(56, __c7, 0)),
+          ports: S.optional(__S(336, __c21, 0)),
         }),
       ).annotate({
         identifier: "GoogleCloudBeyondcorpSecuritygatewaysV1alphaEndpointMatcher",
       });
     case 2:
-      return S.Array(__S(57, __c7, 1));
+      return S.Array(__S(337, __c21, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
@@ -4211,11 +4092,11 @@ function __c7(j: number): any {
         identifier: "GoogleCloudBeyondcorpSecuritygatewaysV1alphaEndpoint",
       });
     case 4:
-      return S.Array(__S(59, __c7, 3));
+      return S.Array(__S(339, __c21, 3));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          endpoints: S.optional(__S(60, __c7, 4)),
+          endpoints: S.optional(__S(340, __c21, 4)),
         }),
       ).annotate({
         identifier: "GoogleCloudBeyondcorpSecuritygatewaysV1alphaApplicationUpstreamExternal",
@@ -4223,7 +4104,7 @@ function __c7(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          regions: S.optional(__S(6, __c0, 6)),
+          regions: S.optional(__S(1392, __c87, 0)),
         }),
       ).annotate({
         identifier: "GoogleCloudBeyondcorpSecuritygatewaysV1alphaEgressPolicy",
@@ -4236,55 +4117,38 @@ function __c7(j: number): any {
       ).annotate({
         identifier: "GoogleCloudBeyondcorpSecuritygatewaysV1alphaApplicationUpstreamNetwork",
       });
-  }
-}
-function __c8(j: number): any {
-  switch (j) {
-    case 0:
+    case 8:
       return S.suspend(() =>
         S.Struct({
-          external: S.optional(__S(61, __c7, 5)),
-          egressPolicy: S.optional(__S(62, __c7, 6)),
-          proxyProtocol: S.optional(__S(47, __c5, 7)),
-          network: S.optional(__S(63, __c7, 7)),
+          external: S.optional(__S(341, __c21, 5)),
+          egressPolicy: S.optional(__S(342, __c21, 6)),
+          proxyProtocol: S.optional(__S(291, __c18, 3)),
+          network: S.optional(__S(343, __c21, 7)),
         }),
       ).annotate({
         identifier: "GoogleCloudBeyondcorpSecuritygatewaysV1alphaApplicationUpstream",
       });
-    case 1:
-      return S.Array(__S(64, __c8, 0));
-    case 2:
+    case 9:
+      return S.Array(__S(344, __c21, 8));
+    case 10:
       return S.suspend(() =>
         S.Struct({
-          endpointMatchers: S.optional(__S(58, __c7, 2)),
+          endpointMatchers: S.optional(__S(338, __c21, 2)),
           schema: S.optional(S.String),
           updateTime: S.optional(S.String),
           name: S.optional(S.String),
           createTime: S.optional(S.String),
           displayName: S.optional(S.String),
-          upstreams: S.optional(__S(65, __c8, 1)),
+          upstreams: S.optional(__S(345, __c21, 9)),
         }),
       ).annotate({
         identifier: "GoogleCloudBeyondcorpSecuritygatewaysV1alphaApplication",
       });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          parent: S.String.pipe(T.Label()),
-          applicationId: S.optional(S.String.pipe(T.Query())),
-          requestId: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(66, __c8, 2).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1alpha/{+parent}/applications",
-            baseUrl: "https://beyondcorp.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateProjectsLocationsSecurityGatewaysApplicationsRequest",
-      });
-    case 4:
+  }
+}
+function __c22(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -4298,7 +4162,11 @@ function __c8(j: number): any {
       ).annotate({
         identifier: "DeleteOrganizationsLocationsOperationsRequest",
       });
-    case 5:
+  }
+}
+function __c23(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           requestId: S.optional(S.String.pipe(T.Query())),
@@ -4314,7 +4182,11 @@ function __c8(j: number): any {
       ).annotate({
         identifier: "DeleteProjectsLocationsAppConnectionsRequest",
       });
-    case 6:
+  }
+}
+function __c24(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           validateOnly: S.optional(S.Boolean.pipe(T.Query())),
@@ -4330,7 +4202,11 @@ function __c8(j: number): any {
       ).annotate({
         identifier: "DeleteProjectsLocationsAppConnectorsRequest",
       });
-    case 7:
+  }
+}
+function __c25(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -4348,7 +4224,7 @@ function __c8(j: number): any {
       });
   }
 }
-function __c9(j: number): any {
+function __c26(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4366,7 +4242,11 @@ function __c9(j: number): any {
       ).annotate({
         identifier: "DeleteProjectsLocationsConnectionsRequest",
       });
-    case 1:
+  }
+}
+function __c27(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           requestId: S.optional(S.String.pipe(T.Query())),
@@ -4382,7 +4262,11 @@ function __c9(j: number): any {
       ).annotate({
         identifier: "DeleteProjectsLocationsConnectorsRequest",
       });
-    case 2:
+  }
+}
+function __c28(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -4396,7 +4280,11 @@ function __c9(j: number): any {
       ).annotate({
         identifier: "DeleteProjectsLocationsOperationsRequest",
       });
-    case 3:
+  }
+}
+function __c29(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -4412,7 +4300,11 @@ function __c9(j: number): any {
       ).annotate({
         identifier: "DeleteProjectsLocationsSecurityGatewaysRequest",
       });
-    case 4:
+  }
+}
+function __c30(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           validateOnly: S.optional(S.Boolean.pipe(T.Query())),
@@ -4428,7 +4320,11 @@ function __c9(j: number): any {
       ).annotate({
         identifier: "DeleteProjectsLocationsSecurityGatewaysApplicationsRequest",
       });
-    case 5:
+  }
+}
+function __c31(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           "options.requestedPolicyVersion": S.optional(S.Number.pipe(T.Query())),
@@ -4443,7 +4339,11 @@ function __c9(j: number): any {
       ).annotate({
         identifier: "GetIamPolicyProjectsLocationsAppConnectionsRequest",
       });
-    case 6:
+  }
+}
+function __c32(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           location: S.optional(S.String),
@@ -4452,50 +4352,50 @@ function __c9(j: number): any {
           expression: S.optional(S.String),
         }),
       ).annotate({ identifier: "GoogleTypeExpr" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          role: S.optional(S.String),
-          condition: S.optional(__S(78, __c9, 6)),
-          members: S.optional(__S(6, __c0, 6)),
-        }),
-      ).annotate({ identifier: "GoogleIamV1Binding" });
-  }
-}
-function __c10(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(79, __c9, 7));
     case 1:
       return S.suspend(() =>
         S.Struct({
+          role: S.optional(S.String),
+          condition: S.optional(__S(512, __c32, 0)),
+          members: S.optional(__S(1392, __c87, 0)),
+        }),
+      ).annotate({ identifier: "GoogleIamV1Binding" });
+    case 2:
+      return S.Array(__S(513, __c32, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
           logType: S.optional(S.String),
-          exemptedMembers: S.optional(__S(6, __c0, 6)),
+          exemptedMembers: S.optional(__S(1392, __c87, 0)),
         }),
       ).annotate({
         identifier: "GoogleIamV1AuditLogConfig",
       });
-    case 2:
-      return S.Array(__S(81, __c10, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          service: S.optional(S.String),
-          auditLogConfigs: S.optional(__S(82, __c10, 2)),
-        }),
-      ).annotate({ identifier: "GoogleIamV1AuditConfig" });
     case 4:
-      return S.Array(__S(83, __c10, 3));
+      return S.Array(__S(515, __c32, 3));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          bindings: S.optional(__S(80, __c10, 0)),
+          service: S.optional(S.String),
+          auditLogConfigs: S.optional(__S(516, __c32, 4)),
+        }),
+      ).annotate({ identifier: "GoogleIamV1AuditConfig" });
+    case 6:
+      return S.Array(__S(517, __c32, 5));
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          bindings: S.optional(__S(514, __c32, 2)),
           etag: S.optional(S.String),
           version: S.optional(S.Number),
-          auditConfigs: S.optional(__S(84, __c10, 4)),
+          auditConfigs: S.optional(__S(518, __c32, 6)),
         }),
       ).annotate({ identifier: "GoogleIamV1Policy" });
-    case 6:
+  }
+}
+function __c33(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           "options.requestedPolicyVersion": S.optional(S.Number.pipe(T.Query())),
@@ -4510,7 +4410,11 @@ function __c10(j: number): any {
       ).annotate({
         identifier: "GetIamPolicyProjectsLocationsAppConnectorsRequest",
       });
-    case 7:
+  }
+}
+function __c34(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           "options.requestedPolicyVersion": S.optional(S.Number.pipe(T.Query())),
@@ -4527,7 +4431,7 @@ function __c10(j: number): any {
       });
   }
 }
-function __c11(j: number): any {
+function __c35(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4544,7 +4448,11 @@ function __c11(j: number): any {
       ).annotate({
         identifier: "GetIamPolicyProjectsLocationsApplicationDomainsRequest",
       });
-    case 1:
+  }
+}
+function __c36(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           resource: S.String.pipe(T.Label()),
@@ -4559,7 +4467,11 @@ function __c11(j: number): any {
       ).annotate({
         identifier: "GetIamPolicyProjectsLocationsApplicationsRequest",
       });
-    case 2:
+  }
+}
+function __c37(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           resource: S.String.pipe(T.Label()),
@@ -4574,7 +4486,11 @@ function __c11(j: number): any {
       ).annotate({
         identifier: "GetIamPolicyProjectsLocationsConnectionsRequest",
       });
-    case 3:
+  }
+}
+function __c38(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           "options.requestedPolicyVersion": S.optional(S.Number.pipe(T.Query())),
@@ -4589,7 +4505,11 @@ function __c11(j: number): any {
       ).annotate({
         identifier: "GetIamPolicyProjectsLocationsConnectorsRequest",
       });
-    case 4:
+  }
+}
+function __c39(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           "options.requestedPolicyVersion": S.optional(S.Number.pipe(T.Query())),
@@ -4604,7 +4524,11 @@ function __c11(j: number): any {
       ).annotate({
         identifier: "GetIamPolicyProjectsLocationsSecurityGatewaysRequest",
       });
-    case 5:
+  }
+}
+function __c40(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           resource: S.String.pipe(T.Label()),
@@ -4619,7 +4543,11 @@ function __c11(j: number): any {
       ).annotate({
         identifier: "GetIamPolicyProjectsLocationsSecurityGatewaysApplicationsRequest",
       });
-    case 6:
+  }
+}
+function __c41(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -4634,13 +4562,13 @@ function __c11(j: number): any {
       ).annotate({
         identifier: "GetOrganizationsLocationsInsightsRequest",
       });
-    case 7:
-      return S.Array(S.String);
   }
 }
-function __c12(j: number): any {
+function __c42(j: number): any {
   switch (j) {
     case 0:
+      return S.Array(S.String);
+    case 1:
       return S.suspend(() =>
         S.Struct({
           filterAlias: S.optional(S.String),
@@ -4653,34 +4581,38 @@ function __c12(j: number): any {
       ).annotate({
         identifier: "GoogleCloudBeyondcorpSaasplatformInsightsV1alphaInsightMetadataField",
       });
-    case 1:
-      return S.Array(__S(96, __c12, 0));
     case 2:
+      return S.Array(__S(673, __c42, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          aggregations: S.optional(__S(95, __c11, 7)),
+          aggregations: S.optional(__S(672, __c42, 0)),
           type: S.optional(S.String),
-          groups: S.optional(__S(6, __c0, 6)),
+          groups: S.optional(__S(1392, __c87, 0)),
           displayName: S.optional(S.String),
-          fields: S.optional(__S(97, __c12, 1)),
+          fields: S.optional(__S(674, __c42, 2)),
           category: S.optional(S.String),
           subCategory: S.optional(S.String),
         }),
       ).annotate({
         identifier: "GoogleCloudBeyondcorpSaasplatformInsightsV1alphaInsightMetadata",
       });
-    case 3:
+    case 4:
       return S.suspend(() =>
         S.Struct({
-          appliedConfig: S.optional(__S(13, __c1, 5)),
-          rows: S.optional(__S(11, __c1, 3)),
+          appliedConfig: S.optional(__S(1413, __c88, 5)),
+          rows: S.optional(__S(1411, __c88, 3)),
           name: S.optional(S.String),
-          metadata: S.optional(__S(98, __c12, 2)),
+          metadata: S.optional(__S(675, __c42, 3)),
         }),
       ).annotate({
         identifier: "GoogleCloudBeyondcorpSaasplatformInsightsV1alphaInsight",
       });
-    case 4:
+  }
+}
+function __c43(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -4694,7 +4626,11 @@ function __c12(j: number): any {
       ).annotate({
         identifier: "GetOrganizationsLocationsOperationsRequest",
       });
-    case 5:
+  }
+}
+function __c44(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -4708,7 +4644,11 @@ function __c12(j: number): any {
       ).annotate({
         identifier: "GetOrganizationsLocationsSubscriptionsRequest",
       });
-    case 6:
+  }
+}
+function __c45(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -4722,21 +4662,25 @@ function __c12(j: number): any {
       ).annotate({
         identifier: "GetProjectsLocationsRequest",
       });
-    case 7:
+  }
+}
+function __c46(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           displayName: S.optional(S.String),
           locationId: S.optional(S.String),
           name: S.optional(S.String),
-          metadata: S.optional(__S(23, __c2, 7)),
-          labels: S.optional(__S(19, __c2, 3)),
+          metadata: S.optional(__S(16, __c1, 0)),
+          labels: S.optional(__S(48, __c3, 0)),
         }),
       ).annotate({
         identifier: "GoogleCloudLocationLocation",
       });
   }
 }
-function __c13(j: number): any {
+function __c47(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4752,7 +4696,46 @@ function __c13(j: number): any {
       ).annotate({
         identifier: "GetProjectsLocationsAppConnectionsRequest",
       });
-    case 1:
+  }
+}
+function __c48(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+          body: S.optional(__S(784, __c49, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1alpha/{+name}:cancel",
+            baseUrl: "https://beyondcorp.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "CancelOrganizationsLocationsOperationsRequest",
+      });
+  }
+}
+function __c49(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "GoogleLongrunningCancelOperationRequest",
+      });
+  }
+}
+function __c50(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "Empty",
+      });
+  }
+}
+function __c51(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -4766,7 +4749,11 @@ function __c13(j: number): any {
       ).annotate({
         identifier: "GetProjectsLocationsAppConnectorsRequest",
       });
-    case 2:
+  }
+}
+function __c52(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -4780,7 +4767,11 @@ function __c13(j: number): any {
       ).annotate({
         identifier: "GetProjectsLocationsAppGatewaysRequest",
       });
-    case 3:
+  }
+}
+function __c53(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -4794,7 +4785,11 @@ function __c13(j: number): any {
       ).annotate({
         identifier: "GetProjectsLocationsConnectionsRequest",
       });
-    case 4:
+  }
+}
+function __c54(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -4808,7 +4803,11 @@ function __c13(j: number): any {
       ).annotate({
         identifier: "GetProjectsLocationsConnectorsRequest",
       });
-    case 5:
+  }
+}
+function __c55(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -4823,7 +4822,11 @@ function __c13(j: number): any {
       ).annotate({
         identifier: "GetProjectsLocationsInsightsRequest",
       });
-    case 6:
+  }
+}
+function __c56(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -4837,7 +4840,11 @@ function __c13(j: number): any {
       ).annotate({
         identifier: "GetProjectsLocationsOperationsRequest",
       });
-    case 7:
+  }
+}
+function __c57(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -4853,7 +4860,7 @@ function __c13(j: number): any {
       });
   }
 }
-function __c14(j: number): any {
+function __c58(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4869,7 +4876,11 @@ function __c14(j: number): any {
       ).annotate({
         identifier: "GetProjectsLocationsSecurityGatewaysApplicationsRequest",
       });
-    case 1:
+  }
+}
+function __c59(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -4891,18 +4902,26 @@ function __c14(j: number): any {
       ).annotate({
         identifier: "ListOrganizationsLocationsInsightsRequest",
       });
-    case 2:
-      return S.Array(__S(99, __c12, 3));
-    case 3:
+  }
+}
+function __c60(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(676, __c42, 4));
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          insights: S.optional(__S(114, __c14, 2)),
+          insights: S.optional(__S(960, __c60, 0)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({
         identifier: "GoogleCloudBeyondcorpSaasplatformInsightsV1alphaListInsightsResponse",
       });
-    case 4:
+  }
+}
+function __c61(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -4920,19 +4939,55 @@ function __c14(j: number): any {
       ).annotate({
         identifier: "ListOrganizationsLocationsOperationsRequest",
       });
-    case 5:
-      return S.Array(__S(26, __c3, 2));
-    case 6:
+  }
+}
+function __c62(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(34, __c2, 2));
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          unreachable: S.optional(__S(6, __c0, 6)),
+          unreachable: S.optional(__S(1392, __c87, 0)),
           nextPageToken: S.optional(S.String),
-          operations: S.optional(__S(117, __c14, 5)),
+          operations: S.optional(__S(992, __c62, 0)),
         }),
       ).annotate({
         identifier: "GoogleLongrunningListOperationsResponse",
       });
-    case 7:
+  }
+}
+function __c63(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+          requestId: S.optional(S.String.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v1alpha/{+name}:cancel",
+            baseUrl: "https://beyondcorp.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "CancelOrganizationsLocationsSubscriptionsRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          effectiveCancellationTime: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier:
+          "GoogleCloudBeyondcorpSaasplatformSubscriptionsV1alphaCancelSubscriptionResponse",
+      });
+  }
+}
+function __c64(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           pageToken: S.optional(S.String.pipe(T.Query())),
@@ -4948,30 +5003,30 @@ function __c14(j: number): any {
       ).annotate({
         identifier: "ListOrganizationsLocationsSubscriptionsRequest",
       });
-  }
-}
-function __c15(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(16, __c2, 0));
     case 1:
+      return S.Array(__S(1808, __c113, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          subscriptions: S.optional(__S(120, __c15, 0)),
+          subscriptions: S.optional(__S(1025, __c64, 1)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({
         identifier:
           "GoogleCloudBeyondcorpSaasplatformSubscriptionsV1alphaListSubscriptionsResponse",
       });
-    case 2:
+  }
+}
+function __c65(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           pageToken: S.optional(S.String.pipe(T.Query())),
           name: S.String.pipe(T.Label()),
           pageSize: S.optional(S.Number.pipe(T.Query())),
           filter: S.optional(S.String.pipe(T.Query())),
-          extraLocationTypes: S.optional(__S(6, __c0, 6).pipe(T.Query())),
+          extraLocationTypes: S.optional(__S(1392, __c87, 0).pipe(T.Query())),
         }).pipe(
           T.Http({
             method: "GET",
@@ -4982,18 +5037,22 @@ function __c15(j: number): any {
       ).annotate({
         identifier: "ListProjectsLocationsRequest",
       });
-    case 3:
-      return S.Array(__S(103, __c12, 7));
-    case 4:
+    case 1:
+      return S.Array(__S(736, __c46, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          locations: S.optional(__S(123, __c15, 3)),
+          locations: S.optional(__S(1041, __c65, 1)),
         }),
       ).annotate({
         identifier: "GoogleCloudLocationListLocationsResponse",
       });
-    case 5:
+  }
+}
+function __c66(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           orderBy: S.optional(S.String.pipe(T.Query())),
@@ -5011,21 +5070,21 @@ function __c15(j: number): any {
       ).annotate({
         identifier: "ListProjectsLocationsAppConnectionsRequest",
       });
-    case 6:
-      return S.Array(__S(21, __c2, 5));
-    case 7:
+    case 1:
+      return S.Array(__S(81, __c5, 1));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          unreachable: S.optional(__S(6, __c0, 6)),
-          appConnections: S.optional(__S(126, __c15, 6)),
+          unreachable: S.optional(__S(1392, __c87, 0)),
+          appConnections: S.optional(__S(1057, __c66, 1)),
         }),
       ).annotate({
         identifier: "GoogleCloudBeyondcorpAppconnectionsV1alphaListAppConnectionsResponse",
       });
   }
 }
-function __c16(j: number): any {
+function __c67(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5046,18 +5105,22 @@ function __c16(j: number): any {
         identifier: "ListProjectsLocationsAppConnectorsRequest",
       });
     case 1:
-      return S.Array(__S(31, __c3, 7));
+      return S.Array(__S(128, __c8, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          appConnectors: S.optional(__S(129, __c16, 1)),
-          unreachable: S.optional(__S(6, __c0, 6)),
+          appConnectors: S.optional(__S(1073, __c67, 1)),
+          unreachable: S.optional(__S(1392, __c87, 0)),
         }),
       ).annotate({
         identifier: "GoogleCloudBeyondcorpAppconnectorsV1alphaListAppConnectorsResponse",
       });
-    case 3:
+  }
+}
+function __c68(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
@@ -5075,17 +5138,21 @@ function __c16(j: number): any {
       ).annotate({
         identifier: "ListProjectsLocationsAppGatewaysRequest",
       });
-    case 4:
-      return S.Array(__S(35, __c4, 3));
-    case 5:
+    case 1:
+      return S.Array(__S(178, __c11, 2));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          appGateways: S.optional(__S(132, __c16, 4)),
-          unreachable: S.optional(__S(6, __c0, 6)),
+          appGateways: S.optional(__S(1089, __c68, 1)),
+          unreachable: S.optional(__S(1392, __c87, 0)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListAppGatewaysResponse" });
-    case 6:
+  }
+}
+function __c69(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           orderBy: S.optional(S.String.pipe(T.Query())),
@@ -5103,21 +5170,21 @@ function __c16(j: number): any {
       ).annotate({
         identifier: "ListProjectsLocationsConnectionsRequest",
       });
-    case 7:
-      return S.Array(__S(38, __c4, 6));
-  }
-}
-function __c17(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
+      return S.Array(__S(209, __c13, 1));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          unreachable: S.optional(__S(6, __c0, 6)),
+          unreachable: S.optional(__S(1392, __c87, 0)),
           nextPageToken: S.optional(S.String),
-          connections: S.optional(__S(135, __c16, 7)),
+          connections: S.optional(__S(1105, __c69, 1)),
         }),
       ).annotate({ identifier: "ListConnectionsResponse" });
-    case 1:
+  }
+}
+function __c70(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           orderBy: S.optional(S.String.pipe(T.Query())),
@@ -5135,17 +5202,21 @@ function __c17(j: number): any {
       ).annotate({
         identifier: "ListProjectsLocationsConnectorsRequest",
       });
+    case 1:
+      return S.Array(__S(240, __c15, 0));
     case 2:
-      return S.Array(__S(42, __c5, 2));
-    case 3:
       return S.suspend(() =>
         S.Struct({
-          connectors: S.optional(__S(138, __c17, 2)),
-          unreachable: S.optional(__S(6, __c0, 6)),
+          connectors: S.optional(__S(1121, __c70, 1)),
+          unreachable: S.optional(__S(1392, __c87, 0)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListConnectorsResponse" });
-    case 4:
+  }
+}
+function __c71(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           filter: S.optional(S.String.pipe(T.Query())),
@@ -5167,7 +5238,11 @@ function __c17(j: number): any {
       ).annotate({
         identifier: "ListProjectsLocationsInsightsRequest",
       });
-    case 5:
+  }
+}
+function __c72(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -5185,7 +5260,11 @@ function __c17(j: number): any {
       ).annotate({
         identifier: "ListProjectsLocationsOperationsRequest",
       });
-    case 6:
+  }
+}
+function __c73(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
@@ -5203,23 +5282,42 @@ function __c17(j: number): any {
       ).annotate({
         identifier: "ListProjectsLocationsSecurityGatewaysRequest",
       });
-    case 7:
-      return S.Array(__S(54, __c6, 6));
-  }
-}
-function __c18(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
+      return S.Array(__S(310, __c19, 6));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          unreachable: S.optional(__S(6, __c0, 6)),
-          securityGateways: S.optional(__S(143, __c17, 7)),
+          unreachable: S.optional(__S(1392, __c87, 0)),
+          securityGateways: S.optional(__S(1169, __c73, 1)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({
         identifier: "GoogleCloudBeyondcorpSecuritygatewaysV1alphaListSecurityGatewaysResponse",
       });
-    case 1:
+  }
+}
+function __c74(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+          body: S.optional(__S(784, __c49, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1alpha/{+name}:cancel",
+            baseUrl: "https://beyondcorp.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "CancelProjectsLocationsOperationsRequest",
+      });
+  }
+}
+function __c75(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           pageToken: S.optional(S.String.pipe(T.Query())),
@@ -5237,25 +5335,29 @@ function __c18(j: number): any {
       ).annotate({
         identifier: "ListProjectsLocationsSecurityGatewaysApplicationsRequest",
       });
+    case 1:
+      return S.Array(__S(346, __c21, 10));
     case 2:
-      return S.Array(__S(66, __c8, 2));
-    case 3:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          applications: S.optional(__S(146, __c18, 2)),
-          unreachable: S.optional(__S(6, __c0, 6)),
+          applications: S.optional(__S(1201, __c75, 1)),
+          unreachable: S.optional(__S(1392, __c87, 0)),
         }),
       ).annotate({
         identifier: "GoogleCloudBeyondcorpSecuritygatewaysV1alphaListApplicationsResponse",
       });
-    case 4:
+  }
+}
+function __c76(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           updateMask: S.optional(S.String.pipe(T.Query())),
           name: S.String.pipe(T.Label()),
           requestId: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(16, __c2, 0).pipe(T.HttpBody())),
+          body: S.optional(__S(1808, __c113, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -5266,7 +5368,11 @@ function __c18(j: number): any {
       ).annotate({
         identifier: "PatchOrganizationsLocationsSubscriptionsRequest",
       });
-    case 5:
+  }
+}
+function __c77(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -5274,7 +5380,7 @@ function __c18(j: number): any {
           allowMissing: S.optional(S.Boolean.pipe(T.Query())),
           requestId: S.optional(S.String.pipe(T.Query())),
           updateMask: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(21, __c2, 5).pipe(T.HttpBody())),
+          body: S.optional(__S(81, __c5, 1).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -5285,14 +5391,18 @@ function __c18(j: number): any {
       ).annotate({
         identifier: "PatchProjectsLocationsAppConnectionsRequest",
       });
-    case 6:
+  }
+}
+function __c78(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           requestId: S.optional(S.String.pipe(T.Query())),
           updateMask: S.optional(S.String.pipe(T.Query())),
           validateOnly: S.optional(S.Boolean.pipe(T.Query())),
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(31, __c3, 7).pipe(T.HttpBody())),
+          body: S.optional(__S(128, __c8, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -5303,7 +5413,11 @@ function __c18(j: number): any {
       ).annotate({
         identifier: "PatchProjectsLocationsAppConnectorsRequest",
       });
-    case 7:
+  }
+}
+function __c79(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           requestId: S.optional(S.String.pipe(T.Query())),
@@ -5311,7 +5425,7 @@ function __c18(j: number): any {
           validateOnly: S.optional(S.Boolean.pipe(T.Query())),
           updateMask: S.optional(S.String.pipe(T.Query())),
           allowMissing: S.optional(S.Boolean.pipe(T.Query())),
-          body: S.optional(__S(38, __c4, 6).pipe(T.HttpBody())),
+          body: S.optional(__S(209, __c13, 1).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -5324,7 +5438,7 @@ function __c18(j: number): any {
       });
   }
 }
-function __c19(j: number): any {
+function __c80(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5333,7 +5447,7 @@ function __c19(j: number): any {
           name: S.String.pipe(T.Label()),
           requestId: S.optional(S.String.pipe(T.Query())),
           updateMask: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(42, __c5, 2).pipe(T.HttpBody())),
+          body: S.optional(__S(240, __c15, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -5344,13 +5458,17 @@ function __c19(j: number): any {
       ).annotate({
         identifier: "PatchProjectsLocationsConnectorsRequest",
       });
-    case 1:
+  }
+}
+function __c81(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           updateMask: S.optional(S.String.pipe(T.Query())),
           requestId: S.optional(S.String.pipe(T.Query())),
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(54, __c6, 6).pipe(T.HttpBody())),
+          body: S.optional(__S(310, __c19, 6).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -5361,13 +5479,17 @@ function __c19(j: number): any {
       ).annotate({
         identifier: "PatchProjectsLocationsSecurityGatewaysRequest",
       });
-    case 2:
+  }
+}
+function __c82(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           updateMask: S.optional(S.String.pipe(T.Query())),
           name: S.String.pipe(T.Label()),
           requestId: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(66, __c8, 2).pipe(T.HttpBody())),
+          body: S.optional(__S(346, __c21, 10).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -5378,21 +5500,25 @@ function __c19(j: number): any {
       ).annotate({
         identifier: "PatchProjectsLocationsSecurityGatewaysApplicationsRequest",
       });
-    case 3:
+  }
+}
+function __c83(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           requestId: S.optional(S.String),
           validateOnly: S.optional(S.Boolean),
-          resourceInfo: S.optional(__S(30, __c3, 6)),
+          resourceInfo: S.optional(__S(145, __c9, 1)),
         }),
       ).annotate({
         identifier: "GoogleCloudBeyondcorpAppconnectorsV1alphaReportStatusRequest",
       });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           appConnector: S.String.pipe(T.Label()),
-          body: S.optional(__S(155, __c19, 3).pipe(T.HttpBody())),
+          body: S.optional(__S(1328, __c83, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -5403,19 +5529,23 @@ function __c19(j: number): any {
       ).annotate({
         identifier: "ReportStatusProjectsLocationsAppConnectorsRequest",
       });
-    case 5:
+  }
+}
+function __c84(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          resourceInfo: S.optional(__S(41, __c5, 1)),
+          resourceInfo: S.optional(__S(257, __c16, 1)),
           requestId: S.optional(S.String),
           validateOnly: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "ReportStatusRequest" });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           connector: S.String.pipe(T.Label()),
-          body: S.optional(__S(157, __c19, 5).pipe(T.HttpBody())),
+          body: S.optional(__S(1344, __c84, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -5426,7 +5556,107 @@ function __c19(j: number): any {
       ).annotate({
         identifier: "ReportStatusProjectsLocationsConnectorsRequest",
       });
-    case 7:
+  }
+}
+function __c85(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          group: S.optional(S.String.pipe(T.Query())),
+          endTime: S.optional(S.String.pipe(T.Query())),
+          aggregation: S.optional(S.String.pipe(T.Query())),
+          pageToken: S.optional(S.String.pipe(T.Query())),
+          "customGrouping.fieldFilter": S.optional(S.String.pipe(T.Query())),
+          "customGrouping.groupFields": S.optional(__S(1392, __c87, 0).pipe(T.Query())),
+          pageSize: S.optional(S.Number.pipe(T.Query())),
+          fieldFilter: S.optional(S.String.pipe(T.Query())),
+          insight: S.String.pipe(T.Label()),
+          startTime: S.optional(S.String.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v1alpha/{+insight}:configuredInsight",
+            baseUrl: "https://beyondcorp.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "ConfiguredInsightOrganizationsLocationsInsightsRequest",
+      });
+  }
+}
+function __c86(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          rows: S.optional(__S(1411, __c88, 3)),
+          nextPageToken: S.optional(S.String),
+          appliedConfig: S.optional(__S(1413, __c88, 5)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudBeyondcorpSaasplatformInsightsV1alphaConfiguredInsightResponse",
+      });
+  }
+}
+function __c87(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c88(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          displayName: S.optional(S.String),
+          filterAlias: S.optional(S.String),
+          value: S.optional(S.String),
+          id: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudBeyondcorpSaasplatformInsightsV1alphaRowFieldVal",
+      });
+    case 1:
+      return S.Array(__S(1408, __c88, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          fieldValues: S.optional(__S(1409, __c88, 1)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudBeyondcorpSaasplatformInsightsV1alphaRow",
+      });
+    case 3:
+      return S.Array(__S(1410, __c88, 2));
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          groupFields: S.optional(__S(1392, __c87, 0)),
+          fieldFilter: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudBeyondcorpSaasplatformInsightsV1alphaCustomGrouping",
+      });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          customGrouping: S.optional(__S(1412, __c88, 4)),
+          group: S.optional(S.String),
+          startTime: S.optional(S.String),
+          endTime: S.optional(S.String),
+          fieldFilter: S.optional(S.String),
+          aggregation: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudBeyondcorpSaasplatformInsightsV1alphaAppliedConfig",
+      });
+  }
+}
+function __c89(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           appConnector: S.String.pipe(T.Label()),
@@ -5440,11 +5670,7 @@ function __c19(j: number): any {
       ).annotate({
         identifier: "ResolveInstanceConfigProjectsLocationsAppConnectorsRequest",
       });
-  }
-}
-function __c20(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           stableImage: S.optional(S.String),
@@ -5453,7 +5679,7 @@ function __c20(j: number): any {
       ).annotate({
         identifier: "GoogleCloudBeyondcorpAppconnectorsV1alphaImageConfig",
       });
-    case 1:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           pubsubSubscription: S.optional(S.String),
@@ -5462,34 +5688,38 @@ function __c20(j: number): any {
         identifier:
           "GoogleCloudBeyondcorpAppconnectorsV1alphaNotificationConfigCloudPubSubNotificationConfig",
       });
-    case 2:
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          pubsubNotification: S.optional(__S(161, __c20, 1)),
+          pubsubNotification: S.optional(__S(1426, __c89, 2)),
         }),
       ).annotate({
         identifier: "GoogleCloudBeyondcorpAppconnectorsV1alphaNotificationConfig",
       });
-    case 3:
+    case 4:
       return S.suspend(() =>
         S.Struct({
-          imageConfig: S.optional(__S(160, __c20, 0)),
-          instanceConfig: S.optional(__S(23, __c2, 7)),
-          notificationConfig: S.optional(__S(162, __c20, 2)),
+          imageConfig: S.optional(__S(1425, __c89, 1)),
+          instanceConfig: S.optional(__S(16, __c1, 0)),
+          notificationConfig: S.optional(__S(1427, __c89, 3)),
           sequenceNumber: S.optional(S.String),
         }),
       ).annotate({
         identifier: "GoogleCloudBeyondcorpAppconnectorsV1alphaAppConnectorInstanceConfig",
       });
-    case 4:
+    case 5:
       return S.suspend(() =>
         S.Struct({
-          instanceConfig: S.optional(__S(163, __c20, 3)),
+          instanceConfig: S.optional(__S(1428, __c89, 4)),
         }),
       ).annotate({
         identifier: "GoogleCloudBeyondcorpAppconnectorsV1alphaResolveInstanceConfigResponse",
       });
-    case 5:
+  }
+}
+function __c90(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           connector: S.String.pipe(T.Label()),
@@ -5503,14 +5733,14 @@ function __c20(j: number): any {
       ).annotate({
         identifier: "ResolveInstanceConfigProjectsLocationsConnectorsRequest",
       });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           stableImage: S.optional(S.String),
           targetImage: S.optional(S.String),
         }),
       ).annotate({ identifier: "ImageConfig" });
-    case 7:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           pubsubSubscription: S.optional(S.String),
@@ -5518,34 +5748,34 @@ function __c20(j: number): any {
       ).annotate({
         identifier: "CloudPubSubNotificationConfig",
       });
-  }
-}
-function __c21(j: number): any {
-  switch (j) {
-    case 0:
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          pubsubNotification: S.optional(__S(167, __c20, 7)),
+          pubsubNotification: S.optional(__S(1442, __c90, 2)),
         }),
       ).annotate({ identifier: "NotificationConfig" });
-    case 1:
+    case 4:
       return S.suspend(() =>
         S.Struct({
-          imageConfig: S.optional(__S(166, __c20, 6)),
-          notificationConfig: S.optional(__S(168, __c21, 0)),
-          instanceConfig: S.optional(__S(23, __c2, 7)),
+          imageConfig: S.optional(__S(1441, __c90, 1)),
+          notificationConfig: S.optional(__S(1443, __c90, 3)),
+          instanceConfig: S.optional(__S(16, __c1, 0)),
           sequenceNumber: S.optional(S.String),
         }),
       ).annotate({ identifier: "ConnectorInstanceConfig" });
-    case 2:
+    case 5:
       return S.suspend(() =>
         S.Struct({
-          instanceConfig: S.optional(__S(169, __c21, 1)),
+          instanceConfig: S.optional(__S(1444, __c90, 4)),
         }),
       ).annotate({
         identifier: "ResolveInstanceConfigResponse",
       });
-    case 3:
+  }
+}
+function __c91(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           pageToken: S.optional(S.String.pipe(T.Query())),
@@ -5562,29 +5792,33 @@ function __c21(j: number): any {
       ).annotate({
         identifier: "ResolveProjectsLocationsAppConnectionsRequest",
       });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          recentMigVms: S.optional(__S(6, __c0, 6)),
-          appConnection: S.optional(__S(21, __c2, 5)),
+          recentMigVms: S.optional(__S(1392, __c87, 0)),
+          appConnection: S.optional(__S(81, __c5, 1)),
         }),
       ).annotate({
         identifier:
           "GoogleCloudBeyondcorpAppconnectionsV1alphaResolveAppConnectionsResponseAppConnectionDetails",
       });
-    case 5:
-      return S.Array(__S(172, __c21, 4));
-    case 6:
+    case 2:
+      return S.Array(__S(1457, __c91, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          appConnectionDetails: S.optional(__S(173, __c21, 5)),
+          appConnectionDetails: S.optional(__S(1458, __c91, 2)),
           nextPageToken: S.optional(S.String),
-          unreachable: S.optional(__S(6, __c0, 6)),
+          unreachable: S.optional(__S(1392, __c87, 0)),
         }),
       ).annotate({
         identifier: "GoogleCloudBeyondcorpAppconnectionsV1alphaResolveAppConnectionsResponse",
       });
-    case 7:
+  }
+}
+function __c92(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           pageToken: S.optional(S.String.pipe(T.Query())),
@@ -5601,30 +5835,30 @@ function __c21(j: number): any {
       ).annotate({
         identifier: "ResolveProjectsLocationsConnectionsRequest",
       });
-  }
-}
-function __c22(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          recentMigVms: S.optional(__S(6, __c0, 6)),
-          connection: S.optional(__S(38, __c4, 6)),
+          recentMigVms: S.optional(__S(1392, __c87, 0)),
+          connection: S.optional(__S(209, __c13, 1)),
         }),
       ).annotate({ identifier: "ConnectionDetails" });
-    case 1:
-      return S.Array(__S(176, __c22, 0));
     case 2:
+      return S.Array(__S(1473, __c92, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          connectionDetails: S.optional(__S(177, __c22, 1)),
+          connectionDetails: S.optional(__S(1474, __c92, 2)),
           nextPageToken: S.optional(S.String),
-          unreachable: S.optional(__S(6, __c0, 6)),
+          unreachable: S.optional(__S(1392, __c87, 0)),
         }),
       ).annotate({
         identifier: "ResolveConnectionsResponse",
       });
-    case 3:
+  }
+}
+function __c93(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -5639,25 +5873,20 @@ function __c22(j: number): any {
       ).annotate({
         identifier: "RestartOrganizationsLocationsSubscriptionsRequest",
       });
-    case 4:
+    case 1:
       return S.suspend(() => S.Struct({})).annotate({
         identifier:
           "GoogleCloudBeyondcorpSaasplatformSubscriptionsV1alphaRestartSubscriptionResponse",
       });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          policy: S.optional(__S(85, __c10, 5)),
-          updateMask: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleIamV1SetIamPolicyRequest",
-      });
-    case 6:
+  }
+}
+function __c94(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           resource: S.String.pipe(T.Label()),
-          body: S.optional(__S(181, __c22, 5).pipe(T.HttpBody())),
+          body: S.optional(__S(1520, __c95, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -5668,11 +5897,28 @@ function __c22(j: number): any {
       ).annotate({
         identifier: "SetIamPolicyProjectsLocationsAppConnectionsRequest",
       });
-    case 7:
+  }
+}
+function __c95(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          policy: S.optional(__S(519, __c32, 7)),
+          updateMask: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleIamV1SetIamPolicyRequest",
+      });
+  }
+}
+function __c96(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           resource: S.String.pipe(T.Label()),
-          body: S.optional(__S(181, __c22, 5).pipe(T.HttpBody())),
+          body: S.optional(__S(1520, __c95, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -5685,13 +5931,13 @@ function __c22(j: number): any {
       });
   }
 }
-function __c23(j: number): any {
+function __c97(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           resource: S.String.pipe(T.Label()),
-          body: S.optional(__S(181, __c22, 5).pipe(T.HttpBody())),
+          body: S.optional(__S(1520, __c95, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -5702,11 +5948,15 @@ function __c23(j: number): any {
       ).annotate({
         identifier: "SetIamPolicyProjectsLocationsAppGatewaysRequest",
       });
-    case 1:
+  }
+}
+function __c98(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           resource: S.String.pipe(T.Label()),
-          body: S.optional(__S(181, __c22, 5).pipe(T.HttpBody())),
+          body: S.optional(__S(1520, __c95, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -5717,11 +5967,15 @@ function __c23(j: number): any {
       ).annotate({
         identifier: "SetIamPolicyProjectsLocationsApplicationDomainsRequest",
       });
-    case 2:
+  }
+}
+function __c99(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           resource: S.String.pipe(T.Label()),
-          body: S.optional(__S(181, __c22, 5).pipe(T.HttpBody())),
+          body: S.optional(__S(1520, __c95, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -5732,11 +5986,42 @@ function __c23(j: number): any {
       ).annotate({
         identifier: "SetIamPolicyProjectsLocationsApplicationsRequest",
       });
-    case 3:
+  }
+}
+function __c100(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          endTime: S.optional(S.String.pipe(T.Query())),
+          fieldFilter: S.optional(S.String.pipe(T.Query())),
+          group: S.optional(S.String.pipe(T.Query())),
+          pageToken: S.optional(S.String.pipe(T.Query())),
+          pageSize: S.optional(S.Number.pipe(T.Query())),
+          startTime: S.optional(S.String.pipe(T.Query())),
+          insight: S.String.pipe(T.Label()),
+          "customGrouping.groupFields": S.optional(__S(1392, __c87, 0).pipe(T.Query())),
+          "customGrouping.fieldFilter": S.optional(S.String.pipe(T.Query())),
+          aggregation: S.optional(S.String.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v1alpha/{+insight}:configuredInsight",
+            baseUrl: "https://beyondcorp.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "ConfiguredInsightProjectsLocationsInsightsRequest",
+      });
+  }
+}
+function __c101(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           resource: S.String.pipe(T.Label()),
-          body: S.optional(__S(181, __c22, 5).pipe(T.HttpBody())),
+          body: S.optional(__S(1520, __c95, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -5747,11 +6032,15 @@ function __c23(j: number): any {
       ).annotate({
         identifier: "SetIamPolicyProjectsLocationsConnectionsRequest",
       });
-    case 4:
+  }
+}
+function __c102(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           resource: S.String.pipe(T.Label()),
-          body: S.optional(__S(181, __c22, 5).pipe(T.HttpBody())),
+          body: S.optional(__S(1520, __c95, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -5762,11 +6051,15 @@ function __c23(j: number): any {
       ).annotate({
         identifier: "SetIamPolicyProjectsLocationsConnectorsRequest",
       });
-    case 5:
+  }
+}
+function __c103(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           resource: S.String.pipe(T.Label()),
-          body: S.optional(__S(181, __c22, 5).pipe(T.HttpBody())),
+          body: S.optional(__S(1520, __c95, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -5777,11 +6070,15 @@ function __c23(j: number): any {
       ).annotate({
         identifier: "SetIamPolicyProjectsLocationsSecurityGatewaysRequest",
       });
-    case 6:
+  }
+}
+function __c104(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           resource: S.String.pipe(T.Label()),
-          body: S.optional(__S(181, __c22, 5).pipe(T.HttpBody())),
+          body: S.optional(__S(1520, __c95, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -5792,23 +6089,15 @@ function __c23(j: number): any {
       ).annotate({
         identifier: "SetIamPolicyProjectsLocationsSecurityGatewaysApplicationsRequest",
       });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          permissions: S.optional(__S(6, __c0, 6)),
-        }),
-      ).annotate({
-        identifier: "GoogleIamV1TestIamPermissionsRequest",
-      });
   }
 }
-function __c24(j: number): any {
+function __c105(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           resource: S.String.pipe(T.Label()),
-          body: S.optional(__S(191, __c23, 7).pipe(T.HttpBody())),
+          body: S.optional(__S(1696, __c106, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -5819,11 +6108,27 @@ function __c24(j: number): any {
       ).annotate({
         identifier: "TestIamPermissionsProjectsLocationsAppConnectionsRequest",
       });
-    case 1:
+  }
+}
+function __c106(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          permissions: S.optional(__S(1392, __c87, 0)),
+        }),
+      ).annotate({
+        identifier: "GoogleIamV1TestIamPermissionsRequest",
+      });
+  }
+}
+function __c107(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           resource: S.String.pipe(T.Label()),
-          body: S.optional(__S(191, __c23, 7).pipe(T.HttpBody())),
+          body: S.optional(__S(1696, __c106, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -5834,11 +6139,15 @@ function __c24(j: number): any {
       ).annotate({
         identifier: "TestIamPermissionsProjectsLocationsAppConnectorsRequest",
       });
-    case 2:
+  }
+}
+function __c108(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           resource: S.String.pipe(T.Label()),
-          body: S.optional(__S(191, __c23, 7).pipe(T.HttpBody())),
+          body: S.optional(__S(1696, __c106, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -5849,11 +6158,15 @@ function __c24(j: number): any {
       ).annotate({
         identifier: "TestIamPermissionsProjectsLocationsAppGatewaysRequest",
       });
-    case 3:
+  }
+}
+function __c109(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           resource: S.String.pipe(T.Label()),
-          body: S.optional(__S(191, __c23, 7).pipe(T.HttpBody())),
+          body: S.optional(__S(1696, __c106, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -5864,11 +6177,15 @@ function __c24(j: number): any {
       ).annotate({
         identifier: "TestIamPermissionsProjectsLocationsApplicationDomainsRequest",
       });
-    case 4:
+  }
+}
+function __c110(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           resource: S.String.pipe(T.Label()),
-          body: S.optional(__S(191, __c23, 7).pipe(T.HttpBody())),
+          body: S.optional(__S(1696, __c106, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -5879,11 +6196,15 @@ function __c24(j: number): any {
       ).annotate({
         identifier: "TestIamPermissionsProjectsLocationsApplicationsRequest",
       });
-    case 5:
+  }
+}
+function __c111(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           resource: S.String.pipe(T.Label()),
-          body: S.optional(__S(191, __c23, 7).pipe(T.HttpBody())),
+          body: S.optional(__S(1696, __c106, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -5894,11 +6215,58 @@ function __c24(j: number): any {
       ).annotate({
         identifier: "TestIamPermissionsProjectsLocationsSecurityGatewaysRequest",
       });
-    case 6:
+  }
+}
+function __c112(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          parent: S.String.pipe(T.Label()),
+          body: S.optional(__S(1808, __c113, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1alpha/{+parent}/subscriptions",
+            baseUrl: "https://beyondcorp.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateOrganizationsLocationsSubscriptionsRequest",
+      });
+  }
+}
+function __c113(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          autoRenewEnabled: S.optional(S.Boolean),
+          seatCount: S.optional(S.String),
+          sku: S.optional(S.String),
+          endTime: S.optional(S.String),
+          signupSource: S.optional(S.String),
+          csgCustomer: S.optional(S.Boolean),
+          subscriberType: S.optional(S.String),
+          createTime: S.optional(S.String),
+          type: S.optional(S.String),
+          startTime: S.optional(S.String),
+          name: S.optional(S.String),
+          billingAccount: S.optional(S.String),
+          state: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudBeyondcorpSaasplatformSubscriptionsV1alphaSubscription",
+      });
+  }
+}
+function __c114(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           resource: S.String.pipe(T.Label()),
-          body: S.optional(__S(191, __c23, 7).pipe(T.HttpBody())),
+          body: S.optional(__S(1696, __c106, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -5911,7 +6279,6 @@ function __c24(j: number): any {
       });
   }
 }
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

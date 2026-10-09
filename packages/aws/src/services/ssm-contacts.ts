@@ -90,7 +90,7 @@ export class ConflictException
       ResourceId: S.String,
       ResourceType: S.String,
       DependentEntities: /*@__PURE__*/ S.optional(
-        /*@__PURE__*/ S.suspend(() => __S(110, __c13, 6)).annotate({
+        /*@__PURE__*/ S.suspend(() => __S(17, __c1, 1)).annotate({
           identifier: "DependentEntityList",
         }),
       ),
@@ -114,7 +114,7 @@ export class IncidentManagerNotOnboarded
         }),
       ),
       Fields: /*@__PURE__*/ S.optional(
-        /*@__PURE__*/ S.suspend(() => __S(108, __c13, 4)).annotate({
+        /*@__PURE__*/ S.suspend(() => __S(433, __c27, 1)).annotate({
           identifier: "ValidationExceptionFieldList",
         }),
       ),
@@ -146,7 +146,7 @@ export class InvalidRotationArn
         }),
       ),
       Fields: /*@__PURE__*/ S.optional(
-        /*@__PURE__*/ S.suspend(() => __S(108, __c13, 4)).annotate({
+        /*@__PURE__*/ S.suspend(() => __S(433, __c27, 1)).annotate({
           identifier: "ValidationExceptionFieldList",
         }),
       ),
@@ -202,7 +202,7 @@ export class ValidationException
         }),
       ),
       Fields: /*@__PURE__*/ S.optional(
-        /*@__PURE__*/ S.suspend(() => __S(108, __c13, 4)).annotate({
+        /*@__PURE__*/ S.suspend(() => __S(433, __c27, 1)).annotate({
           identifier: "ValidationExceptionFieldList",
         }),
       ),
@@ -774,8 +774,8 @@ export const acceptPage: API.OperationMethod<
   AcceptPageError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(0, __c0, 0) as any as S.Schema<AcceptPageRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<AcceptPageResult>,
+  input: __S(32, __c2, 0) as any as S.Schema<AcceptPageRequest>,
+  output: __S(48, __c3, 0) as any as S.Schema<AcceptPageResult>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -807,8 +807,8 @@ export const activateContactChannel: API.OperationMethod<
   ActivateContactChannelError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2, __c0, 2) as any as S.Schema<ActivateContactChannelRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<ActivateContactChannelResult>,
+  input: __S(64, __c4, 0) as any as S.Schema<ActivateContactChannelRequest>,
+  output: __S(48, __c3, 0) as any as S.Schema<ActivateContactChannelResult>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -843,8 +843,8 @@ export const createContact: API.OperationMethod<
   CreateContactError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(13, __c1, 5) as any as S.Schema<CreateContactRequest>,
-  output: __S(14, __c1, 6) as any as S.Schema<CreateContactResult>,
+  input: __S(80, __c5, 0) as any as S.Schema<CreateContactRequest>,
+  output: __S(81, __c5, 1) as any as S.Schema<CreateContactResult>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -878,8 +878,8 @@ export const createContactChannel: API.OperationMethod<
   CreateContactChannelError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(16, __c2, 0) as any as S.Schema<CreateContactChannelRequest>,
-  output: __S(17, __c2, 1) as any as S.Schema<CreateContactChannelResult>,
+  input: __S(128, __c8, 0) as any as S.Schema<CreateContactChannelRequest>,
+  output: __S(129, __c8, 1) as any as S.Schema<CreateContactChannelResult>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -913,8 +913,8 @@ export const createRotation: API.OperationMethod<
   CreateRotationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(28, __c3, 4) as any as S.Schema<CreateRotationRequest>,
-  output: __S(29, __c3, 5) as any as S.Schema<CreateRotationResult>,
+  input: __S(160, __c10, 0) as any as S.Schema<CreateRotationRequest>,
+  output: __S(161, __c10, 1) as any as S.Schema<CreateRotationResult>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -949,8 +949,8 @@ export const createRotationOverride: API.OperationMethod<
   CreateRotationOverrideError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(30, __c3, 6) as any as S.Schema<CreateRotationOverrideRequest>,
-  output: __S(31, __c3, 7) as any as S.Schema<CreateRotationOverrideResult>,
+  input: __S(192, __c12, 0) as any as S.Schema<CreateRotationOverrideRequest>,
+  output: __S(193, __c12, 1) as any as S.Schema<CreateRotationOverrideResult>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -984,8 +984,8 @@ export const deactivateContactChannel: API.OperationMethod<
   DeactivateContactChannelError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(32, __c4, 0) as any as S.Schema<DeactivateContactChannelRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<DeactivateContactChannelResult>,
+  input: __S(208, __c13, 0) as any as S.Schema<DeactivateContactChannelRequest>,
+  output: __S(48, __c3, 0) as any as S.Schema<DeactivateContactChannelResult>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1021,8 +1021,8 @@ export const deleteContact: API.OperationMethod<
   DeleteContactError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(33, __c4, 1) as any as S.Schema<DeleteContactRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<DeleteContactResult>,
+  input: __S(224, __c14, 0) as any as S.Schema<DeleteContactRequest>,
+  output: __S(48, __c3, 0) as any as S.Schema<DeleteContactResult>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1058,8 +1058,8 @@ export const deleteContactChannel: API.OperationMethod<
   DeleteContactChannelError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(34, __c4, 2) as any as S.Schema<DeleteContactChannelRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<DeleteContactChannelResult>,
+  input: __S(240, __c15, 0) as any as S.Schema<DeleteContactChannelRequest>,
+  output: __S(48, __c3, 0) as any as S.Schema<DeleteContactChannelResult>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1093,8 +1093,8 @@ export const deleteRotation: API.OperationMethod<
   DeleteRotationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(35, __c4, 3) as any as S.Schema<DeleteRotationRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<DeleteRotationResult>,
+  input: __S(256, __c16, 0) as any as S.Schema<DeleteRotationRequest>,
+  output: __S(48, __c3, 0) as any as S.Schema<DeleteRotationResult>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1128,8 +1128,8 @@ export const deleteRotationOverride: API.OperationMethod<
   DeleteRotationOverrideError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(36, __c4, 4) as any as S.Schema<DeleteRotationOverrideRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<DeleteRotationOverrideResult>,
+  input: __S(272, __c17, 0) as any as S.Schema<DeleteRotationOverrideRequest>,
+  output: __S(48, __c3, 0) as any as S.Schema<DeleteRotationOverrideResult>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1163,8 +1163,8 @@ export const describeEngagement: API.OperationMethod<
   DescribeEngagementError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(37, __c4, 5) as any as S.Schema<DescribeEngagementRequest>,
-  output: __S(38, __c4, 6) as any as S.Schema<DescribeEngagementResult>,
+  input: __S(288, __c18, 0) as any as S.Schema<DescribeEngagementRequest>,
+  output: __S(289, __c18, 1) as any as S.Schema<DescribeEngagementResult>,
   errors: [
     AccessDeniedException,
     DataEncryptionException,
@@ -1197,8 +1197,8 @@ export const describePage: API.OperationMethod<
   DescribePageError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(39, __c4, 7) as any as S.Schema<DescribePageRequest>,
-  output: __S(40, __c5, 0) as any as S.Schema<DescribePageResult>,
+  input: __S(304, __c19, 0) as any as S.Schema<DescribePageRequest>,
+  output: __S(305, __c19, 1) as any as S.Schema<DescribePageResult>,
   errors: [
     AccessDeniedException,
     DataEncryptionException,
@@ -1231,8 +1231,8 @@ export const getContact: API.OperationMethod<
   GetContactError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(41, __c5, 1) as any as S.Schema<GetContactRequest>,
-  output: __S(42, __c5, 2) as any as S.Schema<GetContactResult>,
+  input: __S(320, __c20, 0) as any as S.Schema<GetContactRequest>,
+  output: __S(321, __c20, 1) as any as S.Schema<GetContactResult>,
   errors: [
     AccessDeniedException,
     DataEncryptionException,
@@ -1265,8 +1265,8 @@ export const getContactChannel: API.OperationMethod<
   GetContactChannelError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(43, __c5, 3) as any as S.Schema<GetContactChannelRequest>,
-  output: __S(44, __c5, 4) as any as S.Schema<GetContactChannelResult>,
+  input: __S(336, __c21, 0) as any as S.Schema<GetContactChannelRequest>,
+  output: __S(337, __c21, 1) as any as S.Schema<GetContactChannelResult>,
   errors: [
     AccessDeniedException,
     DataEncryptionException,
@@ -1299,8 +1299,8 @@ export const getContactPolicy: API.OperationMethod<
   GetContactPolicyError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(45, __c5, 5) as any as S.Schema<GetContactPolicyRequest>,
-  output: __S(46, __c5, 6) as any as S.Schema<GetContactPolicyResult>,
+  input: __S(352, __c22, 0) as any as S.Schema<GetContactPolicyRequest>,
+  output: __S(353, __c22, 1) as any as S.Schema<GetContactPolicyResult>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1332,8 +1332,8 @@ export const getRotation: API.OperationMethod<
   GetRotationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(47, __c5, 7) as any as S.Schema<GetRotationRequest>,
-  output: __S(48, __c6, 0) as any as S.Schema<GetRotationResult>,
+  input: __S(368, __c23, 0) as any as S.Schema<GetRotationRequest>,
+  output: __S(369, __c23, 1) as any as S.Schema<GetRotationResult>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1366,8 +1366,8 @@ export const getRotationOverride: API.OperationMethod<
   GetRotationOverrideError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(49, __c6, 1) as any as S.Schema<GetRotationOverrideRequest>,
-  output: __S(50, __c6, 2) as any as S.Schema<GetRotationOverrideResult>,
+  input: __S(384, __c24, 0) as any as S.Schema<GetRotationOverrideRequest>,
+  output: __S(385, __c24, 1) as any as S.Schema<GetRotationOverrideResult>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1401,8 +1401,8 @@ export const listContactChannels: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   ContactChannel
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(51, __c6, 3) as any as S.Schema<ListContactChannelsRequest>,
-  output: __S(54, __c6, 6) as any as S.Schema<ListContactChannelsResult>,
+  input: __S(400, __c25, 0) as any as S.Schema<ListContactChannelsRequest>,
+  output: __S(403, __c25, 3) as any as S.Schema<ListContactChannelsResult>,
   errors: [
     AccessDeniedException,
     DataEncryptionException,
@@ -1440,8 +1440,8 @@ export const listContacts: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   Contact
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(55, __c6, 7) as any as S.Schema<ListContactsRequest>,
-  output: __S(58, __c7, 2) as any as S.Schema<ListContactsResult>,
+  input: __S(416, __c26, 0) as any as S.Schema<ListContactsRequest>,
+  output: __S(419, __c26, 3) as any as S.Schema<ListContactsResult>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1477,8 +1477,8 @@ export const listEngagements: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   Engagement
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(60, __c7, 4) as any as S.Schema<ListEngagementsRequest>,
-  output: __S(63, __c7, 7) as any as S.Schema<ListEngagementsResult>,
+  input: __S(449, __c28, 1) as any as S.Schema<ListEngagementsRequest>,
+  output: __S(452, __c28, 4) as any as S.Schema<ListEngagementsResult>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1515,8 +1515,8 @@ export const listPageReceipts: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   Receipt
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(64, __c8, 0) as any as S.Schema<ListPageReceiptsRequest>,
-  output: __S(67, __c8, 3) as any as S.Schema<ListPageReceiptsResult>,
+  input: __S(464, __c29, 0) as any as S.Schema<ListPageReceiptsRequest>,
+  output: __S(467, __c29, 3) as any as S.Schema<ListPageReceiptsResult>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1558,8 +1558,8 @@ export const listPageResolutions: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   ResolutionContact
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(68, __c8, 4) as any as S.Schema<ListPageResolutionsRequest>,
-  output: __S(71, __c8, 7) as any as S.Schema<ListPageResolutionsResult>,
+  input: __S(480, __c30, 0) as any as S.Schema<ListPageResolutionsRequest>,
+  output: __S(483, __c30, 3) as any as S.Schema<ListPageResolutionsResult>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1596,8 +1596,8 @@ export const listPagesByContact: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   Page
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(72, __c9, 0) as any as S.Schema<ListPagesByContactRequest>,
-  output: __S(75, __c9, 3) as any as S.Schema<ListPagesByContactResult>,
+  input: __S(496, __c31, 0) as any as S.Schema<ListPagesByContactRequest>,
+  output: __S(497, __c31, 1) as any as S.Schema<ListPagesByContactResult>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1635,8 +1635,8 @@ export const listPagesByEngagement: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   Page
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(76, __c9, 4) as any as S.Schema<ListPagesByEngagementRequest>,
-  output: __S(77, __c9, 5) as any as S.Schema<ListPagesByEngagementResult>,
+  input: __S(528, __c33, 0) as any as S.Schema<ListPagesByEngagementRequest>,
+  output: __S(529, __c33, 1) as any as S.Schema<ListPagesByEngagementResult>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1675,8 +1675,8 @@ export const listPreviewRotationShifts: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   RotationShift
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(80, __c10, 0) as any as S.Schema<ListPreviewRotationShiftsRequest>,
-  output: __S(84, __c10, 4) as any as S.Schema<ListPreviewRotationShiftsResult>,
+  input: __S(546, __c34, 2) as any as S.Schema<ListPreviewRotationShiftsRequest>,
+  output: __S(547, __c34, 3) as any as S.Schema<ListPreviewRotationShiftsResult>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1714,8 +1714,8 @@ export const listRotationOverrides: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   RotationOverride
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(85, __c10, 5) as any as S.Schema<ListRotationOverridesRequest>,
-  output: __S(88, __c11, 0) as any as S.Schema<ListRotationOverridesResult>,
+  input: __S(576, __c36, 0) as any as S.Schema<ListRotationOverridesRequest>,
+  output: __S(579, __c36, 3) as any as S.Schema<ListRotationOverridesResult>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1754,8 +1754,8 @@ export const listRotations: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   Rotation
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(89, __c11, 1) as any as S.Schema<ListRotationsRequest>,
-  output: __S(92, __c11, 4) as any as S.Schema<ListRotationsResult>,
+  input: __S(592, __c37, 0) as any as S.Schema<ListRotationsRequest>,
+  output: __S(595, __c37, 3) as any as S.Schema<ListRotationsResult>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1795,8 +1795,8 @@ export const listRotationShifts: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   RotationShift
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(93, __c11, 5) as any as S.Schema<ListRotationShiftsRequest>,
-  output: __S(94, __c11, 6) as any as S.Schema<ListRotationShiftsResult>,
+  input: __S(608, __c38, 0) as any as S.Schema<ListRotationShiftsRequest>,
+  output: __S(609, __c38, 1) as any as S.Schema<ListRotationShiftsResult>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1835,8 +1835,8 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(95, __c11, 7) as any as S.Schema<ListTagsForResourceRequest>,
-  output: __S(96, __c12, 0) as any as S.Schema<ListTagsForResourceResult>,
+  input: __S(624, __c39, 0) as any as S.Schema<ListTagsForResourceRequest>,
+  output: __S(625, __c39, 1) as any as S.Schema<ListTagsForResourceResult>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1870,8 +1870,8 @@ export const putContactPolicy: API.OperationMethod<
   PutContactPolicyError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(97, __c12, 1) as any as S.Schema<PutContactPolicyRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<PutContactPolicyResult>,
+  input: __S(640, __c40, 0) as any as S.Schema<PutContactPolicyRequest>,
+  output: __S(48, __c3, 0) as any as S.Schema<PutContactPolicyResult>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1907,8 +1907,8 @@ export const sendActivationCode: API.OperationMethod<
   SendActivationCodeError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(98, __c12, 2) as any as S.Schema<SendActivationCodeRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<SendActivationCodeResult>,
+  input: __S(656, __c41, 0) as any as S.Schema<SendActivationCodeRequest>,
+  output: __S(48, __c3, 0) as any as S.Schema<SendActivationCodeResult>,
   errors: [
     AccessDeniedException,
     DataEncryptionException,
@@ -1943,8 +1943,8 @@ export const startEngagement: API.OperationMethod<
   StartEngagementError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(99, __c12, 3) as any as S.Schema<StartEngagementRequest>,
-  output: __S(100, __c12, 4) as any as S.Schema<StartEngagementResult>,
+  input: __S(672, __c42, 0) as any as S.Schema<StartEngagementRequest>,
+  output: __S(673, __c42, 1) as any as S.Schema<StartEngagementResult>,
   errors: [
     AccessDeniedException,
     DataEncryptionException,
@@ -1977,8 +1977,8 @@ export const stopEngagement: API.OperationMethod<
   StopEngagementError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(101, __c12, 5) as any as S.Schema<StopEngagementRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<StopEngagementResult>,
+  input: __S(688, __c43, 0) as any as S.Schema<StopEngagementRequest>,
+  output: __S(48, __c3, 0) as any as S.Schema<StopEngagementResult>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -2011,8 +2011,8 @@ export const tagResource: API.OperationMethod<
   TagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(102, __c12, 6) as any as S.Schema<TagResourceRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<TagResourceResult>,
+  input: __S(704, __c44, 0) as any as S.Schema<TagResourceRequest>,
+  output: __S(48, __c3, 0) as any as S.Schema<TagResourceResult>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -2044,8 +2044,8 @@ export const untagResource: API.OperationMethod<
   UntagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(103, __c12, 7) as any as S.Schema<UntagResourceRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<UntagResourceResult>,
+  input: __S(720, __c45, 0) as any as S.Schema<UntagResourceRequest>,
+  output: __S(48, __c3, 0) as any as S.Schema<UntagResourceResult>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -2078,8 +2078,8 @@ export const updateContact: API.OperationMethod<
   UpdateContactError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(104, __c13, 0) as any as S.Schema<UpdateContactRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<UpdateContactResult>,
+  input: __S(736, __c46, 0) as any as S.Schema<UpdateContactRequest>,
+  output: __S(48, __c3, 0) as any as S.Schema<UpdateContactResult>,
   errors: [
     AccessDeniedException,
     DataEncryptionException,
@@ -2114,8 +2114,8 @@ export const updateContactChannel: API.OperationMethod<
   UpdateContactChannelError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(105, __c13, 1) as any as S.Schema<UpdateContactChannelRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<UpdateContactChannelResult>,
+  input: __S(752, __c47, 0) as any as S.Schema<UpdateContactChannelRequest>,
+  output: __S(48, __c3, 0) as any as S.Schema<UpdateContactChannelResult>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -2150,8 +2150,8 @@ export const updateRotation: API.OperationMethod<
   UpdateRotationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(106, __c13, 2) as any as S.Schema<UpdateRotationRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<UpdateRotationResult>,
+  input: __S(768, __c48, 0) as any as S.Schema<UpdateRotationRequest>,
+  output: __S(48, __c3, 0) as any as S.Schema<UpdateRotationResult>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -2171,6 +2171,22 @@ export const updateRotation: API.OperationMethod<
 function __c0(j: number): any {
   switch (j) {
     case 0:
+      return S.Array(S.String);
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ RelationType: S.String, DependentResourceIds: __S(0, __c0, 0) }),
+      ).annotate({ identifier: "DependentEntity" });
+    case 1:
+      return S.Array(__S(16, __c1, 0));
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           PageId: S.String,
@@ -2181,11 +2197,19 @@ function __c0(j: number): any {
           AcceptCodeValidation: S.optional(S.String),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "AcceptPageRequest" });
-    case 1:
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "AcceptPageResult",
       });
-    case 2:
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ ContactChannelId: S.String, ActivationCode: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
@@ -2193,67 +2217,72 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "ActivateContactChannelRequest",
       });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({ ContactChannelId: S.String, RetryIntervalInMinutes: S.optional(S.Number) }),
-      ).annotate({ identifier: "ChannelTargetInfo" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({ ContactId: S.optional(S.String), IsEssential: S.Boolean }),
-      ).annotate({ identifier: "ContactTargetInfo" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          ChannelTargetInfo: S.optional(__S(3, __c0, 3)),
-          ContactTargetInfo: S.optional(__S(4, __c0, 4)),
-        }),
-      ).annotate({ identifier: "Target" });
-    case 6:
-      return S.Array(__S(5, __c0, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({ DurationInMinutes: S.Number, Targets: __S(6, __c0, 6) }),
-      ).annotate({ identifier: "Stage" });
   }
 }
-function __c1(j: number): any {
+function __c5(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(7, __c0, 7));
-    case 1:
-      return S.Array(S.String);
-    case 2:
-      return S.suspend(() =>
-        S.Struct({ Stages: S.optional(__S(8, __c1, 0)), RotationIds: S.optional(__S(9, __c1, 1)) }),
-      ).annotate({ identifier: "Plan" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({ Key: S.optional(S.String), Value: S.optional(S.String) }),
-      ).annotate({ identifier: "Tag" });
-    case 4:
-      return S.Array(__S(11, __c1, 3));
-    case 5:
       return S.suspend(() =>
         S.Struct({
           Alias: S.String,
           DisplayName: S.optional(S.String),
           Type: S.String,
-          Plan: __S(10, __c1, 2),
-          Tags: S.optional(__S(12, __c1, 4)),
+          Plan: __S(118, __c7, 6),
+          Tags: S.optional(__S(97, __c6, 1)),
           IdempotencyToken: S.optional(S.String).pipe(T.IdempotencyToken()),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "CreateContactRequest" });
-    case 6:
+    case 1:
       return S.suspend(() => S.Struct({ ContactArn: S.String })).annotate({
         identifier: "CreateContactResult",
       });
-    case 7:
-      return S.suspend(() => S.Struct({ SimpleAddress: S.optional(S.String) })).annotate({
-        identifier: "ContactChannelAddress",
-      });
   }
 }
-function __c2(j: number): any {
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ Key: S.optional(S.String), Value: S.optional(S.String) }),
+      ).annotate({ identifier: "Tag" });
+    case 1:
+      return S.Array(__S(96, __c6, 0));
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ ContactChannelId: S.String, RetryIntervalInMinutes: S.optional(S.Number) }),
+      ).annotate({ identifier: "ChannelTargetInfo" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({ ContactId: S.optional(S.String), IsEssential: S.Boolean }),
+      ).annotate({ identifier: "ContactTargetInfo" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          ChannelTargetInfo: S.optional(__S(112, __c7, 0)),
+          ContactTargetInfo: S.optional(__S(113, __c7, 1)),
+        }),
+      ).annotate({ identifier: "Target" });
+    case 3:
+      return S.Array(__S(114, __c7, 2));
+    case 4:
+      return S.suspend(() =>
+        S.Struct({ DurationInMinutes: S.Number, Targets: __S(115, __c7, 3) }),
+      ).annotate({ identifier: "Stage" });
+    case 5:
+      return S.Array(__S(116, __c7, 4));
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          Stages: S.optional(__S(117, __c7, 5)),
+          RotationIds: S.optional(__S(0, __c0, 0)),
+        }),
+      ).annotate({ identifier: "Plan" });
+  }
+}
+function __c8(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2261,7 +2290,7 @@ function __c2(j: number): any {
           ContactId: S.String,
           Name: S.String,
           Type: S.String,
-          DeliveryAddress: __S(15, __c1, 7),
+          DeliveryAddress: __S(144, __c9, 0),
           DeferActivation: S.optional(S.Boolean),
           IdempotencyToken: S.optional(S.String).pipe(T.IdempotencyToken()),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
@@ -2272,68 +2301,84 @@ function __c2(j: number): any {
       return S.suspend(() => S.Struct({ ContactChannelArn: S.String })).annotate({
         identifier: "CreateContactChannelResult",
       });
-    case 2:
-      return S.suspend(() => S.Struct({ HourOfDay: S.Number, MinuteOfHour: S.Number })).annotate({
-        identifier: "HandOffTime",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({ DayOfMonth: S.Number, HandOffTime: __S(18, __c2, 2) }),
-      ).annotate({ identifier: "MonthlySetting" });
-    case 4:
-      return S.Array(__S(19, __c2, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({ DayOfWeek: S.String, HandOffTime: __S(18, __c2, 2) }),
-      ).annotate({ identifier: "WeeklySetting" });
-    case 6:
-      return S.Array(__S(21, __c2, 5));
-    case 7:
-      return S.Array(__S(18, __c2, 2));
   }
 }
-function __c3(j: number): any {
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({ SimpleAddress: S.optional(S.String) })).annotate({
+        identifier: "ContactChannelAddress",
+      });
+  }
+}
+function __c10(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({ Start: S.optional(__S(18, __c2, 2)), End: S.optional(__S(18, __c2, 2)) }),
-      ).annotate({ identifier: "CoverageTime" });
-    case 1:
-      return S.Array(__S(24, __c3, 0));
-    case 2:
-      return S.Record(S.String, /*@__PURE__*/ __S(25, __c3, 1).pipe(S.optional));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          MonthlySettings: S.optional(__S(20, __c2, 4)),
-          WeeklySettings: S.optional(__S(22, __c2, 6)),
-          DailySettings: S.optional(__S(23, __c2, 7)),
-          NumberOfOnCalls: S.Number,
-          ShiftCoverages: S.optional(__S(26, __c3, 2)),
-          RecurrenceMultiplier: S.Number,
-        }),
-      ).annotate({ identifier: "RecurrenceSettings" });
-    case 4:
-      return S.suspend(() =>
         S.Struct({
           Name: S.String,
-          ContactIds: __S(9, __c1, 1),
+          ContactIds: __S(0, __c0, 0),
           StartTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           TimeZoneId: S.String,
-          Recurrence: __S(27, __c3, 3),
-          Tags: S.optional(__S(12, __c1, 4)),
+          Recurrence: __S(185, __c11, 9),
+          Tags: S.optional(__S(97, __c6, 1)),
           IdempotencyToken: S.optional(S.String),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "CreateRotationRequest" });
-    case 5:
+    case 1:
       return S.suspend(() => S.Struct({ RotationArn: S.String })).annotate({
         identifier: "CreateRotationResult",
       });
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({ HourOfDay: S.Number, MinuteOfHour: S.Number })).annotate({
+        identifier: "HandOffTime",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({ DayOfMonth: S.Number, HandOffTime: __S(176, __c11, 0) }),
+      ).annotate({ identifier: "MonthlySetting" });
+    case 2:
+      return S.Array(__S(177, __c11, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({ DayOfWeek: S.String, HandOffTime: __S(176, __c11, 0) }),
+      ).annotate({ identifier: "WeeklySetting" });
+    case 4:
+      return S.Array(__S(179, __c11, 3));
+    case 5:
+      return S.Array(__S(176, __c11, 0));
     case 6:
+      return S.suspend(() =>
+        S.Struct({ Start: S.optional(__S(176, __c11, 0)), End: S.optional(__S(176, __c11, 0)) }),
+      ).annotate({ identifier: "CoverageTime" });
+    case 7:
+      return S.Array(__S(182, __c11, 6));
+    case 8:
+      return S.Record(S.String, /*@__PURE__*/ __S(183, __c11, 7).pipe(S.optional));
+    case 9:
+      return S.suspend(() =>
+        S.Struct({
+          MonthlySettings: S.optional(__S(178, __c11, 2)),
+          WeeklySettings: S.optional(__S(180, __c11, 4)),
+          DailySettings: S.optional(__S(181, __c11, 5)),
+          NumberOfOnCalls: S.Number,
+          ShiftCoverages: S.optional(__S(184, __c11, 8)),
+          RecurrenceMultiplier: S.Number,
+        }),
+      ).annotate({ identifier: "RecurrenceSettings" });
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           RotationId: S.String,
-          NewContactIds: __S(9, __c1, 1),
+          NewContactIds: __S(0, __c0, 0),
           StartTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
           EndTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
           IdempotencyToken: S.optional(S.String),
@@ -2341,13 +2386,13 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "CreateRotationOverrideRequest",
       });
-    case 7:
+    case 1:
       return S.suspend(() => S.Struct({ RotationOverrideId: S.String })).annotate({
         identifier: "CreateRotationOverrideResult",
       });
   }
 }
-function __c4(j: number): any {
+function __c13(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2357,13 +2402,21 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "DeactivateContactChannelRequest",
       });
-    case 1:
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ ContactId: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "DeleteContactRequest" });
-    case 2:
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ ContactChannelId: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
@@ -2371,13 +2424,21 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "DeleteContactChannelRequest",
       });
-    case 3:
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ RotationId: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "DeleteRotationRequest" });
-    case 4:
+  }
+}
+function __c17(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ RotationId: S.String, RotationOverrideId: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
@@ -2385,7 +2446,11 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "DeleteRotationOverrideRequest",
       });
-    case 5:
+  }
+}
+function __c18(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ EngagementId: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
@@ -2393,7 +2458,7 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "DescribeEngagementRequest",
       });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           ContactArn: S.String,
@@ -2408,17 +2473,17 @@ function __c4(j: number): any {
           StopTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
         }),
       ).annotate({ identifier: "DescribeEngagementResult" });
-    case 7:
+  }
+}
+function __c19(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ PageId: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "DescribePageRequest" });
-  }
-}
-function __c5(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           PageArn: S.String,
@@ -2435,71 +2500,87 @@ function __c5(j: number): any {
           DeliveryTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
         }),
       ).annotate({ identifier: "DescribePageResult" });
-    case 1:
+  }
+}
+function __c20(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ ContactId: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "GetContactRequest" });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           ContactArn: S.String,
           Alias: S.String,
           DisplayName: S.optional(S.String),
           Type: S.String,
-          Plan: __S(10, __c1, 2),
+          Plan: __S(118, __c7, 6),
         }),
       ).annotate({ identifier: "GetContactResult" });
-    case 3:
+  }
+}
+function __c21(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ ContactChannelId: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "GetContactChannelRequest" });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           ContactArn: S.String,
           ContactChannelArn: S.String,
           Name: S.String,
           Type: S.String,
-          DeliveryAddress: __S(15, __c1, 7),
+          DeliveryAddress: __S(144, __c9, 0),
           ActivationStatus: S.optional(S.String),
         }),
       ).annotate({ identifier: "GetContactChannelResult" });
-    case 5:
+  }
+}
+function __c22(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ ContactArn: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "GetContactPolicyRequest" });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({ ContactArn: S.optional(S.String), Policy: S.optional(S.String) }),
       ).annotate({ identifier: "GetContactPolicyResult" });
-    case 7:
+  }
+}
+function __c23(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ RotationId: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "GetRotationRequest" });
-  }
-}
-function __c6(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           RotationArn: S.String,
           Name: S.String,
-          ContactIds: __S(9, __c1, 1),
+          ContactIds: __S(0, __c0, 0),
           StartTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
           TimeZoneId: S.String,
-          Recurrence: __S(27, __c3, 3),
+          Recurrence: __S(185, __c11, 9),
         }),
       ).annotate({ identifier: "GetRotationResult" });
-    case 1:
+  }
+}
+function __c24(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ RotationId: S.String, RotationOverrideId: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
@@ -2507,12 +2588,12 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "GetRotationOverrideRequest",
       });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           RotationOverrideId: S.optional(S.String),
           RotationArn: S.optional(S.String),
-          NewContactIds: S.optional(__S(9, __c1, 1)),
+          NewContactIds: S.optional(__S(0, __c0, 0)),
           StartTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           EndTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           CreateTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
@@ -2520,7 +2601,11 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "GetRotationOverrideResult",
       });
-    case 3:
+  }
+}
+function __c25(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           ContactId: S.String,
@@ -2530,26 +2615,30 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "ListContactChannelsRequest",
       });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           ContactChannelArn: S.String,
           ContactArn: S.String,
           Name: S.String,
           Type: S.optional(S.String),
-          DeliveryAddress: __S(15, __c1, 7),
+          DeliveryAddress: __S(144, __c9, 0),
           ActivationStatus: S.String,
         }),
       ).annotate({ identifier: "ContactChannel" });
-    case 5:
-      return S.Array(__S(52, __c6, 4));
-    case 6:
+    case 2:
+      return S.Array(__S(401, __c25, 1));
+    case 3:
       return S.suspend(() =>
-        S.Struct({ NextToken: S.optional(S.String), ContactChannels: __S(53, __c6, 5) }),
+        S.Struct({ NextToken: S.optional(S.String), ContactChannels: __S(402, __c25, 2) }),
       ).annotate({
         identifier: "ListContactChannelsResult",
       });
-    case 7:
+  }
+}
+function __c26(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           NextToken: S.optional(S.String),
@@ -2558,11 +2647,7 @@ function __c6(j: number): any {
           Type: S.optional(S.String),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "ListContactsRequest" });
-  }
-}
-function __c7(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           ContactArn: S.String,
@@ -2571,29 +2656,43 @@ function __c7(j: number): any {
           Type: S.String,
         }),
       ).annotate({ identifier: "Contact" });
-    case 1:
-      return S.Array(__S(56, __c7, 0));
     case 2:
-      return S.suspend(() =>
-        S.Struct({ NextToken: S.optional(S.String), Contacts: S.optional(__S(57, __c7, 1)) }),
-      ).annotate({ identifier: "ListContactsResult" });
+      return S.Array(__S(417, __c26, 1));
     case 3:
+      return S.suspend(() =>
+        S.Struct({ NextToken: S.optional(S.String), Contacts: S.optional(__S(418, __c26, 2)) }),
+      ).annotate({ identifier: "ListContactsResult" });
+  }
+}
+function __c27(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({ Name: S.String, Message: S.String })).annotate({
+        identifier: "ValidationExceptionField",
+      });
+    case 1:
+      return S.Array(__S(432, __c27, 0));
+  }
+}
+function __c28(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           StartTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           EndTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
         }),
       ).annotate({ identifier: "TimeRange" });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           NextToken: S.optional(S.String),
           MaxResults: S.optional(S.Number),
           IncidentId: S.optional(S.String),
-          TimeRangeValue: S.optional(__S(59, __c7, 3)),
+          TimeRangeValue: S.optional(__S(448, __c28, 0)),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "ListEngagementsRequest" });
-    case 5:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           EngagementArn: S.String,
@@ -2604,15 +2703,15 @@ function __c7(j: number): any {
           StopTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
         }),
       ).annotate({ identifier: "Engagement" });
-    case 6:
-      return S.Array(__S(61, __c7, 5));
-    case 7:
+    case 3:
+      return S.Array(__S(450, __c28, 2));
+    case 4:
       return S.suspend(() =>
-        S.Struct({ NextToken: S.optional(S.String), Engagements: __S(62, __c7, 6) }),
+        S.Struct({ NextToken: S.optional(S.String), Engagements: __S(451, __c28, 3) }),
       ).annotate({ identifier: "ListEngagementsResult" });
   }
 }
-function __c8(j: number): any {
+function __c29(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2632,12 +2731,16 @@ function __c8(j: number): any {
         }),
       ).annotate({ identifier: "Receipt" });
     case 2:
-      return S.Array(__S(65, __c8, 1));
+      return S.Array(__S(465, __c29, 1));
     case 3:
       return S.suspend(() =>
-        S.Struct({ NextToken: S.optional(S.String), Receipts: S.optional(__S(66, __c8, 2)) }),
+        S.Struct({ NextToken: S.optional(S.String), Receipts: S.optional(__S(466, __c29, 2)) }),
       ).annotate({ identifier: "ListPageReceiptsResult" });
-    case 4:
+  }
+}
+function __c30(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ NextToken: S.optional(S.String), PageId: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
@@ -2645,21 +2748,21 @@ function __c8(j: number): any {
       ).annotate({
         identifier: "ListPageResolutionsRequest",
       });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({ ContactArn: S.String, Type: S.String, StageIndex: S.optional(S.Number) }),
       ).annotate({ identifier: "ResolutionContact" });
-    case 6:
-      return S.Array(__S(69, __c8, 5));
-    case 7:
+    case 2:
+      return S.Array(__S(481, __c30, 1));
+    case 3:
       return S.suspend(() =>
-        S.Struct({ NextToken: S.optional(S.String), PageResolutions: __S(70, __c8, 6) }),
+        S.Struct({ NextToken: S.optional(S.String), PageResolutions: __S(482, __c30, 2) }),
       ).annotate({
         identifier: "ListPageResolutionsResult",
       });
   }
 }
-function __c9(j: number): any {
+function __c31(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2673,6 +2776,14 @@ function __c9(j: number): any {
       });
     case 1:
       return S.suspend(() =>
+        S.Struct({ NextToken: S.optional(S.String), Pages: __S(513, __c32, 1) }),
+      ).annotate({ identifier: "ListPagesByContactResult" });
+  }
+}
+function __c32(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
         S.Struct({
           PageArn: S.String,
           EngagementArn: S.String,
@@ -2684,13 +2795,13 @@ function __c9(j: number): any {
           ReadTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
         }),
       ).annotate({ identifier: "Page" });
-    case 2:
-      return S.Array(__S(73, __c9, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({ NextToken: S.optional(S.String), Pages: __S(74, __c9, 2) }),
-      ).annotate({ identifier: "ListPagesByContactResult" });
-    case 4:
+    case 1:
+      return S.Array(__S(512, __c32, 0));
+  }
+}
+function __c33(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           EngagementId: S.String,
@@ -2700,68 +2811,76 @@ function __c9(j: number): any {
       ).annotate({
         identifier: "ListPagesByEngagementRequest",
       });
-    case 5:
+    case 1:
       return S.suspend(() =>
-        S.Struct({ NextToken: S.optional(S.String), Pages: __S(74, __c9, 2) }),
+        S.Struct({ NextToken: S.optional(S.String), Pages: __S(513, __c32, 1) }),
       ).annotate({
         identifier: "ListPagesByEngagementResult",
       });
-    case 6:
+  }
+}
+function __c34(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          NewMembers: S.optional(__S(9, __c1, 1)),
+          NewMembers: S.optional(__S(0, __c0, 0)),
           StartTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           EndTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
         }),
       ).annotate({ identifier: "PreviewOverride" });
-    case 7:
-      return S.Array(__S(78, __c9, 6));
-  }
-}
-function __c10(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
+      return S.Array(__S(544, __c34, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           RotationStartTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           StartTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           EndTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-          Members: __S(9, __c1, 1),
+          Members: __S(0, __c0, 0),
           TimeZoneId: S.String,
-          Recurrence: __S(27, __c3, 3),
-          Overrides: S.optional(__S(79, __c9, 7)),
+          Recurrence: __S(185, __c11, 9),
+          Overrides: S.optional(__S(545, __c34, 1)),
           NextToken: S.optional(S.String),
           MaxResults: S.optional(S.Number),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "ListPreviewRotationShiftsRequest",
       });
-    case 1:
-      return S.suspend(() => S.Struct({ OverriddenContactIds: __S(9, __c1, 1) })).annotate({
-        identifier: "ShiftDetails",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          ContactIds: S.optional(__S(9, __c1, 1)),
-          StartTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-          EndTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-          Type: S.optional(S.String),
-          ShiftDetails: S.optional(__S(81, __c10, 1)),
-        }),
-      ).annotate({ identifier: "RotationShift" });
     case 3:
-      return S.Array(__S(82, __c10, 2));
-    case 4:
       return S.suspend(() =>
         S.Struct({
-          RotationShifts: S.optional(__S(83, __c10, 3)),
+          RotationShifts: S.optional(__S(562, __c35, 2)),
           NextToken: S.optional(S.String),
         }),
       ).annotate({
         identifier: "ListPreviewRotationShiftsResult",
       });
-    case 5:
+  }
+}
+function __c35(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({ OverriddenContactIds: __S(0, __c0, 0) })).annotate({
+        identifier: "ShiftDetails",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          ContactIds: S.optional(__S(0, __c0, 0)),
+          StartTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+          EndTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+          Type: S.optional(S.String),
+          ShiftDetails: S.optional(__S(560, __c35, 0)),
+        }),
+      ).annotate({ identifier: "RotationShift" });
+    case 2:
+      return S.Array(__S(561, __c35, 1));
+  }
+}
+function __c36(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           RotationId: S.String,
@@ -2773,32 +2892,32 @@ function __c10(j: number): any {
       ).annotate({
         identifier: "ListRotationOverridesRequest",
       });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           RotationOverrideId: S.String,
-          NewContactIds: __S(9, __c1, 1),
+          NewContactIds: __S(0, __c0, 0),
           StartTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
           EndTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
           CreateTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
         }),
       ).annotate({ identifier: "RotationOverride" });
-    case 7:
-      return S.Array(__S(86, __c10, 6));
-  }
-}
-function __c11(j: number): any {
-  switch (j) {
-    case 0:
+    case 2:
+      return S.Array(__S(577, __c36, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          RotationOverrides: S.optional(__S(87, __c10, 7)),
+          RotationOverrides: S.optional(__S(578, __c36, 2)),
           NextToken: S.optional(S.String),
         }),
       ).annotate({
         identifier: "ListRotationOverridesResult",
       });
-    case 1:
+  }
+}
+function __c37(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           RotationNamePrefix: S.optional(S.String),
@@ -2806,24 +2925,28 @@ function __c11(j: number): any {
           MaxResults: S.optional(S.Number),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "ListRotationsRequest" });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           RotationArn: S.String,
           Name: S.String,
-          ContactIds: S.optional(__S(9, __c1, 1)),
+          ContactIds: S.optional(__S(0, __c0, 0)),
           StartTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           TimeZoneId: S.optional(S.String),
-          Recurrence: S.optional(__S(27, __c3, 3)),
+          Recurrence: S.optional(__S(185, __c11, 9)),
         }),
       ).annotate({ identifier: "Rotation" });
+    case 2:
+      return S.Array(__S(593, __c37, 1));
     case 3:
-      return S.Array(__S(90, __c11, 2));
-    case 4:
       return S.suspend(() =>
-        S.Struct({ NextToken: S.optional(S.String), Rotations: __S(91, __c11, 3) }),
+        S.Struct({ NextToken: S.optional(S.String), Rotations: __S(594, __c37, 2) }),
       ).annotate({ identifier: "ListRotationsResult" });
-    case 5:
+  }
+}
+function __c38(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           RotationId: S.String,
@@ -2835,14 +2958,18 @@ function __c11(j: number): any {
       ).annotate({
         identifier: "ListRotationShiftsRequest",
       });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          RotationShifts: S.optional(__S(83, __c10, 3)),
+          RotationShifts: S.optional(__S(562, __c35, 2)),
           NextToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListRotationShiftsResult" });
-    case 7:
+  }
+}
+function __c39(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ ResourceARN: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
@@ -2850,21 +2977,25 @@ function __c11(j: number): any {
       ).annotate({
         identifier: "ListTagsForResourceRequest",
       });
-  }
-}
-function __c12(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() => S.Struct({ Tags: S.optional(__S(12, __c1, 4)) })).annotate({
+    case 1:
+      return S.suspend(() => S.Struct({ Tags: S.optional(__S(97, __c6, 1)) })).annotate({
         identifier: "ListTagsForResourceResult",
       });
-    case 1:
+  }
+}
+function __c40(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ ContactArn: S.String, Policy: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "PutContactPolicyRequest" });
-    case 2:
+  }
+}
+function __c41(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ ContactChannelId: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
@@ -2872,7 +3003,11 @@ function __c12(j: number): any {
       ).annotate({
         identifier: "SendActivationCodeRequest",
       });
-    case 3:
+  }
+}
+function __c42(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           ContactId: S.String,
@@ -2885,75 +3020,82 @@ function __c12(j: number): any {
           IdempotencyToken: S.optional(S.String).pipe(T.IdempotencyToken()),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "StartEngagementRequest" });
-    case 4:
+    case 1:
       return S.suspend(() => S.Struct({ EngagementArn: S.String })).annotate({
         identifier: "StartEngagementResult",
       });
-    case 5:
+  }
+}
+function __c43(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ EngagementId: S.String, Reason: S.optional(S.String) }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "StopEngagementRequest" });
-    case 6:
+  }
+}
+function __c44(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
-        S.Struct({ ResourceARN: S.String, Tags: __S(12, __c1, 4) }).pipe(
+        S.Struct({ ResourceARN: S.String, Tags: __S(97, __c6, 1) }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "TagResourceRequest" });
-    case 7:
+  }
+}
+function __c45(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
-        S.Struct({ ResourceARN: S.String, TagKeys: __S(9, __c1, 1) }).pipe(
+        S.Struct({ ResourceARN: S.String, TagKeys: __S(0, __c0, 0) }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "UntagResourceRequest" });
   }
 }
-function __c13(j: number): any {
+function __c46(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           ContactId: S.String,
           DisplayName: S.optional(S.String),
-          Plan: S.optional(__S(10, __c1, 2)),
+          Plan: S.optional(__S(118, __c7, 6)),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "UpdateContactRequest" });
-    case 1:
+  }
+}
+function __c47(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           ContactChannelId: S.String,
           Name: S.optional(S.String),
-          DeliveryAddress: S.optional(__S(15, __c1, 7)),
+          DeliveryAddress: S.optional(__S(144, __c9, 0)),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "UpdateContactChannelRequest",
       });
-    case 2:
+  }
+}
+function __c48(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           RotationId: S.String,
-          ContactIds: S.optional(__S(9, __c1, 1)),
+          ContactIds: S.optional(__S(0, __c0, 0)),
           StartTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           TimeZoneId: S.optional(S.String),
-          Recurrence: __S(27, __c3, 3),
+          Recurrence: __S(185, __c11, 9),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "UpdateRotationRequest" });
-    case 3:
-      return S.suspend(() => S.Struct({ Name: S.String, Message: S.String })).annotate({
-        identifier: "ValidationExceptionField",
-      });
-    case 4:
-      return S.Array(__S(107, __c13, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({ RelationType: S.String, DependentResourceIds: __S(9, __c1, 1) }),
-      ).annotate({ identifier: "DependentEntity" });
-    case 6:
-      return S.Array(__S(109, __c13, 5));
   }
 }
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

@@ -1985,7 +1985,7 @@ export const CheckFrontDoorNameAvailability: API.OperationMethod<
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(0, __c0, 0) as any as S.Schema<CheckFrontDoorNameAvailabilityRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<CheckNameAvailabilityOutput>,
+  output: __S(32, __c1, 0) as any as S.Schema<CheckNameAvailabilityOutput>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1999,8 +1999,8 @@ export const CheckFrontDoorNameAvailabilityWithSubscription: API.OperationMethod
   CheckFrontDoorNameAvailabilityWithSubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2, __c0, 2) as any as S.Schema<CheckFrontDoorNameAvailabilityWithSubscriptionRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<CheckNameAvailabilityOutput>,
+  input: __S(64, __c2, 0) as any as S.Schema<CheckFrontDoorNameAvailabilityWithSubscriptionRequest>,
+  output: __S(32, __c1, 0) as any as S.Schema<CheckNameAvailabilityOutput>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2014,8 +2014,8 @@ export const DeleteExperiment: API.OperationMethod<
   DeleteExperimentError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3, __c0, 3) as any as S.Schema<DeleteExperimentRequest>,
-  output: __S(4, __c0, 4) as any as S.Schema<DeleteExperimentResponse>,
+  input: __S(896, __c28, 0) as any as S.Schema<DeleteExperimentRequest>,
+  output: __S(928, __c29, 0) as any as S.Schema<DeleteExperimentResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2029,8 +2029,8 @@ export const DeleteFrontDoor: API.OperationMethod<
   DeleteFrontDoorError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(5, __c0, 5) as any as S.Schema<DeleteFrontDoorRequest>,
-  output: __S(4, __c0, 4) as any as S.Schema<DeleteFrontDoorResponse>,
+  input: __S(1408, __c44, 0) as any as S.Schema<DeleteFrontDoorRequest>,
+  output: __S(928, __c29, 0) as any as S.Schema<DeleteFrontDoorResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2044,8 +2044,8 @@ export const DeleteNetworkExperimentProfile: API.OperationMethod<
   DeleteNetworkExperimentProfileError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(6, __c0, 6) as any as S.Schema<DeleteNetworkExperimentProfileRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<DeleteNetworkExperimentProfileResponse>,
+  input: __S(1696, __c53, 0) as any as S.Schema<DeleteNetworkExperimentProfileRequest>,
+  output: __S(1728, __c54, 0) as any as S.Schema<DeleteNetworkExperimentProfileResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2059,8 +2059,8 @@ export const DeletePolicy: API.OperationMethod<
   DeletePolicyError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(8, __c1, 0) as any as S.Schema<DeletePolicyRequest>,
-  output: __S(4, __c0, 4) as any as S.Schema<DeletePolicyResponse>,
+  input: __S(1760, __c55, 0) as any as S.Schema<DeletePolicyRequest>,
+  output: __S(928, __c29, 0) as any as S.Schema<DeletePolicyResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2074,8 +2074,8 @@ export const DeleteRulesEngine: API.OperationMethod<
   DeleteRulesEngineError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(9, __c1, 1) as any as S.Schema<DeleteRulesEngineRequest>,
-  output: __S(4, __c0, 4) as any as S.Schema<DeleteRulesEngineResponse>,
+  input: __S(1792, __c56, 0) as any as S.Schema<DeleteRulesEngineRequest>,
+  output: __S(928, __c29, 0) as any as S.Schema<DeleteRulesEngineResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2089,8 +2089,8 @@ export const DisableFrontendEndpointHttps: API.OperationMethod<
   DisableFrontendEndpointHttpsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(10, __c1, 2) as any as S.Schema<DisableFrontendEndpointHttpsRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<DisableFrontendEndpointHttpsResponse>,
+  input: __S(1824, __c57, 0) as any as S.Schema<DisableFrontendEndpointHttpsRequest>,
+  output: __S(1728, __c54, 0) as any as S.Schema<DisableFrontendEndpointHttpsResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2104,8 +2104,8 @@ export const EnableFrontendEndpointHttps: API.OperationMethod<
   EnableFrontendEndpointHttpsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(14, __c1, 6) as any as S.Schema<EnableFrontendEndpointHttpsRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<EnableFrontendEndpointHttpsResponse>,
+  input: __S(1856, __c58, 0) as any as S.Schema<EnableFrontendEndpointHttpsRequest>,
+  output: __S(1728, __c54, 0) as any as S.Schema<EnableFrontendEndpointHttpsResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2119,8 +2119,8 @@ export const ExperimentsCreateOrUpdate: API.OperationMethod<
   ExperimentsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(18, __c2, 2) as any as S.Schema<ExperimentsCreateOrUpdateRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<ExperimentsCreateOrUpdateResponse>,
+  input: __S(1953, __c61, 1) as any as S.Schema<ExperimentsCreateOrUpdateRequest>,
+  output: __S(1954, __c61, 2) as any as S.Schema<ExperimentsCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2134,8 +2134,8 @@ export const FrontDoorsCreateOrUpdate: API.OperationMethod<
   FrontDoorsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(45, __c5, 5) as any as S.Schema<FrontDoorsCreateOrUpdateRequest>,
-  output: __S(67, __c8, 3) as any as S.Schema<FrontDoorsCreateOrUpdateResponse>,
+  input: __S(107, __c3, 11) as any as S.Schema<FrontDoorsCreateOrUpdateRequest>,
+  output: __S(108, __c3, 12) as any as S.Schema<FrontDoorsCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2149,8 +2149,8 @@ export const GetExperiment: API.OperationMethod<
   GetExperimentError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(68, __c8, 4) as any as S.Schema<GetExperimentRequest>,
-  output: __S(69, __c8, 5) as any as S.Schema<GetExperimentResponse>,
+  input: __S(416, __c13, 0) as any as S.Schema<GetExperimentRequest>,
+  output: __S(448, __c14, 0) as any as S.Schema<GetExperimentResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2164,8 +2164,8 @@ export const GetFrontDoor: API.OperationMethod<
   GetFrontDoorError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(70, __c8, 6) as any as S.Schema<GetFrontDoorRequest>,
-  output: __S(71, __c8, 7) as any as S.Schema<GetFrontDoorResponse>,
+  input: __S(480, __c15, 0) as any as S.Schema<GetFrontDoorRequest>,
+  output: __S(512, __c16, 0) as any as S.Schema<GetFrontDoorResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2179,8 +2179,8 @@ export const GetFrontendEndpoint: API.OperationMethod<
   GetFrontendEndpointError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(72, __c9, 0) as any as S.Schema<GetFrontendEndpointRequest>,
-  output: __S(73, __c9, 1) as any as S.Schema<GetFrontendEndpointResponse>,
+  input: __S(544, __c17, 0) as any as S.Schema<GetFrontendEndpointRequest>,
+  output: __S(545, __c17, 1) as any as S.Schema<GetFrontendEndpointResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2194,8 +2194,8 @@ export const GetNetworkExperimentProfile: API.OperationMethod<
   GetNetworkExperimentProfileError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(74, __c9, 2) as any as S.Schema<GetNetworkExperimentProfileRequest>,
-  output: __S(76, __c9, 4) as any as S.Schema<GetNetworkExperimentProfileResponse>,
+  input: __S(576, __c18, 0) as any as S.Schema<GetNetworkExperimentProfileRequest>,
+  output: __S(640, __c20, 0) as any as S.Schema<GetNetworkExperimentProfileResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2209,8 +2209,8 @@ export const GetPolicy: API.OperationMethod<
   GetPolicyError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(77, __c9, 5) as any as S.Schema<GetPolicyRequest>,
-  output: __S(110, __c13, 6) as any as S.Schema<GetPolicyResponse>,
+  input: __S(672, __c21, 0) as any as S.Schema<GetPolicyRequest>,
+  output: __S(736, __c23, 0) as any as S.Schema<GetPolicyResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2224,8 +2224,8 @@ export const GetReportLatencyScorecards: API.OperationMethod<
   GetReportLatencyScorecardsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(111, __c13, 7) as any as S.Schema<GetReportLatencyScorecardsRequest>,
-  output: __S(115, __c14, 3) as any as S.Schema<GetReportLatencyScorecardsResponse>,
+  input: __S(768, __c24, 0) as any as S.Schema<GetReportLatencyScorecardsRequest>,
+  output: __S(772, __c24, 4) as any as S.Schema<GetReportLatencyScorecardsResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2239,8 +2239,8 @@ export const GetReportTimeseries: API.OperationMethod<
   GetReportTimeseriesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(116, __c14, 4) as any as S.Schema<GetReportTimeseriesRequest>,
-  output: __S(120, __c15, 0) as any as S.Schema<GetReportTimeseriesResponse>,
+  input: __S(800, __c25, 0) as any as S.Schema<GetReportTimeseriesRequest>,
+  output: __S(804, __c25, 4) as any as S.Schema<GetReportTimeseriesResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2254,8 +2254,8 @@ export const GetRulesEngine: API.OperationMethod<
   GetRulesEngineError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(121, __c15, 1) as any as S.Schema<GetRulesEngineRequest>,
-  output: __S(64, __c8, 0) as any as S.Schema<GetRulesEngineResponse>,
+  input: __S(832, __c26, 0) as any as S.Schema<GetRulesEngineRequest>,
+  output: __S(256, __c8, 0) as any as S.Schema<GetRulesEngineResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2269,8 +2269,8 @@ export const ListExperimentByProfile: API.OperationMethod<
   ListExperimentByProfileError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(122, __c15, 2) as any as S.Schema<ListExperimentByProfileRequest>,
-  output: __S(124, __c15, 4) as any as S.Schema<ExperimentList>,
+  input: __S(864, __c27, 0) as any as S.Schema<ListExperimentByProfileRequest>,
+  output: __S(866, __c27, 2) as any as S.Schema<ExperimentList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2284,8 +2284,8 @@ export const ListFrontDoorByResourceGroup: API.OperationMethod<
   ListFrontDoorByResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(125, __c15, 5) as any as S.Schema<ListFrontDoorByResourceGroupRequest>,
-  output: __S(127, __c15, 7) as any as S.Schema<FrontDoorListResult>,
+  input: __S(960, __c30, 0) as any as S.Schema<ListFrontDoorByResourceGroupRequest>,
+  output: __S(993, __c31, 1) as any as S.Schema<FrontDoorListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2299,8 +2299,8 @@ export const ListFrontDoors: API.OperationMethod<
   ListFrontDoorsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(128, __c16, 0) as any as S.Schema<ListFrontDoorsRequest>,
-  output: __S(127, __c15, 7) as any as S.Schema<FrontDoorListResult>,
+  input: __S(1024, __c32, 0) as any as S.Schema<ListFrontDoorsRequest>,
+  output: __S(993, __c31, 1) as any as S.Schema<FrontDoorListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2314,8 +2314,8 @@ export const ListFrontendEndpointByFrontDoor: API.OperationMethod<
   ListFrontendEndpointByFrontDoorError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(129, __c16, 1) as any as S.Schema<ListFrontendEndpointByFrontDoorRequest>,
-  output: __S(130, __c16, 2) as any as S.Schema<FrontendEndpointsListResult>,
+  input: __S(1056, __c33, 0) as any as S.Schema<ListFrontendEndpointByFrontDoorRequest>,
+  output: __S(1057, __c33, 1) as any as S.Schema<FrontendEndpointsListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2329,8 +2329,8 @@ export const ListManagedRuleSets: API.OperationMethod<
   ListManagedRuleSetsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(131, __c16, 3) as any as S.Schema<ListManagedRuleSetsRequest>,
-  output: __S(139, __c17, 3) as any as S.Schema<ManagedRuleSetDefinitionList>,
+  input: __S(1088, __c34, 0) as any as S.Schema<ListManagedRuleSetsRequest>,
+  output: __S(1096, __c34, 8) as any as S.Schema<ManagedRuleSetDefinitionList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2344,8 +2344,8 @@ export const ListNetworkExperimentProfileByResourceGroup: API.OperationMethod<
   ListNetworkExperimentProfileByResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(140, __c17, 4) as any as S.Schema<ListNetworkExperimentProfileByResourceGroupRequest>,
-  output: __S(143, __c17, 7) as any as S.Schema<ProfileList>,
+  input: __S(1120, __c35, 0) as any as S.Schema<ListNetworkExperimentProfileByResourceGroupRequest>,
+  output: __S(1154, __c36, 2) as any as S.Schema<ProfileList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2359,8 +2359,8 @@ export const ListNetworkExperimentProfiles: API.OperationMethod<
   ListNetworkExperimentProfilesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(144, __c18, 0) as any as S.Schema<ListNetworkExperimentProfilesRequest>,
-  output: __S(143, __c17, 7) as any as S.Schema<ProfileList>,
+  input: __S(1184, __c37, 0) as any as S.Schema<ListNetworkExperimentProfilesRequest>,
+  output: __S(1154, __c36, 2) as any as S.Schema<ProfileList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2374,8 +2374,8 @@ export const ListPolicies: API.OperationMethod<
   ListPoliciesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(145, __c18, 1) as any as S.Schema<ListPoliciesRequest>,
-  output: __S(148, __c18, 4) as any as S.Schema<WebApplicationFirewallPolicyList>,
+  input: __S(1216, __c38, 0) as any as S.Schema<ListPoliciesRequest>,
+  output: __S(1249, __c39, 1) as any as S.Schema<WebApplicationFirewallPolicyList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2389,8 +2389,8 @@ export const ListPolicyBySubscription: API.OperationMethod<
   ListPolicyBySubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(149, __c18, 5) as any as S.Schema<ListPolicyBySubscriptionRequest>,
-  output: __S(148, __c18, 4) as any as S.Schema<WebApplicationFirewallPolicyList>,
+  input: __S(1312, __c41, 0) as any as S.Schema<ListPolicyBySubscriptionRequest>,
+  output: __S(1249, __c39, 1) as any as S.Schema<WebApplicationFirewallPolicyList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2404,8 +2404,8 @@ export const ListPreconfiguredEndpoints: API.OperationMethod<
   ListPreconfiguredEndpointsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(150, __c18, 6) as any as S.Schema<ListPreconfiguredEndpointsRequest>,
-  output: __S(154, __c19, 2) as any as S.Schema<PreconfiguredEndpointList>,
+  input: __S(1344, __c42, 0) as any as S.Schema<ListPreconfiguredEndpointsRequest>,
+  output: __S(1348, __c42, 4) as any as S.Schema<PreconfiguredEndpointList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2419,8 +2419,8 @@ export const ListRulesEngineByFrontDoor: API.OperationMethod<
   ListRulesEngineByFrontDoorError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(155, __c19, 3) as any as S.Schema<ListRulesEngineByFrontDoorRequest>,
-  output: __S(156, __c19, 4) as any as S.Schema<RulesEngineListResult>,
+  input: __S(1376, __c43, 0) as any as S.Schema<ListRulesEngineByFrontDoorRequest>,
+  output: __S(1377, __c43, 1) as any as S.Schema<RulesEngineListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2434,8 +2434,8 @@ export const NetworkExperimentProfilesCreateOrUpdate: API.OperationMethod<
   NetworkExperimentProfilesCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(157, __c19, 5) as any as S.Schema<NetworkExperimentProfilesCreateOrUpdateRequest>,
-  output: __S(76, __c9, 4) as any as S.Schema<NetworkExperimentProfilesCreateOrUpdateResponse>,
+  input: __S(1440, __c45, 0) as any as S.Schema<NetworkExperimentProfilesCreateOrUpdateRequest>,
+  output: __S(640, __c20, 0) as any as S.Schema<NetworkExperimentProfilesCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2449,8 +2449,8 @@ export const PoliciesCreateOrUpdate: API.OperationMethod<
   PoliciesCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(159, __c19, 7) as any as S.Schema<PoliciesCreateOrUpdateRequest>,
-  output: __S(146, __c18, 2) as any as S.Schema<PoliciesCreateOrUpdateResponse>,
+  input: __S(1473, __c46, 1) as any as S.Schema<PoliciesCreateOrUpdateRequest>,
+  output: __S(1280, __c40, 0) as any as S.Schema<PoliciesCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2464,8 +2464,8 @@ export const PurgeEndpointContent: API.OperationMethod<
   PurgeEndpointContentError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(160, __c20, 0) as any as S.Schema<PurgeEndpointContentRequest>,
-  output: __S(4, __c0, 4) as any as S.Schema<PurgeEndpointContentResponse>,
+  input: __S(1504, __c47, 0) as any as S.Schema<PurgeEndpointContentRequest>,
+  output: __S(928, __c29, 0) as any as S.Schema<PurgeEndpointContentResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2479,8 +2479,8 @@ export const RulesEnginesCreateOrUpdate: API.OperationMethod<
   RulesEnginesCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(161, __c20, 1) as any as S.Schema<RulesEnginesCreateOrUpdateRequest>,
-  output: __S(162, __c20, 2) as any as S.Schema<RulesEnginesCreateOrUpdateResponse>,
+  input: __S(1536, __c48, 0) as any as S.Schema<RulesEnginesCreateOrUpdateRequest>,
+  output: __S(1537, __c48, 1) as any as S.Schema<RulesEnginesCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2494,8 +2494,8 @@ export const UpdateExperiment: API.OperationMethod<
   UpdateExperimentError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(164, __c20, 4) as any as S.Schema<UpdateExperimentRequest>,
-  output: __S(69, __c8, 5) as any as S.Schema<UpdateExperimentResponse>,
+  input: __S(1569, __c49, 1) as any as S.Schema<UpdateExperimentRequest>,
+  output: __S(448, __c14, 0) as any as S.Schema<UpdateExperimentResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2509,8 +2509,8 @@ export const UpdateNetworkExperimentProfile: API.OperationMethod<
   UpdateNetworkExperimentProfileError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(166, __c20, 6) as any as S.Schema<UpdateNetworkExperimentProfileRequest>,
-  output: __S(76, __c9, 4) as any as S.Schema<UpdateNetworkExperimentProfileResponse>,
+  input: __S(1601, __c50, 1) as any as S.Schema<UpdateNetworkExperimentProfileRequest>,
+  output: __S(640, __c20, 0) as any as S.Schema<UpdateNetworkExperimentProfileResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2524,8 +2524,8 @@ export const UpdatePolicy: API.OperationMethod<
   UpdatePolicyError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(167, __c20, 7) as any as S.Schema<UpdatePolicyRequest>,
-  output: __S(110, __c13, 6) as any as S.Schema<UpdatePolicyResponse>,
+  input: __S(1632, __c51, 0) as any as S.Schema<UpdatePolicyRequest>,
+  output: __S(736, __c23, 0) as any as S.Schema<UpdatePolicyResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2539,8 +2539,8 @@ export const ValidateFrontDoorCustomDomain: API.OperationMethod<
   ValidateFrontDoorCustomDomainError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(168, __c21, 0) as any as S.Schema<ValidateFrontDoorCustomDomainRequest>,
-  output: __S(169, __c21, 1) as any as S.Schema<ValidateCustomDomainOutput>,
+  input: __S(1664, __c52, 0) as any as S.Schema<ValidateFrontDoorCustomDomainRequest>,
+  output: __S(1665, __c52, 1) as any as S.Schema<ValidateCustomDomainOutput>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2565,7 +2565,11 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "CheckFrontDoorNameAvailabilityRequest",
       });
-    case 1:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           nameAvailability: S.optional(S.String),
@@ -2575,7 +2579,11 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "CheckNameAvailabilityOutput",
       });
-    case 2:
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -2592,243 +2600,173 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "CheckFrontDoorNameAvailabilityWithSubscriptionRequest",
       });
-    case 3:
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          profileName: S.String.pipe(T.Label()),
-          experimentName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/NetworkExperimentProfiles/{profileName}/Experiments/{experimentName}",
-            code: 200,
-            apiVersion: "2026-04-01",
-          }),
-        ),
-      ).annotate({ identifier: "DeleteExperimentRequest" });
+          id: S.optional(S.String),
+          properties: S.optional(__S(320, __c10, 0)),
+          name: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "RoutingRuleInput" });
+    case 1:
+      return S.Array(__S(96, __c3, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          properties: S.optional(__S(321, __c10, 1)),
+          name: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "LoadBalancingSettingsModelInput",
+      });
+    case 3:
+      return S.Array(__S(98, __c3, 2));
     case 4:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "DeleteExperimentResponse",
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          properties: S.optional(__S(322, __c10, 2)),
+          name: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "HealthProbeSettingsModelInput",
       });
     case 5:
+      return S.Array(__S(100, __c3, 4));
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          properties: S.optional(__S(325, __c10, 5)),
+          name: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "BackendPoolInput" });
+    case 7:
+      return S.Array(__S(102, __c3, 6));
+    case 8:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          properties: S.optional(__S(129, __c4, 1)),
+        }),
+      ).annotate({ identifier: "FrontendEndpointInput" });
+    case 9:
+      return S.Array(__S(104, __c3, 8));
+    case 10:
+      return S.suspend(() =>
+        S.Struct({
+          friendlyName: S.optional(S.String),
+          routingRules: S.optional(__S(97, __c3, 1)),
+          loadBalancingSettings: S.optional(__S(99, __c3, 3)),
+          healthProbeSettings: S.optional(__S(101, __c3, 5)),
+          backendPools: S.optional(__S(103, __c3, 7)),
+          frontendEndpoints: S.optional(__S(105, __c3, 9)),
+          backendPoolsSettings: S.optional(__S(326, __c10, 6)),
+          enabledState: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "FrontDoorPropertiesInput" });
+    case 11:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           frontDoorName: S.String.pipe(T.Label()),
+          location: S.optional(S.String),
+          tags: S.optional(__S(1984, __c62, 0)),
+          properties: S.optional(__S(106, __c3, 10)),
         }).pipe(
           T.Http({
-            method: "DELETE",
+            method: "PUT",
             uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/frontDoors/{frontDoorName}",
             code: 200,
             apiVersion: "2026-04-01",
           }),
         ),
-      ).annotate({ identifier: "DeleteFrontDoorRequest" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          profileName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/NetworkExperimentProfiles/{profileName}",
-            code: 200,
-            apiVersion: "2026-04-01",
-          }),
-        ),
       ).annotate({
-        identifier: "DeleteNetworkExperimentProfileRequest",
+        identifier: "FrontDoorsCreateOrUpdateRequest",
       });
-    case 7:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "DeleteNetworkExperimentProfileResponse",
-      });
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          policyName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/FrontDoorWebApplicationFirewallPolicies/{policyName}",
-            code: 200,
-            apiVersion: "2026-04-01",
-          }),
-        ),
-      ).annotate({ identifier: "DeletePolicyRequest" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          frontDoorName: S.String.pipe(T.Label()),
-          rulesEngineName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/frontDoors/{frontDoorName}/rulesEngines/{rulesEngineName}",
-            code: 200,
-            apiVersion: "2026-04-01",
-          }),
-        ),
-      ).annotate({ identifier: "DeleteRulesEngineRequest" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          frontDoorName: S.String.pipe(T.Label()),
-          frontendEndpointName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/frontDoors/{frontDoorName}/frontendEndpoints/{frontendEndpointName}/disableHttps",
-            code: 200,
-            apiVersion: "2026-04-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "DisableFrontendEndpointHttpsRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "KeyVaultCertificateSourceParametersVault",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          vault: S.optional(__S(11, __c1, 3)),
-          secretName: S.optional(S.String),
-          secretVersion: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "KeyVaultCertificateSourceParameters",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          certificateType: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "FrontDoorCertificateSourceParameters",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          frontDoorName: S.String.pipe(T.Label()),
-          frontendEndpointName: S.String.pipe(T.Label()),
-          certificateSource: S.String,
-          protocolType: S.String,
-          minimumTlsVersion: S.String,
-          keyVaultCertificateSourceParameters: S.optional(__S(12, __c1, 4)),
-          frontDoorCertificateSourceParameters: S.optional(__S(13, __c1, 5)),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/frontDoors/{frontDoorName}/frontendEndpoints/{frontendEndpointName}/enableHttps",
-            code: 200,
-            apiVersion: "2026-04-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "EnableFrontendEndpointHttpsRequest",
-      });
-    case 7:
-      return S.Record(S.String, S.String);
-  }
-}
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.optional(S.String),
-          endpoint: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Endpoint" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          description: S.optional(S.String),
-          endpointA: S.optional(__S(16, __c2, 0)),
-          endpointB: S.optional(__S(16, __c2, 0)),
-          enabledState: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "ExperimentPropertiesInput",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          profileName: S.String.pipe(T.Label()),
-          experimentName: S.String.pipe(T.Label()),
-          location: S.optional(S.String),
-          tags: S.optional(__S(15, __c1, 7)),
-          properties: S.optional(__S(17, __c2, 1)),
-        }).pipe(
-          T.Http({
-            method: "PUT",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/NetworkExperimentProfiles/{profileName}/Experiments/{experimentName}",
-            code: 200,
-            apiVersion: "2026-04-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "ExperimentsCreateOrUpdateRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          description: S.optional(S.String),
-          endpointA: S.optional(__S(16, __c2, 0)),
-          endpointB: S.optional(__S(16, __c2, 0)),
-          enabledState: S.optional(S.String),
-          resourceState: S.optional(S.String),
-          status: S.optional(S.String),
-          scriptFileUri: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ExperimentProperties" });
-    case 4:
+    case 12:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
           location: S.optional(S.String),
-          tags: S.optional(__S(15, __c1, 7)),
-          properties: S.optional(__S(19, __c2, 3)),
+          tags: S.optional(__S(1984, __c62, 0)),
+          properties: S.optional(__S(335, __c10, 15)),
         }),
       ).annotate({
-        identifier: "ExperimentsCreateOrUpdateResponse",
+        identifier: "FrontDoorsCreateOrUpdateResponse",
       });
-    case 5:
-      return S.Array(__S(11, __c1, 3));
-    case 6:
-      return S.Array(S.String);
-    case 7:
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          certificateSource: S.String,
+          protocolType: S.String,
+          minimumTlsVersion: S.String,
+          keyVaultCertificateSourceParameters: S.optional(__S(1920, __c60, 0)),
+          frontDoorCertificateSourceParameters: S.optional(__S(1921, __c60, 1)),
+        }),
+      ).annotate({ identifier: "CustomHttpsConfiguration" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          hostName: S.optional(S.String),
+          sessionAffinityEnabledState: S.optional(S.String),
+          sessionAffinityTtlSeconds: S.optional(S.Number),
+          webApplicationFirewallPolicyLink: S.optional(__S(1888, __c59, 0)),
+          resourceState: S.optional(S.String),
+          customHttpsProvisioningState: S.optional(S.String),
+          customHttpsProvisioningSubstate: S.optional(S.String),
+          customHttpsConfiguration: S.optional(__S(128, __c4, 0)),
+        }),
+      ).annotate({
+        identifier: "FrontendEndpointProperties",
+      });
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
       return S.Array(S.String);
   }
 }
-function __c3(j: number): any {
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(1888, __c59, 0));
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          properties: S.optional(__S(296, __c9, 8)),
+        }),
+      ).annotate({ identifier: "RulesEngine" });
+  }
+}
+function __c9(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2839,27 +2777,73 @@ function __c3(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          frontendEndpoints: S.optional(__S(21, __c2, 5)),
-          acceptedProtocols: S.optional(__S(22, __c2, 6)),
-          patternsToMatch: S.optional(__S(23, __c2, 7)),
+          headerActionType: S.String,
+          headerName: S.String,
+          value: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "HeaderAction" });
+    case 2:
+      return S.Array(__S(289, __c9, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          requestHeaderActions: S.optional(__S(290, __c9, 2)),
+          responseHeaderActions: S.optional(__S(290, __c9, 2)),
+          routeConfigurationOverride: S.optional(__S(288, __c9, 0)),
+        }),
+      ).annotate({ identifier: "RulesEngineAction" });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          rulesEngineMatchVariable: S.String,
+          selector: S.optional(S.String),
+          rulesEngineOperator: S.String,
+          negateCondition: S.optional(S.Boolean),
+          rulesEngineMatchValue: __S(160, __c5, 0),
+          transforms: S.optional(__S(192, __c6, 0)),
+        }),
+      ).annotate({
+        identifier: "RulesEngineMatchCondition",
+      });
+    case 5:
+      return S.Array(__S(292, __c9, 4));
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String,
+          priority: S.Number,
+          action: __S(291, __c9, 3),
+          matchConditions: S.optional(__S(293, __c9, 5)),
+          matchProcessingBehavior: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "RulesEngineRule" });
+    case 7:
+      return S.Array(__S(294, __c9, 6));
+    case 8:
+      return S.suspend(() =>
+        S.Struct({
+          rules: S.optional(__S(295, __c9, 7)),
+          resourceState: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "RulesEngineProperties" });
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          frontendEndpoints: S.optional(__S(224, __c7, 0)),
+          acceptedProtocols: S.optional(__S(192, __c6, 0)),
+          patternsToMatch: S.optional(__S(160, __c5, 0)),
           enabledState: S.optional(S.String),
-          routeConfiguration: S.optional(__S(24, __c3, 0)),
-          rulesEngine: S.optional(__S(11, __c1, 3)),
-          webApplicationFirewallPolicyLink: S.optional(__S(11, __c1, 3)),
+          routeConfiguration: S.optional(__S(288, __c9, 0)),
+          rulesEngine: S.optional(__S(1888, __c59, 0)),
+          webApplicationFirewallPolicyLink: S.optional(__S(1888, __c59, 0)),
           resourceState: S.optional(S.String),
         }),
       ).annotate({ identifier: "RoutingRuleProperties" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          properties: S.optional(__S(25, __c3, 1)),
-          name: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "RoutingRuleInput" });
-    case 3:
-      return S.Array(__S(26, __c3, 2));
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           sampleSize: S.optional(S.Number),
@@ -2870,19 +2854,7 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "LoadBalancingSettingsProperties",
       });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          properties: S.optional(__S(28, __c3, 4)),
-          name: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "LoadBalancingSettingsModelInput",
-      });
-    case 6:
-      return S.Array(__S(29, __c3, 5));
-    case 7:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           path: S.optional(S.String),
@@ -2895,23 +2867,7 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "HealthProbeSettingsProperties",
       });
-  }
-}
-function __c4(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          properties: S.optional(__S(31, __c3, 7)),
-          name: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "HealthProbeSettingsModelInput",
-      });
-    case 1:
-      return S.Array(__S(32, __c4, 0));
-    case 2:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           address: S.optional(S.String),
@@ -2928,271 +2884,115 @@ function __c4(j: number): any {
           backendHostHeader: S.optional(S.String),
         }),
       ).annotate({ identifier: "Backend" });
-    case 3:
-      return S.Array(__S(34, __c4, 2));
     case 4:
-      return S.suspend(() =>
-        S.Struct({
-          backends: S.optional(__S(35, __c4, 3)),
-          loadBalancingSettings: S.optional(__S(11, __c1, 3)),
-          healthProbeSettings: S.optional(__S(11, __c1, 3)),
-          resourceState: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "BackendPoolProperties" });
+      return S.Array(__S(323, __c10, 3));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          id: S.optional(S.String),
-          properties: S.optional(__S(36, __c4, 4)),
-          name: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "BackendPoolInput" });
-    case 6:
-      return S.Array(__S(37, __c4, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          certificateSource: S.String,
-          protocolType: S.String,
-          minimumTlsVersion: S.String,
-          keyVaultCertificateSourceParameters: S.optional(__S(12, __c1, 4)),
-          frontDoorCertificateSourceParameters: S.optional(__S(13, __c1, 5)),
-        }),
-      ).annotate({ identifier: "CustomHttpsConfiguration" });
-  }
-}
-function __c5(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          hostName: S.optional(S.String),
-          sessionAffinityEnabledState: S.optional(S.String),
-          sessionAffinityTtlSeconds: S.optional(S.Number),
-          webApplicationFirewallPolicyLink: S.optional(__S(11, __c1, 3)),
+          backends: S.optional(__S(324, __c10, 4)),
+          loadBalancingSettings: S.optional(__S(1888, __c59, 0)),
+          healthProbeSettings: S.optional(__S(1888, __c59, 0)),
           resourceState: S.optional(S.String),
-          customHttpsProvisioningState: S.optional(S.String),
-          customHttpsProvisioningSubstate: S.optional(S.String),
-          customHttpsConfiguration: S.optional(__S(39, __c4, 7)),
         }),
-      ).annotate({
-        identifier: "FrontendEndpointProperties",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          properties: S.optional(__S(40, __c5, 0)),
-        }),
-      ).annotate({ identifier: "FrontendEndpointInput" });
-    case 2:
-      return S.Array(__S(41, __c5, 1));
-    case 3:
+      ).annotate({ identifier: "BackendPoolProperties" });
+    case 6:
       return S.suspend(() =>
         S.Struct({
           enforceCertificateNameCheck: S.optional(S.String),
           sendRecvTimeoutSeconds: S.optional(S.Number),
         }),
       ).annotate({ identifier: "BackendPoolsSettings" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          friendlyName: S.optional(S.String),
-          routingRules: S.optional(__S(27, __c3, 3)),
-          loadBalancingSettings: S.optional(__S(30, __c3, 6)),
-          healthProbeSettings: S.optional(__S(33, __c4, 1)),
-          backendPools: S.optional(__S(38, __c4, 6)),
-          frontendEndpoints: S.optional(__S(42, __c5, 2)),
-          backendPoolsSettings: S.optional(__S(43, __c5, 3)),
-          enabledState: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "FrontDoorPropertiesInput" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          frontDoorName: S.String.pipe(T.Label()),
-          location: S.optional(S.String),
-          tags: S.optional(__S(15, __c1, 7)),
-          properties: S.optional(__S(44, __c5, 4)),
-        }).pipe(
-          T.Http({
-            method: "PUT",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/frontDoors/{frontDoorName}",
-            code: 200,
-            apiVersion: "2026-04-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "FrontDoorsCreateOrUpdateRequest",
-      });
-    case 6:
+    case 7:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
-          properties: S.optional(__S(25, __c3, 1)),
+          properties: S.optional(__S(320, __c10, 0)),
           name: S.optional(S.String),
           type: S.optional(S.String),
         }),
       ).annotate({ identifier: "RoutingRule" });
-    case 7:
-      return S.Array(__S(46, __c5, 6));
-  }
-}
-function __c6(j: number): any {
-  switch (j) {
-    case 0:
+    case 8:
+      return S.Array(__S(327, __c10, 7));
+    case 9:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
-          properties: S.optional(__S(28, __c3, 4)),
+          properties: S.optional(__S(321, __c10, 1)),
           name: S.optional(S.String),
           type: S.optional(S.String),
         }),
       ).annotate({
         identifier: "LoadBalancingSettingsModel",
       });
-    case 1:
-      return S.Array(__S(48, __c6, 0));
-    case 2:
+    case 10:
+      return S.Array(__S(329, __c10, 9));
+    case 11:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
-          properties: S.optional(__S(31, __c3, 7)),
+          properties: S.optional(__S(322, __c10, 2)),
           name: S.optional(S.String),
           type: S.optional(S.String),
         }),
       ).annotate({ identifier: "HealthProbeSettingsModel" });
-    case 3:
-      return S.Array(__S(50, __c6, 2));
-    case 4:
+    case 12:
+      return S.Array(__S(331, __c10, 11));
+    case 13:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
-          properties: S.optional(__S(36, __c4, 4)),
+          properties: S.optional(__S(325, __c10, 5)),
           name: S.optional(S.String),
           type: S.optional(S.String),
         }),
       ).annotate({ identifier: "BackendPool" });
-    case 5:
-      return S.Array(__S(52, __c6, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          properties: S.optional(__S(40, __c5, 0)),
-        }),
-      ).annotate({ identifier: "FrontendEndpoint" });
-    case 7:
-      return S.Array(__S(54, __c6, 6));
-  }
-}
-function __c7(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          headerActionType: S.String,
-          headerName: S.String,
-          value: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "HeaderAction" });
-    case 1:
-      return S.Array(__S(56, __c7, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          requestHeaderActions: S.optional(__S(57, __c7, 1)),
-          responseHeaderActions: S.optional(__S(57, __c7, 1)),
-          routeConfigurationOverride: S.optional(__S(24, __c3, 0)),
-        }),
-      ).annotate({ identifier: "RulesEngineAction" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          rulesEngineMatchVariable: S.String,
-          selector: S.optional(S.String),
-          rulesEngineOperator: S.String,
-          negateCondition: S.optional(S.Boolean),
-          rulesEngineMatchValue: __S(23, __c2, 7),
-          transforms: S.optional(__S(22, __c2, 6)),
-        }),
-      ).annotate({
-        identifier: "RulesEngineMatchCondition",
-      });
-    case 4:
-      return S.Array(__S(59, __c7, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String,
-          priority: S.Number,
-          action: __S(58, __c7, 2),
-          matchConditions: S.optional(__S(60, __c7, 4)),
-          matchProcessingBehavior: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "RulesEngineRule" });
-    case 6:
-      return S.Array(__S(61, __c7, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          rules: S.optional(__S(62, __c7, 6)),
-          resourceState: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "RulesEngineProperties" });
-  }
-}
-function __c8(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          properties: S.optional(__S(63, __c7, 7)),
-        }),
-      ).annotate({ identifier: "RulesEngine" });
-    case 1:
-      return S.Array(__S(64, __c8, 0));
-    case 2:
+    case 14:
+      return S.Array(__S(333, __c10, 13));
+    case 15:
       return S.suspend(() =>
         S.Struct({
           friendlyName: S.optional(S.String),
-          routingRules: S.optional(__S(47, __c5, 7)),
-          loadBalancingSettings: S.optional(__S(49, __c6, 1)),
-          healthProbeSettings: S.optional(__S(51, __c6, 3)),
-          backendPools: S.optional(__S(53, __c6, 5)),
-          frontendEndpoints: S.optional(__S(55, __c6, 7)),
-          backendPoolsSettings: S.optional(__S(43, __c5, 3)),
+          routingRules: S.optional(__S(328, __c10, 8)),
+          loadBalancingSettings: S.optional(__S(330, __c10, 10)),
+          healthProbeSettings: S.optional(__S(332, __c10, 12)),
+          backendPools: S.optional(__S(334, __c10, 14)),
+          frontendEndpoints: S.optional(__S(353, __c11, 1)),
+          backendPoolsSettings: S.optional(__S(326, __c10, 6)),
           enabledState: S.optional(S.String),
           resourceState: S.optional(S.String),
           provisioningState: S.optional(S.String),
           cname: S.optional(S.String),
           frontdoorId: S.optional(S.String),
-          rulesEngines: S.optional(__S(65, __c8, 1)),
-          extendedProperties: S.optional(__S(15, __c1, 7)),
+          rulesEngines: S.optional(__S(384, __c12, 0)),
+          extendedProperties: S.optional(__S(1984, __c62, 0)),
         }),
       ).annotate({ identifier: "FrontDoorProperties" });
-    case 3:
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          location: S.optional(S.String),
-          tags: S.optional(__S(15, __c1, 7)),
-          properties: S.optional(__S(66, __c8, 2)),
+          properties: S.optional(__S(129, __c4, 1)),
         }),
-      ).annotate({
-        identifier: "FrontDoorsCreateOrUpdateResponse",
-      });
-    case 4:
+      ).annotate({ identifier: "FrontendEndpoint" });
+    case 1:
+      return S.Array(__S(352, __c11, 0));
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(256, __c8, 0));
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -3208,18 +3008,26 @@ function __c8(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetExperimentRequest" });
-    case 5:
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
           location: S.optional(S.String),
-          tags: S.optional(__S(15, __c1, 7)),
-          properties: S.optional(__S(19, __c2, 3)),
+          tags: S.optional(__S(1984, __c62, 0)),
+          properties: S.optional(__S(2017, __c63, 1)),
         }),
       ).annotate({ identifier: "GetExperimentResponse" });
-    case 6:
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -3234,20 +3042,24 @@ function __c8(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetFrontDoorRequest" });
-    case 7:
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
           location: S.optional(S.String),
-          tags: S.optional(__S(15, __c1, 7)),
-          properties: S.optional(__S(66, __c8, 2)),
+          tags: S.optional(__S(1984, __c62, 0)),
+          properties: S.optional(__S(335, __c10, 15)),
         }),
       ).annotate({ identifier: "GetFrontDoorResponse" });
   }
 }
-function __c9(j: number): any {
+function __c17(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3273,12 +3085,16 @@ function __c9(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          properties: S.optional(__S(40, __c5, 0)),
+          properties: S.optional(__S(129, __c4, 1)),
         }),
       ).annotate({
         identifier: "GetFrontendEndpointResponse",
       });
-    case 2:
+  }
+}
+function __c18(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -3295,28 +3111,40 @@ function __c9(j: number): any {
       ).annotate({
         identifier: "GetNetworkExperimentProfileRequest",
       });
-    case 3:
+  }
+}
+function __c19(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           resourceState: S.optional(S.String),
           enabledState: S.optional(S.String),
         }),
       ).annotate({ identifier: "ProfileProperties" });
-    case 4:
+  }
+}
+function __c20(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
           location: S.optional(S.String),
-          tags: S.optional(__S(15, __c1, 7)),
-          properties: S.optional(__S(75, __c9, 3)),
+          tags: S.optional(__S(1984, __c62, 0)),
+          properties: S.optional(__S(608, __c19, 0)),
           etag: S.optional(S.String),
         }),
       ).annotate({
         identifier: "GetNetworkExperimentProfileResponse",
       });
-    case 5:
+  }
+}
+function __c21(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -3331,7 +3159,11 @@ function __c9(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetPolicyRequest" });
-    case 6:
+  }
+}
+function __c22(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           matchVariable: S.String,
@@ -3342,22 +3174,18 @@ function __c9(j: number): any {
       ).annotate({
         identifier: "WebApplicationFirewallScrubbingRules",
       });
-    case 7:
-      return S.Array(__S(78, __c9, 6));
-  }
-}
-function __c10(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
+      return S.Array(__S(704, __c22, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           state: S.optional(S.String),
-          scrubbingRules: S.optional(__S(79, __c9, 7)),
+          scrubbingRules: S.optional(__S(705, __c22, 1)),
         }),
       ).annotate({
         identifier: "PolicySettingsLogScrubbing",
       });
-    case 1:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           enabledState: S.optional(S.String),
@@ -3368,31 +3196,31 @@ function __c10(j: number): any {
           requestBodyCheck: S.optional(S.String),
           javascriptChallengeExpirationInMinutes: S.optional(S.Number),
           captchaExpirationInMinutes: S.optional(S.Number),
-          logScrubbing: S.optional(__S(80, __c10, 0)),
+          logScrubbing: S.optional(__S(706, __c22, 2)),
         }),
       ).annotate({ identifier: "PolicySettings" });
-    case 2:
+    case 4:
       return S.suspend(() =>
         S.Struct({
           variableName: S.String,
         }),
       ).annotate({ identifier: "GroupByVariable" });
-    case 3:
-      return S.Array(__S(82, __c10, 2));
-    case 4:
+    case 5:
+      return S.Array(__S(708, __c22, 4));
+    case 6:
       return S.suspend(() =>
         S.Struct({
           matchVariable: S.String,
           selector: S.optional(S.String),
           operator: S.String,
           negateCondition: S.optional(S.Boolean),
-          matchValue: __S(23, __c2, 7),
-          transforms: S.optional(__S(22, __c2, 6)),
+          matchValue: __S(160, __c5, 0),
+          transforms: S.optional(__S(192, __c6, 0)),
         }),
       ).annotate({ identifier: "MatchCondition" });
-    case 5:
-      return S.Array(__S(84, __c10, 4));
-    case 6:
+    case 7:
+      return S.Array(__S(710, __c22, 6));
+    case 8:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
@@ -3401,24 +3229,20 @@ function __c10(j: number): any {
           ruleType: S.String,
           rateLimitDurationInMinutes: S.optional(S.Number),
           rateLimitThreshold: S.optional(S.Number),
-          groupBy: S.optional(__S(83, __c10, 3)),
-          matchConditions: __S(85, __c10, 5),
+          groupBy: S.optional(__S(709, __c22, 5)),
+          matchConditions: __S(711, __c22, 7),
           action: S.String,
         }),
       ).annotate({ identifier: "CustomRule" });
-    case 7:
-      return S.Array(__S(86, __c10, 6));
-  }
-}
-function __c11(j: number): any {
-  switch (j) {
-    case 0:
+    case 9:
+      return S.Array(__S(712, __c22, 8));
+    case 10:
       return S.suspend(() =>
         S.Struct({
-          rules: S.optional(__S(87, __c10, 7)),
+          rules: S.optional(__S(713, __c22, 9)),
         }),
       ).annotate({ identifier: "CustomRuleList" });
-    case 1:
+    case 11:
       return S.suspend(() =>
         S.Struct({
           matchVariable: S.String,
@@ -3426,142 +3250,142 @@ function __c11(j: number): any {
           selector: S.String,
         }),
       ).annotate({ identifier: "ManagedRuleExclusion" });
-    case 2:
-      return S.Array(__S(89, __c11, 1));
-    case 3:
+    case 12:
+      return S.Array(__S(715, __c22, 11));
+    case 13:
       return S.suspend(() =>
         S.Struct({
           ruleId: S.String,
           enabledState: S.optional(S.String),
           action: S.optional(S.String),
           sensitivity: S.optional(S.String),
-          exclusions: S.optional(__S(90, __c11, 2)),
+          exclusions: S.optional(__S(716, __c22, 12)),
         }),
       ).annotate({ identifier: "ManagedRuleOverride" });
-    case 4:
-      return S.Array(__S(91, __c11, 3));
-    case 5:
+    case 14:
+      return S.Array(__S(717, __c22, 13));
+    case 15:
       return S.suspend(() =>
         S.Struct({
           ruleGroupName: S.String,
-          exclusions: S.optional(__S(90, __c11, 2)),
-          rules: S.optional(__S(92, __c11, 4)),
+          exclusions: S.optional(__S(716, __c22, 12)),
+          rules: S.optional(__S(718, __c22, 14)),
         }),
       ).annotate({ identifier: "ManagedRuleGroupOverride" });
-    case 6:
-      return S.Array(__S(93, __c11, 5));
-    case 7:
+    case 16:
+      return S.Array(__S(719, __c22, 15));
+    case 17:
       return S.suspend(() =>
         S.Struct({
           ruleSetType: S.String,
           ruleSetVersion: S.String,
           ruleSetAction: S.optional(S.String),
-          exclusions: S.optional(__S(90, __c11, 2)),
-          ruleGroupOverrides: S.optional(__S(94, __c11, 6)),
+          exclusions: S.optional(__S(716, __c22, 12)),
+          ruleGroupOverrides: S.optional(__S(720, __c22, 16)),
         }),
       ).annotate({ identifier: "ManagedRuleSet" });
-  }
-}
-function __c12(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(95, __c11, 7));
-    case 1:
+    case 18:
+      return S.Array(__S(721, __c22, 17));
+    case 19:
       return S.suspend(() =>
         S.Struct({
           ruleId: S.String,
         }),
       ).annotate({ identifier: "RuleScope" });
-    case 2:
-      return S.Array(__S(97, __c12, 1));
-    case 3:
+    case 20:
+      return S.Array(__S(723, __c22, 19));
+    case 21:
       return S.suspend(() =>
         S.Struct({
           ruleGroupName: S.String,
-          ruleScopes: S.optional(__S(98, __c12, 2)),
+          ruleScopes: S.optional(__S(724, __c22, 20)),
         }),
       ).annotate({ identifier: "RuleGroupScope" });
-    case 4:
-      return S.Array(__S(99, __c12, 3));
-    case 5:
+    case 22:
+      return S.Array(__S(725, __c22, 21));
+    case 23:
       return S.suspend(() =>
         S.Struct({
           ruleSetType: S.String,
           ruleSetVersion: S.String,
-          ruleGroupScopes: S.optional(__S(100, __c12, 4)),
+          ruleGroupScopes: S.optional(__S(726, __c22, 22)),
         }),
       ).annotate({ identifier: "ManagedRuleSetScope" });
-    case 6:
-      return S.Array(__S(101, __c12, 5));
-    case 7:
+    case 24:
+      return S.Array(__S(727, __c22, 23));
+    case 25:
       return S.suspend(() =>
         S.Struct({
           matchVariable: S.String,
           selectorMatchOperator: S.optional(S.String),
           selector: S.optional(S.String),
           valueMatchOperator: S.String,
-          matchValues: __S(23, __c2, 7),
-          scopes: __S(102, __c12, 6),
+          matchValues: __S(160, __c5, 0),
+          scopes: __S(728, __c22, 24),
         }),
       ).annotate({ identifier: "ManagedRuleSetException" });
-  }
-}
-function __c13(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(103, __c12, 7));
-    case 1:
+    case 26:
+      return S.Array(__S(729, __c22, 25));
+    case 27:
       return S.suspend(() =>
         S.Struct({
-          exceptions: S.optional(__S(104, __c13, 0)),
+          exceptions: S.optional(__S(730, __c22, 26)),
         }),
       ).annotate({
         identifier: "ManagedRuleSetExceptionList",
       });
-    case 2:
+    case 28:
       return S.suspend(() =>
         S.Struct({
-          managedRuleSets: S.optional(__S(96, __c12, 0)),
-          exceptionsList: S.optional(__S(105, __c13, 1)),
+          managedRuleSets: S.optional(__S(722, __c22, 18)),
+          exceptionsList: S.optional(__S(731, __c22, 27)),
         }),
       ).annotate({ identifier: "ManagedRuleSetList" });
-    case 3:
-      return S.Array(__S(11, __c1, 3));
-    case 4:
+    case 29:
+      return S.Array(__S(1888, __c59, 0));
+    case 30:
       return S.suspend(() =>
         S.Struct({
-          policySettings: S.optional(__S(81, __c10, 1)),
-          customRules: S.optional(__S(88, __c11, 0)),
-          managedRules: S.optional(__S(106, __c13, 2)),
-          frontendEndpointLinks: S.optional(__S(107, __c13, 3)),
-          routingRuleLinks: S.optional(__S(21, __c2, 5)),
-          securityPolicyLinks: S.optional(__S(21, __c2, 5)),
+          policySettings: S.optional(__S(707, __c22, 3)),
+          customRules: S.optional(__S(714, __c22, 10)),
+          managedRules: S.optional(__S(732, __c22, 28)),
+          frontendEndpointLinks: S.optional(__S(733, __c22, 29)),
+          routingRuleLinks: S.optional(__S(224, __c7, 0)),
+          securityPolicyLinks: S.optional(__S(224, __c7, 0)),
           provisioningState: S.optional(S.String),
           resourceState: S.optional(S.String),
         }),
       ).annotate({
         identifier: "WebApplicationFirewallPolicyProperties",
       });
-    case 5:
+    case 31:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
         }),
       ).annotate({ identifier: "Sku" });
-    case 6:
+  }
+}
+function __c23(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
           location: S.optional(S.String),
-          tags: S.optional(__S(15, __c1, 7)),
-          properties: S.optional(__S(108, __c13, 4)),
+          tags: S.optional(__S(1984, __c62, 0)),
+          properties: S.optional(__S(734, __c22, 30)),
           etag: S.optional(S.String),
-          sku: S.optional(__S(109, __c13, 5)),
+          sku: S.optional(__S(735, __c22, 31)),
         }),
       ).annotate({ identifier: "GetPolicyResponse" });
-    case 7:
+  }
+}
+function __c24(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -3582,11 +3406,7 @@ function __c13(j: number): any {
       ).annotate({
         identifier: "GetReportLatencyScorecardsRequest",
       });
-  }
-}
-function __c14(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
@@ -3601,9 +3421,9 @@ function __c14(j: number): any {
           bUpper95CI: S.optional(S.Number),
         }),
       ).annotate({ identifier: "LatencyMetric" });
-    case 1:
-      return S.Array(__S(112, __c14, 0));
     case 2:
+      return S.Array(__S(769, __c24, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
@@ -3614,25 +3434,29 @@ function __c14(j: number): any {
           startDateTimeUTC: S.optional(S.String),
           endDateTimeUTC: S.optional(S.String),
           country: S.optional(S.String),
-          latencyMetrics: S.optional(__S(113, __c14, 1)),
+          latencyMetrics: S.optional(__S(770, __c24, 2)),
         }),
       ).annotate({
         identifier: "LatencyScorecardProperties",
       });
-    case 3:
+    case 4:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
           location: S.optional(S.String),
-          tags: S.optional(__S(15, __c1, 7)),
-          properties: S.optional(__S(114, __c14, 2)),
+          tags: S.optional(__S(1984, __c62, 0)),
+          properties: S.optional(__S(771, __c24, 3)),
         }),
       ).annotate({
         identifier: "GetReportLatencyScorecardsResponse",
       });
-    case 4:
+  }
+}
+function __c25(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -3656,16 +3480,16 @@ function __c14(j: number): any {
       ).annotate({
         identifier: "GetReportTimeseriesRequest",
       });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           dateTimeUTC: S.optional(S.String),
           value: S.optional(S.Number),
         }),
       ).annotate({ identifier: "TimeseriesDataPoint" });
-    case 6:
-      return S.Array(__S(117, __c14, 5));
-    case 7:
+    case 2:
+      return S.Array(__S(801, __c25, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
           endpoint: S.optional(S.String),
@@ -3674,27 +3498,27 @@ function __c14(j: number): any {
           aggregationInterval: S.optional(S.String),
           timeseriesType: S.optional(S.String),
           country: S.optional(S.String),
-          timeseriesData: S.optional(__S(118, __c14, 6)),
+          timeseriesData: S.optional(__S(802, __c25, 2)),
         }),
       ).annotate({ identifier: "TimeseriesProperties" });
-  }
-}
-function __c15(j: number): any {
-  switch (j) {
-    case 0:
+    case 4:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
           location: S.optional(S.String),
-          tags: S.optional(__S(15, __c1, 7)),
-          properties: S.optional(__S(119, __c14, 7)),
+          tags: S.optional(__S(1984, __c62, 0)),
+          properties: S.optional(__S(803, __c25, 3)),
         }),
       ).annotate({
         identifier: "GetReportTimeseriesResponse",
       });
-    case 1:
+  }
+}
+function __c26(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -3710,7 +3534,11 @@ function __c15(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetRulesEngineRequest" });
-    case 2:
+  }
+}
+function __c27(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -3727,16 +3555,48 @@ function __c15(j: number): any {
       ).annotate({
         identifier: "ListExperimentByProfileRequest",
       });
-    case 3:
-      return S.Array(__S(69, __c8, 5));
-    case 4:
+    case 1:
+      return S.Array(__S(448, __c14, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          value: __S(123, __c15, 3),
+          value: __S(865, __c27, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ExperimentList" });
-    case 5:
+  }
+}
+function __c28(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          profileName: S.String.pipe(T.Label()),
+          experimentName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/NetworkExperimentProfiles/{profileName}/Experiments/{experimentName}",
+            code: 200,
+            apiVersion: "2026-04-01",
+          }),
+        ),
+      ).annotate({ identifier: "DeleteExperimentRequest" });
+  }
+}
+function __c29(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "DeleteExperimentResponse",
+      });
+  }
+}
+function __c30(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -3752,18 +3612,22 @@ function __c15(j: number): any {
       ).annotate({
         identifier: "ListFrontDoorByResourceGroupRequest",
       });
-    case 6:
-      return S.Array(__S(71, __c8, 7));
-    case 7:
+  }
+}
+function __c31(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(512, __c16, 0));
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          value: __S(126, __c15, 6),
+          value: __S(992, __c31, 0),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "FrontDoorListResult" });
   }
 }
-function __c16(j: number): any {
+function __c32(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3778,7 +3642,11 @@ function __c16(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ListFrontDoorsRequest" });
-    case 1:
+  }
+}
+function __c33(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -3795,16 +3663,20 @@ function __c16(j: number): any {
       ).annotate({
         identifier: "ListFrontendEndpointByFrontDoorRequest",
       });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          value: __S(55, __c6, 7),
+          value: __S(353, __c11, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
         identifier: "FrontendEndpointsListResult",
       });
-    case 3:
+  }
+}
+function __c34(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -3819,7 +3691,7 @@ function __c16(j: number): any {
       ).annotate({
         identifier: "ListManagedRuleSetsRequest",
       });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           ruleId: S.optional(S.String),
@@ -3830,61 +3702,61 @@ function __c16(j: number): any {
           paranoiaLevel: S.optional(S.String),
         }),
       ).annotate({ identifier: "ManagedRuleDefinition" });
-    case 5:
-      return S.Array(__S(132, __c16, 4));
-    case 6:
+    case 2:
+      return S.Array(__S(1089, __c34, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
           ruleGroupName: S.optional(S.String),
           description: S.optional(S.String),
-          rules: S.optional(__S(133, __c16, 5)),
+          rules: S.optional(__S(1090, __c34, 2)),
         }),
       ).annotate({
         identifier: "ManagedRuleGroupDefinition",
       });
-    case 7:
-      return S.Array(__S(134, __c16, 6));
-  }
-}
-function __c17(j: number): any {
-  switch (j) {
-    case 0:
+    case 4:
+      return S.Array(__S(1091, __c34, 3));
+    case 5:
       return S.suspend(() =>
         S.Struct({
           provisioningState: S.optional(S.String),
           ruleSetId: S.optional(S.String),
           ruleSetType: S.optional(S.String),
           ruleSetVersion: S.optional(S.String),
-          ruleGroups: S.optional(__S(135, __c16, 7)),
+          ruleGroups: S.optional(__S(1092, __c34, 4)),
           displayName: S.optional(S.String),
           status: S.optional(S.String),
         }),
       ).annotate({
         identifier: "ManagedRuleSetDefinitionProperties",
       });
-    case 1:
+    case 6:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
           location: S.optional(S.String),
-          tags: S.optional(__S(15, __c1, 7)),
-          properties: S.optional(__S(136, __c17, 0)),
+          tags: S.optional(__S(1984, __c62, 0)),
+          properties: S.optional(__S(1093, __c34, 5)),
         }),
       ).annotate({ identifier: "ManagedRuleSetDefinition" });
-    case 2:
-      return S.Array(__S(137, __c17, 1));
-    case 3:
+    case 7:
+      return S.Array(__S(1094, __c34, 6));
+    case 8:
       return S.suspend(() =>
         S.Struct({
-          value: __S(138, __c17, 2),
+          value: __S(1095, __c34, 7),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
         identifier: "ManagedRuleSetDefinitionList",
       });
-    case 4:
+  }
+}
+function __c35(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -3900,30 +3772,34 @@ function __c17(j: number): any {
       ).annotate({
         identifier: "ListNetworkExperimentProfileByResourceGroupRequest",
       });
-    case 5:
+  }
+}
+function __c36(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
           location: S.optional(S.String),
-          tags: S.optional(__S(15, __c1, 7)),
-          properties: S.optional(__S(75, __c9, 3)),
+          tags: S.optional(__S(1984, __c62, 0)),
+          properties: S.optional(__S(608, __c19, 0)),
           etag: S.optional(S.String),
         }),
       ).annotate({ identifier: "Profile" });
-    case 6:
-      return S.Array(__S(141, __c17, 5));
-    case 7:
+    case 1:
+      return S.Array(__S(1152, __c36, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          value: __S(142, __c17, 6),
+          value: __S(1153, __c36, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ProfileList" });
   }
 }
-function __c18(j: number): any {
+function __c37(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3940,7 +3816,11 @@ function __c18(j: number): any {
       ).annotate({
         identifier: "ListNetworkExperimentProfilesRequest",
       });
-    case 1:
+  }
+}
+function __c38(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -3954,33 +3834,45 @@ function __c18(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ListPoliciesRequest" });
-    case 2:
+  }
+}
+function __c39(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(1280, __c40, 0));
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          value: __S(1248, __c39, 0),
+          nextLink: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "WebApplicationFirewallPolicyList",
+      });
+  }
+}
+function __c40(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
           location: S.optional(S.String),
-          tags: S.optional(__S(15, __c1, 7)),
-          properties: S.optional(__S(108, __c13, 4)),
+          tags: S.optional(__S(1984, __c62, 0)),
+          properties: S.optional(__S(734, __c22, 30)),
           etag: S.optional(S.String),
-          sku: S.optional(__S(109, __c13, 5)),
+          sku: S.optional(__S(735, __c22, 31)),
         }),
       ).annotate({
         identifier: "WebApplicationFirewallPolicy",
       });
-    case 3:
-      return S.Array(__S(146, __c18, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          value: __S(147, __c18, 3),
-          nextLink: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "WebApplicationFirewallPolicyList",
-      });
-    case 5:
+  }
+}
+function __c41(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -3995,7 +3887,11 @@ function __c18(j: number): any {
       ).annotate({
         identifier: "ListPolicyBySubscriptionRequest",
       });
-    case 6:
+  }
+}
+function __c42(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -4012,7 +3908,7 @@ function __c18(j: number): any {
       ).annotate({
         identifier: "ListPreconfiguredEndpointsRequest",
       });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           description: S.optional(S.String),
@@ -4023,33 +3919,33 @@ function __c18(j: number): any {
       ).annotate({
         identifier: "PreconfiguredEndpointProperties",
       });
-  }
-}
-function __c19(j: number): any {
-  switch (j) {
-    case 0:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
           location: S.optional(S.String),
-          tags: S.optional(__S(15, __c1, 7)),
-          properties: S.optional(__S(151, __c18, 7)),
+          tags: S.optional(__S(1984, __c62, 0)),
+          properties: S.optional(__S(1345, __c42, 1)),
         }),
       ).annotate({ identifier: "PreconfiguredEndpoint" });
-    case 1:
-      return S.Array(__S(152, __c19, 0));
-    case 2:
+    case 3:
+      return S.Array(__S(1346, __c42, 2));
+    case 4:
       return S.suspend(() =>
         S.Struct({
-          value: __S(153, __c19, 1),
+          value: __S(1347, __c42, 3),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
         identifier: "PreconfiguredEndpointList",
       });
-    case 3:
+  }
+}
+function __c43(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -4066,22 +3962,45 @@ function __c19(j: number): any {
       ).annotate({
         identifier: "ListRulesEngineByFrontDoorRequest",
       });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          value: __S(65, __c8, 1),
+          value: __S(384, __c12, 0),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "RulesEngineListResult" });
-    case 5:
+  }
+}
+function __c44(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          frontDoorName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/frontDoors/{frontDoorName}",
+            code: 200,
+            apiVersion: "2026-04-01",
+          }),
+        ),
+      ).annotate({ identifier: "DeleteFrontDoorRequest" });
+  }
+}
+function __c45(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           profileName: S.String.pipe(T.Label()),
           location: S.optional(S.String),
-          tags: S.optional(__S(15, __c1, 7)),
-          properties: S.optional(__S(75, __c9, 3)),
+          tags: S.optional(__S(1984, __c62, 0)),
+          properties: S.optional(__S(608, __c19, 0)),
           etag: S.optional(S.String),
         }).pipe(
           T.Http({
@@ -4094,27 +4013,31 @@ function __c19(j: number): any {
       ).annotate({
         identifier: "NetworkExperimentProfilesCreateOrUpdateRequest",
       });
-    case 6:
+  }
+}
+function __c46(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          policySettings: S.optional(__S(81, __c10, 1)),
-          customRules: S.optional(__S(88, __c11, 0)),
-          managedRules: S.optional(__S(106, __c13, 2)),
+          policySettings: S.optional(__S(707, __c22, 3)),
+          customRules: S.optional(__S(714, __c22, 10)),
+          managedRules: S.optional(__S(732, __c22, 28)),
         }),
       ).annotate({
         identifier: "WebApplicationFirewallPolicyPropertiesInput",
       });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           policyName: S.String.pipe(T.Label()),
           location: S.optional(S.String),
-          tags: S.optional(__S(15, __c1, 7)),
-          properties: S.optional(__S(158, __c19, 6)),
+          tags: S.optional(__S(1984, __c62, 0)),
+          properties: S.optional(__S(1472, __c46, 0)),
           etag: S.optional(S.String),
-          sku: S.optional(__S(109, __c13, 5)),
+          sku: S.optional(__S(735, __c22, 31)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -4128,7 +4051,7 @@ function __c19(j: number): any {
       });
   }
 }
-function __c20(j: number): any {
+function __c47(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4136,7 +4059,7 @@ function __c20(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           frontDoorName: S.String.pipe(T.Label()),
-          contentPaths: __S(23, __c2, 7),
+          contentPaths: __S(160, __c5, 0),
         }).pipe(
           T.Http({
             method: "POST",
@@ -4148,14 +4071,18 @@ function __c20(j: number): any {
       ).annotate({
         identifier: "PurgeEndpointContentRequest",
       });
-    case 1:
+  }
+}
+function __c48(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           frontDoorName: S.String.pipe(T.Label()),
           rulesEngineName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(63, __c7, 7)),
+          properties: S.optional(__S(296, __c9, 8)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -4167,18 +4094,22 @@ function __c20(j: number): any {
       ).annotate({
         identifier: "RulesEnginesCreateOrUpdateRequest",
       });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          properties: S.optional(__S(63, __c7, 7)),
+          properties: S.optional(__S(296, __c9, 8)),
         }),
       ).annotate({
         identifier: "RulesEnginesCreateOrUpdateResponse",
       });
-    case 3:
+  }
+}
+function __c49(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           description: S.optional(S.String),
@@ -4187,15 +4118,15 @@ function __c20(j: number): any {
       ).annotate({
         identifier: "ExperimentUpdateProperties",
       });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           profileName: S.String.pipe(T.Label()),
           experimentName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(15, __c1, 7)),
-          properties: S.optional(__S(163, __c20, 3)),
+          tags: S.optional(__S(1984, __c62, 0)),
+          properties: S.optional(__S(1568, __c49, 0)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -4205,20 +4136,24 @@ function __c20(j: number): any {
           }),
         ),
       ).annotate({ identifier: "UpdateExperimentRequest" });
-    case 5:
+  }
+}
+function __c50(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           enabledState: S.optional(S.String),
         }),
       ).annotate({ identifier: "ProfileUpdateProperties" });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           profileName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(165, __c20, 5)),
-          tags: S.optional(__S(15, __c1, 7)),
+          properties: S.optional(__S(1600, __c50, 0)),
+          tags: S.optional(__S(1984, __c62, 0)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -4230,13 +4165,17 @@ function __c20(j: number): any {
       ).annotate({
         identifier: "UpdateNetworkExperimentProfileRequest",
       });
-    case 7:
+  }
+}
+function __c51(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           policyName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(15, __c1, 7)),
+          tags: S.optional(__S(1984, __c62, 0)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -4248,7 +4187,7 @@ function __c20(j: number): any {
       ).annotate({ identifier: "UpdatePolicyRequest" });
   }
 }
-function __c21(j: number): any {
+function __c52(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4280,7 +4219,235 @@ function __c21(j: number): any {
       });
   }
 }
-
+function __c53(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          profileName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/NetworkExperimentProfiles/{profileName}",
+            code: 200,
+            apiVersion: "2026-04-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteNetworkExperimentProfileRequest",
+      });
+  }
+}
+function __c54(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "DeleteNetworkExperimentProfileResponse",
+      });
+  }
+}
+function __c55(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          policyName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/FrontDoorWebApplicationFirewallPolicies/{policyName}",
+            code: 200,
+            apiVersion: "2026-04-01",
+          }),
+        ),
+      ).annotate({ identifier: "DeletePolicyRequest" });
+  }
+}
+function __c56(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          frontDoorName: S.String.pipe(T.Label()),
+          rulesEngineName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/frontDoors/{frontDoorName}/rulesEngines/{rulesEngineName}",
+            code: 200,
+            apiVersion: "2026-04-01",
+          }),
+        ),
+      ).annotate({ identifier: "DeleteRulesEngineRequest" });
+  }
+}
+function __c57(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          frontDoorName: S.String.pipe(T.Label()),
+          frontendEndpointName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/frontDoors/{frontDoorName}/frontendEndpoints/{frontendEndpointName}/disableHttps",
+            code: 200,
+            apiVersion: "2026-04-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "DisableFrontendEndpointHttpsRequest",
+      });
+  }
+}
+function __c58(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          frontDoorName: S.String.pipe(T.Label()),
+          frontendEndpointName: S.String.pipe(T.Label()),
+          certificateSource: S.String,
+          protocolType: S.String,
+          minimumTlsVersion: S.String,
+          keyVaultCertificateSourceParameters: S.optional(__S(1920, __c60, 0)),
+          frontDoorCertificateSourceParameters: S.optional(__S(1921, __c60, 1)),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/frontDoors/{frontDoorName}/frontendEndpoints/{frontendEndpointName}/enableHttps",
+            code: 200,
+            apiVersion: "2026-04-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "EnableFrontendEndpointHttpsRequest",
+      });
+  }
+}
+function __c59(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "KeyVaultCertificateSourceParametersVault",
+      });
+  }
+}
+function __c60(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          vault: S.optional(__S(1888, __c59, 0)),
+          secretName: S.optional(S.String),
+          secretVersion: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "KeyVaultCertificateSourceParameters",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          certificateType: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "FrontDoorCertificateSourceParameters",
+      });
+  }
+}
+function __c61(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          description: S.optional(S.String),
+          endpointA: S.optional(__S(2016, __c63, 0)),
+          endpointB: S.optional(__S(2016, __c63, 0)),
+          enabledState: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "ExperimentPropertiesInput",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          profileName: S.String.pipe(T.Label()),
+          experimentName: S.String.pipe(T.Label()),
+          location: S.optional(S.String),
+          tags: S.optional(__S(1984, __c62, 0)),
+          properties: S.optional(__S(1952, __c61, 0)),
+        }).pipe(
+          T.Http({
+            method: "PUT",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/NetworkExperimentProfiles/{profileName}/Experiments/{experimentName}",
+            code: 200,
+            apiVersion: "2026-04-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "ExperimentsCreateOrUpdateRequest",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          location: S.optional(S.String),
+          tags: S.optional(__S(1984, __c62, 0)),
+          properties: S.optional(__S(2017, __c63, 1)),
+        }),
+      ).annotate({
+        identifier: "ExperimentsCreateOrUpdateResponse",
+      });
+  }
+}
+function __c62(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, S.String);
+  }
+}
+function __c63(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.optional(S.String),
+          endpoint: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Endpoint" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          description: S.optional(S.String),
+          endpointA: S.optional(__S(2016, __c63, 0)),
+          endpointB: S.optional(__S(2016, __c63, 0)),
+          enabledState: S.optional(S.String),
+          resourceState: S.optional(S.String),
+          status: S.optional(S.String),
+          scriptFileUri: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ExperimentProperties" });
+  }
+}
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

@@ -673,8 +673,8 @@ export const cancelTransferOperations: API.OperationMethod<
   CancelTransferOperationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1, __c0, 1) as any as S.Schema<CancelTransferOperationsRequest>,
-  output: __S(0, __c0, 0) as any as S.Schema<Empty>,
+  input: __S(416, __c13, 0) as any as S.Schema<CancelTransferOperationsRequest>,
+  output: __S(448, __c14, 0) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, ServiceDisabled, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -694,8 +694,8 @@ export const createProjectsAgentPools: API.OperationMethod<
   CreateProjectsAgentPoolsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(4, __c0, 4) as any as S.Schema<CreateProjectsAgentPoolsRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<AgentPool>,
+  input: __S(480, __c15, 0) as any as S.Schema<CreateProjectsAgentPoolsRequest>,
+  output: __S(513, __c16, 1) as any as S.Schema<AgentPool>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, ServiceDisabled, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -715,8 +715,8 @@ export const createTransferJobs: API.OperationMethod<
   CreateTransferJobsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(31, __c3, 7) as any as S.Schema<CreateTransferJobsRequest>,
-  output: __S(30, __c3, 6) as any as S.Schema<TransferJob>,
+  input: __S(544, __c17, 0) as any as S.Schema<CreateTransferJobsRequest>,
+  output: __S(632, __c19, 24) as any as S.Schema<TransferJob>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, ServiceDisabled, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -736,8 +736,8 @@ export const deleteProjectsAgentPools: API.OperationMethod<
   DeleteProjectsAgentPoolsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(32, __c4, 0) as any as S.Schema<DeleteProjectsAgentPoolsRequest>,
-  output: __S(0, __c0, 0) as any as S.Schema<Empty>,
+  input: __S(640, __c20, 0) as any as S.Schema<DeleteProjectsAgentPoolsRequest>,
+  output: __S(448, __c14, 0) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, ServiceDisabled, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -757,8 +757,8 @@ export const deleteTransferJobs: API.OperationMethod<
   DeleteTransferJobsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(33, __c4, 1) as any as S.Schema<DeleteTransferJobsRequest>,
-  output: __S(0, __c0, 0) as any as S.Schema<Empty>,
+  input: __S(672, __c21, 0) as any as S.Schema<DeleteTransferJobsRequest>,
+  output: __S(448, __c14, 0) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, ServiceDisabled, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -772,8 +772,8 @@ export const getGoogleServiceAccounts: API.OperationMethod<
   GetGoogleServiceAccountsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(34, __c4, 2) as any as S.Schema<GetGoogleServiceAccountsRequest>,
-  output: __S(35, __c4, 3) as any as S.Schema<GoogleServiceAccount>,
+  input: __S(0, __c0, 0) as any as S.Schema<GetGoogleServiceAccountsRequest>,
+  output: __S(1, __c0, 1) as any as S.Schema<GoogleServiceAccount>,
   errors: [NotFound, Forbidden, ServiceDisabled, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -787,8 +787,8 @@ export const getProjectsAgentPools: API.OperationMethod<
   GetProjectsAgentPoolsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(36, __c4, 4) as any as S.Schema<GetProjectsAgentPoolsRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<AgentPool>,
+  input: __S(32, __c1, 0) as any as S.Schema<GetProjectsAgentPoolsRequest>,
+  output: __S(513, __c16, 1) as any as S.Schema<AgentPool>,
   errors: [NotFound, Forbidden, ServiceDisabled, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -802,8 +802,8 @@ export const getTransferJobs: API.OperationMethod<
   GetTransferJobsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(37, __c4, 5) as any as S.Schema<GetTransferJobsRequest>,
-  output: __S(30, __c3, 6) as any as S.Schema<TransferJob>,
+  input: __S(64, __c2, 0) as any as S.Schema<GetTransferJobsRequest>,
+  output: __S(632, __c19, 24) as any as S.Schema<TransferJob>,
   errors: [NotFound, Forbidden, ServiceDisabled, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -817,8 +817,8 @@ export const getTransferOperations: API.OperationMethod<
   GetTransferOperationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(38, __c4, 6) as any as S.Schema<GetTransferOperationsRequest>,
-  output: __S(42, __c5, 2) as any as S.Schema<Operation>,
+  input: __S(96, __c3, 0) as any as S.Schema<GetTransferOperationsRequest>,
+  output: __S(131, __c4, 3) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, ServiceDisabled, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -833,8 +833,8 @@ export const listProjectsAgentPools: API.PaginatedOperationMethod<
   GcpOpContext,
   ListAgentPoolsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(43, __c5, 3) as any as S.Schema<ListProjectsAgentPoolsRequest>,
-  output: __S(45, __c5, 5) as any as S.Schema<ListAgentPoolsResponse>,
+  input: __S(160, __c5, 0) as any as S.Schema<ListProjectsAgentPoolsRequest>,
+  output: __S(162, __c5, 2) as any as S.Schema<ListAgentPoolsResponse>,
   errors: [NotFound, Forbidden, ServiceDisabled, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -850,8 +850,8 @@ export const listTransferJobs: API.PaginatedOperationMethod<
   GcpOpContext,
   ListTransferJobsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(46, __c5, 6) as any as S.Schema<ListTransferJobsRequest>,
-  output: __S(48, __c6, 0) as any as S.Schema<ListTransferJobsResponse>,
+  input: __S(192, __c6, 0) as any as S.Schema<ListTransferJobsRequest>,
+  output: __S(194, __c6, 2) as any as S.Schema<ListTransferJobsResponse>,
   errors: [NotFound, Forbidden, ServiceDisabled, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -867,8 +867,8 @@ export const listTransferOperations: API.PaginatedOperationMethod<
   GcpOpContext,
   ListOperationsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(49, __c6, 1) as any as S.Schema<ListTransferOperationsRequest>,
-  output: __S(51, __c6, 3) as any as S.Schema<ListOperationsResponse>,
+  input: __S(224, __c7, 0) as any as S.Schema<ListTransferOperationsRequest>,
+  output: __S(226, __c7, 2) as any as S.Schema<ListOperationsResponse>,
   errors: [NotFound, Forbidden, ServiceDisabled, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -889,8 +889,8 @@ export const patchProjectsAgentPools: API.OperationMethod<
   PatchProjectsAgentPoolsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(52, __c6, 4) as any as S.Schema<PatchProjectsAgentPoolsRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<AgentPool>,
+  input: __S(256, __c8, 0) as any as S.Schema<PatchProjectsAgentPoolsRequest>,
+  output: __S(513, __c16, 1) as any as S.Schema<AgentPool>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, ServiceDisabled, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -910,8 +910,8 @@ export const patchTransferJobs: API.OperationMethod<
   PatchTransferJobsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(54, __c6, 6) as any as S.Schema<PatchTransferJobsRequest>,
-  output: __S(30, __c3, 6) as any as S.Schema<TransferJob>,
+  input: __S(289, __c9, 1) as any as S.Schema<PatchTransferJobsRequest>,
+  output: __S(632, __c19, 24) as any as S.Schema<TransferJob>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, ServiceDisabled, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -931,8 +931,8 @@ export const pauseTransferOperations: API.OperationMethod<
   PauseTransferOperationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(55, __c6, 7) as any as S.Schema<PauseTransferOperationsRequest>,
-  output: __S(0, __c0, 0) as any as S.Schema<Empty>,
+  input: __S(320, __c10, 0) as any as S.Schema<PauseTransferOperationsRequest>,
+  output: __S(448, __c14, 0) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, ServiceDisabled, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -952,8 +952,8 @@ export const resumeTransferOperations: API.OperationMethod<
   ResumeTransferOperationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(56, __c7, 0) as any as S.Schema<ResumeTransferOperationsRequest>,
-  output: __S(0, __c0, 0) as any as S.Schema<Empty>,
+  input: __S(352, __c11, 0) as any as S.Schema<ResumeTransferOperationsRequest>,
+  output: __S(448, __c14, 0) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, ServiceDisabled, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -973,8 +973,8 @@ export const runTransferJobs: API.OperationMethod<
   RunTransferJobsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(58, __c7, 2) as any as S.Schema<RunTransferJobsRequest>,
-  output: __S(42, __c5, 2) as any as S.Schema<Operation>,
+  input: __S(385, __c12, 1) as any as S.Schema<RunTransferJobsRequest>,
+  output: __S(131, __c4, 3) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, ServiceDisabled, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -984,352 +984,6 @@ export const runTransferJobs: API.OperationMethod<
 function __c0(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "CancelOperationRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-          body: S.optional(__S(0, __c0, 0).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/{+name}:cancel",
-            baseUrl: "https://storagetransfer.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "CancelTransferOperationsRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          limitMbps: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "BandwidthLimit" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.optional(S.String),
-          bandwidthLimit: S.optional(__S(2, __c0, 2)),
-          displayName: S.optional(S.String),
-          state: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "AgentPool" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          agentPoolId: S.optional(S.String.pipe(T.Query())),
-          projectId: S.String.pipe(T.Label()),
-          body: S.optional(__S(3, __c0, 3).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/projects/{+projectId}/agentPools",
-            baseUrl: "https://storagetransfer.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateProjectsAgentPoolsRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          year: S.optional(S.Number),
-          month: S.optional(S.Number),
-          day: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "Storagetransfer_Date" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          minutes: S.optional(S.Number),
-          seconds: S.optional(S.Number),
-          hours: S.optional(S.Number),
-          nanos: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "TimeOfDay" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          scheduleStartDate: S.optional(__S(5, __c0, 5)),
-          scheduleEndDate: S.optional(__S(5, __c0, 5)),
-          startTimeOfDay: S.optional(__S(6, __c0, 6)),
-          endTimeOfDay: S.optional(__S(6, __c0, 6)),
-          repeatInterval: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Schedule" });
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          managedFolderTransferEnabled: S.optional(S.Boolean),
-          bucketName: S.optional(S.String),
-          path: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "GcsData" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          listUrl: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "HttpData" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          sasToken: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "AzureCredentials" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          clientId: S.optional(S.String),
-          tenantId: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "FederatedIdentityConfig" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          credentialsSecret: S.optional(S.String),
-          azureCredentials: S.optional(__S(10, __c1, 2)),
-          storageAccount: S.optional(S.String),
-          path: S.optional(S.String),
-          privateNetworkService: S.optional(S.String),
-          container: S.optional(S.String),
-          federatedIdentityConfig: S.optional(__S(11, __c1, 3)),
-        }),
-      ).annotate({ identifier: "AzureBlobStorageData" });
-    case 5:
-      return S.Array(S.String);
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          includeStorageClasses: S.optional(__S(13, __c1, 5)),
-          lastModifiedBefore: S.optional(S.String),
-          includePrefixes: S.optional(__S(13, __c1, 5)),
-          maxTimeElapsedSinceLastModification: S.optional(S.String),
-          excludePrefixes: S.optional(__S(13, __c1, 5)),
-          matchGlob: S.optional(S.String),
-          lastModifiedSince: S.optional(S.String),
-          minTimeElapsedSinceLastModification: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ObjectConditions" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          rootDirectory: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "PosixFilesystem" });
-  }
-}
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          storageClass: S.optional(S.String),
-          temporaryHold: S.optional(S.String),
-          acl: S.optional(S.String),
-          uid: S.optional(S.String),
-          gid: S.optional(S.String),
-          timeCreated: S.optional(S.String),
-          mode: S.optional(S.String),
-          symlink: S.optional(S.String),
-          kmsKey: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "MetadataOptions" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          deleteObjectsUniqueInSink: S.optional(S.Boolean),
-          overwriteWhen: S.optional(S.String),
-          metadataOptions: S.optional(__S(16, __c2, 0)),
-          overwriteObjectsAlreadyExistingInSink: S.optional(S.Boolean),
-          deleteObjectsFromSourceAfterTransfer: S.optional(S.Boolean),
-        }),
-      ).annotate({ identifier: "TransferOptions" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          accessKeyId: S.optional(S.String),
-          secretAccessKey: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "AwsAccessKey" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          cloudfrontDomain: S.optional(S.String),
-          roleArn: S.optional(S.String),
-          awsAccessKey: S.optional(__S(18, __c2, 2)),
-          path: S.optional(S.String),
-          managedPrivateNetwork: S.optional(S.Boolean),
-          privateNetworkService: S.optional(S.String),
-          credentialsSecret: S.optional(S.String),
-          bucketName: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "AwsS3Data" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          path: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "HdfsData" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          location: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "TransferManifest" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          authMethod: S.optional(S.String),
-          requestModel: S.optional(S.String),
-          listApi: S.optional(S.String),
-          protocol: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "S3CompatibleMetadata" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          s3Metadata: S.optional(__S(22, __c2, 6)),
-          region: S.optional(S.String),
-          endpoint: S.optional(S.String),
-          bucketName: S.optional(S.String),
-          path: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "AwsS3CompatibleData" });
-  }
-}
-function __c3(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          gcsDataSink: S.optional(__S(8, __c1, 0)),
-          httpDataSource: S.optional(__S(9, __c1, 1)),
-          azureBlobStorageDataSource: S.optional(__S(12, __c1, 4)),
-          objectConditions: S.optional(__S(14, __c1, 6)),
-          posixDataSink: S.optional(__S(15, __c1, 7)),
-          posixDataSource: S.optional(__S(15, __c1, 7)),
-          transferOptions: S.optional(__S(17, __c2, 1)),
-          awsS3DataSource: S.optional(__S(19, __c2, 3)),
-          sourceAgentPoolName: S.optional(S.String),
-          hdfsDataSource: S.optional(__S(20, __c2, 4)),
-          sinkAgentPoolName: S.optional(S.String),
-          gcsIntermediateDataLocation: S.optional(__S(8, __c1, 0)),
-          transferManifest: S.optional(__S(21, __c2, 5)),
-          gcsDataSource: S.optional(__S(8, __c1, 0)),
-          awsS3CompatibleDataSource: S.optional(__S(23, __c2, 7)),
-        }),
-      ).annotate({ identifier: "TransferSpec" });
-    case 1:
-      return S.Array(S.String);
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          pubsubTopic: S.optional(S.String),
-          eventTypes: S.optional(__S(25, __c3, 1)),
-          payloadFormat: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "NotificationConfig" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          logActions: S.optional(__S(25, __c3, 1)),
-          logActionStates: S.optional(__S(25, __c3, 1)),
-          enableOnpremGcsTransferLogs: S.optional(S.Boolean),
-        }),
-      ).annotate({ identifier: "LoggingConfig" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          transferOptions: S.optional(__S(17, __c2, 1)),
-          gcsDataSource: S.optional(__S(8, __c1, 0)),
-          objectConditions: S.optional(__S(14, __c1, 6)),
-          gcsDataSink: S.optional(__S(8, __c1, 0)),
-        }),
-      ).annotate({ identifier: "ReplicationSpec" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          eventStreamStartTime: S.optional(S.String),
-          name: S.optional(S.String),
-          eventStreamExpirationTime: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "EventStream" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          status: S.optional(S.String),
-          schedule: S.optional(__S(7, __c0, 7)),
-          transferSpec: S.optional(__S(24, __c3, 0)),
-          projectId: S.optional(S.String),
-          lastModificationTime: S.optional(S.String),
-          name: S.optional(S.String),
-          description: S.optional(S.String),
-          creationTime: S.optional(S.String),
-          latestOperationName: S.optional(S.String),
-          notificationConfig: S.optional(__S(26, __c3, 2)),
-          loggingConfig: S.optional(__S(27, __c3, 3)),
-          replicationSpec: S.optional(__S(28, __c3, 4)),
-          serviceAccount: S.optional(S.String),
-          deletionTime: S.optional(S.String),
-          eventStream: S.optional(__S(29, __c3, 5)),
-        }),
-      ).annotate({ identifier: "TransferJob" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          body: S.optional(__S(30, __c3, 6).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/transferJobs",
-            baseUrl: "https://storagetransfer.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateTransferJobsRequest",
-      });
-  }
-}
-function __c4(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "v1/{+name}",
-            baseUrl: "https://storagetransfer.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteProjectsAgentPoolsRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          jobName: S.String.pipe(T.Label()),
-          projectId: S.String.pipe(T.Query()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "v1/{+jobName}",
-            baseUrl: "https://storagetransfer.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteTransferJobsRequest",
-      });
-    case 2:
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.Label()),
@@ -1343,14 +997,18 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "GetGoogleServiceAccountsRequest",
       });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           subjectId: S.optional(S.String),
           accountEmail: S.optional(S.String),
         }),
       ).annotate({ identifier: "GoogleServiceAccount" });
-    case 4:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -1364,7 +1022,11 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "GetProjectsAgentPoolsRequest",
       });
-    case 5:
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.Query()),
@@ -1377,7 +1039,11 @@ function __c4(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetTransferJobsRequest" });
-    case 6:
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -1391,33 +1057,37 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "GetTransferOperationsRequest",
       });
-    case 7:
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
       return S.Record(S.String, S.Unknown);
+    case 1:
+      return S.Array(__S(128, __c4, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          message: S.optional(S.String),
+          code: S.optional(S.Number),
+          details: S.optional(__S(129, __c4, 1)),
+        }),
+      ).annotate({ identifier: "Status" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.optional(S.String),
+          metadata: S.optional(__S(128, __c4, 0)),
+          done: S.optional(S.Boolean),
+          response: S.optional(__S(128, __c4, 0)),
+          error: S.optional(__S(130, __c4, 2)),
+        }),
+      ).annotate({ identifier: "Operation" });
   }
 }
 function __c5(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(39, __c4, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          message: S.optional(S.String),
-          code: S.optional(S.Number),
-          details: S.optional(__S(40, __c5, 0)),
-        }),
-      ).annotate({ identifier: "Status" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.optional(S.String),
-          metadata: S.optional(__S(39, __c4, 7)),
-          done: S.optional(S.Boolean),
-          response: S.optional(__S(39, __c4, 7)),
-          error: S.optional(__S(41, __c5, 1)),
-        }),
-      ).annotate({ identifier: "Operation" });
-    case 3:
       return S.suspend(() =>
         S.Struct({
           pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -1434,16 +1104,20 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "ListProjectsAgentPoolsRequest",
       });
-    case 4:
-      return S.Array(__S(3, __c0, 3));
-    case 5:
+    case 1:
+      return S.Array(__S(513, __c16, 1));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          agentPools: S.optional(__S(44, __c5, 4)),
+          agentPools: S.optional(__S(161, __c5, 1)),
         }),
       ).annotate({ identifier: "ListAgentPoolsResponse" });
-    case 6:
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           filter: S.String.pipe(T.Query()),
@@ -1457,20 +1131,20 @@ function __c5(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ListTransferJobsRequest" });
-    case 7:
-      return S.Array(__S(30, __c3, 6));
-  }
-}
-function __c6(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
+      return S.Array(__S(632, __c19, 24));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          transferJobs: S.optional(__S(47, __c5, 7)),
+          transferJobs: S.optional(__S(193, __c6, 1)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListTransferJobsResponse" });
-    case 1:
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           pageToken: S.optional(S.String.pipe(T.Query())),
@@ -1488,22 +1162,26 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "ListTransferOperationsRequest",
       });
+    case 1:
+      return S.Array(__S(131, __c4, 3));
     case 2:
-      return S.Array(__S(42, __c5, 2));
-    case 3:
       return S.suspend(() =>
         S.Struct({
-          unreachable: S.optional(__S(13, __c1, 5)),
+          unreachable: S.optional(__S(576, __c18, 0)),
           nextPageToken: S.optional(S.String),
-          operations: S.optional(__S(50, __c6, 2)),
+          operations: S.optional(__S(225, __c7, 1)),
         }),
       ).annotate({ identifier: "ListOperationsResponse" });
-    case 4:
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
           updateMask: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(3, __c0, 3).pipe(T.HttpBody())),
+          body: S.optional(__S(513, __c16, 1).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -1514,19 +1192,23 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "PatchProjectsAgentPoolsRequest",
       });
-    case 5:
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          transferJob: S.optional(__S(30, __c3, 6)),
+          transferJob: S.optional(__S(632, __c19, 24)),
           updateTransferJobFieldMask: S.optional(S.String),
           projectId: S.optional(S.String),
         }),
       ).annotate({ identifier: "UpdateTransferJobRequest" });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           jobName: S.String.pipe(T.Label()),
-          body: S.optional(__S(53, __c6, 5).pipe(T.HttpBody())),
+          body: S.optional(__S(288, __c9, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -1535,11 +1217,15 @@ function __c6(j: number): any {
           }),
         ),
       ).annotate({ identifier: "PatchTransferJobsRequest" });
-    case 7:
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(0, __c0, 0).pipe(T.HttpBody())),
+          body: S.optional(__S(448, __c14, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -1552,13 +1238,13 @@ function __c6(j: number): any {
       });
   }
 }
-function __c7(j: number): any {
+function __c11(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(0, __c0, 0).pipe(T.HttpBody())),
+          body: S.optional(__S(448, __c14, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -1569,17 +1255,21 @@ function __c7(j: number): any {
       ).annotate({
         identifier: "ResumeTransferOperationsRequest",
       });
-    case 1:
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           projectId: S.optional(S.String),
         }),
       ).annotate({ identifier: "RunTransferJobRequest" });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           jobName: S.String.pipe(T.Label()),
-          body: S.optional(__S(57, __c7, 1).pipe(T.HttpBody())),
+          body: S.optional(__S(384, __c12, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -1590,7 +1280,372 @@ function __c7(j: number): any {
       ).annotate({ identifier: "RunTransferJobsRequest" });
   }
 }
-
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+          body: S.optional(__S(448, __c14, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/{+name}:cancel",
+            baseUrl: "https://storagetransfer.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "CancelTransferOperationsRequest",
+      });
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "CancelOperationRequest",
+      });
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          agentPoolId: S.optional(S.String.pipe(T.Query())),
+          projectId: S.String.pipe(T.Label()),
+          body: S.optional(__S(513, __c16, 1).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/projects/{+projectId}/agentPools",
+            baseUrl: "https://storagetransfer.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateProjectsAgentPoolsRequest",
+      });
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          limitMbps: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "BandwidthLimit" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.optional(S.String),
+          bandwidthLimit: S.optional(__S(512, __c16, 0)),
+          displayName: S.optional(S.String),
+          state: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "AgentPool" });
+  }
+}
+function __c17(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          body: S.optional(__S(632, __c19, 24).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/transferJobs",
+            baseUrl: "https://storagetransfer.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateTransferJobsRequest",
+      });
+  }
+}
+function __c18(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c19(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          year: S.optional(S.Number),
+          month: S.optional(S.Number),
+          day: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "Storagetransfer_Date" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          minutes: S.optional(S.Number),
+          seconds: S.optional(S.Number),
+          hours: S.optional(S.Number),
+          nanos: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "TimeOfDay" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          scheduleStartDate: S.optional(__S(608, __c19, 0)),
+          scheduleEndDate: S.optional(__S(608, __c19, 0)),
+          startTimeOfDay: S.optional(__S(609, __c19, 1)),
+          endTimeOfDay: S.optional(__S(609, __c19, 1)),
+          repeatInterval: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Schedule" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          managedFolderTransferEnabled: S.optional(S.Boolean),
+          bucketName: S.optional(S.String),
+          path: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "GcsData" });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          listUrl: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "HttpData" });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          sasToken: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "AzureCredentials" });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          clientId: S.optional(S.String),
+          tenantId: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "FederatedIdentityConfig" });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          credentialsSecret: S.optional(S.String),
+          azureCredentials: S.optional(__S(613, __c19, 5)),
+          storageAccount: S.optional(S.String),
+          path: S.optional(S.String),
+          privateNetworkService: S.optional(S.String),
+          container: S.optional(S.String),
+          federatedIdentityConfig: S.optional(__S(614, __c19, 6)),
+        }),
+      ).annotate({ identifier: "AzureBlobStorageData" });
+    case 8:
+      return S.suspend(() =>
+        S.Struct({
+          includeStorageClasses: S.optional(__S(576, __c18, 0)),
+          lastModifiedBefore: S.optional(S.String),
+          includePrefixes: S.optional(__S(576, __c18, 0)),
+          maxTimeElapsedSinceLastModification: S.optional(S.String),
+          excludePrefixes: S.optional(__S(576, __c18, 0)),
+          matchGlob: S.optional(S.String),
+          lastModifiedSince: S.optional(S.String),
+          minTimeElapsedSinceLastModification: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ObjectConditions" });
+    case 9:
+      return S.suspend(() =>
+        S.Struct({
+          rootDirectory: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "PosixFilesystem" });
+    case 10:
+      return S.suspend(() =>
+        S.Struct({
+          storageClass: S.optional(S.String),
+          temporaryHold: S.optional(S.String),
+          acl: S.optional(S.String),
+          uid: S.optional(S.String),
+          gid: S.optional(S.String),
+          timeCreated: S.optional(S.String),
+          mode: S.optional(S.String),
+          symlink: S.optional(S.String),
+          kmsKey: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "MetadataOptions" });
+    case 11:
+      return S.suspend(() =>
+        S.Struct({
+          deleteObjectsUniqueInSink: S.optional(S.Boolean),
+          overwriteWhen: S.optional(S.String),
+          metadataOptions: S.optional(__S(618, __c19, 10)),
+          overwriteObjectsAlreadyExistingInSink: S.optional(S.Boolean),
+          deleteObjectsFromSourceAfterTransfer: S.optional(S.Boolean),
+        }),
+      ).annotate({ identifier: "TransferOptions" });
+    case 12:
+      return S.suspend(() =>
+        S.Struct({
+          accessKeyId: S.optional(S.String),
+          secretAccessKey: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "AwsAccessKey" });
+    case 13:
+      return S.suspend(() =>
+        S.Struct({
+          cloudfrontDomain: S.optional(S.String),
+          roleArn: S.optional(S.String),
+          awsAccessKey: S.optional(__S(620, __c19, 12)),
+          path: S.optional(S.String),
+          managedPrivateNetwork: S.optional(S.Boolean),
+          privateNetworkService: S.optional(S.String),
+          credentialsSecret: S.optional(S.String),
+          bucketName: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "AwsS3Data" });
+    case 14:
+      return S.suspend(() =>
+        S.Struct({
+          path: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "HdfsData" });
+    case 15:
+      return S.suspend(() =>
+        S.Struct({
+          location: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "TransferManifest" });
+    case 16:
+      return S.suspend(() =>
+        S.Struct({
+          authMethod: S.optional(S.String),
+          requestModel: S.optional(S.String),
+          listApi: S.optional(S.String),
+          protocol: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "S3CompatibleMetadata" });
+    case 17:
+      return S.suspend(() =>
+        S.Struct({
+          s3Metadata: S.optional(__S(624, __c19, 16)),
+          region: S.optional(S.String),
+          endpoint: S.optional(S.String),
+          bucketName: S.optional(S.String),
+          path: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "AwsS3CompatibleData" });
+    case 18:
+      return S.suspend(() =>
+        S.Struct({
+          gcsDataSink: S.optional(__S(611, __c19, 3)),
+          httpDataSource: S.optional(__S(612, __c19, 4)),
+          azureBlobStorageDataSource: S.optional(__S(615, __c19, 7)),
+          objectConditions: S.optional(__S(616, __c19, 8)),
+          posixDataSink: S.optional(__S(617, __c19, 9)),
+          posixDataSource: S.optional(__S(617, __c19, 9)),
+          transferOptions: S.optional(__S(619, __c19, 11)),
+          awsS3DataSource: S.optional(__S(621, __c19, 13)),
+          sourceAgentPoolName: S.optional(S.String),
+          hdfsDataSource: S.optional(__S(622, __c19, 14)),
+          sinkAgentPoolName: S.optional(S.String),
+          gcsIntermediateDataLocation: S.optional(__S(611, __c19, 3)),
+          transferManifest: S.optional(__S(623, __c19, 15)),
+          gcsDataSource: S.optional(__S(611, __c19, 3)),
+          awsS3CompatibleDataSource: S.optional(__S(625, __c19, 17)),
+        }),
+      ).annotate({ identifier: "TransferSpec" });
+    case 19:
+      return S.Array(S.String);
+    case 20:
+      return S.suspend(() =>
+        S.Struct({
+          pubsubTopic: S.optional(S.String),
+          eventTypes: S.optional(__S(627, __c19, 19)),
+          payloadFormat: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "NotificationConfig" });
+    case 21:
+      return S.suspend(() =>
+        S.Struct({
+          logActions: S.optional(__S(627, __c19, 19)),
+          logActionStates: S.optional(__S(627, __c19, 19)),
+          enableOnpremGcsTransferLogs: S.optional(S.Boolean),
+        }),
+      ).annotate({ identifier: "LoggingConfig" });
+    case 22:
+      return S.suspend(() =>
+        S.Struct({
+          transferOptions: S.optional(__S(619, __c19, 11)),
+          gcsDataSource: S.optional(__S(611, __c19, 3)),
+          objectConditions: S.optional(__S(616, __c19, 8)),
+          gcsDataSink: S.optional(__S(611, __c19, 3)),
+        }),
+      ).annotate({ identifier: "ReplicationSpec" });
+    case 23:
+      return S.suspend(() =>
+        S.Struct({
+          eventStreamStartTime: S.optional(S.String),
+          name: S.optional(S.String),
+          eventStreamExpirationTime: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "EventStream" });
+    case 24:
+      return S.suspend(() =>
+        S.Struct({
+          status: S.optional(S.String),
+          schedule: S.optional(__S(610, __c19, 2)),
+          transferSpec: S.optional(__S(626, __c19, 18)),
+          projectId: S.optional(S.String),
+          lastModificationTime: S.optional(S.String),
+          name: S.optional(S.String),
+          description: S.optional(S.String),
+          creationTime: S.optional(S.String),
+          latestOperationName: S.optional(S.String),
+          notificationConfig: S.optional(__S(628, __c19, 20)),
+          loggingConfig: S.optional(__S(629, __c19, 21)),
+          replicationSpec: S.optional(__S(630, __c19, 22)),
+          serviceAccount: S.optional(S.String),
+          deletionTime: S.optional(S.String),
+          eventStream: S.optional(__S(631, __c19, 23)),
+        }),
+      ).annotate({ identifier: "TransferJob" });
+  }
+}
+function __c20(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "v1/{+name}",
+            baseUrl: "https://storagetransfer.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteProjectsAgentPoolsRequest",
+      });
+  }
+}
+function __c21(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          jobName: S.String.pipe(T.Label()),
+          projectId: S.String.pipe(T.Query()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "v1/{+jobName}",
+            baseUrl: "https://storagetransfer.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteTransferJobsRequest",
+      });
+  }
+}
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

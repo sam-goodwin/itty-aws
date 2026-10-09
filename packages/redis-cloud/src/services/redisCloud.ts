@@ -3654,8 +3654,8 @@ export const acceptActiveActiveTgwResourceShare: API.OperationMethod<
   AcceptActiveActiveTgwResourceShareError,
   RedisCloudOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(0, __c0, 0) as any as S.Schema<AcceptActiveActiveTgwResourceShareRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<AcceptActiveActiveTgwResourceShareResponse>,
+  input: __S(4480, __c140, 0) as any as S.Schema<AcceptActiveActiveTgwResourceShareRequest>,
+  output: __S(4512, __c141, 0) as any as S.Schema<AcceptActiveActiveTgwResourceShareResponse>,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnknownRedisCloudError],
   protocol: RedisCloudProtocol,
   retry: Retry.Retry,
@@ -3674,8 +3674,8 @@ export const acceptTgwResourceShare: API.OperationMethod<
   AcceptTgwResourceShareError,
   RedisCloudOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2, __c0, 2) as any as S.Schema<AcceptTgwResourceShareRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<AcceptTgwResourceShareResponse>,
+  input: __S(4896, __c153, 0) as any as S.Schema<AcceptTgwResourceShareRequest>,
+  output: __S(4928, __c154, 0) as any as S.Schema<AcceptTgwResourceShareResponse>,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnknownRedisCloudError],
   protocol: RedisCloudProtocol,
   retry: Retry.Retry,
@@ -3694,8 +3694,8 @@ export const addNewRegionToActiveActiveSubscription: API.OperationMethod<
   AddNewRegionToActiveActiveSubscriptionError,
   RedisCloudOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(9, __c1, 1) as any as S.Schema<AddNewRegionToActiveActiveSubscriptionRequest>,
-  output: __S(13, __c1, 5) as any as S.Schema<TaskStateUpdate>,
+  input: __S(5347, __c167, 3) as any as S.Schema<AddNewRegionToActiveActiveSubscriptionRequest>,
+  output: __S(5473, __c171, 1) as any as S.Schema<TaskStateUpdate>,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnknownRedisCloudError],
   protocol: RedisCloudProtocol,
   retry: Retry.Retry,
@@ -3709,8 +3709,8 @@ export const backupDatabase: API.OperationMethod<
   BackupDatabaseError,
   RedisCloudOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(14, __c1, 6) as any as S.Schema<BackupDatabaseRequest>,
-  output: __S(13, __c1, 5) as any as S.Schema<TaskStateUpdate>,
+  input: __S(5824, __c182, 0) as any as S.Schema<BackupDatabaseRequest>,
+  output: __S(5473, __c171, 1) as any as S.Schema<TaskStateUpdate>,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnknownRedisCloudError],
   protocol: RedisCloudProtocol,
   retry: Retry.Retry,
@@ -3724,8 +3724,8 @@ export const backupDatabase1: API.OperationMethod<
   BackupDatabase1Error,
   RedisCloudOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(15, __c1, 7) as any as S.Schema<BackupDatabase1Request>,
-  output: __S(13, __c1, 5) as any as S.Schema<TaskStateUpdate>,
+  input: __S(6208, __c194, 0) as any as S.Schema<BackupDatabase1Request>,
+  output: __S(5473, __c171, 1) as any as S.Schema<TaskStateUpdate>,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnknownRedisCloudError],
   protocol: RedisCloudProtocol,
   retry: Retry.Retry,
@@ -3745,8 +3745,8 @@ export const createActiveActivePrivateLink: API.OperationMethod<
   CreateActiveActivePrivateLinkError,
   RedisCloudOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(16, __c2, 0) as any as S.Schema<CreateActiveActivePrivateLinkRequest>,
-  output: __S(13, __c1, 5) as any as S.Schema<TaskStateUpdate>,
+  input: __S(0, __c0, 0) as any as S.Schema<CreateActiveActivePrivateLinkRequest>,
+  output: __S(5473, __c171, 1) as any as S.Schema<TaskStateUpdate>,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnprocessableEntity, UnknownRedisCloudError],
   protocol: RedisCloudProtocol,
   retry: Retry.Retry,
@@ -3766,8 +3766,8 @@ export const createActiveActivePrivateLinkPrincipal: API.OperationMethod<
   CreateActiveActivePrivateLinkPrincipalError,
   RedisCloudOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(17, __c2, 1) as any as S.Schema<CreateActiveActivePrivateLinkPrincipalRequest>,
-  output: __S(13, __c1, 5) as any as S.Schema<TaskStateUpdate>,
+  input: __S(448, __c14, 0) as any as S.Schema<CreateActiveActivePrivateLinkPrincipalRequest>,
+  output: __S(5473, __c171, 1) as any as S.Schema<TaskStateUpdate>,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnprocessableEntity, UnknownRedisCloudError],
   protocol: RedisCloudProtocol,
   retry: Retry.Retry,
@@ -3787,8 +3787,8 @@ export const createActiveActivePscService: API.OperationMethod<
   CreateActiveActivePscServiceError,
   RedisCloudOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(18, __c2, 2) as any as S.Schema<CreateActiveActivePscServiceRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<CreateActiveActivePscServiceResponse>,
+  input: __S(864, __c27, 0) as any as S.Schema<CreateActiveActivePscServiceRequest>,
+  output: __S(4512, __c141, 0) as any as S.Schema<CreateActiveActivePscServiceResponse>,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnprocessableEntity, UnknownRedisCloudError],
   protocol: RedisCloudProtocol,
   retry: Retry.Retry,
@@ -3808,8 +3808,8 @@ export const createActiveActivePscServiceEndpoint: API.OperationMethod<
   CreateActiveActivePscServiceEndpointError,
   RedisCloudOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(19, __c2, 3) as any as S.Schema<CreateActiveActivePscServiceEndpointRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<CreateActiveActivePscServiceEndpointResponse>,
+  input: __S(1216, __c38, 0) as any as S.Schema<CreateActiveActivePscServiceEndpointRequest>,
+  output: __S(4512, __c141, 0) as any as S.Schema<CreateActiveActivePscServiceEndpointResponse>,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnprocessableEntity, UnknownRedisCloudError],
   protocol: RedisCloudProtocol,
   retry: Retry.Retry,
@@ -3829,8 +3829,8 @@ export const createActiveActiveTgwAttachment: API.OperationMethod<
   CreateActiveActiveTgwAttachmentError,
   RedisCloudOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(20, __c2, 4) as any as S.Schema<CreateActiveActiveTgwAttachmentRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<CreateActiveActiveTgwAttachmentResponse>,
+  input: __S(1600, __c50, 0) as any as S.Schema<CreateActiveActiveTgwAttachmentRequest>,
+  output: __S(4512, __c141, 0) as any as S.Schema<CreateActiveActiveTgwAttachmentResponse>,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnprocessableEntity, UnknownRedisCloudError],
   protocol: RedisCloudProtocol,
   retry: Retry.Retry,
@@ -3850,8 +3850,8 @@ export const createActiveActiveVpcPeering: API.OperationMethod<
   CreateActiveActiveVpcPeeringError,
   RedisCloudOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(21, __c2, 5) as any as S.Schema<CreateActiveActiveVpcPeeringRequest>,
-  output: __S(13, __c1, 5) as any as S.Schema<TaskStateUpdate>,
+  input: __S(1952, __c61, 0) as any as S.Schema<CreateActiveActiveVpcPeeringRequest>,
+  output: __S(5473, __c171, 1) as any as S.Schema<TaskStateUpdate>,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnprocessableEntity, UnknownRedisCloudError],
   protocol: RedisCloudProtocol,
   retry: Retry.Retry,
@@ -3871,8 +3871,8 @@ export const createCloudAccount: API.OperationMethod<
   CreateCloudAccountError,
   RedisCloudOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(22, __c2, 6) as any as S.Schema<CreateCloudAccountRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<CreateCloudAccountResponse>,
+  input: __S(2336, __c73, 0) as any as S.Schema<CreateCloudAccountRequest>,
+  output: __S(4928, __c154, 0) as any as S.Schema<CreateCloudAccountResponse>,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnprocessableEntity, UnknownRedisCloudError],
   protocol: RedisCloudProtocol,
   retry: Retry.Retry,
@@ -3892,8 +3892,8 @@ export const createCostReport: API.OperationMethod<
   CreateCostReportError,
   RedisCloudOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(26, __c3, 2) as any as S.Schema<CreateCostReportRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<CreateCostReportResponse>,
+  input: __S(2689, __c84, 1) as any as S.Schema<CreateCostReportRequest>,
+  output: __S(4928, __c154, 0) as any as S.Schema<CreateCostReportResponse>,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnprocessableEntity, UnknownRedisCloudError],
   protocol: RedisCloudProtocol,
   retry: Retry.Retry,
@@ -3913,8 +3913,8 @@ export const createDatabase: API.OperationMethod<
   CreateDatabaseError,
   RedisCloudOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(40, __c5, 0) as any as S.Schema<CreateDatabaseRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<CreateDatabaseResponse>,
+  input: __S(3040, __c95, 0) as any as S.Schema<CreateDatabaseRequest>,
+  output: __S(4928, __c154, 0) as any as S.Schema<CreateDatabaseResponse>,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnprocessableEntity, UnknownRedisCloudError],
   protocol: RedisCloudProtocol,
   retry: Retry.Retry,
@@ -3934,8 +3934,8 @@ export const createEndpointsRedirection: API.OperationMethod<
   CreateEndpointsRedirectionError,
   RedisCloudOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(41, __c5, 1) as any as S.Schema<CreateEndpointsRedirectionRequest>,
-  output: __S(44, __c5, 4) as any as S.Schema<EndpointsRedirectionResponse>,
+  input: __S(3264, __c102, 0) as any as S.Schema<CreateEndpointsRedirectionRequest>,
+  output: __S(3298, __c103, 2) as any as S.Schema<EndpointsRedirectionResponse>,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnprocessableEntity, UnknownRedisCloudError],
   protocol: RedisCloudProtocol,
   retry: Retry.Retry,
@@ -3955,8 +3955,8 @@ export const createFixedDatabase: API.OperationMethod<
   CreateFixedDatabaseError,
   RedisCloudOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(45, __c5, 5) as any as S.Schema<CreateFixedDatabaseRequest>,
-  output: __S(13, __c1, 5) as any as S.Schema<TaskStateUpdate>,
+  input: __S(3328, __c104, 0) as any as S.Schema<CreateFixedDatabaseRequest>,
+  output: __S(5473, __c171, 1) as any as S.Schema<TaskStateUpdate>,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnprocessableEntity, UnknownRedisCloudError],
   protocol: RedisCloudProtocol,
   retry: Retry.Retry,
@@ -3976,8 +3976,8 @@ export const createMemoryStore: API.OperationMethod<
   CreateMemoryStoreError,
   RedisCloudOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(68, __c8, 4) as any as S.Schema<CreateMemoryStoreRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<CreateMemoryStoreResponse>,
+  input: __S(3361, __c105, 1) as any as S.Schema<CreateMemoryStoreRequest>,
+  output: __S(4928, __c154, 0) as any as S.Schema<CreateMemoryStoreResponse>,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnprocessableEntity, UnknownRedisCloudError],
   protocol: RedisCloudProtocol,
   retry: Retry.Retry,
@@ -3997,8 +3997,8 @@ export const createMemoryStoreApiKey: API.OperationMethod<
   CreateMemoryStoreApiKeyError,
   RedisCloudOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(69, __c8, 5) as any as S.Schema<CreateMemoryStoreApiKeyRequest>,
-  output: __S(70, __c8, 6) as any as S.Schema<MemoryStoreApiKeyCreateResponse>,
+  input: __S(3488, __c109, 0) as any as S.Schema<CreateMemoryStoreApiKeyRequest>,
+  output: __S(3489, __c109, 1) as any as S.Schema<MemoryStoreApiKeyCreateResponse>,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnprocessableEntity, UnknownRedisCloudError],
   protocol: RedisCloudProtocol,
   retry: Retry.Retry,
@@ -4018,8 +4018,8 @@ export const createPrivateLink: API.OperationMethod<
   CreatePrivateLinkError,
   RedisCloudOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(71, __c8, 7) as any as S.Schema<CreatePrivateLinkRequest>,
-  output: __S(13, __c1, 5) as any as S.Schema<TaskStateUpdate>,
+  input: __S(3520, __c110, 0) as any as S.Schema<CreatePrivateLinkRequest>,
+  output: __S(5473, __c171, 1) as any as S.Schema<TaskStateUpdate>,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnprocessableEntity, UnknownRedisCloudError],
   protocol: RedisCloudProtocol,
   retry: Retry.Retry,
@@ -4039,8 +4039,8 @@ export const createPrivateLinkPrincipal: API.OperationMethod<
   CreatePrivateLinkPrincipalError,
   RedisCloudOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(72, __c9, 0) as any as S.Schema<CreatePrivateLinkPrincipalRequest>,
-  output: __S(13, __c1, 5) as any as S.Schema<TaskStateUpdate>,
+  input: __S(3552, __c111, 0) as any as S.Schema<CreatePrivateLinkPrincipalRequest>,
+  output: __S(5473, __c171, 1) as any as S.Schema<TaskStateUpdate>,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnprocessableEntity, UnknownRedisCloudError],
   protocol: RedisCloudProtocol,
   retry: Retry.Retry,
@@ -4060,8 +4060,8 @@ export const createPscService: API.OperationMethod<
   CreatePscServiceError,
   RedisCloudOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(73, __c9, 1) as any as S.Schema<CreatePscServiceRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<CreatePscServiceResponse>,
+  input: __S(3584, __c112, 0) as any as S.Schema<CreatePscServiceRequest>,
+  output: __S(4928, __c154, 0) as any as S.Schema<CreatePscServiceResponse>,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnprocessableEntity, UnknownRedisCloudError],
   protocol: RedisCloudProtocol,
   retry: Retry.Retry,
@@ -4081,8 +4081,8 @@ export const createPscServiceEndpoint: API.OperationMethod<
   CreatePscServiceEndpointError,
   RedisCloudOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(74, __c9, 2) as any as S.Schema<CreatePscServiceEndpointRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<CreatePscServiceEndpointResponse>,
+  input: __S(3616, __c113, 0) as any as S.Schema<CreatePscServiceEndpointRequest>,
+  output: __S(4512, __c141, 0) as any as S.Schema<CreatePscServiceEndpointResponse>,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnprocessableEntity, UnknownRedisCloudError],
   protocol: RedisCloudProtocol,
   retry: Retry.Retry,
@@ -4102,8 +4102,8 @@ export const createRedisRule: API.OperationMethod<
   CreateRedisRuleError,
   RedisCloudOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(75, __c9, 3) as any as S.Schema<CreateRedisRuleRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<CreateRedisRuleResponse>,
+  input: __S(3648, __c114, 0) as any as S.Schema<CreateRedisRuleRequest>,
+  output: __S(4928, __c154, 0) as any as S.Schema<CreateRedisRuleResponse>,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnprocessableEntity, UnknownRedisCloudError],
   protocol: RedisCloudProtocol,
   retry: Retry.Retry,
@@ -4123,8 +4123,8 @@ export const createRole: API.OperationMethod<
   CreateRoleError,
   RedisCloudOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(80, __c10, 0) as any as S.Schema<CreateRoleRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<CreateRoleResponse>,
+  input: __S(3680, __c115, 0) as any as S.Schema<CreateRoleRequest>,
+  output: __S(4928, __c154, 0) as any as S.Schema<CreateRoleResponse>,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnprocessableEntity, UnknownRedisCloudError],
   protocol: RedisCloudProtocol,
   retry: Retry.Retry,
@@ -4144,8 +4144,8 @@ export const createSubscription: API.OperationMethod<
   CreateSubscriptionError,
   RedisCloudOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(93, __c11, 5) as any as S.Schema<CreateSubscriptionRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<CreateSubscriptionResponse>,
+  input: __S(3754, __c117, 10) as any as S.Schema<CreateSubscriptionRequest>,
+  output: __S(4928, __c154, 0) as any as S.Schema<CreateSubscriptionResponse>,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnprocessableEntity, UnknownRedisCloudError],
   protocol: RedisCloudProtocol,
   retry: Retry.Retry,
@@ -4165,8 +4165,8 @@ export const createSubscription1: API.OperationMethod<
   CreateSubscription1Error,
   RedisCloudOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(94, __c11, 6) as any as S.Schema<CreateSubscription1Request>,
-  output: __S(3, __c0, 3) as any as S.Schema<CreateSubscription1Response>,
+  input: __S(3808, __c119, 0) as any as S.Schema<CreateSubscription1Request>,
+  output: __S(4928, __c154, 0) as any as S.Schema<CreateSubscription1Response>,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnprocessableEntity, UnknownRedisCloudError],
   protocol: RedisCloudProtocol,
   retry: Retry.Retry,
@@ -4186,8 +4186,8 @@ export const createTag: API.OperationMethod<
   CreateTagError,
   RedisCloudOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(95, __c11, 7) as any as S.Schema<CreateTagRequest>,
-  output: __S(96, __c12, 0) as any as S.Schema<CloudTag>,
+  input: __S(3840, __c120, 0) as any as S.Schema<CreateTagRequest>,
+  output: __S(3872, __c121, 0) as any as S.Schema<CloudTag>,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnprocessableEntity, UnknownRedisCloudError],
   protocol: RedisCloudProtocol,
   retry: Retry.Retry,
@@ -4207,8 +4207,8 @@ export const createTag1: API.OperationMethod<
   CreateTag1Error,
   RedisCloudOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(97, __c12, 1) as any as S.Schema<CreateTag1Request>,
-  output: __S(96, __c12, 0) as any as S.Schema<CloudTag>,
+  input: __S(3904, __c122, 0) as any as S.Schema<CreateTag1Request>,
+  output: __S(3872, __c121, 0) as any as S.Schema<CloudTag>,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnprocessableEntity, UnknownRedisCloudError],
   protocol: RedisCloudProtocol,
   retry: Retry.Retry,
@@ -4228,8 +4228,8 @@ export const createTgwAttachment: API.OperationMethod<
   CreateTgwAttachmentError,
   RedisCloudOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(98, __c12, 2) as any as S.Schema<CreateTgwAttachmentRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<CreateTgwAttachmentResponse>,
+  input: __S(3936, __c123, 0) as any as S.Schema<CreateTgwAttachmentRequest>,
+  output: __S(4928, __c154, 0) as any as S.Schema<CreateTgwAttachmentResponse>,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnprocessableEntity, UnknownRedisCloudError],
   protocol: RedisCloudProtocol,
   retry: Retry.Retry,
@@ -4249,8 +4249,8 @@ export const createUser: API.OperationMethod<
   CreateUserError,
   RedisCloudOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(99, __c12, 3) as any as S.Schema<CreateUserRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<CreateUserResponse>,
+  input: __S(3968, __c124, 0) as any as S.Schema<CreateUserRequest>,
+  output: __S(4928, __c154, 0) as any as S.Schema<CreateUserResponse>,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnprocessableEntity, UnknownRedisCloudError],
   protocol: RedisCloudProtocol,
   retry: Retry.Retry,
@@ -4270,8 +4270,8 @@ export const createVpcPeering: API.OperationMethod<
   CreateVpcPeeringError,
   RedisCloudOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(100, __c12, 4) as any as S.Schema<CreateVpcPeeringRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<CreateVpcPeeringResponse>,
+  input: __S(4000, __c125, 0) as any as S.Schema<CreateVpcPeeringRequest>,
+  output: __S(4928, __c154, 0) as any as S.Schema<CreateVpcPeeringResponse>,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnprocessableEntity, UnknownRedisCloudError],
   protocol: RedisCloudProtocol,
   retry: Retry.Retry,
@@ -4285,8 +4285,8 @@ export const deleteAclRole: API.OperationMethod<
   DeleteAclRoleError,
   RedisCloudOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(101, __c12, 5) as any as S.Schema<DeleteAclRoleRequest>,
-  output: __S(13, __c1, 5) as any as S.Schema<TaskStateUpdate>,
+  input: __S(4032, __c126, 0) as any as S.Schema<DeleteAclRoleRequest>,
+  output: __S(5473, __c171, 1) as any as S.Schema<TaskStateUpdate>,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnknownRedisCloudError],
   protocol: RedisCloudProtocol,
   retry: Retry.Retry,
@@ -4305,8 +4305,8 @@ export const deleteActiveActivePrivateLink: API.OperationMethod<
   DeleteActiveActivePrivateLinkError,
   RedisCloudOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(102, __c12, 6) as any as S.Schema<DeleteActiveActivePrivateLinkRequest>,
-  output: __S(13, __c1, 5) as any as S.Schema<TaskStateUpdate>,
+  input: __S(4064, __c127, 0) as any as S.Schema<DeleteActiveActivePrivateLinkRequest>,
+  output: __S(5473, __c171, 1) as any as S.Schema<TaskStateUpdate>,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnknownRedisCloudError],
   protocol: RedisCloudProtocol,
   retry: Retry.Retry,
@@ -4325,8 +4325,8 @@ export const deleteActiveActivePrivateLinkPrincipals: API.OperationMethod<
   DeleteActiveActivePrivateLinkPrincipalsError,
   RedisCloudOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(103, __c12, 7) as any as S.Schema<DeleteActiveActivePrivateLinkPrincipalsRequest>,
-  output: __S(13, __c1, 5) as any as S.Schema<TaskStateUpdate>,
+  input: __S(4096, __c128, 0) as any as S.Schema<DeleteActiveActivePrivateLinkPrincipalsRequest>,
+  output: __S(5473, __c171, 1) as any as S.Schema<TaskStateUpdate>,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnknownRedisCloudError],
   protocol: RedisCloudProtocol,
   retry: Retry.Retry,
@@ -4345,8 +4345,8 @@ export const deleteActiveActivePscService: API.OperationMethod<
   DeleteActiveActivePscServiceError,
   RedisCloudOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(104, __c13, 0) as any as S.Schema<DeleteActiveActivePscServiceRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<DeleteActiveActivePscServiceResponse>,
+  input: __S(4128, __c129, 0) as any as S.Schema<DeleteActiveActivePscServiceRequest>,
+  output: __S(4512, __c141, 0) as any as S.Schema<DeleteActiveActivePscServiceResponse>,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnknownRedisCloudError],
   protocol: RedisCloudProtocol,
   retry: Retry.Retry,
@@ -4365,8 +4365,8 @@ export const deleteActiveActivePscServiceEndpoint: API.OperationMethod<
   DeleteActiveActivePscServiceEndpointError,
   RedisCloudOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(105, __c13, 1) as any as S.Schema<DeleteActiveActivePscServiceEndpointRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<DeleteActiveActivePscServiceEndpointResponse>,
+  input: __S(4160, __c130, 0) as any as S.Schema<DeleteActiveActivePscServiceEndpointRequest>,
+  output: __S(4512, __c141, 0) as any as S.Schema<DeleteActiveActivePscServiceEndpointResponse>,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnknownRedisCloudError],
   protocol: RedisCloudProtocol,
   retry: Retry.Retry,
@@ -4385,8 +4385,8 @@ export const deleteActiveActiveTgwAttachment: API.OperationMethod<
   DeleteActiveActiveTgwAttachmentError,
   RedisCloudOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(106, __c13, 2) as any as S.Schema<DeleteActiveActiveTgwAttachmentRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<DeleteActiveActiveTgwAttachmentResponse>,
+  input: __S(4192, __c131, 0) as any as S.Schema<DeleteActiveActiveTgwAttachmentRequest>,
+  output: __S(4512, __c141, 0) as any as S.Schema<DeleteActiveActiveTgwAttachmentResponse>,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnknownRedisCloudError],
   protocol: RedisCloudProtocol,
   retry: Retry.Retry,
@@ -4405,8 +4405,8 @@ export const deleteActiveActiveVpcPeering: API.OperationMethod<
   DeleteActiveActiveVpcPeeringError,
   RedisCloudOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(107, __c13, 3) as any as S.Schema<DeleteActiveActiveVpcPeeringRequest>,
-  output: __S(13, __c1, 5) as any as S.Schema<TaskStateUpdate>,
+  input: __S(4224, __c132, 0) as any as S.Schema<DeleteActiveActiveVpcPeeringRequest>,
+  output: __S(5473, __c171, 1) as any as S.Schema<TaskStateUpdate>,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnknownRedisCloudError],
   protocol: RedisCloudProtocol,
   retry: Retry.Retry,
@@ -4425,8 +4425,8 @@ export const deleteCloudAccount: API.OperationMethod<
   DeleteCloudAccountError,
   RedisCloudOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(108, __c13, 4) as any as S.Schema<DeleteCloudAccountRequest>,
-  output: __S(13, __c1, 5) as any as S.Schema<TaskStateUpdate>,
+  input: __S(4256, __c133, 0) as any as S.Schema<DeleteCloudAccountRequest>,
+  output: __S(5473, __c171, 1) as any as S.Schema<TaskStateUpdate>,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnknownRedisCloudError],
   protocol: RedisCloudProtocol,
   retry: Retry.Retry,
@@ -4445,8 +4445,8 @@ export const deleteDatabaseById: API.OperationMethod<
   DeleteDatabaseByIdError,
   RedisCloudOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(109, __c13, 5) as any as S.Schema<DeleteDatabaseByIdRequest>,
-  output: __S(13, __c1, 5) as any as S.Schema<TaskStateUpdate>,
+  input: __S(4288, __c134, 0) as any as S.Schema<DeleteDatabaseByIdRequest>,
+  output: __S(5473, __c171, 1) as any as S.Schema<TaskStateUpdate>,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnknownRedisCloudError],
   protocol: RedisCloudProtocol,
   retry: Retry.Retry,
@@ -4465,8 +4465,8 @@ export const deleteFixedDatabaseByID: API.OperationMethod<
   DeleteFixedDatabaseByIDError,
   RedisCloudOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(110, __c13, 6) as any as S.Schema<DeleteFixedDatabaseByIDRequest>,
-  output: __S(13, __c1, 5) as any as S.Schema<TaskStateUpdate>,
+  input: __S(4320, __c135, 0) as any as S.Schema<DeleteFixedDatabaseByIDRequest>,
+  output: __S(5473, __c171, 1) as any as S.Schema<TaskStateUpdate>,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnknownRedisCloudError],
   protocol: RedisCloudProtocol,
   retry: Retry.Retry,
@@ -4485,8 +4485,8 @@ export const deleteFixedDatabaseByID1: API.OperationMethod<
   DeleteFixedDatabaseByID1Error,
   RedisCloudOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(111, __c13, 7) as any as S.Schema<DeleteFixedDatabaseByID1Request>,
-  output: __S(13, __c1, 5) as any as S.Schema<TaskStateUpdate>,
+  input: __S(4352, __c136, 0) as any as S.Schema<DeleteFixedDatabaseByID1Request>,
+  output: __S(5473, __c171, 1) as any as S.Schema<TaskStateUpdate>,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnknownRedisCloudError],
   protocol: RedisCloudProtocol,
   retry: Retry.Retry,
@@ -4505,8 +4505,8 @@ export const deleteMemoryStore: API.OperationMethod<
   DeleteMemoryStoreError,
   RedisCloudOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(112, __c14, 0) as any as S.Schema<DeleteMemoryStoreRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<DeleteMemoryStoreResponse>,
+  input: __S(4384, __c137, 0) as any as S.Schema<DeleteMemoryStoreRequest>,
+  output: __S(4928, __c154, 0) as any as S.Schema<DeleteMemoryStoreResponse>,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnknownRedisCloudError],
   protocol: RedisCloudProtocol,
   retry: Retry.Retry,
@@ -4525,8 +4525,8 @@ export const deleteMemoryStoreApiKey: API.OperationMethod<
   DeleteMemoryStoreApiKeyError,
   RedisCloudOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(113, __c14, 1) as any as S.Schema<DeleteMemoryStoreApiKeyRequest>,
-  output: __S(114, __c14, 2) as any as S.Schema<DeleteMemoryStoreApiKeyResponse>,
+  input: __S(4416, __c138, 0) as any as S.Schema<DeleteMemoryStoreApiKeyRequest>,
+  output: __S(4417, __c138, 1) as any as S.Schema<DeleteMemoryStoreApiKeyResponse>,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnknownRedisCloudError],
   protocol: RedisCloudProtocol,
   retry: Retry.Retry,
@@ -4545,8 +4545,8 @@ export const deletePrivateLink: API.OperationMethod<
   DeletePrivateLinkError,
   RedisCloudOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(115, __c14, 3) as any as S.Schema<DeletePrivateLinkRequest>,
-  output: __S(13, __c1, 5) as any as S.Schema<TaskStateUpdate>,
+  input: __S(4448, __c139, 0) as any as S.Schema<DeletePrivateLinkRequest>,
+  output: __S(5473, __c171, 1) as any as S.Schema<TaskStateUpdate>,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnknownRedisCloudError],
   protocol: RedisCloudProtocol,
   retry: Retry.Retry,
@@ -4565,8 +4565,8 @@ export const deletePrivateLinkPrincipals: API.OperationMethod<
   DeletePrivateLinkPrincipalsError,
   RedisCloudOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(116, __c14, 4) as any as S.Schema<DeletePrivateLinkPrincipalsRequest>,
-  output: __S(13, __c1, 5) as any as S.Schema<TaskStateUpdate>,
+  input: __S(4544, __c142, 0) as any as S.Schema<DeletePrivateLinkPrincipalsRequest>,
+  output: __S(5473, __c171, 1) as any as S.Schema<TaskStateUpdate>,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnknownRedisCloudError],
   protocol: RedisCloudProtocol,
   retry: Retry.Retry,
@@ -4585,8 +4585,8 @@ export const deletePscService: API.OperationMethod<
   DeletePscServiceError,
   RedisCloudOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(117, __c14, 5) as any as S.Schema<DeletePscServiceRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<DeletePscServiceResponse>,
+  input: __S(4576, __c143, 0) as any as S.Schema<DeletePscServiceRequest>,
+  output: __S(4928, __c154, 0) as any as S.Schema<DeletePscServiceResponse>,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnknownRedisCloudError],
   protocol: RedisCloudProtocol,
   retry: Retry.Retry,
@@ -4605,8 +4605,8 @@ export const deletePscServiceEndpoint: API.OperationMethod<
   DeletePscServiceEndpointError,
   RedisCloudOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(118, __c14, 6) as any as S.Schema<DeletePscServiceEndpointRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<DeletePscServiceEndpointResponse>,
+  input: __S(4608, __c144, 0) as any as S.Schema<DeletePscServiceEndpointRequest>,
+  output: __S(4512, __c141, 0) as any as S.Schema<DeletePscServiceEndpointResponse>,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnknownRedisCloudError],
   protocol: RedisCloudProtocol,
   retry: Retry.Retry,
@@ -4620,8 +4620,8 @@ export const deleteRedisRule: API.OperationMethod<
   DeleteRedisRuleError,
   RedisCloudOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(119, __c14, 7) as any as S.Schema<DeleteRedisRuleRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<DeleteRedisRuleResponse>,
+  input: __S(4640, __c145, 0) as any as S.Schema<DeleteRedisRuleRequest>,
+  output: __S(4928, __c154, 0) as any as S.Schema<DeleteRedisRuleResponse>,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnknownRedisCloudError],
   protocol: RedisCloudProtocol,
   retry: Retry.Retry,
@@ -4640,8 +4640,8 @@ export const deleteRegionsFromActiveActiveSubscription: API.OperationMethod<
   DeleteRegionsFromActiveActiveSubscriptionError,
   RedisCloudOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(122, __c15, 2) as any as S.Schema<DeleteRegionsFromActiveActiveSubscriptionRequest>,
-  output: __S(13, __c1, 5) as any as S.Schema<TaskStateUpdate>,
+  input: __S(4674, __c146, 2) as any as S.Schema<DeleteRegionsFromActiveActiveSubscriptionRequest>,
+  output: __S(5473, __c171, 1) as any as S.Schema<TaskStateUpdate>,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnknownRedisCloudError],
   protocol: RedisCloudProtocol,
   retry: Retry.Retry,
@@ -4660,8 +4660,8 @@ export const deleteSubscription: API.OperationMethod<
   DeleteSubscriptionError,
   RedisCloudOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(123, __c15, 3) as any as S.Schema<DeleteSubscriptionRequest>,
-  output: __S(13, __c1, 5) as any as S.Schema<TaskStateUpdate>,
+  input: __S(4704, __c147, 0) as any as S.Schema<DeleteSubscriptionRequest>,
+  output: __S(5473, __c171, 1) as any as S.Schema<TaskStateUpdate>,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnknownRedisCloudError],
   protocol: RedisCloudProtocol,
   retry: Retry.Retry,
@@ -4680,8 +4680,8 @@ export const deleteSubscriptionById1: API.OperationMethod<
   DeleteSubscriptionById1Error,
   RedisCloudOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(124, __c15, 4) as any as S.Schema<DeleteSubscriptionById1Request>,
-  output: __S(13, __c1, 5) as any as S.Schema<TaskStateUpdate>,
+  input: __S(4736, __c148, 0) as any as S.Schema<DeleteSubscriptionById1Request>,
+  output: __S(5473, __c171, 1) as any as S.Schema<TaskStateUpdate>,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnknownRedisCloudError],
   protocol: RedisCloudProtocol,
   retry: Retry.Retry,
@@ -4695,8 +4695,8 @@ export const deleteTag: API.OperationMethod<
   DeleteTagError,
   RedisCloudOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(125, __c15, 5) as any as S.Schema<DeleteTagRequest>,
-  output: __S(126, __c15, 6) as any as S.Schema<DeleteTagResponse>,
+  input: __S(4768, __c149, 0) as any as S.Schema<DeleteTagRequest>,
+  output: __S(4800, __c150, 0) as any as S.Schema<DeleteTagResponse>,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnknownRedisCloudError],
   protocol: RedisCloudProtocol,
   retry: Retry.Retry,
@@ -4710,8 +4710,8 @@ export const deleteTag1: API.OperationMethod<
   DeleteTag1Error,
   RedisCloudOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(127, __c15, 7) as any as S.Schema<DeleteTag1Request>,
-  output: __S(126, __c15, 6) as any as S.Schema<DeleteTag1Response>,
+  input: __S(4832, __c151, 0) as any as S.Schema<DeleteTag1Request>,
+  output: __S(4800, __c150, 0) as any as S.Schema<DeleteTag1Response>,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnknownRedisCloudError],
   protocol: RedisCloudProtocol,
   retry: Retry.Retry,
@@ -4730,8 +4730,8 @@ export const deleteTgwAttachment: API.OperationMethod<
   DeleteTgwAttachmentError,
   RedisCloudOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(128, __c16, 0) as any as S.Schema<DeleteTgwAttachmentRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<DeleteTgwAttachmentResponse>,
+  input: __S(4864, __c152, 0) as any as S.Schema<DeleteTgwAttachmentRequest>,
+  output: __S(4928, __c154, 0) as any as S.Schema<DeleteTgwAttachmentResponse>,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnknownRedisCloudError],
   protocol: RedisCloudProtocol,
   retry: Retry.Retry,
@@ -4745,8 +4745,8 @@ export const deleteUser: API.OperationMethod<
   DeleteUserError,
   RedisCloudOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(129, __c16, 1) as any as S.Schema<DeleteUserRequest>,
-  output: __S(13, __c1, 5) as any as S.Schema<TaskStateUpdate>,
+  input: __S(4960, __c155, 0) as any as S.Schema<DeleteUserRequest>,
+  output: __S(5473, __c171, 1) as any as S.Schema<TaskStateUpdate>,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnknownRedisCloudError],
   protocol: RedisCloudProtocol,
   retry: Retry.Retry,
@@ -4760,8 +4760,8 @@ export const deleteUser2: API.OperationMethod<
   DeleteUser2Error,
   RedisCloudOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(130, __c16, 2) as any as S.Schema<DeleteUserRequest2>,
-  output: __S(13, __c1, 5) as any as S.Schema<TaskStateUpdate>,
+  input: __S(4992, __c156, 0) as any as S.Schema<DeleteUserRequest2>,
+  output: __S(5473, __c171, 1) as any as S.Schema<TaskStateUpdate>,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnknownRedisCloudError],
   protocol: RedisCloudProtocol,
   retry: Retry.Retry,
@@ -4780,8 +4780,8 @@ export const deleteVpcPeering: API.OperationMethod<
   DeleteVpcPeeringError,
   RedisCloudOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(131, __c16, 3) as any as S.Schema<DeleteVpcPeeringRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<DeleteVpcPeeringResponse>,
+  input: __S(5024, __c157, 0) as any as S.Schema<DeleteVpcPeeringRequest>,
+  output: __S(4928, __c154, 0) as any as S.Schema<DeleteVpcPeeringResponse>,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnknownRedisCloudError],
   protocol: RedisCloudProtocol,
   retry: Retry.Retry,
@@ -4801,14 +4801,14 @@ export const disassociateActiveActivePrivateLinkConnections: API.OperationMethod
   RedisCloudOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    134,
-    __c16,
-    6,
+    5057,
+    __c158,
+    1,
   ) as any as S.Schema<DisassociateActiveActivePrivateLinkConnectionsRequest>,
   output: __S(
-    1,
-    __c0,
-    1,
+    4512,
+    __c141,
+    0,
   ) as any as S.Schema<DisassociateActiveActivePrivateLinkConnectionsResponse>,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnknownRedisCloudError],
   protocol: RedisCloudProtocol,
@@ -4828,8 +4828,8 @@ export const disassociatePrivateLinkConnections: API.OperationMethod<
   DisassociatePrivateLinkConnectionsError,
   RedisCloudOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(136, __c17, 0) as any as S.Schema<DisassociatePrivateLinkConnectionsRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<DisassociatePrivateLinkConnectionsResponse>,
+  input: __S(5121, __c160, 1) as any as S.Schema<DisassociatePrivateLinkConnectionsRequest>,
+  output: __S(4512, __c141, 0) as any as S.Schema<DisassociatePrivateLinkConnectionsResponse>,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnknownRedisCloudError],
   protocol: RedisCloudProtocol,
   retry: Retry.Retry,
@@ -4848,8 +4848,8 @@ export const emptyMemoryStore: API.OperationMethod<
   EmptyMemoryStoreError,
   RedisCloudOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(137, __c17, 1) as any as S.Schema<EmptyMemoryStoreRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<EmptyMemoryStoreResponse>,
+  input: __S(5152, __c161, 0) as any as S.Schema<EmptyMemoryStoreRequest>,
+  output: __S(4928, __c154, 0) as any as S.Schema<EmptyMemoryStoreResponse>,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnknownRedisCloudError],
   protocol: RedisCloudProtocol,
   retry: Retry.Retry,
@@ -4863,8 +4863,8 @@ export const flushCrdb: API.OperationMethod<
   FlushCrdbError,
   RedisCloudOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(138, __c17, 2) as any as S.Schema<FlushCrdbRequest>,
-  output: __S(13, __c1, 5) as any as S.Schema<TaskStateUpdate>,
+  input: __S(5184, __c162, 0) as any as S.Schema<FlushCrdbRequest>,
+  output: __S(5473, __c171, 1) as any as S.Schema<TaskStateUpdate>,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnknownRedisCloudError],
   protocol: RedisCloudProtocol,
   retry: Retry.Retry,
@@ -4883,8 +4883,8 @@ export const flushMemoryStore: API.OperationMethod<
   FlushMemoryStoreError,
   RedisCloudOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(139, __c17, 3) as any as S.Schema<FlushMemoryStoreRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<FlushMemoryStoreResponse>,
+  input: __S(5216, __c163, 0) as any as S.Schema<FlushMemoryStoreRequest>,
+  output: __S(4928, __c154, 0) as any as S.Schema<FlushMemoryStoreResponse>,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnknownRedisCloudError],
   protocol: RedisCloudProtocol,
   retry: Retry.Retry,
@@ -4898,8 +4898,8 @@ export const getAccountPaymentMethods: API.OperationMethod<
   GetAccountPaymentMethodsError,
   RedisCloudOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(140, __c17, 4) as any as S.Schema<GetAccountPaymentMethodsRequest>,
-  output: __S(141, __c17, 5) as any as S.Schema<PaymentMethods>,
+  input: __S(5248, __c164, 0) as any as S.Schema<GetAccountPaymentMethodsRequest>,
+  output: __S(5280, __c165, 0) as any as S.Schema<PaymentMethods>,
   errors: [BadRequest, Forbidden, NotFound, UnknownRedisCloudError],
   protocol: RedisCloudProtocol,
   retry: Retry.Retry,
@@ -4913,8 +4913,8 @@ export const getAccountSessionLogs: API.OperationMethod<
   GetAccountSessionLogsError,
   RedisCloudOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(142, __c17, 6) as any as S.Schema<GetAccountSessionLogsRequest>,
-  output: __S(145, __c18, 1) as any as S.Schema<AccountSessionLogEntries>,
+  input: __S(5312, __c166, 0) as any as S.Schema<GetAccountSessionLogsRequest>,
+  output: __S(5315, __c166, 3) as any as S.Schema<AccountSessionLogEntries>,
   errors: [BadRequest, Forbidden, NotFound, UnknownRedisCloudError],
   protocol: RedisCloudProtocol,
   retry: Retry.Retry,
@@ -4928,8 +4928,8 @@ export const getAccountSystemLogs: API.OperationMethod<
   GetAccountSystemLogsError,
   RedisCloudOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(146, __c18, 2) as any as S.Schema<GetAccountSystemLogsRequest>,
-  output: __S(149, __c18, 5) as any as S.Schema<AccountSystemLogEntries>,
+  input: __S(5504, __c172, 0) as any as S.Schema<GetAccountSystemLogsRequest>,
+  output: __S(5507, __c172, 3) as any as S.Schema<AccountSystemLogEntries>,
   errors: [BadRequest, Forbidden, NotFound, UnknownRedisCloudError],
   protocol: RedisCloudProtocol,
   retry: Retry.Retry,
@@ -4943,8 +4943,8 @@ export const getActiveActivePrivateLink: API.OperationMethod<
   GetActiveActivePrivateLinkError,
   RedisCloudOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(150, __c18, 6) as any as S.Schema<GetActiveActivePrivateLinkRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<GetActiveActivePrivateLinkResponse>,
+  input: __S(5536, __c173, 0) as any as S.Schema<GetActiveActivePrivateLinkRequest>,
+  output: __S(4512, __c141, 0) as any as S.Schema<GetActiveActivePrivateLinkResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownRedisCloudError],
   protocol: RedisCloudProtocol,
   retry: Retry.Retry,
@@ -4962,8 +4962,8 @@ export const getActiveActivePrivateLinkEndpointScript: API.OperationMethod<
   GetActiveActivePrivateLinkEndpointScriptError,
   RedisCloudOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(151, __c18, 7) as any as S.Schema<GetActiveActivePrivateLinkEndpointScriptRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<GetActiveActivePrivateLinkEndpointScriptResponse>,
+  input: __S(5568, __c174, 0) as any as S.Schema<GetActiveActivePrivateLinkEndpointScriptRequest>,
+  output: __S(4512, __c141, 0) as any as S.Schema<GetActiveActivePrivateLinkEndpointScriptResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownRedisCloudError],
   protocol: RedisCloudProtocol,
   retry: Retry.Retry,
@@ -4977,8 +4977,8 @@ export const getActiveActivePscService: API.OperationMethod<
   GetActiveActivePscServiceError,
   RedisCloudOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(152, __c19, 0) as any as S.Schema<GetActiveActivePscServiceRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<GetActiveActivePscServiceResponse>,
+  input: __S(5600, __c175, 0) as any as S.Schema<GetActiveActivePscServiceRequest>,
+  output: __S(4512, __c141, 0) as any as S.Schema<GetActiveActivePscServiceResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownRedisCloudError],
   protocol: RedisCloudProtocol,
   retry: Retry.Retry,
@@ -4996,8 +4996,8 @@ export const getActiveActivePscServiceEndpoints: API.OperationMethod<
   GetActiveActivePscServiceEndpointsError,
   RedisCloudOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(153, __c19, 1) as any as S.Schema<GetActiveActivePscServiceEndpointsRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<GetActiveActivePscServiceEndpointsResponse>,
+  input: __S(5632, __c176, 0) as any as S.Schema<GetActiveActivePscServiceEndpointsRequest>,
+  output: __S(4512, __c141, 0) as any as S.Schema<GetActiveActivePscServiceEndpointsResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownRedisCloudError],
   protocol: RedisCloudProtocol,
   retry: Retry.Retry,
@@ -5011,8 +5011,8 @@ export const getActiveActiveTgws: API.OperationMethod<
   GetActiveActiveTgwsError,
   RedisCloudOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(154, __c19, 2) as any as S.Schema<GetActiveActiveTgwsRequest>,
-  output: __S(13, __c1, 5) as any as S.Schema<TaskStateUpdate>,
+  input: __S(5664, __c177, 0) as any as S.Schema<GetActiveActiveTgwsRequest>,
+  output: __S(5473, __c171, 1) as any as S.Schema<TaskStateUpdate>,
   errors: [BadRequest, Forbidden, NotFound, UnknownRedisCloudError],
   protocol: RedisCloudProtocol,
   retry: Retry.Retry,
@@ -5030,8 +5030,8 @@ export const getActiveActiveTgwSharedInvitations: API.OperationMethod<
   GetActiveActiveTgwSharedInvitationsError,
   RedisCloudOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(155, __c19, 3) as any as S.Schema<GetActiveActiveTgwSharedInvitationsRequest>,
-  output: __S(13, __c1, 5) as any as S.Schema<TaskStateUpdate>,
+  input: __S(5696, __c178, 0) as any as S.Schema<GetActiveActiveTgwSharedInvitationsRequest>,
+  output: __S(5473, __c171, 1) as any as S.Schema<TaskStateUpdate>,
   errors: [BadRequest, Forbidden, NotFound, UnknownRedisCloudError],
   protocol: RedisCloudProtocol,
   retry: Retry.Retry,
@@ -5045,8 +5045,8 @@ export const getActiveActiveVpcPeerings: API.OperationMethod<
   GetActiveActiveVpcPeeringsError,
   RedisCloudOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(156, __c19, 4) as any as S.Schema<GetActiveActiveVpcPeeringsRequest>,
-  output: __S(13, __c1, 5) as any as S.Schema<TaskStateUpdate>,
+  input: __S(5728, __c179, 0) as any as S.Schema<GetActiveActiveVpcPeeringsRequest>,
+  output: __S(5473, __c171, 1) as any as S.Schema<TaskStateUpdate>,
   errors: [BadRequest, Forbidden, NotFound, UnknownRedisCloudError],
   protocol: RedisCloudProtocol,
   retry: Retry.Retry,
@@ -5065,14 +5065,14 @@ export const getActiveActivPscServiceEndpointCreationScript: API.OperationMethod
   RedisCloudOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    157,
-    __c19,
-    5,
+    5760,
+    __c180,
+    0,
   ) as any as S.Schema<GetActiveActivPscServiceEndpointCreationScriptRequest>,
   output: __S(
-    1,
-    __c0,
-    1,
+    4512,
+    __c141,
+    0,
   ) as any as S.Schema<GetActiveActivPscServiceEndpointCreationScriptResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownRedisCloudError],
   protocol: RedisCloudProtocol,
@@ -5092,14 +5092,14 @@ export const getActiveActivPscServiceEndpointDeletionScript: API.OperationMethod
   RedisCloudOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    158,
-    __c19,
-    6,
+    5792,
+    __c181,
+    0,
   ) as any as S.Schema<GetActiveActivPscServiceEndpointDeletionScriptRequest>,
   output: __S(
-    1,
-    __c0,
-    1,
+    4512,
+    __c141,
+    0,
   ) as any as S.Schema<GetActiveActivPscServiceEndpointDeletionScriptResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownRedisCloudError],
   protocol: RedisCloudProtocol,
@@ -5118,8 +5118,8 @@ export const getAllFixedSubscriptionsPlans: API.OperationMethod<
   GetAllFixedSubscriptionsPlansError,
   RedisCloudOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(159, __c19, 7) as any as S.Schema<GetAllFixedSubscriptionsPlansRequest>,
-  output: __S(160, __c20, 0) as any as S.Schema<FixedSubscriptionsPlans>,
+  input: __S(5856, __c183, 0) as any as S.Schema<GetAllFixedSubscriptionsPlansRequest>,
+  output: __S(5888, __c184, 0) as any as S.Schema<FixedSubscriptionsPlans>,
   errors: [BadRequest, Forbidden, NotFound, UnknownRedisCloudError],
   protocol: RedisCloudProtocol,
   retry: Retry.Retry,
@@ -5133,8 +5133,8 @@ export const getAllRedisRules: API.OperationMethod<
   GetAllRedisRulesError,
   RedisCloudOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(161, __c20, 1) as any as S.Schema<GetAllRedisRulesRequest>,
-  output: __S(141, __c17, 5) as any as S.Schema<AccountACLRedisRules>,
+  input: __S(5920, __c185, 0) as any as S.Schema<GetAllRedisRulesRequest>,
+  output: __S(5280, __c165, 0) as any as S.Schema<AccountACLRedisRules>,
   errors: [BadRequest, Forbidden, NotFound, UnknownRedisCloudError],
   protocol: RedisCloudProtocol,
   retry: Retry.Retry,
@@ -5148,8 +5148,8 @@ export const getAllSubscriptions: API.OperationMethod<
   GetAllSubscriptionsError,
   RedisCloudOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(162, __c20, 2) as any as S.Schema<GetAllSubscriptionsRequest>,
-  output: __S(141, __c17, 5) as any as S.Schema<AccountSubscriptions>,
+  input: __S(5952, __c186, 0) as any as S.Schema<GetAllSubscriptionsRequest>,
+  output: __S(5280, __c165, 0) as any as S.Schema<AccountSubscriptions>,
   errors: [BadRequest, Forbidden, NotFound, UnknownRedisCloudError],
   protocol: RedisCloudProtocol,
   retry: Retry.Retry,
@@ -5163,8 +5163,8 @@ export const getAllSubscriptions1: API.OperationMethod<
   GetAllSubscriptions1Error,
   RedisCloudOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(163, __c20, 3) as any as S.Schema<GetAllSubscriptions1Request>,
-  output: __S(141, __c17, 5) as any as S.Schema<FixedSubscriptions>,
+  input: __S(5984, __c187, 0) as any as S.Schema<GetAllSubscriptions1Request>,
+  output: __S(5280, __c165, 0) as any as S.Schema<FixedSubscriptions>,
   errors: [BadRequest, Forbidden, NotFound, UnknownRedisCloudError],
   protocol: RedisCloudProtocol,
   retry: Retry.Retry,
@@ -5178,8 +5178,8 @@ export const getAllTasks: API.OperationMethod<
   GetAllTasksError,
   RedisCloudOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(164, __c20, 4) as any as S.Schema<GetAllTasksRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<GetAllTasksResponse>,
+  input: __S(6016, __c188, 0) as any as S.Schema<GetAllTasksRequest>,
+  output: __S(4928, __c154, 0) as any as S.Schema<GetAllTasksResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownRedisCloudError],
   protocol: RedisCloudProtocol,
   retry: Retry.Retry,
@@ -5193,8 +5193,8 @@ export const getAllUsers: API.OperationMethod<
   GetAllUsersError,
   RedisCloudOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(165, __c20, 5) as any as S.Schema<GetAllUsersRequest>,
-  output: __S(166, __c20, 6) as any as S.Schema<AccountUsers>,
+  input: __S(6048, __c189, 0) as any as S.Schema<GetAllUsersRequest>,
+  output: __S(6049, __c189, 1) as any as S.Schema<AccountUsers>,
   errors: [BadRequest, Forbidden, NotFound, UnknownRedisCloudError],
   protocol: RedisCloudProtocol,
   retry: Retry.Retry,
@@ -5208,8 +5208,8 @@ export const getAllUsers1: API.OperationMethod<
   GetAllUsers1Error,
   RedisCloudOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(167, __c20, 7) as any as S.Schema<GetAllUsers1Request>,
-  output: __S(141, __c17, 5) as any as S.Schema<AccountACLUsers>,
+  input: __S(6080, __c190, 0) as any as S.Schema<GetAllUsers1Request>,
+  output: __S(5280, __c165, 0) as any as S.Schema<AccountACLUsers>,
   errors: [BadRequest, Forbidden, NotFound, UnknownRedisCloudError],
   protocol: RedisCloudProtocol,
   retry: Retry.Retry,
@@ -5223,8 +5223,8 @@ export const getCidrWhiteList: API.OperationMethod<
   GetCidrWhiteListError,
   RedisCloudOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(168, __c21, 0) as any as S.Schema<GetCidrWhiteListRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<GetCidrWhiteListResponse>,
+  input: __S(6112, __c191, 0) as any as S.Schema<GetCidrWhiteListRequest>,
+  output: __S(4928, __c154, 0) as any as S.Schema<GetCidrWhiteListResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownRedisCloudError],
   protocol: RedisCloudProtocol,
   retry: Retry.Retry,
@@ -5238,8 +5238,8 @@ export const getCloudAccount: API.OperationMethod<
   GetCloudAccountError,
   RedisCloudOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(169, __c21, 1) as any as S.Schema<GetCloudAccountRequest>,
-  output: __S(170, __c21, 2) as any as S.Schema<CloudAccount>,
+  input: __S(6144, __c192, 0) as any as S.Schema<GetCloudAccountRequest>,
+  output: __S(6145, __c192, 1) as any as S.Schema<CloudAccount>,
   errors: [BadRequest, Forbidden, NotFound, UnknownRedisCloudError],
   protocol: RedisCloudProtocol,
   retry: Retry.Retry,
@@ -5253,8 +5253,8 @@ export const getCloudAccounts: API.OperationMethod<
   GetCloudAccountsError,
   RedisCloudOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(171, __c21, 3) as any as S.Schema<GetCloudAccountsRequest>,
-  output: __S(141, __c17, 5) as any as S.Schema<CloudAccounts>,
+  input: __S(6176, __c193, 0) as any as S.Schema<GetCloudAccountsRequest>,
+  output: __S(5280, __c165, 0) as any as S.Schema<CloudAccounts>,
   errors: [BadRequest, Forbidden, NotFound, UnknownRedisCloudError],
   protocol: RedisCloudProtocol,
   retry: Retry.Retry,
@@ -5268,8 +5268,8 @@ export const getCostReport: API.OperationMethod<
   GetCostReportError,
   RedisCloudOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(172, __c21, 4) as any as S.Schema<GetCostReportRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<GetCostReportResponse>,
+  input: __S(6240, __c195, 0) as any as S.Schema<GetCostReportRequest>,
+  output: __S(4928, __c154, 0) as any as S.Schema<GetCostReportResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownRedisCloudError],
   protocol: RedisCloudProtocol,
   retry: Retry.Retry,
@@ -5283,8 +5283,8 @@ export const getCurrentAccount: API.OperationMethod<
   GetCurrentAccountError,
   RedisCloudOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(173, __c21, 5) as any as S.Schema<GetCurrentAccountRequest>,
-  output: __S(160, __c20, 0) as any as S.Schema<RootAccount>,
+  input: __S(6272, __c196, 0) as any as S.Schema<GetCurrentAccountRequest>,
+  output: __S(5888, __c184, 0) as any as S.Schema<RootAccount>,
   errors: [BadRequest, Forbidden, NotFound, UnknownRedisCloudError],
   protocol: RedisCloudProtocol,
   retry: Retry.Retry,
@@ -5302,8 +5302,8 @@ export const getDatabaseAvailableVersions: API.OperationMethod<
   GetDatabaseAvailableVersionsError,
   RedisCloudOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(174, __c21, 6) as any as S.Schema<GetDatabaseAvailableVersionsRequest>,
-  output: __S(177, __c22, 1) as any as S.Schema<DatabaseAvailableVersionsResponse>,
+  input: __S(6304, __c197, 0) as any as S.Schema<GetDatabaseAvailableVersionsRequest>,
+  output: __S(6338, __c198, 2) as any as S.Schema<DatabaseAvailableVersionsResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownRedisCloudError],
   protocol: RedisCloudProtocol,
   retry: Retry.Retry,
@@ -5317,8 +5317,8 @@ export const getDatabaseBackupStatus: API.OperationMethod<
   GetDatabaseBackupStatusError,
   RedisCloudOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(178, __c22, 2) as any as S.Schema<GetDatabaseBackupStatusRequest>,
-  output: __S(13, __c1, 5) as any as S.Schema<TaskStateUpdate>,
+  input: __S(6368, __c199, 0) as any as S.Schema<GetDatabaseBackupStatusRequest>,
+  output: __S(5473, __c171, 1) as any as S.Schema<TaskStateUpdate>,
   errors: [BadRequest, Forbidden, NotFound, UnknownRedisCloudError],
   protocol: RedisCloudProtocol,
   retry: Retry.Retry,
@@ -5332,8 +5332,8 @@ export const getDatabaseBackupStatus1: API.OperationMethod<
   GetDatabaseBackupStatus1Error,
   RedisCloudOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(179, __c22, 3) as any as S.Schema<GetDatabaseBackupStatus1Request>,
-  output: __S(13, __c1, 5) as any as S.Schema<TaskStateUpdate>,
+  input: __S(6400, __c200, 0) as any as S.Schema<GetDatabaseBackupStatus1Request>,
+  output: __S(5473, __c171, 1) as any as S.Schema<TaskStateUpdate>,
   errors: [BadRequest, Forbidden, NotFound, UnknownRedisCloudError],
   protocol: RedisCloudProtocol,
   retry: Retry.Retry,
@@ -5347,8 +5347,8 @@ export const getDatabaseImportStatus: API.OperationMethod<
   GetDatabaseImportStatusError,
   RedisCloudOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(180, __c22, 4) as any as S.Schema<GetDatabaseImportStatusRequest>,
-  output: __S(13, __c1, 5) as any as S.Schema<TaskStateUpdate>,
+  input: __S(6432, __c201, 0) as any as S.Schema<GetDatabaseImportStatusRequest>,
+  output: __S(5473, __c171, 1) as any as S.Schema<TaskStateUpdate>,
   errors: [BadRequest, Forbidden, NotFound, UnknownRedisCloudError],
   protocol: RedisCloudProtocol,
   retry: Retry.Retry,
@@ -5362,8 +5362,8 @@ export const getDatabaseImportStatus1: API.OperationMethod<
   GetDatabaseImportStatus1Error,
   RedisCloudOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(181, __c22, 5) as any as S.Schema<GetDatabaseImportStatus1Request>,
-  output: __S(13, __c1, 5) as any as S.Schema<TaskStateUpdate>,
+  input: __S(6464, __c202, 0) as any as S.Schema<GetDatabaseImportStatus1Request>,
+  output: __S(5473, __c171, 1) as any as S.Schema<TaskStateUpdate>,
   errors: [BadRequest, Forbidden, NotFound, UnknownRedisCloudError],
   protocol: RedisCloudProtocol,
   retry: Retry.Retry,
@@ -5381,8 +5381,8 @@ export const getDatabaseRedisVersionUpgradeStatus: API.OperationMethod<
   GetDatabaseRedisVersionUpgradeStatusError,
   RedisCloudOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(182, __c22, 6) as any as S.Schema<GetDatabaseRedisVersionUpgradeStatusRequest>,
-  output: __S(183, __c22, 7) as any as S.Schema<DatabaseVersionUpgradeStatus>,
+  input: __S(6496, __c203, 0) as any as S.Schema<GetDatabaseRedisVersionUpgradeStatusRequest>,
+  output: __S(6528, __c204, 0) as any as S.Schema<DatabaseVersionUpgradeStatus>,
   errors: [BadRequest, Forbidden, NotFound, UnknownRedisCloudError],
   protocol: RedisCloudProtocol,
   retry: Retry.Retry,
@@ -5396,8 +5396,8 @@ export const getDatabaseTraffic: API.OperationMethod<
   GetDatabaseTrafficError,
   RedisCloudOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(184, __c23, 0) as any as S.Schema<GetDatabaseTrafficRequest>,
-  output: __S(185, __c23, 1) as any as S.Schema<DatabaseTrafficStateResponse>,
+  input: __S(6560, __c205, 0) as any as S.Schema<GetDatabaseTrafficRequest>,
+  output: __S(6592, __c206, 0) as any as S.Schema<DatabaseTrafficStateResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownRedisCloudError],
   protocol: RedisCloudProtocol,
   retry: Retry.Retry,
@@ -5411,8 +5411,8 @@ export const getDatabaseTraffic1: API.OperationMethod<
   GetDatabaseTraffic1Error,
   RedisCloudOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(186, __c23, 2) as any as S.Schema<GetDatabaseTraffic1Request>,
-  output: __S(185, __c23, 1) as any as S.Schema<DatabaseTrafficStateResponse>,
+  input: __S(6624, __c207, 0) as any as S.Schema<GetDatabaseTraffic1Request>,
+  output: __S(6592, __c206, 0) as any as S.Schema<DatabaseTrafficStateResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownRedisCloudError],
   protocol: RedisCloudProtocol,
   retry: Retry.Retry,
@@ -5430,8 +5430,8 @@ export const getDataIntegrationWorkspaces: API.OperationMethod<
   GetDataIntegrationWorkspacesError,
   RedisCloudOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(187, __c23, 3) as any as S.Schema<GetDataIntegrationWorkspacesRequest>,
-  output: __S(188, __c23, 4) as any as S.Schema<GetDataIntegrationWorkspacesResponse>,
+  input: __S(32, __c1, 0) as any as S.Schema<GetDataIntegrationWorkspacesRequest>,
+  output: __S(64, __c2, 0) as any as S.Schema<GetDataIntegrationWorkspacesResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownRedisCloudError],
   protocol: RedisCloudProtocol,
   retry: Retry.Retry,
@@ -5445,8 +5445,8 @@ export const getDataPersistenceOptions: API.OperationMethod<
   GetDataPersistenceOptionsError,
   RedisCloudOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(189, __c23, 5) as any as S.Schema<GetDataPersistenceOptionsRequest>,
-  output: __S(192, __c24, 0) as any as S.Schema<DataPersistenceOptions>,
+  input: __S(96, __c3, 0) as any as S.Schema<GetDataPersistenceOptionsRequest>,
+  output: __S(99, __c3, 3) as any as S.Schema<DataPersistenceOptions>,
   errors: [BadRequest, Forbidden, NotFound, UnknownRedisCloudError],
   protocol: RedisCloudProtocol,
   retry: Retry.Retry,
@@ -5464,8 +5464,8 @@ export const getEndpointsRedirectionStatus: API.OperationMethod<
   GetEndpointsRedirectionStatusError,
   RedisCloudOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(193, __c24, 1) as any as S.Schema<GetEndpointsRedirectionStatusRequest>,
-  output: __S(44, __c5, 4) as any as S.Schema<EndpointsRedirectionResponse>,
+  input: __S(128, __c4, 0) as any as S.Schema<GetEndpointsRedirectionStatusRequest>,
+  output: __S(3298, __c103, 2) as any as S.Schema<EndpointsRedirectionResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownRedisCloudError],
   protocol: RedisCloudProtocol,
   retry: Retry.Retry,
@@ -5483,8 +5483,8 @@ export const getEssentialsDatabaseAvailableVersions: API.OperationMethod<
   GetEssentialsDatabaseAvailableVersionsError,
   RedisCloudOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(194, __c24, 2) as any as S.Schema<GetEssentialsDatabaseAvailableVersionsRequest>,
-  output: __S(177, __c22, 1) as any as S.Schema<DatabaseAvailableVersionsResponse>,
+  input: __S(160, __c5, 0) as any as S.Schema<GetEssentialsDatabaseAvailableVersionsRequest>,
+  output: __S(6338, __c198, 2) as any as S.Schema<DatabaseAvailableVersionsResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownRedisCloudError],
   protocol: RedisCloudProtocol,
   retry: Retry.Retry,
@@ -5503,11 +5503,11 @@ export const getEssentialsDatabaseRedisVersionUpgradeStatus: API.OperationMethod
   RedisCloudOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    195,
-    __c24,
-    3,
+    192,
+    __c6,
+    0,
   ) as any as S.Schema<GetEssentialsDatabaseRedisVersionUpgradeStatusRequest>,
-  output: __S(183, __c22, 7) as any as S.Schema<DatabaseVersionUpgradeStatus>,
+  output: __S(6528, __c204, 0) as any as S.Schema<DatabaseVersionUpgradeStatus>,
   errors: [BadRequest, Forbidden, NotFound, UnknownRedisCloudError],
   protocol: RedisCloudProtocol,
   retry: Retry.Retry,
@@ -5525,8 +5525,8 @@ export const getFixedSubscriptionDatabases: API.OperationMethod<
   GetFixedSubscriptionDatabasesError,
   RedisCloudOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(196, __c24, 4) as any as S.Schema<GetFixedSubscriptionDatabasesRequest>,
-  output: __S(197, __c24, 5) as any as S.Schema<AccountFixedSubscriptionDatabases>,
+  input: __S(224, __c7, 0) as any as S.Schema<GetFixedSubscriptionDatabasesRequest>,
+  output: __S(256, __c8, 0) as any as S.Schema<AccountFixedSubscriptionDatabases>,
   errors: [BadRequest, Forbidden, NotFound, UnknownRedisCloudError],
   protocol: RedisCloudProtocol,
   retry: Retry.Retry,
@@ -5544,8 +5544,8 @@ export const getFixedSubscriptionsPlanById: API.OperationMethod<
   GetFixedSubscriptionsPlanByIdError,
   RedisCloudOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(198, __c24, 6) as any as S.Schema<GetFixedSubscriptionsPlanByIdRequest>,
-  output: __S(199, __c24, 7) as any as S.Schema<FixedSubscriptionsPlan>,
+  input: __S(288, __c9, 0) as any as S.Schema<GetFixedSubscriptionsPlanByIdRequest>,
+  output: __S(289, __c9, 1) as any as S.Schema<FixedSubscriptionsPlan>,
   errors: [BadRequest, Forbidden, NotFound, UnknownRedisCloudError],
   protocol: RedisCloudProtocol,
   retry: Retry.Retry,
@@ -5563,8 +5563,8 @@ export const getFixedSubscriptionsPlansBySubscriptionId: API.OperationMethod<
   GetFixedSubscriptionsPlansBySubscriptionIdError,
   RedisCloudOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(200, __c25, 0) as any as S.Schema<GetFixedSubscriptionsPlansBySubscriptionIdRequest>,
-  output: __S(160, __c20, 0) as any as S.Schema<FixedSubscriptionsPlans>,
+  input: __S(320, __c10, 0) as any as S.Schema<GetFixedSubscriptionsPlansBySubscriptionIdRequest>,
+  output: __S(5888, __c184, 0) as any as S.Schema<FixedSubscriptionsPlans>,
   errors: [BadRequest, Forbidden, NotFound, UnknownRedisCloudError],
   protocol: RedisCloudProtocol,
   retry: Retry.Retry,
@@ -5578,8 +5578,8 @@ export const getMemoryStore: API.OperationMethod<
   GetMemoryStoreError,
   RedisCloudOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(201, __c25, 1) as any as S.Schema<GetMemoryStoreRequest>,
-  output: __S(206, __c25, 6) as any as S.Schema<MemoryStoreResponse>,
+  input: __S(352, __c11, 0) as any as S.Schema<GetMemoryStoreRequest>,
+  output: __S(356, __c11, 4) as any as S.Schema<MemoryStoreResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownRedisCloudError],
   protocol: RedisCloudProtocol,
   retry: Retry.Retry,
@@ -5593,8 +5593,8 @@ export const getPrivateLink: API.OperationMethod<
   GetPrivateLinkError,
   RedisCloudOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(207, __c25, 7) as any as S.Schema<GetPrivateLinkRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<GetPrivateLinkResponse>,
+  input: __S(416, __c13, 0) as any as S.Schema<GetPrivateLinkRequest>,
+  output: __S(4928, __c154, 0) as any as S.Schema<GetPrivateLinkResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownRedisCloudError],
   protocol: RedisCloudProtocol,
   retry: Retry.Retry,
@@ -5612,8 +5612,8 @@ export const getPrivateLinkEndpointScript: API.OperationMethod<
   GetPrivateLinkEndpointScriptError,
   RedisCloudOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(208, __c26, 0) as any as S.Schema<GetPrivateLinkEndpointScriptRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<GetPrivateLinkEndpointScriptResponse>,
+  input: __S(480, __c15, 0) as any as S.Schema<GetPrivateLinkEndpointScriptRequest>,
+  output: __S(4512, __c141, 0) as any as S.Schema<GetPrivateLinkEndpointScriptResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownRedisCloudError],
   protocol: RedisCloudProtocol,
   retry: Retry.Retry,
@@ -5627,8 +5627,8 @@ export const getPscService: API.OperationMethod<
   GetPscServiceError,
   RedisCloudOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(209, __c26, 1) as any as S.Schema<GetPscServiceRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<GetPscServiceResponse>,
+  input: __S(512, __c16, 0) as any as S.Schema<GetPscServiceRequest>,
+  output: __S(4928, __c154, 0) as any as S.Schema<GetPscServiceResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownRedisCloudError],
   protocol: RedisCloudProtocol,
   retry: Retry.Retry,
@@ -5646,8 +5646,8 @@ export const getPscServiceEndpointCreationScript: API.OperationMethod<
   GetPscServiceEndpointCreationScriptError,
   RedisCloudOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(210, __c26, 2) as any as S.Schema<GetPscServiceEndpointCreationScriptRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<GetPscServiceEndpointCreationScriptResponse>,
+  input: __S(544, __c17, 0) as any as S.Schema<GetPscServiceEndpointCreationScriptRequest>,
+  output: __S(4512, __c141, 0) as any as S.Schema<GetPscServiceEndpointCreationScriptResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownRedisCloudError],
   protocol: RedisCloudProtocol,
   retry: Retry.Retry,
@@ -5665,8 +5665,8 @@ export const getPscServiceEndpointDeletionScript: API.OperationMethod<
   GetPscServiceEndpointDeletionScriptError,
   RedisCloudOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(211, __c26, 3) as any as S.Schema<GetPscServiceEndpointDeletionScriptRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<GetPscServiceEndpointDeletionScriptResponse>,
+  input: __S(576, __c18, 0) as any as S.Schema<GetPscServiceEndpointDeletionScriptRequest>,
+  output: __S(4512, __c141, 0) as any as S.Schema<GetPscServiceEndpointDeletionScriptResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownRedisCloudError],
   protocol: RedisCloudProtocol,
   retry: Retry.Retry,
@@ -5680,8 +5680,8 @@ export const getPscServiceEndpoints: API.OperationMethod<
   GetPscServiceEndpointsError,
   RedisCloudOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(212, __c26, 4) as any as S.Schema<GetPscServiceEndpointsRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<GetPscServiceEndpointsResponse>,
+  input: __S(608, __c19, 0) as any as S.Schema<GetPscServiceEndpointsRequest>,
+  output: __S(4928, __c154, 0) as any as S.Schema<GetPscServiceEndpointsResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownRedisCloudError],
   protocol: RedisCloudProtocol,
   retry: Retry.Retry,
@@ -5695,8 +5695,8 @@ export const getRedisVersions: API.OperationMethod<
   GetRedisVersionsError,
   RedisCloudOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(213, __c26, 5) as any as S.Schema<GetRedisVersionsRequest>,
-  output: __S(216, __c27, 0) as any as S.Schema<RedisVersions>,
+  input: __S(640, __c20, 0) as any as S.Schema<GetRedisVersionsRequest>,
+  output: __S(674, __c21, 2) as any as S.Schema<RedisVersions>,
   errors: [BadRequest, Forbidden, NotFound, UnknownRedisCloudError],
   protocol: RedisCloudProtocol,
   retry: Retry.Retry,
@@ -5710,8 +5710,8 @@ export const getRedisVersions1: API.OperationMethod<
   GetRedisVersions1Error,
   RedisCloudOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(217, __c27, 1) as any as S.Schema<GetRedisVersions1Request>,
-  output: __S(216, __c27, 0) as any as S.Schema<RedisVersions>,
+  input: __S(704, __c22, 0) as any as S.Schema<GetRedisVersions1Request>,
+  output: __S(674, __c21, 2) as any as S.Schema<RedisVersions>,
   errors: [BadRequest, Forbidden, NotFound, UnknownRedisCloudError],
   protocol: RedisCloudProtocol,
   retry: Retry.Retry,
@@ -5729,8 +5729,8 @@ export const getRegionsFromActiveActiveSubscription: API.OperationMethod<
   GetRegionsFromActiveActiveSubscriptionError,
   RedisCloudOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(218, __c27, 2) as any as S.Schema<GetRegionsFromActiveActiveSubscriptionRequest>,
-  output: __S(219, __c27, 3) as any as S.Schema<ActiveActiveSubscriptionRegions>,
+  input: __S(736, __c23, 0) as any as S.Schema<GetRegionsFromActiveActiveSubscriptionRequest>,
+  output: __S(737, __c23, 1) as any as S.Schema<ActiveActiveSubscriptionRegions>,
   errors: [BadRequest, Forbidden, NotFound, UnknownRedisCloudError],
   protocol: RedisCloudProtocol,
   retry: Retry.Retry,
@@ -5744,8 +5744,8 @@ export const getRoles: API.OperationMethod<
   GetRolesError,
   RedisCloudOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(220, __c27, 4) as any as S.Schema<GetRolesRequest>,
-  output: __S(141, __c17, 5) as any as S.Schema<AccountACLRoles>,
+  input: __S(768, __c24, 0) as any as S.Schema<GetRolesRequest>,
+  output: __S(5280, __c165, 0) as any as S.Schema<AccountACLRoles>,
   errors: [BadRequest, Forbidden, NotFound, UnknownRedisCloudError],
   protocol: RedisCloudProtocol,
   retry: Retry.Retry,
@@ -5759,8 +5759,8 @@ export const getSlowLog: API.OperationMethod<
   GetSlowLogError,
   RedisCloudOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(221, __c27, 5) as any as S.Schema<GetSlowLogRequest>,
-  output: __S(224, __c28, 0) as any as S.Schema<DatabaseSlowLogEntries>,
+  input: __S(800, __c25, 0) as any as S.Schema<GetSlowLogRequest>,
+  output: __S(834, __c26, 2) as any as S.Schema<DatabaseSlowLogEntries>,
   errors: [BadRequest, Forbidden, NotFound, UnknownRedisCloudError],
   protocol: RedisCloudProtocol,
   retry: Retry.Retry,
@@ -5774,8 +5774,8 @@ export const getSlowLog1: API.OperationMethod<
   GetSlowLog1Error,
   RedisCloudOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(225, __c28, 1) as any as S.Schema<GetSlowLog1Request>,
-  output: __S(224, __c28, 0) as any as S.Schema<DatabaseSlowLogEntries>,
+  input: __S(896, __c28, 0) as any as S.Schema<GetSlowLog1Request>,
+  output: __S(834, __c26, 2) as any as S.Schema<DatabaseSlowLogEntries>,
   errors: [BadRequest, Forbidden, NotFound, UnknownRedisCloudError],
   protocol: RedisCloudProtocol,
   retry: Retry.Retry,
@@ -5789,8 +5789,8 @@ export const getSubscription: API.OperationMethod<
   GetSubscriptionError,
   RedisCloudOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(226, __c28, 2) as any as S.Schema<GetSubscriptionRequest>,
-  output: __S(228, __c28, 4) as any as S.Schema<Subscription>,
+  input: __S(928, __c29, 0) as any as S.Schema<GetSubscriptionRequest>,
+  output: __S(930, __c29, 2) as any as S.Schema<Subscription>,
   errors: [BadRequest, Forbidden, NotFound, UnknownRedisCloudError],
   protocol: RedisCloudProtocol,
   retry: Retry.Retry,
@@ -5804,8 +5804,8 @@ export const getSubscriptionById1: API.OperationMethod<
   GetSubscriptionById1Error,
   RedisCloudOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(229, __c28, 5) as any as S.Schema<GetSubscriptionById1Request>,
-  output: __S(230, __c28, 6) as any as S.Schema<FixedSubscription>,
+  input: __S(960, __c30, 0) as any as S.Schema<GetSubscriptionById1Request>,
+  output: __S(961, __c30, 1) as any as S.Schema<FixedSubscription>,
   errors: [BadRequest, Forbidden, NotFound, UnknownRedisCloudError],
   protocol: RedisCloudProtocol,
   retry: Retry.Retry,
@@ -5819,8 +5819,8 @@ export const getSubscriptionDatabase: API.OperationMethod<
   GetSubscriptionDatabaseError,
   RedisCloudOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(231, __c28, 7) as any as S.Schema<GetSubscriptionDatabaseRequest>,
-  output: __S(232, __c29, 0) as any as S.Schema<Database>,
+  input: __S(992, __c31, 0) as any as S.Schema<GetSubscriptionDatabaseRequest>,
+  output: __S(993, __c31, 1) as any as S.Schema<Database>,
   errors: [BadRequest, Forbidden, NotFound, UnknownRedisCloudError],
   protocol: RedisCloudProtocol,
   retry: Retry.Retry,
@@ -5838,8 +5838,8 @@ export const getSubscriptionDatabaseByID1: API.OperationMethod<
   GetSubscriptionDatabaseByID1Error,
   RedisCloudOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(233, __c29, 1) as any as S.Schema<GetSubscriptionDatabaseByID1Request>,
-  output: __S(235, __c29, 3) as any as S.Schema<FixedDatabase>,
+  input: __S(1024, __c32, 0) as any as S.Schema<GetSubscriptionDatabaseByID1Request>,
+  output: __S(1026, __c32, 2) as any as S.Schema<FixedDatabase>,
   errors: [BadRequest, Forbidden, NotFound, UnknownRedisCloudError],
   protocol: RedisCloudProtocol,
   retry: Retry.Retry,
@@ -5857,8 +5857,8 @@ export const getSubscriptionDatabaseCertificate: API.OperationMethod<
   GetSubscriptionDatabaseCertificateError,
   RedisCloudOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(236, __c29, 4) as any as S.Schema<GetSubscriptionDatabaseCertificateRequest>,
-  output: __S(237, __c29, 5) as any as S.Schema<DatabaseCertificate>,
+  input: __S(1056, __c33, 0) as any as S.Schema<GetSubscriptionDatabaseCertificateRequest>,
+  output: __S(1057, __c33, 1) as any as S.Schema<DatabaseCertificate>,
   errors: [BadRequest, Forbidden, NotFound, UnknownRedisCloudError],
   protocol: RedisCloudProtocol,
   retry: Retry.Retry,
@@ -5872,8 +5872,8 @@ export const getSubscriptionDatabases: API.OperationMethod<
   GetSubscriptionDatabasesError,
   RedisCloudOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(238, __c29, 6) as any as S.Schema<GetSubscriptionDatabasesRequest>,
-  output: __S(197, __c24, 5) as any as S.Schema<AccountSubscriptionDatabases>,
+  input: __S(1088, __c34, 0) as any as S.Schema<GetSubscriptionDatabasesRequest>,
+  output: __S(256, __c8, 0) as any as S.Schema<AccountSubscriptionDatabases>,
   errors: [BadRequest, Forbidden, NotFound, UnknownRedisCloudError],
   protocol: RedisCloudProtocol,
   retry: Retry.Retry,
@@ -5891,8 +5891,8 @@ export const getSubscriptionMaintenanceWindows: API.OperationMethod<
   GetSubscriptionMaintenanceWindowsError,
   RedisCloudOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(239, __c29, 7) as any as S.Schema<GetSubscriptionMaintenanceWindowsRequest>,
-  output: __S(243, __c30, 3) as any as S.Schema<SubscriptionMaintenanceWindows>,
+  input: __S(1120, __c35, 0) as any as S.Schema<GetSubscriptionMaintenanceWindowsRequest>,
+  output: __S(1124, __c35, 4) as any as S.Schema<SubscriptionMaintenanceWindows>,
   errors: [BadRequest, Forbidden, NotFound, UnknownRedisCloudError],
   protocol: RedisCloudProtocol,
   retry: Retry.Retry,
@@ -5906,8 +5906,8 @@ export const getSubscriptionPricing: API.OperationMethod<
   GetSubscriptionPricingError,
   RedisCloudOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(244, __c30, 4) as any as S.Schema<GetSubscriptionPricingRequest>,
-  output: __S(247, __c30, 7) as any as S.Schema<SubscriptionPricings>,
+  input: __S(1152, __c36, 0) as any as S.Schema<GetSubscriptionPricingRequest>,
+  output: __S(1155, __c36, 3) as any as S.Schema<SubscriptionPricings>,
   errors: [BadRequest, Forbidden, NotFound, UnknownRedisCloudError],
   protocol: RedisCloudProtocol,
   retry: Retry.Retry,
@@ -5925,8 +5925,8 @@ export const getSupportedDatabaseModules: API.OperationMethod<
   GetSupportedDatabaseModulesError,
   RedisCloudOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(248, __c31, 0) as any as S.Schema<GetSupportedDatabaseModulesRequest>,
-  output: __S(251, __c31, 3) as any as S.Schema<ModulesData>,
+  input: __S(1184, __c37, 0) as any as S.Schema<GetSupportedDatabaseModulesRequest>,
+  output: __S(1187, __c37, 3) as any as S.Schema<ModulesData>,
   errors: [BadRequest, Forbidden, NotFound, UnknownRedisCloudError],
   protocol: RedisCloudProtocol,
   retry: Retry.Retry,
@@ -5940,8 +5940,8 @@ export const getSupportedRegions: API.OperationMethod<
   GetSupportedRegionsError,
   RedisCloudOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(252, __c31, 4) as any as S.Schema<GetSupportedRegionsRequest>,
-  output: __S(255, __c31, 7) as any as S.Schema<Regions>,
+  input: __S(1248, __c39, 0) as any as S.Schema<GetSupportedRegionsRequest>,
+  output: __S(1251, __c39, 3) as any as S.Schema<Regions>,
   errors: [BadRequest, Forbidden, NotFound, UnknownRedisCloudError],
   protocol: RedisCloudProtocol,
   retry: Retry.Retry,
@@ -5959,8 +5959,8 @@ export const getSupportedSearchScalingFactors: API.OperationMethod<
   GetSupportedSearchScalingFactorsError,
   RedisCloudOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(256, __c32, 0) as any as S.Schema<GetSupportedSearchScalingFactorsRequest>,
-  output: __S(257, __c32, 1) as any as S.Schema<SearchScalingFactorsData>,
+  input: __S(1280, __c40, 0) as any as S.Schema<GetSupportedSearchScalingFactorsRequest>,
+  output: __S(1281, __c40, 1) as any as S.Schema<SearchScalingFactorsData>,
   errors: [BadRequest, Forbidden, NotFound, UnknownRedisCloudError],
   protocol: RedisCloudProtocol,
   retry: Retry.Retry,
@@ -5974,8 +5974,8 @@ export const getTags: API.OperationMethod<
   GetTagsError,
   RedisCloudOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(258, __c32, 2) as any as S.Schema<GetTagsRequest>,
-  output: __S(259, __c32, 3) as any as S.Schema<CloudTags>,
+  input: __S(1312, __c41, 0) as any as S.Schema<GetTagsRequest>,
+  output: __S(1344, __c42, 0) as any as S.Schema<CloudTags>,
   errors: [BadRequest, Forbidden, NotFound, UnknownRedisCloudError],
   protocol: RedisCloudProtocol,
   retry: Retry.Retry,
@@ -5989,8 +5989,8 @@ export const getTags1: API.OperationMethod<
   GetTags1Error,
   RedisCloudOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(260, __c32, 4) as any as S.Schema<GetTags1Request>,
-  output: __S(259, __c32, 3) as any as S.Schema<CloudTags>,
+  input: __S(1376, __c43, 0) as any as S.Schema<GetTags1Request>,
+  output: __S(1344, __c42, 0) as any as S.Schema<CloudTags>,
   errors: [BadRequest, Forbidden, NotFound, UnknownRedisCloudError],
   protocol: RedisCloudProtocol,
   retry: Retry.Retry,
@@ -6004,8 +6004,8 @@ export const getTask: API.OperationMethod<
   GetTaskError,
   RedisCloudOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(261, __c32, 5) as any as S.Schema<GetTaskRequest>,
-  output: __S(13, __c1, 5) as any as S.Schema<TaskStateUpdate>,
+  input: __S(1408, __c44, 0) as any as S.Schema<GetTaskRequest>,
+  output: __S(5473, __c171, 1) as any as S.Schema<TaskStateUpdate>,
   errors: [BadRequest, Forbidden, NotFound, UnknownRedisCloudError],
   protocol: RedisCloudProtocol,
   retry: Retry.Retry,
@@ -6019,8 +6019,8 @@ export const getTgws: API.OperationMethod<
   GetTgwsError,
   RedisCloudOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(262, __c32, 6) as any as S.Schema<GetTgwsRequest>,
-  output: __S(13, __c1, 5) as any as S.Schema<TaskStateUpdate>,
+  input: __S(1440, __c45, 0) as any as S.Schema<GetTgwsRequest>,
+  output: __S(5473, __c171, 1) as any as S.Schema<TaskStateUpdate>,
   errors: [BadRequest, Forbidden, NotFound, UnknownRedisCloudError],
   protocol: RedisCloudProtocol,
   retry: Retry.Retry,
@@ -6034,8 +6034,8 @@ export const getTgwSharedInvitations: API.OperationMethod<
   GetTgwSharedInvitationsError,
   RedisCloudOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(263, __c32, 7) as any as S.Schema<GetTgwSharedInvitationsRequest>,
-  output: __S(13, __c1, 5) as any as S.Schema<TaskStateUpdate>,
+  input: __S(1472, __c46, 0) as any as S.Schema<GetTgwSharedInvitationsRequest>,
+  output: __S(5473, __c171, 1) as any as S.Schema<TaskStateUpdate>,
   errors: [BadRequest, Forbidden, NotFound, UnknownRedisCloudError],
   protocol: RedisCloudProtocol,
   retry: Retry.Retry,
@@ -6049,8 +6049,8 @@ export const getUser: API.OperationMethod<
   GetUserError,
   RedisCloudOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(264, __c33, 0) as any as S.Schema<GetUserRequest>,
-  output: __S(266, __c33, 2) as any as S.Schema<AccountUser>,
+  input: __S(1504, __c47, 0) as any as S.Schema<GetUserRequest>,
+  output: __S(1506, __c47, 2) as any as S.Schema<AccountUser>,
   errors: [BadRequest, Forbidden, NotFound, UnknownRedisCloudError],
   protocol: RedisCloudProtocol,
   retry: Retry.Retry,
@@ -6064,8 +6064,8 @@ export const getUserByID: API.OperationMethod<
   GetUserByIDError,
   RedisCloudOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(267, __c33, 3) as any as S.Schema<GetUserByIDRequest>,
-  output: __S(268, __c33, 4) as any as S.Schema<ACLUser>,
+  input: __S(1536, __c48, 0) as any as S.Schema<GetUserByIDRequest>,
+  output: __S(1537, __c48, 1) as any as S.Schema<ACLUser>,
   errors: [BadRequest, Forbidden, NotFound, UnknownRedisCloudError],
   protocol: RedisCloudProtocol,
   retry: Retry.Retry,
@@ -6079,8 +6079,8 @@ export const getVpcPeering: API.OperationMethod<
   GetVpcPeeringError,
   RedisCloudOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(269, __c33, 5) as any as S.Schema<GetVpcPeeringRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<GetVpcPeeringResponse>,
+  input: __S(1568, __c49, 0) as any as S.Schema<GetVpcPeeringRequest>,
+  output: __S(4928, __c154, 0) as any as S.Schema<GetVpcPeeringResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownRedisCloudError],
   protocol: RedisCloudProtocol,
   retry: Retry.Retry,
@@ -6094,8 +6094,8 @@ export const importDatabase: API.OperationMethod<
   ImportDatabaseError,
   RedisCloudOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(270, __c33, 6) as any as S.Schema<ImportDatabaseRequest>,
-  output: __S(13, __c1, 5) as any as S.Schema<TaskStateUpdate>,
+  input: __S(1632, __c51, 0) as any as S.Schema<ImportDatabaseRequest>,
+  output: __S(5473, __c171, 1) as any as S.Schema<TaskStateUpdate>,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnknownRedisCloudError],
   protocol: RedisCloudProtocol,
   retry: Retry.Retry,
@@ -6109,8 +6109,8 @@ export const importDatabase1: API.OperationMethod<
   ImportDatabase1Error,
   RedisCloudOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(271, __c33, 7) as any as S.Schema<ImportDatabase1Request>,
-  output: __S(13, __c1, 5) as any as S.Schema<TaskStateUpdate>,
+  input: __S(1664, __c52, 0) as any as S.Schema<ImportDatabase1Request>,
+  output: __S(5473, __c171, 1) as any as S.Schema<TaskStateUpdate>,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnknownRedisCloudError],
   protocol: RedisCloudProtocol,
   retry: Retry.Retry,
@@ -6129,8 +6129,8 @@ export const listMemoryStoreApiKeys: API.OperationMethod<
   ListMemoryStoreApiKeysError,
   RedisCloudOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(272, __c34, 0) as any as S.Schema<ListMemoryStoreApiKeysRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<ListMemoryStoreApiKeysResponse>,
+  input: __S(1696, __c53, 0) as any as S.Schema<ListMemoryStoreApiKeysRequest>,
+  output: __S(4928, __c154, 0) as any as S.Schema<ListMemoryStoreApiKeysResponse>,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnknownRedisCloudError],
   protocol: RedisCloudProtocol,
   retry: Retry.Retry,
@@ -6149,8 +6149,8 @@ export const listMemoryStores: API.OperationMethod<
   ListMemoryStoresError,
   RedisCloudOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(273, __c34, 1) as any as S.Schema<ListMemoryStoresRequest>,
-  output: __S(276, __c34, 4) as any as S.Schema<MemoryStoreListResponse>,
+  input: __S(1728, __c54, 0) as any as S.Schema<ListMemoryStoresRequest>,
+  output: __S(1731, __c54, 3) as any as S.Schema<MemoryStoreListResponse>,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnknownRedisCloudError],
   protocol: RedisCloudProtocol,
   retry: Retry.Retry,
@@ -6169,8 +6169,8 @@ export const proxyDataIntegrationWorkspace5: API.OperationMethod<
   ProxyDataIntegrationWorkspace5Error,
   RedisCloudOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(277, __c34, 5) as any as S.Schema<ProxyDataIntegrationWorkspace5Request>,
-  output: __S(188, __c23, 4) as any as S.Schema<ProxyDataIntegrationWorkspace5Response>,
+  input: __S(1760, __c55, 0) as any as S.Schema<ProxyDataIntegrationWorkspace5Request>,
+  output: __S(64, __c2, 0) as any as S.Schema<ProxyDataIntegrationWorkspace5Response>,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnknownRedisCloudError],
   protocol: RedisCloudProtocol,
   retry: Retry.Retry,
@@ -6189,8 +6189,8 @@ export const proxyDataIntegrationWorkspace6: API.OperationMethod<
   ProxyDataIntegrationWorkspace6Error,
   RedisCloudOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(278, __c34, 6) as any as S.Schema<ProxyDataIntegrationWorkspace6Request>,
-  output: __S(188, __c23, 4) as any as S.Schema<ProxyDataIntegrationWorkspace6Response>,
+  input: __S(1792, __c56, 0) as any as S.Schema<ProxyDataIntegrationWorkspace6Request>,
+  output: __S(64, __c2, 0) as any as S.Schema<ProxyDataIntegrationWorkspace6Response>,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnknownRedisCloudError],
   protocol: RedisCloudProtocol,
   retry: Retry.Retry,
@@ -6209,8 +6209,8 @@ export const proxyDataIntegrationWorkspace7: API.OperationMethod<
   ProxyDataIntegrationWorkspace7Error,
   RedisCloudOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(279, __c34, 7) as any as S.Schema<ProxyDataIntegrationWorkspace7Request>,
-  output: __S(188, __c23, 4) as any as S.Schema<ProxyDataIntegrationWorkspace7Response>,
+  input: __S(1824, __c57, 0) as any as S.Schema<ProxyDataIntegrationWorkspace7Request>,
+  output: __S(64, __c2, 0) as any as S.Schema<ProxyDataIntegrationWorkspace7Response>,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnknownRedisCloudError],
   protocol: RedisCloudProtocol,
   retry: Retry.Retry,
@@ -6229,8 +6229,8 @@ export const proxyDataIntegrationWorkspace8: API.OperationMethod<
   ProxyDataIntegrationWorkspace8Error,
   RedisCloudOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(280, __c35, 0) as any as S.Schema<ProxyDataIntegrationWorkspace8Request>,
-  output: __S(188, __c23, 4) as any as S.Schema<ProxyDataIntegrationWorkspace8Response>,
+  input: __S(1856, __c58, 0) as any as S.Schema<ProxyDataIntegrationWorkspace8Request>,
+  output: __S(64, __c2, 0) as any as S.Schema<ProxyDataIntegrationWorkspace8Response>,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnknownRedisCloudError],
   protocol: RedisCloudProtocol,
   retry: Retry.Retry,
@@ -6249,8 +6249,8 @@ export const proxyDataIntegrationWorkspace9: API.OperationMethod<
   ProxyDataIntegrationWorkspace9Error,
   RedisCloudOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(281, __c35, 1) as any as S.Schema<ProxyDataIntegrationWorkspace9Request>,
-  output: __S(188, __c23, 4) as any as S.Schema<ProxyDataIntegrationWorkspace9Response>,
+  input: __S(1888, __c59, 0) as any as S.Schema<ProxyDataIntegrationWorkspace9Request>,
+  output: __S(64, __c2, 0) as any as S.Schema<ProxyDataIntegrationWorkspace9Response>,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnknownRedisCloudError],
   protocol: RedisCloudProtocol,
   retry: Retry.Retry,
@@ -6269,8 +6269,8 @@ export const rejectActiveActiveTgwResourceShare: API.OperationMethod<
   RejectActiveActiveTgwResourceShareError,
   RedisCloudOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(282, __c35, 2) as any as S.Schema<RejectActiveActiveTgwResourceShareRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<RejectActiveActiveTgwResourceShareResponse>,
+  input: __S(1920, __c60, 0) as any as S.Schema<RejectActiveActiveTgwResourceShareRequest>,
+  output: __S(4512, __c141, 0) as any as S.Schema<RejectActiveActiveTgwResourceShareResponse>,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnknownRedisCloudError],
   protocol: RedisCloudProtocol,
   retry: Retry.Retry,
@@ -6289,8 +6289,8 @@ export const rejectTgwResourceShare: API.OperationMethod<
   RejectTgwResourceShareError,
   RedisCloudOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(283, __c35, 3) as any as S.Schema<RejectTgwResourceShareRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<RejectTgwResourceShareResponse>,
+  input: __S(1984, __c62, 0) as any as S.Schema<RejectTgwResourceShareRequest>,
+  output: __S(4928, __c154, 0) as any as S.Schema<RejectTgwResourceShareResponse>,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnknownRedisCloudError],
   protocol: RedisCloudProtocol,
   retry: Retry.Retry,
@@ -6309,8 +6309,8 @@ export const resumeBdbTraffic: API.OperationMethod<
   ResumeBdbTrafficError,
   RedisCloudOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(284, __c35, 4) as any as S.Schema<ResumeBdbTrafficRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<ResumeBdbTrafficResponse>,
+  input: __S(2016, __c63, 0) as any as S.Schema<ResumeBdbTrafficRequest>,
+  output: __S(4928, __c154, 0) as any as S.Schema<ResumeBdbTrafficResponse>,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnknownRedisCloudError],
   protocol: RedisCloudProtocol,
   retry: Retry.Retry,
@@ -6329,8 +6329,8 @@ export const resumeBdbTraffic1: API.OperationMethod<
   ResumeBdbTraffic1Error,
   RedisCloudOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(285, __c35, 5) as any as S.Schema<ResumeBdbTraffic1Request>,
-  output: __S(3, __c0, 3) as any as S.Schema<ResumeBdbTraffic1Response>,
+  input: __S(2048, __c64, 0) as any as S.Schema<ResumeBdbTraffic1Request>,
+  output: __S(4928, __c154, 0) as any as S.Schema<ResumeBdbTraffic1Response>,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnknownRedisCloudError],
   protocol: RedisCloudProtocol,
   retry: Retry.Retry,
@@ -6349,8 +6349,8 @@ export const revertEndpointsRedirection: API.OperationMethod<
   RevertEndpointsRedirectionError,
   RedisCloudOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(286, __c35, 6) as any as S.Schema<RevertEndpointsRedirectionRequest>,
-  output: __S(44, __c5, 4) as any as S.Schema<EndpointsRedirectionResponse>,
+  input: __S(2080, __c65, 0) as any as S.Schema<RevertEndpointsRedirectionRequest>,
+  output: __S(3298, __c103, 2) as any as S.Schema<EndpointsRedirectionResponse>,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnknownRedisCloudError],
   protocol: RedisCloudProtocol,
   retry: Retry.Retry,
@@ -6369,8 +6369,8 @@ export const updateActiveActivePscServiceEndpoint: API.OperationMethod<
   UpdateActiveActivePscServiceEndpointError,
   RedisCloudOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(287, __c35, 7) as any as S.Schema<UpdateActiveActivePscServiceEndpointRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<UpdateActiveActivePscServiceEndpointResponse>,
+  input: __S(2112, __c66, 0) as any as S.Schema<UpdateActiveActivePscServiceEndpointRequest>,
+  output: __S(4512, __c141, 0) as any as S.Schema<UpdateActiveActivePscServiceEndpointResponse>,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnknownRedisCloudError],
   protocol: RedisCloudProtocol,
   retry: Retry.Retry,
@@ -6389,8 +6389,8 @@ export const updateActiveActiveTgwAttachmentCidrs: API.OperationMethod<
   UpdateActiveActiveTgwAttachmentCidrsError,
   RedisCloudOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(290, __c36, 2) as any as S.Schema<UpdateActiveActiveTgwAttachmentCidrsRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<UpdateActiveActiveTgwAttachmentCidrsResponse>,
+  input: __S(2144, __c67, 0) as any as S.Schema<UpdateActiveActiveTgwAttachmentCidrsRequest>,
+  output: __S(4512, __c141, 0) as any as S.Schema<UpdateActiveActiveTgwAttachmentCidrsResponse>,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnknownRedisCloudError],
   protocol: RedisCloudProtocol,
   retry: Retry.Retry,
@@ -6409,8 +6409,8 @@ export const updateActiveActiveVpcPeering: API.OperationMethod<
   UpdateActiveActiveVpcPeeringError,
   RedisCloudOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(291, __c36, 3) as any as S.Schema<UpdateActiveActiveVpcPeeringRequest>,
-  output: __S(13, __c1, 5) as any as S.Schema<TaskStateUpdate>,
+  input: __S(2208, __c69, 0) as any as S.Schema<UpdateActiveActiveVpcPeeringRequest>,
+  output: __S(5473, __c171, 1) as any as S.Schema<TaskStateUpdate>,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnknownRedisCloudError],
   protocol: RedisCloudProtocol,
   retry: Retry.Retry,
@@ -6429,8 +6429,8 @@ export const updateCloudAccount: API.OperationMethod<
   UpdateCloudAccountError,
   RedisCloudOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(292, __c36, 4) as any as S.Schema<UpdateCloudAccountRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<UpdateCloudAccountResponse>,
+  input: __S(2240, __c70, 0) as any as S.Schema<UpdateCloudAccountRequest>,
+  output: __S(4928, __c154, 0) as any as S.Schema<UpdateCloudAccountResponse>,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnknownRedisCloudError],
   protocol: RedisCloudProtocol,
   retry: Retry.Retry,
@@ -6449,8 +6449,8 @@ export const updateCrdbLocalProperties: API.OperationMethod<
   UpdateCrdbLocalPropertiesError,
   RedisCloudOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(295, __c36, 7) as any as S.Schema<UpdateCrdbLocalPropertiesRequest>,
-  output: __S(13, __c1, 5) as any as S.Schema<TaskStateUpdate>,
+  input: __S(2274, __c71, 2) as any as S.Schema<UpdateCrdbLocalPropertiesRequest>,
+  output: __S(5473, __c171, 1) as any as S.Schema<TaskStateUpdate>,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnknownRedisCloudError],
   protocol: RedisCloudProtocol,
   retry: Retry.Retry,
@@ -6464,8 +6464,8 @@ export const updateDatabase: API.OperationMethod<
   UpdateDatabaseError,
   RedisCloudOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(296, __c37, 0) as any as S.Schema<UpdateDatabaseRequest>,
-  output: __S(13, __c1, 5) as any as S.Schema<TaskStateUpdate>,
+  input: __S(2304, __c72, 0) as any as S.Schema<UpdateDatabaseRequest>,
+  output: __S(5473, __c171, 1) as any as S.Schema<TaskStateUpdate>,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnknownRedisCloudError],
   protocol: RedisCloudProtocol,
   retry: Retry.Retry,
@@ -6484,8 +6484,8 @@ export const updateMemoryStore: API.OperationMethod<
   UpdateMemoryStoreError,
   RedisCloudOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(300, __c37, 4) as any as S.Schema<UpdateMemoryStoreRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<UpdateMemoryStoreResponse>,
+  input: __S(2371, __c74, 3) as any as S.Schema<UpdateMemoryStoreRequest>,
+  output: __S(4928, __c154, 0) as any as S.Schema<UpdateMemoryStoreResponse>,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnknownRedisCloudError],
   protocol: RedisCloudProtocol,
   retry: Retry.Retry,
@@ -6504,8 +6504,8 @@ export const updatePscServiceEndpoint: API.OperationMethod<
   UpdatePscServiceEndpointError,
   RedisCloudOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(301, __c37, 5) as any as S.Schema<UpdatePscServiceEndpointRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<UpdatePscServiceEndpointResponse>,
+  input: __S(2400, __c75, 0) as any as S.Schema<UpdatePscServiceEndpointRequest>,
+  output: __S(4512, __c141, 0) as any as S.Schema<UpdatePscServiceEndpointResponse>,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnknownRedisCloudError],
   protocol: RedisCloudProtocol,
   retry: Retry.Retry,
@@ -6519,8 +6519,8 @@ export const updateRedisRule: API.OperationMethod<
   UpdateRedisRuleError,
   RedisCloudOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(302, __c37, 6) as any as S.Schema<UpdateRedisRuleRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<UpdateRedisRuleResponse>,
+  input: __S(2432, __c76, 0) as any as S.Schema<UpdateRedisRuleRequest>,
+  output: __S(4928, __c154, 0) as any as S.Schema<UpdateRedisRuleResponse>,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnknownRedisCloudError],
   protocol: RedisCloudProtocol,
   retry: Retry.Retry,
@@ -6534,8 +6534,8 @@ export const updateRole: API.OperationMethod<
   UpdateRoleError,
   RedisCloudOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(303, __c37, 7) as any as S.Schema<UpdateRoleRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<UpdateRoleResponse>,
+  input: __S(2464, __c77, 0) as any as S.Schema<UpdateRoleRequest>,
+  output: __S(4928, __c154, 0) as any as S.Schema<UpdateRoleResponse>,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnknownRedisCloudError],
   protocol: RedisCloudProtocol,
   retry: Retry.Retry,
@@ -6554,8 +6554,8 @@ export const updateSubscription: API.OperationMethod<
   UpdateSubscriptionError,
   RedisCloudOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(304, __c38, 0) as any as S.Schema<UpdateSubscriptionRequest>,
-  output: __S(13, __c1, 5) as any as S.Schema<TaskStateUpdate>,
+  input: __S(2496, __c78, 0) as any as S.Schema<UpdateSubscriptionRequest>,
+  output: __S(5473, __c171, 1) as any as S.Schema<TaskStateUpdate>,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnknownRedisCloudError],
   protocol: RedisCloudProtocol,
   retry: Retry.Retry,
@@ -6574,8 +6574,8 @@ export const updateSubscription1: API.OperationMethod<
   UpdateSubscription1Error,
   RedisCloudOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(305, __c38, 1) as any as S.Schema<UpdateSubscription1Request>,
-  output: __S(3, __c0, 3) as any as S.Schema<UpdateSubscription1Response>,
+  input: __S(2528, __c79, 0) as any as S.Schema<UpdateSubscription1Request>,
+  output: __S(4928, __c154, 0) as any as S.Schema<UpdateSubscription1Response>,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnknownRedisCloudError],
   protocol: RedisCloudProtocol,
   retry: Retry.Retry,
@@ -6594,8 +6594,8 @@ export const updateSubscriptionCidrWhiteList: API.OperationMethod<
   UpdateSubscriptionCidrWhiteListError,
   RedisCloudOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(306, __c38, 2) as any as S.Schema<UpdateSubscriptionCidrWhiteListRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<UpdateSubscriptionCidrWhiteListResponse>,
+  input: __S(2560, __c80, 0) as any as S.Schema<UpdateSubscriptionCidrWhiteListRequest>,
+  output: __S(4512, __c141, 0) as any as S.Schema<UpdateSubscriptionCidrWhiteListResponse>,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnknownRedisCloudError],
   protocol: RedisCloudProtocol,
   retry: Retry.Retry,
@@ -6614,8 +6614,8 @@ export const updateSubscriptionMaintenanceWindows: API.OperationMethod<
   UpdateSubscriptionMaintenanceWindowsError,
   RedisCloudOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(309, __c38, 5) as any as S.Schema<UpdateSubscriptionMaintenanceWindowsRequest>,
-  output: __S(13, __c1, 5) as any as S.Schema<TaskStateUpdate>,
+  input: __S(2594, __c81, 2) as any as S.Schema<UpdateSubscriptionMaintenanceWindowsRequest>,
+  output: __S(5473, __c171, 1) as any as S.Schema<TaskStateUpdate>,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnknownRedisCloudError],
   protocol: RedisCloudProtocol,
   retry: Retry.Retry,
@@ -6634,8 +6634,8 @@ export const updateSubscriptionResourceTags: API.OperationMethod<
   UpdateSubscriptionResourceTagsError,
   RedisCloudOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(310, __c38, 6) as any as S.Schema<UpdateSubscriptionResourceTagsRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<UpdateSubscriptionResourceTagsResponse>,
+  input: __S(2624, __c82, 0) as any as S.Schema<UpdateSubscriptionResourceTagsRequest>,
+  output: __S(4512, __c141, 0) as any as S.Schema<UpdateSubscriptionResourceTagsResponse>,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnknownRedisCloudError],
   protocol: RedisCloudProtocol,
   retry: Retry.Retry,
@@ -6649,8 +6649,8 @@ export const updateTag: API.OperationMethod<
   UpdateTagError,
   RedisCloudOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(311, __c38, 7) as any as S.Schema<UpdateTagRequest>,
-  output: __S(96, __c12, 0) as any as S.Schema<CloudTag>,
+  input: __S(2656, __c83, 0) as any as S.Schema<UpdateTagRequest>,
+  output: __S(3872, __c121, 0) as any as S.Schema<CloudTag>,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnknownRedisCloudError],
   protocol: RedisCloudProtocol,
   retry: Retry.Retry,
@@ -6664,8 +6664,8 @@ export const updateTag1: API.OperationMethod<
   UpdateTag1Error,
   RedisCloudOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(312, __c39, 0) as any as S.Schema<UpdateTag1Request>,
-  output: __S(96, __c12, 0) as any as S.Schema<CloudTag>,
+  input: __S(2752, __c86, 0) as any as S.Schema<UpdateTag1Request>,
+  output: __S(3872, __c121, 0) as any as S.Schema<CloudTag>,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnknownRedisCloudError],
   protocol: RedisCloudProtocol,
   retry: Retry.Retry,
@@ -6679,8 +6679,8 @@ export const updateTags: API.OperationMethod<
   UpdateTagsError,
   RedisCloudOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(313, __c39, 1) as any as S.Schema<UpdateTagsRequest>,
-  output: __S(259, __c32, 3) as any as S.Schema<CloudTags>,
+  input: __S(2784, __c87, 0) as any as S.Schema<UpdateTagsRequest>,
+  output: __S(1344, __c42, 0) as any as S.Schema<CloudTags>,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnknownRedisCloudError],
   protocol: RedisCloudProtocol,
   retry: Retry.Retry,
@@ -6694,8 +6694,8 @@ export const updateTags1: API.OperationMethod<
   UpdateTags1Error,
   RedisCloudOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(314, __c39, 2) as any as S.Schema<UpdateTags1Request>,
-  output: __S(259, __c32, 3) as any as S.Schema<CloudTags>,
+  input: __S(2816, __c88, 0) as any as S.Schema<UpdateTags1Request>,
+  output: __S(1344, __c42, 0) as any as S.Schema<CloudTags>,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnknownRedisCloudError],
   protocol: RedisCloudProtocol,
   retry: Retry.Retry,
@@ -6714,8 +6714,8 @@ export const updateTgwAttachmentCidrs: API.OperationMethod<
   UpdateTgwAttachmentCidrsError,
   RedisCloudOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(315, __c39, 3) as any as S.Schema<UpdateTgwAttachmentCidrsRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<UpdateTgwAttachmentCidrsResponse>,
+  input: __S(2848, __c89, 0) as any as S.Schema<UpdateTgwAttachmentCidrsRequest>,
+  output: __S(4512, __c141, 0) as any as S.Schema<UpdateTgwAttachmentCidrsResponse>,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnknownRedisCloudError],
   protocol: RedisCloudProtocol,
   retry: Retry.Retry,
@@ -6729,8 +6729,8 @@ export const updateUser: API.OperationMethod<
   UpdateUserError,
   RedisCloudOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(316, __c39, 4) as any as S.Schema<UpdateUserRequest>,
-  output: __S(13, __c1, 5) as any as S.Schema<TaskStateUpdate>,
+  input: __S(2880, __c90, 0) as any as S.Schema<UpdateUserRequest>,
+  output: __S(5473, __c171, 1) as any as S.Schema<TaskStateUpdate>,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnknownRedisCloudError],
   protocol: RedisCloudProtocol,
   retry: Retry.Retry,
@@ -6744,8 +6744,8 @@ export const updateUser1: API.OperationMethod<
   UpdateUser1Error,
   RedisCloudOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(317, __c39, 5) as any as S.Schema<UpdateUser1Request>,
-  output: __S(13, __c1, 5) as any as S.Schema<TaskStateUpdate>,
+  input: __S(2912, __c91, 0) as any as S.Schema<UpdateUser1Request>,
+  output: __S(5473, __c171, 1) as any as S.Schema<TaskStateUpdate>,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnknownRedisCloudError],
   protocol: RedisCloudProtocol,
   retry: Retry.Retry,
@@ -6764,8 +6764,8 @@ export const updateVpcPeering: API.OperationMethod<
   UpdateVpcPeeringError,
   RedisCloudOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(318, __c39, 6) as any as S.Schema<UpdateVpcPeeringRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<UpdateVpcPeeringResponse>,
+  input: __S(2944, __c92, 0) as any as S.Schema<UpdateVpcPeeringRequest>,
+  output: __S(4928, __c154, 0) as any as S.Schema<UpdateVpcPeeringResponse>,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnknownRedisCloudError],
   protocol: RedisCloudProtocol,
   retry: Retry.Retry,
@@ -6784,8 +6784,8 @@ export const upgradeDatabaseRedisVersion: API.OperationMethod<
   UpgradeDatabaseRedisVersionError,
   RedisCloudOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(319, __c39, 7) as any as S.Schema<UpgradeDatabaseRedisVersionRequest>,
-  output: __S(13, __c1, 5) as any as S.Schema<TaskStateUpdate>,
+  input: __S(2976, __c93, 0) as any as S.Schema<UpgradeDatabaseRedisVersionRequest>,
+  output: __S(5473, __c171, 1) as any as S.Schema<TaskStateUpdate>,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnknownRedisCloudError],
   protocol: RedisCloudProtocol,
   retry: Retry.Retry,
@@ -6804,8 +6804,8 @@ export const upgradeEssentialsDatabaseRedisVersion: API.OperationMethod<
   UpgradeEssentialsDatabaseRedisVersionError,
   RedisCloudOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(320, __c40, 0) as any as S.Schema<UpgradeEssentialsDatabaseRedisVersionRequest>,
-  output: __S(13, __c1, 5) as any as S.Schema<TaskStateUpdate>,
+  input: __S(3008, __c94, 0) as any as S.Schema<UpgradeEssentialsDatabaseRedisVersionRequest>,
+  output: __S(5473, __c171, 1) as any as S.Schema<TaskStateUpdate>,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnknownRedisCloudError],
   protocol: RedisCloudProtocol,
   retry: Retry.Retry,
@@ -6813,150 +6813,6 @@ export const upgradeEssentialsDatabaseRedisVersion: API.OperationMethod<
 
 // Schema builders: each runs one schema initializer, on that schema's first use.
 function __c0(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.Number.pipe(T.Label()),
-          regionId: S.Number.pipe(T.Label()),
-          tgwInvitationId: S.Number.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "PUT",
-            uri: "/v1/subscriptions/{subscriptionId}/regions/{regionId}/transitGateways/invitations/{tgwInvitationId}/accept",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "AcceptActiveActiveTgwResourceShareRequest",
-      });
-    case 1:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "AcceptActiveActiveTgwResourceShareResponse",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.Number.pipe(T.Label()),
-          tgwInvitationId: S.Number.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "PUT",
-            uri: "/v1/subscriptions/{subscriptionId}/transitGateways/invitations/{tgwInvitationId}/accept",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "AcceptTgwResourceShareRequest",
-      });
-    case 3:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "AcceptTgwResourceShareResponse",
-      });
-    case 4:
-      return S.Array(S.String);
-    case 5:
-      return S.Array(S.String);
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          region: S.optional(S.String),
-          writeOperationsPerSecond: S.optional(S.Number),
-          readOperationsPerSecond: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "LocalThroughput" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.optional(S.String),
-          localThroughputMeasurement: S.optional(__S(6, __c0, 6)),
-        }),
-      ).annotate({ identifier: "CrdbRegionSpec" });
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(7, __c0, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.Number.pipe(T.Label()),
-          region: S.optional(S.String),
-          vpcId: S.optional(S.String),
-          deploymentCIDR: S.optional(S.String),
-          subnetIds: S.optional(__S(4, __c0, 4)),
-          securityGroupId: S.optional(S.String),
-          multipleAvailabilityZones: S.optional(S.Boolean),
-          preferredAvailabilityZones: S.optional(__S(5, __c0, 5)),
-          dryRun: S.optional(S.Boolean),
-          databases: S.optional(__S(8, __c1, 0)),
-          respVersion: S.optional(S.String),
-          customerManagedKeyResourceName: S.optional(S.String),
-        }).pipe(
-          T.Http({ method: "POST", uri: "/v1/subscriptions/{subscriptionId}/regions", code: 200 }),
-        ),
-      ).annotate({
-        identifier: "AddNewRegionToActiveActiveSubscriptionRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          resourceId: S.optional(S.Number),
-          additionalResourceId: S.optional(S.Number),
-          resource: S.optional(S.Unknown),
-          error: S.optional(S.String),
-          additionalInfo: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ProcessorResponse" });
-    case 3:
-      return S.Record(S.String, S.String);
-    case 4:
-      return S.Array(__S(11, __c1, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          taskId: S.optional(S.String),
-          commandType: S.optional(S.String),
-          status: S.optional(S.String),
-          description: S.optional(S.String),
-          timestamp: S.optional(S.String),
-          response: S.optional(__S(10, __c1, 2)),
-          links: S.optional(__S(12, __c1, 4)),
-        }),
-      ).annotate({ identifier: "TaskStateUpdate" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.Number.pipe(T.Label()),
-          databaseId: S.Number.pipe(T.Label()),
-          regionName: S.optional(S.String),
-          adhocBackupPath: S.optional(S.String),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/v1/subscriptions/{subscriptionId}/databases/{databaseId}/backup",
-            code: 200,
-          }),
-        ),
-      ).annotate({ identifier: "BackupDatabaseRequest" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.Number.pipe(T.Label()),
-          databaseId: S.Number.pipe(T.Label()),
-          adhocBackupPath: S.optional(S.String),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/v1/fixed/subscriptions/{subscriptionId}/databases/{databaseId}/backup",
-            code: 200,
-          }),
-        ),
-      ).annotate({ identifier: "BackupDatabase1Request" });
-  }
-}
-function __c2(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -6977,1822 +6833,11 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "CreateActiveActivePrivateLinkRequest",
       });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.Number.pipe(T.Label()),
-          regionId: S.Number.pipe(T.Label()),
-          principal: S.String,
-          type: S.optional(S.String),
-          alias: S.optional(S.String),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/v1/subscriptions/{subscriptionId}/regions/{regionId}/private-link/principals",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateActiveActivePrivateLinkPrincipalRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.Number.pipe(T.Label()),
-          regionId: S.Number.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/v1/subscriptions/{subscriptionId}/regions/{regionId}/private-service-connect",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateActiveActivePscServiceRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.Number.pipe(T.Label()),
-          regionId: S.Number.pipe(T.Label()),
-          pscServiceId: S.Number.pipe(T.Label()),
-          gcpProjectId: S.String,
-          gcpVpcName: S.String,
-          gcpVpcSubnetName: S.String,
-          endpointConnectionName: S.String,
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/v1/subscriptions/{subscriptionId}/regions/{regionId}/private-service-connect/{pscServiceId}",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateActiveActivePscServiceEndpointRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.Number.pipe(T.Label()),
-          regionId: S.Number.pipe(T.Label()),
-          TgwId: S.Number.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/v1/subscriptions/{subscriptionId}/regions/{regionId}/transitGateways/{TgwId}/attachment",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateActiveActiveTgwAttachmentRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.Number.pipe(T.Label()),
-          provider: S.optional(S.String),
-          sourceRegion: S.String,
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/v1/subscriptions/{subscriptionId}/regions/peerings",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateActiveActiveVpcPeeringRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String,
-          provider: S.optional(S.String),
-          accessKeyId: S.String.pipe(T.SensitiveValue({})),
-          accessSecretKey: S.String.pipe(T.SensitiveValue({})),
-          consoleUsername: S.String,
-          consolePassword: S.String.pipe(T.SensitiveValue({})),
-          signInLoginUrl: S.String,
-        }).pipe(T.Http({ method: "POST", uri: "/v1/cloud-accounts", code: 200 })),
-      ).annotate({
-        identifier: "CreateCloudAccountRequest",
-      });
-    case 7:
-      return S.Array(S.Number);
   }
 }
-function __c3(j: number): any {
+function __c1(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() =>
-        S.Struct({
-          key: S.String,
-          value: S.String,
-        }),
-      ).annotate({ identifier: "Tag" });
-    case 1:
-      return S.Array(__S(24, __c3, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          startDate: S.String,
-          endDate: S.String,
-          format: S.optional(S.String),
-          subscriptionIds: S.optional(__S(23, __c2, 7)),
-          databaseIds: S.optional(__S(23, __c2, 7)),
-          subscriptionType: S.optional(S.String),
-          regions: S.optional(__S(4, __c0, 4)),
-          tags: S.optional(__S(25, __c3, 1)),
-        }).pipe(T.Http({ method: "POST", uri: "/v1/cost-report", code: 200 })),
-      ).annotate({ identifier: "CreateCostReportRequest" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          endpoint: S.String,
-          encryption: S.optional(S.Boolean),
-          serverCert: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "DatabaseSyncSourceSpec" });
-    case 4:
-      return S.Array(__S(27, __c3, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          syncSources: __S(28, __c3, 4),
-        }),
-      ).annotate({ identifier: "ReplicaOfSpec" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          by: S.String,
-          value: S.Number,
-        }),
-      ).annotate({ identifier: "DatabaseThroughputSpec" });
-    case 7:
-      return S.Array(__S(6, __c0, 6));
-  }
-}
-function __c4(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          active: S.optional(S.Boolean),
-          interval: S.optional(S.String),
-          timeUTC: S.optional(S.String),
-          storageType: S.optional(S.String),
-          storagePath: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "DatabaseBackupConfigInput",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          publicCertificatePEMString: S.String,
-        }),
-      ).annotate({ identifier: "DatabaseCertificateSpec" });
-    case 2:
-      return S.Array(__S(33, __c4, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String,
-          value: S.Number,
-        }),
-      ).annotate({ identifier: "DatabaseAlertSpec" });
-    case 4:
-      return S.Array(__S(35, __c4, 3));
-    case 5:
-      return S.Record(S.String, S.Unknown);
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String,
-          parameters: S.optional(__S(37, __c4, 5)),
-        }),
-      ).annotate({ identifier: "DatabaseModuleSpec" });
-    case 7:
-      return S.Array(__S(38, __c4, 6));
-  }
-}
-function __c5(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.Number.pipe(T.Label()),
-          dryRun: S.optional(S.Boolean),
-          name: S.String,
-          protocol: S.optional(S.String),
-          port: S.optional(S.Number),
-          memoryLimitInGb: S.optional(S.Number),
-          datasetSizeInGb: S.optional(S.Number),
-          redisVersion: S.optional(S.String),
-          autoMinorVersionUpgrade: S.optional(S.Boolean),
-          respVersion: S.optional(S.String),
-          supportOSSClusterApi: S.optional(S.Boolean),
-          useExternalEndpointForOSSClusterApi: S.optional(S.Boolean),
-          dataPersistence: S.optional(S.String),
-          dataEvictionPolicy: S.optional(S.String),
-          replication: S.optional(S.Boolean),
-          replicaOf: S.optional(__S(4, __c0, 4)),
-          replica: S.optional(__S(29, __c3, 5)),
-          throughputMeasurement: S.optional(__S(30, __c3, 6)),
-          localThroughputMeasurement: S.optional(__S(31, __c3, 7)),
-          averageItemSizeInBytes: S.optional(S.Number),
-          ramPercentage: S.optional(S.Number),
-          periodicBackupPath: S.optional(S.String),
-          remoteBackup: S.optional(__S(32, __c4, 0)),
-          sourceIp: S.optional(__S(4, __c0, 4)),
-          clientSslCertificate: S.optional(S.String),
-          clientTlsCertificates: S.optional(__S(34, __c4, 2)),
-          enableTls: S.optional(S.Boolean),
-          password: S.optional(S.String.pipe(T.SensitiveValue({}))),
-          saslUsername: S.optional(S.String),
-          saslPassword: S.optional(S.String.pipe(T.SensitiveValue({}))),
-          alerts: S.optional(__S(36, __c4, 4)),
-          modules: S.optional(__S(39, __c4, 7)),
-          shardingType: S.optional(S.String),
-          queryPerformanceFactor: S.optional(S.String),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/v1/subscriptions/{subscriptionId}/databases",
-            code: 200,
-          }),
-        ),
-      ).annotate({ identifier: "CreateDatabaseRequest" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          sourceDatabaseId: S.Number,
-          targetDatabaseId: S.Number,
-          endpointTargetType: S.String,
-          duplicateACLs: S.optional(S.Boolean),
-          migrationProtection: S.Boolean,
-        }).pipe(T.Http({ method: "POST", uri: "/v1/endpoint-redirections", code: 200 })),
-      ).annotate({
-        identifier: "CreateEndpointsRedirectionRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          sourceEndpointName: S.optional(S.String),
-          targetEndpointName: S.optional(S.String),
-          sourceEndpointType: S.optional(S.String),
-          targetEndpointType: S.optional(S.String),
-          errorMessage: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "EndpointRedirectionDTO" });
-    case 3:
-      return S.Array(__S(42, __c5, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          redirectionId: S.optional(S.String),
-          status: S.optional(S.String),
-          sourceDatabaseId: S.optional(S.Number),
-          targetDatabaseId: S.optional(S.Number),
-          isRevert: S.optional(S.Boolean),
-          duplicateACLs: S.optional(S.Boolean),
-          startedAt: S.optional(S.String),
-          completedAt: S.optional(S.String),
-          revertedAt: S.optional(S.String),
-          errorMessage: S.optional(S.String),
-          endpoints: S.optional(__S(43, __c5, 3)),
-        }),
-      ).annotate({
-        identifier: "EndpointsRedirectionResponse",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.Number.pipe(T.Label()),
-          name: S.String,
-          protocol: S.optional(S.String),
-          memoryLimitInGb: S.optional(S.Number),
-          datasetSizeInGb: S.optional(S.Number),
-          supportOSSClusterApi: S.optional(S.Boolean),
-          redisVersion: S.optional(S.String),
-          respVersion: S.optional(S.String),
-          useExternalEndpointForOSSClusterApi: S.optional(S.Boolean),
-          enableDatabaseClustering: S.optional(S.Boolean),
-          numberOfShards: S.optional(S.Number),
-          dataPersistence: S.optional(S.String),
-          dataEvictionPolicy: S.optional(S.String),
-          replication: S.optional(S.Boolean),
-          periodicBackupPath: S.optional(S.String),
-          sourceIps: S.optional(__S(4, __c0, 4)),
-          regexRules: S.optional(__S(4, __c0, 4)),
-          replicaOf: S.optional(__S(4, __c0, 4)),
-          replica: S.optional(__S(29, __c3, 5)),
-          clientSslCertificate: S.optional(S.String),
-          clientTlsCertificates: S.optional(__S(34, __c4, 2)),
-          enableTls: S.optional(S.Boolean),
-          password: S.optional(S.String.pipe(T.SensitiveValue({}))),
-          alerts: S.optional(__S(36, __c4, 4)),
-          modules: S.optional(__S(39, __c4, 7)),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/v1/fixed/subscriptions/{subscriptionId}/databases",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateFixedDatabaseRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          ttlSeconds: S.Number,
-        }),
-      ).annotate({
-        identifier: "MemoryStoreShortMemoryConfig",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          type: S.String,
-          apiKey: S.optional(S.String.pipe(T.SensitiveValue({}))),
-        }),
-      ).annotate({
-        identifier: "MemoryStoreModelCredentials",
-      });
-  }
-}
-function __c6(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          provider: S.optional(S.String),
-          model: S.optional(S.String),
-          credentials: S.optional(__S(47, __c5, 7)),
-        }),
-      ).annotate({ identifier: "MemoryStoreModelConfig" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          ttlSeconds: S.Number,
-          embedding: S.optional(__S(48, __c6, 0)),
-        }),
-      ).annotate({
-        identifier: "MemoryStoreLongTermMemoryCreateConfig",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          threshold: S.Number,
-          retainCount: S.Number,
-        }),
-      ).annotate({
-        identifier: "MemoryStoreSummarizationThresholdConfig",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          enabled: S.Boolean,
-          triggerStrategy: S.optional(S.String),
-          eventCount: S.optional(__S(50, __c6, 2)),
-        }),
-      ).annotate({
-        identifier: "MemoryStoreSummarizationConfig",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          enabled: S.Boolean,
-          prompt: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "MemoryStoreSemanticExclusionConfig",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String,
-          enabled: S.Boolean,
-          action: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "MemoryStoreDetectorSelection",
-      });
-    case 6:
-      return S.Array(__S(53, __c6, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          enabled: S.Boolean,
-          detectors: S.optional(__S(54, __c6, 6)),
-        }),
-      ).annotate({
-        identifier: "MemoryStoreBuiltInDetectorsConfig",
-      });
-  }
-}
-function __c7(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          pattern: S.String,
-        }),
-      ).annotate({ identifier: "MemoryStoreRegexSpec" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          kind: S.String,
-          regex: S.optional(__S(56, __c7, 0)),
-        }),
-      ).annotate({ identifier: "MemoryStoreMatcherSpec" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String,
-          enabled: S.Boolean,
-          action: S.optional(S.String),
-          matcher: __S(57, __c7, 1),
-        }),
-      ).annotate({
-        identifier: "MemoryStoreCustomDetector",
-      });
-    case 3:
-      return S.Array(__S(58, __c7, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          enabled: S.Boolean,
-          detectors: S.optional(__S(59, __c7, 3)),
-        }),
-      ).annotate({
-        identifier: "MemoryStoreCustomDetectorsConfig",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          enabled: S.Boolean,
-          semantic: S.optional(__S(52, __c6, 4)),
-          builtInDetectors: S.optional(__S(55, __c6, 7)),
-          customDetectors: S.optional(__S(60, __c7, 4)),
-        }),
-      ).annotate({
-        identifier: "MemoryStoreLongTermMemoryExclusions",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String,
-          description: S.String,
-          type: S.String,
-        }),
-      ).annotate({ identifier: "MemoryStoreCustomField" });
-    case 7:
-      return S.Array(__S(62, __c7, 6));
-  }
-}
-function __c8(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          prompt: S.String,
-          enabled: S.optional(S.Boolean),
-        }),
-      ).annotate({
-        identifier: "MemoryStoreCustomExtractionStrategy",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String,
-          description: S.String,
-          fields: S.optional(__S(63, __c7, 7)),
-          extractionStrategy: S.optional(__S(64, __c8, 0)),
-        }),
-      ).annotate({
-        identifier: "MemoryStoreCustomMemoryType",
-      });
-    case 2:
-      return S.Array(__S(65, __c8, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          activeIntervalSeconds: S.Number,
-        }),
-      ).annotate({
-        identifier: "MemoryStoreExtractionCadenceConfig",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String,
-          databaseId: S.Number,
-          shortMemory: S.optional(__S(46, __c5, 6)),
-          longTermMemory: S.optional(__S(49, __c6, 1)),
-          llm: S.optional(__S(48, __c6, 0)),
-          extractionStrategy: S.optional(S.String),
-          summarization: S.optional(__S(51, __c6, 3)),
-          longTermMemoryExclusions: S.optional(__S(61, __c7, 5)),
-          customMemoryTypes: S.optional(__S(66, __c8, 2)),
-          extractionCadence: S.optional(__S(67, __c8, 3)),
-        }).pipe(T.Http({ method: "POST", uri: "/v1/memory-stores", code: 200 })),
-      ).annotate({ identifier: "CreateMemoryStoreRequest" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          storeId: S.String.pipe(T.Label()),
-          keyName: S.String,
-        }).pipe(T.Http({ method: "POST", uri: "/v1/memory-stores/{storeId}/api-keys", code: 200 })),
-      ).annotate({
-        identifier: "CreateMemoryStoreApiKeyRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          apiKey: S.optional(S.String.pipe(T.SensitiveValue({}))),
-        }),
-      ).annotate({
-        identifier: "MemoryStoreApiKeyCreateResponse",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.Number.pipe(T.Label()),
-          shareName: S.String,
-          principal: S.String,
-          type: S.String,
-          alias: S.optional(S.String),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/v1/subscriptions/{subscriptionId}/private-link",
-            code: 200,
-          }),
-        ),
-      ).annotate({ identifier: "CreatePrivateLinkRequest" });
-  }
-}
-function __c9(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.Number.pipe(T.Label()),
-          principal: S.String,
-          type: S.optional(S.String),
-          alias: S.optional(S.String),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/v1/subscriptions/{subscriptionId}/private-link/principals",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "CreatePrivateLinkPrincipalRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.Number.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/v1/subscriptions/{subscriptionId}/private-service-connect",
-            code: 200,
-          }),
-        ),
-      ).annotate({ identifier: "CreatePscServiceRequest" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.Number.pipe(T.Label()),
-          pscServiceId: S.Number.pipe(T.Label()),
-          gcpProjectId: S.String,
-          gcpVpcName: S.String,
-          gcpVpcSubnetName: S.String,
-          endpointConnectionName: S.String,
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/v1/subscriptions/{subscriptionId}/private-service-connect/{pscServiceId}",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "CreatePscServiceEndpointRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String,
-          redisRule: S.String,
-        }).pipe(T.Http({ method: "POST", uri: "/v1/acl/redisRules", code: 200 })),
-      ).annotate({ identifier: "CreateRedisRuleRequest" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.Number,
-          databaseId: S.Number,
-          regions: S.optional(__S(4, __c0, 4)),
-        }),
-      ).annotate({ identifier: "AclRoleDatabaseSpec" });
-    case 5:
-      return S.Array(__S(76, __c9, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          ruleName: S.String,
-          databases: __S(77, __c9, 5),
-        }),
-      ).annotate({ identifier: "AclRoleRedisRuleSpec" });
-    case 7:
-      return S.Array(__S(78, __c9, 6));
-  }
-}
-function __c10(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String,
-          redisRules: __S(79, __c9, 7),
-        }).pipe(T.Http({ method: "POST", uri: "/v1/acl/roles", code: 200 })),
-      ).annotate({ identifier: "CreateRoleRequest" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          resourceName: S.String,
-          region: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "CustomerManagedKey" });
-    case 2:
-      return S.Array(__S(81, __c10, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          customerManagedKeys: __S(82, __c10, 2),
-          deletionGracePeriod: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "CustomerManagedKeyProperties",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          deploymentCIDR: S.optional(S.String),
-          vpcId: S.optional(S.String),
-          subnetIds: S.optional(__S(4, __c0, 4)),
-          securityGroupId: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "SubscriptionRegionNetworkingSpec",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          region: S.String,
-          multipleAvailabilityZones: S.optional(S.Boolean),
-          preferredAvailabilityZones: S.optional(__S(4, __c0, 4)),
-          networking: S.optional(__S(84, __c10, 4)),
-        }),
-      ).annotate({ identifier: "SubscriptionRegionSpec" });
-    case 6:
-      return S.Array(__S(85, __c10, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          key: S.optional(S.String),
-          value: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ResourceTag" });
-  }
-}
-function __c11(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(87, __c10, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          provider: S.optional(S.String),
-          cloudAccountId: S.optional(S.Number),
-          regions: __S(86, __c10, 6),
-          resourceTags: S.optional(__S(88, __c11, 0)),
-        }),
-      ).annotate({ identifier: "SubscriptionSpec" });
-    case 2:
-      return S.Array(__S(89, __c11, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String,
-          protocol: S.String,
-          port: S.optional(S.Number),
-          memoryLimitInGb: S.optional(S.Number),
-          datasetSizeInGb: S.optional(S.Number),
-          supportOSSClusterApi: S.optional(S.Boolean),
-          dataPersistence: S.optional(S.String),
-          replication: S.optional(S.Boolean),
-          throughputMeasurement: S.optional(__S(30, __c3, 6)),
-          localThroughputMeasurement: S.optional(__S(31, __c3, 7)),
-          modules: S.optional(__S(39, __c4, 7)),
-          quantity: S.optional(S.Number),
-          averageItemSizeInBytes: S.optional(S.Number),
-          ramPercentage: S.optional(S.Number),
-          respVersion: S.optional(S.String),
-          redisVersion: S.optional(S.String),
-          autoMinorVersionUpgrade: S.optional(S.Boolean),
-          shardingType: S.optional(S.String),
-          queryPerformanceFactor: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "SubscriptionDatabaseSpec" });
-    case 4:
-      return S.Array(__S(91, __c11, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.optional(S.String),
-          dryRun: S.optional(S.Boolean),
-          deploymentType: S.optional(S.String),
-          paymentMethod: S.optional(S.String),
-          paymentMethodId: S.optional(S.Number),
-          memoryStorage: S.optional(S.String),
-          persistentStorageEncryptionType: S.optional(S.String),
-          persistentStorageEncryptionKeys: S.optional(__S(83, __c10, 3)),
-          cloudProviders: __S(90, __c11, 2),
-          databases: __S(92, __c11, 4),
-          redisVersion: S.optional(S.String),
-          publicEndpointAccess: S.optional(S.Boolean),
-        }).pipe(T.Http({ method: "POST", uri: "/v1/subscriptions", code: 200 })),
-      ).annotate({
-        identifier: "CreateSubscriptionRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String,
-          planId: S.Number,
-          paymentMethod: S.optional(S.String),
-          paymentMethodId: S.optional(S.Number),
-        }).pipe(T.Http({ method: "POST", uri: "/v1/fixed/subscriptions", code: 200 })),
-      ).annotate({
-        identifier: "CreateSubscription1Request",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.Number.pipe(T.Label()),
-          databaseId: S.Number.pipe(T.Label()),
-          key: S.String,
-          value: S.String,
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/v1/subscriptions/{subscriptionId}/databases/{databaseId}/tags",
-            code: 200,
-          }),
-        ),
-      ).annotate({ identifier: "CreateTagRequest" });
-  }
-}
-function __c12(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          links: S.optional(__S(12, __c1, 4)),
-          key: S.optional(S.String),
-          value: S.optional(S.String),
-          createdAt: S.optional(S.String),
-          updatedAt: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "CloudTag" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.Number.pipe(T.Label()),
-          databaseId: S.Number.pipe(T.Label()),
-          key: S.String,
-          value: S.String,
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/v1/fixed/subscriptions/{subscriptionId}/databases/{databaseId}/tags",
-            code: 200,
-          }),
-        ),
-      ).annotate({ identifier: "CreateTag1Request" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.Number.pipe(T.Label()),
-          TgwId: S.Number.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/v1/subscriptions/{subscriptionId}/transitGateways/{TgwId}/attachment",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateTgwAttachmentRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String,
-          role: S.String,
-          password: S.String.pipe(T.SensitiveValue({})),
-        }).pipe(T.Http({ method: "POST", uri: "/v1/acl/users", code: 200 })),
-      ).annotate({ identifier: "CreateUserRequest" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.Number.pipe(T.Label()),
-          provider: S.optional(S.String),
-        }).pipe(
-          T.Http({ method: "POST", uri: "/v1/subscriptions/{subscriptionId}/peerings", code: 200 }),
-        ),
-      ).annotate({ identifier: "CreateVpcPeeringRequest" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          aclRoleId: S.Number.pipe(T.Label()),
-        }).pipe(T.Http({ method: "DELETE", uri: "/v1/acl/roles/{aclRoleId}", code: 200 })),
-      ).annotate({ identifier: "DeleteAclRoleRequest" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.Number.pipe(T.Label()),
-          regionId: S.Number.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/v1/subscriptions/{subscriptionId}/regions/{regionId}/private-link",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteActiveActivePrivateLinkRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.Number.pipe(T.Label()),
-          regionId: S.Number.pipe(T.Label()),
-          principal: S.String,
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/v1/subscriptions/{subscriptionId}/regions/{regionId}/private-link/principals",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteActiveActivePrivateLinkPrincipalsRequest",
-      });
-  }
-}
-function __c13(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.Number.pipe(T.Label()),
-          regionId: S.Number.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/v1/subscriptions/{subscriptionId}/regions/{regionId}/private-service-connect",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteActiveActivePscServiceRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.Number.pipe(T.Label()),
-          regionId: S.Number.pipe(T.Label()),
-          pscServiceId: S.Number.pipe(T.Label()),
-          endpointId: S.Number.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/v1/subscriptions/{subscriptionId}/regions/{regionId}/private-service-connect/{pscServiceId}/endpoints/{endpointId}",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteActiveActivePscServiceEndpointRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.Number.pipe(T.Label()),
-          regionId: S.Number.pipe(T.Label()),
-          TgwId: S.Number.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/v1/subscriptions/{subscriptionId}/regions/{regionId}/transitGateways/{TgwId}/attachment",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteActiveActiveTgwAttachmentRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.Number.pipe(T.Label()),
-          peeringId: S.Number.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/v1/subscriptions/{subscriptionId}/regions/peerings/{peeringId}",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteActiveActiveVpcPeeringRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          cloudAccountId: S.Number.pipe(T.Label()),
-        }).pipe(
-          T.Http({ method: "DELETE", uri: "/v1/cloud-accounts/{cloudAccountId}", code: 200 }),
-        ),
-      ).annotate({
-        identifier: "DeleteCloudAccountRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.Number.pipe(T.Label()),
-          databaseId: S.Number.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/v1/subscriptions/{subscriptionId}/databases/{databaseId}",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteDatabaseByIdRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.Number.pipe(T.Label()),
-          databaseId: S.Number.pipe(T.Label()),
-          name: S.optional(S.String),
-          memoryLimitInGb: S.optional(S.Number),
-          datasetSizeInGb: S.optional(S.Number),
-          supportOSSClusterApi: S.optional(S.Boolean),
-          respVersion: S.optional(S.String),
-          useExternalEndpointForOSSClusterApi: S.optional(S.Boolean),
-          enableDatabaseClustering: S.optional(S.Boolean),
-          numberOfShards: S.optional(S.Number),
-          dataPersistence: S.optional(S.String),
-          dataEvictionPolicy: S.optional(S.String),
-          replication: S.optional(S.Boolean),
-          periodicBackupPath: S.optional(S.String),
-          sourceIps: S.optional(__S(4, __c0, 4)),
-          replicaOf: S.optional(__S(4, __c0, 4)),
-          replica: S.optional(__S(29, __c3, 5)),
-          regexRules: S.optional(__S(4, __c0, 4)),
-          clientSslCertificate: S.optional(S.String),
-          clientTlsCertificates: S.optional(__S(34, __c4, 2)),
-          enableTls: S.optional(S.Boolean),
-          password: S.optional(S.String.pipe(T.SensitiveValue({}))),
-          enableDefaultUser: S.optional(S.Boolean),
-          alerts: S.optional(__S(36, __c4, 4)),
-        }).pipe(
-          T.Http({
-            method: "PUT",
-            uri: "/v1/fixed/subscriptions/{subscriptionId}/databases/{databaseId}",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteFixedDatabaseByIDRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.Number.pipe(T.Label()),
-          databaseId: S.Number.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/v1/fixed/subscriptions/{subscriptionId}/databases/{databaseId}",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteFixedDatabaseByID1Request",
-      });
-  }
-}
-function __c14(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          storeId: S.String.pipe(T.Label()),
-          flush: S.optional(S.Boolean.pipe(T.Query())),
-        }).pipe(T.Http({ method: "DELETE", uri: "/v1/memory-stores/{storeId}", code: 200 })),
-      ).annotate({ identifier: "DeleteMemoryStoreRequest" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          storeId: S.String.pipe(T.Label()),
-          apiKeyId: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/v1/memory-stores/{storeId}/api-keys/{apiKeyId}",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteMemoryStoreApiKeyRequest",
-      });
-    case 2:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "DeleteMemoryStoreApiKeyResponse",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.Number.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/v1/subscriptions/{subscriptionId}/private-link",
-            code: 200,
-          }),
-        ),
-      ).annotate({ identifier: "DeletePrivateLinkRequest" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.Number.pipe(T.Label()),
-          principal: S.String,
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/v1/subscriptions/{subscriptionId}/private-link/principals",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "DeletePrivateLinkPrincipalsRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.Number.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/v1/subscriptions/{subscriptionId}/private-service-connect",
-            code: 200,
-          }),
-        ),
-      ).annotate({ identifier: "DeletePscServiceRequest" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.Number.pipe(T.Label()),
-          pscServiceId: S.Number.pipe(T.Label()),
-          endpointId: S.Number.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/v1/subscriptions/{subscriptionId}/private-service-connect/{pscServiceId}/endpoints/{endpointId}",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "DeletePscServiceEndpointRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          aclRedisRuleId: S.Number.pipe(T.Label()),
-        }).pipe(
-          T.Http({ method: "DELETE", uri: "/v1/acl/redisRules/{aclRedisRuleId}", code: 200 }),
-        ),
-      ).annotate({ identifier: "DeleteRedisRuleRequest" });
-  }
-}
-function __c15(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          region: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "ActiveActiveRegionToDelete",
-      });
-    case 1:
-      return S.Array(__S(120, __c15, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.Number.pipe(T.Label()),
-          regions: S.optional(__S(121, __c15, 1)),
-          dryRun: S.optional(S.Boolean),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/v1/subscriptions/{subscriptionId}/regions",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteRegionsFromActiveActiveSubscriptionRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.Number.pipe(T.Label()),
-        }).pipe(T.Http({ method: "DELETE", uri: "/v1/subscriptions/{subscriptionId}", code: 200 })),
-      ).annotate({
-        identifier: "DeleteSubscriptionRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.Number.pipe(T.Label()),
-        }).pipe(
-          T.Http({ method: "DELETE", uri: "/v1/fixed/subscriptions/{subscriptionId}", code: 200 }),
-        ),
-      ).annotate({
-        identifier: "DeleteSubscriptionById1Request",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.Number.pipe(T.Label()),
-          databaseId: S.Number.pipe(T.Label()),
-          tagKey: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/v1/subscriptions/{subscriptionId}/databases/{databaseId}/tags/{tagKey}",
-            code: 200,
-          }),
-        ),
-      ).annotate({ identifier: "DeleteTagRequest" });
-    case 6:
-      return S.suspend(() => S.Unknown.pipe(T.RawResponseRoot())).annotate({
-        identifier: "DeleteTagResponse",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.Number.pipe(T.Label()),
-          databaseId: S.Number.pipe(T.Label()),
-          tagKey: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/v1/fixed/subscriptions/{subscriptionId}/databases/{databaseId}/tags/{tagKey}",
-            code: 200,
-          }),
-        ),
-      ).annotate({ identifier: "DeleteTag1Request" });
-  }
-}
-function __c16(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.Number.pipe(T.Label()),
-          TgwId: S.Number.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/v1/subscriptions/{subscriptionId}/transitGateways/{TgwId}/attachment",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteTgwAttachmentRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          userId: S.Number.pipe(T.Label()),
-        }).pipe(T.Http({ method: "DELETE", uri: "/v1/users/{userId}", code: 200 })),
-      ).annotate({ identifier: "DeleteUserRequest" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          aclUserId: S.Number.pipe(T.Label()),
-        }).pipe(T.Http({ method: "DELETE", uri: "/v1/acl/users/{aclUserId}", code: 200 })),
-      ).annotate({ identifier: "DeleteUserRequest2" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.Number.pipe(T.Label()),
-          peeringId: S.Number.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/v1/subscriptions/{subscriptionId}/peerings/{peeringId}",
-            code: 200,
-          }),
-        ),
-      ).annotate({ identifier: "DeleteVpcPeeringRequest" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          associationId: S.String,
-          connectionId: S.optional(S.String),
-          type: S.String,
-          principalId: S.String,
-        }),
-      ).annotate({
-        identifier: "PrivateLinkConnectionDisassociate",
-      });
-    case 5:
-      return S.Array(__S(132, __c16, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.Number.pipe(T.Label()),
-          regionId: S.Number.pipe(T.Label()),
-          connections: __S(133, __c16, 5),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/v1/subscriptions/{subscriptionId}/regions/{regionId}/private-link/connections/disassociate",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "DisassociateActiveActivePrivateLinkConnectionsRequest",
-      });
-    case 7:
-      return S.Array(__S(132, __c16, 4));
-  }
-}
-function __c17(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.Number.pipe(T.Label()),
-          connections: __S(135, __c16, 7),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/v1/subscriptions/{subscriptionId}/private-link/connections/disassociate",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "DisassociatePrivateLinkConnectionsRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          storeId: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/v1/memory-stores/{storeId}/session-memory",
-            code: 200,
-          }),
-        ),
-      ).annotate({ identifier: "EmptyMemoryStoreRequest" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.Number.pipe(T.Label()),
-          databaseId: S.Number.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "PUT",
-            uri: "/v1/subscriptions/{subscriptionId}/databases/{databaseId}/flush",
-            code: 200,
-          }),
-        ),
-      ).annotate({ identifier: "FlushCrdbRequest" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          storeId: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({ method: "DELETE", uri: "/v1/memory-stores/{storeId}/entries", code: 200 }),
-        ),
-      ).annotate({ identifier: "FlushMemoryStoreRequest" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({}).pipe(T.Http({ method: "GET", uri: "/v1/payment-methods", code: 200 })),
-      ).annotate({
-        identifier: "GetAccountPaymentMethodsRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          accountId: S.optional(S.Number),
-          links: S.optional(__S(12, __c1, 4)),
-        }),
-      ).annotate({ identifier: "PaymentMethods" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          offset: S.optional(S.Number.pipe(T.Query())),
-          limit: S.optional(S.Number.pipe(T.Query())),
-          startTime: S.optional(S.String.pipe(T.Query())),
-          endTime: S.optional(S.String.pipe(T.Query())),
-        }).pipe(T.Http({ method: "GET", uri: "/v1/session-logs", code: 200 })),
-      ).annotate({
-        identifier: "GetAccountSessionLogsRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          time: S.optional(S.String),
-          user: S.optional(S.String),
-          userAgent: S.optional(S.String),
-          ipAddress: S.optional(S.String),
-          userRole: S.optional(S.String),
-          type: S.optional(S.String),
-          action: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "AccountSessionLogEntry" });
-  }
-}
-function __c18(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(143, __c17, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          entries: S.optional(__S(144, __c18, 0)),
-          links: S.optional(__S(12, __c1, 4)),
-        }),
-      ).annotate({ identifier: "AccountSessionLogEntries" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          offset: S.optional(S.Number.pipe(T.Query())),
-          limit: S.optional(S.Number.pipe(T.Query())),
-          startTime: S.optional(S.String.pipe(T.Query())),
-          endTime: S.optional(S.String.pipe(T.Query())),
-          resourceId: S.optional(S.Number.pipe(T.Query())),
-        }).pipe(T.Http({ method: "GET", uri: "/v1/logs", code: 200 })),
-      ).annotate({
-        identifier: "GetAccountSystemLogsRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.Number),
-          time: S.optional(S.String),
-          originator: S.optional(S.String),
-          apiKeyName: S.optional(S.String),
-          resource: S.optional(S.String),
-          resourceId: S.optional(S.Number),
-          type: S.optional(S.String),
-          description: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "AccountSystemLogEntry" });
-    case 4:
-      return S.Array(__S(147, __c18, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          entries: S.optional(__S(148, __c18, 4)),
-          links: S.optional(__S(12, __c1, 4)),
-        }),
-      ).annotate({ identifier: "AccountSystemLogEntries" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.Number.pipe(T.Label()),
-          regionId: S.Number.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/v1/subscriptions/{subscriptionId}/regions/{regionId}/private-link",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "GetActiveActivePrivateLinkRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.Number.pipe(T.Label()),
-          regionId: S.Number.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/v1/subscriptions/{subscriptionId}/regions/{regionId}/private-link/endpoint-script",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "GetActiveActivePrivateLinkEndpointScriptRequest",
-      });
-  }
-}
-function __c19(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.Number.pipe(T.Label()),
-          regionId: S.Number.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/v1/subscriptions/{subscriptionId}/regions/{regionId}/private-service-connect",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "GetActiveActivePscServiceRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.Number.pipe(T.Label()),
-          regionId: S.Number.pipe(T.Label()),
-          pscServiceId: S.Number.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/v1/subscriptions/{subscriptionId}/regions/{regionId}/private-service-connect/{pscServiceId}",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "GetActiveActivePscServiceEndpointsRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.Number.pipe(T.Label()),
-          regionId: S.Number.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/v1/subscriptions/{subscriptionId}/regions/{regionId}/transitGateways",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "GetActiveActiveTgwsRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.Number.pipe(T.Label()),
-          regionId: S.Number.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/v1/subscriptions/{subscriptionId}/regions/{regionId}/transitGateways/invitations",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "GetActiveActiveTgwSharedInvitationsRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.Number.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/v1/subscriptions/{subscriptionId}/regions/peerings",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "GetActiveActiveVpcPeeringsRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.Number.pipe(T.Label()),
-          regionId: S.Number.pipe(T.Label()),
-          pscServiceId: S.Number.pipe(T.Label()),
-          endpointId: S.Number.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/v1/subscriptions/{subscriptionId}/regions/{regionId}/private-service-connect/{pscServiceId}/endpoints/{endpointId}/creationScripts",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "GetActiveActivPscServiceEndpointCreationScriptRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.Number.pipe(T.Label()),
-          regionId: S.Number.pipe(T.Label()),
-          pscServiceId: S.Number.pipe(T.Label()),
-          endpointId: S.Number.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/v1/subscriptions/{subscriptionId}/regions/{regionId}/private-service-connect/{pscServiceId}/endpoints/{endpointId}/deletionScripts",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "GetActiveActivPscServiceEndpointDeletionScriptRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          provider: S.optional(S.String.pipe(T.Query())),
-          redisFlex: S.optional(S.Boolean.pipe(T.Query())),
-        }).pipe(T.Http({ method: "GET", uri: "/v1/fixed/plans", code: 200 })),
-      ).annotate({
-        identifier: "GetAllFixedSubscriptionsPlansRequest",
-      });
-  }
-}
-function __c20(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          links: S.optional(__S(12, __c1, 4)),
-        }),
-      ).annotate({ identifier: "FixedSubscriptionsPlans" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({}).pipe(T.Http({ method: "GET", uri: "/v1/acl/redisRules", code: 200 })),
-      ).annotate({ identifier: "GetAllRedisRulesRequest" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({}).pipe(T.Http({ method: "GET", uri: "/v1/subscriptions", code: 200 })),
-      ).annotate({
-        identifier: "GetAllSubscriptionsRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({}).pipe(T.Http({ method: "GET", uri: "/v1/fixed/subscriptions", code: 200 })),
-      ).annotate({
-        identifier: "GetAllSubscriptions1Request",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({}).pipe(T.Http({ method: "GET", uri: "/v1/tasks", code: 200 })),
-      ).annotate({ identifier: "GetAllTasksRequest" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({}).pipe(T.Http({ method: "GET", uri: "/v1/users", code: 200 })),
-      ).annotate({ identifier: "GetAllUsersRequest" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          account: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "AccountUsers" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({}).pipe(T.Http({ method: "GET", uri: "/v1/acl/users", code: 200 })),
-      ).annotate({ identifier: "GetAllUsers1Request" });
-  }
-}
-function __c21(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.Number.pipe(T.Label()),
-        }).pipe(
-          T.Http({ method: "GET", uri: "/v1/subscriptions/{subscriptionId}/cidr", code: 200 }),
-        ),
-      ).annotate({ identifier: "GetCidrWhiteListRequest" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          cloudAccountId: S.Number.pipe(T.Label()),
-        }).pipe(T.Http({ method: "GET", uri: "/v1/cloud-accounts/{cloudAccountId}", code: 200 })),
-      ).annotate({ identifier: "GetCloudAccountRequest" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.Number),
-          name: S.optional(S.String),
-          status: S.optional(S.String),
-          accessKeyId: S.optional(S.String.pipe(T.SensitiveValue({}))),
-          signInLoginUrl: S.optional(S.String),
-          awsUserArn: S.optional(S.String),
-          awsConsoleRoleArn: S.optional(S.String),
-          links: S.optional(__S(12, __c1, 4)),
-          provider: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "CloudAccount" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({}).pipe(T.Http({ method: "GET", uri: "/v1/cloud-accounts", code: 200 })),
-      ).annotate({ identifier: "GetCloudAccountsRequest" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          costReportId: S.String.pipe(T.Label()),
-        }).pipe(T.Http({ method: "GET", uri: "/v1/cost-report/{costReportId}", code: 200 })),
-      ).annotate({ identifier: "GetCostReportRequest" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({}).pipe(T.Http({ method: "GET", uri: "/v1/", code: 200 })),
-      ).annotate({ identifier: "GetCurrentAccountRequest" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.Number.pipe(T.Label()),
-          databaseId: S.Number.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/v1/subscriptions/{subscriptionId}/databases/{databaseId}/available-target-versions",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "GetDatabaseAvailableVersionsRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          redisVersion: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "TargetVersion" });
-  }
-}
-function __c22(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(175, __c21, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          targets: S.optional(__S(176, __c22, 0)),
-        }),
-      ).annotate({
-        identifier: "DatabaseAvailableVersionsResponse",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.Number.pipe(T.Label()),
-          databaseId: S.Number.pipe(T.Label()),
-          regionName: S.optional(S.String.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/v1/subscriptions/{subscriptionId}/databases/{databaseId}/backup",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "GetDatabaseBackupStatusRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.Number.pipe(T.Label()),
-          databaseId: S.Number.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/v1/fixed/subscriptions/{subscriptionId}/databases/{databaseId}/backup",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "GetDatabaseBackupStatus1Request",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.Number.pipe(T.Label()),
-          databaseId: S.Number.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/v1/subscriptions/{subscriptionId}/databases/{databaseId}/import",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "GetDatabaseImportStatusRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.Number.pipe(T.Label()),
-          databaseId: S.Number.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/v1/fixed/subscriptions/{subscriptionId}/databases/{databaseId}/import",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "GetDatabaseImportStatus1Request",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.Number.pipe(T.Label()),
-          databaseId: S.Number.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/v1/subscriptions/{subscriptionId}/databases/{databaseId}/upgrade",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "GetDatabaseRedisVersionUpgradeStatusRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          databaseId: S.optional(S.Number),
-          targetRedisVersion: S.optional(S.String),
-          progress: S.optional(S.Number),
-          upgradeStatus: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "DatabaseVersionUpgradeStatus",
-      });
-  }
-}
-function __c23(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.Number.pipe(T.Label()),
-          databaseId: S.Number.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/v1/subscriptions/{subscriptionId}/databases/{databaseId}/traffic",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "GetDatabaseTrafficRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          bdbId: S.optional(S.Number),
-          trafficStatus: S.optional(S.String),
-          canResume: S.optional(S.Boolean),
-          resumeInProgress: S.optional(S.Boolean),
-          stopReason: S.optional(S.String),
-          resumeEligibleAt: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "DatabaseTrafficStateResponse",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.Number.pipe(T.Label()),
-          databaseId: S.Number.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/v1/fixed/subscriptions/{subscriptionId}/databases/{databaseId}/traffic",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "GetDatabaseTraffic1Request",
-      });
-    case 3:
       return S.suspend(() =>
         S.Struct({}).pipe(
           T.Http({ method: "GET", uri: "/v1/data-integration-workspaces", code: 200 }),
@@ -8800,37 +6845,45 @@ function __c23(j: number): any {
       ).annotate({
         identifier: "GetDataIntegrationWorkspacesRequest",
       });
-    case 4:
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() => S.Unknown.pipe(T.RawResponseRoot())).annotate({
         identifier: "GetDataIntegrationWorkspacesResponse",
       });
-    case 5:
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({}).pipe(T.Http({ method: "GET", uri: "/v1/data-persistence", code: 200 })),
       ).annotate({
         identifier: "GetDataPersistenceOptionsRequest",
       });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
           description: S.optional(S.String),
         }),
       ).annotate({ identifier: "DataPersistenceEntry" });
-    case 7:
-      return S.Array(__S(190, __c23, 6));
-  }
-}
-function __c24(j: number): any {
-  switch (j) {
-    case 0:
+    case 2:
+      return S.Array(__S(97, __c3, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          dataPersistence: S.optional(__S(191, __c23, 7)),
-          links: S.optional(__S(12, __c1, 4)),
+          dataPersistence: S.optional(__S(98, __c3, 2)),
+          links: S.optional(__S(5441, __c170, 1)),
         }),
       ).annotate({ identifier: "DataPersistenceOptions" });
-    case 1:
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           redirectionId: S.String.pipe(T.Label()),
@@ -8840,7 +6893,11 @@ function __c24(j: number): any {
       ).annotate({
         identifier: "GetEndpointsRedirectionStatusRequest",
       });
-    case 2:
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.Number.pipe(T.Label()),
@@ -8855,7 +6912,11 @@ function __c24(j: number): any {
       ).annotate({
         identifier: "GetEssentialsDatabaseAvailableVersionsRequest",
       });
-    case 3:
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.Number.pipe(T.Label()),
@@ -8870,7 +6931,11 @@ function __c24(j: number): any {
       ).annotate({
         identifier: "GetEssentialsDatabaseRedisVersionUpgradeStatusRequest",
       });
-    case 4:
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.Number.pipe(T.Label()),
@@ -8886,16 +6951,24 @@ function __c24(j: number): any {
       ).annotate({
         identifier: "GetFixedSubscriptionDatabasesRequest",
       });
-    case 5:
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.optional(S.Number),
-          links: S.optional(__S(12, __c1, 4)),
+          links: S.optional(__S(5441, __c170, 1)),
         }),
       ).annotate({
         identifier: "AccountFixedSubscriptionDatabases",
       });
-    case 6:
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           planId: S.Number.pipe(T.Label()),
@@ -8903,7 +6976,7 @@ function __c24(j: number): any {
       ).annotate({
         identifier: "GetFixedSubscriptionsPlanByIdRequest",
       });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.Number),
@@ -8930,12 +7003,12 @@ function __c24(j: number): any {
           supportClustering: S.optional(S.Boolean),
           supportSsl: S.optional(S.Boolean),
           customerSupport: S.optional(S.String),
-          links: S.optional(__S(12, __c1, 4)),
+          links: S.optional(__S(5441, __c170, 1)),
         }),
       ).annotate({ identifier: "FixedSubscriptionsPlan" });
   }
 }
-function __c25(j: number): any {
+function __c10(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -8951,41 +7024,38 @@ function __c25(j: number): any {
       ).annotate({
         identifier: "GetFixedSubscriptionsPlansBySubscriptionIdRequest",
       });
-    case 1:
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           storeId: S.String.pipe(T.Label()),
         }).pipe(T.Http({ method: "GET", uri: "/v1/memory-stores/{storeId}", code: 200 })),
       ).annotate({ identifier: "GetMemoryStoreRequest" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          provider: S.optional(S.String),
-          model: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "MemoryStoreModelStatus" });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           ttlSeconds: S.optional(S.Number),
-          embedding: S.optional(__S(202, __c25, 2)),
+          embedding: S.optional(__S(384, __c12, 0)),
         }),
       ).annotate({
         identifier: "MemoryStoreLongTermMemoryStatus",
       });
-    case 4:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           url: S.optional(S.String),
           provider: S.optional(S.String),
           region: S.optional(S.String),
-          egressIps: S.optional(__S(4, __c0, 4)),
+          egressIps: S.optional(__S(5376, __c168, 0)),
           isAccessible: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "MemoryStoreEndpoint" });
-    case 5:
-      return S.Array(__S(204, __c25, 4));
-    case 6:
+    case 3:
+      return S.Array(__S(354, __c11, 2));
+    case 4:
       return S.suspend(() =>
         S.Struct({
           storeId: S.optional(S.String),
@@ -8995,24 +7065,39 @@ function __c25(j: number): any {
           databaseName: S.optional(S.String),
           databaseProvider: S.optional(S.String),
           databaseRegion: S.optional(S.String),
-          databaseAccessCidrs: S.optional(__S(4, __c0, 4)),
+          databaseAccessCidrs: S.optional(__S(5376, __c168, 0)),
           subscriptionId: S.optional(S.String),
-          shortMemory: S.optional(__S(46, __c5, 6)),
-          longTermMemory: S.optional(__S(203, __c25, 3)),
-          llm: S.optional(__S(202, __c25, 2)),
+          shortMemory: S.optional(__S(3424, __c107, 0)),
+          longTermMemory: S.optional(__S(353, __c11, 1)),
+          llm: S.optional(__S(384, __c12, 0)),
           endpoint: S.optional(S.String),
-          endpoints: S.optional(__S(205, __c25, 5)),
+          endpoints: S.optional(__S(355, __c11, 3)),
           extractionStrategy: S.optional(S.String),
-          summarization: S.optional(__S(51, __c6, 3)),
-          longTermMemoryExclusions: S.optional(__S(61, __c7, 5)),
-          customMemoryTypes: S.optional(__S(66, __c8, 2)),
-          extractionCadence: S.optional(__S(67, __c8, 3)),
+          summarization: S.optional(__S(3393, __c106, 1)),
+          longTermMemoryExclusions: S.optional(__S(3434, __c107, 10)),
+          customMemoryTypes: S.optional(__S(3439, __c107, 15)),
+          extractionCadence: S.optional(__S(3440, __c107, 16)),
           status: S.optional(S.String),
           errorMessage: S.optional(S.String),
           errorMessageTimestamp: S.optional(S.Number),
         }),
       ).annotate({ identifier: "MemoryStoreResponse" });
-    case 7:
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          provider: S.optional(S.String),
+          model: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "MemoryStoreModelStatus" });
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.Number.pipe(T.Label()),
@@ -9026,7 +7111,29 @@ function __c25(j: number): any {
       ).annotate({ identifier: "GetPrivateLinkRequest" });
   }
 }
-function __c26(j: number): any {
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.Number.pipe(T.Label()),
+          regionId: S.Number.pipe(T.Label()),
+          principal: S.String,
+          type: S.optional(S.String),
+          alias: S.optional(S.String),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/v1/subscriptions/{subscriptionId}/regions/{regionId}/private-link/principals",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateActiveActivePrivateLinkPrincipalRequest",
+      });
+  }
+}
+function __c15(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -9042,7 +7149,11 @@ function __c26(j: number): any {
       ).annotate({
         identifier: "GetPrivateLinkEndpointScriptRequest",
       });
-    case 1:
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.Number.pipe(T.Label()),
@@ -9054,7 +7165,11 @@ function __c26(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetPscServiceRequest" });
-    case 2:
+  }
+}
+function __c17(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.Number.pipe(T.Label()),
@@ -9070,7 +7185,11 @@ function __c26(j: number): any {
       ).annotate({
         identifier: "GetPscServiceEndpointCreationScriptRequest",
       });
-    case 3:
+  }
+}
+function __c18(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.Number.pipe(T.Label()),
@@ -9086,7 +7205,11 @@ function __c26(j: number): any {
       ).annotate({
         identifier: "GetPscServiceEndpointDeletionScriptRequest",
       });
-    case 4:
+  }
+}
+function __c19(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.Number.pipe(T.Label()),
@@ -9101,13 +7224,21 @@ function __c26(j: number): any {
       ).annotate({
         identifier: "GetPscServiceEndpointsRequest",
       });
-    case 5:
+  }
+}
+function __c20(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.optional(S.Number.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/v1/subscriptions/redis-versions", code: 200 })),
       ).annotate({ identifier: "GetRedisVersionsRequest" });
-    case 6:
+  }
+}
+function __c21(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           version: S.optional(S.String),
@@ -9116,25 +7247,29 @@ function __c26(j: number): any {
           isDefault: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "RedisVersion" });
-    case 7:
-      return S.Array(__S(214, __c26, 6));
-  }
-}
-function __c27(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
+      return S.Array(__S(672, __c21, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          redisVersions: S.optional(__S(215, __c26, 7)),
+          redisVersions: S.optional(__S(673, __c21, 1)),
         }),
       ).annotate({ identifier: "RedisVersions" });
-    case 1:
+  }
+}
+function __c22(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.Number.pipe(T.Query()),
         }).pipe(T.Http({ method: "GET", uri: "/v1/fixed/redis-versions", code: 200 })),
       ).annotate({ identifier: "GetRedisVersions1Request" });
-    case 2:
+  }
+}
+function __c23(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.Number.pipe(T.Label()),
@@ -9144,20 +7279,28 @@ function __c27(j: number): any {
       ).annotate({
         identifier: "GetRegionsFromActiveActiveSubscriptionRequest",
       });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.optional(S.Number),
-          links: S.optional(__S(12, __c1, 4)),
+          links: S.optional(__S(5441, __c170, 1)),
         }),
       ).annotate({
         identifier: "ActiveActiveSubscriptionRegions",
       });
-    case 4:
+  }
+}
+function __c24(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({}).pipe(T.Http({ method: "GET", uri: "/v1/acl/roles", code: 200 })),
       ).annotate({ identifier: "GetRolesRequest" });
-    case 5:
+  }
+}
+function __c25(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.Number.pipe(T.Label()),
@@ -9171,7 +7314,11 @@ function __c27(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetSlowLogRequest" });
-    case 6:
+  }
+}
+function __c26(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.Number),
@@ -9180,20 +7327,39 @@ function __c27(j: number): any {
           arguments: S.optional(S.String),
         }),
       ).annotate({ identifier: "DatabaseSlowLogEntry" });
-    case 7:
-      return S.Array(__S(222, __c27, 6));
+    case 1:
+      return S.Array(__S(832, __c26, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          entries: S.optional(__S(833, __c26, 1)),
+          links: S.optional(__S(5441, __c170, 1)),
+        }),
+      ).annotate({ identifier: "DatabaseSlowLogEntries" });
+  }
+}
+function __c27(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.Number.pipe(T.Label()),
+          regionId: S.Number.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/v1/subscriptions/{subscriptionId}/regions/{regionId}/private-service-connect",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateActiveActivePscServiceRequest",
+      });
   }
 }
 function __c28(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() =>
-        S.Struct({
-          entries: S.optional(__S(223, __c27, 7)),
-          links: S.optional(__S(12, __c1, 4)),
-        }),
-      ).annotate({ identifier: "DatabaseSlowLogEntries" });
-    case 1:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.Number.pipe(T.Label()),
@@ -9206,26 +7372,30 @@ function __c28(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetSlowLog1Request" });
-    case 2:
+  }
+}
+function __c29(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.Number.pipe(T.Label()),
         }).pipe(T.Http({ method: "GET", uri: "/v1/subscriptions/{subscriptionId}", code: 200 })),
       ).annotate({ identifier: "GetSubscriptionRequest" });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           redisServiceAccount: S.optional(S.String),
-          googlePredefinedRoles: S.optional(__S(4, __c0, 4)),
-          googleCustomPermissions: S.optional(__S(4, __c0, 4)),
+          googlePredefinedRoles: S.optional(__S(5376, __c168, 0)),
+          googleCustomPermissions: S.optional(__S(5376, __c168, 0)),
           redisIamRole: S.optional(S.String),
           requiredKeyPolicyStatements: S.optional(S.Unknown),
-          deletionGracePeriodOptions: S.optional(__S(4, __c0, 4)),
+          deletionGracePeriodOptions: S.optional(__S(5376, __c168, 0)),
         }),
       ).annotate({
         identifier: "CustomerManagedKeyAccessDetails",
       });
-    case 4:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.Number),
@@ -9236,13 +7406,17 @@ function __c28(j: number): any {
           memoryStorage: S.optional(S.String),
           numberOfDatabases: S.optional(S.Number),
           paymentMethodType: S.optional(S.String),
-          links: S.optional(__S(12, __c1, 4)),
+          links: S.optional(__S(5441, __c170, 1)),
           persistentStorageEncryptionType: S.optional(S.String),
           deletionGracePeriod: S.optional(S.String),
-          customerManagedKeyAccessDetails: S.optional(__S(227, __c28, 3)),
+          customerManagedKeyAccessDetails: S.optional(__S(929, __c29, 1)),
         }),
       ).annotate({ identifier: "Subscription" });
-    case 5:
+  }
+}
+function __c30(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.Number.pipe(T.Label()),
@@ -9252,7 +7426,7 @@ function __c28(j: number): any {
       ).annotate({
         identifier: "GetSubscriptionById1Request",
       });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.Number),
@@ -9280,11 +7454,15 @@ function __c28(j: number): any {
           supportClustering: S.optional(S.Boolean),
           customerSupport: S.optional(S.String),
           creationDate: S.optional(S.String),
-          links: S.optional(__S(12, __c1, 4)),
+          links: S.optional(__S(5441, __c170, 1)),
           databaseStatus: S.optional(S.String),
         }),
       ).annotate({ identifier: "FixedSubscription" });
-    case 7:
+  }
+}
+function __c31(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.Number.pipe(T.Label()),
@@ -9299,18 +7477,18 @@ function __c28(j: number): any {
       ).annotate({
         identifier: "GetSubscriptionDatabaseRequest",
       });
-  }
-}
-function __c29(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           databaseId: S.optional(S.Number),
-          links: S.optional(__S(12, __c1, 4)),
+          links: S.optional(__S(5441, __c170, 1)),
         }),
       ).annotate({ identifier: "Database" });
-    case 1:
+  }
+}
+function __c32(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.Number.pipe(T.Label()),
@@ -9325,14 +7503,14 @@ function __c29(j: number): any {
       ).annotate({
         identifier: "GetSubscriptionDatabaseByID1Request",
       });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           public: S.optional(S.String),
           private: S.optional(S.String),
         }),
       ).annotate({ identifier: "DynamicEndpoints" });
-    case 3:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           databaseId: S.optional(S.Number),
@@ -9362,12 +7540,16 @@ function __c29(j: number): any {
           lastModified: S.optional(S.String),
           publicEndpoint: S.optional(S.String),
           privateEndpoint: S.optional(S.String),
-          dynamicEndpoints: S.optional(__S(234, __c29, 2)),
-          replicaAsSourceEndpoints: S.optional(__S(234, __c29, 2)),
-          links: S.optional(__S(12, __c1, 4)),
+          dynamicEndpoints: S.optional(__S(1025, __c32, 1)),
+          replicaAsSourceEndpoints: S.optional(__S(1025, __c32, 1)),
+          links: S.optional(__S(5441, __c170, 1)),
         }),
       ).annotate({ identifier: "FixedDatabase" });
-    case 4:
+  }
+}
+function __c33(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.Number.pipe(T.Label()),
@@ -9382,13 +7564,17 @@ function __c29(j: number): any {
       ).annotate({
         identifier: "GetSubscriptionDatabaseCertificateRequest",
       });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           publicCertificatePEMString: S.optional(S.String),
         }),
       ).annotate({ identifier: "DatabaseCertificate" });
-    case 6:
+  }
+}
+function __c34(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.Number.pipe(T.Label()),
@@ -9400,7 +7586,11 @@ function __c29(j: number): any {
       ).annotate({
         identifier: "GetSubscriptionDatabasesRequest",
       });
-    case 7:
+  }
+}
+function __c35(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.Number.pipe(T.Label()),
@@ -9414,21 +7604,17 @@ function __c29(j: number): any {
       ).annotate({
         identifier: "GetSubscriptionMaintenanceWindowsRequest",
       });
-  }
-}
-function __c30(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          days: S.optional(__S(4, __c0, 4)),
+          days: S.optional(__S(5376, __c168, 0)),
           startHour: S.optional(S.Number),
           durationInHours: S.optional(S.Number),
         }),
       ).annotate({ identifier: "MaintenanceWindow" });
-    case 1:
-      return S.Array(__S(240, __c30, 0));
     case 2:
+      return S.Array(__S(1121, __c35, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
           remainingSkips: S.optional(S.Number),
@@ -9437,18 +7623,22 @@ function __c30(j: number): any {
       ).annotate({
         identifier: "MaintenanceWindowSkipStatus",
       });
-    case 3:
+    case 4:
       return S.suspend(() =>
         S.Struct({
           mode: S.optional(S.String),
           timeZone: S.optional(S.String),
-          windows: S.optional(__S(241, __c30, 1)),
-          skipStatus: S.optional(__S(242, __c30, 2)),
+          windows: S.optional(__S(1122, __c35, 2)),
+          skipStatus: S.optional(__S(1123, __c35, 3)),
         }),
       ).annotate({
         identifier: "SubscriptionMaintenanceWindows",
       });
-    case 4:
+  }
+}
+function __c36(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.Number.pipe(T.Label()),
@@ -9458,7 +7648,7 @@ function __c30(j: number): any {
       ).annotate({
         identifier: "GetSubscriptionPricingRequest",
       });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           type: S.optional(S.String),
@@ -9471,17 +7661,17 @@ function __c30(j: number): any {
           region: S.optional(S.String),
         }),
       ).annotate({ identifier: "SubscriptionPricing" });
-    case 6:
-      return S.Array(__S(245, __c30, 5));
-    case 7:
+    case 2:
+      return S.Array(__S(1153, __c36, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          pricing: S.optional(__S(246, __c30, 6)),
+          pricing: S.optional(__S(1154, __c36, 2)),
         }),
       ).annotate({ identifier: "SubscriptionPricings" });
   }
 }
-function __c31(j: number): any {
+function __c37(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -9498,15 +7688,43 @@ function __c31(j: number): any {
         }),
       ).annotate({ identifier: "Module" });
     case 2:
-      return S.Array(__S(249, __c31, 1));
+      return S.Array(__S(1185, __c37, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          modules: S.optional(__S(250, __c31, 2)),
-          links: S.optional(__S(12, __c1, 4)),
+          modules: S.optional(__S(1186, __c37, 2)),
+          links: S.optional(__S(5441, __c170, 1)),
         }),
       ).annotate({ identifier: "ModulesData" });
-    case 4:
+  }
+}
+function __c38(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.Number.pipe(T.Label()),
+          regionId: S.Number.pipe(T.Label()),
+          pscServiceId: S.Number.pipe(T.Label()),
+          gcpProjectId: S.String,
+          gcpVpcName: S.String,
+          gcpVpcSubnetName: S.String,
+          endpointConnectionName: S.String,
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/v1/subscriptions/{subscriptionId}/regions/{regionId}/private-service-connect/{pscServiceId}",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateActiveActivePscServiceEndpointRequest",
+      });
+  }
+}
+function __c39(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           provider: S.optional(S.String.pipe(T.Query())),
@@ -9514,7 +7732,7 @@ function __c31(j: number): any {
       ).annotate({
         identifier: "GetSupportedRegionsRequest",
       });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.Number),
@@ -9522,18 +7740,18 @@ function __c31(j: number): any {
           provider: S.optional(S.String),
         }),
       ).annotate({ identifier: "Region" });
-    case 6:
-      return S.Array(__S(253, __c31, 5));
-    case 7:
+    case 2:
+      return S.Array(__S(1249, __c39, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          regions: S.optional(__S(254, __c31, 6)),
-          links: S.optional(__S(12, __c1, 4)),
+          regions: S.optional(__S(1250, __c39, 2)),
+          links: S.optional(__S(5441, __c170, 1)),
         }),
       ).annotate({ identifier: "Regions" });
   }
 }
-function __c32(j: number): any {
+function __c40(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -9546,11 +7764,15 @@ function __c32(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          queryPerformanceFactors: S.optional(__S(4, __c0, 4)),
-          links: S.optional(__S(12, __c1, 4)),
+          queryPerformanceFactors: S.optional(__S(5376, __c168, 0)),
+          links: S.optional(__S(5441, __c170, 1)),
         }),
       ).annotate({ identifier: "SearchScalingFactorsData" });
-    case 2:
+  }
+}
+function __c41(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.Number.pipe(T.Label()),
@@ -9563,14 +7785,22 @@ function __c32(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetTagsRequest" });
-    case 3:
+  }
+}
+function __c42(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          links: S.optional(__S(12, __c1, 4)),
+          links: S.optional(__S(5441, __c170, 1)),
           accountId: S.optional(S.Number),
         }),
       ).annotate({ identifier: "CloudTags" });
-    case 4:
+  }
+}
+function __c43(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.Number.pipe(T.Label()),
@@ -9583,13 +7813,21 @@ function __c32(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetTags1Request" });
-    case 5:
+  }
+}
+function __c44(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           taskId: S.String.pipe(T.Label()),
         }).pipe(T.Http({ method: "GET", uri: "/v1/tasks/{taskId}", code: 200 })),
       ).annotate({ identifier: "GetTaskRequest" });
-    case 6:
+  }
+}
+function __c45(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.Number.pipe(T.Label()),
@@ -9601,7 +7839,11 @@ function __c32(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetTgwsRequest" });
-    case 7:
+  }
+}
+function __c46(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.Number.pipe(T.Label()),
@@ -9617,7 +7859,7 @@ function __c32(j: number): any {
       });
   }
 }
-function __c33(j: number): any {
+function __c47(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -9644,26 +7886,34 @@ function __c33(j: number): any {
           signUp: S.optional(S.String),
           userType: S.optional(S.String),
           hasApiKey: S.optional(S.Boolean),
-          options: S.optional(__S(265, __c33, 1)),
+          options: S.optional(__S(1505, __c47, 1)),
         }),
       ).annotate({ identifier: "AccountUser" });
-    case 3:
+  }
+}
+function __c48(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           aclUserId: S.Number.pipe(T.Label()),
         }).pipe(T.Http({ method: "GET", uri: "/v1/acl/users/{aclUserId}", code: 200 })),
       ).annotate({ identifier: "GetUserByIDRequest" });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.Number),
           name: S.optional(S.String),
           role: S.optional(S.String),
           status: S.optional(S.String),
-          links: S.optional(__S(12, __c1, 4)),
+          links: S.optional(__S(5441, __c170, 1)),
         }),
       ).annotate({ identifier: "ACLUser" });
-    case 5:
+  }
+}
+function __c49(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.Number.pipe(T.Label()),
@@ -9671,13 +7921,37 @@ function __c33(j: number): any {
           T.Http({ method: "GET", uri: "/v1/subscriptions/{subscriptionId}/peerings", code: 200 }),
         ),
       ).annotate({ identifier: "GetVpcPeeringRequest" });
-    case 6:
+  }
+}
+function __c50(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.Number.pipe(T.Label()),
+          regionId: S.Number.pipe(T.Label()),
+          TgwId: S.Number.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/v1/subscriptions/{subscriptionId}/regions/{regionId}/transitGateways/{TgwId}/attachment",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateActiveActiveTgwAttachmentRequest",
+      });
+  }
+}
+function __c51(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.Number.pipe(T.Label()),
           databaseId: S.Number.pipe(T.Label()),
           sourceType: S.String,
-          importFromUri: __S(4, __c0, 4),
+          importFromUri: __S(5376, __c168, 0),
         }).pipe(
           T.Http({
             method: "POST",
@@ -9686,13 +7960,17 @@ function __c33(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ImportDatabaseRequest" });
-    case 7:
+  }
+}
+function __c52(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.Number.pipe(T.Label()),
           databaseId: S.Number.pipe(T.Label()),
           sourceType: S.String,
-          importFromUri: __S(4, __c0, 4),
+          importFromUri: __S(5376, __c168, 0),
         }).pipe(
           T.Http({
             method: "POST",
@@ -9703,7 +7981,7 @@ function __c33(j: number): any {
       ).annotate({ identifier: "ImportDatabase1Request" });
   }
 }
-function __c34(j: number): any {
+function __c53(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -9713,11 +7991,15 @@ function __c34(j: number): any {
       ).annotate({
         identifier: "ListMemoryStoreApiKeysRequest",
       });
-    case 1:
+  }
+}
+function __c54(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({}).pipe(T.Http({ method: "GET", uri: "/v1/memory-stores", code: 200 })),
       ).annotate({ identifier: "ListMemoryStoresRequest" });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           storeId: S.optional(S.String),
@@ -9727,20 +8009,24 @@ function __c34(j: number): any {
           databaseName: S.optional(S.String),
           subscriptionId: S.optional(S.String),
           extractionStrategy: S.optional(S.String),
-          summarization: S.optional(__S(51, __c6, 3)),
-          llm: S.optional(__S(202, __c25, 2)),
+          summarization: S.optional(__S(3393, __c106, 1)),
+          llm: S.optional(__S(384, __c12, 0)),
           status: S.optional(S.String),
         }),
       ).annotate({ identifier: "MemoryStoreSummary" });
+    case 2:
+      return S.Array(__S(1729, __c54, 1));
     case 3:
-      return S.Array(__S(274, __c34, 2));
-    case 4:
       return S.suspend(() =>
         S.Struct({
-          data: S.optional(__S(275, __c34, 3)),
+          data: S.optional(__S(1730, __c54, 2)),
         }),
       ).annotate({ identifier: "MemoryStoreListResponse" });
-    case 5:
+  }
+}
+function __c55(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.Number.pipe(T.Label()),
@@ -9755,7 +8041,11 @@ function __c34(j: number): any {
       ).annotate({
         identifier: "ProxyDataIntegrationWorkspace5Request",
       });
-    case 6:
+  }
+}
+function __c56(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.Number.pipe(T.Label()),
@@ -9769,7 +8059,11 @@ function __c34(j: number): any {
       ).annotate({
         identifier: "ProxyDataIntegrationWorkspace6Request",
       });
-    case 7:
+  }
+}
+function __c57(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.Number.pipe(T.Label()),
@@ -9785,7 +8079,7 @@ function __c34(j: number): any {
       });
   }
 }
-function __c35(j: number): any {
+function __c58(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -9801,7 +8095,11 @@ function __c35(j: number): any {
       ).annotate({
         identifier: "ProxyDataIntegrationWorkspace8Request",
       });
-    case 1:
+  }
+}
+function __c59(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.Number.pipe(T.Label()),
@@ -9815,7 +8113,11 @@ function __c35(j: number): any {
       ).annotate({
         identifier: "ProxyDataIntegrationWorkspace9Request",
       });
-    case 2:
+  }
+}
+function __c60(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.Number.pipe(T.Label()),
@@ -9831,7 +8133,31 @@ function __c35(j: number): any {
       ).annotate({
         identifier: "RejectActiveActiveTgwResourceShareRequest",
       });
-    case 3:
+  }
+}
+function __c61(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.Number.pipe(T.Label()),
+          provider: S.optional(S.String),
+          sourceRegion: S.String,
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/v1/subscriptions/{subscriptionId}/regions/peerings",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateActiveActiveVpcPeeringRequest",
+      });
+  }
+}
+function __c62(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.Number.pipe(T.Label()),
@@ -9846,7 +8172,11 @@ function __c35(j: number): any {
       ).annotate({
         identifier: "RejectTgwResourceShareRequest",
       });
-    case 4:
+  }
+}
+function __c63(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.Number.pipe(T.Label()),
@@ -9859,7 +8189,11 @@ function __c35(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ResumeBdbTrafficRequest" });
-    case 5:
+  }
+}
+function __c64(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.Number.pipe(T.Label()),
@@ -9872,7 +8206,11 @@ function __c35(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ResumeBdbTraffic1Request" });
-    case 6:
+  }
+}
+function __c65(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           redirectionId: S.String.pipe(T.Label()),
@@ -9886,7 +8224,11 @@ function __c35(j: number): any {
       ).annotate({
         identifier: "RevertEndpointsRedirectionRequest",
       });
-    case 7:
+  }
+}
+function __c66(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.Number.pipe(T.Label()),
@@ -9910,23 +8252,15 @@ function __c35(j: number): any {
       });
   }
 }
-function __c36(j: number): any {
+function __c67(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() =>
-        S.Struct({
-          cidrAddress: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Cidr" });
-    case 1:
-      return S.Array(__S(288, __c36, 0));
-    case 2:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.Number.pipe(T.Label()),
           regionId: S.Number.pipe(T.Label()),
           TgwId: S.Number.pipe(T.Label()),
-          cidrs: S.optional(__S(289, __c36, 1)),
+          cidrs: S.optional(__S(2177, __c68, 1)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -9937,13 +8271,29 @@ function __c36(j: number): any {
       ).annotate({
         identifier: "UpdateActiveActiveTgwAttachmentCidrsRequest",
       });
-    case 3:
+  }
+}
+function __c68(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          cidrAddress: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Cidr" });
+    case 1:
+      return S.Array(__S(2176, __c68, 0));
+  }
+}
+function __c69(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.Number.pipe(T.Label()),
           peeringId: S.Number.pipe(T.Label()),
           vpcCidr: S.optional(S.String),
-          vpcCidrs: S.optional(__S(4, __c0, 4)),
+          vpcCidrs: S.optional(__S(5376, __c168, 0)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -9954,7 +8304,11 @@ function __c36(j: number): any {
       ).annotate({
         identifier: "UpdateActiveActiveVpcPeeringRequest",
       });
-    case 4:
+  }
+}
+function __c70(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           cloudAccountId: S.Number.pipe(T.Label()),
@@ -9968,25 +8322,29 @@ function __c36(j: number): any {
       ).annotate({
         identifier: "UpdateCloudAccountRequest",
       });
-    case 5:
+  }
+}
+function __c71(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           region: S.optional(S.String),
-          remoteBackup: S.optional(__S(32, __c4, 0)),
-          localThroughputMeasurement: S.optional(__S(6, __c0, 6)),
+          remoteBackup: S.optional(__S(3072, __c96, 0)),
+          localThroughputMeasurement: S.optional(__S(5408, __c169, 0)),
           dataPersistence: S.optional(S.String),
           password: S.optional(S.String.pipe(T.SensitiveValue({}))),
-          sourceIp: S.optional(__S(4, __c0, 4)),
-          alerts: S.optional(__S(36, __c4, 4)),
+          sourceIp: S.optional(__S(5376, __c168, 0)),
+          alerts: S.optional(__S(3139, __c98, 3)),
           respVersion: S.optional(S.String),
           enableDefaultUser: S.optional(S.Boolean),
         }),
       ).annotate({
         identifier: "LocalRegionPropertiesInput",
       });
-    case 6:
-      return S.Array(__S(293, __c36, 5));
-    case 7:
+    case 1:
+      return S.Array(__S(2272, __c71, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.Number.pipe(T.Label()),
@@ -9998,14 +8356,14 @@ function __c36(j: number): any {
           supportOSSClusterApi: S.optional(S.Boolean),
           useExternalEndpointForOSSClusterApi: S.optional(S.Boolean),
           clientSslCertificate: S.optional(S.String),
-          clientTlsCertificates: S.optional(__S(34, __c4, 2)),
+          clientTlsCertificates: S.optional(__S(3137, __c98, 1)),
           enableTls: S.optional(S.Boolean),
           globalDataPersistence: S.optional(S.String),
           globalPassword: S.optional(S.String.pipe(T.SensitiveValue({}))),
           globalEnableDefaultUser: S.optional(S.Boolean),
-          globalSourceIp: S.optional(__S(4, __c0, 4)),
-          globalAlerts: S.optional(__S(36, __c4, 4)),
-          regions: S.optional(__S(294, __c36, 6)),
+          globalSourceIp: S.optional(__S(5376, __c168, 0)),
+          globalAlerts: S.optional(__S(3139, __c98, 3)),
+          regions: S.optional(__S(2273, __c71, 1)),
           dataEvictionPolicy: S.optional(S.String),
           autoMinorVersionUpgrade: S.optional(S.Boolean),
         }).pipe(
@@ -10020,7 +8378,7 @@ function __c36(j: number): any {
       });
   }
 }
-function __c37(j: number): any {
+function __c72(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -10032,26 +8390,26 @@ function __c37(j: number): any {
           memoryLimitInGb: S.optional(S.Number),
           datasetSizeInGb: S.optional(S.Number),
           respVersion: S.optional(S.String),
-          throughputMeasurement: S.optional(__S(30, __c3, 6)),
+          throughputMeasurement: S.optional(__S(3232, __c101, 0)),
           dataPersistence: S.optional(S.String),
           dataEvictionPolicy: S.optional(S.String),
           replication: S.optional(S.Boolean),
-          regexRules: S.optional(__S(4, __c0, 4)),
-          replicaOf: S.optional(__S(4, __c0, 4)),
-          replica: S.optional(__S(29, __c3, 5)),
+          regexRules: S.optional(__S(5376, __c168, 0)),
+          replicaOf: S.optional(__S(5376, __c168, 0)),
+          replica: S.optional(__S(3170, __c99, 2)),
           supportOSSClusterApi: S.optional(S.Boolean),
           useExternalEndpointForOSSClusterApi: S.optional(S.Boolean),
           password: S.optional(S.String.pipe(T.SensitiveValue({}))),
           saslUsername: S.optional(S.String),
           saslPassword: S.optional(S.String.pipe(T.SensitiveValue({}))),
-          sourceIp: S.optional(__S(4, __c0, 4)),
+          sourceIp: S.optional(__S(5376, __c168, 0)),
           clientSslCertificate: S.optional(S.String),
-          clientTlsCertificates: S.optional(__S(34, __c4, 2)),
+          clientTlsCertificates: S.optional(__S(3137, __c98, 1)),
           enableTls: S.optional(S.Boolean),
           enableDefaultUser: S.optional(S.Boolean),
           periodicBackupPath: S.optional(S.String),
-          remoteBackup: S.optional(__S(32, __c4, 0)),
-          alerts: S.optional(__S(36, __c4, 4)),
+          remoteBackup: S.optional(__S(3072, __c96, 0)),
+          alerts: S.optional(__S(3139, __c98, 3)),
           ramPercentage: S.optional(S.Number),
           autoMinorVersionUpgrade: S.optional(S.Boolean),
           queryPerformanceFactor: S.optional(S.String),
@@ -10063,16 +8421,38 @@ function __c37(j: number): any {
           }),
         ),
       ).annotate({ identifier: "UpdateDatabaseRequest" });
-    case 1:
+  }
+}
+function __c73(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String,
+          provider: S.optional(S.String),
+          accessKeyId: S.String.pipe(T.SensitiveValue({})),
+          accessSecretKey: S.String.pipe(T.SensitiveValue({})),
+          consoleUsername: S.String,
+          consolePassword: S.String.pipe(T.SensitiveValue({})),
+          signInLoginUrl: S.String,
+        }).pipe(T.Http({ method: "POST", uri: "/v1/cloud-accounts", code: 200 })),
+      ).annotate({
+        identifier: "CreateCloudAccountRequest",
+      });
+  }
+}
+function __c74(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           ttlSeconds: S.optional(S.Number),
-          embedding: S.optional(__S(48, __c6, 0)),
+          embedding: S.optional(__S(3457, __c108, 1)),
         }),
       ).annotate({
         identifier: "MemoryStoreLongTermMemoryUpdateConfig",
       });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           typeName: S.String,
@@ -10082,24 +8462,28 @@ function __c37(j: number): any {
       ).annotate({
         identifier: "MemoryStoreTypeStrategyUpdate",
       });
+    case 2:
+      return S.Array(__S(2369, __c74, 1));
     case 3:
-      return S.Array(__S(298, __c37, 2));
-    case 4:
       return S.suspend(() =>
         S.Struct({
           storeId: S.String.pipe(T.Label()),
           name: S.optional(S.String),
-          shortMemory: S.optional(__S(46, __c5, 6)),
-          longTermMemory: S.optional(__S(297, __c37, 1)),
-          llm: S.optional(__S(48, __c6, 0)),
-          summarization: S.optional(__S(51, __c6, 3)),
-          longTermMemoryExclusions: S.optional(__S(61, __c7, 5)),
-          addCustomMemoryTypes: S.optional(__S(66, __c8, 2)),
-          updateCustomMemoryTypeStrategies: S.optional(__S(299, __c37, 3)),
-          extractionCadence: S.optional(__S(67, __c8, 3)),
+          shortMemory: S.optional(__S(3424, __c107, 0)),
+          longTermMemory: S.optional(__S(2368, __c74, 0)),
+          llm: S.optional(__S(3457, __c108, 1)),
+          summarization: S.optional(__S(3393, __c106, 1)),
+          longTermMemoryExclusions: S.optional(__S(3434, __c107, 10)),
+          addCustomMemoryTypes: S.optional(__S(3439, __c107, 15)),
+          updateCustomMemoryTypeStrategies: S.optional(__S(2370, __c74, 2)),
+          extractionCadence: S.optional(__S(3440, __c107, 16)),
         }).pipe(T.Http({ method: "PATCH", uri: "/v1/memory-stores/{storeId}", code: 200 })),
       ).annotate({ identifier: "UpdateMemoryStoreRequest" });
-    case 5:
+  }
+}
+function __c75(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.Number.pipe(T.Label()),
@@ -10120,7 +8504,11 @@ function __c37(j: number): any {
       ).annotate({
         identifier: "UpdatePscServiceEndpointRequest",
       });
-    case 6:
+  }
+}
+function __c76(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           aclRedisRuleId: S.Number.pipe(T.Label()),
@@ -10128,17 +8516,21 @@ function __c37(j: number): any {
           redisRule: S.String,
         }).pipe(T.Http({ method: "PUT", uri: "/v1/acl/redisRules/{aclRedisRuleId}", code: 200 })),
       ).annotate({ identifier: "UpdateRedisRuleRequest" });
-    case 7:
+  }
+}
+function __c77(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           aclRoleId: S.Number.pipe(T.Label()),
           name: S.optional(S.String),
-          redisRules: S.optional(__S(79, __c9, 7)),
+          redisRules: S.optional(__S(3715, __c116, 3)),
         }).pipe(T.Http({ method: "PUT", uri: "/v1/acl/roles/{aclRoleId}", code: 200 })),
       ).annotate({ identifier: "UpdateRoleRequest" });
   }
 }
-function __c38(j: number): any {
+function __c78(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -10148,7 +8540,11 @@ function __c38(j: number): any {
       ).annotate({
         identifier: "UpdateSubscriptionRequest",
       });
-    case 1:
+  }
+}
+function __c79(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.Number.pipe(T.Label()),
@@ -10162,34 +8558,42 @@ function __c38(j: number): any {
       ).annotate({
         identifier: "UpdateSubscription1Request",
       });
-    case 2:
+  }
+}
+function __c80(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.Number.pipe(T.Label()),
-          cidrIps: S.optional(__S(4, __c0, 4)),
-          securityGroupIds: S.optional(__S(4, __c0, 4)),
+          cidrIps: S.optional(__S(5376, __c168, 0)),
+          securityGroupIds: S.optional(__S(5376, __c168, 0)),
         }).pipe(
           T.Http({ method: "PUT", uri: "/v1/subscriptions/{subscriptionId}/cidr", code: 200 }),
         ),
       ).annotate({
         identifier: "UpdateSubscriptionCidrWhiteListRequest",
       });
-    case 3:
+  }
+}
+function __c81(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           startHour: S.Number,
           durationInHours: S.Number,
-          days: __S(4, __c0, 4),
+          days: __S(5376, __c168, 0),
         }),
       ).annotate({ identifier: "MaintenanceWindowSpec" });
-    case 4:
-      return S.Array(__S(307, __c38, 3));
-    case 5:
+    case 1:
+      return S.Array(__S(2592, __c81, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.Number.pipe(T.Label()),
           mode: S.String,
-          windows: S.optional(__S(308, __c38, 4)),
+          windows: S.optional(__S(2593, __c81, 1)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -10200,11 +8604,15 @@ function __c38(j: number): any {
       ).annotate({
         identifier: "UpdateSubscriptionMaintenanceWindowsRequest",
       });
-    case 6:
+  }
+}
+function __c82(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.Number.pipe(T.Label()),
-          resourceTags: __S(88, __c11, 0),
+          resourceTags: __S(3777, __c118, 1),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -10215,7 +8623,11 @@ function __c38(j: number): any {
       ).annotate({
         identifier: "UpdateSubscriptionResourceTagsRequest",
       });
-    case 7:
+  }
+}
+function __c83(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.Number.pipe(T.Label()),
@@ -10232,7 +8644,39 @@ function __c38(j: number): any {
       ).annotate({ identifier: "UpdateTagRequest" });
   }
 }
-function __c39(j: number): any {
+function __c84(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.Number);
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          startDate: S.String,
+          endDate: S.String,
+          format: S.optional(S.String),
+          subscriptionIds: S.optional(__S(2688, __c84, 0)),
+          databaseIds: S.optional(__S(2688, __c84, 0)),
+          subscriptionType: S.optional(S.String),
+          regions: S.optional(__S(5376, __c168, 0)),
+          tags: S.optional(__S(2721, __c85, 1)),
+        }).pipe(T.Http({ method: "POST", uri: "/v1/cost-report", code: 200 })),
+      ).annotate({ identifier: "CreateCostReportRequest" });
+  }
+}
+function __c85(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          key: S.String,
+          value: S.String,
+        }),
+      ).annotate({ identifier: "Tag" });
+    case 1:
+      return S.Array(__S(2720, __c85, 0));
+  }
+}
+function __c86(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -10249,12 +8693,16 @@ function __c39(j: number): any {
           }),
         ),
       ).annotate({ identifier: "UpdateTag1Request" });
-    case 1:
+  }
+}
+function __c87(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.Number.pipe(T.Label()),
           databaseId: S.Number.pipe(T.Label()),
-          tags: __S(25, __c3, 1),
+          tags: __S(2721, __c85, 1),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -10263,12 +8711,16 @@ function __c39(j: number): any {
           }),
         ),
       ).annotate({ identifier: "UpdateTagsRequest" });
-    case 2:
+  }
+}
+function __c88(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.Number.pipe(T.Label()),
           databaseId: S.Number.pipe(T.Label()),
-          tags: __S(25, __c3, 1),
+          tags: __S(2721, __c85, 1),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -10277,12 +8729,16 @@ function __c39(j: number): any {
           }),
         ),
       ).annotate({ identifier: "UpdateTags1Request" });
-    case 3:
+  }
+}
+function __c89(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.Number.pipe(T.Label()),
           TgwId: S.Number.pipe(T.Label()),
-          cidrs: S.optional(__S(289, __c36, 1)),
+          cidrs: S.optional(__S(2177, __c68, 1)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -10293,7 +8749,11 @@ function __c39(j: number): any {
       ).annotate({
         identifier: "UpdateTgwAttachmentCidrsRequest",
       });
-    case 4:
+  }
+}
+function __c90(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           userId: S.Number.pipe(T.Label()),
@@ -10301,7 +8761,11 @@ function __c39(j: number): any {
           role: S.optional(S.String),
         }).pipe(T.Http({ method: "PUT", uri: "/v1/users/{userId}", code: 200 })),
       ).annotate({ identifier: "UpdateUserRequest" });
-    case 5:
+  }
+}
+function __c91(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           aclUserId: S.Number.pipe(T.Label()),
@@ -10309,13 +8773,17 @@ function __c39(j: number): any {
           password: S.optional(S.String.pipe(T.SensitiveValue({}))),
         }).pipe(T.Http({ method: "PUT", uri: "/v1/acl/users/{aclUserId}", code: 200 })),
       ).annotate({ identifier: "UpdateUser1Request" });
-    case 6:
+  }
+}
+function __c92(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.Number.pipe(T.Label()),
           peeringId: S.Number.pipe(T.Label()),
           vpcCidr: S.optional(S.String),
-          vpcCidrs: S.optional(__S(4, __c0, 4)),
+          vpcCidrs: S.optional(__S(5376, __c168, 0)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -10324,7 +8792,11 @@ function __c39(j: number): any {
           }),
         ),
       ).annotate({ identifier: "UpdateVpcPeeringRequest" });
-    case 7:
+  }
+}
+function __c93(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.Number.pipe(T.Label()),
@@ -10342,7 +8814,7 @@ function __c39(j: number): any {
       });
   }
 }
-function __c40(j: number): any {
+function __c94(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -10362,7 +8834,2202 @@ function __c40(j: number): any {
       });
   }
 }
-
+function __c95(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.Number.pipe(T.Label()),
+          dryRun: S.optional(S.Boolean),
+          name: S.String,
+          protocol: S.optional(S.String),
+          port: S.optional(S.Number),
+          memoryLimitInGb: S.optional(S.Number),
+          datasetSizeInGb: S.optional(S.Number),
+          redisVersion: S.optional(S.String),
+          autoMinorVersionUpgrade: S.optional(S.Boolean),
+          respVersion: S.optional(S.String),
+          supportOSSClusterApi: S.optional(S.Boolean),
+          useExternalEndpointForOSSClusterApi: S.optional(S.Boolean),
+          dataPersistence: S.optional(S.String),
+          dataEvictionPolicy: S.optional(S.String),
+          replication: S.optional(S.Boolean),
+          replicaOf: S.optional(__S(5376, __c168, 0)),
+          replica: S.optional(__S(3170, __c99, 2)),
+          throughputMeasurement: S.optional(__S(3232, __c101, 0)),
+          localThroughputMeasurement: S.optional(__S(3200, __c100, 0)),
+          averageItemSizeInBytes: S.optional(S.Number),
+          ramPercentage: S.optional(S.Number),
+          periodicBackupPath: S.optional(S.String),
+          remoteBackup: S.optional(__S(3072, __c96, 0)),
+          sourceIp: S.optional(__S(5376, __c168, 0)),
+          clientSslCertificate: S.optional(S.String),
+          clientTlsCertificates: S.optional(__S(3137, __c98, 1)),
+          enableTls: S.optional(S.Boolean),
+          password: S.optional(S.String.pipe(T.SensitiveValue({}))),
+          saslUsername: S.optional(S.String),
+          saslPassword: S.optional(S.String.pipe(T.SensitiveValue({}))),
+          alerts: S.optional(__S(3139, __c98, 3)),
+          modules: S.optional(__S(3106, __c97, 2)),
+          shardingType: S.optional(S.String),
+          queryPerformanceFactor: S.optional(S.String),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/v1/subscriptions/{subscriptionId}/databases",
+            code: 200,
+          }),
+        ),
+      ).annotate({ identifier: "CreateDatabaseRequest" });
+  }
+}
+function __c96(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          active: S.optional(S.Boolean),
+          interval: S.optional(S.String),
+          timeUTC: S.optional(S.String),
+          storageType: S.optional(S.String),
+          storagePath: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "DatabaseBackupConfigInput",
+      });
+  }
+}
+function __c97(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, S.Unknown);
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String,
+          parameters: S.optional(__S(3104, __c97, 0)),
+        }),
+      ).annotate({ identifier: "DatabaseModuleSpec" });
+    case 2:
+      return S.Array(__S(3105, __c97, 1));
+  }
+}
+function __c98(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          publicCertificatePEMString: S.String,
+        }),
+      ).annotate({ identifier: "DatabaseCertificateSpec" });
+    case 1:
+      return S.Array(__S(3136, __c98, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String,
+          value: S.Number,
+        }),
+      ).annotate({ identifier: "DatabaseAlertSpec" });
+    case 3:
+      return S.Array(__S(3138, __c98, 2));
+  }
+}
+function __c99(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          endpoint: S.String,
+          encryption: S.optional(S.Boolean),
+          serverCert: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "DatabaseSyncSourceSpec" });
+    case 1:
+      return S.Array(__S(3168, __c99, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          syncSources: __S(3169, __c99, 1),
+        }),
+      ).annotate({ identifier: "ReplicaOfSpec" });
+  }
+}
+function __c100(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(5408, __c169, 0));
+  }
+}
+function __c101(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          by: S.String,
+          value: S.Number,
+        }),
+      ).annotate({ identifier: "DatabaseThroughputSpec" });
+  }
+}
+function __c102(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          sourceDatabaseId: S.Number,
+          targetDatabaseId: S.Number,
+          endpointTargetType: S.String,
+          duplicateACLs: S.optional(S.Boolean),
+          migrationProtection: S.Boolean,
+        }).pipe(T.Http({ method: "POST", uri: "/v1/endpoint-redirections", code: 200 })),
+      ).annotate({
+        identifier: "CreateEndpointsRedirectionRequest",
+      });
+  }
+}
+function __c103(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          sourceEndpointName: S.optional(S.String),
+          targetEndpointName: S.optional(S.String),
+          sourceEndpointType: S.optional(S.String),
+          targetEndpointType: S.optional(S.String),
+          errorMessage: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "EndpointRedirectionDTO" });
+    case 1:
+      return S.Array(__S(3296, __c103, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          redirectionId: S.optional(S.String),
+          status: S.optional(S.String),
+          sourceDatabaseId: S.optional(S.Number),
+          targetDatabaseId: S.optional(S.Number),
+          isRevert: S.optional(S.Boolean),
+          duplicateACLs: S.optional(S.Boolean),
+          startedAt: S.optional(S.String),
+          completedAt: S.optional(S.String),
+          revertedAt: S.optional(S.String),
+          errorMessage: S.optional(S.String),
+          endpoints: S.optional(__S(3297, __c103, 1)),
+        }),
+      ).annotate({
+        identifier: "EndpointsRedirectionResponse",
+      });
+  }
+}
+function __c104(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.Number.pipe(T.Label()),
+          name: S.String,
+          protocol: S.optional(S.String),
+          memoryLimitInGb: S.optional(S.Number),
+          datasetSizeInGb: S.optional(S.Number),
+          supportOSSClusterApi: S.optional(S.Boolean),
+          redisVersion: S.optional(S.String),
+          respVersion: S.optional(S.String),
+          useExternalEndpointForOSSClusterApi: S.optional(S.Boolean),
+          enableDatabaseClustering: S.optional(S.Boolean),
+          numberOfShards: S.optional(S.Number),
+          dataPersistence: S.optional(S.String),
+          dataEvictionPolicy: S.optional(S.String),
+          replication: S.optional(S.Boolean),
+          periodicBackupPath: S.optional(S.String),
+          sourceIps: S.optional(__S(5376, __c168, 0)),
+          regexRules: S.optional(__S(5376, __c168, 0)),
+          replicaOf: S.optional(__S(5376, __c168, 0)),
+          replica: S.optional(__S(3170, __c99, 2)),
+          clientSslCertificate: S.optional(S.String),
+          clientTlsCertificates: S.optional(__S(3137, __c98, 1)),
+          enableTls: S.optional(S.Boolean),
+          password: S.optional(S.String.pipe(T.SensitiveValue({}))),
+          alerts: S.optional(__S(3139, __c98, 3)),
+          modules: S.optional(__S(3106, __c97, 2)),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/v1/fixed/subscriptions/{subscriptionId}/databases",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateFixedDatabaseRequest",
+      });
+  }
+}
+function __c105(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          ttlSeconds: S.Number,
+          embedding: S.optional(__S(3457, __c108, 1)),
+        }),
+      ).annotate({
+        identifier: "MemoryStoreLongTermMemoryCreateConfig",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String,
+          databaseId: S.Number,
+          shortMemory: S.optional(__S(3424, __c107, 0)),
+          longTermMemory: S.optional(__S(3360, __c105, 0)),
+          llm: S.optional(__S(3457, __c108, 1)),
+          extractionStrategy: S.optional(S.String),
+          summarization: S.optional(__S(3393, __c106, 1)),
+          longTermMemoryExclusions: S.optional(__S(3434, __c107, 10)),
+          customMemoryTypes: S.optional(__S(3439, __c107, 15)),
+          extractionCadence: S.optional(__S(3440, __c107, 16)),
+        }).pipe(T.Http({ method: "POST", uri: "/v1/memory-stores", code: 200 })),
+      ).annotate({ identifier: "CreateMemoryStoreRequest" });
+  }
+}
+function __c106(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          threshold: S.Number,
+          retainCount: S.Number,
+        }),
+      ).annotate({
+        identifier: "MemoryStoreSummarizationThresholdConfig",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          enabled: S.Boolean,
+          triggerStrategy: S.optional(S.String),
+          eventCount: S.optional(__S(3392, __c106, 0)),
+        }),
+      ).annotate({
+        identifier: "MemoryStoreSummarizationConfig",
+      });
+  }
+}
+function __c107(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          ttlSeconds: S.Number,
+        }),
+      ).annotate({
+        identifier: "MemoryStoreShortMemoryConfig",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          enabled: S.Boolean,
+          prompt: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "MemoryStoreSemanticExclusionConfig",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          enabled: S.Boolean,
+          action: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "MemoryStoreDetectorSelection",
+      });
+    case 3:
+      return S.Array(__S(3426, __c107, 2));
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          enabled: S.Boolean,
+          detectors: S.optional(__S(3427, __c107, 3)),
+        }),
+      ).annotate({
+        identifier: "MemoryStoreBuiltInDetectorsConfig",
+      });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          pattern: S.String,
+        }),
+      ).annotate({ identifier: "MemoryStoreRegexSpec" });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          kind: S.String,
+          regex: S.optional(__S(3429, __c107, 5)),
+        }),
+      ).annotate({ identifier: "MemoryStoreMatcherSpec" });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String,
+          enabled: S.Boolean,
+          action: S.optional(S.String),
+          matcher: __S(3430, __c107, 6),
+        }),
+      ).annotate({
+        identifier: "MemoryStoreCustomDetector",
+      });
+    case 8:
+      return S.Array(__S(3431, __c107, 7));
+    case 9:
+      return S.suspend(() =>
+        S.Struct({
+          enabled: S.Boolean,
+          detectors: S.optional(__S(3432, __c107, 8)),
+        }),
+      ).annotate({
+        identifier: "MemoryStoreCustomDetectorsConfig",
+      });
+    case 10:
+      return S.suspend(() =>
+        S.Struct({
+          enabled: S.Boolean,
+          semantic: S.optional(__S(3425, __c107, 1)),
+          builtInDetectors: S.optional(__S(3428, __c107, 4)),
+          customDetectors: S.optional(__S(3433, __c107, 9)),
+        }),
+      ).annotate({
+        identifier: "MemoryStoreLongTermMemoryExclusions",
+      });
+    case 11:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String,
+          description: S.String,
+          type: S.String,
+        }),
+      ).annotate({ identifier: "MemoryStoreCustomField" });
+    case 12:
+      return S.Array(__S(3435, __c107, 11));
+    case 13:
+      return S.suspend(() =>
+        S.Struct({
+          prompt: S.String,
+          enabled: S.optional(S.Boolean),
+        }),
+      ).annotate({
+        identifier: "MemoryStoreCustomExtractionStrategy",
+      });
+    case 14:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String,
+          description: S.String,
+          fields: S.optional(__S(3436, __c107, 12)),
+          extractionStrategy: S.optional(__S(3437, __c107, 13)),
+        }),
+      ).annotate({
+        identifier: "MemoryStoreCustomMemoryType",
+      });
+    case 15:
+      return S.Array(__S(3438, __c107, 14));
+    case 16:
+      return S.suspend(() =>
+        S.Struct({
+          activeIntervalSeconds: S.Number,
+        }),
+      ).annotate({
+        identifier: "MemoryStoreExtractionCadenceConfig",
+      });
+  }
+}
+function __c108(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          type: S.String,
+          apiKey: S.optional(S.String.pipe(T.SensitiveValue({}))),
+        }),
+      ).annotate({
+        identifier: "MemoryStoreModelCredentials",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          provider: S.optional(S.String),
+          model: S.optional(S.String),
+          credentials: S.optional(__S(3456, __c108, 0)),
+        }),
+      ).annotate({ identifier: "MemoryStoreModelConfig" });
+  }
+}
+function __c109(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          storeId: S.String.pipe(T.Label()),
+          keyName: S.String,
+        }).pipe(T.Http({ method: "POST", uri: "/v1/memory-stores/{storeId}/api-keys", code: 200 })),
+      ).annotate({
+        identifier: "CreateMemoryStoreApiKeyRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          apiKey: S.optional(S.String.pipe(T.SensitiveValue({}))),
+        }),
+      ).annotate({
+        identifier: "MemoryStoreApiKeyCreateResponse",
+      });
+  }
+}
+function __c110(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.Number.pipe(T.Label()),
+          shareName: S.String,
+          principal: S.String,
+          type: S.String,
+          alias: S.optional(S.String),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/v1/subscriptions/{subscriptionId}/private-link",
+            code: 200,
+          }),
+        ),
+      ).annotate({ identifier: "CreatePrivateLinkRequest" });
+  }
+}
+function __c111(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.Number.pipe(T.Label()),
+          principal: S.String,
+          type: S.optional(S.String),
+          alias: S.optional(S.String),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/v1/subscriptions/{subscriptionId}/private-link/principals",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "CreatePrivateLinkPrincipalRequest",
+      });
+  }
+}
+function __c112(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.Number.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/v1/subscriptions/{subscriptionId}/private-service-connect",
+            code: 200,
+          }),
+        ),
+      ).annotate({ identifier: "CreatePscServiceRequest" });
+  }
+}
+function __c113(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.Number.pipe(T.Label()),
+          pscServiceId: S.Number.pipe(T.Label()),
+          gcpProjectId: S.String,
+          gcpVpcName: S.String,
+          gcpVpcSubnetName: S.String,
+          endpointConnectionName: S.String,
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/v1/subscriptions/{subscriptionId}/private-service-connect/{pscServiceId}",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "CreatePscServiceEndpointRequest",
+      });
+  }
+}
+function __c114(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String,
+          redisRule: S.String,
+        }).pipe(T.Http({ method: "POST", uri: "/v1/acl/redisRules", code: 200 })),
+      ).annotate({ identifier: "CreateRedisRuleRequest" });
+  }
+}
+function __c115(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String,
+          redisRules: __S(3715, __c116, 3),
+        }).pipe(T.Http({ method: "POST", uri: "/v1/acl/roles", code: 200 })),
+      ).annotate({ identifier: "CreateRoleRequest" });
+  }
+}
+function __c116(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.Number,
+          databaseId: S.Number,
+          regions: S.optional(__S(5376, __c168, 0)),
+        }),
+      ).annotate({ identifier: "AclRoleDatabaseSpec" });
+    case 1:
+      return S.Array(__S(3712, __c116, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          ruleName: S.String,
+          databases: __S(3713, __c116, 1),
+        }),
+      ).annotate({ identifier: "AclRoleRedisRuleSpec" });
+    case 3:
+      return S.Array(__S(3714, __c116, 2));
+  }
+}
+function __c117(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          resourceName: S.String,
+          region: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "CustomerManagedKey" });
+    case 1:
+      return S.Array(__S(3744, __c117, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          customerManagedKeys: __S(3745, __c117, 1),
+          deletionGracePeriod: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "CustomerManagedKeyProperties",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          deploymentCIDR: S.optional(S.String),
+          vpcId: S.optional(S.String),
+          subnetIds: S.optional(__S(5376, __c168, 0)),
+          securityGroupId: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "SubscriptionRegionNetworkingSpec",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          region: S.String,
+          multipleAvailabilityZones: S.optional(S.Boolean),
+          preferredAvailabilityZones: S.optional(__S(5376, __c168, 0)),
+          networking: S.optional(__S(3747, __c117, 3)),
+        }),
+      ).annotate({ identifier: "SubscriptionRegionSpec" });
+    case 5:
+      return S.Array(__S(3748, __c117, 4));
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          provider: S.optional(S.String),
+          cloudAccountId: S.optional(S.Number),
+          regions: __S(3749, __c117, 5),
+          resourceTags: S.optional(__S(3777, __c118, 1)),
+        }),
+      ).annotate({ identifier: "SubscriptionSpec" });
+    case 7:
+      return S.Array(__S(3750, __c117, 6));
+    case 8:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String,
+          protocol: S.String,
+          port: S.optional(S.Number),
+          memoryLimitInGb: S.optional(S.Number),
+          datasetSizeInGb: S.optional(S.Number),
+          supportOSSClusterApi: S.optional(S.Boolean),
+          dataPersistence: S.optional(S.String),
+          replication: S.optional(S.Boolean),
+          throughputMeasurement: S.optional(__S(3232, __c101, 0)),
+          localThroughputMeasurement: S.optional(__S(3200, __c100, 0)),
+          modules: S.optional(__S(3106, __c97, 2)),
+          quantity: S.optional(S.Number),
+          averageItemSizeInBytes: S.optional(S.Number),
+          ramPercentage: S.optional(S.Number),
+          respVersion: S.optional(S.String),
+          redisVersion: S.optional(S.String),
+          autoMinorVersionUpgrade: S.optional(S.Boolean),
+          shardingType: S.optional(S.String),
+          queryPerformanceFactor: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "SubscriptionDatabaseSpec" });
+    case 9:
+      return S.Array(__S(3752, __c117, 8));
+    case 10:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.optional(S.String),
+          dryRun: S.optional(S.Boolean),
+          deploymentType: S.optional(S.String),
+          paymentMethod: S.optional(S.String),
+          paymentMethodId: S.optional(S.Number),
+          memoryStorage: S.optional(S.String),
+          persistentStorageEncryptionType: S.optional(S.String),
+          persistentStorageEncryptionKeys: S.optional(__S(3746, __c117, 2)),
+          cloudProviders: __S(3751, __c117, 7),
+          databases: __S(3753, __c117, 9),
+          redisVersion: S.optional(S.String),
+          publicEndpointAccess: S.optional(S.Boolean),
+        }).pipe(T.Http({ method: "POST", uri: "/v1/subscriptions", code: 200 })),
+      ).annotate({
+        identifier: "CreateSubscriptionRequest",
+      });
+  }
+}
+function __c118(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          key: S.optional(S.String),
+          value: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ResourceTag" });
+    case 1:
+      return S.Array(__S(3776, __c118, 0));
+  }
+}
+function __c119(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String,
+          planId: S.Number,
+          paymentMethod: S.optional(S.String),
+          paymentMethodId: S.optional(S.Number),
+        }).pipe(T.Http({ method: "POST", uri: "/v1/fixed/subscriptions", code: 200 })),
+      ).annotate({
+        identifier: "CreateSubscription1Request",
+      });
+  }
+}
+function __c120(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.Number.pipe(T.Label()),
+          databaseId: S.Number.pipe(T.Label()),
+          key: S.String,
+          value: S.String,
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/v1/subscriptions/{subscriptionId}/databases/{databaseId}/tags",
+            code: 200,
+          }),
+        ),
+      ).annotate({ identifier: "CreateTagRequest" });
+  }
+}
+function __c121(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          links: S.optional(__S(5441, __c170, 1)),
+          key: S.optional(S.String),
+          value: S.optional(S.String),
+          createdAt: S.optional(S.String),
+          updatedAt: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "CloudTag" });
+  }
+}
+function __c122(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.Number.pipe(T.Label()),
+          databaseId: S.Number.pipe(T.Label()),
+          key: S.String,
+          value: S.String,
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/v1/fixed/subscriptions/{subscriptionId}/databases/{databaseId}/tags",
+            code: 200,
+          }),
+        ),
+      ).annotate({ identifier: "CreateTag1Request" });
+  }
+}
+function __c123(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.Number.pipe(T.Label()),
+          TgwId: S.Number.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/v1/subscriptions/{subscriptionId}/transitGateways/{TgwId}/attachment",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateTgwAttachmentRequest",
+      });
+  }
+}
+function __c124(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String,
+          role: S.String,
+          password: S.String.pipe(T.SensitiveValue({})),
+        }).pipe(T.Http({ method: "POST", uri: "/v1/acl/users", code: 200 })),
+      ).annotate({ identifier: "CreateUserRequest" });
+  }
+}
+function __c125(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.Number.pipe(T.Label()),
+          provider: S.optional(S.String),
+        }).pipe(
+          T.Http({ method: "POST", uri: "/v1/subscriptions/{subscriptionId}/peerings", code: 200 }),
+        ),
+      ).annotate({ identifier: "CreateVpcPeeringRequest" });
+  }
+}
+function __c126(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          aclRoleId: S.Number.pipe(T.Label()),
+        }).pipe(T.Http({ method: "DELETE", uri: "/v1/acl/roles/{aclRoleId}", code: 200 })),
+      ).annotate({ identifier: "DeleteAclRoleRequest" });
+  }
+}
+function __c127(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.Number.pipe(T.Label()),
+          regionId: S.Number.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/v1/subscriptions/{subscriptionId}/regions/{regionId}/private-link",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteActiveActivePrivateLinkRequest",
+      });
+  }
+}
+function __c128(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.Number.pipe(T.Label()),
+          regionId: S.Number.pipe(T.Label()),
+          principal: S.String,
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/v1/subscriptions/{subscriptionId}/regions/{regionId}/private-link/principals",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteActiveActivePrivateLinkPrincipalsRequest",
+      });
+  }
+}
+function __c129(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.Number.pipe(T.Label()),
+          regionId: S.Number.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/v1/subscriptions/{subscriptionId}/regions/{regionId}/private-service-connect",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteActiveActivePscServiceRequest",
+      });
+  }
+}
+function __c130(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.Number.pipe(T.Label()),
+          regionId: S.Number.pipe(T.Label()),
+          pscServiceId: S.Number.pipe(T.Label()),
+          endpointId: S.Number.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/v1/subscriptions/{subscriptionId}/regions/{regionId}/private-service-connect/{pscServiceId}/endpoints/{endpointId}",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteActiveActivePscServiceEndpointRequest",
+      });
+  }
+}
+function __c131(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.Number.pipe(T.Label()),
+          regionId: S.Number.pipe(T.Label()),
+          TgwId: S.Number.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/v1/subscriptions/{subscriptionId}/regions/{regionId}/transitGateways/{TgwId}/attachment",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteActiveActiveTgwAttachmentRequest",
+      });
+  }
+}
+function __c132(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.Number.pipe(T.Label()),
+          peeringId: S.Number.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/v1/subscriptions/{subscriptionId}/regions/peerings/{peeringId}",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteActiveActiveVpcPeeringRequest",
+      });
+  }
+}
+function __c133(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          cloudAccountId: S.Number.pipe(T.Label()),
+        }).pipe(
+          T.Http({ method: "DELETE", uri: "/v1/cloud-accounts/{cloudAccountId}", code: 200 }),
+        ),
+      ).annotate({
+        identifier: "DeleteCloudAccountRequest",
+      });
+  }
+}
+function __c134(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.Number.pipe(T.Label()),
+          databaseId: S.Number.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/v1/subscriptions/{subscriptionId}/databases/{databaseId}",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteDatabaseByIdRequest",
+      });
+  }
+}
+function __c135(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.Number.pipe(T.Label()),
+          databaseId: S.Number.pipe(T.Label()),
+          name: S.optional(S.String),
+          memoryLimitInGb: S.optional(S.Number),
+          datasetSizeInGb: S.optional(S.Number),
+          supportOSSClusterApi: S.optional(S.Boolean),
+          respVersion: S.optional(S.String),
+          useExternalEndpointForOSSClusterApi: S.optional(S.Boolean),
+          enableDatabaseClustering: S.optional(S.Boolean),
+          numberOfShards: S.optional(S.Number),
+          dataPersistence: S.optional(S.String),
+          dataEvictionPolicy: S.optional(S.String),
+          replication: S.optional(S.Boolean),
+          periodicBackupPath: S.optional(S.String),
+          sourceIps: S.optional(__S(5376, __c168, 0)),
+          replicaOf: S.optional(__S(5376, __c168, 0)),
+          replica: S.optional(__S(3170, __c99, 2)),
+          regexRules: S.optional(__S(5376, __c168, 0)),
+          clientSslCertificate: S.optional(S.String),
+          clientTlsCertificates: S.optional(__S(3137, __c98, 1)),
+          enableTls: S.optional(S.Boolean),
+          password: S.optional(S.String.pipe(T.SensitiveValue({}))),
+          enableDefaultUser: S.optional(S.Boolean),
+          alerts: S.optional(__S(3139, __c98, 3)),
+        }).pipe(
+          T.Http({
+            method: "PUT",
+            uri: "/v1/fixed/subscriptions/{subscriptionId}/databases/{databaseId}",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteFixedDatabaseByIDRequest",
+      });
+  }
+}
+function __c136(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.Number.pipe(T.Label()),
+          databaseId: S.Number.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/v1/fixed/subscriptions/{subscriptionId}/databases/{databaseId}",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteFixedDatabaseByID1Request",
+      });
+  }
+}
+function __c137(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          storeId: S.String.pipe(T.Label()),
+          flush: S.optional(S.Boolean.pipe(T.Query())),
+        }).pipe(T.Http({ method: "DELETE", uri: "/v1/memory-stores/{storeId}", code: 200 })),
+      ).annotate({ identifier: "DeleteMemoryStoreRequest" });
+  }
+}
+function __c138(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          storeId: S.String.pipe(T.Label()),
+          apiKeyId: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/v1/memory-stores/{storeId}/api-keys/{apiKeyId}",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteMemoryStoreApiKeyRequest",
+      });
+    case 1:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "DeleteMemoryStoreApiKeyResponse",
+      });
+  }
+}
+function __c139(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.Number.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/v1/subscriptions/{subscriptionId}/private-link",
+            code: 200,
+          }),
+        ),
+      ).annotate({ identifier: "DeletePrivateLinkRequest" });
+  }
+}
+function __c140(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.Number.pipe(T.Label()),
+          regionId: S.Number.pipe(T.Label()),
+          tgwInvitationId: S.Number.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "PUT",
+            uri: "/v1/subscriptions/{subscriptionId}/regions/{regionId}/transitGateways/invitations/{tgwInvitationId}/accept",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "AcceptActiveActiveTgwResourceShareRequest",
+      });
+  }
+}
+function __c141(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "AcceptActiveActiveTgwResourceShareResponse",
+      });
+  }
+}
+function __c142(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.Number.pipe(T.Label()),
+          principal: S.String,
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/v1/subscriptions/{subscriptionId}/private-link/principals",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "DeletePrivateLinkPrincipalsRequest",
+      });
+  }
+}
+function __c143(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.Number.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/v1/subscriptions/{subscriptionId}/private-service-connect",
+            code: 200,
+          }),
+        ),
+      ).annotate({ identifier: "DeletePscServiceRequest" });
+  }
+}
+function __c144(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.Number.pipe(T.Label()),
+          pscServiceId: S.Number.pipe(T.Label()),
+          endpointId: S.Number.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/v1/subscriptions/{subscriptionId}/private-service-connect/{pscServiceId}/endpoints/{endpointId}",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "DeletePscServiceEndpointRequest",
+      });
+  }
+}
+function __c145(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          aclRedisRuleId: S.Number.pipe(T.Label()),
+        }).pipe(
+          T.Http({ method: "DELETE", uri: "/v1/acl/redisRules/{aclRedisRuleId}", code: 200 }),
+        ),
+      ).annotate({ identifier: "DeleteRedisRuleRequest" });
+  }
+}
+function __c146(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          region: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "ActiveActiveRegionToDelete",
+      });
+    case 1:
+      return S.Array(__S(4672, __c146, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.Number.pipe(T.Label()),
+          regions: S.optional(__S(4673, __c146, 1)),
+          dryRun: S.optional(S.Boolean),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/v1/subscriptions/{subscriptionId}/regions",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteRegionsFromActiveActiveSubscriptionRequest",
+      });
+  }
+}
+function __c147(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.Number.pipe(T.Label()),
+        }).pipe(T.Http({ method: "DELETE", uri: "/v1/subscriptions/{subscriptionId}", code: 200 })),
+      ).annotate({
+        identifier: "DeleteSubscriptionRequest",
+      });
+  }
+}
+function __c148(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.Number.pipe(T.Label()),
+        }).pipe(
+          T.Http({ method: "DELETE", uri: "/v1/fixed/subscriptions/{subscriptionId}", code: 200 }),
+        ),
+      ).annotate({
+        identifier: "DeleteSubscriptionById1Request",
+      });
+  }
+}
+function __c149(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.Number.pipe(T.Label()),
+          databaseId: S.Number.pipe(T.Label()),
+          tagKey: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/v1/subscriptions/{subscriptionId}/databases/{databaseId}/tags/{tagKey}",
+            code: 200,
+          }),
+        ),
+      ).annotate({ identifier: "DeleteTagRequest" });
+  }
+}
+function __c150(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Unknown.pipe(T.RawResponseRoot())).annotate({
+        identifier: "DeleteTagResponse",
+      });
+  }
+}
+function __c151(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.Number.pipe(T.Label()),
+          databaseId: S.Number.pipe(T.Label()),
+          tagKey: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/v1/fixed/subscriptions/{subscriptionId}/databases/{databaseId}/tags/{tagKey}",
+            code: 200,
+          }),
+        ),
+      ).annotate({ identifier: "DeleteTag1Request" });
+  }
+}
+function __c152(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.Number.pipe(T.Label()),
+          TgwId: S.Number.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/v1/subscriptions/{subscriptionId}/transitGateways/{TgwId}/attachment",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteTgwAttachmentRequest",
+      });
+  }
+}
+function __c153(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.Number.pipe(T.Label()),
+          tgwInvitationId: S.Number.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "PUT",
+            uri: "/v1/subscriptions/{subscriptionId}/transitGateways/invitations/{tgwInvitationId}/accept",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "AcceptTgwResourceShareRequest",
+      });
+  }
+}
+function __c154(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "AcceptTgwResourceShareResponse",
+      });
+  }
+}
+function __c155(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          userId: S.Number.pipe(T.Label()),
+        }).pipe(T.Http({ method: "DELETE", uri: "/v1/users/{userId}", code: 200 })),
+      ).annotate({ identifier: "DeleteUserRequest" });
+  }
+}
+function __c156(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          aclUserId: S.Number.pipe(T.Label()),
+        }).pipe(T.Http({ method: "DELETE", uri: "/v1/acl/users/{aclUserId}", code: 200 })),
+      ).annotate({ identifier: "DeleteUserRequest2" });
+  }
+}
+function __c157(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.Number.pipe(T.Label()),
+          peeringId: S.Number.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/v1/subscriptions/{subscriptionId}/peerings/{peeringId}",
+            code: 200,
+          }),
+        ),
+      ).annotate({ identifier: "DeleteVpcPeeringRequest" });
+  }
+}
+function __c158(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(5088, __c159, 0));
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.Number.pipe(T.Label()),
+          regionId: S.Number.pipe(T.Label()),
+          connections: __S(5056, __c158, 0),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/v1/subscriptions/{subscriptionId}/regions/{regionId}/private-link/connections/disassociate",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "DisassociateActiveActivePrivateLinkConnectionsRequest",
+      });
+  }
+}
+function __c159(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          associationId: S.String,
+          connectionId: S.optional(S.String),
+          type: S.String,
+          principalId: S.String,
+        }),
+      ).annotate({
+        identifier: "PrivateLinkConnectionDisassociate",
+      });
+  }
+}
+function __c160(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(5088, __c159, 0));
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.Number.pipe(T.Label()),
+          connections: __S(5120, __c160, 0),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/v1/subscriptions/{subscriptionId}/private-link/connections/disassociate",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "DisassociatePrivateLinkConnectionsRequest",
+      });
+  }
+}
+function __c161(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          storeId: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/v1/memory-stores/{storeId}/session-memory",
+            code: 200,
+          }),
+        ),
+      ).annotate({ identifier: "EmptyMemoryStoreRequest" });
+  }
+}
+function __c162(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.Number.pipe(T.Label()),
+          databaseId: S.Number.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "PUT",
+            uri: "/v1/subscriptions/{subscriptionId}/databases/{databaseId}/flush",
+            code: 200,
+          }),
+        ),
+      ).annotate({ identifier: "FlushCrdbRequest" });
+  }
+}
+function __c163(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          storeId: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({ method: "DELETE", uri: "/v1/memory-stores/{storeId}/entries", code: 200 }),
+        ),
+      ).annotate({ identifier: "FlushMemoryStoreRequest" });
+  }
+}
+function __c164(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({}).pipe(T.Http({ method: "GET", uri: "/v1/payment-methods", code: 200 })),
+      ).annotate({
+        identifier: "GetAccountPaymentMethodsRequest",
+      });
+  }
+}
+function __c165(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          accountId: S.optional(S.Number),
+          links: S.optional(__S(5441, __c170, 1)),
+        }),
+      ).annotate({ identifier: "PaymentMethods" });
+  }
+}
+function __c166(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          offset: S.optional(S.Number.pipe(T.Query())),
+          limit: S.optional(S.Number.pipe(T.Query())),
+          startTime: S.optional(S.String.pipe(T.Query())),
+          endTime: S.optional(S.String.pipe(T.Query())),
+        }).pipe(T.Http({ method: "GET", uri: "/v1/session-logs", code: 200 })),
+      ).annotate({
+        identifier: "GetAccountSessionLogsRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          time: S.optional(S.String),
+          user: S.optional(S.String),
+          userAgent: S.optional(S.String),
+          ipAddress: S.optional(S.String),
+          userRole: S.optional(S.String),
+          type: S.optional(S.String),
+          action: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "AccountSessionLogEntry" });
+    case 2:
+      return S.Array(__S(5313, __c166, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          entries: S.optional(__S(5314, __c166, 2)),
+          links: S.optional(__S(5441, __c170, 1)),
+        }),
+      ).annotate({ identifier: "AccountSessionLogEntries" });
+  }
+}
+function __c167(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.optional(S.String),
+          localThroughputMeasurement: S.optional(__S(5408, __c169, 0)),
+        }),
+      ).annotate({ identifier: "CrdbRegionSpec" });
+    case 2:
+      return S.Array(__S(5345, __c167, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.Number.pipe(T.Label()),
+          region: S.optional(S.String),
+          vpcId: S.optional(S.String),
+          deploymentCIDR: S.optional(S.String),
+          subnetIds: S.optional(__S(5376, __c168, 0)),
+          securityGroupId: S.optional(S.String),
+          multipleAvailabilityZones: S.optional(S.Boolean),
+          preferredAvailabilityZones: S.optional(__S(5344, __c167, 0)),
+          dryRun: S.optional(S.Boolean),
+          databases: S.optional(__S(5346, __c167, 2)),
+          respVersion: S.optional(S.String),
+          customerManagedKeyResourceName: S.optional(S.String),
+        }).pipe(
+          T.Http({ method: "POST", uri: "/v1/subscriptions/{subscriptionId}/regions", code: 200 }),
+        ),
+      ).annotate({
+        identifier: "AddNewRegionToActiveActiveSubscriptionRequest",
+      });
+  }
+}
+function __c168(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c169(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          region: S.optional(S.String),
+          writeOperationsPerSecond: S.optional(S.Number),
+          readOperationsPerSecond: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "LocalThroughput" });
+  }
+}
+function __c170(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, S.String);
+    case 1:
+      return S.Array(__S(5440, __c170, 0));
+  }
+}
+function __c171(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          resourceId: S.optional(S.Number),
+          additionalResourceId: S.optional(S.Number),
+          resource: S.optional(S.Unknown),
+          error: S.optional(S.String),
+          additionalInfo: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ProcessorResponse" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          taskId: S.optional(S.String),
+          commandType: S.optional(S.String),
+          status: S.optional(S.String),
+          description: S.optional(S.String),
+          timestamp: S.optional(S.String),
+          response: S.optional(__S(5472, __c171, 0)),
+          links: S.optional(__S(5441, __c170, 1)),
+        }),
+      ).annotate({ identifier: "TaskStateUpdate" });
+  }
+}
+function __c172(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          offset: S.optional(S.Number.pipe(T.Query())),
+          limit: S.optional(S.Number.pipe(T.Query())),
+          startTime: S.optional(S.String.pipe(T.Query())),
+          endTime: S.optional(S.String.pipe(T.Query())),
+          resourceId: S.optional(S.Number.pipe(T.Query())),
+        }).pipe(T.Http({ method: "GET", uri: "/v1/logs", code: 200 })),
+      ).annotate({
+        identifier: "GetAccountSystemLogsRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.Number),
+          time: S.optional(S.String),
+          originator: S.optional(S.String),
+          apiKeyName: S.optional(S.String),
+          resource: S.optional(S.String),
+          resourceId: S.optional(S.Number),
+          type: S.optional(S.String),
+          description: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "AccountSystemLogEntry" });
+    case 2:
+      return S.Array(__S(5505, __c172, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          entries: S.optional(__S(5506, __c172, 2)),
+          links: S.optional(__S(5441, __c170, 1)),
+        }),
+      ).annotate({ identifier: "AccountSystemLogEntries" });
+  }
+}
+function __c173(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.Number.pipe(T.Label()),
+          regionId: S.Number.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/v1/subscriptions/{subscriptionId}/regions/{regionId}/private-link",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "GetActiveActivePrivateLinkRequest",
+      });
+  }
+}
+function __c174(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.Number.pipe(T.Label()),
+          regionId: S.Number.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/v1/subscriptions/{subscriptionId}/regions/{regionId}/private-link/endpoint-script",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "GetActiveActivePrivateLinkEndpointScriptRequest",
+      });
+  }
+}
+function __c175(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.Number.pipe(T.Label()),
+          regionId: S.Number.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/v1/subscriptions/{subscriptionId}/regions/{regionId}/private-service-connect",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "GetActiveActivePscServiceRequest",
+      });
+  }
+}
+function __c176(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.Number.pipe(T.Label()),
+          regionId: S.Number.pipe(T.Label()),
+          pscServiceId: S.Number.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/v1/subscriptions/{subscriptionId}/regions/{regionId}/private-service-connect/{pscServiceId}",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "GetActiveActivePscServiceEndpointsRequest",
+      });
+  }
+}
+function __c177(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.Number.pipe(T.Label()),
+          regionId: S.Number.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/v1/subscriptions/{subscriptionId}/regions/{regionId}/transitGateways",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "GetActiveActiveTgwsRequest",
+      });
+  }
+}
+function __c178(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.Number.pipe(T.Label()),
+          regionId: S.Number.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/v1/subscriptions/{subscriptionId}/regions/{regionId}/transitGateways/invitations",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "GetActiveActiveTgwSharedInvitationsRequest",
+      });
+  }
+}
+function __c179(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.Number.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/v1/subscriptions/{subscriptionId}/regions/peerings",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "GetActiveActiveVpcPeeringsRequest",
+      });
+  }
+}
+function __c180(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.Number.pipe(T.Label()),
+          regionId: S.Number.pipe(T.Label()),
+          pscServiceId: S.Number.pipe(T.Label()),
+          endpointId: S.Number.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/v1/subscriptions/{subscriptionId}/regions/{regionId}/private-service-connect/{pscServiceId}/endpoints/{endpointId}/creationScripts",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "GetActiveActivPscServiceEndpointCreationScriptRequest",
+      });
+  }
+}
+function __c181(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.Number.pipe(T.Label()),
+          regionId: S.Number.pipe(T.Label()),
+          pscServiceId: S.Number.pipe(T.Label()),
+          endpointId: S.Number.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/v1/subscriptions/{subscriptionId}/regions/{regionId}/private-service-connect/{pscServiceId}/endpoints/{endpointId}/deletionScripts",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "GetActiveActivPscServiceEndpointDeletionScriptRequest",
+      });
+  }
+}
+function __c182(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.Number.pipe(T.Label()),
+          databaseId: S.Number.pipe(T.Label()),
+          regionName: S.optional(S.String),
+          adhocBackupPath: S.optional(S.String),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/v1/subscriptions/{subscriptionId}/databases/{databaseId}/backup",
+            code: 200,
+          }),
+        ),
+      ).annotate({ identifier: "BackupDatabaseRequest" });
+  }
+}
+function __c183(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          provider: S.optional(S.String.pipe(T.Query())),
+          redisFlex: S.optional(S.Boolean.pipe(T.Query())),
+        }).pipe(T.Http({ method: "GET", uri: "/v1/fixed/plans", code: 200 })),
+      ).annotate({
+        identifier: "GetAllFixedSubscriptionsPlansRequest",
+      });
+  }
+}
+function __c184(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          links: S.optional(__S(5441, __c170, 1)),
+        }),
+      ).annotate({ identifier: "FixedSubscriptionsPlans" });
+  }
+}
+function __c185(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({}).pipe(T.Http({ method: "GET", uri: "/v1/acl/redisRules", code: 200 })),
+      ).annotate({ identifier: "GetAllRedisRulesRequest" });
+  }
+}
+function __c186(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({}).pipe(T.Http({ method: "GET", uri: "/v1/subscriptions", code: 200 })),
+      ).annotate({
+        identifier: "GetAllSubscriptionsRequest",
+      });
+  }
+}
+function __c187(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({}).pipe(T.Http({ method: "GET", uri: "/v1/fixed/subscriptions", code: 200 })),
+      ).annotate({
+        identifier: "GetAllSubscriptions1Request",
+      });
+  }
+}
+function __c188(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({}).pipe(T.Http({ method: "GET", uri: "/v1/tasks", code: 200 })),
+      ).annotate({ identifier: "GetAllTasksRequest" });
+  }
+}
+function __c189(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({}).pipe(T.Http({ method: "GET", uri: "/v1/users", code: 200 })),
+      ).annotate({ identifier: "GetAllUsersRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          account: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "AccountUsers" });
+  }
+}
+function __c190(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({}).pipe(T.Http({ method: "GET", uri: "/v1/acl/users", code: 200 })),
+      ).annotate({ identifier: "GetAllUsers1Request" });
+  }
+}
+function __c191(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.Number.pipe(T.Label()),
+        }).pipe(
+          T.Http({ method: "GET", uri: "/v1/subscriptions/{subscriptionId}/cidr", code: 200 }),
+        ),
+      ).annotate({ identifier: "GetCidrWhiteListRequest" });
+  }
+}
+function __c192(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          cloudAccountId: S.Number.pipe(T.Label()),
+        }).pipe(T.Http({ method: "GET", uri: "/v1/cloud-accounts/{cloudAccountId}", code: 200 })),
+      ).annotate({ identifier: "GetCloudAccountRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.Number),
+          name: S.optional(S.String),
+          status: S.optional(S.String),
+          accessKeyId: S.optional(S.String.pipe(T.SensitiveValue({}))),
+          signInLoginUrl: S.optional(S.String),
+          awsUserArn: S.optional(S.String),
+          awsConsoleRoleArn: S.optional(S.String),
+          links: S.optional(__S(5441, __c170, 1)),
+          provider: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "CloudAccount" });
+  }
+}
+function __c193(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({}).pipe(T.Http({ method: "GET", uri: "/v1/cloud-accounts", code: 200 })),
+      ).annotate({ identifier: "GetCloudAccountsRequest" });
+  }
+}
+function __c194(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.Number.pipe(T.Label()),
+          databaseId: S.Number.pipe(T.Label()),
+          adhocBackupPath: S.optional(S.String),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/v1/fixed/subscriptions/{subscriptionId}/databases/{databaseId}/backup",
+            code: 200,
+          }),
+        ),
+      ).annotate({ identifier: "BackupDatabase1Request" });
+  }
+}
+function __c195(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          costReportId: S.String.pipe(T.Label()),
+        }).pipe(T.Http({ method: "GET", uri: "/v1/cost-report/{costReportId}", code: 200 })),
+      ).annotate({ identifier: "GetCostReportRequest" });
+  }
+}
+function __c196(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({}).pipe(T.Http({ method: "GET", uri: "/v1/", code: 200 })),
+      ).annotate({ identifier: "GetCurrentAccountRequest" });
+  }
+}
+function __c197(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.Number.pipe(T.Label()),
+          databaseId: S.Number.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/v1/subscriptions/{subscriptionId}/databases/{databaseId}/available-target-versions",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "GetDatabaseAvailableVersionsRequest",
+      });
+  }
+}
+function __c198(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          redisVersion: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "TargetVersion" });
+    case 1:
+      return S.Array(__S(6336, __c198, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          targets: S.optional(__S(6337, __c198, 1)),
+        }),
+      ).annotate({
+        identifier: "DatabaseAvailableVersionsResponse",
+      });
+  }
+}
+function __c199(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.Number.pipe(T.Label()),
+          databaseId: S.Number.pipe(T.Label()),
+          regionName: S.optional(S.String.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/v1/subscriptions/{subscriptionId}/databases/{databaseId}/backup",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "GetDatabaseBackupStatusRequest",
+      });
+  }
+}
+function __c200(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.Number.pipe(T.Label()),
+          databaseId: S.Number.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/v1/fixed/subscriptions/{subscriptionId}/databases/{databaseId}/backup",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "GetDatabaseBackupStatus1Request",
+      });
+  }
+}
+function __c201(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.Number.pipe(T.Label()),
+          databaseId: S.Number.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/v1/subscriptions/{subscriptionId}/databases/{databaseId}/import",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "GetDatabaseImportStatusRequest",
+      });
+  }
+}
+function __c202(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.Number.pipe(T.Label()),
+          databaseId: S.Number.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/v1/fixed/subscriptions/{subscriptionId}/databases/{databaseId}/import",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "GetDatabaseImportStatus1Request",
+      });
+  }
+}
+function __c203(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.Number.pipe(T.Label()),
+          databaseId: S.Number.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/v1/subscriptions/{subscriptionId}/databases/{databaseId}/upgrade",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "GetDatabaseRedisVersionUpgradeStatusRequest",
+      });
+  }
+}
+function __c204(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          databaseId: S.optional(S.Number),
+          targetRedisVersion: S.optional(S.String),
+          progress: S.optional(S.Number),
+          upgradeStatus: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "DatabaseVersionUpgradeStatus",
+      });
+  }
+}
+function __c205(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.Number.pipe(T.Label()),
+          databaseId: S.Number.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/v1/subscriptions/{subscriptionId}/databases/{databaseId}/traffic",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "GetDatabaseTrafficRequest",
+      });
+  }
+}
+function __c206(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          bdbId: S.optional(S.Number),
+          trafficStatus: S.optional(S.String),
+          canResume: S.optional(S.Boolean),
+          resumeInProgress: S.optional(S.Boolean),
+          stopReason: S.optional(S.String),
+          resumeEligibleAt: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "DatabaseTrafficStateResponse",
+      });
+  }
+}
+function __c207(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.Number.pipe(T.Label()),
+          databaseId: S.Number.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/v1/fixed/subscriptions/{subscriptionId}/databases/{databaseId}/traffic",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "GetDatabaseTraffic1Request",
+      });
+  }
+}
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

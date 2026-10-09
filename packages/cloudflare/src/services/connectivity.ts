@@ -397,8 +397,8 @@ export const createDirectoryService: API.OperationMethod<
   CreateDirectoryServiceError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2, __c0, 2) as any as S.Schema<CreateDirectoryServiceRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<CreateDirectoryServiceResponse>,
+  input: __S(1, __c0, 1) as any as S.Schema<CreateDirectoryServiceRequest>,
+  output: __S(4, __c0, 4) as any as S.Schema<CreateDirectoryServiceResponse>,
   errors: [
     VpcServiceNameAlreadyExists,
     VpcTunnelNotFound,
@@ -418,8 +418,8 @@ export const deleteDirectoryService: API.OperationMethod<
   DeleteDirectoryServiceError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(6, __c0, 6) as any as S.Schema<DeleteDirectoryServiceRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<DeleteDirectoryServiceResponse>,
+  input: __S(16, __c2, 0) as any as S.Schema<DeleteDirectoryServiceRequest>,
+  output: __S(17, __c2, 1) as any as S.Schema<DeleteDirectoryServiceResponse>,
   errors: [VpcServiceNotFound, Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -433,8 +433,8 @@ export const getDirectoryService: API.OperationMethod<
   GetDirectoryServiceError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(8, __c1, 0) as any as S.Schema<GetDirectoryServiceRequest>,
-  output: __S(11, __c1, 3) as any as S.Schema<GetDirectoryServiceResponse>,
+  input: __S(24, __c3, 0) as any as S.Schema<GetDirectoryServiceRequest>,
+  output: __S(27, __c3, 3) as any as S.Schema<GetDirectoryServiceResponse>,
   errors: [VpcServiceNotFound, Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -450,8 +450,8 @@ export const listDirectoryServices: API.PaginatedOperationMethod<
   DirectoryServicesListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(12, __c1, 4) as any as S.Schema<ListDirectoryServicesRequest>,
-    output: __S(16, __c2, 0) as any as S.Schema<ListDirectoryServicesResponse>,
+    input: __S(32, __c4, 0) as any as S.Schema<ListDirectoryServicesRequest>,
+    output: __S(36, __c4, 4) as any as S.Schema<ListDirectoryServicesResponse>,
     errors: [Forbidden, CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
     retry: Retry.Retry,
@@ -479,8 +479,8 @@ export const updateDirectoryService: API.OperationMethod<
   UpdateDirectoryServiceError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(18, __c2, 2) as any as S.Schema<UpdateDirectoryServiceRequest>,
-  output: __S(21, __c2, 5) as any as S.Schema<UpdateDirectoryServiceResponse>,
+  input: __S(41, __c5, 1) as any as S.Schema<UpdateDirectoryServiceRequest>,
+  output: __S(44, __c5, 4) as any as S.Schema<UpdateDirectoryServiceResponse>,
   errors: [
     VpcServiceNotFound,
     VpcServiceNameAlreadyExists,
@@ -508,14 +508,6 @@ function __c0(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          certVerificationMode: S.String.pipe(T.Body("cert_verification_mode")),
-        }),
-      ).annotate({
-        identifier: "DirectoryServicesCreateRequestTlsSettings",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
           host: __S(0, __c0, 0),
           name: S.String,
@@ -524,7 +516,7 @@ function __c0(j: number): any {
           httpPort: S.optional(S.Number.pipe(T.Body("http_port"))),
           httpsPort: S.optional(S.Number.pipe(T.Body("https_port"))),
           serviceId: S.optional(S.String.pipe(T.Body("service_id"))),
-          tlsSettings: S.optional(__S(1, __c0, 1).pipe(T.Body("tls_settings"))),
+          tlsSettings: S.optional(__S(8, __c1, 0).pipe(T.Body("tls_settings"))),
           updatedAt: S.optional(S.String.pipe(T.Body("updated_at"))),
           appProtocol: S.optional(S.String.pipe(T.Body("app_protocol"))),
           tcpPort: S.optional(S.Number.pipe(T.Body("tcp_port"))),
@@ -540,7 +532,7 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "CreateDirectoryServiceRequest",
       });
-    case 3:
+    case 2:
       return S.Unknown.pipe(
         /*@__PURE__*/ T.UnionCases([
           ["ipv4", "network"],
@@ -549,17 +541,17 @@ function __c0(j: number): any {
           ["hostname", "resolverNetwork"],
         ]),
       );
-    case 4:
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          host: __S(3, __c0, 3),
+          host: __S(2, __c0, 2),
           name: S.String,
           type: S.String,
           createdAt: S.optional(S.NullOr(S.String).pipe(T.Body("created_at"))),
           httpPort: S.optional(S.NullOr(S.Number).pipe(T.Body("http_port"))),
           httpsPort: S.optional(S.NullOr(S.Number).pipe(T.Body("https_port"))),
           serviceId: S.optional(S.NullOr(S.String).pipe(T.Body("service_id"))),
-          tlsSettings: S.optional(S.NullOr(__S(1, __c0, 1)).pipe(T.Body("tls_settings"))),
+          tlsSettings: S.optional(S.NullOr(__S(8, __c1, 0)).pipe(T.Body("tls_settings"))),
           updatedAt: S.optional(S.NullOr(S.String).pipe(T.Body("updated_at"))),
           appProtocol: S.optional(S.NullOr(S.String).pipe(T.Body("app_protocol"))),
           tcpPort: S.optional(S.NullOr(S.Number).pipe(T.Body("tcp_port"))),
@@ -567,13 +559,29 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "DirectoryServicesCreateResult",
       });
-    case 5:
+    case 4:
       return S.suspend(() =>
-        __S(4, __c0, 4).pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
+        __S(3, __c0, 3).pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({
         identifier: "CreateDirectoryServiceResponse",
       });
-    case 6:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          certVerificationMode: S.String.pipe(T.Body("cert_verification_mode")),
+        }),
+      ).annotate({
+        identifier: "DirectoryServicesCreateRequestTlsSettings",
+      });
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -590,13 +598,13 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "DeleteDirectoryServiceRequest",
       });
-    case 7:
+    case 1:
       return S.suspend(() => S.Struct({}).pipe(T.KeyDictionary(KEY_DICTIONARY))).annotate({
         identifier: "DeleteDirectoryServiceResponse",
       });
   }
 }
-function __c1(j: number): any {
+function __c3(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -627,14 +635,14 @@ function __c1(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          host: __S(9, __c1, 1),
+          host: __S(25, __c3, 1),
           name: S.String,
           type: S.String,
           createdAt: S.optional(S.NullOr(S.String).pipe(T.Body("created_at"))),
           httpPort: S.optional(S.NullOr(S.Number).pipe(T.Body("http_port"))),
           httpsPort: S.optional(S.NullOr(S.Number).pipe(T.Body("https_port"))),
           serviceId: S.optional(S.NullOr(S.String).pipe(T.Body("service_id"))),
-          tlsSettings: S.optional(S.NullOr(__S(1, __c0, 1)).pipe(T.Body("tls_settings"))),
+          tlsSettings: S.optional(S.NullOr(__S(8, __c1, 0)).pipe(T.Body("tls_settings"))),
           updatedAt: S.optional(S.NullOr(S.String).pipe(T.Body("updated_at"))),
           appProtocol: S.optional(S.NullOr(S.String).pipe(T.Body("app_protocol"))),
           tcpPort: S.optional(S.NullOr(S.Number).pipe(T.Body("tcp_port"))),
@@ -644,11 +652,15 @@ function __c1(j: number): any {
       });
     case 3:
       return S.suspend(() =>
-        __S(10, __c1, 2).pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
+        __S(26, __c3, 2).pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({
         identifier: "GetDirectoryServiceResponse",
       });
-    case 4:
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -667,48 +679,6 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "ListDirectoryServicesRequest",
       });
-    case 5:
-      return S.Unknown.pipe(
-        /*@__PURE__*/ T.UnionCases([
-          ["ipv4", "network"],
-          ["ipv6", "network"],
-          ["ipv4", "ipv6", "network"],
-          ["hostname", "resolverNetwork"],
-        ]),
-      );
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          host: __S(13, __c1, 5),
-          name: S.String,
-          type: S.String,
-          createdAt: S.optional(S.NullOr(S.String).pipe(T.Body("created_at"))),
-          httpPort: S.optional(S.NullOr(S.Number).pipe(T.Body("http_port"))),
-          httpsPort: S.optional(S.NullOr(S.Number).pipe(T.Body("https_port"))),
-          serviceId: S.optional(S.NullOr(S.String).pipe(T.Body("service_id"))),
-          tlsSettings: S.optional(S.NullOr(__S(1, __c0, 1)).pipe(T.Body("tls_settings"))),
-          updatedAt: S.optional(S.NullOr(S.String).pipe(T.Body("updated_at"))),
-          appProtocol: S.optional(S.NullOr(S.String).pipe(T.Body("app_protocol"))),
-          tcpPort: S.optional(S.NullOr(S.Number).pipe(T.Body("tcp_port"))),
-        }),
-      ).annotate({
-        identifier: "DirectoryServicesListResultItem",
-      });
-    case 7:
-      return S.Array(__S(14, __c1, 6));
-  }
-}
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          result: __S(15, __c1, 7).pipe(T.EnvelopePayload()),
-          resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
-        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({
-        identifier: "ListDirectoryServicesResponse",
-      });
     case 1:
       return S.Unknown.pipe(
         /*@__PURE__*/ T.UnionCases([
@@ -721,15 +691,57 @@ function __c2(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
+          host: __S(33, __c4, 1),
+          name: S.String,
+          type: S.String,
+          createdAt: S.optional(S.NullOr(S.String).pipe(T.Body("created_at"))),
+          httpPort: S.optional(S.NullOr(S.Number).pipe(T.Body("http_port"))),
+          httpsPort: S.optional(S.NullOr(S.Number).pipe(T.Body("https_port"))),
+          serviceId: S.optional(S.NullOr(S.String).pipe(T.Body("service_id"))),
+          tlsSettings: S.optional(S.NullOr(__S(8, __c1, 0)).pipe(T.Body("tls_settings"))),
+          updatedAt: S.optional(S.NullOr(S.String).pipe(T.Body("updated_at"))),
+          appProtocol: S.optional(S.NullOr(S.String).pipe(T.Body("app_protocol"))),
+          tcpPort: S.optional(S.NullOr(S.Number).pipe(T.Body("tcp_port"))),
+        }),
+      ).annotate({
+        identifier: "DirectoryServicesListResultItem",
+      });
+    case 3:
+      return S.Array(__S(34, __c4, 2));
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          result: __S(35, __c4, 3).pipe(T.EnvelopePayload()),
+          resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
+        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({
+        identifier: "ListDirectoryServicesResponse",
+      });
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Unknown.pipe(
+        /*@__PURE__*/ T.UnionCases([
+          ["ipv4", "network"],
+          ["ipv6", "network"],
+          ["ipv4", "ipv6", "network"],
+          ["hostname", "resolverNetwork"],
+        ]),
+      );
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
           serviceId: S.String.pipe(T.Label("service_id")),
-          host: __S(17, __c2, 1),
+          host: __S(40, __c5, 0),
           name: S.String,
           type: S.String,
           createdAt: S.optional(S.String.pipe(T.Body("created_at"))),
           httpPort: S.optional(S.Number.pipe(T.Body("http_port"))),
           httpsPort: S.optional(S.Number.pipe(T.Body("https_port"))),
-          tlsSettings: S.optional(__S(1, __c0, 1).pipe(T.Body("tls_settings"))),
+          tlsSettings: S.optional(__S(8, __c1, 0).pipe(T.Body("tls_settings"))),
           updatedAt: S.optional(S.String.pipe(T.Body("updated_at"))),
           appProtocol: S.optional(S.String.pipe(T.Body("app_protocol"))),
           tcpPort: S.optional(S.Number.pipe(T.Body("tcp_port"))),
@@ -745,7 +757,7 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "UpdateDirectoryServiceRequest",
       });
-    case 3:
+    case 2:
       return S.Unknown.pipe(
         /*@__PURE__*/ T.UnionCases([
           ["ipv4", "network"],
@@ -754,17 +766,17 @@ function __c2(j: number): any {
           ["hostname", "resolverNetwork"],
         ]),
       );
-    case 4:
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          host: __S(19, __c2, 3),
+          host: __S(42, __c5, 2),
           name: S.String,
           type: S.String,
           createdAt: S.optional(S.NullOr(S.String).pipe(T.Body("created_at"))),
           httpPort: S.optional(S.NullOr(S.Number).pipe(T.Body("http_port"))),
           httpsPort: S.optional(S.NullOr(S.Number).pipe(T.Body("https_port"))),
           serviceId: S.optional(S.NullOr(S.String).pipe(T.Body("service_id"))),
-          tlsSettings: S.optional(S.NullOr(__S(1, __c0, 1)).pipe(T.Body("tls_settings"))),
+          tlsSettings: S.optional(S.NullOr(__S(8, __c1, 0)).pipe(T.Body("tls_settings"))),
           updatedAt: S.optional(S.NullOr(S.String).pipe(T.Body("updated_at"))),
           appProtocol: S.optional(S.NullOr(S.String).pipe(T.Body("app_protocol"))),
           tcpPort: S.optional(S.NullOr(S.Number).pipe(T.Body("tcp_port"))),
@@ -772,15 +784,14 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "DirectoryServicesUpdateResult",
       });
-    case 5:
+    case 4:
       return S.suspend(() =>
-        __S(20, __c2, 4).pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
+        __S(43, __c5, 3).pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({
         identifier: "UpdateDirectoryServiceResponse",
       });
   }
 }
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

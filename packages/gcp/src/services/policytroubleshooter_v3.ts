@@ -552,11 +552,11 @@ export const troubleshootIam: API.OperationMethod<
   TroubleshootIamError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(8, __c1, 0) as any as S.Schema<TroubleshootIamRequest>,
+  input: __S(8, __c0, 8) as any as S.Schema<TroubleshootIamRequest>,
   output: __S(
     46,
-    __c5,
-    6,
+    __c1,
+    14,
   ) as any as S.Schema<GoogleCloudPolicytroubleshooterIamV3TroubleshootIamPolicyResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
@@ -639,11 +639,7 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "GoogleCloudPolicytroubleshooterIamV3TroubleshootIamPolicyRequest",
       });
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
+    case 8:
       return S.suspend(() =>
         S.Struct({
           body: S.optional(__S(7, __c0, 7).pipe(T.HttpBody())),
@@ -655,9 +651,9 @@ function __c1(j: number): any {
           }),
         ),
       ).annotate({ identifier: "TroubleshootIamRequest" });
-    case 1:
+    case 9:
       return S.Array(S.String);
-    case 2:
+    case 10:
       return S.suspend(() =>
         S.Struct({
           location: S.optional(S.String),
@@ -666,50 +662,46 @@ function __c1(j: number): any {
           description: S.optional(S.String),
         }),
       ).annotate({ identifier: "GoogleTypeExpr" });
-    case 3:
+    case 11:
       return S.suspend(() =>
         S.Struct({
-          members: S.optional(__S(9, __c1, 1)),
-          condition: S.optional(__S(10, __c1, 2)),
+          members: S.optional(__S(9, __c0, 9)),
+          condition: S.optional(__S(10, __c0, 10)),
           role: S.optional(S.String),
         }),
       ).annotate({ identifier: "GoogleIamV1Binding" });
-    case 4:
-      return S.Array(__S(11, __c1, 3));
-    case 5:
+    case 12:
+      return S.Array(__S(11, __c0, 11));
+    case 13:
       return S.suspend(() =>
         S.Struct({
-          exemptedMembers: S.optional(__S(9, __c1, 1)),
+          exemptedMembers: S.optional(__S(9, __c0, 9)),
           logType: S.optional(S.String),
         }),
       ).annotate({
         identifier: "GoogleIamV1AuditLogConfig",
       });
-    case 6:
-      return S.Array(__S(13, __c1, 5));
-    case 7:
+    case 14:
+      return S.Array(__S(13, __c0, 13));
+    case 15:
       return S.suspend(() =>
         S.Struct({
           service: S.optional(S.String),
-          auditLogConfigs: S.optional(__S(14, __c1, 6)),
+          auditLogConfigs: S.optional(__S(14, __c0, 14)),
         }),
       ).annotate({ identifier: "GoogleIamV1AuditConfig" });
-  }
-}
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(15, __c1, 7));
-    case 1:
+    case 16:
+      return S.Array(__S(15, __c0, 15));
+    case 17:
       return S.suspend(() =>
         S.Struct({
-          bindings: S.optional(__S(12, __c1, 4)),
+          bindings: S.optional(__S(12, __c0, 12)),
           version: S.optional(S.Number),
-          auditConfigs: S.optional(__S(16, __c2, 0)),
+          auditConfigs: S.optional(__S(16, __c0, 16)),
           etag: S.optional(S.String),
         }),
       ).annotate({ identifier: "GoogleIamV1Policy" });
-    case 2:
+    case 18:
       return S.suspend(() =>
         S.Struct({
           relevance: S.optional(S.String),
@@ -719,57 +711,53 @@ function __c2(j: number): any {
         identifier:
           "GoogleCloudPolicytroubleshooterIamV3AllowBindingExplanationAnnotatedAllowMembership",
       });
-    case 3:
-      return S.Record(S.String, __S(18, __c2, 2));
-    case 4:
+    case 19:
+      return S.Record(S.String, __S(18, __c0, 18));
+    case 20:
       return S.Record(S.String, S.Unknown);
-    case 5:
-      return S.Array(__S(20, __c2, 4));
-    case 6:
+    case 21:
+      return S.Array(__S(20, __c0, 20));
+    case 22:
       return S.suspend(() =>
         S.Struct({
           code: S.optional(S.Number),
           message: S.optional(S.String),
-          details: S.optional(__S(21, __c2, 5)),
+          details: S.optional(__S(21, __c0, 21)),
         }),
       ).annotate({ identifier: "GoogleRpcStatus" });
-    case 7:
-      return S.Array(__S(22, __c2, 6));
-  }
-}
-function __c3(j: number): any {
-  switch (j) {
-    case 0:
+    case 23:
+      return S.Array(__S(22, __c0, 22));
+    case 24:
       return S.suspend(() =>
         S.Struct({
           value: S.optional(S.Unknown),
-          errors: S.optional(__S(23, __c2, 7)),
+          errors: S.optional(__S(23, __c0, 23)),
           end: S.optional(S.Number),
           start: S.optional(S.Number),
         }),
       ).annotate({
         identifier: "GoogleCloudPolicytroubleshooterIamV3ConditionExplanationEvaluationState",
       });
-    case 1:
-      return S.Array(__S(24, __c3, 0));
-    case 2:
+    case 25:
+      return S.Array(__S(24, __c0, 24));
+    case 26:
       return S.suspend(() =>
         S.Struct({
           value: S.optional(S.Unknown),
-          evaluationStates: S.optional(__S(25, __c3, 1)),
-          errors: S.optional(__S(23, __c2, 7)),
+          evaluationStates: S.optional(__S(25, __c0, 25)),
+          errors: S.optional(__S(23, __c0, 23)),
         }),
       ).annotate({
         identifier: "GoogleCloudPolicytroubleshooterIamV3ConditionExplanation",
       });
-    case 3:
+    case 27:
       return S.suspend(() =>
         S.Struct({
-          combinedMembership: S.optional(__S(18, __c2, 2)),
-          condition: S.optional(__S(10, __c1, 2)),
-          memberships: S.optional(__S(19, __c2, 3)),
+          combinedMembership: S.optional(__S(18, __c0, 18)),
+          condition: S.optional(__S(10, __c0, 10)),
+          memberships: S.optional(__S(19, __c0, 19)),
           rolePermission: S.optional(S.String),
-          conditionExplanation: S.optional(__S(26, __c3, 2)),
+          conditionExplanation: S.optional(__S(26, __c0, 26)),
           relevance: S.optional(S.String),
           allowAccessState: S.optional(S.String),
           rolePermissionRelevance: S.optional(S.String),
@@ -778,27 +766,27 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "GoogleCloudPolicytroubleshooterIamV3AllowBindingExplanation",
       });
-    case 4:
-      return S.Array(__S(27, __c3, 3));
-    case 5:
+    case 28:
+      return S.Array(__S(27, __c0, 27));
+    case 29:
       return S.suspend(() =>
         S.Struct({
-          policy: S.optional(__S(17, __c2, 1)),
+          policy: S.optional(__S(17, __c0, 17)),
           allowAccessState: S.optional(S.String),
-          bindingExplanations: S.optional(__S(28, __c3, 4)),
+          bindingExplanations: S.optional(__S(28, __c0, 28)),
           relevance: S.optional(S.String),
           fullResourceName: S.optional(S.String),
         }),
       ).annotate({
         identifier: "GoogleCloudPolicytroubleshooterIamV3ExplainedAllowPolicy",
       });
-    case 6:
-      return S.Array(__S(29, __c3, 5));
-    case 7:
+    case 30:
+      return S.Array(__S(29, __c0, 29));
+    case 31:
       return S.suspend(() =>
         S.Struct({
           relevance: S.optional(S.String),
-          explainedPolicies: S.optional(__S(30, __c3, 6)),
+          explainedPolicies: S.optional(__S(30, __c0, 30)),
           allowAccessState: S.optional(S.String),
         }),
       ).annotate({
@@ -806,27 +794,27 @@ function __c3(j: number): any {
       });
   }
 }
-function __c4(j: number): any {
+function __c1(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          exceptionPermissions: S.optional(__S(9, __c1, 1)),
-          deniedPrincipals: S.optional(__S(9, __c1, 1)),
-          exceptionPrincipals: S.optional(__S(9, __c1, 1)),
-          denialCondition: S.optional(__S(10, __c1, 2)),
-          deniedPermissions: S.optional(__S(9, __c1, 1)),
+          exceptionPermissions: S.optional(__S(9, __c0, 9)),
+          deniedPrincipals: S.optional(__S(9, __c0, 9)),
+          exceptionPrincipals: S.optional(__S(9, __c0, 9)),
+          denialCondition: S.optional(__S(10, __c0, 10)),
+          deniedPermissions: S.optional(__S(9, __c0, 9)),
         }),
       ).annotate({ identifier: "GoogleIamV2DenyRule" });
     case 1:
       return S.suspend(() =>
         S.Struct({
-          denyRule: S.optional(__S(32, __c4, 0)),
+          denyRule: S.optional(__S(32, __c1, 0)),
           description: S.optional(S.String),
         }),
       ).annotate({ identifier: "GoogleIamV2PolicyRule" });
     case 2:
-      return S.Array(__S(33, __c4, 1));
+      return S.Array(__S(33, __c1, 1));
     case 3:
       return S.Record(S.String, S.String);
     case 4:
@@ -836,10 +824,10 @@ function __c4(j: number): any {
           displayName: S.optional(S.String),
           kind: S.optional(S.String),
           createTime: S.optional(S.String),
-          rules: S.optional(__S(34, __c4, 2)),
+          rules: S.optional(__S(34, __c1, 2)),
           updateTime: S.optional(S.String),
           uid: S.optional(S.String),
-          annotations: S.optional(__S(35, __c4, 3)),
+          annotations: S.optional(__S(35, __c1, 3)),
           name: S.optional(S.String),
           deleteTime: S.optional(S.String),
         }),
@@ -855,75 +843,71 @@ function __c4(j: number): any {
           "GoogleCloudPolicytroubleshooterIamV3DenyRuleExplanationAnnotatedPermissionMatching",
       });
     case 6:
-      return S.Record(S.String, __S(37, __c4, 5));
+      return S.Record(S.String, __S(37, __c1, 5));
     case 7:
       return S.suspend(() =>
         S.Struct({
-          condition: S.optional(__S(10, __c1, 2)),
+          condition: S.optional(__S(10, __c0, 10)),
           denyAccessState: S.optional(S.String),
-          deniedPermissions: S.optional(__S(38, __c4, 6)),
-          exceptionPrincipals: S.optional(__S(19, __c2, 3)),
-          combinedExceptionPermission: S.optional(__S(37, __c4, 5)),
-          combinedDeniedPrincipal: S.optional(__S(18, __c2, 2)),
-          combinedDeniedPermission: S.optional(__S(37, __c4, 5)),
-          exceptionPermissions: S.optional(__S(38, __c4, 6)),
+          deniedPermissions: S.optional(__S(38, __c1, 6)),
+          exceptionPrincipals: S.optional(__S(19, __c0, 19)),
+          combinedExceptionPermission: S.optional(__S(37, __c1, 5)),
+          combinedDeniedPrincipal: S.optional(__S(18, __c0, 18)),
+          combinedDeniedPermission: S.optional(__S(37, __c1, 5)),
+          exceptionPermissions: S.optional(__S(38, __c1, 6)),
           relevance: S.optional(S.String),
-          deniedPrincipals: S.optional(__S(19, __c2, 3)),
-          conditionExplanation: S.optional(__S(26, __c3, 2)),
-          combinedExceptionPrincipal: S.optional(__S(18, __c2, 2)),
+          deniedPrincipals: S.optional(__S(19, __c0, 19)),
+          conditionExplanation: S.optional(__S(26, __c0, 26)),
+          combinedExceptionPrincipal: S.optional(__S(18, __c0, 18)),
         }),
       ).annotate({
         identifier: "GoogleCloudPolicytroubleshooterIamV3DenyRuleExplanation",
       });
-  }
-}
-function __c5(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(39, __c4, 7));
-    case 1:
+    case 8:
+      return S.Array(__S(39, __c1, 7));
+    case 9:
       return S.suspend(() =>
         S.Struct({
-          policy: S.optional(__S(36, __c4, 4)),
+          policy: S.optional(__S(36, __c1, 4)),
           relevance: S.optional(S.String),
-          ruleExplanations: S.optional(__S(40, __c5, 0)),
+          ruleExplanations: S.optional(__S(40, __c1, 8)),
           denyAccessState: S.optional(S.String),
         }),
       ).annotate({
         identifier: "GoogleCloudPolicytroubleshooterIamV3ExplainedDenyPolicy",
       });
-    case 2:
-      return S.Array(__S(41, __c5, 1));
-    case 3:
+    case 10:
+      return S.Array(__S(41, __c1, 9));
+    case 11:
       return S.suspend(() =>
         S.Struct({
           denyAccessState: S.optional(S.String),
-          explainedPolicies: S.optional(__S(42, __c5, 2)),
+          explainedPolicies: S.optional(__S(42, __c1, 10)),
           relevance: S.optional(S.String),
           fullResourceName: S.optional(S.String),
         }),
       ).annotate({
         identifier: "GoogleCloudPolicytroubleshooterIamV3ExplainedDenyResource",
       });
-    case 4:
-      return S.Array(__S(43, __c5, 3));
-    case 5:
+    case 12:
+      return S.Array(__S(43, __c1, 11));
+    case 13:
       return S.suspend(() =>
         S.Struct({
           relevance: S.optional(S.String),
           denyAccessState: S.optional(S.String),
           permissionDeniable: S.optional(S.Boolean),
-          explainedResources: S.optional(__S(44, __c5, 4)),
+          explainedResources: S.optional(__S(44, __c1, 12)),
         }),
       ).annotate({
         identifier: "GoogleCloudPolicytroubleshooterIamV3DenyPolicyExplanation",
       });
-    case 6:
+    case 14:
       return S.suspend(() =>
         S.Struct({
           accessTuple: S.optional(__S(6, __c0, 6)),
-          allowPolicyExplanation: S.optional(__S(31, __c3, 7)),
-          denyPolicyExplanation: S.optional(__S(45, __c5, 5)),
+          allowPolicyExplanation: S.optional(__S(31, __c0, 31)),
+          denyPolicyExplanation: S.optional(__S(45, __c1, 13)),
           overallAccessState: S.optional(S.String),
         }),
       ).annotate({
@@ -931,7 +915,6 @@ function __c5(j: number): any {
       });
   }
 }
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

@@ -851,8 +851,8 @@ export const createHogFunction: API.OperationMethod<
   CreateHogFunctionError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(10, __c1, 2) as any as S.Schema<CreateHogFunctionRequest>,
-  output: __S(21, __c2, 5) as any as S.Schema<HogFunctionOutput>,
+  input: __S(120, __c15, 0) as any as S.Schema<CreateHogFunctionRequest>,
+  output: __S(172, __c21, 4) as any as S.Schema<HogFunctionOutput>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -865,8 +865,8 @@ export const createHogFunctionsDiscardDraft: API.OperationMethod<
   CreateHogFunctionsDiscardDraftError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(22, __c2, 6) as any as S.Schema<CreateHogFunctionsDiscardDraftRequest>,
-  output: __S(21, __c2, 5) as any as S.Schema<HogFunctionOutput>,
+  input: __S(184, __c23, 0) as any as S.Schema<CreateHogFunctionsDiscardDraftRequest>,
+  output: __S(172, __c21, 4) as any as S.Schema<HogFunctionOutput>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -879,8 +879,8 @@ export const createHogFunctionsInvocation: API.OperationMethod<
   CreateHogFunctionsInvocationError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(24, __c3, 0) as any as S.Schema<CreateHogFunctionsInvocationRequest>,
-  output: __S(25, __c3, 1) as any as S.Schema<HogFunctionInvocationOutput>,
+  input: __S(193, __c24, 1) as any as S.Schema<CreateHogFunctionsInvocationRequest>,
+  output: __S(194, __c24, 2) as any as S.Schema<HogFunctionInvocationOutput>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -894,8 +894,8 @@ export const createHogFunctionsRerun: API.OperationMethod<
   CreateHogFunctionsRerunError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(29, __c3, 5) as any as S.Schema<CreateHogFunctionsRerunRequest>,
-  output: __S(30, __c3, 6) as any as S.Schema<HogInvocationRerunResponse>,
+  input: __S(202, __c25, 2) as any as S.Schema<CreateHogFunctionsRerunRequest>,
+  output: __S(203, __c25, 3) as any as S.Schema<HogInvocationRerunResponse>,
   errors: [BadRequest],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -908,8 +908,8 @@ export const getHogFunction: API.OperationMethod<
   GetHogFunctionError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(31, __c3, 7) as any as S.Schema<GetHogFunctionRequest>,
-  output: __S(21, __c2, 5) as any as S.Schema<HogFunctionOutput>,
+  input: __S(216, __c27, 0) as any as S.Schema<GetHogFunctionRequest>,
+  output: __S(172, __c21, 4) as any as S.Schema<HogFunctionOutput>,
   errors: [Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -922,8 +922,8 @@ export const getHogFunctionsIcon: API.OperationMethod<
   GetHogFunctionsIconError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(32, __c4, 0) as any as S.Schema<GetHogFunctionsIconRequest>,
-  output: __S(33, __c4, 1) as any as S.Schema<GetHogFunctionsIconResponse>,
+  input: __S(224, __c28, 0) as any as S.Schema<GetHogFunctionsIconRequest>,
+  output: __S(232, __c29, 0) as any as S.Schema<GetHogFunctionsIconResponse>,
   errors: [Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -936,8 +936,8 @@ export const getHogFunctionsIcon2: API.OperationMethod<
   GetHogFunctionsIcon2Error,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(34, __c4, 2) as any as S.Schema<GetHogFunctionsIconRequest2>,
-  output: __S(33, __c4, 1) as any as S.Schema<GetHogFunctionsIcon2Response>,
+  input: __S(240, __c30, 0) as any as S.Schema<GetHogFunctionsIconRequest2>,
+  output: __S(232, __c29, 0) as any as S.Schema<GetHogFunctionsIcon2Response>,
   errors: [Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -950,8 +950,8 @@ export const getHogFunctionsLog: API.OperationMethod<
   GetHogFunctionsLogError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(35, __c4, 3) as any as S.Schema<GetHogFunctionsLogRequest>,
-  output: __S(33, __c4, 1) as any as S.Schema<GetHogFunctionsLogResponse>,
+  input: __S(0, __c0, 0) as any as S.Schema<GetHogFunctionsLogRequest>,
+  output: __S(232, __c29, 0) as any as S.Schema<GetHogFunctionsLogResponse>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -965,8 +965,8 @@ export const getHogFunctionsMaskedSecret: API.OperationMethod<
   GetHogFunctionsMaskedSecretError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(36, __c4, 4) as any as S.Schema<GetHogFunctionsMaskedSecretRequest>,
-  output: __S(39, __c4, 7) as any as S.Schema<GetHogFunctionsMaskedSecretResponse>,
+  input: __S(8, __c1, 0) as any as S.Schema<GetHogFunctionsMaskedSecretRequest>,
+  output: __S(11, __c1, 3) as any as S.Schema<GetHogFunctionsMaskedSecretResponse>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -979,8 +979,8 @@ export const getHogFunctionsMetrics: API.OperationMethod<
   GetHogFunctionsMetricsError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(40, __c5, 0) as any as S.Schema<GetHogFunctionsMetricsRequest>,
-  output: __S(44, __c5, 4) as any as S.Schema<AppMetricsResponse>,
+  input: __S(16, __c2, 0) as any as S.Schema<GetHogFunctionsMetricsRequest>,
+  output: __S(20, __c2, 4) as any as S.Schema<AppMetricsResponse>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -993,8 +993,8 @@ export const getHogFunctionsMetricsTotal: API.OperationMethod<
   GetHogFunctionsMetricsTotalError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(45, __c5, 5) as any as S.Schema<GetHogFunctionsMetricsTotalRequest>,
-  output: __S(47, __c5, 7) as any as S.Schema<AppMetricsTotalsResponse>,
+  input: __S(24, __c3, 0) as any as S.Schema<GetHogFunctionsMetricsTotalRequest>,
+  output: __S(25, __c3, 1) as any as S.Schema<AppMetricsTotalsResponse>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1007,8 +1007,8 @@ export const getHogFunctionsRevision: API.OperationMethod<
   GetHogFunctionsRevisionError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(48, __c6, 0) as any as S.Schema<GetHogFunctionsRevisionRequest>,
-  output: __S(49, __c6, 1) as any as S.Schema<HogFunctionRevision>,
+  input: __S(40, __c5, 0) as any as S.Schema<GetHogFunctionsRevisionRequest>,
+  output: __S(41, __c5, 1) as any as S.Schema<HogFunctionRevision>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1022,8 +1022,8 @@ export const hogFunctionsDestroy: API.OperationMethod<
   HogFunctionsDestroyError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(50, __c6, 2) as any as S.Schema<HogFunctionsDestroyRequest>,
-  output: __S(33, __c4, 1) as any as S.Schema<HogFunctionsDestroyResponse>,
+  input: __S(48, __c6, 0) as any as S.Schema<HogFunctionsDestroyRequest>,
+  output: __S(232, __c29, 0) as any as S.Schema<HogFunctionsDestroyResponse>,
   errors: [Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1040,8 +1040,8 @@ export const hogFunctionsEnableBackfillsCreate: API.OperationMethod<
   HogFunctionsEnableBackfillsCreateError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(51, __c6, 3) as any as S.Schema<HogFunctionsEnableBackfillsCreateRequest>,
-  output: __S(52, __c6, 4) as any as S.Schema<HogFunctionsEnableBackfillsCreateResponse>,
+  input: __S(56, __c7, 0) as any as S.Schema<HogFunctionsEnableBackfillsCreateRequest>,
+  output: __S(57, __c7, 1) as any as S.Schema<HogFunctionsEnableBackfillsCreateResponse>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1054,8 +1054,8 @@ export const hogFunctionsPublishCreate: API.OperationMethod<
   HogFunctionsPublishCreateError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(53, __c6, 5) as any as S.Schema<HogFunctionsPublishCreateRequest>,
-  output: __S(54, __c6, 6) as any as S.Schema<HogFunctionPublishResponseOutput>,
+  input: __S(64, __c8, 0) as any as S.Schema<HogFunctionsPublishCreateRequest>,
+  output: __S(65, __c8, 1) as any as S.Schema<HogFunctionPublishResponseOutput>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1068,8 +1068,8 @@ export const hogFunctionsRevisionsRestoreCreate: API.OperationMethod<
   HogFunctionsRevisionsRestoreCreateError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(55, __c6, 7) as any as S.Schema<HogFunctionsRevisionsRestoreCreateRequest>,
-  output: __S(21, __c2, 5) as any as S.Schema<HogFunctionOutput>,
+  input: __S(72, __c9, 0) as any as S.Schema<HogFunctionsRevisionsRestoreCreateRequest>,
+  output: __S(172, __c21, 4) as any as S.Schema<HogFunctionOutput>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1082,8 +1082,8 @@ export const listHogFunctions: API.OperationMethod<
   ListHogFunctionsError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(56, __c7, 0) as any as S.Schema<ListHogFunctionsRequest>,
-  output: __S(59, __c7, 3) as any as S.Schema<PaginatedHogFunctionMinimalList>,
+  input: __S(80, __c10, 0) as any as S.Schema<ListHogFunctionsRequest>,
+  output: __S(83, __c10, 3) as any as S.Schema<PaginatedHogFunctionMinimalList>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1096,8 +1096,8 @@ export const listHogFunctionsRevisions: API.OperationMethod<
   ListHogFunctionsRevisionsError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(60, __c7, 4) as any as S.Schema<ListHogFunctionsRevisionsRequest>,
-  output: __S(63, __c7, 7) as any as S.Schema<PaginatedHogFunctionRevisionBasicList>,
+  input: __S(88, __c11, 0) as any as S.Schema<ListHogFunctionsRevisionsRequest>,
+  output: __S(91, __c11, 3) as any as S.Schema<PaginatedHogFunctionRevisionBasicList>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1110,8 +1110,8 @@ export const updateHogFunction: API.OperationMethod<
   UpdateHogFunctionError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(64, __c8, 0) as any as S.Schema<UpdateHogFunctionRequest>,
-  output: __S(21, __c2, 5) as any as S.Schema<HogFunctionOutput>,
+  input: __S(96, __c12, 0) as any as S.Schema<UpdateHogFunctionRequest>,
+  output: __S(172, __c21, 4) as any as S.Schema<HogFunctionOutput>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1124,8 +1124,8 @@ export const updateHogFunctionsPartial: API.OperationMethod<
   UpdateHogFunctionsPartialError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(65, __c8, 1) as any as S.Schema<UpdateHogFunctionsPartialRequest>,
-  output: __S(21, __c2, 5) as any as S.Schema<HogFunctionOutput>,
+  input: __S(104, __c13, 0) as any as S.Schema<UpdateHogFunctionsPartialRequest>,
+  output: __S(172, __c21, 4) as any as S.Schema<HogFunctionOutput>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1143,8 +1143,8 @@ export const updateHogFunctionsRearrangePartial: API.OperationMethod<
   UpdateHogFunctionsRearrangePartialError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(66, __c8, 2) as any as S.Schema<UpdateHogFunctionsRearrangePartialRequest>,
-  output: __S(68, __c8, 4) as any as S.Schema<UpdateHogFunctionsRearrangePartialResponse>,
+  input: __S(112, __c14, 0) as any as S.Schema<UpdateHogFunctionsRearrangePartialRequest>,
+  output: __S(114, __c14, 2) as any as S.Schema<UpdateHogFunctionsRearrangePartialResponse>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1154,383 +1154,6 @@ export const updateHogFunctionsRearrangePartial: API.OperationMethod<
 function __c0(j: number): any {
   switch (j) {
     case 0:
-      return S.Record(S.String, S.Unknown);
-    case 1:
-      return S.Array(__S(0, __c0, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          type: S.optional(S.String),
-          key: S.optional(S.String),
-          label: S.optional(S.String),
-          choices: S.optional(__S(1, __c0, 1)),
-          searchable: S.optional(S.Boolean),
-          required: S.optional(S.Boolean),
-          default: S.optional(S.Unknown),
-          secret: S.optional(S.Boolean),
-          hidden: S.optional(S.Boolean),
-          description: S.optional(S.String),
-          integration: S.optional(S.String),
-          integration_key: S.optional(S.String),
-          requires_field: S.optional(S.String),
-          integration_field: S.optional(S.String),
-          requiredScopes: S.optional(S.String),
-          templating: S.optional(S.Unknown),
-        }),
-      ).annotate({ identifier: "InputsSchemaItem" });
-    case 3:
-      return S.Array(__S(2, __c0, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          value: S.optional(S.Unknown),
-          templating: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "InputsItemInput" });
-    case 5:
-      return S.Record(S.String, __S(4, __c0, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          source: S.optional(S.String),
-          actions: S.optional(__S(1, __c0, 1)),
-          events: S.optional(__S(1, __c0, 1)),
-          data_warehouse: S.optional(__S(1, __c0, 1)),
-          properties: S.optional(__S(1, __c0, 1)),
-          bytecode: S.optional(S.Unknown),
-          transpiled: S.optional(S.Unknown),
-          filter_test_accounts: S.optional(S.Boolean),
-          bytecode_error: S.optional(S.String),
-          bytecode_contract: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "HogFunctionFilters" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          ttl: S.optional(S.Number),
-          threshold: S.optional(S.NullOr(S.Number)),
-          hash: S.optional(S.String),
-          bytecode: S.optional(S.Unknown),
-        }),
-      ).annotate({ identifier: "HogFunctionMasking" });
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.optional(S.String),
-          inputs_schema: S.optional(__S(3, __c0, 3)),
-          inputs: S.optional(__S(5, __c0, 5)),
-          filters: S.optional(__S(6, __c0, 6)),
-        }),
-      ).annotate({ identifier: "MappingsInput" });
-    case 1:
-      return S.Array(__S(8, __c1, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          project_id: S.String.pipe(T.Label()),
-          type: S.optional(S.NullOr(S.String)),
-          name: S.optional(S.NullOr(S.String)),
-          description: S.optional(S.String),
-          enabled: S.optional(S.Boolean),
-          deleted: S.optional(S.Boolean),
-          hog: S.optional(S.String),
-          inputs_schema: S.optional(__S(3, __c0, 3)),
-          inputs: S.optional(__S(5, __c0, 5)),
-          filters: S.optional(__S(6, __c0, 6)),
-          masking: S.optional(S.NullOr(__S(7, __c0, 7))),
-          mappings: S.optional(S.NullOr(__S(9, __c1, 1))),
-          icon_url: S.optional(S.NullOr(S.String)),
-          template_id: S.optional(S.NullOr(S.String)),
-          execution_order: S.optional(S.NullOr(S.Number)),
-          _create_in_folder: S.optional(S.String),
-          base_updated_at: S.optional(S.String),
-        }).pipe(
-          T.Http({ method: "POST", uri: "/api/projects/{project_id}/hog_functions/", code: 200 }),
-        ),
-      ).annotate({ identifier: "CreateHogFunctionRequest" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.Number),
-          uuid: S.optional(S.String),
-          distinct_id: S.optional(S.NullOr(S.String)),
-          first_name: S.optional(S.String),
-          last_name: S.optional(S.String),
-          email: S.optional(S.String),
-          is_email_verified: S.optional(S.NullOr(S.Boolean)),
-          hedgehog_config: S.optional(S.NullOr(__S(0, __c0, 0))),
-          role_at_organization: S.optional(S.NullOr(S.Unknown)),
-        }),
-      ).annotate({ identifier: "UserBasic" });
-    case 4:
-      return S.Array(S.Unknown);
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          value: S.optional(S.Unknown),
-          templating: S.optional(S.String),
-          bytecode: S.optional(__S(12, __c1, 4)),
-          bytecode_contract: S.optional(S.String),
-          order: S.optional(S.Number),
-          transpiled: S.optional(S.Unknown),
-        }),
-      ).annotate({ identifier: "InputsItem" });
-    case 6:
-      return S.Record(S.String, __S(13, __c1, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.optional(S.String),
-          inputs_schema: S.optional(__S(3, __c0, 3)),
-          inputs: S.optional(__S(14, __c1, 6)),
-          filters: S.optional(__S(6, __c0, 6)),
-        }),
-      ).annotate({ identifier: "Mappings" });
-  }
-}
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(15, __c1, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.optional(S.String),
-          include_by_default: S.optional(S.NullOr(S.Boolean)),
-          use_all_events_by_default: S.optional(S.NullOr(S.Boolean)),
-          filters: S.optional(S.Unknown),
-          inputs: S.optional(S.Unknown),
-          inputs_schema: S.optional(S.Unknown),
-        }),
-      ).annotate({
-        identifier: "HogFunctionMappingTemplate",
-      });
-    case 2:
-      return S.Array(__S(17, __c2, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          description: S.optional(S.NullOr(S.String)),
-          code: S.optional(S.String),
-          code_language: S.optional(S.String),
-          inputs_schema: S.optional(S.Unknown),
-          type: S.optional(S.String),
-          status: S.optional(S.String),
-          category: S.optional(S.Unknown),
-          free: S.optional(S.Boolean),
-          icon_url: S.optional(S.NullOr(S.String)),
-          filters: S.optional(S.Unknown),
-          masking: S.optional(S.Unknown),
-          mapping_templates: S.optional(S.NullOr(__S(18, __c2, 2))),
-        }),
-      ).annotate({ identifier: "HogFunctionTemplate" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          state: S.optional(S.Number),
-          tokens: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "HogFunctionStatus" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          type: S.optional(S.NullOr(S.String)),
-          name: S.optional(S.NullOr(S.String)),
-          description: S.optional(S.String),
-          created_at: S.optional(S.String),
-          created_by: S.optional(S.NullOr(__S(11, __c1, 3))),
-          updated_at: S.optional(S.String),
-          enabled: S.optional(S.Boolean),
-          hog: S.optional(S.String),
-          bytecode: S.optional(S.Unknown),
-          transpiled: S.optional(S.NullOr(S.String)),
-          inputs_schema: S.optional(__S(3, __c0, 3)),
-          inputs: S.optional(__S(14, __c1, 6)),
-          filters: S.optional(__S(6, __c0, 6)),
-          masking: S.optional(S.NullOr(__S(7, __c0, 7))),
-          mappings: S.optional(S.NullOr(__S(16, __c2, 0))),
-          icon_url: S.optional(S.NullOr(S.String)),
-          template: S.optional(__S(19, __c2, 3)),
-          status: S.optional(S.NullOr(__S(20, __c2, 4))),
-          execution_order: S.optional(S.NullOr(S.Number)),
-          batch_export_id: S.optional(S.NullOr(S.String)),
-          search_match_type: S.optional(S.NullOr(S.String)),
-          version: S.optional(S.Number),
-          draft: S.optional(S.Unknown),
-          draft_updated_at: S.optional(S.NullOr(S.String)),
-        }),
-      ).annotate({ identifier: "HogFunctionOutput" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          project_id: S.String.pipe(T.Label()),
-          id: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/api/projects/{project_id}/hog_functions/{id}/discard_draft/",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateHogFunctionsDiscardDraftRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          type: S.optional(S.NullOr(S.String)),
-          name: S.optional(S.NullOr(S.String)),
-          description: S.optional(S.String),
-          enabled: S.optional(S.Boolean),
-          deleted: S.optional(S.Boolean),
-          hog: S.optional(S.String),
-          inputs_schema: S.optional(__S(3, __c0, 3)),
-          inputs: S.optional(__S(5, __c0, 5)),
-          filters: S.optional(__S(6, __c0, 6)),
-          masking: S.optional(S.NullOr(__S(7, __c0, 7))),
-          mappings: S.optional(S.NullOr(__S(9, __c1, 1))),
-          icon_url: S.optional(S.NullOr(S.String)),
-          template_id: S.optional(S.NullOr(S.String)),
-          execution_order: S.optional(S.NullOr(S.Number)),
-          _create_in_folder: S.optional(S.String),
-          base_updated_at: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "HogFunctionInput" });
-  }
-}
-function __c3(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          project_id: S.String.pipe(T.Label()),
-          id: S.String.pipe(T.Label()),
-          configuration: S.optional(__S(23, __c2, 7)),
-          use_draft: S.optional(S.Boolean),
-          globals: S.optional(__S(0, __c0, 0)),
-          clickhouse_event: S.optional(__S(0, __c0, 0)),
-          mock_async_functions: S.optional(S.Boolean),
-          invocation_id: S.optional(S.NullOr(S.String)),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/api/projects/{project_id}/hog_functions/{id}/invocations/",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateHogFunctionsInvocationRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          status: S.optional(S.String),
-          logs: S.optional(__S(12, __c1, 4)),
-          invocation_id: S.optional(S.NullOr(S.String)),
-        }),
-      ).annotate({
-        identifier: "HogFunctionInvocationOutput",
-      });
-    case 2:
-      return S.Array(S.String);
-    case 3:
-      return S.Array(S.String);
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          window_start: S.String,
-          window_end: S.String,
-          status: S.optional(__S(26, __c3, 2)),
-          error_kind: S.optional(__S(27, __c3, 3)),
-          error_message_contains: S.optional(S.String),
-          max_attempts: S.optional(S.Number),
-          max_count: S.optional(S.Number),
-          invocation_ids: S.optional(__S(27, __c3, 3)),
-        }),
-      ).annotate({ identifier: "HogInvocationRerunFilter" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          project_id: S.String.pipe(T.Label()),
-          id: S.String.pipe(T.Label()),
-          filter: __S(28, __c3, 4),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/api/projects/{project_id}/hog_functions/{id}/rerun/",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateHogFunctionsRerunRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          rerun_job_id: S.String,
-          queued_count: S.Number,
-          skipped_count: S.Number,
-        }),
-      ).annotate({
-        identifier: "HogInvocationRerunResponse",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          project_id: S.String.pipe(T.Label()),
-          id: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/api/projects/{project_id}/hog_functions/{id}/",
-            code: 200,
-          }),
-        ),
-      ).annotate({ identifier: "GetHogFunctionRequest" });
-  }
-}
-function __c4(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          project_id: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/api/projects/{project_id}/hog_functions/icon/",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "GetHogFunctionsIconRequest",
-      });
-    case 1:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "GetHogFunctionsIconResponse",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          project_id: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/api/projects/{project_id}/hog_functions/icons/",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "GetHogFunctionsIconRequest2",
-      });
-    case 3:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -1551,7 +1174,11 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "GetHogFunctionsLogRequest",
       });
-    case 4:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -1565,26 +1192,26 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "GetHogFunctionsMaskedSecretRequest",
       });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
           name: S.String,
           type: S.String,
           enabled: S.Boolean,
-          input_keys: __S(27, __c3, 3),
-          draft_input_keys: __S(27, __c3, 3),
+          input_keys: __S(208, __c26, 0),
+          draft_input_keys: __S(208, __c26, 0),
         }),
       ).annotate({ identifier: "HogFunctionMaskedSecret" });
-    case 6:
-      return S.Array(__S(37, __c4, 5));
-    case 7:
-      return S.suspend(() => __S(38, __c4, 6).pipe(T.RawResponseRoot())).annotate({
+    case 2:
+      return S.Array(__S(9, __c1, 1));
+    case 3:
+      return S.suspend(() => __S(10, __c1, 2).pipe(T.RawResponseRoot())).annotate({
         identifier: "GetHogFunctionsMaskedSecretResponse",
       });
   }
 }
-function __c5(j: number): any {
+function __c2(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1614,19 +1241,23 @@ function __c5(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
-          values: S.optional(__S(41, __c5, 1)),
+          values: S.optional(__S(17, __c2, 1)),
         }),
       ).annotate({ identifier: "AppMetricSeries" });
     case 3:
-      return S.Array(__S(42, __c5, 2));
+      return S.Array(__S(18, __c2, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          labels: S.optional(__S(27, __c3, 3)),
-          series: S.optional(__S(43, __c5, 3)),
+          labels: S.optional(__S(208, __c26, 0)),
+          series: S.optional(__S(19, __c2, 3)),
         }),
       ).annotate({ identifier: "AppMetricsResponse" });
-    case 5:
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -1648,17 +1279,21 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "GetHogFunctionsMetricsTotalRequest",
       });
-    case 6:
-      return S.Record(S.String, S.Number);
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          totals: S.optional(__S(46, __c5, 6)),
+          totals: S.optional(__S(32, __c4, 0)),
         }),
       ).annotate({ identifier: "AppMetricsTotalsResponse" });
   }
 }
-function __c6(j: number): any {
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, S.Number);
+  }
+}
+function __c5(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1681,11 +1316,15 @@ function __c6(j: number): any {
         S.Struct({
           version: S.Number,
           created_at: S.String,
-          created_by: S.NullOr(__S(11, __c1, 3)),
+          created_by: S.NullOr(__S(152, __c19, 0)),
           content: S.Unknown,
         }),
       ).annotate({ identifier: "HogFunctionRevision" });
-    case 2:
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -1700,7 +1339,11 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "HogFunctionsDestroyRequest",
       });
-    case 3:
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -1711,11 +1354,11 @@ function __c6(j: number): any {
           enabled: S.optional(S.Boolean),
           deleted: S.optional(S.Boolean),
           hog: S.optional(S.String),
-          inputs_schema: S.optional(__S(3, __c0, 3)),
-          inputs: S.optional(__S(5, __c0, 5)),
-          filters: S.optional(__S(6, __c0, 6)),
-          masking: S.optional(S.NullOr(__S(7, __c0, 7))),
-          mappings: S.optional(S.NullOr(__S(9, __c1, 1))),
+          inputs_schema: S.optional(__S(138, __c17, 2)),
+          inputs: S.optional(__S(177, __c22, 1)),
+          filters: S.optional(__S(139, __c17, 3)),
+          masking: S.optional(S.NullOr(__S(140, __c17, 4))),
+          mappings: S.optional(S.NullOr(__S(179, __c22, 3))),
           icon_url: S.optional(S.NullOr(S.String)),
           template_id: S.optional(S.NullOr(S.String)),
           execution_order: S.optional(S.NullOr(S.Number)),
@@ -1731,11 +1374,15 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "HogFunctionsEnableBackfillsCreateRequest",
       });
-    case 4:
+    case 1:
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "HogFunctionsEnableBackfillsCreateResponse",
       });
-    case 5:
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -1752,19 +1399,23 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "HogFunctionsPublishCreateRequest",
       });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           published: S.Boolean,
           draft_updated_at: S.NullOr(S.String),
           confirm_token: S.NullOr(S.String),
-          changed_fields: S.NullOr(__S(27, __c3, 3)),
-          function: S.optional(S.NullOr(__S(21, __c2, 5))),
+          changed_fields: S.NullOr(__S(208, __c26, 0)),
+          function: S.optional(S.NullOr(__S(172, __c21, 4))),
         }),
       ).annotate({
         identifier: "HogFunctionPublishResponseOutput",
       });
-    case 7:
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -1783,7 +1434,7 @@ function __c6(j: number): any {
       });
   }
 }
-function __c7(j: number): any {
+function __c10(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1795,7 +1446,7 @@ function __c7(j: number): any {
           id: S.optional(S.String.pipe(T.Query())),
           limit: S.optional(S.Number.pipe(T.Query())),
           offset: S.optional(S.Number.pipe(T.Query())),
-          type: S.optional(__S(27, __c3, 3).pipe(T.Query())),
+          type: S.optional(__S(208, __c26, 0).pipe(T.Query())),
           updated_at: S.optional(S.String.pipe(T.Query())),
         }).pipe(
           T.Http({ method: "GET", uri: "/api/projects/{project_id}/hog_functions/", code: 200 }),
@@ -1809,33 +1460,37 @@ function __c7(j: number): any {
           name: S.optional(S.NullOr(S.String)),
           description: S.optional(S.String),
           created_at: S.optional(S.String),
-          created_by: S.optional(S.NullOr(__S(11, __c1, 3))),
+          created_by: S.optional(S.NullOr(__S(152, __c19, 0))),
           updated_at: S.optional(S.String),
           enabled: S.optional(S.Boolean),
           hog: S.optional(S.String),
           filters: S.optional(S.Unknown),
           icon_url: S.optional(S.NullOr(S.String)),
-          template: S.optional(__S(19, __c2, 3)),
-          status: S.optional(S.NullOr(__S(20, __c2, 4))),
+          template: S.optional(__S(162, __c20, 2)),
+          status: S.optional(S.NullOr(__S(163, __c20, 3))),
           execution_order: S.optional(S.NullOr(S.Number)),
           search_match_type: S.optional(S.NullOr(S.String)),
           draft_updated_at: S.optional(S.NullOr(S.String)),
         }),
       ).annotate({ identifier: "HogFunctionMinimal" });
     case 2:
-      return S.Array(__S(57, __c7, 1));
+      return S.Array(__S(81, __c10, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
           count: S.optional(S.Number),
           next: S.optional(S.NullOr(S.String)),
           previous: S.optional(S.NullOr(S.String)),
-          results: S.optional(__S(58, __c7, 2)),
+          results: S.optional(__S(82, __c10, 2)),
         }),
       ).annotate({
         identifier: "PaginatedHogFunctionMinimalList",
       });
-    case 4:
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -1852,30 +1507,30 @@ function __c7(j: number): any {
       ).annotate({
         identifier: "ListHogFunctionsRevisionsRequest",
       });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           version: S.Number,
           created_at: S.String,
-          created_by: S.NullOr(__S(11, __c1, 3)),
+          created_by: S.NullOr(__S(152, __c19, 0)),
         }),
       ).annotate({ identifier: "HogFunctionRevisionBasic" });
-    case 6:
-      return S.Array(__S(61, __c7, 5));
-    case 7:
+    case 2:
+      return S.Array(__S(89, __c11, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
           count: S.Number,
           next: S.optional(S.NullOr(S.String)),
           previous: S.optional(S.NullOr(S.String)),
-          results: __S(62, __c7, 6),
+          results: __S(90, __c11, 2),
         }),
       ).annotate({
         identifier: "PaginatedHogFunctionRevisionBasicList",
       });
   }
 }
-function __c8(j: number): any {
+function __c12(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1888,11 +1543,11 @@ function __c8(j: number): any {
           enabled: S.optional(S.Boolean),
           deleted: S.optional(S.Boolean),
           hog: S.optional(S.String),
-          inputs_schema: S.optional(__S(3, __c0, 3)),
-          inputs: S.optional(__S(5, __c0, 5)),
-          filters: S.optional(__S(6, __c0, 6)),
-          masking: S.optional(S.NullOr(__S(7, __c0, 7))),
-          mappings: S.optional(S.NullOr(__S(9, __c1, 1))),
+          inputs_schema: S.optional(__S(138, __c17, 2)),
+          inputs: S.optional(__S(177, __c22, 1)),
+          filters: S.optional(__S(139, __c17, 3)),
+          masking: S.optional(S.NullOr(__S(140, __c17, 4))),
+          mappings: S.optional(S.NullOr(__S(179, __c22, 3))),
           icon_url: S.optional(S.NullOr(S.String)),
           template_id: S.optional(S.NullOr(S.String)),
           execution_order: S.optional(S.NullOr(S.Number)),
@@ -1906,7 +1561,11 @@ function __c8(j: number): any {
           }),
         ),
       ).annotate({ identifier: "UpdateHogFunctionRequest" });
-    case 1:
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -1917,11 +1576,11 @@ function __c8(j: number): any {
           enabled: S.optional(S.Boolean),
           deleted: S.optional(S.Boolean),
           hog: S.optional(S.String),
-          inputs_schema: S.optional(__S(3, __c0, 3)),
-          inputs: S.optional(__S(5, __c0, 5)),
-          filters: S.optional(__S(6, __c0, 6)),
-          masking: S.optional(S.NullOr(__S(7, __c0, 7))),
-          mappings: S.optional(S.NullOr(__S(9, __c1, 1))),
+          inputs_schema: S.optional(__S(138, __c17, 2)),
+          inputs: S.optional(__S(177, __c22, 1)),
+          filters: S.optional(__S(139, __c17, 3)),
+          masking: S.optional(S.NullOr(__S(140, __c17, 4))),
+          mappings: S.optional(S.NullOr(__S(179, __c22, 3))),
           icon_url: S.optional(S.NullOr(S.String)),
           template_id: S.optional(S.NullOr(S.String)),
           execution_order: S.optional(S.NullOr(S.Number)),
@@ -1937,11 +1596,15 @@ function __c8(j: number): any {
       ).annotate({
         identifier: "UpdateHogFunctionsPartialRequest",
       });
-    case 2:
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
-          orders: S.optional(__S(46, __c5, 6)),
+          orders: S.optional(__S(32, __c4, 0)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -1952,15 +1615,439 @@ function __c8(j: number): any {
       ).annotate({
         identifier: "UpdateHogFunctionsRearrangePartialRequest",
       });
-    case 3:
-      return S.Array(__S(21, __c2, 5));
-    case 4:
-      return S.suspend(() => __S(67, __c8, 3).pipe(T.RawResponseRoot())).annotate({
+    case 1:
+      return S.Array(__S(172, __c21, 4));
+    case 2:
+      return S.suspend(() => __S(113, __c14, 1).pipe(T.RawResponseRoot())).annotate({
         identifier: "UpdateHogFunctionsRearrangePartialResponse",
       });
   }
 }
-
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          project_id: S.String.pipe(T.Label()),
+          type: S.optional(S.NullOr(S.String)),
+          name: S.optional(S.NullOr(S.String)),
+          description: S.optional(S.String),
+          enabled: S.optional(S.Boolean),
+          deleted: S.optional(S.Boolean),
+          hog: S.optional(S.String),
+          inputs_schema: S.optional(__S(138, __c17, 2)),
+          inputs: S.optional(__S(177, __c22, 1)),
+          filters: S.optional(__S(139, __c17, 3)),
+          masking: S.optional(S.NullOr(__S(140, __c17, 4))),
+          mappings: S.optional(S.NullOr(__S(179, __c22, 3))),
+          icon_url: S.optional(S.NullOr(S.String)),
+          template_id: S.optional(S.NullOr(S.String)),
+          execution_order: S.optional(S.NullOr(S.Number)),
+          _create_in_folder: S.optional(S.String),
+          base_updated_at: S.optional(S.String),
+        }).pipe(
+          T.Http({ method: "POST", uri: "/api/projects/{project_id}/hog_functions/", code: 200 }),
+        ),
+      ).annotate({ identifier: "CreateHogFunctionRequest" });
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, S.Unknown);
+  }
+}
+function __c17(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(128, __c16, 0));
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          type: S.optional(S.String),
+          key: S.optional(S.String),
+          label: S.optional(S.String),
+          choices: S.optional(__S(136, __c17, 0)),
+          searchable: S.optional(S.Boolean),
+          required: S.optional(S.Boolean),
+          default: S.optional(S.Unknown),
+          secret: S.optional(S.Boolean),
+          hidden: S.optional(S.Boolean),
+          description: S.optional(S.String),
+          integration: S.optional(S.String),
+          integration_key: S.optional(S.String),
+          requires_field: S.optional(S.String),
+          integration_field: S.optional(S.String),
+          requiredScopes: S.optional(S.String),
+          templating: S.optional(S.Unknown),
+        }),
+      ).annotate({ identifier: "InputsSchemaItem" });
+    case 2:
+      return S.Array(__S(137, __c17, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          source: S.optional(S.String),
+          actions: S.optional(__S(136, __c17, 0)),
+          events: S.optional(__S(136, __c17, 0)),
+          data_warehouse: S.optional(__S(136, __c17, 0)),
+          properties: S.optional(__S(136, __c17, 0)),
+          bytecode: S.optional(S.Unknown),
+          transpiled: S.optional(S.Unknown),
+          filter_test_accounts: S.optional(S.Boolean),
+          bytecode_error: S.optional(S.String),
+          bytecode_contract: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "HogFunctionFilters" });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          ttl: S.optional(S.Number),
+          threshold: S.optional(S.NullOr(S.Number)),
+          hash: S.optional(S.String),
+          bytecode: S.optional(S.Unknown),
+        }),
+      ).annotate({ identifier: "HogFunctionMasking" });
+  }
+}
+function __c18(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.Unknown);
+  }
+}
+function __c19(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.Number),
+          uuid: S.optional(S.String),
+          distinct_id: S.optional(S.NullOr(S.String)),
+          first_name: S.optional(S.String),
+          last_name: S.optional(S.String),
+          email: S.optional(S.String),
+          is_email_verified: S.optional(S.NullOr(S.Boolean)),
+          hedgehog_config: S.optional(S.NullOr(__S(128, __c16, 0))),
+          role_at_organization: S.optional(S.NullOr(S.Unknown)),
+        }),
+      ).annotate({ identifier: "UserBasic" });
+  }
+}
+function __c20(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.optional(S.String),
+          include_by_default: S.optional(S.NullOr(S.Boolean)),
+          use_all_events_by_default: S.optional(S.NullOr(S.Boolean)),
+          filters: S.optional(S.Unknown),
+          inputs: S.optional(S.Unknown),
+          inputs_schema: S.optional(S.Unknown),
+        }),
+      ).annotate({
+        identifier: "HogFunctionMappingTemplate",
+      });
+    case 1:
+      return S.Array(__S(160, __c20, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          description: S.optional(S.NullOr(S.String)),
+          code: S.optional(S.String),
+          code_language: S.optional(S.String),
+          inputs_schema: S.optional(S.Unknown),
+          type: S.optional(S.String),
+          status: S.optional(S.String),
+          category: S.optional(S.Unknown),
+          free: S.optional(S.Boolean),
+          icon_url: S.optional(S.NullOr(S.String)),
+          filters: S.optional(S.Unknown),
+          masking: S.optional(S.Unknown),
+          mapping_templates: S.optional(S.NullOr(__S(161, __c20, 1))),
+        }),
+      ).annotate({ identifier: "HogFunctionTemplate" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          state: S.optional(S.Number),
+          tokens: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "HogFunctionStatus" });
+  }
+}
+function __c21(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          value: S.optional(S.Unknown),
+          templating: S.optional(S.String),
+          bytecode: S.optional(__S(144, __c18, 0)),
+          bytecode_contract: S.optional(S.String),
+          order: S.optional(S.Number),
+          transpiled: S.optional(S.Unknown),
+        }),
+      ).annotate({ identifier: "InputsItem" });
+    case 1:
+      return S.Record(S.String, __S(168, __c21, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.optional(S.String),
+          inputs_schema: S.optional(__S(138, __c17, 2)),
+          inputs: S.optional(__S(169, __c21, 1)),
+          filters: S.optional(__S(139, __c17, 3)),
+        }),
+      ).annotate({ identifier: "Mappings" });
+    case 3:
+      return S.Array(__S(170, __c21, 2));
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          type: S.optional(S.NullOr(S.String)),
+          name: S.optional(S.NullOr(S.String)),
+          description: S.optional(S.String),
+          created_at: S.optional(S.String),
+          created_by: S.optional(S.NullOr(__S(152, __c19, 0))),
+          updated_at: S.optional(S.String),
+          enabled: S.optional(S.Boolean),
+          hog: S.optional(S.String),
+          bytecode: S.optional(S.Unknown),
+          transpiled: S.optional(S.NullOr(S.String)),
+          inputs_schema: S.optional(__S(138, __c17, 2)),
+          inputs: S.optional(__S(169, __c21, 1)),
+          filters: S.optional(__S(139, __c17, 3)),
+          masking: S.optional(S.NullOr(__S(140, __c17, 4))),
+          mappings: S.optional(S.NullOr(__S(171, __c21, 3))),
+          icon_url: S.optional(S.NullOr(S.String)),
+          template: S.optional(__S(162, __c20, 2)),
+          status: S.optional(S.NullOr(__S(163, __c20, 3))),
+          execution_order: S.optional(S.NullOr(S.Number)),
+          batch_export_id: S.optional(S.NullOr(S.String)),
+          search_match_type: S.optional(S.NullOr(S.String)),
+          version: S.optional(S.Number),
+          draft: S.optional(S.Unknown),
+          draft_updated_at: S.optional(S.NullOr(S.String)),
+        }),
+      ).annotate({ identifier: "HogFunctionOutput" });
+  }
+}
+function __c22(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          value: S.optional(S.Unknown),
+          templating: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "InputsItemInput" });
+    case 1:
+      return S.Record(S.String, __S(176, __c22, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.optional(S.String),
+          inputs_schema: S.optional(__S(138, __c17, 2)),
+          inputs: S.optional(__S(177, __c22, 1)),
+          filters: S.optional(__S(139, __c17, 3)),
+        }),
+      ).annotate({ identifier: "MappingsInput" });
+    case 3:
+      return S.Array(__S(178, __c22, 2));
+  }
+}
+function __c23(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          project_id: S.String.pipe(T.Label()),
+          id: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/api/projects/{project_id}/hog_functions/{id}/discard_draft/",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateHogFunctionsDiscardDraftRequest",
+      });
+  }
+}
+function __c24(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          type: S.optional(S.NullOr(S.String)),
+          name: S.optional(S.NullOr(S.String)),
+          description: S.optional(S.String),
+          enabled: S.optional(S.Boolean),
+          deleted: S.optional(S.Boolean),
+          hog: S.optional(S.String),
+          inputs_schema: S.optional(__S(138, __c17, 2)),
+          inputs: S.optional(__S(177, __c22, 1)),
+          filters: S.optional(__S(139, __c17, 3)),
+          masking: S.optional(S.NullOr(__S(140, __c17, 4))),
+          mappings: S.optional(S.NullOr(__S(179, __c22, 3))),
+          icon_url: S.optional(S.NullOr(S.String)),
+          template_id: S.optional(S.NullOr(S.String)),
+          execution_order: S.optional(S.NullOr(S.Number)),
+          _create_in_folder: S.optional(S.String),
+          base_updated_at: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "HogFunctionInput" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          project_id: S.String.pipe(T.Label()),
+          id: S.String.pipe(T.Label()),
+          configuration: S.optional(__S(192, __c24, 0)),
+          use_draft: S.optional(S.Boolean),
+          globals: S.optional(__S(128, __c16, 0)),
+          clickhouse_event: S.optional(__S(128, __c16, 0)),
+          mock_async_functions: S.optional(S.Boolean),
+          invocation_id: S.optional(S.NullOr(S.String)),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/api/projects/{project_id}/hog_functions/{id}/invocations/",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateHogFunctionsInvocationRequest",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          status: S.optional(S.String),
+          logs: S.optional(__S(144, __c18, 0)),
+          invocation_id: S.optional(S.NullOr(S.String)),
+        }),
+      ).annotate({
+        identifier: "HogFunctionInvocationOutput",
+      });
+  }
+}
+function __c25(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          window_start: S.String,
+          window_end: S.String,
+          status: S.optional(__S(200, __c25, 0)),
+          error_kind: S.optional(__S(208, __c26, 0)),
+          error_message_contains: S.optional(S.String),
+          max_attempts: S.optional(S.Number),
+          max_count: S.optional(S.Number),
+          invocation_ids: S.optional(__S(208, __c26, 0)),
+        }),
+      ).annotate({ identifier: "HogInvocationRerunFilter" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          project_id: S.String.pipe(T.Label()),
+          id: S.String.pipe(T.Label()),
+          filter: __S(201, __c25, 1),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/api/projects/{project_id}/hog_functions/{id}/rerun/",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateHogFunctionsRerunRequest",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          rerun_job_id: S.String,
+          queued_count: S.Number,
+          skipped_count: S.Number,
+        }),
+      ).annotate({
+        identifier: "HogInvocationRerunResponse",
+      });
+  }
+}
+function __c26(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c27(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          project_id: S.String.pipe(T.Label()),
+          id: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/api/projects/{project_id}/hog_functions/{id}/",
+            code: 200,
+          }),
+        ),
+      ).annotate({ identifier: "GetHogFunctionRequest" });
+  }
+}
+function __c28(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          project_id: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/api/projects/{project_id}/hog_functions/icon/",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "GetHogFunctionsIconRequest",
+      });
+  }
+}
+function __c29(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "GetHogFunctionsIconResponse",
+      });
+  }
+}
+function __c30(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          project_id: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/api/projects/{project_id}/hog_functions/icons/",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "GetHogFunctionsIconRequest2",
+      });
+  }
+}
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

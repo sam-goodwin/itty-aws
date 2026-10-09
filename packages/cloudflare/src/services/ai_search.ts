@@ -5149,8 +5149,8 @@ export const chatCompletionsInstance: API.OperationMethod<
   ChatCompletionsInstanceError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(13, __c1, 5) as any as S.Schema<ChatCompletionsInstanceRequest>,
-  output: __S(23, __c2, 7) as any as S.Schema<ChatCompletionsInstanceResponse>,
+  input: __S(7, __c0, 7) as any as S.Schema<ChatCompletionsInstanceRequest>,
+  output: __S(14, __c0, 14) as any as S.Schema<ChatCompletionsInstanceResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -5164,8 +5164,8 @@ export const chatCompletionsNamespace: API.OperationMethod<
   ChatCompletionsNamespaceError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(32, __c4, 0) as any as S.Schema<ChatCompletionsNamespaceRequest>,
-  output: __S(39, __c4, 7) as any as S.Schema<ChatCompletionsNamespaceResponse>,
+  input: __S(199, __c6, 7) as any as S.Schema<ChatCompletionsNamespaceRequest>,
+  output: __S(206, __c6, 14) as any as S.Schema<ChatCompletionsNamespaceResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -5179,8 +5179,8 @@ export const chatCompletionsNamespaceInstance: API.OperationMethod<
   ChatCompletionsNamespaceInstanceError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(48, __c6, 0) as any as S.Schema<ChatCompletionsNamespaceInstanceRequest>,
-  output: __S(57, __c7, 1) as any as S.Schema<ChatCompletionsNamespaceInstanceResponse>,
+  input: __S(264, __c8, 8) as any as S.Schema<ChatCompletionsNamespaceInstanceRequest>,
+  output: __S(273, __c8, 17) as any as S.Schema<ChatCompletionsNamespaceInstanceResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -5194,8 +5194,8 @@ export const chunksNamespaceInstanceItem: API.OperationMethod<
   ChunksNamespaceInstanceItemError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(58, __c7, 2) as any as S.Schema<ChunksNamespaceInstanceItemRequest>,
-  output: __S(61, __c7, 5) as any as S.Schema<ChunksNamespaceInstanceItemResponse>,
+  input: __S(288, __c9, 0) as any as S.Schema<ChunksNamespaceInstanceItemRequest>,
+  output: __S(291, __c9, 3) as any as S.Schema<ChunksNamespaceInstanceItemResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -5216,8 +5216,8 @@ export const createInstance: API.OperationMethod<
   CreateInstanceError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(84, __c10, 4) as any as S.Schema<CreateInstanceRequest>,
-  output: __S(99, __c12, 3) as any as S.Schema<CreateInstanceResponse>,
+  input: __S(323, __c10, 3) as any as S.Schema<CreateInstanceRequest>,
+  output: __S(327, __c10, 7) as any as S.Schema<CreateInstanceResponse>,
   errors: [
     ValidationError,
     NotFound,
@@ -5246,8 +5246,8 @@ export const createInstanceJob: API.OperationMethod<
   CreateInstanceJobError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(100, __c12, 4) as any as S.Schema<CreateInstanceJobRequest>,
-  output: __S(101, __c12, 5) as any as S.Schema<CreateInstanceJobResponse>,
+  input: __S(736, __c23, 0) as any as S.Schema<CreateInstanceJobRequest>,
+  output: __S(768, __c24, 0) as any as S.Schema<CreateInstanceJobResponse>,
   errors: [
     ValidationError,
     NotFound,
@@ -5269,8 +5269,8 @@ export const createNamespace: API.OperationMethod<
   CreateNamespaceError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(103, __c12, 7) as any as S.Schema<CreateNamespaceRequest>,
-  output: __S(105, __c13, 1) as any as S.Schema<CreateNamespaceResponse>,
+  input: __S(801, __c25, 1) as any as S.Schema<CreateNamespaceRequest>,
+  output: __S(803, __c25, 3) as any as S.Schema<CreateNamespaceResponse>,
   errors: [NamespaceAlreadyExists, Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -5294,8 +5294,8 @@ export const createNamespaceInstance: API.OperationMethod<
   CreateNamespaceInstanceError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(116, __c14, 4) as any as S.Schema<CreateNamespaceInstanceRequest>,
-  output: __S(126, __c15, 6) as any as S.Schema<CreateNamespaceInstanceResponse>,
+  input: __S(835, __c26, 3) as any as S.Schema<CreateNamespaceInstanceRequest>,
+  output: __S(839, __c26, 7) as any as S.Schema<CreateNamespaceInstanceResponse>,
   errors: [
     ValidationError,
     NamespaceNotFound,
@@ -5321,8 +5321,8 @@ export const createNamespaceInstanceJob: API.OperationMethod<
   CreateNamespaceInstanceJobError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(127, __c15, 7) as any as S.Schema<CreateNamespaceInstanceJobRequest>,
-  output: __S(101, __c12, 5) as any as S.Schema<CreateNamespaceInstanceJobResponse>,
+  input: __S(1056, __c33, 0) as any as S.Schema<CreateNamespaceInstanceJobRequest>,
+  output: __S(768, __c24, 0) as any as S.Schema<CreateNamespaceInstanceJobResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -5336,8 +5336,8 @@ export const createOrUpdateNamespaceInstanceItem: API.OperationMethod<
   CreateOrUpdateNamespaceInstanceItemError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(128, __c16, 0) as any as S.Schema<CreateOrUpdateNamespaceInstanceItemRequest>,
-  output: __S(131, __c16, 3) as any as S.Schema<CreateOrUpdateNamespaceInstanceItemResponse>,
+  input: __S(1088, __c34, 0) as any as S.Schema<CreateOrUpdateNamespaceInstanceItemRequest>,
+  output: __S(1091, __c34, 3) as any as S.Schema<CreateOrUpdateNamespaceInstanceItemResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -5357,8 +5357,8 @@ export const createToken: API.OperationMethod<
   CreateTokenError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(132, __c16, 4) as any as S.Schema<CreateTokenRequest>,
-  output: __S(133, __c16, 5) as any as S.Schema<CreateTokenResponse>,
+  input: __S(1120, __c35, 0) as any as S.Schema<CreateTokenRequest>,
+  output: __S(1152, __c36, 0) as any as S.Schema<CreateTokenResponse>,
   errors: [
     ValidationError,
     NotFound,
@@ -5385,8 +5385,8 @@ export const deleteInstance: API.OperationMethod<
   DeleteInstanceError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(134, __c16, 6) as any as S.Schema<DeleteInstanceRequest>,
-  output: __S(138, __c17, 2) as any as S.Schema<DeleteInstanceResponse>,
+  input: __S(1184, __c37, 0) as any as S.Schema<DeleteInstanceRequest>,
+  output: __S(1188, __c37, 4) as any as S.Schema<DeleteInstanceResponse>,
   errors: [
     ValidationError,
     NotFound,
@@ -5407,8 +5407,8 @@ export const deleteNamespace: API.OperationMethod<
   DeleteNamespaceError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(139, __c17, 3) as any as S.Schema<DeleteNamespaceRequest>,
-  output: __S(140, __c17, 4) as any as S.Schema<DeleteNamespaceResponse>,
+  input: __S(1216, __c38, 0) as any as S.Schema<DeleteNamespaceRequest>,
+  output: __S(1248, __c39, 0) as any as S.Schema<DeleteNamespaceResponse>,
   errors: [NamespaceNotFound, Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -5428,8 +5428,8 @@ export const deleteNamespaceInstance: API.OperationMethod<
   DeleteNamespaceInstanceError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(141, __c17, 5) as any as S.Schema<DeleteNamespaceInstanceRequest>,
-  output: __S(145, __c18, 1) as any as S.Schema<DeleteNamespaceInstanceResponse>,
+  input: __S(1280, __c40, 0) as any as S.Schema<DeleteNamespaceInstanceRequest>,
+  output: __S(1284, __c40, 4) as any as S.Schema<DeleteNamespaceInstanceResponse>,
   errors: [
     ValidationError,
     NamespaceNotFound,
@@ -5451,8 +5451,8 @@ export const deleteNamespaceInstanceItem: API.OperationMethod<
   DeleteNamespaceInstanceItemError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(146, __c18, 2) as any as S.Schema<DeleteNamespaceInstanceItemRequest>,
-  output: __S(147, __c18, 3) as any as S.Schema<DeleteNamespaceInstanceItemResponse>,
+  input: __S(1312, __c41, 0) as any as S.Schema<DeleteNamespaceInstanceItemRequest>,
+  output: __S(1313, __c41, 1) as any as S.Schema<DeleteNamespaceInstanceItemResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -5473,8 +5473,8 @@ export const deleteToken: API.OperationMethod<
   DeleteTokenError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(148, __c18, 4) as any as S.Schema<DeleteTokenRequest>,
-  output: __S(140, __c17, 4) as any as S.Schema<DeleteTokenResponse>,
+  input: __S(1344, __c42, 0) as any as S.Schema<DeleteTokenRequest>,
+  output: __S(1248, __c39, 0) as any as S.Schema<DeleteTokenResponse>,
   errors: [
     ValidationError,
     NotFound,
@@ -5497,8 +5497,8 @@ export const downloadNamespaceInstanceItem: API.OperationMethod<
   DownloadNamespaceInstanceItemError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(149, __c18, 5) as any as S.Schema<DownloadNamespaceInstanceItemRequest>,
-  output: __S(150, __c18, 6) as any as S.Schema<DownloadNamespaceInstanceItemResponse>,
+  input: __S(1376, __c43, 0) as any as S.Schema<DownloadNamespaceInstanceItemRequest>,
+  output: __S(1377, __c43, 1) as any as S.Schema<DownloadNamespaceInstanceItemResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -5512,8 +5512,8 @@ export const getInstanceJob: API.OperationMethod<
   GetInstanceJobError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(151, __c18, 7) as any as S.Schema<GetInstanceJobRequest>,
-  output: __S(152, __c19, 0) as any as S.Schema<GetInstanceJobResponse>,
+  input: __S(1408, __c44, 0) as any as S.Schema<GetInstanceJobRequest>,
+  output: __S(1409, __c44, 1) as any as S.Schema<GetInstanceJobResponse>,
   errors: [ValidationError, NotFound, InvalidRoute, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -5527,8 +5527,8 @@ export const getNamespaceInstanceItem: API.OperationMethod<
   GetNamespaceInstanceItemError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(153, __c19, 1) as any as S.Schema<GetNamespaceInstanceItemRequest>,
-  output: __S(156, __c19, 4) as any as S.Schema<GetNamespaceInstanceItemResponse>,
+  input: __S(1440, __c45, 0) as any as S.Schema<GetNamespaceInstanceItemRequest>,
+  output: __S(1443, __c45, 3) as any as S.Schema<GetNamespaceInstanceItemResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -5542,8 +5542,8 @@ export const getNamespaceInstanceJob: API.OperationMethod<
   GetNamespaceInstanceJobError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(157, __c19, 5) as any as S.Schema<GetNamespaceInstanceJobRequest>,
-  output: __S(101, __c12, 5) as any as S.Schema<GetNamespaceInstanceJobResponse>,
+  input: __S(1472, __c46, 0) as any as S.Schema<GetNamespaceInstanceJobRequest>,
+  output: __S(768, __c24, 0) as any as S.Schema<GetNamespaceInstanceJobResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -5559,8 +5559,8 @@ export const listInstanceJobs: API.PaginatedOperationMethod<
   InstancesJobsListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(158, __c19, 6) as any as S.Schema<ListInstanceJobsRequest>,
-    output: __S(161, __c20, 1) as any as S.Schema<ListInstanceJobsResponse>,
+    input: __S(1504, __c47, 0) as any as S.Schema<ListInstanceJobsRequest>,
+    output: __S(1505, __c47, 1) as any as S.Schema<ListInstanceJobsResponse>,
     errors: [CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
     retry: Retry.Retry,
@@ -5585,8 +5585,8 @@ export const listInstances: API.PaginatedOperationMethod<
   InstancesListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(162, __c20, 2) as any as S.Schema<ListInstancesRequest>,
-    output: __S(171, __c21, 3) as any as S.Schema<ListInstancesResponse>,
+    input: __S(1568, __c49, 0) as any as S.Schema<ListInstancesRequest>,
+    output: __S(1577, __c49, 9) as any as S.Schema<ListInstancesResponse>,
     errors: [InvalidRoute, Forbidden, CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
     retry: Retry.Retry,
@@ -5611,8 +5611,8 @@ export const listNamespaceInstanceItems: API.PaginatedOperationMethod<
   NamespacesInstancesItemsListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(172, __c21, 4) as any as S.Schema<ListNamespaceInstanceItemsRequest>,
-    output: __S(177, __c22, 1) as any as S.Schema<ListNamespaceInstanceItemsResponse>,
+    input: __S(1600, __c50, 0) as any as S.Schema<ListNamespaceInstanceItemsRequest>,
+    output: __S(1605, __c50, 5) as any as S.Schema<ListNamespaceInstanceItemsResponse>,
     errors: [CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
     retry: Retry.Retry,
@@ -5637,8 +5637,8 @@ export const listNamespaceInstanceJobs: API.PaginatedOperationMethod<
   NamespacesInstancesJobsListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(178, __c22, 2) as any as S.Schema<ListNamespaceInstanceJobsRequest>,
-    output: __S(179, __c22, 3) as any as S.Schema<ListNamespaceInstanceJobsResponse>,
+    input: __S(1632, __c51, 0) as any as S.Schema<ListNamespaceInstanceJobsRequest>,
+    output: __S(1633, __c51, 1) as any as S.Schema<ListNamespaceInstanceJobsResponse>,
     errors: [CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
     retry: Retry.Retry,
@@ -5667,8 +5667,8 @@ export const listNamespaceInstances: API.PaginatedOperationMethod<
   NamespacesInstancesListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(180, __c22, 4) as any as S.Schema<ListNamespaceInstancesRequest>,
-    output: __S(189, __c23, 5) as any as S.Schema<ListNamespaceInstancesResponse>,
+    input: __S(1664, __c52, 0) as any as S.Schema<ListNamespaceInstancesRequest>,
+    output: __S(1673, __c52, 9) as any as S.Schema<ListNamespaceInstancesResponse>,
     errors: [NamespaceNotFound, InvalidRoute, Forbidden, CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
     retry: Retry.Retry,
@@ -5693,8 +5693,8 @@ export const listNamespaces: API.PaginatedOperationMethod<
   NamespacesListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(190, __c23, 6) as any as S.Schema<ListNamespacesRequest>,
-    output: __S(194, __c24, 2) as any as S.Schema<ListNamespacesResponse>,
+    input: __S(1696, __c53, 0) as any as S.Schema<ListNamespacesRequest>,
+    output: __S(1700, __c53, 4) as any as S.Schema<ListNamespacesResponse>,
     errors: [CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
     retry: Retry.Retry,
@@ -5719,8 +5719,8 @@ export const listTokens: API.PaginatedOperationMethod<
   TokensListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(195, __c24, 3) as any as S.Schema<ListTokensRequest>,
-    output: __S(198, __c24, 6) as any as S.Schema<ListTokensResponse>,
+    input: __S(1728, __c54, 0) as any as S.Schema<ListTokensRequest>,
+    output: __S(1731, __c54, 3) as any as S.Schema<ListTokensResponse>,
     errors: [InvalidRoute, Forbidden, CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
     retry: Retry.Retry,
@@ -5743,8 +5743,8 @@ export const logsInstanceJob: API.OperationMethod<
   LogsInstanceJobError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(199, __c24, 7) as any as S.Schema<LogsInstanceJobRequest>,
-  output: __S(202, __c25, 2) as any as S.Schema<LogsInstanceJobResponse>,
+  input: __S(1760, __c55, 0) as any as S.Schema<LogsInstanceJobRequest>,
+  output: __S(1761, __c55, 1) as any as S.Schema<LogsInstanceJobResponse>,
   errors: [ValidationError, NotFound, InvalidRoute, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -5758,8 +5758,8 @@ export const logsNamespaceInstanceItem: API.OperationMethod<
   LogsNamespaceInstanceItemError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(203, __c25, 3) as any as S.Schema<LogsNamespaceInstanceItemRequest>,
-  output: __S(206, __c25, 6) as any as S.Schema<LogsNamespaceInstanceItemResponse>,
+  input: __S(1824, __c57, 0) as any as S.Schema<LogsNamespaceInstanceItemRequest>,
+  output: __S(1827, __c57, 3) as any as S.Schema<LogsNamespaceInstanceItemResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -5773,8 +5773,8 @@ export const logsNamespaceInstanceJob: API.OperationMethod<
   LogsNamespaceInstanceJobError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(207, __c25, 7) as any as S.Schema<LogsNamespaceInstanceJobRequest>,
-  output: __S(208, __c26, 0) as any as S.Schema<LogsNamespaceInstanceJobResponse>,
+  input: __S(1856, __c58, 0) as any as S.Schema<LogsNamespaceInstanceJobRequest>,
+  output: __S(1857, __c58, 1) as any as S.Schema<LogsNamespaceInstanceJobResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -5788,8 +5788,8 @@ export const patchNamespaceInstanceJob: API.OperationMethod<
   PatchNamespaceInstanceJobError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(209, __c26, 1) as any as S.Schema<PatchNamespaceInstanceJobRequest>,
-  output: __S(101, __c12, 5) as any as S.Schema<PatchNamespaceInstanceJobResponse>,
+  input: __S(1888, __c59, 0) as any as S.Schema<PatchNamespaceInstanceJobRequest>,
+  output: __S(768, __c24, 0) as any as S.Schema<PatchNamespaceInstanceJobResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -5808,8 +5808,8 @@ export const readInstance: API.OperationMethod<
   ReadInstanceError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(210, __c26, 2) as any as S.Schema<ReadInstanceRequest>,
-  output: __S(215, __c26, 7) as any as S.Schema<ReadInstanceResponse>,
+  input: __S(1920, __c60, 0) as any as S.Schema<ReadInstanceRequest>,
+  output: __S(1925, __c60, 5) as any as S.Schema<ReadInstanceResponse>,
   errors: [
     ValidationError,
     NotFound,
@@ -5830,8 +5830,8 @@ export const readNamespace: API.OperationMethod<
   ReadNamespaceError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(216, __c27, 0) as any as S.Schema<ReadNamespaceRequest>,
-  output: __S(218, __c27, 2) as any as S.Schema<ReadNamespaceResponse>,
+  input: __S(1952, __c61, 0) as any as S.Schema<ReadNamespaceRequest>,
+  output: __S(1954, __c61, 2) as any as S.Schema<ReadNamespaceResponse>,
   errors: [NamespaceNotFound, Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -5851,8 +5851,8 @@ export const readNamespaceInstance: API.OperationMethod<
   ReadNamespaceInstanceError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(219, __c27, 3) as any as S.Schema<ReadNamespaceInstanceRequest>,
-  output: __S(225, __c28, 1) as any as S.Schema<ReadNamespaceInstanceResponse>,
+  input: __S(1984, __c62, 0) as any as S.Schema<ReadNamespaceInstanceRequest>,
+  output: __S(1990, __c62, 6) as any as S.Schema<ReadNamespaceInstanceResponse>,
   errors: [
     ValidationError,
     NamespaceNotFound,
@@ -5880,8 +5880,8 @@ export const readToken: API.OperationMethod<
   ReadTokenError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(226, __c28, 2) as any as S.Schema<ReadTokenRequest>,
-  output: __S(133, __c16, 5) as any as S.Schema<ReadTokenResponse>,
+  input: __S(2016, __c63, 0) as any as S.Schema<ReadTokenRequest>,
+  output: __S(1152, __c36, 0) as any as S.Schema<ReadTokenResponse>,
   errors: [
     ValidationError,
     NotFound,
@@ -5903,8 +5903,8 @@ export const searchInstance: API.OperationMethod<
   SearchInstanceError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(235, __c29, 3) as any as S.Schema<SearchInstanceRequest>,
-  output: __S(239, __c29, 7) as any as S.Schema<SearchInstanceResponse>,
+  input: __S(2055, __c64, 7) as any as S.Schema<SearchInstanceRequest>,
+  output: __S(2058, __c64, 10) as any as S.Schema<SearchInstanceResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -5918,8 +5918,8 @@ export const searchNamespace: API.OperationMethod<
   SearchNamespaceError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(247, __c30, 7) as any as S.Schema<SearchNamespaceRequest>,
-  output: __S(252, __c31, 4) as any as S.Schema<SearchNamespaceResponse>,
+  input: __S(2119, __c66, 7) as any as S.Schema<SearchNamespaceRequest>,
+  output: __S(2124, __c66, 12) as any as S.Schema<SearchNamespaceResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -5933,8 +5933,8 @@ export const searchNamespaceInstance: API.OperationMethod<
   SearchNamespaceInstanceError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(260, __c32, 4) as any as S.Schema<SearchNamespaceInstanceRequest>,
-  output: __S(263, __c32, 7) as any as S.Schema<SearchNamespaceInstanceResponse>,
+  input: __S(2151, __c67, 7) as any as S.Schema<SearchNamespaceInstanceRequest>,
+  output: __S(2154, __c67, 10) as any as S.Schema<SearchNamespaceInstanceResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -5948,8 +5948,8 @@ export const statsInstance: API.OperationMethod<
   StatsInstanceError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(264, __c33, 0) as any as S.Schema<StatsInstanceRequest>,
-  output: __S(268, __c33, 4) as any as S.Schema<StatsInstanceResponse>,
+  input: __S(2176, __c68, 0) as any as S.Schema<StatsInstanceRequest>,
+  output: __S(2177, __c68, 1) as any as S.Schema<StatsInstanceResponse>,
   errors: [ValidationError, NotFound, InvalidRoute, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -5963,8 +5963,8 @@ export const statsNamespaceInstance: API.OperationMethod<
   StatsNamespaceInstanceError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(269, __c33, 5) as any as S.Schema<StatsNamespaceInstanceRequest>,
-  output: __S(270, __c33, 6) as any as S.Schema<StatsNamespaceInstanceResponse>,
+  input: __S(2240, __c70, 0) as any as S.Schema<StatsNamespaceInstanceRequest>,
+  output: __S(2241, __c70, 1) as any as S.Schema<StatsNamespaceInstanceResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -5978,8 +5978,8 @@ export const syncNamespaceInstanceItem: API.OperationMethod<
   SyncNamespaceInstanceItemError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(271, __c33, 7) as any as S.Schema<SyncNamespaceInstanceItemRequest>,
-  output: __S(274, __c34, 2) as any as S.Schema<SyncNamespaceInstanceItemResponse>,
+  input: __S(2272, __c71, 0) as any as S.Schema<SyncNamespaceInstanceItemRequest>,
+  output: __S(2275, __c71, 3) as any as S.Schema<SyncNamespaceInstanceItemResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -5999,8 +5999,8 @@ export const updateInstance: API.OperationMethod<
   UpdateInstanceError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(278, __c34, 6) as any as S.Schema<UpdateInstanceRequest>,
-  output: __S(282, __c35, 2) as any as S.Schema<UpdateInstanceResponse>,
+  input: __S(2307, __c72, 3) as any as S.Schema<UpdateInstanceRequest>,
+  output: __S(2311, __c72, 7) as any as S.Schema<UpdateInstanceResponse>,
   errors: [
     ValidationError,
     NotFound,
@@ -6022,8 +6022,8 @@ export const updateNamespace: API.OperationMethod<
   UpdateNamespaceError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(284, __c35, 4) as any as S.Schema<UpdateNamespaceRequest>,
-  output: __S(286, __c35, 6) as any as S.Schema<UpdateNamespaceResponse>,
+  input: __S(2337, __c73, 1) as any as S.Schema<UpdateNamespaceRequest>,
+  output: __S(2339, __c73, 3) as any as S.Schema<UpdateNamespaceResponse>,
   errors: [NamespaceNotFound, Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -6045,8 +6045,8 @@ export const updateNamespaceInstance: API.OperationMethod<
   UpdateNamespaceInstanceError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(290, __c36, 2) as any as S.Schema<UpdateNamespaceInstanceRequest>,
-  output: __S(294, __c36, 6) as any as S.Schema<UpdateNamespaceInstanceResponse>,
+  input: __S(2371, __c74, 3) as any as S.Schema<UpdateNamespaceInstanceRequest>,
+  output: __S(2375, __c74, 7) as any as S.Schema<UpdateNamespaceInstanceResponse>,
   errors: [
     ValidationError,
     NamespaceNotFound,
@@ -6077,8 +6077,8 @@ export const updateToken: API.OperationMethod<
   UpdateTokenError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(295, __c36, 7) as any as S.Schema<UpdateTokenRequest>,
-  output: __S(133, __c16, 5) as any as S.Schema<UpdateTokenResponse>,
+  input: __S(2400, __c75, 0) as any as S.Schema<UpdateTokenRequest>,
+  output: __S(1152, __c36, 0) as any as S.Schema<UpdateTokenResponse>,
   errors: [
     ValidationError,
     NotFound,
@@ -6101,8 +6101,8 @@ export const uploadNamespaceInstanceItem: API.OperationMethod<
   UploadNamespaceInstanceItemError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(297, __c37, 1) as any as S.Schema<UploadNamespaceInstanceItemRequest>,
-  output: __S(302, __c37, 6) as any as S.Schema<UploadNamespaceInstanceItemResponse>,
+  input: __S(2433, __c76, 1) as any as S.Schema<UploadNamespaceInstanceItemRequest>,
+  output: __S(2438, __c76, 6) as any as S.Schema<UploadNamespaceInstanceItemResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -6125,61 +6125,15 @@ function __c0(j: number): any {
     case 2:
       return S.Array(__S(1, __c0, 1));
     case 3:
-      return S.suspend(() =>
-        S.Struct({
-          cacheThreshold: S.optional(S.String.pipe(T.Body("cache_threshold"))),
-          enabled: S.optional(S.Boolean),
-        }),
-      ).annotate({
-        identifier: "InstancesChatCompletionsRequestAiSearchOptionsCache",
-      });
-    case 4:
       return S.Unknown.pipe(/*@__PURE__*/ T.UnionCases([[], [], []]));
+    case 4:
+      return S.Record(S.String, __S(3, __c0, 3));
     case 5:
-      return S.Record(S.String, __S(4, __c0, 4));
-    case 6:
       return S.suspend(() =>
         S.Struct({
-          enabled: S.optional(S.Boolean),
-          model: S.optional(S.String),
-          rewritePrompt: S.optional(S.String.pipe(T.Body("rewrite_prompt"))),
-        }),
-      ).annotate({
-        identifier: "InstancesChatCompletionsRequestAiSearchOptionsQueryRewrite",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          enabled: S.optional(S.Boolean),
-          matchThreshold: S.optional(S.Number.pipe(T.Body("match_threshold"))),
-          model: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "InstancesChatCompletionsRequestAiSearchOptionsReranking",
-      });
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          field: S.String,
-          direction: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "InstancesChatCompletionsRequestAiSearchOptionsRetrievalBoostByItem",
-      });
-    case 1:
-      return S.Array(__S(8, __c1, 0));
-    case 2:
-      return S.Record(S.String, S.Unknown);
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          boostBy: S.optional(__S(9, __c1, 1).pipe(T.Body("boost_by"))),
+          boostBy: S.optional(__S(65, __c2, 1).pipe(T.Body("boost_by"))),
           contextExpansion: S.optional(S.Number.pipe(T.Body("context_expansion"))),
-          filters: S.optional(__S(10, __c1, 2)),
+          filters: S.optional(__S(66, __c2, 2)),
           fusionMethod: S.optional(S.String.pipe(T.Body("fusion_method"))),
           keywordMatchMode: S.optional(S.String.pipe(T.Body("keyword_match_mode"))),
           matchThreshold: S.optional(S.Number.pipe(T.Body("match_threshold"))),
@@ -6190,25 +6144,25 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "InstancesChatCompletionsRequestAiSearchOptionsRetrieval",
       });
-    case 4:
+    case 6:
       return S.suspend(() =>
         S.Struct({
-          cache: S.optional(__S(3, __c0, 3)),
-          customMetadata: S.optional(__S(5, __c0, 5).pipe(T.Body("custom_metadata"))),
-          queryRewrite: S.optional(__S(6, __c0, 6).pipe(T.Body("query_rewrite"))),
-          reranking: S.optional(__S(7, __c0, 7)),
-          retrieval: S.optional(__S(11, __c1, 3)),
+          cache: S.optional(__S(160, __c5, 0)),
+          customMetadata: S.optional(__S(4, __c0, 4).pipe(T.Body("custom_metadata"))),
+          queryRewrite: S.optional(__S(32, __c1, 0).pipe(T.Body("query_rewrite"))),
+          reranking: S.optional(__S(33, __c1, 1)),
+          retrieval: S.optional(__S(5, __c0, 5)),
         }),
       ).annotate({
         identifier: "InstancesChatCompletionsRequestAiSearchOptions",
       });
-    case 5:
+    case 7:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
           id: S.String.pipe(T.Label()),
           messages: __S(2, __c0, 2),
-          aiSearchOptions: S.optional(__S(12, __c1, 4).pipe(T.Body("ai_search_options"))),
+          aiSearchOptions: S.optional(__S(6, __c0, 6).pipe(T.Body("ai_search_options"))),
           model: S.optional(S.String),
           stream: S.optional(S.Boolean),
         })
@@ -6223,16 +6177,78 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "ChatCompletionsInstanceRequest",
       });
-    case 6:
+    case 8:
       return S.Unknown.pipe(/*@__PURE__*/ T.UnionCases([[], []]));
-    case 7:
+    case 9:
       return S.suspend(() =>
         S.Struct({
-          content: __S(14, __c1, 6),
+          content: __S(8, __c0, 8),
           role: S.String,
         }),
       ).annotate({
         identifier: "InstancesChatCompletionsResponseChoicesItemMessage",
+      });
+    case 10:
+      return S.suspend(() =>
+        S.Struct({
+          message: __S(9, __c0, 9),
+          index: S.optional(S.NullOr(S.Number)),
+        }),
+      ).annotate({
+        identifier: "InstancesChatCompletionsResponseChoicesItem",
+      });
+    case 11:
+      return S.Array(__S(10, __c0, 10));
+    case 12:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          score: S.Number,
+          text: S.String,
+          type: S.String,
+          item: S.optional(S.NullOr(__S(96, __c3, 0))),
+          scoringDetails: S.optional(S.NullOr(__S(161, __c5, 1)).pipe(T.Body("scoring_details"))),
+        }),
+      ).annotate({
+        identifier: "InstancesChatCompletionsResponseChunksItem",
+      });
+    case 13:
+      return S.Array(__S(12, __c0, 12));
+    case 14:
+      return S.suspend(() =>
+        S.Struct({
+          choices: __S(11, __c0, 11),
+          chunks: __S(13, __c0, 13),
+          id: S.optional(S.NullOr(S.String)),
+          model: S.optional(S.NullOr(S.String)),
+          object: S.optional(S.NullOr(S.String)),
+        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({
+        identifier: "ChatCompletionsInstanceResponse",
+      });
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          enabled: S.optional(S.Boolean),
+          model: S.optional(S.String),
+          rewritePrompt: S.optional(S.String.pipe(T.Body("rewrite_prompt"))),
+        }),
+      ).annotate({
+        identifier: "InstancesChatCompletionsRequestAiSearchOptionsQueryRewrite",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          enabled: S.optional(S.Boolean),
+          matchThreshold: S.optional(S.Number.pipe(T.Body("match_threshold"))),
+          model: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "InstancesChatCompletionsRequestAiSearchOptionsReranking",
       });
   }
 }
@@ -6241,27 +6257,50 @@ function __c2(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          message: __S(15, __c1, 7),
-          index: S.optional(S.NullOr(S.Number)),
+          field: S.String,
+          direction: S.optional(S.String),
         }),
       ).annotate({
-        identifier: "InstancesChatCompletionsResponseChoicesItem",
+        identifier: "InstancesChatCompletionsRequestAiSearchOptionsRetrievalBoostByItem",
       });
     case 1:
-      return S.Array(__S(16, __c2, 0));
+      return S.Array(__S(64, __c2, 0));
     case 2:
       return S.Record(S.String, S.Unknown);
-    case 3:
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           key: S.String,
-          metadata: S.optional(S.NullOr(__S(18, __c2, 2))),
+          metadata: S.optional(S.NullOr(__S(128, __c4, 0))),
           timestamp: S.optional(S.NullOr(S.Number)),
         }),
       ).annotate({
         identifier: "InstancesChatCompletionsResponseChunksItemItem",
       });
-    case 4:
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, S.Unknown);
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          cacheThreshold: S.optional(S.String.pipe(T.Body("cache_threshold"))),
+          enabled: S.optional(S.Boolean),
+        }),
+      ).annotate({
+        identifier: "InstancesChatCompletionsRequestAiSearchOptionsCache",
+      });
+    case 1:
       return S.suspend(() =>
         S.Struct({
           fusionMethod: S.optional(S.NullOr(S.String).pipe(T.Body("fusion_method"))),
@@ -6274,49 +6313,20 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "InstancesChatCompletionsResponseChunksItemScoringDetails",
       });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String,
-          score: S.Number,
-          text: S.String,
-          type: S.String,
-          item: S.optional(S.NullOr(__S(19, __c2, 3))),
-          scoringDetails: S.optional(S.NullOr(__S(20, __c2, 4)).pipe(T.Body("scoring_details"))),
-        }),
-      ).annotate({
-        identifier: "InstancesChatCompletionsResponseChunksItem",
-      });
-    case 6:
-      return S.Array(__S(21, __c2, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          choices: __S(17, __c2, 1),
-          chunks: __S(22, __c2, 6),
-          id: S.optional(S.NullOr(S.String)),
-          model: S.optional(S.NullOr(S.String)),
-          object: S.optional(S.NullOr(S.String)),
-        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({
-        identifier: "ChatCompletionsInstanceResponse",
-      });
   }
 }
-function __c3(j: number): any {
+function __c6(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(S.String);
-    case 1:
       return S.Unknown.pipe(/*@__PURE__*/ T.UnionCases([[], [], []]));
+    case 1:
+      return S.Record(S.String, __S(192, __c6, 0));
     case 2:
-      return S.Record(S.String, __S(25, __c3, 1));
-    case 3:
       return S.suspend(() =>
         S.Struct({
-          boostBy: S.optional(__S(9, __c1, 1).pipe(T.Body("boost_by"))),
+          boostBy: S.optional(__S(65, __c2, 1).pipe(T.Body("boost_by"))),
           contextExpansion: S.optional(S.Number.pipe(T.Body("context_expansion"))),
-          filters: S.optional(__S(10, __c1, 2)),
+          filters: S.optional(__S(66, __c2, 2)),
           fusionMethod: S.optional(S.String.pipe(T.Body("fusion_method"))),
           keywordMatchMode: S.optional(S.String.pipe(T.Body("keyword_match_mode"))),
           matchThreshold: S.optional(S.Number.pipe(T.Body("match_threshold"))),
@@ -6327,43 +6337,39 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "NamespacesChatCompletionsRequestAiSearchOptionsRetrieval",
       });
-    case 4:
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          instanceIds: __S(24, __c3, 0).pipe(T.Body("instance_ids")),
-          cache: S.optional(__S(3, __c0, 3)),
-          customMetadata: S.optional(__S(26, __c3, 2).pipe(T.Body("custom_metadata"))),
-          queryRewrite: S.optional(__S(6, __c0, 6).pipe(T.Body("query_rewrite"))),
-          reranking: S.optional(__S(7, __c0, 7)),
-          retrieval: S.optional(__S(27, __c3, 3)),
+          instanceIds: __S(224, __c7, 0).pipe(T.Body("instance_ids")),
+          cache: S.optional(__S(160, __c5, 0)),
+          customMetadata: S.optional(__S(193, __c6, 1).pipe(T.Body("custom_metadata"))),
+          queryRewrite: S.optional(__S(32, __c1, 0).pipe(T.Body("query_rewrite"))),
+          reranking: S.optional(__S(33, __c1, 1)),
+          retrieval: S.optional(__S(194, __c6, 2)),
         }),
       ).annotate({
         identifier: "NamespacesChatCompletionsRequestAiSearchOptions",
       });
-    case 5:
+    case 4:
       return S.Unknown.pipe(/*@__PURE__*/ T.UnionCases([[], []]));
-    case 6:
+    case 5:
       return S.suspend(() =>
         S.Struct({
-          content: S.optional(S.NullOr(__S(29, __c3, 5))),
+          content: S.optional(S.NullOr(__S(196, __c6, 4))),
           role: S.String,
         }),
       ).annotate({
         identifier: "NamespacesChatCompletionsRequestMessagesItem",
       });
+    case 6:
+      return S.Array(__S(197, __c6, 5));
     case 7:
-      return S.Array(__S(30, __c3, 6));
-  }
-}
-function __c4(j: number): any {
-  switch (j) {
-    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
           name: S.String.pipe(T.Label()),
-          aiSearchOptions: __S(28, __c3, 4).pipe(T.Body("ai_search_options")),
-          messages: __S(31, __c3, 7),
+          aiSearchOptions: __S(195, __c6, 3).pipe(T.Body("ai_search_options")),
+          messages: __S(198, __c6, 6),
           model: S.optional(S.String),
           stream: S.optional(S.Boolean),
         })
@@ -6378,29 +6384,29 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "ChatCompletionsNamespaceRequest",
       });
-    case 1:
+    case 8:
       return S.Unknown.pipe(/*@__PURE__*/ T.UnionCases([[], []]));
-    case 2:
+    case 9:
       return S.suspend(() =>
         S.Struct({
-          content: __S(33, __c4, 1),
+          content: __S(200, __c6, 8),
           role: S.String,
         }),
       ).annotate({
         identifier: "NamespacesChatCompletionsResponseChoicesItemMessage",
       });
-    case 3:
+    case 10:
       return S.suspend(() =>
         S.Struct({
-          message: __S(34, __c4, 2),
+          message: __S(201, __c6, 9),
           index: S.optional(S.NullOr(S.Number)),
         }),
       ).annotate({
         identifier: "NamespacesChatCompletionsResponseChoicesItem",
       });
-    case 4:
-      return S.Array(__S(35, __c4, 3));
-    case 5:
+    case 11:
+      return S.Array(__S(202, __c6, 10));
+    case 12:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
@@ -6408,19 +6414,19 @@ function __c4(j: number): any {
           score: S.Number,
           text: S.String,
           type: S.String,
-          item: S.optional(S.NullOr(__S(19, __c2, 3))),
-          scoringDetails: S.optional(S.NullOr(__S(20, __c2, 4)).pipe(T.Body("scoring_details"))),
+          item: S.optional(S.NullOr(__S(96, __c3, 0))),
+          scoringDetails: S.optional(S.NullOr(__S(161, __c5, 1)).pipe(T.Body("scoring_details"))),
         }),
       ).annotate({
         identifier: "NamespacesChatCompletionsResponseChunksItem",
       });
-    case 6:
-      return S.Array(__S(37, __c4, 5));
-    case 7:
+    case 13:
+      return S.Array(__S(204, __c6, 12));
+    case 14:
       return S.suspend(() =>
         S.Struct({
-          choices: __S(36, __c4, 4),
-          chunks: __S(38, __c4, 6),
+          choices: __S(203, __c6, 11),
+          chunks: __S(205, __c6, 13),
           id: S.optional(S.NullOr(S.String)),
           model: S.optional(S.NullOr(S.String)),
           object: S.optional(S.NullOr(S.String)),
@@ -6430,21 +6436,27 @@ function __c4(j: number): any {
       });
   }
 }
-function __c5(j: number): any {
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c8(j: number): any {
   switch (j) {
     case 0:
       return S.Unknown.pipe(/*@__PURE__*/ T.UnionCases([[], []]));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          content: S.optional(S.NullOr(__S(40, __c5, 0))),
+          content: S.optional(S.NullOr(__S(256, __c8, 0))),
           role: S.String,
         }),
       ).annotate({
         identifier: "NamespacesInstancesChatCompletionsRequestMessagesItem",
       });
     case 2:
-      return S.Array(__S(41, __c5, 1));
+      return S.Array(__S(257, __c8, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
@@ -6457,13 +6469,13 @@ function __c5(j: number): any {
     case 4:
       return S.Unknown.pipe(/*@__PURE__*/ T.UnionCases([[], [], []]));
     case 5:
-      return S.Record(S.String, __S(44, __c5, 4));
+      return S.Record(S.String, __S(260, __c8, 4));
     case 6:
       return S.suspend(() =>
         S.Struct({
-          boostBy: S.optional(__S(9, __c1, 1).pipe(T.Body("boost_by"))),
+          boostBy: S.optional(__S(65, __c2, 1).pipe(T.Body("boost_by"))),
           contextExpansion: S.optional(S.Number.pipe(T.Body("context_expansion"))),
-          filters: S.optional(__S(10, __c1, 2)),
+          filters: S.optional(__S(66, __c2, 2)),
           fusionMethod: S.optional(S.String.pipe(T.Body("fusion_method"))),
           keywordMatchMode: S.optional(S.String.pipe(T.Body("keyword_match_mode"))),
           matchThreshold: S.optional(S.Number.pipe(T.Body("match_threshold"))),
@@ -6477,27 +6489,23 @@ function __c5(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          cache: S.optional(__S(43, __c5, 3)),
-          customMetadata: S.optional(__S(45, __c5, 5).pipe(T.Body("custom_metadata"))),
-          queryRewrite: S.optional(__S(6, __c0, 6).pipe(T.Body("query_rewrite"))),
-          reranking: S.optional(__S(7, __c0, 7)),
-          retrieval: S.optional(__S(46, __c5, 6)),
+          cache: S.optional(__S(259, __c8, 3)),
+          customMetadata: S.optional(__S(261, __c8, 5).pipe(T.Body("custom_metadata"))),
+          queryRewrite: S.optional(__S(32, __c1, 0).pipe(T.Body("query_rewrite"))),
+          reranking: S.optional(__S(33, __c1, 1)),
+          retrieval: S.optional(__S(262, __c8, 6)),
         }),
       ).annotate({
         identifier: "NamespacesInstancesChatCompletionsRequestAiSearchOptions",
       });
-  }
-}
-function __c6(j: number): any {
-  switch (j) {
-    case 0:
+    case 8:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
           name: S.String.pipe(T.Label()),
           id: S.String.pipe(T.Label()),
-          messages: __S(42, __c5, 2),
-          aiSearchOptions: S.optional(__S(47, __c5, 7).pipe(T.Body("ai_search_options"))),
+          messages: __S(258, __c8, 2),
+          aiSearchOptions: S.optional(__S(263, __c8, 7).pipe(T.Body("ai_search_options"))),
           model: S.optional(S.String),
           stream: S.optional(S.Boolean),
         })
@@ -6512,39 +6520,39 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "ChatCompletionsNamespaceInstanceRequest",
       });
-    case 1:
+    case 9:
       return S.Unknown.pipe(/*@__PURE__*/ T.UnionCases([[], []]));
-    case 2:
+    case 10:
       return S.suspend(() =>
         S.Struct({
-          content: __S(49, __c6, 1),
+          content: __S(265, __c8, 9),
           role: S.String,
         }),
       ).annotate({
         identifier: "NamespacesInstancesChatCompletionsResponseChoicesItemMessage",
       });
-    case 3:
+    case 11:
       return S.suspend(() =>
         S.Struct({
-          message: __S(50, __c6, 2),
+          message: __S(266, __c8, 10),
           index: S.optional(S.NullOr(S.Number)),
         }),
       ).annotate({
         identifier: "NamespacesInstancesChatCompletionsResponseChoicesItem",
       });
-    case 4:
-      return S.Array(__S(51, __c6, 3));
-    case 5:
+    case 12:
+      return S.Array(__S(267, __c8, 11));
+    case 13:
       return S.suspend(() =>
         S.Struct({
           key: S.String,
-          metadata: S.optional(S.NullOr(__S(10, __c1, 2))),
+          metadata: S.optional(S.NullOr(__S(66, __c2, 2))),
           timestamp: S.optional(S.NullOr(S.Number)),
         }),
       ).annotate({
         identifier: "NamespacesInstancesChatCompletionsResponseChunksItemItem",
       });
-    case 6:
+    case 14:
       return S.suspend(() =>
         S.Struct({
           fusionMethod: S.optional(S.NullOr(S.String).pipe(T.Body("fusion_method"))),
@@ -6557,30 +6565,26 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "NamespacesInstancesChatCompletionsResponseChunksItemScoringDetails",
       });
-    case 7:
+    case 15:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
           score: S.Number,
           text: S.String,
           type: S.String,
-          item: S.optional(S.NullOr(__S(53, __c6, 5))),
-          scoringDetails: S.optional(S.NullOr(__S(54, __c6, 6)).pipe(T.Body("scoring_details"))),
+          item: S.optional(S.NullOr(__S(269, __c8, 13))),
+          scoringDetails: S.optional(S.NullOr(__S(270, __c8, 14)).pipe(T.Body("scoring_details"))),
         }),
       ).annotate({
         identifier: "NamespacesInstancesChatCompletionsResponseChunksItem",
       });
-  }
-}
-function __c7(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(55, __c6, 7));
-    case 1:
+    case 16:
+      return S.Array(__S(271, __c8, 15));
+    case 17:
       return S.suspend(() =>
         S.Struct({
-          choices: __S(52, __c6, 4),
-          chunks: __S(56, __c7, 0),
+          choices: __S(268, __c8, 12),
+          chunks: __S(272, __c8, 16),
           id: S.optional(S.NullOr(S.String)),
           model: S.optional(S.NullOr(S.String)),
           object: S.optional(S.NullOr(S.String)),
@@ -6588,7 +6592,11 @@ function __c7(j: number): any {
       ).annotate({
         identifier: "ChatCompletionsNamespaceInstanceResponse",
       });
-    case 2:
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -6609,11 +6617,11 @@ function __c7(j: number): any {
       ).annotate({
         identifier: "ChunksNamespaceInstanceItemRequest",
       });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
-          item: __S(19, __c2, 3),
+          item: __S(96, __c3, 0),
           text: S.String,
           endByte: S.optional(S.NullOr(S.Number).pipe(T.Body("end_byte"))),
           startByte: S.optional(S.NullOr(S.Number).pipe(T.Body("start_byte"))),
@@ -6621,162 +6629,14 @@ function __c7(j: number): any {
       ).annotate({
         identifier: "NamespacesInstancesItemsChunksResultItem",
       });
-    case 4:
-      return S.Array(__S(59, __c7, 3));
-    case 5:
+    case 2:
+      return S.Array(__S(289, __c9, 1));
+    case 3:
       return S.suspend(() =>
-        __S(60, __c7, 4).pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
+        __S(290, __c9, 2).pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({
         identifier: "ChunksNamespaceInstanceItemResponse",
       });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          dataType: S.String.pipe(T.Body("data_type")),
-          fieldName: S.String.pipe(T.Body("field_name")),
-        }),
-      ).annotate({
-        identifier: "InstancesCreateRequestCustomMetadataItem",
-      });
-    case 7:
-      return S.Array(__S(62, __c7, 6));
-  }
-}
-function __c8(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          keyword: S.Boolean,
-          vector: S.Boolean,
-        }),
-      ).annotate({
-        identifier: "InstancesCreateRequestIndexMethod",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          keywordTokenizer: S.optional(S.String.pipe(T.Body("keyword_tokenizer"))),
-          useOcr: S.optional(S.Boolean.pipe(T.Body("use_ocr"))),
-        }),
-      ).annotate({
-        identifier: "InstancesCreateRequestIndexingOptions",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          createdFromAisearchWizard: S.optional(
-            S.Boolean.pipe(T.Body("created_from_aisearch_wizard")),
-          ),
-          workerDomain: S.optional(S.String.pipe(T.Body("worker_domain"))),
-        }),
-      ).annotate({
-        identifier: "InstancesCreateRequestMetadata",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          disabled: S.optional(S.Boolean),
-        }),
-      ).annotate({
-        identifier: "InstancesCreateRequestPublicEndpointParamsChatCompletionsEndpoint",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          description: S.optional(S.String),
-          disabled: S.optional(S.Boolean),
-        }),
-      ).annotate({
-        identifier: "InstancesCreateRequestPublicEndpointParamsMcp",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          periodMs: S.optional(S.Number.pipe(T.Body("period_ms"))),
-          requests: S.optional(S.Number),
-          technique: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "InstancesCreateRequestPublicEndpointParamsRateLimit",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          disabled: S.optional(S.Boolean),
-        }),
-      ).annotate({
-        identifier: "InstancesCreateRequestPublicEndpointParamsSearchEndpoint",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          authorizedHosts: S.optional(__S(24, __c3, 0).pipe(T.Body("authorized_hosts"))),
-          chatCompletionsEndpoint: S.optional(
-            __S(67, __c8, 3).pipe(T.Body("chat_completions_endpoint")),
-          ),
-          customDomains: S.optional(__S(24, __c3, 0).pipe(T.Body("custom_domains"))),
-          defaultDomainEnabled: S.optional(S.Boolean.pipe(T.Body("default_domain_enabled"))),
-          enabled: S.optional(S.Boolean),
-          mcp: S.optional(__S(68, __c8, 4)),
-          rateLimit: S.optional(__S(69, __c8, 5).pipe(T.Body("rate_limit"))),
-          searchEndpoint: S.optional(__S(70, __c8, 6).pipe(T.Body("search_endpoint"))),
-        }),
-      ).annotate({
-        identifier: "InstancesCreateRequestPublicEndpointParams",
-      });
-  }
-}
-function __c9(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          field: S.String,
-          direction: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "InstancesCreateRequestRetrievalOptionsBoostByItem",
-      });
-    case 1:
-      return S.Array(__S(72, __c9, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          boostBy: S.optional(__S(73, __c9, 1).pipe(T.Body("boost_by"))),
-          keywordMatchMode: S.optional(S.String.pipe(T.Body("keyword_match_mode"))),
-        }),
-      ).annotate({
-        identifier: "InstancesCreateRequestRetrievalOptions",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          depth: S.optional(S.Number),
-          includeExternalLinks: S.optional(S.Boolean.pipe(T.Body("include_external_links"))),
-          includeSubdomains: S.optional(S.Boolean.pipe(T.Body("include_subdomains"))),
-          limit: S.optional(S.Number),
-          maxAge: S.optional(S.Number.pipe(T.Body("max_age"))),
-          source: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "InstancesCreateRequestSourceParamsWebCrawlerDiscoverOptions",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          path: S.String,
-          selector: S.String,
-        }),
-      ).annotate({
-        identifier: "InstancesCreateRequestSourceParamsWebCrawlerParseOptionsContentSelectorItem",
-      });
-    case 5:
-      return S.Array(__S(76, __c9, 4));
-    case 6:
-      return S.Record(S.String, S.String);
-    case 7:
-      return S.Array(S.String);
   }
 }
 function __c10(j: number): any {
@@ -6784,51 +6644,44 @@ function __c10(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          contentSelector: S.optional(__S(77, __c9, 5).pipe(T.Body("content_selector"))),
-          includeHeaders: S.optional(__S(78, __c9, 6).pipe(T.Body("include_headers"))),
-          includeImages: S.optional(S.Boolean.pipe(T.Body("include_images"))),
-          specificSitemaps: S.optional(__S(79, __c9, 7).pipe(T.Body("specific_sitemaps"))),
-          useBrowserRendering: S.optional(S.Boolean.pipe(T.Body("use_browser_rendering"))),
+          authorizedHosts: S.optional(__S(224, __c7, 0).pipe(T.Body("authorized_hosts"))),
+          chatCompletionsEndpoint: S.optional(
+            __S(448, __c14, 0).pipe(T.Body("chat_completions_endpoint")),
+          ),
+          customDomains: S.optional(__S(224, __c7, 0).pipe(T.Body("custom_domains"))),
+          defaultDomainEnabled: S.optional(S.Boolean.pipe(T.Body("default_domain_enabled"))),
+          enabled: S.optional(S.Boolean),
+          mcp: S.optional(__S(449, __c14, 1)),
+          rateLimit: S.optional(__S(512, __c16, 0).pipe(T.Body("rate_limit"))),
+          searchEndpoint: S.optional(__S(450, __c14, 2).pipe(T.Body("search_endpoint"))),
         }),
       ).annotate({
-        identifier: "InstancesCreateRequestSourceParamsWebCrawlerParseOptions",
+        identifier: "InstancesCreateRequestPublicEndpointParams",
       });
     case 1:
       return S.suspend(() =>
         S.Struct({
-          depth: S.optional(S.NullOr(S.Number)),
-          includeExternalLinks: S.optional(
-            S.NullOr(S.Boolean).pipe(T.Body("include_external_links")),
-          ),
-          includeSubdomains: S.optional(S.NullOr(S.Boolean).pipe(T.Body("include_subdomains"))),
-          maxAge: S.optional(S.NullOr(S.Number).pipe(T.Body("max_age"))),
-          source: S.optional(S.NullOr(S.String)),
-        }),
-      ).annotate({ identifier: "WebCrawlerCrawlOptions" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          discoverOptions: S.optional(__S(75, __c9, 3).pipe(T.Body("discover_options"))),
-          parseOptions: S.optional(__S(80, __c10, 0).pipe(T.Body("parse_options"))),
+          discoverOptions: S.optional(__S(708, __c22, 4).pipe(T.Body("discover_options"))),
+          parseOptions: S.optional(__S(709, __c22, 5).pipe(T.Body("parse_options"))),
           parseType: S.optional(S.String.pipe(T.Body("parse_type"))),
-          crawlOptions: S.optional(__S(81, __c10, 1).pipe(T.Body("crawl_options"))),
+          crawlOptions: S.optional(__S(550, __c17, 6).pipe(T.Body("crawl_options"))),
         }),
       ).annotate({
         identifier: "InstancesCreateRequestSourceParamsWebCrawler",
       });
-    case 3:
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          excludeItems: S.optional(__S(24, __c3, 0).pipe(T.Body("exclude_items"))),
-          includeItems: S.optional(__S(24, __c3, 0).pipe(T.Body("include_items"))),
+          excludeItems: S.optional(__S(224, __c7, 0).pipe(T.Body("exclude_items"))),
+          includeItems: S.optional(__S(224, __c7, 0).pipe(T.Body("include_items"))),
           prefix: S.optional(S.String),
           r2Jurisdiction: S.optional(S.String.pipe(T.Body("r2_jurisdiction"))),
-          webCrawler: S.optional(__S(82, __c10, 2).pipe(T.Body("web_crawler"))),
+          webCrawler: S.optional(__S(321, __c10, 1).pipe(T.Body("web_crawler"))),
         }),
       ).annotate({
         identifier: "InstancesCreateRequestSourceParams",
       });
-    case 4:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -6841,23 +6694,25 @@ function __c10(j: number): any {
           chunk: S.optional(S.Boolean),
           chunkOverlap: S.optional(S.Number.pipe(T.Body("chunk_overlap"))),
           chunkSize: S.optional(S.Number.pipe(T.Body("chunk_size"))),
-          customMetadata: S.optional(__S(63, __c7, 7).pipe(T.Body("custom_metadata"))),
+          customMetadata: S.optional(__S(545, __c17, 1).pipe(T.Body("custom_metadata"))),
           embeddingModel: S.optional(S.String.pipe(T.Body("embedding_model"))),
           fusionMethod: S.optional(S.String.pipe(T.Body("fusion_method"))),
           hybridSearchEnabled: S.optional(S.Boolean.pipe(T.Body("hybrid_search_enabled"))),
-          indexMethod: S.optional(__S(64, __c8, 0).pipe(T.Body("index_method"))),
-          indexingOptions: S.optional(__S(65, __c8, 1).pipe(T.Body("indexing_options"))),
+          indexMethod: S.optional(__S(546, __c17, 2).pipe(T.Body("index_method"))),
+          indexingOptions: S.optional(__S(704, __c22, 0).pipe(T.Body("indexing_options"))),
           maxNumResults: S.optional(S.Number.pipe(T.Body("max_num_results"))),
-          metadata: S.optional(__S(66, __c8, 2)),
-          publicEndpointParams: S.optional(__S(71, __c8, 7).pipe(T.Body("public_endpoint_params"))),
+          metadata: S.optional(__S(576, __c18, 0)),
+          publicEndpointParams: S.optional(
+            __S(320, __c10, 0).pipe(T.Body("public_endpoint_params")),
+          ),
           reranking: S.optional(S.Boolean),
           rerankingModel: S.optional(S.String.pipe(T.Body("reranking_model"))),
-          retrievalOptions: S.optional(__S(74, __c9, 2).pipe(T.Body("retrieval_options"))),
+          retrievalOptions: S.optional(__S(707, __c22, 3).pipe(T.Body("retrieval_options"))),
           rewriteModel: S.optional(S.String.pipe(T.Body("rewrite_model"))),
           rewriteQuery: S.optional(S.Boolean.pipe(T.Body("rewrite_query"))),
           scoreThreshold: S.optional(S.Number.pipe(T.Body("score_threshold"))),
           source: S.optional(S.String),
-          sourceParams: S.optional(__S(83, __c10, 3).pipe(T.Body("source_params"))),
+          sourceParams: S.optional(__S(322, __c10, 2).pipe(T.Body("source_params"))),
           syncInterval: S.optional(S.Number.pipe(T.Body("sync_interval"))),
           tokenId: S.optional(S.String.pipe(T.Body("token_id"))),
           type: S.optional(S.String),
@@ -6871,7 +6726,248 @@ function __c10(j: number): any {
           )
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "CreateInstanceRequest" });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          authorizedHosts: S.optional(S.NullOr(__S(224, __c7, 0)).pipe(T.Body("authorized_hosts"))),
+          chatCompletionsEndpoint: S.optional(
+            S.NullOr(__S(352, __c11, 0)).pipe(T.Body("chat_completions_endpoint")),
+          ),
+          customDomains: S.optional(S.NullOr(__S(224, __c7, 0)).pipe(T.Body("custom_domains"))),
+          defaultDomainEnabled: S.optional(
+            S.NullOr(S.Boolean).pipe(T.Body("default_domain_enabled")),
+          ),
+          enabled: S.optional(S.NullOr(S.Boolean)),
+          mcp: S.optional(S.NullOr(__S(353, __c11, 1))),
+          rateLimit: S.optional(S.NullOr(__S(480, __c15, 0)).pipe(T.Body("rate_limit"))),
+          searchEndpoint: S.optional(S.NullOr(__S(416, __c13, 0)).pipe(T.Body("search_endpoint"))),
+        }),
+      ).annotate({
+        identifier: "InstancesCreateResponsePublicEndpointParams",
+      });
     case 5:
+      return S.suspend(() =>
+        S.Struct({
+          discoverOptions: S.optional(
+            S.NullOr(__S(608, __c19, 0)).pipe(T.Body("discover_options")),
+          ),
+          parseOptions: S.optional(S.NullOr(__S(640, __c20, 0)).pipe(T.Body("parse_options"))),
+          parseType: S.optional(S.NullOr(S.String).pipe(T.Body("parse_type"))),
+          crawlOptions: S.optional(S.NullOr(__S(550, __c17, 6)).pipe(T.Body("crawl_options"))),
+        }),
+      ).annotate({
+        identifier: "InstancesCreateResponseSourceParamsWebCrawler",
+      });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          excludeItems: S.optional(S.NullOr(__S(224, __c7, 0)).pipe(T.Body("exclude_items"))),
+          includeItems: S.optional(S.NullOr(__S(224, __c7, 0)).pipe(T.Body("include_items"))),
+          prefix: S.optional(S.NullOr(S.String)),
+          r2Jurisdiction: S.optional(S.NullOr(S.String).pipe(T.Body("r2_jurisdiction"))),
+          webCrawler: S.optional(S.NullOr(__S(325, __c10, 5)).pipe(T.Body("web_crawler"))),
+        }),
+      ).annotate({
+        identifier: "InstancesCreateResponseSourceParams",
+      });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          createdAt: S.String.pipe(T.Body("created_at")),
+          modifiedAt: S.String.pipe(T.Body("modified_at")),
+          aiGatewayId: S.optional(S.NullOr(S.String).pipe(T.Body("ai_gateway_id"))),
+          aiSearchModel: S.optional(S.NullOr(S.String).pipe(T.Body("ai_search_model"))),
+          cache: S.optional(S.NullOr(S.Boolean)),
+          cacheThreshold: S.optional(S.NullOr(S.String).pipe(T.Body("cache_threshold"))),
+          cacheTtl: S.optional(S.NullOr(S.Number).pipe(T.Body("cache_ttl"))),
+          chunkOverlap: S.optional(S.NullOr(S.Number).pipe(T.Body("chunk_overlap"))),
+          chunkSize: S.optional(S.NullOr(S.Number).pipe(T.Body("chunk_size"))),
+          createdBy: S.optional(S.NullOr(S.String).pipe(T.Body("created_by"))),
+          customMetadata: S.optional(S.NullOr(__S(545, __c17, 1)).pipe(T.Body("custom_metadata"))),
+          embeddingModel: S.optional(S.NullOr(S.String).pipe(T.Body("embedding_model"))),
+          enable: S.optional(S.NullOr(S.Boolean)),
+          engineVersion: S.optional(S.NullOr(S.Number).pipe(T.Body("engine_version"))),
+          fusionMethod: S.optional(S.NullOr(S.String).pipe(T.Body("fusion_method"))),
+          hybridSearchEnabled: S.optional(
+            S.NullOr(S.Boolean).pipe(T.Body("hybrid_search_enabled")),
+          ),
+          indexMethod: S.optional(S.NullOr(__S(546, __c17, 2)).pipe(T.Body("index_method"))),
+          indexingOptions: S.optional(
+            S.NullOr(__S(551, __c17, 7)).pipe(T.Body("indexing_options")),
+          ),
+          lastActivity: S.optional(S.NullOr(S.String).pipe(T.Body("last_activity"))),
+          maxNumResults: S.optional(S.NullOr(S.Number).pipe(T.Body("max_num_results"))),
+          metadata: S.optional(S.NullOr(__S(552, __c17, 8))),
+          modifiedBy: S.optional(S.NullOr(S.String).pipe(T.Body("modified_by"))),
+          namespace: S.optional(S.NullOr(S.String)),
+          paused: S.optional(S.NullOr(S.Boolean)),
+          publicEndpointId: S.optional(S.NullOr(S.String).pipe(T.Body("public_endpoint_id"))),
+          publicEndpointParams: S.optional(
+            S.NullOr(__S(324, __c10, 4)).pipe(T.Body("public_endpoint_params")),
+          ),
+          reranking: S.optional(S.NullOr(S.Boolean)),
+          rerankingModel: S.optional(S.NullOr(S.String).pipe(T.Body("reranking_model"))),
+          retrievalOptions: S.optional(
+            S.NullOr(__S(674, __c21, 2)).pipe(T.Body("retrieval_options")),
+          ),
+          rewriteModel: S.optional(S.NullOr(S.String).pipe(T.Body("rewrite_model"))),
+          rewriteQuery: S.optional(S.NullOr(S.Boolean).pipe(T.Body("rewrite_query"))),
+          scoreThreshold: S.optional(S.NullOr(S.Number).pipe(T.Body("score_threshold"))),
+          source: S.optional(S.NullOr(S.String)),
+          sourceParams: S.optional(S.NullOr(__S(326, __c10, 6)).pipe(T.Body("source_params"))),
+          status: S.optional(S.NullOr(S.String)),
+          syncInterval: S.optional(S.NullOr(S.Number).pipe(T.Body("sync_interval"))),
+          tokenId: S.optional(S.NullOr(S.String).pipe(T.Body("token_id"))),
+          type: S.optional(S.NullOr(S.String)),
+        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({ identifier: "CreateInstanceResponse" });
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          disabled: S.optional(S.NullOr(S.Boolean)),
+        }),
+      ).annotate({
+        identifier: "InstancesCreateResponsePublicEndpointParamsChatCompletionsEndpoint",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          description: S.optional(S.NullOr(S.String)),
+          disabled: S.optional(S.NullOr(S.Boolean)),
+        }),
+      ).annotate({
+        identifier: "InstancesCreateResponsePublicEndpointParamsMcp",
+      });
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          disabled: S.optional(S.NullOr(S.Boolean)),
+        }),
+      ).annotate({
+        identifier: "InstancesCreateResponsePublicEndpointParamsSearchEndpoint",
+      });
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          disabled: S.optional(S.Boolean),
+        }),
+      ).annotate({
+        identifier: "InstancesCreateRequestPublicEndpointParamsChatCompletionsEndpoint",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          description: S.optional(S.String),
+          disabled: S.optional(S.Boolean),
+        }),
+      ).annotate({
+        identifier: "InstancesCreateRequestPublicEndpointParamsMcp",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          disabled: S.optional(S.Boolean),
+        }),
+      ).annotate({
+        identifier: "InstancesCreateRequestPublicEndpointParamsSearchEndpoint",
+      });
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          periodMs: S.optional(S.NullOr(S.Number).pipe(T.Body("period_ms"))),
+          requests: S.optional(S.NullOr(S.Number)),
+          technique: S.optional(S.NullOr(S.String)),
+        }),
+      ).annotate({
+        identifier: "InstancesCreateResponsePublicEndpointParamsRateLimit",
+      });
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          periodMs: S.optional(S.Number.pipe(T.Body("period_ms"))),
+          requests: S.optional(S.Number),
+          technique: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "InstancesCreateRequestPublicEndpointParamsRateLimit",
+      });
+  }
+}
+function __c17(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          dataType: S.String.pipe(T.Body("data_type")),
+          fieldName: S.String.pipe(T.Body("field_name")),
+        }),
+      ).annotate({
+        identifier: "InstancesCreateRequestCustomMetadataItem",
+      });
+    case 1:
+      return S.Array(__S(544, __c17, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          keyword: S.Boolean,
+          vector: S.Boolean,
+        }),
+      ).annotate({
+        identifier: "InstancesCreateRequestIndexMethod",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          path: S.String,
+          selector: S.String,
+        }),
+      ).annotate({
+        identifier: "InstancesCreateRequestSourceParamsWebCrawlerParseOptionsContentSelectorItem",
+      });
+    case 4:
+      return S.Array(__S(547, __c17, 3));
+    case 5:
+      return S.Record(S.String, S.String);
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          depth: S.optional(S.NullOr(S.Number)),
+          includeExternalLinks: S.optional(
+            S.NullOr(S.Boolean).pipe(T.Body("include_external_links")),
+          ),
+          includeSubdomains: S.optional(S.NullOr(S.Boolean).pipe(T.Body("include_subdomains"))),
+          maxAge: S.optional(S.NullOr(S.Number).pipe(T.Body("max_age"))),
+          source: S.optional(S.NullOr(S.String)),
+        }),
+      ).annotate({ identifier: "WebCrawlerCrawlOptions" });
+    case 7:
       return S.suspend(() =>
         S.Struct({
           keywordTokenizer: S.optional(S.NullOr(S.String).pipe(T.Body("keyword_tokenizer"))),
@@ -6880,7 +6976,7 @@ function __c10(j: number): any {
       ).annotate({
         identifier: "InstancesCreateResponseIndexingOptions",
       });
-    case 6:
+    case 8:
       return S.suspend(() =>
         S.Struct({
           createdFromAisearchWizard: S.optional(
@@ -6891,85 +6987,26 @@ function __c10(j: number): any {
       ).annotate({
         identifier: "InstancesCreateResponseMetadata",
       });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          disabled: S.optional(S.NullOr(S.Boolean)),
-        }),
-      ).annotate({
-        identifier: "InstancesCreateResponsePublicEndpointParamsChatCompletionsEndpoint",
-      });
   }
 }
-function __c11(j: number): any {
+function __c18(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          description: S.optional(S.NullOr(S.String)),
-          disabled: S.optional(S.NullOr(S.Boolean)),
-        }),
-      ).annotate({
-        identifier: "InstancesCreateResponsePublicEndpointParamsMcp",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          periodMs: S.optional(S.NullOr(S.Number).pipe(T.Body("period_ms"))),
-          requests: S.optional(S.NullOr(S.Number)),
-          technique: S.optional(S.NullOr(S.String)),
-        }),
-      ).annotate({
-        identifier: "InstancesCreateResponsePublicEndpointParamsRateLimit",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          disabled: S.optional(S.NullOr(S.Boolean)),
-        }),
-      ).annotate({
-        identifier: "InstancesCreateResponsePublicEndpointParamsSearchEndpoint",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          authorizedHosts: S.optional(S.NullOr(__S(24, __c3, 0)).pipe(T.Body("authorized_hosts"))),
-          chatCompletionsEndpoint: S.optional(
-            S.NullOr(__S(87, __c10, 7)).pipe(T.Body("chat_completions_endpoint")),
+          createdFromAisearchWizard: S.optional(
+            S.Boolean.pipe(T.Body("created_from_aisearch_wizard")),
           ),
-          customDomains: S.optional(S.NullOr(__S(24, __c3, 0)).pipe(T.Body("custom_domains"))),
-          defaultDomainEnabled: S.optional(
-            S.NullOr(S.Boolean).pipe(T.Body("default_domain_enabled")),
-          ),
-          enabled: S.optional(S.NullOr(S.Boolean)),
-          mcp: S.optional(S.NullOr(__S(88, __c11, 0))),
-          rateLimit: S.optional(S.NullOr(__S(89, __c11, 1)).pipe(T.Body("rate_limit"))),
-          searchEndpoint: S.optional(S.NullOr(__S(90, __c11, 2)).pipe(T.Body("search_endpoint"))),
+          workerDomain: S.optional(S.String.pipe(T.Body("worker_domain"))),
         }),
       ).annotate({
-        identifier: "InstancesCreateResponsePublicEndpointParams",
+        identifier: "InstancesCreateRequestMetadata",
       });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          field: S.String,
-          direction: S.optional(S.NullOr(S.String)),
-        }),
-      ).annotate({
-        identifier: "InstancesCreateResponseRetrievalOptionsBoostByItem",
-      });
-    case 5:
-      return S.Array(__S(92, __c11, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          boostBy: S.optional(S.NullOr(__S(93, __c11, 5)).pipe(T.Body("boost_by"))),
-          keywordMatchMode: S.optional(S.NullOr(S.String).pipe(T.Body("keyword_match_mode"))),
-        }),
-      ).annotate({
-        identifier: "InstancesCreateResponseRetrievalOptions",
-      });
-    case 7:
+  }
+}
+function __c19(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           depth: S.optional(S.NullOr(S.Number)),
@@ -6986,16 +7023,18 @@ function __c11(j: number): any {
       });
   }
 }
-function __c12(j: number): any {
+function __c20(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          contentSelector: S.optional(S.NullOr(__S(77, __c9, 5)).pipe(T.Body("content_selector"))),
-          includeHeaders: S.optional(S.NullOr(__S(78, __c9, 6)).pipe(T.Body("include_headers"))),
+          contentSelector: S.optional(
+            S.NullOr(__S(548, __c17, 4)).pipe(T.Body("content_selector")),
+          ),
+          includeHeaders: S.optional(S.NullOr(__S(549, __c17, 5)).pipe(T.Body("include_headers"))),
           includeImages: S.optional(S.NullOr(S.Boolean).pipe(T.Body("include_images"))),
           specificSitemaps: S.optional(
-            S.NullOr(__S(79, __c9, 7)).pipe(T.Body("specific_sitemaps")),
+            S.NullOr(__S(384, __c12, 0)).pipe(T.Body("specific_sitemaps")),
           ),
           useBrowserRendering: S.optional(
             S.NullOr(S.Boolean).pipe(T.Body("use_browser_rendering")),
@@ -7004,80 +7043,93 @@ function __c12(j: number): any {
       ).annotate({
         identifier: "InstancesCreateResponseSourceParamsWebCrawlerParseOptions",
       });
-    case 1:
+  }
+}
+function __c21(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          discoverOptions: S.optional(S.NullOr(__S(95, __c11, 7)).pipe(T.Body("discover_options"))),
-          parseOptions: S.optional(S.NullOr(__S(96, __c12, 0)).pipe(T.Body("parse_options"))),
-          parseType: S.optional(S.NullOr(S.String).pipe(T.Body("parse_type"))),
-          crawlOptions: S.optional(S.NullOr(__S(81, __c10, 1)).pipe(T.Body("crawl_options"))),
+          field: S.String,
+          direction: S.optional(S.NullOr(S.String)),
         }),
       ).annotate({
-        identifier: "InstancesCreateResponseSourceParamsWebCrawler",
+        identifier: "InstancesCreateResponseRetrievalOptionsBoostByItem",
       });
+    case 1:
+      return S.Array(__S(672, __c21, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          excludeItems: S.optional(S.NullOr(__S(24, __c3, 0)).pipe(T.Body("exclude_items"))),
-          includeItems: S.optional(S.NullOr(__S(24, __c3, 0)).pipe(T.Body("include_items"))),
-          prefix: S.optional(S.NullOr(S.String)),
-          r2Jurisdiction: S.optional(S.NullOr(S.String).pipe(T.Body("r2_jurisdiction"))),
-          webCrawler: S.optional(S.NullOr(__S(97, __c12, 1)).pipe(T.Body("web_crawler"))),
+          boostBy: S.optional(S.NullOr(__S(673, __c21, 1)).pipe(T.Body("boost_by"))),
+          keywordMatchMode: S.optional(S.NullOr(S.String).pipe(T.Body("keyword_match_mode"))),
         }),
       ).annotate({
-        identifier: "InstancesCreateResponseSourceParams",
+        identifier: "InstancesCreateResponseRetrievalOptions",
       });
+  }
+}
+function __c22(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          keywordTokenizer: S.optional(S.String.pipe(T.Body("keyword_tokenizer"))),
+          useOcr: S.optional(S.Boolean.pipe(T.Body("use_ocr"))),
+        }),
+      ).annotate({
+        identifier: "InstancesCreateRequestIndexingOptions",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          field: S.String,
+          direction: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "InstancesCreateRequestRetrievalOptionsBoostByItem",
+      });
+    case 2:
+      return S.Array(__S(705, __c22, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          id: S.String,
-          createdAt: S.String.pipe(T.Body("created_at")),
-          modifiedAt: S.String.pipe(T.Body("modified_at")),
-          aiGatewayId: S.optional(S.NullOr(S.String).pipe(T.Body("ai_gateway_id"))),
-          aiSearchModel: S.optional(S.NullOr(S.String).pipe(T.Body("ai_search_model"))),
-          cache: S.optional(S.NullOr(S.Boolean)),
-          cacheThreshold: S.optional(S.NullOr(S.String).pipe(T.Body("cache_threshold"))),
-          cacheTtl: S.optional(S.NullOr(S.Number).pipe(T.Body("cache_ttl"))),
-          chunkOverlap: S.optional(S.NullOr(S.Number).pipe(T.Body("chunk_overlap"))),
-          chunkSize: S.optional(S.NullOr(S.Number).pipe(T.Body("chunk_size"))),
-          createdBy: S.optional(S.NullOr(S.String).pipe(T.Body("created_by"))),
-          customMetadata: S.optional(S.NullOr(__S(63, __c7, 7)).pipe(T.Body("custom_metadata"))),
-          embeddingModel: S.optional(S.NullOr(S.String).pipe(T.Body("embedding_model"))),
-          enable: S.optional(S.NullOr(S.Boolean)),
-          engineVersion: S.optional(S.NullOr(S.Number).pipe(T.Body("engine_version"))),
-          fusionMethod: S.optional(S.NullOr(S.String).pipe(T.Body("fusion_method"))),
-          hybridSearchEnabled: S.optional(
-            S.NullOr(S.Boolean).pipe(T.Body("hybrid_search_enabled")),
-          ),
-          indexMethod: S.optional(S.NullOr(__S(64, __c8, 0)).pipe(T.Body("index_method"))),
-          indexingOptions: S.optional(S.NullOr(__S(85, __c10, 5)).pipe(T.Body("indexing_options"))),
-          lastActivity: S.optional(S.NullOr(S.String).pipe(T.Body("last_activity"))),
-          maxNumResults: S.optional(S.NullOr(S.Number).pipe(T.Body("max_num_results"))),
-          metadata: S.optional(S.NullOr(__S(86, __c10, 6))),
-          modifiedBy: S.optional(S.NullOr(S.String).pipe(T.Body("modified_by"))),
-          namespace: S.optional(S.NullOr(S.String)),
-          paused: S.optional(S.NullOr(S.Boolean)),
-          publicEndpointId: S.optional(S.NullOr(S.String).pipe(T.Body("public_endpoint_id"))),
-          publicEndpointParams: S.optional(
-            S.NullOr(__S(91, __c11, 3)).pipe(T.Body("public_endpoint_params")),
-          ),
-          reranking: S.optional(S.NullOr(S.Boolean)),
-          rerankingModel: S.optional(S.NullOr(S.String).pipe(T.Body("reranking_model"))),
-          retrievalOptions: S.optional(
-            S.NullOr(__S(94, __c11, 6)).pipe(T.Body("retrieval_options")),
-          ),
-          rewriteModel: S.optional(S.NullOr(S.String).pipe(T.Body("rewrite_model"))),
-          rewriteQuery: S.optional(S.NullOr(S.Boolean).pipe(T.Body("rewrite_query"))),
-          scoreThreshold: S.optional(S.NullOr(S.Number).pipe(T.Body("score_threshold"))),
-          source: S.optional(S.NullOr(S.String)),
-          sourceParams: S.optional(S.NullOr(__S(98, __c12, 2)).pipe(T.Body("source_params"))),
-          status: S.optional(S.NullOr(S.String)),
-          syncInterval: S.optional(S.NullOr(S.Number).pipe(T.Body("sync_interval"))),
-          tokenId: S.optional(S.NullOr(S.String).pipe(T.Body("token_id"))),
-          type: S.optional(S.NullOr(S.String)),
-        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({ identifier: "CreateInstanceResponse" });
+          boostBy: S.optional(__S(706, __c22, 2).pipe(T.Body("boost_by"))),
+          keywordMatchMode: S.optional(S.String.pipe(T.Body("keyword_match_mode"))),
+        }),
+      ).annotate({
+        identifier: "InstancesCreateRequestRetrievalOptions",
+      });
     case 4:
+      return S.suspend(() =>
+        S.Struct({
+          depth: S.optional(S.Number),
+          includeExternalLinks: S.optional(S.Boolean.pipe(T.Body("include_external_links"))),
+          includeSubdomains: S.optional(S.Boolean.pipe(T.Body("include_subdomains"))),
+          limit: S.optional(S.Number),
+          maxAge: S.optional(S.Number.pipe(T.Body("max_age"))),
+          source: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "InstancesCreateRequestSourceParamsWebCrawlerDiscoverOptions",
+      });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          contentSelector: S.optional(__S(548, __c17, 4).pipe(T.Body("content_selector"))),
+          includeHeaders: S.optional(__S(549, __c17, 5).pipe(T.Body("include_headers"))),
+          includeImages: S.optional(S.Boolean.pipe(T.Body("include_images"))),
+          specificSitemaps: S.optional(__S(384, __c12, 0).pipe(T.Body("specific_sitemaps"))),
+          useBrowserRendering: S.optional(S.Boolean.pipe(T.Body("use_browser_rendering"))),
+        }),
+      ).annotate({
+        identifier: "InstancesCreateRequestSourceParamsWebCrawlerParseOptions",
+      });
+  }
+}
+function __c23(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -7093,7 +7145,11 @@ function __c12(j: number): any {
           )
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "CreateInstanceJobRequest" });
-    case 5:
+  }
+}
+function __c24(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
@@ -7107,32 +7163,36 @@ function __c12(j: number): any {
       ).annotate({
         identifier: "CreateInstanceJobResponse",
       });
-    case 6:
+  }
+}
+function __c25(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          authorizedHosts: S.optional(__S(24, __c3, 0).pipe(T.Body("authorized_hosts"))),
+          authorizedHosts: S.optional(__S(224, __c7, 0).pipe(T.Body("authorized_hosts"))),
           chatCompletionsEndpoint: S.optional(
-            __S(67, __c8, 3).pipe(T.Body("chat_completions_endpoint")),
+            __S(448, __c14, 0).pipe(T.Body("chat_completions_endpoint")),
           ),
-          customDomains: S.optional(__S(24, __c3, 0).pipe(T.Body("custom_domains"))),
+          customDomains: S.optional(__S(224, __c7, 0).pipe(T.Body("custom_domains"))),
           defaultDomainEnabled: S.optional(S.Boolean.pipe(T.Body("default_domain_enabled"))),
           enabled: S.optional(S.Boolean),
-          instancesAllowed: S.optional(__S(79, __c9, 7).pipe(T.Body("instances_allowed"))),
-          mcp: S.optional(__S(68, __c8, 4)),
-          rateLimit: S.optional(__S(69, __c8, 5).pipe(T.Body("rate_limit"))),
-          searchEndpoint: S.optional(__S(70, __c8, 6).pipe(T.Body("search_endpoint"))),
+          instancesAllowed: S.optional(__S(384, __c12, 0).pipe(T.Body("instances_allowed"))),
+          mcp: S.optional(__S(449, __c14, 1)),
+          rateLimit: S.optional(__S(512, __c16, 0).pipe(T.Body("rate_limit"))),
+          searchEndpoint: S.optional(__S(450, __c14, 2).pipe(T.Body("search_endpoint"))),
         }),
       ).annotate({
         identifier: "NamespacesCreateRequestPublicEndpointParams",
       });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
           name: S.String,
           description: S.optional(S.String),
           publicEndpointParams: S.optional(
-            __S(102, __c12, 6).pipe(T.Body("public_endpoint_params")),
+            __S(800, __c25, 0).pipe(T.Body("public_endpoint_params")),
           ),
         })
           .pipe(
@@ -7144,33 +7204,31 @@ function __c12(j: number): any {
           )
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "CreateNamespaceRequest" });
-  }
-}
-function __c13(j: number): any {
-  switch (j) {
-    case 0:
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          authorizedHosts: S.optional(S.NullOr(__S(79, __c9, 7)).pipe(T.Body("authorized_hosts"))),
-          chatCompletionsEndpoint: S.optional(
-            S.NullOr(__S(87, __c10, 7)).pipe(T.Body("chat_completions_endpoint")),
+          authorizedHosts: S.optional(
+            S.NullOr(__S(384, __c12, 0)).pipe(T.Body("authorized_hosts")),
           ),
-          customDomains: S.optional(S.NullOr(__S(24, __c3, 0)).pipe(T.Body("custom_domains"))),
+          chatCompletionsEndpoint: S.optional(
+            S.NullOr(__S(352, __c11, 0)).pipe(T.Body("chat_completions_endpoint")),
+          ),
+          customDomains: S.optional(S.NullOr(__S(224, __c7, 0)).pipe(T.Body("custom_domains"))),
           defaultDomainEnabled: S.optional(
             S.NullOr(S.Boolean).pipe(T.Body("default_domain_enabled")),
           ),
           enabled: S.optional(S.NullOr(S.Boolean)),
           instancesAllowed: S.optional(
-            S.NullOr(__S(79, __c9, 7)).pipe(T.Body("instances_allowed")),
+            S.NullOr(__S(384, __c12, 0)).pipe(T.Body("instances_allowed")),
           ),
-          mcp: S.optional(S.NullOr(__S(88, __c11, 0))),
-          rateLimit: S.optional(S.NullOr(__S(89, __c11, 1)).pipe(T.Body("rate_limit"))),
-          searchEndpoint: S.optional(S.NullOr(__S(90, __c11, 2)).pipe(T.Body("search_endpoint"))),
+          mcp: S.optional(S.NullOr(__S(353, __c11, 1))),
+          rateLimit: S.optional(S.NullOr(__S(480, __c15, 0)).pipe(T.Body("rate_limit"))),
+          searchEndpoint: S.optional(S.NullOr(__S(416, __c13, 0)).pipe(T.Body("search_endpoint"))),
         }),
       ).annotate({
         identifier: "NamespacesCreateResponsePublicEndpointParams",
       });
-    case 1:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           createdAt: S.String.pipe(T.Body("created_at")),
@@ -7178,119 +7236,55 @@ function __c13(j: number): any {
           description: S.optional(S.NullOr(S.String)),
           publicEndpointId: S.optional(S.NullOr(S.String).pipe(T.Body("public_endpoint_id"))),
           publicEndpointParams: S.optional(
-            S.NullOr(__S(104, __c13, 0)).pipe(T.Body("public_endpoint_params")),
+            S.NullOr(__S(802, __c25, 2)).pipe(T.Body("public_endpoint_params")),
           ),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "CreateNamespaceResponse" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          keywordTokenizer: S.optional(S.String.pipe(T.Body("keyword_tokenizer"))),
-          useOcr: S.optional(S.Boolean.pipe(T.Body("use_ocr"))),
-        }),
-      ).annotate({
-        identifier: "NamespacesInstancesCreateRequestIndexingOptions",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          periodMs: S.optional(S.Number.pipe(T.Body("period_ms"))),
-          requests: S.optional(S.Number),
-          technique: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "NamespacesInstancesCreateRequestPublicEndpointParamsRateLimit",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          authorizedHosts: S.optional(__S(79, __c9, 7).pipe(T.Body("authorized_hosts"))),
-          chatCompletionsEndpoint: S.optional(
-            __S(67, __c8, 3).pipe(T.Body("chat_completions_endpoint")),
-          ),
-          customDomains: S.optional(__S(79, __c9, 7).pipe(T.Body("custom_domains"))),
-          defaultDomainEnabled: S.optional(S.Boolean.pipe(T.Body("default_domain_enabled"))),
-          enabled: S.optional(S.Boolean),
-          mcp: S.optional(__S(68, __c8, 4)),
-          rateLimit: S.optional(__S(107, __c13, 3).pipe(T.Body("rate_limit"))),
-          searchEndpoint: S.optional(__S(70, __c8, 6).pipe(T.Body("search_endpoint"))),
-        }),
-      ).annotate({
-        identifier: "NamespacesInstancesCreateRequestPublicEndpointParams",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          field: S.String,
-          direction: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "NamespacesInstancesCreateRequestRetrievalOptionsBoostByItem",
-      });
-    case 6:
-      return S.Array(__S(109, __c13, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          boostBy: S.optional(__S(110, __c13, 6).pipe(T.Body("boost_by"))),
-          keywordMatchMode: S.optional(S.String.pipe(T.Body("keyword_match_mode"))),
-        }),
-      ).annotate({
-        identifier: "NamespacesInstancesCreateRequestRetrievalOptions",
-      });
   }
 }
-function __c14(j: number): any {
+function __c26(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          depth: S.optional(S.Number),
-          includeExternalLinks: S.optional(S.Boolean.pipe(T.Body("include_external_links"))),
-          includeSubdomains: S.optional(S.Boolean.pipe(T.Body("include_subdomains"))),
-          limit: S.optional(S.Number),
-          maxAge: S.optional(S.Number.pipe(T.Body("max_age"))),
-          source: S.optional(S.String),
+          authorizedHosts: S.optional(__S(384, __c12, 0).pipe(T.Body("authorized_hosts"))),
+          chatCompletionsEndpoint: S.optional(
+            __S(448, __c14, 0).pipe(T.Body("chat_completions_endpoint")),
+          ),
+          customDomains: S.optional(__S(384, __c12, 0).pipe(T.Body("custom_domains"))),
+          defaultDomainEnabled: S.optional(S.Boolean.pipe(T.Body("default_domain_enabled"))),
+          enabled: S.optional(S.Boolean),
+          mcp: S.optional(__S(449, __c14, 1)),
+          rateLimit: S.optional(__S(1025, __c32, 1).pipe(T.Body("rate_limit"))),
+          searchEndpoint: S.optional(__S(450, __c14, 2).pipe(T.Body("search_endpoint"))),
         }),
       ).annotate({
-        identifier: "NamespacesInstancesCreateRequestSourceParamsWebCrawlerDiscoverOptions",
+        identifier: "NamespacesInstancesCreateRequestPublicEndpointParams",
       });
     case 1:
       return S.suspend(() =>
         S.Struct({
-          contentSelector: S.optional(__S(77, __c9, 5).pipe(T.Body("content_selector"))),
-          includeHeaders: S.optional(__S(78, __c9, 6).pipe(T.Body("include_headers"))),
-          includeImages: S.optional(S.Boolean.pipe(T.Body("include_images"))),
-          specificSitemaps: S.optional(__S(79, __c9, 7).pipe(T.Body("specific_sitemaps"))),
-          useBrowserRendering: S.optional(S.Boolean.pipe(T.Body("use_browser_rendering"))),
-        }),
-      ).annotate({
-        identifier: "NamespacesInstancesCreateRequestSourceParamsWebCrawlerParseOptions",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          discoverOptions: S.optional(__S(112, __c14, 0).pipe(T.Body("discover_options"))),
-          parseOptions: S.optional(__S(113, __c14, 1).pipe(T.Body("parse_options"))),
+          discoverOptions: S.optional(__S(1027, __c32, 3).pipe(T.Body("discover_options"))),
+          parseOptions: S.optional(__S(1028, __c32, 4).pipe(T.Body("parse_options"))),
           parseType: S.optional(S.String.pipe(T.Body("parse_type"))),
-          crawlOptions: S.optional(__S(81, __c10, 1).pipe(T.Body("crawl_options"))),
+          crawlOptions: S.optional(__S(550, __c17, 6).pipe(T.Body("crawl_options"))),
         }),
       ).annotate({
         identifier: "NamespacesInstancesCreateRequestSourceParamsWebCrawler",
       });
-    case 3:
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          excludeItems: S.optional(__S(24, __c3, 0).pipe(T.Body("exclude_items"))),
-          includeItems: S.optional(__S(24, __c3, 0).pipe(T.Body("include_items"))),
+          excludeItems: S.optional(__S(224, __c7, 0).pipe(T.Body("exclude_items"))),
+          includeItems: S.optional(__S(224, __c7, 0).pipe(T.Body("include_items"))),
           prefix: S.optional(S.String),
           r2Jurisdiction: S.optional(S.String.pipe(T.Body("r2_jurisdiction"))),
-          webCrawler: S.optional(__S(114, __c14, 2).pipe(T.Body("web_crawler"))),
+          webCrawler: S.optional(__S(833, __c26, 1).pipe(T.Body("web_crawler"))),
         }),
       ).annotate({
         identifier: "NamespacesInstancesCreateRequestSourceParams",
       });
-    case 4:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -7304,25 +7298,25 @@ function __c14(j: number): any {
           chunk: S.optional(S.Boolean),
           chunkOverlap: S.optional(S.Number.pipe(T.Body("chunk_overlap"))),
           chunkSize: S.optional(S.Number.pipe(T.Body("chunk_size"))),
-          customMetadata: S.optional(__S(63, __c7, 7).pipe(T.Body("custom_metadata"))),
+          customMetadata: S.optional(__S(545, __c17, 1).pipe(T.Body("custom_metadata"))),
           embeddingModel: S.optional(S.String.pipe(T.Body("embedding_model"))),
           fusionMethod: S.optional(S.String.pipe(T.Body("fusion_method"))),
           hybridSearchEnabled: S.optional(S.Boolean.pipe(T.Body("hybrid_search_enabled"))),
-          indexMethod: S.optional(__S(64, __c8, 0).pipe(T.Body("index_method"))),
-          indexingOptions: S.optional(__S(106, __c13, 2).pipe(T.Body("indexing_options"))),
+          indexMethod: S.optional(__S(546, __c17, 2).pipe(T.Body("index_method"))),
+          indexingOptions: S.optional(__S(1024, __c32, 0).pipe(T.Body("indexing_options"))),
           maxNumResults: S.optional(S.Number.pipe(T.Body("max_num_results"))),
-          metadata: S.optional(__S(66, __c8, 2)),
+          metadata: S.optional(__S(576, __c18, 0)),
           publicEndpointParams: S.optional(
-            __S(108, __c13, 4).pipe(T.Body("public_endpoint_params")),
+            __S(832, __c26, 0).pipe(T.Body("public_endpoint_params")),
           ),
           reranking: S.optional(S.Boolean),
           rerankingModel: S.optional(S.String.pipe(T.Body("reranking_model"))),
-          retrievalOptions: S.optional(__S(111, __c13, 7).pipe(T.Body("retrieval_options"))),
+          retrievalOptions: S.optional(__S(1026, __c32, 2).pipe(T.Body("retrieval_options"))),
           rewriteModel: S.optional(S.String.pipe(T.Body("rewrite_model"))),
           rewriteQuery: S.optional(S.Boolean.pipe(T.Body("rewrite_query"))),
           scoreThreshold: S.optional(S.Number.pipe(T.Body("score_threshold"))),
           source: S.optional(S.String),
-          sourceParams: S.optional(__S(115, __c14, 3).pipe(T.Body("source_params"))),
+          sourceParams: S.optional(__S(834, __c26, 2).pipe(T.Body("source_params"))),
           syncInterval: S.optional(S.Number.pipe(T.Body("sync_interval"))),
           tokenId: S.optional(S.String.pipe(T.Body("token_id"))),
           type: S.optional(S.String),
@@ -7338,60 +7332,111 @@ function __c14(j: number): any {
       ).annotate({
         identifier: "CreateNamespaceInstanceRequest",
       });
-    case 5:
+    case 4:
       return S.suspend(() =>
         S.Struct({
-          periodMs: S.optional(S.NullOr(S.Number).pipe(T.Body("period_ms"))),
-          requests: S.optional(S.NullOr(S.Number)),
-          technique: S.optional(S.NullOr(S.String)),
-        }),
-      ).annotate({
-        identifier: "NamespacesInstancesCreateResponsePublicEndpointParamsRateLimit",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          authorizedHosts: S.optional(S.NullOr(__S(79, __c9, 7)).pipe(T.Body("authorized_hosts"))),
-          chatCompletionsEndpoint: S.optional(
-            S.NullOr(__S(87, __c10, 7)).pipe(T.Body("chat_completions_endpoint")),
+          authorizedHosts: S.optional(
+            S.NullOr(__S(384, __c12, 0)).pipe(T.Body("authorized_hosts")),
           ),
-          customDomains: S.optional(S.NullOr(__S(79, __c9, 7)).pipe(T.Body("custom_domains"))),
+          chatCompletionsEndpoint: S.optional(
+            S.NullOr(__S(352, __c11, 0)).pipe(T.Body("chat_completions_endpoint")),
+          ),
+          customDomains: S.optional(S.NullOr(__S(384, __c12, 0)).pipe(T.Body("custom_domains"))),
           defaultDomainEnabled: S.optional(
             S.NullOr(S.Boolean).pipe(T.Body("default_domain_enabled")),
           ),
           enabled: S.optional(S.NullOr(S.Boolean)),
-          mcp: S.optional(S.NullOr(__S(88, __c11, 0))),
-          rateLimit: S.optional(S.NullOr(__S(117, __c14, 5)).pipe(T.Body("rate_limit"))),
-          searchEndpoint: S.optional(S.NullOr(__S(90, __c11, 2)).pipe(T.Body("search_endpoint"))),
+          mcp: S.optional(S.NullOr(__S(353, __c11, 1))),
+          rateLimit: S.optional(S.NullOr(__S(896, __c28, 0)).pipe(T.Body("rate_limit"))),
+          searchEndpoint: S.optional(S.NullOr(__S(416, __c13, 0)).pipe(T.Body("search_endpoint"))),
         }),
       ).annotate({
         identifier: "NamespacesInstancesCreateResponsePublicEndpointParams",
       });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          discoverOptions: S.optional(
+            S.NullOr(__S(864, __c27, 0)).pipe(T.Body("discover_options")),
+          ),
+          parseOptions: S.optional(S.NullOr(__S(865, __c27, 1)).pipe(T.Body("parse_options"))),
+          parseType: S.optional(S.NullOr(S.String).pipe(T.Body("parse_type"))),
+          crawlOptions: S.optional(S.NullOr(__S(550, __c17, 6)).pipe(T.Body("crawl_options"))),
+        }),
+      ).annotate({
+        identifier: "NamespacesInstancesCreateResponseSourceParamsWebCrawler",
+      });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          excludeItems: S.optional(S.NullOr(__S(224, __c7, 0)).pipe(T.Body("exclude_items"))),
+          includeItems: S.optional(S.NullOr(__S(224, __c7, 0)).pipe(T.Body("include_items"))),
+          prefix: S.optional(S.NullOr(S.String)),
+          r2Jurisdiction: S.optional(S.NullOr(S.String).pipe(T.Body("r2_jurisdiction"))),
+          webCrawler: S.optional(S.NullOr(__S(837, __c26, 5)).pipe(T.Body("web_crawler"))),
+        }),
+      ).annotate({
+        identifier: "NamespacesInstancesCreateResponseSourceParams",
+      });
     case 7:
       return S.suspend(() =>
         S.Struct({
-          field: S.String,
-          direction: S.optional(S.NullOr(S.String)),
-        }),
+          id: S.String,
+          createdAt: S.String.pipe(T.Body("created_at")),
+          modifiedAt: S.String.pipe(T.Body("modified_at")),
+          aiGatewayId: S.optional(S.NullOr(S.String).pipe(T.Body("ai_gateway_id"))),
+          aiSearchModel: S.optional(S.NullOr(S.String).pipe(T.Body("ai_search_model"))),
+          cache: S.optional(S.NullOr(S.Boolean)),
+          cacheThreshold: S.optional(S.NullOr(S.String).pipe(T.Body("cache_threshold"))),
+          cacheTtl: S.optional(S.NullOr(S.Number).pipe(T.Body("cache_ttl"))),
+          chunkOverlap: S.optional(S.NullOr(S.Number).pipe(T.Body("chunk_overlap"))),
+          chunkSize: S.optional(S.NullOr(S.Number).pipe(T.Body("chunk_size"))),
+          createdBy: S.optional(S.NullOr(S.String).pipe(T.Body("created_by"))),
+          customMetadata: S.optional(S.NullOr(__S(545, __c17, 1)).pipe(T.Body("custom_metadata"))),
+          embeddingModel: S.optional(S.NullOr(S.String).pipe(T.Body("embedding_model"))),
+          enable: S.optional(S.NullOr(S.Boolean)),
+          engineVersion: S.optional(S.NullOr(S.Number).pipe(T.Body("engine_version"))),
+          fusionMethod: S.optional(S.NullOr(S.String).pipe(T.Body("fusion_method"))),
+          hybridSearchEnabled: S.optional(
+            S.NullOr(S.Boolean).pipe(T.Body("hybrid_search_enabled")),
+          ),
+          indexMethod: S.optional(S.NullOr(__S(546, __c17, 2)).pipe(T.Body("index_method"))),
+          indexingOptions: S.optional(
+            S.NullOr(__S(551, __c17, 7)).pipe(T.Body("indexing_options")),
+          ),
+          lastActivity: S.optional(S.NullOr(S.String).pipe(T.Body("last_activity"))),
+          maxNumResults: S.optional(S.NullOr(S.Number).pipe(T.Body("max_num_results"))),
+          metadata: S.optional(S.NullOr(__S(552, __c17, 8))),
+          modifiedBy: S.optional(S.NullOr(S.String).pipe(T.Body("modified_by"))),
+          namespace: S.optional(S.NullOr(S.String)),
+          paused: S.optional(S.NullOr(S.Boolean)),
+          publicEndpointId: S.optional(S.NullOr(S.String).pipe(T.Body("public_endpoint_id"))),
+          publicEndpointParams: S.optional(
+            S.NullOr(__S(836, __c26, 4)).pipe(T.Body("public_endpoint_params")),
+          ),
+          reranking: S.optional(S.NullOr(S.Boolean)),
+          rerankingModel: S.optional(S.NullOr(S.String).pipe(T.Body("reranking_model"))),
+          retrievalOptions: S.optional(
+            S.NullOr(__S(960, __c30, 0)).pipe(T.Body("retrieval_options")),
+          ),
+          rewriteModel: S.optional(S.NullOr(S.String).pipe(T.Body("rewrite_model"))),
+          rewriteQuery: S.optional(S.NullOr(S.Boolean).pipe(T.Body("rewrite_query"))),
+          scoreThreshold: S.optional(S.NullOr(S.Number).pipe(T.Body("score_threshold"))),
+          source: S.optional(S.NullOr(S.String)),
+          sourceParams: S.optional(S.NullOr(__S(838, __c26, 6)).pipe(T.Body("source_params"))),
+          status: S.optional(S.NullOr(S.String)),
+          syncInterval: S.optional(S.NullOr(S.Number).pipe(T.Body("sync_interval"))),
+          tokenId: S.optional(S.NullOr(S.String).pipe(T.Body("token_id"))),
+          type: S.optional(S.NullOr(S.String)),
+        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({
-        identifier: "NamespacesInstancesCreateResponseRetrievalOptionsBoostByItem",
+        identifier: "CreateNamespaceInstanceResponse",
       });
   }
 }
-function __c15(j: number): any {
+function __c27(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(119, __c14, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          boostBy: S.optional(S.NullOr(__S(120, __c15, 0)).pipe(T.Body("boost_by"))),
-          keywordMatchMode: S.optional(S.NullOr(S.String).pipe(T.Body("keyword_match_mode"))),
-        }),
-      ).annotate({
-        identifier: "NamespacesInstancesCreateResponseRetrievalOptions",
-      });
-    case 2:
       return S.suspend(() =>
         S.Struct({
           depth: S.optional(S.NullOr(S.Number)),
@@ -7406,14 +7451,16 @@ function __c15(j: number): any {
       ).annotate({
         identifier: "NamespacesInstancesCreateResponseSourceParamsWebCrawlerDiscoverOptions",
       });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          contentSelector: S.optional(S.NullOr(__S(77, __c9, 5)).pipe(T.Body("content_selector"))),
-          includeHeaders: S.optional(S.NullOr(__S(78, __c9, 6)).pipe(T.Body("include_headers"))),
+          contentSelector: S.optional(
+            S.NullOr(__S(548, __c17, 4)).pipe(T.Body("content_selector")),
+          ),
+          includeHeaders: S.optional(S.NullOr(__S(549, __c17, 5)).pipe(T.Body("include_headers"))),
           includeImages: S.optional(S.NullOr(S.Boolean).pipe(T.Body("include_images"))),
           specificSitemaps: S.optional(
-            S.NullOr(__S(79, __c9, 7)).pipe(T.Body("specific_sitemaps")),
+            S.NullOr(__S(384, __c12, 0)).pipe(T.Body("specific_sitemaps")),
           ),
           useBrowserRendering: S.optional(
             S.NullOr(S.Boolean).pipe(T.Body("use_browser_rendering")),
@@ -7422,84 +7469,125 @@ function __c15(j: number): any {
       ).annotate({
         identifier: "NamespacesInstancesCreateResponseSourceParamsWebCrawlerParseOptions",
       });
+  }
+}
+function __c28(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          periodMs: S.optional(S.NullOr(S.Number).pipe(T.Body("period_ms"))),
+          requests: S.optional(S.NullOr(S.Number)),
+          technique: S.optional(S.NullOr(S.String)),
+        }),
+      ).annotate({
+        identifier: "NamespacesInstancesCreateResponsePublicEndpointParamsRateLimit",
+      });
+  }
+}
+function __c29(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          field: S.String,
+          direction: S.optional(S.NullOr(S.String)),
+        }),
+      ).annotate({
+        identifier: "NamespacesInstancesCreateResponseRetrievalOptionsBoostByItem",
+      });
+    case 1:
+      return S.Array(__S(928, __c29, 0));
+  }
+}
+function __c30(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          boostBy: S.optional(S.NullOr(__S(929, __c29, 1)).pipe(T.Body("boost_by"))),
+          keywordMatchMode: S.optional(S.NullOr(S.String).pipe(T.Body("keyword_match_mode"))),
+        }),
+      ).annotate({
+        identifier: "NamespacesInstancesCreateResponseRetrievalOptions",
+      });
+  }
+}
+function __c31(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          field: S.String,
+          direction: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "NamespacesInstancesCreateRequestRetrievalOptionsBoostByItem",
+      });
+    case 1:
+      return S.Array(__S(992, __c31, 0));
+  }
+}
+function __c32(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          keywordTokenizer: S.optional(S.String.pipe(T.Body("keyword_tokenizer"))),
+          useOcr: S.optional(S.Boolean.pipe(T.Body("use_ocr"))),
+        }),
+      ).annotate({
+        identifier: "NamespacesInstancesCreateRequestIndexingOptions",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          periodMs: S.optional(S.Number.pipe(T.Body("period_ms"))),
+          requests: S.optional(S.Number),
+          technique: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "NamespacesInstancesCreateRequestPublicEndpointParamsRateLimit",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          boostBy: S.optional(__S(993, __c31, 1).pipe(T.Body("boost_by"))),
+          keywordMatchMode: S.optional(S.String.pipe(T.Body("keyword_match_mode"))),
+        }),
+      ).annotate({
+        identifier: "NamespacesInstancesCreateRequestRetrievalOptions",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          depth: S.optional(S.Number),
+          includeExternalLinks: S.optional(S.Boolean.pipe(T.Body("include_external_links"))),
+          includeSubdomains: S.optional(S.Boolean.pipe(T.Body("include_subdomains"))),
+          limit: S.optional(S.Number),
+          maxAge: S.optional(S.Number.pipe(T.Body("max_age"))),
+          source: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "NamespacesInstancesCreateRequestSourceParamsWebCrawlerDiscoverOptions",
+      });
     case 4:
       return S.suspend(() =>
         S.Struct({
-          discoverOptions: S.optional(
-            S.NullOr(__S(122, __c15, 2)).pipe(T.Body("discover_options")),
-          ),
-          parseOptions: S.optional(S.NullOr(__S(123, __c15, 3)).pipe(T.Body("parse_options"))),
-          parseType: S.optional(S.NullOr(S.String).pipe(T.Body("parse_type"))),
-          crawlOptions: S.optional(S.NullOr(__S(81, __c10, 1)).pipe(T.Body("crawl_options"))),
+          contentSelector: S.optional(__S(548, __c17, 4).pipe(T.Body("content_selector"))),
+          includeHeaders: S.optional(__S(549, __c17, 5).pipe(T.Body("include_headers"))),
+          includeImages: S.optional(S.Boolean.pipe(T.Body("include_images"))),
+          specificSitemaps: S.optional(__S(384, __c12, 0).pipe(T.Body("specific_sitemaps"))),
+          useBrowserRendering: S.optional(S.Boolean.pipe(T.Body("use_browser_rendering"))),
         }),
       ).annotate({
-        identifier: "NamespacesInstancesCreateResponseSourceParamsWebCrawler",
+        identifier: "NamespacesInstancesCreateRequestSourceParamsWebCrawlerParseOptions",
       });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          excludeItems: S.optional(S.NullOr(__S(24, __c3, 0)).pipe(T.Body("exclude_items"))),
-          includeItems: S.optional(S.NullOr(__S(24, __c3, 0)).pipe(T.Body("include_items"))),
-          prefix: S.optional(S.NullOr(S.String)),
-          r2Jurisdiction: S.optional(S.NullOr(S.String).pipe(T.Body("r2_jurisdiction"))),
-          webCrawler: S.optional(S.NullOr(__S(124, __c15, 4)).pipe(T.Body("web_crawler"))),
-        }),
-      ).annotate({
-        identifier: "NamespacesInstancesCreateResponseSourceParams",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String,
-          createdAt: S.String.pipe(T.Body("created_at")),
-          modifiedAt: S.String.pipe(T.Body("modified_at")),
-          aiGatewayId: S.optional(S.NullOr(S.String).pipe(T.Body("ai_gateway_id"))),
-          aiSearchModel: S.optional(S.NullOr(S.String).pipe(T.Body("ai_search_model"))),
-          cache: S.optional(S.NullOr(S.Boolean)),
-          cacheThreshold: S.optional(S.NullOr(S.String).pipe(T.Body("cache_threshold"))),
-          cacheTtl: S.optional(S.NullOr(S.Number).pipe(T.Body("cache_ttl"))),
-          chunkOverlap: S.optional(S.NullOr(S.Number).pipe(T.Body("chunk_overlap"))),
-          chunkSize: S.optional(S.NullOr(S.Number).pipe(T.Body("chunk_size"))),
-          createdBy: S.optional(S.NullOr(S.String).pipe(T.Body("created_by"))),
-          customMetadata: S.optional(S.NullOr(__S(63, __c7, 7)).pipe(T.Body("custom_metadata"))),
-          embeddingModel: S.optional(S.NullOr(S.String).pipe(T.Body("embedding_model"))),
-          enable: S.optional(S.NullOr(S.Boolean)),
-          engineVersion: S.optional(S.NullOr(S.Number).pipe(T.Body("engine_version"))),
-          fusionMethod: S.optional(S.NullOr(S.String).pipe(T.Body("fusion_method"))),
-          hybridSearchEnabled: S.optional(
-            S.NullOr(S.Boolean).pipe(T.Body("hybrid_search_enabled")),
-          ),
-          indexMethod: S.optional(S.NullOr(__S(64, __c8, 0)).pipe(T.Body("index_method"))),
-          indexingOptions: S.optional(S.NullOr(__S(85, __c10, 5)).pipe(T.Body("indexing_options"))),
-          lastActivity: S.optional(S.NullOr(S.String).pipe(T.Body("last_activity"))),
-          maxNumResults: S.optional(S.NullOr(S.Number).pipe(T.Body("max_num_results"))),
-          metadata: S.optional(S.NullOr(__S(86, __c10, 6))),
-          modifiedBy: S.optional(S.NullOr(S.String).pipe(T.Body("modified_by"))),
-          namespace: S.optional(S.NullOr(S.String)),
-          paused: S.optional(S.NullOr(S.Boolean)),
-          publicEndpointId: S.optional(S.NullOr(S.String).pipe(T.Body("public_endpoint_id"))),
-          publicEndpointParams: S.optional(
-            S.NullOr(__S(118, __c14, 6)).pipe(T.Body("public_endpoint_params")),
-          ),
-          reranking: S.optional(S.NullOr(S.Boolean)),
-          rerankingModel: S.optional(S.NullOr(S.String).pipe(T.Body("reranking_model"))),
-          retrievalOptions: S.optional(
-            S.NullOr(__S(121, __c15, 1)).pipe(T.Body("retrieval_options")),
-          ),
-          rewriteModel: S.optional(S.NullOr(S.String).pipe(T.Body("rewrite_model"))),
-          rewriteQuery: S.optional(S.NullOr(S.Boolean).pipe(T.Body("rewrite_query"))),
-          scoreThreshold: S.optional(S.NullOr(S.Number).pipe(T.Body("score_threshold"))),
-          source: S.optional(S.NullOr(S.String)),
-          sourceParams: S.optional(S.NullOr(__S(125, __c15, 5)).pipe(T.Body("source_params"))),
-          status: S.optional(S.NullOr(S.String)),
-          syncInterval: S.optional(S.NullOr(S.Number).pipe(T.Body("sync_interval"))),
-          tokenId: S.optional(S.NullOr(S.String).pipe(T.Body("token_id"))),
-          type: S.optional(S.NullOr(S.String)),
-        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({
-        identifier: "CreateNamespaceInstanceResponse",
-      });
-    case 7:
+  }
+}
+function __c33(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -7520,7 +7608,7 @@ function __c15(j: number): any {
       });
   }
 }
-function __c16(j: number): any {
+function __c34(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -7546,7 +7634,7 @@ function __c16(j: number): any {
     case 1:
       return S.Unknown.pipe(/*@__PURE__*/ T.UnionCases([[], [], []]));
     case 2:
-      return S.Record(S.String, __S(129, __c16, 1));
+      return S.Record(S.String, __S(1089, __c34, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
@@ -7557,7 +7645,7 @@ function __c16(j: number): any {
           fileSize: S.Number.pipe(T.Body("file_size")),
           key: S.String,
           lastSeenAt: S.String.pipe(T.Body("last_seen_at")),
-          metadata: __S(130, __c16, 2),
+          metadata: __S(1090, __c34, 2),
           namespace: S.String,
           nextAction: S.String.pipe(T.Body("next_action")),
           sourceId: S.String.pipe(T.Body("source_id")),
@@ -7567,7 +7655,11 @@ function __c16(j: number): any {
       ).annotate({
         identifier: "CreateOrUpdateNamespaceInstanceItemResponse",
       });
-    case 4:
+  }
+}
+function __c35(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -7581,7 +7673,11 @@ function __c16(j: number): any {
           )
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "CreateTokenRequest" });
-    case 5:
+  }
+}
+function __c36(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
@@ -7595,7 +7691,11 @@ function __c16(j: number): any {
           modifiedBy: S.optional(S.NullOr(S.String).pipe(T.Body("modified_by"))),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "CreateTokenResponse" });
-    case 6:
+  }
+}
+function __c37(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -7610,53 +7710,51 @@ function __c16(j: number): any {
           )
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "DeleteInstanceRequest" });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          authorizedHosts: S.optional(S.NullOr(__S(24, __c3, 0)).pipe(T.Body("authorized_hosts"))),
+          authorizedHosts: S.optional(S.NullOr(__S(224, __c7, 0)).pipe(T.Body("authorized_hosts"))),
           chatCompletionsEndpoint: S.optional(
-            S.NullOr(__S(87, __c10, 7)).pipe(T.Body("chat_completions_endpoint")),
+            S.NullOr(__S(352, __c11, 0)).pipe(T.Body("chat_completions_endpoint")),
           ),
-          customDomains: S.optional(S.NullOr(__S(24, __c3, 0)).pipe(T.Body("custom_domains"))),
+          customDomains: S.optional(S.NullOr(__S(224, __c7, 0)).pipe(T.Body("custom_domains"))),
           defaultDomainEnabled: S.optional(
             S.NullOr(S.Boolean).pipe(T.Body("default_domain_enabled")),
           ),
           enabled: S.optional(S.NullOr(S.Boolean)),
-          mcp: S.optional(S.NullOr(__S(88, __c11, 0))),
-          rateLimit: S.optional(S.NullOr(__S(89, __c11, 1)).pipe(T.Body("rate_limit"))),
-          searchEndpoint: S.optional(S.NullOr(__S(90, __c11, 2)).pipe(T.Body("search_endpoint"))),
+          mcp: S.optional(S.NullOr(__S(353, __c11, 1))),
+          rateLimit: S.optional(S.NullOr(__S(480, __c15, 0)).pipe(T.Body("rate_limit"))),
+          searchEndpoint: S.optional(S.NullOr(__S(416, __c13, 0)).pipe(T.Body("search_endpoint"))),
         }),
       ).annotate({
         identifier: "InstancesDeleteResponsePublicEndpointParams",
       });
-  }
-}
-function __c17(j: number): any {
-  switch (j) {
-    case 0:
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          discoverOptions: S.optional(S.NullOr(__S(95, __c11, 7)).pipe(T.Body("discover_options"))),
-          parseOptions: S.optional(S.NullOr(__S(96, __c12, 0)).pipe(T.Body("parse_options"))),
+          discoverOptions: S.optional(
+            S.NullOr(__S(608, __c19, 0)).pipe(T.Body("discover_options")),
+          ),
+          parseOptions: S.optional(S.NullOr(__S(640, __c20, 0)).pipe(T.Body("parse_options"))),
           parseType: S.optional(S.NullOr(S.String).pipe(T.Body("parse_type"))),
-          crawlOptions: S.optional(S.NullOr(__S(81, __c10, 1)).pipe(T.Body("crawl_options"))),
+          crawlOptions: S.optional(S.NullOr(__S(550, __c17, 6)).pipe(T.Body("crawl_options"))),
         }),
       ).annotate({
         identifier: "InstancesDeleteResponseSourceParamsWebCrawler",
       });
-    case 1:
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          excludeItems: S.optional(S.NullOr(__S(24, __c3, 0)).pipe(T.Body("exclude_items"))),
-          includeItems: S.optional(S.NullOr(__S(24, __c3, 0)).pipe(T.Body("include_items"))),
+          excludeItems: S.optional(S.NullOr(__S(224, __c7, 0)).pipe(T.Body("exclude_items"))),
+          includeItems: S.optional(S.NullOr(__S(224, __c7, 0)).pipe(T.Body("include_items"))),
           prefix: S.optional(S.NullOr(S.String)),
           r2Jurisdiction: S.optional(S.NullOr(S.String).pipe(T.Body("r2_jurisdiction"))),
-          webCrawler: S.optional(S.NullOr(__S(136, __c17, 0)).pipe(T.Body("web_crawler"))),
+          webCrawler: S.optional(S.NullOr(__S(1186, __c37, 2)).pipe(T.Body("web_crawler"))),
         }),
       ).annotate({
         identifier: "InstancesDeleteResponseSourceParams",
       });
-    case 2:
+    case 4:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
@@ -7670,7 +7768,7 @@ function __c17(j: number): any {
           chunkOverlap: S.optional(S.NullOr(S.Number).pipe(T.Body("chunk_overlap"))),
           chunkSize: S.optional(S.NullOr(S.Number).pipe(T.Body("chunk_size"))),
           createdBy: S.optional(S.NullOr(S.String).pipe(T.Body("created_by"))),
-          customMetadata: S.optional(S.NullOr(__S(63, __c7, 7)).pipe(T.Body("custom_metadata"))),
+          customMetadata: S.optional(S.NullOr(__S(545, __c17, 1)).pipe(T.Body("custom_metadata"))),
           embeddingModel: S.optional(S.NullOr(S.String).pipe(T.Body("embedding_model"))),
           enable: S.optional(S.NullOr(S.Boolean)),
           engineVersion: S.optional(S.NullOr(S.Number).pipe(T.Body("engine_version"))),
@@ -7678,35 +7776,41 @@ function __c17(j: number): any {
           hybridSearchEnabled: S.optional(
             S.NullOr(S.Boolean).pipe(T.Body("hybrid_search_enabled")),
           ),
-          indexMethod: S.optional(S.NullOr(__S(64, __c8, 0)).pipe(T.Body("index_method"))),
-          indexingOptions: S.optional(S.NullOr(__S(85, __c10, 5)).pipe(T.Body("indexing_options"))),
+          indexMethod: S.optional(S.NullOr(__S(546, __c17, 2)).pipe(T.Body("index_method"))),
+          indexingOptions: S.optional(
+            S.NullOr(__S(551, __c17, 7)).pipe(T.Body("indexing_options")),
+          ),
           lastActivity: S.optional(S.NullOr(S.String).pipe(T.Body("last_activity"))),
           maxNumResults: S.optional(S.NullOr(S.Number).pipe(T.Body("max_num_results"))),
-          metadata: S.optional(S.NullOr(__S(86, __c10, 6))),
+          metadata: S.optional(S.NullOr(__S(552, __c17, 8))),
           modifiedBy: S.optional(S.NullOr(S.String).pipe(T.Body("modified_by"))),
           namespace: S.optional(S.NullOr(S.String)),
           paused: S.optional(S.NullOr(S.Boolean)),
           publicEndpointId: S.optional(S.NullOr(S.String).pipe(T.Body("public_endpoint_id"))),
           publicEndpointParams: S.optional(
-            S.NullOr(__S(135, __c16, 7)).pipe(T.Body("public_endpoint_params")),
+            S.NullOr(__S(1185, __c37, 1)).pipe(T.Body("public_endpoint_params")),
           ),
           reranking: S.optional(S.NullOr(S.Boolean)),
           rerankingModel: S.optional(S.NullOr(S.String).pipe(T.Body("reranking_model"))),
           retrievalOptions: S.optional(
-            S.NullOr(__S(94, __c11, 6)).pipe(T.Body("retrieval_options")),
+            S.NullOr(__S(674, __c21, 2)).pipe(T.Body("retrieval_options")),
           ),
           rewriteModel: S.optional(S.NullOr(S.String).pipe(T.Body("rewrite_model"))),
           rewriteQuery: S.optional(S.NullOr(S.Boolean).pipe(T.Body("rewrite_query"))),
           scoreThreshold: S.optional(S.NullOr(S.Number).pipe(T.Body("score_threshold"))),
           source: S.optional(S.NullOr(S.String)),
-          sourceParams: S.optional(S.NullOr(__S(137, __c17, 1)).pipe(T.Body("source_params"))),
+          sourceParams: S.optional(S.NullOr(__S(1187, __c37, 3)).pipe(T.Body("source_params"))),
           status: S.optional(S.NullOr(S.String)),
           syncInterval: S.optional(S.NullOr(S.Number).pipe(T.Body("sync_interval"))),
           tokenId: S.optional(S.NullOr(S.String).pipe(T.Body("token_id"))),
           type: S.optional(S.NullOr(S.String)),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "DeleteInstanceResponse" });
-    case 3:
+  }
+}
+function __c38(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -7721,11 +7825,19 @@ function __c17(j: number): any {
           )
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "DeleteNamespaceRequest" });
-    case 4:
+  }
+}
+function __c39(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Unknown.pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "DeleteNamespaceResponse" });
-    case 5:
+  }
+}
+function __c40(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -7743,55 +7855,53 @@ function __c17(j: number): any {
       ).annotate({
         identifier: "DeleteNamespaceInstanceRequest",
       });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          authorizedHosts: S.optional(S.NullOr(__S(79, __c9, 7)).pipe(T.Body("authorized_hosts"))),
-          chatCompletionsEndpoint: S.optional(
-            S.NullOr(__S(87, __c10, 7)).pipe(T.Body("chat_completions_endpoint")),
+          authorizedHosts: S.optional(
+            S.NullOr(__S(384, __c12, 0)).pipe(T.Body("authorized_hosts")),
           ),
-          customDomains: S.optional(S.NullOr(__S(79, __c9, 7)).pipe(T.Body("custom_domains"))),
+          chatCompletionsEndpoint: S.optional(
+            S.NullOr(__S(352, __c11, 0)).pipe(T.Body("chat_completions_endpoint")),
+          ),
+          customDomains: S.optional(S.NullOr(__S(384, __c12, 0)).pipe(T.Body("custom_domains"))),
           defaultDomainEnabled: S.optional(
             S.NullOr(S.Boolean).pipe(T.Body("default_domain_enabled")),
           ),
           enabled: S.optional(S.NullOr(S.Boolean)),
-          mcp: S.optional(S.NullOr(__S(88, __c11, 0))),
-          rateLimit: S.optional(S.NullOr(__S(117, __c14, 5)).pipe(T.Body("rate_limit"))),
-          searchEndpoint: S.optional(S.NullOr(__S(90, __c11, 2)).pipe(T.Body("search_endpoint"))),
+          mcp: S.optional(S.NullOr(__S(353, __c11, 1))),
+          rateLimit: S.optional(S.NullOr(__S(896, __c28, 0)).pipe(T.Body("rate_limit"))),
+          searchEndpoint: S.optional(S.NullOr(__S(416, __c13, 0)).pipe(T.Body("search_endpoint"))),
         }),
       ).annotate({
         identifier: "NamespacesInstancesDeleteResponsePublicEndpointParams",
       });
-    case 7:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           discoverOptions: S.optional(
-            S.NullOr(__S(122, __c15, 2)).pipe(T.Body("discover_options")),
+            S.NullOr(__S(864, __c27, 0)).pipe(T.Body("discover_options")),
           ),
-          parseOptions: S.optional(S.NullOr(__S(123, __c15, 3)).pipe(T.Body("parse_options"))),
+          parseOptions: S.optional(S.NullOr(__S(865, __c27, 1)).pipe(T.Body("parse_options"))),
           parseType: S.optional(S.NullOr(S.String).pipe(T.Body("parse_type"))),
-          crawlOptions: S.optional(S.NullOr(__S(81, __c10, 1)).pipe(T.Body("crawl_options"))),
+          crawlOptions: S.optional(S.NullOr(__S(550, __c17, 6)).pipe(T.Body("crawl_options"))),
         }),
       ).annotate({
         identifier: "NamespacesInstancesDeleteResponseSourceParamsWebCrawler",
       });
-  }
-}
-function __c18(j: number): any {
-  switch (j) {
-    case 0:
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          excludeItems: S.optional(S.NullOr(__S(24, __c3, 0)).pipe(T.Body("exclude_items"))),
-          includeItems: S.optional(S.NullOr(__S(24, __c3, 0)).pipe(T.Body("include_items"))),
+          excludeItems: S.optional(S.NullOr(__S(224, __c7, 0)).pipe(T.Body("exclude_items"))),
+          includeItems: S.optional(S.NullOr(__S(224, __c7, 0)).pipe(T.Body("include_items"))),
           prefix: S.optional(S.NullOr(S.String)),
           r2Jurisdiction: S.optional(S.NullOr(S.String).pipe(T.Body("r2_jurisdiction"))),
-          webCrawler: S.optional(S.NullOr(__S(143, __c17, 7)).pipe(T.Body("web_crawler"))),
+          webCrawler: S.optional(S.NullOr(__S(1282, __c40, 2)).pipe(T.Body("web_crawler"))),
         }),
       ).annotate({
         identifier: "NamespacesInstancesDeleteResponseSourceParams",
       });
-    case 1:
+    case 4:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
@@ -7805,7 +7915,7 @@ function __c18(j: number): any {
           chunkOverlap: S.optional(S.NullOr(S.Number).pipe(T.Body("chunk_overlap"))),
           chunkSize: S.optional(S.NullOr(S.Number).pipe(T.Body("chunk_size"))),
           createdBy: S.optional(S.NullOr(S.String).pipe(T.Body("created_by"))),
-          customMetadata: S.optional(S.NullOr(__S(63, __c7, 7)).pipe(T.Body("custom_metadata"))),
+          customMetadata: S.optional(S.NullOr(__S(545, __c17, 1)).pipe(T.Body("custom_metadata"))),
           embeddingModel: S.optional(S.NullOr(S.String).pipe(T.Body("embedding_model"))),
           enable: S.optional(S.NullOr(S.Boolean)),
           engineVersion: S.optional(S.NullOr(S.Number).pipe(T.Body("engine_version"))),
@@ -7813,28 +7923,30 @@ function __c18(j: number): any {
           hybridSearchEnabled: S.optional(
             S.NullOr(S.Boolean).pipe(T.Body("hybrid_search_enabled")),
           ),
-          indexMethod: S.optional(S.NullOr(__S(64, __c8, 0)).pipe(T.Body("index_method"))),
-          indexingOptions: S.optional(S.NullOr(__S(85, __c10, 5)).pipe(T.Body("indexing_options"))),
+          indexMethod: S.optional(S.NullOr(__S(546, __c17, 2)).pipe(T.Body("index_method"))),
+          indexingOptions: S.optional(
+            S.NullOr(__S(551, __c17, 7)).pipe(T.Body("indexing_options")),
+          ),
           lastActivity: S.optional(S.NullOr(S.String).pipe(T.Body("last_activity"))),
           maxNumResults: S.optional(S.NullOr(S.Number).pipe(T.Body("max_num_results"))),
-          metadata: S.optional(S.NullOr(__S(86, __c10, 6))),
+          metadata: S.optional(S.NullOr(__S(552, __c17, 8))),
           modifiedBy: S.optional(S.NullOr(S.String).pipe(T.Body("modified_by"))),
           namespace: S.optional(S.NullOr(S.String)),
           paused: S.optional(S.NullOr(S.Boolean)),
           publicEndpointId: S.optional(S.NullOr(S.String).pipe(T.Body("public_endpoint_id"))),
           publicEndpointParams: S.optional(
-            S.NullOr(__S(142, __c17, 6)).pipe(T.Body("public_endpoint_params")),
+            S.NullOr(__S(1281, __c40, 1)).pipe(T.Body("public_endpoint_params")),
           ),
           reranking: S.optional(S.NullOr(S.Boolean)),
           rerankingModel: S.optional(S.NullOr(S.String).pipe(T.Body("reranking_model"))),
           retrievalOptions: S.optional(
-            S.NullOr(__S(121, __c15, 1)).pipe(T.Body("retrieval_options")),
+            S.NullOr(__S(960, __c30, 0)).pipe(T.Body("retrieval_options")),
           ),
           rewriteModel: S.optional(S.NullOr(S.String).pipe(T.Body("rewrite_model"))),
           rewriteQuery: S.optional(S.NullOr(S.Boolean).pipe(T.Body("rewrite_query"))),
           scoreThreshold: S.optional(S.NullOr(S.Number).pipe(T.Body("score_threshold"))),
           source: S.optional(S.NullOr(S.String)),
-          sourceParams: S.optional(S.NullOr(__S(144, __c18, 0)).pipe(T.Body("source_params"))),
+          sourceParams: S.optional(S.NullOr(__S(1283, __c40, 3)).pipe(T.Body("source_params"))),
           status: S.optional(S.NullOr(S.String)),
           syncInterval: S.optional(S.NullOr(S.Number).pipe(T.Body("sync_interval"))),
           tokenId: S.optional(S.NullOr(S.String).pipe(T.Body("token_id"))),
@@ -7843,7 +7955,11 @@ function __c18(j: number): any {
       ).annotate({
         identifier: "DeleteNamespaceInstanceResponse",
       });
-    case 2:
+  }
+}
+function __c41(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -7862,7 +7978,7 @@ function __c18(j: number): any {
       ).annotate({
         identifier: "DeleteNamespaceInstanceItemRequest",
       });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           key: S.String,
@@ -7870,7 +7986,11 @@ function __c18(j: number): any {
       ).annotate({
         identifier: "DeleteNamespaceInstanceItemResponse",
       });
-    case 4:
+  }
+}
+function __c42(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -7885,7 +8005,11 @@ function __c18(j: number): any {
           )
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "DeleteTokenRequest" });
-    case 5:
+  }
+}
+function __c43(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -7904,11 +8028,15 @@ function __c18(j: number): any {
       ).annotate({
         identifier: "DownloadNamespaceInstanceItemRequest",
       });
-    case 6:
+    case 1:
       return S.suspend(() => S.Struct({}).pipe(T.KeyDictionary(KEY_DICTIONARY))).annotate({
         identifier: "DownloadNamespaceInstanceItemResponse",
       });
-    case 7:
+  }
+}
+function __c44(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -7924,11 +8052,7 @@ function __c18(j: number): any {
           )
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "GetInstanceJobRequest" });
-  }
-}
-function __c19(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
@@ -7940,7 +8064,11 @@ function __c19(j: number): any {
           startedAt: S.optional(S.NullOr(S.String).pipe(T.Body("started_at"))),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "GetInstanceJobResponse" });
-    case 1:
+  }
+}
+function __c45(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -7959,11 +8087,11 @@ function __c19(j: number): any {
       ).annotate({
         identifier: "GetNamespaceInstanceItemRequest",
       });
-    case 2:
+    case 1:
       return S.Unknown.pipe(/*@__PURE__*/ T.UnionCases([[], [], []]));
+    case 2:
+      return S.Record(S.String, __S(1441, __c45, 1));
     case 3:
-      return S.Record(S.String, __S(154, __c19, 2));
-    case 4:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
@@ -7973,7 +8101,7 @@ function __c19(j: number): any {
           fileSize: S.Number.pipe(T.Body("file_size")),
           key: S.String,
           lastSeenAt: S.String.pipe(T.Body("last_seen_at")),
-          metadata: __S(155, __c19, 3),
+          metadata: __S(1442, __c45, 2),
           namespace: S.String,
           nextAction: S.String.pipe(T.Body("next_action")),
           sourceId: S.String.pipe(T.Body("source_id")),
@@ -7983,7 +8111,11 @@ function __c19(j: number): any {
       ).annotate({
         identifier: "GetNamespaceInstanceItemResponse",
       });
-    case 5:
+  }
+}
+function __c46(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -8002,7 +8134,11 @@ function __c19(j: number): any {
       ).annotate({
         identifier: "GetNamespaceInstanceJobRequest",
       });
-    case 6:
+  }
+}
+function __c47(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -8019,7 +8155,18 @@ function __c19(j: number): any {
           )
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "ListInstanceJobsRequest" });
-    case 7:
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          result: __S(1537, __c48, 1).pipe(T.EnvelopePayload()),
+          resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
+        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({ identifier: "ListInstanceJobsResponse" });
+  }
+}
+function __c48(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
@@ -8033,20 +8180,13 @@ function __c19(j: number): any {
       ).annotate({
         identifier: "InstancesJobsListResultItem",
       });
+    case 1:
+      return S.Array(__S(1536, __c48, 0));
   }
 }
-function __c20(j: number): any {
+function __c49(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(159, __c19, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          result: __S(160, __c20, 0).pipe(T.EnvelopePayload()),
-          resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
-        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({ identifier: "ListInstanceJobsResponse" });
-    case 2:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -8063,26 +8203,26 @@ function __c20(j: number): any {
           )
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "ListInstancesRequest" });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          authorizedHosts: S.optional(S.NullOr(__S(24, __c3, 0)).pipe(T.Body("authorized_hosts"))),
+          authorizedHosts: S.optional(S.NullOr(__S(224, __c7, 0)).pipe(T.Body("authorized_hosts"))),
           chatCompletionsEndpoint: S.optional(
-            S.NullOr(__S(87, __c10, 7)).pipe(T.Body("chat_completions_endpoint")),
+            S.NullOr(__S(352, __c11, 0)).pipe(T.Body("chat_completions_endpoint")),
           ),
-          customDomains: S.optional(S.NullOr(__S(24, __c3, 0)).pipe(T.Body("custom_domains"))),
+          customDomains: S.optional(S.NullOr(__S(224, __c7, 0)).pipe(T.Body("custom_domains"))),
           defaultDomainEnabled: S.optional(
             S.NullOr(S.Boolean).pipe(T.Body("default_domain_enabled")),
           ),
           enabled: S.optional(S.NullOr(S.Boolean)),
-          mcp: S.optional(S.NullOr(__S(88, __c11, 0))),
-          rateLimit: S.optional(S.NullOr(__S(89, __c11, 1)).pipe(T.Body("rate_limit"))),
-          searchEndpoint: S.optional(S.NullOr(__S(87, __c10, 7)).pipe(T.Body("search_endpoint"))),
+          mcp: S.optional(S.NullOr(__S(353, __c11, 1))),
+          rateLimit: S.optional(S.NullOr(__S(480, __c15, 0)).pipe(T.Body("rate_limit"))),
+          searchEndpoint: S.optional(S.NullOr(__S(352, __c11, 0)).pipe(T.Body("search_endpoint"))),
         }),
       ).annotate({
         identifier: "InstancesListResultItemPublicEndpointParams",
       });
-    case 4:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           field: S.String,
@@ -8092,45 +8232,43 @@ function __c20(j: number): any {
       ).annotate({
         identifier: "InstancesListResultItemRetrievalOptionsBoostByItem",
       });
-    case 5:
-      return S.Array(__S(164, __c20, 4));
-    case 6:
+    case 3:
+      return S.Array(__S(1570, __c49, 2));
+    case 4:
       return S.suspend(() =>
         S.Struct({
-          boostBy: S.optional(S.NullOr(__S(165, __c20, 5)).pipe(T.Body("boost_by"))),
+          boostBy: S.optional(S.NullOr(__S(1571, __c49, 3)).pipe(T.Body("boost_by"))),
           keywordMatchMode: S.optional(S.NullOr(S.String).pipe(T.Body("keyword_match_mode"))),
         }),
       ).annotate({
         identifier: "InstancesListResultItemRetrievalOptions",
       });
-    case 7:
+    case 5:
       return S.suspend(() =>
         S.Struct({
-          discoverOptions: S.optional(S.NullOr(__S(95, __c11, 7)).pipe(T.Body("discover_options"))),
-          parseOptions: S.optional(S.NullOr(__S(96, __c12, 0)).pipe(T.Body("parse_options"))),
+          discoverOptions: S.optional(
+            S.NullOr(__S(608, __c19, 0)).pipe(T.Body("discover_options")),
+          ),
+          parseOptions: S.optional(S.NullOr(__S(640, __c20, 0)).pipe(T.Body("parse_options"))),
           parseType: S.optional(S.NullOr(S.String).pipe(T.Body("parse_type"))),
-          crawlOptions: S.optional(S.NullOr(__S(81, __c10, 1)).pipe(T.Body("crawl_options"))),
+          crawlOptions: S.optional(S.NullOr(__S(550, __c17, 6)).pipe(T.Body("crawl_options"))),
         }),
       ).annotate({
         identifier: "InstancesListResultItemSourceParamsWebCrawler",
       });
-  }
-}
-function __c21(j: number): any {
-  switch (j) {
-    case 0:
+    case 6:
       return S.suspend(() =>
         S.Struct({
-          excludeItems: S.optional(S.NullOr(__S(24, __c3, 0)).pipe(T.Body("exclude_items"))),
-          includeItems: S.optional(S.NullOr(__S(24, __c3, 0)).pipe(T.Body("include_items"))),
+          excludeItems: S.optional(S.NullOr(__S(224, __c7, 0)).pipe(T.Body("exclude_items"))),
+          includeItems: S.optional(S.NullOr(__S(224, __c7, 0)).pipe(T.Body("include_items"))),
           prefix: S.optional(S.NullOr(S.String)),
           r2Jurisdiction: S.optional(S.NullOr(S.String).pipe(T.Body("r2_jurisdiction"))),
-          webCrawler: S.optional(S.NullOr(__S(167, __c20, 7)).pipe(T.Body("web_crawler"))),
+          webCrawler: S.optional(S.NullOr(__S(1573, __c49, 5)).pipe(T.Body("web_crawler"))),
         }),
       ).annotate({
         identifier: "InstancesListResultItemSourceParams",
       });
-    case 1:
+    case 7:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
@@ -8144,31 +8282,31 @@ function __c21(j: number): any {
           chunkSize: S.Number.pipe(T.Body("chunk_size")),
           createdAt: S.String.pipe(T.Body("created_at")),
           createdBy: S.String.pipe(T.Body("created_by")),
-          customMetadata: __S(63, __c7, 7).pipe(T.Body("custom_metadata")),
+          customMetadata: __S(545, __c17, 1).pipe(T.Body("custom_metadata")),
           embeddingModel: S.String.pipe(T.Body("embedding_model")),
           enable: S.Boolean,
           engineVersion: S.Number.pipe(T.Body("engine_version")),
           fusionMethod: S.String.pipe(T.Body("fusion_method")),
           hybridSearchEnabled: S.Boolean.pipe(T.Body("hybrid_search_enabled")),
-          indexMethod: __S(64, __c8, 0).pipe(T.Body("index_method")),
-          indexingOptions: __S(85, __c10, 5).pipe(T.Body("indexing_options")),
+          indexMethod: __S(546, __c17, 2).pipe(T.Body("index_method")),
+          indexingOptions: __S(551, __c17, 7).pipe(T.Body("indexing_options")),
           lastActivity: S.String.pipe(T.Body("last_activity")),
           maxNumResults: S.Number.pipe(T.Body("max_num_results")),
-          metadata: __S(86, __c10, 6),
+          metadata: __S(552, __c17, 8),
           modifiedAt: S.String.pipe(T.Body("modified_at")),
           modifiedBy: S.String.pipe(T.Body("modified_by")),
           namespace: S.String,
           paused: S.Boolean,
           publicEndpointId: S.String.pipe(T.Body("public_endpoint_id")),
-          publicEndpointParams: __S(163, __c20, 3).pipe(T.Body("public_endpoint_params")),
+          publicEndpointParams: __S(1569, __c49, 1).pipe(T.Body("public_endpoint_params")),
           reranking: S.Boolean,
           rerankingModel: S.String.pipe(T.Body("reranking_model")),
-          retrievalOptions: __S(166, __c20, 6).pipe(T.Body("retrieval_options")),
+          retrievalOptions: __S(1572, __c49, 4).pipe(T.Body("retrieval_options")),
           rewriteModel: S.String.pipe(T.Body("rewrite_model")),
           rewriteQuery: S.Boolean.pipe(T.Body("rewrite_query")),
           scoreThreshold: S.Number.pipe(T.Body("score_threshold")),
           source: S.String,
-          sourceParams: __S(168, __c21, 0).pipe(T.Body("source_params")),
+          sourceParams: __S(1574, __c49, 6).pipe(T.Body("source_params")),
           status: S.String,
           summarization: S.Boolean,
           summarizationModel: S.String.pipe(T.Body("summarization_model")),
@@ -8182,16 +8320,20 @@ function __c21(j: number): any {
           type: S.String,
         }),
       ).annotate({ identifier: "InstancesListResultItem" });
-    case 2:
-      return S.Array(__S(169, __c21, 1));
-    case 3:
+    case 8:
+      return S.Array(__S(1575, __c49, 7));
+    case 9:
       return S.suspend(() =>
         S.Struct({
-          result: __S(170, __c21, 2).pipe(T.EnvelopePayload()),
+          result: __S(1576, __c49, 8).pipe(T.EnvelopePayload()),
           resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "ListInstancesResponse" });
-    case 4:
+  }
+}
+function __c50(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -8218,11 +8360,11 @@ function __c21(j: number): any {
       ).annotate({
         identifier: "ListNamespaceInstanceItemsRequest",
       });
-    case 5:
+    case 1:
       return S.Unknown.pipe(/*@__PURE__*/ T.UnionCases([[], [], []]));
-    case 6:
-      return S.Record(S.String, __S(173, __c21, 5));
-    case 7:
+    case 2:
+      return S.Record(S.String, __S(1601, __c50, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
@@ -8232,7 +8374,7 @@ function __c21(j: number): any {
           fileSize: S.Number.pipe(T.Body("file_size")),
           key: S.String,
           lastSeenAt: S.String.pipe(T.Body("last_seen_at")),
-          metadata: __S(174, __c21, 6),
+          metadata: __S(1602, __c50, 2),
           namespace: S.String,
           nextAction: S.String.pipe(T.Body("next_action")),
           sourceId: S.String.pipe(T.Body("source_id")),
@@ -8242,22 +8384,22 @@ function __c21(j: number): any {
       ).annotate({
         identifier: "NamespacesInstancesItemsListResultItem",
       });
-  }
-}
-function __c22(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(175, __c21, 7));
-    case 1:
+    case 4:
+      return S.Array(__S(1603, __c50, 3));
+    case 5:
       return S.suspend(() =>
         S.Struct({
-          result: __S(176, __c22, 0).pipe(T.EnvelopePayload()),
+          result: __S(1604, __c50, 4).pipe(T.EnvelopePayload()),
           resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({
         identifier: "ListNamespaceInstanceItemsResponse",
       });
-    case 2:
+  }
+}
+function __c51(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -8277,16 +8419,20 @@ function __c22(j: number): any {
       ).annotate({
         identifier: "ListNamespaceInstanceJobsRequest",
       });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          result: __S(160, __c20, 0).pipe(T.EnvelopePayload()),
+          result: __S(1537, __c48, 1).pipe(T.EnvelopePayload()),
           resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({
         identifier: "ListNamespaceInstanceJobsResponse",
       });
-    case 4:
+  }
+}
+function __c52(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -8310,26 +8456,28 @@ function __c22(j: number): any {
       ).annotate({
         identifier: "ListNamespaceInstancesRequest",
       });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          authorizedHosts: S.optional(S.NullOr(__S(79, __c9, 7)).pipe(T.Body("authorized_hosts"))),
-          chatCompletionsEndpoint: S.optional(
-            S.NullOr(__S(87, __c10, 7)).pipe(T.Body("chat_completions_endpoint")),
+          authorizedHosts: S.optional(
+            S.NullOr(__S(384, __c12, 0)).pipe(T.Body("authorized_hosts")),
           ),
-          customDomains: S.optional(S.NullOr(__S(79, __c9, 7)).pipe(T.Body("custom_domains"))),
+          chatCompletionsEndpoint: S.optional(
+            S.NullOr(__S(352, __c11, 0)).pipe(T.Body("chat_completions_endpoint")),
+          ),
+          customDomains: S.optional(S.NullOr(__S(384, __c12, 0)).pipe(T.Body("custom_domains"))),
           defaultDomainEnabled: S.optional(
             S.NullOr(S.Boolean).pipe(T.Body("default_domain_enabled")),
           ),
           enabled: S.optional(S.NullOr(S.Boolean)),
-          mcp: S.optional(S.NullOr(__S(88, __c11, 0))),
-          rateLimit: S.optional(S.NullOr(__S(117, __c14, 5)).pipe(T.Body("rate_limit"))),
-          searchEndpoint: S.optional(S.NullOr(__S(87, __c10, 7)).pipe(T.Body("search_endpoint"))),
+          mcp: S.optional(S.NullOr(__S(353, __c11, 1))),
+          rateLimit: S.optional(S.NullOr(__S(896, __c28, 0)).pipe(T.Body("rate_limit"))),
+          searchEndpoint: S.optional(S.NullOr(__S(352, __c11, 0)).pipe(T.Body("search_endpoint"))),
         }),
       ).annotate({
         identifier: "NamespacesInstancesListResultItemPublicEndpointParams",
       });
-    case 6:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           field: S.String,
@@ -8339,47 +8487,43 @@ function __c22(j: number): any {
       ).annotate({
         identifier: "NamespacesInstancesListResultItemRetrievalOptionsBoostByItem",
       });
-    case 7:
-      return S.Array(__S(182, __c22, 6));
-  }
-}
-function __c23(j: number): any {
-  switch (j) {
-    case 0:
+    case 3:
+      return S.Array(__S(1666, __c52, 2));
+    case 4:
       return S.suspend(() =>
         S.Struct({
-          boostBy: S.optional(S.NullOr(__S(183, __c22, 7)).pipe(T.Body("boost_by"))),
+          boostBy: S.optional(S.NullOr(__S(1667, __c52, 3)).pipe(T.Body("boost_by"))),
           keywordMatchMode: S.optional(S.NullOr(S.String).pipe(T.Body("keyword_match_mode"))),
         }),
       ).annotate({
         identifier: "NamespacesInstancesListResultItemRetrievalOptions",
       });
-    case 1:
+    case 5:
       return S.suspend(() =>
         S.Struct({
           discoverOptions: S.optional(
-            S.NullOr(__S(122, __c15, 2)).pipe(T.Body("discover_options")),
+            S.NullOr(__S(864, __c27, 0)).pipe(T.Body("discover_options")),
           ),
-          parseOptions: S.optional(S.NullOr(__S(123, __c15, 3)).pipe(T.Body("parse_options"))),
+          parseOptions: S.optional(S.NullOr(__S(865, __c27, 1)).pipe(T.Body("parse_options"))),
           parseType: S.optional(S.NullOr(S.String).pipe(T.Body("parse_type"))),
-          crawlOptions: S.optional(S.NullOr(__S(81, __c10, 1)).pipe(T.Body("crawl_options"))),
+          crawlOptions: S.optional(S.NullOr(__S(550, __c17, 6)).pipe(T.Body("crawl_options"))),
         }),
       ).annotate({
         identifier: "NamespacesInstancesListResultItemSourceParamsWebCrawler",
       });
-    case 2:
+    case 6:
       return S.suspend(() =>
         S.Struct({
-          excludeItems: S.optional(S.NullOr(__S(24, __c3, 0)).pipe(T.Body("exclude_items"))),
-          includeItems: S.optional(S.NullOr(__S(24, __c3, 0)).pipe(T.Body("include_items"))),
+          excludeItems: S.optional(S.NullOr(__S(224, __c7, 0)).pipe(T.Body("exclude_items"))),
+          includeItems: S.optional(S.NullOr(__S(224, __c7, 0)).pipe(T.Body("include_items"))),
           prefix: S.optional(S.NullOr(S.String)),
           r2Jurisdiction: S.optional(S.NullOr(S.String).pipe(T.Body("r2_jurisdiction"))),
-          webCrawler: S.optional(S.NullOr(__S(185, __c23, 1)).pipe(T.Body("web_crawler"))),
+          webCrawler: S.optional(S.NullOr(__S(1669, __c52, 5)).pipe(T.Body("web_crawler"))),
         }),
       ).annotate({
         identifier: "NamespacesInstancesListResultItemSourceParams",
       });
-    case 3:
+    case 7:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
@@ -8393,31 +8537,31 @@ function __c23(j: number): any {
           chunkSize: S.Number.pipe(T.Body("chunk_size")),
           createdAt: S.String.pipe(T.Body("created_at")),
           createdBy: S.String.pipe(T.Body("created_by")),
-          customMetadata: __S(63, __c7, 7).pipe(T.Body("custom_metadata")),
+          customMetadata: __S(545, __c17, 1).pipe(T.Body("custom_metadata")),
           embeddingModel: S.String.pipe(T.Body("embedding_model")),
           enable: S.Boolean,
           engineVersion: S.Number.pipe(T.Body("engine_version")),
           fusionMethod: S.String.pipe(T.Body("fusion_method")),
           hybridSearchEnabled: S.Boolean.pipe(T.Body("hybrid_search_enabled")),
-          indexMethod: __S(64, __c8, 0).pipe(T.Body("index_method")),
-          indexingOptions: __S(85, __c10, 5).pipe(T.Body("indexing_options")),
+          indexMethod: __S(546, __c17, 2).pipe(T.Body("index_method")),
+          indexingOptions: __S(551, __c17, 7).pipe(T.Body("indexing_options")),
           lastActivity: S.String.pipe(T.Body("last_activity")),
           maxNumResults: S.Number.pipe(T.Body("max_num_results")),
-          metadata: __S(86, __c10, 6),
+          metadata: __S(552, __c17, 8),
           modifiedAt: S.String.pipe(T.Body("modified_at")),
           modifiedBy: S.String.pipe(T.Body("modified_by")),
           namespace: S.String,
           paused: S.Boolean,
           publicEndpointId: S.String.pipe(T.Body("public_endpoint_id")),
-          publicEndpointParams: __S(181, __c22, 5).pipe(T.Body("public_endpoint_params")),
+          publicEndpointParams: __S(1665, __c52, 1).pipe(T.Body("public_endpoint_params")),
           reranking: S.Boolean,
           rerankingModel: S.String.pipe(T.Body("reranking_model")),
-          retrievalOptions: __S(184, __c23, 0).pipe(T.Body("retrieval_options")),
+          retrievalOptions: __S(1668, __c52, 4).pipe(T.Body("retrieval_options")),
           rewriteModel: S.String.pipe(T.Body("rewrite_model")),
           rewriteQuery: S.Boolean.pipe(T.Body("rewrite_query")),
           scoreThreshold: S.Number.pipe(T.Body("score_threshold")),
           source: S.String,
-          sourceParams: __S(186, __c23, 2).pipe(T.Body("source_params")),
+          sourceParams: __S(1670, __c52, 6).pipe(T.Body("source_params")),
           status: S.String,
           summarization: S.Boolean,
           summarizationModel: S.String.pipe(T.Body("summarization_model")),
@@ -8433,18 +8577,22 @@ function __c23(j: number): any {
       ).annotate({
         identifier: "NamespacesInstancesListResultItem",
       });
-    case 4:
-      return S.Array(__S(187, __c23, 3));
-    case 5:
+    case 8:
+      return S.Array(__S(1671, __c52, 7));
+    case 9:
       return S.suspend(() =>
         S.Struct({
-          result: __S(188, __c23, 4).pipe(T.EnvelopePayload()),
+          result: __S(1672, __c52, 8).pipe(T.EnvelopePayload()),
           resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({
         identifier: "ListNamespaceInstancesResponse",
       });
-    case 6:
+  }
+}
+function __c53(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -8461,33 +8609,31 @@ function __c23(j: number): any {
           )
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "ListNamespacesRequest" });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          authorizedHosts: S.optional(S.NullOr(__S(79, __c9, 7)).pipe(T.Body("authorized_hosts"))),
-          chatCompletionsEndpoint: S.optional(
-            S.NullOr(__S(87, __c10, 7)).pipe(T.Body("chat_completions_endpoint")),
+          authorizedHosts: S.optional(
+            S.NullOr(__S(384, __c12, 0)).pipe(T.Body("authorized_hosts")),
           ),
-          customDomains: S.optional(S.NullOr(__S(24, __c3, 0)).pipe(T.Body("custom_domains"))),
+          chatCompletionsEndpoint: S.optional(
+            S.NullOr(__S(352, __c11, 0)).pipe(T.Body("chat_completions_endpoint")),
+          ),
+          customDomains: S.optional(S.NullOr(__S(224, __c7, 0)).pipe(T.Body("custom_domains"))),
           defaultDomainEnabled: S.optional(
             S.NullOr(S.Boolean).pipe(T.Body("default_domain_enabled")),
           ),
           enabled: S.optional(S.NullOr(S.Boolean)),
           instancesAllowed: S.optional(
-            S.NullOr(__S(79, __c9, 7)).pipe(T.Body("instances_allowed")),
+            S.NullOr(__S(384, __c12, 0)).pipe(T.Body("instances_allowed")),
           ),
-          mcp: S.optional(S.NullOr(__S(88, __c11, 0))),
-          rateLimit: S.optional(S.NullOr(__S(89, __c11, 1)).pipe(T.Body("rate_limit"))),
-          searchEndpoint: S.optional(S.NullOr(__S(90, __c11, 2)).pipe(T.Body("search_endpoint"))),
+          mcp: S.optional(S.NullOr(__S(353, __c11, 1))),
+          rateLimit: S.optional(S.NullOr(__S(480, __c15, 0)).pipe(T.Body("rate_limit"))),
+          searchEndpoint: S.optional(S.NullOr(__S(416, __c13, 0)).pipe(T.Body("search_endpoint"))),
         }),
       ).annotate({
         identifier: "NamespacesListResultItemPublicEndpointParams",
       });
-  }
-}
-function __c24(j: number): any {
-  switch (j) {
-    case 0:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           createdAt: S.String.pipe(T.Body("created_at")),
@@ -8495,20 +8641,24 @@ function __c24(j: number): any {
           description: S.optional(S.NullOr(S.String)),
           publicEndpointId: S.optional(S.NullOr(S.String).pipe(T.Body("public_endpoint_id"))),
           publicEndpointParams: S.optional(
-            S.NullOr(__S(191, __c23, 7)).pipe(T.Body("public_endpoint_params")),
+            S.NullOr(__S(1697, __c53, 1)).pipe(T.Body("public_endpoint_params")),
           ),
         }),
       ).annotate({ identifier: "NamespacesListResultItem" });
-    case 1:
-      return S.Array(__S(192, __c24, 0));
-    case 2:
+    case 3:
+      return S.Array(__S(1698, __c53, 2));
+    case 4:
       return S.suspend(() =>
         S.Struct({
-          result: __S(193, __c24, 1).pipe(T.EnvelopePayload()),
+          result: __S(1699, __c53, 3).pipe(T.EnvelopePayload()),
           resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "ListNamespacesResponse" });
-    case 3:
+  }
+}
+function __c54(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -8521,7 +8671,7 @@ function __c24(j: number): any {
           )
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "ListTokensRequest" });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
@@ -8535,16 +8685,20 @@ function __c24(j: number): any {
           modifiedBy: S.optional(S.NullOr(S.String).pipe(T.Body("modified_by"))),
         }),
       ).annotate({ identifier: "TokensListResultItem" });
-    case 5:
-      return S.Array(__S(196, __c24, 4));
-    case 6:
+    case 2:
+      return S.Array(__S(1729, __c54, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          result: __S(197, __c24, 5).pipe(T.EnvelopePayload()),
+          result: __S(1730, __c54, 2).pipe(T.EnvelopePayload()),
           resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "ListTokensResponse" });
-    case 7:
+  }
+}
+function __c55(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -8562,9 +8716,13 @@ function __c24(j: number): any {
           )
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "LogsInstanceJobRequest" });
+    case 1:
+      return S.suspend(() =>
+        __S(1793, __c56, 1).pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({ identifier: "LogsInstanceJobResponse" });
   }
 }
-function __c25(j: number): any {
+function __c56(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -8578,12 +8736,12 @@ function __c25(j: number): any {
         identifier: "InstancesJobsLogsResultItem",
       });
     case 1:
-      return S.Array(__S(200, __c25, 0));
-    case 2:
-      return S.suspend(() =>
-        __S(201, __c25, 1).pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({ identifier: "LogsInstanceJobResponse" });
-    case 3:
+      return S.Array(__S(1792, __c56, 0));
+  }
+}
+function __c57(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -8604,7 +8762,7 @@ function __c25(j: number): any {
       ).annotate({
         identifier: "LogsNamespaceInstanceItemRequest",
       });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           action: S.String,
@@ -8618,15 +8776,19 @@ function __c25(j: number): any {
       ).annotate({
         identifier: "NamespacesInstancesItemsLogsResultItem",
       });
-    case 5:
-      return S.Array(__S(204, __c25, 4));
-    case 6:
+    case 2:
+      return S.Array(__S(1825, __c57, 1));
+    case 3:
       return S.suspend(() =>
-        __S(205, __c25, 5).pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
+        __S(1826, __c57, 2).pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({
         identifier: "LogsNamespaceInstanceItemResponse",
       });
-    case 7:
+  }
+}
+function __c58(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -8647,17 +8809,17 @@ function __c25(j: number): any {
       ).annotate({
         identifier: "LogsNamespaceInstanceJobRequest",
       });
-  }
-}
-function __c26(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
-        __S(201, __c25, 1).pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
+        __S(1793, __c56, 1).pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({
         identifier: "LogsNamespaceInstanceJobResponse",
       });
-    case 1:
+  }
+}
+function __c59(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -8677,7 +8839,11 @@ function __c26(j: number): any {
       ).annotate({
         identifier: "PatchNamespaceInstanceJobRequest",
       });
-    case 2:
+  }
+}
+function __c60(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -8692,33 +8858,35 @@ function __c26(j: number): any {
           )
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "ReadInstanceRequest" });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          authorizedHosts: S.optional(S.NullOr(__S(24, __c3, 0)).pipe(T.Body("authorized_hosts"))),
+          authorizedHosts: S.optional(S.NullOr(__S(224, __c7, 0)).pipe(T.Body("authorized_hosts"))),
           chatCompletionsEndpoint: S.optional(
-            S.NullOr(__S(87, __c10, 7)).pipe(T.Body("chat_completions_endpoint")),
+            S.NullOr(__S(352, __c11, 0)).pipe(T.Body("chat_completions_endpoint")),
           ),
-          customDomains: S.optional(S.NullOr(__S(24, __c3, 0)).pipe(T.Body("custom_domains"))),
+          customDomains: S.optional(S.NullOr(__S(224, __c7, 0)).pipe(T.Body("custom_domains"))),
           defaultDomainEnabled: S.optional(
             S.NullOr(S.Boolean).pipe(T.Body("default_domain_enabled")),
           ),
           enabled: S.optional(S.NullOr(S.Boolean)),
-          mcp: S.optional(S.NullOr(__S(88, __c11, 0))),
-          rateLimit: S.optional(S.NullOr(__S(89, __c11, 1)).pipe(T.Body("rate_limit"))),
-          searchEndpoint: S.optional(S.NullOr(__S(90, __c11, 2)).pipe(T.Body("search_endpoint"))),
+          mcp: S.optional(S.NullOr(__S(353, __c11, 1))),
+          rateLimit: S.optional(S.NullOr(__S(480, __c15, 0)).pipe(T.Body("rate_limit"))),
+          searchEndpoint: S.optional(S.NullOr(__S(416, __c13, 0)).pipe(T.Body("search_endpoint"))),
         }),
       ).annotate({
         identifier: "InstancesReadResponsePublicEndpointParams",
       });
-    case 4:
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          contentSelector: S.optional(S.NullOr(__S(77, __c9, 5)).pipe(T.Body("content_selector"))),
-          includeHeaders: S.optional(S.NullOr(__S(78, __c9, 6)).pipe(T.Body("include_headers"))),
+          contentSelector: S.optional(
+            S.NullOr(__S(548, __c17, 4)).pipe(T.Body("content_selector")),
+          ),
+          includeHeaders: S.optional(S.NullOr(__S(549, __c17, 5)).pipe(T.Body("include_headers"))),
           includeImages: S.optional(S.NullOr(S.Boolean).pipe(T.Body("include_images"))),
           specificSitemaps: S.optional(
-            S.NullOr(__S(79, __c9, 7)).pipe(T.Body("specific_sitemaps")),
+            S.NullOr(__S(384, __c12, 0)).pipe(T.Body("specific_sitemaps")),
           ),
           useBrowserRendering: S.optional(
             S.NullOr(S.Boolean).pipe(T.Body("use_browser_rendering")),
@@ -8727,30 +8895,32 @@ function __c26(j: number): any {
       ).annotate({
         identifier: "InstancesReadResponseSourceParamsWebCrawlerParseOptions",
       });
-    case 5:
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          discoverOptions: S.optional(S.NullOr(__S(95, __c11, 7)).pipe(T.Body("discover_options"))),
-          parseOptions: S.optional(S.NullOr(__S(212, __c26, 4)).pipe(T.Body("parse_options"))),
+          discoverOptions: S.optional(
+            S.NullOr(__S(608, __c19, 0)).pipe(T.Body("discover_options")),
+          ),
+          parseOptions: S.optional(S.NullOr(__S(1922, __c60, 2)).pipe(T.Body("parse_options"))),
           parseType: S.optional(S.NullOr(S.String).pipe(T.Body("parse_type"))),
-          crawlOptions: S.optional(S.NullOr(__S(81, __c10, 1)).pipe(T.Body("crawl_options"))),
+          crawlOptions: S.optional(S.NullOr(__S(550, __c17, 6)).pipe(T.Body("crawl_options"))),
         }),
       ).annotate({
         identifier: "InstancesReadResponseSourceParamsWebCrawler",
       });
-    case 6:
+    case 4:
       return S.suspend(() =>
         S.Struct({
-          excludeItems: S.optional(S.NullOr(__S(24, __c3, 0)).pipe(T.Body("exclude_items"))),
-          includeItems: S.optional(S.NullOr(__S(24, __c3, 0)).pipe(T.Body("include_items"))),
+          excludeItems: S.optional(S.NullOr(__S(224, __c7, 0)).pipe(T.Body("exclude_items"))),
+          includeItems: S.optional(S.NullOr(__S(224, __c7, 0)).pipe(T.Body("include_items"))),
           prefix: S.optional(S.NullOr(S.String)),
           r2Jurisdiction: S.optional(S.NullOr(S.String).pipe(T.Body("r2_jurisdiction"))),
-          webCrawler: S.optional(S.NullOr(__S(213, __c26, 5)).pipe(T.Body("web_crawler"))),
+          webCrawler: S.optional(S.NullOr(__S(1923, __c60, 3)).pipe(T.Body("web_crawler"))),
         }),
       ).annotate({
         identifier: "InstancesReadResponseSourceParams",
       });
-    case 7:
+    case 5:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
@@ -8764,7 +8934,7 @@ function __c26(j: number): any {
           chunkOverlap: S.optional(S.NullOr(S.Number).pipe(T.Body("chunk_overlap"))),
           chunkSize: S.optional(S.NullOr(S.Number).pipe(T.Body("chunk_size"))),
           createdBy: S.optional(S.NullOr(S.String).pipe(T.Body("created_by"))),
-          customMetadata: S.optional(S.NullOr(__S(63, __c7, 7)).pipe(T.Body("custom_metadata"))),
+          customMetadata: S.optional(S.NullOr(__S(545, __c17, 1)).pipe(T.Body("custom_metadata"))),
           embeddingModel: S.optional(S.NullOr(S.String).pipe(T.Body("embedding_model"))),
           enable: S.optional(S.NullOr(S.Boolean)),
           engineVersion: S.optional(S.NullOr(S.Number).pipe(T.Body("engine_version"))),
@@ -8772,28 +8942,30 @@ function __c26(j: number): any {
           hybridSearchEnabled: S.optional(
             S.NullOr(S.Boolean).pipe(T.Body("hybrid_search_enabled")),
           ),
-          indexMethod: S.optional(S.NullOr(__S(64, __c8, 0)).pipe(T.Body("index_method"))),
-          indexingOptions: S.optional(S.NullOr(__S(85, __c10, 5)).pipe(T.Body("indexing_options"))),
+          indexMethod: S.optional(S.NullOr(__S(546, __c17, 2)).pipe(T.Body("index_method"))),
+          indexingOptions: S.optional(
+            S.NullOr(__S(551, __c17, 7)).pipe(T.Body("indexing_options")),
+          ),
           lastActivity: S.optional(S.NullOr(S.String).pipe(T.Body("last_activity"))),
           maxNumResults: S.optional(S.NullOr(S.Number).pipe(T.Body("max_num_results"))),
-          metadata: S.optional(S.NullOr(__S(86, __c10, 6))),
+          metadata: S.optional(S.NullOr(__S(552, __c17, 8))),
           modifiedBy: S.optional(S.NullOr(S.String).pipe(T.Body("modified_by"))),
           namespace: S.optional(S.NullOr(S.String)),
           paused: S.optional(S.NullOr(S.Boolean)),
           publicEndpointId: S.optional(S.NullOr(S.String).pipe(T.Body("public_endpoint_id"))),
           publicEndpointParams: S.optional(
-            S.NullOr(__S(211, __c26, 3)).pipe(T.Body("public_endpoint_params")),
+            S.NullOr(__S(1921, __c60, 1)).pipe(T.Body("public_endpoint_params")),
           ),
           reranking: S.optional(S.NullOr(S.Boolean)),
           rerankingModel: S.optional(S.NullOr(S.String).pipe(T.Body("reranking_model"))),
           retrievalOptions: S.optional(
-            S.NullOr(__S(94, __c11, 6)).pipe(T.Body("retrieval_options")),
+            S.NullOr(__S(674, __c21, 2)).pipe(T.Body("retrieval_options")),
           ),
           rewriteModel: S.optional(S.NullOr(S.String).pipe(T.Body("rewrite_model"))),
           rewriteQuery: S.optional(S.NullOr(S.Boolean).pipe(T.Body("rewrite_query"))),
           scoreThreshold: S.optional(S.NullOr(S.Number).pipe(T.Body("score_threshold"))),
           source: S.optional(S.NullOr(S.String)),
-          sourceParams: S.optional(S.NullOr(__S(214, __c26, 6)).pipe(T.Body("source_params"))),
+          sourceParams: S.optional(S.NullOr(__S(1924, __c60, 4)).pipe(T.Body("source_params"))),
           status: S.optional(S.NullOr(S.String)),
           syncInterval: S.optional(S.NullOr(S.Number).pipe(T.Body("sync_interval"))),
           tokenId: S.optional(S.NullOr(S.String).pipe(T.Body("token_id"))),
@@ -8802,7 +8974,7 @@ function __c26(j: number): any {
       ).annotate({ identifier: "ReadInstanceResponse" });
   }
 }
-function __c27(j: number): any {
+function __c61(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -8822,21 +8994,21 @@ function __c27(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          authorizedHosts: S.optional(S.NullOr(__S(24, __c3, 0)).pipe(T.Body("authorized_hosts"))),
+          authorizedHosts: S.optional(S.NullOr(__S(224, __c7, 0)).pipe(T.Body("authorized_hosts"))),
           chatCompletionsEndpoint: S.optional(
-            S.NullOr(__S(87, __c10, 7)).pipe(T.Body("chat_completions_endpoint")),
+            S.NullOr(__S(352, __c11, 0)).pipe(T.Body("chat_completions_endpoint")),
           ),
-          customDomains: S.optional(S.NullOr(__S(24, __c3, 0)).pipe(T.Body("custom_domains"))),
+          customDomains: S.optional(S.NullOr(__S(224, __c7, 0)).pipe(T.Body("custom_domains"))),
           defaultDomainEnabled: S.optional(
             S.NullOr(S.Boolean).pipe(T.Body("default_domain_enabled")),
           ),
           enabled: S.optional(S.NullOr(S.Boolean)),
           instancesAllowed: S.optional(
-            S.NullOr(__S(24, __c3, 0)).pipe(T.Body("instances_allowed")),
+            S.NullOr(__S(224, __c7, 0)).pipe(T.Body("instances_allowed")),
           ),
-          mcp: S.optional(S.NullOr(__S(88, __c11, 0))),
-          rateLimit: S.optional(S.NullOr(__S(89, __c11, 1)).pipe(T.Body("rate_limit"))),
-          searchEndpoint: S.optional(S.NullOr(__S(90, __c11, 2)).pipe(T.Body("search_endpoint"))),
+          mcp: S.optional(S.NullOr(__S(353, __c11, 1))),
+          rateLimit: S.optional(S.NullOr(__S(480, __c15, 0)).pipe(T.Body("rate_limit"))),
+          searchEndpoint: S.optional(S.NullOr(__S(416, __c13, 0)).pipe(T.Body("search_endpoint"))),
         }),
       ).annotate({
         identifier: "NamespacesReadResponsePublicEndpointParams",
@@ -8849,11 +9021,15 @@ function __c27(j: number): any {
           description: S.optional(S.NullOr(S.String)),
           publicEndpointId: S.optional(S.NullOr(S.String).pipe(T.Body("public_endpoint_id"))),
           publicEndpointParams: S.optional(
-            S.NullOr(__S(217, __c27, 1)).pipe(T.Body("public_endpoint_params")),
+            S.NullOr(__S(1953, __c61, 1)).pipe(T.Body("public_endpoint_params")),
           ),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "ReadNamespaceResponse" });
-    case 3:
+  }
+}
+function __c62(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -8871,7 +9047,7 @@ function __c27(j: number): any {
       ).annotate({
         identifier: "ReadNamespaceInstanceRequest",
       });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           periodMs: S.optional(S.NullOr(S.Number).pipe(T.Body("period_ms"))),
@@ -8881,64 +9057,62 @@ function __c27(j: number): any {
       ).annotate({
         identifier: "NamespacesInstancesReadResponsePublicEndpointParamsRateLimit",
       });
-    case 5:
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          authorizedHosts: S.optional(S.NullOr(__S(79, __c9, 7)).pipe(T.Body("authorized_hosts"))),
-          chatCompletionsEndpoint: S.optional(
-            S.NullOr(__S(87, __c10, 7)).pipe(T.Body("chat_completions_endpoint")),
+          authorizedHosts: S.optional(
+            S.NullOr(__S(384, __c12, 0)).pipe(T.Body("authorized_hosts")),
           ),
-          customDomains: S.optional(S.NullOr(__S(79, __c9, 7)).pipe(T.Body("custom_domains"))),
+          chatCompletionsEndpoint: S.optional(
+            S.NullOr(__S(352, __c11, 0)).pipe(T.Body("chat_completions_endpoint")),
+          ),
+          customDomains: S.optional(S.NullOr(__S(384, __c12, 0)).pipe(T.Body("custom_domains"))),
           defaultDomainEnabled: S.optional(
             S.NullOr(S.Boolean).pipe(T.Body("default_domain_enabled")),
           ),
           enabled: S.optional(S.NullOr(S.Boolean)),
-          mcp: S.optional(S.NullOr(__S(88, __c11, 0))),
-          rateLimit: S.optional(S.NullOr(__S(220, __c27, 4)).pipe(T.Body("rate_limit"))),
-          searchEndpoint: S.optional(S.NullOr(__S(90, __c11, 2)).pipe(T.Body("search_endpoint"))),
+          mcp: S.optional(S.NullOr(__S(353, __c11, 1))),
+          rateLimit: S.optional(S.NullOr(__S(1985, __c62, 1)).pipe(T.Body("rate_limit"))),
+          searchEndpoint: S.optional(S.NullOr(__S(416, __c13, 0)).pipe(T.Body("search_endpoint"))),
         }),
       ).annotate({
         identifier: "NamespacesInstancesReadResponsePublicEndpointParams",
       });
-    case 6:
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          boostBy: S.optional(S.NullOr(__S(120, __c15, 0)).pipe(T.Body("boost_by"))),
+          boostBy: S.optional(S.NullOr(__S(929, __c29, 1)).pipe(T.Body("boost_by"))),
           keywordMatchMode: S.optional(S.NullOr(S.String).pipe(T.Body("keyword_match_mode"))),
         }),
       ).annotate({
         identifier: "NamespacesInstancesReadResponseRetrievalOptions",
       });
-    case 7:
+    case 4:
       return S.suspend(() =>
         S.Struct({
           discoverOptions: S.optional(
-            S.NullOr(__S(122, __c15, 2)).pipe(T.Body("discover_options")),
+            S.NullOr(__S(864, __c27, 0)).pipe(T.Body("discover_options")),
           ),
-          parseOptions: S.optional(S.NullOr(__S(123, __c15, 3)).pipe(T.Body("parse_options"))),
+          parseOptions: S.optional(S.NullOr(__S(865, __c27, 1)).pipe(T.Body("parse_options"))),
           parseType: S.optional(S.NullOr(S.String).pipe(T.Body("parse_type"))),
-          crawlOptions: S.optional(S.NullOr(__S(81, __c10, 1)).pipe(T.Body("crawl_options"))),
+          crawlOptions: S.optional(S.NullOr(__S(550, __c17, 6)).pipe(T.Body("crawl_options"))),
         }),
       ).annotate({
         identifier: "NamespacesInstancesReadResponseSourceParamsWebCrawler",
       });
-  }
-}
-function __c28(j: number): any {
-  switch (j) {
-    case 0:
+    case 5:
       return S.suspend(() =>
         S.Struct({
-          excludeItems: S.optional(S.NullOr(__S(24, __c3, 0)).pipe(T.Body("exclude_items"))),
-          includeItems: S.optional(S.NullOr(__S(24, __c3, 0)).pipe(T.Body("include_items"))),
+          excludeItems: S.optional(S.NullOr(__S(224, __c7, 0)).pipe(T.Body("exclude_items"))),
+          includeItems: S.optional(S.NullOr(__S(224, __c7, 0)).pipe(T.Body("include_items"))),
           prefix: S.optional(S.NullOr(S.String)),
           r2Jurisdiction: S.optional(S.NullOr(S.String).pipe(T.Body("r2_jurisdiction"))),
-          webCrawler: S.optional(S.NullOr(__S(223, __c27, 7)).pipe(T.Body("web_crawler"))),
+          webCrawler: S.optional(S.NullOr(__S(1988, __c62, 4)).pipe(T.Body("web_crawler"))),
         }),
       ).annotate({
         identifier: "NamespacesInstancesReadResponseSourceParams",
       });
-    case 1:
+    case 6:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
@@ -8952,7 +9126,7 @@ function __c28(j: number): any {
           chunkOverlap: S.optional(S.NullOr(S.Number).pipe(T.Body("chunk_overlap"))),
           chunkSize: S.optional(S.NullOr(S.Number).pipe(T.Body("chunk_size"))),
           createdBy: S.optional(S.NullOr(S.String).pipe(T.Body("created_by"))),
-          customMetadata: S.optional(S.NullOr(__S(63, __c7, 7)).pipe(T.Body("custom_metadata"))),
+          customMetadata: S.optional(S.NullOr(__S(545, __c17, 1)).pipe(T.Body("custom_metadata"))),
           embeddingModel: S.optional(S.NullOr(S.String).pipe(T.Body("embedding_model"))),
           enable: S.optional(S.NullOr(S.Boolean)),
           engineVersion: S.optional(S.NullOr(S.Number).pipe(T.Body("engine_version"))),
@@ -8960,28 +9134,30 @@ function __c28(j: number): any {
           hybridSearchEnabled: S.optional(
             S.NullOr(S.Boolean).pipe(T.Body("hybrid_search_enabled")),
           ),
-          indexMethod: S.optional(S.NullOr(__S(64, __c8, 0)).pipe(T.Body("index_method"))),
-          indexingOptions: S.optional(S.NullOr(__S(85, __c10, 5)).pipe(T.Body("indexing_options"))),
+          indexMethod: S.optional(S.NullOr(__S(546, __c17, 2)).pipe(T.Body("index_method"))),
+          indexingOptions: S.optional(
+            S.NullOr(__S(551, __c17, 7)).pipe(T.Body("indexing_options")),
+          ),
           lastActivity: S.optional(S.NullOr(S.String).pipe(T.Body("last_activity"))),
           maxNumResults: S.optional(S.NullOr(S.Number).pipe(T.Body("max_num_results"))),
-          metadata: S.optional(S.NullOr(__S(86, __c10, 6))),
+          metadata: S.optional(S.NullOr(__S(552, __c17, 8))),
           modifiedBy: S.optional(S.NullOr(S.String).pipe(T.Body("modified_by"))),
           namespace: S.optional(S.NullOr(S.String)),
           paused: S.optional(S.NullOr(S.Boolean)),
           publicEndpointId: S.optional(S.NullOr(S.String).pipe(T.Body("public_endpoint_id"))),
           publicEndpointParams: S.optional(
-            S.NullOr(__S(221, __c27, 5)).pipe(T.Body("public_endpoint_params")),
+            S.NullOr(__S(1986, __c62, 2)).pipe(T.Body("public_endpoint_params")),
           ),
           reranking: S.optional(S.NullOr(S.Boolean)),
           rerankingModel: S.optional(S.NullOr(S.String).pipe(T.Body("reranking_model"))),
           retrievalOptions: S.optional(
-            S.NullOr(__S(222, __c27, 6)).pipe(T.Body("retrieval_options")),
+            S.NullOr(__S(1987, __c62, 3)).pipe(T.Body("retrieval_options")),
           ),
           rewriteModel: S.optional(S.NullOr(S.String).pipe(T.Body("rewrite_model"))),
           rewriteQuery: S.optional(S.NullOr(S.Boolean).pipe(T.Body("rewrite_query"))),
           scoreThreshold: S.optional(S.NullOr(S.Number).pipe(T.Body("score_threshold"))),
           source: S.optional(S.NullOr(S.String)),
-          sourceParams: S.optional(S.NullOr(__S(224, __c28, 0)).pipe(T.Body("source_params"))),
+          sourceParams: S.optional(S.NullOr(__S(1989, __c62, 5)).pipe(T.Body("source_params"))),
           status: S.optional(S.NullOr(S.String)),
           syncInterval: S.optional(S.NullOr(S.Number).pipe(T.Body("sync_interval"))),
           tokenId: S.optional(S.NullOr(S.String).pipe(T.Body("token_id"))),
@@ -8990,7 +9166,11 @@ function __c28(j: number): any {
       ).annotate({
         identifier: "ReadNamespaceInstanceResponse",
       });
-    case 2:
+  }
+}
+function __c63(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -9005,25 +9185,20 @@ function __c28(j: number): any {
           )
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "ReadTokenRequest" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          cacheThreshold: S.optional(S.String.pipe(T.Body("cache_threshold"))),
-          enabled: S.optional(S.Boolean),
-        }),
-      ).annotate({
-        identifier: "InstancesSearchRequestAiSearchOptionsCache",
-      });
-    case 4:
+  }
+}
+function __c64(j: number): any {
+  switch (j) {
+    case 0:
       return S.Unknown.pipe(/*@__PURE__*/ T.UnionCases([[], [], []]));
-    case 5:
-      return S.Record(S.String, __S(228, __c28, 4));
-    case 6:
+    case 1:
+      return S.Record(S.String, __S(2048, __c64, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          boostBy: S.optional(__S(110, __c13, 6).pipe(T.Body("boost_by"))),
+          boostBy: S.optional(__S(993, __c31, 1).pipe(T.Body("boost_by"))),
           contextExpansion: S.optional(S.Number.pipe(T.Body("context_expansion"))),
-          filters: S.optional(__S(18, __c2, 2)),
+          filters: S.optional(__S(128, __c4, 0)),
           fusionMethod: S.optional(S.String.pipe(T.Body("fusion_method"))),
           keywordMatchMode: S.optional(S.String.pipe(T.Body("keyword_match_mode"))),
           matchThreshold: S.optional(S.Number.pipe(T.Body("match_threshold"))),
@@ -9034,42 +9209,38 @@ function __c28(j: number): any {
       ).annotate({
         identifier: "InstancesSearchRequestAiSearchOptionsRetrieval",
       });
-    case 7:
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          cache: S.optional(__S(227, __c28, 3)),
-          customMetadata: S.optional(__S(229, __c28, 5).pipe(T.Body("custom_metadata"))),
-          queryRewrite: S.optional(__S(6, __c0, 6).pipe(T.Body("query_rewrite"))),
-          reranking: S.optional(__S(7, __c0, 7)),
-          retrieval: S.optional(__S(230, __c28, 6)),
+          cache: S.optional(__S(2080, __c65, 0)),
+          customMetadata: S.optional(__S(2049, __c64, 1).pipe(T.Body("custom_metadata"))),
+          queryRewrite: S.optional(__S(32, __c1, 0).pipe(T.Body("query_rewrite"))),
+          reranking: S.optional(__S(33, __c1, 1)),
+          retrieval: S.optional(__S(2050, __c64, 2)),
         }),
       ).annotate({
         identifier: "InstancesSearchRequestAiSearchOptions",
       });
-  }
-}
-function __c29(j: number): any {
-  switch (j) {
-    case 0:
+    case 4:
       return S.Unknown.pipe(/*@__PURE__*/ T.UnionCases([[], []]));
-    case 1:
+    case 5:
       return S.suspend(() =>
         S.Struct({
-          content: __S(232, __c29, 0),
+          content: __S(2052, __c64, 4),
           role: S.String,
         }),
       ).annotate({
         identifier: "InstancesSearchRequestMessagesItem",
       });
-    case 2:
-      return S.Array(__S(233, __c29, 1));
-    case 3:
+    case 6:
+      return S.Array(__S(2053, __c64, 5));
+    case 7:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
           id: S.String.pipe(T.Label()),
-          aiSearchOptions: S.optional(__S(231, __c28, 7).pipe(T.Body("ai_search_options"))),
-          messages: S.optional(__S(234, __c29, 2)),
+          aiSearchOptions: S.optional(__S(2051, __c64, 3).pipe(T.Body("ai_search_options"))),
+          messages: S.optional(__S(2054, __c64, 6)),
           query: S.optional(S.String),
         })
           .pipe(
@@ -9081,7 +9252,43 @@ function __c29(j: number): any {
           )
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "SearchInstanceRequest" });
-    case 4:
+    case 8:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          score: S.Number,
+          text: S.String,
+          type: S.String,
+          item: S.optional(S.NullOr(__S(96, __c3, 0))),
+          scoringDetails: S.optional(S.NullOr(__S(2081, __c65, 1)).pipe(T.Body("scoring_details"))),
+        }),
+      ).annotate({
+        identifier: "InstancesSearchResponseChunksItem",
+      });
+    case 9:
+      return S.Array(__S(2056, __c64, 8));
+    case 10:
+      return S.suspend(() =>
+        S.Struct({
+          chunks: __S(2057, __c64, 9),
+          queryKind: S.String.pipe(T.Body("query_kind")),
+          searchQuery: S.optional(S.NullOr(S.String).pipe(T.Body("search_query"))),
+        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({ identifier: "SearchInstanceResponse" });
+  }
+}
+function __c65(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          cacheThreshold: S.optional(S.String.pipe(T.Body("cache_threshold"))),
+          enabled: S.optional(S.Boolean),
+        }),
+      ).annotate({
+        identifier: "InstancesSearchRequestAiSearchOptionsCache",
+      });
+    case 1:
       return S.suspend(() =>
         S.Struct({
           fusionMethod: S.optional(S.NullOr(S.String).pipe(T.Body("fusion_method"))),
@@ -9094,43 +9301,20 @@ function __c29(j: number): any {
       ).annotate({
         identifier: "InstancesSearchResponseChunksItemScoringDetails",
       });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String,
-          score: S.Number,
-          text: S.String,
-          type: S.String,
-          item: S.optional(S.NullOr(__S(19, __c2, 3))),
-          scoringDetails: S.optional(S.NullOr(__S(236, __c29, 4)).pipe(T.Body("scoring_details"))),
-        }),
-      ).annotate({
-        identifier: "InstancesSearchResponseChunksItem",
-      });
-    case 6:
-      return S.Array(__S(237, __c29, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          chunks: __S(238, __c29, 6),
-          queryKind: S.String.pipe(T.Body("query_kind")),
-          searchQuery: S.optional(S.NullOr(S.String).pipe(T.Body("search_query"))),
-        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({ identifier: "SearchInstanceResponse" });
   }
 }
-function __c30(j: number): any {
+function __c66(j: number): any {
   switch (j) {
     case 0:
       return S.Unknown.pipe(/*@__PURE__*/ T.UnionCases([[], [], []]));
     case 1:
-      return S.Record(S.String, __S(240, __c30, 0));
+      return S.Record(S.String, __S(2112, __c66, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          boostBy: S.optional(__S(110, __c13, 6).pipe(T.Body("boost_by"))),
+          boostBy: S.optional(__S(993, __c31, 1).pipe(T.Body("boost_by"))),
           contextExpansion: S.optional(S.Number.pipe(T.Body("context_expansion"))),
-          filters: S.optional(__S(18, __c2, 2)),
+          filters: S.optional(__S(128, __c4, 0)),
           fusionMethod: S.optional(S.String.pipe(T.Body("fusion_method"))),
           keywordMatchMode: S.optional(S.String.pipe(T.Body("keyword_match_mode"))),
           matchThreshold: S.optional(S.Number.pipe(T.Body("match_threshold"))),
@@ -9144,12 +9328,12 @@ function __c30(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          instanceIds: __S(24, __c3, 0).pipe(T.Body("instance_ids")),
-          cache: S.optional(__S(227, __c28, 3)),
-          customMetadata: S.optional(__S(241, __c30, 1).pipe(T.Body("custom_metadata"))),
-          queryRewrite: S.optional(__S(6, __c0, 6).pipe(T.Body("query_rewrite"))),
-          reranking: S.optional(__S(7, __c0, 7)),
-          retrieval: S.optional(__S(242, __c30, 2)),
+          instanceIds: __S(224, __c7, 0).pipe(T.Body("instance_ids")),
+          cache: S.optional(__S(2080, __c65, 0)),
+          customMetadata: S.optional(__S(2113, __c66, 1).pipe(T.Body("custom_metadata"))),
+          queryRewrite: S.optional(__S(32, __c1, 0).pipe(T.Body("query_rewrite"))),
+          reranking: S.optional(__S(33, __c1, 1)),
+          retrieval: S.optional(__S(2114, __c66, 2)),
         }),
       ).annotate({
         identifier: "NamespacesSearchRequestAiSearchOptions",
@@ -9159,21 +9343,21 @@ function __c30(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          content: __S(244, __c30, 4),
+          content: __S(2116, __c66, 4),
           role: S.String,
         }),
       ).annotate({
         identifier: "NamespacesSearchRequestMessagesItem",
       });
     case 6:
-      return S.Array(__S(245, __c30, 5));
+      return S.Array(__S(2117, __c66, 5));
     case 7:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
           name: S.String.pipe(T.Label()),
-          aiSearchOptions: __S(243, __c30, 3).pipe(T.Body("ai_search_options")),
-          messages: S.optional(__S(246, __c30, 6)),
+          aiSearchOptions: __S(2115, __c66, 3).pipe(T.Body("ai_search_options")),
+          messages: S.optional(__S(2118, __c66, 6)),
           query: S.optional(S.String),
         })
           .pipe(
@@ -9185,11 +9369,7 @@ function __c30(j: number): any {
           )
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "SearchNamespaceRequest" });
-  }
-}
-function __c31(j: number): any {
-  switch (j) {
-    case 0:
+    case 8:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
@@ -9197,15 +9377,15 @@ function __c31(j: number): any {
           score: S.Number,
           text: S.String,
           type: S.String,
-          item: S.optional(S.NullOr(__S(19, __c2, 3))),
-          scoringDetails: S.optional(S.NullOr(__S(236, __c29, 4)).pipe(T.Body("scoring_details"))),
+          item: S.optional(S.NullOr(__S(96, __c3, 0))),
+          scoringDetails: S.optional(S.NullOr(__S(2081, __c65, 1)).pipe(T.Body("scoring_details"))),
         }),
       ).annotate({
         identifier: "NamespacesSearchResponseChunksItem",
       });
-    case 1:
-      return S.Array(__S(248, __c31, 0));
-    case 2:
+    case 9:
+      return S.Array(__S(2120, __c66, 8));
+    case 10:
       return S.suspend(() =>
         S.Struct({
           instanceId: S.String.pipe(T.Body("instance_id")),
@@ -9214,27 +9394,31 @@ function __c31(j: number): any {
       ).annotate({
         identifier: "NamespacesSearchResponseErrorsItem",
       });
-    case 3:
-      return S.Array(__S(250, __c31, 2));
-    case 4:
+    case 11:
+      return S.Array(__S(2122, __c66, 10));
+    case 12:
       return S.suspend(() =>
         S.Struct({
-          chunks: __S(249, __c31, 1),
+          chunks: __S(2121, __c66, 9),
           queryKind: S.String.pipe(T.Body("query_kind")),
-          errors: S.optional(S.NullOr(__S(251, __c31, 3))),
+          errors: S.optional(S.NullOr(__S(2123, __c66, 11))),
           searchQuery: S.optional(S.NullOr(S.String).pipe(T.Body("search_query"))),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "SearchNamespaceResponse" });
-    case 5:
+  }
+}
+function __c67(j: number): any {
+  switch (j) {
+    case 0:
       return S.Unknown.pipe(/*@__PURE__*/ T.UnionCases([[], [], []]));
-    case 6:
-      return S.Record(S.String, __S(253, __c31, 5));
-    case 7:
+    case 1:
+      return S.Record(S.String, __S(2144, __c67, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          boostBy: S.optional(__S(9, __c1, 1).pipe(T.Body("boost_by"))),
+          boostBy: S.optional(__S(65, __c2, 1).pipe(T.Body("boost_by"))),
           contextExpansion: S.optional(S.Number.pipe(T.Body("context_expansion"))),
-          filters: S.optional(__S(10, __c1, 2)),
+          filters: S.optional(__S(66, __c2, 2)),
           fusionMethod: S.optional(S.String.pipe(T.Body("fusion_method"))),
           keywordMatchMode: S.optional(S.String.pipe(T.Body("keyword_match_mode"))),
           matchThreshold: S.optional(S.Number.pipe(T.Body("match_threshold"))),
@@ -9245,43 +9429,39 @@ function __c31(j: number): any {
       ).annotate({
         identifier: "NamespacesInstancesSearchRequestAiSearchOptionsRetrieval",
       });
-  }
-}
-function __c32(j: number): any {
-  switch (j) {
-    case 0:
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          cache: S.optional(__S(3, __c0, 3)),
-          customMetadata: S.optional(__S(254, __c31, 6).pipe(T.Body("custom_metadata"))),
-          queryRewrite: S.optional(__S(6, __c0, 6).pipe(T.Body("query_rewrite"))),
-          reranking: S.optional(__S(7, __c0, 7)),
-          retrieval: S.optional(__S(255, __c31, 7)),
+          cache: S.optional(__S(160, __c5, 0)),
+          customMetadata: S.optional(__S(2145, __c67, 1).pipe(T.Body("custom_metadata"))),
+          queryRewrite: S.optional(__S(32, __c1, 0).pipe(T.Body("query_rewrite"))),
+          reranking: S.optional(__S(33, __c1, 1)),
+          retrieval: S.optional(__S(2146, __c67, 2)),
         }),
       ).annotate({
         identifier: "NamespacesInstancesSearchRequestAiSearchOptions",
       });
-    case 1:
+    case 4:
       return S.Unknown.pipe(/*@__PURE__*/ T.UnionCases([[], []]));
-    case 2:
+    case 5:
       return S.suspend(() =>
         S.Struct({
-          content: __S(257, __c32, 1),
+          content: __S(2148, __c67, 4),
           role: S.String,
         }),
       ).annotate({
         identifier: "NamespacesInstancesSearchRequestMessagesItem",
       });
-    case 3:
-      return S.Array(__S(258, __c32, 2));
-    case 4:
+    case 6:
+      return S.Array(__S(2149, __c67, 5));
+    case 7:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
           name: S.String.pipe(T.Label()),
           id: S.String.pipe(T.Label()),
-          aiSearchOptions: S.optional(__S(256, __c32, 0).pipe(T.Body("ai_search_options"))),
-          messages: S.optional(__S(259, __c32, 3)),
+          aiSearchOptions: S.optional(__S(2147, __c67, 3).pipe(T.Body("ai_search_options"))),
+          messages: S.optional(__S(2150, __c67, 6)),
           query: S.optional(S.String),
         })
           .pipe(
@@ -9295,25 +9475,25 @@ function __c32(j: number): any {
       ).annotate({
         identifier: "SearchNamespaceInstanceRequest",
       });
-    case 5:
+    case 8:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
           score: S.Number,
           text: S.String,
           type: S.String,
-          item: S.optional(S.NullOr(__S(19, __c2, 3))),
-          scoringDetails: S.optional(S.NullOr(__S(20, __c2, 4)).pipe(T.Body("scoring_details"))),
+          item: S.optional(S.NullOr(__S(96, __c3, 0))),
+          scoringDetails: S.optional(S.NullOr(__S(161, __c5, 1)).pipe(T.Body("scoring_details"))),
         }),
       ).annotate({
         identifier: "NamespacesInstancesSearchResponseChunksItem",
       });
-    case 6:
-      return S.Array(__S(261, __c32, 5));
-    case 7:
+    case 9:
+      return S.Array(__S(2152, __c67, 8));
+    case 10:
       return S.suspend(() =>
         S.Struct({
-          chunks: __S(262, __c32, 6),
+          chunks: __S(2153, __c67, 9),
           queryKind: S.String.pipe(T.Body("query_kind")),
           searchQuery: S.optional(S.NullOr(S.String).pipe(T.Body("search_query"))),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
@@ -9322,7 +9502,7 @@ function __c32(j: number): any {
       });
   }
 }
-function __c33(j: number): any {
+function __c68(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -9342,41 +9522,15 @@ function __c33(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          metadataSizeBytes: S.Number,
-          objectCount: S.Number,
-          payloadSizeBytes: S.Number,
-        }),
-      ).annotate({
-        identifier: "InstancesStatsResponseEngineR2",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          dimensions: S.Number,
-          vectorsCount: S.Number,
-        }),
-      ).annotate({
-        identifier: "InstancesStatsResponseEngineVectorize",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          r2: S.optional(S.NullOr(__S(265, __c33, 1))),
-          vectorize: S.optional(S.NullOr(__S(266, __c33, 2))),
-        }),
-      ).annotate({
-        identifier: "InstancesStatsResponseEngine",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
           completed: S.optional(S.NullOr(S.Number)),
           degraded: S.optional(S.NullOr(S.Boolean)),
-          engine: S.optional(S.NullOr(__S(267, __c33, 3))),
+          engine: S.optional(S.NullOr(__S(2210, __c69, 2))),
           error: S.optional(S.NullOr(S.Number)),
-          fileEmbedErrors: S.optional(S.NullOr(__S(18, __c2, 2)).pipe(T.Body("file_embed_errors"))),
+          fileEmbedErrors: S.optional(
+            S.NullOr(__S(128, __c4, 0)).pipe(T.Body("file_embed_errors")),
+          ),
           indexSourceErrors: S.optional(
-            S.NullOr(__S(18, __c2, 2)).pipe(T.Body("index_source_errors")),
+            S.NullOr(__S(128, __c4, 0)).pipe(T.Body("index_source_errors")),
           ),
           lastActivity: S.optional(S.NullOr(S.String).pipe(T.Body("last_activity"))),
           outdated: S.optional(S.NullOr(S.Number)),
@@ -9385,7 +9539,43 @@ function __c33(j: number): any {
           skipped: S.optional(S.NullOr(S.Number)),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "StatsInstanceResponse" });
-    case 5:
+  }
+}
+function __c69(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          metadataSizeBytes: S.Number,
+          objectCount: S.Number,
+          payloadSizeBytes: S.Number,
+        }),
+      ).annotate({
+        identifier: "InstancesStatsResponseEngineR2",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          dimensions: S.Number,
+          vectorsCount: S.Number,
+        }),
+      ).annotate({
+        identifier: "InstancesStatsResponseEngineVectorize",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          r2: S.optional(S.NullOr(__S(2208, __c69, 0))),
+          vectorize: S.optional(S.NullOr(__S(2209, __c69, 1))),
+        }),
+      ).annotate({
+        identifier: "InstancesStatsResponseEngine",
+      });
+  }
+}
+function __c70(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -9403,16 +9593,18 @@ function __c33(j: number): any {
       ).annotate({
         identifier: "StatsNamespaceInstanceRequest",
       });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           completed: S.optional(S.NullOr(S.Number)),
           degraded: S.optional(S.NullOr(S.Boolean)),
-          engine: S.optional(S.NullOr(__S(267, __c33, 3))),
+          engine: S.optional(S.NullOr(__S(2210, __c69, 2))),
           error: S.optional(S.NullOr(S.Number)),
-          fileEmbedErrors: S.optional(S.NullOr(__S(18, __c2, 2)).pipe(T.Body("file_embed_errors"))),
+          fileEmbedErrors: S.optional(
+            S.NullOr(__S(128, __c4, 0)).pipe(T.Body("file_embed_errors")),
+          ),
           indexSourceErrors: S.optional(
-            S.NullOr(__S(18, __c2, 2)).pipe(T.Body("index_source_errors")),
+            S.NullOr(__S(128, __c4, 0)).pipe(T.Body("index_source_errors")),
           ),
           lastActivity: S.optional(S.NullOr(S.String).pipe(T.Body("last_activity"))),
           outdated: S.optional(S.NullOr(S.Number)),
@@ -9423,7 +9615,11 @@ function __c33(j: number): any {
       ).annotate({
         identifier: "StatsNamespaceInstanceResponse",
       });
-    case 7:
+  }
+}
+function __c71(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -9444,15 +9640,11 @@ function __c33(j: number): any {
       ).annotate({
         identifier: "SyncNamespaceInstanceItemRequest",
       });
-  }
-}
-function __c34(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Unknown.pipe(/*@__PURE__*/ T.UnionCases([[], [], []]));
     case 1:
-      return S.Record(S.String, __S(272, __c34, 0));
+      return S.Unknown.pipe(/*@__PURE__*/ T.UnionCases([[], [], []]));
     case 2:
+      return S.Record(S.String, __S(2273, __c71, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
@@ -9462,7 +9654,7 @@ function __c34(j: number): any {
           fileSize: S.Number.pipe(T.Body("file_size")),
           key: S.String,
           lastSeenAt: S.String.pipe(T.Body("last_seen_at")),
-          metadata: __S(273, __c34, 1),
+          metadata: __S(2274, __c71, 2),
           namespace: S.String,
           nextAction: S.String.pipe(T.Body("next_action")),
           sourceId: S.String.pipe(T.Body("source_id")),
@@ -9472,47 +9664,51 @@ function __c34(j: number): any {
       ).annotate({
         identifier: "SyncNamespaceInstanceItemResponse",
       });
-    case 3:
+  }
+}
+function __c72(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          authorizedHosts: S.optional(__S(24, __c3, 0).pipe(T.Body("authorized_hosts"))),
+          authorizedHosts: S.optional(__S(224, __c7, 0).pipe(T.Body("authorized_hosts"))),
           chatCompletionsEndpoint: S.optional(
-            __S(67, __c8, 3).pipe(T.Body("chat_completions_endpoint")),
+            __S(448, __c14, 0).pipe(T.Body("chat_completions_endpoint")),
           ),
-          customDomains: S.optional(__S(24, __c3, 0).pipe(T.Body("custom_domains"))),
+          customDomains: S.optional(__S(224, __c7, 0).pipe(T.Body("custom_domains"))),
           defaultDomainEnabled: S.optional(S.Boolean.pipe(T.Body("default_domain_enabled"))),
           enabled: S.optional(S.Boolean),
-          mcp: S.optional(__S(68, __c8, 4)),
-          rateLimit: S.optional(__S(69, __c8, 5).pipe(T.Body("rate_limit"))),
-          searchEndpoint: S.optional(__S(70, __c8, 6).pipe(T.Body("search_endpoint"))),
+          mcp: S.optional(__S(449, __c14, 1)),
+          rateLimit: S.optional(__S(512, __c16, 0).pipe(T.Body("rate_limit"))),
+          searchEndpoint: S.optional(__S(450, __c14, 2).pipe(T.Body("search_endpoint"))),
         }),
       ).annotate({
         identifier: "InstancesUpdateRequestPublicEndpointParams",
       });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          discoverOptions: S.optional(__S(75, __c9, 3).pipe(T.Body("discover_options"))),
-          parseOptions: S.optional(__S(80, __c10, 0).pipe(T.Body("parse_options"))),
+          discoverOptions: S.optional(__S(708, __c22, 4).pipe(T.Body("discover_options"))),
+          parseOptions: S.optional(__S(709, __c22, 5).pipe(T.Body("parse_options"))),
           parseType: S.optional(S.String.pipe(T.Body("parse_type"))),
-          crawlOptions: S.optional(__S(81, __c10, 1).pipe(T.Body("crawl_options"))),
+          crawlOptions: S.optional(__S(550, __c17, 6).pipe(T.Body("crawl_options"))),
         }),
       ).annotate({
         identifier: "InstancesUpdateRequestSourceParamsWebCrawler",
       });
-    case 5:
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          excludeItems: S.optional(__S(24, __c3, 0).pipe(T.Body("exclude_items"))),
-          includeItems: S.optional(__S(24, __c3, 0).pipe(T.Body("include_items"))),
+          excludeItems: S.optional(__S(224, __c7, 0).pipe(T.Body("exclude_items"))),
+          includeItems: S.optional(__S(224, __c7, 0).pipe(T.Body("include_items"))),
           prefix: S.optional(S.String),
           r2Jurisdiction: S.optional(S.String.pipe(T.Body("r2_jurisdiction"))),
-          webCrawler: S.optional(__S(276, __c34, 4).pipe(T.Body("web_crawler"))),
+          webCrawler: S.optional(__S(2305, __c72, 1).pipe(T.Body("web_crawler"))),
         }),
       ).annotate({
         identifier: "InstancesUpdateRequestSourceParams",
       });
-    case 6:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -9525,25 +9721,25 @@ function __c34(j: number): any {
           chunk: S.optional(S.Boolean),
           chunkOverlap: S.optional(S.Number.pipe(T.Body("chunk_overlap"))),
           chunkSize: S.optional(S.Number.pipe(T.Body("chunk_size"))),
-          customMetadata: S.optional(__S(63, __c7, 7).pipe(T.Body("custom_metadata"))),
+          customMetadata: S.optional(__S(545, __c17, 1).pipe(T.Body("custom_metadata"))),
           embeddingModel: S.optional(S.String.pipe(T.Body("embedding_model"))),
           fusionMethod: S.optional(S.String.pipe(T.Body("fusion_method"))),
-          indexMethod: S.optional(__S(64, __c8, 0).pipe(T.Body("index_method"))),
-          indexingOptions: S.optional(__S(65, __c8, 1).pipe(T.Body("indexing_options"))),
+          indexMethod: S.optional(__S(546, __c17, 2).pipe(T.Body("index_method"))),
+          indexingOptions: S.optional(__S(704, __c22, 0).pipe(T.Body("indexing_options"))),
           maxNumResults: S.optional(S.Number.pipe(T.Body("max_num_results"))),
-          metadata: S.optional(__S(66, __c8, 2)),
+          metadata: S.optional(__S(576, __c18, 0)),
           paused: S.optional(S.Boolean),
           publicEndpointParams: S.optional(
-            __S(275, __c34, 3).pipe(T.Body("public_endpoint_params")),
+            __S(2304, __c72, 0).pipe(T.Body("public_endpoint_params")),
           ),
           reranking: S.optional(S.Boolean),
           rerankingModel: S.optional(S.String.pipe(T.Body("reranking_model"))),
-          retrievalOptions: S.optional(__S(74, __c9, 2).pipe(T.Body("retrieval_options"))),
+          retrievalOptions: S.optional(__S(707, __c22, 3).pipe(T.Body("retrieval_options"))),
           rewriteModel: S.optional(S.String.pipe(T.Body("rewrite_model"))),
           rewriteQuery: S.optional(S.Boolean.pipe(T.Body("rewrite_query"))),
           scoreThreshold: S.optional(S.Number.pipe(T.Body("score_threshold"))),
           source: S.optional(S.String),
-          sourceParams: S.optional(__S(277, __c34, 5).pipe(T.Body("source_params"))),
+          sourceParams: S.optional(__S(2306, __c72, 2).pipe(T.Body("source_params"))),
           summarization: S.optional(S.Boolean),
           summarizationModel: S.optional(S.String.pipe(T.Body("summarization_model"))),
           syncInterval: S.optional(S.Number.pipe(T.Body("sync_interval"))),
@@ -9565,53 +9761,51 @@ function __c34(j: number): any {
           )
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "UpdateInstanceRequest" });
-    case 7:
+    case 4:
       return S.suspend(() =>
         S.Struct({
-          authorizedHosts: S.optional(S.NullOr(__S(24, __c3, 0)).pipe(T.Body("authorized_hosts"))),
+          authorizedHosts: S.optional(S.NullOr(__S(224, __c7, 0)).pipe(T.Body("authorized_hosts"))),
           chatCompletionsEndpoint: S.optional(
-            S.NullOr(__S(87, __c10, 7)).pipe(T.Body("chat_completions_endpoint")),
+            S.NullOr(__S(352, __c11, 0)).pipe(T.Body("chat_completions_endpoint")),
           ),
-          customDomains: S.optional(S.NullOr(__S(24, __c3, 0)).pipe(T.Body("custom_domains"))),
+          customDomains: S.optional(S.NullOr(__S(224, __c7, 0)).pipe(T.Body("custom_domains"))),
           defaultDomainEnabled: S.optional(
             S.NullOr(S.Boolean).pipe(T.Body("default_domain_enabled")),
           ),
           enabled: S.optional(S.NullOr(S.Boolean)),
-          mcp: S.optional(S.NullOr(__S(88, __c11, 0))),
-          rateLimit: S.optional(S.NullOr(__S(89, __c11, 1)).pipe(T.Body("rate_limit"))),
-          searchEndpoint: S.optional(S.NullOr(__S(90, __c11, 2)).pipe(T.Body("search_endpoint"))),
+          mcp: S.optional(S.NullOr(__S(353, __c11, 1))),
+          rateLimit: S.optional(S.NullOr(__S(480, __c15, 0)).pipe(T.Body("rate_limit"))),
+          searchEndpoint: S.optional(S.NullOr(__S(416, __c13, 0)).pipe(T.Body("search_endpoint"))),
         }),
       ).annotate({
         identifier: "InstancesUpdateResponsePublicEndpointParams",
       });
-  }
-}
-function __c35(j: number): any {
-  switch (j) {
-    case 0:
+    case 5:
       return S.suspend(() =>
         S.Struct({
-          discoverOptions: S.optional(S.NullOr(__S(95, __c11, 7)).pipe(T.Body("discover_options"))),
-          parseOptions: S.optional(S.NullOr(__S(96, __c12, 0)).pipe(T.Body("parse_options"))),
+          discoverOptions: S.optional(
+            S.NullOr(__S(608, __c19, 0)).pipe(T.Body("discover_options")),
+          ),
+          parseOptions: S.optional(S.NullOr(__S(640, __c20, 0)).pipe(T.Body("parse_options"))),
           parseType: S.optional(S.NullOr(S.String).pipe(T.Body("parse_type"))),
-          crawlOptions: S.optional(S.NullOr(__S(81, __c10, 1)).pipe(T.Body("crawl_options"))),
+          crawlOptions: S.optional(S.NullOr(__S(550, __c17, 6)).pipe(T.Body("crawl_options"))),
         }),
       ).annotate({
         identifier: "InstancesUpdateResponseSourceParamsWebCrawler",
       });
-    case 1:
+    case 6:
       return S.suspend(() =>
         S.Struct({
-          excludeItems: S.optional(S.NullOr(__S(24, __c3, 0)).pipe(T.Body("exclude_items"))),
-          includeItems: S.optional(S.NullOr(__S(24, __c3, 0)).pipe(T.Body("include_items"))),
+          excludeItems: S.optional(S.NullOr(__S(224, __c7, 0)).pipe(T.Body("exclude_items"))),
+          includeItems: S.optional(S.NullOr(__S(224, __c7, 0)).pipe(T.Body("include_items"))),
           prefix: S.optional(S.NullOr(S.String)),
           r2Jurisdiction: S.optional(S.NullOr(S.String).pipe(T.Body("r2_jurisdiction"))),
-          webCrawler: S.optional(S.NullOr(__S(280, __c35, 0)).pipe(T.Body("web_crawler"))),
+          webCrawler: S.optional(S.NullOr(__S(2309, __c72, 5)).pipe(T.Body("web_crawler"))),
         }),
       ).annotate({
         identifier: "InstancesUpdateResponseSourceParams",
       });
-    case 2:
+    case 7:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
@@ -9625,7 +9819,7 @@ function __c35(j: number): any {
           chunkOverlap: S.optional(S.NullOr(S.Number).pipe(T.Body("chunk_overlap"))),
           chunkSize: S.optional(S.NullOr(S.Number).pipe(T.Body("chunk_size"))),
           createdBy: S.optional(S.NullOr(S.String).pipe(T.Body("created_by"))),
-          customMetadata: S.optional(S.NullOr(__S(63, __c7, 7)).pipe(T.Body("custom_metadata"))),
+          customMetadata: S.optional(S.NullOr(__S(545, __c17, 1)).pipe(T.Body("custom_metadata"))),
           embeddingModel: S.optional(S.NullOr(S.String).pipe(T.Body("embedding_model"))),
           enable: S.optional(S.NullOr(S.Boolean)),
           engineVersion: S.optional(S.NullOr(S.Number).pipe(T.Body("engine_version"))),
@@ -9633,60 +9827,66 @@ function __c35(j: number): any {
           hybridSearchEnabled: S.optional(
             S.NullOr(S.Boolean).pipe(T.Body("hybrid_search_enabled")),
           ),
-          indexMethod: S.optional(S.NullOr(__S(64, __c8, 0)).pipe(T.Body("index_method"))),
-          indexingOptions: S.optional(S.NullOr(__S(85, __c10, 5)).pipe(T.Body("indexing_options"))),
+          indexMethod: S.optional(S.NullOr(__S(546, __c17, 2)).pipe(T.Body("index_method"))),
+          indexingOptions: S.optional(
+            S.NullOr(__S(551, __c17, 7)).pipe(T.Body("indexing_options")),
+          ),
           lastActivity: S.optional(S.NullOr(S.String).pipe(T.Body("last_activity"))),
           maxNumResults: S.optional(S.NullOr(S.Number).pipe(T.Body("max_num_results"))),
-          metadata: S.optional(S.NullOr(__S(86, __c10, 6))),
+          metadata: S.optional(S.NullOr(__S(552, __c17, 8))),
           modifiedBy: S.optional(S.NullOr(S.String).pipe(T.Body("modified_by"))),
           namespace: S.optional(S.NullOr(S.String)),
           paused: S.optional(S.NullOr(S.Boolean)),
           publicEndpointId: S.optional(S.NullOr(S.String).pipe(T.Body("public_endpoint_id"))),
           publicEndpointParams: S.optional(
-            S.NullOr(__S(279, __c34, 7)).pipe(T.Body("public_endpoint_params")),
+            S.NullOr(__S(2308, __c72, 4)).pipe(T.Body("public_endpoint_params")),
           ),
           reranking: S.optional(S.NullOr(S.Boolean)),
           rerankingModel: S.optional(S.NullOr(S.String).pipe(T.Body("reranking_model"))),
           retrievalOptions: S.optional(
-            S.NullOr(__S(94, __c11, 6)).pipe(T.Body("retrieval_options")),
+            S.NullOr(__S(674, __c21, 2)).pipe(T.Body("retrieval_options")),
           ),
           rewriteModel: S.optional(S.NullOr(S.String).pipe(T.Body("rewrite_model"))),
           rewriteQuery: S.optional(S.NullOr(S.Boolean).pipe(T.Body("rewrite_query"))),
           scoreThreshold: S.optional(S.NullOr(S.Number).pipe(T.Body("score_threshold"))),
           source: S.optional(S.NullOr(S.String)),
-          sourceParams: S.optional(S.NullOr(__S(281, __c35, 1)).pipe(T.Body("source_params"))),
+          sourceParams: S.optional(S.NullOr(__S(2310, __c72, 6)).pipe(T.Body("source_params"))),
           status: S.optional(S.NullOr(S.String)),
           syncInterval: S.optional(S.NullOr(S.Number).pipe(T.Body("sync_interval"))),
           tokenId: S.optional(S.NullOr(S.String).pipe(T.Body("token_id"))),
           type: S.optional(S.NullOr(S.String)),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "UpdateInstanceResponse" });
-    case 3:
+  }
+}
+function __c73(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          authorizedHosts: S.optional(__S(24, __c3, 0).pipe(T.Body("authorized_hosts"))),
+          authorizedHosts: S.optional(__S(224, __c7, 0).pipe(T.Body("authorized_hosts"))),
           chatCompletionsEndpoint: S.optional(
-            __S(67, __c8, 3).pipe(T.Body("chat_completions_endpoint")),
+            __S(448, __c14, 0).pipe(T.Body("chat_completions_endpoint")),
           ),
-          customDomains: S.optional(__S(24, __c3, 0).pipe(T.Body("custom_domains"))),
+          customDomains: S.optional(__S(224, __c7, 0).pipe(T.Body("custom_domains"))),
           defaultDomainEnabled: S.optional(S.Boolean.pipe(T.Body("default_domain_enabled"))),
           enabled: S.optional(S.Boolean),
-          instancesAllowed: S.optional(__S(79, __c9, 7).pipe(T.Body("instances_allowed"))),
-          mcp: S.optional(__S(68, __c8, 4)),
-          rateLimit: S.optional(__S(69, __c8, 5).pipe(T.Body("rate_limit"))),
-          searchEndpoint: S.optional(__S(70, __c8, 6).pipe(T.Body("search_endpoint"))),
+          instancesAllowed: S.optional(__S(384, __c12, 0).pipe(T.Body("instances_allowed"))),
+          mcp: S.optional(__S(449, __c14, 1)),
+          rateLimit: S.optional(__S(512, __c16, 0).pipe(T.Body("rate_limit"))),
+          searchEndpoint: S.optional(__S(450, __c14, 2).pipe(T.Body("search_endpoint"))),
         }),
       ).annotate({
         identifier: "NamespacesUpdateRequestPublicEndpointParams",
       });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
           name: S.String.pipe(T.Label()),
           description: S.optional(S.NullOr(S.String)),
           publicEndpointParams: S.optional(
-            __S(283, __c35, 3).pipe(T.Body("public_endpoint_params")),
+            __S(2336, __c73, 0).pipe(T.Body("public_endpoint_params")),
           ),
         })
           .pipe(
@@ -9698,29 +9898,31 @@ function __c35(j: number): any {
           )
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "UpdateNamespaceRequest" });
-    case 5:
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          authorizedHosts: S.optional(S.NullOr(__S(79, __c9, 7)).pipe(T.Body("authorized_hosts"))),
-          chatCompletionsEndpoint: S.optional(
-            S.NullOr(__S(87, __c10, 7)).pipe(T.Body("chat_completions_endpoint")),
+          authorizedHosts: S.optional(
+            S.NullOr(__S(384, __c12, 0)).pipe(T.Body("authorized_hosts")),
           ),
-          customDomains: S.optional(S.NullOr(__S(24, __c3, 0)).pipe(T.Body("custom_domains"))),
+          chatCompletionsEndpoint: S.optional(
+            S.NullOr(__S(352, __c11, 0)).pipe(T.Body("chat_completions_endpoint")),
+          ),
+          customDomains: S.optional(S.NullOr(__S(224, __c7, 0)).pipe(T.Body("custom_domains"))),
           defaultDomainEnabled: S.optional(
             S.NullOr(S.Boolean).pipe(T.Body("default_domain_enabled")),
           ),
           enabled: S.optional(S.NullOr(S.Boolean)),
           instancesAllowed: S.optional(
-            S.NullOr(__S(79, __c9, 7)).pipe(T.Body("instances_allowed")),
+            S.NullOr(__S(384, __c12, 0)).pipe(T.Body("instances_allowed")),
           ),
-          mcp: S.optional(S.NullOr(__S(88, __c11, 0))),
-          rateLimit: S.optional(S.NullOr(__S(89, __c11, 1)).pipe(T.Body("rate_limit"))),
-          searchEndpoint: S.optional(S.NullOr(__S(90, __c11, 2)).pipe(T.Body("search_endpoint"))),
+          mcp: S.optional(S.NullOr(__S(353, __c11, 1))),
+          rateLimit: S.optional(S.NullOr(__S(480, __c15, 0)).pipe(T.Body("rate_limit"))),
+          searchEndpoint: S.optional(S.NullOr(__S(416, __c13, 0)).pipe(T.Body("search_endpoint"))),
         }),
       ).annotate({
         identifier: "NamespacesUpdateResponsePublicEndpointParams",
       });
-    case 6:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           createdAt: S.String.pipe(T.Body("created_at")),
@@ -9728,55 +9930,55 @@ function __c35(j: number): any {
           description: S.optional(S.NullOr(S.String)),
           publicEndpointId: S.optional(S.NullOr(S.String).pipe(T.Body("public_endpoint_id"))),
           publicEndpointParams: S.optional(
-            S.NullOr(__S(285, __c35, 5)).pipe(T.Body("public_endpoint_params")),
+            S.NullOr(__S(2338, __c73, 2)).pipe(T.Body("public_endpoint_params")),
           ),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "UpdateNamespaceResponse" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          authorizedHosts: S.optional(__S(79, __c9, 7).pipe(T.Body("authorized_hosts"))),
-          chatCompletionsEndpoint: S.optional(
-            __S(67, __c8, 3).pipe(T.Body("chat_completions_endpoint")),
-          ),
-          customDomains: S.optional(__S(79, __c9, 7).pipe(T.Body("custom_domains"))),
-          defaultDomainEnabled: S.optional(S.Boolean.pipe(T.Body("default_domain_enabled"))),
-          enabled: S.optional(S.Boolean),
-          mcp: S.optional(__S(68, __c8, 4)),
-          rateLimit: S.optional(__S(107, __c13, 3).pipe(T.Body("rate_limit"))),
-          searchEndpoint: S.optional(__S(70, __c8, 6).pipe(T.Body("search_endpoint"))),
-        }),
-      ).annotate({
-        identifier: "NamespacesInstancesUpdateRequestPublicEndpointParams",
-      });
   }
 }
-function __c36(j: number): any {
+function __c74(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          discoverOptions: S.optional(__S(112, __c14, 0).pipe(T.Body("discover_options"))),
-          parseOptions: S.optional(__S(113, __c14, 1).pipe(T.Body("parse_options"))),
-          parseType: S.optional(S.String.pipe(T.Body("parse_type"))),
-          crawlOptions: S.optional(__S(81, __c10, 1).pipe(T.Body("crawl_options"))),
+          authorizedHosts: S.optional(__S(384, __c12, 0).pipe(T.Body("authorized_hosts"))),
+          chatCompletionsEndpoint: S.optional(
+            __S(448, __c14, 0).pipe(T.Body("chat_completions_endpoint")),
+          ),
+          customDomains: S.optional(__S(384, __c12, 0).pipe(T.Body("custom_domains"))),
+          defaultDomainEnabled: S.optional(S.Boolean.pipe(T.Body("default_domain_enabled"))),
+          enabled: S.optional(S.Boolean),
+          mcp: S.optional(__S(449, __c14, 1)),
+          rateLimit: S.optional(__S(1025, __c32, 1).pipe(T.Body("rate_limit"))),
+          searchEndpoint: S.optional(__S(450, __c14, 2).pipe(T.Body("search_endpoint"))),
         }),
       ).annotate({
-        identifier: "NamespacesInstancesUpdateRequestSourceParamsWebCrawler",
+        identifier: "NamespacesInstancesUpdateRequestPublicEndpointParams",
       });
     case 1:
       return S.suspend(() =>
         S.Struct({
-          excludeItems: S.optional(__S(24, __c3, 0).pipe(T.Body("exclude_items"))),
-          includeItems: S.optional(__S(24, __c3, 0).pipe(T.Body("include_items"))),
+          discoverOptions: S.optional(__S(1027, __c32, 3).pipe(T.Body("discover_options"))),
+          parseOptions: S.optional(__S(1028, __c32, 4).pipe(T.Body("parse_options"))),
+          parseType: S.optional(S.String.pipe(T.Body("parse_type"))),
+          crawlOptions: S.optional(__S(550, __c17, 6).pipe(T.Body("crawl_options"))),
+        }),
+      ).annotate({
+        identifier: "NamespacesInstancesUpdateRequestSourceParamsWebCrawler",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          excludeItems: S.optional(__S(224, __c7, 0).pipe(T.Body("exclude_items"))),
+          includeItems: S.optional(__S(224, __c7, 0).pipe(T.Body("include_items"))),
           prefix: S.optional(S.String),
           r2Jurisdiction: S.optional(S.String.pipe(T.Body("r2_jurisdiction"))),
-          webCrawler: S.optional(__S(288, __c36, 0).pipe(T.Body("web_crawler"))),
+          webCrawler: S.optional(__S(2369, __c74, 1).pipe(T.Body("web_crawler"))),
         }),
       ).annotate({
         identifier: "NamespacesInstancesUpdateRequestSourceParams",
       });
-    case 2:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -9790,25 +9992,25 @@ function __c36(j: number): any {
           chunk: S.optional(S.Boolean),
           chunkOverlap: S.optional(S.Number.pipe(T.Body("chunk_overlap"))),
           chunkSize: S.optional(S.Number.pipe(T.Body("chunk_size"))),
-          customMetadata: S.optional(__S(63, __c7, 7).pipe(T.Body("custom_metadata"))),
+          customMetadata: S.optional(__S(545, __c17, 1).pipe(T.Body("custom_metadata"))),
           embeddingModel: S.optional(S.String.pipe(T.Body("embedding_model"))),
           fusionMethod: S.optional(S.String.pipe(T.Body("fusion_method"))),
-          indexMethod: S.optional(__S(64, __c8, 0).pipe(T.Body("index_method"))),
-          indexingOptions: S.optional(__S(106, __c13, 2).pipe(T.Body("indexing_options"))),
+          indexMethod: S.optional(__S(546, __c17, 2).pipe(T.Body("index_method"))),
+          indexingOptions: S.optional(__S(1024, __c32, 0).pipe(T.Body("indexing_options"))),
           maxNumResults: S.optional(S.Number.pipe(T.Body("max_num_results"))),
-          metadata: S.optional(__S(66, __c8, 2)),
+          metadata: S.optional(__S(576, __c18, 0)),
           paused: S.optional(S.Boolean),
           publicEndpointParams: S.optional(
-            __S(287, __c35, 7).pipe(T.Body("public_endpoint_params")),
+            __S(2368, __c74, 0).pipe(T.Body("public_endpoint_params")),
           ),
           reranking: S.optional(S.Boolean),
           rerankingModel: S.optional(S.String.pipe(T.Body("reranking_model"))),
-          retrievalOptions: S.optional(__S(111, __c13, 7).pipe(T.Body("retrieval_options"))),
+          retrievalOptions: S.optional(__S(1026, __c32, 2).pipe(T.Body("retrieval_options"))),
           rewriteModel: S.optional(S.String.pipe(T.Body("rewrite_model"))),
           rewriteQuery: S.optional(S.Boolean.pipe(T.Body("rewrite_query"))),
           scoreThreshold: S.optional(S.Number.pipe(T.Body("score_threshold"))),
           source: S.optional(S.String),
-          sourceParams: S.optional(__S(289, __c36, 1).pipe(T.Body("source_params"))),
+          sourceParams: S.optional(__S(2370, __c74, 2).pipe(T.Body("source_params"))),
           summarization: S.optional(S.Boolean),
           summarizationModel: S.optional(S.String.pipe(T.Body("summarization_model"))),
           syncInterval: S.optional(S.Number.pipe(T.Body("sync_interval"))),
@@ -9832,51 +10034,53 @@ function __c36(j: number): any {
       ).annotate({
         identifier: "UpdateNamespaceInstanceRequest",
       });
-    case 3:
+    case 4:
       return S.suspend(() =>
         S.Struct({
-          authorizedHosts: S.optional(S.NullOr(__S(79, __c9, 7)).pipe(T.Body("authorized_hosts"))),
-          chatCompletionsEndpoint: S.optional(
-            S.NullOr(__S(87, __c10, 7)).pipe(T.Body("chat_completions_endpoint")),
+          authorizedHosts: S.optional(
+            S.NullOr(__S(384, __c12, 0)).pipe(T.Body("authorized_hosts")),
           ),
-          customDomains: S.optional(S.NullOr(__S(79, __c9, 7)).pipe(T.Body("custom_domains"))),
+          chatCompletionsEndpoint: S.optional(
+            S.NullOr(__S(352, __c11, 0)).pipe(T.Body("chat_completions_endpoint")),
+          ),
+          customDomains: S.optional(S.NullOr(__S(384, __c12, 0)).pipe(T.Body("custom_domains"))),
           defaultDomainEnabled: S.optional(
             S.NullOr(S.Boolean).pipe(T.Body("default_domain_enabled")),
           ),
           enabled: S.optional(S.NullOr(S.Boolean)),
-          mcp: S.optional(S.NullOr(__S(88, __c11, 0))),
-          rateLimit: S.optional(S.NullOr(__S(117, __c14, 5)).pipe(T.Body("rate_limit"))),
-          searchEndpoint: S.optional(S.NullOr(__S(90, __c11, 2)).pipe(T.Body("search_endpoint"))),
+          mcp: S.optional(S.NullOr(__S(353, __c11, 1))),
+          rateLimit: S.optional(S.NullOr(__S(896, __c28, 0)).pipe(T.Body("rate_limit"))),
+          searchEndpoint: S.optional(S.NullOr(__S(416, __c13, 0)).pipe(T.Body("search_endpoint"))),
         }),
       ).annotate({
         identifier: "NamespacesInstancesUpdateResponsePublicEndpointParams",
       });
-    case 4:
+    case 5:
       return S.suspend(() =>
         S.Struct({
           discoverOptions: S.optional(
-            S.NullOr(__S(122, __c15, 2)).pipe(T.Body("discover_options")),
+            S.NullOr(__S(864, __c27, 0)).pipe(T.Body("discover_options")),
           ),
-          parseOptions: S.optional(S.NullOr(__S(123, __c15, 3)).pipe(T.Body("parse_options"))),
+          parseOptions: S.optional(S.NullOr(__S(865, __c27, 1)).pipe(T.Body("parse_options"))),
           parseType: S.optional(S.NullOr(S.String).pipe(T.Body("parse_type"))),
-          crawlOptions: S.optional(S.NullOr(__S(81, __c10, 1)).pipe(T.Body("crawl_options"))),
+          crawlOptions: S.optional(S.NullOr(__S(550, __c17, 6)).pipe(T.Body("crawl_options"))),
         }),
       ).annotate({
         identifier: "NamespacesInstancesUpdateResponseSourceParamsWebCrawler",
       });
-    case 5:
+    case 6:
       return S.suspend(() =>
         S.Struct({
-          excludeItems: S.optional(S.NullOr(__S(24, __c3, 0)).pipe(T.Body("exclude_items"))),
-          includeItems: S.optional(S.NullOr(__S(24, __c3, 0)).pipe(T.Body("include_items"))),
+          excludeItems: S.optional(S.NullOr(__S(224, __c7, 0)).pipe(T.Body("exclude_items"))),
+          includeItems: S.optional(S.NullOr(__S(224, __c7, 0)).pipe(T.Body("include_items"))),
           prefix: S.optional(S.NullOr(S.String)),
           r2Jurisdiction: S.optional(S.NullOr(S.String).pipe(T.Body("r2_jurisdiction"))),
-          webCrawler: S.optional(S.NullOr(__S(292, __c36, 4)).pipe(T.Body("web_crawler"))),
+          webCrawler: S.optional(S.NullOr(__S(2373, __c74, 5)).pipe(T.Body("web_crawler"))),
         }),
       ).annotate({
         identifier: "NamespacesInstancesUpdateResponseSourceParams",
       });
-    case 6:
+    case 7:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
@@ -9890,7 +10094,7 @@ function __c36(j: number): any {
           chunkOverlap: S.optional(S.NullOr(S.Number).pipe(T.Body("chunk_overlap"))),
           chunkSize: S.optional(S.NullOr(S.Number).pipe(T.Body("chunk_size"))),
           createdBy: S.optional(S.NullOr(S.String).pipe(T.Body("created_by"))),
-          customMetadata: S.optional(S.NullOr(__S(63, __c7, 7)).pipe(T.Body("custom_metadata"))),
+          customMetadata: S.optional(S.NullOr(__S(545, __c17, 1)).pipe(T.Body("custom_metadata"))),
           embeddingModel: S.optional(S.NullOr(S.String).pipe(T.Body("embedding_model"))),
           enable: S.optional(S.NullOr(S.Boolean)),
           engineVersion: S.optional(S.NullOr(S.Number).pipe(T.Body("engine_version"))),
@@ -9898,28 +10102,30 @@ function __c36(j: number): any {
           hybridSearchEnabled: S.optional(
             S.NullOr(S.Boolean).pipe(T.Body("hybrid_search_enabled")),
           ),
-          indexMethod: S.optional(S.NullOr(__S(64, __c8, 0)).pipe(T.Body("index_method"))),
-          indexingOptions: S.optional(S.NullOr(__S(85, __c10, 5)).pipe(T.Body("indexing_options"))),
+          indexMethod: S.optional(S.NullOr(__S(546, __c17, 2)).pipe(T.Body("index_method"))),
+          indexingOptions: S.optional(
+            S.NullOr(__S(551, __c17, 7)).pipe(T.Body("indexing_options")),
+          ),
           lastActivity: S.optional(S.NullOr(S.String).pipe(T.Body("last_activity"))),
           maxNumResults: S.optional(S.NullOr(S.Number).pipe(T.Body("max_num_results"))),
-          metadata: S.optional(S.NullOr(__S(86, __c10, 6))),
+          metadata: S.optional(S.NullOr(__S(552, __c17, 8))),
           modifiedBy: S.optional(S.NullOr(S.String).pipe(T.Body("modified_by"))),
           namespace: S.optional(S.NullOr(S.String)),
           paused: S.optional(S.NullOr(S.Boolean)),
           publicEndpointId: S.optional(S.NullOr(S.String).pipe(T.Body("public_endpoint_id"))),
           publicEndpointParams: S.optional(
-            S.NullOr(__S(291, __c36, 3)).pipe(T.Body("public_endpoint_params")),
+            S.NullOr(__S(2372, __c74, 4)).pipe(T.Body("public_endpoint_params")),
           ),
           reranking: S.optional(S.NullOr(S.Boolean)),
           rerankingModel: S.optional(S.NullOr(S.String).pipe(T.Body("reranking_model"))),
           retrievalOptions: S.optional(
-            S.NullOr(__S(121, __c15, 1)).pipe(T.Body("retrieval_options")),
+            S.NullOr(__S(960, __c30, 0)).pipe(T.Body("retrieval_options")),
           ),
           rewriteModel: S.optional(S.NullOr(S.String).pipe(T.Body("rewrite_model"))),
           rewriteQuery: S.optional(S.NullOr(S.Boolean).pipe(T.Body("rewrite_query"))),
           scoreThreshold: S.optional(S.NullOr(S.Number).pipe(T.Body("score_threshold"))),
           source: S.optional(S.NullOr(S.String)),
-          sourceParams: S.optional(S.NullOr(__S(293, __c36, 5)).pipe(T.Body("source_params"))),
+          sourceParams: S.optional(S.NullOr(__S(2374, __c74, 6)).pipe(T.Body("source_params"))),
           status: S.optional(S.NullOr(S.String)),
           syncInterval: S.optional(S.NullOr(S.Number).pipe(T.Body("sync_interval"))),
           tokenId: S.optional(S.NullOr(S.String).pipe(T.Body("token_id"))),
@@ -9928,7 +10134,11 @@ function __c36(j: number): any {
       ).annotate({
         identifier: "UpdateNamespaceInstanceResponse",
       });
-    case 7:
+  }
+}
+function __c75(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -9949,7 +10159,7 @@ function __c36(j: number): any {
       ).annotate({ identifier: "UpdateTokenRequest" });
   }
 }
-function __c37(j: number): any {
+function __c76(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -9967,7 +10177,7 @@ function __c37(j: number): any {
           accountId: S.String.pipe(T.Label("account_id")),
           name: S.String.pipe(T.Label()),
           id: S.String.pipe(T.Label()),
-          file: __S(296, __c37, 0),
+          file: __S(2432, __c76, 0),
         })
           .pipe(
             T.Http({
@@ -9983,7 +10193,7 @@ function __c37(j: number): any {
     case 2:
       return S.Unknown.pipe(/*@__PURE__*/ T.UnionCases([[], [], []]));
     case 3:
-      return S.Record(S.String, __S(298, __c37, 2));
+      return S.Record(S.String, __S(2434, __c76, 2));
     case 4:
       return S.Unknown.pipe(
         /*@__PURE__*/ T.UnionCases(
@@ -9998,7 +10208,7 @@ function __c37(j: number): any {
         ),
       );
     case 5:
-      return S.Array(__S(300, __c37, 4));
+      return S.Array(__S(2436, __c76, 4));
     case 6:
       return S.suspend(() =>
         S.Struct({
@@ -10009,20 +10219,19 @@ function __c37(j: number): any {
           fileSize: S.Number.pipe(T.Body("file_size")),
           key: S.String,
           lastSeenAt: S.String.pipe(T.Body("last_seen_at")),
-          metadata: __S(299, __c37, 3),
+          metadata: __S(2435, __c76, 3),
           namespace: S.String,
           nextAction: S.String.pipe(T.Body("next_action")),
           sourceId: S.String.pipe(T.Body("source_id")),
           status: S.String,
           error: S.optional(S.NullOr(S.String)),
-          warnings: S.optional(S.NullOr(__S(301, __c37, 5))),
+          warnings: S.optional(S.NullOr(__S(2437, __c76, 5))),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({
         identifier: "UploadNamespaceInstanceItemResponse",
       });
   }
 }
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

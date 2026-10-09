@@ -84,7 +84,7 @@ export const acceptPrivacyPolicies: API.OperationMethod<
   DaytonaOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(0, __c0, 0) as any as S.Schema<AcceptPrivacyPoliciesRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<AcceptPrivacyPoliciesResponse>,
+  output: __S(4, __c1, 0) as any as S.Schema<AcceptPrivacyPoliciesResponse>,
   errors: [UnknownDaytonaError],
   protocol: DaytonaProtocol,
   retry: Retry.Retry,
@@ -98,8 +98,8 @@ export const confirmPendingSsoLink: API.OperationMethod<
   ConfirmPendingSsoLinkError,
   DaytonaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2, __c0, 2) as any as S.Schema<ConfirmPendingSsoLinkRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<ConfirmPendingSsoLinkResponse>,
+  input: __S(8, __c2, 0) as any as S.Schema<ConfirmPendingSsoLinkRequest>,
+  output: __S(4, __c1, 0) as any as S.Schema<ConfirmPendingSsoLinkResponse>,
   errors: [UnknownDaytonaError],
   protocol: DaytonaProtocol,
   retry: Retry.Retry,
@@ -113,8 +113,8 @@ export const dismissPendingSsoLink: API.OperationMethod<
   DismissPendingSsoLinkError,
   DaytonaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3, __c0, 3) as any as S.Schema<DismissPendingSsoLinkRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<DismissPendingSsoLinkResponse>,
+  input: __S(12, __c3, 0) as any as S.Schema<DismissPendingSsoLinkRequest>,
+  output: __S(4, __c1, 0) as any as S.Schema<DismissPendingSsoLinkResponse>,
   errors: [UnknownDaytonaError],
   protocol: DaytonaProtocol,
   retry: Retry.Retry,
@@ -128,8 +128,8 @@ export const getAccountProviders: API.OperationMethod<
   GetAccountProvidersError,
   DaytonaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(4, __c0, 4) as any as S.Schema<GetAccountProvidersRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<GetAccountProvidersResponse>,
+  input: __S(16, __c4, 0) as any as S.Schema<GetAccountProvidersRequest>,
+  output: __S(19, __c4, 3) as any as S.Schema<GetAccountProvidersResponse>,
   errors: [UnknownDaytonaError],
   protocol: DaytonaProtocol,
   retry: Retry.Retry,
@@ -143,8 +143,8 @@ export const getAuthenticatedUser: API.OperationMethod<
   GetAuthenticatedUserError,
   DaytonaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(8, __c1, 0) as any as S.Schema<GetAuthenticatedUserRequest>,
-  output: __S(11, __c1, 3) as any as S.Schema<User>,
+  input: __S(20, __c5, 0) as any as S.Schema<GetAuthenticatedUserRequest>,
+  output: __S(23, __c5, 3) as any as S.Schema<User>,
   errors: [UnknownDaytonaError],
   protocol: DaytonaProtocol,
   retry: Retry.Retry,
@@ -158,8 +158,8 @@ export const listPendingSsoLinks: API.OperationMethod<
   ListPendingSsoLinksError,
   DaytonaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(12, __c1, 4) as any as S.Schema<ListPendingSsoLinksRequest>,
-  output: __S(15, __c1, 7) as any as S.Schema<ListPendingSsoLinksResponse>,
+  input: __S(24, __c6, 0) as any as S.Schema<ListPendingSsoLinksRequest>,
+  output: __S(27, __c6, 3) as any as S.Schema<ListPendingSsoLinksResponse>,
   errors: [UnknownDaytonaError],
   protocol: DaytonaProtocol,
   retry: Retry.Retry,
@@ -173,8 +173,8 @@ export const loginRecord: API.OperationMethod<
   LoginRecordError,
   DaytonaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(16, __c2, 0) as any as S.Schema<LoginRecordRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<LoginRecordResponse>,
+  input: __S(28, __c7, 0) as any as S.Schema<LoginRecordRequest>,
+  output: __S(4, __c1, 0) as any as S.Schema<LoginRecordResponse>,
   errors: [UnknownDaytonaError],
   protocol: DaytonaProtocol,
   retry: Retry.Retry,
@@ -191,11 +191,19 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "AcceptPrivacyPoliciesRequest",
       });
-    case 1:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "AcceptPrivacyPoliciesResponse",
       });
-    case 2:
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.String.pipe(T.Label()),
@@ -205,7 +213,11 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "ConfirmPendingSsoLinkRequest",
       });
-    case 3:
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.String.pipe(T.Label()),
@@ -213,13 +225,17 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "DismissPendingSsoLinkRequest",
       });
-    case 4:
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({}).pipe(T.Http({ method: "GET", uri: "/users/account-providers", code: 200 })),
       ).annotate({
         identifier: "GetAccountProvidersRequest",
       });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           provider: S.String,
@@ -227,15 +243,15 @@ function __c0(j: number): any {
           linked: S.Boolean,
         }),
       ).annotate({ identifier: "AccountProvider" });
-    case 6:
-      return S.Array(__S(5, __c0, 5));
-    case 7:
-      return S.suspend(() => __S(6, __c0, 6).pipe(T.RawResponseRoot())).annotate({
+    case 2:
+      return S.Array(__S(17, __c4, 1));
+    case 3:
+      return S.suspend(() => __S(18, __c4, 2).pipe(T.RawResponseRoot())).annotate({
         identifier: "GetAccountProvidersResponse",
       });
   }
 }
-function __c1(j: number): any {
+function __c5(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -251,7 +267,7 @@ function __c1(j: number): any {
         }),
       ).annotate({ identifier: "UserPublicKey" });
     case 2:
-      return S.Array(__S(9, __c1, 1));
+      return S.Array(__S(21, __c5, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
@@ -261,17 +277,21 @@ function __c1(j: number): any {
           emailVerified: S.Boolean,
           pylonEmailHash: S.optional(S.String),
           privacyPoliciesAccepted: S.optional(S.Boolean),
-          publicKeys: __S(10, __c1, 2),
+          publicKeys: __S(22, __c5, 2),
           createdAt: S.String,
         }),
       ).annotate({ identifier: "User" });
-    case 4:
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({}).pipe(T.Http({ method: "GET", uri: "/users/me/pending-sso-links", code: 200 })),
       ).annotate({
         identifier: "ListPendingSsoLinksRequest",
       });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
@@ -282,15 +302,15 @@ function __c1(j: number): any {
           expiresAt: S.String,
         }),
       ).annotate({ identifier: "PendingSsoLink" });
-    case 6:
-      return S.Array(__S(13, __c1, 5));
-    case 7:
-      return S.suspend(() => __S(14, __c1, 6).pipe(T.RawResponseRoot())).annotate({
+    case 2:
+      return S.Array(__S(25, __c6, 1));
+    case 3:
+      return S.suspend(() => __S(26, __c6, 2).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListPendingSsoLinksResponse",
       });
   }
 }
-function __c2(j: number): any {
+function __c7(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -298,7 +318,6 @@ function __c2(j: number): any {
       ).annotate({ identifier: "LoginRecordRequest" });
   }
 }
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

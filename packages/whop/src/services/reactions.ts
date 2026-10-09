@@ -139,7 +139,7 @@ export const createReaction: API.OperationMethod<
   WhopOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(0, __c0, 0) as any as S.Schema<CreateReactionRequest>,
-  output: __S(2, __c0, 2) as any as S.Schema<Reaction>,
+  output: __S(5, __c1, 1) as any as S.Schema<Reaction>,
   errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity],
   protocol: WhopProtocol,
   retry: Retry.Retry,
@@ -158,8 +158,8 @@ export const deleteReaction: API.OperationMethod<
   DeleteReactionError,
   WhopOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3, __c0, 3) as any as S.Schema<DeleteReactionRequest>,
-  output: __S(4, __c0, 4) as any as S.Schema<DeleteReactionResponse>,
+  input: __S(8, __c2, 0) as any as S.Schema<DeleteReactionRequest>,
+  output: __S(9, __c2, 1) as any as S.Schema<DeleteReactionResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity],
   protocol: WhopProtocol,
   retry: Retry.Retry,
@@ -178,8 +178,8 @@ export const getReaction: API.OperationMethod<
   GetReactionError,
   WhopOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(5, __c0, 5) as any as S.Schema<GetReactionRequest>,
-  output: __S(2, __c0, 2) as any as S.Schema<Reaction>,
+  input: __S(12, __c3, 0) as any as S.Schema<GetReactionRequest>,
+  output: __S(5, __c1, 1) as any as S.Schema<Reaction>,
   errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity],
   protocol: WhopProtocol,
   retry: Retry.Retry,
@@ -200,8 +200,8 @@ export const listReaction: API.PaginatedOperationMethod<
   ReactionListItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(6, __c0, 6) as any as S.Schema<ListReactionRequest>,
-    output: __S(9, __c1, 1) as any as S.Schema<ListReactionResponse>,
+    input: __S(16, __c4, 0) as any as S.Schema<ListReactionRequest>,
+    output: __S(19, __c4, 3) as any as S.Schema<ListReactionResponse>,
     errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity],
     protocol: WhopProtocol,
     retry: Retry.Retry,
@@ -228,7 +228,11 @@ function __c0(j: number): any {
           resource_id: S.String,
         }).pipe(T.Http({ method: "POST", uri: "/reactions", code: 200 })),
       ).annotate({ identifier: "CreateReactionRequest" });
-    case 1:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
@@ -236,33 +240,45 @@ function __c0(j: number): any {
           username: S.String,
         }),
       ).annotate({ identifier: "ReactionUser" });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           emoji: S.NullOr(S.String),
           id: S.String,
           resource_id: S.String,
-          user: __S(1, __c0, 1),
+          user: __S(4, __c1, 0),
         }),
       ).annotate({ identifier: "Reaction" });
-    case 3:
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.String.pipe(T.Label()),
           emoji: S.optional(S.String.pipe(T.Query())),
         }).pipe(T.Http({ method: "DELETE", uri: "/reactions/{id}", code: 200 })),
       ).annotate({ identifier: "DeleteReactionRequest" });
-    case 4:
+    case 1:
       return S.suspend(() => S.Boolean.pipe(T.RawResponseRoot())).annotate({
         identifier: "DeleteReactionResponse",
       });
-    case 5:
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.String.pipe(T.Label()),
         }).pipe(T.Http({ method: "GET", uri: "/reactions/{id}", code: 200 })),
       ).annotate({ identifier: "GetReactionRequest" });
-    case 6:
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           after: S.optional(S.String.pipe(T.Query())),
@@ -272,13 +288,9 @@ function __c0(j: number): any {
           resource_id: S.String.pipe(T.Query()),
         }).pipe(T.Http({ method: "GET", uri: "/reactions", code: 200 })),
       ).annotate({ identifier: "ListReactionRequest" });
-    case 7:
-      return S.Array(__S(2, __c0, 2));
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
+      return S.Array(__S(5, __c1, 1));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           end_cursor: S.NullOr(S.String),
@@ -287,16 +299,15 @@ function __c1(j: number): any {
           start_cursor: S.NullOr(S.String),
         }),
       ).annotate({ identifier: "PageInfo" });
-    case 1:
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          data: __S(7, __c0, 7),
-          page_info: __S(8, __c1, 0),
+          data: __S(17, __c4, 1),
+          page_info: __S(18, __c4, 2),
         }),
       ).annotate({ identifier: "ListReactionResponse" });
   }
 }
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

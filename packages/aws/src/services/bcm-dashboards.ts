@@ -515,8 +515,8 @@ export const createDashboard: API.OperationMethod<
   CreateDashboardError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(26, __c3, 2) as any as S.Schema<CreateDashboardRequest>,
-  output: __S(27, __c3, 3) as any as S.Schema<CreateDashboardResponse>,
+  input: __S(416, __c13, 0) as any as S.Schema<CreateDashboardRequest>,
+  output: __S(640, __c20, 0) as any as S.Schema<CreateDashboardResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -546,8 +546,8 @@ export const createScheduledReport: API.OperationMethod<
   CreateScheduledReportError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(31, __c3, 7) as any as S.Schema<CreateScheduledReportRequest>,
-  output: __S(32, __c4, 0) as any as S.Schema<CreateScheduledReportResponse>,
+  input: __S(673, __c21, 1) as any as S.Schema<CreateScheduledReportRequest>,
+  output: __S(704, __c22, 0) as any as S.Schema<CreateScheduledReportResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -576,8 +576,8 @@ export const deleteDashboard: API.OperationMethod<
   DeleteDashboardError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(33, __c4, 1) as any as S.Schema<DeleteDashboardRequest>,
-  output: __S(27, __c3, 3) as any as S.Schema<DeleteDashboardResponse>,
+  input: __S(768, __c24, 0) as any as S.Schema<DeleteDashboardRequest>,
+  output: __S(640, __c20, 0) as any as S.Schema<DeleteDashboardResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -605,8 +605,8 @@ export const deleteScheduledReport: API.OperationMethod<
   DeleteScheduledReportError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(34, __c4, 2) as any as S.Schema<DeleteScheduledReportRequest>,
-  output: __S(32, __c4, 0) as any as S.Schema<DeleteScheduledReportResponse>,
+  input: __S(0, __c0, 0) as any as S.Schema<DeleteScheduledReportRequest>,
+  output: __S(704, __c22, 0) as any as S.Schema<DeleteScheduledReportResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -638,8 +638,8 @@ export const executeScheduledReport: API.OperationMethod<
   ExecuteScheduledReportError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(35, __c4, 3) as any as S.Schema<ExecuteScheduledReportRequest>,
-  output: __S(37, __c4, 5) as any as S.Schema<ExecuteScheduledReportResponse>,
+  input: __S(32, __c1, 0) as any as S.Schema<ExecuteScheduledReportRequest>,
+  output: __S(33, __c1, 1) as any as S.Schema<ExecuteScheduledReportResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -669,8 +669,8 @@ export const getDashboard: API.OperationMethod<
   GetDashboardError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(38, __c4, 6) as any as S.Schema<GetDashboardRequest>,
-  output: __S(39, __c4, 7) as any as S.Schema<GetDashboardResponse>,
+  input: __S(96, __c3, 0) as any as S.Schema<GetDashboardRequest>,
+  output: __S(97, __c3, 1) as any as S.Schema<GetDashboardResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -699,8 +699,8 @@ export const getResourcePolicy: API.OperationMethod<
   GetResourcePolicyError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(40, __c5, 0) as any as S.Schema<GetResourcePolicyRequest>,
-  output: __S(41, __c5, 1) as any as S.Schema<GetResourcePolicyResponse>,
+  input: __S(128, __c4, 0) as any as S.Schema<GetResourcePolicyRequest>,
+  output: __S(129, __c4, 1) as any as S.Schema<GetResourcePolicyResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -729,8 +729,8 @@ export const getScheduledReport: API.OperationMethod<
   GetScheduledReportError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(42, __c5, 2) as any as S.Schema<GetScheduledReportRequest>,
-  output: __S(44, __c5, 4) as any as S.Schema<GetScheduledReportResponse>,
+  input: __S(160, __c5, 0) as any as S.Schema<GetScheduledReportRequest>,
+  output: __S(162, __c5, 2) as any as S.Schema<GetScheduledReportResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -759,8 +759,8 @@ export const listDashboards: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   DashboardReference
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(45, __c5, 5) as any as S.Schema<ListDashboardsRequest>,
-  output: __S(48, __c6, 0) as any as S.Schema<ListDashboardsResponse>,
+  input: __S(192, __c6, 0) as any as S.Schema<ListDashboardsRequest>,
+  output: __S(195, __c6, 3) as any as S.Schema<ListDashboardsResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -794,8 +794,8 @@ export const listScheduledReports: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   ScheduledReportSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(49, __c6, 1) as any as S.Schema<ListScheduledReportsRequest>,
-  output: __S(52, __c6, 4) as any as S.Schema<ListScheduledReportsResponse>,
+  input: __S(224, __c7, 0) as any as S.Schema<ListScheduledReportsRequest>,
+  output: __S(227, __c7, 3) as any as S.Schema<ListScheduledReportsResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -828,8 +828,8 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(53, __c6, 5) as any as S.Schema<ListTagsForResourceRequest>,
-  output: __S(54, __c6, 6) as any as S.Schema<ListTagsForResourceResponse>,
+  input: __S(256, __c8, 0) as any as S.Schema<ListTagsForResourceRequest>,
+  output: __S(257, __c8, 1) as any as S.Schema<ListTagsForResourceResponse>,
   errors: [
     InternalServerException,
     ResourceNotFoundException,
@@ -856,8 +856,8 @@ export const tagResource: API.OperationMethod<
   TagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(55, __c6, 7) as any as S.Schema<TagResourceRequest>,
-  output: __S(18, __c2, 2) as any as S.Schema<TagResourceResponse>,
+  input: __S(288, __c9, 0) as any as S.Schema<TagResourceRequest>,
+  output: __S(480, __c15, 0) as any as S.Schema<TagResourceResponse>,
   errors: [
     InternalServerException,
     ResourceNotFoundException,
@@ -884,8 +884,8 @@ export const untagResource: API.OperationMethod<
   UntagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(56, __c7, 0) as any as S.Schema<UntagResourceRequest>,
-  output: __S(18, __c2, 2) as any as S.Schema<UntagResourceResponse>,
+  input: __S(320, __c10, 0) as any as S.Schema<UntagResourceRequest>,
+  output: __S(480, __c15, 0) as any as S.Schema<UntagResourceResponse>,
   errors: [
     InternalServerException,
     ResourceNotFoundException,
@@ -913,8 +913,8 @@ export const updateDashboard: API.OperationMethod<
   UpdateDashboardError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(57, __c7, 1) as any as S.Schema<UpdateDashboardRequest>,
-  output: __S(27, __c3, 3) as any as S.Schema<UpdateDashboardResponse>,
+  input: __S(352, __c11, 0) as any as S.Schema<UpdateDashboardRequest>,
+  output: __S(640, __c20, 0) as any as S.Schema<UpdateDashboardResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -944,8 +944,8 @@ export const updateScheduledReport: API.OperationMethod<
   UpdateScheduledReportError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(58, __c7, 2) as any as S.Schema<UpdateScheduledReportRequest>,
-  output: __S(32, __c4, 0) as any as S.Schema<UpdateScheduledReportResponse>,
+  input: __S(384, __c12, 0) as any as S.Schema<UpdateScheduledReportRequest>,
+  output: __S(704, __c22, 0) as any as S.Schema<UpdateScheduledReportResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -963,243 +963,6 @@ export const updateScheduledReport: API.OperationMethod<
 function __c0(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(S.String);
-    case 1:
-      return S.suspend(() => S.Struct({ type: S.String, value: S.String })).annotate({
-        identifier: "DateTimeValue",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({ startTime: __S(1, __c0, 1), endTime: __S(1, __c0, 1) }),
-      ).annotate({ identifier: "DateTimeRange" });
-    case 3:
-      return S.suspend(() => S.Struct({ key: S.String, type: S.optional(S.String) })).annotate({
-        identifier: "GroupDefinition",
-      });
-    case 4:
-      return S.Array(__S(3, __c0, 3));
-    case 5:
-      return S.Array(
-        /*@__PURE__*/ S.suspend((): S.Schema<Expression> => __S(9, __c1, 1)).annotate({
-          identifier: "Expression",
-        }),
-      );
-    case 6:
-      return S.Array(S.String);
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          key: S.String,
-          values: __S(6, __c0, 6),
-          matchOptions: S.optional(__S(0, __c0, 0)),
-        }),
-      ).annotate({ identifier: "DimensionValues" });
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          key: S.optional(S.String),
-          values: S.optional(__S(6, __c0, 6)),
-          matchOptions: S.optional(__S(0, __c0, 0)),
-        }),
-      ).annotate({ identifier: "TagValues" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          or: S.optional(S.suspend(() => __S(5, __c0, 5)).annotate({ identifier: "Expressions" })),
-          and: S.optional(S.suspend(() => __S(5, __c0, 5)).annotate({ identifier: "Expressions" })),
-          not: S.optional(
-            S.suspend((): S.Schema<Expression> => __S(9, __c1, 1)).annotate({
-              identifier: "Expression",
-            }),
-          ),
-          dimensions: S.optional(__S(7, __c0, 7)),
-          tags: S.optional(__S(8, __c1, 0)),
-          costCategories: S.optional(__S(8, __c1, 0)),
-        }),
-      ).annotate({ identifier: "Expression" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          metrics: __S(0, __c0, 0),
-          timeRange: __S(2, __c0, 2),
-          granularity: S.String,
-          groupBy: S.optional(__S(4, __c0, 4)),
-          filter: S.optional(__S(9, __c1, 1)),
-        }),
-      ).annotate({ identifier: "CostAndUsageQuery" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          timeRange: __S(2, __c0, 2),
-          metrics: S.optional(__S(0, __c0, 0)),
-          granularity: S.optional(S.String),
-          groupBy: S.optional(__S(4, __c0, 4)),
-          filter: S.optional(__S(9, __c1, 1)),
-        }),
-      ).annotate({
-        identifier: "SavingsPlansCoverageQuery",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          timeRange: __S(2, __c0, 2),
-          granularity: S.optional(S.String),
-          filter: S.optional(__S(9, __c1, 1)),
-        }),
-      ).annotate({
-        identifier: "SavingsPlansUtilizationQuery",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          timeRange: __S(2, __c0, 2),
-          groupBy: S.optional(__S(4, __c0, 4)),
-          granularity: S.optional(S.String),
-          filter: S.optional(__S(9, __c1, 1)),
-          metrics: S.optional(__S(0, __c0, 0)),
-        }),
-      ).annotate({ identifier: "ReservationCoverageQuery" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          timeRange: __S(2, __c0, 2),
-          groupBy: S.optional(__S(4, __c0, 4)),
-          granularity: S.optional(S.String),
-          filter: S.optional(__S(9, __c1, 1)),
-        }),
-      ).annotate({
-        identifier: "ReservationUtilizationQuery",
-      });
-    case 7:
-      return S.Union([
-        /*@__PURE__*/ S.Struct({ costAndUsage: __S(10, __c1, 2) }),
-        /*@__PURE__*/ S.Struct({ savingsPlansCoverage: __S(11, __c1, 3) }),
-        /*@__PURE__*/ S.Struct({ savingsPlansUtilization: __S(12, __c1, 4) }),
-        /*@__PURE__*/ S.Struct({ reservationCoverage: __S(13, __c1, 5) }),
-        /*@__PURE__*/ S.Struct({ reservationUtilization: __S(14, __c1, 6) }),
-      ]);
-  }
-}
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() => S.Struct({ visualType: S.String })).annotate({
-        identifier: "GraphDisplayConfig",
-      });
-    case 1:
-      return S.Record(S.String, /*@__PURE__*/ __S(16, __c2, 0).pipe(S.optional));
-    case 2:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "TableDisplayConfigStruct",
-      });
-    case 3:
-      return S.Union([
-        /*@__PURE__*/ S.Struct({ graph: __S(17, __c2, 1) }),
-        /*@__PURE__*/ S.Struct({ table: __S(18, __c2, 2) }),
-      ]);
-    case 4:
-      return S.suspend(() =>
-        S.Struct({ queryParameters: __S(15, __c1, 7), displayConfig: __S(19, __c2, 3) }),
-      ).annotate({ identifier: "WidgetConfig" });
-    case 5:
-      return S.Array(__S(20, __c2, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          title: S.String,
-          description: S.optional(S.String),
-          width: S.optional(S.Number),
-          height: S.optional(S.Number),
-          horizontalOffset: S.optional(S.Number),
-          configs: __S(21, __c2, 5),
-        }),
-      ).annotate({ identifier: "Widget" });
-    case 7:
-      return S.Array(__S(22, __c2, 6));
-  }
-}
-function __c3(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() => S.Struct({ key: S.String, value: S.String })).annotate({
-        identifier: "ResourceTag",
-      });
-    case 1:
-      return S.Array(__S(24, __c3, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String,
-          description: S.optional(S.String),
-          widgets: __S(23, __c2, 7),
-          resourceTags: S.optional(__S(25, __c3, 1)),
-        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({ identifier: "CreateDashboardRequest" });
-    case 3:
-      return S.suspend(() => S.Struct({ arn: S.String })).annotate({
-        identifier: "CreateDashboardResponse",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          startTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          endTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-        }),
-      ).annotate({ identifier: "SchedulePeriod" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          scheduleExpression: S.optional(S.String),
-          scheduleExpressionTimeZone: S.optional(S.String),
-          schedulePeriod: S.optional(__S(28, __c3, 4)),
-          state: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ScheduleConfig" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String,
-          dashboardArn: S.String,
-          scheduledReportExecutionRoleArn: S.String,
-          scheduleConfig: __S(29, __c3, 5),
-          description: S.optional(S.String),
-          widgetIds: S.optional(__S(6, __c0, 6)),
-          widgetDateRangeOverride: S.optional(__S(2, __c0, 2)),
-        }),
-      ).annotate({ identifier: "ScheduledReportInput" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          scheduledReport: __S(30, __c3, 6),
-          resourceTags: S.optional(__S(25, __c3, 1)),
-          clientToken: S.optional(S.String).pipe(
-            T.HttpHeader("X-Amzn-Client-Token"),
-            T.IdempotencyToken(),
-          ),
-        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "CreateScheduledReportRequest",
-      });
-  }
-}
-function __c4(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() => S.Struct({ arn: S.String })).annotate({
-        identifier: "CreateScheduledReportResponse",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({ arn: S.String }).pipe(
-          T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-        ),
-      ).annotate({ identifier: "DeleteDashboardRequest" });
-    case 2:
       return S.suspend(() =>
         S.Struct({ arn: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
@@ -1207,7 +970,11 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "DeleteScheduledReportRequest",
       });
-    case 3:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           arn: S.String,
@@ -1220,44 +987,52 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "ExecuteScheduledReportRequest",
       });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          statusCode: S.String,
-          lastRefreshedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          statusReasons: S.optional(__S(0, __c0, 0)),
-        }),
-      ).annotate({ identifier: "HealthStatus" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          healthStatus: S.optional(__S(36, __c4, 4)),
+          healthStatus: S.optional(__S(64, __c2, 0)),
           executionTriggered: S.optional(S.Boolean),
         }),
       ).annotate({
         identifier: "ExecuteScheduledReportResponse",
       });
-    case 6:
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          statusCode: S.String,
+          lastRefreshedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          statusReasons: S.optional(__S(448, __c14, 0)),
+        }),
+      ).annotate({ identifier: "HealthStatus" });
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ arn: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "GetDashboardRequest" });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           arn: S.String,
           name: S.String,
           description: S.optional(S.String),
           type: S.String,
-          widgets: __S(23, __c2, 7),
+          widgets: __S(530, __c16, 18),
           createdAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
           updatedAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
         }),
       ).annotate({ identifier: "GetDashboardResponse" });
   }
 }
-function __c5(j: number): any {
+function __c4(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1271,7 +1046,11 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "GetResourcePolicyResponse",
       });
-    case 2:
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ arn: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
@@ -1279,34 +1058,38 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "GetScheduledReportRequest",
       });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           arn: S.optional(S.String),
           name: S.String,
           dashboardArn: S.String,
           scheduledReportExecutionRoleArn: S.String,
-          scheduleConfig: __S(29, __c3, 5),
+          scheduleConfig: __S(737, __c23, 1),
           description: S.optional(S.String),
-          widgetIds: S.optional(__S(6, __c0, 6)),
-          widgetDateRangeOverride: S.optional(__S(2, __c0, 2)),
+          widgetIds: S.optional(__S(544, __c17, 0)),
+          widgetDateRangeOverride: S.optional(__S(577, __c18, 1)),
           createdAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           updatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           lastExecutionAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          healthStatus: S.optional(__S(36, __c4, 4)),
+          healthStatus: S.optional(__S(64, __c2, 0)),
         }),
       ).annotate({ identifier: "ScheduledReport" });
-    case 4:
-      return S.suspend(() => S.Struct({ scheduledReport: __S(43, __c5, 3) })).annotate({
+    case 2:
+      return S.suspend(() => S.Struct({ scheduledReport: __S(161, __c5, 1) })).annotate({
         identifier: "GetScheduledReportResponse",
       });
-    case 5:
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ maxResults: S.optional(S.Number), nextToken: S.optional(S.String) }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "ListDashboardsRequest" });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           arn: S.String,
@@ -1317,17 +1100,17 @@ function __c5(j: number): any {
           updatedAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
         }),
       ).annotate({ identifier: "DashboardReference" });
-    case 7:
-      return S.Array(__S(46, __c5, 6));
+    case 2:
+      return S.Array(__S(193, __c6, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({ dashboards: __S(194, __c6, 2), nextToken: S.optional(S.String) }),
+      ).annotate({ identifier: "ListDashboardsResponse" });
   }
 }
-function __c6(j: number): any {
+function __c7(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() =>
-        S.Struct({ dashboards: __S(47, __c5, 7), nextToken: S.optional(S.String) }),
-      ).annotate({ identifier: "ListDashboardsResponse" });
-    case 1:
       return S.suspend(() =>
         S.Struct({ nextToken: S.optional(S.String), maxResults: S.optional(S.Number) }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
@@ -1335,7 +1118,7 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "ListScheduledReportsRequest",
       });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           arn: S.String,
@@ -1343,20 +1126,24 @@ function __c6(j: number): any {
           dashboardArn: S.String,
           scheduleExpression: S.String,
           state: S.String,
-          healthStatus: __S(36, __c4, 4),
+          healthStatus: __S(64, __c2, 0),
           scheduleExpressionTimeZone: S.optional(S.String),
-          widgetIds: S.optional(__S(6, __c0, 6)),
+          widgetIds: S.optional(__S(544, __c17, 0)),
         }),
       ).annotate({ identifier: "ScheduledReportSummary" });
+    case 2:
+      return S.Array(__S(225, __c7, 1));
     case 3:
-      return S.Array(__S(50, __c6, 2));
-    case 4:
       return S.suspend(() =>
-        S.Struct({ scheduledReports: __S(51, __c6, 3), nextToken: S.optional(S.String) }),
+        S.Struct({ scheduledReports: __S(226, __c7, 2), nextToken: S.optional(S.String) }),
       ).annotate({
         identifier: "ListScheduledReportsResponse",
       });
-    case 5:
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ resourceArn: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
@@ -1364,36 +1151,48 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "ListTagsForResourceRequest",
       });
-    case 6:
-      return S.suspend(() => S.Struct({ resourceTags: S.optional(__S(25, __c3, 1)) })).annotate({
+    case 1:
+      return S.suspend(() => S.Struct({ resourceTags: S.optional(__S(609, __c19, 1)) })).annotate({
         identifier: "ListTagsForResourceResponse",
       });
-    case 7:
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
-        S.Struct({ resourceArn: S.String, resourceTags: __S(25, __c3, 1) }).pipe(
+        S.Struct({ resourceArn: S.String, resourceTags: __S(609, __c19, 1) }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "TagResourceRequest" });
   }
 }
-function __c7(j: number): any {
+function __c10(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({ resourceArn: S.String, resourceTagKeys: __S(6, __c0, 6) }).pipe(
+        S.Struct({ resourceArn: S.String, resourceTagKeys: __S(544, __c17, 0) }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "UntagResourceRequest" });
-    case 1:
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           arn: S.String,
           name: S.String,
           description: S.optional(S.String),
-          widgets: S.optional(__S(23, __c2, 7)),
+          widgets: S.optional(__S(530, __c16, 18)),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "UpdateDashboardRequest" });
-    case 2:
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           arn: S.String,
@@ -1401,9 +1200,9 @@ function __c7(j: number): any {
           description: S.optional(S.String),
           dashboardArn: S.optional(S.String),
           scheduledReportExecutionRoleArn: S.optional(S.String),
-          scheduleConfig: S.optional(__S(29, __c3, 5)),
-          widgetIds: S.optional(__S(6, __c0, 6)),
-          widgetDateRangeOverride: S.optional(__S(2, __c0, 2)),
+          scheduleConfig: S.optional(__S(737, __c23, 1)),
+          widgetIds: S.optional(__S(544, __c17, 0)),
+          widgetDateRangeOverride: S.optional(__S(577, __c18, 1)),
           clearWidgetIds: S.optional(S.Boolean),
           clearWidgetDateRangeOverride: S.optional(S.Boolean),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
@@ -1412,7 +1211,279 @@ function __c7(j: number): any {
       });
   }
 }
-
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String,
+          description: S.optional(S.String),
+          widgets: __S(530, __c16, 18),
+          resourceTags: S.optional(__S(609, __c19, 1)),
+        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({ identifier: "CreateDashboardRequest" });
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "TableDisplayConfigStruct",
+      });
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({ key: S.String, type: S.optional(S.String) })).annotate({
+        identifier: "GroupDefinition",
+      });
+    case 1:
+      return S.Array(__S(512, __c16, 0));
+    case 2:
+      return S.Array(
+        /*@__PURE__*/ S.suspend((): S.Schema<Expression> => __S(517, __c16, 5)).annotate({
+          identifier: "Expression",
+        }),
+      );
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          key: S.String,
+          values: __S(544, __c17, 0),
+          matchOptions: S.optional(__S(448, __c14, 0)),
+        }),
+      ).annotate({ identifier: "DimensionValues" });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          key: S.optional(S.String),
+          values: S.optional(__S(544, __c17, 0)),
+          matchOptions: S.optional(__S(448, __c14, 0)),
+        }),
+      ).annotate({ identifier: "TagValues" });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          or: S.optional(
+            S.suspend(() => __S(514, __c16, 2)).annotate({ identifier: "Expressions" }),
+          ),
+          and: S.optional(
+            S.suspend(() => __S(514, __c16, 2)).annotate({ identifier: "Expressions" }),
+          ),
+          not: S.optional(
+            S.suspend((): S.Schema<Expression> => __S(517, __c16, 5)).annotate({
+              identifier: "Expression",
+            }),
+          ),
+          dimensions: S.optional(__S(515, __c16, 3)),
+          tags: S.optional(__S(516, __c16, 4)),
+          costCategories: S.optional(__S(516, __c16, 4)),
+        }),
+      ).annotate({ identifier: "Expression" });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          metrics: __S(448, __c14, 0),
+          timeRange: __S(577, __c18, 1),
+          granularity: S.String,
+          groupBy: S.optional(__S(513, __c16, 1)),
+          filter: S.optional(__S(517, __c16, 5)),
+        }),
+      ).annotate({ identifier: "CostAndUsageQuery" });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          timeRange: __S(577, __c18, 1),
+          metrics: S.optional(__S(448, __c14, 0)),
+          granularity: S.optional(S.String),
+          groupBy: S.optional(__S(513, __c16, 1)),
+          filter: S.optional(__S(517, __c16, 5)),
+        }),
+      ).annotate({
+        identifier: "SavingsPlansCoverageQuery",
+      });
+    case 8:
+      return S.suspend(() =>
+        S.Struct({
+          timeRange: __S(577, __c18, 1),
+          granularity: S.optional(S.String),
+          filter: S.optional(__S(517, __c16, 5)),
+        }),
+      ).annotate({
+        identifier: "SavingsPlansUtilizationQuery",
+      });
+    case 9:
+      return S.suspend(() =>
+        S.Struct({
+          timeRange: __S(577, __c18, 1),
+          groupBy: S.optional(__S(513, __c16, 1)),
+          granularity: S.optional(S.String),
+          filter: S.optional(__S(517, __c16, 5)),
+          metrics: S.optional(__S(448, __c14, 0)),
+        }),
+      ).annotate({ identifier: "ReservationCoverageQuery" });
+    case 10:
+      return S.suspend(() =>
+        S.Struct({
+          timeRange: __S(577, __c18, 1),
+          groupBy: S.optional(__S(513, __c16, 1)),
+          granularity: S.optional(S.String),
+          filter: S.optional(__S(517, __c16, 5)),
+        }),
+      ).annotate({
+        identifier: "ReservationUtilizationQuery",
+      });
+    case 11:
+      return S.Union([
+        /*@__PURE__*/ S.Struct({ costAndUsage: __S(518, __c16, 6) }),
+        /*@__PURE__*/ S.Struct({ savingsPlansCoverage: __S(519, __c16, 7) }),
+        /*@__PURE__*/ S.Struct({ savingsPlansUtilization: __S(520, __c16, 8) }),
+        /*@__PURE__*/ S.Struct({ reservationCoverage: __S(521, __c16, 9) }),
+        /*@__PURE__*/ S.Struct({ reservationUtilization: __S(522, __c16, 10) }),
+      ]);
+    case 12:
+      return S.suspend(() => S.Struct({ visualType: S.String })).annotate({
+        identifier: "GraphDisplayConfig",
+      });
+    case 13:
+      return S.Record(S.String, /*@__PURE__*/ __S(524, __c16, 12).pipe(S.optional));
+    case 14:
+      return S.Union([
+        /*@__PURE__*/ S.Struct({ graph: __S(525, __c16, 13) }),
+        /*@__PURE__*/ S.Struct({ table: __S(480, __c15, 0) }),
+      ]);
+    case 15:
+      return S.suspend(() =>
+        S.Struct({ queryParameters: __S(523, __c16, 11), displayConfig: __S(526, __c16, 14) }),
+      ).annotate({ identifier: "WidgetConfig" });
+    case 16:
+      return S.Array(__S(527, __c16, 15));
+    case 17:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          title: S.String,
+          description: S.optional(S.String),
+          width: S.optional(S.Number),
+          height: S.optional(S.Number),
+          horizontalOffset: S.optional(S.Number),
+          configs: __S(528, __c16, 16),
+        }),
+      ).annotate({ identifier: "Widget" });
+    case 18:
+      return S.Array(__S(529, __c16, 17));
+  }
+}
+function __c17(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c18(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({ type: S.String, value: S.String })).annotate({
+        identifier: "DateTimeValue",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({ startTime: __S(576, __c18, 0), endTime: __S(576, __c18, 0) }),
+      ).annotate({ identifier: "DateTimeRange" });
+  }
+}
+function __c19(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({ key: S.String, value: S.String })).annotate({
+        identifier: "ResourceTag",
+      });
+    case 1:
+      return S.Array(__S(608, __c19, 0));
+  }
+}
+function __c20(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({ arn: S.String })).annotate({
+        identifier: "CreateDashboardResponse",
+      });
+  }
+}
+function __c21(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String,
+          dashboardArn: S.String,
+          scheduledReportExecutionRoleArn: S.String,
+          scheduleConfig: __S(737, __c23, 1),
+          description: S.optional(S.String),
+          widgetIds: S.optional(__S(544, __c17, 0)),
+          widgetDateRangeOverride: S.optional(__S(577, __c18, 1)),
+        }),
+      ).annotate({ identifier: "ScheduledReportInput" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          scheduledReport: __S(672, __c21, 0),
+          resourceTags: S.optional(__S(609, __c19, 1)),
+          clientToken: S.optional(S.String).pipe(
+            T.HttpHeader("X-Amzn-Client-Token"),
+            T.IdempotencyToken(),
+          ),
+        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({
+        identifier: "CreateScheduledReportRequest",
+      });
+  }
+}
+function __c22(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({ arn: S.String })).annotate({
+        identifier: "CreateScheduledReportResponse",
+      });
+  }
+}
+function __c23(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          startTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          endTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+        }),
+      ).annotate({ identifier: "SchedulePeriod" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          scheduleExpression: S.optional(S.String),
+          scheduleExpressionTimeZone: S.optional(S.String),
+          schedulePeriod: S.optional(__S(736, __c23, 0)),
+          state: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ScheduleConfig" });
+  }
+}
+function __c24(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ arn: S.String }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "DeleteDashboardRequest" });
+  }
+}
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

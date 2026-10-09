@@ -236,8 +236,8 @@ export const batchCreateNotesPermissions: API.OperationMethod<
   BatchCreateNotesPermissionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(6, __c0, 6) as any as S.Schema<BatchCreateNotesPermissionsRequest>,
-  output: __S(8, __c1, 0) as any as S.Schema<BatchCreatePermissionsResponse>,
+  input: __S(11, __c1, 3) as any as S.Schema<BatchCreateNotesPermissionsRequest>,
+  output: __S(12, __c1, 4) as any as S.Schema<BatchCreatePermissionsResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -256,8 +256,8 @@ export const batchDeleteNotesPermissions: API.OperationMethod<
   BatchDeleteNotesPermissionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(11, __c1, 3) as any as S.Schema<BatchDeleteNotesPermissionsRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<Empty>,
+  input: __S(33, __c4, 1) as any as S.Schema<BatchDeleteNotesPermissionsRequest>,
+  output: __S(16, __c2, 0) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -271,8 +271,8 @@ export const createNotes: API.OperationMethod<
   CreateNotesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(20, __c2, 4) as any as S.Schema<CreateNotesRequest>,
-  output: __S(19, __c2, 3) as any as S.Schema<Note>,
+  input: __S(48, __c6, 0) as any as S.Schema<CreateNotesRequest>,
+  output: __S(70, __c8, 6) as any as S.Schema<Note>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -286,8 +286,8 @@ export const deleteNotes: API.OperationMethod<
   DeleteNotesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(21, __c2, 5) as any as S.Schema<DeleteNotesRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<Empty>,
+  input: __S(72, __c9, 0) as any as S.Schema<DeleteNotesRequest>,
+  output: __S(16, __c2, 0) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -301,8 +301,8 @@ export const downloadMedia: API.OperationMethod<
   DownloadMediaError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(22, __c2, 6) as any as S.Schema<DownloadMediaRequest>,
-  output: __S(12, __c1, 4) as any as S.Schema<Attachment>,
+  input: __S(80, __c10, 0) as any as S.Schema<DownloadMediaRequest>,
+  output: __S(56, __c7, 0) as any as S.Schema<Attachment>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -312,8 +312,8 @@ export type GetNotesError = NotFound | Forbidden | GcpOpError;
 /** Gets a note. */
 export const getNotes: API.OperationMethod<GetNotesRequest, Note, GetNotesError, GcpOpContext> =
   /*@__PURE__*/ API.make(() => ({
-    input: __S(23, __c2, 7) as any as S.Schema<GetNotesRequest>,
-    output: __S(19, __c2, 3) as any as S.Schema<Note>,
+    input: __S(88, __c11, 0) as any as S.Schema<GetNotesRequest>,
+    output: __S(70, __c8, 6) as any as S.Schema<Note>,
     errors: [NotFound, Forbidden, UnknownGCPError],
     protocol: GcpProtocol,
     retry: Retry.Retry,
@@ -328,8 +328,8 @@ export const listNotes: API.PaginatedOperationMethod<
   GcpOpContext,
   ListNotesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(24, __c3, 0) as any as S.Schema<ListNotesRequest>,
-  output: __S(26, __c3, 2) as any as S.Schema<ListNotesResponse>,
+  input: __S(0, __c0, 0) as any as S.Schema<ListNotesRequest>,
+  output: __S(2, __c0, 2) as any as S.Schema<ListNotesResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -342,47 +342,48 @@ function __c0(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          email: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Group" });
+          pageToken: S.optional(S.String.pipe(T.Query())),
+          filter: S.optional(S.String.pipe(T.Query())),
+          pageSize: S.optional(S.Number.pipe(T.Query())),
+        }).pipe(
+          T.Http({ method: "GET", uri: "v1/notes", baseUrl: "https://keep.googleapis.com/" }),
+        ),
+      ).annotate({ identifier: "ListNotesRequest" });
     case 1:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "Family",
-      });
+      return S.Array(__S(70, __c8, 6));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          email: S.optional(S.String),
-          role: S.optional(S.String),
-          name: S.optional(S.String),
-          group: S.optional(__S(0, __c0, 0)),
-          family: S.optional(__S(1, __c0, 1)),
-          user: S.optional(__S(0, __c0, 0)),
-          deleted: S.optional(S.Boolean),
+          notes: S.optional(__S(1, __c0, 1)),
+          nextPageToken: S.optional(S.String),
         }),
-      ).annotate({ identifier: "Permission" });
-    case 3:
+      ).annotate({ identifier: "ListNotesResponse" });
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           parent: S.optional(S.String),
-          permission: S.optional(__S(2, __c0, 2)),
+          permission: S.optional(__S(25, __c3, 1)),
         }),
       ).annotate({ identifier: "CreatePermissionRequest" });
-    case 4:
-      return S.Array(__S(3, __c0, 3));
-    case 5:
+    case 1:
+      return S.Array(__S(8, __c1, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          requests: S.optional(__S(4, __c0, 4)),
+          requests: S.optional(__S(9, __c1, 1)),
         }),
       ).annotate({
         identifier: "BatchCreatePermissionsRequest",
       });
-    case 6:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(5, __c0, 5).pipe(T.HttpBody())),
+          body: S.optional(__S(10, __c1, 2).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -393,35 +394,63 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "BatchCreateNotesPermissionsRequest",
       });
-    case 7:
-      return S.Array(__S(2, __c0, 2));
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
+    case 4:
       return S.suspend(() =>
         S.Struct({
-          permissions: S.optional(__S(7, __c0, 7)),
+          permissions: S.optional(__S(26, __c3, 2)),
         }),
       ).annotate({
         identifier: "BatchCreatePermissionsResponse",
       });
-    case 1:
-      return S.Array(S.String);
-    case 2:
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "Family",
+      });
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          names: S.optional(__S(9, __c1, 1)),
+          email: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Group" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          email: S.optional(S.String),
+          role: S.optional(S.String),
+          name: S.optional(S.String),
+          group: S.optional(__S(24, __c3, 0)),
+          family: S.optional(__S(16, __c2, 0)),
+          user: S.optional(__S(24, __c3, 0)),
+          deleted: S.optional(S.Boolean),
+        }),
+      ).annotate({ identifier: "Permission" });
+    case 2:
+      return S.Array(__S(25, __c3, 1));
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          names: S.optional(__S(40, __c5, 0)),
         }),
       ).annotate({
         identifier: "BatchDeletePermissionsRequest",
       });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(10, __c1, 2).pipe(T.HttpBody())),
+          body: S.optional(__S(32, __c4, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -432,71 +461,89 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "BatchDeleteNotesPermissionsRequest",
       });
-    case 4:
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          body: S.optional(__S(70, __c8, 6).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({ method: "POST", uri: "v1/notes", baseUrl: "https://keep.googleapis.com/" }),
+        ),
+      ).annotate({ identifier: "CreateNotesRequest" });
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
-          mimeType: S.optional(__S(9, __c1, 1)),
+          mimeType: S.optional(__S(40, __c5, 0)),
         }),
       ).annotate({ identifier: "Attachment" });
-    case 5:
-      return S.Array(__S(12, __c1, 4));
-    case 6:
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(56, __c7, 0));
+    case 1:
       return S.suspend(() =>
         S.Struct({
           text: S.optional(S.String),
         }),
       ).annotate({ identifier: "TextContent" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          checked: S.optional(S.Boolean),
-          text: S.optional(__S(14, __c1, 6)),
-          childListItems: S.optional(S.suspend(() => __S(16, __c2, 0))),
-        }),
-      ).annotate({ identifier: "ListItem" });
-  }
-}
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(15, __c1, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          listItems: S.optional(__S(16, __c2, 0)),
-        }),
-      ).annotate({ identifier: "ListContent" });
     case 2:
       return S.suspend(() =>
         S.Struct({
-          text: S.optional(__S(14, __c1, 6)),
-          list: S.optional(__S(17, __c2, 1)),
+          checked: S.optional(S.Boolean),
+          text: S.optional(__S(65, __c8, 1)),
+          childListItems: S.optional(S.suspend(() => __S(67, __c8, 3))),
         }),
-      ).annotate({ identifier: "Section" });
+      ).annotate({ identifier: "ListItem" });
     case 3:
-      return S.suspend(() =>
-        S.Struct({
-          permissions: S.optional(__S(7, __c0, 7)),
-          trashTime: S.optional(S.String),
-          name: S.optional(S.String),
-          trashed: S.optional(S.Boolean),
-          attachments: S.optional(__S(13, __c1, 5)),
-          createTime: S.optional(S.String),
-          title: S.optional(S.String),
-          updateTime: S.optional(S.String),
-          body: S.optional(__S(18, __c2, 2)),
-        }),
-      ).annotate({ identifier: "Note" });
+      return S.Array(__S(66, __c8, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          body: S.optional(__S(19, __c2, 3).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({ method: "POST", uri: "v1/notes", baseUrl: "https://keep.googleapis.com/" }),
-        ),
-      ).annotate({ identifier: "CreateNotesRequest" });
+          listItems: S.optional(__S(67, __c8, 3)),
+        }),
+      ).annotate({ identifier: "ListContent" });
     case 5:
+      return S.suspend(() =>
+        S.Struct({
+          text: S.optional(__S(65, __c8, 1)),
+          list: S.optional(__S(68, __c8, 4)),
+        }),
+      ).annotate({ identifier: "Section" });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          permissions: S.optional(__S(26, __c3, 2)),
+          trashTime: S.optional(S.String),
+          name: S.optional(S.String),
+          trashed: S.optional(S.Boolean),
+          attachments: S.optional(__S(64, __c8, 0)),
+          createTime: S.optional(S.String),
+          title: S.optional(S.String),
+          updateTime: S.optional(S.String),
+          body: S.optional(__S(69, __c8, 5)),
+        }),
+      ).annotate({ identifier: "Note" });
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -504,7 +551,11 @@ function __c2(j: number): any {
           T.Http({ method: "DELETE", uri: "v1/{+name}", baseUrl: "https://keep.googleapis.com/" }),
         ),
       ).annotate({ identifier: "DeleteNotesRequest" });
-    case 6:
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -513,7 +564,11 @@ function __c2(j: number): any {
           T.Http({ method: "GET", uri: "v1/{+name}", baseUrl: "https://keep.googleapis.com/" }),
         ),
       ).annotate({ identifier: "DownloadMediaRequest" });
-    case 7:
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -523,30 +578,6 @@ function __c2(j: number): any {
       ).annotate({ identifier: "GetNotesRequest" });
   }
 }
-function __c3(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          pageToken: S.optional(S.String.pipe(T.Query())),
-          filter: S.optional(S.String.pipe(T.Query())),
-          pageSize: S.optional(S.Number.pipe(T.Query())),
-        }).pipe(
-          T.Http({ method: "GET", uri: "v1/notes", baseUrl: "https://keep.googleapis.com/" }),
-        ),
-      ).annotate({ identifier: "ListNotesRequest" });
-    case 1:
-      return S.Array(__S(19, __c2, 3));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          notes: S.optional(__S(25, __c3, 1)),
-          nextPageToken: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ListNotesResponse" });
-  }
-}
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

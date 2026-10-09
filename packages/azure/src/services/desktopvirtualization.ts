@@ -3668,8 +3668,8 @@ export const AppAttachPackageCreateOrUpdate: API.OperationMethod<
   AppAttachPackageCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(8, __c1, 0) as any as S.Schema<AppAttachPackageCreateOrUpdateRequest>,
-  output: __S(11, __c1, 3) as any as S.Schema<AppAttachPackageCreateOrUpdateResponse>,
+  input: __S(0, __c0, 0) as any as S.Schema<AppAttachPackageCreateOrUpdateRequest>,
+  output: __S(96, __c6, 0) as any as S.Schema<AppAttachPackageCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3683,8 +3683,8 @@ export const ApplicationGroupsCreateOrUpdate: API.OperationMethod<
   ApplicationGroupsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(16, __c2, 0) as any as S.Schema<ApplicationGroupsCreateOrUpdateRequest>,
-  output: __S(19, __c2, 3) as any as S.Schema<ApplicationGroupsCreateOrUpdateResponse>,
+  input: __S(129, __c8, 1) as any as S.Schema<ApplicationGroupsCreateOrUpdateRequest>,
+  output: __S(160, __c10, 0) as any as S.Schema<ApplicationGroupsCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3698,8 +3698,8 @@ export const ApplicationsCreateOrUpdate: API.OperationMethod<
   ApplicationsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(21, __c2, 5) as any as S.Schema<ApplicationsCreateOrUpdateRequest>,
-  output: __S(23, __c2, 7) as any as S.Schema<ApplicationsCreateOrUpdateResponse>,
+  input: __S(385, __c24, 1) as any as S.Schema<ApplicationsCreateOrUpdateRequest>,
+  output: __S(416, __c26, 0) as any as S.Schema<ApplicationsCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3713,8 +3713,8 @@ export const CreateScalingPlan: API.OperationMethod<
   CreateScalingPlanError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(31, __c3, 7) as any as S.Schema<CreateScalingPlanRequest>,
-  output: __S(33, __c4, 1) as any as S.Schema<CreateScalingPlanResponse>,
+  input: __S(785, __c49, 1) as any as S.Schema<CreateScalingPlanRequest>,
+  output: __S(832, __c52, 0) as any as S.Schema<CreateScalingPlanResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3728,8 +3728,8 @@ export const CreateScalingPlanPersonalSchedule: API.OperationMethod<
   CreateScalingPlanPersonalScheduleError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(35, __c4, 3) as any as S.Schema<CreateScalingPlanPersonalScheduleRequest>,
-  output: __S(36, __c4, 4) as any as S.Schema<CreateScalingPlanPersonalScheduleResponse>,
+  input: __S(1120, __c70, 0) as any as S.Schema<CreateScalingPlanPersonalScheduleRequest>,
+  output: __S(1137, __c71, 1) as any as S.Schema<CreateScalingPlanPersonalScheduleResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3743,8 +3743,8 @@ export const CreateScalingPlanPooledSchedule: API.OperationMethod<
   CreateScalingPlanPooledScheduleError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(38, __c4, 6) as any as S.Schema<CreateScalingPlanPooledScheduleRequest>,
-  output: __S(39, __c4, 7) as any as S.Schema<CreateScalingPlanPooledScheduleResponse>,
+  input: __S(1344, __c84, 0) as any as S.Schema<CreateScalingPlanPooledScheduleRequest>,
+  output: __S(1361, __c85, 1) as any as S.Schema<CreateScalingPlanPooledScheduleResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3758,8 +3758,8 @@ export const DeleteAppAttachPackage: API.OperationMethod<
   DeleteAppAttachPackageError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(40, __c5, 0) as any as S.Schema<DeleteAppAttachPackageRequest>,
-  output: __S(41, __c5, 1) as any as S.Schema<DeleteAppAttachPackageResponse>,
+  input: __S(1584, __c99, 0) as any as S.Schema<DeleteAppAttachPackageRequest>,
+  output: __S(1600, __c100, 0) as any as S.Schema<DeleteAppAttachPackageResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3773,8 +3773,8 @@ export const DeleteApplication: API.OperationMethod<
   DeleteApplicationError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(42, __c5, 2) as any as S.Schema<DeleteApplicationRequest>,
-  output: __S(41, __c5, 1) as any as S.Schema<DeleteApplicationResponse>,
+  input: __S(1808, __c113, 0) as any as S.Schema<DeleteApplicationRequest>,
+  output: __S(1600, __c100, 0) as any as S.Schema<DeleteApplicationResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3788,8 +3788,8 @@ export const DeleteApplicationGroup: API.OperationMethod<
   DeleteApplicationGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(43, __c5, 3) as any as S.Schema<DeleteApplicationGroupRequest>,
-  output: __S(41, __c5, 1) as any as S.Schema<DeleteApplicationGroupResponse>,
+  input: __S(2000, __c125, 0) as any as S.Schema<DeleteApplicationGroupRequest>,
+  output: __S(1600, __c100, 0) as any as S.Schema<DeleteApplicationGroupResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3803,8 +3803,8 @@ export const DeleteHostPool: API.OperationMethod<
   DeleteHostPoolError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(44, __c5, 4) as any as S.Schema<DeleteHostPoolRequest>,
-  output: __S(41, __c5, 1) as any as S.Schema<DeleteHostPoolResponse>,
+  input: __S(2016, __c126, 0) as any as S.Schema<DeleteHostPoolRequest>,
+  output: __S(1600, __c100, 0) as any as S.Schema<DeleteHostPoolResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3818,8 +3818,8 @@ export const DeleteMSIXPackage: API.OperationMethod<
   DeleteMSIXPackageError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(45, __c5, 5) as any as S.Schema<DeleteMSIXPackageRequest>,
-  output: __S(41, __c5, 1) as any as S.Schema<DeleteMSIXPackageResponse>,
+  input: __S(208, __c13, 0) as any as S.Schema<DeleteMSIXPackageRequest>,
+  output: __S(1600, __c100, 0) as any as S.Schema<DeleteMSIXPackageResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3833,8 +3833,8 @@ export const DeletePrivateEndpointConnectionByHostPool: API.OperationMethod<
   DeletePrivateEndpointConnectionByHostPoolError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(46, __c5, 6) as any as S.Schema<DeletePrivateEndpointConnectionByHostPoolRequest>,
-  output: __S(47, __c5, 7) as any as S.Schema<DeletePrivateEndpointConnectionByHostPoolResponse>,
+  input: __S(224, __c14, 0) as any as S.Schema<DeletePrivateEndpointConnectionByHostPoolRequest>,
+  output: __S(240, __c15, 0) as any as S.Schema<DeletePrivateEndpointConnectionByHostPoolResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3848,8 +3848,8 @@ export const DeletePrivateEndpointConnectionByWorkspace: API.OperationMethod<
   DeletePrivateEndpointConnectionByWorkspaceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(48, __c6, 0) as any as S.Schema<DeletePrivateEndpointConnectionByWorkspaceRequest>,
-  output: __S(47, __c5, 7) as any as S.Schema<DeletePrivateEndpointConnectionByWorkspaceResponse>,
+  input: __S(256, __c16, 0) as any as S.Schema<DeletePrivateEndpointConnectionByWorkspaceRequest>,
+  output: __S(240, __c15, 0) as any as S.Schema<DeletePrivateEndpointConnectionByWorkspaceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3863,8 +3863,8 @@ export const DeleteScalingPlan: API.OperationMethod<
   DeleteScalingPlanError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(49, __c6, 1) as any as S.Schema<DeleteScalingPlanRequest>,
-  output: __S(41, __c5, 1) as any as S.Schema<DeleteScalingPlanResponse>,
+  input: __S(272, __c17, 0) as any as S.Schema<DeleteScalingPlanRequest>,
+  output: __S(1600, __c100, 0) as any as S.Schema<DeleteScalingPlanResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3878,8 +3878,8 @@ export const DeleteScalingPlanPersonalSchedule: API.OperationMethod<
   DeleteScalingPlanPersonalScheduleError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(50, __c6, 2) as any as S.Schema<DeleteScalingPlanPersonalScheduleRequest>,
-  output: __S(47, __c5, 7) as any as S.Schema<DeleteScalingPlanPersonalScheduleResponse>,
+  input: __S(288, __c18, 0) as any as S.Schema<DeleteScalingPlanPersonalScheduleRequest>,
+  output: __S(240, __c15, 0) as any as S.Schema<DeleteScalingPlanPersonalScheduleResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3893,8 +3893,8 @@ export const DeleteScalingPlanPooledSchedule: API.OperationMethod<
   DeleteScalingPlanPooledScheduleError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(51, __c6, 3) as any as S.Schema<DeleteScalingPlanPooledScheduleRequest>,
-  output: __S(47, __c5, 7) as any as S.Schema<DeleteScalingPlanPooledScheduleResponse>,
+  input: __S(304, __c19, 0) as any as S.Schema<DeleteScalingPlanPooledScheduleRequest>,
+  output: __S(240, __c15, 0) as any as S.Schema<DeleteScalingPlanPooledScheduleResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3908,8 +3908,8 @@ export const DeleteSessionHost: API.OperationMethod<
   DeleteSessionHostError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(52, __c6, 4) as any as S.Schema<DeleteSessionHostRequest>,
-  output: __S(41, __c5, 1) as any as S.Schema<DeleteSessionHostResponse>,
+  input: __S(320, __c20, 0) as any as S.Schema<DeleteSessionHostRequest>,
+  output: __S(1600, __c100, 0) as any as S.Schema<DeleteSessionHostResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3923,8 +3923,8 @@ export const DeleteUserSession: API.OperationMethod<
   DeleteUserSessionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(53, __c6, 5) as any as S.Schema<DeleteUserSessionRequest>,
-  output: __S(41, __c5, 1) as any as S.Schema<DeleteUserSessionResponse>,
+  input: __S(336, __c21, 0) as any as S.Schema<DeleteUserSessionRequest>,
+  output: __S(1600, __c100, 0) as any as S.Schema<DeleteUserSessionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3938,8 +3938,8 @@ export const DeleteWorkspace: API.OperationMethod<
   DeleteWorkspaceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(54, __c6, 6) as any as S.Schema<DeleteWorkspaceRequest>,
-  output: __S(41, __c5, 1) as any as S.Schema<DeleteWorkspaceResponse>,
+  input: __S(352, __c22, 0) as any as S.Schema<DeleteWorkspaceRequest>,
+  output: __S(1600, __c100, 0) as any as S.Schema<DeleteWorkspaceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3953,8 +3953,8 @@ export const DisconnectUserSession: API.OperationMethod<
   DisconnectUserSessionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(55, __c6, 7) as any as S.Schema<DisconnectUserSessionRequest>,
-  output: __S(41, __c5, 1) as any as S.Schema<DisconnectUserSessionResponse>,
+  input: __S(368, __c23, 0) as any as S.Schema<DisconnectUserSessionRequest>,
+  output: __S(1600, __c100, 0) as any as S.Schema<DisconnectUserSessionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3968,8 +3968,8 @@ export const GetAppAttachPackage: API.OperationMethod<
   GetAppAttachPackageError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(56, __c7, 0) as any as S.Schema<GetAppAttachPackageRequest>,
-  output: __S(11, __c1, 3) as any as S.Schema<GetAppAttachPackageResponse>,
+  input: __S(432, __c27, 0) as any as S.Schema<GetAppAttachPackageRequest>,
+  output: __S(96, __c6, 0) as any as S.Schema<GetAppAttachPackageResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3983,8 +3983,8 @@ export const GetApplication: API.OperationMethod<
   GetApplicationError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(57, __c7, 1) as any as S.Schema<GetApplicationRequest>,
-  output: __S(58, __c7, 2) as any as S.Schema<GetApplicationResponse>,
+  input: __S(448, __c28, 0) as any as S.Schema<GetApplicationRequest>,
+  output: __S(464, __c29, 0) as any as S.Schema<GetApplicationResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3998,8 +3998,8 @@ export const GetApplicationGroup: API.OperationMethod<
   GetApplicationGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(59, __c7, 3) as any as S.Schema<GetApplicationGroupRequest>,
-  output: __S(19, __c2, 3) as any as S.Schema<GetApplicationGroupResponse>,
+  input: __S(480, __c30, 0) as any as S.Schema<GetApplicationGroupRequest>,
+  output: __S(160, __c10, 0) as any as S.Schema<GetApplicationGroupResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4013,8 +4013,8 @@ export const GetDesktop: API.OperationMethod<
   GetDesktopError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(60, __c7, 4) as any as S.Schema<GetDesktopRequest>,
-  output: __S(62, __c7, 6) as any as S.Schema<GetDesktopResponse>,
+  input: __S(496, __c31, 0) as any as S.Schema<GetDesktopRequest>,
+  output: __S(513, __c32, 1) as any as S.Schema<GetDesktopResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4028,8 +4028,8 @@ export const GetHostPool: API.OperationMethod<
   GetHostPoolError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(63, __c7, 7) as any as S.Schema<GetHostPoolRequest>,
-  output: __S(74, __c9, 2) as any as S.Schema<GetHostPoolResponse>,
+  input: __S(528, __c33, 0) as any as S.Schema<GetHostPoolRequest>,
+  output: __S(608, __c38, 0) as any as S.Schema<GetHostPoolResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4043,8 +4043,8 @@ export const GetHostPoolRegistrationToken: API.OperationMethod<
   GetHostPoolRegistrationTokenError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(75, __c9, 3) as any as S.Schema<GetHostPoolRegistrationTokenRequest>,
-  output: __S(64, __c8, 0) as any as S.Schema<RegistrationInfo>,
+  input: __S(624, __c39, 0) as any as S.Schema<GetHostPoolRegistrationTokenRequest>,
+  output: __S(544, __c34, 0) as any as S.Schema<RegistrationInfo>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4058,8 +4058,8 @@ export const GetMSIXPackage: API.OperationMethod<
   GetMSIXPackageError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(76, __c9, 4) as any as S.Schema<GetMSIXPackageRequest>,
-  output: __S(78, __c9, 6) as any as S.Schema<GetMSIXPackageResponse>,
+  input: __S(640, __c40, 0) as any as S.Schema<GetMSIXPackageRequest>,
+  output: __S(656, __c41, 0) as any as S.Schema<GetMSIXPackageResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4073,8 +4073,8 @@ export const GetPrivateEndpointConnectionByHostPool: API.OperationMethod<
   GetPrivateEndpointConnectionByHostPoolError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(79, __c9, 7) as any as S.Schema<GetPrivateEndpointConnectionByHostPoolRequest>,
-  output: __S(82, __c10, 2) as any as S.Schema<GetPrivateEndpointConnectionByHostPoolResponse>,
+  input: __S(688, __c43, 0) as any as S.Schema<GetPrivateEndpointConnectionByHostPoolRequest>,
+  output: __S(705, __c44, 1) as any as S.Schema<GetPrivateEndpointConnectionByHostPoolResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4088,8 +4088,8 @@ export const GetPrivateEndpointConnectionByWorkspace: API.OperationMethod<
   GetPrivateEndpointConnectionByWorkspaceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(83, __c10, 3) as any as S.Schema<GetPrivateEndpointConnectionByWorkspaceRequest>,
-  output: __S(82, __c10, 2) as any as S.Schema<GetPrivateEndpointConnectionByWorkspaceResponse>,
+  input: __S(736, __c46, 0) as any as S.Schema<GetPrivateEndpointConnectionByWorkspaceRequest>,
+  output: __S(705, __c44, 1) as any as S.Schema<GetPrivateEndpointConnectionByWorkspaceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4103,8 +4103,8 @@ export const GetScalingPlan: API.OperationMethod<
   GetScalingPlanError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(84, __c10, 4) as any as S.Schema<GetScalingPlanRequest>,
-  output: __S(85, __c10, 5) as any as S.Schema<GetScalingPlanResponse>,
+  input: __S(752, __c47, 0) as any as S.Schema<GetScalingPlanRequest>,
+  output: __S(768, __c48, 0) as any as S.Schema<GetScalingPlanResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4118,8 +4118,8 @@ export const GetScalingPlanPersonalSchedule: API.OperationMethod<
   GetScalingPlanPersonalScheduleError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(86, __c10, 6) as any as S.Schema<GetScalingPlanPersonalScheduleRequest>,
-  output: __S(36, __c4, 4) as any as S.Schema<GetScalingPlanPersonalScheduleResponse>,
+  input: __S(848, __c53, 0) as any as S.Schema<GetScalingPlanPersonalScheduleRequest>,
+  output: __S(1137, __c71, 1) as any as S.Schema<GetScalingPlanPersonalScheduleResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4133,8 +4133,8 @@ export const GetScalingPlanPooledSchedule: API.OperationMethod<
   GetScalingPlanPooledScheduleError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(87, __c10, 7) as any as S.Schema<GetScalingPlanPooledScheduleRequest>,
-  output: __S(39, __c4, 7) as any as S.Schema<GetScalingPlanPooledScheduleResponse>,
+  input: __S(864, __c54, 0) as any as S.Schema<GetScalingPlanPooledScheduleRequest>,
+  output: __S(1361, __c85, 1) as any as S.Schema<GetScalingPlanPooledScheduleResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4148,8 +4148,8 @@ export const GetSessionHost: API.OperationMethod<
   GetSessionHostError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(88, __c11, 0) as any as S.Schema<GetSessionHostRequest>,
-  output: __S(93, __c11, 5) as any as S.Schema<GetSessionHostResponse>,
+  input: __S(880, __c55, 0) as any as S.Schema<GetSessionHostRequest>,
+  output: __S(896, __c56, 0) as any as S.Schema<GetSessionHostResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4163,8 +4163,8 @@ export const GetUserSession: API.OperationMethod<
   GetUserSessionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(94, __c11, 6) as any as S.Schema<GetUserSessionRequest>,
-  output: __S(96, __c12, 0) as any as S.Schema<GetUserSessionResponse>,
+  input: __S(928, __c58, 0) as any as S.Schema<GetUserSessionRequest>,
+  output: __S(945, __c59, 1) as any as S.Schema<GetUserSessionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4178,8 +4178,8 @@ export const GetWorkspace: API.OperationMethod<
   GetWorkspaceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(97, __c12, 1) as any as S.Schema<GetWorkspaceRequest>,
-  output: __S(99, __c12, 3) as any as S.Schema<GetWorkspaceResponse>,
+  input: __S(960, __c60, 0) as any as S.Schema<GetWorkspaceRequest>,
+  output: __S(976, __c61, 0) as any as S.Schema<GetWorkspaceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4193,8 +4193,8 @@ export const HostPoolsCreateOrUpdate: API.OperationMethod<
   HostPoolsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(101, __c12, 5) as any as S.Schema<HostPoolsCreateOrUpdateRequest>,
-  output: __S(102, __c12, 6) as any as S.Schema<HostPoolsCreateOrUpdateResponse>,
+  input: __S(1009, __c63, 1) as any as S.Schema<HostPoolsCreateOrUpdateRequest>,
+  output: __S(1010, __c63, 2) as any as S.Schema<HostPoolsCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4208,8 +4208,8 @@ export const ImportAppAttachPackageInfo: API.OperationMethod<
   ImportAppAttachPackageInfoError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(103, __c12, 7) as any as S.Schema<ImportAppAttachPackageInfoRequest>,
-  output: __S(106, __c13, 2) as any as S.Schema<AppAttachPackageList>,
+  input: __S(1024, __c64, 0) as any as S.Schema<ImportAppAttachPackageInfoRequest>,
+  output: __S(1042, __c65, 2) as any as S.Schema<AppAttachPackageList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4223,8 +4223,8 @@ export const ListAppAttachPackageByResourceGroup: API.OperationMethod<
   ListAppAttachPackageByResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(107, __c13, 3) as any as S.Schema<ListAppAttachPackageByResourceGroupRequest>,
-  output: __S(106, __c13, 2) as any as S.Schema<AppAttachPackageList>,
+  input: __S(1056, __c66, 0) as any as S.Schema<ListAppAttachPackageByResourceGroupRequest>,
+  output: __S(1042, __c65, 2) as any as S.Schema<AppAttachPackageList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4238,8 +4238,8 @@ export const ListAppAttachPackageBySubscription: API.OperationMethod<
   ListAppAttachPackageBySubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(108, __c13, 4) as any as S.Schema<ListAppAttachPackageBySubscriptionRequest>,
-  output: __S(106, __c13, 2) as any as S.Schema<AppAttachPackageList>,
+  input: __S(1072, __c67, 0) as any as S.Schema<ListAppAttachPackageBySubscriptionRequest>,
+  output: __S(1042, __c65, 2) as any as S.Schema<AppAttachPackageList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4253,8 +4253,8 @@ export const ListApplicationGroupByResourceGroup: API.OperationMethod<
   ListApplicationGroupByResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(109, __c13, 5) as any as S.Schema<ListApplicationGroupByResourceGroupRequest>,
-  output: __S(112, __c14, 0) as any as S.Schema<ApplicationGroupList>,
+  input: __S(1088, __c68, 0) as any as S.Schema<ListApplicationGroupByResourceGroupRequest>,
+  output: __S(1106, __c69, 2) as any as S.Schema<ApplicationGroupList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4268,8 +4268,8 @@ export const ListApplicationGroupBySubscription: API.OperationMethod<
   ListApplicationGroupBySubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(113, __c14, 1) as any as S.Schema<ListApplicationGroupBySubscriptionRequest>,
-  output: __S(112, __c14, 0) as any as S.Schema<ApplicationGroupList>,
+  input: __S(1152, __c72, 0) as any as S.Schema<ListApplicationGroupBySubscriptionRequest>,
+  output: __S(1106, __c69, 2) as any as S.Schema<ApplicationGroupList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4283,8 +4283,8 @@ export const ListApplications: API.OperationMethod<
   ListApplicationsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(114, __c14, 2) as any as S.Schema<ListApplicationsRequest>,
-  output: __S(116, __c14, 4) as any as S.Schema<ApplicationList>,
+  input: __S(1168, __c73, 0) as any as S.Schema<ListApplicationsRequest>,
+  output: __S(1170, __c73, 2) as any as S.Schema<ApplicationList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4298,8 +4298,8 @@ export const ListDesktops: API.OperationMethod<
   ListDesktopsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(117, __c14, 5) as any as S.Schema<ListDesktopsRequest>,
-  output: __S(119, __c14, 7) as any as S.Schema<DesktopList>,
+  input: __S(1184, __c74, 0) as any as S.Schema<ListDesktopsRequest>,
+  output: __S(1186, __c74, 2) as any as S.Schema<DesktopList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4313,8 +4313,8 @@ export const ListHostPoolByResourceGroup: API.OperationMethod<
   ListHostPoolByResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(120, __c15, 0) as any as S.Schema<ListHostPoolByResourceGroupRequest>,
-  output: __S(122, __c15, 2) as any as S.Schema<HostPoolList>,
+  input: __S(1200, __c75, 0) as any as S.Schema<ListHostPoolByResourceGroupRequest>,
+  output: __S(1217, __c76, 1) as any as S.Schema<HostPoolList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4328,8 +4328,8 @@ export const ListHostPoolRegistrationTokens: API.OperationMethod<
   ListHostPoolRegistrationTokensError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(123, __c15, 3) as any as S.Schema<ListHostPoolRegistrationTokensRequest>,
-  output: __S(126, __c15, 6) as any as S.Schema<RegistrationTokenList>,
+  input: __S(1232, __c77, 0) as any as S.Schema<ListHostPoolRegistrationTokensRequest>,
+  output: __S(1235, __c77, 3) as any as S.Schema<RegistrationTokenList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4343,8 +4343,8 @@ export const ListHostPools: API.OperationMethod<
   ListHostPoolsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(127, __c15, 7) as any as S.Schema<ListHostPoolsRequest>,
-  output: __S(122, __c15, 2) as any as S.Schema<HostPoolList>,
+  input: __S(1248, __c78, 0) as any as S.Schema<ListHostPoolsRequest>,
+  output: __S(1217, __c76, 1) as any as S.Schema<HostPoolList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4358,8 +4358,8 @@ export const ListMSIXPackages: API.OperationMethod<
   ListMSIXPackagesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(128, __c16, 0) as any as S.Schema<ListMSIXPackagesRequest>,
-  output: __S(130, __c16, 2) as any as S.Schema<MSIXPackageList>,
+  input: __S(1264, __c79, 0) as any as S.Schema<ListMSIXPackagesRequest>,
+  output: __S(1266, __c79, 2) as any as S.Schema<MSIXPackageList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4373,8 +4373,8 @@ export const ListOperations: API.OperationMethod<
   ListOperationsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(131, __c16, 3) as any as S.Schema<ListOperationsRequest>,
-  output: __S(139, __c17, 3) as any as S.Schema<ResourceProviderOperationListResult>,
+  input: __S(1280, __c80, 0) as any as S.Schema<ListOperationsRequest>,
+  output: __S(1288, __c80, 8) as any as S.Schema<ResourceProviderOperationListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4388,8 +4388,8 @@ export const ListPrivateEndpointConnectionByHostPool: API.OperationMethod<
   ListPrivateEndpointConnectionByHostPoolError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(140, __c17, 4) as any as S.Schema<ListPrivateEndpointConnectionByHostPoolRequest>,
-  output: __S(141, __c17, 5) as any as S.Schema<PrivateEndpointConnectionListResultWithSystemData>,
+  input: __S(1296, __c81, 0) as any as S.Schema<ListPrivateEndpointConnectionByHostPoolRequest>,
+  output: __S(1312, __c82, 0) as any as S.Schema<PrivateEndpointConnectionListResultWithSystemData>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4403,8 +4403,8 @@ export const ListPrivateEndpointConnectionByWorkspace: API.OperationMethod<
   ListPrivateEndpointConnectionByWorkspaceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(142, __c17, 6) as any as S.Schema<ListPrivateEndpointConnectionByWorkspaceRequest>,
-  output: __S(141, __c17, 5) as any as S.Schema<PrivateEndpointConnectionListResultWithSystemData>,
+  input: __S(1328, __c83, 0) as any as S.Schema<ListPrivateEndpointConnectionByWorkspaceRequest>,
+  output: __S(1312, __c82, 0) as any as S.Schema<PrivateEndpointConnectionListResultWithSystemData>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4418,8 +4418,8 @@ export const ListPrivateLinkResourceByHostPool: API.OperationMethod<
   ListPrivateLinkResourceByHostPoolError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(143, __c17, 7) as any as S.Schema<ListPrivateLinkResourceByHostPoolRequest>,
-  output: __S(147, __c18, 3) as any as S.Schema<PrivateLinkResourceListResult>,
+  input: __S(1376, __c86, 0) as any as S.Schema<ListPrivateLinkResourceByHostPoolRequest>,
+  output: __S(1395, __c87, 3) as any as S.Schema<PrivateLinkResourceListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4433,8 +4433,8 @@ export const ListPrivateLinkResourceByWorkspace: API.OperationMethod<
   ListPrivateLinkResourceByWorkspaceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(148, __c18, 4) as any as S.Schema<ListPrivateLinkResourceByWorkspaceRequest>,
-  output: __S(147, __c18, 3) as any as S.Schema<PrivateLinkResourceListResult>,
+  input: __S(1408, __c88, 0) as any as S.Schema<ListPrivateLinkResourceByWorkspaceRequest>,
+  output: __S(1395, __c87, 3) as any as S.Schema<PrivateLinkResourceListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4448,8 +4448,8 @@ export const ListScalingPlanByHostPool: API.OperationMethod<
   ListScalingPlanByHostPoolError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(149, __c18, 5) as any as S.Schema<ListScalingPlanByHostPoolRequest>,
-  output: __S(151, __c18, 7) as any as S.Schema<ScalingPlanList>,
+  input: __S(1424, __c89, 0) as any as S.Schema<ListScalingPlanByHostPoolRequest>,
+  output: __S(1441, __c90, 1) as any as S.Schema<ScalingPlanList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4463,8 +4463,8 @@ export const ListScalingPlanByResourceGroup: API.OperationMethod<
   ListScalingPlanByResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(152, __c19, 0) as any as S.Schema<ListScalingPlanByResourceGroupRequest>,
-  output: __S(151, __c18, 7) as any as S.Schema<ScalingPlanList>,
+  input: __S(1456, __c91, 0) as any as S.Schema<ListScalingPlanByResourceGroupRequest>,
+  output: __S(1441, __c90, 1) as any as S.Schema<ScalingPlanList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4478,8 +4478,8 @@ export const ListScalingPlanBySubscription: API.OperationMethod<
   ListScalingPlanBySubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(153, __c19, 1) as any as S.Schema<ListScalingPlanBySubscriptionRequest>,
-  output: __S(151, __c18, 7) as any as S.Schema<ScalingPlanList>,
+  input: __S(1472, __c92, 0) as any as S.Schema<ListScalingPlanBySubscriptionRequest>,
+  output: __S(1441, __c90, 1) as any as S.Schema<ScalingPlanList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4493,8 +4493,8 @@ export const ListScalingPlanPersonalSchedules: API.OperationMethod<
   ListScalingPlanPersonalSchedulesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(154, __c19, 2) as any as S.Schema<ListScalingPlanPersonalSchedulesRequest>,
-  output: __S(156, __c19, 4) as any as S.Schema<ScalingPlanPersonalScheduleList>,
+  input: __S(1488, __c93, 0) as any as S.Schema<ListScalingPlanPersonalSchedulesRequest>,
+  output: __S(1490, __c93, 2) as any as S.Schema<ScalingPlanPersonalScheduleList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4508,8 +4508,8 @@ export const ListScalingPlanPooledSchedules: API.OperationMethod<
   ListScalingPlanPooledSchedulesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(157, __c19, 5) as any as S.Schema<ListScalingPlanPooledSchedulesRequest>,
-  output: __S(159, __c19, 7) as any as S.Schema<ScalingPlanPooledScheduleList>,
+  input: __S(1504, __c94, 0) as any as S.Schema<ListScalingPlanPooledSchedulesRequest>,
+  output: __S(1506, __c94, 2) as any as S.Schema<ScalingPlanPooledScheduleList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4523,8 +4523,8 @@ export const ListSessionHosts: API.OperationMethod<
   ListSessionHostsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(160, __c20, 0) as any as S.Schema<ListSessionHostsRequest>,
-  output: __S(162, __c20, 2) as any as S.Schema<SessionHostList>,
+  input: __S(1520, __c95, 0) as any as S.Schema<ListSessionHostsRequest>,
+  output: __S(1522, __c95, 2) as any as S.Schema<SessionHostList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4538,8 +4538,8 @@ export const ListStartMenuItems: API.OperationMethod<
   ListStartMenuItemsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(163, __c20, 3) as any as S.Schema<ListStartMenuItemsRequest>,
-  output: __S(167, __c20, 7) as any as S.Schema<StartMenuItemList>,
+  input: __S(1536, __c96, 0) as any as S.Schema<ListStartMenuItemsRequest>,
+  output: __S(1540, __c96, 4) as any as S.Schema<StartMenuItemList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4553,8 +4553,8 @@ export const ListUserSessionByHostPool: API.OperationMethod<
   ListUserSessionByHostPoolError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(168, __c21, 0) as any as S.Schema<ListUserSessionByHostPoolRequest>,
-  output: __S(170, __c21, 2) as any as S.Schema<UserSessionList>,
+  input: __S(1552, __c97, 0) as any as S.Schema<ListUserSessionByHostPoolRequest>,
+  output: __S(1569, __c98, 1) as any as S.Schema<UserSessionList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4568,8 +4568,8 @@ export const ListUserSessions: API.OperationMethod<
   ListUserSessionsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(171, __c21, 3) as any as S.Schema<ListUserSessionsRequest>,
-  output: __S(170, __c21, 2) as any as S.Schema<UserSessionList>,
+  input: __S(1616, __c101, 0) as any as S.Schema<ListUserSessionsRequest>,
+  output: __S(1569, __c98, 1) as any as S.Schema<UserSessionList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4583,8 +4583,8 @@ export const ListWorkspaceByResourceGroup: API.OperationMethod<
   ListWorkspaceByResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(172, __c21, 4) as any as S.Schema<ListWorkspaceByResourceGroupRequest>,
-  output: __S(174, __c21, 6) as any as S.Schema<WorkspaceList>,
+  input: __S(1632, __c102, 0) as any as S.Schema<ListWorkspaceByResourceGroupRequest>,
+  output: __S(1649, __c103, 1) as any as S.Schema<WorkspaceList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4598,8 +4598,8 @@ export const ListWorkspaceBySubscription: API.OperationMethod<
   ListWorkspaceBySubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(175, __c21, 7) as any as S.Schema<ListWorkspaceBySubscriptionRequest>,
-  output: __S(174, __c21, 6) as any as S.Schema<WorkspaceList>,
+  input: __S(1664, __c104, 0) as any as S.Schema<ListWorkspaceBySubscriptionRequest>,
+  output: __S(1649, __c103, 1) as any as S.Schema<WorkspaceList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4613,8 +4613,8 @@ export const MsixImagesExpand: API.OperationMethod<
   MsixImagesExpandError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(176, __c22, 0) as any as S.Schema<MsixImagesExpandRequest>,
-  output: __S(180, __c22, 4) as any as S.Schema<ExpandMsixImageList>,
+  input: __S(1680, __c105, 0) as any as S.Schema<MsixImagesExpandRequest>,
+  output: __S(1684, __c105, 4) as any as S.Schema<ExpandMsixImageList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4628,8 +4628,8 @@ export const MSIXPackagesCreateOrUpdate: API.OperationMethod<
   MSIXPackagesCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(181, __c22, 5) as any as S.Schema<MSIXPackagesCreateOrUpdateRequest>,
-  output: __S(182, __c22, 6) as any as S.Schema<MSIXPackagesCreateOrUpdateResponse>,
+  input: __S(1696, __c106, 0) as any as S.Schema<MSIXPackagesCreateOrUpdateRequest>,
+  output: __S(1712, __c107, 0) as any as S.Schema<MSIXPackagesCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4643,8 +4643,8 @@ export const SendUserSessionMessage: API.OperationMethod<
   SendUserSessionMessageError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(183, __c22, 7) as any as S.Schema<SendUserSessionMessageRequest>,
-  output: __S(41, __c5, 1) as any as S.Schema<SendUserSessionMessageResponse>,
+  input: __S(1728, __c108, 0) as any as S.Schema<SendUserSessionMessageRequest>,
+  output: __S(1600, __c100, 0) as any as S.Schema<SendUserSessionMessageResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4658,8 +4658,8 @@ export const UpdateAppAttachPackage: API.OperationMethod<
   UpdateAppAttachPackageError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(184, __c23, 0) as any as S.Schema<UpdateAppAttachPackageRequest>,
-  output: __S(11, __c1, 3) as any as S.Schema<UpdateAppAttachPackageResponse>,
+  input: __S(1744, __c109, 0) as any as S.Schema<UpdateAppAttachPackageRequest>,
+  output: __S(96, __c6, 0) as any as S.Schema<UpdateAppAttachPackageResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4673,8 +4673,8 @@ export const UpdateApplication: API.OperationMethod<
   UpdateApplicationError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(186, __c23, 2) as any as S.Schema<UpdateApplicationRequest>,
-  output: __S(23, __c2, 7) as any as S.Schema<UpdateApplicationResponse>,
+  input: __S(1761, __c110, 1) as any as S.Schema<UpdateApplicationRequest>,
+  output: __S(416, __c26, 0) as any as S.Schema<UpdateApplicationResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4688,8 +4688,8 @@ export const UpdateApplicationGroup: API.OperationMethod<
   UpdateApplicationGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(188, __c23, 4) as any as S.Schema<UpdateApplicationGroupRequest>,
-  output: __S(19, __c2, 3) as any as S.Schema<UpdateApplicationGroupResponse>,
+  input: __S(1777, __c111, 1) as any as S.Schema<UpdateApplicationGroupRequest>,
+  output: __S(160, __c10, 0) as any as S.Schema<UpdateApplicationGroupResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4703,8 +4703,8 @@ export const UpdateDesktop: API.OperationMethod<
   UpdateDesktopError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(190, __c23, 6) as any as S.Schema<UpdateDesktopRequest>,
-  output: __S(62, __c7, 6) as any as S.Schema<UpdateDesktopResponse>,
+  input: __S(1793, __c112, 1) as any as S.Schema<UpdateDesktopRequest>,
+  output: __S(513, __c32, 1) as any as S.Schema<UpdateDesktopResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4718,8 +4718,8 @@ export const UpdateHostPool: API.OperationMethod<
   UpdateHostPoolError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(194, __c24, 2) as any as S.Schema<UpdateHostPoolRequest>,
-  output: __S(74, __c9, 2) as any as S.Schema<UpdateHostPoolResponse>,
+  input: __S(1827, __c114, 3) as any as S.Schema<UpdateHostPoolRequest>,
+  output: __S(608, __c38, 0) as any as S.Schema<UpdateHostPoolResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4733,8 +4733,8 @@ export const UpdateMSIXPackage: API.OperationMethod<
   UpdateMSIXPackageError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(196, __c24, 4) as any as S.Schema<UpdateMSIXPackageRequest>,
-  output: __S(182, __c22, 6) as any as S.Schema<UpdateMSIXPackageResponse>,
+  input: __S(1841, __c115, 1) as any as S.Schema<UpdateMSIXPackageRequest>,
+  output: __S(1712, __c107, 0) as any as S.Schema<UpdateMSIXPackageResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4748,8 +4748,8 @@ export const UpdatePrivateEndpointConnectionByHostPool: API.OperationMethod<
   UpdatePrivateEndpointConnectionByHostPoolError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(198, __c24, 6) as any as S.Schema<UpdatePrivateEndpointConnectionByHostPoolRequest>,
-  output: __S(82, __c10, 2) as any as S.Schema<UpdatePrivateEndpointConnectionByHostPoolResponse>,
+  input: __S(1856, __c116, 0) as any as S.Schema<UpdatePrivateEndpointConnectionByHostPoolRequest>,
+  output: __S(705, __c44, 1) as any as S.Schema<UpdatePrivateEndpointConnectionByHostPoolResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4763,8 +4763,12 @@ export const UpdatePrivateEndpointConnectionByWorkspace: API.OperationMethod<
   UpdatePrivateEndpointConnectionByWorkspaceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(199, __c24, 7) as any as S.Schema<UpdatePrivateEndpointConnectionByWorkspaceRequest>,
-  output: __S(201, __c25, 1) as any as S.Schema<UpdatePrivateEndpointConnectionByWorkspaceResponse>,
+  input: __S(1888, __c118, 0) as any as S.Schema<UpdatePrivateEndpointConnectionByWorkspaceRequest>,
+  output: __S(
+    1890,
+    __c118,
+    2,
+  ) as any as S.Schema<UpdatePrivateEndpointConnectionByWorkspaceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4778,8 +4782,8 @@ export const UpdateScalingPlan: API.OperationMethod<
   UpdateScalingPlanError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(203, __c25, 3) as any as S.Schema<UpdateScalingPlanRequest>,
-  output: __S(33, __c4, 1) as any as S.Schema<UpdateScalingPlanResponse>,
+  input: __S(1905, __c119, 1) as any as S.Schema<UpdateScalingPlanRequest>,
+  output: __S(832, __c52, 0) as any as S.Schema<UpdateScalingPlanResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4793,8 +4797,8 @@ export const UpdateScalingPlanPersonalSchedule: API.OperationMethod<
   UpdateScalingPlanPersonalScheduleError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(204, __c25, 4) as any as S.Schema<UpdateScalingPlanPersonalScheduleRequest>,
-  output: __S(36, __c4, 4) as any as S.Schema<UpdateScalingPlanPersonalScheduleResponse>,
+  input: __S(1920, __c120, 0) as any as S.Schema<UpdateScalingPlanPersonalScheduleRequest>,
+  output: __S(1137, __c71, 1) as any as S.Schema<UpdateScalingPlanPersonalScheduleResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4808,8 +4812,8 @@ export const UpdateScalingPlanPooledSchedule: API.OperationMethod<
   UpdateScalingPlanPooledScheduleError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(205, __c25, 5) as any as S.Schema<UpdateScalingPlanPooledScheduleRequest>,
-  output: __S(39, __c4, 7) as any as S.Schema<UpdateScalingPlanPooledScheduleResponse>,
+  input: __S(1936, __c121, 0) as any as S.Schema<UpdateScalingPlanPooledScheduleRequest>,
+  output: __S(1361, __c85, 1) as any as S.Schema<UpdateScalingPlanPooledScheduleResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4823,8 +4827,8 @@ export const UpdateSessionHost: API.OperationMethod<
   UpdateSessionHostError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(207, __c25, 7) as any as S.Schema<UpdateSessionHostRequest>,
-  output: __S(208, __c26, 0) as any as S.Schema<UpdateSessionHostResponse>,
+  input: __S(1953, __c122, 1) as any as S.Schema<UpdateSessionHostRequest>,
+  output: __S(1954, __c122, 2) as any as S.Schema<UpdateSessionHostResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4838,8 +4842,8 @@ export const UpdateWorkspace: API.OperationMethod<
   UpdateWorkspaceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(210, __c26, 2) as any as S.Schema<UpdateWorkspaceRequest>,
-  output: __S(99, __c12, 3) as any as S.Schema<UpdateWorkspaceResponse>,
+  input: __S(1969, __c123, 1) as any as S.Schema<UpdateWorkspaceRequest>,
+  output: __S(976, __c61, 0) as any as S.Schema<UpdateWorkspaceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4853,8 +4857,8 @@ export const WorkspacesCreateOrUpdate: API.OperationMethod<
   WorkspacesCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(212, __c26, 4) as any as S.Schema<WorkspacesCreateOrUpdateRequest>,
-  output: __S(213, __c26, 5) as any as S.Schema<WorkspacesCreateOrUpdateResponse>,
+  input: __S(1985, __c124, 1) as any as S.Schema<WorkspacesCreateOrUpdateRequest>,
+  output: __S(1986, __c124, 2) as any as S.Schema<WorkspacesCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4864,80 +4868,14 @@ export const WorkspacesCreateOrUpdate: API.OperationMethod<
 function __c0(j: number): any {
   switch (j) {
     case 0:
-      return S.Record(S.String, S.String);
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          dependencyName: S.optional(S.String),
-          publisher: S.optional(S.String),
-          minVersion: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "MsixPackageDependencies" });
-    case 2:
-      return S.Array(__S(1, __c0, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          appId: S.optional(S.String),
-          description: S.optional(S.String),
-          appUserModelID: S.optional(S.String),
-          friendlyName: S.optional(S.String),
-          iconImageName: S.optional(S.String),
-          rawIcon: S.optional(S.String),
-          rawPng: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "MsixPackageApplications" });
-    case 4:
-      return S.Array(__S(3, __c0, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          packageAlias: S.optional(S.String),
-          imagePath: S.optional(S.String),
-          packageName: S.optional(S.String),
-          packageFamilyName: S.optional(S.String),
-          packageFullName: S.optional(S.String),
-          displayName: S.optional(S.NullOr(S.String)),
-          packageRelativePath: S.optional(S.String),
-          isRegularRegistration: S.optional(S.Boolean),
-          isActive: S.optional(S.Boolean),
-          packageDependencies: S.optional(S.NullOr(__S(2, __c0, 2))),
-          version: S.optional(S.String),
-          lastUpdated: S.optional(S.String),
-          packageApplications: S.optional(__S(4, __c0, 4)),
-          certificateName: S.optional(S.NullOr(S.String)),
-          certificateExpiry: S.optional(S.NullOr(S.String)),
-          isPackageTimestamped: S.optional(S.NullOr(S.String)),
-        }),
-      ).annotate({
-        identifier: "AppAttachPackageInfoProperties",
-      });
-    case 6:
-      return S.Array(S.String);
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          image: S.optional(__S(5, __c0, 5)),
-          hostPoolReferences: S.optional(__S(6, __c0, 6)),
-          keyVaultURL: S.optional(S.String),
-          failHealthCheckOnStagingFailure: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "AppAttachPackagePropertiesInput",
-      });
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           appAttachPackageName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(0, __c0, 0)),
+          tags: S.optional(__S(32, __c2, 0)),
           location: S.String,
-          properties: __S(7, __c0, 7),
+          properties: __S(112, __c7, 0),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -4949,7 +4887,11 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "AppAttachPackageCreateOrUpdateRequest",
       });
-    case 1:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           createdBy: S.optional(S.String),
@@ -4960,65 +4902,123 @@ function __c1(j: number): any {
           lastModifiedAt: S.optional(S.String),
         }),
       ).annotate({ identifier: "SystemData" });
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, S.String);
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          dependencyName: S.optional(S.String),
+          publisher: S.optional(S.String),
+          minVersion: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "MsixPackageDependencies" });
+    case 1:
+      return S.Array(__S(64, __c4, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
+          appId: S.optional(S.String),
+          description: S.optional(S.String),
+          appUserModelID: S.optional(S.String),
+          friendlyName: S.optional(S.String),
+          iconImageName: S.optional(S.String),
+          rawIcon: S.optional(S.String),
+          rawPng: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "MsixPackageApplications" });
+    case 3:
+      return S.Array(__S(66, __c4, 2));
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          packageAlias: S.optional(S.String),
+          imagePath: S.optional(S.String),
+          packageName: S.optional(S.String),
+          packageFamilyName: S.optional(S.String),
+          packageFullName: S.optional(S.String),
+          displayName: S.optional(S.NullOr(S.String)),
+          packageRelativePath: S.optional(S.String),
+          isRegularRegistration: S.optional(S.Boolean),
+          isActive: S.optional(S.Boolean),
+          packageDependencies: S.optional(S.NullOr(__S(65, __c4, 1))),
+          version: S.optional(S.String),
+          lastUpdated: S.optional(S.String),
+          packageApplications: S.optional(__S(67, __c4, 3)),
+          certificateName: S.optional(S.NullOr(S.String)),
+          certificateExpiry: S.optional(S.NullOr(S.String)),
+          isPackageTimestamped: S.optional(S.NullOr(S.String)),
+        }),
+      ).annotate({
+        identifier: "AppAttachPackageInfoProperties",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
           provisioningState: S.optional(S.String),
-          image: S.optional(__S(5, __c0, 5)),
-          hostPoolReferences: S.optional(__S(6, __c0, 6)),
+          image: S.optional(__S(80, __c5, 0)),
+          hostPoolReferences: S.optional(__S(48, __c3, 0)),
           keyVaultURL: S.optional(S.String),
           failHealthCheckOnStagingFailure: S.optional(S.String),
         }),
       ).annotate({
         identifier: "AppAttachPackageProperties",
       });
-    case 3:
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(9, __c1, 1)),
-          tags: S.optional(__S(0, __c0, 0)),
+          systemData: S.optional(__S(16, __c1, 0)),
+          tags: S.optional(__S(32, __c2, 0)),
           location: S.String,
-          properties: __S(10, __c1, 2),
+          properties: __S(81, __c5, 1),
         }),
       ).annotate({
         identifier: "AppAttachPackageCreateOrUpdateResponse",
       });
-    case 4:
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          type: S.String,
+          image: S.optional(__S(80, __c5, 0)),
+          hostPoolReferences: S.optional(__S(48, __c3, 0)),
+          keyVaultURL: S.optional(S.String),
+          failHealthCheckOnStagingFailure: S.optional(S.String),
         }),
       ).annotate({
-        identifier: "ApplicationGroupsCreateOrUpdateRequestIdentity",
+        identifier: "AppAttachPackagePropertiesInput",
       });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String,
-          tier: S.optional(S.String),
-          size: S.optional(S.String),
-          family: S.optional(S.String),
-          capacity: S.optional(S.Number),
-        }),
-      ).annotate({
-        identifier: "ApplicationGroupsCreateOrUpdateRequestSku",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String,
-          publisher: S.String,
-          product: S.String,
-          promotionCode: S.optional(S.String),
-          version: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "ApplicationGroupsCreateOrUpdateRequestPlan",
-      });
-    case 7:
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           description: S.optional(S.String),
@@ -5030,24 +5030,20 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "ApplicationGroupPropertiesInput",
       });
-  }
-}
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           applicationGroupName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(0, __c0, 0)),
+          tags: S.optional(__S(32, __c2, 0)),
           location: S.String,
           managedBy: S.optional(S.String),
           kind: S.optional(S.String),
-          identity: S.optional(__S(12, __c1, 4)),
-          sku: S.optional(__S(13, __c1, 5)),
-          plan: S.optional(__S(14, __c1, 6)),
-          properties: __S(15, __c1, 7),
+          identity: S.optional(__S(192, __c12, 0)),
+          sku: S.optional(__S(176, __c11, 0)),
+          plan: S.optional(__S(177, __c11, 1)),
+          properties: __S(128, __c8, 0),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -5059,17 +5055,11 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "ApplicationGroupsCreateOrUpdateRequest",
       });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          principalId: S.optional(S.String),
-          tenantId: S.optional(S.String),
-          type: S.String,
-        }),
-      ).annotate({
-        identifier: "ApplicationGroupsCreateOrUpdateResponseIdentity",
-      });
-    case 2:
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           objectId: S.optional(S.String),
@@ -5084,409 +5074,85 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "ApplicationGroupProperties",
       });
-    case 3:
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(9, __c1, 1)),
-          tags: S.optional(__S(0, __c0, 0)),
+          systemData: S.optional(__S(16, __c1, 0)),
+          tags: S.optional(__S(32, __c2, 0)),
           location: S.String,
           managedBy: S.optional(S.String),
           kind: S.optional(S.String),
           etag: S.optional(S.String),
-          identity: S.optional(__S(17, __c2, 1)),
-          sku: S.optional(__S(13, __c1, 5)),
-          plan: S.optional(__S(14, __c1, 6)),
-          properties: __S(18, __c2, 2),
+          identity: S.optional(__S(178, __c11, 2)),
+          sku: S.optional(__S(176, __c11, 0)),
+          plan: S.optional(__S(177, __c11, 1)),
+          properties: __S(144, __c9, 0),
         }),
       ).annotate({
         identifier: "ApplicationGroupsCreateOrUpdateResponse",
       });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          description: S.optional(S.String),
-          friendlyName: S.optional(S.String),
-          filePath: S.optional(S.String),
-          msixPackageFamilyName: S.optional(S.NullOr(S.String)),
-          msixPackageApplicationId: S.optional(S.NullOr(S.String)),
-          applicationType: S.optional(S.String),
-          commandLineSetting: S.String,
-          commandLineArguments: S.optional(S.String),
-          showInPortal: S.optional(S.Boolean),
-          iconPath: S.optional(S.String),
-          iconIndex: S.optional(S.Number),
-        }),
-      ).annotate({
-        identifier: "ApplicationPropertiesInput",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          applicationGroupName: S.String.pipe(T.Label()),
-          applicationName: S.String.pipe(T.Label()),
-          properties: __S(20, __c2, 4),
-        }).pipe(
-          T.Http({
-            method: "PUT",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DesktopVirtualization/applicationGroups/{applicationGroupName}/applications/{applicationName}",
-            code: 200,
-            apiVersion: "2025-10-10",
-          }),
-        ),
-      ).annotate({
-        identifier: "ApplicationsCreateOrUpdateRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          objectId: S.optional(S.String),
-          description: S.optional(S.String),
-          friendlyName: S.optional(S.String),
-          filePath: S.optional(S.String),
-          msixPackageFamilyName: S.optional(S.NullOr(S.String)),
-          msixPackageApplicationId: S.optional(S.NullOr(S.String)),
-          applicationType: S.optional(S.String),
-          commandLineSetting: S.String,
-          commandLineArguments: S.optional(S.String),
-          showInPortal: S.optional(S.Boolean),
-          iconPath: S.optional(S.String),
-          iconIndex: S.optional(S.Number),
-          iconHash: S.optional(S.String),
-          iconContent: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ApplicationProperties" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(9, __c1, 1)),
-          properties: __S(22, __c2, 6),
-        }),
-      ).annotate({
-        identifier: "ApplicationsCreateOrUpdateResponse",
-      });
   }
 }
-function __c3(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(S.String);
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          hour: S.Number,
-          minute: S.Number,
-        }),
-      ).annotate({ identifier: "Time" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.optional(S.String),
-          daysOfWeek: S.optional(__S(24, __c3, 0)),
-          rampUpStartTime: S.optional(__S(25, __c3, 1)),
-          rampUpLoadBalancingAlgorithm: S.optional(S.String),
-          rampUpMinimumHostsPct: S.optional(S.Number),
-          rampUpCapacityThresholdPct: S.optional(S.Number),
-          peakStartTime: S.optional(__S(25, __c3, 1)),
-          peakLoadBalancingAlgorithm: S.optional(S.String),
-          rampDownStartTime: S.optional(__S(25, __c3, 1)),
-          rampDownLoadBalancingAlgorithm: S.optional(S.String),
-          rampDownMinimumHostsPct: S.optional(S.Number),
-          rampDownCapacityThresholdPct: S.optional(S.Number),
-          rampDownForceLogoffUsers: S.optional(S.Boolean),
-          rampDownStopHostsWhen: S.optional(S.String),
-          rampDownWaitTimeMinutes: S.optional(S.Number),
-          rampDownNotificationMessage: S.optional(S.String),
-          offPeakStartTime: S.optional(__S(25, __c3, 1)),
-          offPeakLoadBalancingAlgorithm: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ScalingSchedule" });
-    case 3:
-      return S.Array(__S(26, __c3, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          hostPoolArmPath: S.optional(S.String),
-          scalingPlanEnabled: S.optional(S.Boolean),
-        }),
-      ).annotate({ identifier: "ScalingHostPoolReference" });
-    case 5:
-      return S.Array(__S(28, __c3, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          description: S.optional(S.String),
-          friendlyName: S.optional(S.String),
-          timeZone: S.String,
-          hostPoolType: S.optional(S.String),
-          exclusionTag: S.optional(S.String),
-          schedules: S.optional(__S(27, __c3, 3)),
-          hostPoolReferences: S.optional(__S(29, __c3, 5)),
-        }),
-      ).annotate({
-        identifier: "ScalingPlanPropertiesInput",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          scalingPlanName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(0, __c0, 0)),
-          location: S.String,
-          managedBy: S.optional(S.String),
-          kind: S.optional(S.String),
-          identity: S.optional(__S(12, __c1, 4)),
-          sku: S.optional(__S(13, __c1, 5)),
-          plan: S.optional(__S(14, __c1, 6)),
-          properties: __S(30, __c3, 6),
-        }).pipe(
-          T.Http({
-            method: "PUT",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DesktopVirtualization/scalingPlans/{scalingPlanName}",
-            code: 200,
-            apiVersion: "2025-10-10",
-          }),
-        ),
-      ).annotate({ identifier: "CreateScalingPlanRequest" });
-  }
-}
-function __c4(j: number): any {
+function __c11(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          objectId: S.optional(S.String),
-          description: S.optional(S.String),
-          friendlyName: S.optional(S.String),
-          timeZone: S.String,
-          hostPoolType: S.optional(S.String),
-          exclusionTag: S.optional(S.String),
-          schedules: S.optional(__S(27, __c3, 3)),
-          hostPoolReferences: S.optional(__S(29, __c3, 5)),
+          name: S.String,
+          tier: S.optional(S.String),
+          size: S.optional(S.String),
+          family: S.optional(S.String),
+          capacity: S.optional(S.Number),
         }),
-      ).annotate({ identifier: "ScalingPlanProperties" });
+      ).annotate({
+        identifier: "ApplicationGroupsCreateOrUpdateRequestSku",
+      });
     case 1:
       return S.suspend(() =>
         S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(9, __c1, 1)),
-          tags: S.optional(__S(0, __c0, 0)),
-          location: S.String,
-          managedBy: S.optional(S.String),
-          kind: S.optional(S.String),
-          etag: S.optional(S.String),
-          identity: S.optional(__S(17, __c2, 1)),
-          sku: S.optional(__S(13, __c1, 5)),
-          plan: S.optional(__S(14, __c1, 6)),
-          properties: __S(32, __c4, 0),
+          name: S.String,
+          publisher: S.String,
+          product: S.String,
+          promotionCode: S.optional(S.String),
+          version: S.optional(S.String),
         }),
       ).annotate({
-        identifier: "CreateScalingPlanResponse",
+        identifier: "ApplicationGroupsCreateOrUpdateRequestPlan",
       });
     case 2:
       return S.suspend(() =>
         S.Struct({
-          daysOfWeek: S.optional(__S(24, __c3, 0)),
-          rampUpStartTime: S.optional(__S(25, __c3, 1)),
-          rampUpAutoStartHosts: S.optional(S.String),
-          rampUpStartVMOnConnect: S.optional(S.String),
-          rampUpActionOnDisconnect: S.optional(S.String),
-          rampUpMinutesToWaitOnDisconnect: S.optional(S.Number),
-          rampUpActionOnLogoff: S.optional(S.String),
-          rampUpMinutesToWaitOnLogoff: S.optional(S.Number),
-          peakStartTime: S.optional(__S(25, __c3, 1)),
-          peakStartVMOnConnect: S.optional(S.String),
-          peakActionOnDisconnect: S.optional(S.String),
-          peakMinutesToWaitOnDisconnect: S.optional(S.Number),
-          peakActionOnLogoff: S.optional(S.String),
-          peakMinutesToWaitOnLogoff: S.optional(S.Number),
-          rampDownStartTime: S.optional(__S(25, __c3, 1)),
-          rampDownStartVMOnConnect: S.optional(S.String),
-          rampDownActionOnDisconnect: S.optional(S.String),
-          rampDownMinutesToWaitOnDisconnect: S.optional(S.Number),
-          rampDownActionOnLogoff: S.optional(S.String),
-          rampDownMinutesToWaitOnLogoff: S.optional(S.Number),
-          offPeakStartTime: S.optional(__S(25, __c3, 1)),
-          offPeakStartVMOnConnect: S.optional(S.String),
-          offPeakActionOnDisconnect: S.optional(S.String),
-          offPeakMinutesToWaitOnDisconnect: S.optional(S.Number),
-          offPeakActionOnLogoff: S.optional(S.String),
-          offPeakMinutesToWaitOnLogoff: S.optional(S.Number),
+          principalId: S.optional(S.String),
+          tenantId: S.optional(S.String),
+          type: S.String,
         }),
       ).annotate({
-        identifier: "ScalingPlanPersonalScheduleProperties",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          scalingPlanName: S.String.pipe(T.Label()),
-          scalingPlanScheduleName: S.String.pipe(T.Label()),
-          properties: __S(34, __c4, 2),
-        }).pipe(
-          T.Http({
-            method: "PUT",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DesktopVirtualization/scalingPlans/{scalingPlanName}/personalSchedules/{scalingPlanScheduleName}",
-            code: 200,
-            apiVersion: "2025-10-10",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateScalingPlanPersonalScheduleRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(9, __c1, 1)),
-          properties: __S(34, __c4, 2),
-        }),
-      ).annotate({
-        identifier: "CreateScalingPlanPersonalScheduleResponse",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          daysOfWeek: S.optional(__S(24, __c3, 0)),
-          rampUpStartTime: S.optional(__S(25, __c3, 1)),
-          rampUpLoadBalancingAlgorithm: S.optional(S.String),
-          rampUpMinimumHostsPct: S.optional(S.Number),
-          rampUpCapacityThresholdPct: S.optional(S.Number),
-          peakStartTime: S.optional(__S(25, __c3, 1)),
-          peakLoadBalancingAlgorithm: S.optional(S.String),
-          rampDownStartTime: S.optional(__S(25, __c3, 1)),
-          rampDownLoadBalancingAlgorithm: S.optional(S.String),
-          rampDownMinimumHostsPct: S.optional(S.Number),
-          rampDownCapacityThresholdPct: S.optional(S.Number),
-          rampDownForceLogoffUsers: S.optional(S.Boolean),
-          rampDownStopHostsWhen: S.optional(S.String),
-          rampDownWaitTimeMinutes: S.optional(S.Number),
-          rampDownNotificationMessage: S.optional(S.String),
-          offPeakStartTime: S.optional(__S(25, __c3, 1)),
-          offPeakLoadBalancingAlgorithm: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "ScalingPlanPooledScheduleProperties",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          scalingPlanName: S.String.pipe(T.Label()),
-          scalingPlanScheduleName: S.String.pipe(T.Label()),
-          properties: __S(37, __c4, 5),
-        }).pipe(
-          T.Http({
-            method: "PUT",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DesktopVirtualization/scalingPlans/{scalingPlanName}/pooledSchedules/{scalingPlanScheduleName}",
-            code: 200,
-            apiVersion: "2025-10-10",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateScalingPlanPooledScheduleRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(9, __c1, 1)),
-          properties: __S(37, __c4, 5),
-        }),
-      ).annotate({
-        identifier: "CreateScalingPlanPooledScheduleResponse",
+        identifier: "ApplicationGroupsCreateOrUpdateResponseIdentity",
       });
   }
 }
-function __c5(j: number): any {
+function __c12(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          appAttachPackageName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DesktopVirtualization/appAttachPackages/{appAttachPackageName}",
-            code: 200,
-            apiVersion: "2025-10-10",
-          }),
-        ),
+          type: S.String,
+        }),
       ).annotate({
-        identifier: "DeleteAppAttachPackageRequest",
+        identifier: "ApplicationGroupsCreateOrUpdateRequestIdentity",
       });
-    case 1:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "DeleteAppAttachPackageResponse",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          applicationGroupName: S.String.pipe(T.Label()),
-          applicationName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DesktopVirtualization/applicationGroups/{applicationGroupName}/applications/{applicationName}",
-            code: 200,
-            apiVersion: "2025-10-10",
-          }),
-        ),
-      ).annotate({ identifier: "DeleteApplicationRequest" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          applicationGroupName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DesktopVirtualization/applicationGroups/{applicationGroupName}",
-            code: 200,
-            apiVersion: "2025-10-10",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteApplicationGroupRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          hostPoolName: S.String.pipe(T.Label()),
-          force: S.optional(S.Boolean.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DesktopVirtualization/hostPools/{hostPoolName}",
-            code: 200,
-            apiVersion: "2025-10-10",
-          }),
-        ),
-      ).annotate({ identifier: "DeleteHostPoolRequest" });
-    case 5:
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -5502,7 +5168,11 @@ function __c5(j: number): any {
           }),
         ),
       ).annotate({ identifier: "DeleteMSIXPackageRequest" });
-    case 6:
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -5520,13 +5190,17 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "DeletePrivateEndpointConnectionByHostPoolRequest",
       });
-    case 7:
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "DeletePrivateEndpointConnectionByHostPoolResponse",
       });
   }
 }
-function __c6(j: number): any {
+function __c16(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5546,7 +5220,11 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "DeletePrivateEndpointConnectionByWorkspaceRequest",
       });
-    case 1:
+  }
+}
+function __c17(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -5561,7 +5239,11 @@ function __c6(j: number): any {
           }),
         ),
       ).annotate({ identifier: "DeleteScalingPlanRequest" });
-    case 2:
+  }
+}
+function __c18(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -5579,7 +5261,11 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "DeleteScalingPlanPersonalScheduleRequest",
       });
-    case 3:
+  }
+}
+function __c19(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -5597,7 +5283,11 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "DeleteScalingPlanPooledScheduleRequest",
       });
-    case 4:
+  }
+}
+function __c20(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -5614,7 +5304,11 @@ function __c6(j: number): any {
           }),
         ),
       ).annotate({ identifier: "DeleteSessionHostRequest" });
-    case 5:
+  }
+}
+function __c21(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -5632,7 +5326,11 @@ function __c6(j: number): any {
           }),
         ),
       ).annotate({ identifier: "DeleteUserSessionRequest" });
-    case 6:
+  }
+}
+function __c22(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -5647,7 +5345,11 @@ function __c6(j: number): any {
           }),
         ),
       ).annotate({ identifier: "DeleteWorkspaceRequest" });
-    case 7:
+  }
+}
+function __c23(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -5668,7 +5370,87 @@ function __c6(j: number): any {
       });
   }
 }
-function __c7(j: number): any {
+function __c24(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          description: S.optional(S.String),
+          friendlyName: S.optional(S.String),
+          filePath: S.optional(S.String),
+          msixPackageFamilyName: S.optional(S.NullOr(S.String)),
+          msixPackageApplicationId: S.optional(S.NullOr(S.String)),
+          applicationType: S.optional(S.String),
+          commandLineSetting: S.String,
+          commandLineArguments: S.optional(S.String),
+          showInPortal: S.optional(S.Boolean),
+          iconPath: S.optional(S.String),
+          iconIndex: S.optional(S.Number),
+        }),
+      ).annotate({
+        identifier: "ApplicationPropertiesInput",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          applicationGroupName: S.String.pipe(T.Label()),
+          applicationName: S.String.pipe(T.Label()),
+          properties: __S(384, __c24, 0),
+        }).pipe(
+          T.Http({
+            method: "PUT",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DesktopVirtualization/applicationGroups/{applicationGroupName}/applications/{applicationName}",
+            code: 200,
+            apiVersion: "2025-10-10",
+          }),
+        ),
+      ).annotate({
+        identifier: "ApplicationsCreateOrUpdateRequest",
+      });
+  }
+}
+function __c25(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          objectId: S.optional(S.String),
+          description: S.optional(S.String),
+          friendlyName: S.optional(S.String),
+          filePath: S.optional(S.String),
+          msixPackageFamilyName: S.optional(S.NullOr(S.String)),
+          msixPackageApplicationId: S.optional(S.NullOr(S.String)),
+          applicationType: S.optional(S.String),
+          commandLineSetting: S.String,
+          commandLineArguments: S.optional(S.String),
+          showInPortal: S.optional(S.Boolean),
+          iconPath: S.optional(S.String),
+          iconIndex: S.optional(S.Number),
+          iconHash: S.optional(S.String),
+          iconContent: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ApplicationProperties" });
+  }
+}
+function __c26(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(16, __c1, 0)),
+          properties: __S(400, __c25, 0),
+        }),
+      ).annotate({
+        identifier: "ApplicationsCreateOrUpdateResponse",
+      });
+  }
+}
+function __c27(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5687,7 +5469,11 @@ function __c7(j: number): any {
       ).annotate({
         identifier: "GetAppAttachPackageRequest",
       });
-    case 1:
+  }
+}
+function __c28(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -5703,17 +5489,25 @@ function __c7(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetApplicationRequest" });
-    case 2:
+  }
+}
+function __c29(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(9, __c1, 1)),
-          properties: __S(22, __c2, 6),
+          systemData: S.optional(__S(16, __c1, 0)),
+          properties: __S(400, __c25, 0),
         }),
       ).annotate({ identifier: "GetApplicationResponse" });
-    case 3:
+  }
+}
+function __c30(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -5730,7 +5524,11 @@ function __c7(j: number): any {
       ).annotate({
         identifier: "GetApplicationGroupRequest",
       });
-    case 4:
+  }
+}
+function __c31(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -5746,7 +5544,11 @@ function __c7(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetDesktopRequest" });
-    case 5:
+  }
+}
+function __c32(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           objectId: S.optional(S.String),
@@ -5756,17 +5558,21 @@ function __c7(j: number): any {
           iconContent: S.optional(S.String),
         }),
       ).annotate({ identifier: "DesktopProperties" });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(9, __c1, 1)),
-          properties: S.optional(__S(61, __c7, 5)),
+          systemData: S.optional(__S(16, __c1, 0)),
+          properties: S.optional(__S(512, __c32, 0)),
         }),
       ).annotate({ identifier: "GetDesktopResponse" });
-    case 7:
+  }
+}
+function __c33(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -5783,7 +5589,7 @@ function __c7(j: number): any {
       ).annotate({ identifier: "GetHostPoolRequest" });
   }
 }
-function __c8(j: number): any {
+function __c34(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5793,33 +5599,17 @@ function __c8(j: number): any {
           registrationTokenOperation: S.optional(S.String),
         }),
       ).annotate({ identifier: "RegistrationInfo" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          hour: S.optional(S.Number),
-          dayOfWeek: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "MaintenanceWindowProperties",
-      });
-    case 2:
-      return S.Array(__S(65, __c8, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          type: S.optional(S.String),
-          useSessionHostLocalTime: S.optional(S.Boolean),
-          maintenanceWindowTimeZone: S.optional(S.String),
-          maintenanceWindows: S.optional(S.NullOr(__S(66, __c8, 2))),
-        }),
-      ).annotate({ identifier: "AgentUpdateProperties" });
-    case 4:
+  }
+}
+function __c35(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
         }),
       ).annotate({ identifier: "PrivateEndpoint" });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           status: S.optional(S.String),
@@ -5829,36 +5619,60 @@ function __c8(j: number): any {
       ).annotate({
         identifier: "PrivateLinkServiceConnectionState",
       });
-    case 6:
+  }
+}
+function __c36(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          groupIds: S.optional(__S(6, __c0, 6)),
-          privateEndpoint: S.optional(__S(68, __c8, 4)),
-          privateLinkServiceConnectionState: __S(69, __c8, 5),
+          groupIds: S.optional(__S(48, __c3, 0)),
+          privateEndpoint: S.optional(__S(560, __c35, 0)),
+          privateLinkServiceConnectionState: __S(561, __c35, 1),
           provisioningState: S.optional(S.String),
         }),
       ).annotate({
         identifier: "PrivateEndpointConnectionProperties",
       });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(9, __c1, 1)),
-          properties: S.optional(__S(70, __c8, 6)),
+          systemData: S.optional(__S(16, __c1, 0)),
+          properties: S.optional(__S(576, __c36, 0)),
         }),
       ).annotate({
         identifier: "HostPoolPropertiesPrivateEndpointConnectionsItem",
       });
+    case 2:
+      return S.Array(__S(577, __c36, 1));
   }
 }
-function __c9(j: number): any {
+function __c37(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(71, __c8, 7));
+      return S.suspend(() =>
+        S.Struct({
+          hour: S.optional(S.Number),
+          dayOfWeek: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "MaintenanceWindowProperties",
+      });
     case 1:
+      return S.Array(__S(592, __c37, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          type: S.optional(S.String),
+          useSessionHostLocalTime: S.optional(S.Boolean),
+          maintenanceWindowTimeZone: S.optional(S.String),
+          maintenanceWindows: S.optional(S.NullOr(__S(593, __c37, 1))),
+        }),
+      ).annotate({ identifier: "AgentUpdateProperties" });
+    case 3:
       return S.suspend(() =>
         S.Struct({
           objectId: S.optional(S.String),
@@ -5871,10 +5685,10 @@ function __c9(j: number): any {
           loadBalancerType: S.String,
           ring: S.optional(S.NullOr(S.Number)),
           validationEnvironment: S.optional(S.NullOr(S.Boolean)),
-          registrationInfo: S.optional(S.NullOr(__S(64, __c8, 0))),
+          registrationInfo: S.optional(S.NullOr(__S(544, __c34, 0))),
           vmTemplate: S.optional(S.String),
-          applicationGroupReferences: S.optional(S.NullOr(__S(6, __c0, 6))),
-          appAttachPackageReferences: S.optional(__S(6, __c0, 6)),
+          applicationGroupReferences: S.optional(S.NullOr(__S(48, __c3, 0))),
+          appAttachPackageReferences: S.optional(__S(48, __c3, 0)),
           ssoadfsAuthority: S.optional(S.String),
           ssoClientId: S.optional(S.String),
           ssoClientSecretKeyVaultPath: S.optional(S.String.pipe(T.SensitiveValue({}))),
@@ -5883,29 +5697,37 @@ function __c9(j: number): any {
           startVMOnConnect: S.optional(S.NullOr(S.Boolean)),
           cloudPcResource: S.optional(S.NullOr(S.Boolean)),
           publicNetworkAccess: S.optional(S.NullOr(S.String)),
-          agentUpdate: S.optional(S.NullOr(__S(67, __c8, 3))),
-          privateEndpointConnections: S.optional(S.NullOr(__S(72, __c9, 0))),
+          agentUpdate: S.optional(S.NullOr(__S(594, __c37, 2))),
+          privateEndpointConnections: S.optional(S.NullOr(__S(578, __c36, 2))),
         }),
       ).annotate({ identifier: "HostPoolProperties" });
-    case 2:
+  }
+}
+function __c38(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(9, __c1, 1)),
-          tags: S.optional(__S(0, __c0, 0)),
+          systemData: S.optional(__S(16, __c1, 0)),
+          tags: S.optional(__S(32, __c2, 0)),
           location: S.String,
           managedBy: S.optional(S.String),
           kind: S.optional(S.String),
           etag: S.optional(S.String),
-          identity: S.optional(__S(17, __c2, 1)),
-          sku: S.optional(__S(13, __c1, 5)),
-          plan: S.optional(__S(14, __c1, 6)),
-          properties: __S(73, __c9, 1),
+          identity: S.optional(__S(178, __c11, 2)),
+          sku: S.optional(__S(176, __c11, 0)),
+          plan: S.optional(__S(177, __c11, 1)),
+          properties: __S(595, __c37, 3),
         }),
       ).annotate({ identifier: "GetHostPoolResponse" });
-    case 3:
+  }
+}
+function __c39(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -5922,7 +5744,11 @@ function __c9(j: number): any {
       ).annotate({
         identifier: "GetHostPoolRegistrationTokenRequest",
       });
-    case 4:
+  }
+}
+function __c40(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -5938,7 +5764,25 @@ function __c9(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetMSIXPackageRequest" });
-    case 5:
+  }
+}
+function __c41(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(16, __c1, 0)),
+          properties: __S(672, __c42, 0),
+        }),
+      ).annotate({ identifier: "GetMSIXPackageResponse" });
+  }
+}
+function __c42(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           imagePath: S.optional(S.String),
@@ -5948,23 +5792,17 @@ function __c9(j: number): any {
           packageRelativePath: S.optional(S.String),
           isRegularRegistration: S.optional(S.Boolean),
           isActive: S.optional(S.Boolean),
-          packageDependencies: S.optional(__S(2, __c0, 2)),
+          packageDependencies: S.optional(__S(65, __c4, 1)),
           version: S.optional(S.String),
           lastUpdated: S.optional(S.String),
-          packageApplications: S.optional(__S(4, __c0, 4)),
+          packageApplications: S.optional(__S(67, __c4, 3)),
         }),
       ).annotate({ identifier: "MSIXPackageProperties" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(9, __c1, 1)),
-          properties: __S(77, __c9, 5),
-        }),
-      ).annotate({ identifier: "GetMSIXPackageResponse" });
-    case 7:
+  }
+}
+function __c43(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -5984,34 +5822,42 @@ function __c9(j: number): any {
       });
   }
 }
-function __c10(j: number): any {
+function __c44(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(S.String);
-    case 1:
       return S.suspend(() =>
         S.Struct({
-          groupIds: S.optional(__S(80, __c10, 0)),
-          privateEndpoint: S.optional(__S(68, __c8, 4)),
-          privateLinkServiceConnectionState: __S(69, __c8, 5),
+          groupIds: S.optional(__S(720, __c45, 0)),
+          privateEndpoint: S.optional(__S(560, __c35, 0)),
+          privateLinkServiceConnectionState: __S(561, __c35, 1),
           provisioningState: S.optional(S.String),
         }),
       ).annotate({
         identifier: "GetPrivateEndpointConnectionByHostPoolResponseProperties",
       });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(9, __c1, 1)),
-          properties: S.optional(__S(81, __c10, 1)),
+          systemData: S.optional(__S(16, __c1, 0)),
+          properties: S.optional(__S(704, __c44, 0)),
         }),
       ).annotate({
         identifier: "GetPrivateEndpointConnectionByHostPoolResponse",
       });
-    case 3:
+  }
+}
+function __c45(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c46(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -6029,7 +5875,11 @@ function __c10(j: number): any {
       ).annotate({
         identifier: "GetPrivateEndpointConnectionByWorkspaceRequest",
       });
-    case 4:
+  }
+}
+function __c47(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -6044,25 +5894,162 @@ function __c10(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetScalingPlanRequest" });
-    case 5:
+  }
+}
+function __c48(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(9, __c1, 1)),
-          tags: S.optional(__S(0, __c0, 0)),
+          systemData: S.optional(__S(16, __c1, 0)),
+          tags: S.optional(__S(32, __c2, 0)),
           location: S.String,
           managedBy: S.optional(S.String),
           kind: S.optional(S.String),
           etag: S.optional(S.String),
-          identity: S.optional(__S(17, __c2, 1)),
-          sku: S.optional(__S(13, __c1, 5)),
-          plan: S.optional(__S(14, __c1, 6)),
-          properties: __S(32, __c4, 0),
+          identity: S.optional(__S(178, __c11, 2)),
+          sku: S.optional(__S(176, __c11, 0)),
+          plan: S.optional(__S(177, __c11, 1)),
+          properties: __S(804, __c50, 4),
         }),
       ).annotate({ identifier: "GetScalingPlanResponse" });
-    case 6:
+  }
+}
+function __c49(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          description: S.optional(S.String),
+          friendlyName: S.optional(S.String),
+          timeZone: S.String,
+          hostPoolType: S.optional(S.String),
+          exclusionTag: S.optional(S.String),
+          schedules: S.optional(__S(801, __c50, 1)),
+          hostPoolReferences: S.optional(__S(803, __c50, 3)),
+        }),
+      ).annotate({
+        identifier: "ScalingPlanPropertiesInput",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          scalingPlanName: S.String.pipe(T.Label()),
+          tags: S.optional(__S(32, __c2, 0)),
+          location: S.String,
+          managedBy: S.optional(S.String),
+          kind: S.optional(S.String),
+          identity: S.optional(__S(192, __c12, 0)),
+          sku: S.optional(__S(176, __c11, 0)),
+          plan: S.optional(__S(177, __c11, 1)),
+          properties: __S(784, __c49, 0),
+        }).pipe(
+          T.Http({
+            method: "PUT",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DesktopVirtualization/scalingPlans/{scalingPlanName}",
+            code: 200,
+            apiVersion: "2025-10-10",
+          }),
+        ),
+      ).annotate({ identifier: "CreateScalingPlanRequest" });
+  }
+}
+function __c50(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.optional(S.String),
+          daysOfWeek: S.optional(__S(816, __c51, 0)),
+          rampUpStartTime: S.optional(__S(817, __c51, 1)),
+          rampUpLoadBalancingAlgorithm: S.optional(S.String),
+          rampUpMinimumHostsPct: S.optional(S.Number),
+          rampUpCapacityThresholdPct: S.optional(S.Number),
+          peakStartTime: S.optional(__S(817, __c51, 1)),
+          peakLoadBalancingAlgorithm: S.optional(S.String),
+          rampDownStartTime: S.optional(__S(817, __c51, 1)),
+          rampDownLoadBalancingAlgorithm: S.optional(S.String),
+          rampDownMinimumHostsPct: S.optional(S.Number),
+          rampDownCapacityThresholdPct: S.optional(S.Number),
+          rampDownForceLogoffUsers: S.optional(S.Boolean),
+          rampDownStopHostsWhen: S.optional(S.String),
+          rampDownWaitTimeMinutes: S.optional(S.Number),
+          rampDownNotificationMessage: S.optional(S.String),
+          offPeakStartTime: S.optional(__S(817, __c51, 1)),
+          offPeakLoadBalancingAlgorithm: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ScalingSchedule" });
+    case 1:
+      return S.Array(__S(800, __c50, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          hostPoolArmPath: S.optional(S.String),
+          scalingPlanEnabled: S.optional(S.Boolean),
+        }),
+      ).annotate({ identifier: "ScalingHostPoolReference" });
+    case 3:
+      return S.Array(__S(802, __c50, 2));
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          objectId: S.optional(S.String),
+          description: S.optional(S.String),
+          friendlyName: S.optional(S.String),
+          timeZone: S.String,
+          hostPoolType: S.optional(S.String),
+          exclusionTag: S.optional(S.String),
+          schedules: S.optional(__S(801, __c50, 1)),
+          hostPoolReferences: S.optional(__S(803, __c50, 3)),
+        }),
+      ).annotate({ identifier: "ScalingPlanProperties" });
+  }
+}
+function __c51(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          hour: S.Number,
+          minute: S.Number,
+        }),
+      ).annotate({ identifier: "Time" });
+  }
+}
+function __c52(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(16, __c1, 0)),
+          tags: S.optional(__S(32, __c2, 0)),
+          location: S.String,
+          managedBy: S.optional(S.String),
+          kind: S.optional(S.String),
+          etag: S.optional(S.String),
+          identity: S.optional(__S(178, __c11, 2)),
+          sku: S.optional(__S(176, __c11, 0)),
+          plan: S.optional(__S(177, __c11, 1)),
+          properties: __S(804, __c50, 4),
+        }),
+      ).annotate({
+        identifier: "CreateScalingPlanResponse",
+      });
+  }
+}
+function __c53(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -6080,7 +6067,11 @@ function __c10(j: number): any {
       ).annotate({
         identifier: "GetScalingPlanPersonalScheduleRequest",
       });
-    case 7:
+  }
+}
+function __c54(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -6100,7 +6091,7 @@ function __c10(j: number): any {
       });
   }
 }
-function __c11(j: number): any {
+function __c55(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -6118,7 +6109,25 @@ function __c11(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetSessionHostRequest" });
-    case 1:
+  }
+}
+function __c56(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(16, __c1, 0)),
+          properties: S.optional(__S(915, __c57, 3)),
+        }),
+      ).annotate({ identifier: "GetSessionHostResponse" });
+  }
+}
+function __c57(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           message: S.optional(S.String),
@@ -6128,19 +6137,19 @@ function __c11(j: number): any {
       ).annotate({
         identifier: "SessionHostHealthCheckFailureDetails",
       });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           healthCheckName: S.optional(S.String),
           healthCheckResult: S.optional(S.String),
-          additionalFailureDetails: S.optional(__S(89, __c11, 1)),
+          additionalFailureDetails: S.optional(__S(912, __c57, 0)),
         }),
       ).annotate({
         identifier: "SessionHostHealthCheckReport",
       });
+    case 2:
+      return S.Array(__S(913, __c57, 1));
     case 3:
-      return S.Array(__S(90, __c11, 2));
-    case 4:
       return S.suspend(() =>
         S.Struct({
           objectId: S.optional(S.String),
@@ -6159,20 +6168,14 @@ function __c11(j: number): any {
           updateState: S.optional(S.String),
           lastUpdateTime: S.optional(S.String),
           updateErrorMessage: S.optional(S.String),
-          sessionHostHealthCheckResults: S.optional(__S(91, __c11, 3)),
+          sessionHostHealthCheckResults: S.optional(__S(914, __c57, 2)),
         }),
       ).annotate({ identifier: "SessionHostProperties" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(9, __c1, 1)),
-          properties: S.optional(__S(92, __c11, 4)),
-        }),
-      ).annotate({ identifier: "GetSessionHostResponse" });
-    case 6:
+  }
+}
+function __c58(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -6189,7 +6192,11 @@ function __c11(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetUserSessionRequest" });
-    case 7:
+  }
+}
+function __c59(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           objectId: S.optional(S.String),
@@ -6200,21 +6207,21 @@ function __c11(j: number): any {
           createTime: S.optional(S.String),
         }),
       ).annotate({ identifier: "UserSessionProperties" });
-  }
-}
-function __c12(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(9, __c1, 1)),
-          properties: S.optional(__S(95, __c11, 7)),
+          systemData: S.optional(__S(16, __c1, 0)),
+          properties: S.optional(__S(944, __c59, 0)),
         }),
       ).annotate({ identifier: "GetUserSessionResponse" });
-    case 1:
+  }
+}
+function __c60(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -6229,37 +6236,49 @@ function __c12(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetWorkspaceRequest" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          objectId: S.optional(S.String),
-          description: S.optional(S.String),
-          friendlyName: S.optional(S.String),
-          applicationGroupReferences: S.optional(S.NullOr(__S(6, __c0, 6))),
-          cloudPcResource: S.optional(S.NullOr(S.Boolean)),
-          publicNetworkAccess: S.optional(S.NullOr(S.String)),
-          privateEndpointConnections: S.optional(S.NullOr(__S(72, __c9, 0))),
-        }),
-      ).annotate({ identifier: "WorkspaceProperties" });
-    case 3:
+  }
+}
+function __c61(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(9, __c1, 1)),
-          tags: S.optional(__S(0, __c0, 0)),
+          systemData: S.optional(__S(16, __c1, 0)),
+          tags: S.optional(__S(32, __c2, 0)),
           location: S.String,
           managedBy: S.optional(S.String),
           kind: S.optional(S.String),
           etag: S.optional(S.String),
-          identity: S.optional(__S(17, __c2, 1)),
-          sku: S.optional(__S(13, __c1, 5)),
-          plan: S.optional(__S(14, __c1, 6)),
-          properties: S.optional(__S(98, __c12, 2)),
+          identity: S.optional(__S(178, __c11, 2)),
+          sku: S.optional(__S(176, __c11, 0)),
+          plan: S.optional(__S(177, __c11, 1)),
+          properties: S.optional(__S(992, __c62, 0)),
         }),
       ).annotate({ identifier: "GetWorkspaceResponse" });
-    case 4:
+  }
+}
+function __c62(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          objectId: S.optional(S.String),
+          description: S.optional(S.String),
+          friendlyName: S.optional(S.String),
+          applicationGroupReferences: S.optional(S.NullOr(__S(48, __c3, 0))),
+          cloudPcResource: S.optional(S.NullOr(S.Boolean)),
+          publicNetworkAccess: S.optional(S.NullOr(S.String)),
+          privateEndpointConnections: S.optional(S.NullOr(__S(578, __c36, 2))),
+        }),
+      ).annotate({ identifier: "WorkspaceProperties" });
+  }
+}
+function __c63(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           friendlyName: S.optional(S.String),
@@ -6271,7 +6290,7 @@ function __c12(j: number): any {
           loadBalancerType: S.String,
           ring: S.optional(S.NullOr(S.Number)),
           validationEnvironment: S.optional(S.NullOr(S.Boolean)),
-          registrationInfo: S.optional(S.NullOr(__S(64, __c8, 0))),
+          registrationInfo: S.optional(S.NullOr(__S(544, __c34, 0))),
           vmTemplate: S.optional(S.String),
           ssoadfsAuthority: S.optional(S.String),
           ssoClientId: S.optional(S.String),
@@ -6280,23 +6299,23 @@ function __c12(j: number): any {
           preferredAppGroupType: S.String,
           startVMOnConnect: S.optional(S.NullOr(S.Boolean)),
           publicNetworkAccess: S.optional(S.NullOr(S.String)),
-          agentUpdate: S.optional(S.NullOr(__S(67, __c8, 3))),
+          agentUpdate: S.optional(S.NullOr(__S(594, __c37, 2))),
         }),
       ).annotate({ identifier: "HostPoolPropertiesInput" });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           hostPoolName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(0, __c0, 0)),
+          tags: S.optional(__S(32, __c2, 0)),
           location: S.String,
           managedBy: S.optional(S.String),
           kind: S.optional(S.String),
-          identity: S.optional(__S(12, __c1, 4)),
-          sku: S.optional(__S(13, __c1, 5)),
-          plan: S.optional(__S(14, __c1, 6)),
-          properties: __S(100, __c12, 4),
+          identity: S.optional(__S(192, __c12, 0)),
+          sku: S.optional(__S(176, __c11, 0)),
+          plan: S.optional(__S(177, __c11, 1)),
+          properties: __S(1008, __c63, 0),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -6308,27 +6327,31 @@ function __c12(j: number): any {
       ).annotate({
         identifier: "HostPoolsCreateOrUpdateRequest",
       });
-    case 6:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(9, __c1, 1)),
-          tags: S.optional(__S(0, __c0, 0)),
+          systemData: S.optional(__S(16, __c1, 0)),
+          tags: S.optional(__S(32, __c2, 0)),
           location: S.String,
           managedBy: S.optional(S.String),
           kind: S.optional(S.String),
           etag: S.optional(S.String),
-          identity: S.optional(__S(17, __c2, 1)),
-          sku: S.optional(__S(13, __c1, 5)),
-          plan: S.optional(__S(14, __c1, 6)),
-          properties: __S(73, __c9, 1),
+          identity: S.optional(__S(178, __c11, 2)),
+          sku: S.optional(__S(176, __c11, 0)),
+          plan: S.optional(__S(177, __c11, 1)),
+          properties: __S(595, __c37, 3),
         }),
       ).annotate({
         identifier: "HostPoolsCreateOrUpdateResponse",
       });
-    case 7:
+  }
+}
+function __c64(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -6349,7 +6372,7 @@ function __c12(j: number): any {
       });
   }
 }
-function __c13(j: number): any {
+function __c65(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -6357,22 +6380,26 @@ function __c13(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(9, __c1, 1)),
-          tags: S.optional(__S(0, __c0, 0)),
+          systemData: S.optional(__S(16, __c1, 0)),
+          tags: S.optional(__S(32, __c2, 0)),
           location: S.String,
-          properties: __S(10, __c1, 2),
+          properties: __S(81, __c5, 1),
         }),
       ).annotate({ identifier: "AppAttachPackage" });
     case 1:
-      return S.Array(__S(104, __c13, 0));
+      return S.Array(__S(1040, __c65, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(105, __c13, 1)),
+          value: S.optional(__S(1041, __c65, 1)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "AppAttachPackageList" });
-    case 3:
+  }
+}
+function __c66(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -6389,7 +6416,11 @@ function __c13(j: number): any {
       ).annotate({
         identifier: "ListAppAttachPackageByResourceGroupRequest",
       });
-    case 4:
+  }
+}
+function __c67(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -6405,7 +6436,11 @@ function __c13(j: number): any {
       ).annotate({
         identifier: "ListAppAttachPackageBySubscriptionRequest",
       });
-    case 5:
+  }
+}
+function __c68(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -6425,38 +6460,114 @@ function __c13(j: number): any {
       ).annotate({
         identifier: "ListApplicationGroupByResourceGroupRequest",
       });
-    case 6:
+  }
+}
+function __c69(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(9, __c1, 1)),
-          tags: S.optional(__S(0, __c0, 0)),
+          systemData: S.optional(__S(16, __c1, 0)),
+          tags: S.optional(__S(32, __c2, 0)),
           location: S.String,
           managedBy: S.optional(S.String),
           kind: S.optional(S.String),
           etag: S.optional(S.String),
-          identity: S.optional(__S(17, __c2, 1)),
-          sku: S.optional(__S(13, __c1, 5)),
-          plan: S.optional(__S(14, __c1, 6)),
-          properties: __S(18, __c2, 2),
+          identity: S.optional(__S(178, __c11, 2)),
+          sku: S.optional(__S(176, __c11, 0)),
+          plan: S.optional(__S(177, __c11, 1)),
+          properties: __S(144, __c9, 0),
         }),
       ).annotate({ identifier: "ApplicationGroup" });
-    case 7:
-      return S.Array(__S(110, __c13, 6));
+    case 1:
+      return S.Array(__S(1104, __c69, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          value: S.optional(__S(1105, __c69, 1)),
+          nextLink: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ApplicationGroupList" });
   }
 }
-function __c14(j: number): any {
+function __c70(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(111, __c13, 7)),
-          nextLink: S.optional(S.String),
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          scalingPlanName: S.String.pipe(T.Label()),
+          scalingPlanScheduleName: S.String.pipe(T.Label()),
+          properties: __S(1136, __c71, 0),
+        }).pipe(
+          T.Http({
+            method: "PUT",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DesktopVirtualization/scalingPlans/{scalingPlanName}/personalSchedules/{scalingPlanScheduleName}",
+            code: 200,
+            apiVersion: "2025-10-10",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateScalingPlanPersonalScheduleRequest",
+      });
+  }
+}
+function __c71(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          daysOfWeek: S.optional(__S(816, __c51, 0)),
+          rampUpStartTime: S.optional(__S(817, __c51, 1)),
+          rampUpAutoStartHosts: S.optional(S.String),
+          rampUpStartVMOnConnect: S.optional(S.String),
+          rampUpActionOnDisconnect: S.optional(S.String),
+          rampUpMinutesToWaitOnDisconnect: S.optional(S.Number),
+          rampUpActionOnLogoff: S.optional(S.String),
+          rampUpMinutesToWaitOnLogoff: S.optional(S.Number),
+          peakStartTime: S.optional(__S(817, __c51, 1)),
+          peakStartVMOnConnect: S.optional(S.String),
+          peakActionOnDisconnect: S.optional(S.String),
+          peakMinutesToWaitOnDisconnect: S.optional(S.Number),
+          peakActionOnLogoff: S.optional(S.String),
+          peakMinutesToWaitOnLogoff: S.optional(S.Number),
+          rampDownStartTime: S.optional(__S(817, __c51, 1)),
+          rampDownStartVMOnConnect: S.optional(S.String),
+          rampDownActionOnDisconnect: S.optional(S.String),
+          rampDownMinutesToWaitOnDisconnect: S.optional(S.Number),
+          rampDownActionOnLogoff: S.optional(S.String),
+          rampDownMinutesToWaitOnLogoff: S.optional(S.Number),
+          offPeakStartTime: S.optional(__S(817, __c51, 1)),
+          offPeakStartVMOnConnect: S.optional(S.String),
+          offPeakActionOnDisconnect: S.optional(S.String),
+          offPeakMinutesToWaitOnDisconnect: S.optional(S.Number),
+          offPeakActionOnLogoff: S.optional(S.String),
+          offPeakMinutesToWaitOnLogoff: S.optional(S.Number),
         }),
-      ).annotate({ identifier: "ApplicationGroupList" });
+      ).annotate({
+        identifier: "ScalingPlanPersonalScheduleProperties",
+      });
     case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(16, __c1, 0)),
+          properties: __S(1136, __c71, 0),
+        }),
+      ).annotate({
+        identifier: "CreateScalingPlanPersonalScheduleResponse",
+      });
+  }
+}
+function __c72(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -6472,7 +6583,11 @@ function __c14(j: number): any {
       ).annotate({
         identifier: "ListApplicationGroupBySubscriptionRequest",
       });
-    case 2:
+  }
+}
+function __c73(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -6490,16 +6605,20 @@ function __c14(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ListApplicationsRequest" });
-    case 3:
-      return S.Array(__S(58, __c7, 2));
-    case 4:
+    case 1:
+      return S.Array(__S(464, __c29, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(115, __c14, 3)),
+          value: S.optional(__S(1169, __c73, 1)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ApplicationList" });
-    case 5:
+  }
+}
+function __c74(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -6517,18 +6636,18 @@ function __c14(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ListDesktopsRequest" });
-    case 6:
-      return S.Array(__S(62, __c7, 6));
-    case 7:
+    case 1:
+      return S.Array(__S(513, __c32, 1));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(118, __c14, 6)),
+          value: S.optional(__S(1185, __c74, 1)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "DesktopList" });
   }
 }
-function __c15(j: number): any {
+function __c75(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -6549,16 +6668,24 @@ function __c15(j: number): any {
       ).annotate({
         identifier: "ListHostPoolByResourceGroupRequest",
       });
+  }
+}
+function __c76(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(608, __c38, 0));
     case 1:
-      return S.Array(__S(74, __c9, 2));
-    case 2:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(121, __c15, 1)),
+          value: S.optional(__S(1216, __c76, 0)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "HostPoolList" });
-    case 3:
+  }
+}
+function __c77(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -6575,23 +6702,27 @@ function __c15(j: number): any {
       ).annotate({
         identifier: "ListHostPoolRegistrationTokensRequest",
       });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           expirationTime: S.optional(S.NullOr(S.String)),
           token: S.optional(S.String),
         }),
       ).annotate({ identifier: "RegistrationTokenMinimal" });
-    case 5:
-      return S.Array(__S(124, __c15, 4));
-    case 6:
+    case 2:
+      return S.Array(__S(1233, __c77, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(125, __c15, 5)),
+          value: S.optional(__S(1234, __c77, 2)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "RegistrationTokenList" });
-    case 7:
+  }
+}
+function __c78(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -6609,7 +6740,7 @@ function __c15(j: number): any {
       ).annotate({ identifier: "ListHostPoolsRequest" });
   }
 }
-function __c16(j: number): any {
+function __c79(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -6630,15 +6761,19 @@ function __c16(j: number): any {
         ),
       ).annotate({ identifier: "ListMSIXPackagesRequest" });
     case 1:
-      return S.Array(__S(78, __c9, 6));
+      return S.Array(__S(656, __c41, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(129, __c16, 1)),
+          value: S.optional(__S(1265, __c79, 1)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "MSIXPackageList" });
-    case 3:
+  }
+}
+function __c80(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({}).pipe(
           T.Http({
@@ -6649,7 +6784,7 @@ function __c16(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ListOperationsRequest" });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           provider: S.optional(S.String),
@@ -6660,7 +6795,7 @@ function __c16(j: number): any {
       ).annotate({
         identifier: "ResourceProviderOperationDisplay",
       });
-    case 5:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
@@ -6668,47 +6803,47 @@ function __c16(j: number): any {
           blobDuration: S.optional(S.String),
         }),
       ).annotate({ identifier: "LogSpecification" });
-    case 6:
-      return S.Array(__S(133, __c16, 5));
-    case 7:
+    case 3:
+      return S.Array(__S(1282, __c80, 2));
+    case 4:
       return S.suspend(() =>
         S.Struct({
-          logSpecifications: S.optional(__S(134, __c16, 6)),
+          logSpecifications: S.optional(__S(1283, __c80, 3)),
         }),
       ).annotate({ identifier: "ServiceSpecification" });
-  }
-}
-function __c17(j: number): any {
-  switch (j) {
-    case 0:
+    case 5:
       return S.suspend(() =>
         S.Struct({
-          serviceSpecification: S.optional(__S(135, __c16, 7)),
+          serviceSpecification: S.optional(__S(1284, __c80, 4)),
         }),
       ).annotate({ identifier: "OperationProperties" });
-    case 1:
+    case 6:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
-          display: S.optional(__S(132, __c16, 4)),
+          display: S.optional(__S(1281, __c80, 1)),
           isDataAction: S.optional(S.Boolean),
-          properties: S.optional(__S(136, __c17, 0)),
+          properties: S.optional(__S(1285, __c80, 5)),
         }),
       ).annotate({
         identifier: "ResourceProviderOperation",
       });
-    case 2:
-      return S.Array(__S(137, __c17, 1));
-    case 3:
+    case 7:
+      return S.Array(__S(1286, __c80, 6));
+    case 8:
       return S.suspend(() =>
         S.Struct({
-          value: __S(138, __c17, 2),
+          value: __S(1287, __c80, 7),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
         identifier: "ResourceProviderOperationListResult",
       });
-    case 4:
+  }
+}
+function __c81(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -6728,16 +6863,24 @@ function __c17(j: number): any {
       ).annotate({
         identifier: "ListPrivateEndpointConnectionByHostPoolRequest",
       });
-    case 5:
+  }
+}
+function __c82(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(72, __c9, 0)),
+          value: S.optional(__S(578, __c36, 2)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
         identifier: "PrivateEndpointConnectionListResultWithSystemData",
       });
-    case 6:
+  }
+}
+function __c83(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -6754,7 +6897,74 @@ function __c17(j: number): any {
       ).annotate({
         identifier: "ListPrivateEndpointConnectionByWorkspaceRequest",
       });
-    case 7:
+  }
+}
+function __c84(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          scalingPlanName: S.String.pipe(T.Label()),
+          scalingPlanScheduleName: S.String.pipe(T.Label()),
+          properties: __S(1360, __c85, 0),
+        }).pipe(
+          T.Http({
+            method: "PUT",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DesktopVirtualization/scalingPlans/{scalingPlanName}/pooledSchedules/{scalingPlanScheduleName}",
+            code: 200,
+            apiVersion: "2025-10-10",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateScalingPlanPooledScheduleRequest",
+      });
+  }
+}
+function __c85(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          daysOfWeek: S.optional(__S(816, __c51, 0)),
+          rampUpStartTime: S.optional(__S(817, __c51, 1)),
+          rampUpLoadBalancingAlgorithm: S.optional(S.String),
+          rampUpMinimumHostsPct: S.optional(S.Number),
+          rampUpCapacityThresholdPct: S.optional(S.Number),
+          peakStartTime: S.optional(__S(817, __c51, 1)),
+          peakLoadBalancingAlgorithm: S.optional(S.String),
+          rampDownStartTime: S.optional(__S(817, __c51, 1)),
+          rampDownLoadBalancingAlgorithm: S.optional(S.String),
+          rampDownMinimumHostsPct: S.optional(S.Number),
+          rampDownCapacityThresholdPct: S.optional(S.Number),
+          rampDownForceLogoffUsers: S.optional(S.Boolean),
+          rampDownStopHostsWhen: S.optional(S.String),
+          rampDownWaitTimeMinutes: S.optional(S.Number),
+          rampDownNotificationMessage: S.optional(S.String),
+          offPeakStartTime: S.optional(__S(817, __c51, 1)),
+          offPeakLoadBalancingAlgorithm: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "ScalingPlanPooledScheduleProperties",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(16, __c1, 0)),
+          properties: __S(1360, __c85, 0),
+        }),
+      ).annotate({
+        identifier: "CreateScalingPlanPooledScheduleResponse",
+      });
+  }
+}
+function __c86(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -6776,14 +6986,14 @@ function __c17(j: number): any {
       });
   }
 }
-function __c18(j: number): any {
+function __c87(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           groupId: S.optional(S.String),
-          requiredMembers: S.optional(__S(6, __c0, 6)),
-          requiredZoneNames: S.optional(__S(6, __c0, 6)),
+          requiredMembers: S.optional(__S(48, __c3, 0)),
+          requiredZoneNames: S.optional(__S(48, __c3, 0)),
         }),
       ).annotate({
         identifier: "PrivateLinkResourceProperties",
@@ -6794,22 +7004,26 @@ function __c18(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(9, __c1, 1)),
-          properties: S.optional(__S(144, __c18, 0)),
+          systemData: S.optional(__S(16, __c1, 0)),
+          properties: S.optional(__S(1392, __c87, 0)),
         }),
       ).annotate({ identifier: "PrivateLinkResource" });
     case 2:
-      return S.Array(__S(145, __c18, 1));
+      return S.Array(__S(1393, __c87, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(146, __c18, 2)),
+          value: S.optional(__S(1394, __c87, 2)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
         identifier: "PrivateLinkResourceListResult",
       });
-    case 4:
+  }
+}
+function __c88(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -6829,7 +7043,11 @@ function __c18(j: number): any {
       ).annotate({
         identifier: "ListPrivateLinkResourceByWorkspaceRequest",
       });
-    case 5:
+  }
+}
+function __c89(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -6849,18 +7067,22 @@ function __c18(j: number): any {
       ).annotate({
         identifier: "ListScalingPlanByHostPoolRequest",
       });
-    case 6:
-      return S.Array(__S(85, __c10, 5));
-    case 7:
+  }
+}
+function __c90(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(768, __c48, 0));
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(150, __c18, 6)),
+          value: S.optional(__S(1440, __c90, 0)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ScalingPlanList" });
   }
 }
-function __c19(j: number): any {
+function __c91(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -6881,7 +7103,11 @@ function __c19(j: number): any {
       ).annotate({
         identifier: "ListScalingPlanByResourceGroupRequest",
       });
-    case 1:
+  }
+}
+function __c92(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -6899,7 +7125,11 @@ function __c19(j: number): any {
       ).annotate({
         identifier: "ListScalingPlanBySubscriptionRequest",
       });
-    case 2:
+  }
+}
+function __c93(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -6919,18 +7149,22 @@ function __c19(j: number): any {
       ).annotate({
         identifier: "ListScalingPlanPersonalSchedulesRequest",
       });
-    case 3:
-      return S.Array(__S(36, __c4, 4));
-    case 4:
+    case 1:
+      return S.Array(__S(1137, __c71, 1));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(155, __c19, 3)),
+          value: S.optional(__S(1489, __c93, 1)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
         identifier: "ScalingPlanPersonalScheduleList",
       });
-    case 5:
+  }
+}
+function __c94(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -6950,12 +7184,12 @@ function __c19(j: number): any {
       ).annotate({
         identifier: "ListScalingPlanPooledSchedulesRequest",
       });
-    case 6:
-      return S.Array(__S(39, __c4, 7));
-    case 7:
+    case 1:
+      return S.Array(__S(1361, __c85, 1));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(158, __c19, 6)),
+          value: S.optional(__S(1505, __c94, 1)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
@@ -6963,7 +7197,7 @@ function __c19(j: number): any {
       });
   }
 }
-function __c20(j: number): any {
+function __c95(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -6984,15 +7218,19 @@ function __c20(j: number): any {
         ),
       ).annotate({ identifier: "ListSessionHostsRequest" });
     case 1:
-      return S.Array(__S(93, __c11, 5));
+      return S.Array(__S(896, __c56, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(161, __c20, 1)),
+          value: S.optional(__S(1521, __c95, 1)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "SessionHostList" });
-    case 3:
+  }
+}
+function __c96(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -7012,7 +7250,7 @@ function __c20(j: number): any {
       ).annotate({
         identifier: "ListStartMenuItemsRequest",
       });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           appAlias: S.optional(S.String),
@@ -7022,28 +7260,28 @@ function __c20(j: number): any {
           iconIndex: S.optional(S.Number),
         }),
       ).annotate({ identifier: "StartMenuItemProperties" });
-    case 5:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(9, __c1, 1)),
-          properties: S.optional(__S(164, __c20, 4)),
+          systemData: S.optional(__S(16, __c1, 0)),
+          properties: S.optional(__S(1537, __c96, 1)),
         }),
       ).annotate({ identifier: "StartMenuItem" });
-    case 6:
-      return S.Array(__S(165, __c20, 5));
-    case 7:
+    case 3:
+      return S.Array(__S(1538, __c96, 2));
+    case 4:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(166, __c20, 6)),
+          value: S.optional(__S(1539, __c96, 3)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "StartMenuItemList" });
   }
 }
-function __c21(j: number): any {
+function __c97(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -7066,16 +7304,53 @@ function __c21(j: number): any {
       ).annotate({
         identifier: "ListUserSessionByHostPoolRequest",
       });
+  }
+}
+function __c98(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(945, __c59, 1));
     case 1:
-      return S.Array(__S(96, __c12, 0));
-    case 2:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(169, __c21, 1)),
+          value: S.optional(__S(1568, __c98, 0)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "UserSessionList" });
-    case 3:
+  }
+}
+function __c99(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          appAttachPackageName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DesktopVirtualization/appAttachPackages/{appAttachPackageName}",
+            code: 200,
+            apiVersion: "2025-10-10",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteAppAttachPackageRequest",
+      });
+  }
+}
+function __c100(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "DeleteAppAttachPackageResponse",
+      });
+  }
+}
+function __c101(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -7094,7 +7369,11 @@ function __c21(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ListUserSessionsRequest" });
-    case 4:
+  }
+}
+function __c102(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -7113,16 +7392,24 @@ function __c21(j: number): any {
       ).annotate({
         identifier: "ListWorkspaceByResourceGroupRequest",
       });
-    case 5:
-      return S.Array(__S(99, __c12, 3));
-    case 6:
+  }
+}
+function __c103(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(976, __c61, 0));
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(173, __c21, 5)),
+          value: S.optional(__S(1648, __c103, 0)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "WorkspaceList" });
-    case 7:
+  }
+}
+function __c104(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -7139,7 +7426,7 @@ function __c21(j: number): any {
       });
   }
 }
-function __c22(j: number): any {
+function __c105(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -7169,10 +7456,10 @@ function __c22(j: number): any {
           packageRelativePath: S.optional(S.String),
           isRegularRegistration: S.optional(S.Boolean),
           isActive: S.optional(S.Boolean),
-          packageDependencies: S.optional(S.NullOr(__S(2, __c0, 2))),
+          packageDependencies: S.optional(S.NullOr(__S(65, __c4, 1))),
           version: S.optional(S.String),
           lastUpdated: S.optional(S.String),
-          packageApplications: S.optional(__S(4, __c0, 4)),
+          packageApplications: S.optional(__S(67, __c4, 3)),
           certificateName: S.optional(S.NullOr(S.String)),
           certificateExpiry: S.optional(S.NullOr(S.String)),
         }),
@@ -7185,27 +7472,31 @@ function __c22(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(9, __c1, 1)),
-          properties: S.optional(__S(177, __c22, 1)),
+          systemData: S.optional(__S(16, __c1, 0)),
+          properties: S.optional(__S(1681, __c105, 1)),
         }),
       ).annotate({ identifier: "ExpandMsixImage" });
     case 3:
-      return S.Array(__S(178, __c22, 2));
+      return S.Array(__S(1682, __c105, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(179, __c22, 3)),
+          value: S.optional(__S(1683, __c105, 3)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ExpandMsixImageList" });
-    case 5:
+  }
+}
+function __c106(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           hostPoolName: S.String.pipe(T.Label()),
           msixPackageFullName: S.String.pipe(T.Label()),
-          properties: __S(77, __c9, 5),
+          properties: __S(672, __c42, 0),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -7217,19 +7508,27 @@ function __c22(j: number): any {
       ).annotate({
         identifier: "MSIXPackagesCreateOrUpdateRequest",
       });
-    case 6:
+  }
+}
+function __c107(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(9, __c1, 1)),
-          properties: __S(77, __c9, 5),
+          systemData: S.optional(__S(16, __c1, 0)),
+          properties: __S(672, __c42, 0),
         }),
       ).annotate({
         identifier: "MSIXPackagesCreateOrUpdateResponse",
       });
-    case 7:
+  }
+}
+function __c108(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -7252,7 +7551,7 @@ function __c22(j: number): any {
       });
   }
 }
-function __c23(j: number): any {
+function __c109(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -7260,7 +7559,7 @@ function __c23(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           appAttachPackageName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(7, __c0, 7)),
+          properties: S.optional(__S(112, __c7, 0)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -7272,7 +7571,11 @@ function __c23(j: number): any {
       ).annotate({
         identifier: "UpdateAppAttachPackageRequest",
       });
-    case 1:
+  }
+}
+function __c110(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           description: S.optional(S.String),
@@ -7290,14 +7593,14 @@ function __c23(j: number): any {
       ).annotate({
         identifier: "ApplicationPatchProperties",
       });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           applicationGroupName: S.String.pipe(T.Label()),
           applicationName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(185, __c23, 1)),
+          properties: S.optional(__S(1760, __c110, 0)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -7307,7 +7610,11 @@ function __c23(j: number): any {
           }),
         ),
       ).annotate({ identifier: "UpdateApplicationRequest" });
-    case 3:
+  }
+}
+function __c111(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           description: S.optional(S.String),
@@ -7317,14 +7624,14 @@ function __c23(j: number): any {
       ).annotate({
         identifier: "ApplicationGroupPatchProperties",
       });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           applicationGroupName: S.String.pipe(T.Label()),
-          tags: S.optional(S.NullOr(__S(0, __c0, 0))),
-          properties: S.optional(__S(187, __c23, 3)),
+          tags: S.optional(S.NullOr(__S(32, __c2, 0))),
+          properties: S.optional(__S(1776, __c111, 0)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -7336,21 +7643,25 @@ function __c23(j: number): any {
       ).annotate({
         identifier: "UpdateApplicationGroupRequest",
       });
-    case 5:
+  }
+}
+function __c112(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           description: S.optional(S.String),
           friendlyName: S.optional(S.String),
         }),
       ).annotate({ identifier: "DesktopPatchProperties" });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           applicationGroupName: S.String.pipe(T.Label()),
           desktopName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(189, __c23, 5)),
+          properties: S.optional(__S(1792, __c112, 0)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -7360,29 +7671,49 @@ function __c23(j: number): any {
           }),
         ),
       ).annotate({ identifier: "UpdateDesktopRequest" });
-    case 7:
+  }
+}
+function __c113(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          applicationGroupName: S.String.pipe(T.Label()),
+          applicationName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DesktopVirtualization/applicationGroups/{applicationGroupName}/applications/{applicationName}",
+            code: 200,
+            apiVersion: "2025-10-10",
+          }),
+        ),
+      ).annotate({ identifier: "DeleteApplicationRequest" });
+  }
+}
+function __c114(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           expirationTime: S.optional(S.NullOr(S.String)),
           registrationTokenOperation: S.optional(S.String),
         }),
       ).annotate({ identifier: "RegistrationInfoPatch" });
-  }
-}
-function __c24(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           type: S.optional(S.String),
           useSessionHostLocalTime: S.optional(S.Boolean),
           maintenanceWindowTimeZone: S.optional(S.String),
-          maintenanceWindows: S.optional(S.NullOr(__S(66, __c8, 2))),
+          maintenanceWindows: S.optional(S.NullOr(__S(593, __c37, 1))),
         }),
       ).annotate({
         identifier: "AgentUpdatePatchProperties",
       });
-    case 1:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           friendlyName: S.optional(S.String),
@@ -7393,7 +7724,7 @@ function __c24(j: number): any {
           loadBalancerType: S.optional(S.String),
           ring: S.optional(S.NullOr(S.Number)),
           validationEnvironment: S.optional(S.NullOr(S.Boolean)),
-          registrationInfo: S.optional(S.NullOr(__S(191, __c23, 7))),
+          registrationInfo: S.optional(S.NullOr(__S(1824, __c114, 0))),
           vmTemplate: S.optional(S.String),
           ssoadfsAuthority: S.optional(S.String),
           ssoClientId: S.optional(S.String),
@@ -7402,18 +7733,18 @@ function __c24(j: number): any {
           preferredAppGroupType: S.optional(S.String),
           startVMOnConnect: S.optional(S.NullOr(S.Boolean)),
           publicNetworkAccess: S.optional(S.NullOr(S.String)),
-          agentUpdate: S.optional(S.NullOr(__S(192, __c24, 0))),
+          agentUpdate: S.optional(S.NullOr(__S(1825, __c114, 1))),
         }),
       ).annotate({ identifier: "HostPoolPatchProperties" });
-    case 2:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           hostPoolName: S.String.pipe(T.Label()),
-          tags: S.optional(S.NullOr(__S(0, __c0, 0))),
-          properties: S.optional(__S(193, __c24, 1)),
-          identity: S.optional(__S(12, __c1, 4)),
+          tags: S.optional(S.NullOr(__S(32, __c2, 0))),
+          properties: S.optional(__S(1826, __c114, 2)),
+          identity: S.optional(__S(192, __c12, 0)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -7423,7 +7754,11 @@ function __c24(j: number): any {
           }),
         ),
       ).annotate({ identifier: "UpdateHostPoolRequest" });
-    case 3:
+  }
+}
+function __c115(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           isActive: S.optional(S.Boolean),
@@ -7433,14 +7768,14 @@ function __c24(j: number): any {
       ).annotate({
         identifier: "MSIXPackagePatchProperties",
       });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           hostPoolName: S.String.pipe(T.Label()),
           msixPackageFullName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(195, __c24, 3)),
+          properties: S.optional(__S(1840, __c115, 0)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -7450,23 +7785,18 @@ function __c24(j: number): any {
           }),
         ),
       ).annotate({ identifier: "UpdateMSIXPackageRequest" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          privateEndpoint: S.optional(__S(41, __c5, 1)),
-          privateLinkServiceConnectionState: __S(69, __c8, 5),
-        }),
-      ).annotate({
-        identifier: "UpdatePrivateEndpointConnectionByHostPoolRequestProperties",
-      });
-    case 6:
+  }
+}
+function __c116(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           hostPoolName: S.String.pipe(T.Label()),
           privateEndpointConnectionName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(197, __c24, 5)),
+          properties: S.optional(__S(1872, __c117, 0)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -7478,14 +7808,31 @@ function __c24(j: number): any {
       ).annotate({
         identifier: "UpdatePrivateEndpointConnectionByHostPoolRequest",
       });
-    case 7:
+  }
+}
+function __c117(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          privateEndpoint: S.optional(__S(1600, __c100, 0)),
+          privateLinkServiceConnectionState: __S(561, __c35, 1),
+        }),
+      ).annotate({
+        identifier: "UpdatePrivateEndpointConnectionByHostPoolRequestProperties",
+      });
+  }
+}
+function __c118(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           workspaceName: S.String.pipe(T.Label()),
           privateEndpointConnectionName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(197, __c24, 5)),
+          properties: S.optional(__S(1872, __c117, 0)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -7497,54 +7844,54 @@ function __c24(j: number): any {
       ).annotate({
         identifier: "UpdatePrivateEndpointConnectionByWorkspaceRequest",
       });
-  }
-}
-function __c25(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          groupIds: S.optional(__S(80, __c10, 0)),
-          privateEndpoint: S.optional(__S(68, __c8, 4)),
-          privateLinkServiceConnectionState: __S(69, __c8, 5),
+          groupIds: S.optional(__S(720, __c45, 0)),
+          privateEndpoint: S.optional(__S(560, __c35, 0)),
+          privateLinkServiceConnectionState: __S(561, __c35, 1),
           provisioningState: S.optional(S.String),
         }),
       ).annotate({
         identifier: "UpdatePrivateEndpointConnectionByWorkspaceResponseProperties",
       });
-    case 1:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(9, __c1, 1)),
-          properties: S.optional(__S(200, __c25, 0)),
+          systemData: S.optional(__S(16, __c1, 0)),
+          properties: S.optional(__S(1889, __c118, 1)),
         }),
       ).annotate({
         identifier: "UpdatePrivateEndpointConnectionByWorkspaceResponse",
       });
-    case 2:
+  }
+}
+function __c119(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           description: S.optional(S.String),
           friendlyName: S.optional(S.String),
           timeZone: S.optional(S.String),
           exclusionTag: S.optional(S.String),
-          schedules: S.optional(__S(27, __c3, 3)),
-          hostPoolReferences: S.optional(__S(29, __c3, 5)),
+          schedules: S.optional(__S(801, __c50, 1)),
+          hostPoolReferences: S.optional(__S(803, __c50, 3)),
         }),
       ).annotate({
         identifier: "ScalingPlanPatchProperties",
       });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           scalingPlanName: S.String.pipe(T.Label()),
-          tags: S.optional(S.NullOr(__S(0, __c0, 0))),
-          properties: S.optional(__S(202, __c25, 2)),
+          tags: S.optional(S.NullOr(__S(32, __c2, 0))),
+          properties: S.optional(__S(1904, __c119, 0)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -7554,14 +7901,18 @@ function __c25(j: number): any {
           }),
         ),
       ).annotate({ identifier: "UpdateScalingPlanRequest" });
-    case 4:
+  }
+}
+function __c120(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           scalingPlanName: S.String.pipe(T.Label()),
           scalingPlanScheduleName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(34, __c4, 2)),
+          properties: S.optional(__S(1136, __c71, 0)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -7573,14 +7924,18 @@ function __c25(j: number): any {
       ).annotate({
         identifier: "UpdateScalingPlanPersonalScheduleRequest",
       });
-    case 5:
+  }
+}
+function __c121(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           scalingPlanName: S.String.pipe(T.Label()),
           scalingPlanScheduleName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(37, __c4, 5)),
+          properties: S.optional(__S(1360, __c85, 0)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -7592,7 +7947,11 @@ function __c25(j: number): any {
       ).annotate({
         identifier: "UpdateScalingPlanPooledScheduleRequest",
       });
-    case 6:
+  }
+}
+function __c122(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           allowNewSession: S.optional(S.Boolean),
@@ -7602,7 +7961,7 @@ function __c25(j: number): any {
       ).annotate({
         identifier: "SessionHostPatchProperties",
       });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -7610,7 +7969,7 @@ function __c25(j: number): any {
           hostPoolName: S.String.pipe(T.Label()),
           sessionHostName: S.String.pipe(T.Label()),
           force: S.optional(S.Boolean.pipe(T.Query())),
-          properties: S.optional(__S(206, __c25, 6)),
+          properties: S.optional(__S(1952, __c122, 0)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -7620,39 +7979,39 @@ function __c25(j: number): any {
           }),
         ),
       ).annotate({ identifier: "UpdateSessionHostRequest" });
-  }
-}
-function __c26(j: number): any {
-  switch (j) {
-    case 0:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(9, __c1, 1)),
-          properties: S.optional(__S(92, __c11, 4)),
+          systemData: S.optional(__S(16, __c1, 0)),
+          properties: S.optional(__S(915, __c57, 3)),
         }),
       ).annotate({
         identifier: "UpdateSessionHostResponse",
       });
-    case 1:
+  }
+}
+function __c123(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           description: S.optional(S.String),
           friendlyName: S.optional(S.String),
-          applicationGroupReferences: S.optional(S.NullOr(__S(6, __c0, 6))),
+          applicationGroupReferences: S.optional(S.NullOr(__S(48, __c3, 0))),
           publicNetworkAccess: S.optional(S.NullOr(S.String)),
         }),
       ).annotate({ identifier: "WorkspacePatchProperties" });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           workspaceName: S.String.pipe(T.Label()),
-          tags: S.optional(S.NullOr(__S(0, __c0, 0))),
-          properties: S.optional(__S(209, __c26, 1)),
+          tags: S.optional(S.NullOr(__S(32, __c2, 0))),
+          properties: S.optional(__S(1968, __c123, 0)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -7662,29 +8021,33 @@ function __c26(j: number): any {
           }),
         ),
       ).annotate({ identifier: "UpdateWorkspaceRequest" });
-    case 3:
+  }
+}
+function __c124(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           description: S.optional(S.String),
           friendlyName: S.optional(S.String),
-          applicationGroupReferences: S.optional(S.NullOr(__S(6, __c0, 6))),
+          applicationGroupReferences: S.optional(S.NullOr(__S(48, __c3, 0))),
           publicNetworkAccess: S.optional(S.NullOr(S.String)),
         }),
       ).annotate({ identifier: "WorkspacePropertiesInput" });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           workspaceName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(0, __c0, 0)),
+          tags: S.optional(__S(32, __c2, 0)),
           location: S.String,
           managedBy: S.optional(S.String),
           kind: S.optional(S.String),
-          identity: S.optional(__S(12, __c1, 4)),
-          sku: S.optional(__S(13, __c1, 5)),
-          plan: S.optional(__S(14, __c1, 6)),
-          properties: S.optional(__S(211, __c26, 3)),
+          identity: S.optional(__S(192, __c12, 0)),
+          sku: S.optional(__S(176, __c11, 0)),
+          plan: S.optional(__S(177, __c11, 1)),
+          properties: S.optional(__S(1984, __c124, 0)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -7696,29 +8059,69 @@ function __c26(j: number): any {
       ).annotate({
         identifier: "WorkspacesCreateOrUpdateRequest",
       });
-    case 5:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(9, __c1, 1)),
-          tags: S.optional(__S(0, __c0, 0)),
+          systemData: S.optional(__S(16, __c1, 0)),
+          tags: S.optional(__S(32, __c2, 0)),
           location: S.String,
           managedBy: S.optional(S.String),
           kind: S.optional(S.String),
           etag: S.optional(S.String),
-          identity: S.optional(__S(17, __c2, 1)),
-          sku: S.optional(__S(13, __c1, 5)),
-          plan: S.optional(__S(14, __c1, 6)),
-          properties: S.optional(__S(98, __c12, 2)),
+          identity: S.optional(__S(178, __c11, 2)),
+          sku: S.optional(__S(176, __c11, 0)),
+          plan: S.optional(__S(177, __c11, 1)),
+          properties: S.optional(__S(992, __c62, 0)),
         }),
       ).annotate({
         identifier: "WorkspacesCreateOrUpdateResponse",
       });
   }
 }
-
+function __c125(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          applicationGroupName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DesktopVirtualization/applicationGroups/{applicationGroupName}",
+            code: 200,
+            apiVersion: "2025-10-10",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteApplicationGroupRequest",
+      });
+  }
+}
+function __c126(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          hostPoolName: S.String.pipe(T.Label()),
+          force: S.optional(S.Boolean.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DesktopVirtualization/hostPools/{hostPoolName}",
+            code: 200,
+            apiVersion: "2025-10-10",
+          }),
+        ),
+      ).annotate({ identifier: "DeleteHostPoolRequest" });
+  }
+}
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

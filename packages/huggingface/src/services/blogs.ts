@@ -69,8 +69,8 @@ export const listBlogs: API.OperationMethod<
   ListBlogsError,
   HuggingFaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2, __c0, 2) as any as S.Schema<ListBlogsRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<ListBlogsResponse>,
+  input: __S(2, __c1, 0) as any as S.Schema<ListBlogsRequest>,
+  output: __S(3, __c1, 1) as any as S.Schema<ListBlogsResponse>,
   errors: [],
   protocol: HuggingFaceProtocol,
   retry: Retry.Retry,
@@ -84,8 +84,8 @@ export const setBlogResourceGroup: API.OperationMethod<
   SetBlogResourceGroupError,
   HuggingFaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(4, __c0, 4) as any as S.Schema<SetBlogResourceGroupRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<SetBlogResourceGroupResponse>,
+  input: __S(4, __c2, 0) as any as S.Schema<SetBlogResourceGroupRequest>,
+  output: __S(5, __c2, 1) as any as S.Schema<SetBlogResourceGroupResponse>,
   errors: [],
   protocol: HuggingFaceProtocol,
   retry: Retry.Retry,
@@ -115,7 +115,11 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "GetBlogResourceGroupResponse",
       });
-    case 2:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           p: S.optional(S.Number.pipe(T.Query())),
@@ -123,11 +127,15 @@ function __c0(j: number): any {
           tag: S.optional(S.String.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/api/blog/zh", code: 200 })),
       ).annotate({ identifier: "ListBlogsRequest" });
-    case 3:
+    case 1:
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "ListBlogsResponse",
       });
-    case 4:
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           namespace: S.String.pipe(T.Label()),
@@ -139,7 +147,7 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "SetBlogResourceGroupRequest",
       });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           resourceGroupId: S.NullOr(S.String),
@@ -154,7 +162,6 @@ function __c0(j: number): any {
       });
   }
 }
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

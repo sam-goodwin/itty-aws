@@ -774,8 +774,8 @@ export const batchGetProjectsAppsEvents: API.OperationMethod<
   BatchGetProjectsAppsEventsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1, __c0, 1) as any as S.Schema<BatchGetProjectsAppsEventsRequest>,
-  output: __S(31, __c3, 7) as any as S.Schema<BatchGetEventsResponse>,
+  input: __S(224, __c7, 0) as any as S.Schema<BatchGetProjectsAppsEventsRequest>,
+  output: __S(225, __c7, 1) as any as S.Schema<BatchGetEventsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -794,8 +794,8 @@ export const batchUpdateProjectsAppsIssues: API.OperationMethod<
   BatchUpdateProjectsAppsIssuesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(35, __c4, 3) as any as S.Schema<BatchUpdateProjectsAppsIssuesRequest>,
-  output: __S(37, __c4, 5) as any as S.Schema<BatchUpdateIssuesResponse>,
+  input: __S(387, __c12, 3) as any as S.Schema<BatchUpdateProjectsAppsIssuesRequest>,
+  output: __S(389, __c12, 5) as any as S.Schema<BatchUpdateIssuesResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -814,8 +814,8 @@ export const createProjectsAppsIssuesNotes: API.OperationMethod<
   CreateProjectsAppsIssuesNotesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(39, __c4, 7) as any as S.Schema<CreateProjectsAppsIssuesNotesRequest>,
-  output: __S(38, __c4, 6) as any as S.Schema<Note>,
+  input: __S(416, __c13, 0) as any as S.Schema<CreateProjectsAppsIssuesNotesRequest>,
+  output: __S(448, __c14, 0) as any as S.Schema<Note>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -834,8 +834,8 @@ export const deleteCrashReportsProjectsAppsUsers: API.OperationMethod<
   DeleteCrashReportsProjectsAppsUsersError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(40, __c5, 0) as any as S.Schema<DeleteCrashReportsProjectsAppsUsersRequest>,
-  output: __S(41, __c5, 1) as any as S.Schema<DeleteUserCrashReportsResponse>,
+  input: __S(480, __c15, 0) as any as S.Schema<DeleteCrashReportsProjectsAppsUsersRequest>,
+  output: __S(481, __c15, 1) as any as S.Schema<DeleteUserCrashReportsResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -854,8 +854,8 @@ export const deleteProjectsAppsIssuesNotes: API.OperationMethod<
   DeleteProjectsAppsIssuesNotesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(42, __c5, 2) as any as S.Schema<DeleteProjectsAppsIssuesNotesRequest>,
-  output: __S(43, __c5, 3) as any as S.Schema<Empty>,
+  input: __S(512, __c16, 0) as any as S.Schema<DeleteProjectsAppsIssuesNotesRequest>,
+  output: __S(513, __c16, 1) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -869,8 +869,8 @@ export const getProjectsAppsIssues: API.OperationMethod<
   GetProjectsAppsIssuesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(44, __c5, 4) as any as S.Schema<GetProjectsAppsIssuesRequest>,
-  output: __S(19, __c2, 3) as any as S.Schema<Issue>,
+  input: __S(544, __c17, 0) as any as S.Schema<GetProjectsAppsIssuesRequest>,
+  output: __S(356, __c11, 4) as any as S.Schema<Issue>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -885,8 +885,8 @@ export const getProjectsAppsReports: API.PaginatedOperationMethod<
   GcpOpContext,
   Report
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(46, __c5, 6) as any as S.Schema<GetProjectsAppsReportsRequest>,
-  output: __S(51, __c6, 3) as any as S.Schema<Report>,
+  input: __S(0, __c0, 0) as any as S.Schema<GetProjectsAppsReportsRequest>,
+  output: __S(68, __c2, 4) as any as S.Schema<Report>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -902,8 +902,8 @@ export const listProjectsAppsEvents: API.PaginatedOperationMethod<
   GcpOpContext,
   ListEventsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(52, __c6, 4) as any as S.Schema<ListProjectsAppsEventsRequest>,
-  output: __S(53, __c6, 5) as any as S.Schema<ListEventsResponse>,
+  input: __S(96, __c3, 0) as any as S.Schema<ListProjectsAppsEventsRequest>,
+  output: __S(97, __c3, 1) as any as S.Schema<ListEventsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -919,8 +919,8 @@ export const listProjectsAppsIssuesNotes: API.PaginatedOperationMethod<
   GcpOpContext,
   ListNotesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(54, __c6, 6) as any as S.Schema<ListProjectsAppsIssuesNotesRequest>,
-  output: __S(56, __c7, 0) as any as S.Schema<ListNotesResponse>,
+  input: __S(128, __c4, 0) as any as S.Schema<ListProjectsAppsIssuesNotesRequest>,
+  output: __S(130, __c4, 2) as any as S.Schema<ListNotesResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -935,8 +935,8 @@ export const listProjectsAppsReports: API.OperationMethod<
   ListProjectsAppsReportsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(57, __c7, 1) as any as S.Schema<ListProjectsAppsReportsRequest>,
-  output: __S(59, __c7, 3) as any as S.Schema<ListReportsResponse>,
+  input: __S(160, __c5, 0) as any as S.Schema<ListProjectsAppsReportsRequest>,
+  output: __S(162, __c5, 2) as any as S.Schema<ListReportsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -955,8 +955,8 @@ export const patchProjectsAppsIssues: API.OperationMethod<
   PatchProjectsAppsIssuesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(60, __c7, 4) as any as S.Schema<PatchProjectsAppsIssuesRequest>,
-  output: __S(19, __c2, 3) as any as S.Schema<Issue>,
+  input: __S(192, __c6, 0) as any as S.Schema<PatchProjectsAppsIssuesRequest>,
+  output: __S(356, __c11, 4) as any as S.Schema<Issue>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -966,11 +966,219 @@ export const patchProjectsAppsIssues: API.OperationMethod<
 function __c0(j: number): any {
   switch (j) {
     case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+          "filter.issue.content": S.optional(S.String.pipe(T.Query())),
+          "filter.device.displayNames": S.optional(__S(256, __c8, 0).pipe(T.Query())),
+          "filter.browser.displayNames": S.optional(__S(256, __c8, 0).pipe(T.Query())),
+          "filter.interval.endTime": S.optional(S.String.pipe(T.Query())),
+          view: S.optional(S.String.pipe(T.Query())),
+          "filter.issue.states": S.optional(__S(32, __c1, 0).pipe(T.Query())),
+          "filter.operatingSystem.displayNames": S.optional(__S(256, __c8, 0).pipe(T.Query())),
+          "filter.device.formFactors": S.optional(__S(32, __c1, 0).pipe(T.Query())),
+          "filter.issue.variantId": S.optional(S.String.pipe(T.Query())),
+          "filter.issue.state": S.optional(S.String.pipe(T.Query())),
+          metricsMode: S.optional(S.String.pipe(T.Query())),
+          "filter.issue.id": S.optional(S.String.pipe(T.Query())),
+          "filter.issue.errorTypes": S.optional(__S(32, __c1, 0).pipe(T.Query())),
+          pageSize: S.optional(S.Number.pipe(T.Query())),
+          "filter.version.displayNames": S.optional(__S(256, __c8, 0).pipe(T.Query())),
+          pageToken: S.optional(S.String.pipe(T.Query())),
+          "filter.issue.signals": S.optional(__S(32, __c1, 0).pipe(T.Query())),
+          "filter.interval.startTime": S.optional(S.String.pipe(T.Query())),
+          granularity: S.optional(S.String.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v1alpha/{+name}",
+            baseUrl: "https://firebasecrashlytics.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetProjectsAppsReportsRequest",
+      });
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
       return S.Array(S.String);
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          impactedUsersCount: S.optional(S.String),
+          endTime: S.optional(S.String),
+          totalSessionsCount: S.optional(S.String),
+          impactedSessionsCount: S.optional(S.String),
+          totalUsersCount: S.optional(S.String),
+          sessionsCount: S.optional(S.String),
+          eventsCount: S.optional(S.String),
+          startTime: S.optional(S.String),
+          crashFreeSessionsPercentage: S.optional(S.Number),
+          crashFreeUsersPercentage: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "IntervalMetrics" });
+    case 1:
+      return S.Array(__S(64, __c2, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          metrics: S.optional(__S(65, __c2, 1)),
+          variant: S.optional(__S(352, __c11, 0)),
+          version: S.optional(__S(294, __c9, 6)),
+          issue: S.optional(__S(356, __c11, 4)),
+          device: S.optional(__S(291, __c9, 3)),
+          browser: S.optional(__S(290, __c9, 2)),
+          operatingSystem: S.optional(__S(289, __c9, 1)),
+          webMetricsGroup: S.optional(__S(288, __c9, 0)),
+          subgroups: S.optional(S.suspend(() => __S(67, __c2, 3))),
+        }),
+      ).annotate({ identifier: "ReportGroup" });
+    case 3:
+      return S.Array(__S(66, __c2, 2));
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          displayName: S.optional(S.String),
+          totalSize: S.optional(S.Number),
+          groups: S.optional(__S(67, __c2, 3)),
+          usage: S.optional(S.String),
+          name: S.optional(S.String),
+          nextPageToken: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Report" });
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          filterExpression: S.optional(S.String.pipe(T.Query())),
+          "filter.device.displayNames": S.optional(__S(256, __c8, 0).pipe(T.Query())),
+          "filter.operatingSystem.displayNames": S.optional(__S(256, __c8, 0).pipe(T.Query())),
+          "filter.issue.states": S.optional(__S(32, __c1, 0).pipe(T.Query())),
+          "filter.issue.signals": S.optional(__S(32, __c1, 0).pipe(T.Query())),
+          "filter.issue.variantId": S.optional(S.String.pipe(T.Query())),
+          "filter.issue.state": S.optional(S.String.pipe(T.Query())),
+          "filter.browser.displayNames": S.optional(__S(256, __c8, 0).pipe(T.Query())),
+          pageSize: S.optional(S.Number.pipe(T.Query())),
+          readMask: S.optional(S.String.pipe(T.Query())),
+          "filter.interval.endTime": S.optional(S.String.pipe(T.Query())),
+          parent: S.String.pipe(T.Label()),
+          "filter.interval.startTime": S.optional(S.String.pipe(T.Query())),
+          pageToken: S.optional(S.String.pipe(T.Query())),
+          "filter.issue.errorTypes": S.optional(__S(32, __c1, 0).pipe(T.Query())),
+          "filter.issue.id": S.optional(S.String.pipe(T.Query())),
+          "filter.version.displayNames": S.optional(__S(256, __c8, 0).pipe(T.Query())),
+          "filter.issue.content": S.optional(S.String.pipe(T.Query())),
+          "filter.device.formFactors": S.optional(__S(32, __c1, 0).pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v1alpha/{+parent}/events",
+            baseUrl: "https://firebasecrashlytics.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListProjectsAppsEventsRequest",
+      });
     case 1:
       return S.suspend(() =>
         S.Struct({
-          names: S.optional(__S(0, __c0, 0).pipe(T.Query())),
+          nextPageToken: S.optional(S.String),
+          events: S.optional(__S(336, __c10, 16)),
+        }),
+      ).annotate({ identifier: "ListEventsResponse" });
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          pageToken: S.optional(S.String.pipe(T.Query())),
+          parent: S.String.pipe(T.Label()),
+          pageSize: S.optional(S.Number.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v1alpha/{+parent}/notes",
+            baseUrl: "https://firebasecrashlytics.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListProjectsAppsIssuesNotesRequest",
+      });
+    case 1:
+      return S.Array(__S(448, __c14, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          nextPageToken: S.optional(S.String),
+          notes: S.optional(__S(129, __c4, 1)),
+        }),
+      ).annotate({ identifier: "ListNotesResponse" });
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          parent: S.String.pipe(T.Label()),
+          view: S.optional(S.String.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v1alpha/{+parent}/reports",
+            baseUrl: "https://firebasecrashlytics.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListProjectsAppsReportsRequest",
+      });
+    case 1:
+      return S.Array(__S(68, __c2, 4));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          reports: S.optional(__S(161, __c5, 1)),
+        }),
+      ).annotate({ identifier: "ListReportsResponse" });
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          updateMask: S.optional(S.String.pipe(T.Query())),
+          name: S.String.pipe(T.Label()),
+          body: S.optional(__S(356, __c11, 4).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "PATCH",
+            uri: "v1alpha/{+name}",
+            baseUrl: "https://firebasecrashlytics.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "PatchProjectsAppsIssuesRequest",
+      });
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          names: S.optional(__S(256, __c8, 0).pipe(T.Query())),
           parent: S.String.pipe(T.Label()),
           readMask: S.optional(S.String.pipe(T.Query())),
         }).pipe(
@@ -983,33 +1191,29 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "BatchGetProjectsAppsEventsRequest",
       });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          id: S.optional(S.String),
-          uri: S.optional(S.String),
-          sampleEvent: S.optional(S.String),
+          events: S.optional(__S(336, __c10, 16)),
         }),
-      ).annotate({ identifier: "IssueVariant" });
-    case 3:
+      ).annotate({ identifier: "BatchGetEventsResponse" });
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
         }),
       ).annotate({ identifier: "User" });
-    case 4:
-      return S.Record(S.String, S.String);
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          title: S.optional(S.String),
-          params: S.optional(__S(4, __c0, 4)),
-          eventTime: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Breadcrumb" });
-    case 6:
-      return S.Array(__S(5, __c0, 5));
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           os: S.optional(S.String),
@@ -1020,11 +1224,61 @@ function __c0(j: number): any {
           displayVersion: S.optional(S.String),
         }),
       ).annotate({ identifier: "OperatingSystem" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          displayVersion: S.optional(S.String),
+          displayName: S.optional(S.String),
+          browser: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Browser" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          manufacturer: S.optional(S.String),
+          model: S.optional(S.String),
+          architecture: S.optional(S.String),
+          displayName: S.optional(S.String),
+          marketingName: S.optional(S.String),
+          formFactor: S.optional(S.String),
+          companyName: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Device" });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          type: S.optional(S.String),
+          title: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "PlayTrack" });
+    case 5:
+      return S.Array(__S(292, __c9, 4));
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          tracks: S.optional(__S(293, __c9, 5)),
+          buildVersion: S.optional(S.String),
+          displayName: S.optional(S.String),
+          displayVersion: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Version" });
   }
 }
-function __c1(j: number): any {
+function __c10(j: number): any {
   switch (j) {
     case 0:
+      return S.Record(S.String, S.String);
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          title: S.optional(S.String),
+          params: S.optional(__S(320, __c10, 0)),
+          eventTime: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Breadcrumb" });
+    case 2:
+      return S.Array(__S(321, __c10, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
           file: S.optional(S.String),
@@ -1038,12 +1292,12 @@ function __c1(j: number): any {
           blamed: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "Frame" });
-    case 1:
-      return S.Array(__S(8, __c1, 0));
-    case 2:
+    case 4:
+      return S.Array(__S(323, __c10, 3));
+    case 5:
       return S.suspend(() =>
         S.Struct({
-          frames: S.optional(__S(9, __c1, 1)),
+          frames: S.optional(__S(324, __c10, 4)),
           subtitle: S.optional(S.String),
           signal: S.optional(S.String),
           threadState: S.optional(S.String),
@@ -1058,93 +1312,49 @@ function __c1(j: number): any {
           signalCode: S.optional(S.String),
         }),
       ).annotate({ identifier: "Thread" });
-    case 3:
-      return S.Array(__S(10, __c1, 2));
-    case 4:
+    case 6:
+      return S.Array(__S(325, __c10, 5));
+    case 7:
       return S.suspend(() =>
         S.Struct({
           exceptionMessage: S.optional(S.String),
           title: S.optional(S.String),
           nested: S.optional(S.Boolean),
           subtitle: S.optional(S.String),
-          frames: S.optional(__S(9, __c1, 1)),
+          frames: S.optional(__S(324, __c10, 4)),
           blamed: S.optional(S.Boolean),
           type: S.optional(S.String),
         }),
       ).annotate({ identifier: "Exception" });
-    case 5:
-      return S.Array(__S(12, __c1, 4));
-    case 6:
+    case 8:
+      return S.Array(__S(327, __c10, 7));
+    case 9:
       return S.suspend(() =>
         S.Struct({
           free: S.optional(S.String),
           used: S.optional(S.String),
         }),
       ).annotate({ identifier: "Memory" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          displayVersion: S.optional(S.String),
-          displayName: S.optional(S.String),
-          browser: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Browser" });
-  }
-}
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          description: S.optional(S.String),
-          signal: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "IssueSignals" });
-    case 1:
-      return S.Array(__S(16, __c2, 0));
-    case 2:
-      return S.Array(__S(2, __c0, 2));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          firstSeenTime: S.optional(S.String),
-          signals: S.optional(__S(17, __c2, 1)),
-          id: S.optional(S.String),
-          lastSeenTime: S.optional(S.String),
-          notesCount: S.optional(S.String),
-          name: S.optional(S.String),
-          errorType: S.optional(S.String),
-          uri: S.optional(S.String),
-          variants: S.optional(__S(18, __c2, 2)),
-          title: S.optional(S.String),
-          lastSeenVersion: S.optional(S.String),
-          sampleEvent: S.optional(S.String),
-          state: S.optional(S.String),
-          stateUpdateTime: S.optional(S.String),
-          subtitle: S.optional(S.String),
-          firstSeenVersion: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Issue" });
-    case 4:
+    case 10:
       return S.suspend(() =>
         S.Struct({
           used: S.optional(S.String),
           free: S.optional(S.String),
         }),
       ).annotate({ identifier: "Storage" });
-    case 5:
+    case 11:
       return S.suspend(() =>
         S.Struct({
           logTime: S.optional(S.String),
           message: S.optional(S.String),
         }),
       ).annotate({ identifier: "Log" });
-    case 6:
-      return S.Array(__S(21, __c2, 5));
-    case 7:
+    case 12:
+      return S.Array(__S(331, __c10, 11));
+    case 13:
       return S.suspend(() =>
         S.Struct({
-          frames: S.optional(__S(9, __c1, 1)),
+          frames: S.optional(__S(324, __c10, 4)),
           code: S.optional(S.String),
           blamed: S.optional(S.Boolean),
           subtitle: S.optional(S.String),
@@ -1154,104 +1364,108 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "Firebasecrashlytics_Error",
       });
-  }
-}
-function __c3(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(23, __c2, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          manufacturer: S.optional(S.String),
-          model: S.optional(S.String),
-          architecture: S.optional(S.String),
-          displayName: S.optional(S.String),
-          marketingName: S.optional(S.String),
-          formFactor: S.optional(S.String),
-          companyName: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Device" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          type: S.optional(S.String),
-          title: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "PlayTrack" });
-    case 3:
-      return S.Array(__S(26, __c3, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          tracks: S.optional(__S(27, __c3, 3)),
-          buildVersion: S.optional(S.String),
-          displayName: S.optional(S.String),
-          displayVersion: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Version" });
-    case 5:
+    case 14:
+      return S.Array(__S(333, __c10, 13));
+    case 15:
       return S.suspend(() =>
         S.Struct({
           issueTitle: S.optional(S.String),
           platform: S.optional(S.String),
-          issueVariant: S.optional(__S(2, __c0, 2)),
-          user: S.optional(__S(3, __c0, 3)),
+          issueVariant: S.optional(__S(352, __c11, 0)),
+          user: S.optional(__S(288, __c9, 0)),
           issueSubtitle: S.optional(S.String),
-          customKeys: S.optional(__S(4, __c0, 4)),
-          breadcrumbs: S.optional(__S(6, __c0, 6)),
-          operatingSystem: S.optional(__S(7, __c0, 7)),
-          threads: S.optional(__S(11, __c1, 3)),
+          customKeys: S.optional(__S(320, __c10, 0)),
+          breadcrumbs: S.optional(__S(322, __c10, 2)),
+          operatingSystem: S.optional(__S(289, __c9, 1)),
+          threads: S.optional(__S(326, __c10, 6)),
           buildStamp: S.optional(S.String),
           sessionId: S.optional(S.String),
-          exceptions: S.optional(__S(13, __c1, 5)),
-          memory: S.optional(__S(14, __c1, 6)),
+          exceptions: S.optional(__S(328, __c10, 8)),
+          memory: S.optional(__S(329, __c10, 9)),
           installationUuid: S.optional(S.String),
-          browser: S.optional(__S(15, __c1, 7)),
+          browser: S.optional(__S(290, __c9, 2)),
           crashlyticsSdkVersion: S.optional(S.String),
-          issue: S.optional(__S(19, __c2, 3)),
+          issue: S.optional(__S(356, __c11, 4)),
           processState: S.optional(S.String),
           receivedTime: S.optional(S.String),
           name: S.optional(S.String),
-          storage: S.optional(__S(20, __c2, 4)),
+          storage: S.optional(__S(330, __c10, 10)),
           eventId: S.optional(S.String),
           bundleOrPackage: S.optional(S.String),
-          logs: S.optional(__S(22, __c2, 6)),
-          errors: S.optional(__S(24, __c3, 0)),
+          logs: S.optional(__S(332, __c10, 12)),
+          errors: S.optional(__S(334, __c10, 14)),
           appOrientation: S.optional(S.String),
-          blameFrame: S.optional(__S(8, __c1, 0)),
+          blameFrame: S.optional(__S(323, __c10, 3)),
           deviceOrientation: S.optional(S.String),
           eventTime: S.optional(S.String),
-          device: S.optional(__S(25, __c3, 1)),
+          device: S.optional(__S(291, __c9, 3)),
           routePath: S.optional(S.String),
-          version: S.optional(__S(28, __c3, 4)),
+          version: S.optional(__S(294, __c9, 6)),
         }),
       ).annotate({ identifier: "Event" });
-    case 6:
-      return S.Array(__S(29, __c3, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          events: S.optional(__S(30, __c3, 6)),
-        }),
-      ).annotate({ identifier: "BatchGetEventsResponse" });
+    case 16:
+      return S.Array(__S(335, __c10, 15));
   }
 }
-function __c4(j: number): any {
+function __c11(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          issue: S.optional(__S(19, __c2, 3)),
+          id: S.optional(S.String),
+          uri: S.optional(S.String),
+          sampleEvent: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "IssueVariant" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          description: S.optional(S.String),
+          signal: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "IssueSignals" });
+    case 2:
+      return S.Array(__S(353, __c11, 1));
+    case 3:
+      return S.Array(__S(352, __c11, 0));
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          firstSeenTime: S.optional(S.String),
+          signals: S.optional(__S(354, __c11, 2)),
+          id: S.optional(S.String),
+          lastSeenTime: S.optional(S.String),
+          notesCount: S.optional(S.String),
+          name: S.optional(S.String),
+          errorType: S.optional(S.String),
+          uri: S.optional(S.String),
+          variants: S.optional(__S(355, __c11, 3)),
+          title: S.optional(S.String),
+          lastSeenVersion: S.optional(S.String),
+          sampleEvent: S.optional(S.String),
+          state: S.optional(S.String),
+          stateUpdateTime: S.optional(S.String),
+          subtitle: S.optional(S.String),
+          firstSeenVersion: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Issue" });
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          issue: S.optional(__S(356, __c11, 4)),
           updateMask: S.optional(S.String),
         }),
       ).annotate({ identifier: "UpdateIssueRequest" });
     case 1:
-      return S.Array(__S(32, __c4, 0));
+      return S.Array(__S(384, __c12, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          requests: S.optional(__S(33, __c4, 1)),
+          requests: S.optional(__S(385, __c12, 1)),
           updateMask: S.optional(S.String),
         }),
       ).annotate({ identifier: "BatchUpdateIssuesRequest" });
@@ -1259,7 +1473,7 @@ function __c4(j: number): any {
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(34, __c4, 2).pipe(T.HttpBody())),
+          body: S.optional(__S(386, __c12, 2).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -1271,29 +1485,24 @@ function __c4(j: number): any {
         identifier: "BatchUpdateProjectsAppsIssuesRequest",
       });
     case 4:
-      return S.Array(__S(19, __c2, 3));
+      return S.Array(__S(356, __c11, 4));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          issues: S.optional(__S(36, __c4, 4)),
+          issues: S.optional(__S(388, __c12, 4)),
         }),
       ).annotate({
         identifier: "BatchUpdateIssuesResponse",
       });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          createTime: S.optional(S.String),
-          body: S.optional(S.String),
-          author: S.optional(S.String),
-          name: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Note" });
-    case 7:
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(38, __c4, 6).pipe(T.HttpBody())),
+          body: S.optional(__S(448, __c14, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -1306,7 +1515,20 @@ function __c4(j: number): any {
       });
   }
 }
-function __c5(j: number): any {
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          createTime: S.optional(S.String),
+          body: S.optional(S.String),
+          author: S.optional(S.String),
+          name: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Note" });
+  }
+}
+function __c15(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1330,7 +1552,11 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "DeleteUserCrashReportsResponse",
       });
-    case 2:
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -1344,11 +1570,15 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "DeleteProjectsAppsIssuesNotesRequest",
       });
-    case 3:
+    case 1:
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "Empty",
       });
-    case 4:
+  }
+}
+function __c17(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -1362,199 +1592,8 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "GetProjectsAppsIssuesRequest",
       });
-    case 5:
-      return S.Array(S.String);
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-          "filter.issue.content": S.optional(S.String.pipe(T.Query())),
-          "filter.device.displayNames": S.optional(__S(0, __c0, 0).pipe(T.Query())),
-          "filter.browser.displayNames": S.optional(__S(0, __c0, 0).pipe(T.Query())),
-          "filter.interval.endTime": S.optional(S.String.pipe(T.Query())),
-          view: S.optional(S.String.pipe(T.Query())),
-          "filter.issue.states": S.optional(__S(45, __c5, 5).pipe(T.Query())),
-          "filter.operatingSystem.displayNames": S.optional(__S(0, __c0, 0).pipe(T.Query())),
-          "filter.device.formFactors": S.optional(__S(45, __c5, 5).pipe(T.Query())),
-          "filter.issue.variantId": S.optional(S.String.pipe(T.Query())),
-          "filter.issue.state": S.optional(S.String.pipe(T.Query())),
-          metricsMode: S.optional(S.String.pipe(T.Query())),
-          "filter.issue.id": S.optional(S.String.pipe(T.Query())),
-          "filter.issue.errorTypes": S.optional(__S(45, __c5, 5).pipe(T.Query())),
-          pageSize: S.optional(S.Number.pipe(T.Query())),
-          "filter.version.displayNames": S.optional(__S(0, __c0, 0).pipe(T.Query())),
-          pageToken: S.optional(S.String.pipe(T.Query())),
-          "filter.issue.signals": S.optional(__S(45, __c5, 5).pipe(T.Query())),
-          "filter.interval.startTime": S.optional(S.String.pipe(T.Query())),
-          granularity: S.optional(S.String.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v1alpha/{+name}",
-            baseUrl: "https://firebasecrashlytics.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetProjectsAppsReportsRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          impactedUsersCount: S.optional(S.String),
-          endTime: S.optional(S.String),
-          totalSessionsCount: S.optional(S.String),
-          impactedSessionsCount: S.optional(S.String),
-          totalUsersCount: S.optional(S.String),
-          sessionsCount: S.optional(S.String),
-          eventsCount: S.optional(S.String),
-          startTime: S.optional(S.String),
-          crashFreeSessionsPercentage: S.optional(S.Number),
-          crashFreeUsersPercentage: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "IntervalMetrics" });
   }
 }
-function __c6(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(47, __c5, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          metrics: S.optional(__S(48, __c6, 0)),
-          variant: S.optional(__S(2, __c0, 2)),
-          version: S.optional(__S(28, __c3, 4)),
-          issue: S.optional(__S(19, __c2, 3)),
-          device: S.optional(__S(25, __c3, 1)),
-          browser: S.optional(__S(15, __c1, 7)),
-          operatingSystem: S.optional(__S(7, __c0, 7)),
-          webMetricsGroup: S.optional(__S(3, __c0, 3)),
-          subgroups: S.optional(S.suspend(() => __S(50, __c6, 2))),
-        }),
-      ).annotate({ identifier: "ReportGroup" });
-    case 2:
-      return S.Array(__S(49, __c6, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          displayName: S.optional(S.String),
-          totalSize: S.optional(S.Number),
-          groups: S.optional(__S(50, __c6, 2)),
-          usage: S.optional(S.String),
-          name: S.optional(S.String),
-          nextPageToken: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Report" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          filterExpression: S.optional(S.String.pipe(T.Query())),
-          "filter.device.displayNames": S.optional(__S(0, __c0, 0).pipe(T.Query())),
-          "filter.operatingSystem.displayNames": S.optional(__S(0, __c0, 0).pipe(T.Query())),
-          "filter.issue.states": S.optional(__S(45, __c5, 5).pipe(T.Query())),
-          "filter.issue.signals": S.optional(__S(45, __c5, 5).pipe(T.Query())),
-          "filter.issue.variantId": S.optional(S.String.pipe(T.Query())),
-          "filter.issue.state": S.optional(S.String.pipe(T.Query())),
-          "filter.browser.displayNames": S.optional(__S(0, __c0, 0).pipe(T.Query())),
-          pageSize: S.optional(S.Number.pipe(T.Query())),
-          readMask: S.optional(S.String.pipe(T.Query())),
-          "filter.interval.endTime": S.optional(S.String.pipe(T.Query())),
-          parent: S.String.pipe(T.Label()),
-          "filter.interval.startTime": S.optional(S.String.pipe(T.Query())),
-          pageToken: S.optional(S.String.pipe(T.Query())),
-          "filter.issue.errorTypes": S.optional(__S(45, __c5, 5).pipe(T.Query())),
-          "filter.issue.id": S.optional(S.String.pipe(T.Query())),
-          "filter.version.displayNames": S.optional(__S(0, __c0, 0).pipe(T.Query())),
-          "filter.issue.content": S.optional(S.String.pipe(T.Query())),
-          "filter.device.formFactors": S.optional(__S(45, __c5, 5).pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v1alpha/{+parent}/events",
-            baseUrl: "https://firebasecrashlytics.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListProjectsAppsEventsRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          nextPageToken: S.optional(S.String),
-          events: S.optional(__S(30, __c3, 6)),
-        }),
-      ).annotate({ identifier: "ListEventsResponse" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          pageToken: S.optional(S.String.pipe(T.Query())),
-          parent: S.String.pipe(T.Label()),
-          pageSize: S.optional(S.Number.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v1alpha/{+parent}/notes",
-            baseUrl: "https://firebasecrashlytics.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListProjectsAppsIssuesNotesRequest",
-      });
-    case 7:
-      return S.Array(__S(38, __c4, 6));
-  }
-}
-function __c7(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          nextPageToken: S.optional(S.String),
-          notes: S.optional(__S(55, __c6, 7)),
-        }),
-      ).annotate({ identifier: "ListNotesResponse" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          parent: S.String.pipe(T.Label()),
-          view: S.optional(S.String.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v1alpha/{+parent}/reports",
-            baseUrl: "https://firebasecrashlytics.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListProjectsAppsReportsRequest",
-      });
-    case 2:
-      return S.Array(__S(51, __c6, 3));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          reports: S.optional(__S(58, __c7, 2)),
-        }),
-      ).annotate({ identifier: "ListReportsResponse" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          updateMask: S.optional(S.String.pipe(T.Query())),
-          name: S.String.pipe(T.Label()),
-          body: S.optional(__S(19, __c2, 3).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "PATCH",
-            uri: "v1alpha/{+name}",
-            baseUrl: "https://firebasecrashlytics.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "PatchProjectsAppsIssuesRequest",
-      });
-  }
-}
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

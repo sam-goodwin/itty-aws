@@ -2225,7 +2225,7 @@ export const AttachContainer: API.OperationMethod<
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(0, __c0, 0) as any as S.Schema<AttachContainerRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<ContainerAttachResponse>,
+  output: __S(32, __c1, 0) as any as S.Schema<ContainerAttachResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2239,8 +2239,8 @@ export const CGProfileCreateOrUpdate: API.OperationMethod<
   CGProfileCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(43, __c5, 3) as any as S.Schema<CGProfileCreateOrUpdateRequest>,
-  output: __S(59, __c7, 3) as any as S.Schema<CGProfileCreateOrUpdateResponse>,
+  input: __S(65, __c2, 1) as any as S.Schema<CGProfileCreateOrUpdateRequest>,
+  output: __S(128, __c4, 0) as any as S.Schema<CGProfileCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2254,8 +2254,8 @@ export const ConnectSandboxGroup: API.OperationMethod<
   ConnectSandboxGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(60, __c7, 4) as any as S.Schema<ConnectSandboxGroupRequest>,
-  output: __S(61, __c7, 5) as any as S.Schema<SandboxGroupAccessToken>,
+  input: __S(992, __c31, 0) as any as S.Schema<ConnectSandboxGroupRequest>,
+  output: __S(993, __c31, 1) as any as S.Schema<SandboxGroupAccessToken>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2269,8 +2269,8 @@ export const ContainerGroupsCreateOrUpdate: API.OperationMethod<
   ContainerGroupsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(76, __c9, 4) as any as S.Schema<ContainerGroupsCreateOrUpdateRequest>,
-  output: __S(82, __c10, 2) as any as S.Schema<ContainerGroupsCreateOrUpdateResponse>,
+  input: __S(1410, __c44, 2) as any as S.Schema<ContainerGroupsCreateOrUpdateRequest>,
+  output: __S(1603, __c50, 3) as any as S.Schema<ContainerGroupsCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2284,8 +2284,8 @@ export const DeleteCGProfile: API.OperationMethod<
   DeleteCGProfileError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(83, __c10, 3) as any as S.Schema<DeleteCGProfileRequest>,
-  output: __S(62, __c7, 6) as any as S.Schema<DeleteCGProfileResponse>,
+  input: __S(2016, __c63, 0) as any as S.Schema<DeleteCGProfileRequest>,
+  output: __S(1472, __c46, 0) as any as S.Schema<DeleteCGProfileResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2299,8 +2299,8 @@ export const DeleteContainerGroup: API.OperationMethod<
   DeleteContainerGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(84, __c10, 4) as any as S.Schema<DeleteContainerGroupRequest>,
-  output: __S(82, __c10, 2) as any as S.Schema<DeleteContainerGroupResponse>,
+  input: __S(2112, __c66, 0) as any as S.Schema<DeleteContainerGroupRequest>,
+  output: __S(1603, __c50, 3) as any as S.Schema<DeleteContainerGroupResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2314,8 +2314,8 @@ export const DeleteNGroup: API.OperationMethod<
   DeleteNGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(85, __c10, 5) as any as S.Schema<DeleteNGroupRequest>,
-  output: __S(62, __c7, 6) as any as S.Schema<DeleteNGroupResponse>,
+  input: __S(2144, __c67, 0) as any as S.Schema<DeleteNGroupRequest>,
+  output: __S(1472, __c46, 0) as any as S.Schema<DeleteNGroupResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2329,8 +2329,8 @@ export const DeleteSandboxGroup: API.OperationMethod<
   DeleteSandboxGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(86, __c10, 6) as any as S.Schema<DeleteSandboxGroupRequest>,
-  output: __S(62, __c7, 6) as any as S.Schema<DeleteSandboxGroupResponse>,
+  input: __S(2176, __c68, 0) as any as S.Schema<DeleteSandboxGroupRequest>,
+  output: __S(1472, __c46, 0) as any as S.Schema<DeleteSandboxGroupResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2344,8 +2344,8 @@ export const DeleteSubnetServiceAssociationLink: API.OperationMethod<
   DeleteSubnetServiceAssociationLinkError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(87, __c10, 7) as any as S.Schema<DeleteSubnetServiceAssociationLinkRequest>,
-  output: __S(88, __c11, 0) as any as S.Schema<DeleteSubnetServiceAssociationLinkResponse>,
+  input: __S(2208, __c69, 0) as any as S.Schema<DeleteSubnetServiceAssociationLinkRequest>,
+  output: __S(2209, __c69, 1) as any as S.Schema<DeleteSubnetServiceAssociationLinkResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2359,8 +2359,8 @@ export const ExecuteContainerCommand: API.OperationMethod<
   ExecuteContainerCommandError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(90, __c11, 2) as any as S.Schema<ExecuteContainerCommandRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<ContainerExecResponse>,
+  input: __S(2241, __c70, 1) as any as S.Schema<ExecuteContainerCommandRequest>,
+  output: __S(32, __c1, 0) as any as S.Schema<ContainerExecResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2374,8 +2374,8 @@ export const GetCGProfile: API.OperationMethod<
   GetCGProfileError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(91, __c11, 3) as any as S.Schema<GetCGProfileRequest>,
-  output: __S(92, __c11, 4) as any as S.Schema<GetCGProfileResponse>,
+  input: __S(448, __c14, 0) as any as S.Schema<GetCGProfileRequest>,
+  output: __S(480, __c15, 0) as any as S.Schema<GetCGProfileResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2389,8 +2389,8 @@ export const GetCGProfileByRevisionNumber: API.OperationMethod<
   GetCGProfileByRevisionNumberError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(93, __c11, 5) as any as S.Schema<GetCGProfileByRevisionNumberRequest>,
-  output: __S(59, __c7, 3) as any as S.Schema<GetCGProfileByRevisionNumberResponse>,
+  input: __S(512, __c16, 0) as any as S.Schema<GetCGProfileByRevisionNumberRequest>,
+  output: __S(128, __c4, 0) as any as S.Schema<GetCGProfileByRevisionNumberResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2404,8 +2404,8 @@ export const GetContainerGroup: API.OperationMethod<
   GetContainerGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(94, __c11, 6) as any as S.Schema<GetContainerGroupRequest>,
-  output: __S(82, __c10, 2) as any as S.Schema<GetContainerGroupResponse>,
+  input: __S(544, __c17, 0) as any as S.Schema<GetContainerGroupRequest>,
+  output: __S(1603, __c50, 3) as any as S.Schema<GetContainerGroupResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2420,14 +2420,14 @@ export const GetContainerGroupOutboundNetworkDependenciesEndpoints: API.Operatio
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    95,
-    __c11,
-    7,
+    576,
+    __c18,
+    0,
   ) as any as S.Schema<GetContainerGroupOutboundNetworkDependenciesEndpointsRequest>,
   output: __S(
-    96,
-    __c12,
-    0,
+    577,
+    __c18,
+    1,
   ) as any as S.Schema<GetContainerGroupOutboundNetworkDependenciesEndpointsResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -2442,8 +2442,8 @@ export const GetNGroup: API.OperationMethod<
   GetNGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(97, __c12, 1) as any as S.Schema<GetNGroupRequest>,
-  output: __S(123, __c15, 3) as any as S.Schema<GetNGroupResponse>,
+  input: __S(608, __c19, 0) as any as S.Schema<GetNGroupRequest>,
+  output: __S(672, __c21, 0) as any as S.Schema<GetNGroupResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2457,8 +2457,8 @@ export const GetSandboxGroup: API.OperationMethod<
   GetSandboxGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(124, __c15, 4) as any as S.Schema<GetSandboxGroupRequest>,
-  output: __S(130, __c16, 2) as any as S.Schema<GetSandboxGroupResponse>,
+  input: __S(704, __c22, 0) as any as S.Schema<GetSandboxGroupRequest>,
+  output: __S(736, __c23, 0) as any as S.Schema<GetSandboxGroupResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2472,8 +2472,8 @@ export const ListCGProfileAllRevisions: API.OperationMethod<
   ListCGProfileAllRevisionsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(131, __c16, 3) as any as S.Schema<ListCGProfileAllRevisionsRequest>,
-  output: __S(133, __c16, 5) as any as S.Schema<ContainerGroupProfileListResult>,
+  input: __S(800, __c25, 0) as any as S.Schema<ListCGProfileAllRevisionsRequest>,
+  output: __S(833, __c26, 1) as any as S.Schema<ContainerGroupProfileListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2487,8 +2487,8 @@ export const ListCGProfileByResourceGroup: API.OperationMethod<
   ListCGProfileByResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(134, __c16, 6) as any as S.Schema<ListCGProfileByResourceGroupRequest>,
-  output: __S(133, __c16, 5) as any as S.Schema<ContainerGroupProfileListResult>,
+  input: __S(864, __c27, 0) as any as S.Schema<ListCGProfileByResourceGroupRequest>,
+  output: __S(833, __c26, 1) as any as S.Schema<ContainerGroupProfileListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2502,8 +2502,8 @@ export const ListCGProfileBySubscription: API.OperationMethod<
   ListCGProfileBySubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(135, __c16, 7) as any as S.Schema<ListCGProfileBySubscriptionRequest>,
-  output: __S(133, __c16, 5) as any as S.Schema<ContainerGroupProfileListResult>,
+  input: __S(896, __c28, 0) as any as S.Schema<ListCGProfileBySubscriptionRequest>,
+  output: __S(833, __c26, 1) as any as S.Schema<ContainerGroupProfileListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2517,8 +2517,8 @@ export const ListContainerGroupByResourceGroup: API.OperationMethod<
   ListContainerGroupByResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(136, __c17, 0) as any as S.Schema<ListContainerGroupByResourceGroupRequest>,
-  output: __S(141, __c17, 5) as any as S.Schema<ContainerGroupListResult>,
+  input: __S(928, __c29, 0) as any as S.Schema<ListContainerGroupByResourceGroupRequest>,
+  output: __S(964, __c30, 4) as any as S.Schema<ContainerGroupListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2532,8 +2532,8 @@ export const ListContainerGroups: API.OperationMethod<
   ListContainerGroupsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(142, __c17, 6) as any as S.Schema<ListContainerGroupsRequest>,
-  output: __S(141, __c17, 5) as any as S.Schema<ContainerGroupListResult>,
+  input: __S(1024, __c32, 0) as any as S.Schema<ListContainerGroupsRequest>,
+  output: __S(964, __c30, 4) as any as S.Schema<ContainerGroupListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2547,8 +2547,8 @@ export const ListContainerLogs: API.OperationMethod<
   ListContainerLogsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(143, __c17, 7) as any as S.Schema<ListContainerLogsRequest>,
-  output: __S(144, __c18, 0) as any as S.Schema<Logs>,
+  input: __S(1056, __c33, 0) as any as S.Schema<ListContainerLogsRequest>,
+  output: __S(1057, __c33, 1) as any as S.Schema<Logs>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2562,8 +2562,8 @@ export const ListLocationCachedImages: API.OperationMethod<
   ListLocationCachedImagesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(145, __c18, 1) as any as S.Schema<ListLocationCachedImagesRequest>,
-  output: __S(148, __c18, 4) as any as S.Schema<CachedImagesListResult>,
+  input: __S(1088, __c34, 0) as any as S.Schema<ListLocationCachedImagesRequest>,
+  output: __S(1091, __c34, 3) as any as S.Schema<CachedImagesListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2577,8 +2577,8 @@ export const ListLocationCapabilities: API.OperationMethod<
   ListLocationCapabilitiesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(149, __c18, 5) as any as S.Schema<ListLocationCapabilitiesRequest>,
-  output: __S(153, __c19, 1) as any as S.Schema<CapabilitiesListResult>,
+  input: __S(1120, __c35, 0) as any as S.Schema<ListLocationCapabilitiesRequest>,
+  output: __S(1124, __c35, 4) as any as S.Schema<CapabilitiesListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2592,8 +2592,8 @@ export const ListLocationUsage: API.OperationMethod<
   ListLocationUsageError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(154, __c19, 2) as any as S.Schema<ListLocationUsageRequest>,
-  output: __S(158, __c19, 6) as any as S.Schema<UsageListResult>,
+  input: __S(1152, __c36, 0) as any as S.Schema<ListLocationUsageRequest>,
+  output: __S(1156, __c36, 4) as any as S.Schema<UsageListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2607,8 +2607,8 @@ export const ListNGroupByResourceGroup: API.OperationMethod<
   ListNGroupByResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(159, __c19, 7) as any as S.Schema<ListNGroupByResourceGroupRequest>,
-  output: __S(163, __c20, 3) as any as S.Schema<NGroupsListResult>,
+  input: __S(1184, __c37, 0) as any as S.Schema<ListNGroupByResourceGroupRequest>,
+  output: __S(1219, __c38, 3) as any as S.Schema<NGroupsListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2622,8 +2622,8 @@ export const ListNGroups: API.OperationMethod<
   ListNGroupsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(164, __c20, 4) as any as S.Schema<ListNGroupsRequest>,
-  output: __S(163, __c20, 3) as any as S.Schema<NGroupsListResult>,
+  input: __S(1248, __c39, 0) as any as S.Schema<ListNGroupsRequest>,
+  output: __S(1219, __c38, 3) as any as S.Schema<NGroupsListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2637,8 +2637,8 @@ export const ListOperations: API.OperationMethod<
   ListOperationsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(165, __c20, 5) as any as S.Schema<ListOperationsRequest>,
-  output: __S(169, __c21, 1) as any as S.Schema<OperationListResult>,
+  input: __S(1280, __c40, 0) as any as S.Schema<ListOperationsRequest>,
+  output: __S(1284, __c40, 4) as any as S.Schema<OperationListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2652,8 +2652,8 @@ export const ListSandboxGroupByResourceGroup: API.OperationMethod<
   ListSandboxGroupByResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(170, __c21, 2) as any as S.Schema<ListSandboxGroupByResourceGroupRequest>,
-  output: __S(172, __c21, 4) as any as S.Schema<SandboxGroupListResult>,
+  input: __S(1312, __c41, 0) as any as S.Schema<ListSandboxGroupByResourceGroupRequest>,
+  output: __S(1345, __c42, 1) as any as S.Schema<SandboxGroupListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2667,8 +2667,8 @@ export const ListSandboxGroupBySubscription: API.OperationMethod<
   ListSandboxGroupBySubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(173, __c21, 5) as any as S.Schema<ListSandboxGroupBySubscriptionRequest>,
-  output: __S(172, __c21, 4) as any as S.Schema<SandboxGroupListResult>,
+  input: __S(1376, __c43, 0) as any as S.Schema<ListSandboxGroupBySubscriptionRequest>,
+  output: __S(1345, __c42, 1) as any as S.Schema<SandboxGroupListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2682,8 +2682,8 @@ export const NGroupsCreateOrUpdate: API.OperationMethod<
   NGroupsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(175, __c21, 7) as any as S.Schema<NGroupsCreateOrUpdateRequest>,
-  output: __S(176, __c22, 0) as any as S.Schema<NGroupsCreateOrUpdateResponse>,
+  input: __S(1632, __c51, 0) as any as S.Schema<NGroupsCreateOrUpdateRequest>,
+  output: __S(1633, __c51, 1) as any as S.Schema<NGroupsCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2697,8 +2697,8 @@ export const RestartContainerGroup: API.OperationMethod<
   RestartContainerGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(177, __c22, 1) as any as S.Schema<RestartContainerGroupRequest>,
-  output: __S(62, __c7, 6) as any as S.Schema<RestartContainerGroupResponse>,
+  input: __S(1696, __c53, 0) as any as S.Schema<RestartContainerGroupRequest>,
+  output: __S(1472, __c46, 0) as any as S.Schema<RestartContainerGroupResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2712,8 +2712,8 @@ export const RestartNGroup: API.OperationMethod<
   RestartNGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(178, __c22, 2) as any as S.Schema<RestartNGroupRequest>,
-  output: __S(62, __c7, 6) as any as S.Schema<RestartNGroupResponse>,
+  input: __S(1728, __c54, 0) as any as S.Schema<RestartNGroupRequest>,
+  output: __S(1472, __c46, 0) as any as S.Schema<RestartNGroupResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2727,8 +2727,8 @@ export const SandboxGroupsCreateOrUpdate: API.OperationMethod<
   SandboxGroupsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(181, __c22, 5) as any as S.Schema<SandboxGroupsCreateOrUpdateRequest>,
-  output: __S(182, __c22, 6) as any as S.Schema<SandboxGroupsCreateOrUpdateResponse>,
+  input: __S(1761, __c55, 1) as any as S.Schema<SandboxGroupsCreateOrUpdateRequest>,
+  output: __S(1793, __c56, 1) as any as S.Schema<SandboxGroupsCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2742,8 +2742,8 @@ export const StartContainerGroup: API.OperationMethod<
   StartContainerGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(183, __c22, 7) as any as S.Schema<StartContainerGroupRequest>,
-  output: __S(62, __c7, 6) as any as S.Schema<StartContainerGroupResponse>,
+  input: __S(1824, __c57, 0) as any as S.Schema<StartContainerGroupRequest>,
+  output: __S(1472, __c46, 0) as any as S.Schema<StartContainerGroupResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2757,8 +2757,8 @@ export const StartNGroup: API.OperationMethod<
   StartNGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(184, __c23, 0) as any as S.Schema<StartNGroupRequest>,
-  output: __S(62, __c7, 6) as any as S.Schema<StartNGroupResponse>,
+  input: __S(1856, __c58, 0) as any as S.Schema<StartNGroupRequest>,
+  output: __S(1472, __c46, 0) as any as S.Schema<StartNGroupResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2772,8 +2772,8 @@ export const StopContainerGroup: API.OperationMethod<
   StopContainerGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(185, __c23, 1) as any as S.Schema<StopContainerGroupRequest>,
-  output: __S(62, __c7, 6) as any as S.Schema<StopContainerGroupResponse>,
+  input: __S(1888, __c59, 0) as any as S.Schema<StopContainerGroupRequest>,
+  output: __S(1472, __c46, 0) as any as S.Schema<StopContainerGroupResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2787,8 +2787,8 @@ export const StopNGroup: API.OperationMethod<
   StopNGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(186, __c23, 2) as any as S.Schema<StopNGroupRequest>,
-  output: __S(62, __c7, 6) as any as S.Schema<StopNGroupResponse>,
+  input: __S(1920, __c60, 0) as any as S.Schema<StopNGroupRequest>,
+  output: __S(1472, __c46, 0) as any as S.Schema<StopNGroupResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2802,8 +2802,8 @@ export const UpdateCGProfile: API.OperationMethod<
   UpdateCGProfileError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(187, __c23, 3) as any as S.Schema<UpdateCGProfileRequest>,
-  output: __S(92, __c11, 4) as any as S.Schema<UpdateCGProfileResponse>,
+  input: __S(1952, __c61, 0) as any as S.Schema<UpdateCGProfileRequest>,
+  output: __S(480, __c15, 0) as any as S.Schema<UpdateCGProfileResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2817,8 +2817,8 @@ export const UpdateContainerGroup: API.OperationMethod<
   UpdateContainerGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(188, __c23, 4) as any as S.Schema<UpdateContainerGroupRequest>,
-  output: __S(82, __c10, 2) as any as S.Schema<UpdateContainerGroupResponse>,
+  input: __S(1984, __c62, 0) as any as S.Schema<UpdateContainerGroupRequest>,
+  output: __S(1603, __c50, 3) as any as S.Schema<UpdateContainerGroupResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2832,8 +2832,8 @@ export const UpdateNGroup: API.OperationMethod<
   UpdateNGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(189, __c23, 5) as any as S.Schema<UpdateNGroupRequest>,
-  output: __S(123, __c15, 3) as any as S.Schema<UpdateNGroupResponse>,
+  input: __S(2048, __c64, 0) as any as S.Schema<UpdateNGroupRequest>,
+  output: __S(672, __c21, 0) as any as S.Schema<UpdateNGroupResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2847,8 +2847,8 @@ export const UpdateSandboxGroup: API.OperationMethod<
   UpdateSandboxGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(190, __c23, 6) as any as S.Schema<UpdateSandboxGroupRequest>,
-  output: __S(182, __c22, 6) as any as S.Schema<UpdateSandboxGroupResponse>,
+  input: __S(2080, __c65, 0) as any as S.Schema<UpdateSandboxGroupRequest>,
+  output: __S(1793, __c56, 1) as any as S.Schema<UpdateSandboxGroupResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2873,44 +2873,6 @@ function __c0(j: number): any {
           }),
         ),
       ).annotate({ identifier: "AttachContainerRequest" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          webSocketUri: S.optional(S.String),
-          password: S.optional(S.String.pipe(T.SensitiveValue({}))),
-        }),
-      ).annotate({ identifier: "ContainerAttachResponse" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          vaultBaseUrl: S.String,
-          keyName: S.String,
-          keyVersion: S.String,
-          identity: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "EncryptionProperties" });
-    case 3:
-      return S.Array(S.String);
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          protocol: S.optional(S.String),
-          port: S.Number,
-        }),
-      ).annotate({ identifier: "ContainerPort" });
-    case 5:
-      return S.Array(__S(4, __c0, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String,
-          value: S.optional(S.String),
-          secureValue: S.optional(S.String),
-          secureValueReference: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "EnvironmentVariable" });
-    case 7:
-      return S.Array(__S(6, __c0, 6));
   }
 }
 function __c1(j: number): any {
@@ -2918,307 +2880,48 @@ function __c1(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          count: S.Number,
-          sku: S.String,
+          webSocketUri: S.optional(S.String),
+          password: S.optional(S.String.pipe(T.SensitiveValue({}))),
         }),
-      ).annotate({ identifier: "GpuResource" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          memoryInGB: S.Number,
-          cpu: S.Number,
-          gpu: S.optional(__S(8, __c1, 0)),
-        }),
-      ).annotate({ identifier: "ResourceRequests" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          memoryInGB: S.optional(S.Number),
-          cpu: S.optional(S.Number),
-          gpu: S.optional(__S(8, __c1, 0)),
-        }),
-      ).annotate({ identifier: "ResourceLimits" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          requests: __S(9, __c1, 1),
-          limits: S.optional(__S(10, __c1, 2)),
-        }),
-      ).annotate({ identifier: "ResourceRequirements" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String,
-          mountPath: S.String,
-          readOnly: S.optional(S.Boolean),
-        }),
-      ).annotate({ identifier: "VolumeMount" });
-    case 5:
-      return S.Array(__S(12, __c1, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          command: S.optional(__S(3, __c0, 3)),
-        }),
-      ).annotate({ identifier: "ContainerExec" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.optional(S.String),
-          value: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "HttpHeader" });
+      ).annotate({ identifier: "ContainerAttachResponse" });
   }
 }
 function __c2(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(15, __c1, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          path: S.optional(S.String),
-          port: S.Number,
-          scheme: S.optional(S.String),
-          httpHeaders: S.optional(__S(16, __c2, 0)),
-        }),
-      ).annotate({ identifier: "ContainerHttpGet" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          exec: S.optional(__S(14, __c1, 6)),
-          httpGet: S.optional(__S(17, __c2, 1)),
-          initialDelaySeconds: S.optional(S.Number),
-          periodSeconds: S.optional(S.Number),
-          failureThreshold: S.optional(S.Number),
-          successThreshold: S.optional(S.Number),
-          timeoutSeconds: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "ContainerProbe" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          add: S.optional(__S(3, __c0, 3)),
-          drop: S.optional(__S(3, __c0, 3)),
-        }),
-      ).annotate({
-        identifier: "SecurityContextCapabilitiesDefinition",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          privileged: S.optional(S.Boolean),
-          allowPrivilegeEscalation: S.optional(S.Boolean),
-          capabilities: S.optional(__S(19, __c2, 3)),
-          runAsGroup: S.optional(S.Number),
-          runAsUser: S.optional(S.Number),
-          seccompProfile: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "SecurityContextDefinition",
-      });
-    case 5:
-      return S.Record(S.String, S.String);
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          keyValuePairs: S.optional(__S(21, __c2, 5)),
-        }),
-      ).annotate({ identifier: "ConfigMap" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          image: S.optional(S.String),
-          command: S.optional(__S(3, __c0, 3)),
-          ports: S.optional(__S(5, __c0, 5)),
-          environmentVariables: S.optional(__S(7, __c0, 7)),
-          resources: S.optional(__S(11, __c1, 3)),
-          volumeMounts: S.optional(__S(13, __c1, 5)),
-          livenessProbe: S.optional(__S(18, __c2, 2)),
-          readinessProbe: S.optional(__S(18, __c2, 2)),
-          securityContext: S.optional(__S(20, __c2, 4)),
-          configMap: S.optional(__S(22, __c2, 6)),
-        }),
-      ).annotate({ identifier: "ContainerPropertiesInput" });
-  }
-}
-function __c3(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String,
-          properties: __S(23, __c2, 7),
-        }),
-      ).annotate({ identifier: "ContainerInput" });
-    case 1:
-      return S.Array(__S(24, __c3, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          image: S.optional(S.String),
-          command: S.optional(__S(3, __c0, 3)),
-          environmentVariables: S.optional(__S(7, __c0, 7)),
-          volumeMounts: S.optional(__S(13, __c1, 5)),
-          securityContext: S.optional(__S(20, __c2, 4)),
-        }),
-      ).annotate({
-        identifier: "InitContainerPropertiesDefinitionInput",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String,
-          properties: __S(26, __c3, 2),
-        }),
-      ).annotate({
-        identifier: "InitContainerDefinitionInput",
-      });
-    case 4:
-      return S.Array(__S(27, __c3, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          extensionType: S.String,
-          version: S.String,
-          settings: S.optional(S.Unknown),
-          protectedSettings: S.optional(S.Unknown),
-        }),
-      ).annotate({
-        identifier: "DeploymentExtensionSpecProperties",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String,
-          properties: S.optional(__S(29, __c3, 5)),
-        }),
-      ).annotate({ identifier: "DeploymentExtensionSpec" });
-    case 7:
-      return S.Array(__S(30, __c3, 6));
-  }
-}
-function __c4(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          server: S.String,
-          username: S.optional(S.String),
-          password: S.optional(S.String.pipe(T.SensitiveValue({}))),
-          passwordReference: S.optional(S.String.pipe(T.SensitiveValue({}))),
-          identity: S.optional(S.String),
-          identityUrl: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ImageRegistryCredential" });
-    case 1:
-      return S.Array(__S(32, __c4, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          ports: __S(5, __c0, 5),
-          type: S.String,
-          ip: S.optional(S.String),
-          dnsNameLabel: S.optional(S.String),
-          autoGeneratedDomainNameLabelScope: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "IpAddressInput" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          shareName: S.String,
-          readOnly: S.optional(S.Boolean),
-          storageAccountName: S.String,
-          storageAccountKey: S.optional(S.String),
-          storageAccountKeyReference: S.optional(S.String),
-          userAssignedIdentityClientId: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "AzureFileVolume" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          directory: S.optional(S.String),
-          repository: S.String,
-          revision: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "GitRepoVolume" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String,
-          azureFile: S.optional(__S(35, __c4, 3)),
-          emptyDir: S.optional(S.Unknown),
-          secret: S.optional(__S(21, __c2, 5)),
-          secretReference: S.optional(__S(21, __c2, 5)),
-          gitRepo: S.optional(__S(36, __c4, 4)),
-        }),
-      ).annotate({ identifier: "Volume" });
-    case 6:
-      return S.Array(__S(37, __c4, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          workspaceId: S.String,
-          workspaceKey: S.String,
-          logType: S.optional(S.String),
-          metadata: S.optional(__S(21, __c2, 5)),
-          workspaceResourceId: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "LogAnalytics" });
-  }
-}
-function __c5(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          logAnalytics: S.optional(__S(39, __c4, 7)),
-        }),
-      ).annotate({
-        identifier: "ContainerGroupDiagnostics",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          ccePolicy: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "ConfidentialComputeProperties",
-      });
-    case 2:
       return S.suspend(() =>
         S.Struct({
           sku: S.optional(S.String),
-          encryptionProperties: S.optional(__S(2, __c0, 2)),
-          containers: __S(25, __c3, 1),
-          initContainers: S.optional(__S(28, __c3, 4)),
-          extensions: S.optional(__S(31, __c3, 7)),
-          imageRegistryCredentials: S.optional(__S(33, __c4, 1)),
+          encryptionProperties: S.optional(__S(352, __c11, 0)),
+          containers: __S(162, __c5, 2),
+          initContainers: S.optional(__S(165, __c5, 5)),
+          extensions: S.optional(__S(371, __c11, 19)),
+          imageRegistryCredentials: S.optional(__S(192, __c6, 0)),
           restartPolicy: S.optional(S.String),
           shutdownGracePeriod: S.optional(S.String),
-          ipAddress: S.optional(__S(34, __c4, 2)),
+          ipAddress: S.optional(__S(166, __c5, 6)),
           timeToLive: S.optional(S.String),
           osType: S.String,
-          volumes: S.optional(__S(38, __c4, 6)),
-          diagnostics: S.optional(__S(40, __c5, 0)),
+          volumes: S.optional(__S(375, __c11, 23)),
+          diagnostics: S.optional(__S(377, __c11, 25)),
           priority: S.optional(S.String),
-          confidentialComputeProperties: S.optional(__S(41, __c5, 1)),
-          securityContext: S.optional(__S(20, __c2, 4)),
+          confidentialComputeProperties: S.optional(__S(378, __c11, 26)),
+          securityContext: S.optional(__S(367, __c11, 15)),
           useKrypton: S.optional(S.Boolean),
         }),
       ).annotate({
         identifier: "ContainerGroupProfilePropertiesInput",
       });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           containerGroupProfileName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(42, __c5, 2)),
-          tags: S.optional(__S(21, __c2, 5)),
+          properties: S.optional(__S(64, __c2, 0)),
+          tags: S.optional(__S(256, __c8, 0)),
           location: S.optional(S.String),
-          zones: S.optional(__S(3, __c0, 3)),
+          zones: S.optional(__S(224, __c7, 0)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -3230,7 +2933,141 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "CGProfileCreateOrUpdateRequest",
       });
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.Number);
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          sku: S.optional(S.String),
+          encryptionProperties: S.optional(__S(352, __c11, 0)),
+          containers: __S(385, __c12, 1),
+          initContainers: S.optional(__S(388, __c12, 4)),
+          extensions: S.optional(__S(371, __c11, 19)),
+          imageRegistryCredentials: S.optional(__S(416, __c13, 0)),
+          restartPolicy: S.optional(S.String),
+          shutdownGracePeriod: S.optional(S.String),
+          ipAddress: S.optional(__S(389, __c12, 5)),
+          timeToLive: S.optional(S.String),
+          osType: S.String,
+          volumes: S.optional(__S(375, __c11, 23)),
+          diagnostics: S.optional(__S(377, __c11, 25)),
+          priority: S.optional(S.String),
+          confidentialComputeProperties: S.optional(__S(378, __c11, 26)),
+          securityContext: S.optional(__S(367, __c11, 15)),
+          revision: S.optional(S.Number),
+          registeredRevisions: S.optional(__S(96, __c3, 0)),
+          useKrypton: S.optional(S.Boolean),
+        }),
+      ).annotate({
+        identifier: "ContainerGroupProfileProperties",
+      });
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(288, __c9, 0)),
+          properties: S.optional(__S(97, __c3, 1)),
+          tags: S.optional(__S(256, __c8, 0)),
+          location: S.optional(S.String),
+          zones: S.optional(__S(224, __c7, 0)),
+        }),
+      ).annotate({
+        identifier: "CGProfileCreateOrUpdateResponse",
+      });
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          image: S.optional(S.String),
+          command: S.optional(__S(224, __c7, 0)),
+          ports: S.optional(__S(354, __c11, 2)),
+          environmentVariables: S.optional(__S(356, __c11, 4)),
+          resources: S.optional(__S(360, __c11, 8)),
+          volumeMounts: S.optional(__S(321, __c10, 1)),
+          livenessProbe: S.optional(__S(365, __c11, 13)),
+          readinessProbe: S.optional(__S(365, __c11, 13)),
+          securityContext: S.optional(__S(367, __c11, 15)),
+          configMap: S.optional(__S(368, __c11, 16)),
+        }),
+      ).annotate({ identifier: "ContainerPropertiesInput" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String,
+          properties: __S(160, __c5, 0),
+        }),
+      ).annotate({ identifier: "ContainerInput" });
+    case 2:
+      return S.Array(__S(161, __c5, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          image: S.optional(S.String),
+          command: S.optional(__S(224, __c7, 0)),
+          environmentVariables: S.optional(__S(356, __c11, 4)),
+          volumeMounts: S.optional(__S(321, __c10, 1)),
+          securityContext: S.optional(__S(367, __c11, 15)),
+        }),
+      ).annotate({
+        identifier: "InitContainerPropertiesDefinitionInput",
+      });
     case 4:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String,
+          properties: __S(163, __c5, 3),
+        }),
+      ).annotate({
+        identifier: "InitContainerDefinitionInput",
+      });
+    case 5:
+      return S.Array(__S(164, __c5, 4));
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          ports: __S(354, __c11, 2),
+          type: S.String,
+          ip: S.optional(S.String),
+          dnsNameLabel: S.optional(S.String),
+          autoGeneratedDomainNameLabelScope: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "IpAddressInput" });
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(372, __c11, 20));
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, S.String);
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           createdBy: S.optional(S.String),
@@ -3241,7 +3078,237 @@ function __c5(j: number): any {
           lastModifiedAt: S.optional(S.String),
         }),
       ).annotate({ identifier: "SystemData" });
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String,
+          mountPath: S.String,
+          readOnly: S.optional(S.Boolean),
+        }),
+      ).annotate({ identifier: "VolumeMount" });
+    case 1:
+      return S.Array(__S(320, __c10, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          shareName: S.String,
+          readOnly: S.optional(S.Boolean),
+          storageAccountName: S.String,
+          storageAccountKey: S.optional(S.String),
+          storageAccountKeyReference: S.optional(S.String),
+          userAssignedIdentityClientId: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "AzureFileVolume" });
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          vaultBaseUrl: S.String,
+          keyName: S.String,
+          keyVersion: S.String,
+          identity: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "EncryptionProperties" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          protocol: S.optional(S.String),
+          port: S.Number,
+        }),
+      ).annotate({ identifier: "ContainerPort" });
+    case 2:
+      return S.Array(__S(353, __c11, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String,
+          value: S.optional(S.String),
+          secureValue: S.optional(S.String),
+          secureValueReference: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "EnvironmentVariable" });
+    case 4:
+      return S.Array(__S(355, __c11, 3));
     case 5:
+      return S.suspend(() =>
+        S.Struct({
+          count: S.Number,
+          sku: S.String,
+        }),
+      ).annotate({ identifier: "GpuResource" });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          memoryInGB: S.Number,
+          cpu: S.Number,
+          gpu: S.optional(__S(357, __c11, 5)),
+        }),
+      ).annotate({ identifier: "ResourceRequests" });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          memoryInGB: S.optional(S.Number),
+          cpu: S.optional(S.Number),
+          gpu: S.optional(__S(357, __c11, 5)),
+        }),
+      ).annotate({ identifier: "ResourceLimits" });
+    case 8:
+      return S.suspend(() =>
+        S.Struct({
+          requests: __S(358, __c11, 6),
+          limits: S.optional(__S(359, __c11, 7)),
+        }),
+      ).annotate({ identifier: "ResourceRequirements" });
+    case 9:
+      return S.suspend(() =>
+        S.Struct({
+          command: S.optional(__S(224, __c7, 0)),
+        }),
+      ).annotate({ identifier: "ContainerExec" });
+    case 10:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.optional(S.String),
+          value: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "HttpHeader" });
+    case 11:
+      return S.Array(__S(362, __c11, 10));
+    case 12:
+      return S.suspend(() =>
+        S.Struct({
+          path: S.optional(S.String),
+          port: S.Number,
+          scheme: S.optional(S.String),
+          httpHeaders: S.optional(__S(363, __c11, 11)),
+        }),
+      ).annotate({ identifier: "ContainerHttpGet" });
+    case 13:
+      return S.suspend(() =>
+        S.Struct({
+          exec: S.optional(__S(361, __c11, 9)),
+          httpGet: S.optional(__S(364, __c11, 12)),
+          initialDelaySeconds: S.optional(S.Number),
+          periodSeconds: S.optional(S.Number),
+          failureThreshold: S.optional(S.Number),
+          successThreshold: S.optional(S.Number),
+          timeoutSeconds: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "ContainerProbe" });
+    case 14:
+      return S.suspend(() =>
+        S.Struct({
+          add: S.optional(__S(224, __c7, 0)),
+          drop: S.optional(__S(224, __c7, 0)),
+        }),
+      ).annotate({
+        identifier: "SecurityContextCapabilitiesDefinition",
+      });
+    case 15:
+      return S.suspend(() =>
+        S.Struct({
+          privileged: S.optional(S.Boolean),
+          allowPrivilegeEscalation: S.optional(S.Boolean),
+          capabilities: S.optional(__S(366, __c11, 14)),
+          runAsGroup: S.optional(S.Number),
+          runAsUser: S.optional(S.Number),
+          seccompProfile: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "SecurityContextDefinition",
+      });
+    case 16:
+      return S.suspend(() =>
+        S.Struct({
+          keyValuePairs: S.optional(__S(256, __c8, 0)),
+        }),
+      ).annotate({ identifier: "ConfigMap" });
+    case 17:
+      return S.suspend(() =>
+        S.Struct({
+          extensionType: S.String,
+          version: S.String,
+          settings: S.optional(S.Unknown),
+          protectedSettings: S.optional(S.Unknown),
+        }),
+      ).annotate({
+        identifier: "DeploymentExtensionSpecProperties",
+      });
+    case 18:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String,
+          properties: S.optional(__S(369, __c11, 17)),
+        }),
+      ).annotate({ identifier: "DeploymentExtensionSpec" });
+    case 19:
+      return S.Array(__S(370, __c11, 18));
+    case 20:
+      return S.suspend(() =>
+        S.Struct({
+          server: S.String,
+          username: S.optional(S.String),
+          password: S.optional(S.String.pipe(T.SensitiveValue({}))),
+          passwordReference: S.optional(S.String.pipe(T.SensitiveValue({}))),
+          identity: S.optional(S.String),
+          identityUrl: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ImageRegistryCredential" });
+    case 21:
+      return S.suspend(() =>
+        S.Struct({
+          directory: S.optional(S.String),
+          repository: S.String,
+          revision: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "GitRepoVolume" });
+    case 22:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String,
+          azureFile: S.optional(__S(322, __c10, 2)),
+          emptyDir: S.optional(S.Unknown),
+          secret: S.optional(__S(256, __c8, 0)),
+          secretReference: S.optional(__S(256, __c8, 0)),
+          gitRepo: S.optional(__S(373, __c11, 21)),
+        }),
+      ).annotate({ identifier: "Volume" });
+    case 23:
+      return S.Array(__S(374, __c11, 22));
+    case 24:
+      return S.suspend(() =>
+        S.Struct({
+          workspaceId: S.String,
+          workspaceKey: S.String,
+          logType: S.optional(S.String),
+          metadata: S.optional(__S(256, __c8, 0)),
+          workspaceResourceId: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "LogAnalytics" });
+    case 25:
+      return S.suspend(() =>
+        S.Struct({
+          logAnalytics: S.optional(__S(376, __c11, 24)),
+        }),
+      ).annotate({
+        identifier: "ContainerGroupDiagnostics",
+      });
+    case 26:
+      return S.suspend(() =>
+        S.Struct({
+          ccePolicy: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "ConfidentialComputeProperties",
+      });
+    case 27:
       return S.suspend(() =>
         S.Struct({
           state: S.optional(S.String),
@@ -3251,7 +3318,7 @@ function __c5(j: number): any {
           detailStatus: S.optional(S.String),
         }),
       ).annotate({ identifier: "ContainerState" });
-    case 6:
+    case 28:
       return S.suspend(() =>
         S.Struct({
           count: S.optional(S.Number),
@@ -3262,80 +3329,74 @@ function __c5(j: number): any {
           type: S.optional(S.String),
         }),
       ).annotate({ identifier: "Event" });
-    case 7:
-      return S.Array(__S(46, __c5, 6));
-  }
-}
-function __c6(j: number): any {
-  switch (j) {
-    case 0:
+    case 29:
+      return S.Array(__S(380, __c11, 28));
+    case 30:
       return S.suspend(() =>
         S.Struct({
           restartCount: S.optional(S.Number),
-          currentState: S.optional(__S(45, __c5, 5)),
-          previousState: S.optional(__S(45, __c5, 5)),
-          events: S.optional(__S(47, __c5, 7)),
+          currentState: S.optional(__S(379, __c11, 27)),
+          previousState: S.optional(__S(379, __c11, 27)),
+          events: S.optional(__S(381, __c11, 29)),
         }),
       ).annotate({
         identifier: "ContainerPropertiesInstanceView",
       });
-    case 1:
+    case 31:
       return S.suspend(() =>
         S.Struct({
           image: S.optional(S.String),
-          command: S.optional(__S(3, __c0, 3)),
-          ports: S.optional(__S(5, __c0, 5)),
-          environmentVariables: S.optional(__S(7, __c0, 7)),
-          instanceView: S.optional(__S(48, __c6, 0)),
-          resources: S.optional(__S(11, __c1, 3)),
-          volumeMounts: S.optional(__S(13, __c1, 5)),
-          livenessProbe: S.optional(__S(18, __c2, 2)),
-          readinessProbe: S.optional(__S(18, __c2, 2)),
-          securityContext: S.optional(__S(20, __c2, 4)),
-          configMap: S.optional(__S(22, __c2, 6)),
+          command: S.optional(__S(224, __c7, 0)),
+          ports: S.optional(__S(354, __c11, 2)),
+          environmentVariables: S.optional(__S(356, __c11, 4)),
+          instanceView: S.optional(__S(382, __c11, 30)),
+          resources: S.optional(__S(360, __c11, 8)),
+          volumeMounts: S.optional(__S(321, __c10, 1)),
+          livenessProbe: S.optional(__S(365, __c11, 13)),
+          readinessProbe: S.optional(__S(365, __c11, 13)),
+          securityContext: S.optional(__S(367, __c11, 15)),
+          configMap: S.optional(__S(368, __c11, 16)),
         }),
       ).annotate({ identifier: "ContainerProperties" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String,
-          properties: __S(49, __c6, 1),
-        }),
-      ).annotate({ identifier: "Container" });
-    case 3:
-      return S.Array(__S(50, __c6, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          image: S.optional(S.String),
-          command: S.optional(__S(3, __c0, 3)),
-          environmentVariables: S.optional(__S(7, __c0, 7)),
-          instanceView: S.optional(__S(48, __c6, 0)),
-          volumeMounts: S.optional(__S(13, __c1, 5)),
-          securityContext: S.optional(__S(20, __c2, 4)),
-        }),
-      ).annotate({
-        identifier: "InitContainerPropertiesDefinition",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String,
-          properties: __S(52, __c6, 4),
-        }),
-      ).annotate({ identifier: "InitContainerDefinition" });
-    case 6:
-      return S.Array(__S(53, __c6, 5));
-    case 7:
-      return S.Array(__S(32, __c4, 0));
   }
 }
-function __c7(j: number): any {
+function __c12(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          ports: __S(5, __c0, 5),
+          name: S.String,
+          properties: __S(383, __c11, 31),
+        }),
+      ).annotate({ identifier: "Container" });
+    case 1:
+      return S.Array(__S(384, __c12, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          image: S.optional(S.String),
+          command: S.optional(__S(224, __c7, 0)),
+          environmentVariables: S.optional(__S(356, __c11, 4)),
+          instanceView: S.optional(__S(382, __c11, 30)),
+          volumeMounts: S.optional(__S(321, __c10, 1)),
+          securityContext: S.optional(__S(367, __c11, 15)),
+        }),
+      ).annotate({
+        identifier: "InitContainerPropertiesDefinition",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String,
+          properties: __S(386, __c12, 2),
+        }),
+      ).annotate({ identifier: "InitContainerDefinition" });
+    case 4:
+      return S.Array(__S(387, __c12, 3));
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          ports: __S(354, __c11, 2),
           type: S.String,
           ip: S.optional(S.String),
           dnsNameLabel: S.optional(S.String),
@@ -3343,402 +3404,17 @@ function __c7(j: number): any {
           fqdn: S.optional(S.String),
         }),
       ).annotate({ identifier: "IpAddress" });
-    case 1:
-      return S.Array(S.Number);
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          sku: S.optional(S.String),
-          encryptionProperties: S.optional(__S(2, __c0, 2)),
-          containers: __S(51, __c6, 3),
-          initContainers: S.optional(__S(54, __c6, 6)),
-          extensions: S.optional(__S(31, __c3, 7)),
-          imageRegistryCredentials: S.optional(__S(55, __c6, 7)),
-          restartPolicy: S.optional(S.String),
-          shutdownGracePeriod: S.optional(S.String),
-          ipAddress: S.optional(__S(56, __c7, 0)),
-          timeToLive: S.optional(S.String),
-          osType: S.String,
-          volumes: S.optional(__S(38, __c4, 6)),
-          diagnostics: S.optional(__S(40, __c5, 0)),
-          priority: S.optional(S.String),
-          confidentialComputeProperties: S.optional(__S(41, __c5, 1)),
-          securityContext: S.optional(__S(20, __c2, 4)),
-          revision: S.optional(S.Number),
-          registeredRevisions: S.optional(__S(57, __c7, 1)),
-          useKrypton: S.optional(S.Boolean),
-        }),
-      ).annotate({
-        identifier: "ContainerGroupProfileProperties",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(44, __c5, 4)),
-          properties: S.optional(__S(58, __c7, 2)),
-          tags: S.optional(__S(21, __c2, 5)),
-          location: S.optional(S.String),
-          zones: S.optional(__S(3, __c0, 3)),
-        }),
-      ).annotate({
-        identifier: "CGProfileCreateOrUpdateResponse",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          sandboxGroupName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerInstance/sandboxGroups/{sandboxGroupName}/connect",
-            code: 200,
-            apiVersion: "2026-07-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "ConnectSandboxGroupRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          endpoint: S.String,
-          accessToken: S.String.pipe(T.SensitiveValue({})),
-          notAfter: S.String,
-        }),
-      ).annotate({ identifier: "SandboxGroupAccessToken" });
-    case 6:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "UserAssignedIdentitiesInput",
-      });
-    case 7:
-      return S.Record(S.String, __S(62, __c7, 6));
   }
 }
-function __c8(j: number): any {
+function __c13(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() =>
-        S.Struct({
-          type: S.optional(S.String),
-          userAssignedIdentities: S.optional(__S(63, __c7, 7)),
-        }),
-      ).annotate({
-        identifier: "ContainerGroupIdentityInput",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String,
-          identity: S.String,
-          secretReferenceUri: S.String,
-        }),
-      ).annotate({ identifier: "SecretReference" });
-    case 2:
-      return S.Array(__S(65, __c8, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String,
-          name: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ContainerGroupSubnetId" });
-    case 4:
-      return S.Array(__S(67, __c8, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          nameServers: __S(3, __c0, 3),
-          searchDomains: S.optional(S.String),
-          options: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "DnsConfiguration" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          access: S.optional(S.String),
-          identity: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "IdentityAccessControl" });
-    case 7:
-      return S.Array(__S(70, __c8, 6));
+      return S.Array(__S(372, __c11, 20));
   }
 }
-function __c9(j: number): any {
+function __c14(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() =>
-        S.Struct({
-          defaultAccess: S.optional(S.String),
-          acls: S.optional(__S(71, __c8, 7)),
-        }),
-      ).annotate({ identifier: "IdentityAcls" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          revision: S.optional(S.Number),
-        }),
-      ).annotate({
-        identifier: "ContainerGroupProfileReferenceDefinition",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          failContainerGroupCreateOnReuseFailure: S.optional(S.Boolean),
-        }),
-      ).annotate({
-        identifier: "StandbyPoolProfileDefinition",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          secretReferences: S.optional(__S(66, __c8, 2)),
-          containers: __S(25, __c3, 1),
-          imageRegistryCredentials: S.optional(__S(33, __c4, 1)),
-          restartPolicy: S.optional(S.String),
-          ipAddress: S.optional(__S(34, __c4, 2)),
-          osType: S.optional(S.String),
-          volumes: S.optional(__S(38, __c4, 6)),
-          diagnostics: S.optional(__S(40, __c5, 0)),
-          subnetIds: S.optional(__S(68, __c8, 4)),
-          dnsConfig: S.optional(__S(69, __c8, 5)),
-          sku: S.optional(S.String),
-          encryptionProperties: S.optional(__S(2, __c0, 2)),
-          initContainers: S.optional(__S(28, __c3, 4)),
-          extensions: S.optional(__S(31, __c3, 7)),
-          confidentialComputeProperties: S.optional(__S(41, __c5, 1)),
-          priority: S.optional(S.String),
-          identityAcls: S.optional(__S(72, __c9, 0)),
-          containerGroupProfile: S.optional(__S(73, __c9, 1)),
-          standbyPoolProfile: S.optional(__S(74, __c9, 2)),
-        }),
-      ).annotate({
-        identifier: "ContainerGroupPropertiesPropertiesInput",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          containerGroupName: S.String.pipe(T.Label()),
-          location: S.optional(S.String),
-          tags: S.optional(__S(21, __c2, 5)),
-          zones: S.optional(__S(3, __c0, 3)),
-          identity: S.optional(__S(64, __c8, 0)),
-          properties: __S(75, __c9, 3),
-        }).pipe(
-          T.Http({
-            method: "PUT",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerInstance/containerGroups/{containerGroupName}",
-            code: 200,
-            apiVersion: "2026-07-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "ContainerGroupsCreateOrUpdateRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          principalId: S.optional(S.String),
-          clientId: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "UserAssignedIdentities" });
-    case 6:
-      return S.Record(S.String, __S(77, __c9, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          principalId: S.optional(S.String),
-          tenantId: S.optional(S.String),
-          type: S.optional(S.String),
-          userAssignedIdentities: S.optional(__S(78, __c9, 6)),
-        }),
-      ).annotate({ identifier: "ContainerGroupIdentity" });
-  }
-}
-function __c10(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          events: S.optional(__S(47, __c5, 7)),
-          state: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "ContainerGroupPropertiesPropertiesInstanceView",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          provisioningState: S.optional(S.String),
-          secretReferences: S.optional(__S(66, __c8, 2)),
-          containers: __S(51, __c6, 3),
-          imageRegistryCredentials: S.optional(__S(55, __c6, 7)),
-          restartPolicy: S.optional(S.String),
-          ipAddress: S.optional(__S(56, __c7, 0)),
-          osType: S.optional(S.String),
-          volumes: S.optional(__S(38, __c4, 6)),
-          instanceView: S.optional(__S(80, __c10, 0)),
-          diagnostics: S.optional(__S(40, __c5, 0)),
-          subnetIds: S.optional(__S(68, __c8, 4)),
-          dnsConfig: S.optional(__S(69, __c8, 5)),
-          sku: S.optional(S.String),
-          encryptionProperties: S.optional(__S(2, __c0, 2)),
-          initContainers: S.optional(__S(54, __c6, 6)),
-          extensions: S.optional(__S(31, __c3, 7)),
-          confidentialComputeProperties: S.optional(__S(41, __c5, 1)),
-          priority: S.optional(S.String),
-          identityAcls: S.optional(__S(72, __c9, 0)),
-          containerGroupProfile: S.optional(__S(73, __c9, 1)),
-          standbyPoolProfile: S.optional(__S(74, __c9, 2)),
-          isCreatedFromStandbyPool: S.optional(S.Boolean),
-        }),
-      ).annotate({
-        identifier: "ContainerGroupPropertiesProperties",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(44, __c5, 4)),
-          location: S.optional(S.String),
-          tags: S.optional(__S(21, __c2, 5)),
-          zones: S.optional(__S(3, __c0, 3)),
-          identity: S.optional(__S(79, __c9, 7)),
-          properties: __S(81, __c10, 1),
-        }),
-      ).annotate({
-        identifier: "ContainerGroupsCreateOrUpdateResponse",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          containerGroupProfileName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerInstance/containerGroupProfiles/{containerGroupProfileName}",
-            code: 200,
-            apiVersion: "2026-07-01",
-          }),
-        ),
-      ).annotate({ identifier: "DeleteCGProfileRequest" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          containerGroupName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerInstance/containerGroups/{containerGroupName}",
-            code: 200,
-            apiVersion: "2026-07-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteContainerGroupRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          ngroupsName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerInstance/ngroups/{ngroupsName}",
-            code: 200,
-            apiVersion: "2024-11-01-preview",
-          }),
-        ),
-      ).annotate({ identifier: "DeleteNGroupRequest" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          sandboxGroupName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerInstance/sandboxGroups/{sandboxGroupName}",
-            code: 200,
-            apiVersion: "2026-07-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteSandboxGroupRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          virtualNetworkName: S.String.pipe(T.Label()),
-          subnetName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworks/{virtualNetworkName}/subnets/{subnetName}/providers/Microsoft.ContainerInstance/serviceAssociationLinks/default",
-            code: 200,
-            apiVersion: "2026-07-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteSubnetServiceAssociationLinkRequest",
-      });
-  }
-}
-function __c11(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "DeleteSubnetServiceAssociationLinkResponse",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          rows: S.optional(S.Number),
-          cols: S.optional(S.Number),
-        }),
-      ).annotate({
-        identifier: "ContainerExecRequestTerminalSize",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          containerGroupName: S.String.pipe(T.Label()),
-          containerName: S.String.pipe(T.Label()),
-          command: S.optional(S.String),
-          terminalSize: S.optional(__S(89, __c11, 1)),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerInstance/containerGroups/{containerGroupName}/containers/{containerName}/exec",
-            code: 200,
-            apiVersion: "2026-07-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "ExecuteContainerCommandRequest",
-      });
-    case 3:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -3753,20 +3429,28 @@ function __c11(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetCGProfileRequest" });
-    case 4:
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(44, __c5, 4)),
-          properties: S.optional(__S(58, __c7, 2)),
-          tags: S.optional(__S(21, __c2, 5)),
+          systemData: S.optional(__S(288, __c9, 0)),
+          properties: S.optional(__S(97, __c3, 1)),
+          tags: S.optional(__S(256, __c8, 0)),
           location: S.optional(S.String),
-          zones: S.optional(__S(3, __c0, 3)),
+          zones: S.optional(__S(224, __c7, 0)),
         }),
       ).annotate({ identifier: "GetCGProfileResponse" });
-    case 5:
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -3784,7 +3468,11 @@ function __c11(j: number): any {
       ).annotate({
         identifier: "GetCGProfileByRevisionNumberRequest",
       });
-    case 6:
+  }
+}
+function __c17(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -3799,7 +3487,11 @@ function __c11(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetContainerGroupRequest" });
-    case 7:
+  }
+}
+function __c18(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -3816,15 +3508,15 @@ function __c11(j: number): any {
       ).annotate({
         identifier: "GetContainerGroupOutboundNetworkDependenciesEndpointsRequest",
       });
-  }
-}
-function __c12(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() => __S(3, __c0, 3).pipe(T.RawResponseRoot())).annotate({
+    case 1:
+      return S.suspend(() => __S(224, __c7, 0).pipe(T.RawResponseRoot())).annotate({
         identifier: "GetContainerGroupOutboundNetworkDependenciesEndpointsResponse",
       });
-    case 1:
+  }
+}
+function __c19(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -3839,7 +3531,11 @@ function __c12(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetNGroupRequest" });
-    case 2:
+  }
+}
+function __c20(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           prefix: S.optional(S.String),
@@ -3847,35 +3543,35 @@ function __c12(j: number): any {
       ).annotate({
         identifier: "ElasticProfileContainerGroupNamingPolicyGuidNamingPolicy",
       });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          guidNamingPolicy: S.optional(__S(98, __c12, 2)),
+          guidNamingPolicy: S.optional(__S(640, __c20, 0)),
         }),
       ).annotate({
         identifier: "ElasticProfileContainerGroupNamingPolicy",
       });
-    case 4:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           desiredCount: S.optional(S.Number),
           maintainDesiredCount: S.optional(S.Boolean),
-          containerGroupNamingPolicy: S.optional(__S(99, __c12, 3)),
+          containerGroupNamingPolicy: S.optional(__S(641, __c20, 1)),
         }),
       ).annotate({ identifier: "ElasticProfile" });
-    case 5:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           faultDomainCount: S.optional(S.Number),
         }),
       ).annotate({ identifier: "PlacementProfile" });
-    case 6:
+    case 4:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
         }),
       ).annotate({ identifier: "ApiEntityReference" });
-    case 7:
+    case 5:
       return S.suspend(() =>
         S.Struct({
           resource: S.optional(S.String),
@@ -3883,117 +3579,105 @@ function __c12(j: number): any {
       ).annotate({
         identifier: "LoadBalancerBackendAddressPool",
       });
-  }
-}
-function __c13(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(103, __c12, 7));
-    case 1:
+    case 6:
+      return S.Array(__S(645, __c20, 5));
+    case 7:
       return S.suspend(() =>
         S.Struct({
-          backendAddressPools: S.optional(__S(104, __c13, 0)),
+          backendAddressPools: S.optional(__S(646, __c20, 6)),
         }),
       ).annotate({ identifier: "LoadBalancer" });
-    case 2:
+    case 8:
       return S.suspend(() =>
         S.Struct({
           resource: S.optional(S.String),
-          backendAddressPools: S.optional(__S(104, __c13, 0)),
+          backendAddressPools: S.optional(__S(646, __c20, 6)),
         }),
       ).annotate({ identifier: "ApplicationGateway" });
-    case 3:
+    case 9:
       return S.suspend(() =>
         S.Struct({
-          loadBalancer: S.optional(__S(105, __c13, 1)),
-          applicationGateway: S.optional(__S(106, __c13, 2)),
+          loadBalancer: S.optional(__S(647, __c20, 7)),
+          applicationGateway: S.optional(__S(648, __c20, 8)),
         }),
       ).annotate({ identifier: "NetworkProfile" });
-    case 4:
+    case 10:
       return S.suspend(() =>
         S.Struct({
           shareAccessType: S.optional(S.String),
           shareAccessTier: S.optional(S.String),
         }),
       ).annotate({ identifier: "FileShareProperties" });
-    case 5:
+    case 11:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
           resourceGroupName: S.optional(S.String),
           storageAccountName: S.optional(S.String),
-          properties: S.optional(__S(108, __c13, 4)),
+          properties: S.optional(__S(650, __c20, 10)),
         }),
       ).annotate({ identifier: "FileShare" });
-    case 6:
-      return S.Array(__S(109, __c13, 5));
-    case 7:
+    case 12:
+      return S.Array(__S(651, __c20, 11));
+    case 13:
       return S.suspend(() =>
         S.Struct({
-          fileShares: S.optional(__S(110, __c13, 6)),
+          fileShares: S.optional(__S(652, __c20, 12)),
         }),
       ).annotate({ identifier: "StorageProfile" });
-  }
-}
-function __c14(j: number): any {
-  switch (j) {
-    case 0:
+    case 14:
       return S.suspend(() =>
         S.Struct({
           name: S.String,
-          azureFile: S.optional(__S(35, __c4, 3)),
+          azureFile: S.optional(__S(322, __c10, 2)),
         }),
       ).annotate({ identifier: "NGroupCGPropertyVolume" });
-    case 1:
-      return S.Array(__S(112, __c14, 0));
-    case 2:
+    case 15:
+      return S.Array(__S(654, __c20, 14));
+    case 16:
       return S.suspend(() =>
         S.Struct({
-          volumeMounts: S.optional(__S(13, __c1, 5)),
+          volumeMounts: S.optional(__S(321, __c10, 1)),
         }),
       ).annotate({
         identifier: "NGroupCGPropertyContainerProperties",
       });
-    case 3:
+    case 17:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
-          properties: S.optional(__S(114, __c14, 2)),
+          properties: S.optional(__S(656, __c20, 16)),
         }),
       ).annotate({
         identifier: "NGroupCGPropertyContainer",
       });
-    case 4:
-      return S.Array(__S(115, __c14, 3));
-    case 5:
+    case 18:
+      return S.Array(__S(657, __c20, 17));
+    case 19:
       return S.suspend(() =>
         S.Struct({
-          subnetIds: S.optional(__S(68, __c8, 4)),
-          volumes: S.optional(__S(113, __c14, 1)),
-          containers: S.optional(__S(116, __c14, 4)),
+          subnetIds: S.optional(__S(1537, __c48, 1)),
+          volumes: S.optional(__S(655, __c20, 15)),
+          containers: S.optional(__S(658, __c20, 18)),
         }),
       ).annotate({
         identifier: "NGroupContainerGroupProperties",
       });
-    case 6:
+    case 20:
       return S.suspend(() =>
         S.Struct({
-          resource: S.optional(__S(102, __c12, 6)),
+          resource: S.optional(__S(644, __c20, 4)),
           revision: S.optional(S.Number),
-          networkProfile: S.optional(__S(107, __c13, 3)),
-          storageProfile: S.optional(__S(111, __c13, 7)),
-          containerGroupProperties: S.optional(__S(117, __c14, 5)),
+          networkProfile: S.optional(__S(649, __c20, 9)),
+          storageProfile: S.optional(__S(653, __c20, 13)),
+          containerGroupProperties: S.optional(__S(659, __c20, 19)),
         }),
       ).annotate({
         identifier: "ContainerGroupProfileStub",
       });
-    case 7:
-      return S.Array(__S(118, __c14, 6));
-  }
-}
-function __c15(j: number): any {
-  switch (j) {
-    case 0:
+    case 21:
+      return S.Array(__S(660, __c20, 20));
+    case 22:
       return S.suspend(() =>
         S.Struct({
           maxBatchPercent: S.optional(S.Number),
@@ -4004,38 +3688,46 @@ function __c15(j: number): any {
       ).annotate({
         identifier: "UpdateProfileRollingUpdateProfile",
       });
-    case 1:
+    case 23:
       return S.suspend(() =>
         S.Struct({
           updateMode: S.optional(S.String),
-          rollingUpdateProfile: S.optional(__S(120, __c15, 0)),
+          rollingUpdateProfile: S.optional(__S(662, __c20, 22)),
         }),
       ).annotate({ identifier: "UpdateProfile" });
-    case 2:
+    case 24:
       return S.suspend(() =>
         S.Struct({
-          elasticProfile: S.optional(__S(100, __c12, 4)),
-          placementProfile: S.optional(__S(101, __c12, 5)),
-          containerGroupProfiles: S.optional(__S(119, __c14, 7)),
+          elasticProfile: S.optional(__S(642, __c20, 2)),
+          placementProfile: S.optional(__S(643, __c20, 3)),
+          containerGroupProfiles: S.optional(__S(661, __c20, 21)),
           provisioningState: S.optional(S.String),
-          updateProfile: S.optional(__S(121, __c15, 1)),
+          updateProfile: S.optional(__S(663, __c20, 23)),
         }),
       ).annotate({ identifier: "NGroupProperties" });
-    case 3:
+  }
+}
+function __c21(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(44, __c5, 4)),
-          properties: S.optional(__S(122, __c15, 2)),
-          tags: S.optional(__S(21, __c2, 5)),
+          systemData: S.optional(__S(288, __c9, 0)),
+          properties: S.optional(__S(664, __c20, 24)),
+          tags: S.optional(__S(256, __c8, 0)),
           location: S.optional(S.String),
-          zones: S.optional(__S(3, __c0, 3)),
-          identity: S.optional(__S(79, __c9, 7)),
+          zones: S.optional(__S(224, __c7, 0)),
+          identity: S.optional(__S(1539, __c48, 3)),
         }),
       ).annotate({ identifier: "GetNGroupResponse" });
-    case 4:
+  }
+}
+function __c22(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -4050,59 +3742,67 @@ function __c15(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetSandboxGroupRequest" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String,
-        }),
-      ).annotate({ identifier: "SubnetReference" });
-    case 6:
-      return S.Array(__S(125, __c15, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          subnets: S.optional(__S(126, __c15, 6)),
-        }),
-      ).annotate({
-        identifier: "SandboxGroupNetworkProfile",
-      });
   }
 }
-function __c16(j: number): any {
+function __c23(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() =>
-        S.Struct({
-          provisioningState: S.optional(S.String),
-          networkProfile: S.optional(__S(127, __c15, 7)),
-          managementResourceGroupId: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "SandboxGroupProperties" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          principalId: S.optional(S.String),
-          tenantId: S.optional(S.String),
-          type: S.String,
-          userAssignedIdentities: S.optional(__S(77, __c9, 5)),
-        }),
-      ).annotate({
-        identifier: "GetSandboxGroupResponseIdentity",
-      });
-    case 2:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(44, __c5, 4)),
-          tags: S.optional(__S(21, __c2, 5)),
+          systemData: S.optional(__S(288, __c9, 0)),
+          tags: S.optional(__S(256, __c8, 0)),
           location: S.String,
-          properties: S.optional(__S(128, __c16, 0)),
-          identity: S.optional(__S(129, __c16, 1)),
+          properties: S.optional(__S(771, __c24, 3)),
+          identity: S.optional(__S(772, __c24, 4)),
         }),
       ).annotate({ identifier: "GetSandboxGroupResponse" });
+  }
+}
+function __c24(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+        }),
+      ).annotate({ identifier: "SubnetReference" });
+    case 1:
+      return S.Array(__S(768, __c24, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          subnets: S.optional(__S(769, __c24, 1)),
+        }),
+      ).annotate({
+        identifier: "SandboxGroupNetworkProfile",
+      });
     case 3:
+      return S.suspend(() =>
+        S.Struct({
+          provisioningState: S.optional(S.String),
+          networkProfile: S.optional(__S(770, __c24, 2)),
+          managementResourceGroupId: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "SandboxGroupProperties" });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          principalId: S.optional(S.String),
+          tenantId: S.optional(S.String),
+          type: S.String,
+          userAssignedIdentities: S.optional(__S(1504, __c47, 0)),
+        }),
+      ).annotate({
+        identifier: "GetSandboxGroupResponseIdentity",
+      });
+  }
+}
+function __c25(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -4119,18 +3819,26 @@ function __c16(j: number): any {
       ).annotate({
         identifier: "ListCGProfileAllRevisionsRequest",
       });
-    case 4:
-      return S.Array(__S(92, __c11, 4));
-    case 5:
+  }
+}
+function __c26(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(480, __c15, 0));
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          value: __S(132, __c16, 4),
+          value: __S(832, __c26, 0),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
         identifier: "ContainerGroupProfileListResult",
       });
-    case 6:
+  }
+}
+function __c27(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -4146,7 +3854,11 @@ function __c16(j: number): any {
       ).annotate({
         identifier: "ListCGProfileByResourceGroupRequest",
       });
-    case 7:
+  }
+}
+function __c28(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -4163,7 +3875,7 @@ function __c16(j: number): any {
       });
   }
 }
-function __c17(j: number): any {
+function __c29(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4181,59 +3893,96 @@ function __c17(j: number): any {
       ).annotate({
         identifier: "ListContainerGroupByResourceGroupRequest",
       });
+  }
+}
+function __c30(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(1568, __c49, 0));
     case 1:
-      return S.Array(__S(65, __c8, 1));
-    case 2:
       return S.suspend(() =>
         S.Struct({
           provisioningState: S.optional(S.String),
-          secretReferences: S.optional(__S(137, __c17, 1)),
-          containers: __S(51, __c6, 3),
-          imageRegistryCredentials: S.optional(__S(33, __c4, 1)),
+          secretReferences: S.optional(__S(960, __c30, 0)),
+          containers: __S(385, __c12, 1),
+          imageRegistryCredentials: S.optional(__S(192, __c6, 0)),
           restartPolicy: S.optional(S.String),
-          ipAddress: S.optional(__S(56, __c7, 0)),
+          ipAddress: S.optional(__S(389, __c12, 5)),
           osType: S.String,
-          volumes: S.optional(__S(38, __c4, 6)),
-          diagnostics: S.optional(__S(40, __c5, 0)),
-          subnetIds: S.optional(__S(68, __c8, 4)),
-          dnsConfig: S.optional(__S(69, __c8, 5)),
+          volumes: S.optional(__S(375, __c11, 23)),
+          diagnostics: S.optional(__S(377, __c11, 25)),
+          subnetIds: S.optional(__S(1537, __c48, 1)),
+          dnsConfig: S.optional(__S(1569, __c49, 1)),
           sku: S.optional(S.String),
-          encryptionProperties: S.optional(__S(2, __c0, 2)),
-          initContainers: S.optional(__S(54, __c6, 6)),
-          extensions: S.optional(__S(31, __c3, 7)),
-          confidentialComputeProperties: S.optional(__S(41, __c5, 1)),
+          encryptionProperties: S.optional(__S(352, __c11, 0)),
+          initContainers: S.optional(__S(388, __c12, 4)),
+          extensions: S.optional(__S(371, __c11, 19)),
+          confidentialComputeProperties: S.optional(__S(378, __c11, 26)),
           priority: S.optional(S.String),
-          identityAcls: S.optional(__S(72, __c9, 0)),
-          containerGroupProfile: S.optional(__S(73, __c9, 1)),
-          standbyPoolProfile: S.optional(__S(74, __c9, 2)),
+          identityAcls: S.optional(__S(1572, __c49, 4)),
+          containerGroupProfile: S.optional(__S(1573, __c49, 5)),
+          standbyPoolProfile: S.optional(__S(1574, __c49, 6)),
           isCreatedFromStandbyPool: S.optional(S.Boolean),
         }),
       ).annotate({
         identifier: "ListResultContainerGroupPropertiesProperties",
       });
-    case 3:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
           location: S.optional(S.String),
-          tags: S.optional(__S(21, __c2, 5)),
-          zones: S.optional(__S(3, __c0, 3)),
-          identity: S.optional(__S(79, __c9, 7)),
-          properties: __S(138, __c17, 2),
+          tags: S.optional(__S(256, __c8, 0)),
+          zones: S.optional(__S(224, __c7, 0)),
+          identity: S.optional(__S(1539, __c48, 3)),
+          properties: __S(961, __c30, 1),
         }),
       ).annotate({ identifier: "ListResultContainerGroup" });
+    case 3:
+      return S.Array(__S(962, __c30, 2));
     case 4:
-      return S.Array(__S(139, __c17, 3));
-    case 5:
       return S.suspend(() =>
         S.Struct({
-          value: __S(140, __c17, 4),
+          value: __S(963, __c30, 3),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ContainerGroupListResult" });
-    case 6:
+  }
+}
+function __c31(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          sandboxGroupName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerInstance/sandboxGroups/{sandboxGroupName}/connect",
+            code: 200,
+            apiVersion: "2026-07-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "ConnectSandboxGroupRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          endpoint: S.String,
+          accessToken: S.String.pipe(T.SensitiveValue({})),
+          notAfter: S.String,
+        }),
+      ).annotate({ identifier: "SandboxGroupAccessToken" });
+  }
+}
+function __c32(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -4248,7 +3997,11 @@ function __c17(j: number): any {
       ).annotate({
         identifier: "ListContainerGroupsRequest",
       });
-    case 7:
+  }
+}
+function __c33(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -4266,17 +4019,17 @@ function __c17(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ListContainerLogsRequest" });
-  }
-}
-function __c18(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           content: S.optional(S.String),
         }),
       ).annotate({ identifier: "Logs" });
-    case 1:
+  }
+}
+function __c34(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -4292,23 +4045,27 @@ function __c18(j: number): any {
       ).annotate({
         identifier: "ListLocationCachedImagesRequest",
       });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           osType: S.String,
           image: S.String,
         }),
       ).annotate({ identifier: "CachedImages" });
+    case 2:
+      return S.Array(__S(1089, __c34, 1));
     case 3:
-      return S.Array(__S(146, __c18, 2));
-    case 4:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(147, __c18, 3)),
+          value: S.optional(__S(1090, __c34, 2)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "CachedImagesListResult" });
-    case 5:
+  }
+}
+function __c35(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -4324,7 +4081,7 @@ function __c18(j: number): any {
       ).annotate({
         identifier: "ListLocationCapabilitiesRequest",
       });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           maxMemoryInGB: S.optional(S.Number),
@@ -4332,7 +4089,7 @@ function __c18(j: number): any {
           maxGpuCount: S.optional(S.Number),
         }),
       ).annotate({ identifier: "CapabilitiesCapabilities" });
-    case 7:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           resourceType: S.optional(S.String),
@@ -4340,23 +4097,23 @@ function __c18(j: number): any {
           location: S.optional(S.String),
           ipAddressType: S.optional(S.String),
           gpu: S.optional(S.String),
-          capabilities: S.optional(__S(150, __c18, 6)),
+          capabilities: S.optional(__S(1121, __c35, 1)),
         }),
       ).annotate({ identifier: "Capabilities" });
-  }
-}
-function __c19(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(151, __c18, 7));
-    case 1:
+    case 3:
+      return S.Array(__S(1122, __c35, 2));
+    case 4:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(152, __c19, 0)),
+          value: S.optional(__S(1123, __c35, 3)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "CapabilitiesListResult" });
-    case 2:
+  }
+}
+function __c36(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -4370,33 +4127,37 @@ function __c19(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ListLocationUsageRequest" });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           value: S.optional(S.String),
           localizedValue: S.optional(S.String),
         }),
       ).annotate({ identifier: "UsageName" });
-    case 4:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           unit: S.optional(S.String),
           currentValue: S.optional(S.Number),
           limit: S.optional(S.Number),
-          name: S.optional(__S(155, __c19, 3)),
+          name: S.optional(__S(1153, __c36, 1)),
         }),
       ).annotate({ identifier: "Usage" });
-    case 5:
-      return S.Array(__S(156, __c19, 4));
-    case 6:
+    case 3:
+      return S.Array(__S(1154, __c36, 2));
+    case 4:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(157, __c19, 5)),
+          value: S.optional(__S(1155, __c36, 3)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "UsageListResult" });
-    case 7:
+  }
+}
+function __c37(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -4414,7 +4175,7 @@ function __c19(j: number): any {
       });
   }
 }
-function __c20(j: number): any {
+function __c38(j: number): any {
   switch (j) {
     case 0:
       return S.Array(S.String);
@@ -4424,24 +4185,28 @@ function __c20(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(44, __c5, 4)),
-          properties: S.optional(__S(122, __c15, 2)),
-          tags: S.optional(__S(21, __c2, 5)),
+          systemData: S.optional(__S(288, __c9, 0)),
+          properties: S.optional(__S(664, __c20, 24)),
+          tags: S.optional(__S(256, __c8, 0)),
           location: S.optional(S.String),
-          zones: S.optional(__S(160, __c20, 0)),
-          identity: S.optional(__S(79, __c9, 7)),
+          zones: S.optional(__S(1216, __c38, 0)),
+          identity: S.optional(__S(1539, __c48, 3)),
         }),
       ).annotate({ identifier: "NGroup" });
     case 2:
-      return S.Array(__S(161, __c20, 1));
+      return S.Array(__S(1217, __c38, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          value: __S(162, __c20, 2),
+          value: __S(1218, __c38, 2),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "NGroupsListResult" });
-    case 4:
+  }
+}
+function __c39(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -4454,7 +4219,11 @@ function __c20(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ListNGroupsRequest" });
-    case 5:
+  }
+}
+function __c40(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({}).pipe(
           T.Http({
@@ -4465,7 +4234,7 @@ function __c20(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ListOperationsRequest" });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           provider: S.optional(S.String),
@@ -4474,29 +4243,29 @@ function __c20(j: number): any {
           description: S.optional(S.String),
         }),
       ).annotate({ identifier: "OperationDisplay" });
-    case 7:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           name: S.String,
-          display: __S(166, __c20, 6),
+          display: __S(1281, __c40, 1),
           properties: S.optional(S.Unknown),
           origin: S.optional(S.String),
         }),
       ).annotate({ identifier: "Operation" });
-  }
-}
-function __c21(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(167, __c20, 7));
-    case 1:
+    case 3:
+      return S.Array(__S(1282, __c40, 2));
+    case 4:
       return S.suspend(() =>
         S.Struct({
-          value: __S(168, __c21, 0),
+          value: __S(1283, __c40, 3),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "OperationListResult" });
-    case 2:
+  }
+}
+function __c41(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -4512,16 +4281,24 @@ function __c21(j: number): any {
       ).annotate({
         identifier: "ListSandboxGroupByResourceGroupRequest",
       });
-    case 3:
-      return S.Array(__S(130, __c16, 2));
-    case 4:
+  }
+}
+function __c42(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(736, __c23, 0));
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          value: __S(171, __c21, 3),
+          value: __S(1344, __c42, 0),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "SandboxGroupListResult" });
-    case 5:
+  }
+}
+function __c43(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -4536,24 +4313,245 @@ function __c21(j: number): any {
       ).annotate({
         identifier: "ListSandboxGroupBySubscriptionRequest",
       });
-    case 6:
+  }
+}
+function __c44(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           type: S.optional(S.String),
-          userAssignedIdentities: S.optional(__S(63, __c7, 7)),
+          userAssignedIdentities: S.optional(__S(1440, __c45, 0)),
         }),
-      ).annotate({ identifier: "NGroupIdentityInput" });
-    case 7:
+      ).annotate({
+        identifier: "ContainerGroupIdentityInput",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          secretReferences: S.optional(__S(1600, __c50, 0)),
+          containers: __S(162, __c5, 2),
+          imageRegistryCredentials: S.optional(__S(192, __c6, 0)),
+          restartPolicy: S.optional(S.String),
+          ipAddress: S.optional(__S(166, __c5, 6)),
+          osType: S.optional(S.String),
+          volumes: S.optional(__S(375, __c11, 23)),
+          diagnostics: S.optional(__S(377, __c11, 25)),
+          subnetIds: S.optional(__S(1537, __c48, 1)),
+          dnsConfig: S.optional(__S(1569, __c49, 1)),
+          sku: S.optional(S.String),
+          encryptionProperties: S.optional(__S(352, __c11, 0)),
+          initContainers: S.optional(__S(165, __c5, 5)),
+          extensions: S.optional(__S(371, __c11, 19)),
+          confidentialComputeProperties: S.optional(__S(378, __c11, 26)),
+          priority: S.optional(S.String),
+          identityAcls: S.optional(__S(1572, __c49, 4)),
+          containerGroupProfile: S.optional(__S(1573, __c49, 5)),
+          standbyPoolProfile: S.optional(__S(1574, __c49, 6)),
+        }),
+      ).annotate({
+        identifier: "ContainerGroupPropertiesPropertiesInput",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          containerGroupName: S.String.pipe(T.Label()),
+          location: S.optional(S.String),
+          tags: S.optional(__S(256, __c8, 0)),
+          zones: S.optional(__S(224, __c7, 0)),
+          identity: S.optional(__S(1408, __c44, 0)),
+          properties: __S(1409, __c44, 1),
+        }).pipe(
+          T.Http({
+            method: "PUT",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerInstance/containerGroups/{containerGroupName}",
+            code: 200,
+            apiVersion: "2026-07-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "ContainerGroupsCreateOrUpdateRequest",
+      });
+  }
+}
+function __c45(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, __S(1472, __c46, 0));
+  }
+}
+function __c46(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "UserAssignedIdentitiesInput",
+      });
+  }
+}
+function __c47(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          principalId: S.optional(S.String),
+          clientId: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "UserAssignedIdentities" });
+  }
+}
+function __c48(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          name: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ContainerGroupSubnetId" });
+    case 1:
+      return S.Array(__S(1536, __c48, 0));
+    case 2:
+      return S.Record(S.String, __S(1504, __c47, 0));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          principalId: S.optional(S.String),
+          tenantId: S.optional(S.String),
+          type: S.optional(S.String),
+          userAssignedIdentities: S.optional(__S(1538, __c48, 2)),
+        }),
+      ).annotate({ identifier: "ContainerGroupIdentity" });
+  }
+}
+function __c49(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String,
+          identity: S.String,
+          secretReferenceUri: S.String,
+        }),
+      ).annotate({ identifier: "SecretReference" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          nameServers: __S(224, __c7, 0),
+          searchDomains: S.optional(S.String),
+          options: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "DnsConfiguration" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          access: S.optional(S.String),
+          identity: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "IdentityAccessControl" });
+    case 3:
+      return S.Array(__S(1570, __c49, 2));
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          defaultAccess: S.optional(S.String),
+          acls: S.optional(__S(1571, __c49, 3)),
+        }),
+      ).annotate({ identifier: "IdentityAcls" });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          revision: S.optional(S.Number),
+        }),
+      ).annotate({
+        identifier: "ContainerGroupProfileReferenceDefinition",
+      });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          failContainerGroupCreateOnReuseFailure: S.optional(S.Boolean),
+        }),
+      ).annotate({
+        identifier: "StandbyPoolProfileDefinition",
+      });
+  }
+}
+function __c50(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(1568, __c49, 0));
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          events: S.optional(__S(381, __c11, 29)),
+          state: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "ContainerGroupPropertiesPropertiesInstanceView",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          provisioningState: S.optional(S.String),
+          secretReferences: S.optional(__S(1600, __c50, 0)),
+          containers: __S(385, __c12, 1),
+          imageRegistryCredentials: S.optional(__S(416, __c13, 0)),
+          restartPolicy: S.optional(S.String),
+          ipAddress: S.optional(__S(389, __c12, 5)),
+          osType: S.optional(S.String),
+          volumes: S.optional(__S(375, __c11, 23)),
+          instanceView: S.optional(__S(1601, __c50, 1)),
+          diagnostics: S.optional(__S(377, __c11, 25)),
+          subnetIds: S.optional(__S(1537, __c48, 1)),
+          dnsConfig: S.optional(__S(1569, __c49, 1)),
+          sku: S.optional(S.String),
+          encryptionProperties: S.optional(__S(352, __c11, 0)),
+          initContainers: S.optional(__S(388, __c12, 4)),
+          extensions: S.optional(__S(371, __c11, 19)),
+          confidentialComputeProperties: S.optional(__S(378, __c11, 26)),
+          priority: S.optional(S.String),
+          identityAcls: S.optional(__S(1572, __c49, 4)),
+          containerGroupProfile: S.optional(__S(1573, __c49, 5)),
+          standbyPoolProfile: S.optional(__S(1574, __c49, 6)),
+          isCreatedFromStandbyPool: S.optional(S.Boolean),
+        }),
+      ).annotate({
+        identifier: "ContainerGroupPropertiesProperties",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(288, __c9, 0)),
+          location: S.optional(S.String),
+          tags: S.optional(__S(256, __c8, 0)),
+          zones: S.optional(__S(224, __c7, 0)),
+          identity: S.optional(__S(1539, __c48, 3)),
+          properties: __S(1602, __c50, 2),
+        }),
+      ).annotate({
+        identifier: "ContainerGroupsCreateOrUpdateResponse",
+      });
+  }
+}
+function __c51(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           ngroupsName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(122, __c15, 2)),
-          tags: S.optional(__S(21, __c2, 5)),
+          properties: S.optional(__S(664, __c20, 24)),
+          tags: S.optional(__S(256, __c8, 0)),
           location: S.optional(S.String),
-          zones: S.optional(__S(3, __c0, 3)),
-          identity: S.optional(__S(174, __c21, 6)),
+          zones: S.optional(__S(224, __c7, 0)),
+          identity: S.optional(__S(1664, __c52, 0)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -4565,27 +4563,38 @@ function __c21(j: number): any {
       ).annotate({
         identifier: "NGroupsCreateOrUpdateRequest",
       });
-  }
-}
-function __c22(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(44, __c5, 4)),
-          properties: S.optional(__S(122, __c15, 2)),
-          tags: S.optional(__S(21, __c2, 5)),
+          systemData: S.optional(__S(288, __c9, 0)),
+          properties: S.optional(__S(664, __c20, 24)),
+          tags: S.optional(__S(256, __c8, 0)),
           location: S.optional(S.String),
-          zones: S.optional(__S(3, __c0, 3)),
-          identity: S.optional(__S(79, __c9, 7)),
+          zones: S.optional(__S(224, __c7, 0)),
+          identity: S.optional(__S(1539, __c48, 3)),
         }),
       ).annotate({
         identifier: "NGroupsCreateOrUpdateResponse",
       });
-    case 1:
+  }
+}
+function __c52(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          type: S.optional(S.String),
+          userAssignedIdentities: S.optional(__S(1440, __c45, 0)),
+        }),
+      ).annotate({ identifier: "NGroupIdentityInput" });
+  }
+}
+function __c53(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -4602,7 +4611,11 @@ function __c22(j: number): any {
       ).annotate({
         identifier: "RestartContainerGroupRequest",
       });
-    case 2:
+  }
+}
+function __c54(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -4617,33 +4630,28 @@ function __c22(j: number): any {
           }),
         ),
       ).annotate({ identifier: "RestartNGroupRequest" });
-    case 3:
+  }
+}
+function __c55(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          networkProfile: S.optional(__S(127, __c15, 7)),
+          networkProfile: S.optional(__S(770, __c24, 2)),
         }),
       ).annotate({
         identifier: "SandboxGroupPropertiesInput",
       });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          type: S.String,
-          userAssignedIdentities: S.optional(__S(62, __c7, 6)),
-        }),
-      ).annotate({
-        identifier: "SandboxGroupsCreateOrUpdateRequestIdentity",
-      });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           sandboxGroupName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(21, __c2, 5)),
+          tags: S.optional(__S(256, __c8, 0)),
           location: S.String,
-          properties: S.optional(__S(179, __c22, 3)),
-          identity: S.optional(__S(180, __c22, 4)),
+          properties: S.optional(__S(1760, __c55, 0)),
+          identity: S.optional(__S(1792, __c56, 0)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -4655,22 +4663,39 @@ function __c22(j: number): any {
       ).annotate({
         identifier: "SandboxGroupsCreateOrUpdateRequest",
       });
-    case 6:
+  }
+}
+function __c56(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          type: S.String,
+          userAssignedIdentities: S.optional(__S(1472, __c46, 0)),
+        }),
+      ).annotate({
+        identifier: "SandboxGroupsCreateOrUpdateRequestIdentity",
+      });
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(44, __c5, 4)),
-          tags: S.optional(__S(21, __c2, 5)),
+          systemData: S.optional(__S(288, __c9, 0)),
+          tags: S.optional(__S(256, __c8, 0)),
           location: S.String,
-          properties: S.optional(__S(128, __c16, 0)),
-          identity: S.optional(__S(129, __c16, 1)),
+          properties: S.optional(__S(771, __c24, 3)),
+          identity: S.optional(__S(772, __c24, 4)),
         }),
       ).annotate({
         identifier: "SandboxGroupsCreateOrUpdateResponse",
       });
-    case 7:
+  }
+}
+function __c57(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -4689,7 +4714,7 @@ function __c22(j: number): any {
       });
   }
 }
-function __c23(j: number): any {
+function __c58(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4706,7 +4731,11 @@ function __c23(j: number): any {
           }),
         ),
       ).annotate({ identifier: "StartNGroupRequest" });
-    case 1:
+  }
+}
+function __c59(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -4723,7 +4752,11 @@ function __c23(j: number): any {
       ).annotate({
         identifier: "StopContainerGroupRequest",
       });
-    case 2:
+  }
+}
+function __c60(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -4738,13 +4771,17 @@ function __c23(j: number): any {
           }),
         ),
       ).annotate({ identifier: "StopNGroupRequest" });
-    case 3:
+  }
+}
+function __c61(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           containerGroupProfileName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(21, __c2, 5)),
+          tags: S.optional(__S(256, __c8, 0)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -4754,15 +4791,19 @@ function __c23(j: number): any {
           }),
         ),
       ).annotate({ identifier: "UpdateCGProfileRequest" });
-    case 4:
+  }
+}
+function __c62(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           containerGroupName: S.String.pipe(T.Label()),
           location: S.optional(S.String),
-          tags: S.optional(__S(21, __c2, 5)),
-          zones: S.optional(__S(3, __c0, 3)),
+          tags: S.optional(__S(256, __c8, 0)),
+          zones: S.optional(__S(224, __c7, 0)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -4774,16 +4815,39 @@ function __c23(j: number): any {
       ).annotate({
         identifier: "UpdateContainerGroupRequest",
       });
-    case 5:
+  }
+}
+function __c63(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          containerGroupProfileName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerInstance/containerGroupProfiles/{containerGroupProfileName}",
+            code: 200,
+            apiVersion: "2026-07-01",
+          }),
+        ),
+      ).annotate({ identifier: "DeleteCGProfileRequest" });
+  }
+}
+function __c64(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           ngroupsName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(122, __c15, 2)),
-          identity: S.optional(__S(174, __c21, 6)),
-          tags: S.optional(__S(21, __c2, 5)),
-          zones: S.optional(__S(3, __c0, 3)),
+          properties: S.optional(__S(664, __c20, 24)),
+          identity: S.optional(__S(1664, __c52, 0)),
+          tags: S.optional(__S(256, __c8, 0)),
+          zones: S.optional(__S(224, __c7, 0)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -4793,14 +4857,18 @@ function __c23(j: number): any {
           }),
         ),
       ).annotate({ identifier: "UpdateNGroupRequest" });
-    case 6:
+  }
+}
+function __c65(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           sandboxGroupName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(21, __c2, 5)),
-          identity: S.optional(__S(180, __c22, 4)),
+          tags: S.optional(__S(256, __c8, 0)),
+          identity: S.optional(__S(1792, __c56, 0)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -4814,7 +4882,126 @@ function __c23(j: number): any {
       });
   }
 }
-
+function __c66(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          containerGroupName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerInstance/containerGroups/{containerGroupName}",
+            code: 200,
+            apiVersion: "2026-07-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteContainerGroupRequest",
+      });
+  }
+}
+function __c67(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          ngroupsName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerInstance/ngroups/{ngroupsName}",
+            code: 200,
+            apiVersion: "2024-11-01-preview",
+          }),
+        ),
+      ).annotate({ identifier: "DeleteNGroupRequest" });
+  }
+}
+function __c68(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          sandboxGroupName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerInstance/sandboxGroups/{sandboxGroupName}",
+            code: 200,
+            apiVersion: "2026-07-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteSandboxGroupRequest",
+      });
+  }
+}
+function __c69(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          virtualNetworkName: S.String.pipe(T.Label()),
+          subnetName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworks/{virtualNetworkName}/subnets/{subnetName}/providers/Microsoft.ContainerInstance/serviceAssociationLinks/default",
+            code: 200,
+            apiVersion: "2026-07-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteSubnetServiceAssociationLinkRequest",
+      });
+    case 1:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "DeleteSubnetServiceAssociationLinkResponse",
+      });
+  }
+}
+function __c70(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          rows: S.optional(S.Number),
+          cols: S.optional(S.Number),
+        }),
+      ).annotate({
+        identifier: "ContainerExecRequestTerminalSize",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          containerGroupName: S.String.pipe(T.Label()),
+          containerName: S.String.pipe(T.Label()),
+          command: S.optional(S.String),
+          terminalSize: S.optional(__S(2240, __c70, 0)),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerInstance/containerGroups/{containerGroupName}/containers/{containerName}/exec",
+            code: 200,
+            apiVersion: "2026-07-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "ExecuteContainerCommandRequest",
+      });
+  }
+}
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

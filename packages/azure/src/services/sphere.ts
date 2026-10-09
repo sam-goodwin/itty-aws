@@ -1293,7 +1293,7 @@ export const CatalogsCountDevices: API.OperationMethod<
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(0, __c0, 0) as any as S.Schema<CatalogsCountDevicesRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<CatalogsCountDevicesResponse>,
+  output: __S(8, __c1, 0) as any as S.Schema<CatalogsCountDevicesResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1307,8 +1307,8 @@ export const CatalogsCreateOrUpdate: API.OperationMethod<
   CatalogsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(4, __c0, 4) as any as S.Schema<CatalogsCreateOrUpdateRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<CatalogsCreateOrUpdateResponse>,
+  input: __S(16, __c2, 0) as any as S.Schema<CatalogsCreateOrUpdateRequest>,
+  output: __S(17, __c2, 1) as any as S.Schema<CatalogsCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1322,8 +1322,8 @@ export const ClaimDeviceGroupDevices: API.OperationMethod<
   ClaimDeviceGroupDevicesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(9, __c1, 1) as any as S.Schema<ClaimDeviceGroupDevicesRequest>,
-  output: __S(10, __c1, 2) as any as S.Schema<ClaimDeviceGroupDevicesResponse>,
+  input: __S(193, __c24, 1) as any as S.Schema<ClaimDeviceGroupDevicesRequest>,
+  output: __S(194, __c24, 2) as any as S.Schema<ClaimDeviceGroupDevicesResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1337,8 +1337,8 @@ export const DeleteCatalog: API.OperationMethod<
   DeleteCatalogError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(11, __c1, 3) as any as S.Schema<DeleteCatalogRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<DeleteCatalogResponse>,
+  input: __S(320, __c40, 0) as any as S.Schema<DeleteCatalogRequest>,
+  output: __S(32, __c4, 0) as any as S.Schema<DeleteCatalogResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1352,8 +1352,8 @@ export const DeleteDeployment: API.OperationMethod<
   DeleteDeploymentError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(12, __c1, 4) as any as S.Schema<DeleteDeploymentRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<DeleteDeploymentResponse>,
+  input: __S(416, __c52, 0) as any as S.Schema<DeleteDeploymentRequest>,
+  output: __S(32, __c4, 0) as any as S.Schema<DeleteDeploymentResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1367,8 +1367,8 @@ export const DeleteDevice: API.OperationMethod<
   DeleteDeviceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(13, __c1, 5) as any as S.Schema<DeleteDeviceRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<DeleteDeviceResponse>,
+  input: __S(464, __c58, 0) as any as S.Schema<DeleteDeviceRequest>,
+  output: __S(32, __c4, 0) as any as S.Schema<DeleteDeviceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1382,8 +1382,8 @@ export const DeleteDeviceGroup: API.OperationMethod<
   DeleteDeviceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(14, __c1, 6) as any as S.Schema<DeleteDeviceGroupRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<DeleteDeviceGroupResponse>,
+  input: __S(472, __c59, 0) as any as S.Schema<DeleteDeviceGroupRequest>,
+  output: __S(32, __c4, 0) as any as S.Schema<DeleteDeviceGroupResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1397,8 +1397,8 @@ export const DeleteImage: API.OperationMethod<
   DeleteImageError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(15, __c1, 7) as any as S.Schema<DeleteImageRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<DeleteImageResponse>,
+  input: __S(480, __c60, 0) as any as S.Schema<DeleteImageRequest>,
+  output: __S(32, __c4, 0) as any as S.Schema<DeleteImageResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1412,8 +1412,8 @@ export const DeleteProduct: API.OperationMethod<
   DeleteProductError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(16, __c2, 0) as any as S.Schema<DeleteProductRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<DeleteProductResponse>,
+  input: __S(488, __c61, 0) as any as S.Schema<DeleteProductRequest>,
+  output: __S(32, __c4, 0) as any as S.Schema<DeleteProductResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1427,8 +1427,8 @@ export const DeploymentsCreateOrUpdate: API.OperationMethod<
   DeploymentsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(21, __c2, 5) as any as S.Schema<DeploymentsCreateOrUpdateRequest>,
-  output: __S(26, __c3, 2) as any as S.Schema<DeploymentsCreateOrUpdateResponse>,
+  input: __S(499, __c62, 3) as any as S.Schema<DeploymentsCreateOrUpdateRequest>,
+  output: __S(500, __c62, 4) as any as S.Schema<DeploymentsCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1442,8 +1442,8 @@ export const DeviceGroupsCountDevices: API.OperationMethod<
   DeviceGroupsCountDevicesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(27, __c3, 3) as any as S.Schema<DeviceGroupsCountDevicesRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<DeviceGroupsCountDevicesResponse>,
+  input: __S(48, __c6, 0) as any as S.Schema<DeviceGroupsCountDevicesRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<DeviceGroupsCountDevicesResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1457,8 +1457,8 @@ export const DeviceGroupsCreateOrUpdate: API.OperationMethod<
   DeviceGroupsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(29, __c3, 5) as any as S.Schema<DeviceGroupsCreateOrUpdateRequest>,
-  output: __S(31, __c3, 7) as any as S.Schema<DeviceGroupsCreateOrUpdateResponse>,
+  input: __S(56, __c7, 0) as any as S.Schema<DeviceGroupsCreateOrUpdateRequest>,
+  output: __S(73, __c9, 1) as any as S.Schema<DeviceGroupsCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1472,8 +1472,8 @@ export const DevicesCreateOrUpdate: API.OperationMethod<
   DevicesCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(33, __c4, 1) as any as S.Schema<DevicesCreateOrUpdateRequest>,
-  output: __S(35, __c4, 3) as any as S.Schema<DevicesCreateOrUpdateResponse>,
+  input: __S(81, __c10, 1) as any as S.Schema<DevicesCreateOrUpdateRequest>,
+  output: __S(82, __c10, 2) as any as S.Schema<DevicesCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1487,8 +1487,8 @@ export const GenerateDeviceCapabilityImage: API.OperationMethod<
   GenerateDeviceCapabilityImageError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(37, __c4, 5) as any as S.Schema<GenerateDeviceCapabilityImageRequest>,
-  output: __S(38, __c4, 6) as any as S.Schema<SignedCapabilityImageResponse>,
+  input: __S(97, __c12, 1) as any as S.Schema<GenerateDeviceCapabilityImageRequest>,
+  output: __S(98, __c12, 2) as any as S.Schema<SignedCapabilityImageResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1502,8 +1502,8 @@ export const GenerateProductDefaultDeviceGroups: API.OperationMethod<
   GenerateProductDefaultDeviceGroupsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(39, __c4, 7) as any as S.Schema<GenerateProductDefaultDeviceGroupsRequest>,
-  output: __S(42, __c5, 2) as any as S.Schema<DeviceGroupListResult>,
+  input: __S(104, __c13, 0) as any as S.Schema<GenerateProductDefaultDeviceGroupsRequest>,
+  output: __S(121, __c15, 1) as any as S.Schema<DeviceGroupListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1517,8 +1517,8 @@ export const GetCatalog: API.OperationMethod<
   GetCatalogError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(43, __c5, 3) as any as S.Schema<GetCatalogRequest>,
-  output: __S(44, __c5, 4) as any as S.Schema<GetCatalogResponse>,
+  input: __S(128, __c16, 0) as any as S.Schema<GetCatalogRequest>,
+  output: __S(136, __c17, 0) as any as S.Schema<GetCatalogResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1532,8 +1532,8 @@ export const GetCertificate: API.OperationMethod<
   GetCertificateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(45, __c5, 5) as any as S.Schema<GetCertificateRequest>,
-  output: __S(47, __c5, 7) as any as S.Schema<GetCertificateResponse>,
+  input: __S(144, __c18, 0) as any as S.Schema<GetCertificateRequest>,
+  output: __S(153, __c19, 1) as any as S.Schema<GetCertificateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1547,8 +1547,8 @@ export const GetCertificateCertChain: API.OperationMethod<
   GetCertificateCertChainError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(48, __c6, 0) as any as S.Schema<GetCertificateCertChainRequest>,
-  output: __S(49, __c6, 1) as any as S.Schema<CertificateChainResponse>,
+  input: __S(160, __c20, 0) as any as S.Schema<GetCertificateCertChainRequest>,
+  output: __S(161, __c20, 1) as any as S.Schema<CertificateChainResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1562,8 +1562,8 @@ export const GetCertificateProofOfPossessionNonce: API.OperationMethod<
   GetCertificateProofOfPossessionNonceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(50, __c6, 2) as any as S.Schema<GetCertificateProofOfPossessionNonceRequest>,
-  output: __S(51, __c6, 3) as any as S.Schema<GetCertificateProofOfPossessionNonceResponse>,
+  input: __S(168, __c21, 0) as any as S.Schema<GetCertificateProofOfPossessionNonceRequest>,
+  output: __S(169, __c21, 1) as any as S.Schema<GetCertificateProofOfPossessionNonceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1577,8 +1577,8 @@ export const GetDeployment: API.OperationMethod<
   GetDeploymentError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(52, __c6, 4) as any as S.Schema<GetDeploymentRequest>,
-  output: __S(53, __c6, 5) as any as S.Schema<GetDeploymentResponse>,
+  input: __S(176, __c22, 0) as any as S.Schema<GetDeploymentRequest>,
+  output: __S(184, __c23, 0) as any as S.Schema<GetDeploymentResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1592,8 +1592,8 @@ export const GetDevice: API.OperationMethod<
   GetDeviceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(54, __c6, 6) as any as S.Schema<GetDeviceRequest>,
-  output: __S(55, __c6, 7) as any as S.Schema<GetDeviceResponse>,
+  input: __S(200, __c25, 0) as any as S.Schema<GetDeviceRequest>,
+  output: __S(208, __c26, 0) as any as S.Schema<GetDeviceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1607,8 +1607,8 @@ export const GetDeviceGroup: API.OperationMethod<
   GetDeviceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(56, __c7, 0) as any as S.Schema<GetDeviceGroupRequest>,
-  output: __S(40, __c5, 0) as any as S.Schema<GetDeviceGroupResponse>,
+  input: __S(216, __c27, 0) as any as S.Schema<GetDeviceGroupRequest>,
+  output: __S(112, __c14, 0) as any as S.Schema<GetDeviceGroupResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1622,8 +1622,8 @@ export const GetImage: API.OperationMethod<
   GetImageError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(57, __c7, 1) as any as S.Schema<GetImageRequest>,
-  output: __S(23, __c2, 7) as any as S.Schema<GetImageResponse>,
+  input: __S(224, __c28, 0) as any as S.Schema<GetImageRequest>,
+  output: __S(512, __c64, 0) as any as S.Schema<GetImageResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1637,8 +1637,8 @@ export const GetProduct: API.OperationMethod<
   GetProductError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(58, __c7, 2) as any as S.Schema<GetProductRequest>,
-  output: __S(60, __c7, 4) as any as S.Schema<GetProductResponse>,
+  input: __S(232, __c29, 0) as any as S.Schema<GetProductRequest>,
+  output: __S(248, __c31, 0) as any as S.Schema<GetProductResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1652,8 +1652,8 @@ export const ImagesCreateOrUpdate: API.OperationMethod<
   ImagesCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(61, __c7, 5) as any as S.Schema<ImagesCreateOrUpdateRequest>,
-  output: __S(62, __c7, 6) as any as S.Schema<ImagesCreateOrUpdateResponse>,
+  input: __S(256, __c32, 0) as any as S.Schema<ImagesCreateOrUpdateRequest>,
+  output: __S(257, __c32, 1) as any as S.Schema<ImagesCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1667,8 +1667,8 @@ export const ListCatalogByResourceGroup: API.OperationMethod<
   ListCatalogByResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(63, __c7, 7) as any as S.Schema<ListCatalogByResourceGroupRequest>,
-  output: __S(65, __c8, 1) as any as S.Schema<CatalogListResult>,
+  input: __S(264, __c33, 0) as any as S.Schema<ListCatalogByResourceGroupRequest>,
+  output: __S(273, __c34, 1) as any as S.Schema<CatalogListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1682,8 +1682,8 @@ export const ListCatalogBySubscription: API.OperationMethod<
   ListCatalogBySubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(66, __c8, 2) as any as S.Schema<ListCatalogBySubscriptionRequest>,
-  output: __S(65, __c8, 1) as any as S.Schema<CatalogListResult>,
+  input: __S(280, __c35, 0) as any as S.Schema<ListCatalogBySubscriptionRequest>,
+  output: __S(273, __c34, 1) as any as S.Schema<CatalogListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1697,8 +1697,8 @@ export const ListCatalogDeployments: API.OperationMethod<
   ListCatalogDeploymentsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(67, __c8, 3) as any as S.Schema<ListCatalogDeploymentsRequest>,
-  output: __S(69, __c8, 5) as any as S.Schema<DeploymentListResult>,
+  input: __S(288, __c36, 0) as any as S.Schema<ListCatalogDeploymentsRequest>,
+  output: __S(297, __c37, 1) as any as S.Schema<DeploymentListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1712,8 +1712,8 @@ export const ListCatalogDeviceGroups: API.OperationMethod<
   ListCatalogDeviceGroupsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(70, __c8, 6) as any as S.Schema<ListCatalogDeviceGroupsRequest>,
-  output: __S(42, __c5, 2) as any as S.Schema<DeviceGroupListResult>,
+  input: __S(304, __c38, 0) as any as S.Schema<ListCatalogDeviceGroupsRequest>,
+  output: __S(121, __c15, 1) as any as S.Schema<DeviceGroupListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1727,8 +1727,8 @@ export const ListCatalogDeviceInsights: API.OperationMethod<
   ListCatalogDeviceInsightsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(71, __c8, 7) as any as S.Schema<ListCatalogDeviceInsightsRequest>,
-  output: __S(74, __c9, 2) as any as S.Schema<PagedDeviceInsight>,
+  input: __S(312, __c39, 0) as any as S.Schema<ListCatalogDeviceInsightsRequest>,
+  output: __S(315, __c39, 3) as any as S.Schema<PagedDeviceInsight>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1742,8 +1742,8 @@ export const ListCatalogDevices: API.OperationMethod<
   ListCatalogDevicesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(75, __c9, 3) as any as S.Schema<ListCatalogDevicesRequest>,
-  output: __S(77, __c9, 5) as any as S.Schema<DeviceListResult>,
+  input: __S(328, __c41, 0) as any as S.Schema<ListCatalogDevicesRequest>,
+  output: __S(337, __c42, 1) as any as S.Schema<DeviceListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1757,8 +1757,8 @@ export const ListCertificateByCatalog: API.OperationMethod<
   ListCertificateByCatalogError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(78, __c9, 6) as any as S.Schema<ListCertificateByCatalogRequest>,
-  output: __S(80, __c10, 0) as any as S.Schema<CertificateListResult>,
+  input: __S(344, __c43, 0) as any as S.Schema<ListCertificateByCatalogRequest>,
+  output: __S(346, __c43, 2) as any as S.Schema<CertificateListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1772,8 +1772,8 @@ export const ListDeploymentByDeviceGroup: API.OperationMethod<
   ListDeploymentByDeviceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(81, __c10, 1) as any as S.Schema<ListDeploymentByDeviceGroupRequest>,
-  output: __S(69, __c8, 5) as any as S.Schema<DeploymentListResult>,
+  input: __S(352, __c44, 0) as any as S.Schema<ListDeploymentByDeviceGroupRequest>,
+  output: __S(297, __c37, 1) as any as S.Schema<DeploymentListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1787,8 +1787,8 @@ export const ListDeviceByDeviceGroup: API.OperationMethod<
   ListDeviceByDeviceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(82, __c10, 2) as any as S.Schema<ListDeviceByDeviceGroupRequest>,
-  output: __S(77, __c9, 5) as any as S.Schema<DeviceListResult>,
+  input: __S(360, __c45, 0) as any as S.Schema<ListDeviceByDeviceGroupRequest>,
+  output: __S(337, __c42, 1) as any as S.Schema<DeviceListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1802,8 +1802,8 @@ export const ListDeviceGroupByProduct: API.OperationMethod<
   ListDeviceGroupByProductError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(83, __c10, 3) as any as S.Schema<ListDeviceGroupByProductRequest>,
-  output: __S(42, __c5, 2) as any as S.Schema<DeviceGroupListResult>,
+  input: __S(368, __c46, 0) as any as S.Schema<ListDeviceGroupByProductRequest>,
+  output: __S(121, __c15, 1) as any as S.Schema<DeviceGroupListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1817,8 +1817,8 @@ export const ListImageByCatalog: API.OperationMethod<
   ListImageByCatalogError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(84, __c10, 4) as any as S.Schema<ListImageByCatalogRequest>,
-  output: __S(85, __c10, 5) as any as S.Schema<ImageListResult>,
+  input: __S(376, __c47, 0) as any as S.Schema<ListImageByCatalogRequest>,
+  output: __S(377, __c47, 1) as any as S.Schema<ImageListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1832,8 +1832,8 @@ export const ListOperations: API.OperationMethod<
   ListOperationsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(86, __c10, 6) as any as S.Schema<ListOperationsRequest>,
-  output: __S(90, __c11, 2) as any as S.Schema<ListOperationsResponse>,
+  input: __S(384, __c48, 0) as any as S.Schema<ListOperationsRequest>,
+  output: __S(388, __c48, 4) as any as S.Schema<ListOperationsResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1847,8 +1847,8 @@ export const ListProductByCatalog: API.OperationMethod<
   ListProductByCatalogError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(91, __c11, 3) as any as S.Schema<ListProductByCatalogRequest>,
-  output: __S(93, __c11, 5) as any as S.Schema<ProductListResult>,
+  input: __S(392, __c49, 0) as any as S.Schema<ListProductByCatalogRequest>,
+  output: __S(394, __c49, 2) as any as S.Schema<ProductListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1862,8 +1862,8 @@ export const ProductsCountDevices: API.OperationMethod<
   ProductsCountDevicesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(94, __c11, 6) as any as S.Schema<ProductsCountDevicesRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<ProductsCountDevicesResponse>,
+  input: __S(400, __c50, 0) as any as S.Schema<ProductsCountDevicesRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<ProductsCountDevicesResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1877,8 +1877,8 @@ export const ProductsCreateOrUpdate: API.OperationMethod<
   ProductsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(95, __c11, 7) as any as S.Schema<ProductsCreateOrUpdateRequest>,
-  output: __S(96, __c12, 0) as any as S.Schema<ProductsCreateOrUpdateResponse>,
+  input: __S(408, __c51, 0) as any as S.Schema<ProductsCreateOrUpdateRequest>,
+  output: __S(409, __c51, 1) as any as S.Schema<ProductsCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1892,8 +1892,8 @@ export const UpdateCatalog: API.OperationMethod<
   UpdateCatalogError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(97, __c12, 1) as any as S.Schema<UpdateCatalogRequest>,
-  output: __S(44, __c5, 4) as any as S.Schema<UpdateCatalogResponse>,
+  input: __S(424, __c53, 0) as any as S.Schema<UpdateCatalogRequest>,
+  output: __S(136, __c17, 0) as any as S.Schema<UpdateCatalogResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1907,8 +1907,8 @@ export const UpdateDevice: API.OperationMethod<
   UpdateDeviceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(99, __c12, 3) as any as S.Schema<UpdateDeviceRequest>,
-  output: __S(55, __c6, 7) as any as S.Schema<UpdateDeviceResponse>,
+  input: __S(433, __c54, 1) as any as S.Schema<UpdateDeviceRequest>,
+  output: __S(208, __c26, 0) as any as S.Schema<UpdateDeviceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1922,8 +1922,8 @@ export const UpdateDeviceGroup: API.OperationMethod<
   UpdateDeviceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(100, __c12, 4) as any as S.Schema<UpdateDeviceGroupRequest>,
-  output: __S(31, __c3, 7) as any as S.Schema<UpdateDeviceGroupResponse>,
+  input: __S(440, __c55, 0) as any as S.Schema<UpdateDeviceGroupRequest>,
+  output: __S(73, __c9, 1) as any as S.Schema<UpdateDeviceGroupResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1937,8 +1937,8 @@ export const UpdateProduct: API.OperationMethod<
   UpdateProductError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(102, __c12, 6) as any as S.Schema<UpdateProductRequest>,
-  output: __S(60, __c7, 4) as any as S.Schema<UpdateProductResponse>,
+  input: __S(449, __c56, 1) as any as S.Schema<UpdateProductRequest>,
+  output: __S(248, __c31, 0) as any as S.Schema<UpdateProductResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1952,8 +1952,8 @@ export const UploadCatalogImage: API.OperationMethod<
   UploadCatalogImageError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(103, __c12, 7) as any as S.Schema<UploadCatalogImageRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<UploadCatalogImageResponse>,
+  input: __S(456, __c57, 0) as any as S.Schema<UploadCatalogImageRequest>,
+  output: __S(32, __c4, 0) as any as S.Schema<UploadCatalogImageResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1979,7 +1979,11 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "CatalogsCountDevicesRequest",
       });
-    case 1:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           value: S.Number,
@@ -1987,21 +1991,19 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "CatalogsCountDevicesResponse",
       });
-    case 2:
-      return S.Record(S.String, S.String);
-    case 3:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "CatalogPropertiesInput",
-      });
-    case 4:
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           catalogName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(2, __c0, 2)),
+          tags: S.optional(__S(24, __c3, 0)),
           location: S.String,
-          properties: S.optional(__S(3, __c0, 3)),
+          properties: S.optional(__S(32, __c4, 0)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -2013,7 +2015,46 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "CatalogsCreateOrUpdateRequest",
       });
-    case 5:
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(40, __c5, 0)),
+          tags: S.optional(__S(24, __c3, 0)),
+          location: S.String,
+          properties: S.optional(__S(25, __c3, 1)),
+        }),
+      ).annotate({
+        identifier: "CatalogsCreateOrUpdateResponse",
+      });
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, S.String);
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          tenantId: S.optional(S.String),
+          provisioningState: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "CatalogProperties" });
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "CatalogPropertiesInput",
+      });
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           createdBy: S.optional(S.String),
@@ -2024,259 +2065,11 @@ function __c0(j: number): any {
           lastModifiedAt: S.optional(S.String),
         }),
       ).annotate({ identifier: "SystemData" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          tenantId: S.optional(S.String),
-          provisioningState: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "CatalogProperties" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(5, __c0, 5)),
-          tags: S.optional(__S(2, __c0, 2)),
-          location: S.String,
-          properties: S.optional(__S(6, __c0, 6)),
-        }),
-      ).annotate({
-        identifier: "CatalogsCreateOrUpdateResponse",
-      });
   }
 }
-function __c1(j: number): any {
+function __c6(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(S.String);
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          catalogName: S.String.pipe(T.Label()),
-          productName: S.String.pipe(T.Label()),
-          deviceGroupName: S.String.pipe(T.Label()),
-          deviceIdentifiers: __S(8, __c1, 0),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureSphere/catalogs/{catalogName}/products/{productName}/deviceGroups/{deviceGroupName}/claimDevices",
-            code: 200,
-            apiVersion: "2024-04-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "ClaimDeviceGroupDevicesRequest",
-      });
-    case 2:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "ClaimDeviceGroupDevicesResponse",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          catalogName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureSphere/catalogs/{catalogName}",
-            code: 200,
-            apiVersion: "2024-04-01",
-          }),
-        ),
-      ).annotate({ identifier: "DeleteCatalogRequest" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          catalogName: S.String.pipe(T.Label()),
-          productName: S.String.pipe(T.Label()),
-          deviceGroupName: S.String.pipe(T.Label()),
-          deploymentName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureSphere/catalogs/{catalogName}/products/{productName}/deviceGroups/{deviceGroupName}/deployments/{deploymentName}",
-            code: 200,
-            apiVersion: "2024-04-01",
-          }),
-        ),
-      ).annotate({ identifier: "DeleteDeploymentRequest" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          catalogName: S.String.pipe(T.Label()),
-          productName: S.String.pipe(T.Label()),
-          deviceGroupName: S.String.pipe(T.Label()),
-          deviceName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureSphere/catalogs/{catalogName}/products/{productName}/deviceGroups/{deviceGroupName}/devices/{deviceName}",
-            code: 200,
-            apiVersion: "2024-04-01",
-          }),
-        ),
-      ).annotate({ identifier: "DeleteDeviceRequest" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          catalogName: S.String.pipe(T.Label()),
-          productName: S.String.pipe(T.Label()),
-          deviceGroupName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureSphere/catalogs/{catalogName}/products/{productName}/deviceGroups/{deviceGroupName}",
-            code: 200,
-            apiVersion: "2024-04-01",
-          }),
-        ),
-      ).annotate({ identifier: "DeleteDeviceGroupRequest" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          catalogName: S.String.pipe(T.Label()),
-          imageName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureSphere/catalogs/{catalogName}/images/{imageName}",
-            code: 200,
-            apiVersion: "2024-04-01",
-          }),
-        ),
-      ).annotate({ identifier: "DeleteImageRequest" });
-  }
-}
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          catalogName: S.String.pipe(T.Label()),
-          productName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureSphere/catalogs/{catalogName}/products/{productName}",
-            code: 200,
-            apiVersion: "2024-04-01",
-          }),
-        ),
-      ).annotate({ identifier: "DeleteProductRequest" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          image: S.optional(S.String),
-          imageId: S.optional(S.String),
-          regionalDataBoundary: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ImagePropertiesInput" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          properties: S.optional(__S(17, __c2, 1)),
-        }),
-      ).annotate({ identifier: "ImageInput" });
-    case 3:
-      return S.Array(__S(18, __c2, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          deploymentId: S.optional(S.String),
-          deployedImages: S.optional(__S(19, __c2, 3)),
-        }),
-      ).annotate({
-        identifier: "DeploymentPropertiesInput",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          catalogName: S.String.pipe(T.Label()),
-          productName: S.String.pipe(T.Label()),
-          deviceGroupName: S.String.pipe(T.Label()),
-          deploymentName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(20, __c2, 4)),
-        }).pipe(
-          T.Http({
-            method: "PUT",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureSphere/catalogs/{catalogName}/products/{productName}/deviceGroups/{deviceGroupName}/deployments/{deploymentName}",
-            code: 200,
-            apiVersion: "2024-04-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeploymentsCreateOrUpdateRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          image: S.optional(S.String),
-          imageId: S.optional(S.String),
-          imageName: S.optional(S.String),
-          regionalDataBoundary: S.optional(S.String),
-          uri: S.optional(S.String),
-          description: S.optional(S.String),
-          componentId: S.optional(S.String),
-          imageType: S.optional(S.String),
-          provisioningState: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ImageProperties" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(5, __c0, 5)),
-          properties: S.optional(__S(22, __c2, 6)),
-        }),
-      ).annotate({ identifier: "Image" });
-  }
-}
-function __c3(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(23, __c2, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          deploymentId: S.optional(S.String),
-          deployedImages: S.optional(__S(24, __c3, 0)),
-          deploymentDateUtc: S.optional(S.String),
-          provisioningState: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "DeploymentProperties" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(5, __c0, 5)),
-          properties: S.optional(__S(25, __c3, 1)),
-        }),
-      ).annotate({
-        identifier: "DeploymentsCreateOrUpdateResponse",
-      });
-    case 3:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -2295,19 +2088,11 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "DeviceGroupsCountDevicesRequest",
       });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          description: S.optional(S.String),
-          osFeedType: S.optional(S.String),
-          updatePolicy: S.optional(S.String),
-          allowCrashDumpsCollection: S.optional(S.String),
-          regionalDataBoundary: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "DeviceGroupPropertiesInput",
-      });
-    case 5:
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -2315,7 +2100,7 @@ function __c3(j: number): any {
           catalogName: S.String.pipe(T.Label()),
           productName: S.String.pipe(T.Label()),
           deviceGroupName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(28, __c3, 4)),
+          properties: S.optional(__S(72, __c9, 0)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -2327,7 +2112,11 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "DeviceGroupsCreateOrUpdateRequest",
       });
-    case 6:
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           description: S.optional(S.String),
@@ -2339,21 +2128,37 @@ function __c3(j: number): any {
           provisioningState: S.optional(S.String),
         }),
       ).annotate({ identifier: "DeviceGroupProperties" });
-    case 7:
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          description: S.optional(S.String),
+          osFeedType: S.optional(S.String),
+          updatePolicy: S.optional(S.String),
+          allowCrashDumpsCollection: S.optional(S.String),
+          regionalDataBoundary: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "DeviceGroupPropertiesInput",
+      });
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(5, __c0, 5)),
-          properties: S.optional(__S(30, __c3, 6)),
+          systemData: S.optional(__S(40, __c5, 0)),
+          properties: S.optional(__S(64, __c8, 0)),
         }),
       ).annotate({
         identifier: "DeviceGroupsCreateOrUpdateResponse",
       });
   }
 }
-function __c4(j: number): any {
+function __c10(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2370,7 +2175,7 @@ function __c4(j: number): any {
           productName: S.String.pipe(T.Label()),
           deviceGroupName: S.String.pipe(T.Label()),
           deviceName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(32, __c4, 0)),
+          properties: S.optional(__S(80, __c10, 0)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -2385,6 +2190,22 @@ function __c4(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(40, __c5, 0)),
+          properties: S.optional(__S(88, __c11, 0)),
+        }),
+      ).annotate({
+        identifier: "DevicesCreateOrUpdateResponse",
+      });
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
           deviceId: S.optional(S.String),
           chipSku: S.optional(S.String),
           lastAvailableOsVersion: S.optional(S.String),
@@ -2394,21 +2215,13 @@ function __c4(j: number): any {
           provisioningState: S.optional(S.String),
         }),
       ).annotate({ identifier: "DeviceProperties" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(5, __c0, 5)),
-          properties: S.optional(__S(34, __c4, 2)),
-        }),
-      ).annotate({
-        identifier: "DevicesCreateOrUpdateResponse",
-      });
-    case 4:
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
       return S.Array(S.String);
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -2417,7 +2230,7 @@ function __c4(j: number): any {
           productName: S.String.pipe(T.Label()),
           deviceGroupName: S.String.pipe(T.Label()),
           deviceName: S.String.pipe(T.Label()),
-          capabilities: __S(36, __c4, 4),
+          capabilities: __S(96, __c12, 0),
         }).pipe(
           T.Http({
             method: "POST",
@@ -2429,7 +2242,7 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "GenerateDeviceCapabilityImageRequest",
       });
-    case 6:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           image: S.optional(S.String),
@@ -2437,7 +2250,11 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "SignedCapabilityImageResponse",
       });
-    case 7:
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -2457,7 +2274,7 @@ function __c4(j: number): any {
       });
   }
 }
-function __c5(j: number): any {
+function __c14(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2465,20 +2282,28 @@ function __c5(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(5, __c0, 5)),
-          properties: S.optional(__S(30, __c3, 6)),
+          systemData: S.optional(__S(40, __c5, 0)),
+          properties: S.optional(__S(64, __c8, 0)),
         }),
       ).annotate({ identifier: "DeviceGroup" });
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(112, __c14, 0));
     case 1:
-      return S.Array(__S(40, __c5, 0));
-    case 2:
       return S.suspend(() =>
         S.Struct({
-          value: __S(41, __c5, 1),
+          value: __S(120, __c15, 0),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "DeviceGroupListResult" });
-    case 3:
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -2493,19 +2318,27 @@ function __c5(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetCatalogRequest" });
-    case 4:
+  }
+}
+function __c17(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(5, __c0, 5)),
-          tags: S.optional(__S(2, __c0, 2)),
+          systemData: S.optional(__S(40, __c5, 0)),
+          tags: S.optional(__S(24, __c3, 0)),
           location: S.String,
-          properties: S.optional(__S(6, __c0, 6)),
+          properties: S.optional(__S(25, __c3, 1)),
         }),
       ).annotate({ identifier: "GetCatalogResponse" });
-    case 5:
+  }
+}
+function __c18(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -2521,7 +2354,11 @@ function __c5(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetCertificateRequest" });
-    case 6:
+  }
+}
+function __c19(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           certificate: S.optional(S.String),
@@ -2533,19 +2370,19 @@ function __c5(j: number): any {
           provisioningState: S.optional(S.String),
         }),
       ).annotate({ identifier: "CertificateProperties" });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(5, __c0, 5)),
-          properties: S.optional(__S(46, __c5, 6)),
+          systemData: S.optional(__S(40, __c5, 0)),
+          properties: S.optional(__S(152, __c19, 0)),
         }),
       ).annotate({ identifier: "GetCertificateResponse" });
   }
 }
-function __c6(j: number): any {
+function __c20(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2571,7 +2408,11 @@ function __c6(j: number): any {
           certificateChain: S.optional(S.String),
         }),
       ).annotate({ identifier: "CertificateChainResponse" });
-    case 2:
+  }
+}
+function __c21(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -2590,7 +2431,7 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "GetCertificateProofOfPossessionNonceRequest",
       });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           certificate: S.optional(S.String),
@@ -2604,7 +2445,11 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "GetCertificateProofOfPossessionNonceResponse",
       });
-    case 4:
+  }
+}
+function __c22(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -2622,17 +2467,55 @@ function __c6(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetDeploymentRequest" });
-    case 5:
+  }
+}
+function __c23(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(5, __c0, 5)),
-          properties: S.optional(__S(25, __c3, 1)),
+          systemData: S.optional(__S(40, __c5, 0)),
+          properties: S.optional(__S(520, __c65, 0)),
         }),
       ).annotate({ identifier: "GetDeploymentResponse" });
-    case 6:
+  }
+}
+function __c24(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          catalogName: S.String.pipe(T.Label()),
+          productName: S.String.pipe(T.Label()),
+          deviceGroupName: S.String.pipe(T.Label()),
+          deviceIdentifiers: __S(192, __c24, 0),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureSphere/catalogs/{catalogName}/products/{productName}/deviceGroups/{deviceGroupName}/claimDevices",
+            code: 200,
+            apiVersion: "2024-04-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "ClaimDeviceGroupDevicesRequest",
+      });
+    case 2:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "ClaimDeviceGroupDevicesResponse",
+      });
+  }
+}
+function __c25(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -2650,19 +2533,23 @@ function __c6(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetDeviceRequest" });
-    case 7:
+  }
+}
+function __c26(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(5, __c0, 5)),
-          properties: S.optional(__S(34, __c4, 2)),
+          systemData: S.optional(__S(40, __c5, 0)),
+          properties: S.optional(__S(88, __c11, 0)),
         }),
       ).annotate({ identifier: "GetDeviceResponse" });
   }
 }
-function __c7(j: number): any {
+function __c27(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2681,7 +2568,11 @@ function __c7(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetDeviceGroupRequest" });
-    case 1:
+  }
+}
+function __c28(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -2697,7 +2588,11 @@ function __c7(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetImageRequest" });
-    case 2:
+  }
+}
+function __c29(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -2713,31 +2608,43 @@ function __c7(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetProductRequest" });
-    case 3:
+  }
+}
+function __c30(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           description: S.optional(S.String),
           provisioningState: S.optional(S.String),
         }),
       ).annotate({ identifier: "ProductProperties" });
-    case 4:
+  }
+}
+function __c31(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(5, __c0, 5)),
-          properties: S.optional(__S(59, __c7, 3)),
+          systemData: S.optional(__S(40, __c5, 0)),
+          properties: S.optional(__S(240, __c30, 0)),
         }),
       ).annotate({ identifier: "GetProductResponse" });
-    case 5:
+  }
+}
+function __c32(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           catalogName: S.String.pipe(T.Label()),
           imageName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(17, __c2, 1)),
+          properties: S.optional(__S(536, __c67, 0)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -2749,19 +2656,23 @@ function __c7(j: number): any {
       ).annotate({
         identifier: "ImagesCreateOrUpdateRequest",
       });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(5, __c0, 5)),
-          properties: S.optional(__S(22, __c2, 6)),
+          systemData: S.optional(__S(40, __c5, 0)),
+          properties: S.optional(__S(504, __c63, 0)),
         }),
       ).annotate({
         identifier: "ImagesCreateOrUpdateResponse",
       });
-    case 7:
+  }
+}
+function __c33(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -2779,18 +2690,22 @@ function __c7(j: number): any {
       });
   }
 }
-function __c8(j: number): any {
+function __c34(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(44, __c5, 4));
+      return S.Array(__S(136, __c17, 0));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          value: __S(64, __c8, 0),
+          value: __S(272, __c34, 0),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "CatalogListResult" });
-    case 2:
+  }
+}
+function __c35(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -2805,7 +2720,11 @@ function __c8(j: number): any {
       ).annotate({
         identifier: "ListCatalogBySubscriptionRequest",
       });
-    case 3:
+  }
+}
+function __c36(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -2826,16 +2745,24 @@ function __c8(j: number): any {
       ).annotate({
         identifier: "ListCatalogDeploymentsRequest",
       });
-    case 4:
-      return S.Array(__S(53, __c6, 5));
-    case 5:
+  }
+}
+function __c37(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(184, __c23, 0));
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          value: __S(68, __c8, 4),
+          value: __S(296, __c37, 0),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "DeploymentListResult" });
-    case 6:
+  }
+}
+function __c38(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -2857,7 +2784,11 @@ function __c8(j: number): any {
       ).annotate({
         identifier: "ListCatalogDeviceGroupsRequest",
       });
-    case 7:
+  }
+}
+function __c39(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -2878,11 +2809,7 @@ function __c8(j: number): any {
       ).annotate({
         identifier: "ListCatalogDeviceInsightsRequest",
       });
-  }
-}
-function __c9(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           deviceId: S.String,
@@ -2895,16 +2822,39 @@ function __c9(j: number): any {
           eventCount: S.Number,
         }),
       ).annotate({ identifier: "DeviceInsight" });
-    case 1:
-      return S.Array(__S(72, __c9, 0));
     case 2:
+      return S.Array(__S(313, __c39, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          value: __S(73, __c9, 1),
+          value: __S(314, __c39, 2),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "PagedDeviceInsight" });
-    case 3:
+  }
+}
+function __c40(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          catalogName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureSphere/catalogs/{catalogName}",
+            code: 200,
+            apiVersion: "2024-04-01",
+          }),
+        ),
+      ).annotate({ identifier: "DeleteCatalogRequest" });
+  }
+}
+function __c41(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -2925,16 +2875,24 @@ function __c9(j: number): any {
       ).annotate({
         identifier: "ListCatalogDevicesRequest",
       });
-    case 4:
-      return S.Array(__S(55, __c6, 7));
-    case 5:
+  }
+}
+function __c42(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(208, __c26, 0));
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          value: __S(76, __c9, 4),
+          value: __S(336, __c42, 0),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "DeviceListResult" });
-    case 6:
+  }
+}
+function __c43(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -2955,20 +2913,20 @@ function __c9(j: number): any {
       ).annotate({
         identifier: "ListCertificateByCatalogRequest",
       });
-    case 7:
-      return S.Array(__S(47, __c5, 7));
-  }
-}
-function __c10(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
+      return S.Array(__S(153, __c19, 1));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          value: __S(79, __c9, 7),
+          value: __S(345, __c43, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "CertificateListResult" });
-    case 1:
+  }
+}
+function __c44(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -2991,7 +2949,11 @@ function __c10(j: number): any {
       ).annotate({
         identifier: "ListDeploymentByDeviceGroupRequest",
       });
-    case 2:
+  }
+}
+function __c45(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -3010,7 +2972,11 @@ function __c10(j: number): any {
       ).annotate({
         identifier: "ListDeviceByDeviceGroupRequest",
       });
-    case 3:
+  }
+}
+function __c46(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -3032,7 +2998,11 @@ function __c10(j: number): any {
       ).annotate({
         identifier: "ListDeviceGroupByProductRequest",
       });
-    case 4:
+  }
+}
+function __c47(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -3053,14 +3023,18 @@ function __c10(j: number): any {
       ).annotate({
         identifier: "ListImageByCatalogRequest",
       });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          value: __S(24, __c3, 0),
+          value: __S(528, __c66, 0),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ImageListResult" });
-    case 6:
+  }
+}
+function __c48(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({}).pipe(
           T.Http({
@@ -3071,7 +3045,7 @@ function __c10(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ListOperationsRequest" });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           provider: S.optional(S.String),
@@ -3080,30 +3054,30 @@ function __c10(j: number): any {
           description: S.optional(S.String),
         }),
       ).annotate({ identifier: "OperationDisplay" });
-  }
-}
-function __c11(j: number): any {
-  switch (j) {
-    case 0:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
           isDataAction: S.optional(S.Boolean),
-          display: S.optional(__S(87, __c10, 7)),
+          display: S.optional(__S(385, __c48, 1)),
           origin: S.optional(S.String),
           actionType: S.optional(S.String),
         }),
       ).annotate({ identifier: "Operation" });
-    case 1:
-      return S.Array(__S(88, __c11, 0));
-    case 2:
+    case 3:
+      return S.Array(__S(386, __c48, 2));
+    case 4:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(89, __c11, 1)),
+          value: S.optional(__S(387, __c48, 3)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListOperationsResponse" });
-    case 3:
+  }
+}
+function __c49(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -3120,16 +3094,20 @@ function __c11(j: number): any {
       ).annotate({
         identifier: "ListProductByCatalogRequest",
       });
-    case 4:
-      return S.Array(__S(60, __c7, 4));
-    case 5:
+    case 1:
+      return S.Array(__S(248, __c31, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          value: __S(92, __c11, 4),
+          value: __S(393, __c49, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ProductListResult" });
-    case 6:
+  }
+}
+function __c50(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -3147,14 +3125,18 @@ function __c11(j: number): any {
       ).annotate({
         identifier: "ProductsCountDevicesRequest",
       });
-    case 7:
+  }
+}
+function __c51(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           catalogName: S.String.pipe(T.Label()),
           productName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(59, __c7, 3)),
+          properties: S.optional(__S(240, __c30, 0)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -3166,29 +3148,51 @@ function __c11(j: number): any {
       ).annotate({
         identifier: "ProductsCreateOrUpdateRequest",
       });
-  }
-}
-function __c12(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(5, __c0, 5)),
-          properties: S.optional(__S(59, __c7, 3)),
+          systemData: S.optional(__S(40, __c5, 0)),
+          properties: S.optional(__S(240, __c30, 0)),
         }),
       ).annotate({
         identifier: "ProductsCreateOrUpdateResponse",
       });
-    case 1:
+  }
+}
+function __c52(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           catalogName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(2, __c0, 2)),
+          productName: S.String.pipe(T.Label()),
+          deviceGroupName: S.String.pipe(T.Label()),
+          deploymentName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureSphere/catalogs/{catalogName}/products/{productName}/deviceGroups/{deviceGroupName}/deployments/{deploymentName}",
+            code: 200,
+            apiVersion: "2024-04-01",
+          }),
+        ),
+      ).annotate({ identifier: "DeleteDeploymentRequest" });
+  }
+}
+function __c53(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          catalogName: S.String.pipe(T.Label()),
+          tags: S.optional(__S(24, __c3, 0)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -3198,13 +3202,17 @@ function __c12(j: number): any {
           }),
         ),
       ).annotate({ identifier: "UpdateCatalogRequest" });
-    case 2:
+  }
+}
+function __c54(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           deviceGroupId: S.optional(S.String),
         }),
       ).annotate({ identifier: "DeviceUpdateProperties" });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -3213,7 +3221,7 @@ function __c12(j: number): any {
           productName: S.String.pipe(T.Label()),
           deviceGroupName: S.String.pipe(T.Label()),
           deviceName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(98, __c12, 2)),
+          properties: S.optional(__S(432, __c54, 0)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -3223,7 +3231,11 @@ function __c12(j: number): any {
           }),
         ),
       ).annotate({ identifier: "UpdateDeviceRequest" });
-    case 4:
+  }
+}
+function __c55(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -3231,7 +3243,7 @@ function __c12(j: number): any {
           catalogName: S.String.pipe(T.Label()),
           productName: S.String.pipe(T.Label()),
           deviceGroupName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(28, __c3, 4)),
+          properties: S.optional(__S(72, __c9, 0)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -3241,20 +3253,24 @@ function __c12(j: number): any {
           }),
         ),
       ).annotate({ identifier: "UpdateDeviceGroupRequest" });
-    case 5:
+  }
+}
+function __c56(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           description: S.optional(S.String),
         }),
       ).annotate({ identifier: "ProductUpdateProperties" });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           catalogName: S.String.pipe(T.Label()),
           productName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(101, __c12, 5)),
+          properties: S.optional(__S(448, __c56, 0)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -3264,13 +3280,17 @@ function __c12(j: number): any {
           }),
         ),
       ).annotate({ identifier: "UpdateProductRequest" });
-    case 7:
+  }
+}
+function __c57(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           catalogName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(17, __c2, 1)),
+          properties: S.optional(__S(536, __c67, 0)),
         }).pipe(
           T.Http({
             method: "POST",
@@ -3284,7 +3304,206 @@ function __c12(j: number): any {
       });
   }
 }
-
+function __c58(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          catalogName: S.String.pipe(T.Label()),
+          productName: S.String.pipe(T.Label()),
+          deviceGroupName: S.String.pipe(T.Label()),
+          deviceName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureSphere/catalogs/{catalogName}/products/{productName}/deviceGroups/{deviceGroupName}/devices/{deviceName}",
+            code: 200,
+            apiVersion: "2024-04-01",
+          }),
+        ),
+      ).annotate({ identifier: "DeleteDeviceRequest" });
+  }
+}
+function __c59(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          catalogName: S.String.pipe(T.Label()),
+          productName: S.String.pipe(T.Label()),
+          deviceGroupName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureSphere/catalogs/{catalogName}/products/{productName}/deviceGroups/{deviceGroupName}",
+            code: 200,
+            apiVersion: "2024-04-01",
+          }),
+        ),
+      ).annotate({ identifier: "DeleteDeviceGroupRequest" });
+  }
+}
+function __c60(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          catalogName: S.String.pipe(T.Label()),
+          imageName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureSphere/catalogs/{catalogName}/images/{imageName}",
+            code: 200,
+            apiVersion: "2024-04-01",
+          }),
+        ),
+      ).annotate({ identifier: "DeleteImageRequest" });
+  }
+}
+function __c61(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          catalogName: S.String.pipe(T.Label()),
+          productName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureSphere/catalogs/{catalogName}/products/{productName}",
+            code: 200,
+            apiVersion: "2024-04-01",
+          }),
+        ),
+      ).annotate({ identifier: "DeleteProductRequest" });
+  }
+}
+function __c62(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          properties: S.optional(__S(536, __c67, 0)),
+        }),
+      ).annotate({ identifier: "ImageInput" });
+    case 1:
+      return S.Array(__S(496, __c62, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          deploymentId: S.optional(S.String),
+          deployedImages: S.optional(__S(497, __c62, 1)),
+        }),
+      ).annotate({
+        identifier: "DeploymentPropertiesInput",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          catalogName: S.String.pipe(T.Label()),
+          productName: S.String.pipe(T.Label()),
+          deviceGroupName: S.String.pipe(T.Label()),
+          deploymentName: S.String.pipe(T.Label()),
+          properties: S.optional(__S(498, __c62, 2)),
+        }).pipe(
+          T.Http({
+            method: "PUT",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureSphere/catalogs/{catalogName}/products/{productName}/deviceGroups/{deviceGroupName}/deployments/{deploymentName}",
+            code: 200,
+            apiVersion: "2024-04-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeploymentsCreateOrUpdateRequest",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(40, __c5, 0)),
+          properties: S.optional(__S(520, __c65, 0)),
+        }),
+      ).annotate({
+        identifier: "DeploymentsCreateOrUpdateResponse",
+      });
+  }
+}
+function __c63(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          image: S.optional(S.String),
+          imageId: S.optional(S.String),
+          imageName: S.optional(S.String),
+          regionalDataBoundary: S.optional(S.String),
+          uri: S.optional(S.String),
+          description: S.optional(S.String),
+          componentId: S.optional(S.String),
+          imageType: S.optional(S.String),
+          provisioningState: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ImageProperties" });
+  }
+}
+function __c64(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(40, __c5, 0)),
+          properties: S.optional(__S(504, __c63, 0)),
+        }),
+      ).annotate({ identifier: "Image" });
+  }
+}
+function __c65(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          deploymentId: S.optional(S.String),
+          deployedImages: S.optional(__S(528, __c66, 0)),
+          deploymentDateUtc: S.optional(S.String),
+          provisioningState: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "DeploymentProperties" });
+  }
+}
+function __c66(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(512, __c64, 0));
+  }
+}
+function __c67(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          image: S.optional(S.String),
+          imageId: S.optional(S.String),
+          regionalDataBoundary: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ImagePropertiesInput" });
+  }
+}
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

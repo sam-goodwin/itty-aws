@@ -246,7 +246,7 @@ export const createCustomerTask: API.OperationMethod<
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(0, __c0, 0) as any as S.Schema<CreateCustomerTaskRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<CustomerTask>,
+  output: __S(17, __c2, 1) as any as S.Schema<CustomerTask>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -259,8 +259,8 @@ export const customerTasksArchiveCreate: API.OperationMethod<
   CustomerTasksArchiveCreateError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(4, __c0, 4) as any as S.Schema<CustomerTasksArchiveCreateRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<CustomerTask>,
+  input: __S(24, __c3, 0) as any as S.Schema<CustomerTasksArchiveCreateRequest>,
+  output: __S(17, __c2, 1) as any as S.Schema<CustomerTask>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -273,8 +273,8 @@ export const customerTasksRestoreCreate: API.OperationMethod<
   CustomerTasksRestoreCreateError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(5, __c0, 5) as any as S.Schema<CustomerTasksRestoreCreateRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<CustomerTask>,
+  input: __S(32, __c4, 0) as any as S.Schema<CustomerTasksRestoreCreateRequest>,
+  output: __S(17, __c2, 1) as any as S.Schema<CustomerTask>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -287,8 +287,8 @@ export const getCustomerTask: API.OperationMethod<
   GetCustomerTaskError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(6, __c0, 6) as any as S.Schema<GetCustomerTaskRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<CustomerTask>,
+  input: __S(40, __c5, 0) as any as S.Schema<GetCustomerTaskRequest>,
+  output: __S(17, __c2, 1) as any as S.Schema<CustomerTask>,
   errors: [NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -301,8 +301,8 @@ export const listCustomerTasks: API.OperationMethod<
   ListCustomerTasksError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(7, __c0, 7) as any as S.Schema<ListCustomerTasksRequest>,
-  output: __S(9, __c1, 1) as any as S.Schema<CustomerTaskPage>,
+  input: __S(48, __c6, 0) as any as S.Schema<ListCustomerTasksRequest>,
+  output: __S(50, __c6, 2) as any as S.Schema<CustomerTaskPage>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -315,8 +315,8 @@ export const listCustomerTasksActivities: API.OperationMethod<
   ListCustomerTasksActivitiesError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(10, __c1, 2) as any as S.Schema<ListCustomerTasksActivitiesRequest>,
-  output: __S(15, __c1, 7) as any as S.Schema<CustomerTaskActivityPage>,
+  input: __S(56, __c7, 0) as any as S.Schema<ListCustomerTasksActivitiesRequest>,
+  output: __S(61, __c7, 5) as any as S.Schema<CustomerTaskActivityPage>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -329,8 +329,8 @@ export const updateCustomerTask: API.OperationMethod<
   UpdateCustomerTaskError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(16, __c2, 0) as any as S.Schema<UpdateCustomerTaskRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<CustomerTask>,
+  input: __S(64, __c8, 0) as any as S.Schema<UpdateCustomerTaskRequest>,
+  output: __S(17, __c2, 1) as any as S.Schema<CustomerTask>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -343,8 +343,8 @@ export const updateCustomerTasksPartial: API.OperationMethod<
   UpdateCustomerTasksPartialError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(17, __c2, 1) as any as S.Schema<UpdateCustomerTasksPartialRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<CustomerTask>,
+  input: __S(72, __c9, 0) as any as S.Schema<UpdateCustomerTasksPartialRequest>,
+  output: __S(17, __c2, 1) as any as S.Schema<CustomerTask>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -369,14 +369,11 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "CreateCustomerTaskRequest",
       });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String,
-          name: S.String,
-        }),
-      ).annotate({ identifier: "CustomerTaskAccount" });
-    case 2:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.Number,
@@ -385,19 +382,30 @@ function __c0(j: number): any {
           last_name: S.String,
         }),
       ).annotate({ identifier: "CustomerTaskUser" });
-    case 3:
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
-          account: S.NullOr(__S(1, __c0, 1)),
+          name: S.String,
+        }),
+      ).annotate({ identifier: "CustomerTaskAccount" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          account: S.NullOr(__S(16, __c2, 0)),
           name: S.String,
           description: S.NullOr(S.String),
           status: S.String,
-          assigned_to: S.NullOr(__S(2, __c0, 2)),
+          assigned_to: S.NullOr(__S(8, __c1, 0)),
           due_at: S.NullOr(S.String),
           completed_at: S.NullOr(S.String),
-          completed_by: S.NullOr(__S(2, __c0, 2)),
-          created_by: S.NullOr(__S(2, __c0, 2)),
+          completed_by: S.NullOr(__S(8, __c1, 0)),
+          created_by: S.NullOr(__S(8, __c1, 0)),
           archived_at: S.NullOr(S.String),
           created_at: S.String,
           updated_at: S.String,
@@ -405,7 +413,11 @@ function __c0(j: number): any {
           can_restore: S.Boolean,
         }),
       ).annotate({ identifier: "CustomerTask" });
-    case 4:
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -420,7 +432,11 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "CustomerTasksArchiveCreateRequest",
       });
-    case 5:
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -435,7 +451,11 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "CustomerTasksRestoreCreateRequest",
       });
-    case 6:
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -448,7 +468,11 @@ function __c0(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetCustomerTaskRequest" });
-    case 7:
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -467,22 +491,22 @@ function __c0(j: number): any {
           T.Http({ method: "GET", uri: "/api/projects/{project_id}/customer_tasks/", code: 200 }),
         ),
       ).annotate({ identifier: "ListCustomerTasksRequest" });
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(3, __c0, 3));
     case 1:
+      return S.Array(__S(17, __c2, 1));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           count: S.Number,
           next: S.NullOr(S.String),
           previous: S.NullOr(S.String),
-          results: __S(8, __c1, 0),
+          results: __S(49, __c6, 1),
         }),
       ).annotate({ identifier: "CustomerTaskPage" });
-    case 2:
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -499,7 +523,7 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "ListCustomerTasksActivitiesRequest",
       });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           field: S.String,
@@ -507,32 +531,32 @@ function __c1(j: number): any {
           after: S.NullOr(S.Unknown),
         }),
       ).annotate({ identifier: "CustomerTaskChange" });
-    case 4:
-      return S.Array(__S(11, __c1, 3));
-    case 5:
+    case 2:
+      return S.Array(__S(57, __c7, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
           activity_type: S.String,
-          changes: __S(12, __c1, 4),
-          actor: S.NullOr(__S(2, __c0, 2)),
+          changes: __S(58, __c7, 2),
+          actor: S.NullOr(__S(8, __c1, 0)),
           created_at: S.String,
         }),
       ).annotate({ identifier: "CustomerTaskActivity" });
-    case 6:
-      return S.Array(__S(13, __c1, 5));
-    case 7:
+    case 4:
+      return S.Array(__S(59, __c7, 3));
+    case 5:
       return S.suspend(() =>
         S.Struct({
           count: S.Number,
           next: S.NullOr(S.String),
           previous: S.NullOr(S.String),
-          results: __S(14, __c1, 6),
+          results: __S(60, __c7, 4),
         }),
       ).annotate({ identifier: "CustomerTaskActivityPage" });
   }
 }
-function __c2(j: number): any {
+function __c8(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -555,7 +579,11 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "UpdateCustomerTaskRequest",
       });
-    case 1:
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -578,7 +606,6 @@ function __c2(j: number): any {
       });
   }
 }
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

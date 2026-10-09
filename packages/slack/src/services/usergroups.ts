@@ -158,8 +158,8 @@ export const createUsergroup: API.OperationMethod<
   CreateUsergroupError,
   SlackOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1, __c0, 1) as any as S.Schema<CreateUsergroupRequest>,
-  output: __S(2, __c0, 2) as any as S.Schema<CreateUsergroupResponse>,
+  input: __S(0, __c0, 0) as any as S.Schema<CreateUsergroupRequest>,
+  output: __S(2, __c1, 0) as any as S.Schema<CreateUsergroupResponse>,
   errors: [SlackError, SlackRateLimited],
   protocol: SlackProtocol,
   retry: Retry.Retry,
@@ -173,8 +173,8 @@ export const disableUsergroup: API.OperationMethod<
   DisableUsergroupError,
   SlackOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3, __c0, 3) as any as S.Schema<DisableUsergroupRequest>,
-  output: __S(2, __c0, 2) as any as S.Schema<DisableUsergroupResponse>,
+  input: __S(6, __c3, 0) as any as S.Schema<DisableUsergroupRequest>,
+  output: __S(2, __c1, 0) as any as S.Schema<DisableUsergroupResponse>,
   errors: [SlackError, SlackRateLimited],
   protocol: SlackProtocol,
   retry: Retry.Retry,
@@ -188,8 +188,8 @@ export const enableUsergroup: API.OperationMethod<
   EnableUsergroupError,
   SlackOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(4, __c0, 4) as any as S.Schema<EnableUsergroupRequest>,
-  output: __S(2, __c0, 2) as any as S.Schema<EnableUsergroupResponse>,
+  input: __S(8, __c4, 0) as any as S.Schema<EnableUsergroupRequest>,
+  output: __S(2, __c1, 0) as any as S.Schema<EnableUsergroupResponse>,
   errors: [SlackError, SlackRateLimited],
   protocol: SlackProtocol,
   retry: Retry.Retry,
@@ -203,8 +203,8 @@ export const listUsergroups: API.OperationMethod<
   ListUsergroupsError,
   SlackOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(5, __c0, 5) as any as S.Schema<ListUsergroupsRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<ListUsergroupsResponse>,
+  input: __S(10, __c5, 0) as any as S.Schema<ListUsergroupsRequest>,
+  output: __S(11, __c5, 1) as any as S.Schema<ListUsergroupsResponse>,
   errors: [SlackError, SlackRateLimited],
   protocol: SlackProtocol,
   retry: Retry.Retry,
@@ -218,8 +218,8 @@ export const listUsers: API.OperationMethod<
   ListUsersError,
   SlackOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(8, __c1, 0) as any as S.Schema<ListUsersRequest>,
-  output: __S(9, __c1, 1) as any as S.Schema<ListUsersResponse>,
+  input: __S(14, __c7, 0) as any as S.Schema<ListUsersRequest>,
+  output: __S(15, __c7, 1) as any as S.Schema<ListUsersResponse>,
   errors: [SlackError, SlackRateLimited],
   protocol: SlackProtocol,
   retry: Retry.Retry,
@@ -233,8 +233,8 @@ export const updateUser: API.OperationMethod<
   UpdateUserError,
   SlackOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(10, __c1, 2) as any as S.Schema<UpdateUserRequest>,
-  output: __S(2, __c0, 2) as any as S.Schema<UpdateUserResponse>,
+  input: __S(16, __c8, 0) as any as S.Schema<UpdateUserRequest>,
+  output: __S(2, __c1, 0) as any as S.Schema<UpdateUserResponse>,
   errors: [SlackError, SlackRateLimited],
   protocol: SlackProtocol,
   retry: Retry.Retry,
@@ -248,8 +248,8 @@ export const updateUsergroup: API.OperationMethod<
   UpdateUsergroupError,
   SlackOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(11, __c1, 3) as any as S.Schema<UpdateUsergroupRequest>,
-  output: __S(12, __c1, 4) as any as S.Schema<UpdateUsergroupResponse>,
+  input: __S(18, __c9, 0) as any as S.Schema<UpdateUsergroupRequest>,
+  output: __S(19, __c9, 1) as any as S.Schema<UpdateUsergroupResponse>,
   errors: [SlackError, SlackRateLimited],
   protocol: SlackProtocol,
   retry: Retry.Retry,
@@ -259,12 +259,10 @@ export const updateUsergroup: API.OperationMethod<
 function __c0(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(S.String);
-    case 1:
       return S.suspend(() =>
         S.Struct({
-          channels: S.optional(__S(0, __c0, 0)),
-          additional_channels: S.optional(__S(0, __c0, 0)),
+          channels: S.optional(__S(4, __c2, 0)),
+          additional_channels: S.optional(__S(4, __c2, 0)),
           description: S.optional(S.String),
           handle: S.optional(S.String),
           include_count: S.optional(S.Boolean),
@@ -273,14 +271,28 @@ function __c0(j: number): any {
           enable_section: S.optional(S.Boolean),
         }).pipe(T.Http({ method: "POST", uri: "/usergroups.create", code: 200 })),
       ).annotate({ identifier: "CreateUsergroupRequest" });
-    case 2:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           ok: S.Boolean,
           usergroup: S.Unknown,
         }),
       ).annotate({ identifier: "CreateUsergroupResponse" });
-    case 3:
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           include_count: S.optional(S.Boolean),
@@ -288,7 +300,11 @@ function __c0(j: number): any {
           usergroup: S.String,
         }).pipe(T.Http({ method: "POST", uri: "/usergroups.disable", code: 200 })),
       ).annotate({ identifier: "DisableUsergroupRequest" });
-    case 4:
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           include_count: S.optional(S.Boolean),
@@ -296,7 +312,11 @@ function __c0(j: number): any {
           usergroup: S.String,
         }).pipe(T.Http({ method: "POST", uri: "/usergroups.enable", code: 200 })),
       ).annotate({ identifier: "EnableUsergroupRequest" });
-    case 5:
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           include_count: S.optional(S.Boolean.pipe(T.Query())),
@@ -305,18 +325,22 @@ function __c0(j: number): any {
           team_id: S.optional(S.String.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/usergroups.list", code: 200 })),
       ).annotate({ identifier: "ListUsergroupsRequest" });
-    case 6:
-      return S.Array(S.Unknown);
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           ok: S.Boolean,
-          usergroups: __S(6, __c0, 6),
+          usergroups: __S(12, __c6, 0),
         }),
       ).annotate({ identifier: "ListUsergroupsResponse" });
   }
 }
-function __c1(j: number): any {
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.Unknown);
+  }
+}
+function __c7(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -330,25 +354,33 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           ok: S.Boolean,
-          users: __S(6, __c0, 6),
+          users: __S(12, __c6, 0),
         }),
       ).annotate({ identifier: "ListUsersResponse" });
-    case 2:
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           include_count: S.optional(S.Boolean),
           team_id: S.optional(S.String),
           usergroup: S.String,
-          users: __S(0, __c0, 0),
-          additional_channels: S.optional(__S(0, __c0, 0)),
+          users: __S(4, __c2, 0),
+          additional_channels: S.optional(__S(4, __c2, 0)),
           is_shared: S.optional(S.Boolean),
         }).pipe(T.Http({ method: "POST", uri: "/usergroups.users.update", code: 200 })),
       ).annotate({ identifier: "UpdateUserRequest" });
-    case 3:
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          channels: S.optional(__S(0, __c0, 0)),
-          additional_channels: S.optional(__S(0, __c0, 0)),
+          channels: S.optional(__S(4, __c2, 0)),
+          additional_channels: S.optional(__S(4, __c2, 0)),
           description: S.optional(S.String),
           handle: S.optional(S.String),
           include_count: S.optional(S.Boolean),
@@ -358,17 +390,16 @@ function __c1(j: number): any {
           enable_section: S.optional(S.Boolean),
         }).pipe(T.Http({ method: "POST", uri: "/usergroups.update", code: 200 })),
       ).annotate({ identifier: "UpdateUsergroupRequest" });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           ok: S.Boolean,
           usergroup: S.Unknown,
-          channel_limit_user_ids: S.optional(__S(0, __c0, 0)),
+          channel_limit_user_ids: S.optional(__S(4, __c2, 0)),
         }),
       ).annotate({ identifier: "UpdateUsergroupResponse" });
   }
 }
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

@@ -513,8 +513,8 @@ export const addFreeDaysMembership: API.OperationMethod<
   AddFreeDaysMembershipError,
   WhopOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(0, __c0, 0) as any as S.Schema<AddFreeDaysMembershipRequest>,
-  output: __S(10, __c1, 2) as any as S.Schema<LegacyMembership>,
+  input: __S(128, __c8, 0) as any as S.Schema<AddFreeDaysMembershipRequest>,
+  output: __S(153, __c9, 9) as any as S.Schema<LegacyMembership>,
   errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity],
   protocol: WhopProtocol,
   retry: Retry.Retry,
@@ -528,8 +528,8 @@ export const cancelMembership: API.OperationMethod<
   CancelMembershipError,
   WhopOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(11, __c1, 3) as any as S.Schema<CancelMembershipRequest>,
-  output: __S(14, __c1, 6) as any as S.Schema<Membership>,
+  input: __S(160, __c10, 0) as any as S.Schema<CancelMembershipRequest>,
+  output: __S(178, __c11, 2) as any as S.Schema<Membership>,
   errors: [Forbidden, NotFound, Conflict],
   protocol: WhopProtocol,
   retry: Retry.Retry,
@@ -543,8 +543,8 @@ export const extendMembership: API.OperationMethod<
   ExtendMembershipError,
   WhopOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(15, __c1, 7) as any as S.Schema<ExtendMembershipRequest>,
-  output: __S(14, __c1, 6) as any as S.Schema<Membership>,
+  input: __S(192, __c12, 0) as any as S.Schema<ExtendMembershipRequest>,
+  output: __S(178, __c11, 2) as any as S.Schema<Membership>,
   errors: [BadRequest, Forbidden, Conflict],
   protocol: WhopProtocol,
   retry: Retry.Retry,
@@ -558,8 +558,8 @@ export const getMembership: API.OperationMethod<
   GetMembershipError,
   WhopOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(16, __c2, 0) as any as S.Schema<GetMembershipRequest>,
-  output: __S(14, __c1, 6) as any as S.Schema<Membership>,
+  input: __S(208, __c13, 0) as any as S.Schema<GetMembershipRequest>,
+  output: __S(178, __c11, 2) as any as S.Schema<Membership>,
   errors: [Forbidden, NotFound],
   protocol: WhopProtocol,
   retry: Retry.Retry,
@@ -573,8 +573,8 @@ export const inviteMembership: API.OperationMethod<
   InviteMembershipError,
   WhopOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(17, __c2, 1) as any as S.Schema<InviteMembershipRequest>,
-  output: __S(18, __c2, 2) as any as S.Schema<InviteMembershipResponse>,
+  input: __S(224, __c14, 0) as any as S.Schema<InviteMembershipRequest>,
+  output: __S(225, __c14, 1) as any as S.Schema<InviteMembershipResponse>,
   errors: [BadRequest, Forbidden, NotFound, Conflict],
   protocol: WhopProtocol,
   retry: Retry.Retry,
@@ -590,8 +590,8 @@ export const listMemberships: API.PaginatedOperationMethod<
   Membership
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(19, __c2, 3) as any as S.Schema<ListMembershipsRequest>,
-    output: __S(22, __c2, 6) as any as S.Schema<ListMembershipsResponse>,
+    input: __S(0, __c0, 0) as any as S.Schema<ListMembershipsRequest>,
+    output: __S(3, __c0, 3) as any as S.Schema<ListMembershipsResponse>,
     errors: [BadRequest, Forbidden, NotFound],
     protocol: WhopProtocol,
     retry: Retry.Retry,
@@ -615,8 +615,8 @@ export const pauseMembership: API.OperationMethod<
   PauseMembershipError,
   WhopOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(23, __c2, 7) as any as S.Schema<PauseMembershipRequest>,
-  output: __S(14, __c1, 6) as any as S.Schema<Membership>,
+  input: __S(16, __c1, 0) as any as S.Schema<PauseMembershipRequest>,
+  output: __S(178, __c11, 2) as any as S.Schema<Membership>,
   errors: [BadRequest, Forbidden, Conflict],
   protocol: WhopProtocol,
   retry: Retry.Retry,
@@ -630,8 +630,8 @@ export const reactivateMembership: API.OperationMethod<
   ReactivateMembershipError,
   WhopOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(24, __c3, 0) as any as S.Schema<ReactivateMembershipRequest>,
-  output: __S(14, __c1, 6) as any as S.Schema<Membership>,
+  input: __S(32, __c2, 0) as any as S.Schema<ReactivateMembershipRequest>,
+  output: __S(178, __c11, 2) as any as S.Schema<Membership>,
   errors: [BadRequest, Forbidden, NotFound, Conflict],
   protocol: WhopProtocol,
   retry: Retry.Retry,
@@ -645,8 +645,8 @@ export const resumeMembership: API.OperationMethod<
   ResumeMembershipError,
   WhopOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(25, __c3, 1) as any as S.Schema<ResumeMembershipRequest>,
-  output: __S(14, __c1, 6) as any as S.Schema<Membership>,
+  input: __S(48, __c3, 0) as any as S.Schema<ResumeMembershipRequest>,
+  output: __S(178, __c11, 2) as any as S.Schema<Membership>,
   errors: [BadRequest, Forbidden, Conflict],
   protocol: WhopProtocol,
   retry: Retry.Retry,
@@ -660,8 +660,8 @@ export const resyncAccessMembership: API.OperationMethod<
   ResyncAccessMembershipError,
   WhopOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(26, __c3, 2) as any as S.Schema<ResyncAccessMembershipRequest>,
-  output: __S(14, __c1, 6) as any as S.Schema<Membership>,
+  input: __S(64, __c4, 0) as any as S.Schema<ResyncAccessMembershipRequest>,
+  output: __S(178, __c11, 2) as any as S.Schema<Membership>,
   errors: [BadRequest, Forbidden, Conflict],
   protocol: WhopProtocol,
   retry: Retry.Retry,
@@ -675,8 +675,8 @@ export const transferMembership: API.OperationMethod<
   TransferMembershipError,
   WhopOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(27, __c3, 3) as any as S.Schema<TransferMembershipRequest>,
-  output: __S(28, __c3, 4) as any as S.Schema<TransferMembershipResponse>,
+  input: __S(80, __c5, 0) as any as S.Schema<TransferMembershipRequest>,
+  output: __S(81, __c5, 1) as any as S.Schema<TransferMembershipResponse>,
   errors: [BadRequest, Forbidden, NotFound, Conflict],
   protocol: WhopProtocol,
   retry: Retry.Retry,
@@ -695,8 +695,8 @@ export const uncancelMembership: API.OperationMethod<
   UncancelMembershipError,
   WhopOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(29, __c3, 5) as any as S.Schema<UncancelMembershipRequest>,
-  output: __S(10, __c1, 2) as any as S.Schema<LegacyMembership>,
+  input: __S(96, __c6, 0) as any as S.Schema<UncancelMembershipRequest>,
+  output: __S(153, __c9, 9) as any as S.Schema<LegacyMembership>,
   errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity],
   protocol: WhopProtocol,
   retry: Retry.Retry,
@@ -710,8 +710,8 @@ export const updateMembership: API.OperationMethod<
   UpdateMembershipError,
   WhopOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(30, __c3, 6) as any as S.Schema<UpdateMembershipRequest>,
-  output: __S(14, __c1, 6) as any as S.Schema<Membership>,
+  input: __S(112, __c7, 0) as any as S.Schema<UpdateMembershipRequest>,
+  output: __S(178, __c11, 2) as any as S.Schema<Membership>,
   errors: [BadRequest, Forbidden],
   protocol: WhopProtocol,
   retry: Retry.Retry,
@@ -721,192 +721,6 @@ export const updateMembership: API.OperationMethod<
 function __c0(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String.pipe(T.Label()),
-          free_days: S.Number,
-        }).pipe(T.Http({ method: "POST", uri: "/memberships/{id}/add_free_days", code: 200 })),
-      ).annotate({
-        identifier: "AddFreeDaysMembershipRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String,
-          title: S.String,
-        }),
-      ).annotate({ identifier: "LegacyMembershipCompany" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          answer: S.String,
-          id: S.String,
-          question: S.String,
-        }),
-      ).annotate({
-        identifier: "LegacyMembershipCustomFieldResponsesItem",
-      });
-    case 3:
-      return S.Array(__S(2, __c0, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String,
-        }),
-      ).annotate({ identifier: "LegacyMembershipMember" });
-    case 5:
-      return S.Record(S.String, S.Unknown);
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String,
-          metadata: S.NullOr(__S(5, __c0, 5)),
-        }),
-      ).annotate({ identifier: "LegacyMembershipPlan" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String,
-          metadata: S.NullOr(__S(5, __c0, 5)),
-          title: S.String,
-        }),
-      ).annotate({ identifier: "LegacyMembershipProduct" });
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String,
-        }),
-      ).annotate({
-        identifier: "LegacyMembershipPromoCode",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          email: S.NullOr(S.String),
-          id: S.String,
-          name: S.NullOr(S.String),
-          profile_pic: S.String,
-          username: S.String,
-        }),
-      ).annotate({ identifier: "LegacyMembershipUser" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          cancel_at_period_end: S.Boolean,
-          cancel_option: S.NullOr(S.String),
-          cancelation_status: S.NullOr(S.String),
-          canceled_at: S.NullOr(S.String),
-          cancellation_reason: S.NullOr(S.String),
-          checkout_configuration_id: S.NullOr(S.String),
-          company: __S(1, __c0, 1),
-          created_at: S.String,
-          currency: S.NullOr(S.String),
-          custom_field_responses: __S(3, __c0, 3),
-          formatted_renewal_price: S.NullOr(S.String),
-          id: S.String,
-          initial_price_paid: S.String,
-          joined_at: S.NullOr(S.String),
-          license_key: S.NullOr(S.String),
-          manage_url: S.NullOr(S.String),
-          member: S.NullOr(__S(4, __c0, 4)),
-          metadata: S.NullOr(__S(5, __c0, 5)),
-          payment_collection_paused: S.Boolean,
-          plan: __S(6, __c0, 6),
-          product: __S(7, __c0, 7),
-          promo_code: S.NullOr(__S(8, __c1, 0)),
-          renewal_period_end: S.NullOr(S.String),
-          renewal_period_start: S.NullOr(S.String),
-          status: S.String,
-          updated_at: S.String,
-          user: S.NullOr(__S(9, __c1, 1)),
-        }),
-      ).annotate({ identifier: "LegacyMembership" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String.pipe(T.Label()),
-          cancel_at_period_end: S.optional(S.Boolean),
-          reason: S.optional(S.String),
-          idempotency_key: S.optional(S.String.pipe(T.Header("Idempotency-Key"))),
-        }).pipe(T.Http({ method: "POST", uri: "/memberships/{id}/cancel", code: 200 })),
-      ).annotate({ identifier: "CancelMembershipRequest" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String,
-          logo_url: S.NullOr(S.String),
-          route: S.String,
-          title: S.String,
-        }),
-      ).annotate({ identifier: "StorefrontAccount" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          access_level: S.String,
-          last_accessed_at: S.NullOr(S.String),
-          position: S.NullOr(S.Number),
-        }),
-      ).annotate({ identifier: "MembershipMember" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          account: __S(12, __c1, 4),
-          cancel_at_period_end: S.Boolean,
-          canceled_at: S.NullOr(S.String),
-          cancellation_reason: S.NullOr(S.String),
-          created_at: S.String,
-          current_period_end: S.NullOr(S.String),
-          current_period_start: S.NullOr(S.String),
-          id: S.String,
-          license_key: S.NullOr(S.String),
-          manage_url: S.NullOr(S.String),
-          member: S.NullOr(__S(13, __c1, 5)),
-          metadata: S.Unknown,
-          phone_number: S.NullOr(S.String),
-          plan_id: S.String,
-          product_id: S.String,
-          status: S.String,
-          user_id: S.NullOr(S.String),
-        }),
-      ).annotate({ identifier: "Membership" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String.pipe(T.Label()),
-          days: S.Number,
-          idempotency_key: S.optional(S.String.pipe(T.Header("Idempotency-Key"))),
-        }).pipe(T.Http({ method: "POST", uri: "/memberships/{id}/extend", code: 200 })),
-      ).annotate({ identifier: "ExtendMembershipRequest" });
-  }
-}
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String.pipe(T.Label()),
-        }).pipe(T.Http({ method: "GET", uri: "/memberships/{id}", code: 200 })),
-      ).annotate({ identifier: "GetMembershipRequest" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          email: S.optional(S.String),
-          plan_id: S.String,
-          user_id: S.optional(S.String),
-          idempotency_key: S.optional(S.String.pipe(T.Header("Idempotency-Key"))),
-        }).pipe(T.Http({ method: "POST", uri: "/memberships/invite", code: 200 })),
-      ).annotate({ identifier: "InviteMembershipRequest" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          invitation_sent: S.Boolean,
-        }),
-      ).annotate({ identifier: "InviteMembershipResponse" });
-    case 3:
       return S.suspend(() =>
         S.Struct({
           account_id: S.optional(S.String.pipe(T.Query())),
@@ -924,9 +738,9 @@ function __c2(j: number): any {
           before: S.optional(S.String.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/memberships", code: 200 })),
       ).annotate({ identifier: "ListMembershipsRequest" });
-    case 4:
-      return S.Array(__S(14, __c1, 6));
-    case 5:
+    case 1:
+      return S.Array(__S(178, __c11, 2));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           end_cursor: S.NullOr(S.String),
@@ -937,14 +751,18 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "ListMembershipsResponsePageInfo",
       });
-    case 6:
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          data: __S(20, __c2, 4),
-          page_info: __S(21, __c2, 5),
+          data: __S(1, __c0, 1),
+          page_info: __S(2, __c0, 2),
         }),
       ).annotate({ identifier: "ListMembershipsResponse" });
-    case 7:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.String.pipe(T.Label()),
@@ -954,7 +772,7 @@ function __c2(j: number): any {
       ).annotate({ identifier: "PauseMembershipRequest" });
   }
 }
-function __c3(j: number): any {
+function __c2(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -966,14 +784,22 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "ReactivateMembershipRequest",
       });
-    case 1:
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.String.pipe(T.Label()),
           idempotency_key: S.optional(S.String.pipe(T.Header("Idempotency-Key"))),
         }).pipe(T.Http({ method: "POST", uri: "/memberships/{id}/resume", code: 200 })),
       ).annotate({ identifier: "ResumeMembershipRequest" });
-    case 2:
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.String.pipe(T.Label()),
@@ -982,7 +808,11 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "ResyncAccessMembershipRequest",
       });
-    case 3:
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.String.pipe(T.Label()),
@@ -991,7 +821,7 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "TransferMembershipRequest",
       });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           url: S.String,
@@ -999,7 +829,11 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "TransferMembershipResponse",
       });
-    case 5:
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.String.pipe(T.Label()),
@@ -1007,7 +841,11 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "UncancelMembershipRequest",
       });
-    case 6:
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.String.pipe(T.Label()),
@@ -1018,7 +856,212 @@ function __c3(j: number): any {
       ).annotate({ identifier: "UpdateMembershipRequest" });
   }
 }
-
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String.pipe(T.Label()),
+          free_days: S.Number,
+        }).pipe(T.Http({ method: "POST", uri: "/memberships/{id}/add_free_days", code: 200 })),
+      ).annotate({
+        identifier: "AddFreeDaysMembershipRequest",
+      });
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          title: S.String,
+        }),
+      ).annotate({ identifier: "LegacyMembershipCompany" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          answer: S.String,
+          id: S.String,
+          question: S.String,
+        }),
+      ).annotate({
+        identifier: "LegacyMembershipCustomFieldResponsesItem",
+      });
+    case 2:
+      return S.Array(__S(145, __c9, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+        }),
+      ).annotate({ identifier: "LegacyMembershipMember" });
+    case 4:
+      return S.Record(S.String, S.Unknown);
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          metadata: S.NullOr(__S(148, __c9, 4)),
+        }),
+      ).annotate({ identifier: "LegacyMembershipPlan" });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          metadata: S.NullOr(__S(148, __c9, 4)),
+          title: S.String,
+        }),
+      ).annotate({ identifier: "LegacyMembershipProduct" });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+        }),
+      ).annotate({
+        identifier: "LegacyMembershipPromoCode",
+      });
+    case 8:
+      return S.suspend(() =>
+        S.Struct({
+          email: S.NullOr(S.String),
+          id: S.String,
+          name: S.NullOr(S.String),
+          profile_pic: S.String,
+          username: S.String,
+        }),
+      ).annotate({ identifier: "LegacyMembershipUser" });
+    case 9:
+      return S.suspend(() =>
+        S.Struct({
+          cancel_at_period_end: S.Boolean,
+          cancel_option: S.NullOr(S.String),
+          cancelation_status: S.NullOr(S.String),
+          canceled_at: S.NullOr(S.String),
+          cancellation_reason: S.NullOr(S.String),
+          checkout_configuration_id: S.NullOr(S.String),
+          company: __S(144, __c9, 0),
+          created_at: S.String,
+          currency: S.NullOr(S.String),
+          custom_field_responses: __S(146, __c9, 2),
+          formatted_renewal_price: S.NullOr(S.String),
+          id: S.String,
+          initial_price_paid: S.String,
+          joined_at: S.NullOr(S.String),
+          license_key: S.NullOr(S.String),
+          manage_url: S.NullOr(S.String),
+          member: S.NullOr(__S(147, __c9, 3)),
+          metadata: S.NullOr(__S(148, __c9, 4)),
+          payment_collection_paused: S.Boolean,
+          plan: __S(149, __c9, 5),
+          product: __S(150, __c9, 6),
+          promo_code: S.NullOr(__S(151, __c9, 7)),
+          renewal_period_end: S.NullOr(S.String),
+          renewal_period_start: S.NullOr(S.String),
+          status: S.String,
+          updated_at: S.String,
+          user: S.NullOr(__S(152, __c9, 8)),
+        }),
+      ).annotate({ identifier: "LegacyMembership" });
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String.pipe(T.Label()),
+          cancel_at_period_end: S.optional(S.Boolean),
+          reason: S.optional(S.String),
+          idempotency_key: S.optional(S.String.pipe(T.Header("Idempotency-Key"))),
+        }).pipe(T.Http({ method: "POST", uri: "/memberships/{id}/cancel", code: 200 })),
+      ).annotate({ identifier: "CancelMembershipRequest" });
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          logo_url: S.NullOr(S.String),
+          route: S.String,
+          title: S.String,
+        }),
+      ).annotate({ identifier: "StorefrontAccount" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          access_level: S.String,
+          last_accessed_at: S.NullOr(S.String),
+          position: S.NullOr(S.Number),
+        }),
+      ).annotate({ identifier: "MembershipMember" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          account: __S(176, __c11, 0),
+          cancel_at_period_end: S.Boolean,
+          canceled_at: S.NullOr(S.String),
+          cancellation_reason: S.NullOr(S.String),
+          created_at: S.String,
+          current_period_end: S.NullOr(S.String),
+          current_period_start: S.NullOr(S.String),
+          id: S.String,
+          license_key: S.NullOr(S.String),
+          manage_url: S.NullOr(S.String),
+          member: S.NullOr(__S(177, __c11, 1)),
+          metadata: S.Unknown,
+          phone_number: S.NullOr(S.String),
+          plan_id: S.String,
+          product_id: S.String,
+          status: S.String,
+          user_id: S.NullOr(S.String),
+        }),
+      ).annotate({ identifier: "Membership" });
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String.pipe(T.Label()),
+          days: S.Number,
+          idempotency_key: S.optional(S.String.pipe(T.Header("Idempotency-Key"))),
+        }).pipe(T.Http({ method: "POST", uri: "/memberships/{id}/extend", code: 200 })),
+      ).annotate({ identifier: "ExtendMembershipRequest" });
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String.pipe(T.Label()),
+        }).pipe(T.Http({ method: "GET", uri: "/memberships/{id}", code: 200 })),
+      ).annotate({ identifier: "GetMembershipRequest" });
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          email: S.optional(S.String),
+          plan_id: S.String,
+          user_id: S.optional(S.String),
+          idempotency_key: S.optional(S.String.pipe(T.Header("Idempotency-Key"))),
+        }).pipe(T.Http({ method: "POST", uri: "/memberships/invite", code: 200 })),
+      ).annotate({ identifier: "InviteMembershipRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          invitation_sent: S.Boolean,
+        }),
+      ).annotate({ identifier: "InviteMembershipResponse" });
+  }
+}
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

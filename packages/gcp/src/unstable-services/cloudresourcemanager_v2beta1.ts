@@ -302,8 +302,8 @@ export const createFolders: API.OperationMethod<
   CreateFoldersError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3, __c0, 3) as any as S.Schema<CreateFoldersRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<Operation>,
+  input: __S(48, __c6, 0) as any as S.Schema<CreateFoldersRequest>,
+  output: __S(75, __c9, 3) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -317,8 +317,8 @@ export const deleteFolders: API.OperationMethod<
   DeleteFoldersError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(8, __c1, 0) as any as S.Schema<DeleteFoldersRequest>,
-  output: __S(2, __c0, 2) as any as S.Schema<Folder>,
+  input: __S(80, __c10, 0) as any as S.Schema<DeleteFoldersRequest>,
+  output: __S(65, __c8, 1) as any as S.Schema<Folder>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -332,8 +332,8 @@ export const getFolders: API.OperationMethod<
   GetFoldersError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(9, __c1, 1) as any as S.Schema<GetFoldersRequest>,
-  output: __S(2, __c0, 2) as any as S.Schema<Folder>,
+  input: __S(88, __c11, 0) as any as S.Schema<GetFoldersRequest>,
+  output: __S(65, __c8, 1) as any as S.Schema<Folder>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -347,8 +347,8 @@ export const getIamPolicyFolders: API.OperationMethod<
   GetIamPolicyFoldersError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(12, __c1, 4) as any as S.Schema<GetIamPolicyFoldersRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<Policy>,
+  input: __S(98, __c12, 2) as any as S.Schema<GetIamPolicyFoldersRequest>,
+  output: __S(111, __c13, 7) as any as S.Schema<Policy>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -362,8 +362,8 @@ export const getOperations: API.OperationMethod<
   GetOperationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(21, __c2, 5) as any as S.Schema<GetOperationsRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<Operation>,
+  input: __S(112, __c14, 0) as any as S.Schema<GetOperationsRequest>,
+  output: __S(75, __c9, 3) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -378,8 +378,8 @@ export const listFolders: API.PaginatedOperationMethod<
   GcpOpContext,
   ListFoldersResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(22, __c2, 6) as any as S.Schema<ListFoldersRequest>,
-  output: __S(24, __c3, 0) as any as S.Schema<ListFoldersResponse>,
+  input: __S(120, __c15, 0) as any as S.Schema<ListFoldersRequest>,
+  output: __S(121, __c15, 1) as any as S.Schema<ListFoldersResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -394,8 +394,8 @@ export const moveFolders: API.OperationMethod<
   MoveFoldersError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(26, __c3, 2) as any as S.Schema<MoveFoldersRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<Operation>,
+  input: __S(1, __c0, 1) as any as S.Schema<MoveFoldersRequest>,
+  output: __S(75, __c9, 3) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -409,8 +409,8 @@ export const patchFolders: API.OperationMethod<
   PatchFoldersError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(27, __c3, 3) as any as S.Schema<PatchFoldersRequest>,
-  output: __S(2, __c0, 2) as any as S.Schema<Folder>,
+  input: __S(8, __c1, 0) as any as S.Schema<PatchFoldersRequest>,
+  output: __S(65, __c8, 1) as any as S.Schema<Folder>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -424,8 +424,8 @@ export const searchFolders: API.OperationMethod<
   SearchFoldersError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(29, __c3, 5) as any as S.Schema<SearchFoldersRequest_>,
-  output: __S(30, __c3, 6) as any as S.Schema<SearchFoldersResponse>,
+  input: __S(17, __c2, 1) as any as S.Schema<SearchFoldersRequest_>,
+  output: __S(18, __c2, 2) as any as S.Schema<SearchFoldersResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -439,8 +439,8 @@ export const setIamPolicyFolders: API.OperationMethod<
   SetIamPolicyFoldersError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(32, __c4, 0) as any as S.Schema<SetIamPolicyFoldersRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<Policy>,
+  input: __S(25, __c3, 1) as any as S.Schema<SetIamPolicyFoldersRequest>,
+  output: __S(111, __c13, 7) as any as S.Schema<Policy>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -459,8 +459,8 @@ export const testIamPermissionsFolders: API.OperationMethod<
   TestIamPermissionsFoldersError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(34, __c4, 2) as any as S.Schema<TestIamPermissionsFoldersRequest>,
-  output: __S(33, __c4, 1) as any as S.Schema<TestIamPermissionsResponse>,
+  input: __S(33, __c4, 1) as any as S.Schema<TestIamPermissionsFoldersRequest>,
+  output: __S(32, __c4, 0) as any as S.Schema<TestIamPermissionsResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -474,8 +474,8 @@ export const undeleteFolders: API.OperationMethod<
   UndeleteFoldersError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(36, __c4, 4) as any as S.Schema<UndeleteFoldersRequest>,
-  output: __S(2, __c0, 2) as any as S.Schema<Folder>,
+  input: __S(41, __c5, 1) as any as S.Schema<UndeleteFoldersRequest>,
+  output: __S(65, __c8, 1) as any as S.Schema<Folder>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -485,27 +485,156 @@ export const undeleteFolders: API.OperationMethod<
 function __c0(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(S.String);
+      return S.suspend(() =>
+        S.Struct({
+          destinationParent: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "MoveFolderRequest" });
     case 1:
-      return S.Record(S.String, S.String);
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+          body: S.optional(__S(0, __c0, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v2/{+name}:move",
+            baseUrl: "https://cloudresourcemanager.googleapis.com/",
+          }),
+        ),
+      ).annotate({ identifier: "MoveFoldersRequest" });
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          updateMask: S.optional(S.String.pipe(T.Query())),
+          name: S.String.pipe(T.Label()),
+          body: S.optional(__S(65, __c8, 1).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "PATCH",
+            uri: "v2/{+name}",
+            baseUrl: "https://cloudresourcemanager.googleapis.com/",
+          }),
+        ),
+      ).annotate({ identifier: "PatchFoldersRequest" });
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          query: S.optional(S.String),
+          pageToken: S.optional(S.String),
+          pageSize: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "SearchFoldersRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          body: S.optional(__S(16, __c2, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v2/folders:search",
+            baseUrl: "https://cloudresourcemanager.googleapis.com/",
+          }),
+        ),
+      ).annotate({ identifier: "SearchFoldersRequest_" });
     case 2:
       return S.suspend(() =>
         S.Struct({
-          configuredCapabilities: S.optional(__S(0, __c0, 0)),
-          displayName: S.optional(S.String),
-          lifecycleState: S.optional(S.String),
-          createTime: S.optional(S.String),
-          name: S.optional(S.String),
-          tags: S.optional(__S(1, __c0, 1)),
-          parent: S.optional(S.String),
-          managementProject: S.optional(S.String),
+          nextPageToken: S.optional(S.String),
+          folders: S.optional(__S(128, __c16, 0)),
         }),
-      ).annotate({ identifier: "Folder" });
-    case 3:
+      ).annotate({ identifier: "SearchFoldersResponse" });
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          policy: S.optional(__S(111, __c13, 7)),
+          updateMask: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "SetIamPolicyRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          resource: S.String.pipe(T.Label()),
+          body: S.optional(__S(24, __c3, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v2/{+resource}:setIamPolicy",
+            baseUrl: "https://cloudresourcemanager.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "SetIamPolicyFoldersRequest",
+      });
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          permissions: S.optional(__S(56, __c7, 0)),
+        }),
+      ).annotate({
+        identifier: "TestIamPermissionsRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          resource: S.String.pipe(T.Label()),
+          body: S.optional(__S(32, __c4, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v2/{+resource}:testIamPermissions",
+            baseUrl: "https://cloudresourcemanager.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "TestIamPermissionsFoldersRequest",
+      });
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "UndeleteFolderRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+          body: S.optional(__S(40, __c5, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v2/{+name}:undelete",
+            baseUrl: "https://cloudresourcemanager.googleapis.com/",
+          }),
+        ),
+      ).annotate({ identifier: "UndeleteFoldersRequest" });
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           parent: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(2, __c0, 2).pipe(T.HttpBody())),
+          body: S.optional(__S(65, __c8, 1).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -514,31 +643,60 @@ function __c0(j: number): any {
           }),
         ),
       ).annotate({ identifier: "CreateFoldersRequest" });
-    case 4:
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, S.String);
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          configuredCapabilities: S.optional(__S(56, __c7, 0)),
+          displayName: S.optional(S.String),
+          lifecycleState: S.optional(S.String),
+          createTime: S.optional(S.String),
+          name: S.optional(S.String),
+          tags: S.optional(__S(64, __c8, 0)),
+          parent: S.optional(S.String),
+          managementProject: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Folder" });
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
       return S.Record(S.String, S.Unknown);
-    case 5:
-      return S.Array(__S(4, __c0, 4));
-    case 6:
+    case 1:
+      return S.Array(__S(72, __c9, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           message: S.optional(S.String),
-          details: S.optional(__S(5, __c0, 5)),
+          details: S.optional(__S(73, __c9, 1)),
           code: S.optional(S.Number),
         }),
       ).annotate({ identifier: "Status" });
-    case 7:
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          response: S.optional(__S(4, __c0, 4)),
+          response: S.optional(__S(72, __c9, 0)),
           name: S.optional(S.String),
-          metadata: S.optional(__S(4, __c0, 4)),
-          error: S.optional(__S(6, __c0, 6)),
+          metadata: S.optional(__S(72, __c9, 0)),
+          error: S.optional(__S(74, __c9, 2)),
           done: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "Operation" });
   }
 }
-function __c1(j: number): any {
+function __c10(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -552,7 +710,11 @@ function __c1(j: number): any {
           }),
         ),
       ).annotate({ identifier: "DeleteFoldersRequest" });
-    case 1:
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -564,23 +726,27 @@ function __c1(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetFoldersRequest" });
-    case 2:
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           requestedPolicyVersion: S.optional(S.Number),
         }),
       ).annotate({ identifier: "GetPolicyOptions" });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          options: S.optional(__S(10, __c1, 2)),
+          options: S.optional(__S(96, __c12, 0)),
         }),
       ).annotate({ identifier: "GetIamPolicyRequest" });
-    case 4:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           resource: S.String.pipe(T.Label()),
-          body: S.optional(__S(11, __c1, 3).pipe(T.HttpBody())),
+          body: S.optional(__S(97, __c12, 1).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -591,29 +757,29 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "GetIamPolicyFoldersRequest",
       });
-    case 5:
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          exemptedMembers: S.optional(__S(0, __c0, 0)),
+          exemptedMembers: S.optional(__S(56, __c7, 0)),
           logType: S.optional(S.String),
         }),
       ).annotate({ identifier: "AuditLogConfig" });
-    case 6:
-      return S.Array(__S(13, __c1, 5));
-    case 7:
+    case 1:
+      return S.Array(__S(104, __c13, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          auditLogConfigs: S.optional(__S(14, __c1, 6)),
+          auditLogConfigs: S.optional(__S(105, __c13, 1)),
           service: S.optional(S.String),
         }),
       ).annotate({ identifier: "AuditConfig" });
-  }
-}
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(15, __c1, 7));
-    case 1:
+    case 3:
+      return S.Array(__S(106, __c13, 2));
+    case 4:
       return S.suspend(() =>
         S.Struct({
           description: S.optional(S.String),
@@ -622,26 +788,30 @@ function __c2(j: number): any {
           location: S.optional(S.String),
         }),
       ).annotate({ identifier: "Expr" });
-    case 2:
+    case 5:
       return S.suspend(() =>
         S.Struct({
           role: S.optional(S.String),
-          members: S.optional(__S(0, __c0, 0)),
-          condition: S.optional(__S(17, __c2, 1)),
+          members: S.optional(__S(56, __c7, 0)),
+          condition: S.optional(__S(108, __c13, 4)),
         }),
       ).annotate({ identifier: "Binding" });
-    case 3:
-      return S.Array(__S(18, __c2, 2));
-    case 4:
+    case 6:
+      return S.Array(__S(109, __c13, 5));
+    case 7:
       return S.suspend(() =>
         S.Struct({
-          auditConfigs: S.optional(__S(16, __c2, 0)),
-          bindings: S.optional(__S(19, __c2, 3)),
+          auditConfigs: S.optional(__S(107, __c13, 3)),
+          bindings: S.optional(__S(110, __c13, 6)),
           version: S.optional(S.Number),
           etag: S.optional(S.String),
         }),
       ).annotate({ identifier: "Policy" });
-    case 5:
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -653,7 +823,11 @@ function __c2(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetOperationsRequest" });
-    case 6:
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           parent: S.optional(S.String.pipe(T.Query())),
@@ -668,148 +842,21 @@ function __c2(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ListFoldersRequest" });
-    case 7:
-      return S.Array(__S(2, __c0, 2));
-  }
-}
-function __c3(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          folders: S.optional(__S(23, __c2, 7)),
+          folders: S.optional(__S(128, __c16, 0)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListFoldersResponse" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          destinationParent: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "MoveFolderRequest" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-          body: S.optional(__S(25, __c3, 1).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v2/{+name}:move",
-            baseUrl: "https://cloudresourcemanager.googleapis.com/",
-          }),
-        ),
-      ).annotate({ identifier: "MoveFoldersRequest" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          updateMask: S.optional(S.String.pipe(T.Query())),
-          name: S.String.pipe(T.Label()),
-          body: S.optional(__S(2, __c0, 2).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "PATCH",
-            uri: "v2/{+name}",
-            baseUrl: "https://cloudresourcemanager.googleapis.com/",
-          }),
-        ),
-      ).annotate({ identifier: "PatchFoldersRequest" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          query: S.optional(S.String),
-          pageToken: S.optional(S.String),
-          pageSize: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "SearchFoldersRequest" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          body: S.optional(__S(28, __c3, 4).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v2/folders:search",
-            baseUrl: "https://cloudresourcemanager.googleapis.com/",
-          }),
-        ),
-      ).annotate({ identifier: "SearchFoldersRequest_" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          nextPageToken: S.optional(S.String),
-          folders: S.optional(__S(23, __c2, 7)),
-        }),
-      ).annotate({ identifier: "SearchFoldersResponse" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          policy: S.optional(__S(20, __c2, 4)),
-          updateMask: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "SetIamPolicyRequest" });
   }
 }
-function __c4(j: number): any {
+function __c16(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() =>
-        S.Struct({
-          resource: S.String.pipe(T.Label()),
-          body: S.optional(__S(31, __c3, 7).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v2/{+resource}:setIamPolicy",
-            baseUrl: "https://cloudresourcemanager.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "SetIamPolicyFoldersRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          permissions: S.optional(__S(0, __c0, 0)),
-        }),
-      ).annotate({
-        identifier: "TestIamPermissionsRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          resource: S.String.pipe(T.Label()),
-          body: S.optional(__S(33, __c4, 1).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v2/{+resource}:testIamPermissions",
-            baseUrl: "https://cloudresourcemanager.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "TestIamPermissionsFoldersRequest",
-      });
-    case 3:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "UndeleteFolderRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-          body: S.optional(__S(35, __c4, 3).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v2/{+name}:undelete",
-            baseUrl: "https://cloudresourcemanager.googleapis.com/",
-          }),
-        ),
-      ).annotate({ identifier: "UndeleteFoldersRequest" });
+      return S.Array(__S(65, __c8, 1));
   }
 }
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

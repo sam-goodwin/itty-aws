@@ -248,7 +248,7 @@ export const createExport: API.OperationMethod<
   WhopOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(1, __c0, 1) as any as S.Schema<CreateExportRequest>,
-  output: __S(2, __c0, 2) as any as S.Schema<Export>,
+  output: __S(4, __c1, 0) as any as S.Schema<Export>,
   errors: [BadRequest, Forbidden, Conflict],
   protocol: WhopProtocol,
   retry: Retry.Retry,
@@ -262,8 +262,8 @@ export const getExport: API.OperationMethod<
   GetExportError,
   WhopOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3, __c0, 3) as any as S.Schema<GetExportRequest>,
-  output: __S(2, __c0, 2) as any as S.Schema<Export>,
+  input: __S(8, __c2, 0) as any as S.Schema<GetExportRequest>,
+  output: __S(4, __c1, 0) as any as S.Schema<Export>,
   errors: [Forbidden, NotFound],
   protocol: WhopProtocol,
   retry: Retry.Retry,
@@ -277,8 +277,8 @@ export const listExports: API.OperationMethod<
   ListExportsError,
   WhopOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(4, __c0, 4) as any as S.Schema<ListExportsRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<ListExportsResponse>,
+  input: __S(12, __c3, 0) as any as S.Schema<ListExportsRequest>,
+  output: __S(15, __c3, 3) as any as S.Schema<ListExportsResponse>,
   errors: [BadRequest, Forbidden],
   protocol: WhopProtocol,
   retry: Retry.Retry,
@@ -300,7 +300,11 @@ function __c0(j: number): any {
           idempotency_key: S.optional(S.String.pipe(T.Header("Idempotency-Key"))),
         }).pipe(T.Http({ method: "POST", uri: "/exports", code: 200 })),
       ).annotate({ identifier: "CreateExportRequest" });
-    case 2:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           created_at: S.String,
@@ -313,13 +317,21 @@ function __c0(j: number): any {
           updated_at: S.String,
         }),
       ).annotate({ identifier: "Export" });
-    case 3:
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.String.pipe(T.Label()),
         }).pipe(T.Http({ method: "GET", uri: "/exports/{id}", code: 200 })),
       ).annotate({ identifier: "GetExportRequest" });
-    case 4:
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           account_id: S.optional(S.String.pipe(T.Query())),
@@ -331,9 +343,9 @@ function __c0(j: number): any {
           direction: S.optional(S.String.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/exports", code: 200 })),
       ).annotate({ identifier: "ListExportsRequest" });
-    case 5:
-      return S.Array(__S(2, __c0, 2));
-    case 6:
+    case 1:
+      return S.Array(__S(4, __c1, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           end_cursor: S.NullOr(S.String),
@@ -344,16 +356,15 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "ListExportsResponsePageInfo",
       });
-    case 7:
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          data: __S(5, __c0, 5),
-          page_info: __S(6, __c0, 6),
+          data: __S(13, __c3, 1),
+          page_info: __S(14, __c3, 2),
         }),
       ).annotate({ identifier: "ListExportsResponse" });
   }
 }
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

@@ -363,8 +363,8 @@ export const createBlob: API.OperationMethod<
   CreateBlobError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(0, __c0, 0) as any as S.Schema<CreateBlobRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<ShortBlob>,
+  input: __S(56, __c7, 0) as any as S.Schema<CreateBlobRequest>,
+  output: __S(57, __c7, 1) as any as S.Schema<ShortBlob>,
   errors: [Forbidden, NotFound, Conflict, UnprocessableEntity],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -378,8 +378,8 @@ export const createCommit: API.OperationMethod<
   CreateCommitError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(5, __c0, 5) as any as S.Schema<CreateCommitRequest>,
-  output: __S(11, __c1, 3) as any as S.Schema<GitCommit>,
+  input: __S(67, __c8, 3) as any as S.Schema<CreateCommitRequest>,
+  output: __S(76, __c9, 4) as any as S.Schema<GitCommit>,
   errors: [NotFound, Conflict, UnprocessableEntity],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -393,8 +393,8 @@ export const createRef: API.OperationMethod<
   CreateRefError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(12, __c1, 4) as any as S.Schema<CreateRefRequest>,
-  output: __S(14, __c1, 6) as any as S.Schema<GitRef>,
+  input: __S(88, __c11, 0) as any as S.Schema<CreateRefRequest>,
+  output: __S(97, __c12, 1) as any as S.Schema<GitRef>,
   errors: [Conflict, UnprocessableEntity],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -408,8 +408,8 @@ export const createTag: API.OperationMethod<
   CreateTagError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(16, __c2, 0) as any as S.Schema<CreateTagRequest>,
-  output: __S(19, __c2, 3) as any as S.Schema<GitTag>,
+  input: __S(105, __c13, 1) as any as S.Schema<CreateTagRequest>,
+  output: __S(114, __c14, 2) as any as S.Schema<GitTag>,
   errors: [Conflict, UnprocessableEntity],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -423,8 +423,8 @@ export const createTree: API.OperationMethod<
   CreateTreeError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(22, __c2, 6) as any as S.Schema<CreateTreeRequest>,
-  output: __S(25, __c3, 1) as any as S.Schema<GitTree>,
+  input: __S(122, __c15, 2) as any as S.Schema<CreateTreeRequest>,
+  output: __S(130, __c16, 2) as any as S.Schema<GitTree>,
   errors: [Forbidden, NotFound, Conflict, UnprocessableEntity],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -438,8 +438,8 @@ export const deleteRef: API.OperationMethod<
   DeleteRefError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(26, __c3, 2) as any as S.Schema<DeleteRefRequest>,
-  output: __S(27, __c3, 3) as any as S.Schema<DeleteRefResponse>,
+  input: __S(136, __c17, 0) as any as S.Schema<DeleteRefRequest>,
+  output: __S(137, __c17, 1) as any as S.Schema<DeleteRefResponse>,
   errors: [Conflict, UnprocessableEntity],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -449,8 +449,8 @@ export type GetBlobError = Forbidden | NotFound | Conflict | UnprocessableEntity
 /** Get a blob The `content` in the response will always be Base64 encoded. This endpoint supports the following custom media types. For more information, see "[Media types](https://docs.github.com/rest/using-the-rest-api/getting-started-with-the-rest-api#media-types)." - **`application/vnd.github.raw+json`**: Returns the raw blob data. - **`application/vnd.github+json`**: Returns a JSON representation of the blob with `content` as a base64 encoded string. This is the default if no media type is specified. **Note** This endpoint supports blobs up to 100 megabytes in size. */
 export const getBlob: API.OperationMethod<GetBlobRequest, Blob, GetBlobError, GithubOpContext> =
   /*@__PURE__*/ API.make(() => ({
-    input: __S(28, __c3, 4) as any as S.Schema<GetBlobRequest>,
-    output: __S(29, __c3, 5) as any as S.Schema<Blob>,
+    input: __S(0, __c0, 0) as any as S.Schema<GetBlobRequest>,
+    output: __S(1, __c0, 1) as any as S.Schema<Blob>,
     errors: [Forbidden, NotFound, Conflict, UnprocessableEntity],
     protocol: GithubProtocol,
     retry: Retry.Retry,
@@ -464,8 +464,8 @@ export const getCommit: API.OperationMethod<
   GetCommitError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(30, __c3, 6) as any as S.Schema<GetCommitRequest>,
-  output: __S(11, __c1, 3) as any as S.Schema<GitCommit>,
+  input: __S(8, __c1, 0) as any as S.Schema<GetCommitRequest>,
+  output: __S(76, __c9, 4) as any as S.Schema<GitCommit>,
   errors: [NotFound, Conflict],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -475,8 +475,8 @@ export type GetRefError = NotFound | Conflict | GithubOpError;
 /** Get a reference Returns a single reference from your Git database. The `:ref` in the URL must be formatted as `heads/<branch name>` for branches and `tags/<tag name>` for tags. If the `:ref` doesn't match an existing ref, a `404` is returned. > [!NOTE] > You need to explicitly [request a pull request](https://docs.github.com/rest/pulls/pulls#get-a-pull-request) to trigger a test merge commit, which checks the mergeability of pull requests. For more information, see "[Checking mergeability of pull requests](https://docs.github.com/rest/guides/getting-started-with-the-git-database-api#checking-mergeability-of-pull-requests)". */
 export const getRef: API.OperationMethod<GetRefRequest, GitRef, GetRefError, GithubOpContext> =
   /*@__PURE__*/ API.make(() => ({
-    input: __S(31, __c3, 7) as any as S.Schema<GetRefRequest>,
-    output: __S(14, __c1, 6) as any as S.Schema<GitRef>,
+    input: __S(16, __c2, 0) as any as S.Schema<GetRefRequest>,
+    output: __S(97, __c12, 1) as any as S.Schema<GitRef>,
     errors: [NotFound, Conflict],
     protocol: GithubProtocol,
     retry: Retry.Retry,
@@ -486,8 +486,8 @@ export type GetTagError = NotFound | Conflict | GithubOpError;
 /** Get a tag **Signature verification object** The response will include a `verification` object that describes the result of verifying the commit's signature. The following fields are included in the `verification` object: These are the possible values for `reason` in the `verification` object: */
 export const getTag: API.OperationMethod<GetTagRequest, GitTag, GetTagError, GithubOpContext> =
   /*@__PURE__*/ API.make(() => ({
-    input: __S(32, __c4, 0) as any as S.Schema<GetTagRequest>,
-    output: __S(19, __c2, 3) as any as S.Schema<GitTag>,
+    input: __S(24, __c3, 0) as any as S.Schema<GetTagRequest>,
+    output: __S(114, __c14, 2) as any as S.Schema<GitTag>,
     errors: [NotFound, Conflict],
     protocol: GithubProtocol,
     retry: Retry.Retry,
@@ -497,8 +497,8 @@ export type GetTreeError = NotFound | Conflict | UnprocessableEntity | GithubOpE
 /** Get a tree Returns a single tree using the SHA1 value or ref name for that tree. If `truncated` is `true` in the response then the number of items in the `tree` array exceeded our maximum limit. If you need to fetch more items, use the non-recursive method of fetching trees, and fetch one sub-tree at a time. > [!NOTE] > The limit for the `tree` array is 100,000 entries with a maximum size of 7 MB when using the `recursive` parameter. */
 export const getTree: API.OperationMethod<GetTreeRequest, GitTree, GetTreeError, GithubOpContext> =
   /*@__PURE__*/ API.make(() => ({
-    input: __S(33, __c4, 1) as any as S.Schema<GetTreeRequest>,
-    output: __S(25, __c3, 1) as any as S.Schema<GitTree>,
+    input: __S(32, __c4, 0) as any as S.Schema<GetTreeRequest>,
+    output: __S(130, __c16, 2) as any as S.Schema<GitTree>,
     errors: [NotFound, Conflict, UnprocessableEntity],
     protocol: GithubProtocol,
     retry: Retry.Retry,
@@ -512,8 +512,8 @@ export const listMatchingRefs: API.OperationMethod<
   ListMatchingRefsError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(34, __c4, 2) as any as S.Schema<ListMatchingRefsRequest>,
-  output: __S(36, __c4, 4) as any as S.Schema<ListMatchingRefsResponse>,
+  input: __S(40, __c5, 0) as any as S.Schema<ListMatchingRefsRequest>,
+  output: __S(42, __c5, 2) as any as S.Schema<ListMatchingRefsResponse>,
   errors: [Conflict],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -527,8 +527,8 @@ export const updateRef: API.OperationMethod<
   UpdateRefError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(37, __c4, 5) as any as S.Schema<UpdateRefRequest>,
-  output: __S(14, __c1, 6) as any as S.Schema<GitRef>,
+  input: __S(48, __c6, 0) as any as S.Schema<UpdateRefRequest>,
+  output: __S(97, __c12, 1) as any as S.Schema<GitRef>,
   errors: [Conflict, UnprocessableEntity],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -536,6 +536,131 @@ export const updateRef: API.OperationMethod<
 
 // Schema builders: each runs one schema initializer, on that schema's first use.
 function __c0(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          owner: S.String.pipe(T.Label()),
+          repo: S.String.pipe(T.Label()),
+          file_sha: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({ method: "GET", uri: "/repos/{owner}/{repo}/git/blobs/{file_sha}", code: 200 }),
+        ),
+      ).annotate({ identifier: "GetBlobRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          content: S.String,
+          encoding: S.String,
+          url: S.String,
+          sha: S.String,
+          size: S.NullOr(S.Number),
+          node_id: S.String,
+          highlighted_content: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Blob" });
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          owner: S.String.pipe(T.Label()),
+          repo: S.String.pipe(T.Label()),
+          commit_sha: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/repos/{owner}/{repo}/git/commits/{commit_sha}",
+            code: 200,
+          }),
+        ),
+      ).annotate({ identifier: "GetCommitRequest" });
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          owner: S.String.pipe(T.Label()),
+          repo: S.String.pipe(T.Label()),
+          ref: S.String.pipe(T.Label()),
+        }).pipe(T.Http({ method: "GET", uri: "/repos/{owner}/{repo}/git/ref/{ref}", code: 200 })),
+      ).annotate({ identifier: "GetRefRequest" });
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          owner: S.String.pipe(T.Label()),
+          repo: S.String.pipe(T.Label()),
+          tag_sha: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({ method: "GET", uri: "/repos/{owner}/{repo}/git/tags/{tag_sha}", code: 200 }),
+        ),
+      ).annotate({ identifier: "GetTagRequest" });
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          owner: S.String.pipe(T.Label()),
+          repo: S.String.pipe(T.Label()),
+          tree_sha: S.String.pipe(T.Label()),
+          recursive: S.optional(S.String.pipe(T.Query())),
+        }).pipe(
+          T.Http({ method: "GET", uri: "/repos/{owner}/{repo}/git/trees/{tree_sha}", code: 200 }),
+        ),
+      ).annotate({ identifier: "GetTreeRequest" });
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          owner: S.String.pipe(T.Label()),
+          repo: S.String.pipe(T.Label()),
+          ref: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/repos/{owner}/{repo}/git/matching-refs/{ref}",
+            code: 200,
+          }),
+        ),
+      ).annotate({ identifier: "ListMatchingRefsRequest" });
+    case 1:
+      return S.Array(__S(97, __c12, 1));
+    case 2:
+      return S.suspend(() => __S(41, __c5, 1).pipe(T.RawResponseRoot())).annotate({
+        identifier: "ListMatchingRefsResponse",
+      });
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          owner: S.String.pipe(T.Label()),
+          repo: S.String.pipe(T.Label()),
+          ref: S.String.pipe(T.Label()),
+          sha: S.String,
+          force: S.optional(S.Boolean),
+        }).pipe(
+          T.Http({ method: "PATCH", uri: "/repos/{owner}/{repo}/git/refs/{ref}", code: 200 }),
+        ),
+      ).annotate({ identifier: "UpdateRefRequest" });
+  }
+}
+function __c7(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -553,9 +678,13 @@ function __c0(j: number): any {
           sha: S.String,
         }),
       ).annotate({ identifier: "ShortBlob" });
-    case 2:
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
       return S.Array(S.String);
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           name: S.String,
@@ -565,7 +694,7 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "CreateCommitRequestAuthor",
       });
-    case 4:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
@@ -575,39 +704,31 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "CreateCommitRequestCommitter",
       });
-    case 5:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           owner: S.String.pipe(T.Label()),
           repo: S.String.pipe(T.Label()),
           message: S.String,
           tree: S.String,
-          parents: S.optional(__S(2, __c0, 2)),
-          author: S.optional(__S(3, __c0, 3)),
-          committer: S.optional(__S(4, __c0, 4)),
+          parents: S.optional(__S(64, __c8, 0)),
+          author: S.optional(__S(65, __c8, 1)),
+          committer: S.optional(__S(66, __c8, 2)),
           signature: S.optional(S.String),
         }).pipe(T.Http({ method: "POST", uri: "/repos/{owner}/{repo}/git/commits", code: 200 })),
       ).annotate({ identifier: "CreateCommitRequest" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          date: S.String,
-          email: S.String,
-          name: S.String,
-        }),
-      ).annotate({ identifier: "GitCommitAuthor" });
-    case 7:
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           sha: S.String,
           url: S.String,
         }),
       ).annotate({ identifier: "GitCommitTree" });
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           sha: S.String,
@@ -615,9 +736,9 @@ function __c1(j: number): any {
           html_url: S.String,
         }),
       ).annotate({ identifier: "GitCommitParentsItem" });
-    case 1:
-      return S.Array(__S(8, __c1, 0));
     case 2:
+      return S.Array(__S(73, __c9, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
           verified: S.Boolean,
@@ -627,22 +748,38 @@ function __c1(j: number): any {
           verified_at: S.NullOr(S.String),
         }),
       ).annotate({ identifier: "GitCommitVerification" });
-    case 3:
+    case 4:
       return S.suspend(() =>
         S.Struct({
           sha: S.String,
           node_id: S.String,
           url: S.String,
-          author: __S(6, __c0, 6),
-          committer: __S(6, __c0, 6),
+          author: __S(80, __c10, 0),
+          committer: __S(80, __c10, 0),
           message: S.String,
-          tree: __S(7, __c0, 7),
-          parents: __S(9, __c1, 1),
-          verification: __S(10, __c1, 2),
+          tree: __S(72, __c9, 0),
+          parents: __S(74, __c9, 2),
+          verification: __S(75, __c9, 3),
           html_url: S.String,
         }),
       ).annotate({ identifier: "GitCommit" });
-    case 4:
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          date: S.String,
+          email: S.String,
+          name: S.String,
+        }),
+      ).annotate({ identifier: "GitCommitAuthor" });
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           owner: S.String.pipe(T.Label()),
@@ -651,7 +788,11 @@ function __c1(j: number): any {
           sha: S.String,
         }).pipe(T.Http({ method: "POST", uri: "/repos/{owner}/{repo}/git/refs", code: 200 })),
       ).annotate({ identifier: "CreateRefRequest" });
-    case 5:
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           type: S.String,
@@ -659,16 +800,20 @@ function __c1(j: number): any {
           url: S.String,
         }),
       ).annotate({ identifier: "GitRefObject" });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           ref: S.String,
           node_id: S.String,
           url: S.String,
-          object: __S(13, __c1, 5),
+          object: __S(96, __c12, 0),
         }),
       ).annotate({ identifier: "GitRef" });
-    case 7:
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String,
@@ -676,11 +821,7 @@ function __c1(j: number): any {
           date: S.optional(S.String),
         }),
       ).annotate({ identifier: "CreateTagRequestTagger" });
-  }
-}
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           owner: S.String.pipe(T.Label()),
@@ -689,10 +830,14 @@ function __c2(j: number): any {
           message: S.String,
           object: S.String,
           type: S.String,
-          tagger: S.optional(__S(15, __c1, 7)),
+          tagger: S.optional(__S(104, __c13, 0)),
         }).pipe(T.Http({ method: "POST", uri: "/repos/{owner}/{repo}/git/tags", code: 200 })),
       ).annotate({ identifier: "CreateTagRequest" });
-    case 1:
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           sha: S.String,
@@ -700,7 +845,7 @@ function __c2(j: number): any {
           url: S.String,
         }),
       ).annotate({ identifier: "GitTagObject" });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           verified: S.Boolean,
@@ -710,7 +855,7 @@ function __c2(j: number): any {
           verified_at: S.NullOr(S.String),
         }),
       ).annotate({ identifier: "Verification" });
-    case 3:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           node_id: S.String,
@@ -718,12 +863,16 @@ function __c2(j: number): any {
           sha: S.String,
           url: S.String,
           message: S.String,
-          tagger: __S(6, __c0, 6),
-          object: __S(17, __c2, 1),
-          verification: S.optional(__S(18, __c2, 2)),
+          tagger: __S(80, __c10, 0),
+          object: __S(112, __c14, 0),
+          verification: S.optional(__S(113, __c14, 1)),
         }),
       ).annotate({ identifier: "GitTag" });
-    case 4:
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           path: S.optional(S.String),
@@ -735,18 +884,22 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "CreateTreeRequestTreeItem",
       });
-    case 5:
-      return S.Array(__S(20, __c2, 4));
-    case 6:
+    case 1:
+      return S.Array(__S(120, __c15, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           owner: S.String.pipe(T.Label()),
           repo: S.String.pipe(T.Label()),
-          tree: __S(21, __c2, 5),
+          tree: __S(121, __c15, 1),
           base_tree: S.optional(S.String),
         }).pipe(T.Http({ method: "POST", uri: "/repos/{owner}/{repo}/git/trees", code: 200 })),
       ).annotate({ identifier: "CreateTreeRequest" });
-    case 7:
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           path: S.String,
@@ -757,22 +910,22 @@ function __c2(j: number): any {
           url: S.optional(S.String),
         }),
       ).annotate({ identifier: "GitTreeTreeItem" });
-  }
-}
-function __c3(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(23, __c2, 7));
     case 1:
+      return S.Array(__S(128, __c16, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           sha: S.String,
           url: S.optional(S.String),
           truncated: S.Boolean,
-          tree: __S(24, __c3, 0),
+          tree: __S(129, __c16, 1),
         }),
       ).annotate({ identifier: "GitTree" });
-    case 2:
+  }
+}
+function __c17(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           owner: S.String.pipe(T.Label()),
@@ -782,114 +935,12 @@ function __c3(j: number): any {
           T.Http({ method: "DELETE", uri: "/repos/{owner}/{repo}/git/refs/{ref}", code: 200 }),
         ),
       ).annotate({ identifier: "DeleteRefRequest" });
-    case 3:
+    case 1:
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "DeleteRefResponse",
       });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          owner: S.String.pipe(T.Label()),
-          repo: S.String.pipe(T.Label()),
-          file_sha: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({ method: "GET", uri: "/repos/{owner}/{repo}/git/blobs/{file_sha}", code: 200 }),
-        ),
-      ).annotate({ identifier: "GetBlobRequest" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          content: S.String,
-          encoding: S.String,
-          url: S.String,
-          sha: S.String,
-          size: S.NullOr(S.Number),
-          node_id: S.String,
-          highlighted_content: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Blob" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          owner: S.String.pipe(T.Label()),
-          repo: S.String.pipe(T.Label()),
-          commit_sha: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/repos/{owner}/{repo}/git/commits/{commit_sha}",
-            code: 200,
-          }),
-        ),
-      ).annotate({ identifier: "GetCommitRequest" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          owner: S.String.pipe(T.Label()),
-          repo: S.String.pipe(T.Label()),
-          ref: S.String.pipe(T.Label()),
-        }).pipe(T.Http({ method: "GET", uri: "/repos/{owner}/{repo}/git/ref/{ref}", code: 200 })),
-      ).annotate({ identifier: "GetRefRequest" });
   }
 }
-function __c4(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          owner: S.String.pipe(T.Label()),
-          repo: S.String.pipe(T.Label()),
-          tag_sha: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({ method: "GET", uri: "/repos/{owner}/{repo}/git/tags/{tag_sha}", code: 200 }),
-        ),
-      ).annotate({ identifier: "GetTagRequest" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          owner: S.String.pipe(T.Label()),
-          repo: S.String.pipe(T.Label()),
-          tree_sha: S.String.pipe(T.Label()),
-          recursive: S.optional(S.String.pipe(T.Query())),
-        }).pipe(
-          T.Http({ method: "GET", uri: "/repos/{owner}/{repo}/git/trees/{tree_sha}", code: 200 }),
-        ),
-      ).annotate({ identifier: "GetTreeRequest" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          owner: S.String.pipe(T.Label()),
-          repo: S.String.pipe(T.Label()),
-          ref: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/repos/{owner}/{repo}/git/matching-refs/{ref}",
-            code: 200,
-          }),
-        ),
-      ).annotate({ identifier: "ListMatchingRefsRequest" });
-    case 3:
-      return S.Array(__S(14, __c1, 6));
-    case 4:
-      return S.suspend(() => __S(35, __c4, 3).pipe(T.RawResponseRoot())).annotate({
-        identifier: "ListMatchingRefsResponse",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          owner: S.String.pipe(T.Label()),
-          repo: S.String.pipe(T.Label()),
-          ref: S.String.pipe(T.Label()),
-          sha: S.String,
-          force: S.optional(S.Boolean),
-        }).pipe(
-          T.Http({ method: "PATCH", uri: "/repos/{owner}/{repo}/git/refs/{ref}", code: 200 }),
-        ),
-      ).annotate({ identifier: "UpdateRefRequest" });
-  }
-}
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

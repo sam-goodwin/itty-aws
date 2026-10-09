@@ -39,7 +39,7 @@ export const getDefaultLocation: API.OperationMethod<
   S2OpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(0, __c0, 0) as any as S.Schema<GetDefaultLocationRequest>,
-  output: __S(2, __c0, 2) as any as S.Schema<LocationInfo>,
+  output: __S(5, __c1, 1) as any as S.Schema<LocationInfo>,
   errors: [UnknownS2Error],
   protocol: S2Protocol,
   retry: Retry.Retry,
@@ -53,8 +53,8 @@ export const listLocations: API.OperationMethod<
   ListLocationsError,
   S2OpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3, __c0, 3) as any as S.Schema<ListLocationsRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<ListLocationsResponse>,
+  input: __S(8, __c2, 0) as any as S.Schema<ListLocationsRequest>,
+  output: __S(10, __c2, 2) as any as S.Schema<ListLocationsResponse>,
   errors: [UnknownS2Error],
   protocol: S2Protocol,
   retry: Retry.Retry,
@@ -68,8 +68,8 @@ export const setDefaultLocation: API.OperationMethod<
   SetDefaultLocationError,
   S2OpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(6, __c0, 6) as any as S.Schema<SetDefaultLocationRequest>,
-  output: __S(2, __c0, 2) as any as S.Schema<LocationInfo>,
+  input: __S(12, __c3, 0) as any as S.Schema<SetDefaultLocationRequest>,
+  output: __S(5, __c1, 1) as any as S.Schema<LocationInfo>,
   errors: [UnknownS2Error],
   protocol: S2Protocol,
   retry: Retry.Retry,
@@ -84,28 +84,40 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "GetDefaultLocationRequest",
       });
-    case 1:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
       return S.Array(S.String);
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           default_storage_class: S.optional(S.NullOr(S.String)),
           is_private: S.Boolean,
           name: S.String,
-          storage_classes: S.optional(S.NullOr(__S(1, __c0, 1))),
+          storage_classes: S.optional(S.NullOr(__S(4, __c1, 0))),
         }),
       ).annotate({ identifier: "LocationInfo" });
-    case 3:
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({}).pipe(T.Http({ method: "GET", uri: "/locations", code: 200 })),
       ).annotate({ identifier: "ListLocationsRequest" });
-    case 4:
-      return S.Array(__S(2, __c0, 2));
-    case 5:
-      return S.suspend(() => __S(4, __c0, 4).pipe(T.RawResponseRoot())).annotate({
+    case 1:
+      return S.Array(__S(5, __c1, 1));
+    case 2:
+      return S.suspend(() => __S(9, __c2, 1).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListLocationsResponse",
       });
-    case 6:
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           body: S.String.pipe(T.HttpBody()),
@@ -115,7 +127,6 @@ function __c0(j: number): any {
       });
   }
 }
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

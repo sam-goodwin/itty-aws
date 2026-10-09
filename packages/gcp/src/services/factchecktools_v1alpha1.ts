@@ -269,10 +269,10 @@ export const createPages: API.OperationMethod<
   CreatePagesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(7, __c0, 7) as any as S.Schema<CreatePagesRequest>,
+  input: __S(8, __c1, 0) as any as S.Schema<CreatePagesRequest>,
   output: __S(
-    6,
-    __c0,
+    22,
+    __c2,
     6,
   ) as any as S.Schema<GoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewMarkupPage>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
@@ -288,8 +288,8 @@ export const deletePages: API.OperationMethod<
   DeletePagesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(8, __c1, 0) as any as S.Schema<DeletePagesRequest>,
-  output: __S(9, __c1, 1) as any as S.Schema<GoogleProtobufEmpty>,
+  input: __S(24, __c3, 0) as any as S.Schema<DeletePagesRequest>,
+  output: __S(25, __c3, 1) as any as S.Schema<GoogleProtobufEmpty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -303,10 +303,10 @@ export const getPages: API.OperationMethod<
   GetPagesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(10, __c1, 2) as any as S.Schema<GetPagesRequest>,
+  input: __S(32, __c4, 0) as any as S.Schema<GetPagesRequest>,
   output: __S(
-    6,
-    __c0,
+    22,
+    __c2,
     6,
   ) as any as S.Schema<GoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewMarkupPage>,
   errors: [NotFound, Forbidden, UnknownGCPError],
@@ -323,11 +323,11 @@ export const imageSearchClaims: API.PaginatedOperationMethod<
   GcpOpContext,
   GoogleFactcheckingFactchecktoolsV1alpha1FactCheckedClaimImageSearchResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(11, __c1, 3) as any as S.Schema<ImageSearchClaimsRequest>,
+  input: __S(40, __c5, 0) as any as S.Schema<ImageSearchClaimsRequest>,
   output: __S(
-    18,
-    __c2,
-    2,
+    43,
+    __c5,
+    3,
   ) as any as S.Schema<GoogleFactcheckingFactchecktoolsV1alpha1FactCheckedClaimImageSearchResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
@@ -344,11 +344,11 @@ export const listPages: API.PaginatedOperationMethod<
   GcpOpContext,
   GoogleFactcheckingFactchecktoolsV1alpha1ListClaimReviewMarkupPagesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(19, __c2, 3) as any as S.Schema<ListPagesRequest>,
+  input: __S(56, __c7, 0) as any as S.Schema<ListPagesRequest>,
   output: __S(
-    21,
-    __c2,
-    5,
+    58,
+    __c7,
+    2,
   ) as any as S.Schema<GoogleFactcheckingFactchecktoolsV1alpha1ListClaimReviewMarkupPagesResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
@@ -365,11 +365,11 @@ export const searchClaims: API.PaginatedOperationMethod<
   GcpOpContext,
   GoogleFactcheckingFactchecktoolsV1alpha1FactCheckedClaimSearchResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(22, __c2, 6) as any as S.Schema<SearchClaimsRequest>,
+  input: __S(64, __c8, 0) as any as S.Schema<SearchClaimsRequest>,
   output: __S(
-    24,
-    __c3,
-    0,
+    66,
+    __c8,
+    2,
   ) as any as S.Schema<GoogleFactcheckingFactchecktoolsV1alpha1FactCheckedClaimSearchResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
@@ -385,10 +385,10 @@ export const updatePages: API.OperationMethod<
   UpdatePagesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(25, __c3, 1) as any as S.Schema<UpdatePagesRequest>,
+  input: __S(0, __c0, 0) as any as S.Schema<UpdatePagesRequest>,
   output: __S(
-    6,
-    __c0,
+    22,
+    __c2,
     6,
   ) as any as S.Schema<GoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewMarkupPage>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
@@ -398,6 +398,39 @@ export const updatePages: API.OperationMethod<
 
 // Schema builders: each runs one schema initializer, on that schema's first use.
 function __c0(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+          body: S.optional(__S(22, __c2, 6).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "PUT",
+            uri: "v1alpha1/{+name}",
+            baseUrl: "https://factchecktools.googleapis.com/",
+          }),
+        ),
+      ).annotate({ identifier: "UpdatePagesRequest" });
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          body: S.optional(__S(22, __c2, 6).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1alpha1/pages",
+            baseUrl: "https://factchecktools.googleapis.com/",
+          }),
+        ),
+      ).annotate({ identifier: "CreatePagesRequest" });
+  }
+}
+function __c2(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -428,20 +461,20 @@ function __c0(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          rating: S.optional(__S(0, __c0, 0)),
+          rating: S.optional(__S(16, __c2, 0)),
           claimFirstAppearance: S.optional(S.String),
           url: S.optional(S.String),
           claimReviewed: S.optional(S.String),
           claimLocation: S.optional(S.String),
           claimDate: S.optional(S.String),
-          claimAuthor: S.optional(__S(1, __c0, 1)),
-          claimAppearances: S.optional(__S(2, __c0, 2)),
+          claimAuthor: S.optional(__S(17, __c2, 1)),
+          claimAppearances: S.optional(__S(18, __c2, 2)),
         }),
       ).annotate({
         identifier: "GoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewMarkup",
       });
     case 4:
-      return S.Array(__S(3, __c0, 3));
+      return S.Array(__S(19, __c2, 3));
     case 5:
       return S.suspend(() =>
         S.Struct({
@@ -454,31 +487,19 @@ function __c0(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          claimReviewMarkups: S.optional(__S(4, __c0, 4)),
+          claimReviewMarkups: S.optional(__S(20, __c2, 4)),
           versionId: S.optional(S.String),
           pageUrl: S.optional(S.String),
           name: S.optional(S.String),
-          claimReviewAuthor: S.optional(__S(5, __c0, 5)),
+          claimReviewAuthor: S.optional(__S(21, __c2, 5)),
           publishDate: S.optional(S.String),
         }),
       ).annotate({
         identifier: "GoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewMarkupPage",
       });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          body: S.optional(__S(6, __c0, 6).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1alpha1/pages",
-            baseUrl: "https://factchecktools.googleapis.com/",
-          }),
-        ),
-      ).annotate({ identifier: "CreatePagesRequest" });
   }
 }
-function __c1(j: number): any {
+function __c3(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -496,7 +517,11 @@ function __c1(j: number): any {
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "GoogleProtobufEmpty",
       });
-    case 2:
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -508,7 +533,11 @@ function __c1(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetPagesRequest" });
-    case 3:
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           pageToken: S.optional(S.String.pipe(T.Query())),
@@ -524,7 +553,31 @@ function __c1(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ImageSearchClaimsRequest" });
-    case 4:
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          claim: S.optional(__S(51, __c6, 3)),
+        }),
+      ).annotate({
+        identifier:
+          "GoogleFactcheckingFactchecktoolsV1alpha1FactCheckedClaimImageSearchResponseResult",
+      });
+    case 2:
+      return S.Array(__S(41, __c5, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          nextPageToken: S.optional(S.String),
+          results: S.optional(__S(42, __c5, 2)),
+        }),
+      ).annotate({
+        identifier: "GoogleFactcheckingFactchecktoolsV1alpha1FactCheckedClaimImageSearchResponse",
+      });
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
@@ -533,12 +586,12 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "GoogleFactcheckingFactchecktoolsV1alpha1Publisher",
       });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           reviewDate: S.optional(S.String),
           title: S.optional(S.String),
-          publisher: S.optional(__S(12, __c1, 4)),
+          publisher: S.optional(__S(48, __c6, 0)),
           textualRating: S.optional(S.String),
           url: S.optional(S.String),
           languageCode: S.optional(S.String),
@@ -546,14 +599,14 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "GoogleFactcheckingFactchecktoolsV1alpha1ClaimReview",
       });
-    case 6:
-      return S.Array(__S(13, __c1, 5));
-    case 7:
+    case 2:
+      return S.Array(__S(49, __c6, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
           claimDate: S.optional(S.String),
           claimant: S.optional(S.String),
-          claimReview: S.optional(__S(14, __c1, 6)),
+          claimReview: S.optional(__S(50, __c6, 2)),
           text: S.optional(S.String),
         }),
       ).annotate({
@@ -561,29 +614,9 @@ function __c1(j: number): any {
       });
   }
 }
-function __c2(j: number): any {
+function __c7(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() =>
-        S.Struct({
-          claim: S.optional(__S(15, __c1, 7)),
-        }),
-      ).annotate({
-        identifier:
-          "GoogleFactcheckingFactchecktoolsV1alpha1FactCheckedClaimImageSearchResponseResult",
-      });
-    case 1:
-      return S.Array(__S(16, __c2, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          nextPageToken: S.optional(S.String),
-          results: S.optional(__S(17, __c2, 1)),
-        }),
-      ).annotate({
-        identifier: "GoogleFactcheckingFactchecktoolsV1alpha1FactCheckedClaimImageSearchResponse",
-      });
-    case 3:
       return S.suspend(() =>
         S.Struct({
           pageToken: S.optional(S.String.pipe(T.Query())),
@@ -599,18 +632,22 @@ function __c2(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ListPagesRequest" });
-    case 4:
-      return S.Array(__S(6, __c0, 6));
-    case 5:
+    case 1:
+      return S.Array(__S(22, __c2, 6));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          claimReviewMarkupPages: S.optional(__S(20, __c2, 4)),
+          claimReviewMarkupPages: S.optional(__S(57, __c7, 1)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({
         identifier: "GoogleFactcheckingFactchecktoolsV1alpha1ListClaimReviewMarkupPagesResponse",
       });
-    case 6:
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           query: S.optional(S.String.pipe(T.Query())),
@@ -628,37 +665,19 @@ function __c2(j: number): any {
           }),
         ),
       ).annotate({ identifier: "SearchClaimsRequest" });
-    case 7:
-      return S.Array(__S(15, __c1, 7));
-  }
-}
-function __c3(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
+      return S.Array(__S(51, __c6, 3));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          claims: S.optional(__S(23, __c2, 7)),
+          claims: S.optional(__S(65, __c8, 1)),
         }),
       ).annotate({
         identifier: "GoogleFactcheckingFactchecktoolsV1alpha1FactCheckedClaimSearchResponse",
       });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-          body: S.optional(__S(6, __c0, 6).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "PUT",
-            uri: "v1alpha1/{+name}",
-            baseUrl: "https://factchecktools.googleapis.com/",
-          }),
-        ),
-      ).annotate({ identifier: "UpdatePagesRequest" });
   }
 }
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

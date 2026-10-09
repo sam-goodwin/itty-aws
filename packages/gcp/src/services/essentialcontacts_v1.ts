@@ -321,8 +321,12 @@ export const computeFoldersContacts: API.PaginatedOperationMethod<
   GcpOpContext,
   GoogleCloudEssentialcontactsV1ComputeContactsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(1, __c0, 1) as any as S.Schema<ComputeFoldersContactsRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<GoogleCloudEssentialcontactsV1ComputeContactsResponse>,
+  input: __S(34, __c17, 0) as any as S.Schema<ComputeFoldersContactsRequest>,
+  output: __S(
+    39,
+    __c19,
+    1,
+  ) as any as S.Schema<GoogleCloudEssentialcontactsV1ComputeContactsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -338,8 +342,12 @@ export const computeOrganizationsContacts: API.PaginatedOperationMethod<
   GcpOpContext,
   GoogleCloudEssentialcontactsV1ComputeContactsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(6, __c0, 6) as any as S.Schema<ComputeOrganizationsContactsRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<GoogleCloudEssentialcontactsV1ComputeContactsResponse>,
+  input: __S(42, __c21, 0) as any as S.Schema<ComputeOrganizationsContactsRequest>,
+  output: __S(
+    39,
+    __c19,
+    1,
+  ) as any as S.Schema<GoogleCloudEssentialcontactsV1ComputeContactsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -355,8 +363,12 @@ export const computeProjectsContacts: API.PaginatedOperationMethod<
   GcpOpContext,
   GoogleCloudEssentialcontactsV1ComputeContactsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(7, __c0, 7) as any as S.Schema<ComputeProjectsContactsRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<GoogleCloudEssentialcontactsV1ComputeContactsResponse>,
+  input: __S(44, __c22, 0) as any as S.Schema<ComputeProjectsContactsRequest>,
+  output: __S(
+    39,
+    __c19,
+    1,
+  ) as any as S.Schema<GoogleCloudEssentialcontactsV1ComputeContactsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -371,8 +383,8 @@ export const createFoldersContacts: API.OperationMethod<
   CreateFoldersContactsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(8, __c1, 0) as any as S.Schema<CreateFoldersContactsRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<GoogleCloudEssentialcontactsV1Contact>,
+  input: __S(46, __c23, 0) as any as S.Schema<CreateFoldersContactsRequest>,
+  output: __S(41, __c20, 1) as any as S.Schema<GoogleCloudEssentialcontactsV1Contact>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -391,8 +403,8 @@ export const createOrganizationsContacts: API.OperationMethod<
   CreateOrganizationsContactsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(9, __c1, 1) as any as S.Schema<CreateOrganizationsContactsRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<GoogleCloudEssentialcontactsV1Contact>,
+  input: __S(48, __c24, 0) as any as S.Schema<CreateOrganizationsContactsRequest>,
+  output: __S(41, __c20, 1) as any as S.Schema<GoogleCloudEssentialcontactsV1Contact>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -406,8 +418,8 @@ export const createProjectsContacts: API.OperationMethod<
   CreateProjectsContactsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(10, __c1, 2) as any as S.Schema<CreateProjectsContactsRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<GoogleCloudEssentialcontactsV1Contact>,
+  input: __S(50, __c25, 0) as any as S.Schema<CreateProjectsContactsRequest>,
+  output: __S(41, __c20, 1) as any as S.Schema<GoogleCloudEssentialcontactsV1Contact>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -421,8 +433,8 @@ export const deleteFoldersContacts: API.OperationMethod<
   DeleteFoldersContactsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(11, __c1, 3) as any as S.Schema<DeleteFoldersContactsRequest>,
-  output: __S(12, __c1, 4) as any as S.Schema<GoogleProtobufEmpty>,
+  input: __S(0, __c0, 0) as any as S.Schema<DeleteFoldersContactsRequest>,
+  output: __S(2, __c1, 0) as any as S.Schema<GoogleProtobufEmpty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -441,8 +453,8 @@ export const deleteOrganizationsContacts: API.OperationMethod<
   DeleteOrganizationsContactsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(13, __c1, 5) as any as S.Schema<DeleteOrganizationsContactsRequest>,
-  output: __S(12, __c1, 4) as any as S.Schema<GoogleProtobufEmpty>,
+  input: __S(4, __c2, 0) as any as S.Schema<DeleteOrganizationsContactsRequest>,
+  output: __S(2, __c1, 0) as any as S.Schema<GoogleProtobufEmpty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -456,8 +468,8 @@ export const deleteProjectsContacts: API.OperationMethod<
   DeleteProjectsContactsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(14, __c1, 6) as any as S.Schema<DeleteProjectsContactsRequest>,
-  output: __S(12, __c1, 4) as any as S.Schema<GoogleProtobufEmpty>,
+  input: __S(6, __c3, 0) as any as S.Schema<DeleteProjectsContactsRequest>,
+  output: __S(2, __c1, 0) as any as S.Schema<GoogleProtobufEmpty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -471,8 +483,8 @@ export const getFoldersContacts: API.OperationMethod<
   GetFoldersContactsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(15, __c1, 7) as any as S.Schema<GetFoldersContactsRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<GoogleCloudEssentialcontactsV1Contact>,
+  input: __S(8, __c4, 0) as any as S.Schema<GetFoldersContactsRequest>,
+  output: __S(41, __c20, 1) as any as S.Schema<GoogleCloudEssentialcontactsV1Contact>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -486,8 +498,8 @@ export const getOrganizationsContacts: API.OperationMethod<
   GetOrganizationsContactsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(16, __c2, 0) as any as S.Schema<GetOrganizationsContactsRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<GoogleCloudEssentialcontactsV1Contact>,
+  input: __S(10, __c5, 0) as any as S.Schema<GetOrganizationsContactsRequest>,
+  output: __S(41, __c20, 1) as any as S.Schema<GoogleCloudEssentialcontactsV1Contact>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -501,8 +513,8 @@ export const getProjectsContacts: API.OperationMethod<
   GetProjectsContactsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(17, __c2, 1) as any as S.Schema<GetProjectsContactsRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<GoogleCloudEssentialcontactsV1Contact>,
+  input: __S(12, __c6, 0) as any as S.Schema<GetProjectsContactsRequest>,
+  output: __S(41, __c20, 1) as any as S.Schema<GoogleCloudEssentialcontactsV1Contact>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -517,8 +529,8 @@ export const listFoldersContacts: API.PaginatedOperationMethod<
   GcpOpContext,
   GoogleCloudEssentialcontactsV1ListContactsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(18, __c2, 2) as any as S.Schema<ListFoldersContactsRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<GoogleCloudEssentialcontactsV1ListContactsResponse>,
+  input: __S(14, __c7, 0) as any as S.Schema<ListFoldersContactsRequest>,
+  output: __S(39, __c19, 1) as any as S.Schema<GoogleCloudEssentialcontactsV1ListContactsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -534,8 +546,8 @@ export const listOrganizationsContacts: API.PaginatedOperationMethod<
   GcpOpContext,
   GoogleCloudEssentialcontactsV1ListContactsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(19, __c2, 3) as any as S.Schema<ListOrganizationsContactsRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<GoogleCloudEssentialcontactsV1ListContactsResponse>,
+  input: __S(16, __c8, 0) as any as S.Schema<ListOrganizationsContactsRequest>,
+  output: __S(39, __c19, 1) as any as S.Schema<GoogleCloudEssentialcontactsV1ListContactsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -551,8 +563,8 @@ export const listProjectsContacts: API.PaginatedOperationMethod<
   GcpOpContext,
   GoogleCloudEssentialcontactsV1ListContactsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(20, __c2, 4) as any as S.Schema<ListProjectsContactsRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<GoogleCloudEssentialcontactsV1ListContactsResponse>,
+  input: __S(18, __c9, 0) as any as S.Schema<ListProjectsContactsRequest>,
+  output: __S(39, __c19, 1) as any as S.Schema<GoogleCloudEssentialcontactsV1ListContactsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -567,8 +579,8 @@ export const patchFoldersContacts: API.OperationMethod<
   PatchFoldersContactsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(21, __c2, 5) as any as S.Schema<PatchFoldersContactsRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<GoogleCloudEssentialcontactsV1Contact>,
+  input: __S(20, __c10, 0) as any as S.Schema<PatchFoldersContactsRequest>,
+  output: __S(41, __c20, 1) as any as S.Schema<GoogleCloudEssentialcontactsV1Contact>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -587,8 +599,8 @@ export const patchOrganizationsContacts: API.OperationMethod<
   PatchOrganizationsContactsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(22, __c2, 6) as any as S.Schema<PatchOrganizationsContactsRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<GoogleCloudEssentialcontactsV1Contact>,
+  input: __S(22, __c11, 0) as any as S.Schema<PatchOrganizationsContactsRequest>,
+  output: __S(41, __c20, 1) as any as S.Schema<GoogleCloudEssentialcontactsV1Contact>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -602,8 +614,8 @@ export const patchProjectsContacts: API.OperationMethod<
   PatchProjectsContactsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(23, __c2, 7) as any as S.Schema<PatchProjectsContactsRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<GoogleCloudEssentialcontactsV1Contact>,
+  input: __S(24, __c12, 0) as any as S.Schema<PatchProjectsContactsRequest>,
+  output: __S(41, __c20, 1) as any as S.Schema<GoogleCloudEssentialcontactsV1Contact>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -622,8 +634,8 @@ export const sendTestMessageFoldersContacts: API.OperationMethod<
   SendTestMessageFoldersContactsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(26, __c3, 2) as any as S.Schema<SendTestMessageFoldersContactsRequest>,
-  output: __S(12, __c1, 4) as any as S.Schema<GoogleProtobufEmpty>,
+  input: __S(26, __c13, 0) as any as S.Schema<SendTestMessageFoldersContactsRequest>,
+  output: __S(2, __c1, 0) as any as S.Schema<GoogleProtobufEmpty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -642,8 +654,8 @@ export const sendTestMessageOrganizationsContacts: API.OperationMethod<
   SendTestMessageOrganizationsContactsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(27, __c3, 3) as any as S.Schema<SendTestMessageOrganizationsContactsRequest>,
-  output: __S(12, __c1, 4) as any as S.Schema<GoogleProtobufEmpty>,
+  input: __S(30, __c15, 0) as any as S.Schema<SendTestMessageOrganizationsContactsRequest>,
+  output: __S(2, __c1, 0) as any as S.Schema<GoogleProtobufEmpty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -662,8 +674,8 @@ export const sendTestMessageProjectsContacts: API.OperationMethod<
   SendTestMessageProjectsContactsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(28, __c3, 4) as any as S.Schema<SendTestMessageProjectsContactsRequest>,
-  output: __S(12, __c1, 4) as any as S.Schema<GoogleProtobufEmpty>,
+  input: __S(32, __c16, 0) as any as S.Schema<SendTestMessageProjectsContactsRequest>,
+  output: __S(2, __c1, 0) as any as S.Schema<GoogleProtobufEmpty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -673,134 +685,6 @@ export const sendTestMessageProjectsContacts: API.OperationMethod<
 function __c0(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(S.String);
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          pageToken: S.optional(S.String.pipe(T.Query())),
-          pageSize: S.optional(S.Number.pipe(T.Query())),
-          notificationCategories: S.optional(__S(0, __c0, 0).pipe(T.Query())),
-          parent: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v1/{+parent}/contacts:compute",
-            baseUrl: "https://essentialcontacts.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "ComputeFoldersContactsRequest",
-      });
-    case 2:
-      return S.Array(S.String);
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.optional(S.String),
-          email: S.optional(S.String),
-          validationState: S.optional(S.String),
-          validateTime: S.optional(S.String),
-          notificationCategorySubscriptions: S.optional(__S(2, __c0, 2)),
-          languageTag: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudEssentialcontactsV1Contact",
-      });
-    case 4:
-      return S.Array(__S(3, __c0, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          contacts: S.optional(__S(4, __c0, 4)),
-          nextPageToken: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudEssentialcontactsV1ComputeContactsResponse",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          parent: S.String.pipe(T.Label()),
-          notificationCategories: S.optional(__S(0, __c0, 0).pipe(T.Query())),
-          pageToken: S.optional(S.String.pipe(T.Query())),
-          pageSize: S.optional(S.Number.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v1/{+parent}/contacts:compute",
-            baseUrl: "https://essentialcontacts.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "ComputeOrganizationsContactsRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          pageSize: S.optional(S.Number.pipe(T.Query())),
-          notificationCategories: S.optional(__S(0, __c0, 0).pipe(T.Query())),
-          parent: S.String.pipe(T.Label()),
-          pageToken: S.optional(S.String.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v1/{+parent}/contacts:compute",
-            baseUrl: "https://essentialcontacts.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "ComputeProjectsContactsRequest",
-      });
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(3, __c0, 3).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/{+parent}/contacts",
-            baseUrl: "https://essentialcontacts.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateFoldersContactsRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(3, __c0, 3).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/{+parent}/contacts",
-            baseUrl: "https://essentialcontacts.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateOrganizationsContactsRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(3, __c0, 3).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/{+parent}/contacts",
-            baseUrl: "https://essentialcontacts.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateProjectsContactsRequest",
-      });
-    case 3:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -814,11 +698,19 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "DeleteFoldersContactsRequest",
       });
-    case 4:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "GoogleProtobufEmpty",
       });
-    case 5:
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -832,7 +724,11 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "DeleteOrganizationsContactsRequest",
       });
-    case 6:
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -846,7 +742,11 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "DeleteProjectsContactsRequest",
       });
-    case 7:
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -862,7 +762,7 @@ function __c1(j: number): any {
       });
   }
 }
-function __c2(j: number): any {
+function __c5(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -878,7 +778,11 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "GetOrganizationsContactsRequest",
       });
-    case 1:
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -892,7 +796,11 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "GetProjectsContactsRequest",
       });
-    case 2:
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -908,7 +816,11 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "ListFoldersContactsRequest",
       });
-    case 3:
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
@@ -924,7 +836,11 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "ListOrganizationsContactsRequest",
       });
-    case 4:
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -940,12 +856,16 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "ListProjectsContactsRequest",
       });
-    case 5:
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           updateMask: S.optional(S.String.pipe(T.Query())),
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(3, __c0, 3).pipe(T.HttpBody())),
+          body: S.optional(__S(41, __c20, 1).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -956,12 +876,16 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "PatchFoldersContactsRequest",
       });
-    case 6:
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           updateMask: S.optional(S.String.pipe(T.Query())),
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(3, __c0, 3).pipe(T.HttpBody())),
+          body: S.optional(__S(41, __c20, 1).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -972,12 +896,16 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "PatchOrganizationsContactsRequest",
       });
-    case 7:
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
           updateMask: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(3, __c0, 3).pipe(T.HttpBody())),
+          body: S.optional(__S(41, __c20, 1).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -990,24 +918,13 @@ function __c2(j: number): any {
       });
   }
 }
-function __c3(j: number): any {
+function __c13(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(S.String);
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          contacts: S.optional(__S(24, __c3, 0)),
-          notificationCategory: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudEssentialcontactsV1SendTestMessageRequest",
-      });
-    case 2:
       return S.suspend(() =>
         S.Struct({
           resource: S.String.pipe(T.Label()),
-          body: S.optional(__S(25, __c3, 1).pipe(T.HttpBody())),
+          body: S.optional(__S(29, __c14, 1).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -1018,11 +935,30 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "SendTestMessageFoldersContactsRequest",
       });
-    case 3:
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          contacts: S.optional(__S(28, __c14, 0)),
+          notificationCategory: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudEssentialcontactsV1SendTestMessageRequest",
+      });
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           resource: S.String.pipe(T.Label()),
-          body: S.optional(__S(25, __c3, 1).pipe(T.HttpBody())),
+          body: S.optional(__S(29, __c14, 1).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -1033,11 +969,15 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "SendTestMessageOrganizationsContactsRequest",
       });
-    case 4:
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           resource: S.String.pipe(T.Label()),
-          body: S.optional(__S(25, __c3, 1).pipe(T.HttpBody())),
+          body: S.optional(__S(29, __c14, 1).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -1050,7 +990,166 @@ function __c3(j: number): any {
       });
   }
 }
-
+function __c17(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          pageToken: S.optional(S.String.pipe(T.Query())),
+          pageSize: S.optional(S.Number.pipe(T.Query())),
+          notificationCategories: S.optional(__S(36, __c18, 0).pipe(T.Query())),
+          parent: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v1/{+parent}/contacts:compute",
+            baseUrl: "https://essentialcontacts.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "ComputeFoldersContactsRequest",
+      });
+  }
+}
+function __c18(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c19(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(41, __c20, 1));
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          contacts: S.optional(__S(38, __c19, 0)),
+          nextPageToken: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudEssentialcontactsV1ComputeContactsResponse",
+      });
+  }
+}
+function __c20(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.optional(S.String),
+          email: S.optional(S.String),
+          validationState: S.optional(S.String),
+          validateTime: S.optional(S.String),
+          notificationCategorySubscriptions: S.optional(__S(40, __c20, 0)),
+          languageTag: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudEssentialcontactsV1Contact",
+      });
+  }
+}
+function __c21(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          parent: S.String.pipe(T.Label()),
+          notificationCategories: S.optional(__S(36, __c18, 0).pipe(T.Query())),
+          pageToken: S.optional(S.String.pipe(T.Query())),
+          pageSize: S.optional(S.Number.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v1/{+parent}/contacts:compute",
+            baseUrl: "https://essentialcontacts.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "ComputeOrganizationsContactsRequest",
+      });
+  }
+}
+function __c22(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          pageSize: S.optional(S.Number.pipe(T.Query())),
+          notificationCategories: S.optional(__S(36, __c18, 0).pipe(T.Query())),
+          parent: S.String.pipe(T.Label()),
+          pageToken: S.optional(S.String.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v1/{+parent}/contacts:compute",
+            baseUrl: "https://essentialcontacts.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "ComputeProjectsContactsRequest",
+      });
+  }
+}
+function __c23(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          parent: S.String.pipe(T.Label()),
+          body: S.optional(__S(41, __c20, 1).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/{+parent}/contacts",
+            baseUrl: "https://essentialcontacts.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateFoldersContactsRequest",
+      });
+  }
+}
+function __c24(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          parent: S.String.pipe(T.Label()),
+          body: S.optional(__S(41, __c20, 1).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/{+parent}/contacts",
+            baseUrl: "https://essentialcontacts.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateOrganizationsContactsRequest",
+      });
+  }
+}
+function __c25(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          parent: S.String.pipe(T.Label()),
+          body: S.optional(__S(41, __c20, 1).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/{+parent}/contacts",
+            baseUrl: "https://essentialcontacts.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateProjectsContactsRequest",
+      });
+  }
+}
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

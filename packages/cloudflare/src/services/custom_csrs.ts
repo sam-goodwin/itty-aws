@@ -247,8 +247,8 @@ export const createCustomCsrForAccount: API.OperationMethod<
   CreateCustomCsrForAccountError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1, __c0, 1) as any as S.Schema<CreateCustomCsrForAccountRequest>,
-  output: __S(2, __c0, 2) as any as S.Schema<CreateCustomCsrResponse>,
+  input: __S(0, __c0, 0) as any as S.Schema<CreateCustomCsrForAccountRequest>,
+  output: __S(4, __c1, 0) as any as S.Schema<CreateCustomCsrResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -262,8 +262,8 @@ export const createCustomCsrForZone: API.OperationMethod<
   CreateCustomCsrForZoneError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3, __c0, 3) as any as S.Schema<CreateCustomCsrForZoneRequest>,
-  output: __S(2, __c0, 2) as any as S.Schema<CreateCustomCsrResponse>,
+  input: __S(12, __c3, 0) as any as S.Schema<CreateCustomCsrForZoneRequest>,
+  output: __S(4, __c1, 0) as any as S.Schema<CreateCustomCsrResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -277,8 +277,8 @@ export const deleteCustomCsrForAccount: API.OperationMethod<
   DeleteCustomCsrForAccountError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(4, __c0, 4) as any as S.Schema<DeleteCustomCsrForAccountRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<DeleteCustomCsrResponse>,
+  input: __S(16, __c4, 0) as any as S.Schema<DeleteCustomCsrForAccountRequest>,
+  output: __S(20, __c5, 0) as any as S.Schema<DeleteCustomCsrResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -292,8 +292,8 @@ export const deleteCustomCsrForZone: API.OperationMethod<
   DeleteCustomCsrForZoneError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(6, __c0, 6) as any as S.Schema<DeleteCustomCsrForZoneRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<DeleteCustomCsrResponse>,
+  input: __S(24, __c6, 0) as any as S.Schema<DeleteCustomCsrForZoneRequest>,
+  output: __S(20, __c5, 0) as any as S.Schema<DeleteCustomCsrResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -307,8 +307,8 @@ export const getCustomCsrForAccount: API.OperationMethod<
   GetCustomCsrForAccountError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(7, __c0, 7) as any as S.Schema<GetCustomCsrForAccountRequest>,
-  output: __S(8, __c1, 0) as any as S.Schema<GetCustomCsrResponse>,
+  input: __S(28, __c7, 0) as any as S.Schema<GetCustomCsrForAccountRequest>,
+  output: __S(32, __c8, 0) as any as S.Schema<GetCustomCsrResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -322,8 +322,8 @@ export const getCustomCsrForZone: API.OperationMethod<
   GetCustomCsrForZoneError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(9, __c1, 1) as any as S.Schema<GetCustomCsrForZoneRequest>,
-  output: __S(8, __c1, 0) as any as S.Schema<GetCustomCsrResponse>,
+  input: __S(36, __c9, 0) as any as S.Schema<GetCustomCsrForZoneRequest>,
+  output: __S(32, __c8, 0) as any as S.Schema<GetCustomCsrResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -339,8 +339,8 @@ export const listCustomCsrsForAccount: API.PaginatedOperationMethod<
   ListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(10, __c1, 2) as any as S.Schema<ListCustomCsrsForAccountRequest>,
-    output: __S(13, __c1, 5) as any as S.Schema<ListCustomCsrsResponse>,
+    input: __S(40, __c10, 0) as any as S.Schema<ListCustomCsrsForAccountRequest>,
+    output: __S(46, __c11, 2) as any as S.Schema<ListCustomCsrsResponse>,
     errors: [CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
     retry: Retry.Retry,
@@ -365,8 +365,8 @@ export const listCustomCsrsForZone: API.PaginatedOperationMethod<
   ListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(14, __c1, 6) as any as S.Schema<ListCustomCsrsForZoneRequest>,
-    output: __S(13, __c1, 5) as any as S.Schema<ListCustomCsrsResponse>,
+    input: __S(48, __c12, 0) as any as S.Schema<ListCustomCsrsForZoneRequest>,
+    output: __S(46, __c11, 2) as any as S.Schema<ListCustomCsrsResponse>,
     errors: [CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
     retry: Retry.Retry,
@@ -385,8 +385,6 @@ export const listCustomCsrsForZone: API.PaginatedOperationMethod<
 function __c0(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(S.String);
-    case 1:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -394,7 +392,7 @@ function __c0(j: number): any {
           country: S.String,
           locality: S.String,
           organization: S.String,
-          sans: __S(0, __c0, 0),
+          sans: __S(8, __c2, 0),
           state: S.String,
           description: S.optional(S.String),
           keyType: S.optional(S.String.pipe(T.Body("key_type"))),
@@ -405,102 +403,6 @@ function __c0(j: number): any {
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({
         identifier: "CreateCustomCsrForAccountRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String,
-          createdAt: S.String.pipe(T.Body("created_at")),
-          keyType: S.String.pipe(T.Body("key_type")),
-          accountTag: S.optional(S.NullOr(S.String).pipe(T.Body("account_tag"))),
-          commonName: S.optional(S.NullOr(S.String).pipe(T.Body("common_name"))),
-          country: S.optional(S.NullOr(S.String)),
-          csr: S.optional(S.NullOr(S.String)),
-          description: S.optional(S.NullOr(S.String)),
-          locality: S.optional(S.NullOr(S.String)),
-          name: S.optional(S.NullOr(S.String)),
-          organization: S.optional(S.NullOr(S.String)),
-          organizationalUnit: S.optional(S.NullOr(S.String).pipe(T.Body("organizational_unit"))),
-          sans: S.optional(S.NullOr(__S(0, __c0, 0))),
-          state: S.optional(S.NullOr(S.String)),
-        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({ identifier: "CreateCustomCsrResponse" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          zoneId: S.String.pipe(T.Label("zone_id")),
-          commonName: S.String.pipe(T.Body("common_name")),
-          country: S.String,
-          locality: S.String,
-          organization: S.String,
-          sans: __S(0, __c0, 0),
-          state: S.String,
-          description: S.optional(S.String),
-          keyType: S.optional(S.String.pipe(T.Body("key_type"))),
-          name: S.optional(S.String),
-          organizationalUnit: S.optional(S.String.pipe(T.Body("organizational_unit"))),
-        })
-          .pipe(T.Http({ method: "POST", uri: "/zones/{zone_id}/custom_csrs", code: 200 }))
-          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({
-        identifier: "CreateCustomCsrForZoneRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          accountId: S.String.pipe(T.Label("account_id")),
-          customCsrId: S.String.pipe(T.Label("custom_csr_id")),
-        })
-          .pipe(
-            T.Http({
-              method: "DELETE",
-              uri: "/accounts/{account_id}/custom_csrs/{custom_csr_id}",
-              code: 200,
-            }),
-          )
-          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({
-        identifier: "DeleteCustomCsrForAccountRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.NullOr(S.String)),
-        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({ identifier: "DeleteCustomCsrResponse" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          zoneId: S.String.pipe(T.Label("zone_id")),
-          customCsrId: S.String.pipe(T.Label("custom_csr_id")),
-        })
-          .pipe(
-            T.Http({
-              method: "DELETE",
-              uri: "/zones/{zone_id}/custom_csrs/{custom_csr_id}",
-              code: 200,
-            }),
-          )
-          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({
-        identifier: "DeleteCustomCsrForZoneRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          accountId: S.String.pipe(T.Label("account_id")),
-          customCsrId: S.String.pipe(T.Label("custom_csr_id")),
-        })
-          .pipe(
-            T.Http({
-              method: "GET",
-              uri: "/accounts/{account_id}/custom_csrs/{custom_csr_id}",
-              code: 200,
-            }),
-          )
-          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({
-        identifier: "GetCustomCsrForAccountRequest",
       });
   }
 }
@@ -521,11 +423,141 @@ function __c1(j: number): any {
           name: S.optional(S.NullOr(S.String)),
           organization: S.optional(S.NullOr(S.String)),
           organizationalUnit: S.optional(S.NullOr(S.String).pipe(T.Body("organizational_unit"))),
-          sans: S.optional(S.NullOr(__S(0, __c0, 0))),
+          sans: S.optional(S.NullOr(__S(8, __c2, 0))),
+          state: S.optional(S.NullOr(S.String)),
+        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({ identifier: "CreateCustomCsrResponse" });
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          zoneId: S.String.pipe(T.Label("zone_id")),
+          commonName: S.String.pipe(T.Body("common_name")),
+          country: S.String,
+          locality: S.String,
+          organization: S.String,
+          sans: __S(8, __c2, 0),
+          state: S.String,
+          description: S.optional(S.String),
+          keyType: S.optional(S.String.pipe(T.Body("key_type"))),
+          name: S.optional(S.String),
+          organizationalUnit: S.optional(S.String.pipe(T.Body("organizational_unit"))),
+        })
+          .pipe(T.Http({ method: "POST", uri: "/zones/{zone_id}/custom_csrs", code: 200 }))
+          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({
+        identifier: "CreateCustomCsrForZoneRequest",
+      });
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          accountId: S.String.pipe(T.Label("account_id")),
+          customCsrId: S.String.pipe(T.Label("custom_csr_id")),
+        })
+          .pipe(
+            T.Http({
+              method: "DELETE",
+              uri: "/accounts/{account_id}/custom_csrs/{custom_csr_id}",
+              code: 200,
+            }),
+          )
+          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({
+        identifier: "DeleteCustomCsrForAccountRequest",
+      });
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.NullOr(S.String)),
+        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({ identifier: "DeleteCustomCsrResponse" });
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          zoneId: S.String.pipe(T.Label("zone_id")),
+          customCsrId: S.String.pipe(T.Label("custom_csr_id")),
+        })
+          .pipe(
+            T.Http({
+              method: "DELETE",
+              uri: "/zones/{zone_id}/custom_csrs/{custom_csr_id}",
+              code: 200,
+            }),
+          )
+          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({
+        identifier: "DeleteCustomCsrForZoneRequest",
+      });
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          accountId: S.String.pipe(T.Label("account_id")),
+          customCsrId: S.String.pipe(T.Label("custom_csr_id")),
+        })
+          .pipe(
+            T.Http({
+              method: "GET",
+              uri: "/accounts/{account_id}/custom_csrs/{custom_csr_id}",
+              code: 200,
+            }),
+          )
+          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({
+        identifier: "GetCustomCsrForAccountRequest",
+      });
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          createdAt: S.String.pipe(T.Body("created_at")),
+          keyType: S.String.pipe(T.Body("key_type")),
+          accountTag: S.optional(S.NullOr(S.String).pipe(T.Body("account_tag"))),
+          commonName: S.optional(S.NullOr(S.String).pipe(T.Body("common_name"))),
+          country: S.optional(S.NullOr(S.String)),
+          csr: S.optional(S.NullOr(S.String)),
+          description: S.optional(S.NullOr(S.String)),
+          locality: S.optional(S.NullOr(S.String)),
+          name: S.optional(S.NullOr(S.String)),
+          organization: S.optional(S.NullOr(S.String)),
+          organizationalUnit: S.optional(S.NullOr(S.String).pipe(T.Body("organizational_unit"))),
+          sans: S.optional(S.NullOr(__S(8, __c2, 0))),
           state: S.optional(S.NullOr(S.String)),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "GetCustomCsrResponse" });
-    case 1:
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           zoneId: S.String.pipe(T.Label("zone_id")),
@@ -542,7 +574,11 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "GetCustomCsrForZoneRequest",
       });
-    case 2:
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -556,7 +592,11 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "ListCustomCsrsForAccountRequest",
       });
-    case 3:
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
@@ -571,20 +611,24 @@ function __c1(j: number): any {
           name: S.optional(S.NullOr(S.String)),
           organization: S.optional(S.NullOr(S.String)),
           organizationalUnit: S.optional(S.NullOr(S.String).pipe(T.Body("organizational_unit"))),
-          sans: S.optional(S.NullOr(__S(0, __c0, 0))),
+          sans: S.optional(S.NullOr(__S(8, __c2, 0))),
           state: S.optional(S.NullOr(S.String)),
         }),
       ).annotate({ identifier: "ListResultItem" });
-    case 4:
-      return S.Array(__S(11, __c1, 3));
-    case 5:
+    case 1:
+      return S.Array(__S(44, __c11, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          result: __S(12, __c1, 4).pipe(T.EnvelopePayload()),
+          result: __S(45, __c11, 1).pipe(T.EnvelopePayload()),
           resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "ListCustomCsrsResponse" });
-    case 6:
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           zoneId: S.String.pipe(T.Label("zone_id")),
@@ -600,7 +644,6 @@ function __c1(j: number): any {
       });
   }
 }
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

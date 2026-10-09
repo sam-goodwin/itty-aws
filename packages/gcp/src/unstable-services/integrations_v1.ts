@@ -5133,8 +5133,16 @@ export const cancelProjectsLocationsIntegrationsExecutions: API.OperationMethod<
   CancelProjectsLocationsIntegrationsExecutionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1, __c0, 1) as any as S.Schema<CancelProjectsLocationsIntegrationsExecutionsRequest>,
-  output: __S(2, __c0, 2) as any as S.Schema<GoogleCloudIntegrationsV1alphaCancelExecutionResponse>,
+  input: __S(
+    2945,
+    __c92,
+    1,
+  ) as any as S.Schema<CancelProjectsLocationsIntegrationsExecutionsRequest>,
+  output: __S(
+    2946,
+    __c92,
+    2,
+  ) as any as S.Schema<GoogleCloudIntegrationsV1alphaCancelExecutionResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5153,11 +5161,11 @@ export const changeConfigProjectsLocationsClients: API.OperationMethod<
   ChangeConfigProjectsLocationsClientsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(6, __c0, 6) as any as S.Schema<ChangeConfigProjectsLocationsClientsRequest>,
+  input: __S(3393, __c106, 1) as any as S.Schema<ChangeConfigProjectsLocationsClientsRequest>,
   output: __S(
-    7,
-    __c0,
-    7,
+    3394,
+    __c106,
+    2,
   ) as any as S.Schema<GoogleCloudIntegrationsV1alphaChangeCustomerConfigResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
@@ -5177,10 +5185,10 @@ export const createProjectsLocationsAppsScriptProjects: API.OperationMethod<
   CreateProjectsLocationsAppsScriptProjectsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(9, __c1, 1) as any as S.Schema<CreateProjectsLocationsAppsScriptProjectsRequest>,
+  input: __S(3841, __c120, 1) as any as S.Schema<CreateProjectsLocationsAppsScriptProjectsRequest>,
   output: __S(
-    10,
-    __c1,
+    3842,
+    __c120,
     2,
   ) as any as S.Schema<GoogleCloudIntegrationsV1alphaCreateAppsScriptProjectResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
@@ -5201,8 +5209,8 @@ export const createProjectsLocationsAuthConfigs: API.OperationMethod<
   CreateProjectsLocationsAuthConfigsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(34, __c4, 2) as any as S.Schema<CreateProjectsLocationsAuthConfigsRequest>,
-  output: __S(33, __c4, 1) as any as S.Schema<GoogleCloudIntegrationsV1alphaAuthConfig>,
+  input: __S(4288, __c134, 0) as any as S.Schema<CreateProjectsLocationsAuthConfigsRequest>,
+  output: __S(4430, __c138, 14) as any as S.Schema<GoogleCloudIntegrationsV1alphaAuthConfig>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5221,8 +5229,8 @@ export const createProjectsLocationsCertificates: API.OperationMethod<
   CreateProjectsLocationsCertificatesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(37, __c4, 5) as any as S.Schema<CreateProjectsLocationsCertificatesRequest>,
-  output: __S(36, __c4, 4) as any as S.Schema<GoogleCloudIntegrationsV1alphaCertificate>,
+  input: __S(5024, __c157, 0) as any as S.Schema<CreateProjectsLocationsCertificatesRequest>,
+  output: __S(5057, __c158, 1) as any as S.Schema<GoogleCloudIntegrationsV1alphaCertificate>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5241,11 +5249,11 @@ export const createProjectsLocationsCloudFunctions: API.OperationMethod<
   CreateProjectsLocationsCloudFunctionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(39, __c4, 7) as any as S.Schema<CreateProjectsLocationsCloudFunctionsRequest>,
+  input: __S(5472, __c171, 0) as any as S.Schema<CreateProjectsLocationsCloudFunctionsRequest>,
   output: __S(
-    40,
-    __c5,
-    0,
+    5505,
+    __c172,
+    1,
   ) as any as S.Schema<GoogleCloudIntegrationsV1alphaCreateCloudFunctionResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
@@ -5265,8 +5273,8 @@ export const createProjectsLocationsIntegrationsVersions: API.OperationMethod<
   CreateProjectsLocationsIntegrationsVersionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(137, __c17, 1) as any as S.Schema<CreateProjectsLocationsIntegrationsVersionsRequest>,
-  output: __S(136, __c17, 0) as any as S.Schema<GoogleCloudIntegrationsV1alphaIntegrationVersion>,
+  input: __S(0, __c0, 0) as any as S.Schema<CreateProjectsLocationsIntegrationsVersionsRequest>,
+  output: __S(383, __c11, 31) as any as S.Schema<GoogleCloudIntegrationsV1alphaIntegrationVersion>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5286,11 +5294,11 @@ export const createProjectsLocationsIntegrationsVersionsTestCases: API.Operation
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    145,
-    __c18,
-    1,
+    768,
+    __c24,
+    0,
   ) as any as S.Schema<CreateProjectsLocationsIntegrationsVersionsTestCasesRequest>,
-  output: __S(144, __c18, 0) as any as S.Schema<GoogleCloudIntegrationsV1alphaTestCase>,
+  output: __S(837, __c26, 5) as any as S.Schema<GoogleCloudIntegrationsV1alphaTestCase>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5309,8 +5317,8 @@ export const createProjectsLocationsProductsAuthConfigs: API.OperationMethod<
   CreateProjectsLocationsProductsAuthConfigsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(146, __c18, 2) as any as S.Schema<CreateProjectsLocationsProductsAuthConfigsRequest>,
-  output: __S(33, __c4, 1) as any as S.Schema<GoogleCloudIntegrationsV1alphaAuthConfig>,
+  input: __S(1280, __c40, 0) as any as S.Schema<CreateProjectsLocationsProductsAuthConfigsRequest>,
+  output: __S(4430, __c138, 14) as any as S.Schema<GoogleCloudIntegrationsV1alphaAuthConfig>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5329,8 +5337,8 @@ export const createProjectsLocationsProductsCertificates: API.OperationMethod<
   CreateProjectsLocationsProductsCertificatesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(147, __c18, 3) as any as S.Schema<CreateProjectsLocationsProductsCertificatesRequest>,
-  output: __S(36, __c4, 4) as any as S.Schema<GoogleCloudIntegrationsV1alphaCertificate>,
+  input: __S(1696, __c53, 0) as any as S.Schema<CreateProjectsLocationsProductsCertificatesRequest>,
+  output: __S(5057, __c158, 1) as any as S.Schema<GoogleCloudIntegrationsV1alphaCertificate>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5350,14 +5358,14 @@ export const createProjectsLocationsProductsCloudFunctions: API.OperationMethod<
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    148,
-    __c18,
-    4,
+    1824,
+    __c57,
+    0,
   ) as any as S.Schema<CreateProjectsLocationsProductsCloudFunctionsRequest>,
   output: __S(
-    40,
-    __c5,
-    0,
+    5505,
+    __c172,
+    1,
   ) as any as S.Schema<GoogleCloudIntegrationsV1alphaCreateCloudFunctionResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
@@ -5378,11 +5386,11 @@ export const createProjectsLocationsProductsIntegrationsVersions: API.OperationM
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    149,
-    __c18,
-    5,
+    1856,
+    __c58,
+    0,
   ) as any as S.Schema<CreateProjectsLocationsProductsIntegrationsVersionsRequest>,
-  output: __S(136, __c17, 0) as any as S.Schema<GoogleCloudIntegrationsV1alphaIntegrationVersion>,
+  output: __S(383, __c11, 31) as any as S.Schema<GoogleCloudIntegrationsV1alphaIntegrationVersion>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5401,8 +5409,12 @@ export const createProjectsLocationsProductsSfdcInstances: API.OperationMethod<
   CreateProjectsLocationsProductsSfdcInstancesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(151, __c18, 7) as any as S.Schema<CreateProjectsLocationsProductsSfdcInstancesRequest>,
-  output: __S(150, __c18, 6) as any as S.Schema<GoogleCloudIntegrationsV1alphaSfdcInstance>,
+  input: __S(
+    1888,
+    __c59,
+    0,
+  ) as any as S.Schema<CreateProjectsLocationsProductsSfdcInstancesRequest>,
+  output: __S(1920, __c60, 0) as any as S.Schema<GoogleCloudIntegrationsV1alphaSfdcInstance>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5422,11 +5434,11 @@ export const createProjectsLocationsProductsSfdcInstancesSfdcChannels: API.Opera
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    153,
-    __c19,
-    1,
+    1952,
+    __c61,
+    0,
   ) as any as S.Schema<CreateProjectsLocationsProductsSfdcInstancesSfdcChannelsRequest>,
-  output: __S(152, __c19, 0) as any as S.Schema<GoogleCloudIntegrationsV1alphaSfdcChannel>,
+  output: __S(1984, __c62, 0) as any as S.Schema<GoogleCloudIntegrationsV1alphaSfdcChannel>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5445,8 +5457,8 @@ export const createProjectsLocationsSfdcInstances: API.OperationMethod<
   CreateProjectsLocationsSfdcInstancesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(154, __c19, 2) as any as S.Schema<CreateProjectsLocationsSfdcInstancesRequest>,
-  output: __S(150, __c18, 6) as any as S.Schema<GoogleCloudIntegrationsV1alphaSfdcInstance>,
+  input: __S(2016, __c63, 0) as any as S.Schema<CreateProjectsLocationsSfdcInstancesRequest>,
+  output: __S(1920, __c60, 0) as any as S.Schema<GoogleCloudIntegrationsV1alphaSfdcInstance>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5466,11 +5478,11 @@ export const createProjectsLocationsSfdcInstancesSfdcChannels: API.OperationMeth
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    155,
-    __c19,
-    3,
+    2048,
+    __c64,
+    0,
   ) as any as S.Schema<CreateProjectsLocationsSfdcInstancesSfdcChannelsRequest>,
-  output: __S(152, __c19, 0) as any as S.Schema<GoogleCloudIntegrationsV1alphaSfdcChannel>,
+  output: __S(1984, __c62, 0) as any as S.Schema<GoogleCloudIntegrationsV1alphaSfdcChannel>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5489,8 +5501,8 @@ export const createProjectsLocationsTemplates: API.OperationMethod<
   CreateProjectsLocationsTemplatesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(163, __c20, 3) as any as S.Schema<CreateProjectsLocationsTemplatesRequest>,
-  output: __S(162, __c20, 2) as any as S.Schema<GoogleCloudIntegrationsV1alphaTemplate>,
+  input: __S(2080, __c65, 0) as any as S.Schema<CreateProjectsLocationsTemplatesRequest>,
+  output: __S(2149, __c67, 5) as any as S.Schema<GoogleCloudIntegrationsV1alphaTemplate>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5509,8 +5521,8 @@ export const deleteProjectsLocationsAuthConfigs: API.OperationMethod<
   DeleteProjectsLocationsAuthConfigsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(164, __c20, 4) as any as S.Schema<DeleteProjectsLocationsAuthConfigsRequest>,
-  output: __S(165, __c20, 5) as any as S.Schema<GoogleProtobufEmpty>,
+  input: __S(2176, __c68, 0) as any as S.Schema<DeleteProjectsLocationsAuthConfigsRequest>,
+  output: __S(2208, __c69, 0) as any as S.Schema<GoogleProtobufEmpty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5529,8 +5541,8 @@ export const deleteProjectsLocationsCertificates: API.OperationMethod<
   DeleteProjectsLocationsCertificatesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(166, __c20, 6) as any as S.Schema<DeleteProjectsLocationsCertificatesRequest>,
-  output: __S(165, __c20, 5) as any as S.Schema<GoogleProtobufEmpty>,
+  input: __S(2240, __c70, 0) as any as S.Schema<DeleteProjectsLocationsCertificatesRequest>,
+  output: __S(2208, __c69, 0) as any as S.Schema<GoogleProtobufEmpty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5549,8 +5561,8 @@ export const deleteProjectsLocationsIntegrations: API.OperationMethod<
   DeleteProjectsLocationsIntegrationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(167, __c20, 7) as any as S.Schema<DeleteProjectsLocationsIntegrationsRequest>,
-  output: __S(165, __c20, 5) as any as S.Schema<GoogleProtobufEmpty>,
+  input: __S(2272, __c71, 0) as any as S.Schema<DeleteProjectsLocationsIntegrationsRequest>,
+  output: __S(2208, __c69, 0) as any as S.Schema<GoogleProtobufEmpty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5569,8 +5581,8 @@ export const deleteProjectsLocationsIntegrationsVersions: API.OperationMethod<
   DeleteProjectsLocationsIntegrationsVersionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(168, __c21, 0) as any as S.Schema<DeleteProjectsLocationsIntegrationsVersionsRequest>,
-  output: __S(165, __c20, 5) as any as S.Schema<GoogleProtobufEmpty>,
+  input: __S(2304, __c72, 0) as any as S.Schema<DeleteProjectsLocationsIntegrationsVersionsRequest>,
+  output: __S(2208, __c69, 0) as any as S.Schema<GoogleProtobufEmpty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5590,11 +5602,11 @@ export const deleteProjectsLocationsIntegrationsVersionsTestCases: API.Operation
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    169,
-    __c21,
-    1,
+    2336,
+    __c73,
+    0,
   ) as any as S.Schema<DeleteProjectsLocationsIntegrationsVersionsTestCasesRequest>,
-  output: __S(165, __c20, 5) as any as S.Schema<GoogleProtobufEmpty>,
+  output: __S(2208, __c69, 0) as any as S.Schema<GoogleProtobufEmpty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5613,8 +5625,8 @@ export const deleteProjectsLocationsProductsAuthConfigs: API.OperationMethod<
   DeleteProjectsLocationsProductsAuthConfigsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(170, __c21, 2) as any as S.Schema<DeleteProjectsLocationsProductsAuthConfigsRequest>,
-  output: __S(165, __c20, 5) as any as S.Schema<GoogleProtobufEmpty>,
+  input: __S(2368, __c74, 0) as any as S.Schema<DeleteProjectsLocationsProductsAuthConfigsRequest>,
+  output: __S(2208, __c69, 0) as any as S.Schema<GoogleProtobufEmpty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5633,8 +5645,8 @@ export const deleteProjectsLocationsProductsCertificates: API.OperationMethod<
   DeleteProjectsLocationsProductsCertificatesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(171, __c21, 3) as any as S.Schema<DeleteProjectsLocationsProductsCertificatesRequest>,
-  output: __S(165, __c20, 5) as any as S.Schema<GoogleProtobufEmpty>,
+  input: __S(2400, __c75, 0) as any as S.Schema<DeleteProjectsLocationsProductsCertificatesRequest>,
+  output: __S(2208, __c69, 0) as any as S.Schema<GoogleProtobufEmpty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5654,11 +5666,11 @@ export const deleteProjectsLocationsProductsIntegrationsVersions: API.OperationM
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    172,
-    __c21,
-    4,
+    2432,
+    __c76,
+    0,
   ) as any as S.Schema<DeleteProjectsLocationsProductsIntegrationsVersionsRequest>,
-  output: __S(165, __c20, 5) as any as S.Schema<GoogleProtobufEmpty>,
+  output: __S(2208, __c69, 0) as any as S.Schema<GoogleProtobufEmpty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5677,8 +5689,12 @@ export const deleteProjectsLocationsProductsSfdcInstances: API.OperationMethod<
   DeleteProjectsLocationsProductsSfdcInstancesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(173, __c21, 5) as any as S.Schema<DeleteProjectsLocationsProductsSfdcInstancesRequest>,
-  output: __S(165, __c20, 5) as any as S.Schema<GoogleProtobufEmpty>,
+  input: __S(
+    2464,
+    __c77,
+    0,
+  ) as any as S.Schema<DeleteProjectsLocationsProductsSfdcInstancesRequest>,
+  output: __S(2208, __c69, 0) as any as S.Schema<GoogleProtobufEmpty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5698,11 +5714,11 @@ export const deleteProjectsLocationsProductsSfdcInstancesSfdcChannels: API.Opera
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    174,
-    __c21,
-    6,
+    2496,
+    __c78,
+    0,
   ) as any as S.Schema<DeleteProjectsLocationsProductsSfdcInstancesSfdcChannelsRequest>,
-  output: __S(165, __c20, 5) as any as S.Schema<GoogleProtobufEmpty>,
+  output: __S(2208, __c69, 0) as any as S.Schema<GoogleProtobufEmpty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5721,8 +5737,8 @@ export const deleteProjectsLocationsSfdcInstances: API.OperationMethod<
   DeleteProjectsLocationsSfdcInstancesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(175, __c21, 7) as any as S.Schema<DeleteProjectsLocationsSfdcInstancesRequest>,
-  output: __S(165, __c20, 5) as any as S.Schema<GoogleProtobufEmpty>,
+  input: __S(2528, __c79, 0) as any as S.Schema<DeleteProjectsLocationsSfdcInstancesRequest>,
+  output: __S(2208, __c69, 0) as any as S.Schema<GoogleProtobufEmpty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5742,11 +5758,11 @@ export const deleteProjectsLocationsSfdcInstancesSfdcChannels: API.OperationMeth
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    176,
-    __c22,
+    2560,
+    __c80,
     0,
   ) as any as S.Schema<DeleteProjectsLocationsSfdcInstancesSfdcChannelsRequest>,
-  output: __S(165, __c20, 5) as any as S.Schema<GoogleProtobufEmpty>,
+  output: __S(2208, __c69, 0) as any as S.Schema<GoogleProtobufEmpty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5765,8 +5781,8 @@ export const deleteProjectsLocationsTemplates: API.OperationMethod<
   DeleteProjectsLocationsTemplatesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(177, __c22, 1) as any as S.Schema<DeleteProjectsLocationsTemplatesRequest>,
-  output: __S(165, __c20, 5) as any as S.Schema<GoogleProtobufEmpty>,
+  input: __S(2592, __c81, 0) as any as S.Schema<DeleteProjectsLocationsTemplatesRequest>,
+  output: __S(2208, __c69, 0) as any as S.Schema<GoogleProtobufEmpty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5785,8 +5801,8 @@ export const deprovisionProjectsLocationsClients: API.OperationMethod<
   DeprovisionProjectsLocationsClientsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(179, __c22, 3) as any as S.Schema<DeprovisionProjectsLocationsClientsRequest>,
-  output: __S(165, __c20, 5) as any as S.Schema<GoogleProtobufEmpty>,
+  input: __S(2624, __c82, 0) as any as S.Schema<DeprovisionProjectsLocationsClientsRequest>,
+  output: __S(2208, __c69, 0) as any as S.Schema<GoogleProtobufEmpty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5804,14 +5820,14 @@ export const downloadJsonPackageProjectsLocationsIntegrationsVersions: API.Opera
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    181,
-    __c22,
-    5,
+    2688,
+    __c84,
+    0,
   ) as any as S.Schema<DownloadJsonPackageProjectsLocationsIntegrationsVersionsRequest>,
   output: __S(
-    184,
-    __c23,
-    0,
+    2691,
+    __c84,
+    3,
   ) as any as S.Schema<GoogleCloudIntegrationsV1alphaDownloadJsonPackageResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
@@ -5830,14 +5846,14 @@ export const downloadProjectsLocationsIntegrationsExecutions: API.OperationMetho
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    185,
-    __c23,
-    1,
+    2752,
+    __c86,
+    0,
   ) as any as S.Schema<DownloadProjectsLocationsIntegrationsExecutionsRequest>,
   output: __S(
-    186,
-    __c23,
-    2,
+    2784,
+    __c87,
+    0,
   ) as any as S.Schema<GoogleCloudIntegrationsV1alphaDownloadExecutionResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
@@ -5853,14 +5869,14 @@ export const downloadProjectsLocationsIntegrationsVersions: API.OperationMethod<
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    187,
-    __c23,
-    3,
+    2816,
+    __c88,
+    0,
   ) as any as S.Schema<DownloadProjectsLocationsIntegrationsVersionsRequest>,
   output: __S(
-    190,
-    __c23,
-    6,
+    2850,
+    __c89,
+    2,
   ) as any as S.Schema<GoogleCloudIntegrationsV1alphaDownloadIntegrationVersionResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
@@ -5879,14 +5895,14 @@ export const downloadProjectsLocationsIntegrationsVersionsTestCases: API.Operati
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    191,
-    __c23,
-    7,
+    2880,
+    __c90,
+    0,
   ) as any as S.Schema<DownloadProjectsLocationsIntegrationsVersionsTestCasesRequest>,
   output: __S(
-    186,
-    __c23,
-    2,
+    2784,
+    __c87,
+    0,
   ) as any as S.Schema<GoogleCloudIntegrationsV1alphaDownloadTestCaseResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
@@ -5905,14 +5921,14 @@ export const downloadProjectsLocationsProductsIntegrationsExecutions: API.Operat
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    192,
-    __c24,
+    2912,
+    __c91,
     0,
   ) as any as S.Schema<DownloadProjectsLocationsProductsIntegrationsExecutionsRequest>,
   output: __S(
-    186,
-    __c23,
-    2,
+    2784,
+    __c87,
+    0,
   ) as any as S.Schema<GoogleCloudIntegrationsV1alphaDownloadExecutionResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
@@ -5931,14 +5947,14 @@ export const downloadProjectsLocationsProductsIntegrationsVersions: API.Operatio
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    193,
-    __c24,
-    1,
+    2976,
+    __c93,
+    0,
   ) as any as S.Schema<DownloadProjectsLocationsProductsIntegrationsVersionsRequest>,
   output: __S(
-    190,
-    __c23,
-    6,
+    2850,
+    __c89,
+    2,
   ) as any as S.Schema<GoogleCloudIntegrationsV1alphaDownloadIntegrationVersionResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
@@ -5953,11 +5969,11 @@ export const downloadProjectsLocationsTemplates: API.OperationMethod<
   DownloadProjectsLocationsTemplatesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(194, __c24, 2) as any as S.Schema<DownloadProjectsLocationsTemplatesRequest>,
+  input: __S(3008, __c94, 0) as any as S.Schema<DownloadProjectsLocationsTemplatesRequest>,
   output: __S(
-    186,
-    __c23,
-    2,
+    2784,
+    __c87,
+    0,
   ) as any as S.Schema<GoogleCloudIntegrationsV1alphaDownloadTemplateResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
@@ -5972,11 +5988,11 @@ export const enumerateConnectorPlatformRegions: API.OperationMethod<
   EnumerateConnectorPlatformRegionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(195, __c24, 3) as any as S.Schema<EnumerateConnectorPlatformRegionsRequest>,
+  input: __S(3040, __c95, 0) as any as S.Schema<EnumerateConnectorPlatformRegionsRequest>,
   output: __S(
-    196,
-    __c24,
-    4,
+    3041,
+    __c95,
+    1,
   ) as any as S.Schema<GoogleCloudIntegrationsV1alphaEnumerateConnectorPlatformRegionsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
@@ -5996,8 +6012,12 @@ export const executeEventProjectsLocationsIntegrations: API.OperationMethod<
   ExecuteEventProjectsLocationsIntegrationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(197, __c24, 5) as any as S.Schema<ExecuteEventProjectsLocationsIntegrationsRequest>,
-  output: __S(198, __c24, 6) as any as S.Schema<GoogleCloudIntegrationsV1alphaExecuteEventResponse>,
+  input: __S(3072, __c96, 0) as any as S.Schema<ExecuteEventProjectsLocationsIntegrationsRequest>,
+  output: __S(
+    3073,
+    __c96,
+    1,
+  ) as any as S.Schema<GoogleCloudIntegrationsV1alphaExecuteEventResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -6016,11 +6036,11 @@ export const executeProjectsLocationsIntegrations: API.OperationMethod<
   ExecuteProjectsLocationsIntegrationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(201, __c25, 1) as any as S.Schema<ExecuteProjectsLocationsIntegrationsRequest>,
+  input: __S(3104, __c97, 0) as any as S.Schema<ExecuteProjectsLocationsIntegrationsRequest>,
   output: __S(
-    202,
-    __c25,
-    2,
+    3137,
+    __c98,
+    1,
   ) as any as S.Schema<GoogleCloudIntegrationsV1alphaExecuteIntegrationsResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
@@ -6041,14 +6061,14 @@ export const executeProjectsLocationsIntegrationsVersionsTestCases: API.Operatio
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    203,
-    __c25,
-    3,
+    3200,
+    __c100,
+    0,
   ) as any as S.Schema<ExecuteProjectsLocationsIntegrationsVersionsTestCasesRequest>,
   output: __S(
-    208,
-    __c26,
-    0,
+    3202,
+    __c100,
+    2,
   ) as any as S.Schema<GoogleCloudIntegrationsV1alphaExecuteTestCasesResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
@@ -6068,11 +6088,15 @@ export const executeProjectsLocationsProductsIntegrations: API.OperationMethod<
   ExecuteProjectsLocationsProductsIntegrationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(209, __c26, 1) as any as S.Schema<ExecuteProjectsLocationsProductsIntegrationsRequest>,
+  input: __S(
+    3264,
+    __c102,
+    0,
+  ) as any as S.Schema<ExecuteProjectsLocationsProductsIntegrationsRequest>,
   output: __S(
-    202,
-    __c25,
-    2,
+    3137,
+    __c98,
+    1,
   ) as any as S.Schema<GoogleCloudIntegrationsV1alphaExecuteIntegrationsResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
@@ -6093,14 +6117,14 @@ export const executeTestProjectsLocationsIntegrationsVersionsTestCases: API.Oper
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    211,
-    __c26,
-    3,
+    3297,
+    __c103,
+    1,
   ) as any as S.Schema<ExecuteTestProjectsLocationsIntegrationsVersionsTestCasesRequest>,
   output: __S(
-    206,
-    __c25,
-    6,
+    3234,
+    __c101,
+    2,
   ) as any as S.Schema<GoogleCloudIntegrationsV1alphaExecuteTestCaseResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
@@ -6120,11 +6144,11 @@ export const generateOpenApiSpecProjectsLocations: API.OperationMethod<
   GenerateOpenApiSpecProjectsLocationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(215, __c26, 7) as any as S.Schema<GenerateOpenApiSpecProjectsLocationsRequest>,
+  input: __S(3331, __c104, 3) as any as S.Schema<GenerateOpenApiSpecProjectsLocationsRequest>,
   output: __S(
-    216,
-    __c27,
-    0,
+    3332,
+    __c104,
+    4,
   ) as any as S.Schema<GoogleCloudIntegrationsV1alphaGenerateOpenApiSpecResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
@@ -6139,11 +6163,11 @@ export const generateTokenCallback: API.OperationMethod<
   GenerateTokenCallbackError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(217, __c27, 1) as any as S.Schema<GenerateTokenCallbackRequest>,
+  input: __S(3360, __c105, 0) as any as S.Schema<GenerateTokenCallbackRequest>,
   output: __S(
-    218,
-    __c27,
-    2,
+    3361,
+    __c105,
+    1,
   ) as any as S.Schema<GoogleCloudIntegrationsV1alphaGenerateTokenResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
@@ -6158,11 +6182,11 @@ export const getClientmetadataProjects: API.OperationMethod<
   GetClientmetadataProjectsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(219, __c27, 3) as any as S.Schema<GetClientmetadataProjectsRequest>,
+  input: __S(3488, __c109, 0) as any as S.Schema<GetClientmetadataProjectsRequest>,
   output: __S(
-    221,
-    __c27,
-    5,
+    3490,
+    __c109,
+    2,
   ) as any as S.Schema<GoogleCloudIntegrationsV1alphaGetClientMetadataResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
@@ -6177,8 +6201,8 @@ export const getClientsProjectsLocations: API.OperationMethod<
   GetClientsProjectsLocationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(222, __c27, 6) as any as S.Schema<GetClientsProjectsLocationsRequest>,
-  output: __S(224, __c28, 0) as any as S.Schema<GoogleCloudIntegrationsV1alphaGetClientResponse>,
+  input: __S(3520, __c110, 0) as any as S.Schema<GetClientsProjectsLocationsRequest>,
+  output: __S(3522, __c110, 2) as any as S.Schema<GoogleCloudIntegrationsV1alphaGetClientResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -6196,14 +6220,14 @@ export const getConnectionSchemaMetadataProjectsLocationsConnections: API.Operat
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    225,
-    __c28,
-    1,
+    3552,
+    __c111,
+    0,
   ) as any as S.Schema<GetConnectionSchemaMetadataProjectsLocationsConnectionsRequest>,
   output: __S(
-    226,
-    __c28,
-    2,
+    3553,
+    __c111,
+    1,
   ) as any as S.Schema<GoogleCloudIntegrationsV1alphaConnectionSchemaMetadata>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
@@ -6218,8 +6242,8 @@ export const getProjectsLocationsAuthConfigs: API.OperationMethod<
   GetProjectsLocationsAuthConfigsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(227, __c28, 3) as any as S.Schema<GetProjectsLocationsAuthConfigsRequest>,
-  output: __S(33, __c4, 1) as any as S.Schema<GoogleCloudIntegrationsV1alphaAuthConfig>,
+  input: __S(3584, __c112, 0) as any as S.Schema<GetProjectsLocationsAuthConfigsRequest>,
+  output: __S(4430, __c138, 14) as any as S.Schema<GoogleCloudIntegrationsV1alphaAuthConfig>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -6233,8 +6257,8 @@ export const getProjectsLocationsCertificates: API.OperationMethod<
   GetProjectsLocationsCertificatesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(228, __c28, 4) as any as S.Schema<GetProjectsLocationsCertificatesRequest>,
-  output: __S(36, __c4, 4) as any as S.Schema<GoogleCloudIntegrationsV1alphaCertificate>,
+  input: __S(3616, __c113, 0) as any as S.Schema<GetProjectsLocationsCertificatesRequest>,
+  output: __S(5057, __c158, 1) as any as S.Schema<GoogleCloudIntegrationsV1alphaCertificate>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -6248,8 +6272,8 @@ export const getProjectsLocationsIntegrationsExecutions: API.OperationMethod<
   GetProjectsLocationsIntegrationsExecutionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(229, __c28, 5) as any as S.Schema<GetProjectsLocationsIntegrationsExecutionsRequest>,
-  output: __S(252, __c31, 4) as any as S.Schema<GoogleCloudIntegrationsV1alphaExecution>,
+  input: __S(3648, __c114, 0) as any as S.Schema<GetProjectsLocationsIntegrationsExecutionsRequest>,
+  output: __S(3702, __c115, 22) as any as S.Schema<GoogleCloudIntegrationsV1alphaExecution>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -6263,8 +6287,8 @@ export const getProjectsLocationsIntegrationsVersions: API.OperationMethod<
   GetProjectsLocationsIntegrationsVersionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(253, __c31, 5) as any as S.Schema<GetProjectsLocationsIntegrationsVersionsRequest>,
-  output: __S(136, __c17, 0) as any as S.Schema<GoogleCloudIntegrationsV1alphaIntegrationVersion>,
+  input: __S(3712, __c116, 0) as any as S.Schema<GetProjectsLocationsIntegrationsVersionsRequest>,
+  output: __S(383, __c11, 31) as any as S.Schema<GoogleCloudIntegrationsV1alphaIntegrationVersion>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -6282,11 +6306,11 @@ export const getProjectsLocationsIntegrationsVersionsTestCases: API.OperationMet
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    254,
-    __c31,
-    6,
+    3744,
+    __c117,
+    0,
   ) as any as S.Schema<GetProjectsLocationsIntegrationsVersionsTestCasesRequest>,
-  output: __S(144, __c18, 0) as any as S.Schema<GoogleCloudIntegrationsV1alphaTestCase>,
+  output: __S(837, __c26, 5) as any as S.Schema<GoogleCloudIntegrationsV1alphaTestCase>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -6300,8 +6324,8 @@ export const getProjectsLocationsProductsAuthConfigs: API.OperationMethod<
   GetProjectsLocationsProductsAuthConfigsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(255, __c31, 7) as any as S.Schema<GetProjectsLocationsProductsAuthConfigsRequest>,
-  output: __S(33, __c4, 1) as any as S.Schema<GoogleCloudIntegrationsV1alphaAuthConfig>,
+  input: __S(3776, __c118, 0) as any as S.Schema<GetProjectsLocationsProductsAuthConfigsRequest>,
+  output: __S(4430, __c138, 14) as any as S.Schema<GoogleCloudIntegrationsV1alphaAuthConfig>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -6315,8 +6339,8 @@ export const getProjectsLocationsProductsCertificates: API.OperationMethod<
   GetProjectsLocationsProductsCertificatesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(256, __c32, 0) as any as S.Schema<GetProjectsLocationsProductsCertificatesRequest>,
-  output: __S(36, __c4, 4) as any as S.Schema<GoogleCloudIntegrationsV1alphaCertificate>,
+  input: __S(3808, __c119, 0) as any as S.Schema<GetProjectsLocationsProductsCertificatesRequest>,
+  output: __S(5057, __c158, 1) as any as S.Schema<GoogleCloudIntegrationsV1alphaCertificate>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -6334,11 +6358,11 @@ export const getProjectsLocationsProductsIntegrationsExecutions: API.OperationMe
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    257,
-    __c32,
-    1,
+    3872,
+    __c121,
+    0,
   ) as any as S.Schema<GetProjectsLocationsProductsIntegrationsExecutionsRequest>,
-  output: __S(252, __c31, 4) as any as S.Schema<GoogleCloudIntegrationsV1alphaExecution>,
+  output: __S(3702, __c115, 22) as any as S.Schema<GoogleCloudIntegrationsV1alphaExecution>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -6356,11 +6380,11 @@ export const getProjectsLocationsProductsIntegrationsVersions: API.OperationMeth
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    258,
-    __c32,
-    2,
+    3904,
+    __c122,
+    0,
   ) as any as S.Schema<GetProjectsLocationsProductsIntegrationsVersionsRequest>,
-  output: __S(136, __c17, 0) as any as S.Schema<GoogleCloudIntegrationsV1alphaIntegrationVersion>,
+  output: __S(383, __c11, 31) as any as S.Schema<GoogleCloudIntegrationsV1alphaIntegrationVersion>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -6374,8 +6398,8 @@ export const getProjectsLocationsProductsSfdcInstances: API.OperationMethod<
   GetProjectsLocationsProductsSfdcInstancesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(259, __c32, 3) as any as S.Schema<GetProjectsLocationsProductsSfdcInstancesRequest>,
-  output: __S(150, __c18, 6) as any as S.Schema<GoogleCloudIntegrationsV1alphaSfdcInstance>,
+  input: __S(3936, __c123, 0) as any as S.Schema<GetProjectsLocationsProductsSfdcInstancesRequest>,
+  output: __S(1920, __c60, 0) as any as S.Schema<GoogleCloudIntegrationsV1alphaSfdcInstance>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -6393,11 +6417,11 @@ export const getProjectsLocationsProductsSfdcInstancesSfdcChannels: API.Operatio
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    260,
-    __c32,
-    4,
+    3968,
+    __c124,
+    0,
   ) as any as S.Schema<GetProjectsLocationsProductsSfdcInstancesSfdcChannelsRequest>,
-  output: __S(152, __c19, 0) as any as S.Schema<GoogleCloudIntegrationsV1alphaSfdcChannel>,
+  output: __S(1984, __c62, 0) as any as S.Schema<GoogleCloudIntegrationsV1alphaSfdcChannel>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -6411,8 +6435,8 @@ export const getProjectsLocationsSfdcInstances: API.OperationMethod<
   GetProjectsLocationsSfdcInstancesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(261, __c32, 5) as any as S.Schema<GetProjectsLocationsSfdcInstancesRequest>,
-  output: __S(150, __c18, 6) as any as S.Schema<GoogleCloudIntegrationsV1alphaSfdcInstance>,
+  input: __S(4000, __c125, 0) as any as S.Schema<GetProjectsLocationsSfdcInstancesRequest>,
+  output: __S(1920, __c60, 0) as any as S.Schema<GoogleCloudIntegrationsV1alphaSfdcInstance>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -6427,11 +6451,11 @@ export const getProjectsLocationsSfdcInstancesSfdcChannels: API.OperationMethod<
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    262,
-    __c32,
-    6,
+    4032,
+    __c126,
+    0,
   ) as any as S.Schema<GetProjectsLocationsSfdcInstancesSfdcChannelsRequest>,
-  output: __S(152, __c19, 0) as any as S.Schema<GoogleCloudIntegrationsV1alphaSfdcChannel>,
+  output: __S(1984, __c62, 0) as any as S.Schema<GoogleCloudIntegrationsV1alphaSfdcChannel>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -6445,8 +6469,8 @@ export const getProjectsLocationsTemplates: API.OperationMethod<
   GetProjectsLocationsTemplatesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(263, __c32, 7) as any as S.Schema<GetProjectsLocationsTemplatesRequest>,
-  output: __S(162, __c20, 2) as any as S.Schema<GoogleCloudIntegrationsV1alphaTemplate>,
+  input: __S(4064, __c127, 0) as any as S.Schema<GetProjectsLocationsTemplatesRequest>,
+  output: __S(2149, __c67, 5) as any as S.Schema<GoogleCloudIntegrationsV1alphaTemplate>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -6465,11 +6489,11 @@ export const importProjectsLocationsTemplates: API.OperationMethod<
   ImportProjectsLocationsTemplatesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(267, __c33, 3) as any as S.Schema<ImportProjectsLocationsTemplatesRequest>,
+  input: __S(4097, __c128, 1) as any as S.Schema<ImportProjectsLocationsTemplatesRequest>,
   output: __S(
-    269,
-    __c33,
-    5,
+    4130,
+    __c129,
+    2,
   ) as any as S.Schema<GoogleCloudIntegrationsV1alphaImportTemplateResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
@@ -6490,14 +6514,14 @@ export const liftProjectsLocationsIntegrationsExecutionsSuspensions: API.Operati
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    271,
-    __c33,
-    7,
+    4192,
+    __c131,
+    0,
   ) as any as S.Schema<LiftProjectsLocationsIntegrationsExecutionsSuspensionsRequest>,
   output: __S(
-    272,
-    __c34,
-    0,
+    4225,
+    __c132,
+    1,
   ) as any as S.Schema<GoogleCloudIntegrationsV1alphaLiftSuspensionResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
@@ -6518,14 +6542,14 @@ export const liftProjectsLocationsProductsIntegrationsExecutionsSuspensions: API
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    273,
-    __c34,
-    1,
+    4256,
+    __c133,
+    0,
   ) as any as S.Schema<LiftProjectsLocationsProductsIntegrationsExecutionsSuspensionsRequest>,
   output: __S(
-    272,
-    __c34,
-    0,
+    4225,
+    __c132,
+    1,
   ) as any as S.Schema<GoogleCloudIntegrationsV1alphaLiftSuspensionResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
@@ -6545,11 +6569,11 @@ export const linkProjectsLocationsAppsScriptProjects: API.OperationMethod<
   LinkProjectsLocationsAppsScriptProjectsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(275, __c34, 3) as any as S.Schema<LinkProjectsLocationsAppsScriptProjectsRequest>,
+  input: __S(4449, __c139, 1) as any as S.Schema<LinkProjectsLocationsAppsScriptProjectsRequest>,
   output: __S(
-    274,
-    __c34,
-    2,
+    4448,
+    __c139,
+    0,
   ) as any as S.Schema<GoogleCloudIntegrationsV1alphaLinkAppsScriptProjectResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
@@ -6565,11 +6589,11 @@ export const listProjectsLocationsAuthConfigs: API.PaginatedOperationMethod<
   GcpOpContext,
   GoogleCloudIntegrationsV1alphaListAuthConfigsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(276, __c34, 4) as any as S.Schema<ListProjectsLocationsAuthConfigsRequest>,
+  input: __S(4480, __c140, 0) as any as S.Schema<ListProjectsLocationsAuthConfigsRequest>,
   output: __S(
-    278,
-    __c34,
-    6,
+    4513,
+    __c141,
+    1,
   ) as any as S.Schema<GoogleCloudIntegrationsV1alphaListAuthConfigsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
@@ -6586,10 +6610,10 @@ export const listProjectsLocationsCertificates: API.PaginatedOperationMethod<
   GcpOpContext,
   GoogleCloudIntegrationsV1alphaListCertificatesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(279, __c34, 7) as any as S.Schema<ListProjectsLocationsCertificatesRequest>,
+  input: __S(4544, __c142, 0) as any as S.Schema<ListProjectsLocationsCertificatesRequest>,
   output: __S(
-    281,
-    __c35,
+    4577,
+    __c143,
     1,
   ) as any as S.Schema<GoogleCloudIntegrationsV1alphaListCertificatesResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
@@ -6607,11 +6631,11 @@ export const listProjectsLocationsConnections: API.PaginatedOperationMethod<
   GcpOpContext,
   GoogleCloudIntegrationsV1alphaListConnectionsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(282, __c35, 2) as any as S.Schema<ListProjectsLocationsConnectionsRequest>,
+  input: __S(4608, __c144, 0) as any as S.Schema<ListProjectsLocationsConnectionsRequest>,
   output: __S(
-    323,
-    __c40,
-    3,
+    4649,
+    __c145,
+    9,
   ) as any as S.Schema<GoogleCloudIntegrationsV1alphaListConnectionsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
@@ -6632,14 +6656,14 @@ export const listProjectsLocationsConnectionsRuntimeActionSchemas: API.Paginated
   GoogleCloudIntegrationsV1alphaListRuntimeActionSchemasResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(
-    324,
-    __c40,
-    4,
+    4672,
+    __c146,
+    0,
   ) as any as S.Schema<ListProjectsLocationsConnectionsRuntimeActionSchemasRequest>,
   output: __S(
-    327,
-    __c40,
-    7,
+    4675,
+    __c146,
+    3,
   ) as any as S.Schema<GoogleCloudIntegrationsV1alphaListRuntimeActionSchemasResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
@@ -6660,13 +6684,13 @@ export const listProjectsLocationsConnectionsRuntimeEntitySchemas: API.Paginated
   GoogleCloudIntegrationsV1alphaListRuntimeEntitySchemasResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(
-    328,
-    __c41,
+    4704,
+    __c147,
     0,
   ) as any as S.Schema<ListProjectsLocationsConnectionsRuntimeEntitySchemasRequest>,
   output: __S(
-    331,
-    __c41,
+    4707,
+    __c147,
     3,
   ) as any as S.Schema<GoogleCloudIntegrationsV1alphaListRuntimeEntitySchemasResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
@@ -6684,11 +6708,11 @@ export const listProjectsLocationsIntegrations: API.PaginatedOperationMethod<
   GcpOpContext,
   GoogleCloudIntegrationsV1alphaListIntegrationsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(332, __c41, 4) as any as S.Schema<ListProjectsLocationsIntegrationsRequest>,
+  input: __S(4736, __c148, 0) as any as S.Schema<ListProjectsLocationsIntegrationsRequest>,
   output: __S(
-    335,
-    __c41,
-    7,
+    4770,
+    __c149,
+    2,
   ) as any as S.Schema<GoogleCloudIntegrationsV1alphaListIntegrationsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
@@ -6705,11 +6729,15 @@ export const listProjectsLocationsIntegrationsExecutions: API.PaginatedOperation
   GcpOpContext,
   GoogleCloudIntegrationsV1alphaListExecutionsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(336, __c42, 0) as any as S.Schema<ListProjectsLocationsIntegrationsExecutionsRequest>,
+  input: __S(
+    4800,
+    __c150,
+    0,
+  ) as any as S.Schema<ListProjectsLocationsIntegrationsExecutionsRequest>,
   output: __S(
-    348,
-    __c43,
-    4,
+    4843,
+    __c151,
+    11,
   ) as any as S.Schema<GoogleCloudIntegrationsV1alphaListExecutionsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
@@ -6730,14 +6758,14 @@ export const listProjectsLocationsIntegrationsExecutionsSuspensions: API.Paginat
   GoogleCloudIntegrationsV1alphaListSuspensionsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(
-    349,
-    __c43,
-    5,
+    4864,
+    __c152,
+    0,
   ) as any as S.Schema<ListProjectsLocationsIntegrationsExecutionsSuspensionsRequest>,
   output: __S(
-    368,
-    __c46,
-    0,
+    4897,
+    __c153,
+    1,
   ) as any as S.Schema<GoogleCloudIntegrationsV1alphaListSuspensionsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
@@ -6754,11 +6782,11 @@ export const listProjectsLocationsIntegrationsVersions: API.PaginatedOperationMe
   GcpOpContext,
   GoogleCloudIntegrationsV1alphaListIntegrationVersionsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(369, __c46, 1) as any as S.Schema<ListProjectsLocationsIntegrationsVersionsRequest>,
+  input: __S(4960, __c155, 0) as any as S.Schema<ListProjectsLocationsIntegrationsVersionsRequest>,
   output: __S(
-    370,
-    __c46,
-    2,
+    4992,
+    __c156,
+    0,
   ) as any as S.Schema<GoogleCloudIntegrationsV1alphaListIntegrationVersionsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
@@ -6779,14 +6807,14 @@ export const listProjectsLocationsIntegrationsVersionsTestCases: API.PaginatedOp
   GoogleCloudIntegrationsV1alphaListTestCasesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(
-    371,
-    __c46,
-    3,
+    5088,
+    __c159,
+    0,
   ) as any as S.Schema<ListProjectsLocationsIntegrationsVersionsTestCasesRequest>,
   output: __S(
-    373,
-    __c46,
-    5,
+    5090,
+    __c159,
+    2,
   ) as any as S.Schema<GoogleCloudIntegrationsV1alphaListTestCasesResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
@@ -6803,11 +6831,11 @@ export const listProjectsLocationsProductsAuthConfigs: API.PaginatedOperationMet
   GcpOpContext,
   GoogleCloudIntegrationsV1alphaListAuthConfigsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(374, __c46, 6) as any as S.Schema<ListProjectsLocationsProductsAuthConfigsRequest>,
+  input: __S(5120, __c160, 0) as any as S.Schema<ListProjectsLocationsProductsAuthConfigsRequest>,
   output: __S(
-    278,
-    __c34,
-    6,
+    4513,
+    __c141,
+    1,
   ) as any as S.Schema<GoogleCloudIntegrationsV1alphaListAuthConfigsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
@@ -6824,10 +6852,10 @@ export const listProjectsLocationsProductsCertificates: API.PaginatedOperationMe
   GcpOpContext,
   GoogleCloudIntegrationsV1alphaListCertificatesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(375, __c46, 7) as any as S.Schema<ListProjectsLocationsProductsCertificatesRequest>,
+  input: __S(5152, __c161, 0) as any as S.Schema<ListProjectsLocationsProductsCertificatesRequest>,
   output: __S(
-    281,
-    __c35,
+    4577,
+    __c143,
     1,
   ) as any as S.Schema<GoogleCloudIntegrationsV1alphaListCertificatesResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
@@ -6845,11 +6873,11 @@ export const listProjectsLocationsProductsIntegrations: API.PaginatedOperationMe
   GcpOpContext,
   GoogleCloudIntegrationsV1alphaListIntegrationsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(376, __c47, 0) as any as S.Schema<ListProjectsLocationsProductsIntegrationsRequest>,
+  input: __S(5184, __c162, 0) as any as S.Schema<ListProjectsLocationsProductsIntegrationsRequest>,
   output: __S(
-    335,
-    __c41,
-    7,
+    4770,
+    __c149,
+    2,
   ) as any as S.Schema<GoogleCloudIntegrationsV1alphaListIntegrationsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
@@ -6870,14 +6898,14 @@ export const listProjectsLocationsProductsIntegrationsExecutions: API.PaginatedO
   GoogleCloudIntegrationsV1alphaListExecutionsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(
-    377,
-    __c47,
-    1,
+    5216,
+    __c163,
+    0,
   ) as any as S.Schema<ListProjectsLocationsProductsIntegrationsExecutionsRequest>,
   output: __S(
-    348,
-    __c43,
-    4,
+    4843,
+    __c151,
+    11,
   ) as any as S.Schema<GoogleCloudIntegrationsV1alphaListExecutionsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
@@ -6898,14 +6926,14 @@ export const listProjectsLocationsProductsIntegrationsExecutionsSuspensions: API
   GoogleCloudIntegrationsV1alphaListSuspensionsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(
-    378,
-    __c47,
-    2,
+    5248,
+    __c164,
+    0,
   ) as any as S.Schema<ListProjectsLocationsProductsIntegrationsExecutionsSuspensionsRequest>,
   output: __S(
-    368,
-    __c46,
-    0,
+    4897,
+    __c153,
+    1,
   ) as any as S.Schema<GoogleCloudIntegrationsV1alphaListSuspensionsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
@@ -6926,14 +6954,14 @@ export const listProjectsLocationsProductsIntegrationsVersions: API.PaginatedOpe
   GoogleCloudIntegrationsV1alphaListIntegrationVersionsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(
-    379,
-    __c47,
-    3,
+    5280,
+    __c165,
+    0,
   ) as any as S.Schema<ListProjectsLocationsProductsIntegrationsVersionsRequest>,
   output: __S(
-    370,
-    __c46,
-    2,
+    4992,
+    __c156,
+    0,
   ) as any as S.Schema<GoogleCloudIntegrationsV1alphaListIntegrationVersionsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
@@ -6950,11 +6978,11 @@ export const listProjectsLocationsProductsSfdcInstances: API.PaginatedOperationM
   GcpOpContext,
   GoogleCloudIntegrationsV1alphaListSfdcInstancesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(380, __c47, 4) as any as S.Schema<ListProjectsLocationsProductsSfdcInstancesRequest>,
+  input: __S(5312, __c166, 0) as any as S.Schema<ListProjectsLocationsProductsSfdcInstancesRequest>,
   output: __S(
-    382,
-    __c47,
-    6,
+    5345,
+    __c167,
+    1,
   ) as any as S.Schema<GoogleCloudIntegrationsV1alphaListSfdcInstancesResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
@@ -6975,13 +7003,13 @@ export const listProjectsLocationsProductsSfdcInstancesSfdcChannels: API.Paginat
   GoogleCloudIntegrationsV1alphaListSfdcChannelsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(
-    383,
-    __c47,
-    7,
+    5376,
+    __c168,
+    0,
   ) as any as S.Schema<ListProjectsLocationsProductsSfdcInstancesSfdcChannelsRequest>,
   output: __S(
-    385,
-    __c48,
+    5409,
+    __c169,
     1,
   ) as any as S.Schema<GoogleCloudIntegrationsV1alphaListSfdcChannelsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
@@ -6999,11 +7027,11 @@ export const listProjectsLocationsSfdcInstances: API.PaginatedOperationMethod<
   GcpOpContext,
   GoogleCloudIntegrationsV1alphaListSfdcInstancesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(386, __c48, 2) as any as S.Schema<ListProjectsLocationsSfdcInstancesRequest>,
+  input: __S(5440, __c170, 0) as any as S.Schema<ListProjectsLocationsSfdcInstancesRequest>,
   output: __S(
-    382,
-    __c47,
-    6,
+    5345,
+    __c167,
+    1,
   ) as any as S.Schema<GoogleCloudIntegrationsV1alphaListSfdcInstancesResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
@@ -7021,13 +7049,13 @@ export const listProjectsLocationsSfdcInstancesSfdcChannels: API.PaginatedOperat
   GoogleCloudIntegrationsV1alphaListSfdcChannelsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(
-    387,
-    __c48,
-    3,
+    5536,
+    __c173,
+    0,
   ) as any as S.Schema<ListProjectsLocationsSfdcInstancesSfdcChannelsRequest>,
   output: __S(
-    385,
-    __c48,
+    5409,
+    __c169,
     1,
   ) as any as S.Schema<GoogleCloudIntegrationsV1alphaListSfdcChannelsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
@@ -7045,11 +7073,11 @@ export const listProjectsLocationsTemplates: API.PaginatedOperationMethod<
   GcpOpContext,
   GoogleCloudIntegrationsV1alphaListTemplatesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(388, __c48, 4) as any as S.Schema<ListProjectsLocationsTemplatesRequest>,
+  input: __S(5568, __c174, 0) as any as S.Schema<ListProjectsLocationsTemplatesRequest>,
   output: __S(
-    390,
-    __c48,
-    6,
+    5601,
+    __c175,
+    1,
   ) as any as S.Schema<GoogleCloudIntegrationsV1alphaListTemplatesResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
@@ -7070,8 +7098,8 @@ export const patchProjectsLocationsAuthConfigs: API.OperationMethod<
   PatchProjectsLocationsAuthConfigsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(391, __c48, 7) as any as S.Schema<PatchProjectsLocationsAuthConfigsRequest>,
-  output: __S(33, __c4, 1) as any as S.Schema<GoogleCloudIntegrationsV1alphaAuthConfig>,
+  input: __S(5632, __c176, 0) as any as S.Schema<PatchProjectsLocationsAuthConfigsRequest>,
+  output: __S(4430, __c138, 14) as any as S.Schema<GoogleCloudIntegrationsV1alphaAuthConfig>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7090,8 +7118,8 @@ export const patchProjectsLocationsCertificates: API.OperationMethod<
   PatchProjectsLocationsCertificatesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(392, __c49, 0) as any as S.Schema<PatchProjectsLocationsCertificatesRequest>,
-  output: __S(36, __c4, 4) as any as S.Schema<GoogleCloudIntegrationsV1alphaCertificate>,
+  input: __S(5664, __c177, 0) as any as S.Schema<PatchProjectsLocationsCertificatesRequest>,
+  output: __S(5057, __c158, 1) as any as S.Schema<GoogleCloudIntegrationsV1alphaCertificate>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7110,8 +7138,8 @@ export const patchProjectsLocationsIntegrationsVersions: API.OperationMethod<
   PatchProjectsLocationsIntegrationsVersionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(393, __c49, 1) as any as S.Schema<PatchProjectsLocationsIntegrationsVersionsRequest>,
-  output: __S(136, __c17, 0) as any as S.Schema<GoogleCloudIntegrationsV1alphaIntegrationVersion>,
+  input: __S(5696, __c178, 0) as any as S.Schema<PatchProjectsLocationsIntegrationsVersionsRequest>,
+  output: __S(383, __c11, 31) as any as S.Schema<GoogleCloudIntegrationsV1alphaIntegrationVersion>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7131,11 +7159,11 @@ export const patchProjectsLocationsIntegrationsVersionsTestCases: API.OperationM
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    394,
-    __c49,
-    2,
+    5728,
+    __c179,
+    0,
   ) as any as S.Schema<PatchProjectsLocationsIntegrationsVersionsTestCasesRequest>,
-  output: __S(144, __c18, 0) as any as S.Schema<GoogleCloudIntegrationsV1alphaTestCase>,
+  output: __S(837, __c26, 5) as any as S.Schema<GoogleCloudIntegrationsV1alphaTestCase>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7154,8 +7182,8 @@ export const patchProjectsLocationsProductsAuthConfigs: API.OperationMethod<
   PatchProjectsLocationsProductsAuthConfigsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(395, __c49, 3) as any as S.Schema<PatchProjectsLocationsProductsAuthConfigsRequest>,
-  output: __S(33, __c4, 1) as any as S.Schema<GoogleCloudIntegrationsV1alphaAuthConfig>,
+  input: __S(5760, __c180, 0) as any as S.Schema<PatchProjectsLocationsProductsAuthConfigsRequest>,
+  output: __S(4430, __c138, 14) as any as S.Schema<GoogleCloudIntegrationsV1alphaAuthConfig>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7174,8 +7202,8 @@ export const patchProjectsLocationsProductsCertificates: API.OperationMethod<
   PatchProjectsLocationsProductsCertificatesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(396, __c49, 4) as any as S.Schema<PatchProjectsLocationsProductsCertificatesRequest>,
-  output: __S(36, __c4, 4) as any as S.Schema<GoogleCloudIntegrationsV1alphaCertificate>,
+  input: __S(5792, __c181, 0) as any as S.Schema<PatchProjectsLocationsProductsCertificatesRequest>,
+  output: __S(5057, __c158, 1) as any as S.Schema<GoogleCloudIntegrationsV1alphaCertificate>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7195,11 +7223,11 @@ export const patchProjectsLocationsProductsIntegrationsVersions: API.OperationMe
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    397,
-    __c49,
-    5,
+    5824,
+    __c182,
+    0,
   ) as any as S.Schema<PatchProjectsLocationsProductsIntegrationsVersionsRequest>,
-  output: __S(136, __c17, 0) as any as S.Schema<GoogleCloudIntegrationsV1alphaIntegrationVersion>,
+  output: __S(383, __c11, 31) as any as S.Schema<GoogleCloudIntegrationsV1alphaIntegrationVersion>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7218,8 +7246,12 @@ export const patchProjectsLocationsProductsSfdcInstances: API.OperationMethod<
   PatchProjectsLocationsProductsSfdcInstancesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(398, __c49, 6) as any as S.Schema<PatchProjectsLocationsProductsSfdcInstancesRequest>,
-  output: __S(150, __c18, 6) as any as S.Schema<GoogleCloudIntegrationsV1alphaSfdcInstance>,
+  input: __S(
+    5856,
+    __c183,
+    0,
+  ) as any as S.Schema<PatchProjectsLocationsProductsSfdcInstancesRequest>,
+  output: __S(1920, __c60, 0) as any as S.Schema<GoogleCloudIntegrationsV1alphaSfdcInstance>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7239,11 +7271,11 @@ export const patchProjectsLocationsProductsSfdcInstancesSfdcChannels: API.Operat
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    399,
-    __c49,
-    7,
+    384,
+    __c12,
+    0,
   ) as any as S.Schema<PatchProjectsLocationsProductsSfdcInstancesSfdcChannelsRequest>,
-  output: __S(152, __c19, 0) as any as S.Schema<GoogleCloudIntegrationsV1alphaSfdcChannel>,
+  output: __S(1984, __c62, 0) as any as S.Schema<GoogleCloudIntegrationsV1alphaSfdcChannel>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7262,8 +7294,8 @@ export const patchProjectsLocationsSfdcInstances: API.OperationMethod<
   PatchProjectsLocationsSfdcInstancesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(400, __c50, 0) as any as S.Schema<PatchProjectsLocationsSfdcInstancesRequest>,
-  output: __S(150, __c18, 6) as any as S.Schema<GoogleCloudIntegrationsV1alphaSfdcInstance>,
+  input: __S(416, __c13, 0) as any as S.Schema<PatchProjectsLocationsSfdcInstancesRequest>,
+  output: __S(1920, __c60, 0) as any as S.Schema<GoogleCloudIntegrationsV1alphaSfdcInstance>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7283,11 +7315,11 @@ export const patchProjectsLocationsSfdcInstancesSfdcChannels: API.OperationMetho
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    401,
-    __c50,
-    1,
+    448,
+    __c14,
+    0,
   ) as any as S.Schema<PatchProjectsLocationsSfdcInstancesSfdcChannelsRequest>,
-  output: __S(152, __c19, 0) as any as S.Schema<GoogleCloudIntegrationsV1alphaSfdcChannel>,
+  output: __S(1984, __c62, 0) as any as S.Schema<GoogleCloudIntegrationsV1alphaSfdcChannel>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7306,8 +7338,8 @@ export const patchProjectsLocationsTemplates: API.OperationMethod<
   PatchProjectsLocationsTemplatesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(402, __c50, 2) as any as S.Schema<PatchProjectsLocationsTemplatesRequest>,
-  output: __S(162, __c20, 2) as any as S.Schema<GoogleCloudIntegrationsV1alphaTemplate>,
+  input: __S(480, __c15, 0) as any as S.Schema<PatchProjectsLocationsTemplatesRequest>,
+  output: __S(2149, __c67, 5) as any as S.Schema<GoogleCloudIntegrationsV1alphaTemplate>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7327,14 +7359,14 @@ export const provisionClientPostProcessorProjectsLocationsClients: API.Operation
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    404,
-    __c50,
-    4,
+    513,
+    __c16,
+    1,
   ) as any as S.Schema<ProvisionClientPostProcessorProjectsLocationsClientsRequest>,
   output: __S(
-    405,
-    __c50,
-    5,
+    544,
+    __c17,
+    0,
   ) as any as S.Schema<GoogleCloudIntegrationsV1alphaProvisionClientPostProcessorResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
@@ -7354,8 +7386,8 @@ export const provisionProjectsLocationsClients: API.OperationMethod<
   ProvisionProjectsLocationsClientsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(407, __c50, 7) as any as S.Schema<ProvisionProjectsLocationsClientsRequest>,
-  output: __S(165, __c20, 5) as any as S.Schema<GoogleProtobufEmpty>,
+  input: __S(577, __c18, 1) as any as S.Schema<ProvisionProjectsLocationsClientsRequest>,
+  output: __S(2208, __c69, 0) as any as S.Schema<GoogleProtobufEmpty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7374,11 +7406,11 @@ export const publishProjectsLocationsIntegrationsVersions: API.OperationMethod<
   PublishProjectsLocationsIntegrationsVersionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(409, __c51, 1) as any as S.Schema<PublishProjectsLocationsIntegrationsVersionsRequest>,
+  input: __S(608, __c19, 0) as any as S.Schema<PublishProjectsLocationsIntegrationsVersionsRequest>,
   output: __S(
-    405,
-    __c50,
-    5,
+    544,
+    __c17,
+    0,
   ) as any as S.Schema<GoogleCloudIntegrationsV1alphaPublishIntegrationVersionResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
@@ -7399,14 +7431,14 @@ export const publishProjectsLocationsProductsIntegrationsVersions: API.Operation
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    410,
-    __c51,
-    2,
+    672,
+    __c21,
+    0,
   ) as any as S.Schema<PublishProjectsLocationsProductsIntegrationsVersionsRequest>,
   output: __S(
-    405,
-    __c50,
-    5,
+    544,
+    __c17,
+    0,
   ) as any as S.Schema<GoogleCloudIntegrationsV1alphaPublishIntegrationVersionResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
@@ -7426,8 +7458,8 @@ export const replaceProjectsLocationsClients: API.OperationMethod<
   ReplaceProjectsLocationsClientsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(412, __c51, 4) as any as S.Schema<ReplaceProjectsLocationsClientsRequest>,
-  output: __S(165, __c20, 5) as any as S.Schema<GoogleProtobufEmpty>,
+  input: __S(705, __c22, 1) as any as S.Schema<ReplaceProjectsLocationsClientsRequest>,
+  output: __S(2208, __c69, 0) as any as S.Schema<GoogleProtobufEmpty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7447,14 +7479,14 @@ export const replayProjectsLocationsIntegrationsExecutions: API.OperationMethod<
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    414,
-    __c51,
-    6,
+    737,
+    __c23,
+    1,
   ) as any as S.Schema<ReplayProjectsLocationsIntegrationsExecutionsRequest>,
   output: __S(
-    415,
-    __c51,
-    7,
+    738,
+    __c23,
+    2,
   ) as any as S.Schema<GoogleCloudIntegrationsV1alphaReplayExecutionResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
@@ -7475,14 +7507,14 @@ export const resolveProjectsLocationsIntegrationsExecutionsSuspensions: API.Oper
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    417,
-    __c52,
-    1,
+    864,
+    __c27,
+    0,
   ) as any as S.Schema<ResolveProjectsLocationsIntegrationsExecutionsSuspensionsRequest>,
   output: __S(
-    178,
-    __c22,
-    2,
+    2656,
+    __c83,
+    0,
   ) as any as S.Schema<GoogleCloudIntegrationsV1alphaResolveSuspensionResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
@@ -7503,14 +7535,14 @@ export const resolveProjectsLocationsProductsIntegrationsExecutionsSuspensions: 
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    418,
-    __c52,
-    2,
+    928,
+    __c29,
+    0,
   ) as any as S.Schema<ResolveProjectsLocationsProductsIntegrationsExecutionsSuspensionsRequest>,
   output: __S(
-    178,
-    __c22,
-    2,
+    2656,
+    __c83,
+    0,
   ) as any as S.Schema<GoogleCloudIntegrationsV1alphaResolveSuspensionResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
@@ -7530,11 +7562,11 @@ export const scheduleProjectsLocationsIntegrations: API.OperationMethod<
   ScheduleProjectsLocationsIntegrationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(420, __c52, 4) as any as S.Schema<ScheduleProjectsLocationsIntegrationsRequest>,
+  input: __S(960, __c30, 0) as any as S.Schema<ScheduleProjectsLocationsIntegrationsRequest>,
   output: __S(
-    421,
-    __c52,
-    5,
+    993,
+    __c31,
+    1,
   ) as any as S.Schema<GoogleCloudIntegrationsV1alphaScheduleIntegrationsResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
@@ -7555,14 +7587,14 @@ export const scheduleProjectsLocationsProductsIntegrations: API.OperationMethod<
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    422,
-    __c52,
-    6,
+    1024,
+    __c32,
+    0,
   ) as any as S.Schema<ScheduleProjectsLocationsProductsIntegrationsRequest>,
   output: __S(
-    421,
-    __c52,
-    5,
+    993,
+    __c31,
+    1,
   ) as any as S.Schema<GoogleCloudIntegrationsV1alphaScheduleIntegrationsResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
@@ -7578,11 +7610,11 @@ export const searchProjectsLocationsIntegrations: API.PaginatedOperationMethod<
   GcpOpContext,
   GoogleCloudIntegrationsV1alphaSearchIntegrationsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(423, __c52, 7) as any as S.Schema<SearchProjectsLocationsIntegrationsRequest>,
+  input: __S(1056, __c33, 0) as any as S.Schema<SearchProjectsLocationsIntegrationsRequest>,
   output: __S(
-    426,
-    __c53,
-    2,
+    1059,
+    __c33,
+    3,
   ) as any as S.Schema<GoogleCloudIntegrationsV1alphaSearchIntegrationsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
@@ -7599,11 +7631,11 @@ export const searchProjectsLocationsTemplates: API.PaginatedOperationMethod<
   GcpOpContext,
   GoogleCloudIntegrationsV1alphaSearchTemplatesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(427, __c53, 3) as any as S.Schema<SearchProjectsLocationsTemplatesRequest>,
+  input: __S(1088, __c34, 0) as any as S.Schema<SearchProjectsLocationsTemplatesRequest>,
   output: __S(
-    390,
-    __c48,
-    6,
+    5601,
+    __c175,
+    1,
   ) as any as S.Schema<GoogleCloudIntegrationsV1alphaSearchTemplatesResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
@@ -7624,8 +7656,8 @@ export const shareProjectsLocationsTemplates: API.OperationMethod<
   ShareProjectsLocationsTemplatesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(429, __c53, 5) as any as S.Schema<ShareProjectsLocationsTemplatesRequest>,
-  output: __S(165, __c20, 5) as any as S.Schema<GoogleProtobufEmpty>,
+  input: __S(1120, __c35, 0) as any as S.Schema<ShareProjectsLocationsTemplatesRequest>,
+  output: __S(2208, __c69, 0) as any as S.Schema<GoogleProtobufEmpty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7644,8 +7676,8 @@ export const switchProjectsLocationsClients: API.OperationMethod<
   SwitchProjectsLocationsClientsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(431, __c53, 7) as any as S.Schema<SwitchProjectsLocationsClientsRequest>,
-  output: __S(165, __c20, 5) as any as S.Schema<GoogleProtobufEmpty>,
+  input: __S(1185, __c37, 1) as any as S.Schema<SwitchProjectsLocationsClientsRequest>,
+  output: __S(2208, __c69, 0) as any as S.Schema<GoogleProtobufEmpty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7665,11 +7697,11 @@ export const switchVariableMaskingProjectsLocationsClients: API.OperationMethod<
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    433,
-    __c54,
+    1217,
+    __c38,
     1,
   ) as any as S.Schema<SwitchVariableMaskingProjectsLocationsClientsRequest>,
-  output: __S(165, __c20, 5) as any as S.Schema<GoogleProtobufEmpty>,
+  output: __S(2208, __c69, 0) as any as S.Schema<GoogleProtobufEmpty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7689,11 +7721,11 @@ export const takeoverEditLockProjectsLocationsIntegrationsVersionsTestCases: API
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    434,
-    __c54,
-    2,
+    1248,
+    __c39,
+    0,
   ) as any as S.Schema<TakeoverEditLockProjectsLocationsIntegrationsVersionsTestCasesRequest>,
-  output: __S(144, __c18, 0) as any as S.Schema<GoogleCloudIntegrationsV1alphaTestCase>,
+  output: __S(837, __c26, 5) as any as S.Schema<GoogleCloudIntegrationsV1alphaTestCase>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7713,14 +7745,14 @@ export const takeoverEditLockProjectsLocationsProductsIntegrationsVersions: API.
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    435,
-    __c54,
-    3,
+    1312,
+    __c41,
+    0,
   ) as any as S.Schema<TakeoverEditLockProjectsLocationsProductsIntegrationsVersionsRequest>,
   output: __S(
-    436,
-    __c54,
-    4,
+    1313,
+    __c41,
+    1,
   ) as any as S.Schema<GoogleCloudIntegrationsV1alphaTakeoverEditLockResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
@@ -7740,11 +7772,11 @@ export const testProjectsLocationsIntegrations: API.OperationMethod<
   TestProjectsLocationsIntegrationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(438, __c54, 6) as any as S.Schema<TestProjectsLocationsIntegrationsRequest>,
+  input: __S(1344, __c42, 0) as any as S.Schema<TestProjectsLocationsIntegrationsRequest>,
   output: __S(
-    439,
-    __c54,
-    7,
+    1377,
+    __c43,
+    1,
   ) as any as S.Schema<GoogleCloudIntegrationsV1alphaTestIntegrationsResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
@@ -7764,11 +7796,11 @@ export const testProjectsLocationsIntegrationsVersions: API.OperationMethod<
   TestProjectsLocationsIntegrationsVersionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(440, __c55, 0) as any as S.Schema<TestProjectsLocationsIntegrationsVersionsRequest>,
+  input: __S(1408, __c44, 0) as any as S.Schema<TestProjectsLocationsIntegrationsVersionsRequest>,
   output: __S(
-    439,
-    __c54,
-    7,
+    1377,
+    __c43,
+    1,
   ) as any as S.Schema<GoogleCloudIntegrationsV1alphaTestIntegrationsResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
@@ -7788,11 +7820,11 @@ export const testProjectsLocationsProductsIntegrations: API.OperationMethod<
   TestProjectsLocationsProductsIntegrationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(441, __c55, 1) as any as S.Schema<TestProjectsLocationsProductsIntegrationsRequest>,
+  input: __S(1440, __c45, 0) as any as S.Schema<TestProjectsLocationsProductsIntegrationsRequest>,
   output: __S(
-    439,
-    __c54,
-    7,
+    1377,
+    __c43,
+    1,
   ) as any as S.Schema<GoogleCloudIntegrationsV1alphaTestIntegrationsResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
@@ -7812,8 +7844,8 @@ export const toggleHttpProjectsLocationsClients: API.OperationMethod<
   ToggleHttpProjectsLocationsClientsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(443, __c55, 3) as any as S.Schema<ToggleHttpProjectsLocationsClientsRequest>,
-  output: __S(165, __c20, 5) as any as S.Schema<GoogleProtobufEmpty>,
+  input: __S(1473, __c46, 1) as any as S.Schema<ToggleHttpProjectsLocationsClientsRequest>,
+  output: __S(2208, __c69, 0) as any as S.Schema<GoogleProtobufEmpty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7833,11 +7865,11 @@ export const unpublishProjectsLocationsIntegrationsVersions: API.OperationMethod
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    444,
-    __c55,
-    4,
+    1504,
+    __c47,
+    0,
   ) as any as S.Schema<UnpublishProjectsLocationsIntegrationsVersionsRequest>,
-  output: __S(165, __c20, 5) as any as S.Schema<GoogleProtobufEmpty>,
+  output: __S(2208, __c69, 0) as any as S.Schema<GoogleProtobufEmpty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7857,11 +7889,11 @@ export const unpublishProjectsLocationsProductsIntegrationsVersions: API.Operati
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    445,
-    __c55,
-    5,
+    1536,
+    __c48,
+    0,
   ) as any as S.Schema<UnpublishProjectsLocationsProductsIntegrationsVersionsRequest>,
-  output: __S(165, __c20, 5) as any as S.Schema<GoogleProtobufEmpty>,
+  output: __S(2208, __c69, 0) as any as S.Schema<GoogleProtobufEmpty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7880,8 +7912,8 @@ export const unshareProjectsLocationsTemplates: API.OperationMethod<
   UnshareProjectsLocationsTemplatesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(446, __c55, 6) as any as S.Schema<UnshareProjectsLocationsTemplatesRequest>,
-  output: __S(165, __c20, 5) as any as S.Schema<GoogleProtobufEmpty>,
+  input: __S(1568, __c49, 0) as any as S.Schema<UnshareProjectsLocationsTemplatesRequest>,
+  output: __S(2208, __c69, 0) as any as S.Schema<GoogleProtobufEmpty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7900,10 +7932,10 @@ export const uploadProjectsLocationsIntegrationsVersions: API.OperationMethod<
   UploadProjectsLocationsIntegrationsVersionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(448, __c56, 0) as any as S.Schema<UploadProjectsLocationsIntegrationsVersionsRequest>,
+  input: __S(1600, __c50, 0) as any as S.Schema<UploadProjectsLocationsIntegrationsVersionsRequest>,
   output: __S(
-    449,
-    __c56,
+    1633,
+    __c51,
     1,
   ) as any as S.Schema<GoogleCloudIntegrationsV1alphaUploadIntegrationVersionResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
@@ -7925,14 +7957,14 @@ export const uploadProjectsLocationsIntegrationsVersionsTestCases: API.Operation
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    451,
-    __c56,
-    3,
+    1665,
+    __c52,
+    1,
   ) as any as S.Schema<UploadProjectsLocationsIntegrationsVersionsTestCasesRequest>,
   output: __S(
-    452,
-    __c56,
-    4,
+    1666,
+    __c52,
+    2,
   ) as any as S.Schema<GoogleCloudIntegrationsV1alphaUploadTestCaseResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
@@ -7953,13 +7985,13 @@ export const uploadProjectsLocationsProductsIntegrationsVersions: API.OperationM
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    453,
-    __c56,
-    5,
+    1728,
+    __c54,
+    0,
   ) as any as S.Schema<UploadProjectsLocationsProductsIntegrationsVersionsRequest>,
   output: __S(
-    449,
-    __c56,
+    1633,
+    __c51,
     1,
   ) as any as S.Schema<GoogleCloudIntegrationsV1alphaUploadIntegrationVersionResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
@@ -7980,11 +8012,11 @@ export const uploadProjectsLocationsTemplates: API.OperationMethod<
   UploadProjectsLocationsTemplatesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(455, __c56, 7) as any as S.Schema<UploadProjectsLocationsTemplatesRequest>,
+  input: __S(1761, __c55, 1) as any as S.Schema<UploadProjectsLocationsTemplatesRequest>,
   output: __S(
-    456,
-    __c57,
-    0,
+    1762,
+    __c55,
+    2,
   ) as any as S.Schema<GoogleCloudIntegrationsV1alphaUploadTemplateResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
@@ -8004,8 +8036,12 @@ export const useProjectsLocationsTemplates: API.OperationMethod<
   UseProjectsLocationsTemplatesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(458, __c57, 2) as any as S.Schema<UseProjectsLocationsTemplatesRequest>,
-  output: __S(269, __c33, 5) as any as S.Schema<GoogleCloudIntegrationsV1alphaUseTemplateResponse>,
+  input: __S(1793, __c56, 1) as any as S.Schema<UseProjectsLocationsTemplatesRequest>,
+  output: __S(
+    4130,
+    __c129,
+    2,
+  ) as any as S.Schema<GoogleCloudIntegrationsV1alphaUseTemplateResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8017,90 +8053,19 @@ function __c0(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          cancelReason: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudIntegrationsV1alphaCancelExecutionRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-          body: S.optional(__S(0, __c0, 0).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/{+name}:cancel",
-            baseUrl: "https://integrations.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "CancelProjectsLocationsIntegrationsExecutionsRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          isCanceled: S.optional(S.Boolean),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudIntegrationsV1alphaCancelExecutionResponse",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          key: S.optional(S.String),
-          kmsLocation: S.optional(S.String),
-          kmsProjectId: S.optional(S.String),
-          keyVersion: S.optional(S.String),
-          kmsRing: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudIntegrationsV1alphaCloudKmsConfig",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          enableHttpCall: S.optional(S.Boolean),
-          runAsServiceAccount: S.optional(S.String),
-          enableManagedAiFeatures: S.optional(S.Boolean),
-          cloudKmsConfig: S.optional(__S(3, __c0, 3)),
-          enableVariableMasking: S.optional(S.Boolean),
-          enableEucHardenedFlow: S.optional(S.Boolean),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudIntegrationsV1alphaCustomerConfig",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          customerConfig: S.optional(__S(4, __c0, 4)),
-          updateMask: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudIntegrationsV1alphaChangeCustomerConfigRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
+          newIntegration: S.optional(S.Boolean.pipe(T.Query())),
+          createSampleIntegrations: S.optional(S.Boolean.pipe(T.Query())),
           parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(5, __c0, 5).pipe(T.HttpBody())),
+          body: S.optional(__S(383, __c11, 31).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
-            uri: "v1/{+parent}/clients:changeConfig",
+            uri: "v1/{+parent}/versions",
             baseUrl: "https://integrations.googleapis.com/",
           }),
         ),
       ).annotate({
-        identifier: "ChangeConfigProjectsLocationsClientsRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          customerConfig: S.optional(__S(4, __c0, 4)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudIntegrationsV1alphaChangeCustomerConfigResponse",
+        identifier: "CreateProjectsLocationsIntegrationsVersionsRequest",
       });
   }
 }
@@ -8109,378 +8074,24 @@ function __c1(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          appsScriptProject: S.optional(S.String),
-          authConfigId: S.optional(S.String),
+          key: S.optional(S.String),
+          value: S.optional(__S(4384, __c137, 0)),
+          masked: S.optional(S.Boolean),
         }),
       ).annotate({
-        identifier: "GoogleCloudIntegrationsV1alphaCreateAppsScriptProjectRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(8, __c1, 0).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/{+parent}/appsScriptProjects",
-            baseUrl: "https://integrations.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateProjectsLocationsAppsScriptProjectsRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          projectId: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudIntegrationsV1alphaCreateAppsScriptProjectResponse",
-      });
-    case 3:
-      return S.Array(S.String);
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          jwtPayload: S.optional(S.String),
-          jwtHeader: S.optional(S.String),
-          secret: S.optional(S.String),
-          jwt: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudIntegrationsV1alphaJwt",
-      });
-    case 5:
-      return S.Array(S.Boolean);
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          booleanValues: S.optional(__S(13, __c1, 5)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudIntegrationsV1alphaBooleanParameterArray",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          stringValues: S.optional(__S(11, __c1, 3)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudIntegrationsV1alphaStringParameterArray",
+        identifier: "GoogleCloudIntegrationsV1alphaEventParameter",
       });
   }
 }
 function __c2(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(S.Number);
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          doubleValues: S.optional(__S(16, __c2, 0)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudIntegrationsV1alphaDoubleParameterArray",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          intValues: S.optional(__S(11, __c1, 3)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudIntegrationsV1alphaIntParameterArray",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          booleanValue: S.optional(S.Boolean),
-          intValue: S.optional(S.String),
-          doubleValue: S.optional(S.Number),
-          stringValue: S.optional(S.String),
-          booleanArray: S.optional(__S(14, __c1, 6)),
-          stringArray: S.optional(__S(15, __c1, 7)),
-          jsonValue: S.optional(S.String),
-          doubleArray: S.optional(__S(17, __c2, 1)),
-          intArray: S.optional(__S(18, __c2, 2)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudIntegrationsV1alphaValueType",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          referenceKey: S.optional(S.String),
-          literalValue: S.optional(__S(19, __c2, 3)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudIntegrationsV1alphaParameterMapField",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          value: S.optional(__S(20, __c2, 4)),
-          key: S.optional(__S(20, __c2, 4)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudIntegrationsV1alphaParameterMapEntry",
-      });
-    case 6:
-      return S.Array(__S(21, __c2, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          valueType: S.optional(S.String),
-          keyType: S.optional(S.String),
-          entries: S.optional(__S(22, __c2, 6)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudIntegrationsV1alphaParameterMap",
-      });
+      return S.Record(S.String, S.String);
   }
 }
 function __c3(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() =>
-        S.Struct({
-          tokenType: S.optional(S.String),
-          refreshToken: S.optional(S.String),
-          accessToken: S.optional(S.String),
-          refreshTokenExpireTime: S.optional(S.String),
-          accessTokenExpireTime: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudIntegrationsV1alphaAccessToken",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          clientSecret: S.optional(S.String),
-          requestType: S.optional(S.String),
-          clientId: S.optional(S.String),
-          tokenParams: S.optional(__S(23, __c2, 7)),
-          tokenEndpoint: S.optional(S.String),
-          accessToken: S.optional(__S(24, __c3, 0)),
-          scope: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudIntegrationsV1alphaOAuth2ClientCredentials",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          serviceAccount: S.optional(S.String),
-          scope: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudIntegrationsV1alphaServiceAccountCredentials",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          username: S.optional(S.String),
-          password: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudIntegrationsV1alphaUsernameAndPassword",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          type: S.optional(S.String),
-          token: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudIntegrationsV1alphaAuthToken",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          tokenParams: S.optional(__S(23, __c2, 7)),
-          accessToken: S.optional(__S(24, __c3, 0)),
-          applyReauthPolicy: S.optional(S.Boolean),
-          clientSecret: S.optional(S.String),
-          authParams: S.optional(__S(23, __c2, 7)),
-          tokenEndpoint: S.optional(S.String),
-          authEndpoint: S.optional(S.String),
-          scope: S.optional(S.String),
-          authCode: S.optional(S.String),
-          clientId: S.optional(S.String),
-          requestType: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudIntegrationsV1alphaOAuth2AuthorizationCode",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          audience: S.optional(S.String),
-          tokenExpireTime: S.optional(S.String),
-          token: S.optional(S.String),
-          serviceAccountEmail: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudIntegrationsV1alphaOidcToken",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          tokenEndpoint: S.optional(S.String),
-          clientSecret: S.optional(S.String),
-          scope: S.optional(S.String),
-          requestType: S.optional(S.String),
-          clientId: S.optional(S.String),
-          password: S.optional(S.String),
-          accessToken: S.optional(__S(24, __c3, 0)),
-          tokenParams: S.optional(__S(23, __c2, 7)),
-          username: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudIntegrationsV1alphaOAuth2ResourceOwnerCredentials",
-      });
-  }
-}
-function __c4(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          jwt: S.optional(__S(12, __c1, 4)),
-          oauth2ClientCredentials: S.optional(__S(25, __c3, 1)),
-          serviceAccountCredentials: S.optional(__S(26, __c3, 2)),
-          usernameAndPassword: S.optional(__S(27, __c3, 3)),
-          authToken: S.optional(__S(28, __c3, 4)),
-          oauth2AuthorizationCode: S.optional(__S(29, __c3, 5)),
-          oidcToken: S.optional(__S(30, __c3, 6)),
-          oauth2ResourceOwnerCredentials: S.optional(__S(31, __c3, 7)),
-          credentialType: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudIntegrationsV1alphaCredential",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          state: S.optional(S.String),
-          createTime: S.optional(S.String),
-          validTime: S.optional(S.String),
-          name: S.optional(S.String),
-          encryptedCredential: S.optional(S.String),
-          description: S.optional(S.String),
-          updateTime: S.optional(S.String),
-          expiryNotificationDuration: S.optional(__S(11, __c1, 3)),
-          certificateId: S.optional(S.String),
-          reason: S.optional(S.String),
-          lastModifierEmail: S.optional(S.String),
-          creatorEmail: S.optional(S.String),
-          decryptedCredential: S.optional(__S(32, __c4, 0)),
-          visibility: S.optional(S.String),
-          overrideValidTime: S.optional(S.String),
-          credentialType: S.optional(S.String),
-          displayName: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudIntegrationsV1alphaAuthConfig",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          "clientCertificate.sslCertificate": S.optional(S.String.pipe(T.Query())),
-          "clientCertificate.passphrase": S.optional(S.String.pipe(T.Query())),
-          "clientCertificate.encryptedPrivateKey": S.optional(S.String.pipe(T.Query())),
-          parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(33, __c4, 1).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/{+parent}/authConfigs",
-            baseUrl: "https://integrations.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateProjectsLocationsAuthConfigsRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          encryptedPrivateKey: S.optional(S.String),
-          sslCertificate: S.optional(S.String),
-          passphrase: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudIntegrationsV1alphaClientCertificate",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          description: S.optional(S.String),
-          name: S.optional(S.String),
-          validStartTime: S.optional(S.String),
-          validEndTime: S.optional(S.String),
-          displayName: S.optional(S.String),
-          requestorId: S.optional(S.String),
-          rawCertificate: S.optional(__S(35, __c4, 3)),
-          certificateStatus: S.optional(S.String),
-          credentialId: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudIntegrationsV1alphaCertificate",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(36, __c4, 4).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/{+parent}/certificates",
-            baseUrl: "https://integrations.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateProjectsLocationsCertificatesRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          functionName: S.optional(S.String),
-          projectId: S.optional(S.String),
-          gcfApiVersion: S.optional(S.String),
-          functionRegion: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudIntegrationsV1alphaCreateCloudFunctionRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(38, __c4, 6).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/{+parent}/cloudFunctions",
-            baseUrl: "https://integrations.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateProjectsLocationsCloudFunctionsRequest",
-      });
-  }
-}
-function __c5(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          triggerUrl: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudIntegrationsV1alphaCreateCloudFunctionResponse",
-      });
-    case 1:
       return S.suspend(() =>
         S.Struct({
           condition: S.optional(S.String),
@@ -8492,9 +8103,9 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "GoogleCloudIntegrationsV1alphaNextTask",
       });
+    case 1:
+      return S.Array(__S(96, __c3, 0));
     case 2:
-      return S.Array(__S(41, __c5, 1));
-    case 3:
       return S.suspend(() =>
         S.Struct({
           x: S.optional(S.Number),
@@ -8503,182 +8114,7 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "GoogleCloudIntegrationsV1alphaCoordinate",
       });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          description: S.optional(S.String),
-          startErrorTasks: S.optional(__S(42, __c5, 2)),
-          position: S.optional(__S(43, __c5, 3)),
-          label: S.optional(S.String),
-          errorCatcherId: S.optional(S.String),
-          errorCatcherNumber: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudIntegrationsV1alphaErrorCatcherConfig",
-      });
-    case 5:
-      return S.Array(__S(44, __c5, 4));
-    case 6:
-      return S.Record(S.String, S.Unknown);
-    case 7:
-      return S.Array(__S(46, __c5, 6));
-  }
-}
-function __c6(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          protoValues: S.optional(__S(47, __c5, 7)),
-        }),
-      ).annotate({
-        identifier: "EnterpriseCrmEventbusProtoProtoParameterArray",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          objectValue: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "EnterpriseCrmEventbusProtoSerializedObjectParameter",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          booleanArray: S.optional(__S(14, __c1, 6)),
-          protoArray: S.optional(__S(48, __c6, 0)),
-          doubleArray: S.optional(__S(17, __c2, 1)),
-          stringArray: S.optional(__S(15, __c1, 7)),
-          intArray: S.optional(__S(18, __c2, 2)),
-          serializedObjectValue: S.optional(__S(49, __c6, 1)),
-          stringValue: S.optional(S.String),
-          booleanValue: S.optional(S.Boolean),
-          intValue: S.optional(S.String),
-          protoValue: S.optional(__S(46, __c5, 6)),
-          doubleValue: S.optional(S.Number),
-        }),
-      ).annotate({
-        identifier: "EnterpriseCrmEventbusProtoParameterValueType",
-      });
     case 3:
-      return S.suspend(() =>
-        S.Struct({
-          masked: S.optional(S.Boolean),
-          key: S.optional(S.String),
-          value: S.optional(__S(50, __c6, 2)),
-        }),
-      ).annotate({
-        identifier: "EnterpriseCrmEventbusProtoParameterEntry",
-      });
-    case 4:
-      return S.Array(__S(51, __c6, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          parameters: S.optional(__S(52, __c6, 4)),
-        }),
-      ).annotate({
-        identifier: "EnterpriseCrmEventbusProtoEventParameters",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          values: S.optional(__S(11, __c1, 3)),
-        }),
-      ).annotate({
-        identifier: "EnterpriseCrmEventbusProtoStringArray",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          values: S.optional(__S(16, __c2, 0)),
-        }),
-      ).annotate({
-        identifier: "EnterpriseCrmEventbusProtoDoubleArray",
-      });
-  }
-}
-function __c7(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          stringArray: S.optional(__S(54, __c6, 6)),
-          protoValue: S.optional(__S(46, __c5, 6)),
-          intValue: S.optional(S.String),
-          stringValue: S.optional(S.String),
-          intArray: S.optional(__S(54, __c6, 6)),
-          doubleValue: S.optional(S.Number),
-          doubleArray: S.optional(__S(55, __c6, 7)),
-          booleanValue: S.optional(S.Boolean),
-        }),
-      ).annotate({
-        identifier: "EnterpriseCrmEventbusProtoValueType",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          key: S.optional(S.String),
-          value: S.optional(__S(56, __c7, 0)),
-        }),
-      ).annotate({
-        identifier: "EnterpriseCrmEventbusProtoPropertyEntry",
-      });
-    case 2:
-      return S.Array(__S(57, __c7, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          properties: S.optional(__S(58, __c7, 2)),
-        }),
-      ).annotate({
-        identifier: "EnterpriseCrmEventbusProtoEventBusProperties",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "EnterpriseCrmEventbusProtoNextTeardownTask",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          creatorEmail: S.optional(S.String),
-          name: S.optional(S.String),
-          teardownTaskImplementationClassName: S.optional(S.String),
-          parameters: S.optional(__S(53, __c6, 5)),
-          properties: S.optional(__S(59, __c7, 3)),
-          nextTeardownTask: S.optional(__S(60, __c7, 4)),
-        }),
-      ).annotate({
-        identifier: "EnterpriseCrmEventbusProtoTeardownTaskConfig",
-      });
-    case 6:
-      return S.Array(__S(61, __c7, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          teardownTaskConfigs: S.optional(__S(62, __c7, 6)),
-        }),
-      ).annotate({
-        identifier: "EnterpriseCrmEventbusProtoTeardown",
-      });
-  }
-}
-function __c8(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          enableCloudLogging: S.optional(S.Boolean),
-          cloudLoggingSeverity: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudIntegrationsV1alphaCloudLoggingDetails",
-      });
-    case 1:
       return S.suspend(() =>
         S.Struct({
           producer: S.optional(S.String),
@@ -8692,168 +8128,22 @@ function __c8(j: number): any {
           dataType: S.optional(S.String),
           containsLargeData: S.optional(S.Boolean),
           displayName: S.optional(S.String),
-          defaultValue: S.optional(__S(19, __c2, 3)),
+          defaultValue: S.optional(__S(4384, __c137, 0)),
         }),
       ).annotate({
         identifier: "GoogleCloudIntegrationsV1alphaIntegrationParameter",
       });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          value: S.optional(__S(19, __c2, 3)),
-          parameter: S.optional(__S(65, __c8, 1)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudIntegrationsV1alphaIntegrationConfigParameter",
-      });
-    case 3:
-      return S.Array(__S(66, __c8, 2));
     case 4:
-      return S.Array(__S(65, __c8, 1));
+      return S.Array(__S(99, __c3, 3));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          names: S.optional(__S(11, __c1, 3)),
+          names: S.optional(__S(4320, __c135, 0)),
         }),
       ).annotate({
         identifier: "EnterpriseCrmFrontendsEventbusProtoTriggerConfigVariables",
       });
     case 6:
-      return S.suspend(() =>
-        S.Struct({
-          parameters: S.optional(__S(53, __c6, 5)),
-          condition: S.optional(S.String),
-          triggerCriteriaTaskImplementationClassName: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "EnterpriseCrmEventbusProtoTriggerCriteria",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          eventPropertyKey: S.optional(S.String),
-          operator: S.optional(S.String),
-          value: S.optional(__S(56, __c7, 0)),
-        }),
-      ).annotate({
-        identifier: "EnterpriseCrmEventbusProtoCondition",
-      });
-  }
-}
-function __c9(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(71, __c8, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          conditions: S.optional(__S(72, __c9, 0)),
-        }),
-      ).annotate({
-        identifier: "EnterpriseCrmEventbusProtoCombinedCondition",
-      });
-    case 2:
-      return S.Array(__S(73, __c9, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          taskNumber: S.optional(S.String),
-          condition: S.optional(S.String),
-          combinedConditions: S.optional(__S(74, __c9, 2)),
-          label: S.optional(S.String),
-          taskConfigId: S.optional(S.String),
-          description: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "EnterpriseCrmEventbusProtoNextTask",
-      });
-    case 4:
-      return S.Array(__S(75, __c9, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          filterType: S.optional(S.String),
-          enumStrings: S.optional(__S(11, __c1, 3)),
-        }),
-      ).annotate({
-        identifier: "EnterpriseCrmEventbusProtoBaseAlertConfigErrorEnumList",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          percentage: S.optional(S.Number),
-          absolute: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "EnterpriseCrmEventbusProtoBaseAlertConfigThresholdValue",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          onlyFinalAttempt: S.optional(S.Boolean),
-          errorEnumList: S.optional(__S(77, __c9, 5)),
-          metricType: S.optional(S.String),
-          alertDisabled: S.optional(S.Boolean),
-          numAggregationPeriods: S.optional(S.Number),
-          playbookUrl: S.optional(S.String),
-          clientId: S.optional(S.String),
-          durationThresholdMs: S.optional(S.String),
-          alertName: S.optional(S.String),
-          thresholdValue: S.optional(__S(78, __c9, 6)),
-          warningEnumList: S.optional(__S(77, __c9, 5)),
-          thresholdType: S.optional(S.String),
-          aggregationPeriod: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "EnterpriseCrmEventbusProtoWorkflowAlertConfig",
-      });
-  }
-}
-function __c10(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(79, __c9, 7));
-    case 1:
-      return S.Record(S.String, S.String);
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          location: S.optional(S.String),
-          serviceAccountEmail: S.optional(S.String),
-          cronTab: S.optional(S.String),
-          errorMessage: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "EnterpriseCrmEventbusProtoCloudSchedulerConfig",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          outputVariables: S.optional(__S(69, __c8, 5)),
-          triggerName: S.optional(S.String),
-          triggerId: S.optional(S.String),
-          label: S.optional(S.String),
-          inputVariables: S.optional(__S(69, __c8, 5)),
-          errorCatcherId: S.optional(S.String),
-          nextTasksExecutionPolicy: S.optional(S.String),
-          description: S.optional(S.String),
-          triggerCriteria: S.optional(__S(70, __c8, 6)),
-          position: S.optional(__S(43, __c5, 3)),
-          startTasks: S.optional(__S(76, __c9, 4)),
-          pauseWorkflowExecutions: S.optional(S.Boolean),
-          alertConfig: S.optional(__S(80, __c10, 0)),
-          properties: S.optional(__S(81, __c10, 1)),
-          triggerNumber: S.optional(S.String),
-          triggerType: S.optional(S.String),
-          cloudSchedulerConfig: S.optional(__S(82, __c10, 2)),
-          enabledClients: S.optional(__S(11, __c1, 3)),
-        }),
-      ).annotate({
-        identifier: "EnterpriseCrmFrontendsEventbusProtoTriggerConfig",
-      });
-    case 4:
-      return S.Array(__S(83, __c10, 3));
-    case 5:
       return S.suspend(() =>
         S.Struct({
           intervalTime: S.optional(S.String),
@@ -8864,7 +8154,7 @@ function __c10(j: number): any {
       ).annotate({
         identifier: "GoogleCloudIntegrationsV1alphaFailurePolicy",
       });
-    case 6:
+    case 7:
       return S.suspend(() =>
         S.Struct({
           finalState: S.optional(S.String),
@@ -8872,82 +8162,495 @@ function __c10(j: number): any {
       ).annotate({
         identifier: "GoogleCloudIntegrationsV1alphaSuccessPolicy",
       });
-    case 7:
+    case 8:
+      return S.Record(S.String, __S(32, __c1, 0));
+    case 9:
+      return S.Array(__S(102, __c3, 6));
+    case 10:
       return S.suspend(() =>
         S.Struct({
-          key: S.optional(S.String),
-          value: S.optional(__S(19, __c2, 3)),
-          masked: S.optional(S.Boolean),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudIntegrationsV1alphaEventParameter",
-      });
-  }
-}
-function __c11(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Record(S.String, __S(87, __c10, 7));
-    case 1:
-      return S.Array(__S(85, __c10, 5));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          defaultFailurePolicy: S.optional(__S(85, __c10, 5)),
-          failurePolicies: S.optional(__S(89, __c11, 1)),
+          defaultFailurePolicy: S.optional(__S(102, __c3, 6)),
+          failurePolicies: S.optional(__S(105, __c3, 9)),
         }),
       ).annotate({
         identifier: "GoogleCloudIntegrationsV1alphaConditionalFailurePolicies",
       });
-    case 3:
+    case 11:
       return S.suspend(() =>
         S.Struct({
-          position: S.optional(__S(43, __c5, 3)),
+          position: S.optional(__S(98, __c3, 2)),
           displayName: S.optional(S.String),
           taskTemplate: S.optional(S.String),
-          failurePolicy: S.optional(__S(85, __c10, 5)),
-          successPolicy: S.optional(__S(86, __c10, 6)),
-          parameters: S.optional(__S(88, __c11, 0)),
-          synchronousCallFailurePolicy: S.optional(__S(85, __c10, 5)),
+          failurePolicy: S.optional(__S(102, __c3, 6)),
+          successPolicy: S.optional(__S(103, __c3, 7)),
+          parameters: S.optional(__S(104, __c3, 8)),
+          synchronousCallFailurePolicy: S.optional(__S(102, __c3, 6)),
           nextTasksExecutionPolicy: S.optional(S.String),
           taskId: S.optional(S.String),
-          conditionalFailurePolicies: S.optional(__S(90, __c11, 2)),
+          conditionalFailurePolicies: S.optional(__S(106, __c3, 10)),
           task: S.optional(S.String),
           description: S.optional(S.String),
           jsonValidationOption: S.optional(S.String),
           errorCatcherId: S.optional(S.String),
           taskExecutionStrategy: S.optional(S.String),
-          nextTasks: S.optional(__S(42, __c5, 2)),
+          nextTasks: S.optional(__S(97, __c3, 1)),
           externalTaskType: S.optional(S.String),
         }),
       ).annotate({
         identifier: "GoogleCloudIntegrationsV1alphaTaskConfig",
       });
+    case 12:
+      return S.suspend(() =>
+        S.Struct({
+          absolute: S.optional(S.String),
+          percentage: S.optional(S.Number),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudIntegrationsV1alphaIntegrationAlertConfigThresholdValue",
+      });
+    case 13:
+      return S.suspend(() =>
+        S.Struct({
+          alertThreshold: S.optional(S.Number),
+          onlyFinalAttempt: S.optional(S.Boolean),
+          displayName: S.optional(S.String),
+          disableAlert: S.optional(S.Boolean),
+          aggregationPeriod: S.optional(S.String),
+          thresholdType: S.optional(S.String),
+          metricType: S.optional(S.String),
+          thresholdValue: S.optional(__S(108, __c3, 12)),
+          durationThreshold: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudIntegrationsV1alphaIntegrationAlertConfig",
+      });
+    case 14:
+      return S.Array(__S(109, __c3, 13));
+    case 15:
+      return S.suspend(() =>
+        S.Struct({
+          serviceAccountEmail: S.optional(S.String),
+          cronTab: S.optional(S.String),
+          location: S.optional(S.String),
+          errorMessage: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudIntegrationsV1alphaCloudSchedulerConfig",
+      });
+    case 16:
+      return S.suspend(() =>
+        S.Struct({
+          position: S.optional(__S(98, __c3, 2)),
+          nextTasksExecutionPolicy: S.optional(S.String),
+          startTasks: S.optional(__S(97, __c3, 1)),
+          description: S.optional(S.String),
+          outputVariables: S.optional(__S(101, __c3, 5)),
+          triggerId: S.optional(S.String),
+          alertConfig: S.optional(__S(110, __c3, 14)),
+          trigger: S.optional(S.String),
+          triggerNumber: S.optional(S.String),
+          triggerType: S.optional(S.String),
+          label: S.optional(S.String),
+          errorCatcherId: S.optional(S.String),
+          inputVariables: S.optional(__S(101, __c3, 5)),
+          cloudSchedulerConfig: S.optional(__S(111, __c3, 15)),
+          properties: S.optional(__S(64, __c2, 0)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudIntegrationsV1alphaTriggerConfig",
+      });
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, S.Unknown);
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(128, __c4, 0));
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          protoValues: S.optional(__S(160, __c5, 0)),
+        }),
+      ).annotate({
+        identifier: "EnterpriseCrmEventbusProtoProtoParameterArray",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          objectValue: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "EnterpriseCrmEventbusProtoSerializedObjectParameter",
+      });
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          stringArray: S.optional(__S(4354, __c136, 2)),
+          jsonValue: S.optional(S.String),
+          doubleArray: S.optional(__S(4356, __c136, 4)),
+          booleanArray: S.optional(__S(4353, __c136, 1)),
+          protoValue: S.optional(__S(128, __c4, 0)),
+          intArray: S.optional(__S(4357, __c136, 5)),
+          intValue: S.optional(S.String),
+          doubleValue: S.optional(S.Number),
+          booleanValue: S.optional(S.Boolean),
+          protoArray: S.optional(__S(161, __c5, 1)),
+          serializedObjectValue: S.optional(__S(162, __c5, 2)),
+          stringValue: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "EnterpriseCrmFrontendsEventbusProtoParameterValueType",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          key: S.optional(S.String),
+          value: S.optional(__S(192, __c6, 0)),
+          dataType: S.optional(S.String),
+          masked: S.optional(S.Boolean),
+        }),
+      ).annotate({
+        identifier: "EnterpriseCrmFrontendsEventbusProtoParameterEntry",
+      });
+    case 2:
+      return S.Array(__S(193, __c6, 1));
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          parameters: S.optional(__S(194, __c6, 2)),
+        }),
+      ).annotate({
+        identifier: "EnterpriseCrmFrontendsEventbusProtoEventParameters",
+      });
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          booleanArray: S.optional(__S(4353, __c136, 1)),
+          protoArray: S.optional(__S(161, __c5, 1)),
+          doubleArray: S.optional(__S(4356, __c136, 4)),
+          stringArray: S.optional(__S(4354, __c136, 2)),
+          intArray: S.optional(__S(4357, __c136, 5)),
+          serializedObjectValue: S.optional(__S(162, __c5, 2)),
+          stringValue: S.optional(S.String),
+          booleanValue: S.optional(S.Boolean),
+          intValue: S.optional(S.String),
+          protoValue: S.optional(__S(128, __c4, 0)),
+          doubleValue: S.optional(S.Number),
+        }),
+      ).annotate({
+        identifier: "EnterpriseCrmEventbusProtoParameterValueType",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          masked: S.optional(S.Boolean),
+          key: S.optional(S.String),
+          value: S.optional(__S(256, __c8, 0)),
+        }),
+      ).annotate({
+        identifier: "EnterpriseCrmEventbusProtoParameterEntry",
+      });
+    case 2:
+      return S.Array(__S(257, __c8, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          parameters: S.optional(__S(258, __c8, 2)),
+        }),
+      ).annotate({
+        identifier: "EnterpriseCrmEventbusProtoEventParameters",
+      });
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          enableCloudLogging: S.optional(S.Boolean),
+          cloudLoggingSeverity: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudIntegrationsV1alphaCloudLoggingDetails",
+      });
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          description: S.optional(S.String),
+          startErrorTasks: S.optional(__S(97, __c3, 1)),
+          position: S.optional(__S(98, __c3, 2)),
+          label: S.optional(S.String),
+          errorCatcherId: S.optional(S.String),
+          errorCatcherNumber: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudIntegrationsV1alphaErrorCatcherConfig",
+      });
+    case 1:
+      return S.Array(__S(320, __c10, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          values: S.optional(__S(4320, __c135, 0)),
+        }),
+      ).annotate({
+        identifier: "EnterpriseCrmEventbusProtoStringArray",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          values: S.optional(__S(4355, __c136, 3)),
+        }),
+      ).annotate({
+        identifier: "EnterpriseCrmEventbusProtoDoubleArray",
+      });
     case 4:
-      return S.Array(__S(91, __c11, 3));
+      return S.suspend(() =>
+        S.Struct({
+          stringArray: S.optional(__S(322, __c10, 2)),
+          protoValue: S.optional(__S(128, __c4, 0)),
+          intValue: S.optional(S.String),
+          stringValue: S.optional(S.String),
+          intArray: S.optional(__S(322, __c10, 2)),
+          doubleValue: S.optional(S.Number),
+          doubleArray: S.optional(__S(323, __c10, 3)),
+          booleanValue: S.optional(S.Boolean),
+        }),
+      ).annotate({
+        identifier: "EnterpriseCrmEventbusProtoValueType",
+      });
     case 5:
+      return S.suspend(() =>
+        S.Struct({
+          key: S.optional(S.String),
+          value: S.optional(__S(324, __c10, 4)),
+        }),
+      ).annotate({
+        identifier: "EnterpriseCrmEventbusProtoPropertyEntry",
+      });
+    case 6:
+      return S.Array(__S(325, __c10, 5));
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          properties: S.optional(__S(326, __c10, 6)),
+        }),
+      ).annotate({
+        identifier: "EnterpriseCrmEventbusProtoEventBusProperties",
+      });
+    case 8:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "EnterpriseCrmEventbusProtoNextTeardownTask",
+      });
+    case 9:
+      return S.suspend(() =>
+        S.Struct({
+          creatorEmail: S.optional(S.String),
+          name: S.optional(S.String),
+          teardownTaskImplementationClassName: S.optional(S.String),
+          parameters: S.optional(__S(259, __c8, 3)),
+          properties: S.optional(__S(327, __c10, 7)),
+          nextTeardownTask: S.optional(__S(328, __c10, 8)),
+        }),
+      ).annotate({
+        identifier: "EnterpriseCrmEventbusProtoTeardownTaskConfig",
+      });
+    case 10:
+      return S.Array(__S(329, __c10, 9));
+    case 11:
+      return S.suspend(() =>
+        S.Struct({
+          teardownTaskConfigs: S.optional(__S(330, __c10, 10)),
+        }),
+      ).annotate({
+        identifier: "EnterpriseCrmEventbusProtoTeardown",
+      });
+    case 12:
+      return S.suspend(() =>
+        S.Struct({
+          value: S.optional(__S(4384, __c137, 0)),
+          parameter: S.optional(__S(99, __c3, 3)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudIntegrationsV1alphaIntegrationConfigParameter",
+      });
+    case 13:
+      return S.Array(__S(332, __c10, 12));
+    case 14:
+      return S.suspend(() =>
+        S.Struct({
+          parameters: S.optional(__S(259, __c8, 3)),
+          condition: S.optional(S.String),
+          triggerCriteriaTaskImplementationClassName: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "EnterpriseCrmEventbusProtoTriggerCriteria",
+      });
+    case 15:
+      return S.suspend(() =>
+        S.Struct({
+          eventPropertyKey: S.optional(S.String),
+          operator: S.optional(S.String),
+          value: S.optional(__S(324, __c10, 4)),
+        }),
+      ).annotate({
+        identifier: "EnterpriseCrmEventbusProtoCondition",
+      });
+    case 16:
+      return S.Array(__S(335, __c10, 15));
+    case 17:
+      return S.suspend(() =>
+        S.Struct({
+          conditions: S.optional(__S(336, __c10, 16)),
+        }),
+      ).annotate({
+        identifier: "EnterpriseCrmEventbusProtoCombinedCondition",
+      });
+    case 18:
+      return S.Array(__S(337, __c10, 17));
+    case 19:
+      return S.suspend(() =>
+        S.Struct({
+          taskNumber: S.optional(S.String),
+          condition: S.optional(S.String),
+          combinedConditions: S.optional(__S(338, __c10, 18)),
+          label: S.optional(S.String),
+          taskConfigId: S.optional(S.String),
+          description: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "EnterpriseCrmEventbusProtoNextTask",
+      });
+    case 20:
+      return S.Array(__S(339, __c10, 19));
+    case 21:
+      return S.suspend(() =>
+        S.Struct({
+          filterType: S.optional(S.String),
+          enumStrings: S.optional(__S(4320, __c135, 0)),
+        }),
+      ).annotate({
+        identifier: "EnterpriseCrmEventbusProtoBaseAlertConfigErrorEnumList",
+      });
+    case 22:
+      return S.suspend(() =>
+        S.Struct({
+          percentage: S.optional(S.Number),
+          absolute: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "EnterpriseCrmEventbusProtoBaseAlertConfigThresholdValue",
+      });
+    case 23:
+      return S.suspend(() =>
+        S.Struct({
+          onlyFinalAttempt: S.optional(S.Boolean),
+          errorEnumList: S.optional(__S(341, __c10, 21)),
+          metricType: S.optional(S.String),
+          alertDisabled: S.optional(S.Boolean),
+          numAggregationPeriods: S.optional(S.Number),
+          playbookUrl: S.optional(S.String),
+          clientId: S.optional(S.String),
+          durationThresholdMs: S.optional(S.String),
+          alertName: S.optional(S.String),
+          thresholdValue: S.optional(__S(342, __c10, 22)),
+          warningEnumList: S.optional(__S(341, __c10, 21)),
+          thresholdType: S.optional(S.String),
+          aggregationPeriod: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "EnterpriseCrmEventbusProtoWorkflowAlertConfig",
+      });
+    case 24:
+      return S.Array(__S(343, __c10, 23));
+    case 25:
+      return S.suspend(() =>
+        S.Struct({
+          location: S.optional(S.String),
+          serviceAccountEmail: S.optional(S.String),
+          cronTab: S.optional(S.String),
+          errorMessage: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "EnterpriseCrmEventbusProtoCloudSchedulerConfig",
+      });
+    case 26:
+      return S.suspend(() =>
+        S.Struct({
+          outputVariables: S.optional(__S(101, __c3, 5)),
+          triggerName: S.optional(S.String),
+          triggerId: S.optional(S.String),
+          label: S.optional(S.String),
+          inputVariables: S.optional(__S(101, __c3, 5)),
+          errorCatcherId: S.optional(S.String),
+          nextTasksExecutionPolicy: S.optional(S.String),
+          description: S.optional(S.String),
+          triggerCriteria: S.optional(__S(334, __c10, 14)),
+          position: S.optional(__S(98, __c3, 2)),
+          startTasks: S.optional(__S(340, __c10, 20)),
+          pauseWorkflowExecutions: S.optional(S.Boolean),
+          alertConfig: S.optional(__S(344, __c10, 24)),
+          properties: S.optional(__S(64, __c2, 0)),
+          triggerNumber: S.optional(S.String),
+          triggerType: S.optional(S.String),
+          cloudSchedulerConfig: S.optional(__S(345, __c10, 25)),
+          enabledClients: S.optional(__S(4320, __c135, 0)),
+        }),
+      ).annotate({
+        identifier: "EnterpriseCrmFrontendsEventbusProtoTriggerConfig",
+      });
+    case 27:
+      return S.Array(__S(346, __c10, 26));
+    case 28:
+      return S.Array(__S(107, __c3, 11));
+    case 29:
       return S.suspend(() =>
         S.Struct({
           aggregationPeriod: S.optional(S.String),
           alertDisabled: S.optional(S.Boolean),
-          errorEnumList: S.optional(__S(77, __c9, 5)),
+          errorEnumList: S.optional(__S(341, __c10, 21)),
           playbookUrl: S.optional(S.String),
           onlyFinalAttempt: S.optional(S.Boolean),
           metricType: S.optional(S.String),
           durationThresholdMs: S.optional(S.String),
-          thresholdValue: S.optional(__S(78, __c9, 6)),
+          thresholdValue: S.optional(__S(342, __c10, 22)),
           alertName: S.optional(S.String),
           numAggregationPeriods: S.optional(S.Number),
           clientId: S.optional(S.String),
-          warningEnumList: S.optional(__S(77, __c9, 5)),
+          warningEnumList: S.optional(__S(341, __c10, 21)),
           thresholdType: S.optional(S.String),
         }),
       ).annotate({
         identifier: "EnterpriseCrmEventbusProtoTaskAlertConfig",
       });
-    case 6:
-      return S.Array(__S(93, __c11, 5));
-    case 7:
+    case 30:
+      return S.Array(__S(349, __c10, 29));
+    case 31:
       return S.suspend(() =>
         S.Struct({
           intervalInSeconds: S.optional(S.String),
@@ -8960,15 +8663,15 @@ function __c11(j: number): any {
       });
   }
 }
-function __c12(j: number): any {
+function __c11(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(95, __c11, 7));
+      return S.Array(__S(351, __c10, 31));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          failurePolicies: S.optional(__S(96, __c12, 0)),
-          defaultFailurePolicy: S.optional(__S(95, __c11, 7)),
+          failurePolicies: S.optional(__S(352, __c11, 0)),
+          defaultFailurePolicy: S.optional(__S(351, __c10, 31)),
         }),
       ).annotate({
         identifier: "EnterpriseCrmEventbusProtoConditionalFailurePolicies",
@@ -9012,9 +8715,9 @@ function __c12(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          doubleRange: S.optional(__S(99, __c12, 3)),
-          stringRegex: S.optional(__S(100, __c12, 4)),
-          intRange: S.optional(__S(101, __c12, 5)),
+          doubleRange: S.optional(__S(355, __c11, 3)),
+          stringRegex: S.optional(__S(356, __c11, 4)),
+          intRange: S.optional(__S(357, __c11, 5)),
         }),
       ).annotate({
         identifier: "EnterpriseCrmEventbusProtoParamSpecEntryValidationRule",
@@ -9035,59 +8738,36 @@ function __c12(j: number): any {
       ).annotate({
         identifier: "EnterpriseCrmEventbusProtoParamSpecEntryConfig",
       });
-  }
-}
-function __c13(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          stringArray: S.optional(__S(15, __c1, 7)),
-          jsonValue: S.optional(S.String),
-          doubleArray: S.optional(__S(17, __c2, 1)),
-          booleanArray: S.optional(__S(14, __c1, 6)),
-          protoValue: S.optional(__S(46, __c5, 6)),
-          intArray: S.optional(__S(18, __c2, 2)),
-          intValue: S.optional(S.String),
-          doubleValue: S.optional(S.Number),
-          booleanValue: S.optional(S.Boolean),
-          protoArray: S.optional(__S(48, __c6, 0)),
-          serializedObjectValue: S.optional(__S(49, __c6, 1)),
-          stringValue: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "EnterpriseCrmFrontendsEventbusProtoParameterValueType",
-      });
-    case 1:
+    case 8:
       return S.suspend(() =>
         S.Struct({
           jsonSchema: S.optional(S.String),
-          protoDef: S.optional(__S(98, __c12, 2)),
+          protoDef: S.optional(__S(354, __c11, 2)),
           className: S.optional(S.String),
           collectionElementClassName: S.optional(S.String),
           isOutput: S.optional(S.Boolean),
           required: S.optional(S.Boolean),
-          validationRule: S.optional(__S(102, __c12, 6)),
+          validationRule: S.optional(__S(358, __c11, 6)),
           dataType: S.optional(S.String),
-          config: S.optional(__S(103, __c12, 7)),
+          config: S.optional(__S(359, __c11, 7)),
           isDeprecated: S.optional(S.Boolean),
-          defaultValue: S.optional(__S(104, __c13, 0)),
+          defaultValue: S.optional(__S(192, __c6, 0)),
           key: S.optional(S.String),
         }),
       ).annotate({
         identifier: "EnterpriseCrmFrontendsEventbusProtoParamSpecEntry",
       });
-    case 2:
-      return S.Array(__S(105, __c13, 1));
-    case 3:
+    case 9:
+      return S.Array(__S(360, __c11, 8));
+    case 10:
       return S.suspend(() =>
         S.Struct({
-          parameters: S.optional(__S(106, __c13, 2)),
+          parameters: S.optional(__S(361, __c11, 9)),
         }),
       ).annotate({
         identifier: "EnterpriseCrmFrontendsEventbusProtoParamSpecsMessage",
       });
-    case 4:
+    case 11:
       return S.suspend(() =>
         S.Struct({
           moduleId: S.optional(S.String),
@@ -9095,17 +8775,17 @@ function __c13(j: number): any {
       ).annotate({
         identifier: "EnterpriseCrmEventbusProtoTaskUiModuleConfig",
       });
-    case 5:
-      return S.Array(__S(108, __c13, 4));
-    case 6:
+    case 12:
+      return S.Array(__S(363, __c11, 11));
+    case 13:
       return S.suspend(() =>
         S.Struct({
-          taskUiModuleConfigs: S.optional(__S(109, __c13, 5)),
+          taskUiModuleConfigs: S.optional(__S(364, __c11, 12)),
         }),
       ).annotate({
         identifier: "EnterpriseCrmEventbusProtoTaskUiConfig",
       });
-    case 7:
+    case 14:
       return S.suspend(() =>
         S.Struct({
           warningEnumString: S.optional(S.String),
@@ -9122,14 +8802,10 @@ function __c13(j: number): any {
       ).annotate({
         identifier: "EnterpriseCrmEventbusStatsDimensions",
       });
-  }
-}
-function __c14(j: number): any {
-  switch (j) {
-    case 0:
+    case 15:
       return S.suspend(() =>
         S.Struct({
-          dimensions: S.optional(__S(111, __c13, 7)),
+          dimensions: S.optional(__S(366, __c11, 14)),
           warningRate: S.optional(S.Number),
           durationInSeconds: S.optional(S.Number),
           qps: S.optional(S.Number),
@@ -9138,7 +8814,7 @@ function __c14(j: number): any {
       ).annotate({
         identifier: "EnterpriseCrmEventbusStats",
       });
-    case 1:
+    case 16:
       return S.suspend(() =>
         S.Struct({
           userEmail: S.optional(S.String),
@@ -9147,9 +8823,9 @@ function __c14(j: number): any {
       ).annotate({
         identifier: "EnterpriseCrmEventbusProtoTaskMetadataAdmin",
       });
-    case 2:
-      return S.Array(__S(113, __c14, 1));
-    case 3:
+    case 17:
+      return S.Array(__S(368, __c11, 16));
+    case 18:
       return S.suspend(() =>
         S.Struct({
           category: S.optional(S.String),
@@ -9162,13 +8838,13 @@ function __c14(j: number): any {
           g3DocLink: S.optional(S.String),
           standaloneExternalDocHtml: S.optional(S.String),
           externalDocHtml: S.optional(S.String),
-          tags: S.optional(__S(11, __c1, 3)),
+          tags: S.optional(__S(4320, __c135, 0)),
           docMarkdown: S.optional(S.String),
           defaultJsonValidationOption: S.optional(S.String),
           iconLink: S.optional(S.String),
           name: S.optional(S.String),
           externalDocLink: S.optional(S.String),
-          admins: S.optional(__S(114, __c14, 2)),
+          admins: S.optional(__S(369, __c11, 17)),
           description: S.optional(S.String),
           externalCategorySequence: S.optional(S.Number),
           status: S.optional(S.String),
@@ -9178,83 +8854,58 @@ function __c14(j: number): any {
       ).annotate({
         identifier: "EnterpriseCrmEventbusProtoTaskMetadata",
       });
-    case 4:
+    case 19:
       return S.suspend(() =>
         S.Struct({
-          paramSpecs: S.optional(__S(107, __c13, 3)),
-          uiConfig: S.optional(__S(110, __c13, 6)),
-          stats: S.optional(__S(112, __c14, 0)),
-          metadata: S.optional(__S(115, __c14, 3)),
+          paramSpecs: S.optional(__S(362, __c11, 10)),
+          uiConfig: S.optional(__S(365, __c11, 13)),
+          stats: S.optional(__S(367, __c11, 15)),
+          metadata: S.optional(__S(370, __c11, 18)),
           disabledForVpcSc: S.optional(S.Boolean),
           taskType: S.optional(S.String),
         }),
       ).annotate({
         identifier: "EnterpriseCrmFrontendsEventbusProtoTaskEntity",
       });
-    case 5:
+    case 20:
       return S.suspend(() =>
         S.Struct({
-          key: S.optional(S.String),
-          value: S.optional(__S(104, __c13, 0)),
-          dataType: S.optional(S.String),
-          masked: S.optional(S.Boolean),
-        }),
-      ).annotate({
-        identifier: "EnterpriseCrmFrontendsEventbusProtoParameterEntry",
-      });
-    case 6:
-      return S.Array(__S(117, __c14, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          parameters: S.optional(__S(118, __c14, 6)),
-        }),
-      ).annotate({
-        identifier: "EnterpriseCrmFrontendsEventbusProtoEventParameters",
-      });
-  }
-}
-function __c15(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          taskNumbersToRollback: S.optional(__S(11, __c1, 3)),
+          taskNumbersToRollback: S.optional(__S(4320, __c135, 0)),
           rollbackTaskImplementationClassName: S.optional(S.String),
-          parameters: S.optional(__S(119, __c14, 7)),
+          parameters: S.optional(__S(224, __c7, 0)),
         }),
       ).annotate({
         identifier: "EnterpriseCrmFrontendsEventbusProtoRollbackStrategy",
       });
-    case 1:
-      return S.Record(S.String, __S(117, __c14, 5));
-    case 2:
+    case 21:
+      return S.Record(S.String, __S(193, __c6, 1));
+    case 22:
       return S.suspend(() =>
         S.Struct({
-          alertConfigs: S.optional(__S(94, __c11, 6)),
+          alertConfigs: S.optional(__S(350, __c10, 30)),
           jsonValidationOption: S.optional(S.String),
           taskTemplateName: S.optional(S.String),
-          failurePolicy: S.optional(__S(95, __c11, 7)),
+          failurePolicy: S.optional(__S(351, __c10, 31)),
           creatorEmail: S.optional(S.String),
           taskName: S.optional(S.String),
           precondition: S.optional(S.String),
-          nextTasks: S.optional(__S(76, __c9, 4)),
-          conditionalFailurePolicies: S.optional(__S(97, __c12, 1)),
+          nextTasks: S.optional(__S(340, __c10, 20)),
+          conditionalFailurePolicies: S.optional(__S(353, __c11, 1)),
           taskNumber: S.optional(S.String),
-          taskEntity: S.optional(__S(116, __c14, 4)),
+          taskEntity: S.optional(__S(371, __c11, 19)),
           taskExecutionStrategy: S.optional(S.String),
           incomingEdgeCount: S.optional(S.Number),
           taskSpec: S.optional(S.String),
           taskType: S.optional(S.String),
-          synchronousCallFailurePolicy: S.optional(__S(95, __c11, 7)),
-          successPolicy: S.optional(__S(86, __c10, 6)),
+          synchronousCallFailurePolicy: S.optional(__S(351, __c10, 31)),
+          successPolicy: S.optional(__S(103, __c3, 7)),
           description: S.optional(S.String),
           preconditionLabel: S.optional(S.String),
-          rollbackStrategy: S.optional(__S(120, __c15, 0)),
-          position: S.optional(__S(43, __c5, 3)),
+          rollbackStrategy: S.optional(__S(372, __c11, 20)),
+          position: S.optional(__S(98, __c3, 2)),
           externalTaskType: S.optional(S.String),
           createTime: S.optional(S.String),
-          parameters: S.optional(__S(121, __c15, 1)),
+          parameters: S.optional(__S(373, __c11, 21)),
           disableStrictTypeValidation: S.optional(S.Boolean),
           label: S.optional(S.String),
           errorCatcherId: S.optional(S.String),
@@ -9264,75 +8915,11 @@ function __c15(j: number): any {
       ).annotate({
         identifier: "EnterpriseCrmFrontendsEventbusProtoTaskConfig",
       });
-    case 3:
-      return S.Array(__S(122, __c15, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          absolute: S.optional(S.String),
-          percentage: S.optional(S.Number),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudIntegrationsV1alphaIntegrationAlertConfigThresholdValue",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          alertThreshold: S.optional(S.Number),
-          onlyFinalAttempt: S.optional(S.Boolean),
-          displayName: S.optional(S.String),
-          disableAlert: S.optional(S.Boolean),
-          aggregationPeriod: S.optional(S.String),
-          thresholdType: S.optional(S.String),
-          metricType: S.optional(S.String),
-          thresholdValue: S.optional(__S(124, __c15, 4)),
-          durationThreshold: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudIntegrationsV1alphaIntegrationAlertConfig",
-      });
-    case 6:
-      return S.Array(__S(125, __c15, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          serviceAccountEmail: S.optional(S.String),
-          cronTab: S.optional(S.String),
-          location: S.optional(S.String),
-          errorMessage: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudIntegrationsV1alphaCloudSchedulerConfig",
-      });
-  }
-}
-function __c16(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          position: S.optional(__S(43, __c5, 3)),
-          nextTasksExecutionPolicy: S.optional(S.String),
-          startTasks: S.optional(__S(42, __c5, 2)),
-          description: S.optional(S.String),
-          outputVariables: S.optional(__S(69, __c8, 5)),
-          triggerId: S.optional(S.String),
-          alertConfig: S.optional(__S(126, __c15, 6)),
-          trigger: S.optional(S.String),
-          triggerNumber: S.optional(S.String),
-          triggerType: S.optional(S.String),
-          label: S.optional(S.String),
-          errorCatcherId: S.optional(S.String),
-          inputVariables: S.optional(__S(69, __c8, 5)),
-          cloudSchedulerConfig: S.optional(__S(127, __c15, 7)),
-          properties: S.optional(__S(81, __c10, 1)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudIntegrationsV1alphaTriggerConfig",
-      });
-    case 1:
-      return S.Array(__S(128, __c16, 0));
-    case 2:
+    case 23:
+      return S.Array(__S(374, __c11, 22));
+    case 24:
+      return S.Array(__S(112, __c3, 16));
+    case 25:
       return S.suspend(() =>
         S.Struct({
           seedPeriod: S.optional(S.String),
@@ -9342,14 +8929,14 @@ function __c16(j: number): any {
       ).annotate({
         identifier: "EnterpriseCrmEventbusProtoLogSettings",
       });
-    case 3:
+    case 26:
       return S.suspend(() =>
         S.Struct({
           isSearchable: S.optional(S.Boolean),
-          taskVisibility: S.optional(__S(11, __c1, 3)),
-          defaultValue: S.optional(__S(56, __c7, 0)),
+          taskVisibility: S.optional(__S(4320, __c135, 0)),
+          defaultValue: S.optional(__S(324, __c10, 4)),
           isRequired: S.optional(S.Boolean),
-          logSettings: S.optional(__S(130, __c16, 2)),
+          logSettings: S.optional(__S(377, __c11, 25)),
           searchable: S.optional(S.String),
           dataType: S.optional(S.String),
           readOnly: S.optional(S.Boolean),
@@ -9358,7 +8945,7 @@ function __c16(j: number): any {
       ).annotate({
         identifier: "EnterpriseCrmEventbusProtoAttributes",
       });
-    case 4:
+    case 27:
       return S.suspend(() =>
         S.Struct({
           elementIdentifier: S.optional(S.String),
@@ -9367,134 +8954,189 @@ function __c16(j: number): any {
       ).annotate({
         identifier: "EnterpriseCrmEventbusProtoNodeIdentifier",
       });
-    case 5:
+    case 28:
       return S.suspend(() =>
         S.Struct({
           containsLargeData: S.optional(S.Boolean),
           inOutType: S.optional(S.String),
-          children: S.optional(S.suspend(() => __S(134, __c16, 6))),
+          children: S.optional(S.suspend(() => __S(381, __c11, 29))),
           dataType: S.optional(S.String),
           name: S.optional(S.String),
-          attributes: S.optional(__S(131, __c16, 3)),
+          attributes: S.optional(__S(378, __c11, 26)),
           protoDefPath: S.optional(S.String),
           description: S.optional(S.String),
-          defaultValue: S.optional(__S(104, __c13, 0)),
+          defaultValue: S.optional(__S(192, __c6, 0)),
           protoDefName: S.optional(S.String),
           producer: S.optional(S.String),
           required: S.optional(S.Boolean),
           jsonSchema: S.optional(S.String),
           key: S.optional(S.String),
-          producedBy: S.optional(__S(132, __c16, 4)),
+          producedBy: S.optional(__S(379, __c11, 27)),
           isTransient: S.optional(S.Boolean),
         }),
       ).annotate({
         identifier: "EnterpriseCrmFrontendsEventbusProtoWorkflowParameterEntry",
       });
-    case 6:
-      return S.Array(__S(133, __c16, 5));
-    case 7:
+    case 29:
+      return S.Array(__S(380, __c11, 28));
+    case 30:
       return S.suspend(() =>
         S.Struct({
-          parameters: S.optional(__S(134, __c16, 6)),
+          parameters: S.optional(__S(381, __c11, 29)),
         }),
       ).annotate({
         identifier: "EnterpriseCrmFrontendsEventbusProtoWorkflowParameters",
+      });
+    case 31:
+      return S.suspend(() =>
+        S.Struct({
+          errorCatcherConfigs: S.optional(__S(321, __c10, 1)),
+          createdFromTemplate: S.optional(S.String),
+          databasePersistencePolicy: S.optional(S.String),
+          lastModifierEmail: S.optional(S.String),
+          updateTime: S.optional(S.String),
+          teardown: S.optional(__S(331, __c10, 11)),
+          cloudLoggingDetails: S.optional(__S(288, __c9, 0)),
+          status: S.optional(S.String),
+          integrationConfigParameters: S.optional(__S(333, __c10, 13)),
+          cloudKmsKey: S.optional(S.String),
+          integrationParameters: S.optional(__S(100, __c3, 4)),
+          triggerConfigsInternal: S.optional(__S(347, __c10, 27)),
+          name: S.optional(S.String),
+          createTime: S.optional(S.String),
+          runAsServiceAccount: S.optional(S.String),
+          taskConfigs: S.optional(__S(348, __c10, 28)),
+          enableVariableMasking: S.optional(S.Boolean),
+          description: S.optional(S.String),
+          state: S.optional(S.String),
+          taskConfigsInternal: S.optional(__S(375, __c11, 23)),
+          origin: S.optional(S.String),
+          snapshotNumber: S.optional(S.String),
+          triggerConfigs: S.optional(__S(376, __c11, 24)),
+          userLabel: S.optional(S.String),
+          eucHardeningDisposition: S.optional(S.String),
+          lockHolder: S.optional(S.String),
+          parentTemplateId: S.optional(S.String),
+          integrationParametersInternal: S.optional(__S(382, __c11, 30)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudIntegrationsV1alphaIntegrationVersion",
+      });
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+          updateMask: S.optional(S.String.pipe(T.Query())),
+          body: S.optional(__S(1984, __c62, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "PATCH",
+            uri: "v1/{+name}",
+            baseUrl: "https://integrations.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "PatchProjectsLocationsProductsSfdcInstancesSfdcChannelsRequest",
+      });
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+          updateMask: S.optional(S.String.pipe(T.Query())),
+          body: S.optional(__S(1920, __c60, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "PATCH",
+            uri: "v1/{+name}",
+            baseUrl: "https://integrations.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "PatchProjectsLocationsSfdcInstancesRequest",
+      });
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          updateMask: S.optional(S.String.pipe(T.Query())),
+          name: S.String.pipe(T.Label()),
+          body: S.optional(__S(1984, __c62, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "PATCH",
+            uri: "v1/{+name}",
+            baseUrl: "https://integrations.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "PatchProjectsLocationsSfdcInstancesSfdcChannelsRequest",
+      });
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          updateMask: S.optional(S.String.pipe(T.Query())),
+          name: S.String.pipe(T.Label()),
+          body: S.optional(__S(2149, __c67, 5).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "PATCH",
+            uri: "v1/{+name}",
+            baseUrl: "https://integrations.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "PatchProjectsLocationsTemplatesRequest",
+      });
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          workflows: S.optional(__S(2720, __c85, 0)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudIntegrationsV1alphaProvisionClientPostProcessorRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          parent: S.String.pipe(T.Label()),
+          body: S.optional(__S(512, __c16, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/{+parent}/clients:provisionClientPostProcessor",
+            baseUrl: "https://integrations.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "ProvisionClientPostProcessorProjectsLocationsClientsRequest",
       });
   }
 }
 function __c17(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() =>
-        S.Struct({
-          errorCatcherConfigs: S.optional(__S(45, __c5, 5)),
-          createdFromTemplate: S.optional(S.String),
-          databasePersistencePolicy: S.optional(S.String),
-          lastModifierEmail: S.optional(S.String),
-          updateTime: S.optional(S.String),
-          teardown: S.optional(__S(63, __c7, 7)),
-          cloudLoggingDetails: S.optional(__S(64, __c8, 0)),
-          status: S.optional(S.String),
-          integrationConfigParameters: S.optional(__S(67, __c8, 3)),
-          cloudKmsKey: S.optional(S.String),
-          integrationParameters: S.optional(__S(68, __c8, 4)),
-          triggerConfigsInternal: S.optional(__S(84, __c10, 4)),
-          name: S.optional(S.String),
-          createTime: S.optional(S.String),
-          runAsServiceAccount: S.optional(S.String),
-          taskConfigs: S.optional(__S(92, __c11, 4)),
-          enableVariableMasking: S.optional(S.Boolean),
-          description: S.optional(S.String),
-          state: S.optional(S.String),
-          taskConfigsInternal: S.optional(__S(123, __c15, 3)),
-          origin: S.optional(S.String),
-          snapshotNumber: S.optional(S.String),
-          triggerConfigs: S.optional(__S(129, __c16, 1)),
-          userLabel: S.optional(S.String),
-          eucHardeningDisposition: S.optional(S.String),
-          lockHolder: S.optional(S.String),
-          parentTemplateId: S.optional(S.String),
-          integrationParametersInternal: S.optional(__S(135, __c16, 7)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudIntegrationsV1alphaIntegrationVersion",
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "GoogleCloudIntegrationsV1alphaProvisionClientPostProcessorResponse",
       });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          newIntegration: S.optional(S.Boolean.pipe(T.Query())),
-          createSampleIntegrations: S.optional(S.Boolean.pipe(T.Query())),
-          parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(136, __c17, 0).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/{+parent}/versions",
-            baseUrl: "https://integrations.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateProjectsLocationsIntegrationsVersionsRequest",
-      });
-    case 2:
-      return S.Array(__S(87, __c10, 7));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          parameters: S.optional(__S(138, __c17, 2)),
-          failedExecutions: S.optional(S.String),
-          mockStrategy: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudIntegrationsV1alphaMockConfig",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          retryCount: S.optional(S.Number),
-          condition: S.optional(S.String),
-          parameter: S.optional(__S(87, __c10, 7)),
-          assertionStrategy: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudIntegrationsV1alphaAssertion",
-      });
-    case 5:
-      return S.Array(__S(140, __c17, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          task: S.optional(S.String),
-          taskNumber: S.optional(S.String),
-          mockConfig: S.optional(__S(139, __c17, 3)),
-          taskConfig: S.optional(__S(91, __c11, 3)),
-          assertions: S.optional(__S(141, __c17, 5)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudIntegrationsV1alphaTestTaskConfig",
-      });
-    case 7:
-      return S.Array(__S(142, __c17, 6));
   }
 }
 function __c18(j: number): any {
@@ -9502,29 +9144,159 @@ function __c18(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          triggerConfig: S.optional(__S(128, __c16, 0)),
-          createTime: S.optional(S.String),
-          triggerId: S.optional(S.String),
-          testInputParameters: S.optional(__S(68, __c8, 4)),
-          name: S.optional(S.String),
-          displayName: S.optional(S.String),
-          updateTime: S.optional(S.String),
-          lastModifierEmail: S.optional(S.String),
-          databasePersistencePolicy: S.optional(S.String),
-          testTaskConfigs: S.optional(__S(143, __c17, 7)),
-          creatorEmail: S.optional(S.String),
-          lockHolderEmail: S.optional(S.String),
-          description: S.optional(S.String),
+          enableManagedAiFeatures: S.optional(S.Boolean),
+          cloudKmsConfig: S.optional(__S(3456, __c108, 0)),
+          createSampleWorkflows: S.optional(S.Boolean),
+          provisionGmek: S.optional(S.Boolean),
+          skipCpProvision: S.optional(S.Boolean),
+          runAsServiceAccount: S.optional(S.String),
+          enableHttpCall: S.optional(S.Boolean),
         }),
       ).annotate({
-        identifier: "GoogleCloudIntegrationsV1alphaTestCase",
+        identifier: "GoogleCloudIntegrationsV1alphaProvisionClientRequest",
       });
     case 1:
       return S.suspend(() =>
         S.Struct({
+          parent: S.String.pipe(T.Label()),
+          body: S.optional(__S(576, __c18, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/{+parent}/clients:provision",
+            baseUrl: "https://integrations.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "ProvisionProjectsLocationsClientsRequest",
+      });
+  }
+}
+function __c19(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+          body: S.optional(__S(640, __c20, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/{+name}:publish",
+            baseUrl: "https://integrations.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "PublishProjectsLocationsIntegrationsVersionsRequest",
+      });
+  }
+}
+function __c20(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          configParameters: S.optional(__S(128, __c4, 0)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudIntegrationsV1alphaPublishIntegrationVersionRequest",
+      });
+  }
+}
+function __c21(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+          body: S.optional(__S(640, __c20, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/{+name}:publish",
+            baseUrl: "https://integrations.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "PublishProjectsLocationsProductsIntegrationsVersionsRequest",
+      });
+  }
+}
+function __c22(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          runAsServiceAccount: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudIntegrationsV1alphaReplaceServiceAccountRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          parent: S.String.pipe(T.Label()),
+          body: S.optional(__S(704, __c22, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/{+parent}/clients:replace",
+            baseUrl: "https://integrations.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "ReplaceProjectsLocationsClientsRequest",
+      });
+  }
+}
+function __c23(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          replayMode: S.optional(S.String),
+          modifiedParameters: S.optional(__S(3168, __c99, 0)),
+          replayReason: S.optional(S.String),
+          updateMask: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudIntegrationsV1alphaReplayExecutionRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+          body: S.optional(__S(736, __c23, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/{+name}:replay",
+            baseUrl: "https://integrations.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "ReplayProjectsLocationsIntegrationsExecutionsRequest",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          executionId: S.optional(S.String),
+          outputParameters: S.optional(__S(128, __c4, 0)),
+          replayedExecutionId: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudIntegrationsV1alphaReplayExecutionResponse",
+      });
+  }
+}
+function __c24(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
           testCaseId: S.optional(S.String.pipe(T.Query())),
           parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(144, __c18, 0).pipe(T.HttpBody())),
+          body: S.optional(__S(837, __c26, 5).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -9535,14 +9307,378 @@ function __c18(j: number): any {
       ).annotate({
         identifier: "CreateProjectsLocationsIntegrationsVersionsTestCasesRequest",
       });
+  }
+}
+function __c25(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          retryCount: S.optional(S.Number),
+          condition: S.optional(S.String),
+          parameter: S.optional(__S(32, __c1, 0)),
+          assertionStrategy: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudIntegrationsV1alphaAssertion",
+      });
+  }
+}
+function __c26(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(32, __c1, 0));
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          parameters: S.optional(__S(832, __c26, 0)),
+          failedExecutions: S.optional(S.String),
+          mockStrategy: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudIntegrationsV1alphaMockConfig",
+      });
     case 2:
+      return S.Array(__S(800, __c25, 0));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          task: S.optional(S.String),
+          taskNumber: S.optional(S.String),
+          mockConfig: S.optional(__S(833, __c26, 1)),
+          taskConfig: S.optional(__S(107, __c3, 11)),
+          assertions: S.optional(__S(834, __c26, 2)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudIntegrationsV1alphaTestTaskConfig",
+      });
+    case 4:
+      return S.Array(__S(835, __c26, 3));
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          triggerConfig: S.optional(__S(112, __c3, 16)),
+          createTime: S.optional(S.String),
+          triggerId: S.optional(S.String),
+          testInputParameters: S.optional(__S(100, __c3, 4)),
+          name: S.optional(S.String),
+          displayName: S.optional(S.String),
+          updateTime: S.optional(S.String),
+          lastModifierEmail: S.optional(S.String),
+          databasePersistencePolicy: S.optional(S.String),
+          testTaskConfigs: S.optional(__S(836, __c26, 4)),
+          creatorEmail: S.optional(S.String),
+          lockHolderEmail: S.optional(S.String),
+          description: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudIntegrationsV1alphaTestCase",
+      });
+  }
+}
+function __c27(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+          body: S.optional(__S(896, __c28, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/{+name}:resolve",
+            baseUrl: "https://integrations.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "ResolveProjectsLocationsIntegrationsExecutionsSuspensionsRequest",
+      });
+  }
+}
+function __c28(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          suspension: S.optional(__S(4944, __c154, 16)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudIntegrationsV1alphaResolveSuspensionRequest",
+      });
+  }
+}
+function __c29(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+          body: S.optional(__S(896, __c28, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/{+name}:resolve",
+            baseUrl: "https://integrations.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "ResolveProjectsLocationsProductsIntegrationsExecutionsSuspensionsRequest",
+      });
+  }
+}
+function __c30(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+          body: S.optional(__S(992, __c31, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/{+name}:schedule",
+            baseUrl: "https://integrations.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "ScheduleProjectsLocationsIntegrationsRequest",
+      });
+  }
+}
+function __c31(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          triggerId: S.optional(S.String),
+          parameters: S.optional(__S(259, __c8, 3)),
+          inputParameters: S.optional(__S(3168, __c99, 0)),
+          userGeneratedExecutionId: S.optional(S.String),
+          parameterEntries: S.optional(__S(194, __c6, 2)),
+          requestId: S.optional(S.String),
+          scheduleTime: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudIntegrationsV1alphaScheduleIntegrationsRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          executionInfoIds: S.optional(__S(4320, __c135, 0)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudIntegrationsV1alphaScheduleIntegrationsResponse",
+      });
+  }
+}
+function __c32(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+          body: S.optional(__S(992, __c31, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/{+name}:schedule",
+            baseUrl: "https://integrations.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "ScheduleProjectsLocationsProductsIntegrationsRequest",
+      });
+  }
+}
+function __c33(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          parent: S.String.pipe(T.Label()),
+          pageToken: S.optional(S.String.pipe(T.Query())),
+          query: S.optional(S.String.pipe(T.Query())),
+          enableNaturalLanguageQueryUnderstanding: S.optional(S.Boolean.pipe(T.Query())),
+          pageSize: S.optional(S.Number.pipe(T.Query())),
+          filter: S.optional(S.String.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v1/{+parent}/integrations:search",
+            baseUrl: "https://integrations.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "SearchProjectsLocationsIntegrationsRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          status: S.optional(S.String),
+          createTime: S.optional(S.String),
+          id: S.optional(S.String),
+          region: S.optional(S.String),
+          description: S.optional(S.String),
+          name: S.optional(S.String),
+          creator: S.optional(S.String),
+          version: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier:
+          "GoogleCloudIntegrationsV1alphaSearchIntegrationsResponseIntegrationSearchResult",
+      });
+    case 2:
+      return S.Array(__S(1057, __c33, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          integrations: S.optional(__S(1058, __c33, 2)),
+          nextPageToken: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudIntegrationsV1alphaSearchIntegrationsResponse",
+      });
+  }
+}
+function __c34(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          readMask: S.optional(S.String.pipe(T.Query())),
+          enableNaturalLanguageQueryUnderstanding: S.optional(S.Boolean.pipe(T.Query())),
+          parent: S.String.pipe(T.Label()),
+          pageToken: S.optional(S.String.pipe(T.Query())),
+          orderBy: S.optional(S.String.pipe(T.Query())),
+          filter: S.optional(S.String.pipe(T.Query())),
+          pageSize: S.optional(S.Number.pipe(T.Query())),
+          query: S.optional(S.String.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v1/{+parent}/templates:search",
+            baseUrl: "https://integrations.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "SearchProjectsLocationsTemplatesRequest",
+      });
+  }
+}
+function __c35(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+          body: S.optional(__S(1152, __c36, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/{+name}:share",
+            baseUrl: "https://integrations.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "ShareProjectsLocationsTemplatesRequest",
+      });
+  }
+}
+function __c36(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          resourceNames: S.optional(__S(4320, __c135, 0)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudIntegrationsV1alphaShareTemplateRequest",
+      });
+  }
+}
+function __c37(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          cloudKmsConfig: S.optional(__S(3456, __c108, 0)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudIntegrationsV1alphaSwitchEncryptionRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          parent: S.String.pipe(T.Label()),
+          body: S.optional(__S(1184, __c37, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/{+parent}/clients:switch",
+            baseUrl: "https://integrations.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "SwitchProjectsLocationsClientsRequest",
+      });
+  }
+}
+function __c38(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          enableVariableMasking: S.optional(S.Boolean),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudIntegrationsV1alphaSwitchVariableMaskingRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          parent: S.String.pipe(T.Label()),
+          body: S.optional(__S(1216, __c38, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/{+parent}/clients:switchVariableMasking",
+            baseUrl: "https://integrations.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "SwitchVariableMaskingProjectsLocationsClientsRequest",
+      });
+  }
+}
+function __c39(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+          body: S.optional(__S(2656, __c83, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/{+name}:takeoverEditLock",
+            baseUrl: "https://integrations.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "TakeoverEditLockProjectsLocationsIntegrationsVersionsTestCasesRequest",
+      });
+  }
+}
+function __c40(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           "clientCertificate.encryptedPrivateKey": S.optional(S.String.pipe(T.Query())),
           parent: S.String.pipe(T.Label()),
           "clientCertificate.passphrase": S.optional(S.String.pipe(T.Query())),
           "clientCertificate.sslCertificate": S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(33, __c4, 1).pipe(T.HttpBody())),
+          body: S.optional(__S(4430, __c138, 14).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -9553,11 +9689,295 @@ function __c18(j: number): any {
       ).annotate({
         identifier: "CreateProjectsLocationsProductsAuthConfigsRequest",
       });
-    case 3:
+  }
+}
+function __c41(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          integrationVersion: S.String.pipe(T.Label()),
+          body: S.optional(__S(2656, __c83, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/{+integrationVersion}:takeoverEditLock",
+            baseUrl: "https://integrations.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "TakeoverEditLockProjectsLocationsProductsIntegrationsVersionsRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          integrationVersion: S.optional(__S(383, __c11, 31)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudIntegrationsV1alphaTakeoverEditLockResponse",
+      });
+  }
+}
+function __c42(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+          body: S.optional(__S(1376, __c43, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/{+name}:test",
+            baseUrl: "https://integrations.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "TestProjectsLocationsIntegrationsRequest",
+      });
+  }
+}
+function __c43(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          configParameters: S.optional(__S(128, __c4, 0)),
+          integrationVersion: S.optional(__S(383, __c11, 31)),
+          triggerId: S.optional(S.String),
+          clientId: S.optional(S.String),
+          credentialMode: S.optional(S.String),
+          testMode: S.optional(S.Boolean),
+          asyncExecution: S.optional(S.Boolean),
+          deadlineSecondsTime: S.optional(S.String),
+          inputParameters: S.optional(__S(3168, __c99, 0)),
+          parameters: S.optional(__S(224, __c7, 0)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudIntegrationsV1alphaTestIntegrationsRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          parameterEntries: S.optional(__S(194, __c6, 2)),
+          credentialMode: S.optional(S.String),
+          executionId: S.optional(S.String),
+          eventParameters: S.optional(__S(224, __c7, 0)),
+          eucHardeningDisposition: S.optional(S.String),
+          executionFailed: S.optional(S.Boolean),
+          hardenedPaths: S.optional(__S(2720, __c85, 0)),
+          parameters: S.optional(__S(3168, __c99, 0)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudIntegrationsV1alphaTestIntegrationsResponse",
+      });
+  }
+}
+function __c44(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+          body: S.optional(__S(1376, __c43, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/{+name}:test",
+            baseUrl: "https://integrations.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "TestProjectsLocationsIntegrationsVersionsRequest",
+      });
+  }
+}
+function __c45(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+          body: S.optional(__S(1376, __c43, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/{+name}:test",
+            baseUrl: "https://integrations.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "TestProjectsLocationsProductsIntegrationsRequest",
+      });
+  }
+}
+function __c46(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          enableHttpCall: S.optional(S.Boolean),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudIntegrationsV1alphaToggleHttpRequest",
+      });
+    case 1:
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(36, __c4, 4).pipe(T.HttpBody())),
+          body: S.optional(__S(1472, __c46, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/{+parent}/clients:toggleHttp",
+            baseUrl: "https://integrations.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "ToggleHttpProjectsLocationsClientsRequest",
+      });
+  }
+}
+function __c47(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+          body: S.optional(__S(2656, __c83, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/{+name}:unpublish",
+            baseUrl: "https://integrations.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "UnpublishProjectsLocationsIntegrationsVersionsRequest",
+      });
+  }
+}
+function __c48(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+          body: S.optional(__S(2656, __c83, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/{+name}:unpublish",
+            baseUrl: "https://integrations.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "UnpublishProjectsLocationsProductsIntegrationsVersionsRequest",
+      });
+  }
+}
+function __c49(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+          body: S.optional(__S(1152, __c36, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/{+name}:unshare",
+            baseUrl: "https://integrations.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "UnshareProjectsLocationsTemplatesRequest",
+      });
+  }
+}
+function __c50(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          parent: S.String.pipe(T.Label()),
+          body: S.optional(__S(1632, __c51, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/{+parent}/versions:upload",
+            baseUrl: "https://integrations.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "UploadProjectsLocationsIntegrationsVersionsRequest",
+      });
+  }
+}
+function __c51(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          content: S.optional(S.String),
+          fileFormat: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudIntegrationsV1alphaUploadIntegrationVersionRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          integrationVersion: S.optional(__S(383, __c11, 31)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudIntegrationsV1alphaUploadIntegrationVersionResponse",
+      });
+  }
+}
+function __c52(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          fileFormat: S.optional(S.String),
+          content: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudIntegrationsV1alphaUploadTestCaseRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          parent: S.String.pipe(T.Label()),
+          body: S.optional(__S(1664, __c52, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/{+parent}/testCases:upload",
+            baseUrl: "https://integrations.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "UploadProjectsLocationsIntegrationsVersionsTestCasesRequest",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          testCase: S.optional(__S(837, __c26, 5)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudIntegrationsV1alphaUploadTestCaseResponse",
+      });
+  }
+}
+function __c53(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          parent: S.String.pipe(T.Label()),
+          body: S.optional(__S(5057, __c158, 1).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -9568,11 +9988,99 @@ function __c18(j: number): any {
       ).annotate({
         identifier: "CreateProjectsLocationsProductsCertificatesRequest",
       });
-    case 4:
+  }
+}
+function __c54(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(38, __c4, 6).pipe(T.HttpBody())),
+          body: S.optional(__S(1632, __c51, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/{+parent}/versions:upload",
+            baseUrl: "https://integrations.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "UploadProjectsLocationsProductsIntegrationsVersionsRequest",
+      });
+  }
+}
+function __c55(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          content: S.optional(S.String),
+          fileFormat: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudIntegrationsV1alphaUploadTemplateRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          parent: S.String.pipe(T.Label()),
+          body: S.optional(__S(1760, __c55, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/{+parent}/templates:upload",
+            baseUrl: "https://integrations.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "UploadProjectsLocationsTemplatesRequest",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          template: S.optional(__S(2149, __c67, 5)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudIntegrationsV1alphaUploadTemplateResponse",
+      });
+  }
+}
+function __c56(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subIntegrations: S.optional(__S(4129, __c129, 1)),
+          integrationDetails: S.optional(__S(4128, __c129, 0)),
+          integrationRegion: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudIntegrationsV1alphaUseTemplateRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+          body: S.optional(__S(1792, __c56, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/{+name}:use",
+            baseUrl: "https://integrations.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "UseProjectsLocationsTemplatesRequest",
+      });
+  }
+}
+function __c57(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          parent: S.String.pipe(T.Label()),
+          body: S.optional(__S(5504, __c172, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -9583,13 +10091,17 @@ function __c18(j: number): any {
       ).annotate({
         identifier: "CreateProjectsLocationsProductsCloudFunctionsRequest",
       });
-    case 5:
+  }
+}
+function __c58(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
           newIntegration: S.optional(S.Boolean.pipe(T.Query())),
           createSampleIntegrations: S.optional(S.Boolean.pipe(T.Query())),
-          body: S.optional(__S(136, __c17, 0).pipe(T.HttpBody())),
+          body: S.optional(__S(383, __c11, 31).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -9600,27 +10112,15 @@ function __c18(j: number): any {
       ).annotate({
         identifier: "CreateProjectsLocationsProductsIntegrationsVersionsRequest",
       });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.optional(S.String),
-          createTime: S.optional(S.String),
-          deleteTime: S.optional(S.String),
-          sfdcOrgId: S.optional(S.String),
-          serviceAuthority: S.optional(S.String),
-          description: S.optional(S.String),
-          authConfigId: S.optional(__S(11, __c1, 3)),
-          updateTime: S.optional(S.String),
-          displayName: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudIntegrationsV1alphaSfdcInstance",
-      });
-    case 7:
+  }
+}
+function __c59(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(150, __c18, 6).pipe(T.HttpBody())),
+          body: S.optional(__S(1920, __c60, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -9633,7 +10133,46 @@ function __c18(j: number): any {
       });
   }
 }
-function __c19(j: number): any {
+function __c60(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.optional(S.String),
+          createTime: S.optional(S.String),
+          deleteTime: S.optional(S.String),
+          sfdcOrgId: S.optional(S.String),
+          serviceAuthority: S.optional(S.String),
+          description: S.optional(S.String),
+          authConfigId: S.optional(__S(4320, __c135, 0)),
+          updateTime: S.optional(S.String),
+          displayName: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudIntegrationsV1alphaSfdcInstance",
+      });
+  }
+}
+function __c61(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          parent: S.String.pipe(T.Label()),
+          body: S.optional(__S(1984, __c62, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/{+parent}/sfdcChannels",
+            baseUrl: "https://integrations.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateProjectsLocationsProductsSfdcInstancesSfdcChannelsRequest",
+      });
+  }
+}
+function __c62(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -9651,26 +10190,15 @@ function __c19(j: number): any {
       ).annotate({
         identifier: "GoogleCloudIntegrationsV1alphaSfdcChannel",
       });
-    case 1:
+  }
+}
+function __c63(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(152, __c19, 0).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/{+parent}/sfdcChannels",
-            baseUrl: "https://integrations.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateProjectsLocationsProductsSfdcInstancesSfdcChannelsRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(150, __c18, 6).pipe(T.HttpBody())),
+          body: S.optional(__S(1920, __c60, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -9681,11 +10209,15 @@ function __c19(j: number): any {
       ).annotate({
         identifier: "CreateProjectsLocationsSfdcInstancesRequest",
       });
-    case 3:
+  }
+}
+function __c64(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(152, __c19, 0).pipe(T.HttpBody())),
+          body: S.optional(__S(1984, __c62, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -9696,71 +10228,15 @@ function __c19(j: number): any {
       ).annotate({
         identifier: "CreateProjectsLocationsSfdcInstancesSfdcChannelsRequest",
       });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          integrationVersion: S.optional(__S(136, __c17, 0)),
-          key: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudIntegrationsV1alphaIntegrationVersionTemplate",
-      });
-    case 5:
-      return S.Array(__S(156, __c19, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          subIntegrationVersionTemplates: S.optional(__S(157, __c19, 5)),
-          integrationVersionTemplate: S.optional(__S(156, __c19, 4)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudIntegrationsV1alphaTemplateBundle",
-      });
-    case 7:
-      return S.Array(S.String);
   }
 }
-function __c20(j: number): any {
+function __c65(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          type: S.optional(S.String),
-          name: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudIntegrationsV1alphaTemplateComponent",
-      });
-    case 1:
-      return S.Array(__S(160, __c20, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          docLink: S.optional(S.String),
-          displayName: S.optional(S.String),
-          templateBundle: S.optional(__S(158, __c19, 6)),
-          usageCount: S.optional(S.String),
-          sharedWith: S.optional(__S(11, __c1, 3)),
-          visibility: S.optional(S.String),
-          name: S.optional(S.String),
-          description: S.optional(S.String),
-          createTime: S.optional(S.String),
-          tags: S.optional(__S(11, __c1, 3)),
-          author: S.optional(S.String),
-          lastUsedTime: S.optional(S.String),
-          categories: S.optional(__S(159, __c19, 7)),
-          components: S.optional(__S(161, __c20, 1)),
-          usageInfo: S.optional(S.String),
-          updateTime: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudIntegrationsV1alphaTemplate",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
           parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(162, __c20, 2).pipe(T.HttpBody())),
+          body: S.optional(__S(2149, __c67, 5).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -9771,7 +10247,75 @@ function __c20(j: number): any {
       ).annotate({
         identifier: "CreateProjectsLocationsTemplatesRequest",
       });
+  }
+}
+function __c66(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c67(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          integrationVersion: S.optional(__S(383, __c11, 31)),
+          key: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudIntegrationsV1alphaIntegrationVersionTemplate",
+      });
+    case 1:
+      return S.Array(__S(2144, __c67, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          subIntegrationVersionTemplates: S.optional(__S(2145, __c67, 1)),
+          integrationVersionTemplate: S.optional(__S(2144, __c67, 0)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudIntegrationsV1alphaTemplateBundle",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          type: S.optional(S.String),
+          name: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudIntegrationsV1alphaTemplateComponent",
+      });
     case 4:
+      return S.Array(__S(2147, __c67, 3));
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          docLink: S.optional(S.String),
+          displayName: S.optional(S.String),
+          templateBundle: S.optional(__S(2146, __c67, 2)),
+          usageCount: S.optional(S.String),
+          sharedWith: S.optional(__S(4320, __c135, 0)),
+          visibility: S.optional(S.String),
+          name: S.optional(S.String),
+          description: S.optional(S.String),
+          createTime: S.optional(S.String),
+          tags: S.optional(__S(4320, __c135, 0)),
+          author: S.optional(S.String),
+          lastUsedTime: S.optional(S.String),
+          categories: S.optional(__S(2112, __c66, 0)),
+          components: S.optional(__S(2148, __c67, 4)),
+          usageInfo: S.optional(S.String),
+          updateTime: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudIntegrationsV1alphaTemplate",
+      });
+  }
+}
+function __c68(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -9785,11 +10329,19 @@ function __c20(j: number): any {
       ).annotate({
         identifier: "DeleteProjectsLocationsAuthConfigsRequest",
       });
-    case 5:
+  }
+}
+function __c69(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "GoogleProtobufEmpty",
       });
-    case 6:
+  }
+}
+function __c70(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -9803,7 +10355,11 @@ function __c20(j: number): any {
       ).annotate({
         identifier: "DeleteProjectsLocationsCertificatesRequest",
       });
-    case 7:
+  }
+}
+function __c71(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -9819,7 +10375,7 @@ function __c20(j: number): any {
       });
   }
 }
-function __c21(j: number): any {
+function __c72(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -9835,7 +10391,11 @@ function __c21(j: number): any {
       ).annotate({
         identifier: "DeleteProjectsLocationsIntegrationsVersionsRequest",
       });
-    case 1:
+  }
+}
+function __c73(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -9849,7 +10409,11 @@ function __c21(j: number): any {
       ).annotate({
         identifier: "DeleteProjectsLocationsIntegrationsVersionsTestCasesRequest",
       });
-    case 2:
+  }
+}
+function __c74(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -9863,7 +10427,11 @@ function __c21(j: number): any {
       ).annotate({
         identifier: "DeleteProjectsLocationsProductsAuthConfigsRequest",
       });
-    case 3:
+  }
+}
+function __c75(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -9877,7 +10445,11 @@ function __c21(j: number): any {
       ).annotate({
         identifier: "DeleteProjectsLocationsProductsCertificatesRequest",
       });
-    case 4:
+  }
+}
+function __c76(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -9891,7 +10463,11 @@ function __c21(j: number): any {
       ).annotate({
         identifier: "DeleteProjectsLocationsProductsIntegrationsVersionsRequest",
       });
-    case 5:
+  }
+}
+function __c77(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -9905,7 +10481,11 @@ function __c21(j: number): any {
       ).annotate({
         identifier: "DeleteProjectsLocationsProductsSfdcInstancesRequest",
       });
-    case 6:
+  }
+}
+function __c78(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -9919,7 +10499,11 @@ function __c21(j: number): any {
       ).annotate({
         identifier: "DeleteProjectsLocationsProductsSfdcInstancesSfdcChannelsRequest",
       });
-    case 7:
+  }
+}
+function __c79(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -9935,7 +10519,7 @@ function __c21(j: number): any {
       });
   }
 }
-function __c22(j: number): any {
+function __c80(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -9951,7 +10535,11 @@ function __c22(j: number): any {
       ).annotate({
         identifier: "DeleteProjectsLocationsSfdcInstancesSfdcChannelsRequest",
       });
-    case 1:
+  }
+}
+function __c81(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -9965,15 +10553,15 @@ function __c22(j: number): any {
       ).annotate({
         identifier: "DeleteProjectsLocationsTemplatesRequest",
       });
-    case 2:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "GoogleCloudIntegrationsV1alphaDeprovisionClientRequest",
-      });
-    case 3:
+  }
+}
+function __c82(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(178, __c22, 2).pipe(T.HttpBody())),
+          body: S.optional(__S(2656, __c83, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -9984,12 +10572,22 @@ function __c22(j: number): any {
       ).annotate({
         identifier: "DeprovisionProjectsLocationsClientsRequest",
       });
-    case 4:
-      return S.Array(S.String);
-    case 5:
+  }
+}
+function __c83(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "GoogleCloudIntegrationsV1alphaDeprovisionClientRequest",
+      });
+  }
+}
+function __c84(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          files: S.optional(__S(180, __c22, 4).pipe(T.Query())),
+          files: S.optional(__S(2720, __c85, 0).pipe(T.Query())),
           name: S.String.pipe(T.Label()),
         }).pipe(
           T.Http({
@@ -10001,31 +10599,37 @@ function __c22(j: number): any {
       ).annotate({
         identifier: "DownloadJsonPackageProjectsLocationsIntegrationsVersionsRequest",
       });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           type: S.optional(S.String),
-          integrationVersion: S.optional(__S(136, __c17, 0)),
-          integrationConfig: S.optional(__S(46, __c5, 6)),
+          integrationVersion: S.optional(__S(383, __c11, 31)),
+          integrationConfig: S.optional(__S(128, __c4, 0)),
         }),
       ).annotate({
         identifier: "GoogleCloudIntegrationsV1alphaFile",
       });
-    case 7:
-      return S.Array(__S(182, __c22, 6));
-  }
-}
-function __c23(j: number): any {
-  switch (j) {
-    case 0:
+    case 2:
+      return S.Array(__S(2689, __c84, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          files: S.optional(__S(183, __c22, 7)),
+          files: S.optional(__S(2690, __c84, 2)),
         }),
       ).annotate({
         identifier: "GoogleCloudIntegrationsV1alphaDownloadJsonPackageResponse",
       });
-    case 1:
+  }
+}
+function __c85(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c86(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -10039,7 +10643,11 @@ function __c23(j: number): any {
       ).annotate({
         identifier: "DownloadProjectsLocationsIntegrationsExecutionsRequest",
       });
-    case 2:
+  }
+}
+function __c87(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           content: S.optional(S.String),
@@ -10047,12 +10655,16 @@ function __c23(j: number): any {
       ).annotate({
         identifier: "GoogleCloudIntegrationsV1alphaDownloadExecutionResponse",
       });
-    case 3:
+  }
+}
+function __c88(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           fileFormat: S.optional(S.String.pipe(T.Query())),
           name: S.String.pipe(T.Label()),
-          files: S.optional(__S(159, __c19, 7).pipe(T.Query())),
+          files: S.optional(__S(2112, __c66, 0).pipe(T.Query())),
         }).pipe(
           T.Http({
             method: "GET",
@@ -10063,7 +10675,11 @@ function __c23(j: number): any {
       ).annotate({
         identifier: "DownloadProjectsLocationsIntegrationsVersionsRequest",
       });
-    case 4:
+  }
+}
+function __c89(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           content: S.optional(S.String),
@@ -10072,18 +10688,22 @@ function __c23(j: number): any {
       ).annotate({
         identifier: "GoogleCloudIntegrationsV1alphaSerializedFile",
       });
-    case 5:
-      return S.Array(__S(188, __c23, 4));
-    case 6:
+    case 1:
+      return S.Array(__S(2848, __c89, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          files: S.optional(__S(189, __c23, 5)),
+          files: S.optional(__S(2849, __c89, 1)),
           content: S.optional(S.String),
         }),
       ).annotate({
         identifier: "GoogleCloudIntegrationsV1alphaDownloadIntegrationVersionResponse",
       });
-    case 7:
+  }
+}
+function __c90(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -10100,7 +10720,7 @@ function __c23(j: number): any {
       });
   }
 }
-function __c24(j: number): any {
+function __c91(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -10116,12 +10736,51 @@ function __c24(j: number): any {
       ).annotate({
         identifier: "DownloadProjectsLocationsProductsIntegrationsExecutionsRequest",
       });
+  }
+}
+function __c92(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          cancelReason: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudIntegrationsV1alphaCancelExecutionRequest",
+      });
     case 1:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
+          body: S.optional(__S(2944, __c92, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/{+name}:cancel",
+            baseUrl: "https://integrations.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "CancelProjectsLocationsIntegrationsExecutionsRequest",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          isCanceled: S.optional(S.Boolean),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudIntegrationsV1alphaCancelExecutionResponse",
+      });
+  }
+}
+function __c93(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
           fileFormat: S.optional(S.String.pipe(T.Query())),
-          files: S.optional(__S(180, __c22, 4).pipe(T.Query())),
+          files: S.optional(__S(2720, __c85, 0).pipe(T.Query())),
         }).pipe(
           T.Http({
             method: "GET",
@@ -10132,7 +10791,11 @@ function __c24(j: number): any {
       ).annotate({
         identifier: "DownloadProjectsLocationsProductsIntegrationsVersionsRequest",
       });
-    case 2:
+  }
+}
+function __c94(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           fileFormat: S.optional(S.String.pipe(T.Query())),
@@ -10147,7 +10810,11 @@ function __c24(j: number): any {
       ).annotate({
         identifier: "DownloadProjectsLocationsTemplatesRequest",
       });
-    case 3:
+  }
+}
+function __c95(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({}).pipe(
           T.Http({
@@ -10159,15 +10826,19 @@ function __c24(j: number): any {
       ).annotate({
         identifier: "EnumerateConnectorPlatformRegionsRequest",
       });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          regions: S.optional(__S(11, __c1, 3)),
+          regions: S.optional(__S(4320, __c135, 0)),
         }),
       ).annotate({
         identifier: "GoogleCloudIntegrationsV1alphaEnumerateConnectorPlatformRegionsResponse",
       });
-    case 5:
+  }
+}
+function __c96(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           triggerId: S.optional(S.String.pipe(T.Query())),
@@ -10182,7 +10853,7 @@ function __c24(j: number): any {
       ).annotate({
         identifier: "ExecuteEventProjectsLocationsIntegrationsRequest",
       });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           executionId: S.optional(S.String),
@@ -10190,31 +10861,15 @@ function __c24(j: number): any {
       ).annotate({
         identifier: "GoogleCloudIntegrationsV1alphaExecuteEventResponse",
       });
-    case 7:
-      return S.Record(S.String, __S(19, __c2, 3));
   }
 }
-function __c25(j: number): any {
+function __c97(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          parameters: S.optional(__S(119, __c14, 7)),
-          triggerId: S.optional(S.String),
-          executionId: S.optional(S.String),
-          inputParameters: S.optional(__S(199, __c24, 7)),
-          parameterEntries: S.optional(__S(118, __c14, 6)),
-          requestId: S.optional(S.String),
-          doNotPropagateError: S.optional(S.Boolean),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudIntegrationsV1alphaExecuteIntegrationsRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(200, __c25, 0).pipe(T.HttpBody())),
+          body: S.optional(__S(3136, __c98, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -10225,24 +10880,52 @@ function __c25(j: number): any {
       ).annotate({
         identifier: "ExecuteProjectsLocationsIntegrationsRequest",
       });
-    case 2:
+  }
+}
+function __c98(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          parameters: S.optional(__S(199, __c24, 7)),
-          executionFailed: S.optional(S.Boolean),
-          eventParameters: S.optional(__S(119, __c14, 7)),
-          outputParameters: S.optional(__S(46, __c5, 6)),
+          parameters: S.optional(__S(224, __c7, 0)),
+          triggerId: S.optional(S.String),
           executionId: S.optional(S.String),
-          parameterEntries: S.optional(__S(118, __c14, 6)),
+          inputParameters: S.optional(__S(3168, __c99, 0)),
+          parameterEntries: S.optional(__S(194, __c6, 2)),
+          requestId: S.optional(S.String),
+          doNotPropagateError: S.optional(S.Boolean),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudIntegrationsV1alphaExecuteIntegrationsRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          parameters: S.optional(__S(3168, __c99, 0)),
+          executionFailed: S.optional(S.Boolean),
+          eventParameters: S.optional(__S(224, __c7, 0)),
+          outputParameters: S.optional(__S(128, __c4, 0)),
+          executionId: S.optional(S.String),
+          parameterEntries: S.optional(__S(194, __c6, 2)),
         }),
       ).annotate({
         identifier: "GoogleCloudIntegrationsV1alphaExecuteIntegrationsResponse",
       });
-    case 3:
+  }
+}
+function __c99(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, __S(4384, __c137, 0));
+  }
+}
+function __c100(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(178, __c22, 2).pipe(T.HttpBody())),
+          body: S.optional(__S(2656, __c83, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -10253,11 +10936,25 @@ function __c25(j: number): any {
       ).annotate({
         identifier: "ExecuteProjectsLocationsIntegrationsVersionsTestCasesRequest",
       });
-    case 4:
+    case 1:
+      return S.Array(__S(3234, __c101, 2));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          executeTestCaseResponses: S.optional(__S(3201, __c100, 1)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudIntegrationsV1alphaExecuteTestCasesResponse",
+      });
+  }
+}
+function __c101(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           status: S.optional(S.String),
-          assertion: S.optional(__S(140, __c17, 4)),
+          assertion: S.optional(__S(800, __c25, 0)),
           failureMessage: S.optional(S.String),
           taskNumber: S.optional(S.String),
           taskName: S.optional(S.String),
@@ -10265,38 +10962,28 @@ function __c25(j: number): any {
       ).annotate({
         identifier: "GoogleCloudIntegrationsV1alphaAssertionResult",
       });
-    case 5:
-      return S.Array(__S(204, __c25, 4));
-    case 6:
+    case 1:
+      return S.Array(__S(3232, __c101, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           testExecutionState: S.optional(S.String),
-          assertionResults: S.optional(__S(205, __c25, 5)),
+          assertionResults: S.optional(__S(3233, __c101, 1)),
           executionId: S.optional(S.String),
-          outputParameters: S.optional(__S(46, __c5, 6)),
+          outputParameters: S.optional(__S(128, __c4, 0)),
         }),
       ).annotate({
         identifier: "GoogleCloudIntegrationsV1alphaExecuteTestCaseResponse",
       });
-    case 7:
-      return S.Array(__S(206, __c25, 6));
   }
 }
-function __c26(j: number): any {
+function __c102(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          executeTestCaseResponses: S.optional(__S(207, __c25, 7)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudIntegrationsV1alphaExecuteTestCasesResponse",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(200, __c25, 0).pipe(T.HttpBody())),
+          body: S.optional(__S(3136, __c98, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -10307,19 +10994,23 @@ function __c26(j: number): any {
       ).annotate({
         identifier: "ExecuteProjectsLocationsProductsIntegrationsRequest",
       });
-    case 2:
+  }
+}
+function __c103(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          inputParameters: S.optional(__S(199, __c24, 7)),
+          inputParameters: S.optional(__S(3168, __c99, 0)),
         }),
       ).annotate({
         identifier: "GoogleCloudIntegrationsV1alphaExecuteTestCaseRequest",
       });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           testCaseName: S.String.pipe(T.Label()),
-          body: S.optional(__S(210, __c26, 2).pipe(T.HttpBody())),
+          body: S.optional(__S(3296, __c103, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -10330,31 +11021,35 @@ function __c26(j: number): any {
       ).annotate({
         identifier: "ExecuteTestProjectsLocationsIntegrationsVersionsTestCasesRequest",
       });
-    case 4:
+  }
+}
+function __c104(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           integrationResource: S.optional(S.String),
-          triggerId: S.optional(__S(11, __c1, 3)),
+          triggerId: S.optional(__S(4320, __c135, 0)),
         }),
       ).annotate({
         identifier: "GoogleCloudIntegrationsV1alphaApiTriggerResource",
       });
-    case 5:
-      return S.Array(__S(212, __c26, 4));
-    case 6:
+    case 1:
+      return S.Array(__S(3328, __c104, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          apiTriggerResources: S.optional(__S(213, __c26, 5)),
+          apiTriggerResources: S.optional(__S(3329, __c104, 1)),
           fileFormat: S.optional(S.String),
         }),
       ).annotate({
         identifier: "GoogleCloudIntegrationsV1alphaGenerateOpenApiSpecRequest",
       });
-    case 7:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(214, __c26, 6).pipe(T.HttpBody())),
+          body: S.optional(__S(3330, __c104, 2).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -10365,11 +11060,7 @@ function __c26(j: number): any {
       ).annotate({
         identifier: "GenerateOpenApiSpecProjectsLocationsRequest",
       });
-  }
-}
-function __c27(j: number): any {
-  switch (j) {
-    case 0:
+    case 4:
       return S.suspend(() =>
         S.Struct({
           openApiSpec: S.optional(S.String),
@@ -10377,7 +11068,11 @@ function __c27(j: number): any {
       ).annotate({
         identifier: "GoogleCloudIntegrationsV1alphaGenerateOpenApiSpecResponse",
       });
-    case 1:
+  }
+}
+function __c105(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           redirectUri: S.optional(S.String.pipe(T.Query())),
@@ -10395,7 +11090,7 @@ function __c27(j: number): any {
       ).annotate({
         identifier: "GenerateTokenCallbackRequest",
       });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           message: S.optional(S.String),
@@ -10403,7 +11098,80 @@ function __c27(j: number): any {
       ).annotate({
         identifier: "GoogleCloudIntegrationsV1alphaGenerateTokenResponse",
       });
-    case 3:
+  }
+}
+function __c106(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          customerConfig: S.optional(__S(3424, __c107, 0)),
+          updateMask: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudIntegrationsV1alphaChangeCustomerConfigRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          parent: S.String.pipe(T.Label()),
+          body: S.optional(__S(3392, __c106, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/{+parent}/clients:changeConfig",
+            baseUrl: "https://integrations.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "ChangeConfigProjectsLocationsClientsRequest",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          customerConfig: S.optional(__S(3424, __c107, 0)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudIntegrationsV1alphaChangeCustomerConfigResponse",
+      });
+  }
+}
+function __c107(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          enableHttpCall: S.optional(S.Boolean),
+          runAsServiceAccount: S.optional(S.String),
+          enableManagedAiFeatures: S.optional(S.Boolean),
+          cloudKmsConfig: S.optional(__S(3456, __c108, 0)),
+          enableVariableMasking: S.optional(S.Boolean),
+          enableEucHardenedFlow: S.optional(S.Boolean),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudIntegrationsV1alphaCustomerConfig",
+      });
+  }
+}
+function __c108(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          key: S.optional(S.String),
+          kmsLocation: S.optional(S.String),
+          kmsProjectId: S.optional(S.String),
+          keyVersion: S.optional(S.String),
+          kmsRing: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudIntegrationsV1alphaCloudKmsConfig",
+      });
+  }
+}
+function __c109(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
@@ -10417,25 +11185,29 @@ function __c27(j: number): any {
       ).annotate({
         identifier: "GetClientmetadataProjectsRequest",
       });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           ipEnablementState: S.optional(S.String),
           billingType: S.optional(S.String),
-          provisionedRegions: S.optional(__S(11, __c1, 3)),
+          provisionedRegions: S.optional(__S(4320, __c135, 0)),
         }),
       ).annotate({
         identifier: "GoogleCloudIntegrationsV1alphaProjectProperties",
       });
-    case 5:
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          properties: S.optional(__S(220, __c27, 4)),
+          properties: S.optional(__S(3489, __c109, 1)),
         }),
       ).annotate({
         identifier: "GoogleCloudIntegrationsV1alphaGetClientMetadataResponse",
       });
-    case 6:
+  }
+}
+function __c110(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
@@ -10449,7 +11221,7 @@ function __c27(j: number): any {
       ).annotate({
         identifier: "GetClientsProjectsLocationsRequest",
       });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
@@ -10462,29 +11234,29 @@ function __c27(j: number): any {
           description: S.optional(S.String),
           billingType: S.optional(S.String),
           enableManagedAiFeatures: S.optional(S.Boolean),
-          customerConfig: S.optional(__S(4, __c0, 4)),
+          customerConfig: S.optional(__S(3424, __c107, 0)),
           enableHttpCall: S.optional(S.Boolean),
           runAsServiceAccount: S.optional(S.String),
-          cloudKmsConfig: S.optional(__S(3, __c0, 3)),
+          cloudKmsConfig: S.optional(__S(3456, __c108, 0)),
           isGmek: S.optional(S.Boolean),
           p4ServiceAccount: S.optional(S.String),
         }),
       ).annotate({
         identifier: "GoogleCloudIntegrationsV1alphaClientConfig",
       });
-  }
-}
-function __c28(j: number): any {
-  switch (j) {
-    case 0:
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          client: S.optional(__S(223, __c27, 7)),
+          client: S.optional(__S(3521, __c110, 1)),
         }),
       ).annotate({
         identifier: "GoogleCloudIntegrationsV1alphaGetClientResponse",
       });
-    case 1:
+  }
+}
+function __c111(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -10498,16 +11270,20 @@ function __c28(j: number): any {
       ).annotate({
         identifier: "GetConnectionSchemaMetadataProjectsLocationsConnectionsRequest",
       });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          entities: S.optional(__S(11, __c1, 3)),
-          actions: S.optional(__S(11, __c1, 3)),
+          entities: S.optional(__S(4320, __c135, 0)),
+          actions: S.optional(__S(4320, __c135, 0)),
         }),
       ).annotate({
         identifier: "GoogleCloudIntegrationsV1alphaConnectionSchemaMetadata",
       });
-    case 3:
+  }
+}
+function __c112(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -10521,7 +11297,11 @@ function __c28(j: number): any {
       ).annotate({
         identifier: "GetProjectsLocationsAuthConfigsRequest",
       });
-    case 4:
+  }
+}
+function __c113(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -10535,7 +11315,11 @@ function __c28(j: number): any {
       ).annotate({
         identifier: "GetProjectsLocationsCertificatesRequest",
       });
-    case 5:
+  }
+}
+function __c114(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -10549,40 +11333,40 @@ function __c28(j: number): any {
       ).annotate({
         identifier: "GetProjectsLocationsIntegrationsExecutionsRequest",
       });
-    case 6:
-      return S.Array(S.suspend(() => __S(252, __c31, 4)));
-    case 7:
+  }
+}
+function __c115(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.suspend(() => __S(3702, __c115, 22)));
+    case 1:
       return S.suspend(() =>
         S.Struct({
           originalExecutionInfoId: S.optional(S.String),
           replayMode: S.optional(S.String),
-          replayedExecutionInfoIds: S.optional(__S(11, __c1, 3)),
+          replayedExecutionInfoIds: S.optional(__S(4320, __c135, 0)),
           replayReason: S.optional(S.String),
         }),
       ).annotate({
         identifier: "GoogleCloudIntegrationsV1alphaExecutionReplayInfo",
       });
-  }
-}
-function __c29(j: number): any {
-  switch (j) {
-    case 0:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           integrationName: S.optional(S.String),
           eventAttemptNum: S.optional(S.Number),
           taskNumber: S.optional(S.String),
-          ancestorIterationNumbers: S.optional(__S(11, __c1, 3)),
+          ancestorIterationNumbers: S.optional(__S(4320, __c135, 0)),
           taskName: S.optional(S.String),
           taskLabel: S.optional(S.String),
-          ancestorTaskNumbers: S.optional(__S(11, __c1, 3)),
+          ancestorTaskNumbers: S.optional(__S(4320, __c135, 0)),
           taskAttemptNum: S.optional(S.Number),
         }),
       ).annotate({
         identifier:
           "EnterpriseCrmEventbusProtoEventExecutionSnapshotEventExecutionSnapshotMetadata",
       });
-    case 1:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           currentTaskNumber: S.optional(S.String),
@@ -10592,9 +11376,9 @@ function __c29(j: number): any {
       ).annotate({
         identifier: "EnterpriseCrmEventbusProtoConditionResult",
       });
-    case 2:
-      return S.Array(__S(233, __c29, 1));
-    case 3:
+    case 4:
+      return S.Array(__S(3683, __c115, 3));
+    case 5:
       return S.suspend(() =>
         S.Struct({
           startTime: S.optional(S.String),
@@ -10603,31 +11387,31 @@ function __c29(j: number): any {
       ).annotate({
         identifier: "EnterpriseCrmEventbusProtoTaskExecutionDetailsTaskAttemptStats",
       });
-    case 4:
-      return S.Array(__S(235, __c29, 3));
-    case 5:
+    case 6:
+      return S.Array(__S(3685, __c115, 5));
+    case 7:
       return S.suspend(() =>
         S.Struct({
           skippedOnFailure: S.optional(S.Boolean),
           taskExecutionState: S.optional(S.String),
-          taskAttemptStats: S.optional(__S(236, __c29, 4)),
+          taskAttemptStats: S.optional(__S(3686, __c115, 6)),
           taskNumber: S.optional(S.String),
         }),
       ).annotate({
         identifier: "EnterpriseCrmEventbusProtoTaskExecutionDetails",
       });
-    case 6:
-      return S.Array(__S(237, __c29, 5));
-    case 7:
+    case 8:
+      return S.Array(__S(3687, __c115, 7));
+    case 9:
       return S.suspend(() =>
         S.Struct({
-          eventExecutionSnapshotMetadata: S.optional(__S(232, __c29, 0)),
-          conditionResults: S.optional(__S(234, __c29, 2)),
-          taskExecutionDetails: S.optional(__S(238, __c29, 6)),
+          eventExecutionSnapshotMetadata: S.optional(__S(3682, __c115, 2)),
+          conditionResults: S.optional(__S(3684, __c115, 4)),
+          taskExecutionDetails: S.optional(__S(3688, __c115, 8)),
           taskName: S.optional(S.String),
           checkpointTaskNumber: S.optional(S.String),
-          diffParams: S.optional(__S(53, __c6, 5)),
-          eventParams: S.optional(__S(53, __c6, 5)),
+          diffParams: S.optional(__S(259, __c8, 3)),
+          eventParams: S.optional(__S(259, __c8, 3)),
           eventExecutionSnapshotId: S.optional(S.String),
           snapshotTime: S.optional(S.String),
           exceedMaxSize: S.optional(S.Boolean),
@@ -10638,13 +11422,9 @@ function __c29(j: number): any {
       ).annotate({
         identifier: "EnterpriseCrmEventbusProtoEventExecutionSnapshot",
       });
-  }
-}
-function __c30(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(239, __c29, 7));
-    case 1:
+    case 10:
+      return S.Array(__S(3689, __c115, 9));
+    case 11:
       return S.suspend(() =>
         S.Struct({
           endTime: S.optional(S.String),
@@ -10653,18 +11433,18 @@ function __c30(j: number): any {
       ).annotate({
         identifier: "EnterpriseCrmEventbusProtoEventExecutionDetailsEventAttemptStats",
       });
-    case 2:
-      return S.Array(__S(241, __c30, 1));
-    case 3:
+    case 12:
+      return S.Array(__S(3691, __c115, 11));
+    case 13:
       return S.suspend(() =>
         S.Struct({
           eventExecutionState: S.optional(S.String),
           eventRetriesFromBeginningCount: S.optional(S.Number),
           networkAddress: S.optional(S.String),
           nextExecutionTime: S.optional(S.String),
-          eventExecutionSnapshot: S.optional(__S(240, __c30, 0)),
+          eventExecutionSnapshot: S.optional(__S(3690, __c115, 10)),
           eventExecutionSnapshotsSize: S.optional(S.String),
-          eventAttemptStats: S.optional(__S(242, __c30, 2)),
+          eventAttemptStats: S.optional(__S(3692, __c115, 12)),
           ryeLockUnheldCount: S.optional(S.Number),
           cancelReason: S.optional(S.String),
           logFilePath: S.optional(S.String),
@@ -10672,14 +11452,14 @@ function __c30(j: number): any {
       ).annotate({
         identifier: "EnterpriseCrmEventbusProtoEventExecutionDetails",
       });
-    case 4:
+    case 14:
       return S.suspend(() =>
         S.Struct({
           taskLabel: S.optional(S.String),
           taskAttempt: S.optional(S.Number),
-          ancestorIterationNumbers: S.optional(__S(11, __c1, 3)),
+          ancestorIterationNumbers: S.optional(__S(4320, __c135, 0)),
           executionAttempt: S.optional(S.Number),
-          ancestorTaskNumbers: S.optional(__S(11, __c1, 3)),
+          ancestorTaskNumbers: S.optional(__S(4320, __c135, 0)),
           taskNumber: S.optional(S.String),
           task: S.optional(S.String),
           integrationName: S.optional(S.String),
@@ -10687,7 +11467,7 @@ function __c30(j: number): any {
       ).annotate({
         identifier: "GoogleCloudIntegrationsV1alphaExecutionSnapshotExecutionSnapshotMetadata",
       });
-    case 5:
+    case 15:
       return S.suspend(() =>
         S.Struct({
           startTime: S.optional(S.String),
@@ -10696,73 +11476,73 @@ function __c30(j: number): any {
       ).annotate({
         identifier: "GoogleCloudIntegrationsV1alphaAttemptStats",
       });
-    case 6:
-      return S.Array(__S(245, __c30, 5));
-    case 7:
+    case 16:
+      return S.Array(__S(3695, __c115, 15));
+    case 17:
       return S.suspend(() =>
         S.Struct({
           taskExecutionState: S.optional(S.String),
-          taskAttemptStats: S.optional(__S(246, __c30, 6)),
+          taskAttemptStats: S.optional(__S(3696, __c115, 16)),
           taskNumber: S.optional(S.String),
         }),
       ).annotate({
         identifier: "GoogleCloudIntegrationsV1alphaTaskExecutionDetails",
       });
-  }
-}
-function __c31(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(247, __c30, 7));
-    case 1:
+    case 18:
+      return S.Array(__S(3697, __c115, 17));
+    case 19:
       return S.suspend(() =>
         S.Struct({
-          params: S.optional(__S(199, __c24, 7)),
+          params: S.optional(__S(3168, __c99, 0)),
           checkpointTaskNumber: S.optional(S.String),
-          executionSnapshotMetadata: S.optional(__S(244, __c30, 4)),
-          taskExecutionDetails: S.optional(__S(248, __c31, 0)),
+          executionSnapshotMetadata: S.optional(__S(3694, __c115, 14)),
+          taskExecutionDetails: S.optional(__S(3698, __c115, 18)),
         }),
       ).annotate({
         identifier: "GoogleCloudIntegrationsV1alphaExecutionSnapshot",
       });
-    case 2:
-      return S.Array(__S(249, __c31, 1));
-    case 3:
+    case 20:
+      return S.Array(__S(3699, __c115, 19));
+    case 21:
       return S.suspend(() =>
         S.Struct({
           eventExecutionSnapshotsSize: S.optional(S.String),
-          executionSnapshots: S.optional(__S(250, __c31, 2)),
-          attemptStats: S.optional(__S(246, __c30, 6)),
+          executionSnapshots: S.optional(__S(3700, __c115, 20)),
+          attemptStats: S.optional(__S(3696, __c115, 16)),
           state: S.optional(S.String),
         }),
       ).annotate({
         identifier: "GoogleCloudIntegrationsV1alphaExecutionDetails",
       });
-    case 4:
+    case 22:
       return S.suspend(() =>
         S.Struct({
           integrationVersionState: S.optional(S.String),
-          directSubExecutions: S.optional(__S(230, __c28, 6)),
-          replayInfo: S.optional(__S(231, __c28, 7)),
-          responseParams: S.optional(__S(118, __c14, 6)),
-          cloudLoggingDetails: S.optional(__S(64, __c8, 0)),
+          directSubExecutions: S.optional(__S(3680, __c115, 0)),
+          replayInfo: S.optional(__S(3681, __c115, 1)),
+          responseParams: S.optional(__S(194, __c6, 2)),
+          cloudLoggingDetails: S.optional(__S(288, __c9, 0)),
           executionMethod: S.optional(S.String),
           triggerId: S.optional(S.String),
           name: S.optional(S.String),
           updateTime: S.optional(S.String),
-          requestParameters: S.optional(__S(199, __c24, 7)),
-          responseParameters: S.optional(__S(199, __c24, 7)),
+          requestParameters: S.optional(__S(3168, __c99, 0)),
+          responseParameters: S.optional(__S(3168, __c99, 0)),
           snapshotNumber: S.optional(S.String),
-          requestParams: S.optional(__S(118, __c14, 6)),
-          eventExecutionDetails: S.optional(__S(243, __c30, 3)),
+          requestParams: S.optional(__S(194, __c6, 2)),
+          eventExecutionDetails: S.optional(__S(3693, __c115, 13)),
           createTime: S.optional(S.String),
-          executionDetails: S.optional(__S(251, __c31, 3)),
+          executionDetails: S.optional(__S(3701, __c115, 21)),
           cloudKmsKey: S.optional(S.String),
         }),
       ).annotate({
         identifier: "GoogleCloudIntegrationsV1alphaExecution",
       });
-    case 5:
+  }
+}
+function __c116(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -10776,7 +11556,11 @@ function __c31(j: number): any {
       ).annotate({
         identifier: "GetProjectsLocationsIntegrationsVersionsRequest",
       });
-    case 6:
+  }
+}
+function __c117(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -10790,7 +11574,11 @@ function __c31(j: number): any {
       ).annotate({
         identifier: "GetProjectsLocationsIntegrationsVersionsTestCasesRequest",
       });
-    case 7:
+  }
+}
+function __c118(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -10806,7 +11594,7 @@ function __c31(j: number): any {
       });
   }
 }
-function __c32(j: number): any {
+function __c119(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -10822,7 +11610,47 @@ function __c32(j: number): any {
       ).annotate({
         identifier: "GetProjectsLocationsProductsCertificatesRequest",
       });
+  }
+}
+function __c120(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          appsScriptProject: S.optional(S.String),
+          authConfigId: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudIntegrationsV1alphaCreateAppsScriptProjectRequest",
+      });
     case 1:
+      return S.suspend(() =>
+        S.Struct({
+          parent: S.String.pipe(T.Label()),
+          body: S.optional(__S(3840, __c120, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/{+parent}/appsScriptProjects",
+            baseUrl: "https://integrations.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateProjectsLocationsAppsScriptProjectsRequest",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          projectId: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudIntegrationsV1alphaCreateAppsScriptProjectResponse",
+      });
+  }
+}
+function __c121(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -10836,7 +11664,11 @@ function __c32(j: number): any {
       ).annotate({
         identifier: "GetProjectsLocationsProductsIntegrationsExecutionsRequest",
       });
-    case 2:
+  }
+}
+function __c122(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -10850,7 +11682,11 @@ function __c32(j: number): any {
       ).annotate({
         identifier: "GetProjectsLocationsProductsIntegrationsVersionsRequest",
       });
-    case 3:
+  }
+}
+function __c123(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -10864,7 +11700,11 @@ function __c32(j: number): any {
       ).annotate({
         identifier: "GetProjectsLocationsProductsSfdcInstancesRequest",
       });
-    case 4:
+  }
+}
+function __c124(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -10878,7 +11718,11 @@ function __c32(j: number): any {
       ).annotate({
         identifier: "GetProjectsLocationsProductsSfdcInstancesSfdcChannelsRequest",
       });
-    case 5:
+  }
+}
+function __c125(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -10892,7 +11736,11 @@ function __c32(j: number): any {
       ).annotate({
         identifier: "GetProjectsLocationsSfdcInstancesRequest",
       });
-    case 6:
+  }
+}
+function __c126(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -10906,7 +11754,11 @@ function __c32(j: number): any {
       ).annotate({
         identifier: "GetProjectsLocationsSfdcInstancesSfdcChannelsRequest",
       });
-    case 7:
+  }
+}
+function __c127(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -10922,7 +11774,35 @@ function __c32(j: number): any {
       });
   }
 }
-function __c33(j: number): any {
+function __c128(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subIntegrations: S.optional(__S(4129, __c129, 1)),
+          integration: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudIntegrationsV1alphaImportTemplateRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+          body: S.optional(__S(4096, __c128, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/{+name}:import",
+            baseUrl: "https://integrations.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "ImportProjectsLocationsTemplatesRequest",
+      });
+  }
+}
+function __c129(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -10934,55 +11814,31 @@ function __c33(j: number): any {
         identifier: "GoogleCloudIntegrationsV1alphaUseTemplateRequestIntegrationDetails",
       });
     case 1:
-      return S.Record(S.String, __S(264, __c33, 0));
+      return S.Record(S.String, __S(4128, __c129, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          subIntegrations: S.optional(__S(265, __c33, 1)),
-          integration: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudIntegrationsV1alphaImportTemplateRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-          body: S.optional(__S(266, __c33, 2).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/{+name}:import",
-            baseUrl: "https://integrations.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "ImportProjectsLocationsTemplatesRequest",
-      });
-    case 4:
-      return S.Array(__S(136, __c17, 0));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          subIntegrationVersions: S.optional(__S(268, __c33, 4)),
-          integrationVersion: S.optional(__S(136, __c17, 0)),
+          subIntegrationVersions: S.optional(__S(4160, __c130, 0)),
+          integrationVersion: S.optional(__S(383, __c11, 31)),
         }),
       ).annotate({
         identifier: "GoogleCloudIntegrationsV1alphaImportTemplateResponse",
       });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          suspensionResult: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudIntegrationsV1alphaLiftSuspensionRequest",
-      });
-    case 7:
+  }
+}
+function __c130(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(383, __c11, 31));
+  }
+}
+function __c131(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(270, __c33, 6).pipe(T.HttpBody())),
+          body: S.optional(__S(4224, __c132, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -10995,9 +11851,17 @@ function __c33(j: number): any {
       });
   }
 }
-function __c34(j: number): any {
+function __c132(j: number): any {
   switch (j) {
     case 0:
+      return S.suspend(() =>
+        S.Struct({
+          suspensionResult: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudIntegrationsV1alphaLiftSuspensionRequest",
+      });
+    case 1:
       return S.suspend(() =>
         S.Struct({
           eventExecutionInfoId: S.optional(S.String),
@@ -11005,11 +11869,15 @@ function __c34(j: number): any {
       ).annotate({
         identifier: "GoogleCloudIntegrationsV1alphaLiftSuspensionResponse",
       });
-    case 1:
+  }
+}
+function __c133(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(270, __c33, 6).pipe(T.HttpBody())),
+          body: S.optional(__S(4224, __c132, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -11020,7 +11888,282 @@ function __c34(j: number): any {
       ).annotate({
         identifier: "LiftProjectsLocationsProductsIntegrationsExecutionsSuspensionsRequest",
       });
+  }
+}
+function __c134(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          "clientCertificate.sslCertificate": S.optional(S.String.pipe(T.Query())),
+          "clientCertificate.passphrase": S.optional(S.String.pipe(T.Query())),
+          "clientCertificate.encryptedPrivateKey": S.optional(S.String.pipe(T.Query())),
+          parent: S.String.pipe(T.Label()),
+          body: S.optional(__S(4430, __c138, 14).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/{+parent}/authConfigs",
+            baseUrl: "https://integrations.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateProjectsLocationsAuthConfigsRequest",
+      });
+  }
+}
+function __c135(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c136(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.Boolean);
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          booleanValues: S.optional(__S(4352, __c136, 0)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudIntegrationsV1alphaBooleanParameterArray",
+      });
     case 2:
+      return S.suspend(() =>
+        S.Struct({
+          stringValues: S.optional(__S(4320, __c135, 0)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudIntegrationsV1alphaStringParameterArray",
+      });
+    case 3:
+      return S.Array(S.Number);
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          doubleValues: S.optional(__S(4355, __c136, 3)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudIntegrationsV1alphaDoubleParameterArray",
+      });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          intValues: S.optional(__S(4320, __c135, 0)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudIntegrationsV1alphaIntParameterArray",
+      });
+  }
+}
+function __c137(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          booleanValue: S.optional(S.Boolean),
+          intValue: S.optional(S.String),
+          doubleValue: S.optional(S.Number),
+          stringValue: S.optional(S.String),
+          booleanArray: S.optional(__S(4353, __c136, 1)),
+          stringArray: S.optional(__S(4354, __c136, 2)),
+          jsonValue: S.optional(S.String),
+          doubleArray: S.optional(__S(4356, __c136, 4)),
+          intArray: S.optional(__S(4357, __c136, 5)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudIntegrationsV1alphaValueType",
+      });
+  }
+}
+function __c138(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          jwtPayload: S.optional(S.String),
+          jwtHeader: S.optional(S.String),
+          secret: S.optional(S.String),
+          jwt: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudIntegrationsV1alphaJwt",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          referenceKey: S.optional(S.String),
+          literalValue: S.optional(__S(4384, __c137, 0)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudIntegrationsV1alphaParameterMapField",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          value: S.optional(__S(4417, __c138, 1)),
+          key: S.optional(__S(4417, __c138, 1)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudIntegrationsV1alphaParameterMapEntry",
+      });
+    case 3:
+      return S.Array(__S(4418, __c138, 2));
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          valueType: S.optional(S.String),
+          keyType: S.optional(S.String),
+          entries: S.optional(__S(4419, __c138, 3)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudIntegrationsV1alphaParameterMap",
+      });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          tokenType: S.optional(S.String),
+          refreshToken: S.optional(S.String),
+          accessToken: S.optional(S.String),
+          refreshTokenExpireTime: S.optional(S.String),
+          accessTokenExpireTime: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudIntegrationsV1alphaAccessToken",
+      });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          clientSecret: S.optional(S.String),
+          requestType: S.optional(S.String),
+          clientId: S.optional(S.String),
+          tokenParams: S.optional(__S(4420, __c138, 4)),
+          tokenEndpoint: S.optional(S.String),
+          accessToken: S.optional(__S(4421, __c138, 5)),
+          scope: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudIntegrationsV1alphaOAuth2ClientCredentials",
+      });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          serviceAccount: S.optional(S.String),
+          scope: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudIntegrationsV1alphaServiceAccountCredentials",
+      });
+    case 8:
+      return S.suspend(() =>
+        S.Struct({
+          username: S.optional(S.String),
+          password: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudIntegrationsV1alphaUsernameAndPassword",
+      });
+    case 9:
+      return S.suspend(() =>
+        S.Struct({
+          type: S.optional(S.String),
+          token: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudIntegrationsV1alphaAuthToken",
+      });
+    case 10:
+      return S.suspend(() =>
+        S.Struct({
+          tokenParams: S.optional(__S(4420, __c138, 4)),
+          accessToken: S.optional(__S(4421, __c138, 5)),
+          applyReauthPolicy: S.optional(S.Boolean),
+          clientSecret: S.optional(S.String),
+          authParams: S.optional(__S(4420, __c138, 4)),
+          tokenEndpoint: S.optional(S.String),
+          authEndpoint: S.optional(S.String),
+          scope: S.optional(S.String),
+          authCode: S.optional(S.String),
+          clientId: S.optional(S.String),
+          requestType: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudIntegrationsV1alphaOAuth2AuthorizationCode",
+      });
+    case 11:
+      return S.suspend(() =>
+        S.Struct({
+          audience: S.optional(S.String),
+          tokenExpireTime: S.optional(S.String),
+          token: S.optional(S.String),
+          serviceAccountEmail: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudIntegrationsV1alphaOidcToken",
+      });
+    case 12:
+      return S.suspend(() =>
+        S.Struct({
+          tokenEndpoint: S.optional(S.String),
+          clientSecret: S.optional(S.String),
+          scope: S.optional(S.String),
+          requestType: S.optional(S.String),
+          clientId: S.optional(S.String),
+          password: S.optional(S.String),
+          accessToken: S.optional(__S(4421, __c138, 5)),
+          tokenParams: S.optional(__S(4420, __c138, 4)),
+          username: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudIntegrationsV1alphaOAuth2ResourceOwnerCredentials",
+      });
+    case 13:
+      return S.suspend(() =>
+        S.Struct({
+          jwt: S.optional(__S(4416, __c138, 0)),
+          oauth2ClientCredentials: S.optional(__S(4422, __c138, 6)),
+          serviceAccountCredentials: S.optional(__S(4423, __c138, 7)),
+          usernameAndPassword: S.optional(__S(4424, __c138, 8)),
+          authToken: S.optional(__S(4425, __c138, 9)),
+          oauth2AuthorizationCode: S.optional(__S(4426, __c138, 10)),
+          oidcToken: S.optional(__S(4427, __c138, 11)),
+          oauth2ResourceOwnerCredentials: S.optional(__S(4428, __c138, 12)),
+          credentialType: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudIntegrationsV1alphaCredential",
+      });
+    case 14:
+      return S.suspend(() =>
+        S.Struct({
+          state: S.optional(S.String),
+          createTime: S.optional(S.String),
+          validTime: S.optional(S.String),
+          name: S.optional(S.String),
+          encryptedCredential: S.optional(S.String),
+          description: S.optional(S.String),
+          updateTime: S.optional(S.String),
+          expiryNotificationDuration: S.optional(__S(4320, __c135, 0)),
+          certificateId: S.optional(S.String),
+          reason: S.optional(S.String),
+          lastModifierEmail: S.optional(S.String),
+          creatorEmail: S.optional(S.String),
+          decryptedCredential: S.optional(__S(4429, __c138, 13)),
+          visibility: S.optional(S.String),
+          overrideValidTime: S.optional(S.String),
+          credentialType: S.optional(S.String),
+          displayName: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudIntegrationsV1alphaAuthConfig",
+      });
+  }
+}
+function __c139(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           scriptId: S.optional(S.String),
@@ -11028,11 +12171,11 @@ function __c34(j: number): any {
       ).annotate({
         identifier: "GoogleCloudIntegrationsV1alphaLinkAppsScriptProjectRequest",
       });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(274, __c34, 2).pipe(T.HttpBody())),
+          body: S.optional(__S(4448, __c139, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -11043,7 +12186,11 @@ function __c34(j: number): any {
       ).annotate({
         identifier: "LinkProjectsLocationsAppsScriptProjectsRequest",
       });
-    case 4:
+  }
+}
+function __c140(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           pageToken: S.optional(S.String.pipe(T.Query())),
@@ -11061,18 +12208,26 @@ function __c34(j: number): any {
       ).annotate({
         identifier: "ListProjectsLocationsAuthConfigsRequest",
       });
-    case 5:
-      return S.Array(__S(33, __c4, 1));
-    case 6:
+  }
+}
+function __c141(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(4430, __c138, 14));
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          authConfigs: S.optional(__S(277, __c34, 5)),
+          authConfigs: S.optional(__S(4512, __c141, 0)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({
         identifier: "GoogleCloudIntegrationsV1alphaListAuthConfigsResponse",
       });
-    case 7:
+  }
+}
+function __c142(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           pageToken: S.optional(S.String.pipe(T.Query())),
@@ -11092,20 +12247,24 @@ function __c34(j: number): any {
       });
   }
 }
-function __c35(j: number): any {
+function __c143(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(36, __c4, 4));
+      return S.Array(__S(5057, __c158, 1));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          certificates: S.optional(__S(280, __c35, 0)),
+          certificates: S.optional(__S(4576, __c143, 0)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({
         identifier: "GoogleCloudIntegrationsV1alphaListCertificatesResponse",
       });
-    case 2:
+  }
+}
+function __c144(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           filter: S.optional(S.String.pipe(T.Query())),
@@ -11123,7 +12282,7 @@ function __c35(j: number): any {
       ).annotate({
         identifier: "ListProjectsLocationsConnectionsRequest",
       });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           audience: S.optional(S.String),
@@ -11133,7 +12292,7 @@ function __c35(j: number): any {
       ).annotate({
         identifier: "GoogleCloudConnectorsV1AuthConfigOauth2JwtBearerJwtClaims",
       });
-    case 4:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           secretVersion: S.optional(S.String),
@@ -11141,26 +12300,26 @@ function __c35(j: number): any {
       ).annotate({
         identifier: "GoogleCloudConnectorsV1Secret",
       });
-    case 5:
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          jwtClaims: S.optional(__S(283, __c35, 3)),
-          clientKey: S.optional(__S(284, __c35, 4)),
+          jwtClaims: S.optional(__S(4609, __c144, 1)),
+          clientKey: S.optional(__S(4610, __c144, 2)),
         }),
       ).annotate({
         identifier: "GoogleCloudConnectorsV1AuthConfigOauth2JwtBearer",
       });
-    case 6:
+    case 4:
       return S.suspend(() =>
         S.Struct({
           authCode: S.optional(S.String),
-          scopes: S.optional(__S(11, __c1, 3)),
+          scopes: S.optional(__S(4320, __c135, 0)),
           redirectUri: S.optional(S.String),
         }),
       ).annotate({
         identifier: "GoogleCloudConnectorsV1AuthConfigOauth2AuthCodeFlowGoogleManaged",
       });
-    case 7:
+    case 5:
       return S.suspend(() =>
         S.Struct({
           type: S.optional(S.String),
@@ -11169,86 +12328,82 @@ function __c35(j: number): any {
       ).annotate({
         identifier: "GoogleCloudConnectorsV1EncryptionKey",
       });
-  }
-}
-function __c36(j: number): any {
-  switch (j) {
-    case 0:
+    case 6:
       return S.suspend(() =>
         S.Struct({
           intValue: S.optional(S.String),
           key: S.optional(S.String),
-          encryptionKeyValue: S.optional(__S(287, __c35, 7)),
-          secretValue: S.optional(__S(284, __c35, 4)),
+          encryptionKeyValue: S.optional(__S(4613, __c144, 5)),
+          secretValue: S.optional(__S(4610, __c144, 2)),
           stringValue: S.optional(S.String),
           boolValue: S.optional(S.Boolean),
         }),
       ).annotate({
         identifier: "GoogleCloudConnectorsV1ConfigVariable",
       });
-    case 1:
-      return S.Array(__S(288, __c36, 0));
-    case 2:
+    case 7:
+      return S.Array(__S(4614, __c144, 6));
+    case 8:
       return S.suspend(() =>
         S.Struct({
-          clientSecret: S.optional(__S(284, __c35, 4)),
+          clientSecret: S.optional(__S(4610, __c144, 2)),
           clientId: S.optional(S.String),
         }),
       ).annotate({
         identifier: "GoogleCloudConnectorsV1AuthConfigOauth2ClientCredentials",
       });
-    case 3:
+    case 9:
       return S.suspend(() =>
         S.Struct({
           username: S.optional(S.String),
-          password: S.optional(__S(284, __c35, 4)),
+          password: S.optional(__S(4610, __c144, 2)),
         }),
       ).annotate({
         identifier: "GoogleCloudConnectorsV1AuthConfigUserPassword",
       });
-    case 4:
+    case 10:
       return S.suspend(() =>
         S.Struct({
-          sshClientCertPass: S.optional(__S(284, __c35, 4)),
-          sshClientCert: S.optional(__S(284, __c35, 4)),
+          sshClientCertPass: S.optional(__S(4610, __c144, 2)),
+          sshClientCert: S.optional(__S(4610, __c144, 2)),
           certType: S.optional(S.String),
           username: S.optional(S.String),
         }),
       ).annotate({
         identifier: "GoogleCloudConnectorsV1AuthConfigSshPublicKey",
       });
-    case 5:
+    case 11:
       return S.suspend(() =>
         S.Struct({
           pkceVerifier: S.optional(S.String),
-          scopes: S.optional(__S(11, __c1, 3)),
+          scopes: S.optional(__S(4320, __c135, 0)),
           enablePkce: S.optional(S.Boolean),
           redirectUri: S.optional(S.String),
           clientId: S.optional(S.String),
-          clientSecret: S.optional(__S(284, __c35, 4)),
+          clientSecret: S.optional(__S(4610, __c144, 2)),
           authCode: S.optional(S.String),
           authUri: S.optional(S.String),
         }),
       ).annotate({
         identifier: "GoogleCloudConnectorsV1AuthConfigOauth2AuthCodeFlow",
       });
-    case 6:
+    case 12:
       return S.suspend(() =>
         S.Struct({
-          oauth2JwtBearer: S.optional(__S(285, __c35, 5)),
-          oauth2AuthCodeFlowGoogleManaged: S.optional(__S(286, __c35, 6)),
-          additionalVariables: S.optional(__S(289, __c36, 1)),
-          oauth2ClientCredentials: S.optional(__S(290, __c36, 2)),
-          userPassword: S.optional(__S(291, __c36, 3)),
-          sshPublicKey: S.optional(__S(292, __c36, 4)),
+          oauth2JwtBearer: S.optional(__S(4611, __c144, 3)),
+          oauth2AuthCodeFlowGoogleManaged: S.optional(__S(4612, __c144, 4)),
+          additionalVariables: S.optional(__S(4615, __c144, 7)),
+          oauth2ClientCredentials: S.optional(__S(4616, __c144, 8)),
+          userPassword: S.optional(__S(4617, __c144, 9)),
+          sshPublicKey: S.optional(__S(4618, __c144, 10)),
           authKey: S.optional(S.String),
-          oauth2AuthCodeFlow: S.optional(__S(293, __c36, 5)),
+          oauth2AuthCodeFlow: S.optional(__S(4619, __c144, 11)),
           authType: S.optional(S.String),
         }),
       ).annotate({
         identifier: "GoogleCloudConnectorsV1AuthConfig",
       });
-    case 7:
+    case 13:
       return S.suspend(() =>
         S.Struct({
           appendAcl: S.optional(S.Boolean),
@@ -11256,28 +12411,24 @@ function __c36(j: number): any {
       ).annotate({
         identifier: "GoogleCloudConnectorsV1EnrichmentConfig",
       });
-  }
-}
-function __c37(j: number): any {
-  switch (j) {
-    case 0:
+    case 14:
       return S.suspend(() =>
         S.Struct({
           useSsl: S.optional(S.Boolean),
           serverCertType: S.optional(S.String),
-          clientPrivateKeyPass: S.optional(__S(284, __c35, 4)),
+          clientPrivateKeyPass: S.optional(__S(4610, __c144, 2)),
           clientCertType: S.optional(S.String),
-          privateServerCertificate: S.optional(__S(284, __c35, 4)),
-          clientCertificate: S.optional(__S(284, __c35, 4)),
+          privateServerCertificate: S.optional(__S(4610, __c144, 2)),
+          clientCertificate: S.optional(__S(4610, __c144, 2)),
           trustModel: S.optional(S.String),
           type: S.optional(S.String),
-          clientPrivateKey: S.optional(__S(284, __c35, 4)),
-          additionalVariables: S.optional(__S(289, __c36, 1)),
+          clientPrivateKey: S.optional(__S(4610, __c144, 2)),
+          additionalVariables: S.optional(__S(4615, __c144, 7)),
         }),
       ).annotate({
         identifier: "GoogleCloudConnectorsV1SslConfig",
       });
-    case 1:
+    case 15:
       return S.suspend(() =>
         S.Struct({
           port: S.optional(S.Number),
@@ -11287,18 +12438,18 @@ function __c37(j: number): any {
       ).annotate({
         identifier: "GoogleCloudConnectorsV1Destination",
       });
-    case 2:
-      return S.Array(__S(297, __c37, 1));
-    case 3:
+    case 16:
+      return S.Array(__S(4623, __c144, 15));
+    case 17:
       return S.suspend(() =>
         S.Struct({
           key: S.optional(S.String),
-          destinations: S.optional(__S(298, __c37, 2)),
+          destinations: S.optional(__S(4624, __c144, 16)),
         }),
       ).annotate({
         identifier: "GoogleCloudConnectorsV1DestinationConfig",
       });
-    case 4:
+    case 18:
       return S.suspend(() =>
         S.Struct({
           topic: S.optional(S.String),
@@ -11307,28 +12458,28 @@ function __c37(j: number): any {
       ).annotate({
         identifier: "GoogleCloudConnectorsV1EventingConfigDeadLetterConfig",
       });
-    case 5:
+    case 19:
       return S.suspend(() =>
         S.Struct({
-          allowedEventTypes: S.optional(__S(11, __c1, 3)),
+          allowedEventTypes: S.optional(__S(4320, __c135, 0)),
           enrichmentEnabled: S.optional(S.Boolean),
-          privateConnectivityAllowlistedProjects: S.optional(__S(11, __c1, 3)),
-          authConfig: S.optional(__S(294, __c36, 6)),
+          privateConnectivityAllowlistedProjects: S.optional(__S(4320, __c135, 0)),
+          authConfig: S.optional(__S(4620, __c144, 12)),
           privateConnectivityEnabled: S.optional(S.Boolean),
           globalEventFilter: S.optional(S.String),
-          listenerAuthConfig: S.optional(__S(294, __c36, 6)),
-          enrichmentConfig: S.optional(__S(295, __c36, 7)),
-          sslConfig: S.optional(__S(296, __c37, 0)),
-          registrationDestinationConfig: S.optional(__S(299, __c37, 3)),
+          listenerAuthConfig: S.optional(__S(4620, __c144, 12)),
+          enrichmentConfig: S.optional(__S(4621, __c144, 13)),
+          sslConfig: S.optional(__S(4622, __c144, 14)),
+          registrationDestinationConfig: S.optional(__S(4625, __c144, 17)),
           eventsListenerIngressEndpoint: S.optional(S.String),
-          proxyDestinationConfig: S.optional(__S(299, __c37, 3)),
-          deadLetterConfig: S.optional(__S(300, __c37, 4)),
-          additionalVariables: S.optional(__S(289, __c36, 1)),
+          proxyDestinationConfig: S.optional(__S(4625, __c144, 17)),
+          deadLetterConfig: S.optional(__S(4626, __c144, 18)),
+          additionalVariables: S.optional(__S(4615, __c144, 7)),
         }),
       ).annotate({
         identifier: "GoogleCloudConnectorsV1EventingConfig",
       });
-    case 6:
+    case 20:
       return S.suspend(() =>
         S.Struct({
           minNodeCount: S.optional(S.Number),
@@ -11337,7 +12488,7 @@ function __c37(j: number): any {
       ).annotate({
         identifier: "GoogleCloudConnectorsV1NodeConfig",
       });
-    case 7:
+    case 21:
       return S.suspend(() =>
         S.Struct({
           quotaLimit: S.optional(S.String),
@@ -11346,15 +12497,11 @@ function __c37(j: number): any {
       ).annotate({
         identifier: "GoogleCloudConnectorsV1TrafficShapingConfig",
       });
-  }
-}
-function __c38(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(303, __c37, 7));
-    case 1:
-      return S.Array(__S(299, __c37, 3));
-    case 2:
+    case 22:
+      return S.Array(__S(4629, __c144, 21));
+    case 23:
+      return S.Array(__S(4625, __c144, 17));
+    case 24:
       return S.suspend(() =>
         S.Struct({
           locked: S.optional(S.Boolean),
@@ -11363,32 +12510,32 @@ function __c38(j: number): any {
       ).annotate({
         identifier: "GoogleCloudConnectorsV1LockConfig",
       });
-    case 3:
+    case 25:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           nextRefreshTime: S.optional(S.String),
           updateTime: S.optional(S.String),
-          eventSubscriptions: S.optional(__S(11, __c1, 3)),
-          additionalVariables: S.optional(__S(289, __c36, 1)),
+          eventSubscriptions: S.optional(__S(4320, __c135, 0)),
+          additionalVariables: S.optional(__S(4615, __c144, 7)),
           createTime: S.optional(S.String),
-          eventTypes: S.optional(__S(11, __c1, 3)),
+          eventTypes: S.optional(__S(4320, __c135, 0)),
           name: S.optional(S.String),
         }),
       ).annotate({
         identifier: "GoogleCloudConnectorsV1EventingRuntimeDataWebhookData",
       });
-    case 4:
-      return S.Array(__S(307, __c38, 3));
-    case 5:
+    case 26:
+      return S.Array(__S(4633, __c144, 25));
+    case 27:
       return S.suspend(() =>
         S.Struct({
-          webhookData: S.optional(__S(308, __c38, 4)),
+          webhookData: S.optional(__S(4634, __c144, 26)),
         }),
       ).annotate({
         identifier: "GoogleCloudConnectorsV1EventingRuntimeDataWebhookSubscriptions",
       });
-    case 6:
+    case 28:
       return S.suspend(() =>
         S.Struct({
           state: S.optional(S.String),
@@ -11397,23 +12544,19 @@ function __c38(j: number): any {
       ).annotate({
         identifier: "GoogleCloudConnectorsV1EventingStatus",
       });
-    case 7:
+    case 29:
       return S.suspend(() =>
         S.Struct({
-          webhookSubscriptions: S.optional(__S(309, __c38, 5)),
-          webhookData: S.optional(__S(307, __c38, 3)),
+          webhookSubscriptions: S.optional(__S(4635, __c144, 27)),
+          webhookData: S.optional(__S(4633, __c144, 25)),
           eventsListenerEndpoint: S.optional(S.String),
           eventsListenerPscSa: S.optional(S.String),
-          status: S.optional(__S(310, __c38, 6)),
+          status: S.optional(__S(4636, __c144, 28)),
         }),
       ).annotate({
         identifier: "GoogleCloudConnectorsV1EventingRuntimeData",
       });
-  }
-}
-function __c39(j: number): any {
-  switch (j) {
-    case 0:
+    case 30:
       return S.suspend(() =>
         S.Struct({
           enabled: S.optional(S.Boolean),
@@ -11422,7 +12565,7 @@ function __c39(j: number): any {
       ).annotate({
         identifier: "GoogleCloudConnectorsV1LogConfig",
       });
-    case 1:
+    case 31:
       return S.suspend(() =>
         S.Struct({
           memoryUtilizationThreshold: S.optional(S.String),
@@ -11431,7 +12574,11 @@ function __c39(j: number): any {
       ).annotate({
         identifier: "GoogleCloudConnectorsV1HPAConfig",
       });
-    case 2:
+  }
+}
+function __c145(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           cpu: S.optional(S.String),
@@ -11440,15 +12587,15 @@ function __c39(j: number): any {
       ).annotate({
         identifier: "GoogleCloudConnectorsV1ResourceLimits",
       });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           internalclientRatelimitThreshold: S.optional(S.String),
           ratelimitThreshold: S.optional(S.String),
-          hpaConfig: S.optional(__S(313, __c39, 1)),
+          hpaConfig: S.optional(__S(4639, __c144, 31)),
           tlsMigrationState: S.optional(S.String),
-          resourceLimits: S.optional(__S(314, __c39, 2)),
-          resourceRequests: S.optional(__S(314, __c39, 2)),
+          resourceLimits: S.optional(__S(4640, __c145, 0)),
+          resourceRequests: S.optional(__S(4640, __c145, 0)),
           sharedDeployment: S.optional(S.String),
           deploymentModel: S.optional(S.String),
           connectionRatelimitWindowSeconds: S.optional(S.String),
@@ -11458,7 +12605,7 @@ function __c39(j: number): any {
       ).annotate({
         identifier: "GoogleCloudConnectorsV1ConnectorVersionInfraConfig",
       });
-    case 4:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           billingCategory: S.optional(S.String),
@@ -11466,7 +12613,7 @@ function __c39(j: number): any {
       ).annotate({
         identifier: "GoogleCloudConnectorsV1BillingConfig",
       });
-    case 5:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           status: S.optional(S.String),
@@ -11476,19 +12623,19 @@ function __c39(j: number): any {
       ).annotate({
         identifier: "GoogleCloudConnectorsV1ConnectionStatus",
       });
-    case 6:
+    case 4:
       return S.suspend(() =>
         S.Struct({
-          listValues: S.optional(__S(11, __c1, 3)),
+          listValues: S.optional(__S(4320, __c135, 0)),
         }),
       ).annotate({
         identifier: "GoogleCloudConnectorsV1AdminFiltersStringListValues",
       });
-    case 7:
+    case 5:
       return S.suspend(() =>
         S.Struct({
           intValue: S.optional(S.String),
-          stringListValues: S.optional(__S(318, __c39, 6)),
+          stringListValues: S.optional(__S(4644, __c145, 4)),
           filterKey: S.optional(S.String),
           filterType: S.optional(S.String),
           stringValue: S.optional(S.String),
@@ -11496,67 +12643,67 @@ function __c39(j: number): any {
       ).annotate({
         identifier: "GoogleCloudConnectorsV1AdminFilters",
       });
-  }
-}
-function __c40(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(319, __c39, 7));
-    case 1:
+    case 6:
+      return S.Array(__S(4645, __c145, 5));
+    case 7:
       return S.suspend(() =>
         S.Struct({
-          eventingConfig: S.optional(__S(301, __c37, 5)),
-          nodeConfig: S.optional(__S(302, __c37, 6)),
-          trafficShapingConfigs: S.optional(__S(304, __c38, 0)),
+          eventingConfig: S.optional(__S(4627, __c144, 19)),
+          nodeConfig: S.optional(__S(4628, __c144, 20)),
+          trafficShapingConfigs: S.optional(__S(4630, __c144, 22)),
           createTime: S.optional(S.String),
           updateTime: S.optional(S.String),
-          authConfig: S.optional(__S(294, __c36, 6)),
+          authConfig: S.optional(__S(4620, __c144, 12)),
           subscriptionType: S.optional(S.String),
           isTrustedTester: S.optional(S.Boolean),
           envoyImageLocation: S.optional(S.String),
           imageLocation: S.optional(S.String),
-          destinationConfigs: S.optional(__S(305, __c38, 1)),
-          lockConfig: S.optional(__S(306, __c38, 2)),
+          destinationConfigs: S.optional(__S(4631, __c144, 23)),
+          lockConfig: S.optional(__S(4632, __c144, 24)),
           connectorVersionLaunchStage: S.optional(S.String),
           connectorVersion: S.optional(S.String),
           connectionRevision: S.optional(S.String),
-          eventingRuntimeData: S.optional(__S(311, __c38, 7)),
-          logConfig: S.optional(__S(312, __c39, 0)),
+          eventingRuntimeData: S.optional(__S(4637, __c144, 29)),
+          logConfig: S.optional(__S(4638, __c144, 30)),
           name: S.optional(S.String),
-          configVariables: S.optional(__S(289, __c36, 1)),
+          configVariables: S.optional(__S(4615, __c144, 7)),
           fallbackOnAdminCredentials: S.optional(S.Boolean),
-          labels: S.optional(__S(81, __c10, 1)),
+          labels: S.optional(__S(64, __c2, 0)),
           tlsServiceDirectory: S.optional(S.String),
           asyncOperationsEnabled: S.optional(S.Boolean),
           host: S.optional(S.String),
-          euaOauthAuthConfig: S.optional(__S(294, __c36, 6)),
-          connectorVersionInfraConfig: S.optional(__S(315, __c39, 3)),
+          euaOauthAuthConfig: S.optional(__S(4620, __c144, 12)),
+          connectorVersionInfraConfig: S.optional(__S(4641, __c145, 1)),
           description: S.optional(S.String),
-          billingConfig: S.optional(__S(316, __c39, 4)),
-          status: S.optional(__S(317, __c39, 5)),
+          billingConfig: S.optional(__S(4642, __c145, 2)),
+          status: S.optional(__S(4643, __c145, 3)),
           serviceDirectory: S.optional(S.String),
-          sslConfig: S.optional(__S(296, __c37, 0)),
+          sslConfig: S.optional(__S(4622, __c144, 14)),
           suspended: S.optional(S.Boolean),
           eventingEnablementType: S.optional(S.String),
           authOverrideEnabled: S.optional(S.Boolean),
           serviceAccount: S.optional(S.String),
-          adminFilters: S.optional(__S(320, __c40, 0)),
+          adminFilters: S.optional(__S(4646, __c145, 6)),
         }),
       ).annotate({
         identifier: "GoogleCloudConnectorsV1Connection",
       });
-    case 2:
-      return S.Array(__S(321, __c40, 1));
-    case 3:
+    case 8:
+      return S.Array(__S(4647, __c145, 7));
+    case 9:
       return S.suspend(() =>
         S.Struct({
-          connections: S.optional(__S(322, __c40, 2)),
+          connections: S.optional(__S(4648, __c145, 8)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({
         identifier: "GoogleCloudIntegrationsV1alphaListConnectionsResponse",
       });
-    case 4:
+  }
+}
+function __c146(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           filter: S.optional(S.String.pipe(T.Query())),
@@ -11573,7 +12720,7 @@ function __c40(j: number): any {
       ).annotate({
         identifier: "ListProjectsLocationsConnectionsRuntimeActionSchemasRequest",
       });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           inputSchema: S.optional(S.String),
@@ -11583,20 +12730,20 @@ function __c40(j: number): any {
       ).annotate({
         identifier: "GoogleCloudIntegrationsV1alphaRuntimeActionSchema",
       });
-    case 6:
-      return S.Array(__S(325, __c40, 5));
-    case 7:
+    case 2:
+      return S.Array(__S(4673, __c146, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          runtimeActionSchemas: S.optional(__S(326, __c40, 6)),
+          runtimeActionSchemas: S.optional(__S(4674, __c146, 2)),
         }),
       ).annotate({
         identifier: "GoogleCloudIntegrationsV1alphaListRuntimeActionSchemasResponse",
       });
   }
 }
-function __c41(j: number): any {
+function __c147(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -11626,17 +12773,21 @@ function __c41(j: number): any {
         identifier: "GoogleCloudIntegrationsV1alphaRuntimeEntitySchema",
       });
     case 2:
-      return S.Array(__S(329, __c41, 1));
+      return S.Array(__S(4705, __c147, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          runtimeEntitySchemas: S.optional(__S(330, __c41, 2)),
+          runtimeEntitySchemas: S.optional(__S(4706, __c147, 2)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({
         identifier: "GoogleCloudIntegrationsV1alphaListRuntimeEntitySchemasResponse",
       });
-    case 4:
+  }
+}
+function __c148(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -11654,7 +12805,11 @@ function __c41(j: number): any {
       ).annotate({
         identifier: "ListProjectsLocationsIntegrationsRequest",
       });
-    case 5:
+  }
+}
+function __c149(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
@@ -11668,12 +12823,12 @@ function __c41(j: number): any {
       ).annotate({
         identifier: "GoogleCloudIntegrationsV1alphaIntegration",
       });
-    case 6:
-      return S.Array(__S(333, __c41, 5));
-    case 7:
+    case 1:
+      return S.Array(__S(4768, __c149, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          integrations: S.optional(__S(334, __c41, 6)),
+          integrations: S.optional(__S(4769, __c149, 1)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({
@@ -11681,7 +12836,7 @@ function __c41(j: number): any {
       });
   }
 }
-function __c42(j: number): any {
+function __c150(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -11691,11 +12846,11 @@ function __c42(j: number): any {
           "filterParams.parameterPairValue": S.optional(S.String.pipe(T.Query())),
           "filterParams.parameterValue": S.optional(S.String.pipe(T.Query())),
           pageToken: S.optional(S.String.pipe(T.Query())),
-          "filterParams.taskStatuses": S.optional(__S(11, __c1, 3).pipe(T.Query())),
+          "filterParams.taskStatuses": S.optional(__S(4320, __c135, 0).pipe(T.Query())),
           pageSize: S.optional(S.Number.pipe(T.Query())),
           "filterParams.customFilter": S.optional(S.String.pipe(T.Query())),
           "filterParams.endTime": S.optional(S.String.pipe(T.Query())),
-          "filterParams.eventStatuses": S.optional(__S(11, __c1, 3).pipe(T.Query())),
+          "filterParams.eventStatuses": S.optional(__S(4320, __c135, 0).pipe(T.Query())),
           refreshAcl: S.optional(S.Boolean.pipe(T.Query())),
           truncateParams: S.optional(S.Boolean.pipe(T.Query())),
           snapshotMetadataWithoutParams: S.optional(S.Boolean.pipe(T.Query())),
@@ -11717,35 +12872,39 @@ function __c42(j: number): any {
       ).annotate({
         identifier: "ListProjectsLocationsIntegrationsExecutionsRequest",
       });
-    case 1:
+  }
+}
+function __c151(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          taskExecutionDetails: S.optional(__S(238, __c29, 6)),
-          eventExecutionSnapshotMetadata: S.optional(__S(232, __c29, 0)),
-          diffParams: S.optional(__S(119, __c14, 7)),
+          taskExecutionDetails: S.optional(__S(3688, __c115, 8)),
+          eventExecutionSnapshotMetadata: S.optional(__S(3682, __c115, 2)),
+          diffParams: S.optional(__S(224, __c7, 0)),
           eventExecutionSnapshotId: S.optional(S.String),
-          eventParams: S.optional(__S(119, __c14, 7)),
+          eventParams: S.optional(__S(224, __c7, 0)),
           snapshotTime: S.optional(S.String),
           eventExecutionInfoId: S.optional(S.String),
           taskName: S.optional(S.String),
           checkpointTaskNumber: S.optional(S.String),
-          conditionResults: S.optional(__S(234, __c29, 2)),
+          conditionResults: S.optional(__S(3684, __c115, 4)),
         }),
       ).annotate({
         identifier: "EnterpriseCrmFrontendsEventbusProtoEventExecutionSnapshot",
       });
+    case 1:
+      return S.Array(__S(4832, __c151, 0));
     case 2:
-      return S.Array(__S(337, __c42, 1));
-    case 3:
       return S.suspend(() =>
         S.Struct({
           eventExecutionState: S.optional(S.String),
           nextExecutionTime: S.optional(S.String),
           eventRetriesFromBeginningCount: S.optional(S.Number),
-          eventExecutionSnapshot: S.optional(__S(338, __c42, 2)),
+          eventExecutionSnapshot: S.optional(__S(4833, __c151, 1)),
           ryeLockUnheldCount: S.optional(S.Number),
           cancelReason: S.optional(S.String),
-          eventAttemptStats: S.optional(__S(242, __c30, 2)),
+          eventAttemptStats: S.optional(__S(3692, __c115, 12)),
           logFilePath: S.optional(S.String),
           networkAddress: S.optional(S.String),
           eventExecutionSnapshotsSize: S.optional(S.String),
@@ -11753,13 +12912,13 @@ function __c42(j: number): any {
       ).annotate({
         identifier: "EnterpriseCrmFrontendsEventbusProtoEventExecutionDetails",
       });
-    case 4:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           commonErrorCode: S.optional(S.String),
         }),
       ).annotate({ identifier: "CrmlogErrorCode" });
-    case 5:
+    case 4:
       return S.suspend(() =>
         S.Struct({
           parentEventExecutionInfoId: S.optional(S.String),
@@ -11768,7 +12927,7 @@ function __c42(j: number): any {
       ).annotate({
         identifier: "EnterpriseCrmEventbusProtoExecutionTraceInfo",
       });
-    case 6:
+    case 5:
       return S.suspend(() =>
         S.Struct({
           cloudLoggingSeverity: S.optional(S.String),
@@ -11777,76 +12936,76 @@ function __c42(j: number): any {
       ).annotate({
         identifier: "EnterpriseCrmEventbusProtoCloudLoggingDetails",
       });
-    case 7:
+    case 6:
       return S.suspend(() =>
         S.Struct({
           replayMode: S.optional(S.String),
           replayReason: S.optional(S.String),
           originalExecutionInfoId: S.optional(S.String),
-          replayedExecutionInfoIds: S.optional(__S(11, __c1, 3)),
+          replayedExecutionInfoIds: S.optional(__S(4320, __c135, 0)),
         }),
       ).annotate({
         identifier: "EnterpriseCrmFrontendsEventbusProtoEventExecutionInfoReplayInfo",
       });
-  }
-}
-function __c43(j: number): any {
-  switch (j) {
-    case 0:
+    case 7:
       return S.suspend(() =>
         S.Struct({
           severity: S.optional(S.String),
           errorMessage: S.optional(S.String),
-          errorCode: S.optional(__S(340, __c42, 4)),
+          errorCode: S.optional(__S(4835, __c151, 3)),
           taskNumber: S.optional(S.Number),
         }),
       ).annotate({
         identifier: "EnterpriseCrmEventbusProtoErrorDetail",
       });
-    case 1:
-      return S.Array(__S(344, __c43, 0));
-    case 2:
+    case 8:
+      return S.Array(__S(4839, __c151, 7));
+    case 9:
       return S.suspend(() =>
         S.Struct({
-          requestParams: S.optional(__S(119, __c14, 7)),
+          requestParams: S.optional(__S(224, __c7, 0)),
           snapshotNumber: S.optional(S.String),
           workflowRetryBackoffIntervalSeconds: S.optional(S.String),
           postMethod: S.optional(S.String),
-          eventExecutionDetails: S.optional(__S(339, __c42, 3)),
+          eventExecutionDetails: S.optional(__S(4834, __c151, 2)),
           tenant: S.optional(S.String),
           workflowId: S.optional(S.String),
           requestId: S.optional(S.String),
-          errorCode: S.optional(__S(340, __c42, 4)),
+          errorCode: S.optional(__S(4835, __c151, 3)),
           createTime: S.optional(S.String),
-          executionTraceInfo: S.optional(__S(341, __c42, 5)),
+          executionTraceInfo: S.optional(__S(4836, __c151, 4)),
           lastModifiedTime: S.optional(S.String),
-          responseParams: S.optional(__S(119, __c14, 7)),
+          responseParams: S.optional(__S(224, __c7, 0)),
           product: S.optional(S.String),
           integrationVersionUserLabel: S.optional(S.String),
-          cloudLoggingDetails: S.optional(__S(342, __c42, 6)),
+          cloudLoggingDetails: S.optional(__S(4837, __c151, 5)),
           eventExecutionInfoId: S.optional(S.String),
-          replayInfo: S.optional(__S(343, __c42, 7)),
+          replayInfo: S.optional(__S(4838, __c151, 6)),
           clientId: S.optional(S.String),
           workflowName: S.optional(S.String),
           triggerId: S.optional(S.String),
-          errors: S.optional(__S(345, __c43, 1)),
+          errors: S.optional(__S(4840, __c151, 8)),
         }),
       ).annotate({
         identifier: "EnterpriseCrmFrontendsEventbusProtoEventExecutionInfo",
       });
-    case 3:
-      return S.Array(__S(346, __c43, 2));
-    case 4:
+    case 10:
+      return S.Array(__S(4841, __c151, 9));
+    case 11:
       return S.suspend(() =>
         S.Struct({
-          executionInfos: S.optional(__S(347, __c43, 3)),
+          executionInfos: S.optional(__S(4842, __c151, 10)),
           nextPageToken: S.optional(S.String),
-          executions: S.optional(__S(230, __c28, 6)),
+          executions: S.optional(__S(3680, __c115, 0)),
         }),
       ).annotate({
         identifier: "GoogleCloudIntegrationsV1alphaListExecutionsResponse",
       });
-    case 5:
+  }
+}
+function __c152(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           orderBy: S.optional(S.String.pipe(T.Query())),
@@ -11864,7 +13023,26 @@ function __c43(j: number): any {
       ).annotate({
         identifier: "ListProjectsLocationsIntegrationsExecutionsSuspensionsRequest",
       });
-    case 6:
+  }
+}
+function __c153(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(4944, __c154, 16));
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          suspensions: S.optional(__S(4896, __c153, 0)),
+          nextPageToken: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudIntegrationsV1alphaListSuspensionsResponse",
+      });
+  }
+}
+function __c154(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           emailAddress: S.optional(S.String),
@@ -11873,24 +13051,20 @@ function __c43(j: number): any {
       ).annotate({
         identifier: "EnterpriseCrmEventbusProtoSuspensionAuthPermissionsGaiaIdentity",
       });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          gaiaIdentity: S.optional(__S(350, __c43, 6)),
+          gaiaIdentity: S.optional(__S(4928, __c154, 0)),
           mdbGroup: S.optional(S.String),
           loasRole: S.optional(S.String),
-          googleGroup: S.optional(__S(350, __c43, 6)),
+          googleGroup: S.optional(__S(4928, __c154, 0)),
         }),
       ).annotate({
         identifier: "EnterpriseCrmEventbusProtoSuspensionAuthPermissions",
       });
-  }
-}
-function __c44(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(351, __c43, 7));
-    case 1:
+    case 2:
+      return S.Array(__S(4929, __c154, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
           liftWhenExpired: S.optional(S.Boolean),
@@ -11900,7 +13074,7 @@ function __c44(j: number): any {
       ).annotate({
         identifier: "EnterpriseCrmEventbusProtoSuspensionExpiration",
       });
-    case 2:
+    case 4:
       return S.suspend(() =>
         S.Struct({
           value: S.optional(S.String),
@@ -11909,19 +13083,19 @@ function __c44(j: number): any {
       ).annotate({
         identifier: "EnterpriseCrmEventbusProtoToken",
       });
-    case 3:
-      return S.Array(__S(354, __c44, 2));
-    case 4:
+    case 5:
+      return S.Array(__S(4932, __c154, 4));
+    case 6:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
-          tokens: S.optional(__S(355, __c44, 3)),
+          tokens: S.optional(__S(4933, __c154, 5)),
           email: S.optional(S.String),
         }),
       ).annotate({
         identifier: "EnterpriseCrmEventbusProtoAddress",
       });
-    case 5:
+    case 7:
       return S.suspend(() =>
         S.Struct({
           workflowName: S.optional(S.String),
@@ -11935,22 +13109,22 @@ function __c44(j: number): any {
           workflowId: S.optional(S.String),
           scheduledTime: S.optional(S.String),
           userGeneratedExecutionId: S.optional(S.String),
-          parameters: S.optional(__S(53, __c6, 5)),
+          parameters: S.optional(__S(259, __c8, 3)),
           requestId: S.optional(S.String),
         }),
       ).annotate({
         identifier: "GoogleInternalCloudCrmEventbusV3PostToQueueWithTriggerIdRequest",
       });
-    case 6:
+    case 8:
       return S.suspend(() =>
         S.Struct({
-          postToQueueWithTriggerIdRequest: S.optional(__S(357, __c44, 5)),
+          postToQueueWithTriggerIdRequest: S.optional(__S(4935, __c154, 7)),
           suspensionInfoEventParameterKey: S.optional(S.String),
         }),
       ).annotate({
         identifier: "EnterpriseCrmEventbusProtoCustomSuspensionRequest",
       });
-    case 7:
+    case 9:
       return S.suspend(() =>
         S.Struct({
           title: S.optional(S.String),
@@ -11961,36 +13135,32 @@ function __c44(j: number): any {
       ).annotate({
         identifier: "EnterpriseCrmEventbusProtoBuganizerNotification",
       });
-  }
-}
-function __c45(j: number): any {
-  switch (j) {
-    case 0:
+    case 10:
       return S.suspend(() =>
         S.Struct({
-          emailAddress: S.optional(__S(356, __c44, 4)),
-          request: S.optional(__S(358, __c44, 6)),
+          emailAddress: S.optional(__S(4934, __c154, 6)),
+          request: S.optional(__S(4936, __c154, 8)),
           escalatorQueue: S.optional(S.String),
-          buganizerNotification: S.optional(__S(359, __c44, 7)),
+          buganizerNotification: S.optional(__S(4937, __c154, 9)),
           pubsubTopic: S.optional(S.String),
         }),
       ).annotate({
         identifier: "EnterpriseCrmEventbusProtoNotification",
       });
-    case 1:
-      return S.Array(__S(360, __c45, 0));
-    case 2:
+    case 11:
+      return S.Array(__S(4938, __c154, 10));
+    case 12:
       return S.suspend(() =>
         S.Struct({
           customMessage: S.optional(S.String),
-          whoMayResolve: S.optional(__S(352, __c44, 0)),
-          suspensionExpiration: S.optional(__S(353, __c44, 1)),
-          notifications: S.optional(__S(361, __c45, 1)),
+          whoMayResolve: S.optional(__S(4930, __c154, 2)),
+          suspensionExpiration: S.optional(__S(4931, __c154, 3)),
+          notifications: S.optional(__S(4939, __c154, 11)),
         }),
       ).annotate({
         identifier: "EnterpriseCrmEventbusProtoSuspensionConfig",
       });
-    case 3:
+    case 13:
       return S.suspend(() =>
         S.Struct({
           resolveTime: S.optional(S.String),
@@ -11999,7 +13169,7 @@ function __c45(j: number): any {
       ).annotate({
         identifier: "GoogleCloudIntegrationsV1alphaSuspensionAudit",
       });
-    case 4:
+    case 14:
       return S.suspend(() =>
         S.Struct({
           remindTime: S.optional(S.String),
@@ -12009,25 +13179,25 @@ function __c45(j: number): any {
       ).annotate({
         identifier: "GoogleCloudIntegrationsV1alphaSuspensionApprovalExpiration",
       });
-    case 5:
+    case 15:
       return S.suspend(() =>
         S.Struct({
-          expiration: S.optional(__S(364, __c45, 4)),
+          expiration: S.optional(__S(4942, __c154, 14)),
           customMessage: S.optional(S.String),
-          emailAddresses: S.optional(__S(11, __c1, 3)),
+          emailAddresses: S.optional(__S(4320, __c135, 0)),
         }),
       ).annotate({
         identifier: "GoogleCloudIntegrationsV1alphaSuspensionApprovalConfig",
       });
-    case 6:
+    case 16:
       return S.suspend(() =>
         S.Struct({
-          suspensionConfig: S.optional(__S(362, __c45, 2)),
-          audit: S.optional(__S(363, __c45, 3)),
+          suspensionConfig: S.optional(__S(4940, __c154, 12)),
+          audit: S.optional(__S(4941, __c154, 13)),
           state: S.optional(S.String),
           integration: S.optional(S.String),
           lastModifyTime: S.optional(S.String),
-          approvalConfig: S.optional(__S(365, __c45, 5)),
+          approvalConfig: S.optional(__S(4943, __c154, 15)),
           createTime: S.optional(S.String),
           name: S.optional(S.String),
           eventExecutionInfoId: S.optional(S.String),
@@ -12036,22 +13206,11 @@ function __c45(j: number): any {
       ).annotate({
         identifier: "GoogleCloudIntegrationsV1alphaSuspension",
       });
-    case 7:
-      return S.Array(__S(366, __c45, 6));
   }
 }
-function __c46(j: number): any {
+function __c155(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() =>
-        S.Struct({
-          suspensions: S.optional(__S(367, __c45, 7)),
-          nextPageToken: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudIntegrationsV1alphaListSuspensionsResponse",
-      });
-    case 1:
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
@@ -12070,17 +13229,74 @@ function __c46(j: number): any {
       ).annotate({
         identifier: "ListProjectsLocationsIntegrationsVersionsRequest",
       });
-    case 2:
+  }
+}
+function __c156(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          integrationVersions: S.optional(__S(268, __c33, 4)),
+          integrationVersions: S.optional(__S(4160, __c130, 0)),
           noPermission: S.optional(S.Boolean),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({
         identifier: "GoogleCloudIntegrationsV1alphaListIntegrationVersionsResponse",
       });
-    case 3:
+  }
+}
+function __c157(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          parent: S.String.pipe(T.Label()),
+          body: S.optional(__S(5057, __c158, 1).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/{+parent}/certificates",
+            baseUrl: "https://integrations.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateProjectsLocationsCertificatesRequest",
+      });
+  }
+}
+function __c158(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          encryptedPrivateKey: S.optional(S.String),
+          sslCertificate: S.optional(S.String),
+          passphrase: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudIntegrationsV1alphaClientCertificate",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          description: S.optional(S.String),
+          name: S.optional(S.String),
+          validStartTime: S.optional(S.String),
+          validEndTime: S.optional(S.String),
+          displayName: S.optional(S.String),
+          requestorId: S.optional(S.String),
+          rawCertificate: S.optional(__S(5056, __c158, 0)),
+          certificateStatus: S.optional(S.String),
+          credentialId: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudIntegrationsV1alphaCertificate",
+      });
+  }
+}
+function __c159(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           orderBy: S.optional(S.String.pipe(T.Query())),
@@ -12099,18 +13315,22 @@ function __c46(j: number): any {
       ).annotate({
         identifier: "ListProjectsLocationsIntegrationsVersionsTestCasesRequest",
       });
-    case 4:
-      return S.Array(__S(144, __c18, 0));
-    case 5:
+    case 1:
+      return S.Array(__S(837, __c26, 5));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          testCases: S.optional(__S(372, __c46, 4)),
+          testCases: S.optional(__S(5089, __c159, 1)),
         }),
       ).annotate({
         identifier: "GoogleCloudIntegrationsV1alphaListTestCasesResponse",
       });
-    case 6:
+  }
+}
+function __c160(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           filter: S.optional(S.String.pipe(T.Query())),
@@ -12128,7 +13348,11 @@ function __c46(j: number): any {
       ).annotate({
         identifier: "ListProjectsLocationsProductsAuthConfigsRequest",
       });
-    case 7:
+  }
+}
+function __c161(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           readMask: S.optional(S.String.pipe(T.Query())),
@@ -12148,7 +13372,7 @@ function __c46(j: number): any {
       });
   }
 }
-function __c47(j: number): any {
+function __c162(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -12168,7 +13392,11 @@ function __c47(j: number): any {
       ).annotate({
         identifier: "ListProjectsLocationsProductsIntegrationsRequest",
       });
-    case 1:
+  }
+}
+function __c163(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -12179,7 +13407,7 @@ function __c47(j: number): any {
           filter: S.optional(S.String.pipe(T.Query())),
           "filterParams.parameterPairValue": S.optional(S.String.pipe(T.Query())),
           "filterParams.parameterValue": S.optional(S.String.pipe(T.Query())),
-          "filterParams.taskStatuses": S.optional(__S(11, __c1, 3).pipe(T.Query())),
+          "filterParams.taskStatuses": S.optional(__S(4320, __c135, 0).pipe(T.Query())),
           truncateParams: S.optional(S.Boolean.pipe(T.Query())),
           "filterParams.parameterType": S.optional(S.String.pipe(T.Query())),
           "filterParams.parameterKey": S.optional(S.String.pipe(T.Query())),
@@ -12190,7 +13418,7 @@ function __c47(j: number): any {
           "filterParams.endTime": S.optional(S.String.pipe(T.Query())),
           "filterParams.parameterPairKey": S.optional(S.String.pipe(T.Query())),
           orderBy: S.optional(S.String.pipe(T.Query())),
-          "filterParams.eventStatuses": S.optional(__S(11, __c1, 3).pipe(T.Query())),
+          "filterParams.eventStatuses": S.optional(__S(4320, __c135, 0).pipe(T.Query())),
           readMask: S.optional(S.String.pipe(T.Query())),
         }).pipe(
           T.Http({
@@ -12202,7 +13430,11 @@ function __c47(j: number): any {
       ).annotate({
         identifier: "ListProjectsLocationsProductsIntegrationsExecutionsRequest",
       });
-    case 2:
+  }
+}
+function __c164(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
@@ -12220,7 +13452,11 @@ function __c47(j: number): any {
       ).annotate({
         identifier: "ListProjectsLocationsProductsIntegrationsExecutionsSuspensionsRequest",
       });
-    case 3:
+  }
+}
+function __c165(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           pageToken: S.optional(S.String.pipe(T.Query())),
@@ -12239,7 +13475,11 @@ function __c47(j: number): any {
       ).annotate({
         identifier: "ListProjectsLocationsProductsIntegrationsVersionsRequest",
       });
-    case 4:
+  }
+}
+function __c166(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           pageToken: S.optional(S.String.pipe(T.Query())),
@@ -12257,18 +13497,26 @@ function __c47(j: number): any {
       ).annotate({
         identifier: "ListProjectsLocationsProductsSfdcInstancesRequest",
       });
-    case 5:
-      return S.Array(__S(150, __c18, 6));
-    case 6:
+  }
+}
+function __c167(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(1920, __c60, 0));
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          sfdcInstances: S.optional(__S(381, __c47, 5)),
+          sfdcInstances: S.optional(__S(5344, __c167, 0)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({
         identifier: "GoogleCloudIntegrationsV1alphaListSfdcInstancesResponse",
       });
-    case 7:
+  }
+}
+function __c168(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           filter: S.optional(S.String.pipe(T.Query())),
@@ -12288,20 +13536,24 @@ function __c47(j: number): any {
       });
   }
 }
-function __c48(j: number): any {
+function __c169(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(152, __c19, 0));
+      return S.Array(__S(1984, __c62, 0));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          sfdcChannels: S.optional(__S(384, __c48, 0)),
+          sfdcChannels: S.optional(__S(5408, __c169, 0)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({
         identifier: "GoogleCloudIntegrationsV1alphaListSfdcChannelsResponse",
       });
-    case 2:
+  }
+}
+function __c170(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
@@ -12319,7 +13571,53 @@ function __c48(j: number): any {
       ).annotate({
         identifier: "ListProjectsLocationsSfdcInstancesRequest",
       });
-    case 3:
+  }
+}
+function __c171(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          parent: S.String.pipe(T.Label()),
+          body: S.optional(__S(5504, __c172, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/{+parent}/cloudFunctions",
+            baseUrl: "https://integrations.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateProjectsLocationsCloudFunctionsRequest",
+      });
+  }
+}
+function __c172(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          functionName: S.optional(S.String),
+          projectId: S.optional(S.String),
+          gcfApiVersion: S.optional(S.String),
+          functionRegion: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudIntegrationsV1alphaCreateCloudFunctionRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          triggerUrl: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudIntegrationsV1alphaCreateCloudFunctionResponse",
+      });
+  }
+}
+function __c173(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           pageToken: S.optional(S.String.pipe(T.Query())),
@@ -12337,7 +13635,11 @@ function __c48(j: number): any {
       ).annotate({
         identifier: "ListProjectsLocationsSfdcInstancesSfdcChannelsRequest",
       });
-    case 4:
+  }
+}
+function __c174(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           readMask: S.optional(S.String.pipe(T.Query())),
@@ -12356,18 +13658,26 @@ function __c48(j: number): any {
       ).annotate({
         identifier: "ListProjectsLocationsTemplatesRequest",
       });
-    case 5:
-      return S.Array(__S(162, __c20, 2));
-    case 6:
+  }
+}
+function __c175(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(2149, __c67, 5));
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          templates: S.optional(__S(389, __c48, 5)),
+          templates: S.optional(__S(5600, __c175, 0)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({
         identifier: "GoogleCloudIntegrationsV1alphaListTemplatesResponse",
       });
-    case 7:
+  }
+}
+function __c176(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -12375,7 +13685,7 @@ function __c48(j: number): any {
           "clientCertificate.encryptedPrivateKey": S.optional(S.String.pipe(T.Query())),
           updateMask: S.optional(S.String.pipe(T.Query())),
           "clientCertificate.sslCertificate": S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(33, __c4, 1).pipe(T.HttpBody())),
+          body: S.optional(__S(4430, __c138, 14).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -12388,14 +13698,14 @@ function __c48(j: number): any {
       });
   }
 }
-function __c49(j: number): any {
+function __c177(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
           updateMask: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(36, __c4, 4).pipe(T.HttpBody())),
+          body: S.optional(__S(5057, __c158, 1).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -12406,12 +13716,16 @@ function __c49(j: number): any {
       ).annotate({
         identifier: "PatchProjectsLocationsCertificatesRequest",
       });
-    case 1:
+  }
+}
+function __c178(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
           updateMask: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(136, __c17, 0).pipe(T.HttpBody())),
+          body: S.optional(__S(383, __c11, 31).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -12422,12 +13736,16 @@ function __c49(j: number): any {
       ).annotate({
         identifier: "PatchProjectsLocationsIntegrationsVersionsRequest",
       });
-    case 2:
+  }
+}
+function __c179(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
           updateMask: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(144, __c18, 0).pipe(T.HttpBody())),
+          body: S.optional(__S(837, __c26, 5).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -12438,7 +13756,11 @@ function __c49(j: number): any {
       ).annotate({
         identifier: "PatchProjectsLocationsIntegrationsVersionsTestCasesRequest",
       });
-    case 3:
+  }
+}
+function __c180(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           updateMask: S.optional(S.String.pipe(T.Query())),
@@ -12446,7 +13768,7 @@ function __c49(j: number): any {
           "clientCertificate.encryptedPrivateKey": S.optional(S.String.pipe(T.Query())),
           "clientCertificate.passphrase": S.optional(S.String.pipe(T.Query())),
           "clientCertificate.sslCertificate": S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(33, __c4, 1).pipe(T.HttpBody())),
+          body: S.optional(__S(4430, __c138, 14).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -12457,12 +13779,16 @@ function __c49(j: number): any {
       ).annotate({
         identifier: "PatchProjectsLocationsProductsAuthConfigsRequest",
       });
-    case 4:
+  }
+}
+function __c181(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           updateMask: S.optional(S.String.pipe(T.Query())),
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(36, __c4, 4).pipe(T.HttpBody())),
+          body: S.optional(__S(5057, __c158, 1).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -12473,12 +13799,16 @@ function __c49(j: number): any {
       ).annotate({
         identifier: "PatchProjectsLocationsProductsCertificatesRequest",
       });
-    case 5:
+  }
+}
+function __c182(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
           updateMask: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(136, __c17, 0).pipe(T.HttpBody())),
+          body: S.optional(__S(383, __c11, 31).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -12489,12 +13819,16 @@ function __c49(j: number): any {
       ).annotate({
         identifier: "PatchProjectsLocationsProductsIntegrationsVersionsRequest",
       });
-    case 6:
+  }
+}
+function __c183(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
           updateMask: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(150, __c18, 6).pipe(T.HttpBody())),
+          body: S.optional(__S(1920, __c60, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -12505,803 +13839,8 @@ function __c49(j: number): any {
       ).annotate({
         identifier: "PatchProjectsLocationsProductsSfdcInstancesRequest",
       });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-          updateMask: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(152, __c19, 0).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "PATCH",
-            uri: "v1/{+name}",
-            baseUrl: "https://integrations.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "PatchProjectsLocationsProductsSfdcInstancesSfdcChannelsRequest",
-      });
   }
 }
-function __c50(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-          updateMask: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(150, __c18, 6).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "PATCH",
-            uri: "v1/{+name}",
-            baseUrl: "https://integrations.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "PatchProjectsLocationsSfdcInstancesRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          updateMask: S.optional(S.String.pipe(T.Query())),
-          name: S.String.pipe(T.Label()),
-          body: S.optional(__S(152, __c19, 0).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "PATCH",
-            uri: "v1/{+name}",
-            baseUrl: "https://integrations.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "PatchProjectsLocationsSfdcInstancesSfdcChannelsRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          updateMask: S.optional(S.String.pipe(T.Query())),
-          name: S.String.pipe(T.Label()),
-          body: S.optional(__S(162, __c20, 2).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "PATCH",
-            uri: "v1/{+name}",
-            baseUrl: "https://integrations.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "PatchProjectsLocationsTemplatesRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          workflows: S.optional(__S(180, __c22, 4)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudIntegrationsV1alphaProvisionClientPostProcessorRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(403, __c50, 3).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/{+parent}/clients:provisionClientPostProcessor",
-            baseUrl: "https://integrations.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "ProvisionClientPostProcessorProjectsLocationsClientsRequest",
-      });
-    case 5:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "GoogleCloudIntegrationsV1alphaProvisionClientPostProcessorResponse",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          enableManagedAiFeatures: S.optional(S.Boolean),
-          cloudKmsConfig: S.optional(__S(3, __c0, 3)),
-          createSampleWorkflows: S.optional(S.Boolean),
-          provisionGmek: S.optional(S.Boolean),
-          skipCpProvision: S.optional(S.Boolean),
-          runAsServiceAccount: S.optional(S.String),
-          enableHttpCall: S.optional(S.Boolean),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudIntegrationsV1alphaProvisionClientRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(406, __c50, 6).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/{+parent}/clients:provision",
-            baseUrl: "https://integrations.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "ProvisionProjectsLocationsClientsRequest",
-      });
-  }
-}
-function __c51(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          configParameters: S.optional(__S(46, __c5, 6)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudIntegrationsV1alphaPublishIntegrationVersionRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-          body: S.optional(__S(408, __c51, 0).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/{+name}:publish",
-            baseUrl: "https://integrations.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "PublishProjectsLocationsIntegrationsVersionsRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-          body: S.optional(__S(408, __c51, 0).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/{+name}:publish",
-            baseUrl: "https://integrations.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "PublishProjectsLocationsProductsIntegrationsVersionsRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          runAsServiceAccount: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudIntegrationsV1alphaReplaceServiceAccountRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(411, __c51, 3).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/{+parent}/clients:replace",
-            baseUrl: "https://integrations.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "ReplaceProjectsLocationsClientsRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          replayMode: S.optional(S.String),
-          modifiedParameters: S.optional(__S(199, __c24, 7)),
-          replayReason: S.optional(S.String),
-          updateMask: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudIntegrationsV1alphaReplayExecutionRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-          body: S.optional(__S(413, __c51, 5).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/{+name}:replay",
-            baseUrl: "https://integrations.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "ReplayProjectsLocationsIntegrationsExecutionsRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          executionId: S.optional(S.String),
-          outputParameters: S.optional(__S(46, __c5, 6)),
-          replayedExecutionId: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudIntegrationsV1alphaReplayExecutionResponse",
-      });
-  }
-}
-function __c52(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          suspension: S.optional(__S(366, __c45, 6)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudIntegrationsV1alphaResolveSuspensionRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-          body: S.optional(__S(416, __c52, 0).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/{+name}:resolve",
-            baseUrl: "https://integrations.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "ResolveProjectsLocationsIntegrationsExecutionsSuspensionsRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-          body: S.optional(__S(416, __c52, 0).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/{+name}:resolve",
-            baseUrl: "https://integrations.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "ResolveProjectsLocationsProductsIntegrationsExecutionsSuspensionsRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          triggerId: S.optional(S.String),
-          parameters: S.optional(__S(53, __c6, 5)),
-          inputParameters: S.optional(__S(199, __c24, 7)),
-          userGeneratedExecutionId: S.optional(S.String),
-          parameterEntries: S.optional(__S(118, __c14, 6)),
-          requestId: S.optional(S.String),
-          scheduleTime: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudIntegrationsV1alphaScheduleIntegrationsRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-          body: S.optional(__S(419, __c52, 3).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/{+name}:schedule",
-            baseUrl: "https://integrations.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "ScheduleProjectsLocationsIntegrationsRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          executionInfoIds: S.optional(__S(11, __c1, 3)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudIntegrationsV1alphaScheduleIntegrationsResponse",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-          body: S.optional(__S(419, __c52, 3).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/{+name}:schedule",
-            baseUrl: "https://integrations.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "ScheduleProjectsLocationsProductsIntegrationsRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          parent: S.String.pipe(T.Label()),
-          pageToken: S.optional(S.String.pipe(T.Query())),
-          query: S.optional(S.String.pipe(T.Query())),
-          enableNaturalLanguageQueryUnderstanding: S.optional(S.Boolean.pipe(T.Query())),
-          pageSize: S.optional(S.Number.pipe(T.Query())),
-          filter: S.optional(S.String.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v1/{+parent}/integrations:search",
-            baseUrl: "https://integrations.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "SearchProjectsLocationsIntegrationsRequest",
-      });
-  }
-}
-function __c53(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          status: S.optional(S.String),
-          createTime: S.optional(S.String),
-          id: S.optional(S.String),
-          region: S.optional(S.String),
-          description: S.optional(S.String),
-          name: S.optional(S.String),
-          creator: S.optional(S.String),
-          version: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier:
-          "GoogleCloudIntegrationsV1alphaSearchIntegrationsResponseIntegrationSearchResult",
-      });
-    case 1:
-      return S.Array(__S(424, __c53, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          integrations: S.optional(__S(425, __c53, 1)),
-          nextPageToken: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudIntegrationsV1alphaSearchIntegrationsResponse",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          readMask: S.optional(S.String.pipe(T.Query())),
-          enableNaturalLanguageQueryUnderstanding: S.optional(S.Boolean.pipe(T.Query())),
-          parent: S.String.pipe(T.Label()),
-          pageToken: S.optional(S.String.pipe(T.Query())),
-          orderBy: S.optional(S.String.pipe(T.Query())),
-          filter: S.optional(S.String.pipe(T.Query())),
-          pageSize: S.optional(S.Number.pipe(T.Query())),
-          query: S.optional(S.String.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v1/{+parent}/templates:search",
-            baseUrl: "https://integrations.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "SearchProjectsLocationsTemplatesRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          resourceNames: S.optional(__S(11, __c1, 3)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudIntegrationsV1alphaShareTemplateRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-          body: S.optional(__S(428, __c53, 4).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/{+name}:share",
-            baseUrl: "https://integrations.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "ShareProjectsLocationsTemplatesRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          cloudKmsConfig: S.optional(__S(3, __c0, 3)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudIntegrationsV1alphaSwitchEncryptionRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(430, __c53, 6).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/{+parent}/clients:switch",
-            baseUrl: "https://integrations.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "SwitchProjectsLocationsClientsRequest",
-      });
-  }
-}
-function __c54(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          enableVariableMasking: S.optional(S.Boolean),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudIntegrationsV1alphaSwitchVariableMaskingRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(432, __c54, 0).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/{+parent}/clients:switchVariableMasking",
-            baseUrl: "https://integrations.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "SwitchVariableMaskingProjectsLocationsClientsRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-          body: S.optional(__S(178, __c22, 2).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/{+name}:takeoverEditLock",
-            baseUrl: "https://integrations.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "TakeoverEditLockProjectsLocationsIntegrationsVersionsTestCasesRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          integrationVersion: S.String.pipe(T.Label()),
-          body: S.optional(__S(178, __c22, 2).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/{+integrationVersion}:takeoverEditLock",
-            baseUrl: "https://integrations.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "TakeoverEditLockProjectsLocationsProductsIntegrationsVersionsRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          integrationVersion: S.optional(__S(136, __c17, 0)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudIntegrationsV1alphaTakeoverEditLockResponse",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          configParameters: S.optional(__S(46, __c5, 6)),
-          integrationVersion: S.optional(__S(136, __c17, 0)),
-          triggerId: S.optional(S.String),
-          clientId: S.optional(S.String),
-          credentialMode: S.optional(S.String),
-          testMode: S.optional(S.Boolean),
-          asyncExecution: S.optional(S.Boolean),
-          deadlineSecondsTime: S.optional(S.String),
-          inputParameters: S.optional(__S(199, __c24, 7)),
-          parameters: S.optional(__S(119, __c14, 7)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudIntegrationsV1alphaTestIntegrationsRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-          body: S.optional(__S(437, __c54, 5).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/{+name}:test",
-            baseUrl: "https://integrations.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "TestProjectsLocationsIntegrationsRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          parameterEntries: S.optional(__S(118, __c14, 6)),
-          credentialMode: S.optional(S.String),
-          executionId: S.optional(S.String),
-          eventParameters: S.optional(__S(119, __c14, 7)),
-          eucHardeningDisposition: S.optional(S.String),
-          executionFailed: S.optional(S.Boolean),
-          hardenedPaths: S.optional(__S(180, __c22, 4)),
-          parameters: S.optional(__S(199, __c24, 7)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudIntegrationsV1alphaTestIntegrationsResponse",
-      });
-  }
-}
-function __c55(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-          body: S.optional(__S(437, __c54, 5).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/{+name}:test",
-            baseUrl: "https://integrations.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "TestProjectsLocationsIntegrationsVersionsRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-          body: S.optional(__S(437, __c54, 5).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/{+name}:test",
-            baseUrl: "https://integrations.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "TestProjectsLocationsProductsIntegrationsRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          enableHttpCall: S.optional(S.Boolean),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudIntegrationsV1alphaToggleHttpRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(442, __c55, 2).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/{+parent}/clients:toggleHttp",
-            baseUrl: "https://integrations.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "ToggleHttpProjectsLocationsClientsRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-          body: S.optional(__S(178, __c22, 2).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/{+name}:unpublish",
-            baseUrl: "https://integrations.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "UnpublishProjectsLocationsIntegrationsVersionsRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-          body: S.optional(__S(178, __c22, 2).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/{+name}:unpublish",
-            baseUrl: "https://integrations.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "UnpublishProjectsLocationsProductsIntegrationsVersionsRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-          body: S.optional(__S(428, __c53, 4).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/{+name}:unshare",
-            baseUrl: "https://integrations.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "UnshareProjectsLocationsTemplatesRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          content: S.optional(S.String),
-          fileFormat: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudIntegrationsV1alphaUploadIntegrationVersionRequest",
-      });
-  }
-}
-function __c56(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(447, __c55, 7).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/{+parent}/versions:upload",
-            baseUrl: "https://integrations.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "UploadProjectsLocationsIntegrationsVersionsRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          integrationVersion: S.optional(__S(136, __c17, 0)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudIntegrationsV1alphaUploadIntegrationVersionResponse",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          fileFormat: S.optional(S.String),
-          content: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudIntegrationsV1alphaUploadTestCaseRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(450, __c56, 2).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/{+parent}/testCases:upload",
-            baseUrl: "https://integrations.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "UploadProjectsLocationsIntegrationsVersionsTestCasesRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          testCase: S.optional(__S(144, __c18, 0)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudIntegrationsV1alphaUploadTestCaseResponse",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(447, __c55, 7).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/{+parent}/versions:upload",
-            baseUrl: "https://integrations.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "UploadProjectsLocationsProductsIntegrationsVersionsRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          content: S.optional(S.String),
-          fileFormat: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudIntegrationsV1alphaUploadTemplateRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(454, __c56, 6).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/{+parent}/templates:upload",
-            baseUrl: "https://integrations.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "UploadProjectsLocationsTemplatesRequest",
-      });
-  }
-}
-function __c57(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          template: S.optional(__S(162, __c20, 2)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudIntegrationsV1alphaUploadTemplateResponse",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          subIntegrations: S.optional(__S(265, __c33, 1)),
-          integrationDetails: S.optional(__S(264, __c33, 0)),
-          integrationRegion: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudIntegrationsV1alphaUseTemplateRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-          body: S.optional(__S(457, __c57, 1).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/{+name}:use",
-            baseUrl: "https://integrations.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "UseProjectsLocationsTemplatesRequest",
-      });
-  }
-}
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

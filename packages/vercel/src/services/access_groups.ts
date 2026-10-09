@@ -433,8 +433,8 @@ export const createAccessGroup: API.OperationMethod<
   CreateAccessGroupError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3, __c0, 3) as any as S.Schema<CreateAccessGroupRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<CreateAccessGroupResponse>,
+  input: __S(32, __c4, 0) as any as S.Schema<CreateAccessGroupRequest>,
+  output: __S(33, __c4, 1) as any as S.Schema<CreateAccessGroupResponse>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -448,8 +448,8 @@ export const createAccessGroupProject: API.OperationMethod<
   CreateAccessGroupProjectError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(6, __c0, 6) as any as S.Schema<CreateAccessGroupProjectRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<CreateAccessGroupProjectResponse>,
+  input: __S(56, __c7, 0) as any as S.Schema<CreateAccessGroupProjectRequest>,
+  output: __S(64, __c8, 0) as any as S.Schema<CreateAccessGroupProjectResponse>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -463,8 +463,8 @@ export const deleteAccessGroup: API.OperationMethod<
   DeleteAccessGroupError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(8, __c1, 0) as any as S.Schema<DeleteAccessGroupRequest>,
-  output: __S(9, __c1, 1) as any as S.Schema<DeleteAccessGroupResponse>,
+  input: __S(72, __c9, 0) as any as S.Schema<DeleteAccessGroupRequest>,
+  output: __S(73, __c9, 1) as any as S.Schema<DeleteAccessGroupResponse>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -478,8 +478,8 @@ export const deleteAccessGroupProject: API.OperationMethod<
   DeleteAccessGroupProjectError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(10, __c1, 2) as any as S.Schema<DeleteAccessGroupProjectRequest>,
-  output: __S(11, __c1, 3) as any as S.Schema<DeleteAccessGroupProjectResponse>,
+  input: __S(80, __c10, 0) as any as S.Schema<DeleteAccessGroupProjectRequest>,
+  output: __S(81, __c10, 1) as any as S.Schema<DeleteAccessGroupProjectResponse>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -493,8 +493,8 @@ export const listAccessGroupMembers: API.OperationMethod<
   ListAccessGroupMembersError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(12, __c1, 4) as any as S.Schema<ListAccessGroupMembersRequest>,
-  output: __S(16, __c2, 0) as any as S.Schema<ListAccessGroupMembersResponse>,
+  input: __S(88, __c11, 0) as any as S.Schema<ListAccessGroupMembersRequest>,
+  output: __S(91, __c11, 3) as any as S.Schema<ListAccessGroupMembersResponse>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -508,8 +508,8 @@ export const listAccessGroupProjects: API.OperationMethod<
   ListAccessGroupProjectsError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(17, __c2, 1) as any as S.Schema<ListAccessGroupProjectsRequest>,
-  output: __S(21, __c2, 5) as any as S.Schema<ListAccessGroupProjectsResponse>,
+  input: __S(104, __c13, 0) as any as S.Schema<ListAccessGroupProjectsRequest>,
+  output: __S(108, __c13, 4) as any as S.Schema<ListAccessGroupProjectsResponse>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -523,8 +523,8 @@ export const listAccessGroups: API.OperationMethod<
   ListAccessGroupsError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(22, __c2, 6) as any as S.Schema<ListAccessGroupsRequest>,
-  output: __S(23, __c2, 7) as any as S.Schema<ListAccessGroupsResponse>,
+  input: __S(112, __c14, 0) as any as S.Schema<ListAccessGroupsRequest>,
+  output: __S(113, __c14, 1) as any as S.Schema<ListAccessGroupsResponse>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -538,8 +538,8 @@ export const readAccessGroup: API.OperationMethod<
   ReadAccessGroupError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(24, __c3, 0) as any as S.Schema<ReadAccessGroupRequest>,
-  output: __S(25, __c3, 1) as any as S.Schema<ReadAccessGroupResponse>,
+  input: __S(0, __c0, 0) as any as S.Schema<ReadAccessGroupRequest>,
+  output: __S(1, __c0, 1) as any as S.Schema<ReadAccessGroupResponse>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -553,8 +553,8 @@ export const readAccessGroupProject: API.OperationMethod<
   ReadAccessGroupProjectError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(26, __c3, 2) as any as S.Schema<ReadAccessGroupProjectRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<ReadAccessGroupProjectResponse>,
+  input: __S(8, __c1, 0) as any as S.Schema<ReadAccessGroupProjectRequest>,
+  output: __S(64, __c8, 0) as any as S.Schema<ReadAccessGroupProjectResponse>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -568,8 +568,8 @@ export const updateAccessGroup: API.OperationMethod<
   UpdateAccessGroupError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(27, __c3, 3) as any as S.Schema<UpdateAccessGroupRequest>,
-  output: __S(28, __c3, 4) as any as S.Schema<UpdateAccessGroupResponse>,
+  input: __S(16, __c2, 0) as any as S.Schema<UpdateAccessGroupRequest>,
+  output: __S(17, __c2, 1) as any as S.Schema<UpdateAccessGroupResponse>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -583,8 +583,8 @@ export const updateAccessGroupProject: API.OperationMethod<
   UpdateAccessGroupProjectError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(29, __c3, 5) as any as S.Schema<UpdateAccessGroupProjectRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<UpdateAccessGroupProjectResponse>,
+  input: __S(24, __c3, 0) as any as S.Schema<UpdateAccessGroupProjectRequest>,
+  output: __S(64, __c8, 0) as any as S.Schema<UpdateAccessGroupProjectResponse>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -592,233 +592,6 @@ export const updateAccessGroupProject: API.OperationMethod<
 
 // Schema builders: each runs one schema initializer, on that schema's first use.
 function __c0(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          projectId: S.String,
-          role: S.NullOr(S.String),
-        }),
-      ).annotate({
-        identifier: "CreateAccessGroupRequestProjectsItem",
-      });
-    case 1:
-      return S.Array(__S(0, __c0, 0));
-    case 2:
-      return S.Array(S.String);
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          teamId: S.optional(S.String.pipe(T.Query())),
-          slug: S.optional(S.String.pipe(T.Query())),
-          name: S.String,
-          projects: S.optional(__S(1, __c0, 1)),
-          membersToAdd: S.optional(__S(2, __c0, 2)),
-        }).pipe(T.Http({ method: "POST", uri: "/v1/access-groups", code: 200 })),
-      ).annotate({ identifier: "CreateAccessGroupRequest" });
-    case 4:
-      return S.Array(S.String);
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          accessGroupId: S.String,
-          createdAt: S.String,
-          entitlements: __S(4, __c0, 4),
-          membersCount: S.Number,
-          name: S.String,
-          projectsCount: S.Number,
-          teamId: S.String,
-          teamPermissions: S.optional(__S(2, __c0, 2)),
-          teamRoles: S.optional(__S(2, __c0, 2)),
-          updatedAt: S.String,
-        }),
-      ).annotate({
-        identifier: "CreateAccessGroupResponse",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          accessGroupIdOrName: S.String.pipe(T.Label()),
-          teamId: S.optional(S.String.pipe(T.Query())),
-          slug: S.optional(S.String.pipe(T.Query())),
-          projectId: S.String,
-          role: S.String,
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/v1/access-groups/{accessGroupIdOrName}/projects",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateAccessGroupProjectRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          accessGroupId: S.String,
-          createdAt: S.String,
-          projectId: S.String,
-          role: S.String,
-          teamId: S.String,
-          updatedAt: S.String,
-        }),
-      ).annotate({
-        identifier: "CreateAccessGroupProjectResponse",
-      });
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          idOrName: S.String.pipe(T.Label()),
-          teamId: S.optional(S.String.pipe(T.Query())),
-          slug: S.optional(S.String.pipe(T.Query())),
-        }).pipe(T.Http({ method: "DELETE", uri: "/v1/access-groups/{idOrName}", code: 200 })),
-      ).annotate({ identifier: "DeleteAccessGroupRequest" });
-    case 1:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "DeleteAccessGroupResponse",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          accessGroupIdOrName: S.String.pipe(T.Label()),
-          projectId: S.String.pipe(T.Label()),
-          teamId: S.optional(S.String.pipe(T.Query())),
-          slug: S.optional(S.String.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/v1/access-groups/{accessGroupIdOrName}/projects/{projectId}",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteAccessGroupProjectRequest",
-      });
-    case 3:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "DeleteAccessGroupProjectResponse",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          idOrName: S.String.pipe(T.Label()),
-          limit: S.optional(S.Number.pipe(T.Query())),
-          next: S.optional(S.String.pipe(T.Query())),
-          search: S.optional(S.String.pipe(T.Query())),
-          teamId: S.optional(S.String.pipe(T.Query())),
-          slug: S.optional(S.String.pipe(T.Query())),
-        }).pipe(T.Http({ method: "GET", uri: "/v1/access-groups/{idOrName}/members", code: 200 })),
-      ).annotate({
-        identifier: "ListAccessGroupMembersRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          avatar: S.optional(S.String),
-          createdAt: S.optional(S.String),
-          email: S.String,
-          name: S.optional(S.String),
-          teamRole: S.String,
-          uid: S.String,
-          username: S.String,
-        }),
-      ).annotate({
-        identifier: "ListAccessGroupMembersResponseMembersItem",
-      });
-    case 6:
-      return S.Array(__S(13, __c1, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          count: S.Number,
-          next: S.NullOr(S.String),
-        }),
-      ).annotate({
-        identifier: "ListAccessGroupMembersResponsePagination",
-      });
-  }
-}
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          members: __S(14, __c1, 6),
-          pagination: __S(15, __c1, 7),
-        }),
-      ).annotate({
-        identifier: "ListAccessGroupMembersResponse",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          idOrName: S.String.pipe(T.Label()),
-          limit: S.optional(S.Number.pipe(T.Query())),
-          next: S.optional(S.String.pipe(T.Query())),
-          teamId: S.optional(S.String.pipe(T.Query())),
-          slug: S.optional(S.String.pipe(T.Query())),
-        }).pipe(T.Http({ method: "GET", uri: "/v1/access-groups/{idOrName}/projects", code: 200 })),
-      ).annotate({
-        identifier: "ListAccessGroupProjectsRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          framework: S.optional(S.NullOr(S.String)),
-          latestDeploymentId: S.optional(S.String),
-          name: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "ListAccessGroupProjectsResponseProjectsItemProject",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          createdAt: S.String,
-          project: __S(18, __c2, 2),
-          projectId: S.String,
-          role: S.String,
-          updatedAt: S.String,
-        }),
-      ).annotate({
-        identifier: "ListAccessGroupProjectsResponseProjectsItem",
-      });
-    case 4:
-      return S.Array(__S(19, __c2, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          pagination: __S(15, __c1, 7),
-          projects: __S(20, __c2, 4),
-        }),
-      ).annotate({
-        identifier: "ListAccessGroupProjectsResponse",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          projectId: S.optional(S.String.pipe(T.Query())),
-          search: S.optional(S.String.pipe(T.Query())),
-          membersLimit: S.optional(S.Number.pipe(T.Query())),
-          projectsLimit: S.optional(S.Number.pipe(T.Query())),
-          limit: S.optional(S.Number.pipe(T.Query())),
-          next: S.optional(S.String.pipe(T.Query())),
-          teamId: S.optional(S.String.pipe(T.Query())),
-          slug: S.optional(S.String.pipe(T.Query())),
-        }).pipe(T.Http({ method: "GET", uri: "/v1/access-groups", code: 200 })),
-      ).annotate({ identifier: "ListAccessGroupsRequest" });
-    case 7:
-      return S.suspend(() => S.Unknown.pipe(T.RawResponseRoot())).annotate({
-        identifier: "ListAccessGroupsResponse",
-      });
-  }
-}
-function __c3(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -833,18 +606,22 @@ function __c3(j: number): any {
         S.Struct({
           accessGroupId: S.String,
           createdAt: S.String,
-          entitlements: S.optional(__S(4, __c0, 4)),
+          entitlements: S.optional(__S(41, __c5, 1)),
           isDsyncManaged: S.Boolean,
           membersCount: S.Number,
           name: S.String,
           projectsCount: S.Number,
           teamId: S.String,
-          teamPermissions: S.optional(__S(4, __c0, 4)),
-          teamRoles: S.optional(__S(2, __c0, 2)),
+          teamPermissions: S.optional(__S(41, __c5, 1)),
+          teamRoles: S.optional(__S(40, __c5, 0)),
           updatedAt: S.String,
         }),
       ).annotate({ identifier: "ReadAccessGroupResponse" });
-    case 2:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accessGroupIdOrName: S.String.pipe(T.Label()),
@@ -861,36 +638,44 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "ReadAccessGroupProjectRequest",
       });
-    case 3:
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           idOrName: S.String.pipe(T.Label()),
           teamId: S.optional(S.String.pipe(T.Query())),
           slug: S.optional(S.String.pipe(T.Query())),
           name: S.optional(S.String),
-          projects: S.optional(__S(1, __c0, 1)),
-          membersToAdd: S.optional(__S(2, __c0, 2)),
-          membersToRemove: S.optional(__S(2, __c0, 2)),
+          projects: S.optional(__S(49, __c6, 1)),
+          membersToAdd: S.optional(__S(40, __c5, 0)),
+          membersToRemove: S.optional(__S(40, __c5, 0)),
         }).pipe(T.Http({ method: "POST", uri: "/v1/access-groups/{idOrName}", code: 200 })),
       ).annotate({ identifier: "UpdateAccessGroupRequest" });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           accessGroupId: S.String,
           createdAt: S.String,
-          entitlements: __S(4, __c0, 4),
+          entitlements: __S(41, __c5, 1),
           membersCount: S.Number,
           name: S.String,
           projectsCount: S.Number,
           teamId: S.String,
-          teamPermissions: S.optional(__S(2, __c0, 2)),
-          teamRoles: S.optional(__S(2, __c0, 2)),
+          teamPermissions: S.optional(__S(40, __c5, 0)),
+          teamRoles: S.optional(__S(40, __c5, 0)),
           updatedAt: S.String,
         }),
       ).annotate({
         identifier: "UpdateAccessGroupResponse",
       });
-    case 5:
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accessGroupIdOrName: S.String.pipe(T.Label()),
@@ -910,7 +695,265 @@ function __c3(j: number): any {
       });
   }
 }
-
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          teamId: S.optional(S.String.pipe(T.Query())),
+          slug: S.optional(S.String.pipe(T.Query())),
+          name: S.String,
+          projects: S.optional(__S(49, __c6, 1)),
+          membersToAdd: S.optional(__S(40, __c5, 0)),
+        }).pipe(T.Http({ method: "POST", uri: "/v1/access-groups", code: 200 })),
+      ).annotate({ identifier: "CreateAccessGroupRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          accessGroupId: S.String,
+          createdAt: S.String,
+          entitlements: __S(41, __c5, 1),
+          membersCount: S.Number,
+          name: S.String,
+          projectsCount: S.Number,
+          teamId: S.String,
+          teamPermissions: S.optional(__S(40, __c5, 0)),
+          teamRoles: S.optional(__S(40, __c5, 0)),
+          updatedAt: S.String,
+        }),
+      ).annotate({
+        identifier: "CreateAccessGroupResponse",
+      });
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+    case 1:
+      return S.Array(S.String);
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          projectId: S.String,
+          role: S.NullOr(S.String),
+        }),
+      ).annotate({
+        identifier: "CreateAccessGroupRequestProjectsItem",
+      });
+    case 1:
+      return S.Array(__S(48, __c6, 0));
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          accessGroupIdOrName: S.String.pipe(T.Label()),
+          teamId: S.optional(S.String.pipe(T.Query())),
+          slug: S.optional(S.String.pipe(T.Query())),
+          projectId: S.String,
+          role: S.String,
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/v1/access-groups/{accessGroupIdOrName}/projects",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateAccessGroupProjectRequest",
+      });
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          accessGroupId: S.String,
+          createdAt: S.String,
+          projectId: S.String,
+          role: S.String,
+          teamId: S.String,
+          updatedAt: S.String,
+        }),
+      ).annotate({
+        identifier: "CreateAccessGroupProjectResponse",
+      });
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          idOrName: S.String.pipe(T.Label()),
+          teamId: S.optional(S.String.pipe(T.Query())),
+          slug: S.optional(S.String.pipe(T.Query())),
+        }).pipe(T.Http({ method: "DELETE", uri: "/v1/access-groups/{idOrName}", code: 200 })),
+      ).annotate({ identifier: "DeleteAccessGroupRequest" });
+    case 1:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "DeleteAccessGroupResponse",
+      });
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          accessGroupIdOrName: S.String.pipe(T.Label()),
+          projectId: S.String.pipe(T.Label()),
+          teamId: S.optional(S.String.pipe(T.Query())),
+          slug: S.optional(S.String.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/v1/access-groups/{accessGroupIdOrName}/projects/{projectId}",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteAccessGroupProjectRequest",
+      });
+    case 1:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "DeleteAccessGroupProjectResponse",
+      });
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          idOrName: S.String.pipe(T.Label()),
+          limit: S.optional(S.Number.pipe(T.Query())),
+          next: S.optional(S.String.pipe(T.Query())),
+          search: S.optional(S.String.pipe(T.Query())),
+          teamId: S.optional(S.String.pipe(T.Query())),
+          slug: S.optional(S.String.pipe(T.Query())),
+        }).pipe(T.Http({ method: "GET", uri: "/v1/access-groups/{idOrName}/members", code: 200 })),
+      ).annotate({
+        identifier: "ListAccessGroupMembersRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          avatar: S.optional(S.String),
+          createdAt: S.optional(S.String),
+          email: S.String,
+          name: S.optional(S.String),
+          teamRole: S.String,
+          uid: S.String,
+          username: S.String,
+        }),
+      ).annotate({
+        identifier: "ListAccessGroupMembersResponseMembersItem",
+      });
+    case 2:
+      return S.Array(__S(89, __c11, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          members: __S(90, __c11, 2),
+          pagination: __S(96, __c12, 0),
+        }),
+      ).annotate({
+        identifier: "ListAccessGroupMembersResponse",
+      });
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          count: S.Number,
+          next: S.NullOr(S.String),
+        }),
+      ).annotate({
+        identifier: "ListAccessGroupMembersResponsePagination",
+      });
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          idOrName: S.String.pipe(T.Label()),
+          limit: S.optional(S.Number.pipe(T.Query())),
+          next: S.optional(S.String.pipe(T.Query())),
+          teamId: S.optional(S.String.pipe(T.Query())),
+          slug: S.optional(S.String.pipe(T.Query())),
+        }).pipe(T.Http({ method: "GET", uri: "/v1/access-groups/{idOrName}/projects", code: 200 })),
+      ).annotate({
+        identifier: "ListAccessGroupProjectsRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          framework: S.optional(S.NullOr(S.String)),
+          latestDeploymentId: S.optional(S.String),
+          name: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "ListAccessGroupProjectsResponseProjectsItemProject",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          createdAt: S.String,
+          project: __S(105, __c13, 1),
+          projectId: S.String,
+          role: S.String,
+          updatedAt: S.String,
+        }),
+      ).annotate({
+        identifier: "ListAccessGroupProjectsResponseProjectsItem",
+      });
+    case 3:
+      return S.Array(__S(106, __c13, 2));
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          pagination: __S(96, __c12, 0),
+          projects: __S(107, __c13, 3),
+        }),
+      ).annotate({
+        identifier: "ListAccessGroupProjectsResponse",
+      });
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          projectId: S.optional(S.String.pipe(T.Query())),
+          search: S.optional(S.String.pipe(T.Query())),
+          membersLimit: S.optional(S.Number.pipe(T.Query())),
+          projectsLimit: S.optional(S.Number.pipe(T.Query())),
+          limit: S.optional(S.Number.pipe(T.Query())),
+          next: S.optional(S.String.pipe(T.Query())),
+          teamId: S.optional(S.String.pipe(T.Query())),
+          slug: S.optional(S.String.pipe(T.Query())),
+        }).pipe(T.Http({ method: "GET", uri: "/v1/access-groups", code: 200 })),
+      ).annotate({ identifier: "ListAccessGroupsRequest" });
+    case 1:
+      return S.suspend(() => S.Unknown.pipe(T.RawResponseRoot())).annotate({
+        identifier: "ListAccessGroupsResponse",
+      });
+  }
+}
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

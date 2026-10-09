@@ -679,8 +679,8 @@ export const batchCreateProjectsLocationsQueuesTasks: API.OperationMethod<
   BatchCreateProjectsLocationsQueuesTasksError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(16, __c2, 0) as any as S.Schema<BatchCreateProjectsLocationsQueuesTasksRequest>,
-  output: __S(17, __c2, 1) as any as S.Schema<Operation>,
+  input: __S(338, __c21, 2) as any as S.Schema<BatchCreateProjectsLocationsQueuesTasksRequest>,
+  output: __S(352, __c22, 0) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -699,8 +699,8 @@ export const batchDeleteProjectsLocationsQueuesTasks: API.OperationMethod<
   BatchDeleteProjectsLocationsQueuesTasksError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(20, __c2, 4) as any as S.Schema<BatchDeleteProjectsLocationsQueuesTasksRequest>,
-  output: __S(17, __c2, 1) as any as S.Schema<Operation>,
+  input: __S(465, __c29, 1) as any as S.Schema<BatchDeleteProjectsLocationsQueuesTasksRequest>,
+  output: __S(352, __c22, 0) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -719,8 +719,8 @@ export const bufferProjectsLocationsQueuesTasks: API.OperationMethod<
   BufferProjectsLocationsQueuesTasksError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(23, __c2, 7) as any as S.Schema<BufferProjectsLocationsQueuesTasksRequest>,
-  output: __S(24, __c3, 0) as any as S.Schema<BufferTaskResponse>,
+  input: __S(498, __c31, 2) as any as S.Schema<BufferProjectsLocationsQueuesTasksRequest>,
+  output: __S(499, __c31, 3) as any as S.Schema<BufferTaskResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -739,8 +739,8 @@ export const createProjectsLocationsQueues: API.OperationMethod<
   CreateProjectsLocationsQueuesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(37, __c4, 5) as any as S.Schema<CreateProjectsLocationsQueuesRequest>,
-  output: __S(36, __c4, 4) as any as S.Schema<Queue>,
+  input: __S(512, __c32, 0) as any as S.Schema<CreateProjectsLocationsQueuesRequest>,
+  output: __S(539, __c33, 11) as any as S.Schema<Queue>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -759,8 +759,8 @@ export const createProjectsLocationsQueuesTasks: API.OperationMethod<
   CreateProjectsLocationsQueuesTasksError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(38, __c4, 6) as any as S.Schema<CreateProjectsLocationsQueuesTasksRequest>,
-  output: __S(12, __c1, 4) as any as S.Schema<Task>,
+  input: __S(544, __c34, 0) as any as S.Schema<CreateProjectsLocationsQueuesTasksRequest>,
+  output: __S(436, __c27, 4) as any as S.Schema<Task>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -779,8 +779,8 @@ export const deleteProjectsLocationsQueues: API.OperationMethod<
   DeleteProjectsLocationsQueuesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(39, __c4, 7) as any as S.Schema<DeleteProjectsLocationsQueuesRequest>,
-  output: __S(40, __c5, 0) as any as S.Schema<Empty>,
+  input: __S(560, __c35, 0) as any as S.Schema<DeleteProjectsLocationsQueuesRequest>,
+  output: __S(576, __c36, 0) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -799,8 +799,8 @@ export const deleteProjectsLocationsQueuesTasks: API.OperationMethod<
   DeleteProjectsLocationsQueuesTasksError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(41, __c5, 1) as any as S.Schema<DeleteProjectsLocationsQueuesTasksRequest>,
-  output: __S(40, __c5, 0) as any as S.Schema<Empty>,
+  input: __S(0, __c0, 0) as any as S.Schema<DeleteProjectsLocationsQueuesTasksRequest>,
+  output: __S(576, __c36, 0) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -814,8 +814,8 @@ export const getCmekConfigProjectsLocations: API.OperationMethod<
   GetCmekConfigProjectsLocationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(42, __c5, 2) as any as S.Schema<GetCmekConfigProjectsLocationsRequest>,
-  output: __S(43, __c5, 3) as any as S.Schema<CmekConfig>,
+  input: __S(16, __c1, 0) as any as S.Schema<GetCmekConfigProjectsLocationsRequest>,
+  output: __S(32, __c2, 0) as any as S.Schema<CmekConfig>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -834,8 +834,8 @@ export const getIamPolicyProjectsLocationsQueues: API.OperationMethod<
   GetIamPolicyProjectsLocationsQueuesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(46, __c5, 6) as any as S.Schema<GetIamPolicyProjectsLocationsQueuesRequest>,
-  output: __S(50, __c6, 2) as any as S.Schema<Policy>,
+  input: __S(50, __c3, 2) as any as S.Schema<GetIamPolicyProjectsLocationsQueuesRequest>,
+  output: __S(67, __c4, 3) as any as S.Schema<Policy>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -849,8 +849,8 @@ export const getProjectsLocations: API.OperationMethod<
   GetProjectsLocationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(51, __c6, 3) as any as S.Schema<GetProjectsLocationsRequest>,
-  output: __S(52, __c6, 4) as any as S.Schema<Location>,
+  input: __S(80, __c5, 0) as any as S.Schema<GetProjectsLocationsRequest>,
+  output: __S(96, __c6, 0) as any as S.Schema<Location>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -864,8 +864,8 @@ export const getProjectsLocationsOperations: API.OperationMethod<
   GetProjectsLocationsOperationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(53, __c6, 5) as any as S.Schema<GetProjectsLocationsOperationsRequest>,
-  output: __S(17, __c2, 1) as any as S.Schema<Operation>,
+  input: __S(112, __c7, 0) as any as S.Schema<GetProjectsLocationsOperationsRequest>,
+  output: __S(352, __c22, 0) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -879,8 +879,8 @@ export const getProjectsLocationsQueues: API.OperationMethod<
   GetProjectsLocationsQueuesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(54, __c6, 6) as any as S.Schema<GetProjectsLocationsQueuesRequest>,
-  output: __S(36, __c4, 4) as any as S.Schema<Queue>,
+  input: __S(128, __c8, 0) as any as S.Schema<GetProjectsLocationsQueuesRequest>,
+  output: __S(539, __c33, 11) as any as S.Schema<Queue>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -894,8 +894,8 @@ export const getProjectsLocationsQueuesTasks: API.OperationMethod<
   GetProjectsLocationsQueuesTasksError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(55, __c6, 7) as any as S.Schema<GetProjectsLocationsQueuesTasksRequest>,
-  output: __S(12, __c1, 4) as any as S.Schema<Task>,
+  input: __S(144, __c9, 0) as any as S.Schema<GetProjectsLocationsQueuesTasksRequest>,
+  output: __S(436, __c27, 4) as any as S.Schema<Task>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -910,8 +910,8 @@ export const listProjectsLocations: API.PaginatedOperationMethod<
   GcpOpContext,
   ListLocationsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(56, __c7, 0) as any as S.Schema<ListProjectsLocationsRequest>,
-  output: __S(58, __c7, 2) as any as S.Schema<ListLocationsResponse>,
+  input: __S(160, __c10, 0) as any as S.Schema<ListProjectsLocationsRequest>,
+  output: __S(162, __c10, 2) as any as S.Schema<ListLocationsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -927,8 +927,8 @@ export const listProjectsLocationsQueues: API.PaginatedOperationMethod<
   GcpOpContext,
   ListQueuesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(59, __c7, 3) as any as S.Schema<ListProjectsLocationsQueuesRequest>,
-  output: __S(61, __c7, 5) as any as S.Schema<ListQueuesResponse>,
+  input: __S(176, __c11, 0) as any as S.Schema<ListProjectsLocationsQueuesRequest>,
+  output: __S(178, __c11, 2) as any as S.Schema<ListQueuesResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -944,8 +944,8 @@ export const listProjectsLocationsQueuesTasks: API.PaginatedOperationMethod<
   GcpOpContext,
   ListTasksResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(62, __c7, 6) as any as S.Schema<ListProjectsLocationsQueuesTasksRequest>,
-  output: __S(64, __c8, 0) as any as S.Schema<ListTasksResponse>,
+  input: __S(192, __c12, 0) as any as S.Schema<ListProjectsLocationsQueuesTasksRequest>,
+  output: __S(194, __c12, 2) as any as S.Schema<ListTasksResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -965,8 +965,8 @@ export const patchProjectsLocationsQueues: API.OperationMethod<
   PatchProjectsLocationsQueuesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(65, __c8, 1) as any as S.Schema<PatchProjectsLocationsQueuesRequest>,
-  output: __S(36, __c4, 4) as any as S.Schema<Queue>,
+  input: __S(208, __c13, 0) as any as S.Schema<PatchProjectsLocationsQueuesRequest>,
+  output: __S(539, __c33, 11) as any as S.Schema<Queue>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -985,8 +985,8 @@ export const pauseProjectsLocationsQueues: API.OperationMethod<
   PauseProjectsLocationsQueuesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(66, __c8, 2) as any as S.Schema<PauseProjectsLocationsQueuesRequest>,
-  output: __S(36, __c4, 4) as any as S.Schema<Queue>,
+  input: __S(224, __c14, 0) as any as S.Schema<PauseProjectsLocationsQueuesRequest>,
+  output: __S(539, __c33, 11) as any as S.Schema<Queue>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1005,8 +1005,8 @@ export const purgeProjectsLocationsQueues: API.OperationMethod<
   PurgeProjectsLocationsQueuesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(67, __c8, 3) as any as S.Schema<PurgeProjectsLocationsQueuesRequest>,
-  output: __S(36, __c4, 4) as any as S.Schema<Queue>,
+  input: __S(240, __c15, 0) as any as S.Schema<PurgeProjectsLocationsQueuesRequest>,
+  output: __S(539, __c33, 11) as any as S.Schema<Queue>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1025,8 +1025,8 @@ export const resumeProjectsLocationsQueues: API.OperationMethod<
   ResumeProjectsLocationsQueuesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(68, __c8, 4) as any as S.Schema<ResumeProjectsLocationsQueuesRequest>,
-  output: __S(36, __c4, 4) as any as S.Schema<Queue>,
+  input: __S(256, __c16, 0) as any as S.Schema<ResumeProjectsLocationsQueuesRequest>,
+  output: __S(539, __c33, 11) as any as S.Schema<Queue>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1045,8 +1045,8 @@ export const runProjectsLocationsQueuesTasks: API.OperationMethod<
   RunProjectsLocationsQueuesTasksError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(70, __c8, 6) as any as S.Schema<RunProjectsLocationsQueuesTasksRequest>,
-  output: __S(12, __c1, 4) as any as S.Schema<Task>,
+  input: __S(273, __c17, 1) as any as S.Schema<RunProjectsLocationsQueuesTasksRequest>,
+  output: __S(436, __c27, 4) as any as S.Schema<Task>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1065,8 +1065,8 @@ export const setIamPolicyProjectsLocationsQueues: API.OperationMethod<
   SetIamPolicyProjectsLocationsQueuesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(72, __c9, 0) as any as S.Schema<SetIamPolicyProjectsLocationsQueuesRequest>,
-  output: __S(50, __c6, 2) as any as S.Schema<Policy>,
+  input: __S(289, __c18, 1) as any as S.Schema<SetIamPolicyProjectsLocationsQueuesRequest>,
+  output: __S(67, __c4, 3) as any as S.Schema<Policy>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1085,8 +1085,8 @@ export const testIamPermissionsProjectsLocationsQueues: API.OperationMethod<
   TestIamPermissionsProjectsLocationsQueuesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(74, __c9, 2) as any as S.Schema<TestIamPermissionsProjectsLocationsQueuesRequest>,
-  output: __S(73, __c9, 1) as any as S.Schema<TestIamPermissionsResponse>,
+  input: __S(305, __c19, 1) as any as S.Schema<TestIamPermissionsProjectsLocationsQueuesRequest>,
+  output: __S(304, __c19, 0) as any as S.Schema<TestIamPermissionsResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1105,8 +1105,8 @@ export const updateCmekConfigProjectsLocations: API.OperationMethod<
   UpdateCmekConfigProjectsLocationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(75, __c9, 3) as any as S.Schema<UpdateCmekConfigProjectsLocationsRequest>,
-  output: __S(43, __c5, 3) as any as S.Schema<CmekConfig>,
+  input: __S(320, __c20, 0) as any as S.Schema<UpdateCmekConfigProjectsLocationsRequest>,
+  output: __S(32, __c2, 0) as any as S.Schema<CmekConfig>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1116,373 +1116,6 @@ export const updateCmekConfigProjectsLocations: API.OperationMethod<
 function __c0(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() =>
-        S.Struct({
-          payload: S.optional(S.String),
-          tag: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "PullMessage" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          host: S.optional(S.String),
-          version: S.optional(S.String),
-          service: S.optional(S.String),
-          instance: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "AppEngineRouting" });
-    case 2:
-      return S.Record(S.String, S.String);
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          appEngineRouting: S.optional(__S(1, __c0, 1)),
-          relativeUri: S.optional(S.String),
-          httpMethod: S.optional(S.String),
-          headers: S.optional(__S(2, __c0, 2)),
-          body: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "AppEngineHttpRequest" });
-    case 4:
-      return S.Record(S.String, S.Unknown);
-    case 5:
-      return S.Array(__S(4, __c0, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          code: S.optional(S.Number),
-          message: S.optional(S.String),
-          details: S.optional(__S(5, __c0, 5)),
-        }),
-      ).annotate({ identifier: "Status" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          responseStatus: S.optional(__S(6, __c0, 6)),
-          dispatchTime: S.optional(S.String),
-          scheduleTime: S.optional(S.String),
-          responseTime: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Attempt" });
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          maxRetryDuration: S.optional(S.String),
-          minBackoff: S.optional(S.String),
-          maxBackoff: S.optional(S.String),
-          maxDoublings: S.optional(S.Number),
-          maxAttempts: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "RetryConfig" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          scope: S.optional(S.String),
-          serviceAccountEmail: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "OAuthToken" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          serviceAccountEmail: S.optional(S.String),
-          audience: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "OidcToken" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          oauthToken: S.optional(__S(9, __c1, 1)),
-          body: S.optional(S.String),
-          headers: S.optional(__S(2, __c0, 2)),
-          url: S.optional(S.String),
-          oidcToken: S.optional(__S(10, __c1, 2)),
-          httpMethod: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "HttpRequest" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          responseCount: S.optional(S.Number),
-          pullMessage: S.optional(__S(0, __c0, 0)),
-          createTime: S.optional(S.String),
-          view: S.optional(S.String),
-          appEngineHttpRequest: S.optional(__S(3, __c0, 3)),
-          lastAttempt: S.optional(__S(7, __c0, 7)),
-          dispatchCount: S.optional(S.Number),
-          retryConfig: S.optional(__S(8, __c1, 0)),
-          httpRequest: S.optional(__S(11, __c1, 3)),
-          scheduleTime: S.optional(S.String),
-          firstAttempt: S.optional(__S(7, __c0, 7)),
-          dispatchDeadline: S.optional(S.String),
-          name: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Task" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          responseView: S.optional(S.String),
-          parent: S.optional(S.String),
-          task: S.optional(__S(12, __c1, 4)),
-        }),
-      ).annotate({ identifier: "CreateTaskRequest" });
-    case 6:
-      return S.Array(__S(13, __c1, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          requestId: S.optional(S.String),
-          requests: S.optional(__S(14, __c1, 6)),
-        }),
-      ).annotate({ identifier: "BatchCreateTasksRequest" });
-  }
-}
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(15, __c1, 7).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v2beta3/{+parent}/tasks:batchCreate",
-            baseUrl: "https://cloudtasks.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "BatchCreateProjectsLocationsQueuesTasksRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.optional(S.String),
-          done: S.optional(S.Boolean),
-          metadata: S.optional(__S(4, __c0, 4)),
-          error: S.optional(__S(6, __c0, 6)),
-          response: S.optional(__S(4, __c0, 4)),
-        }),
-      ).annotate({ identifier: "Operation" });
-    case 2:
-      return S.Array(S.String);
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          names: S.optional(__S(18, __c2, 2)),
-          requestId: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "BatchDeleteTasksRequest" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(19, __c2, 3).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v2beta3/{+parent}/tasks:batchDelete",
-            baseUrl: "https://cloudtasks.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "BatchDeleteProjectsLocationsQueuesTasksRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          data: S.optional(S.String),
-          contentType: S.optional(S.String),
-          extensions: S.optional(__S(5, __c0, 5)),
-        }),
-      ).annotate({ identifier: "HttpBody" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          body: S.optional(__S(21, __c2, 5)),
-        }),
-      ).annotate({ identifier: "BufferTaskRequest" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          taskId: S.String.pipe(T.Label()),
-          queue: S.String.pipe(T.Label()),
-          body: S.optional(__S(22, __c2, 6).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v2beta3/{+queue}/tasks/{taskId}:buffer",
-            baseUrl: "https://cloudtasks.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "BufferProjectsLocationsQueuesTasksRequest",
-      });
-  }
-}
-function __c3(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          task: S.optional(__S(12, __c1, 4)),
-        }),
-      ).annotate({ identifier: "BufferTaskResponse" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          key: S.optional(S.String),
-          value: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Header" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          header: S.optional(__S(25, __c3, 1)),
-        }),
-      ).annotate({ identifier: "HeaderOverride" });
-    case 3:
-      return S.Array(__S(26, __c3, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          path: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "PathOverride" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          queryParams: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "QueryOverride" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          port: S.optional(S.String),
-          host: S.optional(S.String),
-          pathOverride: S.optional(__S(28, __c3, 4)),
-          scheme: S.optional(S.String),
-          queryOverride: S.optional(__S(29, __c3, 5)),
-          uriOverrideEnforceMode: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "UriOverride" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          headerOverrides: S.optional(__S(27, __c3, 3)),
-          oidcToken: S.optional(__S(10, __c1, 2)),
-          httpMethod: S.optional(S.String),
-          oauthToken: S.optional(__S(9, __c1, 1)),
-          uriOverride: S.optional(__S(30, __c3, 6)),
-        }),
-      ).annotate({ identifier: "HttpTarget" });
-  }
-}
-function __c4(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          maxBurstSize: S.optional(S.Number),
-          maxConcurrentDispatches: S.optional(S.Number),
-          maxDispatchesPerSecond: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "RateLimits" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          samplingRatio: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "StackdriverLoggingConfig" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          executedLastMinuteCount: S.optional(S.String),
-          oldestEstimatedArrivalTime: S.optional(S.String),
-          tasksCount: S.optional(S.String),
-          effectiveExecutionRate: S.optional(S.Number),
-          concurrentDispatchesCount: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "QueueStats" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          appEngineRoutingOverride: S.optional(__S(1, __c0, 1)),
-        }),
-      ).annotate({ identifier: "AppEngineHttpQueue" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          httpTarget: S.optional(__S(31, __c3, 7)),
-          rateLimits: S.optional(__S(32, __c4, 0)),
-          state: S.optional(S.String),
-          type: S.optional(S.String),
-          stackdriverLoggingConfig: S.optional(__S(33, __c4, 1)),
-          tombstoneTtl: S.optional(S.String),
-          name: S.optional(S.String),
-          taskTtl: S.optional(S.String),
-          retryConfig: S.optional(__S(8, __c1, 0)),
-          stats: S.optional(__S(34, __c4, 2)),
-          purgeTime: S.optional(S.String),
-          appEngineHttpQueue: S.optional(__S(35, __c4, 3)),
-        }),
-      ).annotate({ identifier: "Queue" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(36, __c4, 4).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v2beta3/{+parent}/queues",
-            baseUrl: "https://cloudtasks.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateProjectsLocationsQueuesRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(13, __c1, 5).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v2beta3/{+parent}/tasks",
-            baseUrl: "https://cloudtasks.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateProjectsLocationsQueuesTasksRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "v2beta3/{+name}",
-            baseUrl: "https://cloudtasks.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteProjectsLocationsQueuesRequest",
-      });
-  }
-}
-function __c5(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "Empty",
-      });
-    case 1:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -1496,7 +1129,11 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "DeleteProjectsLocationsQueuesTasksRequest",
       });
-    case 2:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -1510,30 +1147,38 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "GetCmekConfigProjectsLocationsRequest",
       });
-    case 3:
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
           kmsKey: S.optional(S.String),
         }),
       ).annotate({ identifier: "CmekConfig" });
-    case 4:
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           requestedPolicyVersion: S.optional(S.Number),
         }),
       ).annotate({ identifier: "GetPolicyOptions" });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          options: S.optional(__S(44, __c5, 4)),
+          options: S.optional(__S(48, __c3, 0)),
         }),
       ).annotate({ identifier: "GetIamPolicyRequest" });
-    case 6:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           resource: S.String.pipe(T.Label()),
-          body: S.optional(__S(45, __c5, 5).pipe(T.HttpBody())),
+          body: S.optional(__S(49, __c3, 1).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -1544,7 +1189,11 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "GetIamPolicyProjectsLocationsQueuesRequest",
       });
-    case 7:
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           title: S.optional(S.String),
@@ -1553,29 +1202,29 @@ function __c5(j: number): any {
           location: S.optional(S.String),
         }),
       ).annotate({ identifier: "Expr" });
-  }
-}
-function __c6(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           role: S.optional(S.String),
-          members: S.optional(__S(18, __c2, 2)),
-          condition: S.optional(__S(47, __c5, 7)),
+          members: S.optional(__S(480, __c30, 0)),
+          condition: S.optional(__S(64, __c4, 0)),
         }),
       ).annotate({ identifier: "Binding" });
-    case 1:
-      return S.Array(__S(48, __c6, 0));
     case 2:
+      return S.Array(__S(65, __c4, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
           version: S.optional(S.Number),
-          bindings: S.optional(__S(49, __c6, 1)),
+          bindings: S.optional(__S(66, __c4, 2)),
           etag: S.optional(S.String),
         }),
       ).annotate({ identifier: "Policy" });
-    case 3:
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -1589,17 +1238,25 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "GetProjectsLocationsRequest",
       });
-    case 4:
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           locationId: S.optional(S.String),
           name: S.optional(S.String),
           displayName: S.optional(S.String),
-          labels: S.optional(__S(2, __c0, 2)),
-          metadata: S.optional(__S(4, __c0, 4)),
+          labels: S.optional(__S(416, __c26, 0)),
+          metadata: S.optional(__S(368, __c23, 0)),
         }),
       ).annotate({ identifier: "Location" });
-    case 5:
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -1613,7 +1270,11 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "GetProjectsLocationsOperationsRequest",
       });
-    case 6:
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -1628,7 +1289,11 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "GetProjectsLocationsQueuesRequest",
       });
-    case 7:
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -1645,14 +1310,14 @@ function __c6(j: number): any {
       });
   }
 }
-function __c7(j: number): any {
+function __c10(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           filter: S.optional(S.String.pipe(T.Query())),
           pageSize: S.optional(S.Number.pipe(T.Query())),
-          extraLocationTypes: S.optional(__S(18, __c2, 2).pipe(T.Query())),
+          extraLocationTypes: S.optional(__S(480, __c30, 0).pipe(T.Query())),
           name: S.String.pipe(T.Label()),
           pageToken: S.optional(S.String.pipe(T.Query())),
         }).pipe(
@@ -1666,15 +1331,19 @@ function __c7(j: number): any {
         identifier: "ListProjectsLocationsRequest",
       });
     case 1:
-      return S.Array(__S(52, __c6, 4));
+      return S.Array(__S(96, __c6, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          locations: S.optional(__S(57, __c7, 1)),
+          locations: S.optional(__S(161, __c10, 1)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListLocationsResponse" });
-    case 3:
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
@@ -1692,16 +1361,20 @@ function __c7(j: number): any {
       ).annotate({
         identifier: "ListProjectsLocationsQueuesRequest",
       });
-    case 4:
-      return S.Array(__S(36, __c4, 4));
-    case 5:
+    case 1:
+      return S.Array(__S(539, __c33, 11));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          queues: S.optional(__S(60, __c7, 4)),
+          queues: S.optional(__S(177, __c11, 1)),
         }),
       ).annotate({ identifier: "ListQueuesResponse" });
-    case 6:
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           responseView: S.optional(S.String.pipe(T.Query())),
@@ -1718,25 +1391,25 @@ function __c7(j: number): any {
       ).annotate({
         identifier: "ListProjectsLocationsQueuesTasksRequest",
       });
-    case 7:
-      return S.Array(__S(12, __c1, 4));
+    case 1:
+      return S.Array(__S(436, __c27, 4));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          tasks: S.optional(__S(193, __c12, 1)),
+          nextPageToken: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ListTasksResponse" });
   }
 }
-function __c8(j: number): any {
+function __c13(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          tasks: S.optional(__S(63, __c7, 7)),
-          nextPageToken: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ListTasksResponse" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
           name: S.String.pipe(T.Label()),
           updateMask: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(36, __c4, 4).pipe(T.HttpBody())),
+          body: S.optional(__S(539, __c33, 11).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -1747,11 +1420,15 @@ function __c8(j: number): any {
       ).annotate({
         identifier: "PatchProjectsLocationsQueuesRequest",
       });
-    case 2:
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(40, __c5, 0).pipe(T.HttpBody())),
+          body: S.optional(__S(576, __c36, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -1762,11 +1439,15 @@ function __c8(j: number): any {
       ).annotate({
         identifier: "PauseProjectsLocationsQueuesRequest",
       });
-    case 3:
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(40, __c5, 0).pipe(T.HttpBody())),
+          body: S.optional(__S(576, __c36, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -1777,11 +1458,15 @@ function __c8(j: number): any {
       ).annotate({
         identifier: "PurgeProjectsLocationsQueuesRequest",
       });
-    case 4:
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(40, __c5, 0).pipe(T.HttpBody())),
+          body: S.optional(__S(576, __c36, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -1792,17 +1477,21 @@ function __c8(j: number): any {
       ).annotate({
         identifier: "ResumeProjectsLocationsQueuesRequest",
       });
-    case 5:
+  }
+}
+function __c17(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           responseView: S.optional(S.String),
         }),
       ).annotate({ identifier: "RunTaskRequest" });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(69, __c8, 5).pipe(T.HttpBody())),
+          body: S.optional(__S(272, __c17, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -1813,21 +1502,21 @@ function __c8(j: number): any {
       ).annotate({
         identifier: "RunProjectsLocationsQueuesTasksRequest",
       });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          policy: S.optional(__S(50, __c6, 2)),
-        }),
-      ).annotate({ identifier: "SetIamPolicyRequest" });
   }
 }
-function __c9(j: number): any {
+function __c18(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
+          policy: S.optional(__S(67, __c4, 3)),
+        }),
+      ).annotate({ identifier: "SetIamPolicyRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
           resource: S.String.pipe(T.Label()),
-          body: S.optional(__S(71, __c8, 7).pipe(T.HttpBody())),
+          body: S.optional(__S(288, __c18, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -1838,19 +1527,23 @@ function __c9(j: number): any {
       ).annotate({
         identifier: "SetIamPolicyProjectsLocationsQueuesRequest",
       });
-    case 1:
+  }
+}
+function __c19(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          permissions: S.optional(__S(18, __c2, 2)),
+          permissions: S.optional(__S(480, __c30, 0)),
         }),
       ).annotate({
         identifier: "TestIamPermissionsRequest",
       });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           resource: S.String.pipe(T.Label()),
-          body: S.optional(__S(73, __c9, 1).pipe(T.HttpBody())),
+          body: S.optional(__S(304, __c19, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -1861,12 +1554,16 @@ function __c9(j: number): any {
       ).annotate({
         identifier: "TestIamPermissionsProjectsLocationsQueuesRequest",
       });
-    case 3:
+  }
+}
+function __c20(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
           updateMask: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(43, __c5, 3).pipe(T.HttpBody())),
+          body: S.optional(__S(32, __c2, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -1879,7 +1576,417 @@ function __c9(j: number): any {
       });
   }
 }
-
+function __c21(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(448, __c28, 0));
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          requestId: S.optional(S.String),
+          requests: S.optional(__S(336, __c21, 0)),
+        }),
+      ).annotate({ identifier: "BatchCreateTasksRequest" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          parent: S.String.pipe(T.Label()),
+          body: S.optional(__S(337, __c21, 1).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v2beta3/{+parent}/tasks:batchCreate",
+            baseUrl: "https://cloudtasks.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "BatchCreateProjectsLocationsQueuesTasksRequest",
+      });
+  }
+}
+function __c22(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.optional(S.String),
+          done: S.optional(S.Boolean),
+          metadata: S.optional(__S(368, __c23, 0)),
+          error: S.optional(__S(385, __c24, 1)),
+          response: S.optional(__S(368, __c23, 0)),
+        }),
+      ).annotate({ identifier: "Operation" });
+  }
+}
+function __c23(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, S.Unknown);
+  }
+}
+function __c24(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(368, __c23, 0));
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          code: S.optional(S.Number),
+          message: S.optional(S.String),
+          details: S.optional(__S(384, __c24, 0)),
+        }),
+      ).annotate({ identifier: "Status" });
+  }
+}
+function __c25(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          host: S.optional(S.String),
+          version: S.optional(S.String),
+          service: S.optional(S.String),
+          instance: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "AppEngineRouting" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          maxRetryDuration: S.optional(S.String),
+          minBackoff: S.optional(S.String),
+          maxBackoff: S.optional(S.String),
+          maxDoublings: S.optional(S.Number),
+          maxAttempts: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "RetryConfig" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          scope: S.optional(S.String),
+          serviceAccountEmail: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "OAuthToken" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          serviceAccountEmail: S.optional(S.String),
+          audience: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "OidcToken" });
+  }
+}
+function __c26(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, S.String);
+  }
+}
+function __c27(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          payload: S.optional(S.String),
+          tag: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "PullMessage" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          appEngineRouting: S.optional(__S(400, __c25, 0)),
+          relativeUri: S.optional(S.String),
+          httpMethod: S.optional(S.String),
+          headers: S.optional(__S(416, __c26, 0)),
+          body: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "AppEngineHttpRequest" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          responseStatus: S.optional(__S(385, __c24, 1)),
+          dispatchTime: S.optional(S.String),
+          scheduleTime: S.optional(S.String),
+          responseTime: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Attempt" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          oauthToken: S.optional(__S(402, __c25, 2)),
+          body: S.optional(S.String),
+          headers: S.optional(__S(416, __c26, 0)),
+          url: S.optional(S.String),
+          oidcToken: S.optional(__S(403, __c25, 3)),
+          httpMethod: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "HttpRequest" });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          responseCount: S.optional(S.Number),
+          pullMessage: S.optional(__S(432, __c27, 0)),
+          createTime: S.optional(S.String),
+          view: S.optional(S.String),
+          appEngineHttpRequest: S.optional(__S(433, __c27, 1)),
+          lastAttempt: S.optional(__S(434, __c27, 2)),
+          dispatchCount: S.optional(S.Number),
+          retryConfig: S.optional(__S(401, __c25, 1)),
+          httpRequest: S.optional(__S(435, __c27, 3)),
+          scheduleTime: S.optional(S.String),
+          firstAttempt: S.optional(__S(434, __c27, 2)),
+          dispatchDeadline: S.optional(S.String),
+          name: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Task" });
+  }
+}
+function __c28(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          responseView: S.optional(S.String),
+          parent: S.optional(S.String),
+          task: S.optional(__S(436, __c27, 4)),
+        }),
+      ).annotate({ identifier: "CreateTaskRequest" });
+  }
+}
+function __c29(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          names: S.optional(__S(480, __c30, 0)),
+          requestId: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "BatchDeleteTasksRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          parent: S.String.pipe(T.Label()),
+          body: S.optional(__S(464, __c29, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v2beta3/{+parent}/tasks:batchDelete",
+            baseUrl: "https://cloudtasks.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "BatchDeleteProjectsLocationsQueuesTasksRequest",
+      });
+  }
+}
+function __c30(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c31(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          data: S.optional(S.String),
+          contentType: S.optional(S.String),
+          extensions: S.optional(__S(384, __c24, 0)),
+        }),
+      ).annotate({ identifier: "HttpBody" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          body: S.optional(__S(496, __c31, 0)),
+        }),
+      ).annotate({ identifier: "BufferTaskRequest" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          taskId: S.String.pipe(T.Label()),
+          queue: S.String.pipe(T.Label()),
+          body: S.optional(__S(497, __c31, 1).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v2beta3/{+queue}/tasks/{taskId}:buffer",
+            baseUrl: "https://cloudtasks.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "BufferProjectsLocationsQueuesTasksRequest",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          task: S.optional(__S(436, __c27, 4)),
+        }),
+      ).annotate({ identifier: "BufferTaskResponse" });
+  }
+}
+function __c32(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          parent: S.String.pipe(T.Label()),
+          body: S.optional(__S(539, __c33, 11).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v2beta3/{+parent}/queues",
+            baseUrl: "https://cloudtasks.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateProjectsLocationsQueuesRequest",
+      });
+  }
+}
+function __c33(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          key: S.optional(S.String),
+          value: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Header" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          header: S.optional(__S(528, __c33, 0)),
+        }),
+      ).annotate({ identifier: "HeaderOverride" });
+    case 2:
+      return S.Array(__S(529, __c33, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          path: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "PathOverride" });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          queryParams: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "QueryOverride" });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          port: S.optional(S.String),
+          host: S.optional(S.String),
+          pathOverride: S.optional(__S(531, __c33, 3)),
+          scheme: S.optional(S.String),
+          queryOverride: S.optional(__S(532, __c33, 4)),
+          uriOverrideEnforceMode: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "UriOverride" });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          headerOverrides: S.optional(__S(530, __c33, 2)),
+          oidcToken: S.optional(__S(403, __c25, 3)),
+          httpMethod: S.optional(S.String),
+          oauthToken: S.optional(__S(402, __c25, 2)),
+          uriOverride: S.optional(__S(533, __c33, 5)),
+        }),
+      ).annotate({ identifier: "HttpTarget" });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          maxBurstSize: S.optional(S.Number),
+          maxConcurrentDispatches: S.optional(S.Number),
+          maxDispatchesPerSecond: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "RateLimits" });
+    case 8:
+      return S.suspend(() =>
+        S.Struct({
+          samplingRatio: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "StackdriverLoggingConfig" });
+    case 9:
+      return S.suspend(() =>
+        S.Struct({
+          executedLastMinuteCount: S.optional(S.String),
+          oldestEstimatedArrivalTime: S.optional(S.String),
+          tasksCount: S.optional(S.String),
+          effectiveExecutionRate: S.optional(S.Number),
+          concurrentDispatchesCount: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "QueueStats" });
+    case 10:
+      return S.suspend(() =>
+        S.Struct({
+          appEngineRoutingOverride: S.optional(__S(400, __c25, 0)),
+        }),
+      ).annotate({ identifier: "AppEngineHttpQueue" });
+    case 11:
+      return S.suspend(() =>
+        S.Struct({
+          httpTarget: S.optional(__S(534, __c33, 6)),
+          rateLimits: S.optional(__S(535, __c33, 7)),
+          state: S.optional(S.String),
+          type: S.optional(S.String),
+          stackdriverLoggingConfig: S.optional(__S(536, __c33, 8)),
+          tombstoneTtl: S.optional(S.String),
+          name: S.optional(S.String),
+          taskTtl: S.optional(S.String),
+          retryConfig: S.optional(__S(401, __c25, 1)),
+          stats: S.optional(__S(537, __c33, 9)),
+          purgeTime: S.optional(S.String),
+          appEngineHttpQueue: S.optional(__S(538, __c33, 10)),
+        }),
+      ).annotate({ identifier: "Queue" });
+  }
+}
+function __c34(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          parent: S.String.pipe(T.Label()),
+          body: S.optional(__S(448, __c28, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v2beta3/{+parent}/tasks",
+            baseUrl: "https://cloudtasks.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateProjectsLocationsQueuesTasksRequest",
+      });
+  }
+}
+function __c35(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "v2beta3/{+name}",
+            baseUrl: "https://cloudtasks.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteProjectsLocationsQueuesRequest",
+      });
+  }
+}
+function __c36(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "Empty",
+      });
+  }
+}
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

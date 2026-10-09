@@ -1220,11 +1220,11 @@ export const createCoordinationV1alpha2NamespacedLeaseCandidate: API.OperationMe
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    8,
-    __c1,
+    184,
+    __c23,
     0,
   ) as any as S.Schema<CreateCoordinationV1alpha2NamespacedLeaseCandidateRequest>,
-  output: __S(9, __c1, 1) as any as S.Schema<IoK8sApiCoordinationV1alpha2LeaseCandidate>,
+  output: __S(193, __c24, 1) as any as S.Schema<IoK8sApiCoordinationV1alpha2LeaseCandidate>,
   errors: [Conflict, UnprocessableEntity, UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -1242,11 +1242,11 @@ export const createCoordinationV1beta1NamespacedLeaseCandidate: API.OperationMet
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    10,
-    __c1,
-    2,
+    304,
+    __c38,
+    0,
   ) as any as S.Schema<CreateCoordinationV1beta1NamespacedLeaseCandidateRequest>,
-  output: __S(9, __c1, 1) as any as S.Schema<IoK8sApiCoordinationV1beta1LeaseCandidate>,
+  output: __S(193, __c24, 1) as any as S.Schema<IoK8sApiCoordinationV1beta1LeaseCandidate>,
   errors: [Conflict, UnprocessableEntity, UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -1263,8 +1263,8 @@ export const createCoordinationV1NamespacedLease: API.OperationMethod<
   CreateCoordinationV1NamespacedLeaseError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(12, __c1, 4) as any as S.Schema<CreateCoordinationV1NamespacedLeaseRequest>,
-  output: __S(13, __c1, 5) as any as S.Schema<IoK8sApiCoordinationV1Lease>,
+  input: __S(312, __c39, 0) as any as S.Schema<CreateCoordinationV1NamespacedLeaseRequest>,
+  output: __S(321, __c40, 1) as any as S.Schema<IoK8sApiCoordinationV1Lease>,
   errors: [Conflict, UnprocessableEntity, UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -1279,11 +1279,11 @@ export const deleteCoordinationV1alpha2CollectionNamespacedLeaseCandidate: API.O
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    15,
-    __c1,
-    7,
+    328,
+    __c41,
+    0,
   ) as any as S.Schema<DeleteCoordinationV1alpha2CollectionNamespacedLeaseCandidateRequest>,
-  output: __S(21, __c2, 5) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1Status>,
+  output: __S(340, __c42, 4) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1Status>,
   errors: [UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -1301,11 +1301,11 @@ export const deleteCoordinationV1alpha2NamespacedLeaseCandidate: API.OperationMe
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    22,
-    __c2,
-    6,
+    352,
+    __c44,
+    0,
   ) as any as S.Schema<DeleteCoordinationV1alpha2NamespacedLeaseCandidateRequest>,
-  output: __S(21, __c2, 5) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1Status>,
+  output: __S(340, __c42, 4) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1Status>,
   errors: [NotFound, Conflict, UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -1320,11 +1320,11 @@ export const deleteCoordinationV1beta1CollectionNamespacedLeaseCandidate: API.Op
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    23,
-    __c2,
-    7,
+    360,
+    __c45,
+    0,
   ) as any as S.Schema<DeleteCoordinationV1beta1CollectionNamespacedLeaseCandidateRequest>,
-  output: __S(21, __c2, 5) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1Status>,
+  output: __S(340, __c42, 4) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1Status>,
   errors: [UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -1342,11 +1342,11 @@ export const deleteCoordinationV1beta1NamespacedLeaseCandidate: API.OperationMet
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    24,
-    __c3,
+    368,
+    __c46,
     0,
   ) as any as S.Schema<DeleteCoordinationV1beta1NamespacedLeaseCandidateRequest>,
-  output: __S(21, __c2, 5) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1Status>,
+  output: __S(340, __c42, 4) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1Status>,
   errors: [NotFound, Conflict, UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -1360,8 +1360,8 @@ export const deleteCoordinationV1CollectionNamespacedLease: API.OperationMethod<
   DeleteCoordinationV1CollectionNamespacedLeaseError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(25, __c3, 1) as any as S.Schema<DeleteCoordinationV1CollectionNamespacedLeaseRequest>,
-  output: __S(21, __c2, 5) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1Status>,
+  input: __S(0, __c0, 0) as any as S.Schema<DeleteCoordinationV1CollectionNamespacedLeaseRequest>,
+  output: __S(340, __c42, 4) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1Status>,
   errors: [UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -1375,8 +1375,8 @@ export const deleteCoordinationV1NamespacedLease: API.OperationMethod<
   DeleteCoordinationV1NamespacedLeaseError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(26, __c3, 2) as any as S.Schema<DeleteCoordinationV1NamespacedLeaseRequest>,
-  output: __S(21, __c2, 5) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1Status>,
+  input: __S(8, __c1, 0) as any as S.Schema<DeleteCoordinationV1NamespacedLeaseRequest>,
+  output: __S(340, __c42, 4) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1Status>,
   errors: [NotFound, Conflict, UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -1390,8 +1390,8 @@ export const getCoordinationAPIGroup: API.OperationMethod<
   GetCoordinationAPIGroupError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(27, __c3, 3) as any as S.Schema<GetCoordinationAPIGroupRequest>,
-  output: __S(32, __c4, 0) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1APIGroup>,
+  input: __S(16, __c2, 0) as any as S.Schema<GetCoordinationAPIGroupRequest>,
+  output: __S(21, __c2, 5) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1APIGroup>,
   errors: [UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -1405,8 +1405,8 @@ export const getCoordinationV1alpha2APIResources: API.OperationMethod<
   GetCoordinationV1alpha2APIResourcesError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(33, __c4, 1) as any as S.Schema<GetCoordinationV1alpha2APIResourcesRequest>,
-  output: __S(36, __c4, 4) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1APIResourceList>,
+  input: __S(24, __c3, 0) as any as S.Schema<GetCoordinationV1alpha2APIResourcesRequest>,
+  output: __S(34, __c4, 2) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1APIResourceList>,
   errors: [UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -1420,8 +1420,8 @@ export const getCoordinationV1APIResources: API.OperationMethod<
   GetCoordinationV1APIResourcesError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(37, __c4, 5) as any as S.Schema<GetCoordinationV1APIResourcesRequest>,
-  output: __S(36, __c4, 4) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1APIResourceList>,
+  input: __S(40, __c5, 0) as any as S.Schema<GetCoordinationV1APIResourcesRequest>,
+  output: __S(34, __c4, 2) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1APIResourceList>,
   errors: [UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -1435,8 +1435,8 @@ export const getCoordinationV1beta1APIResources: API.OperationMethod<
   GetCoordinationV1beta1APIResourcesError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(38, __c4, 6) as any as S.Schema<GetCoordinationV1beta1APIResourcesRequest>,
-  output: __S(36, __c4, 4) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1APIResourceList>,
+  input: __S(48, __c6, 0) as any as S.Schema<GetCoordinationV1beta1APIResourcesRequest>,
+  output: __S(34, __c4, 2) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1APIResourceList>,
   errors: [UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -1451,11 +1451,11 @@ export const listCoordinationV1alpha2LeaseCandidateForAllNamespaces: API.Operati
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    39,
-    __c4,
-    7,
+    56,
+    __c7,
+    0,
   ) as any as S.Schema<ListCoordinationV1alpha2LeaseCandidateForAllNamespacesRequest>,
-  output: __S(41, __c5, 1) as any as S.Schema<IoK8sApiCoordinationV1alpha2LeaseCandidateList>,
+  output: __S(65, __c8, 1) as any as S.Schema<IoK8sApiCoordinationV1alpha2LeaseCandidateList>,
   errors: [UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -1470,11 +1470,11 @@ export const listCoordinationV1alpha2NamespacedLeaseCandidate: API.OperationMeth
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    42,
-    __c5,
-    2,
+    72,
+    __c9,
+    0,
   ) as any as S.Schema<ListCoordinationV1alpha2NamespacedLeaseCandidateRequest>,
-  output: __S(41, __c5, 1) as any as S.Schema<IoK8sApiCoordinationV1alpha2LeaseCandidateList>,
+  output: __S(65, __c8, 1) as any as S.Schema<IoK8sApiCoordinationV1alpha2LeaseCandidateList>,
   errors: [UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -1489,11 +1489,11 @@ export const listCoordinationV1beta1LeaseCandidateForAllNamespaces: API.Operatio
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    43,
-    __c5,
-    3,
+    80,
+    __c10,
+    0,
   ) as any as S.Schema<ListCoordinationV1beta1LeaseCandidateForAllNamespacesRequest>,
-  output: __S(41, __c5, 1) as any as S.Schema<IoK8sApiCoordinationV1beta1LeaseCandidateList>,
+  output: __S(65, __c8, 1) as any as S.Schema<IoK8sApiCoordinationV1beta1LeaseCandidateList>,
   errors: [UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -1508,11 +1508,11 @@ export const listCoordinationV1beta1NamespacedLeaseCandidate: API.OperationMetho
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    44,
-    __c5,
-    4,
+    88,
+    __c11,
+    0,
   ) as any as S.Schema<ListCoordinationV1beta1NamespacedLeaseCandidateRequest>,
-  output: __S(41, __c5, 1) as any as S.Schema<IoK8sApiCoordinationV1beta1LeaseCandidateList>,
+  output: __S(65, __c8, 1) as any as S.Schema<IoK8sApiCoordinationV1beta1LeaseCandidateList>,
   errors: [UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -1526,8 +1526,8 @@ export const listCoordinationV1LeaseForAllNamespaces: API.OperationMethod<
   ListCoordinationV1LeaseForAllNamespacesError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(45, __c5, 5) as any as S.Schema<ListCoordinationV1LeaseForAllNamespacesRequest>,
-  output: __S(47, __c5, 7) as any as S.Schema<IoK8sApiCoordinationV1LeaseList>,
+  input: __S(96, __c12, 0) as any as S.Schema<ListCoordinationV1LeaseForAllNamespacesRequest>,
+  output: __S(105, __c13, 1) as any as S.Schema<IoK8sApiCoordinationV1LeaseList>,
   errors: [UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -1541,8 +1541,8 @@ export const listCoordinationV1NamespacedLease: API.OperationMethod<
   ListCoordinationV1NamespacedLeaseError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(48, __c6, 0) as any as S.Schema<ListCoordinationV1NamespacedLeaseRequest>,
-  output: __S(47, __c5, 7) as any as S.Schema<IoK8sApiCoordinationV1LeaseList>,
+  input: __S(112, __c14, 0) as any as S.Schema<ListCoordinationV1NamespacedLeaseRequest>,
+  output: __S(105, __c13, 1) as any as S.Schema<IoK8sApiCoordinationV1LeaseList>,
   errors: [UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -1561,11 +1561,11 @@ export const patchCoordinationV1alpha2NamespacedLeaseCandidate: API.OperationMet
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    49,
-    __c6,
-    1,
+    120,
+    __c15,
+    0,
   ) as any as S.Schema<PatchCoordinationV1alpha2NamespacedLeaseCandidateRequest>,
-  output: __S(9, __c1, 1) as any as S.Schema<IoK8sApiCoordinationV1alpha2LeaseCandidate>,
+  output: __S(193, __c24, 1) as any as S.Schema<IoK8sApiCoordinationV1alpha2LeaseCandidate>,
   errors: [NotFound, Conflict, UnprocessableEntity, UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -1584,11 +1584,11 @@ export const patchCoordinationV1beta1NamespacedLeaseCandidate: API.OperationMeth
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    50,
-    __c6,
-    2,
+    128,
+    __c16,
+    0,
   ) as any as S.Schema<PatchCoordinationV1beta1NamespacedLeaseCandidateRequest>,
-  output: __S(9, __c1, 1) as any as S.Schema<IoK8sApiCoordinationV1beta1LeaseCandidate>,
+  output: __S(193, __c24, 1) as any as S.Schema<IoK8sApiCoordinationV1beta1LeaseCandidate>,
   errors: [NotFound, Conflict, UnprocessableEntity, UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -1606,8 +1606,8 @@ export const patchCoordinationV1NamespacedLease: API.OperationMethod<
   PatchCoordinationV1NamespacedLeaseError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(51, __c6, 3) as any as S.Schema<PatchCoordinationV1NamespacedLeaseRequest>,
-  output: __S(13, __c1, 5) as any as S.Schema<IoK8sApiCoordinationV1Lease>,
+  input: __S(136, __c17, 0) as any as S.Schema<PatchCoordinationV1NamespacedLeaseRequest>,
+  output: __S(321, __c40, 1) as any as S.Schema<IoK8sApiCoordinationV1Lease>,
   errors: [NotFound, Conflict, UnprocessableEntity, UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -1622,11 +1622,11 @@ export const readCoordinationV1alpha2NamespacedLeaseCandidate: API.OperationMeth
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    52,
-    __c6,
-    4,
+    144,
+    __c18,
+    0,
   ) as any as S.Schema<ReadCoordinationV1alpha2NamespacedLeaseCandidateRequest>,
-  output: __S(9, __c1, 1) as any as S.Schema<IoK8sApiCoordinationV1alpha2LeaseCandidate>,
+  output: __S(193, __c24, 1) as any as S.Schema<IoK8sApiCoordinationV1alpha2LeaseCandidate>,
   errors: [NotFound, UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -1641,11 +1641,11 @@ export const readCoordinationV1beta1NamespacedLeaseCandidate: API.OperationMetho
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    53,
-    __c6,
-    5,
+    152,
+    __c19,
+    0,
   ) as any as S.Schema<ReadCoordinationV1beta1NamespacedLeaseCandidateRequest>,
-  output: __S(9, __c1, 1) as any as S.Schema<IoK8sApiCoordinationV1beta1LeaseCandidate>,
+  output: __S(193, __c24, 1) as any as S.Schema<IoK8sApiCoordinationV1beta1LeaseCandidate>,
   errors: [NotFound, UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -1659,8 +1659,8 @@ export const readCoordinationV1NamespacedLease: API.OperationMethod<
   ReadCoordinationV1NamespacedLeaseError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(54, __c6, 6) as any as S.Schema<ReadCoordinationV1NamespacedLeaseRequest>,
-  output: __S(13, __c1, 5) as any as S.Schema<IoK8sApiCoordinationV1Lease>,
+  input: __S(160, __c20, 0) as any as S.Schema<ReadCoordinationV1NamespacedLeaseRequest>,
+  output: __S(321, __c40, 1) as any as S.Schema<IoK8sApiCoordinationV1Lease>,
   errors: [NotFound, UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -1679,11 +1679,11 @@ export const replaceCoordinationV1alpha2NamespacedLeaseCandidate: API.OperationM
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    55,
-    __c6,
-    7,
+    168,
+    __c21,
+    0,
   ) as any as S.Schema<ReplaceCoordinationV1alpha2NamespacedLeaseCandidateRequest>,
-  output: __S(9, __c1, 1) as any as S.Schema<IoK8sApiCoordinationV1alpha2LeaseCandidate>,
+  output: __S(193, __c24, 1) as any as S.Schema<IoK8sApiCoordinationV1alpha2LeaseCandidate>,
   errors: [NotFound, Conflict, UnprocessableEntity, UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -1702,11 +1702,11 @@ export const replaceCoordinationV1beta1NamespacedLeaseCandidate: API.OperationMe
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    56,
-    __c7,
+    176,
+    __c22,
     0,
   ) as any as S.Schema<ReplaceCoordinationV1beta1NamespacedLeaseCandidateRequest>,
-  output: __S(9, __c1, 1) as any as S.Schema<IoK8sApiCoordinationV1beta1LeaseCandidate>,
+  output: __S(193, __c24, 1) as any as S.Schema<IoK8sApiCoordinationV1beta1LeaseCandidate>,
   errors: [NotFound, Conflict, UnprocessableEntity, UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -1724,8 +1724,8 @@ export const replaceCoordinationV1NamespacedLease: API.OperationMethod<
   ReplaceCoordinationV1NamespacedLeaseError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(57, __c7, 1) as any as S.Schema<ReplaceCoordinationV1NamespacedLeaseRequest>,
-  output: __S(13, __c1, 5) as any as S.Schema<IoK8sApiCoordinationV1Lease>,
+  input: __S(216, __c27, 0) as any as S.Schema<ReplaceCoordinationV1NamespacedLeaseRequest>,
+  output: __S(321, __c40, 1) as any as S.Schema<IoK8sApiCoordinationV1Lease>,
   errors: [NotFound, Conflict, UnprocessableEntity, UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -1740,11 +1740,11 @@ export const watchCoordinationV1alpha2LeaseCandidateListForAllNamespaces: API.Op
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    58,
-    __c7,
-    2,
+    224,
+    __c28,
+    0,
   ) as any as S.Schema<WatchCoordinationV1alpha2LeaseCandidateListForAllNamespacesRequest>,
-  output: __S(59, __c7, 3) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1WatchEvent>,
+  output: __S(232, __c29, 0) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1WatchEvent>,
   errors: [UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -1759,11 +1759,11 @@ export const watchCoordinationV1alpha2NamespacedLeaseCandidate: API.OperationMet
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    60,
-    __c7,
-    4,
+    240,
+    __c30,
+    0,
   ) as any as S.Schema<WatchCoordinationV1alpha2NamespacedLeaseCandidateRequest>,
-  output: __S(59, __c7, 3) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1WatchEvent>,
+  output: __S(232, __c29, 0) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1WatchEvent>,
   errors: [UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -1778,11 +1778,11 @@ export const watchCoordinationV1alpha2NamespacedLeaseCandidateList: API.Operatio
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    61,
-    __c7,
-    5,
+    248,
+    __c31,
+    0,
   ) as any as S.Schema<WatchCoordinationV1alpha2NamespacedLeaseCandidateListRequest>,
-  output: __S(59, __c7, 3) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1WatchEvent>,
+  output: __S(232, __c29, 0) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1WatchEvent>,
   errors: [UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -1797,11 +1797,11 @@ export const watchCoordinationV1beta1LeaseCandidateListForAllNamespaces: API.Ope
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    62,
-    __c7,
-    6,
+    256,
+    __c32,
+    0,
   ) as any as S.Schema<WatchCoordinationV1beta1LeaseCandidateListForAllNamespacesRequest>,
-  output: __S(59, __c7, 3) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1WatchEvent>,
+  output: __S(232, __c29, 0) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1WatchEvent>,
   errors: [UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -1816,11 +1816,11 @@ export const watchCoordinationV1beta1NamespacedLeaseCandidate: API.OperationMeth
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    63,
-    __c7,
-    7,
+    264,
+    __c33,
+    0,
   ) as any as S.Schema<WatchCoordinationV1beta1NamespacedLeaseCandidateRequest>,
-  output: __S(59, __c7, 3) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1WatchEvent>,
+  output: __S(232, __c29, 0) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1WatchEvent>,
   errors: [UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -1835,11 +1835,11 @@ export const watchCoordinationV1beta1NamespacedLeaseCandidateList: API.Operation
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    64,
-    __c8,
+    272,
+    __c34,
     0,
   ) as any as S.Schema<WatchCoordinationV1beta1NamespacedLeaseCandidateListRequest>,
-  output: __S(59, __c7, 3) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1WatchEvent>,
+  output: __S(232, __c29, 0) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1WatchEvent>,
   errors: [UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -1853,8 +1853,8 @@ export const watchCoordinationV1LeaseListForAllNamespaces: API.OperationMethod<
   WatchCoordinationV1LeaseListForAllNamespacesError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(65, __c8, 1) as any as S.Schema<WatchCoordinationV1LeaseListForAllNamespacesRequest>,
-  output: __S(59, __c7, 3) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1WatchEvent>,
+  input: __S(280, __c35, 0) as any as S.Schema<WatchCoordinationV1LeaseListForAllNamespacesRequest>,
+  output: __S(232, __c29, 0) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1WatchEvent>,
   errors: [UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -1868,8 +1868,8 @@ export const watchCoordinationV1NamespacedLease: API.OperationMethod<
   WatchCoordinationV1NamespacedLeaseError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(66, __c8, 2) as any as S.Schema<WatchCoordinationV1NamespacedLeaseRequest>,
-  output: __S(59, __c7, 3) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1WatchEvent>,
+  input: __S(288, __c36, 0) as any as S.Schema<WatchCoordinationV1NamespacedLeaseRequest>,
+  output: __S(232, __c29, 0) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1WatchEvent>,
   errors: [UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -1883,8 +1883,8 @@ export const watchCoordinationV1NamespacedLeaseList: API.OperationMethod<
   WatchCoordinationV1NamespacedLeaseListError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(67, __c8, 3) as any as S.Schema<WatchCoordinationV1NamespacedLeaseListRequest>,
-  output: __S(59, __c7, 3) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1WatchEvent>,
+  input: __S(296, __c37, 0) as any as S.Schema<WatchCoordinationV1NamespacedLeaseListRequest>,
+  output: __S(232, __c29, 0) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1WatchEvent>,
   errors: [UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -1894,191 +1894,6 @@ export const watchCoordinationV1NamespacedLeaseList: API.OperationMethod<
 function __c0(j: number): any {
   switch (j) {
     case 0:
-      return S.Record(S.String, S.String);
-    case 1:
-      return S.Array(S.String);
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          apiVersion: S.optional(S.String),
-          fieldsType: S.optional(S.String),
-          fieldsV1: S.optional(S.Unknown),
-          manager: S.optional(S.String),
-          operation: S.optional(S.String),
-          subresource: S.optional(S.String),
-          time: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "IoK8sApimachineryPkgApisMetaV1ManagedFieldsEntry",
-      });
-    case 3:
-      return S.Array(__S(2, __c0, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          apiVersion: S.String,
-          blockOwnerDeletion: S.optional(S.Boolean),
-          controller: S.optional(S.Boolean),
-          kind: S.String,
-          name: S.String,
-          uid: S.String,
-        }),
-      ).annotate({
-        identifier: "IoK8sApimachineryPkgApisMetaV1OwnerReference",
-      });
-    case 5:
-      return S.Array(__S(4, __c0, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          annotations: S.optional(__S(0, __c0, 0)),
-          creationTimestamp: S.optional(S.String),
-          deletionGracePeriodSeconds: S.optional(S.Number),
-          deletionTimestamp: S.optional(S.String),
-          finalizers: S.optional(__S(1, __c0, 1)),
-          generateName: S.optional(S.String),
-          generation: S.optional(S.Number),
-          labels: S.optional(__S(0, __c0, 0)),
-          managedFields: S.optional(__S(3, __c0, 3)),
-          name: S.optional(S.String),
-          namespace: S.optional(S.String),
-          ownerReferences: S.optional(__S(5, __c0, 5)),
-          resourceVersion: S.optional(S.String),
-          selfLink: S.optional(S.String),
-          uid: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "IoK8sApimachineryPkgApisMetaV1ObjectMeta",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          binaryVersion: S.String,
-          emulationVersion: S.optional(S.String),
-          leaseName: S.String,
-          pingTime: S.optional(S.String),
-          renewTime: S.optional(S.String),
-          strategy: S.String,
-        }),
-      ).annotate({
-        identifier: "IoK8sApiCoordinationV1alpha2LeaseCandidateSpec",
-      });
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          namespace: S.String.pipe(T.Label()),
-          pretty: S.optional(S.String.pipe(T.Query())),
-          dryRun: S.optional(S.String.pipe(T.Query())),
-          fieldManager: S.optional(S.String.pipe(T.Query())),
-          fieldValidation: S.optional(S.String.pipe(T.Query())),
-          apiVersion: S.optional(S.String),
-          kind: S.optional(S.String),
-          metadata: S.optional(__S(6, __c0, 6)),
-          spec: __S(7, __c0, 7),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/apis/coordination.k8s.io/v1alpha2/namespaces/{namespace}/leasecandidates",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateCoordinationV1alpha2NamespacedLeaseCandidateRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          apiVersion: S.optional(S.String),
-          kind: S.optional(S.String),
-          metadata: S.optional(__S(6, __c0, 6)),
-          spec: __S(7, __c0, 7),
-        }),
-      ).annotate({
-        identifier: "IoK8sApiCoordinationV1alpha2LeaseCandidate",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          namespace: S.String.pipe(T.Label()),
-          pretty: S.optional(S.String.pipe(T.Query())),
-          dryRun: S.optional(S.String.pipe(T.Query())),
-          fieldManager: S.optional(S.String.pipe(T.Query())),
-          fieldValidation: S.optional(S.String.pipe(T.Query())),
-          apiVersion: S.optional(S.String),
-          kind: S.optional(S.String),
-          metadata: S.optional(__S(6, __c0, 6)),
-          spec: __S(7, __c0, 7),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/apis/coordination.k8s.io/v1beta1/namespaces/{namespace}/leasecandidates",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateCoordinationV1beta1NamespacedLeaseCandidateRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          acquireTime: S.optional(S.String),
-          holderIdentity: S.optional(S.String),
-          leaseDurationSeconds: S.optional(S.Number),
-          leaseTransitions: S.optional(S.Number),
-          preferredHolder: S.optional(S.String),
-          renewTime: S.optional(S.String),
-          strategy: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "IoK8sApiCoordinationV1LeaseSpec",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          namespace: S.String.pipe(T.Label()),
-          pretty: S.optional(S.String.pipe(T.Query())),
-          dryRun: S.optional(S.String.pipe(T.Query())),
-          fieldManager: S.optional(S.String.pipe(T.Query())),
-          fieldValidation: S.optional(S.String.pipe(T.Query())),
-          apiVersion: S.optional(S.String),
-          kind: S.optional(S.String),
-          metadata: S.optional(__S(6, __c0, 6)),
-          spec: S.optional(__S(11, __c1, 3)),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/apis/coordination.k8s.io/v1/namespaces/{namespace}/leases",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateCoordinationV1NamespacedLeaseRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          apiVersion: S.optional(S.String),
-          kind: S.optional(S.String),
-          metadata: S.optional(__S(6, __c0, 6)),
-          spec: S.optional(__S(11, __c1, 3)),
-        }),
-      ).annotate({
-        identifier: "IoK8sApiCoordinationV1Lease",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          resourceVersion: S.optional(S.String),
-          uid: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "IoK8sApimachineryPkgApisMetaV1Preconditions",
-      });
-    case 7:
       return S.suspend(() =>
         S.Struct({
           namespace: S.String.pipe(T.Label()),
@@ -2099,187 +1914,7 @@ function __c1(j: number): any {
           timeoutSeconds: S.optional(S.Number.pipe(T.Query())),
           apiVersion: S.optional(S.String),
           kind: S.optional(S.String),
-          preconditions: S.optional(__S(14, __c1, 6)),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/apis/coordination.k8s.io/v1alpha2/namespaces/{namespace}/leasecandidates",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteCoordinationV1alpha2CollectionNamespacedLeaseCandidateRequest",
-      });
-  }
-}
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          field: S.optional(S.String),
-          message: S.optional(S.String),
-          reason: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "IoK8sApimachineryPkgApisMetaV1StatusCause",
-      });
-    case 1:
-      return S.Array(__S(16, __c2, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          causes: S.optional(__S(17, __c2, 1)),
-          group: S.optional(S.String),
-          kind: S.optional(S.String),
-          name: S.optional(S.String),
-          retryAfterSeconds: S.optional(S.Number),
-          uid: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "IoK8sApimachineryPkgApisMetaV1StatusDetails",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          selector: S.String,
-        }),
-      ).annotate({
-        identifier: "IoK8sApimachineryPkgApisMetaV1ShardInfo",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          continue: S.optional(S.String),
-          remainingItemCount: S.optional(S.Number),
-          resourceVersion: S.optional(S.String),
-          selfLink: S.optional(S.String),
-          shardInfo: S.optional(__S(19, __c2, 3)),
-        }),
-      ).annotate({
-        identifier: "IoK8sApimachineryPkgApisMetaV1ListMeta",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          apiVersion: S.optional(S.String),
-          code: S.optional(S.Number),
-          details: S.optional(__S(18, __c2, 2)),
-          kind: S.optional(S.String),
-          message: S.optional(S.String),
-          metadata: S.optional(__S(20, __c2, 4)),
-          reason: S.optional(S.String),
-          status: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "IoK8sApimachineryPkgApisMetaV1Status",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          namespace: S.String.pipe(T.Label()),
-          name: S.String.pipe(T.Label()),
-          pretty: S.optional(S.String.pipe(T.Query())),
-          dryRun: S.optional(S.String.pipe(T.Query())),
-          gracePeriodSeconds: S.optional(S.Number.pipe(T.Query())),
-          ignoreStoreReadErrorWithClusterBreakingPotential: S.optional(S.Boolean.pipe(T.Query())),
-          orphanDependents: S.optional(S.Boolean.pipe(T.Query())),
-          propagationPolicy: S.optional(S.String.pipe(T.Query())),
-          apiVersion: S.optional(S.String),
-          kind: S.optional(S.String),
-          preconditions: S.optional(__S(14, __c1, 6)),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/apis/coordination.k8s.io/v1alpha2/namespaces/{namespace}/leasecandidates/{name}",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteCoordinationV1alpha2NamespacedLeaseCandidateRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          namespace: S.String.pipe(T.Label()),
-          pretty: S.optional(S.String.pipe(T.Query())),
-          continue: S.optional(S.String.pipe(T.Query())),
-          dryRun: S.optional(S.String.pipe(T.Query())),
-          fieldSelector: S.optional(S.String.pipe(T.Query())),
-          gracePeriodSeconds: S.optional(S.Number.pipe(T.Query())),
-          ignoreStoreReadErrorWithClusterBreakingPotential: S.optional(S.Boolean.pipe(T.Query())),
-          labelSelector: S.optional(S.String.pipe(T.Query())),
-          limit: S.optional(S.Number.pipe(T.Query())),
-          orphanDependents: S.optional(S.Boolean.pipe(T.Query())),
-          propagationPolicy: S.optional(S.String.pipe(T.Query())),
-          resourceVersion: S.optional(S.String.pipe(T.Query())),
-          resourceVersionMatch: S.optional(S.String.pipe(T.Query())),
-          sendInitialEvents: S.optional(S.Boolean.pipe(T.Query())),
-          shardSelector: S.optional(S.String.pipe(T.Query())),
-          timeoutSeconds: S.optional(S.Number.pipe(T.Query())),
-          apiVersion: S.optional(S.String),
-          kind: S.optional(S.String),
-          preconditions: S.optional(__S(14, __c1, 6)),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/apis/coordination.k8s.io/v1beta1/namespaces/{namespace}/leasecandidates",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteCoordinationV1beta1CollectionNamespacedLeaseCandidateRequest",
-      });
-  }
-}
-function __c3(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          namespace: S.String.pipe(T.Label()),
-          name: S.String.pipe(T.Label()),
-          pretty: S.optional(S.String.pipe(T.Query())),
-          dryRun: S.optional(S.String.pipe(T.Query())),
-          gracePeriodSeconds: S.optional(S.Number.pipe(T.Query())),
-          ignoreStoreReadErrorWithClusterBreakingPotential: S.optional(S.Boolean.pipe(T.Query())),
-          orphanDependents: S.optional(S.Boolean.pipe(T.Query())),
-          propagationPolicy: S.optional(S.String.pipe(T.Query())),
-          apiVersion: S.optional(S.String),
-          kind: S.optional(S.String),
-          preconditions: S.optional(__S(14, __c1, 6)),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/apis/coordination.k8s.io/v1beta1/namespaces/{namespace}/leasecandidates/{name}",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteCoordinationV1beta1NamespacedLeaseCandidateRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          namespace: S.String.pipe(T.Label()),
-          pretty: S.optional(S.String.pipe(T.Query())),
-          continue: S.optional(S.String.pipe(T.Query())),
-          dryRun: S.optional(S.String.pipe(T.Query())),
-          fieldSelector: S.optional(S.String.pipe(T.Query())),
-          gracePeriodSeconds: S.optional(S.Number.pipe(T.Query())),
-          ignoreStoreReadErrorWithClusterBreakingPotential: S.optional(S.Boolean.pipe(T.Query())),
-          labelSelector: S.optional(S.String.pipe(T.Query())),
-          limit: S.optional(S.Number.pipe(T.Query())),
-          orphanDependents: S.optional(S.Boolean.pipe(T.Query())),
-          propagationPolicy: S.optional(S.String.pipe(T.Query())),
-          resourceVersion: S.optional(S.String.pipe(T.Query())),
-          resourceVersionMatch: S.optional(S.String.pipe(T.Query())),
-          sendInitialEvents: S.optional(S.Boolean.pipe(T.Query())),
-          shardSelector: S.optional(S.String.pipe(T.Query())),
-          timeoutSeconds: S.optional(S.Number.pipe(T.Query())),
-          apiVersion: S.optional(S.String),
-          kind: S.optional(S.String),
-          preconditions: S.optional(__S(14, __c1, 6)),
+          preconditions: S.optional(__S(336, __c42, 0)),
         }).pipe(
           T.Http({
             method: "DELETE",
@@ -2290,7 +1925,11 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "DeleteCoordinationV1CollectionNamespacedLeaseRequest",
       });
-    case 2:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           namespace: S.String.pipe(T.Label()),
@@ -2303,7 +1942,7 @@ function __c3(j: number): any {
           propagationPolicy: S.optional(S.String.pipe(T.Query())),
           apiVersion: S.optional(S.String),
           kind: S.optional(S.String),
-          preconditions: S.optional(__S(14, __c1, 6)),
+          preconditions: S.optional(__S(336, __c42, 0)),
         }).pipe(
           T.Http({
             method: "DELETE",
@@ -2314,13 +1953,17 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "DeleteCoordinationV1NamespacedLeaseRequest",
       });
-    case 3:
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({}).pipe(T.Http({ method: "GET", uri: "/apis/coordination.k8s.io/", code: 200 })),
       ).annotate({
         identifier: "GetCoordinationAPIGroupRequest",
       });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           groupVersion: S.String,
@@ -2329,7 +1972,7 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "IoK8sApimachineryPkgApisMetaV1GroupVersionForDiscovery",
       });
-    case 5:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           clientCIDR: S.String,
@@ -2338,28 +1981,28 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "IoK8sApimachineryPkgApisMetaV1ServerAddressByClientCIDR",
       });
-    case 6:
-      return S.Array(__S(29, __c3, 5));
-    case 7:
-      return S.Array(__S(28, __c3, 4));
-  }
-}
-function __c4(j: number): any {
-  switch (j) {
-    case 0:
+    case 3:
+      return S.Array(__S(18, __c2, 2));
+    case 4:
+      return S.Array(__S(17, __c2, 1));
+    case 5:
       return S.suspend(() =>
         S.Struct({
           apiVersion: S.optional(S.String),
           kind: S.optional(S.String),
           name: S.String,
-          preferredVersion: S.optional(__S(28, __c3, 4)),
-          serverAddressByClientCIDRs: S.optional(__S(30, __c3, 6)),
-          versions: __S(31, __c3, 7),
+          preferredVersion: S.optional(__S(17, __c2, 1)),
+          serverAddressByClientCIDRs: S.optional(__S(19, __c2, 3)),
+          versions: __S(20, __c2, 4),
         }),
       ).annotate({
         identifier: "IoK8sApimachineryPkgApisMetaV1APIGroup",
       });
-    case 1:
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({}).pipe(
           T.Http({ method: "GET", uri: "/apis/coordination.k8s.io/v1alpha2/", code: 200 }),
@@ -2367,37 +2010,45 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "GetCoordinationV1alpha2APIResourcesRequest",
       });
-    case 2:
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          categories: S.optional(__S(1, __c0, 1)),
+          categories: S.optional(__S(200, __c25, 0)),
           group: S.optional(S.String),
           kind: S.String,
           name: S.String,
           namespaced: S.Boolean,
-          shortNames: S.optional(__S(1, __c0, 1)),
+          shortNames: S.optional(__S(200, __c25, 0)),
           singularName: S.String,
           storageVersionHash: S.optional(S.String),
-          verbs: __S(1, __c0, 1),
+          verbs: __S(200, __c25, 0),
           version: S.optional(S.String),
         }),
       ).annotate({
         identifier: "IoK8sApimachineryPkgApisMetaV1APIResource",
       });
-    case 3:
-      return S.Array(__S(34, __c4, 2));
-    case 4:
+    case 1:
+      return S.Array(__S(32, __c4, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           apiVersion: S.optional(S.String),
           groupVersion: S.String,
           kind: S.optional(S.String),
-          resources: __S(35, __c4, 3),
+          resources: __S(33, __c4, 1),
         }),
       ).annotate({
         identifier: "IoK8sApimachineryPkgApisMetaV1APIResourceList",
       });
-    case 5:
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({}).pipe(
           T.Http({ method: "GET", uri: "/apis/coordination.k8s.io/v1/", code: 200 }),
@@ -2405,7 +2056,11 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "GetCoordinationV1APIResourcesRequest",
       });
-    case 6:
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({}).pipe(
           T.Http({ method: "GET", uri: "/apis/coordination.k8s.io/v1beta1/", code: 200 }),
@@ -2413,7 +2068,11 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "GetCoordinationV1beta1APIResourcesRequest",
       });
-    case 7:
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           allowWatchBookmarks: S.optional(S.Boolean.pipe(T.Query())),
@@ -2440,22 +2099,26 @@ function __c4(j: number): any {
       });
   }
 }
-function __c5(j: number): any {
+function __c8(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(9, __c1, 1));
+      return S.Array(__S(193, __c24, 1));
     case 1:
       return S.suspend(() =>
         S.Struct({
           apiVersion: S.optional(S.String),
-          items: __S(40, __c5, 0),
+          items: __S(64, __c8, 0),
           kind: S.optional(S.String),
-          metadata: S.optional(__S(20, __c2, 4)),
+          metadata: S.optional(__S(345, __c43, 1)),
         }),
       ).annotate({
         identifier: "IoK8sApiCoordinationV1alpha2LeaseCandidateList",
       });
-    case 2:
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           namespace: S.String.pipe(T.Label()),
@@ -2481,7 +2144,11 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "ListCoordinationV1alpha2NamespacedLeaseCandidateRequest",
       });
-    case 3:
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           allowWatchBookmarks: S.optional(S.Boolean.pipe(T.Query())),
@@ -2506,7 +2173,11 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "ListCoordinationV1beta1LeaseCandidateForAllNamespacesRequest",
       });
-    case 4:
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           namespace: S.String.pipe(T.Label()),
@@ -2532,7 +2203,11 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "ListCoordinationV1beta1NamespacedLeaseCandidateRequest",
       });
-    case 5:
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           allowWatchBookmarks: S.optional(S.Boolean.pipe(T.Query())),
@@ -2551,22 +2226,26 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "ListCoordinationV1LeaseForAllNamespacesRequest",
       });
-    case 6:
-      return S.Array(__S(13, __c1, 5));
-    case 7:
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(321, __c40, 1));
+    case 1:
       return S.suspend(() =>
         S.Struct({
           apiVersion: S.optional(S.String),
-          items: __S(46, __c5, 6),
+          items: __S(104, __c13, 0),
           kind: S.optional(S.String),
-          metadata: S.optional(__S(20, __c2, 4)),
+          metadata: S.optional(__S(345, __c43, 1)),
         }),
       ).annotate({
         identifier: "IoK8sApiCoordinationV1LeaseList",
       });
   }
 }
-function __c6(j: number): any {
+function __c14(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2594,7 +2273,11 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "ListCoordinationV1NamespacedLeaseRequest",
       });
-    case 1:
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           namespace: S.String.pipe(T.Label()),
@@ -2614,7 +2297,11 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "PatchCoordinationV1alpha2NamespacedLeaseCandidateRequest",
       });
-    case 2:
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           namespace: S.String.pipe(T.Label()),
@@ -2634,7 +2321,11 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "PatchCoordinationV1beta1NamespacedLeaseCandidateRequest",
       });
-    case 3:
+  }
+}
+function __c17(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           namespace: S.String.pipe(T.Label()),
@@ -2654,7 +2345,11 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "PatchCoordinationV1NamespacedLeaseRequest",
       });
-    case 4:
+  }
+}
+function __c18(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           namespace: S.String.pipe(T.Label()),
@@ -2670,7 +2365,11 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "ReadCoordinationV1alpha2NamespacedLeaseCandidateRequest",
       });
-    case 5:
+  }
+}
+function __c19(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           namespace: S.String.pipe(T.Label()),
@@ -2686,7 +2385,11 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "ReadCoordinationV1beta1NamespacedLeaseCandidateRequest",
       });
-    case 6:
+  }
+}
+function __c20(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           namespace: S.String.pipe(T.Label()),
@@ -2702,32 +2405,9 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "ReadCoordinationV1NamespacedLeaseRequest",
       });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          namespace: S.String.pipe(T.Label()),
-          name: S.String.pipe(T.Label()),
-          pretty: S.optional(S.String.pipe(T.Query())),
-          dryRun: S.optional(S.String.pipe(T.Query())),
-          fieldManager: S.optional(S.String.pipe(T.Query())),
-          fieldValidation: S.optional(S.String.pipe(T.Query())),
-          apiVersion: S.optional(S.String),
-          kind: S.optional(S.String),
-          metadata: S.optional(__S(6, __c0, 6)),
-          spec: __S(7, __c0, 7),
-        }).pipe(
-          T.Http({
-            method: "PUT",
-            uri: "/apis/coordination.k8s.io/v1alpha2/namespaces/{namespace}/leasecandidates/{name}",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "ReplaceCoordinationV1alpha2NamespacedLeaseCandidateRequest",
-      });
   }
 }
-function __c7(j: number): any {
+function __c21(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2740,19 +2420,23 @@ function __c7(j: number): any {
           fieldValidation: S.optional(S.String.pipe(T.Query())),
           apiVersion: S.optional(S.String),
           kind: S.optional(S.String),
-          metadata: S.optional(__S(6, __c0, 6)),
-          spec: __S(7, __c0, 7),
+          metadata: S.optional(__S(213, __c26, 5)),
+          spec: __S(192, __c24, 0),
         }).pipe(
           T.Http({
             method: "PUT",
-            uri: "/apis/coordination.k8s.io/v1beta1/namespaces/{namespace}/leasecandidates/{name}",
+            uri: "/apis/coordination.k8s.io/v1alpha2/namespaces/{namespace}/leasecandidates/{name}",
             code: 200,
           }),
         ),
       ).annotate({
-        identifier: "ReplaceCoordinationV1beta1NamespacedLeaseCandidateRequest",
+        identifier: "ReplaceCoordinationV1alpha2NamespacedLeaseCandidateRequest",
       });
-    case 1:
+  }
+}
+function __c22(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           namespace: S.String.pipe(T.Label()),
@@ -2763,8 +2447,154 @@ function __c7(j: number): any {
           fieldValidation: S.optional(S.String.pipe(T.Query())),
           apiVersion: S.optional(S.String),
           kind: S.optional(S.String),
-          metadata: S.optional(__S(6, __c0, 6)),
-          spec: S.optional(__S(11, __c1, 3)),
+          metadata: S.optional(__S(213, __c26, 5)),
+          spec: __S(192, __c24, 0),
+        }).pipe(
+          T.Http({
+            method: "PUT",
+            uri: "/apis/coordination.k8s.io/v1beta1/namespaces/{namespace}/leasecandidates/{name}",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "ReplaceCoordinationV1beta1NamespacedLeaseCandidateRequest",
+      });
+  }
+}
+function __c23(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          namespace: S.String.pipe(T.Label()),
+          pretty: S.optional(S.String.pipe(T.Query())),
+          dryRun: S.optional(S.String.pipe(T.Query())),
+          fieldManager: S.optional(S.String.pipe(T.Query())),
+          fieldValidation: S.optional(S.String.pipe(T.Query())),
+          apiVersion: S.optional(S.String),
+          kind: S.optional(S.String),
+          metadata: S.optional(__S(213, __c26, 5)),
+          spec: __S(192, __c24, 0),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/apis/coordination.k8s.io/v1alpha2/namespaces/{namespace}/leasecandidates",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateCoordinationV1alpha2NamespacedLeaseCandidateRequest",
+      });
+  }
+}
+function __c24(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          binaryVersion: S.String,
+          emulationVersion: S.optional(S.String),
+          leaseName: S.String,
+          pingTime: S.optional(S.String),
+          renewTime: S.optional(S.String),
+          strategy: S.String,
+        }),
+      ).annotate({
+        identifier: "IoK8sApiCoordinationV1alpha2LeaseCandidateSpec",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          apiVersion: S.optional(S.String),
+          kind: S.optional(S.String),
+          metadata: S.optional(__S(213, __c26, 5)),
+          spec: __S(192, __c24, 0),
+        }),
+      ).annotate({
+        identifier: "IoK8sApiCoordinationV1alpha2LeaseCandidate",
+      });
+  }
+}
+function __c25(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c26(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, S.String);
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          apiVersion: S.optional(S.String),
+          fieldsType: S.optional(S.String),
+          fieldsV1: S.optional(S.Unknown),
+          manager: S.optional(S.String),
+          operation: S.optional(S.String),
+          subresource: S.optional(S.String),
+          time: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "IoK8sApimachineryPkgApisMetaV1ManagedFieldsEntry",
+      });
+    case 2:
+      return S.Array(__S(209, __c26, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          apiVersion: S.String,
+          blockOwnerDeletion: S.optional(S.Boolean),
+          controller: S.optional(S.Boolean),
+          kind: S.String,
+          name: S.String,
+          uid: S.String,
+        }),
+      ).annotate({
+        identifier: "IoK8sApimachineryPkgApisMetaV1OwnerReference",
+      });
+    case 4:
+      return S.Array(__S(211, __c26, 3));
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          annotations: S.optional(__S(208, __c26, 0)),
+          creationTimestamp: S.optional(S.String),
+          deletionGracePeriodSeconds: S.optional(S.Number),
+          deletionTimestamp: S.optional(S.String),
+          finalizers: S.optional(__S(200, __c25, 0)),
+          generateName: S.optional(S.String),
+          generation: S.optional(S.Number),
+          labels: S.optional(__S(208, __c26, 0)),
+          managedFields: S.optional(__S(210, __c26, 2)),
+          name: S.optional(S.String),
+          namespace: S.optional(S.String),
+          ownerReferences: S.optional(__S(212, __c26, 4)),
+          resourceVersion: S.optional(S.String),
+          selfLink: S.optional(S.String),
+          uid: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "IoK8sApimachineryPkgApisMetaV1ObjectMeta",
+      });
+  }
+}
+function __c27(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          namespace: S.String.pipe(T.Label()),
+          name: S.String.pipe(T.Label()),
+          pretty: S.optional(S.String.pipe(T.Query())),
+          dryRun: S.optional(S.String.pipe(T.Query())),
+          fieldManager: S.optional(S.String.pipe(T.Query())),
+          fieldValidation: S.optional(S.String.pipe(T.Query())),
+          apiVersion: S.optional(S.String),
+          kind: S.optional(S.String),
+          metadata: S.optional(__S(213, __c26, 5)),
+          spec: S.optional(__S(320, __c40, 0)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -2775,7 +2605,11 @@ function __c7(j: number): any {
       ).annotate({
         identifier: "ReplaceCoordinationV1NamespacedLeaseRequest",
       });
-    case 2:
+  }
+}
+function __c28(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           allowWatchBookmarks: S.optional(S.Boolean.pipe(T.Query())),
@@ -2800,7 +2634,11 @@ function __c7(j: number): any {
       ).annotate({
         identifier: "WatchCoordinationV1alpha2LeaseCandidateListForAllNamespacesRequest",
       });
-    case 3:
+  }
+}
+function __c29(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           object: S.Unknown,
@@ -2809,7 +2647,11 @@ function __c7(j: number): any {
       ).annotate({
         identifier: "IoK8sApimachineryPkgApisMetaV1WatchEvent",
       });
-    case 4:
+  }
+}
+function __c30(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           namespace: S.String.pipe(T.Label()),
@@ -2836,7 +2678,11 @@ function __c7(j: number): any {
       ).annotate({
         identifier: "WatchCoordinationV1alpha2NamespacedLeaseCandidateRequest",
       });
-    case 5:
+  }
+}
+function __c31(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           namespace: S.String.pipe(T.Label()),
@@ -2862,7 +2708,11 @@ function __c7(j: number): any {
       ).annotate({
         identifier: "WatchCoordinationV1alpha2NamespacedLeaseCandidateListRequest",
       });
-    case 6:
+  }
+}
+function __c32(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           allowWatchBookmarks: S.optional(S.Boolean.pipe(T.Query())),
@@ -2887,7 +2737,11 @@ function __c7(j: number): any {
       ).annotate({
         identifier: "WatchCoordinationV1beta1LeaseCandidateListForAllNamespacesRequest",
       });
-    case 7:
+  }
+}
+function __c33(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           namespace: S.String.pipe(T.Label()),
@@ -2916,7 +2770,7 @@ function __c7(j: number): any {
       });
   }
 }
-function __c8(j: number): any {
+function __c34(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2944,7 +2798,11 @@ function __c8(j: number): any {
       ).annotate({
         identifier: "WatchCoordinationV1beta1NamespacedLeaseCandidateListRequest",
       });
-    case 1:
+  }
+}
+function __c35(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           allowWatchBookmarks: S.optional(S.Boolean.pipe(T.Query())),
@@ -2965,7 +2823,11 @@ function __c8(j: number): any {
       ).annotate({
         identifier: "WatchCoordinationV1LeaseListForAllNamespacesRequest",
       });
-    case 2:
+  }
+}
+function __c36(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           namespace: S.String.pipe(T.Label()),
@@ -2992,7 +2854,11 @@ function __c8(j: number): any {
       ).annotate({
         identifier: "WatchCoordinationV1NamespacedLeaseRequest",
       });
-    case 3:
+  }
+}
+function __c37(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           namespace: S.String.pipe(T.Label()),
@@ -3020,7 +2886,292 @@ function __c8(j: number): any {
       });
   }
 }
-
+function __c38(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          namespace: S.String.pipe(T.Label()),
+          pretty: S.optional(S.String.pipe(T.Query())),
+          dryRun: S.optional(S.String.pipe(T.Query())),
+          fieldManager: S.optional(S.String.pipe(T.Query())),
+          fieldValidation: S.optional(S.String.pipe(T.Query())),
+          apiVersion: S.optional(S.String),
+          kind: S.optional(S.String),
+          metadata: S.optional(__S(213, __c26, 5)),
+          spec: __S(192, __c24, 0),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/apis/coordination.k8s.io/v1beta1/namespaces/{namespace}/leasecandidates",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateCoordinationV1beta1NamespacedLeaseCandidateRequest",
+      });
+  }
+}
+function __c39(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          namespace: S.String.pipe(T.Label()),
+          pretty: S.optional(S.String.pipe(T.Query())),
+          dryRun: S.optional(S.String.pipe(T.Query())),
+          fieldManager: S.optional(S.String.pipe(T.Query())),
+          fieldValidation: S.optional(S.String.pipe(T.Query())),
+          apiVersion: S.optional(S.String),
+          kind: S.optional(S.String),
+          metadata: S.optional(__S(213, __c26, 5)),
+          spec: S.optional(__S(320, __c40, 0)),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/apis/coordination.k8s.io/v1/namespaces/{namespace}/leases",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateCoordinationV1NamespacedLeaseRequest",
+      });
+  }
+}
+function __c40(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          acquireTime: S.optional(S.String),
+          holderIdentity: S.optional(S.String),
+          leaseDurationSeconds: S.optional(S.Number),
+          leaseTransitions: S.optional(S.Number),
+          preferredHolder: S.optional(S.String),
+          renewTime: S.optional(S.String),
+          strategy: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "IoK8sApiCoordinationV1LeaseSpec",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          apiVersion: S.optional(S.String),
+          kind: S.optional(S.String),
+          metadata: S.optional(__S(213, __c26, 5)),
+          spec: S.optional(__S(320, __c40, 0)),
+        }),
+      ).annotate({
+        identifier: "IoK8sApiCoordinationV1Lease",
+      });
+  }
+}
+function __c41(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          namespace: S.String.pipe(T.Label()),
+          pretty: S.optional(S.String.pipe(T.Query())),
+          continue: S.optional(S.String.pipe(T.Query())),
+          dryRun: S.optional(S.String.pipe(T.Query())),
+          fieldSelector: S.optional(S.String.pipe(T.Query())),
+          gracePeriodSeconds: S.optional(S.Number.pipe(T.Query())),
+          ignoreStoreReadErrorWithClusterBreakingPotential: S.optional(S.Boolean.pipe(T.Query())),
+          labelSelector: S.optional(S.String.pipe(T.Query())),
+          limit: S.optional(S.Number.pipe(T.Query())),
+          orphanDependents: S.optional(S.Boolean.pipe(T.Query())),
+          propagationPolicy: S.optional(S.String.pipe(T.Query())),
+          resourceVersion: S.optional(S.String.pipe(T.Query())),
+          resourceVersionMatch: S.optional(S.String.pipe(T.Query())),
+          sendInitialEvents: S.optional(S.Boolean.pipe(T.Query())),
+          shardSelector: S.optional(S.String.pipe(T.Query())),
+          timeoutSeconds: S.optional(S.Number.pipe(T.Query())),
+          apiVersion: S.optional(S.String),
+          kind: S.optional(S.String),
+          preconditions: S.optional(__S(336, __c42, 0)),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/apis/coordination.k8s.io/v1alpha2/namespaces/{namespace}/leasecandidates",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteCoordinationV1alpha2CollectionNamespacedLeaseCandidateRequest",
+      });
+  }
+}
+function __c42(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          resourceVersion: S.optional(S.String),
+          uid: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "IoK8sApimachineryPkgApisMetaV1Preconditions",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          field: S.optional(S.String),
+          message: S.optional(S.String),
+          reason: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "IoK8sApimachineryPkgApisMetaV1StatusCause",
+      });
+    case 2:
+      return S.Array(__S(337, __c42, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          causes: S.optional(__S(338, __c42, 2)),
+          group: S.optional(S.String),
+          kind: S.optional(S.String),
+          name: S.optional(S.String),
+          retryAfterSeconds: S.optional(S.Number),
+          uid: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "IoK8sApimachineryPkgApisMetaV1StatusDetails",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          apiVersion: S.optional(S.String),
+          code: S.optional(S.Number),
+          details: S.optional(__S(339, __c42, 3)),
+          kind: S.optional(S.String),
+          message: S.optional(S.String),
+          metadata: S.optional(__S(345, __c43, 1)),
+          reason: S.optional(S.String),
+          status: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "IoK8sApimachineryPkgApisMetaV1Status",
+      });
+  }
+}
+function __c43(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          selector: S.String,
+        }),
+      ).annotate({
+        identifier: "IoK8sApimachineryPkgApisMetaV1ShardInfo",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          continue: S.optional(S.String),
+          remainingItemCount: S.optional(S.Number),
+          resourceVersion: S.optional(S.String),
+          selfLink: S.optional(S.String),
+          shardInfo: S.optional(__S(344, __c43, 0)),
+        }),
+      ).annotate({
+        identifier: "IoK8sApimachineryPkgApisMetaV1ListMeta",
+      });
+  }
+}
+function __c44(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          namespace: S.String.pipe(T.Label()),
+          name: S.String.pipe(T.Label()),
+          pretty: S.optional(S.String.pipe(T.Query())),
+          dryRun: S.optional(S.String.pipe(T.Query())),
+          gracePeriodSeconds: S.optional(S.Number.pipe(T.Query())),
+          ignoreStoreReadErrorWithClusterBreakingPotential: S.optional(S.Boolean.pipe(T.Query())),
+          orphanDependents: S.optional(S.Boolean.pipe(T.Query())),
+          propagationPolicy: S.optional(S.String.pipe(T.Query())),
+          apiVersion: S.optional(S.String),
+          kind: S.optional(S.String),
+          preconditions: S.optional(__S(336, __c42, 0)),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/apis/coordination.k8s.io/v1alpha2/namespaces/{namespace}/leasecandidates/{name}",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteCoordinationV1alpha2NamespacedLeaseCandidateRequest",
+      });
+  }
+}
+function __c45(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          namespace: S.String.pipe(T.Label()),
+          pretty: S.optional(S.String.pipe(T.Query())),
+          continue: S.optional(S.String.pipe(T.Query())),
+          dryRun: S.optional(S.String.pipe(T.Query())),
+          fieldSelector: S.optional(S.String.pipe(T.Query())),
+          gracePeriodSeconds: S.optional(S.Number.pipe(T.Query())),
+          ignoreStoreReadErrorWithClusterBreakingPotential: S.optional(S.Boolean.pipe(T.Query())),
+          labelSelector: S.optional(S.String.pipe(T.Query())),
+          limit: S.optional(S.Number.pipe(T.Query())),
+          orphanDependents: S.optional(S.Boolean.pipe(T.Query())),
+          propagationPolicy: S.optional(S.String.pipe(T.Query())),
+          resourceVersion: S.optional(S.String.pipe(T.Query())),
+          resourceVersionMatch: S.optional(S.String.pipe(T.Query())),
+          sendInitialEvents: S.optional(S.Boolean.pipe(T.Query())),
+          shardSelector: S.optional(S.String.pipe(T.Query())),
+          timeoutSeconds: S.optional(S.Number.pipe(T.Query())),
+          apiVersion: S.optional(S.String),
+          kind: S.optional(S.String),
+          preconditions: S.optional(__S(336, __c42, 0)),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/apis/coordination.k8s.io/v1beta1/namespaces/{namespace}/leasecandidates",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteCoordinationV1beta1CollectionNamespacedLeaseCandidateRequest",
+      });
+  }
+}
+function __c46(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          namespace: S.String.pipe(T.Label()),
+          name: S.String.pipe(T.Label()),
+          pretty: S.optional(S.String.pipe(T.Query())),
+          dryRun: S.optional(S.String.pipe(T.Query())),
+          gracePeriodSeconds: S.optional(S.Number.pipe(T.Query())),
+          ignoreStoreReadErrorWithClusterBreakingPotential: S.optional(S.Boolean.pipe(T.Query())),
+          orphanDependents: S.optional(S.Boolean.pipe(T.Query())),
+          propagationPolicy: S.optional(S.String.pipe(T.Query())),
+          apiVersion: S.optional(S.String),
+          kind: S.optional(S.String),
+          preconditions: S.optional(__S(336, __c42, 0)),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/apis/coordination.k8s.io/v1beta1/namespaces/{namespace}/leasecandidates/{name}",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteCoordinationV1beta1NamespacedLeaseCandidateRequest",
+      });
+  }
+}
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

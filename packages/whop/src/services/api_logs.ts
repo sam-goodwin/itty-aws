@@ -161,7 +161,6 @@ function __c0(j: number): any {
       ).annotate({ identifier: "ListApiLogsResponse" });
   }
 }
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

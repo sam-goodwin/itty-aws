@@ -1422,8 +1422,8 @@ export const addRepoToInstallationForAuthenticatedUser: API.OperationMethod<
   AddRepoToInstallationForAuthenticatedUserError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(0, __c0, 0) as any as S.Schema<AddRepoToInstallationForAuthenticatedUserRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<AddRepoToInstallationForAuthenticatedUserResponse>,
+  input: __S(160, __c40, 0) as any as S.Schema<AddRepoToInstallationForAuthenticatedUserRequest>,
+  output: __S(164, __c41, 0) as any as S.Schema<AddRepoToInstallationForAuthenticatedUserResponse>,
   errors: [Forbidden, NotFound],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -1437,8 +1437,8 @@ export const checkToken: API.OperationMethod<
   CheckTokenError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2, __c0, 2) as any as S.Schema<CheckTokenRequest>,
-  output: __S(8, __c1, 0) as any as S.Schema<Authorization>,
+  input: __S(172, __c43, 0) as any as S.Schema<CheckTokenRequest>,
+  output: __S(178, __c44, 2) as any as S.Schema<Authorization>,
   errors: [NotFound, UnprocessableEntity],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -1452,8 +1452,8 @@ export const createFromManifest: API.OperationMethod<
   CreateFromManifestError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(9, __c1, 1) as any as S.Schema<CreateFromManifestRequest>,
-  output: __S(11, __c1, 3) as any as S.Schema<CreateFromManifestResponse>,
+  input: __S(192, __c48, 0) as any as S.Schema<CreateFromManifestRequest>,
+  output: __S(193, __c48, 1) as any as S.Schema<CreateFromManifestResponse>,
   errors: [NotFound, UnprocessableEntity],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -1471,8 +1471,8 @@ export const createInstallationAccessToken: API.OperationMethod<
   CreateInstallationAccessTokenError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(13, __c1, 5) as any as S.Schema<CreateInstallationAccessTokenRequest>,
-  output: __S(19, __c2, 3) as any as S.Schema<InstallationToken>,
+  input: __S(200, __c50, 0) as any as S.Schema<CreateInstallationAccessTokenRequest>,
+  output: __S(203, __c50, 3) as any as S.Schema<InstallationToken>,
   errors: [Forbidden, NotFound, UnprocessableEntity],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -1486,8 +1486,8 @@ export const deleteAuthorization: API.OperationMethod<
   DeleteAuthorizationError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(20, __c2, 4) as any as S.Schema<DeleteAuthorizationRequest>,
-  output: __S(21, __c2, 5) as any as S.Schema<DeleteAuthorizationResponse>,
+  input: __S(212, __c53, 0) as any as S.Schema<DeleteAuthorizationRequest>,
+  output: __S(216, __c54, 0) as any as S.Schema<DeleteAuthorizationResponse>,
   errors: [UnprocessableEntity],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -1501,8 +1501,8 @@ export const deleteInstallation: API.OperationMethod<
   DeleteInstallationError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(22, __c2, 6) as any as S.Schema<DeleteInstallationRequest>,
-  output: __S(21, __c2, 5) as any as S.Schema<DeleteInstallationResponse>,
+  input: __S(220, __c55, 0) as any as S.Schema<DeleteInstallationRequest>,
+  output: __S(216, __c54, 0) as any as S.Schema<DeleteInstallationResponse>,
   errors: [NotFound],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -1516,8 +1516,8 @@ export const deleteToken: API.OperationMethod<
   DeleteTokenError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(23, __c2, 7) as any as S.Schema<DeleteTokenRequest>,
-  output: __S(21, __c2, 5) as any as S.Schema<DeleteTokenResponse>,
+  input: __S(0, __c0, 0) as any as S.Schema<DeleteTokenRequest>,
+  output: __S(216, __c54, 0) as any as S.Schema<DeleteTokenResponse>,
   errors: [UnprocessableEntity],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -1531,8 +1531,8 @@ export const getAuthenticated: API.OperationMethod<
   GetAuthenticatedError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(24, __c3, 0) as any as S.Schema<GetAuthenticatedRequest>,
-  output: __S(25, __c3, 1) as any as S.Schema<Integration>,
+  input: __S(4, __c1, 0) as any as S.Schema<GetAuthenticatedRequest>,
+  output: __S(8, __c2, 0) as any as S.Schema<Integration>,
   errors: [],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -1546,8 +1546,8 @@ export const getBySlug: API.OperationMethod<
   GetBySlugError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(26, __c3, 2) as any as S.Schema<GetBySlugRequest>,
-  output: __S(25, __c3, 1) as any as S.Schema<Integration>,
+  input: __S(12, __c3, 0) as any as S.Schema<GetBySlugRequest>,
+  output: __S(8, __c2, 0) as any as S.Schema<Integration>,
   errors: [Forbidden, NotFound],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -1561,8 +1561,8 @@ export const getInstallation: API.OperationMethod<
   GetInstallationError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(27, __c3, 3) as any as S.Schema<GetInstallationRequest>,
-  output: __S(28, __c3, 4) as any as S.Schema<Installation>,
+  input: __S(16, __c4, 0) as any as S.Schema<GetInstallationRequest>,
+  output: __S(20, __c5, 0) as any as S.Schema<Installation>,
   errors: [NotFound],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -1576,8 +1576,8 @@ export const getOrgInstallation: API.OperationMethod<
   GetOrgInstallationError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(29, __c3, 5) as any as S.Schema<GetOrgInstallationRequest>,
-  output: __S(28, __c3, 4) as any as S.Schema<Installation>,
+  input: __S(24, __c6, 0) as any as S.Schema<GetOrgInstallationRequest>,
+  output: __S(20, __c5, 0) as any as S.Schema<Installation>,
   errors: [],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -1591,8 +1591,8 @@ export const getRepoInstallation: API.OperationMethod<
   GetRepoInstallationError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(30, __c3, 6) as any as S.Schema<GetRepoInstallationRequest>,
-  output: __S(28, __c3, 4) as any as S.Schema<Installation>,
+  input: __S(28, __c7, 0) as any as S.Schema<GetRepoInstallationRequest>,
+  output: __S(20, __c5, 0) as any as S.Schema<Installation>,
   errors: [NotFound],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -1606,8 +1606,8 @@ export const getSubscriptionPlanForAccount: API.OperationMethod<
   GetSubscriptionPlanForAccountError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(31, __c3, 7) as any as S.Schema<GetSubscriptionPlanForAccountRequest>,
-  output: __S(35, __c4, 3) as any as S.Schema<MarketplacePurchase>,
+  input: __S(32, __c8, 0) as any as S.Schema<GetSubscriptionPlanForAccountRequest>,
+  output: __S(38, __c9, 2) as any as S.Schema<MarketplacePurchase>,
   errors: [NotFound],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -1621,8 +1621,8 @@ export const getSubscriptionPlanForAccountStubbed: API.OperationMethod<
   GetSubscriptionPlanForAccountStubbedError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(36, __c4, 4) as any as S.Schema<GetSubscriptionPlanForAccountStubbedRequest>,
-  output: __S(35, __c4, 3) as any as S.Schema<MarketplacePurchase>,
+  input: __S(44, __c11, 0) as any as S.Schema<GetSubscriptionPlanForAccountStubbedRequest>,
+  output: __S(38, __c9, 2) as any as S.Schema<MarketplacePurchase>,
   errors: [NotFound],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -1636,8 +1636,8 @@ export const getUserInstallation: API.OperationMethod<
   GetUserInstallationError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(37, __c4, 5) as any as S.Schema<GetUserInstallationRequest>,
-  output: __S(28, __c3, 4) as any as S.Schema<Installation>,
+  input: __S(48, __c12, 0) as any as S.Schema<GetUserInstallationRequest>,
+  output: __S(20, __c5, 0) as any as S.Schema<Installation>,
   errors: [],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -1651,8 +1651,8 @@ export const getWebhookConfigForApp: API.OperationMethod<
   GetWebhookConfigForAppError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(38, __c4, 6) as any as S.Schema<GetWebhookConfigForAppRequest>,
-  output: __S(39, __c4, 7) as any as S.Schema<WebhookConfig>,
+  input: __S(52, __c13, 0) as any as S.Schema<GetWebhookConfigForAppRequest>,
+  output: __S(56, __c14, 0) as any as S.Schema<WebhookConfig>,
   errors: [],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -1666,8 +1666,8 @@ export const getWebhookDelivery: API.OperationMethod<
   GetWebhookDeliveryError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(40, __c5, 0) as any as S.Schema<GetWebhookDeliveryRequest>,
-  output: __S(43, __c5, 3) as any as S.Schema<HookDelivery>,
+  input: __S(60, __c15, 0) as any as S.Schema<GetWebhookDeliveryRequest>,
+  output: __S(63, __c15, 3) as any as S.Schema<HookDelivery>,
   errors: [BadRequest, UnprocessableEntity],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -1681,8 +1681,8 @@ export const listAccountsForPlan: API.OperationMethod<
   ListAccountsForPlanError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(44, __c5, 4) as any as S.Schema<ListAccountsForPlanRequest>,
-  output: __S(46, __c5, 6) as any as S.Schema<ListAccountsForPlanResponse>,
+  input: __S(64, __c16, 0) as any as S.Schema<ListAccountsForPlanRequest>,
+  output: __S(69, __c17, 1) as any as S.Schema<ListAccountsForPlanResponse>,
   errors: [NotFound, UnprocessableEntity],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -1696,8 +1696,8 @@ export const listAccountsForPlanStubbed: API.OperationMethod<
   ListAccountsForPlanStubbedError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(47, __c5, 7) as any as S.Schema<ListAccountsForPlanStubbedRequest>,
-  output: __S(46, __c5, 6) as any as S.Schema<ListAccountsForPlanStubbedResponse>,
+  input: __S(72, __c18, 0) as any as S.Schema<ListAccountsForPlanStubbedRequest>,
+  output: __S(69, __c17, 1) as any as S.Schema<ListAccountsForPlanStubbedResponse>,
   errors: [],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -1711,8 +1711,8 @@ export const listInstallationReposForAuthenticatedUser: API.OperationMethod<
   ListInstallationReposForAuthenticatedUserError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(48, __c6, 0) as any as S.Schema<ListInstallationReposForAuthenticatedUserRequest>,
-  output: __S(53, __c6, 5) as any as S.Schema<ListInstallationReposForAuthenticatedUserResponse>,
+  input: __S(76, __c19, 0) as any as S.Schema<ListInstallationReposForAuthenticatedUserRequest>,
+  output: __S(79, __c19, 3) as any as S.Schema<ListInstallationReposForAuthenticatedUserResponse>,
   errors: [Forbidden, NotFound],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -1726,8 +1726,8 @@ export const listInstallationRequestsForAuthenticatedApp: API.OperationMethod<
   ListInstallationRequestsForAuthenticatedAppError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(54, __c6, 6) as any as S.Schema<ListInstallationRequestsForAuthenticatedAppRequest>,
-  output: __S(57, __c7, 1) as any as S.Schema<ListInstallationRequestsForAuthenticatedAppResponse>,
+  input: __S(84, __c21, 0) as any as S.Schema<ListInstallationRequestsForAuthenticatedAppRequest>,
+  output: __S(87, __c21, 3) as any as S.Schema<ListInstallationRequestsForAuthenticatedAppResponse>,
   errors: [],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -1741,8 +1741,8 @@ export const listInstallations: API.OperationMethod<
   ListInstallationsError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(58, __c7, 2) as any as S.Schema<ListInstallationsRequest>,
-  output: __S(60, __c7, 4) as any as S.Schema<ListInstallationsResponse>,
+  input: __S(88, __c22, 0) as any as S.Schema<ListInstallationsRequest>,
+  output: __S(89, __c22, 1) as any as S.Schema<ListInstallationsResponse>,
   errors: [],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -1756,8 +1756,8 @@ export const listInstallationsForAuthenticatedUser: API.OperationMethod<
   ListInstallationsForAuthenticatedUserError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(61, __c7, 5) as any as S.Schema<ListInstallationsForAuthenticatedUserRequest>,
-  output: __S(62, __c7, 6) as any as S.Schema<ListInstallationsForAuthenticatedUserResponse>,
+  input: __S(96, __c24, 0) as any as S.Schema<ListInstallationsForAuthenticatedUserRequest>,
+  output: __S(97, __c24, 1) as any as S.Schema<ListInstallationsForAuthenticatedUserResponse>,
   errors: [Forbidden],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -1771,8 +1771,8 @@ export const listPlans: API.OperationMethod<
   ListPlansError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(63, __c7, 7) as any as S.Schema<ListPlansRequest>,
-  output: __S(65, __c8, 1) as any as S.Schema<ListPlansResponse>,
+  input: __S(100, __c25, 0) as any as S.Schema<ListPlansRequest>,
+  output: __S(105, __c26, 1) as any as S.Schema<ListPlansResponse>,
   errors: [NotFound],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -1786,8 +1786,8 @@ export const listPlansStubbed: API.OperationMethod<
   ListPlansStubbedError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(66, __c8, 2) as any as S.Schema<ListPlansStubbedRequest>,
-  output: __S(65, __c8, 1) as any as S.Schema<ListPlansStubbedResponse>,
+  input: __S(108, __c27, 0) as any as S.Schema<ListPlansStubbedRequest>,
+  output: __S(105, __c26, 1) as any as S.Schema<ListPlansStubbedResponse>,
   errors: [],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -1801,8 +1801,8 @@ export const listReposAccessibleToInstallation: API.OperationMethod<
   ListReposAccessibleToInstallationError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(67, __c8, 3) as any as S.Schema<ListReposAccessibleToInstallationRequest>,
-  output: __S(70, __c8, 6) as any as S.Schema<ListReposAccessibleToInstallationResponse>,
+  input: __S(112, __c28, 0) as any as S.Schema<ListReposAccessibleToInstallationRequest>,
+  output: __S(115, __c28, 3) as any as S.Schema<ListReposAccessibleToInstallationResponse>,
   errors: [Forbidden],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -1816,8 +1816,8 @@ export const listSubscriptionsForAuthenticatedUser: API.OperationMethod<
   ListSubscriptionsForAuthenticatedUserError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(71, __c8, 7) as any as S.Schema<ListSubscriptionsForAuthenticatedUserRequest>,
-  output: __S(75, __c9, 3) as any as S.Schema<ListSubscriptionsForAuthenticatedUserResponse>,
+  input: __S(116, __c29, 0) as any as S.Schema<ListSubscriptionsForAuthenticatedUserRequest>,
+  output: __S(123, __c30, 3) as any as S.Schema<ListSubscriptionsForAuthenticatedUserResponse>,
   errors: [NotFound],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -1831,8 +1831,12 @@ export const listSubscriptionsForAuthenticatedUserStubbed: API.OperationMethod<
   ListSubscriptionsForAuthenticatedUserStubbedError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(76, __c9, 4) as any as S.Schema<ListSubscriptionsForAuthenticatedUserStubbedRequest>,
-  output: __S(75, __c9, 3) as any as S.Schema<ListSubscriptionsForAuthenticatedUserStubbedResponse>,
+  input: __S(124, __c31, 0) as any as S.Schema<ListSubscriptionsForAuthenticatedUserStubbedRequest>,
+  output: __S(
+    123,
+    __c30,
+    3,
+  ) as any as S.Schema<ListSubscriptionsForAuthenticatedUserStubbedResponse>,
   errors: [],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -1846,8 +1850,8 @@ export const listWebhookDeliveries: API.OperationMethod<
   ListWebhookDeliveriesError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(77, __c9, 5) as any as S.Schema<ListWebhookDeliveriesRequest>,
-  output: __S(80, __c10, 0) as any as S.Schema<ListWebhookDeliveriesResponse>,
+  input: __S(128, __c32, 0) as any as S.Schema<ListWebhookDeliveriesRequest>,
+  output: __S(131, __c32, 3) as any as S.Schema<ListWebhookDeliveriesResponse>,
   errors: [BadRequest, UnprocessableEntity],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -1861,8 +1865,8 @@ export const redeliverWebhookDelivery: API.OperationMethod<
   RedeliverWebhookDeliveryError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(81, __c10, 1) as any as S.Schema<RedeliverWebhookDeliveryRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<RedeliverWebhookDeliveryResponse>,
+  input: __S(132, __c33, 0) as any as S.Schema<RedeliverWebhookDeliveryRequest>,
+  output: __S(164, __c41, 0) as any as S.Schema<RedeliverWebhookDeliveryResponse>,
   errors: [BadRequest, UnprocessableEntity],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -1881,14 +1885,14 @@ export const removeRepoFromInstallationForAuthenticatedUser: API.OperationMethod
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    82,
-    __c10,
-    2,
+    136,
+    __c34,
+    0,
   ) as any as S.Schema<RemoveRepoFromInstallationForAuthenticatedUserRequest>,
   output: __S(
-    1,
-    __c0,
-    1,
+    164,
+    __c41,
+    0,
   ) as any as S.Schema<RemoveRepoFromInstallationForAuthenticatedUserResponse>,
   errors: [Forbidden, NotFound, UnprocessableEntity],
   protocol: GithubProtocol,
@@ -1903,8 +1907,8 @@ export const resetToken: API.OperationMethod<
   ResetTokenError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(83, __c10, 3) as any as S.Schema<ResetTokenRequest>,
-  output: __S(8, __c1, 0) as any as S.Schema<Authorization>,
+  input: __S(140, __c35, 0) as any as S.Schema<ResetTokenRequest>,
+  output: __S(178, __c44, 2) as any as S.Schema<Authorization>,
   errors: [UnprocessableEntity],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -1918,8 +1922,8 @@ export const revokeInstallationAccessToken: API.OperationMethod<
   RevokeInstallationAccessTokenError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(84, __c10, 4) as any as S.Schema<RevokeInstallationAccessTokenRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<RevokeInstallationAccessTokenResponse>,
+  input: __S(144, __c36, 0) as any as S.Schema<RevokeInstallationAccessTokenRequest>,
+  output: __S(164, __c41, 0) as any as S.Schema<RevokeInstallationAccessTokenResponse>,
   errors: [],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -1933,8 +1937,8 @@ export const scopeToken: API.OperationMethod<
   ScopeTokenError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(85, __c10, 5) as any as S.Schema<ScopeTokenRequest>,
-  output: __S(8, __c1, 0) as any as S.Schema<Authorization>,
+  input: __S(148, __c37, 0) as any as S.Schema<ScopeTokenRequest>,
+  output: __S(178, __c44, 2) as any as S.Schema<Authorization>,
   errors: [Forbidden, NotFound, UnprocessableEntity],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -1948,8 +1952,8 @@ export const suspendInstallation: API.OperationMethod<
   SuspendInstallationError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(86, __c10, 6) as any as S.Schema<SuspendInstallationRequest>,
-  output: __S(21, __c2, 5) as any as S.Schema<SuspendInstallationResponse>,
+  input: __S(152, __c38, 0) as any as S.Schema<SuspendInstallationRequest>,
+  output: __S(216, __c54, 0) as any as S.Schema<SuspendInstallationResponse>,
   errors: [NotFound],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -1963,8 +1967,8 @@ export const unsuspendInstallation: API.OperationMethod<
   UnsuspendInstallationError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(87, __c10, 7) as any as S.Schema<UnsuspendInstallationRequest>,
-  output: __S(21, __c2, 5) as any as S.Schema<UnsuspendInstallationResponse>,
+  input: __S(156, __c39, 0) as any as S.Schema<UnsuspendInstallationRequest>,
+  output: __S(216, __c54, 0) as any as S.Schema<UnsuspendInstallationResponse>,
   errors: [NotFound],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -1978,8 +1982,8 @@ export const updateWebhookConfigForApp: API.OperationMethod<
   UpdateWebhookConfigForAppError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(88, __c11, 0) as any as S.Schema<UpdateWebhookConfigForAppRequest>,
-  output: __S(39, __c4, 7) as any as S.Schema<WebhookConfig>,
+  input: __S(168, __c42, 0) as any as S.Schema<UpdateWebhookConfigForAppRequest>,
+  output: __S(56, __c14, 0) as any as S.Schema<WebhookConfig>,
   errors: [],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -1987,6 +1991,942 @@ export const updateWebhookConfigForApp: API.OperationMethod<
 
 // Schema builders: each runs one schema initializer, on that schema's first use.
 function __c0(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          client_id: S.String.pipe(T.Label()),
+          access_token: S.String.pipe(T.SensitiveValue({})),
+        }).pipe(T.Http({ method: "DELETE", uri: "/applications/{client_id}/token", code: 200 })),
+      ).annotate({ identifier: "DeleteTokenRequest" });
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({}).pipe(T.Http({ method: "GET", uri: "/app", code: 200 })),
+      ).annotate({ identifier: "GetAuthenticatedRequest" });
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.Number,
+          slug: S.optional(S.String),
+          node_id: S.String,
+          client_id: S.optional(S.String),
+          owner: S.Unknown,
+          name: S.String,
+          description: S.NullOr(S.String),
+          external_url: S.String,
+          html_url: S.String,
+          created_at: S.String,
+          updated_at: S.String,
+          permissions: __S(196, __c49, 0),
+          events: __S(180, __c45, 0),
+          installations_count: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "Integration" });
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          app_slug: S.String.pipe(T.Label()),
+        }).pipe(T.Http({ method: "GET", uri: "/apps/{app_slug}", code: 200 })),
+      ).annotate({ identifier: "GetBySlugRequest" });
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          installation_id: S.Number.pipe(T.Label()),
+        }).pipe(T.Http({ method: "GET", uri: "/app/installations/{installation_id}", code: 200 })),
+      ).annotate({ identifier: "GetInstallationRequest" });
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.Number,
+          account: S.NullOr(S.Unknown),
+          repository_selection: S.String,
+          access_tokens_url: S.String,
+          repositories_url: S.String,
+          html_url: S.String,
+          app_id: S.Number,
+          client_id: S.optional(S.String),
+          target_id: S.Number,
+          target_type: S.String,
+          permissions: __S(188, __c47, 0),
+          events: __S(180, __c45, 0),
+          created_at: S.String,
+          updated_at: S.String,
+          single_file_name: S.NullOr(S.String),
+          has_multiple_single_files: S.optional(S.Boolean),
+          single_file_paths: S.optional(__S(180, __c45, 0)),
+          app_slug: S.String,
+          suspended_by: S.NullOr(__S(184, __c46, 0)),
+          suspended_at: S.NullOr(S.String),
+          contact_email: S.optional(S.NullOr(S.String)),
+        }),
+      ).annotate({ identifier: "Installation" });
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          org: S.String.pipe(T.Label()),
+        }).pipe(T.Http({ method: "GET", uri: "/orgs/{org}/installation", code: 200 })),
+      ).annotate({
+        identifier: "GetOrgInstallationRequest",
+      });
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          owner: S.String.pipe(T.Label()),
+          repo: S.String.pipe(T.Label()),
+        }).pipe(T.Http({ method: "GET", uri: "/repos/{owner}/{repo}/installation", code: 200 })),
+      ).annotate({
+        identifier: "GetRepoInstallationRequest",
+      });
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          account_id: S.Number.pipe(T.Label()),
+        }).pipe(
+          T.Http({ method: "GET", uri: "/marketplace_listing/accounts/{account_id}", code: 200 }),
+        ),
+      ).annotate({
+        identifier: "GetSubscriptionPlanForAccountRequest",
+      });
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          is_installed: S.optional(S.Boolean),
+          effective_date: S.optional(S.String),
+          unit_count: S.optional(S.NullOr(S.Number)),
+          id: S.optional(S.Number),
+          plan: S.optional(__S(40, __c10, 0)),
+        }),
+      ).annotate({
+        identifier: "MarketplacePurchaseMarketplacePendingChange",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          billing_cycle: S.optional(S.String),
+          next_billing_date: S.optional(S.NullOr(S.String)),
+          is_installed: S.optional(S.Boolean),
+          unit_count: S.optional(S.NullOr(S.Number)),
+          on_free_trial: S.optional(S.Boolean),
+          free_trial_ends_on: S.optional(S.NullOr(S.String)),
+          updated_at: S.optional(S.String),
+          plan: S.optional(__S(40, __c10, 0)),
+        }),
+      ).annotate({
+        identifier: "MarketplacePurchaseMarketplacePurchase",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          url: S.String,
+          type: S.String,
+          id: S.Number,
+          login: S.String,
+          organization_billing_email: S.optional(S.String),
+          email: S.optional(S.NullOr(S.String)),
+          marketplace_pending_change: S.optional(S.NullOr(__S(36, __c9, 0))),
+          marketplace_purchase: __S(37, __c9, 1),
+        }),
+      ).annotate({ identifier: "MarketplacePurchase" });
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          url: S.String,
+          accounts_url: S.String,
+          id: S.Number,
+          number: S.Number,
+          name: S.String,
+          description: S.String,
+          monthly_price_in_cents: S.Number,
+          yearly_price_in_cents: S.Number,
+          price_model: S.String,
+          has_free_trial: S.Boolean,
+          unit_name: S.NullOr(S.String),
+          state: S.String,
+          bullets: __S(180, __c45, 0),
+        }),
+      ).annotate({ identifier: "MarketplaceListingPlan" });
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          account_id: S.Number.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/marketplace_listing/stubbed/accounts/{account_id}",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "GetSubscriptionPlanForAccountStubbedRequest",
+      });
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          username: S.String.pipe(T.Label()),
+        }).pipe(T.Http({ method: "GET", uri: "/users/{username}/installation", code: 200 })),
+      ).annotate({
+        identifier: "GetUserInstallationRequest",
+      });
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({}).pipe(T.Http({ method: "GET", uri: "/app/hook/config", code: 200 })),
+      ).annotate({
+        identifier: "GetWebhookConfigForAppRequest",
+      });
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          url: S.optional(S.String),
+          content_type: S.optional(S.String),
+          secret: S.optional(S.String.pipe(T.SensitiveValue({}))),
+          insecure_ssl: S.optional(S.Unknown),
+        }),
+      ).annotate({ identifier: "WebhookConfig" });
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          delivery_id: S.Number.pipe(T.Label()),
+        }).pipe(T.Http({ method: "GET", uri: "/app/hook/deliveries/{delivery_id}", code: 200 })),
+      ).annotate({
+        identifier: "GetWebhookDeliveryRequest",
+      });
+    case 1:
+      return S.Record(S.String, S.Unknown);
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          headers: S.NullOr(__S(61, __c15, 1)),
+          payload: S.NullOr(__S(61, __c15, 1)),
+        }),
+      ).annotate({ identifier: "HookDeliveryRequest" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.Number,
+          guid: S.String,
+          delivered_at: S.String,
+          redelivery: S.Boolean,
+          duration: S.Number,
+          status: S.String,
+          status_code: S.Number,
+          event: S.String,
+          action: S.NullOr(S.String),
+          installation_id: S.NullOr(S.Number),
+          repository_id: S.NullOr(S.Number),
+          throttled_at: S.optional(S.NullOr(S.String)),
+          url: S.optional(S.String),
+          request: __S(62, __c15, 2),
+          response: __S(62, __c15, 2),
+        }),
+      ).annotate({ identifier: "HookDelivery" });
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          plan_id: S.Number.pipe(T.Label()),
+          sort: S.optional(S.String.pipe(T.Query())),
+          direction: S.optional(S.String.pipe(T.Query())),
+          per_page: S.optional(S.Number.pipe(T.Query())),
+          page: S.optional(S.Number.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/marketplace_listing/plans/{plan_id}/accounts",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "ListAccountsForPlanRequest",
+      });
+  }
+}
+function __c17(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(38, __c9, 2));
+    case 1:
+      return S.suspend(() => __S(68, __c17, 0).pipe(T.RawResponseRoot())).annotate({
+        identifier: "ListAccountsForPlanResponse",
+      });
+  }
+}
+function __c18(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          plan_id: S.Number.pipe(T.Label()),
+          sort: S.optional(S.String.pipe(T.Query())),
+          direction: S.optional(S.String.pipe(T.Query())),
+          per_page: S.optional(S.Number.pipe(T.Query())),
+          page: S.optional(S.Number.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/marketplace_listing/stubbed/plans/{plan_id}/accounts",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "ListAccountsForPlanStubbedRequest",
+      });
+  }
+}
+function __c19(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          installation_id: S.Number.pipe(T.Label()),
+          per_page: S.optional(S.Number.pipe(T.Query())),
+          page: S.optional(S.Number.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/user/installations/{installation_id}/repositories",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "ListInstallationReposForAuthenticatedUserRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.Number,
+          node_id: S.String,
+          name: S.String,
+          full_name: S.String,
+          license: S.NullOr(__S(204, __c51, 0)),
+          forks: S.Number,
+          permissions: S.optional(__S(205, __c51, 1)),
+          owner: __S(184, __c46, 0),
+          private: S.Boolean,
+          html_url: S.String,
+          description: S.NullOr(S.String),
+          fork: S.Boolean,
+          url: S.String,
+          archive_url: S.String,
+          assignees_url: S.String,
+          blobs_url: S.String,
+          branches_url: S.String,
+          collaborators_url: S.String,
+          comments_url: S.String,
+          commits_url: S.String,
+          compare_url: S.String,
+          contents_url: S.String,
+          contributors_url: S.String,
+          deployments_url: S.String,
+          downloads_url: S.String,
+          events_url: S.String,
+          forks_url: S.String,
+          git_commits_url: S.String,
+          git_refs_url: S.String,
+          git_tags_url: S.String,
+          git_url: S.String,
+          issue_comment_url: S.String,
+          issue_events_url: S.String,
+          issues_url: S.String,
+          keys_url: S.String,
+          labels_url: S.String,
+          languages_url: S.String,
+          merges_url: S.String,
+          milestones_url: S.String,
+          notifications_url: S.String,
+          pulls_url: S.String,
+          releases_url: S.String,
+          ssh_url: S.String,
+          stargazers_url: S.String,
+          statuses_url: S.String,
+          subscribers_url: S.String,
+          subscription_url: S.String,
+          tags_url: S.String,
+          teams_url: S.String,
+          trees_url: S.String,
+          clone_url: S.String,
+          mirror_url: S.NullOr(S.String),
+          hooks_url: S.String,
+          svn_url: S.String,
+          homepage: S.NullOr(S.String),
+          language: S.NullOr(S.String),
+          forks_count: S.Number,
+          stargazers_count: S.Number,
+          watchers_count: S.Number,
+          size: S.Number,
+          default_branch: S.String,
+          open_issues_count: S.Number,
+          is_template: S.optional(S.Boolean),
+          topics: S.optional(__S(80, __c20, 0)),
+          has_issues: S.Boolean,
+          has_projects: S.Boolean,
+          has_wiki: S.Boolean,
+          has_pages: S.Boolean,
+          has_downloads: S.Boolean,
+          has_discussions: S.optional(S.Boolean),
+          has_pull_requests: S.optional(S.Boolean),
+          pull_request_creation_policy: S.optional(S.String),
+          archived: S.Boolean,
+          disabled: S.Boolean,
+          visibility: S.optional(S.String),
+          pushed_at: S.NullOr(S.String),
+          created_at: S.NullOr(S.String),
+          updated_at: S.NullOr(S.String),
+          allow_rebase_merge: S.optional(S.Boolean),
+          temp_clone_token: S.optional(S.String),
+          allow_squash_merge: S.optional(S.Boolean),
+          allow_auto_merge: S.optional(S.Boolean),
+          delete_branch_on_merge: S.optional(S.Boolean),
+          allow_update_branch: S.optional(S.Boolean),
+          use_squash_pr_title_as_default: S.optional(S.Boolean),
+          squash_merge_commit_title: S.optional(S.String),
+          squash_merge_commit_message: S.optional(S.String),
+          merge_commit_title: S.optional(S.String),
+          merge_commit_message: S.optional(S.String),
+          allow_merge_commit: S.optional(S.Boolean),
+          allow_forking: S.optional(S.Boolean),
+          web_commit_signoff_required: S.optional(S.Boolean),
+          open_issues: S.Number,
+          watchers: S.Number,
+          master_branch: S.optional(S.String),
+          starred_at: S.optional(S.String),
+          anonymous_access_enabled: S.optional(S.Boolean),
+          code_search_index_status: S.optional(__S(206, __c51, 2)),
+          custom_properties: S.optional(__S(81, __c20, 1)),
+        }),
+      ).annotate({
+        identifier: "ListInstallationReposForAuthenticatedUserResponseRepositoriesItem",
+      });
+    case 2:
+      return S.Array(__S(77, __c19, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          total_count: S.Number,
+          repository_selection: S.optional(S.String),
+          repositories: __S(78, __c19, 2),
+        }),
+      ).annotate({
+        identifier: "ListInstallationReposForAuthenticatedUserResponse",
+      });
+  }
+}
+function __c20(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+    case 1:
+      return S.Record(S.String, S.Unknown);
+  }
+}
+function __c21(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          per_page: S.optional(S.Number.pipe(T.Query())),
+          page: S.optional(S.Number.pipe(T.Query())),
+        }).pipe(T.Http({ method: "GET", uri: "/app/installation-requests", code: 200 })),
+      ).annotate({
+        identifier: "ListInstallationRequestsForAuthenticatedAppRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.Number,
+          node_id: S.optional(S.String),
+          account: S.Unknown,
+          requester: __S(184, __c46, 0),
+          created_at: S.String,
+        }),
+      ).annotate({
+        identifier: "IntegrationInstallationRequest",
+      });
+    case 2:
+      return S.Array(__S(85, __c21, 1));
+    case 3:
+      return S.suspend(() => __S(86, __c21, 2).pipe(T.RawResponseRoot())).annotate({
+        identifier: "ListInstallationRequestsForAuthenticatedAppResponse",
+      });
+  }
+}
+function __c22(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          per_page: S.optional(S.Number.pipe(T.Query())),
+          page: S.optional(S.Number.pipe(T.Query())),
+          since: S.optional(S.String.pipe(T.Query())),
+          outdated: S.optional(S.String.pipe(T.Query())),
+        }).pipe(T.Http({ method: "GET", uri: "/app/installations", code: 200 })),
+      ).annotate({ identifier: "ListInstallationsRequest" });
+    case 1:
+      return S.suspend(() => __S(92, __c23, 0).pipe(T.RawResponseRoot())).annotate({
+        identifier: "ListInstallationsResponse",
+      });
+  }
+}
+function __c23(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(20, __c5, 0));
+  }
+}
+function __c24(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          per_page: S.optional(S.Number.pipe(T.Query())),
+          page: S.optional(S.Number.pipe(T.Query())),
+        }).pipe(T.Http({ method: "GET", uri: "/user/installations", code: 200 })),
+      ).annotate({
+        identifier: "ListInstallationsForAuthenticatedUserRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          total_count: S.Number,
+          installations: __S(92, __c23, 0),
+        }),
+      ).annotate({
+        identifier: "ListInstallationsForAuthenticatedUserResponse",
+      });
+  }
+}
+function __c25(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          per_page: S.optional(S.Number.pipe(T.Query())),
+          page: S.optional(S.Number.pipe(T.Query())),
+        }).pipe(T.Http({ method: "GET", uri: "/marketplace_listing/plans", code: 200 })),
+      ).annotate({ identifier: "ListPlansRequest" });
+  }
+}
+function __c26(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(40, __c10, 0));
+    case 1:
+      return S.suspend(() => __S(104, __c26, 0).pipe(T.RawResponseRoot())).annotate({
+        identifier: "ListPlansResponse",
+      });
+  }
+}
+function __c27(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          per_page: S.optional(S.Number.pipe(T.Query())),
+          page: S.optional(S.Number.pipe(T.Query())),
+        }).pipe(T.Http({ method: "GET", uri: "/marketplace_listing/stubbed/plans", code: 200 })),
+      ).annotate({ identifier: "ListPlansStubbedRequest" });
+  }
+}
+function __c28(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          per_page: S.optional(S.Number.pipe(T.Query())),
+          page: S.optional(S.Number.pipe(T.Query())),
+        }).pipe(T.Http({ method: "GET", uri: "/installation/repositories", code: 200 })),
+      ).annotate({
+        identifier: "ListReposAccessibleToInstallationRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.Number,
+          node_id: S.String,
+          name: S.String,
+          full_name: S.String,
+          license: S.NullOr(__S(204, __c51, 0)),
+          forks: S.Number,
+          permissions: S.optional(__S(205, __c51, 1)),
+          owner: __S(184, __c46, 0),
+          private: S.Boolean,
+          html_url: S.String,
+          description: S.NullOr(S.String),
+          fork: S.Boolean,
+          url: S.String,
+          archive_url: S.String,
+          assignees_url: S.String,
+          blobs_url: S.String,
+          branches_url: S.String,
+          collaborators_url: S.String,
+          comments_url: S.String,
+          commits_url: S.String,
+          compare_url: S.String,
+          contents_url: S.String,
+          contributors_url: S.String,
+          deployments_url: S.String,
+          downloads_url: S.String,
+          events_url: S.String,
+          forks_url: S.String,
+          git_commits_url: S.String,
+          git_refs_url: S.String,
+          git_tags_url: S.String,
+          git_url: S.String,
+          issue_comment_url: S.String,
+          issue_events_url: S.String,
+          issues_url: S.String,
+          keys_url: S.String,
+          labels_url: S.String,
+          languages_url: S.String,
+          merges_url: S.String,
+          milestones_url: S.String,
+          notifications_url: S.String,
+          pulls_url: S.String,
+          releases_url: S.String,
+          ssh_url: S.String,
+          stargazers_url: S.String,
+          statuses_url: S.String,
+          subscribers_url: S.String,
+          subscription_url: S.String,
+          tags_url: S.String,
+          teams_url: S.String,
+          trees_url: S.String,
+          clone_url: S.String,
+          mirror_url: S.NullOr(S.String),
+          hooks_url: S.String,
+          svn_url: S.String,
+          homepage: S.NullOr(S.String),
+          language: S.NullOr(S.String),
+          forks_count: S.Number,
+          stargazers_count: S.Number,
+          watchers_count: S.Number,
+          size: S.Number,
+          default_branch: S.String,
+          open_issues_count: S.Number,
+          is_template: S.optional(S.Boolean),
+          topics: S.optional(__S(80, __c20, 0)),
+          has_issues: S.Boolean,
+          has_projects: S.Boolean,
+          has_wiki: S.Boolean,
+          has_pages: S.Boolean,
+          has_downloads: S.Boolean,
+          has_discussions: S.optional(S.Boolean),
+          has_pull_requests: S.optional(S.Boolean),
+          pull_request_creation_policy: S.optional(S.String),
+          archived: S.Boolean,
+          disabled: S.Boolean,
+          visibility: S.optional(S.String),
+          pushed_at: S.NullOr(S.String),
+          created_at: S.NullOr(S.String),
+          updated_at: S.NullOr(S.String),
+          allow_rebase_merge: S.optional(S.Boolean),
+          temp_clone_token: S.optional(S.String),
+          allow_squash_merge: S.optional(S.Boolean),
+          allow_auto_merge: S.optional(S.Boolean),
+          delete_branch_on_merge: S.optional(S.Boolean),
+          allow_update_branch: S.optional(S.Boolean),
+          use_squash_pr_title_as_default: S.optional(S.Boolean),
+          squash_merge_commit_title: S.optional(S.String),
+          squash_merge_commit_message: S.optional(S.String),
+          merge_commit_title: S.optional(S.String),
+          merge_commit_message: S.optional(S.String),
+          allow_merge_commit: S.optional(S.Boolean),
+          allow_forking: S.optional(S.Boolean),
+          web_commit_signoff_required: S.optional(S.Boolean),
+          open_issues: S.Number,
+          watchers: S.Number,
+          master_branch: S.optional(S.String),
+          starred_at: S.optional(S.String),
+          anonymous_access_enabled: S.optional(S.Boolean),
+          code_search_index_status: S.optional(__S(206, __c51, 2)),
+          custom_properties: S.optional(__S(81, __c20, 1)),
+        }),
+      ).annotate({
+        identifier: "ListReposAccessibleToInstallationResponseRepositoriesItem",
+      });
+    case 2:
+      return S.Array(__S(113, __c28, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          total_count: S.Number,
+          repositories: __S(114, __c28, 2),
+          repository_selection: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "ListReposAccessibleToInstallationResponse",
+      });
+  }
+}
+function __c29(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          per_page: S.optional(S.Number.pipe(T.Query())),
+          page: S.optional(S.Number.pipe(T.Query())),
+        }).pipe(T.Http({ method: "GET", uri: "/user/marketplace_purchases", code: 200 })),
+      ).annotate({
+        identifier: "ListSubscriptionsForAuthenticatedUserRequest",
+      });
+  }
+}
+function __c30(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          url: S.String,
+          id: S.Number,
+          type: S.String,
+          node_id: S.optional(S.String),
+          login: S.String,
+          email: S.optional(S.NullOr(S.String)),
+          organization_billing_email: S.optional(S.NullOr(S.String)),
+        }),
+      ).annotate({ identifier: "MarketplaceAccount" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          billing_cycle: S.String,
+          next_billing_date: S.NullOr(S.String),
+          unit_count: S.NullOr(S.Number),
+          on_free_trial: S.Boolean,
+          free_trial_ends_on: S.NullOr(S.String),
+          updated_at: S.NullOr(S.String),
+          account: __S(120, __c30, 0),
+          plan: __S(40, __c10, 0),
+        }),
+      ).annotate({ identifier: "UserMarketplacePurchase" });
+    case 2:
+      return S.Array(__S(121, __c30, 1));
+    case 3:
+      return S.suspend(() => __S(122, __c30, 2).pipe(T.RawResponseRoot())).annotate({
+        identifier: "ListSubscriptionsForAuthenticatedUserResponse",
+      });
+  }
+}
+function __c31(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          per_page: S.optional(S.Number.pipe(T.Query())),
+          page: S.optional(S.Number.pipe(T.Query())),
+        }).pipe(T.Http({ method: "GET", uri: "/user/marketplace_purchases/stubbed", code: 200 })),
+      ).annotate({
+        identifier: "ListSubscriptionsForAuthenticatedUserStubbedRequest",
+      });
+  }
+}
+function __c32(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          per_page: S.optional(S.Number.pipe(T.Query())),
+          cursor: S.optional(S.String.pipe(T.Query())),
+          status: S.optional(S.String.pipe(T.Query())),
+        }).pipe(T.Http({ method: "GET", uri: "/app/hook/deliveries", code: 200 })),
+      ).annotate({
+        identifier: "ListWebhookDeliveriesRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.Number,
+          guid: S.String,
+          delivered_at: S.String,
+          redelivery: S.Boolean,
+          duration: S.Number,
+          status: S.String,
+          status_code: S.Number,
+          event: S.String,
+          action: S.NullOr(S.String),
+          installation_id: S.NullOr(S.Number),
+          repository_id: S.NullOr(S.Number),
+          throttled_at: S.optional(S.NullOr(S.String)),
+        }),
+      ).annotate({ identifier: "HookDeliveryItem" });
+    case 2:
+      return S.Array(__S(129, __c32, 1));
+    case 3:
+      return S.suspend(() => __S(130, __c32, 2).pipe(T.RawResponseRoot())).annotate({
+        identifier: "ListWebhookDeliveriesResponse",
+      });
+  }
+}
+function __c33(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          delivery_id: S.Number.pipe(T.Label()),
+        }).pipe(
+          T.Http({ method: "POST", uri: "/app/hook/deliveries/{delivery_id}/attempts", code: 200 }),
+        ),
+      ).annotate({
+        identifier: "RedeliverWebhookDeliveryRequest",
+      });
+  }
+}
+function __c34(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          installation_id: S.Number.pipe(T.Label()),
+          repository_id: S.Number.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/user/installations/{installation_id}/repositories/{repository_id}",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "RemoveRepoFromInstallationForAuthenticatedUserRequest",
+      });
+  }
+}
+function __c35(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          client_id: S.String.pipe(T.Label()),
+          access_token: S.String.pipe(T.SensitiveValue({})),
+        }).pipe(T.Http({ method: "PATCH", uri: "/applications/{client_id}/token", code: 200 })),
+      ).annotate({ identifier: "ResetTokenRequest" });
+  }
+}
+function __c36(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({}).pipe(T.Http({ method: "DELETE", uri: "/installation/token", code: 200 })),
+      ).annotate({
+        identifier: "RevokeInstallationAccessTokenRequest",
+      });
+  }
+}
+function __c37(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          client_id: S.String.pipe(T.Label()),
+          access_token: S.String.pipe(T.SensitiveValue({})),
+          target: S.optional(S.String),
+          target_id: S.optional(S.Number),
+          repositories: S.optional(__S(180, __c45, 0)),
+          repository_ids: S.optional(__S(208, __c52, 0)),
+          permissions: S.optional(__S(188, __c47, 0)),
+        }).pipe(
+          T.Http({ method: "POST", uri: "/applications/{client_id}/token/scoped", code: 200 }),
+        ),
+      ).annotate({ identifier: "ScopeTokenRequest" });
+  }
+}
+function __c38(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          installation_id: S.Number.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "PUT",
+            uri: "/app/installations/{installation_id}/suspended",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "SuspendInstallationRequest",
+      });
+  }
+}
+function __c39(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          installation_id: S.Number.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/app/installations/{installation_id}/suspended",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "UnsuspendInstallationRequest",
+      });
+  }
+}
+function __c40(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2003,20 +2943,45 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "AddRepoToInstallationForAuthenticatedUserRequest",
       });
-    case 1:
+  }
+}
+function __c41(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "AddRepoToInstallationForAuthenticatedUserResponse",
       });
-    case 2:
+  }
+}
+function __c42(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          url: S.optional(S.String),
+          content_type: S.optional(S.String),
+          secret: S.optional(S.String.pipe(T.SensitiveValue({}))),
+          insecure_ssl: S.optional(S.Unknown),
+        }).pipe(T.Http({ method: "PATCH", uri: "/app/hook/config", code: 200 })),
+      ).annotate({
+        identifier: "UpdateWebhookConfigForAppRequest",
+      });
+  }
+}
+function __c43(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           client_id: S.String.pipe(T.Label()),
           access_token: S.String.pipe(T.SensitiveValue({})),
         }).pipe(T.Http({ method: "POST", uri: "/applications/{client_id}/token", code: 200 })),
       ).annotate({ identifier: "CheckTokenRequest" });
-    case 3:
-      return S.Array(S.String);
-    case 4:
+  }
+}
+function __c44(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           client_id: S.String,
@@ -2024,7 +2989,51 @@ function __c0(j: number): any {
           url: S.String,
         }),
       ).annotate({ identifier: "AuthorizationApp" });
-    case 5:
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          permissions: __S(188, __c47, 0),
+          repository_selection: S.String,
+          single_file_name: S.NullOr(S.String),
+          has_multiple_single_files: S.optional(S.Boolean),
+          single_file_paths: S.optional(__S(180, __c45, 0)),
+          repositories_url: S.String,
+          account: __S(184, __c46, 0),
+        }),
+      ).annotate({
+        identifier: "NullableScopedInstallation",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.Number,
+          url: S.String,
+          scopes: S.NullOr(__S(180, __c45, 0)),
+          token: S.String,
+          token_last_eight: S.NullOr(S.String),
+          hashed_token: S.NullOr(S.String),
+          app: __S(176, __c44, 0),
+          note: S.NullOr(S.String),
+          note_url: S.NullOr(S.String),
+          updated_at: S.String,
+          created_at: S.String,
+          fingerprint: S.NullOr(S.String),
+          user: S.optional(S.NullOr(__S(184, __c46, 0))),
+          installation: S.optional(S.NullOr(__S(177, __c44, 1))),
+          expires_at: S.NullOr(S.String),
+        }),
+      ).annotate({ identifier: "Authorization" });
+  }
+}
+function __c45(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c46(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.NullOr(S.String)),
@@ -2051,7 +3060,11 @@ function __c0(j: number): any {
           user_view_type: S.optional(S.String),
         }),
       ).annotate({ identifier: "NullableSimpleUser" });
-    case 6:
+  }
+}
+function __c47(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           actions: S.optional(S.String),
@@ -2112,45 +3125,11 @@ function __c0(j: number): any {
           enterprise_custom_properties_for_organizations: S.optional(S.String),
         }),
       ).annotate({ identifier: "AppPermissions" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          permissions: __S(6, __c0, 6),
-          repository_selection: S.String,
-          single_file_name: S.NullOr(S.String),
-          has_multiple_single_files: S.optional(S.Boolean),
-          single_file_paths: S.optional(__S(3, __c0, 3)),
-          repositories_url: S.String,
-          account: __S(5, __c0, 5),
-        }),
-      ).annotate({
-        identifier: "NullableScopedInstallation",
-      });
   }
 }
-function __c1(j: number): any {
+function __c48(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.Number,
-          url: S.String,
-          scopes: S.NullOr(__S(3, __c0, 3)),
-          token: S.String,
-          token_last_eight: S.NullOr(S.String),
-          hashed_token: S.NullOr(S.String),
-          app: __S(4, __c0, 4),
-          note: S.NullOr(S.String),
-          note_url: S.NullOr(S.String),
-          updated_at: S.String,
-          created_at: S.String,
-          fingerprint: S.NullOr(S.String),
-          user: S.optional(S.NullOr(__S(5, __c0, 5))),
-          installation: S.optional(S.NullOr(__S(7, __c0, 7))),
-          expires_at: S.NullOr(S.String),
-        }),
-      ).annotate({ identifier: "Authorization" });
-    case 1:
       return S.suspend(() =>
         S.Struct({
           code: S.String.pipe(T.Label()),
@@ -2158,19 +3137,7 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "CreateFromManifestRequest",
       });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          issues: S.optional(S.String),
-          checks: S.optional(S.String),
-          metadata: S.optional(S.String),
-          contents: S.optional(S.String),
-          deployments: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "CreateFromManifestResponsePermissions",
-      });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.Number,
@@ -2184,8 +3151,8 @@ function __c1(j: number): any {
           html_url: S.String,
           created_at: S.String,
           updated_at: S.String,
-          permissions: __S(10, __c1, 2),
-          events: __S(3, __c0, 3),
+          permissions: __S(196, __c49, 0),
+          events: __S(180, __c45, 0),
           installations_count: S.optional(S.Number),
           client_secret: S.String.pipe(T.SensitiveValue({})),
           webhook_secret: S.NullOr(S.String).pipe(T.SensitiveValue({})),
@@ -2194,15 +3161,33 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "CreateFromManifestResponse",
       });
-    case 4:
-      return S.Array(S.Number);
-    case 5:
+  }
+}
+function __c49(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          issues: S.optional(S.String),
+          checks: S.optional(S.String),
+          metadata: S.optional(S.String),
+          contents: S.optional(S.String),
+          deployments: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "CreateFromManifestResponsePermissions",
+      });
+  }
+}
+function __c50(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           installation_id: S.Number.pipe(T.Label()),
-          repositories: S.optional(__S(3, __c0, 3)),
-          repository_ids: S.optional(__S(12, __c1, 4)),
-          permissions: S.optional(__S(6, __c0, 6)),
+          repositories: S.optional(__S(180, __c45, 0)),
+          repository_ids: S.optional(__S(208, __c52, 0)),
+          permissions: S.optional(__S(188, __c47, 0)),
         }).pipe(
           T.Http({
             method: "POST",
@@ -2213,7 +3198,129 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "CreateInstallationAccessTokenRequest",
       });
-    case 6:
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.Number,
+          node_id: S.String,
+          name: S.String,
+          full_name: S.String,
+          license: S.NullOr(__S(204, __c51, 0)),
+          forks: S.Number,
+          permissions: S.optional(__S(205, __c51, 1)),
+          owner: __S(184, __c46, 0),
+          private: S.Boolean,
+          html_url: S.String,
+          description: S.NullOr(S.String),
+          fork: S.Boolean,
+          url: S.String,
+          archive_url: S.String,
+          assignees_url: S.String,
+          blobs_url: S.String,
+          branches_url: S.String,
+          collaborators_url: S.String,
+          comments_url: S.String,
+          commits_url: S.String,
+          compare_url: S.String,
+          contents_url: S.String,
+          contributors_url: S.String,
+          deployments_url: S.String,
+          downloads_url: S.String,
+          events_url: S.String,
+          forks_url: S.String,
+          git_commits_url: S.String,
+          git_refs_url: S.String,
+          git_tags_url: S.String,
+          git_url: S.String,
+          issue_comment_url: S.String,
+          issue_events_url: S.String,
+          issues_url: S.String,
+          keys_url: S.String,
+          labels_url: S.String,
+          languages_url: S.String,
+          merges_url: S.String,
+          milestones_url: S.String,
+          notifications_url: S.String,
+          pulls_url: S.String,
+          releases_url: S.String,
+          ssh_url: S.String,
+          stargazers_url: S.String,
+          statuses_url: S.String,
+          subscribers_url: S.String,
+          subscription_url: S.String,
+          tags_url: S.String,
+          teams_url: S.String,
+          trees_url: S.String,
+          clone_url: S.String,
+          mirror_url: S.NullOr(S.String),
+          hooks_url: S.String,
+          svn_url: S.String,
+          homepage: S.NullOr(S.String),
+          language: S.NullOr(S.String),
+          forks_count: S.Number,
+          stargazers_count: S.Number,
+          watchers_count: S.Number,
+          size: S.Number,
+          default_branch: S.String,
+          open_issues_count: S.Number,
+          is_template: S.optional(S.Boolean),
+          topics: S.optional(__S(180, __c45, 0)),
+          has_issues: S.Boolean,
+          has_projects: S.Boolean,
+          has_wiki: S.Boolean,
+          has_pages: S.Boolean,
+          has_downloads: S.Boolean,
+          has_discussions: S.optional(S.Boolean),
+          has_pull_requests: S.optional(S.Boolean),
+          pull_request_creation_policy: S.optional(S.String),
+          archived: S.Boolean,
+          disabled: S.Boolean,
+          visibility: S.optional(S.String),
+          pushed_at: S.NullOr(S.String),
+          created_at: S.NullOr(S.String),
+          updated_at: S.NullOr(S.String),
+          allow_rebase_merge: S.optional(S.Boolean),
+          temp_clone_token: S.optional(S.String),
+          allow_squash_merge: S.optional(S.Boolean),
+          allow_auto_merge: S.optional(S.Boolean),
+          delete_branch_on_merge: S.optional(S.Boolean),
+          allow_update_branch: S.optional(S.Boolean),
+          use_squash_pr_title_as_default: S.optional(S.Boolean),
+          squash_merge_commit_title: S.optional(S.String),
+          squash_merge_commit_message: S.optional(S.String),
+          merge_commit_title: S.optional(S.String),
+          merge_commit_message: S.optional(S.String),
+          allow_merge_commit: S.optional(S.Boolean),
+          allow_forking: S.optional(S.Boolean),
+          web_commit_signoff_required: S.optional(S.Boolean),
+          open_issues: S.Number,
+          watchers: S.Number,
+          master_branch: S.optional(S.String),
+          starred_at: S.optional(S.String),
+          anonymous_access_enabled: S.optional(S.Boolean),
+          code_search_index_status: S.optional(__S(206, __c51, 2)),
+        }),
+      ).annotate({ identifier: "Repository" });
+    case 2:
+      return S.Array(__S(201, __c50, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          token: S.String,
+          expires_at: S.String,
+          permissions: S.optional(__S(188, __c47, 0)),
+          repository_selection: S.optional(S.String),
+          repositories: S.optional(__S(202, __c50, 2)),
+          single_file: S.optional(S.String),
+          has_multiple_single_files: S.optional(S.Boolean),
+          single_file_paths: S.optional(__S(180, __c45, 0)),
+        }),
+      ).annotate({ identifier: "InstallationToken" });
+  }
+}
+function __c51(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           key: S.String,
@@ -2224,7 +3331,7 @@ function __c1(j: number): any {
           html_url: S.optional(S.String),
         }),
       ).annotate({ identifier: "NullableLicenseSimple" });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           admin: S.Boolean,
@@ -2234,11 +3341,7 @@ function __c1(j: number): any {
           maintain: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "RepositoryPermissions" });
-  }
-}
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           lexical_search_ok: S.optional(S.Boolean),
@@ -2247,125 +3350,17 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "RepositoryCodeSearchIndexStatus",
       });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.Number,
-          node_id: S.String,
-          name: S.String,
-          full_name: S.String,
-          license: S.NullOr(__S(14, __c1, 6)),
-          forks: S.Number,
-          permissions: S.optional(__S(15, __c1, 7)),
-          owner: __S(5, __c0, 5),
-          private: S.Boolean,
-          html_url: S.String,
-          description: S.NullOr(S.String),
-          fork: S.Boolean,
-          url: S.String,
-          archive_url: S.String,
-          assignees_url: S.String,
-          blobs_url: S.String,
-          branches_url: S.String,
-          collaborators_url: S.String,
-          comments_url: S.String,
-          commits_url: S.String,
-          compare_url: S.String,
-          contents_url: S.String,
-          contributors_url: S.String,
-          deployments_url: S.String,
-          downloads_url: S.String,
-          events_url: S.String,
-          forks_url: S.String,
-          git_commits_url: S.String,
-          git_refs_url: S.String,
-          git_tags_url: S.String,
-          git_url: S.String,
-          issue_comment_url: S.String,
-          issue_events_url: S.String,
-          issues_url: S.String,
-          keys_url: S.String,
-          labels_url: S.String,
-          languages_url: S.String,
-          merges_url: S.String,
-          milestones_url: S.String,
-          notifications_url: S.String,
-          pulls_url: S.String,
-          releases_url: S.String,
-          ssh_url: S.String,
-          stargazers_url: S.String,
-          statuses_url: S.String,
-          subscribers_url: S.String,
-          subscription_url: S.String,
-          tags_url: S.String,
-          teams_url: S.String,
-          trees_url: S.String,
-          clone_url: S.String,
-          mirror_url: S.NullOr(S.String),
-          hooks_url: S.String,
-          svn_url: S.String,
-          homepage: S.NullOr(S.String),
-          language: S.NullOr(S.String),
-          forks_count: S.Number,
-          stargazers_count: S.Number,
-          watchers_count: S.Number,
-          size: S.Number,
-          default_branch: S.String,
-          open_issues_count: S.Number,
-          is_template: S.optional(S.Boolean),
-          topics: S.optional(__S(3, __c0, 3)),
-          has_issues: S.Boolean,
-          has_projects: S.Boolean,
-          has_wiki: S.Boolean,
-          has_pages: S.Boolean,
-          has_downloads: S.Boolean,
-          has_discussions: S.optional(S.Boolean),
-          has_pull_requests: S.optional(S.Boolean),
-          pull_request_creation_policy: S.optional(S.String),
-          archived: S.Boolean,
-          disabled: S.Boolean,
-          visibility: S.optional(S.String),
-          pushed_at: S.NullOr(S.String),
-          created_at: S.NullOr(S.String),
-          updated_at: S.NullOr(S.String),
-          allow_rebase_merge: S.optional(S.Boolean),
-          temp_clone_token: S.optional(S.String),
-          allow_squash_merge: S.optional(S.Boolean),
-          allow_auto_merge: S.optional(S.Boolean),
-          delete_branch_on_merge: S.optional(S.Boolean),
-          allow_update_branch: S.optional(S.Boolean),
-          use_squash_pr_title_as_default: S.optional(S.Boolean),
-          squash_merge_commit_title: S.optional(S.String),
-          squash_merge_commit_message: S.optional(S.String),
-          merge_commit_title: S.optional(S.String),
-          merge_commit_message: S.optional(S.String),
-          allow_merge_commit: S.optional(S.Boolean),
-          allow_forking: S.optional(S.Boolean),
-          web_commit_signoff_required: S.optional(S.Boolean),
-          open_issues: S.Number,
-          watchers: S.Number,
-          master_branch: S.optional(S.String),
-          starred_at: S.optional(S.String),
-          anonymous_access_enabled: S.optional(S.Boolean),
-          code_search_index_status: S.optional(__S(16, __c2, 0)),
-        }),
-      ).annotate({ identifier: "Repository" });
-    case 2:
-      return S.Array(__S(17, __c2, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          token: S.String,
-          expires_at: S.String,
-          permissions: S.optional(__S(6, __c0, 6)),
-          repository_selection: S.optional(S.String),
-          repositories: S.optional(__S(18, __c2, 2)),
-          single_file: S.optional(S.String),
-          has_multiple_single_files: S.optional(S.Boolean),
-          single_file_paths: S.optional(__S(3, __c0, 3)),
-        }),
-      ).annotate({ identifier: "InstallationToken" });
-    case 4:
+  }
+}
+function __c52(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.Number);
+  }
+}
+function __c53(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           client_id: S.String.pipe(T.Label()),
@@ -2374,11 +3369,19 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "DeleteAuthorizationRequest",
       });
-    case 5:
+  }
+}
+function __c54(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "DeleteAuthorizationResponse",
       });
-    case 6:
+  }
+}
+function __c55(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           installation_id: S.Number.pipe(T.Label()),
@@ -2388,832 +3391,8 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "DeleteInstallationRequest",
       });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          client_id: S.String.pipe(T.Label()),
-          access_token: S.String.pipe(T.SensitiveValue({})),
-        }).pipe(T.Http({ method: "DELETE", uri: "/applications/{client_id}/token", code: 200 })),
-      ).annotate({ identifier: "DeleteTokenRequest" });
   }
 }
-function __c3(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({}).pipe(T.Http({ method: "GET", uri: "/app", code: 200 })),
-      ).annotate({ identifier: "GetAuthenticatedRequest" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.Number,
-          slug: S.optional(S.String),
-          node_id: S.String,
-          client_id: S.optional(S.String),
-          owner: S.Unknown,
-          name: S.String,
-          description: S.NullOr(S.String),
-          external_url: S.String,
-          html_url: S.String,
-          created_at: S.String,
-          updated_at: S.String,
-          permissions: __S(10, __c1, 2),
-          events: __S(3, __c0, 3),
-          installations_count: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "Integration" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          app_slug: S.String.pipe(T.Label()),
-        }).pipe(T.Http({ method: "GET", uri: "/apps/{app_slug}", code: 200 })),
-      ).annotate({ identifier: "GetBySlugRequest" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          installation_id: S.Number.pipe(T.Label()),
-        }).pipe(T.Http({ method: "GET", uri: "/app/installations/{installation_id}", code: 200 })),
-      ).annotate({ identifier: "GetInstallationRequest" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.Number,
-          account: S.NullOr(S.Unknown),
-          repository_selection: S.String,
-          access_tokens_url: S.String,
-          repositories_url: S.String,
-          html_url: S.String,
-          app_id: S.Number,
-          client_id: S.optional(S.String),
-          target_id: S.Number,
-          target_type: S.String,
-          permissions: __S(6, __c0, 6),
-          events: __S(3, __c0, 3),
-          created_at: S.String,
-          updated_at: S.String,
-          single_file_name: S.NullOr(S.String),
-          has_multiple_single_files: S.optional(S.Boolean),
-          single_file_paths: S.optional(__S(3, __c0, 3)),
-          app_slug: S.String,
-          suspended_by: S.NullOr(__S(5, __c0, 5)),
-          suspended_at: S.NullOr(S.String),
-          contact_email: S.optional(S.NullOr(S.String)),
-        }),
-      ).annotate({ identifier: "Installation" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          org: S.String.pipe(T.Label()),
-        }).pipe(T.Http({ method: "GET", uri: "/orgs/{org}/installation", code: 200 })),
-      ).annotate({
-        identifier: "GetOrgInstallationRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          owner: S.String.pipe(T.Label()),
-          repo: S.String.pipe(T.Label()),
-        }).pipe(T.Http({ method: "GET", uri: "/repos/{owner}/{repo}/installation", code: 200 })),
-      ).annotate({
-        identifier: "GetRepoInstallationRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          account_id: S.Number.pipe(T.Label()),
-        }).pipe(
-          T.Http({ method: "GET", uri: "/marketplace_listing/accounts/{account_id}", code: 200 }),
-        ),
-      ).annotate({
-        identifier: "GetSubscriptionPlanForAccountRequest",
-      });
-  }
-}
-function __c4(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          url: S.String,
-          accounts_url: S.String,
-          id: S.Number,
-          number: S.Number,
-          name: S.String,
-          description: S.String,
-          monthly_price_in_cents: S.Number,
-          yearly_price_in_cents: S.Number,
-          price_model: S.String,
-          has_free_trial: S.Boolean,
-          unit_name: S.NullOr(S.String),
-          state: S.String,
-          bullets: __S(3, __c0, 3),
-        }),
-      ).annotate({ identifier: "MarketplaceListingPlan" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          is_installed: S.optional(S.Boolean),
-          effective_date: S.optional(S.String),
-          unit_count: S.optional(S.NullOr(S.Number)),
-          id: S.optional(S.Number),
-          plan: S.optional(__S(32, __c4, 0)),
-        }),
-      ).annotate({
-        identifier: "MarketplacePurchaseMarketplacePendingChange",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          billing_cycle: S.optional(S.String),
-          next_billing_date: S.optional(S.NullOr(S.String)),
-          is_installed: S.optional(S.Boolean),
-          unit_count: S.optional(S.NullOr(S.Number)),
-          on_free_trial: S.optional(S.Boolean),
-          free_trial_ends_on: S.optional(S.NullOr(S.String)),
-          updated_at: S.optional(S.String),
-          plan: S.optional(__S(32, __c4, 0)),
-        }),
-      ).annotate({
-        identifier: "MarketplacePurchaseMarketplacePurchase",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          url: S.String,
-          type: S.String,
-          id: S.Number,
-          login: S.String,
-          organization_billing_email: S.optional(S.String),
-          email: S.optional(S.NullOr(S.String)),
-          marketplace_pending_change: S.optional(S.NullOr(__S(33, __c4, 1))),
-          marketplace_purchase: __S(34, __c4, 2),
-        }),
-      ).annotate({ identifier: "MarketplacePurchase" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          account_id: S.Number.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/marketplace_listing/stubbed/accounts/{account_id}",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "GetSubscriptionPlanForAccountStubbedRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          username: S.String.pipe(T.Label()),
-        }).pipe(T.Http({ method: "GET", uri: "/users/{username}/installation", code: 200 })),
-      ).annotate({
-        identifier: "GetUserInstallationRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({}).pipe(T.Http({ method: "GET", uri: "/app/hook/config", code: 200 })),
-      ).annotate({
-        identifier: "GetWebhookConfigForAppRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          url: S.optional(S.String),
-          content_type: S.optional(S.String),
-          secret: S.optional(S.String.pipe(T.SensitiveValue({}))),
-          insecure_ssl: S.optional(S.Unknown),
-        }),
-      ).annotate({ identifier: "WebhookConfig" });
-  }
-}
-function __c5(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          delivery_id: S.Number.pipe(T.Label()),
-        }).pipe(T.Http({ method: "GET", uri: "/app/hook/deliveries/{delivery_id}", code: 200 })),
-      ).annotate({
-        identifier: "GetWebhookDeliveryRequest",
-      });
-    case 1:
-      return S.Record(S.String, S.Unknown);
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          headers: S.NullOr(__S(41, __c5, 1)),
-          payload: S.NullOr(__S(41, __c5, 1)),
-        }),
-      ).annotate({ identifier: "HookDeliveryRequest" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.Number,
-          guid: S.String,
-          delivered_at: S.String,
-          redelivery: S.Boolean,
-          duration: S.Number,
-          status: S.String,
-          status_code: S.Number,
-          event: S.String,
-          action: S.NullOr(S.String),
-          installation_id: S.NullOr(S.Number),
-          repository_id: S.NullOr(S.Number),
-          throttled_at: S.optional(S.NullOr(S.String)),
-          url: S.optional(S.String),
-          request: __S(42, __c5, 2),
-          response: __S(42, __c5, 2),
-        }),
-      ).annotate({ identifier: "HookDelivery" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          plan_id: S.Number.pipe(T.Label()),
-          sort: S.optional(S.String.pipe(T.Query())),
-          direction: S.optional(S.String.pipe(T.Query())),
-          per_page: S.optional(S.Number.pipe(T.Query())),
-          page: S.optional(S.Number.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/marketplace_listing/plans/{plan_id}/accounts",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "ListAccountsForPlanRequest",
-      });
-    case 5:
-      return S.Array(__S(35, __c4, 3));
-    case 6:
-      return S.suspend(() => __S(45, __c5, 5).pipe(T.RawResponseRoot())).annotate({
-        identifier: "ListAccountsForPlanResponse",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          plan_id: S.Number.pipe(T.Label()),
-          sort: S.optional(S.String.pipe(T.Query())),
-          direction: S.optional(S.String.pipe(T.Query())),
-          per_page: S.optional(S.Number.pipe(T.Query())),
-          page: S.optional(S.Number.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/marketplace_listing/stubbed/plans/{plan_id}/accounts",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "ListAccountsForPlanStubbedRequest",
-      });
-  }
-}
-function __c6(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          installation_id: S.Number.pipe(T.Label()),
-          per_page: S.optional(S.Number.pipe(T.Query())),
-          page: S.optional(S.Number.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/user/installations/{installation_id}/repositories",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "ListInstallationReposForAuthenticatedUserRequest",
-      });
-    case 1:
-      return S.Array(S.String);
-    case 2:
-      return S.Record(S.String, S.Unknown);
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.Number,
-          node_id: S.String,
-          name: S.String,
-          full_name: S.String,
-          license: S.NullOr(__S(14, __c1, 6)),
-          forks: S.Number,
-          permissions: S.optional(__S(15, __c1, 7)),
-          owner: __S(5, __c0, 5),
-          private: S.Boolean,
-          html_url: S.String,
-          description: S.NullOr(S.String),
-          fork: S.Boolean,
-          url: S.String,
-          archive_url: S.String,
-          assignees_url: S.String,
-          blobs_url: S.String,
-          branches_url: S.String,
-          collaborators_url: S.String,
-          comments_url: S.String,
-          commits_url: S.String,
-          compare_url: S.String,
-          contents_url: S.String,
-          contributors_url: S.String,
-          deployments_url: S.String,
-          downloads_url: S.String,
-          events_url: S.String,
-          forks_url: S.String,
-          git_commits_url: S.String,
-          git_refs_url: S.String,
-          git_tags_url: S.String,
-          git_url: S.String,
-          issue_comment_url: S.String,
-          issue_events_url: S.String,
-          issues_url: S.String,
-          keys_url: S.String,
-          labels_url: S.String,
-          languages_url: S.String,
-          merges_url: S.String,
-          milestones_url: S.String,
-          notifications_url: S.String,
-          pulls_url: S.String,
-          releases_url: S.String,
-          ssh_url: S.String,
-          stargazers_url: S.String,
-          statuses_url: S.String,
-          subscribers_url: S.String,
-          subscription_url: S.String,
-          tags_url: S.String,
-          teams_url: S.String,
-          trees_url: S.String,
-          clone_url: S.String,
-          mirror_url: S.NullOr(S.String),
-          hooks_url: S.String,
-          svn_url: S.String,
-          homepage: S.NullOr(S.String),
-          language: S.NullOr(S.String),
-          forks_count: S.Number,
-          stargazers_count: S.Number,
-          watchers_count: S.Number,
-          size: S.Number,
-          default_branch: S.String,
-          open_issues_count: S.Number,
-          is_template: S.optional(S.Boolean),
-          topics: S.optional(__S(49, __c6, 1)),
-          has_issues: S.Boolean,
-          has_projects: S.Boolean,
-          has_wiki: S.Boolean,
-          has_pages: S.Boolean,
-          has_downloads: S.Boolean,
-          has_discussions: S.optional(S.Boolean),
-          has_pull_requests: S.optional(S.Boolean),
-          pull_request_creation_policy: S.optional(S.String),
-          archived: S.Boolean,
-          disabled: S.Boolean,
-          visibility: S.optional(S.String),
-          pushed_at: S.NullOr(S.String),
-          created_at: S.NullOr(S.String),
-          updated_at: S.NullOr(S.String),
-          allow_rebase_merge: S.optional(S.Boolean),
-          temp_clone_token: S.optional(S.String),
-          allow_squash_merge: S.optional(S.Boolean),
-          allow_auto_merge: S.optional(S.Boolean),
-          delete_branch_on_merge: S.optional(S.Boolean),
-          allow_update_branch: S.optional(S.Boolean),
-          use_squash_pr_title_as_default: S.optional(S.Boolean),
-          squash_merge_commit_title: S.optional(S.String),
-          squash_merge_commit_message: S.optional(S.String),
-          merge_commit_title: S.optional(S.String),
-          merge_commit_message: S.optional(S.String),
-          allow_merge_commit: S.optional(S.Boolean),
-          allow_forking: S.optional(S.Boolean),
-          web_commit_signoff_required: S.optional(S.Boolean),
-          open_issues: S.Number,
-          watchers: S.Number,
-          master_branch: S.optional(S.String),
-          starred_at: S.optional(S.String),
-          anonymous_access_enabled: S.optional(S.Boolean),
-          code_search_index_status: S.optional(__S(16, __c2, 0)),
-          custom_properties: S.optional(__S(50, __c6, 2)),
-        }),
-      ).annotate({
-        identifier: "ListInstallationReposForAuthenticatedUserResponseRepositoriesItem",
-      });
-    case 4:
-      return S.Array(__S(51, __c6, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          total_count: S.Number,
-          repository_selection: S.optional(S.String),
-          repositories: __S(52, __c6, 4),
-        }),
-      ).annotate({
-        identifier: "ListInstallationReposForAuthenticatedUserResponse",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          per_page: S.optional(S.Number.pipe(T.Query())),
-          page: S.optional(S.Number.pipe(T.Query())),
-        }).pipe(T.Http({ method: "GET", uri: "/app/installation-requests", code: 200 })),
-      ).annotate({
-        identifier: "ListInstallationRequestsForAuthenticatedAppRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.Number,
-          node_id: S.optional(S.String),
-          account: S.Unknown,
-          requester: __S(5, __c0, 5),
-          created_at: S.String,
-        }),
-      ).annotate({
-        identifier: "IntegrationInstallationRequest",
-      });
-  }
-}
-function __c7(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(55, __c6, 7));
-    case 1:
-      return S.suspend(() => __S(56, __c7, 0).pipe(T.RawResponseRoot())).annotate({
-        identifier: "ListInstallationRequestsForAuthenticatedAppResponse",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          per_page: S.optional(S.Number.pipe(T.Query())),
-          page: S.optional(S.Number.pipe(T.Query())),
-          since: S.optional(S.String.pipe(T.Query())),
-          outdated: S.optional(S.String.pipe(T.Query())),
-        }).pipe(T.Http({ method: "GET", uri: "/app/installations", code: 200 })),
-      ).annotate({ identifier: "ListInstallationsRequest" });
-    case 3:
-      return S.Array(__S(28, __c3, 4));
-    case 4:
-      return S.suspend(() => __S(59, __c7, 3).pipe(T.RawResponseRoot())).annotate({
-        identifier: "ListInstallationsResponse",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          per_page: S.optional(S.Number.pipe(T.Query())),
-          page: S.optional(S.Number.pipe(T.Query())),
-        }).pipe(T.Http({ method: "GET", uri: "/user/installations", code: 200 })),
-      ).annotate({
-        identifier: "ListInstallationsForAuthenticatedUserRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          total_count: S.Number,
-          installations: __S(59, __c7, 3),
-        }),
-      ).annotate({
-        identifier: "ListInstallationsForAuthenticatedUserResponse",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          per_page: S.optional(S.Number.pipe(T.Query())),
-          page: S.optional(S.Number.pipe(T.Query())),
-        }).pipe(T.Http({ method: "GET", uri: "/marketplace_listing/plans", code: 200 })),
-      ).annotate({ identifier: "ListPlansRequest" });
-  }
-}
-function __c8(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(32, __c4, 0));
-    case 1:
-      return S.suspend(() => __S(64, __c8, 0).pipe(T.RawResponseRoot())).annotate({
-        identifier: "ListPlansResponse",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          per_page: S.optional(S.Number.pipe(T.Query())),
-          page: S.optional(S.Number.pipe(T.Query())),
-        }).pipe(T.Http({ method: "GET", uri: "/marketplace_listing/stubbed/plans", code: 200 })),
-      ).annotate({ identifier: "ListPlansStubbedRequest" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          per_page: S.optional(S.Number.pipe(T.Query())),
-          page: S.optional(S.Number.pipe(T.Query())),
-        }).pipe(T.Http({ method: "GET", uri: "/installation/repositories", code: 200 })),
-      ).annotate({
-        identifier: "ListReposAccessibleToInstallationRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.Number,
-          node_id: S.String,
-          name: S.String,
-          full_name: S.String,
-          license: S.NullOr(__S(14, __c1, 6)),
-          forks: S.Number,
-          permissions: S.optional(__S(15, __c1, 7)),
-          owner: __S(5, __c0, 5),
-          private: S.Boolean,
-          html_url: S.String,
-          description: S.NullOr(S.String),
-          fork: S.Boolean,
-          url: S.String,
-          archive_url: S.String,
-          assignees_url: S.String,
-          blobs_url: S.String,
-          branches_url: S.String,
-          collaborators_url: S.String,
-          comments_url: S.String,
-          commits_url: S.String,
-          compare_url: S.String,
-          contents_url: S.String,
-          contributors_url: S.String,
-          deployments_url: S.String,
-          downloads_url: S.String,
-          events_url: S.String,
-          forks_url: S.String,
-          git_commits_url: S.String,
-          git_refs_url: S.String,
-          git_tags_url: S.String,
-          git_url: S.String,
-          issue_comment_url: S.String,
-          issue_events_url: S.String,
-          issues_url: S.String,
-          keys_url: S.String,
-          labels_url: S.String,
-          languages_url: S.String,
-          merges_url: S.String,
-          milestones_url: S.String,
-          notifications_url: S.String,
-          pulls_url: S.String,
-          releases_url: S.String,
-          ssh_url: S.String,
-          stargazers_url: S.String,
-          statuses_url: S.String,
-          subscribers_url: S.String,
-          subscription_url: S.String,
-          tags_url: S.String,
-          teams_url: S.String,
-          trees_url: S.String,
-          clone_url: S.String,
-          mirror_url: S.NullOr(S.String),
-          hooks_url: S.String,
-          svn_url: S.String,
-          homepage: S.NullOr(S.String),
-          language: S.NullOr(S.String),
-          forks_count: S.Number,
-          stargazers_count: S.Number,
-          watchers_count: S.Number,
-          size: S.Number,
-          default_branch: S.String,
-          open_issues_count: S.Number,
-          is_template: S.optional(S.Boolean),
-          topics: S.optional(__S(49, __c6, 1)),
-          has_issues: S.Boolean,
-          has_projects: S.Boolean,
-          has_wiki: S.Boolean,
-          has_pages: S.Boolean,
-          has_downloads: S.Boolean,
-          has_discussions: S.optional(S.Boolean),
-          has_pull_requests: S.optional(S.Boolean),
-          pull_request_creation_policy: S.optional(S.String),
-          archived: S.Boolean,
-          disabled: S.Boolean,
-          visibility: S.optional(S.String),
-          pushed_at: S.NullOr(S.String),
-          created_at: S.NullOr(S.String),
-          updated_at: S.NullOr(S.String),
-          allow_rebase_merge: S.optional(S.Boolean),
-          temp_clone_token: S.optional(S.String),
-          allow_squash_merge: S.optional(S.Boolean),
-          allow_auto_merge: S.optional(S.Boolean),
-          delete_branch_on_merge: S.optional(S.Boolean),
-          allow_update_branch: S.optional(S.Boolean),
-          use_squash_pr_title_as_default: S.optional(S.Boolean),
-          squash_merge_commit_title: S.optional(S.String),
-          squash_merge_commit_message: S.optional(S.String),
-          merge_commit_title: S.optional(S.String),
-          merge_commit_message: S.optional(S.String),
-          allow_merge_commit: S.optional(S.Boolean),
-          allow_forking: S.optional(S.Boolean),
-          web_commit_signoff_required: S.optional(S.Boolean),
-          open_issues: S.Number,
-          watchers: S.Number,
-          master_branch: S.optional(S.String),
-          starred_at: S.optional(S.String),
-          anonymous_access_enabled: S.optional(S.Boolean),
-          code_search_index_status: S.optional(__S(16, __c2, 0)),
-          custom_properties: S.optional(__S(50, __c6, 2)),
-        }),
-      ).annotate({
-        identifier: "ListReposAccessibleToInstallationResponseRepositoriesItem",
-      });
-    case 5:
-      return S.Array(__S(68, __c8, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          total_count: S.Number,
-          repositories: __S(69, __c8, 5),
-          repository_selection: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "ListReposAccessibleToInstallationResponse",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          per_page: S.optional(S.Number.pipe(T.Query())),
-          page: S.optional(S.Number.pipe(T.Query())),
-        }).pipe(T.Http({ method: "GET", uri: "/user/marketplace_purchases", code: 200 })),
-      ).annotate({
-        identifier: "ListSubscriptionsForAuthenticatedUserRequest",
-      });
-  }
-}
-function __c9(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          url: S.String,
-          id: S.Number,
-          type: S.String,
-          node_id: S.optional(S.String),
-          login: S.String,
-          email: S.optional(S.NullOr(S.String)),
-          organization_billing_email: S.optional(S.NullOr(S.String)),
-        }),
-      ).annotate({ identifier: "MarketplaceAccount" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          billing_cycle: S.String,
-          next_billing_date: S.NullOr(S.String),
-          unit_count: S.NullOr(S.Number),
-          on_free_trial: S.Boolean,
-          free_trial_ends_on: S.NullOr(S.String),
-          updated_at: S.NullOr(S.String),
-          account: __S(72, __c9, 0),
-          plan: __S(32, __c4, 0),
-        }),
-      ).annotate({ identifier: "UserMarketplacePurchase" });
-    case 2:
-      return S.Array(__S(73, __c9, 1));
-    case 3:
-      return S.suspend(() => __S(74, __c9, 2).pipe(T.RawResponseRoot())).annotate({
-        identifier: "ListSubscriptionsForAuthenticatedUserResponse",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          per_page: S.optional(S.Number.pipe(T.Query())),
-          page: S.optional(S.Number.pipe(T.Query())),
-        }).pipe(T.Http({ method: "GET", uri: "/user/marketplace_purchases/stubbed", code: 200 })),
-      ).annotate({
-        identifier: "ListSubscriptionsForAuthenticatedUserStubbedRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          per_page: S.optional(S.Number.pipe(T.Query())),
-          cursor: S.optional(S.String.pipe(T.Query())),
-          status: S.optional(S.String.pipe(T.Query())),
-        }).pipe(T.Http({ method: "GET", uri: "/app/hook/deliveries", code: 200 })),
-      ).annotate({
-        identifier: "ListWebhookDeliveriesRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.Number,
-          guid: S.String,
-          delivered_at: S.String,
-          redelivery: S.Boolean,
-          duration: S.Number,
-          status: S.String,
-          status_code: S.Number,
-          event: S.String,
-          action: S.NullOr(S.String),
-          installation_id: S.NullOr(S.Number),
-          repository_id: S.NullOr(S.Number),
-          throttled_at: S.optional(S.NullOr(S.String)),
-        }),
-      ).annotate({ identifier: "HookDeliveryItem" });
-    case 7:
-      return S.Array(__S(78, __c9, 6));
-  }
-}
-function __c10(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() => __S(79, __c9, 7).pipe(T.RawResponseRoot())).annotate({
-        identifier: "ListWebhookDeliveriesResponse",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          delivery_id: S.Number.pipe(T.Label()),
-        }).pipe(
-          T.Http({ method: "POST", uri: "/app/hook/deliveries/{delivery_id}/attempts", code: 200 }),
-        ),
-      ).annotate({
-        identifier: "RedeliverWebhookDeliveryRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          installation_id: S.Number.pipe(T.Label()),
-          repository_id: S.Number.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/user/installations/{installation_id}/repositories/{repository_id}",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "RemoveRepoFromInstallationForAuthenticatedUserRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          client_id: S.String.pipe(T.Label()),
-          access_token: S.String.pipe(T.SensitiveValue({})),
-        }).pipe(T.Http({ method: "PATCH", uri: "/applications/{client_id}/token", code: 200 })),
-      ).annotate({ identifier: "ResetTokenRequest" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({}).pipe(T.Http({ method: "DELETE", uri: "/installation/token", code: 200 })),
-      ).annotate({
-        identifier: "RevokeInstallationAccessTokenRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          client_id: S.String.pipe(T.Label()),
-          access_token: S.String.pipe(T.SensitiveValue({})),
-          target: S.optional(S.String),
-          target_id: S.optional(S.Number),
-          repositories: S.optional(__S(3, __c0, 3)),
-          repository_ids: S.optional(__S(12, __c1, 4)),
-          permissions: S.optional(__S(6, __c0, 6)),
-        }).pipe(
-          T.Http({ method: "POST", uri: "/applications/{client_id}/token/scoped", code: 200 }),
-        ),
-      ).annotate({ identifier: "ScopeTokenRequest" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          installation_id: S.Number.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "PUT",
-            uri: "/app/installations/{installation_id}/suspended",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "SuspendInstallationRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          installation_id: S.Number.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/app/installations/{installation_id}/suspended",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "UnsuspendInstallationRequest",
-      });
-  }
-}
-function __c11(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          url: S.optional(S.String),
-          content_type: S.optional(S.String),
-          secret: S.optional(S.String.pipe(T.SensitiveValue({}))),
-          insecure_ssl: S.optional(S.Unknown),
-        }).pipe(T.Http({ method: "PATCH", uri: "/app/hook/config", code: 200 })),
-      ).annotate({
-        identifier: "UpdateWebhookConfigForAppRequest",
-      });
-  }
-}
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

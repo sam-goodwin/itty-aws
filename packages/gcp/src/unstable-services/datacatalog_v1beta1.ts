@@ -942,8 +942,8 @@ export const createProjectsLocationsEntryGroups: API.OperationMethod<
   CreateProjectsLocationsEntryGroupsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2, __c0, 2) as any as S.Schema<CreateProjectsLocationsEntryGroupsRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<GoogleCloudDatacatalogV1beta1EntryGroup>,
+  input: __S(624, __c39, 0) as any as S.Schema<CreateProjectsLocationsEntryGroupsRequest>,
+  output: __S(640, __c40, 0) as any as S.Schema<GoogleCloudDatacatalogV1beta1EntryGroup>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -962,8 +962,8 @@ export const createProjectsLocationsEntryGroupsEntries: API.OperationMethod<
   CreateProjectsLocationsEntryGroupsEntriesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(18, __c2, 2) as any as S.Schema<CreateProjectsLocationsEntryGroupsEntriesRequest>,
-  output: __S(17, __c2, 1) as any as S.Schema<GoogleCloudDatacatalogV1beta1Entry>,
+  input: __S(832, __c52, 0) as any as S.Schema<CreateProjectsLocationsEntryGroupsEntriesRequest>,
+  output: __S(877, __c54, 13) as any as S.Schema<GoogleCloudDatacatalogV1beta1Entry>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -982,8 +982,12 @@ export const createProjectsLocationsEntryGroupsEntriesTags: API.OperationMethod<
   CreateProjectsLocationsEntryGroupsEntriesTagsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(23, __c2, 7) as any as S.Schema<CreateProjectsLocationsEntryGroupsEntriesTagsRequest>,
-  output: __S(22, __c2, 6) as any as S.Schema<GoogleCloudDatacatalogV1beta1Tag>,
+  input: __S(
+    1056,
+    __c66,
+    0,
+  ) as any as S.Schema<CreateProjectsLocationsEntryGroupsEntriesTagsRequest>,
+  output: __S(1074, __c67, 2) as any as S.Schema<GoogleCloudDatacatalogV1beta1Tag>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1002,8 +1006,8 @@ export const createProjectsLocationsEntryGroupsTags: API.OperationMethod<
   CreateProjectsLocationsEntryGroupsTagsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(24, __c3, 0) as any as S.Schema<CreateProjectsLocationsEntryGroupsTagsRequest>,
-  output: __S(22, __c2, 6) as any as S.Schema<GoogleCloudDatacatalogV1beta1Tag>,
+  input: __S(1104, __c69, 0) as any as S.Schema<CreateProjectsLocationsEntryGroupsTagsRequest>,
+  output: __S(1074, __c67, 2) as any as S.Schema<GoogleCloudDatacatalogV1beta1Tag>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1022,8 +1026,8 @@ export const createProjectsLocationsTagTemplates: API.OperationMethod<
   CreateProjectsLocationsTagTemplatesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(31, __c3, 7) as any as S.Schema<CreateProjectsLocationsTagTemplatesRequest>,
-  output: __S(30, __c3, 6) as any as S.Schema<GoogleCloudDatacatalogV1beta1TagTemplate>,
+  input: __S(1120, __c70, 0) as any as S.Schema<CreateProjectsLocationsTagTemplatesRequest>,
+  output: __S(1137, __c71, 1) as any as S.Schema<GoogleCloudDatacatalogV1beta1TagTemplate>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1042,8 +1046,8 @@ export const createProjectsLocationsTagTemplatesFields: API.OperationMethod<
   CreateProjectsLocationsTagTemplatesFieldsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(32, __c4, 0) as any as S.Schema<CreateProjectsLocationsTagTemplatesFieldsRequest>,
-  output: __S(28, __c3, 4) as any as S.Schema<GoogleCloudDatacatalogV1beta1TagTemplateField>,
+  input: __S(1168, __c73, 0) as any as S.Schema<CreateProjectsLocationsTagTemplatesFieldsRequest>,
+  output: __S(1155, __c72, 3) as any as S.Schema<GoogleCloudDatacatalogV1beta1TagTemplateField>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1062,8 +1066,8 @@ export const createProjectsLocationsTaxonomies: API.OperationMethod<
   CreateProjectsLocationsTaxonomiesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(36, __c4, 4) as any as S.Schema<CreateProjectsLocationsTaxonomiesRequest>,
-  output: __S(35, __c4, 3) as any as S.Schema<GoogleCloudDatacatalogV1beta1Taxonomy>,
+  input: __S(0, __c0, 0) as any as S.Schema<CreateProjectsLocationsTaxonomiesRequest>,
+  output: __S(33, __c2, 1) as any as S.Schema<GoogleCloudDatacatalogV1beta1Taxonomy>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1082,8 +1086,8 @@ export const createProjectsLocationsTaxonomiesPolicyTags: API.OperationMethod<
   CreateProjectsLocationsTaxonomiesPolicyTagsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(38, __c4, 6) as any as S.Schema<CreateProjectsLocationsTaxonomiesPolicyTagsRequest>,
-  output: __S(37, __c4, 5) as any as S.Schema<GoogleCloudDatacatalogV1beta1PolicyTag>,
+  input: __S(48, __c3, 0) as any as S.Schema<CreateProjectsLocationsTaxonomiesPolicyTagsRequest>,
+  output: __S(64, __c4, 0) as any as S.Schema<GoogleCloudDatacatalogV1beta1PolicyTag>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1102,8 +1106,8 @@ export const deleteProjectsLocationsEntryGroups: API.OperationMethod<
   DeleteProjectsLocationsEntryGroupsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(39, __c4, 7) as any as S.Schema<DeleteProjectsLocationsEntryGroupsRequest>,
-  output: __S(40, __c5, 0) as any as S.Schema<Empty>,
+  input: __S(80, __c5, 0) as any as S.Schema<DeleteProjectsLocationsEntryGroupsRequest>,
+  output: __S(96, __c6, 0) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1122,8 +1126,8 @@ export const deleteProjectsLocationsEntryGroupsEntries: API.OperationMethod<
   DeleteProjectsLocationsEntryGroupsEntriesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(41, __c5, 1) as any as S.Schema<DeleteProjectsLocationsEntryGroupsEntriesRequest>,
-  output: __S(40, __c5, 0) as any as S.Schema<Empty>,
+  input: __S(112, __c7, 0) as any as S.Schema<DeleteProjectsLocationsEntryGroupsEntriesRequest>,
+  output: __S(96, __c6, 0) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1142,8 +1146,8 @@ export const deleteProjectsLocationsEntryGroupsEntriesTags: API.OperationMethod<
   DeleteProjectsLocationsEntryGroupsEntriesTagsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(42, __c5, 2) as any as S.Schema<DeleteProjectsLocationsEntryGroupsEntriesTagsRequest>,
-  output: __S(40, __c5, 0) as any as S.Schema<Empty>,
+  input: __S(128, __c8, 0) as any as S.Schema<DeleteProjectsLocationsEntryGroupsEntriesTagsRequest>,
+  output: __S(96, __c6, 0) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1162,8 +1166,8 @@ export const deleteProjectsLocationsEntryGroupsTags: API.OperationMethod<
   DeleteProjectsLocationsEntryGroupsTagsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(43, __c5, 3) as any as S.Schema<DeleteProjectsLocationsEntryGroupsTagsRequest>,
-  output: __S(40, __c5, 0) as any as S.Schema<Empty>,
+  input: __S(144, __c9, 0) as any as S.Schema<DeleteProjectsLocationsEntryGroupsTagsRequest>,
+  output: __S(96, __c6, 0) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1182,8 +1186,8 @@ export const deleteProjectsLocationsTagTemplates: API.OperationMethod<
   DeleteProjectsLocationsTagTemplatesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(44, __c5, 4) as any as S.Schema<DeleteProjectsLocationsTagTemplatesRequest>,
-  output: __S(40, __c5, 0) as any as S.Schema<Empty>,
+  input: __S(160, __c10, 0) as any as S.Schema<DeleteProjectsLocationsTagTemplatesRequest>,
+  output: __S(96, __c6, 0) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1202,8 +1206,8 @@ export const deleteProjectsLocationsTagTemplatesFields: API.OperationMethod<
   DeleteProjectsLocationsTagTemplatesFieldsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(45, __c5, 5) as any as S.Schema<DeleteProjectsLocationsTagTemplatesFieldsRequest>,
-  output: __S(40, __c5, 0) as any as S.Schema<Empty>,
+  input: __S(176, __c11, 0) as any as S.Schema<DeleteProjectsLocationsTagTemplatesFieldsRequest>,
+  output: __S(96, __c6, 0) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1222,8 +1226,8 @@ export const deleteProjectsLocationsTaxonomies: API.OperationMethod<
   DeleteProjectsLocationsTaxonomiesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(46, __c5, 6) as any as S.Schema<DeleteProjectsLocationsTaxonomiesRequest>,
-  output: __S(40, __c5, 0) as any as S.Schema<Empty>,
+  input: __S(192, __c12, 0) as any as S.Schema<DeleteProjectsLocationsTaxonomiesRequest>,
+  output: __S(96, __c6, 0) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1242,8 +1246,8 @@ export const deleteProjectsLocationsTaxonomiesPolicyTags: API.OperationMethod<
   DeleteProjectsLocationsTaxonomiesPolicyTagsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(47, __c5, 7) as any as S.Schema<DeleteProjectsLocationsTaxonomiesPolicyTagsRequest>,
-  output: __S(40, __c5, 0) as any as S.Schema<Empty>,
+  input: __S(208, __c13, 0) as any as S.Schema<DeleteProjectsLocationsTaxonomiesPolicyTagsRequest>,
+  output: __S(96, __c6, 0) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1257,11 +1261,11 @@ export const exportProjectsLocationsTaxonomies: API.OperationMethod<
   ExportProjectsLocationsTaxonomiesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(48, __c6, 0) as any as S.Schema<ExportProjectsLocationsTaxonomiesRequest>,
+  input: __S(224, __c14, 0) as any as S.Schema<ExportProjectsLocationsTaxonomiesRequest>,
   output: __S(
-    53,
-    __c6,
-    5,
+    244,
+    __c15,
+    4,
   ) as any as S.Schema<GoogleCloudDatacatalogV1beta1ExportTaxonomiesResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
@@ -1281,8 +1285,8 @@ export const getIamPolicyProjectsLocationsEntryGroups: API.OperationMethod<
   GetIamPolicyProjectsLocationsEntryGroupsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(56, __c7, 0) as any as S.Schema<GetIamPolicyProjectsLocationsEntryGroupsRequest>,
-  output: __S(60, __c7, 4) as any as S.Schema<Policy>,
+  input: __S(256, __c16, 0) as any as S.Schema<GetIamPolicyProjectsLocationsEntryGroupsRequest>,
+  output: __S(291, __c18, 3) as any as S.Schema<Policy>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1302,11 +1306,11 @@ export const getIamPolicyProjectsLocationsEntryGroupsEntries: API.OperationMetho
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    61,
-    __c7,
-    5,
+    304,
+    __c19,
+    0,
   ) as any as S.Schema<GetIamPolicyProjectsLocationsEntryGroupsEntriesRequest>,
-  output: __S(60, __c7, 4) as any as S.Schema<Policy>,
+  output: __S(291, __c18, 3) as any as S.Schema<Policy>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1325,8 +1329,8 @@ export const getIamPolicyProjectsLocationsTagTemplates: API.OperationMethod<
   GetIamPolicyProjectsLocationsTagTemplatesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(62, __c7, 6) as any as S.Schema<GetIamPolicyProjectsLocationsTagTemplatesRequest>,
-  output: __S(60, __c7, 4) as any as S.Schema<Policy>,
+  input: __S(320, __c20, 0) as any as S.Schema<GetIamPolicyProjectsLocationsTagTemplatesRequest>,
+  output: __S(291, __c18, 3) as any as S.Schema<Policy>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1345,8 +1349,8 @@ export const getIamPolicyProjectsLocationsTaxonomies: API.OperationMethod<
   GetIamPolicyProjectsLocationsTaxonomiesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(63, __c7, 7) as any as S.Schema<GetIamPolicyProjectsLocationsTaxonomiesRequest>,
-  output: __S(60, __c7, 4) as any as S.Schema<Policy>,
+  input: __S(336, __c21, 0) as any as S.Schema<GetIamPolicyProjectsLocationsTaxonomiesRequest>,
+  output: __S(291, __c18, 3) as any as S.Schema<Policy>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1366,11 +1370,11 @@ export const getIamPolicyProjectsLocationsTaxonomiesPolicyTags: API.OperationMet
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    64,
-    __c8,
+    352,
+    __c22,
     0,
   ) as any as S.Schema<GetIamPolicyProjectsLocationsTaxonomiesPolicyTagsRequest>,
-  output: __S(60, __c7, 4) as any as S.Schema<Policy>,
+  output: __S(291, __c18, 3) as any as S.Schema<Policy>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1384,8 +1388,8 @@ export const getProjectsLocationsEntryGroups: API.OperationMethod<
   GetProjectsLocationsEntryGroupsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(65, __c8, 1) as any as S.Schema<GetProjectsLocationsEntryGroupsRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<GoogleCloudDatacatalogV1beta1EntryGroup>,
+  input: __S(368, __c23, 0) as any as S.Schema<GetProjectsLocationsEntryGroupsRequest>,
+  output: __S(640, __c40, 0) as any as S.Schema<GoogleCloudDatacatalogV1beta1EntryGroup>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1399,8 +1403,8 @@ export const getProjectsLocationsEntryGroupsEntries: API.OperationMethod<
   GetProjectsLocationsEntryGroupsEntriesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(66, __c8, 2) as any as S.Schema<GetProjectsLocationsEntryGroupsEntriesRequest>,
-  output: __S(17, __c2, 1) as any as S.Schema<GoogleCloudDatacatalogV1beta1Entry>,
+  input: __S(384, __c24, 0) as any as S.Schema<GetProjectsLocationsEntryGroupsEntriesRequest>,
+  output: __S(877, __c54, 13) as any as S.Schema<GoogleCloudDatacatalogV1beta1Entry>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1414,8 +1418,8 @@ export const getProjectsLocationsTagTemplates: API.OperationMethod<
   GetProjectsLocationsTagTemplatesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(67, __c8, 3) as any as S.Schema<GetProjectsLocationsTagTemplatesRequest>,
-  output: __S(30, __c3, 6) as any as S.Schema<GoogleCloudDatacatalogV1beta1TagTemplate>,
+  input: __S(400, __c25, 0) as any as S.Schema<GetProjectsLocationsTagTemplatesRequest>,
+  output: __S(1137, __c71, 1) as any as S.Schema<GoogleCloudDatacatalogV1beta1TagTemplate>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1429,8 +1433,8 @@ export const getProjectsLocationsTaxonomies: API.OperationMethod<
   GetProjectsLocationsTaxonomiesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(68, __c8, 4) as any as S.Schema<GetProjectsLocationsTaxonomiesRequest>,
-  output: __S(35, __c4, 3) as any as S.Schema<GoogleCloudDatacatalogV1beta1Taxonomy>,
+  input: __S(416, __c26, 0) as any as S.Schema<GetProjectsLocationsTaxonomiesRequest>,
+  output: __S(33, __c2, 1) as any as S.Schema<GoogleCloudDatacatalogV1beta1Taxonomy>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1444,8 +1448,8 @@ export const getProjectsLocationsTaxonomiesPolicyTags: API.OperationMethod<
   GetProjectsLocationsTaxonomiesPolicyTagsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(69, __c8, 5) as any as S.Schema<GetProjectsLocationsTaxonomiesPolicyTagsRequest>,
-  output: __S(37, __c4, 5) as any as S.Schema<GoogleCloudDatacatalogV1beta1PolicyTag>,
+  input: __S(432, __c27, 0) as any as S.Schema<GetProjectsLocationsTaxonomiesPolicyTagsRequest>,
+  output: __S(64, __c4, 0) as any as S.Schema<GoogleCloudDatacatalogV1beta1PolicyTag>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1464,11 +1468,11 @@ export const importProjectsLocationsTaxonomies: API.OperationMethod<
   ImportProjectsLocationsTaxonomiesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(71, __c8, 7) as any as S.Schema<ImportProjectsLocationsTaxonomiesRequest>,
+  input: __S(449, __c28, 1) as any as S.Schema<ImportProjectsLocationsTaxonomiesRequest>,
   output: __S(
-    73,
-    __c9,
-    1,
+    450,
+    __c28,
+    2,
   ) as any as S.Schema<GoogleCloudDatacatalogV1beta1ImportTaxonomiesResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
@@ -1484,8 +1488,12 @@ export const listProjectsLocationsEntryGroups: API.PaginatedOperationMethod<
   GcpOpContext,
   GoogleCloudDatacatalogV1beta1ListEntryGroupsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(74, __c9, 2) as any as S.Schema<ListProjectsLocationsEntryGroupsRequest>,
-  output: __S(76, __c9, 4) as any as S.Schema<GoogleCloudDatacatalogV1beta1ListEntryGroupsResponse>,
+  input: __S(480, __c30, 0) as any as S.Schema<ListProjectsLocationsEntryGroupsRequest>,
+  output: __S(
+    482,
+    __c30,
+    2,
+  ) as any as S.Schema<GoogleCloudDatacatalogV1beta1ListEntryGroupsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1501,8 +1509,8 @@ export const listProjectsLocationsEntryGroupsEntries: API.PaginatedOperationMeth
   GcpOpContext,
   GoogleCloudDatacatalogV1beta1ListEntriesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(77, __c9, 5) as any as S.Schema<ListProjectsLocationsEntryGroupsEntriesRequest>,
-  output: __S(79, __c9, 7) as any as S.Schema<GoogleCloudDatacatalogV1beta1ListEntriesResponse>,
+  input: __S(496, __c31, 0) as any as S.Schema<ListProjectsLocationsEntryGroupsEntriesRequest>,
+  output: __S(498, __c31, 2) as any as S.Schema<GoogleCloudDatacatalogV1beta1ListEntriesResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1518,8 +1526,8 @@ export const listProjectsLocationsEntryGroupsEntriesTags: API.PaginatedOperation
   GcpOpContext,
   GoogleCloudDatacatalogV1beta1ListTagsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(80, __c10, 0) as any as S.Schema<ListProjectsLocationsEntryGroupsEntriesTagsRequest>,
-  output: __S(82, __c10, 2) as any as S.Schema<GoogleCloudDatacatalogV1beta1ListTagsResponse>,
+  input: __S(512, __c32, 0) as any as S.Schema<ListProjectsLocationsEntryGroupsEntriesTagsRequest>,
+  output: __S(529, __c33, 1) as any as S.Schema<GoogleCloudDatacatalogV1beta1ListTagsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1535,8 +1543,8 @@ export const listProjectsLocationsEntryGroupsTags: API.PaginatedOperationMethod<
   GcpOpContext,
   GoogleCloudDatacatalogV1beta1ListTagsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(83, __c10, 3) as any as S.Schema<ListProjectsLocationsEntryGroupsTagsRequest>,
-  output: __S(82, __c10, 2) as any as S.Schema<GoogleCloudDatacatalogV1beta1ListTagsResponse>,
+  input: __S(544, __c34, 0) as any as S.Schema<ListProjectsLocationsEntryGroupsTagsRequest>,
+  output: __S(529, __c33, 1) as any as S.Schema<GoogleCloudDatacatalogV1beta1ListTagsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1552,8 +1560,12 @@ export const listProjectsLocationsTaxonomies: API.PaginatedOperationMethod<
   GcpOpContext,
   GoogleCloudDatacatalogV1beta1ListTaxonomiesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(84, __c10, 4) as any as S.Schema<ListProjectsLocationsTaxonomiesRequest>,
-  output: __S(85, __c10, 5) as any as S.Schema<GoogleCloudDatacatalogV1beta1ListTaxonomiesResponse>,
+  input: __S(560, __c35, 0) as any as S.Schema<ListProjectsLocationsTaxonomiesRequest>,
+  output: __S(
+    561,
+    __c35,
+    1,
+  ) as any as S.Schema<GoogleCloudDatacatalogV1beta1ListTaxonomiesResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1569,8 +1581,12 @@ export const listProjectsLocationsTaxonomiesPolicyTags: API.PaginatedOperationMe
   GcpOpContext,
   GoogleCloudDatacatalogV1beta1ListPolicyTagsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(86, __c10, 6) as any as S.Schema<ListProjectsLocationsTaxonomiesPolicyTagsRequest>,
-  output: __S(88, __c11, 0) as any as S.Schema<GoogleCloudDatacatalogV1beta1ListPolicyTagsResponse>,
+  input: __S(576, __c36, 0) as any as S.Schema<ListProjectsLocationsTaxonomiesPolicyTagsRequest>,
+  output: __S(
+    578,
+    __c36,
+    2,
+  ) as any as S.Schema<GoogleCloudDatacatalogV1beta1ListPolicyTagsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1585,8 +1601,8 @@ export const lookupEntries: API.OperationMethod<
   LookupEntriesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(89, __c11, 1) as any as S.Schema<LookupEntriesRequest>,
-  output: __S(17, __c2, 1) as any as S.Schema<GoogleCloudDatacatalogV1beta1Entry>,
+  input: __S(592, __c37, 0) as any as S.Schema<LookupEntriesRequest>,
+  output: __S(877, __c54, 13) as any as S.Schema<GoogleCloudDatacatalogV1beta1Entry>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1605,8 +1621,8 @@ export const patchProjectsLocationsEntryGroups: API.OperationMethod<
   PatchProjectsLocationsEntryGroupsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(90, __c11, 2) as any as S.Schema<PatchProjectsLocationsEntryGroupsRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<GoogleCloudDatacatalogV1beta1EntryGroup>,
+  input: __S(608, __c38, 0) as any as S.Schema<PatchProjectsLocationsEntryGroupsRequest>,
+  output: __S(640, __c40, 0) as any as S.Schema<GoogleCloudDatacatalogV1beta1EntryGroup>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1625,8 +1641,8 @@ export const patchProjectsLocationsEntryGroupsEntries: API.OperationMethod<
   PatchProjectsLocationsEntryGroupsEntriesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(91, __c11, 3) as any as S.Schema<PatchProjectsLocationsEntryGroupsEntriesRequest>,
-  output: __S(17, __c2, 1) as any as S.Schema<GoogleCloudDatacatalogV1beta1Entry>,
+  input: __S(672, __c42, 0) as any as S.Schema<PatchProjectsLocationsEntryGroupsEntriesRequest>,
+  output: __S(877, __c54, 13) as any as S.Schema<GoogleCloudDatacatalogV1beta1Entry>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1645,8 +1661,8 @@ export const patchProjectsLocationsEntryGroupsEntriesTags: API.OperationMethod<
   PatchProjectsLocationsEntryGroupsEntriesTagsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(92, __c11, 4) as any as S.Schema<PatchProjectsLocationsEntryGroupsEntriesTagsRequest>,
-  output: __S(22, __c2, 6) as any as S.Schema<GoogleCloudDatacatalogV1beta1Tag>,
+  input: __S(688, __c43, 0) as any as S.Schema<PatchProjectsLocationsEntryGroupsEntriesTagsRequest>,
+  output: __S(1074, __c67, 2) as any as S.Schema<GoogleCloudDatacatalogV1beta1Tag>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1665,8 +1681,8 @@ export const patchProjectsLocationsEntryGroupsTags: API.OperationMethod<
   PatchProjectsLocationsEntryGroupsTagsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(93, __c11, 5) as any as S.Schema<PatchProjectsLocationsEntryGroupsTagsRequest>,
-  output: __S(22, __c2, 6) as any as S.Schema<GoogleCloudDatacatalogV1beta1Tag>,
+  input: __S(704, __c44, 0) as any as S.Schema<PatchProjectsLocationsEntryGroupsTagsRequest>,
+  output: __S(1074, __c67, 2) as any as S.Schema<GoogleCloudDatacatalogV1beta1Tag>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1685,8 +1701,8 @@ export const patchProjectsLocationsTagTemplates: API.OperationMethod<
   PatchProjectsLocationsTagTemplatesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(94, __c11, 6) as any as S.Schema<PatchProjectsLocationsTagTemplatesRequest>,
-  output: __S(30, __c3, 6) as any as S.Schema<GoogleCloudDatacatalogV1beta1TagTemplate>,
+  input: __S(720, __c45, 0) as any as S.Schema<PatchProjectsLocationsTagTemplatesRequest>,
+  output: __S(1137, __c71, 1) as any as S.Schema<GoogleCloudDatacatalogV1beta1TagTemplate>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1705,8 +1721,8 @@ export const patchProjectsLocationsTagTemplatesFields: API.OperationMethod<
   PatchProjectsLocationsTagTemplatesFieldsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(95, __c11, 7) as any as S.Schema<PatchProjectsLocationsTagTemplatesFieldsRequest>,
-  output: __S(28, __c3, 4) as any as S.Schema<GoogleCloudDatacatalogV1beta1TagTemplateField>,
+  input: __S(736, __c46, 0) as any as S.Schema<PatchProjectsLocationsTagTemplatesFieldsRequest>,
+  output: __S(1155, __c72, 3) as any as S.Schema<GoogleCloudDatacatalogV1beta1TagTemplateField>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1725,8 +1741,8 @@ export const patchProjectsLocationsTaxonomies: API.OperationMethod<
   PatchProjectsLocationsTaxonomiesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(96, __c12, 0) as any as S.Schema<PatchProjectsLocationsTaxonomiesRequest>,
-  output: __S(35, __c4, 3) as any as S.Schema<GoogleCloudDatacatalogV1beta1Taxonomy>,
+  input: __S(752, __c47, 0) as any as S.Schema<PatchProjectsLocationsTaxonomiesRequest>,
+  output: __S(33, __c2, 1) as any as S.Schema<GoogleCloudDatacatalogV1beta1Taxonomy>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1745,8 +1761,8 @@ export const patchProjectsLocationsTaxonomiesPolicyTags: API.OperationMethod<
   PatchProjectsLocationsTaxonomiesPolicyTagsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(97, __c12, 1) as any as S.Schema<PatchProjectsLocationsTaxonomiesPolicyTagsRequest>,
-  output: __S(37, __c4, 5) as any as S.Schema<GoogleCloudDatacatalogV1beta1PolicyTag>,
+  input: __S(768, __c48, 0) as any as S.Schema<PatchProjectsLocationsTaxonomiesPolicyTagsRequest>,
+  output: __S(64, __c4, 0) as any as S.Schema<GoogleCloudDatacatalogV1beta1PolicyTag>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1765,8 +1781,8 @@ export const renameProjectsLocationsTagTemplatesFields: API.OperationMethod<
   RenameProjectsLocationsTagTemplatesFieldsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(99, __c12, 3) as any as S.Schema<RenameProjectsLocationsTagTemplatesFieldsRequest>,
-  output: __S(28, __c3, 4) as any as S.Schema<GoogleCloudDatacatalogV1beta1TagTemplateField>,
+  input: __S(785, __c49, 1) as any as S.Schema<RenameProjectsLocationsTagTemplatesFieldsRequest>,
+  output: __S(1155, __c72, 3) as any as S.Schema<GoogleCloudDatacatalogV1beta1TagTemplateField>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1786,11 +1802,11 @@ export const renameProjectsLocationsTagTemplatesFieldsEnumValues: API.OperationM
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    101,
-    __c12,
-    5,
+    801,
+    __c50,
+    1,
   ) as any as S.Schema<RenameProjectsLocationsTagTemplatesFieldsEnumValuesRequest>,
-  output: __S(28, __c3, 4) as any as S.Schema<GoogleCloudDatacatalogV1beta1TagTemplateField>,
+  output: __S(1155, __c72, 3) as any as S.Schema<GoogleCloudDatacatalogV1beta1TagTemplateField>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1804,8 +1820,8 @@ export const searchCatalog: API.OperationMethod<
   SearchCatalogError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(104, __c13, 0) as any as S.Schema<SearchCatalogRequest>,
-  output: __S(107, __c13, 3) as any as S.Schema<GoogleCloudDatacatalogV1beta1SearchCatalogResponse>,
+  input: __S(818, __c51, 2) as any as S.Schema<SearchCatalogRequest>,
+  output: __S(821, __c51, 5) as any as S.Schema<GoogleCloudDatacatalogV1beta1SearchCatalogResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1824,8 +1840,8 @@ export const setIamPolicyProjectsLocationsEntryGroups: API.OperationMethod<
   SetIamPolicyProjectsLocationsEntryGroupsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(109, __c13, 5) as any as S.Schema<SetIamPolicyProjectsLocationsEntryGroupsRequest>,
-  output: __S(60, __c7, 4) as any as S.Schema<Policy>,
+  input: __S(880, __c55, 0) as any as S.Schema<SetIamPolicyProjectsLocationsEntryGroupsRequest>,
+  output: __S(291, __c18, 3) as any as S.Schema<Policy>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1844,8 +1860,8 @@ export const setIamPolicyProjectsLocationsTagTemplates: API.OperationMethod<
   SetIamPolicyProjectsLocationsTagTemplatesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(110, __c13, 6) as any as S.Schema<SetIamPolicyProjectsLocationsTagTemplatesRequest>,
-  output: __S(60, __c7, 4) as any as S.Schema<Policy>,
+  input: __S(912, __c57, 0) as any as S.Schema<SetIamPolicyProjectsLocationsTagTemplatesRequest>,
+  output: __S(291, __c18, 3) as any as S.Schema<Policy>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1864,8 +1880,8 @@ export const setIamPolicyProjectsLocationsTaxonomies: API.OperationMethod<
   SetIamPolicyProjectsLocationsTaxonomiesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(111, __c13, 7) as any as S.Schema<SetIamPolicyProjectsLocationsTaxonomiesRequest>,
-  output: __S(60, __c7, 4) as any as S.Schema<Policy>,
+  input: __S(928, __c58, 0) as any as S.Schema<SetIamPolicyProjectsLocationsTaxonomiesRequest>,
+  output: __S(291, __c18, 3) as any as S.Schema<Policy>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1885,11 +1901,11 @@ export const setIamPolicyProjectsLocationsTaxonomiesPolicyTags: API.OperationMet
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    112,
-    __c14,
+    944,
+    __c59,
     0,
   ) as any as S.Schema<SetIamPolicyProjectsLocationsTaxonomiesPolicyTagsRequest>,
-  output: __S(60, __c7, 4) as any as S.Schema<Policy>,
+  output: __S(291, __c18, 3) as any as S.Schema<Policy>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1909,11 +1925,11 @@ export const testIamPermissionsProjectsLocationsEntryGroups: API.OperationMethod
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    114,
-    __c14,
-    2,
+    960,
+    __c60,
+    0,
   ) as any as S.Schema<TestIamPermissionsProjectsLocationsEntryGroupsRequest>,
-  output: __S(113, __c14, 1) as any as S.Schema<TestIamPermissionsResponse>,
+  output: __S(976, __c61, 0) as any as S.Schema<TestIamPermissionsResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1933,11 +1949,11 @@ export const testIamPermissionsProjectsLocationsEntryGroupsEntries: API.Operatio
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    115,
-    __c14,
-    3,
+    992,
+    __c62,
+    0,
   ) as any as S.Schema<TestIamPermissionsProjectsLocationsEntryGroupsEntriesRequest>,
-  output: __S(113, __c14, 1) as any as S.Schema<TestIamPermissionsResponse>,
+  output: __S(976, __c61, 0) as any as S.Schema<TestIamPermissionsResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1957,11 +1973,11 @@ export const testIamPermissionsProjectsLocationsTagTemplates: API.OperationMetho
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    116,
-    __c14,
-    4,
+    1008,
+    __c63,
+    0,
   ) as any as S.Schema<TestIamPermissionsProjectsLocationsTagTemplatesRequest>,
-  output: __S(113, __c14, 1) as any as S.Schema<TestIamPermissionsResponse>,
+  output: __S(976, __c61, 0) as any as S.Schema<TestIamPermissionsResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1981,11 +1997,11 @@ export const testIamPermissionsProjectsLocationsTaxonomies: API.OperationMethod<
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    117,
-    __c14,
-    5,
+    1024,
+    __c64,
+    0,
   ) as any as S.Schema<TestIamPermissionsProjectsLocationsTaxonomiesRequest>,
-  output: __S(113, __c14, 1) as any as S.Schema<TestIamPermissionsResponse>,
+  output: __S(976, __c61, 0) as any as S.Schema<TestIamPermissionsResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2005,11 +2021,11 @@ export const testIamPermissionsProjectsLocationsTaxonomiesPolicyTags: API.Operat
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    118,
-    __c14,
-    6,
+    1040,
+    __c65,
+    0,
   ) as any as S.Schema<TestIamPermissionsProjectsLocationsTaxonomiesPolicyTagsRequest>,
-  output: __S(113, __c14, 1) as any as S.Schema<TestIamPermissionsResponse>,
+  output: __S(976, __c61, 0) as any as S.Schema<TestIamPermissionsResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2021,369 +2037,8 @@ function __c0(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          expireTime: S.optional(S.String),
-          createTime: S.optional(S.String),
-          updateTime: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDatacatalogV1beta1SystemTimestamps",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          description: S.optional(S.String),
-          name: S.optional(S.String),
-          dataCatalogTimestamps: S.optional(__S(0, __c0, 0)),
-          displayName: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDatacatalogV1beta1EntryGroup",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
           parent: S.String.pipe(T.Label()),
-          entryGroupId: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(1, __c0, 1).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1beta1/{+parent}/entryGroups",
-            baseUrl: "https://datacatalog.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateProjectsLocationsEntryGroupsRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          filePath: S.optional(S.String),
-          sizeBytes: S.optional(S.String),
-          gcsTimestamps: S.optional(__S(0, __c0, 0)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDatacatalogV1beta1GcsFileSpec",
-      });
-    case 4:
-      return S.Array(__S(3, __c0, 3));
-    case 5:
-      return S.Array(S.String);
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          sampleGcsFileSpecs: S.optional(__S(4, __c0, 4)),
-          filePatterns: S.optional(__S(5, __c0, 5)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDatacatalogV1beta1GcsFilesetSpec",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          type: S.optional(S.String),
-          subcolumns: S.optional(S.suspend(() => __S(8, __c1, 0))),
-          column: S.optional(S.String),
-          description: S.optional(S.String),
-          mode: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDatacatalogV1beta1ColumnSchema",
-      });
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(7, __c0, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          columns: S.optional(__S(8, __c1, 0)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDatacatalogV1beta1Schema",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          totalExecutionTimeForCompletionsMillis: S.optional(S.Number),
-          totalFailures: S.optional(S.Number),
-          totalCancellations: S.optional(S.Number),
-          totalCompletions: S.optional(S.Number),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDatacatalogV1beta1UsageStats",
-      });
-    case 3:
-      return S.Record(S.String, __S(10, __c1, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          updateTime: S.optional(S.String),
-          usageWithinTimeRange: S.optional(__S(11, __c1, 3)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDatacatalogV1beta1UsageSignal",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          viewQuery: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDatacatalogV1beta1ViewSpec",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          groupedEntry: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDatacatalogV1beta1TableSpec",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          tableSourceType: S.optional(S.String),
-          viewSpec: S.optional(__S(13, __c1, 5)),
-          tableSpec: S.optional(__S(14, __c1, 6)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDatacatalogV1beta1BigQueryTableSpec",
-      });
-  }
-}
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          shardCount: S.optional(S.String),
-          dataset: S.optional(S.String),
-          tablePrefix: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDatacatalogV1beta1BigQueryDateShardedSpec",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          gcsFilesetSpec: S.optional(__S(6, __c0, 6)),
-          schema: S.optional(__S(9, __c1, 1)),
-          usageSignal: S.optional(__S(12, __c1, 4)),
-          bigqueryTableSpec: S.optional(__S(15, __c1, 7)),
-          bigqueryDateShardedSpec: S.optional(__S(16, __c2, 0)),
-          displayName: S.optional(S.String),
-          description: S.optional(S.String),
-          sourceSystemTimestamps: S.optional(__S(0, __c0, 0)),
-          integratedSystem: S.optional(S.String),
-          linkedResource: S.optional(S.String),
-          userSpecifiedSystem: S.optional(S.String),
-          userSpecifiedType: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDatacatalogV1beta1Entry",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          entryId: S.optional(S.String.pipe(T.Query())),
-          parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(17, __c2, 1).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1beta1/{+parent}/entries",
-            baseUrl: "https://datacatalog.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateProjectsLocationsEntryGroupsEntriesRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          displayName: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDatacatalogV1beta1TagFieldEnumValue",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          displayName: S.optional(S.String),
-          doubleValue: S.optional(S.Number),
-          timestampValue: S.optional(S.String),
-          enumValue: S.optional(__S(19, __c2, 3)),
-          order: S.optional(S.Number),
-          boolValue: S.optional(S.Boolean),
-          stringValue: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDatacatalogV1beta1TagField",
-      });
-    case 5:
-      return S.Record(S.String, __S(20, __c2, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          templateDisplayName: S.optional(S.String),
-          column: S.optional(S.String),
-          fields: S.optional(__S(21, __c2, 5)),
-          name: S.optional(S.String),
-          template: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDatacatalogV1beta1Tag",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(22, __c2, 6).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1beta1/{+parent}/tags",
-            baseUrl: "https://datacatalog.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateProjectsLocationsEntryGroupsEntriesTagsRequest",
-      });
-  }
-}
-function __c3(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(22, __c2, 6).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1beta1/{+parent}/tags",
-            baseUrl: "https://datacatalog.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateProjectsLocationsEntryGroupsTagsRequest",
-      });
-    case 1:
-      return S.Array(__S(19, __c2, 3));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          allowedValues: S.optional(__S(25, __c3, 1)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDatacatalogV1beta1FieldTypeEnumType",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          enumType: S.optional(__S(26, __c3, 2)),
-          primitiveType: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDatacatalogV1beta1FieldType",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          description: S.optional(S.String),
-          order: S.optional(S.Number),
-          name: S.optional(S.String),
-          type: S.optional(__S(27, __c3, 3)),
-          displayName: S.optional(S.String),
-          isRequired: S.optional(S.Boolean),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDatacatalogV1beta1TagTemplateField",
-      });
-    case 5:
-      return S.Record(S.String, __S(28, __c3, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.optional(S.String),
-          dataplexTransferStatus: S.optional(S.String),
-          displayName: S.optional(S.String),
-          fields: S.optional(__S(29, __c3, 5)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDatacatalogV1beta1TagTemplate",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          tagTemplateId: S.optional(S.String.pipe(T.Query())),
-          parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(30, __c3, 6).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1beta1/{+parent}/tagTemplates",
-            baseUrl: "https://datacatalog.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateProjectsLocationsTagTemplatesRequest",
-      });
-  }
-}
-function __c4(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          parent: S.String.pipe(T.Label()),
-          tagTemplateFieldId: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(28, __c3, 4).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1beta1/{+parent}/fields",
-            baseUrl: "https://datacatalog.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateProjectsLocationsTagTemplatesFieldsRequest",
-      });
-    case 1:
-      return S.Array(S.String);
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.optional(S.String),
-          identity: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDatacatalogV1beta1TaxonomyService",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          activatedPolicyTypes: S.optional(__S(33, __c4, 1)),
-          description: S.optional(S.String),
-          taxonomyTimestamps: S.optional(__S(0, __c0, 0)),
-          policyTagCount: S.optional(S.Number),
-          service: S.optional(__S(34, __c4, 2)),
-          displayName: S.optional(S.String),
-          name: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudDatacatalogV1beta1Taxonomy",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(35, __c4, 3).pipe(T.HttpBody())),
+          body: S.optional(__S(33, __c2, 1).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -2394,23 +2049,48 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "CreateProjectsLocationsTaxonomiesRequest",
       });
-    case 5:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          parentPolicyTag: S.optional(S.String),
+          name: S.optional(S.String),
+          identity: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDatacatalogV1beta1TaxonomyService",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          activatedPolicyTypes: S.optional(__S(16, __c1, 0)),
           description: S.optional(S.String),
+          taxonomyTimestamps: S.optional(__S(656, __c41, 0)),
+          policyTagCount: S.optional(S.Number),
+          service: S.optional(__S(32, __c2, 0)),
           displayName: S.optional(S.String),
-          childPolicyTags: S.optional(__S(5, __c0, 5)),
           name: S.optional(S.String),
         }),
       ).annotate({
-        identifier: "GoogleCloudDatacatalogV1beta1PolicyTag",
+        identifier: "GoogleCloudDatacatalogV1beta1Taxonomy",
       });
-    case 6:
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(37, __c4, 5).pipe(T.HttpBody())),
+          body: S.optional(__S(64, __c4, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -2421,7 +2101,27 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "CreateProjectsLocationsTaxonomiesPolicyTagsRequest",
       });
-    case 7:
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          parentPolicyTag: S.optional(S.String),
+          description: S.optional(S.String),
+          displayName: S.optional(S.String),
+          childPolicyTags: S.optional(__S(848, __c53, 0)),
+          name: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDatacatalogV1beta1PolicyTag",
+      });
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -2438,13 +2138,17 @@ function __c4(j: number): any {
       });
   }
 }
-function __c5(j: number): any {
+function __c6(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "Empty",
       });
-    case 1:
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -2458,7 +2162,11 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "DeleteProjectsLocationsEntryGroupsEntriesRequest",
       });
-    case 2:
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -2472,7 +2180,11 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "DeleteProjectsLocationsEntryGroupsEntriesTagsRequest",
       });
-    case 3:
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -2486,7 +2198,11 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "DeleteProjectsLocationsEntryGroupsTagsRequest",
       });
-    case 4:
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           force: S.optional(S.Boolean.pipe(T.Query())),
@@ -2501,7 +2217,11 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "DeleteProjectsLocationsTagTemplatesRequest",
       });
-    case 5:
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -2516,7 +2236,11 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "DeleteProjectsLocationsTagTemplatesFieldsRequest",
       });
-    case 6:
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -2530,7 +2254,11 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "DeleteProjectsLocationsTaxonomiesRequest",
       });
-    case 7:
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -2546,13 +2274,13 @@ function __c5(j: number): any {
       });
   }
 }
-function __c6(j: number): any {
+function __c14(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           serializedTaxonomies: S.optional(S.Boolean.pipe(T.Query())),
-          taxonomies: S.optional(__S(5, __c0, 5).pipe(T.Query())),
+          taxonomies: S.optional(__S(848, __c53, 0).pipe(T.Query())),
           parent: S.String.pipe(T.Label()),
         }).pipe(
           T.Http({
@@ -2564,61 +2292,53 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "ExportProjectsLocationsTaxonomiesRequest",
       });
-    case 1:
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           displayName: S.optional(S.String),
           policyTag: S.optional(S.String),
-          childPolicyTags: S.optional(S.suspend(() => __S(50, __c6, 2))),
+          childPolicyTags: S.optional(S.suspend(() => __S(241, __c15, 1))),
           description: S.optional(S.String),
         }),
       ).annotate({
         identifier: "GoogleCloudDatacatalogV1beta1SerializedPolicyTag",
       });
+    case 1:
+      return S.Array(__S(240, __c15, 0));
     case 2:
-      return S.Array(__S(49, __c6, 1));
-    case 3:
       return S.suspend(() =>
         S.Struct({
-          activatedPolicyTypes: S.optional(__S(33, __c4, 1)),
-          policyTags: S.optional(__S(50, __c6, 2)),
+          activatedPolicyTypes: S.optional(__S(16, __c1, 0)),
+          policyTags: S.optional(__S(241, __c15, 1)),
           description: S.optional(S.String),
           displayName: S.optional(S.String),
         }),
       ).annotate({
         identifier: "GoogleCloudDatacatalogV1beta1SerializedTaxonomy",
       });
+    case 3:
+      return S.Array(__S(242, __c15, 2));
     case 4:
-      return S.Array(__S(51, __c6, 3));
-    case 5:
       return S.suspend(() =>
         S.Struct({
-          taxonomies: S.optional(__S(52, __c6, 4)),
+          taxonomies: S.optional(__S(243, __c15, 3)),
         }),
       ).annotate({
         identifier: "GoogleCloudDatacatalogV1beta1ExportTaxonomiesResponse",
       });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          requestedPolicyVersion: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "GetPolicyOptions" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          options: S.optional(__S(54, __c6, 6)),
-        }),
-      ).annotate({ identifier: "GetIamPolicyRequest" });
   }
 }
-function __c7(j: number): any {
+function __c16(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           resource: S.String.pipe(T.Label()),
-          body: S.optional(__S(55, __c6, 7).pipe(T.HttpBody())),
+          body: S.optional(__S(273, __c17, 1).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -2629,7 +2349,27 @@ function __c7(j: number): any {
       ).annotate({
         identifier: "GetIamPolicyProjectsLocationsEntryGroupsRequest",
       });
+  }
+}
+function __c17(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          requestedPolicyVersion: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "GetPolicyOptions" });
     case 1:
+      return S.suspend(() =>
+        S.Struct({
+          options: S.optional(__S(272, __c17, 0)),
+        }),
+      ).annotate({ identifier: "GetIamPolicyRequest" });
+  }
+}
+function __c18(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           location: S.optional(S.String),
@@ -2638,29 +2378,33 @@ function __c7(j: number): any {
           expression: S.optional(S.String),
         }),
       ).annotate({ identifier: "Expr" });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          members: S.optional(__S(5, __c0, 5)),
-          condition: S.optional(__S(57, __c7, 1)),
+          members: S.optional(__S(848, __c53, 0)),
+          condition: S.optional(__S(288, __c18, 0)),
           role: S.optional(S.String),
         }),
       ).annotate({ identifier: "Binding" });
+    case 2:
+      return S.Array(__S(289, __c18, 1));
     case 3:
-      return S.Array(__S(58, __c7, 2));
-    case 4:
       return S.suspend(() =>
         S.Struct({
           version: S.optional(S.Number),
           etag: S.optional(S.String),
-          bindings: S.optional(__S(59, __c7, 3)),
+          bindings: S.optional(__S(290, __c18, 2)),
         }),
       ).annotate({ identifier: "Policy" });
-    case 5:
+  }
+}
+function __c19(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           resource: S.String.pipe(T.Label()),
-          body: S.optional(__S(55, __c6, 7).pipe(T.HttpBody())),
+          body: S.optional(__S(273, __c17, 1).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -2671,11 +2415,15 @@ function __c7(j: number): any {
       ).annotate({
         identifier: "GetIamPolicyProjectsLocationsEntryGroupsEntriesRequest",
       });
-    case 6:
+  }
+}
+function __c20(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           resource: S.String.pipe(T.Label()),
-          body: S.optional(__S(55, __c6, 7).pipe(T.HttpBody())),
+          body: S.optional(__S(273, __c17, 1).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -2686,11 +2434,15 @@ function __c7(j: number): any {
       ).annotate({
         identifier: "GetIamPolicyProjectsLocationsTagTemplatesRequest",
       });
-    case 7:
+  }
+}
+function __c21(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           resource: S.String.pipe(T.Label()),
-          body: S.optional(__S(55, __c6, 7).pipe(T.HttpBody())),
+          body: S.optional(__S(273, __c17, 1).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -2703,13 +2455,13 @@ function __c7(j: number): any {
       });
   }
 }
-function __c8(j: number): any {
+function __c22(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           resource: S.String.pipe(T.Label()),
-          body: S.optional(__S(55, __c6, 7).pipe(T.HttpBody())),
+          body: S.optional(__S(273, __c17, 1).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -2720,7 +2472,11 @@ function __c8(j: number): any {
       ).annotate({
         identifier: "GetIamPolicyProjectsLocationsTaxonomiesPolicyTagsRequest",
       });
-    case 1:
+  }
+}
+function __c23(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -2735,7 +2491,11 @@ function __c8(j: number): any {
       ).annotate({
         identifier: "GetProjectsLocationsEntryGroupsRequest",
       });
-    case 2:
+  }
+}
+function __c24(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -2749,7 +2509,11 @@ function __c8(j: number): any {
       ).annotate({
         identifier: "GetProjectsLocationsEntryGroupsEntriesRequest",
       });
-    case 3:
+  }
+}
+function __c25(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -2763,7 +2527,11 @@ function __c8(j: number): any {
       ).annotate({
         identifier: "GetProjectsLocationsTagTemplatesRequest",
       });
-    case 4:
+  }
+}
+function __c26(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -2777,7 +2545,11 @@ function __c8(j: number): any {
       ).annotate({
         identifier: "GetProjectsLocationsTaxonomiesRequest",
       });
-    case 5:
+  }
+}
+function __c27(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -2791,19 +2563,23 @@ function __c8(j: number): any {
       ).annotate({
         identifier: "GetProjectsLocationsTaxonomiesPolicyTagsRequest",
       });
-    case 6:
+  }
+}
+function __c28(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          inlineSource: S.optional(__S(53, __c6, 5)),
+          inlineSource: S.optional(__S(244, __c15, 4)),
         }),
       ).annotate({
         identifier: "GoogleCloudDatacatalogV1beta1ImportTaxonomiesRequest",
       });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(70, __c8, 6).pipe(T.HttpBody())),
+          body: S.optional(__S(448, __c28, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -2814,21 +2590,25 @@ function __c8(j: number): any {
       ).annotate({
         identifier: "ImportProjectsLocationsTaxonomiesRequest",
       });
-  }
-}
-function __c9(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(35, __c4, 3));
-    case 1:
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          taxonomies: S.optional(__S(72, __c9, 0)),
+          taxonomies: S.optional(__S(464, __c29, 0)),
         }),
       ).annotate({
         identifier: "GoogleCloudDatacatalogV1beta1ImportTaxonomiesResponse",
       });
-    case 2:
+  }
+}
+function __c29(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(33, __c2, 1));
+  }
+}
+function __c30(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           pageToken: S.optional(S.String.pipe(T.Query())),
@@ -2844,18 +2624,22 @@ function __c9(j: number): any {
       ).annotate({
         identifier: "ListProjectsLocationsEntryGroupsRequest",
       });
-    case 3:
-      return S.Array(__S(1, __c0, 1));
-    case 4:
+    case 1:
+      return S.Array(__S(640, __c40, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          entryGroups: S.optional(__S(75, __c9, 3)),
+          entryGroups: S.optional(__S(481, __c30, 1)),
         }),
       ).annotate({
         identifier: "GoogleCloudDatacatalogV1beta1ListEntryGroupsResponse",
       });
-    case 5:
+  }
+}
+function __c31(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -2872,12 +2656,12 @@ function __c9(j: number): any {
       ).annotate({
         identifier: "ListProjectsLocationsEntryGroupsEntriesRequest",
       });
-    case 6:
-      return S.Array(__S(17, __c2, 1));
-    case 7:
+    case 1:
+      return S.Array(__S(877, __c54, 13));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          entries: S.optional(__S(78, __c9, 6)),
+          entries: S.optional(__S(497, __c31, 1)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({
@@ -2885,7 +2669,7 @@ function __c9(j: number): any {
       });
   }
 }
-function __c10(j: number): any {
+function __c32(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2903,18 +2687,26 @@ function __c10(j: number): any {
       ).annotate({
         identifier: "ListProjectsLocationsEntryGroupsEntriesTagsRequest",
       });
+  }
+}
+function __c33(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(1074, __c67, 2));
     case 1:
-      return S.Array(__S(22, __c2, 6));
-    case 2:
       return S.suspend(() =>
         S.Struct({
-          tags: S.optional(__S(81, __c10, 1)),
+          tags: S.optional(__S(528, __c33, 0)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({
         identifier: "GoogleCloudDatacatalogV1beta1ListTagsResponse",
       });
-    case 3:
+  }
+}
+function __c34(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
@@ -2930,7 +2722,11 @@ function __c10(j: number): any {
       ).annotate({
         identifier: "ListProjectsLocationsEntryGroupsTagsRequest",
       });
-    case 4:
+  }
+}
+function __c35(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -2947,16 +2743,20 @@ function __c10(j: number): any {
       ).annotate({
         identifier: "ListProjectsLocationsTaxonomiesRequest",
       });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          taxonomies: S.optional(__S(72, __c9, 0)),
+          taxonomies: S.optional(__S(464, __c29, 0)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({
         identifier: "GoogleCloudDatacatalogV1beta1ListTaxonomiesResponse",
       });
-    case 6:
+  }
+}
+function __c36(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           pageToken: S.optional(S.String.pipe(T.Query())),
@@ -2972,22 +2772,22 @@ function __c10(j: number): any {
       ).annotate({
         identifier: "ListProjectsLocationsTaxonomiesPolicyTagsRequest",
       });
-    case 7:
-      return S.Array(__S(37, __c4, 5));
-  }
-}
-function __c11(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
+      return S.Array(__S(64, __c4, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          policyTags: S.optional(__S(87, __c10, 7)),
+          policyTags: S.optional(__S(577, __c36, 1)),
         }),
       ).annotate({
         identifier: "GoogleCloudDatacatalogV1beta1ListPolicyTagsResponse",
       });
-    case 1:
+  }
+}
+function __c37(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           linkedResource: S.optional(S.String.pipe(T.Query())),
@@ -3000,12 +2800,16 @@ function __c11(j: number): any {
           }),
         ),
       ).annotate({ identifier: "LookupEntriesRequest" });
-    case 2:
+  }
+}
+function __c38(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           updateMask: S.optional(S.String.pipe(T.Query())),
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(1, __c0, 1).pipe(T.HttpBody())),
+          body: S.optional(__S(640, __c40, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -3016,12 +2820,65 @@ function __c11(j: number): any {
       ).annotate({
         identifier: "PatchProjectsLocationsEntryGroupsRequest",
       });
-    case 3:
+  }
+}
+function __c39(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          parent: S.String.pipe(T.Label()),
+          entryGroupId: S.optional(S.String.pipe(T.Query())),
+          body: S.optional(__S(640, __c40, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1beta1/{+parent}/entryGroups",
+            baseUrl: "https://datacatalog.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateProjectsLocationsEntryGroupsRequest",
+      });
+  }
+}
+function __c40(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          description: S.optional(S.String),
+          name: S.optional(S.String),
+          dataCatalogTimestamps: S.optional(__S(656, __c41, 0)),
+          displayName: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDatacatalogV1beta1EntryGroup",
+      });
+  }
+}
+function __c41(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          expireTime: S.optional(S.String),
+          createTime: S.optional(S.String),
+          updateTime: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDatacatalogV1beta1SystemTimestamps",
+      });
+  }
+}
+function __c42(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
           updateMask: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(17, __c2, 1).pipe(T.HttpBody())),
+          body: S.optional(__S(877, __c54, 13).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -3032,12 +2889,16 @@ function __c11(j: number): any {
       ).annotate({
         identifier: "PatchProjectsLocationsEntryGroupsEntriesRequest",
       });
-    case 4:
+  }
+}
+function __c43(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
           updateMask: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(22, __c2, 6).pipe(T.HttpBody())),
+          body: S.optional(__S(1074, __c67, 2).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -3048,12 +2909,16 @@ function __c11(j: number): any {
       ).annotate({
         identifier: "PatchProjectsLocationsEntryGroupsEntriesTagsRequest",
       });
-    case 5:
+  }
+}
+function __c44(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
           updateMask: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(22, __c2, 6).pipe(T.HttpBody())),
+          body: S.optional(__S(1074, __c67, 2).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -3064,12 +2929,16 @@ function __c11(j: number): any {
       ).annotate({
         identifier: "PatchProjectsLocationsEntryGroupsTagsRequest",
       });
-    case 6:
+  }
+}
+function __c45(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
           updateMask: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(30, __c3, 6).pipe(T.HttpBody())),
+          body: S.optional(__S(1137, __c71, 1).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -3080,12 +2949,16 @@ function __c11(j: number): any {
       ).annotate({
         identifier: "PatchProjectsLocationsTagTemplatesRequest",
       });
-    case 7:
+  }
+}
+function __c46(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           updateMask: S.optional(S.String.pipe(T.Query())),
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(28, __c3, 4).pipe(T.HttpBody())),
+          body: S.optional(__S(1155, __c72, 3).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -3098,14 +2971,14 @@ function __c11(j: number): any {
       });
   }
 }
-function __c12(j: number): any {
+function __c47(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
           updateMask: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(35, __c4, 3).pipe(T.HttpBody())),
+          body: S.optional(__S(33, __c2, 1).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -3116,12 +2989,16 @@ function __c12(j: number): any {
       ).annotate({
         identifier: "PatchProjectsLocationsTaxonomiesRequest",
       });
-    case 1:
+  }
+}
+function __c48(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
           updateMask: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(37, __c4, 5).pipe(T.HttpBody())),
+          body: S.optional(__S(64, __c4, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -3132,7 +3009,11 @@ function __c12(j: number): any {
       ).annotate({
         identifier: "PatchProjectsLocationsTaxonomiesPolicyTagsRequest",
       });
-    case 2:
+  }
+}
+function __c49(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           newTagTemplateFieldId: S.optional(S.String),
@@ -3140,11 +3021,11 @@ function __c12(j: number): any {
       ).annotate({
         identifier: "GoogleCloudDatacatalogV1beta1RenameTagTemplateFieldRequest",
       });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(98, __c12, 2).pipe(T.HttpBody())),
+          body: S.optional(__S(784, __c49, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -3155,7 +3036,11 @@ function __c12(j: number): any {
       ).annotate({
         identifier: "RenameProjectsLocationsTagTemplatesFieldsRequest",
       });
-    case 4:
+  }
+}
+function __c50(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           newEnumValueDisplayName: S.optional(S.String),
@@ -3163,11 +3048,11 @@ function __c12(j: number): any {
       ).annotate({
         identifier: "GoogleCloudDatacatalogV1beta1RenameTagTemplateFieldEnumValueRequest",
       });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(100, __c12, 4).pipe(T.HttpBody())),
+          body: S.optional(__S(800, __c50, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -3178,37 +3063,37 @@ function __c12(j: number): any {
       ).annotate({
         identifier: "RenameProjectsLocationsTagTemplatesFieldsEnumValuesRequest",
       });
-    case 6:
+  }
+}
+function __c51(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          includeOrgIds: S.optional(__S(5, __c0, 5)),
-          includeProjectIds: S.optional(__S(5, __c0, 5)),
-          restrictedLocations: S.optional(__S(5, __c0, 5)),
+          includeOrgIds: S.optional(__S(848, __c53, 0)),
+          includeProjectIds: S.optional(__S(848, __c53, 0)),
+          restrictedLocations: S.optional(__S(848, __c53, 0)),
           includeGcpPublicDatasets: S.optional(S.Boolean),
         }),
       ).annotate({
         identifier: "GoogleCloudDatacatalogV1beta1SearchCatalogRequestScope",
       });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           pageSize: S.optional(S.Number),
           orderBy: S.optional(S.String),
-          scope: S.optional(__S(102, __c12, 6)),
+          scope: S.optional(__S(816, __c51, 0)),
           query: S.optional(S.String),
           pageToken: S.optional(S.String),
         }),
       ).annotate({
         identifier: "GoogleCloudDatacatalogV1beta1SearchCatalogRequest",
       });
-  }
-}
-function __c13(j: number): any {
-  switch (j) {
-    case 0:
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          body: S.optional(__S(103, __c12, 7).pipe(T.HttpBody())),
+          body: S.optional(__S(817, __c51, 1).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -3217,7 +3102,7 @@ function __c13(j: number): any {
           }),
         ),
       ).annotate({ identifier: "SearchCatalogRequest" });
-    case 1:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           modifyTime: S.optional(S.String),
@@ -3229,30 +3114,180 @@ function __c13(j: number): any {
       ).annotate({
         identifier: "GoogleCloudDatacatalogV1beta1SearchCatalogResult",
       });
-    case 2:
-      return S.Array(__S(105, __c13, 1));
-    case 3:
+    case 4:
+      return S.Array(__S(819, __c51, 3));
+    case 5:
       return S.suspend(() =>
         S.Struct({
-          unreachable: S.optional(__S(5, __c0, 5)),
-          results: S.optional(__S(106, __c13, 2)),
+          unreachable: S.optional(__S(848, __c53, 0)),
+          results: S.optional(__S(820, __c51, 4)),
           totalSize: S.optional(S.Number),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({
         identifier: "GoogleCloudDatacatalogV1beta1SearchCatalogResponse",
       });
-    case 4:
+  }
+}
+function __c52(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          policy: S.optional(__S(60, __c7, 4)),
+          entryId: S.optional(S.String.pipe(T.Query())),
+          parent: S.String.pipe(T.Label()),
+          body: S.optional(__S(877, __c54, 13).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1beta1/{+parent}/entries",
+            baseUrl: "https://datacatalog.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateProjectsLocationsEntryGroupsEntriesRequest",
+      });
+  }
+}
+function __c53(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c54(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          filePath: S.optional(S.String),
+          sizeBytes: S.optional(S.String),
+          gcsTimestamps: S.optional(__S(656, __c41, 0)),
         }),
-      ).annotate({ identifier: "SetIamPolicyRequest" });
+      ).annotate({
+        identifier: "GoogleCloudDatacatalogV1beta1GcsFileSpec",
+      });
+    case 1:
+      return S.Array(__S(864, __c54, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          sampleGcsFileSpecs: S.optional(__S(865, __c54, 1)),
+          filePatterns: S.optional(__S(848, __c53, 0)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDatacatalogV1beta1GcsFilesetSpec",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          type: S.optional(S.String),
+          subcolumns: S.optional(S.suspend(() => __S(868, __c54, 4))),
+          column: S.optional(S.String),
+          description: S.optional(S.String),
+          mode: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDatacatalogV1beta1ColumnSchema",
+      });
+    case 4:
+      return S.Array(__S(867, __c54, 3));
     case 5:
       return S.suspend(() =>
         S.Struct({
+          columns: S.optional(__S(868, __c54, 4)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDatacatalogV1beta1Schema",
+      });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          totalExecutionTimeForCompletionsMillis: S.optional(S.Number),
+          totalFailures: S.optional(S.Number),
+          totalCancellations: S.optional(S.Number),
+          totalCompletions: S.optional(S.Number),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDatacatalogV1beta1UsageStats",
+      });
+    case 7:
+      return S.Record(S.String, __S(870, __c54, 6));
+    case 8:
+      return S.suspend(() =>
+        S.Struct({
+          updateTime: S.optional(S.String),
+          usageWithinTimeRange: S.optional(__S(871, __c54, 7)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDatacatalogV1beta1UsageSignal",
+      });
+    case 9:
+      return S.suspend(() =>
+        S.Struct({
+          viewQuery: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDatacatalogV1beta1ViewSpec",
+      });
+    case 10:
+      return S.suspend(() =>
+        S.Struct({
+          groupedEntry: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDatacatalogV1beta1TableSpec",
+      });
+    case 11:
+      return S.suspend(() =>
+        S.Struct({
+          tableSourceType: S.optional(S.String),
+          viewSpec: S.optional(__S(873, __c54, 9)),
+          tableSpec: S.optional(__S(874, __c54, 10)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDatacatalogV1beta1BigQueryTableSpec",
+      });
+    case 12:
+      return S.suspend(() =>
+        S.Struct({
+          shardCount: S.optional(S.String),
+          dataset: S.optional(S.String),
+          tablePrefix: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDatacatalogV1beta1BigQueryDateShardedSpec",
+      });
+    case 13:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          gcsFilesetSpec: S.optional(__S(866, __c54, 2)),
+          schema: S.optional(__S(869, __c54, 5)),
+          usageSignal: S.optional(__S(872, __c54, 8)),
+          bigqueryTableSpec: S.optional(__S(875, __c54, 11)),
+          bigqueryDateShardedSpec: S.optional(__S(876, __c54, 12)),
+          displayName: S.optional(S.String),
+          description: S.optional(S.String),
+          sourceSystemTimestamps: S.optional(__S(656, __c41, 0)),
+          integratedSystem: S.optional(S.String),
+          linkedResource: S.optional(S.String),
+          userSpecifiedSystem: S.optional(S.String),
+          userSpecifiedType: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDatacatalogV1beta1Entry",
+      });
+  }
+}
+function __c55(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
           resource: S.String.pipe(T.Label()),
-          body: S.optional(__S(108, __c13, 4).pipe(T.HttpBody())),
+          body: S.optional(__S(896, __c56, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -3263,11 +3298,25 @@ function __c13(j: number): any {
       ).annotate({
         identifier: "SetIamPolicyProjectsLocationsEntryGroupsRequest",
       });
-    case 6:
+  }
+}
+function __c56(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          policy: S.optional(__S(291, __c18, 3)),
+        }),
+      ).annotate({ identifier: "SetIamPolicyRequest" });
+  }
+}
+function __c57(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           resource: S.String.pipe(T.Label()),
-          body: S.optional(__S(108, __c13, 4).pipe(T.HttpBody())),
+          body: S.optional(__S(896, __c56, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -3278,11 +3327,15 @@ function __c13(j: number): any {
       ).annotate({
         identifier: "SetIamPolicyProjectsLocationsTagTemplatesRequest",
       });
-    case 7:
+  }
+}
+function __c58(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           resource: S.String.pipe(T.Label()),
-          body: S.optional(__S(108, __c13, 4).pipe(T.HttpBody())),
+          body: S.optional(__S(896, __c56, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -3295,13 +3348,13 @@ function __c13(j: number): any {
       });
   }
 }
-function __c14(j: number): any {
+function __c59(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           resource: S.String.pipe(T.Label()),
-          body: S.optional(__S(108, __c13, 4).pipe(T.HttpBody())),
+          body: S.optional(__S(896, __c56, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -3312,19 +3365,15 @@ function __c14(j: number): any {
       ).annotate({
         identifier: "SetIamPolicyProjectsLocationsTaxonomiesPolicyTagsRequest",
       });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          permissions: S.optional(__S(5, __c0, 5)),
-        }),
-      ).annotate({
-        identifier: "TestIamPermissionsRequest",
-      });
-    case 2:
+  }
+}
+function __c60(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           resource: S.String.pipe(T.Label()),
-          body: S.optional(__S(113, __c14, 1).pipe(T.HttpBody())),
+          body: S.optional(__S(976, __c61, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -3335,11 +3384,27 @@ function __c14(j: number): any {
       ).annotate({
         identifier: "TestIamPermissionsProjectsLocationsEntryGroupsRequest",
       });
-    case 3:
+  }
+}
+function __c61(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          permissions: S.optional(__S(848, __c53, 0)),
+        }),
+      ).annotate({
+        identifier: "TestIamPermissionsRequest",
+      });
+  }
+}
+function __c62(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           resource: S.String.pipe(T.Label()),
-          body: S.optional(__S(113, __c14, 1).pipe(T.HttpBody())),
+          body: S.optional(__S(976, __c61, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -3350,11 +3415,15 @@ function __c14(j: number): any {
       ).annotate({
         identifier: "TestIamPermissionsProjectsLocationsEntryGroupsEntriesRequest",
       });
-    case 4:
+  }
+}
+function __c63(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           resource: S.String.pipe(T.Label()),
-          body: S.optional(__S(113, __c14, 1).pipe(T.HttpBody())),
+          body: S.optional(__S(976, __c61, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -3365,11 +3434,15 @@ function __c14(j: number): any {
       ).annotate({
         identifier: "TestIamPermissionsProjectsLocationsTagTemplatesRequest",
       });
-    case 5:
+  }
+}
+function __c64(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           resource: S.String.pipe(T.Label()),
-          body: S.optional(__S(113, __c14, 1).pipe(T.HttpBody())),
+          body: S.optional(__S(976, __c61, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -3380,11 +3453,15 @@ function __c14(j: number): any {
       ).annotate({
         identifier: "TestIamPermissionsProjectsLocationsTaxonomiesRequest",
       });
-    case 6:
+  }
+}
+function __c65(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           resource: S.String.pipe(T.Label()),
-          body: S.optional(__S(113, __c14, 1).pipe(T.HttpBody())),
+          body: S.optional(__S(976, __c61, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -3397,7 +3474,181 @@ function __c14(j: number): any {
       });
   }
 }
-
+function __c66(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          parent: S.String.pipe(T.Label()),
+          body: S.optional(__S(1074, __c67, 2).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1beta1/{+parent}/tags",
+            baseUrl: "https://datacatalog.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateProjectsLocationsEntryGroupsEntriesTagsRequest",
+      });
+  }
+}
+function __c67(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          displayName: S.optional(S.String),
+          doubleValue: S.optional(S.Number),
+          timestampValue: S.optional(S.String),
+          enumValue: S.optional(__S(1088, __c68, 0)),
+          order: S.optional(S.Number),
+          boolValue: S.optional(S.Boolean),
+          stringValue: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDatacatalogV1beta1TagField",
+      });
+    case 1:
+      return S.Record(S.String, __S(1072, __c67, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          templateDisplayName: S.optional(S.String),
+          column: S.optional(S.String),
+          fields: S.optional(__S(1073, __c67, 1)),
+          name: S.optional(S.String),
+          template: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDatacatalogV1beta1Tag",
+      });
+  }
+}
+function __c68(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          displayName: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDatacatalogV1beta1TagFieldEnumValue",
+      });
+  }
+}
+function __c69(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          parent: S.String.pipe(T.Label()),
+          body: S.optional(__S(1074, __c67, 2).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1beta1/{+parent}/tags",
+            baseUrl: "https://datacatalog.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateProjectsLocationsEntryGroupsTagsRequest",
+      });
+  }
+}
+function __c70(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          tagTemplateId: S.optional(S.String.pipe(T.Query())),
+          parent: S.String.pipe(T.Label()),
+          body: S.optional(__S(1137, __c71, 1).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1beta1/{+parent}/tagTemplates",
+            baseUrl: "https://datacatalog.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateProjectsLocationsTagTemplatesRequest",
+      });
+  }
+}
+function __c71(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, __S(1155, __c72, 3));
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.optional(S.String),
+          dataplexTransferStatus: S.optional(S.String),
+          displayName: S.optional(S.String),
+          fields: S.optional(__S(1136, __c71, 0)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDatacatalogV1beta1TagTemplate",
+      });
+  }
+}
+function __c72(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(1088, __c68, 0));
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          allowedValues: S.optional(__S(1152, __c72, 0)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDatacatalogV1beta1FieldTypeEnumType",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          enumType: S.optional(__S(1153, __c72, 1)),
+          primitiveType: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDatacatalogV1beta1FieldType",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          description: S.optional(S.String),
+          order: S.optional(S.Number),
+          name: S.optional(S.String),
+          type: S.optional(__S(1154, __c72, 2)),
+          displayName: S.optional(S.String),
+          isRequired: S.optional(S.Boolean),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudDatacatalogV1beta1TagTemplateField",
+      });
+  }
+}
+function __c73(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          parent: S.String.pipe(T.Label()),
+          tagTemplateFieldId: S.optional(S.String.pipe(T.Query())),
+          body: S.optional(__S(1155, __c72, 3).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1beta1/{+parent}/fields",
+            baseUrl: "https://datacatalog.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateProjectsLocationsTagTemplatesFieldsRequest",
+      });
+  }
+}
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

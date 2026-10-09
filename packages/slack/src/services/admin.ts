@@ -2276,7 +2276,7 @@ export const addAlias: API.OperationMethod<
   SlackOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(0, __c0, 0) as any as S.Schema<AddAliasRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<AddAliasResponse>,
+  output: __S(8, __c1, 0) as any as S.Schema<AddAliasResponse>,
   errors: [SlackError, SlackRateLimited],
   protocol: SlackProtocol,
   retry: Retry.Retry,
@@ -2290,8 +2290,8 @@ export const addAppsPermissions: API.OperationMethod<
   AddAppsPermissionsError,
   SlackOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3, __c0, 3) as any as S.Schema<AddAppsPermissionsRequest>,
-  output: __S(4, __c0, 4) as any as S.Schema<AddAppsPermissionsResponse>,
+  input: __S(16, __c2, 0) as any as S.Schema<AddAppsPermissionsRequest>,
+  output: __S(32, __c4, 0) as any as S.Schema<AddAppsPermissionsResponse>,
   errors: [SlackError, SlackRateLimited],
   protocol: SlackProtocol,
   retry: Retry.Retry,
@@ -2305,8 +2305,8 @@ export const addAssignments: API.OperationMethod<
   AddAssignmentsError,
   SlackOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(5, __c0, 5) as any as S.Schema<AddAssignmentsRequest>,
-  output: __S(6, __c0, 6) as any as S.Schema<AddAssignmentsResponse>,
+  input: __S(312, __c39, 0) as any as S.Schema<AddAssignmentsRequest>,
+  output: __S(313, __c39, 1) as any as S.Schema<AddAssignmentsResponse>,
   errors: [SlackError, SlackRateLimited],
   protocol: SlackProtocol,
   retry: Retry.Retry,
@@ -2320,8 +2320,8 @@ export const addChannels: API.OperationMethod<
   AddChannelsError,
   SlackOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(7, __c0, 7) as any as S.Schema<AddChannelsRequest>,
-  output: __S(8, __c1, 0) as any as S.Schema<AddChannelsResponse>,
+  input: __S(416, __c52, 0) as any as S.Schema<AddChannelsRequest>,
+  output: __S(424, __c53, 0) as any as S.Schema<AddChannelsResponse>,
   errors: [SlackError, SlackRateLimited],
   protocol: SlackProtocol,
   retry: Retry.Retry,
@@ -2335,8 +2335,8 @@ export const addEmoji: API.OperationMethod<
   AddEmojiError,
   SlackOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(9, __c1, 1) as any as S.Schema<AddEmojiRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<AddEmojiResponse>,
+  input: __S(512, __c64, 0) as any as S.Schema<AddEmojiRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<AddEmojiResponse>,
   errors: [SlackError, SlackRateLimited],
   protocol: SlackProtocol,
   retry: Retry.Retry,
@@ -2350,8 +2350,8 @@ export const addGroup: API.OperationMethod<
   AddGroupError,
   SlackOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(10, __c1, 2) as any as S.Schema<AddGroupRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<AddGroupResponse>,
+  input: __S(608, __c76, 0) as any as S.Schema<AddGroupRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<AddGroupResponse>,
   errors: [SlackError, SlackRateLimited],
   protocol: SlackProtocol,
   retry: Retry.Retry,
@@ -2365,8 +2365,8 @@ export const addTeams: API.OperationMethod<
   AddTeamsError,
   SlackOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(11, __c1, 3) as any as S.Schema<AddTeamsRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<AddTeamsResponse>,
+  input: __S(704, __c88, 0) as any as S.Schema<AddTeamsRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<AddTeamsResponse>,
   errors: [SlackError, SlackRateLimited],
   protocol: SlackProtocol,
   retry: Retry.Retry,
@@ -2380,8 +2380,8 @@ export const addUsers: API.OperationMethod<
   AddUsersError,
   SlackOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(12, __c1, 4) as any as S.Schema<AddUsersRequest>,
-  output: __S(15, __c1, 7) as any as S.Schema<AddUsersResponse>,
+  input: __S(808, __c101, 0) as any as S.Schema<AddUsersRequest>,
+  output: __S(809, __c101, 1) as any as S.Schema<AddUsersResponse>,
   errors: [SlackError, SlackRateLimited],
   protocol: SlackProtocol,
   retry: Retry.Retry,
@@ -2395,8 +2395,8 @@ export const addWorkflowsCollaborator: API.OperationMethod<
   AddWorkflowsCollaboratorError,
   SlackOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(16, __c2, 0) as any as S.Schema<AddWorkflowsCollaboratorRequest>,
-  output: __S(4, __c0, 4) as any as S.Schema<AddWorkflowsCollaboratorResponse>,
+  input: __S(904, __c113, 0) as any as S.Schema<AddWorkflowsCollaboratorRequest>,
+  output: __S(32, __c4, 0) as any as S.Schema<AddWorkflowsCollaboratorResponse>,
   errors: [SlackError, SlackRateLimited],
   protocol: SlackProtocol,
   retry: Retry.Retry,
@@ -2410,8 +2410,8 @@ export const analyticsMessagesActivity: API.OperationMethod<
   AnalyticsMessagesActivityError,
   SlackOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(17, __c2, 1) as any as S.Schema<AnalyticsMessagesActivityRequest>,
-  output: __S(19, __c2, 3) as any as S.Schema<AnalyticsMessagesActivityResponse>,
+  input: __S(992, __c124, 0) as any as S.Schema<AnalyticsMessagesActivityRequest>,
+  output: __S(993, __c124, 1) as any as S.Schema<AnalyticsMessagesActivityResponse>,
   errors: [SlackError, SlackRateLimited],
   protocol: SlackProtocol,
   retry: Retry.Retry,
@@ -2427,8 +2427,8 @@ export const analyticsMessagesMetadata: API.PaginatedOperationMethod<
   AnalyticsMessagesMetadataResponseMessagesItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(20, __c2, 4) as any as S.Schema<AnalyticsMessagesMetadataRequest>,
-    output: __S(27, __c3, 3) as any as S.Schema<AnalyticsMessagesMetadataResponse>,
+    input: __S(40, __c5, 0) as any as S.Schema<AnalyticsMessagesMetadataRequest>,
+    output: __S(47, __c5, 7) as any as S.Schema<AnalyticsMessagesMetadataResponse>,
     errors: [SlackError, SlackRateLimited],
     protocol: SlackProtocol,
     retry: Retry.Retry,
@@ -2450,8 +2450,8 @@ export const approveApp: API.OperationMethod<
   ApproveAppError,
   SlackOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(28, __c3, 4) as any as S.Schema<ApproveAppRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<ApproveAppResponse>,
+  input: __S(128, __c16, 0) as any as S.Schema<ApproveAppRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<ApproveAppResponse>,
   errors: [SlackError, SlackRateLimited],
   protocol: SlackProtocol,
   retry: Retry.Retry,
@@ -2465,8 +2465,8 @@ export const approveInviteRequest: API.OperationMethod<
   ApproveInviteRequestError,
   SlackOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(29, __c3, 5) as any as S.Schema<ApproveInviteRequestRequest>,
-  output: __S(4, __c0, 4) as any as S.Schema<ApproveInviteRequestResponse>,
+  input: __S(216, __c27, 0) as any as S.Schema<ApproveInviteRequestRequest>,
+  output: __S(32, __c4, 0) as any as S.Schema<ApproveInviteRequestResponse>,
   errors: [SlackError, SlackRateLimited],
   protocol: SlackProtocol,
   retry: Retry.Retry,
@@ -2480,8 +2480,8 @@ export const appsRestrict: API.OperationMethod<
   AppsRestrictError,
   SlackOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(30, __c3, 6) as any as S.Schema<AppsRestrictRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<AppsRestrictResponse>,
+  input: __S(232, __c29, 0) as any as S.Schema<AppsRestrictRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<AppsRestrictResponse>,
   errors: [SlackError, SlackRateLimited],
   protocol: SlackProtocol,
   retry: Retry.Retry,
@@ -2495,8 +2495,8 @@ export const archiveConversation: API.OperationMethod<
   ArchiveConversationError,
   SlackOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(31, __c3, 7) as any as S.Schema<ArchiveConversationRequest>,
-  output: __S(4, __c0, 4) as any as S.Schema<ArchiveConversationResponse>,
+  input: __S(240, __c30, 0) as any as S.Schema<ArchiveConversationRequest>,
+  output: __S(32, __c4, 0) as any as S.Schema<ArchiveConversationResponse>,
   errors: [SlackError, SlackRateLimited],
   protocol: SlackProtocol,
   retry: Retry.Retry,
@@ -2510,8 +2510,8 @@ export const assignEntities: API.OperationMethod<
   AssignEntitiesError,
   SlackOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(32, __c4, 0) as any as S.Schema<AssignEntitiesRequest>,
-  output: __S(33, __c4, 1) as any as S.Schema<AssignEntitiesResponse>,
+  input: __S(248, __c31, 0) as any as S.Schema<AssignEntitiesRequest>,
+  output: __S(256, __c32, 0) as any as S.Schema<AssignEntitiesResponse>,
   errors: [SlackError, SlackRateLimited],
   protocol: SlackProtocol,
   retry: Retry.Retry,
@@ -2525,8 +2525,8 @@ export const assignUser: API.OperationMethod<
   AssignUserError,
   SlackOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(34, __c4, 2) as any as S.Schema<AssignUserRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<AssignUserResponse>,
+  input: __S(264, __c33, 0) as any as S.Schema<AssignUserRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<AssignUserResponse>,
   errors: [SlackError, SlackRateLimited],
   protocol: SlackProtocol,
   retry: Retry.Retry,
@@ -2540,8 +2540,8 @@ export const bulkArchive: API.OperationMethod<
   BulkArchiveError,
   SlackOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(35, __c4, 3) as any as S.Schema<BulkArchiveRequest>,
-  output: __S(38, __c4, 6) as any as S.Schema<BulkArchiveResponse>,
+  input: __S(272, __c34, 0) as any as S.Schema<BulkArchiveRequest>,
+  output: __S(280, __c35, 0) as any as S.Schema<BulkArchiveResponse>,
   errors: [SlackError, SlackRateLimited],
   protocol: SlackProtocol,
   retry: Retry.Retry,
@@ -2555,8 +2555,8 @@ export const bulkDelete: API.OperationMethod<
   BulkDeleteError,
   SlackOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(39, __c4, 7) as any as S.Schema<BulkDeleteRequest>,
-  output: __S(38, __c4, 6) as any as S.Schema<BulkDeleteResponse>,
+  input: __S(296, __c37, 0) as any as S.Schema<BulkDeleteRequest>,
+  output: __S(280, __c35, 0) as any as S.Schema<BulkDeleteResponse>,
   errors: [SlackError, SlackRateLimited],
   protocol: SlackProtocol,
   retry: Retry.Retry,
@@ -2570,8 +2570,8 @@ export const bulkMove: API.OperationMethod<
   BulkMoveError,
   SlackOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(40, __c5, 0) as any as S.Schema<BulkMoveRequest>,
-  output: __S(38, __c4, 6) as any as S.Schema<BulkMoveResponse>,
+  input: __S(304, __c38, 0) as any as S.Schema<BulkMoveRequest>,
+  output: __S(280, __c35, 0) as any as S.Schema<BulkMoveResponse>,
   errors: [SlackError, SlackRateLimited],
   protocol: SlackProtocol,
   retry: Retry.Retry,
@@ -2585,8 +2585,8 @@ export const bulkSetExcludeFromSlackAi: API.OperationMethod<
   BulkSetExcludeFromSlackAiError,
   SlackOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(41, __c5, 1) as any as S.Schema<BulkSetExcludeFromSlackAiRequest>,
-  output: __S(42, __c5, 2) as any as S.Schema<BulkSetExcludeFromSlackAiResponse>,
+  input: __S(320, __c40, 0) as any as S.Schema<BulkSetExcludeFromSlackAiRequest>,
+  output: __S(321, __c40, 1) as any as S.Schema<BulkSetExcludeFromSlackAiResponse>,
   errors: [SlackError, SlackRateLimited],
   protocol: SlackProtocol,
   retry: Retry.Retry,
@@ -2600,8 +2600,8 @@ export const bulkSetProperties: API.OperationMethod<
   BulkSetPropertiesError,
   SlackOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(43, __c5, 3) as any as S.Schema<BulkSetPropertiesRequest>,
-  output: __S(44, __c5, 4) as any as S.Schema<BulkSetPropertiesResponse>,
+  input: __S(328, __c41, 0) as any as S.Schema<BulkSetPropertiesRequest>,
+  output: __S(329, __c41, 1) as any as S.Schema<BulkSetPropertiesResponse>,
   errors: [SlackError, SlackRateLimited],
   protocol: SlackProtocol,
   retry: Retry.Retry,
@@ -2615,8 +2615,8 @@ export const cancelAppsRequest: API.OperationMethod<
   CancelAppsRequestError,
   SlackOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(45, __c5, 5) as any as S.Schema<CancelAppsRequestRequest>,
-  output: __S(4, __c0, 4) as any as S.Schema<CancelAppsRequestResponse>,
+  input: __S(336, __c42, 0) as any as S.Schema<CancelAppsRequestRequest>,
+  output: __S(32, __c4, 0) as any as S.Schema<CancelAppsRequestResponse>,
   errors: [SlackError, SlackRateLimited],
   protocol: SlackProtocol,
   retry: Retry.Retry,
@@ -2630,8 +2630,8 @@ export const clearResolution: API.OperationMethod<
   ClearResolutionError,
   SlackOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(46, __c5, 6) as any as S.Schema<ClearResolutionRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<ClearResolutionResponse>,
+  input: __S(344, __c43, 0) as any as S.Schema<ClearResolutionRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<ClearResolutionResponse>,
   errors: [SlackError, SlackRateLimited],
   protocol: SlackProtocol,
   retry: Retry.Retry,
@@ -2645,8 +2645,8 @@ export const clearSettings: API.OperationMethod<
   ClearSettingsError,
   SlackOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(47, __c5, 7) as any as S.Schema<ClearSettingsRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<ClearSettingsResponse>,
+  input: __S(352, __c44, 0) as any as S.Schema<ClearSettingsRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<ClearSettingsResponse>,
   errors: [SlackError, SlackRateLimited],
   protocol: SlackProtocol,
   retry: Retry.Retry,
@@ -2660,8 +2660,8 @@ export const convertToPrivate: API.OperationMethod<
   ConvertToPrivateError,
   SlackOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(48, __c6, 0) as any as S.Schema<ConvertToPrivateRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<ConvertToPrivateResponse>,
+  input: __S(360, __c45, 0) as any as S.Schema<ConvertToPrivateRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<ConvertToPrivateResponse>,
   errors: [SlackError, SlackRateLimited],
   protocol: SlackProtocol,
   retry: Retry.Retry,
@@ -2675,8 +2675,8 @@ export const convertToPublic: API.OperationMethod<
   ConvertToPublicError,
   SlackOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(49, __c6, 1) as any as S.Schema<ConvertToPublicRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<ConvertToPublicResponse>,
+  input: __S(368, __c46, 0) as any as S.Schema<ConvertToPublicRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<ConvertToPublicResponse>,
   errors: [SlackError, SlackRateLimited],
   protocol: SlackProtocol,
   retry: Retry.Retry,
@@ -2690,8 +2690,8 @@ export const createBarrier: API.OperationMethod<
   CreateBarrierError,
   SlackOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(51, __c6, 3) as any as S.Schema<CreateBarrierRequest>,
-  output: __S(52, __c6, 4) as any as S.Schema<CreateBarrierResponse>,
+  input: __S(376, __c47, 0) as any as S.Schema<CreateBarrierRequest>,
+  output: __S(384, __c48, 0) as any as S.Schema<CreateBarrierResponse>,
   errors: [SlackError, SlackRateLimited],
   protocol: SlackProtocol,
   retry: Retry.Retry,
@@ -2705,8 +2705,8 @@ export const createConversation: API.OperationMethod<
   CreateConversationError,
   SlackOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(53, __c6, 5) as any as S.Schema<CreateConversationRequest>,
-  output: __S(54, __c6, 6) as any as S.Schema<CreateConversationResponse>,
+  input: __S(400, __c50, 0) as any as S.Schema<CreateConversationRequest>,
+  output: __S(401, __c50, 1) as any as S.Schema<CreateConversationResponse>,
   errors: [SlackError, SlackRateLimited],
   protocol: SlackProtocol,
   retry: Retry.Retry,
@@ -2720,8 +2720,8 @@ export const createForObjects: API.OperationMethod<
   CreateForObjectsError,
   SlackOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(55, __c6, 7) as any as S.Schema<CreateForObjectsRequest>,
-  output: __S(56, __c7, 0) as any as S.Schema<CreateForObjectsResponse>,
+  input: __S(408, __c51, 0) as any as S.Schema<CreateForObjectsRequest>,
+  output: __S(409, __c51, 1) as any as S.Schema<CreateForObjectsResponse>,
   errors: [SlackError, SlackRateLimited],
   protocol: SlackProtocol,
   retry: Retry.Retry,
@@ -2735,8 +2735,8 @@ export const createTeam: API.OperationMethod<
   CreateTeamError,
   SlackOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(57, __c7, 1) as any as S.Schema<CreateTeamRequest>,
-  output: __S(58, __c7, 2) as any as S.Schema<CreateTeamResponse>,
+  input: __S(432, __c54, 0) as any as S.Schema<CreateTeamRequest>,
+  output: __S(433, __c54, 1) as any as S.Schema<CreateTeamResponse>,
   errors: [SlackError, SlackRateLimited],
   protocol: SlackProtocol,
   retry: Retry.Retry,
@@ -2750,8 +2750,8 @@ export const createUsergroup: API.OperationMethod<
   CreateUsergroupError,
   SlackOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(59, __c7, 3) as any as S.Schema<CreateUsergroupRequest>,
-  output: __S(60, __c7, 4) as any as S.Schema<CreateUsergroupResponse>,
+  input: __S(440, __c55, 0) as any as S.Schema<CreateUsergroupRequest>,
+  output: __S(441, __c55, 1) as any as S.Schema<CreateUsergroupResponse>,
   errors: [SlackError, SlackRateLimited],
   protocol: SlackProtocol,
   retry: Retry.Retry,
@@ -2765,8 +2765,8 @@ export const deleteBarrier: API.OperationMethod<
   DeleteBarrierError,
   SlackOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(61, __c7, 5) as any as S.Schema<DeleteBarrierRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<DeleteBarrierResponse>,
+  input: __S(448, __c56, 0) as any as S.Schema<DeleteBarrierRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<DeleteBarrierResponse>,
   errors: [SlackError, SlackRateLimited],
   protocol: SlackProtocol,
   retry: Retry.Retry,
@@ -2780,8 +2780,8 @@ export const deleteConversation: API.OperationMethod<
   DeleteConversationError,
   SlackOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(62, __c7, 6) as any as S.Schema<DeleteConversationRequest>,
-  output: __S(4, __c0, 4) as any as S.Schema<DeleteConversationResponse>,
+  input: __S(456, __c57, 0) as any as S.Schema<DeleteConversationRequest>,
+  output: __S(32, __c4, 0) as any as S.Schema<DeleteConversationResponse>,
   errors: [SlackError, SlackRateLimited],
   protocol: SlackProtocol,
   retry: Retry.Retry,
@@ -2795,8 +2795,8 @@ export const disconnectShared: API.OperationMethod<
   DisconnectSharedError,
   SlackOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(63, __c7, 7) as any as S.Schema<DisconnectSharedRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<DisconnectSharedResponse>,
+  input: __S(464, __c58, 0) as any as S.Schema<DisconnectSharedRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<DisconnectSharedResponse>,
   errors: [SlackError, SlackRateLimited],
   protocol: SlackProtocol,
   retry: Retry.Retry,
@@ -2810,8 +2810,8 @@ export const exportUsersUnsupportedVersion: API.OperationMethod<
   ExportUsersUnsupportedVersionError,
   SlackOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(64, __c8, 0) as any as S.Schema<ExportUsersUnsupportedVersionRequest>,
-  output: __S(4, __c0, 4) as any as S.Schema<ExportUsersUnsupportedVersionResponse>,
+  input: __S(472, __c59, 0) as any as S.Schema<ExportUsersUnsupportedVersionRequest>,
+  output: __S(32, __c4, 0) as any as S.Schema<ExportUsersUnsupportedVersionResponse>,
   errors: [SlackError, SlackRateLimited],
   protocol: SlackProtocol,
   retry: Retry.Retry,
@@ -2825,8 +2825,8 @@ export const fetchUsergroup: API.OperationMethod<
   FetchUsergroupError,
   SlackOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(65, __c8, 1) as any as S.Schema<FetchUsergroupRequest>,
-  output: __S(66, __c8, 2) as any as S.Schema<FetchUsergroupResponse>,
+  input: __S(480, __c60, 0) as any as S.Schema<FetchUsergroupRequest>,
+  output: __S(481, __c60, 1) as any as S.Schema<FetchUsergroupResponse>,
   errors: [SlackError, SlackRateLimited],
   protocol: SlackProtocol,
   retry: Retry.Retry,
@@ -2840,8 +2840,8 @@ export const getConversationPrefs: API.OperationMethod<
   GetConversationPrefsError,
   SlackOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(67, __c8, 3) as any as S.Schema<GetConversationPrefsRequest>,
-  output: __S(72, __c9, 0) as any as S.Schema<GetConversationPrefsResponse>,
+  input: __S(488, __c61, 0) as any as S.Schema<GetConversationPrefsRequest>,
+  output: __S(493, __c61, 5) as any as S.Schema<GetConversationPrefsResponse>,
   errors: [SlackError, SlackRateLimited],
   protocol: SlackProtocol,
   retry: Retry.Retry,
@@ -2855,8 +2855,8 @@ export const getCustomRetention: API.OperationMethod<
   GetCustomRetentionError,
   SlackOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(73, __c9, 1) as any as S.Schema<GetCustomRetentionRequest>,
-  output: __S(74, __c9, 2) as any as S.Schema<GetCustomRetentionResponse>,
+  input: __S(496, __c62, 0) as any as S.Schema<GetCustomRetentionRequest>,
+  output: __S(497, __c62, 1) as any as S.Schema<GetCustomRetentionResponse>,
   errors: [SlackError, SlackRateLimited],
   protocol: SlackProtocol,
   retry: Retry.Retry,
@@ -2872,8 +2872,8 @@ export const getEntities: API.PaginatedOperationMethod<
   GetEntitiesResponseEntitiesItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(75, __c9, 3) as any as S.Schema<GetEntitiesRequest>,
-    output: __S(78, __c9, 6) as any as S.Schema<GetEntitiesResponse>,
+    input: __S(504, __c63, 0) as any as S.Schema<GetEntitiesRequest>,
+    output: __S(507, __c63, 3) as any as S.Schema<GetEntitiesResponse>,
     errors: [SlackError, SlackRateLimited],
     protocol: SlackProtocol,
     retry: Retry.Retry,
@@ -2896,8 +2896,8 @@ export const getExpiration: API.OperationMethod<
   GetExpirationError,
   SlackOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(79, __c9, 7) as any as S.Schema<GetExpirationRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<GetExpirationResponse>,
+  input: __S(520, __c65, 0) as any as S.Schema<GetExpirationRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<GetExpirationResponse>,
   errors: [SlackError, SlackRateLimited],
   protocol: SlackProtocol,
   retry: Retry.Retry,
@@ -2911,8 +2911,8 @@ export const getFile: API.OperationMethod<
   GetFileError,
   SlackOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(80, __c10, 0) as any as S.Schema<GetFileRequest>,
-  output: __S(81, __c10, 1) as any as S.Schema<GetFileResponse>,
+  input: __S(528, __c66, 0) as any as S.Schema<GetFileRequest>,
+  output: __S(529, __c66, 1) as any as S.Schema<GetFileResponse>,
   errors: [SlackError, SlackRateLimited],
   protocol: SlackProtocol,
   retry: Retry.Retry,
@@ -2926,8 +2926,8 @@ export const getItem: API.OperationMethod<
   GetItemError,
   SlackOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(82, __c10, 2) as any as S.Schema<GetItemRequest>,
-  output: __S(84, __c10, 4) as any as S.Schema<GetItemResponse>,
+  input: __S(536, __c67, 0) as any as S.Schema<GetItemRequest>,
+  output: __S(537, __c67, 1) as any as S.Schema<GetItemResponse>,
   errors: [SlackError, SlackRateLimited],
   protocol: SlackProtocol,
   retry: Retry.Retry,
@@ -2941,8 +2941,8 @@ export const getSettings: API.OperationMethod<
   GetSettingsError,
   SlackOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(85, __c10, 5) as any as S.Schema<GetSettingsRequest>,
-  output: __S(88, __c11, 0) as any as S.Schema<GetSettingsResponse>,
+  input: __S(552, __c69, 0) as any as S.Schema<GetSettingsRequest>,
+  output: __S(555, __c69, 3) as any as S.Schema<GetSettingsResponse>,
   errors: [SlackError, SlackRateLimited],
   protocol: SlackProtocol,
   retry: Retry.Retry,
@@ -2956,8 +2956,8 @@ export const getTeams: API.OperationMethod<
   GetTeamsError,
   SlackOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(89, __c11, 1) as any as S.Schema<GetTeamsRequest>,
-  output: __S(90, __c11, 2) as any as S.Schema<GetTeamsResponse>,
+  input: __S(560, __c70, 0) as any as S.Schema<GetTeamsRequest>,
+  output: __S(561, __c70, 1) as any as S.Schema<GetTeamsResponse>,
   errors: [SlackError, SlackRateLimited],
   protocol: SlackProtocol,
   retry: Retry.Retry,
@@ -2971,8 +2971,8 @@ export const invalidateUsersSession: API.OperationMethod<
   InvalidateUsersSessionError,
   SlackOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(91, __c11, 3) as any as S.Schema<InvalidateUsersSessionRequest>,
-  output: __S(4, __c0, 4) as any as S.Schema<InvalidateUsersSessionResponse>,
+  input: __S(568, __c71, 0) as any as S.Schema<InvalidateUsersSessionRequest>,
+  output: __S(32, __c4, 0) as any as S.Schema<InvalidateUsersSessionResponse>,
   errors: [SlackError, SlackRateLimited],
   protocol: SlackProtocol,
   retry: Retry.Retry,
@@ -2986,8 +2986,8 @@ export const inviteConversation: API.OperationMethod<
   InviteConversationError,
   SlackOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(92, __c11, 4) as any as S.Schema<InviteConversationRequest>,
-  output: __S(4, __c0, 4) as any as S.Schema<InviteConversationResponse>,
+  input: __S(576, __c72, 0) as any as S.Schema<InviteConversationRequest>,
+  output: __S(32, __c4, 0) as any as S.Schema<InviteConversationResponse>,
   errors: [SlackError, SlackRateLimited],
   protocol: SlackProtocol,
   retry: Retry.Retry,
@@ -3001,8 +3001,8 @@ export const inviteRequestsDeny: API.OperationMethod<
   InviteRequestsDenyError,
   SlackOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(93, __c11, 5) as any as S.Schema<InviteRequestsDenyRequest>,
-  output: __S(4, __c0, 4) as any as S.Schema<InviteRequestsDenyResponse>,
+  input: __S(584, __c73, 0) as any as S.Schema<InviteRequestsDenyRequest>,
+  output: __S(32, __c4, 0) as any as S.Schema<InviteRequestsDenyResponse>,
   errors: [SlackError, SlackRateLimited],
   protocol: SlackProtocol,
   retry: Retry.Retry,
@@ -3016,8 +3016,8 @@ export const inviteUser: API.OperationMethod<
   InviteUserError,
   SlackOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(94, __c11, 6) as any as S.Schema<InviteUserRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<InviteUserResponse>,
+  input: __S(592, __c74, 0) as any as S.Schema<InviteUserRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<InviteUserResponse>,
   errors: [SlackError, SlackRateLimited],
   protocol: SlackProtocol,
   retry: Retry.Retry,
@@ -3031,8 +3031,8 @@ export const linkObjects: API.OperationMethod<
   LinkObjectsError,
   SlackOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(95, __c11, 7) as any as S.Schema<LinkObjectsRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<LinkObjectsResponse>,
+  input: __S(600, __c75, 0) as any as S.Schema<LinkObjectsRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<LinkObjectsResponse>,
   errors: [SlackError, SlackRateLimited],
   protocol: SlackProtocol,
   retry: Retry.Retry,
@@ -3048,8 +3048,8 @@ export const listAppsActivities: API.PaginatedOperationMethod<
   unknown
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(96, __c12, 0) as any as S.Schema<ListAppsActivitiesRequest>,
-    output: __S(98, __c12, 2) as any as S.Schema<ListAppsActivitiesResponse>,
+    input: __S(616, __c77, 0) as any as S.Schema<ListAppsActivitiesRequest>,
+    output: __S(617, __c77, 1) as any as S.Schema<ListAppsActivitiesResponse>,
     errors: [SlackError, SlackRateLimited],
     protocol: SlackProtocol,
     retry: Retry.Retry,
@@ -3074,8 +3074,8 @@ export const listAppsApproved: API.PaginatedOperationMethod<
   unknown
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(99, __c12, 3) as any as S.Schema<ListAppsApprovedRequest>,
-    output: __S(100, __c12, 4) as any as S.Schema<ListAppsApprovedResponse>,
+    input: __S(632, __c79, 0) as any as S.Schema<ListAppsApprovedRequest>,
+    output: __S(633, __c79, 1) as any as S.Schema<ListAppsApprovedResponse>,
     errors: [SlackError, SlackRateLimited],
     protocol: SlackProtocol,
     retry: Retry.Retry,
@@ -3100,8 +3100,8 @@ export const listAppsMcpServers: API.PaginatedOperationMethod<
   ListAppsMcpServersResponseServersItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(101, __c12, 5) as any as S.Schema<ListAppsMcpServersRequest>,
-    output: __S(104, __c13, 0) as any as S.Schema<ListAppsMcpServersResponse>,
+    input: __S(640, __c80, 0) as any as S.Schema<ListAppsMcpServersRequest>,
+    output: __S(643, __c80, 3) as any as S.Schema<ListAppsMcpServersResponse>,
     errors: [SlackError, SlackRateLimited],
     protocol: SlackProtocol,
     retry: Retry.Retry,
@@ -3124,8 +3124,8 @@ export const listAppsMcpServersPermissions: API.OperationMethod<
   ListAppsMcpServersPermissionsError,
   SlackOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(105, __c13, 1) as any as S.Schema<ListAppsMcpServersPermissionsRequest>,
-  output: __S(106, __c13, 2) as any as S.Schema<ListAppsMcpServersPermissionsResponse>,
+  input: __S(648, __c81, 0) as any as S.Schema<ListAppsMcpServersPermissionsRequest>,
+  output: __S(649, __c81, 1) as any as S.Schema<ListAppsMcpServersPermissionsResponse>,
   errors: [SlackError, SlackRateLimited],
   protocol: SlackProtocol,
   retry: Retry.Retry,
@@ -3139,8 +3139,8 @@ export const listAppsPermissions: API.OperationMethod<
   ListAppsPermissionsError,
   SlackOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(107, __c13, 3) as any as S.Schema<ListAppsPermissionsRequest>,
-  output: __S(4, __c0, 4) as any as S.Schema<ListAppsPermissionsResponse>,
+  input: __S(656, __c82, 0) as any as S.Schema<ListAppsPermissionsRequest>,
+  output: __S(32, __c4, 0) as any as S.Schema<ListAppsPermissionsResponse>,
   errors: [SlackError, SlackRateLimited],
   protocol: SlackProtocol,
   retry: Retry.Retry,
@@ -3156,8 +3156,8 @@ export const listAppsRequests: API.PaginatedOperationMethod<
   unknown
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(108, __c13, 4) as any as S.Schema<ListAppsRequestsRequest>,
-    output: __S(109, __c13, 5) as any as S.Schema<ListAppsRequestsResponse>,
+    input: __S(664, __c83, 0) as any as S.Schema<ListAppsRequestsRequest>,
+    output: __S(665, __c83, 1) as any as S.Schema<ListAppsRequestsResponse>,
     errors: [SlackError, SlackRateLimited],
     protocol: SlackProtocol,
     retry: Retry.Retry,
@@ -3182,8 +3182,8 @@ export const listAppsRestricted: API.PaginatedOperationMethod<
   unknown
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(110, __c13, 6) as any as S.Schema<ListAppsRestrictedRequest>,
-    output: __S(111, __c13, 7) as any as S.Schema<ListAppsRestrictedResponse>,
+    input: __S(672, __c84, 0) as any as S.Schema<ListAppsRestrictedRequest>,
+    output: __S(673, __c84, 1) as any as S.Schema<ListAppsRestrictedResponse>,
     errors: [SlackError, SlackRateLimited],
     protocol: SlackProtocol,
     retry: Retry.Retry,
@@ -3208,8 +3208,8 @@ export const listAssignments: API.PaginatedOperationMethod<
   ListAssignmentsResponseRoleAssignmentsItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(112, __c14, 0) as any as S.Schema<ListAssignmentsRequest>,
-    output: __S(115, __c14, 3) as any as S.Schema<ListAssignmentsResponse>,
+    input: __S(680, __c85, 0) as any as S.Schema<ListAssignmentsRequest>,
+    output: __S(683, __c85, 3) as any as S.Schema<ListAssignmentsResponse>,
     errors: [SlackError, SlackRateLimited],
     protocol: SlackProtocol,
     retry: Retry.Retry,
@@ -3234,8 +3234,8 @@ export const listBarriers: API.PaginatedOperationMethod<
   unknown
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(116, __c14, 4) as any as S.Schema<ListBarriersRequest>,
-    output: __S(117, __c14, 5) as any as S.Schema<ListBarriersResponse>,
+    input: __S(688, __c86, 0) as any as S.Schema<ListBarriersRequest>,
+    output: __S(689, __c86, 1) as any as S.Schema<ListBarriersResponse>,
     errors: [SlackError, SlackRateLimited],
     protocol: SlackProtocol,
     retry: Retry.Retry,
@@ -3258,8 +3258,8 @@ export const listChannels: API.OperationMethod<
   ListChannelsError,
   SlackOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(118, __c14, 6) as any as S.Schema<ListChannelsRequest>,
-  output: __S(119, __c14, 7) as any as S.Schema<ListChannelsResponse>,
+  input: __S(696, __c87, 0) as any as S.Schema<ListChannelsRequest>,
+  output: __S(697, __c87, 1) as any as S.Schema<ListChannelsResponse>,
   errors: [SlackError, SlackRateLimited],
   protocol: SlackProtocol,
   retry: Retry.Retry,
@@ -3273,8 +3273,8 @@ export const listEmoji: API.OperationMethod<
   ListEmojiError,
   SlackOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(120, __c15, 0) as any as S.Schema<ListEmojiRequest>,
-  output: __S(122, __c15, 2) as any as S.Schema<ListEmojiResponse>,
+  input: __S(712, __c89, 0) as any as S.Schema<ListEmojiRequest>,
+  output: __S(713, __c89, 1) as any as S.Schema<ListEmojiResponse>,
   errors: [SlackError, SlackRateLimited],
   protocol: SlackProtocol,
   retry: Retry.Retry,
@@ -3290,8 +3290,8 @@ export const listFunctions: API.PaginatedOperationMethod<
   unknown
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(123, __c15, 3) as any as S.Schema<ListFunctionsRequest>,
-    output: __S(124, __c15, 4) as any as S.Schema<ListFunctionsResponse>,
+    input: __S(728, __c91, 0) as any as S.Schema<ListFunctionsRequest>,
+    output: __S(729, __c91, 1) as any as S.Schema<ListFunctionsResponse>,
     errors: [SlackError, SlackRateLimited],
     protocol: SlackProtocol,
     retry: Retry.Retry,
@@ -3314,8 +3314,8 @@ export const listGroups: API.OperationMethod<
   ListGroupsError,
   SlackOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(125, __c15, 5) as any as S.Schema<ListGroupsRequest>,
-  output: __S(126, __c15, 6) as any as S.Schema<ListGroupsResponse>,
+  input: __S(736, __c92, 0) as any as S.Schema<ListGroupsRequest>,
+  output: __S(737, __c92, 1) as any as S.Schema<ListGroupsResponse>,
   errors: [SlackError, SlackRateLimited],
   protocol: SlackProtocol,
   retry: Retry.Retry,
@@ -3331,8 +3331,8 @@ export const listInviteRequests: API.PaginatedOperationMethod<
   unknown
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(127, __c15, 7) as any as S.Schema<ListInviteRequestsRequest>,
-    output: __S(128, __c16, 0) as any as S.Schema<ListInviteRequestsResponse>,
+    input: __S(744, __c93, 0) as any as S.Schema<ListInviteRequestsRequest>,
+    output: __S(745, __c93, 1) as any as S.Schema<ListInviteRequestsResponse>,
     errors: [SlackError, SlackRateLimited],
     protocol: SlackProtocol,
     retry: Retry.Retry,
@@ -3357,8 +3357,8 @@ export const listInviteRequestsApproved: API.PaginatedOperationMethod<
   unknown
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(129, __c16, 1) as any as S.Schema<ListInviteRequestsApprovedRequest>,
-    output: __S(130, __c16, 2) as any as S.Schema<ListInviteRequestsApprovedResponse>,
+    input: __S(752, __c94, 0) as any as S.Schema<ListInviteRequestsApprovedRequest>,
+    output: __S(753, __c94, 1) as any as S.Schema<ListInviteRequestsApprovedResponse>,
     errors: [SlackError, SlackRateLimited],
     protocol: SlackProtocol,
     retry: Retry.Retry,
@@ -3383,8 +3383,8 @@ export const listInviteRequestsDenied: API.PaginatedOperationMethod<
   unknown
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(131, __c16, 3) as any as S.Schema<ListInviteRequestsDeniedRequest>,
-    output: __S(132, __c16, 4) as any as S.Schema<ListInviteRequestsDeniedResponse>,
+    input: __S(760, __c95, 0) as any as S.Schema<ListInviteRequestsDeniedRequest>,
+    output: __S(761, __c95, 1) as any as S.Schema<ListInviteRequestsDeniedResponse>,
     errors: [SlackError, SlackRateLimited],
     protocol: SlackProtocol,
     retry: Retry.Retry,
@@ -3409,8 +3409,8 @@ export const listOriginalConnectedChannelInfo: API.PaginatedOperationMethod<
   ListOriginalConnectedChannelInfoResponseChannelsItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(133, __c16, 5) as any as S.Schema<ListOriginalConnectedChannelInfoRequest>,
-    output: __S(137, __c17, 1) as any as S.Schema<ListOriginalConnectedChannelInfoResponse>,
+    input: __S(768, __c96, 0) as any as S.Schema<ListOriginalConnectedChannelInfoRequest>,
+    output: __S(771, __c96, 3) as any as S.Schema<ListOriginalConnectedChannelInfoResponse>,
     errors: [SlackError, SlackRateLimited],
     protocol: SlackProtocol,
     retry: Retry.Retry,
@@ -3435,8 +3435,8 @@ export const listTeams: API.PaginatedOperationMethod<
   ListTeamsResponseTeamsItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(138, __c17, 2) as any as S.Schema<ListTeamsRequest>,
-    output: __S(142, __c17, 6) as any as S.Schema<ListTeamsResponse>,
+    input: __S(784, __c98, 0) as any as S.Schema<ListTeamsRequest>,
+    output: __S(788, __c98, 4) as any as S.Schema<ListTeamsResponse>,
     errors: [SlackError, SlackRateLimited],
     protocol: SlackProtocol,
     retry: Retry.Retry,
@@ -3461,8 +3461,8 @@ export const listTeamsAdmins: API.PaginatedOperationMethod<
   string
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(143, __c17, 7) as any as S.Schema<ListTeamsAdminsRequest>,
-    output: __S(144, __c18, 0) as any as S.Schema<ListTeamsAdminsResponse>,
+    input: __S(792, __c99, 0) as any as S.Schema<ListTeamsAdminsRequest>,
+    output: __S(793, __c99, 1) as any as S.Schema<ListTeamsAdminsResponse>,
     errors: [SlackError, SlackRateLimited],
     protocol: SlackProtocol,
     retry: Retry.Retry,
@@ -3487,8 +3487,8 @@ export const listTeamsOwners: API.PaginatedOperationMethod<
   string
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(145, __c18, 1) as any as S.Schema<ListTeamsOwnersRequest>,
-    output: __S(146, __c18, 2) as any as S.Schema<ListTeamsOwnersResponse>,
+    input: __S(800, __c100, 0) as any as S.Schema<ListTeamsOwnersRequest>,
+    output: __S(801, __c100, 1) as any as S.Schema<ListTeamsOwnersResponse>,
     errors: [SlackError, SlackRateLimited],
     protocol: SlackProtocol,
     retry: Retry.Retry,
@@ -3513,8 +3513,8 @@ export const listUsers: API.PaginatedOperationMethod<
   ListUsersResponseUsersItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(147, __c18, 3) as any as S.Schema<ListUsersRequest>,
-    output: __S(150, __c18, 6) as any as S.Schema<ListUsersResponse>,
+    input: __S(824, __c103, 0) as any as S.Schema<ListUsersRequest>,
+    output: __S(827, __c103, 3) as any as S.Schema<ListUsersResponse>,
     errors: [SlackError, SlackRateLimited],
     protocol: SlackProtocol,
     retry: Retry.Retry,
@@ -3539,8 +3539,8 @@ export const listUsersSession: API.PaginatedOperationMethod<
   ListUsersSessionResponseActiveSessionsItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(151, __c18, 7) as any as S.Schema<ListUsersSessionRequest>,
-    output: __S(155, __c19, 3) as any as S.Schema<ListUsersSessionResponse>,
+    input: __S(832, __c104, 0) as any as S.Schema<ListUsersSessionRequest>,
+    output: __S(836, __c104, 4) as any as S.Schema<ListUsersSessionResponse>,
     errors: [SlackError, SlackRateLimited],
     protocol: SlackProtocol,
     retry: Retry.Retry,
@@ -3563,8 +3563,8 @@ export const lookupAppsConfig: API.OperationMethod<
   LookupAppsConfigError,
   SlackOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(156, __c19, 4) as any as S.Schema<LookupAppsConfigRequest>,
-  output: __S(159, __c19, 7) as any as S.Schema<LookupAppsConfigResponse>,
+  input: __S(840, __c105, 0) as any as S.Schema<LookupAppsConfigRequest>,
+  output: __S(843, __c105, 3) as any as S.Schema<LookupAppsConfigResponse>,
   errors: [SlackError, SlackRateLimited],
   protocol: SlackProtocol,
   retry: Retry.Retry,
@@ -3580,8 +3580,8 @@ export const lookupConversation: API.PaginatedOperationMethod<
   string
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(160, __c20, 0) as any as S.Schema<LookupConversationRequest>,
-    output: __S(161, __c20, 1) as any as S.Schema<LookupConversationResponse>,
+    input: __S(848, __c106, 0) as any as S.Schema<LookupConversationRequest>,
+    output: __S(849, __c106, 1) as any as S.Schema<LookupConversationResponse>,
     errors: [SlackError, SlackRateLimited],
     protocol: SlackProtocol,
     retry: Retry.Retry,
@@ -3604,8 +3604,8 @@ export const lookupFunctionsPermissions: API.OperationMethod<
   LookupFunctionsPermissionsError,
   SlackOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(162, __c20, 2) as any as S.Schema<LookupFunctionsPermissionsRequest>,
-  output: __S(163, __c20, 3) as any as S.Schema<LookupFunctionsPermissionsResponse>,
+  input: __S(856, __c107, 0) as any as S.Schema<LookupFunctionsPermissionsRequest>,
+  output: __S(857, __c107, 1) as any as S.Schema<LookupFunctionsPermissionsResponse>,
   errors: [SlackError, SlackRateLimited],
   protocol: SlackProtocol,
   retry: Retry.Retry,
@@ -3619,8 +3619,8 @@ export const lookupWorkflowsPermissions: API.OperationMethod<
   LookupWorkflowsPermissionsError,
   SlackOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(164, __c20, 4) as any as S.Schema<LookupWorkflowsPermissionsRequest>,
-  output: __S(165, __c20, 5) as any as S.Schema<LookupWorkflowsPermissionsResponse>,
+  input: __S(864, __c108, 0) as any as S.Schema<LookupWorkflowsPermissionsRequest>,
+  output: __S(865, __c108, 1) as any as S.Schema<LookupWorkflowsPermissionsResponse>,
   errors: [SlackError, SlackRateLimited],
   protocol: SlackProtocol,
   retry: Retry.Retry,
@@ -3634,8 +3634,8 @@ export const lookupWorkflowsTriggersTypesPermissions: API.OperationMethod<
   LookupWorkflowsTriggersTypesPermissionsError,
   SlackOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(166, __c20, 6) as any as S.Schema<LookupWorkflowsTriggersTypesPermissionsRequest>,
-  output: __S(167, __c20, 7) as any as S.Schema<LookupWorkflowsTriggersTypesPermissionsResponse>,
+  input: __S(872, __c109, 0) as any as S.Schema<LookupWorkflowsTriggersTypesPermissionsRequest>,
+  output: __S(873, __c109, 1) as any as S.Schema<LookupWorkflowsTriggersTypesPermissionsResponse>,
   errors: [SlackError, SlackRateLimited],
   protocol: SlackProtocol,
   retry: Retry.Retry,
@@ -3649,8 +3649,8 @@ export const removeAppsPermissions: API.OperationMethod<
   RemoveAppsPermissionsError,
   SlackOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(168, __c21, 0) as any as S.Schema<RemoveAppsPermissionsRequest>,
-  output: __S(4, __c0, 4) as any as S.Schema<RemoveAppsPermissionsResponse>,
+  input: __S(880, __c110, 0) as any as S.Schema<RemoveAppsPermissionsRequest>,
+  output: __S(32, __c4, 0) as any as S.Schema<RemoveAppsPermissionsResponse>,
   errors: [SlackError, SlackRateLimited],
   protocol: SlackProtocol,
   retry: Retry.Retry,
@@ -3664,8 +3664,8 @@ export const removeAssignments: API.OperationMethod<
   RemoveAssignmentsError,
   SlackOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(169, __c21, 1) as any as S.Schema<RemoveAssignmentsRequest>,
-  output: __S(170, __c21, 2) as any as S.Schema<RemoveAssignmentsResponse>,
+  input: __S(888, __c111, 0) as any as S.Schema<RemoveAssignmentsRequest>,
+  output: __S(889, __c111, 1) as any as S.Schema<RemoveAssignmentsResponse>,
   errors: [SlackError, SlackRateLimited],
   protocol: SlackProtocol,
   retry: Retry.Retry,
@@ -3679,8 +3679,8 @@ export const removeChannels: API.OperationMethod<
   RemoveChannelsError,
   SlackOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(171, __c21, 3) as any as S.Schema<RemoveChannelsRequest>,
-  output: __S(8, __c1, 0) as any as S.Schema<RemoveChannelsResponse>,
+  input: __S(896, __c112, 0) as any as S.Schema<RemoveChannelsRequest>,
+  output: __S(424, __c53, 0) as any as S.Schema<RemoveChannelsResponse>,
   errors: [SlackError, SlackRateLimited],
   protocol: SlackProtocol,
   retry: Retry.Retry,
@@ -3694,8 +3694,8 @@ export const removeCustomRetention: API.OperationMethod<
   RemoveCustomRetentionError,
   SlackOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(172, __c21, 4) as any as S.Schema<RemoveCustomRetentionRequest>,
-  output: __S(4, __c0, 4) as any as S.Schema<RemoveCustomRetentionResponse>,
+  input: __S(912, __c114, 0) as any as S.Schema<RemoveCustomRetentionRequest>,
+  output: __S(32, __c4, 0) as any as S.Schema<RemoveCustomRetentionResponse>,
   errors: [SlackError, SlackRateLimited],
   protocol: SlackProtocol,
   retry: Retry.Retry,
@@ -3709,8 +3709,8 @@ export const removeEmoji: API.OperationMethod<
   RemoveEmojiError,
   SlackOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(173, __c21, 5) as any as S.Schema<RemoveEmojiRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<RemoveEmojiResponse>,
+  input: __S(920, __c115, 0) as any as S.Schema<RemoveEmojiRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<RemoveEmojiResponse>,
   errors: [SlackError, SlackRateLimited],
   protocol: SlackProtocol,
   retry: Retry.Retry,
@@ -3724,8 +3724,8 @@ export const removeEntities: API.OperationMethod<
   RemoveEntitiesError,
   SlackOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(174, __c21, 6) as any as S.Schema<RemoveEntitiesRequest>,
-  output: __S(33, __c4, 1) as any as S.Schema<RemoveEntitiesResponse>,
+  input: __S(928, __c116, 0) as any as S.Schema<RemoveEntitiesRequest>,
+  output: __S(256, __c32, 0) as any as S.Schema<RemoveEntitiesResponse>,
   errors: [SlackError, SlackRateLimited],
   protocol: SlackProtocol,
   retry: Retry.Retry,
@@ -3739,8 +3739,8 @@ export const removeGroup: API.OperationMethod<
   RemoveGroupError,
   SlackOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(175, __c21, 7) as any as S.Schema<RemoveGroupRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<RemoveGroupResponse>,
+  input: __S(936, __c117, 0) as any as S.Schema<RemoveGroupRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<RemoveGroupResponse>,
   errors: [SlackError, SlackRateLimited],
   protocol: SlackProtocol,
   retry: Retry.Retry,
@@ -3754,8 +3754,8 @@ export const removeTeams: API.OperationMethod<
   RemoveTeamsError,
   SlackOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(176, __c22, 0) as any as S.Schema<RemoveTeamsRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<RemoveTeamsResponse>,
+  input: __S(944, __c118, 0) as any as S.Schema<RemoveTeamsRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<RemoveTeamsResponse>,
   errors: [SlackError, SlackRateLimited],
   protocol: SlackProtocol,
   retry: Retry.Retry,
@@ -3769,8 +3769,8 @@ export const removeUser: API.OperationMethod<
   RemoveUserError,
   SlackOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(177, __c22, 1) as any as S.Schema<RemoveUserRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<RemoveUserResponse>,
+  input: __S(952, __c119, 0) as any as S.Schema<RemoveUserRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<RemoveUserResponse>,
   errors: [SlackError, SlackRateLimited],
   protocol: SlackProtocol,
   retry: Retry.Retry,
@@ -3784,8 +3784,8 @@ export const removeUsers: API.OperationMethod<
   RemoveUsersError,
   SlackOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(178, __c22, 2) as any as S.Schema<RemoveUsersRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<RemoveUsersResponse>,
+  input: __S(960, __c120, 0) as any as S.Schema<RemoveUsersRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<RemoveUsersResponse>,
   errors: [SlackError, SlackRateLimited],
   protocol: SlackProtocol,
   retry: Retry.Retry,
@@ -3799,8 +3799,8 @@ export const removeWorkflowsCollaborator: API.OperationMethod<
   RemoveWorkflowsCollaboratorError,
   SlackOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(179, __c22, 3) as any as S.Schema<RemoveWorkflowsCollaboratorRequest>,
-  output: __S(4, __c0, 4) as any as S.Schema<RemoveWorkflowsCollaboratorResponse>,
+  input: __S(968, __c121, 0) as any as S.Schema<RemoveWorkflowsCollaboratorRequest>,
+  output: __S(32, __c4, 0) as any as S.Schema<RemoveWorkflowsCollaboratorResponse>,
   errors: [SlackError, SlackRateLimited],
   protocol: SlackProtocol,
   retry: Retry.Retry,
@@ -3814,8 +3814,8 @@ export const renameConversation: API.OperationMethod<
   RenameConversationError,
   SlackOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(180, __c22, 4) as any as S.Schema<RenameConversationRequest>,
-  output: __S(4, __c0, 4) as any as S.Schema<RenameConversationResponse>,
+  input: __S(976, __c122, 0) as any as S.Schema<RenameConversationRequest>,
+  output: __S(32, __c4, 0) as any as S.Schema<RenameConversationResponse>,
   errors: [SlackError, SlackRateLimited],
   protocol: SlackProtocol,
   retry: Retry.Retry,
@@ -3829,8 +3829,8 @@ export const renameEmoji: API.OperationMethod<
   RenameEmojiError,
   SlackOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(181, __c22, 5) as any as S.Schema<RenameEmojiRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<RenameEmojiResponse>,
+  input: __S(984, __c123, 0) as any as S.Schema<RenameEmojiRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<RenameEmojiResponse>,
   errors: [SlackError, SlackRateLimited],
   protocol: SlackProtocol,
   retry: Retry.Retry,
@@ -3844,8 +3844,8 @@ export const resetBulk: API.OperationMethod<
   ResetBulkError,
   SlackOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(182, __c22, 6) as any as S.Schema<ResetBulkRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<ResetBulkResponse>,
+  input: __S(1008, __c126, 0) as any as S.Schema<ResetBulkRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<ResetBulkResponse>,
   errors: [SlackError, SlackRateLimited],
   protocol: SlackProtocol,
   retry: Retry.Retry,
@@ -3859,8 +3859,8 @@ export const resetUsersSession: API.OperationMethod<
   ResetUsersSessionError,
   SlackOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(183, __c22, 7) as any as S.Schema<ResetUsersSessionRequest>,
-  output: __S(4, __c0, 4) as any as S.Schema<ResetUsersSessionResponse>,
+  input: __S(1016, __c127, 0) as any as S.Schema<ResetUsersSessionRequest>,
+  output: __S(32, __c4, 0) as any as S.Schema<ResetUsersSessionResponse>,
   errors: [SlackError, SlackRateLimited],
   protocol: SlackProtocol,
   retry: Retry.Retry,
@@ -3876,8 +3876,8 @@ export const searchConversation: API.PaginatedOperationMethod<
   string
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(184, __c23, 0) as any as S.Schema<SearchConversationRequest>,
-    output: __S(185, __c23, 1) as any as S.Schema<SearchConversationResponse>,
+    input: __S(1024, __c128, 0) as any as S.Schema<SearchConversationRequest>,
+    output: __S(1025, __c128, 1) as any as S.Schema<SearchConversationResponse>,
     errors: [SlackError, SlackRateLimited],
     protocol: SlackProtocol,
     retry: Retry.Retry,
@@ -3902,8 +3902,8 @@ export const searchWorkflow: API.PaginatedOperationMethod<
   unknown
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(186, __c23, 2) as any as S.Schema<SearchWorkflowRequest>,
-    output: __S(187, __c23, 3) as any as S.Schema<SearchWorkflowResponse>,
+    input: __S(1032, __c129, 0) as any as S.Schema<SearchWorkflowRequest>,
+    output: __S(1033, __c129, 1) as any as S.Schema<SearchWorkflowResponse>,
     errors: [SlackError, SlackRateLimited],
     protocol: SlackProtocol,
     retry: Retry.Retry,
@@ -3926,8 +3926,8 @@ export const setAdmin: API.OperationMethod<
   SetAdminError,
   SlackOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(188, __c23, 4) as any as S.Schema<SetAdminRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<SetAdminResponse>,
+  input: __S(1040, __c130, 0) as any as S.Schema<SetAdminRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<SetAdminResponse>,
   errors: [SlackError, SlackRateLimited],
   protocol: SlackProtocol,
   retry: Retry.Retry,
@@ -3941,8 +3941,8 @@ export const setAppsConfig: API.OperationMethod<
   SetAppsConfigError,
   SlackOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(190, __c23, 6) as any as S.Schema<SetAppsConfigRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<SetAppsConfigResponse>,
+  input: __S(1049, __c131, 1) as any as S.Schema<SetAppsConfigRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<SetAppsConfigResponse>,
   errors: [SlackError, SlackRateLimited],
   protocol: SlackProtocol,
   retry: Retry.Retry,
@@ -3956,8 +3956,8 @@ export const setAppsMcpServersPermissions: API.OperationMethod<
   SetAppsMcpServersPermissionsError,
   SlackOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(191, __c23, 7) as any as S.Schema<SetAppsMcpServersPermissionsRequest>,
-  output: __S(4, __c0, 4) as any as S.Schema<SetAppsMcpServersPermissionsResponse>,
+  input: __S(1056, __c132, 0) as any as S.Schema<SetAppsMcpServersPermissionsRequest>,
+  output: __S(32, __c4, 0) as any as S.Schema<SetAppsMcpServersPermissionsResponse>,
   errors: [SlackError, SlackRateLimited],
   protocol: SlackProtocol,
   retry: Retry.Retry,
@@ -3971,8 +3971,8 @@ export const setAppsPermissions: API.OperationMethod<
   SetAppsPermissionsError,
   SlackOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(192, __c24, 0) as any as S.Schema<SetAppsPermissionsRequest>,
-  output: __S(4, __c0, 4) as any as S.Schema<SetAppsPermissionsResponse>,
+  input: __S(1064, __c133, 0) as any as S.Schema<SetAppsPermissionsRequest>,
+  output: __S(32, __c4, 0) as any as S.Schema<SetAppsPermissionsResponse>,
   errors: [SlackError, SlackRateLimited],
   protocol: SlackProtocol,
   retry: Retry.Retry,
@@ -3986,8 +3986,8 @@ export const setConversationPrefs: API.OperationMethod<
   SetConversationPrefsError,
   SlackOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(193, __c24, 1) as any as S.Schema<SetConversationPrefsRequest>,
-  output: __S(4, __c0, 4) as any as S.Schema<SetConversationPrefsResponse>,
+  input: __S(1072, __c134, 0) as any as S.Schema<SetConversationPrefsRequest>,
+  output: __S(32, __c4, 0) as any as S.Schema<SetConversationPrefsResponse>,
   errors: [SlackError, SlackRateLimited],
   protocol: SlackProtocol,
   retry: Retry.Retry,
@@ -4001,8 +4001,8 @@ export const setCustomRetention: API.OperationMethod<
   SetCustomRetentionError,
   SlackOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(194, __c24, 2) as any as S.Schema<SetCustomRetentionRequest>,
-  output: __S(4, __c0, 4) as any as S.Schema<SetCustomRetentionResponse>,
+  input: __S(1080, __c135, 0) as any as S.Schema<SetCustomRetentionRequest>,
+  output: __S(32, __c4, 0) as any as S.Schema<SetCustomRetentionResponse>,
   errors: [SlackError, SlackRateLimited],
   protocol: SlackProtocol,
   retry: Retry.Retry,
@@ -4016,8 +4016,8 @@ export const setDefaultChannels: API.OperationMethod<
   SetDefaultChannelsError,
   SlackOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(195, __c24, 3) as any as S.Schema<SetDefaultChannelsRequest>,
-  output: __S(4, __c0, 4) as any as S.Schema<SetDefaultChannelsResponse>,
+  input: __S(48, __c6, 0) as any as S.Schema<SetDefaultChannelsRequest>,
+  output: __S(32, __c4, 0) as any as S.Schema<SetDefaultChannelsResponse>,
   errors: [SlackError, SlackRateLimited],
   protocol: SlackProtocol,
   retry: Retry.Retry,
@@ -4031,8 +4031,8 @@ export const setDescription: API.OperationMethod<
   SetDescriptionError,
   SlackOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(196, __c24, 4) as any as S.Schema<SetDescriptionRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<SetDescriptionResponse>,
+  input: __S(56, __c7, 0) as any as S.Schema<SetDescriptionRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<SetDescriptionResponse>,
   errors: [SlackError, SlackRateLimited],
   protocol: SlackProtocol,
   retry: Retry.Retry,
@@ -4046,8 +4046,8 @@ export const setDiscoverability: API.OperationMethod<
   SetDiscoverabilityError,
   SlackOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(197, __c24, 5) as any as S.Schema<SetDiscoverabilityRequest>,
-  output: __S(4, __c0, 4) as any as S.Schema<SetDiscoverabilityResponse>,
+  input: __S(64, __c8, 0) as any as S.Schema<SetDiscoverabilityRequest>,
+  output: __S(32, __c4, 0) as any as S.Schema<SetDiscoverabilityResponse>,
   errors: [SlackError, SlackRateLimited],
   protocol: SlackProtocol,
   retry: Retry.Retry,
@@ -4061,8 +4061,8 @@ export const setExpiration: API.OperationMethod<
   SetExpirationError,
   SlackOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(198, __c24, 6) as any as S.Schema<SetExpirationRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<SetExpirationResponse>,
+  input: __S(72, __c9, 0) as any as S.Schema<SetExpirationRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<SetExpirationResponse>,
   errors: [SlackError, SlackRateLimited],
   protocol: SlackProtocol,
   retry: Retry.Retry,
@@ -4076,8 +4076,8 @@ export const setFunctionsPermissions: API.OperationMethod<
   SetFunctionsPermissionsError,
   SlackOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(201, __c25, 1) as any as S.Schema<SetFunctionsPermissionsRequest>,
-  output: __S(4, __c0, 4) as any as S.Schema<SetFunctionsPermissionsResponse>,
+  input: __S(82, __c10, 2) as any as S.Schema<SetFunctionsPermissionsRequest>,
+  output: __S(32, __c4, 0) as any as S.Schema<SetFunctionsPermissionsResponse>,
   errors: [SlackError, SlackRateLimited],
   protocol: SlackProtocol,
   retry: Retry.Retry,
@@ -4091,8 +4091,8 @@ export const setIcon: API.OperationMethod<
   SetIconError,
   SlackOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(202, __c25, 2) as any as S.Schema<SetIconRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<SetIconResponse>,
+  input: __S(88, __c11, 0) as any as S.Schema<SetIconRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<SetIconResponse>,
   errors: [SlackError, SlackRateLimited],
   protocol: SlackProtocol,
   retry: Retry.Retry,
@@ -4106,8 +4106,8 @@ export const setName: API.OperationMethod<
   SetNameError,
   SlackOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(203, __c25, 3) as any as S.Schema<SetNameRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<SetNameResponse>,
+  input: __S(96, __c12, 0) as any as S.Schema<SetNameRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<SetNameResponse>,
   errors: [SlackError, SlackRateLimited],
   protocol: SlackProtocol,
   retry: Retry.Retry,
@@ -4121,8 +4121,8 @@ export const setOwner: API.OperationMethod<
   SetOwnerError,
   SlackOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(204, __c25, 4) as any as S.Schema<SetOwnerRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<SetOwnerResponse>,
+  input: __S(104, __c13, 0) as any as S.Schema<SetOwnerRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<SetOwnerResponse>,
   errors: [SlackError, SlackRateLimited],
   protocol: SlackProtocol,
   retry: Retry.Retry,
@@ -4136,8 +4136,8 @@ export const setRegular: API.OperationMethod<
   SetRegularError,
   SlackOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(205, __c25, 5) as any as S.Schema<SetRegularRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<SetRegularResponse>,
+  input: __S(112, __c14, 0) as any as S.Schema<SetRegularRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<SetRegularResponse>,
   errors: [SlackError, SlackRateLimited],
   protocol: SlackProtocol,
   retry: Retry.Retry,
@@ -4151,8 +4151,8 @@ export const setSettings: API.OperationMethod<
   SetSettingsError,
   SlackOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(206, __c25, 6) as any as S.Schema<SetSettingsRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<SetSettingsResponse>,
+  input: __S(120, __c15, 0) as any as S.Schema<SetSettingsRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<SetSettingsResponse>,
   errors: [SlackError, SlackRateLimited],
   protocol: SlackProtocol,
   retry: Retry.Retry,
@@ -4166,8 +4166,8 @@ export const setTeams: API.OperationMethod<
   SetTeamsError,
   SlackOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(207, __c25, 7) as any as S.Schema<SetTeamsRequest>,
-  output: __S(208, __c26, 0) as any as S.Schema<SetTeamsResponse>,
+  input: __S(136, __c17, 0) as any as S.Schema<SetTeamsRequest>,
+  output: __S(137, __c17, 1) as any as S.Schema<SetTeamsResponse>,
   errors: [SlackError, SlackRateLimited],
   protocol: SlackProtocol,
   retry: Retry.Retry,
@@ -4181,8 +4181,8 @@ export const setWorkflowsTriggersTypesPermissions: API.OperationMethod<
   SetWorkflowsTriggersTypesPermissionsError,
   SlackOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(211, __c26, 3) as any as S.Schema<SetWorkflowsTriggersTypesPermissionsRequest>,
-  output: __S(4, __c0, 4) as any as S.Schema<SetWorkflowsTriggersTypesPermissionsResponse>,
+  input: __S(146, __c18, 2) as any as S.Schema<SetWorkflowsTriggersTypesPermissionsRequest>,
+  output: __S(32, __c4, 0) as any as S.Schema<SetWorkflowsTriggersTypesPermissionsResponse>,
   errors: [SlackError, SlackRateLimited],
   protocol: SlackProtocol,
   retry: Retry.Retry,
@@ -4196,8 +4196,8 @@ export const teamsSettingsInfo: API.OperationMethod<
   TeamsSettingsInfoError,
   SlackOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(212, __c26, 4) as any as S.Schema<TeamsSettingsInfoRequest>,
-  output: __S(215, __c26, 7) as any as S.Schema<TeamsSettingsInfoResponse>,
+  input: __S(152, __c19, 0) as any as S.Schema<TeamsSettingsInfoRequest>,
+  output: __S(155, __c19, 3) as any as S.Schema<TeamsSettingsInfoResponse>,
   errors: [SlackError, SlackRateLimited],
   protocol: SlackProtocol,
   retry: Retry.Retry,
@@ -4211,8 +4211,8 @@ export const unarchiveConversation: API.OperationMethod<
   UnarchiveConversationError,
   SlackOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(216, __c27, 0) as any as S.Schema<UnarchiveConversationRequest>,
-  output: __S(4, __c0, 4) as any as S.Schema<UnarchiveConversationResponse>,
+  input: __S(160, __c20, 0) as any as S.Schema<UnarchiveConversationRequest>,
+  output: __S(32, __c4, 0) as any as S.Schema<UnarchiveConversationResponse>,
   errors: [SlackError, SlackRateLimited],
   protocol: SlackProtocol,
   retry: Retry.Retry,
@@ -4226,8 +4226,8 @@ export const uninstallApp: API.OperationMethod<
   UninstallAppError,
   SlackOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(217, __c27, 1) as any as S.Schema<UninstallAppRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<UninstallAppResponse>,
+  input: __S(168, __c21, 0) as any as S.Schema<UninstallAppRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<UninstallAppResponse>,
   errors: [SlackError, SlackRateLimited],
   protocol: SlackProtocol,
   retry: Retry.Retry,
@@ -4241,8 +4241,8 @@ export const unlinkObjects: API.OperationMethod<
   UnlinkObjectsError,
   SlackOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(218, __c27, 2) as any as S.Schema<UnlinkObjectsRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<UnlinkObjectsResponse>,
+  input: __S(176, __c22, 0) as any as S.Schema<UnlinkObjectsRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<UnlinkObjectsResponse>,
   errors: [SlackError, SlackRateLimited],
   protocol: SlackProtocol,
   retry: Retry.Retry,
@@ -4256,8 +4256,8 @@ export const unpublishWorkflow: API.OperationMethod<
   UnpublishWorkflowError,
   SlackOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(219, __c27, 3) as any as S.Schema<UnpublishWorkflowRequest>,
-  output: __S(4, __c0, 4) as any as S.Schema<UnpublishWorkflowResponse>,
+  input: __S(184, __c23, 0) as any as S.Schema<UnpublishWorkflowRequest>,
+  output: __S(32, __c4, 0) as any as S.Schema<UnpublishWorkflowResponse>,
   errors: [SlackError, SlackRateLimited],
   protocol: SlackProtocol,
   retry: Retry.Retry,
@@ -4271,8 +4271,8 @@ export const updateBarrier: API.OperationMethod<
   UpdateBarrierError,
   SlackOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(220, __c27, 4) as any as S.Schema<UpdateBarrierRequest>,
-  output: __S(52, __c6, 4) as any as S.Schema<UpdateBarrierResponse>,
+  input: __S(192, __c24, 0) as any as S.Schema<UpdateBarrierRequest>,
+  output: __S(384, __c48, 0) as any as S.Schema<UpdateBarrierResponse>,
   errors: [SlackError, SlackRateLimited],
   protocol: SlackProtocol,
   retry: Retry.Retry,
@@ -4286,8 +4286,8 @@ export const updateItem: API.OperationMethod<
   UpdateItemError,
   SlackOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(221, __c27, 5) as any as S.Schema<UpdateItemRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<UpdateItemResponse>,
+  input: __S(200, __c25, 0) as any as S.Schema<UpdateItemRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<UpdateItemResponse>,
   errors: [SlackError, SlackRateLimited],
   protocol: SlackProtocol,
   retry: Retry.Retry,
@@ -4301,8 +4301,8 @@ export const updateUsergroup: API.OperationMethod<
   UpdateUsergroupError,
   SlackOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(222, __c27, 6) as any as S.Schema<UpdateUsergroupRequest>,
-  output: __S(223, __c27, 7) as any as S.Schema<UpdateUsergroupResponse>,
+  input: __S(208, __c26, 0) as any as S.Schema<UpdateUsergroupRequest>,
+  output: __S(209, __c26, 1) as any as S.Schema<UpdateUsergroupResponse>,
   errors: [SlackError, SlackRateLimited],
   protocol: SlackProtocol,
   retry: Retry.Retry,
@@ -4333,56 +4333,6 @@ function __c0(j: number): any {
           alias_for: S.String.pipe(T.Query()),
         }).pipe(T.Http({ method: "GET", uri: "/admin.emoji.addAlias", code: 200 })),
       ).annotate({ identifier: "AddAliasRequest" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          ok: S.Boolean,
-        }),
-      ).annotate({ identifier: "AddAliasResponse" });
-    case 2:
-      return S.Array(S.String);
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          app_id: S.String,
-          user_ids: S.optional(__S(2, __c0, 2)),
-          usergroup_ids: S.optional(__S(2, __c0, 2)),
-          channel_ids: S.optional(__S(2, __c0, 2)),
-        }).pipe(T.Http({ method: "POST", uri: "/admin.apps.permissions.add", code: 200 })),
-      ).annotate({
-        identifier: "AddAppsPermissionsRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          ok: S.Boolean,
-        }),
-      ).annotate({
-        identifier: "AddAppsPermissionsResponse",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          role_id: S.String,
-          entity_ids: __S(2, __c0, 2),
-          user_ids: __S(2, __c0, 2),
-        }).pipe(T.Http({ method: "POST", uri: "/admin.roles.addAssignments", code: 200 })),
-      ).annotate({ identifier: "AddAssignmentsRequest" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          ok: S.Boolean,
-          error: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "AddAssignmentsResponse" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          usergroup_id: S.String,
-          team_id: S.optional(S.String),
-          channel_ids: __S(2, __c0, 2),
-        }).pipe(T.Http({ method: "POST", uri: "/admin.usergroups.addChannels", code: 200 })),
-      ).annotate({ identifier: "AddChannelsRequest" });
   }
 }
 function __c1(j: number): any {
@@ -4391,61 +4341,8 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           ok: S.Boolean,
-          error: S.optional(S.String),
-          invalid_channels: S.optional(__S(2, __c0, 2)),
         }),
-      ).annotate({ identifier: "AddChannelsResponse" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Query()),
-          url: S.optional(S.String.pipe(T.Query())),
-        }).pipe(T.Http({ method: "GET", uri: "/admin.emoji.add", code: 200 })),
-      ).annotate({ identifier: "AddEmojiRequest" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          team_id: S.optional(S.String.pipe(T.Query())),
-          group_id: S.String.pipe(T.Query()),
-          channel_id: S.String.pipe(T.Query()),
-        }).pipe(
-          T.Http({ method: "GET", uri: "/admin.conversations.restrictAccess.addGroup", code: 200 }),
-        ),
-      ).annotate({ identifier: "AddGroupRequest" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          usergroup_id: S.String,
-          team_ids: __S(2, __c0, 2),
-          auto_provision: S.optional(S.Boolean),
-        }).pipe(T.Http({ method: "POST", uri: "/admin.usergroups.addTeams", code: 200 })),
-      ).annotate({ identifier: "AddTeamsRequest" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String,
-          users: __S(2, __c0, 2),
-        }).pipe(T.Http({ method: "POST", uri: "/admin.usergroups.addUsers", code: 200 })),
-      ).annotate({ identifier: "AddUsersRequest" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          user_id: S.String,
-          reason: S.String,
-        }),
-      ).annotate({
-        identifier: "AddUsersResponseInvalidUsersItem",
-      });
-    case 6:
-      return S.Array(__S(13, __c1, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          ok: S.Boolean,
-          error: S.optional(S.String),
-          invalid_users: S.optional(__S(14, __c1, 6)),
-        }),
-      ).annotate({ identifier: "AddUsersResponse" });
+      ).annotate({ identifier: "AddAliasResponse" });
   }
 }
 function __c2(j: number): any {
@@ -4453,43 +4350,37 @@ function __c2(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          workflow_ids: __S(2, __c0, 2),
-          collaborator_ids: __S(2, __c0, 2),
-        }).pipe(T.Http({ method: "POST", uri: "/admin.workflows.collaborators.add", code: 200 })),
+          app_id: S.String,
+          user_ids: S.optional(__S(24, __c3, 0)),
+          usergroup_ids: S.optional(__S(24, __c3, 0)),
+          channel_ids: S.optional(__S(24, __c3, 0)),
+        }).pipe(T.Http({ method: "POST", uri: "/admin.apps.permissions.add", code: 200 })),
       ).annotate({
-        identifier: "AddWorkflowsCollaboratorRequest",
+        identifier: "AddAppsPermissionsRequest",
       });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          channel: S.String.pipe(T.Query()),
-          oldest_ts: S.optional(S.String.pipe(T.Query())),
-          latest_ts: S.optional(S.String.pipe(T.Query())),
-          cursor: S.optional(S.String.pipe(T.Query())),
-          limit: S.optional(S.Number.pipe(T.Query())),
-        }).pipe(T.Http({ method: "GET", uri: "/admin.analytics.messages.activity", code: 200 })),
-      ).annotate({
-        identifier: "AnalyticsMessagesActivityRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          next_cursor: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "AnalyticsMessagesActivityResponseResponseMetadata",
-      });
-    case 3:
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           ok: S.Boolean,
-          response_metadata: S.optional(__S(18, __c2, 2)),
-          message_activities: S.Unknown,
         }),
       ).annotate({
-        identifier: "AnalyticsMessagesActivityResponse",
+        identifier: "AddAppsPermissionsResponse",
       });
-    case 4:
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           channel: S.String.pipe(T.Query()),
@@ -4500,7 +4391,7 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "AnalyticsMessagesMetadataRequest",
       });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           name: S.String,
@@ -4509,9 +4400,9 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "AnalyticsMessagesMetadataResponseMessagesItemReactionsItem",
       });
-    case 6:
-      return S.Array(__S(21, __c2, 5));
-    case 7:
+    case 2:
+      return S.Array(__S(41, __c5, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
@@ -4532,13 +4423,9 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "AnalyticsMessagesMetadataResponseMessagesItemFilesItem",
       });
-  }
-}
-function __c3(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(23, __c2, 7));
-    case 1:
+    case 4:
+      return S.Array(__S(43, __c5, 3));
+    case 5:
       return S.suspend(() =>
         S.Struct({
           user_id: S.optional(S.String),
@@ -4549,25 +4436,165 @@ function __c3(j: number): any {
           display_as_bot: S.optional(S.Boolean),
           client_msg_id: S.optional(S.String),
           text_character_count: S.optional(S.Number),
-          reactions: S.optional(__S(22, __c2, 6)),
-          files: S.optional(__S(24, __c3, 0)),
+          reactions: S.optional(__S(42, __c5, 2)),
+          files: S.optional(__S(44, __c5, 4)),
         }),
       ).annotate({
         identifier: "AnalyticsMessagesMetadataResponseMessagesItem",
       });
-    case 2:
-      return S.Array(__S(25, __c3, 1));
-    case 3:
+    case 6:
+      return S.Array(__S(45, __c5, 5));
+    case 7:
       return S.suspend(() =>
         S.Struct({
           ok: S.Boolean,
-          response_metadata: S.optional(__S(18, __c2, 2)),
-          messages: __S(26, __c3, 2),
+          response_metadata: S.optional(__S(1000, __c125, 0)),
+          messages: __S(46, __c5, 6),
         }),
       ).annotate({
         identifier: "AnalyticsMessagesMetadataResponse",
       });
-    case 4:
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          team_id: S.String.pipe(T.Query()),
+          channel_ids: __S(24, __c3, 0).pipe(T.Query()),
+        }).pipe(
+          T.Http({ method: "GET", uri: "/admin.teams.settings.setDefaultChannels", code: 200 }),
+        ),
+      ).annotate({
+        identifier: "SetDefaultChannelsRequest",
+      });
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          team_id: S.String,
+          description: S.String,
+        }).pipe(T.Http({ method: "POST", uri: "/admin.teams.settings.setDescription", code: 200 })),
+      ).annotate({ identifier: "SetDescriptionRequest" });
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          team_id: S.String,
+          discoverability: S.String,
+        }).pipe(
+          T.Http({ method: "POST", uri: "/admin.teams.settings.setDiscoverability", code: 200 }),
+        ),
+      ).annotate({
+        identifier: "SetDiscoverabilityRequest",
+      });
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          team_id: S.optional(S.String),
+          user_id: S.String,
+          expiration_ts: S.Number,
+        }).pipe(T.Http({ method: "POST", uri: "/admin.users.setExpiration", code: 200 })),
+      ).annotate({ identifier: "SetExpirationRequest" });
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          visibility: S.String,
+          permission_type: S.String,
+          user_ids: S.optional(__S(24, __c3, 0)),
+        }),
+      ).annotate({
+        identifier: "SetFunctionsPermissionsRequestPermissionsItem",
+      });
+    case 1:
+      return S.Array(__S(80, __c10, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          function_id: S.String,
+          visibility: S.optional(S.String),
+          user_ids: S.optional(__S(24, __c3, 0)),
+          permissions: S.optional(__S(81, __c10, 1)),
+        }).pipe(T.Http({ method: "POST", uri: "/admin.functions.permissions.set", code: 200 })),
+      ).annotate({
+        identifier: "SetFunctionsPermissionsRequest",
+      });
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          image_url: S.String.pipe(T.Query()),
+          team_id: S.String.pipe(T.Query()),
+        }).pipe(T.Http({ method: "GET", uri: "/admin.teams.settings.setIcon", code: 200 })),
+      ).annotate({ identifier: "SetIconRequest" });
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          team_id: S.String,
+          name: S.String,
+        }).pipe(T.Http({ method: "POST", uri: "/admin.teams.settings.setName", code: 200 })),
+      ).annotate({ identifier: "SetNameRequest" });
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          team_id: S.String,
+          user_id: S.String,
+        }).pipe(T.Http({ method: "POST", uri: "/admin.users.setOwner", code: 200 })),
+      ).annotate({ identifier: "SetOwnerRequest" });
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          team_id: S.String,
+          user_id: S.String,
+        }).pipe(T.Http({ method: "POST", uri: "/admin.users.setRegular", code: 200 })),
+      ).annotate({ identifier: "SetRegularRequest" });
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          user_ids: __S(24, __c3, 0),
+          duration: S.optional(S.Number),
+          desktop_app_browser_quit: S.optional(S.Boolean),
+        }).pipe(T.Http({ method: "POST", uri: "/admin.users.session.setSettings", code: 200 })),
+      ).annotate({ identifier: "SetSettingsRequest" });
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           allow_child_auto_install: S.optional(S.Boolean),
@@ -4579,7 +4606,198 @@ function __c3(j: number): any {
           bot_scopes: S.optional(S.String),
         }).pipe(T.Http({ method: "POST", uri: "/admin.apps.approve", code: 200 })),
       ).annotate({ identifier: "ApproveAppRequest" });
-    case 5:
+  }
+}
+function __c17(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          channel_id: S.String,
+          team_id: S.optional(S.String),
+          target_team_ids: S.optional(__S(24, __c3, 0)),
+          org_channel: S.optional(S.Boolean),
+        }).pipe(T.Http({ method: "POST", uri: "/admin.conversations.setTeams", code: 200 })),
+      ).annotate({ identifier: "SetTeamsRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          ok: S.Boolean,
+          channel: S.String,
+        }),
+      ).annotate({ identifier: "SetTeamsResponse" });
+  }
+}
+function __c18(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, S.Unknown);
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          permissions: S.optional(__S(144, __c18, 0)),
+        }),
+      ).annotate({
+        identifier: "SetWorkflowsTriggersTypesPermissionsRequestPermissions",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          visibility: S.optional(S.String),
+          user_ids: S.optional(__S(24, __c3, 0)),
+          permissions: S.optional(__S(145, __c18, 1)),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/admin.workflows.triggers.types.permissions.set",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "SetWorkflowsTriggersTypesPermissionsRequest",
+      });
+  }
+}
+function __c19(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          team_id: S.String,
+        }).pipe(T.Http({ method: "POST", uri: "/admin.teams.settings.info", code: 200 })),
+      ).annotate({ identifier: "TeamsSettingsInfoRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          domain: S.optional(S.String),
+          email_domain: S.optional(S.String),
+          icon: S.optional(S.Unknown),
+          enterprise_id: S.optional(S.String),
+          enterprise_name: S.optional(S.String),
+          default_channels: S.optional(__S(624, __c78, 0)),
+        }),
+      ).annotate({
+        identifier: "TeamsSettingsInfoResponseTeamItem",
+      });
+    case 2:
+      return S.Array(__S(153, __c19, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          ok: S.Boolean,
+          team: __S(154, __c19, 2),
+        }),
+      ).annotate({
+        identifier: "TeamsSettingsInfoResponse",
+      });
+  }
+}
+function __c20(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          channel_id: S.String,
+        }).pipe(T.Http({ method: "POST", uri: "/admin.conversations.unarchive", code: 200 })),
+      ).annotate({
+        identifier: "UnarchiveConversationRequest",
+      });
+  }
+}
+function __c21(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          app_id: S.String,
+          team_ids: S.optional(S.String),
+          enterprise_id: S.optional(S.String),
+        }).pipe(T.Http({ method: "POST", uri: "/admin.apps.uninstall", code: 200 })),
+      ).annotate({ identifier: "UninstallAppRequest" });
+  }
+}
+function __c22(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          channel: S.String,
+          new_name: S.String,
+        }).pipe(T.Http({ method: "POST", uri: "/admin.conversations.unlinkObjects", code: 200 })),
+      ).annotate({ identifier: "UnlinkObjectsRequest" });
+  }
+}
+function __c23(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          workflow_ids: __S(24, __c3, 0),
+        }).pipe(T.Http({ method: "POST", uri: "/admin.workflows.unpublish", code: 200 })),
+      ).annotate({ identifier: "UnpublishWorkflowRequest" });
+  }
+}
+function __c24(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          barrier_id: S.String,
+          primary_usergroup_id: S.String,
+          barriered_from_usergroup_ids: __S(24, __c3, 0),
+          restricted_subjects: __S(392, __c49, 0),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/admin.barriers.update",
+            code: 200,
+            contentType: "form-urlencoded",
+          }),
+        ),
+      ).annotate({ identifier: "UpdateBarrierRequest" });
+  }
+}
+function __c25(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          trusted_cidr: S.optional(__S(24, __c3, 0)),
+          trusted_asns: S.optional(__S(544, __c68, 0)),
+        }).pipe(
+          T.Http({ method: "POST", uri: "/admin.audit.anomaly.allow.updateItem", code: 200 }),
+        ),
+      ).annotate({ identifier: "UpdateItemRequest" });
+  }
+}
+function __c26(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          name: S.optional(S.String),
+          handle: S.optional(S.String),
+          description: S.optional(S.String),
+          is_visible: S.optional(S.Boolean),
+        }).pipe(T.Http({ method: "POST", uri: "/admin.usergroups.update", code: 200 })),
+      ).annotate({ identifier: "UpdateUsergroupRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          ok: S.Boolean,
+          subteam: S.optional(S.Unknown),
+          channel_limit_user_ids: S.optional(__S(24, __c3, 0)),
+        }),
+      ).annotate({ identifier: "UpdateUsergroupResponse" });
+  }
+}
+function __c27(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           team_id: S.optional(S.String),
@@ -4588,7 +4806,30 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "ApproveInviteRequestRequest",
       });
-    case 6:
+  }
+}
+function __c28(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          file: S.optional(S.Unknown),
+        }).pipe(T.Http({ method: "POST", uri: "/admin.usergroups.uploadUsers", code: 200 })),
+      ).annotate({ identifier: "UploadUsersRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          ok: S.Boolean,
+          successful_user_count: S.Number,
+          invalid_users: S.optional(__S(817, __c102, 1)),
+        }),
+      ).annotate({ identifier: "UploadUsersResponse" });
+  }
+}
+function __c29(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           app_id: S.optional(S.String),
@@ -4597,7 +4838,11 @@ function __c3(j: number): any {
           enterprise_id: S.optional(S.String),
         }).pipe(T.Http({ method: "POST", uri: "/admin.apps.restrict", code: 200 })),
       ).annotate({ identifier: "AppsRestrictRequest" });
-    case 7:
+  }
+}
+function __c30(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           channel_id: S.String,
@@ -4607,24 +4852,32 @@ function __c3(j: number): any {
       });
   }
 }
-function __c4(j: number): any {
+function __c31(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           policy_name: S.String,
           entity_type: S.Unknown,
-          entity_ids: __S(2, __c0, 2),
+          entity_ids: __S(24, __c3, 0),
         }).pipe(T.Http({ method: "POST", uri: "/admin.auth.policy.assignEntities", code: 200 })),
       ).annotate({ identifier: "AssignEntitiesRequest" });
-    case 1:
+  }
+}
+function __c32(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           ok: S.Boolean,
           entity_total_count: S.Number,
         }),
       ).annotate({ identifier: "AssignEntitiesResponse" });
-    case 2:
+  }
+}
+function __c33(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           team_id: S.String,
@@ -4634,10 +4887,14 @@ function __c4(j: number): any {
           channel_ids: S.optional(S.String),
         }).pipe(T.Http({ method: "POST", uri: "/admin.users.assign", code: 200 })),
       ).annotate({ identifier: "AssignUserRequest" });
-    case 3:
+  }
+}
+function __c34(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          channel_ids: __S(2, __c0, 2),
+          channel_ids: __S(24, __c3, 0),
         }).pipe(
           T.Http({
             method: "POST",
@@ -4647,29 +4904,41 @@ function __c4(j: number): any {
           }),
         ),
       ).annotate({ identifier: "BulkArchiveRequest" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          channel_id: S.String,
-          errors: __S(2, __c0, 2),
-        }),
-      ).annotate({
-        identifier: "BulkArchiveResponseNotAddedItem",
-      });
-    case 5:
-      return S.Array(__S(36, __c4, 4));
-    case 6:
+  }
+}
+function __c35(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           ok: S.Boolean,
           bulk_action_id: S.String,
-          not_added: __S(37, __c4, 5),
+          not_added: __S(289, __c36, 1),
         }),
       ).annotate({ identifier: "BulkArchiveResponse" });
-    case 7:
+  }
+}
+function __c36(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          channel_ids: __S(2, __c0, 2),
+          channel_id: S.String,
+          errors: __S(24, __c3, 0),
+        }),
+      ).annotate({
+        identifier: "BulkArchiveResponseNotAddedItem",
+      });
+    case 1:
+      return S.Array(__S(288, __c36, 0));
+  }
+}
+function __c37(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          channel_ids: __S(24, __c3, 0),
         }).pipe(
           T.Http({
             method: "POST",
@@ -4681,13 +4950,13 @@ function __c4(j: number): any {
       ).annotate({ identifier: "BulkDeleteRequest" });
   }
 }
-function __c5(j: number): any {
+function __c38(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           target_team_id: S.String,
-          channel_ids: __S(2, __c0, 2),
+          channel_ids: __S(24, __c3, 0),
         }).pipe(
           T.Http({
             method: "POST",
@@ -4697,10 +4966,33 @@ function __c5(j: number): any {
           }),
         ),
       ).annotate({ identifier: "BulkMoveRequest" });
+  }
+}
+function __c39(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          role_id: S.String,
+          entity_ids: __S(24, __c3, 0),
+          user_ids: __S(24, __c3, 0),
+        }).pipe(T.Http({ method: "POST", uri: "/admin.roles.addAssignments", code: 200 })),
+      ).annotate({ identifier: "AddAssignmentsRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
-          channel_ids: __S(2, __c0, 2).pipe(T.Query()),
+          ok: S.Boolean,
+          error: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "AddAssignmentsResponse" });
+  }
+}
+function __c40(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          channel_ids: __S(24, __c3, 0).pipe(T.Query()),
           exclude: S.Boolean.pipe(T.Query()),
         }).pipe(
           T.Http({
@@ -4712,20 +5004,24 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "BulkSetExcludeFromSlackAiRequest",
       });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           ok: S.Boolean,
           bulk_action_id: S.String,
-          not_added: __S(37, __c4, 5),
+          not_added: __S(289, __c36, 1),
         }),
       ).annotate({
         identifier: "BulkSetExcludeFromSlackAiResponse",
       });
-    case 3:
+  }
+}
+function __c41(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          channel_ids: __S(2, __c0, 2),
+          channel_ids: __S(24, __c3, 0),
           property: S.String,
         }).pipe(
           T.Http({
@@ -4736,17 +5032,21 @@ function __c5(j: number): any {
           }),
         ),
       ).annotate({ identifier: "BulkSetPropertiesRequest" });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           ok: S.Boolean,
           bulk_action_id: S.String,
-          not_updated: __S(37, __c4, 5),
+          not_updated: __S(289, __c36, 1),
         }),
       ).annotate({
         identifier: "BulkSetPropertiesResponse",
       });
-    case 5:
+  }
+}
+function __c42(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           request_id: S.String,
@@ -4754,7 +5054,11 @@ function __c5(j: number): any {
           enterprise_id: S.optional(S.String),
         }).pipe(T.Http({ method: "POST", uri: "/admin.apps.requests.cancel", code: 200 })),
       ).annotate({ identifier: "CancelAppsRequestRequest" });
-    case 6:
+  }
+}
+function __c43(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           app_id: S.String,
@@ -4762,15 +5066,19 @@ function __c5(j: number): any {
           enterprise_id: S.optional(S.String),
         }).pipe(T.Http({ method: "POST", uri: "/admin.apps.clearResolution", code: 200 })),
       ).annotate({ identifier: "ClearResolutionRequest" });
-    case 7:
+  }
+}
+function __c44(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          user_ids: __S(2, __c0, 2),
+          user_ids: __S(24, __c3, 0),
         }).pipe(T.Http({ method: "POST", uri: "/admin.users.session.clearSettings", code: 200 })),
       ).annotate({ identifier: "ClearSettingsRequest" });
   }
 }
-function __c6(j: number): any {
+function __c45(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4781,20 +5089,26 @@ function __c6(j: number): any {
           T.Http({ method: "POST", uri: "/admin.conversations.convertToPrivate", code: 200 }),
         ),
       ).annotate({ identifier: "ConvertToPrivateRequest" });
-    case 1:
+  }
+}
+function __c46(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           channel_id: S.String,
         }).pipe(T.Http({ method: "POST", uri: "/admin.conversations.convertToPublic", code: 200 })),
       ).annotate({ identifier: "ConvertToPublicRequest" });
-    case 2:
-      return S.Array(S.String);
-    case 3:
+  }
+}
+function __c47(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           primary_usergroup_id: S.String,
-          barriered_from_usergroup_ids: __S(2, __c0, 2),
-          restricted_subjects: __S(50, __c6, 2),
+          barriered_from_usergroup_ids: __S(24, __c3, 0),
+          restricted_subjects: __S(392, __c49, 0),
         }).pipe(
           T.Http({
             method: "POST",
@@ -4804,14 +5118,28 @@ function __c6(j: number): any {
           }),
         ),
       ).annotate({ identifier: "CreateBarrierRequest" });
-    case 4:
+  }
+}
+function __c48(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           ok: S.Boolean,
           barrier: S.Unknown,
         }),
       ).annotate({ identifier: "CreateBarrierResponse" });
-    case 5:
+  }
+}
+function __c49(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c50(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String,
@@ -4823,7 +5151,7 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "CreateConversationRequest",
       });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           ok: S.Boolean,
@@ -4832,7 +5160,11 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "CreateConversationResponse",
       });
-    case 7:
+  }
+}
+function __c51(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           object_id: S.String,
@@ -4842,18 +5174,42 @@ function __c6(j: number): any {
           T.Http({ method: "POST", uri: "/admin.conversations.createForObjects", code: 200 }),
         ),
       ).annotate({ identifier: "CreateForObjectsRequest" });
-  }
-}
-function __c7(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           ok: S.Boolean,
           channel_id: S.String,
         }),
       ).annotate({ identifier: "CreateForObjectsResponse" });
-    case 1:
+  }
+}
+function __c52(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          usergroup_id: S.String,
+          team_id: S.optional(S.String),
+          channel_ids: __S(24, __c3, 0),
+        }).pipe(T.Http({ method: "POST", uri: "/admin.usergroups.addChannels", code: 200 })),
+      ).annotate({ identifier: "AddChannelsRequest" });
+  }
+}
+function __c53(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          ok: S.Boolean,
+          error: S.optional(S.String),
+          invalid_channels: S.optional(__S(24, __c3, 0)),
+        }),
+      ).annotate({ identifier: "AddChannelsResponse" });
+  }
+}
+function __c54(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           team_domain: S.String,
@@ -4862,14 +5218,18 @@ function __c7(j: number): any {
           team_discoverability: S.optional(S.String),
         }).pipe(T.Http({ method: "POST", uri: "/admin.teams.create", code: 200 })),
       ).annotate({ identifier: "CreateTeamRequest" });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           ok: S.Boolean,
           team: S.String,
         }),
       ).annotate({ identifier: "CreateTeamResponse" });
-    case 3:
+  }
+}
+function __c55(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String,
@@ -4878,7 +5238,7 @@ function __c7(j: number): any {
           is_visible: S.optional(S.Boolean),
         }).pipe(T.Http({ method: "POST", uri: "/admin.usergroups.create", code: 200 })),
       ).annotate({ identifier: "CreateUsergroupRequest" });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           ok: S.Boolean,
@@ -4886,7 +5246,11 @@ function __c7(j: number): any {
           subteam: S.optional(S.Unknown),
         }),
       ).annotate({ identifier: "CreateUsergroupResponse" });
-    case 5:
+  }
+}
+function __c56(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           barrier_id: S.String,
@@ -4899,7 +5263,11 @@ function __c7(j: number): any {
           }),
         ),
       ).annotate({ identifier: "DeleteBarrierRequest" });
-    case 6:
+  }
+}
+function __c57(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           channel_id: S.String,
@@ -4907,18 +5275,22 @@ function __c7(j: number): any {
       ).annotate({
         identifier: "DeleteConversationRequest",
       });
-    case 7:
+  }
+}
+function __c58(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           channel_id: S.String,
-          leaving_team_ids: S.optional(__S(2, __c0, 2)),
+          leaving_team_ids: S.optional(__S(24, __c3, 0)),
         }).pipe(
           T.Http({ method: "POST", uri: "/admin.conversations.disconnectShared", code: 200 }),
         ),
       ).annotate({ identifier: "DisconnectSharedRequest" });
   }
 }
-function __c8(j: number): any {
+function __c59(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4936,20 +5308,28 @@ function __c8(j: number): any {
       ).annotate({
         identifier: "ExportUsersUnsupportedVersionRequest",
       });
-    case 1:
+  }
+}
+function __c60(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
         }).pipe(T.Http({ method: "POST", uri: "/admin.usergroups.fetch", code: 200 })),
       ).annotate({ identifier: "FetchUsergroupRequest" });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           ok: S.Boolean,
           subteam: S.Unknown,
         }),
       ).annotate({ identifier: "FetchUsergroupResponse" });
-    case 3:
+  }
+}
+function __c61(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           channel_id: S.String,
@@ -4959,16 +5339,16 @@ function __c8(j: number): any {
       ).annotate({
         identifier: "GetConversationPrefsRequest",
       });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          type: S.optional(__S(2, __c0, 2)),
-          user: S.optional(__S(2, __c0, 2)),
+          type: S.optional(__S(24, __c3, 0)),
+          user: S.optional(__S(24, __c3, 0)),
         }),
       ).annotate({
         identifier: "GetConversationPrefsResponsePrefsWhoCanPost",
       });
-    case 5:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           value: S.optional(S.Number),
@@ -4976,7 +5356,7 @@ function __c8(j: number): any {
       ).annotate({
         identifier: "GetConversationPrefsResponsePrefsMembershipLimit",
       });
-    case 6:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           enabled: S.optional(S.Boolean),
@@ -4984,33 +5364,33 @@ function __c8(j: number): any {
       ).annotate({
         identifier: "GetConversationPrefsResponsePrefsCanHuddle",
       });
-    case 7:
+    case 4:
       return S.suspend(() =>
         S.Struct({
-          who_can_post: S.optional(__S(68, __c8, 4)),
-          can_thread: S.optional(__S(68, __c8, 4)),
-          membership_limit: S.optional(__S(69, __c8, 5)),
-          can_huddle: S.optional(__S(70, __c8, 6)),
-          enable_at_channel: S.optional(__S(70, __c8, 6)),
-          enable_at_here: S.optional(__S(70, __c8, 6)),
+          who_can_post: S.optional(__S(489, __c61, 1)),
+          can_thread: S.optional(__S(489, __c61, 1)),
+          membership_limit: S.optional(__S(490, __c61, 2)),
+          can_huddle: S.optional(__S(491, __c61, 3)),
+          enable_at_channel: S.optional(__S(491, __c61, 3)),
+          enable_at_here: S.optional(__S(491, __c61, 3)),
         }),
       ).annotate({
         identifier: "GetConversationPrefsResponsePrefs",
       });
-  }
-}
-function __c9(j: number): any {
-  switch (j) {
-    case 0:
+    case 5:
       return S.suspend(() =>
         S.Struct({
           ok: S.Boolean,
-          prefs: S.optional(__S(71, __c8, 7)),
+          prefs: S.optional(__S(492, __c61, 4)),
         }),
       ).annotate({
         identifier: "GetConversationPrefsResponse",
       });
-    case 1:
+  }
+}
+function __c62(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           channel_id: S.String,
@@ -5020,7 +5400,7 @@ function __c9(j: number): any {
       ).annotate({
         identifier: "GetCustomRetentionRequest",
       });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           ok: S.Boolean,
@@ -5030,7 +5410,11 @@ function __c9(j: number): any {
       ).annotate({
         identifier: "GetCustomRetentionResponse",
       });
-    case 3:
+  }
+}
+function __c63(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           policy_name: S.String,
@@ -5039,7 +5423,7 @@ function __c9(j: number): any {
           cursor: S.optional(S.String),
         }).pipe(T.Http({ method: "POST", uri: "/admin.auth.policy.getEntities", code: 200 })),
       ).annotate({ identifier: "GetEntitiesRequest" });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           entity_type: S.String,
@@ -5049,18 +5433,33 @@ function __c9(j: number): any {
       ).annotate({
         identifier: "GetEntitiesResponseEntitiesItem",
       });
-    case 5:
-      return S.Array(__S(76, __c9, 4));
-    case 6:
+    case 2:
+      return S.Array(__S(505, __c63, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
           ok: S.Boolean,
-          response_metadata: S.optional(__S(18, __c2, 2)),
-          entities: __S(77, __c9, 5),
+          response_metadata: S.optional(__S(1000, __c125, 0)),
+          entities: __S(506, __c63, 2),
           entity_total_count: S.Number,
         }),
       ).annotate({ identifier: "GetEntitiesResponse" });
-    case 7:
+  }
+}
+function __c64(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Query()),
+          url: S.optional(S.String.pipe(T.Query())),
+        }).pipe(T.Http({ method: "GET", uri: "/admin.emoji.add", code: 200 })),
+      ).annotate({ identifier: "AddEmojiRequest" });
+  }
+}
+function __c65(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           user_id: S.String.pipe(T.Query()),
@@ -5069,7 +5468,7 @@ function __c9(j: number): any {
       ).annotate({ identifier: "GetExpirationRequest" });
   }
 }
-function __c10(j: number): any {
+function __c66(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5083,29 +5482,41 @@ function __c10(j: number): any {
       return S.suspend(() => S.Unknown.pipe(T.RawResponseRoot())).annotate({
         identifier: "GetFileResponse",
       });
-    case 2:
+  }
+}
+function __c67(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({}).pipe(
           T.Http({ method: "POST", uri: "/admin.audit.anomaly.allow.getItem", code: 200 }),
         ),
       ).annotate({ identifier: "GetItemRequest" });
-    case 3:
-      return S.Array(S.Number);
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           ok: S.Boolean,
-          trusted_cidr: S.optional(__S(2, __c0, 2)),
-          trusted_asns: S.optional(__S(83, __c10, 3)),
+          trusted_cidr: S.optional(__S(24, __c3, 0)),
+          trusted_asns: S.optional(__S(544, __c68, 0)),
         }),
       ).annotate({ identifier: "GetItemResponse" });
-    case 5:
+  }
+}
+function __c68(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.Number);
+  }
+}
+function __c69(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          user_ids: __S(2, __c0, 2),
+          user_ids: __S(24, __c3, 0),
         }).pipe(T.Http({ method: "POST", uri: "/admin.users.session.getSettings", code: 200 })),
       ).annotate({ identifier: "GetSettingsRequest" });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           user_id: S.String,
@@ -5115,21 +5526,21 @@ function __c10(j: number): any {
       ).annotate({
         identifier: "GetSettingsResponseSessionSettingsItem",
       });
-    case 7:
-      return S.Array(__S(86, __c10, 6));
-  }
-}
-function __c11(j: number): any {
-  switch (j) {
-    case 0:
+    case 2:
+      return S.Array(__S(553, __c69, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
           ok: S.Boolean,
-          session_settings: S.optional(__S(87, __c10, 7)),
-          no_settings_applied: S.optional(__S(2, __c0, 2)),
+          session_settings: S.optional(__S(554, __c69, 2)),
+          no_settings_applied: S.optional(__S(24, __c3, 0)),
         }),
       ).annotate({ identifier: "GetSettingsResponse" });
-    case 1:
+  }
+}
+function __c70(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           channel_id: S.String,
@@ -5137,14 +5548,18 @@ function __c11(j: number): any {
           limit: S.optional(S.Number),
         }).pipe(T.Http({ method: "POST", uri: "/admin.conversations.getTeams", code: 200 })),
       ).annotate({ identifier: "GetTeamsRequest" });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           ok: S.Boolean,
-          response_metadata: S.optional(__S(18, __c2, 2)),
+          response_metadata: S.optional(__S(1000, __c125, 0)),
         }),
       ).annotate({ identifier: "GetTeamsResponse" });
-    case 3:
+  }
+}
+function __c71(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           user_id: S.String,
@@ -5153,16 +5568,24 @@ function __c11(j: number): any {
       ).annotate({
         identifier: "InvalidateUsersSessionRequest",
       });
-    case 4:
+  }
+}
+function __c72(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          user_ids: __S(2, __c0, 2),
+          user_ids: __S(24, __c3, 0),
           channel_id: S.String,
         }).pipe(T.Http({ method: "POST", uri: "/admin.conversations.invite", code: 200 })),
       ).annotate({
         identifier: "InviteConversationRequest",
       });
-    case 5:
+  }
+}
+function __c73(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           team_id: S.optional(S.String),
@@ -5171,7 +5594,11 @@ function __c11(j: number): any {
       ).annotate({
         identifier: "InviteRequestsDenyRequest",
       });
-    case 6:
+  }
+}
+function __c74(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           team_id: S.String,
@@ -5186,7 +5613,11 @@ function __c11(j: number): any {
           email_password_policy_enabled: S.optional(S.Boolean),
         }).pipe(T.Http({ method: "POST", uri: "/admin.users.invite", code: 200 })),
       ).annotate({ identifier: "InviteUserRequest" });
-    case 7:
+  }
+}
+function __c75(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           channel: S.String,
@@ -5196,7 +5627,21 @@ function __c11(j: number): any {
       ).annotate({ identifier: "LinkObjectsRequest" });
   }
 }
-function __c12(j: number): any {
+function __c76(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          team_id: S.optional(S.String.pipe(T.Query())),
+          group_id: S.String.pipe(T.Query()),
+          channel_id: S.String.pipe(T.Query()),
+        }).pipe(
+          T.Http({ method: "GET", uri: "/admin.conversations.restrictAccess.addGroup", code: 200 }),
+        ),
+      ).annotate({ identifier: "AddGroupRequest" });
+  }
+}
+function __c77(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5226,18 +5671,26 @@ function __c12(j: number): any {
         identifier: "ListAppsActivitiesRequest",
       });
     case 1:
-      return S.Array(S.Unknown);
-    case 2:
       return S.suspend(() =>
         S.Struct({
           ok: S.Boolean,
-          activities: __S(97, __c12, 1),
-          response_metadata: S.optional(__S(18, __c2, 2)),
+          activities: __S(624, __c78, 0),
+          response_metadata: S.optional(__S(1000, __c125, 0)),
         }),
       ).annotate({
         identifier: "ListAppsActivitiesResponse",
       });
-    case 3:
+  }
+}
+function __c78(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.Unknown);
+  }
+}
+function __c79(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           limit: S.optional(S.Number.pipe(T.Query())),
@@ -5247,15 +5700,19 @@ function __c12(j: number): any {
           certified: S.optional(S.Boolean.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/admin.apps.approved.list", code: 200 })),
       ).annotate({ identifier: "ListAppsApprovedRequest" });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           ok: S.Boolean,
-          approved_apps: __S(97, __c12, 1),
-          response_metadata: S.optional(__S(18, __c2, 2)),
+          approved_apps: __S(624, __c78, 0),
+          response_metadata: S.optional(__S(1000, __c125, 0)),
         }),
       ).annotate({ identifier: "ListAppsApprovedResponse" });
-    case 5:
+  }
+}
+function __c80(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           limit: S.optional(S.Number),
@@ -5264,7 +5721,7 @@ function __c12(j: number): any {
       ).annotate({
         identifier: "ListAppsMcpServersRequest",
       });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           server_id: S.String,
@@ -5277,23 +5734,23 @@ function __c12(j: number): any {
       ).annotate({
         identifier: "ListAppsMcpServersResponseServersItem",
       });
-    case 7:
-      return S.Array(__S(102, __c12, 6));
-  }
-}
-function __c13(j: number): any {
-  switch (j) {
-    case 0:
+    case 2:
+      return S.Array(__S(641, __c80, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
           ok: S.Boolean,
-          servers: __S(103, __c12, 7),
-          response_metadata: S.optional(__S(18, __c2, 2)),
+          servers: __S(642, __c80, 2),
+          response_metadata: S.optional(__S(1000, __c125, 0)),
         }),
       ).annotate({
         identifier: "ListAppsMcpServersResponse",
       });
-    case 1:
+  }
+}
+function __c81(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           app_id: S.String,
@@ -5303,16 +5760,20 @@ function __c13(j: number): any {
       ).annotate({
         identifier: "ListAppsMcpServersPermissionsRequest",
       });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           ok: S.Boolean,
-          servers: __S(97, __c12, 1),
+          servers: __S(624, __c78, 0),
         }),
       ).annotate({
         identifier: "ListAppsMcpServersPermissionsResponse",
       });
-    case 3:
+  }
+}
+function __c82(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           app_id: S.String,
@@ -5320,7 +5781,11 @@ function __c13(j: number): any {
       ).annotate({
         identifier: "ListAppsPermissionsRequest",
       });
-    case 4:
+  }
+}
+function __c83(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           limit: S.optional(S.Number.pipe(T.Query())),
@@ -5330,15 +5795,19 @@ function __c13(j: number): any {
           certified: S.optional(S.Boolean.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/admin.apps.requests.list", code: 200 })),
       ).annotate({ identifier: "ListAppsRequestsRequest" });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           ok: S.Boolean,
-          app_requests: __S(97, __c12, 1),
-          response_metadata: S.optional(__S(18, __c2, 2)),
+          app_requests: __S(624, __c78, 0),
+          response_metadata: S.optional(__S(1000, __c125, 0)),
         }),
       ).annotate({ identifier: "ListAppsRequestsResponse" });
-    case 6:
+  }
+}
+function __c84(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           limit: S.optional(S.Number.pipe(T.Query())),
@@ -5350,27 +5819,27 @@ function __c13(j: number): any {
       ).annotate({
         identifier: "ListAppsRestrictedRequest",
       });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           ok: S.Boolean,
-          restricted_apps: __S(97, __c12, 1),
-          response_metadata: S.optional(__S(18, __c2, 2)),
+          restricted_apps: __S(624, __c78, 0),
+          response_metadata: S.optional(__S(1000, __c125, 0)),
         }),
       ).annotate({
         identifier: "ListAppsRestrictedResponse",
       });
   }
 }
-function __c14(j: number): any {
+function __c85(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           cursor: S.optional(S.String.pipe(T.Query())),
           limit: S.optional(S.Number.pipe(T.Query())),
-          role_ids: S.optional(__S(2, __c0, 2).pipe(T.Query())),
-          entity_ids: S.optional(__S(2, __c0, 2).pipe(T.Query())),
+          role_ids: S.optional(__S(24, __c3, 0).pipe(T.Query())),
+          entity_ids: S.optional(__S(24, __c3, 0).pipe(T.Query())),
           sort_dir: S.optional(S.String.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/admin.roles.listAssignments", code: 200 })),
       ).annotate({ identifier: "ListAssignmentsRequest" });
@@ -5386,32 +5855,40 @@ function __c14(j: number): any {
         identifier: "ListAssignmentsResponseRoleAssignmentsItem",
       });
     case 2:
-      return S.Array(__S(113, __c14, 1));
+      return S.Array(__S(681, __c85, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
           ok: S.Boolean,
           error: S.optional(S.String),
-          role_assignments: __S(114, __c14, 2),
-          response_metadata: S.optional(__S(18, __c2, 2)),
+          role_assignments: __S(682, __c85, 2),
+          response_metadata: S.optional(__S(1000, __c125, 0)),
         }),
       ).annotate({ identifier: "ListAssignmentsResponse" });
-    case 4:
+  }
+}
+function __c86(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           limit: S.optional(S.Number.pipe(T.Query())),
           cursor: S.optional(S.String.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/admin.barriers.list", code: 200 })),
       ).annotate({ identifier: "ListBarriersRequest" });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           ok: S.Boolean,
-          barriers: __S(97, __c12, 1),
-          response_metadata: S.optional(__S(18, __c2, 2)),
+          barriers: __S(624, __c78, 0),
+          response_metadata: S.optional(__S(1000, __c125, 0)),
         }),
       ).annotate({ identifier: "ListBarriersResponse" });
-    case 6:
+  }
+}
+function __c87(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           usergroup_id: S.String,
@@ -5419,17 +5896,29 @@ function __c14(j: number): any {
           include_num_members: S.optional(S.Boolean),
         }).pipe(T.Http({ method: "POST", uri: "/admin.usergroups.listChannels", code: 200 })),
       ).annotate({ identifier: "ListChannelsRequest" });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           ok: S.Boolean,
-          channels: __S(2, __c0, 2),
+          channels: __S(24, __c3, 0),
           error: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListChannelsResponse" });
   }
 }
-function __c15(j: number): any {
+function __c88(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          usergroup_id: S.String,
+          team_ids: __S(24, __c3, 0),
+          auto_provision: S.optional(S.Boolean),
+        }).pipe(T.Http({ method: "POST", uri: "/admin.usergroups.addTeams", code: 200 })),
+      ).annotate({ identifier: "AddTeamsRequest" });
+  }
+}
+function __c89(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5439,34 +5928,46 @@ function __c15(j: number): any {
         }).pipe(T.Http({ method: "GET", uri: "/admin.emoji.list", code: 200 })),
       ).annotate({ identifier: "ListEmojiRequest" });
     case 1:
-      return S.Record(S.String, S.Unknown);
-    case 2:
       return S.suspend(() =>
         S.Struct({
           ok: S.Boolean,
-          emoji: __S(121, __c15, 1),
-          response_metadata: S.optional(__S(18, __c2, 2)),
+          emoji: __S(720, __c90, 0),
+          response_metadata: S.optional(__S(1000, __c125, 0)),
         }),
       ).annotate({ identifier: "ListEmojiResponse" });
-    case 3:
+  }
+}
+function __c90(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, S.Unknown);
+  }
+}
+function __c91(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           team_id: S.optional(S.String),
-          app_ids: __S(2, __c0, 2),
+          app_ids: __S(24, __c3, 0),
           include_non_distributed_functions: S.optional(S.Boolean),
           cursor: S.optional(S.String),
           limit: S.optional(S.Number),
         }).pipe(T.Http({ method: "POST", uri: "/admin.functions.list", code: 200 })),
       ).annotate({ identifier: "ListFunctionsRequest" });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           ok: S.Boolean,
-          functions: __S(97, __c12, 1),
-          response_metadata: S.optional(__S(18, __c2, 2)),
+          functions: __S(624, __c78, 0),
+          response_metadata: S.optional(__S(1000, __c125, 0)),
         }),
       ).annotate({ identifier: "ListFunctionsResponse" });
-    case 5:
+  }
+}
+function __c92(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           channel_id: S.String.pipe(T.Query()),
@@ -5479,14 +5980,18 @@ function __c15(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ListGroupsRequest" });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           ok: S.Boolean,
-          group_ids: __S(2, __c0, 2),
+          group_ids: __S(24, __c3, 0),
         }),
       ).annotate({ identifier: "ListGroupsResponse" });
-    case 7:
+  }
+}
+function __c93(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           team_id: S.optional(S.String),
@@ -5496,21 +6001,21 @@ function __c15(j: number): any {
       ).annotate({
         identifier: "ListInviteRequestsRequest",
       });
-  }
-}
-function __c16(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           ok: S.Boolean,
-          response_metadata: S.optional(__S(18, __c2, 2)),
-          invite_requests: __S(97, __c12, 1),
+          response_metadata: S.optional(__S(1000, __c125, 0)),
+          invite_requests: __S(624, __c78, 0),
         }),
       ).annotate({
         identifier: "ListInviteRequestsResponse",
       });
-    case 1:
+  }
+}
+function __c94(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           team_id: S.optional(S.String),
@@ -5520,17 +6025,21 @@ function __c16(j: number): any {
       ).annotate({
         identifier: "ListInviteRequestsApprovedRequest",
       });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           ok: S.Boolean,
-          response_metadata: S.optional(__S(18, __c2, 2)),
-          approved_requests: __S(97, __c12, 1),
+          response_metadata: S.optional(__S(1000, __c125, 0)),
+          approved_requests: __S(624, __c78, 0),
         }),
       ).annotate({
         identifier: "ListInviteRequestsApprovedResponse",
       });
-    case 3:
+  }
+}
+function __c95(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           team_id: S.optional(S.String),
@@ -5540,17 +6049,21 @@ function __c16(j: number): any {
       ).annotate({
         identifier: "ListInviteRequestsDeniedRequest",
       });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           ok: S.Boolean,
-          response_metadata: S.optional(__S(18, __c2, 2)),
-          denied_requests: __S(97, __c12, 1),
+          response_metadata: S.optional(__S(1000, __c125, 0)),
+          denied_requests: __S(624, __c78, 0),
         }),
       ).annotate({
         identifier: "ListInviteRequestsDeniedResponse",
       });
-    case 5:
+  }
+}
+function __c96(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           channel_ids: S.optional(S.String),
@@ -5568,43 +6081,47 @@ function __c16(j: number): any {
       ).annotate({
         identifier: "ListOriginalConnectedChannelInfoRequest",
       });
-    case 6:
-      return S.Array(S.String);
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
-          internal_team_ids: __S(134, __c16, 6),
+          internal_team_ids: __S(776, __c97, 0),
           original_connected_host_id: S.String,
           original_connected_channel_id: S.String,
         }),
       ).annotate({
         identifier: "ListOriginalConnectedChannelInfoResponseChannelsItem",
       });
-  }
-}
-function __c17(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(135, __c16, 7));
-    case 1:
+    case 2:
+      return S.Array(__S(769, __c96, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
           ok: S.Boolean,
-          response_metadata: S.optional(__S(18, __c2, 2)),
-          channels: __S(136, __c17, 0),
+          response_metadata: S.optional(__S(1000, __c125, 0)),
+          channels: __S(770, __c96, 2),
         }),
       ).annotate({
         identifier: "ListOriginalConnectedChannelInfoResponse",
       });
-    case 2:
+  }
+}
+function __c97(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c98(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           limit: S.optional(S.Number),
           cursor: S.optional(S.String),
         }).pipe(T.Http({ method: "POST", uri: "/admin.teams.list", code: 200 })),
       ).annotate({ identifier: "ListTeamsRequest" });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           user_id: S.String,
@@ -5613,29 +6130,33 @@ function __c17(j: number): any {
       ).annotate({
         identifier: "ListTeamsResponseTeamsItemPrimaryOwner",
       });
-    case 4:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.String,
           discoverability: S.String,
-          primary_owner: __S(139, __c17, 3),
+          primary_owner: __S(785, __c98, 1),
           team_url: S.String,
         }),
       ).annotate({
         identifier: "ListTeamsResponseTeamsItem",
       });
-    case 5:
-      return S.Array(__S(140, __c17, 4));
-    case 6:
+    case 3:
+      return S.Array(__S(786, __c98, 2));
+    case 4:
       return S.suspend(() =>
         S.Struct({
           ok: S.Boolean,
-          teams: __S(141, __c17, 5),
-          response_metadata: S.optional(__S(18, __c2, 2)),
+          teams: __S(787, __c98, 3),
+          response_metadata: S.optional(__S(1000, __c125, 0)),
         }),
       ).annotate({ identifier: "ListTeamsResponse" });
-    case 7:
+  }
+}
+function __c99(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           limit: S.optional(S.Number.pipe(T.Query())),
@@ -5643,19 +6164,19 @@ function __c17(j: number): any {
           team_id: S.String.pipe(T.Query()),
         }).pipe(T.Http({ method: "GET", uri: "/admin.teams.admins.list", code: 200 })),
       ).annotate({ identifier: "ListTeamsAdminsRequest" });
-  }
-}
-function __c18(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           ok: S.Boolean,
-          admin_ids: __S(2, __c0, 2),
-          response_metadata: S.optional(__S(18, __c2, 2)),
+          admin_ids: __S(24, __c3, 0),
+          response_metadata: S.optional(__S(1000, __c125, 0)),
         }),
       ).annotate({ identifier: "ListTeamsAdminsResponse" });
-    case 1:
+  }
+}
+function __c100(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           team_id: S.String.pipe(T.Query()),
@@ -5663,15 +6184,53 @@ function __c18(j: number): any {
           cursor: S.optional(S.String.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/admin.teams.owners.list", code: 200 })),
       ).annotate({ identifier: "ListTeamsOwnersRequest" });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           ok: S.Boolean,
-          owner_ids: __S(2, __c0, 2),
-          response_metadata: S.optional(__S(18, __c2, 2)),
+          owner_ids: __S(24, __c3, 0),
+          response_metadata: S.optional(__S(1000, __c125, 0)),
         }),
       ).annotate({ identifier: "ListTeamsOwnersResponse" });
-    case 3:
+  }
+}
+function __c101(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          users: __S(24, __c3, 0),
+        }).pipe(T.Http({ method: "POST", uri: "/admin.usergroups.addUsers", code: 200 })),
+      ).annotate({ identifier: "AddUsersRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          ok: S.Boolean,
+          error: S.optional(S.String),
+          invalid_users: S.optional(__S(817, __c102, 1)),
+        }),
+      ).annotate({ identifier: "AddUsersResponse" });
+  }
+}
+function __c102(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          user_id: S.String,
+          reason: S.String,
+        }),
+      ).annotate({
+        identifier: "AddUsersResponseInvalidUsersItem",
+      });
+    case 1:
+      return S.Array(__S(816, __c102, 0));
+  }
+}
+function __c103(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           team_id: S.optional(S.String),
@@ -5684,7 +6243,7 @@ function __c18(j: number): any {
           limit: S.optional(S.Number),
         }).pipe(T.Http({ method: "POST", uri: "/admin.users.list", code: 200 })),
       ).annotate({ identifier: "ListUsersRequest" });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
@@ -5700,9 +6259,9 @@ function __c18(j: number): any {
           is_ultra_restricted: S.Boolean,
           is_bot: S.Boolean,
           expiration_ts: S.optional(S.Number),
-          roles: S.optional(__S(2, __c0, 2)),
+          roles: S.optional(__S(24, __c3, 0)),
           last_active_ts: S.optional(S.Number),
-          workspaces: S.optional(__S(2, __c0, 2)),
+          workspaces: S.optional(__S(24, __c3, 0)),
           is_active: S.optional(S.Boolean),
           date_created: S.optional(S.Number),
           deactivated_ts: S.optional(S.Number),
@@ -5710,17 +6269,21 @@ function __c18(j: number): any {
       ).annotate({
         identifier: "ListUsersResponseUsersItem",
       });
-    case 5:
-      return S.Array(__S(148, __c18, 4));
-    case 6:
+    case 2:
+      return S.Array(__S(825, __c103, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
           ok: S.Boolean,
-          users: __S(149, __c18, 5),
-          response_metadata: S.optional(__S(18, __c2, 2)),
+          users: __S(826, __c103, 2),
+          response_metadata: S.optional(__S(1000, __c125, 0)),
         }),
       ).annotate({ identifier: "ListUsersResponse" });
-    case 7:
+  }
+}
+function __c104(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           team_id: S.optional(S.String),
@@ -5729,11 +6292,7 @@ function __c18(j: number): any {
           cursor: S.optional(S.String),
         }).pipe(T.Http({ method: "POST", uri: "/admin.users.session.list", code: 200 })),
       ).annotate({ identifier: "ListUsersSessionRequest" });
-  }
-}
-function __c19(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           device_hardware: S.optional(S.String),
@@ -5745,36 +6304,40 @@ function __c19(j: number): any {
       ).annotate({
         identifier: "ListUsersSessionResponseActiveSessionsItemRecent",
       });
-    case 1:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           user_id: S.String,
           team_id: S.String,
           session_id: S.Number,
-          recent: S.optional(__S(152, __c19, 0)),
-          created: __S(152, __c19, 0),
+          recent: S.optional(__S(833, __c104, 1)),
+          created: __S(833, __c104, 1),
         }),
       ).annotate({
         identifier: "ListUsersSessionResponseActiveSessionsItem",
       });
-    case 2:
-      return S.Array(__S(153, __c19, 1));
     case 3:
-      return S.suspend(() =>
-        S.Struct({
-          ok: S.Boolean,
-          response_metadata: S.optional(__S(18, __c2, 2)),
-          active_sessions: __S(154, __c19, 2),
-        }),
-      ).annotate({ identifier: "ListUsersSessionResponse" });
+      return S.Array(__S(834, __c104, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          app_ids: S.optional(__S(2, __c0, 2)),
-          rich_link_preview_types: S.optional(__S(50, __c6, 2)),
+          ok: S.Boolean,
+          response_metadata: S.optional(__S(1000, __c125, 0)),
+          active_sessions: __S(835, __c104, 3),
+        }),
+      ).annotate({ identifier: "ListUsersSessionResponse" });
+  }
+}
+function __c105(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          app_ids: S.optional(__S(24, __c3, 0)),
+          rich_link_preview_types: S.optional(__S(392, __c49, 0)),
         }).pipe(T.Http({ method: "POST", uri: "/admin.apps.config.lookup", code: 200 })),
       ).annotate({ identifier: "LookupAppsConfigRequest" });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           app_id: S.String,
@@ -5784,23 +6347,23 @@ function __c19(j: number): any {
       ).annotate({
         identifier: "LookupAppsConfigResponseConfigsItem",
       });
-    case 6:
-      return S.Array(__S(157, __c19, 5));
-    case 7:
+    case 2:
+      return S.Array(__S(841, __c105, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
           ok: S.Boolean,
-          configs: __S(158, __c19, 6),
+          configs: __S(842, __c105, 2),
         }),
       ).annotate({ identifier: "LookupAppsConfigResponse" });
   }
 }
-function __c20(j: number): any {
+function __c106(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          team_ids: __S(2, __c0, 2),
+          team_ids: __S(24, __c3, 0),
           max_member_count: S.optional(S.Number),
           last_message_activity_before: S.Number,
           cursor: S.optional(S.String),
@@ -5820,53 +6383,65 @@ function __c20(j: number): any {
       return S.suspend(() =>
         S.Struct({
           ok: S.Boolean,
-          channel_ids: __S(2, __c0, 2),
-          response_metadata: S.optional(__S(18, __c2, 2)),
+          channel_ids: __S(24, __c3, 0),
+          response_metadata: S.optional(__S(1000, __c125, 0)),
         }),
       ).annotate({
         identifier: "LookupConversationResponse",
       });
-    case 2:
+  }
+}
+function __c107(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          function_ids: __S(2, __c0, 2),
+          function_ids: __S(24, __c3, 0),
         }).pipe(T.Http({ method: "POST", uri: "/admin.functions.permissions.lookup", code: 200 })),
       ).annotate({
         identifier: "LookupFunctionsPermissionsRequest",
       });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           ok: S.Boolean,
-          permissions: __S(121, __c15, 1),
-          metadata: __S(121, __c15, 1),
-          errors: __S(121, __c15, 1),
+          permissions: __S(720, __c90, 0),
+          metadata: __S(720, __c90, 0),
+          errors: __S(720, __c90, 0),
         }),
       ).annotate({
         identifier: "LookupFunctionsPermissionsResponse",
       });
-    case 4:
+  }
+}
+function __c108(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          workflow_ids: __S(2, __c0, 2),
+          workflow_ids: __S(24, __c3, 0),
           max_workflow_triggers: S.optional(S.Number),
         }).pipe(T.Http({ method: "POST", uri: "/admin.workflows.permissions.lookup", code: 200 })),
       ).annotate({
         identifier: "LookupWorkflowsPermissionsRequest",
       });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           ok: S.Boolean,
-          permissions: __S(121, __c15, 1),
+          permissions: __S(720, __c90, 0),
         }),
       ).annotate({
         identifier: "LookupWorkflowsPermissionsResponse",
       });
-    case 6:
+  }
+}
+function __c109(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          trigger_type_ids: __S(134, __c16, 6),
+          trigger_type_ids: __S(776, __c97, 0),
         }).pipe(
           T.Http({
             method: "POST",
@@ -5877,40 +6452,44 @@ function __c20(j: number): any {
       ).annotate({
         identifier: "LookupWorkflowsTriggersTypesPermissionsRequest",
       });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           ok: S.Boolean,
-          permissions: __S(121, __c15, 1),
-          metadata: __S(121, __c15, 1),
+          permissions: __S(720, __c90, 0),
+          metadata: __S(720, __c90, 0),
         }),
       ).annotate({
         identifier: "LookupWorkflowsTriggersTypesPermissionsResponse",
       });
   }
 }
-function __c21(j: number): any {
+function __c110(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           app_id: S.String,
-          user_ids: S.optional(__S(2, __c0, 2)),
-          usergroup_ids: S.optional(__S(2, __c0, 2)),
-          channel_ids: S.optional(__S(2, __c0, 2)),
+          user_ids: S.optional(__S(24, __c3, 0)),
+          usergroup_ids: S.optional(__S(24, __c3, 0)),
+          channel_ids: S.optional(__S(24, __c3, 0)),
         }).pipe(T.Http({ method: "POST", uri: "/admin.apps.permissions.remove", code: 200 })),
       ).annotate({
         identifier: "RemoveAppsPermissionsRequest",
       });
-    case 1:
+  }
+}
+function __c111(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           role_id: S.String,
-          entity_ids: __S(2, __c0, 2),
-          user_ids: __S(2, __c0, 2),
+          entity_ids: __S(24, __c3, 0),
+          user_ids: __S(24, __c3, 0),
         }).pipe(T.Http({ method: "POST", uri: "/admin.roles.removeAssignments", code: 200 })),
       ).annotate({ identifier: "RemoveAssignmentsRequest" });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           ok: S.Boolean,
@@ -5919,14 +6498,35 @@ function __c21(j: number): any {
       ).annotate({
         identifier: "RemoveAssignmentsResponse",
       });
-    case 3:
+  }
+}
+function __c112(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           usergroup_id: S.String,
-          channel_ids: __S(2, __c0, 2),
+          channel_ids: __S(24, __c3, 0),
         }).pipe(T.Http({ method: "POST", uri: "/admin.usergroups.removeChannels", code: 200 })),
       ).annotate({ identifier: "RemoveChannelsRequest" });
-    case 4:
+  }
+}
+function __c113(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          workflow_ids: __S(24, __c3, 0),
+          collaborator_ids: __S(24, __c3, 0),
+        }).pipe(T.Http({ method: "POST", uri: "/admin.workflows.collaborators.add", code: 200 })),
+      ).annotate({
+        identifier: "AddWorkflowsCollaboratorRequest",
+      });
+  }
+}
+function __c114(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           channel_id: S.String,
@@ -5936,21 +6536,33 @@ function __c21(j: number): any {
       ).annotate({
         identifier: "RemoveCustomRetentionRequest",
       });
-    case 5:
+  }
+}
+function __c115(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Query()),
         }).pipe(T.Http({ method: "GET", uri: "/admin.emoji.remove", code: 200 })),
       ).annotate({ identifier: "RemoveEmojiRequest" });
-    case 6:
+  }
+}
+function __c116(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           policy_name: S.String,
           entity_type: S.Unknown,
-          entity_ids: __S(2, __c0, 2),
+          entity_ids: __S(24, __c3, 0),
         }).pipe(T.Http({ method: "POST", uri: "/admin.auth.policy.removeEntities", code: 200 })),
       ).annotate({ identifier: "RemoveEntitiesRequest" });
-    case 7:
+  }
+}
+function __c117(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           team_id: S.String.pipe(T.Query()),
@@ -5966,41 +6578,57 @@ function __c21(j: number): any {
       ).annotate({ identifier: "RemoveGroupRequest" });
   }
 }
-function __c22(j: number): any {
+function __c118(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           usergroup_id: S.String,
-          team_ids: __S(2, __c0, 2),
+          team_ids: __S(24, __c3, 0),
         }).pipe(T.Http({ method: "POST", uri: "/admin.usergroups.removeTeams", code: 200 })),
       ).annotate({ identifier: "RemoveTeamsRequest" });
-    case 1:
+  }
+}
+function __c119(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           team_id: S.String,
           user_id: S.String,
         }).pipe(T.Http({ method: "POST", uri: "/admin.users.remove", code: 200 })),
       ).annotate({ identifier: "RemoveUserRequest" });
-    case 2:
+  }
+}
+function __c120(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
-          users: __S(2, __c0, 2),
+          users: __S(24, __c3, 0),
         }).pipe(T.Http({ method: "POST", uri: "/admin.usergroups.removeUsers", code: 200 })),
       ).annotate({ identifier: "RemoveUsersRequest" });
-    case 3:
+  }
+}
+function __c121(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          workflow_ids: __S(2, __c0, 2),
-          collaborator_ids: __S(2, __c0, 2),
+          workflow_ids: __S(24, __c3, 0),
+          collaborator_ids: __S(24, __c3, 0),
         }).pipe(
           T.Http({ method: "POST", uri: "/admin.workflows.collaborators.remove", code: 200 }),
         ),
       ).annotate({
         identifier: "RemoveWorkflowsCollaboratorRequest",
       });
-    case 4:
+  }
+}
+function __c122(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           channel_id: S.String,
@@ -6009,22 +6637,72 @@ function __c22(j: number): any {
       ).annotate({
         identifier: "RenameConversationRequest",
       });
-    case 5:
+  }
+}
+function __c123(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Query()),
           new_name: S.String.pipe(T.Query()),
         }).pipe(T.Http({ method: "GET", uri: "/admin.emoji.rename", code: 200 })),
       ).annotate({ identifier: "RenameEmojiRequest" });
-    case 6:
+  }
+}
+function __c124(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          user_ids: __S(2, __c0, 2),
+          channel: S.String.pipe(T.Query()),
+          oldest_ts: S.optional(S.String.pipe(T.Query())),
+          latest_ts: S.optional(S.String.pipe(T.Query())),
+          cursor: S.optional(S.String.pipe(T.Query())),
+          limit: S.optional(S.Number.pipe(T.Query())),
+        }).pipe(T.Http({ method: "GET", uri: "/admin.analytics.messages.activity", code: 200 })),
+      ).annotate({
+        identifier: "AnalyticsMessagesActivityRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          ok: S.Boolean,
+          response_metadata: S.optional(__S(1000, __c125, 0)),
+          message_activities: S.Unknown,
+        }),
+      ).annotate({
+        identifier: "AnalyticsMessagesActivityResponse",
+      });
+  }
+}
+function __c125(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          next_cursor: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "AnalyticsMessagesActivityResponseResponseMetadata",
+      });
+  }
+}
+function __c126(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          user_ids: __S(24, __c3, 0),
           mobile_only: S.optional(S.Boolean),
           web_only: S.optional(S.Boolean),
         }).pipe(T.Http({ method: "POST", uri: "/admin.users.session.resetBulk", code: 200 })),
       ).annotate({ identifier: "ResetBulkRequest" });
-    case 7:
+  }
+}
+function __c127(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           user_id: S.String,
@@ -6034,17 +6712,17 @@ function __c22(j: number): any {
       ).annotate({ identifier: "ResetUsersSessionRequest" });
   }
 }
-function __c23(j: number): any {
+function __c128(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          team_ids: S.optional(__S(2, __c0, 2)),
-          connected_team_ids: S.optional(__S(2, __c0, 2)),
+          team_ids: S.optional(__S(24, __c3, 0)),
+          connected_team_ids: S.optional(__S(24, __c3, 0)),
           query: S.optional(S.String),
           limit: S.optional(S.Number),
           cursor: S.optional(S.String),
-          search_channel_types: S.optional(__S(2, __c0, 2)),
+          search_channel_types: S.optional(__S(24, __c3, 0)),
           sort: S.optional(S.String),
           sort_dir: S.optional(S.String),
           total_count_only: S.optional(S.Boolean),
@@ -6056,16 +6734,20 @@ function __c23(j: number): any {
       return S.suspend(() =>
         S.Struct({
           ok: S.Boolean,
-          conversations: __S(2, __c0, 2),
+          conversations: __S(24, __c3, 0),
           next_cursor: S.String,
           total_count: S.Number,
           error: S.optional(S.String),
-          response_metadata: S.optional(__S(18, __c2, 2)),
+          response_metadata: S.optional(__S(1000, __c125, 0)),
         }),
       ).annotate({
         identifier: "SearchConversationResponse",
       });
-    case 2:
+  }
+}
+function __c129(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           query: S.optional(S.String),
@@ -6073,7 +6755,7 @@ function __c23(j: number): any {
           cursor: S.optional(S.String),
           limit: S.optional(S.Number),
           no_collaborators: S.optional(S.Boolean),
-          collaborator_ids: S.optional(__S(2, __c0, 2)),
+          collaborator_ids: S.optional(__S(24, __c3, 0)),
           num_trigger_ids: S.optional(S.Number),
           is_sales_elevate: S.optional(S.Boolean),
           source: S.optional(S.String),
@@ -6081,51 +6763,63 @@ function __c23(j: number): any {
           sort_dir: S.optional(S.String),
           trigger_type_id: S.optional(S.String),
           publish_status: S.optional(S.String),
-          step_function_ids: S.optional(__S(2, __c0, 2)),
+          step_function_ids: S.optional(__S(24, __c3, 0)),
         }).pipe(T.Http({ method: "POST", uri: "/admin.workflows.search", code: 200 })),
       ).annotate({ identifier: "SearchWorkflowRequest" });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           ok: S.Boolean,
-          workflows: __S(97, __c12, 1),
-          response_metadata: S.optional(__S(18, __c2, 2)),
+          workflows: __S(624, __c78, 0),
+          response_metadata: S.optional(__S(1000, __c125, 0)),
           total_found: S.Number,
         }),
       ).annotate({ identifier: "SearchWorkflowResponse" });
-    case 4:
+  }
+}
+function __c130(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           team_id: S.String,
           user_id: S.String,
         }).pipe(T.Http({ method: "POST", uri: "/admin.users.setAdmin", code: 200 })),
       ).annotate({ identifier: "SetAdminRequest" });
-    case 5:
+  }
+}
+function __c131(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          urls: S.optional(__S(2, __c0, 2)),
-          emails: S.optional(__S(2, __c0, 2)),
+          urls: S.optional(__S(24, __c3, 0)),
+          emails: S.optional(__S(24, __c3, 0)),
         }),
       ).annotate({
         identifier: "SetAppsConfigRequestDomainRestrictions",
       });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           app_id: S.String,
           workflow_auth_strategy: S.optional(S.String),
           rich_link_preview_type: S.optional(S.String),
-          domain_restrictions: S.optional(__S(189, __c23, 5)),
+          domain_restrictions: S.optional(__S(1048, __c131, 0)),
         }).pipe(T.Http({ method: "POST", uri: "/admin.apps.config.set", code: 200 })),
       ).annotate({ identifier: "SetAppsConfigRequest" });
-    case 7:
+  }
+}
+function __c132(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           app_id: S.String,
           server_id: S.String,
           permission_type: S.String,
-          user_ids: S.optional(__S(2, __c0, 2)),
-          usergroup_ids: S.optional(__S(2, __c0, 2)),
+          user_ids: S.optional(__S(24, __c3, 0)),
+          usergroup_ids: S.optional(__S(24, __c3, 0)),
         }).pipe(
           T.Http({ method: "POST", uri: "/admin.apps.mcp.servers.permissions.set", code: 200 }),
         ),
@@ -6134,22 +6828,26 @@ function __c23(j: number): any {
       });
   }
 }
-function __c24(j: number): any {
+function __c133(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           app_id: S.String,
           permission_type: S.String,
-          user_ids: S.optional(__S(2, __c0, 2)),
-          usergroup_ids: S.optional(__S(2, __c0, 2)),
+          user_ids: S.optional(__S(24, __c3, 0)),
+          usergroup_ids: S.optional(__S(24, __c3, 0)),
           channel_restriction_mode: S.optional(S.String),
-          channel_ids: S.optional(__S(2, __c0, 2)),
+          channel_ids: S.optional(__S(24, __c3, 0)),
         }).pipe(T.Http({ method: "POST", uri: "/admin.apps.permissions.set", code: 200 })),
       ).annotate({
         identifier: "SetAppsPermissionsRequest",
       });
-    case 1:
+  }
+}
+function __c134(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           channel_id: S.String,
@@ -6160,7 +6858,11 @@ function __c24(j: number): any {
       ).annotate({
         identifier: "SetConversationPrefsRequest",
       });
-    case 2:
+  }
+}
+function __c135(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           channel_id: S.String,
@@ -6171,283 +6873,8 @@ function __c24(j: number): any {
       ).annotate({
         identifier: "SetCustomRetentionRequest",
       });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          team_id: S.String.pipe(T.Query()),
-          channel_ids: __S(2, __c0, 2).pipe(T.Query()),
-        }).pipe(
-          T.Http({ method: "GET", uri: "/admin.teams.settings.setDefaultChannels", code: 200 }),
-        ),
-      ).annotate({
-        identifier: "SetDefaultChannelsRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          team_id: S.String,
-          description: S.String,
-        }).pipe(T.Http({ method: "POST", uri: "/admin.teams.settings.setDescription", code: 200 })),
-      ).annotate({ identifier: "SetDescriptionRequest" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          team_id: S.String,
-          discoverability: S.String,
-        }).pipe(
-          T.Http({ method: "POST", uri: "/admin.teams.settings.setDiscoverability", code: 200 }),
-        ),
-      ).annotate({
-        identifier: "SetDiscoverabilityRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          team_id: S.optional(S.String),
-          user_id: S.String,
-          expiration_ts: S.Number,
-        }).pipe(T.Http({ method: "POST", uri: "/admin.users.setExpiration", code: 200 })),
-      ).annotate({ identifier: "SetExpirationRequest" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          visibility: S.String,
-          permission_type: S.String,
-          user_ids: S.optional(__S(2, __c0, 2)),
-        }),
-      ).annotate({
-        identifier: "SetFunctionsPermissionsRequestPermissionsItem",
-      });
   }
 }
-function __c25(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(199, __c24, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          function_id: S.String,
-          visibility: S.optional(S.String),
-          user_ids: S.optional(__S(2, __c0, 2)),
-          permissions: S.optional(__S(200, __c25, 0)),
-        }).pipe(T.Http({ method: "POST", uri: "/admin.functions.permissions.set", code: 200 })),
-      ).annotate({
-        identifier: "SetFunctionsPermissionsRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          image_url: S.String.pipe(T.Query()),
-          team_id: S.String.pipe(T.Query()),
-        }).pipe(T.Http({ method: "GET", uri: "/admin.teams.settings.setIcon", code: 200 })),
-      ).annotate({ identifier: "SetIconRequest" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          team_id: S.String,
-          name: S.String,
-        }).pipe(T.Http({ method: "POST", uri: "/admin.teams.settings.setName", code: 200 })),
-      ).annotate({ identifier: "SetNameRequest" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          team_id: S.String,
-          user_id: S.String,
-        }).pipe(T.Http({ method: "POST", uri: "/admin.users.setOwner", code: 200 })),
-      ).annotate({ identifier: "SetOwnerRequest" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          team_id: S.String,
-          user_id: S.String,
-        }).pipe(T.Http({ method: "POST", uri: "/admin.users.setRegular", code: 200 })),
-      ).annotate({ identifier: "SetRegularRequest" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          user_ids: __S(2, __c0, 2),
-          duration: S.optional(S.Number),
-          desktop_app_browser_quit: S.optional(S.Boolean),
-        }).pipe(T.Http({ method: "POST", uri: "/admin.users.session.setSettings", code: 200 })),
-      ).annotate({ identifier: "SetSettingsRequest" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          channel_id: S.String,
-          team_id: S.optional(S.String),
-          target_team_ids: S.optional(__S(2, __c0, 2)),
-          org_channel: S.optional(S.Boolean),
-        }).pipe(T.Http({ method: "POST", uri: "/admin.conversations.setTeams", code: 200 })),
-      ).annotate({ identifier: "SetTeamsRequest" });
-  }
-}
-function __c26(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          ok: S.Boolean,
-          channel: S.String,
-        }),
-      ).annotate({ identifier: "SetTeamsResponse" });
-    case 1:
-      return S.Record(S.String, S.Unknown);
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          permissions: S.optional(__S(209, __c26, 1)),
-        }),
-      ).annotate({
-        identifier: "SetWorkflowsTriggersTypesPermissionsRequestPermissions",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String,
-          visibility: S.optional(S.String),
-          user_ids: S.optional(__S(2, __c0, 2)),
-          permissions: S.optional(__S(210, __c26, 2)),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/admin.workflows.triggers.types.permissions.set",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "SetWorkflowsTriggersTypesPermissionsRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          team_id: S.String,
-        }).pipe(T.Http({ method: "POST", uri: "/admin.teams.settings.info", code: 200 })),
-      ).annotate({ identifier: "TeamsSettingsInfoRequest" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          domain: S.optional(S.String),
-          email_domain: S.optional(S.String),
-          icon: S.optional(S.Unknown),
-          enterprise_id: S.optional(S.String),
-          enterprise_name: S.optional(S.String),
-          default_channels: S.optional(__S(97, __c12, 1)),
-        }),
-      ).annotate({
-        identifier: "TeamsSettingsInfoResponseTeamItem",
-      });
-    case 6:
-      return S.Array(__S(213, __c26, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          ok: S.Boolean,
-          team: __S(214, __c26, 6),
-        }),
-      ).annotate({
-        identifier: "TeamsSettingsInfoResponse",
-      });
-  }
-}
-function __c27(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          channel_id: S.String,
-        }).pipe(T.Http({ method: "POST", uri: "/admin.conversations.unarchive", code: 200 })),
-      ).annotate({
-        identifier: "UnarchiveConversationRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          app_id: S.String,
-          team_ids: S.optional(S.String),
-          enterprise_id: S.optional(S.String),
-        }).pipe(T.Http({ method: "POST", uri: "/admin.apps.uninstall", code: 200 })),
-      ).annotate({ identifier: "UninstallAppRequest" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          channel: S.String,
-          new_name: S.String,
-        }).pipe(T.Http({ method: "POST", uri: "/admin.conversations.unlinkObjects", code: 200 })),
-      ).annotate({ identifier: "UnlinkObjectsRequest" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          workflow_ids: __S(2, __c0, 2),
-        }).pipe(T.Http({ method: "POST", uri: "/admin.workflows.unpublish", code: 200 })),
-      ).annotate({ identifier: "UnpublishWorkflowRequest" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          barrier_id: S.String,
-          primary_usergroup_id: S.String,
-          barriered_from_usergroup_ids: __S(2, __c0, 2),
-          restricted_subjects: __S(50, __c6, 2),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/admin.barriers.update",
-            code: 200,
-            contentType: "form-urlencoded",
-          }),
-        ),
-      ).annotate({ identifier: "UpdateBarrierRequest" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          trusted_cidr: S.optional(__S(2, __c0, 2)),
-          trusted_asns: S.optional(__S(83, __c10, 3)),
-        }).pipe(
-          T.Http({ method: "POST", uri: "/admin.audit.anomaly.allow.updateItem", code: 200 }),
-        ),
-      ).annotate({ identifier: "UpdateItemRequest" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String,
-          name: S.optional(S.String),
-          handle: S.optional(S.String),
-          description: S.optional(S.String),
-          is_visible: S.optional(S.Boolean),
-        }).pipe(T.Http({ method: "POST", uri: "/admin.usergroups.update", code: 200 })),
-      ).annotate({ identifier: "UpdateUsergroupRequest" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          ok: S.Boolean,
-          subteam: S.optional(S.Unknown),
-          channel_limit_user_ids: S.optional(__S(2, __c0, 2)),
-        }),
-      ).annotate({ identifier: "UpdateUsergroupResponse" });
-  }
-}
-function __c28(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String,
-          file: S.optional(S.Unknown),
-        }).pipe(T.Http({ method: "POST", uri: "/admin.usergroups.uploadUsers", code: 200 })),
-      ).annotate({ identifier: "UploadUsersRequest" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          ok: S.Boolean,
-          successful_user_count: S.Number,
-          invalid_users: S.optional(__S(14, __c1, 6)),
-        }),
-      ).annotate({ identifier: "UploadUsersResponse" });
-  }
-}
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

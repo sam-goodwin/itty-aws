@@ -116,8 +116,8 @@ export const createWebAnalyticsContentAutopilotProfile: API.OperationMethod<
   CreateWebAnalyticsContentAutopilotProfileError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2, __c0, 2) as any as S.Schema<CreateWebAnalyticsContentAutopilotProfileRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<ContentAutopilotSiteProfile>,
+  input: __S(0, __c0, 0) as any as S.Schema<CreateWebAnalyticsContentAutopilotProfileRequest>,
+  output: __S(5, __c1, 1) as any as S.Schema<ContentAutopilotSiteProfile>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -130,8 +130,8 @@ export const getWebAnalyticsContentAutopilotProfile: API.OperationMethod<
   GetWebAnalyticsContentAutopilotProfileError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(4, __c0, 4) as any as S.Schema<GetWebAnalyticsContentAutopilotProfileRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<ContentAutopilotSiteProfile>,
+  input: __S(12, __c3, 0) as any as S.Schema<GetWebAnalyticsContentAutopilotProfileRequest>,
+  output: __S(5, __c1, 1) as any as S.Schema<ContentAutopilotSiteProfile>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -144,8 +144,8 @@ export const listWebAnalyticsContentAutopilotProfiles: API.OperationMethod<
   ListWebAnalyticsContentAutopilotProfilesError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(5, __c0, 5) as any as S.Schema<ListWebAnalyticsContentAutopilotProfilesRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<PaginatedContentAutopilotSiteProfileList>,
+  input: __S(16, __c4, 0) as any as S.Schema<ListWebAnalyticsContentAutopilotProfilesRequest>,
+  output: __S(18, __c4, 2) as any as S.Schema<PaginatedContentAutopilotSiteProfileList>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -159,11 +159,11 @@ export const updateWebAnalyticsContentAutopilotProfilesPartial: API.OperationMet
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    8,
-    __c1,
+    20,
+    __c5,
     0,
   ) as any as S.Schema<UpdateWebAnalyticsContentAutopilotProfilesPartialRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<ContentAutopilotSiteProfile>,
+  output: __S(5, __c1, 1) as any as S.Schema<ContentAutopilotSiteProfile>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -176,8 +176,8 @@ export const webAnalyticsContentAutopilotProfilesDestroy: API.OperationMethod<
   WebAnalyticsContentAutopilotProfilesDestroyError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(9, __c1, 1) as any as S.Schema<WebAnalyticsContentAutopilotProfilesDestroyRequest>,
-  output: __S(10, __c1, 2) as any as S.Schema<WebAnalyticsContentAutopilotProfilesDestroyResponse>,
+  input: __S(24, __c6, 0) as any as S.Schema<WebAnalyticsContentAutopilotProfilesDestroyRequest>,
+  output: __S(25, __c6, 1) as any as S.Schema<WebAnalyticsContentAutopilotProfilesDestroyResponse>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -187,18 +187,14 @@ export const webAnalyticsContentAutopilotProfilesDestroy: API.OperationMethod<
 function __c0(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(S.String);
-    case 1:
-      return S.Array(S.String);
-    case 2:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
           name: S.optional(S.String),
           domain: S.String,
-          source_urls: __S(0, __c0, 0),
-          content_boundaries: __S(1, __c0, 1),
-          brand_rules: __S(0, __c0, 0),
+          source_urls: __S(4, __c1, 0),
+          content_boundaries: __S(8, __c2, 0),
+          brand_rules: __S(4, __c1, 0),
           search_console_enabled: S.optional(S.Boolean),
         }).pipe(
           T.Http({
@@ -210,15 +206,21 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "CreateWebAnalyticsContentAutopilotProfileRequest",
       });
-    case 3:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
           name: S.optional(S.String),
           domain: S.String,
-          source_urls: __S(0, __c0, 0),
-          content_boundaries: __S(0, __c0, 0),
-          brand_rules: __S(0, __c0, 0),
+          source_urls: __S(4, __c1, 0),
+          content_boundaries: __S(4, __c1, 0),
+          brand_rules: __S(4, __c1, 0),
           search_console_enabled: S.optional(S.Boolean),
           created_at: S.String,
           updated_at: S.String,
@@ -226,7 +228,17 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "ContentAutopilotSiteProfile",
       });
-    case 4:
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -241,7 +253,11 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "GetWebAnalyticsContentAutopilotProfileRequest",
       });
-    case 5:
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -257,22 +273,22 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "ListWebAnalyticsContentAutopilotProfilesRequest",
       });
-    case 6:
-      return S.Array(__S(3, __c0, 3));
-    case 7:
+    case 1:
+      return S.Array(__S(5, __c1, 1));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           count: S.Number,
           next: S.optional(S.NullOr(S.String)),
           previous: S.optional(S.NullOr(S.String)),
-          results: __S(6, __c0, 6),
+          results: __S(17, __c4, 1),
         }),
       ).annotate({
         identifier: "PaginatedContentAutopilotSiteProfileList",
       });
   }
 }
-function __c1(j: number): any {
+function __c5(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -281,9 +297,9 @@ function __c1(j: number): any {
           id: S.String.pipe(T.Label()),
           name: S.optional(S.String),
           domain: S.optional(S.String),
-          source_urls: S.optional(__S(1, __c0, 1)),
-          content_boundaries: S.optional(__S(1, __c0, 1)),
-          brand_rules: S.optional(__S(1, __c0, 1)),
+          source_urls: S.optional(__S(8, __c2, 0)),
+          content_boundaries: S.optional(__S(8, __c2, 0)),
+          brand_rules: S.optional(__S(8, __c2, 0)),
           search_console_enabled: S.optional(S.Boolean),
         }).pipe(
           T.Http({
@@ -295,7 +311,11 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "UpdateWebAnalyticsContentAutopilotProfilesPartialRequest",
       });
-    case 1:
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -310,13 +330,12 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "WebAnalyticsContentAutopilotProfilesDestroyRequest",
       });
-    case 2:
+    case 1:
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "WebAnalyticsContentAutopilotProfilesDestroyResponse",
       });
   }
 }
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

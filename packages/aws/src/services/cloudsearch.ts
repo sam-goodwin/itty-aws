@@ -662,8 +662,8 @@ export const buildSuggesters: API.OperationMethod<
   BuildSuggestersError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(0, __c0, 0) as any as S.Schema<BuildSuggestersRequest>,
-  output: __S(2, __c0, 2) as any as S.Schema<BuildSuggestersResponse>,
+  input: __S(544, __c34, 0) as any as S.Schema<BuildSuggestersRequest>,
+  output: __S(545, __c34, 1) as any as S.Schema<BuildSuggestersResponse>,
   errors: [BaseException, InternalException, ResourceNotFoundException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -687,8 +687,8 @@ export const createDomain: API.OperationMethod<
   CreateDomainError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3, __c0, 3) as any as S.Schema<CreateDomainRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<CreateDomainResponse>,
+  input: __S(576, __c36, 0) as any as S.Schema<CreateDomainRequest>,
+  output: __S(577, __c36, 1) as any as S.Schema<CreateDomainResponse>,
   errors: [
     BaseException,
     InternalException,
@@ -718,8 +718,8 @@ export const defineAnalysisScheme: API.OperationMethod<
   DefineAnalysisSchemeError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(10, __c1, 2) as any as S.Schema<DefineAnalysisSchemeRequest>,
-  output: __S(13, __c1, 5) as any as S.Schema<DefineAnalysisSchemeResponse>,
+  input: __S(0, __c0, 0) as any as S.Schema<DefineAnalysisSchemeRequest>,
+  output: __S(1, __c0, 1) as any as S.Schema<DefineAnalysisSchemeResponse>,
   errors: [
     BaseException,
     InternalException,
@@ -750,8 +750,8 @@ export const defineExpression: API.OperationMethod<
   DefineExpressionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(15, __c1, 7) as any as S.Schema<DefineExpressionRequest>,
-  output: __S(17, __c2, 1) as any as S.Schema<DefineExpressionResponse>,
+  input: __S(48, __c3, 0) as any as S.Schema<DefineExpressionRequest>,
+  output: __S(49, __c3, 1) as any as S.Schema<DefineExpressionResponse>,
   errors: [
     BaseException,
     InternalException,
@@ -782,8 +782,8 @@ export const defineIndexField: API.OperationMethod<
   DefineIndexFieldError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(30, __c3, 6) as any as S.Schema<DefineIndexFieldRequest>,
-  output: __S(32, __c4, 0) as any as S.Schema<DefineIndexFieldResponse>,
+  input: __S(80, __c5, 0) as any as S.Schema<DefineIndexFieldRequest>,
+  output: __S(81, __c5, 1) as any as S.Schema<DefineIndexFieldResponse>,
   errors: [
     BaseException,
     InternalException,
@@ -814,8 +814,8 @@ export const defineSuggester: API.OperationMethod<
   DefineSuggesterError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(35, __c4, 3) as any as S.Schema<DefineSuggesterRequest>,
-  output: __S(37, __c4, 5) as any as S.Schema<DefineSuggesterResponse>,
+  input: __S(112, __c7, 0) as any as S.Schema<DefineSuggesterRequest>,
+  output: __S(113, __c7, 1) as any as S.Schema<DefineSuggesterResponse>,
   errors: [
     BaseException,
     InternalException,
@@ -845,8 +845,8 @@ export const deleteAnalysisScheme: API.OperationMethod<
   DeleteAnalysisSchemeError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(38, __c4, 6) as any as S.Schema<DeleteAnalysisSchemeRequest>,
-  output: __S(39, __c4, 7) as any as S.Schema<DeleteAnalysisSchemeResponse>,
+  input: __S(144, __c9, 0) as any as S.Schema<DeleteAnalysisSchemeRequest>,
+  output: __S(145, __c9, 1) as any as S.Schema<DeleteAnalysisSchemeResponse>,
   errors: [
     BaseException,
     InternalException,
@@ -870,8 +870,8 @@ export const deleteDomain: API.OperationMethod<
   DeleteDomainError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(40, __c5, 0) as any as S.Schema<DeleteDomainRequest>,
-  output: __S(41, __c5, 1) as any as S.Schema<DeleteDomainResponse>,
+  input: __S(160, __c10, 0) as any as S.Schema<DeleteDomainRequest>,
+  output: __S(161, __c10, 1) as any as S.Schema<DeleteDomainResponse>,
   errors: [BaseException, InternalException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -894,8 +894,8 @@ export const deleteExpression: API.OperationMethod<
   DeleteExpressionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(42, __c5, 2) as any as S.Schema<DeleteExpressionRequest>,
-  output: __S(43, __c5, 3) as any as S.Schema<DeleteExpressionResponse>,
+  input: __S(176, __c11, 0) as any as S.Schema<DeleteExpressionRequest>,
+  output: __S(177, __c11, 1) as any as S.Schema<DeleteExpressionResponse>,
   errors: [
     BaseException,
     InternalException,
@@ -924,8 +924,8 @@ export const deleteIndexField: API.OperationMethod<
   DeleteIndexFieldError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(44, __c5, 4) as any as S.Schema<DeleteIndexFieldRequest>,
-  output: __S(45, __c5, 5) as any as S.Schema<DeleteIndexFieldResponse>,
+  input: __S(192, __c12, 0) as any as S.Schema<DeleteIndexFieldRequest>,
+  output: __S(193, __c12, 1) as any as S.Schema<DeleteIndexFieldResponse>,
   errors: [
     BaseException,
     InternalException,
@@ -954,8 +954,8 @@ export const deleteSuggester: API.OperationMethod<
   DeleteSuggesterError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(46, __c5, 6) as any as S.Schema<DeleteSuggesterRequest>,
-  output: __S(47, __c5, 7) as any as S.Schema<DeleteSuggesterResponse>,
+  input: __S(208, __c13, 0) as any as S.Schema<DeleteSuggesterRequest>,
+  output: __S(209, __c13, 1) as any as S.Schema<DeleteSuggesterResponse>,
   errors: [
     BaseException,
     InternalException,
@@ -982,8 +982,8 @@ export const describeAnalysisSchemes: API.OperationMethod<
   DescribeAnalysisSchemesError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(49, __c6, 1) as any as S.Schema<DescribeAnalysisSchemesRequest>,
-  output: __S(51, __c6, 3) as any as S.Schema<DescribeAnalysisSchemesResponse>,
+  input: __S(224, __c14, 0) as any as S.Schema<DescribeAnalysisSchemesRequest>,
+  output: __S(226, __c14, 2) as any as S.Schema<DescribeAnalysisSchemesResponse>,
   errors: [BaseException, InternalException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1007,8 +1007,8 @@ export const describeAvailabilityOptions: API.OperationMethod<
   DescribeAvailabilityOptionsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(52, __c6, 4) as any as S.Schema<DescribeAvailabilityOptionsRequest>,
-  output: __S(54, __c6, 6) as any as S.Schema<DescribeAvailabilityOptionsResponse>,
+  input: __S(256, __c16, 0) as any as S.Schema<DescribeAvailabilityOptionsRequest>,
+  output: __S(257, __c16, 1) as any as S.Schema<DescribeAvailabilityOptionsResponse>,
   errors: [
     BaseException,
     DisabledOperationException,
@@ -1038,8 +1038,8 @@ export const describeDomainEndpointOptions: API.OperationMethod<
   DescribeDomainEndpointOptionsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(55, __c6, 7) as any as S.Schema<DescribeDomainEndpointOptionsRequest>,
-  output: __S(58, __c7, 2) as any as S.Schema<DescribeDomainEndpointOptionsResponse>,
+  input: __S(288, __c18, 0) as any as S.Schema<DescribeDomainEndpointOptionsRequest>,
+  output: __S(289, __c18, 1) as any as S.Schema<DescribeDomainEndpointOptionsResponse>,
   errors: [
     BaseException,
     DisabledOperationException,
@@ -1064,8 +1064,8 @@ export const describeDomains: API.OperationMethod<
   DescribeDomainsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(60, __c7, 4) as any as S.Schema<DescribeDomainsRequest>,
-  output: __S(62, __c7, 6) as any as S.Schema<DescribeDomainsResponse>,
+  input: __S(321, __c20, 1) as any as S.Schema<DescribeDomainsRequest>,
+  output: __S(323, __c20, 3) as any as S.Schema<DescribeDomainsResponse>,
   errors: [BaseException, InternalException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1086,8 +1086,8 @@ export const describeExpressions: API.OperationMethod<
   DescribeExpressionsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(63, __c7, 7) as any as S.Schema<DescribeExpressionsRequest>,
-  output: __S(65, __c8, 1) as any as S.Schema<DescribeExpressionsResponse>,
+  input: __S(336, __c21, 0) as any as S.Schema<DescribeExpressionsRequest>,
+  output: __S(338, __c21, 2) as any as S.Schema<DescribeExpressionsResponse>,
   errors: [BaseException, InternalException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1110,8 +1110,8 @@ export const describeIndexFields: API.OperationMethod<
   DescribeIndexFieldsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(67, __c8, 3) as any as S.Schema<DescribeIndexFieldsRequest>,
-  output: __S(69, __c8, 5) as any as S.Schema<DescribeIndexFieldsResponse>,
+  input: __S(353, __c22, 1) as any as S.Schema<DescribeIndexFieldsRequest>,
+  output: __S(355, __c22, 3) as any as S.Schema<DescribeIndexFieldsResponse>,
   errors: [BaseException, InternalException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1132,8 +1132,8 @@ export const describeScalingParameters: API.OperationMethod<
   DescribeScalingParametersError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(70, __c8, 6) as any as S.Schema<DescribeScalingParametersRequest>,
-  output: __S(73, __c9, 1) as any as S.Schema<DescribeScalingParametersResponse>,
+  input: __S(368, __c23, 0) as any as S.Schema<DescribeScalingParametersRequest>,
+  output: __S(369, __c23, 1) as any as S.Schema<DescribeScalingParametersResponse>,
   errors: [BaseException, InternalException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1155,8 +1155,8 @@ export const describeServiceAccessPolicies: API.OperationMethod<
   DescribeServiceAccessPoliciesError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(74, __c9, 2) as any as S.Schema<DescribeServiceAccessPoliciesRequest>,
-  output: __S(76, __c9, 4) as any as S.Schema<DescribeServiceAccessPoliciesResponse>,
+  input: __S(400, __c25, 0) as any as S.Schema<DescribeServiceAccessPoliciesRequest>,
+  output: __S(401, __c25, 1) as any as S.Schema<DescribeServiceAccessPoliciesResponse>,
   errors: [BaseException, InternalException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1177,8 +1177,8 @@ export const describeSuggesters: API.OperationMethod<
   DescribeSuggestersError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(77, __c9, 5) as any as S.Schema<DescribeSuggestersRequest>,
-  output: __S(79, __c9, 7) as any as S.Schema<DescribeSuggestersResponse>,
+  input: __S(432, __c27, 0) as any as S.Schema<DescribeSuggestersRequest>,
+  output: __S(434, __c27, 2) as any as S.Schema<DescribeSuggestersResponse>,
   errors: [BaseException, InternalException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1200,8 +1200,8 @@ export const indexDocuments: API.OperationMethod<
   IndexDocumentsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(80, __c10, 0) as any as S.Schema<IndexDocumentsRequest>,
-  output: __S(81, __c10, 1) as any as S.Schema<IndexDocumentsResponse>,
+  input: __S(448, __c28, 0) as any as S.Schema<IndexDocumentsRequest>,
+  output: __S(449, __c28, 1) as any as S.Schema<IndexDocumentsResponse>,
   errors: [BaseException, InternalException, ResourceNotFoundException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1218,8 +1218,8 @@ export const listDomainNames: API.OperationMethod<
   ListDomainNamesError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(82, __c10, 2) as any as S.Schema<ListDomainNamesRequest>,
-  output: __S(84, __c10, 4) as any as S.Schema<ListDomainNamesResponse>,
+  input: __S(464, __c29, 0) as any as S.Schema<ListDomainNamesRequest>,
+  output: __S(466, __c29, 2) as any as S.Schema<ListDomainNamesResponse>,
   errors: [BaseException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1244,8 +1244,8 @@ export const updateAvailabilityOptions: API.OperationMethod<
   UpdateAvailabilityOptionsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(85, __c10, 5) as any as S.Schema<UpdateAvailabilityOptionsRequest>,
-  output: __S(86, __c10, 6) as any as S.Schema<UpdateAvailabilityOptionsResponse>,
+  input: __S(480, __c30, 0) as any as S.Schema<UpdateAvailabilityOptionsRequest>,
+  output: __S(481, __c30, 1) as any as S.Schema<UpdateAvailabilityOptionsResponse>,
   errors: [
     BaseException,
     DisabledOperationException,
@@ -1278,8 +1278,8 @@ export const updateDomainEndpointOptions: API.OperationMethod<
   UpdateDomainEndpointOptionsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(87, __c10, 7) as any as S.Schema<UpdateDomainEndpointOptionsRequest>,
-  output: __S(88, __c11, 0) as any as S.Schema<UpdateDomainEndpointOptionsResponse>,
+  input: __S(496, __c31, 0) as any as S.Schema<UpdateDomainEndpointOptionsRequest>,
+  output: __S(497, __c31, 1) as any as S.Schema<UpdateDomainEndpointOptionsResponse>,
   errors: [
     BaseException,
     DisabledOperationException,
@@ -1311,8 +1311,8 @@ export const updateScalingParameters: API.OperationMethod<
   UpdateScalingParametersError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(89, __c11, 1) as any as S.Schema<UpdateScalingParametersRequest>,
-  output: __S(90, __c11, 2) as any as S.Schema<UpdateScalingParametersResponse>,
+  input: __S(512, __c32, 0) as any as S.Schema<UpdateScalingParametersRequest>,
+  output: __S(513, __c32, 1) as any as S.Schema<UpdateScalingParametersResponse>,
   errors: [
     BaseException,
     InternalException,
@@ -1345,8 +1345,8 @@ export const updateServiceAccessPolicies: API.OperationMethod<
   UpdateServiceAccessPoliciesError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(91, __c11, 3) as any as S.Schema<UpdateServiceAccessPoliciesRequest>,
-  output: __S(92, __c11, 4) as any as S.Schema<UpdateServiceAccessPoliciesResponse>,
+  input: __S(528, __c33, 0) as any as S.Schema<UpdateServiceAccessPoliciesRequest>,
+  output: __S(529, __c33, 1) as any as S.Schema<UpdateServiceAccessPoliciesResponse>,
   errors: [
     BaseException,
     InternalException,
@@ -1365,55 +1365,33 @@ function __c0(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({ DomainName: S.String }).pipe(
+        S.Struct({ DomainName: S.String, AnalysisScheme: __S(33, __c2, 1) }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({ identifier: "BuildSuggestersRequest" });
-    case 1:
-      return S.Array(S.String);
-    case 2:
-      return S.suspend(() =>
-        S.Struct({ FieldNames: S.optional(__S(1, __c0, 1)) }).pipe(ns),
-      ).annotate({ identifier: "BuildSuggestersResponse" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({ DomainName: S.String }).pipe(
-          T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-        ),
-      ).annotate({ identifier: "CreateDomainRequest" });
-    case 4:
-      return S.suspend(() => S.Struct({ Endpoint: S.optional(S.String) })).annotate({
-        identifier: "ServiceEndpoint",
+      ).annotate({
+        identifier: "DefineAnalysisSchemeRequest",
       });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({ MaximumReplicationCount: S.Number, MaximumPartitionCount: S.Number }),
-      ).annotate({ identifier: "Limits" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          DomainId: S.String,
-          DomainName: S.String,
-          ARN: S.optional(S.String),
-          Created: S.optional(S.Boolean),
-          Deleted: S.optional(S.Boolean),
-          DocService: S.optional(__S(4, __c0, 4)),
-          SearchService: S.optional(__S(4, __c0, 4)),
-          RequiresIndexDocuments: S.Boolean,
-          Processing: S.optional(S.Boolean),
-          SearchInstanceType: S.optional(S.String),
-          SearchPartitionCount: S.optional(S.Number),
-          SearchInstanceCount: S.optional(S.Number),
-          Limits: S.optional(__S(5, __c0, 5)),
-        }),
-      ).annotate({ identifier: "DomainStatus" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({ DomainStatus: S.optional(__S(6, __c0, 6)) }).pipe(ns),
-      ).annotate({ identifier: "CreateDomainResponse" });
+    case 1:
+      return S.suspend(() => S.Struct({ AnalysisScheme: __S(34, __c2, 2) }).pipe(ns)).annotate({
+        identifier: "DefineAnalysisSchemeResponse",
+      });
   }
 }
 function __c1(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          CreationDate: T.DateFromString.pipe(T.TimestampFormat("date-time")),
+          UpdateDate: T.DateFromString.pipe(T.TimestampFormat("date-time")),
+          UpdateVersion: S.optional(S.Number),
+          State: S.String,
+          PendingDeletion: S.optional(S.Boolean),
+        }),
+      ).annotate({ identifier: "OptionStatus" });
+  }
+}
+function __c2(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1430,62 +1408,58 @@ function __c1(j: number): any {
         S.Struct({
           AnalysisSchemeName: S.String,
           AnalysisSchemeLanguage: S.String,
-          AnalysisOptions: S.optional(__S(8, __c1, 0)),
+          AnalysisOptions: S.optional(__S(32, __c2, 0)),
         }),
       ).annotate({ identifier: "AnalysisScheme" });
     case 2:
       return S.suspend(() =>
-        S.Struct({ DomainName: S.String, AnalysisScheme: __S(9, __c1, 1) }).pipe(
-          T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-        ),
-      ).annotate({
-        identifier: "DefineAnalysisSchemeRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          CreationDate: T.DateFromString.pipe(T.TimestampFormat("date-time")),
-          UpdateDate: T.DateFromString.pipe(T.TimestampFormat("date-time")),
-          UpdateVersion: S.optional(S.Number),
-          State: S.String,
-          PendingDeletion: S.optional(S.Boolean),
-        }),
-      ).annotate({ identifier: "OptionStatus" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({ Options: __S(9, __c1, 1), Status: __S(11, __c1, 3) }),
-      ).annotate({
-        identifier: "AnalysisSchemeStatus",
-      });
-    case 5:
-      return S.suspend(() => S.Struct({ AnalysisScheme: __S(12, __c1, 4) }).pipe(ns)).annotate({
-        identifier: "DefineAnalysisSchemeResponse",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({ ExpressionName: S.String, ExpressionValue: S.String }),
-      ).annotate({ identifier: "Expression" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({ DomainName: S.String, Expression: __S(14, __c1, 6) }).pipe(
-          T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-        ),
-      ).annotate({ identifier: "DefineExpressionRequest" });
+        S.Struct({ Options: __S(33, __c2, 1), Status: __S(16, __c1, 0) }),
+      ).annotate({ identifier: "AnalysisSchemeStatus" });
   }
 }
-function __c2(j: number): any {
+function __c3(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({ Options: __S(14, __c1, 6), Status: __S(11, __c1, 3) }),
-      ).annotate({
-        identifier: "ExpressionStatus",
-      });
+        S.Struct({ DomainName: S.String, Expression: __S(64, __c4, 0) }).pipe(
+          T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "DefineExpressionRequest" });
     case 1:
-      return S.suspend(() => S.Struct({ Expression: __S(16, __c2, 0) }).pipe(ns)).annotate({
+      return S.suspend(() => S.Struct({ Expression: __S(65, __c4, 1) }).pipe(ns)).annotate({
         identifier: "DefineExpressionResponse",
       });
-    case 2:
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ ExpressionName: S.String, ExpressionValue: S.String }),
+      ).annotate({ identifier: "Expression" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({ Options: __S(64, __c4, 0), Status: __S(16, __c1, 0) }),
+      ).annotate({ identifier: "ExpressionStatus" });
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ DomainName: S.String, IndexField: __S(107, __c6, 11) }).pipe(
+          T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "DefineIndexFieldRequest" });
+    case 1:
+      return S.suspend(() => S.Struct({ IndexField: __S(108, __c6, 12) }).pipe(ns)).annotate({
+        identifier: "DefineIndexFieldResponse",
+      });
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           DefaultValue: S.optional(S.Number),
@@ -1496,7 +1470,7 @@ function __c2(j: number): any {
           SortEnabled: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "IntOptions" });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           DefaultValue: S.optional(S.Number),
@@ -1507,7 +1481,7 @@ function __c2(j: number): any {
           SortEnabled: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "DoubleOptions" });
-    case 4:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           DefaultValue: S.optional(S.String),
@@ -1518,7 +1492,7 @@ function __c2(j: number): any {
           SortEnabled: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "LiteralOptions" });
-    case 5:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           DefaultValue: S.optional(S.String),
@@ -1529,7 +1503,7 @@ function __c2(j: number): any {
           AnalysisScheme: S.optional(S.String),
         }),
       ).annotate({ identifier: "TextOptions" });
-    case 6:
+    case 4:
       return S.suspend(() =>
         S.Struct({
           DefaultValue: S.optional(S.String),
@@ -1540,7 +1514,7 @@ function __c2(j: number): any {
           SortEnabled: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "DateOptions" });
-    case 7:
+    case 5:
       return S.suspend(() =>
         S.Struct({
           DefaultValue: S.optional(S.String),
@@ -1551,11 +1525,7 @@ function __c2(j: number): any {
           SortEnabled: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "LatLonOptions" });
-  }
-}
-function __c3(j: number): any {
-  switch (j) {
-    case 0:
+    case 6:
       return S.suspend(() =>
         S.Struct({
           DefaultValue: S.optional(S.Number),
@@ -1565,7 +1535,7 @@ function __c3(j: number): any {
           ReturnEnabled: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "IntArrayOptions" });
-    case 1:
+    case 7:
       return S.suspend(() =>
         S.Struct({
           DefaultValue: S.optional(S.Number),
@@ -1575,7 +1545,7 @@ function __c3(j: number): any {
           ReturnEnabled: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "DoubleArrayOptions" });
-    case 2:
+    case 8:
       return S.suspend(() =>
         S.Struct({
           DefaultValue: S.optional(S.String),
@@ -1585,7 +1555,7 @@ function __c3(j: number): any {
           ReturnEnabled: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "LiteralArrayOptions" });
-    case 3:
+    case 9:
       return S.suspend(() =>
         S.Struct({
           DefaultValue: S.optional(S.String),
@@ -1595,7 +1565,7 @@ function __c3(j: number): any {
           AnalysisScheme: S.optional(S.String),
         }),
       ).annotate({ identifier: "TextArrayOptions" });
-    case 4:
+    case 10:
       return S.suspend(() =>
         S.Struct({
           DefaultValue: S.optional(S.String),
@@ -1605,45 +1575,47 @@ function __c3(j: number): any {
           ReturnEnabled: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "DateArrayOptions" });
-    case 5:
+    case 11:
       return S.suspend(() =>
         S.Struct({
           IndexFieldName: S.String,
           IndexFieldType: S.String,
-          IntOptions: S.optional(__S(18, __c2, 2)),
-          DoubleOptions: S.optional(__S(19, __c2, 3)),
-          LiteralOptions: S.optional(__S(20, __c2, 4)),
-          TextOptions: S.optional(__S(21, __c2, 5)),
-          DateOptions: S.optional(__S(22, __c2, 6)),
-          LatLonOptions: S.optional(__S(23, __c2, 7)),
-          IntArrayOptions: S.optional(__S(24, __c3, 0)),
-          DoubleArrayOptions: S.optional(__S(25, __c3, 1)),
-          LiteralArrayOptions: S.optional(__S(26, __c3, 2)),
-          TextArrayOptions: S.optional(__S(27, __c3, 3)),
-          DateArrayOptions: S.optional(__S(28, __c3, 4)),
+          IntOptions: S.optional(__S(96, __c6, 0)),
+          DoubleOptions: S.optional(__S(97, __c6, 1)),
+          LiteralOptions: S.optional(__S(98, __c6, 2)),
+          TextOptions: S.optional(__S(99, __c6, 3)),
+          DateOptions: S.optional(__S(100, __c6, 4)),
+          LatLonOptions: S.optional(__S(101, __c6, 5)),
+          IntArrayOptions: S.optional(__S(102, __c6, 6)),
+          DoubleArrayOptions: S.optional(__S(103, __c6, 7)),
+          LiteralArrayOptions: S.optional(__S(104, __c6, 8)),
+          TextArrayOptions: S.optional(__S(105, __c6, 9)),
+          DateArrayOptions: S.optional(__S(106, __c6, 10)),
         }),
       ).annotate({ identifier: "IndexField" });
-    case 6:
+    case 12:
       return S.suspend(() =>
-        S.Struct({ DomainName: S.String, IndexField: __S(29, __c3, 5) }).pipe(
+        S.Struct({ Options: __S(107, __c6, 11), Status: __S(16, __c1, 0) }),
+      ).annotate({ identifier: "IndexFieldStatus" });
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ DomainName: S.String, Suggester: __S(129, __c8, 1) }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
-      ).annotate({ identifier: "DefineIndexFieldRequest" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({ Options: __S(29, __c3, 5), Status: __S(11, __c1, 3) }),
-      ).annotate({
-        identifier: "IndexFieldStatus",
+      ).annotate({ identifier: "DefineSuggesterRequest" });
+    case 1:
+      return S.suspend(() => S.Struct({ Suggester: __S(130, __c8, 2) }).pipe(ns)).annotate({
+        identifier: "DefineSuggesterResponse",
       });
   }
 }
-function __c4(j: number): any {
+function __c8(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => S.Struct({ IndexField: __S(31, __c3, 7) }).pipe(ns)).annotate({
-        identifier: "DefineIndexFieldResponse",
-      });
-    case 1:
       return S.suspend(() =>
         S.Struct({
           SourceField: S.String,
@@ -1651,27 +1623,19 @@ function __c4(j: number): any {
           SortExpression: S.optional(S.String),
         }),
       ).annotate({ identifier: "DocumentSuggesterOptions" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({ SuggesterName: S.String, DocumentSuggesterOptions: __S(128, __c8, 0) }),
+      ).annotate({ identifier: "Suggester" });
     case 2:
       return S.suspend(() =>
-        S.Struct({ SuggesterName: S.String, DocumentSuggesterOptions: __S(33, __c4, 1) }),
-      ).annotate({ identifier: "Suggester" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({ DomainName: S.String, Suggester: __S(34, __c4, 2) }).pipe(
-          T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-        ),
-      ).annotate({ identifier: "DefineSuggesterRequest" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({ Options: __S(34, __c4, 2), Status: __S(11, __c1, 3) }),
-      ).annotate({
-        identifier: "SuggesterStatus",
-      });
-    case 5:
-      return S.suspend(() => S.Struct({ Suggester: __S(36, __c4, 4) }).pipe(ns)).annotate({
-        identifier: "DefineSuggesterResponse",
-      });
-    case 6:
+        S.Struct({ Options: __S(129, __c8, 1), Status: __S(16, __c1, 0) }),
+      ).annotate({ identifier: "SuggesterStatus" });
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ DomainName: S.String, AnalysisSchemeName: S.String }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
@@ -1679,236 +1643,9 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "DeleteAnalysisSchemeRequest",
       });
-    case 7:
-      return S.suspend(() => S.Struct({ AnalysisScheme: __S(12, __c1, 4) }).pipe(ns)).annotate({
+    case 1:
+      return S.suspend(() => S.Struct({ AnalysisScheme: __S(34, __c2, 2) }).pipe(ns)).annotate({
         identifier: "DeleteAnalysisSchemeResponse",
-      });
-  }
-}
-function __c5(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({ DomainName: S.String }).pipe(
-          T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-        ),
-      ).annotate({ identifier: "DeleteDomainRequest" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({ DomainStatus: S.optional(__S(6, __c0, 6)) }).pipe(ns),
-      ).annotate({ identifier: "DeleteDomainResponse" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({ DomainName: S.String, ExpressionName: S.String }).pipe(
-          T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-        ),
-      ).annotate({ identifier: "DeleteExpressionRequest" });
-    case 3:
-      return S.suspend(() => S.Struct({ Expression: __S(16, __c2, 0) }).pipe(ns)).annotate({
-        identifier: "DeleteExpressionResponse",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({ DomainName: S.String, IndexFieldName: S.String }).pipe(
-          T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-        ),
-      ).annotate({ identifier: "DeleteIndexFieldRequest" });
-    case 5:
-      return S.suspend(() => S.Struct({ IndexField: __S(31, __c3, 7) }).pipe(ns)).annotate({
-        identifier: "DeleteIndexFieldResponse",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({ DomainName: S.String, SuggesterName: S.String }).pipe(
-          T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-        ),
-      ).annotate({ identifier: "DeleteSuggesterRequest" });
-    case 7:
-      return S.suspend(() => S.Struct({ Suggester: __S(36, __c4, 4) }).pipe(ns)).annotate({
-        identifier: "DeleteSuggesterResponse",
-      });
-  }
-}
-function __c6(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(S.String);
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          DomainName: S.String,
-          AnalysisSchemeNames: S.optional(__S(48, __c6, 0)),
-          Deployed: S.optional(S.Boolean),
-        }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "DescribeAnalysisSchemesRequest",
-      });
-    case 2:
-      return S.Array(__S(12, __c1, 4));
-    case 3:
-      return S.suspend(() => S.Struct({ AnalysisSchemes: __S(50, __c6, 2) }).pipe(ns)).annotate({
-        identifier: "DescribeAnalysisSchemesResponse",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({ DomainName: S.String, Deployed: S.optional(S.Boolean) }).pipe(
-          T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-        ),
-      ).annotate({
-        identifier: "DescribeAvailabilityOptionsRequest",
-      });
-    case 5:
-      return S.suspend(() => S.Struct({ Options: S.Boolean, Status: __S(11, __c1, 3) })).annotate({
-        identifier: "AvailabilityOptionsStatus",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({ AvailabilityOptions: S.optional(__S(53, __c6, 5)) }).pipe(ns),
-      ).annotate({
-        identifier: "DescribeAvailabilityOptionsResponse",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({ DomainName: S.String, Deployed: S.optional(S.Boolean) }).pipe(
-          T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-        ),
-      ).annotate({
-        identifier: "DescribeDomainEndpointOptionsRequest",
-      });
-  }
-}
-function __c7(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          EnforceHTTPS: S.optional(S.Boolean),
-          TLSSecurityPolicy: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "DomainEndpointOptions" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({ Options: __S(56, __c7, 0), Status: __S(11, __c1, 3) }),
-      ).annotate({
-        identifier: "DomainEndpointOptionsStatus",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({ DomainEndpointOptions: S.optional(__S(57, __c7, 1)) }).pipe(ns),
-      ).annotate({
-        identifier: "DescribeDomainEndpointOptionsResponse",
-      });
-    case 3:
-      return S.Array(S.String);
-    case 4:
-      return S.suspend(() =>
-        S.Struct({ DomainNames: S.optional(__S(59, __c7, 3)) }).pipe(
-          T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-        ),
-      ).annotate({ identifier: "DescribeDomainsRequest" });
-    case 5:
-      return S.Array(__S(6, __c0, 6));
-    case 6:
-      return S.suspend(() => S.Struct({ DomainStatusList: __S(61, __c7, 5) }).pipe(ns)).annotate({
-        identifier: "DescribeDomainsResponse",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          DomainName: S.String,
-          ExpressionNames: S.optional(__S(48, __c6, 0)),
-          Deployed: S.optional(S.Boolean),
-        }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "DescribeExpressionsRequest",
-      });
-  }
-}
-function __c8(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(16, __c2, 0));
-    case 1:
-      return S.suspend(() => S.Struct({ Expressions: __S(64, __c8, 0) }).pipe(ns)).annotate({
-        identifier: "DescribeExpressionsResponse",
-      });
-    case 2:
-      return S.Array(S.String);
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          DomainName: S.String,
-          FieldNames: S.optional(__S(66, __c8, 2)),
-          Deployed: S.optional(S.Boolean),
-        }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "DescribeIndexFieldsRequest",
-      });
-    case 4:
-      return S.Array(__S(31, __c3, 7));
-    case 5:
-      return S.suspend(() => S.Struct({ IndexFields: __S(68, __c8, 4) }).pipe(ns)).annotate({
-        identifier: "DescribeIndexFieldsResponse",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({ DomainName: S.String }).pipe(
-          T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-        ),
-      ).annotate({
-        identifier: "DescribeScalingParametersRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          DesiredInstanceType: S.optional(S.String),
-          DesiredReplicationCount: S.optional(S.Number),
-          DesiredPartitionCount: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "ScalingParameters" });
-  }
-}
-function __c9(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({ Options: __S(71, __c8, 7), Status: __S(11, __c1, 3) }),
-      ).annotate({ identifier: "ScalingParametersStatus" });
-    case 1:
-      return S.suspend(() => S.Struct({ ScalingParameters: __S(72, __c9, 0) }).pipe(ns)).annotate({
-        identifier: "DescribeScalingParametersResponse",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({ DomainName: S.String, Deployed: S.optional(S.Boolean) }).pipe(
-          T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-        ),
-      ).annotate({
-        identifier: "DescribeServiceAccessPoliciesRequest",
-      });
-    case 3:
-      return S.suspend(() => S.Struct({ Options: S.String, Status: __S(11, __c1, 3) })).annotate({
-        identifier: "AccessPoliciesStatus",
-      });
-    case 4:
-      return S.suspend(() => S.Struct({ AccessPolicies: __S(75, __c9, 3) }).pipe(ns)).annotate({
-        identifier: "DescribeServiceAccessPoliciesResponse",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          DomainName: S.String,
-          SuggesterNames: S.optional(__S(48, __c6, 0)),
-          Deployed: S.optional(S.Boolean),
-        }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "DescribeSuggestersRequest",
-      });
-    case 6:
-      return S.Array(__S(36, __c4, 4));
-    case 7:
-      return S.suspend(() => S.Struct({ Suggesters: __S(78, __c9, 6) }).pipe(ns)).annotate({
-        identifier: "DescribeSuggestersResponse",
       });
   }
 }
@@ -1919,24 +1656,313 @@ function __c10(j: number): any {
         S.Struct({ DomainName: S.String }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
+      ).annotate({ identifier: "DeleteDomainRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({ DomainStatus: S.optional(__S(594, __c37, 2)) }).pipe(ns),
+      ).annotate({ identifier: "DeleteDomainResponse" });
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ DomainName: S.String, ExpressionName: S.String }).pipe(
+          T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "DeleteExpressionRequest" });
+    case 1:
+      return S.suspend(() => S.Struct({ Expression: __S(65, __c4, 1) }).pipe(ns)).annotate({
+        identifier: "DeleteExpressionResponse",
+      });
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ DomainName: S.String, IndexFieldName: S.String }).pipe(
+          T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "DeleteIndexFieldRequest" });
+    case 1:
+      return S.suspend(() => S.Struct({ IndexField: __S(108, __c6, 12) }).pipe(ns)).annotate({
+        identifier: "DeleteIndexFieldResponse",
+      });
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ DomainName: S.String, SuggesterName: S.String }).pipe(
+          T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "DeleteSuggesterRequest" });
+    case 1:
+      return S.suspend(() => S.Struct({ Suggester: __S(130, __c8, 2) }).pipe(ns)).annotate({
+        identifier: "DeleteSuggesterResponse",
+      });
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          DomainName: S.String,
+          AnalysisSchemeNames: S.optional(__S(240, __c15, 0)),
+          Deployed: S.optional(S.Boolean),
+        }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({
+        identifier: "DescribeAnalysisSchemesRequest",
+      });
+    case 1:
+      return S.Array(__S(34, __c2, 2));
+    case 2:
+      return S.suspend(() => S.Struct({ AnalysisSchemes: __S(225, __c14, 1) }).pipe(ns)).annotate({
+        identifier: "DescribeAnalysisSchemesResponse",
+      });
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ DomainName: S.String, Deployed: S.optional(S.Boolean) }).pipe(
+          T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({
+        identifier: "DescribeAvailabilityOptionsRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({ AvailabilityOptions: S.optional(__S(272, __c17, 0)) }).pipe(ns),
+      ).annotate({
+        identifier: "DescribeAvailabilityOptionsResponse",
+      });
+  }
+}
+function __c17(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({ Options: S.Boolean, Status: __S(16, __c1, 0) })).annotate({
+        identifier: "AvailabilityOptionsStatus",
+      });
+  }
+}
+function __c18(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ DomainName: S.String, Deployed: S.optional(S.Boolean) }).pipe(
+          T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({
+        identifier: "DescribeDomainEndpointOptionsRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({ DomainEndpointOptions: S.optional(__S(305, __c19, 1)) }).pipe(ns),
+      ).annotate({
+        identifier: "DescribeDomainEndpointOptionsResponse",
+      });
+  }
+}
+function __c19(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          EnforceHTTPS: S.optional(S.Boolean),
+          TLSSecurityPolicy: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "DomainEndpointOptions" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({ Options: __S(304, __c19, 0), Status: __S(16, __c1, 0) }),
+      ).annotate({
+        identifier: "DomainEndpointOptionsStatus",
+      });
+  }
+}
+function __c20(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+    case 1:
+      return S.suspend(() =>
+        S.Struct({ DomainNames: S.optional(__S(320, __c20, 0)) }).pipe(
+          T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "DescribeDomainsRequest" });
+    case 2:
+      return S.Array(__S(594, __c37, 2));
+    case 3:
+      return S.suspend(() => S.Struct({ DomainStatusList: __S(322, __c20, 2) }).pipe(ns)).annotate({
+        identifier: "DescribeDomainsResponse",
+      });
+  }
+}
+function __c21(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          DomainName: S.String,
+          ExpressionNames: S.optional(__S(240, __c15, 0)),
+          Deployed: S.optional(S.Boolean),
+        }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({
+        identifier: "DescribeExpressionsRequest",
+      });
+    case 1:
+      return S.Array(__S(65, __c4, 1));
+    case 2:
+      return S.suspend(() => S.Struct({ Expressions: __S(337, __c21, 1) }).pipe(ns)).annotate({
+        identifier: "DescribeExpressionsResponse",
+      });
+  }
+}
+function __c22(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          DomainName: S.String,
+          FieldNames: S.optional(__S(352, __c22, 0)),
+          Deployed: S.optional(S.Boolean),
+        }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({
+        identifier: "DescribeIndexFieldsRequest",
+      });
+    case 2:
+      return S.Array(__S(108, __c6, 12));
+    case 3:
+      return S.suspend(() => S.Struct({ IndexFields: __S(354, __c22, 2) }).pipe(ns)).annotate({
+        identifier: "DescribeIndexFieldsResponse",
+      });
+  }
+}
+function __c23(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ DomainName: S.String }).pipe(
+          T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({
+        identifier: "DescribeScalingParametersRequest",
+      });
+    case 1:
+      return S.suspend(() => S.Struct({ ScalingParameters: __S(385, __c24, 1) }).pipe(ns)).annotate(
+        {
+          identifier: "DescribeScalingParametersResponse",
+        },
+      );
+  }
+}
+function __c24(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          DesiredInstanceType: S.optional(S.String),
+          DesiredReplicationCount: S.optional(S.Number),
+          DesiredPartitionCount: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "ScalingParameters" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({ Options: __S(384, __c24, 0), Status: __S(16, __c1, 0) }),
+      ).annotate({ identifier: "ScalingParametersStatus" });
+  }
+}
+function __c25(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ DomainName: S.String, Deployed: S.optional(S.Boolean) }).pipe(
+          T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({
+        identifier: "DescribeServiceAccessPoliciesRequest",
+      });
+    case 1:
+      return S.suspend(() => S.Struct({ AccessPolicies: __S(416, __c26, 0) }).pipe(ns)).annotate({
+        identifier: "DescribeServiceAccessPoliciesResponse",
+      });
+  }
+}
+function __c26(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({ Options: S.String, Status: __S(16, __c1, 0) })).annotate({
+        identifier: "AccessPoliciesStatus",
+      });
+  }
+}
+function __c27(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          DomainName: S.String,
+          SuggesterNames: S.optional(__S(240, __c15, 0)),
+          Deployed: S.optional(S.Boolean),
+        }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({
+        identifier: "DescribeSuggestersRequest",
+      });
+    case 1:
+      return S.Array(__S(130, __c8, 2));
+    case 2:
+      return S.suspend(() => S.Struct({ Suggesters: __S(433, __c27, 1) }).pipe(ns)).annotate({
+        identifier: "DescribeSuggestersResponse",
+      });
+  }
+}
+function __c28(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ DomainName: S.String }).pipe(
+          T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
       ).annotate({ identifier: "IndexDocumentsRequest" });
     case 1:
       return S.suspend(() =>
-        S.Struct({ FieldNames: S.optional(__S(1, __c0, 1)) }).pipe(ns),
+        S.Struct({ FieldNames: S.optional(__S(560, __c35, 0)) }).pipe(ns),
       ).annotate({ identifier: "IndexDocumentsResponse" });
-    case 2:
+  }
+}
+function __c29(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({}).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "ListDomainNamesRequest" });
-    case 3:
+    case 1:
       return S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
-    case 4:
+    case 2:
       return S.suspend(() =>
-        S.Struct({ DomainNames: S.optional(__S(83, __c10, 3)) }).pipe(ns),
+        S.Struct({ DomainNames: S.optional(__S(465, __c29, 1)) }).pipe(ns),
       ).annotate({ identifier: "ListDomainNamesResponse" });
-    case 5:
+  }
+}
+function __c30(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ DomainName: S.String, MultiAZ: S.Boolean }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
@@ -1944,43 +1970,53 @@ function __c10(j: number): any {
       ).annotate({
         identifier: "UpdateAvailabilityOptionsRequest",
       });
-    case 6:
+    case 1:
       return S.suspend(() =>
-        S.Struct({ AvailabilityOptions: S.optional(__S(53, __c6, 5)) }).pipe(ns),
+        S.Struct({ AvailabilityOptions: S.optional(__S(272, __c17, 0)) }).pipe(ns),
       ).annotate({
         identifier: "UpdateAvailabilityOptionsResponse",
       });
-    case 7:
+  }
+}
+function __c31(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
-        S.Struct({ DomainName: S.String, DomainEndpointOptions: __S(56, __c7, 0) }).pipe(
+        S.Struct({ DomainName: S.String, DomainEndpointOptions: __S(304, __c19, 0) }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({
         identifier: "UpdateDomainEndpointOptionsRequest",
       });
-  }
-}
-function __c11(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
-        S.Struct({ DomainEndpointOptions: S.optional(__S(57, __c7, 1)) }).pipe(ns),
+        S.Struct({ DomainEndpointOptions: S.optional(__S(305, __c19, 1)) }).pipe(ns),
       ).annotate({
         identifier: "UpdateDomainEndpointOptionsResponse",
       });
-    case 1:
+  }
+}
+function __c32(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
-        S.Struct({ DomainName: S.String, ScalingParameters: __S(71, __c8, 7) }).pipe(
+        S.Struct({ DomainName: S.String, ScalingParameters: __S(384, __c24, 0) }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({
         identifier: "UpdateScalingParametersRequest",
       });
-    case 2:
-      return S.suspend(() => S.Struct({ ScalingParameters: __S(72, __c9, 0) }).pipe(ns)).annotate({
-        identifier: "UpdateScalingParametersResponse",
-      });
-    case 3:
+    case 1:
+      return S.suspend(() => S.Struct({ ScalingParameters: __S(385, __c24, 1) }).pipe(ns)).annotate(
+        {
+          identifier: "UpdateScalingParametersResponse",
+        },
+      );
+  }
+}
+function __c33(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ DomainName: S.String, AccessPolicies: S.String }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
@@ -1988,13 +2024,76 @@ function __c11(j: number): any {
       ).annotate({
         identifier: "UpdateServiceAccessPoliciesRequest",
       });
-    case 4:
-      return S.suspend(() => S.Struct({ AccessPolicies: __S(75, __c9, 3) }).pipe(ns)).annotate({
+    case 1:
+      return S.suspend(() => S.Struct({ AccessPolicies: __S(416, __c26, 0) }).pipe(ns)).annotate({
         identifier: "UpdateServiceAccessPoliciesResponse",
       });
   }
 }
-
+function __c34(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ DomainName: S.String }).pipe(
+          T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "BuildSuggestersRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({ FieldNames: S.optional(__S(560, __c35, 0)) }).pipe(ns),
+      ).annotate({ identifier: "BuildSuggestersResponse" });
+  }
+}
+function __c35(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c36(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ DomainName: S.String }).pipe(
+          T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "CreateDomainRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({ DomainStatus: S.optional(__S(594, __c37, 2)) }).pipe(ns),
+      ).annotate({ identifier: "CreateDomainResponse" });
+  }
+}
+function __c37(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({ Endpoint: S.optional(S.String) })).annotate({
+        identifier: "ServiceEndpoint",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({ MaximumReplicationCount: S.Number, MaximumPartitionCount: S.Number }),
+      ).annotate({ identifier: "Limits" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          DomainId: S.String,
+          DomainName: S.String,
+          ARN: S.optional(S.String),
+          Created: S.optional(S.Boolean),
+          Deleted: S.optional(S.Boolean),
+          DocService: S.optional(__S(592, __c37, 0)),
+          SearchService: S.optional(__S(592, __c37, 0)),
+          RequiresIndexDocuments: S.Boolean,
+          Processing: S.optional(S.Boolean),
+          SearchInstanceType: S.optional(S.String),
+          SearchPartitionCount: S.optional(S.Number),
+          SearchInstanceCount: S.optional(S.Number),
+          Limits: S.optional(__S(593, __c37, 1)),
+        }),
+      ).annotate({ identifier: "DomainStatus" });
+  }
+}
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

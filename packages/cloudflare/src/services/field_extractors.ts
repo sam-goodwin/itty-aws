@@ -102,8 +102,8 @@ export type GetError = CloudflareOpError;
 /** Retrieves the custom extraction rules configured for a given extractor type. */
 export const get: API.OperationMethod<GetRequest, GetResponse, GetError, CloudflareOpContext> =
   /*@__PURE__*/ API.make(() => ({
-    input: __S(2, __c0, 2) as any as S.Schema<GetRequest>,
-    output: __S(7, __c0, 7) as any as S.Schema<GetResponse>,
+    input: __S(8, __c1, 0) as any as S.Schema<GetRequest>,
+    output: __S(20, __c2, 4) as any as S.Schema<GetResponse>,
     errors: [CloudflareRateLimited, CloudflareError],
     protocol: CloudflareProtocol,
     retry: Retry.Retry,
@@ -117,8 +117,8 @@ export const update: API.OperationMethod<
   UpdateError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(10, __c1, 2) as any as S.Schema<UpdateRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<UpdateResponse>,
+  input: __S(26, __c3, 2) as any as S.Schema<UpdateRequest>,
+  output: __S(20, __c2, 4) as any as S.Schema<UpdateResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -144,7 +144,11 @@ function __c0(j: number): any {
       return S.suspend(() => S.Unknown.pipe(T.EnvelopePayloadRoot())).annotate({
         identifier: "DeleteResponse",
       });
-    case 2:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -157,7 +161,11 @@ function __c0(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetRequest" });
-    case 3:
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           expression: S.String,
@@ -166,45 +174,45 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "GetResponseRulesItemFieldsItem",
       });
-    case 4:
-      return S.Array(__S(3, __c0, 3));
-    case 5:
+    case 1:
+      return S.Array(__S(16, __c2, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          fields: __S(4, __c0, 4),
+          fields: __S(17, __c2, 1),
           ref: S.String,
           description: S.optional(S.NullOr(S.String)),
         }),
       ).annotate({ identifier: "GetResponseRulesItem" });
-    case 6:
-      return S.Array(__S(5, __c0, 5));
-    case 7:
+    case 3:
+      return S.Array(__S(18, __c2, 2));
+    case 4:
       return S.suspend(() =>
         S.Struct({
           extractor: S.String,
-          rules: __S(6, __c0, 6),
+          rules: __S(19, __c2, 3),
         }),
       ).annotate({ identifier: "GetResponse" });
   }
 }
-function __c1(j: number): any {
+function __c3(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          fields: __S(4, __c0, 4),
+          fields: __S(17, __c2, 1),
           ref: S.String,
           description: S.optional(S.String),
         }),
       ).annotate({ identifier: "UpdateRequestRulesItem" });
     case 1:
-      return S.Array(__S(8, __c1, 0));
+      return S.Array(__S(24, __c3, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
           extractor: S.String.pipe(T.Label()),
-          rules: __S(9, __c1, 1),
+          rules: __S(25, __c3, 1),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -215,7 +223,6 @@ function __c1(j: number): any {
       ).annotate({ identifier: "UpdateRequest" });
   }
 }
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

@@ -61,7 +61,7 @@ export const addPin: API.OperationMethod<
   SlackOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(0, __c0, 0) as any as S.Schema<AddPinRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<AddPinResponse>,
+  output: __S(4, __c1, 0) as any as S.Schema<AddPinResponse>,
   errors: [SlackError, SlackRateLimited],
   protocol: SlackProtocol,
   retry: Retry.Retry,
@@ -75,8 +75,8 @@ export const listPins: API.OperationMethod<
   ListPinsError,
   SlackOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2, __c0, 2) as any as S.Schema<ListPinsRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<ListPinsResponse>,
+  input: __S(8, __c2, 0) as any as S.Schema<ListPinsRequest>,
+  output: __S(11, __c2, 3) as any as S.Schema<ListPinsResponse>,
   errors: [SlackError, SlackRateLimited],
   protocol: SlackProtocol,
   retry: Retry.Retry,
@@ -90,8 +90,8 @@ export const removePin: API.OperationMethod<
   RemovePinError,
   SlackOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(6, __c0, 6) as any as S.Schema<RemovePinRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<RemovePinResponse>,
+  input: __S(12, __c3, 0) as any as S.Schema<RemovePinRequest>,
+  output: __S(4, __c1, 0) as any as S.Schema<RemovePinResponse>,
   errors: [SlackError, SlackRateLimited],
   protocol: SlackProtocol,
   retry: Retry.Retry,
@@ -107,19 +107,27 @@ function __c0(j: number): any {
           timestamp: S.optional(S.String),
         }).pipe(T.Http({ method: "POST", uri: "/pins.add", code: 200 })),
       ).annotate({ identifier: "AddPinRequest" });
-    case 1:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           ok: S.Boolean,
         }),
       ).annotate({ identifier: "AddPinResponse" });
-    case 2:
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           channel: S.String.pipe(T.Query()),
         }).pipe(T.Http({ method: "GET", uri: "/pins.list", code: 200 })),
       ).annotate({ identifier: "ListPinsRequest" });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           type: S.String,
@@ -133,17 +141,21 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "ListPinsResponseItemsItem",
       });
-    case 4:
-      return S.Array(__S(3, __c0, 3));
-    case 5:
+    case 2:
+      return S.Array(__S(9, __c2, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
           ok: S.Boolean,
-          items: S.optional(__S(4, __c0, 4)),
+          items: S.optional(__S(10, __c2, 2)),
           count: S.optional(S.Number),
         }),
       ).annotate({ identifier: "ListPinsResponse" });
-    case 6:
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           channel: S.String,
@@ -152,7 +164,6 @@ function __c0(j: number): any {
       ).annotate({ identifier: "RemovePinRequest" });
   }
 }
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

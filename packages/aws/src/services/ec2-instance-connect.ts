@@ -289,8 +289,8 @@ export const sendSSHPublicKey: API.OperationMethod<
   SendSSHPublicKeyError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2, __c0, 2) as any as S.Schema<SendSSHPublicKeyRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<SendSSHPublicKeyResponse>,
+  input: __S(2, __c1, 0) as any as S.Schema<SendSSHPublicKeyRequest>,
+  output: __S(3, __c1, 1) as any as S.Schema<SendSSHPublicKeyResponse>,
   errors: [
     AuthException,
     EC2InstanceNotFoundException,
@@ -324,7 +324,11 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "SendSerialConsoleSSHPublicKeyResponse",
       });
-    case 2:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           InstanceId: S.String,
@@ -333,13 +337,12 @@ function __c0(j: number): any {
           AvailabilityZone: S.optional(S.String),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "SendSSHPublicKeyRequest" });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({ RequestId: S.optional(S.String), Success: S.optional(S.Boolean) }),
       ).annotate({ identifier: "SendSSHPublicKeyResponse" });
   }
 }
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

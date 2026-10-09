@@ -1443,8 +1443,8 @@ export const addFieldForOrg: API.OperationMethod<
   AddFieldForOrgError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(0, __c0, 0) as any as S.Schema<AddFieldForOrgRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<ProjectsV2Field>,
+  input: __S(216, __c27, 0) as any as S.Schema<AddFieldForOrgRequest>,
+  output: __S(230, __c28, 6) as any as S.Schema<ProjectsV2Field>,
   errors: [Forbidden, UnprocessableEntity],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -1458,8 +1458,8 @@ export const addFieldForUser: API.OperationMethod<
   AddFieldForUserError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(8, __c1, 0) as any as S.Schema<AddFieldForUserRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<ProjectsV2Field>,
+  input: __S(232, __c29, 0) as any as S.Schema<AddFieldForUserRequest>,
+  output: __S(230, __c28, 6) as any as S.Schema<ProjectsV2Field>,
   errors: [Forbidden, UnprocessableEntity],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -1473,8 +1473,8 @@ export const addItemForOrg: API.OperationMethod<
   AddItemForOrgError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(9, __c1, 1) as any as S.Schema<AddItemForOrgRequest>,
-  output: __S(11, __c1, 3) as any as S.Schema<ProjectsV2ItemSimple>,
+  input: __S(240, __c30, 0) as any as S.Schema<AddItemForOrgRequest>,
+  output: __S(248, __c31, 0) as any as S.Schema<ProjectsV2ItemSimple>,
   errors: [Forbidden],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -1488,8 +1488,8 @@ export const addItemForUser: API.OperationMethod<
   AddItemForUserError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(12, __c1, 4) as any as S.Schema<AddItemForUserRequest>,
-  output: __S(11, __c1, 3) as any as S.Schema<ProjectsV2ItemSimple>,
+  input: __S(264, __c33, 0) as any as S.Schema<AddItemForUserRequest>,
+  output: __S(248, __c31, 0) as any as S.Schema<ProjectsV2ItemSimple>,
   errors: [Forbidden],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -1503,8 +1503,8 @@ export const createDraftItemForAuthenticatedUser: API.OperationMethod<
   CreateDraftItemForAuthenticatedUserError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(13, __c1, 5) as any as S.Schema<CreateDraftItemForAuthenticatedUserRequest>,
-  output: __S(11, __c1, 3) as any as S.Schema<ProjectsV2ItemSimple>,
+  input: __S(272, __c34, 0) as any as S.Schema<CreateDraftItemForAuthenticatedUserRequest>,
+  output: __S(248, __c31, 0) as any as S.Schema<ProjectsV2ItemSimple>,
   errors: [Forbidden],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -1518,8 +1518,8 @@ export const createDraftItemForOrg: API.OperationMethod<
   CreateDraftItemForOrgError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(14, __c1, 6) as any as S.Schema<CreateDraftItemForOrgRequest>,
-  output: __S(11, __c1, 3) as any as S.Schema<ProjectsV2ItemSimple>,
+  input: __S(280, __c35, 0) as any as S.Schema<CreateDraftItemForOrgRequest>,
+  output: __S(248, __c31, 0) as any as S.Schema<ProjectsV2ItemSimple>,
   errors: [Forbidden],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -1533,8 +1533,8 @@ export const createViewForOrg: API.OperationMethod<
   CreateViewForOrgError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(18, __c2, 2) as any as S.Schema<CreateViewForOrgRequest>,
-  output: __S(21, __c2, 5) as any as S.Schema<ProjectsV2View>,
+  input: __S(290, __c36, 2) as any as S.Schema<CreateViewForOrgRequest>,
+  output: __S(299, __c37, 3) as any as S.Schema<ProjectsV2View>,
   errors: [Forbidden, NotFound, UnprocessableEntity],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -1548,8 +1548,8 @@ export const createViewForUser: API.OperationMethod<
   CreateViewForUserError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(24, __c3, 0) as any as S.Schema<CreateViewForUserRequest>,
-  output: __S(21, __c2, 5) as any as S.Schema<ProjectsV2View>,
+  input: __S(2, __c0, 2) as any as S.Schema<CreateViewForUserRequest>,
+  output: __S(299, __c37, 3) as any as S.Schema<ProjectsV2View>,
   errors: [Forbidden, NotFound, UnprocessableEntity],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -1563,8 +1563,8 @@ export const deleteItemForOrg: API.OperationMethod<
   DeleteItemForOrgError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(25, __c3, 1) as any as S.Schema<DeleteItemForOrgRequest>,
-  output: __S(26, __c3, 2) as any as S.Schema<DeleteItemForOrgResponse>,
+  input: __S(8, __c1, 0) as any as S.Schema<DeleteItemForOrgRequest>,
+  output: __S(16, __c2, 0) as any as S.Schema<DeleteItemForOrgResponse>,
   errors: [Forbidden],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -1578,8 +1578,8 @@ export const deleteItemForUser: API.OperationMethod<
   DeleteItemForUserError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(27, __c3, 3) as any as S.Schema<DeleteItemForUserRequest>,
-  output: __S(26, __c3, 2) as any as S.Schema<DeleteItemForUserResponse>,
+  input: __S(24, __c3, 0) as any as S.Schema<DeleteItemForUserRequest>,
+  output: __S(16, __c2, 0) as any as S.Schema<DeleteItemForUserResponse>,
   errors: [Forbidden],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -1593,8 +1593,8 @@ export const getFieldForOrg: API.OperationMethod<
   GetFieldForOrgError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(28, __c3, 4) as any as S.Schema<GetFieldForOrgRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<ProjectsV2Field>,
+  input: __S(32, __c4, 0) as any as S.Schema<GetFieldForOrgRequest>,
+  output: __S(230, __c28, 6) as any as S.Schema<ProjectsV2Field>,
   errors: [Forbidden],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -1608,8 +1608,8 @@ export const getFieldForUser: API.OperationMethod<
   GetFieldForUserError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(29, __c3, 5) as any as S.Schema<GetFieldForUserRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<ProjectsV2Field>,
+  input: __S(40, __c5, 0) as any as S.Schema<GetFieldForUserRequest>,
+  output: __S(230, __c28, 6) as any as S.Schema<ProjectsV2Field>,
   errors: [Forbidden],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -1623,8 +1623,8 @@ export const getForOrg: API.OperationMethod<
   GetForOrgError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(30, __c3, 6) as any as S.Schema<GetForOrgRequest>,
-  output: __S(32, __c4, 0) as any as S.Schema<ProjectsV2>,
+  input: __S(48, __c6, 0) as any as S.Schema<GetForOrgRequest>,
+  output: __S(57, __c7, 1) as any as S.Schema<ProjectsV2>,
   errors: [Forbidden],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -1638,8 +1638,8 @@ export const getForUser: API.OperationMethod<
   GetForUserError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(33, __c4, 1) as any as S.Schema<GetForUserRequest>,
-  output: __S(32, __c4, 0) as any as S.Schema<ProjectsV2>,
+  input: __S(64, __c8, 0) as any as S.Schema<GetForUserRequest>,
+  output: __S(57, __c7, 1) as any as S.Schema<ProjectsV2>,
   errors: [Forbidden],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -1653,8 +1653,8 @@ export const getOrgItem: API.OperationMethod<
   GetOrgItemError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(34, __c4, 2) as any as S.Schema<GetOrgItemRequest>,
-  output: __S(37, __c4, 5) as any as S.Schema<ProjectsV2ItemWithContent>,
+  input: __S(72, __c9, 0) as any as S.Schema<GetOrgItemRequest>,
+  output: __S(82, __c10, 2) as any as S.Schema<ProjectsV2ItemWithContent>,
   errors: [Forbidden],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -1668,8 +1668,8 @@ export const getUserItem: API.OperationMethod<
   GetUserItemError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(38, __c4, 6) as any as S.Schema<GetUserItemRequest>,
-  output: __S(37, __c4, 5) as any as S.Schema<ProjectsV2ItemWithContent>,
+  input: __S(88, __c11, 0) as any as S.Schema<GetUserItemRequest>,
+  output: __S(82, __c10, 2) as any as S.Schema<ProjectsV2ItemWithContent>,
   errors: [Forbidden],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -1683,8 +1683,8 @@ export const listFieldsForOrg: API.OperationMethod<
   ListFieldsForOrgError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(39, __c4, 7) as any as S.Schema<ListFieldsForOrgRequest>,
-  output: __S(41, __c5, 1) as any as S.Schema<ListFieldsForOrgResponse>,
+  input: __S(96, __c12, 0) as any as S.Schema<ListFieldsForOrgRequest>,
+  output: __S(97, __c12, 1) as any as S.Schema<ListFieldsForOrgResponse>,
   errors: [Forbidden],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -1698,8 +1698,8 @@ export const listFieldsForUser: API.OperationMethod<
   ListFieldsForUserError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(42, __c5, 2) as any as S.Schema<ListFieldsForUserRequest>,
-  output: __S(43, __c5, 3) as any as S.Schema<ListFieldsForUserResponse>,
+  input: __S(112, __c14, 0) as any as S.Schema<ListFieldsForUserRequest>,
+  output: __S(113, __c14, 1) as any as S.Schema<ListFieldsForUserResponse>,
   errors: [Forbidden],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -1713,8 +1713,8 @@ export const listForOrg: API.OperationMethod<
   ListForOrgError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(44, __c5, 4) as any as S.Schema<ListForOrgRequest>,
-  output: __S(46, __c5, 6) as any as S.Schema<ListForOrgResponse>,
+  input: __S(120, __c15, 0) as any as S.Schema<ListForOrgRequest>,
+  output: __S(129, __c16, 1) as any as S.Schema<ListForOrgResponse>,
   errors: [Forbidden],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -1728,8 +1728,8 @@ export const listForUser: API.OperationMethod<
   ListForUserError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(47, __c5, 7) as any as S.Schema<ListForUserRequest>,
-  output: __S(46, __c5, 6) as any as S.Schema<ListForUserResponse>,
+  input: __S(136, __c17, 0) as any as S.Schema<ListForUserRequest>,
+  output: __S(129, __c16, 1) as any as S.Schema<ListForUserResponse>,
   errors: [Forbidden],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -1743,8 +1743,8 @@ export const listItemsForOrg: API.OperationMethod<
   ListItemsForOrgError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(48, __c6, 0) as any as S.Schema<ListItemsForOrgRequest>,
-  output: __S(50, __c6, 2) as any as S.Schema<ListItemsForOrgResponse>,
+  input: __S(144, __c18, 0) as any as S.Schema<ListItemsForOrgRequest>,
+  output: __S(152, __c19, 0) as any as S.Schema<ListItemsForOrgResponse>,
   errors: [Forbidden],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -1758,8 +1758,8 @@ export const listItemsForUser: API.OperationMethod<
   ListItemsForUserError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(51, __c6, 3) as any as S.Schema<ListItemsForUserRequest>,
-  output: __S(50, __c6, 2) as any as S.Schema<ListItemsForUserResponse>,
+  input: __S(168, __c21, 0) as any as S.Schema<ListItemsForUserRequest>,
+  output: __S(152, __c19, 0) as any as S.Schema<ListItemsForUserResponse>,
   errors: [Forbidden],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -1773,8 +1773,8 @@ export const listViewItemsForOrg: API.OperationMethod<
   ListViewItemsForOrgError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(52, __c6, 4) as any as S.Schema<ListViewItemsForOrgRequest>,
-  output: __S(53, __c6, 5) as any as S.Schema<ListViewItemsForOrgResponse>,
+  input: __S(176, __c22, 0) as any as S.Schema<ListViewItemsForOrgRequest>,
+  output: __S(184, __c23, 0) as any as S.Schema<ListViewItemsForOrgResponse>,
   errors: [Forbidden, NotFound],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -1788,8 +1788,8 @@ export const listViewItemsForUser: API.OperationMethod<
   ListViewItemsForUserError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(54, __c6, 6) as any as S.Schema<ListViewItemsForUserRequest>,
-  output: __S(53, __c6, 5) as any as S.Schema<ListViewItemsForUserResponse>,
+  input: __S(192, __c24, 0) as any as S.Schema<ListViewItemsForUserRequest>,
+  output: __S(184, __c23, 0) as any as S.Schema<ListViewItemsForUserResponse>,
   errors: [Forbidden, NotFound],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -1803,8 +1803,8 @@ export const updateItemForOrg: API.OperationMethod<
   UpdateItemForOrgError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(57, __c7, 1) as any as S.Schema<UpdateItemForOrgRequest>,
-  output: __S(37, __c4, 5) as any as S.Schema<ProjectsV2ItemWithContent>,
+  input: __S(202, __c25, 2) as any as S.Schema<UpdateItemForOrgRequest>,
+  output: __S(82, __c10, 2) as any as S.Schema<ProjectsV2ItemWithContent>,
   errors: [Forbidden, NotFound, UnprocessableEntity],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -1818,8 +1818,8 @@ export const updateItemForUser: API.OperationMethod<
   UpdateItemForUserError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(60, __c7, 4) as any as S.Schema<UpdateItemForUserRequest>,
-  output: __S(37, __c4, 5) as any as S.Schema<ProjectsV2ItemWithContent>,
+  input: __S(210, __c26, 2) as any as S.Schema<UpdateItemForUserRequest>,
+  output: __S(82, __c10, 2) as any as S.Schema<ProjectsV2ItemWithContent>,
   errors: [Forbidden, NotFound, UnprocessableEntity],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -1827,6 +1827,517 @@ export const updateItemForUser: API.OperationMethod<
 
 // Schema builders: each runs one schema initializer, on that schema's first use.
 function __c0(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.Unknown);
+    case 1:
+      return S.Array(__S(0, __c0, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          user_id: S.String.pipe(T.Label()),
+          project_number: S.Number.pipe(T.Label()),
+          name: S.String,
+          layout: S.String,
+          filter: S.optional(S.String),
+          visible_fields: S.optional(__S(296, __c37, 0)),
+          sort_by: S.optional(__S(1, __c0, 1)),
+          group_by: S.optional(__S(296, __c37, 0)),
+          vertical_group_by: S.optional(__S(296, __c37, 0)),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/users/{user_id}/projectsV2/{project_number}/views",
+            code: 200,
+          }),
+        ),
+      ).annotate({ identifier: "CreateViewForUserRequest" });
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          org: S.String.pipe(T.Label()),
+          project_number: S.Number.pipe(T.Label()),
+          item_id: S.Number.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/orgs/{org}/projectsV2/{project_number}/items/{item_id}",
+            code: 200,
+          }),
+        ),
+      ).annotate({ identifier: "DeleteItemForOrgRequest" });
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "DeleteItemForOrgResponse",
+      });
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          username: S.String.pipe(T.Label()),
+          project_number: S.Number.pipe(T.Label()),
+          item_id: S.Number.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/users/{username}/projectsV2/{project_number}/items/{item_id}",
+            code: 200,
+          }),
+        ),
+      ).annotate({ identifier: "DeleteItemForUserRequest" });
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          org: S.String.pipe(T.Label()),
+          project_number: S.Number.pipe(T.Label()),
+          field_id: S.Number.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/orgs/{org}/projectsV2/{project_number}/fields/{field_id}",
+            code: 200,
+          }),
+        ),
+      ).annotate({ identifier: "GetFieldForOrgRequest" });
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          username: S.String.pipe(T.Label()),
+          project_number: S.Number.pipe(T.Label()),
+          field_id: S.Number.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/users/{username}/projectsV2/{project_number}/fields/{field_id}",
+            code: 200,
+          }),
+        ),
+      ).annotate({ identifier: "GetFieldForUserRequest" });
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          org: S.String.pipe(T.Label()),
+          project_number: S.Number.pipe(T.Label()),
+        }).pipe(
+          T.Http({ method: "GET", uri: "/orgs/{org}/projectsV2/{project_number}", code: 200 }),
+        ),
+      ).annotate({ identifier: "GetForOrgRequest" });
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.Number,
+          node_id: S.String,
+          project_node_id: S.optional(S.String),
+          creator: S.optional(__S(256, __c32, 0)),
+          created_at: S.String,
+          updated_at: S.String,
+          status: S.optional(S.NullOr(S.String)),
+          start_date: S.optional(S.String),
+          target_date: S.optional(S.String),
+          body: S.optional(S.NullOr(S.String)),
+        }),
+      ).annotate({
+        identifier: "NullableProjectsV2StatusUpdate",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.Number,
+          node_id: S.String,
+          owner: __S(256, __c32, 0),
+          creator: __S(256, __c32, 0),
+          title: S.String,
+          description: S.NullOr(S.String),
+          public: S.Boolean,
+          closed_at: S.NullOr(S.String),
+          created_at: S.String,
+          updated_at: S.String,
+          number: S.Number,
+          short_description: S.NullOr(S.String),
+          deleted_at: S.NullOr(S.String),
+          deleted_by: S.NullOr(__S(256, __c32, 0)),
+          state: S.optional(S.String),
+          latest_status_update: S.optional(S.NullOr(__S(56, __c7, 0))),
+          is_template: S.optional(S.Boolean),
+        }),
+      ).annotate({ identifier: "ProjectsV2" });
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          username: S.String.pipe(T.Label()),
+          project_number: S.Number.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/users/{username}/projectsV2/{project_number}",
+            code: 200,
+          }),
+        ),
+      ).annotate({ identifier: "GetForUserRequest" });
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          org: S.String.pipe(T.Label()),
+          project_number: S.Number.pipe(T.Label()),
+          item_id: S.Number.pipe(T.Label()),
+          fields: S.optional(S.Unknown.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/orgs/{org}/projectsV2/{project_number}/items/{item_id}",
+            code: 200,
+          }),
+        ),
+      ).annotate({ identifier: "GetOrgItemRequest" });
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, S.Unknown);
+    case 1:
+      return S.Array(__S(80, __c10, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.Number,
+          node_id: S.optional(S.String),
+          project_url: S.optional(S.String),
+          content_type: S.String,
+          content: S.optional(S.NullOr(__S(80, __c10, 0))),
+          creator: S.optional(__S(256, __c32, 0)),
+          created_at: S.String,
+          updated_at: S.String,
+          archived_at: S.NullOr(S.String),
+          item_url: S.optional(S.NullOr(S.String)),
+          fields: S.optional(__S(81, __c10, 1)),
+        }),
+      ).annotate({
+        identifier: "ProjectsV2ItemWithContent",
+      });
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          username: S.String.pipe(T.Label()),
+          project_number: S.Number.pipe(T.Label()),
+          item_id: S.Number.pipe(T.Label()),
+          fields: S.optional(S.Unknown.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/users/{username}/projectsV2/{project_number}/items/{item_id}",
+            code: 200,
+          }),
+        ),
+      ).annotate({ identifier: "GetUserItemRequest" });
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          org: S.String.pipe(T.Label()),
+          project_number: S.Number.pipe(T.Label()),
+          per_page: S.optional(S.Number.pipe(T.Query())),
+          before: S.optional(S.String.pipe(T.Query())),
+          after: S.optional(S.String.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/orgs/{org}/projectsV2/{project_number}/fields",
+            code: 200,
+          }),
+        ),
+      ).annotate({ identifier: "ListFieldsForOrgRequest" });
+    case 1:
+      return S.suspend(() => __S(104, __c13, 0).pipe(T.RawResponseRoot())).annotate({
+        identifier: "ListFieldsForOrgResponse",
+      });
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(230, __c28, 6));
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          username: S.String.pipe(T.Label()),
+          project_number: S.Number.pipe(T.Label()),
+          per_page: S.optional(S.Number.pipe(T.Query())),
+          before: S.optional(S.String.pipe(T.Query())),
+          after: S.optional(S.String.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/users/{username}/projectsV2/{project_number}/fields",
+            code: 200,
+          }),
+        ),
+      ).annotate({ identifier: "ListFieldsForUserRequest" });
+    case 1:
+      return S.suspend(() => __S(104, __c13, 0).pipe(T.RawResponseRoot())).annotate({
+        identifier: "ListFieldsForUserResponse",
+      });
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          org: S.String.pipe(T.Label()),
+          q: S.optional(S.String.pipe(T.Query())),
+          before: S.optional(S.String.pipe(T.Query())),
+          after: S.optional(S.String.pipe(T.Query())),
+          per_page: S.optional(S.Number.pipe(T.Query())),
+        }).pipe(T.Http({ method: "GET", uri: "/orgs/{org}/projectsV2", code: 200 })),
+      ).annotate({ identifier: "ListForOrgRequest" });
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(57, __c7, 1));
+    case 1:
+      return S.suspend(() => __S(128, __c16, 0).pipe(T.RawResponseRoot())).annotate({
+        identifier: "ListForOrgResponse",
+      });
+  }
+}
+function __c17(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          username: S.String.pipe(T.Label()),
+          q: S.optional(S.String.pipe(T.Query())),
+          before: S.optional(S.String.pipe(T.Query())),
+          after: S.optional(S.String.pipe(T.Query())),
+          per_page: S.optional(S.Number.pipe(T.Query())),
+        }).pipe(T.Http({ method: "GET", uri: "/users/{username}/projectsV2", code: 200 })),
+      ).annotate({ identifier: "ListForUserRequest" });
+  }
+}
+function __c18(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          org: S.String.pipe(T.Label()),
+          project_number: S.Number.pipe(T.Label()),
+          q: S.optional(S.String.pipe(T.Query())),
+          fields: S.optional(S.Unknown.pipe(T.Query())),
+          before: S.optional(S.String.pipe(T.Query())),
+          after: S.optional(S.String.pipe(T.Query())),
+          per_page: S.optional(S.Number.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/orgs/{org}/projectsV2/{project_number}/items",
+            code: 200,
+          }),
+        ),
+      ).annotate({ identifier: "ListItemsForOrgRequest" });
+  }
+}
+function __c19(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => __S(160, __c20, 0).pipe(T.RawResponseRoot())).annotate({
+        identifier: "ListItemsForOrgResponse",
+      });
+  }
+}
+function __c20(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(82, __c10, 2));
+  }
+}
+function __c21(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          username: S.String.pipe(T.Label()),
+          project_number: S.Number.pipe(T.Label()),
+          before: S.optional(S.String.pipe(T.Query())),
+          after: S.optional(S.String.pipe(T.Query())),
+          per_page: S.optional(S.Number.pipe(T.Query())),
+          q: S.optional(S.String.pipe(T.Query())),
+          fields: S.optional(S.Unknown.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/users/{username}/projectsV2/{project_number}/items",
+            code: 200,
+          }),
+        ),
+      ).annotate({ identifier: "ListItemsForUserRequest" });
+  }
+}
+function __c22(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          org: S.String.pipe(T.Label()),
+          project_number: S.Number.pipe(T.Label()),
+          view_number: S.Number.pipe(T.Label()),
+          fields: S.optional(S.Unknown.pipe(T.Query())),
+          before: S.optional(S.String.pipe(T.Query())),
+          after: S.optional(S.String.pipe(T.Query())),
+          per_page: S.optional(S.Number.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/orgs/{org}/projectsV2/{project_number}/views/{view_number}/items",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "ListViewItemsForOrgRequest",
+      });
+  }
+}
+function __c23(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => __S(160, __c20, 0).pipe(T.RawResponseRoot())).annotate({
+        identifier: "ListViewItemsForOrgResponse",
+      });
+  }
+}
+function __c24(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          username: S.String.pipe(T.Label()),
+          project_number: S.Number.pipe(T.Label()),
+          view_number: S.Number.pipe(T.Label()),
+          fields: S.optional(S.Unknown.pipe(T.Query())),
+          before: S.optional(S.String.pipe(T.Query())),
+          after: S.optional(S.String.pipe(T.Query())),
+          per_page: S.optional(S.Number.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/users/{username}/projectsV2/{project_number}/views/{view_number}/items",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "ListViewItemsForUserRequest",
+      });
+  }
+}
+function __c25(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.Number,
+          value: S.NullOr(S.Unknown),
+        }),
+      ).annotate({
+        identifier: "UpdateItemForOrgRequestFieldsItem",
+      });
+    case 1:
+      return S.Array(__S(200, __c25, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          org: S.String.pipe(T.Label()),
+          project_number: S.Number.pipe(T.Label()),
+          item_id: S.Number.pipe(T.Label()),
+          fields: __S(201, __c25, 1),
+        }).pipe(
+          T.Http({
+            method: "PATCH",
+            uri: "/orgs/{org}/projectsV2/{project_number}/items/{item_id}",
+            code: 200,
+          }),
+        ),
+      ).annotate({ identifier: "UpdateItemForOrgRequest" });
+  }
+}
+function __c26(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.Number,
+          value: S.NullOr(S.Unknown),
+        }),
+      ).annotate({
+        identifier: "UpdateItemForUserRequestFieldsItem",
+      });
+    case 1:
+      return S.Array(__S(208, __c26, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          username: S.String.pipe(T.Label()),
+          project_number: S.Number.pipe(T.Label()),
+          item_id: S.Number.pipe(T.Label()),
+          fields: __S(209, __c26, 1),
+        }).pipe(
+          T.Http({
+            method: "PATCH",
+            uri: "/users/{username}/projectsV2/{project_number}/items/{item_id}",
+            code: 200,
+          }),
+        ),
+      ).annotate({ identifier: "UpdateItemForUserRequest" });
+  }
+}
+function __c27(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1842,7 +2353,11 @@ function __c0(j: number): any {
           }),
         ),
       ).annotate({ identifier: "AddFieldForOrgRequest" });
-    case 1:
+  }
+}
+function __c28(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           raw: S.String,
@@ -1851,44 +2366,44 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "ProjectsV2SingleSelectOptionsName",
       });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
-          name: __S(1, __c0, 1),
-          description: __S(1, __c0, 1),
+          name: __S(224, __c28, 0),
+          description: __S(224, __c28, 0),
           color: S.String,
         }),
       ).annotate({
         identifier: "ProjectsV2SingleSelectOptions",
       });
+    case 2:
+      return S.Array(__S(225, __c28, 1));
     case 3:
-      return S.Array(__S(2, __c0, 2));
-    case 4:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
           start_date: S.String,
           duration: S.Number,
-          title: __S(1, __c0, 1),
+          title: __S(224, __c28, 0),
           completed: S.Boolean,
         }),
       ).annotate({
         identifier: "ProjectsV2IterationSettings",
       });
+    case 4:
+      return S.Array(__S(227, __c28, 3));
     case 5:
-      return S.Array(__S(4, __c0, 4));
-    case 6:
       return S.suspend(() =>
         S.Struct({
           start_day: S.optional(S.Number),
           duration: S.optional(S.Number),
-          iterations: S.optional(__S(5, __c0, 5)),
+          iterations: S.optional(__S(228, __c28, 4)),
         }),
       ).annotate({
         identifier: "ProjectsV2FieldConfiguration",
       });
-    case 7:
+    case 6:
       return S.suspend(() =>
         S.Struct({
           id: S.Number,
@@ -1897,15 +2412,15 @@ function __c0(j: number): any {
           project_url: S.String,
           name: S.String,
           data_type: S.String,
-          options: S.optional(__S(3, __c0, 3)),
-          configuration: S.optional(__S(6, __c0, 6)),
+          options: S.optional(__S(226, __c28, 2)),
+          configuration: S.optional(__S(229, __c28, 5)),
           created_at: S.String,
           updated_at: S.String,
         }),
       ).annotate({ identifier: "ProjectsV2Field" });
   }
 }
-function __c1(j: number): any {
+function __c29(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1921,7 +2436,11 @@ function __c1(j: number): any {
           }),
         ),
       ).annotate({ identifier: "AddFieldForUserRequest" });
-    case 1:
+  }
+}
+function __c30(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           org: S.String.pipe(T.Label()),
@@ -1939,7 +2458,30 @@ function __c1(j: number): any {
           }),
         ),
       ).annotate({ identifier: "AddItemForOrgRequest" });
-    case 2:
+  }
+}
+function __c31(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.Number,
+          node_id: S.optional(S.String),
+          content: S.optional(S.Unknown),
+          content_type: S.String,
+          creator: S.optional(__S(256, __c32, 0)),
+          created_at: S.String,
+          updated_at: S.String,
+          archived_at: S.NullOr(S.String),
+          project_url: S.optional(S.String),
+          item_url: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ProjectsV2ItemSimple" });
+  }
+}
+function __c32(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.NullOr(S.String)),
@@ -1966,22 +2508,11 @@ function __c1(j: number): any {
           user_view_type: S.optional(S.String),
         }),
       ).annotate({ identifier: "NullableSimpleUser" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.Number,
-          node_id: S.optional(S.String),
-          content: S.optional(S.Unknown),
-          content_type: S.String,
-          creator: S.optional(__S(10, __c1, 2)),
-          created_at: S.String,
-          updated_at: S.String,
-          archived_at: S.NullOr(S.String),
-          project_url: S.optional(S.String),
-          item_url: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ProjectsV2ItemSimple" });
-    case 4:
+  }
+}
+function __c33(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           username: S.String.pipe(T.Label()),
@@ -1999,7 +2530,11 @@ function __c1(j: number): any {
           }),
         ),
       ).annotate({ identifier: "AddItemForUserRequest" });
-    case 5:
+  }
+}
+function __c34(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           user_id: S.String.pipe(T.Label()),
@@ -2016,7 +2551,11 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "CreateDraftItemForAuthenticatedUserRequest",
       });
-    case 6:
+  }
+}
+function __c35(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           org: S.String.pipe(T.Label()),
@@ -2033,16 +2572,14 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "CreateDraftItemForOrgRequest",
       });
-    case 7:
-      return S.Array(S.Number);
   }
 }
-function __c2(j: number): any {
+function __c36(j: number): any {
   switch (j) {
     case 0:
       return S.Array(S.Unknown);
     case 1:
-      return S.Array(__S(16, __c2, 0));
+      return S.Array(__S(288, __c36, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -2051,10 +2588,10 @@ function __c2(j: number): any {
           name: S.String,
           layout: S.String,
           filter: S.optional(S.String),
-          visible_fields: S.optional(__S(15, __c1, 7)),
-          sort_by: S.optional(__S(17, __c2, 1)),
-          group_by: S.optional(__S(15, __c1, 7)),
-          vertical_group_by: S.optional(__S(15, __c1, 7)),
+          visible_fields: S.optional(__S(296, __c37, 0)),
+          sort_by: S.optional(__S(289, __c36, 1)),
+          group_by: S.optional(__S(296, __c37, 0)),
+          vertical_group_by: S.optional(__S(296, __c37, 0)),
         }).pipe(
           T.Http({
             method: "POST",
@@ -2063,11 +2600,17 @@ function __c2(j: number): any {
           }),
         ),
       ).annotate({ identifier: "CreateViewForOrgRequest" });
-    case 3:
+  }
+}
+function __c37(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.Number);
+    case 1:
       return S.Array(S.Unknown);
-    case 4:
-      return S.Array(__S(19, __c2, 3));
-    case 5:
+    case 2:
+      return S.Array(__S(297, __c37, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
           id: S.Number,
@@ -2077,442 +2620,18 @@ function __c2(j: number): any {
           node_id: S.String,
           project_url: S.String,
           html_url: S.String,
-          creator: __S(10, __c1, 2),
+          creator: __S(256, __c32, 0),
           created_at: S.String,
           updated_at: S.String,
           filter: S.optional(S.NullOr(S.String)),
-          visible_fields: __S(15, __c1, 7),
-          sort_by: __S(20, __c2, 4),
-          group_by: __S(15, __c1, 7),
-          vertical_group_by: __S(15, __c1, 7),
+          visible_fields: __S(296, __c37, 0),
+          sort_by: __S(298, __c37, 2),
+          group_by: __S(296, __c37, 0),
+          vertical_group_by: __S(296, __c37, 0),
         }),
       ).annotate({ identifier: "ProjectsV2View" });
-    case 6:
-      return S.Array(S.Unknown);
-    case 7:
-      return S.Array(__S(22, __c2, 6));
   }
 }
-function __c3(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          user_id: S.String.pipe(T.Label()),
-          project_number: S.Number.pipe(T.Label()),
-          name: S.String,
-          layout: S.String,
-          filter: S.optional(S.String),
-          visible_fields: S.optional(__S(15, __c1, 7)),
-          sort_by: S.optional(__S(23, __c2, 7)),
-          group_by: S.optional(__S(15, __c1, 7)),
-          vertical_group_by: S.optional(__S(15, __c1, 7)),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/users/{user_id}/projectsV2/{project_number}/views",
-            code: 200,
-          }),
-        ),
-      ).annotate({ identifier: "CreateViewForUserRequest" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          org: S.String.pipe(T.Label()),
-          project_number: S.Number.pipe(T.Label()),
-          item_id: S.Number.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/orgs/{org}/projectsV2/{project_number}/items/{item_id}",
-            code: 200,
-          }),
-        ),
-      ).annotate({ identifier: "DeleteItemForOrgRequest" });
-    case 2:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "DeleteItemForOrgResponse",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          username: S.String.pipe(T.Label()),
-          project_number: S.Number.pipe(T.Label()),
-          item_id: S.Number.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/users/{username}/projectsV2/{project_number}/items/{item_id}",
-            code: 200,
-          }),
-        ),
-      ).annotate({ identifier: "DeleteItemForUserRequest" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          org: S.String.pipe(T.Label()),
-          project_number: S.Number.pipe(T.Label()),
-          field_id: S.Number.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/orgs/{org}/projectsV2/{project_number}/fields/{field_id}",
-            code: 200,
-          }),
-        ),
-      ).annotate({ identifier: "GetFieldForOrgRequest" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          username: S.String.pipe(T.Label()),
-          project_number: S.Number.pipe(T.Label()),
-          field_id: S.Number.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/users/{username}/projectsV2/{project_number}/fields/{field_id}",
-            code: 200,
-          }),
-        ),
-      ).annotate({ identifier: "GetFieldForUserRequest" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          org: S.String.pipe(T.Label()),
-          project_number: S.Number.pipe(T.Label()),
-        }).pipe(
-          T.Http({ method: "GET", uri: "/orgs/{org}/projectsV2/{project_number}", code: 200 }),
-        ),
-      ).annotate({ identifier: "GetForOrgRequest" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.Number,
-          node_id: S.String,
-          project_node_id: S.optional(S.String),
-          creator: S.optional(__S(10, __c1, 2)),
-          created_at: S.String,
-          updated_at: S.String,
-          status: S.optional(S.NullOr(S.String)),
-          start_date: S.optional(S.String),
-          target_date: S.optional(S.String),
-          body: S.optional(S.NullOr(S.String)),
-        }),
-      ).annotate({
-        identifier: "NullableProjectsV2StatusUpdate",
-      });
-  }
-}
-function __c4(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.Number,
-          node_id: S.String,
-          owner: __S(10, __c1, 2),
-          creator: __S(10, __c1, 2),
-          title: S.String,
-          description: S.NullOr(S.String),
-          public: S.Boolean,
-          closed_at: S.NullOr(S.String),
-          created_at: S.String,
-          updated_at: S.String,
-          number: S.Number,
-          short_description: S.NullOr(S.String),
-          deleted_at: S.NullOr(S.String),
-          deleted_by: S.NullOr(__S(10, __c1, 2)),
-          state: S.optional(S.String),
-          latest_status_update: S.optional(S.NullOr(__S(31, __c3, 7))),
-          is_template: S.optional(S.Boolean),
-        }),
-      ).annotate({ identifier: "ProjectsV2" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          username: S.String.pipe(T.Label()),
-          project_number: S.Number.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/users/{username}/projectsV2/{project_number}",
-            code: 200,
-          }),
-        ),
-      ).annotate({ identifier: "GetForUserRequest" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          org: S.String.pipe(T.Label()),
-          project_number: S.Number.pipe(T.Label()),
-          item_id: S.Number.pipe(T.Label()),
-          fields: S.optional(S.Unknown.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/orgs/{org}/projectsV2/{project_number}/items/{item_id}",
-            code: 200,
-          }),
-        ),
-      ).annotate({ identifier: "GetOrgItemRequest" });
-    case 3:
-      return S.Record(S.String, S.Unknown);
-    case 4:
-      return S.Array(__S(35, __c4, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.Number,
-          node_id: S.optional(S.String),
-          project_url: S.optional(S.String),
-          content_type: S.String,
-          content: S.optional(S.NullOr(__S(35, __c4, 3))),
-          creator: S.optional(__S(10, __c1, 2)),
-          created_at: S.String,
-          updated_at: S.String,
-          archived_at: S.NullOr(S.String),
-          item_url: S.optional(S.NullOr(S.String)),
-          fields: S.optional(__S(36, __c4, 4)),
-        }),
-      ).annotate({
-        identifier: "ProjectsV2ItemWithContent",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          username: S.String.pipe(T.Label()),
-          project_number: S.Number.pipe(T.Label()),
-          item_id: S.Number.pipe(T.Label()),
-          fields: S.optional(S.Unknown.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/users/{username}/projectsV2/{project_number}/items/{item_id}",
-            code: 200,
-          }),
-        ),
-      ).annotate({ identifier: "GetUserItemRequest" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          org: S.String.pipe(T.Label()),
-          project_number: S.Number.pipe(T.Label()),
-          per_page: S.optional(S.Number.pipe(T.Query())),
-          before: S.optional(S.String.pipe(T.Query())),
-          after: S.optional(S.String.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/orgs/{org}/projectsV2/{project_number}/fields",
-            code: 200,
-          }),
-        ),
-      ).annotate({ identifier: "ListFieldsForOrgRequest" });
-  }
-}
-function __c5(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(7, __c0, 7));
-    case 1:
-      return S.suspend(() => __S(40, __c5, 0).pipe(T.RawResponseRoot())).annotate({
-        identifier: "ListFieldsForOrgResponse",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          username: S.String.pipe(T.Label()),
-          project_number: S.Number.pipe(T.Label()),
-          per_page: S.optional(S.Number.pipe(T.Query())),
-          before: S.optional(S.String.pipe(T.Query())),
-          after: S.optional(S.String.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/users/{username}/projectsV2/{project_number}/fields",
-            code: 200,
-          }),
-        ),
-      ).annotate({ identifier: "ListFieldsForUserRequest" });
-    case 3:
-      return S.suspend(() => __S(40, __c5, 0).pipe(T.RawResponseRoot())).annotate({
-        identifier: "ListFieldsForUserResponse",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          org: S.String.pipe(T.Label()),
-          q: S.optional(S.String.pipe(T.Query())),
-          before: S.optional(S.String.pipe(T.Query())),
-          after: S.optional(S.String.pipe(T.Query())),
-          per_page: S.optional(S.Number.pipe(T.Query())),
-        }).pipe(T.Http({ method: "GET", uri: "/orgs/{org}/projectsV2", code: 200 })),
-      ).annotate({ identifier: "ListForOrgRequest" });
-    case 5:
-      return S.Array(__S(32, __c4, 0));
-    case 6:
-      return S.suspend(() => __S(45, __c5, 5).pipe(T.RawResponseRoot())).annotate({
-        identifier: "ListForOrgResponse",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          username: S.String.pipe(T.Label()),
-          q: S.optional(S.String.pipe(T.Query())),
-          before: S.optional(S.String.pipe(T.Query())),
-          after: S.optional(S.String.pipe(T.Query())),
-          per_page: S.optional(S.Number.pipe(T.Query())),
-        }).pipe(T.Http({ method: "GET", uri: "/users/{username}/projectsV2", code: 200 })),
-      ).annotate({ identifier: "ListForUserRequest" });
-  }
-}
-function __c6(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          org: S.String.pipe(T.Label()),
-          project_number: S.Number.pipe(T.Label()),
-          q: S.optional(S.String.pipe(T.Query())),
-          fields: S.optional(S.Unknown.pipe(T.Query())),
-          before: S.optional(S.String.pipe(T.Query())),
-          after: S.optional(S.String.pipe(T.Query())),
-          per_page: S.optional(S.Number.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/orgs/{org}/projectsV2/{project_number}/items",
-            code: 200,
-          }),
-        ),
-      ).annotate({ identifier: "ListItemsForOrgRequest" });
-    case 1:
-      return S.Array(__S(37, __c4, 5));
-    case 2:
-      return S.suspend(() => __S(49, __c6, 1).pipe(T.RawResponseRoot())).annotate({
-        identifier: "ListItemsForOrgResponse",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          username: S.String.pipe(T.Label()),
-          project_number: S.Number.pipe(T.Label()),
-          before: S.optional(S.String.pipe(T.Query())),
-          after: S.optional(S.String.pipe(T.Query())),
-          per_page: S.optional(S.Number.pipe(T.Query())),
-          q: S.optional(S.String.pipe(T.Query())),
-          fields: S.optional(S.Unknown.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/users/{username}/projectsV2/{project_number}/items",
-            code: 200,
-          }),
-        ),
-      ).annotate({ identifier: "ListItemsForUserRequest" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          org: S.String.pipe(T.Label()),
-          project_number: S.Number.pipe(T.Label()),
-          view_number: S.Number.pipe(T.Label()),
-          fields: S.optional(S.Unknown.pipe(T.Query())),
-          before: S.optional(S.String.pipe(T.Query())),
-          after: S.optional(S.String.pipe(T.Query())),
-          per_page: S.optional(S.Number.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/orgs/{org}/projectsV2/{project_number}/views/{view_number}/items",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "ListViewItemsForOrgRequest",
-      });
-    case 5:
-      return S.suspend(() => __S(49, __c6, 1).pipe(T.RawResponseRoot())).annotate({
-        identifier: "ListViewItemsForOrgResponse",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          username: S.String.pipe(T.Label()),
-          project_number: S.Number.pipe(T.Label()),
-          view_number: S.Number.pipe(T.Label()),
-          fields: S.optional(S.Unknown.pipe(T.Query())),
-          before: S.optional(S.String.pipe(T.Query())),
-          after: S.optional(S.String.pipe(T.Query())),
-          per_page: S.optional(S.Number.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/users/{username}/projectsV2/{project_number}/views/{view_number}/items",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "ListViewItemsForUserRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.Number,
-          value: S.NullOr(S.Unknown),
-        }),
-      ).annotate({
-        identifier: "UpdateItemForOrgRequestFieldsItem",
-      });
-  }
-}
-function __c7(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(55, __c6, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          org: S.String.pipe(T.Label()),
-          project_number: S.Number.pipe(T.Label()),
-          item_id: S.Number.pipe(T.Label()),
-          fields: __S(56, __c7, 0),
-        }).pipe(
-          T.Http({
-            method: "PATCH",
-            uri: "/orgs/{org}/projectsV2/{project_number}/items/{item_id}",
-            code: 200,
-          }),
-        ),
-      ).annotate({ identifier: "UpdateItemForOrgRequest" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.Number,
-          value: S.NullOr(S.Unknown),
-        }),
-      ).annotate({
-        identifier: "UpdateItemForUserRequestFieldsItem",
-      });
-    case 3:
-      return S.Array(__S(58, __c7, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          username: S.String.pipe(T.Label()),
-          project_number: S.Number.pipe(T.Label()),
-          item_id: S.Number.pipe(T.Label()),
-          fields: __S(59, __c7, 3),
-        }).pipe(
-          T.Http({
-            method: "PATCH",
-            uri: "/users/{username}/projectsV2/{project_number}/items/{item_id}",
-            code: 200,
-          }),
-        ),
-      ).annotate({ identifier: "UpdateItemForUserRequest" });
-  }
-}
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

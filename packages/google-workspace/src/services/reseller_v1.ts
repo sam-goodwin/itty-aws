@@ -371,8 +371,8 @@ export const activateSubscriptions: API.OperationMethod<
   ActivateSubscriptionsError,
   GoogleWorkspaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(0, __c0, 0) as any as S.Schema<ActivateSubscriptionsRequest>,
-  output: __S(8, __c1, 0) as any as S.Schema<Subscription>,
+  input: __S(96, __c12, 0) as any as S.Schema<ActivateSubscriptionsRequest>,
+  output: __S(118, __c14, 6) as any as S.Schema<Subscription>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -391,8 +391,8 @@ export const changePlanSubscriptions: API.OperationMethod<
   ChangePlanSubscriptionsError,
   GoogleWorkspaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(10, __c1, 2) as any as S.Schema<ChangePlanSubscriptionsRequest>,
-  output: __S(8, __c1, 0) as any as S.Schema<Subscription>,
+  input: __S(121, __c15, 1) as any as S.Schema<ChangePlanSubscriptionsRequest>,
+  output: __S(118, __c14, 6) as any as S.Schema<Subscription>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -411,8 +411,8 @@ export const changeRenewalSettingsSubscriptions: API.OperationMethod<
   ChangeRenewalSettingsSubscriptionsError,
   GoogleWorkspaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(11, __c1, 3) as any as S.Schema<ChangeRenewalSettingsSubscriptionsRequest>,
-  output: __S(8, __c1, 0) as any as S.Schema<Subscription>,
+  input: __S(128, __c16, 0) as any as S.Schema<ChangeRenewalSettingsSubscriptionsRequest>,
+  output: __S(118, __c14, 6) as any as S.Schema<Subscription>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -431,8 +431,8 @@ export const changeSeatsSubscriptions: API.OperationMethod<
   ChangeSeatsSubscriptionsError,
   GoogleWorkspaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(12, __c1, 4) as any as S.Schema<ChangeSeatsSubscriptionsRequest>,
-  output: __S(8, __c1, 0) as any as S.Schema<Subscription>,
+  input: __S(136, __c17, 0) as any as S.Schema<ChangeSeatsSubscriptionsRequest>,
+  output: __S(118, __c14, 6) as any as S.Schema<Subscription>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -451,8 +451,8 @@ export const deleteSubscriptions: API.OperationMethod<
   DeleteSubscriptionsError,
   GoogleWorkspaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(13, __c1, 5) as any as S.Schema<DeleteSubscriptionsRequest>,
-  output: __S(14, __c1, 6) as any as S.Schema<DeleteSubscriptionsResponse>,
+  input: __S(144, __c18, 0) as any as S.Schema<DeleteSubscriptionsRequest>,
+  output: __S(145, __c18, 1) as any as S.Schema<DeleteSubscriptionsResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -466,8 +466,8 @@ export const getCustomers: API.OperationMethod<
   GetCustomersError,
   GoogleWorkspaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(15, __c1, 7) as any as S.Schema<GetCustomersRequest>,
-  output: __S(18, __c2, 2) as any as S.Schema<Customer>,
+  input: __S(152, __c19, 0) as any as S.Schema<GetCustomersRequest>,
+  output: __S(162, __c20, 2) as any as S.Schema<Customer>,
   errors: [NotFound, Forbidden, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -481,8 +481,8 @@ export const getSubscriptions: API.OperationMethod<
   GetSubscriptionsError,
   GoogleWorkspaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(19, __c2, 3) as any as S.Schema<GetSubscriptionsRequest>,
-  output: __S(8, __c1, 0) as any as S.Schema<Subscription>,
+  input: __S(0, __c0, 0) as any as S.Schema<GetSubscriptionsRequest>,
+  output: __S(118, __c14, 6) as any as S.Schema<Subscription>,
   errors: [NotFound, Forbidden, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -496,8 +496,8 @@ export const getwatchdetailsResellernotify: API.OperationMethod<
   GetwatchdetailsResellernotifyError,
   GoogleWorkspaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(20, __c2, 4) as any as S.Schema<GetwatchdetailsResellernotifyRequest>,
-  output: __S(21, __c2, 5) as any as S.Schema<ResellernotifyGetwatchdetailsResponse>,
+  input: __S(8, __c1, 0) as any as S.Schema<GetwatchdetailsResellernotifyRequest>,
+  output: __S(9, __c1, 1) as any as S.Schema<ResellernotifyGetwatchdetailsResponse>,
   errors: [NotFound, Forbidden, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -516,8 +516,8 @@ export const insertCustomers: API.OperationMethod<
   InsertCustomersError,
   GoogleWorkspaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(22, __c2, 6) as any as S.Schema<InsertCustomersRequest>,
-  output: __S(18, __c2, 2) as any as S.Schema<Customer>,
+  input: __S(16, __c2, 0) as any as S.Schema<InsertCustomersRequest>,
+  output: __S(162, __c20, 2) as any as S.Schema<Customer>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -536,8 +536,8 @@ export const insertSubscriptions: API.OperationMethod<
   InsertSubscriptionsError,
   GoogleWorkspaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(23, __c2, 7) as any as S.Schema<InsertSubscriptionsRequest>,
-  output: __S(8, __c1, 0) as any as S.Schema<Subscription>,
+  input: __S(24, __c3, 0) as any as S.Schema<InsertSubscriptionsRequest>,
+  output: __S(118, __c14, 6) as any as S.Schema<Subscription>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -552,8 +552,8 @@ export const listSubscriptions: API.PaginatedOperationMethod<
   GoogleWorkspaceOpContext,
   Subscriptions
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(24, __c3, 0) as any as S.Schema<ListSubscriptionsRequest>,
-  output: __S(26, __c3, 2) as any as S.Schema<Subscriptions>,
+  input: __S(32, __c4, 0) as any as S.Schema<ListSubscriptionsRequest>,
+  output: __S(34, __c4, 2) as any as S.Schema<Subscriptions>,
   errors: [NotFound, Forbidden, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -573,8 +573,8 @@ export const patchCustomers: API.OperationMethod<
   PatchCustomersError,
   GoogleWorkspaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(27, __c3, 3) as any as S.Schema<PatchCustomersRequest>,
-  output: __S(18, __c2, 2) as any as S.Schema<Customer>,
+  input: __S(40, __c5, 0) as any as S.Schema<PatchCustomersRequest>,
+  output: __S(162, __c20, 2) as any as S.Schema<Customer>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -593,8 +593,8 @@ export const registerResellernotify: API.OperationMethod<
   RegisterResellernotifyError,
   GoogleWorkspaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(28, __c3, 4) as any as S.Schema<RegisterResellernotifyRequest>,
-  output: __S(29, __c3, 5) as any as S.Schema<ResellernotifyResource>,
+  input: __S(48, __c6, 0) as any as S.Schema<RegisterResellernotifyRequest>,
+  output: __S(56, __c7, 0) as any as S.Schema<ResellernotifyResource>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -613,8 +613,8 @@ export const startPaidServiceSubscriptions: API.OperationMethod<
   StartPaidServiceSubscriptionsError,
   GoogleWorkspaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(30, __c3, 6) as any as S.Schema<StartPaidServiceSubscriptionsRequest>,
-  output: __S(8, __c1, 0) as any as S.Schema<Subscription>,
+  input: __S(64, __c8, 0) as any as S.Schema<StartPaidServiceSubscriptionsRequest>,
+  output: __S(118, __c14, 6) as any as S.Schema<Subscription>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -633,8 +633,8 @@ export const suspendSubscriptions: API.OperationMethod<
   SuspendSubscriptionsError,
   GoogleWorkspaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(31, __c3, 7) as any as S.Schema<SuspendSubscriptionsRequest>,
-  output: __S(8, __c1, 0) as any as S.Schema<Subscription>,
+  input: __S(72, __c9, 0) as any as S.Schema<SuspendSubscriptionsRequest>,
+  output: __S(118, __c14, 6) as any as S.Schema<Subscription>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -653,8 +653,8 @@ export const unregisterResellernotify: API.OperationMethod<
   UnregisterResellernotifyError,
   GoogleWorkspaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(32, __c4, 0) as any as S.Schema<UnregisterResellernotifyRequest>,
-  output: __S(29, __c3, 5) as any as S.Schema<ResellernotifyResource>,
+  input: __S(80, __c10, 0) as any as S.Schema<UnregisterResellernotifyRequest>,
+  output: __S(56, __c7, 0) as any as S.Schema<ResellernotifyResource>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -673,8 +673,8 @@ export const updateCustomers: API.OperationMethod<
   UpdateCustomersError,
   GoogleWorkspaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(33, __c4, 1) as any as S.Schema<UpdateCustomersRequest>,
-  output: __S(18, __c2, 2) as any as S.Schema<Customer>,
+  input: __S(88, __c11, 0) as any as S.Schema<UpdateCustomersRequest>,
+  output: __S(162, __c20, 2) as any as S.Schema<Customer>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -682,6 +682,235 @@ export const updateCustomers: API.OperationMethod<
 
 // Schema builders: each runs one schema initializer, on that schema's first use.
 function __c0(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          customerId: S.String.pipe(T.Label()),
+          subscriptionId: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "apps/reseller/v1/customers/{customerId}/subscriptions/{subscriptionId}",
+            baseUrl: "https://reseller.googleapis.com/",
+          }),
+        ),
+      ).annotate({ identifier: "GetSubscriptionsRequest" });
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({}).pipe(
+          T.Http({
+            method: "GET",
+            uri: "apps/reseller/v1/resellernotify/getwatchdetails",
+            baseUrl: "https://reseller.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetwatchdetailsResellernotifyRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          topicName: S.optional(S.String),
+          serviceAccountEmailAddresses: S.optional(__S(104, __c13, 0)),
+        }),
+      ).annotate({
+        identifier: "ResellernotifyGetwatchdetailsResponse",
+      });
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          customerAuthToken: S.optional(S.String.pipe(T.Query())),
+          body: S.optional(__S(162, __c20, 2).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "apps/reseller/v1/customers",
+            baseUrl: "https://reseller.googleapis.com/",
+          }),
+        ),
+      ).annotate({ identifier: "InsertCustomersRequest" });
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          customerId: S.String.pipe(T.Label()),
+          customerAuthToken: S.optional(S.String.pipe(T.Query())),
+          sourceSkuId: S.optional(S.String.pipe(T.Query())),
+          action: S.optional(S.String.pipe(T.Query())),
+          body: S.optional(__S(118, __c14, 6).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "apps/reseller/v1/customers/{customerId}/subscriptions",
+            baseUrl: "https://reseller.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "InsertSubscriptionsRequest",
+      });
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          customerId: S.optional(S.String.pipe(T.Query())),
+          pageToken: S.optional(S.String.pipe(T.Query())),
+          customerAuthToken: S.optional(S.String.pipe(T.Query())),
+          customerNamePrefix: S.optional(S.String.pipe(T.Query())),
+          maxResults: S.optional(S.Number.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "apps/reseller/v1/subscriptions",
+            baseUrl: "https://reseller.googleapis.com/",
+          }),
+        ),
+      ).annotate({ identifier: "ListSubscriptionsRequest" });
+    case 1:
+      return S.Array(__S(118, __c14, 6));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptions: S.optional(__S(33, __c4, 1)),
+          kind: S.optional(S.String),
+          nextPageToken: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Subscriptions" });
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          customerId: S.String.pipe(T.Label()),
+          body: S.optional(__S(162, __c20, 2).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "PATCH",
+            uri: "apps/reseller/v1/customers/{customerId}",
+            baseUrl: "https://reseller.googleapis.com/",
+          }),
+        ),
+      ).annotate({ identifier: "PatchCustomersRequest" });
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          serviceAccountEmailAddress: S.optional(S.String.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "apps/reseller/v1/resellernotify/register",
+            baseUrl: "https://reseller.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "RegisterResellernotifyRequest",
+      });
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          topicName: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ResellernotifyResource" });
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          customerId: S.String.pipe(T.Label()),
+          subscriptionId: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "apps/reseller/v1/customers/{customerId}/subscriptions/{subscriptionId}/startPaidService",
+            baseUrl: "https://reseller.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "StartPaidServiceSubscriptionsRequest",
+      });
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          customerId: S.String.pipe(T.Label()),
+          subscriptionId: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "apps/reseller/v1/customers/{customerId}/subscriptions/{subscriptionId}/suspend",
+            baseUrl: "https://reseller.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "SuspendSubscriptionsRequest",
+      });
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          serviceAccountEmailAddress: S.optional(S.String.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "apps/reseller/v1/resellernotify/unregister",
+            baseUrl: "https://reseller.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "UnregisterResellernotifyRequest",
+      });
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          customerId: S.String.pipe(T.Label()),
+          body: S.optional(__S(162, __c20, 2).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "PUT",
+            uri: "apps/reseller/v1/customers/{customerId}",
+            baseUrl: "https://reseller.googleapis.com/",
+          }),
+        ),
+      ).annotate({ identifier: "UpdateCustomersRequest" });
+  }
+}
+function __c12(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -698,7 +927,17 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "ActivateSubscriptionsRequest",
       });
-    case 1:
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           trialEndTime: S.optional(S.String),
@@ -707,14 +946,14 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "SubscriptionTrialSettings",
       });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           kind: S.optional(S.String),
           renewalType: S.optional(S.String),
         }),
       ).annotate({ identifier: "RenewalSettings" });
-    case 3:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           maximumNumberOfSeats: S.optional(S.Number),
@@ -723,7 +962,7 @@ function __c0(j: number): any {
           numberOfSeats: S.optional(S.Number),
         }),
       ).annotate({ identifier: "Seats" });
-    case 4:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           currentLegacySkuId: S.optional(S.String),
@@ -731,9 +970,7 @@ function __c0(j: number): any {
           transferabilityExpirationTime: S.optional(S.String),
         }),
       ).annotate({ identifier: "SubscriptionTransferInfo" });
-    case 5:
-      return S.Array(S.String);
-    case 6:
+    case 4:
       return S.suspend(() =>
         S.Struct({
           endTime: S.optional(S.String),
@@ -742,57 +979,57 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "SubscriptionPlanCommitmentInterval",
       });
-    case 7:
+    case 5:
       return S.suspend(() =>
         S.Struct({
-          commitmentInterval: S.optional(__S(6, __c0, 6)),
+          commitmentInterval: S.optional(__S(116, __c14, 4)),
           isCommitmentPlan: S.optional(S.Boolean),
           planName: S.optional(S.String),
         }),
       ).annotate({ identifier: "SubscriptionPlan" });
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
+    case 6:
       return S.suspend(() =>
         S.Struct({
           skuName: S.optional(S.String),
-          trialSettings: S.optional(__S(1, __c0, 1)),
+          trialSettings: S.optional(__S(112, __c14, 0)),
           customerDomain: S.optional(S.String),
           billingMethod: S.optional(S.String),
           purchaseOrderId: S.optional(S.String),
           dealCode: S.optional(S.String),
           customerId: S.optional(S.String),
-          renewalSettings: S.optional(__S(2, __c0, 2)),
+          renewalSettings: S.optional(__S(113, __c14, 1)),
           status: S.optional(S.String),
-          seats: S.optional(__S(3, __c0, 3)),
-          transferInfo: S.optional(__S(4, __c0, 4)),
+          seats: S.optional(__S(114, __c14, 2)),
+          transferInfo: S.optional(__S(115, __c14, 3)),
           resourceUiUrl: S.optional(S.String),
           kind: S.optional(S.String),
           subscriptionId: S.optional(S.String),
           skuId: S.optional(S.String),
-          suspensionReasons: S.optional(__S(5, __c0, 5)),
-          plan: S.optional(__S(7, __c0, 7)),
+          suspensionReasons: S.optional(__S(104, __c13, 0)),
+          plan: S.optional(__S(117, __c14, 5)),
           creationTime: S.optional(S.String),
         }),
       ).annotate({ identifier: "Subscription" });
-    case 1:
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           dealCode: S.optional(S.String),
           kind: S.optional(S.String),
-          seats: S.optional(__S(3, __c0, 3)),
+          seats: S.optional(__S(114, __c14, 2)),
           planName: S.optional(S.String),
           purchaseOrderId: S.optional(S.String),
         }),
       ).annotate({ identifier: "ChangePlanRequest" });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           customerId: S.String.pipe(T.Label()),
           subscriptionId: S.String.pipe(T.Label()),
-          body: S.optional(__S(9, __c1, 1).pipe(T.HttpBody())),
+          body: S.optional(__S(120, __c15, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -803,12 +1040,16 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "ChangePlanSubscriptionsRequest",
       });
-    case 3:
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           customerId: S.String.pipe(T.Label()),
-          body: S.optional(__S(2, __c0, 2).pipe(T.HttpBody())),
+          body: S.optional(__S(113, __c14, 1).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -819,12 +1060,16 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "ChangeRenewalSettingsSubscriptionsRequest",
       });
-    case 4:
+  }
+}
+function __c17(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           customerId: S.String.pipe(T.Label()),
-          body: S.optional(__S(3, __c0, 3).pipe(T.HttpBody())),
+          body: S.optional(__S(114, __c14, 2).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -835,7 +1080,11 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "ChangeSeatsSubscriptionsRequest",
       });
-    case 5:
+  }
+}
+function __c18(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -851,11 +1100,15 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "DeleteSubscriptionsRequest",
       });
-    case 6:
+    case 1:
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "DeleteSubscriptionsResponse",
       });
-    case 7:
+  }
+}
+function __c19(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           customerId: S.String.pipe(T.Label()),
@@ -869,7 +1122,7 @@ function __c1(j: number): any {
       ).annotate({ identifier: "GetCustomersRequest" });
   }
 }
-function __c2(j: number): any {
+function __c20(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -896,209 +1149,19 @@ function __c2(j: number): any {
       return S.suspend(() =>
         S.Struct({
           alternateEmail: S.optional(S.String),
-          postalAddress: S.optional(__S(16, __c2, 0)),
+          postalAddress: S.optional(__S(160, __c20, 0)),
           customerDomainVerified: S.optional(S.Boolean),
           customerDomain: S.optional(S.String),
           customerType: S.optional(S.String),
           customerId: S.optional(S.String),
           kind: S.optional(S.String),
-          primaryAdmin: S.optional(__S(17, __c2, 1)),
+          primaryAdmin: S.optional(__S(161, __c20, 1)),
           phoneNumber: S.optional(S.String),
           resourceUiUrl: S.optional(S.String),
         }),
       ).annotate({ identifier: "Customer" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          customerId: S.String.pipe(T.Label()),
-          subscriptionId: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "apps/reseller/v1/customers/{customerId}/subscriptions/{subscriptionId}",
-            baseUrl: "https://reseller.googleapis.com/",
-          }),
-        ),
-      ).annotate({ identifier: "GetSubscriptionsRequest" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({}).pipe(
-          T.Http({
-            method: "GET",
-            uri: "apps/reseller/v1/resellernotify/getwatchdetails",
-            baseUrl: "https://reseller.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetwatchdetailsResellernotifyRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          topicName: S.optional(S.String),
-          serviceAccountEmailAddresses: S.optional(__S(5, __c0, 5)),
-        }),
-      ).annotate({
-        identifier: "ResellernotifyGetwatchdetailsResponse",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          customerAuthToken: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(18, __c2, 2).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "apps/reseller/v1/customers",
-            baseUrl: "https://reseller.googleapis.com/",
-          }),
-        ),
-      ).annotate({ identifier: "InsertCustomersRequest" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          customerId: S.String.pipe(T.Label()),
-          customerAuthToken: S.optional(S.String.pipe(T.Query())),
-          sourceSkuId: S.optional(S.String.pipe(T.Query())),
-          action: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(8, __c1, 0).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "apps/reseller/v1/customers/{customerId}/subscriptions",
-            baseUrl: "https://reseller.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "InsertSubscriptionsRequest",
-      });
   }
 }
-function __c3(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          customerId: S.optional(S.String.pipe(T.Query())),
-          pageToken: S.optional(S.String.pipe(T.Query())),
-          customerAuthToken: S.optional(S.String.pipe(T.Query())),
-          customerNamePrefix: S.optional(S.String.pipe(T.Query())),
-          maxResults: S.optional(S.Number.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "apps/reseller/v1/subscriptions",
-            baseUrl: "https://reseller.googleapis.com/",
-          }),
-        ),
-      ).annotate({ identifier: "ListSubscriptionsRequest" });
-    case 1:
-      return S.Array(__S(8, __c1, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptions: S.optional(__S(25, __c3, 1)),
-          kind: S.optional(S.String),
-          nextPageToken: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Subscriptions" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          customerId: S.String.pipe(T.Label()),
-          body: S.optional(__S(18, __c2, 2).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "PATCH",
-            uri: "apps/reseller/v1/customers/{customerId}",
-            baseUrl: "https://reseller.googleapis.com/",
-          }),
-        ),
-      ).annotate({ identifier: "PatchCustomersRequest" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          serviceAccountEmailAddress: S.optional(S.String.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "apps/reseller/v1/resellernotify/register",
-            baseUrl: "https://reseller.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "RegisterResellernotifyRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          topicName: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ResellernotifyResource" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          customerId: S.String.pipe(T.Label()),
-          subscriptionId: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "apps/reseller/v1/customers/{customerId}/subscriptions/{subscriptionId}/startPaidService",
-            baseUrl: "https://reseller.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "StartPaidServiceSubscriptionsRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          customerId: S.String.pipe(T.Label()),
-          subscriptionId: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "apps/reseller/v1/customers/{customerId}/subscriptions/{subscriptionId}/suspend",
-            baseUrl: "https://reseller.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "SuspendSubscriptionsRequest",
-      });
-  }
-}
-function __c4(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          serviceAccountEmailAddress: S.optional(S.String.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "apps/reseller/v1/resellernotify/unregister",
-            baseUrl: "https://reseller.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "UnregisterResellernotifyRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          customerId: S.String.pipe(T.Label()),
-          body: S.optional(__S(18, __c2, 2).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "PUT",
-            uri: "apps/reseller/v1/customers/{customerId}",
-            baseUrl: "https://reseller.googleapis.com/",
-          }),
-        ),
-      ).annotate({ identifier: "UpdateCustomersRequest" });
-  }
-}
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

@@ -3589,8 +3589,8 @@ export const CreateMonitor: API.OperationMethod<
   CreateMonitorError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(6, __c0, 6) as any as S.Schema<CreateMonitorRequest>,
-  output: __S(15, __c1, 7) as any as S.Schema<CreateMonitorResponse>,
+  input: __S(1, __c0, 1) as any as S.Schema<CreateMonitorRequest>,
+  output: __S(64, __c8, 0) as any as S.Schema<CreateMonitorResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3604,8 +3604,8 @@ export const CreateProviderInstance: API.OperationMethod<
   CreateProviderInstanceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(21, __c2, 5) as any as S.Schema<CreateProviderInstanceRequest>,
-  output: __S(25, __c3, 1) as any as S.Schema<CreateProviderInstanceResponse>,
+  input: __S(105, __c13, 1) as any as S.Schema<CreateProviderInstanceRequest>,
+  output: __S(106, __c13, 2) as any as S.Schema<CreateProviderInstanceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3619,8 +3619,8 @@ export const CreateSapApplicationServerInstance: API.OperationMethod<
   CreateSapApplicationServerInstanceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(26, __c3, 2) as any as S.Schema<CreateSapApplicationServerInstanceRequest>,
-  output: __S(35, __c4, 3) as any as S.Schema<CreateSapApplicationServerInstanceResponse>,
+  input: __S(280, __c35, 0) as any as S.Schema<CreateSapApplicationServerInstanceRequest>,
+  output: __S(289, __c36, 1) as any as S.Schema<CreateSapApplicationServerInstanceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3634,8 +3634,8 @@ export const CreateSAPApplicationServerInstance: API.OperationMethod<
   CreateSAPApplicationServerInstanceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(36, __c4, 4) as any as S.Schema<CreateSAPApplicationServerInstanceRequest>,
-  output: __S(38, __c4, 6) as any as S.Schema<CreateSAPApplicationServerInstanceResponse>,
+  input: __S(400, __c50, 0) as any as S.Schema<CreateSAPApplicationServerInstanceRequest>,
+  output: __S(409, __c51, 1) as any as S.Schema<CreateSAPApplicationServerInstanceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3649,8 +3649,8 @@ export const CreateSAPCentralInstance: API.OperationMethod<
   CreateSAPCentralInstanceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(40, __c5, 0) as any as S.Schema<CreateSAPCentralInstanceRequest>,
-  output: __S(48, __c6, 0) as any as S.Schema<CreateSAPCentralInstanceResponse>,
+  input: __S(544, __c68, 0) as any as S.Schema<CreateSAPCentralInstanceRequest>,
+  output: __S(556, __c69, 4) as any as S.Schema<CreateSAPCentralInstanceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3664,8 +3664,8 @@ export const CreateSapCentralServerInstance: API.OperationMethod<
   CreateSapCentralServerInstanceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(49, __c6, 1) as any as S.Schema<CreateSapCentralServerInstanceRequest>,
-  output: __S(54, __c6, 6) as any as S.Schema<CreateSapCentralServerInstanceResponse>,
+  input: __S(672, __c84, 0) as any as S.Schema<CreateSapCentralServerInstanceRequest>,
+  output: __S(688, __c86, 0) as any as S.Schema<CreateSapCentralServerInstanceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3679,8 +3679,8 @@ export const CreateSapDatabaseInstance: API.OperationMethod<
   CreateSapDatabaseInstanceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(55, __c6, 7) as any as S.Schema<CreateSapDatabaseInstanceRequest>,
-  output: __S(59, __c7, 3) as any as S.Schema<CreateSapDatabaseInstanceResponse>,
+  input: __S(784, __c98, 0) as any as S.Schema<CreateSapDatabaseInstanceRequest>,
+  output: __S(800, __c100, 0) as any as S.Schema<CreateSapDatabaseInstanceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3694,8 +3694,8 @@ export const CreateSAPDatabaseInstance: API.OperationMethod<
   CreateSAPDatabaseInstanceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(60, __c7, 4) as any as S.Schema<CreateSAPDatabaseInstanceRequest>,
-  output: __S(62, __c7, 6) as any as S.Schema<CreateSAPDatabaseInstanceResponse>,
+  input: __S(896, __c112, 0) as any as S.Schema<CreateSAPDatabaseInstanceRequest>,
+  output: __S(912, __c114, 0) as any as S.Schema<CreateSAPDatabaseInstanceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3709,8 +3709,8 @@ export const CreateSapLandscapeMonitor: API.OperationMethod<
   CreateSapLandscapeMonitorError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(69, __c8, 5) as any as S.Schema<CreateSapLandscapeMonitorRequest>,
-  output: __S(71, __c8, 7) as any as S.Schema<CreateSapLandscapeMonitorResponse>,
+  input: __S(1000, __c125, 0) as any as S.Schema<CreateSapLandscapeMonitorRequest>,
+  output: __S(1016, __c127, 0) as any as S.Schema<CreateSapLandscapeMonitorResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3724,8 +3724,8 @@ export const CreateSapVirtualInstance: API.OperationMethod<
   CreateSapVirtualInstanceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(75, __c9, 3) as any as S.Schema<CreateSapVirtualInstanceRequest>,
-  output: __S(78, __c9, 6) as any as S.Schema<CreateSapVirtualInstanceResponse>,
+  input: __S(1049, __c131, 1) as any as S.Schema<CreateSapVirtualInstanceRequest>,
+  output: __S(1064, __c133, 0) as any as S.Schema<CreateSapVirtualInstanceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3739,8 +3739,8 @@ export const CreateSAPVirtualInstance: API.OperationMethod<
   CreateSAPVirtualInstanceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(81, __c10, 1) as any as S.Schema<CreateSAPVirtualInstanceRequest>,
-  output: __S(83, __c10, 3) as any as S.Schema<CreateSAPVirtualInstanceResponse>,
+  input: __S(145, __c18, 1) as any as S.Schema<CreateSAPVirtualInstanceRequest>,
+  output: __S(160, __c20, 0) as any as S.Schema<CreateSAPVirtualInstanceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3754,8 +3754,8 @@ export const DeleteMonitor: API.OperationMethod<
   DeleteMonitorError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(84, __c10, 4) as any as S.Schema<DeleteMonitorRequest>,
-  output: __S(92, __c11, 4) as any as S.Schema<DeleteMonitorResponse>,
+  input: __S(168, __c21, 0) as any as S.Schema<DeleteMonitorRequest>,
+  output: __S(169, __c21, 1) as any as S.Schema<DeleteMonitorResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3769,8 +3769,8 @@ export const DeleteProviderInstance: API.OperationMethod<
   DeleteProviderInstanceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(93, __c11, 5) as any as S.Schema<DeleteProviderInstanceRequest>,
-  output: __S(94, __c11, 6) as any as S.Schema<DeleteProviderInstanceResponse>,
+  input: __S(192, __c24, 0) as any as S.Schema<DeleteProviderInstanceRequest>,
+  output: __S(193, __c24, 1) as any as S.Schema<DeleteProviderInstanceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3784,8 +3784,8 @@ export const DeleteSapApplicationServerInstance: API.OperationMethod<
   DeleteSapApplicationServerInstanceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(95, __c11, 7) as any as S.Schema<DeleteSapApplicationServerInstanceRequest>,
-  output: __S(96, __c12, 0) as any as S.Schema<DeleteSapApplicationServerInstanceResponse>,
+  input: __S(200, __c25, 0) as any as S.Schema<DeleteSapApplicationServerInstanceRequest>,
+  output: __S(208, __c26, 0) as any as S.Schema<DeleteSapApplicationServerInstanceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3799,8 +3799,8 @@ export const DeleteSAPApplicationServerInstance: API.OperationMethod<
   DeleteSAPApplicationServerInstanceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(97, __c12, 1) as any as S.Schema<DeleteSAPApplicationServerInstanceRequest>,
-  output: __S(101, __c12, 5) as any as S.Schema<DeleteSAPApplicationServerInstanceResponse>,
+  input: __S(216, __c27, 0) as any as S.Schema<DeleteSAPApplicationServerInstanceRequest>,
+  output: __S(233, __c29, 1) as any as S.Schema<DeleteSAPApplicationServerInstanceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3814,8 +3814,8 @@ export const DeleteSAPCentralInstance: API.OperationMethod<
   DeleteSAPCentralInstanceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(102, __c12, 6) as any as S.Schema<DeleteSAPCentralInstanceRequest>,
-  output: __S(101, __c12, 5) as any as S.Schema<DeleteSAPCentralInstanceResponse>,
+  input: __S(240, __c30, 0) as any as S.Schema<DeleteSAPCentralInstanceRequest>,
+  output: __S(233, __c29, 1) as any as S.Schema<DeleteSAPCentralInstanceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3829,8 +3829,8 @@ export const DeleteSapCentralServerInstance: API.OperationMethod<
   DeleteSapCentralServerInstanceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(103, __c12, 7) as any as S.Schema<DeleteSapCentralServerInstanceRequest>,
-  output: __S(96, __c12, 0) as any as S.Schema<DeleteSapCentralServerInstanceResponse>,
+  input: __S(248, __c31, 0) as any as S.Schema<DeleteSapCentralServerInstanceRequest>,
+  output: __S(208, __c26, 0) as any as S.Schema<DeleteSapCentralServerInstanceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3844,8 +3844,8 @@ export const DeleteSapDatabaseInstance: API.OperationMethod<
   DeleteSapDatabaseInstanceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(104, __c13, 0) as any as S.Schema<DeleteSapDatabaseInstanceRequest>,
-  output: __S(96, __c12, 0) as any as S.Schema<DeleteSapDatabaseInstanceResponse>,
+  input: __S(256, __c32, 0) as any as S.Schema<DeleteSapDatabaseInstanceRequest>,
+  output: __S(208, __c26, 0) as any as S.Schema<DeleteSapDatabaseInstanceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3859,8 +3859,8 @@ export const DeleteSAPDatabaseInstance: API.OperationMethod<
   DeleteSAPDatabaseInstanceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(105, __c13, 1) as any as S.Schema<DeleteSAPDatabaseInstanceRequest>,
-  output: __S(101, __c12, 5) as any as S.Schema<DeleteSAPDatabaseInstanceResponse>,
+  input: __S(264, __c33, 0) as any as S.Schema<DeleteSAPDatabaseInstanceRequest>,
+  output: __S(233, __c29, 1) as any as S.Schema<DeleteSAPDatabaseInstanceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3874,8 +3874,8 @@ export const DeleteSapLandscapeMonitor: API.OperationMethod<
   DeleteSapLandscapeMonitorError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(106, __c13, 2) as any as S.Schema<DeleteSapLandscapeMonitorRequest>,
-  output: __S(96, __c12, 0) as any as S.Schema<DeleteSapLandscapeMonitorResponse>,
+  input: __S(272, __c34, 0) as any as S.Schema<DeleteSapLandscapeMonitorRequest>,
+  output: __S(208, __c26, 0) as any as S.Schema<DeleteSapLandscapeMonitorResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3889,8 +3889,8 @@ export const DeleteSapVirtualInstance: API.OperationMethod<
   DeleteSapVirtualInstanceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(107, __c13, 3) as any as S.Schema<DeleteSapVirtualInstanceRequest>,
-  output: __S(96, __c12, 0) as any as S.Schema<DeleteSapVirtualInstanceResponse>,
+  input: __S(320, __c40, 0) as any as S.Schema<DeleteSapVirtualInstanceRequest>,
+  output: __S(208, __c26, 0) as any as S.Schema<DeleteSapVirtualInstanceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3904,8 +3904,8 @@ export const DeleteSAPVirtualInstance: API.OperationMethod<
   DeleteSAPVirtualInstanceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(108, __c13, 4) as any as S.Schema<DeleteSAPVirtualInstanceRequest>,
-  output: __S(101, __c12, 5) as any as S.Schema<DeleteSAPVirtualInstanceResponse>,
+  input: __S(328, __c41, 0) as any as S.Schema<DeleteSAPVirtualInstanceRequest>,
+  output: __S(233, __c29, 1) as any as S.Schema<DeleteSAPVirtualInstanceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3919,8 +3919,8 @@ export const GetMonitor: API.OperationMethod<
   GetMonitorError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(109, __c13, 5) as any as S.Schema<GetMonitorRequest>,
-  output: __S(15, __c1, 7) as any as S.Schema<GetMonitorResponse>,
+  input: __S(336, __c42, 0) as any as S.Schema<GetMonitorRequest>,
+  output: __S(64, __c8, 0) as any as S.Schema<GetMonitorResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3934,8 +3934,8 @@ export const GetProviderInstance: API.OperationMethod<
   GetProviderInstanceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(110, __c13, 6) as any as S.Schema<GetProviderInstanceRequest>,
-  output: __S(111, __c13, 7) as any as S.Schema<GetProviderInstanceResponse>,
+  input: __S(344, __c43, 0) as any as S.Schema<GetProviderInstanceRequest>,
+  output: __S(345, __c43, 1) as any as S.Schema<GetProviderInstanceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3949,8 +3949,8 @@ export const GetSapApplicationServerInstance: API.OperationMethod<
   GetSapApplicationServerInstanceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(112, __c14, 0) as any as S.Schema<GetSapApplicationServerInstanceRequest>,
-  output: __S(35, __c4, 3) as any as S.Schema<GetSapApplicationServerInstanceResponse>,
+  input: __S(352, __c44, 0) as any as S.Schema<GetSapApplicationServerInstanceRequest>,
+  output: __S(289, __c36, 1) as any as S.Schema<GetSapApplicationServerInstanceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3964,8 +3964,8 @@ export const GetSAPApplicationServerInstance: API.OperationMethod<
   GetSAPApplicationServerInstanceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(113, __c14, 1) as any as S.Schema<GetSAPApplicationServerInstanceRequest>,
-  output: __S(38, __c4, 6) as any as S.Schema<GetSAPApplicationServerInstanceResponse>,
+  input: __S(360, __c45, 0) as any as S.Schema<GetSAPApplicationServerInstanceRequest>,
+  output: __S(409, __c51, 1) as any as S.Schema<GetSAPApplicationServerInstanceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3979,8 +3979,8 @@ export const GetSAPCentralInstance: API.OperationMethod<
   GetSAPCentralInstanceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(114, __c14, 2) as any as S.Schema<GetSAPCentralInstanceRequest>,
-  output: __S(48, __c6, 0) as any as S.Schema<GetSAPCentralInstanceResponse>,
+  input: __S(368, __c46, 0) as any as S.Schema<GetSAPCentralInstanceRequest>,
+  output: __S(556, __c69, 4) as any as S.Schema<GetSAPCentralInstanceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3994,8 +3994,8 @@ export const GetSapCentralServerInstance: API.OperationMethod<
   GetSapCentralServerInstanceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(115, __c14, 3) as any as S.Schema<GetSapCentralServerInstanceRequest>,
-  output: __S(54, __c6, 6) as any as S.Schema<GetSapCentralServerInstanceResponse>,
+  input: __S(376, __c47, 0) as any as S.Schema<GetSapCentralServerInstanceRequest>,
+  output: __S(688, __c86, 0) as any as S.Schema<GetSapCentralServerInstanceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4009,8 +4009,8 @@ export const GetSapDatabaseInstance: API.OperationMethod<
   GetSapDatabaseInstanceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(116, __c14, 4) as any as S.Schema<GetSapDatabaseInstanceRequest>,
-  output: __S(59, __c7, 3) as any as S.Schema<GetSapDatabaseInstanceResponse>,
+  input: __S(384, __c48, 0) as any as S.Schema<GetSapDatabaseInstanceRequest>,
+  output: __S(800, __c100, 0) as any as S.Schema<GetSapDatabaseInstanceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4024,8 +4024,8 @@ export const GetSAPDatabaseInstance: API.OperationMethod<
   GetSAPDatabaseInstanceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(117, __c14, 5) as any as S.Schema<GetSAPDatabaseInstanceRequest>,
-  output: __S(62, __c7, 6) as any as S.Schema<GetSAPDatabaseInstanceResponse>,
+  input: __S(392, __c49, 0) as any as S.Schema<GetSAPDatabaseInstanceRequest>,
+  output: __S(912, __c114, 0) as any as S.Schema<GetSAPDatabaseInstanceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4039,8 +4039,8 @@ export const GetSapLandscapeMonitor: API.OperationMethod<
   GetSapLandscapeMonitorError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(118, __c14, 6) as any as S.Schema<GetSapLandscapeMonitorRequest>,
-  output: __S(71, __c8, 7) as any as S.Schema<GetSapLandscapeMonitorResponse>,
+  input: __S(416, __c52, 0) as any as S.Schema<GetSapLandscapeMonitorRequest>,
+  output: __S(1016, __c127, 0) as any as S.Schema<GetSapLandscapeMonitorResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4054,8 +4054,8 @@ export const GetSapVirtualInstance: API.OperationMethod<
   GetSapVirtualInstanceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(119, __c14, 7) as any as S.Schema<GetSapVirtualInstanceRequest>,
-  output: __S(78, __c9, 6) as any as S.Schema<GetSapVirtualInstanceResponse>,
+  input: __S(424, __c53, 0) as any as S.Schema<GetSapVirtualInstanceRequest>,
+  output: __S(1064, __c133, 0) as any as S.Schema<GetSapVirtualInstanceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4069,8 +4069,8 @@ export const GetSAPVirtualInstance: API.OperationMethod<
   GetSAPVirtualInstanceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(120, __c15, 0) as any as S.Schema<GetSAPVirtualInstanceRequest>,
-  output: __S(83, __c10, 3) as any as S.Schema<GetSAPVirtualInstanceResponse>,
+  input: __S(432, __c54, 0) as any as S.Schema<GetSAPVirtualInstanceRequest>,
+  output: __S(160, __c20, 0) as any as S.Schema<GetSAPVirtualInstanceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4085,11 +4085,11 @@ export const InvokeSapVirtualInstanceAvailabilityZoneDetails: API.OperationMetho
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    121,
-    __c15,
-    1,
+    440,
+    __c55,
+    0,
   ) as any as S.Schema<InvokeSapVirtualInstanceAvailabilityZoneDetailsRequest>,
-  output: __S(124, __c15, 4) as any as S.Schema<SAPAvailabilityZoneDetailsResult>,
+  output: __S(450, __c56, 2) as any as S.Schema<SAPAvailabilityZoneDetailsResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4103,8 +4103,8 @@ export const InvokeSapVirtualInstanceDiskConfigurations: API.OperationMethod<
   InvokeSapVirtualInstanceDiskConfigurationsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(125, __c15, 5) as any as S.Schema<InvokeSapVirtualInstanceDiskConfigurationsRequest>,
-  output: __S(132, __c16, 4) as any as S.Schema<SAPDiskConfigurationsResult>,
+  input: __S(456, __c57, 0) as any as S.Schema<InvokeSapVirtualInstanceDiskConfigurationsRequest>,
+  output: __S(460, __c57, 4) as any as S.Schema<SAPDiskConfigurationsResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4118,8 +4118,8 @@ export const InvokeSapVirtualInstanceSapSupportedSku: API.OperationMethod<
   InvokeSapVirtualInstanceSapSupportedSkuError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(133, __c16, 5) as any as S.Schema<InvokeSapVirtualInstanceSapSupportedSkuRequest>,
-  output: __S(136, __c17, 0) as any as S.Schema<SAPSupportedResourceSkusResult>,
+  input: __S(472, __c59, 0) as any as S.Schema<InvokeSapVirtualInstanceSapSupportedSkuRequest>,
+  output: __S(482, __c60, 2) as any as S.Schema<SAPSupportedResourceSkusResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4134,11 +4134,11 @@ export const InvokeSapVirtualInstanceSizingRecommendations: API.OperationMethod<
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    137,
-    __c17,
-    1,
+    488,
+    __c61,
+    0,
   ) as any as S.Schema<InvokeSapVirtualInstanceSizingRecommendationsRequest>,
-  output: __S(138, __c17, 2) as any as S.Schema<SAPSizingRecommendationResult>,
+  output: __S(496, __c62, 0) as any as S.Schema<SAPSizingRecommendationResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4152,8 +4152,8 @@ export const ListMonitorByResourceGroup: API.OperationMethod<
   ListMonitorByResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(139, __c17, 3) as any as S.Schema<ListMonitorByResourceGroupRequest>,
-  output: __S(143, __c17, 7) as any as S.Schema<MonitorListResult>,
+  input: __S(504, __c63, 0) as any as S.Schema<ListMonitorByResourceGroupRequest>,
+  output: __S(514, __c64, 2) as any as S.Schema<MonitorListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4167,8 +4167,8 @@ export const ListMonitors: API.OperationMethod<
   ListMonitorsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(144, __c18, 0) as any as S.Schema<ListMonitorsRequest>,
-  output: __S(143, __c17, 7) as any as S.Schema<MonitorListResult>,
+  input: __S(528, __c66, 0) as any as S.Schema<ListMonitorsRequest>,
+  output: __S(514, __c64, 2) as any as S.Schema<MonitorListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4182,8 +4182,8 @@ export const ListOperations: API.OperationMethod<
   ListOperationsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(145, __c18, 1) as any as S.Schema<ListOperationsRequest>,
-  output: __S(149, __c18, 5) as any as S.Schema<ListOperationsResponse>,
+  input: __S(536, __c67, 0) as any as S.Schema<ListOperationsRequest>,
+  output: __S(540, __c67, 4) as any as S.Schema<ListOperationsResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4197,8 +4197,8 @@ export const ListProviderInstances: API.OperationMethod<
   ListProviderInstancesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(150, __c18, 6) as any as S.Schema<ListProviderInstancesRequest>,
-  output: __S(153, __c19, 1) as any as S.Schema<ProviderInstanceListResult>,
+  input: __S(576, __c72, 0) as any as S.Schema<ListProviderInstancesRequest>,
+  output: __S(579, __c72, 3) as any as S.Schema<ProviderInstanceListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4212,8 +4212,8 @@ export const ListSapApplicationServerInstances: API.OperationMethod<
   ListSapApplicationServerInstancesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(154, __c19, 2) as any as S.Schema<ListSapApplicationServerInstancesRequest>,
-  output: __S(156, __c19, 4) as any as S.Schema<SAPApplicationServerInstanceListResult>,
+  input: __S(584, __c73, 0) as any as S.Schema<ListSapApplicationServerInstancesRequest>,
+  output: __S(586, __c73, 2) as any as S.Schema<SAPApplicationServerInstanceListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4227,8 +4227,8 @@ export const ListSAPApplicationServerInstances: API.OperationMethod<
   ListSAPApplicationServerInstancesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(157, __c19, 5) as any as S.Schema<ListSAPApplicationServerInstancesRequest>,
-  output: __S(159, __c19, 7) as any as S.Schema<SAPApplicationServerInstanceList>,
+  input: __S(592, __c74, 0) as any as S.Schema<ListSAPApplicationServerInstancesRequest>,
+  output: __S(594, __c74, 2) as any as S.Schema<SAPApplicationServerInstanceList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4242,8 +4242,8 @@ export const ListSAPCentralInstances: API.OperationMethod<
   ListSAPCentralInstancesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(160, __c20, 0) as any as S.Schema<ListSAPCentralInstancesRequest>,
-  output: __S(162, __c20, 2) as any as S.Schema<SAPCentralInstanceList>,
+  input: __S(600, __c75, 0) as any as S.Schema<ListSAPCentralInstancesRequest>,
+  output: __S(602, __c75, 2) as any as S.Schema<SAPCentralInstanceList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4257,8 +4257,8 @@ export const ListSapCentralServerInstances: API.OperationMethod<
   ListSapCentralServerInstancesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(163, __c20, 3) as any as S.Schema<ListSapCentralServerInstancesRequest>,
-  output: __S(166, __c20, 6) as any as S.Schema<SAPCentralServerInstanceListResult>,
+  input: __S(608, __c76, 0) as any as S.Schema<ListSapCentralServerInstancesRequest>,
+  output: __S(611, __c76, 3) as any as S.Schema<SAPCentralServerInstanceListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4272,8 +4272,8 @@ export const ListSapDatabaseInstances: API.OperationMethod<
   ListSapDatabaseInstancesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(167, __c20, 7) as any as S.Schema<ListSapDatabaseInstancesRequest>,
-  output: __S(170, __c21, 2) as any as S.Schema<SAPDatabaseInstanceListResult>,
+  input: __S(616, __c77, 0) as any as S.Schema<ListSapDatabaseInstancesRequest>,
+  output: __S(619, __c77, 3) as any as S.Schema<SAPDatabaseInstanceListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4287,8 +4287,8 @@ export const ListSAPDatabaseInstances: API.OperationMethod<
   ListSAPDatabaseInstancesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(171, __c21, 3) as any as S.Schema<ListSAPDatabaseInstancesRequest>,
-  output: __S(174, __c21, 6) as any as S.Schema<SAPDatabaseInstanceList>,
+  input: __S(624, __c78, 0) as any as S.Schema<ListSAPDatabaseInstancesRequest>,
+  output: __S(627, __c78, 3) as any as S.Schema<SAPDatabaseInstanceList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4302,8 +4302,8 @@ export const ListSapLandscapeMonitor: API.OperationMethod<
   ListSapLandscapeMonitorError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(175, __c21, 7) as any as S.Schema<ListSapLandscapeMonitorRequest>,
-  output: __S(178, __c22, 2) as any as S.Schema<SapLandscapeMonitorListResult>,
+  input: __S(632, __c79, 0) as any as S.Schema<ListSapLandscapeMonitorRequest>,
+  output: __S(635, __c79, 3) as any as S.Schema<SapLandscapeMonitorListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4317,8 +4317,8 @@ export const ListSapVirtualInstanceByResourceGroup: API.OperationMethod<
   ListSapVirtualInstanceByResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(179, __c22, 3) as any as S.Schema<ListSapVirtualInstanceByResourceGroupRequest>,
-  output: __S(182, __c22, 6) as any as S.Schema<SAPVirtualInstanceListResult>,
+  input: __S(640, __c80, 0) as any as S.Schema<ListSapVirtualInstanceByResourceGroupRequest>,
+  output: __S(650, __c81, 2) as any as S.Schema<SAPVirtualInstanceListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4332,8 +4332,8 @@ export const ListSAPVirtualInstanceByResourceGroup: API.OperationMethod<
   ListSAPVirtualInstanceByResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(183, __c22, 7) as any as S.Schema<ListSAPVirtualInstanceByResourceGroupRequest>,
-  output: __S(186, __c23, 2) as any as S.Schema<SAPVirtualInstanceList>,
+  input: __S(656, __c82, 0) as any as S.Schema<ListSAPVirtualInstanceByResourceGroupRequest>,
+  output: __S(666, __c83, 2) as any as S.Schema<SAPVirtualInstanceList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4347,8 +4347,8 @@ export const ListSapVirtualInstanceBySubscription: API.OperationMethod<
   ListSapVirtualInstanceBySubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(187, __c23, 3) as any as S.Schema<ListSapVirtualInstanceBySubscriptionRequest>,
-  output: __S(182, __c22, 6) as any as S.Schema<SAPVirtualInstanceListResult>,
+  input: __S(696, __c87, 0) as any as S.Schema<ListSapVirtualInstanceBySubscriptionRequest>,
+  output: __S(650, __c81, 2) as any as S.Schema<SAPVirtualInstanceListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4362,8 +4362,8 @@ export const ListSAPVirtualInstanceBySubscription: API.OperationMethod<
   ListSAPVirtualInstanceBySubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(188, __c23, 4) as any as S.Schema<ListSAPVirtualInstanceBySubscriptionRequest>,
-  output: __S(186, __c23, 2) as any as S.Schema<SAPVirtualInstanceList>,
+  input: __S(704, __c88, 0) as any as S.Schema<ListSAPVirtualInstanceBySubscriptionRequest>,
+  output: __S(666, __c83, 2) as any as S.Schema<SAPVirtualInstanceList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4377,8 +4377,8 @@ export const SAPAvailabilityZoneDetails: API.OperationMethod<
   SAPAvailabilityZoneDetailsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(189, __c23, 5) as any as S.Schema<SAPAvailabilityZoneDetailsRequest>,
-  output: __S(124, __c15, 4) as any as S.Schema<SAPAvailabilityZoneDetailsResult>,
+  input: __S(712, __c89, 0) as any as S.Schema<SAPAvailabilityZoneDetailsRequest>,
+  output: __S(450, __c56, 2) as any as S.Schema<SAPAvailabilityZoneDetailsResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4392,8 +4392,8 @@ export const SAPDiskConfigurations: API.OperationMethod<
   SAPDiskConfigurationsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(190, __c23, 6) as any as S.Schema<SAPDiskConfigurationsRequest>,
-  output: __S(194, __c24, 2) as any as S.Schema<SAPDiskConfigurationsResult_2>,
+  input: __S(720, __c90, 0) as any as S.Schema<SAPDiskConfigurationsRequest>,
+  output: __S(724, __c90, 4) as any as S.Schema<SAPDiskConfigurationsResult_2>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4407,8 +4407,8 @@ export const SAPSizingRecommendations: API.OperationMethod<
   SAPSizingRecommendationsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(195, __c24, 3) as any as S.Schema<SAPSizingRecommendationsRequest>,
-  output: __S(138, __c17, 2) as any as S.Schema<SAPSizingRecommendationResult_2>,
+  input: __S(728, __c91, 0) as any as S.Schema<SAPSizingRecommendationsRequest>,
+  output: __S(496, __c62, 0) as any as S.Schema<SAPSizingRecommendationResult_2>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4422,8 +4422,8 @@ export const SAPSupportedSku2: API.OperationMethod<
   SAPSupportedSku2Error,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(196, __c24, 4) as any as S.Schema<SAPSupportedSkuRequest>,
-  output: __S(136, __c17, 0) as any as S.Schema<SAPSupportedResourceSkusResult>,
+  input: __S(736, __c92, 0) as any as S.Schema<SAPSupportedSkuRequest>,
+  output: __S(482, __c60, 2) as any as S.Schema<SAPSupportedResourceSkusResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4437,8 +4437,8 @@ export const StartSapApplicationServerInstance: API.OperationMethod<
   StartSapApplicationServerInstanceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(197, __c24, 5) as any as S.Schema<StartSapApplicationServerInstanceRequest>,
-  output: __S(201, __c25, 1) as any as S.Schema<StartSapApplicationServerInstanceResponse>,
+  input: __S(744, __c93, 0) as any as S.Schema<StartSapApplicationServerInstanceRequest>,
+  output: __S(755, __c94, 3) as any as S.Schema<StartSapApplicationServerInstanceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4452,8 +4452,8 @@ export const StartSAPApplicationServerInstanceInstance: API.OperationMethod<
   StartSAPApplicationServerInstanceInstanceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(202, __c25, 2) as any as S.Schema<StartSAPApplicationServerInstanceInstanceRequest>,
-  output: __S(204, __c25, 4) as any as S.Schema<StartSAPApplicationServerInstanceInstanceResponse>,
+  input: __S(760, __c95, 0) as any as S.Schema<StartSAPApplicationServerInstanceInstanceRequest>,
+  output: __S(762, __c95, 2) as any as S.Schema<StartSAPApplicationServerInstanceInstanceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4467,8 +4467,8 @@ export const StartSAPCentralInstanceInstance: API.OperationMethod<
   StartSAPCentralInstanceInstanceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(205, __c25, 5) as any as S.Schema<StartSAPCentralInstanceInstanceRequest>,
-  output: __S(101, __c12, 5) as any as S.Schema<StartSAPCentralInstanceInstanceResponse>,
+  input: __S(768, __c96, 0) as any as S.Schema<StartSAPCentralInstanceInstanceRequest>,
+  output: __S(233, __c29, 1) as any as S.Schema<StartSAPCentralInstanceInstanceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4482,8 +4482,8 @@ export const StartSapCentralServerInstance: API.OperationMethod<
   StartSapCentralServerInstanceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(206, __c25, 6) as any as S.Schema<StartSapCentralServerInstanceRequest>,
-  output: __S(201, __c25, 1) as any as S.Schema<StartSapCentralServerInstanceResponse>,
+  input: __S(776, __c97, 0) as any as S.Schema<StartSapCentralServerInstanceRequest>,
+  output: __S(755, __c94, 3) as any as S.Schema<StartSapCentralServerInstanceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4497,8 +4497,8 @@ export const StartSapDatabaseInstance: API.OperationMethod<
   StartSapDatabaseInstanceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(207, __c25, 7) as any as S.Schema<StartSapDatabaseInstanceRequest>,
-  output: __S(201, __c25, 1) as any as S.Schema<StartSapDatabaseInstanceResponse>,
+  input: __S(816, __c102, 0) as any as S.Schema<StartSapDatabaseInstanceRequest>,
+  output: __S(755, __c94, 3) as any as S.Schema<StartSapDatabaseInstanceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4512,8 +4512,8 @@ export const StartSAPDatabaseInstanceInstance: API.OperationMethod<
   StartSAPDatabaseInstanceInstanceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(208, __c26, 0) as any as S.Schema<StartSAPDatabaseInstanceInstanceRequest>,
-  output: __S(101, __c12, 5) as any as S.Schema<StartSAPDatabaseInstanceInstanceResponse>,
+  input: __S(824, __c103, 0) as any as S.Schema<StartSAPDatabaseInstanceInstanceRequest>,
+  output: __S(233, __c29, 1) as any as S.Schema<StartSAPDatabaseInstanceInstanceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4527,8 +4527,8 @@ export const StartSapVirtualInstance: API.OperationMethod<
   StartSapVirtualInstanceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(209, __c26, 1) as any as S.Schema<StartSapVirtualInstanceRequest>,
-  output: __S(201, __c25, 1) as any as S.Schema<StartSapVirtualInstanceResponse>,
+  input: __S(832, __c104, 0) as any as S.Schema<StartSapVirtualInstanceRequest>,
+  output: __S(755, __c94, 3) as any as S.Schema<StartSapVirtualInstanceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4542,8 +4542,8 @@ export const StartSAPVirtualInstance: API.OperationMethod<
   StartSAPVirtualInstanceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(210, __c26, 2) as any as S.Schema<StartSAPVirtualInstanceRequest>,
-  output: __S(101, __c12, 5) as any as S.Schema<StartSAPVirtualInstanceResponse>,
+  input: __S(840, __c105, 0) as any as S.Schema<StartSAPVirtualInstanceRequest>,
+  output: __S(233, __c29, 1) as any as S.Schema<StartSAPVirtualInstanceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4557,8 +4557,8 @@ export const StopSapApplicationServerInstance: API.OperationMethod<
   StopSapApplicationServerInstanceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(211, __c26, 3) as any as S.Schema<StopSapApplicationServerInstanceRequest>,
-  output: __S(201, __c25, 1) as any as S.Schema<StopSapApplicationServerInstanceResponse>,
+  input: __S(848, __c106, 0) as any as S.Schema<StopSapApplicationServerInstanceRequest>,
+  output: __S(755, __c94, 3) as any as S.Schema<StopSapApplicationServerInstanceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4572,8 +4572,8 @@ export const StopSAPApplicationServerInstanceInstance: API.OperationMethod<
   StopSAPApplicationServerInstanceInstanceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(212, __c26, 4) as any as S.Schema<StopSAPApplicationServerInstanceInstanceRequest>,
-  output: __S(101, __c12, 5) as any as S.Schema<StopSAPApplicationServerInstanceInstanceResponse>,
+  input: __S(856, __c107, 0) as any as S.Schema<StopSAPApplicationServerInstanceInstanceRequest>,
+  output: __S(233, __c29, 1) as any as S.Schema<StopSAPApplicationServerInstanceInstanceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4587,8 +4587,8 @@ export const StopSAPCentralInstanceInstance: API.OperationMethod<
   StopSAPCentralInstanceInstanceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(213, __c26, 5) as any as S.Schema<StopSAPCentralInstanceInstanceRequest>,
-  output: __S(101, __c12, 5) as any as S.Schema<StopSAPCentralInstanceInstanceResponse>,
+  input: __S(864, __c108, 0) as any as S.Schema<StopSAPCentralInstanceInstanceRequest>,
+  output: __S(233, __c29, 1) as any as S.Schema<StopSAPCentralInstanceInstanceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4602,8 +4602,8 @@ export const StopSapCentralServerInstance: API.OperationMethod<
   StopSapCentralServerInstanceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(214, __c26, 6) as any as S.Schema<StopSapCentralServerInstanceRequest>,
-  output: __S(201, __c25, 1) as any as S.Schema<StopSapCentralServerInstanceResponse>,
+  input: __S(872, __c109, 0) as any as S.Schema<StopSapCentralServerInstanceRequest>,
+  output: __S(755, __c94, 3) as any as S.Schema<StopSapCentralServerInstanceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4617,8 +4617,8 @@ export const StopSapDatabaseInstance: API.OperationMethod<
   StopSapDatabaseInstanceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(215, __c26, 7) as any as S.Schema<StopSapDatabaseInstanceRequest>,
-  output: __S(201, __c25, 1) as any as S.Schema<StopSapDatabaseInstanceResponse>,
+  input: __S(880, __c110, 0) as any as S.Schema<StopSapDatabaseInstanceRequest>,
+  output: __S(755, __c94, 3) as any as S.Schema<StopSapDatabaseInstanceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4632,8 +4632,8 @@ export const StopSAPDatabaseInstanceInstance: API.OperationMethod<
   StopSAPDatabaseInstanceInstanceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(216, __c27, 0) as any as S.Schema<StopSAPDatabaseInstanceInstanceRequest>,
-  output: __S(101, __c12, 5) as any as S.Schema<StopSAPDatabaseInstanceInstanceResponse>,
+  input: __S(888, __c111, 0) as any as S.Schema<StopSAPDatabaseInstanceInstanceRequest>,
+  output: __S(233, __c29, 1) as any as S.Schema<StopSAPDatabaseInstanceInstanceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4647,8 +4647,8 @@ export const StopSapVirtualInstance: API.OperationMethod<
   StopSapVirtualInstanceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(217, __c27, 1) as any as S.Schema<StopSapVirtualInstanceRequest>,
-  output: __S(201, __c25, 1) as any as S.Schema<StopSapVirtualInstanceResponse>,
+  input: __S(920, __c115, 0) as any as S.Schema<StopSapVirtualInstanceRequest>,
+  output: __S(755, __c94, 3) as any as S.Schema<StopSapVirtualInstanceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4662,8 +4662,8 @@ export const StopSAPVirtualInstance: API.OperationMethod<
   StopSAPVirtualInstanceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(218, __c27, 2) as any as S.Schema<StopSAPVirtualInstanceRequest>,
-  output: __S(101, __c12, 5) as any as S.Schema<StopSAPVirtualInstanceResponse>,
+  input: __S(928, __c116, 0) as any as S.Schema<StopSAPVirtualInstanceRequest>,
+  output: __S(233, __c29, 1) as any as S.Schema<StopSAPVirtualInstanceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4677,8 +4677,8 @@ export const UpdateMonitor: API.OperationMethod<
   UpdateMonitorError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(219, __c27, 3) as any as S.Schema<UpdateMonitorRequest>,
-  output: __S(15, __c1, 7) as any as S.Schema<UpdateMonitorResponse>,
+  input: __S(936, __c117, 0) as any as S.Schema<UpdateMonitorRequest>,
+  output: __S(64, __c8, 0) as any as S.Schema<UpdateMonitorResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4692,8 +4692,8 @@ export const UpdateSapApplicationServerInstance: API.OperationMethod<
   UpdateSapApplicationServerInstanceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(220, __c27, 4) as any as S.Schema<UpdateSapApplicationServerInstanceRequest>,
-  output: __S(35, __c4, 3) as any as S.Schema<UpdateSapApplicationServerInstanceResponse>,
+  input: __S(944, __c118, 0) as any as S.Schema<UpdateSapApplicationServerInstanceRequest>,
+  output: __S(289, __c36, 1) as any as S.Schema<UpdateSapApplicationServerInstanceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4707,8 +4707,8 @@ export const UpdateSAPApplicationServerInstance: API.OperationMethod<
   UpdateSAPApplicationServerInstanceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(221, __c27, 5) as any as S.Schema<UpdateSAPApplicationServerInstanceRequest>,
-  output: __S(38, __c4, 6) as any as S.Schema<UpdateSAPApplicationServerInstanceResponse>,
+  input: __S(952, __c119, 0) as any as S.Schema<UpdateSAPApplicationServerInstanceRequest>,
+  output: __S(409, __c51, 1) as any as S.Schema<UpdateSAPApplicationServerInstanceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4722,8 +4722,8 @@ export const UpdateSAPCentralInstance: API.OperationMethod<
   UpdateSAPCentralInstanceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(222, __c27, 6) as any as S.Schema<UpdateSAPCentralInstanceRequest>,
-  output: __S(48, __c6, 0) as any as S.Schema<UpdateSAPCentralInstanceResponse>,
+  input: __S(960, __c120, 0) as any as S.Schema<UpdateSAPCentralInstanceRequest>,
+  output: __S(556, __c69, 4) as any as S.Schema<UpdateSAPCentralInstanceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4737,8 +4737,8 @@ export const UpdateSapCentralServerInstance: API.OperationMethod<
   UpdateSapCentralServerInstanceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(223, __c27, 7) as any as S.Schema<UpdateSapCentralServerInstanceRequest>,
-  output: __S(54, __c6, 6) as any as S.Schema<UpdateSapCentralServerInstanceResponse>,
+  input: __S(968, __c121, 0) as any as S.Schema<UpdateSapCentralServerInstanceRequest>,
+  output: __S(688, __c86, 0) as any as S.Schema<UpdateSapCentralServerInstanceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4752,8 +4752,8 @@ export const UpdateSapDatabaseInstance: API.OperationMethod<
   UpdateSapDatabaseInstanceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(224, __c28, 0) as any as S.Schema<UpdateSapDatabaseInstanceRequest>,
-  output: __S(59, __c7, 3) as any as S.Schema<UpdateSapDatabaseInstanceResponse>,
+  input: __S(976, __c122, 0) as any as S.Schema<UpdateSapDatabaseInstanceRequest>,
+  output: __S(800, __c100, 0) as any as S.Schema<UpdateSapDatabaseInstanceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4767,8 +4767,8 @@ export const UpdateSAPDatabaseInstance: API.OperationMethod<
   UpdateSAPDatabaseInstanceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(225, __c28, 1) as any as S.Schema<UpdateSAPDatabaseInstanceRequest>,
-  output: __S(62, __c7, 6) as any as S.Schema<UpdateSAPDatabaseInstanceResponse>,
+  input: __S(984, __c123, 0) as any as S.Schema<UpdateSAPDatabaseInstanceRequest>,
+  output: __S(912, __c114, 0) as any as S.Schema<UpdateSAPDatabaseInstanceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4782,8 +4782,8 @@ export const UpdateSapLandscapeMonitor: API.OperationMethod<
   UpdateSapLandscapeMonitorError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(226, __c28, 2) as any as S.Schema<UpdateSapLandscapeMonitorRequest>,
-  output: __S(71, __c8, 7) as any as S.Schema<UpdateSapLandscapeMonitorResponse>,
+  input: __S(992, __c124, 0) as any as S.Schema<UpdateSapLandscapeMonitorRequest>,
+  output: __S(1016, __c127, 0) as any as S.Schema<UpdateSapLandscapeMonitorResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4797,8 +4797,8 @@ export const UpdateSapVirtualInstance: API.OperationMethod<
   UpdateSapVirtualInstanceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(228, __c28, 4) as any as S.Schema<UpdateSapVirtualInstanceRequest>,
-  output: __S(78, __c9, 6) as any as S.Schema<UpdateSapVirtualInstanceResponse>,
+  input: __S(1033, __c129, 1) as any as S.Schema<UpdateSapVirtualInstanceRequest>,
+  output: __S(1064, __c133, 0) as any as S.Schema<UpdateSapVirtualInstanceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4812,8 +4812,8 @@ export const UpdateSAPVirtualInstance: API.OperationMethod<
   UpdateSAPVirtualInstanceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(229, __c28, 5) as any as S.Schema<UpdateSAPVirtualInstanceRequest>,
-  output: __S(83, __c10, 3) as any as S.Schema<UpdateSAPVirtualInstanceResponse>,
+  input: __S(1040, __c130, 0) as any as S.Schema<UpdateSAPVirtualInstanceRequest>,
+  output: __S(160, __c20, 0) as any as S.Schema<UpdateSAPVirtualInstanceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4823,49 +4823,26 @@ export const UpdateSAPVirtualInstance: API.OperationMethod<
 function __c0(j: number): any {
   switch (j) {
     case 0:
-      return S.Record(S.String, S.String);
-    case 1:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "UserAssignedIdentityInput",
-      });
-    case 2:
-      return S.Record(S.String, __S(1, __c0, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          type: S.String,
-          userAssignedIdentities: S.optional(S.NullOr(__S(2, __c0, 2))),
-        }),
-      ).annotate({
-        identifier: "CreateMonitorRequestIdentity",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ManagedRGConfiguration" });
-    case 5:
       return S.suspend(() =>
         S.Struct({
           appLocation: S.optional(S.String),
           routingPreference: S.optional(S.String),
           zoneRedundancyPreference: S.optional(S.String),
-          managedResourceGroupConfiguration: S.optional(__S(4, __c0, 4)),
+          managedResourceGroupConfiguration: S.optional(__S(80, __c10, 0)),
           logAnalyticsWorkspaceArmId: S.optional(S.String),
           monitorSubnet: S.optional(S.String),
         }),
       ).annotate({ identifier: "MonitorPropertiesInput" });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           monitorName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(0, __c0, 0)),
+          tags: S.optional(__S(40, __c5, 0)),
           location: S.String,
-          identity: S.optional(__S(3, __c0, 3)),
-          properties: S.optional(__S(5, __c0, 5)),
+          identity: S.optional(__S(72, __c9, 0)),
+          properties: S.optional(__S(0, __c0, 0)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -4875,7 +4852,11 @@ function __c0(j: number): any {
           }),
         ),
       ).annotate({ identifier: "CreateMonitorRequest" });
-    case 7:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           createdBy: S.optional(S.String),
@@ -4888,7 +4869,37 @@ function __c0(j: number): any {
       ).annotate({ identifier: "SystemData" });
   }
 }
-function __c1(j: number): any {
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "UserAssignedIdentityInput",
+      });
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(/*@__PURE__*/ S.suspend(() => __S(26, __c3, 2)));
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          innerError: S.optional(S.suspend(() => __S(26, __c3, 2))),
+        }),
+      ).annotate({ identifier: "ErrorInnerError" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          code: S.optional(S.String),
+          message: S.optional(S.String),
+          target: S.optional(S.String),
+          details: S.optional(__S(24, __c3, 0)),
+          innerError: S.optional(__S(25, __c3, 1)),
+        }),
+      ).annotate({ identifier: "Error" });
+  }
+}
+function __c4(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4897,81 +4908,176 @@ function __c1(j: number): any {
           clientId: S.optional(S.String),
         }),
       ).annotate({ identifier: "UserAssignedIdentity" });
-    case 1:
-      return S.Record(S.String, __S(8, __c1, 0));
-    case 2:
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, S.String);
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           type: S.String,
-          userAssignedIdentities: S.optional(S.NullOr(__S(9, __c1, 1))),
+          userAssignedIdentities: S.optional(S.NullOr(__S(88, __c11, 0))),
         }),
       ).annotate({
         identifier: "CreateMonitorResponseIdentity",
       });
-    case 3:
-      return S.Array(/*@__PURE__*/ S.suspend(() => __S(13, __c1, 5)));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          innerError: S.optional(S.suspend(() => __S(13, __c1, 5))),
-        }),
-      ).annotate({ identifier: "ErrorInnerError" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          code: S.optional(S.String),
-          message: S.optional(S.String),
-          target: S.optional(S.String),
-          details: S.optional(__S(11, __c1, 3)),
-          innerError: S.optional(__S(12, __c1, 4)),
-        }),
-      ).annotate({ identifier: "Error" });
-    case 6:
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           provisioningState: S.optional(S.String),
-          errors: S.optional(__S(13, __c1, 5)),
+          errors: S.optional(__S(26, __c3, 2)),
           appLocation: S.optional(S.String),
           routingPreference: S.optional(S.String),
           zoneRedundancyPreference: S.optional(S.String),
-          managedResourceGroupConfiguration: S.optional(__S(4, __c0, 4)),
+          managedResourceGroupConfiguration: S.optional(__S(80, __c10, 0)),
           logAnalyticsWorkspaceArmId: S.optional(S.String),
           monitorSubnet: S.optional(S.String),
           msiArmId: S.optional(S.String),
           storageAccountArmId: S.optional(S.String),
         }),
       ).annotate({ identifier: "MonitorProperties" });
-    case 7:
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(7, __c0, 7)),
-          tags: S.optional(__S(0, __c0, 0)),
+          systemData: S.optional(__S(8, __c1, 0)),
+          tags: S.optional(__S(40, __c5, 0)),
           location: S.String,
-          identity: S.optional(__S(10, __c1, 2)),
-          properties: S.optional(__S(14, __c1, 6)),
+          identity: S.optional(__S(48, __c6, 0)),
+          properties: S.optional(__S(56, __c7, 0)),
         }),
       ).annotate({ identifier: "CreateMonitorResponse" });
   }
 }
-function __c2(j: number): any {
+function __c9(j: number): any {
   switch (j) {
     case 0:
-      return S.Record(S.String, __S(1, __c0, 1));
+      return S.suspend(() =>
+        S.Struct({
+          type: S.String,
+          userAssignedIdentities: S.optional(S.NullOr(__S(96, __c12, 0))),
+        }),
+      ).annotate({
+        identifier: "CreateMonitorRequestIdentity",
+      });
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ManagedRGConfiguration" });
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, __S(32, __c4, 0));
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, __S(16, __c2, 0));
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          providerSettings: S.optional(__S(128, __c16, 0)),
+        }),
+      ).annotate({
+        identifier: "ProviderInstancePropertiesInput",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          monitorName: S.String.pipe(T.Label()),
+          providerInstanceName: S.String.pipe(T.Label()),
+          identity: S.optional(__S(121, __c15, 1)),
+          properties: S.optional(__S(104, __c13, 0)),
+        }).pipe(
+          T.Http({
+            method: "PUT",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Workloads/monitors/{monitorName}/providerInstances/{providerInstanceName}",
+            code: 200,
+            apiVersion: "2023-04-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateProviderInstanceRequest",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(8, __c1, 0)),
+          identity: S.optional(__S(113, __c14, 1)),
+          properties: S.optional(__S(129, __c16, 1)),
+        }),
+      ).annotate({
+        identifier: "CreateProviderInstanceResponse",
+      });
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, __S(32, __c4, 0));
     case 1:
       return S.suspend(() =>
         S.Struct({
           type: S.String,
-          userAssignedIdentities: S.optional(S.NullOr(__S(16, __c2, 0))),
+          userAssignedIdentities: S.optional(S.NullOr(__S(112, __c14, 0))),
+        }),
+      ).annotate({
+        identifier: "CreateProviderInstanceResponseIdentity",
+      });
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, __S(16, __c2, 0));
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          type: S.String,
+          userAssignedIdentities: S.optional(S.NullOr(__S(120, __c15, 0))),
         }),
       ).annotate({
         identifier: "CreateProviderInstanceRequestIdentity",
       });
-    case 2:
-      return S.Array(S.String);
-    case 3:
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           providerType: S.String,
@@ -4997,763 +5103,38 @@ function __c2(j: number): any {
           clusterName: S.optional(S.String),
           sslCertificateUri: S.optional(S.String),
           sslPreference: S.optional(S.String),
-          sapHostFileEntries: S.optional(__S(18, __c2, 2)),
+          sapHostFileEntries: S.optional(__S(136, __c17, 0)),
         }),
       ).annotate({
         identifier: "ProviderSpecificProperties",
       });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          providerSettings: S.optional(__S(19, __c2, 3)),
-        }),
-      ).annotate({
-        identifier: "ProviderInstancePropertiesInput",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          monitorName: S.String.pipe(T.Label()),
-          providerInstanceName: S.String.pipe(T.Label()),
-          identity: S.optional(__S(17, __c2, 1)),
-          properties: S.optional(__S(20, __c2, 4)),
-        }).pipe(
-          T.Http({
-            method: "PUT",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Workloads/monitors/{monitorName}/providerInstances/{providerInstanceName}",
-            code: 200,
-            apiVersion: "2023-04-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateProviderInstanceRequest",
-      });
-    case 6:
-      return S.Record(S.String, __S(8, __c1, 0));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          type: S.String,
-          userAssignedIdentities: S.optional(S.NullOr(__S(22, __c2, 6))),
-        }),
-      ).annotate({
-        identifier: "CreateProviderInstanceResponseIdentity",
-      });
-  }
-}
-function __c3(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           provisioningState: S.optional(S.String),
-          errors: S.optional(__S(13, __c1, 5)),
-          providerSettings: S.optional(__S(19, __c2, 3)),
+          errors: S.optional(__S(26, __c3, 2)),
+          providerSettings: S.optional(__S(128, __c16, 0)),
         }),
       ).annotate({
         identifier: "ProviderInstanceProperties",
       });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(7, __c0, 7)),
-          identity: S.optional(__S(23, __c2, 7)),
-          properties: S.optional(__S(24, __c3, 0)),
-        }),
-      ).annotate({
-        identifier: "CreateProviderInstanceResponse",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          sapVirtualInstanceName: S.String.pipe(T.Label()),
-          applicationInstanceName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(0, __c0, 0)),
-          location: S.String,
-          properties: S.optional(__S(1, __c0, 1)),
-        }).pipe(
-          T.Http({
-            method: "PUT",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Workloads/sapVirtualInstances/{sapVirtualInstanceName}/applicationInstances/{applicationInstanceName}",
-            code: 200,
-            apiVersion: "2024-09-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateSapApplicationServerInstanceRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "LoadBalancerDetails" });
-    case 4:
-      return S.Array(__S(27, __c3, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          type: S.optional(S.String),
-          virtualMachineId: S.optional(S.String),
-          storageDetails: S.optional(__S(28, __c3, 4)),
-        }),
-      ).annotate({
-        identifier: "ApplicationServerVmDetails",
-      });
-    case 6:
-      return S.Array(__S(29, __c3, 5));
-    case 7:
-      return S.Array(/*@__PURE__*/ S.suspend(() => __S(32, __c4, 0)));
   }
 }
-function __c4(j: number): any {
+function __c17(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() =>
-        S.Struct({
-          code: S.optional(S.String),
-          message: S.optional(S.String),
-          details: S.optional(__S(31, __c3, 7)),
-        }),
-      ).annotate({ identifier: "ErrorDefinition" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          properties: S.optional(__S(32, __c4, 0)),
-        }),
-      ).annotate({ identifier: "SAPVirtualInstanceError" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          instanceNo: S.optional(S.String),
-          subnet: S.optional(S.String),
-          hostname: S.optional(S.String),
-          kernelVersion: S.optional(S.String),
-          kernelPatch: S.optional(S.String),
-          ipAddress: S.optional(S.String),
-          gatewayPort: S.optional(S.Number),
-          icmHttpPort: S.optional(S.Number),
-          icmHttpsPort: S.optional(S.Number),
-          dispatcherStatus: S.optional(S.String),
-          loadBalancerDetails: S.optional(__S(27, __c3, 3)),
-          vmDetails: S.optional(__S(30, __c3, 6)),
-          status: S.optional(S.String),
-          health: S.optional(S.String),
-          provisioningState: S.optional(S.String),
-          errors: S.optional(__S(33, __c4, 1)),
-        }),
-      ).annotate({
-        identifier: "SAPApplicationServerProperties",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(7, __c0, 7)),
-          tags: S.optional(__S(0, __c0, 0)),
-          location: S.String,
-          properties: S.optional(__S(34, __c4, 2)),
-        }),
-      ).annotate({
-        identifier: "CreateSapApplicationServerInstanceResponse",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          sapVirtualInstanceName: S.String.pipe(T.Label()),
-          applicationInstanceName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(0, __c0, 0)),
-          location: S.String,
-          properties: S.optional(__S(1, __c0, 1)),
-        }).pipe(
-          T.Http({
-            method: "PUT",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Workloads/sapVirtualInstances/{sapVirtualInstanceName}/applicationInstances/{applicationInstanceName}",
-            code: 200,
-            apiVersion: "2023-04-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateSAPApplicationServerInstanceRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          instanceNo: S.optional(S.String),
-          subnet: S.optional(S.String),
-          hostname: S.optional(S.String),
-          kernelVersion: S.optional(S.String),
-          kernelPatch: S.optional(S.String),
-          ipAddress: S.optional(S.String),
-          gatewayPort: S.optional(S.NullOr(S.Number)),
-          icmHttpPort: S.optional(S.NullOr(S.Number)),
-          icmHttpsPort: S.optional(S.NullOr(S.Number)),
-          loadBalancerDetails: S.optional(__S(27, __c3, 3)),
-          vmDetails: S.optional(__S(30, __c3, 6)),
-          status: S.optional(S.String),
-          health: S.optional(S.String),
-          provisioningState: S.optional(S.String),
-          errors: S.optional(__S(33, __c4, 1)),
-        }),
-      ).annotate({
-        identifier: "SAPApplicationServerProperties_2",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(7, __c0, 7)),
-          tags: S.optional(__S(0, __c0, 0)),
-          location: S.String,
-          properties: S.optional(__S(37, __c4, 5)),
-        }),
-      ).annotate({
-        identifier: "CreateSAPApplicationServerInstanceResponse",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          messageServerProperties: S.optional(__S(1, __c0, 1)),
-          enqueueServerProperties: S.optional(__S(1, __c0, 1)),
-          gatewayServerProperties: S.optional(__S(1, __c0, 1)),
-          enqueueReplicationServerProperties: S.optional(__S(1, __c0, 1)),
-        }),
-      ).annotate({
-        identifier: "SAPCentralServerPropertiesInput_2",
-      });
+      return S.Array(S.String);
   }
 }
-function __c5(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          sapVirtualInstanceName: S.String.pipe(T.Label()),
-          centralInstanceName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(0, __c0, 0)),
-          location: S.String,
-          properties: S.optional(__S(39, __c4, 7)),
-        }).pipe(
-          T.Http({
-            method: "PUT",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Workloads/sapVirtualInstances/{sapVirtualInstanceName}/centralInstances/{centralInstanceName}",
-            code: 200,
-            apiVersion: "2023-04-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateSAPCentralInstanceRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          msPort: S.optional(S.NullOr(S.Number)),
-          internalMsPort: S.optional(S.NullOr(S.Number)),
-          httpPort: S.optional(S.NullOr(S.Number)),
-          httpsPort: S.optional(S.NullOr(S.Number)),
-          hostname: S.optional(S.String),
-          ipAddress: S.optional(S.String),
-          health: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "MessageServerProperties_2",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          hostname: S.optional(S.String),
-          ipAddress: S.optional(S.String),
-          port: S.optional(S.NullOr(S.Number)),
-          health: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "EnqueueServerProperties_2",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          port: S.optional(S.NullOr(S.Number)),
-          health: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GatewayServerProperties_2",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          ersVersion: S.optional(S.String),
-          instanceNo: S.optional(S.String),
-          hostname: S.optional(S.String),
-          kernelVersion: S.optional(S.String),
-          kernelPatch: S.optional(S.String),
-          ipAddress: S.optional(S.String),
-          health: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "EnqueueReplicationServerProperties_2",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          type: S.optional(S.String),
-          virtualMachineId: S.optional(S.String),
-          storageDetails: S.optional(__S(28, __c3, 4)),
-        }),
-      ).annotate({ identifier: "CentralServerVmDetails_2" });
-    case 6:
-      return S.Array(__S(45, __c5, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          instanceNo: S.optional(S.String),
-          subnet: S.optional(S.String),
-          messageServerProperties: S.optional(__S(41, __c5, 1)),
-          enqueueServerProperties: S.optional(__S(42, __c5, 2)),
-          gatewayServerProperties: S.optional(__S(43, __c5, 3)),
-          enqueueReplicationServerProperties: S.optional(__S(44, __c5, 4)),
-          kernelVersion: S.optional(S.NullOr(S.String)),
-          kernelPatch: S.optional(S.NullOr(S.String)),
-          loadBalancerDetails: S.optional(__S(27, __c3, 3)),
-          vmDetails: S.optional(__S(46, __c5, 6)),
-          status: S.optional(S.String),
-          health: S.optional(S.String),
-          provisioningState: S.optional(S.String),
-          errors: S.optional(__S(33, __c4, 1)),
-        }),
-      ).annotate({
-        identifier: "SAPCentralServerProperties_2",
-      });
-  }
-}
-function __c6(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(7, __c0, 7)),
-          tags: S.optional(__S(0, __c0, 0)),
-          location: S.String,
-          properties: S.optional(__S(47, __c5, 7)),
-        }),
-      ).annotate({
-        identifier: "CreateSAPCentralInstanceResponse",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          sapVirtualInstanceName: S.String.pipe(T.Label()),
-          centralInstanceName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(0, __c0, 0)),
-          location: S.String,
-          properties: S.optional(__S(39, __c4, 7)),
-        }).pipe(
-          T.Http({
-            method: "PUT",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Workloads/sapVirtualInstances/{sapVirtualInstanceName}/centralInstances/{centralInstanceName}",
-            code: 200,
-            apiVersion: "2024-09-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateSapCentralServerInstanceRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          msPort: S.optional(S.Number),
-          internalMsPort: S.optional(S.Number),
-          httpPort: S.optional(S.Number),
-          httpsPort: S.optional(S.Number),
-          hostname: S.optional(S.String),
-          ipAddress: S.optional(S.String),
-          health: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "MessageServerProperties" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          hostname: S.optional(S.String),
-          ipAddress: S.optional(S.String),
-          port: S.optional(S.Number),
-          health: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "EnqueueServerProperties" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          port: S.optional(S.Number),
-          health: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "GatewayServerProperties" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          instanceNo: S.optional(S.String),
-          subnet: S.optional(S.String),
-          messageServerProperties: S.optional(__S(50, __c6, 2)),
-          enqueueServerProperties: S.optional(__S(51, __c6, 3)),
-          gatewayServerProperties: S.optional(__S(52, __c6, 4)),
-          enqueueReplicationServerProperties: S.optional(__S(44, __c5, 4)),
-          kernelVersion: S.optional(S.String),
-          kernelPatch: S.optional(S.String),
-          loadBalancerDetails: S.optional(__S(27, __c3, 3)),
-          vmDetails: S.optional(__S(46, __c5, 6)),
-          status: S.optional(S.String),
-          health: S.optional(S.String),
-          provisioningState: S.optional(S.String),
-          errors: S.optional(__S(33, __c4, 1)),
-        }),
-      ).annotate({
-        identifier: "SAPCentralServerProperties",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(7, __c0, 7)),
-          tags: S.optional(__S(0, __c0, 0)),
-          location: S.String,
-          properties: S.optional(__S(53, __c6, 5)),
-        }),
-      ).annotate({
-        identifier: "CreateSapCentralServerInstanceResponse",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          sapVirtualInstanceName: S.String.pipe(T.Label()),
-          databaseInstanceName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(0, __c0, 0)),
-          location: S.String,
-          properties: S.optional(__S(1, __c0, 1)),
-        }).pipe(
-          T.Http({
-            method: "PUT",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Workloads/sapVirtualInstances/{sapVirtualInstanceName}/databaseInstances/{databaseInstanceName}",
-            code: 200,
-            apiVersion: "2024-09-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateSapDatabaseInstanceRequest",
-      });
-  }
-}
-function __c7(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          virtualMachineId: S.optional(S.String),
-          status: S.optional(S.String),
-          storageDetails: S.optional(__S(28, __c3, 4)),
-        }),
-      ).annotate({ identifier: "DatabaseVmDetails" });
-    case 1:
-      return S.Array(__S(56, __c7, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          subnet: S.optional(S.String),
-          databaseSid: S.optional(S.String),
-          databaseType: S.optional(S.String),
-          ipAddress: S.optional(S.String),
-          loadBalancerDetails: S.optional(__S(27, __c3, 3)),
-          vmDetails: S.optional(__S(57, __c7, 1)),
-          status: S.optional(S.String),
-          provisioningState: S.optional(S.String),
-          errors: S.optional(__S(33, __c4, 1)),
-        }),
-      ).annotate({ identifier: "SAPDatabaseProperties" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(7, __c0, 7)),
-          tags: S.optional(__S(0, __c0, 0)),
-          location: S.String,
-          properties: S.optional(__S(58, __c7, 2)),
-        }),
-      ).annotate({
-        identifier: "CreateSapDatabaseInstanceResponse",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          sapVirtualInstanceName: S.String.pipe(T.Label()),
-          databaseInstanceName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(0, __c0, 0)),
-          location: S.String,
-          properties: S.optional(__S(1, __c0, 1)),
-        }).pipe(
-          T.Http({
-            method: "PUT",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Workloads/sapVirtualInstances/{sapVirtualInstanceName}/databaseInstances/{databaseInstanceName}",
-            code: 200,
-            apiVersion: "2023-04-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateSAPDatabaseInstanceRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          subnet: S.optional(S.String),
-          databaseSid: S.optional(S.String),
-          databaseType: S.optional(S.String),
-          ipAddress: S.optional(S.String),
-          loadBalancerDetails: S.optional(__S(27, __c3, 3)),
-          vmDetails: S.optional(__S(57, __c7, 1)),
-          status: S.optional(S.String),
-          provisioningState: S.optional(S.String),
-          errors: S.optional(__S(33, __c4, 1)),
-        }),
-      ).annotate({ identifier: "SAPDatabaseProperties_2" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(7, __c0, 7)),
-          tags: S.optional(__S(0, __c0, 0)),
-          location: S.String,
-          properties: S.optional(__S(61, __c7, 5)),
-        }),
-      ).annotate({
-        identifier: "CreateSAPDatabaseInstanceResponse",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.optional(S.String),
-          topSid: S.optional(__S(18, __c2, 2)),
-        }),
-      ).annotate({
-        identifier: "SapLandscapeMonitorSidMapping",
-      });
-  }
-}
-function __c8(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(63, __c7, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          landscape: S.optional(__S(64, __c8, 0)),
-          sapApplication: S.optional(__S(64, __c8, 0)),
-        }),
-      ).annotate({
-        identifier: "SapLandscapeMonitorPropertiesInputGrouping",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.optional(S.String),
-          green: S.optional(S.Number),
-          yellow: S.optional(S.Number),
-          red: S.optional(S.Number),
-        }),
-      ).annotate({
-        identifier: "SapLandscapeMonitorMetricThresholds",
-      });
-    case 3:
-      return S.Array(__S(66, __c8, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          grouping: S.optional(__S(65, __c8, 1)),
-          topMetricsThresholds: S.optional(__S(67, __c8, 3)),
-        }),
-      ).annotate({
-        identifier: "SapLandscapeMonitorPropertiesInput",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          monitorName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(68, __c8, 4)),
-        }).pipe(
-          T.Http({
-            method: "PUT",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Workloads/monitors/{monitorName}/sapLandscapeMonitor/default",
-            code: 200,
-            apiVersion: "2023-04-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateSapLandscapeMonitorRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          provisioningState: S.optional(S.String),
-          grouping: S.optional(__S(65, __c8, 1)),
-          topMetricsThresholds: S.optional(__S(67, __c8, 3)),
-        }),
-      ).annotate({
-        identifier: "SapLandscapeMonitorProperties",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(7, __c0, 7)),
-          properties: S.optional(__S(70, __c8, 6)),
-        }),
-      ).annotate({
-        identifier: "CreateSapLandscapeMonitorResponse",
-      });
-  }
-}
-function __c9(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          configurationType: S.String,
-        }),
-      ).annotate({ identifier: "SAPConfiguration" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          environment: S.String,
-          sapProduct: S.String,
-          managedResourcesNetworkAccessType: S.optional(S.String),
-          configuration: __S(72, __c9, 0),
-          managedResourceGroupConfiguration: S.optional(__S(4, __c0, 4)),
-        }),
-      ).annotate({
-        identifier: "SAPVirtualInstancePropertiesInput",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          type: S.String,
-          userAssignedIdentities: S.optional(__S(2, __c0, 2)),
-        }),
-      ).annotate({
-        identifier: "SAPVirtualInstanceIdentityInput",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          sapVirtualInstanceName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(0, __c0, 0)),
-          location: S.String,
-          properties: S.optional(__S(73, __c9, 1)),
-          identity: S.optional(__S(74, __c9, 2)),
-        }).pipe(
-          T.Http({
-            method: "PUT",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Workloads/sapVirtualInstances/{sapVirtualInstanceName}",
-            code: 200,
-            apiVersion: "2024-09-01",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateSapVirtualInstanceRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          environment: S.String,
-          sapProduct: S.String,
-          managedResourcesNetworkAccessType: S.optional(S.String),
-          configuration: __S(72, __c9, 0),
-          managedResourceGroupConfiguration: S.optional(__S(4, __c0, 4)),
-          status: S.optional(S.String),
-          health: S.optional(S.String),
-          state: S.optional(S.String),
-          provisioningState: S.optional(S.String),
-          errors: S.optional(__S(33, __c4, 1)),
-        }),
-      ).annotate({
-        identifier: "SAPVirtualInstanceProperties",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          type: S.String,
-          userAssignedIdentities: S.optional(__S(9, __c1, 1)),
-        }),
-      ).annotate({
-        identifier: "SAPVirtualInstanceIdentity",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(7, __c0, 7)),
-          tags: S.optional(__S(0, __c0, 0)),
-          location: S.String,
-          properties: S.optional(__S(76, __c9, 4)),
-          identity: S.optional(__S(77, __c9, 5)),
-        }),
-      ).annotate({
-        identifier: "CreateSapVirtualInstanceResponse",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          configurationType: S.String,
-          appLocation: S.optional(S.String),
-          centralServerVmId: S.optional(S.String),
-          managedRgStorageAccountName: S.optional(S.String),
-          infrastructureConfiguration: S.optional(S.Unknown),
-          softwareConfiguration: S.optional(S.Unknown),
-          osSapConfiguration: S.optional(S.Unknown),
-        }),
-      ).annotate({ identifier: "SAPConfiguration_2" });
-  }
-}
-function __c10(j: number): any {
+function __c18(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           environment: S.String,
           sapProduct: S.String,
-          configuration: __S(79, __c9, 7),
-          managedResourceGroupConfiguration: S.optional(__S(4, __c0, 4)),
+          configuration: __S(152, __c19, 0),
+          managedResourceGroupConfiguration: S.optional(__S(80, __c10, 0)),
         }),
       ).annotate({
         identifier: "SAPVirtualInstancePropertiesInput_2",
@@ -5764,10 +5145,10 @@ function __c10(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           sapVirtualInstanceName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(0, __c0, 0)),
+          tags: S.optional(__S(40, __c5, 0)),
           location: S.String,
-          identity: S.optional(__S(17, __c2, 1)),
-          properties: __S(80, __c10, 0),
+          identity: S.optional(__S(121, __c15, 1)),
+          properties: __S(144, __c18, 0),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -5779,38 +5160,62 @@ function __c10(j: number): any {
       ).annotate({
         identifier: "CreateSAPVirtualInstanceRequest",
       });
-    case 2:
+  }
+}
+function __c19(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          configurationType: S.String,
+          appLocation: S.optional(S.String),
+          centralServerVmId: S.optional(S.String),
+          managedRgStorageAccountName: S.optional(S.String),
+          infrastructureConfiguration: S.optional(S.Unknown),
+          softwareConfiguration: S.optional(S.Unknown),
+          osSapConfiguration: S.optional(S.Unknown),
+        }),
+      ).annotate({ identifier: "SAPConfiguration_2" });
+    case 1:
       return S.suspend(() =>
         S.Struct({
           environment: S.String,
           sapProduct: S.String,
-          configuration: __S(79, __c9, 7),
-          managedResourceGroupConfiguration: S.optional(__S(4, __c0, 4)),
+          configuration: __S(152, __c19, 0),
+          managedResourceGroupConfiguration: S.optional(__S(80, __c10, 0)),
           status: S.optional(S.String),
           health: S.optional(S.String),
           state: S.optional(S.String),
           provisioningState: S.optional(S.String),
-          errors: S.optional(__S(33, __c4, 1)),
+          errors: S.optional(__S(314, __c39, 2)),
         }),
       ).annotate({
         identifier: "SAPVirtualInstanceProperties_2",
       });
-    case 3:
+  }
+}
+function __c20(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(7, __c0, 7)),
-          tags: S.optional(__S(0, __c0, 0)),
+          systemData: S.optional(__S(8, __c1, 0)),
+          tags: S.optional(__S(40, __c5, 0)),
           location: S.String,
-          identity: S.optional(__S(23, __c2, 7)),
-          properties: __S(82, __c10, 2),
+          identity: S.optional(__S(113, __c14, 1)),
+          properties: __S(153, __c19, 1),
         }),
       ).annotate({
         identifier: "CreateSAPVirtualInstanceResponse",
       });
-    case 4:
+  }
+}
+function __c21(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -5825,62 +5230,70 @@ function __c10(j: number): any {
           }),
         ),
       ).annotate({ identifier: "DeleteMonitorRequest" });
-    case 5:
-      return S.Array(/*@__PURE__*/ S.suspend(() => __S(90, __c11, 2)));
-    case 6:
-      return S.Array(/*@__PURE__*/ S.suspend(() => __S(89, __c11, 1)));
-    case 7:
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          status: S.String,
+          percentComplete: S.optional(S.Number),
+          startTime: S.optional(S.String),
+          endTime: S.optional(S.String),
+          operations: S.optional(__S(178, __c22, 2)),
+          error: S.optional(__S(187, __c23, 3)),
+        }),
+      ).annotate({ identifier: "DeleteMonitorResponse" });
+  }
+}
+function __c22(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(/*@__PURE__*/ S.suspend(() => __S(177, __c22, 1)));
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          status: S.String,
+          percentComplete: S.optional(S.Number),
+          startTime: S.optional(S.String),
+          endTime: S.optional(S.String),
+          operations: S.optional(__S(176, __c22, 0)),
+          error: S.optional(__S(187, __c23, 3)),
+        }),
+      ).annotate({ identifier: "OperationStatusResult_3" });
+    case 2:
+      return S.Array(__S(177, __c22, 1));
+  }
+}
+function __c23(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(/*@__PURE__*/ S.suspend(() => __S(187, __c23, 3)));
+    case 1:
       return S.suspend(() =>
         S.Struct({
           type: S.optional(S.String),
           info: S.optional(S.Unknown),
         }),
       ).annotate({ identifier: "ErrorAdditionalInfo" });
-  }
-}
-function __c11(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(87, __c10, 7));
-    case 1:
+    case 2:
+      return S.Array(__S(185, __c23, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
           code: S.optional(S.String),
           message: S.optional(S.String),
           target: S.optional(S.String),
-          details: S.optional(__S(86, __c10, 6)),
-          additionalInfo: S.optional(__S(88, __c11, 0)),
+          details: S.optional(__S(184, __c23, 0)),
+          additionalInfo: S.optional(__S(186, __c23, 2)),
         }),
       ).annotate({ identifier: "ErrorDetail" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          status: S.String,
-          percentComplete: S.optional(S.Number),
-          startTime: S.optional(S.String),
-          endTime: S.optional(S.String),
-          operations: S.optional(__S(85, __c10, 5)),
-          error: S.optional(__S(89, __c11, 1)),
-        }),
-      ).annotate({ identifier: "OperationStatusResult_3" });
-    case 3:
-      return S.Array(__S(90, __c11, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          status: S.String,
-          percentComplete: S.optional(S.Number),
-          startTime: S.optional(S.String),
-          endTime: S.optional(S.String),
-          operations: S.optional(__S(91, __c11, 3)),
-          error: S.optional(__S(89, __c11, 1)),
-        }),
-      ).annotate({ identifier: "DeleteMonitorResponse" });
-    case 5:
+  }
+}
+function __c24(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -5898,7 +5311,7 @@ function __c11(j: number): any {
       ).annotate({
         identifier: "DeleteProviderInstanceRequest",
       });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
@@ -5907,13 +5320,17 @@ function __c11(j: number): any {
           percentComplete: S.optional(S.Number),
           startTime: S.optional(S.String),
           endTime: S.optional(S.String),
-          operations: S.optional(__S(91, __c11, 3)),
-          error: S.optional(__S(89, __c11, 1)),
+          operations: S.optional(__S(178, __c22, 2)),
+          error: S.optional(__S(187, __c23, 3)),
         }),
       ).annotate({
         identifier: "DeleteProviderInstanceResponse",
       });
-    case 7:
+  }
+}
+function __c25(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -5933,13 +5350,17 @@ function __c11(j: number): any {
       });
   }
 }
-function __c12(j: number): any {
+function __c26(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "DeleteSapApplicationServerInstanceResponse",
       });
-    case 1:
+  }
+}
+function __c27(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -5957,9 +5378,13 @@ function __c12(j: number): any {
       ).annotate({
         identifier: "DeleteSAPApplicationServerInstanceRequest",
       });
-    case 2:
-      return S.Array(/*@__PURE__*/ S.suspend(() => __S(99, __c12, 3)));
-    case 3:
+  }
+}
+function __c28(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(/*@__PURE__*/ S.suspend(() => __S(225, __c28, 1)));
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
@@ -5968,13 +5393,17 @@ function __c12(j: number): any {
           percentComplete: S.optional(S.Number),
           startTime: S.optional(S.String),
           endTime: S.optional(S.String),
-          operations: S.optional(__S(98, __c12, 2)),
-          error: S.optional(__S(89, __c11, 1)),
+          operations: S.optional(__S(224, __c28, 0)),
+          error: S.optional(__S(187, __c23, 3)),
         }),
       ).annotate({ identifier: "OperationStatusResult_2" });
-    case 4:
-      return S.Array(__S(99, __c12, 3));
-    case 5:
+  }
+}
+function __c29(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(225, __c28, 1));
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
@@ -5983,13 +5412,17 @@ function __c12(j: number): any {
           percentComplete: S.optional(S.Number),
           startTime: S.optional(S.String),
           endTime: S.optional(S.String),
-          operations: S.optional(__S(100, __c12, 4)),
-          error: S.optional(__S(89, __c11, 1)),
+          operations: S.optional(__S(232, __c29, 0)),
+          error: S.optional(__S(187, __c23, 3)),
         }),
       ).annotate({
         identifier: "DeleteSAPApplicationServerInstanceResponse",
       });
-    case 6:
+  }
+}
+function __c30(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -6007,7 +5440,11 @@ function __c12(j: number): any {
       ).annotate({
         identifier: "DeleteSAPCentralInstanceRequest",
       });
-    case 7:
+  }
+}
+function __c31(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -6027,7 +5464,7 @@ function __c12(j: number): any {
       });
   }
 }
-function __c13(j: number): any {
+function __c32(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -6047,7 +5484,11 @@ function __c13(j: number): any {
       ).annotate({
         identifier: "DeleteSapDatabaseInstanceRequest",
       });
-    case 1:
+  }
+}
+function __c33(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -6065,7 +5506,11 @@ function __c13(j: number): any {
       ).annotate({
         identifier: "DeleteSAPDatabaseInstanceRequest",
       });
-    case 2:
+  }
+}
+function __c34(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -6082,7 +5527,125 @@ function __c13(j: number): any {
       ).annotate({
         identifier: "DeleteSapLandscapeMonitorRequest",
       });
-    case 3:
+  }
+}
+function __c35(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          sapVirtualInstanceName: S.String.pipe(T.Label()),
+          applicationInstanceName: S.String.pipe(T.Label()),
+          tags: S.optional(__S(40, __c5, 0)),
+          location: S.String,
+          properties: S.optional(__S(16, __c2, 0)),
+        }).pipe(
+          T.Http({
+            method: "PUT",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Workloads/sapVirtualInstances/{sapVirtualInstanceName}/applicationInstances/{applicationInstanceName}",
+            code: 200,
+            apiVersion: "2024-09-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateSapApplicationServerInstanceRequest",
+      });
+  }
+}
+function __c36(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          instanceNo: S.optional(S.String),
+          subnet: S.optional(S.String),
+          hostname: S.optional(S.String),
+          kernelVersion: S.optional(S.String),
+          kernelPatch: S.optional(S.String),
+          ipAddress: S.optional(S.String),
+          gatewayPort: S.optional(S.Number),
+          icmHttpPort: S.optional(S.Number),
+          icmHttpsPort: S.optional(S.Number),
+          dispatcherStatus: S.optional(S.String),
+          loadBalancerDetails: S.optional(__S(304, __c38, 0)),
+          vmDetails: S.optional(__S(297, __c37, 1)),
+          status: S.optional(S.String),
+          health: S.optional(S.String),
+          provisioningState: S.optional(S.String),
+          errors: S.optional(__S(314, __c39, 2)),
+        }),
+      ).annotate({
+        identifier: "SAPApplicationServerProperties",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(8, __c1, 0)),
+          tags: S.optional(__S(40, __c5, 0)),
+          location: S.String,
+          properties: S.optional(__S(288, __c36, 0)),
+        }),
+      ).annotate({
+        identifier: "CreateSapApplicationServerInstanceResponse",
+      });
+  }
+}
+function __c37(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          type: S.optional(S.String),
+          virtualMachineId: S.optional(S.String),
+          storageDetails: S.optional(__S(305, __c38, 1)),
+        }),
+      ).annotate({
+        identifier: "ApplicationServerVmDetails",
+      });
+    case 1:
+      return S.Array(__S(296, __c37, 0));
+  }
+}
+function __c38(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "LoadBalancerDetails" });
+    case 1:
+      return S.Array(__S(304, __c38, 0));
+  }
+}
+function __c39(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(/*@__PURE__*/ S.suspend(() => __S(313, __c39, 1)));
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          code: S.optional(S.String),
+          message: S.optional(S.String),
+          details: S.optional(__S(312, __c39, 0)),
+        }),
+      ).annotate({ identifier: "ErrorDefinition" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          properties: S.optional(__S(313, __c39, 1)),
+        }),
+      ).annotate({ identifier: "SAPVirtualInstanceError" });
+  }
+}
+function __c40(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -6099,7 +5662,11 @@ function __c13(j: number): any {
       ).annotate({
         identifier: "DeleteSapVirtualInstanceRequest",
       });
-    case 4:
+  }
+}
+function __c41(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -6116,7 +5683,11 @@ function __c13(j: number): any {
       ).annotate({
         identifier: "DeleteSAPVirtualInstanceRequest",
       });
-    case 5:
+  }
+}
+function __c42(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -6131,7 +5702,11 @@ function __c13(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetMonitorRequest" });
-    case 6:
+  }
+}
+function __c43(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -6149,22 +5724,22 @@ function __c13(j: number): any {
       ).annotate({
         identifier: "GetProviderInstanceRequest",
       });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(7, __c0, 7)),
-          identity: S.optional(__S(10, __c1, 2)),
-          properties: S.optional(__S(24, __c3, 0)),
+          systemData: S.optional(__S(8, __c1, 0)),
+          identity: S.optional(__S(48, __c6, 0)),
+          properties: S.optional(__S(129, __c16, 1)),
         }),
       ).annotate({
         identifier: "GetProviderInstanceResponse",
       });
   }
 }
-function __c14(j: number): any {
+function __c44(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -6184,7 +5759,11 @@ function __c14(j: number): any {
       ).annotate({
         identifier: "GetSapApplicationServerInstanceRequest",
       });
-    case 1:
+  }
+}
+function __c45(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -6202,7 +5781,11 @@ function __c14(j: number): any {
       ).annotate({
         identifier: "GetSAPApplicationServerInstanceRequest",
       });
-    case 2:
+  }
+}
+function __c46(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -6220,7 +5803,11 @@ function __c14(j: number): any {
       ).annotate({
         identifier: "GetSAPCentralInstanceRequest",
       });
-    case 3:
+  }
+}
+function __c47(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -6238,7 +5825,11 @@ function __c14(j: number): any {
       ).annotate({
         identifier: "GetSapCentralServerInstanceRequest",
       });
-    case 4:
+  }
+}
+function __c48(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -6256,7 +5847,11 @@ function __c14(j: number): any {
       ).annotate({
         identifier: "GetSapDatabaseInstanceRequest",
       });
-    case 5:
+  }
+}
+function __c49(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -6274,7 +5869,76 @@ function __c14(j: number): any {
       ).annotate({
         identifier: "GetSAPDatabaseInstanceRequest",
       });
-    case 6:
+  }
+}
+function __c50(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          sapVirtualInstanceName: S.String.pipe(T.Label()),
+          applicationInstanceName: S.String.pipe(T.Label()),
+          tags: S.optional(__S(40, __c5, 0)),
+          location: S.String,
+          properties: S.optional(__S(16, __c2, 0)),
+        }).pipe(
+          T.Http({
+            method: "PUT",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Workloads/sapVirtualInstances/{sapVirtualInstanceName}/applicationInstances/{applicationInstanceName}",
+            code: 200,
+            apiVersion: "2023-04-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateSAPApplicationServerInstanceRequest",
+      });
+  }
+}
+function __c51(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          instanceNo: S.optional(S.String),
+          subnet: S.optional(S.String),
+          hostname: S.optional(S.String),
+          kernelVersion: S.optional(S.String),
+          kernelPatch: S.optional(S.String),
+          ipAddress: S.optional(S.String),
+          gatewayPort: S.optional(S.NullOr(S.Number)),
+          icmHttpPort: S.optional(S.NullOr(S.Number)),
+          icmHttpsPort: S.optional(S.NullOr(S.Number)),
+          loadBalancerDetails: S.optional(__S(304, __c38, 0)),
+          vmDetails: S.optional(__S(297, __c37, 1)),
+          status: S.optional(S.String),
+          health: S.optional(S.String),
+          provisioningState: S.optional(S.String),
+          errors: S.optional(__S(314, __c39, 2)),
+        }),
+      ).annotate({
+        identifier: "SAPApplicationServerProperties_2",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(8, __c1, 0)),
+          tags: S.optional(__S(40, __c5, 0)),
+          location: S.String,
+          properties: S.optional(__S(408, __c51, 0)),
+        }),
+      ).annotate({
+        identifier: "CreateSAPApplicationServerInstanceResponse",
+      });
+  }
+}
+function __c52(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -6291,7 +5955,11 @@ function __c14(j: number): any {
       ).annotate({
         identifier: "GetSapLandscapeMonitorRequest",
       });
-    case 7:
+  }
+}
+function __c53(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -6310,7 +5978,7 @@ function __c14(j: number): any {
       });
   }
 }
-function __c15(j: number): any {
+function __c54(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -6329,7 +5997,11 @@ function __c15(j: number): any {
       ).annotate({
         identifier: "GetSAPVirtualInstanceRequest",
       });
-    case 1:
+  }
+}
+function __c55(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -6348,24 +6020,32 @@ function __c15(j: number): any {
       ).annotate({
         identifier: "InvokeSapVirtualInstanceAvailabilityZoneDetailsRequest",
       });
-    case 2:
+  }
+}
+function __c56(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           zoneA: S.optional(S.Number),
           zoneB: S.optional(S.Number),
         }),
       ).annotate({ identifier: "SAPAvailabilityZonePair" });
-    case 3:
-      return S.Array(__S(122, __c15, 2));
-    case 4:
+    case 1:
+      return S.Array(__S(448, __c56, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          availabilityZonePairs: S.optional(__S(123, __c15, 3)),
+          availabilityZonePairs: S.optional(__S(449, __c56, 1)),
         }),
       ).annotate({
         identifier: "SAPAvailabilityZoneDetailsResult",
       });
-    case 5:
+  }
+}
+function __c57(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -6387,28 +6067,45 @@ function __c15(j: number): any {
       ).annotate({
         identifier: "InvokeSapVirtualInstanceDiskConfigurationsRequest",
       });
-    case 6:
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          count: S.optional(S.Number),
+          sizeGB: S.optional(S.Number),
+          sku: S.optional(__S(464, __c58, 0)),
+        }),
+      ).annotate({ identifier: "DiskVolumeConfiguration" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          recommendedConfiguration: S.optional(__S(457, __c57, 1)),
+          supportedConfigurations: S.optional(__S(466, __c58, 2)),
+        }),
+      ).annotate({ identifier: "SAPDiskConfiguration" });
+    case 3:
+      return S.Record(S.String, __S(458, __c57, 2));
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          volumeConfigurations: S.optional(__S(459, __c57, 3)),
+        }),
+      ).annotate({
+        identifier: "SAPDiskConfigurationsResult",
+      });
+  }
+}
+function __c58(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
         }),
       ).annotate({ identifier: "DiskSku" });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          count: S.optional(S.Number),
-          sizeGB: S.optional(S.Number),
-          sku: S.optional(__S(126, __c15, 6)),
-        }),
-      ).annotate({ identifier: "DiskVolumeConfiguration" });
-  }
-}
-function __c16(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          sku: S.optional(__S(126, __c15, 6)),
+          sku: S.optional(__S(464, __c58, 0)),
           sizeGB: S.optional(S.Number),
           minimumSupportedDiskCount: S.optional(S.Number),
           maximumSupportedDiskCount: S.optional(S.Number),
@@ -6417,26 +6114,13 @@ function __c16(j: number): any {
           diskTier: S.optional(S.String),
         }),
       ).annotate({ identifier: "DiskDetails" });
-    case 1:
-      return S.Array(__S(128, __c16, 0));
     case 2:
-      return S.suspend(() =>
-        S.Struct({
-          recommendedConfiguration: S.optional(__S(127, __c15, 7)),
-          supportedConfigurations: S.optional(__S(129, __c16, 1)),
-        }),
-      ).annotate({ identifier: "SAPDiskConfiguration" });
-    case 3:
-      return S.Record(S.String, __S(130, __c16, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          volumeConfigurations: S.optional(__S(131, __c16, 3)),
-        }),
-      ).annotate({
-        identifier: "SAPDiskConfigurationsResult",
-      });
-    case 5:
+      return S.Array(__S(465, __c58, 1));
+  }
+}
+function __c59(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -6458,7 +6142,11 @@ function __c16(j: number): any {
       ).annotate({
         identifier: "InvokeSapVirtualInstanceSapSupportedSkuRequest",
       });
-    case 6:
+  }
+}
+function __c60(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           vmSku: S.optional(S.String),
@@ -6466,21 +6154,21 @@ function __c16(j: number): any {
           isDatabaseCertified: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "SAPSupportedSku" });
-    case 7:
-      return S.Array(__S(134, __c16, 6));
-  }
-}
-function __c17(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
+      return S.Array(__S(480, __c60, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          supportedSkus: S.optional(__S(135, __c16, 7)),
+          supportedSkus: S.optional(__S(481, __c60, 1)),
         }),
       ).annotate({
         identifier: "SAPSupportedResourceSkusResult",
       });
-    case 1:
+  }
+}
+function __c61(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -6505,7 +6193,11 @@ function __c17(j: number): any {
       ).annotate({
         identifier: "InvokeSapVirtualInstanceSizingRecommendationsRequest",
       });
-    case 2:
+  }
+}
+function __c62(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           deploymentType: S.String,
@@ -6513,7 +6205,11 @@ function __c17(j: number): any {
       ).annotate({
         identifier: "SAPSizingRecommendationResult",
       });
-    case 3:
+  }
+}
+function __c63(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -6529,38 +6225,46 @@ function __c17(j: number): any {
       ).annotate({
         identifier: "ListMonitorByResourceGroupRequest",
       });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          type: S.String,
-          userAssignedIdentities: S.optional(S.NullOr(__S(9, __c1, 1))),
-        }),
-      ).annotate({ identifier: "MonitorIdentity" });
-    case 5:
+  }
+}
+function __c64(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(7, __c0, 7)),
-          tags: S.optional(__S(0, __c0, 0)),
+          systemData: S.optional(__S(8, __c1, 0)),
+          tags: S.optional(__S(40, __c5, 0)),
           location: S.String,
-          identity: S.optional(__S(140, __c17, 4)),
-          properties: S.optional(__S(14, __c1, 6)),
+          identity: S.optional(__S(520, __c65, 0)),
+          properties: S.optional(__S(56, __c7, 0)),
         }),
       ).annotate({ identifier: "Monitor" });
-    case 6:
-      return S.Array(__S(141, __c17, 5));
-    case 7:
+    case 1:
+      return S.Array(__S(512, __c64, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(142, __c17, 6)),
+          value: S.optional(__S(513, __c64, 1)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "MonitorListResult" });
   }
 }
-function __c18(j: number): any {
+function __c65(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          type: S.String,
+          userAssignedIdentities: S.optional(S.NullOr(__S(88, __c11, 0))),
+        }),
+      ).annotate({ identifier: "MonitorIdentity" });
+  }
+}
+function __c66(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -6575,7 +6279,11 @@ function __c18(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ListMonitorsRequest" });
-    case 1:
+  }
+}
+function __c67(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({}).pipe(
           T.Http({
@@ -6586,7 +6294,7 @@ function __c18(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ListOperationsRequest" });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           provider: S.optional(S.String),
@@ -6595,26 +6303,171 @@ function __c18(j: number): any {
           description: S.optional(S.String),
         }),
       ).annotate({ identifier: "OperationDisplay" });
-    case 3:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
           isDataAction: S.optional(S.Boolean),
-          display: S.optional(__S(146, __c18, 2)),
+          display: S.optional(__S(537, __c67, 1)),
           origin: S.optional(S.String),
           actionType: S.optional(S.String),
         }),
       ).annotate({ identifier: "Operation" });
+    case 3:
+      return S.Array(__S(538, __c67, 2));
     case 4:
-      return S.Array(__S(147, __c18, 3));
-    case 5:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(148, __c18, 4)),
+          value: S.optional(__S(539, __c67, 3)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListOperationsResponse" });
-    case 6:
+  }
+}
+function __c68(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          sapVirtualInstanceName: S.String.pipe(T.Label()),
+          centralInstanceName: S.String.pipe(T.Label()),
+          tags: S.optional(__S(40, __c5, 0)),
+          location: S.String,
+          properties: S.optional(__S(560, __c70, 0)),
+        }).pipe(
+          T.Http({
+            method: "PUT",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Workloads/sapVirtualInstances/{sapVirtualInstanceName}/centralInstances/{centralInstanceName}",
+            code: 200,
+            apiVersion: "2023-04-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateSAPCentralInstanceRequest",
+      });
+  }
+}
+function __c69(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          msPort: S.optional(S.NullOr(S.Number)),
+          internalMsPort: S.optional(S.NullOr(S.Number)),
+          httpPort: S.optional(S.NullOr(S.Number)),
+          httpsPort: S.optional(S.NullOr(S.Number)),
+          hostname: S.optional(S.String),
+          ipAddress: S.optional(S.String),
+          health: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "MessageServerProperties_2",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          hostname: S.optional(S.String),
+          ipAddress: S.optional(S.String),
+          port: S.optional(S.NullOr(S.Number)),
+          health: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "EnqueueServerProperties_2",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          port: S.optional(S.NullOr(S.Number)),
+          health: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GatewayServerProperties_2",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          instanceNo: S.optional(S.String),
+          subnet: S.optional(S.String),
+          messageServerProperties: S.optional(__S(552, __c69, 0)),
+          enqueueServerProperties: S.optional(__S(553, __c69, 1)),
+          gatewayServerProperties: S.optional(__S(554, __c69, 2)),
+          enqueueReplicationServerProperties: S.optional(__S(568, __c71, 0)),
+          kernelVersion: S.optional(S.NullOr(S.String)),
+          kernelPatch: S.optional(S.NullOr(S.String)),
+          loadBalancerDetails: S.optional(__S(304, __c38, 0)),
+          vmDetails: S.optional(__S(570, __c71, 2)),
+          status: S.optional(S.String),
+          health: S.optional(S.String),
+          provisioningState: S.optional(S.String),
+          errors: S.optional(__S(314, __c39, 2)),
+        }),
+      ).annotate({
+        identifier: "SAPCentralServerProperties_2",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(8, __c1, 0)),
+          tags: S.optional(__S(40, __c5, 0)),
+          location: S.String,
+          properties: S.optional(__S(555, __c69, 3)),
+        }),
+      ).annotate({
+        identifier: "CreateSAPCentralInstanceResponse",
+      });
+  }
+}
+function __c70(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          messageServerProperties: S.optional(__S(16, __c2, 0)),
+          enqueueServerProperties: S.optional(__S(16, __c2, 0)),
+          gatewayServerProperties: S.optional(__S(16, __c2, 0)),
+          enqueueReplicationServerProperties: S.optional(__S(16, __c2, 0)),
+        }),
+      ).annotate({
+        identifier: "SAPCentralServerPropertiesInput_2",
+      });
+  }
+}
+function __c71(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          ersVersion: S.optional(S.String),
+          instanceNo: S.optional(S.String),
+          hostname: S.optional(S.String),
+          kernelVersion: S.optional(S.String),
+          kernelPatch: S.optional(S.String),
+          ipAddress: S.optional(S.String),
+          health: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "EnqueueReplicationServerProperties_2",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          type: S.optional(S.String),
+          virtualMachineId: S.optional(S.String),
+          storageDetails: S.optional(__S(305, __c38, 1)),
+        }),
+      ).annotate({ identifier: "CentralServerVmDetails_2" });
+    case 2:
+      return S.Array(__S(569, __c71, 1));
+  }
+}
+function __c72(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -6631,33 +6484,33 @@ function __c18(j: number): any {
       ).annotate({
         identifier: "ListProviderInstancesRequest",
       });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(7, __c0, 7)),
-          identity: S.optional(__S(140, __c17, 4)),
-          properties: S.optional(__S(24, __c3, 0)),
+          systemData: S.optional(__S(8, __c1, 0)),
+          identity: S.optional(__S(520, __c65, 0)),
+          properties: S.optional(__S(129, __c16, 1)),
         }),
       ).annotate({ identifier: "ProviderInstance" });
-  }
-}
-function __c19(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(151, __c18, 7));
-    case 1:
+    case 2:
+      return S.Array(__S(577, __c72, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(152, __c19, 0)),
+          value: S.optional(__S(578, __c72, 2)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
         identifier: "ProviderInstanceListResult",
       });
-    case 2:
+  }
+}
+function __c73(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -6674,18 +6527,22 @@ function __c19(j: number): any {
       ).annotate({
         identifier: "ListSapApplicationServerInstancesRequest",
       });
-    case 3:
-      return S.Array(__S(35, __c4, 3));
-    case 4:
+    case 1:
+      return S.Array(__S(289, __c36, 1));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          value: __S(155, __c19, 3),
+          value: __S(585, __c73, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
         identifier: "SAPApplicationServerInstanceListResult",
       });
-    case 5:
+  }
+}
+function __c74(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -6702,12 +6559,12 @@ function __c19(j: number): any {
       ).annotate({
         identifier: "ListSAPApplicationServerInstancesRequest",
       });
-    case 6:
-      return S.Array(__S(38, __c4, 6));
-    case 7:
+    case 1:
+      return S.Array(__S(409, __c51, 1));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(158, __c19, 6)),
+          value: S.optional(__S(593, __c74, 1)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
@@ -6715,7 +6572,7 @@ function __c19(j: number): any {
       });
   }
 }
-function __c20(j: number): any {
+function __c75(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -6735,15 +6592,19 @@ function __c20(j: number): any {
         identifier: "ListSAPCentralInstancesRequest",
       });
     case 1:
-      return S.Array(__S(48, __c6, 0));
+      return S.Array(__S(556, __c69, 4));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(161, __c20, 1)),
+          value: S.optional(__S(601, __c75, 1)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "SAPCentralInstanceList" });
-    case 3:
+  }
+}
+function __c76(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -6760,30 +6621,34 @@ function __c20(j: number): any {
       ).annotate({
         identifier: "ListSapCentralServerInstancesRequest",
       });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(7, __c0, 7)),
-          tags: S.optional(__S(0, __c0, 0)),
+          systemData: S.optional(__S(8, __c1, 0)),
+          tags: S.optional(__S(40, __c5, 0)),
           location: S.String,
-          properties: S.optional(__S(53, __c6, 5)),
+          properties: S.optional(__S(683, __c85, 3)),
         }),
       ).annotate({ identifier: "SAPCentralServerInstance" });
-    case 5:
-      return S.Array(__S(164, __c20, 4));
-    case 6:
+    case 2:
+      return S.Array(__S(609, __c76, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          value: __S(165, __c20, 5),
+          value: __S(610, __c76, 2),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
         identifier: "SAPCentralServerInstanceListResult",
       });
-    case 7:
+  }
+}
+function __c77(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -6800,34 +6665,34 @@ function __c20(j: number): any {
       ).annotate({
         identifier: "ListSapDatabaseInstancesRequest",
       });
-  }
-}
-function __c21(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(7, __c0, 7)),
-          tags: S.optional(__S(0, __c0, 0)),
+          systemData: S.optional(__S(8, __c1, 0)),
+          tags: S.optional(__S(40, __c5, 0)),
           location: S.String,
-          properties: S.optional(__S(58, __c7, 2)),
+          properties: S.optional(__S(792, __c99, 0)),
         }),
       ).annotate({ identifier: "SAPDatabaseInstance" });
-    case 1:
-      return S.Array(__S(168, __c21, 0));
     case 2:
+      return S.Array(__S(617, __c77, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          value: __S(169, __c21, 1),
+          value: __S(618, __c77, 2),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
         identifier: "SAPDatabaseInstanceListResult",
       });
-    case 3:
+  }
+}
+function __c78(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -6844,28 +6709,32 @@ function __c21(j: number): any {
       ).annotate({
         identifier: "ListSAPDatabaseInstancesRequest",
       });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(7, __c0, 7)),
-          tags: S.optional(__S(0, __c0, 0)),
+          systemData: S.optional(__S(8, __c1, 0)),
+          tags: S.optional(__S(40, __c5, 0)),
           location: S.String,
-          properties: S.optional(__S(61, __c7, 5)),
+          properties: S.optional(__S(904, __c113, 0)),
         }),
       ).annotate({ identifier: "SAPDatabaseInstance_2" });
-    case 5:
-      return S.Array(__S(172, __c21, 4));
-    case 6:
+    case 2:
+      return S.Array(__S(625, __c78, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(173, __c21, 5)),
+          value: S.optional(__S(626, __c78, 2)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "SAPDatabaseInstanceList" });
-    case 7:
+  }
+}
+function __c79(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -6882,32 +6751,32 @@ function __c21(j: number): any {
       ).annotate({
         identifier: "ListSapLandscapeMonitorRequest",
       });
-  }
-}
-function __c22(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(7, __c0, 7)),
-          properties: S.optional(__S(70, __c8, 6)),
+          systemData: S.optional(__S(8, __c1, 0)),
+          properties: S.optional(__S(1013, __c126, 5)),
         }),
       ).annotate({ identifier: "SapLandscapeMonitor" });
-    case 1:
-      return S.Array(__S(176, __c22, 0));
     case 2:
+      return S.Array(__S(633, __c79, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(177, __c22, 1)),
+          value: S.optional(__S(634, __c79, 2)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
         identifier: "SapLandscapeMonitorListResult",
       });
-    case 3:
+  }
+}
+function __c80(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -6923,31 +6792,39 @@ function __c22(j: number): any {
       ).annotate({
         identifier: "ListSapVirtualInstanceByResourceGroupRequest",
       });
-    case 4:
+  }
+}
+function __c81(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(7, __c0, 7)),
-          tags: S.optional(__S(0, __c0, 0)),
+          systemData: S.optional(__S(8, __c1, 0)),
+          tags: S.optional(__S(40, __c5, 0)),
           location: S.String,
-          properties: S.optional(__S(76, __c9, 4)),
-          identity: S.optional(__S(77, __c9, 5)),
+          properties: S.optional(__S(1057, __c132, 1)),
+          identity: S.optional(__S(1058, __c132, 2)),
         }),
       ).annotate({ identifier: "SAPVirtualInstance" });
-    case 5:
-      return S.Array(__S(180, __c22, 4));
-    case 6:
+    case 1:
+      return S.Array(__S(648, __c81, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          value: __S(181, __c22, 5),
+          value: __S(649, __c81, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
         identifier: "SAPVirtualInstanceListResult",
       });
-    case 7:
+  }
+}
+function __c82(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -6965,7 +6842,7 @@ function __c22(j: number): any {
       });
   }
 }
-function __c23(j: number): any {
+function __c83(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -6973,23 +6850,123 @@ function __c23(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(7, __c0, 7)),
-          tags: S.optional(__S(0, __c0, 0)),
+          systemData: S.optional(__S(8, __c1, 0)),
+          tags: S.optional(__S(40, __c5, 0)),
           location: S.String,
-          identity: S.optional(__S(10, __c1, 2)),
-          properties: __S(82, __c10, 2),
+          identity: S.optional(__S(48, __c6, 0)),
+          properties: __S(153, __c19, 1),
         }),
       ).annotate({ identifier: "SAPVirtualInstance_2" });
     case 1:
-      return S.Array(__S(184, __c23, 0));
+      return S.Array(__S(664, __c83, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(185, __c23, 1)),
+          value: S.optional(__S(665, __c83, 1)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "SAPVirtualInstanceList" });
+  }
+}
+function __c84(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          sapVirtualInstanceName: S.String.pipe(T.Label()),
+          centralInstanceName: S.String.pipe(T.Label()),
+          tags: S.optional(__S(40, __c5, 0)),
+          location: S.String,
+          properties: S.optional(__S(560, __c70, 0)),
+        }).pipe(
+          T.Http({
+            method: "PUT",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Workloads/sapVirtualInstances/{sapVirtualInstanceName}/centralInstances/{centralInstanceName}",
+            code: 200,
+            apiVersion: "2024-09-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateSapCentralServerInstanceRequest",
+      });
+  }
+}
+function __c85(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          msPort: S.optional(S.Number),
+          internalMsPort: S.optional(S.Number),
+          httpPort: S.optional(S.Number),
+          httpsPort: S.optional(S.Number),
+          hostname: S.optional(S.String),
+          ipAddress: S.optional(S.String),
+          health: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "MessageServerProperties" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          hostname: S.optional(S.String),
+          ipAddress: S.optional(S.String),
+          port: S.optional(S.Number),
+          health: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "EnqueueServerProperties" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          port: S.optional(S.Number),
+          health: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "GatewayServerProperties" });
     case 3:
+      return S.suspend(() =>
+        S.Struct({
+          instanceNo: S.optional(S.String),
+          subnet: S.optional(S.String),
+          messageServerProperties: S.optional(__S(680, __c85, 0)),
+          enqueueServerProperties: S.optional(__S(681, __c85, 1)),
+          gatewayServerProperties: S.optional(__S(682, __c85, 2)),
+          enqueueReplicationServerProperties: S.optional(__S(568, __c71, 0)),
+          kernelVersion: S.optional(S.String),
+          kernelPatch: S.optional(S.String),
+          loadBalancerDetails: S.optional(__S(304, __c38, 0)),
+          vmDetails: S.optional(__S(570, __c71, 2)),
+          status: S.optional(S.String),
+          health: S.optional(S.String),
+          provisioningState: S.optional(S.String),
+          errors: S.optional(__S(314, __c39, 2)),
+        }),
+      ).annotate({
+        identifier: "SAPCentralServerProperties",
+      });
+  }
+}
+function __c86(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(8, __c1, 0)),
+          tags: S.optional(__S(40, __c5, 0)),
+          location: S.String,
+          properties: S.optional(__S(683, __c85, 3)),
+        }),
+      ).annotate({
+        identifier: "CreateSapCentralServerInstanceResponse",
+      });
+  }
+}
+function __c87(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -7004,7 +6981,11 @@ function __c23(j: number): any {
       ).annotate({
         identifier: "ListSapVirtualInstanceBySubscriptionRequest",
       });
-    case 4:
+  }
+}
+function __c88(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -7019,7 +7000,11 @@ function __c23(j: number): any {
       ).annotate({
         identifier: "ListSAPVirtualInstanceBySubscriptionRequest",
       });
-    case 5:
+  }
+}
+function __c89(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -7038,7 +7023,11 @@ function __c23(j: number): any {
       ).annotate({
         identifier: "SAPAvailabilityZoneDetailsRequest",
       });
-    case 6:
+  }
+}
+function __c90(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -7060,38 +7049,38 @@ function __c23(j: number): any {
       ).annotate({
         identifier: "SAPDiskConfigurationsRequest",
       });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           count: S.optional(S.Number),
           sizeGB: S.optional(S.Number),
-          sku: S.optional(__S(126, __c15, 6)),
+          sku: S.optional(__S(464, __c58, 0)),
         }),
       ).annotate({
         identifier: "DiskVolumeConfiguration_2",
       });
-  }
-}
-function __c24(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          recommendedConfiguration: S.optional(__S(191, __c23, 7)),
-          supportedConfigurations: S.optional(__S(129, __c16, 1)),
-        }),
-      ).annotate({ identifier: "SAPDiskConfiguration_2" });
-    case 1:
-      return S.Record(S.String, __S(192, __c24, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          volumeConfigurations: S.optional(__S(193, __c24, 1)),
+          recommendedConfiguration: S.optional(__S(721, __c90, 1)),
+          supportedConfigurations: S.optional(__S(466, __c58, 2)),
+        }),
+      ).annotate({ identifier: "SAPDiskConfiguration_2" });
+    case 3:
+      return S.Record(S.String, __S(722, __c90, 2));
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          volumeConfigurations: S.optional(__S(723, __c90, 3)),
         }),
       ).annotate({
         identifier: "SAPDiskConfigurationsResult_2",
       });
-    case 3:
+  }
+}
+function __c91(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -7116,7 +7105,11 @@ function __c24(j: number): any {
       ).annotate({
         identifier: "SAPSizingRecommendationsRequest",
       });
-    case 4:
+  }
+}
+function __c92(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -7136,7 +7129,11 @@ function __c24(j: number): any {
           }),
         ),
       ).annotate({ identifier: "SAPSupportedSkuRequest" });
-    case 5:
+  }
+}
+function __c93(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -7155,28 +7152,12 @@ function __c24(j: number): any {
       ).annotate({
         identifier: "StartSapApplicationServerInstanceRequest",
       });
-    case 6:
-      return S.Array(/*@__PURE__*/ S.suspend(() => __S(199, __c24, 7)));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          resourceId: S.optional(S.String),
-          name: S.optional(S.String),
-          status: S.String,
-          percentComplete: S.optional(S.Number),
-          startTime: S.optional(S.String),
-          endTime: S.optional(S.String),
-          operations: S.optional(__S(198, __c24, 6)),
-          error: S.optional(__S(89, __c11, 1)),
-        }),
-      ).annotate({ identifier: "OperationStatusResult" });
   }
 }
-function __c25(j: number): any {
+function __c94(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(199, __c24, 7));
+      return S.Array(/*@__PURE__*/ S.suspend(() => __S(753, __c94, 1)));
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -7187,13 +7168,33 @@ function __c25(j: number): any {
           percentComplete: S.optional(S.Number),
           startTime: S.optional(S.String),
           endTime: S.optional(S.String),
-          operations: S.optional(__S(200, __c25, 0)),
-          error: S.optional(__S(89, __c11, 1)),
+          operations: S.optional(__S(752, __c94, 0)),
+          error: S.optional(__S(187, __c23, 3)),
+        }),
+      ).annotate({ identifier: "OperationStatusResult" });
+    case 2:
+      return S.Array(__S(753, __c94, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          resourceId: S.optional(S.String),
+          name: S.optional(S.String),
+          status: S.String,
+          percentComplete: S.optional(S.Number),
+          startTime: S.optional(S.String),
+          endTime: S.optional(S.String),
+          operations: S.optional(__S(754, __c94, 2)),
+          error: S.optional(__S(187, __c23, 3)),
         }),
       ).annotate({
         identifier: "StartSapApplicationServerInstanceResponse",
       });
-    case 2:
+  }
+}
+function __c95(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -7211,9 +7212,9 @@ function __c25(j: number): any {
       ).annotate({
         identifier: "StartSAPApplicationServerInstanceInstanceRequest",
       });
-    case 3:
-      return S.Array(__S(99, __c12, 3));
-    case 4:
+    case 1:
+      return S.Array(__S(225, __c28, 1));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
@@ -7222,13 +7223,17 @@ function __c25(j: number): any {
           percentComplete: S.optional(S.Number),
           startTime: S.optional(S.String),
           endTime: S.optional(S.String),
-          operations: S.optional(__S(203, __c25, 3)),
-          error: S.optional(__S(89, __c11, 1)),
+          operations: S.optional(__S(761, __c95, 1)),
+          error: S.optional(__S(187, __c23, 3)),
         }),
       ).annotate({
         identifier: "StartSAPApplicationServerInstanceInstanceResponse",
       });
-    case 5:
+  }
+}
+function __c96(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -7246,7 +7251,11 @@ function __c25(j: number): any {
       ).annotate({
         identifier: "StartSAPCentralInstanceInstanceRequest",
       });
-    case 6:
+  }
+}
+function __c97(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -7265,7 +7274,86 @@ function __c25(j: number): any {
       ).annotate({
         identifier: "StartSapCentralServerInstanceRequest",
       });
-    case 7:
+  }
+}
+function __c98(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          sapVirtualInstanceName: S.String.pipe(T.Label()),
+          databaseInstanceName: S.String.pipe(T.Label()),
+          tags: S.optional(__S(40, __c5, 0)),
+          location: S.String,
+          properties: S.optional(__S(16, __c2, 0)),
+        }).pipe(
+          T.Http({
+            method: "PUT",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Workloads/sapVirtualInstances/{sapVirtualInstanceName}/databaseInstances/{databaseInstanceName}",
+            code: 200,
+            apiVersion: "2024-09-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateSapDatabaseInstanceRequest",
+      });
+  }
+}
+function __c99(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subnet: S.optional(S.String),
+          databaseSid: S.optional(S.String),
+          databaseType: S.optional(S.String),
+          ipAddress: S.optional(S.String),
+          loadBalancerDetails: S.optional(__S(304, __c38, 0)),
+          vmDetails: S.optional(__S(809, __c101, 1)),
+          status: S.optional(S.String),
+          provisioningState: S.optional(S.String),
+          errors: S.optional(__S(314, __c39, 2)),
+        }),
+      ).annotate({ identifier: "SAPDatabaseProperties" });
+  }
+}
+function __c100(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(8, __c1, 0)),
+          tags: S.optional(__S(40, __c5, 0)),
+          location: S.String,
+          properties: S.optional(__S(792, __c99, 0)),
+        }),
+      ).annotate({
+        identifier: "CreateSapDatabaseInstanceResponse",
+      });
+  }
+}
+function __c101(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          virtualMachineId: S.optional(S.String),
+          status: S.optional(S.String),
+          storageDetails: S.optional(__S(305, __c38, 1)),
+        }),
+      ).annotate({ identifier: "DatabaseVmDetails" });
+    case 1:
+      return S.Array(__S(808, __c101, 0));
+  }
+}
+function __c102(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -7286,7 +7374,7 @@ function __c25(j: number): any {
       });
   }
 }
-function __c26(j: number): any {
+function __c103(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -7306,7 +7394,11 @@ function __c26(j: number): any {
       ).annotate({
         identifier: "StartSAPDatabaseInstanceInstanceRequest",
       });
-    case 1:
+  }
+}
+function __c104(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -7324,7 +7416,11 @@ function __c26(j: number): any {
       ).annotate({
         identifier: "StartSapVirtualInstanceRequest",
       });
-    case 2:
+  }
+}
+function __c105(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -7341,7 +7437,11 @@ function __c26(j: number): any {
       ).annotate({
         identifier: "StartSAPVirtualInstanceRequest",
       });
-    case 3:
+  }
+}
+function __c106(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -7361,7 +7461,11 @@ function __c26(j: number): any {
       ).annotate({
         identifier: "StopSapApplicationServerInstanceRequest",
       });
-    case 4:
+  }
+}
+function __c107(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -7380,7 +7484,11 @@ function __c26(j: number): any {
       ).annotate({
         identifier: "StopSAPApplicationServerInstanceInstanceRequest",
       });
-    case 5:
+  }
+}
+function __c108(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -7399,7 +7507,11 @@ function __c26(j: number): any {
       ).annotate({
         identifier: "StopSAPCentralInstanceInstanceRequest",
       });
-    case 6:
+  }
+}
+function __c109(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -7419,7 +7531,11 @@ function __c26(j: number): any {
       ).annotate({
         identifier: "StopSapCentralServerInstanceRequest",
       });
-    case 7:
+  }
+}
+function __c110(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -7441,7 +7557,7 @@ function __c26(j: number): any {
       });
   }
 }
-function __c27(j: number): any {
+function __c111(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -7462,7 +7578,72 @@ function __c27(j: number): any {
       ).annotate({
         identifier: "StopSAPDatabaseInstanceInstanceRequest",
       });
-    case 1:
+  }
+}
+function __c112(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          sapVirtualInstanceName: S.String.pipe(T.Label()),
+          databaseInstanceName: S.String.pipe(T.Label()),
+          tags: S.optional(__S(40, __c5, 0)),
+          location: S.String,
+          properties: S.optional(__S(16, __c2, 0)),
+        }).pipe(
+          T.Http({
+            method: "PUT",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Workloads/sapVirtualInstances/{sapVirtualInstanceName}/databaseInstances/{databaseInstanceName}",
+            code: 200,
+            apiVersion: "2023-04-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateSAPDatabaseInstanceRequest",
+      });
+  }
+}
+function __c113(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subnet: S.optional(S.String),
+          databaseSid: S.optional(S.String),
+          databaseType: S.optional(S.String),
+          ipAddress: S.optional(S.String),
+          loadBalancerDetails: S.optional(__S(304, __c38, 0)),
+          vmDetails: S.optional(__S(809, __c101, 1)),
+          status: S.optional(S.String),
+          provisioningState: S.optional(S.String),
+          errors: S.optional(__S(314, __c39, 2)),
+        }),
+      ).annotate({ identifier: "SAPDatabaseProperties_2" });
+  }
+}
+function __c114(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(8, __c1, 0)),
+          tags: S.optional(__S(40, __c5, 0)),
+          location: S.String,
+          properties: S.optional(__S(904, __c113, 0)),
+        }),
+      ).annotate({
+        identifier: "CreateSAPDatabaseInstanceResponse",
+      });
+  }
+}
+function __c115(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -7481,7 +7662,11 @@ function __c27(j: number): any {
       ).annotate({
         identifier: "StopSapVirtualInstanceRequest",
       });
-    case 2:
+  }
+}
+function __c116(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -7499,14 +7684,18 @@ function __c27(j: number): any {
       ).annotate({
         identifier: "StopSAPVirtualInstanceRequest",
       });
-    case 3:
+  }
+}
+function __c117(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           monitorName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(0, __c0, 0)),
-          identity: S.optional(__S(3, __c0, 3)),
+          tags: S.optional(__S(40, __c5, 0)),
+          identity: S.optional(__S(72, __c9, 0)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -7516,14 +7705,18 @@ function __c27(j: number): any {
           }),
         ),
       ).annotate({ identifier: "UpdateMonitorRequest" });
-    case 4:
+  }
+}
+function __c118(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           sapVirtualInstanceName: S.String.pipe(T.Label()),
           applicationInstanceName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(0, __c0, 0)),
+          tags: S.optional(__S(40, __c5, 0)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -7535,14 +7728,18 @@ function __c27(j: number): any {
       ).annotate({
         identifier: "UpdateSapApplicationServerInstanceRequest",
       });
-    case 5:
+  }
+}
+function __c119(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           sapVirtualInstanceName: S.String.pipe(T.Label()),
           applicationInstanceName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(0, __c0, 0)),
+          tags: S.optional(__S(40, __c5, 0)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -7554,14 +7751,18 @@ function __c27(j: number): any {
       ).annotate({
         identifier: "UpdateSAPApplicationServerInstanceRequest",
       });
-    case 6:
+  }
+}
+function __c120(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           sapVirtualInstanceName: S.String.pipe(T.Label()),
           centralInstanceName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(0, __c0, 0)),
+          tags: S.optional(__S(40, __c5, 0)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -7573,14 +7774,18 @@ function __c27(j: number): any {
       ).annotate({
         identifier: "UpdateSAPCentralInstanceRequest",
       });
-    case 7:
+  }
+}
+function __c121(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           sapVirtualInstanceName: S.String.pipe(T.Label()),
           centralInstanceName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(0, __c0, 0)),
+          tags: S.optional(__S(40, __c5, 0)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -7594,7 +7799,7 @@ function __c27(j: number): any {
       });
   }
 }
-function __c28(j: number): any {
+function __c122(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -7603,7 +7808,7 @@ function __c28(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           sapVirtualInstanceName: S.String.pipe(T.Label()),
           databaseInstanceName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(0, __c0, 0)),
+          tags: S.optional(__S(40, __c5, 0)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -7615,14 +7820,18 @@ function __c28(j: number): any {
       ).annotate({
         identifier: "UpdateSapDatabaseInstanceRequest",
       });
-    case 1:
+  }
+}
+function __c123(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           sapVirtualInstanceName: S.String.pipe(T.Label()),
           databaseInstanceName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(0, __c0, 0)),
+          tags: S.optional(__S(40, __c5, 0)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -7634,13 +7843,17 @@ function __c28(j: number): any {
       ).annotate({
         identifier: "UpdateSAPDatabaseInstanceRequest",
       });
-    case 2:
+  }
+}
+function __c124(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           monitorName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(68, __c8, 4)),
+          properties: S.optional(__S(1024, __c128, 0)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -7652,7 +7865,109 @@ function __c28(j: number): any {
       ).annotate({
         identifier: "UpdateSapLandscapeMonitorRequest",
       });
+  }
+}
+function __c125(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          monitorName: S.String.pipe(T.Label()),
+          properties: S.optional(__S(1024, __c128, 0)),
+        }).pipe(
+          T.Http({
+            method: "PUT",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Workloads/monitors/{monitorName}/sapLandscapeMonitor/default",
+            code: 200,
+            apiVersion: "2023-04-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateSapLandscapeMonitorRequest",
+      });
+  }
+}
+function __c126(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.optional(S.String),
+          topSid: S.optional(__S(136, __c17, 0)),
+        }),
+      ).annotate({
+        identifier: "SapLandscapeMonitorSidMapping",
+      });
+    case 1:
+      return S.Array(__S(1008, __c126, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          landscape: S.optional(__S(1009, __c126, 1)),
+          sapApplication: S.optional(__S(1009, __c126, 1)),
+        }),
+      ).annotate({
+        identifier: "SapLandscapeMonitorPropertiesInputGrouping",
+      });
     case 3:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.optional(S.String),
+          green: S.optional(S.Number),
+          yellow: S.optional(S.Number),
+          red: S.optional(S.Number),
+        }),
+      ).annotate({
+        identifier: "SapLandscapeMonitorMetricThresholds",
+      });
+    case 4:
+      return S.Array(__S(1011, __c126, 3));
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          provisioningState: S.optional(S.String),
+          grouping: S.optional(__S(1010, __c126, 2)),
+          topMetricsThresholds: S.optional(__S(1012, __c126, 4)),
+        }),
+      ).annotate({
+        identifier: "SapLandscapeMonitorProperties",
+      });
+  }
+}
+function __c127(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(8, __c1, 0)),
+          properties: S.optional(__S(1013, __c126, 5)),
+        }),
+      ).annotate({
+        identifier: "CreateSapLandscapeMonitorResponse",
+      });
+  }
+}
+function __c128(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          grouping: S.optional(__S(1010, __c126, 2)),
+          topMetricsThresholds: S.optional(__S(1012, __c126, 4)),
+        }),
+      ).annotate({
+        identifier: "SapLandscapeMonitorPropertiesInput",
+      });
+  }
+}
+function __c129(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           managedResourcesNetworkAccessType: S.optional(S.String),
@@ -7660,15 +7975,15 @@ function __c28(j: number): any {
       ).annotate({
         identifier: "UpdateSAPVirtualInstanceProperties",
       });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           sapVirtualInstanceName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(0, __c0, 0)),
-          identity: S.optional(__S(74, __c9, 2)),
-          properties: S.optional(__S(227, __c28, 3)),
+          tags: S.optional(__S(40, __c5, 0)),
+          identity: S.optional(__S(1072, __c134, 0)),
+          properties: S.optional(__S(1032, __c129, 0)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -7680,14 +7995,18 @@ function __c28(j: number): any {
       ).annotate({
         identifier: "UpdateSapVirtualInstanceRequest",
       });
-    case 5:
+  }
+}
+function __c130(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           sapVirtualInstanceName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(0, __c0, 0)),
-          identity: S.optional(__S(17, __c2, 1)),
+          tags: S.optional(__S(40, __c5, 0)),
+          identity: S.optional(__S(121, __c15, 1)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -7701,7 +8020,111 @@ function __c28(j: number): any {
       });
   }
 }
-
+function __c131(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          environment: S.String,
+          sapProduct: S.String,
+          managedResourcesNetworkAccessType: S.optional(S.String),
+          configuration: __S(1056, __c132, 0),
+          managedResourceGroupConfiguration: S.optional(__S(80, __c10, 0)),
+        }),
+      ).annotate({
+        identifier: "SAPVirtualInstancePropertiesInput",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          sapVirtualInstanceName: S.String.pipe(T.Label()),
+          tags: S.optional(__S(40, __c5, 0)),
+          location: S.String,
+          properties: S.optional(__S(1048, __c131, 0)),
+          identity: S.optional(__S(1072, __c134, 0)),
+        }).pipe(
+          T.Http({
+            method: "PUT",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Workloads/sapVirtualInstances/{sapVirtualInstanceName}",
+            code: 200,
+            apiVersion: "2024-09-01",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateSapVirtualInstanceRequest",
+      });
+  }
+}
+function __c132(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          configurationType: S.String,
+        }),
+      ).annotate({ identifier: "SAPConfiguration" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          environment: S.String,
+          sapProduct: S.String,
+          managedResourcesNetworkAccessType: S.optional(S.String),
+          configuration: __S(1056, __c132, 0),
+          managedResourceGroupConfiguration: S.optional(__S(80, __c10, 0)),
+          status: S.optional(S.String),
+          health: S.optional(S.String),
+          state: S.optional(S.String),
+          provisioningState: S.optional(S.String),
+          errors: S.optional(__S(314, __c39, 2)),
+        }),
+      ).annotate({
+        identifier: "SAPVirtualInstanceProperties",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          type: S.String,
+          userAssignedIdentities: S.optional(__S(88, __c11, 0)),
+        }),
+      ).annotate({
+        identifier: "SAPVirtualInstanceIdentity",
+      });
+  }
+}
+function __c133(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(8, __c1, 0)),
+          tags: S.optional(__S(40, __c5, 0)),
+          location: S.String,
+          properties: S.optional(__S(1057, __c132, 1)),
+          identity: S.optional(__S(1058, __c132, 2)),
+        }),
+      ).annotate({
+        identifier: "CreateSapVirtualInstanceResponse",
+      });
+  }
+}
+function __c134(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          type: S.String,
+          userAssignedIdentities: S.optional(__S(96, __c12, 0)),
+        }),
+      ).annotate({
+        identifier: "SAPVirtualInstanceIdentityInput",
+      });
+  }
+}
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

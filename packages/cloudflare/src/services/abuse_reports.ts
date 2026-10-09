@@ -717,8 +717,8 @@ export const createAbuseReport: API.OperationMethod<
   CreateAbuseReportError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2, __c0, 2) as any as S.Schema<CreateAbuseReportRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<CreateAbuseReportResponse>,
+  input: __S(1, __c0, 1) as any as S.Schema<CreateAbuseReportRequest>,
+  output: __S(2, __c0, 2) as any as S.Schema<CreateAbuseReportResponse>,
   errors: [InvalidRequest, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -728,8 +728,8 @@ export type GetError = CloudflareOpError;
 /** Retrieve the details of an abuse report made against a domain or other content associated with the account. To retrieve a report that the account submitted, use the submitted abuse report endpoint instead. */
 export const get: API.OperationMethod<GetRequest, GetResponse, GetError, CloudflareOpContext> =
   /*@__PURE__*/ API.make(() => ({
-    input: __S(4, __c0, 4) as any as S.Schema<GetRequest>,
-    output: __S(8, __c1, 0) as any as S.Schema<GetResponse>,
+    input: __S(16, __c2, 0) as any as S.Schema<GetRequest>,
+    output: __S(17, __c2, 1) as any as S.Schema<GetResponse>,
     errors: [CloudflareRateLimited, CloudflareError],
     protocol: CloudflareProtocol,
     retry: Retry.Retry,
@@ -743,8 +743,8 @@ export const getSubmitted: API.OperationMethod<
   GetSubmittedError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(9, __c1, 1) as any as S.Schema<GetSubmittedRequest>,
-  output: __S(12, __c1, 4) as any as S.Schema<GetSubmittedResponse>,
+  input: __S(48, __c6, 0) as any as S.Schema<GetSubmittedRequest>,
+  output: __S(51, __c6, 3) as any as S.Schema<GetSubmittedResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -758,8 +758,8 @@ export const listAbuseReports: API.OperationMethod<
   ListAbuseReportsError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(13, __c1, 5) as any as S.Schema<ListAbuseReportsRequest>,
-  output: __S(16, __c2, 0) as any as S.Schema<ListAbuseReportsResponse>,
+  input: __S(56, __c7, 0) as any as S.Schema<ListAbuseReportsRequest>,
+  output: __S(59, __c7, 3) as any as S.Schema<ListAbuseReportsResponse>,
   errors: [InvalidAccountId, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -773,8 +773,8 @@ export const listMitigations: API.OperationMethod<
   ListMitigationsError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(17, __c2, 1) as any as S.Schema<ListMitigationsRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<ListMitigationsResponse>,
+  input: __S(64, __c8, 0) as any as S.Schema<ListMitigationsRequest>,
+  output: __S(65, __c8, 1) as any as S.Schema<ListMitigationsResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -788,8 +788,8 @@ export const listSubmitted: API.OperationMethod<
   ListSubmittedError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(21, __c2, 5) as any as S.Schema<ListSubmittedRequest>,
-  output: __S(24, __c3, 0) as any as S.Schema<ListSubmittedResponse>,
+  input: __S(80, __c10, 0) as any as S.Schema<ListSubmittedRequest>,
+  output: __S(83, __c10, 3) as any as S.Schema<ListSubmittedResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -803,8 +803,8 @@ export const listSubmittedEmails: API.OperationMethod<
   ListSubmittedEmailsError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(25, __c3, 1) as any as S.Schema<ListSubmittedEmailsRequest>,
-  output: __S(28, __c3, 4) as any as S.Schema<ListSubmittedEmailsResponse>,
+  input: __S(88, __c11, 0) as any as S.Schema<ListSubmittedEmailsRequest>,
+  output: __S(91, __c11, 3) as any as S.Schema<ListSubmittedEmailsResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -820,8 +820,8 @@ export const reviewMitigation: API.PaginatedOperationMethod<
   MitigationsReviewResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(32, __c4, 0) as any as S.Schema<ReviewMitigationRequest>,
-    output: __S(33, __c4, 1) as any as S.Schema<ReviewMitigationResponse>,
+    input: __S(99, __c12, 3) as any as S.Schema<ReviewMitigationRequest>,
+    output: __S(100, __c12, 4) as any as S.Schema<ReviewMitigationResponse>,
     errors: [CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
     retry: Retry.Retry,
@@ -834,8 +834,6 @@ export const reviewMitigation: API.PaginatedOperationMethod<
 function __c0(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(S.String);
-    case 1:
       return S.suspend(() =>
         S.Struct({
           regWhoGoodFaithAffirmation: S.Boolean.pipe(T.Body("reg_who_good_faith_affirmation")),
@@ -844,7 +842,7 @@ function __c0(j: number): any {
           ),
           regWhoLegalBasis: S.String.pipe(T.Body("reg_who_legal_basis")),
           regWhoRequestType: S.String.pipe(T.Body("reg_who_request_type")),
-          regWhoRequestedDataElements: __S(0, __c0, 0).pipe(
+          regWhoRequestedDataElements: __S(8, __c1, 0).pipe(
             T.Body("reg_who_requested_data_elements"),
           ),
           regWhoAuthorizationStatement: S.optional(
@@ -855,7 +853,7 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "CreateRequestRegWhoRequest",
       });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -889,7 +887,7 @@ function __c0(j: number): any {
           portsProtocols: S.optional(S.String.pipe(T.Body("ports_protocols"))),
           sourceIps: S.optional(S.String.pipe(T.Body("source_ips"))),
           ncmecNotification: S.optional(S.String.pipe(T.Body("ncmec_notification"))),
-          regWhoRequest: S.optional(__S(1, __c0, 1).pipe(T.Body("reg_who_request"))),
+          regWhoRequest: S.optional(__S(0, __c0, 0).pipe(T.Body("reg_who_request"))),
           ncseiSubjectRepresentation: S.optional(
             S.Boolean.pipe(T.Body("ncsei_subject_representation")),
           ),
@@ -903,13 +901,23 @@ function __c0(j: number): any {
           )
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "CreateAbuseReportRequest" });
-    case 3:
+    case 2:
       return S.suspend(() =>
         S.String.pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({
         identifier: "CreateAbuseReportResponse",
       });
-    case 4:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -924,7 +932,45 @@ function __c0(j: number): any {
           )
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "GetRequest" });
-    case 5:
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          cdate: S.String,
+          domain: S.String,
+          mitigationSummary: __S(40, __c5, 0).pipe(T.Body("mitigation_summary")),
+          status: S.String,
+          type: S.String,
+          justification: S.optional(S.NullOr(S.String)),
+          originalWork: S.optional(S.NullOr(S.String).pipe(T.Body("original_work"))),
+          submitter: S.optional(S.NullOr(__S(24, __c3, 0))),
+          urls: S.optional(S.NullOr(__S(32, __c4, 0))),
+        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({ identifier: "GetResponse" });
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          company: S.optional(S.NullOr(S.String)),
+          email: S.optional(S.NullOr(S.String)),
+          name: S.optional(S.NullOr(S.String)),
+          telephone: S.optional(S.NullOr(S.String)),
+        }),
+      ).annotate({ identifier: "GetResponseSubmitter" });
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           acceptedUrlCount: S.Number.pipe(T.Body("accepted_url_count")),
@@ -936,37 +982,11 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "GetResponseMitigationSummary",
       });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          company: S.optional(S.NullOr(S.String)),
-          email: S.optional(S.NullOr(S.String)),
-          name: S.optional(S.NullOr(S.String)),
-          telephone: S.optional(S.NullOr(S.String)),
-        }),
-      ).annotate({ identifier: "GetResponseSubmitter" });
-    case 7:
-      return S.Array(S.String);
   }
 }
-function __c1(j: number): any {
+function __c6(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String,
-          cdate: S.String,
-          domain: S.String,
-          mitigationSummary: __S(5, __c0, 5).pipe(T.Body("mitigation_summary")),
-          status: S.String,
-          type: S.String,
-          justification: S.optional(S.NullOr(S.String)),
-          originalWork: S.optional(S.NullOr(S.String).pipe(T.Body("original_work"))),
-          submitter: S.optional(S.NullOr(__S(6, __c0, 6))),
-          urls: S.optional(S.NullOr(__S(7, __c0, 7))),
-        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({ identifier: "GetResponse" });
-    case 1:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -981,9 +1001,9 @@ function __c1(j: number): any {
           )
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "GetSubmittedRequest" });
-    case 2:
+    case 1:
       return S.Array(S.String);
-    case 3:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           regWhoGoodFaithAffirmation: S.Boolean.pipe(T.Body("reg_who_good_faith_affirmation")),
@@ -992,7 +1012,7 @@ function __c1(j: number): any {
           ),
           regWhoLegalBasis: S.String.pipe(T.Body("reg_who_legal_basis")),
           regWhoRequestType: S.String.pipe(T.Body("reg_who_request_type")),
-          regWhoRequestedDataElements: __S(10, __c1, 2).pipe(
+          regWhoRequestedDataElements: __S(49, __c6, 1).pipe(
             T.Body("reg_who_requested_data_elements"),
           ),
           regWhoAuthorizationStatement: S.optional(
@@ -1005,7 +1025,7 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "GetSubmittedResponseRegWhoRequest",
       });
-    case 4:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
@@ -1015,11 +1035,11 @@ function __c1(j: number): any {
           dsaAttestation: S.Boolean.pipe(T.Body("dsa_attestation")),
           status: S.String,
           type: S.String,
-          urls: __S(7, __c0, 7),
+          urls: __S(32, __c4, 0),
           agentName: S.optional(S.NullOr(S.String).pipe(T.Body("agent_name"))),
           comments: S.optional(S.NullOr(S.String)),
           court: S.optional(S.NullOr(S.String)),
-          destinationIps: S.optional(S.NullOr(__S(7, __c0, 7)).pipe(T.Body("destination_ips"))),
+          destinationIps: S.optional(S.NullOr(__S(32, __c4, 0)).pipe(T.Body("destination_ips"))),
           hostNotification: S.optional(S.NullOr(S.String).pipe(T.Body("host_notification"))),
           justification: S.optional(S.NullOr(S.String)),
           ncmecNotification: S.optional(S.NullOr(S.String).pipe(T.Body("ncmec_notification"))),
@@ -1028,19 +1048,23 @@ function __c1(j: number): any {
           ),
           originalWork: S.optional(S.NullOr(S.String).pipe(T.Body("original_work"))),
           ownerNotification: S.optional(S.NullOr(S.String).pipe(T.Body("owner_notification"))),
-          portsProtocols: S.optional(S.NullOr(__S(7, __c0, 7)).pipe(T.Body("ports_protocols"))),
-          regWhoRequest: S.optional(S.NullOr(__S(11, __c1, 3)).pipe(T.Body("reg_who_request"))),
+          portsProtocols: S.optional(S.NullOr(__S(32, __c4, 0)).pipe(T.Body("ports_protocols"))),
+          regWhoRequest: S.optional(S.NullOr(__S(50, __c6, 2)).pipe(T.Body("reg_who_request"))),
           reportedCountry: S.optional(S.NullOr(S.String).pipe(T.Body("reported_country"))),
           reportedUserAgent: S.optional(S.NullOr(S.String).pipe(T.Body("reported_user_agent"))),
-          sourceIps: S.optional(S.NullOr(__S(7, __c0, 7)).pipe(T.Body("source_ips"))),
-          submitter: S.optional(S.NullOr(__S(6, __c0, 6))),
-          subtypes: S.optional(S.NullOr(__S(7, __c0, 7))),
+          sourceIps: S.optional(S.NullOr(__S(32, __c4, 0)).pipe(T.Body("source_ips"))),
+          submitter: S.optional(S.NullOr(__S(24, __c3, 0))),
+          subtypes: S.optional(S.NullOr(__S(32, __c4, 0))),
           title: S.optional(S.NullOr(S.String)),
           udrp: S.optional(S.NullOr(S.String)),
           urs: S.optional(S.NullOr(S.String)),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "GetSubmittedResponse" });
-    case 5:
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -1057,34 +1081,34 @@ function __c1(j: number): any {
           .pipe(T.Http({ method: "GET", uri: "/accounts/{account_id}/abuse-reports", code: 200 }))
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "ListAbuseReportsRequest" });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
           cdate: S.String,
           domain: S.String,
-          mitigationSummary: __S(5, __c0, 5).pipe(T.Body("mitigation_summary")),
+          mitigationSummary: __S(40, __c5, 0).pipe(T.Body("mitigation_summary")),
           status: S.String,
           type: S.String,
           justification: S.optional(S.NullOr(S.String)),
           originalWork: S.optional(S.NullOr(S.String).pipe(T.Body("original_work"))),
-          submitter: S.optional(S.NullOr(__S(6, __c0, 6))),
-          urls: S.optional(S.NullOr(__S(7, __c0, 7))),
+          submitter: S.optional(S.NullOr(__S(24, __c3, 0))),
+          urls: S.optional(S.NullOr(__S(32, __c4, 0))),
         }),
       ).annotate({ identifier: "ListResponseReportsItem" });
-    case 7:
-      return S.Array(__S(14, __c1, 6));
-  }
-}
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
+    case 2:
+      return S.Array(__S(57, __c7, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          reports: __S(15, __c1, 7),
+          reports: __S(58, __c7, 2),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "ListAbuseReportsResponse" });
-    case 1:
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -1107,7 +1131,17 @@ function __c2(j: number): any {
           )
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "ListMitigationsRequest" });
-    case 2:
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          mitigations: __S(73, __c9, 1),
+        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({ identifier: "ListMitigationsResponse" });
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
@@ -1120,27 +1154,25 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "MitigationsListResponseMitigationsItem",
       });
-    case 3:
-      return S.Array(__S(18, __c2, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          mitigations: __S(19, __c2, 3),
-        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({ identifier: "ListMitigationsResponse" });
-    case 5:
+    case 1:
+      return S.Array(__S(72, __c9, 0));
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
           id: S.optional(S.String.pipe(T.Query())),
           createdAfter: S.optional(S.String.pipe(T.Query("created_after"))),
           createdBefore: S.optional(S.String.pipe(T.Query("created_before"))),
-          domain: S.optional(__S(7, __c0, 7).pipe(T.Query())),
+          domain: S.optional(__S(32, __c4, 0).pipe(T.Query())),
           page: S.optional(S.Number.pipe(T.Query())),
           perPage: S.optional(S.Number.pipe(T.Query("per_page"))),
           sort: S.optional(S.String.pipe(T.Query())),
-          status: S.optional(__S(0, __c0, 0).pipe(T.Query())),
-          type: S.optional(__S(0, __c0, 0).pipe(T.Query())),
+          status: S.optional(__S(8, __c1, 0).pipe(T.Query())),
+          type: S.optional(__S(8, __c1, 0).pipe(T.Query())),
         })
           .pipe(
             T.Http({
@@ -1151,7 +1183,7 @@ function __c2(j: number): any {
           )
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "ListSubmittedRequest" });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
@@ -1160,24 +1192,24 @@ function __c2(j: number): any {
           domain: S.String,
           status: S.String,
           type: S.String,
-          submitter: S.optional(S.NullOr(__S(6, __c0, 6))),
+          submitter: S.optional(S.NullOr(__S(24, __c3, 0))),
         }),
       ).annotate({
         identifier: "ListSubmittedResponseReportsItem",
       });
-    case 7:
-      return S.Array(__S(22, __c2, 6));
-  }
-}
-function __c3(j: number): any {
-  switch (j) {
-    case 0:
+    case 2:
+      return S.Array(__S(81, __c10, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          reports: __S(23, __c2, 7),
+          reports: __S(82, __c10, 2),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "ListSubmittedResponse" });
-    case 1:
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -1196,7 +1228,7 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "ListSubmittedEmailsRequest",
       });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
@@ -1208,17 +1240,21 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "ListSubmittedEmailsResponseEmailsItem",
       });
+    case 2:
+      return S.Array(__S(89, __c11, 1));
     case 3:
-      return S.Array(__S(26, __c3, 2));
-    case 4:
       return S.suspend(() =>
         S.Struct({
-          emails: __S(27, __c3, 3),
+          emails: __S(90, __c11, 2),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({
         identifier: "ListSubmittedEmailsResponse",
       });
-    case 5:
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
@@ -1227,9 +1263,9 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "MitigationsReviewRequestAppealsItem",
       });
-    case 6:
-      return S.Array(__S(29, __c3, 5));
-    case 7:
+    case 1:
+      return S.Array(__S(96, __c12, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           city: S.String,
@@ -1242,7 +1278,7 @@ function __c3(j: number): any {
           signature: S.String,
           state: S.String,
           streetAddress: S.String.pipe(T.Body("street_address")),
-          urls: __S(7, __c0, 7),
+          urls: __S(32, __c4, 0),
           zipCode: S.String.pipe(T.Body("zip_code")),
           company: S.optional(S.String),
           counterNoticeResponse: S.optional(S.String.pipe(T.Body("counter_notice_response"))),
@@ -1250,17 +1286,13 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "MitigationsReviewRequestData",
       });
-  }
-}
-function __c4(j: number): any {
-  switch (j) {
-    case 0:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
           reportId: S.String.pipe(T.Label("report_id")),
-          appeals: S.optional(__S(30, __c3, 6)),
-          data: S.optional(__S(31, __c3, 7)),
+          appeals: S.optional(__S(97, __c12, 1)),
+          data: S.optional(__S(98, __c12, 2)),
           type: S.optional(S.String),
         })
           .pipe(
@@ -1272,16 +1304,15 @@ function __c4(j: number): any {
           )
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "ReviewMitigationRequest" });
-    case 1:
+    case 4:
       return S.suspend(() =>
         S.Struct({
-          result: __S(19, __c2, 3).pipe(T.EnvelopePayload()),
+          result: __S(73, __c9, 1).pipe(T.EnvelopePayload()),
           resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "ReviewMitigationResponse" });
   }
 }
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

@@ -610,8 +610,8 @@ export const allocateQuotaServices: API.OperationMethod<
   AllocateQuotaServicesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(18, __c2, 2) as any as S.Schema<AllocateQuotaServicesRequest>,
-  output: __S(23, __c2, 7) as any as S.Schema<AllocateQuotaResponse>,
+  input: __S(2, __c0, 2) as any as S.Schema<AllocateQuotaServicesRequest>,
+  output: __S(6, __c0, 6) as any as S.Schema<AllocateQuotaResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -625,8 +625,8 @@ export const checkServices: API.OperationMethod<
   CheckServicesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(40, __c5, 0) as any as S.Schema<CheckServicesRequest>,
-  output: __S(47, __c5, 7) as any as S.Schema<CheckResponse>,
+  input: __S(65, __c2, 1) as any as S.Schema<CheckServicesRequest>,
+  output: __S(72, __c2, 8) as any as S.Schema<CheckResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -640,8 +640,8 @@ export const reportServices: API.OperationMethod<
   ReportServicesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(50, __c6, 2) as any as S.Schema<ReportServicesRequest>,
-  output: __S(53, __c6, 5) as any as S.Schema<ReportResponse>,
+  input: __S(130, __c4, 2) as any as S.Schema<ReportServicesRequest>,
+  output: __S(133, __c4, 5) as any as S.Schema<ReportResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -649,6 +649,70 @@ export const reportServices: API.OperationMethod<
 
 // Schema builders: each runs one schema initializer, on that schema's first use.
 function __c0(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          operationId: S.optional(S.String),
+          labels: S.optional(__S(32, __c1, 0)),
+          quotaMode: S.optional(S.String),
+          quotaMetrics: S.optional(__S(47, __c1, 15)),
+          consumerId: S.optional(S.String),
+          methodName: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "QuotaOperation" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          serviceConfigId: S.optional(S.String),
+          allocateOperation: S.optional(__S(0, __c0, 0)),
+        }),
+      ).annotate({ identifier: "AllocateQuotaRequest" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          serviceName: S.String.pipe(T.Label()),
+          body: S.optional(__S(1, __c0, 1).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/services/{serviceName}:allocateQuota",
+            baseUrl: "https://servicecontrol.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "AllocateQuotaServicesRequest",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          unusedArguments: S.optional(__S(41, __c1, 9)),
+        }),
+      ).annotate({ identifier: "AllocateInfo" });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          subject: S.optional(S.String),
+          description: S.optional(S.String),
+          code: S.optional(S.String),
+          status: S.optional(__S(48, __c1, 16)),
+        }),
+      ).annotate({ identifier: "QuotaError" });
+    case 5:
+      return S.Array(__S(4, __c0, 4));
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          operationId: S.optional(S.String),
+          allocateInfo: S.optional(__S(3, __c0, 3)),
+          allocateErrors: S.optional(__S(5, __c0, 5)),
+          quotaMetrics: S.optional(__S(47, __c1, 15)),
+          serviceConfigId: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "AllocateQuotaResponse" });
+  }
+}
+function __c1(j: number): any {
   switch (j) {
     case 0:
       return S.Record(S.String, S.String);
@@ -665,28 +729,24 @@ function __c0(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          bounds: S.optional(__S(2, __c0, 2)),
+          bounds: S.optional(__S(34, __c1, 2)),
         }),
       ).annotate({ identifier: "ExplicitBuckets" });
     case 4:
       return S.Record(S.String, S.Unknown);
     case 5:
-      return S.Array(__S(4, __c0, 4));
+      return S.Array(__S(36, __c1, 4));
     case 6:
       return S.suspend(() =>
         S.Struct({
           timestamp: S.optional(S.String),
-          attachments: S.optional(__S(5, __c0, 5)),
+          attachments: S.optional(__S(37, __c1, 5)),
           value: S.optional(S.Number),
         }),
       ).annotate({ identifier: "Exemplar" });
     case 7:
-      return S.Array(__S(6, __c0, 6));
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
+      return S.Array(__S(38, __c1, 6));
+    case 8:
       return S.suspend(() =>
         S.Struct({
           numFiniteBuckets: S.optional(S.Number),
@@ -694,9 +754,9 @@ function __c1(j: number): any {
           growthFactor: S.optional(S.Number),
         }),
       ).annotate({ identifier: "ExponentialBuckets" });
-    case 1:
+    case 9:
       return S.Array(S.String);
-    case 2:
+    case 10:
       return S.suspend(() =>
         S.Struct({
           width: S.optional(S.Number),
@@ -704,46 +764,54 @@ function __c1(j: number): any {
           offset: S.optional(S.Number),
         }),
       ).annotate({ identifier: "LinearBuckets" });
-    case 3:
+    case 11:
       return S.suspend(() =>
         S.Struct({
           sumOfSquaredDeviation: S.optional(S.Number),
-          explicitBuckets: S.optional(__S(3, __c0, 3)),
+          explicitBuckets: S.optional(__S(35, __c1, 3)),
           maximum: S.optional(S.Number),
-          exemplars: S.optional(__S(7, __c0, 7)),
+          exemplars: S.optional(__S(39, __c1, 7)),
           minimum: S.optional(S.Number),
-          exponentialBuckets: S.optional(__S(8, __c1, 0)),
+          exponentialBuckets: S.optional(__S(40, __c1, 8)),
           mean: S.optional(S.Number),
-          bucketCounts: S.optional(__S(9, __c1, 1)),
+          bucketCounts: S.optional(__S(41, __c1, 9)),
           count: S.optional(S.String),
-          linearBuckets: S.optional(__S(10, __c1, 2)),
+          linearBuckets: S.optional(__S(42, __c1, 10)),
         }),
       ).annotate({ identifier: "Distribution" });
-    case 4:
+    case 12:
       return S.suspend(() =>
         S.Struct({
-          labels: S.optional(__S(0, __c0, 0)),
+          labels: S.optional(__S(32, __c1, 0)),
           int64Value: S.optional(S.String),
           doubleValue: S.optional(S.Number),
-          moneyValue: S.optional(__S(1, __c0, 1)),
+          moneyValue: S.optional(__S(33, __c1, 1)),
           endTime: S.optional(S.String),
           startTime: S.optional(S.String),
           boolValue: S.optional(S.Boolean),
-          distributionValue: S.optional(__S(11, __c1, 3)),
+          distributionValue: S.optional(__S(43, __c1, 11)),
           stringValue: S.optional(S.String),
         }),
       ).annotate({ identifier: "MetricValue" });
-    case 5:
-      return S.Array(__S(12, __c1, 4));
-    case 6:
+    case 13:
+      return S.Array(__S(44, __c1, 12));
+    case 14:
       return S.suspend(() =>
         S.Struct({
           metricName: S.optional(S.String),
-          metricValues: S.optional(__S(13, __c1, 5)),
+          metricValues: S.optional(__S(45, __c1, 13)),
         }),
       ).annotate({ identifier: "MetricValueSet" });
-    case 7:
-      return S.Array(__S(14, __c1, 6));
+    case 15:
+      return S.Array(__S(46, __c1, 14));
+    case 16:
+      return S.suspend(() =>
+        S.Struct({
+          message: S.optional(S.String),
+          details: S.optional(__S(37, __c1, 5)),
+          code: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "Status" });
   }
 }
 function __c2(j: number): any {
@@ -751,71 +819,75 @@ function __c2(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          operationId: S.optional(S.String),
-          labels: S.optional(__S(0, __c0, 0)),
-          quotaMode: S.optional(S.String),
-          quotaMetrics: S.optional(__S(15, __c1, 7)),
-          consumerId: S.optional(S.String),
-          methodName: S.optional(S.String),
+          operation: S.optional(__S(110, __c3, 14)),
+          serviceConfigId: S.optional(S.String),
+          skipActivationCheck: S.optional(S.Boolean),
+          requestProjectSettings: S.optional(S.Boolean),
         }),
-      ).annotate({ identifier: "QuotaOperation" });
+      ).annotate({ identifier: "CheckRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
-          serviceConfigId: S.optional(S.String),
-          allocateOperation: S.optional(__S(16, __c2, 0)),
-        }),
-      ).annotate({ identifier: "AllocateQuotaRequest" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
           serviceName: S.String.pipe(T.Label()),
-          body: S.optional(__S(17, __c2, 1).pipe(T.HttpBody())),
+          body: S.optional(__S(64, __c2, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
-            uri: "v1/services/{serviceName}:allocateQuota",
+            uri: "v1/services/{serviceName}:check",
             baseUrl: "https://servicecontrol.googleapis.com/",
           }),
         ),
-      ).annotate({
-        identifier: "AllocateQuotaServicesRequest",
-      });
+      ).annotate({ identifier: "CheckServicesRequest" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          type: S.optional(S.String),
+          projectNumber: S.optional(S.String),
+          consumerNumber: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ConsumerInfo" });
     case 3:
       return S.suspend(() =>
         S.Struct({
-          unusedArguments: S.optional(__S(9, __c1, 1)),
+          consumerInfo: S.optional(__S(66, __c2, 2)),
+          unusedArguments: S.optional(__S(41, __c1, 9)),
+          ignoreApiKeyUidAsCredentialId: S.optional(S.Boolean),
+          apiKeyUid: S.optional(S.String),
         }),
-      ).annotate({ identifier: "AllocateInfo" });
+      ).annotate({ identifier: "CheckInfo" });
     case 4:
-      return S.suspend(() =>
-        S.Struct({
-          message: S.optional(S.String),
-          details: S.optional(__S(5, __c0, 5)),
-          code: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "Status" });
+      return S.Record(S.String, S.Number);
     case 5:
       return S.suspend(() =>
         S.Struct({
-          subject: S.optional(S.String),
-          description: S.optional(S.String),
-          code: S.optional(S.String),
-          status: S.optional(__S(20, __c2, 4)),
+          quotaMetrics: S.optional(__S(47, __c1, 15)),
+          limitExceeded: S.optional(__S(41, __c1, 9)),
+          quotaExtractionState: S.optional(S.String),
+          quotaConsumed: S.optional(__S(68, __c2, 4)),
         }),
-      ).annotate({ identifier: "QuotaError" });
+      ).annotate({ identifier: "QuotaInfo" });
     case 6:
-      return S.Array(__S(21, __c2, 5));
-    case 7:
       return S.suspend(() =>
         S.Struct({
-          operationId: S.optional(S.String),
-          allocateInfo: S.optional(__S(19, __c2, 3)),
-          allocateErrors: S.optional(__S(22, __c2, 6)),
-          quotaMetrics: S.optional(__S(15, __c1, 7)),
-          serviceConfigId: S.optional(S.String),
+          code: S.optional(S.String),
+          detail: S.optional(S.String),
+          status: S.optional(__S(48, __c1, 16)),
+          subject: S.optional(S.String),
         }),
-      ).annotate({ identifier: "AllocateQuotaResponse" });
+      ).annotate({ identifier: "CheckError" });
+    case 7:
+      return S.Array(__S(70, __c2, 6));
+    case 8:
+      return S.suspend(() =>
+        S.Struct({
+          checkInfo: S.optional(__S(67, __c2, 3)),
+          quotaInfo: S.optional(__S(69, __c2, 5)),
+          operationId: S.optional(S.String),
+          serviceConfigId: S.optional(S.String),
+          serviceRolloutId: S.optional(S.String),
+          checkErrors: S.optional(__S(71, __c2, 7)),
+        }),
+      ).annotate({ identifier: "CheckResponse" });
   }
 }
 function __c3(j: number): any {
@@ -837,16 +909,16 @@ function __c3(j: number): any {
       return S.suspend(() =>
         S.Struct({
           intValue: S.optional(S.String),
-          stringValue: S.optional(__S(25, __c3, 1)),
+          stringValue: S.optional(__S(97, __c3, 1)),
           boolValue: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "AttributeValue" });
     case 3:
-      return S.Record(S.String, __S(26, __c3, 2));
+      return S.Record(S.String, __S(98, __c3, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          attributeMap: S.optional(__S(27, __c3, 3)),
+          attributeMap: S.optional(__S(99, __c3, 3)),
           droppedAttributesCount: S.optional(S.Number),
         }),
       ).annotate({ identifier: "Attributes" });
@@ -854,12 +926,12 @@ function __c3(j: number): any {
       return S.suspend(() =>
         S.Struct({
           startTime: S.optional(S.String),
-          attributes: S.optional(__S(28, __c3, 4)),
+          attributes: S.optional(__S(100, __c3, 4)),
           name: S.optional(S.String),
-          displayName: S.optional(__S(25, __c3, 1)),
+          displayName: S.optional(__S(97, __c3, 1)),
           sameProcessAsParentSpan: S.optional(S.Boolean),
           spanId: S.optional(S.String),
-          status: S.optional(__S(20, __c2, 4)),
+          status: S.optional(__S(48, __c1, 16)),
           parentSpanId: S.optional(S.String),
           endTime: S.optional(S.String),
           childSpanCount: S.optional(S.Number),
@@ -867,7 +939,7 @@ function __c3(j: number): any {
         }),
       ).annotate({ identifier: "TraceSpan" });
     case 6:
-      return S.Array(__S(29, __c3, 5));
+      return S.Array(__S(101, __c3, 5));
     case 7:
       return S.suspend(() =>
         S.Struct({
@@ -877,13 +949,9 @@ function __c3(j: number): any {
           permission: S.optional(S.String),
         }),
       ).annotate({ identifier: "ResourceInfo" });
-  }
-}
-function __c4(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(31, __c3, 7));
-    case 1:
+    case 8:
+      return S.Array(__S(103, __c3, 7));
+    case 9:
       return S.suspend(() =>
         S.Struct({
           requestUrl: S.optional(S.String),
@@ -903,7 +971,7 @@ function __c4(j: number): any {
           referer: S.optional(S.String),
         }),
       ).annotate({ identifier: "HttpRequest" });
-    case 2:
+    case 10:
       return S.suspend(() =>
         S.Struct({
           last: S.optional(S.Boolean),
@@ -912,7 +980,7 @@ function __c4(j: number): any {
           id: S.optional(S.String),
         }),
       ).annotate({ identifier: "LogEntryOperation" });
-    case 3:
+    case 11:
       return S.suspend(() =>
         S.Struct({
           line: S.optional(S.String),
@@ -920,129 +988,53 @@ function __c4(j: number): any {
           file: S.optional(S.String),
         }),
       ).annotate({ identifier: "LogEntrySourceLocation" });
-    case 4:
+    case 12:
       return S.suspend(() =>
         S.Struct({
-          labels: S.optional(__S(0, __c0, 0)),
+          labels: S.optional(__S(32, __c1, 0)),
           severity: S.optional(S.String),
-          protoPayload: S.optional(__S(4, __c0, 4)),
+          protoPayload: S.optional(__S(36, __c1, 4)),
           trace: S.optional(S.String),
           textPayload: S.optional(S.String),
-          structPayload: S.optional(__S(4, __c0, 4)),
+          structPayload: S.optional(__S(36, __c1, 4)),
           name: S.optional(S.String),
           insertId: S.optional(S.String),
-          httpRequest: S.optional(__S(33, __c4, 1)),
-          operation: S.optional(__S(34, __c4, 2)),
-          sourceLocation: S.optional(__S(35, __c4, 3)),
+          httpRequest: S.optional(__S(105, __c3, 9)),
+          operation: S.optional(__S(106, __c3, 10)),
+          sourceLocation: S.optional(__S(107, __c3, 11)),
           timestamp: S.optional(S.String),
         }),
       ).annotate({ identifier: "LogEntry" });
-    case 5:
-      return S.Array(__S(36, __c4, 4));
-    case 6:
+    case 13:
+      return S.Array(__S(108, __c3, 12));
+    case 14:
       return S.suspend(() =>
         S.Struct({
-          quotaProperties: S.optional(__S(24, __c3, 0)),
+          quotaProperties: S.optional(__S(96, __c3, 0)),
           consumerId: S.optional(S.String),
-          userLabels: S.optional(__S(0, __c0, 0)),
+          userLabels: S.optional(__S(32, __c1, 0)),
           operationId: S.optional(S.String),
           importance: S.optional(S.String),
-          metricValueSets: S.optional(__S(15, __c1, 7)),
-          traceSpans: S.optional(__S(30, __c3, 6)),
-          labels: S.optional(__S(0, __c0, 0)),
+          metricValueSets: S.optional(__S(47, __c1, 15)),
+          traceSpans: S.optional(__S(102, __c3, 6)),
+          labels: S.optional(__S(32, __c1, 0)),
           endTime: S.optional(S.String),
           operationName: S.optional(S.String),
           startTime: S.optional(S.String),
-          resources: S.optional(__S(32, __c4, 0)),
-          logEntries: S.optional(__S(37, __c4, 5)),
+          resources: S.optional(__S(104, __c3, 8)),
+          logEntries: S.optional(__S(109, __c3, 13)),
         }),
       ).annotate({ identifier: "Operation" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          operation: S.optional(__S(38, __c4, 6)),
-          serviceConfigId: S.optional(S.String),
-          skipActivationCheck: S.optional(S.Boolean),
-          requestProjectSettings: S.optional(S.Boolean),
-        }),
-      ).annotate({ identifier: "CheckRequest" });
   }
 }
-function __c5(j: number): any {
+function __c4(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() =>
-        S.Struct({
-          serviceName: S.String.pipe(T.Label()),
-          body: S.optional(__S(39, __c4, 7).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/services/{serviceName}:check",
-            baseUrl: "https://servicecontrol.googleapis.com/",
-          }),
-        ),
-      ).annotate({ identifier: "CheckServicesRequest" });
+      return S.Array(__S(110, __c3, 14));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          type: S.optional(S.String),
-          projectNumber: S.optional(S.String),
-          consumerNumber: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ConsumerInfo" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          consumerInfo: S.optional(__S(41, __c5, 1)),
-          unusedArguments: S.optional(__S(9, __c1, 1)),
-          ignoreApiKeyUidAsCredentialId: S.optional(S.Boolean),
-          apiKeyUid: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "CheckInfo" });
-    case 3:
-      return S.Record(S.String, S.Number);
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          quotaMetrics: S.optional(__S(15, __c1, 7)),
-          limitExceeded: S.optional(__S(9, __c1, 1)),
-          quotaExtractionState: S.optional(S.String),
-          quotaConsumed: S.optional(__S(43, __c5, 3)),
-        }),
-      ).annotate({ identifier: "QuotaInfo" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          code: S.optional(S.String),
-          detail: S.optional(S.String),
-          status: S.optional(__S(20, __c2, 4)),
-          subject: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "CheckError" });
-    case 6:
-      return S.Array(__S(45, __c5, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          checkInfo: S.optional(__S(42, __c5, 2)),
-          quotaInfo: S.optional(__S(44, __c5, 4)),
-          operationId: S.optional(S.String),
-          serviceConfigId: S.optional(S.String),
-          serviceRolloutId: S.optional(S.String),
-          checkErrors: S.optional(__S(46, __c5, 6)),
-        }),
-      ).annotate({ identifier: "CheckResponse" });
-  }
-}
-function __c6(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(38, __c4, 6));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          operations: S.optional(__S(48, __c6, 0)),
+          operations: S.optional(__S(128, __c4, 0)),
           serviceConfigId: S.optional(S.String),
         }),
       ).annotate({ identifier: "ReportRequest" });
@@ -1050,7 +1042,7 @@ function __c6(j: number): any {
       return S.suspend(() =>
         S.Struct({
           serviceName: S.String.pipe(T.Label()),
-          body: S.optional(__S(49, __c6, 1).pipe(T.HttpBody())),
+          body: S.optional(__S(129, __c4, 1).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -1063,22 +1055,21 @@ function __c6(j: number): any {
       return S.suspend(() =>
         S.Struct({
           operationId: S.optional(S.String),
-          status: S.optional(__S(20, __c2, 4)),
+          status: S.optional(__S(48, __c1, 16)),
         }),
       ).annotate({ identifier: "ReportError" });
     case 4:
-      return S.Array(__S(51, __c6, 3));
+      return S.Array(__S(131, __c4, 3));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          reportErrors: S.optional(__S(52, __c6, 4)),
+          reportErrors: S.optional(__S(132, __c4, 4)),
           serviceConfigId: S.optional(S.String),
           serviceRolloutId: S.optional(S.String),
         }),
       ).annotate({ identifier: "ReportResponse" });
   }
 }
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

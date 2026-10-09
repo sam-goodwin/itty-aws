@@ -1028,8 +1028,8 @@ export const createHealthcheck: API.OperationMethod<
   CreateHealthcheckError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(5, __c0, 5) as any as S.Schema<CreateHealthcheckRequest>,
-  output: __S(8, __c1, 0) as any as S.Schema<CreateHealthcheckResponse>,
+  input: __S(17, __c2, 1) as any as S.Schema<CreateHealthcheckRequest>,
+  output: __S(19, __c2, 3) as any as S.Schema<CreateHealthcheckResponse>,
   errors: [HealthcheckAlreadyExists, Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -1043,8 +1043,8 @@ export const createPreview: API.OperationMethod<
   CreatePreviewError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(11, __c1, 3) as any as S.Schema<CreatePreviewRequest>,
-  output: __S(14, __c1, 6) as any as S.Schema<CreatePreviewResponse>,
+  input: __S(50, __c6, 2) as any as S.Schema<CreatePreviewRequest>,
+  output: __S(52, __c6, 4) as any as S.Schema<CreatePreviewResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -1058,8 +1058,8 @@ export const deleteHealthcheck: API.OperationMethod<
   DeleteHealthcheckError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(15, __c1, 7) as any as S.Schema<DeleteHealthcheckRequest>,
-  output: __S(16, __c2, 0) as any as S.Schema<DeleteHealthcheckResponse>,
+  input: __S(64, __c8, 0) as any as S.Schema<DeleteHealthcheckRequest>,
+  output: __S(65, __c8, 1) as any as S.Schema<DeleteHealthcheckResponse>,
   errors: [HealthcheckNotFound, Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -1073,8 +1073,8 @@ export const deletePreview: API.OperationMethod<
   DeletePreviewError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(17, __c2, 1) as any as S.Schema<DeletePreviewRequest>,
-  output: __S(18, __c2, 2) as any as S.Schema<DeletePreviewResponse>,
+  input: __S(72, __c9, 0) as any as S.Schema<DeletePreviewRequest>,
+  output: __S(73, __c9, 1) as any as S.Schema<DeletePreviewResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -1088,8 +1088,8 @@ export const getHealthcheck: API.OperationMethod<
   GetHealthcheckError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(19, __c2, 3) as any as S.Schema<GetHealthcheckRequest>,
-  output: __S(21, __c2, 5) as any as S.Schema<GetHealthcheckResponse>,
+  input: __S(80, __c10, 0) as any as S.Schema<GetHealthcheckRequest>,
+  output: __S(82, __c10, 2) as any as S.Schema<GetHealthcheckResponse>,
   errors: [HealthcheckNotFound, Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -1103,8 +1103,8 @@ export const getPreview: API.OperationMethod<
   GetPreviewError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(22, __c2, 6) as any as S.Schema<GetPreviewRequest>,
-  output: __S(24, __c3, 0) as any as S.Schema<GetPreviewResponse>,
+  input: __S(88, __c11, 0) as any as S.Schema<GetPreviewRequest>,
+  output: __S(90, __c11, 2) as any as S.Schema<GetPreviewResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -1120,8 +1120,8 @@ export const listHealthchecks: API.PaginatedOperationMethod<
   ListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(25, __c3, 1) as any as S.Schema<ListHealthchecksRequest>,
-    output: __S(29, __c3, 5) as any as S.Schema<ListHealthchecksResponse>,
+    input: __S(96, __c12, 0) as any as S.Schema<ListHealthchecksRequest>,
+    output: __S(100, __c12, 4) as any as S.Schema<ListHealthchecksResponse>,
     errors: [Forbidden, CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
     retry: Retry.Retry,
@@ -1144,8 +1144,8 @@ export const patchHealthcheck: API.OperationMethod<
   PatchHealthcheckError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(31, __c3, 7) as any as S.Schema<PatchHealthcheckRequest>,
-  output: __S(33, __c4, 1) as any as S.Schema<PatchHealthcheckResponse>,
+  input: __S(1, __c0, 1) as any as S.Schema<PatchHealthcheckRequest>,
+  output: __S(3, __c0, 3) as any as S.Schema<PatchHealthcheckResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -1159,8 +1159,8 @@ export const updateHealthcheck: API.OperationMethod<
   UpdateHealthcheckError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(35, __c4, 3) as any as S.Schema<UpdateHealthcheckRequest>,
-  output: __S(37, __c4, 5) as any as S.Schema<UpdateHealthcheckResponse>,
+  input: __S(9, __c1, 1) as any as S.Schema<UpdateHealthcheckRequest>,
+  output: __S(11, __c1, 3) as any as S.Schema<UpdateHealthcheckResponse>,
   errors: [HealthcheckNotFound, Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -1170,66 +1170,273 @@ export const updateHealthcheck: API.OperationMethod<
 function __c0(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(S.String);
-    case 1:
-      return S.Array(S.String);
-    case 2:
-      return S.Record(S.String, __S(1, __c0, 1));
-    case 3:
       return S.suspend(() =>
         S.Struct({
           allowInsecure: S.optional(S.Boolean.pipe(T.Body("allow_insecure"))),
           expectedBody: S.optional(S.String.pipe(T.Body("expected_body"))),
-          expectedCodes: S.optional(__S(1, __c0, 1).pipe(T.Body("expected_codes"))),
+          expectedCodes: S.optional(__S(33, __c4, 1).pipe(T.Body("expected_codes"))),
           followRedirects: S.optional(S.Boolean.pipe(T.Body("follow_redirects"))),
-          header: S.optional(__S(2, __c0, 2)),
+          header: S.optional(__S(34, __c4, 2)),
+          method: S.optional(S.String),
+          path: S.optional(S.String),
+          port: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "EditRequestHttpConfig" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          zoneId: S.String.pipe(T.Label("zone_id")),
+          healthcheckId: S.String.pipe(T.Label("healthcheck_id")),
+          address: S.String,
+          name: S.String,
+          checkRegions: S.optional(__S(32, __c4, 0).pipe(T.Body("check_regions"))),
+          consecutiveFails: S.optional(S.Number.pipe(T.Body("consecutive_fails"))),
+          consecutiveSuccesses: S.optional(S.Number.pipe(T.Body("consecutive_successes"))),
+          description: S.optional(S.String),
+          httpConfig: S.optional(__S(0, __c0, 0).pipe(T.Body("http_config"))),
+          interval: S.optional(S.Number),
+          retries: S.optional(S.Number),
+          suspended: S.optional(S.Boolean),
+          tcpConfig: S.optional(__S(24, __c3, 0).pipe(T.Body("tcp_config"))),
+          timeout: S.optional(S.Number),
+          type: S.optional(S.String),
+        })
+          .pipe(
+            T.Http({
+              method: "PATCH",
+              uri: "/zones/{zone_id}/healthchecks/{healthcheck_id}",
+              code: 200,
+            }),
+          )
+          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({ identifier: "PatchHealthcheckRequest" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          allowInsecure: S.optional(S.NullOr(S.Boolean).pipe(T.Body("allow_insecure"))),
+          expectedBody: S.optional(S.NullOr(S.String).pipe(T.Body("expected_body"))),
+          expectedCodes: S.optional(S.NullOr(__S(33, __c4, 1)).pipe(T.Body("expected_codes"))),
+          followRedirects: S.optional(S.NullOr(S.Boolean).pipe(T.Body("follow_redirects"))),
+          header: S.optional(S.NullOr(__S(34, __c4, 2))),
+          method: S.optional(S.NullOr(S.String)),
+          path: S.optional(S.NullOr(S.String)),
+          port: S.optional(S.NullOr(S.Number)),
+        }),
+      ).annotate({ identifier: "EditResponseHttpConfig" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.NullOr(S.String)),
+          address: S.optional(S.NullOr(S.String)),
+          checkRegions: S.optional(S.NullOr(__S(32, __c4, 0)).pipe(T.Body("check_regions"))),
+          consecutiveFails: S.optional(S.NullOr(S.Number).pipe(T.Body("consecutive_fails"))),
+          consecutiveSuccesses: S.optional(
+            S.NullOr(S.Number).pipe(T.Body("consecutive_successes")),
+          ),
+          createdOn: S.optional(S.NullOr(S.String).pipe(T.Body("created_on"))),
+          description: S.optional(S.NullOr(S.String)),
+          failureReason: S.optional(S.NullOr(S.String).pipe(T.Body("failure_reason"))),
+          httpConfig: S.optional(S.NullOr(__S(2, __c0, 2)).pipe(T.Body("http_config"))),
+          interval: S.optional(S.NullOr(S.Number)),
+          modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
+          name: S.optional(S.NullOr(S.String)),
+          retries: S.optional(S.NullOr(S.Number)),
+          status: S.optional(S.NullOr(S.String)),
+          suspended: S.optional(S.NullOr(S.Boolean)),
+          tcpConfig: S.optional(S.NullOr(__S(40, __c5, 0)).pipe(T.Body("tcp_config"))),
+          timeout: S.optional(S.NullOr(S.Number)),
+          type: S.optional(S.NullOr(S.String)),
+        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({ identifier: "PatchHealthcheckResponse" });
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          allowInsecure: S.optional(S.Boolean.pipe(T.Body("allow_insecure"))),
+          expectedBody: S.optional(S.String.pipe(T.Body("expected_body"))),
+          expectedCodes: S.optional(__S(33, __c4, 1).pipe(T.Body("expected_codes"))),
+          followRedirects: S.optional(S.Boolean.pipe(T.Body("follow_redirects"))),
+          header: S.optional(__S(34, __c4, 2)),
+          method: S.optional(S.String),
+          path: S.optional(S.String),
+          port: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "UpdateRequestHttpConfig" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          zoneId: S.String.pipe(T.Label("zone_id")),
+          healthcheckId: S.String.pipe(T.Label("healthcheck_id")),
+          address: S.String,
+          name: S.String,
+          checkRegions: S.optional(__S(32, __c4, 0).pipe(T.Body("check_regions"))),
+          consecutiveFails: S.optional(S.Number.pipe(T.Body("consecutive_fails"))),
+          consecutiveSuccesses: S.optional(S.Number.pipe(T.Body("consecutive_successes"))),
+          description: S.optional(S.String),
+          httpConfig: S.optional(__S(8, __c1, 0).pipe(T.Body("http_config"))),
+          interval: S.optional(S.Number),
+          retries: S.optional(S.Number),
+          suspended: S.optional(S.Boolean),
+          tcpConfig: S.optional(__S(24, __c3, 0).pipe(T.Body("tcp_config"))),
+          timeout: S.optional(S.Number),
+          type: S.optional(S.String),
+        })
+          .pipe(
+            T.Http({
+              method: "PUT",
+              uri: "/zones/{zone_id}/healthchecks/{healthcheck_id}",
+              code: 200,
+            }),
+          )
+          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({ identifier: "UpdateHealthcheckRequest" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          allowInsecure: S.optional(S.NullOr(S.Boolean).pipe(T.Body("allow_insecure"))),
+          expectedBody: S.optional(S.NullOr(S.String).pipe(T.Body("expected_body"))),
+          expectedCodes: S.optional(S.NullOr(__S(33, __c4, 1)).pipe(T.Body("expected_codes"))),
+          followRedirects: S.optional(S.NullOr(S.Boolean).pipe(T.Body("follow_redirects"))),
+          header: S.optional(S.NullOr(__S(34, __c4, 2))),
+          method: S.optional(S.NullOr(S.String)),
+          path: S.optional(S.NullOr(S.String)),
+          port: S.optional(S.NullOr(S.Number)),
+        }),
+      ).annotate({ identifier: "UpdateResponseHttpConfig" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.NullOr(S.String)),
+          address: S.optional(S.NullOr(S.String)),
+          checkRegions: S.optional(S.NullOr(__S(32, __c4, 0)).pipe(T.Body("check_regions"))),
+          consecutiveFails: S.optional(S.NullOr(S.Number).pipe(T.Body("consecutive_fails"))),
+          consecutiveSuccesses: S.optional(
+            S.NullOr(S.Number).pipe(T.Body("consecutive_successes")),
+          ),
+          createdOn: S.optional(S.NullOr(S.String).pipe(T.Body("created_on"))),
+          description: S.optional(S.NullOr(S.String)),
+          failureReason: S.optional(S.NullOr(S.String).pipe(T.Body("failure_reason"))),
+          httpConfig: S.optional(S.NullOr(__S(10, __c1, 2)).pipe(T.Body("http_config"))),
+          interval: S.optional(S.NullOr(S.Number)),
+          modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
+          name: S.optional(S.NullOr(S.String)),
+          retries: S.optional(S.NullOr(S.Number)),
+          status: S.optional(S.NullOr(S.String)),
+          suspended: S.optional(S.NullOr(S.Boolean)),
+          tcpConfig: S.optional(S.NullOr(__S(40, __c5, 0)).pipe(T.Body("tcp_config"))),
+          timeout: S.optional(S.NullOr(S.Number)),
+          type: S.optional(S.NullOr(S.String)),
+        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({
+        identifier: "UpdateHealthcheckResponse",
+      });
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          allowInsecure: S.optional(S.Boolean.pipe(T.Body("allow_insecure"))),
+          expectedBody: S.optional(S.String.pipe(T.Body("expected_body"))),
+          expectedCodes: S.optional(__S(33, __c4, 1).pipe(T.Body("expected_codes"))),
+          followRedirects: S.optional(S.Boolean.pipe(T.Body("follow_redirects"))),
+          header: S.optional(__S(34, __c4, 2)),
           method: S.optional(S.String),
           path: S.optional(S.String),
           port: S.optional(S.Number),
         }),
       ).annotate({ identifier: "CreateRequestHttpConfig" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          method: S.optional(S.String),
-          port: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "CreateRequestTcpConfig" });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           zoneId: S.String.pipe(T.Label("zone_id")),
           address: S.String,
           name: S.String,
-          checkRegions: S.optional(__S(0, __c0, 0).pipe(T.Body("check_regions"))),
+          checkRegions: S.optional(__S(32, __c4, 0).pipe(T.Body("check_regions"))),
           consecutiveFails: S.optional(S.Number.pipe(T.Body("consecutive_fails"))),
           consecutiveSuccesses: S.optional(S.Number.pipe(T.Body("consecutive_successes"))),
           description: S.optional(S.String),
-          httpConfig: S.optional(__S(3, __c0, 3).pipe(T.Body("http_config"))),
+          httpConfig: S.optional(__S(16, __c2, 0).pipe(T.Body("http_config"))),
           interval: S.optional(S.Number),
           retries: S.optional(S.Number),
           suspended: S.optional(S.Boolean),
-          tcpConfig: S.optional(__S(4, __c0, 4).pipe(T.Body("tcp_config"))),
+          tcpConfig: S.optional(__S(24, __c3, 0).pipe(T.Body("tcp_config"))),
           timeout: S.optional(S.Number),
           type: S.optional(S.String),
         })
           .pipe(T.Http({ method: "POST", uri: "/zones/{zone_id}/healthchecks", code: 200 }))
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "CreateHealthcheckRequest" });
-    case 6:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           allowInsecure: S.optional(S.NullOr(S.Boolean).pipe(T.Body("allow_insecure"))),
           expectedBody: S.optional(S.NullOr(S.String).pipe(T.Body("expected_body"))),
-          expectedCodes: S.optional(S.NullOr(__S(1, __c0, 1)).pipe(T.Body("expected_codes"))),
+          expectedCodes: S.optional(S.NullOr(__S(33, __c4, 1)).pipe(T.Body("expected_codes"))),
           followRedirects: S.optional(S.NullOr(S.Boolean).pipe(T.Body("follow_redirects"))),
-          header: S.optional(S.NullOr(__S(2, __c0, 2))),
+          header: S.optional(S.NullOr(__S(34, __c4, 2))),
           method: S.optional(S.NullOr(S.String)),
           path: S.optional(S.NullOr(S.String)),
           port: S.optional(S.NullOr(S.Number)),
         }),
       ).annotate({ identifier: "CreateResponseHttpConfig" });
-    case 7:
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.NullOr(S.String)),
+          address: S.optional(S.NullOr(S.String)),
+          checkRegions: S.optional(S.NullOr(__S(32, __c4, 0)).pipe(T.Body("check_regions"))),
+          consecutiveFails: S.optional(S.NullOr(S.Number).pipe(T.Body("consecutive_fails"))),
+          consecutiveSuccesses: S.optional(
+            S.NullOr(S.Number).pipe(T.Body("consecutive_successes")),
+          ),
+          createdOn: S.optional(S.NullOr(S.String).pipe(T.Body("created_on"))),
+          description: S.optional(S.NullOr(S.String)),
+          failureReason: S.optional(S.NullOr(S.String).pipe(T.Body("failure_reason"))),
+          httpConfig: S.optional(S.NullOr(__S(18, __c2, 2)).pipe(T.Body("http_config"))),
+          interval: S.optional(S.NullOr(S.Number)),
+          modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
+          name: S.optional(S.NullOr(S.String)),
+          retries: S.optional(S.NullOr(S.Number)),
+          status: S.optional(S.NullOr(S.String)),
+          suspended: S.optional(S.NullOr(S.Boolean)),
+          tcpConfig: S.optional(S.NullOr(__S(40, __c5, 0)).pipe(T.Body("tcp_config"))),
+          timeout: S.optional(S.NullOr(S.Number)),
+          type: S.optional(S.NullOr(S.String)),
+        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({
+        identifier: "CreateHealthcheckResponse",
+      });
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          method: S.optional(S.String),
+          port: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "CreateRequestTcpConfig" });
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+    case 1:
+      return S.Array(S.String);
+    case 2:
+      return S.Record(S.String, __S(33, __c4, 1));
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           method: S.optional(S.NullOr(S.String)),
@@ -1238,43 +1445,16 @@ function __c0(j: number): any {
       ).annotate({ identifier: "CreateResponseTcpConfig" });
   }
 }
-function __c1(j: number): any {
+function __c6(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          id: S.optional(S.NullOr(S.String)),
-          address: S.optional(S.NullOr(S.String)),
-          checkRegions: S.optional(S.NullOr(__S(0, __c0, 0)).pipe(T.Body("check_regions"))),
-          consecutiveFails: S.optional(S.NullOr(S.Number).pipe(T.Body("consecutive_fails"))),
-          consecutiveSuccesses: S.optional(
-            S.NullOr(S.Number).pipe(T.Body("consecutive_successes")),
-          ),
-          createdOn: S.optional(S.NullOr(S.String).pipe(T.Body("created_on"))),
-          description: S.optional(S.NullOr(S.String)),
-          failureReason: S.optional(S.NullOr(S.String).pipe(T.Body("failure_reason"))),
-          httpConfig: S.optional(S.NullOr(__S(6, __c0, 6)).pipe(T.Body("http_config"))),
-          interval: S.optional(S.NullOr(S.Number)),
-          modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
-          name: S.optional(S.NullOr(S.String)),
-          retries: S.optional(S.NullOr(S.Number)),
-          status: S.optional(S.NullOr(S.String)),
-          suspended: S.optional(S.NullOr(S.Boolean)),
-          tcpConfig: S.optional(S.NullOr(__S(7, __c0, 7)).pipe(T.Body("tcp_config"))),
-          timeout: S.optional(S.NullOr(S.Number)),
-          type: S.optional(S.NullOr(S.String)),
-        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({
-        identifier: "CreateHealthcheckResponse",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
           allowInsecure: S.optional(S.Boolean.pipe(T.Body("allow_insecure"))),
           expectedBody: S.optional(S.String.pipe(T.Body("expected_body"))),
-          expectedCodes: S.optional(__S(1, __c0, 1).pipe(T.Body("expected_codes"))),
+          expectedCodes: S.optional(__S(33, __c4, 1).pipe(T.Body("expected_codes"))),
           followRedirects: S.optional(S.Boolean.pipe(T.Body("follow_redirects"))),
-          header: S.optional(__S(2, __c0, 2)),
+          header: S.optional(__S(34, __c4, 2)),
           method: S.optional(S.String),
           path: S.optional(S.String),
           port: S.optional(S.Number),
@@ -1282,7 +1462,7 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "PreviewsCreateRequestHttpConfig",
       });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           method: S.optional(S.String),
@@ -1291,35 +1471,35 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "PreviewsCreateRequestTcpConfig",
       });
-    case 3:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           zoneId: S.String.pipe(T.Label("zone_id")),
           address: S.String,
           name: S.String,
-          checkRegions: S.optional(__S(0, __c0, 0).pipe(T.Body("check_regions"))),
+          checkRegions: S.optional(__S(32, __c4, 0).pipe(T.Body("check_regions"))),
           consecutiveFails: S.optional(S.Number.pipe(T.Body("consecutive_fails"))),
           consecutiveSuccesses: S.optional(S.Number.pipe(T.Body("consecutive_successes"))),
           description: S.optional(S.String),
-          httpConfig: S.optional(__S(9, __c1, 1).pipe(T.Body("http_config"))),
+          httpConfig: S.optional(__S(48, __c6, 0).pipe(T.Body("http_config"))),
           interval: S.optional(S.Number),
           retries: S.optional(S.Number),
           suspended: S.optional(S.Boolean),
-          tcpConfig: S.optional(__S(10, __c1, 2).pipe(T.Body("tcp_config"))),
+          tcpConfig: S.optional(__S(49, __c6, 1).pipe(T.Body("tcp_config"))),
           timeout: S.optional(S.Number),
           type: S.optional(S.String),
         })
           .pipe(T.Http({ method: "POST", uri: "/zones/{zone_id}/healthchecks/preview", code: 200 }))
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "CreatePreviewRequest" });
-    case 4:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           allowInsecure: S.optional(S.NullOr(S.Boolean).pipe(T.Body("allow_insecure"))),
           expectedBody: S.optional(S.NullOr(S.String).pipe(T.Body("expected_body"))),
-          expectedCodes: S.optional(S.NullOr(__S(1, __c0, 1)).pipe(T.Body("expected_codes"))),
+          expectedCodes: S.optional(S.NullOr(__S(33, __c4, 1)).pipe(T.Body("expected_codes"))),
           followRedirects: S.optional(S.NullOr(S.Boolean).pipe(T.Body("follow_redirects"))),
-          header: S.optional(S.NullOr(__S(2, __c0, 2))),
+          header: S.optional(S.NullOr(__S(34, __c4, 2))),
           method: S.optional(S.NullOr(S.String)),
           path: S.optional(S.NullOr(S.String)),
           port: S.optional(S.NullOr(S.Number)),
@@ -1327,7 +1507,36 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "PreviewsCreateResponseHttpConfig",
       });
-    case 5:
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.NullOr(S.String)),
+          address: S.optional(S.NullOr(S.String)),
+          checkRegions: S.optional(S.NullOr(__S(32, __c4, 0)).pipe(T.Body("check_regions"))),
+          consecutiveFails: S.optional(S.NullOr(S.Number).pipe(T.Body("consecutive_fails"))),
+          consecutiveSuccesses: S.optional(
+            S.NullOr(S.Number).pipe(T.Body("consecutive_successes")),
+          ),
+          createdOn: S.optional(S.NullOr(S.String).pipe(T.Body("created_on"))),
+          description: S.optional(S.NullOr(S.String)),
+          failureReason: S.optional(S.NullOr(S.String).pipe(T.Body("failure_reason"))),
+          httpConfig: S.optional(S.NullOr(__S(51, __c6, 3)).pipe(T.Body("http_config"))),
+          interval: S.optional(S.NullOr(S.Number)),
+          modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
+          name: S.optional(S.NullOr(S.String)),
+          retries: S.optional(S.NullOr(S.Number)),
+          status: S.optional(S.NullOr(S.String)),
+          suspended: S.optional(S.NullOr(S.Boolean)),
+          tcpConfig: S.optional(S.NullOr(__S(56, __c7, 0)).pipe(T.Body("tcp_config"))),
+          timeout: S.optional(S.NullOr(S.Number)),
+          type: S.optional(S.NullOr(S.String)),
+        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({ identifier: "CreatePreviewResponse" });
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           method: S.optional(S.NullOr(S.String)),
@@ -1336,32 +1545,11 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "PreviewsCreateResponseTcpConfig",
       });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.NullOr(S.String)),
-          address: S.optional(S.NullOr(S.String)),
-          checkRegions: S.optional(S.NullOr(__S(0, __c0, 0)).pipe(T.Body("check_regions"))),
-          consecutiveFails: S.optional(S.NullOr(S.Number).pipe(T.Body("consecutive_fails"))),
-          consecutiveSuccesses: S.optional(
-            S.NullOr(S.Number).pipe(T.Body("consecutive_successes")),
-          ),
-          createdOn: S.optional(S.NullOr(S.String).pipe(T.Body("created_on"))),
-          description: S.optional(S.NullOr(S.String)),
-          failureReason: S.optional(S.NullOr(S.String).pipe(T.Body("failure_reason"))),
-          httpConfig: S.optional(S.NullOr(__S(12, __c1, 4)).pipe(T.Body("http_config"))),
-          interval: S.optional(S.NullOr(S.Number)),
-          modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
-          name: S.optional(S.NullOr(S.String)),
-          retries: S.optional(S.NullOr(S.Number)),
-          status: S.optional(S.NullOr(S.String)),
-          suspended: S.optional(S.NullOr(S.Boolean)),
-          tcpConfig: S.optional(S.NullOr(__S(13, __c1, 5)).pipe(T.Body("tcp_config"))),
-          timeout: S.optional(S.NullOr(S.Number)),
-          type: S.optional(S.NullOr(S.String)),
-        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({ identifier: "CreatePreviewResponse" });
-    case 7:
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           zoneId: S.String.pipe(T.Label("zone_id")),
@@ -1376,11 +1564,7 @@ function __c1(j: number): any {
           )
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "DeleteHealthcheckRequest" });
-  }
-}
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.NullOr(S.String)),
@@ -1388,7 +1572,11 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "DeleteHealthcheckResponse",
       });
-    case 1:
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           zoneId: S.String.pipe(T.Label("zone_id")),
@@ -1403,13 +1591,17 @@ function __c2(j: number): any {
           )
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "DeletePreviewRequest" });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.NullOr(S.String)),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "DeletePreviewResponse" });
-    case 3:
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           zoneId: S.String.pipe(T.Label("zone_id")),
@@ -1424,25 +1616,25 @@ function __c2(j: number): any {
           )
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "GetHealthcheckRequest" });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           allowInsecure: S.optional(S.NullOr(S.Boolean).pipe(T.Body("allow_insecure"))),
           expectedBody: S.optional(S.NullOr(S.String).pipe(T.Body("expected_body"))),
-          expectedCodes: S.optional(S.NullOr(__S(1, __c0, 1)).pipe(T.Body("expected_codes"))),
+          expectedCodes: S.optional(S.NullOr(__S(33, __c4, 1)).pipe(T.Body("expected_codes"))),
           followRedirects: S.optional(S.NullOr(S.Boolean).pipe(T.Body("follow_redirects"))),
-          header: S.optional(S.NullOr(__S(2, __c0, 2))),
+          header: S.optional(S.NullOr(__S(34, __c4, 2))),
           method: S.optional(S.NullOr(S.String)),
           path: S.optional(S.NullOr(S.String)),
           port: S.optional(S.NullOr(S.Number)),
         }),
       ).annotate({ identifier: "GetResponseHttpConfig" });
-    case 5:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.NullOr(S.String)),
           address: S.optional(S.NullOr(S.String)),
-          checkRegions: S.optional(S.NullOr(__S(0, __c0, 0)).pipe(T.Body("check_regions"))),
+          checkRegions: S.optional(S.NullOr(__S(32, __c4, 0)).pipe(T.Body("check_regions"))),
           consecutiveFails: S.optional(S.NullOr(S.Number).pipe(T.Body("consecutive_fails"))),
           consecutiveSuccesses: S.optional(
             S.NullOr(S.Number).pipe(T.Body("consecutive_successes")),
@@ -1450,19 +1642,23 @@ function __c2(j: number): any {
           createdOn: S.optional(S.NullOr(S.String).pipe(T.Body("created_on"))),
           description: S.optional(S.NullOr(S.String)),
           failureReason: S.optional(S.NullOr(S.String).pipe(T.Body("failure_reason"))),
-          httpConfig: S.optional(S.NullOr(__S(20, __c2, 4)).pipe(T.Body("http_config"))),
+          httpConfig: S.optional(S.NullOr(__S(81, __c10, 1)).pipe(T.Body("http_config"))),
           interval: S.optional(S.NullOr(S.Number)),
           modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
           name: S.optional(S.NullOr(S.String)),
           retries: S.optional(S.NullOr(S.Number)),
           status: S.optional(S.NullOr(S.String)),
           suspended: S.optional(S.NullOr(S.Boolean)),
-          tcpConfig: S.optional(S.NullOr(__S(7, __c0, 7)).pipe(T.Body("tcp_config"))),
+          tcpConfig: S.optional(S.NullOr(__S(40, __c5, 0)).pipe(T.Body("tcp_config"))),
           timeout: S.optional(S.NullOr(S.Number)),
           type: S.optional(S.NullOr(S.String)),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "GetHealthcheckResponse" });
-    case 6:
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           zoneId: S.String.pipe(T.Label("zone_id")),
@@ -1477,14 +1673,14 @@ function __c2(j: number): any {
           )
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "GetPreviewRequest" });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           allowInsecure: S.optional(S.NullOr(S.Boolean).pipe(T.Body("allow_insecure"))),
           expectedBody: S.optional(S.NullOr(S.String).pipe(T.Body("expected_body"))),
-          expectedCodes: S.optional(S.NullOr(__S(1, __c0, 1)).pipe(T.Body("expected_codes"))),
+          expectedCodes: S.optional(S.NullOr(__S(33, __c4, 1)).pipe(T.Body("expected_codes"))),
           followRedirects: S.optional(S.NullOr(S.Boolean).pipe(T.Body("follow_redirects"))),
-          header: S.optional(S.NullOr(__S(2, __c0, 2))),
+          header: S.optional(S.NullOr(__S(34, __c4, 2))),
           method: S.optional(S.NullOr(S.String)),
           path: S.optional(S.NullOr(S.String)),
           port: S.optional(S.NullOr(S.Number)),
@@ -1492,16 +1688,12 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "PreviewsGetResponseHttpConfig",
       });
-  }
-}
-function __c3(j: number): any {
-  switch (j) {
-    case 0:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.NullOr(S.String)),
           address: S.optional(S.NullOr(S.String)),
-          checkRegions: S.optional(S.NullOr(__S(0, __c0, 0)).pipe(T.Body("check_regions"))),
+          checkRegions: S.optional(S.NullOr(__S(32, __c4, 0)).pipe(T.Body("check_regions"))),
           consecutiveFails: S.optional(S.NullOr(S.Number).pipe(T.Body("consecutive_fails"))),
           consecutiveSuccesses: S.optional(
             S.NullOr(S.Number).pipe(T.Body("consecutive_successes")),
@@ -1509,19 +1701,23 @@ function __c3(j: number): any {
           createdOn: S.optional(S.NullOr(S.String).pipe(T.Body("created_on"))),
           description: S.optional(S.NullOr(S.String)),
           failureReason: S.optional(S.NullOr(S.String).pipe(T.Body("failure_reason"))),
-          httpConfig: S.optional(S.NullOr(__S(23, __c2, 7)).pipe(T.Body("http_config"))),
+          httpConfig: S.optional(S.NullOr(__S(89, __c11, 1)).pipe(T.Body("http_config"))),
           interval: S.optional(S.NullOr(S.Number)),
           modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
           name: S.optional(S.NullOr(S.String)),
           retries: S.optional(S.NullOr(S.Number)),
           status: S.optional(S.NullOr(S.String)),
           suspended: S.optional(S.NullOr(S.Boolean)),
-          tcpConfig: S.optional(S.NullOr(__S(13, __c1, 5)).pipe(T.Body("tcp_config"))),
+          tcpConfig: S.optional(S.NullOr(__S(56, __c7, 0)).pipe(T.Body("tcp_config"))),
           timeout: S.optional(S.NullOr(S.Number)),
           type: S.optional(S.NullOr(S.String)),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "GetPreviewResponse" });
-    case 1:
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           zoneId: S.String.pipe(T.Label("zone_id")),
@@ -1531,25 +1727,25 @@ function __c3(j: number): any {
           .pipe(T.Http({ method: "GET", uri: "/zones/{zone_id}/healthchecks", code: 200 }))
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "ListHealthchecksRequest" });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           allowInsecure: S.optional(S.NullOr(S.Boolean).pipe(T.Body("allow_insecure"))),
           expectedBody: S.optional(S.NullOr(S.String).pipe(T.Body("expected_body"))),
-          expectedCodes: S.optional(S.NullOr(__S(1, __c0, 1)).pipe(T.Body("expected_codes"))),
+          expectedCodes: S.optional(S.NullOr(__S(33, __c4, 1)).pipe(T.Body("expected_codes"))),
           followRedirects: S.optional(S.NullOr(S.Boolean).pipe(T.Body("follow_redirects"))),
-          header: S.optional(S.NullOr(__S(2, __c0, 2))),
+          header: S.optional(S.NullOr(__S(34, __c4, 2))),
           method: S.optional(S.NullOr(S.String)),
           path: S.optional(S.NullOr(S.String)),
           port: S.optional(S.NullOr(S.Number)),
         }),
       ).annotate({ identifier: "ListResultItemHttpConfig" });
-    case 3:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.NullOr(S.String)),
           address: S.optional(S.NullOr(S.String)),
-          checkRegions: S.optional(S.NullOr(__S(0, __c0, 0)).pipe(T.Body("check_regions"))),
+          checkRegions: S.optional(S.NullOr(__S(32, __c4, 0)).pipe(T.Body("check_regions"))),
           consecutiveFails: S.optional(S.NullOr(S.Number).pipe(T.Body("consecutive_fails"))),
           consecutiveSuccesses: S.optional(
             S.NullOr(S.Number).pipe(T.Body("consecutive_successes")),
@@ -1557,194 +1753,29 @@ function __c3(j: number): any {
           createdOn: S.optional(S.NullOr(S.String).pipe(T.Body("created_on"))),
           description: S.optional(S.NullOr(S.String)),
           failureReason: S.optional(S.NullOr(S.String).pipe(T.Body("failure_reason"))),
-          httpConfig: S.optional(S.NullOr(__S(26, __c3, 2)).pipe(T.Body("http_config"))),
+          httpConfig: S.optional(S.NullOr(__S(97, __c12, 1)).pipe(T.Body("http_config"))),
           interval: S.optional(S.NullOr(S.Number)),
           modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
           name: S.optional(S.NullOr(S.String)),
           retries: S.optional(S.NullOr(S.Number)),
           status: S.optional(S.NullOr(S.String)),
           suspended: S.optional(S.NullOr(S.Boolean)),
-          tcpConfig: S.optional(S.NullOr(__S(7, __c0, 7)).pipe(T.Body("tcp_config"))),
+          tcpConfig: S.optional(S.NullOr(__S(40, __c5, 0)).pipe(T.Body("tcp_config"))),
           timeout: S.optional(S.NullOr(S.Number)),
           type: S.optional(S.NullOr(S.String)),
         }),
       ).annotate({ identifier: "ListResultItem" });
+    case 3:
+      return S.Array(__S(98, __c12, 2));
     case 4:
-      return S.Array(__S(27, __c3, 3));
-    case 5:
       return S.suspend(() =>
         S.Struct({
-          result: __S(28, __c3, 4).pipe(T.EnvelopePayload()),
+          result: __S(99, __c12, 3).pipe(T.EnvelopePayload()),
           resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "ListHealthchecksResponse" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          allowInsecure: S.optional(S.Boolean.pipe(T.Body("allow_insecure"))),
-          expectedBody: S.optional(S.String.pipe(T.Body("expected_body"))),
-          expectedCodes: S.optional(__S(1, __c0, 1).pipe(T.Body("expected_codes"))),
-          followRedirects: S.optional(S.Boolean.pipe(T.Body("follow_redirects"))),
-          header: S.optional(__S(2, __c0, 2)),
-          method: S.optional(S.String),
-          path: S.optional(S.String),
-          port: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "EditRequestHttpConfig" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          zoneId: S.String.pipe(T.Label("zone_id")),
-          healthcheckId: S.String.pipe(T.Label("healthcheck_id")),
-          address: S.String,
-          name: S.String,
-          checkRegions: S.optional(__S(0, __c0, 0).pipe(T.Body("check_regions"))),
-          consecutiveFails: S.optional(S.Number.pipe(T.Body("consecutive_fails"))),
-          consecutiveSuccesses: S.optional(S.Number.pipe(T.Body("consecutive_successes"))),
-          description: S.optional(S.String),
-          httpConfig: S.optional(__S(30, __c3, 6).pipe(T.Body("http_config"))),
-          interval: S.optional(S.Number),
-          retries: S.optional(S.Number),
-          suspended: S.optional(S.Boolean),
-          tcpConfig: S.optional(__S(4, __c0, 4).pipe(T.Body("tcp_config"))),
-          timeout: S.optional(S.Number),
-          type: S.optional(S.String),
-        })
-          .pipe(
-            T.Http({
-              method: "PATCH",
-              uri: "/zones/{zone_id}/healthchecks/{healthcheck_id}",
-              code: 200,
-            }),
-          )
-          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({ identifier: "PatchHealthcheckRequest" });
   }
 }
-function __c4(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          allowInsecure: S.optional(S.NullOr(S.Boolean).pipe(T.Body("allow_insecure"))),
-          expectedBody: S.optional(S.NullOr(S.String).pipe(T.Body("expected_body"))),
-          expectedCodes: S.optional(S.NullOr(__S(1, __c0, 1)).pipe(T.Body("expected_codes"))),
-          followRedirects: S.optional(S.NullOr(S.Boolean).pipe(T.Body("follow_redirects"))),
-          header: S.optional(S.NullOr(__S(2, __c0, 2))),
-          method: S.optional(S.NullOr(S.String)),
-          path: S.optional(S.NullOr(S.String)),
-          port: S.optional(S.NullOr(S.Number)),
-        }),
-      ).annotate({ identifier: "EditResponseHttpConfig" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.NullOr(S.String)),
-          address: S.optional(S.NullOr(S.String)),
-          checkRegions: S.optional(S.NullOr(__S(0, __c0, 0)).pipe(T.Body("check_regions"))),
-          consecutiveFails: S.optional(S.NullOr(S.Number).pipe(T.Body("consecutive_fails"))),
-          consecutiveSuccesses: S.optional(
-            S.NullOr(S.Number).pipe(T.Body("consecutive_successes")),
-          ),
-          createdOn: S.optional(S.NullOr(S.String).pipe(T.Body("created_on"))),
-          description: S.optional(S.NullOr(S.String)),
-          failureReason: S.optional(S.NullOr(S.String).pipe(T.Body("failure_reason"))),
-          httpConfig: S.optional(S.NullOr(__S(32, __c4, 0)).pipe(T.Body("http_config"))),
-          interval: S.optional(S.NullOr(S.Number)),
-          modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
-          name: S.optional(S.NullOr(S.String)),
-          retries: S.optional(S.NullOr(S.Number)),
-          status: S.optional(S.NullOr(S.String)),
-          suspended: S.optional(S.NullOr(S.Boolean)),
-          tcpConfig: S.optional(S.NullOr(__S(7, __c0, 7)).pipe(T.Body("tcp_config"))),
-          timeout: S.optional(S.NullOr(S.Number)),
-          type: S.optional(S.NullOr(S.String)),
-        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({ identifier: "PatchHealthcheckResponse" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          allowInsecure: S.optional(S.Boolean.pipe(T.Body("allow_insecure"))),
-          expectedBody: S.optional(S.String.pipe(T.Body("expected_body"))),
-          expectedCodes: S.optional(__S(1, __c0, 1).pipe(T.Body("expected_codes"))),
-          followRedirects: S.optional(S.Boolean.pipe(T.Body("follow_redirects"))),
-          header: S.optional(__S(2, __c0, 2)),
-          method: S.optional(S.String),
-          path: S.optional(S.String),
-          port: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "UpdateRequestHttpConfig" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          zoneId: S.String.pipe(T.Label("zone_id")),
-          healthcheckId: S.String.pipe(T.Label("healthcheck_id")),
-          address: S.String,
-          name: S.String,
-          checkRegions: S.optional(__S(0, __c0, 0).pipe(T.Body("check_regions"))),
-          consecutiveFails: S.optional(S.Number.pipe(T.Body("consecutive_fails"))),
-          consecutiveSuccesses: S.optional(S.Number.pipe(T.Body("consecutive_successes"))),
-          description: S.optional(S.String),
-          httpConfig: S.optional(__S(34, __c4, 2).pipe(T.Body("http_config"))),
-          interval: S.optional(S.Number),
-          retries: S.optional(S.Number),
-          suspended: S.optional(S.Boolean),
-          tcpConfig: S.optional(__S(4, __c0, 4).pipe(T.Body("tcp_config"))),
-          timeout: S.optional(S.Number),
-          type: S.optional(S.String),
-        })
-          .pipe(
-            T.Http({
-              method: "PUT",
-              uri: "/zones/{zone_id}/healthchecks/{healthcheck_id}",
-              code: 200,
-            }),
-          )
-          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({ identifier: "UpdateHealthcheckRequest" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          allowInsecure: S.optional(S.NullOr(S.Boolean).pipe(T.Body("allow_insecure"))),
-          expectedBody: S.optional(S.NullOr(S.String).pipe(T.Body("expected_body"))),
-          expectedCodes: S.optional(S.NullOr(__S(1, __c0, 1)).pipe(T.Body("expected_codes"))),
-          followRedirects: S.optional(S.NullOr(S.Boolean).pipe(T.Body("follow_redirects"))),
-          header: S.optional(S.NullOr(__S(2, __c0, 2))),
-          method: S.optional(S.NullOr(S.String)),
-          path: S.optional(S.NullOr(S.String)),
-          port: S.optional(S.NullOr(S.Number)),
-        }),
-      ).annotate({ identifier: "UpdateResponseHttpConfig" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.NullOr(S.String)),
-          address: S.optional(S.NullOr(S.String)),
-          checkRegions: S.optional(S.NullOr(__S(0, __c0, 0)).pipe(T.Body("check_regions"))),
-          consecutiveFails: S.optional(S.NullOr(S.Number).pipe(T.Body("consecutive_fails"))),
-          consecutiveSuccesses: S.optional(
-            S.NullOr(S.Number).pipe(T.Body("consecutive_successes")),
-          ),
-          createdOn: S.optional(S.NullOr(S.String).pipe(T.Body("created_on"))),
-          description: S.optional(S.NullOr(S.String)),
-          failureReason: S.optional(S.NullOr(S.String).pipe(T.Body("failure_reason"))),
-          httpConfig: S.optional(S.NullOr(__S(36, __c4, 4)).pipe(T.Body("http_config"))),
-          interval: S.optional(S.NullOr(S.Number)),
-          modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
-          name: S.optional(S.NullOr(S.String)),
-          retries: S.optional(S.NullOr(S.Number)),
-          status: S.optional(S.NullOr(S.String)),
-          suspended: S.optional(S.NullOr(S.Boolean)),
-          tcpConfig: S.optional(S.NullOr(__S(7, __c0, 7)).pipe(T.Body("tcp_config"))),
-          timeout: S.optional(S.NullOr(S.Number)),
-          type: S.optional(S.NullOr(S.String)),
-        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({
-        identifier: "UpdateHealthcheckResponse",
-      });
-  }
-}
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

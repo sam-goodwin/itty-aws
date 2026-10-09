@@ -4841,8 +4841,8 @@ export const bulkInvestigateMove: API.PaginatedOperationMethod<
   InvestigateMoveBulkResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(1, __c0, 1) as any as S.Schema<BulkInvestigateMoveRequest>,
-    output: __S(4, __c0, 4) as any as S.Schema<BulkInvestigateMoveResponse>,
+    input: __S(1296, __c81, 0) as any as S.Schema<BulkInvestigateMoveRequest>,
+    output: __S(1314, __c82, 2) as any as S.Schema<BulkInvestigateMoveResponse>,
     errors: [CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
     retry: Retry.Retry,
@@ -4861,8 +4861,8 @@ export const bulkInvestigateRelease: API.PaginatedOperationMethod<
   InvestigateReleaseBulkResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(5, __c0, 5) as any as S.Schema<BulkInvestigateReleaseRequest>,
-    output: __S(8, __c1, 0) as any as S.Schema<BulkInvestigateReleaseResponse>,
+    input: __S(1392, __c87, 0) as any as S.Schema<BulkInvestigateReleaseRequest>,
+    output: __S(1395, __c87, 3) as any as S.Schema<BulkInvestigateReleaseResponse>,
     errors: [CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
     retry: Retry.Retry,
@@ -4879,8 +4879,8 @@ export const createInvestigateBulk: API.OperationMethod<
   CreateInvestigateBulkError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(10, __c1, 2) as any as S.Schema<CreateInvestigateBulkRequest>,
-  output: __S(13, __c1, 5) as any as S.Schema<CreateInvestigateBulkResponse>,
+  input: __S(1409, __c88, 1) as any as S.Schema<CreateInvestigateBulkRequest>,
+  output: __S(1411, __c88, 3) as any as S.Schema<CreateInvestigateBulkResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -4894,8 +4894,8 @@ export const createInvestigateBulkCancel: API.OperationMethod<
   CreateInvestigateBulkCancelError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(14, __c1, 6) as any as S.Schema<CreateInvestigateBulkCancelRequest>,
-  output: __S(16, __c2, 0) as any as S.Schema<CreateInvestigateBulkCancelResponse>,
+  input: __S(0, __c0, 0) as any as S.Schema<CreateInvestigateBulkCancelRequest>,
+  output: __S(2, __c0, 2) as any as S.Schema<CreateInvestigateBulkCancelResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -4911,8 +4911,8 @@ export const createInvestigateMove: API.PaginatedOperationMethod<
   InvestigateMoveBulkResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(17, __c2, 1) as any as S.Schema<CreateInvestigateMoveRequest>,
-    output: __S(4, __c0, 4) as any as S.Schema<CreateInvestigateMoveResponse>,
+    input: __S(16, __c1, 0) as any as S.Schema<CreateInvestigateMoveRequest>,
+    output: __S(1314, __c82, 2) as any as S.Schema<CreateInvestigateMoveResponse>,
     errors: [CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
     retry: Retry.Retry,
@@ -4929,8 +4929,8 @@ export const createInvestigatePreview: API.OperationMethod<
   CreateInvestigatePreviewError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(18, __c2, 2) as any as S.Schema<CreateInvestigatePreviewRequest>,
-  output: __S(19, __c2, 3) as any as S.Schema<CreateInvestigatePreviewResponse>,
+  input: __S(32, __c2, 0) as any as S.Schema<CreateInvestigatePreviewRequest>,
+  output: __S(48, __c3, 0) as any as S.Schema<CreateInvestigatePreviewResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -4944,8 +4944,8 @@ export const createInvestigateReclassify: API.OperationMethod<
   CreateInvestigateReclassifyError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(20, __c2, 4) as any as S.Schema<CreateInvestigateReclassifyRequest>,
-  output: __S(21, __c2, 5) as any as S.Schema<CreateInvestigateReclassifyResponse>,
+  input: __S(64, __c4, 0) as any as S.Schema<CreateInvestigateReclassifyRequest>,
+  output: __S(65, __c4, 1) as any as S.Schema<CreateInvestigateReclassifyResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -4962,8 +4962,8 @@ export const createSettingAllowPolicy: API.OperationMethod<
   CreateSettingAllowPolicyError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(22, __c2, 6) as any as S.Schema<CreateSettingAllowPolicyRequest>,
-  output: __S(23, __c2, 7) as any as S.Schema<CreateSettingAllowPolicyResponse>,
+  input: __S(80, __c5, 0) as any as S.Schema<CreateSettingAllowPolicyRequest>,
+  output: __S(96, __c6, 0) as any as S.Schema<CreateSettingAllowPolicyResponse>,
   errors: [EmailSecurityNotEntitled, Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -4980,8 +4980,8 @@ export const createSettingBlockSender: API.OperationMethod<
   CreateSettingBlockSenderError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(24, __c3, 0) as any as S.Schema<CreateSettingBlockSenderRequest>,
-  output: __S(25, __c3, 1) as any as S.Schema<CreateSettingBlockSenderResponse>,
+  input: __S(112, __c7, 0) as any as S.Schema<CreateSettingBlockSenderRequest>,
+  output: __S(128, __c8, 0) as any as S.Schema<CreateSettingBlockSenderResponse>,
   errors: [EmailSecurityNotEntitled, Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -4998,8 +4998,8 @@ export const createSettingImpersonationRegistry: API.OperationMethod<
   CreateSettingImpersonationRegistryError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(26, __c3, 2) as any as S.Schema<CreateSettingImpersonationRegistryRequest>,
-  output: __S(27, __c3, 3) as any as S.Schema<CreateSettingImpersonationRegistryResponse>,
+  input: __S(144, __c9, 0) as any as S.Schema<CreateSettingImpersonationRegistryRequest>,
+  output: __S(160, __c10, 0) as any as S.Schema<CreateSettingImpersonationRegistryResponse>,
   errors: [EmailSecurityNotEntitled, Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -5013,8 +5013,8 @@ export const createSettingsContentPolicy: API.OperationMethod<
   CreateSettingsContentPolicyError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(29, __c3, 5) as any as S.Schema<CreateSettingsContentPolicyRequest>,
-  output: __S(30, __c3, 6) as any as S.Schema<CreateSettingsContentPolicyResponse>,
+  input: __S(176, __c11, 0) as any as S.Schema<CreateSettingsContentPolicyRequest>,
+  output: __S(208, __c13, 0) as any as S.Schema<CreateSettingsContentPolicyResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -5028,8 +5028,8 @@ export const createSettingsDomain: API.OperationMethod<
   CreateSettingsDomainError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(31, __c3, 7) as any as S.Schema<CreateSettingsDomainRequest>,
-  output: __S(34, __c4, 2) as any as S.Schema<CreateSettingsDomainResponse>,
+  input: __S(224, __c14, 0) as any as S.Schema<CreateSettingsDomainRequest>,
+  output: __S(225, __c14, 1) as any as S.Schema<CreateSettingsDomainResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -5043,8 +5043,8 @@ export const createSettingSendingDomainRestriction: API.OperationMethod<
   CreateSettingSendingDomainRestrictionError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(35, __c4, 3) as any as S.Schema<CreateSettingSendingDomainRestrictionRequest>,
-  output: __S(36, __c4, 4) as any as S.Schema<CreateSettingSendingDomainRestrictionResponse>,
+  input: __S(256, __c16, 0) as any as S.Schema<CreateSettingSendingDomainRestrictionRequest>,
+  output: __S(272, __c17, 0) as any as S.Schema<CreateSettingSendingDomainRestrictionResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -5061,8 +5061,8 @@ export const createSettingTrustedDomain: API.OperationMethod<
   CreateSettingTrustedDomainError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(37, __c4, 5) as any as S.Schema<CreateSettingTrustedDomainRequest>,
-  output: __S(38, __c4, 6) as any as S.Schema<CreateSettingTrustedDomainResponse>,
+  input: __S(288, __c18, 0) as any as S.Schema<CreateSettingTrustedDomainRequest>,
+  output: __S(304, __c19, 0) as any as S.Schema<CreateSettingTrustedDomainResponse>,
   errors: [EmailSecurityNotEntitled, Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -5076,8 +5076,8 @@ export const createSettingUrlIgnorePattern: API.OperationMethod<
   CreateSettingUrlIgnorePatternError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(39, __c4, 7) as any as S.Schema<CreateSettingUrlIgnorePatternRequest>,
-  output: __S(40, __c5, 0) as any as S.Schema<CreateSettingUrlIgnorePatternResponse>,
+  input: __S(320, __c20, 0) as any as S.Schema<CreateSettingUrlIgnorePatternRequest>,
+  output: __S(336, __c21, 0) as any as S.Schema<CreateSettingUrlIgnorePatternResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -5091,8 +5091,8 @@ export const deleteInvestigateBulk: API.OperationMethod<
   DeleteInvestigateBulkError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(41, __c5, 1) as any as S.Schema<DeleteInvestigateBulkRequest>,
-  output: __S(42, __c5, 2) as any as S.Schema<DeleteInvestigateBulkResponse>,
+  input: __S(352, __c22, 0) as any as S.Schema<DeleteInvestigateBulkRequest>,
+  output: __S(368, __c23, 0) as any as S.Schema<DeleteInvestigateBulkResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -5110,8 +5110,8 @@ export const deleteSettingAllowPolicy: API.OperationMethod<
   DeleteSettingAllowPolicyError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(43, __c5, 3) as any as S.Schema<DeleteSettingAllowPolicyRequest>,
-  output: __S(42, __c5, 2) as any as S.Schema<DeleteSettingAllowPolicyResponse>,
+  input: __S(384, __c24, 0) as any as S.Schema<DeleteSettingAllowPolicyRequest>,
+  output: __S(368, __c23, 0) as any as S.Schema<DeleteSettingAllowPolicyResponse>,
   errors: [
     AllowPolicyNotFound,
     EmailSecurityNotEntitled,
@@ -5135,8 +5135,8 @@ export const deleteSettingBlockSender: API.OperationMethod<
   DeleteSettingBlockSenderError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(44, __c5, 4) as any as S.Schema<DeleteSettingBlockSenderRequest>,
-  output: __S(42, __c5, 2) as any as S.Schema<DeleteSettingBlockSenderResponse>,
+  input: __S(400, __c25, 0) as any as S.Schema<DeleteSettingBlockSenderRequest>,
+  output: __S(368, __c23, 0) as any as S.Schema<DeleteSettingBlockSenderResponse>,
   errors: [
     BlockSenderNotFound,
     EmailSecurityNotEntitled,
@@ -5160,8 +5160,8 @@ export const deleteSettingDomain: API.OperationMethod<
   DeleteSettingDomainError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(45, __c5, 5) as any as S.Schema<DeleteSettingDomainRequest>,
-  output: __S(42, __c5, 2) as any as S.Schema<DeleteSettingDomainResponse>,
+  input: __S(416, __c26, 0) as any as S.Schema<DeleteSettingDomainRequest>,
+  output: __S(368, __c23, 0) as any as S.Schema<DeleteSettingDomainResponse>,
   errors: [
     EmailSecurityDomainNotFound,
     EmailSecurityNotEntitled,
@@ -5185,8 +5185,8 @@ export const deleteSettingImpersonationRegistry: API.OperationMethod<
   DeleteSettingImpersonationRegistryError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(46, __c5, 6) as any as S.Schema<DeleteSettingImpersonationRegistryRequest>,
-  output: __S(42, __c5, 2) as any as S.Schema<DeleteSettingImpersonationRegistryResponse>,
+  input: __S(432, __c27, 0) as any as S.Schema<DeleteSettingImpersonationRegistryRequest>,
+  output: __S(368, __c23, 0) as any as S.Schema<DeleteSettingImpersonationRegistryResponse>,
   errors: [
     ImpersonationRegistryEntryNotFound,
     EmailSecurityNotEntitled,
@@ -5206,8 +5206,8 @@ export const deleteSettingsContentPolicy: API.OperationMethod<
   DeleteSettingsContentPolicyError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(47, __c5, 7) as any as S.Schema<DeleteSettingsContentPolicyRequest>,
-  output: __S(42, __c5, 2) as any as S.Schema<DeleteSettingsContentPolicyResponse>,
+  input: __S(448, __c28, 0) as any as S.Schema<DeleteSettingsContentPolicyRequest>,
+  output: __S(368, __c23, 0) as any as S.Schema<DeleteSettingsContentPolicyResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -5221,8 +5221,8 @@ export const deleteSettingSendingDomainRestriction: API.OperationMethod<
   DeleteSettingSendingDomainRestrictionError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(48, __c6, 0) as any as S.Schema<DeleteSettingSendingDomainRestrictionRequest>,
-  output: __S(42, __c5, 2) as any as S.Schema<DeleteSettingSendingDomainRestrictionResponse>,
+  input: __S(464, __c29, 0) as any as S.Schema<DeleteSettingSendingDomainRestrictionRequest>,
+  output: __S(368, __c23, 0) as any as S.Schema<DeleteSettingSendingDomainRestrictionResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -5240,8 +5240,8 @@ export const deleteSettingTrustedDomain: API.OperationMethod<
   DeleteSettingTrustedDomainError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(49, __c6, 1) as any as S.Schema<DeleteSettingTrustedDomainRequest>,
-  output: __S(42, __c5, 2) as any as S.Schema<DeleteSettingTrustedDomainResponse>,
+  input: __S(480, __c30, 0) as any as S.Schema<DeleteSettingTrustedDomainRequest>,
+  output: __S(368, __c23, 0) as any as S.Schema<DeleteSettingTrustedDomainResponse>,
   errors: [
     TrustedDomainNotFound,
     EmailSecurityNotEntitled,
@@ -5261,8 +5261,8 @@ export const deleteSettingUrlIgnorePattern: API.OperationMethod<
   DeleteSettingUrlIgnorePatternError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(50, __c6, 2) as any as S.Schema<DeleteSettingUrlIgnorePatternRequest>,
-  output: __S(42, __c5, 2) as any as S.Schema<DeleteSettingUrlIgnorePatternResponse>,
+  input: __S(496, __c31, 0) as any as S.Schema<DeleteSettingUrlIgnorePatternRequest>,
+  output: __S(368, __c23, 0) as any as S.Schema<DeleteSettingUrlIgnorePatternResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -5276,8 +5276,8 @@ export const editSettingsContentPolicy: API.OperationMethod<
   EditSettingsContentPolicyError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(51, __c6, 3) as any as S.Schema<EditSettingsContentPolicyRequest>,
-  output: __S(30, __c3, 6) as any as S.Schema<EditSettingsContentPolicyResponse>,
+  input: __S(512, __c32, 0) as any as S.Schema<EditSettingsContentPolicyRequest>,
+  output: __S(208, __c13, 0) as any as S.Schema<EditSettingsContentPolicyResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -5291,8 +5291,8 @@ export const getInvestigate: API.OperationMethod<
   GetInvestigateError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(52, __c6, 4) as any as S.Schema<GetInvestigateRequest>,
-  output: __S(60, __c7, 4) as any as S.Schema<GetInvestigateResponse>,
+  input: __S(528, __c33, 0) as any as S.Schema<GetInvestigateRequest>,
+  output: __S(529, __c33, 1) as any as S.Schema<GetInvestigateResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -5306,8 +5306,8 @@ export const getInvestigateBulk: API.OperationMethod<
   GetInvestigateBulkError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(61, __c7, 5) as any as S.Schema<GetInvestigateBulkRequest>,
-  output: __S(64, __c8, 0) as any as S.Schema<GetInvestigateBulkResponse>,
+  input: __S(608, __c38, 0) as any as S.Schema<GetInvestigateBulkRequest>,
+  output: __S(611, __c38, 3) as any as S.Schema<GetInvestigateBulkResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -5321,8 +5321,8 @@ export const getInvestigateDetection: API.OperationMethod<
   GetInvestigateDetectionError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(65, __c8, 1) as any as S.Schema<GetInvestigateDetectionRequest>,
-  output: __S(75, __c9, 3) as any as S.Schema<GetInvestigateDetectionResponse>,
+  input: __S(624, __c39, 0) as any as S.Schema<GetInvestigateDetectionRequest>,
+  output: __S(634, __c39, 10) as any as S.Schema<GetInvestigateDetectionResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -5336,8 +5336,8 @@ export const getInvestigatePreview: API.OperationMethod<
   GetInvestigatePreviewError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(76, __c9, 4) as any as S.Schema<GetInvestigatePreviewRequest>,
-  output: __S(19, __c2, 3) as any as S.Schema<GetInvestigatePreviewResponse>,
+  input: __S(640, __c40, 0) as any as S.Schema<GetInvestigatePreviewRequest>,
+  output: __S(48, __c3, 0) as any as S.Schema<GetInvestigatePreviewResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -5351,8 +5351,8 @@ export const getInvestigateRaw: API.OperationMethod<
   GetInvestigateRawError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(77, __c9, 5) as any as S.Schema<GetInvestigateRawRequest>,
-  output: __S(78, __c9, 6) as any as S.Schema<GetInvestigateRawResponse>,
+  input: __S(656, __c41, 0) as any as S.Schema<GetInvestigateRawRequest>,
+  output: __S(657, __c41, 1) as any as S.Schema<GetInvestigateRawResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -5366,8 +5366,8 @@ export const getInvestigateTrace: API.OperationMethod<
   GetInvestigateTraceError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(79, __c9, 7) as any as S.Schema<GetInvestigateTraceRequest>,
-  output: __S(83, __c10, 3) as any as S.Schema<GetInvestigateTraceResponse>,
+  input: __S(672, __c42, 0) as any as S.Schema<GetInvestigateTraceRequest>,
+  output: __S(676, __c42, 4) as any as S.Schema<GetInvestigateTraceResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -5385,8 +5385,8 @@ export const getSettingAllowPolicy: API.OperationMethod<
   GetSettingAllowPolicyError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(84, __c10, 4) as any as S.Schema<GetSettingAllowPolicyRequest>,
-  output: __S(23, __c2, 7) as any as S.Schema<GetSettingAllowPolicyResponse>,
+  input: __S(688, __c43, 0) as any as S.Schema<GetSettingAllowPolicyRequest>,
+  output: __S(96, __c6, 0) as any as S.Schema<GetSettingAllowPolicyResponse>,
   errors: [
     AllowPolicyNotFound,
     EmailSecurityNotEntitled,
@@ -5410,8 +5410,8 @@ export const getSettingBlockSender: API.OperationMethod<
   GetSettingBlockSenderError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(85, __c10, 5) as any as S.Schema<GetSettingBlockSenderRequest>,
-  output: __S(25, __c3, 1) as any as S.Schema<GetSettingBlockSenderResponse>,
+  input: __S(704, __c44, 0) as any as S.Schema<GetSettingBlockSenderRequest>,
+  output: __S(128, __c8, 0) as any as S.Schema<GetSettingBlockSenderResponse>,
   errors: [
     BlockSenderNotFound,
     EmailSecurityNotEntitled,
@@ -5435,8 +5435,8 @@ export const getSettingDomain: API.OperationMethod<
   GetSettingDomainError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(86, __c10, 6) as any as S.Schema<GetSettingDomainRequest>,
-  output: __S(87, __c10, 7) as any as S.Schema<GetSettingDomainResponse>,
+  input: __S(720, __c45, 0) as any as S.Schema<GetSettingDomainRequest>,
+  output: __S(721, __c45, 1) as any as S.Schema<GetSettingDomainResponse>,
   errors: [
     EmailSecurityDomainNotFound,
     EmailSecurityNotEntitled,
@@ -5460,8 +5460,8 @@ export const getSettingImpersonationRegistry: API.OperationMethod<
   GetSettingImpersonationRegistryError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(88, __c11, 0) as any as S.Schema<GetSettingImpersonationRegistryRequest>,
-  output: __S(27, __c3, 3) as any as S.Schema<GetSettingImpersonationRegistryResponse>,
+  input: __S(736, __c46, 0) as any as S.Schema<GetSettingImpersonationRegistryRequest>,
+  output: __S(160, __c10, 0) as any as S.Schema<GetSettingImpersonationRegistryResponse>,
   errors: [
     ImpersonationRegistryEntryNotFound,
     EmailSecurityNotEntitled,
@@ -5481,8 +5481,8 @@ export const getSettingsContentPolicy: API.OperationMethod<
   GetSettingsContentPolicyError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(89, __c11, 1) as any as S.Schema<GetSettingsContentPolicyRequest>,
-  output: __S(30, __c3, 6) as any as S.Schema<GetSettingsContentPolicyResponse>,
+  input: __S(752, __c47, 0) as any as S.Schema<GetSettingsContentPolicyRequest>,
+  output: __S(208, __c13, 0) as any as S.Schema<GetSettingsContentPolicyResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -5496,8 +5496,8 @@ export const getSettingSendingDomainRestriction: API.OperationMethod<
   GetSettingSendingDomainRestrictionError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(90, __c11, 2) as any as S.Schema<GetSettingSendingDomainRestrictionRequest>,
-  output: __S(36, __c4, 4) as any as S.Schema<GetSettingSendingDomainRestrictionResponse>,
+  input: __S(768, __c48, 0) as any as S.Schema<GetSettingSendingDomainRestrictionRequest>,
+  output: __S(272, __c17, 0) as any as S.Schema<GetSettingSendingDomainRestrictionResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -5515,8 +5515,8 @@ export const getSettingTrustedDomain: API.OperationMethod<
   GetSettingTrustedDomainError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(91, __c11, 3) as any as S.Schema<GetSettingTrustedDomainRequest>,
-  output: __S(38, __c4, 6) as any as S.Schema<GetSettingTrustedDomainResponse>,
+  input: __S(784, __c49, 0) as any as S.Schema<GetSettingTrustedDomainRequest>,
+  output: __S(304, __c19, 0) as any as S.Schema<GetSettingTrustedDomainResponse>,
   errors: [
     TrustedDomainNotFound,
     EmailSecurityNotEntitled,
@@ -5536,8 +5536,8 @@ export const getSettingUrlIgnorePattern: API.OperationMethod<
   GetSettingUrlIgnorePatternError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(92, __c11, 4) as any as S.Schema<GetSettingUrlIgnorePatternRequest>,
-  output: __S(40, __c5, 0) as any as S.Schema<GetSettingUrlIgnorePatternResponse>,
+  input: __S(800, __c50, 0) as any as S.Schema<GetSettingUrlIgnorePatternRequest>,
+  output: __S(336, __c21, 0) as any as S.Schema<GetSettingUrlIgnorePatternResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -5553,8 +5553,8 @@ export const listInvestigateBulkMessages: API.PaginatedOperationMethod<
   InvestigateBulkMessagesListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(93, __c11, 5) as any as S.Schema<ListInvestigateBulkMessagesRequest>,
-    output: __S(104, __c13, 0) as any as S.Schema<ListInvestigateBulkMessagesResponse>,
+    input: __S(816, __c51, 0) as any as S.Schema<ListInvestigateBulkMessagesRequest>,
+    output: __S(826, __c51, 10) as any as S.Schema<ListInvestigateBulkMessagesResponse>,
     errors: [CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
     retry: Retry.Retry,
@@ -5579,8 +5579,8 @@ export const listInvestigateBulks: API.PaginatedOperationMethod<
   InvestigateBulkListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(105, __c13, 1) as any as S.Schema<ListInvestigateBulksRequest>,
-    output: __S(109, __c13, 5) as any as S.Schema<ListInvestigateBulksResponse>,
+    input: __S(848, __c53, 0) as any as S.Schema<ListInvestigateBulksRequest>,
+    output: __S(852, __c53, 4) as any as S.Schema<ListInvestigateBulksResponse>,
     errors: [CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
     retry: Retry.Retry,
@@ -5605,8 +5605,8 @@ export const listInvestigates: API.PaginatedOperationMethod<
   InvestigateListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(110, __c13, 6) as any as S.Schema<ListInvestigatesRequest>,
-    output: __S(113, __c14, 1) as any as S.Schema<ListInvestigatesResponse>,
+    input: __S(864, __c54, 0) as any as S.Schema<ListInvestigatesRequest>,
+    output: __S(867, __c54, 3) as any as S.Schema<ListInvestigatesResponse>,
     errors: [CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
     retry: Retry.Retry,
@@ -5631,8 +5631,8 @@ export const listPhishguardReports: API.PaginatedOperationMethod<
   PhishguardReportsListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(114, __c14, 2) as any as S.Schema<ListPhishguardReportsRequest>,
-    output: __S(120, __c15, 0) as any as S.Schema<ListPhishguardReportsResponse>,
+    input: __S(880, __c55, 0) as any as S.Schema<ListPhishguardReportsRequest>,
+    output: __S(886, __c55, 6) as any as S.Schema<ListPhishguardReportsResponse>,
     errors: [CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
     retry: Retry.Retry,
@@ -5654,8 +5654,8 @@ export const listSettingAllowPolicies: API.PaginatedOperationMethod<
   SettingsAllowPoliciesListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(121, __c15, 1) as any as S.Schema<ListSettingAllowPoliciesRequest>,
-    output: __S(124, __c15, 4) as any as S.Schema<ListSettingAllowPoliciesResponse>,
+    input: __S(896, __c56, 0) as any as S.Schema<ListSettingAllowPoliciesRequest>,
+    output: __S(897, __c56, 1) as any as S.Schema<ListSettingAllowPoliciesResponse>,
     errors: [EmailSecurityNotEntitled, Forbidden, CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
     retry: Retry.Retry,
@@ -5680,8 +5680,8 @@ export const listSettingBlockSenders: API.PaginatedOperationMethod<
   SettingsBlockSendersListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(125, __c15, 5) as any as S.Schema<ListSettingBlockSendersRequest>,
-    output: __S(128, __c16, 0) as any as S.Schema<ListSettingBlockSendersResponse>,
+    input: __S(928, __c58, 0) as any as S.Schema<ListSettingBlockSendersRequest>,
+    output: __S(929, __c58, 1) as any as S.Schema<ListSettingBlockSendersResponse>,
     errors: [EmailSecurityNotEntitled, Forbidden, CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
     retry: Retry.Retry,
@@ -5706,8 +5706,8 @@ export const listSettingDomains: API.PaginatedOperationMethod<
   SettingsDomainsListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(129, __c16, 1) as any as S.Schema<ListSettingDomainsRequest>,
-    output: __S(132, __c16, 4) as any as S.Schema<ListSettingDomainsResponse>,
+    input: __S(960, __c60, 0) as any as S.Schema<ListSettingDomainsRequest>,
+    output: __S(963, __c60, 3) as any as S.Schema<ListSettingDomainsResponse>,
     errors: [EmailSecurityNotEntitled, Forbidden, CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
     retry: Retry.Retry,
@@ -5735,8 +5735,8 @@ export const listSettingImpersonationRegistries: API.PaginatedOperationMethod<
   SettingsImpersonationRegistryListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(133, __c16, 5) as any as S.Schema<ListSettingImpersonationRegistriesRequest>,
-    output: __S(136, __c17, 0) as any as S.Schema<ListSettingImpersonationRegistriesResponse>,
+    input: __S(976, __c61, 0) as any as S.Schema<ListSettingImpersonationRegistriesRequest>,
+    output: __S(979, __c61, 3) as any as S.Schema<ListSettingImpersonationRegistriesResponse>,
     errors: [EmailSecurityNotEntitled, Forbidden, CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
     retry: Retry.Retry,
@@ -5759,8 +5759,8 @@ export const listSettingsContentPolicies: API.OperationMethod<
   ListSettingsContentPoliciesError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(137, __c17, 1) as any as S.Schema<ListSettingsContentPoliciesRequest>,
-  output: __S(140, __c17, 4) as any as S.Schema<ListSettingsContentPoliciesResponse>,
+  input: __S(992, __c62, 0) as any as S.Schema<ListSettingsContentPoliciesRequest>,
+  output: __S(993, __c62, 1) as any as S.Schema<ListSettingsContentPoliciesResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -5776,8 +5776,8 @@ export const listSettingSendingDomainRestrictions: API.PaginatedOperationMethod<
   SettingsSendingDomainRestrictionsListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(141, __c17, 5) as any as S.Schema<ListSettingSendingDomainRestrictionsRequest>,
-    output: __S(144, __c18, 0) as any as S.Schema<ListSettingSendingDomainRestrictionsResponse>,
+    input: __S(1024, __c64, 0) as any as S.Schema<ListSettingSendingDomainRestrictionsRequest>,
+    output: __S(1027, __c64, 3) as any as S.Schema<ListSettingSendingDomainRestrictionsResponse>,
     errors: [CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
     retry: Retry.Retry,
@@ -5805,8 +5805,8 @@ export const listSettingTrustedDomains: API.PaginatedOperationMethod<
   SettingsTrustedDomainsListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(145, __c18, 1) as any as S.Schema<ListSettingTrustedDomainsRequest>,
-    output: __S(148, __c18, 4) as any as S.Schema<ListSettingTrustedDomainsResponse>,
+    input: __S(1040, __c65, 0) as any as S.Schema<ListSettingTrustedDomainsRequest>,
+    output: __S(1041, __c65, 1) as any as S.Schema<ListSettingTrustedDomainsResponse>,
     errors: [EmailSecurityNotEntitled, Forbidden, CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
     retry: Retry.Retry,
@@ -5831,8 +5831,8 @@ export const listSettingUrlIgnorePatterns: API.PaginatedOperationMethod<
   SettingsUrlIgnorePatternsListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(149, __c18, 5) as any as S.Schema<ListSettingUrlIgnorePatternsRequest>,
-    output: __S(152, __c19, 0) as any as S.Schema<ListSettingUrlIgnorePatternsResponse>,
+    input: __S(1072, __c67, 0) as any as S.Schema<ListSettingUrlIgnorePatternsRequest>,
+    output: __S(1075, __c67, 3) as any as S.Schema<ListSettingUrlIgnorePatternsResponse>,
     errors: [CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
     retry: Retry.Retry,
@@ -5857,8 +5857,8 @@ export const listSubmissions: API.PaginatedOperationMethod<
   SubmissionsListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(153, __c19, 1) as any as S.Schema<ListSubmissionsRequest>,
-    output: __S(156, __c19, 4) as any as S.Schema<ListSubmissionsResponse>,
+    input: __S(1088, __c68, 0) as any as S.Schema<ListSubmissionsRequest>,
+    output: __S(1091, __c68, 3) as any as S.Schema<ListSubmissionsResponse>,
     errors: [CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
     retry: Retry.Retry,
@@ -5885,8 +5885,8 @@ export const patchSettingAllowPolicy: API.OperationMethod<
   PatchSettingAllowPolicyError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(157, __c19, 5) as any as S.Schema<PatchSettingAllowPolicyRequest>,
-  output: __S(23, __c2, 7) as any as S.Schema<PatchSettingAllowPolicyResponse>,
+  input: __S(1104, __c69, 0) as any as S.Schema<PatchSettingAllowPolicyRequest>,
+  output: __S(96, __c6, 0) as any as S.Schema<PatchSettingAllowPolicyResponse>,
   errors: [
     AllowPolicyNotFound,
     EmailSecurityNotEntitled,
@@ -5910,8 +5910,8 @@ export const patchSettingBlockSender: API.OperationMethod<
   PatchSettingBlockSenderError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(158, __c19, 6) as any as S.Schema<PatchSettingBlockSenderRequest>,
-  output: __S(25, __c3, 1) as any as S.Schema<PatchSettingBlockSenderResponse>,
+  input: __S(1120, __c70, 0) as any as S.Schema<PatchSettingBlockSenderRequest>,
+  output: __S(128, __c8, 0) as any as S.Schema<PatchSettingBlockSenderResponse>,
   errors: [
     BlockSenderNotFound,
     EmailSecurityNotEntitled,
@@ -5935,8 +5935,8 @@ export const patchSettingDomain: API.OperationMethod<
   PatchSettingDomainError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(159, __c19, 7) as any as S.Schema<PatchSettingDomainRequest>,
-  output: __S(160, __c20, 0) as any as S.Schema<PatchSettingDomainResponse>,
+  input: __S(1136, __c71, 0) as any as S.Schema<PatchSettingDomainRequest>,
+  output: __S(1137, __c71, 1) as any as S.Schema<PatchSettingDomainResponse>,
   errors: [
     EmailSecurityDomainNotFound,
     EmailSecurityNotEntitled,
@@ -5960,8 +5960,8 @@ export const patchSettingImpersonationRegistry: API.OperationMethod<
   PatchSettingImpersonationRegistryError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(161, __c20, 1) as any as S.Schema<PatchSettingImpersonationRegistryRequest>,
-  output: __S(27, __c3, 3) as any as S.Schema<PatchSettingImpersonationRegistryResponse>,
+  input: __S(1152, __c72, 0) as any as S.Schema<PatchSettingImpersonationRegistryRequest>,
+  output: __S(160, __c10, 0) as any as S.Schema<PatchSettingImpersonationRegistryResponse>,
   errors: [
     ImpersonationRegistryEntryNotFound,
     EmailSecurityNotEntitled,
@@ -5981,8 +5981,8 @@ export const patchSettingSendingDomainRestriction: API.OperationMethod<
   PatchSettingSendingDomainRestrictionError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(162, __c20, 2) as any as S.Schema<PatchSettingSendingDomainRestrictionRequest>,
-  output: __S(36, __c4, 4) as any as S.Schema<PatchSettingSendingDomainRestrictionResponse>,
+  input: __S(1168, __c73, 0) as any as S.Schema<PatchSettingSendingDomainRestrictionRequest>,
+  output: __S(272, __c17, 0) as any as S.Schema<PatchSettingSendingDomainRestrictionResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -6000,8 +6000,8 @@ export const patchSettingTrustedDomain: API.OperationMethod<
   PatchSettingTrustedDomainError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(163, __c20, 3) as any as S.Schema<PatchSettingTrustedDomainRequest>,
-  output: __S(38, __c4, 6) as any as S.Schema<PatchSettingTrustedDomainResponse>,
+  input: __S(1184, __c74, 0) as any as S.Schema<PatchSettingTrustedDomainRequest>,
+  output: __S(304, __c19, 0) as any as S.Schema<PatchSettingTrustedDomainResponse>,
   errors: [
     TrustedDomainNotFound,
     EmailSecurityNotEntitled,
@@ -6021,8 +6021,8 @@ export const patchSettingUrlIgnorePattern: API.OperationMethod<
   PatchSettingUrlIgnorePatternError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(164, __c20, 4) as any as S.Schema<PatchSettingUrlIgnorePatternRequest>,
-  output: __S(40, __c5, 0) as any as S.Schema<PatchSettingUrlIgnorePatternResponse>,
+  input: __S(1200, __c75, 0) as any as S.Schema<PatchSettingUrlIgnorePatternRequest>,
+  output: __S(336, __c21, 0) as any as S.Schema<PatchSettingUrlIgnorePatternResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -6036,8 +6036,8 @@ export const settingsAllowPoliciesBatch: API.OperationMethod<
   SettingsAllowPoliciesBatchError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(171, __c21, 3) as any as S.Schema<SettingsAllowPoliciesBatchRequest>,
-  output: __S(174, __c21, 6) as any as S.Schema<SettingsAllowPoliciesBatchResponse>,
+  input: __S(1220, __c76, 4) as any as S.Schema<SettingsAllowPoliciesBatchRequest>,
+  output: __S(1223, __c76, 7) as any as S.Schema<SettingsAllowPoliciesBatchResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -6051,8 +6051,8 @@ export const settingsBlockSendersBatch: API.OperationMethod<
   SettingsBlockSendersBatchError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(181, __c22, 5) as any as S.Schema<SettingsBlockSendersBatchRequest>,
-  output: __S(184, __c23, 0) as any as S.Schema<SettingsBlockSendersBatchResponse>,
+  input: __S(1254, __c78, 6) as any as S.Schema<SettingsBlockSendersBatchRequest>,
+  output: __S(1257, __c78, 9) as any as S.Schema<SettingsBlockSendersBatchResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -6066,8 +6066,8 @@ export const settingsContentPoliciesBatch: API.OperationMethod<
   SettingsContentPoliciesBatchError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(191, __c23, 7) as any as S.Schema<SettingsContentPoliciesBatchRequest>,
-  output: __S(192, __c24, 0) as any as S.Schema<SettingsContentPoliciesBatchResponse>,
+  input: __S(1270, __c79, 6) as any as S.Schema<SettingsContentPoliciesBatchRequest>,
+  output: __S(1271, __c79, 7) as any as S.Schema<SettingsContentPoliciesBatchResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -6081,8 +6081,8 @@ export const settingsDomainsBatch: API.OperationMethod<
   SettingsDomainsBatchError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(199, __c24, 7) as any as S.Schema<SettingsDomainsBatchRequest>,
-  output: __S(206, __c25, 6) as any as S.Schema<SettingsDomainsBatchResponse>,
+  input: __S(1286, __c80, 6) as any as S.Schema<SettingsDomainsBatchRequest>,
+  output: __S(1293, __c80, 13) as any as S.Schema<SettingsDomainsBatchResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -6096,8 +6096,8 @@ export const settingsDomainsBulkDelete: API.OperationMethod<
   SettingsDomainsBulkDeleteError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(207, __c25, 7) as any as S.Schema<SettingsDomainsBulkDeleteRequest>,
-  output: __S(208, __c26, 0) as any as S.Schema<SettingsDomainsBulkDeleteResponse>,
+  input: __S(1344, __c84, 0) as any as S.Schema<SettingsDomainsBulkDeleteRequest>,
+  output: __S(1345, __c84, 1) as any as S.Schema<SettingsDomainsBulkDeleteResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -6111,8 +6111,8 @@ export const settingsTrustedDomainsBatch: API.OperationMethod<
   SettingsTrustedDomainsBatchError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(215, __c26, 7) as any as S.Schema<SettingsTrustedDomainsBatchRequest>,
-  output: __S(216, __c27, 0) as any as S.Schema<SettingsTrustedDomainsBatchResponse>,
+  input: __S(1366, __c85, 6) as any as S.Schema<SettingsTrustedDomainsBatchRequest>,
+  output: __S(1367, __c85, 7) as any as S.Schema<SettingsTrustedDomainsBatchResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -6126,8 +6126,8 @@ export const updateSettingsDomain: API.OperationMethod<
   UpdateSettingsDomainError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(217, __c27, 1) as any as S.Schema<UpdateSettingsDomainRequest>,
-  output: __S(218, __c27, 2) as any as S.Schema<UpdateSettingsDomainResponse>,
+  input: __S(1376, __c86, 0) as any as S.Schema<UpdateSettingsDomainRequest>,
+  output: __S(1377, __c86, 1) as any as S.Schema<UpdateSettingsDomainResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -6137,200 +6137,6 @@ export const updateSettingsDomain: API.OperationMethod<
 function __c0(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(S.String);
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          accountId: S.String.pipe(T.Label("account_id")),
-          destination: S.String,
-          ids: __S(0, __c0, 0),
-          expectedDisposition: S.optional(S.String.pipe(T.Body("expected_disposition"))),
-          postfixIds: S.optional(__S(0, __c0, 0).pipe(T.Body("postfix_ids"))),
-        })
-          .pipe(
-            T.Http({
-              method: "POST",
-              uri: "/accounts/{account_id}/email-security/investigate/move",
-              code: 200,
-            }),
-          )
-          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({
-        identifier: "BulkInvestigateMoveRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          success: S.Boolean,
-          completedAt: S.optional(S.NullOr(S.String).pipe(T.Body("completed_at"))),
-          completedTimestamp: S.optional(S.NullOr(S.String).pipe(T.Body("completed_timestamp"))),
-          destination: S.optional(S.NullOr(S.String)),
-          itemCount: S.optional(S.NullOr(S.Number).pipe(T.Body("item_count"))),
-          messageId: S.optional(S.NullOr(S.String).pipe(T.Body("message_id"))),
-          operation: S.optional(S.NullOr(S.String)),
-          recipient: S.optional(S.NullOr(S.String)),
-          status: S.optional(S.NullOr(S.String)),
-        }),
-      ).annotate({
-        identifier: "InvestigateMoveBulkResultItem",
-      });
-    case 3:
-      return S.Array(__S(2, __c0, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          result: __S(3, __c0, 3).pipe(T.EnvelopePayload()),
-          resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
-        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({
-        identifier: "BulkInvestigateMoveResponse",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          accountId: S.String.pipe(T.Label("account_id")),
-          ids: __S(0, __c0, 0),
-        })
-          .pipe(
-            T.Http({
-              method: "POST",
-              uri: "/accounts/{account_id}/email-security/investigate/release",
-              code: 200,
-            }),
-          )
-          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({
-        identifier: "BulkInvestigateReleaseRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String,
-          delivered: S.optional(S.NullOr(__S(0, __c0, 0))),
-          failed: S.optional(S.NullOr(__S(0, __c0, 0))),
-          postfixId: S.optional(S.NullOr(S.String).pipe(T.Body("postfix_id"))),
-          undelivered: S.optional(S.NullOr(__S(0, __c0, 0))),
-        }),
-      ).annotate({
-        identifier: "InvestigateReleaseBulkResultItem",
-      });
-    case 7:
-      return S.Array(__S(6, __c0, 6));
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          result: __S(7, __c0, 7).pipe(T.EnvelopePayload()),
-          resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
-        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({
-        identifier: "BulkInvestigateReleaseResponse",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          actionLog: S.optional(S.Boolean.pipe(T.Body("action_log"))),
-          alertId: S.optional(S.String.pipe(T.Body("alert_id"))),
-          deliveryStatus: S.optional(S.String.pipe(T.Body("delivery_status"))),
-          detectionsOnly: S.optional(S.Boolean.pipe(T.Body("detections_only"))),
-          domain: S.optional(S.String),
-          end: S.optional(S.String),
-          exactSubject: S.optional(S.String.pipe(T.Body("exact_subject"))),
-          finalDisposition: S.optional(S.String.pipe(T.Body("final_disposition"))),
-          messageAction: S.optional(S.String.pipe(T.Body("message_action"))),
-          messageId: S.optional(S.String.pipe(T.Body("message_id"))),
-          metric: S.optional(S.String),
-          query: S.optional(S.String),
-          recipient: S.optional(S.String),
-          sender: S.optional(S.String),
-          smtpHeloIp: S.optional(S.String.pipe(T.Body("smtp_helo_ip"))),
-          start: S.optional(S.String),
-          subject: S.optional(S.String),
-          submissions: S.optional(S.Boolean),
-        }),
-      ).annotate({
-        identifier: "InvestigateBulkCreateRequestSearchParams",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          accountId: S.String.pipe(T.Label("account_id")),
-          action: S.String,
-          searchParams: __S(9, __c1, 1).pipe(T.Body("search_params")),
-          comment: S.optional(S.String),
-          destination: S.optional(S.String),
-          expectedDisposition: S.optional(S.String.pipe(T.Body("expected_disposition"))),
-        })
-          .pipe(
-            T.Http({
-              method: "POST",
-              uri: "/accounts/{account_id}/email-security/investigate/bulk",
-              code: 200,
-            }),
-          )
-          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({
-        identifier: "CreateInvestigateBulkRequest",
-      });
-    case 3:
-      return S.Unknown.pipe(
-        /*@__PURE__*/ T.UnionCases([["destination", "type", "expectedDisposition"], ["type"]], {
-          key: "type",
-          values: ["MOVE", "RELEASE"],
-        }),
-      );
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          actionLog: S.optional(S.NullOr(S.Boolean).pipe(T.Body("action_log"))),
-          alertId: S.optional(S.NullOr(S.String).pipe(T.Body("alert_id"))),
-          deliveryStatus: S.optional(S.NullOr(S.String).pipe(T.Body("delivery_status"))),
-          detectionsOnly: S.optional(S.NullOr(S.Boolean).pipe(T.Body("detections_only"))),
-          domain: S.optional(S.NullOr(S.String)),
-          end: S.optional(S.NullOr(S.String)),
-          exactSubject: S.optional(S.NullOr(S.String).pipe(T.Body("exact_subject"))),
-          finalDisposition: S.optional(S.NullOr(S.String).pipe(T.Body("final_disposition"))),
-          messageAction: S.optional(S.NullOr(S.String).pipe(T.Body("message_action"))),
-          messageId: S.optional(S.NullOr(S.String).pipe(T.Body("message_id"))),
-          metric: S.optional(S.NullOr(S.String)),
-          query: S.optional(S.NullOr(S.String)),
-          recipient: S.optional(S.NullOr(S.String)),
-          sender: S.optional(S.NullOr(S.String)),
-          smtpHeloIp: S.optional(S.NullOr(S.String).pipe(T.Body("smtp_helo_ip"))),
-          start: S.optional(S.NullOr(S.String)),
-          subject: S.optional(S.NullOr(S.String)),
-          submissions: S.optional(S.NullOr(S.Boolean)),
-        }),
-      ).annotate({
-        identifier: "InvestigateBulkCreateResponseSearchParams",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          actionParams: __S(11, __c1, 3).pipe(T.Body("action_params")),
-          actionType: S.String.pipe(T.Body("action_type")),
-          createdAt: S.String.pipe(T.Body("created_at")),
-          jobId: S.String.pipe(T.Body("job_id")),
-          messagesCancelled: S.Number.pipe(T.Body("messages_cancelled")),
-          messagesFailed: S.Number.pipe(T.Body("messages_failed")),
-          messagesPending: S.Number.pipe(T.Body("messages_pending")),
-          messagesSkipped: S.Number.pipe(T.Body("messages_skipped")),
-          messagesSuccessful: S.Number.pipe(T.Body("messages_successful")),
-          searchParams: __S(12, __c1, 4).pipe(T.Body("search_params")),
-          status: S.String,
-          totalMessagesDiscovered: S.Number.pipe(T.Body("total_messages_discovered")),
-          comment: S.optional(S.NullOr(S.String)),
-          completedAt: S.optional(S.NullOr(S.String).pipe(T.Body("completed_at"))),
-          startedAt: S.optional(S.NullOr(S.String).pipe(T.Body("started_at"))),
-          statusMessage: S.optional(S.NullOr(S.String).pipe(T.Body("status_message"))),
-        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({
-        identifier: "CreateInvestigateBulkResponse",
-      });
-    case 6:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -6347,21 +6153,17 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "CreateInvestigateBulkCancelRequest",
       });
-    case 7:
+    case 1:
       return S.Unknown.pipe(
         /*@__PURE__*/ T.UnionCases([["destination", "type", "expectedDisposition"], ["type"]], {
           key: "type",
           values: ["MOVE", "RELEASE"],
         }),
       );
-  }
-}
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          actionParams: __S(15, __c1, 7).pipe(T.Body("action_params")),
+          actionParams: __S(1, __c0, 1).pipe(T.Body("action_params")),
           actionType: S.String.pipe(T.Body("action_type")),
           createdAt: S.String.pipe(T.Body("created_at")),
           jobId: S.String.pipe(T.Body("job_id")),
@@ -6370,7 +6172,7 @@ function __c2(j: number): any {
           messagesPending: S.Number.pipe(T.Body("messages_pending")),
           messagesSkipped: S.Number.pipe(T.Body("messages_skipped")),
           messagesSuccessful: S.Number.pipe(T.Body("messages_successful")),
-          searchParams: __S(12, __c1, 4).pipe(T.Body("search_params")),
+          searchParams: __S(1424, __c89, 0).pipe(T.Body("search_params")),
           status: S.String,
           totalMessagesDiscovered: S.Number.pipe(T.Body("total_messages_discovered")),
           comment: S.optional(S.NullOr(S.String)),
@@ -6381,7 +6183,11 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "CreateInvestigateBulkCancelResponse",
       });
-    case 1:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -6400,7 +6206,11 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "CreateInvestigateMoveRequest",
       });
-    case 2:
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -6417,7 +6227,11 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "CreateInvestigatePreviewRequest",
       });
-    case 3:
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           screenshot: S.String,
@@ -6425,7 +6239,11 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "CreateInvestigatePreviewResponse",
       });
-    case 4:
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -6445,13 +6263,17 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "CreateInvestigateReclassifyRequest",
       });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Unknown.pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({
         identifier: "CreateInvestigateReclassifyResponse",
       });
-    case 6:
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -6478,7 +6300,11 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "CreateSettingAllowPolicyRequest",
       });
-    case 7:
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
@@ -6502,7 +6328,7 @@ function __c2(j: number): any {
       });
   }
 }
-function __c3(j: number): any {
+function __c7(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -6524,7 +6350,11 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "CreateSettingBlockSenderRequest",
       });
-    case 1:
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.NullOr(S.String)),
@@ -6539,7 +6369,11 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "CreateSettingBlockSenderResponse",
       });
-    case 2:
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -6563,7 +6397,11 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "CreateSettingImpersonationRegistryRequest",
       });
-    case 3:
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.NullOr(S.String)),
@@ -6584,16 +6422,18 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "CreateSettingImpersonationRegistryResponse",
       });
-    case 4:
-      return S.Array(S.String);
-    case 5:
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
           enabled: S.Boolean,
           name: S.String,
           pattern: S.String,
-          targets: __S(28, __c3, 4),
+          targets: __S(192, __c12, 0),
           notes: S.optional(S.String),
         })
           .pipe(
@@ -6607,7 +6447,17 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "CreateSettingsContentPolicyRequest",
       });
-    case 6:
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.NullOr(S.String)),
@@ -6617,20 +6467,24 @@ function __c3(j: number): any {
           name: S.optional(S.NullOr(S.String)),
           notes: S.optional(S.NullOr(S.String)),
           pattern: S.optional(S.NullOr(S.String)),
-          targets: S.optional(S.NullOr(__S(28, __c3, 4))),
+          targets: S.optional(S.NullOr(__S(192, __c12, 0))),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({
         identifier: "CreateSettingsContentPolicyResponse",
       });
-    case 7:
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
-          allowedDeliveryModes: __S(28, __c3, 4).pipe(T.Body("allowed_delivery_modes")),
+          allowedDeliveryModes: __S(192, __c12, 0).pipe(T.Body("allowed_delivery_modes")),
           domain: S.String,
-          dropDispositions: __S(28, __c3, 4).pipe(T.Body("drop_dispositions")),
-          ipRestrictions: __S(0, __c0, 0).pipe(T.Body("ip_restrictions")),
-          regions: __S(28, __c3, 4),
+          dropDispositions: __S(192, __c12, 0).pipe(T.Body("drop_dispositions")),
+          ipRestrictions: __S(1328, __c83, 0).pipe(T.Body("ip_restrictions")),
+          regions: __S(192, __c12, 0),
           folder: S.optional(S.String),
           integrationId: S.optional(S.String.pipe(T.Body("integration_id"))),
           lookbackHops: S.optional(S.Number.pipe(T.Body("lookback_hops"))),
@@ -6649,9 +6503,44 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "CreateSettingsDomainRequest",
       });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.NullOr(S.String)),
+          allowedDeliveryModes: S.optional(
+            S.NullOr(__S(192, __c12, 0)).pipe(T.Body("allowed_delivery_modes")),
+          ),
+          authorization: S.optional(S.NullOr(__S(240, __c15, 0))),
+          createdAt: S.optional(S.NullOr(S.String).pipe(T.Body("created_at"))),
+          dmarcStatus: S.optional(S.NullOr(S.String).pipe(T.Body("dmarc_status"))),
+          domain: S.optional(S.NullOr(S.String)),
+          dropDispositions: S.optional(
+            S.NullOr(__S(192, __c12, 0)).pipe(T.Body("drop_dispositions")),
+          ),
+          emailsProcessed: S.optional(
+            S.NullOr(__S(241, __c15, 1)).pipe(T.Body("emails_processed")),
+          ),
+          folder: S.optional(S.NullOr(S.String)),
+          inboxProvider: S.optional(S.NullOr(S.String).pipe(T.Body("inbox_provider"))),
+          integrationId: S.optional(S.NullOr(S.String).pipe(T.Body("integration_id"))),
+          ipRestrictions: S.optional(S.NullOr(__S(1328, __c83, 0)).pipe(T.Body("ip_restrictions"))),
+          lastModified: S.optional(S.NullOr(S.String).pipe(T.Body("last_modified"))),
+          lookbackHops: S.optional(S.NullOr(S.Number).pipe(T.Body("lookback_hops"))),
+          modifiedAt: S.optional(S.NullOr(S.String).pipe(T.Body("modified_at"))),
+          o365TenantId: S.optional(S.NullOr(S.String).pipe(T.Body("o365_tenant_id"))),
+          regions: S.optional(S.NullOr(__S(192, __c12, 0))),
+          requireTlsInbound: S.optional(S.NullOr(S.Boolean).pipe(T.Body("require_tls_inbound"))),
+          requireTlsOutbound: S.optional(S.NullOr(S.Boolean).pipe(T.Body("require_tls_outbound"))),
+          spfStatus: S.optional(S.NullOr(S.String).pipe(T.Body("spf_status"))),
+          status: S.optional(S.NullOr(S.String)),
+          transport: S.optional(S.NullOr(S.String)),
+        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({
+        identifier: "CreateSettingsDomainResponse",
+      });
   }
 }
-function __c4(j: number): any {
+function __c15(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -6673,45 +6562,16 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "CreateSettingsDomainResponseEmailsProcessed",
       });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.NullOr(S.String)),
-          allowedDeliveryModes: S.optional(
-            S.NullOr(__S(28, __c3, 4)).pipe(T.Body("allowed_delivery_modes")),
-          ),
-          authorization: S.optional(S.NullOr(__S(32, __c4, 0))),
-          createdAt: S.optional(S.NullOr(S.String).pipe(T.Body("created_at"))),
-          dmarcStatus: S.optional(S.NullOr(S.String).pipe(T.Body("dmarc_status"))),
-          domain: S.optional(S.NullOr(S.String)),
-          dropDispositions: S.optional(
-            S.NullOr(__S(28, __c3, 4)).pipe(T.Body("drop_dispositions")),
-          ),
-          emailsProcessed: S.optional(S.NullOr(__S(33, __c4, 1)).pipe(T.Body("emails_processed"))),
-          folder: S.optional(S.NullOr(S.String)),
-          inboxProvider: S.optional(S.NullOr(S.String).pipe(T.Body("inbox_provider"))),
-          integrationId: S.optional(S.NullOr(S.String).pipe(T.Body("integration_id"))),
-          ipRestrictions: S.optional(S.NullOr(__S(0, __c0, 0)).pipe(T.Body("ip_restrictions"))),
-          lastModified: S.optional(S.NullOr(S.String).pipe(T.Body("last_modified"))),
-          lookbackHops: S.optional(S.NullOr(S.Number).pipe(T.Body("lookback_hops"))),
-          modifiedAt: S.optional(S.NullOr(S.String).pipe(T.Body("modified_at"))),
-          o365TenantId: S.optional(S.NullOr(S.String).pipe(T.Body("o365_tenant_id"))),
-          regions: S.optional(S.NullOr(__S(28, __c3, 4))),
-          requireTlsInbound: S.optional(S.NullOr(S.Boolean).pipe(T.Body("require_tls_inbound"))),
-          requireTlsOutbound: S.optional(S.NullOr(S.Boolean).pipe(T.Body("require_tls_outbound"))),
-          spfStatus: S.optional(S.NullOr(S.String).pipe(T.Body("spf_status"))),
-          status: S.optional(S.NullOr(S.String)),
-          transport: S.optional(S.NullOr(S.String)),
-        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({
-        identifier: "CreateSettingsDomainResponse",
-      });
-    case 3:
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
           domain: S.String,
-          exclude: __S(0, __c0, 0),
+          exclude: __S(1328, __c83, 0),
           comments: S.optional(S.String),
         })
           .pipe(
@@ -6725,21 +6585,29 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "CreateSettingSendingDomainRestrictionRequest",
       });
-    case 4:
+  }
+}
+function __c17(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.NullOr(S.String)),
           comments: S.optional(S.NullOr(S.String)),
           createdAt: S.optional(S.NullOr(S.String).pipe(T.Body("created_at"))),
           domain: S.optional(S.NullOr(S.String)),
-          exclude: S.optional(S.NullOr(__S(0, __c0, 0))),
+          exclude: S.optional(S.NullOr(__S(1328, __c83, 0))),
           lastModified: S.optional(S.NullOr(S.String).pipe(T.Body("last_modified"))),
           modifiedAt: S.optional(S.NullOr(S.String).pipe(T.Body("modified_at"))),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({
         identifier: "CreateSettingSendingDomainRestrictionResponse",
       });
-    case 5:
+  }
+}
+function __c18(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -6760,7 +6628,11 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "CreateSettingTrustedDomainRequest",
       });
-    case 6:
+  }
+}
+function __c19(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.NullOr(S.String)),
@@ -6776,7 +6648,11 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "CreateSettingTrustedDomainResponse",
       });
-    case 7:
+  }
+}
+function __c20(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -6796,7 +6672,7 @@ function __c4(j: number): any {
       });
   }
 }
-function __c5(j: number): any {
+function __c21(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -6811,7 +6687,11 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "CreateSettingUrlIgnorePatternResponse",
       });
-    case 1:
+  }
+}
+function __c22(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -6828,7 +6708,11 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "DeleteInvestigateBulkRequest",
       });
-    case 2:
+  }
+}
+function __c23(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
@@ -6836,7 +6720,11 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "DeleteInvestigateBulkResponse",
       });
-    case 3:
+  }
+}
+function __c24(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -6853,7 +6741,11 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "DeleteSettingAllowPolicyRequest",
       });
-    case 4:
+  }
+}
+function __c25(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -6870,7 +6762,11 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "DeleteSettingBlockSenderRequest",
       });
-    case 5:
+  }
+}
+function __c26(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -6887,7 +6783,11 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "DeleteSettingDomainRequest",
       });
-    case 6:
+  }
+}
+function __c27(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -6904,7 +6804,11 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "DeleteSettingImpersonationRegistryRequest",
       });
-    case 7:
+  }
+}
+function __c28(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -6923,7 +6827,7 @@ function __c5(j: number): any {
       });
   }
 }
-function __c6(j: number): any {
+function __c29(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -6942,7 +6846,11 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "DeleteSettingSendingDomainRestrictionRequest",
       });
-    case 1:
+  }
+}
+function __c30(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -6959,7 +6867,11 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "DeleteSettingTrustedDomainRequest",
       });
-    case 2:
+  }
+}
+function __c31(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -6976,7 +6888,11 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "DeleteSettingUrlIgnorePatternRequest",
       });
-    case 3:
+  }
+}
+function __c32(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -6985,7 +6901,7 @@ function __c6(j: number): any {
           name: S.optional(S.String),
           notes: S.optional(S.String),
           pattern: S.optional(S.String),
-          targets: S.optional(__S(28, __c3, 4)),
+          targets: S.optional(__S(192, __c12, 0)),
         })
           .pipe(
             T.Http({
@@ -6998,7 +6914,11 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "EditSettingsContentPolicyRequest",
       });
-    case 4:
+  }
+}
+function __c33(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -7014,50 +6934,72 @@ function __c6(j: number): any {
           )
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "GetInvestigateRequest" });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          folder: S.optional(S.NullOr(S.String)),
-          requestedBy: S.optional(S.NullOr(S.String).pipe(T.Body("requested_by"))),
-        }),
-      ).annotate({
-        identifier: "InvestigateGetResponseActionLogItemProperties",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          completedAt: S.String.pipe(T.Body("completed_at")),
-          operation: S.String,
-          completedTimestamp: S.optional(S.NullOr(S.String).pipe(T.Body("completed_timestamp"))),
-          properties: S.optional(S.NullOr(__S(53, __c6, 5))),
-          status: S.optional(S.NullOr(S.String)),
-        }),
-      ).annotate({
-        identifier: "InvestigateGetResponseActionLogItem",
-      });
-    case 7:
-      return S.Array(__S(54, __c6, 6));
+          id: S.String,
+          actionLog: __S(593, __c37, 1).pipe(T.Body("action_log")),
+          clientRecipients: __S(1328, __c83, 0).pipe(T.Body("client_recipients")),
+          detectionReasons: __S(1328, __c83, 0).pipe(T.Body("detection_reasons")),
+          isPhishSubmission: S.Boolean.pipe(T.Body("is_phish_submission")),
+          isQuarantined: S.Boolean.pipe(T.Body("is_quarantined")),
+          postfixId: S.String.pipe(T.Body("postfix_id")),
+          properties: __S(577, __c36, 1),
+          ts: S.String,
+          alertId: S.optional(S.NullOr(S.String).pipe(T.Body("alert_id"))),
+          deliveryMode: S.optional(S.NullOr(S.String).pipe(T.Body("delivery_mode"))),
+          deliveryStatus: S.optional(S.NullOr(__S(192, __c12, 0)).pipe(T.Body("delivery_status"))),
+          edfHash: S.optional(S.NullOr(S.String).pipe(T.Body("edf_hash"))),
+          envelopeFrom: S.optional(S.NullOr(S.String).pipe(T.Body("envelope_from"))),
+          envelopeTo: S.optional(S.NullOr(__S(1328, __c83, 0)).pipe(T.Body("envelope_to"))),
+          finalDisposition: S.optional(S.NullOr(S.String).pipe(T.Body("final_disposition"))),
+          findings: S.optional(S.NullOr(__S(561, __c35, 1))),
+          from: S.optional(S.NullOr(S.String)),
+          fromName: S.optional(S.NullOr(S.String).pipe(T.Body("from_name"))),
+          htmltextStructureHash: S.optional(
+            S.NullOr(S.String).pipe(T.Body("htmltext_structure_hash")),
+          ),
+          messageId: S.optional(S.NullOr(S.String).pipe(T.Body("message_id"))),
+          postDeliveryOperations: S.optional(
+            S.NullOr(__S(192, __c12, 0)).pipe(T.Body("post_delivery_operations")),
+          ),
+          postfixIdOutbound: S.optional(S.NullOr(S.String).pipe(T.Body("postfix_id_outbound"))),
+          replyto: S.optional(S.NullOr(S.String)),
+          scannedAt: S.optional(S.NullOr(S.String).pipe(T.Body("scanned_at"))),
+          sentAt: S.optional(S.NullOr(S.String).pipe(T.Body("sent_at"))),
+          sentDate: S.optional(S.NullOr(S.String).pipe(T.Body("sent_date"))),
+          smtpHeloServerIp: S.optional(S.NullOr(S.String).pipe(T.Body("smtp_helo_server_ip"))),
+          smtpPreviousHopIp: S.optional(S.NullOr(S.String).pipe(T.Body("smtp_previous_hop_ip"))),
+          subject: S.optional(S.NullOr(S.String)),
+          threatCategories: S.optional(
+            S.NullOr(__S(1328, __c83, 0)).pipe(T.Body("threat_categories")),
+          ),
+          to: S.optional(S.NullOr(__S(1328, __c83, 0))),
+          toName: S.optional(S.NullOr(__S(1328, __c83, 0)).pipe(T.Body("to_name"))),
+          validation: S.optional(S.NullOr(__S(544, __c34, 0))),
+          xOriginatingIp: S.optional(S.NullOr(S.String).pipe(T.Body("x_originating_ip"))),
+        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({ identifier: "GetInvestigateResponse" });
   }
 }
-function __c7(j: number): any {
+function __c34(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          allowlistedPattern: S.optional(S.NullOr(S.String).pipe(T.Body("allowlisted_pattern"))),
-          allowlistedPatternType: S.optional(
-            S.NullOr(S.String).pipe(T.Body("allowlisted_pattern_type")),
-          ),
-          blocklistedMessage: S.optional(S.NullOr(S.Boolean).pipe(T.Body("blocklisted_message"))),
-          blocklistedPattern: S.optional(S.NullOr(S.String).pipe(T.Body("blocklisted_pattern"))),
-          whitelistedPatternType: S.optional(
-            S.NullOr(S.String).pipe(T.Body("whitelisted_pattern_type")),
-          ),
+          comment: S.optional(S.NullOr(S.String)),
+          dkim: S.optional(S.NullOr(S.String)),
+          dmarc: S.optional(S.NullOr(S.String)),
+          spf: S.optional(S.NullOr(S.String)),
         }),
       ).annotate({
-        identifier: "InvestigateGetResponseProperties",
+        identifier: "InvestigateGetResponseValidation",
       });
-    case 1:
+  }
+}
+function __c35(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           attachment: S.optional(S.NullOr(S.String)),
@@ -7073,64 +7015,60 @@ function __c7(j: number): any {
       ).annotate({
         identifier: "InvestigateGetResponseFindingsItem",
       });
-    case 2:
-      return S.Array(__S(57, __c7, 1));
-    case 3:
+    case 1:
+      return S.Array(__S(560, __c35, 0));
+  }
+}
+function __c36(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          comment: S.optional(S.NullOr(S.String)),
-          dkim: S.optional(S.NullOr(S.String)),
-          dmarc: S.optional(S.NullOr(S.String)),
-          spf: S.optional(S.NullOr(S.String)),
+          folder: S.optional(S.NullOr(S.String)),
+          requestedBy: S.optional(S.NullOr(S.String).pipe(T.Body("requested_by"))),
         }),
       ).annotate({
-        identifier: "InvestigateGetResponseValidation",
+        identifier: "InvestigateGetResponseActionLogItemProperties",
       });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          id: S.String,
-          actionLog: __S(55, __c6, 7).pipe(T.Body("action_log")),
-          clientRecipients: __S(0, __c0, 0).pipe(T.Body("client_recipients")),
-          detectionReasons: __S(0, __c0, 0).pipe(T.Body("detection_reasons")),
-          isPhishSubmission: S.Boolean.pipe(T.Body("is_phish_submission")),
-          isQuarantined: S.Boolean.pipe(T.Body("is_quarantined")),
-          postfixId: S.String.pipe(T.Body("postfix_id")),
-          properties: __S(56, __c7, 0),
-          ts: S.String,
-          alertId: S.optional(S.NullOr(S.String).pipe(T.Body("alert_id"))),
-          deliveryMode: S.optional(S.NullOr(S.String).pipe(T.Body("delivery_mode"))),
-          deliveryStatus: S.optional(S.NullOr(__S(28, __c3, 4)).pipe(T.Body("delivery_status"))),
-          edfHash: S.optional(S.NullOr(S.String).pipe(T.Body("edf_hash"))),
-          envelopeFrom: S.optional(S.NullOr(S.String).pipe(T.Body("envelope_from"))),
-          envelopeTo: S.optional(S.NullOr(__S(0, __c0, 0)).pipe(T.Body("envelope_to"))),
-          finalDisposition: S.optional(S.NullOr(S.String).pipe(T.Body("final_disposition"))),
-          findings: S.optional(S.NullOr(__S(58, __c7, 2))),
-          from: S.optional(S.NullOr(S.String)),
-          fromName: S.optional(S.NullOr(S.String).pipe(T.Body("from_name"))),
-          htmltextStructureHash: S.optional(
-            S.NullOr(S.String).pipe(T.Body("htmltext_structure_hash")),
+          allowlistedPattern: S.optional(S.NullOr(S.String).pipe(T.Body("allowlisted_pattern"))),
+          allowlistedPatternType: S.optional(
+            S.NullOr(S.String).pipe(T.Body("allowlisted_pattern_type")),
           ),
-          messageId: S.optional(S.NullOr(S.String).pipe(T.Body("message_id"))),
-          postDeliveryOperations: S.optional(
-            S.NullOr(__S(28, __c3, 4)).pipe(T.Body("post_delivery_operations")),
+          blocklistedMessage: S.optional(S.NullOr(S.Boolean).pipe(T.Body("blocklisted_message"))),
+          blocklistedPattern: S.optional(S.NullOr(S.String).pipe(T.Body("blocklisted_pattern"))),
+          whitelistedPatternType: S.optional(
+            S.NullOr(S.String).pipe(T.Body("whitelisted_pattern_type")),
           ),
-          postfixIdOutbound: S.optional(S.NullOr(S.String).pipe(T.Body("postfix_id_outbound"))),
-          replyto: S.optional(S.NullOr(S.String)),
-          scannedAt: S.optional(S.NullOr(S.String).pipe(T.Body("scanned_at"))),
-          sentAt: S.optional(S.NullOr(S.String).pipe(T.Body("sent_at"))),
-          sentDate: S.optional(S.NullOr(S.String).pipe(T.Body("sent_date"))),
-          smtpHeloServerIp: S.optional(S.NullOr(S.String).pipe(T.Body("smtp_helo_server_ip"))),
-          smtpPreviousHopIp: S.optional(S.NullOr(S.String).pipe(T.Body("smtp_previous_hop_ip"))),
-          subject: S.optional(S.NullOr(S.String)),
-          threatCategories: S.optional(S.NullOr(__S(0, __c0, 0)).pipe(T.Body("threat_categories"))),
-          to: S.optional(S.NullOr(__S(0, __c0, 0))),
-          toName: S.optional(S.NullOr(__S(0, __c0, 0)).pipe(T.Body("to_name"))),
-          validation: S.optional(S.NullOr(__S(59, __c7, 3))),
-          xOriginatingIp: S.optional(S.NullOr(S.String).pipe(T.Body("x_originating_ip"))),
-        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({ identifier: "GetInvestigateResponse" });
-    case 5:
+        }),
+      ).annotate({
+        identifier: "InvestigateGetResponseProperties",
+      });
+  }
+}
+function __c37(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          completedAt: S.String.pipe(T.Body("completed_at")),
+          operation: S.String,
+          completedTimestamp: S.optional(S.NullOr(S.String).pipe(T.Body("completed_timestamp"))),
+          properties: S.optional(S.NullOr(__S(576, __c36, 0))),
+          status: S.optional(S.NullOr(S.String)),
+        }),
+      ).annotate({
+        identifier: "InvestigateGetResponseActionLogItem",
+      });
+    case 1:
+      return S.Array(__S(592, __c37, 0));
+  }
+}
+function __c38(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -7147,14 +7085,14 @@ function __c7(j: number): any {
       ).annotate({
         identifier: "GetInvestigateBulkRequest",
       });
-    case 6:
+    case 1:
       return S.Unknown.pipe(
         /*@__PURE__*/ T.UnionCases([["destination", "type", "expectedDisposition"], ["type"]], {
           key: "type",
           values: ["MOVE", "RELEASE"],
         }),
       );
-    case 7:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           actionLog: S.optional(S.NullOr(S.Boolean).pipe(T.Body("action_log"))),
@@ -7179,14 +7117,10 @@ function __c7(j: number): any {
       ).annotate({
         identifier: "InvestigateBulkGetResponseSearchParams",
       });
-  }
-}
-function __c8(j: number): any {
-  switch (j) {
-    case 0:
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          actionParams: __S(62, __c7, 6).pipe(T.Body("action_params")),
+          actionParams: __S(609, __c38, 1).pipe(T.Body("action_params")),
           actionType: S.String.pipe(T.Body("action_type")),
           createdAt: S.String.pipe(T.Body("created_at")),
           jobId: S.String.pipe(T.Body("job_id")),
@@ -7195,7 +7129,7 @@ function __c8(j: number): any {
           messagesPending: S.Number.pipe(T.Body("messages_pending")),
           messagesSkipped: S.Number.pipe(T.Body("messages_skipped")),
           messagesSuccessful: S.Number.pipe(T.Body("messages_successful")),
-          searchParams: __S(63, __c7, 7).pipe(T.Body("search_params")),
+          searchParams: __S(610, __c38, 2).pipe(T.Body("search_params")),
           status: S.String,
           totalMessagesDiscovered: S.Number.pipe(T.Body("total_messages_discovered")),
           comment: S.optional(S.NullOr(S.String)),
@@ -7206,7 +7140,11 @@ function __c8(j: number): any {
       ).annotate({
         identifier: "GetInvestigateBulkResponse",
       });
-    case 1:
+  }
+}
+function __c39(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -7223,7 +7161,7 @@ function __c8(j: number): any {
       ).annotate({
         identifier: "GetInvestigateDetectionRequest",
       });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           size: S.Number,
@@ -7239,9 +7177,9 @@ function __c8(j: number): any {
       ).annotate({
         identifier: "InvestigateDetectionsGetResponseAttachmentsItem",
       });
+    case 2:
+      return S.Array(__S(625, __c39, 1));
     case 3:
-      return S.Array(__S(66, __c8, 2));
-    case 4:
       return S.suspend(() =>
         S.Struct({
           name: S.String,
@@ -7250,9 +7188,9 @@ function __c8(j: number): any {
       ).annotate({
         identifier: "InvestigateDetectionsGetResponseHeadersItem",
       });
+    case 4:
+      return S.Array(__S(627, __c39, 3));
     case 5:
-      return S.Array(__S(68, __c8, 4));
-    case 6:
       return S.suspend(() =>
         S.Struct({
           href: S.String,
@@ -7261,13 +7199,9 @@ function __c8(j: number): any {
       ).annotate({
         identifier: "InvestigateDetectionsGetResponseLinksItem",
       });
+    case 6:
+      return S.Array(__S(629, __c39, 5));
     case 7:
-      return S.Array(__S(70, __c8, 6));
-  }
-}
-function __c9(j: number): any {
-  switch (j) {
-    case 0:
       return S.suspend(() =>
         S.Struct({
           asName: S.optional(S.NullOr(S.String).pipe(T.Body("as_name"))),
@@ -7279,7 +7213,7 @@ function __c9(j: number): any {
       ).annotate({
         identifier: "InvestigateDetectionsGetResponseSenderInfo",
       });
-    case 1:
+    case 8:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.NullOr(S.Number)),
@@ -7289,25 +7223,29 @@ function __c9(j: number): any {
       ).annotate({
         identifier: "InvestigateDetectionsGetResponseThreatCategoriesItem",
       });
-    case 2:
-      return S.Array(__S(73, __c9, 1));
-    case 3:
+    case 9:
+      return S.Array(__S(632, __c39, 8));
+    case 10:
       return S.suspend(() =>
         S.Struct({
           action: S.String,
-          attachments: __S(67, __c8, 3),
-          findings: __S(58, __c7, 2),
-          headers: __S(69, __c8, 5),
-          links: __S(71, __c8, 7),
-          senderInfo: __S(72, __c9, 0).pipe(T.Body("sender_info")),
-          threatCategories: __S(74, __c9, 2).pipe(T.Body("threat_categories")),
-          validation: __S(59, __c7, 3),
+          attachments: __S(626, __c39, 2),
+          findings: __S(561, __c35, 1),
+          headers: __S(628, __c39, 4),
+          links: __S(630, __c39, 6),
+          senderInfo: __S(631, __c39, 7).pipe(T.Body("sender_info")),
+          threatCategories: __S(633, __c39, 9).pipe(T.Body("threat_categories")),
+          validation: __S(544, __c34, 0),
           finalDisposition: S.optional(S.NullOr(S.String).pipe(T.Body("final_disposition"))),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({
         identifier: "GetInvestigateDetectionResponse",
       });
-    case 4:
+  }
+}
+function __c40(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -7324,7 +7262,11 @@ function __c9(j: number): any {
       ).annotate({
         identifier: "GetInvestigatePreviewRequest",
       });
-    case 5:
+  }
+}
+function __c41(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -7339,7 +7281,7 @@ function __c9(j: number): any {
           )
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "GetInvestigateRawRequest" });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           raw: S.String,
@@ -7347,7 +7289,11 @@ function __c9(j: number): any {
       ).annotate({
         identifier: "GetInvestigateRawResponse",
       });
-    case 7:
+  }
+}
+function __c42(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -7364,11 +7310,7 @@ function __c9(j: number): any {
       ).annotate({
         identifier: "GetInvestigateTraceRequest",
       });
-  }
-}
-function __c10(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           lineno: S.optional(S.NullOr(S.Number)),
@@ -7379,27 +7321,31 @@ function __c10(j: number): any {
       ).annotate({
         identifier: "InvestigateTraceGetResponseInboundLinesItem",
       });
-    case 1:
-      return S.Array(__S(80, __c10, 0));
     case 2:
+      return S.Array(__S(673, __c42, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          lines: S.optional(S.NullOr(__S(81, __c10, 1))),
+          lines: S.optional(S.NullOr(__S(674, __c42, 2))),
           pending: S.optional(S.NullOr(S.Boolean)),
         }),
       ).annotate({
         identifier: "InvestigateTraceGetResponseInbound",
       });
-    case 3:
+    case 4:
       return S.suspend(() =>
         S.Struct({
-          inbound: __S(82, __c10, 2),
-          outbound: __S(82, __c10, 2),
+          inbound: __S(675, __c42, 3),
+          outbound: __S(675, __c42, 3),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({
         identifier: "GetInvestigateTraceResponse",
       });
-    case 4:
+  }
+}
+function __c43(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -7416,7 +7362,11 @@ function __c10(j: number): any {
       ).annotate({
         identifier: "GetSettingAllowPolicyRequest",
       });
-    case 5:
+  }
+}
+function __c44(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -7433,7 +7383,11 @@ function __c10(j: number): any {
       ).annotate({
         identifier: "GetSettingBlockSenderRequest",
       });
-    case 6:
+  }
+}
+function __c45(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -7448,30 +7402,32 @@ function __c10(j: number): any {
           )
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "GetSettingDomainRequest" });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.NullOr(S.String)),
           allowedDeliveryModes: S.optional(
-            S.NullOr(__S(28, __c3, 4)).pipe(T.Body("allowed_delivery_modes")),
+            S.NullOr(__S(192, __c12, 0)).pipe(T.Body("allowed_delivery_modes")),
           ),
-          authorization: S.optional(S.NullOr(__S(32, __c4, 0))),
+          authorization: S.optional(S.NullOr(__S(240, __c15, 0))),
           createdAt: S.optional(S.NullOr(S.String).pipe(T.Body("created_at"))),
           dmarcStatus: S.optional(S.NullOr(S.String).pipe(T.Body("dmarc_status"))),
           domain: S.optional(S.NullOr(S.String)),
           dropDispositions: S.optional(
-            S.NullOr(__S(28, __c3, 4)).pipe(T.Body("drop_dispositions")),
+            S.NullOr(__S(192, __c12, 0)).pipe(T.Body("drop_dispositions")),
           ),
-          emailsProcessed: S.optional(S.NullOr(__S(33, __c4, 1)).pipe(T.Body("emails_processed"))),
+          emailsProcessed: S.optional(
+            S.NullOr(__S(241, __c15, 1)).pipe(T.Body("emails_processed")),
+          ),
           folder: S.optional(S.NullOr(S.String)),
           inboxProvider: S.optional(S.NullOr(S.String).pipe(T.Body("inbox_provider"))),
           integrationId: S.optional(S.NullOr(S.String).pipe(T.Body("integration_id"))),
-          ipRestrictions: S.optional(S.NullOr(__S(0, __c0, 0)).pipe(T.Body("ip_restrictions"))),
+          ipRestrictions: S.optional(S.NullOr(__S(1328, __c83, 0)).pipe(T.Body("ip_restrictions"))),
           lastModified: S.optional(S.NullOr(S.String).pipe(T.Body("last_modified"))),
           lookbackHops: S.optional(S.NullOr(S.Number).pipe(T.Body("lookback_hops"))),
           modifiedAt: S.optional(S.NullOr(S.String).pipe(T.Body("modified_at"))),
           o365TenantId: S.optional(S.NullOr(S.String).pipe(T.Body("o365_tenant_id"))),
-          regions: S.optional(S.NullOr(__S(28, __c3, 4))),
+          regions: S.optional(S.NullOr(__S(192, __c12, 0))),
           requireTlsInbound: S.optional(S.NullOr(S.Boolean).pipe(T.Body("require_tls_inbound"))),
           requireTlsOutbound: S.optional(S.NullOr(S.Boolean).pipe(T.Body("require_tls_outbound"))),
           spfStatus: S.optional(S.NullOr(S.String).pipe(T.Body("spf_status"))),
@@ -7481,7 +7437,7 @@ function __c10(j: number): any {
       ).annotate({ identifier: "GetSettingDomainResponse" });
   }
 }
-function __c11(j: number): any {
+function __c46(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -7500,7 +7456,11 @@ function __c11(j: number): any {
       ).annotate({
         identifier: "GetSettingImpersonationRegistryRequest",
       });
-    case 1:
+  }
+}
+function __c47(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -7517,7 +7477,11 @@ function __c11(j: number): any {
       ).annotate({
         identifier: "GetSettingsContentPolicyRequest",
       });
-    case 2:
+  }
+}
+function __c48(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -7534,7 +7498,11 @@ function __c11(j: number): any {
       ).annotate({
         identifier: "GetSettingSendingDomainRestrictionRequest",
       });
-    case 3:
+  }
+}
+function __c49(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -7551,7 +7519,11 @@ function __c11(j: number): any {
       ).annotate({
         identifier: "GetSettingTrustedDomainRequest",
       });
-    case 4:
+  }
+}
+function __c50(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -7568,7 +7540,11 @@ function __c11(j: number): any {
       ).annotate({
         identifier: "GetSettingUrlIgnorePatternRequest",
       });
-    case 5:
+  }
+}
+function __c51(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -7588,7 +7564,7 @@ function __c11(j: number): any {
       ).annotate({
         identifier: "ListInvestigateBulkMessagesRequest",
       });
-    case 6:
+    case 1:
       return S.Unknown.pipe(
         /*@__PURE__*/ T.UnionCases(
           [
@@ -7598,27 +7574,23 @@ function __c11(j: number): any {
           { key: "type", values: ["MOVE", "RELEASE"] },
         ),
       );
-    case 7:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           completedAt: S.String.pipe(T.Body("completed_at")),
           operation: S.String,
           completedTimestamp: S.optional(S.NullOr(S.String).pipe(T.Body("completed_timestamp"))),
-          properties: S.optional(S.NullOr(__S(53, __c6, 5))),
+          properties: S.optional(S.NullOr(__S(576, __c36, 0))),
           status: S.optional(S.NullOr(S.String)),
         }),
       ).annotate({
         identifier: "InvestigateBulkMessagesListResultItemMessageActionLogItem",
       });
-  }
-}
-function __c12(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(95, __c11, 7));
-    case 1:
+    case 3:
+      return S.Array(__S(818, __c51, 2));
+    case 4:
       return S.Array(S.String);
-    case 2:
+    case 5:
       return S.suspend(() =>
         S.Struct({
           attachment: S.optional(S.NullOr(S.String)),
@@ -7634,30 +7606,28 @@ function __c12(j: number): any {
       ).annotate({
         identifier: "InvestigateBulkMessagesListResultItemMessageFindingsItem",
       });
-    case 3:
-      return S.Array(__S(98, __c12, 2));
-    case 4:
-      return S.Array(S.String);
-    case 5:
+    case 6:
+      return S.Array(__S(821, __c51, 5));
+    case 7:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
-          actionLog: __S(96, __c12, 0).pipe(T.Body("action_log")),
-          clientRecipients: __S(97, __c12, 1).pipe(T.Body("client_recipients")),
-          detectionReasons: __S(97, __c12, 1).pipe(T.Body("detection_reasons")),
+          actionLog: __S(819, __c51, 3).pipe(T.Body("action_log")),
+          clientRecipients: __S(820, __c51, 4).pipe(T.Body("client_recipients")),
+          detectionReasons: __S(820, __c51, 4).pipe(T.Body("detection_reasons")),
           isPhishSubmission: S.Boolean.pipe(T.Body("is_phish_submission")),
           isQuarantined: S.Boolean.pipe(T.Body("is_quarantined")),
           postfixId: S.String.pipe(T.Body("postfix_id")),
-          properties: __S(56, __c7, 0),
+          properties: __S(577, __c36, 1),
           ts: S.String,
           alertId: S.optional(S.NullOr(S.String).pipe(T.Body("alert_id"))),
           deliveryMode: S.optional(S.NullOr(S.String).pipe(T.Body("delivery_mode"))),
-          deliveryStatus: S.optional(S.NullOr(__S(28, __c3, 4)).pipe(T.Body("delivery_status"))),
+          deliveryStatus: S.optional(S.NullOr(__S(192, __c12, 0)).pipe(T.Body("delivery_status"))),
           edfHash: S.optional(S.NullOr(S.String).pipe(T.Body("edf_hash"))),
           envelopeFrom: S.optional(S.NullOr(S.String).pipe(T.Body("envelope_from"))),
-          envelopeTo: S.optional(S.NullOr(__S(0, __c0, 0)).pipe(T.Body("envelope_to"))),
+          envelopeTo: S.optional(S.NullOr(__S(1328, __c83, 0)).pipe(T.Body("envelope_to"))),
           finalDisposition: S.optional(S.NullOr(S.String).pipe(T.Body("final_disposition"))),
-          findings: S.optional(S.NullOr(__S(99, __c12, 3))),
+          findings: S.optional(S.NullOr(__S(822, __c51, 6))),
           from: S.optional(S.NullOr(S.String)),
           fromName: S.optional(S.NullOr(S.String).pipe(T.Body("from_name"))),
           htmltextStructureHash: S.optional(
@@ -7665,7 +7635,7 @@ function __c12(j: number): any {
           ),
           messageId: S.optional(S.NullOr(S.String).pipe(T.Body("message_id"))),
           postDeliveryOperations: S.optional(
-            S.NullOr(__S(100, __c12, 4)).pipe(T.Body("post_delivery_operations")),
+            S.NullOr(__S(832, __c52, 0)).pipe(T.Body("post_delivery_operations")),
           ),
           postfixIdOutbound: S.optional(S.NullOr(S.String).pipe(T.Body("postfix_id_outbound"))),
           replyto: S.optional(S.NullOr(S.String)),
@@ -7676,20 +7646,20 @@ function __c12(j: number): any {
           smtpPreviousHopIp: S.optional(S.NullOr(S.String).pipe(T.Body("smtp_previous_hop_ip"))),
           subject: S.optional(S.NullOr(S.String)),
           threatCategories: S.optional(
-            S.NullOr(__S(97, __c12, 1)).pipe(T.Body("threat_categories")),
+            S.NullOr(__S(820, __c51, 4)).pipe(T.Body("threat_categories")),
           ),
-          to: S.optional(S.NullOr(__S(0, __c0, 0))),
-          toName: S.optional(S.NullOr(__S(0, __c0, 0)).pipe(T.Body("to_name"))),
-          validation: S.optional(S.NullOr(__S(59, __c7, 3))),
+          to: S.optional(S.NullOr(__S(1328, __c83, 0))),
+          toName: S.optional(S.NullOr(__S(1328, __c83, 0)).pipe(T.Body("to_name"))),
+          validation: S.optional(S.NullOr(__S(544, __c34, 0))),
           xOriginatingIp: S.optional(S.NullOr(S.String).pipe(T.Body("x_originating_ip"))),
         }),
       ).annotate({
         identifier: "InvestigateBulkMessagesListResultItemMessage",
       });
-    case 6:
+    case 8:
       return S.suspend(() =>
         S.Struct({
-          actionParams: __S(94, __c11, 6).pipe(T.Body("action_params")),
+          actionParams: __S(817, __c51, 1).pipe(T.Body("action_params")),
           actionType: S.String.pipe(T.Body("action_type")),
           createdAt: S.String.pipe(T.Body("created_at")),
           messageId: S.String.pipe(T.Body("message_id")),
@@ -7698,7 +7668,7 @@ function __c12(j: number): any {
           status: S.String,
           alertId: S.optional(S.NullOr(S.String).pipe(T.Body("alert_id"))),
           emailMessageId: S.optional(S.NullOr(S.String).pipe(T.Body("email_message_id"))),
-          message: S.optional(S.NullOr(__S(101, __c12, 5))),
+          message: S.optional(S.NullOr(__S(823, __c51, 7))),
           processedAt: S.optional(S.NullOr(S.String).pipe(T.Body("processed_at"))),
           retryAfter: S.optional(S.NullOr(S.String).pipe(T.Body("retry_after"))),
           statusMessage: S.optional(S.NullOr(S.String).pipe(T.Body("status_message"))),
@@ -7706,22 +7676,28 @@ function __c12(j: number): any {
       ).annotate({
         identifier: "InvestigateBulkMessagesListResultItem",
       });
-    case 7:
-      return S.Array(__S(102, __c12, 6));
-  }
-}
-function __c13(j: number): any {
-  switch (j) {
-    case 0:
+    case 9:
+      return S.Array(__S(824, __c51, 8));
+    case 10:
       return S.suspend(() =>
         S.Struct({
-          result: __S(103, __c12, 7).pipe(T.EnvelopePayload()),
+          result: __S(825, __c51, 9).pipe(T.EnvelopePayload()),
           resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({
         identifier: "ListInvestigateBulkMessagesResponse",
       });
-    case 1:
+  }
+}
+function __c52(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c53(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -7741,17 +7717,17 @@ function __c13(j: number): any {
       ).annotate({
         identifier: "ListInvestigateBulksRequest",
       });
-    case 2:
+    case 1:
       return S.Unknown.pipe(
         /*@__PURE__*/ T.UnionCases([["destination", "type", "expectedDisposition"], ["type"]], {
           key: "type",
           values: ["MOVE", "RELEASE"],
         }),
       );
-    case 3:
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          actionParams: __S(106, __c13, 2).pipe(T.Body("action_params")),
+          actionParams: __S(849, __c53, 1).pipe(T.Body("action_params")),
           actionType: S.String.pipe(T.Body("action_type")),
           createdAt: S.String.pipe(T.Body("created_at")),
           jobId: S.String.pipe(T.Body("job_id")),
@@ -7760,7 +7736,7 @@ function __c13(j: number): any {
           messagesPending: S.Number.pipe(T.Body("messages_pending")),
           messagesSkipped: S.Number.pipe(T.Body("messages_skipped")),
           messagesSuccessful: S.Number.pipe(T.Body("messages_successful")),
-          searchParams: __S(12, __c1, 4).pipe(T.Body("search_params")),
+          searchParams: __S(1424, __c89, 0).pipe(T.Body("search_params")),
           status: S.String,
           totalMessagesDiscovered: S.Number.pipe(T.Body("total_messages_discovered")),
           comment: S.optional(S.NullOr(S.String)),
@@ -7771,18 +7747,22 @@ function __c13(j: number): any {
       ).annotate({
         identifier: "InvestigateBulkListResultItem",
       });
+    case 3:
+      return S.Array(__S(850, __c53, 2));
     case 4:
-      return S.Array(__S(107, __c13, 3));
-    case 5:
       return S.suspend(() =>
         S.Struct({
-          result: __S(108, __c13, 4).pipe(T.EnvelopePayload()),
+          result: __S(851, __c53, 3).pipe(T.EnvelopePayload()),
           resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({
         identifier: "ListInvestigateBulksResponse",
       });
-    case 6:
+  }
+}
+function __c54(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -7814,26 +7794,26 @@ function __c13(j: number): any {
           )
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "ListInvestigatesRequest" });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
-          actionLog: __S(55, __c6, 7).pipe(T.Body("action_log")),
-          clientRecipients: __S(0, __c0, 0).pipe(T.Body("client_recipients")),
-          detectionReasons: __S(0, __c0, 0).pipe(T.Body("detection_reasons")),
+          actionLog: __S(593, __c37, 1).pipe(T.Body("action_log")),
+          clientRecipients: __S(1328, __c83, 0).pipe(T.Body("client_recipients")),
+          detectionReasons: __S(1328, __c83, 0).pipe(T.Body("detection_reasons")),
           isPhishSubmission: S.Boolean.pipe(T.Body("is_phish_submission")),
           isQuarantined: S.Boolean.pipe(T.Body("is_quarantined")),
           postfixId: S.String.pipe(T.Body("postfix_id")),
-          properties: __S(56, __c7, 0),
+          properties: __S(577, __c36, 1),
           ts: S.String,
           alertId: S.optional(S.NullOr(S.String).pipe(T.Body("alert_id"))),
           deliveryMode: S.optional(S.NullOr(S.String).pipe(T.Body("delivery_mode"))),
-          deliveryStatus: S.optional(S.NullOr(__S(28, __c3, 4)).pipe(T.Body("delivery_status"))),
+          deliveryStatus: S.optional(S.NullOr(__S(192, __c12, 0)).pipe(T.Body("delivery_status"))),
           edfHash: S.optional(S.NullOr(S.String).pipe(T.Body("edf_hash"))),
           envelopeFrom: S.optional(S.NullOr(S.String).pipe(T.Body("envelope_from"))),
-          envelopeTo: S.optional(S.NullOr(__S(0, __c0, 0)).pipe(T.Body("envelope_to"))),
+          envelopeTo: S.optional(S.NullOr(__S(1328, __c83, 0)).pipe(T.Body("envelope_to"))),
           finalDisposition: S.optional(S.NullOr(S.String).pipe(T.Body("final_disposition"))),
-          findings: S.optional(S.NullOr(__S(58, __c7, 2))),
+          findings: S.optional(S.NullOr(__S(561, __c35, 1))),
           from: S.optional(S.NullOr(S.String)),
           fromName: S.optional(S.NullOr(S.String).pipe(T.Body("from_name"))),
           htmltextStructureHash: S.optional(
@@ -7841,7 +7821,7 @@ function __c13(j: number): any {
           ),
           messageId: S.optional(S.NullOr(S.String).pipe(T.Body("message_id"))),
           postDeliveryOperations: S.optional(
-            S.NullOr(__S(28, __c3, 4)).pipe(T.Body("post_delivery_operations")),
+            S.NullOr(__S(192, __c12, 0)).pipe(T.Body("post_delivery_operations")),
           ),
           postfixIdOutbound: S.optional(S.NullOr(S.String).pipe(T.Body("postfix_id_outbound"))),
           replyto: S.optional(S.NullOr(S.String)),
@@ -7851,29 +7831,31 @@ function __c13(j: number): any {
           smtpHeloServerIp: S.optional(S.NullOr(S.String).pipe(T.Body("smtp_helo_server_ip"))),
           smtpPreviousHopIp: S.optional(S.NullOr(S.String).pipe(T.Body("smtp_previous_hop_ip"))),
           subject: S.optional(S.NullOr(S.String)),
-          threatCategories: S.optional(S.NullOr(__S(0, __c0, 0)).pipe(T.Body("threat_categories"))),
-          to: S.optional(S.NullOr(__S(0, __c0, 0))),
-          toName: S.optional(S.NullOr(__S(0, __c0, 0)).pipe(T.Body("to_name"))),
-          validation: S.optional(S.NullOr(__S(59, __c7, 3))),
+          threatCategories: S.optional(
+            S.NullOr(__S(1328, __c83, 0)).pipe(T.Body("threat_categories")),
+          ),
+          to: S.optional(S.NullOr(__S(1328, __c83, 0))),
+          toName: S.optional(S.NullOr(__S(1328, __c83, 0)).pipe(T.Body("to_name"))),
+          validation: S.optional(S.NullOr(__S(544, __c34, 0))),
           xOriginatingIp: S.optional(S.NullOr(S.String).pipe(T.Body("x_originating_ip"))),
         }),
       ).annotate({
         identifier: "InvestigateListResultItem",
       });
-  }
-}
-function __c14(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(111, __c13, 7));
-    case 1:
+    case 2:
+      return S.Array(__S(865, __c54, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          result: __S(112, __c14, 0).pipe(T.EnvelopePayload()),
+          result: __S(866, __c54, 2).pipe(T.EnvelopePayload()),
           resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "ListInvestigatesResponse" });
-    case 2:
+  }
+}
+function __c55(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -7895,10 +7877,10 @@ function __c14(j: number): any {
       ).annotate({
         identifier: "ListPhishguardReportsRequest",
       });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          to: __S(0, __c0, 0),
+          to: __S(1328, __c83, 0),
           from: S.optional(S.NullOr(S.String)),
           occurredAt: S.optional(S.NullOr(S.String).pipe(T.Body("occurred_at"))),
           postfixId: S.optional(S.NullOr(S.String).pipe(T.Body("postfix_id"))),
@@ -7907,7 +7889,7 @@ function __c14(j: number): any {
       ).annotate({
         identifier: "PhishguardReportsListResultItemFields",
       });
-    case 4:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           category: S.String,
@@ -7916,41 +7898,41 @@ function __c14(j: number): any {
       ).annotate({
         identifier: "PhishguardReportsListResultItemTagsItem",
       });
-    case 5:
-      return S.Array(__S(116, __c14, 4));
-    case 6:
+    case 3:
+      return S.Array(__S(882, __c55, 2));
+    case 4:
       return S.suspend(() =>
         S.Struct({
           id: S.Number,
           content: S.String,
           disposition: S.String,
-          fields: __S(115, __c14, 3),
+          fields: __S(881, __c55, 1),
           priority: S.String,
           title: S.String,
           createdAt: S.optional(S.NullOr(S.String).pipe(T.Body("created_at"))),
-          tags: S.optional(S.NullOr(__S(117, __c14, 5))),
+          tags: S.optional(S.NullOr(__S(883, __c55, 3))),
           ts: S.optional(S.NullOr(S.String)),
           updatedAt: S.optional(S.NullOr(S.String).pipe(T.Body("updated_at"))),
         }),
       ).annotate({
         identifier: "PhishguardReportsListResultItem",
       });
-    case 7:
-      return S.Array(__S(118, __c14, 6));
-  }
-}
-function __c15(j: number): any {
-  switch (j) {
-    case 0:
+    case 5:
+      return S.Array(__S(884, __c55, 4));
+    case 6:
       return S.suspend(() =>
         S.Struct({
-          result: __S(119, __c14, 7).pipe(T.EnvelopePayload()),
+          result: __S(885, __c55, 5).pipe(T.EnvelopePayload()),
           resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({
         identifier: "ListPhishguardReportsResponse",
       });
-    case 1:
+  }
+}
+function __c56(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -7977,7 +7959,20 @@ function __c15(j: number): any {
       ).annotate({
         identifier: "ListSettingAllowPoliciesRequest",
       });
-    case 2:
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          result: __S(913, __c57, 1).pipe(T.EnvelopePayload()),
+          resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
+        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({
+        identifier: "ListSettingAllowPoliciesResponse",
+      });
+  }
+}
+function __c57(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
@@ -7999,18 +7994,13 @@ function __c15(j: number): any {
       ).annotate({
         identifier: "SettingsAllowPoliciesListResultItem",
       });
-    case 3:
-      return S.Array(__S(122, __c15, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          result: __S(123, __c15, 3).pipe(T.EnvelopePayload()),
-          resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
-        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({
-        identifier: "ListSettingAllowPoliciesResponse",
-      });
-    case 5:
+    case 1:
+      return S.Array(__S(912, __c57, 0));
+  }
+}
+function __c58(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -8033,7 +8023,20 @@ function __c15(j: number): any {
       ).annotate({
         identifier: "ListSettingBlockSendersRequest",
       });
-    case 6:
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          result: __S(945, __c59, 1).pipe(T.EnvelopePayload()),
+          resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
+        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({
+        identifier: "ListSettingBlockSendersResponse",
+      });
+  }
+}
+function __c59(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.NullOr(S.String)),
@@ -8048,29 +8051,20 @@ function __c15(j: number): any {
       ).annotate({
         identifier: "SettingsBlockSendersListResultItem",
       });
-    case 7:
-      return S.Array(__S(126, __c15, 6));
+    case 1:
+      return S.Array(__S(944, __c59, 0));
   }
 }
-function __c16(j: number): any {
+function __c60(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() =>
-        S.Struct({
-          result: __S(127, __c15, 7).pipe(T.EnvelopePayload()),
-          resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
-        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({
-        identifier: "ListSettingBlockSendersResponse",
-      });
-    case 1:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
           activeDeliveryMode: S.optional(S.String.pipe(T.Query("active_delivery_mode"))),
           allowedDeliveryMode: S.optional(S.String.pipe(T.Query("allowed_delivery_mode"))),
           direction: S.optional(S.String.pipe(T.Query())),
-          domain: S.optional(__S(0, __c0, 0).pipe(T.Query())),
+          domain: S.optional(__S(1328, __c83, 0).pipe(T.Query())),
           integrationId: S.optional(S.String.pipe(T.Query("integration_id"))),
           order: S.optional(S.String.pipe(T.Query())),
           page: S.optional(S.Number.pipe(T.Query())),
@@ -8089,30 +8083,32 @@ function __c16(j: number): any {
       ).annotate({
         identifier: "ListSettingDomainsRequest",
       });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.NullOr(S.String)),
           allowedDeliveryModes: S.optional(
-            S.NullOr(__S(28, __c3, 4)).pipe(T.Body("allowed_delivery_modes")),
+            S.NullOr(__S(192, __c12, 0)).pipe(T.Body("allowed_delivery_modes")),
           ),
-          authorization: S.optional(S.NullOr(__S(32, __c4, 0))),
+          authorization: S.optional(S.NullOr(__S(240, __c15, 0))),
           createdAt: S.optional(S.NullOr(S.String).pipe(T.Body("created_at"))),
           dmarcStatus: S.optional(S.NullOr(S.String).pipe(T.Body("dmarc_status"))),
           domain: S.optional(S.NullOr(S.String)),
           dropDispositions: S.optional(
-            S.NullOr(__S(28, __c3, 4)).pipe(T.Body("drop_dispositions")),
+            S.NullOr(__S(192, __c12, 0)).pipe(T.Body("drop_dispositions")),
           ),
-          emailsProcessed: S.optional(S.NullOr(__S(33, __c4, 1)).pipe(T.Body("emails_processed"))),
+          emailsProcessed: S.optional(
+            S.NullOr(__S(241, __c15, 1)).pipe(T.Body("emails_processed")),
+          ),
           folder: S.optional(S.NullOr(S.String)),
           inboxProvider: S.optional(S.NullOr(S.String).pipe(T.Body("inbox_provider"))),
           integrationId: S.optional(S.NullOr(S.String).pipe(T.Body("integration_id"))),
-          ipRestrictions: S.optional(S.NullOr(__S(0, __c0, 0)).pipe(T.Body("ip_restrictions"))),
+          ipRestrictions: S.optional(S.NullOr(__S(1328, __c83, 0)).pipe(T.Body("ip_restrictions"))),
           lastModified: S.optional(S.NullOr(S.String).pipe(T.Body("last_modified"))),
           lookbackHops: S.optional(S.NullOr(S.Number).pipe(T.Body("lookback_hops"))),
           modifiedAt: S.optional(S.NullOr(S.String).pipe(T.Body("modified_at"))),
           o365TenantId: S.optional(S.NullOr(S.String).pipe(T.Body("o365_tenant_id"))),
-          regions: S.optional(S.NullOr(__S(28, __c3, 4))),
+          regions: S.optional(S.NullOr(__S(192, __c12, 0))),
           requireTlsInbound: S.optional(S.NullOr(S.Boolean).pipe(T.Body("require_tls_inbound"))),
           requireTlsOutbound: S.optional(S.NullOr(S.Boolean).pipe(T.Body("require_tls_outbound"))),
           spfStatus: S.optional(S.NullOr(S.String).pipe(T.Body("spf_status"))),
@@ -8122,18 +8118,22 @@ function __c16(j: number): any {
       ).annotate({
         identifier: "SettingsDomainsListResultItem",
       });
+    case 2:
+      return S.Array(__S(961, __c60, 1));
     case 3:
-      return S.Array(__S(130, __c16, 2));
-    case 4:
       return S.suspend(() =>
         S.Struct({
-          result: __S(131, __c16, 3).pipe(T.EnvelopePayload()),
+          result: __S(962, __c60, 2).pipe(T.EnvelopePayload()),
           resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({
         identifier: "ListSettingDomainsResponse",
       });
-    case 5:
+  }
+}
+function __c61(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -8155,7 +8155,7 @@ function __c16(j: number): any {
       ).annotate({
         identifier: "ListSettingImpersonationRegistriesRequest",
       });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.NullOr(S.String)),
@@ -8176,22 +8176,22 @@ function __c16(j: number): any {
       ).annotate({
         identifier: "SettingsImpersonationRegistryListResultItem",
       });
-    case 7:
-      return S.Array(__S(134, __c16, 6));
-  }
-}
-function __c17(j: number): any {
-  switch (j) {
-    case 0:
+    case 2:
+      return S.Array(__S(977, __c61, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          result: __S(135, __c16, 7).pipe(T.EnvelopePayload()),
+          result: __S(978, __c61, 2).pipe(T.EnvelopePayload()),
           resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({
         identifier: "ListSettingImpersonationRegistriesResponse",
       });
-    case 1:
+  }
+}
+function __c62(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -8214,7 +8214,17 @@ function __c17(j: number): any {
       ).annotate({
         identifier: "ListSettingsContentPoliciesRequest",
       });
-    case 2:
+    case 1:
+      return S.suspend(() =>
+        __S(1009, __c63, 1).pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({
+        identifier: "ListSettingsContentPoliciesResponse",
+      });
+  }
+}
+function __c63(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.NullOr(S.String)),
@@ -8224,20 +8234,18 @@ function __c17(j: number): any {
           name: S.optional(S.NullOr(S.String)),
           notes: S.optional(S.NullOr(S.String)),
           pattern: S.optional(S.NullOr(S.String)),
-          targets: S.optional(S.NullOr(__S(28, __c3, 4))),
+          targets: S.optional(S.NullOr(__S(192, __c12, 0))),
         }),
       ).annotate({
         identifier: "ListSettingsContentPoliciesResultItem",
       });
-    case 3:
-      return S.Array(__S(138, __c17, 2));
-    case 4:
-      return S.suspend(() =>
-        __S(139, __c17, 3).pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({
-        identifier: "ListSettingsContentPoliciesResponse",
-      });
-    case 5:
+    case 1:
+      return S.Array(__S(1008, __c63, 0));
+  }
+}
+function __c64(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -8258,36 +8266,36 @@ function __c17(j: number): any {
       ).annotate({
         identifier: "ListSettingSendingDomainRestrictionsRequest",
       });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.NullOr(S.String)),
           comments: S.optional(S.NullOr(S.String)),
           createdAt: S.optional(S.NullOr(S.String).pipe(T.Body("created_at"))),
           domain: S.optional(S.NullOr(S.String)),
-          exclude: S.optional(S.NullOr(__S(0, __c0, 0))),
+          exclude: S.optional(S.NullOr(__S(1328, __c83, 0))),
           lastModified: S.optional(S.NullOr(S.String).pipe(T.Body("last_modified"))),
           modifiedAt: S.optional(S.NullOr(S.String).pipe(T.Body("modified_at"))),
         }),
       ).annotate({
         identifier: "SettingsSendingDomainRestrictionsListResultItem",
       });
-    case 7:
-      return S.Array(__S(142, __c17, 6));
-  }
-}
-function __c18(j: number): any {
-  switch (j) {
-    case 0:
+    case 2:
+      return S.Array(__S(1025, __c64, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          result: __S(143, __c17, 7).pipe(T.EnvelopePayload()),
+          result: __S(1026, __c64, 2).pipe(T.EnvelopePayload()),
           resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({
         identifier: "ListSettingSendingDomainRestrictionsResponse",
       });
-    case 1:
+  }
+}
+function __c65(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -8311,7 +8319,20 @@ function __c18(j: number): any {
       ).annotate({
         identifier: "ListSettingTrustedDomainsRequest",
       });
-    case 2:
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          result: __S(1057, __c66, 1).pipe(T.EnvelopePayload()),
+          resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
+        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({
+        identifier: "ListSettingTrustedDomainsResponse",
+      });
+  }
+}
+function __c66(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.NullOr(S.String)),
@@ -8327,18 +8348,13 @@ function __c18(j: number): any {
       ).annotate({
         identifier: "SettingsTrustedDomainsListResultItem",
       });
-    case 3:
-      return S.Array(__S(146, __c18, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          result: __S(147, __c18, 3).pipe(T.EnvelopePayload()),
-          resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
-        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({
-        identifier: "ListSettingTrustedDomainsResponse",
-      });
-    case 5:
+    case 1:
+      return S.Array(__S(1056, __c66, 0));
+  }
+}
+function __c67(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -8356,7 +8372,7 @@ function __c18(j: number): any {
       ).annotate({
         identifier: "ListSettingUrlIgnorePatternsRequest",
       });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
@@ -8369,22 +8385,22 @@ function __c18(j: number): any {
       ).annotate({
         identifier: "SettingsUrlIgnorePatternsListResultItem",
       });
-    case 7:
-      return S.Array(__S(150, __c18, 6));
-  }
-}
-function __c19(j: number): any {
-  switch (j) {
-    case 0:
+    case 2:
+      return S.Array(__S(1073, __c67, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          result: __S(151, __c18, 7).pipe(T.EnvelopePayload()),
+          result: __S(1074, __c67, 2).pipe(T.EnvelopePayload()),
           resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({
         identifier: "ListSettingUrlIgnorePatternsResponse",
       });
-    case 1:
+  }
+}
+function __c68(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -8412,7 +8428,7 @@ function __c19(j: number): any {
           )
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "ListSubmissionsRequest" });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           requestedAt: S.String.pipe(T.Body("requested_at")),
@@ -8441,16 +8457,20 @@ function __c19(j: number): any {
       ).annotate({
         identifier: "SubmissionsListResultItem",
       });
+    case 2:
+      return S.Array(__S(1089, __c68, 1));
     case 3:
-      return S.Array(__S(154, __c19, 2));
-    case 4:
       return S.suspend(() =>
         S.Struct({
-          result: __S(155, __c19, 3).pipe(T.EnvelopePayload()),
+          result: __S(1090, __c68, 2).pipe(T.EnvelopePayload()),
           resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "ListSubmissionsResponse" });
-    case 5:
+  }
+}
+function __c69(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -8478,7 +8498,11 @@ function __c19(j: number): any {
       ).annotate({
         identifier: "PatchSettingAllowPolicyRequest",
       });
-    case 6:
+  }
+}
+function __c70(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -8499,18 +8523,24 @@ function __c19(j: number): any {
       ).annotate({
         identifier: "PatchSettingBlockSenderRequest",
       });
-    case 7:
+  }
+}
+function __c71(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
           domainId: S.String.pipe(T.Label("domain_id")),
-          allowedDeliveryModes: S.optional(__S(28, __c3, 4).pipe(T.Body("allowed_delivery_modes"))),
-          dropDispositions: S.optional(__S(28, __c3, 4).pipe(T.Body("drop_dispositions"))),
+          allowedDeliveryModes: S.optional(
+            __S(192, __c12, 0).pipe(T.Body("allowed_delivery_modes")),
+          ),
+          dropDispositions: S.optional(__S(192, __c12, 0).pipe(T.Body("drop_dispositions"))),
           folder: S.optional(S.String),
           integrationId: S.optional(S.String.pipe(T.Body("integration_id"))),
-          ipRestrictions: S.optional(__S(0, __c0, 0).pipe(T.Body("ip_restrictions"))),
+          ipRestrictions: S.optional(__S(1328, __c83, 0).pipe(T.Body("ip_restrictions"))),
           lookbackHops: S.optional(S.Number.pipe(T.Body("lookback_hops"))),
-          regions: S.optional(__S(28, __c3, 4)),
+          regions: S.optional(__S(192, __c12, 0)),
           requireTlsInbound: S.optional(S.Boolean.pipe(T.Body("require_tls_inbound"))),
           requireTlsOutbound: S.optional(S.Boolean.pipe(T.Body("require_tls_outbound"))),
           transport: S.optional(S.String),
@@ -8526,34 +8556,32 @@ function __c19(j: number): any {
       ).annotate({
         identifier: "PatchSettingDomainRequest",
       });
-  }
-}
-function __c20(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.NullOr(S.String)),
           allowedDeliveryModes: S.optional(
-            S.NullOr(__S(28, __c3, 4)).pipe(T.Body("allowed_delivery_modes")),
+            S.NullOr(__S(192, __c12, 0)).pipe(T.Body("allowed_delivery_modes")),
           ),
-          authorization: S.optional(S.NullOr(__S(32, __c4, 0))),
+          authorization: S.optional(S.NullOr(__S(240, __c15, 0))),
           createdAt: S.optional(S.NullOr(S.String).pipe(T.Body("created_at"))),
           dmarcStatus: S.optional(S.NullOr(S.String).pipe(T.Body("dmarc_status"))),
           domain: S.optional(S.NullOr(S.String)),
           dropDispositions: S.optional(
-            S.NullOr(__S(28, __c3, 4)).pipe(T.Body("drop_dispositions")),
+            S.NullOr(__S(192, __c12, 0)).pipe(T.Body("drop_dispositions")),
           ),
-          emailsProcessed: S.optional(S.NullOr(__S(33, __c4, 1)).pipe(T.Body("emails_processed"))),
+          emailsProcessed: S.optional(
+            S.NullOr(__S(241, __c15, 1)).pipe(T.Body("emails_processed")),
+          ),
           folder: S.optional(S.NullOr(S.String)),
           inboxProvider: S.optional(S.NullOr(S.String).pipe(T.Body("inbox_provider"))),
           integrationId: S.optional(S.NullOr(S.String).pipe(T.Body("integration_id"))),
-          ipRestrictions: S.optional(S.NullOr(__S(0, __c0, 0)).pipe(T.Body("ip_restrictions"))),
+          ipRestrictions: S.optional(S.NullOr(__S(1328, __c83, 0)).pipe(T.Body("ip_restrictions"))),
           lastModified: S.optional(S.NullOr(S.String).pipe(T.Body("last_modified"))),
           lookbackHops: S.optional(S.NullOr(S.Number).pipe(T.Body("lookback_hops"))),
           modifiedAt: S.optional(S.NullOr(S.String).pipe(T.Body("modified_at"))),
           o365TenantId: S.optional(S.NullOr(S.String).pipe(T.Body("o365_tenant_id"))),
-          regions: S.optional(S.NullOr(__S(28, __c3, 4))),
+          regions: S.optional(S.NullOr(__S(192, __c12, 0))),
           requireTlsInbound: S.optional(S.NullOr(S.Boolean).pipe(T.Body("require_tls_inbound"))),
           requireTlsOutbound: S.optional(S.NullOr(S.Boolean).pipe(T.Body("require_tls_outbound"))),
           spfStatus: S.optional(S.NullOr(S.String).pipe(T.Body("spf_status"))),
@@ -8563,7 +8591,11 @@ function __c20(j: number): any {
       ).annotate({
         identifier: "PatchSettingDomainResponse",
       });
-    case 1:
+  }
+}
+function __c72(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -8588,14 +8620,18 @@ function __c20(j: number): any {
       ).annotate({
         identifier: "PatchSettingImpersonationRegistryRequest",
       });
-    case 2:
+  }
+}
+function __c73(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
           sendingDomainRestrictionId: S.String.pipe(T.Label("sending_domain_restriction_id")),
           comments: S.optional(S.String),
           domain: S.optional(S.String),
-          exclude: S.optional(__S(0, __c0, 0)),
+          exclude: S.optional(__S(1328, __c83, 0)),
         })
           .pipe(
             T.Http({
@@ -8608,7 +8644,11 @@ function __c20(j: number): any {
       ).annotate({
         identifier: "PatchSettingSendingDomainRestrictionRequest",
       });
-    case 3:
+  }
+}
+function __c74(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -8630,7 +8670,11 @@ function __c20(j: number): any {
       ).annotate({
         identifier: "PatchSettingTrustedDomainRequest",
       });
-    case 4:
+  }
+}
+function __c75(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -8649,17 +8693,11 @@ function __c20(j: number): any {
       ).annotate({
         identifier: "PatchSettingUrlIgnorePatternRequest",
       });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String,
-        }),
-      ).annotate({
-        identifier: "SettingsAllowPoliciesBatchRequestDeletesItem",
-      });
-    case 6:
-      return S.Array(__S(165, __c20, 5));
-    case 7:
+  }
+}
+function __c76(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
@@ -8681,13 +8719,9 @@ function __c20(j: number): any {
       ).annotate({
         identifier: "SettingsAllowPoliciesBatchRequestPatchesItem",
       });
-  }
-}
-function __c21(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(167, __c20, 7));
     case 1:
+      return S.Array(__S(1216, __c76, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           isAcceptableSender: S.Boolean.pipe(T.Body("is_acceptable_sender")),
@@ -8709,16 +8743,16 @@ function __c21(j: number): any {
       ).annotate({
         identifier: "SettingsAllowPoliciesBatchRequestPostsItem",
       });
-    case 2:
-      return S.Array(__S(169, __c21, 1));
     case 3:
+      return S.Array(__S(1218, __c76, 2));
+    case 4:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
-          deletes: __S(166, __c20, 6),
-          patches: __S(168, __c21, 0),
-          posts: __S(170, __c21, 2),
-          puts: __S(168, __c21, 0),
+          deletes: __S(1233, __c77, 1),
+          patches: __S(1217, __c76, 1),
+          posts: __S(1219, __c76, 3),
+          puts: __S(1217, __c76, 1),
         })
           .pipe(
             T.Http({
@@ -8731,7 +8765,7 @@ function __c21(j: number): any {
       ).annotate({
         identifier: "SettingsAllowPoliciesBatchRequest",
       });
-    case 4:
+    case 5:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
@@ -8753,20 +8787,38 @@ function __c21(j: number): any {
       ).annotate({
         identifier: "SettingsAllowPoliciesBatchResponsePatchesItem",
       });
-    case 5:
-      return S.Array(__S(172, __c21, 4));
     case 6:
+      return S.Array(__S(1221, __c76, 5));
+    case 7:
       return S.suspend(() =>
         S.Struct({
-          deletes: S.optional(S.NullOr(__S(166, __c20, 6))),
-          patches: S.optional(S.NullOr(__S(173, __c21, 5))),
-          posts: S.optional(S.NullOr(__S(123, __c15, 3))),
-          puts: S.optional(S.NullOr(__S(123, __c15, 3))),
+          deletes: S.optional(S.NullOr(__S(1233, __c77, 1))),
+          patches: S.optional(S.NullOr(__S(1222, __c76, 6))),
+          posts: S.optional(S.NullOr(__S(913, __c57, 1))),
+          puts: S.optional(S.NullOr(__S(913, __c57, 1))),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({
         identifier: "SettingsAllowPoliciesBatchResponse",
       });
-    case 7:
+  }
+}
+function __c77(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+        }),
+      ).annotate({
+        identifier: "SettingsAllowPoliciesBatchRequestDeletesItem",
+      });
+    case 1:
+      return S.Array(__S(1232, __c77, 0));
+  }
+}
+function __c78(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
@@ -8781,13 +8833,9 @@ function __c21(j: number): any {
       ).annotate({
         identifier: "SettingsBlockSendersBatchRequestPatchesItem",
       });
-  }
-}
-function __c22(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(175, __c21, 7));
     case 1:
+      return S.Array(__S(1248, __c78, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           isRegex: S.Boolean.pipe(T.Body("is_regex")),
@@ -8802,9 +8850,9 @@ function __c22(j: number): any {
       ).annotate({
         identifier: "SettingsBlockSendersBatchRequestPostsItem",
       });
-    case 2:
-      return S.Array(__S(177, __c22, 1));
     case 3:
+      return S.Array(__S(1250, __c78, 2));
+    case 4:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
@@ -8819,16 +8867,16 @@ function __c22(j: number): any {
       ).annotate({
         identifier: "SettingsBlockSendersBatchRequestPutsItem",
       });
-    case 4:
-      return S.Array(__S(179, __c22, 3));
     case 5:
+      return S.Array(__S(1252, __c78, 4));
+    case 6:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
-          deletes: __S(166, __c20, 6),
-          patches: __S(176, __c22, 0),
-          posts: __S(178, __c22, 2),
-          puts: __S(180, __c22, 4),
+          deletes: __S(1233, __c77, 1),
+          patches: __S(1249, __c78, 1),
+          posts: __S(1251, __c78, 3),
+          puts: __S(1253, __c78, 5),
         })
           .pipe(
             T.Http({
@@ -8841,7 +8889,7 @@ function __c22(j: number): any {
       ).annotate({
         identifier: "SettingsBlockSendersBatchRequest",
       });
-    case 6:
+    case 7:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.NullOr(S.String)),
@@ -8856,24 +8904,24 @@ function __c22(j: number): any {
       ).annotate({
         identifier: "SettingsBlockSendersBatchResponsePatchesItem",
       });
-    case 7:
-      return S.Array(__S(182, __c22, 6));
-  }
-}
-function __c23(j: number): any {
-  switch (j) {
-    case 0:
+    case 8:
+      return S.Array(__S(1255, __c78, 7));
+    case 9:
       return S.suspend(() =>
         S.Struct({
-          deletes: S.optional(S.NullOr(__S(166, __c20, 6))),
-          patches: S.optional(S.NullOr(__S(183, __c22, 7))),
-          posts: S.optional(S.NullOr(__S(127, __c15, 7))),
-          puts: S.optional(S.NullOr(__S(127, __c15, 7))),
+          deletes: S.optional(S.NullOr(__S(1233, __c77, 1))),
+          patches: S.optional(S.NullOr(__S(1256, __c78, 8))),
+          posts: S.optional(S.NullOr(__S(945, __c59, 1))),
+          puts: S.optional(S.NullOr(__S(945, __c59, 1))),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({
         identifier: "SettingsBlockSendersBatchResponse",
       });
-    case 1:
+  }
+}
+function __c79(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
@@ -8883,20 +8931,20 @@ function __c23(j: number): any {
           name: S.optional(S.String),
           notes: S.optional(S.String),
           pattern: S.optional(S.String),
-          targets: S.optional(__S(28, __c3, 4)),
+          targets: S.optional(__S(192, __c12, 0)),
         }),
       ).annotate({
         identifier: "SettingsContentPoliciesBatchRequestPatchesItem",
       });
+    case 1:
+      return S.Array(__S(1264, __c79, 0));
     case 2:
-      return S.Array(__S(185, __c23, 1));
-    case 3:
       return S.suspend(() =>
         S.Struct({
           enabled: S.Boolean,
           name: S.String,
           pattern: S.String,
-          targets: __S(28, __c3, 4),
+          targets: __S(192, __c12, 0),
           id: S.optional(S.String),
           createdAt: S.optional(S.String.pipe(T.Body("created_at"))),
           modifiedAt: S.optional(S.String.pipe(T.Body("modified_at"))),
@@ -8905,16 +8953,16 @@ function __c23(j: number): any {
       ).annotate({
         identifier: "SettingsContentPoliciesBatchRequestPostsItem",
       });
+    case 3:
+      return S.Array(__S(1266, __c79, 2));
     case 4:
-      return S.Array(__S(187, __c23, 3));
-    case 5:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
           enabled: S.Boolean,
           name: S.String,
           pattern: S.String,
-          targets: __S(28, __c3, 4),
+          targets: __S(192, __c12, 0),
           createdAt: S.optional(S.String.pipe(T.Body("created_at"))),
           modifiedAt: S.optional(S.String.pipe(T.Body("modified_at"))),
           notes: S.optional(S.String),
@@ -8922,16 +8970,16 @@ function __c23(j: number): any {
       ).annotate({
         identifier: "SettingsContentPoliciesBatchRequestPutsItem",
       });
+    case 5:
+      return S.Array(__S(1268, __c79, 4));
     case 6:
-      return S.Array(__S(189, __c23, 5));
-    case 7:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
-          deletes: __S(166, __c20, 6),
-          patches: __S(186, __c23, 2),
-          posts: __S(188, __c23, 4),
-          puts: __S(190, __c23, 6),
+          deletes: __S(1233, __c77, 1),
+          patches: __S(1265, __c79, 1),
+          posts: __S(1267, __c79, 3),
+          puts: __S(1269, __c79, 5),
         })
           .pipe(
             T.Http({
@@ -8944,32 +8992,34 @@ function __c23(j: number): any {
       ).annotate({
         identifier: "SettingsContentPoliciesBatchRequest",
       });
-  }
-}
-function __c24(j: number): any {
-  switch (j) {
-    case 0:
+    case 7:
       return S.suspend(() =>
         S.Struct({
-          deletes: S.optional(S.NullOr(__S(166, __c20, 6))),
-          patches: S.optional(S.NullOr(__S(139, __c17, 3))),
-          posts: S.optional(S.NullOr(__S(139, __c17, 3))),
-          puts: S.optional(S.NullOr(__S(139, __c17, 3))),
+          deletes: S.optional(S.NullOr(__S(1233, __c77, 1))),
+          patches: S.optional(S.NullOr(__S(1009, __c63, 1))),
+          posts: S.optional(S.NullOr(__S(1009, __c63, 1))),
+          puts: S.optional(S.NullOr(__S(1009, __c63, 1))),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({
         identifier: "SettingsContentPoliciesBatchResponse",
       });
-    case 1:
+  }
+}
+function __c80(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
-          allowedDeliveryModes: S.optional(__S(28, __c3, 4).pipe(T.Body("allowed_delivery_modes"))),
-          dropDispositions: S.optional(__S(28, __c3, 4).pipe(T.Body("drop_dispositions"))),
+          allowedDeliveryModes: S.optional(
+            __S(192, __c12, 0).pipe(T.Body("allowed_delivery_modes")),
+          ),
+          dropDispositions: S.optional(__S(192, __c12, 0).pipe(T.Body("drop_dispositions"))),
           folder: S.optional(S.String),
           integrationId: S.optional(S.String.pipe(T.Body("integration_id"))),
-          ipRestrictions: S.optional(__S(0, __c0, 0).pipe(T.Body("ip_restrictions"))),
+          ipRestrictions: S.optional(__S(1328, __c83, 0).pipe(T.Body("ip_restrictions"))),
           lookbackHops: S.optional(S.Number.pipe(T.Body("lookback_hops"))),
-          regions: S.optional(__S(28, __c3, 4)),
+          regions: S.optional(__S(192, __c12, 0)),
           requireTlsInbound: S.optional(S.Boolean.pipe(T.Body("require_tls_inbound"))),
           requireTlsOutbound: S.optional(S.Boolean.pipe(T.Body("require_tls_outbound"))),
           transport: S.optional(S.String),
@@ -8977,16 +9027,16 @@ function __c24(j: number): any {
       ).annotate({
         identifier: "SettingsDomainsBatchRequestPatchesItem",
       });
+    case 1:
+      return S.Array(__S(1280, __c80, 0));
     case 2:
-      return S.Array(__S(193, __c24, 1));
-    case 3:
       return S.suspend(() =>
         S.Struct({
-          allowedDeliveryModes: __S(28, __c3, 4).pipe(T.Body("allowed_delivery_modes")),
+          allowedDeliveryModes: __S(192, __c12, 0).pipe(T.Body("allowed_delivery_modes")),
           domain: S.String,
-          dropDispositions: __S(28, __c3, 4).pipe(T.Body("drop_dispositions")),
-          ipRestrictions: __S(0, __c0, 0).pipe(T.Body("ip_restrictions")),
-          regions: __S(28, __c3, 4),
+          dropDispositions: __S(192, __c12, 0).pipe(T.Body("drop_dispositions")),
+          ipRestrictions: __S(1328, __c83, 0).pipe(T.Body("ip_restrictions")),
+          regions: __S(192, __c12, 0),
           folder: S.optional(S.String),
           integrationId: S.optional(S.String.pipe(T.Body("integration_id"))),
           lookbackHops: S.optional(S.Number.pipe(T.Body("lookback_hops"))),
@@ -8997,16 +9047,16 @@ function __c24(j: number): any {
       ).annotate({
         identifier: "SettingsDomainsBatchRequestPostsItem",
       });
+    case 3:
+      return S.Array(__S(1282, __c80, 2));
     case 4:
-      return S.Array(__S(195, __c24, 3));
-    case 5:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
-          allowedDeliveryModes: __S(28, __c3, 4).pipe(T.Body("allowed_delivery_modes")),
-          dropDispositions: __S(28, __c3, 4).pipe(T.Body("drop_dispositions")),
-          ipRestrictions: __S(0, __c0, 0).pipe(T.Body("ip_restrictions")),
-          regions: __S(28, __c3, 4),
+          allowedDeliveryModes: __S(192, __c12, 0).pipe(T.Body("allowed_delivery_modes")),
+          dropDispositions: __S(192, __c12, 0).pipe(T.Body("drop_dispositions")),
+          ipRestrictions: __S(1328, __c83, 0).pipe(T.Body("ip_restrictions")),
+          regions: __S(192, __c12, 0),
           folder: S.optional(S.String),
           integrationId: S.optional(S.String.pipe(T.Body("integration_id"))),
           lookbackHops: S.optional(S.Number.pipe(T.Body("lookback_hops"))),
@@ -9017,16 +9067,16 @@ function __c24(j: number): any {
       ).annotate({
         identifier: "SettingsDomainsBatchRequestPutsItem",
       });
+    case 5:
+      return S.Array(__S(1284, __c80, 4));
     case 6:
-      return S.Array(__S(197, __c24, 5));
-    case 7:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
-          deletes: __S(166, __c20, 6),
-          patches: __S(194, __c24, 2),
-          posts: __S(196, __c24, 4),
-          puts: __S(198, __c24, 6),
+          deletes: __S(1233, __c77, 1),
+          patches: __S(1281, __c80, 1),
+          posts: __S(1283, __c80, 3),
+          puts: __S(1285, __c80, 5),
         })
           .pipe(
             T.Http({
@@ -9039,34 +9089,32 @@ function __c24(j: number): any {
       ).annotate({
         identifier: "SettingsDomainsBatchRequest",
       });
-  }
-}
-function __c25(j: number): any {
-  switch (j) {
-    case 0:
+    case 7:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.NullOr(S.String)),
           allowedDeliveryModes: S.optional(
-            S.NullOr(__S(100, __c12, 4)).pipe(T.Body("allowed_delivery_modes")),
+            S.NullOr(__S(832, __c52, 0)).pipe(T.Body("allowed_delivery_modes")),
           ),
-          authorization: S.optional(S.NullOr(__S(32, __c4, 0))),
+          authorization: S.optional(S.NullOr(__S(240, __c15, 0))),
           createdAt: S.optional(S.NullOr(S.String).pipe(T.Body("created_at"))),
           dmarcStatus: S.optional(S.NullOr(S.String).pipe(T.Body("dmarc_status"))),
           domain: S.optional(S.NullOr(S.String)),
           dropDispositions: S.optional(
-            S.NullOr(__S(28, __c3, 4)).pipe(T.Body("drop_dispositions")),
+            S.NullOr(__S(192, __c12, 0)).pipe(T.Body("drop_dispositions")),
           ),
-          emailsProcessed: S.optional(S.NullOr(__S(33, __c4, 1)).pipe(T.Body("emails_processed"))),
+          emailsProcessed: S.optional(
+            S.NullOr(__S(241, __c15, 1)).pipe(T.Body("emails_processed")),
+          ),
           folder: S.optional(S.NullOr(S.String)),
           inboxProvider: S.optional(S.NullOr(S.String).pipe(T.Body("inbox_provider"))),
           integrationId: S.optional(S.NullOr(S.String).pipe(T.Body("integration_id"))),
-          ipRestrictions: S.optional(S.NullOr(__S(0, __c0, 0)).pipe(T.Body("ip_restrictions"))),
+          ipRestrictions: S.optional(S.NullOr(__S(1328, __c83, 0)).pipe(T.Body("ip_restrictions"))),
           lastModified: S.optional(S.NullOr(S.String).pipe(T.Body("last_modified"))),
           lookbackHops: S.optional(S.NullOr(S.Number).pipe(T.Body("lookback_hops"))),
           modifiedAt: S.optional(S.NullOr(S.String).pipe(T.Body("modified_at"))),
           o365TenantId: S.optional(S.NullOr(S.String).pipe(T.Body("o365_tenant_id"))),
-          regions: S.optional(S.NullOr(__S(28, __c3, 4))),
+          regions: S.optional(S.NullOr(__S(192, __c12, 0))),
           requireTlsInbound: S.optional(S.NullOr(S.Boolean).pipe(T.Body("require_tls_inbound"))),
           requireTlsOutbound: S.optional(S.NullOr(S.Boolean).pipe(T.Body("require_tls_outbound"))),
           spfStatus: S.optional(S.NullOr(S.String).pipe(T.Body("spf_status"))),
@@ -9076,32 +9124,34 @@ function __c25(j: number): any {
       ).annotate({
         identifier: "SettingsDomainsBatchResponsePatchesItem",
       });
-    case 1:
-      return S.Array(__S(200, __c25, 0));
-    case 2:
+    case 8:
+      return S.Array(__S(1287, __c80, 7));
+    case 9:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.NullOr(S.String)),
           allowedDeliveryModes: S.optional(
-            S.NullOr(__S(28, __c3, 4)).pipe(T.Body("allowed_delivery_modes")),
+            S.NullOr(__S(192, __c12, 0)).pipe(T.Body("allowed_delivery_modes")),
           ),
-          authorization: S.optional(S.NullOr(__S(32, __c4, 0))),
+          authorization: S.optional(S.NullOr(__S(240, __c15, 0))),
           createdAt: S.optional(S.NullOr(S.String).pipe(T.Body("created_at"))),
           dmarcStatus: S.optional(S.NullOr(S.String).pipe(T.Body("dmarc_status"))),
           domain: S.optional(S.NullOr(S.String)),
           dropDispositions: S.optional(
-            S.NullOr(__S(28, __c3, 4)).pipe(T.Body("drop_dispositions")),
+            S.NullOr(__S(192, __c12, 0)).pipe(T.Body("drop_dispositions")),
           ),
-          emailsProcessed: S.optional(S.NullOr(__S(33, __c4, 1)).pipe(T.Body("emails_processed"))),
+          emailsProcessed: S.optional(
+            S.NullOr(__S(241, __c15, 1)).pipe(T.Body("emails_processed")),
+          ),
           folder: S.optional(S.NullOr(S.String)),
           inboxProvider: S.optional(S.NullOr(S.String).pipe(T.Body("inbox_provider"))),
           integrationId: S.optional(S.NullOr(S.String).pipe(T.Body("integration_id"))),
-          ipRestrictions: S.optional(S.NullOr(__S(0, __c0, 0)).pipe(T.Body("ip_restrictions"))),
+          ipRestrictions: S.optional(S.NullOr(__S(1328, __c83, 0)).pipe(T.Body("ip_restrictions"))),
           lastModified: S.optional(S.NullOr(S.String).pipe(T.Body("last_modified"))),
           lookbackHops: S.optional(S.NullOr(S.Number).pipe(T.Body("lookback_hops"))),
           modifiedAt: S.optional(S.NullOr(S.String).pipe(T.Body("modified_at"))),
           o365TenantId: S.optional(S.NullOr(S.String).pipe(T.Body("o365_tenant_id"))),
-          regions: S.optional(S.NullOr(__S(28, __c3, 4))),
+          regions: S.optional(S.NullOr(__S(192, __c12, 0))),
           requireTlsInbound: S.optional(S.NullOr(S.Boolean).pipe(T.Body("require_tls_inbound"))),
           requireTlsOutbound: S.optional(S.NullOr(S.Boolean).pipe(T.Body("require_tls_outbound"))),
           spfStatus: S.optional(S.NullOr(S.String).pipe(T.Body("spf_status"))),
@@ -9111,32 +9161,34 @@ function __c25(j: number): any {
       ).annotate({
         identifier: "SettingsDomainsBatchResponsePostsItem",
       });
-    case 3:
-      return S.Array(__S(202, __c25, 2));
-    case 4:
+    case 10:
+      return S.Array(__S(1289, __c80, 9));
+    case 11:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.NullOr(S.String)),
           allowedDeliveryModes: S.optional(
-            S.NullOr(__S(28, __c3, 4)).pipe(T.Body("allowed_delivery_modes")),
+            S.NullOr(__S(192, __c12, 0)).pipe(T.Body("allowed_delivery_modes")),
           ),
-          authorization: S.optional(S.NullOr(__S(32, __c4, 0))),
+          authorization: S.optional(S.NullOr(__S(240, __c15, 0))),
           createdAt: S.optional(S.NullOr(S.String).pipe(T.Body("created_at"))),
           dmarcStatus: S.optional(S.NullOr(S.String).pipe(T.Body("dmarc_status"))),
           domain: S.optional(S.NullOr(S.String)),
           dropDispositions: S.optional(
-            S.NullOr(__S(28, __c3, 4)).pipe(T.Body("drop_dispositions")),
+            S.NullOr(__S(192, __c12, 0)).pipe(T.Body("drop_dispositions")),
           ),
-          emailsProcessed: S.optional(S.NullOr(__S(33, __c4, 1)).pipe(T.Body("emails_processed"))),
+          emailsProcessed: S.optional(
+            S.NullOr(__S(241, __c15, 1)).pipe(T.Body("emails_processed")),
+          ),
           folder: S.optional(S.NullOr(S.String)),
           inboxProvider: S.optional(S.NullOr(S.String).pipe(T.Body("inbox_provider"))),
           integrationId: S.optional(S.NullOr(S.String).pipe(T.Body("integration_id"))),
-          ipRestrictions: S.optional(S.NullOr(__S(0, __c0, 0)).pipe(T.Body("ip_restrictions"))),
+          ipRestrictions: S.optional(S.NullOr(__S(1328, __c83, 0)).pipe(T.Body("ip_restrictions"))),
           lastModified: S.optional(S.NullOr(S.String).pipe(T.Body("last_modified"))),
           lookbackHops: S.optional(S.NullOr(S.Number).pipe(T.Body("lookback_hops"))),
           modifiedAt: S.optional(S.NullOr(S.String).pipe(T.Body("modified_at"))),
           o365TenantId: S.optional(S.NullOr(S.String).pipe(T.Body("o365_tenant_id"))),
-          regions: S.optional(S.NullOr(__S(28, __c3, 4))),
+          regions: S.optional(S.NullOr(__S(192, __c12, 0))),
           requireTlsInbound: S.optional(S.NullOr(S.Boolean).pipe(T.Body("require_tls_inbound"))),
           requireTlsOutbound: S.optional(S.NullOr(S.Boolean).pipe(T.Body("require_tls_outbound"))),
           spfStatus: S.optional(S.NullOr(S.String).pipe(T.Body("spf_status"))),
@@ -9146,20 +9198,85 @@ function __c25(j: number): any {
       ).annotate({
         identifier: "SettingsDomainsBatchResponsePutsItem",
       });
-    case 5:
-      return S.Array(__S(204, __c25, 4));
-    case 6:
+    case 12:
+      return S.Array(__S(1291, __c80, 11));
+    case 13:
       return S.suspend(() =>
         S.Struct({
-          deletes: __S(166, __c20, 6),
-          patches: __S(201, __c25, 1),
-          posts: __S(203, __c25, 3),
-          puts: __S(205, __c25, 5),
+          deletes: __S(1233, __c77, 1),
+          patches: __S(1288, __c80, 8),
+          posts: __S(1290, __c80, 10),
+          puts: __S(1292, __c80, 12),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({
         identifier: "SettingsDomainsBatchResponse",
       });
-    case 7:
+  }
+}
+function __c81(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          accountId: S.String.pipe(T.Label("account_id")),
+          destination: S.String,
+          ids: __S(1328, __c83, 0),
+          expectedDisposition: S.optional(S.String.pipe(T.Body("expected_disposition"))),
+          postfixIds: S.optional(__S(1328, __c83, 0).pipe(T.Body("postfix_ids"))),
+        })
+          .pipe(
+            T.Http({
+              method: "POST",
+              uri: "/accounts/{account_id}/email-security/investigate/move",
+              code: 200,
+            }),
+          )
+          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({
+        identifier: "BulkInvestigateMoveRequest",
+      });
+  }
+}
+function __c82(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          success: S.Boolean,
+          completedAt: S.optional(S.NullOr(S.String).pipe(T.Body("completed_at"))),
+          completedTimestamp: S.optional(S.NullOr(S.String).pipe(T.Body("completed_timestamp"))),
+          destination: S.optional(S.NullOr(S.String)),
+          itemCount: S.optional(S.NullOr(S.Number).pipe(T.Body("item_count"))),
+          messageId: S.optional(S.NullOr(S.String).pipe(T.Body("message_id"))),
+          operation: S.optional(S.NullOr(S.String)),
+          recipient: S.optional(S.NullOr(S.String)),
+          status: S.optional(S.NullOr(S.String)),
+        }),
+      ).annotate({
+        identifier: "InvestigateMoveBulkResultItem",
+      });
+    case 1:
+      return S.Array(__S(1312, __c82, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          result: __S(1313, __c82, 1).pipe(T.EnvelopePayload()),
+          resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
+        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({
+        identifier: "BulkInvestigateMoveResponse",
+      });
+  }
+}
+function __c83(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c84(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -9175,17 +9292,17 @@ function __c25(j: number): any {
       ).annotate({
         identifier: "SettingsDomainsBulkDeleteRequest",
       });
-  }
-}
-function __c26(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
-        __S(166, __c20, 6).pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
+        __S(1233, __c77, 1).pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({
         identifier: "SettingsDomainsBulkDeleteResponse",
       });
-    case 1:
+  }
+}
+function __c85(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
@@ -9201,9 +9318,9 @@ function __c26(j: number): any {
       ).annotate({
         identifier: "SettingsTrustedDomainsBatchRequestPatchesItem",
       });
+    case 1:
+      return S.Array(__S(1360, __c85, 0));
     case 2:
-      return S.Array(__S(209, __c26, 1));
-    case 3:
       return S.suspend(() =>
         S.Struct({
           isRecent: S.Boolean.pipe(T.Body("is_recent")),
@@ -9219,9 +9336,9 @@ function __c26(j: number): any {
       ).annotate({
         identifier: "SettingsTrustedDomainsBatchRequestPostsItem",
       });
+    case 3:
+      return S.Array(__S(1362, __c85, 2));
     case 4:
-      return S.Array(__S(211, __c26, 3));
-    case 5:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
@@ -9237,16 +9354,16 @@ function __c26(j: number): any {
       ).annotate({
         identifier: "SettingsTrustedDomainsBatchRequestPutsItem",
       });
+    case 5:
+      return S.Array(__S(1364, __c85, 4));
     case 6:
-      return S.Array(__S(213, __c26, 5));
-    case 7:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
-          deletes: __S(166, __c20, 6),
-          patches: __S(210, __c26, 2),
-          posts: __S(212, __c26, 4),
-          puts: __S(214, __c26, 6),
+          deletes: __S(1233, __c77, 1),
+          patches: __S(1361, __c85, 1),
+          posts: __S(1363, __c85, 3),
+          puts: __S(1365, __c85, 5),
         })
           .pipe(
             T.Http({
@@ -9259,30 +9376,30 @@ function __c26(j: number): any {
       ).annotate({
         identifier: "SettingsTrustedDomainsBatchRequest",
       });
-  }
-}
-function __c27(j: number): any {
-  switch (j) {
-    case 0:
+    case 7:
       return S.suspend(() =>
         S.Struct({
-          deletes: S.optional(S.NullOr(__S(166, __c20, 6))),
-          patches: S.optional(S.NullOr(__S(147, __c18, 3))),
-          posts: S.optional(S.NullOr(__S(147, __c18, 3))),
-          puts: S.optional(S.NullOr(__S(147, __c18, 3))),
+          deletes: S.optional(S.NullOr(__S(1233, __c77, 1))),
+          patches: S.optional(S.NullOr(__S(1057, __c66, 1))),
+          posts: S.optional(S.NullOr(__S(1057, __c66, 1))),
+          puts: S.optional(S.NullOr(__S(1057, __c66, 1))),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({
         identifier: "SettingsTrustedDomainsBatchResponse",
       });
-    case 1:
+  }
+}
+function __c86(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
           domainId: S.String.pipe(T.Label("domain_id")),
-          allowedDeliveryModes: __S(28, __c3, 4).pipe(T.Body("allowed_delivery_modes")),
-          dropDispositions: __S(28, __c3, 4).pipe(T.Body("drop_dispositions")),
-          ipRestrictions: __S(0, __c0, 0).pipe(T.Body("ip_restrictions")),
-          regions: __S(28, __c3, 4),
+          allowedDeliveryModes: __S(192, __c12, 0).pipe(T.Body("allowed_delivery_modes")),
+          dropDispositions: __S(192, __c12, 0).pipe(T.Body("drop_dispositions")),
+          ipRestrictions: __S(1328, __c83, 0).pipe(T.Body("ip_restrictions")),
+          regions: __S(192, __c12, 0),
           folder: S.optional(S.String),
           integrationId: S.optional(S.String.pipe(T.Body("integration_id"))),
           lookbackHops: S.optional(S.Number.pipe(T.Body("lookback_hops"))),
@@ -9301,30 +9418,32 @@ function __c27(j: number): any {
       ).annotate({
         identifier: "UpdateSettingsDomainRequest",
       });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.NullOr(S.String)),
           allowedDeliveryModes: S.optional(
-            S.NullOr(__S(28, __c3, 4)).pipe(T.Body("allowed_delivery_modes")),
+            S.NullOr(__S(192, __c12, 0)).pipe(T.Body("allowed_delivery_modes")),
           ),
-          authorization: S.optional(S.NullOr(__S(32, __c4, 0))),
+          authorization: S.optional(S.NullOr(__S(240, __c15, 0))),
           createdAt: S.optional(S.NullOr(S.String).pipe(T.Body("created_at"))),
           dmarcStatus: S.optional(S.NullOr(S.String).pipe(T.Body("dmarc_status"))),
           domain: S.optional(S.NullOr(S.String)),
           dropDispositions: S.optional(
-            S.NullOr(__S(28, __c3, 4)).pipe(T.Body("drop_dispositions")),
+            S.NullOr(__S(192, __c12, 0)).pipe(T.Body("drop_dispositions")),
           ),
-          emailsProcessed: S.optional(S.NullOr(__S(33, __c4, 1)).pipe(T.Body("emails_processed"))),
+          emailsProcessed: S.optional(
+            S.NullOr(__S(241, __c15, 1)).pipe(T.Body("emails_processed")),
+          ),
           folder: S.optional(S.NullOr(S.String)),
           inboxProvider: S.optional(S.NullOr(S.String).pipe(T.Body("inbox_provider"))),
           integrationId: S.optional(S.NullOr(S.String).pipe(T.Body("integration_id"))),
-          ipRestrictions: S.optional(S.NullOr(__S(0, __c0, 0)).pipe(T.Body("ip_restrictions"))),
+          ipRestrictions: S.optional(S.NullOr(__S(1328, __c83, 0)).pipe(T.Body("ip_restrictions"))),
           lastModified: S.optional(S.NullOr(S.String).pipe(T.Body("last_modified"))),
           lookbackHops: S.optional(S.NullOr(S.Number).pipe(T.Body("lookback_hops"))),
           modifiedAt: S.optional(S.NullOr(S.String).pipe(T.Body("modified_at"))),
           o365TenantId: S.optional(S.NullOr(S.String).pipe(T.Body("o365_tenant_id"))),
-          regions: S.optional(S.NullOr(__S(28, __c3, 4))),
+          regions: S.optional(S.NullOr(__S(192, __c12, 0))),
           requireTlsInbound: S.optional(S.NullOr(S.Boolean).pipe(T.Body("require_tls_inbound"))),
           requireTlsOutbound: S.optional(S.NullOr(S.Boolean).pipe(T.Body("require_tls_outbound"))),
           spfStatus: S.optional(S.NullOr(S.String).pipe(T.Body("spf_status"))),
@@ -9336,7 +9455,159 @@ function __c27(j: number): any {
       });
   }
 }
-
+function __c87(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          accountId: S.String.pipe(T.Label("account_id")),
+          ids: __S(1328, __c83, 0),
+        })
+          .pipe(
+            T.Http({
+              method: "POST",
+              uri: "/accounts/{account_id}/email-security/investigate/release",
+              code: 200,
+            }),
+          )
+          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({
+        identifier: "BulkInvestigateReleaseRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          delivered: S.optional(S.NullOr(__S(1328, __c83, 0))),
+          failed: S.optional(S.NullOr(__S(1328, __c83, 0))),
+          postfixId: S.optional(S.NullOr(S.String).pipe(T.Body("postfix_id"))),
+          undelivered: S.optional(S.NullOr(__S(1328, __c83, 0))),
+        }),
+      ).annotate({
+        identifier: "InvestigateReleaseBulkResultItem",
+      });
+    case 2:
+      return S.Array(__S(1393, __c87, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          result: __S(1394, __c87, 2).pipe(T.EnvelopePayload()),
+          resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
+        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({
+        identifier: "BulkInvestigateReleaseResponse",
+      });
+  }
+}
+function __c88(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          actionLog: S.optional(S.Boolean.pipe(T.Body("action_log"))),
+          alertId: S.optional(S.String.pipe(T.Body("alert_id"))),
+          deliveryStatus: S.optional(S.String.pipe(T.Body("delivery_status"))),
+          detectionsOnly: S.optional(S.Boolean.pipe(T.Body("detections_only"))),
+          domain: S.optional(S.String),
+          end: S.optional(S.String),
+          exactSubject: S.optional(S.String.pipe(T.Body("exact_subject"))),
+          finalDisposition: S.optional(S.String.pipe(T.Body("final_disposition"))),
+          messageAction: S.optional(S.String.pipe(T.Body("message_action"))),
+          messageId: S.optional(S.String.pipe(T.Body("message_id"))),
+          metric: S.optional(S.String),
+          query: S.optional(S.String),
+          recipient: S.optional(S.String),
+          sender: S.optional(S.String),
+          smtpHeloIp: S.optional(S.String.pipe(T.Body("smtp_helo_ip"))),
+          start: S.optional(S.String),
+          subject: S.optional(S.String),
+          submissions: S.optional(S.Boolean),
+        }),
+      ).annotate({
+        identifier: "InvestigateBulkCreateRequestSearchParams",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          accountId: S.String.pipe(T.Label("account_id")),
+          action: S.String,
+          searchParams: __S(1408, __c88, 0).pipe(T.Body("search_params")),
+          comment: S.optional(S.String),
+          destination: S.optional(S.String),
+          expectedDisposition: S.optional(S.String.pipe(T.Body("expected_disposition"))),
+        })
+          .pipe(
+            T.Http({
+              method: "POST",
+              uri: "/accounts/{account_id}/email-security/investigate/bulk",
+              code: 200,
+            }),
+          )
+          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({
+        identifier: "CreateInvestigateBulkRequest",
+      });
+    case 2:
+      return S.Unknown.pipe(
+        /*@__PURE__*/ T.UnionCases([["destination", "type", "expectedDisposition"], ["type"]], {
+          key: "type",
+          values: ["MOVE", "RELEASE"],
+        }),
+      );
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          actionParams: __S(1410, __c88, 2).pipe(T.Body("action_params")),
+          actionType: S.String.pipe(T.Body("action_type")),
+          createdAt: S.String.pipe(T.Body("created_at")),
+          jobId: S.String.pipe(T.Body("job_id")),
+          messagesCancelled: S.Number.pipe(T.Body("messages_cancelled")),
+          messagesFailed: S.Number.pipe(T.Body("messages_failed")),
+          messagesPending: S.Number.pipe(T.Body("messages_pending")),
+          messagesSkipped: S.Number.pipe(T.Body("messages_skipped")),
+          messagesSuccessful: S.Number.pipe(T.Body("messages_successful")),
+          searchParams: __S(1424, __c89, 0).pipe(T.Body("search_params")),
+          status: S.String,
+          totalMessagesDiscovered: S.Number.pipe(T.Body("total_messages_discovered")),
+          comment: S.optional(S.NullOr(S.String)),
+          completedAt: S.optional(S.NullOr(S.String).pipe(T.Body("completed_at"))),
+          startedAt: S.optional(S.NullOr(S.String).pipe(T.Body("started_at"))),
+          statusMessage: S.optional(S.NullOr(S.String).pipe(T.Body("status_message"))),
+        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({
+        identifier: "CreateInvestigateBulkResponse",
+      });
+  }
+}
+function __c89(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          actionLog: S.optional(S.NullOr(S.Boolean).pipe(T.Body("action_log"))),
+          alertId: S.optional(S.NullOr(S.String).pipe(T.Body("alert_id"))),
+          deliveryStatus: S.optional(S.NullOr(S.String).pipe(T.Body("delivery_status"))),
+          detectionsOnly: S.optional(S.NullOr(S.Boolean).pipe(T.Body("detections_only"))),
+          domain: S.optional(S.NullOr(S.String)),
+          end: S.optional(S.NullOr(S.String)),
+          exactSubject: S.optional(S.NullOr(S.String).pipe(T.Body("exact_subject"))),
+          finalDisposition: S.optional(S.NullOr(S.String).pipe(T.Body("final_disposition"))),
+          messageAction: S.optional(S.NullOr(S.String).pipe(T.Body("message_action"))),
+          messageId: S.optional(S.NullOr(S.String).pipe(T.Body("message_id"))),
+          metric: S.optional(S.NullOr(S.String)),
+          query: S.optional(S.NullOr(S.String)),
+          recipient: S.optional(S.NullOr(S.String)),
+          sender: S.optional(S.NullOr(S.String)),
+          smtpHeloIp: S.optional(S.NullOr(S.String).pipe(T.Body("smtp_helo_ip"))),
+          start: S.optional(S.NullOr(S.String)),
+          subject: S.optional(S.NullOr(S.String)),
+          submissions: S.optional(S.NullOr(S.Boolean)),
+        }),
+      ).annotate({
+        identifier: "InvestigateBulkCreateResponseSearchParams",
+      });
+  }
+}
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

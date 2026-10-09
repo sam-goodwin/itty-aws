@@ -166,7 +166,7 @@ export const getCourseLessonInteraction: API.OperationMethod<
   WhopOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(0, __c0, 0) as any as S.Schema<GetCourseLessonInteractionRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<CourseLessonInteraction>,
+  output: __S(2, __c0, 2) as any as S.Schema<CourseLessonInteraction>,
   errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity],
   protocol: WhopProtocol,
   retry: Retry.Retry,
@@ -187,8 +187,8 @@ export const listCourseLessonInteraction: API.PaginatedOperationMethod<
   CourseLessonInteractionListItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(6, __c0, 6) as any as S.Schema<ListCourseLessonInteractionRequest>,
-    output: __S(10, __c1, 2) as any as S.Schema<ListCourseLessonInteractionResponse>,
+    input: __S(16, __c2, 0) as any as S.Schema<ListCourseLessonInteractionRequest>,
+    output: __S(20, __c2, 4) as any as S.Schema<ListCourseLessonInteractionResponse>,
     errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity],
     protocol: WhopProtocol,
     retry: Retry.Retry,
@@ -218,32 +218,47 @@ function __c0(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          id: S.String,
-        }),
-      ).annotate({
-        identifier: "CourseLessonInteractionCourseExperience",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          experience: __S(1, __c0, 1),
+          experience: __S(8, __c1, 0),
           id: S.String,
           title: S.NullOr(S.String),
         }),
       ).annotate({
         identifier: "CourseLessonInteractionCourse",
       });
-    case 3:
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          chapter: __S(1, __c0, 1),
+          completed: S.Boolean,
+          course: __S(1, __c0, 1),
+          created_at: S.String,
+          id: S.String,
+          lesson: __S(9, __c1, 1),
+          user: __S(10, __c1, 2),
+        }),
+      ).annotate({ identifier: "CourseLessonInteraction" });
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+        }),
+      ).annotate({
+        identifier: "CourseLessonInteractionCourseExperience",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          chapter: __S(8, __c1, 0),
           id: S.String,
           title: S.String,
         }),
       ).annotate({
         identifier: "CourseLessonInteractionLesson",
       });
-    case 4:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
@@ -253,18 +268,11 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "CourseLessonInteractionUser",
       });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          completed: S.Boolean,
-          course: __S(2, __c0, 2),
-          created_at: S.String,
-          id: S.String,
-          lesson: __S(3, __c0, 3),
-          user: __S(4, __c0, 4),
-        }),
-      ).annotate({ identifier: "CourseLessonInteraction" });
-    case 6:
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           after: S.optional(S.String.pipe(T.Query())),
@@ -279,25 +287,21 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "ListCourseLessonInteractionRequest",
       });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           completed: S.Boolean,
           created_at: S.String,
           id: S.String,
-          lesson: __S(3, __c0, 3),
-          user: __S(4, __c0, 4),
+          lesson: __S(9, __c1, 1),
+          user: __S(10, __c1, 2),
         }),
       ).annotate({
         identifier: "CourseLessonInteractionListItem",
       });
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(7, __c0, 7));
-    case 1:
+    case 2:
+      return S.Array(__S(17, __c2, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
           end_cursor: S.NullOr(S.String),
@@ -306,18 +310,17 @@ function __c1(j: number): any {
           start_cursor: S.NullOr(S.String),
         }),
       ).annotate({ identifier: "PageInfo" });
-    case 2:
+    case 4:
       return S.suspend(() =>
         S.Struct({
-          data: __S(8, __c1, 0),
-          page_info: __S(9, __c1, 1),
+          data: __S(18, __c2, 2),
+          page_info: __S(19, __c2, 3),
         }),
       ).annotate({
         identifier: "ListCourseLessonInteractionResponse",
       });
   }
 }
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

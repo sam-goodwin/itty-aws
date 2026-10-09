@@ -168,8 +168,8 @@ export const createFileSystemShortcut: API.OperationMethod<
   CreateFileSystemShortcutError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(0, __c0, 0) as any as S.Schema<CreateFileSystemShortcutRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<FileSystemShortcut2>,
+  input: __S(4, __c1, 0) as any as S.Schema<CreateFileSystemShortcutRequest>,
+  output: __S(8, __c2, 0) as any as S.Schema<FileSystemShortcut2>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -183,8 +183,8 @@ export const createFileSystemShortcutReorder: API.OperationMethod<
   CreateFileSystemShortcutReorderError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3, __c0, 3) as any as S.Schema<CreateFileSystemShortcutReorderRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<PaginatedFileSystemShortcutList>,
+  input: __S(12, __c3, 0) as any as S.Schema<CreateFileSystemShortcutReorderRequest>,
+  output: __S(24, __c6, 0) as any as S.Schema<PaginatedFileSystemShortcutList>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -198,8 +198,8 @@ export const fileSystemShortcutBulkUpdateCreate: API.OperationMethod<
   FileSystemShortcutBulkUpdateCreateError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(8, __c1, 0) as any as S.Schema<FileSystemShortcutBulkUpdateCreateRequest>,
-  output: __S(9, __c1, 1) as any as S.Schema<FileSystemShortcutBulkUpdateCreateResponse>,
+  input: __S(30, __c7, 2) as any as S.Schema<FileSystemShortcutBulkUpdateCreateRequest>,
+  output: __S(31, __c7, 3) as any as S.Schema<FileSystemShortcutBulkUpdateCreateResponse>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -212,8 +212,8 @@ export const fileSystemShortcutDestroy: API.OperationMethod<
   FileSystemShortcutDestroyError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(10, __c1, 2) as any as S.Schema<FileSystemShortcutDestroyRequest>,
-  output: __S(11, __c1, 3) as any as S.Schema<FileSystemShortcutDestroyResponse>,
+  input: __S(32, __c8, 0) as any as S.Schema<FileSystemShortcutDestroyRequest>,
+  output: __S(33, __c8, 1) as any as S.Schema<FileSystemShortcutDestroyResponse>,
   errors: [Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -226,8 +226,8 @@ export const getFileSystemShortcut: API.OperationMethod<
   GetFileSystemShortcutError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(12, __c1, 4) as any as S.Schema<GetFileSystemShortcutRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<FileSystemShortcut2>,
+  input: __S(36, __c9, 0) as any as S.Schema<GetFileSystemShortcutRequest>,
+  output: __S(8, __c2, 0) as any as S.Schema<FileSystemShortcut2>,
   errors: [Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -240,8 +240,8 @@ export const listFileSystemShortcut: API.OperationMethod<
   ListFileSystemShortcutError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(13, __c1, 5) as any as S.Schema<ListFileSystemShortcutRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<PaginatedFileSystemShortcutList>,
+  input: __S(40, __c10, 0) as any as S.Schema<ListFileSystemShortcutRequest>,
+  output: __S(24, __c6, 0) as any as S.Schema<PaginatedFileSystemShortcutList>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -254,8 +254,8 @@ export const updateFileSystemShortcut: API.OperationMethod<
   UpdateFileSystemShortcutError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(14, __c1, 6) as any as S.Schema<UpdateFileSystemShortcutRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<FileSystemShortcut2>,
+  input: __S(44, __c11, 0) as any as S.Schema<UpdateFileSystemShortcutRequest>,
+  output: __S(8, __c2, 0) as any as S.Schema<FileSystemShortcut2>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -272,8 +272,8 @@ export const updateFileSystemShortcutPartial: API.OperationMethod<
   UpdateFileSystemShortcutPartialError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(15, __c1, 7) as any as S.Schema<UpdateFileSystemShortcutPartialRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<FileSystemShortcut2>,
+  input: __S(0, __c0, 0) as any as S.Schema<UpdateFileSystemShortcutPartialRequest>,
+  output: __S(8, __c2, 0) as any as S.Schema<FileSystemShortcut2>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -283,175 +283,6 @@ export const updateFileSystemShortcutPartial: API.OperationMethod<
 function __c0(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() =>
-        S.Struct({
-          project_id: S.String.pipe(T.Label()),
-          path: S.optional(S.String),
-          type: S.optional(S.String),
-          ref: S.optional(S.NullOr(S.String)),
-          href: S.optional(S.NullOr(S.String)),
-          order: S.optional(S.Number),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/api/projects/{project_id}/file_system_shortcut/",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateFileSystemShortcutRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          path: S.optional(S.String),
-          type: S.optional(S.String),
-          ref: S.optional(S.NullOr(S.String)),
-          href: S.optional(S.NullOr(S.String)),
-          order: S.optional(S.Number),
-          created_at: S.optional(S.String),
-          user_access_level: S.optional(S.NullOr(S.String)),
-        }),
-      ).annotate({ identifier: "FileSystemShortcut2" });
-    case 2:
-      return S.Array(S.String);
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          project_id: S.String.pipe(T.Label()),
-          ordered_ids: __S(2, __c0, 2),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/api/projects/{project_id}/file_system_shortcut/reorder/",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateFileSystemShortcutReorderRequest",
-      });
-    case 4:
-      return S.Array(__S(1, __c0, 1));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          count: S.optional(S.Number),
-          next: S.optional(S.NullOr(S.String)),
-          previous: S.optional(S.NullOr(S.String)),
-          results: S.optional(__S(4, __c0, 4)),
-        }),
-      ).annotate({
-        identifier: "PaginatedFileSystemShortcutList",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          path: S.String,
-          type: S.optional(S.String),
-          ref: S.optional(S.NullOr(S.String)),
-          href: S.optional(S.NullOr(S.String)),
-        }),
-      ).annotate({
-        identifier: "FileSystemShortcutBulkItem",
-      });
-    case 7:
-      return S.Array(__S(6, __c0, 6));
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          project_id: S.String.pipe(T.Label()),
-          add: S.optional(__S(7, __c0, 7)),
-          remove_ids: S.optional(__S(2, __c0, 2)),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/api/projects/{project_id}/file_system_shortcut/bulk_update/",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "FileSystemShortcutBulkUpdateCreateRequest",
-      });
-    case 1:
-      return S.suspend(() => __S(4, __c0, 4).pipe(T.RawResponseRoot())).annotate({
-        identifier: "FileSystemShortcutBulkUpdateCreateResponse",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          project_id: S.String.pipe(T.Label()),
-          id: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/api/projects/{project_id}/file_system_shortcut/{id}/",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "FileSystemShortcutDestroyRequest",
-      });
-    case 3:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "FileSystemShortcutDestroyResponse",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          project_id: S.String.pipe(T.Label()),
-          id: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/api/projects/{project_id}/file_system_shortcut/{id}/",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "GetFileSystemShortcutRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          project_id: S.String.pipe(T.Label()),
-          limit: S.optional(S.Number.pipe(T.Query())),
-          offset: S.optional(S.Number.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/api/projects/{project_id}/file_system_shortcut/",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "ListFileSystemShortcutRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          project_id: S.String.pipe(T.Label()),
-          id: S.String.pipe(T.Label()),
-          path: S.optional(S.String),
-          type: S.optional(S.String),
-          ref: S.optional(S.NullOr(S.String)),
-          href: S.optional(S.NullOr(S.String)),
-          order: S.optional(S.Number),
-        }).pipe(
-          T.Http({
-            method: "PUT",
-            uri: "/api/projects/{project_id}/file_system_shortcut/{id}/",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "UpdateFileSystemShortcutRequest",
-      });
-    case 7:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -473,7 +304,215 @@ function __c1(j: number): any {
       });
   }
 }
-
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          project_id: S.String.pipe(T.Label()),
+          path: S.optional(S.String),
+          type: S.optional(S.String),
+          ref: S.optional(S.NullOr(S.String)),
+          href: S.optional(S.NullOr(S.String)),
+          order: S.optional(S.Number),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/api/projects/{project_id}/file_system_shortcut/",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateFileSystemShortcutRequest",
+      });
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          path: S.optional(S.String),
+          type: S.optional(S.String),
+          ref: S.optional(S.NullOr(S.String)),
+          href: S.optional(S.NullOr(S.String)),
+          order: S.optional(S.Number),
+          created_at: S.optional(S.String),
+          user_access_level: S.optional(S.NullOr(S.String)),
+        }),
+      ).annotate({ identifier: "FileSystemShortcut2" });
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          project_id: S.String.pipe(T.Label()),
+          ordered_ids: __S(16, __c4, 0),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/api/projects/{project_id}/file_system_shortcut/reorder/",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateFileSystemShortcutReorderRequest",
+      });
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(8, __c2, 0));
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          count: S.optional(S.Number),
+          next: S.optional(S.NullOr(S.String)),
+          previous: S.optional(S.NullOr(S.String)),
+          results: S.optional(__S(20, __c5, 0)),
+        }),
+      ).annotate({
+        identifier: "PaginatedFileSystemShortcutList",
+      });
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          path: S.String,
+          type: S.optional(S.String),
+          ref: S.optional(S.NullOr(S.String)),
+          href: S.optional(S.NullOr(S.String)),
+        }),
+      ).annotate({
+        identifier: "FileSystemShortcutBulkItem",
+      });
+    case 1:
+      return S.Array(__S(28, __c7, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          project_id: S.String.pipe(T.Label()),
+          add: S.optional(__S(29, __c7, 1)),
+          remove_ids: S.optional(__S(16, __c4, 0)),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/api/projects/{project_id}/file_system_shortcut/bulk_update/",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "FileSystemShortcutBulkUpdateCreateRequest",
+      });
+    case 3:
+      return S.suspend(() => __S(20, __c5, 0).pipe(T.RawResponseRoot())).annotate({
+        identifier: "FileSystemShortcutBulkUpdateCreateResponse",
+      });
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          project_id: S.String.pipe(T.Label()),
+          id: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/api/projects/{project_id}/file_system_shortcut/{id}/",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "FileSystemShortcutDestroyRequest",
+      });
+    case 1:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "FileSystemShortcutDestroyResponse",
+      });
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          project_id: S.String.pipe(T.Label()),
+          id: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/api/projects/{project_id}/file_system_shortcut/{id}/",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "GetFileSystemShortcutRequest",
+      });
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          project_id: S.String.pipe(T.Label()),
+          limit: S.optional(S.Number.pipe(T.Query())),
+          offset: S.optional(S.Number.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/api/projects/{project_id}/file_system_shortcut/",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "ListFileSystemShortcutRequest",
+      });
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          project_id: S.String.pipe(T.Label()),
+          id: S.String.pipe(T.Label()),
+          path: S.optional(S.String),
+          type: S.optional(S.String),
+          ref: S.optional(S.NullOr(S.String)),
+          href: S.optional(S.NullOr(S.String)),
+          order: S.optional(S.Number),
+        }).pipe(
+          T.Http({
+            method: "PUT",
+            uri: "/api/projects/{project_id}/file_system_shortcut/{id}/",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "UpdateFileSystemShortcutRequest",
+      });
+  }
+}
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

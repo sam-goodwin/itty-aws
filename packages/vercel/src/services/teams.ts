@@ -1881,8 +1881,8 @@ export const createTeam: API.OperationMethod<
   CreateTeamError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2, __c0, 2) as any as S.Schema<CreateTeamRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<CreateTeamResponse>,
+  input: __S(546, __c17, 2) as any as S.Schema<CreateTeamRequest>,
+  output: __S(547, __c17, 3) as any as S.Schema<CreateTeamResponse>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -1896,8 +1896,8 @@ export const createTeamDsyncRole: API.OperationMethod<
   CreateTeamDsyncRoleError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(5, __c0, 5) as any as S.Schema<CreateTeamDsyncRoleRequest>,
-  output: __S(6, __c0, 6) as any as S.Schema<CreateTeamDsyncRoleResponse>,
+  input: __S(577, __c18, 1) as any as S.Schema<CreateTeamDsyncRoleRequest>,
+  output: __S(578, __c18, 2) as any as S.Schema<CreateTeamDsyncRoleResponse>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -1911,8 +1911,8 @@ export const deleteMicrofrontendsGroup: API.OperationMethod<
   DeleteMicrofrontendsGroupError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(7, __c0, 7) as any as S.Schema<DeleteMicrofrontendsGroupRequest>,
-  output: __S(8, __c1, 0) as any as S.Schema<DeleteMicrofrontendsGroupResponse>,
+  input: __S(608, __c19, 0) as any as S.Schema<DeleteMicrofrontendsGroupRequest>,
+  output: __S(609, __c19, 1) as any as S.Schema<DeleteMicrofrontendsGroupResponse>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -1932,8 +1932,8 @@ export const deleteTeam: API.OperationMethod<
   DeleteTeamError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(11, __c1, 3) as any as S.Schema<DeleteTeamRequest>,
-  output: __S(12, __c1, 4) as any as S.Schema<DeleteTeamResponse>,
+  input: __S(642, __c20, 2) as any as S.Schema<DeleteTeamRequest>,
+  output: __S(643, __c20, 3) as any as S.Schema<DeleteTeamResponse>,
   errors: [BadRequest, PaymentRequired, Forbidden, NotFound, Conflict],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -1947,8 +1947,8 @@ export const deleteTeamInviteCode: API.OperationMethod<
   DeleteTeamInviteCodeError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(13, __c1, 5) as any as S.Schema<DeleteTeamInviteCodeRequest>,
-  output: __S(14, __c1, 6) as any as S.Schema<DeleteTeamInviteCodeResponse>,
+  input: __S(672, __c21, 0) as any as S.Schema<DeleteTeamInviteCodeRequest>,
+  output: __S(673, __c21, 1) as any as S.Schema<DeleteTeamInviteCodeResponse>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -1958,8 +1958,8 @@ export type GetTeamError = BadRequest | Forbidden | NotFound | VercelOpError;
 /** Get a Team Get information for the Team specified by the `teamId` parameter. */
 export const getTeam: API.OperationMethod<GetTeamRequest, Team, GetTeamError, VercelOpContext> =
   /*@__PURE__*/ API.make(() => ({
-    input: __S(15, __c1, 7) as any as S.Schema<GetTeamRequest>,
-    output: __S(51, __c6, 3) as any as S.Schema<Team>,
+    input: __S(0, __c0, 0) as any as S.Schema<GetTeamRequest>,
+    output: __S(129, __c4, 1) as any as S.Schema<Team>,
     errors: [BadRequest, Forbidden, NotFound],
     protocol: VercelProtocol,
     retry: Retry.Retry,
@@ -1973,8 +1973,8 @@ export const getTeamAccessRequest: API.OperationMethod<
   GetTeamAccessRequestError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(52, __c6, 4) as any as S.Schema<GetTeamAccessRequestRequest>,
-  output: __S(55, __c6, 7) as any as S.Schema<GetTeamAccessRequestResponse>,
+  input: __S(160, __c5, 0) as any as S.Schema<GetTeamAccessRequestRequest>,
+  output: __S(162, __c5, 2) as any as S.Schema<GetTeamAccessRequestResponse>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -1988,8 +1988,8 @@ export const getTeamMembers: API.OperationMethod<
   GetTeamMembersError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(56, __c7, 0) as any as S.Schema<GetTeamMembersRequest>,
-  output: __S(66, __c8, 2) as any as S.Schema<GetTeamMembersResponse>,
+  input: __S(224, __c7, 0) as any as S.Schema<GetTeamMembersRequest>,
+  output: __S(234, __c7, 10) as any as S.Schema<GetTeamMembersResponse>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -2003,8 +2003,8 @@ export const getTeams: API.OperationMethod<
   GetTeamsError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(67, __c8, 3) as any as S.Schema<GetTeamsRequest>,
-  output: __S(70, __c8, 6) as any as S.Schema<GetTeamsResponse>,
+  input: __S(256, __c8, 0) as any as S.Schema<GetTeamsRequest>,
+  output: __S(259, __c8, 3) as any as S.Schema<GetTeamsResponse>,
   errors: [BadRequest, Forbidden],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -2018,8 +2018,8 @@ export const inviteUserToTeam: API.OperationMethod<
   InviteUserToTeamError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(75, __c9, 3) as any as S.Schema<InviteUserToTeamRequest>,
-  output: __S(76, __c9, 4) as any as S.Schema<InvitedTeamMember>,
+  input: __S(292, __c9, 4) as any as S.Schema<InviteUserToTeamRequest>,
+  output: __S(293, __c9, 5) as any as S.Schema<InvitedTeamMember>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -2033,8 +2033,8 @@ export const joinTeam: API.OperationMethod<
   JoinTeamError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(77, __c9, 5) as any as S.Schema<JoinTeamRequest>,
-  output: __S(78, __c9, 6) as any as S.Schema<JoinTeamResponse>,
+  input: __S(320, __c10, 0) as any as S.Schema<JoinTeamRequest>,
+  output: __S(321, __c10, 1) as any as S.Schema<JoinTeamResponse>,
   errors: [BadRequest, PaymentRequired, Forbidden, NotFound],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -2048,8 +2048,8 @@ export const removeTeamMember: API.OperationMethod<
   RemoveTeamMemberError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(79, __c9, 7) as any as S.Schema<RemoveTeamMemberRequest>,
-  output: __S(80, __c10, 0) as any as S.Schema<RemoveTeamMemberResponse>,
+  input: __S(352, __c11, 0) as any as S.Schema<RemoveTeamMemberRequest>,
+  output: __S(384, __c12, 0) as any as S.Schema<RemoveTeamMemberResponse>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -2063,8 +2063,8 @@ export const requestAccessToTeam: API.OperationMethod<
   RequestAccessToTeamError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(82, __c10, 2) as any as S.Schema<RequestAccessToTeamRequest>,
-  output: __S(84, __c10, 4) as any as S.Schema<RequestAccessToTeamResponse>,
+  input: __S(417, __c13, 1) as any as S.Schema<RequestAccessToTeamRequest>,
+  output: __S(419, __c13, 3) as any as S.Schema<RequestAccessToTeamResponse>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -2078,8 +2078,8 @@ export const updateMicrofrontendsGroup: API.OperationMethod<
   UpdateMicrofrontendsGroupError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(85, __c10, 5) as any as S.Schema<UpdateMicrofrontendsGroupRequest>,
-  output: __S(87, __c10, 7) as any as S.Schema<UpdateMicrofrontendsGroupResponse>,
+  input: __S(448, __c14, 0) as any as S.Schema<UpdateMicrofrontendsGroupRequest>,
+  output: __S(450, __c14, 2) as any as S.Schema<UpdateMicrofrontendsGroupResponse>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -2099,8 +2099,8 @@ export const updateTeam: API.OperationMethod<
   UpdateTeamError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(98, __c12, 2) as any as S.Schema<UpdateTeamRequest>,
-  output: __S(51, __c6, 3) as any as S.Schema<Team>,
+  input: __S(490, __c15, 10) as any as S.Schema<UpdateTeamRequest>,
+  output: __S(129, __c4, 1) as any as S.Schema<Team>,
   errors: [BadRequest, PaymentRequired, Forbidden, NotFound, Conflict],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -2120,8 +2120,8 @@ export const updateTeamMember: API.OperationMethod<
   UpdateTeamMemberError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(102, __c12, 6) as any as S.Schema<UpdateTeamMemberRequest>,
-  output: __S(80, __c10, 0) as any as S.Schema<UpdateTeamMemberResponse>,
+  input: __S(515, __c16, 3) as any as S.Schema<UpdateTeamMemberRequest>,
+  output: __S(384, __c12, 0) as any as S.Schema<UpdateTeamMemberResponse>,
   errors: [BadRequest, PaymentRequired, Forbidden, NotFound, Conflict],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -2133,140 +2133,25 @@ function __c0(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          utmSource: S.optional(S.String),
-          utmMedium: S.optional(S.String),
-          utmCampaign: S.optional(S.String),
-          utmTerm: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "CreateTeamRequestAttributionUtm",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          sessionReferrer: S.optional(S.String),
-          landingPage: S.optional(S.String),
-          pageBeforeConversionPage: S.optional(S.String),
-          utm: S.optional(__S(0, __c0, 0)),
-        }),
-      ).annotate({
-        identifier: "CreateTeamRequestAttribution",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          slug: S.String,
-          name: S.optional(S.String),
-          attribution: S.optional(__S(1, __c0, 1)),
-        }).pipe(T.Http({ method: "POST", uri: "/v1/teams", code: 200 })),
-      ).annotate({ identifier: "CreateTeamRequest" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String,
-          slug: S.String,
-        }),
-      ).annotate({ identifier: "CreateTeamResponse" });
-    case 4:
-      return S.Record(S.String, S.Unknown);
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          teamId: S.String.pipe(T.Label()),
-          slug: S.optional(S.String.pipe(T.Query())),
-          roles: __S(4, __c0, 4),
-        }).pipe(T.Http({ method: "POST", uri: "/v1/teams/{teamId}/dsync-roles", code: 200 })),
-      ).annotate({
-        identifier: "CreateTeamDsyncRoleRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          ok: S.Boolean,
-        }),
-      ).annotate({
-        identifier: "CreateTeamDsyncRoleResponse",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          teamId: S.String.pipe(T.Label()),
-          groupId: S.String.pipe(T.Label()),
-          slug: S.optional(S.String.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/v1/teams/{teamId}/microfrontends/{groupId}",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteMicrofrontendsGroupRequest",
-      });
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() => S.Unknown.pipe(T.RawResponseRoot())).annotate({
-        identifier: "DeleteMicrofrontendsGroupResponse",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          slug: S.String,
-          description: S.String,
-        }),
-      ).annotate({
-        identifier: "DeleteTeamRequestReasonsItem",
-      });
-    case 2:
-      return S.Array(__S(9, __c1, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          teamId: S.String.pipe(T.Label()),
-          newDefaultTeamId: S.optional(S.String.pipe(T.Query())),
-          slug: S.optional(S.String.pipe(T.Query())),
-          reasons: S.optional(__S(10, __c1, 2)),
-        }).pipe(T.Http({ method: "DELETE", uri: "/v1/teams/{teamId}", code: 200 })),
-      ).annotate({ identifier: "DeleteTeamRequest" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String,
-          newDefaultTeamIdError: S.optional(S.Boolean),
-        }),
-      ).annotate({ identifier: "DeleteTeamResponse" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          teamId: S.String.pipe(T.Label()),
-          inviteId: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({ method: "DELETE", uri: "/v1/teams/{teamId}/invites/{inviteId}", code: 200 }),
-        ),
-      ).annotate({
-        identifier: "DeleteTeamInviteCodeRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String,
-        }),
-      ).annotate({
-        identifier: "DeleteTeamInviteCodeResponse",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
           teamId: S.String.pipe(T.Label()),
           slug: S.optional(S.String.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/v2/teams/{teamId}", code: 200 })),
       ).annotate({ identifier: "GetTeamRequest" });
   }
 }
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
 function __c2(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c3(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2291,8 +2176,8 @@ function __c2(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          passwordProtection: S.optional(S.NullOr(__S(18, __c2, 2))),
-          ssoProtection: S.optional(S.NullOr(__S(18, __c2, 2))),
+          passwordProtection: S.optional(S.NullOr(__S(98, __c3, 2))),
+          ssoProtection: S.optional(S.NullOr(__S(98, __c3, 2))),
         }),
       ).annotate({
         identifier: "TeamDefaultDeploymentProtection",
@@ -2317,81 +2202,69 @@ function __c2(j: number): any {
         }),
       ).annotate({ identifier: "TeamDefaultPassport" });
     case 6:
-      return S.Array(S.String);
-    case 7:
       return S.suspend(() =>
         S.Struct({
-          targets: __S(22, __c2, 6),
+          targets: __S(64, __c2, 0),
         }),
       ).annotate({
         identifier: "TeamDefaultProjectJobsFlagDefinitionsPresent",
       });
-  }
-}
-function __c3(j: number): any {
-  switch (j) {
-    case 0:
+    case 7:
       return S.suspend(() =>
         S.Struct({
           flag_definitions_present: S.optional(
-            __S(23, __c2, 7).pipe(T.Body("flag-definitions-present")),
+            __S(102, __c3, 6).pipe(T.Body("flag-definitions-present")),
           ),
-          lint: S.optional(__S(23, __c2, 7)),
-          mfe_config_present: S.optional(__S(23, __c2, 7).pipe(T.Body("mfe-config-present"))),
-          typecheck: S.optional(__S(23, __c2, 7)),
+          lint: S.optional(__S(102, __c3, 6)),
+          mfe_config_present: S.optional(__S(102, __c3, 6).pipe(T.Body("mfe-config-present"))),
+          typecheck: S.optional(__S(102, __c3, 6)),
         }),
       ).annotate({ identifier: "TeamDefaultProjectJobs" });
-    case 1:
-      return S.Array(S.String);
-    case 2:
+    case 8:
       return S.suspend(() =>
         S.Struct({
-          teamPermissions: S.optional(__S(25, __c3, 1)),
-          teamRoles: S.optional(__S(25, __c3, 1)),
+          teamPermissions: S.optional(__S(32, __c1, 0)),
+          teamRoles: S.optional(__S(32, __c1, 0)),
         }),
       ).annotate({ identifier: "TeamDefaultRoles" });
-    case 3:
+    case 9:
       return S.Array(S.Unknown);
-    case 4:
+    case 10:
       return S.suspend(() =>
         S.Struct({
           enabled: S.Boolean,
-          environments: __S(27, __c3, 3),
-          sources: __S(25, __c3, 1),
+          environments: __S(105, __c3, 9),
+          sources: __S(32, __c1, 0),
         }),
       ).annotate({
         identifier: "TeamDeploymentPolicyDeploymentSourcesItem",
       });
-    case 5:
-      return S.Array(__S(28, __c3, 4));
-    case 6:
+    case 11:
+      return S.Array(__S(106, __c3, 10));
+    case 12:
       return S.Array(S.Unknown);
-    case 7:
+    case 13:
       return S.Array(S.Unknown);
-  }
-}
-function __c4(j: number): any {
-  switch (j) {
-    case 0:
+    case 14:
       return S.suspend(() =>
         S.Struct({
           enabled: S.Boolean,
-          environments: __S(30, __c3, 6),
-          sources: __S(31, __c3, 7),
+          environments: __S(108, __c3, 12),
+          sources: __S(109, __c3, 13),
         }),
       ).annotate({
         identifier: "TeamDeploymentPolicyGitSourcesItem",
       });
-    case 1:
-      return S.Array(__S(32, __c4, 0));
-    case 2:
+    case 15:
+      return S.Array(__S(110, __c3, 14));
+    case 16:
       return S.suspend(() =>
         S.Struct({
-          deploymentSources: S.optional(__S(29, __c3, 5)),
-          gitSources: S.optional(__S(33, __c4, 1)),
+          deploymentSources: S.optional(__S(107, __c3, 11)),
+          gitSources: S.optional(__S(111, __c3, 15)),
         }),
       ).annotate({ identifier: "TeamDeploymentPolicy" });
-    case 3:
+    case 17:
       return S.suspend(() =>
         S.Struct({
           cohort: S.String,
@@ -2403,7 +2276,7 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "TeamDeploymentStorageRollout",
       });
-    case 4:
+    case 18:
       return S.suspend(() =>
         S.Struct({
           bucket: S.String,
@@ -2411,9 +2284,9 @@ function __c4(j: number): any {
           supportUntil: S.optional(S.Number),
         }),
       ).annotate({ identifier: "TeamIpBucketsItem" });
-    case 5:
-      return S.Array(__S(36, __c4, 4));
-    case 6:
+    case 19:
+      return S.Array(__S(114, __c3, 18));
+    case 20:
       return S.suspend(() =>
         S.Struct({
           entitlement: S.String,
@@ -2421,13 +2294,9 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "TeamMembershipEntitlementsItem",
       });
-    case 7:
-      return S.Array(__S(38, __c4, 6));
-  }
-}
-function __c5(j: number): any {
-  switch (j) {
-    case 0:
+    case 21:
+      return S.Array(__S(116, __c3, 20));
+    case 22:
       return S.suspend(() =>
         S.Struct({
           commitId: S.optional(S.String),
@@ -2443,29 +2312,29 @@ function __c5(j: number): any {
           ssoUserId: S.optional(S.String),
         }),
       ).annotate({ identifier: "TeamMembershipJoinedFrom" });
-    case 1:
+    case 23:
       return S.suspend(() =>
         S.Struct({
           accessRequestedAt: S.optional(S.Number),
           confirmed: S.Boolean,
           created: S.Number,
           createdAt: S.Number,
-          entitlements: S.optional(__S(39, __c4, 7)),
-          joinedFrom: S.optional(__S(40, __c5, 0)),
+          entitlements: S.optional(__S(117, __c3, 21)),
+          joinedFrom: S.optional(__S(118, __c3, 22)),
           role: S.String,
           teamId: S.optional(S.String),
-          teamPermissions: S.optional(__S(25, __c3, 1)),
-          teamRoles: S.optional(__S(25, __c3, 1)),
+          teamPermissions: S.optional(__S(32, __c1, 0)),
+          teamRoles: S.optional(__S(32, __c1, 0)),
           uid: S.optional(S.String),
         }),
       ).annotate({ identifier: "TeamMembership" });
-    case 2:
+    case 24:
       return S.suspend(() =>
         S.Struct({
           preference: S.String,
         }),
       ).annotate({ identifier: "TeamNsnbConfig" });
-    case 3:
+    case 25:
       return S.suspend(() =>
         S.Struct({
           enhancedBuilds: S.optional(S.Boolean),
@@ -2473,7 +2342,7 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "TeamResourceConfigBuildEntitlements",
       });
-    case 4:
+    case 26:
       return S.suspend(() =>
         S.Struct({
           default: S.optional(S.String),
@@ -2481,12 +2350,12 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "TeamResourceConfigBuildMachine",
       });
-    case 5:
+    case 27:
       return S.suspend(() =>
         S.Struct({
           blobStores: S.optional(S.Number),
-          buildEntitlements: S.optional(__S(43, __c5, 3)),
-          buildMachine: S.optional(__S(44, __c5, 4)),
+          buildEntitlements: S.optional(__S(121, __c3, 25)),
+          buildMachine: S.optional(__S(122, __c3, 26)),
           concurrentBuilds: S.optional(S.Number),
           customEnvironmentsPerProject: S.optional(S.Number),
           edgeConfigs: S.optional(S.Number),
@@ -2497,7 +2366,7 @@ function __c5(j: number): any {
           serverlessFunctionMaxMemorySize: S.optional(S.Number),
         }),
       ).annotate({ identifier: "TeamResourceConfig" });
-    case 6:
+    case 28:
       return S.suspend(() =>
         S.Struct({
           connectedAt: S.Number,
@@ -2509,7 +2378,7 @@ function __c5(j: number): any {
           status: S.String,
         }),
       ).annotate({ identifier: "TeamSamlConnection" });
-    case 7:
+    case 29:
       return S.suspend(() =>
         S.Struct({
           connectedAt: S.Number,
@@ -2520,47 +2389,47 @@ function __c5(j: number): any {
           type: S.String,
         }),
       ).annotate({ identifier: "TeamSamlDirectory" });
-  }
-}
-function __c6(j: number): any {
-  switch (j) {
-    case 0:
+    case 30:
       return S.Record(S.String, S.Unknown);
-    case 1:
+    case 31:
       return S.suspend(() =>
         S.Struct({
-          connection: S.optional(__S(46, __c5, 6)),
+          connection: S.optional(__S(124, __c3, 28)),
           defaultRedirectUri: S.optional(S.String),
-          directory: S.optional(__S(47, __c5, 7)),
+          directory: S.optional(__S(125, __c3, 29)),
           enforced: S.Boolean,
-          roles: S.optional(__S(48, __c6, 0)),
+          roles: S.optional(__S(126, __c3, 30)),
         }),
       ).annotate({ identifier: "TeamSaml" });
-    case 2:
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           enabled: S.Boolean,
           updatedAt: S.Number,
         }),
       ).annotate({ identifier: "TeamStrictConnectors" });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           apiKeysInvalidatedAt: S.optional(S.Number),
           appTokensInvalidatedAt: S.optional(S.Number),
           avatar: S.NullOr(S.String),
-          billing: S.NullOr(__S(16, __c2, 0)),
-          connect: S.optional(__S(17, __c2, 1)),
+          billing: S.NullOr(__S(96, __c3, 0)),
+          connect: S.optional(__S(97, __c3, 1)),
           createdAt: S.Number,
           creatorId: S.String,
           defaultContinuousUsageKind: S.optional(S.String),
-          defaultDeploymentProtection: S.optional(__S(19, __c2, 3)),
-          defaultExpirationSettings: S.optional(__S(20, __c2, 4)),
-          defaultPassport: S.optional(S.NullOr(__S(21, __c2, 5))),
-          defaultProjectJobs: S.optional(__S(24, __c3, 0)),
-          defaultRoles: S.optional(__S(26, __c3, 2)),
-          deploymentPolicy: S.optional(__S(34, __c4, 2)),
-          deploymentStorageRollout: S.optional(__S(35, __c4, 3)),
+          defaultDeploymentProtection: S.optional(__S(99, __c3, 3)),
+          defaultExpirationSettings: S.optional(__S(100, __c3, 4)),
+          defaultPassport: S.optional(S.NullOr(__S(101, __c3, 5))),
+          defaultProjectJobs: S.optional(__S(103, __c3, 7)),
+          defaultRoles: S.optional(__S(104, __c3, 8)),
+          deploymentPolicy: S.optional(__S(112, __c3, 16)),
+          deploymentStorageRollout: S.optional(__S(113, __c3, 17)),
           description: S.NullOr(S.String),
           disableHardAutoBlocks: S.optional(S.Unknown),
           disableRepositoryDispatchEvents: S.optional(S.Boolean),
@@ -2574,30 +2443,34 @@ function __c6(j: number): any {
           id: S.String,
           integrationTokensInvalidatedAt: S.optional(S.Number),
           inviteCode: S.optional(S.String),
-          ipBuckets: S.optional(__S(37, __c4, 5)),
-          membership: S.optional(__S(41, __c5, 1)),
+          ipBuckets: S.optional(__S(115, __c3, 19)),
+          membership: S.optional(__S(119, __c3, 23)),
           name: S.NullOr(S.String),
-          nsnbConfig: S.optional(__S(42, __c5, 2)),
+          nsnbConfig: S.optional(__S(120, __c3, 24)),
           orgRootTeamId: S.optional(S.String),
           parentId: S.optional(S.String),
           personalAccessTokensInvalidatedAt: S.optional(S.Number),
           platform: S.optional(S.Boolean),
           previewDeploymentSuffix: S.optional(S.NullOr(S.String)),
-          remoteCaching: S.optional(__S(17, __c2, 1)),
+          remoteCaching: S.optional(__S(97, __c3, 1)),
           requireVerifiedCommits: S.optional(S.Boolean),
-          resourceConfig: S.optional(__S(45, __c5, 5)),
-          saml: S.optional(__S(49, __c6, 1)),
+          resourceConfig: S.optional(__S(123, __c3, 27)),
+          saml: S.optional(__S(127, __c3, 31)),
           sensitiveEnvironmentVariablePolicy: S.optional(S.NullOr(S.String)),
           slug: S.String,
           stagingPrefix: S.String,
-          strictConnectors: S.optional(__S(50, __c6, 2)),
-          strictDeploymentProtectionSettings: S.optional(__S(50, __c6, 2)),
-          strictPasswordProtectionSettings: S.optional(__S(50, __c6, 2)),
-          strictShareableLinks: S.optional(__S(50, __c6, 2)),
+          strictConnectors: S.optional(__S(128, __c4, 0)),
+          strictDeploymentProtectionSettings: S.optional(__S(128, __c4, 0)),
+          strictPasswordProtectionSettings: S.optional(__S(128, __c4, 0)),
+          strictShareableLinks: S.optional(__S(128, __c4, 0)),
           updatedAt: S.Number,
         }),
       ).annotate({ identifier: "Team" });
-    case 4:
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           teamId: S.String.pipe(T.Label()),
@@ -2606,15 +2479,7 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "GetTeamAccessRequestRequest",
       });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          login: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GetTeamAccessRequestResponseBitbucket",
-      });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           commitId: S.optional(S.String),
@@ -2632,20 +2497,32 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "GetTeamAccessRequestResponseJoinedFrom",
       });
-    case 7:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           accessRequestedAt: S.Number,
-          bitbucket: S.NullOr(__S(53, __c6, 5)),
+          bitbucket: S.NullOr(__S(192, __c6, 0)),
           confirmed: S.Boolean,
-          github: S.NullOr(__S(53, __c6, 5)),
-          gitlab: S.NullOr(__S(53, __c6, 5)),
-          joinedFrom: __S(54, __c6, 6),
+          github: S.NullOr(__S(192, __c6, 0)),
+          gitlab: S.NullOr(__S(192, __c6, 0)),
+          joinedFrom: __S(161, __c5, 1),
           teamName: S.String,
           teamSlug: S.String,
         }),
       ).annotate({
         identifier: "GetTeamAccessRequestResponse",
+      });
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          login: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GetTeamAccessRequestResponseBitbucket",
       });
   }
 }
@@ -2670,23 +2547,23 @@ function __c7(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          accessGroups: S.optional(__S(22, __c2, 6)),
+          accessGroups: S.optional(__S(64, __c2, 0)),
           createdAt: S.optional(S.Number),
           email: S.optional(S.String),
-          entitlements: S.optional(__S(22, __c2, 6)),
+          entitlements: S.optional(__S(64, __c2, 0)),
           expired: S.optional(S.Boolean),
           id: S.String,
           isDSyncUser: S.Boolean,
-          projects: S.optional(__S(57, __c7, 1)),
+          projects: S.optional(__S(225, __c7, 1)),
           role: S.optional(S.String),
-          teamPermissions: S.optional(__S(25, __c3, 1)),
-          teamRoles: S.optional(__S(25, __c3, 1)),
+          teamPermissions: S.optional(__S(32, __c1, 0)),
+          teamRoles: S.optional(__S(32, __c1, 0)),
         }),
       ).annotate({
         identifier: "GetTeamMembersResponseEmailInviteCodesItem",
       });
     case 3:
-      return S.Array(__S(58, __c7, 2));
+      return S.Array(__S(226, __c7, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
@@ -2716,22 +2593,22 @@ function __c7(j: number): any {
         identifier: "GetTeamMembersResponseMembersItemProjectsItem",
       });
     case 6:
-      return S.Array(__S(61, __c7, 5));
+      return S.Array(__S(229, __c7, 5));
     case 7:
       return S.suspend(() =>
         S.Struct({
           accessRequestedAt: S.optional(S.Number),
           avatar: S.optional(S.String),
-          bitbucket: S.optional(__S(53, __c6, 5)),
+          bitbucket: S.optional(__S(192, __c6, 0)),
           confirmed: S.Boolean,
           createdAt: S.Number,
           email: S.String,
-          github: S.optional(__S(53, __c6, 5)),
-          gitlab: S.optional(__S(53, __c6, 5)),
+          github: S.optional(__S(192, __c6, 0)),
+          gitlab: S.optional(__S(192, __c6, 0)),
           isEnterpriseManaged: S.optional(S.Boolean),
-          joinedFrom: S.optional(__S(60, __c7, 4)),
+          joinedFrom: S.optional(__S(228, __c7, 4)),
           name: S.optional(S.String),
-          projects: S.optional(__S(62, __c7, 6)),
+          projects: S.optional(__S(230, __c7, 6)),
           role: S.String,
           uid: S.String,
           username: S.String,
@@ -2739,13 +2616,9 @@ function __c7(j: number): any {
       ).annotate({
         identifier: "GetTeamMembersResponseMembersItem",
       });
-  }
-}
-function __c8(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(63, __c7, 7));
-    case 1:
+    case 8:
+      return S.Array(__S(231, __c7, 7));
+    case 9:
       return S.suspend(() =>
         S.Struct({
           count: S.Number,
@@ -2756,15 +2629,19 @@ function __c8(j: number): any {
       ).annotate({
         identifier: "GetTeamMembersResponsePagination",
       });
-    case 2:
+    case 10:
       return S.suspend(() =>
         S.Struct({
-          emailInviteCodes: S.optional(__S(59, __c7, 3)),
-          members: __S(64, __c8, 0),
-          pagination: __S(65, __c8, 1),
+          emailInviteCodes: S.optional(__S(227, __c7, 3)),
+          members: __S(232, __c7, 8),
+          pagination: __S(233, __c7, 9),
         }),
       ).annotate({ identifier: "GetTeamMembersResponse" });
-    case 3:
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           limit: S.optional(S.Number.pipe(T.Query())),
@@ -2772,7 +2649,7 @@ function __c8(j: number): any {
           until: S.optional(S.Number.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/v2/teams", code: 200 })),
       ).annotate({ identifier: "GetTeamsRequest" });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           count: S.Number,
@@ -2780,16 +2657,20 @@ function __c8(j: number): any {
           prev: S.NullOr(S.Number),
         }),
       ).annotate({ identifier: "Pagination" });
-    case 5:
+    case 2:
       return S.Array(S.Unknown);
-    case 6:
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          pagination: __S(68, __c8, 4),
-          teams: __S(69, __c8, 5),
+          pagination: __S(257, __c8, 1),
+          teams: __S(258, __c8, 2),
         }),
       ).annotate({ identifier: "GetTeamsResponse" });
-    case 7:
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           projectId: S.String,
@@ -2798,44 +2679,44 @@ function __c8(j: number): any {
       ).annotate({
         identifier: "InviteUserToTeamRequestBodyItemProjectsItem",
       });
-  }
-}
-function __c9(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(71, __c8, 7));
     case 1:
+      return S.Array(__S(288, __c9, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           email: S.String,
           role: S.optional(S.String),
-          projects: S.optional(__S(72, __c9, 0)),
+          projects: S.optional(__S(289, __c9, 1)),
         }),
       ).annotate({
         identifier: "InviteUserToTeamRequestBodyItem",
       });
-    case 2:
-      return S.Array(__S(73, __c9, 1));
     case 3:
+      return S.Array(__S(290, __c9, 2));
+    case 4:
       return S.suspend(() =>
         S.Struct({
           teamId: S.String.pipe(T.Label()),
           slug: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(74, __c9, 2).pipe(T.HttpBody())),
+          body: S.optional(__S(291, __c9, 3).pipe(T.HttpBody())),
         }).pipe(T.Http({ method: "POST", uri: "/v2/teams/{teamId}/members", code: 200 })),
       ).annotate({ identifier: "InviteUserToTeamRequest" });
-    case 4:
+    case 5:
       return S.suspend(() =>
         S.Struct({
           email: S.String,
           role: S.String,
-          teamPermissions: S.optional(__S(25, __c3, 1)),
-          teamRoles: S.optional(__S(25, __c3, 1)),
+          teamPermissions: S.optional(__S(32, __c1, 0)),
+          teamRoles: S.optional(__S(32, __c1, 0)),
           uid: S.String,
           username: S.String,
         }),
       ).annotate({ identifier: "InvitedTeamMember" });
-    case 5:
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           teamId: S.String.pipe(T.Label()),
@@ -2844,7 +2725,7 @@ function __c9(j: number): any {
           T.Http({ method: "POST", uri: "/v1/teams/{teamId}/members/teams/join", code: 200 }),
         ),
       ).annotate({ identifier: "JoinTeamRequest" });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           from: S.String,
@@ -2853,7 +2734,11 @@ function __c9(j: number): any {
           teamId: S.String,
         }),
       ).annotate({ identifier: "JoinTeamResponse" });
-    case 7:
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           teamId: S.String.pipe(T.Label()),
@@ -2863,7 +2748,7 @@ function __c9(j: number): any {
       ).annotate({ identifier: "RemoveTeamMemberRequest" });
   }
 }
-function __c10(j: number): any {
+function __c12(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2871,7 +2756,11 @@ function __c10(j: number): any {
           id: S.String,
         }),
       ).annotate({ identifier: "RemoveTeamMemberResponse" });
-    case 1:
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           origin: S.String,
@@ -2884,16 +2773,16 @@ function __c10(j: number): any {
       ).annotate({
         identifier: "RequestAccessToTeamRequestJoinedFrom",
       });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           teamId: S.String.pipe(T.Label()),
-          joinedFrom: __S(81, __c10, 1),
+          joinedFrom: __S(416, __c13, 0),
         }).pipe(T.Http({ method: "POST", uri: "/v1/teams/{teamId}/request", code: 200 })),
       ).annotate({
         identifier: "RequestAccessToTeamRequest",
       });
-    case 3:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           commitId: S.optional(S.String),
@@ -2911,22 +2800,26 @@ function __c10(j: number): any {
       ).annotate({
         identifier: "RequestAccessToTeamResponseJoinedFrom",
       });
-    case 4:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           accessRequestedAt: S.optional(S.Number),
-          bitbucket: S.NullOr(__S(53, __c6, 5)),
+          bitbucket: S.NullOr(__S(192, __c6, 0)),
           confirmed: S.Boolean,
-          github: S.NullOr(__S(53, __c6, 5)),
-          gitlab: S.NullOr(__S(53, __c6, 5)),
-          joinedFrom: S.optional(__S(83, __c10, 3)),
+          github: S.NullOr(__S(192, __c6, 0)),
+          gitlab: S.NullOr(__S(192, __c6, 0)),
+          joinedFrom: S.optional(__S(418, __c13, 2)),
           teamName: S.String,
           teamSlug: S.String,
         }),
       ).annotate({
         identifier: "RequestAccessToTeamResponse",
       });
-    case 5:
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           teamId: S.String.pipe(T.Label()),
@@ -2945,7 +2838,7 @@ function __c10(j: number): any {
       ).annotate({
         identifier: "UpdateMicrofrontendsGroupRequest",
       });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           enablePolyrepoBranchRouting: S.optional(S.Boolean),
@@ -2957,17 +2850,17 @@ function __c10(j: number): any {
       ).annotate({
         identifier: "UpdateMicrofrontendsGroupResponseUpdatedMicrofrontendsGroup",
       });
-    case 7:
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          updatedMicrofrontendsGroup: __S(86, __c10, 6),
+          updatedMicrofrontendsGroup: __S(449, __c14, 1),
         }),
       ).annotate({
         identifier: "UpdateMicrofrontendsGroupResponse",
       });
   }
 }
-function __c11(j: number): any {
+function __c15(j: number): any {
   switch (j) {
     case 0:
       return S.Record(S.String, S.Unknown);
@@ -2975,7 +2868,7 @@ function __c11(j: number): any {
       return S.suspend(() =>
         S.Struct({
           enforced: S.optional(S.Boolean),
-          roles: S.optional(__S(88, __c11, 0)),
+          roles: S.optional(__S(480, __c15, 0)),
         }),
       ).annotate({ identifier: "UpdateTeamRequestSaml" });
     case 2:
@@ -3006,8 +2899,8 @@ function __c11(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          passwordProtection: S.optional(S.NullOr(__S(91, __c11, 3))),
-          ssoProtection: S.optional(S.NullOr(__S(92, __c11, 4))),
+          passwordProtection: S.optional(S.NullOr(__S(483, __c15, 3))),
+          ssoProtection: S.optional(S.NullOr(__S(484, __c15, 4))),
         }),
       ).annotate({
         identifier: "UpdateTeamRequestDefaultDeploymentProtection",
@@ -3034,11 +2927,7 @@ function __c11(j: number): any {
       ).annotate({
         identifier: "UpdateTeamRequestDefaultExpirationSettings",
       });
-  }
-}
-function __c12(j: number): any {
-  switch (j) {
-    case 0:
+    case 8:
       return S.suspend(() =>
         S.Struct({
           enabled: S.Boolean,
@@ -3046,15 +2935,15 @@ function __c12(j: number): any {
       ).annotate({
         identifier: "UpdateTeamRequestStrictDeploymentProtectionSettings",
       });
-    case 1:
+    case 9:
       return S.suspend(() =>
         S.Struct({
-          buildMachine: S.optional(__S(44, __c5, 4)),
+          buildMachine: S.optional(__S(122, __c3, 26)),
         }),
       ).annotate({
         identifier: "UpdateTeamRequestResourceConfig",
       });
-    case 2:
+    case 10:
       return S.suspend(() =>
         S.Struct({
           teamId: S.String.pipe(T.Label()),
@@ -3065,31 +2954,35 @@ function __c12(j: number): any {
           name: S.optional(S.String),
           previewDeploymentSuffix: S.optional(S.NullOr(S.String)),
           regenerateInviteCode: S.optional(S.Boolean),
-          saml: S.optional(__S(89, __c11, 1)),
+          saml: S.optional(__S(481, __c15, 1)),
           enablePreviewFeedback: S.optional(S.String),
           enableProductionFeedback: S.optional(S.String),
           sensitiveEnvironmentVariablePolicy: S.optional(S.String),
           disjunctiveProductionSecretPolicy: S.optional(S.String),
-          remoteCaching: S.optional(__S(90, __c11, 2)),
+          remoteCaching: S.optional(__S(482, __c15, 2)),
           hideIpAddresses: S.optional(S.Boolean),
           hideIpAddressesInLogDrains: S.optional(S.Boolean),
           dpAccessRequestsMode: S.optional(S.String),
           requireVerifiedCommits: S.optional(S.Boolean),
           disableRepositoryDispatchEvents: S.optional(S.Boolean),
-          defaultDeploymentProtection: S.optional(__S(93, __c11, 5)),
-          defaultPassport: S.optional(S.NullOr(__S(94, __c11, 6))),
-          defaultExpirationSettings: S.optional(__S(95, __c11, 7)),
+          defaultDeploymentProtection: S.optional(__S(485, __c15, 5)),
+          defaultPassport: S.optional(S.NullOr(__S(486, __c15, 6))),
+          defaultExpirationSettings: S.optional(__S(487, __c15, 7)),
           deploymentPolicy: S.optional(S.Unknown),
-          strictDeploymentProtectionSettings: S.optional(__S(96, __c12, 0)),
-          strictShareableLinks: S.optional(__S(96, __c12, 0)),
-          strictPasswordProtectionSettings: S.optional(__S(96, __c12, 0)),
-          strictConnectors: S.optional(__S(96, __c12, 0)),
+          strictDeploymentProtectionSettings: S.optional(__S(488, __c15, 8)),
+          strictShareableLinks: S.optional(__S(488, __c15, 8)),
+          strictPasswordProtectionSettings: S.optional(__S(488, __c15, 8)),
+          strictConnectors: S.optional(__S(488, __c15, 8)),
           nsnbConfig: S.optional(S.Unknown),
           defaultProjectJobs: S.optional(S.Unknown),
-          resourceConfig: S.optional(__S(97, __c12, 1)),
+          resourceConfig: S.optional(__S(489, __c15, 9)),
         }).pipe(T.Http({ method: "PATCH", uri: "/v2/teams/{teamId}", code: 200 })),
       ).annotate({ identifier: "UpdateTeamRequest" });
-    case 3:
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           projectId: S.String,
@@ -3098,9 +2991,9 @@ function __c12(j: number): any {
       ).annotate({
         identifier: "UpdateTeamMemberRequestProjectsItem",
       });
-    case 4:
-      return S.Array(__S(99, __c12, 3));
-    case 5:
+    case 1:
+      return S.Array(__S(512, __c16, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           ssoUserId: S.optional(S.NullOr(S.Unknown)),
@@ -3108,21 +3001,163 @@ function __c12(j: number): any {
       ).annotate({
         identifier: "UpdateTeamMemberRequestJoinedFrom",
       });
-    case 6:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           teamId: S.String.pipe(T.Label()),
           uid: S.String.pipe(T.Label()),
           confirmed: S.optional(S.Boolean),
           role: S.optional(S.String),
-          teamPermissions: S.optional(__S(25, __c3, 1)),
-          projects: S.optional(__S(100, __c12, 4)),
-          joinedFrom: S.optional(__S(101, __c12, 5)),
+          teamPermissions: S.optional(__S(32, __c1, 0)),
+          projects: S.optional(__S(513, __c16, 1)),
+          joinedFrom: S.optional(__S(514, __c16, 2)),
         }).pipe(T.Http({ method: "PATCH", uri: "/v1/teams/{teamId}/members/{uid}", code: 200 })),
       ).annotate({ identifier: "UpdateTeamMemberRequest" });
   }
 }
-
+function __c17(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          utmSource: S.optional(S.String),
+          utmMedium: S.optional(S.String),
+          utmCampaign: S.optional(S.String),
+          utmTerm: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "CreateTeamRequestAttributionUtm",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          sessionReferrer: S.optional(S.String),
+          landingPage: S.optional(S.String),
+          pageBeforeConversionPage: S.optional(S.String),
+          utm: S.optional(__S(544, __c17, 0)),
+        }),
+      ).annotate({
+        identifier: "CreateTeamRequestAttribution",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          slug: S.String,
+          name: S.optional(S.String),
+          attribution: S.optional(__S(545, __c17, 1)),
+        }).pipe(T.Http({ method: "POST", uri: "/v1/teams", code: 200 })),
+      ).annotate({ identifier: "CreateTeamRequest" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          slug: S.String,
+        }),
+      ).annotate({ identifier: "CreateTeamResponse" });
+  }
+}
+function __c18(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, S.Unknown);
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          teamId: S.String.pipe(T.Label()),
+          slug: S.optional(S.String.pipe(T.Query())),
+          roles: __S(576, __c18, 0),
+        }).pipe(T.Http({ method: "POST", uri: "/v1/teams/{teamId}/dsync-roles", code: 200 })),
+      ).annotate({
+        identifier: "CreateTeamDsyncRoleRequest",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          ok: S.Boolean,
+        }),
+      ).annotate({
+        identifier: "CreateTeamDsyncRoleResponse",
+      });
+  }
+}
+function __c19(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          teamId: S.String.pipe(T.Label()),
+          groupId: S.String.pipe(T.Label()),
+          slug: S.optional(S.String.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/v1/teams/{teamId}/microfrontends/{groupId}",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteMicrofrontendsGroupRequest",
+      });
+    case 1:
+      return S.suspend(() => S.Unknown.pipe(T.RawResponseRoot())).annotate({
+        identifier: "DeleteMicrofrontendsGroupResponse",
+      });
+  }
+}
+function __c20(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          slug: S.String,
+          description: S.String,
+        }),
+      ).annotate({
+        identifier: "DeleteTeamRequestReasonsItem",
+      });
+    case 1:
+      return S.Array(__S(640, __c20, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          teamId: S.String.pipe(T.Label()),
+          newDefaultTeamId: S.optional(S.String.pipe(T.Query())),
+          slug: S.optional(S.String.pipe(T.Query())),
+          reasons: S.optional(__S(641, __c20, 1)),
+        }).pipe(T.Http({ method: "DELETE", uri: "/v1/teams/{teamId}", code: 200 })),
+      ).annotate({ identifier: "DeleteTeamRequest" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          newDefaultTeamIdError: S.optional(S.Boolean),
+        }),
+      ).annotate({ identifier: "DeleteTeamResponse" });
+  }
+}
+function __c21(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          teamId: S.String.pipe(T.Label()),
+          inviteId: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({ method: "DELETE", uri: "/v1/teams/{teamId}/invites/{inviteId}", code: 200 }),
+        ),
+      ).annotate({
+        identifier: "DeleteTeamInviteCodeRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+        }),
+      ).annotate({
+        identifier: "DeleteTeamInviteCodeResponse",
+      });
+  }
+}
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

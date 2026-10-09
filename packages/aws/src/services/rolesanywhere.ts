@@ -381,8 +381,8 @@ export const createProfile: API.OperationMethod<
   CreateProfileError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3, __c0, 3) as any as S.Schema<CreateProfileRequest>,
-  output: __S(9, __c1, 1) as any as S.Schema<ProfileDetailResponse>,
+  input: __S(136, __c17, 0) as any as S.Schema<CreateProfileRequest>,
+  output: __S(160, __c20, 0) as any as S.Schema<ProfileDetailResponse>,
   errors: [AccessDeniedException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -401,8 +401,8 @@ export const createTrustAnchor: API.OperationMethod<
   CreateTrustAnchorError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(14, __c1, 6) as any as S.Schema<CreateTrustAnchorRequest>,
-  output: __S(18, __c2, 2) as any as S.Schema<TrustAnchorDetailResponse>,
+  input: __S(168, __c21, 0) as any as S.Schema<CreateTrustAnchorRequest>,
+  output: __S(192, __c24, 0) as any as S.Schema<TrustAnchorDetailResponse>,
   errors: [AccessDeniedException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -423,8 +423,8 @@ export const deleteAttributeMapping: API.OperationMethod<
   DeleteAttributeMappingError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(19, __c2, 3) as any as S.Schema<DeleteAttributeMappingRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<DeleteAttributeMappingResponse>,
+  input: __S(200, __c25, 0) as any as S.Schema<DeleteAttributeMappingRequest>,
+  output: __S(208, __c26, 0) as any as S.Schema<DeleteAttributeMappingResponse>,
   errors: [AccessDeniedException, ResourceNotFoundException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -443,8 +443,8 @@ export const deleteCrl: API.OperationMethod<
   DeleteCrlError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(21, __c2, 5) as any as S.Schema<ScalarCrlRequest>,
-  output: __S(23, __c2, 7) as any as S.Schema<CrlDetailResponse>,
+  input: __S(216, __c27, 0) as any as S.Schema<ScalarCrlRequest>,
+  output: __S(232, __c29, 0) as any as S.Schema<CrlDetailResponse>,
   errors: [AccessDeniedException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -463,8 +463,8 @@ export const deleteProfile: API.OperationMethod<
   DeleteProfileError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(24, __c3, 0) as any as S.Schema<ScalarProfileRequest>,
-  output: __S(9, __c1, 1) as any as S.Schema<ProfileDetailResponse>,
+  input: __S(240, __c30, 0) as any as S.Schema<ScalarProfileRequest>,
+  output: __S(160, __c20, 0) as any as S.Schema<ProfileDetailResponse>,
   errors: [AccessDeniedException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -486,8 +486,8 @@ export const deleteTrustAnchor: API.OperationMethod<
   DeleteTrustAnchorError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(25, __c3, 1) as any as S.Schema<ScalarTrustAnchorRequest>,
-  output: __S(18, __c2, 2) as any as S.Schema<TrustAnchorDetailResponse>,
+  input: __S(248, __c31, 0) as any as S.Schema<ScalarTrustAnchorRequest>,
+  output: __S(192, __c24, 0) as any as S.Schema<TrustAnchorDetailResponse>,
   errors: [AccessDeniedException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -495,7 +495,7 @@ export const deleteTrustAnchor: API.OperationMethod<
 }));
 
 export interface DisableCrlRequest extends ScalarCrlRequest {}
-const DisableCrlRequest = /*@__PURE__*/ __S(21, __c2, 5)
+const DisableCrlRequest = /*@__PURE__*/ __S(216, __c27, 0)
   .pipe(/*@__PURE__*/ T.Http({ method: "POST", uri: "/crl/{crlId}/disable" }))
   .annotate({ identifier: "DisableCrlRequest" }) as any as S.Schema<DisableCrlRequest>;
 export type DisableCrlError = AccessDeniedException | ResourceNotFoundException | CommonErrors;
@@ -511,7 +511,7 @@ export const disableCrl: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DisableCrlRequest,
-  output: __S(23, __c2, 7) as any as S.Schema<CrlDetailResponse>,
+  output: __S(232, __c29, 0) as any as S.Schema<CrlDetailResponse>,
   errors: [AccessDeniedException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -519,7 +519,7 @@ export const disableCrl: API.OperationMethod<
 }));
 
 export interface DisableProfileRequest extends ScalarProfileRequest {}
-const DisableProfileRequest = /*@__PURE__*/ __S(24, __c3, 0)
+const DisableProfileRequest = /*@__PURE__*/ __S(240, __c30, 0)
   .pipe(/*@__PURE__*/ T.Http({ method: "POST", uri: "/profile/{profileId}/disable" }))
   .annotate({ identifier: "DisableProfileRequest" }) as any as S.Schema<DisableProfileRequest>;
 export type DisableProfileError = AccessDeniedException | ResourceNotFoundException | CommonErrors;
@@ -535,7 +535,7 @@ export const disableProfile: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DisableProfileRequest,
-  output: __S(9, __c1, 1) as any as S.Schema<ProfileDetailResponse>,
+  output: __S(160, __c20, 0) as any as S.Schema<ProfileDetailResponse>,
   errors: [AccessDeniedException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -543,7 +543,7 @@ export const disableProfile: API.OperationMethod<
 }));
 
 export interface DisableTrustAnchorRequest extends ScalarTrustAnchorRequest {}
-const DisableTrustAnchorRequest = /*@__PURE__*/ __S(25, __c3, 1)
+const DisableTrustAnchorRequest = /*@__PURE__*/ __S(248, __c31, 0)
   .pipe(/*@__PURE__*/ T.Http({ method: "POST", uri: "/trustanchor/{trustAnchorId}/disable" }))
   .annotate({
     identifier: "DisableTrustAnchorRequest",
@@ -564,7 +564,7 @@ export const disableTrustAnchor: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: DisableTrustAnchorRequest,
-  output: __S(18, __c2, 2) as any as S.Schema<TrustAnchorDetailResponse>,
+  output: __S(192, __c24, 0) as any as S.Schema<TrustAnchorDetailResponse>,
   errors: [AccessDeniedException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -572,7 +572,7 @@ export const disableTrustAnchor: API.OperationMethod<
 }));
 
 export interface EnableCrlRequest extends ScalarCrlRequest {}
-const EnableCrlRequest = /*@__PURE__*/ __S(21, __c2, 5)
+const EnableCrlRequest = /*@__PURE__*/ __S(216, __c27, 0)
   .pipe(/*@__PURE__*/ T.Http({ method: "POST", uri: "/crl/{crlId}/enable" }))
   .annotate({ identifier: "EnableCrlRequest" }) as any as S.Schema<EnableCrlRequest>;
 export type EnableCrlError = AccessDeniedException | ResourceNotFoundException | CommonErrors;
@@ -588,7 +588,7 @@ export const enableCrl: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: EnableCrlRequest,
-  output: __S(23, __c2, 7) as any as S.Schema<CrlDetailResponse>,
+  output: __S(232, __c29, 0) as any as S.Schema<CrlDetailResponse>,
   errors: [AccessDeniedException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -596,7 +596,7 @@ export const enableCrl: API.OperationMethod<
 }));
 
 export interface EnableProfileRequest extends ScalarProfileRequest {}
-const EnableProfileRequest = /*@__PURE__*/ __S(24, __c3, 0)
+const EnableProfileRequest = /*@__PURE__*/ __S(240, __c30, 0)
   .pipe(/*@__PURE__*/ T.Http({ method: "POST", uri: "/profile/{profileId}/enable" }))
   .annotate({ identifier: "EnableProfileRequest" }) as any as S.Schema<EnableProfileRequest>;
 export type EnableProfileError = AccessDeniedException | ResourceNotFoundException | CommonErrors;
@@ -612,7 +612,7 @@ export const enableProfile: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: EnableProfileRequest,
-  output: __S(9, __c1, 1) as any as S.Schema<ProfileDetailResponse>,
+  output: __S(160, __c20, 0) as any as S.Schema<ProfileDetailResponse>,
   errors: [AccessDeniedException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -620,7 +620,7 @@ export const enableProfile: API.OperationMethod<
 }));
 
 export interface EnableTrustAnchorRequest extends ScalarTrustAnchorRequest {}
-const EnableTrustAnchorRequest = /*@__PURE__*/ __S(25, __c3, 1)
+const EnableTrustAnchorRequest = /*@__PURE__*/ __S(248, __c31, 0)
   .pipe(/*@__PURE__*/ T.Http({ method: "POST", uri: "/trustanchor/{trustAnchorId}/enable" }))
   .annotate({
     identifier: "EnableTrustAnchorRequest",
@@ -641,7 +641,7 @@ export const enableTrustAnchor: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: EnableTrustAnchorRequest,
-  output: __S(18, __c2, 2) as any as S.Schema<TrustAnchorDetailResponse>,
+  output: __S(192, __c24, 0) as any as S.Schema<TrustAnchorDetailResponse>,
   errors: [AccessDeniedException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -649,7 +649,7 @@ export const enableTrustAnchor: API.OperationMethod<
 }));
 
 export interface GetCrlRequest extends ScalarCrlRequest {}
-const GetCrlRequest = /*@__PURE__*/ __S(21, __c2, 5)
+const GetCrlRequest = /*@__PURE__*/ __S(216, __c27, 0)
   .pipe(/*@__PURE__*/ T.Http({ method: "GET", uri: "/crl/{crlId}" }))
   .annotate({ identifier: "GetCrlRequest" }) as any as S.Schema<GetCrlRequest>;
 export type GetCrlError = ResourceNotFoundException | CommonErrors;
@@ -665,7 +665,7 @@ export const getCrl: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetCrlRequest,
-  output: __S(23, __c2, 7) as any as S.Schema<CrlDetailResponse>,
+  output: __S(232, __c29, 0) as any as S.Schema<CrlDetailResponse>,
   errors: [ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -673,7 +673,7 @@ export const getCrl: API.OperationMethod<
 }));
 
 export interface GetProfileRequest extends ScalarProfileRequest {}
-const GetProfileRequest = /*@__PURE__*/ __S(24, __c3, 0)
+const GetProfileRequest = /*@__PURE__*/ __S(240, __c30, 0)
   .pipe(/*@__PURE__*/ T.Http({ method: "GET", uri: "/profile/{profileId}" }))
   .annotate({ identifier: "GetProfileRequest" }) as any as S.Schema<GetProfileRequest>;
 export type GetProfileError = AccessDeniedException | ResourceNotFoundException | CommonErrors;
@@ -689,7 +689,7 @@ export const getProfile: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetProfileRequest,
-  output: __S(9, __c1, 1) as any as S.Schema<ProfileDetailResponse>,
+  output: __S(160, __c20, 0) as any as S.Schema<ProfileDetailResponse>,
   errors: [AccessDeniedException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -708,8 +708,8 @@ export const getSubject: API.OperationMethod<
   GetSubjectError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(26, __c3, 2) as any as S.Schema<ScalarSubjectRequest>,
-  output: __S(33, __c4, 1) as any as S.Schema<SubjectDetailResponse>,
+  input: __S(0, __c0, 0) as any as S.Schema<ScalarSubjectRequest>,
+  output: __S(7, __c0, 7) as any as S.Schema<SubjectDetailResponse>,
   errors: [AccessDeniedException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -717,7 +717,7 @@ export const getSubject: API.OperationMethod<
 }));
 
 export interface GetTrustAnchorRequest extends ScalarTrustAnchorRequest {}
-const GetTrustAnchorRequest = /*@__PURE__*/ __S(25, __c3, 1)
+const GetTrustAnchorRequest = /*@__PURE__*/ __S(248, __c31, 0)
   .pipe(/*@__PURE__*/ T.Http({ method: "GET", uri: "/trustanchor/{trustAnchorId}" }))
   .annotate({ identifier: "GetTrustAnchorRequest" }) as any as S.Schema<GetTrustAnchorRequest>;
 export type GetTrustAnchorError =
@@ -737,7 +737,7 @@ export const getTrustAnchor: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: GetTrustAnchorRequest,
-  output: __S(18, __c2, 2) as any as S.Schema<TrustAnchorDetailResponse>,
+  output: __S(192, __c24, 0) as any as S.Schema<TrustAnchorDetailResponse>,
   errors: [AccessDeniedException, ResourceNotFoundException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -756,8 +756,8 @@ export const importCrl: API.OperationMethod<
   ImportCrlError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(34, __c4, 2) as any as S.Schema<ImportCrlRequest>,
-  output: __S(23, __c2, 7) as any as S.Schema<CrlDetailResponse>,
+  input: __S(8, __c1, 0) as any as S.Schema<ImportCrlRequest>,
+  output: __S(232, __c29, 0) as any as S.Schema<CrlDetailResponse>,
   errors: [AccessDeniedException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -777,8 +777,8 @@ export const listCrls: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   CrlDetail
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(35, __c4, 3) as any as S.Schema<ListRequest>,
-  output: __S(37, __c4, 5) as any as S.Schema<ListCrlsResponse>,
+  input: __S(24, __c3, 0) as any as S.Schema<ListRequest>,
+  output: __S(17, __c2, 1) as any as S.Schema<ListCrlsResponse>,
   errors: [AccessDeniedException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -787,7 +787,7 @@ export const listCrls: API.PaginatedOperationMethod<
 })) as any;
 
 export interface ListProfilesRequest extends ListRequest {}
-const ListProfilesRequest = /*@__PURE__*/ __S(35, __c4, 3)
+const ListProfilesRequest = /*@__PURE__*/ __S(24, __c3, 0)
   .pipe(/*@__PURE__*/ T.Http({ method: "GET", uri: "/profiles" }))
   .annotate({ identifier: "ListProfilesRequest" }) as any as S.Schema<ListProfilesRequest>;
 export type ListProfilesError = AccessDeniedException | ValidationException | CommonErrors;
@@ -804,7 +804,7 @@ export const listProfiles: API.PaginatedOperationMethod<
   ProfileDetail
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProfilesRequest,
-  output: __S(39, __c4, 7) as any as S.Schema<ListProfilesResponse>,
+  output: __S(33, __c4, 1) as any as S.Schema<ListProfilesResponse>,
   errors: [AccessDeniedException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -813,7 +813,7 @@ export const listProfiles: API.PaginatedOperationMethod<
 })) as any;
 
 export interface ListSubjectsRequest extends ListRequest {}
-const ListSubjectsRequest = /*@__PURE__*/ __S(35, __c4, 3)
+const ListSubjectsRequest = /*@__PURE__*/ __S(24, __c3, 0)
   .pipe(/*@__PURE__*/ T.Http({ method: "GET", uri: "/subjects" }))
   .annotate({ identifier: "ListSubjectsRequest" }) as any as S.Schema<ListSubjectsRequest>;
 export type ListSubjectsError = AccessDeniedException | ValidationException | CommonErrors;
@@ -854,8 +854,8 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(43, __c5, 3) as any as S.Schema<ListTagsForResourceRequest>,
-  output: __S(44, __c5, 4) as any as S.Schema<ListTagsForResourceResponse>,
+  input: __S(48, __c6, 0) as any as S.Schema<ListTagsForResourceRequest>,
+  output: __S(49, __c6, 1) as any as S.Schema<ListTagsForResourceResponse>,
   errors: [AccessDeniedException, ResourceNotFoundException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -863,7 +863,7 @@ export const listTagsForResource: API.OperationMethod<
 }));
 
 export interface ListTrustAnchorsRequest extends ListRequest {}
-const ListTrustAnchorsRequest = /*@__PURE__*/ __S(35, __c4, 3)
+const ListTrustAnchorsRequest = /*@__PURE__*/ __S(24, __c3, 0)
   .pipe(/*@__PURE__*/ T.Http({ method: "GET", uri: "/trustanchors" }))
   .annotate({ identifier: "ListTrustAnchorsRequest" }) as any as S.Schema<ListTrustAnchorsRequest>;
 export type ListTrustAnchorsError = AccessDeniedException | ValidationException | CommonErrors;
@@ -880,7 +880,7 @@ export const listTrustAnchors: API.PaginatedOperationMethod<
   TrustAnchorDetail
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListTrustAnchorsRequest,
-  output: __S(46, __c5, 6) as any as S.Schema<ListTrustAnchorsResponse>,
+  output: __S(57, __c7, 1) as any as S.Schema<ListTrustAnchorsResponse>,
   errors: [AccessDeniedException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -902,8 +902,8 @@ export const putAttributeMapping: API.OperationMethod<
   PutAttributeMappingError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(47, __c5, 7) as any as S.Schema<PutAttributeMappingRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<PutAttributeMappingResponse>,
+  input: __S(64, __c8, 0) as any as S.Schema<PutAttributeMappingRequest>,
+  output: __S(208, __c26, 0) as any as S.Schema<PutAttributeMappingResponse>,
   errors: [AccessDeniedException, ResourceNotFoundException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -928,8 +928,8 @@ export const putNotificationSettings: API.OperationMethod<
   PutNotificationSettingsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(48, __c6, 0) as any as S.Schema<PutNotificationSettingsRequest>,
-  output: __S(18, __c2, 2) as any as S.Schema<PutNotificationSettingsResponse>,
+  input: __S(72, __c9, 0) as any as S.Schema<PutNotificationSettingsRequest>,
+  output: __S(192, __c24, 0) as any as S.Schema<PutNotificationSettingsResponse>,
   errors: [AccessDeniedException, ResourceNotFoundException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -952,8 +952,8 @@ export const resetNotificationSettings: API.OperationMethod<
   ResetNotificationSettingsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(51, __c6, 3) as any as S.Schema<ResetNotificationSettingsRequest>,
-  output: __S(18, __c2, 2) as any as S.Schema<ResetNotificationSettingsResponse>,
+  input: __S(82, __c10, 2) as any as S.Schema<ResetNotificationSettingsRequest>,
+  output: __S(192, __c24, 0) as any as S.Schema<ResetNotificationSettingsResponse>,
   errors: [AccessDeniedException, ResourceNotFoundException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -977,8 +977,8 @@ export const tagResource: API.OperationMethod<
   TagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(52, __c6, 4) as any as S.Schema<TagResourceRequest>,
-  output: __S(53, __c6, 5) as any as S.Schema<TagResourceResponse>,
+  input: __S(88, __c11, 0) as any as S.Schema<TagResourceRequest>,
+  output: __S(96, __c12, 0) as any as S.Schema<TagResourceResponse>,
   errors: [
     AccessDeniedException,
     ResourceNotFoundException,
@@ -1006,8 +1006,8 @@ export const untagResource: API.OperationMethod<
   UntagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(55, __c6, 7) as any as S.Schema<UntagResourceRequest>,
-  output: __S(53, __c6, 5) as any as S.Schema<UntagResourceResponse>,
+  input: __S(105, __c13, 1) as any as S.Schema<UntagResourceRequest>,
+  output: __S(96, __c12, 0) as any as S.Schema<UntagResourceResponse>,
   errors: [AccessDeniedException, ResourceNotFoundException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1030,8 +1030,8 @@ export const updateCrl: API.OperationMethod<
   UpdateCrlError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(56, __c7, 0) as any as S.Schema<UpdateCrlRequest>,
-  output: __S(23, __c2, 7) as any as S.Schema<CrlDetailResponse>,
+  input: __S(112, __c14, 0) as any as S.Schema<UpdateCrlRequest>,
+  output: __S(232, __c29, 0) as any as S.Schema<CrlDetailResponse>,
   errors: [AccessDeniedException, ResourceNotFoundException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1054,8 +1054,8 @@ export const updateProfile: API.OperationMethod<
   UpdateProfileError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(57, __c7, 1) as any as S.Schema<UpdateProfileRequest>,
-  output: __S(9, __c1, 1) as any as S.Schema<ProfileDetailResponse>,
+  input: __S(120, __c15, 0) as any as S.Schema<UpdateProfileRequest>,
+  output: __S(160, __c20, 0) as any as S.Schema<ProfileDetailResponse>,
   errors: [AccessDeniedException, ResourceNotFoundException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1078,8 +1078,8 @@ export const updateTrustAnchor: API.OperationMethod<
   UpdateTrustAnchorError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(58, __c7, 2) as any as S.Schema<UpdateTrustAnchorRequest>,
-  output: __S(18, __c2, 2) as any as S.Schema<TrustAnchorDetailResponse>,
+  input: __S(128, __c16, 0) as any as S.Schema<UpdateTrustAnchorRequest>,
+  output: __S(192, __c24, 0) as any as S.Schema<TrustAnchorDetailResponse>,
   errors: [AccessDeniedException, ResourceNotFoundException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1090,213 +1090,6 @@ export const updateTrustAnchor: API.OperationMethod<
 function __c0(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(S.String);
-    case 1:
-      return S.suspend(() => S.Struct({ key: SensitiveString, value: SensitiveString })).annotate({
-        identifier: "Tag",
-      });
-    case 2:
-      return S.Array(__S(1, __c0, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String,
-          requireInstanceProperties: S.optional(S.Boolean),
-          sessionPolicy: S.optional(S.String),
-          roleArns: __S(0, __c0, 0),
-          managedPolicyArns: S.optional(__S(0, __c0, 0)),
-          durationSeconds: S.optional(S.Number),
-          enabled: S.optional(S.Boolean),
-          tags: S.optional(__S(2, __c0, 2)),
-          acceptRoleSessionName: S.optional(S.Boolean),
-        }).pipe(T.all(T.Http({ method: "POST", uri: "/profiles" }), svc, auth, proto, ver, rules)),
-      ).annotate({ identifier: "CreateProfileRequest" });
-    case 4:
-      return S.suspend(() => S.Struct({ specifier: S.String })).annotate({
-        identifier: "MappingRule",
-      });
-    case 5:
-      return S.Array(__S(4, __c0, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          certificateField: S.optional(S.String),
-          mappingRules: S.optional(__S(5, __c0, 5)),
-        }),
-      ).annotate({ identifier: "AttributeMapping" });
-    case 7:
-      return S.Array(__S(6, __c0, 6));
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          profileId: S.optional(S.String),
-          profileArn: S.optional(S.String),
-          name: S.optional(S.String),
-          requireInstanceProperties: S.optional(S.Boolean),
-          enabled: S.optional(S.Boolean),
-          createdBy: S.optional(S.String),
-          sessionPolicy: S.optional(S.String),
-          roleArns: S.optional(__S(0, __c0, 0)),
-          managedPolicyArns: S.optional(__S(0, __c0, 0)),
-          createdAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-          updatedAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-          durationSeconds: S.optional(S.Number),
-          acceptRoleSessionName: S.optional(S.Boolean),
-          attributeMappings: S.optional(__S(7, __c0, 7)),
-        }),
-      ).annotate({ identifier: "ProfileDetail" });
-    case 1:
-      return S.suspend(() => S.Struct({ profile: S.optional(__S(8, __c1, 0)) })).annotate({
-        identifier: "ProfileDetailResponse",
-      });
-    case 2:
-      return S.Union([
-        /*@__PURE__*/ S.Struct({ x509CertificateData: S.String }),
-        /*@__PURE__*/ S.Struct({ acmPcaArn: S.String }),
-      ]);
-    case 3:
-      return S.suspend(() =>
-        S.Struct({ sourceType: S.optional(S.String), sourceData: S.optional(__S(10, __c1, 2)) }),
-      ).annotate({ identifier: "Source" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          enabled: S.Boolean,
-          event: S.String,
-          threshold: S.optional(S.Number),
-          channel: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "NotificationSetting" });
-    case 5:
-      return S.Array(__S(12, __c1, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String,
-          source: __S(11, __c1, 3),
-          enabled: S.optional(S.Boolean),
-          tags: S.optional(__S(2, __c0, 2)),
-          notificationSettings: S.optional(__S(13, __c1, 5)),
-        }).pipe(
-          T.all(T.Http({ method: "POST", uri: "/trustanchors" }), svc, auth, proto, ver, rules),
-        ),
-      ).annotate({ identifier: "CreateTrustAnchorRequest" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          enabled: S.Boolean,
-          event: S.String,
-          threshold: S.optional(S.Number),
-          channel: S.optional(S.String),
-          configuredBy: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "NotificationSettingDetail",
-      });
-  }
-}
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(15, __c1, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          trustAnchorId: S.optional(S.String),
-          trustAnchorArn: S.optional(S.String),
-          name: S.optional(S.String),
-          source: S.optional(__S(11, __c1, 3)),
-          enabled: S.optional(S.Boolean),
-          createdAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-          updatedAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-          notificationSettings: S.optional(__S(16, __c2, 0)),
-        }),
-      ).annotate({ identifier: "TrustAnchorDetail" });
-    case 2:
-      return S.suspend(() => S.Struct({ trustAnchor: __S(17, __c2, 1) })).annotate({
-        identifier: "TrustAnchorDetailResponse",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          profileId: S.String.pipe(T.HttpLabel("profileId")),
-          certificateField: S.String.pipe(T.HttpQuery("certificateField")),
-          specifiers: S.optional(__S(0, __c0, 0)).pipe(T.HttpQuery("specifiers")),
-        }).pipe(
-          T.all(
-            T.Http({ method: "DELETE", uri: "/profiles/{profileId}/mappings" }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({
-        identifier: "DeleteAttributeMappingRequest",
-      });
-    case 4:
-      return S.suspend(() => S.Struct({ profile: __S(8, __c1, 0) })).annotate({
-        identifier: "DeleteAttributeMappingResponse",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({ crlId: S.String.pipe(T.HttpLabel("crlId")) }).pipe(
-          T.all(T.Http({ method: "DELETE", uri: "/crl/{crlId}" }), svc, auth, proto, ver, rules),
-        ),
-      ).annotate({ identifier: "ScalarCrlRequest" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          crlId: S.optional(S.String),
-          crlArn: S.optional(S.String),
-          name: S.optional(S.String),
-          enabled: S.optional(S.Boolean),
-          crlData: S.optional(T.Blob),
-          trustAnchorArn: S.optional(S.String),
-          createdAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-          updatedAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-        }),
-      ).annotate({ identifier: "CrlDetail" });
-    case 7:
-      return S.suspend(() => S.Struct({ crl: __S(22, __c2, 6) })).annotate({
-        identifier: "CrlDetailResponse",
-      });
-  }
-}
-function __c3(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({ profileId: S.String.pipe(T.HttpLabel("profileId")) }).pipe(
-          T.all(
-            T.Http({ method: "DELETE", uri: "/profile/{profileId}" }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({ identifier: "ScalarProfileRequest" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({ trustAnchorId: S.String.pipe(T.HttpLabel("trustAnchorId")) }).pipe(
-          T.all(
-            T.Http({ method: "DELETE", uri: "/trustanchor/{trustAnchorId}" }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({ identifier: "ScalarTrustAnchorRequest" });
-    case 2:
       return S.suspend(() =>
         S.Struct({ subjectId: S.String.pipe(T.HttpLabel("subjectId")) }).pipe(
           T.all(
@@ -1309,7 +1102,7 @@ function __c3(j: number): any {
           ),
         ),
       ).annotate({ identifier: "ScalarSubjectRequest" });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           seenAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
@@ -1320,25 +1113,21 @@ function __c3(j: number): any {
           failed: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "CredentialSummary" });
-    case 4:
-      return S.Array(__S(27, __c3, 3));
-    case 5:
+    case 2:
+      return S.Array(__S(1, __c0, 1));
+    case 3:
       return S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
-    case 6:
+    case 4:
       return S.suspend(() =>
         S.Struct({
           seenAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-          properties: S.optional(__S(29, __c3, 5)),
+          properties: S.optional(__S(3, __c0, 3)),
           failed: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "InstanceProperty" });
-    case 7:
-      return S.Array(__S(30, __c3, 6));
-  }
-}
-function __c4(j: number): any {
-  switch (j) {
-    case 0:
+    case 5:
+      return S.Array(__S(4, __c0, 4));
+    case 6:
       return S.suspend(() =>
         S.Struct({
           subjectArn: S.optional(S.String),
@@ -1348,42 +1137,58 @@ function __c4(j: number): any {
           lastSeenAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
           createdAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
           updatedAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-          credentials: S.optional(__S(28, __c3, 4)),
-          instanceProperties: S.optional(__S(31, __c3, 7)),
+          credentials: S.optional(__S(2, __c0, 2)),
+          instanceProperties: S.optional(__S(5, __c0, 5)),
         }),
       ).annotate({ identifier: "SubjectDetail" });
-    case 1:
-      return S.suspend(() => S.Struct({ subject: S.optional(__S(32, __c4, 0)) })).annotate({
+    case 7:
+      return S.suspend(() => S.Struct({ subject: S.optional(__S(6, __c0, 6)) })).annotate({
         identifier: "SubjectDetailResponse",
       });
-    case 2:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String,
           crlData: T.Blob,
           enabled: S.optional(S.Boolean),
-          tags: S.optional(__S(2, __c0, 2)),
+          tags: S.optional(__S(145, __c18, 1)),
           trustAnchorArn: S.String,
         }).pipe(T.all(T.Http({ method: "POST", uri: "/crls" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "ImportCrlRequest" });
-    case 3:
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(224, __c28, 0));
+    case 1:
+      return S.suspend(() =>
+        S.Struct({ nextToken: S.optional(S.String), crls: S.optional(__S(16, __c2, 0)) }),
+      ).annotate({ identifier: "ListCrlsResponse" });
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
           pageSize: S.optional(S.Number).pipe(T.HttpQuery("pageSize")),
         }).pipe(T.all(T.Http({ method: "GET", uri: "/crls" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "ListRequest" });
-    case 4:
-      return S.Array(__S(22, __c2, 6));
-    case 5:
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(157, __c19, 5));
+    case 1:
       return S.suspend(() =>
-        S.Struct({ nextToken: S.optional(S.String), crls: S.optional(__S(36, __c4, 4)) }),
-      ).annotate({ identifier: "ListCrlsResponse" });
-    case 6:
-      return S.Array(__S(8, __c1, 0));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({ nextToken: S.optional(S.String), profiles: S.optional(__S(38, __c4, 6)) }),
+        S.Struct({ nextToken: S.optional(S.String), profiles: S.optional(__S(32, __c4, 0)) }),
       ).annotate({ identifier: "ListProfilesResponse" });
   }
 }
@@ -1407,7 +1212,11 @@ function __c5(j: number): any {
       return S.suspend(() =>
         S.Struct({ subjects: S.optional(__S(41, __c5, 1)), nextToken: S.optional(S.String) }),
       ).annotate({ identifier: "ListSubjectsResponse" });
-    case 3:
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ resourceArn: S.String.pipe(T.HttpQuery("resourceArn")) }).pipe(
           T.all(
@@ -1422,22 +1231,30 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "ListTagsForResourceRequest",
       });
-    case 4:
-      return S.suspend(() => S.Struct({ tags: S.optional(__S(2, __c0, 2)) })).annotate({
+    case 1:
+      return S.suspend(() => S.Struct({ tags: S.optional(__S(145, __c18, 1)) })).annotate({
         identifier: "ListTagsForResourceResponse",
       });
-    case 5:
-      return S.Array(__S(17, __c2, 1));
-    case 6:
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(188, __c23, 4));
+    case 1:
       return S.suspend(() =>
-        S.Struct({ nextToken: S.optional(S.String), trustAnchors: S.optional(__S(45, __c5, 5)) }),
+        S.Struct({ nextToken: S.optional(S.String), trustAnchors: S.optional(__S(56, __c7, 0)) }),
       ).annotate({ identifier: "ListTrustAnchorsResponse" });
-    case 7:
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           profileId: S.String.pipe(T.HttpLabel("profileId")),
           certificateField: S.String,
-          mappingRules: __S(5, __c0, 5),
+          mappingRules: __S(154, __c19, 2),
         }).pipe(
           T.all(
             T.Http({ method: "PUT", uri: "/profiles/{profileId}/mappings" }),
@@ -1453,11 +1270,11 @@ function __c5(j: number): any {
       });
   }
 }
-function __c6(j: number): any {
+function __c9(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({ trustAnchorId: S.String, notificationSettings: __S(13, __c1, 5) }).pipe(
+        S.Struct({ trustAnchorId: S.String, notificationSettings: __S(177, __c22, 1) }).pipe(
           T.all(
             T.Http({ method: "PATCH", uri: "/put-notifications-settings" }),
             svc,
@@ -1470,18 +1287,19 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "PutNotificationSettingsRequest",
       });
-    case 1:
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() => S.Struct({ event: S.String, channel: S.optional(S.String) })).annotate(
         { identifier: "NotificationSettingKey" },
       );
+    case 1:
+      return S.Array(__S(80, __c10, 0));
     case 2:
-      return S.Array(__S(49, __c6, 1));
-    case 3:
       return S.suspend(() =>
-        S.Struct({
-          trustAnchorId: S.String,
-          notificationSettingKeys: __S(50, __c6, 2),
-        }).pipe(
+        S.Struct({ trustAnchorId: S.String, notificationSettingKeys: __S(81, __c10, 1) }).pipe(
           T.all(
             T.Http({ method: "PATCH", uri: "/reset-notifications-settings" }),
             svc,
@@ -1494,27 +1312,39 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "ResetNotificationSettingsRequest",
       });
-    case 4:
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
-        S.Struct({ resourceArn: S.String, tags: __S(2, __c0, 2) }).pipe(
+        S.Struct({ resourceArn: S.String, tags: __S(145, __c18, 1) }).pipe(
           T.all(T.Http({ method: "POST", uri: "/TagResource" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "TagResourceRequest" });
-    case 5:
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "TagResourceResponse",
       });
-    case 6:
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
       return S.Array(SensitiveString);
-    case 7:
+    case 1:
       return S.suspend(() =>
-        S.Struct({ resourceArn: S.String, tagKeys: __S(54, __c6, 6) }).pipe(
+        S.Struct({ resourceArn: S.String, tagKeys: __S(104, __c13, 0) }).pipe(
           T.all(T.Http({ method: "POST", uri: "/UntagResource" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "UntagResourceRequest" });
   }
 }
-function __c7(j: number): any {
+function __c14(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1526,14 +1356,18 @@ function __c7(j: number): any {
           T.all(T.Http({ method: "PATCH", uri: "/crl/{crlId}" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "UpdateCrlRequest" });
-    case 1:
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           profileId: S.String.pipe(T.HttpLabel("profileId")),
           name: S.optional(S.String),
           sessionPolicy: S.optional(S.String),
-          roleArns: S.optional(__S(0, __c0, 0)),
-          managedPolicyArns: S.optional(__S(0, __c0, 0)),
+          roleArns: S.optional(__S(152, __c19, 0)),
+          managedPolicyArns: S.optional(__S(152, __c19, 0)),
           durationSeconds: S.optional(S.Number),
           acceptRoleSessionName: S.optional(S.Boolean),
         }).pipe(
@@ -1547,12 +1381,16 @@ function __c7(j: number): any {
           ),
         ),
       ).annotate({ identifier: "UpdateProfileRequest" });
-    case 2:
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           trustAnchorId: S.String.pipe(T.HttpLabel("trustAnchorId")),
           name: S.optional(S.String),
-          source: S.optional(__S(11, __c1, 3)),
+          source: S.optional(__S(185, __c23, 1)),
         }).pipe(
           T.all(
             T.Http({ method: "PATCH", uri: "/trustanchor/{trustAnchorId}" }),
@@ -1566,7 +1404,261 @@ function __c7(j: number): any {
       ).annotate({ identifier: "UpdateTrustAnchorRequest" });
   }
 }
-
+function __c17(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String,
+          requireInstanceProperties: S.optional(S.Boolean),
+          sessionPolicy: S.optional(S.String),
+          roleArns: __S(152, __c19, 0),
+          managedPolicyArns: S.optional(__S(152, __c19, 0)),
+          durationSeconds: S.optional(S.Number),
+          enabled: S.optional(S.Boolean),
+          tags: S.optional(__S(145, __c18, 1)),
+          acceptRoleSessionName: S.optional(S.Boolean),
+        }).pipe(T.all(T.Http({ method: "POST", uri: "/profiles" }), svc, auth, proto, ver, rules)),
+      ).annotate({ identifier: "CreateProfileRequest" });
+  }
+}
+function __c18(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({ key: SensitiveString, value: SensitiveString })).annotate({
+        identifier: "Tag",
+      });
+    case 1:
+      return S.Array(__S(144, __c18, 0));
+  }
+}
+function __c19(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+    case 1:
+      return S.suspend(() => S.Struct({ specifier: S.String })).annotate({
+        identifier: "MappingRule",
+      });
+    case 2:
+      return S.Array(__S(153, __c19, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          certificateField: S.optional(S.String),
+          mappingRules: S.optional(__S(154, __c19, 2)),
+        }),
+      ).annotate({ identifier: "AttributeMapping" });
+    case 4:
+      return S.Array(__S(155, __c19, 3));
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          profileId: S.optional(S.String),
+          profileArn: S.optional(S.String),
+          name: S.optional(S.String),
+          requireInstanceProperties: S.optional(S.Boolean),
+          enabled: S.optional(S.Boolean),
+          createdBy: S.optional(S.String),
+          sessionPolicy: S.optional(S.String),
+          roleArns: S.optional(__S(152, __c19, 0)),
+          managedPolicyArns: S.optional(__S(152, __c19, 0)),
+          createdAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
+          updatedAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
+          durationSeconds: S.optional(S.Number),
+          acceptRoleSessionName: S.optional(S.Boolean),
+          attributeMappings: S.optional(__S(156, __c19, 4)),
+        }),
+      ).annotate({ identifier: "ProfileDetail" });
+  }
+}
+function __c20(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({ profile: S.optional(__S(157, __c19, 5)) })).annotate({
+        identifier: "ProfileDetailResponse",
+      });
+  }
+}
+function __c21(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String,
+          source: __S(185, __c23, 1),
+          enabled: S.optional(S.Boolean),
+          tags: S.optional(__S(145, __c18, 1)),
+          notificationSettings: S.optional(__S(177, __c22, 1)),
+        }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/trustanchors" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "CreateTrustAnchorRequest" });
+  }
+}
+function __c22(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          enabled: S.Boolean,
+          event: S.String,
+          threshold: S.optional(S.Number),
+          channel: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "NotificationSetting" });
+    case 1:
+      return S.Array(__S(176, __c22, 0));
+  }
+}
+function __c23(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Union([
+        /*@__PURE__*/ S.Struct({ x509CertificateData: S.String }),
+        /*@__PURE__*/ S.Struct({ acmPcaArn: S.String }),
+      ]);
+    case 1:
+      return S.suspend(() =>
+        S.Struct({ sourceType: S.optional(S.String), sourceData: S.optional(__S(184, __c23, 0)) }),
+      ).annotate({ identifier: "Source" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          enabled: S.Boolean,
+          event: S.String,
+          threshold: S.optional(S.Number),
+          channel: S.optional(S.String),
+          configuredBy: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "NotificationSettingDetail",
+      });
+    case 3:
+      return S.Array(__S(186, __c23, 2));
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          trustAnchorId: S.optional(S.String),
+          trustAnchorArn: S.optional(S.String),
+          name: S.optional(S.String),
+          source: S.optional(__S(185, __c23, 1)),
+          enabled: S.optional(S.Boolean),
+          createdAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
+          updatedAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
+          notificationSettings: S.optional(__S(187, __c23, 3)),
+        }),
+      ).annotate({ identifier: "TrustAnchorDetail" });
+  }
+}
+function __c24(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({ trustAnchor: __S(188, __c23, 4) })).annotate({
+        identifier: "TrustAnchorDetailResponse",
+      });
+  }
+}
+function __c25(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          profileId: S.String.pipe(T.HttpLabel("profileId")),
+          certificateField: S.String.pipe(T.HttpQuery("certificateField")),
+          specifiers: S.optional(__S(152, __c19, 0)).pipe(T.HttpQuery("specifiers")),
+        }).pipe(
+          T.all(
+            T.Http({ method: "DELETE", uri: "/profiles/{profileId}/mappings" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "DeleteAttributeMappingRequest",
+      });
+  }
+}
+function __c26(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({ profile: __S(157, __c19, 5) })).annotate({
+        identifier: "DeleteAttributeMappingResponse",
+      });
+  }
+}
+function __c27(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ crlId: S.String.pipe(T.HttpLabel("crlId")) }).pipe(
+          T.all(T.Http({ method: "DELETE", uri: "/crl/{crlId}" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({ identifier: "ScalarCrlRequest" });
+  }
+}
+function __c28(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          crlId: S.optional(S.String),
+          crlArn: S.optional(S.String),
+          name: S.optional(S.String),
+          enabled: S.optional(S.Boolean),
+          crlData: S.optional(T.Blob),
+          trustAnchorArn: S.optional(S.String),
+          createdAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
+          updatedAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
+        }),
+      ).annotate({ identifier: "CrlDetail" });
+  }
+}
+function __c29(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({ crl: __S(224, __c28, 0) })).annotate({
+        identifier: "CrlDetailResponse",
+      });
+  }
+}
+function __c30(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ profileId: S.String.pipe(T.HttpLabel("profileId")) }).pipe(
+          T.all(
+            T.Http({ method: "DELETE", uri: "/profile/{profileId}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "ScalarProfileRequest" });
+  }
+}
+function __c31(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ trustAnchorId: S.String.pipe(T.HttpLabel("trustAnchorId")) }).pipe(
+          T.all(
+            T.Http({ method: "DELETE", uri: "/trustanchor/{trustAnchorId}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "ScalarTrustAnchorRequest" });
+  }
+}
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

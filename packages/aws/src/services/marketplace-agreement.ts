@@ -163,7 +163,7 @@ export class ValidationException
         }),
       ),
       fields: /*@__PURE__*/ S.optional(
-        /*@__PURE__*/ S.suspend(() => __S(139, __c17, 3)).annotate({
+        /*@__PURE__*/ S.suspend(() => __S(929, __c29, 1)).annotate({
           identifier: "ValidationExceptionFieldList",
         }),
       ),
@@ -1335,8 +1335,8 @@ export const acceptAgreementCancellationRequest: API.OperationMethod<
   AcceptAgreementCancellationRequestError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(0, __c0, 0) as any as S.Schema<AcceptAgreementCancellationRequestInput>,
-  output: __S(1, __c0, 1) as any as S.Schema<AcceptAgreementCancellationRequestOutput>,
+  input: __S(960, __c30, 0) as any as S.Schema<AcceptAgreementCancellationRequestInput>,
+  output: __S(992, __c31, 0) as any as S.Schema<AcceptAgreementCancellationRequestOutput>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1369,8 +1369,8 @@ export const acceptAgreementPaymentRequest: API.OperationMethod<
   AcceptAgreementPaymentRequestError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2, __c0, 2) as any as S.Schema<AcceptAgreementPaymentRequestInput>,
-  output: __S(3, __c0, 3) as any as S.Schema<AcceptAgreementPaymentRequestOutput>,
+  input: __S(1024, __c32, 0) as any as S.Schema<AcceptAgreementPaymentRequestInput>,
+  output: __S(1056, __c33, 0) as any as S.Schema<AcceptAgreementPaymentRequestOutput>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1401,8 +1401,8 @@ export const acceptAgreementRequest: API.OperationMethod<
   AcceptAgreementRequestError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(6, __c0, 6) as any as S.Schema<AcceptAgreementRequestInput>,
-  output: __S(7, __c0, 7) as any as S.Schema<AcceptAgreementRequestOutput>,
+  input: __S(1088, __c34, 0) as any as S.Schema<AcceptAgreementRequestInput>,
+  output: __S(1089, __c34, 1) as any as S.Schema<AcceptAgreementRequestOutput>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1434,8 +1434,8 @@ export const batchCreateBillingAdjustmentRequest: API.OperationMethod<
   BatchCreateBillingAdjustmentRequestError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(10, __c1, 2) as any as S.Schema<BatchCreateBillingAdjustmentRequestInput>,
-  output: __S(15, __c1, 7) as any as S.Schema<BatchCreateBillingAdjustmentRequestOutput>,
+  input: __S(2, __c0, 2) as any as S.Schema<BatchCreateBillingAdjustmentRequestInput>,
+  output: __S(7, __c0, 7) as any as S.Schema<BatchCreateBillingAdjustmentRequestOutput>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1465,8 +1465,8 @@ export const cancelAgreement: API.OperationMethod<
   CancelAgreementError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(16, __c2, 0) as any as S.Schema<CancelAgreementInput>,
-  output: __S(17, __c2, 1) as any as S.Schema<CancelAgreementOutput>,
+  input: __S(32, __c1, 0) as any as S.Schema<CancelAgreementInput>,
+  output: __S(64, __c2, 0) as any as S.Schema<CancelAgreementOutput>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1499,8 +1499,8 @@ export const cancelAgreementCancellationRequest: API.OperationMethod<
   CancelAgreementCancellationRequestError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(18, __c2, 2) as any as S.Schema<CancelAgreementCancellationRequestInput>,
-  output: __S(19, __c2, 3) as any as S.Schema<CancelAgreementCancellationRequestOutput>,
+  input: __S(96, __c3, 0) as any as S.Schema<CancelAgreementCancellationRequestInput>,
+  output: __S(128, __c4, 0) as any as S.Schema<CancelAgreementCancellationRequestOutput>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1533,8 +1533,8 @@ export const cancelAgreementPaymentRequest: API.OperationMethod<
   CancelAgreementPaymentRequestError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(20, __c2, 4) as any as S.Schema<CancelAgreementPaymentRequestInput>,
-  output: __S(3, __c0, 3) as any as S.Schema<CancelAgreementPaymentRequestOutput>,
+  input: __S(160, __c5, 0) as any as S.Schema<CancelAgreementPaymentRequestInput>,
+  output: __S(1056, __c33, 0) as any as S.Schema<CancelAgreementPaymentRequestOutput>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1566,8 +1566,8 @@ export const createAgreementRequest: API.OperationMethod<
   CreateAgreementRequestError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(30, __c3, 6) as any as S.Schema<CreateAgreementRequestInput>,
-  output: __S(40, __c5, 0) as any as S.Schema<CreateAgreementRequestOutput>,
+  input: __S(196, __c6, 4) as any as S.Schema<CreateAgreementRequestInput>,
+  output: __S(205, __c6, 13) as any as S.Schema<CreateAgreementRequestOutput>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1598,8 +1598,8 @@ export const describeAgreement: API.OperationMethod<
   DescribeAgreementError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(41, __c5, 1) as any as S.Schema<DescribeAgreementInput>,
-  output: __S(49, __c6, 1) as any as S.Schema<DescribeAgreementOutput>,
+  input: __S(288, __c9, 0) as any as S.Schema<DescribeAgreementInput>,
+  output: __S(292, __c9, 4) as any as S.Schema<DescribeAgreementOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1628,8 +1628,8 @@ export const getAgreementCancellationRequest: API.OperationMethod<
   GetAgreementCancellationRequestError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(50, __c6, 2) as any as S.Schema<GetAgreementCancellationRequestInput>,
-  output: __S(19, __c2, 3) as any as S.Schema<GetAgreementCancellationRequestOutput>,
+  input: __S(384, __c12, 0) as any as S.Schema<GetAgreementCancellationRequestInput>,
+  output: __S(128, __c4, 0) as any as S.Schema<GetAgreementCancellationRequestOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1659,8 +1659,8 @@ export const getAgreementEntitlements: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   AgreementEntitlement
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(51, __c6, 3) as any as S.Schema<GetAgreementEntitlementsInput>,
-  output: __S(54, __c6, 6) as any as S.Schema<GetAgreementEntitlementsOutput>,
+  input: __S(416, __c13, 0) as any as S.Schema<GetAgreementEntitlementsInput>,
+  output: __S(419, __c13, 3) as any as S.Schema<GetAgreementEntitlementsOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1697,8 +1697,8 @@ export const getAgreementPaymentRequest: API.OperationMethod<
   GetAgreementPaymentRequestError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(55, __c6, 7) as any as S.Schema<GetAgreementPaymentRequestInput>,
-  output: __S(56, __c7, 0) as any as S.Schema<GetAgreementPaymentRequestOutput>,
+  input: __S(448, __c14, 0) as any as S.Schema<GetAgreementPaymentRequestInput>,
+  output: __S(449, __c14, 1) as any as S.Schema<GetAgreementPaymentRequestOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1738,8 +1738,8 @@ export const getAgreementTerms: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   AcceptedTerm
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(57, __c7, 1) as any as S.Schema<GetAgreementTermsInput>,
-  output: __S(95, __c11, 7) as any as S.Schema<GetAgreementTermsOutput>,
+  input: __S(480, __c15, 0) as any as S.Schema<GetAgreementTermsInput>,
+  output: __S(518, __c16, 6) as any as S.Schema<GetAgreementTermsOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1774,8 +1774,8 @@ export const getBillingAdjustmentRequest: API.OperationMethod<
   GetBillingAdjustmentRequestError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(96, __c12, 0) as any as S.Schema<GetBillingAdjustmentRequestInput>,
-  output: __S(97, __c12, 1) as any as S.Schema<GetBillingAdjustmentRequestOutput>,
+  input: __S(544, __c17, 0) as any as S.Schema<GetBillingAdjustmentRequestInput>,
+  output: __S(545, __c17, 1) as any as S.Schema<GetBillingAdjustmentRequestOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1806,8 +1806,8 @@ export const listAgreementCancellationRequests: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   AgreementCancellationRequestSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(98, __c12, 2) as any as S.Schema<ListAgreementCancellationRequestsInput>,
-  output: __S(101, __c12, 5) as any as S.Schema<ListAgreementCancellationRequestsOutput>,
+  input: __S(576, __c18, 0) as any as S.Schema<ListAgreementCancellationRequestsInput>,
+  output: __S(579, __c18, 3) as any as S.Schema<ListAgreementCancellationRequestsOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1841,8 +1841,8 @@ export const listAgreementCharges: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   Charge
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(102, __c12, 6) as any as S.Schema<ListAgreementChargesInput>,
-  output: __S(105, __c13, 1) as any as S.Schema<ListAgreementChargesOutput>,
+  input: __S(608, __c19, 0) as any as S.Schema<ListAgreementChargesInput>,
+  output: __S(611, __c19, 3) as any as S.Schema<ListAgreementChargesOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1879,8 +1879,8 @@ export const listAgreementInvoiceLineItems: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   AgreementInvoiceLineItemGroupSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(107, __c13, 3) as any as S.Schema<ListAgreementInvoiceLineItemsInput>,
-  output: __S(111, __c13, 7) as any as S.Schema<ListAgreementInvoiceLineItemsOutput>,
+  input: __S(641, __c20, 1) as any as S.Schema<ListAgreementInvoiceLineItemsInput>,
+  output: __S(645, __c20, 5) as any as S.Schema<ListAgreementInvoiceLineItemsOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1917,8 +1917,8 @@ export const listAgreementPaymentRequests: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   PaymentRequestSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(112, __c14, 0) as any as S.Schema<ListAgreementPaymentRequestsInput>,
-  output: __S(115, __c14, 3) as any as S.Schema<ListAgreementPaymentRequestsOutput>,
+  input: __S(672, __c21, 0) as any as S.Schema<ListAgreementPaymentRequestsInput>,
+  output: __S(675, __c21, 3) as any as S.Schema<ListAgreementPaymentRequestsOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1952,8 +1952,8 @@ export const listBillingAdjustmentRequests: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   BillingAdjustmentSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(116, __c14, 4) as any as S.Schema<ListBillingAdjustmentRequestsInput>,
-  output: __S(119, __c14, 7) as any as S.Schema<ListBillingAdjustmentRequestsOutput>,
+  input: __S(704, __c22, 0) as any as S.Schema<ListBillingAdjustmentRequestsInput>,
+  output: __S(707, __c22, 3) as any as S.Schema<ListBillingAdjustmentRequestsOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1990,8 +1990,8 @@ export const rejectAgreementCancellationRequest: API.OperationMethod<
   RejectAgreementCancellationRequestError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(120, __c15, 0) as any as S.Schema<RejectAgreementCancellationRequestInput>,
-  output: __S(121, __c15, 1) as any as S.Schema<RejectAgreementCancellationRequestOutput>,
+  input: __S(736, __c23, 0) as any as S.Schema<RejectAgreementCancellationRequestInput>,
+  output: __S(737, __c23, 1) as any as S.Schema<RejectAgreementCancellationRequestOutput>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -2024,8 +2024,8 @@ export const rejectAgreementPaymentRequest: API.OperationMethod<
   RejectAgreementPaymentRequestError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(122, __c15, 2) as any as S.Schema<RejectAgreementPaymentRequestInput>,
-  output: __S(123, __c15, 3) as any as S.Schema<RejectAgreementPaymentRequestOutput>,
+  input: __S(768, __c24, 0) as any as S.Schema<RejectAgreementPaymentRequestInput>,
+  output: __S(769, __c24, 1) as any as S.Schema<RejectAgreementPaymentRequestOutput>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -2055,8 +2055,8 @@ export const searchAgreements: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   AgreementViewSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(128, __c16, 0) as any as S.Schema<SearchAgreementsInput>,
-  output: __S(133, __c16, 5) as any as S.Schema<SearchAgreementsOutput>,
+  input: __S(804, __c25, 4) as any as S.Schema<SearchAgreementsInput>,
+  output: __S(809, __c25, 9) as any as S.Schema<SearchAgreementsOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -2091,8 +2091,8 @@ export const sendAgreementCancellationRequest: API.OperationMethod<
   SendAgreementCancellationRequestError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(134, __c16, 6) as any as S.Schema<SendAgreementCancellationRequestInput>,
-  output: __S(1, __c0, 1) as any as S.Schema<SendAgreementCancellationRequestOutput>,
+  input: __S(832, __c26, 0) as any as S.Schema<SendAgreementCancellationRequestInput>,
+  output: __S(992, __c31, 0) as any as S.Schema<SendAgreementCancellationRequestOutput>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -2125,8 +2125,8 @@ export const sendAgreementPaymentRequest: API.OperationMethod<
   SendAgreementPaymentRequestError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(135, __c16, 7) as any as S.Schema<SendAgreementPaymentRequestInput>,
-  output: __S(136, __c17, 0) as any as S.Schema<SendAgreementPaymentRequestOutput>,
+  input: __S(864, __c27, 0) as any as S.Schema<SendAgreementPaymentRequestInput>,
+  output: __S(865, __c27, 1) as any as S.Schema<SendAgreementPaymentRequestOutput>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -2157,8 +2157,8 @@ export const updatePurchaseOrders: API.OperationMethod<
   UpdatePurchaseOrdersError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(137, __c17, 1) as any as S.Schema<UpdatePurchaseOrdersInput>,
-  output: __S(17, __c2, 1) as any as S.Schema<UpdatePurchaseOrdersOutput>,
+  input: __S(896, __c28, 0) as any as S.Schema<UpdatePurchaseOrdersInput>,
+  output: __S(64, __c2, 0) as any as S.Schema<UpdatePurchaseOrdersOutput>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -2177,82 +2177,6 @@ function __c0(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({ agreementId: S.String, agreementCancellationRequestId: S.String }).pipe(
-          T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-        ),
-      ).annotate({
-        identifier: "AcceptAgreementCancellationRequestInput",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          agreementId: S.optional(S.String),
-          agreementCancellationRequestId: S.optional(S.String),
-          status: S.optional(S.String),
-          reasonCode: S.optional(S.String),
-          description: S.optional(SensitiveString),
-          createdAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          updatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-        }),
-      ).annotate({
-        identifier: "AcceptAgreementCancellationRequestOutput",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          paymentRequestId: S.String,
-          agreementId: S.String,
-          purchaseOrderReference: S.optional(S.String),
-        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "AcceptAgreementPaymentRequestInput",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          paymentRequestId: S.optional(S.String),
-          agreementId: S.optional(S.String),
-          status: S.optional(S.String),
-          name: S.optional(S.String),
-          description: S.optional(SensitiveString),
-          chargeAmount: S.optional(S.String),
-          currencyCode: S.optional(S.String),
-          createdAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          updatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-        }),
-      ).annotate({
-        identifier: "AcceptAgreementPaymentRequestOutput",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          chargeId: S.String,
-          chargeRevision: S.optional(S.Number),
-          agreementId: S.optional(S.String),
-          purchaseOrderReference: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "PurchaseOrder" });
-    case 5:
-      return S.Array(__S(4, __c0, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          agreementRequestId: S.String,
-          purchaseOrders: S.optional(__S(5, __c0, 5)),
-        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({
-        identifier: "AcceptAgreementRequestInput",
-      });
-    case 7:
-      return S.suspend(() => S.Struct({ agreementId: S.optional(S.String) })).annotate({
-        identifier: "AcceptAgreementRequestOutput",
-      });
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
         S.Struct({
           agreementId: S.String,
           originalInvoiceId: S.String,
@@ -2266,12 +2190,12 @@ function __c1(j: number): any {
         identifier: "BatchCreateBillingAdjustmentRequestEntry",
       });
     case 1:
-      return S.Array(__S(8, __c1, 0));
+      return S.Array(__S(0, __c0, 0));
     case 2:
       return S.suspend(() =>
-        S.Struct({
-          billingAdjustmentRequestEntries: __S(9, __c1, 1),
-        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+        S.Struct({ billingAdjustmentRequestEntries: __S(1, __c0, 1) }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
       ).annotate({
         identifier: "BatchCreateBillingAdjustmentRequestInput",
       });
@@ -2282,7 +2206,7 @@ function __c1(j: number): any {
         identifier: "BatchCreateBillingAdjustmentItem",
       });
     case 4:
-      return S.Array(__S(11, __c1, 3));
+      return S.Array(__S(3, __c0, 3));
     case 5:
       return S.suspend(() =>
         S.Struct({ code: S.String, message: S.String, clientToken: S.String }),
@@ -2290,19 +2214,19 @@ function __c1(j: number): any {
         identifier: "BatchCreateBillingAdjustmentError",
       });
     case 6:
-      return S.Array(__S(13, __c1, 5));
+      return S.Array(__S(5, __c0, 5));
     case 7:
       return S.suspend(() =>
         S.Struct({
-          items: __S(12, __c1, 4),
-          errors: __S(14, __c1, 6),
+          items: __S(4, __c0, 4),
+          errors: __S(6, __c0, 6),
         }),
       ).annotate({
         identifier: "BatchCreateBillingAdjustmentRequestOutput",
       });
   }
 }
-function __c2(j: number): any {
+function __c1(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2310,11 +2234,19 @@ function __c2(j: number): any {
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "CancelAgreementInput" });
-    case 1:
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "CancelAgreementOutput",
       });
-    case 2:
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           agreementId: S.String,
@@ -2324,7 +2256,11 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "CancelAgreementCancellationRequestInput",
       });
-    case 3:
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           agreementCancellationRequestId: S.optional(S.String),
@@ -2339,7 +2275,11 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "CancelAgreementCancellationRequestOutput",
       });
-    case 4:
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ paymentRequestId: S.String, agreementId: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
@@ -2347,69 +2287,42 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "CancelAgreementPaymentRequestInput",
       });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({ dimensionKey: S.String, dimensionValue: S.Number }),
-      ).annotate({ identifier: "Dimension" });
-    case 6:
-      return S.Array(__S(21, __c2, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({ selectorValue: S.String, dimensions: __S(22, __c2, 6) }),
-      ).annotate({
-        identifier: "ConfigurableUpfrontPricingTermConfiguration",
-      });
   }
 }
-function __c3(j: number): any {
+function __c6(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => S.Struct({ enableAutoRenew: S.Boolean })).annotate({
-        identifier: "RenewalTermConfiguration",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          paymentRequestApprovalStrategy: S.String,
-          expirationDuration: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "VariablePaymentTermConfiguration",
-      });
-    case 2:
       return S.Union([
         /*@__PURE__*/ S.Struct({
-          configurableUpfrontPricingTermConfiguration: __S(23, __c2, 7),
+          configurableUpfrontPricingTermConfiguration: __S(226, __c7, 2),
         }),
-        /*@__PURE__*/ S.Struct({ renewalTermConfiguration: __S(24, __c3, 0) }),
-        /*@__PURE__*/ S.Struct({
-          variablePaymentTermConfiguration: __S(25, __c3, 1),
-        }),
+        /*@__PURE__*/ S.Struct({ renewalTermConfiguration: __S(227, __c7, 3) }),
+        /*@__PURE__*/ S.Struct({ variablePaymentTermConfiguration: __S(228, __c7, 4) }),
       ]);
-    case 3:
+    case 1:
       return S.suspend(() =>
-        S.Struct({ id: S.String, configuration: S.optional(__S(26, __c3, 2)) }),
+        S.Struct({ id: S.String, configuration: S.optional(__S(192, __c6, 0)) }),
       ).annotate({ identifier: "RequestedTerm" });
-    case 4:
-      return S.Array(__S(27, __c3, 3));
-    case 5:
+    case 2:
+      return S.Array(__S(193, __c6, 1));
+    case 3:
       return S.suspend(() => S.Struct({ taxEstimation: S.optional(S.String) })).annotate({
         identifier: "TaxConfiguration",
       });
-    case 6:
+    case 4:
       return S.suspend(() =>
         S.Struct({
           clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
           intent: S.String,
-          requestedTerms: __S(28, __c3, 4),
+          requestedTerms: __S(194, __c6, 2),
           sourceAgreementIdentifier: S.optional(S.String),
           agreementProposalIdentifier: S.optional(S.String),
-          taxConfiguration: S.optional(__S(29, __c3, 5)),
+          taxConfiguration: S.optional(__S(195, __c6, 3)),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "CreateAgreementRequestInput",
       });
-    case 7:
+    case 5:
       return S.suspend(() =>
         S.Struct({
           amount: S.optional(S.String),
@@ -2417,17 +2330,13 @@ function __c3(j: number): any {
           type: S.optional(S.String),
         }),
       ).annotate({ identifier: "TaxBreakdownItem" });
-  }
-}
-function __c4(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(31, __c3, 7));
-    case 1:
+    case 6:
+      return S.Array(__S(197, __c6, 5));
+    case 7:
       return S.suspend(() =>
-        S.Struct({ breakdown: S.optional(__S(32, __c4, 0)), totalAmount: S.optional(S.String) }),
+        S.Struct({ breakdown: S.optional(__S(198, __c6, 6)), totalAmount: S.optional(S.String) }),
       ).annotate({ identifier: "EstimatedTaxes" });
-    case 2:
+    case 8:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
@@ -2435,12 +2344,12 @@ function __c4(j: number): any {
           amount: S.optional(S.String),
           amountAfterTax: S.optional(S.String),
           timing: S.optional(S.String),
-          estimatedTaxes: S.optional(__S(33, __c4, 1)),
+          estimatedTaxes: S.optional(__S(199, __c6, 7)),
         }),
       ).annotate({ identifier: "ExpectedCharge" });
-    case 3:
-      return S.Array(__S(34, __c4, 2));
-    case 4:
+    case 9:
+      return S.Array(__S(200, __c6, 8));
+    case 10:
       return S.suspend(() =>
         S.Struct({
           dimensionKey: S.optional(S.String),
@@ -2450,99 +2359,140 @@ function __c4(j: number): any {
           incrementalChargeAmount: S.optional(S.String),
         }),
       ).annotate({ identifier: "ItemizedCharge" });
-    case 5:
-      return S.Array(__S(36, __c4, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({ legalName: S.optional(S.String), branchName: S.optional(S.String) }),
-      ).annotate({ identifier: "InvoicingEntity" });
-    case 7:
+    case 11:
+      return S.Array(__S(202, __c6, 10));
+    case 12:
       return S.suspend(() =>
         S.Struct({
           currencyCode: S.optional(S.String),
           newAgreementValue: S.optional(S.String),
           newAgreementValueAfterTax: S.optional(S.String),
-          expectedCharges: S.optional(__S(35, __c4, 3)),
-          estimatedTaxes: S.optional(__S(33, __c4, 1)),
-          itemizedCharges: S.optional(__S(37, __c4, 5)),
-          invoicingEntity: S.optional(__S(38, __c4, 6)),
+          expectedCharges: S.optional(__S(201, __c6, 9)),
+          estimatedTaxes: S.optional(__S(199, __c6, 7)),
+          itemizedCharges: S.optional(__S(203, __c6, 11)),
+          invoicingEntity: S.optional(__S(256, __c8, 0)),
         }),
       ).annotate({ identifier: "ChargeSummary" });
-  }
-}
-function __c5(j: number): any {
-  switch (j) {
-    case 0:
+    case 13:
       return S.suspend(() =>
         S.Struct({
           agreementRequestId: S.optional(S.String),
-          chargeSummary: S.optional(__S(39, __c4, 7)),
+          chargeSummary: S.optional(__S(204, __c6, 12)),
         }),
       ).annotate({
         identifier: "CreateAgreementRequestOutput",
       });
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ dimensionKey: S.String, dimensionValue: S.Number }),
+      ).annotate({ identifier: "Dimension" });
     case 1:
+      return S.Array(__S(224, __c7, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({ selectorValue: S.String, dimensions: __S(225, __c7, 1) }),
+      ).annotate({
+        identifier: "ConfigurableUpfrontPricingTermConfiguration",
+      });
+    case 3:
+      return S.suspend(() => S.Struct({ enableAutoRenew: S.Boolean })).annotate({
+        identifier: "RenewalTermConfiguration",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          paymentRequestApprovalStrategy: S.String,
+          expirationDuration: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "VariablePaymentTermConfiguration",
+      });
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ legalName: S.optional(S.String), branchName: S.optional(S.String) }),
+      ).annotate({ identifier: "InvoicingEntity" });
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ agreementId: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "DescribeAgreementInput" });
-    case 2:
-      return S.suspend(() => S.Struct({ accountId: S.optional(S.String) })).annotate({
-        identifier: "Acceptor",
-      });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({ currencyCode: S.optional(S.String), agreementValue: S.optional(S.String) }),
       ).annotate({ identifier: "EstimatedCharges" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({ id: S.optional(S.String), type: S.optional(S.String) }),
-      ).annotate({ identifier: "Resource" });
-    case 5:
-      return S.Array(__S(44, __c5, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          resources: S.optional(__S(45, __c5, 5)),
-          offerId: S.optional(S.String),
-          offerSetId: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ProposalSummary" });
-    case 7:
+    case 2:
       return S.suspend(() => S.Struct({ offerId: S.optional(S.String) })).annotate({
         identifier: "RenewalSummary",
       });
-  }
-}
-function __c6(j: number): any {
-  switch (j) {
-    case 0:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           type: S.String,
           reasonCode: S.optional(S.String),
-          renewalSummary: S.optional(__S(47, __c5, 7)),
+          renewalSummary: S.optional(__S(290, __c9, 2)),
         }),
       ).annotate({ identifier: "EndTimeBehavior" });
-    case 1:
+    case 4:
       return S.suspend(() =>
         S.Struct({
           agreementId: S.optional(S.String),
-          acceptor: S.optional(__S(42, __c5, 2)),
-          proposer: S.optional(__S(42, __c5, 2)),
+          acceptor: S.optional(__S(352, __c11, 0)),
+          proposer: S.optional(__S(352, __c11, 0)),
           startTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           endTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           acceptanceTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           agreementType: S.optional(S.String),
-          estimatedCharges: S.optional(__S(43, __c5, 3)),
-          proposalSummary: S.optional(__S(46, __c5, 6)),
+          estimatedCharges: S.optional(__S(289, __c9, 1)),
+          proposalSummary: S.optional(__S(354, __c11, 2)),
           status: S.optional(S.String),
           initialAgreementId: S.optional(S.String),
-          endTimeBehavior: S.optional(__S(48, __c6, 0)),
+          endTimeBehavior: S.optional(__S(291, __c9, 3)),
         }),
       ).annotate({ identifier: "DescribeAgreementOutput" });
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ id: S.optional(S.String), type: S.optional(S.String) }),
+      ).annotate({ identifier: "Resource" });
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({ accountId: S.optional(S.String) })).annotate({
+        identifier: "Acceptor",
+      });
+    case 1:
+      return S.Array(__S(320, __c10, 0));
     case 2:
+      return S.suspend(() =>
+        S.Struct({
+          resources: S.optional(__S(353, __c11, 1)),
+          offerId: S.optional(S.String),
+          offerSetId: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ProposalSummary" });
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ agreementCancellationRequestId: S.String, agreementId: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
@@ -2550,7 +2500,11 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "GetAgreementCancellationRequestInput",
       });
-    case 3:
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           agreementId: S.String,
@@ -2560,10 +2514,10 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "GetAgreementEntitlementsInput",
       });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          resource: S.optional(__S(44, __c5, 4)),
+          resource: S.optional(__S(320, __c10, 0)),
           type: S.optional(S.String),
           registrationToken: S.optional(S.String),
           status: S.optional(S.String),
@@ -2571,18 +2525,22 @@ function __c6(j: number): any {
           licenseArn: S.optional(S.String),
         }),
       ).annotate({ identifier: "AgreementEntitlement" });
-    case 5:
-      return S.Array(__S(52, __c6, 4));
-    case 6:
+    case 2:
+      return S.Array(__S(417, __c13, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          agreementEntitlements: S.optional(__S(53, __c6, 5)),
+          agreementEntitlements: S.optional(__S(418, __c13, 2)),
           nextToken: S.optional(S.String),
         }),
       ).annotate({
         identifier: "GetAgreementEntitlementsOutput",
       });
-    case 7:
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ paymentRequestId: S.String, agreementId: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
@@ -2590,11 +2548,7 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "GetAgreementPaymentRequestInput",
       });
-  }
-}
-function __c7(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           paymentRequestId: S.optional(S.String),
@@ -2612,7 +2566,11 @@ function __c7(j: number): any {
       ).annotate({
         identifier: "GetAgreementPaymentRequestOutput",
       });
-    case 1:
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           agreementId: S.String,
@@ -2620,7 +2578,7 @@ function __c7(j: number): any {
           nextToken: S.optional(S.String),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "GetAgreementTermsInput" });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           type: S.optional(S.String),
@@ -2628,17 +2586,17 @@ function __c7(j: number): any {
           version: S.optional(S.String),
         }),
       ).annotate({ identifier: "DocumentItem" });
+    case 2:
+      return S.Array(__S(481, __c15, 1));
     case 3:
-      return S.Array(__S(58, __c7, 2));
-    case 4:
       return S.suspend(() =>
         S.Struct({
           type: S.optional(S.String),
           id: S.optional(S.String),
-          documents: S.optional(__S(59, __c7, 3)),
+          documents: S.optional(__S(482, __c15, 2)),
         }),
       ).annotate({ identifier: "LegalTerm" });
-    case 5:
+    case 4:
       return S.suspend(() =>
         S.Struct({
           type: S.optional(S.String),
@@ -2646,11 +2604,11 @@ function __c7(j: number): any {
           refundPolicy: S.optional(S.String),
         }),
       ).annotate({ identifier: "SupportTerm" });
-    case 6:
+    case 5:
       return S.suspend(() => S.Struct({ value: S.optional(S.String) })).annotate({
         identifier: "FixedPercentage",
       });
-    case 7:
+    case 6:
       return S.suspend(() =>
         S.Struct({
           minValue: S.optional(S.String),
@@ -2658,16 +2616,12 @@ function __c7(j: number): any {
           defaultValue: S.optional(S.String),
         }),
       ).annotate({ identifier: "PercentageRange" });
-  }
-}
-function __c8(j: number): any {
-  switch (j) {
-    case 0:
+    case 7:
       return S.Union([
-        /*@__PURE__*/ S.Struct({ fixedPercentage: __S(62, __c7, 6) }),
-        /*@__PURE__*/ S.Struct({ percentageRange: __S(63, __c7, 7) }),
+        /*@__PURE__*/ S.Struct({ fixedPercentage: __S(485, __c15, 5) }),
+        /*@__PURE__*/ S.Struct({ percentageRange: __S(486, __c15, 6) }),
       ]);
-    case 1:
+    case 8:
       return S.suspend(() =>
         S.Struct({
           chargeDateOffset: S.optional(S.String),
@@ -2675,98 +2629,92 @@ function __c8(j: number): any {
           dayOfMonth: S.optional(S.Number),
         }),
       ).annotate({ identifier: "PaymentScheduleEntry" });
-    case 2:
-      return S.Array(__S(65, __c8, 1));
-    case 3:
-      return S.suspend(() => S.Struct({ schedule: S.optional(__S(66, __c8, 2)) })).annotate({
+    case 9:
+      return S.Array(__S(488, __c15, 8));
+    case 10:
+      return S.suspend(() => S.Struct({ schedule: S.optional(__S(489, __c15, 9)) })).annotate({
         identifier: "PaymentScheduleTermTemplate",
       });
-    case 4:
-      return S.Union([/*@__PURE__*/ S.Struct({ paymentScheduleTermTemplate: __S(67, __c8, 3) })]);
-    case 5:
-      return S.Array(__S(68, __c8, 4));
-    case 6:
+    case 11:
+      return S.Union([
+        /*@__PURE__*/ S.Struct({ paymentScheduleTermTemplate: __S(490, __c15, 10) }),
+      ]);
+    case 12:
+      return S.Array(__S(491, __c15, 11));
+    case 13:
       return S.suspend(() =>
         S.Struct({
           type: S.optional(S.String),
           id: S.optional(S.String),
-          configuration: S.optional(__S(24, __c3, 0)),
+          configuration: S.optional(__S(227, __c7, 3)),
           lockoutPeriod: S.optional(S.String),
           maxRenewals: S.optional(S.Number),
           adjustmentDeadline: S.optional(S.String),
-          priceIncrease: S.optional(__S(64, __c8, 0)),
-          termTemplates: S.optional(__S(69, __c8, 5)),
+          priceIncrease: S.optional(__S(487, __c15, 7)),
+          termTemplates: S.optional(__S(492, __c15, 12)),
         }),
       ).annotate({ identifier: "RenewalTerm" });
-    case 7:
+    case 14:
       return S.suspend(() =>
         S.Struct({ dimensionKey: S.optional(S.String), price: S.optional(S.String) }),
       ).annotate({ identifier: "RateCardItem" });
-  }
-}
-function __c9(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(71, __c8, 7));
-    case 1:
-      return S.suspend(() => S.Struct({ rateCard: S.optional(__S(72, __c9, 0)) })).annotate({
+    case 15:
+      return S.Array(__S(494, __c15, 14));
+    case 16:
+      return S.suspend(() => S.Struct({ rateCard: S.optional(__S(495, __c15, 15)) })).annotate({
         identifier: "UsageBasedRateCardItem",
       });
-    case 2:
-      return S.Array(__S(73, __c9, 1));
-    case 3:
+    case 17:
+      return S.Array(__S(496, __c15, 16));
+    case 18:
       return S.suspend(() =>
         S.Struct({
           type: S.optional(S.String),
           id: S.optional(S.String),
           currencyCode: S.optional(S.String),
-          rateCards: S.optional(__S(74, __c9, 2)),
+          rateCards: S.optional(__S(497, __c15, 17)),
         }),
       ).annotate({ identifier: "UsageBasedPricingTerm" });
-    case 4:
+    case 19:
       return S.suspend(() =>
         S.Struct({ type: S.optional(S.String), value: S.optional(S.String) }),
       ).annotate({ identifier: "Selector" });
-    case 5:
+    case 20:
       return S.suspend(() =>
         S.Struct({
           multipleDimensionSelection: S.optional(S.String),
           quantityConfiguration: S.optional(S.String),
         }),
       ).annotate({ identifier: "Constraints" });
-    case 6:
+    case 21:
       return S.suspend(() =>
         S.Struct({
-          selector: S.optional(__S(76, __c9, 4)),
-          constraints: S.optional(__S(77, __c9, 5)),
-          rateCard: S.optional(__S(72, __c9, 0)),
+          selector: S.optional(__S(499, __c15, 19)),
+          constraints: S.optional(__S(500, __c15, 20)),
+          rateCard: S.optional(__S(495, __c15, 15)),
         }),
       ).annotate({
         identifier: "ConfigurableUpfrontRateCardItem",
       });
-    case 7:
-      return S.Array(__S(78, __c9, 6));
-  }
-}
-function __c10(j: number): any {
-  switch (j) {
-    case 0:
+    case 22:
+      return S.Array(__S(501, __c15, 21));
+    case 23:
       return S.suspend(() =>
         S.Struct({
           type: S.optional(S.String),
           id: S.optional(S.String),
           currencyCode: S.optional(S.String),
-          rateCards: S.optional(__S(79, __c9, 7)),
-          configuration: S.optional(__S(23, __c2, 7)),
+          rateCards: S.optional(__S(502, __c15, 22)),
+          configuration: S.optional(__S(226, __c7, 2)),
         }),
       ).annotate({
         identifier: "ConfigurableUpfrontPricingTerm",
       });
-    case 1:
+    case 24:
       return S.suspend(() =>
         S.Struct({ type: S.optional(S.String), id: S.optional(S.String) }),
       ).annotate({ identifier: "ByolPricingTerm" });
-    case 2:
+    case 25:
       return S.suspend(() =>
         S.Struct({
           type: S.optional(S.String),
@@ -2776,7 +2724,7 @@ function __c10(j: number): any {
           price: S.optional(S.String),
         }),
       ).annotate({ identifier: "RecurringPaymentTerm" });
-    case 3:
+    case 26:
       return S.suspend(() =>
         S.Struct({
           type: S.optional(S.String),
@@ -2786,44 +2734,44 @@ function __c10(j: number): any {
           agreementEndDate: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
         }),
       ).annotate({ identifier: "ValidityTerm" });
-    case 4:
+    case 27:
       return S.suspend(() =>
         S.Struct({
           chargeDate: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           chargeAmount: S.optional(S.String),
         }),
       ).annotate({ identifier: "ScheduleItem" });
-    case 5:
-      return S.Array(__S(84, __c10, 4));
-    case 6:
+    case 28:
+      return S.Array(__S(507, __c15, 27));
+    case 29:
       return S.suspend(() =>
         S.Struct({
           type: S.optional(S.String),
           id: S.optional(S.String),
           currencyCode: S.optional(S.String),
-          schedule: S.optional(__S(85, __c10, 5)),
+          schedule: S.optional(__S(508, __c15, 28)),
         }),
       ).annotate({ identifier: "PaymentScheduleTerm" });
-    case 7:
+    case 30:
       return S.suspend(() =>
         S.Struct({ dimensionKey: S.optional(S.String), maxQuantity: S.optional(S.Number) }),
       ).annotate({ identifier: "GrantItem" });
+    case 31:
+      return S.Array(__S(510, __c15, 30));
   }
 }
-function __c11(j: number): any {
+function __c16(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(87, __c10, 7));
-    case 1:
       return S.suspend(() =>
         S.Struct({
           type: S.optional(S.String),
           id: S.optional(S.String),
           duration: S.optional(S.String),
-          grants: S.optional(__S(88, __c11, 0)),
+          grants: S.optional(__S(511, __c15, 31)),
         }),
       ).annotate({ identifier: "FreeTrialPricingTerm" });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           type: S.optional(S.String),
@@ -2831,20 +2779,20 @@ function __c11(j: number): any {
           currencyCode: S.optional(S.String),
           duration: S.optional(S.String),
           price: S.optional(S.String),
-          grants: S.optional(__S(88, __c11, 0)),
+          grants: S.optional(__S(511, __c15, 31)),
         }),
       ).annotate({ identifier: "FixedUpfrontPricingTerm" });
-    case 3:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           type: S.optional(S.String),
           id: S.optional(S.String),
           currencyCode: S.optional(S.String),
           maxTotalChargeAmount: S.optional(S.String),
-          configuration: S.optional(__S(25, __c3, 1)),
+          configuration: S.optional(__S(228, __c7, 4)),
         }),
       ).annotate({ identifier: "VariablePaymentTerm" });
-    case 4:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           type: S.optional(S.String),
@@ -2852,31 +2800,34 @@ function __c11(j: number): any {
           paymentDuePeriod: S.optional(S.String),
         }),
       ).annotate({ identifier: "NetPaymentTerm" });
-    case 5:
+    case 4:
       return S.Union([
-        /*@__PURE__*/ S.Struct({ legalTerm: __S(60, __c7, 4) }),
-        /*@__PURE__*/ S.Struct({ supportTerm: __S(61, __c7, 5) }),
-        /*@__PURE__*/ S.Struct({ renewalTerm: __S(70, __c8, 6) }),
-        /*@__PURE__*/ S.Struct({ usageBasedPricingTerm: __S(75, __c9, 3) }),
-        /*@__PURE__*/ S.Struct({ configurableUpfrontPricingTerm: __S(80, __c10, 0) }),
-        /*@__PURE__*/ S.Struct({ byolPricingTerm: __S(81, __c10, 1) }),
-        /*@__PURE__*/ S.Struct({ recurringPaymentTerm: __S(82, __c10, 2) }),
-        /*@__PURE__*/ S.Struct({ validityTerm: __S(83, __c10, 3) }),
-        /*@__PURE__*/ S.Struct({ paymentScheduleTerm: __S(86, __c10, 6) }),
-        /*@__PURE__*/ S.Struct({ freeTrialPricingTerm: __S(89, __c11, 1) }),
-        /*@__PURE__*/ S.Struct({ fixedUpfrontPricingTerm: __S(90, __c11, 2) }),
-        /*@__PURE__*/ S.Struct({ variablePaymentTerm: __S(91, __c11, 3) }),
-        /*@__PURE__*/ S.Struct({ netPaymentTerm: __S(92, __c11, 4) }),
+        /*@__PURE__*/ S.Struct({ legalTerm: __S(483, __c15, 3) }),
+        /*@__PURE__*/ S.Struct({ supportTerm: __S(484, __c15, 4) }),
+        /*@__PURE__*/ S.Struct({ renewalTerm: __S(493, __c15, 13) }),
+        /*@__PURE__*/ S.Struct({ usageBasedPricingTerm: __S(498, __c15, 18) }),
+        /*@__PURE__*/ S.Struct({ configurableUpfrontPricingTerm: __S(503, __c15, 23) }),
+        /*@__PURE__*/ S.Struct({ byolPricingTerm: __S(504, __c15, 24) }),
+        /*@__PURE__*/ S.Struct({ recurringPaymentTerm: __S(505, __c15, 25) }),
+        /*@__PURE__*/ S.Struct({ validityTerm: __S(506, __c15, 26) }),
+        /*@__PURE__*/ S.Struct({ paymentScheduleTerm: __S(509, __c15, 29) }),
+        /*@__PURE__*/ S.Struct({ freeTrialPricingTerm: __S(512, __c16, 0) }),
+        /*@__PURE__*/ S.Struct({ fixedUpfrontPricingTerm: __S(513, __c16, 1) }),
+        /*@__PURE__*/ S.Struct({ variablePaymentTerm: __S(514, __c16, 2) }),
+        /*@__PURE__*/ S.Struct({ netPaymentTerm: __S(515, __c16, 3) }),
       ]);
+    case 5:
+      return S.Array(__S(516, __c16, 4));
     case 6:
-      return S.Array(__S(93, __c11, 5));
-    case 7:
       return S.suspend(() =>
-        S.Struct({ acceptedTerms: S.optional(__S(94, __c11, 6)), nextToken: S.optional(S.String) }),
+        S.Struct({
+          acceptedTerms: S.optional(__S(517, __c16, 5)),
+          nextToken: S.optional(S.String),
+        }),
       ).annotate({ identifier: "GetAgreementTermsOutput" });
   }
 }
-function __c12(j: number): any {
+function __c17(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2904,7 +2855,11 @@ function __c12(j: number): any {
       ).annotate({
         identifier: "GetBillingAdjustmentRequestOutput",
       });
-    case 2:
+  }
+}
+function __c18(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           partyType: S.String,
@@ -2918,7 +2873,7 @@ function __c12(j: number): any {
       ).annotate({
         identifier: "ListAgreementCancellationRequestsInput",
       });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           agreementCancellationRequestId: S.optional(S.String),
@@ -2933,18 +2888,22 @@ function __c12(j: number): any {
       ).annotate({
         identifier: "AgreementCancellationRequestSummary",
       });
-    case 4:
-      return S.Array(__S(99, __c12, 3));
-    case 5:
+    case 2:
+      return S.Array(__S(577, __c18, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
           nextToken: S.optional(S.String),
-          items: S.optional(__S(100, __c12, 4)),
+          items: S.optional(__S(578, __c18, 2)),
         }),
       ).annotate({
         identifier: "ListAgreementCancellationRequestsOutput",
       });
-    case 6:
+  }
+}
+function __c19(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           catalog: S.optional(S.String),
@@ -2956,7 +2915,7 @@ function __c12(j: number): any {
       ).annotate({
         identifier: "ListAgreementChargesInput",
       });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
@@ -2969,30 +2928,30 @@ function __c12(j: number): any {
           time: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
         }),
       ).annotate({ identifier: "Charge" });
-  }
-}
-function __c13(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(103, __c12, 7));
-    case 1:
+    case 2:
+      return S.Array(__S(609, __c19, 1));
+    case 3:
       return S.suspend(() =>
-        S.Struct({ items: S.optional(__S(104, __c13, 0)), nextToken: S.optional(S.String) }),
+        S.Struct({ items: S.optional(__S(610, __c19, 2)), nextToken: S.optional(S.String) }),
       ).annotate({
         identifier: "ListAgreementChargesOutput",
       });
-    case 2:
+  }
+}
+function __c20(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() => S.Struct({ month: S.Number, year: S.Number })).annotate({
         identifier: "InvoiceBillingPeriod",
       });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           agreementId: S.String,
           groupBy: S.String,
           invoiceId: S.optional(S.String),
           invoiceType: S.optional(S.String),
-          invoiceBillingPeriod: S.optional(__S(106, __c13, 2)),
+          invoiceBillingPeriod: S.optional(__S(640, __c20, 0)),
           beforeIssuedTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           afterIssuedTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           maxResults: S.optional(S.Number),
@@ -3001,7 +2960,7 @@ function __c13(j: number): any {
       ).annotate({
         identifier: "ListAgreementInvoiceLineItemsInput",
       });
-    case 4:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           amount: S.optional(S.String),
@@ -3009,26 +2968,26 @@ function __c13(j: number): any {
           currencyCode: S.optional(S.String),
         }),
       ).annotate({ identifier: "PricingCurrencyAmount" });
-    case 5:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           agreementId: S.optional(S.String),
           invoiceId: S.optional(S.String),
-          pricingCurrencyAmount: S.optional(__S(108, __c13, 4)),
-          invoiceBillingPeriod: S.optional(__S(106, __c13, 2)),
+          pricingCurrencyAmount: S.optional(__S(642, __c20, 2)),
+          invoiceBillingPeriod: S.optional(__S(640, __c20, 0)),
           issuedTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           invoiceType: S.optional(S.String),
-          invoicingEntity: S.optional(__S(38, __c4, 6)),
+          invoicingEntity: S.optional(__S(256, __c8, 0)),
         }),
       ).annotate({
         identifier: "AgreementInvoiceLineItemGroupSummary",
       });
-    case 6:
-      return S.Array(__S(109, __c13, 5));
-    case 7:
+    case 4:
+      return S.Array(__S(643, __c20, 3));
+    case 5:
       return S.suspend(() =>
         S.Struct({
-          agreementInvoiceLineItemGroupSummaries: S.optional(__S(110, __c13, 6)),
+          agreementInvoiceLineItemGroupSummaries: S.optional(__S(644, __c20, 4)),
           nextToken: S.optional(S.String),
         }),
       ).annotate({
@@ -3036,7 +2995,7 @@ function __c13(j: number): any {
       });
   }
 }
-function __c14(j: number): any {
+function __c21(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3067,14 +3026,18 @@ function __c14(j: number): any {
         }),
       ).annotate({ identifier: "PaymentRequestSummary" });
     case 2:
-      return S.Array(__S(113, __c14, 1));
+      return S.Array(__S(673, __c21, 1));
     case 3:
       return S.suspend(() =>
-        S.Struct({ nextToken: S.optional(S.String), items: __S(114, __c14, 2) }),
+        S.Struct({ nextToken: S.optional(S.String), items: __S(674, __c21, 2) }),
       ).annotate({
         identifier: "ListAgreementPaymentRequestsOutput",
       });
-    case 4:
+  }
+}
+function __c22(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           agreementId: S.optional(S.String),
@@ -3089,7 +3052,7 @@ function __c14(j: number): any {
       ).annotate({
         identifier: "ListBillingAdjustmentRequestsInput",
       });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           billingAdjustmentRequestId: S.String,
@@ -3104,17 +3067,17 @@ function __c14(j: number): any {
           catalog: S.String,
         }),
       ).annotate({ identifier: "BillingAdjustmentSummary" });
-    case 6:
-      return S.Array(__S(117, __c14, 5));
-    case 7:
+    case 2:
+      return S.Array(__S(705, __c22, 1));
+    case 3:
       return S.suspend(() =>
-        S.Struct({ nextToken: S.optional(S.String), items: __S(118, __c14, 6) }),
+        S.Struct({ nextToken: S.optional(S.String), items: __S(706, __c22, 2) }),
       ).annotate({
         identifier: "ListBillingAdjustmentRequestsOutput",
       });
   }
 }
-function __c15(j: number): any {
+function __c23(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3141,7 +3104,11 @@ function __c15(j: number): any {
       ).annotate({
         identifier: "RejectAgreementCancellationRequestOutput",
       });
-    case 2:
+  }
+}
+function __c24(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           paymentRequestId: S.String,
@@ -3151,7 +3118,7 @@ function __c15(j: number): any {
       ).annotate({
         identifier: "RejectAgreementPaymentRequestInput",
       });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           paymentRequestId: S.optional(S.String),
@@ -3168,39 +3135,39 @@ function __c15(j: number): any {
       ).annotate({
         identifier: "RejectAgreementPaymentRequestOutput",
       });
-    case 4:
+  }
+}
+function __c25(j: number): any {
+  switch (j) {
+    case 0:
       return S.Array(S.String);
-    case 5:
+    case 1:
       return S.suspend(() =>
-        S.Struct({ name: S.optional(S.String), values: S.optional(__S(124, __c15, 4)) }),
+        S.Struct({ name: S.optional(S.String), values: S.optional(__S(800, __c25, 0)) }),
       ).annotate({ identifier: "Filter" });
-    case 6:
-      return S.Array(__S(125, __c15, 5));
-    case 7:
+    case 2:
+      return S.Array(__S(801, __c25, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({ sortBy: S.optional(S.String), sortOrder: S.optional(S.String) }),
       ).annotate({ identifier: "Sort" });
-  }
-}
-function __c16(j: number): any {
-  switch (j) {
-    case 0:
+    case 4:
       return S.suspend(() =>
         S.Struct({
           catalog: S.optional(S.String),
-          filters: S.optional(__S(126, __c15, 6)),
-          sort: S.optional(__S(127, __c15, 7)),
+          filters: S.optional(__S(802, __c25, 2)),
+          sort: S.optional(__S(803, __c25, 3)),
           maxResults: S.optional(S.Number),
           nextToken: S.optional(S.String),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "SearchAgreementsInput" });
-    case 1:
+    case 5:
       return S.suspend(() => S.Struct({ licenseArn: S.optional(S.String) })).annotate({
         identifier: "Entitlement",
       });
-    case 2:
-      return S.Array(__S(129, __c16, 1));
-    case 3:
+    case 6:
+      return S.Array(__S(805, __c25, 5));
+    case 7:
       return S.suspend(() =>
         S.Struct({
           agreementId: S.optional(S.String),
@@ -3209,26 +3176,30 @@ function __c16(j: number): any {
           endTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           lastUpdateTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           agreementType: S.optional(S.String),
-          acceptor: S.optional(__S(42, __c5, 2)),
-          proposer: S.optional(__S(42, __c5, 2)),
-          proposalSummary: S.optional(__S(46, __c5, 6)),
+          acceptor: S.optional(__S(352, __c11, 0)),
+          proposer: S.optional(__S(352, __c11, 0)),
+          proposalSummary: S.optional(__S(354, __c11, 2)),
           status: S.optional(S.String),
-          entitlements: S.optional(__S(130, __c16, 2)),
+          entitlements: S.optional(__S(806, __c25, 6)),
           initialAgreementId: S.optional(S.String),
           endTimeBehaviorType: S.optional(S.String),
           endTimeBehaviorReasonCode: S.optional(S.String),
         }),
       ).annotate({ identifier: "AgreementViewSummary" });
-    case 4:
-      return S.Array(__S(131, __c16, 3));
-    case 5:
+    case 8:
+      return S.Array(__S(807, __c25, 7));
+    case 9:
       return S.suspend(() =>
         S.Struct({
-          agreementViewSummaries: S.optional(__S(132, __c16, 4)),
+          agreementViewSummaries: S.optional(__S(808, __c25, 8)),
           nextToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "SearchAgreementsOutput" });
-    case 6:
+  }
+}
+function __c26(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           agreementId: S.String,
@@ -3239,7 +3210,11 @@ function __c16(j: number): any {
       ).annotate({
         identifier: "SendAgreementCancellationRequestInput",
       });
-    case 7:
+  }
+}
+function __c27(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
@@ -3252,11 +3227,7 @@ function __c16(j: number): any {
       ).annotate({
         identifier: "SendAgreementPaymentRequestInput",
       });
-  }
-}
-function __c17(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           paymentRequestId: S.optional(S.String),
@@ -3271,23 +3242,126 @@ function __c17(j: number): any {
       ).annotate({
         identifier: "SendAgreementPaymentRequestOutput",
       });
-    case 1:
+  }
+}
+function __c28(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
-        S.Struct({ purchaseOrders: __S(5, __c0, 5) }).pipe(
+        S.Struct({ purchaseOrders: __S(1121, __c35, 1) }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({
         identifier: "UpdatePurchaseOrdersInput",
       });
-    case 2:
+  }
+}
+function __c29(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() => S.Struct({ name: S.String, message: S.String })).annotate({
         identifier: "ValidationExceptionField",
       });
-    case 3:
-      return S.Array(__S(138, __c17, 2));
+    case 1:
+      return S.Array(__S(928, __c29, 0));
   }
 }
-
+function __c30(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ agreementId: S.String, agreementCancellationRequestId: S.String }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({
+        identifier: "AcceptAgreementCancellationRequestInput",
+      });
+  }
+}
+function __c31(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          agreementId: S.optional(S.String),
+          agreementCancellationRequestId: S.optional(S.String),
+          status: S.optional(S.String),
+          reasonCode: S.optional(S.String),
+          description: S.optional(SensitiveString),
+          createdAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          updatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+        }),
+      ).annotate({
+        identifier: "AcceptAgreementCancellationRequestOutput",
+      });
+  }
+}
+function __c32(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          paymentRequestId: S.String,
+          agreementId: S.String,
+          purchaseOrderReference: S.optional(S.String),
+        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({
+        identifier: "AcceptAgreementPaymentRequestInput",
+      });
+  }
+}
+function __c33(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          paymentRequestId: S.optional(S.String),
+          agreementId: S.optional(S.String),
+          status: S.optional(S.String),
+          name: S.optional(S.String),
+          description: S.optional(SensitiveString),
+          chargeAmount: S.optional(S.String),
+          currencyCode: S.optional(S.String),
+          createdAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          updatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+        }),
+      ).annotate({
+        identifier: "AcceptAgreementPaymentRequestOutput",
+      });
+  }
+}
+function __c34(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          agreementRequestId: S.String,
+          purchaseOrders: S.optional(__S(1121, __c35, 1)),
+        }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({
+        identifier: "AcceptAgreementRequestInput",
+      });
+    case 1:
+      return S.suspend(() => S.Struct({ agreementId: S.optional(S.String) })).annotate({
+        identifier: "AcceptAgreementRequestOutput",
+      });
+  }
+}
+function __c35(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          chargeId: S.String,
+          chargeRevision: S.optional(S.Number),
+          agreementId: S.optional(S.String),
+          purchaseOrderReference: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "PurchaseOrder" });
+    case 1:
+      return S.Array(__S(1120, __c35, 0));
+  }
+}
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

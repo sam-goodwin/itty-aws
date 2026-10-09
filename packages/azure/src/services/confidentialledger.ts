@@ -380,7 +380,7 @@ export const CreateLedger: API.OperationMethod<
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(8, __c1, 0) as any as S.Schema<CreateLedgerRequest>,
-  output: __S(11, __c1, 3) as any as S.Schema<CreateLedgerResponse>,
+  output: __S(23, __c2, 7) as any as S.Schema<CreateLedgerResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -394,8 +394,8 @@ export const DeleteLedger: API.OperationMethod<
   DeleteLedgerError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(12, __c1, 4) as any as S.Schema<DeleteLedgerRequest>,
-  output: __S(13, __c1, 5) as any as S.Schema<DeleteLedgerResponse>,
+  input: __S(32, __c4, 0) as any as S.Schema<DeleteLedgerRequest>,
+  output: __S(33, __c4, 1) as any as S.Schema<DeleteLedgerResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -409,8 +409,8 @@ export const ExportLedgerFile: API.OperationMethod<
   ExportLedgerFileError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(14, __c1, 6) as any as S.Schema<ExportLedgerFileRequest>,
-  output: __S(15, __c1, 7) as any as S.Schema<ConfidentialLedgerFilesExportResponse>,
+  input: __S(40, __c5, 0) as any as S.Schema<ExportLedgerFileRequest>,
+  output: __S(41, __c5, 1) as any as S.Schema<ConfidentialLedgerFilesExportResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -424,8 +424,8 @@ export const GetLedger: API.OperationMethod<
   GetLedgerError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(16, __c2, 0) as any as S.Schema<GetLedgerRequest>,
-  output: __S(11, __c1, 3) as any as S.Schema<GetLedgerResponse>,
+  input: __S(48, __c6, 0) as any as S.Schema<GetLedgerRequest>,
+  output: __S(23, __c2, 7) as any as S.Schema<GetLedgerResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -439,8 +439,8 @@ export const ListLedgerByResourceGroup: API.OperationMethod<
   ListLedgerByResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(17, __c2, 1) as any as S.Schema<ListLedgerByResourceGroupRequest>,
-  output: __S(19, __c2, 3) as any as S.Schema<ConfidentialLedgerList>,
+  input: __S(56, __c7, 0) as any as S.Schema<ListLedgerByResourceGroupRequest>,
+  output: __S(65, __c8, 1) as any as S.Schema<ConfidentialLedgerList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -454,8 +454,8 @@ export const ListLedgerBySubscription: API.OperationMethod<
   ListLedgerBySubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(20, __c2, 4) as any as S.Schema<ListLedgerBySubscriptionRequest>,
-  output: __S(19, __c2, 3) as any as S.Schema<ConfidentialLedgerList>,
+  input: __S(72, __c9, 0) as any as S.Schema<ListLedgerBySubscriptionRequest>,
+  output: __S(65, __c8, 1) as any as S.Schema<ConfidentialLedgerList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -469,8 +469,8 @@ export const ListOperations: API.OperationMethod<
   ListOperationsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(21, __c2, 5) as any as S.Schema<ListOperationsRequest>,
-  output: __S(25, __c3, 1) as any as S.Schema<ResourceProviderOperationList>,
+  input: __S(80, __c10, 0) as any as S.Schema<ListOperationsRequest>,
+  output: __S(84, __c10, 4) as any as S.Schema<ResourceProviderOperationList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -484,8 +484,8 @@ export const UpdateLedger: API.OperationMethod<
   UpdateLedgerError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(26, __c3, 2) as any as S.Schema<UpdateLedgerRequest>,
-  output: __S(11, __c1, 3) as any as S.Schema<UpdateLedgerResponse>,
+  input: __S(88, __c11, 0) as any as S.Schema<UpdateLedgerRequest>,
+  output: __S(23, __c2, 7) as any as S.Schema<UpdateLedgerResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -521,9 +521,35 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "CheckNameAvailabilityResponse",
       });
-    case 2:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          ledgerName: S.String.pipe(T.Label()),
+          tags: S.optional(__S(16, __c2, 0)),
+          location: S.String,
+          properties: S.optional(__S(24, __c3, 0)),
+        }).pipe(
+          T.Http({
+            method: "PUT",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ConfidentialLedger/ledgers/{ledgerName}",
+            code: 200,
+            apiVersion: "2026-02-23",
+          }),
+        ),
+      ).annotate({ identifier: "CreateLedgerRequest" });
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
       return S.Record(S.String, S.String);
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           principalId: S.optional(S.String),
@@ -533,9 +559,9 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "AADBasedSecurityPrincipal",
       });
-    case 4:
-      return S.Array(__S(3, __c0, 3));
-    case 5:
+    case 2:
+      return S.Array(__S(17, __c2, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
           cert: S.optional(S.String),
@@ -544,16 +570,67 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "CertBasedSecurityPrincipal",
       });
+    case 4:
+      return S.Array(__S(19, __c2, 3));
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          createdBy: S.optional(S.String),
+          createdByType: S.optional(S.String),
+          createdAt: S.optional(S.String),
+          lastModifiedBy: S.optional(S.String),
+          lastModifiedByType: S.optional(S.String),
+          lastModifiedAt: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "SystemData" });
     case 6:
-      return S.Array(__S(5, __c0, 5));
+      return S.suspend(() =>
+        S.Struct({
+          ledgerName: S.optional(S.String),
+          ledgerUri: S.optional(S.String),
+          identityServiceUri: S.optional(S.String),
+          ledgerInternalNamespace: S.optional(S.String),
+          runningState: S.optional(S.String),
+          ledgerType: S.optional(S.String),
+          provisioningState: S.optional(S.String),
+          ledgerSku: S.optional(S.String),
+          aadBasedSecurityPrincipals: S.optional(__S(18, __c2, 2)),
+          certBasedSecurityPrincipals: S.optional(__S(20, __c2, 4)),
+          hostLevel: S.optional(S.String),
+          maxBodySizeInMb: S.optional(S.Number),
+          subjectName: S.optional(S.String),
+          nodeCount: S.optional(S.Number),
+          writeLBAddressPrefix: S.optional(S.String),
+          workerThreads: S.optional(S.Number),
+          enclavePlatform: S.optional(S.String),
+          applicationType: S.optional(S.String),
+          scittConfiguration: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "LedgerProperties" });
     case 7:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(21, __c2, 5)),
+          tags: S.optional(__S(16, __c2, 0)),
+          location: S.String,
+          properties: S.optional(__S(22, __c2, 6)),
+        }),
+      ).annotate({ identifier: "CreateLedgerResponse" });
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           runningState: S.optional(S.String),
           ledgerType: S.optional(S.String),
           ledgerSku: S.optional(S.String),
-          aadBasedSecurityPrincipals: S.optional(__S(4, __c0, 4)),
-          certBasedSecurityPrincipals: S.optional(__S(6, __c0, 6)),
+          aadBasedSecurityPrincipals: S.optional(__S(18, __c2, 2)),
+          certBasedSecurityPrincipals: S.optional(__S(20, __c2, 4)),
           hostLevel: S.optional(S.String),
           maxBodySizeInMb: S.optional(S.Number),
           subjectName: S.optional(S.String),
@@ -566,74 +643,9 @@ function __c0(j: number): any {
       ).annotate({ identifier: "LedgerPropertiesInput" });
   }
 }
-function __c1(j: number): any {
+function __c4(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          ledgerName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(2, __c0, 2)),
-          location: S.String,
-          properties: S.optional(__S(7, __c0, 7)),
-        }).pipe(
-          T.Http({
-            method: "PUT",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ConfidentialLedger/ledgers/{ledgerName}",
-            code: 200,
-            apiVersion: "2026-02-23",
-          }),
-        ),
-      ).annotate({ identifier: "CreateLedgerRequest" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          createdBy: S.optional(S.String),
-          createdByType: S.optional(S.String),
-          createdAt: S.optional(S.String),
-          lastModifiedBy: S.optional(S.String),
-          lastModifiedByType: S.optional(S.String),
-          lastModifiedAt: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "SystemData" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          ledgerName: S.optional(S.String),
-          ledgerUri: S.optional(S.String),
-          identityServiceUri: S.optional(S.String),
-          ledgerInternalNamespace: S.optional(S.String),
-          runningState: S.optional(S.String),
-          ledgerType: S.optional(S.String),
-          provisioningState: S.optional(S.String),
-          ledgerSku: S.optional(S.String),
-          aadBasedSecurityPrincipals: S.optional(__S(4, __c0, 4)),
-          certBasedSecurityPrincipals: S.optional(__S(6, __c0, 6)),
-          hostLevel: S.optional(S.String),
-          maxBodySizeInMb: S.optional(S.Number),
-          subjectName: S.optional(S.String),
-          nodeCount: S.optional(S.Number),
-          writeLBAddressPrefix: S.optional(S.String),
-          workerThreads: S.optional(S.Number),
-          enclavePlatform: S.optional(S.String),
-          applicationType: S.optional(S.String),
-          scittConfiguration: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "LedgerProperties" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(9, __c1, 1)),
-          tags: S.optional(__S(2, __c0, 2)),
-          location: S.String,
-          properties: S.optional(__S(10, __c1, 2)),
-        }),
-      ).annotate({ identifier: "CreateLedgerResponse" });
-    case 4:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -648,11 +660,15 @@ function __c1(j: number): any {
           }),
         ),
       ).annotate({ identifier: "DeleteLedgerRequest" });
-    case 5:
+    case 1:
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "DeleteLedgerResponse",
       });
-    case 6:
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -669,7 +685,7 @@ function __c1(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ExportLedgerFileRequest" });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           message: S.optional(S.String),
@@ -679,7 +695,7 @@ function __c1(j: number): any {
       });
   }
 }
-function __c2(j: number): any {
+function __c6(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -696,7 +712,11 @@ function __c2(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetLedgerRequest" });
-    case 1:
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -713,16 +733,24 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "ListLedgerByResourceGroupRequest",
       });
-    case 2:
-      return S.Array(__S(11, __c1, 3));
-    case 3:
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(23, __c2, 7));
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          value: __S(18, __c2, 2),
+          value: __S(64, __c8, 0),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ConfidentialLedgerList" });
-    case 4:
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -738,7 +766,11 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "ListLedgerBySubscriptionRequest",
       });
-    case 5:
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({}).pipe(
           T.Http({
@@ -749,7 +781,7 @@ function __c2(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ListOperationsRequest" });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           provider: S.optional(S.String),
@@ -760,40 +792,40 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "ResourceProviderOperationDisplay",
       });
-    case 7:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
           isDataAction: S.optional(S.Boolean),
-          display: S.optional(__S(22, __c2, 6)),
+          display: S.optional(__S(81, __c10, 1)),
         }),
       ).annotate({
         identifier: "ResourceProviderOperationDefinition",
       });
-  }
-}
-function __c3(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(23, __c2, 7));
-    case 1:
+    case 3:
+      return S.Array(__S(82, __c10, 2));
+    case 4:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(24, __c3, 0)),
+          value: S.optional(__S(83, __c10, 3)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
         identifier: "ResourceProviderOperationList",
       });
-    case 2:
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           ledgerName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(2, __c0, 2)),
+          tags: S.optional(__S(16, __c2, 0)),
           location: S.String,
-          properties: S.optional(__S(7, __c0, 7)),
+          properties: S.optional(__S(24, __c3, 0)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -805,7 +837,6 @@ function __c3(j: number): any {
       ).annotate({ identifier: "UpdateLedgerRequest" });
   }
 }
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

@@ -193,8 +193,8 @@ export const createRateLimit: API.OperationMethod<
   CreateRateLimitError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(9, __c1, 1) as any as S.Schema<CreateRateLimitRequest>,
-  output: __S(10, __c1, 2) as any as S.Schema<CreateRateLimitResponse>,
+  input: __S(2, __c0, 2) as any as S.Schema<CreateRateLimitRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<CreateRateLimitResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -208,8 +208,8 @@ export const deleteRateLimit: API.OperationMethod<
   DeleteRateLimitError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(11, __c1, 3) as any as S.Schema<DeleteRateLimitRequest>,
-  output: __S(10, __c1, 2) as any as S.Schema<DeleteRateLimitResponse>,
+  input: __S(24, __c3, 0) as any as S.Schema<DeleteRateLimitRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<DeleteRateLimitResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -223,8 +223,8 @@ export const editRateLimit: API.OperationMethod<
   EditRateLimitError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(14, __c1, 6) as any as S.Schema<EditRateLimitRequest>,
-  output: __S(10, __c1, 2) as any as S.Schema<EditRateLimitResponse>,
+  input: __S(34, __c4, 2) as any as S.Schema<EditRateLimitRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<EditRateLimitResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -238,8 +238,8 @@ export const getRateLimit: API.OperationMethod<
   GetRateLimitError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(15, __c1, 7) as any as S.Schema<GetRateLimitRequest>,
-  output: __S(10, __c1, 2) as any as S.Schema<GetRateLimitResponse>,
+  input: __S(40, __c5, 0) as any as S.Schema<GetRateLimitRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<GetRateLimitResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -253,8 +253,8 @@ export const listRateLimits: API.OperationMethod<
   ListRateLimitsError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(16, __c2, 0) as any as S.Schema<ListRateLimitsRequest>,
-  output: __S(10, __c1, 2) as any as S.Schema<ListRateLimitsResponse>,
+  input: __S(48, __c6, 0) as any as S.Schema<ListRateLimitsRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<ListRateLimitsResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -262,6 +262,48 @@ export const listRateLimits: API.OperationMethod<
 
 // Schema builders: each runs one schema initializer, on that schema's first use.
 function __c0(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          methods: S.optional(__S(20, __c2, 4)),
+          schemes: S.optional(__S(21, __c2, 5)),
+          url: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "CreateRequestMatchRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          headers: S.optional(__S(19, __c2, 3)),
+          request: S.optional(__S(0, __c0, 0)),
+          response: S.optional(__S(22, __c2, 6)),
+        }),
+      ).annotate({ identifier: "CreateRequestMatch" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          zoneId: S.String.pipe(T.Label("zone_id")),
+          action: __S(17, __c2, 1),
+          match: __S(1, __c0, 1),
+          period: S.Number,
+          threshold: S.Number,
+        })
+          .pipe(T.Http({ method: "POST", uri: "/zones/{zone_id}/rate_limits", code: 200 }))
+          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({ identifier: "CreateRateLimitRequest" });
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({}).pipe(T.KeyDictionary(KEY_DICTIONARY))).annotate({
+        identifier: "CreateRateLimitResponse",
+      });
+  }
+}
+function __c2(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -276,7 +318,7 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           mode: S.optional(S.String),
-          response: S.optional(__S(0, __c0, 0)),
+          response: S.optional(__S(16, __c2, 0)),
           timeout: S.optional(S.Number),
         }),
       ).annotate({ identifier: "CreateRequestAction" });
@@ -291,22 +333,12 @@ function __c0(j: number): any {
         identifier: "CreateRequestMatchHeadersItem",
       });
     case 3:
-      return S.Array(__S(2, __c0, 2));
+      return S.Array(__S(18, __c2, 2));
     case 4:
       return S.Array(S.String);
     case 5:
       return S.Array(S.String);
     case 6:
-      return S.suspend(() =>
-        S.Struct({
-          methods: S.optional(__S(4, __c0, 4)),
-          schemes: S.optional(__S(5, __c0, 5)),
-          url: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "CreateRequestMatchRequest",
-      });
-    case 7:
       return S.suspend(() =>
         S.Struct({
           originTraffic: S.optional(S.Boolean.pipe(T.Body("origin_traffic"))),
@@ -316,33 +348,9 @@ function __c0(j: number): any {
       });
   }
 }
-function __c1(j: number): any {
+function __c3(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() =>
-        S.Struct({
-          headers: S.optional(__S(3, __c0, 3)),
-          request: S.optional(__S(6, __c0, 6)),
-          response: S.optional(__S(7, __c0, 7)),
-        }),
-      ).annotate({ identifier: "CreateRequestMatch" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          zoneId: S.String.pipe(T.Label("zone_id")),
-          action: __S(1, __c0, 1),
-          match: __S(8, __c1, 0),
-          period: S.Number,
-          threshold: S.Number,
-        })
-          .pipe(T.Http({ method: "POST", uri: "/zones/{zone_id}/rate_limits", code: 200 }))
-          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({ identifier: "CreateRateLimitRequest" });
-    case 2:
-      return S.suspend(() => S.Struct({}).pipe(T.KeyDictionary(KEY_DICTIONARY))).annotate({
-        identifier: "CreateRateLimitResponse",
-      });
-    case 3:
       return S.suspend(() =>
         S.Struct({
           zoneId: S.String.pipe(T.Label("zone_id")),
@@ -357,29 +365,33 @@ function __c1(j: number): any {
           )
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "DeleteRateLimitRequest" });
-    case 4:
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          methods: S.optional(__S(4, __c0, 4)),
-          schemes: S.optional(__S(5, __c0, 5)),
+          methods: S.optional(__S(20, __c2, 4)),
+          schemes: S.optional(__S(21, __c2, 5)),
           url: S.optional(S.String),
         }),
       ).annotate({ identifier: "EditRequestMatchRequest" });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          headers: S.optional(__S(3, __c0, 3)),
-          request: S.optional(__S(12, __c1, 4)),
-          response: S.optional(__S(7, __c0, 7)),
+          headers: S.optional(__S(19, __c2, 3)),
+          request: S.optional(__S(32, __c4, 0)),
+          response: S.optional(__S(22, __c2, 6)),
         }),
       ).annotate({ identifier: "EditRequestMatch" });
-    case 6:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           zoneId: S.String.pipe(T.Label("zone_id")),
           rateLimitId: S.String.pipe(T.Label("rate_limit_id")),
-          action: __S(1, __c0, 1),
-          match: __S(13, __c1, 5),
+          action: __S(17, __c2, 1),
+          match: __S(33, __c4, 1),
           period: S.Number,
           threshold: S.Number,
         })
@@ -392,7 +404,11 @@ function __c1(j: number): any {
           )
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "EditRateLimitRequest" });
-    case 7:
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           zoneId: S.String.pipe(T.Label("zone_id")),
@@ -409,7 +425,7 @@ function __c1(j: number): any {
       ).annotate({ identifier: "GetRateLimitRequest" });
   }
 }
-function __c2(j: number): any {
+function __c6(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -423,7 +439,6 @@ function __c2(j: number): any {
       ).annotate({ identifier: "ListRateLimitsRequest" });
   }
 }
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

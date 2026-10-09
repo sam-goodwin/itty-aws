@@ -162,8 +162,8 @@ export const mapCheckInputs: API.OperationMethod<
   MapCheckInputsError,
   ModalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(6, __c0, 6) as any as S.Schema<MapCheckInputsRequest>,
-  output: __S(8, __c1, 0) as any as S.Schema<MapCheckInputsResponse>,
+  input: __S(16, __c1, 0) as any as S.Schema<MapCheckInputsRequest>,
+  output: __S(18, __c1, 2) as any as S.Schema<MapCheckInputsResponse>,
   errors: [UnknownModalError],
   protocol: ModalProtocol,
   retry: Retry.Retry,
@@ -176,8 +176,8 @@ export const mapStartOrContinue: API.OperationMethod<
   MapStartOrContinueError,
   ModalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(15, __c1, 7) as any as S.Schema<MapStartOrContinueRequest>,
-  output: __S(17, __c2, 1) as any as S.Schema<MapStartOrContinueResponse>,
+  input: __S(54, __c3, 6) as any as S.Schema<MapStartOrContinueRequest>,
+  output: __S(56, __c3, 8) as any as S.Schema<MapStartOrContinueResponse>,
   errors: [UnknownModalError],
   protocol: ModalProtocol,
   retry: Retry.Retry,
@@ -233,20 +233,6 @@ function __c0(j: number): any {
           lastEntryId: S.optional(S.String),
         }),
       ).annotate({ identifier: "MapAwaitResponse" });
-    case 5:
-      return S.Array(S.String);
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          lastEntryId: S.optional(S.String),
-          timeout: S.optional(S.Number),
-          attemptTokens: S.optional(__S(5, __c0, 5)),
-        }).pipe(
-          T.Http({ method: "POST", uri: "/modal.client.ModalClient/MapCheckInputs", code: 200 }),
-        ),
-      ).annotate({ identifier: "MapCheckInputsRequest" });
-    case 7:
-      return S.Array(S.Boolean);
   }
 }
 function __c1(j: number): any {
@@ -254,10 +240,32 @@ function __c1(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          lost: S.optional(__S(7, __c0, 7)),
+          lastEntryId: S.optional(S.String),
+          timeout: S.optional(S.Number),
+          attemptTokens: S.optional(__S(32, __c2, 0)),
+        }).pipe(
+          T.Http({ method: "POST", uri: "/modal.client.ModalClient/MapCheckInputs", code: 200 }),
+        ),
+      ).annotate({ identifier: "MapCheckInputsRequest" });
+    case 1:
+      return S.Array(S.Boolean);
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          lost: S.optional(__S(17, __c1, 1)),
         }),
       ).annotate({ identifier: "MapCheckInputsResponse" });
-    case 1:
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           args: S.optional(S.String),
@@ -267,7 +275,7 @@ function __c1(j: number): any {
           methodName: S.optional(S.String),
         }),
       ).annotate({ identifier: "FunctionInput" });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           blobId: S.optional(S.String),
@@ -275,35 +283,35 @@ function __c1(j: number): any {
           throughputBytesS: S.optional(S.String),
         }),
       ).annotate({ identifier: "BlobUploadResult" });
+    case 2:
+      return S.Array(__S(49, __c3, 1));
     case 3:
-      return S.Array(__S(10, __c1, 2));
-    case 4:
       return S.suspend(() =>
         S.Struct({
           idx: S.optional(S.Number),
-          input: S.optional(__S(9, __c1, 1)),
+          input: S.optional(__S(48, __c3, 0)),
           r2Failed: S.optional(S.Boolean),
           r2ThroughputBytesS: S.optional(S.String),
-          blobUploadResults: S.optional(__S(11, __c1, 3)),
+          blobUploadResults: S.optional(__S(50, __c3, 2)),
         }),
       ).annotate({ identifier: "FunctionPutInputsItem" });
-    case 5:
+    case 4:
       return S.suspend(() =>
         S.Struct({
-          input: S.optional(__S(12, __c1, 4)),
+          input: S.optional(__S(51, __c3, 3)),
           attemptToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "MapStartOrContinueItem" });
+    case 5:
+      return S.Array(__S(52, __c3, 4));
     case 6:
-      return S.Array(__S(13, __c1, 5));
-    case 7:
       return S.suspend(() =>
         S.Struct({
           functionId: S.optional(S.String),
           parentInputId: S.optional(S.String),
           functionCallId: S.optional(S.String),
           mapToken: S.optional(S.String),
-          items: S.optional(__S(14, __c1, 6)),
+          items: S.optional(__S(53, __c3, 5)),
           proxied: S.optional(S.Boolean),
         }).pipe(
           T.Http({
@@ -315,11 +323,7 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "MapStartOrContinueRequest",
       });
-  }
-}
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
+    case 7:
       return S.suspend(() =>
         S.Struct({
           backoffCoefficient: S.optional(S.Number),
@@ -328,22 +332,21 @@ function __c2(j: number): any {
           retries: S.optional(S.Number),
         }),
       ).annotate({ identifier: "FunctionRetryPolicy" });
-    case 1:
+    case 8:
       return S.suspend(() =>
         S.Struct({
           mapToken: S.optional(S.String),
           functionId: S.optional(S.String),
           functionCallId: S.optional(S.String),
           maxInputsOutstanding: S.optional(S.Number),
-          attemptTokens: S.optional(__S(5, __c0, 5)),
-          retryPolicy: S.optional(__S(16, __c2, 0)),
+          attemptTokens: S.optional(__S(32, __c2, 0)),
+          retryPolicy: S.optional(__S(55, __c3, 7)),
         }),
       ).annotate({
         identifier: "MapStartOrContinueResponse",
       });
   }
 }
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

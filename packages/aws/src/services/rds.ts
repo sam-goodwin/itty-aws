@@ -2504,7 +2504,7 @@ export interface Endpoint {
   Port?: number;
   HostedZoneId?: string;
 }
-const Endpoint = /*@__PURE__*/ __L.at(__c14, 6) as any as S.Schema<Endpoint>;
+const Endpoint = /*@__PURE__*/ __L.at(__c1, 0) as any as S.Schema<Endpoint>;
 export interface DBParameterGroupStatus {
   DBParameterGroupName?: string;
   ParameterApplyStatus?: string;
@@ -5306,8 +5306,8 @@ export const addRoleToDBInstance: API.OperationMethod<
   AddRoleToDBInstanceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2, __c0, 2) as any as S.Schema<AddRoleToDBInstanceMessage>,
-  output: __S(3, __c0, 3) as any as S.Schema<AddRoleToDBInstanceResponse>,
+  input: __S(64, __c2, 0) as any as S.Schema<AddRoleToDBInstanceMessage>,
+  output: __S(65, __c2, 1) as any as S.Schema<AddRoleToDBInstanceResponse>,
   errors: [
     DBInstanceNotFoundFault,
     DBInstanceRoleAlreadyExistsFault,
@@ -5332,8 +5332,8 @@ export const addSourceIdentifierToSubscription: API.OperationMethod<
   AddSourceIdentifierToSubscriptionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(4, __c0, 4) as any as S.Schema<AddSourceIdentifierToSubscriptionMessage>,
-  output: __S(8, __c1, 0) as any as S.Schema<AddSourceIdentifierToSubscriptionResult>,
+  input: __S(96, __c3, 0) as any as S.Schema<AddSourceIdentifierToSubscriptionMessage>,
+  output: __S(97, __c3, 1) as any as S.Schema<AddSourceIdentifierToSubscriptionResult>,
   errors: [SourceNotFoundFault, SubscriptionNotFoundFault],
   protocol: AwsProtocol,
   retry: Retry,
@@ -5367,8 +5367,8 @@ export const addTagsToResource: API.OperationMethod<
   AddTagsToResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(11, __c1, 3) as any as S.Schema<AddTagsToResourceMessage>,
-  output: __S(12, __c1, 4) as any as S.Schema<AddTagsToResourceResponse>,
+  input: __S(192, __c6, 0) as any as S.Schema<AddTagsToResourceMessage>,
+  output: __S(193, __c6, 1) as any as S.Schema<AddTagsToResourceResponse>,
   errors: [
     BlueGreenDeploymentNotFoundFault,
     DBClusterNotFoundFault,
@@ -5404,8 +5404,8 @@ export const applyPendingMaintenanceAction: API.OperationMethod<
   ApplyPendingMaintenanceActionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(13, __c1, 5) as any as S.Schema<ApplyPendingMaintenanceActionMessage>,
-  output: __S(17, __c2, 1) as any as S.Schema<ApplyPendingMaintenanceActionResult>,
+  input: __S(256, __c8, 0) as any as S.Schema<ApplyPendingMaintenanceActionMessage>,
+  output: __S(257, __c8, 1) as any as S.Schema<ApplyPendingMaintenanceActionResult>,
   errors: [InvalidDBClusterStateFault, InvalidDBInstanceStateFault, ResourceNotFoundFault],
   protocol: AwsProtocol,
   retry: Retry,
@@ -5433,8 +5433,8 @@ export const authorizeDBSecurityGroupIngress: API.OperationMethod<
   AuthorizeDBSecurityGroupIngressError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(18, __c2, 2) as any as S.Schema<AuthorizeDBSecurityGroupIngressMessage>,
-  output: __S(24, __c3, 0) as any as S.Schema<AuthorizeDBSecurityGroupIngressResult>,
+  input: __S(320, __c10, 0) as any as S.Schema<AuthorizeDBSecurityGroupIngressMessage>,
+  output: __S(321, __c10, 1) as any as S.Schema<AuthorizeDBSecurityGroupIngressResult>,
   errors: [
     AuthorizationAlreadyExistsFault,
     AuthorizationQuotaExceededFault,
@@ -5463,8 +5463,8 @@ export const backtrackDBCluster: API.OperationMethod<
   BacktrackDBClusterError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(25, __c3, 1) as any as S.Schema<BacktrackDBClusterMessage>,
-  output: __S(26, __c3, 2) as any as S.Schema<DBClusterBacktrack>,
+  input: __S(384, __c12, 0) as any as S.Schema<BacktrackDBClusterMessage>,
+  output: __S(416, __c13, 0) as any as S.Schema<DBClusterBacktrack>,
   errors: [DBClusterNotFoundFault, InvalidDBClusterStateFault],
   protocol: AwsProtocol,
   retry: Retry,
@@ -5484,8 +5484,8 @@ export const cancelExportTask: API.OperationMethod<
   CancelExportTaskError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(27, __c3, 3) as any as S.Schema<CancelExportTaskMessage>,
-  output: __S(29, __c3, 5) as any as S.Schema<ExportTask>,
+  input: __S(448, __c14, 0) as any as S.Schema<CancelExportTaskMessage>,
+  output: __S(512, __c16, 0) as any as S.Schema<ExportTask>,
   errors: [ExportTaskNotFoundFault, InvalidExportTaskStateFault],
   protocol: AwsProtocol,
   retry: Retry,
@@ -5508,8 +5508,8 @@ export const copyDBClusterParameterGroup: API.OperationMethod<
   CopyDBClusterParameterGroupError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(30, __c3, 6) as any as S.Schema<CopyDBClusterParameterGroupMessage>,
-  output: __S(32, __c4, 0) as any as S.Schema<CopyDBClusterParameterGroupResult>,
+  input: __S(544, __c17, 0) as any as S.Schema<CopyDBClusterParameterGroupMessage>,
+  output: __S(545, __c17, 1) as any as S.Schema<CopyDBClusterParameterGroupResult>,
   errors: [
     DBParameterGroupAlreadyExistsFault,
     DBParameterGroupNotFoundFault,
@@ -5555,8 +5555,8 @@ export const copyDBClusterSnapshot: API.OperationMethod<
   CopyDBClusterSnapshotError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(33, __c4, 1) as any as S.Schema<CopyDBClusterSnapshotMessage>,
-  output: __S(36, __c4, 4) as any as S.Schema<CopyDBClusterSnapshotResult>,
+  input: __S(608, __c19, 0) as any as S.Schema<CopyDBClusterSnapshotMessage>,
+  output: __S(609, __c19, 1) as any as S.Schema<CopyDBClusterSnapshotResult>,
   errors: [
     DBClusterSnapshotAlreadyExistsFault,
     DBClusterSnapshotNotFoundFault,
@@ -5586,8 +5586,8 @@ export const copyDBParameterGroup: API.OperationMethod<
   CopyDBParameterGroupError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(37, __c4, 5) as any as S.Schema<CopyDBParameterGroupMessage>,
-  output: __S(39, __c4, 7) as any as S.Schema<CopyDBParameterGroupResult>,
+  input: __S(704, __c22, 0) as any as S.Schema<CopyDBParameterGroupMessage>,
+  output: __S(705, __c22, 1) as any as S.Schema<CopyDBParameterGroupResult>,
   errors: [
     DBParameterGroupAlreadyExistsFault,
     DBParameterGroupNotFoundFault,
@@ -5621,8 +5621,8 @@ export const copyDBSnapshot: API.OperationMethod<
   CopyDBSnapshotError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(40, __c5, 0) as any as S.Schema<CopyDBSnapshotMessage>,
-  output: __S(46, __c5, 6) as any as S.Schema<CopyDBSnapshotResult>,
+  input: __S(768, __c24, 0) as any as S.Schema<CopyDBSnapshotMessage>,
+  output: __S(769, __c24, 1) as any as S.Schema<CopyDBSnapshotResult>,
   errors: [
     CustomAvailabilityZoneNotFoundFault,
     DBSnapshotAlreadyExistsFault,
@@ -5650,8 +5650,8 @@ export const copyOptionGroup: API.OperationMethod<
   CopyOptionGroupError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(47, __c5, 7) as any as S.Schema<CopyOptionGroupMessage>,
-  output: __S(57, __c7, 1) as any as S.Schema<CopyOptionGroupResult>,
+  input: __S(896, __c28, 0) as any as S.Schema<CopyOptionGroupMessage>,
+  output: __S(897, __c28, 1) as any as S.Schema<CopyOptionGroupResult>,
   errors: [OptionGroupAlreadyExistsFault, OptionGroupNotFoundFault, OptionGroupQuotaExceededFault],
   protocol: AwsProtocol,
   retry: Retry,
@@ -5687,8 +5687,8 @@ export const createBlueGreenDeployment: API.OperationMethod<
   CreateBlueGreenDeploymentError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(60, __c7, 4) as any as S.Schema<CreateBlueGreenDeploymentRequest>,
-  output: __S(66, __c8, 2) as any as S.Schema<CreateBlueGreenDeploymentResponse>,
+  input: __S(1026, __c32, 2) as any as S.Schema<CreateBlueGreenDeploymentRequest>,
+  output: __S(1027, __c32, 3) as any as S.Schema<CreateBlueGreenDeploymentResponse>,
   errors: [
     BlueGreenDeploymentAlreadyExistsFault,
     DBClusterNotFoundFault,
@@ -5726,8 +5726,8 @@ export const createCustomDBEngineVersion: API.OperationMethod<
   CreateCustomDBEngineVersionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(67, __c8, 3) as any as S.Schema<CreateCustomDBEngineVersionMessage>,
-  output: __S(80, __c10, 0) as any as S.Schema<DBEngineVersion>,
+  input: __S(1088, __c34, 0) as any as S.Schema<CreateCustomDBEngineVersionMessage>,
+  output: __S(1225, __c38, 9) as any as S.Schema<DBEngineVersion>,
   errors: [
     CreateCustomDBEngineVersionFault,
     CustomDBEngineVersionAlreadyExistsFault,
@@ -5790,8 +5790,8 @@ export const createDBCluster: API.OperationMethod<
   CreateDBClusterError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(89, __c11, 1) as any as S.Schema<CreateDBClusterMessage>,
-  output: __S(109, __c13, 5) as any as S.Schema<CreateDBClusterResult>,
+  input: __S(1248, __c39, 0) as any as S.Schema<CreateDBClusterMessage>,
+  output: __S(1249, __c39, 1) as any as S.Schema<CreateDBClusterResult>,
   errors: [
     DBClusterAlreadyExistsFault,
     DBClusterNotFoundFault,
@@ -5845,8 +5845,8 @@ export const createDBClusterEndpoint: API.OperationMethod<
   CreateDBClusterEndpointError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(110, __c13, 6) as any as S.Schema<CreateDBClusterEndpointMessage>,
-  output: __S(111, __c13, 7) as any as S.Schema<DBClusterEndpoint>,
+  input: __S(1536, __c48, 0) as any as S.Schema<CreateDBClusterEndpointMessage>,
+  output: __S(1568, __c49, 0) as any as S.Schema<DBClusterEndpoint>,
   errors: [
     DBClusterEndpointAlreadyExistsFault,
     DBClusterEndpointQuotaExceededFault,
@@ -5887,8 +5887,8 @@ export const createDBClusterParameterGroup: API.OperationMethod<
   CreateDBClusterParameterGroupError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(112, __c14, 0) as any as S.Schema<CreateDBClusterParameterGroupMessage>,
-  output: __S(113, __c14, 1) as any as S.Schema<CreateDBClusterParameterGroupResult>,
+  input: __S(1600, __c50, 0) as any as S.Schema<CreateDBClusterParameterGroupMessage>,
+  output: __S(1601, __c50, 1) as any as S.Schema<CreateDBClusterParameterGroupResult>,
   errors: [DBParameterGroupAlreadyExistsFault, DBParameterGroupQuotaExceededFault],
   protocol: AwsProtocol,
   retry: Retry,
@@ -5915,8 +5915,8 @@ export const createDBClusterSnapshot: API.OperationMethod<
   CreateDBClusterSnapshotError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(114, __c14, 2) as any as S.Schema<CreateDBClusterSnapshotMessage>,
-  output: __S(115, __c14, 3) as any as S.Schema<CreateDBClusterSnapshotResult>,
+  input: __S(1632, __c51, 0) as any as S.Schema<CreateDBClusterSnapshotMessage>,
+  output: __S(1633, __c51, 1) as any as S.Schema<CreateDBClusterSnapshotResult>,
   errors: [
     DBClusterNotFoundFault,
     DBClusterSnapshotAlreadyExistsFault,
@@ -5971,8 +5971,8 @@ export const createDBInstance: API.OperationMethod<
   CreateDBInstanceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(117, __c14, 5) as any as S.Schema<CreateDBInstanceMessage>,
-  output: __S(140, __c17, 4) as any as S.Schema<CreateDBInstanceResult>,
+  input: __S(1664, __c52, 0) as any as S.Schema<CreateDBInstanceMessage>,
+  output: __S(1665, __c52, 1) as any as S.Schema<CreateDBInstanceResult>,
   errors: [
     AuthorizationNotFoundFault,
     BackupPolicyNotFoundFault,
@@ -6047,8 +6047,8 @@ export const createDBInstanceReadReplica: API.OperationMethod<
   CreateDBInstanceReadReplicaError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(141, __c17, 5) as any as S.Schema<CreateDBInstanceReadReplicaMessage>,
-  output: __S(142, __c17, 6) as any as S.Schema<CreateDBInstanceReadReplicaResult>,
+  input: __S(1856, __c58, 0) as any as S.Schema<CreateDBInstanceReadReplicaMessage>,
+  output: __S(1857, __c58, 1) as any as S.Schema<CreateDBInstanceReadReplicaResult>,
   errors: [
     CertificateNotFoundFault,
     DBClusterNotFoundFault,
@@ -6098,8 +6098,8 @@ export const createDBParameterGroup: API.OperationMethod<
   CreateDBParameterGroupError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(143, __c17, 7) as any as S.Schema<CreateDBParameterGroupMessage>,
-  output: __S(144, __c18, 0) as any as S.Schema<CreateDBParameterGroupResult>,
+  input: __S(1888, __c59, 0) as any as S.Schema<CreateDBParameterGroupMessage>,
+  output: __S(1889, __c59, 1) as any as S.Schema<CreateDBParameterGroupResult>,
   errors: [DBParameterGroupAlreadyExistsFault, DBParameterGroupQuotaExceededFault],
   protocol: AwsProtocol,
   retry: Retry,
@@ -6120,8 +6120,8 @@ export const createDBProxy: API.OperationMethod<
   CreateDBProxyError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(147, __c18, 3) as any as S.Schema<CreateDBProxyRequest>,
-  output: __S(151, __c18, 7) as any as S.Schema<CreateDBProxyResponse>,
+  input: __S(1920, __c60, 0) as any as S.Schema<CreateDBProxyRequest>,
+  output: __S(1921, __c60, 1) as any as S.Schema<CreateDBProxyResponse>,
   errors: [DBProxyAlreadyExistsFault, DBProxyQuotaExceededFault, InvalidSubnet],
   protocol: AwsProtocol,
   retry: Retry,
@@ -6144,8 +6144,8 @@ export const createDBProxyEndpoint: API.OperationMethod<
   CreateDBProxyEndpointError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(152, __c19, 0) as any as S.Schema<CreateDBProxyEndpointRequest>,
-  output: __S(154, __c19, 2) as any as S.Schema<CreateDBProxyEndpointResponse>,
+  input: __S(2016, __c63, 0) as any as S.Schema<CreateDBProxyEndpointRequest>,
+  output: __S(2017, __c63, 1) as any as S.Schema<CreateDBProxyEndpointResponse>,
   errors: [
     DBProxyEndpointAlreadyExistsFault,
     DBProxyEndpointQuotaExceededFault,
@@ -6176,8 +6176,8 @@ export const createDBSecurityGroup: API.OperationMethod<
   CreateDBSecurityGroupError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(155, __c19, 3) as any as S.Schema<CreateDBSecurityGroupMessage>,
-  output: __S(156, __c19, 4) as any as S.Schema<CreateDBSecurityGroupResult>,
+  input: __S(2080, __c65, 0) as any as S.Schema<CreateDBSecurityGroupMessage>,
+  output: __S(2081, __c65, 1) as any as S.Schema<CreateDBSecurityGroupResult>,
   errors: [
     DBSecurityGroupAlreadyExistsFault,
     DBSecurityGroupNotSupportedFault,
@@ -6208,8 +6208,8 @@ export const createDBShardGroup: API.OperationMethod<
   CreateDBShardGroupError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(157, __c19, 5) as any as S.Schema<CreateDBShardGroupMessage>,
-  output: __S(158, __c19, 6) as any as S.Schema<DBShardGroup>,
+  input: __S(2112, __c66, 0) as any as S.Schema<CreateDBShardGroupMessage>,
+  output: __S(2144, __c67, 0) as any as S.Schema<DBShardGroup>,
   errors: [
     DBClusterNotFoundFault,
     DBShardGroupAlreadyExistsFault,
@@ -6239,8 +6239,8 @@ export const createDBSnapshot: API.OperationMethod<
   CreateDBSnapshotError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(159, __c19, 7) as any as S.Schema<CreateDBSnapshotMessage>,
-  output: __S(160, __c20, 0) as any as S.Schema<CreateDBSnapshotResult>,
+  input: __S(2176, __c68, 0) as any as S.Schema<CreateDBSnapshotMessage>,
+  output: __S(2177, __c68, 1) as any as S.Schema<CreateDBSnapshotResult>,
   errors: [
     DBInstanceNotFoundFault,
     DBSnapshotAlreadyExistsFault,
@@ -6268,8 +6268,8 @@ export const createDBSubnetGroup: API.OperationMethod<
   CreateDBSubnetGroupError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(162, __c20, 2) as any as S.Schema<CreateDBSubnetGroupMessage>,
-  output: __S(163, __c20, 3) as any as S.Schema<CreateDBSubnetGroupResult>,
+  input: __S(2208, __c69, 0) as any as S.Schema<CreateDBSubnetGroupMessage>,
+  output: __S(2209, __c69, 1) as any as S.Schema<CreateDBSubnetGroupResult>,
   errors: [
     DBSubnetGroupAlreadyExistsFault,
     DBSubnetGroupDoesNotCoverEnoughAZs,
@@ -6308,8 +6308,8 @@ export const createEventSubscription: API.OperationMethod<
   CreateEventSubscriptionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(164, __c20, 4) as any as S.Schema<CreateEventSubscriptionMessage>,
-  output: __S(165, __c20, 5) as any as S.Schema<CreateEventSubscriptionResult>,
+  input: __S(2272, __c71, 0) as any as S.Schema<CreateEventSubscriptionMessage>,
+  output: __S(2273, __c71, 1) as any as S.Schema<CreateEventSubscriptionResult>,
   errors: [
     EventSubscriptionQuotaExceededFault,
     SNSInvalidTopicFault,
@@ -6345,8 +6345,8 @@ export const createGlobalCluster: API.OperationMethod<
   CreateGlobalClusterError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(166, __c20, 6) as any as S.Schema<CreateGlobalClusterMessage>,
-  output: __S(172, __c21, 4) as any as S.Schema<CreateGlobalClusterResult>,
+  input: __S(2304, __c72, 0) as any as S.Schema<CreateGlobalClusterMessage>,
+  output: __S(2305, __c72, 1) as any as S.Schema<CreateGlobalClusterResult>,
   errors: [
     DBClusterNotFoundFault,
     GlobalClusterAlreadyExistsFault,
@@ -6377,8 +6377,8 @@ export const createIntegration: API.OperationMethod<
   CreateIntegrationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(174, __c21, 6) as any as S.Schema<CreateIntegrationMessage>,
-  output: __S(177, __c22, 1) as any as S.Schema<Integration>,
+  input: __S(2368, __c74, 0) as any as S.Schema<CreateIntegrationMessage>,
+  output: __S(2403, __c75, 3) as any as S.Schema<Integration>,
   errors: [
     DBClusterNotFoundFault,
     DBInstanceNotFoundFault,
@@ -6407,8 +6407,8 @@ export const createOptionGroup: API.OperationMethod<
   CreateOptionGroupError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(178, __c22, 2) as any as S.Schema<CreateOptionGroupMessage>,
-  output: __S(179, __c22, 3) as any as S.Schema<CreateOptionGroupResult>,
+  input: __S(2432, __c76, 0) as any as S.Schema<CreateOptionGroupMessage>,
+  output: __S(2433, __c76, 1) as any as S.Schema<CreateOptionGroupResult>,
   errors: [OptionGroupAlreadyExistsFault, OptionGroupQuotaExceededFault],
   protocol: AwsProtocol,
   retry: Retry,
@@ -6431,8 +6431,8 @@ export const createTenantDatabase: API.OperationMethod<
   CreateTenantDatabaseError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(180, __c22, 4) as any as S.Schema<CreateTenantDatabaseMessage>,
-  output: __S(183, __c22, 7) as any as S.Schema<CreateTenantDatabaseResult>,
+  input: __S(2464, __c77, 0) as any as S.Schema<CreateTenantDatabaseMessage>,
+  output: __S(2465, __c77, 1) as any as S.Schema<CreateTenantDatabaseResult>,
   errors: [
     DBInstanceNotFoundFault,
     InvalidDBInstanceStateFault,
@@ -6460,8 +6460,8 @@ export const deleteBlueGreenDeployment: API.OperationMethod<
   DeleteBlueGreenDeploymentError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(184, __c23, 0) as any as S.Schema<DeleteBlueGreenDeploymentRequest>,
-  output: __S(185, __c23, 1) as any as S.Schema<DeleteBlueGreenDeploymentResponse>,
+  input: __S(2528, __c79, 0) as any as S.Schema<DeleteBlueGreenDeploymentRequest>,
+  output: __S(2529, __c79, 1) as any as S.Schema<DeleteBlueGreenDeploymentResponse>,
   errors: [BlueGreenDeploymentNotFoundFault, InvalidBlueGreenDeploymentStateFault],
   protocol: AwsProtocol,
   retry: Retry,
@@ -6491,8 +6491,8 @@ export const deleteCustomDBEngineVersion: API.OperationMethod<
   DeleteCustomDBEngineVersionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(186, __c23, 2) as any as S.Schema<DeleteCustomDBEngineVersionMessage>,
-  output: __S(80, __c10, 0) as any as S.Schema<DBEngineVersion>,
+  input: __S(2560, __c80, 0) as any as S.Schema<DeleteCustomDBEngineVersionMessage>,
+  output: __S(1225, __c38, 9) as any as S.Schema<DBEngineVersion>,
   errors: [CustomDBEngineVersionNotFoundFault, InvalidCustomDBEngineVersionStateFault],
   protocol: AwsProtocol,
   retry: Retry,
@@ -6524,8 +6524,8 @@ export const deleteDBCluster: API.OperationMethod<
   DeleteDBClusterError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(187, __c23, 3) as any as S.Schema<DeleteDBClusterMessage>,
-  output: __S(188, __c23, 4) as any as S.Schema<DeleteDBClusterResult>,
+  input: __S(2592, __c81, 0) as any as S.Schema<DeleteDBClusterMessage>,
+  output: __S(2593, __c81, 1) as any as S.Schema<DeleteDBClusterResult>,
   errors: [
     DBClusterAutomatedBackupQuotaExceededFault,
     DBClusterNotFoundFault,
@@ -6554,8 +6554,8 @@ export const deleteDBClusterAutomatedBackup: API.OperationMethod<
   DeleteDBClusterAutomatedBackupError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(189, __c23, 5) as any as S.Schema<DeleteDBClusterAutomatedBackupMessage>,
-  output: __S(192, __c24, 0) as any as S.Schema<DeleteDBClusterAutomatedBackupResult>,
+  input: __S(2624, __c82, 0) as any as S.Schema<DeleteDBClusterAutomatedBackupMessage>,
+  output: __S(2625, __c82, 1) as any as S.Schema<DeleteDBClusterAutomatedBackupResult>,
   errors: [DBClusterAutomatedBackupNotFoundFault, InvalidDBClusterAutomatedBackupStateFault],
   protocol: AwsProtocol,
   retry: Retry,
@@ -6578,8 +6578,8 @@ export const deleteDBClusterEndpoint: API.OperationMethod<
   DeleteDBClusterEndpointError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(193, __c24, 1) as any as S.Schema<DeleteDBClusterEndpointMessage>,
-  output: __S(111, __c13, 7) as any as S.Schema<DBClusterEndpoint>,
+  input: __S(2720, __c85, 0) as any as S.Schema<DeleteDBClusterEndpointMessage>,
+  output: __S(1568, __c49, 0) as any as S.Schema<DBClusterEndpoint>,
   errors: [
     DBClusterEndpointNotFoundFault,
     InvalidDBClusterEndpointStateFault,
@@ -6607,8 +6607,8 @@ export const deleteDBClusterParameterGroup: API.OperationMethod<
   DeleteDBClusterParameterGroupError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(194, __c24, 2) as any as S.Schema<DeleteDBClusterParameterGroupMessage>,
-  output: __S(195, __c24, 3) as any as S.Schema<DeleteDBClusterParameterGroupResponse>,
+  input: __S(2752, __c86, 0) as any as S.Schema<DeleteDBClusterParameterGroupMessage>,
+  output: __S(2753, __c86, 1) as any as S.Schema<DeleteDBClusterParameterGroupResponse>,
   errors: [DBParameterGroupNotFoundFault, InvalidDBParameterGroupStateFault],
   protocol: AwsProtocol,
   retry: Retry,
@@ -6634,8 +6634,8 @@ export const deleteDBClusterSnapshot: API.OperationMethod<
   DeleteDBClusterSnapshotError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(196, __c24, 4) as any as S.Schema<DeleteDBClusterSnapshotMessage>,
-  output: __S(197, __c24, 5) as any as S.Schema<DeleteDBClusterSnapshotResult>,
+  input: __S(2784, __c87, 0) as any as S.Schema<DeleteDBClusterSnapshotMessage>,
+  output: __S(2785, __c87, 1) as any as S.Schema<DeleteDBClusterSnapshotResult>,
   errors: [DBClusterSnapshotNotFoundFault, InvalidDBClusterSnapshotStateFault],
   protocol: AwsProtocol,
   retry: Retry,
@@ -6674,8 +6674,8 @@ export const deleteDBInstance: API.OperationMethod<
   DeleteDBInstanceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(198, __c24, 6) as any as S.Schema<DeleteDBInstanceMessage>,
-  output: __S(199, __c24, 7) as any as S.Schema<DeleteDBInstanceResult>,
+  input: __S(2816, __c88, 0) as any as S.Schema<DeleteDBInstanceMessage>,
+  output: __S(2817, __c88, 1) as any as S.Schema<DeleteDBInstanceResult>,
   errors: [
     DBInstanceAutomatedBackupQuotaExceededFault,
     DBInstanceNotFoundFault,
@@ -6703,8 +6703,8 @@ export const deleteDBInstanceAutomatedBackup: API.OperationMethod<
   DeleteDBInstanceAutomatedBackupError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(200, __c25, 0) as any as S.Schema<DeleteDBInstanceAutomatedBackupMessage>,
-  output: __S(202, __c25, 2) as any as S.Schema<DeleteDBInstanceAutomatedBackupResult>,
+  input: __S(2848, __c89, 0) as any as S.Schema<DeleteDBInstanceAutomatedBackupMessage>,
+  output: __S(2849, __c89, 1) as any as S.Schema<DeleteDBInstanceAutomatedBackupResult>,
   errors: [DBInstanceAutomatedBackupNotFoundFault, InvalidDBInstanceAutomatedBackupStateFault],
   protocol: AwsProtocol,
   retry: Retry,
@@ -6724,8 +6724,8 @@ export const deleteDBParameterGroup: API.OperationMethod<
   DeleteDBParameterGroupError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(203, __c25, 3) as any as S.Schema<DeleteDBParameterGroupMessage>,
-  output: __S(204, __c25, 4) as any as S.Schema<DeleteDBParameterGroupResponse>,
+  input: __S(2912, __c91, 0) as any as S.Schema<DeleteDBParameterGroupMessage>,
+  output: __S(2913, __c91, 1) as any as S.Schema<DeleteDBParameterGroupResponse>,
   errors: [DBParameterGroupNotFoundFault, InvalidDBParameterGroupStateFault],
   protocol: AwsProtocol,
   retry: Retry,
@@ -6742,8 +6742,8 @@ export const deleteDBProxy: API.OperationMethod<
   DeleteDBProxyError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(205, __c25, 5) as any as S.Schema<DeleteDBProxyRequest>,
-  output: __S(206, __c25, 6) as any as S.Schema<DeleteDBProxyResponse>,
+  input: __S(2944, __c92, 0) as any as S.Schema<DeleteDBProxyRequest>,
+  output: __S(2945, __c92, 1) as any as S.Schema<DeleteDBProxyResponse>,
   errors: [DBProxyNotFoundFault, InvalidDBProxyStateFault],
   protocol: AwsProtocol,
   retry: Retry,
@@ -6763,8 +6763,8 @@ export const deleteDBProxyEndpoint: API.OperationMethod<
   DeleteDBProxyEndpointError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(207, __c25, 7) as any as S.Schema<DeleteDBProxyEndpointRequest>,
-  output: __S(208, __c26, 0) as any as S.Schema<DeleteDBProxyEndpointResponse>,
+  input: __S(2976, __c93, 0) as any as S.Schema<DeleteDBProxyEndpointRequest>,
+  output: __S(2977, __c93, 1) as any as S.Schema<DeleteDBProxyEndpointResponse>,
   errors: [DBProxyEndpointNotFoundFault, InvalidDBProxyEndpointStateFault],
   protocol: AwsProtocol,
   retry: Retry,
@@ -6788,8 +6788,8 @@ export const deleteDBSecurityGroup: API.OperationMethod<
   DeleteDBSecurityGroupError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(209, __c26, 1) as any as S.Schema<DeleteDBSecurityGroupMessage>,
-  output: __S(210, __c26, 2) as any as S.Schema<DeleteDBSecurityGroupResponse>,
+  input: __S(3008, __c94, 0) as any as S.Schema<DeleteDBSecurityGroupMessage>,
+  output: __S(3009, __c94, 1) as any as S.Schema<DeleteDBSecurityGroupResponse>,
   errors: [DBSecurityGroupNotFoundFault, InvalidDBSecurityGroupStateFault],
   protocol: AwsProtocol,
   retry: Retry,
@@ -6810,8 +6810,8 @@ export const deleteDBShardGroup: API.OperationMethod<
   DeleteDBShardGroupError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(211, __c26, 3) as any as S.Schema<DeleteDBShardGroupMessage>,
-  output: __S(158, __c19, 6) as any as S.Schema<DBShardGroup>,
+  input: __S(3040, __c95, 0) as any as S.Schema<DeleteDBShardGroupMessage>,
+  output: __S(2144, __c67, 0) as any as S.Schema<DBShardGroup>,
   errors: [DBShardGroupNotFoundFault, InvalidDBClusterStateFault, InvalidDBShardGroupStateFault],
   protocol: AwsProtocol,
   retry: Retry,
@@ -6833,8 +6833,8 @@ export const deleteDBSnapshot: API.OperationMethod<
   DeleteDBSnapshotError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(212, __c26, 4) as any as S.Schema<DeleteDBSnapshotMessage>,
-  output: __S(213, __c26, 5) as any as S.Schema<DeleteDBSnapshotResult>,
+  input: __S(3072, __c96, 0) as any as S.Schema<DeleteDBSnapshotMessage>,
+  output: __S(3073, __c96, 1) as any as S.Schema<DeleteDBSnapshotResult>,
   errors: [DBSnapshotNotFoundFault, InvalidDBSnapshotStateFault],
   protocol: AwsProtocol,
   retry: Retry,
@@ -6857,8 +6857,8 @@ export const deleteDBSubnetGroup: API.OperationMethod<
   DeleteDBSubnetGroupError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(214, __c26, 6) as any as S.Schema<DeleteDBSubnetGroupMessage>,
-  output: __S(215, __c26, 7) as any as S.Schema<DeleteDBSubnetGroupResponse>,
+  input: __S(3104, __c97, 0) as any as S.Schema<DeleteDBSubnetGroupMessage>,
+  output: __S(3105, __c97, 1) as any as S.Schema<DeleteDBSubnetGroupResponse>,
   errors: [DBSubnetGroupNotFoundFault, InvalidDBSubnetGroupStateFault, InvalidDBSubnetStateFault],
   protocol: AwsProtocol,
   retry: Retry,
@@ -6878,8 +6878,8 @@ export const deleteEventSubscription: API.OperationMethod<
   DeleteEventSubscriptionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(216, __c27, 0) as any as S.Schema<DeleteEventSubscriptionMessage>,
-  output: __S(217, __c27, 1) as any as S.Schema<DeleteEventSubscriptionResult>,
+  input: __S(3136, __c98, 0) as any as S.Schema<DeleteEventSubscriptionMessage>,
+  output: __S(3137, __c98, 1) as any as S.Schema<DeleteEventSubscriptionResult>,
   errors: [InvalidEventSubscriptionStateFault, SubscriptionNotFoundFault],
   protocol: AwsProtocol,
   retry: Retry,
@@ -6901,8 +6901,8 @@ export const deleteGlobalCluster: API.OperationMethod<
   DeleteGlobalClusterError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(218, __c27, 2) as any as S.Schema<DeleteGlobalClusterMessage>,
-  output: __S(219, __c27, 3) as any as S.Schema<DeleteGlobalClusterResult>,
+  input: __S(3168, __c99, 0) as any as S.Schema<DeleteGlobalClusterMessage>,
+  output: __S(3169, __c99, 1) as any as S.Schema<DeleteGlobalClusterResult>,
   errors: [GlobalClusterNotFoundFault, InvalidGlobalClusterStateFault],
   protocol: AwsProtocol,
   retry: Retry,
@@ -6923,8 +6923,8 @@ export const deleteIntegration: API.OperationMethod<
   DeleteIntegrationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(220, __c27, 4) as any as S.Schema<DeleteIntegrationMessage>,
-  output: __S(177, __c22, 1) as any as S.Schema<Integration>,
+  input: __S(3200, __c100, 0) as any as S.Schema<DeleteIntegrationMessage>,
+  output: __S(2403, __c75, 3) as any as S.Schema<Integration>,
   errors: [
     IntegrationConflictOperationFault,
     IntegrationNotFoundFault,
@@ -6948,8 +6948,8 @@ export const deleteOptionGroup: API.OperationMethod<
   DeleteOptionGroupError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(221, __c27, 5) as any as S.Schema<DeleteOptionGroupMessage>,
-  output: __S(222, __c27, 6) as any as S.Schema<DeleteOptionGroupResponse>,
+  input: __S(3232, __c101, 0) as any as S.Schema<DeleteOptionGroupMessage>,
+  output: __S(3233, __c101, 1) as any as S.Schema<DeleteOptionGroupResponse>,
   errors: [InvalidOptionGroupStateFault, OptionGroupNotFoundFault],
   protocol: AwsProtocol,
   retry: Retry,
@@ -6973,8 +6973,8 @@ export const deleteTenantDatabase: API.OperationMethod<
   DeleteTenantDatabaseError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(223, __c27, 7) as any as S.Schema<DeleteTenantDatabaseMessage>,
-  output: __S(224, __c28, 0) as any as S.Schema<DeleteTenantDatabaseResult>,
+  input: __S(3264, __c102, 0) as any as S.Schema<DeleteTenantDatabaseMessage>,
+  output: __S(3265, __c102, 1) as any as S.Schema<DeleteTenantDatabaseResult>,
   errors: [
     DBInstanceNotFoundFault,
     DBSnapshotAlreadyExistsFault,
@@ -7001,8 +7001,8 @@ export const deregisterDBProxyTargets: API.OperationMethod<
   DeregisterDBProxyTargetsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(225, __c28, 1) as any as S.Schema<DeregisterDBProxyTargetsRequest>,
-  output: __S(226, __c28, 2) as any as S.Schema<DeregisterDBProxyTargetsResponse>,
+  input: __S(3296, __c103, 0) as any as S.Schema<DeregisterDBProxyTargetsRequest>,
+  output: __S(3297, __c103, 1) as any as S.Schema<DeregisterDBProxyTargetsResponse>,
   errors: [
     DBProxyNotFoundFault,
     DBProxyTargetGroupNotFoundFault,
@@ -7026,8 +7026,8 @@ export const describeAccountAttributes: API.OperationMethod<
   DescribeAccountAttributesError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(227, __c28, 3) as any as S.Schema<DescribeAccountAttributesMessage>,
-  output: __S(230, __c28, 6) as any as S.Schema<AccountAttributesMessage>,
+  input: __S(3328, __c104, 0) as any as S.Schema<DescribeAccountAttributesMessage>,
+  output: __S(3331, __c104, 3) as any as S.Schema<AccountAttributesMessage>,
   errors: [],
   protocol: AwsProtocol,
   retry: Retry,
@@ -7047,8 +7047,8 @@ export const describeBlueGreenDeployments: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   BlueGreenDeployment
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(234, __c29, 2) as any as S.Schema<DescribeBlueGreenDeploymentsRequest>,
-  output: __S(236, __c29, 4) as any as S.Schema<DescribeBlueGreenDeploymentsResponse>,
+  input: __S(3360, __c105, 0) as any as S.Schema<DescribeBlueGreenDeploymentsRequest>,
+  output: __S(3362, __c105, 2) as any as S.Schema<DescribeBlueGreenDeploymentsResponse>,
   errors: [BlueGreenDeploymentNotFoundFault],
   protocol: AwsProtocol,
   retry: Retry,
@@ -7074,8 +7074,8 @@ export const describeCertificates: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   Certificate
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(237, __c29, 5) as any as S.Schema<DescribeCertificatesMessage>,
-  output: __S(240, __c30, 0) as any as S.Schema<CertificateMessage>,
+  input: __S(3424, __c107, 0) as any as S.Schema<DescribeCertificatesMessage>,
+  output: __S(3426, __c107, 2) as any as S.Schema<CertificateMessage>,
   errors: [CertificateNotFoundFault],
   protocol: AwsProtocol,
   retry: Retry,
@@ -7103,8 +7103,8 @@ export const describeDBClusterAutomatedBackups: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   DBClusterAutomatedBackup
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(241, __c30, 1) as any as S.Schema<DescribeDBClusterAutomatedBackupsMessage>,
-  output: __S(243, __c30, 3) as any as S.Schema<DBClusterAutomatedBackupMessage>,
+  input: __S(3488, __c109, 0) as any as S.Schema<DescribeDBClusterAutomatedBackupsMessage>,
+  output: __S(3490, __c109, 2) as any as S.Schema<DBClusterAutomatedBackupMessage>,
   errors: [DBClusterAutomatedBackupNotFoundFault],
   protocol: AwsProtocol,
   retry: Retry,
@@ -7135,8 +7135,8 @@ export const describeDBClusterBacktracks: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   DBClusterBacktrack
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(244, __c30, 4) as any as S.Schema<DescribeDBClusterBacktracksMessage>,
-  output: __S(246, __c30, 6) as any as S.Schema<DBClusterBacktrackMessage>,
+  input: __S(3520, __c110, 0) as any as S.Schema<DescribeDBClusterBacktracksMessage>,
+  output: __S(3522, __c110, 2) as any as S.Schema<DBClusterBacktrackMessage>,
   errors: [DBClusterBacktrackNotFoundFault, DBClusterNotFoundFault],
   protocol: AwsProtocol,
   retry: Retry,
@@ -7162,8 +7162,8 @@ export const describeDBClusterEndpoints: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   DBClusterEndpoint
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(247, __c30, 7) as any as S.Schema<DescribeDBClusterEndpointsMessage>,
-  output: __S(249, __c31, 1) as any as S.Schema<DBClusterEndpointMessage>,
+  input: __S(3552, __c111, 0) as any as S.Schema<DescribeDBClusterEndpointsMessage>,
+  output: __S(3554, __c111, 2) as any as S.Schema<DBClusterEndpointMessage>,
   errors: [DBClusterNotFoundFault],
   protocol: AwsProtocol,
   retry: Retry,
@@ -7191,8 +7191,8 @@ export const describeDBClusterParameterGroups: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   DBClusterParameterGroup
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(250, __c31, 2) as any as S.Schema<DescribeDBClusterParameterGroupsMessage>,
-  output: __S(252, __c31, 4) as any as S.Schema<DBClusterParameterGroupsMessage>,
+  input: __S(3584, __c112, 0) as any as S.Schema<DescribeDBClusterParameterGroupsMessage>,
+  output: __S(3586, __c112, 2) as any as S.Schema<DBClusterParameterGroupsMessage>,
   errors: [DBParameterGroupNotFoundFault],
   protocol: AwsProtocol,
   retry: Retry,
@@ -7220,8 +7220,8 @@ export const describeDBClusterParameters: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   Parameter
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(253, __c31, 5) as any as S.Schema<DescribeDBClusterParametersMessage>,
-  output: __S(256, __c32, 0) as any as S.Schema<DBClusterParameterGroupDetails>,
+  input: __S(3616, __c113, 0) as any as S.Schema<DescribeDBClusterParametersMessage>,
+  output: __S(3617, __c113, 1) as any as S.Schema<DBClusterParameterGroupDetails>,
   errors: [DBParameterGroupNotFoundFault],
   protocol: AwsProtocol,
   retry: Retry,
@@ -7251,8 +7251,8 @@ export const describeDBClusters: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   DBCluster
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(257, __c32, 1) as any as S.Schema<DescribeDBClustersMessage>,
-  output: __S(259, __c32, 3) as any as S.Schema<DBClusterMessage>,
+  input: __S(3680, __c115, 0) as any as S.Schema<DescribeDBClustersMessage>,
+  output: __S(3682, __c115, 2) as any as S.Schema<DBClusterMessage>,
   errors: [DBClusterNotFoundFault],
   protocol: AwsProtocol,
   retry: Retry,
@@ -7281,8 +7281,8 @@ export const describeDBClusterSnapshotAttributes: API.OperationMethod<
   DescribeDBClusterSnapshotAttributesError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(260, __c32, 4) as any as S.Schema<DescribeDBClusterSnapshotAttributesMessage>,
-  output: __S(265, __c33, 1) as any as S.Schema<DescribeDBClusterSnapshotAttributesResult>,
+  input: __S(3712, __c116, 0) as any as S.Schema<DescribeDBClusterSnapshotAttributesMessage>,
+  output: __S(3713, __c116, 1) as any as S.Schema<DescribeDBClusterSnapshotAttributesResult>,
   errors: [DBClusterSnapshotNotFoundFault],
   protocol: AwsProtocol,
   retry: Retry,
@@ -7304,8 +7304,8 @@ export const describeDBClusterSnapshots: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   DBClusterSnapshot
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(266, __c33, 2) as any as S.Schema<DescribeDBClusterSnapshotsMessage>,
-  output: __S(268, __c33, 4) as any as S.Schema<DBClusterSnapshotMessage>,
+  input: __S(3808, __c119, 0) as any as S.Schema<DescribeDBClusterSnapshotsMessage>,
+  output: __S(3810, __c119, 2) as any as S.Schema<DBClusterSnapshotMessage>,
   errors: [DBClusterSnapshotNotFoundFault],
   protocol: AwsProtocol,
   retry: Retry,
@@ -7329,8 +7329,8 @@ export const describeDBEngineVersions: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   DBEngineVersion
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(269, __c33, 5) as any as S.Schema<DescribeDBEngineVersionsMessage>,
-  output: __S(271, __c33, 7) as any as S.Schema<DBEngineVersionMessage>,
+  input: __S(3840, __c120, 0) as any as S.Schema<DescribeDBEngineVersionsMessage>,
+  output: __S(3842, __c120, 2) as any as S.Schema<DBEngineVersionMessage>,
   errors: [InvalidParameterCombination],
   protocol: AwsProtocol,
   retry: Retry,
@@ -7358,8 +7358,8 @@ export const describeDBInstanceAutomatedBackups: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   DBInstanceAutomatedBackup
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(272, __c34, 0) as any as S.Schema<DescribeDBInstanceAutomatedBackupsMessage>,
-  output: __S(274, __c34, 2) as any as S.Schema<DBInstanceAutomatedBackupMessage>,
+  input: __S(3872, __c121, 0) as any as S.Schema<DescribeDBInstanceAutomatedBackupsMessage>,
+  output: __S(3874, __c121, 2) as any as S.Schema<DBInstanceAutomatedBackupMessage>,
   errors: [DBInstanceAutomatedBackupNotFoundFault],
   protocol: AwsProtocol,
   retry: Retry,
@@ -7385,8 +7385,8 @@ export const describeDBInstances: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   DBInstance
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(275, __c34, 3) as any as S.Schema<DescribeDBInstancesMessage>,
-  output: __S(277, __c34, 5) as any as S.Schema<DBInstanceMessage>,
+  input: __S(3904, __c122, 0) as any as S.Schema<DescribeDBInstancesMessage>,
+  output: __S(3906, __c122, 2) as any as S.Schema<DBInstanceMessage>,
   errors: [DBInstanceNotFoundFault],
   protocol: AwsProtocol,
   retry: Retry,
@@ -7415,8 +7415,8 @@ export const describeDBLogFiles: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   DescribeDBLogFilesDetails
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(278, __c34, 6) as any as S.Schema<DescribeDBLogFilesMessage>,
-  output: __S(281, __c35, 1) as any as S.Schema<DescribeDBLogFilesResponse>,
+  input: __S(3936, __c123, 0) as any as S.Schema<DescribeDBLogFilesMessage>,
+  output: __S(3939, __c123, 3) as any as S.Schema<DescribeDBLogFilesResponse>,
   errors: [DBInstanceNotFoundFault, DBInstanceNotReadyFault],
   protocol: AwsProtocol,
   retry: Retry,
@@ -7440,8 +7440,8 @@ export const describeDBMajorEngineVersions: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   DBMajorEngineVersion
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(282, __c35, 2) as any as S.Schema<DescribeDBMajorEngineVersionsRequest>,
-  output: __S(287, __c35, 7) as any as S.Schema<DescribeDBMajorEngineVersionsResponse>,
+  input: __S(3968, __c124, 0) as any as S.Schema<DescribeDBMajorEngineVersionsRequest>,
+  output: __S(3973, __c124, 5) as any as S.Schema<DescribeDBMajorEngineVersionsResponse>,
   errors: [],
   protocol: AwsProtocol,
   retry: Retry,
@@ -7465,8 +7465,8 @@ export const describeDBParameterGroups: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   DBParameterGroup
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(288, __c36, 0) as any as S.Schema<DescribeDBParameterGroupsMessage>,
-  output: __S(290, __c36, 2) as any as S.Schema<DBParameterGroupsMessage>,
+  input: __S(4000, __c125, 0) as any as S.Schema<DescribeDBParameterGroupsMessage>,
+  output: __S(4002, __c125, 2) as any as S.Schema<DBParameterGroupsMessage>,
   errors: [DBParameterGroupNotFoundFault],
   protocol: AwsProtocol,
   retry: Retry,
@@ -7490,8 +7490,8 @@ export const describeDBParameters: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   Parameter
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(291, __c36, 3) as any as S.Schema<DescribeDBParametersMessage>,
-  output: __S(292, __c36, 4) as any as S.Schema<DBParameterGroupDetails>,
+  input: __S(4032, __c126, 0) as any as S.Schema<DescribeDBParametersMessage>,
+  output: __S(4033, __c126, 1) as any as S.Schema<DBParameterGroupDetails>,
   errors: [DBParameterGroupNotFoundFault],
   protocol: AwsProtocol,
   retry: Retry,
@@ -7515,8 +7515,8 @@ export const describeDBProxies: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   DBProxy
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(293, __c36, 5) as any as S.Schema<DescribeDBProxiesRequest>,
-  output: __S(295, __c36, 7) as any as S.Schema<DescribeDBProxiesResponse>,
+  input: __S(4064, __c127, 0) as any as S.Schema<DescribeDBProxiesRequest>,
+  output: __S(4066, __c127, 2) as any as S.Schema<DescribeDBProxiesResponse>,
   errors: [DBProxyNotFoundFault],
   protocol: AwsProtocol,
   retry: Retry,
@@ -7543,8 +7543,8 @@ export const describeDBProxyEndpoints: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   DBProxyEndpoint
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(296, __c37, 0) as any as S.Schema<DescribeDBProxyEndpointsRequest>,
-  output: __S(298, __c37, 2) as any as S.Schema<DescribeDBProxyEndpointsResponse>,
+  input: __S(4096, __c128, 0) as any as S.Schema<DescribeDBProxyEndpointsRequest>,
+  output: __S(4098, __c128, 2) as any as S.Schema<DescribeDBProxyEndpointsResponse>,
   errors: [DBProxyEndpointNotFoundFault, DBProxyNotFoundFault],
   protocol: AwsProtocol,
   retry: Retry,
@@ -7572,8 +7572,8 @@ export const describeDBProxyTargetGroups: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   DBProxyTargetGroup
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(299, __c37, 3) as any as S.Schema<DescribeDBProxyTargetGroupsRequest>,
-  output: __S(303, __c37, 7) as any as S.Schema<DescribeDBProxyTargetGroupsResponse>,
+  input: __S(4128, __c129, 0) as any as S.Schema<DescribeDBProxyTargetGroupsRequest>,
+  output: __S(4130, __c129, 2) as any as S.Schema<DescribeDBProxyTargetGroupsResponse>,
   errors: [DBProxyNotFoundFault, DBProxyTargetGroupNotFoundFault, InvalidDBProxyStateFault],
   protocol: AwsProtocol,
   retry: Retry,
@@ -7602,8 +7602,8 @@ export const describeDBProxyTargets: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   DBProxyTarget
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(304, __c38, 0) as any as S.Schema<DescribeDBProxyTargetsRequest>,
-  output: __S(308, __c38, 4) as any as S.Schema<DescribeDBProxyTargetsResponse>,
+  input: __S(4192, __c131, 0) as any as S.Schema<DescribeDBProxyTargetsRequest>,
+  output: __S(4193, __c131, 1) as any as S.Schema<DescribeDBProxyTargetsResponse>,
   errors: [
     DBProxyNotFoundFault,
     DBProxyTargetGroupNotFoundFault,
@@ -7632,8 +7632,8 @@ export const describeDBRecommendations: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   DBRecommendation
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(309, __c38, 5) as any as S.Schema<DescribeDBRecommendationsMessage>,
-  output: __S(331, __c41, 3) as any as S.Schema<DBRecommendationsMessage>,
+  input: __S(4256, __c133, 0) as any as S.Schema<DescribeDBRecommendationsMessage>,
+  output: __S(4258, __c133, 2) as any as S.Schema<DBRecommendationsMessage>,
   errors: [],
   protocol: AwsProtocol,
   retry: Retry,
@@ -7659,8 +7659,8 @@ export const describeDBSecurityGroups: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   DBSecurityGroup
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(332, __c41, 4) as any as S.Schema<DescribeDBSecurityGroupsMessage>,
-  output: __S(334, __c41, 6) as any as S.Schema<DBSecurityGroupMessage>,
+  input: __S(4320, __c135, 0) as any as S.Schema<DescribeDBSecurityGroupsMessage>,
+  output: __S(4322, __c135, 2) as any as S.Schema<DBSecurityGroupMessage>,
   errors: [DBSecurityGroupNotFoundFault],
   protocol: AwsProtocol,
   retry: Retry,
@@ -7686,8 +7686,8 @@ export const describeDBShardGroups: API.OperationMethod<
   DescribeDBShardGroupsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(335, __c41, 7) as any as S.Schema<DescribeDBShardGroupsMessage>,
-  output: __S(337, __c42, 1) as any as S.Schema<DescribeDBShardGroupsResponse>,
+  input: __S(4352, __c136, 0) as any as S.Schema<DescribeDBShardGroupsMessage>,
+  output: __S(4354, __c136, 2) as any as S.Schema<DescribeDBShardGroupsResponse>,
   errors: [DBClusterNotFoundFault, DBShardGroupNotFoundFault],
   protocol: AwsProtocol,
   retry: Retry,
@@ -7708,8 +7708,8 @@ export const describeDBSnapshotAttributes: API.OperationMethod<
   DescribeDBSnapshotAttributesError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(338, __c42, 2) as any as S.Schema<DescribeDBSnapshotAttributesMessage>,
-  output: __S(342, __c42, 6) as any as S.Schema<DescribeDBSnapshotAttributesResult>,
+  input: __S(4384, __c137, 0) as any as S.Schema<DescribeDBSnapshotAttributesMessage>,
+  output: __S(4385, __c137, 1) as any as S.Schema<DescribeDBSnapshotAttributesResult>,
   errors: [DBSnapshotNotFoundFault],
   protocol: AwsProtocol,
   retry: Retry,
@@ -7727,8 +7727,8 @@ export const describeDBSnapshots: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   DBSnapshot
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(343, __c42, 7) as any as S.Schema<DescribeDBSnapshotsMessage>,
-  output: __S(345, __c43, 1) as any as S.Schema<DBSnapshotMessage>,
+  input: __S(4448, __c139, 0) as any as S.Schema<DescribeDBSnapshotsMessage>,
+  output: __S(4450, __c139, 2) as any as S.Schema<DBSnapshotMessage>,
   errors: [DBSnapshotNotFoundFault],
   protocol: AwsProtocol,
   retry: Retry,
@@ -7754,8 +7754,8 @@ export const describeDBSnapshotTenantDatabases: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   DBSnapshotTenantDatabase
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(346, __c43, 2) as any as S.Schema<DescribeDBSnapshotTenantDatabasesMessage>,
-  output: __S(349, __c43, 5) as any as S.Schema<DBSnapshotTenantDatabasesMessage>,
+  input: __S(4480, __c140, 0) as any as S.Schema<DescribeDBSnapshotTenantDatabasesMessage>,
+  output: __S(4483, __c140, 3) as any as S.Schema<DBSnapshotTenantDatabasesMessage>,
   errors: [DBSnapshotNotFoundFault],
   protocol: AwsProtocol,
   retry: Retry,
@@ -7781,8 +7781,8 @@ export const describeDBSubnetGroups: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   DBSubnetGroup
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(350, __c43, 6) as any as S.Schema<DescribeDBSubnetGroupsMessage>,
-  output: __S(352, __c44, 0) as any as S.Schema<DBSubnetGroupMessage>,
+  input: __S(4512, __c141, 0) as any as S.Schema<DescribeDBSubnetGroupsMessage>,
+  output: __S(4514, __c141, 2) as any as S.Schema<DBSubnetGroupMessage>,
   errors: [DBSubnetGroupNotFoundFault],
   protocol: AwsProtocol,
   retry: Retry,
@@ -7808,8 +7808,8 @@ export const describeEngineDefaultClusterParameters: API.PaginatedOperationMetho
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(353, __c44, 1) as any as S.Schema<DescribeEngineDefaultClusterParametersMessage>,
-  output: __S(355, __c44, 3) as any as S.Schema<DescribeEngineDefaultClusterParametersResult>,
+  input: __S(4544, __c142, 0) as any as S.Schema<DescribeEngineDefaultClusterParametersMessage>,
+  output: __S(4545, __c142, 1) as any as S.Schema<DescribeEngineDefaultClusterParametersResult>,
   errors: [],
   protocol: AwsProtocol,
   retry: Retry,
@@ -7833,8 +7833,8 @@ export const describeEngineDefaultParameters: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(356, __c44, 4) as any as S.Schema<DescribeEngineDefaultParametersMessage>,
-  output: __S(357, __c44, 5) as any as S.Schema<DescribeEngineDefaultParametersResult>,
+  input: __S(4608, __c144, 0) as any as S.Schema<DescribeEngineDefaultParametersMessage>,
+  output: __S(4609, __c144, 1) as any as S.Schema<DescribeEngineDefaultParametersResult>,
   errors: [],
   protocol: AwsProtocol,
   retry: Retry,
@@ -7857,8 +7857,8 @@ export const describeEventCategories: API.OperationMethod<
   DescribeEventCategoriesError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(358, __c44, 6) as any as S.Schema<DescribeEventCategoriesMessage>,
-  output: __S(361, __c45, 1) as any as S.Schema<EventCategoriesMessage>,
+  input: __S(4640, __c145, 0) as any as S.Schema<DescribeEventCategoriesMessage>,
+  output: __S(4643, __c145, 3) as any as S.Schema<EventCategoriesMessage>,
   errors: [],
   protocol: AwsProtocol,
   retry: Retry,
@@ -7880,8 +7880,8 @@ export const describeEvents: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   Event
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(362, __c45, 2) as any as S.Schema<DescribeEventsMessage>,
-  output: __S(365, __c45, 5) as any as S.Schema<EventsMessage>,
+  input: __S(4672, __c146, 0) as any as S.Schema<DescribeEventsMessage>,
+  output: __S(4675, __c146, 3) as any as S.Schema<EventsMessage>,
   errors: [],
   protocol: AwsProtocol,
   retry: Retry,
@@ -7907,8 +7907,8 @@ export const describeEventSubscriptions: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   EventSubscription
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(366, __c45, 6) as any as S.Schema<DescribeEventSubscriptionsMessage>,
-  output: __S(368, __c46, 0) as any as S.Schema<EventSubscriptionsMessage>,
+  input: __S(4704, __c147, 0) as any as S.Schema<DescribeEventSubscriptionsMessage>,
+  output: __S(4706, __c147, 2) as any as S.Schema<EventSubscriptionsMessage>,
   errors: [SubscriptionNotFoundFault],
   protocol: AwsProtocol,
   retry: Retry,
@@ -7932,8 +7932,8 @@ export const describeExportTasks: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   ExportTask
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(369, __c46, 1) as any as S.Schema<DescribeExportTasksMessage>,
-  output: __S(371, __c46, 3) as any as S.Schema<ExportTasksMessage>,
+  input: __S(4736, __c148, 0) as any as S.Schema<DescribeExportTasksMessage>,
+  output: __S(4738, __c148, 2) as any as S.Schema<ExportTasksMessage>,
   errors: [ExportTaskNotFoundFault],
   protocol: AwsProtocol,
   retry: Retry,
@@ -7961,8 +7961,8 @@ export const describeGlobalClusters: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   GlobalCluster
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(372, __c46, 4) as any as S.Schema<DescribeGlobalClustersMessage>,
-  output: __S(374, __c46, 6) as any as S.Schema<GlobalClustersMessage>,
+  input: __S(4768, __c149, 0) as any as S.Schema<DescribeGlobalClustersMessage>,
+  output: __S(4770, __c149, 2) as any as S.Schema<GlobalClustersMessage>,
   errors: [GlobalClusterNotFoundFault],
   protocol: AwsProtocol,
   retry: Retry,
@@ -7986,8 +7986,8 @@ export const describeIntegrations: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   Integration
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(375, __c46, 7) as any as S.Schema<DescribeIntegrationsMessage>,
-  output: __S(377, __c47, 1) as any as S.Schema<DescribeIntegrationsResponse>,
+  input: __S(4800, __c150, 0) as any as S.Schema<DescribeIntegrationsMessage>,
+  output: __S(4802, __c150, 2) as any as S.Schema<DescribeIntegrationsResponse>,
   errors: [IntegrationNotFoundFault],
   protocol: AwsProtocol,
   retry: Retry,
@@ -8011,8 +8011,8 @@ export const describeOptionGroupOptions: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   OptionGroupOption
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(378, __c47, 2) as any as S.Schema<DescribeOptionGroupOptionsMessage>,
-  output: __S(389, __c48, 5) as any as S.Schema<OptionGroupOptionsMessage>,
+  input: __S(4832, __c151, 0) as any as S.Schema<DescribeOptionGroupOptionsMessage>,
+  output: __S(4843, __c151, 11) as any as S.Schema<OptionGroupOptionsMessage>,
   errors: [],
   protocol: AwsProtocol,
   retry: Retry,
@@ -8036,8 +8036,8 @@ export const describeOptionGroups: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   OptionGroup
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(390, __c48, 6) as any as S.Schema<DescribeOptionGroupsMessage>,
-  output: __S(392, __c49, 0) as any as S.Schema<OptionGroups>,
+  input: __S(4864, __c152, 0) as any as S.Schema<DescribeOptionGroupsMessage>,
+  output: __S(4866, __c152, 2) as any as S.Schema<OptionGroups>,
   errors: [OptionGroupNotFoundFault],
   protocol: AwsProtocol,
   retry: Retry,
@@ -8061,8 +8061,8 @@ export const describeOrderableDBInstanceOptions: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   OrderableDBInstanceOption
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(393, __c49, 1) as any as S.Schema<DescribeOrderableDBInstanceOptionsMessage>,
-  output: __S(402, __c50, 2) as any as S.Schema<OrderableDBInstanceOptionsMessage>,
+  input: __S(4896, __c153, 0) as any as S.Schema<DescribeOrderableDBInstanceOptionsMessage>,
+  output: __S(4903, __c153, 7) as any as S.Schema<OrderableDBInstanceOptionsMessage>,
   errors: [],
   protocol: AwsProtocol,
   retry: Retry,
@@ -8088,8 +8088,8 @@ export const describePendingMaintenanceActions: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   ResourcePendingMaintenanceActions
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(403, __c50, 3) as any as S.Schema<DescribePendingMaintenanceActionsMessage>,
-  output: __S(405, __c50, 5) as any as S.Schema<PendingMaintenanceActionsMessage>,
+  input: __S(4960, __c155, 0) as any as S.Schema<DescribePendingMaintenanceActionsMessage>,
+  output: __S(4962, __c155, 2) as any as S.Schema<PendingMaintenanceActionsMessage>,
   errors: [ResourceNotFoundFault],
   protocol: AwsProtocol,
   retry: Retry,
@@ -8113,8 +8113,8 @@ export const describeReservedDBInstances: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   ReservedDBInstance
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(406, __c50, 6) as any as S.Schema<DescribeReservedDBInstancesMessage>,
-  output: __S(411, __c51, 3) as any as S.Schema<ReservedDBInstanceMessage>,
+  input: __S(4992, __c156, 0) as any as S.Schema<DescribeReservedDBInstancesMessage>,
+  output: __S(4994, __c156, 2) as any as S.Schema<ReservedDBInstanceMessage>,
   errors: [ReservedDBInstanceNotFoundFault],
   protocol: AwsProtocol,
   retry: Retry,
@@ -8140,8 +8140,8 @@ export const describeReservedDBInstancesOfferings: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   ReservedDBInstancesOffering
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(412, __c51, 4) as any as S.Schema<DescribeReservedDBInstancesOfferingsMessage>,
-  output: __S(415, __c51, 7) as any as S.Schema<ReservedDBInstancesOfferingMessage>,
+  input: __S(5088, __c159, 0) as any as S.Schema<DescribeReservedDBInstancesOfferingsMessage>,
+  output: __S(5091, __c159, 3) as any as S.Schema<ReservedDBInstancesOfferingMessage>,
   errors: [ReservedDBInstancesOfferingNotFoundFault],
   protocol: AwsProtocol,
   retry: Retry,
@@ -8165,8 +8165,8 @@ export const describeServerlessV2PlatformVersions: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   ServerlessV2PlatformVersionInfo
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(416, __c52, 0) as any as S.Schema<DescribeServerlessV2PlatformVersionsMessage>,
-  output: __S(419, __c52, 3) as any as S.Schema<ServerlessV2PlatformVersionsMessage>,
+  input: __S(5120, __c160, 0) as any as S.Schema<DescribeServerlessV2PlatformVersionsMessage>,
+  output: __S(5123, __c160, 3) as any as S.Schema<ServerlessV2PlatformVersionsMessage>,
   errors: [],
   protocol: AwsProtocol,
   retry: Retry,
@@ -8194,8 +8194,8 @@ export const describeSourceRegions: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   SourceRegion
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(420, __c52, 4) as any as S.Schema<DescribeSourceRegionsMessage>,
-  output: __S(423, __c52, 7) as any as S.Schema<SourceRegionMessage>,
+  input: __S(5152, __c161, 0) as any as S.Schema<DescribeSourceRegionsMessage>,
+  output: __S(5155, __c161, 3) as any as S.Schema<SourceRegionMessage>,
   errors: [],
   protocol: AwsProtocol,
   retry: Retry,
@@ -8219,8 +8219,8 @@ export const describeTenantDatabases: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   TenantDatabase
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(424, __c53, 0) as any as S.Schema<DescribeTenantDatabasesMessage>,
-  output: __S(426, __c53, 2) as any as S.Schema<TenantDatabasesMessage>,
+  input: __S(5184, __c162, 0) as any as S.Schema<DescribeTenantDatabasesMessage>,
+  output: __S(5186, __c162, 2) as any as S.Schema<TenantDatabasesMessage>,
   errors: [DBInstanceNotFoundFault],
   protocol: AwsProtocol,
   retry: Retry,
@@ -8248,8 +8248,8 @@ export const describeValidDBInstanceModifications: API.OperationMethod<
   DescribeValidDBInstanceModificationsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(427, __c53, 3) as any as S.Schema<DescribeValidDBInstanceModificationsMessage>,
-  output: __S(438, __c54, 6) as any as S.Schema<DescribeValidDBInstanceModificationsResult>,
+  input: __S(5216, __c163, 0) as any as S.Schema<DescribeValidDBInstanceModificationsMessage>,
+  output: __S(5227, __c163, 11) as any as S.Schema<DescribeValidDBInstanceModificationsResult>,
   errors: [DBInstanceNotFoundFault, InvalidDBInstanceStateFault],
   protocol: AwsProtocol,
   retry: Retry,
@@ -8273,8 +8273,8 @@ export const disableHttpEndpoint: API.OperationMethod<
   DisableHttpEndpointError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(439, __c54, 7) as any as S.Schema<DisableHttpEndpointRequest>,
-  output: __S(440, __c55, 0) as any as S.Schema<DisableHttpEndpointResponse>,
+  input: __S(5248, __c164, 0) as any as S.Schema<DisableHttpEndpointRequest>,
+  output: __S(5249, __c164, 1) as any as S.Schema<DisableHttpEndpointResponse>,
   errors: [InvalidResourceStateFault, ResourceNotFoundFault],
   protocol: AwsProtocol,
   retry: Retry,
@@ -8300,8 +8300,8 @@ export const downloadDBLogFilePortion: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(441, __c55, 1) as any as S.Schema<DownloadDBLogFilePortionMessage>,
-  output: __S(442, __c55, 2) as any as S.Schema<DownloadDBLogFilePortionDetails>,
+  input: __S(5280, __c165, 0) as any as S.Schema<DownloadDBLogFilePortionMessage>,
+  output: __S(5281, __c165, 1) as any as S.Schema<DownloadDBLogFilePortionDetails>,
   errors: [DBInstanceNotFoundFault, DBInstanceNotReadyFault, DBLogFileNotFoundFault],
   protocol: AwsProtocol,
   retry: Retry,
@@ -8328,8 +8328,8 @@ export const enableHttpEndpoint: API.OperationMethod<
   EnableHttpEndpointError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(443, __c55, 3) as any as S.Schema<EnableHttpEndpointRequest>,
-  output: __S(444, __c55, 4) as any as S.Schema<EnableHttpEndpointResponse>,
+  input: __S(5312, __c166, 0) as any as S.Schema<EnableHttpEndpointRequest>,
+  output: __S(5313, __c166, 1) as any as S.Schema<EnableHttpEndpointResponse>,
   errors: [InvalidResourceStateFault, ResourceNotFoundFault],
   protocol: AwsProtocol,
   retry: Retry,
@@ -8362,8 +8362,8 @@ export const failoverDBCluster: API.OperationMethod<
   FailoverDBClusterError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(445, __c55, 5) as any as S.Schema<FailoverDBClusterMessage>,
-  output: __S(446, __c55, 6) as any as S.Schema<FailoverDBClusterResult>,
+  input: __S(5344, __c167, 0) as any as S.Schema<FailoverDBClusterMessage>,
+  output: __S(5345, __c167, 1) as any as S.Schema<FailoverDBClusterResult>,
   errors: [DBClusterNotFoundFault, InvalidDBClusterStateFault, InvalidDBInstanceStateFault],
   protocol: AwsProtocol,
   retry: Retry,
@@ -8405,8 +8405,8 @@ export const failoverGlobalCluster: API.OperationMethod<
   FailoverGlobalClusterError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(447, __c55, 7) as any as S.Schema<FailoverGlobalClusterMessage>,
-  output: __S(448, __c56, 0) as any as S.Schema<FailoverGlobalClusterResult>,
+  input: __S(5376, __c168, 0) as any as S.Schema<FailoverGlobalClusterMessage>,
+  output: __S(5377, __c168, 1) as any as S.Schema<FailoverGlobalClusterResult>,
   errors: [
     DBClusterNotFoundFault,
     GlobalClusterNotFoundFault,
@@ -8442,8 +8442,8 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(449, __c56, 1) as any as S.Schema<ListTagsForResourceMessage>,
-  output: __S(450, __c56, 2) as any as S.Schema<TagListMessage>,
+  input: __S(5408, __c169, 0) as any as S.Schema<ListTagsForResourceMessage>,
+  output: __S(5409, __c169, 1) as any as S.Schema<TagListMessage>,
   errors: [
     BlueGreenDeploymentNotFoundFault,
     DBClusterNotFoundFault,
@@ -8478,8 +8478,8 @@ export const modifyActivityStream: API.OperationMethod<
   ModifyActivityStreamError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(451, __c56, 3) as any as S.Schema<ModifyActivityStreamRequest>,
-  output: __S(452, __c56, 4) as any as S.Schema<ModifyActivityStreamResponse>,
+  input: __S(5440, __c170, 0) as any as S.Schema<ModifyActivityStreamRequest>,
+  output: __S(5441, __c170, 1) as any as S.Schema<ModifyActivityStreamResponse>,
   errors: [DBInstanceNotFoundFault, InvalidDBInstanceStateFault, ResourceNotFoundFault],
   protocol: AwsProtocol,
   retry: Retry,
@@ -8508,8 +8508,8 @@ export const modifyCertificates: API.OperationMethod<
   ModifyCertificatesError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(453, __c56, 5) as any as S.Schema<ModifyCertificatesMessage>,
-  output: __S(454, __c56, 6) as any as S.Schema<ModifyCertificatesResult>,
+  input: __S(5472, __c171, 0) as any as S.Schema<ModifyCertificatesMessage>,
+  output: __S(5473, __c171, 1) as any as S.Schema<ModifyCertificatesResult>,
   errors: [CertificateNotFoundFault],
   protocol: AwsProtocol,
   retry: Retry,
@@ -8540,8 +8540,8 @@ export const modifyCurrentDBClusterCapacity: API.OperationMethod<
   ModifyCurrentDBClusterCapacityError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(455, __c56, 7) as any as S.Schema<ModifyCurrentDBClusterCapacityMessage>,
-  output: __S(456, __c57, 0) as any as S.Schema<DBClusterCapacityInfo>,
+  input: __S(5504, __c172, 0) as any as S.Schema<ModifyCurrentDBClusterCapacityMessage>,
+  output: __S(5505, __c172, 1) as any as S.Schema<DBClusterCapacityInfo>,
   errors: [DBClusterNotFoundFault, InvalidDBClusterCapacityFault, InvalidDBClusterStateFault],
   protocol: AwsProtocol,
   retry: Retry,
@@ -8565,8 +8565,8 @@ export const modifyCustomDBEngineVersion: API.OperationMethod<
   ModifyCustomDBEngineVersionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(457, __c57, 1) as any as S.Schema<ModifyCustomDBEngineVersionMessage>,
-  output: __S(80, __c10, 0) as any as S.Schema<DBEngineVersion>,
+  input: __S(5536, __c173, 0) as any as S.Schema<ModifyCustomDBEngineVersionMessage>,
+  output: __S(1225, __c38, 9) as any as S.Schema<DBEngineVersion>,
   errors: [CustomDBEngineVersionNotFoundFault, InvalidCustomDBEngineVersionStateFault],
   protocol: AwsProtocol,
   retry: Retry,
@@ -8611,8 +8611,8 @@ export const modifyDBCluster: API.OperationMethod<
   ModifyDBClusterError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(459, __c57, 3) as any as S.Schema<ModifyDBClusterMessage>,
-  output: __S(460, __c57, 4) as any as S.Schema<ModifyDBClusterResult>,
+  input: __S(5568, __c174, 0) as any as S.Schema<ModifyDBClusterMessage>,
+  output: __S(5569, __c174, 1) as any as S.Schema<ModifyDBClusterResult>,
   errors: [
     DBClusterAlreadyExistsFault,
     DBClusterNotFoundFault,
@@ -8661,8 +8661,8 @@ export const modifyDBClusterEndpoint: API.OperationMethod<
   ModifyDBClusterEndpointError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(461, __c57, 5) as any as S.Schema<ModifyDBClusterEndpointMessage>,
-  output: __S(111, __c13, 7) as any as S.Schema<DBClusterEndpoint>,
+  input: __S(5632, __c176, 0) as any as S.Schema<ModifyDBClusterEndpointMessage>,
+  output: __S(1568, __c49, 0) as any as S.Schema<DBClusterEndpoint>,
   errors: [
     DBClusterEndpointNotFoundFault,
     DBInstanceNotFoundFault,
@@ -8694,8 +8694,8 @@ export const modifyDBClusterParameterGroup: API.OperationMethod<
   ModifyDBClusterParameterGroupError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(462, __c57, 6) as any as S.Schema<ModifyDBClusterParameterGroupMessage>,
-  output: __S(463, __c57, 7) as any as S.Schema<DBClusterParameterGroupNameMessage>,
+  input: __S(5664, __c177, 0) as any as S.Schema<ModifyDBClusterParameterGroupMessage>,
+  output: __S(5696, __c178, 0) as any as S.Schema<DBClusterParameterGroupNameMessage>,
   errors: [DBParameterGroupNotFoundFault, InvalidDBParameterGroupStateFault],
   protocol: AwsProtocol,
   retry: Retry,
@@ -8724,8 +8724,8 @@ export const modifyDBClusterSnapshotAttribute: API.OperationMethod<
   ModifyDBClusterSnapshotAttributeError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(464, __c58, 0) as any as S.Schema<ModifyDBClusterSnapshotAttributeMessage>,
-  output: __S(465, __c58, 1) as any as S.Schema<ModifyDBClusterSnapshotAttributeResult>,
+  input: __S(5728, __c179, 0) as any as S.Schema<ModifyDBClusterSnapshotAttributeMessage>,
+  output: __S(5729, __c179, 1) as any as S.Schema<ModifyDBClusterSnapshotAttributeResult>,
   errors: [
     DBClusterSnapshotNotFoundFault,
     InvalidDBClusterSnapshotStateFault,
@@ -8771,8 +8771,8 @@ export const modifyDBInstance: API.OperationMethod<
   ModifyDBInstanceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(468, __c58, 4) as any as S.Schema<ModifyDBInstanceMessage>,
-  output: __S(469, __c58, 5) as any as S.Schema<ModifyDBInstanceResult>,
+  input: __S(5762, __c180, 2) as any as S.Schema<ModifyDBInstanceMessage>,
+  output: __S(5763, __c180, 3) as any as S.Schema<ModifyDBInstanceResult>,
   errors: [
     AuthorizationNotFoundFault,
     BackupPolicyNotFoundFault,
@@ -8819,8 +8819,8 @@ export const modifyDBParameterGroup: API.OperationMethod<
   ModifyDBParameterGroupError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(470, __c58, 6) as any as S.Schema<ModifyDBParameterGroupMessage>,
-  output: __S(471, __c58, 7) as any as S.Schema<DBParameterGroupNameMessage>,
+  input: __S(5792, __c181, 0) as any as S.Schema<ModifyDBParameterGroupMessage>,
+  output: __S(5824, __c182, 0) as any as S.Schema<DBParameterGroupNameMessage>,
   errors: [DBParameterGroupNotFoundFault, InvalidDBParameterGroupStateFault],
   protocol: AwsProtocol,
   retry: Retry,
@@ -8841,8 +8841,8 @@ export const modifyDBProxy: API.OperationMethod<
   ModifyDBProxyError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(472, __c59, 0) as any as S.Schema<ModifyDBProxyRequest>,
-  output: __S(473, __c59, 1) as any as S.Schema<ModifyDBProxyResponse>,
+  input: __S(5856, __c183, 0) as any as S.Schema<ModifyDBProxyRequest>,
+  output: __S(5857, __c183, 1) as any as S.Schema<ModifyDBProxyResponse>,
   errors: [DBProxyAlreadyExistsFault, DBProxyNotFoundFault, InvalidDBProxyStateFault],
   protocol: AwsProtocol,
   retry: Retry,
@@ -8864,8 +8864,8 @@ export const modifyDBProxyEndpoint: API.OperationMethod<
   ModifyDBProxyEndpointError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(474, __c59, 2) as any as S.Schema<ModifyDBProxyEndpointRequest>,
-  output: __S(475, __c59, 3) as any as S.Schema<ModifyDBProxyEndpointResponse>,
+  input: __S(5888, __c184, 0) as any as S.Schema<ModifyDBProxyEndpointRequest>,
+  output: __S(5889, __c184, 1) as any as S.Schema<ModifyDBProxyEndpointResponse>,
   errors: [
     DBProxyEndpointAlreadyExistsFault,
     DBProxyEndpointNotFoundFault,
@@ -8891,8 +8891,8 @@ export const modifyDBProxyTargetGroup: API.OperationMethod<
   ModifyDBProxyTargetGroupError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(477, __c59, 5) as any as S.Schema<ModifyDBProxyTargetGroupRequest>,
-  output: __S(478, __c59, 6) as any as S.Schema<ModifyDBProxyTargetGroupResponse>,
+  input: __S(5921, __c185, 1) as any as S.Schema<ModifyDBProxyTargetGroupRequest>,
+  output: __S(5922, __c185, 2) as any as S.Schema<ModifyDBProxyTargetGroupResponse>,
   errors: [DBProxyNotFoundFault, DBProxyTargetGroupNotFoundFault, InvalidDBProxyStateFault],
   protocol: AwsProtocol,
   retry: Retry,
@@ -8909,8 +8909,8 @@ export const modifyDBRecommendation: API.OperationMethod<
   ModifyDBRecommendationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(481, __c60, 1) as any as S.Schema<ModifyDBRecommendationMessage>,
-  output: __S(482, __c60, 2) as any as S.Schema<DBRecommendationMessage>,
+  input: __S(5954, __c186, 2) as any as S.Schema<ModifyDBRecommendationMessage>,
+  output: __S(5955, __c186, 3) as any as S.Schema<DBRecommendationMessage>,
   errors: [],
   protocol: AwsProtocol,
   retry: Retry,
@@ -8931,8 +8931,8 @@ export const modifyDBShardGroup: API.OperationMethod<
   ModifyDBShardGroupError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(483, __c60, 3) as any as S.Schema<ModifyDBShardGroupMessage>,
-  output: __S(158, __c19, 6) as any as S.Schema<DBShardGroup>,
+  input: __S(5984, __c187, 0) as any as S.Schema<ModifyDBShardGroupMessage>,
+  output: __S(2144, __c67, 0) as any as S.Schema<DBShardGroup>,
   errors: [DBShardGroupAlreadyExistsFault, DBShardGroupNotFoundFault, InvalidDBClusterStateFault],
   protocol: AwsProtocol,
   retry: Retry,
@@ -8955,8 +8955,8 @@ export const modifyDBSnapshot: API.OperationMethod<
   ModifyDBSnapshotError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(484, __c60, 4) as any as S.Schema<ModifyDBSnapshotMessage>,
-  output: __S(485, __c60, 5) as any as S.Schema<ModifyDBSnapshotResult>,
+  input: __S(6016, __c188, 0) as any as S.Schema<ModifyDBSnapshotMessage>,
+  output: __S(6017, __c188, 1) as any as S.Schema<ModifyDBSnapshotResult>,
   errors: [DBSnapshotNotFoundFault, InvalidDBSnapshotStateFault, KMSKeyNotAccessibleFault],
   protocol: AwsProtocol,
   retry: Retry,
@@ -8985,8 +8985,8 @@ export const modifyDBSnapshotAttribute: API.OperationMethod<
   ModifyDBSnapshotAttributeError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(486, __c60, 6) as any as S.Schema<ModifyDBSnapshotAttributeMessage>,
-  output: __S(487, __c60, 7) as any as S.Schema<ModifyDBSnapshotAttributeResult>,
+  input: __S(6048, __c189, 0) as any as S.Schema<ModifyDBSnapshotAttributeMessage>,
+  output: __S(6049, __c189, 1) as any as S.Schema<ModifyDBSnapshotAttributeResult>,
   errors: [DBSnapshotNotFoundFault, InvalidDBSnapshotStateFault, SharedSnapshotQuotaExceededFault],
   protocol: AwsProtocol,
   retry: Retry,
@@ -9010,8 +9010,8 @@ export const modifyDBSubnetGroup: API.OperationMethod<
   ModifyDBSubnetGroupError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(488, __c61, 0) as any as S.Schema<ModifyDBSubnetGroupMessage>,
-  output: __S(489, __c61, 1) as any as S.Schema<ModifyDBSubnetGroupResult>,
+  input: __S(6080, __c190, 0) as any as S.Schema<ModifyDBSubnetGroupMessage>,
+  output: __S(6081, __c190, 1) as any as S.Schema<ModifyDBSubnetGroupResult>,
   errors: [
     DBSubnetGroupDoesNotCoverEnoughAZs,
     DBSubnetGroupNotFoundFault,
@@ -9044,8 +9044,8 @@ export const modifyEventSubscription: API.OperationMethod<
   ModifyEventSubscriptionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(490, __c61, 2) as any as S.Schema<ModifyEventSubscriptionMessage>,
-  output: __S(491, __c61, 3) as any as S.Schema<ModifyEventSubscriptionResult>,
+  input: __S(6112, __c191, 0) as any as S.Schema<ModifyEventSubscriptionMessage>,
+  output: __S(6113, __c191, 1) as any as S.Schema<ModifyEventSubscriptionResult>,
   errors: [
     EventSubscriptionQuotaExceededFault,
     SNSInvalidTopicFault,
@@ -9077,8 +9077,8 @@ export const modifyGlobalCluster: API.OperationMethod<
   ModifyGlobalClusterError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(492, __c61, 4) as any as S.Schema<ModifyGlobalClusterMessage>,
-  output: __S(493, __c61, 5) as any as S.Schema<ModifyGlobalClusterResult>,
+  input: __S(6144, __c192, 0) as any as S.Schema<ModifyGlobalClusterMessage>,
+  output: __S(6145, __c192, 1) as any as S.Schema<ModifyGlobalClusterResult>,
   errors: [
     GlobalClusterAlreadyExistsFault,
     GlobalClusterNotFoundFault,
@@ -9105,8 +9105,8 @@ export const modifyIntegration: API.OperationMethod<
   ModifyIntegrationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(494, __c61, 6) as any as S.Schema<ModifyIntegrationMessage>,
-  output: __S(177, __c22, 1) as any as S.Schema<Integration>,
+  input: __S(6176, __c193, 0) as any as S.Schema<ModifyIntegrationMessage>,
+  output: __S(2403, __c75, 3) as any as S.Schema<Integration>,
   errors: [
     IntegrationConflictOperationFault,
     IntegrationNotFoundFault,
@@ -9130,8 +9130,8 @@ export const modifyOptionGroup: API.OperationMethod<
   ModifyOptionGroupError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(499, __c62, 3) as any as S.Schema<ModifyOptionGroupMessage>,
-  output: __S(500, __c62, 4) as any as S.Schema<ModifyOptionGroupResult>,
+  input: __S(6212, __c194, 4) as any as S.Schema<ModifyOptionGroupMessage>,
+  output: __S(6213, __c194, 5) as any as S.Schema<ModifyOptionGroupResult>,
   errors: [InvalidOptionGroupStateFault, OptionGroupNotFoundFault],
   protocol: AwsProtocol,
   retry: Retry,
@@ -9154,8 +9154,8 @@ export const modifyTenantDatabase: API.OperationMethod<
   ModifyTenantDatabaseError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(501, __c62, 5) as any as S.Schema<ModifyTenantDatabaseMessage>,
-  output: __S(502, __c62, 6) as any as S.Schema<ModifyTenantDatabaseResult>,
+  input: __S(6240, __c195, 0) as any as S.Schema<ModifyTenantDatabaseMessage>,
+  output: __S(6241, __c195, 1) as any as S.Schema<ModifyTenantDatabaseResult>,
   errors: [
     DBInstanceNotFoundFault,
     InvalidDBInstanceStateFault,
@@ -9185,8 +9185,8 @@ export const promoteReadReplica: API.OperationMethod<
   PromoteReadReplicaError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(503, __c62, 7) as any as S.Schema<PromoteReadReplicaMessage>,
-  output: __S(504, __c63, 0) as any as S.Schema<PromoteReadReplicaResult>,
+  input: __S(6272, __c196, 0) as any as S.Schema<PromoteReadReplicaMessage>,
+  output: __S(6273, __c196, 1) as any as S.Schema<PromoteReadReplicaResult>,
   errors: [DBInstanceNotFoundFault, InvalidDBInstanceStateFault],
   protocol: AwsProtocol,
   retry: Retry,
@@ -9206,8 +9206,8 @@ export const promoteReadReplicaDBCluster: API.OperationMethod<
   PromoteReadReplicaDBClusterError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(505, __c63, 1) as any as S.Schema<PromoteReadReplicaDBClusterMessage>,
-  output: __S(506, __c63, 2) as any as S.Schema<PromoteReadReplicaDBClusterResult>,
+  input: __S(6304, __c197, 0) as any as S.Schema<PromoteReadReplicaDBClusterMessage>,
+  output: __S(6305, __c197, 1) as any as S.Schema<PromoteReadReplicaDBClusterResult>,
   errors: [DBClusterNotFoundFault, InvalidDBClusterStateFault],
   protocol: AwsProtocol,
   retry: Retry,
@@ -9228,8 +9228,8 @@ export const purchaseReservedDBInstancesOffering: API.OperationMethod<
   PurchaseReservedDBInstancesOfferingError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(507, __c63, 3) as any as S.Schema<PurchaseReservedDBInstancesOfferingMessage>,
-  output: __S(508, __c63, 4) as any as S.Schema<PurchaseReservedDBInstancesOfferingResult>,
+  input: __S(6336, __c198, 0) as any as S.Schema<PurchaseReservedDBInstancesOfferingMessage>,
+  output: __S(6337, __c198, 1) as any as S.Schema<PurchaseReservedDBInstancesOfferingResult>,
   errors: [
     ReservedDBInstanceAlreadyExistsFault,
     ReservedDBInstanceQuotaExceededFault,
@@ -9260,8 +9260,8 @@ export const rebootDBCluster: API.OperationMethod<
   RebootDBClusterError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(509, __c63, 5) as any as S.Schema<RebootDBClusterMessage>,
-  output: __S(510, __c63, 6) as any as S.Schema<RebootDBClusterResult>,
+  input: __S(6368, __c199, 0) as any as S.Schema<RebootDBClusterMessage>,
+  output: __S(6369, __c199, 1) as any as S.Schema<RebootDBClusterResult>,
   errors: [DBClusterNotFoundFault, InvalidDBClusterStateFault, InvalidDBInstanceStateFault],
   protocol: AwsProtocol,
   retry: Retry,
@@ -9290,8 +9290,8 @@ export const rebootDBInstance: API.OperationMethod<
   RebootDBInstanceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(511, __c63, 7) as any as S.Schema<RebootDBInstanceMessage>,
-  output: __S(512, __c64, 0) as any as S.Schema<RebootDBInstanceResult>,
+  input: __S(6400, __c200, 0) as any as S.Schema<RebootDBInstanceMessage>,
+  output: __S(6401, __c200, 1) as any as S.Schema<RebootDBInstanceResult>,
   errors: [DBInstanceNotFoundFault, InvalidDBInstanceStateFault, KMSKeyNotAccessibleFault],
   protocol: AwsProtocol,
   retry: Retry,
@@ -9313,8 +9313,8 @@ export const rebootDBShardGroup: API.OperationMethod<
   RebootDBShardGroupError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(513, __c64, 1) as any as S.Schema<RebootDBShardGroupMessage>,
-  output: __S(158, __c19, 6) as any as S.Schema<DBShardGroup>,
+  input: __S(6432, __c201, 0) as any as S.Schema<RebootDBShardGroupMessage>,
+  output: __S(2144, __c67, 0) as any as S.Schema<DBShardGroup>,
   errors: [DBShardGroupNotFoundFault, InvalidDBShardGroupStateFault],
   protocol: AwsProtocol,
   retry: Retry,
@@ -9341,8 +9341,8 @@ export const registerDBProxyTargets: API.OperationMethod<
   RegisterDBProxyTargetsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(514, __c64, 2) as any as S.Schema<RegisterDBProxyTargetsRequest>,
-  output: __S(515, __c64, 3) as any as S.Schema<RegisterDBProxyTargetsResponse>,
+  input: __S(6464, __c202, 0) as any as S.Schema<RegisterDBProxyTargetsRequest>,
+  output: __S(6465, __c202, 1) as any as S.Schema<RegisterDBProxyTargetsResponse>,
   errors: [
     DBClusterNotFoundFault,
     DBInstanceNotFoundFault,
@@ -9376,8 +9376,8 @@ export const removeFromGlobalCluster: API.OperationMethod<
   RemoveFromGlobalClusterError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(516, __c64, 4) as any as S.Schema<RemoveFromGlobalClusterMessage>,
-  output: __S(517, __c64, 5) as any as S.Schema<RemoveFromGlobalClusterResult>,
+  input: __S(6496, __c203, 0) as any as S.Schema<RemoveFromGlobalClusterMessage>,
+  output: __S(6497, __c203, 1) as any as S.Schema<RemoveFromGlobalClusterResult>,
   errors: [
     DBClusterNotFoundFault,
     GlobalClusterNotFoundFault,
@@ -9407,8 +9407,8 @@ export const removeRoleFromDBCluster: API.OperationMethod<
   RemoveRoleFromDBClusterError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(518, __c64, 6) as any as S.Schema<RemoveRoleFromDBClusterMessage>,
-  output: __S(519, __c64, 7) as any as S.Schema<RemoveRoleFromDBClusterResponse>,
+  input: __S(6528, __c204, 0) as any as S.Schema<RemoveRoleFromDBClusterMessage>,
+  output: __S(6529, __c204, 1) as any as S.Schema<RemoveRoleFromDBClusterResponse>,
   errors: [DBClusterNotFoundFault, DBClusterRoleNotFoundFault, InvalidDBClusterStateFault],
   protocol: AwsProtocol,
   retry: Retry,
@@ -9429,8 +9429,8 @@ export const removeRoleFromDBInstance: API.OperationMethod<
   RemoveRoleFromDBInstanceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(520, __c65, 0) as any as S.Schema<RemoveRoleFromDBInstanceMessage>,
-  output: __S(521, __c65, 1) as any as S.Schema<RemoveRoleFromDBInstanceResponse>,
+  input: __S(6560, __c205, 0) as any as S.Schema<RemoveRoleFromDBInstanceMessage>,
+  output: __S(6561, __c205, 1) as any as S.Schema<RemoveRoleFromDBInstanceResponse>,
   errors: [DBInstanceNotFoundFault, DBInstanceRoleNotFoundFault, InvalidDBInstanceStateFault],
   protocol: AwsProtocol,
   retry: Retry,
@@ -9450,8 +9450,8 @@ export const removeSourceIdentifierFromSubscription: API.OperationMethod<
   RemoveSourceIdentifierFromSubscriptionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(522, __c65, 2) as any as S.Schema<RemoveSourceIdentifierFromSubscriptionMessage>,
-  output: __S(523, __c65, 3) as any as S.Schema<RemoveSourceIdentifierFromSubscriptionResult>,
+  input: __S(6592, __c206, 0) as any as S.Schema<RemoveSourceIdentifierFromSubscriptionMessage>,
+  output: __S(6593, __c206, 1) as any as S.Schema<RemoveSourceIdentifierFromSubscriptionResult>,
   errors: [SourceNotFoundFault, SubscriptionNotFoundFault],
   protocol: AwsProtocol,
   retry: Retry,
@@ -9485,8 +9485,8 @@ export const removeTagsFromResource: API.OperationMethod<
   RemoveTagsFromResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(525, __c65, 5) as any as S.Schema<RemoveTagsFromResourceMessage>,
-  output: __S(526, __c65, 6) as any as S.Schema<RemoveTagsFromResourceResponse>,
+  input: __S(6625, __c207, 1) as any as S.Schema<RemoveTagsFromResourceMessage>,
+  output: __S(6626, __c207, 2) as any as S.Schema<RemoveTagsFromResourceResponse>,
   errors: [
     BlueGreenDeploymentNotFoundFault,
     DBClusterNotFoundFault,
@@ -9527,8 +9527,8 @@ export const resetDBClusterParameterGroup: API.OperationMethod<
   ResetDBClusterParameterGroupError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(527, __c65, 7) as any as S.Schema<ResetDBClusterParameterGroupMessage>,
-  output: __S(463, __c57, 7) as any as S.Schema<DBClusterParameterGroupNameMessage>,
+  input: __S(6656, __c208, 0) as any as S.Schema<ResetDBClusterParameterGroupMessage>,
+  output: __S(5696, __c178, 0) as any as S.Schema<DBClusterParameterGroupNameMessage>,
   errors: [DBParameterGroupNotFoundFault, InvalidDBParameterGroupStateFault],
   protocol: AwsProtocol,
   retry: Retry,
@@ -9548,8 +9548,8 @@ export const resetDBParameterGroup: API.OperationMethod<
   ResetDBParameterGroupError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(528, __c66, 0) as any as S.Schema<ResetDBParameterGroupMessage>,
-  output: __S(471, __c58, 7) as any as S.Schema<DBParameterGroupNameMessage>,
+  input: __S(6688, __c209, 0) as any as S.Schema<ResetDBParameterGroupMessage>,
+  output: __S(5824, __c182, 0) as any as S.Schema<DBParameterGroupNameMessage>,
   errors: [DBParameterGroupNotFoundFault, InvalidDBParameterGroupStateFault],
   protocol: AwsProtocol,
   retry: Retry,
@@ -9592,8 +9592,8 @@ export const restoreDBClusterFromS3: API.OperationMethod<
   RestoreDBClusterFromS3Error,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(529, __c66, 1) as any as S.Schema<RestoreDBClusterFromS3Message>,
-  output: __S(530, __c66, 2) as any as S.Schema<RestoreDBClusterFromS3Result>,
+  input: __S(6720, __c210, 0) as any as S.Schema<RestoreDBClusterFromS3Message>,
+  output: __S(6721, __c210, 1) as any as S.Schema<RestoreDBClusterFromS3Result>,
   errors: [
     DBClusterAlreadyExistsFault,
     DBClusterNotFoundFault,
@@ -9665,8 +9665,8 @@ export const restoreDBClusterFromSnapshot: API.OperationMethod<
   RestoreDBClusterFromSnapshotError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(531, __c66, 3) as any as S.Schema<RestoreDBClusterFromSnapshotMessage>,
-  output: __S(532, __c66, 4) as any as S.Schema<RestoreDBClusterFromSnapshotResult>,
+  input: __S(6752, __c211, 0) as any as S.Schema<RestoreDBClusterFromSnapshotMessage>,
+  output: __S(6753, __c211, 1) as any as S.Schema<RestoreDBClusterFromSnapshotResult>,
   errors: [
     DBClusterAlreadyExistsFault,
     DBClusterParameterGroupNotFoundFault,
@@ -9743,8 +9743,8 @@ export const restoreDBClusterToPointInTime: API.OperationMethod<
   RestoreDBClusterToPointInTimeError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(533, __c66, 5) as any as S.Schema<RestoreDBClusterToPointInTimeMessage>,
-  output: __S(534, __c66, 6) as any as S.Schema<RestoreDBClusterToPointInTimeResult>,
+  input: __S(6784, __c212, 0) as any as S.Schema<RestoreDBClusterToPointInTimeMessage>,
+  output: __S(6785, __c212, 1) as any as S.Schema<RestoreDBClusterToPointInTimeResult>,
   errors: [
     DBClusterAlreadyExistsFault,
     DBClusterAutomatedBackupNotFoundFault,
@@ -9820,8 +9820,8 @@ export const restoreDBInstanceFromDBSnapshot: API.OperationMethod<
   RestoreDBInstanceFromDBSnapshotError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(535, __c66, 7) as any as S.Schema<RestoreDBInstanceFromDBSnapshotMessage>,
-  output: __S(536, __c67, 0) as any as S.Schema<RestoreDBInstanceFromDBSnapshotResult>,
+  input: __S(6816, __c213, 0) as any as S.Schema<RestoreDBInstanceFromDBSnapshotMessage>,
+  output: __S(6817, __c213, 1) as any as S.Schema<RestoreDBInstanceFromDBSnapshotResult>,
   errors: [
     AuthorizationNotFoundFault,
     BackupPolicyNotFoundFault,
@@ -9887,8 +9887,8 @@ export const restoreDBInstanceFromS3: API.OperationMethod<
   RestoreDBInstanceFromS3Error,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(537, __c67, 1) as any as S.Schema<RestoreDBInstanceFromS3Message>,
-  output: __S(538, __c67, 2) as any as S.Schema<RestoreDBInstanceFromS3Result>,
+  input: __S(6848, __c214, 0) as any as S.Schema<RestoreDBInstanceFromS3Message>,
+  output: __S(6849, __c214, 1) as any as S.Schema<RestoreDBInstanceFromS3Result>,
   errors: [
     AuthorizationNotFoundFault,
     BackupPolicyNotFoundFault,
@@ -9957,8 +9957,8 @@ export const restoreDBInstanceToPointInTime: API.OperationMethod<
   RestoreDBInstanceToPointInTimeError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(539, __c67, 3) as any as S.Schema<RestoreDBInstanceToPointInTimeMessage>,
-  output: __S(540, __c67, 4) as any as S.Schema<RestoreDBInstanceToPointInTimeResult>,
+  input: __S(6880, __c215, 0) as any as S.Schema<RestoreDBInstanceToPointInTimeMessage>,
+  output: __S(6881, __c215, 1) as any as S.Schema<RestoreDBInstanceToPointInTimeResult>,
   errors: [
     AuthorizationNotFoundFault,
     BackupPolicyNotFoundFault,
@@ -10008,8 +10008,8 @@ export const revokeDBSecurityGroupIngress: API.OperationMethod<
   RevokeDBSecurityGroupIngressError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(541, __c67, 5) as any as S.Schema<RevokeDBSecurityGroupIngressMessage>,
-  output: __S(542, __c67, 6) as any as S.Schema<RevokeDBSecurityGroupIngressResult>,
+  input: __S(6912, __c216, 0) as any as S.Schema<RevokeDBSecurityGroupIngressMessage>,
+  output: __S(6913, __c216, 1) as any as S.Schema<RevokeDBSecurityGroupIngressResult>,
   errors: [
     AuthorizationNotFoundFault,
     DBSecurityGroupNotFoundFault,
@@ -10037,8 +10037,8 @@ export const startActivityStream: API.OperationMethod<
   StartActivityStreamError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(543, __c67, 7) as any as S.Schema<StartActivityStreamRequest>,
-  output: __S(544, __c68, 0) as any as S.Schema<StartActivityStreamResponse>,
+  input: __S(6944, __c217, 0) as any as S.Schema<StartActivityStreamRequest>,
+  output: __S(6945, __c217, 1) as any as S.Schema<StartActivityStreamResponse>,
   errors: [
     DBClusterNotFoundFault,
     DBInstanceNotFoundFault,
@@ -10073,8 +10073,8 @@ export const startDBCluster: API.OperationMethod<
   StartDBClusterError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(545, __c68, 1) as any as S.Schema<StartDBClusterMessage>,
-  output: __S(546, __c68, 2) as any as S.Schema<StartDBClusterResult>,
+  input: __S(6976, __c218, 0) as any as S.Schema<StartDBClusterMessage>,
+  output: __S(6977, __c218, 1) as any as S.Schema<StartDBClusterResult>,
   errors: [
     DBClusterNotFoundFault,
     InvalidDBClusterStateFault,
@@ -10115,8 +10115,8 @@ export const startDBInstance: API.OperationMethod<
   StartDBInstanceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(547, __c68, 3) as any as S.Schema<StartDBInstanceMessage>,
-  output: __S(548, __c68, 4) as any as S.Schema<StartDBInstanceResult>,
+  input: __S(7008, __c219, 0) as any as S.Schema<StartDBInstanceMessage>,
+  output: __S(7009, __c219, 1) as any as S.Schema<StartDBInstanceResult>,
   errors: [
     AuthorizationNotFoundFault,
     DBClusterNotFoundFault,
@@ -10157,8 +10157,8 @@ export const startDBInstanceAutomatedBackupsReplication: API.OperationMethod<
   StartDBInstanceAutomatedBackupsReplicationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(549, __c68, 5) as any as S.Schema<StartDBInstanceAutomatedBackupsReplicationMessage>,
-  output: __S(550, __c68, 6) as any as S.Schema<StartDBInstanceAutomatedBackupsReplicationResult>,
+  input: __S(7040, __c220, 0) as any as S.Schema<StartDBInstanceAutomatedBackupsReplicationMessage>,
+  output: __S(7041, __c220, 1) as any as S.Schema<StartDBInstanceAutomatedBackupsReplicationResult>,
   errors: [
     DBInstanceAutomatedBackupQuotaExceededFault,
     DBInstanceNotFoundFault,
@@ -10199,8 +10199,8 @@ export const startExportTask: API.OperationMethod<
   StartExportTaskError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(551, __c68, 7) as any as S.Schema<StartExportTaskMessage>,
-  output: __S(29, __c3, 5) as any as S.Schema<ExportTask>,
+  input: __S(7072, __c221, 0) as any as S.Schema<StartExportTaskMessage>,
+  output: __S(512, __c16, 0) as any as S.Schema<ExportTask>,
   errors: [
     DBClusterNotFoundFault,
     DBClusterSnapshotNotFoundFault,
@@ -10236,8 +10236,8 @@ export const stopActivityStream: API.OperationMethod<
   StopActivityStreamError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(552, __c69, 0) as any as S.Schema<StopActivityStreamRequest>,
-  output: __S(553, __c69, 1) as any as S.Schema<StopActivityStreamResponse>,
+  input: __S(7104, __c222, 0) as any as S.Schema<StopActivityStreamRequest>,
+  output: __S(7105, __c222, 1) as any as S.Schema<StopActivityStreamResponse>,
   errors: [
     DBClusterNotFoundFault,
     DBInstanceNotFoundFault,
@@ -10269,8 +10269,8 @@ export const stopDBCluster: API.OperationMethod<
   StopDBClusterError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(554, __c69, 2) as any as S.Schema<StopDBClusterMessage>,
-  output: __S(555, __c69, 3) as any as S.Schema<StopDBClusterResult>,
+  input: __S(7136, __c223, 0) as any as S.Schema<StopDBClusterMessage>,
+  output: __S(7137, __c223, 1) as any as S.Schema<StopDBClusterResult>,
   errors: [
     DBClusterNotFoundFault,
     InvalidDBClusterStateFault,
@@ -10302,8 +10302,8 @@ export const stopDBInstance: API.OperationMethod<
   StopDBInstanceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(556, __c69, 4) as any as S.Schema<StopDBInstanceMessage>,
-  output: __S(557, __c69, 5) as any as S.Schema<StopDBInstanceResult>,
+  input: __S(7168, __c224, 0) as any as S.Schema<StopDBInstanceMessage>,
+  output: __S(7169, __c224, 1) as any as S.Schema<StopDBInstanceResult>,
   errors: [
     DBInstanceNotFoundFault,
     DBSnapshotAlreadyExistsFault,
@@ -10333,8 +10333,8 @@ export const stopDBInstanceAutomatedBackupsReplication: API.OperationMethod<
   StopDBInstanceAutomatedBackupsReplicationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(558, __c69, 6) as any as S.Schema<StopDBInstanceAutomatedBackupsReplicationMessage>,
-  output: __S(559, __c69, 7) as any as S.Schema<StopDBInstanceAutomatedBackupsReplicationResult>,
+  input: __S(7200, __c225, 0) as any as S.Schema<StopDBInstanceAutomatedBackupsReplicationMessage>,
+  output: __S(7201, __c225, 1) as any as S.Schema<StopDBInstanceAutomatedBackupsReplicationResult>,
   errors: [DBInstanceNotFoundFault, InvalidDBInstanceStateFault],
   protocol: AwsProtocol,
   retry: Retry,
@@ -10358,8 +10358,8 @@ export const switchoverBlueGreenDeployment: API.OperationMethod<
   SwitchoverBlueGreenDeploymentError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(560, __c70, 0) as any as S.Schema<SwitchoverBlueGreenDeploymentRequest>,
-  output: __S(561, __c70, 1) as any as S.Schema<SwitchoverBlueGreenDeploymentResponse>,
+  input: __S(7232, __c226, 0) as any as S.Schema<SwitchoverBlueGreenDeploymentRequest>,
+  output: __S(7233, __c226, 1) as any as S.Schema<SwitchoverBlueGreenDeploymentResponse>,
   errors: [BlueGreenDeploymentNotFoundFault, InvalidBlueGreenDeploymentStateFault],
   protocol: AwsProtocol,
   retry: Retry,
@@ -10385,8 +10385,8 @@ export const switchoverGlobalCluster: API.OperationMethod<
   SwitchoverGlobalClusterError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(562, __c70, 2) as any as S.Schema<SwitchoverGlobalClusterMessage>,
-  output: __S(563, __c70, 3) as any as S.Schema<SwitchoverGlobalClusterResult>,
+  input: __S(7264, __c227, 0) as any as S.Schema<SwitchoverGlobalClusterMessage>,
+  output: __S(7265, __c227, 1) as any as S.Schema<SwitchoverGlobalClusterResult>,
   errors: [
     DBClusterNotFoundFault,
     GlobalClusterNotFoundFault,
@@ -10411,8 +10411,8 @@ export const switchoverReadReplica: API.OperationMethod<
   SwitchoverReadReplicaError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(564, __c70, 4) as any as S.Schema<SwitchoverReadReplicaMessage>,
-  output: __S(565, __c70, 5) as any as S.Schema<SwitchoverReadReplicaResult>,
+  input: __S(7296, __c228, 0) as any as S.Schema<SwitchoverReadReplicaMessage>,
+  output: __S(7297, __c228, 1) as any as S.Schema<SwitchoverReadReplicaResult>,
   errors: [DBInstanceNotFoundFault, InvalidDBInstanceStateFault],
   protocol: AwsProtocol,
   retry: Retry,
@@ -10436,7 +10436,23 @@ function __c0(j: number): any {
       return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
         identifier: "AddRoleToDBClusterResponse",
       });
-    case 2:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          Address: S.optional(S.String),
+          Port: S.optional(S.Number),
+          HostedZoneId: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Endpoint" });
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           DBInstanceIdentifier: S.optional(S.String),
@@ -10446,11 +10462,15 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "AddRoleToDBInstanceMessage",
       });
-    case 3:
+    case 1:
       return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
         identifier: "AddRoleToDBInstanceResponse",
       });
-    case 4:
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           SubscriptionName: S.optional(S.String),
@@ -10459,11 +10479,25 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "AddSourceIdentifierToSubscriptionMessage",
       });
-    case 5:
-      return S.Array(/*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.XmlName("SourceId")));
-    case 6:
+    case 1:
+      return S.suspend(() =>
+        S.Struct({ EventSubscription: S.optional(__S(161, __c5, 1)) }).pipe(ns),
+      ).annotate({
+        identifier: "AddSourceIdentifierToSubscriptionResult",
+      });
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
       return S.Array(/*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.XmlName("EventCategory")));
-    case 7:
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(/*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.XmlName("SourceId")));
+    case 1:
       return S.suspend(() =>
         S.Struct({
           CustomerAwsId: S.optional(S.String),
@@ -10472,43 +10506,45 @@ function __c0(j: number): any {
           Status: S.optional(S.String),
           SubscriptionCreationTime: S.optional(S.String),
           SourceType: S.optional(S.String),
-          SourceIdsList: S.optional(__S(5, __c0, 5)),
-          EventCategoriesList: S.optional(__S(6, __c0, 6)),
+          SourceIdsList: S.optional(__S(160, __c5, 0)),
+          EventCategoriesList: S.optional(__S(128, __c4, 0)),
           Enabled: S.optional(S.Boolean),
           EventSubscriptionArn: S.optional(S.String),
         }),
       ).annotate({ identifier: "EventSubscription" });
   }
 }
-function __c1(j: number): any {
+function __c6(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({ EventSubscription: S.optional(__S(7, __c0, 7)) }).pipe(ns),
-      ).annotate({
-        identifier: "AddSourceIdentifierToSubscriptionResult",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({ Key: S.optional(S.String), Value: S.optional(S.String) }),
-      ).annotate({ identifier: "Tag" });
-    case 2:
-      return S.Array(
-        /*@__PURE__*/ __S(9, __c1, 1)
-          .pipe(/*@__PURE__*/ T.XmlName("Tag"))
-          .annotate({ identifier: "Tag" }),
-      );
-    case 3:
-      return S.suspend(() =>
-        S.Struct({ ResourceName: S.optional(S.String), Tags: S.optional(__S(10, __c1, 2)) }).pipe(
+        S.Struct({ ResourceName: S.optional(S.String), Tags: S.optional(__S(225, __c7, 1)) }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "AddTagsToResourceMessage" });
-    case 4:
+    case 1:
       return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
         identifier: "AddTagsToResourceResponse",
       });
-    case 5:
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ Key: S.optional(S.String), Value: S.optional(S.String) }),
+      ).annotate({ identifier: "Tag" });
+    case 1:
+      return S.Array(
+        /*@__PURE__*/ __S(224, __c7, 0)
+          .pipe(/*@__PURE__*/ T.XmlName("Tag"))
+          .annotate({ identifier: "Tag" }),
+      );
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           ResourceIdentifier: S.optional(S.String),
@@ -10518,7 +10554,19 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "ApplyPendingMaintenanceActionMessage",
       });
-    case 6:
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          ResourcePendingMaintenanceActions: S.optional(__S(290, __c9, 2)),
+        }).pipe(ns),
+      ).annotate({
+        identifier: "ApplyPendingMaintenanceActionResult",
+      });
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           Action: S.optional(S.String),
@@ -10529,36 +10577,28 @@ function __c1(j: number): any {
           Description: S.optional(S.String),
         }),
       ).annotate({ identifier: "PendingMaintenanceAction" });
-    case 7:
+    case 1:
       return S.Array(
-        /*@__PURE__*/ __S(14, __c1, 6)
+        /*@__PURE__*/ __S(288, __c9, 0)
           .pipe(/*@__PURE__*/ T.XmlName("PendingMaintenanceAction"))
           .annotate({
             identifier: "PendingMaintenanceAction",
           }),
       );
-  }
-}
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           ResourceIdentifier: S.optional(S.String),
-          PendingMaintenanceActionDetails: S.optional(__S(15, __c1, 7)),
+          PendingMaintenanceActionDetails: S.optional(__S(289, __c9, 1)),
         }),
       ).annotate({
         identifier: "ResourcePendingMaintenanceActions",
       });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          ResourcePendingMaintenanceActions: S.optional(__S(16, __c2, 0)),
-        }).pipe(ns),
-      ).annotate({
-        identifier: "ApplyPendingMaintenanceActionResult",
-      });
-    case 2:
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           DBSecurityGroupName: S.optional(S.String),
@@ -10570,7 +10610,17 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "AuthorizeDBSecurityGroupIngressMessage",
       });
-    case 3:
+    case 1:
+      return S.suspend(() =>
+        S.Struct({ DBSecurityGroup: S.optional(__S(356, __c11, 4)) }).pipe(ns),
+      ).annotate({
+        identifier: "AuthorizeDBSecurityGroupIngressResult",
+      });
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           Status: S.optional(S.String),
@@ -10579,45 +10629,41 @@ function __c2(j: number): any {
           EC2SecurityGroupOwnerId: S.optional(S.String),
         }),
       ).annotate({ identifier: "EC2SecurityGroup" });
-    case 4:
+    case 1:
       return S.Array(
-        /*@__PURE__*/ __S(19, __c2, 3).pipe(/*@__PURE__*/ T.XmlName("EC2SecurityGroup")).annotate({
-          identifier: "EC2SecurityGroup",
-        }),
+        /*@__PURE__*/ __S(352, __c11, 0)
+          .pipe(/*@__PURE__*/ T.XmlName("EC2SecurityGroup"))
+          .annotate({
+            identifier: "EC2SecurityGroup",
+          }),
       );
-    case 5:
+    case 2:
       return S.suspend(() =>
         S.Struct({ Status: S.optional(S.String), CIDRIP: S.optional(S.String) }),
       ).annotate({ identifier: "IPRange" });
-    case 6:
+    case 3:
       return S.Array(
-        /*@__PURE__*/ __S(21, __c2, 5).pipe(/*@__PURE__*/ T.XmlName("IPRange")).annotate({
+        /*@__PURE__*/ __S(354, __c11, 2).pipe(/*@__PURE__*/ T.XmlName("IPRange")).annotate({
           identifier: "IPRange",
         }),
       );
-    case 7:
+    case 4:
       return S.suspend(() =>
         S.Struct({
           OwnerId: S.optional(S.String),
           DBSecurityGroupName: S.optional(S.String),
           DBSecurityGroupDescription: S.optional(S.String),
           VpcId: S.optional(S.String),
-          EC2SecurityGroups: S.optional(__S(20, __c2, 4)),
-          IPRanges: S.optional(__S(22, __c2, 6)),
+          EC2SecurityGroups: S.optional(__S(353, __c11, 1)),
+          IPRanges: S.optional(__S(355, __c11, 3)),
           DBSecurityGroupArn: S.optional(S.String),
         }),
       ).annotate({ identifier: "DBSecurityGroup" });
   }
 }
-function __c3(j: number): any {
+function __c12(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() =>
-        S.Struct({ DBSecurityGroup: S.optional(__S(23, __c2, 7)) }).pipe(ns),
-      ).annotate({
-        identifier: "AuthorizeDBSecurityGroupIngressResult",
-      });
-    case 1:
       return S.suspend(() =>
         S.Struct({
           DBClusterIdentifier: S.optional(S.String),
@@ -10628,7 +10674,11 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "BacktrackDBClusterMessage",
       });
-    case 2:
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           DBClusterIdentifier: S.optional(S.String),
@@ -10641,20 +10691,32 @@ function __c3(j: number): any {
           Status: S.optional(S.String),
         }).pipe(ns),
       ).annotate({ identifier: "DBClusterBacktrack" });
-    case 3:
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ ExportTaskIdentifier: S.optional(S.String) }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "CancelExportTaskMessage" });
-    case 4:
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
       return S.Array(S.String);
-    case 5:
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           ExportTaskIdentifier: S.optional(S.String),
           SourceArn: S.optional(S.String),
-          ExportOnly: S.optional(__S(28, __c3, 4)),
+          ExportOnly: S.optional(__S(480, __c15, 0)),
           SnapshotTime: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
           TaskStartTime: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
           TaskEndTime: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
@@ -10670,18 +10732,32 @@ function __c3(j: number): any {
           SourceType: S.optional(S.String),
         }).pipe(ns),
       ).annotate({ identifier: "ExportTask" });
-    case 6:
+  }
+}
+function __c17(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           SourceDBClusterParameterGroupIdentifier: S.optional(S.String),
           TargetDBClusterParameterGroupIdentifier: S.optional(S.String),
           TargetDBClusterParameterGroupDescription: S.optional(S.String),
-          Tags: S.optional(__S(10, __c1, 2)),
+          Tags: S.optional(__S(225, __c7, 1)),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "CopyDBClusterParameterGroupMessage",
       });
-    case 7:
+    case 1:
+      return S.suspend(() =>
+        S.Struct({ DBClusterParameterGroup: S.optional(__S(576, __c18, 0)) }).pipe(ns),
+      ).annotate({
+        identifier: "CopyDBClusterParameterGroupResult",
+      });
+  }
+}
+function __c18(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           DBClusterParameterGroupName: S.optional(S.String),
@@ -10692,15 +10768,9 @@ function __c3(j: number): any {
       ).annotate({ identifier: "DBClusterParameterGroup" });
   }
 }
-function __c4(j: number): any {
+function __c19(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() =>
-        S.Struct({ DBClusterParameterGroup: S.optional(__S(31, __c3, 7)) }).pipe(ns),
-      ).annotate({
-        identifier: "CopyDBClusterParameterGroupResult",
-      });
-    case 1:
       return S.suspend(() =>
         S.Struct({
           SourceDBClusterSnapshotIdentifier: S.optional(S.String),
@@ -10708,17 +10778,31 @@ function __c4(j: number): any {
           KmsKeyId: S.optional(S.String),
           PreSignedUrl: S.optional(SensitiveString),
           CopyTags: S.optional(S.Boolean),
-          Tags: S.optional(__S(10, __c1, 2)),
+          Tags: S.optional(__S(225, __c7, 1)),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "CopyDBClusterSnapshotMessage",
       });
-    case 2:
+    case 1:
+      return S.suspend(() =>
+        S.Struct({ DBClusterSnapshot: S.optional(__S(672, __c21, 0)) }).pipe(ns),
+      ).annotate({
+        identifier: "CopyDBClusterSnapshotResult",
+      });
+  }
+}
+function __c20(j: number): any {
+  switch (j) {
+    case 0:
       return S.Array(/*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.XmlName("AvailabilityZone")));
-    case 3:
+  }
+}
+function __c21(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          AvailabilityZones: S.optional(__S(34, __c4, 2)),
+          AvailabilityZones: S.optional(__S(640, __c20, 0)),
           DBClusterSnapshotIdentifier: S.optional(S.String),
           DBClusterIdentifier: S.optional(S.String),
           SnapshotCreateTime: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
@@ -10742,31 +10826,39 @@ function __c4(j: number): any {
           DBClusterSnapshotArn: S.optional(S.String),
           SourceDBClusterSnapshotArn: S.optional(S.String),
           IAMDatabaseAuthenticationEnabled: S.optional(S.Boolean),
-          TagList: S.optional(__S(10, __c1, 2)),
+          TagList: S.optional(__S(225, __c7, 1)),
           StorageType: S.optional(S.String),
           StorageThroughput: S.optional(S.Number),
           DbClusterResourceId: S.optional(S.String),
           DBSystemId: S.optional(S.String),
         }),
       ).annotate({ identifier: "DBClusterSnapshot" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({ DBClusterSnapshot: S.optional(__S(35, __c4, 3)) }).pipe(ns),
-      ).annotate({
-        identifier: "CopyDBClusterSnapshotResult",
-      });
-    case 5:
+  }
+}
+function __c22(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           SourceDBParameterGroupIdentifier: S.optional(S.String),
           TargetDBParameterGroupIdentifier: S.optional(S.String),
           TargetDBParameterGroupDescription: S.optional(S.String),
-          Tags: S.optional(__S(10, __c1, 2)),
+          Tags: S.optional(__S(225, __c7, 1)),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "CopyDBParameterGroupMessage",
       });
-    case 6:
+    case 1:
+      return S.suspend(() =>
+        S.Struct({ DBParameterGroup: S.optional(__S(736, __c23, 0)) }).pipe(ns),
+      ).annotate({
+        identifier: "CopyDBParameterGroupResult",
+      });
+  }
+}
+function __c23(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           DBParameterGroupName: S.optional(S.String),
@@ -10775,15 +10867,9 @@ function __c4(j: number): any {
           DBParameterGroupArn: S.optional(S.String),
         }),
       ).annotate({ identifier: "DBParameterGroup" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({ DBParameterGroup: S.optional(__S(38, __c4, 6)) }).pipe(ns),
-      ).annotate({
-        identifier: "CopyDBParameterGroupResult",
-      });
   }
 }
-function __c5(j: number): any {
+function __c24(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -10791,7 +10877,7 @@ function __c5(j: number): any {
           SourceDBSnapshotIdentifier: S.optional(S.String),
           TargetDBSnapshotIdentifier: S.optional(S.String),
           KmsKeyId: S.optional(S.String),
-          Tags: S.optional(__S(10, __c1, 2)),
+          Tags: S.optional(__S(225, __c7, 1)),
           CopyTags: S.optional(S.Boolean),
           PreSignedUrl: S.optional(SensitiveString),
           OptionGroupName: S.optional(S.String),
@@ -10803,15 +10889,13 @@ function __c5(j: number): any {
       ).annotate({ identifier: "CopyDBSnapshotMessage" });
     case 1:
       return S.suspend(() =>
-        S.Struct({ Name: S.optional(S.String), Value: S.optional(S.String) }),
-      ).annotate({ identifier: "ProcessorFeature" });
-    case 2:
-      return S.Array(
-        /*@__PURE__*/ __S(41, __c5, 1).pipe(/*@__PURE__*/ T.XmlName("ProcessorFeature")).annotate({
-          identifier: "ProcessorFeature",
-        }),
-      );
-    case 3:
+        S.Struct({ DBSnapshot: S.optional(__S(864, __c27, 0)) }).pipe(ns),
+      ).annotate({ identifier: "CopyDBSnapshotResult" });
+  }
+}
+function __c25(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           VolumeName: S.optional(S.String),
@@ -10822,9 +10906,29 @@ function __c5(j: number): any {
           StorageType: S.optional(S.String),
         }),
       ).annotate({ identifier: "AdditionalStorageVolume" });
-    case 4:
-      return S.Array(__S(43, __c5, 3));
-    case 5:
+    case 1:
+      return S.Array(__S(800, __c25, 0));
+  }
+}
+function __c26(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ Name: S.optional(S.String), Value: S.optional(S.String) }),
+      ).annotate({ identifier: "ProcessorFeature" });
+    case 1:
+      return S.Array(
+        /*@__PURE__*/ __S(832, __c26, 0)
+          .pipe(/*@__PURE__*/ T.XmlName("ProcessorFeature"))
+          .annotate({
+            identifier: "ProcessorFeature",
+          }),
+      );
+  }
+}
+function __c27(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           DBSnapshotIdentifier: S.optional(S.String),
@@ -10857,9 +10961,9 @@ function __c5(j: number): any {
           DBSnapshotArn: S.optional(S.String),
           Timezone: S.optional(S.String),
           IAMDatabaseAuthenticationEnabled: S.optional(S.Boolean),
-          ProcessorFeatures: S.optional(__S(42, __c5, 2)),
+          ProcessorFeatures: S.optional(__S(833, __c26, 1)),
           DbiResourceId: S.optional(S.String),
-          TagList: S.optional(__S(10, __c1, 2)),
+          TagList: S.optional(__S(225, __c7, 1)),
           SnapshotTarget: S.optional(S.String),
           OriginalSnapshotCreateTime: S.optional(
             T.DateFromString.pipe(T.TimestampFormat("date-time")),
@@ -10868,29 +10972,65 @@ function __c5(j: number): any {
           DBSystemId: S.optional(S.String),
           MultiTenant: S.optional(S.Boolean),
           DedicatedLogVolume: S.optional(S.Boolean),
-          AdditionalStorageVolumes: S.optional(__S(44, __c5, 4)),
+          AdditionalStorageVolumes: S.optional(__S(801, __c25, 1)),
           SnapshotAvailabilityZone: S.optional(S.String),
           FullSnapshotSizeInBytes: S.optional(S.Number),
         }),
       ).annotate({ identifier: "DBSnapshot" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({ DBSnapshot: S.optional(__S(45, __c5, 5)) }).pipe(ns),
-      ).annotate({
-        identifier: "CopyDBSnapshotResult",
-      });
-    case 7:
+  }
+}
+function __c28(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           SourceOptionGroupIdentifier: S.optional(S.String),
           TargetOptionGroupIdentifier: S.optional(S.String),
           TargetOptionGroupDescription: S.optional(S.String),
-          Tags: S.optional(__S(10, __c1, 2)),
+          Tags: S.optional(__S(225, __c7, 1)),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "CopyOptionGroupMessage" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({ OptionGroup: S.optional(__S(996, __c31, 4)) }).pipe(ns),
+      ).annotate({ identifier: "CopyOptionGroupResult" });
   }
 }
-function __c6(j: number): any {
+function __c29(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ VpcSecurityGroupId: S.optional(S.String), Status: S.optional(S.String) }),
+      ).annotate({
+        identifier: "VpcSecurityGroupMembership",
+      });
+    case 1:
+      return S.Array(
+        /*@__PURE__*/ __S(928, __c29, 0)
+          .pipe(/*@__PURE__*/ T.XmlName("VpcSecurityGroupMembership"))
+          .annotate({
+            identifier: "VpcSecurityGroupMembership",
+          }),
+      );
+  }
+}
+function __c30(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ DBSecurityGroupName: S.optional(S.String), Status: S.optional(S.String) }),
+      ).annotate({
+        identifier: "DBSecurityGroupMembership",
+      });
+    case 1:
+      return S.Array(
+        /*@__PURE__*/ __S(960, __c30, 0).pipe(/*@__PURE__*/ T.XmlName("DBSecurityGroup")).annotate({
+          identifier: "DBSecurityGroupMembership",
+        }),
+      );
+  }
+}
+function __c31(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -10908,37 +11048,11 @@ function __c6(j: number): any {
       ).annotate({ identifier: "OptionSetting" });
     case 1:
       return S.Array(
-        /*@__PURE__*/ __S(48, __c6, 0).pipe(/*@__PURE__*/ T.XmlName("OptionSetting")).annotate({
+        /*@__PURE__*/ __S(992, __c31, 0).pipe(/*@__PURE__*/ T.XmlName("OptionSetting")).annotate({
           identifier: "OptionSetting",
         }),
       );
     case 2:
-      return S.suspend(() =>
-        S.Struct({ DBSecurityGroupName: S.optional(S.String), Status: S.optional(S.String) }),
-      ).annotate({
-        identifier: "DBSecurityGroupMembership",
-      });
-    case 3:
-      return S.Array(
-        /*@__PURE__*/ __S(50, __c6, 2).pipe(/*@__PURE__*/ T.XmlName("DBSecurityGroup")).annotate({
-          identifier: "DBSecurityGroupMembership",
-        }),
-      );
-    case 4:
-      return S.suspend(() =>
-        S.Struct({ VpcSecurityGroupId: S.optional(S.String), Status: S.optional(S.String) }),
-      ).annotate({
-        identifier: "VpcSecurityGroupMembership",
-      });
-    case 5:
-      return S.Array(
-        /*@__PURE__*/ __S(52, __c6, 4)
-          .pipe(/*@__PURE__*/ T.XmlName("VpcSecurityGroupMembership"))
-          .annotate({
-            identifier: "VpcSecurityGroupMembership",
-          }),
-      );
-    case 6:
       return S.suspend(() =>
         S.Struct({
           OptionName: S.optional(S.String),
@@ -10947,29 +11061,25 @@ function __c6(j: number): any {
           Permanent: S.optional(S.Boolean),
           Port: S.optional(S.Number),
           OptionVersion: S.optional(S.String),
-          OptionSettings: S.optional(__S(49, __c6, 1)),
-          DBSecurityGroupMemberships: S.optional(__S(51, __c6, 3)),
-          VpcSecurityGroupMemberships: S.optional(__S(53, __c6, 5)),
+          OptionSettings: S.optional(__S(993, __c31, 1)),
+          DBSecurityGroupMemberships: S.optional(__S(961, __c30, 1)),
+          VpcSecurityGroupMemberships: S.optional(__S(929, __c29, 1)),
         }),
       ).annotate({ identifier: "Option" });
-    case 7:
+    case 3:
       return S.Array(
-        /*@__PURE__*/ __S(54, __c6, 6).pipe(/*@__PURE__*/ T.XmlName("Option")).annotate({
-          identifier: "Option",
-        }),
+        /*@__PURE__*/ __S(994, __c31, 2)
+          .pipe(/*@__PURE__*/ T.XmlName("Option"))
+          .annotate({ identifier: "Option" }),
       );
-  }
-}
-function __c7(j: number): any {
-  switch (j) {
-    case 0:
+    case 4:
       return S.suspend(() =>
         S.Struct({
           OptionGroupName: S.optional(S.String),
           OptionGroupDescription: S.optional(S.String),
           EngineName: S.optional(S.String),
           MajorEngineVersion: S.optional(S.String),
-          Options: S.optional(__S(55, __c6, 7)),
+          Options: S.optional(__S(995, __c31, 3)),
           AllowsVpcAndNonVpcInstanceMemberships: S.optional(S.Boolean),
           VpcId: S.optional(S.String),
           OptionGroupArn: S.optional(S.String),
@@ -10978,27 +11088,25 @@ function __c7(j: number): any {
           CopyTimestamp: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
         }),
       ).annotate({ identifier: "OptionGroup" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({ OptionGroup: S.optional(__S(56, __c7, 0)) }).pipe(ns),
-      ).annotate({
-        identifier: "CopyOptionGroupResult",
-      });
-    case 2:
+  }
+}
+function __c32(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ SourceArn: S.String, TargetKmsKeyId: S.optional(S.String) }),
       ).annotate({
         identifier: "TargetResourceConfiguration",
       });
-    case 3:
+    case 1:
       return S.Array(
-        /*@__PURE__*/ __S(58, __c7, 2)
+        /*@__PURE__*/ __S(1024, __c32, 0)
           .pipe(/*@__PURE__*/ T.XmlName("TargetResourceConfiguration"))
           .annotate({
             identifier: "TargetResourceConfiguration",
           }),
       );
-    case 4:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           BlueGreenDeploymentName: S.optional(S.String),
@@ -11006,19 +11114,29 @@ function __c7(j: number): any {
           TargetEngineVersion: S.optional(S.String),
           TargetDBParameterGroupName: S.optional(S.String),
           TargetDBClusterParameterGroupName: S.optional(S.String),
-          Tags: S.optional(__S(10, __c1, 2)),
+          Tags: S.optional(__S(225, __c7, 1)),
           TargetDBInstanceClass: S.optional(S.String),
           UpgradeTargetStorageConfig: S.optional(S.Boolean),
           TargetIops: S.optional(S.Number),
           TargetStorageType: S.optional(S.String),
           TargetAllocatedStorage: S.optional(S.Number),
           TargetStorageThroughput: S.optional(S.Number),
-          TargetResourceConfigurations: S.optional(__S(59, __c7, 3)),
+          TargetResourceConfigurations: S.optional(__S(1025, __c32, 1)),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "CreateBlueGreenDeploymentRequest",
       });
-    case 5:
+    case 3:
+      return S.suspend(() =>
+        S.Struct({ BlueGreenDeployment: S.optional(__S(1060, __c33, 4)) }).pipe(ns),
+      ).annotate({
+        identifier: "CreateBlueGreenDeploymentResponse",
+      });
+  }
+}
+function __c33(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           SourceMember: S.optional(S.String),
@@ -11026,83 +11144,97 @@ function __c7(j: number): any {
           Status: S.optional(S.String),
         }),
       ).annotate({ identifier: "SwitchoverDetail" });
-    case 6:
-      return S.Array(__S(61, __c7, 5));
-    case 7:
+    case 1:
+      return S.Array(__S(1056, __c33, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({ Name: S.optional(S.String), Status: S.optional(S.String) }),
       ).annotate({ identifier: "BlueGreenDeploymentTask" });
-  }
-}
-function __c8(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(63, __c7, 7));
-    case 1:
+    case 3:
+      return S.Array(__S(1058, __c33, 2));
+    case 4:
       return S.suspend(() =>
         S.Struct({
           BlueGreenDeploymentIdentifier: S.optional(S.String),
           BlueGreenDeploymentName: S.optional(S.String),
           Source: S.optional(S.String),
           Target: S.optional(S.String),
-          SwitchoverDetails: S.optional(__S(62, __c7, 6)),
-          Tasks: S.optional(__S(64, __c8, 0)),
+          SwitchoverDetails: S.optional(__S(1057, __c33, 1)),
+          Tasks: S.optional(__S(1059, __c33, 3)),
           Status: S.optional(S.String),
           StatusDetails: S.optional(S.String),
           CreateTime: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
           DeleteTime: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-          TagList: S.optional(__S(10, __c1, 2)),
+          TagList: S.optional(__S(225, __c7, 1)),
         }),
       ).annotate({ identifier: "BlueGreenDeployment" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({ BlueGreenDeployment: S.optional(__S(65, __c8, 1)) }).pipe(ns),
-      ).annotate({
-        identifier: "CreateBlueGreenDeploymentResponse",
-      });
-    case 3:
+  }
+}
+function __c34(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           Engine: S.optional(S.String),
           EngineVersion: S.optional(S.String),
           DatabaseInstallationFilesS3BucketName: S.optional(S.String),
           DatabaseInstallationFilesS3Prefix: S.optional(S.String),
-          DatabaseInstallationFiles: S.optional(__S(28, __c3, 4)),
+          DatabaseInstallationFiles: S.optional(__S(480, __c15, 0)),
           ImageId: S.optional(S.String),
           KMSKeyId: S.optional(S.String),
           SourceCustomDbEngineVersionIdentifier: S.optional(S.String),
           UseAwsProvidedLatestImage: S.optional(S.Boolean),
           Description: S.optional(S.String),
           Manifest: S.optional(S.String),
-          Tags: S.optional(__S(10, __c1, 2)),
+          Tags: S.optional(__S(225, __c7, 1)),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "CreateCustomDBEngineVersionMessage",
       });
-    case 4:
+  }
+}
+function __c35(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c36(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c37(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ MinCapacity: S.optional(S.Number), MaxCapacity: S.optional(S.Number) }),
+      ).annotate({
+        identifier: "ServerlessV2FeaturesSupport",
+      });
+  }
+}
+function __c38(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           CharacterSetName: S.optional(S.String),
           CharacterSetDescription: S.optional(S.String),
         }),
       ).annotate({ identifier: "CharacterSet" });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({ ImageId: S.optional(S.String), Status: S.optional(S.String) }),
       ).annotate({ identifier: "CustomDBEngineVersionAMI" });
-    case 6:
+    case 2:
       return S.Array(
-        /*@__PURE__*/ __S(68, __c8, 4).pipe(/*@__PURE__*/ T.XmlName("CharacterSet")).annotate({
+        /*@__PURE__*/ __S(1216, __c38, 0).pipe(/*@__PURE__*/ T.XmlName("CharacterSet")).annotate({
           identifier: "CharacterSet",
         }),
       );
-    case 7:
-      return S.Array(S.String);
-  }
-}
-function __c9(j: number): any {
-  switch (j) {
-    case 0:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           Engine: S.optional(S.String),
@@ -11110,7 +11242,7 @@ function __c9(j: number): any {
           Description: S.optional(S.String),
           AutoUpgrade: S.optional(S.Boolean),
           IsMajorVersionUpgrade: S.optional(S.Boolean),
-          SupportedEngineModes: S.optional(__S(71, __c8, 7)),
+          SupportedEngineModes: S.optional(__S(1152, __c36, 0)),
           SupportsParallelQuery: S.optional(S.Boolean),
           SupportsGlobalDatabases: S.optional(S.Boolean),
           SupportsBabelfish: S.optional(S.Boolean),
@@ -11119,39 +11251,27 @@ function __c9(j: number): any {
           SupportsIntegrations: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "UpgradeTarget" });
-    case 1:
+    case 4:
       return S.Array(
-        /*@__PURE__*/ __S(72, __c9, 0).pipe(/*@__PURE__*/ T.XmlName("UpgradeTarget")).annotate({
+        /*@__PURE__*/ __S(1219, __c38, 3).pipe(/*@__PURE__*/ T.XmlName("UpgradeTarget")).annotate({
           identifier: "UpgradeTarget",
         }),
       );
-    case 2:
+    case 5:
       return S.suspend(() => S.Struct({ TimezoneName: S.optional(S.String) })).annotate({
         identifier: "Timezone",
       });
-    case 3:
+    case 6:
       return S.Array(
-        /*@__PURE__*/ __S(74, __c9, 2).pipe(/*@__PURE__*/ T.XmlName("Timezone")).annotate({
+        /*@__PURE__*/ __S(1221, __c38, 5).pipe(/*@__PURE__*/ T.XmlName("Timezone")).annotate({
           identifier: "Timezone",
         }),
       );
-    case 4:
-      return S.Array(S.String);
-    case 5:
-      return S.Array(S.String);
-    case 6:
-      return S.Array(S.String);
     case 7:
-      return S.suspend(() =>
-        S.Struct({ MinCapacity: S.optional(S.Number), MaxCapacity: S.optional(S.Number) }),
-      ).annotate({
-        identifier: "ServerlessV2FeaturesSupport",
-      });
-  }
-}
-function __c10(j: number): any {
-  switch (j) {
-    case 0:
+      return S.Array(S.String);
+    case 8:
+      return S.Array(S.String);
+    case 9:
       return S.suspend(() =>
         S.Struct({
           Engine: S.optional(S.String),
@@ -11159,109 +11279,54 @@ function __c10(j: number): any {
           EngineVersion: S.optional(S.String),
           DatabaseInstallationFilesS3BucketName: S.optional(S.String),
           DatabaseInstallationFilesS3Prefix: S.optional(S.String),
-          DatabaseInstallationFiles: S.optional(__S(28, __c3, 4)),
+          DatabaseInstallationFiles: S.optional(__S(480, __c15, 0)),
           CustomDBEngineVersionManifest: S.optional(S.String),
           DBParameterGroupFamily: S.optional(S.String),
           DBEngineDescription: S.optional(S.String),
           DBEngineVersionArn: S.optional(S.String),
           DBEngineVersionDescription: S.optional(S.String),
-          DefaultCharacterSet: S.optional(__S(68, __c8, 4)),
+          DefaultCharacterSet: S.optional(__S(1216, __c38, 0)),
           FailureReason: S.optional(S.String),
-          Image: S.optional(__S(69, __c8, 5)),
+          Image: S.optional(__S(1217, __c38, 1)),
           DBEngineMediaType: S.optional(S.String),
           KMSKeyId: S.optional(S.String),
           CreateTime: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-          SupportedCharacterSets: S.optional(__S(70, __c8, 6)),
-          SupportedNcharCharacterSets: S.optional(__S(70, __c8, 6)),
-          ValidUpgradeTarget: S.optional(__S(73, __c9, 1)),
-          SupportedTimezones: S.optional(__S(75, __c9, 3)),
-          ExportableLogTypes: S.optional(__S(76, __c9, 4)),
+          SupportedCharacterSets: S.optional(__S(1218, __c38, 2)),
+          SupportedNcharCharacterSets: S.optional(__S(1218, __c38, 2)),
+          ValidUpgradeTarget: S.optional(__S(1220, __c38, 4)),
+          SupportedTimezones: S.optional(__S(1222, __c38, 6)),
+          ExportableLogTypes: S.optional(__S(1120, __c35, 0)),
           SupportsLogExportsToCloudwatchLogs: S.optional(S.Boolean),
           SupportsReadReplica: S.optional(S.Boolean),
-          SupportedEngineModes: S.optional(__S(71, __c8, 7)),
-          SupportedFeatureNames: S.optional(__S(77, __c9, 5)),
+          SupportedEngineModes: S.optional(__S(1152, __c36, 0)),
+          SupportedFeatureNames: S.optional(__S(1223, __c38, 7)),
           Status: S.optional(S.String),
           SupportsParallelQuery: S.optional(S.Boolean),
           SupportsGlobalDatabases: S.optional(S.Boolean),
-          TagList: S.optional(__S(10, __c1, 2)),
+          TagList: S.optional(__S(225, __c7, 1)),
           SupportsBabelfish: S.optional(S.Boolean),
           SupportsLimitlessDatabase: S.optional(S.Boolean),
           SupportsCertificateRotationWithoutRestart: S.optional(S.Boolean),
-          SupportedCACertificateIdentifiers: S.optional(__S(78, __c9, 6)),
+          SupportedCACertificateIdentifiers: S.optional(__S(1224, __c38, 8)),
           SupportsLocalWriteForwarding: S.optional(S.Boolean),
           SupportsIntegrations: S.optional(S.Boolean),
-          ServerlessV2FeaturesSupport: S.optional(__S(79, __c9, 7)),
+          ServerlessV2FeaturesSupport: S.optional(__S(1184, __c37, 0)),
         }).pipe(ns),
       ).annotate({ identifier: "DBEngineVersion" });
-    case 1:
-      return S.Array(/*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.XmlName("VpcSecurityGroupId")));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          MinCapacity: S.optional(S.Number),
-          MaxCapacity: S.optional(S.Number),
-          AutoPause: S.optional(S.Boolean),
-          SecondsUntilAutoPause: S.optional(S.Number),
-          TimeoutAction: S.optional(S.String),
-          SecondsBeforeTimeout: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "ScalingConfiguration" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          InterconnectSubnetId: S.optional(S.String),
-          TransitGatewayMulticastDomainId: S.optional(S.String),
-          ReplicaMode: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "RdsCustomClusterConfiguration",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          MinCapacity: S.optional(S.Number),
-          MaxCapacity: S.optional(S.Number),
-          SecondsUntilAutoPause: S.optional(S.Number),
-        }),
-      ).annotate({
-        identifier: "ServerlessV2ScalingConfiguration",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({ ResourceType: S.optional(S.String), Tags: S.optional(__S(10, __c1, 2)) }),
-      ).annotate({ identifier: "TagSpecification" });
-    case 6:
-      return S.Array(
-        /*@__PURE__*/ __S(85, __c10, 5).pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
-          identifier: "TagSpecification",
-        }),
-      );
-    case 7:
-      return S.suspend(() =>
-        S.Struct({ RoleArn: S.String, FeatureName: S.optional(S.String) }),
-      ).annotate({ identifier: "DBClusterAssociatedRole" });
   }
 }
-function __c11(j: number): any {
+function __c39(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(
-        /*@__PURE__*/ __S(87, __c10, 7)
-          .pipe(/*@__PURE__*/ T.XmlName("DBClusterAssociatedRole"))
-          .annotate({
-            identifier: "DBClusterAssociatedRole",
-          }),
-      );
-    case 1:
       return S.suspend(() =>
         S.Struct({
-          AvailabilityZones: S.optional(__S(34, __c4, 2)),
+          AvailabilityZones: S.optional(__S(640, __c20, 0)),
           BackupRetentionPeriod: S.optional(S.Number),
           CharacterSetName: S.optional(S.String),
           DatabaseName: S.optional(S.String),
           DBClusterIdentifier: S.optional(S.String),
           DBClusterParameterGroupName: S.optional(S.String),
-          VpcSecurityGroupIds: S.optional(__S(81, __c10, 1)),
+          VpcSecurityGroupIds: S.optional(__S(1344, __c42, 0)),
           DBSubnetGroupName: S.optional(S.String),
           Engine: S.optional(S.String),
           EngineVersion: S.optional(S.String),
@@ -11272,16 +11337,16 @@ function __c11(j: number): any {
           PreferredBackupWindow: S.optional(S.String),
           PreferredMaintenanceWindow: S.optional(S.String),
           ReplicationSourceIdentifier: S.optional(S.String),
-          Tags: S.optional(__S(10, __c1, 2)),
+          Tags: S.optional(__S(225, __c7, 1)),
           StorageEncrypted: S.optional(S.Boolean),
           KmsKeyId: S.optional(S.String),
           PreSignedUrl: S.optional(SensitiveString),
           EnableIAMDatabaseAuthentication: S.optional(S.Boolean),
           BacktrackWindow: S.optional(S.Number),
-          EnableCloudwatchLogsExports: S.optional(__S(76, __c9, 4)),
+          EnableCloudwatchLogsExports: S.optional(__S(1120, __c35, 0)),
           EngineMode: S.optional(S.String),
-          ScalingConfiguration: S.optional(__S(82, __c10, 2)),
-          RdsCustomClusterConfiguration: S.optional(__S(83, __c10, 3)),
+          ScalingConfiguration: S.optional(__S(1472, __c46, 0)),
+          RdsCustomClusterConfiguration: S.optional(__S(1408, __c44, 0)),
           DBClusterInstanceClass: S.optional(S.String),
           AllocatedStorage: S.optional(S.Number),
           StorageType: S.optional(S.String),
@@ -11296,7 +11361,7 @@ function __c11(j: number): any {
           DomainIAMRoleName: S.optional(S.String),
           EnableGlobalWriteForwarding: S.optional(S.Boolean),
           NetworkType: S.optional(S.String),
-          ServerlessV2ScalingConfiguration: S.optional(__S(84, __c10, 4)),
+          ServerlessV2ScalingConfiguration: S.optional(__S(1440, __c45, 0)),
           MonitoringInterval: S.optional(S.Number),
           MonitoringRoleArn: S.optional(S.String),
           DatabaseInsightsMode: S.optional(S.String),
@@ -11311,29 +11376,119 @@ function __c11(j: number): any {
           MasterUserSecretKmsKeyId: S.optional(S.String),
           CACertificateIdentifier: S.optional(S.String),
           EngineLifecycleSupport: S.optional(S.String),
-          TagSpecifications: S.optional(__S(86, __c10, 6)),
+          TagSpecifications: S.optional(__S(1377, __c43, 1)),
           MasterUserAuthenticationType: S.optional(S.String),
           WithExpressConfiguration: S.optional(S.Boolean),
-          AssociatedRoles: S.optional(__S(88, __c11, 0)),
+          AssociatedRoles: S.optional(__S(1505, __c47, 1)),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "CreateDBClusterMessage" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({ DBCluster: S.optional(__S(1422, __c44, 14)) }).pipe(ns),
+      ).annotate({ identifier: "CreateDBClusterResult" });
+  }
+}
+function __c40(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          SecretArn: S.optional(S.String),
+          SecretStatus: S.optional(S.String),
+          KmsKeyId: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "MasterUserSecret" });
+  }
+}
+function __c41(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          LogTypesToEnable: S.optional(__S(1120, __c35, 0)),
+          LogTypesToDisable: S.optional(__S(1120, __c35, 0)),
+        }),
+      ).annotate({
+        identifier: "PendingCloudwatchLogsExports",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          CAIdentifier: S.optional(S.String),
+          ValidTill: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
+        }),
+      ).annotate({ identifier: "CertificateDetails" });
     case 2:
+      return S.suspend(() =>
+        S.Struct({
+          Domain: S.optional(S.String),
+          Status: S.optional(S.String),
+          FQDN: S.optional(S.String),
+          IAMRoleName: S.optional(S.String),
+          OU: S.optional(S.String),
+          AuthSecretArn: S.optional(S.String),
+          DnsIps: S.optional(__S(480, __c15, 0)),
+        }),
+      ).annotate({ identifier: "DomainMembership" });
+    case 3:
+      return S.Array(
+        /*@__PURE__*/ __S(1314, __c41, 2)
+          .pipe(/*@__PURE__*/ T.XmlName("DomainMembership"))
+          .annotate({
+            identifier: "DomainMembership",
+          }),
+      );
+  }
+}
+function __c42(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(/*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.XmlName("VpcSecurityGroupId")));
+  }
+}
+function __c43(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ ResourceType: S.optional(S.String), Tags: S.optional(__S(225, __c7, 1)) }),
+      ).annotate({ identifier: "TagSpecification" });
+    case 1:
+      return S.Array(
+        /*@__PURE__*/ __S(1376, __c43, 0).pipe(/*@__PURE__*/ T.XmlName("item")).annotate({
+          identifier: "TagSpecification",
+        }),
+      );
+  }
+}
+function __c44(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          InterconnectSubnetId: S.optional(S.String),
+          TransitGatewayMulticastDomainId: S.optional(S.String),
+          ReplicaMode: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "RdsCustomClusterConfiguration",
+      });
+    case 1:
       return S.suspend(() =>
         S.Struct({ DBClusterOptionGroupName: S.optional(S.String), Status: S.optional(S.String) }),
       ).annotate({
         identifier: "DBClusterOptionGroupStatus",
       });
-    case 3:
+    case 2:
       return S.Array(
-        /*@__PURE__*/ __S(90, __c11, 2)
+        /*@__PURE__*/ __S(1409, __c44, 1)
           .pipe(/*@__PURE__*/ T.XmlName("DBClusterOptionGroup"))
           .annotate({
             identifier: "DBClusterOptionGroupStatus",
           }),
       );
-    case 4:
+    case 3:
       return S.Array(/*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.XmlName("ReadReplicaIdentifier")));
-    case 5:
+    case 4:
       return S.suspend(() =>
         S.Struct({
           StatusType: S.optional(S.String),
@@ -11342,15 +11497,15 @@ function __c11(j: number): any {
           Message: S.optional(S.String),
         }),
       ).annotate({ identifier: "DBClusterStatusInfo" });
-    case 6:
+    case 5:
       return S.Array(
-        /*@__PURE__*/ __S(93, __c11, 5)
+        /*@__PURE__*/ __S(1412, __c44, 4)
           .pipe(/*@__PURE__*/ T.XmlName("DBClusterStatusInfo"))
           .annotate({
             identifier: "DBClusterStatusInfo",
           }),
       );
-    case 7:
+    case 6:
       return S.suspend(() =>
         S.Struct({
           DBInstanceIdentifier: S.optional(S.String),
@@ -11359,17 +11514,15 @@ function __c11(j: number): any {
           PromotionTier: S.optional(S.Number),
         }),
       ).annotate({ identifier: "DBClusterMember" });
-  }
-}
-function __c12(j: number): any {
-  switch (j) {
-    case 0:
+    case 7:
       return S.Array(
-        /*@__PURE__*/ __S(95, __c11, 7).pipe(/*@__PURE__*/ T.XmlName("DBClusterMember")).annotate({
-          identifier: "DBClusterMember",
-        }),
+        /*@__PURE__*/ __S(1414, __c44, 6)
+          .pipe(/*@__PURE__*/ T.XmlName("DBClusterMember"))
+          .annotate({
+            identifier: "DBClusterMember",
+          }),
       );
-    case 1:
+    case 8:
       return S.suspend(() =>
         S.Struct({
           RoleArn: S.optional(S.String),
@@ -11377,32 +11530,16 @@ function __c12(j: number): any {
           FeatureName: S.optional(S.String),
         }),
       ).annotate({ identifier: "DBClusterRole" });
-    case 2:
+    case 9:
       return S.Array(
-        /*@__PURE__*/ __S(97, __c12, 1).pipe(/*@__PURE__*/ T.XmlName("DBClusterRole")).annotate({
+        /*@__PURE__*/ __S(1416, __c44, 8).pipe(/*@__PURE__*/ T.XmlName("DBClusterRole")).annotate({
           identifier: "DBClusterRole",
         }),
       );
-    case 3:
+    case 10:
       return S.suspend(() =>
         S.Struct({
-          LogTypesToEnable: S.optional(__S(76, __c9, 4)),
-          LogTypesToDisable: S.optional(__S(76, __c9, 4)),
-        }),
-      ).annotate({
-        identifier: "PendingCloudwatchLogsExports",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          CAIdentifier: S.optional(S.String),
-          ValidTill: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-        }),
-      ).annotate({ identifier: "CertificateDetails" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          PendingCloudwatchLogsExports: S.optional(__S(99, __c12, 3)),
+          PendingCloudwatchLogsExports: S.optional(__S(1312, __c41, 0)),
           DBClusterIdentifier: S.optional(S.String),
           MasterUserPassword: S.optional(SensitiveString),
           IAMDatabaseAuthenticationEnabled: S.optional(S.Boolean),
@@ -11410,14 +11547,14 @@ function __c12(j: number): any {
           BackupRetentionPeriod: S.optional(S.Number),
           StorageType: S.optional(S.String),
           AllocatedStorage: S.optional(S.Number),
-          RdsCustomClusterConfiguration: S.optional(__S(83, __c10, 3)),
+          RdsCustomClusterConfiguration: S.optional(__S(1408, __c44, 0)),
           Iops: S.optional(S.Number),
-          CertificateDetails: S.optional(__S(100, __c12, 4)),
+          CertificateDetails: S.optional(__S(1313, __c41, 1)),
         }),
       ).annotate({
         identifier: "ClusterPendingModifiedValues",
       });
-    case 6:
+    case 11:
       return S.suspend(() =>
         S.Struct({
           MinCapacity: S.optional(S.Number),
@@ -11428,31 +11565,7 @@ function __c12(j: number): any {
           SecondsBeforeTimeout: S.optional(S.Number),
         }),
       ).annotate({ identifier: "ScalingConfigurationInfo" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          Domain: S.optional(S.String),
-          Status: S.optional(S.String),
-          FQDN: S.optional(S.String),
-          IAMRoleName: S.optional(S.String),
-          OU: S.optional(S.String),
-          AuthSecretArn: S.optional(S.String),
-          DnsIps: S.optional(__S(28, __c3, 4)),
-        }),
-      ).annotate({ identifier: "DomainMembership" });
-  }
-}
-function __c13(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(
-        /*@__PURE__*/ __S(103, __c12, 7)
-          .pipe(/*@__PURE__*/ T.XmlName("DomainMembership"))
-          .annotate({
-            identifier: "DomainMembership",
-          }),
-      );
-    case 1:
+    case 12:
       return S.suspend(() =>
         S.Struct({
           MinCapacity: S.optional(S.Number),
@@ -11462,26 +11575,15 @@ function __c13(j: number): any {
       ).annotate({
         identifier: "ServerlessV2ScalingConfigurationInfo",
       });
-    case 2:
+    case 13:
       return S.suspend(() =>
-        S.Struct({
-          SecretArn: S.optional(S.String),
-          SecretStatus: S.optional(S.String),
-          KmsKeyId: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "MasterUserSecret" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          Status: S.optional(S.String),
-          MinRequiredACU: S.optional(S.Number),
-        }),
+        S.Struct({ Status: S.optional(S.String), MinRequiredACU: S.optional(S.Number) }),
       ).annotate({ identifier: "LimitlessDatabase" });
-    case 4:
+    case 14:
       return S.suspend(() =>
         S.Struct({
           AllocatedStorage: S.optional(S.Number),
-          AvailabilityZones: S.optional(__S(34, __c4, 2)),
+          AvailabilityZones: S.optional(__S(640, __c20, 0)),
           BackupRetentionPeriod: S.optional(S.Number),
           CharacterSetName: S.optional(S.String),
           DatabaseName: S.optional(S.String),
@@ -11493,41 +11595,41 @@ function __c13(j: number): any {
           EarliestRestorableTime: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
           Endpoint: S.optional(S.String),
           ReaderEndpoint: S.optional(S.String),
-          CustomEndpoints: S.optional(__S(28, __c3, 4)),
+          CustomEndpoints: S.optional(__S(480, __c15, 0)),
           MultiAZ: S.optional(S.Boolean),
           Engine: S.optional(S.String),
           EngineVersion: S.optional(S.String),
           LatestRestorableTime: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
           Port: S.optional(S.Number),
           MasterUsername: S.optional(S.String),
-          DBClusterOptionGroupMemberships: S.optional(__S(91, __c11, 3)),
+          DBClusterOptionGroupMemberships: S.optional(__S(1410, __c44, 2)),
           PreferredBackupWindow: S.optional(S.String),
           PreferredMaintenanceWindow: S.optional(S.String),
           UpgradeRolloutOrder: S.optional(S.String),
           ReplicationSourceIdentifier: S.optional(S.String),
-          ReadReplicaIdentifiers: S.optional(__S(92, __c11, 4)),
-          StatusInfos: S.optional(__S(94, __c11, 6)),
-          DBClusterMembers: S.optional(__S(96, __c12, 0)),
-          VpcSecurityGroups: S.optional(__S(53, __c6, 5)),
+          ReadReplicaIdentifiers: S.optional(__S(1411, __c44, 3)),
+          StatusInfos: S.optional(__S(1413, __c44, 5)),
+          DBClusterMembers: S.optional(__S(1415, __c44, 7)),
+          VpcSecurityGroups: S.optional(__S(929, __c29, 1)),
           HostedZoneId: S.optional(S.String),
           StorageEncrypted: S.optional(S.Boolean),
           StorageEncryptionType: S.optional(S.String),
           KmsKeyId: S.optional(S.String),
           DbClusterResourceId: S.optional(S.String),
           DBClusterArn: S.optional(S.String),
-          AssociatedRoles: S.optional(__S(98, __c12, 2)),
+          AssociatedRoles: S.optional(__S(1417, __c44, 9)),
           IAMDatabaseAuthenticationEnabled: S.optional(S.Boolean),
           CloneGroupId: S.optional(S.String),
           ClusterCreateTime: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
           EarliestBacktrackTime: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
           BacktrackWindow: S.optional(S.Number),
           BacktrackConsumedChangeRecords: S.optional(S.Number),
-          EnabledCloudwatchLogsExports: S.optional(__S(76, __c9, 4)),
+          EnabledCloudwatchLogsExports: S.optional(__S(1120, __c35, 0)),
           Capacity: S.optional(S.Number),
-          PendingModifiedValues: S.optional(__S(101, __c12, 5)),
+          PendingModifiedValues: S.optional(__S(1418, __c44, 10)),
           EngineMode: S.optional(S.String),
-          ScalingConfigurationInfo: S.optional(__S(102, __c12, 6)),
-          RdsCustomClusterConfiguration: S.optional(__S(83, __c10, 3)),
+          ScalingConfigurationInfo: S.optional(__S(1419, __c44, 11)),
+          RdsCustomClusterConfiguration: S.optional(__S(1408, __c44, 0)),
           DBClusterInstanceClass: S.optional(S.String),
           StorageType: S.optional(S.String),
           Iops: S.optional(S.Number),
@@ -11545,14 +11647,14 @@ function __c13(j: number): any {
           ActivityStreamKinesisStreamName: S.optional(S.String),
           CopyTagsToSnapshot: S.optional(S.Boolean),
           CrossAccountClone: S.optional(S.Boolean),
-          DomainMemberships: S.optional(__S(104, __c13, 0)),
-          TagList: S.optional(__S(10, __c1, 2)),
+          DomainMemberships: S.optional(__S(1315, __c41, 3)),
+          TagList: S.optional(__S(225, __c7, 1)),
           GlobalClusterIdentifier: S.optional(S.String),
           GlobalWriteForwardingStatus: S.optional(S.String),
           GlobalWriteForwardingRequested: S.optional(S.Boolean),
           NetworkType: S.optional(S.String),
           AutomaticRestartTime: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-          ServerlessV2ScalingConfiguration: S.optional(__S(105, __c13, 1)),
+          ServerlessV2ScalingConfiguration: S.optional(__S(1420, __c44, 12)),
           ServerlessV2PlatformVersion: S.optional(S.String),
           MonitoringInterval: S.optional(S.Number),
           MonitoringRoleArn: S.optional(S.String),
@@ -11561,37 +11663,84 @@ function __c13(j: number): any {
           PerformanceInsightsKMSKeyId: S.optional(S.String),
           PerformanceInsightsRetentionPeriod: S.optional(S.Number),
           DBSystemId: S.optional(S.String),
-          MasterUserSecret: S.optional(__S(106, __c13, 2)),
+          MasterUserSecret: S.optional(__S(1280, __c40, 0)),
           LocalWriteForwardingStatus: S.optional(S.String),
           AwsBackupRecoveryPointArn: S.optional(S.String),
-          LimitlessDatabase: S.optional(__S(107, __c13, 3)),
+          LimitlessDatabase: S.optional(__S(1421, __c44, 13)),
           ClusterScalabilityType: S.optional(S.String),
-          CertificateDetails: S.optional(__S(100, __c12, 4)),
+          CertificateDetails: S.optional(__S(1313, __c41, 1)),
           EngineLifecycleSupport: S.optional(S.String),
           VPCNetworkingEnabled: S.optional(S.Boolean),
           InternetAccessGatewayEnabled: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "DBCluster" });
-    case 5:
+  }
+}
+function __c45(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
-        S.Struct({ DBCluster: S.optional(__S(108, __c13, 4)) }).pipe(ns),
+        S.Struct({
+          MinCapacity: S.optional(S.Number),
+          MaxCapacity: S.optional(S.Number),
+          SecondsUntilAutoPause: S.optional(S.Number),
+        }),
       ).annotate({
-        identifier: "CreateDBClusterResult",
+        identifier: "ServerlessV2ScalingConfiguration",
       });
-    case 6:
+  }
+}
+function __c46(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          MinCapacity: S.optional(S.Number),
+          MaxCapacity: S.optional(S.Number),
+          AutoPause: S.optional(S.Boolean),
+          SecondsUntilAutoPause: S.optional(S.Number),
+          TimeoutAction: S.optional(S.String),
+          SecondsBeforeTimeout: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "ScalingConfiguration" });
+  }
+}
+function __c47(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ RoleArn: S.String, FeatureName: S.optional(S.String) }),
+      ).annotate({ identifier: "DBClusterAssociatedRole" });
+    case 1:
+      return S.Array(
+        /*@__PURE__*/ __S(1504, __c47, 0)
+          .pipe(/*@__PURE__*/ T.XmlName("DBClusterAssociatedRole"))
+          .annotate({
+            identifier: "DBClusterAssociatedRole",
+          }),
+      );
+  }
+}
+function __c48(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           DBClusterIdentifier: S.optional(S.String),
           DBClusterEndpointIdentifier: S.optional(S.String),
           EndpointType: S.optional(S.String),
-          StaticMembers: S.optional(__S(28, __c3, 4)),
-          ExcludedMembers: S.optional(__S(28, __c3, 4)),
-          Tags: S.optional(__S(10, __c1, 2)),
+          StaticMembers: S.optional(__S(480, __c15, 0)),
+          ExcludedMembers: S.optional(__S(480, __c15, 0)),
+          Tags: S.optional(__S(225, __c7, 1)),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "CreateDBClusterEndpointMessage",
       });
-    case 7:
+  }
+}
+function __c49(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           DBClusterEndpointIdentifier: S.optional(S.String),
@@ -11601,14 +11750,14 @@ function __c13(j: number): any {
           Status: S.optional(S.String),
           EndpointType: S.optional(S.String),
           CustomEndpointType: S.optional(S.String),
-          StaticMembers: S.optional(__S(28, __c3, 4)),
-          ExcludedMembers: S.optional(__S(28, __c3, 4)),
+          StaticMembers: S.optional(__S(480, __c15, 0)),
+          ExcludedMembers: S.optional(__S(480, __c15, 0)),
           DBClusterEndpointArn: S.optional(S.String),
         }).pipe(ns),
       ).annotate({ identifier: "DBClusterEndpoint" });
   }
 }
-function __c14(j: number): any {
+function __c50(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -11616,36 +11765,42 @@ function __c14(j: number): any {
           DBClusterParameterGroupName: S.optional(S.String),
           DBParameterGroupFamily: S.optional(S.String),
           Description: S.optional(S.String),
-          Tags: S.optional(__S(10, __c1, 2)),
+          Tags: S.optional(__S(225, __c7, 1)),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "CreateDBClusterParameterGroupMessage",
       });
     case 1:
       return S.suspend(() =>
-        S.Struct({ DBClusterParameterGroup: S.optional(__S(31, __c3, 7)) }).pipe(ns),
+        S.Struct({ DBClusterParameterGroup: S.optional(__S(576, __c18, 0)) }).pipe(ns),
       ).annotate({
         identifier: "CreateDBClusterParameterGroupResult",
       });
-    case 2:
+  }
+}
+function __c51(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           DBClusterSnapshotIdentifier: S.optional(S.String),
           DBClusterIdentifier: S.optional(S.String),
-          Tags: S.optional(__S(10, __c1, 2)),
+          Tags: S.optional(__S(225, __c7, 1)),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "CreateDBClusterSnapshotMessage",
       });
-    case 3:
+    case 1:
       return S.suspend(() =>
-        S.Struct({ DBClusterSnapshot: S.optional(__S(35, __c4, 3)) }).pipe(ns),
+        S.Struct({ DBClusterSnapshot: S.optional(__S(672, __c21, 0)) }).pipe(ns),
       ).annotate({
         identifier: "CreateDBClusterSnapshotResult",
       });
-    case 4:
-      return S.Array(/*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.XmlName("DBSecurityGroupName")));
-    case 5:
+  }
+}
+function __c52(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           DBName: S.optional(S.String),
@@ -11655,8 +11810,8 @@ function __c14(j: number): any {
           Engine: S.optional(S.String),
           MasterUsername: S.optional(S.String),
           MasterUserPassword: S.optional(SensitiveString),
-          DBSecurityGroups: S.optional(__S(116, __c14, 4)),
-          VpcSecurityGroupIds: S.optional(__S(81, __c10, 1)),
+          DBSecurityGroups: S.optional(__S(1824, __c57, 0)),
+          VpcSecurityGroupIds: S.optional(__S(1344, __c42, 0)),
           AvailabilityZone: S.optional(S.String),
           DBSubnetGroupName: S.optional(S.String),
           PreferredMaintenanceWindow: S.optional(S.String),
@@ -11674,7 +11829,7 @@ function __c14(j: number): any {
           CharacterSetName: S.optional(S.String),
           NcharCharacterSetName: S.optional(S.String),
           PubliclyAccessible: S.optional(S.Boolean),
-          Tags: S.optional(__S(10, __c1, 2)),
+          Tags: S.optional(__S(225, __c7, 1)),
           DBClusterIdentifier: S.optional(S.String),
           StorageType: S.optional(S.String),
           TdeCredentialArn: S.optional(S.String),
@@ -11685,7 +11840,7 @@ function __c14(j: number): any {
           DomainFqdn: S.optional(S.String),
           DomainOu: S.optional(S.String),
           DomainAuthSecretArn: S.optional(S.String),
-          DomainDnsIps: S.optional(__S(28, __c3, 4)),
+          DomainDnsIps: S.optional(__S(480, __c15, 0)),
           CopyTagsToSnapshot: S.optional(S.Boolean),
           MonitoringInterval: S.optional(S.Number),
           MonitoringRoleArn: S.optional(S.String),
@@ -11697,8 +11852,8 @@ function __c14(j: number): any {
           EnablePerformanceInsights: S.optional(S.Boolean),
           PerformanceInsightsKMSKeyId: S.optional(S.String),
           PerformanceInsightsRetentionPeriod: S.optional(S.Number),
-          EnableCloudwatchLogsExports: S.optional(__S(76, __c9, 4)),
-          ProcessorFeatures: S.optional(__S(42, __c5, 2)),
+          EnableCloudwatchLogsExports: S.optional(__S(1120, __c35, 0)),
+          ProcessorFeatures: S.optional(__S(833, __c26, 1)),
           DeletionProtection: S.optional(S.Boolean),
           MaxAllocatedStorage: S.optional(S.Number),
           EnableCustomerOwnedIp: S.optional(S.Boolean),
@@ -11712,74 +11867,94 @@ function __c14(j: number): any {
           MultiTenant: S.optional(S.Boolean),
           DedicatedLogVolume: S.optional(S.Boolean),
           EngineLifecycleSupport: S.optional(S.String),
-          AdditionalStorageVolumes: S.optional(__S(44, __c5, 4)),
-          TagSpecifications: S.optional(__S(86, __c10, 6)),
+          AdditionalStorageVolumes: S.optional(__S(801, __c25, 1)),
+          TagSpecifications: S.optional(__S(1377, __c43, 1)),
           MasterUserAuthenticationType: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "CreateDBInstanceMessage" });
-    case 6:
+    case 1:
       return S.suspend(() =>
-        S.Struct({
-          Address: S.optional(S.String),
-          Port: S.optional(S.Number),
-          HostedZoneId: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Endpoint" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          DBParameterGroupName: S.optional(S.String),
-          ParameterApplyStatus: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "DBParameterGroupStatus" });
+        S.Struct({ DBInstance: S.optional(__S(1805, __c56, 13)) }).pipe(ns),
+      ).annotate({ identifier: "CreateDBInstanceResult" });
   }
 }
-function __c15(j: number): any {
+function __c53(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(
-        /*@__PURE__*/ __S(119, __c14, 7)
-          .pipe(/*@__PURE__*/ T.XmlName("DBParameterGroup"))
-          .annotate({
-            identifier: "DBParameterGroupStatus",
-          }),
-      );
-    case 1:
       return S.suspend(() => S.Struct({ Name: S.optional(S.String) })).annotate({
         identifier: "AvailabilityZone",
       });
-    case 2:
+  }
+}
+function __c54(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() => S.Struct({ Arn: S.optional(S.String) })).annotate({
         identifier: "Outpost",
       });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           SubnetIdentifier: S.optional(S.String),
-          SubnetAvailabilityZone: S.optional(__S(121, __c15, 1)),
-          SubnetOutpost: S.optional(__S(122, __c15, 2)),
+          SubnetAvailabilityZone: S.optional(__S(1696, __c53, 0)),
+          SubnetOutpost: S.optional(__S(1728, __c54, 0)),
           SubnetStatus: S.optional(S.String),
         }),
       ).annotate({ identifier: "Subnet" });
-    case 4:
+    case 2:
       return S.Array(
-        /*@__PURE__*/ __S(123, __c15, 3).pipe(/*@__PURE__*/ T.XmlName("Subnet")).annotate({
-          identifier: "Subnet",
-        }),
+        /*@__PURE__*/ __S(1729, __c54, 1)
+          .pipe(/*@__PURE__*/ T.XmlName("Subnet"))
+          .annotate({ identifier: "Subnet" }),
       );
-    case 5:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           DBSubnetGroupName: S.optional(S.String),
           DBSubnetGroupDescription: S.optional(S.String),
           VpcId: S.optional(S.String),
           SubnetGroupStatus: S.optional(S.String),
-          Subnets: S.optional(__S(124, __c15, 4)),
+          Subnets: S.optional(__S(1730, __c54, 2)),
           DBSubnetGroupArn: S.optional(S.String),
-          SupportedNetworkTypes: S.optional(__S(28, __c3, 4)),
+          SupportedNetworkTypes: S.optional(__S(480, __c15, 0)),
         }),
       ).annotate({ identifier: "DBSubnetGroup" });
-    case 6:
+  }
+}
+function __c55(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ DBInstanceAutomatedBackupsArn: S.optional(S.String) }),
+      ).annotate({
+        identifier: "DBInstanceAutomatedBackupsReplication",
+      });
+    case 1:
+      return S.Array(
+        /*@__PURE__*/ __S(1760, __c55, 0)
+          .pipe(/*@__PURE__*/ T.XmlName("DBInstanceAutomatedBackupsReplication"))
+          .annotate({ identifier: "DBInstanceAutomatedBackupsReplication" }),
+      );
+  }
+}
+function __c56(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          DBParameterGroupName: S.optional(S.String),
+          ParameterApplyStatus: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "DBParameterGroupStatus" });
+    case 1:
+      return S.Array(
+        /*@__PURE__*/ __S(1792, __c56, 0)
+          .pipe(/*@__PURE__*/ T.XmlName("DBParameterGroup"))
+          .annotate({
+            identifier: "DBParameterGroupStatus",
+          }),
+      );
+    case 2:
       return S.suspend(() =>
         S.Struct({
           DBInstanceClass: S.optional(S.String),
@@ -11796,8 +11971,8 @@ function __c15(j: number): any {
           StorageType: S.optional(S.String),
           CACertificateIdentifier: S.optional(S.String),
           DBSubnetGroupName: S.optional(S.String),
-          PendingCloudwatchLogsExports: S.optional(__S(99, __c12, 3)),
-          ProcessorFeatures: S.optional(__S(42, __c5, 2)),
+          PendingCloudwatchLogsExports: S.optional(__S(1312, __c41, 0)),
+          ProcessorFeatures: S.optional(__S(833, __c26, 1)),
           AutomationMode: S.optional(S.String),
           ResumeFullAutomationModeTime: S.optional(
             T.DateFromString.pipe(T.TimestampFormat("date-time")),
@@ -11806,34 +11981,30 @@ function __c15(j: number): any {
           IAMDatabaseAuthenticationEnabled: S.optional(S.Boolean),
           DedicatedLogVolume: S.optional(S.Boolean),
           Engine: S.optional(S.String),
-          AdditionalStorageVolumes: S.optional(__S(44, __c5, 4)),
+          AdditionalStorageVolumes: S.optional(__S(801, __c25, 1)),
         }),
       ).annotate({ identifier: "PendingModifiedValues" });
-    case 7:
+    case 3:
       return S.Array(
         /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.XmlName("ReadReplicaDBInstanceIdentifier")),
       );
-  }
-}
-function __c16(j: number): any {
-  switch (j) {
-    case 0:
+    case 4:
       return S.Array(
         /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.XmlName("ReadReplicaDBClusterIdentifier")),
       );
-    case 1:
+    case 5:
       return S.suspend(() =>
         S.Struct({ OptionGroupName: S.optional(S.String), Status: S.optional(S.String) }),
       ).annotate({ identifier: "OptionGroupMembership" });
-    case 2:
+    case 6:
       return S.Array(
-        /*@__PURE__*/ __S(129, __c16, 1)
+        /*@__PURE__*/ __S(1797, __c56, 5)
           .pipe(/*@__PURE__*/ T.XmlName("OptionGroupMembership"))
           .annotate({
             identifier: "OptionGroupMembership",
           }),
       );
-    case 3:
+    case 7:
       return S.suspend(() =>
         S.Struct({
           StatusType: S.optional(S.String),
@@ -11842,15 +12013,15 @@ function __c16(j: number): any {
           Message: S.optional(S.String),
         }),
       ).annotate({ identifier: "DBInstanceStatusInfo" });
-    case 4:
+    case 8:
       return S.Array(
-        /*@__PURE__*/ __S(131, __c16, 3)
+        /*@__PURE__*/ __S(1799, __c56, 7)
           .pipe(/*@__PURE__*/ T.XmlName("DBInstanceStatusInfo"))
           .annotate({
             identifier: "DBInstanceStatusInfo",
           }),
       );
-    case 5:
+    case 9:
       return S.suspend(() =>
         S.Struct({
           RoleArn: S.optional(S.String),
@@ -11858,29 +12029,13 @@ function __c16(j: number): any {
           Status: S.optional(S.String),
         }),
       ).annotate({ identifier: "DBInstanceRole" });
-    case 6:
+    case 10:
       return S.Array(
-        /*@__PURE__*/ __S(133, __c16, 5).pipe(/*@__PURE__*/ T.XmlName("DBInstanceRole")).annotate({
+        /*@__PURE__*/ __S(1801, __c56, 9).pipe(/*@__PURE__*/ T.XmlName("DBInstanceRole")).annotate({
           identifier: "DBInstanceRole",
         }),
       );
-    case 7:
-      return S.suspend(() =>
-        S.Struct({ DBInstanceAutomatedBackupsArn: S.optional(S.String) }),
-      ).annotate({
-        identifier: "DBInstanceAutomatedBackupsReplication",
-      });
-  }
-}
-function __c17(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(
-        /*@__PURE__*/ __S(135, __c16, 7)
-          .pipe(/*@__PURE__*/ T.XmlName("DBInstanceAutomatedBackupsReplication"))
-          .annotate({ identifier: "DBInstanceAutomatedBackupsReplication" }),
-      );
-    case 1:
+    case 11:
       return S.suspend(() =>
         S.Struct({
           VolumeName: S.optional(S.String),
@@ -11896,9 +12051,9 @@ function __c17(j: number): any {
       ).annotate({
         identifier: "AdditionalStorageVolumeOutput",
       });
-    case 2:
-      return S.Array(__S(137, __c17, 1));
-    case 3:
+    case 12:
+      return S.Array(__S(1803, __c56, 11));
+    case 13:
       return S.suspend(() =>
         S.Struct({
           DBInstanceIdentifier: S.optional(S.String),
@@ -11912,31 +12067,31 @@ function __c17(j: number): any {
           InstanceCreateTime: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
           PreferredBackupWindow: S.optional(S.String),
           BackupRetentionPeriod: S.optional(S.Number),
-          DBSecurityGroups: S.optional(__S(51, __c6, 3)),
-          VpcSecurityGroups: S.optional(__S(53, __c6, 5)),
-          DBParameterGroups: S.optional(__S(120, __c15, 0)),
+          DBSecurityGroups: S.optional(__S(961, __c30, 1)),
+          VpcSecurityGroups: S.optional(__S(929, __c29, 1)),
+          DBParameterGroups: S.optional(__S(1793, __c56, 1)),
           AvailabilityZone: S.optional(S.String),
-          DBSubnetGroup: S.optional(__S(125, __c15, 5)),
+          DBSubnetGroup: S.optional(__S(1731, __c54, 3)),
           PreferredMaintenanceWindow: S.optional(S.String),
           UpgradeRolloutOrder: S.optional(S.String),
-          PendingModifiedValues: S.optional(__S(126, __c15, 6)),
+          PendingModifiedValues: S.optional(__S(1794, __c56, 2)),
           LatestRestorableTime: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
           MultiAZ: S.optional(S.Boolean),
           EngineVersion: S.optional(S.String),
           AutoMinorVersionUpgrade: S.optional(S.Boolean),
           ReadReplicaSourceDBInstanceIdentifier: S.optional(S.String),
-          ReadReplicaDBInstanceIdentifiers: S.optional(__S(127, __c15, 7)),
-          ReadReplicaDBClusterIdentifiers: S.optional(__S(128, __c16, 0)),
+          ReadReplicaDBInstanceIdentifiers: S.optional(__S(1795, __c56, 3)),
+          ReadReplicaDBClusterIdentifiers: S.optional(__S(1796, __c56, 4)),
           ReplicaMode: S.optional(S.String),
           LicenseModel: S.optional(S.String),
           Iops: S.optional(S.Number),
           StorageThroughput: S.optional(S.Number),
-          OptionGroupMemberships: S.optional(__S(130, __c16, 2)),
+          OptionGroupMemberships: S.optional(__S(1798, __c56, 6)),
           CharacterSetName: S.optional(S.String),
           NcharCharacterSetName: S.optional(S.String),
           SecondaryAvailabilityZone: S.optional(S.String),
           PubliclyAccessible: S.optional(S.Boolean),
-          StatusInfos: S.optional(__S(132, __c16, 4)),
+          StatusInfos: S.optional(__S(1800, __c56, 8)),
           StorageType: S.optional(S.String),
           StorageEncryptionType: S.optional(S.String),
           TdeCredentialArn: S.optional(S.String),
@@ -11946,7 +12101,7 @@ function __c17(j: number): any {
           KmsKeyId: S.optional(S.String),
           DbiResourceId: S.optional(S.String),
           CACertificateIdentifier: S.optional(S.String),
-          DomainMemberships: S.optional(__S(104, __c13, 0)),
+          DomainMemberships: S.optional(__S(1315, __c41, 3)),
           CopyTagsToSnapshot: S.optional(S.Boolean),
           MonitoringInterval: S.optional(S.Number),
           EnhancedMonitoringResourceArn: S.optional(S.String),
@@ -11959,13 +12114,13 @@ function __c17(j: number): any {
           PerformanceInsightsEnabled: S.optional(S.Boolean),
           PerformanceInsightsKMSKeyId: S.optional(S.String),
           PerformanceInsightsRetentionPeriod: S.optional(S.Number),
-          EnabledCloudwatchLogsExports: S.optional(__S(76, __c9, 4)),
-          ProcessorFeatures: S.optional(__S(42, __c5, 2)),
+          EnabledCloudwatchLogsExports: S.optional(__S(1120, __c35, 0)),
+          ProcessorFeatures: S.optional(__S(833, __c26, 1)),
           DeletionProtection: S.optional(S.Boolean),
-          AssociatedRoles: S.optional(__S(134, __c16, 6)),
+          AssociatedRoles: S.optional(__S(1802, __c56, 10)),
           ListenerEndpoint: S.optional(Endpoint),
           MaxAllocatedStorage: S.optional(S.Number),
-          TagList: S.optional(__S(10, __c1, 2)),
+          TagList: S.optional(__S(225, __c7, 1)),
           AutomationMode: S.optional(S.String),
           ResumeFullAutomationModeTime: S.optional(
             T.DateFromString.pipe(T.TimestampFormat("date-time")),
@@ -11978,33 +12133,37 @@ function __c17(j: number): any {
           ActivityStreamMode: S.optional(S.String),
           ActivityStreamEngineNativeAuditFieldsIncluded: S.optional(S.Boolean),
           AwsBackupRecoveryPointArn: S.optional(S.String),
-          DBInstanceAutomatedBackupsReplications: S.optional(__S(136, __c17, 0)),
+          DBInstanceAutomatedBackupsReplications: S.optional(__S(1761, __c55, 1)),
           BackupTarget: S.optional(S.String),
           AutomaticRestartTime: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
           CustomIamInstanceProfile: S.optional(S.String),
           ActivityStreamPolicyStatus: S.optional(S.String),
-          CertificateDetails: S.optional(__S(100, __c12, 4)),
+          CertificateDetails: S.optional(__S(1313, __c41, 1)),
           DBSystemId: S.optional(S.String),
-          MasterUserSecret: S.optional(__S(106, __c13, 2)),
+          MasterUserSecret: S.optional(__S(1280, __c40, 0)),
           ReadReplicaSourceDBClusterIdentifier: S.optional(S.String),
           PercentProgress: S.optional(S.String),
           MultiTenant: S.optional(S.Boolean),
           DedicatedLogVolume: S.optional(S.Boolean),
           IsStorageConfigUpgradeAvailable: S.optional(S.Boolean),
           EngineLifecycleSupport: S.optional(S.String),
-          AdditionalStorageVolumes: S.optional(__S(138, __c17, 2)),
+          AdditionalStorageVolumes: S.optional(__S(1804, __c56, 12)),
           StorageVolumeStatus: S.optional(S.String),
           StorageOperationStatus: S.optional(S.String),
           StorageOperationPercentProgress: S.optional(S.Number),
         }),
       ).annotate({ identifier: "DBInstance" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({ DBInstance: S.optional(__S(139, __c17, 3)) }).pipe(ns),
-      ).annotate({
-        identifier: "CreateDBInstanceResult",
-      });
-    case 5:
+  }
+}
+function __c57(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(/*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.XmlName("DBSecurityGroupName")));
+  }
+}
+function __c58(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           DBInstanceIdentifier: S.optional(S.String),
@@ -12019,9 +12178,9 @@ function __c17(j: number): any {
           OptionGroupName: S.optional(S.String),
           DBParameterGroupName: S.optional(S.String),
           PubliclyAccessible: S.optional(S.Boolean),
-          Tags: S.optional(__S(10, __c1, 2)),
+          Tags: S.optional(__S(225, __c7, 1)),
           DBSubnetGroupName: S.optional(S.String),
-          VpcSecurityGroupIds: S.optional(__S(81, __c10, 1)),
+          VpcSecurityGroupIds: S.optional(__S(1344, __c42, 0)),
           StorageType: S.optional(S.String),
           CopyTagsToSnapshot: S.optional(S.Boolean),
           MonitoringInterval: S.optional(S.Number),
@@ -12033,8 +12192,8 @@ function __c17(j: number): any {
           EnablePerformanceInsights: S.optional(S.Boolean),
           PerformanceInsightsKMSKeyId: S.optional(S.String),
           PerformanceInsightsRetentionPeriod: S.optional(S.Number),
-          EnableCloudwatchLogsExports: S.optional(__S(76, __c9, 4)),
-          ProcessorFeatures: S.optional(__S(42, __c5, 2)),
+          EnableCloudwatchLogsExports: S.optional(__S(1120, __c35, 0)),
+          ProcessorFeatures: S.optional(__S(833, __c26, 1)),
           UseDefaultProcessorFeatures: S.optional(S.Boolean),
           DeletionProtection: S.optional(S.Boolean),
           Domain: S.optional(S.String),
@@ -12042,7 +12201,7 @@ function __c17(j: number): any {
           DomainFqdn: S.optional(S.String),
           DomainOu: S.optional(S.String),
           DomainAuthSecretArn: S.optional(S.String),
-          DomainDnsIps: S.optional(__S(28, __c3, 4)),
+          DomainDnsIps: S.optional(__S(480, __c15, 0)),
           ReplicaMode: S.optional(S.String),
           EnableCustomerOwnedIp: S.optional(S.Boolean),
           NetworkType: S.optional(S.String),
@@ -12054,71 +12213,70 @@ function __c17(j: number): any {
           DedicatedLogVolume: S.optional(S.Boolean),
           UpgradeStorageConfig: S.optional(S.Boolean),
           CACertificateIdentifier: S.optional(S.String),
-          AdditionalStorageVolumes: S.optional(__S(44, __c5, 4)),
-          TagSpecifications: S.optional(__S(86, __c10, 6)),
+          AdditionalStorageVolumes: S.optional(__S(801, __c25, 1)),
+          TagSpecifications: S.optional(__S(1377, __c43, 1)),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "CreateDBInstanceReadReplicaMessage",
       });
-    case 6:
+    case 1:
       return S.suspend(() =>
-        S.Struct({ DBInstance: S.optional(__S(139, __c17, 3)) }).pipe(ns),
+        S.Struct({ DBInstance: S.optional(__S(1805, __c56, 13)) }).pipe(ns),
       ).annotate({
         identifier: "CreateDBInstanceReadReplicaResult",
       });
-    case 7:
+  }
+}
+function __c59(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           DBParameterGroupName: S.optional(S.String),
           DBParameterGroupFamily: S.optional(S.String),
           Description: S.optional(S.String),
-          Tags: S.optional(__S(10, __c1, 2)),
+          Tags: S.optional(__S(225, __c7, 1)),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "CreateDBParameterGroupMessage",
       });
-  }
-}
-function __c18(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
-        S.Struct({ DBParameterGroup: S.optional(__S(38, __c4, 6)) }).pipe(ns),
+        S.Struct({ DBParameterGroup: S.optional(__S(736, __c23, 0)) }).pipe(ns),
       ).annotate({
         identifier: "CreateDBParameterGroupResult",
       });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          Description: S.optional(S.String),
-          UserName: S.optional(S.String),
-          AuthScheme: S.optional(S.String),
-          SecretArn: S.optional(S.String),
-          IAMAuth: S.optional(S.String),
-          ClientPasswordAuthType: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "UserAuthConfig" });
-    case 2:
-      return S.Array(__S(145, __c18, 1));
-    case 3:
+  }
+}
+function __c60(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           DBProxyName: S.optional(S.String),
           EngineFamily: S.optional(S.String),
           DefaultAuthScheme: S.optional(S.String),
-          Auth: S.optional(__S(146, __c18, 2)),
+          Auth: S.optional(__S(1985, __c62, 1)),
           RoleArn: S.optional(S.String),
-          VpcSubnetIds: S.optional(__S(28, __c3, 4)),
-          VpcSecurityGroupIds: S.optional(__S(28, __c3, 4)),
+          VpcSubnetIds: S.optional(__S(480, __c15, 0)),
+          VpcSecurityGroupIds: S.optional(__S(480, __c15, 0)),
           RequireTLS: S.optional(S.Boolean),
           IdleClientTimeout: S.optional(S.Number),
           DebugLogging: S.optional(S.Boolean),
-          Tags: S.optional(__S(10, __c1, 2)),
+          Tags: S.optional(__S(225, __c7, 1)),
           EndpointNetworkType: S.optional(S.String),
           TargetConnectionNetworkType: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "CreateDBProxyRequest" });
-    case 4:
+    case 1:
+      return S.suspend(() =>
+        S.Struct({ DBProxy: S.optional(__S(1954, __c61, 2)) }).pipe(ns),
+      ).annotate({ identifier: "CreateDBProxyResponse" });
+  }
+}
+function __c61(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           Description: S.optional(S.String),
@@ -12129,9 +12287,9 @@ function __c18(j: number): any {
           ClientPasswordAuthType: S.optional(S.String),
         }),
       ).annotate({ identifier: "UserAuthConfigInfo" });
-    case 5:
-      return S.Array(__S(148, __c18, 4));
-    case 6:
+    case 1:
+      return S.Array(__S(1952, __c61, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           DBProxyName: S.optional(S.String),
@@ -12139,10 +12297,10 @@ function __c18(j: number): any {
           Status: S.optional(S.String),
           EngineFamily: S.optional(S.String),
           VpcId: S.optional(S.String),
-          VpcSecurityGroupIds: S.optional(__S(28, __c3, 4)),
-          VpcSubnetIds: S.optional(__S(28, __c3, 4)),
+          VpcSecurityGroupIds: S.optional(__S(480, __c15, 0)),
+          VpcSubnetIds: S.optional(__S(480, __c15, 0)),
           DefaultAuthScheme: S.optional(S.String),
-          Auth: S.optional(__S(149, __c18, 5)),
+          Auth: S.optional(__S(1953, __c61, 1)),
           RoleArn: S.optional(S.String),
           Endpoint: S.optional(S.String),
           RequireTLS: S.optional(S.Boolean),
@@ -12154,25 +12312,36 @@ function __c18(j: number): any {
           TargetConnectionNetworkType: S.optional(S.String),
         }),
       ).annotate({ identifier: "DBProxy" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({ DBProxy: S.optional(__S(150, __c18, 6)) }).pipe(ns),
-      ).annotate({
-        identifier: "CreateDBProxyResponse",
-      });
   }
 }
-function __c19(j: number): any {
+function __c62(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          Description: S.optional(S.String),
+          UserName: S.optional(S.String),
+          AuthScheme: S.optional(S.String),
+          SecretArn: S.optional(S.String),
+          IAMAuth: S.optional(S.String),
+          ClientPasswordAuthType: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "UserAuthConfig" });
+    case 1:
+      return S.Array(__S(1984, __c62, 0));
+  }
+}
+function __c63(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           DBProxyName: S.optional(S.String),
           DBProxyEndpointName: S.optional(S.String),
-          VpcSubnetIds: S.optional(__S(28, __c3, 4)),
-          VpcSecurityGroupIds: S.optional(__S(28, __c3, 4)),
+          VpcSubnetIds: S.optional(__S(480, __c15, 0)),
+          VpcSecurityGroupIds: S.optional(__S(480, __c15, 0)),
           TargetRole: S.optional(S.String),
-          Tags: S.optional(__S(10, __c1, 2)),
+          Tags: S.optional(__S(225, __c7, 1)),
           EndpointNetworkType: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
@@ -12180,14 +12349,24 @@ function __c19(j: number): any {
       });
     case 1:
       return S.suspend(() =>
+        S.Struct({ DBProxyEndpoint: S.optional(__S(2048, __c64, 0)) }).pipe(ns),
+      ).annotate({
+        identifier: "CreateDBProxyEndpointResponse",
+      });
+  }
+}
+function __c64(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
         S.Struct({
           DBProxyEndpointName: S.optional(S.String),
           DBProxyEndpointArn: S.optional(S.String),
           DBProxyName: S.optional(S.String),
           Status: S.optional(S.String),
           VpcId: S.optional(S.String),
-          VpcSecurityGroupIds: S.optional(__S(28, __c3, 4)),
-          VpcSubnetIds: S.optional(__S(28, __c3, 4)),
+          VpcSecurityGroupIds: S.optional(__S(480, __c15, 0)),
+          VpcSubnetIds: S.optional(__S(480, __c15, 0)),
           Endpoint: S.optional(S.String),
           CreatedDate: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
           TargetRole: S.optional(S.String),
@@ -12195,29 +12374,31 @@ function __c19(j: number): any {
           EndpointNetworkType: S.optional(S.String),
         }),
       ).annotate({ identifier: "DBProxyEndpoint" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({ DBProxyEndpoint: S.optional(__S(153, __c19, 1)) }).pipe(ns),
-      ).annotate({
-        identifier: "CreateDBProxyEndpointResponse",
-      });
-    case 3:
+  }
+}
+function __c65(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           DBSecurityGroupName: S.optional(S.String),
           DBSecurityGroupDescription: S.optional(S.String),
-          Tags: S.optional(__S(10, __c1, 2)),
+          Tags: S.optional(__S(225, __c7, 1)),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "CreateDBSecurityGroupMessage",
       });
-    case 4:
+    case 1:
       return S.suspend(() =>
-        S.Struct({ DBSecurityGroup: S.optional(__S(23, __c2, 7)) }).pipe(ns),
+        S.Struct({ DBSecurityGroup: S.optional(__S(356, __c11, 4)) }).pipe(ns),
       ).annotate({
         identifier: "CreateDBSecurityGroupResult",
       });
-    case 5:
+  }
+}
+function __c66(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           DBShardGroupIdentifier: S.optional(S.String),
@@ -12226,12 +12407,16 @@ function __c19(j: number): any {
           MaxACU: S.optional(S.Number),
           MinACU: S.optional(S.Number),
           PubliclyAccessible: S.optional(S.Boolean),
-          Tags: S.optional(__S(10, __c1, 2)),
+          Tags: S.optional(__S(225, __c7, 1)),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "CreateDBShardGroupMessage",
       });
-    case 6:
+  }
+}
+function __c67(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           DBShardGroupResourceId: S.optional(S.String),
@@ -12244,67 +12429,81 @@ function __c19(j: number): any {
           PubliclyAccessible: S.optional(S.Boolean),
           Endpoint: S.optional(S.String),
           DBShardGroupArn: S.optional(S.String),
-          TagList: S.optional(__S(10, __c1, 2)),
+          TagList: S.optional(__S(225, __c7, 1)),
         }).pipe(ns),
       ).annotate({ identifier: "DBShardGroup" });
-    case 7:
+  }
+}
+function __c68(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           DBSnapshotIdentifier: S.optional(S.String),
           DBInstanceIdentifier: S.optional(S.String),
-          Tags: S.optional(__S(10, __c1, 2)),
+          Tags: S.optional(__S(225, __c7, 1)),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "CreateDBSnapshotMessage" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({ DBSnapshot: S.optional(__S(864, __c27, 0)) }).pipe(ns),
+      ).annotate({ identifier: "CreateDBSnapshotResult" });
   }
 }
-function __c20(j: number): any {
+function __c69(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() =>
-        S.Struct({ DBSnapshot: S.optional(__S(45, __c5, 5)) }).pipe(ns),
-      ).annotate({
-        identifier: "CreateDBSnapshotResult",
-      });
-    case 1:
-      return S.Array(/*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.XmlName("SubnetIdentifier")));
-    case 2:
       return S.suspend(() =>
         S.Struct({
           DBSubnetGroupName: S.optional(S.String),
           DBSubnetGroupDescription: S.optional(S.String),
-          SubnetIds: S.optional(__S(161, __c20, 1)),
-          Tags: S.optional(__S(10, __c1, 2)),
+          SubnetIds: S.optional(__S(2240, __c70, 0)),
+          Tags: S.optional(__S(225, __c7, 1)),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "CreateDBSubnetGroupMessage",
       });
-    case 3:
+    case 1:
       return S.suspend(() =>
-        S.Struct({ DBSubnetGroup: S.optional(__S(125, __c15, 5)) }).pipe(ns),
+        S.Struct({ DBSubnetGroup: S.optional(__S(1731, __c54, 3)) }).pipe(ns),
       ).annotate({
         identifier: "CreateDBSubnetGroupResult",
       });
-    case 4:
+  }
+}
+function __c70(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(/*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.XmlName("SubnetIdentifier")));
+  }
+}
+function __c71(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           SubscriptionName: S.optional(S.String),
           SnsTopicArn: S.optional(S.String),
           SourceType: S.optional(S.String),
-          EventCategories: S.optional(__S(6, __c0, 6)),
-          SourceIds: S.optional(__S(5, __c0, 5)),
+          EventCategories: S.optional(__S(128, __c4, 0)),
+          SourceIds: S.optional(__S(160, __c5, 0)),
           Enabled: S.optional(S.Boolean),
-          Tags: S.optional(__S(10, __c1, 2)),
+          Tags: S.optional(__S(225, __c7, 1)),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "CreateEventSubscriptionMessage",
       });
-    case 5:
+    case 1:
       return S.suspend(() =>
-        S.Struct({ EventSubscription: S.optional(__S(7, __c0, 7)) }).pipe(ns),
+        S.Struct({ EventSubscription: S.optional(__S(161, __c5, 1)) }).pipe(ns),
       ).annotate({
         identifier: "CreateEventSubscriptionResult",
       });
-    case 6:
+  }
+}
+function __c72(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           GlobalClusterIdentifier: S.optional(S.String),
@@ -12315,36 +12514,42 @@ function __c20(j: number): any {
           DeletionProtection: S.optional(S.Boolean),
           DatabaseName: S.optional(S.String),
           StorageEncrypted: S.optional(S.Boolean),
-          Tags: S.optional(__S(10, __c1, 2)),
+          Tags: S.optional(__S(225, __c7, 1)),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "CreateGlobalClusterMessage",
       });
-    case 7:
-      return S.Array(S.String);
+    case 1:
+      return S.suspend(() =>
+        S.Struct({ GlobalCluster: S.optional(__S(2340, __c73, 4)) }).pipe(ns),
+      ).annotate({
+        identifier: "CreateGlobalClusterResult",
+      });
   }
 }
-function __c21(j: number): any {
+function __c73(j: number): any {
   switch (j) {
     case 0:
+      return S.Array(S.String);
+    case 1:
       return S.suspend(() =>
         S.Struct({
           DBClusterArn: S.optional(S.String),
-          Readers: S.optional(__S(167, __c20, 7)),
+          Readers: S.optional(__S(2336, __c73, 0)),
           IsWriter: S.optional(S.Boolean),
           GlobalWriteForwardingStatus: S.optional(S.String),
           SynchronizationStatus: S.optional(S.String),
         }),
       ).annotate({ identifier: "GlobalClusterMember" });
-    case 1:
+    case 2:
       return S.Array(
-        /*@__PURE__*/ __S(168, __c21, 0)
+        /*@__PURE__*/ __S(2337, __c73, 1)
           .pipe(/*@__PURE__*/ T.XmlName("GlobalClusterMember"))
           .annotate({
             identifier: "GlobalClusterMember",
           }),
       );
-    case 2:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           Status: S.optional(S.String),
@@ -12353,7 +12558,7 @@ function __c21(j: number): any {
           IsDataLossAllowed: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "FailoverState" });
-    case 3:
+    case 4:
       return S.suspend(() =>
         S.Struct({
           GlobalClusterIdentifier: S.optional(S.String),
@@ -12367,50 +12572,48 @@ function __c21(j: number): any {
           StorageEncrypted: S.optional(S.Boolean),
           StorageEncryptionType: S.optional(S.String),
           DeletionProtection: S.optional(S.Boolean),
-          GlobalClusterMembers: S.optional(__S(169, __c21, 1)),
+          GlobalClusterMembers: S.optional(__S(2338, __c73, 2)),
           Endpoint: S.optional(S.String),
-          FailoverState: S.optional(__S(170, __c21, 2)),
-          TagList: S.optional(__S(10, __c1, 2)),
+          FailoverState: S.optional(__S(2339, __c73, 3)),
+          TagList: S.optional(__S(225, __c7, 1)),
         }),
       ).annotate({ identifier: "GlobalCluster" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({ GlobalCluster: S.optional(__S(171, __c21, 3)) }).pipe(ns),
-      ).annotate({
-        identifier: "CreateGlobalClusterResult",
-      });
-    case 5:
-      return S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
-    case 6:
+  }
+}
+function __c74(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           SourceArn: S.optional(S.String),
           TargetArn: S.optional(S.String),
           IntegrationName: S.optional(S.String),
           KMSKeyId: S.optional(S.String),
-          AdditionalEncryptionContext: S.optional(__S(173, __c21, 5)),
-          Tags: S.optional(__S(10, __c1, 2)),
+          AdditionalEncryptionContext: S.optional(__S(2400, __c75, 0)),
+          Tags: S.optional(__S(225, __c7, 1)),
           DataFilter: S.optional(S.String),
           Description: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "CreateIntegrationMessage" });
-    case 7:
+  }
+}
+function __c75(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
+    case 1:
       return S.suspend(() =>
         S.Struct({ ErrorCode: S.optional(S.String), ErrorMessage: S.optional(S.String) }),
       ).annotate({ identifier: "IntegrationError" });
-  }
-}
-function __c22(j: number): any {
-  switch (j) {
-    case 0:
+    case 2:
       return S.Array(
-        /*@__PURE__*/ __S(175, __c21, 7)
+        /*@__PURE__*/ __S(2401, __c75, 1)
           .pipe(/*@__PURE__*/ T.XmlName("IntegrationError"))
           .annotate({
             identifier: "IntegrationError",
           }),
       );
-    case 1:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           SourceArn: S.optional(S.String),
@@ -12418,32 +12621,38 @@ function __c22(j: number): any {
           IntegrationName: S.optional(S.String),
           IntegrationArn: S.optional(S.String),
           KMSKeyId: S.optional(S.String),
-          AdditionalEncryptionContext: S.optional(__S(173, __c21, 5)),
+          AdditionalEncryptionContext: S.optional(__S(2400, __c75, 0)),
           Status: S.optional(S.String),
-          Tags: S.optional(__S(10, __c1, 2)),
+          Tags: S.optional(__S(225, __c7, 1)),
           DataFilter: S.optional(S.String),
           Description: S.optional(S.String),
           CreateTime: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-          Errors: S.optional(__S(176, __c22, 0)),
+          Errors: S.optional(__S(2402, __c75, 2)),
         }).pipe(ns),
       ).annotate({ identifier: "Integration" });
-    case 2:
+  }
+}
+function __c76(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           OptionGroupName: S.optional(S.String),
           EngineName: S.optional(S.String),
           MajorEngineVersion: S.optional(S.String),
           OptionGroupDescription: S.optional(S.String),
-          Tags: S.optional(__S(10, __c1, 2)),
+          Tags: S.optional(__S(225, __c7, 1)),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "CreateOptionGroupMessage" });
-    case 3:
+    case 1:
       return S.suspend(() =>
-        S.Struct({ OptionGroup: S.optional(__S(56, __c7, 0)) }).pipe(ns),
-      ).annotate({
-        identifier: "CreateOptionGroupResult",
-      });
-    case 4:
+        S.Struct({ OptionGroup: S.optional(__S(996, __c31, 4)) }).pipe(ns),
+      ).annotate({ identifier: "CreateOptionGroupResult" });
+  }
+}
+function __c77(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           DBInstanceIdentifier: S.optional(S.String),
@@ -12454,12 +12663,22 @@ function __c22(j: number): any {
           NcharCharacterSetName: S.optional(S.String),
           ManageMasterUserPassword: S.optional(S.Boolean),
           MasterUserSecretKmsKeyId: S.optional(S.String),
-          Tags: S.optional(__S(10, __c1, 2)),
+          Tags: S.optional(__S(225, __c7, 1)),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "CreateTenantDatabaseMessage",
       });
-    case 5:
+    case 1:
+      return S.suspend(() =>
+        S.Struct({ TenantDatabase: S.optional(__S(2497, __c78, 1)) }).pipe(ns),
+      ).annotate({
+        identifier: "CreateTenantDatabaseResult",
+      });
+  }
+}
+function __c78(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           MasterUserPassword: S.optional(SensitiveString),
@@ -12468,7 +12687,7 @@ function __c22(j: number): any {
       ).annotate({
         identifier: "TenantDatabasePendingModifiedValues",
       });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           TenantDatabaseCreateTime: S.optional(
@@ -12484,20 +12703,14 @@ function __c22(j: number): any {
           CharacterSetName: S.optional(S.String),
           NcharCharacterSetName: S.optional(S.String),
           DeletionProtection: S.optional(S.Boolean),
-          PendingModifiedValues: S.optional(__S(181, __c22, 5)),
-          MasterUserSecret: S.optional(__S(106, __c13, 2)),
-          TagList: S.optional(__S(10, __c1, 2)),
+          PendingModifiedValues: S.optional(__S(2496, __c78, 0)),
+          MasterUserSecret: S.optional(__S(1280, __c40, 0)),
+          TagList: S.optional(__S(225, __c7, 1)),
         }),
       ).annotate({ identifier: "TenantDatabase" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({ TenantDatabase: S.optional(__S(182, __c22, 6)) }).pipe(ns),
-      ).annotate({
-        identifier: "CreateTenantDatabaseResult",
-      });
   }
 }
-function __c23(j: number): any {
+function __c79(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -12510,11 +12723,15 @@ function __c23(j: number): any {
       });
     case 1:
       return S.suspend(() =>
-        S.Struct({ BlueGreenDeployment: S.optional(__S(65, __c8, 1)) }).pipe(ns),
+        S.Struct({ BlueGreenDeployment: S.optional(__S(1060, __c33, 4)) }).pipe(ns),
       ).annotate({
         identifier: "DeleteBlueGreenDeploymentResponse",
       });
-    case 2:
+  }
+}
+function __c80(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ Engine: S.optional(S.String), EngineVersion: S.optional(S.String) }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
@@ -12522,7 +12739,11 @@ function __c23(j: number): any {
       ).annotate({
         identifier: "DeleteCustomDBEngineVersionMessage",
       });
-    case 3:
+  }
+}
+function __c81(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           DBClusterIdentifier: S.optional(S.String),
@@ -12531,13 +12752,15 @@ function __c23(j: number): any {
           DeleteAutomatedBackups: S.optional(S.Boolean),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "DeleteDBClusterMessage" });
-    case 4:
+    case 1:
       return S.suspend(() =>
-        S.Struct({ DBCluster: S.optional(__S(108, __c13, 4)) }).pipe(ns),
-      ).annotate({
-        identifier: "DeleteDBClusterResult",
-      });
-    case 5:
+        S.Struct({ DBCluster: S.optional(__S(1422, __c44, 14)) }).pipe(ns),
+      ).annotate({ identifier: "DeleteDBClusterResult" });
+  }
+}
+function __c82(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ DbClusterResourceId: S.optional(S.String) }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
@@ -12545,21 +12768,35 @@ function __c23(j: number): any {
       ).annotate({
         identifier: "DeleteDBClusterAutomatedBackupMessage",
       });
-    case 6:
+    case 1:
+      return S.suspend(() =>
+        S.Struct({ DBClusterAutomatedBackup: S.optional(__S(2688, __c84, 0)) }).pipe(ns),
+      ).annotate({
+        identifier: "DeleteDBClusterAutomatedBackupResult",
+      });
+  }
+}
+function __c83(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           EarliestTime: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
           LatestTime: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
         }),
       ).annotate({ identifier: "RestoreWindow" });
-    case 7:
+  }
+}
+function __c84(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           Engine: S.optional(S.String),
           VpcId: S.optional(S.String),
           DBClusterAutomatedBackupsArn: S.optional(S.String),
           DBClusterIdentifier: S.optional(S.String),
-          RestoreWindow: S.optional(__S(190, __c23, 6)),
+          RestoreWindow: S.optional(__S(2656, __c83, 0)),
           MasterUsername: S.optional(S.String),
           DbClusterResourceId: S.optional(S.String),
           Region: S.optional(S.String),
@@ -12575,27 +12812,21 @@ function __c23(j: number): any {
           BackupRetentionPeriod: S.optional(S.Number),
           PreferredBackupWindow: S.optional(S.String),
           EngineMode: S.optional(S.String),
-          AvailabilityZones: S.optional(__S(34, __c4, 2)),
+          AvailabilityZones: S.optional(__S(640, __c20, 0)),
           Port: S.optional(S.Number),
           KmsKeyId: S.optional(S.String),
           StorageType: S.optional(S.String),
           Iops: S.optional(S.Number),
           StorageThroughput: S.optional(S.Number),
           AwsBackupRecoveryPointArn: S.optional(S.String),
-          TagList: S.optional(__S(10, __c1, 2)),
+          TagList: S.optional(__S(225, __c7, 1)),
         }),
       ).annotate({ identifier: "DBClusterAutomatedBackup" });
   }
 }
-function __c24(j: number): any {
+function __c85(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() =>
-        S.Struct({ DBClusterAutomatedBackup: S.optional(__S(191, __c23, 7)) }).pipe(ns),
-      ).annotate({
-        identifier: "DeleteDBClusterAutomatedBackupResult",
-      });
-    case 1:
       return S.suspend(() =>
         S.Struct({ DBClusterEndpointIdentifier: S.optional(S.String) }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
@@ -12603,7 +12834,11 @@ function __c24(j: number): any {
       ).annotate({
         identifier: "DeleteDBClusterEndpointMessage",
       });
-    case 2:
+  }
+}
+function __c86(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ DBClusterParameterGroupName: S.optional(S.String) }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
@@ -12611,11 +12846,15 @@ function __c24(j: number): any {
       ).annotate({
         identifier: "DeleteDBClusterParameterGroupMessage",
       });
-    case 3:
+    case 1:
       return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
         identifier: "DeleteDBClusterParameterGroupResponse",
       });
-    case 4:
+  }
+}
+function __c87(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ DBClusterSnapshotIdentifier: S.optional(S.String) }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
@@ -12623,13 +12862,17 @@ function __c24(j: number): any {
       ).annotate({
         identifier: "DeleteDBClusterSnapshotMessage",
       });
-    case 5:
+    case 1:
       return S.suspend(() =>
-        S.Struct({ DBClusterSnapshot: S.optional(__S(35, __c4, 3)) }).pipe(ns),
+        S.Struct({ DBClusterSnapshot: S.optional(__S(672, __c21, 0)) }).pipe(ns),
       ).annotate({
         identifier: "DeleteDBClusterSnapshotResult",
       });
-    case 6:
+  }
+}
+function __c88(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           DBInstanceIdentifier: S.optional(S.String),
@@ -12638,15 +12881,13 @@ function __c24(j: number): any {
           DeleteAutomatedBackups: S.optional(S.Boolean),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "DeleteDBInstanceMessage" });
-    case 7:
+    case 1:
       return S.suspend(() =>
-        S.Struct({ DBInstance: S.optional(__S(139, __c17, 3)) }).pipe(ns),
-      ).annotate({
-        identifier: "DeleteDBInstanceResult",
-      });
+        S.Struct({ DBInstance: S.optional(__S(1805, __c56, 13)) }).pipe(ns),
+      ).annotate({ identifier: "DeleteDBInstanceResult" });
   }
 }
-function __c25(j: number): any {
+function __c89(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -12659,12 +12900,22 @@ function __c25(j: number): any {
       });
     case 1:
       return S.suspend(() =>
+        S.Struct({ DBInstanceAutomatedBackup: S.optional(__S(2880, __c90, 0)) }).pipe(ns),
+      ).annotate({
+        identifier: "DeleteDBInstanceAutomatedBackupResult",
+      });
+  }
+}
+function __c90(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
         S.Struct({
           DBInstanceArn: S.optional(S.String),
           DbiResourceId: S.optional(S.String),
           Region: S.optional(S.String),
           DBInstanceIdentifier: S.optional(S.String),
-          RestoreWindow: S.optional(__S(190, __c23, 6)),
+          RestoreWindow: S.optional(__S(2656, __c83, 0)),
           AllocatedStorage: S.optional(S.Number),
           Status: S.optional(S.String),
           Port: S.optional(S.Number),
@@ -12688,24 +12939,22 @@ function __c25(j: number): any {
           BackupRetentionPeriod: S.optional(S.Number),
           PreferredBackupWindow: S.optional(S.String),
           DBInstanceAutomatedBackupsArn: S.optional(S.String),
-          DBInstanceAutomatedBackupsReplications: S.optional(__S(136, __c17, 0)),
+          DBInstanceAutomatedBackupsReplications: S.optional(__S(1761, __c55, 1)),
           BackupTarget: S.optional(S.String),
           MultiTenant: S.optional(S.Boolean),
           AwsBackupRecoveryPointArn: S.optional(S.String),
-          TagList: S.optional(__S(10, __c1, 2)),
+          TagList: S.optional(__S(225, __c7, 1)),
           DedicatedLogVolume: S.optional(S.Boolean),
-          AdditionalStorageVolumes: S.optional(__S(44, __c5, 4)),
+          AdditionalStorageVolumes: S.optional(__S(801, __c25, 1)),
         }),
       ).annotate({
         identifier: "DBInstanceAutomatedBackup",
       });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({ DBInstanceAutomatedBackup: S.optional(__S(201, __c25, 1)) }).pipe(ns),
-      ).annotate({
-        identifier: "DeleteDBInstanceAutomatedBackupResult",
-      });
-    case 3:
+  }
+}
+function __c91(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ DBParameterGroupName: S.optional(S.String) }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
@@ -12713,23 +12962,29 @@ function __c25(j: number): any {
       ).annotate({
         identifier: "DeleteDBParameterGroupMessage",
       });
-    case 4:
+    case 1:
       return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
         identifier: "DeleteDBParameterGroupResponse",
       });
-    case 5:
+  }
+}
+function __c92(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ DBProxyName: S.optional(S.String) }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "DeleteDBProxyRequest" });
-    case 6:
+    case 1:
       return S.suspend(() =>
-        S.Struct({ DBProxy: S.optional(__S(150, __c18, 6)) }).pipe(ns),
-      ).annotate({
-        identifier: "DeleteDBProxyResponse",
-      });
-    case 7:
+        S.Struct({ DBProxy: S.optional(__S(1954, __c61, 2)) }).pipe(ns),
+      ).annotate({ identifier: "DeleteDBProxyResponse" });
+  }
+}
+function __c93(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ DBProxyEndpointName: S.optional(S.String) }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
@@ -12737,17 +12992,17 @@ function __c25(j: number): any {
       ).annotate({
         identifier: "DeleteDBProxyEndpointRequest",
       });
-  }
-}
-function __c26(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
-        S.Struct({ DBProxyEndpoint: S.optional(__S(153, __c19, 1)) }).pipe(ns),
+        S.Struct({ DBProxyEndpoint: S.optional(__S(2048, __c64, 0)) }).pipe(ns),
       ).annotate({
         identifier: "DeleteDBProxyEndpointResponse",
       });
-    case 1:
+  }
+}
+function __c94(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ DBSecurityGroupName: S.optional(S.String) }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
@@ -12755,11 +13010,15 @@ function __c26(j: number): any {
       ).annotate({
         identifier: "DeleteDBSecurityGroupMessage",
       });
-    case 2:
+    case 1:
       return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
         identifier: "DeleteDBSecurityGroupResponse",
       });
-    case 3:
+  }
+}
+function __c95(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ DBShardGroupIdentifier: S.optional(S.String) }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
@@ -12767,19 +13026,25 @@ function __c26(j: number): any {
       ).annotate({
         identifier: "DeleteDBShardGroupMessage",
       });
-    case 4:
+  }
+}
+function __c96(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ DBSnapshotIdentifier: S.optional(S.String) }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "DeleteDBSnapshotMessage" });
-    case 5:
+    case 1:
       return S.suspend(() =>
-        S.Struct({ DBSnapshot: S.optional(__S(45, __c5, 5)) }).pipe(ns),
-      ).annotate({
-        identifier: "DeleteDBSnapshotResult",
-      });
-    case 6:
+        S.Struct({ DBSnapshot: S.optional(__S(864, __c27, 0)) }).pipe(ns),
+      ).annotate({ identifier: "DeleteDBSnapshotResult" });
+  }
+}
+function __c97(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ DBSubnetGroupName: S.optional(S.String) }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
@@ -12787,13 +13052,13 @@ function __c26(j: number): any {
       ).annotate({
         identifier: "DeleteDBSubnetGroupMessage",
       });
-    case 7:
+    case 1:
       return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
         identifier: "DeleteDBSubnetGroupResponse",
       });
   }
 }
-function __c27(j: number): any {
+function __c98(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -12805,11 +13070,15 @@ function __c27(j: number): any {
       });
     case 1:
       return S.suspend(() =>
-        S.Struct({ EventSubscription: S.optional(__S(7, __c0, 7)) }).pipe(ns),
+        S.Struct({ EventSubscription: S.optional(__S(161, __c5, 1)) }).pipe(ns),
       ).annotate({
         identifier: "DeleteEventSubscriptionResult",
       });
-    case 2:
+  }
+}
+function __c99(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ GlobalClusterIdentifier: S.optional(S.String) }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
@@ -12817,29 +13086,41 @@ function __c27(j: number): any {
       ).annotate({
         identifier: "DeleteGlobalClusterMessage",
       });
-    case 3:
+    case 1:
       return S.suspend(() =>
-        S.Struct({ GlobalCluster: S.optional(__S(171, __c21, 3)) }).pipe(ns),
+        S.Struct({ GlobalCluster: S.optional(__S(2340, __c73, 4)) }).pipe(ns),
       ).annotate({
         identifier: "DeleteGlobalClusterResult",
       });
-    case 4:
+  }
+}
+function __c100(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ IntegrationIdentifier: S.optional(S.String) }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "DeleteIntegrationMessage" });
-    case 5:
+  }
+}
+function __c101(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ OptionGroupName: S.optional(S.String) }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "DeleteOptionGroupMessage" });
-    case 6:
+    case 1:
       return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
         identifier: "DeleteOptionGroupResponse",
       });
-    case 7:
+  }
+}
+function __c102(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           DBInstanceIdentifier: S.optional(S.String),
@@ -12850,32 +13131,36 @@ function __c27(j: number): any {
       ).annotate({
         identifier: "DeleteTenantDatabaseMessage",
       });
-  }
-}
-function __c28(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
-        S.Struct({ TenantDatabase: S.optional(__S(182, __c22, 6)) }).pipe(ns),
+        S.Struct({ TenantDatabase: S.optional(__S(2497, __c78, 1)) }).pipe(ns),
       ).annotate({
         identifier: "DeleteTenantDatabaseResult",
       });
-    case 1:
+  }
+}
+function __c103(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           DBProxyName: S.optional(S.String),
           TargetGroupName: S.optional(S.String),
-          DBInstanceIdentifiers: S.optional(__S(28, __c3, 4)),
-          DBClusterIdentifiers: S.optional(__S(28, __c3, 4)),
+          DBInstanceIdentifiers: S.optional(__S(480, __c15, 0)),
+          DBClusterIdentifiers: S.optional(__S(480, __c15, 0)),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "DeregisterDBProxyTargetsRequest",
       });
-    case 2:
+    case 1:
       return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
         identifier: "DeregisterDBProxyTargetsResponse",
       });
-    case 3:
+  }
+}
+function __c104(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({}).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
@@ -12883,7 +13168,7 @@ function __c28(j: number): any {
       ).annotate({
         identifier: "DescribeAccountAttributesMessage",
       });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           AccountQuotaName: S.optional(S.String),
@@ -12891,66 +13176,92 @@ function __c28(j: number): any {
           Max: S.optional(S.Number),
         }),
       ).annotate({ identifier: "AccountQuota" });
-    case 5:
+    case 2:
       return S.Array(
-        /*@__PURE__*/ __S(228, __c28, 4).pipe(/*@__PURE__*/ T.XmlName("AccountQuota")).annotate({
+        /*@__PURE__*/ __S(3329, __c104, 1).pipe(/*@__PURE__*/ T.XmlName("AccountQuota")).annotate({
           identifier: "AccountQuota",
         }),
       );
-    case 6:
+    case 3:
       return S.suspend(() =>
-        S.Struct({ AccountQuotas: S.optional(__S(229, __c28, 5)) }).pipe(ns),
+        S.Struct({ AccountQuotas: S.optional(__S(3330, __c104, 2)) }).pipe(ns),
       ).annotate({ identifier: "AccountAttributesMessage" });
-    case 7:
-      return S.Array(/*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.XmlName("Value")));
   }
 }
-function __c29(j: number): any {
+function __c105(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({ Name: S.optional(S.String), Values: S.optional(__S(231, __c28, 7)) }),
-      ).annotate({ identifier: "Filter" });
-    case 1:
-      return S.Array(
-        /*@__PURE__*/ __S(232, __c29, 0).pipe(/*@__PURE__*/ T.XmlName("Filter")).annotate({
-          identifier: "Filter",
-        }),
-      );
-    case 2:
-      return S.suspend(() =>
         S.Struct({
           BlueGreenDeploymentIdentifier: S.optional(S.String),
-          Filters: S.optional(__S(233, __c29, 1)),
+          Filters: S.optional(__S(3394, __c106, 2)),
           Marker: S.optional(S.String),
           MaxRecords: S.optional(S.Number),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "DescribeBlueGreenDeploymentsRequest",
       });
-    case 3:
-      return S.Array(__S(65, __c8, 1));
-    case 4:
+    case 1:
+      return S.Array(__S(1060, __c33, 4));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          BlueGreenDeployments: S.optional(__S(235, __c29, 3)),
+          BlueGreenDeployments: S.optional(__S(3361, __c105, 1)),
           Marker: S.optional(S.String),
         }).pipe(ns),
       ).annotate({
         identifier: "DescribeBlueGreenDeploymentsResponse",
       });
-    case 5:
+  }
+}
+function __c106(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(/*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.XmlName("Value")));
+    case 1:
+      return S.suspend(() =>
+        S.Struct({ Name: S.optional(S.String), Values: S.optional(__S(3392, __c106, 0)) }),
+      ).annotate({ identifier: "Filter" });
+    case 2:
+      return S.Array(
+        /*@__PURE__*/ __S(3393, __c106, 1)
+          .pipe(/*@__PURE__*/ T.XmlName("Filter"))
+          .annotate({ identifier: "Filter" }),
+      );
+  }
+}
+function __c107(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           CertificateIdentifier: S.optional(S.String),
-          Filters: S.optional(__S(233, __c29, 1)),
+          Filters: S.optional(__S(3394, __c106, 2)),
           MaxRecords: S.optional(S.Number),
           Marker: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "DescribeCertificatesMessage",
       });
-    case 6:
+    case 1:
+      return S.Array(
+        /*@__PURE__*/ __S(3456, __c108, 0).pipe(/*@__PURE__*/ T.XmlName("Certificate")).annotate({
+          identifier: "Certificate",
+        }),
+      );
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          DefaultCertificateForNewLaunches: S.optional(S.String),
+          Certificates: S.optional(__S(3425, __c107, 1)),
+          Marker: S.optional(S.String),
+        }).pipe(ns),
+      ).annotate({ identifier: "CertificateMessage" });
+  }
+}
+function __c108(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           CertificateIdentifier: S.optional(S.String),
@@ -12965,154 +13276,165 @@ function __c29(j: number): any {
           ),
         }),
       ).annotate({ identifier: "Certificate" });
-    case 7:
-      return S.Array(
-        /*@__PURE__*/ __S(238, __c29, 6).pipe(/*@__PURE__*/ T.XmlName("Certificate")).annotate({
-          identifier: "Certificate",
-        }),
-      );
   }
 }
-function __c30(j: number): any {
+function __c109(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          DefaultCertificateForNewLaunches: S.optional(S.String),
-          Certificates: S.optional(__S(239, __c29, 7)),
-          Marker: S.optional(S.String),
-        }).pipe(ns),
-      ).annotate({ identifier: "CertificateMessage" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
           DbClusterResourceId: S.optional(S.String),
           DBClusterIdentifier: S.optional(S.String),
-          Filters: S.optional(__S(233, __c29, 1)),
+          Filters: S.optional(__S(3394, __c106, 2)),
           MaxRecords: S.optional(S.Number),
           Marker: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "DescribeDBClusterAutomatedBackupsMessage",
       });
-    case 2:
+    case 1:
       return S.Array(
-        /*@__PURE__*/ __S(191, __c23, 7)
+        /*@__PURE__*/ __S(2688, __c84, 0)
           .pipe(/*@__PURE__*/ T.XmlName("DBClusterAutomatedBackup"))
           .annotate({
             identifier: "DBClusterAutomatedBackup",
           }),
       );
-    case 3:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           Marker: S.optional(S.String),
-          DBClusterAutomatedBackups: S.optional(__S(242, __c30, 2)),
+          DBClusterAutomatedBackups: S.optional(__S(3489, __c109, 1)),
         }).pipe(ns),
       ).annotate({
         identifier: "DBClusterAutomatedBackupMessage",
       });
-    case 4:
+  }
+}
+function __c110(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           DBClusterIdentifier: S.optional(S.String),
           BacktrackIdentifier: S.optional(S.String),
-          Filters: S.optional(__S(233, __c29, 1)),
+          Filters: S.optional(__S(3394, __c106, 2)),
           MaxRecords: S.optional(S.Number),
           Marker: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "DescribeDBClusterBacktracksMessage",
       });
-    case 5:
+    case 1:
       return S.Array(
-        /*@__PURE__*/ __S(26, __c3, 2)
+        /*@__PURE__*/ __S(416, __c13, 0)
           .pipe(/*@__PURE__*/ T.XmlName("DBClusterBacktrack"))
           .annotate({
             identifier: "DBClusterBacktrack",
           }),
       );
-    case 6:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           Marker: S.optional(S.String),
-          DBClusterBacktracks: S.optional(__S(245, __c30, 5)),
+          DBClusterBacktracks: S.optional(__S(3521, __c110, 1)),
         }).pipe(ns),
       ).annotate({
         identifier: "DBClusterBacktrackMessage",
       });
-    case 7:
+  }
+}
+function __c111(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           DBClusterIdentifier: S.optional(S.String),
           DBClusterEndpointIdentifier: S.optional(S.String),
-          Filters: S.optional(__S(233, __c29, 1)),
+          Filters: S.optional(__S(3394, __c106, 2)),
           MaxRecords: S.optional(S.Number),
           Marker: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "DescribeDBClusterEndpointsMessage",
       });
-  }
-}
-function __c31(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.Array(
-        /*@__PURE__*/ __S(111, __c13, 7)
+        /*@__PURE__*/ __S(1568, __c49, 0)
           .pipe(/*@__PURE__*/ T.XmlName("DBClusterEndpointList"))
           .annotate({
             identifier: "DBClusterEndpoint",
           }),
       );
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          Marker: S.optional(S.String),
-          DBClusterEndpoints: S.optional(__S(248, __c31, 0)),
-        }).pipe(ns),
-      ).annotate({ identifier: "DBClusterEndpointMessage" });
     case 2:
       return S.suspend(() =>
         S.Struct({
+          Marker: S.optional(S.String),
+          DBClusterEndpoints: S.optional(__S(3553, __c111, 1)),
+        }).pipe(ns),
+      ).annotate({ identifier: "DBClusterEndpointMessage" });
+  }
+}
+function __c112(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
           DBClusterParameterGroupName: S.optional(S.String),
-          Filters: S.optional(__S(233, __c29, 1)),
+          Filters: S.optional(__S(3394, __c106, 2)),
           MaxRecords: S.optional(S.Number),
           Marker: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "DescribeDBClusterParameterGroupsMessage",
       });
-    case 3:
+    case 1:
       return S.Array(
-        /*@__PURE__*/ __S(31, __c3, 7)
+        /*@__PURE__*/ __S(576, __c18, 0)
           .pipe(/*@__PURE__*/ T.XmlName("DBClusterParameterGroup"))
           .annotate({
             identifier: "DBClusterParameterGroup",
           }),
       );
-    case 4:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           Marker: S.optional(S.String),
-          DBClusterParameterGroups: S.optional(__S(251, __c31, 3)),
+          DBClusterParameterGroups: S.optional(__S(3585, __c112, 1)),
         }).pipe(ns),
       ).annotate({
         identifier: "DBClusterParameterGroupsMessage",
       });
-    case 5:
+  }
+}
+function __c113(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           DBClusterParameterGroupName: S.optional(S.String),
           Source: S.optional(S.String),
-          Filters: S.optional(__S(233, __c29, 1)),
+          Filters: S.optional(__S(3394, __c106, 2)),
           MaxRecords: S.optional(S.Number),
           Marker: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "DescribeDBClusterParametersMessage",
       });
-    case 6:
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          Parameters: S.optional(__S(3649, __c114, 1)),
+          Marker: S.optional(S.String),
+        }).pipe(ns),
+      ).annotate({
+        identifier: "DBClusterParameterGroupDetails",
+      });
+  }
+}
+function __c114(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           ParameterName: S.optional(S.String),
@@ -13125,32 +13447,24 @@ function __c31(j: number): any {
           IsModifiable: S.optional(S.Boolean),
           MinimumEngineVersion: S.optional(S.String),
           ApplyMethod: S.optional(S.String),
-          SupportedEngineModes: S.optional(__S(71, __c8, 7)),
+          SupportedEngineModes: S.optional(__S(1152, __c36, 0)),
         }),
       ).annotate({ identifier: "Parameter" });
-    case 7:
+    case 1:
       return S.Array(
-        /*@__PURE__*/ __S(254, __c31, 6).pipe(/*@__PURE__*/ T.XmlName("Parameter")).annotate({
+        /*@__PURE__*/ __S(3648, __c114, 0).pipe(/*@__PURE__*/ T.XmlName("Parameter")).annotate({
           identifier: "Parameter",
         }),
       );
   }
 }
-function __c32(j: number): any {
+function __c115(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({ Parameters: S.optional(__S(255, __c31, 7)), Marker: S.optional(S.String) }).pipe(
-          ns,
-        ),
-      ).annotate({
-        identifier: "DBClusterParameterGroupDetails",
-      });
-    case 1:
-      return S.suspend(() =>
         S.Struct({
           DBClusterIdentifier: S.optional(S.String),
-          Filters: S.optional(__S(233, __c29, 1)),
+          Filters: S.optional(__S(3394, __c106, 2)),
           MaxRecords: S.optional(S.Number),
           Marker: S.optional(S.String),
           IncludeShared: S.optional(S.Boolean),
@@ -13158,19 +13472,24 @@ function __c32(j: number): any {
       ).annotate({
         identifier: "DescribeDBClustersMessage",
       });
-    case 2:
+    case 1:
       return S.Array(
-        /*@__PURE__*/ __S(108, __c13, 4).pipe(/*@__PURE__*/ T.XmlName("DBCluster")).annotate({
+        /*@__PURE__*/ __S(1422, __c44, 14).pipe(/*@__PURE__*/ T.XmlName("DBCluster")).annotate({
           identifier: "DBCluster",
         }),
       );
-    case 3:
+    case 2:
       return S.suspend(() =>
-        S.Struct({ Marker: S.optional(S.String), DBClusters: S.optional(__S(258, __c32, 2)) }).pipe(
-          ns,
-        ),
+        S.Struct({
+          Marker: S.optional(S.String),
+          DBClusters: S.optional(__S(3681, __c115, 1)),
+        }).pipe(ns),
       ).annotate({ identifier: "DBClusterMessage" });
-    case 4:
+  }
+}
+function __c116(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ DBClusterSnapshotIdentifier: S.optional(S.String) }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
@@ -13178,53 +13497,61 @@ function __c32(j: number): any {
       ).annotate({
         identifier: "DescribeDBClusterSnapshotAttributesMessage",
       });
-    case 5:
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          DBClusterSnapshotAttributesResult: S.optional(__S(3778, __c118, 2)),
+        }).pipe(ns),
+      ).annotate({
+        identifier: "DescribeDBClusterSnapshotAttributesResult",
+      });
+  }
+}
+function __c117(j: number): any {
+  switch (j) {
+    case 0:
       return S.Array(/*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.XmlName("AttributeValue")));
-    case 6:
+  }
+}
+function __c118(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           AttributeName: S.optional(S.String),
-          AttributeValues: S.optional(__S(261, __c32, 5)),
+          AttributeValues: S.optional(__S(3744, __c117, 0)),
         }),
       ).annotate({
         identifier: "DBClusterSnapshotAttribute",
       });
-    case 7:
+    case 1:
       return S.Array(
-        /*@__PURE__*/ __S(262, __c32, 6)
+        /*@__PURE__*/ __S(3776, __c118, 0)
           .pipe(/*@__PURE__*/ T.XmlName("DBClusterSnapshotAttribute"))
           .annotate({
             identifier: "DBClusterSnapshotAttribute",
           }),
       );
-  }
-}
-function __c33(j: number): any {
-  switch (j) {
-    case 0:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           DBClusterSnapshotIdentifier: S.optional(S.String),
-          DBClusterSnapshotAttributes: S.optional(__S(263, __c32, 7)),
+          DBClusterSnapshotAttributes: S.optional(__S(3777, __c118, 1)),
         }),
       ).annotate({
         identifier: "DBClusterSnapshotAttributesResult",
       });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          DBClusterSnapshotAttributesResult: S.optional(__S(264, __c33, 0)),
-        }).pipe(ns),
-      ).annotate({
-        identifier: "DescribeDBClusterSnapshotAttributesResult",
-      });
-    case 2:
+  }
+}
+function __c119(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           DBClusterIdentifier: S.optional(S.String),
           DBClusterSnapshotIdentifier: S.optional(S.String),
           SnapshotType: S.optional(S.String),
-          Filters: S.optional(__S(233, __c29, 1)),
+          Filters: S.optional(__S(3394, __c106, 2)),
           MaxRecords: S.optional(S.Number),
           Marker: S.optional(S.String),
           IncludeShared: S.optional(S.Boolean),
@@ -13234,26 +13561,32 @@ function __c33(j: number): any {
       ).annotate({
         identifier: "DescribeDBClusterSnapshotsMessage",
       });
-    case 3:
+    case 1:
       return S.Array(
-        /*@__PURE__*/ __S(35, __c4, 3).pipe(/*@__PURE__*/ T.XmlName("DBClusterSnapshot")).annotate({
-          identifier: "DBClusterSnapshot",
-        }),
+        /*@__PURE__*/ __S(672, __c21, 0)
+          .pipe(/*@__PURE__*/ T.XmlName("DBClusterSnapshot"))
+          .annotate({
+            identifier: "DBClusterSnapshot",
+          }),
       );
-    case 4:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           Marker: S.optional(S.String),
-          DBClusterSnapshots: S.optional(__S(267, __c33, 3)),
+          DBClusterSnapshots: S.optional(__S(3809, __c119, 1)),
         }).pipe(ns),
       ).annotate({ identifier: "DBClusterSnapshotMessage" });
-    case 5:
+  }
+}
+function __c120(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           Engine: S.optional(S.String),
           EngineVersion: S.optional(S.String),
           DBParameterGroupFamily: S.optional(S.String),
-          Filters: S.optional(__S(233, __c29, 1)),
+          Filters: S.optional(__S(3394, __c106, 2)),
           MaxRecords: S.optional(S.Number),
           Marker: S.optional(S.String),
           DefaultOnly: S.optional(S.Boolean),
@@ -13264,29 +13597,31 @@ function __c33(j: number): any {
       ).annotate({
         identifier: "DescribeDBEngineVersionsMessage",
       });
-    case 6:
+    case 1:
       return S.Array(
-        /*@__PURE__*/ __S(80, __c10, 0).pipe(/*@__PURE__*/ T.XmlName("DBEngineVersion")).annotate({
-          identifier: "DBEngineVersion",
-        }),
+        /*@__PURE__*/ __S(1225, __c38, 9)
+          .pipe(/*@__PURE__*/ T.XmlName("DBEngineVersion"))
+          .annotate({
+            identifier: "DBEngineVersion",
+          }),
       );
-    case 7:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           Marker: S.optional(S.String),
-          DBEngineVersions: S.optional(__S(270, __c33, 6)),
+          DBEngineVersions: S.optional(__S(3841, __c120, 1)),
         }).pipe(ns),
       ).annotate({ identifier: "DBEngineVersionMessage" });
   }
 }
-function __c34(j: number): any {
+function __c121(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           DbiResourceId: S.optional(S.String),
           DBInstanceIdentifier: S.optional(S.String),
-          Filters: S.optional(__S(233, __c29, 1)),
+          Filters: S.optional(__S(3394, __c106, 2)),
           MaxRecords: S.optional(S.Number),
           Marker: S.optional(S.String),
           DBInstanceAutomatedBackupsArn: S.optional(S.String),
@@ -13296,7 +13631,7 @@ function __c34(j: number): any {
       });
     case 1:
       return S.Array(
-        /*@__PURE__*/ __S(201, __c25, 1)
+        /*@__PURE__*/ __S(2880, __c90, 0)
           .pipe(/*@__PURE__*/ T.XmlName("DBInstanceAutomatedBackup"))
           .annotate({
             identifier: "DBInstanceAutomatedBackup",
@@ -13306,50 +13641,58 @@ function __c34(j: number): any {
       return S.suspend(() =>
         S.Struct({
           Marker: S.optional(S.String),
-          DBInstanceAutomatedBackups: S.optional(__S(273, __c34, 1)),
+          DBInstanceAutomatedBackups: S.optional(__S(3873, __c121, 1)),
         }).pipe(ns),
       ).annotate({
         identifier: "DBInstanceAutomatedBackupMessage",
       });
-    case 3:
+  }
+}
+function __c122(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           DBInstanceIdentifier: S.optional(S.String),
-          Filters: S.optional(__S(233, __c29, 1)),
+          Filters: S.optional(__S(3394, __c106, 2)),
           MaxRecords: S.optional(S.Number),
           Marker: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "DescribeDBInstancesMessage",
       });
-    case 4:
+    case 1:
       return S.Array(
-        /*@__PURE__*/ __S(139, __c17, 3).pipe(/*@__PURE__*/ T.XmlName("DBInstance")).annotate({
+        /*@__PURE__*/ __S(1805, __c56, 13).pipe(/*@__PURE__*/ T.XmlName("DBInstance")).annotate({
           identifier: "DBInstance",
         }),
       );
-    case 5:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           Marker: S.optional(S.String),
-          DBInstances: S.optional(__S(276, __c34, 4)),
+          DBInstances: S.optional(__S(3905, __c122, 1)),
         }).pipe(ns),
       ).annotate({ identifier: "DBInstanceMessage" });
-    case 6:
+  }
+}
+function __c123(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           DBInstanceIdentifier: S.optional(S.String),
           FilenameContains: S.optional(S.String),
           FileLastWritten: S.optional(S.Number),
           FileSize: S.optional(S.Number),
-          Filters: S.optional(__S(233, __c29, 1)),
+          Filters: S.optional(__S(3394, __c106, 2)),
           MaxRecords: S.optional(S.Number),
           Marker: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "DescribeDBLogFilesMessage",
       });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           LogFileName: S.optional(S.String),
@@ -13359,28 +13702,28 @@ function __c34(j: number): any {
       ).annotate({
         identifier: "DescribeDBLogFilesDetails",
       });
-  }
-}
-function __c35(j: number): any {
-  switch (j) {
-    case 0:
+    case 2:
       return S.Array(
-        /*@__PURE__*/ __S(279, __c34, 7)
+        /*@__PURE__*/ __S(3937, __c123, 1)
           .pipe(/*@__PURE__*/ T.XmlName("DescribeDBLogFilesDetails"))
           .annotate({
             identifier: "DescribeDBLogFilesDetails",
           }),
       );
-    case 1:
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          DescribeDBLogFiles: S.optional(__S(280, __c35, 0)),
+          DescribeDBLogFiles: S.optional(__S(3938, __c123, 2)),
           Marker: S.optional(S.String),
         }).pipe(ns),
       ).annotate({
         identifier: "DescribeDBLogFilesResponse",
       });
-    case 2:
+  }
+}
+function __c124(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           Engine: S.optional(S.String),
@@ -13391,7 +13734,7 @@ function __c35(j: number): any {
       ).annotate({
         identifier: "DescribeDBMajorEngineVersionsRequest",
       });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           LifecycleSupportName: S.optional(S.String),
@@ -13403,34 +13746,34 @@ function __c35(j: number): any {
           ),
         }),
       ).annotate({ identifier: "SupportedEngineLifecycle" });
-    case 4:
+    case 2:
       return S.Array(
-        /*@__PURE__*/ __S(283, __c35, 3)
+        /*@__PURE__*/ __S(3969, __c124, 1)
           .pipe(/*@__PURE__*/ T.XmlName("SupportedEngineLifecycle"))
           .annotate({
             identifier: "SupportedEngineLifecycle",
           }),
       );
-    case 5:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           Engine: S.optional(S.String),
           MajorEngineVersion: S.optional(S.String),
-          SupportedEngineLifecycles: S.optional(__S(284, __c35, 4)),
+          SupportedEngineLifecycles: S.optional(__S(3970, __c124, 2)),
         }),
       ).annotate({ identifier: "DBMajorEngineVersion" });
-    case 6:
+    case 4:
       return S.Array(
-        /*@__PURE__*/ __S(285, __c35, 5)
+        /*@__PURE__*/ __S(3971, __c124, 3)
           .pipe(/*@__PURE__*/ T.XmlName("DBMajorEngineVersion"))
           .annotate({
             identifier: "DBMajorEngineVersion",
           }),
       );
-    case 7:
+    case 5:
       return S.suspend(() =>
         S.Struct({
-          DBMajorEngineVersions: S.optional(__S(286, __c35, 6)),
+          DBMajorEngineVersions: S.optional(__S(3972, __c124, 4)),
           Marker: S.optional(S.String),
         }).pipe(ns),
       ).annotate({
@@ -13438,13 +13781,13 @@ function __c35(j: number): any {
       });
   }
 }
-function __c36(j: number): any {
+function __c125(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           DBParameterGroupName: S.optional(S.String),
-          Filters: S.optional(__S(233, __c29, 1)),
+          Filters: S.optional(__S(3394, __c106, 2)),
           MaxRecords: S.optional(S.Number),
           Marker: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
@@ -13453,64 +13796,76 @@ function __c36(j: number): any {
       });
     case 1:
       return S.Array(
-        /*@__PURE__*/ __S(38, __c4, 6).pipe(/*@__PURE__*/ T.XmlName("DBParameterGroup")).annotate({
-          identifier: "DBParameterGroup",
-        }),
+        /*@__PURE__*/ __S(736, __c23, 0)
+          .pipe(/*@__PURE__*/ T.XmlName("DBParameterGroup"))
+          .annotate({
+            identifier: "DBParameterGroup",
+          }),
       );
     case 2:
       return S.suspend(() =>
         S.Struct({
           Marker: S.optional(S.String),
-          DBParameterGroups: S.optional(__S(289, __c36, 1)),
+          DBParameterGroups: S.optional(__S(4001, __c125, 1)),
         }).pipe(ns),
       ).annotate({ identifier: "DBParameterGroupsMessage" });
-    case 3:
+  }
+}
+function __c126(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           DBParameterGroupName: S.optional(S.String),
           Source: S.optional(S.String),
-          Filters: S.optional(__S(233, __c29, 1)),
+          Filters: S.optional(__S(3394, __c106, 2)),
           MaxRecords: S.optional(S.Number),
           Marker: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "DescribeDBParametersMessage",
       });
-    case 4:
+    case 1:
       return S.suspend(() =>
-        S.Struct({ Parameters: S.optional(__S(255, __c31, 7)), Marker: S.optional(S.String) }).pipe(
-          ns,
-        ),
+        S.Struct({
+          Parameters: S.optional(__S(3649, __c114, 1)),
+          Marker: S.optional(S.String),
+        }).pipe(ns),
       ).annotate({ identifier: "DBParameterGroupDetails" });
-    case 5:
+  }
+}
+function __c127(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           DBProxyName: S.optional(S.String),
-          Filters: S.optional(__S(233, __c29, 1)),
+          Filters: S.optional(__S(3394, __c106, 2)),
           Marker: S.optional(S.String),
           MaxRecords: S.optional(S.Number),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "DescribeDBProxiesRequest" });
-    case 6:
-      return S.Array(__S(150, __c18, 6));
-    case 7:
+    case 1:
+      return S.Array(__S(1954, __c61, 2));
+    case 2:
       return S.suspend(() =>
-        S.Struct({ DBProxies: S.optional(__S(294, __c36, 6)), Marker: S.optional(S.String) }).pipe(
-          ns,
-        ),
+        S.Struct({
+          DBProxies: S.optional(__S(4065, __c127, 1)),
+          Marker: S.optional(S.String),
+        }).pipe(ns),
       ).annotate({
         identifier: "DescribeDBProxiesResponse",
       });
   }
 }
-function __c37(j: number): any {
+function __c128(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           DBProxyName: S.optional(S.String),
           DBProxyEndpointName: S.optional(S.String),
-          Filters: S.optional(__S(233, __c29, 1)),
+          Filters: S.optional(__S(3394, __c106, 2)),
           Marker: S.optional(S.String),
           MaxRecords: S.optional(S.Number),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
@@ -13518,59 +13873,38 @@ function __c37(j: number): any {
         identifier: "DescribeDBProxyEndpointsRequest",
       });
     case 1:
-      return S.Array(__S(153, __c19, 1));
+      return S.Array(__S(2048, __c64, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          DBProxyEndpoints: S.optional(__S(297, __c37, 1)),
+          DBProxyEndpoints: S.optional(__S(4097, __c128, 1)),
           Marker: S.optional(S.String),
         }).pipe(ns),
       ).annotate({
         identifier: "DescribeDBProxyEndpointsResponse",
       });
-    case 3:
+  }
+}
+function __c129(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           DBProxyName: S.optional(S.String),
           TargetGroupName: S.optional(S.String),
-          Filters: S.optional(__S(233, __c29, 1)),
+          Filters: S.optional(__S(3394, __c106, 2)),
           Marker: S.optional(S.String),
           MaxRecords: S.optional(S.Number),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "DescribeDBProxyTargetGroupsRequest",
       });
-    case 4:
+    case 1:
+      return S.Array(__S(4161, __c130, 1));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          MaxConnectionsPercent: S.optional(S.Number),
-          MaxIdleConnectionsPercent: S.optional(S.Number),
-          ConnectionBorrowTimeout: S.optional(S.Number),
-          SessionPinningFilters: S.optional(__S(28, __c3, 4)),
-          InitQuery: S.optional(SensitiveString),
-        }),
-      ).annotate({
-        identifier: "ConnectionPoolConfigurationInfo",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          DBProxyName: S.optional(S.String),
-          TargetGroupName: S.optional(S.String),
-          TargetGroupArn: S.optional(S.String),
-          IsDefault: S.optional(S.Boolean),
-          Status: S.optional(S.String),
-          ConnectionPoolConfig: S.optional(__S(300, __c37, 4)),
-          CreatedDate: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-          UpdatedDate: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-        }),
-      ).annotate({ identifier: "DBProxyTargetGroup" });
-    case 6:
-      return S.Array(__S(301, __c37, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          TargetGroups: S.optional(__S(302, __c37, 6)),
+          TargetGroups: S.optional(__S(4129, __c129, 1)),
           Marker: S.optional(S.String),
         }).pipe(ns),
       ).annotate({
@@ -13578,14 +13912,43 @@ function __c37(j: number): any {
       });
   }
 }
-function __c38(j: number): any {
+function __c130(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          MaxConnectionsPercent: S.optional(S.Number),
+          MaxIdleConnectionsPercent: S.optional(S.Number),
+          ConnectionBorrowTimeout: S.optional(S.Number),
+          SessionPinningFilters: S.optional(__S(480, __c15, 0)),
+          InitQuery: S.optional(SensitiveString),
+        }),
+      ).annotate({
+        identifier: "ConnectionPoolConfigurationInfo",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          DBProxyName: S.optional(S.String),
+          TargetGroupName: S.optional(S.String),
+          TargetGroupArn: S.optional(S.String),
+          IsDefault: S.optional(S.Boolean),
+          Status: S.optional(S.String),
+          ConnectionPoolConfig: S.optional(__S(4160, __c130, 0)),
+          CreatedDate: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
+          UpdatedDate: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
+        }),
+      ).annotate({ identifier: "DBProxyTargetGroup" });
+  }
+}
+function __c131(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           DBProxyName: S.optional(S.String),
           TargetGroupName: S.optional(S.String),
-          Filters: S.optional(__S(233, __c29, 1)),
+          Filters: S.optional(__S(3394, __c106, 2)),
           Marker: S.optional(S.String),
           MaxRecords: S.optional(S.Number),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
@@ -13594,13 +13957,25 @@ function __c38(j: number): any {
       });
     case 1:
       return S.suspend(() =>
+        S.Struct({ Targets: S.optional(__S(4226, __c132, 2)), Marker: S.optional(S.String) }).pipe(
+          ns,
+        ),
+      ).annotate({
+        identifier: "DescribeDBProxyTargetsResponse",
+      });
+  }
+}
+function __c132(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
         S.Struct({
           State: S.optional(S.String),
           Reason: S.optional(S.String),
           Description: S.optional(S.String),
         }),
       ).annotate({ identifier: "TargetHealth" });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           TargetArn: S.optional(S.String),
@@ -13610,142 +13985,142 @@ function __c38(j: number): any {
           Port: S.optional(S.Number),
           Type: S.optional(S.String),
           Role: S.optional(S.String),
-          TargetHealth: S.optional(__S(305, __c38, 1)),
+          TargetHealth: S.optional(__S(4224, __c132, 0)),
         }),
       ).annotate({ identifier: "DBProxyTarget" });
-    case 3:
-      return S.Array(__S(306, __c38, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({ Targets: S.optional(__S(307, __c38, 3)), Marker: S.optional(S.String) }).pipe(
-          ns,
-        ),
-      ).annotate({
-        identifier: "DescribeDBProxyTargetsResponse",
-      });
-    case 5:
+    case 2:
+      return S.Array(__S(4225, __c132, 1));
+  }
+}
+function __c133(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           LastUpdatedAfter: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
           LastUpdatedBefore: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
           Locale: S.optional(S.String),
-          Filters: S.optional(__S(233, __c29, 1)),
+          Filters: S.optional(__S(3394, __c106, 2)),
           MaxRecords: S.optional(S.Number),
           Marker: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "DescribeDBRecommendationsMessage",
       });
-    case 6:
+    case 1:
+      return S.Array(__S(4307, __c134, 19));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          DBRecommendations: S.optional(__S(4257, __c133, 1)),
+          Marker: S.optional(S.String),
+        }).pipe(ns),
+      ).annotate({ identifier: "DBRecommendationsMessage" });
+  }
+}
+function __c134(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ Key: S.optional(S.String), Value: S.optional(S.String) }),
       ).annotate({
         identifier: "RecommendedActionParameter",
       });
-    case 7:
-      return S.Array(__S(310, __c38, 6));
-  }
-}
-function __c39(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
+      return S.Array(__S(4288, __c134, 0));
+    case 2:
       return S.suspend(() => S.Struct({ Value: S.optional(S.Number) })).annotate({
         identifier: "ScalarReferenceDetails",
       });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({ ScalarReferenceDetails: S.optional(__S(312, __c39, 0)) }),
-      ).annotate({ identifier: "ReferenceDetails" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({ Name: S.optional(S.String), ReferenceDetails: S.optional(__S(313, __c39, 1)) }),
-      ).annotate({ identifier: "MetricReference" });
     case 3:
-      return S.Array(__S(314, __c39, 2));
+      return S.suspend(() =>
+        S.Struct({ ScalarReferenceDetails: S.optional(__S(4290, __c134, 2)) }),
+      ).annotate({ identifier: "ReferenceDetails" });
     case 4:
       return S.suspend(() =>
         S.Struct({
-          Dimensions: S.optional(__S(28, __c3, 4)),
+          Name: S.optional(S.String),
+          ReferenceDetails: S.optional(__S(4291, __c134, 3)),
+        }),
+      ).annotate({ identifier: "MetricReference" });
+    case 5:
+      return S.Array(__S(4292, __c134, 4));
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          Dimensions: S.optional(__S(480, __c15, 0)),
           Group: S.optional(S.String),
           Limit: S.optional(S.Number),
         }),
       ).annotate({
         identifier: "PerformanceInsightsMetricDimensionGroup",
       });
-    case 5:
+    case 7:
       return S.suspend(() =>
         S.Struct({
-          GroupBy: S.optional(__S(316, __c39, 4)),
+          GroupBy: S.optional(__S(4294, __c134, 6)),
           Metric: S.optional(S.String),
         }),
       ).annotate({
         identifier: "PerformanceInsightsMetricQuery",
       });
-    case 6:
+    case 8:
       return S.suspend(() =>
-        S.Struct({ PerformanceInsightsMetricQuery: S.optional(__S(317, __c39, 5)) }),
+        S.Struct({ PerformanceInsightsMetricQuery: S.optional(__S(4295, __c134, 7)) }),
       ).annotate({ identifier: "MetricQuery" });
-    case 7:
+    case 9:
       return S.suspend(() =>
         S.Struct({
           Name: S.optional(S.String),
-          References: S.optional(__S(315, __c39, 3)),
+          References: S.optional(__S(4293, __c134, 5)),
           StatisticsDetails: S.optional(S.String),
-          MetricQuery: S.optional(__S(318, __c39, 6)),
+          MetricQuery: S.optional(__S(4296, __c134, 8)),
         }),
       ).annotate({ identifier: "Metric" });
-  }
-}
-function __c40(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(319, __c39, 7));
-    case 1:
+    case 10:
+      return S.Array(__S(4297, __c134, 9));
+    case 11:
       return S.suspend(() =>
         S.Struct({
           StartTime: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
           EndTime: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-          Metrics: S.optional(__S(320, __c40, 0)),
+          Metrics: S.optional(__S(4298, __c134, 10)),
           Analysis: S.optional(S.String),
         }),
       ).annotate({ identifier: "PerformanceIssueDetails" });
-    case 2:
+    case 12:
       return S.suspend(() =>
-        S.Struct({ PerformanceIssueDetails: S.optional(__S(321, __c40, 1)) }),
+        S.Struct({ PerformanceIssueDetails: S.optional(__S(4299, __c134, 11)) }),
       ).annotate({ identifier: "IssueDetails" });
-    case 3:
+    case 13:
       return S.suspend(() =>
         S.Struct({ Key: S.optional(S.String), Value: S.optional(S.String) }),
       ).annotate({ identifier: "ContextAttribute" });
-    case 4:
-      return S.Array(__S(323, __c40, 3));
-    case 5:
+    case 14:
+      return S.Array(__S(4301, __c134, 13));
+    case 15:
       return S.suspend(() =>
         S.Struct({
           ActionId: S.optional(S.String),
           Title: S.optional(S.String),
           Description: S.optional(S.String),
           Operation: S.optional(S.String),
-          Parameters: S.optional(__S(311, __c38, 7)),
-          ApplyModes: S.optional(__S(28, __c3, 4)),
+          Parameters: S.optional(__S(4289, __c134, 1)),
+          ApplyModes: S.optional(__S(480, __c15, 0)),
           Status: S.optional(S.String),
-          IssueDetails: S.optional(__S(322, __c40, 2)),
-          ContextAttributes: S.optional(__S(324, __c40, 4)),
+          IssueDetails: S.optional(__S(4300, __c134, 12)),
+          ContextAttributes: S.optional(__S(4302, __c134, 14)),
         }),
       ).annotate({ identifier: "RecommendedAction" });
-    case 6:
-      return S.Array(__S(325, __c40, 5));
-    case 7:
+    case 16:
+      return S.Array(__S(4303, __c134, 15));
+    case 17:
       return S.suspend(() =>
         S.Struct({ Text: S.optional(S.String), Url: S.optional(S.String) }),
       ).annotate({ identifier: "DocLink" });
-  }
-}
-function __c41(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(327, __c40, 7));
-    case 1:
+    case 18:
+      return S.Array(__S(4305, __c134, 17));
+    case 19:
       return S.suspend(() =>
         S.Struct({
           RecommendationId: S.optional(S.String),
@@ -13759,81 +14134,80 @@ function __c41(j: number): any {
           Recommendation: S.optional(S.String),
           Description: S.optional(S.String),
           Reason: S.optional(S.String),
-          RecommendedActions: S.optional(__S(326, __c40, 6)),
+          RecommendedActions: S.optional(__S(4304, __c134, 16)),
           Category: S.optional(S.String),
           Source: S.optional(S.String),
           TypeDetection: S.optional(S.String),
           TypeRecommendation: S.optional(S.String),
           Impact: S.optional(S.String),
           AdditionalInfo: S.optional(S.String),
-          Links: S.optional(__S(328, __c41, 0)),
-          IssueDetails: S.optional(__S(322, __c40, 2)),
+          Links: S.optional(__S(4306, __c134, 18)),
+          IssueDetails: S.optional(__S(4300, __c134, 12)),
         }),
       ).annotate({ identifier: "DBRecommendation" });
-    case 2:
-      return S.Array(__S(329, __c41, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          DBRecommendations: S.optional(__S(330, __c41, 2)),
-          Marker: S.optional(S.String),
-        }).pipe(ns),
-      ).annotate({ identifier: "DBRecommendationsMessage" });
-    case 4:
+  }
+}
+function __c135(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           DBSecurityGroupName: S.optional(S.String),
-          Filters: S.optional(__S(233, __c29, 1)),
+          Filters: S.optional(__S(3394, __c106, 2)),
           MaxRecords: S.optional(S.Number),
           Marker: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "DescribeDBSecurityGroupsMessage",
       });
-    case 5:
+    case 1:
       return S.Array(
-        /*@__PURE__*/ __S(23, __c2, 7).pipe(/*@__PURE__*/ T.XmlName("DBSecurityGroup")).annotate({
+        /*@__PURE__*/ __S(356, __c11, 4).pipe(/*@__PURE__*/ T.XmlName("DBSecurityGroup")).annotate({
           identifier: "DBSecurityGroup",
         }),
       );
-    case 6:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           Marker: S.optional(S.String),
-          DBSecurityGroups: S.optional(__S(333, __c41, 5)),
+          DBSecurityGroups: S.optional(__S(4321, __c135, 1)),
         }).pipe(ns),
       ).annotate({ identifier: "DBSecurityGroupMessage" });
-    case 7:
+  }
+}
+function __c136(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           DBShardGroupIdentifier: S.optional(S.String),
-          Filters: S.optional(__S(233, __c29, 1)),
+          Filters: S.optional(__S(3394, __c106, 2)),
           Marker: S.optional(S.String),
           MaxRecords: S.optional(S.Number),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "DescribeDBShardGroupsMessage",
       });
-  }
-}
-function __c42(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.Array(
-        /*@__PURE__*/ __S(158, __c19, 6).pipe(/*@__PURE__*/ T.XmlName("DBShardGroup")).annotate({
+        /*@__PURE__*/ __S(2144, __c67, 0).pipe(/*@__PURE__*/ T.XmlName("DBShardGroup")).annotate({
           identifier: "DBShardGroup",
         }),
       );
-    case 1:
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          DBShardGroups: S.optional(__S(336, __c42, 0)),
+          DBShardGroups: S.optional(__S(4353, __c136, 1)),
           Marker: S.optional(S.String),
         }).pipe(ns),
       ).annotate({
         identifier: "DescribeDBShardGroupsResponse",
       });
-    case 2:
+  }
+}
+function __c137(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ DBSnapshotIdentifier: S.optional(S.String) }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
@@ -13841,43 +14215,51 @@ function __c42(j: number): any {
       ).annotate({
         identifier: "DescribeDBSnapshotAttributesMessage",
       });
-    case 3:
+    case 1:
+      return S.suspend(() =>
+        S.Struct({ DBSnapshotAttributesResult: S.optional(__S(4418, __c138, 2)) }).pipe(ns),
+      ).annotate({
+        identifier: "DescribeDBSnapshotAttributesResult",
+      });
+  }
+}
+function __c138(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           AttributeName: S.optional(S.String),
-          AttributeValues: S.optional(__S(261, __c32, 5)),
+          AttributeValues: S.optional(__S(3744, __c117, 0)),
         }),
       ).annotate({ identifier: "DBSnapshotAttribute" });
-    case 4:
+    case 1:
       return S.Array(
-        /*@__PURE__*/ __S(339, __c42, 3)
+        /*@__PURE__*/ __S(4416, __c138, 0)
           .pipe(/*@__PURE__*/ T.XmlName("DBSnapshotAttribute"))
           .annotate({
             identifier: "DBSnapshotAttribute",
           }),
       );
-    case 5:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           DBSnapshotIdentifier: S.optional(S.String),
-          DBSnapshotAttributes: S.optional(__S(340, __c42, 4)),
+          DBSnapshotAttributes: S.optional(__S(4417, __c138, 1)),
         }),
       ).annotate({
         identifier: "DBSnapshotAttributesResult",
       });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({ DBSnapshotAttributesResult: S.optional(__S(341, __c42, 5)) }).pipe(ns),
-      ).annotate({
-        identifier: "DescribeDBSnapshotAttributesResult",
-      });
-    case 7:
+  }
+}
+function __c139(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           DBInstanceIdentifier: S.optional(S.String),
           DBSnapshotIdentifier: S.optional(S.String),
           SnapshotType: S.optional(S.String),
-          Filters: S.optional(__S(233, __c29, 1)),
+          Filters: S.optional(__S(3394, __c106, 2)),
           MaxRecords: S.optional(S.Number),
           Marker: S.optional(S.String),
           IncludeShared: S.optional(S.Boolean),
@@ -13887,30 +14269,30 @@ function __c42(j: number): any {
       ).annotate({
         identifier: "DescribeDBSnapshotsMessage",
       });
-  }
-}
-function __c43(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.Array(
-        /*@__PURE__*/ __S(45, __c5, 5).pipe(/*@__PURE__*/ T.XmlName("DBSnapshot")).annotate({
+        /*@__PURE__*/ __S(864, __c27, 0).pipe(/*@__PURE__*/ T.XmlName("DBSnapshot")).annotate({
           identifier: "DBSnapshot",
         }),
       );
-    case 1:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           Marker: S.optional(S.String),
-          DBSnapshots: S.optional(__S(344, __c43, 0)),
+          DBSnapshots: S.optional(__S(4449, __c139, 1)),
         }).pipe(ns),
       ).annotate({ identifier: "DBSnapshotMessage" });
-    case 2:
+  }
+}
+function __c140(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           DBInstanceIdentifier: S.optional(S.String),
           DBSnapshotIdentifier: S.optional(S.String),
           SnapshotType: S.optional(S.String),
-          Filters: S.optional(__S(233, __c29, 1)),
+          Filters: S.optional(__S(3394, __c106, 2)),
           MaxRecords: S.optional(S.Number),
           Marker: S.optional(S.String),
           DbiResourceId: S.optional(S.String),
@@ -13918,7 +14300,7 @@ function __c43(j: number): any {
       ).annotate({
         identifier: "DescribeDBSnapshotTenantDatabasesMessage",
       });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           DBSnapshotIdentifier: S.optional(S.String),
@@ -13935,129 +14317,145 @@ function __c43(j: number): any {
           CharacterSetName: S.optional(S.String),
           DBSnapshotTenantDatabaseARN: S.optional(S.String),
           NcharCharacterSetName: S.optional(S.String),
-          TagList: S.optional(__S(10, __c1, 2)),
+          TagList: S.optional(__S(225, __c7, 1)),
         }),
       ).annotate({ identifier: "DBSnapshotTenantDatabase" });
-    case 4:
+    case 2:
       return S.Array(
-        /*@__PURE__*/ __S(347, __c43, 3)
+        /*@__PURE__*/ __S(4481, __c140, 1)
           .pipe(/*@__PURE__*/ T.XmlName("DBSnapshotTenantDatabase"))
           .annotate({
             identifier: "DBSnapshotTenantDatabase",
           }),
       );
-    case 5:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           Marker: S.optional(S.String),
-          DBSnapshotTenantDatabases: S.optional(__S(348, __c43, 4)),
+          DBSnapshotTenantDatabases: S.optional(__S(4482, __c140, 2)),
         }).pipe(ns),
       ).annotate({
         identifier: "DBSnapshotTenantDatabasesMessage",
       });
-    case 6:
+  }
+}
+function __c141(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           DBSubnetGroupName: S.optional(S.String),
-          Filters: S.optional(__S(233, __c29, 1)),
+          Filters: S.optional(__S(3394, __c106, 2)),
           MaxRecords: S.optional(S.Number),
           Marker: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "DescribeDBSubnetGroupsMessage",
       });
-    case 7:
+    case 1:
       return S.Array(
-        /*@__PURE__*/ __S(125, __c15, 5).pipe(/*@__PURE__*/ T.XmlName("DBSubnetGroup")).annotate({
+        /*@__PURE__*/ __S(1731, __c54, 3).pipe(/*@__PURE__*/ T.XmlName("DBSubnetGroup")).annotate({
           identifier: "DBSubnetGroup",
         }),
       );
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          Marker: S.optional(S.String),
+          DBSubnetGroups: S.optional(__S(4513, __c141, 1)),
+        }).pipe(ns),
+      ).annotate({ identifier: "DBSubnetGroupMessage" });
   }
 }
-function __c44(j: number): any {
+function __c142(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          Marker: S.optional(S.String),
-          DBSubnetGroups: S.optional(__S(351, __c43, 7)),
-        }).pipe(ns),
-      ).annotate({ identifier: "DBSubnetGroupMessage" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
           DBParameterGroupFamily: S.optional(S.String),
-          Filters: S.optional(__S(233, __c29, 1)),
+          Filters: S.optional(__S(3394, __c106, 2)),
           MaxRecords: S.optional(S.Number),
           Marker: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "DescribeEngineDefaultClusterParametersMessage",
       });
-    case 2:
+    case 1:
+      return S.suspend(() =>
+        S.Struct({ EngineDefaults: S.optional(__S(4576, __c143, 0)) }).pipe(ns),
+      ).annotate({
+        identifier: "DescribeEngineDefaultClusterParametersResult",
+      });
+  }
+}
+function __c143(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           DBParameterGroupFamily: S.optional(S.String),
           Marker: S.optional(S.String),
-          Parameters: S.optional(__S(255, __c31, 7)),
+          Parameters: S.optional(__S(3649, __c114, 1)),
         }),
       ).annotate({ identifier: "EngineDefaults" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({ EngineDefaults: S.optional(__S(354, __c44, 2)) }).pipe(ns),
-      ).annotate({
-        identifier: "DescribeEngineDefaultClusterParametersResult",
-      });
-    case 4:
+  }
+}
+function __c144(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           DBParameterGroupFamily: S.optional(S.String),
-          Filters: S.optional(__S(233, __c29, 1)),
+          Filters: S.optional(__S(3394, __c106, 2)),
           MaxRecords: S.optional(S.Number),
           Marker: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "DescribeEngineDefaultParametersMessage",
       });
-    case 5:
+    case 1:
       return S.suspend(() =>
-        S.Struct({ EngineDefaults: S.optional(__S(354, __c44, 2)) }).pipe(ns),
+        S.Struct({ EngineDefaults: S.optional(__S(4576, __c143, 0)) }).pipe(ns),
       ).annotate({
         identifier: "DescribeEngineDefaultParametersResult",
       });
-    case 6:
+  }
+}
+function __c145(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           SourceType: S.optional(S.String),
-          Filters: S.optional(__S(233, __c29, 1)),
+          Filters: S.optional(__S(3394, __c106, 2)),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "DescribeEventCategoriesMessage",
       });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           SourceType: S.optional(S.String),
-          EventCategories: S.optional(__S(6, __c0, 6)),
+          EventCategories: S.optional(__S(128, __c4, 0)),
         }),
       ).annotate({ identifier: "EventCategoriesMap" });
-  }
-}
-function __c45(j: number): any {
-  switch (j) {
-    case 0:
+    case 2:
       return S.Array(
-        /*@__PURE__*/ __S(359, __c44, 7)
+        /*@__PURE__*/ __S(4641, __c145, 1)
           .pipe(/*@__PURE__*/ T.XmlName("EventCategoriesMap"))
           .annotate({
             identifier: "EventCategoriesMap",
           }),
       );
-    case 1:
+    case 3:
       return S.suspend(() =>
-        S.Struct({ EventCategoriesMapList: S.optional(__S(360, __c45, 0)) }).pipe(ns),
+        S.Struct({ EventCategoriesMapList: S.optional(__S(4642, __c145, 2)) }).pipe(ns),
       ).annotate({ identifier: "EventCategoriesMessage" });
-    case 2:
+  }
+}
+function __c146(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           SourceIdentifier: S.optional(S.String),
@@ -14065,69 +14463,77 @@ function __c45(j: number): any {
           StartTime: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
           EndTime: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
           Duration: S.optional(S.Number),
-          EventCategories: S.optional(__S(6, __c0, 6)),
-          Filters: S.optional(__S(233, __c29, 1)),
+          EventCategories: S.optional(__S(128, __c4, 0)),
+          Filters: S.optional(__S(3394, __c106, 2)),
           MaxRecords: S.optional(S.Number),
           Marker: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "DescribeEventsMessage" });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           SourceIdentifier: S.optional(S.String),
           SourceType: S.optional(S.String),
           Message: S.optional(S.String),
-          EventCategories: S.optional(__S(6, __c0, 6)),
+          EventCategories: S.optional(__S(128, __c4, 0)),
           Date: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
           SourceArn: S.optional(S.String),
         }),
       ).annotate({ identifier: "Event" });
-    case 4:
+    case 2:
       return S.Array(
-        /*@__PURE__*/ __S(363, __c45, 3).pipe(/*@__PURE__*/ T.XmlName("Event")).annotate({
-          identifier: "Event",
-        }),
+        /*@__PURE__*/ __S(4673, __c146, 1)
+          .pipe(/*@__PURE__*/ T.XmlName("Event"))
+          .annotate({ identifier: "Event" }),
       );
-    case 5:
+    case 3:
       return S.suspend(() =>
-        S.Struct({ Marker: S.optional(S.String), Events: S.optional(__S(364, __c45, 4)) }).pipe(ns),
+        S.Struct({ Marker: S.optional(S.String), Events: S.optional(__S(4674, __c146, 2)) }).pipe(
+          ns,
+        ),
       ).annotate({ identifier: "EventsMessage" });
-    case 6:
+  }
+}
+function __c147(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           SubscriptionName: S.optional(S.String),
-          Filters: S.optional(__S(233, __c29, 1)),
+          Filters: S.optional(__S(3394, __c106, 2)),
           MaxRecords: S.optional(S.Number),
           Marker: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "DescribeEventSubscriptionsMessage",
       });
-    case 7:
+    case 1:
       return S.Array(
-        /*@__PURE__*/ __S(7, __c0, 7).pipe(/*@__PURE__*/ T.XmlName("EventSubscription")).annotate({
-          identifier: "EventSubscription",
-        }),
+        /*@__PURE__*/ __S(161, __c5, 1)
+          .pipe(/*@__PURE__*/ T.XmlName("EventSubscription"))
+          .annotate({
+            identifier: "EventSubscription",
+          }),
       );
-  }
-}
-function __c46(j: number): any {
-  switch (j) {
-    case 0:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           Marker: S.optional(S.String),
-          EventSubscriptionsList: S.optional(__S(367, __c45, 7)),
+          EventSubscriptionsList: S.optional(__S(4705, __c147, 1)),
         }).pipe(ns),
       ).annotate({
         identifier: "EventSubscriptionsMessage",
       });
-    case 1:
+  }
+}
+function __c148(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           ExportTaskIdentifier: S.optional(S.String),
           SourceArn: S.optional(S.String),
-          Filters: S.optional(__S(233, __c29, 1)),
+          Filters: S.optional(__S(3394, __c106, 2)),
           Marker: S.optional(S.String),
           MaxRecords: S.optional(S.Number),
           SourceType: S.optional(S.String),
@@ -14135,92 +14541,100 @@ function __c46(j: number): any {
       ).annotate({
         identifier: "DescribeExportTasksMessage",
       });
-    case 2:
+    case 1:
       return S.Array(
-        /*@__PURE__*/ __S(29, __c3, 5).pipe(/*@__PURE__*/ T.XmlName("ExportTask")).annotate({
+        /*@__PURE__*/ __S(512, __c16, 0).pipe(/*@__PURE__*/ T.XmlName("ExportTask")).annotate({
           identifier: "ExportTask",
         }),
       );
-    case 3:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           Marker: S.optional(S.String),
-          ExportTasks: S.optional(__S(370, __c46, 2)),
+          ExportTasks: S.optional(__S(4737, __c148, 1)),
         }).pipe(ns),
       ).annotate({ identifier: "ExportTasksMessage" });
-    case 4:
+  }
+}
+function __c149(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           GlobalClusterIdentifier: S.optional(S.String),
-          Filters: S.optional(__S(233, __c29, 1)),
+          Filters: S.optional(__S(3394, __c106, 2)),
           MaxRecords: S.optional(S.Number),
           Marker: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "DescribeGlobalClustersMessage",
       });
-    case 5:
+    case 1:
       return S.Array(
-        /*@__PURE__*/ __S(171, __c21, 3)
+        /*@__PURE__*/ __S(2340, __c73, 4)
           .pipe(/*@__PURE__*/ T.XmlName("GlobalClusterMember"))
           .annotate({
             identifier: "GlobalCluster",
           }),
       );
-    case 6:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           Marker: S.optional(S.String),
-          GlobalClusters: S.optional(__S(373, __c46, 5)),
+          GlobalClusters: S.optional(__S(4769, __c149, 1)),
         }).pipe(ns),
       ).annotate({ identifier: "GlobalClustersMessage" });
-    case 7:
+  }
+}
+function __c150(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           IntegrationIdentifier: S.optional(S.String),
-          Filters: S.optional(__S(233, __c29, 1)),
+          Filters: S.optional(__S(3394, __c106, 2)),
           MaxRecords: S.optional(S.Number),
           Marker: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "DescribeIntegrationsMessage",
       });
-  }
-}
-function __c47(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.Array(
-        /*@__PURE__*/ __S(177, __c22, 1).pipe(/*@__PURE__*/ T.XmlName("Integration")).annotate({
+        /*@__PURE__*/ __S(2403, __c75, 3).pipe(/*@__PURE__*/ T.XmlName("Integration")).annotate({
           identifier: "Integration",
         }),
       );
-    case 1:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           Marker: S.optional(S.String),
-          Integrations: S.optional(__S(376, __c47, 0)),
+          Integrations: S.optional(__S(4801, __c150, 1)),
         }).pipe(ns),
       ).annotate({
         identifier: "DescribeIntegrationsResponse",
       });
-    case 2:
+  }
+}
+function __c151(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           EngineName: S.optional(S.String),
           MajorEngineVersion: S.optional(S.String),
-          Filters: S.optional(__S(233, __c29, 1)),
+          Filters: S.optional(__S(3394, __c106, 2)),
           MaxRecords: S.optional(S.Number),
           Marker: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "DescribeOptionGroupOptionsMessage",
       });
-    case 3:
+    case 1:
       return S.Array(/*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.XmlName("OptionName")));
-    case 4:
+    case 2:
       return S.Array(/*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.XmlName("OptionConflictName")));
-    case 5:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           AllowedValue: S.optional(S.String),
@@ -14229,13 +14643,13 @@ function __c47(j: number): any {
       ).annotate({
         identifier: "MinimumEngineVersionPerAllowedValue",
       });
-    case 6:
+    case 4:
       return S.Array(
-        /*@__PURE__*/ __S(381, __c47, 5)
+        /*@__PURE__*/ __S(4835, __c151, 3)
           .pipe(/*@__PURE__*/ T.XmlName("MinimumEngineVersionPerAllowedValue"))
           .annotate({ identifier: "MinimumEngineVersionPerAllowedValue" }),
       );
-    case 7:
+    case 5:
       return S.suspend(() =>
         S.Struct({
           SettingName: S.optional(S.String),
@@ -14245,32 +14659,28 @@ function __c47(j: number): any {
           AllowedValues: S.optional(S.String),
           IsModifiable: S.optional(S.Boolean),
           IsRequired: S.optional(S.Boolean),
-          MinimumEngineVersionPerAllowedValue: S.optional(__S(382, __c47, 6)),
+          MinimumEngineVersionPerAllowedValue: S.optional(__S(4836, __c151, 4)),
         }),
       ).annotate({ identifier: "OptionGroupOptionSetting" });
-  }
-}
-function __c48(j: number): any {
-  switch (j) {
-    case 0:
+    case 6:
       return S.Array(
-        /*@__PURE__*/ __S(383, __c47, 7)
+        /*@__PURE__*/ __S(4837, __c151, 5)
           .pipe(/*@__PURE__*/ T.XmlName("OptionGroupOptionSetting"))
           .annotate({
             identifier: "OptionGroupOptionSetting",
           }),
       );
-    case 1:
+    case 7:
       return S.suspend(() =>
         S.Struct({ Version: S.optional(S.String), IsDefault: S.optional(S.Boolean) }),
       ).annotate({ identifier: "OptionVersion" });
-    case 2:
+    case 8:
       return S.Array(
-        /*@__PURE__*/ __S(385, __c48, 1).pipe(/*@__PURE__*/ T.XmlName("OptionVersion")).annotate({
+        /*@__PURE__*/ __S(4839, __c151, 7).pipe(/*@__PURE__*/ T.XmlName("OptionVersion")).annotate({
           identifier: "OptionVersion",
         }),
       );
-    case 3:
+    case 9:
       return S.suspend(() =>
         S.Struct({
           Name: S.optional(S.String),
@@ -14280,40 +14690,44 @@ function __c48(j: number): any {
           MinimumRequiredMinorEngineVersion: S.optional(S.String),
           PortRequired: S.optional(S.Boolean),
           DefaultPort: S.optional(S.Number),
-          OptionsDependedOn: S.optional(__S(379, __c47, 3)),
-          OptionsConflictsWith: S.optional(__S(380, __c47, 4)),
+          OptionsDependedOn: S.optional(__S(4833, __c151, 1)),
+          OptionsConflictsWith: S.optional(__S(4834, __c151, 2)),
           Persistent: S.optional(S.Boolean),
           Permanent: S.optional(S.Boolean),
           RequiresAutoMinorEngineVersionUpgrade: S.optional(S.Boolean),
           VpcOnly: S.optional(S.Boolean),
           SupportsOptionVersionDowngrade: S.optional(S.Boolean),
-          OptionGroupOptionSettings: S.optional(__S(384, __c48, 0)),
-          OptionGroupOptionVersions: S.optional(__S(386, __c48, 2)),
+          OptionGroupOptionSettings: S.optional(__S(4838, __c151, 6)),
+          OptionGroupOptionVersions: S.optional(__S(4840, __c151, 8)),
           CopyableCrossAccount: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "OptionGroupOption" });
-    case 4:
+    case 10:
       return S.Array(
-        /*@__PURE__*/ __S(387, __c48, 3)
+        /*@__PURE__*/ __S(4841, __c151, 9)
           .pipe(/*@__PURE__*/ T.XmlName("OptionGroupOption"))
           .annotate({
             identifier: "OptionGroupOption",
           }),
       );
-    case 5:
+    case 11:
       return S.suspend(() =>
         S.Struct({
-          OptionGroupOptions: S.optional(__S(388, __c48, 4)),
+          OptionGroupOptions: S.optional(__S(4842, __c151, 10)),
           Marker: S.optional(S.String),
         }).pipe(ns),
       ).annotate({
         identifier: "OptionGroupOptionsMessage",
       });
-    case 6:
+  }
+}
+function __c152(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           OptionGroupName: S.optional(S.String),
-          Filters: S.optional(__S(233, __c29, 1)),
+          Filters: S.optional(__S(3394, __c106, 2)),
           Marker: S.optional(S.String),
           MaxRecords: S.optional(S.Number),
           EngineName: S.optional(S.String),
@@ -14322,24 +14736,24 @@ function __c48(j: number): any {
       ).annotate({
         identifier: "DescribeOptionGroupsMessage",
       });
-    case 7:
+    case 1:
       return S.Array(
-        /*@__PURE__*/ __S(56, __c7, 0).pipe(/*@__PURE__*/ T.XmlName("OptionGroup")).annotate({
+        /*@__PURE__*/ __S(996, __c31, 4).pipe(/*@__PURE__*/ T.XmlName("OptionGroup")).annotate({
           identifier: "OptionGroup",
         }),
       );
-  }
-}
-function __c49(j: number): any {
-  switch (j) {
-    case 0:
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          OptionGroupsList: S.optional(__S(391, __c48, 7)),
+          OptionGroupsList: S.optional(__S(4865, __c152, 1)),
           Marker: S.optional(S.String),
         }).pipe(ns),
       ).annotate({ identifier: "OptionGroups" });
-    case 1:
+  }
+}
+function __c153(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           Engine: S.optional(S.String),
@@ -14348,42 +14762,24 @@ function __c49(j: number): any {
           LicenseModel: S.optional(S.String),
           AvailabilityZoneGroup: S.optional(S.String),
           Vpc: S.optional(S.Boolean),
-          Filters: S.optional(__S(233, __c29, 1)),
+          Filters: S.optional(__S(3394, __c106, 2)),
           MaxRecords: S.optional(S.Number),
           Marker: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "DescribeOrderableDBInstanceOptionsMessage",
       });
-    case 2:
+    case 1:
       return S.Array(
-        /*@__PURE__*/ __S(121, __c15, 1)
+        /*@__PURE__*/ __S(1696, __c53, 0)
           .pipe(/*@__PURE__*/ T.XmlName("AvailabilityZone"))
           .annotate({
             identifier: "AvailabilityZone",
           }),
       );
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          Name: S.optional(S.String),
-          DefaultValue: S.optional(S.String),
-          AllowedValues: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "AvailableProcessorFeature",
-      });
-    case 4:
-      return S.Array(
-        /*@__PURE__*/ __S(395, __c49, 3)
-          .pipe(/*@__PURE__*/ T.XmlName("AvailableProcessorFeature"))
-          .annotate({
-            identifier: "AvailableProcessorFeature",
-          }),
-      );
-    case 5:
+    case 2:
       return S.Array(S.String);
-    case 6:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           SupportsStorageAutoscaling: S.optional(S.Boolean),
@@ -14402,17 +14798,13 @@ function __c49(j: number): any {
       ).annotate({
         identifier: "AvailableAdditionalStorageVolumesOption",
       });
-    case 7:
+    case 4:
       return S.Array(
-        /*@__PURE__*/ __S(398, __c49, 6)
+        /*@__PURE__*/ __S(4899, __c153, 3)
           .pipe(/*@__PURE__*/ T.XmlName("AvailableAdditionalStorageVolumesOption"))
           .annotate({ identifier: "AvailableAdditionalStorageVolumesOption" }),
       );
-  }
-}
-function __c50(j: number): any {
-  switch (j) {
-    case 0:
+    case 5:
       return S.suspend(() =>
         S.Struct({
           Engine: S.optional(S.String),
@@ -14420,7 +14812,7 @@ function __c50(j: number): any {
           DBInstanceClass: S.optional(S.String),
           LicenseModel: S.optional(S.String),
           AvailabilityZoneGroup: S.optional(S.String),
-          AvailabilityZones: S.optional(__S(394, __c49, 2)),
+          AvailabilityZones: S.optional(__S(4897, __c153, 1)),
           MultiAZCapable: S.optional(S.Boolean),
           ReadReplicaCapable: S.optional(S.Boolean),
           Vpc: S.optional(S.Boolean),
@@ -14441,69 +14833,99 @@ function __c50(j: number): any {
           MaxStorageThroughputPerDbInstance: S.optional(S.Number),
           MinStorageThroughputPerIops: S.optional(S.Number),
           MaxStorageThroughputPerIops: S.optional(S.Number),
-          AvailableProcessorFeatures: S.optional(__S(396, __c49, 4)),
-          SupportedEngineModes: S.optional(__S(71, __c8, 7)),
+          AvailableProcessorFeatures: S.optional(__S(4929, __c154, 1)),
+          SupportedEngineModes: S.optional(__S(1152, __c36, 0)),
           SupportsStorageAutoscaling: S.optional(S.Boolean),
           SupportsKerberosAuthentication: S.optional(S.Boolean),
           OutpostCapable: S.optional(S.Boolean),
-          SupportedActivityStreamModes: S.optional(__S(397, __c49, 5)),
+          SupportedActivityStreamModes: S.optional(__S(4898, __c153, 2)),
           SupportsGlobalDatabases: S.optional(S.Boolean),
-          SupportedNetworkTypes: S.optional(__S(28, __c3, 4)),
+          SupportedNetworkTypes: S.optional(__S(480, __c15, 0)),
           SupportsClusters: S.optional(S.Boolean),
           SupportsDedicatedLogVolume: S.optional(S.Boolean),
           SupportsAdditionalStorageVolumes: S.optional(S.Boolean),
           SupportsHttpEndpoint: S.optional(S.Boolean),
-          AvailableAdditionalStorageVolumesOptions: S.optional(__S(399, __c49, 7)),
+          AvailableAdditionalStorageVolumesOptions: S.optional(__S(4900, __c153, 4)),
         }),
       ).annotate({
         identifier: "OrderableDBInstanceOption",
       });
-    case 1:
+    case 6:
       return S.Array(
-        /*@__PURE__*/ __S(400, __c50, 0)
+        /*@__PURE__*/ __S(4901, __c153, 5)
           .pipe(/*@__PURE__*/ T.XmlName("OrderableDBInstanceOption"))
           .annotate({
             identifier: "OrderableDBInstanceOption",
           }),
       );
-    case 2:
+    case 7:
       return S.suspend(() =>
         S.Struct({
-          OrderableDBInstanceOptions: S.optional(__S(401, __c50, 1)),
+          OrderableDBInstanceOptions: S.optional(__S(4902, __c153, 6)),
           Marker: S.optional(S.String),
         }).pipe(ns),
       ).annotate({
         identifier: "OrderableDBInstanceOptionsMessage",
       });
-    case 3:
+  }
+}
+function __c154(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          Name: S.optional(S.String),
+          DefaultValue: S.optional(S.String),
+          AllowedValues: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "AvailableProcessorFeature",
+      });
+    case 1:
+      return S.Array(
+        /*@__PURE__*/ __S(4928, __c154, 0)
+          .pipe(/*@__PURE__*/ T.XmlName("AvailableProcessorFeature"))
+          .annotate({
+            identifier: "AvailableProcessorFeature",
+          }),
+      );
+  }
+}
+function __c155(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           ResourceIdentifier: S.optional(S.String),
-          Filters: S.optional(__S(233, __c29, 1)),
+          Filters: S.optional(__S(3394, __c106, 2)),
           Marker: S.optional(S.String),
           MaxRecords: S.optional(S.Number),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "DescribePendingMaintenanceActionsMessage",
       });
-    case 4:
+    case 1:
       return S.Array(
-        /*@__PURE__*/ __S(16, __c2, 0)
+        /*@__PURE__*/ __S(290, __c9, 2)
           .pipe(/*@__PURE__*/ T.XmlName("ResourcePendingMaintenanceActions"))
           .annotate({
             identifier: "ResourcePendingMaintenanceActions",
           }),
       );
-    case 5:
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          PendingMaintenanceActions: S.optional(__S(404, __c50, 4)),
+          PendingMaintenanceActions: S.optional(__S(4961, __c155, 1)),
           Marker: S.optional(S.String),
         }).pipe(ns),
       ).annotate({
         identifier: "PendingMaintenanceActionsMessage",
       });
-    case 6:
+  }
+}
+function __c156(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           ReservedDBInstanceId: S.optional(S.String),
@@ -14514,31 +14936,54 @@ function __c50(j: number): any {
           OfferingType: S.optional(S.String),
           MultiAZ: S.optional(S.Boolean),
           LeaseId: S.optional(S.String),
-          Filters: S.optional(__S(233, __c29, 1)),
+          Filters: S.optional(__S(3394, __c106, 2)),
           MaxRecords: S.optional(S.Number),
           Marker: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "DescribeReservedDBInstancesMessage",
       });
-    case 7:
+    case 1:
+      return S.Array(
+        /*@__PURE__*/ __S(5056, __c158, 0)
+          .pipe(/*@__PURE__*/ T.XmlName("ReservedDBInstance"))
+          .annotate({
+            identifier: "ReservedDBInstance",
+          }),
+      );
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          Marker: S.optional(S.String),
+          ReservedDBInstances: S.optional(__S(4993, __c156, 1)),
+        }).pipe(ns),
+      ).annotate({
+        identifier: "ReservedDBInstanceMessage",
+      });
+  }
+}
+function __c157(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           RecurringChargeAmount: S.optional(S.Number),
           RecurringChargeFrequency: S.optional(S.String),
         }),
       ).annotate({ identifier: "RecurringCharge" });
+    case 1:
+      return S.Array(
+        /*@__PURE__*/ __S(5024, __c157, 0)
+          .pipe(/*@__PURE__*/ T.XmlName("RecurringCharge"))
+          .annotate({
+            identifier: "RecurringCharge",
+          }),
+      );
   }
 }
-function __c51(j: number): any {
+function __c158(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(
-        /*@__PURE__*/ __S(407, __c50, 7).pipe(/*@__PURE__*/ T.XmlName("RecurringCharge")).annotate({
-          identifier: "RecurringCharge",
-        }),
-      );
-    case 1:
       return S.suspend(() =>
         S.Struct({
           ReservedDBInstanceId: S.optional(S.String),
@@ -14554,29 +14999,16 @@ function __c51(j: number): any {
           OfferingType: S.optional(S.String),
           MultiAZ: S.optional(S.Boolean),
           State: S.optional(S.String),
-          RecurringCharges: S.optional(__S(408, __c51, 0)),
+          RecurringCharges: S.optional(__S(5025, __c157, 1)),
           ReservedDBInstanceArn: S.optional(S.String),
           LeaseId: S.optional(S.String),
         }),
       ).annotate({ identifier: "ReservedDBInstance" });
-    case 2:
-      return S.Array(
-        /*@__PURE__*/ __S(409, __c51, 1)
-          .pipe(/*@__PURE__*/ T.XmlName("ReservedDBInstance"))
-          .annotate({
-            identifier: "ReservedDBInstance",
-          }),
-      );
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          Marker: S.optional(S.String),
-          ReservedDBInstances: S.optional(__S(410, __c51, 2)),
-        }).pipe(ns),
-      ).annotate({
-        identifier: "ReservedDBInstanceMessage",
-      });
-    case 4:
+  }
+}
+function __c159(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           ReservedDBInstancesOfferingId: S.optional(S.String),
@@ -14585,14 +15017,14 @@ function __c51(j: number): any {
           ProductDescription: S.optional(S.String),
           OfferingType: S.optional(S.String),
           MultiAZ: S.optional(S.Boolean),
-          Filters: S.optional(__S(233, __c29, 1)),
+          Filters: S.optional(__S(3394, __c106, 2)),
           MaxRecords: S.optional(S.Number),
           Marker: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "DescribeReservedDBInstancesOfferingsMessage",
       });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           ReservedDBInstancesOfferingId: S.optional(S.String),
@@ -14604,38 +15036,38 @@ function __c51(j: number): any {
           ProductDescription: S.optional(S.String),
           OfferingType: S.optional(S.String),
           MultiAZ: S.optional(S.Boolean),
-          RecurringCharges: S.optional(__S(408, __c51, 0)),
+          RecurringCharges: S.optional(__S(5025, __c157, 1)),
         }),
       ).annotate({
         identifier: "ReservedDBInstancesOffering",
       });
-    case 6:
+    case 2:
       return S.Array(
-        /*@__PURE__*/ __S(413, __c51, 5)
+        /*@__PURE__*/ __S(5089, __c159, 1)
           .pipe(/*@__PURE__*/ T.XmlName("ReservedDBInstancesOffering"))
           .annotate({
             identifier: "ReservedDBInstancesOffering",
           }),
       );
-    case 7:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           Marker: S.optional(S.String),
-          ReservedDBInstancesOfferings: S.optional(__S(414, __c51, 6)),
+          ReservedDBInstancesOfferings: S.optional(__S(5090, __c159, 2)),
         }).pipe(ns),
       ).annotate({
         identifier: "ReservedDBInstancesOfferingMessage",
       });
   }
 }
-function __c52(j: number): any {
+function __c160(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           ServerlessV2PlatformVersion: S.optional(S.String),
           Engine: S.optional(S.String),
-          Filters: S.optional(__S(233, __c29, 1)),
+          Filters: S.optional(__S(3394, __c106, 2)),
           DefaultOnly: S.optional(S.Boolean),
           IncludeAll: S.optional(S.Boolean),
           MaxRecords: S.optional(S.Number),
@@ -14650,7 +15082,7 @@ function __c52(j: number): any {
           ServerlessV2PlatformVersion: S.optional(S.String),
           ServerlessV2PlatformVersionDescription: S.optional(S.String),
           Engine: S.optional(S.String),
-          ServerlessV2FeaturesSupport: S.optional(__S(79, __c9, 7)),
+          ServerlessV2FeaturesSupport: S.optional(__S(1184, __c37, 0)),
           Status: S.optional(S.String),
           IsDefault: S.optional(S.Boolean),
         }),
@@ -14658,28 +15090,32 @@ function __c52(j: number): any {
         identifier: "ServerlessV2PlatformVersionInfo",
       });
     case 2:
-      return S.Array(__S(417, __c52, 1));
+      return S.Array(__S(5121, __c160, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
           Marker: S.optional(S.String),
-          ServerlessV2PlatformVersions: S.optional(__S(418, __c52, 2)),
+          ServerlessV2PlatformVersions: S.optional(__S(5122, __c160, 2)),
         }).pipe(ns),
       ).annotate({
         identifier: "ServerlessV2PlatformVersionsMessage",
       });
-    case 4:
+  }
+}
+function __c161(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           RegionName: S.optional(S.String),
           MaxRecords: S.optional(S.Number),
           Marker: S.optional(S.String),
-          Filters: S.optional(__S(233, __c29, 1)),
+          Filters: S.optional(__S(3394, __c106, 2)),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "DescribeSourceRegionsMessage",
       });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           RegionName: S.optional(S.String),
@@ -14688,29 +15124,29 @@ function __c52(j: number): any {
           SupportsDBInstanceAutomatedBackupsReplication: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "SourceRegion" });
-    case 6:
+    case 2:
       return S.Array(
-        /*@__PURE__*/ __S(421, __c52, 5).pipe(/*@__PURE__*/ T.XmlName("SourceRegion")).annotate({
+        /*@__PURE__*/ __S(5153, __c161, 1).pipe(/*@__PURE__*/ T.XmlName("SourceRegion")).annotate({
           identifier: "SourceRegion",
         }),
       );
-    case 7:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           Marker: S.optional(S.String),
-          SourceRegions: S.optional(__S(422, __c52, 6)),
+          SourceRegions: S.optional(__S(5154, __c161, 2)),
         }).pipe(ns),
       ).annotate({ identifier: "SourceRegionMessage" });
   }
 }
-function __c53(j: number): any {
+function __c162(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           DBInstanceIdentifier: S.optional(S.String),
           TenantDBName: S.optional(S.String),
-          Filters: S.optional(__S(233, __c29, 1)),
+          Filters: S.optional(__S(3394, __c106, 2)),
           Marker: S.optional(S.String),
           MaxRecords: S.optional(S.Number),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
@@ -14719,7 +15155,7 @@ function __c53(j: number): any {
       });
     case 1:
       return S.Array(
-        /*@__PURE__*/ __S(182, __c22, 6).pipe(/*@__PURE__*/ T.XmlName("TenantDatabase")).annotate({
+        /*@__PURE__*/ __S(2497, __c78, 1).pipe(/*@__PURE__*/ T.XmlName("TenantDatabase")).annotate({
           identifier: "TenantDatabase",
         }),
       );
@@ -14727,10 +15163,14 @@ function __c53(j: number): any {
       return S.suspend(() =>
         S.Struct({
           Marker: S.optional(S.String),
-          TenantDatabases: S.optional(__S(425, __c53, 1)),
+          TenantDatabases: S.optional(__S(5185, __c162, 1)),
         }).pipe(ns),
       ).annotate({ identifier: "TenantDatabasesMessage" });
-    case 3:
+  }
+}
+function __c163(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ DBInstanceIdentifier: S.optional(S.String) }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
@@ -14738,7 +15178,7 @@ function __c53(j: number): any {
       ).annotate({
         identifier: "DescribeValidDBInstanceModificationsMessage",
       });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           From: S.optional(S.Number),
@@ -14746,84 +15186,81 @@ function __c53(j: number): any {
           Step: S.optional(S.Number),
         }),
       ).annotate({ identifier: "Range" });
-    case 5:
+    case 2:
       return S.Array(
-        /*@__PURE__*/ __S(428, __c53, 4).pipe(/*@__PURE__*/ T.XmlName("Range")).annotate({
-          identifier: "Range",
-        }),
+        /*@__PURE__*/ __S(5217, __c163, 1)
+          .pipe(/*@__PURE__*/ T.XmlName("Range"))
+          .annotate({ identifier: "Range" }),
       );
-    case 6:
+    case 3:
       return S.suspend(() =>
         S.Struct({ From: S.optional(S.Number), To: S.optional(S.Number) }),
       ).annotate({ identifier: "DoubleRange" });
-    case 7:
+    case 4:
       return S.Array(
-        /*@__PURE__*/ __S(430, __c53, 6).pipe(/*@__PURE__*/ T.XmlName("DoubleRange")).annotate({
+        /*@__PURE__*/ __S(5219, __c163, 3).pipe(/*@__PURE__*/ T.XmlName("DoubleRange")).annotate({
           identifier: "DoubleRange",
         }),
       );
-  }
-}
-function __c54(j: number): any {
-  switch (j) {
-    case 0:
+    case 5:
       return S.suspend(() =>
         S.Struct({
           StorageType: S.optional(S.String),
-          StorageSize: S.optional(__S(429, __c53, 5)),
-          ProvisionedIops: S.optional(__S(429, __c53, 5)),
-          IopsToStorageRatio: S.optional(__S(431, __c53, 7)),
-          ProvisionedStorageThroughput: S.optional(__S(429, __c53, 5)),
-          StorageThroughputToIopsRatio: S.optional(__S(431, __c53, 7)),
+          StorageSize: S.optional(__S(5218, __c163, 2)),
+          ProvisionedIops: S.optional(__S(5218, __c163, 2)),
+          IopsToStorageRatio: S.optional(__S(5220, __c163, 4)),
+          ProvisionedStorageThroughput: S.optional(__S(5218, __c163, 2)),
+          StorageThroughputToIopsRatio: S.optional(__S(5220, __c163, 4)),
           SupportsStorageAutoscaling: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "ValidStorageOptions" });
-    case 1:
+    case 6:
       return S.Array(
-        /*@__PURE__*/ __S(432, __c54, 0)
+        /*@__PURE__*/ __S(5221, __c163, 5)
           .pipe(/*@__PURE__*/ T.XmlName("ValidStorageOptions"))
           .annotate({
             identifier: "ValidStorageOptions",
           }),
       );
-    case 2:
+    case 7:
       return S.suspend(() =>
-        S.Struct({
-          VolumeName: S.optional(S.String),
-          Storage: S.optional(__S(433, __c54, 1)),
-        }),
+        S.Struct({ VolumeName: S.optional(S.String), Storage: S.optional(__S(5222, __c163, 6)) }),
       ).annotate({ identifier: "ValidVolumeOptions" });
-    case 3:
-      return S.Array(__S(434, __c54, 2));
-    case 4:
+    case 8:
+      return S.Array(__S(5223, __c163, 7));
+    case 9:
       return S.suspend(() =>
         S.Struct({
           SupportsAdditionalStorageVolumes: S.optional(S.Boolean),
-          Volumes: S.optional(__S(435, __c54, 3)),
+          Volumes: S.optional(__S(5224, __c163, 8)),
         }),
       ).annotate({
         identifier: "ValidAdditionalStorageOptions",
       });
-    case 5:
+    case 10:
       return S.suspend(() =>
         S.Struct({
-          Storage: S.optional(__S(433, __c54, 1)),
-          ValidProcessorFeatures: S.optional(__S(396, __c49, 4)),
+          Storage: S.optional(__S(5222, __c163, 6)),
+          ValidProcessorFeatures: S.optional(__S(4929, __c154, 1)),
           SupportsDedicatedLogVolume: S.optional(S.Boolean),
-          AdditionalStorage: S.optional(__S(436, __c54, 4)),
+          AdditionalStorage: S.optional(__S(5225, __c163, 9)),
         }),
       ).annotate({
         identifier: "ValidDBInstanceModificationsMessage",
       });
-    case 6:
+    case 11:
       return S.suspend(() =>
         S.Struct({
-          ValidDBInstanceModificationsMessage: S.optional(__S(437, __c54, 5)),
+          ValidDBInstanceModificationsMessage: S.optional(__S(5226, __c163, 10)),
         }).pipe(ns),
       ).annotate({
         identifier: "DescribeValidDBInstanceModificationsResult",
       });
-    case 7:
+  }
+}
+function __c164(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ ResourceArn: S.optional(S.String) }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
@@ -14831,11 +15268,7 @@ function __c54(j: number): any {
       ).annotate({
         identifier: "DisableHttpEndpointRequest",
       });
-  }
-}
-function __c55(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           ResourceArn: S.optional(S.String),
@@ -14844,7 +15277,11 @@ function __c55(j: number): any {
       ).annotate({
         identifier: "DisableHttpEndpointResponse",
       });
-    case 1:
+  }
+}
+function __c165(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           DBInstanceIdentifier: S.optional(S.String),
@@ -14855,7 +15292,7 @@ function __c55(j: number): any {
       ).annotate({
         identifier: "DownloadDBLogFilePortionMessage",
       });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           LogFileData: S.optional(SensitiveString),
@@ -14865,7 +15302,11 @@ function __c55(j: number): any {
       ).annotate({
         identifier: "DownloadDBLogFilePortionDetails",
       });
-    case 3:
+  }
+}
+function __c166(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ ResourceArn: S.optional(S.String) }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
@@ -14873,7 +15314,7 @@ function __c55(j: number): any {
       ).annotate({
         identifier: "EnableHttpEndpointRequest",
       });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           ResourceArn: S.optional(S.String),
@@ -14882,20 +15323,26 @@ function __c55(j: number): any {
       ).annotate({
         identifier: "EnableHttpEndpointResponse",
       });
-    case 5:
+  }
+}
+function __c167(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           DBClusterIdentifier: S.optional(S.String),
           TargetDBInstanceIdentifier: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "FailoverDBClusterMessage" });
-    case 6:
+    case 1:
       return S.suspend(() =>
-        S.Struct({ DBCluster: S.optional(__S(108, __c13, 4)) }).pipe(ns),
-      ).annotate({
-        identifier: "FailoverDBClusterResult",
-      });
-    case 7:
+        S.Struct({ DBCluster: S.optional(__S(1422, __c44, 14)) }).pipe(ns),
+      ).annotate({ identifier: "FailoverDBClusterResult" });
+  }
+}
+function __c168(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           GlobalClusterIdentifier: S.optional(S.String),
@@ -14906,32 +15353,34 @@ function __c55(j: number): any {
       ).annotate({
         identifier: "FailoverGlobalClusterMessage",
       });
-  }
-}
-function __c56(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
-        S.Struct({ GlobalCluster: S.optional(__S(171, __c21, 3)) }).pipe(ns),
+        S.Struct({ GlobalCluster: S.optional(__S(2340, __c73, 4)) }).pipe(ns),
       ).annotate({
         identifier: "FailoverGlobalClusterResult",
       });
-    case 1:
+  }
+}
+function __c169(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           ResourceName: S.optional(S.String),
-          Filters: S.optional(__S(233, __c29, 1)),
+          Filters: S.optional(__S(3394, __c106, 2)),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "ListTagsForResourceMessage",
       });
-    case 2:
-      return S.suspend(() => S.Struct({ TagList: S.optional(__S(10, __c1, 2)) }).pipe(ns)).annotate(
-        {
-          identifier: "TagListMessage",
-        },
-      );
-    case 3:
+    case 1:
+      return S.suspend(() =>
+        S.Struct({ TagList: S.optional(__S(225, __c7, 1)) }).pipe(ns),
+      ).annotate({ identifier: "TagListMessage" });
+  }
+}
+function __c170(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           ResourceArn: S.optional(S.String),
@@ -14940,7 +15389,7 @@ function __c56(j: number): any {
       ).annotate({
         identifier: "ModifyActivityStreamRequest",
       });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           KmsKeyId: S.optional(S.String),
@@ -14953,7 +15402,11 @@ function __c56(j: number): any {
       ).annotate({
         identifier: "ModifyActivityStreamResponse",
       });
-    case 5:
+  }
+}
+function __c171(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           CertificateIdentifier: S.optional(S.String),
@@ -14962,13 +15415,15 @@ function __c56(j: number): any {
       ).annotate({
         identifier: "ModifyCertificatesMessage",
       });
-    case 6:
+    case 1:
       return S.suspend(() =>
-        S.Struct({ Certificate: S.optional(__S(238, __c29, 6)) }).pipe(ns),
-      ).annotate({
-        identifier: "ModifyCertificatesResult",
-      });
-    case 7:
+        S.Struct({ Certificate: S.optional(__S(3456, __c108, 0)) }).pipe(ns),
+      ).annotate({ identifier: "ModifyCertificatesResult" });
+  }
+}
+function __c172(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           DBClusterIdentifier: S.optional(S.String),
@@ -14979,11 +15434,7 @@ function __c56(j: number): any {
       ).annotate({
         identifier: "ModifyCurrentDBClusterCapacityMessage",
       });
-  }
-}
-function __c57(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           DBClusterIdentifier: S.optional(S.String),
@@ -14993,7 +15444,11 @@ function __c57(j: number): any {
           TimeoutAction: S.optional(S.String),
         }).pipe(ns),
       ).annotate({ identifier: "DBClusterCapacityInfo" });
-    case 1:
+  }
+}
+function __c173(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           Engine: S.optional(S.String),
@@ -15004,16 +15459,11 @@ function __c57(j: number): any {
       ).annotate({
         identifier: "ModifyCustomDBEngineVersionMessage",
       });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          EnableLogTypes: S.optional(__S(76, __c9, 4)),
-          DisableLogTypes: S.optional(__S(76, __c9, 4)),
-        }),
-      ).annotate({
-        identifier: "CloudwatchLogsExportConfiguration",
-      });
-    case 3:
+  }
+}
+function __c174(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           DBClusterIdentifier: S.optional(S.String),
@@ -15021,7 +15471,7 @@ function __c57(j: number): any {
           ApplyImmediately: S.optional(S.Boolean),
           BackupRetentionPeriod: S.optional(S.Number),
           DBClusterParameterGroupName: S.optional(S.String),
-          VpcSecurityGroupIds: S.optional(__S(81, __c10, 1)),
+          VpcSecurityGroupIds: S.optional(__S(1344, __c42, 0)),
           Port: S.optional(S.Number),
           MasterUserPassword: S.optional(SensitiveString),
           OptionGroupName: S.optional(S.String),
@@ -15029,13 +15479,13 @@ function __c57(j: number): any {
           PreferredMaintenanceWindow: S.optional(S.String),
           EnableIAMDatabaseAuthentication: S.optional(S.Boolean),
           BacktrackWindow: S.optional(S.Number),
-          CloudwatchLogsExportConfiguration: S.optional(__S(458, __c57, 2)),
+          CloudwatchLogsExportConfiguration: S.optional(__S(5600, __c175, 0)),
           EngineVersion: S.optional(S.String),
           AllowMajorVersionUpgrade: S.optional(S.Boolean),
           DBInstanceParameterGroupName: S.optional(S.String),
           Domain: S.optional(S.String),
           DomainIAMRoleName: S.optional(S.String),
-          ScalingConfiguration: S.optional(__S(82, __c10, 2)),
+          ScalingConfiguration: S.optional(__S(1472, __c46, 0)),
           DeletionProtection: S.optional(S.Boolean),
           EnableHttpEndpoint: S.optional(S.Boolean),
           CopyTagsToSnapshot: S.optional(S.Boolean),
@@ -15046,7 +15496,7 @@ function __c57(j: number): any {
           Iops: S.optional(S.Number),
           AutoMinorVersionUpgrade: S.optional(S.Boolean),
           NetworkType: S.optional(S.String),
-          ServerlessV2ScalingConfiguration: S.optional(__S(84, __c10, 4)),
+          ServerlessV2ScalingConfiguration: S.optional(__S(1440, __c45, 0)),
           MonitoringInterval: S.optional(S.Number),
           MonitoringRoleArn: S.optional(S.String),
           DatabaseInsightsMode: S.optional(S.String),
@@ -15066,33 +15516,56 @@ function __c57(j: number): any {
           EngineLifecycleSupport: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "ModifyDBClusterMessage" });
-    case 4:
+    case 1:
       return S.suspend(() =>
-        S.Struct({ DBCluster: S.optional(__S(108, __c13, 4)) }).pipe(ns),
+        S.Struct({ DBCluster: S.optional(__S(1422, __c44, 14)) }).pipe(ns),
+      ).annotate({ identifier: "ModifyDBClusterResult" });
+  }
+}
+function __c175(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          EnableLogTypes: S.optional(__S(1120, __c35, 0)),
+          DisableLogTypes: S.optional(__S(1120, __c35, 0)),
+        }),
       ).annotate({
-        identifier: "ModifyDBClusterResult",
+        identifier: "CloudwatchLogsExportConfiguration",
       });
-    case 5:
+  }
+}
+function __c176(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           DBClusterEndpointIdentifier: S.optional(S.String),
           EndpointType: S.optional(S.String),
-          StaticMembers: S.optional(__S(28, __c3, 4)),
-          ExcludedMembers: S.optional(__S(28, __c3, 4)),
+          StaticMembers: S.optional(__S(480, __c15, 0)),
+          ExcludedMembers: S.optional(__S(480, __c15, 0)),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "ModifyDBClusterEndpointMessage",
       });
-    case 6:
+  }
+}
+function __c177(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           DBClusterParameterGroupName: S.optional(S.String),
-          Parameters: S.optional(__S(255, __c31, 7)),
+          Parameters: S.optional(__S(3649, __c114, 1)),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "ModifyDBClusterParameterGroupMessage",
       });
-    case 7:
+  }
+}
+function __c178(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ DBClusterParameterGroupName: S.optional(S.String) }).pipe(ns),
       ).annotate({
@@ -15100,15 +15573,15 @@ function __c57(j: number): any {
       });
   }
 }
-function __c58(j: number): any {
+function __c179(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           DBClusterSnapshotIdentifier: S.optional(S.String),
           AttributeName: S.optional(S.String),
-          ValuesToAdd: S.optional(__S(261, __c32, 5)),
-          ValuesToRemove: S.optional(__S(261, __c32, 5)),
+          ValuesToAdd: S.optional(__S(3744, __c117, 0)),
+          ValuesToRemove: S.optional(__S(3744, __c117, 0)),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "ModifyDBClusterSnapshotAttributeMessage",
@@ -15116,12 +15589,16 @@ function __c58(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          DBClusterSnapshotAttributesResult: S.optional(__S(264, __c33, 0)),
+          DBClusterSnapshotAttributesResult: S.optional(__S(3778, __c118, 2)),
         }).pipe(ns),
       ).annotate({
         identifier: "ModifyDBClusterSnapshotAttributeResult",
       });
-    case 2:
+  }
+}
+function __c180(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           VolumeName: S.optional(S.String),
@@ -15135,17 +15612,17 @@ function __c58(j: number): any {
       ).annotate({
         identifier: "ModifyAdditionalStorageVolume",
       });
-    case 3:
-      return S.Array(__S(466, __c58, 2));
-    case 4:
+    case 1:
+      return S.Array(__S(5760, __c180, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           DBInstanceIdentifier: S.optional(S.String),
           AllocatedStorage: S.optional(S.Number),
           DBInstanceClass: S.optional(S.String),
           DBSubnetGroupName: S.optional(S.String),
-          DBSecurityGroups: S.optional(__S(116, __c14, 4)),
-          VpcSecurityGroupIds: S.optional(__S(81, __c10, 1)),
+          DBSecurityGroups: S.optional(__S(1824, __c57, 0)),
+          VpcSecurityGroupIds: S.optional(__S(1344, __c42, 0)),
           ApplyImmediately: S.optional(S.Boolean),
           MasterUserPassword: S.optional(SensitiveString),
           DBParameterGroupName: S.optional(S.String),
@@ -15169,7 +15646,7 @@ function __c58(j: number): any {
           DomainFqdn: S.optional(S.String),
           DomainOu: S.optional(S.String),
           DomainAuthSecretArn: S.optional(S.String),
-          DomainDnsIps: S.optional(__S(28, __c3, 4)),
+          DomainDnsIps: S.optional(__S(480, __c15, 0)),
           DisableDomain: S.optional(S.Boolean),
           CopyTagsToSnapshot: S.optional(S.Boolean),
           MonitoringInterval: S.optional(S.Number),
@@ -15183,8 +15660,8 @@ function __c58(j: number): any {
           EnablePerformanceInsights: S.optional(S.Boolean),
           PerformanceInsightsKMSKeyId: S.optional(S.String),
           PerformanceInsightsRetentionPeriod: S.optional(S.Number),
-          CloudwatchLogsExportConfiguration: S.optional(__S(458, __c57, 2)),
-          ProcessorFeatures: S.optional(__S(42, __c5, 2)),
+          CloudwatchLogsExportConfiguration: S.optional(__S(5600, __c175, 0)),
+          ProcessorFeatures: S.optional(__S(833, __c26, 1)),
           UseDefaultProcessorFeatures: S.optional(S.Boolean),
           DeletionProtection: S.optional(S.Boolean),
           MaxAllocatedStorage: S.optional(S.Number),
@@ -15201,28 +15678,34 @@ function __c58(j: number): any {
           MultiTenant: S.optional(S.Boolean),
           DedicatedLogVolume: S.optional(S.Boolean),
           Engine: S.optional(S.String),
-          AdditionalStorageVolumes: S.optional(__S(467, __c58, 3)),
-          TagSpecifications: S.optional(__S(86, __c10, 6)),
+          AdditionalStorageVolumes: S.optional(__S(5761, __c180, 1)),
+          TagSpecifications: S.optional(__S(1377, __c43, 1)),
           MasterUserAuthenticationType: S.optional(S.String),
           EngineLifecycleSupport: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "ModifyDBInstanceMessage" });
-    case 5:
+    case 3:
       return S.suspend(() =>
-        S.Struct({ DBInstance: S.optional(__S(139, __c17, 3)) }).pipe(ns),
-      ).annotate({
-        identifier: "ModifyDBInstanceResult",
-      });
-    case 6:
+        S.Struct({ DBInstance: S.optional(__S(1805, __c56, 13)) }).pipe(ns),
+      ).annotate({ identifier: "ModifyDBInstanceResult" });
+  }
+}
+function __c181(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           DBParameterGroupName: S.optional(S.String),
-          Parameters: S.optional(__S(255, __c31, 7)),
+          Parameters: S.optional(__S(3649, __c114, 1)),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "ModifyDBParameterGroupMessage",
       });
-    case 7:
+  }
+}
+function __c182(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ DBParameterGroupName: S.optional(S.String) }).pipe(ns),
       ).annotate({
@@ -15230,7 +15713,7 @@ function __c58(j: number): any {
       });
   }
 }
-function __c59(j: number): any {
+function __c183(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -15238,91 +15721,101 @@ function __c59(j: number): any {
           DBProxyName: S.optional(S.String),
           NewDBProxyName: S.optional(S.String),
           DefaultAuthScheme: S.optional(S.String),
-          Auth: S.optional(__S(146, __c18, 2)),
+          Auth: S.optional(__S(1985, __c62, 1)),
           RequireTLS: S.optional(S.Boolean),
           IdleClientTimeout: S.optional(S.Number),
           DebugLogging: S.optional(S.Boolean),
           RoleArn: S.optional(S.String),
-          SecurityGroups: S.optional(__S(28, __c3, 4)),
+          SecurityGroups: S.optional(__S(480, __c15, 0)),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "ModifyDBProxyRequest" });
     case 1:
       return S.suspend(() =>
-        S.Struct({ DBProxy: S.optional(__S(150, __c18, 6)) }).pipe(ns),
-      ).annotate({
-        identifier: "ModifyDBProxyResponse",
-      });
-    case 2:
+        S.Struct({ DBProxy: S.optional(__S(1954, __c61, 2)) }).pipe(ns),
+      ).annotate({ identifier: "ModifyDBProxyResponse" });
+  }
+}
+function __c184(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           DBProxyEndpointName: S.optional(S.String),
           NewDBProxyEndpointName: S.optional(S.String),
-          VpcSecurityGroupIds: S.optional(__S(28, __c3, 4)),
+          VpcSecurityGroupIds: S.optional(__S(480, __c15, 0)),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "ModifyDBProxyEndpointRequest",
       });
-    case 3:
+    case 1:
       return S.suspend(() =>
-        S.Struct({ DBProxyEndpoint: S.optional(__S(153, __c19, 1)) }).pipe(ns),
+        S.Struct({ DBProxyEndpoint: S.optional(__S(2048, __c64, 0)) }).pipe(ns),
       ).annotate({
         identifier: "ModifyDBProxyEndpointResponse",
       });
-    case 4:
+  }
+}
+function __c185(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           MaxConnectionsPercent: S.optional(S.Number),
           MaxIdleConnectionsPercent: S.optional(S.Number),
           ConnectionBorrowTimeout: S.optional(S.Number),
-          SessionPinningFilters: S.optional(__S(28, __c3, 4)),
+          SessionPinningFilters: S.optional(__S(480, __c15, 0)),
           InitQuery: S.optional(SensitiveString),
         }),
       ).annotate({
         identifier: "ConnectionPoolConfiguration",
       });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           TargetGroupName: S.optional(S.String),
           DBProxyName: S.optional(S.String),
-          ConnectionPoolConfig: S.optional(__S(476, __c59, 4)),
+          ConnectionPoolConfig: S.optional(__S(5920, __c185, 0)),
           NewName: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "ModifyDBProxyTargetGroupRequest",
       });
-    case 6:
+    case 2:
       return S.suspend(() =>
-        S.Struct({ DBProxyTargetGroup: S.optional(__S(301, __c37, 5)) }).pipe(ns),
+        S.Struct({ DBProxyTargetGroup: S.optional(__S(4161, __c130, 1)) }).pipe(ns),
       ).annotate({
         identifier: "ModifyDBProxyTargetGroupResponse",
       });
-    case 7:
+  }
+}
+function __c186(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ ActionId: S.optional(S.String), Status: S.optional(S.String) }),
       ).annotate({ identifier: "RecommendedActionUpdate" });
-  }
-}
-function __c60(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(479, __c59, 7));
     case 1:
+      return S.Array(__S(5952, __c186, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           RecommendationId: S.optional(S.String),
           Locale: S.optional(S.String),
           Status: S.optional(S.String),
-          RecommendedActionUpdates: S.optional(__S(480, __c60, 0)),
+          RecommendedActionUpdates: S.optional(__S(5953, __c186, 1)),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "ModifyDBRecommendationMessage",
       });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({ DBRecommendation: S.optional(__S(329, __c41, 1)) }).pipe(ns),
-      ).annotate({ identifier: "DBRecommendationMessage" });
     case 3:
+      return S.suspend(() =>
+        S.Struct({ DBRecommendation: S.optional(__S(4307, __c134, 19)) }).pipe(ns),
+      ).annotate({ identifier: "DBRecommendationMessage" });
+  }
+}
+function __c187(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           DBShardGroupIdentifier: S.optional(S.String),
@@ -15333,7 +15826,11 @@ function __c60(j: number): any {
       ).annotate({
         identifier: "ModifyDBShardGroupMessage",
       });
-    case 4:
+  }
+}
+function __c188(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           DBSnapshotIdentifier: S.optional(S.String),
@@ -15341,68 +15838,78 @@ function __c60(j: number): any {
           OptionGroupName: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "ModifyDBSnapshotMessage" });
-    case 5:
+    case 1:
       return S.suspend(() =>
-        S.Struct({ DBSnapshot: S.optional(__S(45, __c5, 5)) }).pipe(ns),
-      ).annotate({
-        identifier: "ModifyDBSnapshotResult",
-      });
-    case 6:
+        S.Struct({ DBSnapshot: S.optional(__S(864, __c27, 0)) }).pipe(ns),
+      ).annotate({ identifier: "ModifyDBSnapshotResult" });
+  }
+}
+function __c189(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           DBSnapshotIdentifier: S.optional(S.String),
           AttributeName: S.optional(S.String),
-          ValuesToAdd: S.optional(__S(261, __c32, 5)),
-          ValuesToRemove: S.optional(__S(261, __c32, 5)),
+          ValuesToAdd: S.optional(__S(3744, __c117, 0)),
+          ValuesToRemove: S.optional(__S(3744, __c117, 0)),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "ModifyDBSnapshotAttributeMessage",
       });
-    case 7:
+    case 1:
       return S.suspend(() =>
-        S.Struct({ DBSnapshotAttributesResult: S.optional(__S(341, __c42, 5)) }).pipe(ns),
+        S.Struct({ DBSnapshotAttributesResult: S.optional(__S(4418, __c138, 2)) }).pipe(ns),
       ).annotate({
         identifier: "ModifyDBSnapshotAttributeResult",
       });
   }
 }
-function __c61(j: number): any {
+function __c190(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           DBSubnetGroupName: S.optional(S.String),
           DBSubnetGroupDescription: S.optional(S.String),
-          SubnetIds: S.optional(__S(161, __c20, 1)),
+          SubnetIds: S.optional(__S(2240, __c70, 0)),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "ModifyDBSubnetGroupMessage",
       });
     case 1:
       return S.suspend(() =>
-        S.Struct({ DBSubnetGroup: S.optional(__S(125, __c15, 5)) }).pipe(ns),
+        S.Struct({ DBSubnetGroup: S.optional(__S(1731, __c54, 3)) }).pipe(ns),
       ).annotate({
         identifier: "ModifyDBSubnetGroupResult",
       });
-    case 2:
+  }
+}
+function __c191(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           SubscriptionName: S.optional(S.String),
           SnsTopicArn: S.optional(S.String),
           SourceType: S.optional(S.String),
-          EventCategories: S.optional(__S(6, __c0, 6)),
+          EventCategories: S.optional(__S(128, __c4, 0)),
           Enabled: S.optional(S.Boolean),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "ModifyEventSubscriptionMessage",
       });
-    case 3:
+    case 1:
       return S.suspend(() =>
-        S.Struct({ EventSubscription: S.optional(__S(7, __c0, 7)) }).pipe(ns),
+        S.Struct({ EventSubscription: S.optional(__S(161, __c5, 1)) }).pipe(ns),
       ).annotate({
         identifier: "ModifyEventSubscriptionResult",
       });
-    case 4:
+  }
+}
+function __c192(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           GlobalClusterIdentifier: S.optional(S.String),
@@ -15414,13 +15921,17 @@ function __c61(j: number): any {
       ).annotate({
         identifier: "ModifyGlobalClusterMessage",
       });
-    case 5:
+    case 1:
       return S.suspend(() =>
-        S.Struct({ GlobalCluster: S.optional(__S(171, __c21, 3)) }).pipe(ns),
+        S.Struct({ GlobalCluster: S.optional(__S(2340, __c73, 4)) }).pipe(ns),
       ).annotate({
         identifier: "ModifyGlobalClusterResult",
       });
-    case 6:
+  }
+}
+function __c193(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           IntegrationIdentifier: S.optional(S.String),
@@ -15429,53 +15940,55 @@ function __c61(j: number): any {
           Description: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "ModifyIntegrationMessage" });
-    case 7:
+  }
+}
+function __c194(j: number): any {
+  switch (j) {
+    case 0:
       return S.Array(
-        /*@__PURE__*/ __S(48, __c6, 0).pipe(/*@__PURE__*/ T.XmlName("OptionSetting")).annotate({
+        /*@__PURE__*/ __S(992, __c31, 0).pipe(/*@__PURE__*/ T.XmlName("OptionSetting")).annotate({
           identifier: "OptionSetting",
         }),
       );
-  }
-}
-function __c62(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           OptionName: S.optional(S.String),
           Port: S.optional(S.Number),
           OptionVersion: S.optional(S.String),
-          DBSecurityGroupMemberships: S.optional(__S(116, __c14, 4)),
-          VpcSecurityGroupMemberships: S.optional(__S(81, __c10, 1)),
-          OptionSettings: S.optional(__S(495, __c61, 7)),
+          DBSecurityGroupMemberships: S.optional(__S(1824, __c57, 0)),
+          VpcSecurityGroupMemberships: S.optional(__S(1344, __c42, 0)),
+          OptionSettings: S.optional(__S(6208, __c194, 0)),
         }),
       ).annotate({ identifier: "OptionConfiguration" });
-    case 1:
+    case 2:
       return S.Array(
-        /*@__PURE__*/ __S(496, __c62, 0)
+        /*@__PURE__*/ __S(6209, __c194, 1)
           .pipe(/*@__PURE__*/ T.XmlName("OptionConfiguration"))
           .annotate({
             identifier: "OptionConfiguration",
           }),
       );
-    case 2:
-      return S.Array(S.String);
     case 3:
+      return S.Array(S.String);
+    case 4:
       return S.suspend(() =>
         S.Struct({
           OptionGroupName: S.optional(S.String),
-          OptionsToInclude: S.optional(__S(497, __c62, 1)),
-          OptionsToRemove: S.optional(__S(498, __c62, 2)),
+          OptionsToInclude: S.optional(__S(6210, __c194, 2)),
+          OptionsToRemove: S.optional(__S(6211, __c194, 3)),
           ApplyImmediately: S.optional(S.Boolean),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "ModifyOptionGroupMessage" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({ OptionGroup: S.optional(__S(56, __c7, 0)) }).pipe(ns),
-      ).annotate({
-        identifier: "ModifyOptionGroupResult",
-      });
     case 5:
+      return S.suspend(() =>
+        S.Struct({ OptionGroup: S.optional(__S(996, __c31, 4)) }).pipe(ns),
+      ).annotate({ identifier: "ModifyOptionGroupResult" });
+  }
+}
+function __c195(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           DBInstanceIdentifier: S.optional(S.String),
@@ -15489,34 +16002,36 @@ function __c62(j: number): any {
       ).annotate({
         identifier: "ModifyTenantDatabaseMessage",
       });
-    case 6:
+    case 1:
       return S.suspend(() =>
-        S.Struct({ TenantDatabase: S.optional(__S(182, __c22, 6)) }).pipe(ns),
+        S.Struct({ TenantDatabase: S.optional(__S(2497, __c78, 1)) }).pipe(ns),
       ).annotate({
         identifier: "ModifyTenantDatabaseResult",
       });
-    case 7:
+  }
+}
+function __c196(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           DBInstanceIdentifier: S.optional(S.String),
           BackupRetentionPeriod: S.optional(S.Number),
           PreferredBackupWindow: S.optional(S.String),
-          TagSpecifications: S.optional(__S(86, __c10, 6)),
+          TagSpecifications: S.optional(__S(1377, __c43, 1)),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "PromoteReadReplicaMessage",
       });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({ DBInstance: S.optional(__S(1805, __c56, 13)) }).pipe(ns),
+      ).annotate({ identifier: "PromoteReadReplicaResult" });
   }
 }
-function __c63(j: number): any {
+function __c197(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() =>
-        S.Struct({ DBInstance: S.optional(__S(139, __c17, 3)) }).pipe(ns),
-      ).annotate({
-        identifier: "PromoteReadReplicaResult",
-      });
-    case 1:
       return S.suspend(() =>
         S.Struct({ DBClusterIdentifier: S.optional(S.String) }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
@@ -15524,59 +16039,67 @@ function __c63(j: number): any {
       ).annotate({
         identifier: "PromoteReadReplicaDBClusterMessage",
       });
-    case 2:
+    case 1:
       return S.suspend(() =>
-        S.Struct({ DBCluster: S.optional(__S(108, __c13, 4)) }).pipe(ns),
+        S.Struct({ DBCluster: S.optional(__S(1422, __c44, 14)) }).pipe(ns),
       ).annotate({
         identifier: "PromoteReadReplicaDBClusterResult",
       });
-    case 3:
+  }
+}
+function __c198(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           ReservedDBInstancesOfferingId: S.optional(S.String),
           ReservedDBInstanceId: S.optional(S.String),
           DBInstanceCount: S.optional(S.Number),
-          Tags: S.optional(__S(10, __c1, 2)),
+          Tags: S.optional(__S(225, __c7, 1)),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "PurchaseReservedDBInstancesOfferingMessage",
       });
-    case 4:
+    case 1:
       return S.suspend(() =>
-        S.Struct({ ReservedDBInstance: S.optional(__S(409, __c51, 1)) }).pipe(ns),
+        S.Struct({ ReservedDBInstance: S.optional(__S(5056, __c158, 0)) }).pipe(ns),
       ).annotate({
         identifier: "PurchaseReservedDBInstancesOfferingResult",
       });
-    case 5:
+  }
+}
+function __c199(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ DBClusterIdentifier: S.optional(S.String) }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "RebootDBClusterMessage" });
-    case 6:
+    case 1:
       return S.suspend(() =>
-        S.Struct({ DBCluster: S.optional(__S(108, __c13, 4)) }).pipe(ns),
-      ).annotate({
-        identifier: "RebootDBClusterResult",
-      });
-    case 7:
+        S.Struct({ DBCluster: S.optional(__S(1422, __c44, 14)) }).pipe(ns),
+      ).annotate({ identifier: "RebootDBClusterResult" });
+  }
+}
+function __c200(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           DBInstanceIdentifier: S.optional(S.String),
           ForceFailover: S.optional(S.Boolean),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "RebootDBInstanceMessage" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({ DBInstance: S.optional(__S(1805, __c56, 13)) }).pipe(ns),
+      ).annotate({ identifier: "RebootDBInstanceResult" });
   }
 }
-function __c64(j: number): any {
+function __c201(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() =>
-        S.Struct({ DBInstance: S.optional(__S(139, __c17, 3)) }).pipe(ns),
-      ).annotate({
-        identifier: "RebootDBInstanceResult",
-      });
-    case 1:
       return S.suspend(() =>
         S.Struct({ DBShardGroupIdentifier: S.optional(S.String) }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
@@ -15584,24 +16107,32 @@ function __c64(j: number): any {
       ).annotate({
         identifier: "RebootDBShardGroupMessage",
       });
-    case 2:
+  }
+}
+function __c202(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           DBProxyName: S.optional(S.String),
           TargetGroupName: S.optional(S.String),
-          DBInstanceIdentifiers: S.optional(__S(28, __c3, 4)),
-          DBClusterIdentifiers: S.optional(__S(28, __c3, 4)),
+          DBInstanceIdentifiers: S.optional(__S(480, __c15, 0)),
+          DBClusterIdentifiers: S.optional(__S(480, __c15, 0)),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "RegisterDBProxyTargetsRequest",
       });
-    case 3:
+    case 1:
       return S.suspend(() =>
-        S.Struct({ DBProxyTargets: S.optional(__S(307, __c38, 3)) }).pipe(ns),
+        S.Struct({ DBProxyTargets: S.optional(__S(4226, __c132, 2)) }).pipe(ns),
       ).annotate({
         identifier: "RegisterDBProxyTargetsResponse",
       });
-    case 4:
+  }
+}
+function __c203(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           GlobalClusterIdentifier: S.optional(S.String),
@@ -15610,13 +16141,17 @@ function __c64(j: number): any {
       ).annotate({
         identifier: "RemoveFromGlobalClusterMessage",
       });
-    case 5:
+    case 1:
       return S.suspend(() =>
-        S.Struct({ GlobalCluster: S.optional(__S(171, __c21, 3)) }).pipe(ns),
+        S.Struct({ GlobalCluster: S.optional(__S(2340, __c73, 4)) }).pipe(ns),
       ).annotate({
         identifier: "RemoveFromGlobalClusterResult",
       });
-    case 6:
+  }
+}
+function __c204(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           DBClusterIdentifier: S.optional(S.String),
@@ -15626,13 +16161,13 @@ function __c64(j: number): any {
       ).annotate({
         identifier: "RemoveRoleFromDBClusterMessage",
       });
-    case 7:
+    case 1:
       return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
         identifier: "RemoveRoleFromDBClusterResponse",
       });
   }
 }
-function __c65(j: number): any {
+function __c205(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -15648,7 +16183,11 @@ function __c65(j: number): any {
       return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
         identifier: "RemoveRoleFromDBInstanceResponse",
       });
-    case 2:
+  }
+}
+function __c206(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           SubscriptionName: S.optional(S.String),
@@ -15657,61 +16196,73 @@ function __c65(j: number): any {
       ).annotate({
         identifier: "RemoveSourceIdentifierFromSubscriptionMessage",
       });
-    case 3:
+    case 1:
       return S.suspend(() =>
-        S.Struct({ EventSubscription: S.optional(__S(7, __c0, 7)) }).pipe(ns),
+        S.Struct({ EventSubscription: S.optional(__S(161, __c5, 1)) }).pipe(ns),
       ).annotate({
         identifier: "RemoveSourceIdentifierFromSubscriptionResult",
       });
-    case 4:
+  }
+}
+function __c207(j: number): any {
+  switch (j) {
+    case 0:
       return S.Array(S.String);
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           ResourceName: S.optional(S.String),
-          TagKeys: S.optional(__S(524, __c65, 4)),
+          TagKeys: S.optional(__S(6624, __c207, 0)),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "RemoveTagsFromResourceMessage",
       });
-    case 6:
+    case 2:
       return S.suspend(() => S.Struct({}).pipe(ns)).annotate({
         identifier: "RemoveTagsFromResourceResponse",
       });
-    case 7:
+  }
+}
+function __c208(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           DBClusterParameterGroupName: S.optional(S.String),
           ResetAllParameters: S.optional(S.Boolean),
-          Parameters: S.optional(__S(255, __c31, 7)),
+          Parameters: S.optional(__S(3649, __c114, 1)),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "ResetDBClusterParameterGroupMessage",
       });
   }
 }
-function __c66(j: number): any {
+function __c209(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           DBParameterGroupName: S.optional(S.String),
           ResetAllParameters: S.optional(S.Boolean),
-          Parameters: S.optional(__S(255, __c31, 7)),
+          Parameters: S.optional(__S(3649, __c114, 1)),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "ResetDBParameterGroupMessage",
       });
-    case 1:
+  }
+}
+function __c210(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          AvailabilityZones: S.optional(__S(34, __c4, 2)),
+          AvailabilityZones: S.optional(__S(640, __c20, 0)),
           BackupRetentionPeriod: S.optional(S.Number),
           CharacterSetName: S.optional(S.String),
           DatabaseName: S.optional(S.String),
           DBClusterIdentifier: S.optional(S.String),
           DBClusterParameterGroupName: S.optional(S.String),
-          VpcSecurityGroupIds: S.optional(__S(81, __c10, 1)),
+          VpcSecurityGroupIds: S.optional(__S(1344, __c42, 0)),
           DBSubnetGroupName: S.optional(S.String),
           Engine: S.optional(S.String),
           EngineVersion: S.optional(S.String),
@@ -15721,7 +16272,7 @@ function __c66(j: number): any {
           OptionGroupName: S.optional(S.String),
           PreferredBackupWindow: S.optional(S.String),
           PreferredMaintenanceWindow: S.optional(S.String),
-          Tags: S.optional(__S(10, __c1, 2)),
+          Tags: S.optional(__S(225, __c7, 1)),
           StorageEncrypted: S.optional(S.Boolean),
           KmsKeyId: S.optional(S.String),
           EnableIAMDatabaseAuthentication: S.optional(S.Boolean),
@@ -15731,33 +16282,37 @@ function __c66(j: number): any {
           S3Prefix: S.optional(S.String),
           S3IngestionRoleArn: S.optional(S.String),
           BacktrackWindow: S.optional(S.Number),
-          EnableCloudwatchLogsExports: S.optional(__S(76, __c9, 4)),
+          EnableCloudwatchLogsExports: S.optional(__S(1120, __c35, 0)),
           DeletionProtection: S.optional(S.Boolean),
           CopyTagsToSnapshot: S.optional(S.Boolean),
           Domain: S.optional(S.String),
           DomainIAMRoleName: S.optional(S.String),
           StorageType: S.optional(S.String),
           NetworkType: S.optional(S.String),
-          ServerlessV2ScalingConfiguration: S.optional(__S(84, __c10, 4)),
+          ServerlessV2ScalingConfiguration: S.optional(__S(1440, __c45, 0)),
           ManageMasterUserPassword: S.optional(S.Boolean),
           MasterUserSecretKmsKeyId: S.optional(S.String),
           EngineLifecycleSupport: S.optional(S.String),
-          TagSpecifications: S.optional(__S(86, __c10, 6)),
-          AssociatedRoles: S.optional(__S(88, __c11, 0)),
+          TagSpecifications: S.optional(__S(1377, __c43, 1)),
+          AssociatedRoles: S.optional(__S(1505, __c47, 1)),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "RestoreDBClusterFromS3Message",
       });
-    case 2:
+    case 1:
       return S.suspend(() =>
-        S.Struct({ DBCluster: S.optional(__S(108, __c13, 4)) }).pipe(ns),
+        S.Struct({ DBCluster: S.optional(__S(1422, __c44, 14)) }).pipe(ns),
       ).annotate({
         identifier: "RestoreDBClusterFromS3Result",
       });
-    case 3:
+  }
+}
+function __c211(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          AvailabilityZones: S.optional(__S(34, __c4, 2)),
+          AvailabilityZones: S.optional(__S(640, __c20, 0)),
           DBClusterIdentifier: S.optional(S.String),
           SnapshotIdentifier: S.optional(S.String),
           Engine: S.optional(S.String),
@@ -15766,14 +16321,14 @@ function __c66(j: number): any {
           DBSubnetGroupName: S.optional(S.String),
           DatabaseName: S.optional(S.String),
           OptionGroupName: S.optional(S.String),
-          VpcSecurityGroupIds: S.optional(__S(81, __c10, 1)),
-          Tags: S.optional(__S(10, __c1, 2)),
+          VpcSecurityGroupIds: S.optional(__S(1344, __c42, 0)),
+          Tags: S.optional(__S(225, __c7, 1)),
           KmsKeyId: S.optional(S.String),
           EnableIAMDatabaseAuthentication: S.optional(S.Boolean),
           BacktrackWindow: S.optional(S.Number),
-          EnableCloudwatchLogsExports: S.optional(__S(76, __c9, 4)),
+          EnableCloudwatchLogsExports: S.optional(__S(1120, __c35, 0)),
           EngineMode: S.optional(S.String),
-          ScalingConfiguration: S.optional(__S(82, __c10, 2)),
+          ScalingConfiguration: S.optional(__S(1472, __c46, 0)),
           DBClusterParameterGroupName: S.optional(S.String),
           DeletionProtection: S.optional(S.Boolean),
           CopyTagsToSnapshot: S.optional(S.Boolean),
@@ -15784,8 +16339,8 @@ function __c66(j: number): any {
           Iops: S.optional(S.Number),
           PubliclyAccessible: S.optional(S.Boolean),
           NetworkType: S.optional(S.String),
-          ServerlessV2ScalingConfiguration: S.optional(__S(84, __c10, 4)),
-          RdsCustomClusterConfiguration: S.optional(__S(83, __c10, 3)),
+          ServerlessV2ScalingConfiguration: S.optional(__S(1440, __c45, 0)),
+          RdsCustomClusterConfiguration: S.optional(__S(1408, __c44, 0)),
           MonitoringInterval: S.optional(S.Number),
           MonitoringRoleArn: S.optional(S.String),
           EnablePerformanceInsights: S.optional(S.Boolean),
@@ -15794,21 +16349,25 @@ function __c66(j: number): any {
           BackupRetentionPeriod: S.optional(S.Number),
           PreferredBackupWindow: S.optional(S.String),
           EngineLifecycleSupport: S.optional(S.String),
-          TagSpecifications: S.optional(__S(86, __c10, 6)),
+          TagSpecifications: S.optional(__S(1377, __c43, 1)),
           EnableVPCNetworking: S.optional(S.Boolean),
           EnableInternetAccessGateway: S.optional(S.Boolean),
-          AssociatedRoles: S.optional(__S(88, __c11, 0)),
+          AssociatedRoles: S.optional(__S(1505, __c47, 1)),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "RestoreDBClusterFromSnapshotMessage",
       });
-    case 4:
+    case 1:
       return S.suspend(() =>
-        S.Struct({ DBCluster: S.optional(__S(108, __c13, 4)) }).pipe(ns),
+        S.Struct({ DBCluster: S.optional(__S(1422, __c44, 14)) }).pipe(ns),
       ).annotate({
         identifier: "RestoreDBClusterFromSnapshotResult",
       });
-    case 5:
+  }
+}
+function __c212(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           DBClusterIdentifier: S.optional(S.String),
@@ -15819,12 +16378,12 @@ function __c66(j: number): any {
           Port: S.optional(S.Number),
           DBSubnetGroupName: S.optional(S.String),
           OptionGroupName: S.optional(S.String),
-          VpcSecurityGroupIds: S.optional(__S(81, __c10, 1)),
-          Tags: S.optional(__S(10, __c1, 2)),
+          VpcSecurityGroupIds: S.optional(__S(1344, __c42, 0)),
+          Tags: S.optional(__S(225, __c7, 1)),
           KmsKeyId: S.optional(S.String),
           EnableIAMDatabaseAuthentication: S.optional(S.Boolean),
           BacktrackWindow: S.optional(S.Number),
-          EnableCloudwatchLogsExports: S.optional(__S(76, __c9, 4)),
+          EnableCloudwatchLogsExports: S.optional(__S(1120, __c35, 0)),
           DBClusterParameterGroupName: S.optional(S.String),
           DeletionProtection: S.optional(S.Boolean),
           CopyTagsToSnapshot: S.optional(S.Boolean),
@@ -15836,10 +16395,10 @@ function __c66(j: number): any {
           Iops: S.optional(S.Number),
           NetworkType: S.optional(S.String),
           SourceDbClusterResourceId: S.optional(S.String),
-          ServerlessV2ScalingConfiguration: S.optional(__S(84, __c10, 4)),
-          ScalingConfiguration: S.optional(__S(82, __c10, 2)),
+          ServerlessV2ScalingConfiguration: S.optional(__S(1440, __c45, 0)),
+          ScalingConfiguration: S.optional(__S(1472, __c46, 0)),
           EngineMode: S.optional(S.String),
-          RdsCustomClusterConfiguration: S.optional(__S(83, __c10, 3)),
+          RdsCustomClusterConfiguration: S.optional(__S(1408, __c44, 0)),
           MonitoringInterval: S.optional(S.Number),
           MonitoringRoleArn: S.optional(S.String),
           EnablePerformanceInsights: S.optional(S.Boolean),
@@ -15848,21 +16407,25 @@ function __c66(j: number): any {
           BackupRetentionPeriod: S.optional(S.Number),
           PreferredBackupWindow: S.optional(S.String),
           EngineLifecycleSupport: S.optional(S.String),
-          TagSpecifications: S.optional(__S(86, __c10, 6)),
+          TagSpecifications: S.optional(__S(1377, __c43, 1)),
           EnableVPCNetworking: S.optional(S.Boolean),
           EnableInternetAccessGateway: S.optional(S.Boolean),
-          AssociatedRoles: S.optional(__S(88, __c11, 0)),
+          AssociatedRoles: S.optional(__S(1505, __c47, 1)),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "RestoreDBClusterToPointInTimeMessage",
       });
-    case 6:
+    case 1:
       return S.suspend(() =>
-        S.Struct({ DBCluster: S.optional(__S(108, __c13, 4)) }).pipe(ns),
+        S.Struct({ DBCluster: S.optional(__S(1422, __c44, 14)) }).pipe(ns),
       ).annotate({
         identifier: "RestoreDBClusterToPointInTimeResult",
       });
-    case 7:
+  }
+}
+function __c213(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           DBInstanceIdentifier: S.optional(S.String),
@@ -15880,21 +16443,21 @@ function __c66(j: number): any {
           Iops: S.optional(S.Number),
           StorageThroughput: S.optional(S.Number),
           OptionGroupName: S.optional(S.String),
-          Tags: S.optional(__S(10, __c1, 2)),
+          Tags: S.optional(__S(225, __c7, 1)),
           StorageType: S.optional(S.String),
           TdeCredentialArn: S.optional(S.String),
           TdeCredentialPassword: S.optional(SensitiveString),
-          VpcSecurityGroupIds: S.optional(__S(81, __c10, 1)),
+          VpcSecurityGroupIds: S.optional(__S(1344, __c42, 0)),
           Domain: S.optional(S.String),
           DomainFqdn: S.optional(S.String),
           DomainOu: S.optional(S.String),
           DomainAuthSecretArn: S.optional(S.String),
-          DomainDnsIps: S.optional(__S(28, __c3, 4)),
+          DomainDnsIps: S.optional(__S(480, __c15, 0)),
           CopyTagsToSnapshot: S.optional(S.Boolean),
           DomainIAMRoleName: S.optional(S.String),
           EnableIAMDatabaseAuthentication: S.optional(S.Boolean),
-          EnableCloudwatchLogsExports: S.optional(__S(76, __c9, 4)),
-          ProcessorFeatures: S.optional(__S(42, __c5, 2)),
+          EnableCloudwatchLogsExports: S.optional(__S(1120, __c35, 0)),
+          ProcessorFeatures: S.optional(__S(833, __c26, 1)),
           UseDefaultProcessorFeatures: S.optional(S.Boolean),
           DBParameterGroupName: S.optional(S.String),
           DeletionProtection: S.optional(S.Boolean),
@@ -15909,25 +16472,25 @@ function __c66(j: number): any {
           DedicatedLogVolume: S.optional(S.Boolean),
           CACertificateIdentifier: S.optional(S.String),
           EngineLifecycleSupport: S.optional(S.String),
-          AdditionalStorageVolumes: S.optional(__S(44, __c5, 4)),
-          TagSpecifications: S.optional(__S(86, __c10, 6)),
+          AdditionalStorageVolumes: S.optional(__S(801, __c25, 1)),
+          TagSpecifications: S.optional(__S(1377, __c43, 1)),
           ManageMasterUserPassword: S.optional(S.Boolean),
           MasterUserSecretKmsKeyId: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "RestoreDBInstanceFromDBSnapshotMessage",
       });
-  }
-}
-function __c67(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
-        S.Struct({ DBInstance: S.optional(__S(139, __c17, 3)) }).pipe(ns),
+        S.Struct({ DBInstance: S.optional(__S(1805, __c56, 13)) }).pipe(ns),
       ).annotate({
         identifier: "RestoreDBInstanceFromDBSnapshotResult",
       });
-    case 1:
+  }
+}
+function __c214(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           DBName: S.optional(S.String),
@@ -15937,8 +16500,8 @@ function __c67(j: number): any {
           Engine: S.optional(S.String),
           MasterUsername: S.optional(S.String),
           MasterUserPassword: S.optional(SensitiveString),
-          DBSecurityGroups: S.optional(__S(116, __c14, 4)),
-          VpcSecurityGroupIds: S.optional(__S(81, __c10, 1)),
+          DBSecurityGroups: S.optional(__S(1824, __c57, 0)),
+          VpcSecurityGroupIds: S.optional(__S(1344, __c42, 0)),
           AvailabilityZone: S.optional(S.String),
           DBSubnetGroupName: S.optional(S.String),
           PreferredMaintenanceWindow: S.optional(S.String),
@@ -15954,7 +16517,7 @@ function __c67(j: number): any {
           StorageThroughput: S.optional(S.Number),
           OptionGroupName: S.optional(S.String),
           PubliclyAccessible: S.optional(S.Boolean),
-          Tags: S.optional(__S(10, __c1, 2)),
+          Tags: S.optional(__S(225, __c7, 1)),
           StorageType: S.optional(S.String),
           StorageEncrypted: S.optional(S.Boolean),
           KmsKeyId: S.optional(S.String),
@@ -15971,8 +16534,8 @@ function __c67(j: number): any {
           EnablePerformanceInsights: S.optional(S.Boolean),
           PerformanceInsightsKMSKeyId: S.optional(S.String),
           PerformanceInsightsRetentionPeriod: S.optional(S.Number),
-          EnableCloudwatchLogsExports: S.optional(__S(76, __c9, 4)),
-          ProcessorFeatures: S.optional(__S(42, __c5, 2)),
+          EnableCloudwatchLogsExports: S.optional(__S(1120, __c35, 0)),
+          ProcessorFeatures: S.optional(__S(833, __c26, 1)),
           UseDefaultProcessorFeatures: S.optional(S.Boolean),
           DeletionProtection: S.optional(S.Boolean),
           MaxAllocatedStorage: S.optional(S.Number),
@@ -15982,19 +16545,23 @@ function __c67(j: number): any {
           DedicatedLogVolume: S.optional(S.Boolean),
           CACertificateIdentifier: S.optional(S.String),
           EngineLifecycleSupport: S.optional(S.String),
-          AdditionalStorageVolumes: S.optional(__S(44, __c5, 4)),
-          TagSpecifications: S.optional(__S(86, __c10, 6)),
+          AdditionalStorageVolumes: S.optional(__S(801, __c25, 1)),
+          TagSpecifications: S.optional(__S(1377, __c43, 1)),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "RestoreDBInstanceFromS3Message",
       });
-    case 2:
+    case 1:
       return S.suspend(() =>
-        S.Struct({ DBInstance: S.optional(__S(139, __c17, 3)) }).pipe(ns),
+        S.Struct({ DBInstance: S.optional(__S(1805, __c56, 13)) }).pipe(ns),
       ).annotate({
         identifier: "RestoreDBInstanceFromS3Result",
       });
-    case 3:
+  }
+}
+function __c215(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           SourceDBInstanceIdentifier: S.optional(S.String),
@@ -16015,20 +16582,20 @@ function __c67(j: number): any {
           StorageThroughput: S.optional(S.Number),
           OptionGroupName: S.optional(S.String),
           CopyTagsToSnapshot: S.optional(S.Boolean),
-          Tags: S.optional(__S(10, __c1, 2)),
+          Tags: S.optional(__S(225, __c7, 1)),
           StorageType: S.optional(S.String),
           TdeCredentialArn: S.optional(S.String),
           TdeCredentialPassword: S.optional(SensitiveString),
-          VpcSecurityGroupIds: S.optional(__S(81, __c10, 1)),
+          VpcSecurityGroupIds: S.optional(__S(1344, __c42, 0)),
           Domain: S.optional(S.String),
           DomainIAMRoleName: S.optional(S.String),
           DomainFqdn: S.optional(S.String),
           DomainOu: S.optional(S.String),
           DomainAuthSecretArn: S.optional(S.String),
-          DomainDnsIps: S.optional(__S(28, __c3, 4)),
+          DomainDnsIps: S.optional(__S(480, __c15, 0)),
           EnableIAMDatabaseAuthentication: S.optional(S.Boolean),
-          EnableCloudwatchLogsExports: S.optional(__S(76, __c9, 4)),
-          ProcessorFeatures: S.optional(__S(42, __c5, 2)),
+          EnableCloudwatchLogsExports: S.optional(__S(1120, __c35, 0)),
+          ProcessorFeatures: S.optional(__S(833, __c26, 1)),
           UseDefaultProcessorFeatures: S.optional(S.Boolean),
           DBParameterGroupName: S.optional(S.String),
           DeletionProtection: S.optional(S.Boolean),
@@ -16045,21 +16612,25 @@ function __c67(j: number): any {
           DedicatedLogVolume: S.optional(S.Boolean),
           CACertificateIdentifier: S.optional(S.String),
           EngineLifecycleSupport: S.optional(S.String),
-          AdditionalStorageVolumes: S.optional(__S(44, __c5, 4)),
-          TagSpecifications: S.optional(__S(86, __c10, 6)),
+          AdditionalStorageVolumes: S.optional(__S(801, __c25, 1)),
+          TagSpecifications: S.optional(__S(1377, __c43, 1)),
           ManageMasterUserPassword: S.optional(S.Boolean),
           MasterUserSecretKmsKeyId: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "RestoreDBInstanceToPointInTimeMessage",
       });
-    case 4:
+    case 1:
       return S.suspend(() =>
-        S.Struct({ DBInstance: S.optional(__S(139, __c17, 3)) }).pipe(ns),
+        S.Struct({ DBInstance: S.optional(__S(1805, __c56, 13)) }).pipe(ns),
       ).annotate({
         identifier: "RestoreDBInstanceToPointInTimeResult",
       });
-    case 5:
+  }
+}
+function __c216(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           DBSecurityGroupName: S.optional(S.String),
@@ -16071,13 +16642,17 @@ function __c67(j: number): any {
       ).annotate({
         identifier: "RevokeDBSecurityGroupIngressMessage",
       });
-    case 6:
+    case 1:
       return S.suspend(() =>
-        S.Struct({ DBSecurityGroup: S.optional(__S(23, __c2, 7)) }).pipe(ns),
+        S.Struct({ DBSecurityGroup: S.optional(__S(356, __c11, 4)) }).pipe(ns),
       ).annotate({
         identifier: "RevokeDBSecurityGroupIngressResult",
       });
-    case 7:
+  }
+}
+function __c217(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           ResourceArn: S.optional(S.String),
@@ -16089,11 +16664,7 @@ function __c67(j: number): any {
       ).annotate({
         identifier: "StartActivityStreamRequest",
       });
-  }
-}
-function __c68(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           KmsKeyId: S.optional(S.String),
@@ -16106,49 +16677,61 @@ function __c68(j: number): any {
       ).annotate({
         identifier: "StartActivityStreamResponse",
       });
-    case 1:
+  }
+}
+function __c218(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ DBClusterIdentifier: S.optional(S.String) }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "StartDBClusterMessage" });
-    case 2:
+    case 1:
       return S.suspend(() =>
-        S.Struct({ DBCluster: S.optional(__S(108, __c13, 4)) }).pipe(ns),
-      ).annotate({
-        identifier: "StartDBClusterResult",
-      });
-    case 3:
+        S.Struct({ DBCluster: S.optional(__S(1422, __c44, 14)) }).pipe(ns),
+      ).annotate({ identifier: "StartDBClusterResult" });
+  }
+}
+function __c219(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ DBInstanceIdentifier: S.optional(S.String) }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "StartDBInstanceMessage" });
-    case 4:
+    case 1:
       return S.suspend(() =>
-        S.Struct({ DBInstance: S.optional(__S(139, __c17, 3)) }).pipe(ns),
-      ).annotate({
-        identifier: "StartDBInstanceResult",
-      });
-    case 5:
+        S.Struct({ DBInstance: S.optional(__S(1805, __c56, 13)) }).pipe(ns),
+      ).annotate({ identifier: "StartDBInstanceResult" });
+  }
+}
+function __c220(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           SourceDBInstanceArn: S.optional(S.String),
           BackupRetentionPeriod: S.optional(S.Number),
           KmsKeyId: S.optional(S.String),
           PreSignedUrl: S.optional(SensitiveString),
-          Tags: S.optional(__S(10, __c1, 2)),
+          Tags: S.optional(__S(225, __c7, 1)),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "StartDBInstanceAutomatedBackupsReplicationMessage",
       });
-    case 6:
+    case 1:
       return S.suspend(() =>
-        S.Struct({ DBInstanceAutomatedBackup: S.optional(__S(201, __c25, 1)) }).pipe(ns),
+        S.Struct({ DBInstanceAutomatedBackup: S.optional(__S(2880, __c90, 0)) }).pipe(ns),
       ).annotate({
         identifier: "StartDBInstanceAutomatedBackupsReplicationResult",
       });
-    case 7:
+  }
+}
+function __c221(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           ExportTaskIdentifier: S.optional(S.String),
@@ -16157,12 +16740,12 @@ function __c68(j: number): any {
           IamRoleArn: S.optional(S.String),
           KmsKeyId: S.optional(S.String),
           S3Prefix: S.optional(S.String),
-          ExportOnly: S.optional(__S(28, __c3, 4)),
+          ExportOnly: S.optional(__S(480, __c15, 0)),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "StartExportTaskMessage" });
   }
 }
-function __c69(j: number): any {
+function __c222(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -16183,32 +16766,40 @@ function __c69(j: number): any {
       ).annotate({
         identifier: "StopActivityStreamResponse",
       });
-    case 2:
+  }
+}
+function __c223(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ DBClusterIdentifier: S.optional(S.String) }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "StopDBClusterMessage" });
-    case 3:
+    case 1:
       return S.suspend(() =>
-        S.Struct({ DBCluster: S.optional(__S(108, __c13, 4)) }).pipe(ns),
-      ).annotate({
-        identifier: "StopDBClusterResult",
-      });
-    case 4:
+        S.Struct({ DBCluster: S.optional(__S(1422, __c44, 14)) }).pipe(ns),
+      ).annotate({ identifier: "StopDBClusterResult" });
+  }
+}
+function __c224(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           DBInstanceIdentifier: S.optional(S.String),
           DBSnapshotIdentifier: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "StopDBInstanceMessage" });
-    case 5:
+    case 1:
       return S.suspend(() =>
-        S.Struct({ DBInstance: S.optional(__S(139, __c17, 3)) }).pipe(ns),
-      ).annotate({
-        identifier: "StopDBInstanceResult",
-      });
-    case 6:
+        S.Struct({ DBInstance: S.optional(__S(1805, __c56, 13)) }).pipe(ns),
+      ).annotate({ identifier: "StopDBInstanceResult" });
+  }
+}
+function __c225(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ SourceDBInstanceArn: S.optional(S.String) }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
@@ -16216,15 +16807,15 @@ function __c69(j: number): any {
       ).annotate({
         identifier: "StopDBInstanceAutomatedBackupsReplicationMessage",
       });
-    case 7:
+    case 1:
       return S.suspend(() =>
-        S.Struct({ DBInstanceAutomatedBackup: S.optional(__S(201, __c25, 1)) }).pipe(ns),
+        S.Struct({ DBInstanceAutomatedBackup: S.optional(__S(2880, __c90, 0)) }).pipe(ns),
       ).annotate({
         identifier: "StopDBInstanceAutomatedBackupsReplicationResult",
       });
   }
 }
-function __c70(j: number): any {
+function __c226(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -16237,11 +16828,15 @@ function __c70(j: number): any {
       });
     case 1:
       return S.suspend(() =>
-        S.Struct({ BlueGreenDeployment: S.optional(__S(65, __c8, 1)) }).pipe(ns),
+        S.Struct({ BlueGreenDeployment: S.optional(__S(1060, __c33, 4)) }).pipe(ns),
       ).annotate({
         identifier: "SwitchoverBlueGreenDeploymentResponse",
       });
-    case 2:
+  }
+}
+function __c227(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           GlobalClusterIdentifier: S.optional(S.String),
@@ -16250,13 +16845,17 @@ function __c70(j: number): any {
       ).annotate({
         identifier: "SwitchoverGlobalClusterMessage",
       });
-    case 3:
+    case 1:
       return S.suspend(() =>
-        S.Struct({ GlobalCluster: S.optional(__S(171, __c21, 3)) }).pipe(ns),
+        S.Struct({ GlobalCluster: S.optional(__S(2340, __c73, 4)) }).pipe(ns),
       ).annotate({
         identifier: "SwitchoverGlobalClusterResult",
       });
-    case 4:
+  }
+}
+function __c228(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ DBInstanceIdentifier: S.optional(S.String) }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
@@ -16264,15 +16863,14 @@ function __c70(j: number): any {
       ).annotate({
         identifier: "SwitchoverReadReplicaMessage",
       });
-    case 5:
+    case 1:
       return S.suspend(() =>
-        S.Struct({ DBInstance: S.optional(__S(139, __c17, 3)) }).pipe(ns),
+        S.Struct({ DBInstance: S.optional(__S(1805, __c56, 13)) }).pipe(ns),
       ).annotate({
         identifier: "SwitchoverReadReplicaResult",
       });
   }
 }
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

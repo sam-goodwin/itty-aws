@@ -2254,7 +2254,7 @@ export const activateDevtoolBrowserTarget: API.OperationMethod<
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(0, __c0, 0) as any as S.Schema<ActivateDevtoolBrowserTargetRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<ActivateDevtoolBrowserTargetResponse>,
+  output: __S(16, __c1, 0) as any as S.Schema<ActivateDevtoolBrowserTargetResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -2268,8 +2268,8 @@ export const closeDevtoolBrowserTarget: API.OperationMethod<
   CloseDevtoolBrowserTargetError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2, __c0, 2) as any as S.Schema<CloseDevtoolBrowserTargetRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<CloseDevtoolBrowserTargetResponse>,
+  input: __S(32, __c2, 0) as any as S.Schema<CloseDevtoolBrowserTargetRequest>,
+  output: __S(16, __c1, 0) as any as S.Schema<CloseDevtoolBrowserTargetResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -2283,8 +2283,8 @@ export const connectDevtoolBrowser: API.OperationMethod<
   ConnectDevtoolBrowserError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3, __c0, 3) as any as S.Schema<ConnectDevtoolBrowserRequest>,
-  output: __S(4, __c0, 4) as any as S.Schema<ConnectDevtoolBrowserResponse>,
+  input: __S(240, __c15, 0) as any as S.Schema<ConnectDevtoolBrowserRequest>,
+  output: __S(256, __c16, 0) as any as S.Schema<ConnectDevtoolBrowserResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -2298,8 +2298,8 @@ export const createAccessibilityTree: API.OperationMethod<
   CreateAccessibilityTreeError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(19, __c2, 3) as any as S.Schema<CreateAccessibilityTreeRequest>,
-  output: __S(25, __c3, 1) as any as S.Schema<CreateAccessibilityTreeResponse>,
+  input: __S(402, __c25, 2) as any as S.Schema<CreateAccessibilityTreeRequest>,
+  output: __S(407, __c25, 7) as any as S.Schema<CreateAccessibilityTreeResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -2313,8 +2313,8 @@ export const createContent: API.OperationMethod<
   CreateContentError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(28, __c3, 4) as any as S.Schema<CreateContentRequest>,
-  output: __S(29, __c3, 5) as any as S.Schema<CreateContentResponse>,
+  input: __S(466, __c29, 2) as any as S.Schema<CreateContentRequest>,
+  output: __S(480, __c30, 0) as any as S.Schema<CreateContentResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -2328,8 +2328,8 @@ export const createCrawl: API.OperationMethod<
   CreateCrawlError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(38, __c4, 6) as any as S.Schema<CreateCrawlRequest>,
-  output: __S(29, __c3, 5) as any as S.Schema<CreateCrawlResponse>,
+  input: __S(500, __c31, 4) as any as S.Schema<CreateCrawlRequest>,
+  output: __S(480, __c30, 0) as any as S.Schema<CreateCrawlResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -2343,8 +2343,8 @@ export const createDevtoolBrowser: API.OperationMethod<
   CreateDevtoolBrowserError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(40, __c5, 0) as any as S.Schema<CreateDevtoolBrowserRequest>,
-  output: __S(41, __c5, 1) as any as S.Schema<CreateDevtoolBrowserResponse>,
+  input: __S(545, __c34, 1) as any as S.Schema<CreateDevtoolBrowserRequest>,
+  output: __S(546, __c34, 2) as any as S.Schema<CreateDevtoolBrowserResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -2358,8 +2358,8 @@ export const createDevtoolBrowserTarget: API.OperationMethod<
   CreateDevtoolBrowserTargetError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(42, __c5, 2) as any as S.Schema<CreateDevtoolBrowserTargetRequest>,
-  output: __S(43, __c5, 3) as any as S.Schema<CreateDevtoolBrowserTargetResponse>,
+  input: __S(560, __c35, 0) as any as S.Schema<CreateDevtoolBrowserTargetRequest>,
+  output: __S(576, __c36, 0) as any as S.Schema<CreateDevtoolBrowserTargetResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -2373,8 +2373,8 @@ export const createDevtoolsBrowserLiveView: API.OperationMethod<
   CreateDevtoolsBrowserLiveViewError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(45, __c5, 5) as any as S.Schema<CreateDevtoolsBrowserLiveViewRequest>,
-  output: __S(47, __c5, 7) as any as S.Schema<CreateDevtoolsBrowserLiveViewResponse>,
+  input: __S(593, __c37, 1) as any as S.Schema<CreateDevtoolsBrowserLiveViewRequest>,
+  output: __S(595, __c37, 3) as any as S.Schema<CreateDevtoolsBrowserLiveViewResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -2388,8 +2388,8 @@ export const createJson: API.OperationMethod<
   CreateJsonError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(50, __c6, 2) as any as S.Schema<CreateJsonRequest>,
-  output: __S(51, __c6, 3) as any as S.Schema<CreateJsonResponse>,
+  input: __S(610, __c38, 2) as any as S.Schema<CreateJsonRequest>,
+  output: __S(611, __c38, 3) as any as S.Schema<CreateJsonResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -2403,8 +2403,8 @@ export const createLink: API.OperationMethod<
   CreateLinkError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(54, __c6, 6) as any as S.Schema<CreateLinkRequest>,
-  output: __S(55, __c6, 7) as any as S.Schema<CreateLinkResponse>,
+  input: __S(50, __c3, 2) as any as S.Schema<CreateLinkRequest>,
+  output: __S(51, __c3, 3) as any as S.Schema<CreateLinkResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -2418,8 +2418,8 @@ export const createMarkdown: API.OperationMethod<
   CreateMarkdownError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(58, __c7, 2) as any as S.Schema<CreateMarkdownRequest>,
-  output: __S(29, __c3, 5) as any as S.Schema<CreateMarkdownResponse>,
+  input: __S(66, __c4, 2) as any as S.Schema<CreateMarkdownRequest>,
+  output: __S(480, __c30, 0) as any as S.Schema<CreateMarkdownResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -2433,8 +2433,8 @@ export const createPdf: API.OperationMethod<
   CreatePdfError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(69, __c8, 5) as any as S.Schema<CreatePdfRequest>,
-  output: __S(70, __c8, 6) as any as S.Schema<CreatePdfResponse>,
+  input: __S(90, __c5, 10) as any as S.Schema<CreatePdfRequest>,
+  output: __S(96, __c6, 0) as any as S.Schema<CreatePdfResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -2448,8 +2448,8 @@ export const createScrape: API.OperationMethod<
   CreateScrapeError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(75, __c9, 3) as any as S.Schema<CreateScrapeRequest>,
-  output: __S(81, __c10, 1) as any as S.Schema<CreateScrapeResponse>,
+  input: __S(116, __c7, 4) as any as S.Schema<CreateScrapeRequest>,
+  output: __S(122, __c7, 10) as any as S.Schema<CreateScrapeResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -2463,8 +2463,8 @@ export const createScreenshot: API.OperationMethod<
   CreateScreenshotError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(86, __c10, 6) as any as S.Schema<CreateScreenshotRequest>,
-  output: __S(70, __c8, 6) as any as S.Schema<CreateScreenshotResponse>,
+  input: __S(131, __c8, 3) as any as S.Schema<CreateScreenshotRequest>,
+  output: __S(96, __c6, 0) as any as S.Schema<CreateScreenshotResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -2478,8 +2478,8 @@ export const createSnapshot: API.OperationMethod<
   CreateSnapshotError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(90, __c11, 2) as any as S.Schema<CreateSnapshotRequest>,
-  output: __S(95, __c11, 7) as any as S.Schema<CreateSnapshotResponse>,
+  input: __S(163, __c10, 3) as any as S.Schema<CreateSnapshotRequest>,
+  output: __S(168, __c10, 8) as any as S.Schema<CreateSnapshotResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -2493,8 +2493,8 @@ export const deleteCrawl: API.OperationMethod<
   DeleteCrawlError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(96, __c12, 0) as any as S.Schema<DeleteCrawlRequest>,
-  output: __S(97, __c12, 1) as any as S.Schema<DeleteCrawlResponse>,
+  input: __S(176, __c11, 0) as any as S.Schema<DeleteCrawlRequest>,
+  output: __S(177, __c11, 1) as any as S.Schema<DeleteCrawlResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -2508,8 +2508,8 @@ export const deleteDevtoolBrowser: API.OperationMethod<
   DeleteDevtoolBrowserError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(98, __c12, 2) as any as S.Schema<DeleteDevtoolBrowserRequest>,
-  output: __S(99, __c12, 3) as any as S.Schema<DeleteDevtoolBrowserResponse>,
+  input: __S(192, __c12, 0) as any as S.Schema<DeleteDevtoolBrowserRequest>,
+  output: __S(193, __c12, 1) as any as S.Schema<DeleteDevtoolBrowserResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -2523,8 +2523,8 @@ export const getCrawl: API.OperationMethod<
   GetCrawlError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(100, __c12, 4) as any as S.Schema<GetCrawlRequest>,
-  output: __S(104, __c13, 0) as any as S.Schema<GetCrawlResponse>,
+  input: __S(208, __c13, 0) as any as S.Schema<GetCrawlRequest>,
+  output: __S(212, __c13, 4) as any as S.Schema<GetCrawlResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -2538,8 +2538,8 @@ export const getDevtoolBrowserPage: API.OperationMethod<
   GetDevtoolBrowserPageError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(105, __c13, 1) as any as S.Schema<GetDevtoolBrowserPageRequest>,
-  output: __S(4, __c0, 4) as any as S.Schema<GetDevtoolBrowserPageResponse>,
+  input: __S(224, __c14, 0) as any as S.Schema<GetDevtoolBrowserPageRequest>,
+  output: __S(256, __c16, 0) as any as S.Schema<GetDevtoolBrowserPageResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -2553,8 +2553,8 @@ export const getDevtoolBrowserTarget: API.OperationMethod<
   GetDevtoolBrowserTargetError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(106, __c13, 2) as any as S.Schema<GetDevtoolBrowserTargetRequest>,
-  output: __S(43, __c5, 3) as any as S.Schema<GetDevtoolBrowserTargetResponse>,
+  input: __S(272, __c17, 0) as any as S.Schema<GetDevtoolBrowserTargetRequest>,
+  output: __S(576, __c36, 0) as any as S.Schema<GetDevtoolBrowserTargetResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -2568,8 +2568,8 @@ export const getDevtoolSession: API.OperationMethod<
   GetDevtoolSessionError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(107, __c13, 3) as any as S.Schema<GetDevtoolSessionRequest>,
-  output: __S(108, __c13, 4) as any as S.Schema<GetDevtoolSessionResponse>,
+  input: __S(288, __c18, 0) as any as S.Schema<GetDevtoolSessionRequest>,
+  output: __S(304, __c19, 0) as any as S.Schema<GetDevtoolSessionResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -2583,8 +2583,8 @@ export const launchDevtoolBrowser: API.OperationMethod<
   LaunchDevtoolBrowserError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(109, __c13, 5) as any as S.Schema<LaunchDevtoolBrowserRequest>,
-  output: __S(4, __c0, 4) as any as S.Schema<LaunchDevtoolBrowserResponse>,
+  input: __S(320, __c20, 0) as any as S.Schema<LaunchDevtoolBrowserRequest>,
+  output: __S(256, __c16, 0) as any as S.Schema<LaunchDevtoolBrowserResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -2598,8 +2598,8 @@ export const listDevtoolBrowserTargets: API.OperationMethod<
   ListDevtoolBrowserTargetsError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(110, __c13, 6) as any as S.Schema<ListDevtoolBrowserTargetsRequest>,
-  output: __S(43, __c5, 3) as any as S.Schema<ListDevtoolBrowserTargetsResponse>,
+  input: __S(336, __c21, 0) as any as S.Schema<ListDevtoolBrowserTargetsRequest>,
+  output: __S(576, __c36, 0) as any as S.Schema<ListDevtoolBrowserTargetsResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -2613,8 +2613,8 @@ export const listDevtoolSessions: API.OperationMethod<
   ListDevtoolSessionsError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(111, __c13, 7) as any as S.Schema<ListDevtoolSessionsRequest>,
-  output: __S(108, __c13, 4) as any as S.Schema<ListDevtoolSessionsResponse>,
+  input: __S(352, __c22, 0) as any as S.Schema<ListDevtoolSessionsRequest>,
+  output: __S(304, __c19, 0) as any as S.Schema<ListDevtoolSessionsResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -2628,8 +2628,8 @@ export const protocolDevtoolBrowser: API.OperationMethod<
   ProtocolDevtoolBrowserError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(112, __c14, 0) as any as S.Schema<ProtocolDevtoolBrowserRequest>,
-  output: __S(117, __c14, 5) as any as S.Schema<ProtocolDevtoolBrowserResponse>,
+  input: __S(368, __c23, 0) as any as S.Schema<ProtocolDevtoolBrowserRequest>,
+  output: __S(373, __c23, 5) as any as S.Schema<ProtocolDevtoolBrowserResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -2643,8 +2643,8 @@ export const versionDevtoolBrowser: API.OperationMethod<
   VersionDevtoolBrowserError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(118, __c14, 6) as any as S.Schema<VersionDevtoolBrowserRequest>,
-  output: __S(119, __c14, 7) as any as S.Schema<VersionDevtoolBrowserResponse>,
+  input: __S(384, __c24, 0) as any as S.Schema<VersionDevtoolBrowserRequest>,
+  output: __S(385, __c24, 1) as any as S.Schema<VersionDevtoolBrowserResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -2671,7 +2671,11 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "ActivateDevtoolBrowserTargetRequest",
       });
-    case 1:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           message: S.String,
@@ -2679,7 +2683,11 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "ActivateDevtoolBrowserTargetResponse",
       });
-    case 2:
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -2697,520 +2705,11 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "CloseDevtoolBrowserTargetRequest",
       });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          accountId: S.String.pipe(T.Label("account_id")),
-          sessionId: S.String.pipe(T.Label("session_id")),
-          keepAlive: S.optional(S.Number.pipe(T.Query("keep_alive"))),
-          lab: S.optional(S.Boolean.pipe(T.Query())),
-          recording: S.optional(S.Boolean.pipe(T.Query())),
-          cfBrapiGuardrails: S.optional(S.String.pipe(T.Header("cf-brapi-guardrails"))),
-        })
-          .pipe(
-            T.Http({
-              method: "GET",
-              uri: "/accounts/{account_id}/browser-rendering/devtools/browser/{session_id}",
-              code: 200,
-            }),
-          )
-          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({
-        identifier: "ConnectDevtoolBrowserRequest",
-      });
-    case 4:
-      return S.suspend(() => S.Struct({}).pipe(T.KeyDictionary(KEY_DICTIONARY))).annotate({
-        identifier: "ConnectDevtoolBrowserResponse",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          content: S.optional(S.String),
-          type: S.optional(S.String),
-          url: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "CreateAccessibilityTreeRequestAddScriptTagItem",
-      });
-    case 6:
-      return S.Array(__S(5, __c0, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          content: S.optional(S.String),
-          url: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "CreateAccessibilityTreeRequestAddStyleTagItem",
-      });
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(7, __c0, 7));
-    case 1:
-      return S.Array(S.String);
-    case 2:
-      return S.Array(S.String);
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          password: S.String,
-          username: S.String,
-        }),
-      ).annotate({
-        identifier: "CreateAccessibilityTreeRequestAuthenticate",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String,
-          value: S.String,
-          domain: S.optional(S.String),
-          expires: S.optional(S.Number),
-          httpOnly: S.optional(S.Boolean),
-          partitionKey: S.optional(S.String),
-          path: S.optional(S.String),
-          priority: S.optional(S.String),
-          sameParty: S.optional(S.Boolean),
-          sameSite: S.optional(S.String),
-          secure: S.optional(S.Boolean),
-          sourcePort: S.optional(S.Number),
-          sourceScheme: S.optional(S.String),
-          url: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "CreateAccessibilityTreeRequestCookiesItem",
-      });
-    case 5:
-      return S.Array(__S(12, __c1, 4));
-    case 6:
-      return S.Unknown.pipe(/*@__PURE__*/ T.UnionCases([[], []]));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          referer: S.optional(S.String),
-          referrerPolicy: S.optional(S.String),
-          timeout: S.optional(S.Number),
-          waitUntil: S.optional(__S(14, __c1, 6)),
-        }),
-      ).annotate({
-        identifier: "CreateAccessibilityTreeRequestGotoOptions",
-      });
-  }
-}
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Record(S.String, S.String);
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          height: S.Number,
-          width: S.Number,
-          deviceScaleFactor: S.optional(S.Number),
-          hasTouch: S.optional(S.Boolean),
-          isLandscape: S.optional(S.Boolean),
-          isMobile: S.optional(S.Boolean),
-        }),
-      ).annotate({
-        identifier: "CreateAccessibilityTreeRequestViewport",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          selector: S.String,
-          hidden: S.optional(S.Boolean),
-          timeout: S.optional(S.Number),
-          visible: S.optional(S.Boolean),
-        }),
-      ).annotate({
-        identifier: "CreateAccessibilityTreeRequestWaitForSelector",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          accountId: S.String.pipe(T.Label("account_id")),
-          browser: S.optional(S.String.pipe(T.Query())),
-          cacheTTL: S.optional(S.Number.pipe(T.Query())),
-          url: S.optional(S.String),
-          actionTimeout: S.optional(S.Number),
-          addScriptTag: S.optional(__S(6, __c0, 6)),
-          addStyleTag: S.optional(__S(8, __c1, 0)),
-          allowRequestPattern: S.optional(__S(9, __c1, 1)),
-          allowResourceTypes: S.optional(__S(10, __c1, 2)),
-          authenticate: S.optional(__S(11, __c1, 3)),
-          bestAttempt: S.optional(S.Boolean),
-          cookies: S.optional(__S(13, __c1, 5)),
-          emulateMediaType: S.optional(S.String),
-          gotoOptions: S.optional(__S(15, __c1, 7)),
-          html: S.optional(S.String),
-          interestingOnly: S.optional(S.Boolean),
-          rejectRequestPattern: S.optional(__S(9, __c1, 1)),
-          rejectResourceTypes: S.optional(__S(10, __c1, 2)),
-          root: S.optional(S.String),
-          setExtraHTTPHeaders: S.optional(__S(16, __c2, 0)),
-          setJavaScriptEnabled: S.optional(S.Boolean),
-          userAgent: S.optional(S.String),
-          viewport: S.optional(__S(17, __c2, 1)),
-          waitForSelector: S.optional(__S(18, __c2, 2)),
-          waitForTimeout: S.optional(S.Number),
-        })
-          .pipe(
-            T.Http({
-              method: "POST",
-              uri: "/accounts/{account_id}/browser-rendering/accessibilityTree",
-              code: 200,
-            }),
-          )
-          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({
-        identifier: "CreateAccessibilityTreeRequest",
-      });
-    case 4:
-      return S.Unknown.pipe(/*@__PURE__*/ T.UnionCases([[], []]));
-    case 5:
-      return S.Array(S.Unknown);
-    case 6:
-      return S.Unknown.pipe(/*@__PURE__*/ T.UnionCases([[], []]));
-    case 7:
-      return S.Unknown.pipe(/*@__PURE__*/ T.UnionCases([[], []]));
   }
 }
 function __c3(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() =>
-        S.Struct({
-          role: S.String,
-          autocomplete: S.optional(S.NullOr(S.String)),
-          checked: S.optional(S.NullOr(__S(20, __c2, 4))),
-          children: S.optional(S.NullOr(__S(21, __c2, 5))),
-          description: S.optional(S.NullOr(S.String)),
-          disabled: S.optional(S.NullOr(S.Boolean)),
-          expanded: S.optional(S.NullOr(S.Boolean)),
-          focused: S.optional(S.NullOr(S.Boolean)),
-          haspopup: S.optional(S.NullOr(S.String)),
-          invalid: S.optional(S.NullOr(S.String)),
-          keyshortcuts: S.optional(S.NullOr(S.String)),
-          level: S.optional(S.NullOr(S.Number)),
-          modal: S.optional(S.NullOr(S.Boolean)),
-          multiline: S.optional(S.NullOr(S.Boolean)),
-          multiselectable: S.optional(S.NullOr(S.Boolean)),
-          name: S.optional(S.NullOr(S.String)),
-          orientation: S.optional(S.NullOr(S.String)),
-          pressed: S.optional(S.NullOr(__S(22, __c2, 6))),
-          readonly: S.optional(S.NullOr(S.Boolean)),
-          required: S.optional(S.NullOr(S.Boolean)),
-          roledescription: S.optional(S.NullOr(S.String)),
-          selected: S.optional(S.NullOr(S.Boolean)),
-          value: S.optional(S.NullOr(__S(23, __c2, 7))),
-          valuemax: S.optional(S.NullOr(S.Number)),
-          valuemin: S.optional(S.NullOr(S.Number)),
-          valuetext: S.optional(S.NullOr(S.String)),
-        }),
-      ).annotate({
-        identifier: "CreateAccessibilityTreeResponseAccessibilityTree",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          accessibilityTree: __S(24, __c3, 0),
-        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({
-        identifier: "CreateAccessibilityTreeResponse",
-      });
-    case 2:
-      return S.Unknown.pipe(/*@__PURE__*/ T.UnionCases([[], []]));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          referer: S.optional(S.String),
-          referrerPolicy: S.optional(S.String),
-          timeout: S.optional(S.Number),
-          waitUntil: S.optional(__S(26, __c3, 2)),
-        }),
-      ).annotate({
-        identifier: "ContentCreateRequestGotoOptions",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          accountId: S.String.pipe(T.Label("account_id")),
-          browser: S.optional(S.String.pipe(T.Query())),
-          cacheTTL: S.optional(S.Number.pipe(T.Query())),
-          url: S.optional(S.String),
-          actionTimeout: S.optional(S.Number),
-          addScriptTag: S.optional(__S(6, __c0, 6)),
-          addStyleTag: S.optional(__S(8, __c1, 0)),
-          allowRequestPattern: S.optional(__S(9, __c1, 1)),
-          allowResourceTypes: S.optional(__S(10, __c1, 2)),
-          authenticate: S.optional(__S(11, __c1, 3)),
-          bestAttempt: S.optional(S.Boolean),
-          cookies: S.optional(__S(13, __c1, 5)),
-          emulateMediaType: S.optional(S.String),
-          gotoOptions: S.optional(__S(27, __c3, 3)),
-          html: S.optional(S.String),
-          rejectRequestPattern: S.optional(__S(9, __c1, 1)),
-          rejectResourceTypes: S.optional(__S(10, __c1, 2)),
-          setExtraHTTPHeaders: S.optional(__S(16, __c2, 0)),
-          setJavaScriptEnabled: S.optional(S.Boolean),
-          userAgent: S.optional(S.String),
-          viewport: S.optional(__S(17, __c2, 1)),
-          waitForSelector: S.optional(__S(18, __c2, 2)),
-          waitForTimeout: S.optional(S.Number),
-        })
-          .pipe(
-            T.Http({
-              method: "POST",
-              uri: "/accounts/{account_id}/browser-rendering/content",
-              code: 200,
-            }),
-          )
-          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({ identifier: "CreateContentRequest" });
-    case 5:
-      return S.suspend(() =>
-        S.String.pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({ identifier: "CreateContentResponse" });
-    case 6:
-      return S.Unknown.pipe(/*@__PURE__*/ T.UnionCases([[], []]));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          referer: S.optional(S.String),
-          referrerPolicy: S.optional(S.String),
-          timeout: S.optional(S.Number),
-          waitUntil: S.optional(__S(30, __c3, 6)),
-        }),
-      ).annotate({
-        identifier: "CrawlCreateRequestGotoOptions",
-      });
-  }
-}
-function __c4(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          model: S.String,
-          authorization: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "CrawlCreateRequestJsonOptionsCustomAiItem",
-      });
-    case 1:
-      return S.Array(__S(32, __c4, 0));
-    case 2:
-      return S.Record(S.String, S.Unknown);
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          type: S.String,
-          jsonSchema: S.optional(__S(34, __c4, 2).pipe(T.Body("json_schema"))),
-        }),
-      ).annotate({
-        identifier: "CrawlCreateRequestJsonOptionsResponseFormat",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          customAi: S.optional(__S(33, __c4, 1).pipe(T.Body("custom_ai"))),
-          prompt: S.optional(S.String),
-          responseFormat: S.optional(__S(35, __c4, 3).pipe(T.Body("response_format"))),
-        }),
-      ).annotate({
-        identifier: "CrawlCreateRequestJsonOptions",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          excludePatterns: S.optional(__S(9, __c1, 1)),
-          includeExternalLinks: S.optional(S.Boolean),
-          includePatterns: S.optional(__S(9, __c1, 1)),
-          includeSubdomains: S.optional(S.Boolean),
-        }),
-      ).annotate({
-        identifier: "CrawlCreateRequestOptions",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          accountId: S.String.pipe(T.Label("account_id")),
-          cacheTTL: S.optional(S.Number.pipe(T.Query())),
-          url: S.String,
-          actionTimeout: S.optional(S.Number),
-          addScriptTag: S.optional(__S(6, __c0, 6)),
-          addStyleTag: S.optional(__S(8, __c1, 0)),
-          allowRequestPattern: S.optional(__S(9, __c1, 1)),
-          allowResourceTypes: S.optional(__S(10, __c1, 2)),
-          authenticate: S.optional(__S(11, __c1, 3)),
-          bestAttempt: S.optional(S.Boolean),
-          browser: S.optional(S.String),
-          contentUse: S.optional(S.String),
-          cookies: S.optional(__S(13, __c1, 5)),
-          crawlPurposes: S.optional(__S(10, __c1, 2)),
-          depth: S.optional(S.Number),
-          emulateMediaType: S.optional(S.String),
-          formats: S.optional(__S(10, __c1, 2)),
-          gotoOptions: S.optional(__S(31, __c3, 7)),
-          jsonOptions: S.optional(__S(36, __c4, 4)),
-          limit: S.optional(S.Number),
-          maxAge: S.optional(S.Number),
-          modifiedSince: S.optional(S.Number),
-          options: S.optional(__S(37, __c4, 5)),
-          rejectRequestPattern: S.optional(__S(9, __c1, 1)),
-          rejectResourceTypes: S.optional(__S(10, __c1, 2)),
-          render: S.optional(S.Boolean),
-          setExtraHTTPHeaders: S.optional(__S(16, __c2, 0)),
-          setJavaScriptEnabled: S.optional(S.Boolean),
-          source: S.optional(S.String),
-          viewport: S.optional(__S(17, __c2, 1)),
-          waitForSelector: S.optional(__S(18, __c2, 2)),
-          waitForTimeout: S.optional(S.Number),
-        })
-          .pipe(
-            T.Http({
-              method: "POST",
-              uri: "/accounts/{account_id}/browser-rendering/crawl",
-              code: 200,
-            }),
-          )
-          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({ identifier: "CreateCrawlRequest" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          allowedDomains: S.optional(__S(9, __c1, 1)),
-          allowedDomainSets: S.optional(__S(9, __c1, 1)),
-        }),
-      ).annotate({
-        identifier: "DevtoolsBrowserCreateRequestGuardrails",
-      });
-  }
-}
-function __c5(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          accountId: S.String.pipe(T.Label("account_id")),
-          keepAlive: S.optional(S.Number.pipe(T.Query("keep_alive"))),
-          lab: S.optional(S.Boolean.pipe(T.Query())),
-          liveViewUrlExpiresInMs: S.optional(S.Number.pipe(T.Query())),
-          recording: S.optional(S.Boolean.pipe(T.Query())),
-          targets: S.optional(S.Boolean.pipe(T.Query())),
-          guardrails: S.optional(__S(39, __c4, 7)),
-        })
-          .pipe(
-            T.Http({
-              method: "POST",
-              uri: "/accounts/{account_id}/browser-rendering/devtools/browser",
-              code: 200,
-            }),
-          )
-          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({
-        identifier: "CreateDevtoolBrowserRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          sessionId: S.String,
-          webSocketDebuggerUrl: S.optional(S.NullOr(S.String)),
-        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({
-        identifier: "CreateDevtoolBrowserResponse",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          accountId: S.String.pipe(T.Label("account_id")),
-          sessionId: S.String.pipe(T.Label("session_id")),
-          liveViewUrlExpiresInMs: S.optional(S.Number.pipe(T.Query())),
-          url: S.optional(S.String.pipe(T.Query())),
-        })
-          .pipe(
-            T.Http({
-              method: "PUT",
-              uri: "/accounts/{account_id}/browser-rendering/devtools/browser/{session_id}/json/new",
-              code: 200,
-            }),
-          )
-          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({
-        identifier: "CreateDevtoolBrowserTargetRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String,
-          type: S.String,
-          url: S.String,
-          description: S.optional(S.NullOr(S.String)),
-          devtoolsFrontendUrl: S.optional(S.NullOr(S.String)),
-          title: S.optional(S.NullOr(S.String)),
-          webSocketDebuggerUrl: S.optional(S.NullOr(S.String)),
-        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({
-        identifier: "CreateDevtoolBrowserTargetResponse",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          mode: S.String,
-        }),
-      ).annotate({
-        identifier: "CreateDevtoolsBrowserLiveViewRequestGuardrails",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          accountId: S.String.pipe(T.Label("account_id")),
-          sessionId: S.String.pipe(T.Label("session_id")),
-          expiresInMs: S.optional(S.Number),
-          guardrails: S.optional(__S(44, __c5, 4)),
-          mode: S.optional(S.String),
-          targetId: S.optional(S.String),
-        })
-          .pipe(
-            T.Http({
-              method: "POST",
-              uri: "/accounts/{account_id}/browser-rendering/devtools/browser/{session_id}/live_view",
-              code: 200,
-            }),
-          )
-          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({
-        identifier: "CreateDevtoolsBrowserLiveViewRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          mode: S.String,
-          guardrails: S.optional(S.NullOr(__S(44, __c5, 4))),
-        }),
-      ).annotate({
-        identifier: "CreateDevtoolsBrowserLiveViewResponseOptions",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String,
-          devtoolsFrontendUrl: S.String,
-          options: __S(46, __c5, 6),
-          webSocketDebuggerUrl: S.String,
-        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({
-        identifier: "CreateDevtoolsBrowserLiveViewResponse",
-      });
-  }
-}
-function __c6(j: number): any {
-  switch (j) {
-    case 0:
       return S.Unknown.pipe(/*@__PURE__*/ T.UnionCases([[], []]));
     case 1:
       return S.suspend(() =>
@@ -3218,68 +2717,12 @@ function __c6(j: number): any {
           referer: S.optional(S.String),
           referrerPolicy: S.optional(S.String),
           timeout: S.optional(S.Number),
-          waitUntil: S.optional(__S(48, __c6, 0)),
-        }),
-      ).annotate({
-        identifier: "JsonCreateRequestGotoOptions",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          accountId: S.String.pipe(T.Label("account_id")),
-          browser: S.optional(S.String.pipe(T.Query())),
-          cacheTTL: S.optional(S.Number.pipe(T.Query())),
-          url: S.optional(S.String),
-          actionTimeout: S.optional(S.Number),
-          addScriptTag: S.optional(__S(6, __c0, 6)),
-          addStyleTag: S.optional(__S(8, __c1, 0)),
-          allowRequestPattern: S.optional(__S(9, __c1, 1)),
-          allowResourceTypes: S.optional(__S(10, __c1, 2)),
-          authenticate: S.optional(__S(11, __c1, 3)),
-          bestAttempt: S.optional(S.Boolean),
-          cookies: S.optional(__S(13, __c1, 5)),
-          customAi: S.optional(__S(33, __c4, 1).pipe(T.Body("custom_ai"))),
-          emulateMediaType: S.optional(S.String),
-          gotoOptions: S.optional(__S(49, __c6, 1)),
-          html: S.optional(S.String),
-          prompt: S.optional(S.String),
-          rejectRequestPattern: S.optional(__S(9, __c1, 1)),
-          rejectResourceTypes: S.optional(__S(10, __c1, 2)),
-          responseFormat: S.optional(__S(35, __c4, 3).pipe(T.Body("response_format"))),
-          setExtraHTTPHeaders: S.optional(__S(16, __c2, 0)),
-          setJavaScriptEnabled: S.optional(S.Boolean),
-          userAgent: S.optional(S.String),
-          viewport: S.optional(__S(17, __c2, 1)),
-          waitForSelector: S.optional(__S(18, __c2, 2)),
-          waitForTimeout: S.optional(S.Number),
-        })
-          .pipe(
-            T.Http({
-              method: "POST",
-              uri: "/accounts/{account_id}/browser-rendering/json",
-              code: 200,
-            }),
-          )
-          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({ identifier: "CreateJsonRequest" });
-    case 3:
-      return S.suspend(() =>
-        __S(34, __c4, 2).pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({ identifier: "CreateJsonResponse" });
-    case 4:
-      return S.Unknown.pipe(/*@__PURE__*/ T.UnionCases([[], []]));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          referer: S.optional(S.String),
-          referrerPolicy: S.optional(S.String),
-          timeout: S.optional(S.Number),
-          waitUntil: S.optional(__S(52, __c6, 4)),
+          waitUntil: S.optional(__S(48, __c3, 0)),
         }),
       ).annotate({
         identifier: "LinksCreateRequestGotoOptions",
       });
-    case 6:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -3287,25 +2730,25 @@ function __c6(j: number): any {
           cacheTTL: S.optional(S.Number.pipe(T.Query())),
           url: S.optional(S.String),
           actionTimeout: S.optional(S.Number),
-          addScriptTag: S.optional(__S(6, __c0, 6)),
-          addStyleTag: S.optional(__S(8, __c1, 0)),
-          allowRequestPattern: S.optional(__S(9, __c1, 1)),
-          allowResourceTypes: S.optional(__S(10, __c1, 2)),
-          authenticate: S.optional(__S(11, __c1, 3)),
+          addScriptTag: S.optional(__S(449, __c28, 1)),
+          addStyleTag: S.optional(__S(451, __c28, 3)),
+          allowRequestPattern: S.optional(__S(432, __c27, 0)),
+          allowResourceTypes: S.optional(__S(452, __c28, 4)),
+          authenticate: S.optional(__S(453, __c28, 5)),
           bestAttempt: S.optional(S.Boolean),
-          cookies: S.optional(__S(13, __c1, 5)),
+          cookies: S.optional(__S(455, __c28, 7)),
           emulateMediaType: S.optional(S.String),
           excludeExternalLinks: S.optional(S.Boolean),
-          gotoOptions: S.optional(__S(53, __c6, 5)),
+          gotoOptions: S.optional(__S(49, __c3, 1)),
           html: S.optional(S.String),
-          rejectRequestPattern: S.optional(__S(9, __c1, 1)),
-          rejectResourceTypes: S.optional(__S(10, __c1, 2)),
-          setExtraHTTPHeaders: S.optional(__S(16, __c2, 0)),
+          rejectRequestPattern: S.optional(__S(432, __c27, 0)),
+          rejectResourceTypes: S.optional(__S(452, __c28, 4)),
+          setExtraHTTPHeaders: S.optional(__S(456, __c28, 8)),
           setJavaScriptEnabled: S.optional(S.Boolean),
           userAgent: S.optional(S.String),
-          viewport: S.optional(__S(17, __c2, 1)),
+          viewport: S.optional(__S(457, __c28, 9)),
           visibleLinksOnly: S.optional(S.Boolean),
-          waitForSelector: S.optional(__S(18, __c2, 2)),
+          waitForSelector: S.optional(__S(458, __c28, 10)),
           waitForTimeout: S.optional(S.Number),
         })
           .pipe(
@@ -3317,13 +2760,13 @@ function __c6(j: number): any {
           )
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "CreateLinkRequest" });
-    case 7:
+    case 3:
       return S.suspend(() =>
-        __S(9, __c1, 1).pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
+        __S(432, __c27, 0).pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "CreateLinkResponse" });
   }
 }
-function __c7(j: number): any {
+function __c4(j: number): any {
   switch (j) {
     case 0:
       return S.Unknown.pipe(/*@__PURE__*/ T.UnionCases([[], []]));
@@ -3333,7 +2776,7 @@ function __c7(j: number): any {
           referer: S.optional(S.String),
           referrerPolicy: S.optional(S.String),
           timeout: S.optional(S.Number),
-          waitUntil: S.optional(__S(56, __c7, 0)),
+          waitUntil: S.optional(__S(64, __c4, 0)),
         }),
       ).annotate({
         identifier: "MarkdownCreateRequestGotoOptions",
@@ -3346,23 +2789,23 @@ function __c7(j: number): any {
           cacheTTL: S.optional(S.Number.pipe(T.Query())),
           url: S.optional(S.String),
           actionTimeout: S.optional(S.Number),
-          addScriptTag: S.optional(__S(6, __c0, 6)),
-          addStyleTag: S.optional(__S(8, __c1, 0)),
-          allowRequestPattern: S.optional(__S(9, __c1, 1)),
-          allowResourceTypes: S.optional(__S(10, __c1, 2)),
-          authenticate: S.optional(__S(11, __c1, 3)),
+          addScriptTag: S.optional(__S(449, __c28, 1)),
+          addStyleTag: S.optional(__S(451, __c28, 3)),
+          allowRequestPattern: S.optional(__S(432, __c27, 0)),
+          allowResourceTypes: S.optional(__S(452, __c28, 4)),
+          authenticate: S.optional(__S(453, __c28, 5)),
           bestAttempt: S.optional(S.Boolean),
-          cookies: S.optional(__S(13, __c1, 5)),
+          cookies: S.optional(__S(455, __c28, 7)),
           emulateMediaType: S.optional(S.String),
-          gotoOptions: S.optional(__S(57, __c7, 1)),
+          gotoOptions: S.optional(__S(65, __c4, 1)),
           html: S.optional(S.String),
-          rejectRequestPattern: S.optional(__S(9, __c1, 1)),
-          rejectResourceTypes: S.optional(__S(10, __c1, 2)),
-          setExtraHTTPHeaders: S.optional(__S(16, __c2, 0)),
+          rejectRequestPattern: S.optional(__S(432, __c27, 0)),
+          rejectResourceTypes: S.optional(__S(452, __c28, 4)),
+          setExtraHTTPHeaders: S.optional(__S(456, __c28, 8)),
           setJavaScriptEnabled: S.optional(S.Boolean),
           userAgent: S.optional(S.String),
-          viewport: S.optional(__S(17, __c2, 1)),
-          waitForSelector: S.optional(__S(18, __c2, 2)),
+          viewport: S.optional(__S(457, __c28, 9)),
+          waitForSelector: S.optional(__S(458, __c28, 10)),
           waitForTimeout: S.optional(S.Number),
         })
           .pipe(
@@ -3374,56 +2817,56 @@ function __c7(j: number): any {
           )
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "CreateMarkdownRequest" });
-    case 3:
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
       return S.Unknown.pipe(/*@__PURE__*/ T.UnionCases([[], []]));
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           referer: S.optional(S.String),
           referrerPolicy: S.optional(S.String),
           timeout: S.optional(S.Number),
-          waitUntil: S.optional(__S(59, __c7, 3)),
+          waitUntil: S.optional(__S(80, __c5, 0)),
         }),
       ).annotate({
         identifier: "PdfCreateRequestGotoOptions",
       });
+    case 2:
+      return S.Unknown.pipe(/*@__PURE__*/ T.UnionCases([[], []]));
+    case 3:
+      return S.Unknown.pipe(/*@__PURE__*/ T.UnionCases([[], []]));
+    case 4:
+      return S.Unknown.pipe(/*@__PURE__*/ T.UnionCases([[], []]));
     case 5:
       return S.Unknown.pipe(/*@__PURE__*/ T.UnionCases([[], []]));
     case 6:
       return S.Unknown.pipe(/*@__PURE__*/ T.UnionCases([[], []]));
     case 7:
-      return S.Unknown.pipe(/*@__PURE__*/ T.UnionCases([[], []]));
-  }
-}
-function __c8(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Unknown.pipe(/*@__PURE__*/ T.UnionCases([[], []]));
-    case 1:
-      return S.Unknown.pipe(/*@__PURE__*/ T.UnionCases([[], []]));
-    case 2:
       return S.suspend(() =>
         S.Struct({
-          bottom: S.optional(__S(62, __c7, 6)),
-          left: S.optional(__S(63, __c7, 7)),
-          right: S.optional(__S(64, __c8, 0)),
-          top: S.optional(__S(65, __c8, 1)),
+          bottom: S.optional(__S(83, __c5, 3)),
+          left: S.optional(__S(84, __c5, 4)),
+          right: S.optional(__S(85, __c5, 5)),
+          top: S.optional(__S(86, __c5, 6)),
         }),
       ).annotate({
         identifier: "PdfCreateRequestPdfOptionsMargin",
       });
-    case 3:
+    case 8:
       return S.Unknown.pipe(/*@__PURE__*/ T.UnionCases([[], []]));
-    case 4:
+    case 9:
       return S.suspend(() =>
         S.Struct({
           displayHeaderFooter: S.optional(S.Boolean),
           footerTemplate: S.optional(S.String),
           format: S.optional(S.String),
           headerTemplate: S.optional(S.String),
-          height: S.optional(__S(61, __c7, 5)),
+          height: S.optional(__S(82, __c5, 2)),
           landscape: S.optional(S.Boolean),
-          margin: S.optional(__S(66, __c8, 2)),
+          margin: S.optional(__S(87, __c5, 7)),
           omitBackground: S.optional(S.Boolean),
           outline: S.optional(S.Boolean),
           pageRanges: S.optional(S.String),
@@ -3432,12 +2875,12 @@ function __c8(j: number): any {
           scale: S.optional(S.Number),
           tagged: S.optional(S.Boolean),
           timeout: S.optional(S.Number),
-          width: S.optional(__S(67, __c8, 3)),
+          width: S.optional(__S(88, __c5, 8)),
         }),
       ).annotate({
         identifier: "PdfCreateRequestPdfOptions",
       });
-    case 5:
+    case 10:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -3445,24 +2888,24 @@ function __c8(j: number): any {
           cacheTTL: S.optional(S.Number.pipe(T.Query())),
           url: S.optional(S.String),
           actionTimeout: S.optional(S.Number),
-          addScriptTag: S.optional(__S(6, __c0, 6)),
-          addStyleTag: S.optional(__S(8, __c1, 0)),
-          allowRequestPattern: S.optional(__S(9, __c1, 1)),
-          allowResourceTypes: S.optional(__S(10, __c1, 2)),
-          authenticate: S.optional(__S(11, __c1, 3)),
+          addScriptTag: S.optional(__S(449, __c28, 1)),
+          addStyleTag: S.optional(__S(451, __c28, 3)),
+          allowRequestPattern: S.optional(__S(432, __c27, 0)),
+          allowResourceTypes: S.optional(__S(452, __c28, 4)),
+          authenticate: S.optional(__S(453, __c28, 5)),
           bestAttempt: S.optional(S.Boolean),
-          cookies: S.optional(__S(13, __c1, 5)),
+          cookies: S.optional(__S(455, __c28, 7)),
           emulateMediaType: S.optional(S.String),
-          gotoOptions: S.optional(__S(60, __c7, 4)),
+          gotoOptions: S.optional(__S(81, __c5, 1)),
           html: S.optional(S.String),
-          pdfOptions: S.optional(__S(68, __c8, 4)),
-          rejectRequestPattern: S.optional(__S(9, __c1, 1)),
-          rejectResourceTypes: S.optional(__S(10, __c1, 2)),
-          setExtraHTTPHeaders: S.optional(__S(16, __c2, 0)),
+          pdfOptions: S.optional(__S(89, __c5, 9)),
+          rejectRequestPattern: S.optional(__S(432, __c27, 0)),
+          rejectResourceTypes: S.optional(__S(452, __c28, 4)),
+          setExtraHTTPHeaders: S.optional(__S(456, __c28, 8)),
           setJavaScriptEnabled: S.optional(S.Boolean),
           userAgent: S.optional(S.String),
-          viewport: S.optional(__S(17, __c2, 1)),
-          waitForSelector: S.optional(__S(18, __c2, 2)),
+          viewport: S.optional(__S(457, __c28, 9)),
+          waitForSelector: S.optional(__S(458, __c28, 10)),
           waitForTimeout: S.optional(S.Number),
         })
           .pipe(
@@ -3474,11 +2917,19 @@ function __c8(j: number): any {
           )
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "CreatePdfRequest" });
-    case 6:
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() => S.Struct({}).pipe(T.KeyDictionary(KEY_DICTIONARY))).annotate({
         identifier: "CreatePdfResponse",
       });
-    case 7:
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           selector: S.String,
@@ -3486,26 +2937,22 @@ function __c8(j: number): any {
       ).annotate({
         identifier: "ScrapeCreateRequestElementsItem",
       });
-  }
-}
-function __c9(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(71, __c8, 7));
     case 1:
-      return S.Unknown.pipe(/*@__PURE__*/ T.UnionCases([[], []]));
+      return S.Array(__S(112, __c7, 0));
     case 2:
+      return S.Unknown.pipe(/*@__PURE__*/ T.UnionCases([[], []]));
+    case 3:
       return S.suspend(() =>
         S.Struct({
           referer: S.optional(S.String),
           referrerPolicy: S.optional(S.String),
           timeout: S.optional(S.Number),
-          waitUntil: S.optional(__S(73, __c9, 1)),
+          waitUntil: S.optional(__S(114, __c7, 2)),
         }),
       ).annotate({
         identifier: "ScrapeCreateRequestGotoOptions",
       });
-    case 3:
+    case 4:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -3513,24 +2960,24 @@ function __c9(j: number): any {
           cacheTTL: S.optional(S.Number.pipe(T.Query())),
           url: S.optional(S.String),
           actionTimeout: S.optional(S.Number),
-          addScriptTag: S.optional(__S(6, __c0, 6)),
-          addStyleTag: S.optional(__S(8, __c1, 0)),
-          allowRequestPattern: S.optional(__S(9, __c1, 1)),
-          allowResourceTypes: S.optional(__S(10, __c1, 2)),
-          authenticate: S.optional(__S(11, __c1, 3)),
+          addScriptTag: S.optional(__S(449, __c28, 1)),
+          addStyleTag: S.optional(__S(451, __c28, 3)),
+          allowRequestPattern: S.optional(__S(432, __c27, 0)),
+          allowResourceTypes: S.optional(__S(452, __c28, 4)),
+          authenticate: S.optional(__S(453, __c28, 5)),
           bestAttempt: S.optional(S.Boolean),
-          cookies: S.optional(__S(13, __c1, 5)),
-          elements: S.optional(__S(72, __c9, 0)),
+          cookies: S.optional(__S(455, __c28, 7)),
+          elements: S.optional(__S(113, __c7, 1)),
           emulateMediaType: S.optional(S.String),
-          gotoOptions: S.optional(__S(74, __c9, 2)),
+          gotoOptions: S.optional(__S(115, __c7, 3)),
           html: S.optional(S.String),
-          rejectRequestPattern: S.optional(__S(9, __c1, 1)),
-          rejectResourceTypes: S.optional(__S(10, __c1, 2)),
-          setExtraHTTPHeaders: S.optional(__S(16, __c2, 0)),
+          rejectRequestPattern: S.optional(__S(432, __c27, 0)),
+          rejectResourceTypes: S.optional(__S(452, __c28, 4)),
+          setExtraHTTPHeaders: S.optional(__S(456, __c28, 8)),
           setJavaScriptEnabled: S.optional(S.Boolean),
           userAgent: S.optional(S.String),
-          viewport: S.optional(__S(17, __c2, 1)),
-          waitForSelector: S.optional(__S(18, __c2, 2)),
+          viewport: S.optional(__S(457, __c28, 9)),
+          waitForSelector: S.optional(__S(458, __c28, 10)),
           waitForTimeout: S.optional(S.Number),
         })
           .pipe(
@@ -3542,7 +2989,7 @@ function __c9(j: number): any {
           )
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "CreateScrapeRequest" });
-    case 4:
+    case 5:
       return S.suspend(() =>
         S.Struct({
           name: S.String,
@@ -3551,12 +2998,12 @@ function __c9(j: number): any {
       ).annotate({
         identifier: "ScrapeCreateResultItemResultsAttributesItem",
       });
-    case 5:
-      return S.Array(__S(76, __c9, 4));
     case 6:
+      return S.Array(__S(117, __c7, 5));
+    case 7:
       return S.suspend(() =>
         S.Struct({
-          attributes: __S(77, __c9, 5),
+          attributes: __S(118, __c7, 6),
           height: S.Number,
           html: S.String,
           left: S.Number,
@@ -3567,53 +3014,41 @@ function __c9(j: number): any {
       ).annotate({
         identifier: "ScrapeCreateResultItemResults",
       });
-    case 7:
+    case 8:
       return S.suspend(() =>
         S.Struct({
-          results: __S(78, __c9, 6),
+          results: __S(119, __c7, 7),
           selector: S.String,
         }),
       ).annotate({ identifier: "ScrapeCreateResultItem" });
+    case 9:
+      return S.Array(__S(120, __c7, 8));
+    case 10:
+      return S.suspend(() =>
+        __S(121, __c7, 9).pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({ identifier: "CreateScrapeResponse" });
   }
 }
-function __c10(j: number): any {
+function __c8(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(79, __c9, 7));
-    case 1:
-      return S.suspend(() =>
-        __S(80, __c10, 0).pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({ identifier: "CreateScrapeResponse" });
-    case 2:
       return S.Unknown.pipe(/*@__PURE__*/ T.UnionCases([[], []]));
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           referer: S.optional(S.String),
           referrerPolicy: S.optional(S.String),
           timeout: S.optional(S.Number),
-          waitUntil: S.optional(__S(82, __c10, 2)),
+          waitUntil: S.optional(__S(128, __c8, 0)),
         }),
       ).annotate({
         identifier: "ScreenshotCreateRequestGotoOptions",
       });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          height: S.Number,
-          width: S.Number,
-          x: S.Number,
-          y: S.Number,
-          scale: S.optional(S.Number),
-        }),
-      ).annotate({
-        identifier: "ScreenshotCreateRequestScreenshotOptionsClip",
-      });
-    case 5:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           captureBeyondViewport: S.optional(S.Boolean),
-          clip: S.optional(__S(84, __c10, 4)),
+          clip: S.optional(__S(144, __c9, 0)),
           encoding: S.optional(S.String),
           fromSurface: S.optional(S.Boolean),
           fullPage: S.optional(S.Boolean),
@@ -3625,7 +3060,7 @@ function __c10(j: number): any {
       ).annotate({
         identifier: "ScreenshotCreateRequestScreenshotOptions",
       });
-    case 6:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -3633,26 +3068,26 @@ function __c10(j: number): any {
           cacheTTL: S.optional(S.Number.pipe(T.Query())),
           url: S.optional(S.String),
           actionTimeout: S.optional(S.Number),
-          addScriptTag: S.optional(__S(6, __c0, 6)),
-          addStyleTag: S.optional(__S(8, __c1, 0)),
-          allowRequestPattern: S.optional(__S(9, __c1, 1)),
-          allowResourceTypes: S.optional(__S(10, __c1, 2)),
-          authenticate: S.optional(__S(11, __c1, 3)),
+          addScriptTag: S.optional(__S(449, __c28, 1)),
+          addStyleTag: S.optional(__S(451, __c28, 3)),
+          allowRequestPattern: S.optional(__S(432, __c27, 0)),
+          allowResourceTypes: S.optional(__S(452, __c28, 4)),
+          authenticate: S.optional(__S(453, __c28, 5)),
           bestAttempt: S.optional(S.Boolean),
-          cookies: S.optional(__S(13, __c1, 5)),
+          cookies: S.optional(__S(455, __c28, 7)),
           emulateMediaType: S.optional(S.String),
-          gotoOptions: S.optional(__S(83, __c10, 3)),
+          gotoOptions: S.optional(__S(129, __c8, 1)),
           html: S.optional(S.String),
-          rejectRequestPattern: S.optional(__S(9, __c1, 1)),
-          rejectResourceTypes: S.optional(__S(10, __c1, 2)),
-          screenshotOptions: S.optional(__S(85, __c10, 5)),
+          rejectRequestPattern: S.optional(__S(432, __c27, 0)),
+          rejectResourceTypes: S.optional(__S(452, __c28, 4)),
+          screenshotOptions: S.optional(__S(130, __c8, 2)),
           scrollPage: S.optional(S.Boolean),
           selector: S.optional(S.String),
-          setExtraHTTPHeaders: S.optional(__S(16, __c2, 0)),
+          setExtraHTTPHeaders: S.optional(__S(456, __c28, 8)),
           setJavaScriptEnabled: S.optional(S.Boolean),
           userAgent: S.optional(S.String),
-          viewport: S.optional(__S(17, __c2, 1)),
-          waitForSelector: S.optional(__S(18, __c2, 2)),
+          viewport: S.optional(__S(457, __c28, 9)),
+          waitForSelector: S.optional(__S(458, __c28, 10)),
           waitForTimeout: S.optional(S.Number),
         })
           .pipe(
@@ -3664,28 +3099,44 @@ function __c10(j: number): any {
           )
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "CreateScreenshotRequest" });
-    case 7:
-      return S.Unknown.pipe(/*@__PURE__*/ T.UnionCases([[], []]));
   }
 }
-function __c11(j: number): any {
+function __c9(j: number): any {
   switch (j) {
     case 0:
+      return S.suspend(() =>
+        S.Struct({
+          height: S.Number,
+          width: S.Number,
+          x: S.Number,
+          y: S.Number,
+          scale: S.optional(S.Number),
+        }),
+      ).annotate({
+        identifier: "ScreenshotCreateRequestScreenshotOptionsClip",
+      });
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Unknown.pipe(/*@__PURE__*/ T.UnionCases([[], []]));
+    case 1:
       return S.suspend(() =>
         S.Struct({
           referer: S.optional(S.String),
           referrerPolicy: S.optional(S.String),
           timeout: S.optional(S.Number),
-          waitUntil: S.optional(__S(87, __c10, 7)),
+          waitUntil: S.optional(__S(160, __c10, 0)),
         }),
       ).annotate({
         identifier: "SnapshotCreateRequestGotoOptions",
       });
-    case 1:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           captureBeyondViewport: S.optional(S.Boolean),
-          clip: S.optional(__S(84, __c10, 4)),
+          clip: S.optional(__S(144, __c9, 0)),
           fromSurface: S.optional(S.Boolean),
           fullPage: S.optional(S.Boolean),
           omitBackground: S.optional(S.Boolean),
@@ -3696,7 +3147,7 @@ function __c11(j: number): any {
       ).annotate({
         identifier: "SnapshotCreateRequestScreenshotOptions",
       });
-    case 2:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -3704,25 +3155,25 @@ function __c11(j: number): any {
           cacheTTL: S.optional(S.Number.pipe(T.Query())),
           url: S.optional(S.String),
           actionTimeout: S.optional(S.Number),
-          addScriptTag: S.optional(__S(6, __c0, 6)),
-          addStyleTag: S.optional(__S(8, __c1, 0)),
-          allowRequestPattern: S.optional(__S(9, __c1, 1)),
-          allowResourceTypes: S.optional(__S(10, __c1, 2)),
-          authenticate: S.optional(__S(11, __c1, 3)),
+          addScriptTag: S.optional(__S(449, __c28, 1)),
+          addStyleTag: S.optional(__S(451, __c28, 3)),
+          allowRequestPattern: S.optional(__S(432, __c27, 0)),
+          allowResourceTypes: S.optional(__S(452, __c28, 4)),
+          authenticate: S.optional(__S(453, __c28, 5)),
           bestAttempt: S.optional(S.Boolean),
-          cookies: S.optional(__S(13, __c1, 5)),
+          cookies: S.optional(__S(455, __c28, 7)),
           emulateMediaType: S.optional(S.String),
-          formats: S.optional(__S(10, __c1, 2)),
-          gotoOptions: S.optional(__S(88, __c11, 0)),
+          formats: S.optional(__S(452, __c28, 4)),
+          gotoOptions: S.optional(__S(161, __c10, 1)),
           html: S.optional(S.String),
-          rejectRequestPattern: S.optional(__S(9, __c1, 1)),
-          rejectResourceTypes: S.optional(__S(10, __c1, 2)),
-          screenshotOptions: S.optional(__S(89, __c11, 1)),
-          setExtraHTTPHeaders: S.optional(__S(16, __c2, 0)),
+          rejectRequestPattern: S.optional(__S(432, __c27, 0)),
+          rejectResourceTypes: S.optional(__S(452, __c28, 4)),
+          screenshotOptions: S.optional(__S(162, __c10, 2)),
+          setExtraHTTPHeaders: S.optional(__S(456, __c28, 8)),
           setJavaScriptEnabled: S.optional(S.Boolean),
           userAgent: S.optional(S.String),
-          viewport: S.optional(__S(17, __c2, 1)),
-          waitForSelector: S.optional(__S(18, __c2, 2)),
+          viewport: S.optional(__S(457, __c28, 9)),
+          waitForSelector: S.optional(__S(458, __c28, 10)),
           waitForTimeout: S.optional(S.Number),
         })
           .pipe(
@@ -3734,19 +3185,19 @@ function __c11(j: number): any {
           )
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "CreateSnapshotRequest" });
-    case 3:
-      return S.Unknown.pipe(/*@__PURE__*/ T.UnionCases([[], []]));
     case 4:
       return S.Unknown.pipe(/*@__PURE__*/ T.UnionCases([[], []]));
     case 5:
       return S.Unknown.pipe(/*@__PURE__*/ T.UnionCases([[], []]));
     case 6:
+      return S.Unknown.pipe(/*@__PURE__*/ T.UnionCases([[], []]));
+    case 7:
       return S.suspend(() =>
         S.Struct({
           role: S.String,
           autocomplete: S.optional(S.NullOr(S.String)),
-          checked: S.optional(S.NullOr(__S(91, __c11, 3))),
-          children: S.optional(S.NullOr(__S(21, __c2, 5))),
+          checked: S.optional(S.NullOr(__S(164, __c10, 4))),
+          children: S.optional(S.NullOr(__S(416, __c26, 0))),
           description: S.optional(S.NullOr(S.String)),
           disabled: S.optional(S.NullOr(S.Boolean)),
           expanded: S.optional(S.NullOr(S.Boolean)),
@@ -3760,12 +3211,12 @@ function __c11(j: number): any {
           multiselectable: S.optional(S.NullOr(S.Boolean)),
           name: S.optional(S.NullOr(S.String)),
           orientation: S.optional(S.NullOr(S.String)),
-          pressed: S.optional(S.NullOr(__S(92, __c11, 4))),
+          pressed: S.optional(S.NullOr(__S(165, __c10, 5))),
           readonly: S.optional(S.NullOr(S.Boolean)),
           required: S.optional(S.NullOr(S.Boolean)),
           roledescription: S.optional(S.NullOr(S.String)),
           selected: S.optional(S.NullOr(S.Boolean)),
-          value: S.optional(S.NullOr(__S(93, __c11, 5))),
+          value: S.optional(S.NullOr(__S(166, __c10, 6))),
           valuemax: S.optional(S.NullOr(S.Number)),
           valuemin: S.optional(S.NullOr(S.Number)),
           valuetext: S.optional(S.NullOr(S.String)),
@@ -3773,10 +3224,10 @@ function __c11(j: number): any {
       ).annotate({
         identifier: "SnapshotCreateResponseAccessibilityTree",
       });
-    case 7:
+    case 8:
       return S.suspend(() =>
         S.Struct({
-          accessibilityTree: S.optional(S.NullOr(__S(94, __c11, 6))),
+          accessibilityTree: S.optional(S.NullOr(__S(167, __c10, 7))),
           content: S.optional(S.NullOr(S.String)),
           markdown: S.optional(S.NullOr(S.String)),
           screenshot: S.optional(S.NullOr(S.String)),
@@ -3784,7 +3235,7 @@ function __c11(j: number): any {
       ).annotate({ identifier: "CreateSnapshotResponse" });
   }
 }
-function __c12(j: number): any {
+function __c11(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3808,7 +3259,11 @@ function __c12(j: number): any {
           message: S.String,
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "DeleteCrawlResponse" });
-    case 2:
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -3825,7 +3280,7 @@ function __c12(j: number): any {
       ).annotate({
         identifier: "DeleteDevtoolBrowserRequest",
       });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           status: S.String,
@@ -3833,7 +3288,11 @@ function __c12(j: number): any {
       ).annotate({
         identifier: "DeleteDevtoolBrowserResponse",
       });
-    case 4:
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -3852,7 +3311,7 @@ function __c12(j: number): any {
           )
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "GetCrawlRequest" });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           status: S.Number,
@@ -3862,39 +3321,39 @@ function __c12(j: number): any {
       ).annotate({
         identifier: "CrawlGetResponseRecordsItemMetadata",
       });
-    case 6:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           status: S.String,
           url: S.String,
           html: S.optional(S.NullOr(S.String)),
-          json: S.optional(S.NullOr(__S(34, __c4, 2))),
+          json: S.optional(S.NullOr(__S(528, __c33, 0))),
           markdown: S.optional(S.NullOr(S.String)),
-          metadata: S.optional(S.NullOr(__S(101, __c12, 5))),
+          metadata: S.optional(S.NullOr(__S(209, __c13, 1))),
         }),
       ).annotate({
         identifier: "CrawlGetResponseRecordsItem",
       });
-    case 7:
-      return S.Array(__S(102, __c12, 6));
-  }
-}
-function __c13(j: number): any {
-  switch (j) {
-    case 0:
+    case 3:
+      return S.Array(__S(210, __c13, 2));
+    case 4:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
           browserSecondsUsed: S.Number,
           finished: S.Number,
-          records: __S(103, __c12, 7),
+          records: __S(211, __c13, 3),
           skipped: S.Number,
           status: S.String,
           total: S.Number,
           cursor: S.optional(S.NullOr(S.Number)),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "GetCrawlResponse" });
-    case 1:
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -3913,7 +3372,44 @@ function __c13(j: number): any {
       ).annotate({
         identifier: "GetDevtoolBrowserPageRequest",
       });
-    case 2:
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          accountId: S.String.pipe(T.Label("account_id")),
+          sessionId: S.String.pipe(T.Label("session_id")),
+          keepAlive: S.optional(S.Number.pipe(T.Query("keep_alive"))),
+          lab: S.optional(S.Boolean.pipe(T.Query())),
+          recording: S.optional(S.Boolean.pipe(T.Query())),
+          cfBrapiGuardrails: S.optional(S.String.pipe(T.Header("cf-brapi-guardrails"))),
+        })
+          .pipe(
+            T.Http({
+              method: "GET",
+              uri: "/accounts/{account_id}/browser-rendering/devtools/browser/{session_id}",
+              code: 200,
+            }),
+          )
+          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({
+        identifier: "ConnectDevtoolBrowserRequest",
+      });
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({}).pipe(T.KeyDictionary(KEY_DICTIONARY))).annotate({
+        identifier: "ConnectDevtoolBrowserResponse",
+      });
+  }
+}
+function __c17(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -3931,7 +3427,11 @@ function __c13(j: number): any {
       ).annotate({
         identifier: "GetDevtoolBrowserTargetRequest",
       });
-    case 3:
+  }
+}
+function __c18(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -3946,7 +3446,11 @@ function __c13(j: number): any {
           )
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "GetDevtoolSessionRequest" });
-    case 4:
+  }
+}
+function __c19(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           sessionId: S.String,
@@ -3964,7 +3468,11 @@ function __c13(j: number): any {
       ).annotate({
         identifier: "GetDevtoolSessionResponse",
       });
-    case 5:
+  }
+}
+function __c20(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -3984,7 +3492,11 @@ function __c13(j: number): any {
       ).annotate({
         identifier: "LaunchDevtoolBrowserRequest",
       });
-    case 6:
+  }
+}
+function __c21(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -4002,7 +3514,11 @@ function __c13(j: number): any {
       ).annotate({
         identifier: "ListDevtoolBrowserTargetsRequest",
       });
-    case 7:
+  }
+}
+function __c22(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -4022,7 +3538,7 @@ function __c13(j: number): any {
       });
   }
 }
-function __c14(j: number): any {
+function __c23(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4042,22 +3558,22 @@ function __c14(j: number): any {
         identifier: "ProtocolDevtoolBrowserRequest",
       });
     case 1:
-      return S.Array(__S(34, __c4, 2));
+      return S.Array(__S(528, __c33, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
           domain: S.String,
-          commands: S.optional(S.NullOr(__S(113, __c14, 1))),
-          dependencies: S.optional(S.NullOr(__S(9, __c1, 1))),
-          events: S.optional(S.NullOr(__S(113, __c14, 1))),
+          commands: S.optional(S.NullOr(__S(369, __c23, 1))),
+          dependencies: S.optional(S.NullOr(__S(432, __c27, 0))),
+          events: S.optional(S.NullOr(__S(369, __c23, 1))),
           experimental: S.optional(S.NullOr(S.Boolean)),
-          types: S.optional(S.NullOr(__S(113, __c14, 1))),
+          types: S.optional(S.NullOr(__S(369, __c23, 1))),
         }),
       ).annotate({
         identifier: "DevtoolsBrowserProtocolResponseDomainsItem",
       });
     case 3:
-      return S.Array(__S(114, __c14, 2));
+      return S.Array(__S(370, __c23, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
@@ -4070,13 +3586,17 @@ function __c14(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          domains: __S(115, __c14, 3),
-          version: S.optional(S.NullOr(__S(116, __c14, 4))),
+          domains: __S(371, __c23, 3),
+          version: S.optional(S.NullOr(__S(372, __c23, 4))),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({
         identifier: "ProtocolDevtoolBrowserResponse",
       });
-    case 6:
+  }
+}
+function __c24(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -4093,7 +3613,7 @@ function __c14(j: number): any {
       ).annotate({
         identifier: "VersionDevtoolBrowserRequest",
       });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           browser: S.String.pipe(T.Body("Browser")),
@@ -4108,7 +3628,582 @@ function __c14(j: number): any {
       });
   }
 }
-
+function __c25(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Unknown.pipe(/*@__PURE__*/ T.UnionCases([[], []]));
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          referer: S.optional(S.String),
+          referrerPolicy: S.optional(S.String),
+          timeout: S.optional(S.Number),
+          waitUntil: S.optional(__S(400, __c25, 0)),
+        }),
+      ).annotate({
+        identifier: "CreateAccessibilityTreeRequestGotoOptions",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          accountId: S.String.pipe(T.Label("account_id")),
+          browser: S.optional(S.String.pipe(T.Query())),
+          cacheTTL: S.optional(S.Number.pipe(T.Query())),
+          url: S.optional(S.String),
+          actionTimeout: S.optional(S.Number),
+          addScriptTag: S.optional(__S(449, __c28, 1)),
+          addStyleTag: S.optional(__S(451, __c28, 3)),
+          allowRequestPattern: S.optional(__S(432, __c27, 0)),
+          allowResourceTypes: S.optional(__S(452, __c28, 4)),
+          authenticate: S.optional(__S(453, __c28, 5)),
+          bestAttempt: S.optional(S.Boolean),
+          cookies: S.optional(__S(455, __c28, 7)),
+          emulateMediaType: S.optional(S.String),
+          gotoOptions: S.optional(__S(401, __c25, 1)),
+          html: S.optional(S.String),
+          interestingOnly: S.optional(S.Boolean),
+          rejectRequestPattern: S.optional(__S(432, __c27, 0)),
+          rejectResourceTypes: S.optional(__S(452, __c28, 4)),
+          root: S.optional(S.String),
+          setExtraHTTPHeaders: S.optional(__S(456, __c28, 8)),
+          setJavaScriptEnabled: S.optional(S.Boolean),
+          userAgent: S.optional(S.String),
+          viewport: S.optional(__S(457, __c28, 9)),
+          waitForSelector: S.optional(__S(458, __c28, 10)),
+          waitForTimeout: S.optional(S.Number),
+        })
+          .pipe(
+            T.Http({
+              method: "POST",
+              uri: "/accounts/{account_id}/browser-rendering/accessibilityTree",
+              code: 200,
+            }),
+          )
+          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({
+        identifier: "CreateAccessibilityTreeRequest",
+      });
+    case 3:
+      return S.Unknown.pipe(/*@__PURE__*/ T.UnionCases([[], []]));
+    case 4:
+      return S.Unknown.pipe(/*@__PURE__*/ T.UnionCases([[], []]));
+    case 5:
+      return S.Unknown.pipe(/*@__PURE__*/ T.UnionCases([[], []]));
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          role: S.String,
+          autocomplete: S.optional(S.NullOr(S.String)),
+          checked: S.optional(S.NullOr(__S(403, __c25, 3))),
+          children: S.optional(S.NullOr(__S(416, __c26, 0))),
+          description: S.optional(S.NullOr(S.String)),
+          disabled: S.optional(S.NullOr(S.Boolean)),
+          expanded: S.optional(S.NullOr(S.Boolean)),
+          focused: S.optional(S.NullOr(S.Boolean)),
+          haspopup: S.optional(S.NullOr(S.String)),
+          invalid: S.optional(S.NullOr(S.String)),
+          keyshortcuts: S.optional(S.NullOr(S.String)),
+          level: S.optional(S.NullOr(S.Number)),
+          modal: S.optional(S.NullOr(S.Boolean)),
+          multiline: S.optional(S.NullOr(S.Boolean)),
+          multiselectable: S.optional(S.NullOr(S.Boolean)),
+          name: S.optional(S.NullOr(S.String)),
+          orientation: S.optional(S.NullOr(S.String)),
+          pressed: S.optional(S.NullOr(__S(404, __c25, 4))),
+          readonly: S.optional(S.NullOr(S.Boolean)),
+          required: S.optional(S.NullOr(S.Boolean)),
+          roledescription: S.optional(S.NullOr(S.String)),
+          selected: S.optional(S.NullOr(S.Boolean)),
+          value: S.optional(S.NullOr(__S(405, __c25, 5))),
+          valuemax: S.optional(S.NullOr(S.Number)),
+          valuemin: S.optional(S.NullOr(S.Number)),
+          valuetext: S.optional(S.NullOr(S.String)),
+        }),
+      ).annotate({
+        identifier: "CreateAccessibilityTreeResponseAccessibilityTree",
+      });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          accessibilityTree: __S(406, __c25, 6),
+        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({
+        identifier: "CreateAccessibilityTreeResponse",
+      });
+  }
+}
+function __c26(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.Unknown);
+  }
+}
+function __c27(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c28(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          content: S.optional(S.String),
+          type: S.optional(S.String),
+          url: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "CreateAccessibilityTreeRequestAddScriptTagItem",
+      });
+    case 1:
+      return S.Array(__S(448, __c28, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          content: S.optional(S.String),
+          url: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "CreateAccessibilityTreeRequestAddStyleTagItem",
+      });
+    case 3:
+      return S.Array(__S(450, __c28, 2));
+    case 4:
+      return S.Array(S.String);
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          password: S.String,
+          username: S.String,
+        }),
+      ).annotate({
+        identifier: "CreateAccessibilityTreeRequestAuthenticate",
+      });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String,
+          value: S.String,
+          domain: S.optional(S.String),
+          expires: S.optional(S.Number),
+          httpOnly: S.optional(S.Boolean),
+          partitionKey: S.optional(S.String),
+          path: S.optional(S.String),
+          priority: S.optional(S.String),
+          sameParty: S.optional(S.Boolean),
+          sameSite: S.optional(S.String),
+          secure: S.optional(S.Boolean),
+          sourcePort: S.optional(S.Number),
+          sourceScheme: S.optional(S.String),
+          url: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "CreateAccessibilityTreeRequestCookiesItem",
+      });
+    case 7:
+      return S.Array(__S(454, __c28, 6));
+    case 8:
+      return S.Record(S.String, S.String);
+    case 9:
+      return S.suspend(() =>
+        S.Struct({
+          height: S.Number,
+          width: S.Number,
+          deviceScaleFactor: S.optional(S.Number),
+          hasTouch: S.optional(S.Boolean),
+          isLandscape: S.optional(S.Boolean),
+          isMobile: S.optional(S.Boolean),
+        }),
+      ).annotate({
+        identifier: "CreateAccessibilityTreeRequestViewport",
+      });
+    case 10:
+      return S.suspend(() =>
+        S.Struct({
+          selector: S.String,
+          hidden: S.optional(S.Boolean),
+          timeout: S.optional(S.Number),
+          visible: S.optional(S.Boolean),
+        }),
+      ).annotate({
+        identifier: "CreateAccessibilityTreeRequestWaitForSelector",
+      });
+  }
+}
+function __c29(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Unknown.pipe(/*@__PURE__*/ T.UnionCases([[], []]));
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          referer: S.optional(S.String),
+          referrerPolicy: S.optional(S.String),
+          timeout: S.optional(S.Number),
+          waitUntil: S.optional(__S(464, __c29, 0)),
+        }),
+      ).annotate({
+        identifier: "ContentCreateRequestGotoOptions",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          accountId: S.String.pipe(T.Label("account_id")),
+          browser: S.optional(S.String.pipe(T.Query())),
+          cacheTTL: S.optional(S.Number.pipe(T.Query())),
+          url: S.optional(S.String),
+          actionTimeout: S.optional(S.Number),
+          addScriptTag: S.optional(__S(449, __c28, 1)),
+          addStyleTag: S.optional(__S(451, __c28, 3)),
+          allowRequestPattern: S.optional(__S(432, __c27, 0)),
+          allowResourceTypes: S.optional(__S(452, __c28, 4)),
+          authenticate: S.optional(__S(453, __c28, 5)),
+          bestAttempt: S.optional(S.Boolean),
+          cookies: S.optional(__S(455, __c28, 7)),
+          emulateMediaType: S.optional(S.String),
+          gotoOptions: S.optional(__S(465, __c29, 1)),
+          html: S.optional(S.String),
+          rejectRequestPattern: S.optional(__S(432, __c27, 0)),
+          rejectResourceTypes: S.optional(__S(452, __c28, 4)),
+          setExtraHTTPHeaders: S.optional(__S(456, __c28, 8)),
+          setJavaScriptEnabled: S.optional(S.Boolean),
+          userAgent: S.optional(S.String),
+          viewport: S.optional(__S(457, __c28, 9)),
+          waitForSelector: S.optional(__S(458, __c28, 10)),
+          waitForTimeout: S.optional(S.Number),
+        })
+          .pipe(
+            T.Http({
+              method: "POST",
+              uri: "/accounts/{account_id}/browser-rendering/content",
+              code: 200,
+            }),
+          )
+          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({ identifier: "CreateContentRequest" });
+  }
+}
+function __c30(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.String.pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({ identifier: "CreateContentResponse" });
+  }
+}
+function __c31(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Unknown.pipe(/*@__PURE__*/ T.UnionCases([[], []]));
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          referer: S.optional(S.String),
+          referrerPolicy: S.optional(S.String),
+          timeout: S.optional(S.Number),
+          waitUntil: S.optional(__S(496, __c31, 0)),
+        }),
+      ).annotate({
+        identifier: "CrawlCreateRequestGotoOptions",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          customAi: S.optional(__S(513, __c32, 1).pipe(T.Body("custom_ai"))),
+          prompt: S.optional(S.String),
+          responseFormat: S.optional(__S(514, __c32, 2).pipe(T.Body("response_format"))),
+        }),
+      ).annotate({
+        identifier: "CrawlCreateRequestJsonOptions",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          excludePatterns: S.optional(__S(432, __c27, 0)),
+          includeExternalLinks: S.optional(S.Boolean),
+          includePatterns: S.optional(__S(432, __c27, 0)),
+          includeSubdomains: S.optional(S.Boolean),
+        }),
+      ).annotate({
+        identifier: "CrawlCreateRequestOptions",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          accountId: S.String.pipe(T.Label("account_id")),
+          cacheTTL: S.optional(S.Number.pipe(T.Query())),
+          url: S.String,
+          actionTimeout: S.optional(S.Number),
+          addScriptTag: S.optional(__S(449, __c28, 1)),
+          addStyleTag: S.optional(__S(451, __c28, 3)),
+          allowRequestPattern: S.optional(__S(432, __c27, 0)),
+          allowResourceTypes: S.optional(__S(452, __c28, 4)),
+          authenticate: S.optional(__S(453, __c28, 5)),
+          bestAttempt: S.optional(S.Boolean),
+          browser: S.optional(S.String),
+          contentUse: S.optional(S.String),
+          cookies: S.optional(__S(455, __c28, 7)),
+          crawlPurposes: S.optional(__S(452, __c28, 4)),
+          depth: S.optional(S.Number),
+          emulateMediaType: S.optional(S.String),
+          formats: S.optional(__S(452, __c28, 4)),
+          gotoOptions: S.optional(__S(497, __c31, 1)),
+          jsonOptions: S.optional(__S(498, __c31, 2)),
+          limit: S.optional(S.Number),
+          maxAge: S.optional(S.Number),
+          modifiedSince: S.optional(S.Number),
+          options: S.optional(__S(499, __c31, 3)),
+          rejectRequestPattern: S.optional(__S(432, __c27, 0)),
+          rejectResourceTypes: S.optional(__S(452, __c28, 4)),
+          render: S.optional(S.Boolean),
+          setExtraHTTPHeaders: S.optional(__S(456, __c28, 8)),
+          setJavaScriptEnabled: S.optional(S.Boolean),
+          source: S.optional(S.String),
+          viewport: S.optional(__S(457, __c28, 9)),
+          waitForSelector: S.optional(__S(458, __c28, 10)),
+          waitForTimeout: S.optional(S.Number),
+        })
+          .pipe(
+            T.Http({
+              method: "POST",
+              uri: "/accounts/{account_id}/browser-rendering/crawl",
+              code: 200,
+            }),
+          )
+          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({ identifier: "CreateCrawlRequest" });
+  }
+}
+function __c32(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          model: S.String,
+          authorization: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "CrawlCreateRequestJsonOptionsCustomAiItem",
+      });
+    case 1:
+      return S.Array(__S(512, __c32, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          type: S.String,
+          jsonSchema: S.optional(__S(528, __c33, 0).pipe(T.Body("json_schema"))),
+        }),
+      ).annotate({
+        identifier: "CrawlCreateRequestJsonOptionsResponseFormat",
+      });
+  }
+}
+function __c33(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, S.Unknown);
+  }
+}
+function __c34(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          allowedDomains: S.optional(__S(432, __c27, 0)),
+          allowedDomainSets: S.optional(__S(432, __c27, 0)),
+        }),
+      ).annotate({
+        identifier: "DevtoolsBrowserCreateRequestGuardrails",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          accountId: S.String.pipe(T.Label("account_id")),
+          keepAlive: S.optional(S.Number.pipe(T.Query("keep_alive"))),
+          lab: S.optional(S.Boolean.pipe(T.Query())),
+          liveViewUrlExpiresInMs: S.optional(S.Number.pipe(T.Query())),
+          recording: S.optional(S.Boolean.pipe(T.Query())),
+          targets: S.optional(S.Boolean.pipe(T.Query())),
+          guardrails: S.optional(__S(544, __c34, 0)),
+        })
+          .pipe(
+            T.Http({
+              method: "POST",
+              uri: "/accounts/{account_id}/browser-rendering/devtools/browser",
+              code: 200,
+            }),
+          )
+          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({
+        identifier: "CreateDevtoolBrowserRequest",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          sessionId: S.String,
+          webSocketDebuggerUrl: S.optional(S.NullOr(S.String)),
+        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({
+        identifier: "CreateDevtoolBrowserResponse",
+      });
+  }
+}
+function __c35(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          accountId: S.String.pipe(T.Label("account_id")),
+          sessionId: S.String.pipe(T.Label("session_id")),
+          liveViewUrlExpiresInMs: S.optional(S.Number.pipe(T.Query())),
+          url: S.optional(S.String.pipe(T.Query())),
+        })
+          .pipe(
+            T.Http({
+              method: "PUT",
+              uri: "/accounts/{account_id}/browser-rendering/devtools/browser/{session_id}/json/new",
+              code: 200,
+            }),
+          )
+          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({
+        identifier: "CreateDevtoolBrowserTargetRequest",
+      });
+  }
+}
+function __c36(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          type: S.String,
+          url: S.String,
+          description: S.optional(S.NullOr(S.String)),
+          devtoolsFrontendUrl: S.optional(S.NullOr(S.String)),
+          title: S.optional(S.NullOr(S.String)),
+          webSocketDebuggerUrl: S.optional(S.NullOr(S.String)),
+        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({
+        identifier: "CreateDevtoolBrowserTargetResponse",
+      });
+  }
+}
+function __c37(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          mode: S.String,
+        }),
+      ).annotate({
+        identifier: "CreateDevtoolsBrowserLiveViewRequestGuardrails",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          accountId: S.String.pipe(T.Label("account_id")),
+          sessionId: S.String.pipe(T.Label("session_id")),
+          expiresInMs: S.optional(S.Number),
+          guardrails: S.optional(__S(592, __c37, 0)),
+          mode: S.optional(S.String),
+          targetId: S.optional(S.String),
+        })
+          .pipe(
+            T.Http({
+              method: "POST",
+              uri: "/accounts/{account_id}/browser-rendering/devtools/browser/{session_id}/live_view",
+              code: 200,
+            }),
+          )
+          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({
+        identifier: "CreateDevtoolsBrowserLiveViewRequest",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          mode: S.String,
+          guardrails: S.optional(S.NullOr(__S(592, __c37, 0))),
+        }),
+      ).annotate({
+        identifier: "CreateDevtoolsBrowserLiveViewResponseOptions",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          devtoolsFrontendUrl: S.String,
+          options: __S(594, __c37, 2),
+          webSocketDebuggerUrl: S.String,
+        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({
+        identifier: "CreateDevtoolsBrowserLiveViewResponse",
+      });
+  }
+}
+function __c38(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Unknown.pipe(/*@__PURE__*/ T.UnionCases([[], []]));
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          referer: S.optional(S.String),
+          referrerPolicy: S.optional(S.String),
+          timeout: S.optional(S.Number),
+          waitUntil: S.optional(__S(608, __c38, 0)),
+        }),
+      ).annotate({
+        identifier: "JsonCreateRequestGotoOptions",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          accountId: S.String.pipe(T.Label("account_id")),
+          browser: S.optional(S.String.pipe(T.Query())),
+          cacheTTL: S.optional(S.Number.pipe(T.Query())),
+          url: S.optional(S.String),
+          actionTimeout: S.optional(S.Number),
+          addScriptTag: S.optional(__S(449, __c28, 1)),
+          addStyleTag: S.optional(__S(451, __c28, 3)),
+          allowRequestPattern: S.optional(__S(432, __c27, 0)),
+          allowResourceTypes: S.optional(__S(452, __c28, 4)),
+          authenticate: S.optional(__S(453, __c28, 5)),
+          bestAttempt: S.optional(S.Boolean),
+          cookies: S.optional(__S(455, __c28, 7)),
+          customAi: S.optional(__S(513, __c32, 1).pipe(T.Body("custom_ai"))),
+          emulateMediaType: S.optional(S.String),
+          gotoOptions: S.optional(__S(609, __c38, 1)),
+          html: S.optional(S.String),
+          prompt: S.optional(S.String),
+          rejectRequestPattern: S.optional(__S(432, __c27, 0)),
+          rejectResourceTypes: S.optional(__S(452, __c28, 4)),
+          responseFormat: S.optional(__S(514, __c32, 2).pipe(T.Body("response_format"))),
+          setExtraHTTPHeaders: S.optional(__S(456, __c28, 8)),
+          setJavaScriptEnabled: S.optional(S.Boolean),
+          userAgent: S.optional(S.String),
+          viewport: S.optional(__S(457, __c28, 9)),
+          waitForSelector: S.optional(__S(458, __c28, 10)),
+          waitForTimeout: S.optional(S.Number),
+        })
+          .pipe(
+            T.Http({
+              method: "POST",
+              uri: "/accounts/{account_id}/browser-rendering/json",
+              code: 200,
+            }),
+          )
+          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({ identifier: "CreateJsonRequest" });
+    case 3:
+      return S.suspend(() =>
+        __S(528, __c33, 0).pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({ identifier: "CreateJsonResponse" });
+  }
+}
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

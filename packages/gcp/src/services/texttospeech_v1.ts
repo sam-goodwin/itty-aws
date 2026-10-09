@@ -357,8 +357,8 @@ export const cancelOperations: API.OperationMethod<
   CancelOperationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1, __c0, 1) as any as S.Schema<CancelOperationsRequest>,
-  output: __S(0, __c0, 0) as any as S.Schema<Empty>,
+  input: __S(16, __c1, 0) as any as S.Schema<CancelOperationsRequest>,
+  output: __S(32, __c2, 0) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -372,8 +372,8 @@ export const deleteOperations: API.OperationMethod<
   DeleteOperationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2, __c0, 2) as any as S.Schema<DeleteOperationsRequest>,
-  output: __S(0, __c0, 0) as any as S.Schema<Empty>,
+  input: __S(48, __c3, 0) as any as S.Schema<DeleteOperationsRequest>,
+  output: __S(32, __c2, 0) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -387,8 +387,8 @@ export const getProjectsLocationsOperations: API.OperationMethod<
   GetProjectsLocationsOperationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3, __c0, 3) as any as S.Schema<GetProjectsLocationsOperationsRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<Operation>,
+  input: __S(64, __c4, 0) as any as S.Schema<GetProjectsLocationsOperationsRequest>,
+  output: __S(83, __c5, 3) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -403,8 +403,8 @@ export const listProjectsLocationsOperations: API.PaginatedOperationMethod<
   GcpOpContext,
   ListOperationsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(8, __c1, 0) as any as S.Schema<ListProjectsLocationsOperationsRequest>,
-  output: __S(11, __c1, 3) as any as S.Schema<ListOperationsResponse>,
+  input: __S(96, __c6, 0) as any as S.Schema<ListProjectsLocationsOperationsRequest>,
+  output: __S(98, __c6, 2) as any as S.Schema<ListOperationsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -419,8 +419,8 @@ export const listVoices: API.OperationMethod<
   ListVoicesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(12, __c1, 4) as any as S.Schema<ListVoicesRequest>,
-  output: __S(15, __c1, 7) as any as S.Schema<ListVoicesResponse>,
+  input: __S(128, __c8, 0) as any as S.Schema<ListVoicesRequest>,
+  output: __S(131, __c8, 3) as any as S.Schema<ListVoicesResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -439,8 +439,8 @@ export const synthesizeLongAudioProjectsLocations: API.OperationMethod<
   SynthesizeLongAudioProjectsLocationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(31, __c3, 7) as any as S.Schema<SynthesizeLongAudioProjectsLocationsRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<Operation>,
+  input: __S(145, __c9, 1) as any as S.Schema<SynthesizeLongAudioProjectsLocationsRequest>,
+  output: __S(83, __c5, 3) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -454,8 +454,8 @@ export const synthesizeText: API.OperationMethod<
   SynthesizeTextError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(37, __c4, 5) as any as S.Schema<SynthesizeTextRequest>,
-  output: __S(38, __c4, 6) as any as S.Schema<SynthesizeSpeechResponse>,
+  input: __S(5, __c0, 5) as any as S.Schema<SynthesizeTextRequest>,
+  output: __S(6, __c0, 6) as any as S.Schema<SynthesizeSpeechResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -465,14 +465,65 @@ export const synthesizeText: API.OperationMethod<
 function __c0(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "CancelOperationRequest",
-      });
+      return S.suspend(() =>
+        S.Struct({
+          category: S.optional(S.String),
+          threshold: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "SafetySetting" });
     case 1:
+      return S.Array(__S(0, __c0, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          settings: S.optional(__S(1, __c0, 1)),
+        }),
+      ).annotate({ identifier: "SafetySettings" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          enableTextnorm: S.optional(S.Boolean),
+          safetySettings: S.optional(__S(2, __c0, 2)),
+          lowLatencyJourneySynthesis: S.optional(S.Boolean),
+          relaxSafetyFilters: S.optional(S.Boolean),
+        }),
+      ).annotate({ identifier: "AdvancedVoiceOptions" });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          input: S.optional(__S(173, __c10, 13)),
+          audioConfig: S.optional(__S(166, __c10, 6)),
+          voice: S.optional(__S(165, __c10, 5)),
+          advancedVoiceOptions: S.optional(__S(3, __c0, 3)),
+        }),
+      ).annotate({ identifier: "SynthesizeSpeechRequest" });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          body: S.optional(__S(4, __c0, 4).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/text:synthesize",
+            baseUrl: "https://texttospeech.googleapis.com/",
+          }),
+        ),
+      ).annotate({ identifier: "SynthesizeTextRequest" });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          audioContent: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "SynthesizeSpeechResponse" });
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(0, __c0, 0).pipe(T.HttpBody())),
+          body: S.optional(__S(32, __c2, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -481,7 +532,19 @@ function __c0(j: number): any {
           }),
         ),
       ).annotate({ identifier: "CancelOperationsRequest" });
-    case 2:
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "CancelOperationRequest",
+      });
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -493,7 +556,11 @@ function __c0(j: number): any {
           }),
         ),
       ).annotate({ identifier: "DeleteOperationsRequest" });
-    case 3:
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -507,31 +574,35 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "GetProjectsLocationsOperationsRequest",
       });
-    case 4:
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
       return S.Record(S.String, S.Unknown);
-    case 5:
-      return S.Array(__S(4, __c0, 4));
-    case 6:
+    case 1:
+      return S.Array(__S(80, __c5, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           message: S.optional(S.String),
           code: S.optional(S.Number),
-          details: S.optional(__S(5, __c0, 5)),
+          details: S.optional(__S(81, __c5, 1)),
         }),
       ).annotate({ identifier: "Status" });
-    case 7:
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          metadata: S.optional(__S(4, __c0, 4)),
+          metadata: S.optional(__S(80, __c5, 0)),
           name: S.optional(S.String),
           done: S.optional(S.Boolean),
-          error: S.optional(__S(6, __c0, 6)),
-          response: S.optional(__S(4, __c0, 4)),
+          error: S.optional(__S(82, __c5, 2)),
+          response: S.optional(__S(80, __c5, 0)),
         }),
       ).annotate({ identifier: "Operation" });
   }
 }
-function __c1(j: number): any {
+function __c6(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -552,18 +623,26 @@ function __c1(j: number): any {
         identifier: "ListProjectsLocationsOperationsRequest",
       });
     case 1:
-      return S.Array(S.String);
+      return S.Array(__S(83, __c5, 3));
     case 2:
-      return S.Array(__S(7, __c0, 7));
-    case 3:
       return S.suspend(() =>
         S.Struct({
-          unreachable: S.optional(__S(9, __c1, 1)),
-          operations: S.optional(__S(10, __c1, 2)),
+          unreachable: S.optional(__S(112, __c7, 0)),
+          operations: S.optional(__S(97, __c6, 1)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListOperationsResponse" });
-    case 4:
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           languageCode: S.optional(S.String.pipe(T.Query())),
@@ -575,26 +654,56 @@ function __c1(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ListVoicesRequest" });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
           naturalSampleRateHertz: S.optional(S.Number),
-          languageCodes: S.optional(__S(9, __c1, 1)),
+          languageCodes: S.optional(__S(112, __c7, 0)),
           ssmlGender: S.optional(S.String),
         }),
       ).annotate({ identifier: "Voice" });
-    case 6:
-      return S.Array(__S(13, __c1, 5));
-    case 7:
+    case 2:
+      return S.Array(__S(129, __c8, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          voices: S.optional(__S(14, __c1, 6)),
+          voices: S.optional(__S(130, __c8, 2)),
         }),
       ).annotate({ identifier: "ListVoicesResponse" });
   }
 }
-function __c2(j: number): any {
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          voice: S.optional(__S(165, __c10, 5)),
+          outputGcsUri: S.optional(S.String),
+          audioConfig: S.optional(__S(166, __c10, 6)),
+          input: S.optional(__S(173, __c10, 13)),
+        }),
+      ).annotate({
+        identifier: "SynthesizeLongAudioRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          parent: S.String.pipe(T.Label()),
+          body: S.optional(__S(144, __c9, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/{+parent}:synthesizeLongAudio",
+            baseUrl: "https://texttospeech.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "SynthesizeLongAudioProjectsLocationsRequest",
+      });
+  }
+}
+function __c10(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -612,11 +721,11 @@ function __c2(j: number): any {
         identifier: "MultispeakerPrebuiltVoice",
       });
     case 2:
-      return S.Array(__S(17, __c2, 1));
+      return S.Array(__S(161, __c10, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          speakerVoiceConfigs: S.optional(__S(18, __c2, 2)),
+          speakerVoiceConfigs: S.optional(__S(162, __c10, 2)),
         }),
       ).annotate({ identifier: "MultiSpeakerVoiceConfig" });
     case 4:
@@ -629,20 +738,20 @@ function __c2(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          voiceClone: S.optional(__S(16, __c2, 0)),
+          voiceClone: S.optional(__S(160, __c10, 0)),
           name: S.optional(S.String),
-          multiSpeakerVoiceConfig: S.optional(__S(19, __c2, 3)),
+          multiSpeakerVoiceConfig: S.optional(__S(163, __c10, 3)),
           languageCode: S.optional(S.String),
           ssmlGender: S.optional(S.String),
           modelName: S.optional(S.String),
-          customVoice: S.optional(__S(20, __c2, 4)),
+          customVoice: S.optional(__S(164, __c10, 4)),
         }),
       ).annotate({ identifier: "VoiceSelectionParams" });
     case 6:
       return S.suspend(() =>
         S.Struct({
           audioEncoding: S.optional(S.String),
-          effectsProfileId: S.optional(__S(9, __c1, 1)),
+          effectsProfileId: S.optional(__S(112, __c7, 0)),
           pitch: S.optional(S.Number),
           volumeGainDb: S.optional(S.Number),
           sampleRateHertz: S.optional(S.Number),
@@ -659,128 +768,42 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "CustomPronunciationParams",
       });
-  }
-}
-function __c3(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(23, __c2, 7));
-    case 1:
+    case 8:
+      return S.Array(__S(167, __c10, 7));
+    case 9:
       return S.suspend(() =>
         S.Struct({
-          pronunciations: S.optional(__S(24, __c3, 0)),
+          pronunciations: S.optional(__S(168, __c10, 8)),
         }),
       ).annotate({ identifier: "CustomPronunciations" });
-    case 2:
+    case 10:
       return S.suspend(() =>
         S.Struct({
           speaker: S.optional(S.String),
           text: S.optional(S.String),
         }),
       ).annotate({ identifier: "Turn" });
-    case 3:
-      return S.Array(__S(26, __c3, 2));
-    case 4:
+    case 11:
+      return S.Array(__S(170, __c10, 10));
+    case 12:
       return S.suspend(() =>
         S.Struct({
-          turns: S.optional(__S(27, __c3, 3)),
+          turns: S.optional(__S(171, __c10, 11)),
         }),
       ).annotate({ identifier: "MultiSpeakerMarkup" });
-    case 5:
+    case 13:
       return S.suspend(() =>
         S.Struct({
           ssml: S.optional(S.String),
           markup: S.optional(S.String),
-          customPronunciations: S.optional(__S(25, __c3, 1)),
+          customPronunciations: S.optional(__S(169, __c10, 9)),
           prompt: S.optional(S.String),
-          multiSpeakerMarkup: S.optional(__S(28, __c3, 4)),
+          multiSpeakerMarkup: S.optional(__S(172, __c10, 12)),
           text: S.optional(S.String),
         }),
       ).annotate({ identifier: "SynthesisInput" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          voice: S.optional(__S(21, __c2, 5)),
-          outputGcsUri: S.optional(S.String),
-          audioConfig: S.optional(__S(22, __c2, 6)),
-          input: S.optional(__S(29, __c3, 5)),
-        }),
-      ).annotate({
-        identifier: "SynthesizeLongAudioRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(30, __c3, 6).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/{+parent}:synthesizeLongAudio",
-            baseUrl: "https://texttospeech.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "SynthesizeLongAudioProjectsLocationsRequest",
-      });
   }
 }
-function __c4(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          category: S.optional(S.String),
-          threshold: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "SafetySetting" });
-    case 1:
-      return S.Array(__S(32, __c4, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          settings: S.optional(__S(33, __c4, 1)),
-        }),
-      ).annotate({ identifier: "SafetySettings" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          enableTextnorm: S.optional(S.Boolean),
-          safetySettings: S.optional(__S(34, __c4, 2)),
-          lowLatencyJourneySynthesis: S.optional(S.Boolean),
-          relaxSafetyFilters: S.optional(S.Boolean),
-        }),
-      ).annotate({ identifier: "AdvancedVoiceOptions" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          input: S.optional(__S(29, __c3, 5)),
-          audioConfig: S.optional(__S(22, __c2, 6)),
-          voice: S.optional(__S(21, __c2, 5)),
-          advancedVoiceOptions: S.optional(__S(35, __c4, 3)),
-        }),
-      ).annotate({ identifier: "SynthesizeSpeechRequest" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          body: S.optional(__S(36, __c4, 4).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/text:synthesize",
-            baseUrl: "https://texttospeech.googleapis.com/",
-          }),
-        ),
-      ).annotate({ identifier: "SynthesizeTextRequest" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          audioContent: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "SynthesizeSpeechResponse" });
-  }
-}
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

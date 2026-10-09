@@ -486,8 +486,8 @@ export const claimDomainOwnership: API.OperationMethod<
   ClaimDomainOwnershipError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(0, __c0, 0) as any as S.Schema<ClaimDomainOwnershipRequest>,
-  output: __S(4, __c0, 4) as any as S.Schema<ClaimDomainOwnershipResponse>,
+  input: __S(40, __c5, 0) as any as S.Schema<ClaimDomainOwnershipRequest>,
+  output: __S(42, __c5, 2) as any as S.Schema<ClaimDomainOwnershipResponse>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -507,8 +507,8 @@ export const createOrTransferDomain: API.OperationMethod<
   CreateOrTransferDomainError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(5, __c0, 5) as any as S.Schema<CreateOrTransferDomainRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<CreateOrTransferDomainResponse>,
+  input: __S(64, __c8, 0) as any as S.Schema<CreateOrTransferDomainRequest>,
+  output: __S(66, __c8, 2) as any as S.Schema<CreateOrTransferDomainResponse>,
   errors: [BadRequest, PaymentRequired, Forbidden, NotFound, Conflict],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -522,8 +522,8 @@ export const deleteDomain: API.OperationMethod<
   DeleteDomainError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(8, __c1, 0) as any as S.Schema<DeleteDomainRequest>,
-  output: __S(9, __c1, 1) as any as S.Schema<DeleteDomainResponse>,
+  input: __S(72, __c9, 0) as any as S.Schema<DeleteDomainRequest>,
+  output: __S(73, __c9, 1) as any as S.Schema<DeleteDomainResponse>,
   errors: [BadRequest, Forbidden, NotFound, Conflict],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -537,8 +537,8 @@ export const getDomain: API.OperationMethod<
   GetDomainError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(10, __c1, 2) as any as S.Schema<GetDomainRequest>,
-  output: __S(12, __c1, 4) as any as S.Schema<GetDomainResponse>,
+  input: __S(80, __c10, 0) as any as S.Schema<GetDomainRequest>,
+  output: __S(82, __c10, 2) as any as S.Schema<GetDomainResponse>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -552,8 +552,8 @@ export const getDomainConfig: API.OperationMethod<
   GetDomainConfigError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(13, __c1, 5) as any as S.Schema<GetDomainConfigRequest>,
-  output: __S(19, __c2, 3) as any as S.Schema<GetDomainConfigResponse>,
+  input: __S(88, __c11, 0) as any as S.Schema<GetDomainConfigRequest>,
+  output: __S(94, __c11, 6) as any as S.Schema<GetDomainConfigResponse>,
   errors: [BadRequest, Forbidden],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -567,8 +567,8 @@ export const getDomainProjectDomains: API.OperationMethod<
   GetDomainProjectDomainsError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(20, __c2, 4) as any as S.Schema<GetDomainProjectDomainsRequest>,
-  output: __S(26, __c3, 2) as any as S.Schema<GetDomainProjectDomainsResponse>,
+  input: __S(0, __c0, 0) as any as S.Schema<GetDomainProjectDomainsRequest>,
+  output: __S(5, __c0, 5) as any as S.Schema<GetDomainProjectDomainsResponse>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -582,8 +582,8 @@ export const getDomains: API.OperationMethod<
   GetDomainsError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(27, __c3, 3) as any as S.Schema<GetDomainsRequest>,
-  output: __S(30, __c3, 6) as any as S.Schema<GetDomainsResponse>,
+  input: __S(16, __c2, 0) as any as S.Schema<GetDomainsRequest>,
+  output: __S(19, __c2, 3) as any as S.Schema<GetDomainsResponse>,
   errors: [BadRequest, Forbidden, Conflict],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -597,8 +597,8 @@ export const getDomainVerificationRecord: API.OperationMethod<
   GetDomainVerificationRecordError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(31, __c3, 7) as any as S.Schema<GetDomainVerificationRecordRequest>,
-  output: __S(32, __c4, 0) as any as S.Schema<GetDomainVerificationRecordResponse>,
+  input: __S(24, __c3, 0) as any as S.Schema<GetDomainVerificationRecordRequest>,
+  output: __S(25, __c3, 1) as any as S.Schema<GetDomainVerificationRecordResponse>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -612,8 +612,8 @@ export const updateDomain: API.OperationMethod<
   UpdateDomainError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(33, __c4, 1) as any as S.Schema<UpdateDomainRequest>,
-  output: __S(34, __c4, 2) as any as S.Schema<UpdateDomainResponse>,
+  input: __S(32, __c4, 0) as any as S.Schema<UpdateDomainRequest>,
+  output: __S(33, __c4, 1) as any as S.Schema<UpdateDomainResponse>,
   errors: [BadRequest, Forbidden, NotFound, Conflict],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -621,6 +621,164 @@ export const updateDomain: API.OperationMethod<
 
 // Schema builders: each runs one schema initializer, on that schema's first use.
 function __c0(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          domain: S.String.pipe(T.Label()),
+          limit: S.optional(S.Number.pipe(T.Query())),
+          since: S.optional(S.Number.pipe(T.Query())),
+          until: S.optional(S.Number.pipe(T.Query())),
+          teamId: S.optional(S.String.pipe(T.Query())),
+          slug: S.optional(S.String.pipe(T.Query())),
+        }).pipe(T.Http({ method: "GET", uri: "/v1/domains/{domain}/project-domains", code: 200 })),
+      ).annotate({
+        identifier: "GetDomainProjectDomainsRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          domain: S.String,
+          reason: S.String,
+          type: S.String,
+          value: S.String,
+        }),
+      ).annotate({
+        identifier: "GetDomainProjectDomainsResponseProjectDomainsItemVerificationItem",
+      });
+    case 2:
+      return S.Array(__S(1, __c0, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          apexName: S.String,
+          createdAt: S.optional(S.Number),
+          customEnvironmentId: S.optional(S.NullOr(S.String)),
+          gitBranch: S.optional(S.NullOr(S.String)),
+          name: S.String,
+          projectId: S.String,
+          redirect: S.optional(S.NullOr(S.String)),
+          redirectStatusCode: S.optional(S.NullOr(S.Number)),
+          updatedAt: S.optional(S.Number),
+          verification: S.optional(__S(2, __c0, 2)),
+          verified: S.Boolean,
+        }),
+      ).annotate({
+        identifier: "GetDomainProjectDomainsResponseProjectDomainsItem",
+      });
+    case 4:
+      return S.Array(__S(3, __c0, 3));
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          pagination: __S(8, __c1, 0),
+          projectDomains: __S(4, __c0, 4),
+        }),
+      ).annotate({
+        identifier: "GetDomainProjectDomainsResponse",
+      });
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          count: S.Number,
+          next: S.NullOr(S.Number),
+          prev: S.NullOr(S.Number),
+        }),
+      ).annotate({ identifier: "Pagination" });
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          limit: S.optional(S.Number.pipe(T.Query())),
+          since: S.optional(S.Number.pipe(T.Query())),
+          until: S.optional(S.Number.pipe(T.Query())),
+          teamId: S.optional(S.String.pipe(T.Query())),
+          slug: S.optional(S.String.pipe(T.Query())),
+        }).pipe(T.Http({ method: "GET", uri: "/v5/domains", code: 200 })),
+      ).annotate({ identifier: "GetDomainsRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          boughtAt: S.NullOr(S.Number),
+          createdAt: S.Number,
+          creator: __S(48, __c6, 0),
+          customNameservers: S.optional(__S(56, __c7, 0)),
+          echMode: S.String,
+          expiresAt: S.NullOr(S.Number),
+          id: S.String,
+          intendedNameservers: __S(56, __c7, 0),
+          name: S.String,
+          nameservers: __S(56, __c7, 0),
+          renew: S.optional(S.Boolean),
+          serviceType: S.String,
+          teamId: S.NullOr(S.String),
+          transferredAt: S.optional(S.NullOr(S.Number)),
+          transferStartedAt: S.optional(S.Number),
+          userId: S.String,
+          verified: S.Boolean,
+        }),
+      ).annotate({
+        identifier: "GetDomainsResponseDomainsItem",
+      });
+    case 2:
+      return S.Array(__S(17, __c2, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          domains: __S(18, __c2, 2),
+          pagination: __S(8, __c1, 0),
+        }),
+      ).annotate({ identifier: "GetDomainsResponse" });
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          domain: S.String.pipe(T.Label()),
+          teamId: S.optional(S.String.pipe(T.Query())),
+          slug: S.optional(S.String.pipe(T.Query())),
+        }).pipe(T.Http({ method: "GET", uri: "/v9/domains/{domain}/verification", code: 200 })),
+      ).annotate({
+        identifier: "GetDomainVerificationRecordRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          txtRecord: S.String,
+          verificationDomain: S.String,
+        }),
+      ).annotate({
+        identifier: "GetDomainVerificationRecordResponse",
+      });
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          domain: S.String.pipe(T.Label()),
+          teamId: S.optional(S.String.pipe(T.Query())),
+          slug: S.optional(S.String.pipe(T.Query())),
+          body: S.Unknown.pipe(T.HttpBody()),
+        }).pipe(T.Http({ method: "PATCH", uri: "/v3/domains/{domain}", code: 200 })),
+      ).annotate({ identifier: "UpdateDomainRequest" });
+    case 1:
+      return S.suspend(() => S.Unknown.pipe(T.RawResponseRoot())).annotate({
+        identifier: "UpdateDomainResponse",
+      });
+  }
+}
+function __c5(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -635,30 +793,16 @@ function __c0(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          customerId: S.optional(S.NullOr(S.String)),
-          email: S.String,
-          id: S.String,
-          isDomainReseller: S.optional(S.Boolean),
-          username: S.String,
-        }),
-      ).annotate({
-        identifier: "ClaimDomainOwnershipResponseDomainCreator",
-      });
-    case 2:
-      return S.Array(S.String);
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
           boughtAt: S.NullOr(S.Number),
           createdAt: S.Number,
-          creator: __S(1, __c0, 1),
-          customNameservers: S.optional(__S(2, __c0, 2)),
+          creator: __S(48, __c6, 0),
+          customNameservers: S.optional(__S(56, __c7, 0)),
           echMode: S.String,
           expiresAt: S.NullOr(S.Number),
           id: S.String,
-          intendedNameservers: __S(2, __c0, 2),
+          intendedNameservers: __S(56, __c7, 0),
           name: S.String,
-          nameservers: __S(2, __c0, 2),
+          nameservers: __S(56, __c7, 0),
           renew: S.optional(S.Boolean),
           serviceType: S.String,
           teamId: S.NullOr(S.String),
@@ -670,15 +814,41 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "ClaimDomainOwnershipResponseDomain",
       });
-    case 4:
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          domain: __S(3, __c0, 3),
+          domain: __S(41, __c5, 1),
         }),
       ).annotate({
         identifier: "ClaimDomainOwnershipResponse",
       });
-    case 5:
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          customerId: S.optional(S.NullOr(S.String)),
+          email: S.String,
+          id: S.String,
+          isDomainReseller: S.optional(S.Boolean),
+          username: S.String,
+        }),
+      ).annotate({
+        identifier: "ClaimDomainOwnershipResponseDomainCreator",
+      });
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           teamId: S.optional(S.String.pipe(T.Query())),
@@ -688,19 +858,19 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "CreateOrTransferDomainRequest",
       });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           boughtAt: S.NullOr(S.Number),
           createdAt: S.Number,
-          creator: __S(1, __c0, 1),
-          customNameservers: S.optional(__S(2, __c0, 2)),
+          creator: __S(48, __c6, 0),
+          customNameservers: S.optional(__S(56, __c7, 0)),
           echMode: S.String,
           expiresAt: S.NullOr(S.Number),
           id: S.String,
-          intendedNameservers: __S(2, __c0, 2),
+          intendedNameservers: __S(56, __c7, 0),
           name: S.String,
-          nameservers: __S(2, __c0, 2),
+          nameservers: __S(56, __c7, 0),
           renew: S.optional(S.Boolean),
           serviceType: S.String,
           teamId: S.NullOr(S.String),
@@ -712,17 +882,17 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "CreateOrTransferDomainResponseDomain",
       });
-    case 7:
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          domain: __S(6, __c0, 6),
+          domain: __S(65, __c8, 1),
         }),
       ).annotate({
         identifier: "CreateOrTransferDomainResponse",
       });
   }
 }
-function __c1(j: number): any {
+function __c9(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -738,7 +908,11 @@ function __c1(j: number): any {
           uid: S.String,
         }),
       ).annotate({ identifier: "DeleteDomainResponse" });
-    case 2:
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           domain: S.String.pipe(T.Label()),
@@ -746,19 +920,19 @@ function __c1(j: number): any {
           slug: S.optional(S.String.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/v5/domains/{domain}", code: 200 })),
       ).annotate({ identifier: "GetDomainRequest" });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           boughtAt: S.NullOr(S.Number),
           createdAt: S.Number,
-          creator: __S(1, __c0, 1),
-          customNameservers: S.optional(__S(2, __c0, 2)),
+          creator: __S(48, __c6, 0),
+          customNameservers: S.optional(__S(56, __c7, 0)),
           echMode: S.String,
           expiresAt: S.NullOr(S.Number),
           id: S.String,
-          intendedNameservers: __S(2, __c0, 2),
+          intendedNameservers: __S(56, __c7, 0),
           name: S.String,
-          nameservers: __S(2, __c0, 2),
+          nameservers: __S(56, __c7, 0),
           renew: S.optional(S.Boolean),
           serviceType: S.String,
           suffix: S.Boolean,
@@ -769,13 +943,17 @@ function __c1(j: number): any {
           verified: S.Boolean,
         }),
       ).annotate({ identifier: "GetDomainResponseDomain" });
-    case 4:
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          domain: __S(11, __c1, 3),
+          domain: __S(81, __c10, 1),
         }),
       ).annotate({ identifier: "GetDomainResponse" });
-    case 5:
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           domain: S.String.pipe(T.Label()),
@@ -785,9 +963,9 @@ function __c1(j: number): any {
           slug: S.optional(S.String.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/v6/domains/{domain}/config", code: 200 })),
       ).annotate({ identifier: "GetDomainConfigRequest" });
-    case 6:
+    case 1:
       return S.Array(S.String);
-    case 7:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           rank: S.Number,
@@ -796,182 +974,31 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "GetDomainConfigResponseRecommendedCNAMEItem",
       });
-  }
-}
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(15, __c1, 7));
-    case 1:
+    case 3:
+      return S.Array(__S(90, __c11, 2));
+    case 4:
       return S.suspend(() =>
         S.Struct({
           rank: S.Number,
-          value: __S(2, __c0, 2),
+          value: __S(56, __c7, 0),
         }),
       ).annotate({
         identifier: "GetDomainConfigResponseRecommendedIPv4Item",
       });
-    case 2:
-      return S.Array(__S(17, __c2, 1));
-    case 3:
+    case 5:
+      return S.Array(__S(92, __c11, 4));
+    case 6:
       return S.suspend(() =>
         S.Struct({
-          acceptedChallenges: __S(14, __c1, 6),
+          acceptedChallenges: __S(89, __c11, 1),
           configuredBy: S.NullOr(S.String),
-          recommendedCNAME: __S(16, __c2, 0),
-          recommendedIPv4: __S(18, __c2, 2),
+          recommendedCNAME: __S(91, __c11, 3),
+          recommendedIPv4: __S(93, __c11, 5),
           misconfigured: S.Boolean,
         }),
       ).annotate({ identifier: "GetDomainConfigResponse" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          domain: S.String.pipe(T.Label()),
-          limit: S.optional(S.Number.pipe(T.Query())),
-          since: S.optional(S.Number.pipe(T.Query())),
-          until: S.optional(S.Number.pipe(T.Query())),
-          teamId: S.optional(S.String.pipe(T.Query())),
-          slug: S.optional(S.String.pipe(T.Query())),
-        }).pipe(T.Http({ method: "GET", uri: "/v1/domains/{domain}/project-domains", code: 200 })),
-      ).annotate({
-        identifier: "GetDomainProjectDomainsRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          count: S.Number,
-          next: S.NullOr(S.Number),
-          prev: S.NullOr(S.Number),
-        }),
-      ).annotate({ identifier: "Pagination" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          domain: S.String,
-          reason: S.String,
-          type: S.String,
-          value: S.String,
-        }),
-      ).annotate({
-        identifier: "GetDomainProjectDomainsResponseProjectDomainsItemVerificationItem",
-      });
-    case 7:
-      return S.Array(__S(22, __c2, 6));
   }
 }
-function __c3(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          apexName: S.String,
-          createdAt: S.optional(S.Number),
-          customEnvironmentId: S.optional(S.NullOr(S.String)),
-          gitBranch: S.optional(S.NullOr(S.String)),
-          name: S.String,
-          projectId: S.String,
-          redirect: S.optional(S.NullOr(S.String)),
-          redirectStatusCode: S.optional(S.NullOr(S.Number)),
-          updatedAt: S.optional(S.Number),
-          verification: S.optional(__S(23, __c2, 7)),
-          verified: S.Boolean,
-        }),
-      ).annotate({
-        identifier: "GetDomainProjectDomainsResponseProjectDomainsItem",
-      });
-    case 1:
-      return S.Array(__S(24, __c3, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          pagination: __S(21, __c2, 5),
-          projectDomains: __S(25, __c3, 1),
-        }),
-      ).annotate({
-        identifier: "GetDomainProjectDomainsResponse",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          limit: S.optional(S.Number.pipe(T.Query())),
-          since: S.optional(S.Number.pipe(T.Query())),
-          until: S.optional(S.Number.pipe(T.Query())),
-          teamId: S.optional(S.String.pipe(T.Query())),
-          slug: S.optional(S.String.pipe(T.Query())),
-        }).pipe(T.Http({ method: "GET", uri: "/v5/domains", code: 200 })),
-      ).annotate({ identifier: "GetDomainsRequest" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          boughtAt: S.NullOr(S.Number),
-          createdAt: S.Number,
-          creator: __S(1, __c0, 1),
-          customNameservers: S.optional(__S(2, __c0, 2)),
-          echMode: S.String,
-          expiresAt: S.NullOr(S.Number),
-          id: S.String,
-          intendedNameservers: __S(2, __c0, 2),
-          name: S.String,
-          nameservers: __S(2, __c0, 2),
-          renew: S.optional(S.Boolean),
-          serviceType: S.String,
-          teamId: S.NullOr(S.String),
-          transferredAt: S.optional(S.NullOr(S.Number)),
-          transferStartedAt: S.optional(S.Number),
-          userId: S.String,
-          verified: S.Boolean,
-        }),
-      ).annotate({
-        identifier: "GetDomainsResponseDomainsItem",
-      });
-    case 5:
-      return S.Array(__S(28, __c3, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          domains: __S(29, __c3, 5),
-          pagination: __S(21, __c2, 5),
-        }),
-      ).annotate({ identifier: "GetDomainsResponse" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          domain: S.String.pipe(T.Label()),
-          teamId: S.optional(S.String.pipe(T.Query())),
-          slug: S.optional(S.String.pipe(T.Query())),
-        }).pipe(T.Http({ method: "GET", uri: "/v9/domains/{domain}/verification", code: 200 })),
-      ).annotate({
-        identifier: "GetDomainVerificationRecordRequest",
-      });
-  }
-}
-function __c4(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          txtRecord: S.String,
-          verificationDomain: S.String,
-        }),
-      ).annotate({
-        identifier: "GetDomainVerificationRecordResponse",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          domain: S.String.pipe(T.Label()),
-          teamId: S.optional(S.String.pipe(T.Query())),
-          slug: S.optional(S.String.pipe(T.Query())),
-          body: S.Unknown.pipe(T.HttpBody()),
-        }).pipe(T.Http({ method: "PATCH", uri: "/v3/domains/{domain}", code: 200 })),
-      ).annotate({ identifier: "UpdateDomainRequest" });
-    case 2:
-      return S.suspend(() => S.Unknown.pipe(T.RawResponseRoot())).annotate({
-        identifier: "UpdateDomainResponse",
-      });
-  }
-}
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

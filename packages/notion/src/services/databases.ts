@@ -866,8 +866,8 @@ export const createDatabase: API.OperationMethod<
   CreateDatabaseError,
   NotionOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(22, __c2, 6) as any as S.Schema<CreateDatabaseRequest>,
-  output: __S(23, __c2, 7) as any as S.Schema<CreateDatabaseResponse>,
+  input: __S(15, __c0, 15) as any as S.Schema<CreateDatabaseRequest>,
+  output: __S(16, __c0, 16) as any as S.Schema<CreateDatabaseResponse>,
   errors: [UnknownNotionError],
   protocol: NotionProtocol,
   retry: Retry.Retry,
@@ -881,8 +881,8 @@ export const getDatabase: API.OperationMethod<
   GetDatabaseError,
   NotionOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(24, __c3, 0) as any as S.Schema<GetDatabaseRequest>,
-  output: __S(25, __c3, 1) as any as S.Schema<GetDatabaseResponse>,
+  input: __S(64, __c2, 0) as any as S.Schema<GetDatabaseRequest>,
+  output: __S(65, __c2, 1) as any as S.Schema<GetDatabaseResponse>,
   errors: [UnknownNotionError],
   protocol: NotionProtocol,
   retry: Retry.Retry,
@@ -896,8 +896,8 @@ export const updateDatabase: API.OperationMethod<
   UpdateDatabaseError,
   NotionOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(26, __c3, 2) as any as S.Schema<UpdateDatabaseRequest>,
-  output: __S(27, __c3, 3) as any as S.Schema<UpdateDatabaseResponse>,
+  input: __S(96, __c3, 0) as any as S.Schema<UpdateDatabaseRequest>,
+  output: __S(97, __c3, 1) as any as S.Schema<UpdateDatabaseResponse>,
   errors: [UnknownNotionError],
   protocol: NotionProtocol,
   retry: Retry.Retry,
@@ -905,6 +905,165 @@ export const updateDatabase: API.OperationMethod<
 
 // Schema builders: each runs one schema initializer, on that schema's first use.
 function __c0(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          format: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "PropertyConfigurationRequestNumber",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          expression: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "PropertyConfigurationRequestFormula",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String,
+          color: S.optional(S.String),
+          description: S.optional(S.NullOr(S.String)),
+        }),
+      ).annotate({
+        identifier: "PropertyConfigurationRequestSelectOptionsItem",
+      });
+    case 3:
+      return S.Array(__S(2, __c0, 2));
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          options: S.optional(__S(3, __c0, 3)),
+        }),
+      ).annotate({
+        identifier: "PropertyConfigurationRequestSelect",
+      });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String,
+          color: S.optional(S.String),
+          description: S.optional(S.NullOr(S.String)),
+          group: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "StatusOptionRequest" });
+    case 6:
+      return S.Array(__S(5, __c0, 5));
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          options: S.optional(__S(6, __c0, 6)),
+        }),
+      ).annotate({
+        identifier: "StatusPropertyConfigRequest",
+      });
+    case 8:
+      return S.suspend(() =>
+        S.Struct({
+          synced_property_id: S.optional(S.String),
+          synced_property_name: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "PropertyConfigurationRequestRelationDualProperty",
+      });
+    case 9:
+      return S.suspend(() =>
+        S.Struct({
+          data_source_id: S.String,
+          type: S.optional(S.String),
+          single_property: S.optional(S.Unknown),
+          dual_property: S.optional(__S(8, __c0, 8)),
+        }),
+      ).annotate({
+        identifier: "PropertyConfigurationRequestRelation",
+      });
+    case 10:
+      return S.suspend(() =>
+        S.Struct({
+          function: S.String,
+          relation_property_name: S.optional(S.String),
+          rollup_property_name: S.optional(S.String),
+          relation_property_id: S.optional(S.String),
+          rollup_property_id: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "PropertyConfigurationRequestRollup",
+      });
+    case 11:
+      return S.suspend(() =>
+        S.Struct({
+          prefix: S.optional(S.NullOr(S.String)),
+        }),
+      ).annotate({
+        identifier: "PropertyConfigurationRequestUniqueId",
+      });
+    case 12:
+      return S.suspend(() =>
+        S.Struct({
+          description: S.optional(S.NullOr(S.String)),
+          type: S.optional(S.String),
+          number: S.optional(__S(0, __c0, 0)),
+          formula: S.optional(__S(1, __c0, 1)),
+          select: S.optional(__S(4, __c0, 4)),
+          multi_select: S.optional(__S(4, __c0, 4)),
+          status: S.optional(__S(7, __c0, 7)),
+          relation: S.optional(__S(9, __c0, 9)),
+          rollup: S.optional(__S(10, __c0, 10)),
+          unique_id: S.optional(__S(11, __c0, 11)),
+          title: S.optional(S.Unknown),
+          rich_text: S.optional(S.Unknown),
+          url: S.optional(S.Unknown),
+          people: S.optional(S.Unknown),
+          files: S.optional(S.Unknown),
+          email: S.optional(S.Unknown),
+          phone_number: S.optional(S.Unknown),
+          date: S.optional(S.Unknown),
+          checkbox: S.optional(S.Unknown),
+          created_by: S.optional(S.Unknown),
+          created_time: S.optional(S.Unknown),
+          last_edited_by: S.optional(S.Unknown),
+          last_edited_time: S.optional(S.Unknown),
+          button: S.optional(S.Unknown),
+          location: S.optional(S.Unknown),
+          verification: S.optional(S.Unknown),
+          last_visited_time: S.optional(S.Unknown),
+          place: S.optional(S.Unknown),
+        }),
+      ).annotate({
+        identifier: "PropertyConfigurationRequest",
+      });
+    case 13:
+      return S.Record(S.String, __S(12, __c0, 12));
+    case 14:
+      return S.suspend(() =>
+        S.Struct({
+          properties: S.optional(__S(13, __c0, 13)),
+        }),
+      ).annotate({ identifier: "InitialDataSourceRequest" });
+    case 15:
+      return S.suspend(() =>
+        S.Struct({
+          parent: __S(32, __c1, 0),
+          title: S.optional(__S(38, __c1, 6)),
+          description: S.optional(__S(38, __c1, 6)),
+          is_inline: S.optional(S.Boolean),
+          initial_data_source: S.optional(__S(14, __c0, 14)),
+          database_type: S.optional(S.String),
+          icon: S.optional(S.Unknown),
+          cover: S.optional(S.Unknown),
+        }).pipe(T.Http({ method: "POST", uri: "/v1/databases", code: 200 })),
+      ).annotate({ identifier: "CreateDatabaseRequest" });
+    case 16:
+      return S.suspend(() => S.Unknown.pipe(T.RawResponseRoot())).annotate({
+        identifier: "CreateDatabaseResponse",
+      });
+  }
+}
+function __c1(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -939,7 +1098,7 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           content: S.String,
-          link: S.optional(S.NullOr(__S(2, __c0, 2))),
+          link: S.optional(S.NullOr(__S(34, __c1, 2))),
         }),
       ).annotate({ identifier: "RichTextItemRequestText" });
     case 4:
@@ -953,181 +1112,18 @@ function __c0(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          annotations: S.optional(__S(1, __c0, 1)),
+          annotations: S.optional(__S(33, __c1, 1)),
           type: S.optional(S.String),
-          text: S.optional(__S(3, __c0, 3)),
+          text: S.optional(__S(35, __c1, 3)),
           mention: S.optional(S.Unknown),
-          equation: S.optional(__S(4, __c0, 4)),
+          equation: S.optional(__S(36, __c1, 4)),
         }),
       ).annotate({ identifier: "RichTextItemRequest" });
     case 6:
-      return S.Array(__S(5, __c0, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          format: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "PropertyConfigurationRequestNumber",
-      });
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          expression: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "PropertyConfigurationRequestFormula",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String,
-          color: S.optional(S.String),
-          description: S.optional(S.NullOr(S.String)),
-        }),
-      ).annotate({
-        identifier: "PropertyConfigurationRequestSelectOptionsItem",
-      });
-    case 2:
-      return S.Array(__S(9, __c1, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          options: S.optional(__S(10, __c1, 2)),
-        }),
-      ).annotate({
-        identifier: "PropertyConfigurationRequestSelect",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String,
-          color: S.optional(S.String),
-          description: S.optional(S.NullOr(S.String)),
-          group: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "StatusOptionRequest" });
-    case 5:
-      return S.Array(__S(12, __c1, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          options: S.optional(__S(13, __c1, 5)),
-        }),
-      ).annotate({
-        identifier: "StatusPropertyConfigRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          synced_property_id: S.optional(S.String),
-          synced_property_name: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "PropertyConfigurationRequestRelationDualProperty",
-      });
+      return S.Array(__S(37, __c1, 5));
   }
 }
 function __c2(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          data_source_id: S.String,
-          type: S.optional(S.String),
-          single_property: S.optional(S.Unknown),
-          dual_property: S.optional(__S(15, __c1, 7)),
-        }),
-      ).annotate({
-        identifier: "PropertyConfigurationRequestRelation",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          function: S.String,
-          relation_property_name: S.optional(S.String),
-          rollup_property_name: S.optional(S.String),
-          relation_property_id: S.optional(S.String),
-          rollup_property_id: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "PropertyConfigurationRequestRollup",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          prefix: S.optional(S.NullOr(S.String)),
-        }),
-      ).annotate({
-        identifier: "PropertyConfigurationRequestUniqueId",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          description: S.optional(S.NullOr(S.String)),
-          type: S.optional(S.String),
-          number: S.optional(__S(7, __c0, 7)),
-          formula: S.optional(__S(8, __c1, 0)),
-          select: S.optional(__S(11, __c1, 3)),
-          multi_select: S.optional(__S(11, __c1, 3)),
-          status: S.optional(__S(14, __c1, 6)),
-          relation: S.optional(__S(16, __c2, 0)),
-          rollup: S.optional(__S(17, __c2, 1)),
-          unique_id: S.optional(__S(18, __c2, 2)),
-          title: S.optional(S.Unknown),
-          rich_text: S.optional(S.Unknown),
-          url: S.optional(S.Unknown),
-          people: S.optional(S.Unknown),
-          files: S.optional(S.Unknown),
-          email: S.optional(S.Unknown),
-          phone_number: S.optional(S.Unknown),
-          date: S.optional(S.Unknown),
-          checkbox: S.optional(S.Unknown),
-          created_by: S.optional(S.Unknown),
-          created_time: S.optional(S.Unknown),
-          last_edited_by: S.optional(S.Unknown),
-          last_edited_time: S.optional(S.Unknown),
-          button: S.optional(S.Unknown),
-          location: S.optional(S.Unknown),
-          verification: S.optional(S.Unknown),
-          last_visited_time: S.optional(S.Unknown),
-          place: S.optional(S.Unknown),
-        }),
-      ).annotate({
-        identifier: "PropertyConfigurationRequest",
-      });
-    case 4:
-      return S.Record(S.String, __S(19, __c2, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          properties: S.optional(__S(20, __c2, 4)),
-        }),
-      ).annotate({ identifier: "InitialDataSourceRequest" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          parent: __S(0, __c0, 0),
-          title: S.optional(__S(6, __c0, 6)),
-          description: S.optional(__S(6, __c0, 6)),
-          is_inline: S.optional(S.Boolean),
-          initial_data_source: S.optional(__S(21, __c2, 5)),
-          database_type: S.optional(S.String),
-          icon: S.optional(S.Unknown),
-          cover: S.optional(S.Unknown),
-        }).pipe(T.Http({ method: "POST", uri: "/v1/databases", code: 200 })),
-      ).annotate({ identifier: "CreateDatabaseRequest" });
-    case 7:
-      return S.suspend(() => S.Unknown.pipe(T.RawResponseRoot())).annotate({
-        identifier: "CreateDatabaseResponse",
-      });
-  }
-}
-function __c3(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1139,13 +1135,17 @@ function __c3(j: number): any {
       return S.suspend(() => S.Unknown.pipe(T.RawResponseRoot())).annotate({
         identifier: "GetDatabaseResponse",
       });
-    case 2:
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           database_id: S.String.pipe(T.Label()),
-          parent: S.optional(__S(0, __c0, 0)),
-          title: S.optional(__S(6, __c0, 6)),
-          description: S.optional(__S(6, __c0, 6)),
+          parent: S.optional(__S(32, __c1, 0)),
+          title: S.optional(__S(38, __c1, 6)),
+          description: S.optional(__S(38, __c1, 6)),
           is_inline: S.optional(S.Boolean),
           icon: S.optional(S.Unknown),
           cover: S.optional(S.Unknown),
@@ -1153,13 +1153,12 @@ function __c3(j: number): any {
           is_locked: S.optional(S.Boolean),
         }).pipe(T.Http({ method: "PATCH", uri: "/v1/databases/{database_id}", code: 200 })),
       ).annotate({ identifier: "UpdateDatabaseRequest" });
-    case 3:
+    case 1:
       return S.suspend(() => S.Unknown.pipe(T.RawResponseRoot())).annotate({
         identifier: "UpdateDatabaseResponse",
       });
   }
 }
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

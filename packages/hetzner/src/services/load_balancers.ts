@@ -1047,8 +1047,8 @@ export const createLoadBalancer: API.OperationMethod<
   CreateLoadBalancerError,
   HetznerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(8, __c1, 0) as any as S.Schema<CreateLoadBalancerRequest>,
-  output: __S(27, __c3, 3) as any as S.Schema<CreateLoadBalancerResponse>,
+  input: __S(6, __c0, 6) as any as S.Schema<CreateLoadBalancerRequest>,
+  output: __S(14, __c0, 14) as any as S.Schema<CreateLoadBalancerResponse>,
   errors: [UnknownHetznerError],
   protocol: HetznerProtocol,
   retry: Retry.Retry,
@@ -1062,8 +1062,8 @@ export const deleteLoadBalancer: API.OperationMethod<
   DeleteLoadBalancerError,
   HetznerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(28, __c3, 4) as any as S.Schema<DeleteLoadBalancerRequest>,
-  output: __S(29, __c3, 5) as any as S.Schema<DeleteLoadBalancerResponse>,
+  input: __S(64, __c4, 0) as any as S.Schema<DeleteLoadBalancerRequest>,
+  output: __S(65, __c4, 1) as any as S.Schema<DeleteLoadBalancerResponse>,
   errors: [UnknownHetznerError],
   protocol: HetznerProtocol,
   retry: Retry.Retry,
@@ -1077,8 +1077,8 @@ export const getLoadBalancer: API.OperationMethod<
   GetLoadBalancerError,
   HetznerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(30, __c3, 6) as any as S.Schema<GetLoadBalancerRequest>,
-  output: __S(36, __c4, 4) as any as S.Schema<GetLoadBalancerResponse>,
+  input: __S(80, __c5, 0) as any as S.Schema<GetLoadBalancerRequest>,
+  output: __S(86, __c5, 6) as any as S.Schema<GetLoadBalancerResponse>,
   errors: [UnknownHetznerError],
   protocol: HetznerProtocol,
   retry: Retry.Retry,
@@ -1092,8 +1092,8 @@ export const getLoadBalancerMetrics: API.OperationMethod<
   GetLoadBalancerMetricsError,
   HetznerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(38, __c4, 6) as any as S.Schema<GetLoadBalancerMetricsRequest>,
-  output: __S(44, __c5, 4) as any as S.Schema<GetLoadBalancerMetricsResponse>,
+  input: __S(96, __c6, 0) as any as S.Schema<GetLoadBalancerMetricsRequest>,
+  output: __S(102, __c6, 6) as any as S.Schema<GetLoadBalancerMetricsResponse>,
   errors: [UnknownHetznerError],
   protocol: HetznerProtocol,
   retry: Retry.Retry,
@@ -1109,8 +1109,8 @@ export const listLoadBalancers: API.PaginatedOperationMethod<
   ListLoadBalancersResponseLoadBalancersItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(45, __c5, 5) as any as S.Schema<ListLoadBalancersRequest>,
-    output: __S(53, __c6, 5) as any as S.Schema<ListLoadBalancersResponse>,
+    input: __S(128, __c8, 0) as any as S.Schema<ListLoadBalancersRequest>,
+    output: __S(136, __c8, 8) as any as S.Schema<ListLoadBalancersResponse>,
     errors: [UnknownHetznerError],
     protocol: HetznerProtocol,
     retry: Retry.Retry,
@@ -1133,8 +1133,8 @@ export const updateLoadBalancer: API.OperationMethod<
   UpdateLoadBalancerError,
   HetznerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(54, __c6, 6) as any as S.Schema<UpdateLoadBalancerRequest>,
-  output: __S(58, __c7, 2) as any as S.Schema<UpdateLoadBalancerResponse>,
+  input: __S(144, __c9, 0) as any as S.Schema<UpdateLoadBalancerRequest>,
+  output: __S(148, __c9, 4) as any as S.Schema<UpdateLoadBalancerResponse>,
   errors: [UnknownHetznerError],
   protocol: HetznerProtocol,
   retry: Retry.Retry,
@@ -1142,6 +1142,138 @@ export const updateLoadBalancer: API.OperationMethod<
 
 // Schema builders: each runs one schema initializer, on that schema's first use.
 function __c0(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.Unknown);
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.Number,
+          ip: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "CreateLoadBalancerRequestTargetsItemServer",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          selector: S.String,
+        }),
+      ).annotate({
+        identifier: "CreateLoadBalancerRequestTargetsItemLabelSelector",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          ip: S.String,
+        }),
+      ).annotate({
+        identifier: "CreateLoadBalancerRequestTargetsItemIp",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          type: S.String,
+          server: S.optional(__S(1, __c0, 1)),
+          label_selector: S.optional(__S(2, __c0, 2)),
+          ip: S.optional(__S(3, __c0, 3)),
+          use_private_ip: S.optional(S.Boolean),
+        }),
+      ).annotate({
+        identifier: "CreateLoadBalancerRequestTargetsItem",
+      });
+    case 5:
+      return S.Array(__S(4, __c0, 4));
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String,
+          load_balancer_type: S.String,
+          algorithm: S.optional(__S(16, __c1, 0)),
+          services: S.optional(__S(0, __c0, 0)),
+          targets: S.optional(__S(5, __c0, 5)),
+          labels: S.optional(__S(17, __c1, 1)),
+          public_interface: S.optional(S.Boolean),
+          network: S.optional(S.Number),
+          network_zone: S.optional(S.String),
+          location: S.optional(S.String),
+        }).pipe(T.Http({ method: "POST", uri: "/load_balancers", code: 200 })),
+      ).annotate({
+        identifier: "CreateLoadBalancerRequest",
+      });
+    case 7:
+      return S.Array(S.Unknown);
+    case 8:
+      return S.Array(S.Unknown);
+    case 9:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.Number,
+          name: S.String,
+          public_net: __S(19, __c1, 3),
+          private_net: __S(21, __c1, 5),
+          location: __S(22, __c1, 6),
+          load_balancer_type: __S(48, __c3, 0),
+          protection: __S(26, __c1, 10),
+          labels: __S(17, __c1, 1),
+          created: S.String,
+          services: __S(7, __c0, 7),
+          targets: __S(8, __c0, 8),
+          algorithm: __S(16, __c1, 0),
+          outgoing_traffic: S.NullOr(S.Number),
+          ingoing_traffic: S.NullOr(S.Number),
+          included_traffic: S.Number,
+        }),
+      ).annotate({
+        identifier: "CreateLoadBalancerResponseLoadBalancer",
+      });
+    case 10:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.Number,
+          type: S.String,
+        }),
+      ).annotate({
+        identifier: "CreateLoadBalancerResponseActionResourcesItem",
+      });
+    case 11:
+      return S.Array(__S(10, __c0, 10));
+    case 12:
+      return S.suspend(() =>
+        S.Struct({
+          code: S.String,
+          message: S.String,
+        }),
+      ).annotate({
+        identifier: "CreateLoadBalancerResponseActionError",
+      });
+    case 13:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.Number,
+          command: S.String,
+          status: S.String,
+          started: S.String,
+          finished: S.NullOr(S.String),
+          progress: S.Number,
+          resources: __S(11, __c0, 11),
+          error: S.NullOr(__S(12, __c0, 12)),
+        }),
+      ).annotate({
+        identifier: "CreateLoadBalancerResponseAction",
+      });
+    case 14:
+      return S.suspend(() =>
+        S.Struct({
+          load_balancer: __S(9, __c0, 9),
+          action: __S(13, __c0, 13),
+        }),
+      ).annotate({
+        identifier: "CreateLoadBalancerResponse",
+      });
+  }
+}
+function __c1(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1152,70 +1284,8 @@ function __c0(j: number): any {
         identifier: "CreateLoadBalancerRequestAlgorithm",
       });
     case 1:
-      return S.Array(S.Unknown);
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.Number,
-          ip: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "CreateLoadBalancerRequestTargetsItemServer",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          selector: S.String,
-        }),
-      ).annotate({
-        identifier: "CreateLoadBalancerRequestTargetsItemLabelSelector",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          ip: S.String,
-        }),
-      ).annotate({
-        identifier: "CreateLoadBalancerRequestTargetsItemIp",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          type: S.String,
-          server: S.optional(__S(2, __c0, 2)),
-          label_selector: S.optional(__S(3, __c0, 3)),
-          ip: S.optional(__S(4, __c0, 4)),
-          use_private_ip: S.optional(S.Boolean),
-        }),
-      ).annotate({
-        identifier: "CreateLoadBalancerRequestTargetsItem",
-      });
-    case 6:
-      return S.Array(__S(5, __c0, 5));
-    case 7:
       return S.Record(S.String, S.String);
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String,
-          load_balancer_type: S.String,
-          algorithm: S.optional(__S(0, __c0, 0)),
-          services: S.optional(__S(1, __c0, 1)),
-          targets: S.optional(__S(6, __c0, 6)),
-          labels: S.optional(__S(7, __c0, 7)),
-          public_interface: S.optional(S.Boolean),
-          network: S.optional(S.Number),
-          network_zone: S.optional(S.String),
-          location: S.optional(S.String),
-        }).pipe(T.Http({ method: "POST", uri: "/load_balancers", code: 200 })),
-      ).annotate({
-        identifier: "CreateLoadBalancerRequest",
-      });
-    case 1:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           ip: S.NullOr(S.String),
@@ -1224,17 +1294,17 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "CreateLoadBalancerResponseLoadBalancerPublicNetIpv4",
       });
-    case 2:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           enabled: S.Boolean,
-          ipv4: __S(9, __c1, 1),
-          ipv6: __S(9, __c1, 1),
+          ipv4: __S(18, __c1, 2),
+          ipv6: __S(18, __c1, 2),
         }),
       ).annotate({
         identifier: "CreateLoadBalancerResponseLoadBalancerPublicNet",
       });
-    case 3:
+    case 4:
       return S.suspend(() =>
         S.Struct({
           network: S.Number,
@@ -1243,9 +1313,9 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "CreateLoadBalancerResponseLoadBalancerPrivateNetItem",
       });
-    case 4:
-      return S.Array(__S(11, __c1, 3));
     case 5:
+      return S.Array(__S(20, __c1, 4));
+    case 6:
       return S.suspend(() =>
         S.Struct({
           id: S.Number,
@@ -1260,7 +1330,7 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "CreateLoadBalancerResponseLoadBalancerLocation",
       });
-    case 6:
+    case 7:
       return S.suspend(() =>
         S.Struct({
           unavailable_after: S.String,
@@ -1269,7 +1339,7 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "CreateLoadBalancerResponseLoadBalancerLoadBalancerTypeDeprecation",
       });
-    case 7:
+    case 8:
       return S.suspend(() =>
         S.Struct({
           net: S.String,
@@ -1278,42 +1348,19 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "CreateLoadBalancerResponseLoadBalancerLoadBalancerTypePricesItemPriceHourly",
       });
-  }
-}
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
+    case 9:
       return S.suspend(() =>
         S.Struct({
           location: S.String,
-          price_hourly: __S(15, __c1, 7),
-          price_monthly: __S(15, __c1, 7),
+          price_hourly: __S(24, __c1, 8),
+          price_monthly: __S(24, __c1, 8),
           included_traffic: S.Number,
-          price_per_tb_traffic: __S(15, __c1, 7),
+          price_per_tb_traffic: __S(24, __c1, 8),
         }),
       ).annotate({
         identifier: "CreateLoadBalancerResponseLoadBalancerLoadBalancerTypePricesItem",
       });
-    case 1:
-      return S.Array(__S(16, __c2, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.Number,
-          name: S.String,
-          description: S.String,
-          max_connections: S.Number,
-          max_services: S.Number,
-          max_targets: S.Number,
-          max_assigned_certificates: S.Number,
-          deprecated: S.NullOr(S.String),
-          deprecation: S.NullOr(__S(14, __c1, 6)),
-          prices: __S(17, __c2, 1),
-        }),
-      ).annotate({
-        identifier: "CreateLoadBalancerResponseLoadBalancerLoadBalancerType",
-      });
-    case 3:
+    case 10:
       return S.suspend(() =>
         S.Struct({
           delete: S.Boolean,
@@ -1321,100 +1368,33 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "CreateLoadBalancerResponseLoadBalancerProtection",
       });
-    case 4:
-      return S.Array(S.Unknown);
-    case 5:
-      return S.Array(S.Unknown);
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.Number,
-          name: S.String,
-          public_net: __S(10, __c1, 2),
-          private_net: __S(12, __c1, 4),
-          location: __S(13, __c1, 5),
-          load_balancer_type: __S(18, __c2, 2),
-          protection: __S(19, __c2, 3),
-          labels: __S(7, __c0, 7),
-          created: S.String,
-          services: __S(20, __c2, 4),
-          targets: __S(21, __c2, 5),
-          algorithm: __S(0, __c0, 0),
-          outgoing_traffic: S.NullOr(S.Number),
-          ingoing_traffic: S.NullOr(S.Number),
-          included_traffic: S.Number,
-        }),
-      ).annotate({
-        identifier: "CreateLoadBalancerResponseLoadBalancer",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.Number,
-          type: S.String,
-        }),
-      ).annotate({
-        identifier: "CreateLoadBalancerResponseActionResourcesItem",
-      });
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(25, __c1, 9));
   }
 }
 function __c3(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(23, __c2, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          code: S.String,
-          message: S.String,
-        }),
-      ).annotate({
-        identifier: "CreateLoadBalancerResponseActionError",
-      });
-    case 2:
       return S.suspend(() =>
         S.Struct({
           id: S.Number,
-          command: S.String,
-          status: S.String,
-          started: S.String,
-          finished: S.NullOr(S.String),
-          progress: S.Number,
-          resources: __S(24, __c3, 0),
-          error: S.NullOr(__S(25, __c3, 1)),
+          name: S.String,
+          description: S.String,
+          max_connections: S.Number,
+          max_services: S.Number,
+          max_targets: S.Number,
+          max_assigned_certificates: S.Number,
+          deprecated: S.NullOr(S.String),
+          deprecation: S.NullOr(__S(23, __c1, 7)),
+          prices: __S(32, __c2, 0),
         }),
       ).annotate({
-        identifier: "CreateLoadBalancerResponseAction",
+        identifier: "CreateLoadBalancerResponseLoadBalancerLoadBalancerType",
       });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          load_balancer: __S(22, __c2, 6),
-          action: __S(26, __c3, 2),
-        }),
-      ).annotate({
-        identifier: "CreateLoadBalancerResponse",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.Number.pipe(T.Label()),
-        }).pipe(T.Http({ method: "DELETE", uri: "/load_balancers/{id}", code: 200 })),
-      ).annotate({
-        identifier: "DeleteLoadBalancerRequest",
-      });
-    case 5:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "DeleteLoadBalancerResponse",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.Number.pipe(T.Label()),
-        }).pipe(T.Http({ method: "GET", uri: "/load_balancers/{id}", code: 200 })),
-      ).annotate({ identifier: "GetLoadBalancerRequest" });
-    case 7:
-      return S.Array(__S(16, __c2, 0));
   }
 }
 function __c4(j: number): any {
@@ -1422,6 +1402,30 @@ function __c4(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
+          id: S.Number.pipe(T.Label()),
+        }).pipe(T.Http({ method: "DELETE", uri: "/load_balancers/{id}", code: 200 })),
+      ).annotate({
+        identifier: "DeleteLoadBalancerRequest",
+      });
+    case 1:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "DeleteLoadBalancerResponse",
+      });
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.Number.pipe(T.Label()),
+        }).pipe(T.Http({ method: "GET", uri: "/load_balancers/{id}", code: 200 })),
+      ).annotate({ identifier: "GetLoadBalancerRequest" });
+    case 1:
+      return S.Array(__S(25, __c1, 9));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
           id: S.Number,
           name: S.String,
           description: S.String,
@@ -1430,31 +1434,31 @@ function __c4(j: number): any {
           max_targets: S.Number,
           max_assigned_certificates: S.Number,
           deprecated: S.NullOr(S.String),
-          deprecation: S.NullOr(__S(14, __c1, 6)),
-          prices: __S(31, __c3, 7),
+          deprecation: S.NullOr(__S(23, __c1, 7)),
+          prices: __S(81, __c5, 1),
         }),
       ).annotate({
         identifier: "GetLoadBalancerResponseLoadBalancerLoadBalancerType",
       });
-    case 1:
-      return S.Array(S.Unknown);
-    case 2:
-      return S.Array(S.Unknown);
     case 3:
+      return S.Array(S.Unknown);
+    case 4:
+      return S.Array(S.Unknown);
+    case 5:
       return S.suspend(() =>
         S.Struct({
           id: S.Number,
           name: S.String,
-          public_net: __S(10, __c1, 2),
-          private_net: __S(12, __c1, 4),
-          location: __S(13, __c1, 5),
-          load_balancer_type: __S(32, __c4, 0),
-          protection: __S(19, __c2, 3),
-          labels: __S(7, __c0, 7),
+          public_net: __S(19, __c1, 3),
+          private_net: __S(21, __c1, 5),
+          location: __S(22, __c1, 6),
+          load_balancer_type: __S(82, __c5, 2),
+          protection: __S(26, __c1, 10),
+          labels: __S(17, __c1, 1),
           created: S.String,
-          services: __S(33, __c4, 1),
-          targets: __S(34, __c4, 2),
-          algorithm: __S(0, __c0, 0),
+          services: __S(83, __c5, 3),
+          targets: __S(84, __c5, 4),
+          algorithm: __S(16, __c1, 0),
           outgoing_traffic: S.NullOr(S.Number),
           ingoing_traffic: S.NullOr(S.Number),
           included_traffic: S.Number,
@@ -1462,19 +1466,21 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "GetLoadBalancerResponseLoadBalancer",
       });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          load_balancer: __S(35, __c4, 3),
-        }),
-      ).annotate({ identifier: "GetLoadBalancerResponse" });
-    case 5:
-      return S.Array(S.String);
     case 6:
       return S.suspend(() =>
         S.Struct({
+          load_balancer: __S(85, __c5, 5),
+        }),
+      ).annotate({ identifier: "GetLoadBalancerResponse" });
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
           id: S.Number.pipe(T.Label()),
-          type: __S(37, __c4, 5).pipe(T.Query()),
+          type: __S(112, __c7, 0).pipe(T.Query()),
           start: S.String.pipe(T.Query()),
           end: S.String.pipe(T.Query()),
           step: S.optional(S.String.pipe(T.Query())),
@@ -1482,54 +1488,60 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "GetLoadBalancerMetricsRequest",
       });
-    case 7:
-      return S.Array(S.Unknown);
-  }
-}
-function __c5(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(39, __c4, 7));
     case 1:
+      return S.Array(S.Unknown);
+    case 2:
+      return S.Array(__S(97, __c6, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          values: __S(40, __c5, 0),
+          values: __S(98, __c6, 2),
         }),
       ).annotate({
         identifier: "GetLoadBalancerMetricsResponseMetricsTimeSeriesValue",
       });
-    case 2:
-      return S.Record(S.String, __S(41, __c5, 1));
-    case 3:
+    case 4:
+      return S.Record(S.String, __S(99, __c6, 3));
+    case 5:
       return S.suspend(() =>
         S.Struct({
           start: S.String,
           end: S.String,
           step: S.Number,
-          time_series: __S(42, __c5, 2),
+          time_series: __S(100, __c6, 4),
         }),
       ).annotate({
         identifier: "GetLoadBalancerMetricsResponseMetrics",
       });
-    case 4:
+    case 6:
       return S.suspend(() =>
         S.Struct({
-          metrics: __S(43, __c5, 3),
+          metrics: __S(101, __c6, 5),
         }),
       ).annotate({
         identifier: "GetLoadBalancerMetricsResponse",
       });
-    case 5:
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          sort: S.optional(__S(37, __c4, 5).pipe(T.Query())),
+          sort: S.optional(__S(112, __c7, 0).pipe(T.Query())),
           name: S.optional(S.String.pipe(T.Query())),
           label_selector: S.optional(S.String.pipe(T.Query())),
           page: S.optional(S.Number.pipe(T.Query())),
           per_page: S.optional(S.Number.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/load_balancers", code: 200 })),
       ).annotate({ identifier: "ListLoadBalancersRequest" });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.Number,
@@ -1540,35 +1552,31 @@ function __c5(j: number): any {
           max_targets: S.Number,
           max_assigned_certificates: S.Number,
           deprecated: S.NullOr(S.String),
-          deprecation: S.NullOr(__S(14, __c1, 6)),
-          prices: __S(17, __c2, 1),
+          deprecation: S.NullOr(__S(23, __c1, 7)),
+          prices: __S(32, __c2, 0),
         }),
       ).annotate({
         identifier: "ListLoadBalancersResponseLoadBalancersItemLoadBalancerType",
       });
-    case 7:
+    case 2:
       return S.Array(S.Unknown);
-  }
-}
-function __c6(j: number): any {
-  switch (j) {
-    case 0:
+    case 3:
       return S.Array(S.Unknown);
-    case 1:
+    case 4:
       return S.suspend(() =>
         S.Struct({
           id: S.Number,
           name: S.String,
-          public_net: __S(10, __c1, 2),
-          private_net: __S(12, __c1, 4),
-          location: __S(13, __c1, 5),
-          load_balancer_type: __S(46, __c5, 6),
-          protection: __S(19, __c2, 3),
-          labels: __S(7, __c0, 7),
+          public_net: __S(19, __c1, 3),
+          private_net: __S(21, __c1, 5),
+          location: __S(22, __c1, 6),
+          load_balancer_type: __S(129, __c8, 1),
+          protection: __S(26, __c1, 10),
+          labels: __S(17, __c1, 1),
           created: S.String,
-          services: __S(47, __c5, 7),
-          targets: __S(48, __c6, 0),
-          algorithm: __S(0, __c0, 0),
+          services: __S(130, __c8, 2),
+          targets: __S(131, __c8, 3),
+          algorithm: __S(16, __c1, 0),
           outgoing_traffic: S.NullOr(S.Number),
           ingoing_traffic: S.NullOr(S.Number),
           included_traffic: S.Number,
@@ -1576,9 +1584,9 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "ListLoadBalancersResponseLoadBalancersItem",
       });
-    case 2:
-      return S.Array(__S(49, __c6, 1));
-    case 3:
+    case 5:
+      return S.Array(__S(132, __c8, 4));
+    case 6:
       return S.suspend(() =>
         S.Struct({
           page: S.Number,
@@ -1591,56 +1599,56 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "ListLoadBalancersResponseMetaPagination",
       });
-    case 4:
+    case 7:
       return S.suspend(() =>
         S.Struct({
-          pagination: __S(51, __c6, 3),
+          pagination: __S(134, __c8, 6),
         }),
       ).annotate({
         identifier: "ListLoadBalancersResponseMeta",
       });
-    case 5:
+    case 8:
       return S.suspend(() =>
         S.Struct({
-          load_balancers: __S(50, __c6, 2),
-          meta: __S(52, __c6, 4),
+          load_balancers: __S(133, __c8, 5),
+          meta: __S(135, __c8, 7),
         }),
       ).annotate({
         identifier: "ListLoadBalancersResponse",
       });
-    case 6:
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.Number.pipe(T.Label()),
           name: S.optional(S.String),
-          labels: S.optional(__S(7, __c0, 7)),
+          labels: S.optional(__S(17, __c1, 1)),
         }).pipe(T.Http({ method: "PUT", uri: "/load_balancers/{id}", code: 200 })),
       ).annotate({
         identifier: "UpdateLoadBalancerRequest",
       });
-    case 7:
-      return S.Array(S.Unknown);
-  }
-}
-function __c7(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(S.Unknown);
     case 1:
+      return S.Array(S.Unknown);
+    case 2:
+      return S.Array(S.Unknown);
+    case 3:
       return S.suspend(() =>
         S.Struct({
           id: S.Number,
           name: S.String,
-          public_net: __S(10, __c1, 2),
-          private_net: __S(12, __c1, 4),
-          location: __S(13, __c1, 5),
-          load_balancer_type: __S(18, __c2, 2),
-          protection: __S(19, __c2, 3),
-          labels: __S(7, __c0, 7),
+          public_net: __S(19, __c1, 3),
+          private_net: __S(21, __c1, 5),
+          location: __S(22, __c1, 6),
+          load_balancer_type: __S(48, __c3, 0),
+          protection: __S(26, __c1, 10),
+          labels: __S(17, __c1, 1),
           created: S.String,
-          services: __S(55, __c6, 7),
-          targets: __S(56, __c7, 0),
-          algorithm: __S(0, __c0, 0),
+          services: __S(145, __c9, 1),
+          targets: __S(146, __c9, 2),
+          algorithm: __S(16, __c1, 0),
           outgoing_traffic: S.NullOr(S.Number),
           ingoing_traffic: S.NullOr(S.Number),
           included_traffic: S.Number,
@@ -1648,17 +1656,16 @@ function __c7(j: number): any {
       ).annotate({
         identifier: "UpdateLoadBalancerResponseLoadBalancer",
       });
-    case 2:
+    case 4:
       return S.suspend(() =>
         S.Struct({
-          load_balancer: __S(57, __c7, 1),
+          load_balancer: __S(147, __c9, 3),
         }),
       ).annotate({
         identifier: "UpdateLoadBalancerResponse",
       });
   }
 }
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

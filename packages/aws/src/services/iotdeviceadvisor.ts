@@ -388,8 +388,8 @@ export const createSuiteDefinition: API.OperationMethod<
   CreateSuiteDefinitionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(4, __c0, 4) as any as S.Schema<CreateSuiteDefinitionRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<CreateSuiteDefinitionResponse>,
+  input: __S(128, __c8, 0) as any as S.Schema<CreateSuiteDefinitionRequest>,
+  output: __S(129, __c8, 1) as any as S.Schema<CreateSuiteDefinitionResponse>,
   errors: [InternalServerException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -411,8 +411,8 @@ export const deleteSuiteDefinition: API.OperationMethod<
   DeleteSuiteDefinitionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(6, __c0, 6) as any as S.Schema<DeleteSuiteDefinitionRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<DeleteSuiteDefinitionResponse>,
+  input: __S(208, __c13, 0) as any as S.Schema<DeleteSuiteDefinitionRequest>,
+  output: __S(224, __c14, 0) as any as S.Schema<DeleteSuiteDefinitionResponse>,
   errors: [InternalServerException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -433,8 +433,8 @@ export const getEndpoint: API.OperationMethod<
   GetEndpointError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(8, __c1, 0) as any as S.Schema<GetEndpointRequest>,
-  output: __S(9, __c1, 1) as any as S.Schema<GetEndpointResponse>,
+  input: __S(240, __c15, 0) as any as S.Schema<GetEndpointRequest>,
+  output: __S(241, __c15, 1) as any as S.Schema<GetEndpointResponse>,
   errors: [InternalServerException, ResourceNotFoundException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -457,8 +457,8 @@ export const getSuiteDefinition: API.OperationMethod<
   GetSuiteDefinitionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(10, __c1, 2) as any as S.Schema<GetSuiteDefinitionRequest>,
-  output: __S(11, __c1, 3) as any as S.Schema<GetSuiteDefinitionResponse>,
+  input: __S(256, __c16, 0) as any as S.Schema<GetSuiteDefinitionRequest>,
+  output: __S(257, __c16, 1) as any as S.Schema<GetSuiteDefinitionResponse>,
   errors: [InternalServerException, ResourceNotFoundException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -481,8 +481,8 @@ export const getSuiteRun: API.OperationMethod<
   GetSuiteRunError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(12, __c1, 4) as any as S.Schema<GetSuiteRunRequest>,
-  output: __S(22, __c2, 6) as any as S.Schema<GetSuiteRunResponse>,
+  input: __S(272, __c17, 0) as any as S.Schema<GetSuiteRunRequest>,
+  output: __S(280, __c17, 8) as any as S.Schema<GetSuiteRunResponse>,
   errors: [InternalServerException, ResourceNotFoundException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -505,8 +505,8 @@ export const getSuiteRunReport: API.OperationMethod<
   GetSuiteRunReportError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(23, __c2, 7) as any as S.Schema<GetSuiteRunReportRequest>,
-  output: __S(24, __c3, 0) as any as S.Schema<GetSuiteRunReportResponse>,
+  input: __S(320, __c20, 0) as any as S.Schema<GetSuiteRunReportRequest>,
+  output: __S(321, __c20, 1) as any as S.Schema<GetSuiteRunReportResponse>,
   errors: [InternalServerException, ResourceNotFoundException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -529,8 +529,8 @@ export const listSuiteDefinitions: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(25, __c3, 1) as any as S.Schema<ListSuiteDefinitionsRequest>,
-  output: __S(28, __c3, 4) as any as S.Schema<ListSuiteDefinitionsResponse>,
+  input: __S(0, __c0, 0) as any as S.Schema<ListSuiteDefinitionsRequest>,
+  output: __S(3, __c0, 3) as any as S.Schema<ListSuiteDefinitionsResponse>,
   errors: [InternalServerException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -556,8 +556,8 @@ export const listSuiteRuns: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(29, __c3, 5) as any as S.Schema<ListSuiteRunsRequest>,
-  output: __S(32, __c4, 0) as any as S.Schema<ListSuiteRunsResponse>,
+  input: __S(16, __c1, 0) as any as S.Schema<ListSuiteRunsRequest>,
+  output: __S(19, __c1, 3) as any as S.Schema<ListSuiteRunsResponse>,
   errors: [InternalServerException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -585,8 +585,8 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(33, __c4, 1) as any as S.Schema<ListTagsForResourceRequest>,
-  output: __S(34, __c4, 2) as any as S.Schema<ListTagsForResourceResponse>,
+  input: __S(32, __c2, 0) as any as S.Schema<ListTagsForResourceRequest>,
+  output: __S(33, __c2, 1) as any as S.Schema<ListTagsForResourceResponse>,
   errors: [InternalServerException, ResourceNotFoundException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -609,8 +609,8 @@ export const startSuiteRun: API.OperationMethod<
   StartSuiteRunError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(35, __c4, 3) as any as S.Schema<StartSuiteRunRequest>,
-  output: __S(36, __c4, 4) as any as S.Schema<StartSuiteRunResponse>,
+  input: __S(48, __c3, 0) as any as S.Schema<StartSuiteRunRequest>,
+  output: __S(49, __c3, 1) as any as S.Schema<StartSuiteRunResponse>,
   errors: [ConflictException, InternalServerException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -633,8 +633,8 @@ export const stopSuiteRun: API.OperationMethod<
   StopSuiteRunError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(37, __c4, 5) as any as S.Schema<StopSuiteRunRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<StopSuiteRunResponse>,
+  input: __S(64, __c4, 0) as any as S.Schema<StopSuiteRunRequest>,
+  output: __S(224, __c14, 0) as any as S.Schema<StopSuiteRunResponse>,
   errors: [InternalServerException, ResourceNotFoundException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -657,8 +657,8 @@ export const tagResource: API.OperationMethod<
   TagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(38, __c4, 6) as any as S.Schema<TagResourceRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<TagResourceResponse>,
+  input: __S(80, __c5, 0) as any as S.Schema<TagResourceRequest>,
+  output: __S(224, __c14, 0) as any as S.Schema<TagResourceResponse>,
   errors: [InternalServerException, ResourceNotFoundException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -681,8 +681,8 @@ export const untagResource: API.OperationMethod<
   UntagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(39, __c4, 7) as any as S.Schema<UntagResourceRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<UntagResourceResponse>,
+  input: __S(96, __c6, 0) as any as S.Schema<UntagResourceRequest>,
+  output: __S(224, __c14, 0) as any as S.Schema<UntagResourceResponse>,
   errors: [InternalServerException, ResourceNotFoundException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -704,8 +704,8 @@ export const updateSuiteDefinition: API.OperationMethod<
   UpdateSuiteDefinitionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(40, __c5, 0) as any as S.Schema<UpdateSuiteDefinitionRequest>,
-  output: __S(41, __c5, 1) as any as S.Schema<UpdateSuiteDefinitionResponse>,
+  input: __S(112, __c7, 0) as any as S.Schema<UpdateSuiteDefinitionRequest>,
+  output: __S(113, __c7, 1) as any as S.Schema<UpdateSuiteDefinitionResponse>,
   errors: [InternalServerException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -718,245 +718,6 @@ function __c0(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          thingArn: S.optional(S.String),
-          certificateArn: S.optional(S.String),
-          deviceRoleArn: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "DeviceUnderTest" });
-    case 1:
-      return S.Array(__S(0, __c0, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          suiteDefinitionName: S.optional(S.String),
-          devices: S.optional(__S(1, __c0, 1)),
-          intendedForQualification: S.optional(S.Boolean),
-          isLongDurationTest: S.optional(S.Boolean),
-          rootGroup: S.optional(S.String),
-          devicePermissionRoleArn: S.optional(S.String),
-          protocol: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "SuiteDefinitionConfiguration",
-      });
-    case 3:
-      return S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          suiteDefinitionConfiguration: S.optional(__S(2, __c0, 2)),
-          tags: S.optional(__S(3, __c0, 3)),
-          clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-        }).pipe(
-          T.all(T.Http({ method: "POST", uri: "/suiteDefinitions" }), svc, auth, proto, ver, rules),
-        ),
-      ).annotate({
-        identifier: "CreateSuiteDefinitionRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          suiteDefinitionId: S.optional(S.String),
-          suiteDefinitionArn: S.optional(S.String),
-          suiteDefinitionName: S.optional(S.String),
-          createdAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-        }),
-      ).annotate({
-        identifier: "CreateSuiteDefinitionResponse",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({ suiteDefinitionId: S.String.pipe(T.HttpLabel("suiteDefinitionId")) }).pipe(
-          T.all(
-            T.Http({ method: "DELETE", uri: "/suiteDefinitions/{suiteDefinitionId}" }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({
-        identifier: "DeleteSuiteDefinitionRequest",
-      });
-    case 7:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "DeleteSuiteDefinitionResponse",
-      });
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          thingArn: S.optional(S.String).pipe(T.HttpQuery("thingArn")),
-          certificateArn: S.optional(S.String).pipe(T.HttpQuery("certificateArn")),
-          deviceRoleArn: S.optional(S.String).pipe(T.HttpQuery("deviceRoleArn")),
-          authenticationMethod: S.optional(S.String).pipe(T.HttpQuery("authenticationMethod")),
-        }).pipe(T.all(T.Http({ method: "GET", uri: "/endpoint" }), svc, auth, proto, ver, rules)),
-      ).annotate({ identifier: "GetEndpointRequest" });
-    case 1:
-      return S.suspend(() => S.Struct({ endpoint: S.optional(S.String) })).annotate({
-        identifier: "GetEndpointResponse",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          suiteDefinitionId: S.String.pipe(T.HttpLabel("suiteDefinitionId")),
-          suiteDefinitionVersion: S.optional(S.String).pipe(T.HttpQuery("suiteDefinitionVersion")),
-        }).pipe(
-          T.all(
-            T.Http({ method: "GET", uri: "/suiteDefinitions/{suiteDefinitionId}" }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({
-        identifier: "GetSuiteDefinitionRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          suiteDefinitionId: S.optional(S.String),
-          suiteDefinitionArn: S.optional(S.String),
-          suiteDefinitionVersion: S.optional(S.String),
-          latestVersion: S.optional(S.String),
-          suiteDefinitionConfiguration: S.optional(__S(2, __c0, 2)),
-          createdAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          lastModifiedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          tags: S.optional(__S(3, __c0, 3)),
-        }),
-      ).annotate({
-        identifier: "GetSuiteDefinitionResponse",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          suiteDefinitionId: S.String.pipe(T.HttpLabel("suiteDefinitionId")),
-          suiteRunId: S.String.pipe(T.HttpLabel("suiteRunId")),
-        }).pipe(
-          T.all(
-            T.Http({
-              method: "GET",
-              uri: "/suiteDefinitions/{suiteDefinitionId}/suiteRuns/{suiteRunId}",
-            }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({ identifier: "GetSuiteRunRequest" });
-    case 5:
-      return S.Array(S.String);
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          primaryDevice: S.optional(__S(0, __c0, 0)),
-          selectedTestList: S.optional(__S(13, __c1, 5)),
-          parallelRun: S.optional(S.Boolean),
-        }),
-      ).annotate({ identifier: "SuiteRunConfiguration" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          testCaseScenarioId: S.optional(S.String),
-          testCaseScenarioType: S.optional(S.String),
-          status: S.optional(S.String),
-          failure: S.optional(S.String),
-          systemMessage: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "TestCaseScenario" });
-  }
-}
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(15, __c1, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          testCaseRunId: S.optional(S.String),
-          testCaseDefinitionId: S.optional(S.String),
-          testCaseDefinitionName: S.optional(S.String),
-          status: S.optional(S.String),
-          startTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          endTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          logUrl: S.optional(S.String),
-          warnings: S.optional(S.String),
-          failure: S.optional(S.String),
-          testScenarios: S.optional(__S(16, __c2, 0)),
-        }),
-      ).annotate({ identifier: "TestCaseRun" });
-    case 2:
-      return S.Array(__S(17, __c2, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          groupId: S.optional(S.String),
-          groupName: S.optional(S.String),
-          tests: S.optional(__S(18, __c2, 2)),
-        }),
-      ).annotate({ identifier: "GroupResult" });
-    case 4:
-      return S.Array(__S(19, __c2, 3));
-    case 5:
-      return S.suspend(() => S.Struct({ groups: S.optional(__S(20, __c2, 4)) })).annotate({
-        identifier: "TestResult",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          suiteDefinitionId: S.optional(S.String),
-          suiteDefinitionVersion: S.optional(S.String),
-          suiteRunId: S.optional(S.String),
-          suiteRunArn: S.optional(S.String),
-          suiteRunConfiguration: S.optional(__S(14, __c1, 6)),
-          testResult: S.optional(__S(21, __c2, 5)),
-          startTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          endTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          status: S.optional(S.String),
-          errorReason: S.optional(S.String),
-          tags: S.optional(__S(3, __c0, 3)),
-        }),
-      ).annotate({ identifier: "GetSuiteRunResponse" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          suiteDefinitionId: S.String.pipe(T.HttpLabel("suiteDefinitionId")),
-          suiteRunId: S.String.pipe(T.HttpLabel("suiteRunId")),
-        }).pipe(
-          T.all(
-            T.Http({
-              method: "GET",
-              uri: "/suiteDefinitions/{suiteDefinitionId}/suiteRuns/{suiteRunId}/report",
-            }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({ identifier: "GetSuiteRunReportRequest" });
-  }
-}
-function __c3(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({ qualificationReportDownloadUrl: S.optional(S.String) }),
-      ).annotate({
-        identifier: "GetSuiteRunReportResponse",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
           maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
           nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
         }).pipe(
@@ -965,12 +726,12 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "ListSuiteDefinitionsRequest",
       });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           suiteDefinitionId: S.optional(S.String),
           suiteDefinitionName: S.optional(S.String),
-          defaultDevices: S.optional(__S(1, __c0, 1)),
+          defaultDevices: S.optional(__S(144, __c9, 0)),
           intendedForQualification: S.optional(S.Boolean),
           isLongDurationTest: S.optional(S.Boolean),
           protocol: S.optional(S.String),
@@ -979,18 +740,22 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "SuiteDefinitionInformation",
       });
+    case 2:
+      return S.Array(__S(1, __c0, 1));
     case 3:
-      return S.Array(__S(26, __c3, 2));
-    case 4:
       return S.suspend(() =>
         S.Struct({
-          suiteDefinitionInformationList: S.optional(__S(27, __c3, 3)),
+          suiteDefinitionInformationList: S.optional(__S(2, __c0, 2)),
           nextToken: S.optional(S.String),
         }),
       ).annotate({
         identifier: "ListSuiteDefinitionsResponse",
       });
-    case 5:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           suiteDefinitionId: S.optional(S.String).pipe(T.HttpQuery("suiteDefinitionId")),
@@ -999,7 +764,7 @@ function __c3(j: number): any {
           nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
         }).pipe(T.all(T.Http({ method: "GET", uri: "/suiteRuns" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "ListSuiteRunsRequest" });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           suiteDefinitionId: S.optional(S.String),
@@ -1014,17 +779,17 @@ function __c3(j: number): any {
           failed: S.optional(S.Number),
         }),
       ).annotate({ identifier: "SuiteRunInformation" });
-    case 7:
-      return S.Array(__S(30, __c3, 6));
+    case 2:
+      return S.Array(__S(17, __c1, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({ suiteRunsList: S.optional(__S(18, __c1, 2)), nextToken: S.optional(S.String) }),
+      ).annotate({ identifier: "ListSuiteRunsResponse" });
   }
 }
-function __c4(j: number): any {
+function __c2(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() =>
-        S.Struct({ suiteRunsList: S.optional(__S(31, __c3, 7)), nextToken: S.optional(S.String) }),
-      ).annotate({ identifier: "ListSuiteRunsResponse" });
-    case 1:
       return S.suspend(() =>
         S.Struct({ resourceArn: S.String.pipe(T.HttpLabel("resourceArn")) }).pipe(
           T.all(
@@ -1039,17 +804,21 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "ListTagsForResourceRequest",
       });
-    case 2:
-      return S.suspend(() => S.Struct({ tags: S.optional(__S(3, __c0, 3)) })).annotate({
+    case 1:
+      return S.suspend(() => S.Struct({ tags: S.optional(__S(192, __c12, 0)) })).annotate({
         identifier: "ListTagsForResourceResponse",
       });
-    case 3:
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           suiteDefinitionId: S.String.pipe(T.HttpLabel("suiteDefinitionId")),
           suiteDefinitionVersion: S.optional(S.String),
-          suiteRunConfiguration: S.optional(__S(14, __c1, 6)),
-          tags: S.optional(__S(3, __c0, 3)),
+          suiteRunConfiguration: S.optional(__S(288, __c18, 0)),
+          tags: S.optional(__S(192, __c12, 0)),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/suiteDefinitions/{suiteDefinitionId}/suiteRuns" }),
@@ -1061,7 +830,7 @@ function __c4(j: number): any {
           ),
         ),
       ).annotate({ identifier: "StartSuiteRunRequest" });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           suiteRunId: S.optional(S.String),
@@ -1070,7 +839,11 @@ function __c4(j: number): any {
           endpoint: S.optional(S.String),
         }),
       ).annotate({ identifier: "StartSuiteRunResponse" });
-    case 5:
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           suiteDefinitionId: S.String.pipe(T.HttpLabel("suiteDefinitionId")),
@@ -1089,11 +862,15 @@ function __c4(j: number): any {
           ),
         ),
       ).annotate({ identifier: "StopSuiteRunRequest" });
-    case 6:
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           resourceArn: S.String.pipe(T.HttpLabel("resourceArn")),
-          tags: S.optional(__S(3, __c0, 3)),
+          tags: S.optional(__S(192, __c12, 0)),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/tags/{resourceArn}" }),
@@ -1105,11 +882,15 @@ function __c4(j: number): any {
           ),
         ),
       ).annotate({ identifier: "TagResourceRequest" });
-    case 7:
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           resourceArn: S.String.pipe(T.HttpLabel("resourceArn")),
-          tagKeys: S.optional(__S(13, __c1, 5)).pipe(T.HttpQuery("tagKeys")),
+          tagKeys: S.optional(__S(304, __c19, 0)).pipe(T.HttpQuery("tagKeys")),
         }).pipe(
           T.all(
             T.Http({ method: "DELETE", uri: "/tags/{resourceArn}" }),
@@ -1123,13 +904,13 @@ function __c4(j: number): any {
       ).annotate({ identifier: "UntagResourceRequest" });
   }
 }
-function __c5(j: number): any {
+function __c7(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           suiteDefinitionId: S.String.pipe(T.HttpLabel("suiteDefinitionId")),
-          suiteDefinitionConfiguration: S.optional(__S(2, __c0, 2)),
+          suiteDefinitionConfiguration: S.optional(__S(160, __c10, 0)),
         }).pipe(
           T.all(
             T.Http({ method: "PATCH", uri: "/suiteDefinitions/{suiteDefinitionId}" }),
@@ -1158,7 +939,285 @@ function __c5(j: number): any {
       });
   }
 }
-
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          suiteDefinitionConfiguration: S.optional(__S(160, __c10, 0)),
+          tags: S.optional(__S(192, __c12, 0)),
+          clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
+        }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/suiteDefinitions" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({
+        identifier: "CreateSuiteDefinitionRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          suiteDefinitionId: S.optional(S.String),
+          suiteDefinitionArn: S.optional(S.String),
+          suiteDefinitionName: S.optional(S.String),
+          createdAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+        }),
+      ).annotate({
+        identifier: "CreateSuiteDefinitionResponse",
+      });
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(176, __c11, 0));
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          suiteDefinitionName: S.optional(S.String),
+          devices: S.optional(__S(144, __c9, 0)),
+          intendedForQualification: S.optional(S.Boolean),
+          isLongDurationTest: S.optional(S.Boolean),
+          rootGroup: S.optional(S.String),
+          devicePermissionRoleArn: S.optional(S.String),
+          protocol: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "SuiteDefinitionConfiguration",
+      });
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          thingArn: S.optional(S.String),
+          certificateArn: S.optional(S.String),
+          deviceRoleArn: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "DeviceUnderTest" });
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ suiteDefinitionId: S.String.pipe(T.HttpLabel("suiteDefinitionId")) }).pipe(
+          T.all(
+            T.Http({ method: "DELETE", uri: "/suiteDefinitions/{suiteDefinitionId}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "DeleteSuiteDefinitionRequest",
+      });
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "DeleteSuiteDefinitionResponse",
+      });
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          thingArn: S.optional(S.String).pipe(T.HttpQuery("thingArn")),
+          certificateArn: S.optional(S.String).pipe(T.HttpQuery("certificateArn")),
+          deviceRoleArn: S.optional(S.String).pipe(T.HttpQuery("deviceRoleArn")),
+          authenticationMethod: S.optional(S.String).pipe(T.HttpQuery("authenticationMethod")),
+        }).pipe(T.all(T.Http({ method: "GET", uri: "/endpoint" }), svc, auth, proto, ver, rules)),
+      ).annotate({ identifier: "GetEndpointRequest" });
+    case 1:
+      return S.suspend(() => S.Struct({ endpoint: S.optional(S.String) })).annotate({
+        identifier: "GetEndpointResponse",
+      });
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          suiteDefinitionId: S.String.pipe(T.HttpLabel("suiteDefinitionId")),
+          suiteDefinitionVersion: S.optional(S.String).pipe(T.HttpQuery("suiteDefinitionVersion")),
+        }).pipe(
+          T.all(
+            T.Http({ method: "GET", uri: "/suiteDefinitions/{suiteDefinitionId}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "GetSuiteDefinitionRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          suiteDefinitionId: S.optional(S.String),
+          suiteDefinitionArn: S.optional(S.String),
+          suiteDefinitionVersion: S.optional(S.String),
+          latestVersion: S.optional(S.String),
+          suiteDefinitionConfiguration: S.optional(__S(160, __c10, 0)),
+          createdAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          lastModifiedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          tags: S.optional(__S(192, __c12, 0)),
+        }),
+      ).annotate({
+        identifier: "GetSuiteDefinitionResponse",
+      });
+  }
+}
+function __c17(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          suiteDefinitionId: S.String.pipe(T.HttpLabel("suiteDefinitionId")),
+          suiteRunId: S.String.pipe(T.HttpLabel("suiteRunId")),
+        }).pipe(
+          T.all(
+            T.Http({
+              method: "GET",
+              uri: "/suiteDefinitions/{suiteDefinitionId}/suiteRuns/{suiteRunId}",
+            }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "GetSuiteRunRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          testCaseScenarioId: S.optional(S.String),
+          testCaseScenarioType: S.optional(S.String),
+          status: S.optional(S.String),
+          failure: S.optional(S.String),
+          systemMessage: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "TestCaseScenario" });
+    case 2:
+      return S.Array(__S(273, __c17, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          testCaseRunId: S.optional(S.String),
+          testCaseDefinitionId: S.optional(S.String),
+          testCaseDefinitionName: S.optional(S.String),
+          status: S.optional(S.String),
+          startTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          endTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          logUrl: S.optional(S.String),
+          warnings: S.optional(S.String),
+          failure: S.optional(S.String),
+          testScenarios: S.optional(__S(274, __c17, 2)),
+        }),
+      ).annotate({ identifier: "TestCaseRun" });
+    case 4:
+      return S.Array(__S(275, __c17, 3));
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          groupId: S.optional(S.String),
+          groupName: S.optional(S.String),
+          tests: S.optional(__S(276, __c17, 4)),
+        }),
+      ).annotate({ identifier: "GroupResult" });
+    case 6:
+      return S.Array(__S(277, __c17, 5));
+    case 7:
+      return S.suspend(() => S.Struct({ groups: S.optional(__S(278, __c17, 6)) })).annotate({
+        identifier: "TestResult",
+      });
+    case 8:
+      return S.suspend(() =>
+        S.Struct({
+          suiteDefinitionId: S.optional(S.String),
+          suiteDefinitionVersion: S.optional(S.String),
+          suiteRunId: S.optional(S.String),
+          suiteRunArn: S.optional(S.String),
+          suiteRunConfiguration: S.optional(__S(288, __c18, 0)),
+          testResult: S.optional(__S(279, __c17, 7)),
+          startTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          endTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          status: S.optional(S.String),
+          errorReason: S.optional(S.String),
+          tags: S.optional(__S(192, __c12, 0)),
+        }),
+      ).annotate({ identifier: "GetSuiteRunResponse" });
+  }
+}
+function __c18(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          primaryDevice: S.optional(__S(176, __c11, 0)),
+          selectedTestList: S.optional(__S(304, __c19, 0)),
+          parallelRun: S.optional(S.Boolean),
+        }),
+      ).annotate({ identifier: "SuiteRunConfiguration" });
+  }
+}
+function __c19(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c20(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          suiteDefinitionId: S.String.pipe(T.HttpLabel("suiteDefinitionId")),
+          suiteRunId: S.String.pipe(T.HttpLabel("suiteRunId")),
+        }).pipe(
+          T.all(
+            T.Http({
+              method: "GET",
+              uri: "/suiteDefinitions/{suiteDefinitionId}/suiteRuns/{suiteRunId}/report",
+            }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "GetSuiteRunReportRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({ qualificationReportDownloadUrl: S.optional(S.String) }),
+      ).annotate({
+        identifier: "GetSuiteRunReportResponse",
+      });
+  }
+}
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

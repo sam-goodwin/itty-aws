@@ -1889,8 +1889,8 @@ export const analyzeIamPolicyLongrunningV1: API.OperationMethod<
   AnalyzeIamPolicyLongrunningV1Error,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(11, __c1, 3) as any as S.Schema<AnalyzeIamPolicyLongrunningV1Request>,
-  output: __S(15, __c1, 7) as any as S.Schema<Operation>,
+  input: __S(836, __c26, 4) as any as S.Schema<AnalyzeIamPolicyLongrunningV1Request>,
+  output: __S(864, __c27, 0) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1904,8 +1904,8 @@ export const analyzeIamPolicyV1: API.OperationMethod<
   AnalyzeIamPolicyV1Error,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(16, __c2, 0) as any as S.Schema<AnalyzeIamPolicyV1Request>,
-  output: __S(37, __c4, 5) as any as S.Schema<AnalyzeIamPolicyResponse>,
+  input: __S(1024, __c32, 0) as any as S.Schema<AnalyzeIamPolicyV1Request>,
+  output: __S(1042, __c32, 18) as any as S.Schema<AnalyzeIamPolicyResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1919,8 +1919,8 @@ export const analyzeMoveV1: API.OperationMethod<
   AnalyzeMoveV1Error,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(38, __c4, 6) as any as S.Schema<AnalyzeMoveV1Request>,
-  output: __S(44, __c5, 4) as any as S.Schema<AnalyzeMoveResponse>,
+  input: __S(1152, __c36, 0) as any as S.Schema<AnalyzeMoveV1Request>,
+  output: __S(1158, __c36, 6) as any as S.Schema<AnalyzeMoveResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1935,8 +1935,8 @@ export const analyzeOrgPoliciesV1: API.PaginatedOperationMethod<
   GcpOpContext,
   AnalyzeOrgPoliciesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(45, __c5, 5) as any as S.Schema<AnalyzeOrgPoliciesV1Request>,
-  output: __S(59, __c7, 3) as any as S.Schema<AnalyzeOrgPoliciesResponse>,
+  input: __S(1184, __c37, 0) as any as S.Schema<AnalyzeOrgPoliciesV1Request>,
+  output: __S(1187, __c37, 3) as any as S.Schema<AnalyzeOrgPoliciesResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1952,8 +1952,8 @@ export const analyzeOrgPolicyGovernedAssetsV1: API.PaginatedOperationMethod<
   GcpOpContext,
   AnalyzeOrgPolicyGovernedAssetsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(60, __c7, 4) as any as S.Schema<AnalyzeOrgPolicyGovernedAssetsV1Request>,
-  output: __S(75, __c9, 3) as any as S.Schema<AnalyzeOrgPolicyGovernedAssetsResponse>,
+  input: __S(1280, __c40, 0) as any as S.Schema<AnalyzeOrgPolicyGovernedAssetsV1Request>,
+  output: __S(1285, __c40, 5) as any as S.Schema<AnalyzeOrgPolicyGovernedAssetsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1969,8 +1969,8 @@ export const analyzeOrgPolicyGovernedContainersV1: API.PaginatedOperationMethod<
   GcpOpContext,
   AnalyzeOrgPolicyGovernedContainersResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(76, __c9, 4) as any as S.Schema<AnalyzeOrgPolicyGovernedContainersV1Request>,
-  output: __S(79, __c9, 7) as any as S.Schema<AnalyzeOrgPolicyGovernedContainersResponse>,
+  input: __S(1376, __c43, 0) as any as S.Schema<AnalyzeOrgPolicyGovernedContainersV1Request>,
+  output: __S(1379, __c43, 3) as any as S.Schema<AnalyzeOrgPolicyGovernedContainersResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1985,8 +1985,8 @@ export const batchGetAssetsHistoryV1: API.OperationMethod<
   BatchGetAssetsHistoryV1Error,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(80, __c10, 0) as any as S.Schema<BatchGetAssetsHistoryV1Request>,
-  output: __S(147, __c18, 3) as any as S.Schema<BatchGetAssetsHistoryResponse>,
+  input: __S(0, __c0, 0) as any as S.Schema<BatchGetAssetsHistoryV1Request>,
+  output: __S(3, __c0, 3) as any as S.Schema<BatchGetAssetsHistoryResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2000,8 +2000,8 @@ export const batchGetEffectiveIamPolicies: API.OperationMethod<
   BatchGetEffectiveIamPoliciesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(148, __c18, 4) as any as S.Schema<BatchGetEffectiveIamPoliciesRequest>,
-  output: __S(153, __c19, 1) as any as S.Schema<BatchGetEffectiveIamPoliciesResponse>,
+  input: __S(160, __c5, 0) as any as S.Schema<BatchGetEffectiveIamPoliciesRequest>,
+  output: __S(165, __c5, 5) as any as S.Schema<BatchGetEffectiveIamPoliciesResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2015,8 +2015,8 @@ export const createFeeds: API.OperationMethod<
   CreateFeedsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(158, __c19, 6) as any as S.Schema<CreateFeedsRequest>,
-  output: __S(156, __c19, 4) as any as S.Schema<Feed>,
+  input: __S(193, __c6, 1) as any as S.Schema<CreateFeedsRequest>,
+  output: __S(226, __c7, 2) as any as S.Schema<Feed>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2030,8 +2030,8 @@ export const createSavedQueries: API.OperationMethod<
   CreateSavedQueriesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(162, __c20, 2) as any as S.Schema<CreateSavedQueriesRequest>,
-  output: __S(161, __c20, 1) as any as S.Schema<SavedQuery>,
+  input: __S(256, __c8, 0) as any as S.Schema<CreateSavedQueriesRequest>,
+  output: __S(289, __c9, 1) as any as S.Schema<SavedQuery>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2045,8 +2045,8 @@ export const deleteFeeds: API.OperationMethod<
   DeleteFeedsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(163, __c20, 3) as any as S.Schema<DeleteFeedsRequest>,
-  output: __S(164, __c20, 4) as any as S.Schema<Empty>,
+  input: __S(352, __c11, 0) as any as S.Schema<DeleteFeedsRequest>,
+  output: __S(384, __c12, 0) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2060,8 +2060,8 @@ export const deleteSavedQueries: API.OperationMethod<
   DeleteSavedQueriesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(165, __c20, 5) as any as S.Schema<DeleteSavedQueriesRequest>,
-  output: __S(164, __c20, 4) as any as S.Schema<Empty>,
+  input: __S(416, __c13, 0) as any as S.Schema<DeleteSavedQueriesRequest>,
+  output: __S(384, __c12, 0) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2075,8 +2075,8 @@ export const exportAssetsV1: API.OperationMethod<
   ExportAssetsV1Error,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(171, __c21, 3) as any as S.Schema<ExportAssetsV1Request>,
-  output: __S(15, __c1, 7) as any as S.Schema<Operation>,
+  input: __S(453, __c14, 5) as any as S.Schema<ExportAssetsV1Request>,
+  output: __S(864, __c27, 0) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2086,8 +2086,8 @@ export type GetFeedsError = NotFound | Forbidden | GcpOpError;
 /** Gets details about an asset feed. */
 export const getFeeds: API.OperationMethod<GetFeedsRequest, Feed, GetFeedsError, GcpOpContext> =
   /*@__PURE__*/ API.make(() => ({
-    input: __S(172, __c21, 4) as any as S.Schema<GetFeedsRequest>,
-    output: __S(156, __c19, 4) as any as S.Schema<Feed>,
+    input: __S(480, __c15, 0) as any as S.Schema<GetFeedsRequest>,
+    output: __S(226, __c7, 2) as any as S.Schema<Feed>,
     errors: [NotFound, Forbidden, UnknownGCPError],
     protocol: GcpProtocol,
     retry: Retry.Retry,
@@ -2101,8 +2101,8 @@ export const getOperations: API.OperationMethod<
   GetOperationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(173, __c21, 5) as any as S.Schema<GetOperationsRequest>,
-  output: __S(15, __c1, 7) as any as S.Schema<Operation>,
+  input: __S(512, __c16, 0) as any as S.Schema<GetOperationsRequest>,
+  output: __S(864, __c27, 0) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2116,8 +2116,8 @@ export const getSavedQueries: API.OperationMethod<
   GetSavedQueriesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(174, __c21, 6) as any as S.Schema<GetSavedQueriesRequest>,
-  output: __S(161, __c20, 1) as any as S.Schema<SavedQuery>,
+  input: __S(544, __c17, 0) as any as S.Schema<GetSavedQueriesRequest>,
+  output: __S(289, __c9, 1) as any as S.Schema<SavedQuery>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2132,8 +2132,8 @@ export const listAssets: API.PaginatedOperationMethod<
   GcpOpContext,
   ListAssetsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(175, __c21, 7) as any as S.Schema<ListAssetsRequest>,
-  output: __S(177, __c22, 1) as any as S.Schema<ListAssetsResponse>,
+  input: __S(576, __c18, 0) as any as S.Schema<ListAssetsRequest>,
+  output: __S(578, __c18, 2) as any as S.Schema<ListAssetsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2148,8 +2148,8 @@ export const listFeeds: API.OperationMethod<
   ListFeedsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(178, __c22, 2) as any as S.Schema<ListFeedsRequest>,
-  output: __S(180, __c22, 4) as any as S.Schema<ListFeedsResponse>,
+  input: __S(608, __c19, 0) as any as S.Schema<ListFeedsRequest>,
+  output: __S(610, __c19, 2) as any as S.Schema<ListFeedsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2164,8 +2164,8 @@ export const listSavedQueries: API.PaginatedOperationMethod<
   GcpOpContext,
   ListSavedQueriesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(181, __c22, 5) as any as S.Schema<ListSavedQueriesRequest>,
-  output: __S(183, __c22, 7) as any as S.Schema<ListSavedQueriesResponse>,
+  input: __S(640, __c20, 0) as any as S.Schema<ListSavedQueriesRequest>,
+  output: __S(642, __c20, 2) as any as S.Schema<ListSavedQueriesResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2180,8 +2180,8 @@ export const patchFeeds: API.OperationMethod<
   PatchFeedsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(185, __c23, 1) as any as S.Schema<PatchFeedsRequest>,
-  output: __S(156, __c19, 4) as any as S.Schema<Feed>,
+  input: __S(673, __c21, 1) as any as S.Schema<PatchFeedsRequest>,
+  output: __S(226, __c7, 2) as any as S.Schema<Feed>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2195,8 +2195,8 @@ export const patchSavedQueries: API.OperationMethod<
   PatchSavedQueriesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(186, __c23, 2) as any as S.Schema<PatchSavedQueriesRequest>,
-  output: __S(161, __c20, 1) as any as S.Schema<SavedQuery>,
+  input: __S(704, __c22, 0) as any as S.Schema<PatchSavedQueriesRequest>,
+  output: __S(289, __c9, 1) as any as S.Schema<SavedQuery>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2210,8 +2210,8 @@ export const queryAssetsV1: API.OperationMethod<
   QueryAssetsV1Error,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(190, __c23, 6) as any as S.Schema<QueryAssetsV1Request>,
-  output: __S(195, __c24, 3) as any as S.Schema<QueryAssetsResponse>,
+  input: __S(739, __c23, 3) as any as S.Schema<QueryAssetsV1Request>,
+  output: __S(744, __c23, 8) as any as S.Schema<QueryAssetsResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2226,8 +2226,8 @@ export const searchAllIamPoliciesV1: API.PaginatedOperationMethod<
   GcpOpContext,
   SearchAllIamPoliciesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(196, __c24, 4) as any as S.Schema<SearchAllIamPoliciesV1Request>,
-  output: __S(202, __c25, 2) as any as S.Schema<SearchAllIamPoliciesResponse>,
+  input: __S(768, __c24, 0) as any as S.Schema<SearchAllIamPoliciesV1Request>,
+  output: __S(774, __c24, 6) as any as S.Schema<SearchAllIamPoliciesResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2243,8 +2243,8 @@ export const searchAllResourcesV1: API.PaginatedOperationMethod<
   GcpOpContext,
   SearchAllResourcesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(203, __c25, 3) as any as S.Schema<SearchAllResourcesV1Request>,
-  output: __S(217, __c27, 1) as any as S.Schema<SearchAllResourcesResponse>,
+  input: __S(800, __c25, 0) as any as S.Schema<SearchAllResourcesV1Request>,
+  output: __S(814, __c25, 14) as any as S.Schema<SearchAllResourcesResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2253,6 +2253,1337 @@ export const searchAllResourcesV1: API.PaginatedOperationMethod<
 
 // Schema builders: each runs one schema initializer, on that schema's first use.
 function __c0(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          "readTimeWindow.startTime": S.optional(S.String.pipe(T.Query())),
+          relationshipTypes: S.optional(__S(928, __c29, 0).pipe(T.Query())),
+          contentType: S.optional(S.String.pipe(T.Query())),
+          parent: S.String.pipe(T.Label()),
+          "readTimeWindow.endTime": S.optional(S.String.pipe(T.Query())),
+          assetNames: S.optional(__S(928, __c29, 0).pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v1/{+parent}:batchGetAssetsHistory",
+            baseUrl: "https://cloudasset.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "BatchGetAssetsHistoryV1Request",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          priorAssetState: S.optional(S.String),
+          asset: S.optional(__S(92, __c2, 28)),
+          window: S.optional(__S(128, __c4, 0)),
+          deleted: S.optional(S.Boolean),
+          priorAsset: S.optional(__S(92, __c2, 28)),
+        }),
+      ).annotate({ identifier: "TemporalAsset" });
+    case 2:
+      return S.Array(__S(1, __c0, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          assets: S.optional(__S(2, __c0, 2)),
+        }),
+      ).annotate({
+        identifier: "BatchGetAssetsHistoryResponse",
+      });
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          expr: S.optional(__S(1088, __c34, 0)),
+        }),
+      ).annotate({
+        identifier: "GoogleIdentityAccesscontextmanagerV1CustomLevel",
+      });
+    case 1:
+      return S.Array(S.String);
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          requireVerifiedChromeOs: S.optional(S.Boolean),
+          minimumVersion: S.optional(S.String),
+          osType: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleIdentityAccesscontextmanagerV1OsConstraint",
+      });
+    case 3:
+      return S.Array(__S(34, __c1, 2));
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          requireCorpOwned: S.optional(S.Boolean),
+          allowedDeviceManagementLevels: S.optional(__S(33, __c1, 1)),
+          requireScreenlock: S.optional(S.Boolean),
+          allowedEncryptionStatuses: S.optional(__S(33, __c1, 1)),
+          osConstraints: S.optional(__S(35, __c1, 3)),
+          requireAdminApproval: S.optional(S.Boolean),
+        }),
+      ).annotate({
+        identifier: "GoogleIdentityAccesscontextmanagerV1DevicePolicy",
+      });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          network: S.optional(S.String),
+          vpcIpSubnetworks: S.optional(__S(928, __c29, 0)),
+        }),
+      ).annotate({
+        identifier: "GoogleIdentityAccesscontextmanagerV1VpcSubNetwork",
+      });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          vpcSubnetwork: S.optional(__S(37, __c1, 5)),
+        }),
+      ).annotate({
+        identifier: "GoogleIdentityAccesscontextmanagerV1VpcNetworkSource",
+      });
+    case 7:
+      return S.Array(__S(38, __c1, 6));
+    case 8:
+      return S.suspend(() =>
+        S.Struct({
+          regions: S.optional(__S(928, __c29, 0)),
+          ipSubnetworks: S.optional(__S(928, __c29, 0)),
+          negate: S.optional(S.Boolean),
+          requiredAccessLevels: S.optional(__S(928, __c29, 0)),
+          members: S.optional(__S(928, __c29, 0)),
+          devicePolicy: S.optional(__S(36, __c1, 4)),
+          vpcNetworkSources: S.optional(__S(39, __c1, 7)),
+        }),
+      ).annotate({
+        identifier: "GoogleIdentityAccesscontextmanagerV1Condition",
+      });
+    case 9:
+      return S.Array(__S(40, __c1, 8));
+    case 10:
+      return S.suspend(() =>
+        S.Struct({
+          combiningFunction: S.optional(S.String),
+          conditions: S.optional(__S(41, __c1, 9)),
+        }),
+      ).annotate({
+        identifier: "GoogleIdentityAccesscontextmanagerV1BasicLevel",
+      });
+    case 11:
+      return S.suspend(() =>
+        S.Struct({
+          description: S.optional(S.String),
+          title: S.optional(S.String),
+          custom: S.optional(__S(32, __c1, 0)),
+          basic: S.optional(__S(42, __c1, 10)),
+          name: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleIdentityAccesscontextmanagerV1AccessLevel",
+      });
+    case 12:
+      return S.suspend(() =>
+        S.Struct({
+          enforced: S.optional(S.Boolean),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudOrgpolicyV1BooleanPolicy",
+      });
+    case 13:
+      return S.suspend(() =>
+        S.Struct({
+          allValues: S.optional(S.String),
+          suggestedValue: S.optional(S.String),
+          inheritFromParent: S.optional(S.Boolean),
+          deniedValues: S.optional(__S(928, __c29, 0)),
+          allowedValues: S.optional(__S(928, __c29, 0)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudOrgpolicyV1ListPolicy",
+      });
+    case 14:
+      return S.suspend(() =>
+        S.Struct({
+          version: S.optional(S.Number),
+          booleanPolicy: S.optional(__S(44, __c1, 12)),
+          listPolicy: S.optional(__S(45, __c1, 13)),
+          restoreDefault: S.optional(__S(1248, __c39, 0)),
+          constraint: S.optional(S.String),
+          updateTime: S.optional(S.String),
+          etag: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudOrgpolicyV1Policy",
+      });
+    case 15:
+      return S.Array(__S(46, __c1, 14));
+    case 16:
+      return S.suspend(() =>
+        S.Struct({
+          sourceResourceType: S.optional(S.String),
+          action: S.optional(S.String),
+          type: S.optional(S.String),
+          targetResourceType: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "RelationshipAttributes" });
+    case 17:
+      return S.suspend(() =>
+        S.Struct({
+          relationshipType: S.optional(S.String),
+          ancestors: S.optional(__S(928, __c29, 0)),
+          assetType: S.optional(S.String),
+          asset: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "RelatedAsset" });
+    case 18:
+      return S.Array(__S(49, __c1, 17));
+    case 19:
+      return S.suspend(() =>
+        S.Struct({
+          relationshipAttributes: S.optional(__S(48, __c1, 16)),
+          assets: S.optional(__S(50, __c1, 18)),
+        }),
+      ).annotate({ identifier: "RelatedAssets" });
+    case 20:
+      return S.suspend(() =>
+        S.Struct({
+          version: S.optional(S.String),
+          architecture: S.optional(S.String),
+          packageName: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "VersionedPackage" });
+    case 21:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "WindowsUpdateCategory" });
+    case 22:
+      return S.Array(__S(53, __c1, 21));
+    case 23:
+      return S.suspend(() =>
+        S.Struct({
+          description: S.optional(S.String),
+          moreInfoUrls: S.optional(__S(928, __c29, 0)),
+          updateId: S.optional(S.String),
+          lastDeploymentChangeTime: S.optional(S.String),
+          title: S.optional(S.String),
+          revisionNumber: S.optional(S.Number),
+          categories: S.optional(__S(54, __c1, 22)),
+          supportUrl: S.optional(S.String),
+          kbArticleIds: S.optional(__S(928, __c29, 0)),
+        }),
+      ).annotate({ identifier: "WindowsUpdatePackage" });
+    case 24:
+      return S.suspend(() =>
+        S.Struct({
+          summary: S.optional(S.String),
+          patchName: S.optional(S.String),
+          category: S.optional(S.String),
+          severity: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ZypperPatch" });
+    case 25:
+      return S.suspend(() =>
+        S.Struct({
+          day: S.optional(S.Number),
+          year: S.optional(S.Number),
+          month: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "Cloudasset_Date" });
+    case 26:
+      return S.suspend(() =>
+        S.Struct({
+          displayVersion: S.optional(S.String),
+          helpLink: S.optional(S.String),
+          publisher: S.optional(S.String),
+          displayName: S.optional(S.String),
+          installDate: S.optional(__S(57, __c1, 25)),
+        }),
+      ).annotate({ identifier: "WindowsApplication" });
+    case 27:
+      return S.suspend(() =>
+        S.Struct({
+          installTime: S.optional(S.String),
+          caption: S.optional(S.String),
+          hotFixId: S.optional(S.String),
+          description: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "WindowsQuickFixEngineeringPackage",
+      });
+    case 28:
+      return S.suspend(() =>
+        S.Struct({
+          googetPackage: S.optional(__S(52, __c1, 20)),
+          wuaPackage: S.optional(__S(55, __c1, 23)),
+          cosPackage: S.optional(__S(52, __c1, 20)),
+          yumPackage: S.optional(__S(52, __c1, 20)),
+          zypperPackage: S.optional(__S(52, __c1, 20)),
+          zypperPatch: S.optional(__S(56, __c1, 24)),
+          aptPackage: S.optional(__S(52, __c1, 20)),
+          windowsApplication: S.optional(__S(58, __c1, 26)),
+          qfePackage: S.optional(__S(59, __c1, 27)),
+        }),
+      ).annotate({ identifier: "SoftwarePackage" });
+    case 29:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          updateTime: S.optional(S.String),
+          originType: S.optional(S.String),
+          createTime: S.optional(S.String),
+          installedPackage: S.optional(__S(60, __c1, 28)),
+          availablePackage: S.optional(__S(60, __c1, 28)),
+          type: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Item" });
+    case 30:
+      return S.Record(S.String, __S(61, __c1, 29));
+    case 31:
+      return S.suspend(() =>
+        S.Struct({
+          longName: S.optional(S.String),
+          shortName: S.optional(S.String),
+          version: S.optional(S.String),
+          architecture: S.optional(S.String),
+          kernelVersion: S.optional(S.String),
+          kernelRelease: S.optional(S.String),
+          osconfigAgentVersion: S.optional(S.String),
+          hostname: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "OsInfo" });
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          updateTime: S.optional(S.String),
+          name: S.optional(S.String),
+          items: S.optional(__S(62, __c1, 30)),
+          osInfo: S.optional(__S(63, __c1, 31)),
+        }),
+      ).annotate({ identifier: "Inventory" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          etag: S.optional(S.String),
+          name: S.optional(S.String),
+          parent: S.optional(S.String),
+          scopes: S.optional(__S(928, __c29, 0)),
+          title: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleIdentityAccesscontextmanagerV1AccessPolicy",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          discoveryName: S.optional(S.String),
+          discoveryDocumentUri: S.optional(S.String),
+          version: S.optional(S.String),
+          location: S.optional(S.String),
+          parent: S.optional(S.String),
+          resourceUrl: S.optional(S.String),
+          data: S.optional(__S(960, __c30, 0)),
+        }),
+      ).annotate({ identifier: "Resource" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          forwardingRule: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleIdentityAccesscontextmanagerV1PrivateServiceConnectEndpoint",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          resource: S.optional(S.String),
+          pscEndpoint: S.optional(__S(67, __c2, 3)),
+          accessLevel: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleIdentityAccesscontextmanagerV1IngressSource",
+      });
+    case 5:
+      return S.Array(__S(68, __c2, 4));
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          sources: S.optional(__S(69, __c2, 5)),
+          identities: S.optional(__S(928, __c29, 0)),
+          identityType: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleIdentityAccesscontextmanagerV1IngressFrom",
+      });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          method: S.optional(S.String),
+          permission: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleIdentityAccesscontextmanagerV1MethodSelector",
+      });
+    case 8:
+      return S.Array(__S(71, __c2, 7));
+    case 9:
+      return S.suspend(() =>
+        S.Struct({
+          serviceName: S.optional(S.String),
+          methodSelectors: S.optional(__S(72, __c2, 8)),
+        }),
+      ).annotate({
+        identifier: "GoogleIdentityAccesscontextmanagerV1ApiOperation",
+      });
+    case 10:
+      return S.Array(__S(73, __c2, 9));
+    case 11:
+      return S.suspend(() =>
+        S.Struct({
+          resources: S.optional(__S(928, __c29, 0)),
+          operations: S.optional(__S(74, __c2, 10)),
+          roles: S.optional(__S(928, __c29, 0)),
+        }),
+      ).annotate({
+        identifier: "GoogleIdentityAccesscontextmanagerV1IngressTo",
+      });
+    case 12:
+      return S.suspend(() =>
+        S.Struct({
+          ingressFrom: S.optional(__S(70, __c2, 6)),
+          title: S.optional(S.String),
+          ingressTo: S.optional(__S(75, __c2, 11)),
+        }),
+      ).annotate({
+        identifier: "GoogleIdentityAccesscontextmanagerV1IngressPolicy",
+      });
+    case 13:
+      return S.Array(__S(76, __c2, 12));
+    case 14:
+      return S.suspend(() =>
+        S.Struct({
+          operations: S.optional(__S(74, __c2, 10)),
+          externalResources: S.optional(__S(928, __c29, 0)),
+          roles: S.optional(__S(928, __c29, 0)),
+          resources: S.optional(__S(928, __c29, 0)),
+        }),
+      ).annotate({
+        identifier: "GoogleIdentityAccesscontextmanagerV1EgressTo",
+      });
+    case 15:
+      return S.suspend(() =>
+        S.Struct({
+          accessLevel: S.optional(S.String),
+          pscEndpoint: S.optional(__S(67, __c2, 3)),
+          resource: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleIdentityAccesscontextmanagerV1EgressSource",
+      });
+    case 16:
+      return S.Array(__S(79, __c2, 15));
+    case 17:
+      return S.suspend(() =>
+        S.Struct({
+          identityType: S.optional(S.String),
+          identities: S.optional(__S(928, __c29, 0)),
+          sourceRestriction: S.optional(S.String),
+          sources: S.optional(__S(80, __c2, 16)),
+        }),
+      ).annotate({
+        identifier: "GoogleIdentityAccesscontextmanagerV1EgressFrom",
+      });
+    case 18:
+      return S.suspend(() =>
+        S.Struct({
+          egressTo: S.optional(__S(78, __c2, 14)),
+          egressFrom: S.optional(__S(81, __c2, 17)),
+          title: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleIdentityAccesscontextmanagerV1EgressPolicy",
+      });
+    case 19:
+      return S.Array(__S(82, __c2, 18));
+    case 20:
+      return S.suspend(() =>
+        S.Struct({
+          value: S.optional(S.String),
+          key: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleIdentityAccesscontextmanagerV1AddRequestHeader",
+      });
+    case 21:
+      return S.suspend(() =>
+        S.Struct({
+          addRequestHeader: S.optional(__S(84, __c2, 20)),
+        }),
+      ).annotate({
+        identifier: "GoogleIdentityAccesscontextmanagerV1Modifier",
+      });
+    case 22:
+      return S.Array(__S(85, __c2, 21));
+    case 23:
+      return S.suspend(() =>
+        S.Struct({
+          service: S.optional(S.String),
+          pattern: S.optional(S.String),
+          modifiers: S.optional(__S(86, __c2, 22)),
+        }),
+      ).annotate({
+        identifier: "GoogleIdentityAccesscontextmanagerV1ServicePattern",
+      });
+    case 24:
+      return S.Array(__S(87, __c2, 23));
+    case 25:
+      return S.suspend(() =>
+        S.Struct({
+          enableRestriction: S.optional(S.Boolean),
+          allowedServicePatterns: S.optional(__S(88, __c2, 24)),
+          allowedServices: S.optional(__S(928, __c29, 0)),
+          servicePatternsEnforcementScopes: S.optional(__S(33, __c1, 1)),
+        }),
+      ).annotate({
+        identifier: "GoogleIdentityAccesscontextmanagerV1VpcAccessibleServices",
+      });
+    case 26:
+      return S.suspend(() =>
+        S.Struct({
+          resources: S.optional(__S(928, __c29, 0)),
+          ingressPolicies: S.optional(__S(77, __c2, 13)),
+          accessLevels: S.optional(__S(928, __c29, 0)),
+          restrictedServices: S.optional(__S(928, __c29, 0)),
+          egressPolicies: S.optional(__S(83, __c2, 19)),
+          vpcAccessibleServices: S.optional(__S(89, __c2, 25)),
+        }),
+      ).annotate({
+        identifier: "GoogleIdentityAccesscontextmanagerV1ServicePerimeterConfig",
+      });
+    case 27:
+      return S.suspend(() =>
+        S.Struct({
+          useExplicitDryRunSpec: S.optional(S.Boolean),
+          etag: S.optional(S.String),
+          title: S.optional(S.String),
+          perimeterType: S.optional(S.String),
+          description: S.optional(S.String),
+          name: S.optional(S.String),
+          spec: S.optional(__S(90, __c2, 26)),
+          status: S.optional(__S(90, __c2, 26)),
+        }),
+      ).annotate({
+        identifier: "GoogleIdentityAccesscontextmanagerV1ServicePerimeter",
+      });
+    case 28:
+      return S.suspend(() =>
+        S.Struct({
+          accessLevel: S.optional(__S(43, __c1, 11)),
+          orgPolicy: S.optional(__S(47, __c1, 15)),
+          relatedAssets: S.optional(__S(51, __c1, 19)),
+          osInventory: S.optional(__S(64, __c2, 0)),
+          ancestors: S.optional(__S(928, __c29, 0)),
+          accessPolicy: S.optional(__S(65, __c2, 1)),
+          iamPolicy: S.optional(__S(1317, __c41, 5)),
+          relatedAsset: S.optional(__S(49, __c1, 17)),
+          updateTime: S.optional(S.String),
+          assetType: S.optional(S.String),
+          resource: S.optional(__S(66, __c2, 2)),
+          name: S.optional(S.String),
+          servicePerimeter: S.optional(__S(91, __c2, 27)),
+          assetExceptions: S.optional(__S(97, __c3, 1)),
+        }),
+      ).annotate({ identifier: "Asset" });
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          exceptionType: S.optional(S.String),
+          details: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "AssetException" });
+    case 1:
+      return S.Array(__S(96, __c3, 0));
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          startTime: S.optional(S.String),
+          endTime: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "TimeWindow" });
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          scope: S.String.pipe(T.Label()),
+          names: S.optional(__S(928, __c29, 0).pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v1/{+scope}/effectiveIamPolicies:batchGet",
+            baseUrl: "https://cloudasset.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "BatchGetEffectiveIamPoliciesRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          attachedResource: S.optional(S.String),
+          policy: S.optional(__S(1317, __c41, 5)),
+        }),
+      ).annotate({ identifier: "PolicyInfo" });
+    case 2:
+      return S.Array(__S(161, __c5, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          fullResourceName: S.optional(S.String),
+          policies: S.optional(__S(162, __c5, 2)),
+        }),
+      ).annotate({ identifier: "EffectiveIamPolicy" });
+    case 4:
+      return S.Array(__S(163, __c5, 3));
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          policyResults: S.optional(__S(164, __c5, 4)),
+        }),
+      ).annotate({
+        identifier: "BatchGetEffectiveIamPoliciesResponse",
+      });
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          feedId: S.optional(S.String),
+          feed: S.optional(__S(226, __c7, 2)),
+        }),
+      ).annotate({ identifier: "CreateFeedRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          parent: S.String.pipe(T.Label()),
+          body: S.optional(__S(192, __c6, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/{+parent}/feeds",
+            baseUrl: "https://cloudasset.googleapis.com/",
+          }),
+        ),
+      ).annotate({ identifier: "CreateFeedsRequest" });
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          topic: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "PubsubDestination" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          pubsubDestination: S.optional(__S(224, __c7, 0)),
+        }),
+      ).annotate({ identifier: "FeedOutputConfig" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          assetTypes: S.optional(__S(928, __c29, 0)),
+          name: S.optional(S.String),
+          feedOutputConfig: S.optional(__S(225, __c7, 1)),
+          assetNames: S.optional(__S(928, __c29, 0)),
+          condition: S.optional(__S(1088, __c34, 0)),
+          contentType: S.optional(S.String),
+          relationshipTypes: S.optional(__S(928, __c29, 0)),
+        }),
+      ).annotate({ identifier: "Feed" });
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          savedQueryId: S.optional(S.String.pipe(T.Query())),
+          parent: S.String.pipe(T.Label()),
+          body: S.optional(__S(289, __c9, 1).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/{+parent}/savedQueries",
+            baseUrl: "https://cloudasset.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateSavedQueriesRequest",
+      });
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          iamPolicyAnalysisQuery: S.optional(__S(901, __c28, 5)),
+        }),
+      ).annotate({ identifier: "QueryContent" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          lastUpdater: S.optional(S.String),
+          name: S.optional(S.String),
+          content: S.optional(__S(288, __c9, 0)),
+          lastUpdateTime: S.optional(S.String),
+          labels: S.optional(__S(320, __c10, 0)),
+          createTime: S.optional(S.String),
+          creator: S.optional(S.String),
+          description: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "SavedQuery" });
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, S.String);
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "v1/{+name}",
+            baseUrl: "https://cloudasset.googleapis.com/",
+          }),
+        ),
+      ).annotate({ identifier: "DeleteFeedsRequest" });
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "Empty",
+      });
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "v1/{+name}",
+            baseUrl: "https://cloudasset.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteSavedQueriesRequest",
+      });
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          partitionKey: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "PartitionSpec" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          separateTablesPerAssetType: S.optional(S.Boolean),
+          partitionSpec: S.optional(__S(448, __c14, 0)),
+          dataset: S.optional(S.String),
+          table: S.optional(S.String),
+          force: S.optional(S.Boolean),
+        }),
+      ).annotate({ identifier: "BigQueryDestination" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          uriPrefix: S.optional(S.String),
+          uri: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "GcsDestination" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          bigqueryDestination: S.optional(__S(449, __c14, 1)),
+          gcsDestination: S.optional(__S(450, __c14, 2)),
+        }),
+      ).annotate({ identifier: "OutputConfig" });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          contentType: S.optional(S.String),
+          outputConfig: S.optional(__S(451, __c14, 3)),
+          relationshipTypes: S.optional(__S(928, __c29, 0)),
+          assetTypes: S.optional(__S(928, __c29, 0)),
+          readTime: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ExportAssetsRequest" });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          parent: S.String.pipe(T.Label()),
+          body: S.optional(__S(452, __c14, 4).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/{+parent}:exportAssets",
+            baseUrl: "https://cloudasset.googleapis.com/",
+          }),
+        ),
+      ).annotate({ identifier: "ExportAssetsV1Request" });
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v1/{+name}",
+            baseUrl: "https://cloudasset.googleapis.com/",
+          }),
+        ),
+      ).annotate({ identifier: "GetFeedsRequest" });
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v1/{+name}",
+            baseUrl: "https://cloudasset.googleapis.com/",
+          }),
+        ),
+      ).annotate({ identifier: "GetOperationsRequest" });
+  }
+}
+function __c17(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v1/{+name}",
+            baseUrl: "https://cloudasset.googleapis.com/",
+          }),
+        ),
+      ).annotate({ identifier: "GetSavedQueriesRequest" });
+  }
+}
+function __c18(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          relationshipTypes: S.optional(__S(928, __c29, 0).pipe(T.Query())),
+          parent: S.String.pipe(T.Label()),
+          contentType: S.optional(S.String.pipe(T.Query())),
+          pageSize: S.optional(S.Number.pipe(T.Query())),
+          readTime: S.optional(S.String.pipe(T.Query())),
+          pageToken: S.optional(S.String.pipe(T.Query())),
+          assetTypes: S.optional(__S(928, __c29, 0).pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v1/{+parent}/assets",
+            baseUrl: "https://cloudasset.googleapis.com/",
+          }),
+        ),
+      ).annotate({ identifier: "ListAssetsRequest" });
+    case 1:
+      return S.Array(__S(92, __c2, 28));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          assets: S.optional(__S(577, __c18, 1)),
+          nextPageToken: S.optional(S.String),
+          readTime: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ListAssetsResponse" });
+  }
+}
+function __c19(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          parent: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v1/{+parent}/feeds",
+            baseUrl: "https://cloudasset.googleapis.com/",
+          }),
+        ),
+      ).annotate({ identifier: "ListFeedsRequest" });
+    case 1:
+      return S.Array(__S(226, __c7, 2));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          feeds: S.optional(__S(609, __c19, 1)),
+        }),
+      ).annotate({ identifier: "ListFeedsResponse" });
+  }
+}
+function __c20(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          pageToken: S.optional(S.String.pipe(T.Query())),
+          parent: S.String.pipe(T.Label()),
+          filter: S.optional(S.String.pipe(T.Query())),
+          pageSize: S.optional(S.Number.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v1/{+parent}/savedQueries",
+            baseUrl: "https://cloudasset.googleapis.com/",
+          }),
+        ),
+      ).annotate({ identifier: "ListSavedQueriesRequest" });
+    case 1:
+      return S.Array(__S(289, __c9, 1));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          nextPageToken: S.optional(S.String),
+          savedQueries: S.optional(__S(641, __c20, 1)),
+        }),
+      ).annotate({ identifier: "ListSavedQueriesResponse" });
+  }
+}
+function __c21(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          updateMask: S.optional(S.String),
+          feed: S.optional(__S(226, __c7, 2)),
+        }),
+      ).annotate({ identifier: "UpdateFeedRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+          body: S.optional(__S(672, __c21, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "PATCH",
+            uri: "v1/{+name}",
+            baseUrl: "https://cloudasset.googleapis.com/",
+          }),
+        ),
+      ).annotate({ identifier: "PatchFeedsRequest" });
+  }
+}
+function __c22(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+          updateMask: S.optional(S.String.pipe(T.Query())),
+          body: S.optional(__S(289, __c9, 1).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "PATCH",
+            uri: "v1/{+name}",
+            baseUrl: "https://cloudasset.googleapis.com/",
+          }),
+        ),
+      ).annotate({ identifier: "PatchSavedQueriesRequest" });
+  }
+}
+function __c23(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          writeDisposition: S.optional(S.String),
+          table: S.optional(S.String),
+          dataset: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudAssetV1QueryAssetsOutputConfigBigQueryDestination",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          bigqueryDestination: S.optional(__S(736, __c23, 0)),
+        }),
+      ).annotate({ identifier: "QueryAssetsOutputConfig" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          pageSize: S.optional(S.Number),
+          jobReference: S.optional(S.String),
+          outputConfig: S.optional(__S(737, __c23, 1)),
+          statement: S.optional(S.String),
+          readTimeWindow: S.optional(__S(128, __c4, 0)),
+          timeout: S.optional(S.String),
+          readTime: S.optional(S.String),
+          pageToken: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "QueryAssetsRequest" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          parent: S.String.pipe(T.Label()),
+          body: S.optional(__S(738, __c23, 2).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/{+parent}:queryAssets",
+            baseUrl: "https://cloudasset.googleapis.com/",
+          }),
+        ),
+      ).annotate({ identifier: "QueryAssetsV1Request" });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          field: S.optional(S.String),
+          fields: S.optional(S.suspend(() => __S(741, __c23, 5))),
+          type: S.optional(S.String),
+          mode: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "TableFieldSchema" });
+    case 5:
+      return S.Array(__S(740, __c23, 4));
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          fields: S.optional(__S(741, __c23, 5)),
+        }),
+      ).annotate({ identifier: "TableSchema" });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          rows: S.optional(__S(992, __c31, 0)),
+          nextPageToken: S.optional(S.String),
+          schema: S.optional(__S(742, __c23, 6)),
+          totalRows: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "QueryResult" });
+    case 8:
+      return S.suspend(() =>
+        S.Struct({
+          done: S.optional(S.Boolean),
+          error: S.optional(__S(993, __c31, 1)),
+          queryResult: S.optional(__S(743, __c23, 7)),
+          jobReference: S.optional(S.String),
+          outputConfig: S.optional(__S(737, __c23, 1)),
+        }),
+      ).annotate({ identifier: "QueryAssetsResponse" });
+  }
+}
+function __c24(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          pageToken: S.optional(S.String.pipe(T.Query())),
+          query: S.optional(S.String.pipe(T.Query())),
+          assetTypes: S.optional(__S(928, __c29, 0).pipe(T.Query())),
+          orderBy: S.optional(S.String.pipe(T.Query())),
+          pageSize: S.optional(S.Number.pipe(T.Query())),
+          scope: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v1/{+scope}:searchAllIamPolicies",
+            baseUrl: "https://cloudasset.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "SearchAllIamPoliciesV1Request",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          permissions: S.optional(__S(928, __c29, 0)),
+        }),
+      ).annotate({ identifier: "Permissions" });
+    case 2:
+      return S.Record(S.String, __S(769, __c24, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          matchedPermissions: S.optional(__S(770, __c24, 2)),
+        }),
+      ).annotate({ identifier: "Explanation" });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          resource: S.optional(S.String),
+          policy: S.optional(__S(1317, __c41, 5)),
+          assetType: S.optional(S.String),
+          folders: S.optional(__S(928, __c29, 0)),
+          organization: S.optional(S.String),
+          explanation: S.optional(__S(771, __c24, 3)),
+          project: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "IamPolicySearchResult" });
+    case 5:
+      return S.Array(__S(772, __c24, 4));
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          results: S.optional(__S(773, __c24, 5)),
+          nextPageToken: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "SearchAllIamPoliciesResponse",
+      });
+  }
+}
+function __c25(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          query: S.optional(S.String.pipe(T.Query())),
+          pageToken: S.optional(S.String.pipe(T.Query())),
+          orderBy: S.optional(S.String.pipe(T.Query())),
+          pageSize: S.optional(S.Number.pipe(T.Query())),
+          readMask: S.optional(S.String.pipe(T.Query())),
+          scope: S.String.pipe(T.Label()),
+          assetTypes: S.optional(__S(928, __c29, 0).pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v1/{+scope}:searchAllResources",
+            baseUrl: "https://cloudasset.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "SearchAllResourcesV1Request",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          fullResourceName: S.optional(S.String),
+          assetType: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "RelatedResource" });
+    case 2:
+      return S.Array(__S(801, __c25, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          relatedResources: S.optional(__S(802, __c25, 2)),
+        }),
+      ).annotate({ identifier: "RelatedResources" });
+    case 4:
+      return S.Record(S.String, __S(803, __c25, 3));
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          resourceOwners: S.optional(__S(928, __c29, 0)),
+        }),
+      ).annotate({ identifier: "ResourceOwners" });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          resourceOwners: S.optional(__S(805, __c25, 5)),
+        }),
+      ).annotate({ identifier: "AssetEnrichment" });
+    case 7:
+      return S.Array(__S(806, __c25, 6));
+    case 8:
+      return S.suspend(() =>
+        S.Struct({
+          resource: S.optional(__S(960, __c30, 0)),
+          assetExceptions: S.optional(__S(97, __c3, 1)),
+          version: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "VersionedResource" });
+    case 9:
+      return S.Array(__S(808, __c25, 8));
+    case 10:
+      return S.suspend(() =>
+        S.Struct({
+          assetType: S.optional(S.String),
+          versionedResources: S.optional(__S(809, __c25, 9)),
+        }),
+      ).annotate({ identifier: "AttachedResource" });
+    case 11:
+      return S.Array(__S(810, __c25, 10));
+    case 12:
+      return S.suspend(() =>
+        S.Struct({
+          parentAssetType: S.optional(S.String),
+          networkTags: S.optional(__S(928, __c29, 0)),
+          project: S.optional(S.String),
+          location: S.optional(S.String),
+          additionalAttributes: S.optional(__S(960, __c30, 0)),
+          labels: S.optional(__S(320, __c10, 0)),
+          relationships: S.optional(__S(804, __c25, 4)),
+          displayName: S.optional(S.String),
+          parentFullResourceName: S.optional(S.String),
+          enrichments: S.optional(__S(807, __c25, 7)),
+          versionedResources: S.optional(__S(809, __c25, 9)),
+          kmsKey: S.optional(S.String),
+          assetType: S.optional(S.String),
+          tagValueIds: S.optional(__S(928, __c29, 0)),
+          tagValues: S.optional(__S(928, __c29, 0)),
+          description: S.optional(S.String),
+          tagKeys: S.optional(__S(928, __c29, 0)),
+          sccSecurityMarks: S.optional(__S(320, __c10, 0)),
+          attachedResources: S.optional(__S(811, __c25, 11)),
+          kmsKeys: S.optional(__S(928, __c29, 0)),
+          state: S.optional(S.String),
+          updateTime: S.optional(S.String),
+          createTime: S.optional(S.String),
+          name: S.optional(S.String),
+          effectiveTags: S.optional(__S(1347, __c42, 3)),
+          organization: S.optional(S.String),
+          tags: S.optional(__S(1345, __c42, 1)),
+          folders: S.optional(__S(928, __c29, 0)),
+        }),
+      ).annotate({ identifier: "ResourceSearchResult" });
+    case 13:
+      return S.Array(__S(812, __c25, 12));
+    case 14:
+      return S.suspend(() =>
+        S.Struct({
+          results: S.optional(__S(813, __c25, 13)),
+          nextPageToken: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "SearchAllResourcesResponse",
+      });
+  }
+}
+function __c26(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          writeDisposition: S.optional(S.String),
+          partitionKey: S.optional(S.String),
+          tablePrefix: S.optional(S.String),
+          dataset: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudAssetV1BigQueryDestination",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          uri: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudAssetV1GcsDestination",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          bigqueryDestination: S.optional(__S(832, __c26, 0)),
+          gcsDestination: S.optional(__S(833, __c26, 1)),
+        }),
+      ).annotate({
+        identifier: "IamPolicyAnalysisOutputConfig",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          savedAnalysisQuery: S.optional(S.String),
+          analysisQuery: S.optional(__S(901, __c28, 5)),
+          outputConfig: S.optional(__S(834, __c26, 2)),
+        }),
+      ).annotate({
+        identifier: "AnalyzeIamPolicyLongrunningRequest",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          scope: S.String.pipe(T.Label()),
+          body: S.optional(__S(835, __c26, 3).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/{+scope}:analyzeIamPolicyLongrunning",
+            baseUrl: "https://cloudasset.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "AnalyzeIamPolicyLongrunningV1Request",
+      });
+  }
+}
+function __c27(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          done: S.optional(S.Boolean),
+          error: S.optional(__S(993, __c31, 1)),
+          metadata: S.optional(__S(960, __c30, 0)),
+          response: S.optional(__S(960, __c30, 0)),
+          name: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Operation" });
+  }
+}
+function __c28(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2284,113 +3615,60 @@ function __c0(j: number): any {
         }),
       ).annotate({ identifier: "IdentitySelector" });
     case 4:
-      return S.Array(S.String);
-    case 5:
       return S.suspend(() =>
         S.Struct({
-          permissions: S.optional(__S(4, __c0, 4)),
-          roles: S.optional(__S(4, __c0, 4)),
+          permissions: S.optional(__S(928, __c29, 0)),
+          roles: S.optional(__S(928, __c29, 0)),
         }),
       ).annotate({ identifier: "AccessSelector" });
-    case 6:
+    case 5:
       return S.suspend(() =>
         S.Struct({
-          conditionContext: S.optional(__S(0, __c0, 0)),
-          options: S.optional(__S(1, __c0, 1)),
-          resourceSelector: S.optional(__S(2, __c0, 2)),
+          conditionContext: S.optional(__S(896, __c28, 0)),
+          options: S.optional(__S(897, __c28, 1)),
+          resourceSelector: S.optional(__S(898, __c28, 2)),
           scope: S.optional(S.String),
-          identitySelector: S.optional(__S(3, __c0, 3)),
-          accessSelector: S.optional(__S(5, __c0, 5)),
+          identitySelector: S.optional(__S(899, __c28, 3)),
+          accessSelector: S.optional(__S(900, __c28, 4)),
         }),
       ).annotate({ identifier: "IamPolicyAnalysisQuery" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          writeDisposition: S.optional(S.String),
-          partitionKey: S.optional(S.String),
-          tablePrefix: S.optional(S.String),
-          dataset: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudAssetV1BigQueryDestination",
-      });
   }
 }
-function __c1(j: number): any {
+function __c29(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() =>
-        S.Struct({
-          uri: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudAssetV1GcsDestination",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          bigqueryDestination: S.optional(__S(7, __c0, 7)),
-          gcsDestination: S.optional(__S(8, __c1, 0)),
-        }),
-      ).annotate({
-        identifier: "IamPolicyAnalysisOutputConfig",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          savedAnalysisQuery: S.optional(S.String),
-          analysisQuery: S.optional(__S(6, __c0, 6)),
-          outputConfig: S.optional(__S(9, __c1, 1)),
-        }),
-      ).annotate({
-        identifier: "AnalyzeIamPolicyLongrunningRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          scope: S.String.pipe(T.Label()),
-          body: S.optional(__S(10, __c1, 2).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/{+scope}:analyzeIamPolicyLongrunning",
-            baseUrl: "https://cloudasset.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "AnalyzeIamPolicyLongrunningV1Request",
-      });
-    case 4:
+      return S.Array(S.String);
+  }
+}
+function __c30(j: number): any {
+  switch (j) {
+    case 0:
       return S.Record(S.String, S.Unknown);
-    case 5:
-      return S.Array(__S(12, __c1, 4));
-    case 6:
+  }
+}
+function __c31(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(960, __c30, 0));
+    case 1:
       return S.suspend(() =>
         S.Struct({
           message: S.optional(S.String),
           code: S.optional(S.Number),
-          details: S.optional(__S(13, __c1, 5)),
+          details: S.optional(__S(992, __c31, 0)),
         }),
       ).annotate({ identifier: "Status" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          done: S.optional(S.Boolean),
-          error: S.optional(__S(14, __c1, 6)),
-          metadata: S.optional(__S(12, __c1, 4)),
-          response: S.optional(__S(12, __c1, 4)),
-          name: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Operation" });
   }
 }
-function __c2(j: number): any {
+function __c32(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          "analysisQuery.accessSelector.roles": S.optional(__S(4, __c0, 4).pipe(T.Query())),
-          "analysisQuery.accessSelector.permissions": S.optional(__S(4, __c0, 4).pipe(T.Query())),
+          "analysisQuery.accessSelector.roles": S.optional(__S(928, __c29, 0).pipe(T.Query())),
+          "analysisQuery.accessSelector.permissions": S.optional(
+            __S(928, __c29, 0).pipe(T.Query()),
+          ),
           "analysisQuery.options.analyzeServiceAccountImpersonation": S.optional(
             S.Boolean.pipe(T.Query()),
           ),
@@ -2423,18 +3701,18 @@ function __c2(j: number): any {
         }),
       ).annotate({ identifier: "IamPolicyAnalysisState" });
     case 2:
-      return S.Array(__S(17, __c2, 1));
+      return S.Array(__S(1025, __c32, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
-          analysisState: S.optional(__S(17, __c2, 1)),
+          analysisState: S.optional(__S(1025, __c32, 1)),
         }),
       ).annotate({
         identifier: "GoogleCloudAssetV1Identity",
       });
     case 4:
-      return S.Array(__S(19, __c2, 3));
+      return S.Array(__S(1027, __c32, 3));
     case 5:
       return S.suspend(() =>
         S.Struct({
@@ -2443,19 +3721,84 @@ function __c2(j: number): any {
         }),
       ).annotate({ identifier: "GoogleCloudAssetV1Edge" });
     case 6:
-      return S.Array(__S(21, __c2, 5));
+      return S.Array(__S(1029, __c32, 5));
     case 7:
       return S.suspend(() =>
         S.Struct({
-          identities: S.optional(__S(20, __c2, 4)),
-          groupEdges: S.optional(__S(22, __c2, 6)),
+          identities: S.optional(__S(1028, __c32, 4)),
+          groupEdges: S.optional(__S(1030, __c32, 6)),
         }),
       ).annotate({
         identifier: "GoogleCloudAssetV1IdentityList",
       });
+    case 8:
+      return S.suspend(() =>
+        S.Struct({
+          analysisState: S.optional(__S(1025, __c32, 1)),
+          fullResourceName: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudAssetV1Resource",
+      });
+    case 9:
+      return S.Array(__S(1032, __c32, 8));
+    case 10:
+      return S.suspend(() =>
+        S.Struct({
+          analysisState: S.optional(__S(1025, __c32, 1)),
+          role: S.optional(S.String),
+          permission: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "GoogleCloudAssetV1Access" });
+    case 11:
+      return S.Array(__S(1034, __c32, 10));
+    case 12:
+      return S.suspend(() =>
+        S.Struct({
+          conditionEvaluation: S.optional(__S(1056, __c33, 0)),
+          resources: S.optional(__S(1033, __c32, 9)),
+          accesses: S.optional(__S(1035, __c32, 11)),
+          resourceEdges: S.optional(__S(1030, __c32, 6)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudAssetV1AccessControlList",
+      });
+    case 13:
+      return S.Array(__S(1036, __c32, 12));
+    case 14:
+      return S.suspend(() =>
+        S.Struct({
+          identityList: S.optional(__S(1031, __c32, 7)),
+          fullyExplored: S.optional(S.Boolean),
+          accessControlLists: S.optional(__S(1037, __c32, 13)),
+          attachedResourceFullName: S.optional(S.String),
+          iamBinding: S.optional(__S(1120, __c35, 0)),
+        }),
+      ).annotate({ identifier: "IamPolicyAnalysisResult" });
+    case 15:
+      return S.Array(__S(1038, __c32, 14));
+    case 16:
+      return S.suspend(() =>
+        S.Struct({
+          nonCriticalErrors: S.optional(__S(1026, __c32, 2)),
+          analysisQuery: S.optional(__S(901, __c28, 5)),
+          fullyExplored: S.optional(S.Boolean),
+          analysisResults: S.optional(__S(1039, __c32, 15)),
+        }),
+      ).annotate({ identifier: "IamPolicyAnalysis" });
+    case 17:
+      return S.Array(__S(1040, __c32, 16));
+    case 18:
+      return S.suspend(() =>
+        S.Struct({
+          serviceAccountImpersonationAnalysis: S.optional(__S(1041, __c32, 17)),
+          mainAnalysis: S.optional(__S(1040, __c32, 16)),
+          fullyExplored: S.optional(S.Boolean),
+        }),
+      ).annotate({ identifier: "AnalyzeIamPolicyResponse" });
   }
 }
-function __c3(j: number): any {
+function __c33(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2463,41 +3806,11 @@ function __c3(j: number): any {
           evaluationValue: S.optional(S.String),
         }),
       ).annotate({ identifier: "ConditionEvaluation" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          analysisState: S.optional(__S(17, __c2, 1)),
-          fullResourceName: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudAssetV1Resource",
-      });
-    case 2:
-      return S.Array(__S(25, __c3, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          analysisState: S.optional(__S(17, __c2, 1)),
-          role: S.optional(S.String),
-          permission: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "GoogleCloudAssetV1Access" });
-    case 4:
-      return S.Array(__S(27, __c3, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          conditionEvaluation: S.optional(__S(24, __c3, 0)),
-          resources: S.optional(__S(26, __c3, 2)),
-          accesses: S.optional(__S(28, __c3, 4)),
-          resourceEdges: S.optional(__S(22, __c2, 6)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudAssetV1AccessControlList",
-      });
-    case 6:
-      return S.Array(__S(29, __c3, 5));
-    case 7:
+  }
+}
+function __c34(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           location: S.optional(S.String),
@@ -2508,48 +3821,21 @@ function __c3(j: number): any {
       ).annotate({ identifier: "Expr" });
   }
 }
-function __c4(j: number): any {
+function __c35(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           role: S.optional(S.String),
-          condition: S.optional(__S(31, __c3, 7)),
-          members: S.optional(__S(4, __c0, 4)),
+          condition: S.optional(__S(1088, __c34, 0)),
+          members: S.optional(__S(928, __c29, 0)),
         }),
       ).annotate({ identifier: "Binding" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          identityList: S.optional(__S(23, __c2, 7)),
-          fullyExplored: S.optional(S.Boolean),
-          accessControlLists: S.optional(__S(30, __c3, 6)),
-          attachedResourceFullName: S.optional(S.String),
-          iamBinding: S.optional(__S(32, __c4, 0)),
-        }),
-      ).annotate({ identifier: "IamPolicyAnalysisResult" });
-    case 2:
-      return S.Array(__S(33, __c4, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          nonCriticalErrors: S.optional(__S(18, __c2, 2)),
-          analysisQuery: S.optional(__S(6, __c0, 6)),
-          fullyExplored: S.optional(S.Boolean),
-          analysisResults: S.optional(__S(34, __c4, 2)),
-        }),
-      ).annotate({ identifier: "IamPolicyAnalysis" });
-    case 4:
-      return S.Array(__S(35, __c4, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          serviceAccountImpersonationAnalysis: S.optional(__S(36, __c4, 4)),
-          mainAnalysis: S.optional(__S(35, __c4, 3)),
-          fullyExplored: S.optional(S.Boolean),
-        }),
-      ).annotate({ identifier: "AnalyzeIamPolicyResponse" });
-    case 6:
+  }
+}
+function __c36(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           resource: S.String.pipe(T.Label()),
@@ -2563,42 +3849,42 @@ function __c4(j: number): any {
           }),
         ),
       ).annotate({ identifier: "AnalyzeMoveV1Request" });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           detail: S.optional(S.String),
         }),
       ).annotate({ identifier: "MoveImpact" });
-  }
-}
-function __c5(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(39, __c4, 7));
-    case 1:
+    case 2:
+      return S.Array(__S(1153, __c36, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          blockers: S.optional(__S(40, __c5, 0)),
-          warnings: S.optional(__S(40, __c5, 0)),
+          blockers: S.optional(__S(1154, __c36, 2)),
+          warnings: S.optional(__S(1154, __c36, 2)),
         }),
       ).annotate({ identifier: "MoveAnalysisResult" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          displayName: S.optional(S.String),
-          analysis: S.optional(__S(41, __c5, 1)),
-          error: S.optional(__S(14, __c1, 6)),
-        }),
-      ).annotate({ identifier: "MoveAnalysis" });
-    case 3:
-      return S.Array(__S(42, __c5, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          moveAnalysis: S.optional(__S(43, __c5, 3)),
+          displayName: S.optional(S.String),
+          analysis: S.optional(__S(1155, __c36, 3)),
+          error: S.optional(__S(993, __c31, 1)),
+        }),
+      ).annotate({ identifier: "MoveAnalysis" });
+    case 5:
+      return S.Array(__S(1156, __c36, 4));
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          moveAnalysis: S.optional(__S(1157, __c36, 5)),
         }),
       ).annotate({ identifier: "AnalyzeMoveResponse" });
-    case 5:
+  }
+}
+function __c37(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           constraint: S.optional(S.String.pipe(T.Query())),
@@ -2616,31 +3902,49 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "AnalyzeOrgPoliciesV1Request",
       });
-    case 6:
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          organization: S.optional(S.String),
+          project: S.optional(S.String),
+          policyBundle: S.optional(__S(1225, __c38, 9)),
+          consolidatedPolicy: S.optional(__S(1224, __c38, 8)),
+          folders: S.optional(__S(928, __c29, 0)),
+        }),
+      ).annotate({ identifier: "OrgPolicyResult" });
+    case 2:
+      return S.Array(__S(1185, __c37, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          constraint: S.optional(__S(1220, __c38, 4)),
+          nextPageToken: S.optional(S.String),
+          orgPolicyResults: S.optional(__S(1186, __c37, 2)),
+        }),
+      ).annotate({
+        identifier: "AnalyzeOrgPoliciesResponse",
+      });
+  }
+}
+function __c38(j: number): any {
+  switch (j) {
+    case 0:
       return S.Array(S.String);
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           condition: S.optional(S.String),
           actionType: S.optional(S.String),
           displayName: S.optional(S.String),
-          methodTypes: S.optional(__S(46, __c5, 6)),
+          methodTypes: S.optional(__S(1216, __c38, 0)),
           description: S.optional(S.String),
           name: S.optional(S.String),
-          resourceTypes: S.optional(__S(4, __c0, 4)),
+          resourceTypes: S.optional(__S(928, __c29, 0)),
         }),
       ).annotate({
         identifier: "GoogleCloudAssetV1CustomConstraint",
       });
-  }
-}
-function __c6(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "GoogleCloudAssetV1BooleanConstraint",
-      });
-    case 1:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           supportsIn: S.optional(S.Boolean),
@@ -2649,89 +3953,75 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "GoogleCloudAssetV1ListConstraint",
       });
-    case 2:
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          booleanConstraint: S.optional(__S(48, __c6, 0)),
+          booleanConstraint: S.optional(__S(1248, __c39, 0)),
           constraintDefault: S.optional(S.String),
           displayName: S.optional(S.String),
-          listConstraint: S.optional(__S(49, __c6, 1)),
+          listConstraint: S.optional(__S(1218, __c38, 2)),
           description: S.optional(S.String),
           name: S.optional(S.String),
         }),
       ).annotate({
         identifier: "GoogleCloudAssetV1Constraint",
       });
-    case 3:
+    case 4:
       return S.suspend(() =>
         S.Struct({
-          customConstraint: S.optional(__S(47, __c5, 7)),
-          googleDefinedConstraint: S.optional(__S(50, __c6, 2)),
+          customConstraint: S.optional(__S(1217, __c38, 1)),
+          googleDefinedConstraint: S.optional(__S(1219, __c38, 3)),
         }),
       ).annotate({
         identifier: "AnalyzerOrgPolicyConstraint",
       });
-    case 4:
+    case 5:
       return S.suspend(() =>
         S.Struct({
-          deniedValues: S.optional(__S(4, __c0, 4)),
-          allowedValues: S.optional(__S(4, __c0, 4)),
+          deniedValues: S.optional(__S(928, __c29, 0)),
+          allowedValues: S.optional(__S(928, __c29, 0)),
         }),
       ).annotate({
         identifier: "GoogleCloudAssetV1StringValues",
       });
-    case 5:
+    case 6:
       return S.suspend(() =>
         S.Struct({
           enforce: S.optional(S.Boolean),
-          values: S.optional(__S(52, __c6, 4)),
+          values: S.optional(__S(1221, __c38, 5)),
           allowAll: S.optional(S.Boolean),
           denyAll: S.optional(S.Boolean),
-          conditionEvaluation: S.optional(__S(24, __c3, 0)),
-          condition: S.optional(__S(31, __c3, 7)),
+          conditionEvaluation: S.optional(__S(1056, __c33, 0)),
+          condition: S.optional(__S(1088, __c34, 0)),
         }),
       ).annotate({ identifier: "GoogleCloudAssetV1Rule" });
-    case 6:
-      return S.Array(__S(53, __c6, 5));
     case 7:
+      return S.Array(__S(1222, __c38, 6));
+    case 8:
       return S.suspend(() =>
         S.Struct({
           attachedResource: S.optional(S.String),
           appliedResource: S.optional(S.String),
-          rules: S.optional(__S(54, __c6, 6)),
+          rules: S.optional(__S(1223, __c38, 7)),
           reset: S.optional(S.Boolean),
           inheritFromParent: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "AnalyzerOrgPolicy" });
+    case 9:
+      return S.Array(__S(1224, __c38, 8));
   }
 }
-function __c7(j: number): any {
+function __c39(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(55, __c6, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          organization: S.optional(S.String),
-          project: S.optional(S.String),
-          policyBundle: S.optional(__S(56, __c7, 0)),
-          consolidatedPolicy: S.optional(__S(55, __c6, 7)),
-          folders: S.optional(__S(4, __c0, 4)),
-        }),
-      ).annotate({ identifier: "OrgPolicyResult" });
-    case 2:
-      return S.Array(__S(57, __c7, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          constraint: S.optional(__S(51, __c6, 3)),
-          nextPageToken: S.optional(S.String),
-          orgPolicyResults: S.optional(__S(58, __c7, 2)),
-        }),
-      ).annotate({
-        identifier: "AnalyzeOrgPoliciesResponse",
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "GoogleCloudAssetV1BooleanConstraint",
       });
-    case 4:
+  }
+}
+function __c40(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           filter: S.optional(S.String.pipe(T.Query())),
@@ -2749,53 +4039,94 @@ function __c7(j: number): any {
       ).annotate({
         identifier: "AnalyzeOrgPolicyGovernedAssetsV1Request",
       });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          logType: S.optional(S.String),
-          exemptedMembers: S.optional(__S(4, __c0, 4)),
-        }),
-      ).annotate({ identifier: "AuditLogConfig" });
-    case 6:
-      return S.Array(__S(61, __c7, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          auditLogConfigs: S.optional(__S(62, __c7, 6)),
-          service: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "AuditConfig" });
-  }
-}
-function __c8(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(63, __c7, 7));
     case 1:
-      return S.Array(__S(32, __c4, 0));
-    case 2:
       return S.suspend(() =>
         S.Struct({
-          etag: S.optional(S.String),
-          auditConfigs: S.optional(__S(64, __c8, 0)),
-          version: S.optional(S.Number),
-          bindings: S.optional(__S(65, __c8, 1)),
-        }),
-      ).annotate({ identifier: "Policy" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          folders: S.optional(__S(4, __c0, 4)),
+          folders: S.optional(__S(928, __c29, 0)),
           assetType: S.optional(S.String),
           organization: S.optional(S.String),
-          policy: S.optional(__S(66, __c8, 2)),
+          policy: S.optional(__S(1317, __c41, 5)),
           project: S.optional(S.String),
           attachedResource: S.optional(S.String),
         }),
       ).annotate({
         identifier: "GoogleCloudAssetV1AnalyzeOrgPolicyGovernedAssetsResponseGovernedIamPolicy",
       });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          organization: S.optional(S.String),
+          assetType: S.optional(S.String),
+          effectiveTags: S.optional(__S(1347, __c42, 3)),
+          folders: S.optional(__S(928, __c29, 0)),
+          project: S.optional(S.String),
+          fullResourceName: S.optional(S.String),
+          parent: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudAssetV1AnalyzeOrgPolicyGovernedAssetsResponseGovernedResource",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          policyBundle: S.optional(__S(1225, __c38, 9)),
+          governedIamPolicy: S.optional(__S(1281, __c40, 1)),
+          governedResource: S.optional(__S(1282, __c40, 2)),
+          consolidatedPolicy: S.optional(__S(1224, __c38, 8)),
+        }),
+      ).annotate({
+        identifier: "GoogleCloudAssetV1AnalyzeOrgPolicyGovernedAssetsResponseGovernedAsset",
+      });
     case 4:
+      return S.Array(__S(1283, __c40, 3));
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          constraint: S.optional(__S(1220, __c38, 4)),
+          nextPageToken: S.optional(S.String),
+          governedAssets: S.optional(__S(1284, __c40, 4)),
+        }),
+      ).annotate({
+        identifier: "AnalyzeOrgPolicyGovernedAssetsResponse",
+      });
+  }
+}
+function __c41(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          logType: S.optional(S.String),
+          exemptedMembers: S.optional(__S(928, __c29, 0)),
+        }),
+      ).annotate({ identifier: "AuditLogConfig" });
+    case 1:
+      return S.Array(__S(1312, __c41, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          auditLogConfigs: S.optional(__S(1313, __c41, 1)),
+          service: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "AuditConfig" });
+    case 3:
+      return S.Array(__S(1314, __c41, 2));
+    case 4:
+      return S.Array(__S(1120, __c35, 0));
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          etag: S.optional(S.String),
+          auditConfigs: S.optional(__S(1315, __c41, 3)),
+          version: S.optional(S.Number),
+          bindings: S.optional(__S(1316, __c41, 4)),
+        }),
+      ).annotate({ identifier: "Policy" });
+  }
+}
+function __c42(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           tagKeyId: S.optional(S.String),
@@ -2804,59 +4135,22 @@ function __c8(j: number): any {
           tagValueId: S.optional(S.String),
         }),
       ).annotate({ identifier: "Tag" });
-    case 5:
-      return S.Array(__S(68, __c8, 4));
-    case 6:
+    case 1:
+      return S.Array(__S(1344, __c42, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           attachedResource: S.optional(S.String),
-          effectiveTags: S.optional(__S(69, __c8, 5)),
+          effectiveTags: S.optional(__S(1345, __c42, 1)),
         }),
       ).annotate({ identifier: "EffectiveTagDetails" });
-    case 7:
-      return S.Array(__S(70, __c8, 6));
+    case 3:
+      return S.Array(__S(1346, __c42, 2));
   }
 }
-function __c9(j: number): any {
+function __c43(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() =>
-        S.Struct({
-          organization: S.optional(S.String),
-          assetType: S.optional(S.String),
-          effectiveTags: S.optional(__S(71, __c8, 7)),
-          folders: S.optional(__S(4, __c0, 4)),
-          project: S.optional(S.String),
-          fullResourceName: S.optional(S.String),
-          parent: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudAssetV1AnalyzeOrgPolicyGovernedAssetsResponseGovernedResource",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          policyBundle: S.optional(__S(56, __c7, 0)),
-          governedIamPolicy: S.optional(__S(67, __c8, 3)),
-          governedResource: S.optional(__S(72, __c9, 0)),
-          consolidatedPolicy: S.optional(__S(55, __c6, 7)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudAssetV1AnalyzeOrgPolicyGovernedAssetsResponseGovernedAsset",
-      });
-    case 2:
-      return S.Array(__S(73, __c9, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          constraint: S.optional(__S(51, __c6, 3)),
-          nextPageToken: S.optional(S.String),
-          governedAssets: S.optional(__S(74, __c9, 2)),
-        }),
-      ).annotate({
-        identifier: "AnalyzeOrgPolicyGovernedAssetsResponse",
-      });
-    case 4:
       return S.suspend(() =>
         S.Struct({
           pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -2874,1264 +4168,35 @@ function __c9(j: number): any {
       ).annotate({
         identifier: "AnalyzeOrgPolicyGovernedContainersV1Request",
       });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          consolidatedPolicy: S.optional(__S(55, __c6, 7)),
-          policyBundle: S.optional(__S(56, __c7, 0)),
-          folders: S.optional(__S(4, __c0, 4)),
+          consolidatedPolicy: S.optional(__S(1224, __c38, 8)),
+          policyBundle: S.optional(__S(1225, __c38, 9)),
+          folders: S.optional(__S(928, __c29, 0)),
           parent: S.optional(S.String),
           project: S.optional(S.String),
           fullResourceName: S.optional(S.String),
-          effectiveTags: S.optional(__S(71, __c8, 7)),
+          effectiveTags: S.optional(__S(1347, __c42, 3)),
           organization: S.optional(S.String),
         }),
       ).annotate({
         identifier: "GoogleCloudAssetV1GovernedContainer",
       });
-    case 6:
-      return S.Array(__S(77, __c9, 5));
-    case 7:
+    case 2:
+      return S.Array(__S(1377, __c43, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          governedContainers: S.optional(__S(78, __c9, 6)),
+          governedContainers: S.optional(__S(1378, __c43, 2)),
           nextPageToken: S.optional(S.String),
-          constraint: S.optional(__S(51, __c6, 3)),
+          constraint: S.optional(__S(1220, __c38, 4)),
         }),
       ).annotate({
         identifier: "AnalyzeOrgPolicyGovernedContainersResponse",
       });
   }
 }
-function __c10(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          "readTimeWindow.startTime": S.optional(S.String.pipe(T.Query())),
-          relationshipTypes: S.optional(__S(4, __c0, 4).pipe(T.Query())),
-          contentType: S.optional(S.String.pipe(T.Query())),
-          parent: S.String.pipe(T.Label()),
-          "readTimeWindow.endTime": S.optional(S.String.pipe(T.Query())),
-          assetNames: S.optional(__S(4, __c0, 4).pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v1/{+parent}:batchGetAssetsHistory",
-            baseUrl: "https://cloudasset.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "BatchGetAssetsHistoryV1Request",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          expr: S.optional(__S(31, __c3, 7)),
-        }),
-      ).annotate({
-        identifier: "GoogleIdentityAccesscontextmanagerV1CustomLevel",
-      });
-    case 2:
-      return S.Array(S.String);
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          requireVerifiedChromeOs: S.optional(S.Boolean),
-          minimumVersion: S.optional(S.String),
-          osType: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleIdentityAccesscontextmanagerV1OsConstraint",
-      });
-    case 4:
-      return S.Array(__S(83, __c10, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          requireCorpOwned: S.optional(S.Boolean),
-          allowedDeviceManagementLevels: S.optional(__S(82, __c10, 2)),
-          requireScreenlock: S.optional(S.Boolean),
-          allowedEncryptionStatuses: S.optional(__S(82, __c10, 2)),
-          osConstraints: S.optional(__S(84, __c10, 4)),
-          requireAdminApproval: S.optional(S.Boolean),
-        }),
-      ).annotate({
-        identifier: "GoogleIdentityAccesscontextmanagerV1DevicePolicy",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          network: S.optional(S.String),
-          vpcIpSubnetworks: S.optional(__S(4, __c0, 4)),
-        }),
-      ).annotate({
-        identifier: "GoogleIdentityAccesscontextmanagerV1VpcSubNetwork",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          vpcSubnetwork: S.optional(__S(86, __c10, 6)),
-        }),
-      ).annotate({
-        identifier: "GoogleIdentityAccesscontextmanagerV1VpcNetworkSource",
-      });
-  }
-}
-function __c11(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(87, __c10, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          regions: S.optional(__S(4, __c0, 4)),
-          ipSubnetworks: S.optional(__S(4, __c0, 4)),
-          negate: S.optional(S.Boolean),
-          requiredAccessLevels: S.optional(__S(4, __c0, 4)),
-          members: S.optional(__S(4, __c0, 4)),
-          devicePolicy: S.optional(__S(85, __c10, 5)),
-          vpcNetworkSources: S.optional(__S(88, __c11, 0)),
-        }),
-      ).annotate({
-        identifier: "GoogleIdentityAccesscontextmanagerV1Condition",
-      });
-    case 2:
-      return S.Array(__S(89, __c11, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          combiningFunction: S.optional(S.String),
-          conditions: S.optional(__S(90, __c11, 2)),
-        }),
-      ).annotate({
-        identifier: "GoogleIdentityAccesscontextmanagerV1BasicLevel",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          description: S.optional(S.String),
-          title: S.optional(S.String),
-          custom: S.optional(__S(81, __c10, 1)),
-          basic: S.optional(__S(91, __c11, 3)),
-          name: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleIdentityAccesscontextmanagerV1AccessLevel",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          enforced: S.optional(S.Boolean),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudOrgpolicyV1BooleanPolicy",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          allValues: S.optional(S.String),
-          suggestedValue: S.optional(S.String),
-          inheritFromParent: S.optional(S.Boolean),
-          deniedValues: S.optional(__S(4, __c0, 4)),
-          allowedValues: S.optional(__S(4, __c0, 4)),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudOrgpolicyV1ListPolicy",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          version: S.optional(S.Number),
-          booleanPolicy: S.optional(__S(93, __c11, 5)),
-          listPolicy: S.optional(__S(94, __c11, 6)),
-          restoreDefault: S.optional(__S(48, __c6, 0)),
-          constraint: S.optional(S.String),
-          updateTime: S.optional(S.String),
-          etag: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudOrgpolicyV1Policy",
-      });
-  }
-}
-function __c12(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(95, __c11, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          sourceResourceType: S.optional(S.String),
-          action: S.optional(S.String),
-          type: S.optional(S.String),
-          targetResourceType: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "RelationshipAttributes" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          relationshipType: S.optional(S.String),
-          ancestors: S.optional(__S(4, __c0, 4)),
-          assetType: S.optional(S.String),
-          asset: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "RelatedAsset" });
-    case 3:
-      return S.Array(__S(98, __c12, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          relationshipAttributes: S.optional(__S(97, __c12, 1)),
-          assets: S.optional(__S(99, __c12, 3)),
-        }),
-      ).annotate({ identifier: "RelatedAssets" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          version: S.optional(S.String),
-          architecture: S.optional(S.String),
-          packageName: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "VersionedPackage" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "WindowsUpdateCategory" });
-    case 7:
-      return S.Array(__S(102, __c12, 6));
-  }
-}
-function __c13(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          description: S.optional(S.String),
-          moreInfoUrls: S.optional(__S(4, __c0, 4)),
-          updateId: S.optional(S.String),
-          lastDeploymentChangeTime: S.optional(S.String),
-          title: S.optional(S.String),
-          revisionNumber: S.optional(S.Number),
-          categories: S.optional(__S(103, __c12, 7)),
-          supportUrl: S.optional(S.String),
-          kbArticleIds: S.optional(__S(4, __c0, 4)),
-        }),
-      ).annotate({ identifier: "WindowsUpdatePackage" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          summary: S.optional(S.String),
-          patchName: S.optional(S.String),
-          category: S.optional(S.String),
-          severity: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ZypperPatch" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          day: S.optional(S.Number),
-          year: S.optional(S.Number),
-          month: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "Cloudasset_Date" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          displayVersion: S.optional(S.String),
-          helpLink: S.optional(S.String),
-          publisher: S.optional(S.String),
-          displayName: S.optional(S.String),
-          installDate: S.optional(__S(106, __c13, 2)),
-        }),
-      ).annotate({ identifier: "WindowsApplication" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          installTime: S.optional(S.String),
-          caption: S.optional(S.String),
-          hotFixId: S.optional(S.String),
-          description: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "WindowsQuickFixEngineeringPackage",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          googetPackage: S.optional(__S(101, __c12, 5)),
-          wuaPackage: S.optional(__S(104, __c13, 0)),
-          cosPackage: S.optional(__S(101, __c12, 5)),
-          yumPackage: S.optional(__S(101, __c12, 5)),
-          zypperPackage: S.optional(__S(101, __c12, 5)),
-          zypperPatch: S.optional(__S(105, __c13, 1)),
-          aptPackage: S.optional(__S(101, __c12, 5)),
-          windowsApplication: S.optional(__S(107, __c13, 3)),
-          qfePackage: S.optional(__S(108, __c13, 4)),
-        }),
-      ).annotate({ identifier: "SoftwarePackage" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          updateTime: S.optional(S.String),
-          originType: S.optional(S.String),
-          createTime: S.optional(S.String),
-          installedPackage: S.optional(__S(109, __c13, 5)),
-          availablePackage: S.optional(__S(109, __c13, 5)),
-          type: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Item" });
-    case 7:
-      return S.Record(S.String, __S(110, __c13, 6));
-  }
-}
-function __c14(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          longName: S.optional(S.String),
-          shortName: S.optional(S.String),
-          version: S.optional(S.String),
-          architecture: S.optional(S.String),
-          kernelVersion: S.optional(S.String),
-          kernelRelease: S.optional(S.String),
-          osconfigAgentVersion: S.optional(S.String),
-          hostname: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "OsInfo" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          updateTime: S.optional(S.String),
-          name: S.optional(S.String),
-          items: S.optional(__S(111, __c13, 7)),
-          osInfo: S.optional(__S(112, __c14, 0)),
-        }),
-      ).annotate({ identifier: "Inventory" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          etag: S.optional(S.String),
-          name: S.optional(S.String),
-          parent: S.optional(S.String),
-          scopes: S.optional(__S(4, __c0, 4)),
-          title: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleIdentityAccesscontextmanagerV1AccessPolicy",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          discoveryName: S.optional(S.String),
-          discoveryDocumentUri: S.optional(S.String),
-          version: S.optional(S.String),
-          location: S.optional(S.String),
-          parent: S.optional(S.String),
-          resourceUrl: S.optional(S.String),
-          data: S.optional(__S(12, __c1, 4)),
-        }),
-      ).annotate({ identifier: "Resource" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          forwardingRule: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleIdentityAccesscontextmanagerV1PrivateServiceConnectEndpoint",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          resource: S.optional(S.String),
-          pscEndpoint: S.optional(__S(116, __c14, 4)),
-          accessLevel: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleIdentityAccesscontextmanagerV1IngressSource",
-      });
-    case 6:
-      return S.Array(__S(117, __c14, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          sources: S.optional(__S(118, __c14, 6)),
-          identities: S.optional(__S(4, __c0, 4)),
-          identityType: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleIdentityAccesscontextmanagerV1IngressFrom",
-      });
-  }
-}
-function __c15(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          method: S.optional(S.String),
-          permission: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleIdentityAccesscontextmanagerV1MethodSelector",
-      });
-    case 1:
-      return S.Array(__S(120, __c15, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          serviceName: S.optional(S.String),
-          methodSelectors: S.optional(__S(121, __c15, 1)),
-        }),
-      ).annotate({
-        identifier: "GoogleIdentityAccesscontextmanagerV1ApiOperation",
-      });
-    case 3:
-      return S.Array(__S(122, __c15, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          resources: S.optional(__S(4, __c0, 4)),
-          operations: S.optional(__S(123, __c15, 3)),
-          roles: S.optional(__S(4, __c0, 4)),
-        }),
-      ).annotate({
-        identifier: "GoogleIdentityAccesscontextmanagerV1IngressTo",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          ingressFrom: S.optional(__S(119, __c14, 7)),
-          title: S.optional(S.String),
-          ingressTo: S.optional(__S(124, __c15, 4)),
-        }),
-      ).annotate({
-        identifier: "GoogleIdentityAccesscontextmanagerV1IngressPolicy",
-      });
-    case 6:
-      return S.Array(__S(125, __c15, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          operations: S.optional(__S(123, __c15, 3)),
-          externalResources: S.optional(__S(4, __c0, 4)),
-          roles: S.optional(__S(4, __c0, 4)),
-          resources: S.optional(__S(4, __c0, 4)),
-        }),
-      ).annotate({
-        identifier: "GoogleIdentityAccesscontextmanagerV1EgressTo",
-      });
-  }
-}
-function __c16(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          accessLevel: S.optional(S.String),
-          pscEndpoint: S.optional(__S(116, __c14, 4)),
-          resource: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleIdentityAccesscontextmanagerV1EgressSource",
-      });
-    case 1:
-      return S.Array(__S(128, __c16, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          identityType: S.optional(S.String),
-          identities: S.optional(__S(4, __c0, 4)),
-          sourceRestriction: S.optional(S.String),
-          sources: S.optional(__S(129, __c16, 1)),
-        }),
-      ).annotate({
-        identifier: "GoogleIdentityAccesscontextmanagerV1EgressFrom",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          egressTo: S.optional(__S(127, __c15, 7)),
-          egressFrom: S.optional(__S(130, __c16, 2)),
-          title: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleIdentityAccesscontextmanagerV1EgressPolicy",
-      });
-    case 4:
-      return S.Array(__S(131, __c16, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          value: S.optional(S.String),
-          key: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleIdentityAccesscontextmanagerV1AddRequestHeader",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          addRequestHeader: S.optional(__S(133, __c16, 5)),
-        }),
-      ).annotate({
-        identifier: "GoogleIdentityAccesscontextmanagerV1Modifier",
-      });
-    case 7:
-      return S.Array(__S(134, __c16, 6));
-  }
-}
-function __c17(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          service: S.optional(S.String),
-          pattern: S.optional(S.String),
-          modifiers: S.optional(__S(135, __c16, 7)),
-        }),
-      ).annotate({
-        identifier: "GoogleIdentityAccesscontextmanagerV1ServicePattern",
-      });
-    case 1:
-      return S.Array(__S(136, __c17, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          enableRestriction: S.optional(S.Boolean),
-          allowedServicePatterns: S.optional(__S(137, __c17, 1)),
-          allowedServices: S.optional(__S(4, __c0, 4)),
-          servicePatternsEnforcementScopes: S.optional(__S(82, __c10, 2)),
-        }),
-      ).annotate({
-        identifier: "GoogleIdentityAccesscontextmanagerV1VpcAccessibleServices",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          resources: S.optional(__S(4, __c0, 4)),
-          ingressPolicies: S.optional(__S(126, __c15, 6)),
-          accessLevels: S.optional(__S(4, __c0, 4)),
-          restrictedServices: S.optional(__S(4, __c0, 4)),
-          egressPolicies: S.optional(__S(132, __c16, 4)),
-          vpcAccessibleServices: S.optional(__S(138, __c17, 2)),
-        }),
-      ).annotate({
-        identifier: "GoogleIdentityAccesscontextmanagerV1ServicePerimeterConfig",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          useExplicitDryRunSpec: S.optional(S.Boolean),
-          etag: S.optional(S.String),
-          title: S.optional(S.String),
-          perimeterType: S.optional(S.String),
-          description: S.optional(S.String),
-          name: S.optional(S.String),
-          spec: S.optional(__S(139, __c17, 3)),
-          status: S.optional(__S(139, __c17, 3)),
-        }),
-      ).annotate({
-        identifier: "GoogleIdentityAccesscontextmanagerV1ServicePerimeter",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          exceptionType: S.optional(S.String),
-          details: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "AssetException" });
-    case 6:
-      return S.Array(__S(141, __c17, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          accessLevel: S.optional(__S(92, __c11, 4)),
-          orgPolicy: S.optional(__S(96, __c12, 0)),
-          relatedAssets: S.optional(__S(100, __c12, 4)),
-          osInventory: S.optional(__S(113, __c14, 1)),
-          ancestors: S.optional(__S(4, __c0, 4)),
-          accessPolicy: S.optional(__S(114, __c14, 2)),
-          iamPolicy: S.optional(__S(66, __c8, 2)),
-          relatedAsset: S.optional(__S(98, __c12, 2)),
-          updateTime: S.optional(S.String),
-          assetType: S.optional(S.String),
-          resource: S.optional(__S(115, __c14, 3)),
-          name: S.optional(S.String),
-          servicePerimeter: S.optional(__S(140, __c17, 4)),
-          assetExceptions: S.optional(__S(142, __c17, 6)),
-        }),
-      ).annotate({ identifier: "Asset" });
-  }
-}
-function __c18(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          startTime: S.optional(S.String),
-          endTime: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "TimeWindow" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          priorAssetState: S.optional(S.String),
-          asset: S.optional(__S(143, __c17, 7)),
-          window: S.optional(__S(144, __c18, 0)),
-          deleted: S.optional(S.Boolean),
-          priorAsset: S.optional(__S(143, __c17, 7)),
-        }),
-      ).annotate({ identifier: "TemporalAsset" });
-    case 2:
-      return S.Array(__S(145, __c18, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          assets: S.optional(__S(146, __c18, 2)),
-        }),
-      ).annotate({
-        identifier: "BatchGetAssetsHistoryResponse",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          scope: S.String.pipe(T.Label()),
-          names: S.optional(__S(4, __c0, 4).pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v1/{+scope}/effectiveIamPolicies:batchGet",
-            baseUrl: "https://cloudasset.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "BatchGetEffectiveIamPoliciesRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          attachedResource: S.optional(S.String),
-          policy: S.optional(__S(66, __c8, 2)),
-        }),
-      ).annotate({ identifier: "PolicyInfo" });
-    case 6:
-      return S.Array(__S(149, __c18, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          fullResourceName: S.optional(S.String),
-          policies: S.optional(__S(150, __c18, 6)),
-        }),
-      ).annotate({ identifier: "EffectiveIamPolicy" });
-  }
-}
-function __c19(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(151, __c18, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          policyResults: S.optional(__S(152, __c19, 0)),
-        }),
-      ).annotate({
-        identifier: "BatchGetEffectiveIamPoliciesResponse",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          topic: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "PubsubDestination" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          pubsubDestination: S.optional(__S(154, __c19, 2)),
-        }),
-      ).annotate({ identifier: "FeedOutputConfig" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          assetTypes: S.optional(__S(4, __c0, 4)),
-          name: S.optional(S.String),
-          feedOutputConfig: S.optional(__S(155, __c19, 3)),
-          assetNames: S.optional(__S(4, __c0, 4)),
-          condition: S.optional(__S(31, __c3, 7)),
-          contentType: S.optional(S.String),
-          relationshipTypes: S.optional(__S(4, __c0, 4)),
-        }),
-      ).annotate({ identifier: "Feed" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          feedId: S.optional(S.String),
-          feed: S.optional(__S(156, __c19, 4)),
-        }),
-      ).annotate({ identifier: "CreateFeedRequest" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(157, __c19, 5).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/{+parent}/feeds",
-            baseUrl: "https://cloudasset.googleapis.com/",
-          }),
-        ),
-      ).annotate({ identifier: "CreateFeedsRequest" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          iamPolicyAnalysisQuery: S.optional(__S(6, __c0, 6)),
-        }),
-      ).annotate({ identifier: "QueryContent" });
-  }
-}
-function __c20(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Record(S.String, S.String);
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          lastUpdater: S.optional(S.String),
-          name: S.optional(S.String),
-          content: S.optional(__S(159, __c19, 7)),
-          lastUpdateTime: S.optional(S.String),
-          labels: S.optional(__S(160, __c20, 0)),
-          createTime: S.optional(S.String),
-          creator: S.optional(S.String),
-          description: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "SavedQuery" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          savedQueryId: S.optional(S.String.pipe(T.Query())),
-          parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(161, __c20, 1).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/{+parent}/savedQueries",
-            baseUrl: "https://cloudasset.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateSavedQueriesRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "v1/{+name}",
-            baseUrl: "https://cloudasset.googleapis.com/",
-          }),
-        ),
-      ).annotate({ identifier: "DeleteFeedsRequest" });
-    case 4:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "Empty",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "v1/{+name}",
-            baseUrl: "https://cloudasset.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteSavedQueriesRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          partitionKey: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "PartitionSpec" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          separateTablesPerAssetType: S.optional(S.Boolean),
-          partitionSpec: S.optional(__S(166, __c20, 6)),
-          dataset: S.optional(S.String),
-          table: S.optional(S.String),
-          force: S.optional(S.Boolean),
-        }),
-      ).annotate({ identifier: "BigQueryDestination" });
-  }
-}
-function __c21(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          uriPrefix: S.optional(S.String),
-          uri: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "GcsDestination" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          bigqueryDestination: S.optional(__S(167, __c20, 7)),
-          gcsDestination: S.optional(__S(168, __c21, 0)),
-        }),
-      ).annotate({ identifier: "OutputConfig" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          contentType: S.optional(S.String),
-          outputConfig: S.optional(__S(169, __c21, 1)),
-          relationshipTypes: S.optional(__S(4, __c0, 4)),
-          assetTypes: S.optional(__S(4, __c0, 4)),
-          readTime: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ExportAssetsRequest" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(170, __c21, 2).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/{+parent}:exportAssets",
-            baseUrl: "https://cloudasset.googleapis.com/",
-          }),
-        ),
-      ).annotate({ identifier: "ExportAssetsV1Request" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v1/{+name}",
-            baseUrl: "https://cloudasset.googleapis.com/",
-          }),
-        ),
-      ).annotate({ identifier: "GetFeedsRequest" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v1/{+name}",
-            baseUrl: "https://cloudasset.googleapis.com/",
-          }),
-        ),
-      ).annotate({ identifier: "GetOperationsRequest" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v1/{+name}",
-            baseUrl: "https://cloudasset.googleapis.com/",
-          }),
-        ),
-      ).annotate({ identifier: "GetSavedQueriesRequest" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          relationshipTypes: S.optional(__S(4, __c0, 4).pipe(T.Query())),
-          parent: S.String.pipe(T.Label()),
-          contentType: S.optional(S.String.pipe(T.Query())),
-          pageSize: S.optional(S.Number.pipe(T.Query())),
-          readTime: S.optional(S.String.pipe(T.Query())),
-          pageToken: S.optional(S.String.pipe(T.Query())),
-          assetTypes: S.optional(__S(4, __c0, 4).pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v1/{+parent}/assets",
-            baseUrl: "https://cloudasset.googleapis.com/",
-          }),
-        ),
-      ).annotate({ identifier: "ListAssetsRequest" });
-  }
-}
-function __c22(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(143, __c17, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          assets: S.optional(__S(176, __c22, 0)),
-          nextPageToken: S.optional(S.String),
-          readTime: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ListAssetsResponse" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          parent: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v1/{+parent}/feeds",
-            baseUrl: "https://cloudasset.googleapis.com/",
-          }),
-        ),
-      ).annotate({ identifier: "ListFeedsRequest" });
-    case 3:
-      return S.Array(__S(156, __c19, 4));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          feeds: S.optional(__S(179, __c22, 3)),
-        }),
-      ).annotate({ identifier: "ListFeedsResponse" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          pageToken: S.optional(S.String.pipe(T.Query())),
-          parent: S.String.pipe(T.Label()),
-          filter: S.optional(S.String.pipe(T.Query())),
-          pageSize: S.optional(S.Number.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v1/{+parent}/savedQueries",
-            baseUrl: "https://cloudasset.googleapis.com/",
-          }),
-        ),
-      ).annotate({ identifier: "ListSavedQueriesRequest" });
-    case 6:
-      return S.Array(__S(161, __c20, 1));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          nextPageToken: S.optional(S.String),
-          savedQueries: S.optional(__S(182, __c22, 6)),
-        }),
-      ).annotate({ identifier: "ListSavedQueriesResponse" });
-  }
-}
-function __c23(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          updateMask: S.optional(S.String),
-          feed: S.optional(__S(156, __c19, 4)),
-        }),
-      ).annotate({ identifier: "UpdateFeedRequest" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-          body: S.optional(__S(184, __c23, 0).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "PATCH",
-            uri: "v1/{+name}",
-            baseUrl: "https://cloudasset.googleapis.com/",
-          }),
-        ),
-      ).annotate({ identifier: "PatchFeedsRequest" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-          updateMask: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(161, __c20, 1).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "PATCH",
-            uri: "v1/{+name}",
-            baseUrl: "https://cloudasset.googleapis.com/",
-          }),
-        ),
-      ).annotate({ identifier: "PatchSavedQueriesRequest" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          writeDisposition: S.optional(S.String),
-          table: S.optional(S.String),
-          dataset: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleCloudAssetV1QueryAssetsOutputConfigBigQueryDestination",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          bigqueryDestination: S.optional(__S(187, __c23, 3)),
-        }),
-      ).annotate({ identifier: "QueryAssetsOutputConfig" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          pageSize: S.optional(S.Number),
-          jobReference: S.optional(S.String),
-          outputConfig: S.optional(__S(188, __c23, 4)),
-          statement: S.optional(S.String),
-          readTimeWindow: S.optional(__S(144, __c18, 0)),
-          timeout: S.optional(S.String),
-          readTime: S.optional(S.String),
-          pageToken: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "QueryAssetsRequest" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          parent: S.String.pipe(T.Label()),
-          body: S.optional(__S(189, __c23, 5).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/{+parent}:queryAssets",
-            baseUrl: "https://cloudasset.googleapis.com/",
-          }),
-        ),
-      ).annotate({ identifier: "QueryAssetsV1Request" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          field: S.optional(S.String),
-          fields: S.optional(S.suspend(() => __S(192, __c24, 0))),
-          type: S.optional(S.String),
-          mode: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "TableFieldSchema" });
-  }
-}
-function __c24(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(191, __c23, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          fields: S.optional(__S(192, __c24, 0)),
-        }),
-      ).annotate({ identifier: "TableSchema" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          rows: S.optional(__S(13, __c1, 5)),
-          nextPageToken: S.optional(S.String),
-          schema: S.optional(__S(193, __c24, 1)),
-          totalRows: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "QueryResult" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          done: S.optional(S.Boolean),
-          error: S.optional(__S(14, __c1, 6)),
-          queryResult: S.optional(__S(194, __c24, 2)),
-          jobReference: S.optional(S.String),
-          outputConfig: S.optional(__S(188, __c23, 4)),
-        }),
-      ).annotate({ identifier: "QueryAssetsResponse" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          pageToken: S.optional(S.String.pipe(T.Query())),
-          query: S.optional(S.String.pipe(T.Query())),
-          assetTypes: S.optional(__S(4, __c0, 4).pipe(T.Query())),
-          orderBy: S.optional(S.String.pipe(T.Query())),
-          pageSize: S.optional(S.Number.pipe(T.Query())),
-          scope: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v1/{+scope}:searchAllIamPolicies",
-            baseUrl: "https://cloudasset.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "SearchAllIamPoliciesV1Request",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          permissions: S.optional(__S(4, __c0, 4)),
-        }),
-      ).annotate({ identifier: "Permissions" });
-    case 6:
-      return S.Record(S.String, __S(197, __c24, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          matchedPermissions: S.optional(__S(198, __c24, 6)),
-        }),
-      ).annotate({ identifier: "Explanation" });
-  }
-}
-function __c25(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          resource: S.optional(S.String),
-          policy: S.optional(__S(66, __c8, 2)),
-          assetType: S.optional(S.String),
-          folders: S.optional(__S(4, __c0, 4)),
-          organization: S.optional(S.String),
-          explanation: S.optional(__S(199, __c24, 7)),
-          project: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "IamPolicySearchResult" });
-    case 1:
-      return S.Array(__S(200, __c25, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          results: S.optional(__S(201, __c25, 1)),
-          nextPageToken: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "SearchAllIamPoliciesResponse",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          query: S.optional(S.String.pipe(T.Query())),
-          pageToken: S.optional(S.String.pipe(T.Query())),
-          orderBy: S.optional(S.String.pipe(T.Query())),
-          pageSize: S.optional(S.Number.pipe(T.Query())),
-          readMask: S.optional(S.String.pipe(T.Query())),
-          scope: S.String.pipe(T.Label()),
-          assetTypes: S.optional(__S(4, __c0, 4).pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v1/{+scope}:searchAllResources",
-            baseUrl: "https://cloudasset.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "SearchAllResourcesV1Request",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          fullResourceName: S.optional(S.String),
-          assetType: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "RelatedResource" });
-    case 5:
-      return S.Array(__S(204, __c25, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          relatedResources: S.optional(__S(205, __c25, 5)),
-        }),
-      ).annotate({ identifier: "RelatedResources" });
-    case 7:
-      return S.Record(S.String, __S(206, __c25, 6));
-  }
-}
-function __c26(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          resourceOwners: S.optional(__S(4, __c0, 4)),
-        }),
-      ).annotate({ identifier: "ResourceOwners" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          resourceOwners: S.optional(__S(208, __c26, 0)),
-        }),
-      ).annotate({ identifier: "AssetEnrichment" });
-    case 2:
-      return S.Array(__S(209, __c26, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          resource: S.optional(__S(12, __c1, 4)),
-          assetExceptions: S.optional(__S(142, __c17, 6)),
-          version: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "VersionedResource" });
-    case 4:
-      return S.Array(__S(211, __c26, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          assetType: S.optional(S.String),
-          versionedResources: S.optional(__S(212, __c26, 4)),
-        }),
-      ).annotate({ identifier: "AttachedResource" });
-    case 6:
-      return S.Array(__S(213, __c26, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          parentAssetType: S.optional(S.String),
-          networkTags: S.optional(__S(4, __c0, 4)),
-          project: S.optional(S.String),
-          location: S.optional(S.String),
-          additionalAttributes: S.optional(__S(12, __c1, 4)),
-          labels: S.optional(__S(160, __c20, 0)),
-          relationships: S.optional(__S(207, __c25, 7)),
-          displayName: S.optional(S.String),
-          parentFullResourceName: S.optional(S.String),
-          enrichments: S.optional(__S(210, __c26, 2)),
-          versionedResources: S.optional(__S(212, __c26, 4)),
-          kmsKey: S.optional(S.String),
-          assetType: S.optional(S.String),
-          tagValueIds: S.optional(__S(4, __c0, 4)),
-          tagValues: S.optional(__S(4, __c0, 4)),
-          description: S.optional(S.String),
-          tagKeys: S.optional(__S(4, __c0, 4)),
-          sccSecurityMarks: S.optional(__S(160, __c20, 0)),
-          attachedResources: S.optional(__S(214, __c26, 6)),
-          kmsKeys: S.optional(__S(4, __c0, 4)),
-          state: S.optional(S.String),
-          updateTime: S.optional(S.String),
-          createTime: S.optional(S.String),
-          name: S.optional(S.String),
-          effectiveTags: S.optional(__S(71, __c8, 7)),
-          organization: S.optional(S.String),
-          tags: S.optional(__S(69, __c8, 5)),
-          folders: S.optional(__S(4, __c0, 4)),
-        }),
-      ).annotate({ identifier: "ResourceSearchResult" });
-  }
-}
-function __c27(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(215, __c26, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          results: S.optional(__S(216, __c27, 0)),
-          nextPageToken: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "SearchAllResourcesResponse",
-      });
-  }
-}
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

@@ -105,7 +105,7 @@ export const queryFoldersLocationsActivityTypesActivities: API.PaginatedOperatio
   GoogleCloudPolicyanalyzerV1QueryActivityResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(0, __c0, 0) as any as S.Schema<QueryFoldersLocationsActivityTypesActivitiesRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<GoogleCloudPolicyanalyzerV1QueryActivityResponse>,
+  output: __S(12, __c1, 4) as any as S.Schema<GoogleCloudPolicyanalyzerV1QueryActivityResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -125,11 +125,11 @@ export const queryOrganizationsLocationsActivityTypesActivities: API.PaginatedOp
   GoogleCloudPolicyanalyzerV1QueryActivityResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(
-    6,
-    __c0,
-    6,
+    16,
+    __c2,
+    0,
   ) as any as S.Schema<QueryOrganizationsLocationsActivityTypesActivitiesRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<GoogleCloudPolicyanalyzerV1QueryActivityResponse>,
+  output: __S(12, __c1, 4) as any as S.Schema<GoogleCloudPolicyanalyzerV1QueryActivityResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -145,8 +145,8 @@ export const queryProjectsLocationsActivityTypesActivities: API.PaginatedOperati
   GcpOpContext,
   GoogleCloudPolicyanalyzerV1QueryActivityResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(7, __c0, 7) as any as S.Schema<QueryProjectsLocationsActivityTypesActivitiesRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<GoogleCloudPolicyanalyzerV1QueryActivityResponse>,
+  input: __S(24, __c3, 0) as any as S.Schema<QueryProjectsLocationsActivityTypesActivitiesRequest>,
+  output: __S(12, __c1, 4) as any as S.Schema<GoogleCloudPolicyanalyzerV1QueryActivityResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -173,7 +173,11 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "QueryFoldersLocationsActivityTypesActivitiesRequest",
       });
-    case 1:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           startTime: S.optional(S.String),
@@ -182,31 +186,35 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "GoogleCloudPolicyanalyzerV1ObservationPeriod",
       });
-    case 2:
+    case 1:
       return S.Record(S.String, S.Unknown);
-    case 3:
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          observationPeriod: S.optional(__S(1, __c0, 1)),
+          observationPeriod: S.optional(__S(8, __c1, 0)),
           activityType: S.optional(S.String),
           fullResourceName: S.optional(S.String),
-          activity: S.optional(__S(2, __c0, 2)),
+          activity: S.optional(__S(9, __c1, 1)),
         }),
       ).annotate({
         identifier: "GoogleCloudPolicyanalyzerV1Activity",
       });
+    case 3:
+      return S.Array(__S(10, __c1, 2));
     case 4:
-      return S.Array(__S(3, __c0, 3));
-    case 5:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          activities: S.optional(__S(4, __c0, 4)),
+          activities: S.optional(__S(11, __c1, 3)),
         }),
       ).annotate({
         identifier: "GoogleCloudPolicyanalyzerV1QueryActivityResponse",
       });
-    case 6:
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
@@ -223,7 +231,11 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "QueryOrganizationsLocationsActivityTypesActivitiesRequest",
       });
-    case 7:
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           pageToken: S.optional(S.String.pipe(T.Query())),
@@ -242,7 +254,6 @@ function __c0(j: number): any {
       });
   }
 }
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

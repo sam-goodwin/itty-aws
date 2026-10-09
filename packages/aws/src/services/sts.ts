@@ -605,8 +605,8 @@ export const assumeRole: API.OperationMethod<
   AssumeRoleError,
   Creds | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(7, __c0, 7) as any as S.Schema<AssumeRoleRequest>,
-  output: __S(10, __c1, 2) as any as S.Schema<AssumeRoleResponse>,
+  input: __S(3, __c0, 3) as any as S.Schema<AssumeRoleRequest>,
+  output: __S(4, __c0, 4) as any as S.Schema<AssumeRoleResponse>,
   errors: [
     ExpiredTokenException,
     MalformedPolicyDocumentException,
@@ -758,8 +758,8 @@ export const assumeRoleWithSAML: API.OperationMethod<
   AssumeRoleWithSAMLError,
   Creds | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(11, __c1, 3) as any as S.Schema<AssumeRoleWithSAMLRequest>,
-  output: __S(12, __c1, 4) as any as S.Schema<AssumeRoleWithSAMLResponse>,
+  input: __S(48, __c6, 0) as any as S.Schema<AssumeRoleWithSAMLRequest>,
+  output: __S(49, __c6, 1) as any as S.Schema<AssumeRoleWithSAMLResponse>,
   errors: [
     ExpiredTokenException,
     IDPRejectedClaimException,
@@ -908,8 +908,8 @@ export const assumeRoleWithWebIdentity: API.OperationMethod<
   AssumeRoleWithWebIdentityError,
   Creds | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(13, __c1, 5) as any as S.Schema<AssumeRoleWithWebIdentityRequest>,
-  output: __S(14, __c1, 6) as any as S.Schema<AssumeRoleWithWebIdentityResponse>,
+  input: __S(56, __c7, 0) as any as S.Schema<AssumeRoleWithWebIdentityRequest>,
+  output: __S(57, __c7, 1) as any as S.Schema<AssumeRoleWithWebIdentityResponse>,
   errors: [
     ExpiredTokenException,
     IDPCommunicationErrorException,
@@ -954,8 +954,8 @@ export const assumeRoot: API.OperationMethod<
   AssumeRootError,
   Creds | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(15, __c1, 7) as any as S.Schema<AssumeRootRequest>,
-  output: __S(16, __c2, 0) as any as S.Schema<AssumeRootResponse>,
+  input: __S(64, __c8, 0) as any as S.Schema<AssumeRootRequest>,
+  output: __S(65, __c8, 1) as any as S.Schema<AssumeRootResponse>,
   errors: [ExpiredTokenException, RegionDisabledException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1002,8 +1002,8 @@ export const decodeAuthorizationMessage: API.OperationMethod<
   DecodeAuthorizationMessageError,
   Creds | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(17, __c2, 1) as any as S.Schema<DecodeAuthorizationMessageRequest>,
-  output: __S(18, __c2, 2) as any as S.Schema<DecodeAuthorizationMessageResponse>,
+  input: __S(72, __c9, 0) as any as S.Schema<DecodeAuthorizationMessageRequest>,
+  output: __S(73, __c9, 1) as any as S.Schema<DecodeAuthorizationMessageResponse>,
   errors: [InvalidAuthorizationMessageException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1039,8 +1039,8 @@ export const getAccessKeyInfo: API.OperationMethod<
   GetAccessKeyInfoError,
   Creds | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(19, __c2, 3) as any as S.Schema<GetAccessKeyInfoRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<GetAccessKeyInfoResponse>,
+  input: __S(80, __c10, 0) as any as S.Schema<GetAccessKeyInfoRequest>,
+  output: __S(81, __c10, 1) as any as S.Schema<GetAccessKeyInfoResponse>,
   errors: [],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1065,8 +1065,8 @@ export const getCallerIdentity: API.OperationMethod<
   GetCallerIdentityError,
   Creds | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(21, __c2, 5) as any as S.Schema<GetCallerIdentityRequest>,
-  output: __S(22, __c2, 6) as any as S.Schema<GetCallerIdentityResponse>,
+  input: __S(88, __c11, 0) as any as S.Schema<GetCallerIdentityRequest>,
+  output: __S(89, __c11, 1) as any as S.Schema<GetCallerIdentityResponse>,
   errors: [],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1090,8 +1090,8 @@ export const getDelegatedAccessToken: API.OperationMethod<
   GetDelegatedAccessTokenError,
   Creds | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(23, __c2, 7) as any as S.Schema<GetDelegatedAccessTokenRequest>,
-  output: __S(24, __c3, 0) as any as S.Schema<GetDelegatedAccessTokenResponse>,
+  input: __S(96, __c12, 0) as any as S.Schema<GetDelegatedAccessTokenRequest>,
+  output: __S(97, __c12, 1) as any as S.Schema<GetDelegatedAccessTokenResponse>,
   errors: [ExpiredTradeInTokenException, PackedPolicyTooLargeException, RegionDisabledException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1202,8 +1202,8 @@ export const getFederationToken: API.OperationMethod<
   GetFederationTokenError,
   Creds | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(25, __c3, 1) as any as S.Schema<GetFederationTokenRequest>,
-  output: __S(27, __c3, 3) as any as S.Schema<GetFederationTokenResponse>,
+  input: __S(104, __c13, 0) as any as S.Schema<GetFederationTokenRequest>,
+  output: __S(106, __c13, 2) as any as S.Schema<GetFederationTokenResponse>,
   errors: [
     MalformedPolicyDocumentException,
     PackedPolicyTooLargeException,
@@ -1278,8 +1278,8 @@ export const getSessionToken: API.OperationMethod<
   GetSessionTokenError,
   Creds | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(28, __c3, 4) as any as S.Schema<GetSessionTokenRequest>,
-  output: __S(29, __c3, 5) as any as S.Schema<GetSessionTokenResponse>,
+  input: __S(112, __c14, 0) as any as S.Schema<GetSessionTokenRequest>,
+  output: __S(113, __c14, 1) as any as S.Schema<GetSessionTokenResponse>,
   errors: [RegionDisabledException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1304,8 +1304,8 @@ export const getWebIdentityToken: API.OperationMethod<
   GetWebIdentityTokenError,
   Creds | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(31, __c3, 7) as any as S.Schema<GetWebIdentityTokenRequest>,
-  output: __S(32, __c4, 0) as any as S.Schema<GetWebIdentityTokenResponse>,
+  input: __S(121, __c15, 1) as any as S.Schema<GetWebIdentityTokenRequest>,
+  output: __S(122, __c15, 2) as any as S.Schema<GetWebIdentityTokenResponse>,
   errors: [
     JWTPayloadSizeExceededException,
     OutboundWebIdentityFederationDisabledException,
@@ -1320,46 +1320,53 @@ export const getWebIdentityToken: API.OperationMethod<
 function __c0(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => S.Struct({ arn: S.optional(S.String) })).annotate({
-        identifier: "PolicyDescriptorType",
-      });
-    case 1:
-      return S.Array(__S(0, __c0, 0));
-    case 2:
-      return S.suspend(() => S.Struct({ Key: S.String, Value: S.String })).annotate({
-        identifier: "Tag",
-      });
-    case 3:
-      return S.Array(__S(2, __c0, 2));
-    case 4:
       return S.Array(S.String);
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({ ProviderArn: S.optional(S.String), ContextAssertion: S.optional(S.String) }),
       ).annotate({ identifier: "ProvidedContext" });
-    case 6:
-      return S.Array(__S(5, __c0, 5));
-    case 7:
+    case 2:
+      return S.Array(__S(1, __c0, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
           RoleArn: S.String,
           RoleSessionName: S.String,
-          PolicyArns: S.optional(__S(1, __c0, 1)),
+          PolicyArns: S.optional(__S(32, __c4, 0)),
           Policy: S.optional(S.String),
           DurationSeconds: S.optional(S.Number),
-          Tags: S.optional(__S(3, __c0, 3)),
-          TransitiveTagKeys: S.optional(__S(4, __c0, 4)),
+          Tags: S.optional(__S(41, __c5, 1)),
+          TransitiveTagKeys: S.optional(__S(0, __c0, 0)),
           ExternalId: S.optional(S.String),
           SerialNumber: S.optional(S.String),
           TokenCode: S.optional(S.String),
           SourceIdentity: S.optional(S.String),
-          ProvidedContexts: S.optional(__S(6, __c0, 6)),
+          ProvidedContexts: S.optional(__S(2, __c0, 2)),
           MinimumSessionTokenSize: S.optional(S.Number),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "AssumeRoleRequest" });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          Credentials: S.optional(__S(16, __c2, 0)),
+          AssumedRoleUser: S.optional(__S(8, __c1, 0)),
+          PackedPolicySize: S.optional(S.Number),
+          SourceIdentity: S.optional(S.String),
+          SessionTokenUtilization: S.optional(S.Number),
+          SessionTokenSize: S.optional(S.Number),
+        }).pipe(ns),
+      ).annotate({ identifier: "AssumeRoleResponse" });
   }
 }
 function __c1(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({ AssumedRoleId: S.String, Arn: S.String })).annotate({
+        identifier: "AssumedRoleUser",
+      });
+  }
+}
+function __c2(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1370,28 +1377,41 @@ function __c1(j: number): any {
           Expiration: T.DateFromString.pipe(T.TimestampFormat("date-time")),
         }),
       ).annotate({ identifier: "Credentials" });
-    case 1:
-      return S.suspend(() => S.Struct({ AssumedRoleId: S.String, Arn: S.String })).annotate({
-        identifier: "AssumedRoleUser",
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({ arn: S.optional(S.String) })).annotate({
+        identifier: "PolicyDescriptorType",
       });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          Credentials: S.optional(__S(8, __c1, 0)),
-          AssumedRoleUser: S.optional(__S(9, __c1, 1)),
-          PackedPolicySize: S.optional(S.Number),
-          SourceIdentity: S.optional(S.String),
-          SessionTokenUtilization: S.optional(S.Number),
-          SessionTokenSize: S.optional(S.Number),
-        }).pipe(ns),
-      ).annotate({ identifier: "AssumeRoleResponse" });
-    case 3:
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(24, __c3, 0));
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({ Key: S.String, Value: S.String })).annotate({
+        identifier: "Tag",
+      });
+    case 1:
+      return S.Array(__S(40, __c5, 0));
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           RoleArn: S.String,
           PrincipalArn: S.String,
           SAMLAssertion: SensitiveString,
-          PolicyArns: S.optional(__S(1, __c0, 1)),
+          PolicyArns: S.optional(__S(32, __c4, 0)),
           Policy: S.optional(S.String),
           DurationSeconds: S.optional(S.Number),
           MinimumSessionTokenSize: S.optional(S.Number),
@@ -1399,11 +1419,11 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "AssumeRoleWithSAMLRequest",
       });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          Credentials: S.optional(__S(8, __c1, 0)),
-          AssumedRoleUser: S.optional(__S(9, __c1, 1)),
+          Credentials: S.optional(__S(16, __c2, 0)),
+          AssumedRoleUser: S.optional(__S(8, __c1, 0)),
           PackedPolicySize: S.optional(S.Number),
           Subject: S.optional(S.String),
           SubjectType: S.optional(S.String),
@@ -1417,14 +1437,18 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "AssumeRoleWithSAMLResponse",
       });
-    case 5:
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           RoleArn: S.String,
           RoleSessionName: S.String,
           WebIdentityToken: SensitiveString,
           ProviderId: S.optional(S.String),
-          PolicyArns: S.optional(__S(1, __c0, 1)),
+          PolicyArns: S.optional(__S(32, __c4, 0)),
           Policy: S.optional(S.String),
           DurationSeconds: S.optional(S.Number),
           MinimumSessionTokenSize: S.optional(S.Number),
@@ -1432,12 +1456,12 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "AssumeRoleWithWebIdentityRequest",
       });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          Credentials: S.optional(__S(8, __c1, 0)),
+          Credentials: S.optional(__S(16, __c2, 0)),
           SubjectFromWebIdentityToken: S.optional(S.String),
-          AssumedRoleUser: S.optional(__S(9, __c1, 1)),
+          AssumedRoleUser: S.optional(__S(8, __c1, 0)),
           PackedPolicySize: S.optional(S.Number),
           Provider: S.optional(S.String),
           Audience: S.optional(S.String),
@@ -1448,29 +1472,33 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "AssumeRoleWithWebIdentityResponse",
       });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          TargetPrincipal: S.String,
-          TaskPolicyArn: __S(0, __c0, 0),
-          DurationSeconds: S.optional(S.Number),
-          MinimumSessionTokenSize: S.optional(S.Number),
-        }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
-      ).annotate({ identifier: "AssumeRootRequest" });
   }
 }
-function __c2(j: number): any {
+function __c8(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          Credentials: S.optional(__S(8, __c1, 0)),
+          TargetPrincipal: S.String,
+          TaskPolicyArn: __S(24, __c3, 0),
+          DurationSeconds: S.optional(S.Number),
+          MinimumSessionTokenSize: S.optional(S.Number),
+        }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
+      ).annotate({ identifier: "AssumeRootRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          Credentials: S.optional(__S(16, __c2, 0)),
           SourceIdentity: S.optional(S.String),
           SessionTokenUtilization: S.optional(S.Number),
           SessionTokenSize: S.optional(S.Number),
         }).pipe(ns),
       ).annotate({ identifier: "AssumeRootResponse" });
-    case 1:
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ EncodedMessage: S.String }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
@@ -1478,27 +1506,35 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "DecodeAuthorizationMessageRequest",
       });
-    case 2:
+    case 1:
       return S.suspend(() => S.Struct({ DecodedMessage: S.optional(S.String) }).pipe(ns)).annotate({
         identifier: "DecodeAuthorizationMessageResponse",
       });
-    case 3:
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ AccessKeyId: S.String }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "GetAccessKeyInfoRequest" });
-    case 4:
+    case 1:
       return S.suspend(() => S.Struct({ Account: S.optional(S.String) }).pipe(ns)).annotate({
         identifier: "GetAccessKeyInfoResponse",
       });
-    case 5:
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({}).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "GetCallerIdentityRequest" });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           UserId: S.optional(S.String),
@@ -1508,7 +1544,11 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "GetCallerIdentityResponse",
       });
-    case 7:
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ TradeInToken: SensitiveString }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
@@ -1516,42 +1556,42 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "GetDelegatedAccessTokenRequest",
       });
-  }
-}
-function __c3(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          Credentials: S.optional(__S(8, __c1, 0)),
+          Credentials: S.optional(__S(16, __c2, 0)),
           PackedPolicySize: S.optional(S.Number),
           AssumedPrincipal: S.optional(S.String),
         }).pipe(ns),
       ).annotate({
         identifier: "GetDelegatedAccessTokenResponse",
       });
-    case 1:
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           Name: S.String,
           Policy: S.optional(S.String),
-          PolicyArns: S.optional(__S(1, __c0, 1)),
+          PolicyArns: S.optional(__S(32, __c4, 0)),
           DurationSeconds: S.optional(S.Number),
-          Tags: S.optional(__S(3, __c0, 3)),
+          Tags: S.optional(__S(41, __c5, 1)),
           MinimumSessionTokenSize: S.optional(S.Number),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "GetFederationTokenRequest",
       });
-    case 2:
+    case 1:
       return S.suspend(() => S.Struct({ FederatedUserId: S.String, Arn: S.String })).annotate({
         identifier: "FederatedUser",
       });
-    case 3:
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          Credentials: S.optional(__S(8, __c1, 0)),
-          FederatedUser: S.optional(__S(26, __c3, 2)),
+          Credentials: S.optional(__S(16, __c2, 0)),
+          FederatedUser: S.optional(__S(105, __c13, 1)),
           PackedPolicySize: S.optional(S.Number),
           SessionTokenUtilization: S.optional(S.Number),
           SessionTokenSize: S.optional(S.Number),
@@ -1559,7 +1599,11 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "GetFederationTokenResponse",
       });
-    case 4:
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           DurationSeconds: S.optional(S.Number),
@@ -1568,32 +1612,32 @@ function __c3(j: number): any {
           MinimumSessionTokenSize: S.optional(S.Number),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "GetSessionTokenRequest" });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          Credentials: S.optional(__S(8, __c1, 0)),
+          Credentials: S.optional(__S(16, __c2, 0)),
           SessionTokenUtilization: S.optional(S.Number),
           SessionTokenSize: S.optional(S.Number),
         }).pipe(ns),
       ).annotate({ identifier: "GetSessionTokenResponse" });
-    case 6:
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
       return S.Array(S.String);
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          Audience: __S(30, __c3, 6),
+          Audience: __S(120, __c15, 0),
           DurationSeconds: S.optional(S.Number),
           SigningAlgorithm: S.String,
-          Tags: S.optional(__S(3, __c0, 3)),
+          Tags: S.optional(__S(41, __c5, 1)),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "GetWebIdentityTokenRequest",
       });
-  }
-}
-function __c4(j: number): any {
-  switch (j) {
-    case 0:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           WebIdentityToken: S.optional(SensitiveString),
@@ -1604,7 +1648,6 @@ function __c4(j: number): any {
       });
   }
 }
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

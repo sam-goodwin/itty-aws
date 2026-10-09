@@ -399,8 +399,8 @@ export const archiveAffiliate: API.OperationMethod<
   ArchiveAffiliateError,
   WhopOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(0, __c0, 0) as any as S.Schema<ArchiveAffiliateRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<ArchiveAffiliateResponse>,
+  input: __S(20, __c5, 0) as any as S.Schema<ArchiveAffiliateRequest>,
+  output: __S(21, __c5, 1) as any as S.Schema<ArchiveAffiliateResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity],
   protocol: WhopProtocol,
   retry: Retry.Retry,
@@ -419,8 +419,8 @@ export const createAffiliate: API.OperationMethod<
   CreateAffiliateError,
   WhopOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2, __c0, 2) as any as S.Schema<CreateAffiliateRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<Affiliate>,
+  input: __S(24, __c6, 0) as any as S.Schema<CreateAffiliateRequest>,
+  output: __S(30, __c7, 2) as any as S.Schema<Affiliate>,
   errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity],
   protocol: WhopProtocol,
   retry: Retry.Retry,
@@ -439,8 +439,8 @@ export const createOverrideAffiliate: API.OperationMethod<
   CreateOverrideAffiliateError,
   WhopOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(6, __c0, 6) as any as S.Schema<CreateOverrideAffiliateRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<CreateOverrideAffiliateResponse>,
+  input: __S(32, __c8, 0) as any as S.Schema<CreateOverrideAffiliateRequest>,
+  output: __S(36, __c9, 0) as any as S.Schema<CreateOverrideAffiliateResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity],
   protocol: WhopProtocol,
   retry: Retry.Retry,
@@ -459,8 +459,8 @@ export const deleteOverrideAffiliate: API.OperationMethod<
   DeleteOverrideAffiliateError,
   WhopOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(8, __c1, 0) as any as S.Schema<DeleteOverrideAffiliateRequest>,
-  output: __S(9, __c1, 1) as any as S.Schema<DeleteOverrideAffiliateResponse>,
+  input: __S(40, __c10, 0) as any as S.Schema<DeleteOverrideAffiliateRequest>,
+  output: __S(44, __c11, 0) as any as S.Schema<DeleteOverrideAffiliateResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity],
   protocol: WhopProtocol,
   retry: Retry.Retry,
@@ -479,8 +479,8 @@ export const getAffiliate: API.OperationMethod<
   GetAffiliateError,
   WhopOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(10, __c1, 2) as any as S.Schema<GetAffiliateRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<Affiliate>,
+  input: __S(48, __c12, 0) as any as S.Schema<GetAffiliateRequest>,
+  output: __S(30, __c7, 2) as any as S.Schema<Affiliate>,
   errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity],
   protocol: WhopProtocol,
   retry: Retry.Retry,
@@ -499,8 +499,8 @@ export const getOverrideAffiliate: API.OperationMethod<
   GetOverrideAffiliateError,
   WhopOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(11, __c1, 3) as any as S.Schema<GetOverrideAffiliateRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<GetOverrideAffiliateResponse>,
+  input: __S(52, __c13, 0) as any as S.Schema<GetOverrideAffiliateRequest>,
+  output: __S(36, __c9, 0) as any as S.Schema<GetOverrideAffiliateResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity],
   protocol: WhopProtocol,
   retry: Retry.Retry,
@@ -521,8 +521,8 @@ export const listAffiliate: API.PaginatedOperationMethod<
   AffiliateListItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(12, __c1, 4) as any as S.Schema<ListAffiliateRequest>,
-    output: __S(15, __c1, 7) as any as S.Schema<ListAffiliateResponse>,
+    input: __S(0, __c0, 0) as any as S.Schema<ListAffiliateRequest>,
+    output: __S(2, __c0, 2) as any as S.Schema<ListAffiliateResponse>,
     errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity],
     protocol: WhopProtocol,
     retry: Retry.Retry,
@@ -553,8 +553,8 @@ export const listOverridesAffiliate: API.PaginatedOperationMethod<
   ListOverridesAffiliateResponseDataItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(16, __c2, 0) as any as S.Schema<ListOverridesAffiliateRequest>,
-    output: __S(18, __c2, 2) as any as S.Schema<ListOverridesAffiliateResponse>,
+    input: __S(8, __c2, 0) as any as S.Schema<ListOverridesAffiliateRequest>,
+    output: __S(10, __c2, 2) as any as S.Schema<ListOverridesAffiliateResponse>,
     errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity],
     protocol: WhopProtocol,
     retry: Retry.Retry,
@@ -583,8 +583,8 @@ export const unarchiveAffiliate: API.OperationMethod<
   UnarchiveAffiliateError,
   WhopOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(19, __c2, 3) as any as S.Schema<UnarchiveAffiliateRequest>,
-  output: __S(9, __c1, 1) as any as S.Schema<UnarchiveAffiliateResponse>,
+  input: __S(12, __c3, 0) as any as S.Schema<UnarchiveAffiliateRequest>,
+  output: __S(44, __c11, 0) as any as S.Schema<UnarchiveAffiliateResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity],
   protocol: WhopProtocol,
   retry: Retry.Retry,
@@ -603,8 +603,8 @@ export const updateOverrideAffiliate: API.OperationMethod<
   UpdateOverrideAffiliateError,
   WhopOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(20, __c2, 4) as any as S.Schema<UpdateOverrideAffiliateRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<UpdateOverrideAffiliateResponse>,
+  input: __S(16, __c4, 0) as any as S.Schema<UpdateOverrideAffiliateRequest>,
+  output: __S(36, __c9, 0) as any as S.Schema<UpdateOverrideAffiliateResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity],
   protocol: WhopProtocol,
   retry: Retry.Retry,
@@ -616,6 +616,105 @@ function __c0(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
+          after: S.optional(S.String.pipe(T.Query())),
+          before: S.optional(S.String.pipe(T.Query())),
+          first: S.optional(S.Number.pipe(T.Query())),
+          last: S.optional(S.Number.pipe(T.Query())),
+          direction: S.optional(S.String.pipe(T.Query())),
+          order: S.optional(S.String.pipe(T.Query())),
+          query: S.optional(S.String.pipe(T.Query())),
+          status: S.optional(S.String.pipe(T.Query())),
+          account_id: S.String.pipe(T.Query()),
+        }).pipe(T.Http({ method: "GET", uri: "/affiliates", code: 200 })),
+      ).annotate({ identifier: "ListAffiliateRequest" });
+    case 1:
+      return S.Array(__S(30, __c7, 2));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          data: __S(1, __c0, 1),
+          page_info: __S(4, __c1, 0),
+        }),
+      ).annotate({ identifier: "ListAffiliateResponse" });
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          end_cursor: S.NullOr(S.String),
+          has_next_page: S.Boolean,
+          has_previous_page: S.Boolean,
+          start_cursor: S.NullOr(S.String),
+        }),
+      ).annotate({ identifier: "PageInfo" });
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String.pipe(T.Label()),
+          after: S.optional(S.String.pipe(T.Query())),
+          before: S.optional(S.String.pipe(T.Query())),
+          first: S.optional(S.Number.pipe(T.Query())),
+          last: S.optional(S.Number.pipe(T.Query())),
+          override_type: S.optional(S.String.pipe(T.Query())),
+        }).pipe(T.Http({ method: "GET", uri: "/affiliates/{id}/overrides", code: 200 })),
+      ).annotate({
+        identifier: "ListOverridesAffiliateRequest",
+      });
+    case 1:
+      return S.Array(__S(36, __c9, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          data: __S(9, __c2, 1),
+          page_info: __S(4, __c1, 0),
+        }),
+      ).annotate({
+        identifier: "ListOverridesAffiliateResponse",
+      });
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String.pipe(T.Label()),
+        }).pipe(T.Http({ method: "POST", uri: "/affiliates/{id}/unarchive", code: 200 })),
+      ).annotate({
+        identifier: "UnarchiveAffiliateRequest",
+      });
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String.pipe(T.Label()),
+          override_id: S.String.pipe(T.Label()),
+          applies_to_payments: S.optional(S.NullOr(S.String)),
+          commission_type: S.optional(S.NullOr(S.String)),
+          commission_value: S.optional(S.NullOr(S.Number)),
+          revenue_basis: S.optional(S.NullOr(S.String)),
+        }).pipe(
+          T.Http({ method: "PATCH", uri: "/affiliates/{id}/overrides/{override_id}", code: 200 }),
+        ),
+      ).annotate({
+        identifier: "UpdateOverrideAffiliateRequest",
+      });
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
           id: S.String.pipe(T.Label()),
         }).pipe(T.Http({ method: "POST", uri: "/affiliates/{id}/archive", code: 200 })),
       ).annotate({ identifier: "ArchiveAffiliateRequest" });
@@ -623,21 +722,29 @@ function __c0(j: number): any {
       return S.suspend(() => S.Boolean.pipe(T.RawResponseRoot())).annotate({
         identifier: "ArchiveAffiliateResponse",
       });
-    case 2:
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           account_id: S.String,
           user_identifier: S.String,
         }).pipe(T.Http({ method: "POST", uri: "/affiliates", code: 200 })),
       ).annotate({ identifier: "CreateAffiliateRequest" });
-    case 3:
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
           title: S.String,
         }),
       ).annotate({ identifier: "AffiliateCompany" });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
@@ -645,11 +752,11 @@ function __c0(j: number): any {
           username: S.NullOr(S.String),
         }),
       ).annotate({ identifier: "AffiliateUser" });
-    case 5:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           active_members_count: S.Number,
-          company: __S(3, __c0, 3),
+          company: __S(28, __c7, 0),
           created_at: S.String,
           customer_retention_rate: S.String,
           customer_retention_rate_ninety_days: S.String,
@@ -661,10 +768,14 @@ function __c0(j: number): any {
           total_referrals_count: S.Number,
           total_revenue_usd: S.String,
           updated_at: S.String,
-          user: __S(4, __c0, 4),
+          user: __S(29, __c7, 1),
         }),
       ).annotate({ identifier: "Affiliate" });
-    case 6:
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.String.pipe(T.Label()),
@@ -673,7 +784,11 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "CreateOverrideAffiliateRequest",
       });
-    case 7:
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           applies_to_payments: S.NullOr(S.String),
@@ -694,7 +809,7 @@ function __c0(j: number): any {
       });
   }
 }
-function __c1(j: number): any {
+function __c10(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -707,17 +822,29 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "DeleteOverrideAffiliateRequest",
       });
-    case 1:
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() => S.Boolean.pipe(T.RawResponseRoot())).annotate({
         identifier: "DeleteOverrideAffiliateResponse",
       });
-    case 2:
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.String.pipe(T.Label()),
         }).pipe(T.Http({ method: "GET", uri: "/affiliates/{id}", code: 200 })),
       ).annotate({ identifier: "GetAffiliateRequest" });
-    case 3:
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.String.pipe(T.Label()),
@@ -728,92 +855,8 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "GetOverrideAffiliateRequest",
       });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          after: S.optional(S.String.pipe(T.Query())),
-          before: S.optional(S.String.pipe(T.Query())),
-          first: S.optional(S.Number.pipe(T.Query())),
-          last: S.optional(S.Number.pipe(T.Query())),
-          direction: S.optional(S.String.pipe(T.Query())),
-          order: S.optional(S.String.pipe(T.Query())),
-          query: S.optional(S.String.pipe(T.Query())),
-          status: S.optional(S.String.pipe(T.Query())),
-          account_id: S.String.pipe(T.Query()),
-        }).pipe(T.Http({ method: "GET", uri: "/affiliates", code: 200 })),
-      ).annotate({ identifier: "ListAffiliateRequest" });
-    case 5:
-      return S.Array(__S(5, __c0, 5));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          end_cursor: S.NullOr(S.String),
-          has_next_page: S.Boolean,
-          has_previous_page: S.Boolean,
-          start_cursor: S.NullOr(S.String),
-        }),
-      ).annotate({ identifier: "PageInfo" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          data: __S(13, __c1, 5),
-          page_info: __S(14, __c1, 6),
-        }),
-      ).annotate({ identifier: "ListAffiliateResponse" });
   }
 }
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String.pipe(T.Label()),
-          after: S.optional(S.String.pipe(T.Query())),
-          before: S.optional(S.String.pipe(T.Query())),
-          first: S.optional(S.Number.pipe(T.Query())),
-          last: S.optional(S.Number.pipe(T.Query())),
-          override_type: S.optional(S.String.pipe(T.Query())),
-        }).pipe(T.Http({ method: "GET", uri: "/affiliates/{id}/overrides", code: 200 })),
-      ).annotate({
-        identifier: "ListOverridesAffiliateRequest",
-      });
-    case 1:
-      return S.Array(__S(7, __c0, 7));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          data: __S(17, __c2, 1),
-          page_info: __S(14, __c1, 6),
-        }),
-      ).annotate({
-        identifier: "ListOverridesAffiliateResponse",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String.pipe(T.Label()),
-        }).pipe(T.Http({ method: "POST", uri: "/affiliates/{id}/unarchive", code: 200 })),
-      ).annotate({
-        identifier: "UnarchiveAffiliateRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String.pipe(T.Label()),
-          override_id: S.String.pipe(T.Label()),
-          applies_to_payments: S.optional(S.NullOr(S.String)),
-          commission_type: S.optional(S.NullOr(S.String)),
-          commission_value: S.optional(S.NullOr(S.Number)),
-          revenue_basis: S.optional(S.NullOr(S.String)),
-        }).pipe(
-          T.Http({ method: "PATCH", uri: "/affiliates/{id}/overrides/{override_id}", code: 200 }),
-        ),
-      ).annotate({
-        identifier: "UpdateOverrideAffiliateRequest",
-      });
-  }
-}
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

@@ -1444,8 +1444,8 @@ export const createRbacAuthorizationV1ClusterRole: API.OperationMethod<
   CreateRbacAuthorizationV1ClusterRoleError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(15, __c1, 7) as any as S.Schema<CreateRbacAuthorizationV1ClusterRoleRequest>,
-  output: __S(16, __c2, 0) as any as S.Schema<IoK8sApiRbacV1ClusterRole>,
+  input: __S(176, __c22, 0) as any as S.Schema<CreateRbacAuthorizationV1ClusterRoleRequest>,
+  output: __S(190, __c23, 6) as any as S.Schema<IoK8sApiRbacV1ClusterRole>,
   errors: [Conflict, UnprocessableEntity, UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -1462,8 +1462,8 @@ export const createRbacAuthorizationV1ClusterRoleBinding: API.OperationMethod<
   CreateRbacAuthorizationV1ClusterRoleBindingError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(20, __c2, 4) as any as S.Schema<CreateRbacAuthorizationV1ClusterRoleBindingRequest>,
-  output: __S(21, __c2, 5) as any as S.Schema<IoK8sApiRbacV1ClusterRoleBinding>,
+  input: __S(304, __c38, 0) as any as S.Schema<CreateRbacAuthorizationV1ClusterRoleBindingRequest>,
+  output: __S(315, __c39, 3) as any as S.Schema<IoK8sApiRbacV1ClusterRoleBinding>,
   errors: [Conflict, UnprocessableEntity, UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -1480,8 +1480,8 @@ export const createRbacAuthorizationV1NamespacedRole: API.OperationMethod<
   CreateRbacAuthorizationV1NamespacedRoleError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(22, __c2, 6) as any as S.Schema<CreateRbacAuthorizationV1NamespacedRoleRequest>,
-  output: __S(23, __c2, 7) as any as S.Schema<IoK8sApiRbacV1Role>,
+  input: __S(360, __c45, 0) as any as S.Schema<CreateRbacAuthorizationV1NamespacedRoleRequest>,
+  output: __S(368, __c46, 0) as any as S.Schema<IoK8sApiRbacV1Role>,
   errors: [Conflict, UnprocessableEntity, UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -1498,8 +1498,12 @@ export const createRbacAuthorizationV1NamespacedRoleBinding: API.OperationMethod
   CreateRbacAuthorizationV1NamespacedRoleBindingError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(25, __c3, 1) as any as S.Schema<CreateRbacAuthorizationV1NamespacedRoleBindingRequest>,
-  output: __S(21, __c2, 5) as any as S.Schema<IoK8sApiRbacV1RoleBinding>,
+  input: __S(
+    376,
+    __c47,
+    0,
+  ) as any as S.Schema<CreateRbacAuthorizationV1NamespacedRoleBindingRequest>,
+  output: __S(315, __c39, 3) as any as S.Schema<IoK8sApiRbacV1RoleBinding>,
   errors: [Conflict, UnprocessableEntity, UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -1513,8 +1517,8 @@ export const deleteRbacAuthorizationV1ClusterRole: API.OperationMethod<
   DeleteRbacAuthorizationV1ClusterRoleError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(27, __c3, 3) as any as S.Schema<DeleteRbacAuthorizationV1ClusterRoleRequest>,
-  output: __S(33, __c4, 1) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1Status>,
+  input: __S(392, __c49, 0) as any as S.Schema<DeleteRbacAuthorizationV1ClusterRoleRequest>,
+  output: __S(404, __c50, 4) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1Status>,
   errors: [NotFound, Conflict, UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -1531,8 +1535,8 @@ export const deleteRbacAuthorizationV1ClusterRoleBinding: API.OperationMethod<
   DeleteRbacAuthorizationV1ClusterRoleBindingError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(34, __c4, 2) as any as S.Schema<DeleteRbacAuthorizationV1ClusterRoleBindingRequest>,
-  output: __S(33, __c4, 1) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1Status>,
+  input: __S(416, __c52, 0) as any as S.Schema<DeleteRbacAuthorizationV1ClusterRoleBindingRequest>,
+  output: __S(404, __c50, 4) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1Status>,
   errors: [NotFound, Conflict, UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -1546,8 +1550,12 @@ export const deleteRbacAuthorizationV1CollectionClusterRole: API.OperationMethod
   DeleteRbacAuthorizationV1CollectionClusterRoleError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(35, __c4, 3) as any as S.Schema<DeleteRbacAuthorizationV1CollectionClusterRoleRequest>,
-  output: __S(33, __c4, 1) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1Status>,
+  input: __S(
+    424,
+    __c53,
+    0,
+  ) as any as S.Schema<DeleteRbacAuthorizationV1CollectionClusterRoleRequest>,
+  output: __S(404, __c50, 4) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1Status>,
   errors: [UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -1562,11 +1570,11 @@ export const deleteRbacAuthorizationV1CollectionClusterRoleBinding: API.Operatio
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    36,
-    __c4,
-    4,
+    0,
+    __c0,
+    0,
   ) as any as S.Schema<DeleteRbacAuthorizationV1CollectionClusterRoleBindingRequest>,
-  output: __S(33, __c4, 1) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1Status>,
+  output: __S(404, __c50, 4) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1Status>,
   errors: [UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -1581,11 +1589,11 @@ export const deleteRbacAuthorizationV1CollectionNamespacedRole: API.OperationMet
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    37,
-    __c4,
-    5,
+    8,
+    __c1,
+    0,
   ) as any as S.Schema<DeleteRbacAuthorizationV1CollectionNamespacedRoleRequest>,
-  output: __S(33, __c4, 1) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1Status>,
+  output: __S(404, __c50, 4) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1Status>,
   errors: [UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -1600,11 +1608,11 @@ export const deleteRbacAuthorizationV1CollectionNamespacedRoleBinding: API.Opera
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    38,
-    __c4,
-    6,
+    16,
+    __c2,
+    0,
   ) as any as S.Schema<DeleteRbacAuthorizationV1CollectionNamespacedRoleBindingRequest>,
-  output: __S(33, __c4, 1) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1Status>,
+  output: __S(404, __c50, 4) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1Status>,
   errors: [UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -1618,8 +1626,8 @@ export const deleteRbacAuthorizationV1NamespacedRole: API.OperationMethod<
   DeleteRbacAuthorizationV1NamespacedRoleError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(39, __c4, 7) as any as S.Schema<DeleteRbacAuthorizationV1NamespacedRoleRequest>,
-  output: __S(33, __c4, 1) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1Status>,
+  input: __S(24, __c3, 0) as any as S.Schema<DeleteRbacAuthorizationV1NamespacedRoleRequest>,
+  output: __S(404, __c50, 4) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1Status>,
   errors: [NotFound, Conflict, UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -1636,8 +1644,8 @@ export const deleteRbacAuthorizationV1NamespacedRoleBinding: API.OperationMethod
   DeleteRbacAuthorizationV1NamespacedRoleBindingError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(40, __c5, 0) as any as S.Schema<DeleteRbacAuthorizationV1NamespacedRoleBindingRequest>,
-  output: __S(33, __c4, 1) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1Status>,
+  input: __S(32, __c4, 0) as any as S.Schema<DeleteRbacAuthorizationV1NamespacedRoleBindingRequest>,
+  output: __S(404, __c50, 4) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1Status>,
   errors: [NotFound, Conflict, UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -1651,8 +1659,8 @@ export const getRbacAuthorizationAPIGroup: API.OperationMethod<
   GetRbacAuthorizationAPIGroupError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(41, __c5, 1) as any as S.Schema<GetRbacAuthorizationAPIGroupRequest>,
-  output: __S(46, __c5, 6) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1APIGroup>,
+  input: __S(40, __c5, 0) as any as S.Schema<GetRbacAuthorizationAPIGroupRequest>,
+  output: __S(45, __c5, 5) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1APIGroup>,
   errors: [UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -1666,8 +1674,8 @@ export const getRbacAuthorizationV1APIResources: API.OperationMethod<
   GetRbacAuthorizationV1APIResourcesError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(47, __c5, 7) as any as S.Schema<GetRbacAuthorizationV1APIResourcesRequest>,
-  output: __S(50, __c6, 2) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1APIResourceList>,
+  input: __S(48, __c6, 0) as any as S.Schema<GetRbacAuthorizationV1APIResourcesRequest>,
+  output: __S(51, __c6, 3) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1APIResourceList>,
   errors: [UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -1681,8 +1689,8 @@ export const listRbacAuthorizationV1ClusterRole: API.OperationMethod<
   ListRbacAuthorizationV1ClusterRoleError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(51, __c6, 3) as any as S.Schema<ListRbacAuthorizationV1ClusterRoleRequest>,
-  output: __S(53, __c6, 5) as any as S.Schema<IoK8sApiRbacV1ClusterRoleList>,
+  input: __S(56, __c7, 0) as any as S.Schema<ListRbacAuthorizationV1ClusterRoleRequest>,
+  output: __S(58, __c7, 2) as any as S.Schema<IoK8sApiRbacV1ClusterRoleList>,
   errors: [UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -1696,8 +1704,8 @@ export const listRbacAuthorizationV1ClusterRoleBinding: API.OperationMethod<
   ListRbacAuthorizationV1ClusterRoleBindingError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(54, __c6, 6) as any as S.Schema<ListRbacAuthorizationV1ClusterRoleBindingRequest>,
-  output: __S(56, __c7, 0) as any as S.Schema<IoK8sApiRbacV1ClusterRoleBindingList>,
+  input: __S(64, __c8, 0) as any as S.Schema<ListRbacAuthorizationV1ClusterRoleBindingRequest>,
+  output: __S(73, __c9, 1) as any as S.Schema<IoK8sApiRbacV1ClusterRoleBindingList>,
   errors: [UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -1711,8 +1719,8 @@ export const listRbacAuthorizationV1NamespacedRole: API.OperationMethod<
   ListRbacAuthorizationV1NamespacedRoleError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(57, __c7, 1) as any as S.Schema<ListRbacAuthorizationV1NamespacedRoleRequest>,
-  output: __S(59, __c7, 3) as any as S.Schema<IoK8sApiRbacV1RoleList>,
+  input: __S(80, __c10, 0) as any as S.Schema<ListRbacAuthorizationV1NamespacedRoleRequest>,
+  output: __S(89, __c11, 1) as any as S.Schema<IoK8sApiRbacV1RoleList>,
   errors: [UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -1726,8 +1734,8 @@ export const listRbacAuthorizationV1NamespacedRoleBinding: API.OperationMethod<
   ListRbacAuthorizationV1NamespacedRoleBindingError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(60, __c7, 4) as any as S.Schema<ListRbacAuthorizationV1NamespacedRoleBindingRequest>,
-  output: __S(56, __c7, 0) as any as S.Schema<IoK8sApiRbacV1RoleBindingList>,
+  input: __S(96, __c12, 0) as any as S.Schema<ListRbacAuthorizationV1NamespacedRoleBindingRequest>,
+  output: __S(73, __c9, 1) as any as S.Schema<IoK8sApiRbacV1RoleBindingList>,
   errors: [UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -1742,11 +1750,11 @@ export const listRbacAuthorizationV1RoleBindingForAllNamespaces: API.OperationMe
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    61,
-    __c7,
-    5,
+    104,
+    __c13,
+    0,
   ) as any as S.Schema<ListRbacAuthorizationV1RoleBindingForAllNamespacesRequest>,
-  output: __S(56, __c7, 0) as any as S.Schema<IoK8sApiRbacV1RoleBindingList>,
+  output: __S(73, __c9, 1) as any as S.Schema<IoK8sApiRbacV1RoleBindingList>,
   errors: [UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -1760,8 +1768,8 @@ export const listRbacAuthorizationV1RoleForAllNamespaces: API.OperationMethod<
   ListRbacAuthorizationV1RoleForAllNamespacesError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(62, __c7, 6) as any as S.Schema<ListRbacAuthorizationV1RoleForAllNamespacesRequest>,
-  output: __S(59, __c7, 3) as any as S.Schema<IoK8sApiRbacV1RoleList>,
+  input: __S(112, __c14, 0) as any as S.Schema<ListRbacAuthorizationV1RoleForAllNamespacesRequest>,
+  output: __S(89, __c11, 1) as any as S.Schema<IoK8sApiRbacV1RoleList>,
   errors: [UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -1779,8 +1787,8 @@ export const patchRbacAuthorizationV1ClusterRole: API.OperationMethod<
   PatchRbacAuthorizationV1ClusterRoleError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(63, __c7, 7) as any as S.Schema<PatchRbacAuthorizationV1ClusterRoleRequest>,
-  output: __S(16, __c2, 0) as any as S.Schema<IoK8sApiRbacV1ClusterRole>,
+  input: __S(120, __c15, 0) as any as S.Schema<PatchRbacAuthorizationV1ClusterRoleRequest>,
+  output: __S(190, __c23, 6) as any as S.Schema<IoK8sApiRbacV1ClusterRole>,
   errors: [NotFound, Conflict, UnprocessableEntity, UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -1798,8 +1806,8 @@ export const patchRbacAuthorizationV1ClusterRoleBinding: API.OperationMethod<
   PatchRbacAuthorizationV1ClusterRoleBindingError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(64, __c8, 0) as any as S.Schema<PatchRbacAuthorizationV1ClusterRoleBindingRequest>,
-  output: __S(21, __c2, 5) as any as S.Schema<IoK8sApiRbacV1ClusterRoleBinding>,
+  input: __S(128, __c16, 0) as any as S.Schema<PatchRbacAuthorizationV1ClusterRoleBindingRequest>,
+  output: __S(315, __c39, 3) as any as S.Schema<IoK8sApiRbacV1ClusterRoleBinding>,
   errors: [NotFound, Conflict, UnprocessableEntity, UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -1817,8 +1825,8 @@ export const patchRbacAuthorizationV1NamespacedRole: API.OperationMethod<
   PatchRbacAuthorizationV1NamespacedRoleError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(65, __c8, 1) as any as S.Schema<PatchRbacAuthorizationV1NamespacedRoleRequest>,
-  output: __S(23, __c2, 7) as any as S.Schema<IoK8sApiRbacV1Role>,
+  input: __S(136, __c17, 0) as any as S.Schema<PatchRbacAuthorizationV1NamespacedRoleRequest>,
+  output: __S(368, __c46, 0) as any as S.Schema<IoK8sApiRbacV1Role>,
   errors: [NotFound, Conflict, UnprocessableEntity, UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -1836,8 +1844,12 @@ export const patchRbacAuthorizationV1NamespacedRoleBinding: API.OperationMethod<
   PatchRbacAuthorizationV1NamespacedRoleBindingError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(66, __c8, 2) as any as S.Schema<PatchRbacAuthorizationV1NamespacedRoleBindingRequest>,
-  output: __S(21, __c2, 5) as any as S.Schema<IoK8sApiRbacV1RoleBinding>,
+  input: __S(
+    144,
+    __c18,
+    0,
+  ) as any as S.Schema<PatchRbacAuthorizationV1NamespacedRoleBindingRequest>,
+  output: __S(315, __c39, 3) as any as S.Schema<IoK8sApiRbacV1RoleBinding>,
   errors: [NotFound, Conflict, UnprocessableEntity, UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -1851,8 +1863,8 @@ export const readRbacAuthorizationV1ClusterRole: API.OperationMethod<
   ReadRbacAuthorizationV1ClusterRoleError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(67, __c8, 3) as any as S.Schema<ReadRbacAuthorizationV1ClusterRoleRequest>,
-  output: __S(16, __c2, 0) as any as S.Schema<IoK8sApiRbacV1ClusterRole>,
+  input: __S(152, __c19, 0) as any as S.Schema<ReadRbacAuthorizationV1ClusterRoleRequest>,
+  output: __S(190, __c23, 6) as any as S.Schema<IoK8sApiRbacV1ClusterRole>,
   errors: [NotFound, UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -1866,8 +1878,8 @@ export const readRbacAuthorizationV1ClusterRoleBinding: API.OperationMethod<
   ReadRbacAuthorizationV1ClusterRoleBindingError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(68, __c8, 4) as any as S.Schema<ReadRbacAuthorizationV1ClusterRoleBindingRequest>,
-  output: __S(21, __c2, 5) as any as S.Schema<IoK8sApiRbacV1ClusterRoleBinding>,
+  input: __S(160, __c20, 0) as any as S.Schema<ReadRbacAuthorizationV1ClusterRoleBindingRequest>,
+  output: __S(315, __c39, 3) as any as S.Schema<IoK8sApiRbacV1ClusterRoleBinding>,
   errors: [NotFound, UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -1881,8 +1893,8 @@ export const readRbacAuthorizationV1NamespacedRole: API.OperationMethod<
   ReadRbacAuthorizationV1NamespacedRoleError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(69, __c8, 5) as any as S.Schema<ReadRbacAuthorizationV1NamespacedRoleRequest>,
-  output: __S(23, __c2, 7) as any as S.Schema<IoK8sApiRbacV1Role>,
+  input: __S(168, __c21, 0) as any as S.Schema<ReadRbacAuthorizationV1NamespacedRoleRequest>,
+  output: __S(368, __c46, 0) as any as S.Schema<IoK8sApiRbacV1Role>,
   errors: [NotFound, UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -1896,8 +1908,8 @@ export const readRbacAuthorizationV1NamespacedRoleBinding: API.OperationMethod<
   ReadRbacAuthorizationV1NamespacedRoleBindingError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(70, __c8, 6) as any as S.Schema<ReadRbacAuthorizationV1NamespacedRoleBindingRequest>,
-  output: __S(21, __c2, 5) as any as S.Schema<IoK8sApiRbacV1RoleBinding>,
+  input: __S(216, __c27, 0) as any as S.Schema<ReadRbacAuthorizationV1NamespacedRoleBindingRequest>,
+  output: __S(315, __c39, 3) as any as S.Schema<IoK8sApiRbacV1RoleBinding>,
   errors: [NotFound, UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -1915,8 +1927,8 @@ export const replaceRbacAuthorizationV1ClusterRole: API.OperationMethod<
   ReplaceRbacAuthorizationV1ClusterRoleError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(71, __c8, 7) as any as S.Schema<ReplaceRbacAuthorizationV1ClusterRoleRequest>,
-  output: __S(16, __c2, 0) as any as S.Schema<IoK8sApiRbacV1ClusterRole>,
+  input: __S(224, __c28, 0) as any as S.Schema<ReplaceRbacAuthorizationV1ClusterRoleRequest>,
+  output: __S(190, __c23, 6) as any as S.Schema<IoK8sApiRbacV1ClusterRole>,
   errors: [NotFound, Conflict, UnprocessableEntity, UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -1934,8 +1946,8 @@ export const replaceRbacAuthorizationV1ClusterRoleBinding: API.OperationMethod<
   ReplaceRbacAuthorizationV1ClusterRoleBindingError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(72, __c9, 0) as any as S.Schema<ReplaceRbacAuthorizationV1ClusterRoleBindingRequest>,
-  output: __S(21, __c2, 5) as any as S.Schema<IoK8sApiRbacV1ClusterRoleBinding>,
+  input: __S(232, __c29, 0) as any as S.Schema<ReplaceRbacAuthorizationV1ClusterRoleBindingRequest>,
+  output: __S(315, __c39, 3) as any as S.Schema<IoK8sApiRbacV1ClusterRoleBinding>,
   errors: [NotFound, Conflict, UnprocessableEntity, UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -1953,8 +1965,8 @@ export const replaceRbacAuthorizationV1NamespacedRole: API.OperationMethod<
   ReplaceRbacAuthorizationV1NamespacedRoleError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(73, __c9, 1) as any as S.Schema<ReplaceRbacAuthorizationV1NamespacedRoleRequest>,
-  output: __S(23, __c2, 7) as any as S.Schema<IoK8sApiRbacV1Role>,
+  input: __S(240, __c30, 0) as any as S.Schema<ReplaceRbacAuthorizationV1NamespacedRoleRequest>,
+  output: __S(368, __c46, 0) as any as S.Schema<IoK8sApiRbacV1Role>,
   errors: [NotFound, Conflict, UnprocessableEntity, UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -1973,11 +1985,11 @@ export const replaceRbacAuthorizationV1NamespacedRoleBinding: API.OperationMetho
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    74,
-    __c9,
-    2,
+    248,
+    __c31,
+    0,
   ) as any as S.Schema<ReplaceRbacAuthorizationV1NamespacedRoleBindingRequest>,
-  output: __S(21, __c2, 5) as any as S.Schema<IoK8sApiRbacV1RoleBinding>,
+  output: __S(315, __c39, 3) as any as S.Schema<IoK8sApiRbacV1RoleBinding>,
   errors: [NotFound, Conflict, UnprocessableEntity, UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -1991,8 +2003,8 @@ export const watchRbacAuthorizationV1ClusterRole: API.OperationMethod<
   WatchRbacAuthorizationV1ClusterRoleError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(75, __c9, 3) as any as S.Schema<WatchRbacAuthorizationV1ClusterRoleRequest>,
-  output: __S(76, __c9, 4) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1WatchEvent>,
+  input: __S(256, __c32, 0) as any as S.Schema<WatchRbacAuthorizationV1ClusterRoleRequest>,
+  output: __S(264, __c33, 0) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1WatchEvent>,
   errors: [UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -2006,8 +2018,8 @@ export const watchRbacAuthorizationV1ClusterRoleBinding: API.OperationMethod<
   WatchRbacAuthorizationV1ClusterRoleBindingError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(77, __c9, 5) as any as S.Schema<WatchRbacAuthorizationV1ClusterRoleBindingRequest>,
-  output: __S(76, __c9, 4) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1WatchEvent>,
+  input: __S(272, __c34, 0) as any as S.Schema<WatchRbacAuthorizationV1ClusterRoleBindingRequest>,
+  output: __S(264, __c33, 0) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1WatchEvent>,
   errors: [UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -2021,8 +2033,12 @@ export const watchRbacAuthorizationV1ClusterRoleBindingList: API.OperationMethod
   WatchRbacAuthorizationV1ClusterRoleBindingListError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(78, __c9, 6) as any as S.Schema<WatchRbacAuthorizationV1ClusterRoleBindingListRequest>,
-  output: __S(76, __c9, 4) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1WatchEvent>,
+  input: __S(
+    280,
+    __c35,
+    0,
+  ) as any as S.Schema<WatchRbacAuthorizationV1ClusterRoleBindingListRequest>,
+  output: __S(264, __c33, 0) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1WatchEvent>,
   errors: [UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -2036,8 +2052,8 @@ export const watchRbacAuthorizationV1ClusterRoleList: API.OperationMethod<
   WatchRbacAuthorizationV1ClusterRoleListError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(79, __c9, 7) as any as S.Schema<WatchRbacAuthorizationV1ClusterRoleListRequest>,
-  output: __S(76, __c9, 4) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1WatchEvent>,
+  input: __S(288, __c36, 0) as any as S.Schema<WatchRbacAuthorizationV1ClusterRoleListRequest>,
+  output: __S(264, __c33, 0) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1WatchEvent>,
   errors: [UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -2051,8 +2067,8 @@ export const watchRbacAuthorizationV1NamespacedRole: API.OperationMethod<
   WatchRbacAuthorizationV1NamespacedRoleError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(80, __c10, 0) as any as S.Schema<WatchRbacAuthorizationV1NamespacedRoleRequest>,
-  output: __S(76, __c9, 4) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1WatchEvent>,
+  input: __S(296, __c37, 0) as any as S.Schema<WatchRbacAuthorizationV1NamespacedRoleRequest>,
+  output: __S(264, __c33, 0) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1WatchEvent>,
   errors: [UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -2066,8 +2082,12 @@ export const watchRbacAuthorizationV1NamespacedRoleBinding: API.OperationMethod<
   WatchRbacAuthorizationV1NamespacedRoleBindingError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(81, __c10, 1) as any as S.Schema<WatchRbacAuthorizationV1NamespacedRoleBindingRequest>,
-  output: __S(76, __c9, 4) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1WatchEvent>,
+  input: __S(
+    320,
+    __c40,
+    0,
+  ) as any as S.Schema<WatchRbacAuthorizationV1NamespacedRoleBindingRequest>,
+  output: __S(264, __c33, 0) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1WatchEvent>,
   errors: [UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -2082,11 +2102,11 @@ export const watchRbacAuthorizationV1NamespacedRoleBindingList: API.OperationMet
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    82,
-    __c10,
-    2,
+    328,
+    __c41,
+    0,
   ) as any as S.Schema<WatchRbacAuthorizationV1NamespacedRoleBindingListRequest>,
-  output: __S(76, __c9, 4) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1WatchEvent>,
+  output: __S(264, __c33, 0) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1WatchEvent>,
   errors: [UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -2100,8 +2120,8 @@ export const watchRbacAuthorizationV1NamespacedRoleList: API.OperationMethod<
   WatchRbacAuthorizationV1NamespacedRoleListError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(83, __c10, 3) as any as S.Schema<WatchRbacAuthorizationV1NamespacedRoleListRequest>,
-  output: __S(76, __c9, 4) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1WatchEvent>,
+  input: __S(336, __c42, 0) as any as S.Schema<WatchRbacAuthorizationV1NamespacedRoleListRequest>,
+  output: __S(264, __c33, 0) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1WatchEvent>,
   errors: [UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -2116,11 +2136,11 @@ export const watchRbacAuthorizationV1RoleBindingListForAllNamespaces: API.Operat
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    84,
-    __c10,
-    4,
+    344,
+    __c43,
+    0,
   ) as any as S.Schema<WatchRbacAuthorizationV1RoleBindingListForAllNamespacesRequest>,
-  output: __S(76, __c9, 4) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1WatchEvent>,
+  output: __S(264, __c33, 0) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1WatchEvent>,
   errors: [UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -2135,11 +2155,11 @@ export const watchRbacAuthorizationV1RoleListForAllNamespaces: API.OperationMeth
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    85,
-    __c10,
-    5,
+    352,
+    __c44,
+    0,
   ) as any as S.Schema<WatchRbacAuthorizationV1RoleListForAllNamespacesRequest>,
-  output: __S(76, __c9, 4) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1WatchEvent>,
+  output: __S(264, __c33, 0) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1WatchEvent>,
   errors: [UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -2149,382 +2169,6 @@ export const watchRbacAuthorizationV1RoleListForAllNamespaces: API.OperationMeth
 function __c0(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(S.String);
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          key: S.String,
-          operator: S.String,
-          values: S.optional(__S(0, __c0, 0)),
-        }),
-      ).annotate({
-        identifier: "IoK8sApimachineryPkgApisMetaV1LabelSelectorRequirement",
-      });
-    case 2:
-      return S.Array(__S(1, __c0, 1));
-    case 3:
-      return S.Record(S.String, S.String);
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          matchExpressions: S.optional(__S(2, __c0, 2)),
-          matchLabels: S.optional(__S(3, __c0, 3)),
-        }),
-      ).annotate({
-        identifier: "IoK8sApimachineryPkgApisMetaV1LabelSelector",
-      });
-    case 5:
-      return S.Array(__S(4, __c0, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          clusterRoleSelectors: S.optional(__S(5, __c0, 5)),
-        }),
-      ).annotate({
-        identifier: "IoK8sApiRbacV1AggregationRule",
-      });
-    case 7:
-      return S.Array(S.String);
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          apiVersion: S.optional(S.String),
-          fieldsType: S.optional(S.String),
-          fieldsV1: S.optional(S.Unknown),
-          manager: S.optional(S.String),
-          operation: S.optional(S.String),
-          subresource: S.optional(S.String),
-          time: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "IoK8sApimachineryPkgApisMetaV1ManagedFieldsEntry",
-      });
-    case 1:
-      return S.Array(__S(8, __c1, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          apiVersion: S.String,
-          blockOwnerDeletion: S.optional(S.Boolean),
-          controller: S.optional(S.Boolean),
-          kind: S.String,
-          name: S.String,
-          uid: S.String,
-        }),
-      ).annotate({
-        identifier: "IoK8sApimachineryPkgApisMetaV1OwnerReference",
-      });
-    case 3:
-      return S.Array(__S(10, __c1, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          annotations: S.optional(__S(3, __c0, 3)),
-          creationTimestamp: S.optional(S.String),
-          deletionGracePeriodSeconds: S.optional(S.Number),
-          deletionTimestamp: S.optional(S.String),
-          finalizers: S.optional(__S(7, __c0, 7)),
-          generateName: S.optional(S.String),
-          generation: S.optional(S.Number),
-          labels: S.optional(__S(3, __c0, 3)),
-          managedFields: S.optional(__S(9, __c1, 1)),
-          name: S.optional(S.String),
-          namespace: S.optional(S.String),
-          ownerReferences: S.optional(__S(11, __c1, 3)),
-          resourceVersion: S.optional(S.String),
-          selfLink: S.optional(S.String),
-          uid: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "IoK8sApimachineryPkgApisMetaV1ObjectMeta",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          apiGroups: S.optional(__S(7, __c0, 7)),
-          nonResourceURLs: S.optional(__S(7, __c0, 7)),
-          resourceNames: S.optional(__S(7, __c0, 7)),
-          resources: S.optional(__S(7, __c0, 7)),
-          verbs: __S(7, __c0, 7),
-        }),
-      ).annotate({ identifier: "IoK8sApiRbacV1PolicyRule" });
-    case 6:
-      return S.Array(__S(13, __c1, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          pretty: S.optional(S.String.pipe(T.Query())),
-          dryRun: S.optional(S.String.pipe(T.Query())),
-          fieldManager: S.optional(S.String.pipe(T.Query())),
-          fieldValidation: S.optional(S.String.pipe(T.Query())),
-          aggregationRule: S.optional(__S(6, __c0, 6)),
-          apiVersion: S.optional(S.String),
-          kind: S.optional(S.String),
-          metadata: S.optional(__S(12, __c1, 4)),
-          rules: S.optional(__S(14, __c1, 6)),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/apis/rbac.authorization.k8s.io/v1/clusterroles",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateRbacAuthorizationV1ClusterRoleRequest",
-      });
-  }
-}
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          aggregationRule: S.optional(__S(6, __c0, 6)),
-          apiVersion: S.optional(S.String),
-          kind: S.optional(S.String),
-          metadata: S.optional(__S(12, __c1, 4)),
-          rules: S.optional(__S(14, __c1, 6)),
-        }),
-      ).annotate({
-        identifier: "IoK8sApiRbacV1ClusterRole",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          apiGroup: S.optional(S.String),
-          kind: S.String,
-          name: S.String,
-        }),
-      ).annotate({ identifier: "IoK8sApiRbacV1RoleRef" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          apiGroup: S.optional(S.String),
-          kind: S.String,
-          name: S.String,
-          namespace: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "IoK8sApiRbacV1Subject" });
-    case 3:
-      return S.Array(__S(18, __c2, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          pretty: S.optional(S.String.pipe(T.Query())),
-          dryRun: S.optional(S.String.pipe(T.Query())),
-          fieldManager: S.optional(S.String.pipe(T.Query())),
-          fieldValidation: S.optional(S.String.pipe(T.Query())),
-          apiVersion: S.optional(S.String),
-          kind: S.optional(S.String),
-          metadata: S.optional(__S(12, __c1, 4)),
-          roleRef: __S(17, __c2, 1),
-          subjects: S.optional(__S(19, __c2, 3)),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/apis/rbac.authorization.k8s.io/v1/clusterrolebindings",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateRbacAuthorizationV1ClusterRoleBindingRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          apiVersion: S.optional(S.String),
-          kind: S.optional(S.String),
-          metadata: S.optional(__S(12, __c1, 4)),
-          roleRef: __S(17, __c2, 1),
-          subjects: S.optional(__S(19, __c2, 3)),
-        }),
-      ).annotate({
-        identifier: "IoK8sApiRbacV1ClusterRoleBinding",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          namespace: S.String.pipe(T.Label()),
-          pretty: S.optional(S.String.pipe(T.Query())),
-          dryRun: S.optional(S.String.pipe(T.Query())),
-          fieldManager: S.optional(S.String.pipe(T.Query())),
-          fieldValidation: S.optional(S.String.pipe(T.Query())),
-          apiVersion: S.optional(S.String),
-          kind: S.optional(S.String),
-          metadata: S.optional(__S(12, __c1, 4)),
-          rules: S.optional(__S(14, __c1, 6)),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/apis/rbac.authorization.k8s.io/v1/namespaces/{namespace}/roles",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateRbacAuthorizationV1NamespacedRoleRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          apiVersion: S.optional(S.String),
-          kind: S.optional(S.String),
-          metadata: S.optional(__S(12, __c1, 4)),
-          rules: S.optional(__S(14, __c1, 6)),
-        }),
-      ).annotate({ identifier: "IoK8sApiRbacV1Role" });
-  }
-}
-function __c3(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(18, __c2, 2));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          namespace: S.String.pipe(T.Label()),
-          pretty: S.optional(S.String.pipe(T.Query())),
-          dryRun: S.optional(S.String.pipe(T.Query())),
-          fieldManager: S.optional(S.String.pipe(T.Query())),
-          fieldValidation: S.optional(S.String.pipe(T.Query())),
-          apiVersion: S.optional(S.String),
-          kind: S.optional(S.String),
-          metadata: S.optional(__S(12, __c1, 4)),
-          roleRef: __S(17, __c2, 1),
-          subjects: S.optional(__S(24, __c3, 0)),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/apis/rbac.authorization.k8s.io/v1/namespaces/{namespace}/rolebindings",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateRbacAuthorizationV1NamespacedRoleBindingRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          resourceVersion: S.optional(S.String),
-          uid: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "IoK8sApimachineryPkgApisMetaV1Preconditions",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-          pretty: S.optional(S.String.pipe(T.Query())),
-          dryRun: S.optional(S.String.pipe(T.Query())),
-          gracePeriodSeconds: S.optional(S.Number.pipe(T.Query())),
-          ignoreStoreReadErrorWithClusterBreakingPotential: S.optional(S.Boolean.pipe(T.Query())),
-          orphanDependents: S.optional(S.Boolean.pipe(T.Query())),
-          propagationPolicy: S.optional(S.String.pipe(T.Query())),
-          apiVersion: S.optional(S.String),
-          kind: S.optional(S.String),
-          preconditions: S.optional(__S(26, __c3, 2)),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/apis/rbac.authorization.k8s.io/v1/clusterroles/{name}",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteRbacAuthorizationV1ClusterRoleRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          field: S.optional(S.String),
-          message: S.optional(S.String),
-          reason: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "IoK8sApimachineryPkgApisMetaV1StatusCause",
-      });
-    case 5:
-      return S.Array(__S(28, __c3, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          causes: S.optional(__S(29, __c3, 5)),
-          group: S.optional(S.String),
-          kind: S.optional(S.String),
-          name: S.optional(S.String),
-          retryAfterSeconds: S.optional(S.Number),
-          uid: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "IoK8sApimachineryPkgApisMetaV1StatusDetails",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          selector: S.String,
-        }),
-      ).annotate({
-        identifier: "IoK8sApimachineryPkgApisMetaV1ShardInfo",
-      });
-  }
-}
-function __c4(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          continue: S.optional(S.String),
-          remainingItemCount: S.optional(S.Number),
-          resourceVersion: S.optional(S.String),
-          selfLink: S.optional(S.String),
-          shardInfo: S.optional(__S(31, __c3, 7)),
-        }),
-      ).annotate({
-        identifier: "IoK8sApimachineryPkgApisMetaV1ListMeta",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          apiVersion: S.optional(S.String),
-          code: S.optional(S.Number),
-          details: S.optional(__S(30, __c3, 6)),
-          kind: S.optional(S.String),
-          message: S.optional(S.String),
-          metadata: S.optional(__S(32, __c4, 0)),
-          reason: S.optional(S.String),
-          status: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "IoK8sApimachineryPkgApisMetaV1Status",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-          pretty: S.optional(S.String.pipe(T.Query())),
-          dryRun: S.optional(S.String.pipe(T.Query())),
-          gracePeriodSeconds: S.optional(S.Number.pipe(T.Query())),
-          ignoreStoreReadErrorWithClusterBreakingPotential: S.optional(S.Boolean.pipe(T.Query())),
-          orphanDependents: S.optional(S.Boolean.pipe(T.Query())),
-          propagationPolicy: S.optional(S.String.pipe(T.Query())),
-          apiVersion: S.optional(S.String),
-          kind: S.optional(S.String),
-          preconditions: S.optional(__S(26, __c3, 2)),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/apis/rbac.authorization.k8s.io/v1/clusterrolebindings/{name}",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteRbacAuthorizationV1ClusterRoleBindingRequest",
-      });
-    case 3:
       return S.suspend(() =>
         S.Struct({
           pretty: S.optional(S.String.pipe(T.Query())),
@@ -2544,38 +2188,7 @@ function __c4(j: number): any {
           timeoutSeconds: S.optional(S.Number.pipe(T.Query())),
           apiVersion: S.optional(S.String),
           kind: S.optional(S.String),
-          preconditions: S.optional(__S(26, __c3, 2)),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/apis/rbac.authorization.k8s.io/v1/clusterroles",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteRbacAuthorizationV1CollectionClusterRoleRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          pretty: S.optional(S.String.pipe(T.Query())),
-          continue: S.optional(S.String.pipe(T.Query())),
-          dryRun: S.optional(S.String.pipe(T.Query())),
-          fieldSelector: S.optional(S.String.pipe(T.Query())),
-          gracePeriodSeconds: S.optional(S.Number.pipe(T.Query())),
-          ignoreStoreReadErrorWithClusterBreakingPotential: S.optional(S.Boolean.pipe(T.Query())),
-          labelSelector: S.optional(S.String.pipe(T.Query())),
-          limit: S.optional(S.Number.pipe(T.Query())),
-          orphanDependents: S.optional(S.Boolean.pipe(T.Query())),
-          propagationPolicy: S.optional(S.String.pipe(T.Query())),
-          resourceVersion: S.optional(S.String.pipe(T.Query())),
-          resourceVersionMatch: S.optional(S.String.pipe(T.Query())),
-          sendInitialEvents: S.optional(S.Boolean.pipe(T.Query())),
-          shardSelector: S.optional(S.String.pipe(T.Query())),
-          timeoutSeconds: S.optional(S.Number.pipe(T.Query())),
-          apiVersion: S.optional(S.String),
-          kind: S.optional(S.String),
-          preconditions: S.optional(__S(26, __c3, 2)),
+          preconditions: S.optional(__S(400, __c50, 0)),
         }).pipe(
           T.Http({
             method: "DELETE",
@@ -2586,7 +2199,11 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "DeleteRbacAuthorizationV1CollectionClusterRoleBindingRequest",
       });
-    case 5:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           namespace: S.String.pipe(T.Label()),
@@ -2607,7 +2224,7 @@ function __c4(j: number): any {
           timeoutSeconds: S.optional(S.Number.pipe(T.Query())),
           apiVersion: S.optional(S.String),
           kind: S.optional(S.String),
-          preconditions: S.optional(__S(26, __c3, 2)),
+          preconditions: S.optional(__S(400, __c50, 0)),
         }).pipe(
           T.Http({
             method: "DELETE",
@@ -2618,7 +2235,11 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "DeleteRbacAuthorizationV1CollectionNamespacedRoleRequest",
       });
-    case 6:
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           namespace: S.String.pipe(T.Label()),
@@ -2639,7 +2260,7 @@ function __c4(j: number): any {
           timeoutSeconds: S.optional(S.Number.pipe(T.Query())),
           apiVersion: S.optional(S.String),
           kind: S.optional(S.String),
-          preconditions: S.optional(__S(26, __c3, 2)),
+          preconditions: S.optional(__S(400, __c50, 0)),
         }).pipe(
           T.Http({
             method: "DELETE",
@@ -2650,7 +2271,11 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "DeleteRbacAuthorizationV1CollectionNamespacedRoleBindingRequest",
       });
-    case 7:
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           namespace: S.String.pipe(T.Label()),
@@ -2663,7 +2288,7 @@ function __c4(j: number): any {
           propagationPolicy: S.optional(S.String.pipe(T.Query())),
           apiVersion: S.optional(S.String),
           kind: S.optional(S.String),
-          preconditions: S.optional(__S(26, __c3, 2)),
+          preconditions: S.optional(__S(400, __c50, 0)),
         }).pipe(
           T.Http({
             method: "DELETE",
@@ -2676,7 +2301,7 @@ function __c4(j: number): any {
       });
   }
 }
-function __c5(j: number): any {
+function __c4(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2691,7 +2316,7 @@ function __c5(j: number): any {
           propagationPolicy: S.optional(S.String.pipe(T.Query())),
           apiVersion: S.optional(S.String),
           kind: S.optional(S.String),
-          preconditions: S.optional(__S(26, __c3, 2)),
+          preconditions: S.optional(__S(400, __c50, 0)),
         }).pipe(
           T.Http({
             method: "DELETE",
@@ -2702,7 +2327,11 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "DeleteRbacAuthorizationV1NamespacedRoleBindingRequest",
       });
-    case 1:
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({}).pipe(
           T.Http({ method: "GET", uri: "/apis/rbac.authorization.k8s.io/", code: 200 }),
@@ -2710,7 +2339,7 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "GetRbacAuthorizationAPIGroupRequest",
       });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           groupVersion: S.String,
@@ -2719,7 +2348,7 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "IoK8sApimachineryPkgApisMetaV1GroupVersionForDiscovery",
       });
-    case 3:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           clientCIDR: S.String,
@@ -2728,30 +2357,22 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "IoK8sApimachineryPkgApisMetaV1ServerAddressByClientCIDR",
       });
-    case 4:
-      return S.Array(__S(43, __c5, 3));
-    case 5:
+    case 3:
       return S.Array(__S(42, __c5, 2));
-    case 6:
+    case 4:
+      return S.Array(__S(41, __c5, 1));
+    case 5:
       return S.suspend(() =>
         S.Struct({
           apiVersion: S.optional(S.String),
           kind: S.optional(S.String),
           name: S.String,
-          preferredVersion: S.optional(__S(42, __c5, 2)),
-          serverAddressByClientCIDRs: S.optional(__S(44, __c5, 4)),
-          versions: __S(45, __c5, 5),
+          preferredVersion: S.optional(__S(41, __c5, 1)),
+          serverAddressByClientCIDRs: S.optional(__S(43, __c5, 3)),
+          versions: __S(44, __c5, 4),
         }),
       ).annotate({
         identifier: "IoK8sApimachineryPkgApisMetaV1APIGroup",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({}).pipe(
-          T.Http({ method: "GET", uri: "/apis/rbac.authorization.k8s.io/v1/", code: 200 }),
-        ),
-      ).annotate({
-        identifier: "GetRbacAuthorizationV1APIResourcesRequest",
       });
   }
 }
@@ -2759,35 +2380,47 @@ function __c6(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
+        S.Struct({}).pipe(
+          T.Http({ method: "GET", uri: "/apis/rbac.authorization.k8s.io/v1/", code: 200 }),
+        ),
+      ).annotate({
+        identifier: "GetRbacAuthorizationV1APIResourcesRequest",
+      });
+    case 1:
+      return S.suspend(() =>
         S.Struct({
-          categories: S.optional(__S(7, __c0, 7)),
+          categories: S.optional(__S(192, __c24, 0)),
           group: S.optional(S.String),
           kind: S.String,
           name: S.String,
           namespaced: S.Boolean,
-          shortNames: S.optional(__S(7, __c0, 7)),
+          shortNames: S.optional(__S(192, __c24, 0)),
           singularName: S.String,
           storageVersionHash: S.optional(S.String),
-          verbs: __S(7, __c0, 7),
+          verbs: __S(192, __c24, 0),
           version: S.optional(S.String),
         }),
       ).annotate({
         identifier: "IoK8sApimachineryPkgApisMetaV1APIResource",
       });
-    case 1:
-      return S.Array(__S(48, __c6, 0));
     case 2:
+      return S.Array(__S(49, __c6, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
           apiVersion: S.optional(S.String),
           groupVersion: S.String,
           kind: S.optional(S.String),
-          resources: __S(49, __c6, 1),
+          resources: __S(50, __c6, 2),
         }),
       ).annotate({
         identifier: "IoK8sApimachineryPkgApisMetaV1APIResourceList",
       });
-    case 3:
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           pretty: S.optional(S.String.pipe(T.Query())),
@@ -2812,20 +2445,24 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "ListRbacAuthorizationV1ClusterRoleRequest",
       });
-    case 4:
-      return S.Array(__S(16, __c2, 0));
-    case 5:
+    case 1:
+      return S.Array(__S(190, __c23, 6));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           apiVersion: S.optional(S.String),
-          items: __S(52, __c6, 4),
+          items: __S(57, __c7, 1),
           kind: S.optional(S.String),
-          metadata: S.optional(__S(32, __c4, 0)),
+          metadata: S.optional(__S(409, __c51, 1)),
         }),
       ).annotate({
         identifier: "IoK8sApiRbacV1ClusterRoleList",
       });
-    case 6:
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           pretty: S.optional(S.String.pipe(T.Query())),
@@ -2850,24 +2487,28 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "ListRbacAuthorizationV1ClusterRoleBindingRequest",
       });
-    case 7:
-      return S.Array(__S(21, __c2, 5));
   }
 }
-function __c7(j: number): any {
+function __c9(j: number): any {
   switch (j) {
     case 0:
+      return S.Array(__S(315, __c39, 3));
+    case 1:
       return S.suspend(() =>
         S.Struct({
           apiVersion: S.optional(S.String),
-          items: __S(55, __c6, 7),
+          items: __S(72, __c9, 0),
           kind: S.optional(S.String),
-          metadata: S.optional(__S(32, __c4, 0)),
+          metadata: S.optional(__S(409, __c51, 1)),
         }),
       ).annotate({
         identifier: "IoK8sApiRbacV1ClusterRoleBindingList",
       });
-    case 1:
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           namespace: S.String.pipe(T.Label()),
@@ -2893,18 +2534,26 @@ function __c7(j: number): any {
       ).annotate({
         identifier: "ListRbacAuthorizationV1NamespacedRoleRequest",
       });
-    case 2:
-      return S.Array(__S(23, __c2, 7));
-    case 3:
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(368, __c46, 0));
+    case 1:
       return S.suspend(() =>
         S.Struct({
           apiVersion: S.optional(S.String),
-          items: __S(58, __c7, 2),
+          items: __S(88, __c11, 0),
           kind: S.optional(S.String),
-          metadata: S.optional(__S(32, __c4, 0)),
+          metadata: S.optional(__S(409, __c51, 1)),
         }),
       ).annotate({ identifier: "IoK8sApiRbacV1RoleList" });
-    case 4:
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           namespace: S.String.pipe(T.Label()),
@@ -2930,7 +2579,11 @@ function __c7(j: number): any {
       ).annotate({
         identifier: "ListRbacAuthorizationV1NamespacedRoleBindingRequest",
       });
-    case 5:
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           allowWatchBookmarks: S.optional(S.Boolean.pipe(T.Query())),
@@ -2955,7 +2608,11 @@ function __c7(j: number): any {
       ).annotate({
         identifier: "ListRbacAuthorizationV1RoleBindingForAllNamespacesRequest",
       });
-    case 6:
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           allowWatchBookmarks: S.optional(S.Boolean.pipe(T.Query())),
@@ -2976,7 +2633,11 @@ function __c7(j: number): any {
       ).annotate({
         identifier: "ListRbacAuthorizationV1RoleForAllNamespacesRequest",
       });
-    case 7:
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -2997,7 +2658,7 @@ function __c7(j: number): any {
       });
   }
 }
-function __c8(j: number): any {
+function __c16(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3018,7 +2679,11 @@ function __c8(j: number): any {
       ).annotate({
         identifier: "PatchRbacAuthorizationV1ClusterRoleBindingRequest",
       });
-    case 1:
+  }
+}
+function __c17(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           namespace: S.String.pipe(T.Label()),
@@ -3038,7 +2703,11 @@ function __c8(j: number): any {
       ).annotate({
         identifier: "PatchRbacAuthorizationV1NamespacedRoleRequest",
       });
-    case 2:
+  }
+}
+function __c18(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           namespace: S.String.pipe(T.Label()),
@@ -3058,7 +2727,11 @@ function __c8(j: number): any {
       ).annotate({
         identifier: "PatchRbacAuthorizationV1NamespacedRoleBindingRequest",
       });
-    case 3:
+  }
+}
+function __c19(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -3073,7 +2746,11 @@ function __c8(j: number): any {
       ).annotate({
         identifier: "ReadRbacAuthorizationV1ClusterRoleRequest",
       });
-    case 4:
+  }
+}
+function __c20(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -3088,7 +2765,11 @@ function __c8(j: number): any {
       ).annotate({
         identifier: "ReadRbacAuthorizationV1ClusterRoleBindingRequest",
       });
-    case 5:
+  }
+}
+function __c21(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           namespace: S.String.pipe(T.Label()),
@@ -3104,7 +2785,167 @@ function __c8(j: number): any {
       ).annotate({
         identifier: "ReadRbacAuthorizationV1NamespacedRoleRequest",
       });
+  }
+}
+function __c22(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          pretty: S.optional(S.String.pipe(T.Query())),
+          dryRun: S.optional(S.String.pipe(T.Query())),
+          fieldManager: S.optional(S.String.pipe(T.Query())),
+          fieldValidation: S.optional(S.String.pipe(T.Query())),
+          aggregationRule: S.optional(__S(189, __c23, 5)),
+          apiVersion: S.optional(S.String),
+          kind: S.optional(S.String),
+          metadata: S.optional(__S(205, __c25, 5)),
+          rules: S.optional(__S(209, __c26, 1)),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/apis/rbac.authorization.k8s.io/v1/clusterroles",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateRbacAuthorizationV1ClusterRoleRequest",
+      });
+  }
+}
+function __c23(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          key: S.String,
+          operator: S.String,
+          values: S.optional(__S(184, __c23, 0)),
+        }),
+      ).annotate({
+        identifier: "IoK8sApimachineryPkgApisMetaV1LabelSelectorRequirement",
+      });
+    case 2:
+      return S.Array(__S(185, __c23, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          matchExpressions: S.optional(__S(186, __c23, 2)),
+          matchLabels: S.optional(__S(200, __c25, 0)),
+        }),
+      ).annotate({
+        identifier: "IoK8sApimachineryPkgApisMetaV1LabelSelector",
+      });
+    case 4:
+      return S.Array(__S(187, __c23, 3));
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          clusterRoleSelectors: S.optional(__S(188, __c23, 4)),
+        }),
+      ).annotate({
+        identifier: "IoK8sApiRbacV1AggregationRule",
+      });
     case 6:
+      return S.suspend(() =>
+        S.Struct({
+          aggregationRule: S.optional(__S(189, __c23, 5)),
+          apiVersion: S.optional(S.String),
+          kind: S.optional(S.String),
+          metadata: S.optional(__S(205, __c25, 5)),
+          rules: S.optional(__S(209, __c26, 1)),
+        }),
+      ).annotate({
+        identifier: "IoK8sApiRbacV1ClusterRole",
+      });
+  }
+}
+function __c24(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c25(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, S.String);
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          apiVersion: S.optional(S.String),
+          fieldsType: S.optional(S.String),
+          fieldsV1: S.optional(S.Unknown),
+          manager: S.optional(S.String),
+          operation: S.optional(S.String),
+          subresource: S.optional(S.String),
+          time: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "IoK8sApimachineryPkgApisMetaV1ManagedFieldsEntry",
+      });
+    case 2:
+      return S.Array(__S(201, __c25, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          apiVersion: S.String,
+          blockOwnerDeletion: S.optional(S.Boolean),
+          controller: S.optional(S.Boolean),
+          kind: S.String,
+          name: S.String,
+          uid: S.String,
+        }),
+      ).annotate({
+        identifier: "IoK8sApimachineryPkgApisMetaV1OwnerReference",
+      });
+    case 4:
+      return S.Array(__S(203, __c25, 3));
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          annotations: S.optional(__S(200, __c25, 0)),
+          creationTimestamp: S.optional(S.String),
+          deletionGracePeriodSeconds: S.optional(S.Number),
+          deletionTimestamp: S.optional(S.String),
+          finalizers: S.optional(__S(192, __c24, 0)),
+          generateName: S.optional(S.String),
+          generation: S.optional(S.Number),
+          labels: S.optional(__S(200, __c25, 0)),
+          managedFields: S.optional(__S(202, __c25, 2)),
+          name: S.optional(S.String),
+          namespace: S.optional(S.String),
+          ownerReferences: S.optional(__S(204, __c25, 4)),
+          resourceVersion: S.optional(S.String),
+          selfLink: S.optional(S.String),
+          uid: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "IoK8sApimachineryPkgApisMetaV1ObjectMeta",
+      });
+  }
+}
+function __c26(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          apiGroups: S.optional(__S(192, __c24, 0)),
+          nonResourceURLs: S.optional(__S(192, __c24, 0)),
+          resourceNames: S.optional(__S(192, __c24, 0)),
+          resources: S.optional(__S(192, __c24, 0)),
+          verbs: __S(192, __c24, 0),
+        }),
+      ).annotate({ identifier: "IoK8sApiRbacV1PolicyRule" });
+    case 1:
+      return S.Array(__S(208, __c26, 0));
+  }
+}
+function __c27(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           namespace: S.String.pipe(T.Label()),
@@ -3120,7 +2961,11 @@ function __c8(j: number): any {
       ).annotate({
         identifier: "ReadRbacAuthorizationV1NamespacedRoleBindingRequest",
       });
-    case 7:
+  }
+}
+function __c28(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -3128,11 +2973,11 @@ function __c8(j: number): any {
           dryRun: S.optional(S.String.pipe(T.Query())),
           fieldManager: S.optional(S.String.pipe(T.Query())),
           fieldValidation: S.optional(S.String.pipe(T.Query())),
-          aggregationRule: S.optional(__S(6, __c0, 6)),
+          aggregationRule: S.optional(__S(189, __c23, 5)),
           apiVersion: S.optional(S.String),
           kind: S.optional(S.String),
-          metadata: S.optional(__S(12, __c1, 4)),
-          rules: S.optional(__S(14, __c1, 6)),
+          metadata: S.optional(__S(205, __c25, 5)),
+          rules: S.optional(__S(209, __c26, 1)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -3145,7 +2990,7 @@ function __c8(j: number): any {
       });
   }
 }
-function __c9(j: number): any {
+function __c29(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3157,9 +3002,9 @@ function __c9(j: number): any {
           fieldValidation: S.optional(S.String.pipe(T.Query())),
           apiVersion: S.optional(S.String),
           kind: S.optional(S.String),
-          metadata: S.optional(__S(12, __c1, 4)),
-          roleRef: __S(17, __c2, 1),
-          subjects: S.optional(__S(24, __c3, 0)),
+          metadata: S.optional(__S(205, __c25, 5)),
+          roleRef: __S(312, __c39, 0),
+          subjects: S.optional(__S(384, __c48, 0)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -3170,7 +3015,11 @@ function __c9(j: number): any {
       ).annotate({
         identifier: "ReplaceRbacAuthorizationV1ClusterRoleBindingRequest",
       });
-    case 1:
+  }
+}
+function __c30(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           namespace: S.String.pipe(T.Label()),
@@ -3181,8 +3030,8 @@ function __c9(j: number): any {
           fieldValidation: S.optional(S.String.pipe(T.Query())),
           apiVersion: S.optional(S.String),
           kind: S.optional(S.String),
-          metadata: S.optional(__S(12, __c1, 4)),
-          rules: S.optional(__S(14, __c1, 6)),
+          metadata: S.optional(__S(205, __c25, 5)),
+          rules: S.optional(__S(209, __c26, 1)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -3193,7 +3042,11 @@ function __c9(j: number): any {
       ).annotate({
         identifier: "ReplaceRbacAuthorizationV1NamespacedRoleRequest",
       });
-    case 2:
+  }
+}
+function __c31(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           namespace: S.String.pipe(T.Label()),
@@ -3204,9 +3057,9 @@ function __c9(j: number): any {
           fieldValidation: S.optional(S.String.pipe(T.Query())),
           apiVersion: S.optional(S.String),
           kind: S.optional(S.String),
-          metadata: S.optional(__S(12, __c1, 4)),
-          roleRef: __S(17, __c2, 1),
-          subjects: S.optional(__S(24, __c3, 0)),
+          metadata: S.optional(__S(205, __c25, 5)),
+          roleRef: __S(312, __c39, 0),
+          subjects: S.optional(__S(384, __c48, 0)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -3217,7 +3070,11 @@ function __c9(j: number): any {
       ).annotate({
         identifier: "ReplaceRbacAuthorizationV1NamespacedRoleBindingRequest",
       });
-    case 3:
+  }
+}
+function __c32(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -3243,7 +3100,11 @@ function __c9(j: number): any {
       ).annotate({
         identifier: "WatchRbacAuthorizationV1ClusterRoleRequest",
       });
-    case 4:
+  }
+}
+function __c33(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           object: S.Unknown,
@@ -3252,7 +3113,11 @@ function __c9(j: number): any {
       ).annotate({
         identifier: "IoK8sApimachineryPkgApisMetaV1WatchEvent",
       });
-    case 5:
+  }
+}
+function __c34(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -3278,7 +3143,11 @@ function __c9(j: number): any {
       ).annotate({
         identifier: "WatchRbacAuthorizationV1ClusterRoleBindingRequest",
       });
-    case 6:
+  }
+}
+function __c35(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           allowWatchBookmarks: S.optional(S.Boolean.pipe(T.Query())),
@@ -3303,7 +3172,11 @@ function __c9(j: number): any {
       ).annotate({
         identifier: "WatchRbacAuthorizationV1ClusterRoleBindingListRequest",
       });
-    case 7:
+  }
+}
+function __c36(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           allowWatchBookmarks: S.optional(S.Boolean.pipe(T.Query())),
@@ -3330,7 +3203,7 @@ function __c9(j: number): any {
       });
   }
 }
-function __c10(j: number): any {
+function __c37(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3359,7 +3232,72 @@ function __c10(j: number): any {
       ).annotate({
         identifier: "WatchRbacAuthorizationV1NamespacedRoleRequest",
       });
+  }
+}
+function __c38(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          pretty: S.optional(S.String.pipe(T.Query())),
+          dryRun: S.optional(S.String.pipe(T.Query())),
+          fieldManager: S.optional(S.String.pipe(T.Query())),
+          fieldValidation: S.optional(S.String.pipe(T.Query())),
+          apiVersion: S.optional(S.String),
+          kind: S.optional(S.String),
+          metadata: S.optional(__S(205, __c25, 5)),
+          roleRef: __S(312, __c39, 0),
+          subjects: S.optional(__S(314, __c39, 2)),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/apis/rbac.authorization.k8s.io/v1/clusterrolebindings",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateRbacAuthorizationV1ClusterRoleBindingRequest",
+      });
+  }
+}
+function __c39(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          apiGroup: S.optional(S.String),
+          kind: S.String,
+          name: S.String,
+        }),
+      ).annotate({ identifier: "IoK8sApiRbacV1RoleRef" });
     case 1:
+      return S.suspend(() =>
+        S.Struct({
+          apiGroup: S.optional(S.String),
+          kind: S.String,
+          name: S.String,
+          namespace: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "IoK8sApiRbacV1Subject" });
+    case 2:
+      return S.Array(__S(313, __c39, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          apiVersion: S.optional(S.String),
+          kind: S.optional(S.String),
+          metadata: S.optional(__S(205, __c25, 5)),
+          roleRef: __S(312, __c39, 0),
+          subjects: S.optional(__S(314, __c39, 2)),
+        }),
+      ).annotate({
+        identifier: "IoK8sApiRbacV1ClusterRoleBinding",
+      });
+  }
+}
+function __c40(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           namespace: S.String.pipe(T.Label()),
@@ -3386,7 +3324,11 @@ function __c10(j: number): any {
       ).annotate({
         identifier: "WatchRbacAuthorizationV1NamespacedRoleBindingRequest",
       });
-    case 2:
+  }
+}
+function __c41(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           namespace: S.String.pipe(T.Label()),
@@ -3412,7 +3354,11 @@ function __c10(j: number): any {
       ).annotate({
         identifier: "WatchRbacAuthorizationV1NamespacedRoleBindingListRequest",
       });
-    case 3:
+  }
+}
+function __c42(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           namespace: S.String.pipe(T.Label()),
@@ -3438,7 +3384,11 @@ function __c10(j: number): any {
       ).annotate({
         identifier: "WatchRbacAuthorizationV1NamespacedRoleListRequest",
       });
-    case 4:
+  }
+}
+function __c43(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           allowWatchBookmarks: S.optional(S.Boolean.pipe(T.Query())),
@@ -3463,7 +3413,11 @@ function __c10(j: number): any {
       ).annotate({
         identifier: "WatchRbacAuthorizationV1RoleBindingListForAllNamespacesRequest",
       });
-    case 5:
+  }
+}
+function __c44(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           allowWatchBookmarks: S.optional(S.Boolean.pipe(T.Query())),
@@ -3490,7 +3444,244 @@ function __c10(j: number): any {
       });
   }
 }
-
+function __c45(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          namespace: S.String.pipe(T.Label()),
+          pretty: S.optional(S.String.pipe(T.Query())),
+          dryRun: S.optional(S.String.pipe(T.Query())),
+          fieldManager: S.optional(S.String.pipe(T.Query())),
+          fieldValidation: S.optional(S.String.pipe(T.Query())),
+          apiVersion: S.optional(S.String),
+          kind: S.optional(S.String),
+          metadata: S.optional(__S(205, __c25, 5)),
+          rules: S.optional(__S(209, __c26, 1)),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/apis/rbac.authorization.k8s.io/v1/namespaces/{namespace}/roles",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateRbacAuthorizationV1NamespacedRoleRequest",
+      });
+  }
+}
+function __c46(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          apiVersion: S.optional(S.String),
+          kind: S.optional(S.String),
+          metadata: S.optional(__S(205, __c25, 5)),
+          rules: S.optional(__S(209, __c26, 1)),
+        }),
+      ).annotate({ identifier: "IoK8sApiRbacV1Role" });
+  }
+}
+function __c47(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          namespace: S.String.pipe(T.Label()),
+          pretty: S.optional(S.String.pipe(T.Query())),
+          dryRun: S.optional(S.String.pipe(T.Query())),
+          fieldManager: S.optional(S.String.pipe(T.Query())),
+          fieldValidation: S.optional(S.String.pipe(T.Query())),
+          apiVersion: S.optional(S.String),
+          kind: S.optional(S.String),
+          metadata: S.optional(__S(205, __c25, 5)),
+          roleRef: __S(312, __c39, 0),
+          subjects: S.optional(__S(384, __c48, 0)),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/apis/rbac.authorization.k8s.io/v1/namespaces/{namespace}/rolebindings",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateRbacAuthorizationV1NamespacedRoleBindingRequest",
+      });
+  }
+}
+function __c48(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(313, __c39, 1));
+  }
+}
+function __c49(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+          pretty: S.optional(S.String.pipe(T.Query())),
+          dryRun: S.optional(S.String.pipe(T.Query())),
+          gracePeriodSeconds: S.optional(S.Number.pipe(T.Query())),
+          ignoreStoreReadErrorWithClusterBreakingPotential: S.optional(S.Boolean.pipe(T.Query())),
+          orphanDependents: S.optional(S.Boolean.pipe(T.Query())),
+          propagationPolicy: S.optional(S.String.pipe(T.Query())),
+          apiVersion: S.optional(S.String),
+          kind: S.optional(S.String),
+          preconditions: S.optional(__S(400, __c50, 0)),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/apis/rbac.authorization.k8s.io/v1/clusterroles/{name}",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteRbacAuthorizationV1ClusterRoleRequest",
+      });
+  }
+}
+function __c50(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          resourceVersion: S.optional(S.String),
+          uid: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "IoK8sApimachineryPkgApisMetaV1Preconditions",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          field: S.optional(S.String),
+          message: S.optional(S.String),
+          reason: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "IoK8sApimachineryPkgApisMetaV1StatusCause",
+      });
+    case 2:
+      return S.Array(__S(401, __c50, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          causes: S.optional(__S(402, __c50, 2)),
+          group: S.optional(S.String),
+          kind: S.optional(S.String),
+          name: S.optional(S.String),
+          retryAfterSeconds: S.optional(S.Number),
+          uid: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "IoK8sApimachineryPkgApisMetaV1StatusDetails",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          apiVersion: S.optional(S.String),
+          code: S.optional(S.Number),
+          details: S.optional(__S(403, __c50, 3)),
+          kind: S.optional(S.String),
+          message: S.optional(S.String),
+          metadata: S.optional(__S(409, __c51, 1)),
+          reason: S.optional(S.String),
+          status: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "IoK8sApimachineryPkgApisMetaV1Status",
+      });
+  }
+}
+function __c51(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          selector: S.String,
+        }),
+      ).annotate({
+        identifier: "IoK8sApimachineryPkgApisMetaV1ShardInfo",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          continue: S.optional(S.String),
+          remainingItemCount: S.optional(S.Number),
+          resourceVersion: S.optional(S.String),
+          selfLink: S.optional(S.String),
+          shardInfo: S.optional(__S(408, __c51, 0)),
+        }),
+      ).annotate({
+        identifier: "IoK8sApimachineryPkgApisMetaV1ListMeta",
+      });
+  }
+}
+function __c52(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+          pretty: S.optional(S.String.pipe(T.Query())),
+          dryRun: S.optional(S.String.pipe(T.Query())),
+          gracePeriodSeconds: S.optional(S.Number.pipe(T.Query())),
+          ignoreStoreReadErrorWithClusterBreakingPotential: S.optional(S.Boolean.pipe(T.Query())),
+          orphanDependents: S.optional(S.Boolean.pipe(T.Query())),
+          propagationPolicy: S.optional(S.String.pipe(T.Query())),
+          apiVersion: S.optional(S.String),
+          kind: S.optional(S.String),
+          preconditions: S.optional(__S(400, __c50, 0)),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/apis/rbac.authorization.k8s.io/v1/clusterrolebindings/{name}",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteRbacAuthorizationV1ClusterRoleBindingRequest",
+      });
+  }
+}
+function __c53(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          pretty: S.optional(S.String.pipe(T.Query())),
+          continue: S.optional(S.String.pipe(T.Query())),
+          dryRun: S.optional(S.String.pipe(T.Query())),
+          fieldSelector: S.optional(S.String.pipe(T.Query())),
+          gracePeriodSeconds: S.optional(S.Number.pipe(T.Query())),
+          ignoreStoreReadErrorWithClusterBreakingPotential: S.optional(S.Boolean.pipe(T.Query())),
+          labelSelector: S.optional(S.String.pipe(T.Query())),
+          limit: S.optional(S.Number.pipe(T.Query())),
+          orphanDependents: S.optional(S.Boolean.pipe(T.Query())),
+          propagationPolicy: S.optional(S.String.pipe(T.Query())),
+          resourceVersion: S.optional(S.String.pipe(T.Query())),
+          resourceVersionMatch: S.optional(S.String.pipe(T.Query())),
+          sendInitialEvents: S.optional(S.Boolean.pipe(T.Query())),
+          shardSelector: S.optional(S.String.pipe(T.Query())),
+          timeoutSeconds: S.optional(S.Number.pipe(T.Query())),
+          apiVersion: S.optional(S.String),
+          kind: S.optional(S.String),
+          preconditions: S.optional(__S(400, __c50, 0)),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/apis/rbac.authorization.k8s.io/v1/clusterroles",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteRbacAuthorizationV1CollectionClusterRoleRequest",
+      });
+  }
+}
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

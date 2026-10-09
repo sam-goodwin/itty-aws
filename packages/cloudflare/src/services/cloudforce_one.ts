@@ -4386,8 +4386,8 @@ export const bulkCreateThreatEvents: API.OperationMethod<
   BulkCreateThreatEventsError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(7, __c0, 7) as any as S.Schema<BulkCreateThreatEventsRequest>,
-  output: __S(10, __c1, 2) as any as S.Schema<BulkCreateThreatEventsResponse>,
+  input: __S(2, __c0, 2) as any as S.Schema<BulkCreateThreatEventsRequest>,
+  output: __S(5, __c0, 5) as any as S.Schema<BulkCreateThreatEventsResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -4401,8 +4401,8 @@ export const createBinaryStorage: API.OperationMethod<
   CreateBinaryStorageError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(11, __c1, 3) as any as S.Schema<CreateBinaryStorageRequest>,
-  output: __S(12, __c1, 4) as any as S.Schema<CreateBinaryStorageResponse>,
+  input: __S(672, __c42, 0) as any as S.Schema<CreateBinaryStorageRequest>,
+  output: __S(673, __c42, 1) as any as S.Schema<CreateBinaryStorageResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -4416,8 +4416,8 @@ export const createRequest: API.OperationMethod<
   CreateRequestError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(13, __c1, 5) as any as S.Schema<CreateRequestRequest>,
-  output: __S(14, __c1, 6) as any as S.Schema<CreateRequestResponse>,
+  input: __S(880, __c55, 0) as any as S.Schema<CreateRequestRequest>,
+  output: __S(896, __c56, 0) as any as S.Schema<CreateRequestResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -4433,8 +4433,8 @@ export const createRequestAsset: API.PaginatedOperationMethod<
   RequestsAssetsCreateResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(15, __c1, 7) as any as S.Schema<CreateRequestAssetRequest>,
-    output: __S(18, __c2, 2) as any as S.Schema<CreateRequestAssetResponse>,
+    input: __S(1120, __c70, 0) as any as S.Schema<CreateRequestAssetRequest>,
+    output: __S(1121, __c70, 1) as any as S.Schema<CreateRequestAssetResponse>,
     errors: [CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
     retry: Retry.Retry,
@@ -4451,8 +4451,8 @@ export const createRequestMessage: API.OperationMethod<
   CreateRequestMessageError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(19, __c2, 3) as any as S.Schema<CreateRequestMessageRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<CreateRequestMessageResponse>,
+  input: __S(1344, __c84, 0) as any as S.Schema<CreateRequestMessageRequest>,
+  output: __S(1360, __c85, 0) as any as S.Schema<CreateRequestMessageResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -4466,8 +4466,8 @@ export const createRequestPriority: API.OperationMethod<
   CreateRequestPriorityError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(21, __c2, 5) as any as S.Schema<CreateRequestPriorityRequest>,
-  output: __S(22, __c2, 6) as any as S.Schema<CreateRequestPriorityResponse>,
+  input: __S(1584, __c99, 0) as any as S.Schema<CreateRequestPriorityRequest>,
+  output: __S(1585, __c99, 1) as any as S.Schema<CreateRequestPriorityResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -4481,8 +4481,8 @@ export const createScanConfig: API.OperationMethod<
   CreateScanConfigError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(23, __c2, 7) as any as S.Schema<CreateScanConfigRequest>,
-  output: __S(24, __c3, 0) as any as S.Schema<CreateScanConfigResponse>,
+  input: __S(1792, __c112, 0) as any as S.Schema<CreateScanConfigRequest>,
+  output: __S(1808, __c113, 0) as any as S.Schema<CreateScanConfigResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -4496,8 +4496,8 @@ export const createThreatEvent: API.OperationMethod<
   CreateThreatEventError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(26, __c3, 2) as any as S.Schema<CreateThreatEventRequest>,
-  output: __S(28, __c3, 4) as any as S.Schema<CreateThreatEventResponse>,
+  input: __S(2049, __c128, 1) as any as S.Schema<CreateThreatEventRequest>,
+  output: __S(2080, __c130, 0) as any as S.Schema<CreateThreatEventResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -4511,8 +4511,8 @@ export const createThreatEventCategory: API.OperationMethod<
   CreateThreatEventCategoryError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(29, __c3, 5) as any as S.Schema<CreateThreatEventCategoryRequest>,
-  output: __S(30, __c3, 6) as any as S.Schema<CreateThreatEventCategoryResponse>,
+  input: __S(2256, __c141, 0) as any as S.Schema<CreateThreatEventCategoryRequest>,
+  output: __S(2272, __c142, 0) as any as S.Schema<CreateThreatEventCategoryResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -4526,8 +4526,8 @@ export const createThreatEventDataset: API.OperationMethod<
   CreateThreatEventDatasetError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(31, __c3, 7) as any as S.Schema<CreateThreatEventDatasetRequest>,
-  output: __S(32, __c4, 0) as any as S.Schema<CreateThreatEventDatasetResponse>,
+  input: __S(80, __c5, 0) as any as S.Schema<CreateThreatEventDatasetRequest>,
+  output: __S(96, __c6, 0) as any as S.Schema<CreateThreatEventDatasetResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -4541,8 +4541,8 @@ export const createThreatEventEventTag: API.OperationMethod<
   CreateThreatEventEventTagError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(33, __c4, 1) as any as S.Schema<CreateThreatEventEventTagRequest>,
-  output: __S(34, __c4, 2) as any as S.Schema<CreateThreatEventEventTagResponse>,
+  input: __S(288, __c18, 0) as any as S.Schema<CreateThreatEventEventTagRequest>,
+  output: __S(304, __c19, 0) as any as S.Schema<CreateThreatEventEventTagResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -4556,8 +4556,8 @@ export const createThreatEventsGraphql: API.OperationMethod<
   CreateThreatEventsGraphqlError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(35, __c4, 3) as any as S.Schema<CreateThreatEventsGraphqlRequest>,
-  output: __S(36, __c4, 4) as any as S.Schema<CreateThreatEventsGraphqlResponse>,
+  input: __S(368, __c23, 0) as any as S.Schema<CreateThreatEventsGraphqlRequest>,
+  output: __S(369, __c23, 1) as any as S.Schema<CreateThreatEventsGraphqlResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -4571,8 +4571,8 @@ export const createThreatEventsQuery: API.OperationMethod<
   CreateThreatEventsQueryError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(37, __c4, 5) as any as S.Schema<CreateThreatEventsQueryRequest>,
-  output: __S(38, __c4, 6) as any as S.Schema<CreateThreatEventsQueryResponse>,
+  input: __S(384, __c24, 0) as any as S.Schema<CreateThreatEventsQueryRequest>,
+  output: __S(400, __c25, 0) as any as S.Schema<CreateThreatEventsQueryResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -4586,8 +4586,8 @@ export const createThreatEventsTagsCategory: API.OperationMethod<
   CreateThreatEventsTagsCategoryError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(44, __c5, 4) as any as S.Schema<CreateThreatEventsTagsCategoryRequest>,
-  output: __S(49, __c6, 1) as any as S.Schema<CreateThreatEventsTagsCategoryResponse>,
+  input: __S(418, __c26, 2) as any as S.Schema<CreateThreatEventsTagsCategoryRequest>,
+  output: __S(421, __c26, 5) as any as S.Schema<CreateThreatEventsTagsCategoryResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -4601,8 +4601,8 @@ export const createThreatEventTag: API.OperationMethod<
   CreateThreatEventTagError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(62, __c7, 6) as any as S.Schema<CreateThreatEventTagRequest>,
-  output: __S(73, __c9, 1) as any as S.Schema<CreateThreatEventTagResponse>,
+  input: __S(488, __c30, 8) as any as S.Schema<CreateThreatEventTagRequest>,
+  output: __S(491, __c30, 11) as any as S.Schema<CreateThreatEventTagResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -4616,8 +4616,8 @@ export const createThreatSignalsArticlesTag: API.OperationMethod<
   CreateThreatSignalsArticlesTagError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(74, __c9, 2) as any as S.Schema<CreateThreatSignalsArticlesTagRequest>,
-  output: __S(75, __c9, 3) as any as S.Schema<CreateThreatSignalsArticlesTagResponse>,
+  input: __S(544, __c34, 0) as any as S.Schema<CreateThreatSignalsArticlesTagRequest>,
+  output: __S(560, __c35, 0) as any as S.Schema<CreateThreatSignalsArticlesTagResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -4631,8 +4631,8 @@ export const createThreatSignalsFeed: API.OperationMethod<
   CreateThreatSignalsFeedError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(76, __c9, 4) as any as S.Schema<CreateThreatSignalsFeedRequest>,
-  output: __S(77, __c9, 5) as any as S.Schema<CreateThreatSignalsFeedResponse>,
+  input: __S(576, __c36, 0) as any as S.Schema<CreateThreatSignalsFeedRequest>,
+  output: __S(592, __c37, 0) as any as S.Schema<CreateThreatSignalsFeedResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -4646,8 +4646,8 @@ export const createThreatSignalsSkill: API.OperationMethod<
   CreateThreatSignalsSkillError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(78, __c9, 6) as any as S.Schema<CreateThreatSignalsSkillRequest>,
-  output: __S(79, __c9, 7) as any as S.Schema<CreateThreatSignalsSkillResponse>,
+  input: __S(608, __c38, 0) as any as S.Schema<CreateThreatSignalsSkillRequest>,
+  output: __S(624, __c39, 0) as any as S.Schema<CreateThreatSignalsSkillResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -4661,8 +4661,8 @@ export const deleteRequest: API.OperationMethod<
   DeleteRequestError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(80, __c10, 0) as any as S.Schema<DeleteRequestRequest>,
-  output: __S(81, __c10, 1) as any as S.Schema<DeleteRequestResponse>,
+  input: __S(640, __c40, 0) as any as S.Schema<DeleteRequestRequest>,
+  output: __S(656, __c41, 0) as any as S.Schema<DeleteRequestResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -4676,8 +4676,8 @@ export const deleteRequestAsset: API.OperationMethod<
   DeleteRequestAssetError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(82, __c10, 2) as any as S.Schema<DeleteRequestAssetRequest>,
-  output: __S(83, __c10, 3) as any as S.Schema<DeleteRequestAssetResponse>,
+  input: __S(688, __c43, 0) as any as S.Schema<DeleteRequestAssetRequest>,
+  output: __S(704, __c44, 0) as any as S.Schema<DeleteRequestAssetResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -4691,8 +4691,8 @@ export const deleteRequestMessage: API.OperationMethod<
   DeleteRequestMessageError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(84, __c10, 4) as any as S.Schema<DeleteRequestMessageRequest>,
-  output: __S(83, __c10, 3) as any as S.Schema<DeleteRequestMessageResponse>,
+  input: __S(720, __c45, 0) as any as S.Schema<DeleteRequestMessageRequest>,
+  output: __S(704, __c44, 0) as any as S.Schema<DeleteRequestMessageResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -4706,8 +4706,8 @@ export const deleteRequestPriority: API.OperationMethod<
   DeleteRequestPriorityError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(85, __c10, 5) as any as S.Schema<DeleteRequestPriorityRequest>,
-  output: __S(83, __c10, 3) as any as S.Schema<DeleteRequestPriorityResponse>,
+  input: __S(736, __c46, 0) as any as S.Schema<DeleteRequestPriorityRequest>,
+  output: __S(704, __c44, 0) as any as S.Schema<DeleteRequestPriorityResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -4721,8 +4721,8 @@ export const deleteScanConfig: API.OperationMethod<
   DeleteScanConfigError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(86, __c10, 6) as any as S.Schema<DeleteScanConfigRequest>,
-  output: __S(87, __c10, 7) as any as S.Schema<DeleteScanConfigResponse>,
+  input: __S(752, __c47, 0) as any as S.Schema<DeleteScanConfigRequest>,
+  output: __S(753, __c47, 1) as any as S.Schema<DeleteScanConfigResponse>,
   errors: [ScanConfigNotFound, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -4736,8 +4736,8 @@ export const deleteThreatEventCategory: API.OperationMethod<
   DeleteThreatEventCategoryError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(88, __c11, 0) as any as S.Schema<DeleteThreatEventCategoryRequest>,
-  output: __S(89, __c11, 1) as any as S.Schema<DeleteThreatEventCategoryResponse>,
+  input: __S(768, __c48, 0) as any as S.Schema<DeleteThreatEventCategoryRequest>,
+  output: __S(784, __c49, 0) as any as S.Schema<DeleteThreatEventCategoryResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -4751,8 +4751,8 @@ export const deleteThreatEventEventTag: API.OperationMethod<
   DeleteThreatEventEventTagError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(90, __c11, 2) as any as S.Schema<DeleteThreatEventEventTagRequest>,
-  output: __S(34, __c4, 2) as any as S.Schema<DeleteThreatEventEventTagResponse>,
+  input: __S(800, __c50, 0) as any as S.Schema<DeleteThreatEventEventTagRequest>,
+  output: __S(304, __c19, 0) as any as S.Schema<DeleteThreatEventEventTagResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -4766,8 +4766,8 @@ export const deleteThreatEventRelate: API.OperationMethod<
   DeleteThreatEventRelateError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(91, __c11, 3) as any as S.Schema<DeleteThreatEventRelateRequest>,
-  output: __S(34, __c4, 2) as any as S.Schema<DeleteThreatEventRelateResponse>,
+  input: __S(816, __c51, 0) as any as S.Schema<DeleteThreatEventRelateRequest>,
+  output: __S(304, __c19, 0) as any as S.Schema<DeleteThreatEventRelateResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -4781,8 +4781,8 @@ export const deleteThreatEventsDataset: API.OperationMethod<
   DeleteThreatEventsDatasetError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(92, __c11, 4) as any as S.Schema<DeleteThreatEventsDatasetRequest>,
-  output: __S(93, __c11, 5) as any as S.Schema<DeleteThreatEventsDatasetResponse>,
+  input: __S(832, __c52, 0) as any as S.Schema<DeleteThreatEventsDatasetRequest>,
+  output: __S(833, __c52, 1) as any as S.Schema<DeleteThreatEventsDatasetResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -4796,8 +4796,8 @@ export const deleteThreatEventsQuery: API.OperationMethod<
   DeleteThreatEventsQueryError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(94, __c11, 6) as any as S.Schema<DeleteThreatEventsQueryRequest>,
-  output: __S(83, __c10, 3) as any as S.Schema<DeleteThreatEventsQueryResponse>,
+  input: __S(848, __c53, 0) as any as S.Schema<DeleteThreatEventsQueryRequest>,
+  output: __S(704, __c44, 0) as any as S.Schema<DeleteThreatEventsQueryResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -4811,8 +4811,8 @@ export const deleteThreatEventsTag: API.OperationMethod<
   DeleteThreatEventsTagError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(95, __c11, 7) as any as S.Schema<DeleteThreatEventsTagRequest>,
-  output: __S(89, __c11, 1) as any as S.Schema<DeleteThreatEventsTagResponse>,
+  input: __S(864, __c54, 0) as any as S.Schema<DeleteThreatEventsTagRequest>,
+  output: __S(784, __c49, 0) as any as S.Schema<DeleteThreatEventsTagResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -4826,8 +4826,8 @@ export const deleteThreatEventsTagsCategory: API.OperationMethod<
   DeleteThreatEventsTagsCategoryError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(96, __c12, 0) as any as S.Schema<DeleteThreatEventsTagsCategoryRequest>,
-  output: __S(89, __c11, 1) as any as S.Schema<DeleteThreatEventsTagsCategoryResponse>,
+  input: __S(912, __c57, 0) as any as S.Schema<DeleteThreatEventsTagsCategoryRequest>,
+  output: __S(784, __c49, 0) as any as S.Schema<DeleteThreatEventsTagsCategoryResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -4841,8 +4841,8 @@ export const deleteThreatSignalsArticlesTag: API.OperationMethod<
   DeleteThreatSignalsArticlesTagError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(97, __c12, 1) as any as S.Schema<DeleteThreatSignalsArticlesTagRequest>,
-  output: __S(75, __c9, 3) as any as S.Schema<DeleteThreatSignalsArticlesTagResponse>,
+  input: __S(928, __c58, 0) as any as S.Schema<DeleteThreatSignalsArticlesTagRequest>,
+  output: __S(560, __c35, 0) as any as S.Schema<DeleteThreatSignalsArticlesTagResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -4856,8 +4856,8 @@ export const deleteThreatSignalsFeed: API.OperationMethod<
   DeleteThreatSignalsFeedError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(98, __c12, 2) as any as S.Schema<DeleteThreatSignalsFeedRequest>,
-  output: __S(77, __c9, 5) as any as S.Schema<DeleteThreatSignalsFeedResponse>,
+  input: __S(944, __c59, 0) as any as S.Schema<DeleteThreatSignalsFeedRequest>,
+  output: __S(592, __c37, 0) as any as S.Schema<DeleteThreatSignalsFeedResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -4871,8 +4871,8 @@ export const deleteThreatSignalsSkill: API.OperationMethod<
   DeleteThreatSignalsSkillError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(99, __c12, 3) as any as S.Schema<DeleteThreatSignalsSkillRequest>,
-  output: __S(79, __c9, 7) as any as S.Schema<DeleteThreatSignalsSkillResponse>,
+  input: __S(960, __c60, 0) as any as S.Schema<DeleteThreatSignalsSkillRequest>,
+  output: __S(624, __c39, 0) as any as S.Schema<DeleteThreatSignalsSkillResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -4886,8 +4886,8 @@ export const editThreatEventsQuery: API.OperationMethod<
   EditThreatEventsQueryError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(100, __c12, 4) as any as S.Schema<EditThreatEventsQueryRequest>,
-  output: __S(38, __c4, 6) as any as S.Schema<EditThreatEventsQueryResponse>,
+  input: __S(976, __c61, 0) as any as S.Schema<EditThreatEventsQueryRequest>,
+  output: __S(400, __c25, 0) as any as S.Schema<EditThreatEventsQueryResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -4901,8 +4901,8 @@ export const editThreatEventsTag: API.OperationMethod<
   EditThreatEventsTagError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(109, __c13, 5) as any as S.Schema<EditThreatEventsTagRequest>,
-  output: __S(112, __c14, 0) as any as S.Schema<EditThreatEventsTagResponse>,
+  input: __S(1000, __c62, 8) as any as S.Schema<EditThreatEventsTagRequest>,
+  output: __S(1002, __c62, 10) as any as S.Schema<EditThreatEventsTagResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -4916,8 +4916,8 @@ export const editThreatEventsTagsCategory: API.OperationMethod<
   EditThreatEventsTagsCategoryError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(115, __c14, 3) as any as S.Schema<EditThreatEventsTagsCategoryRequest>,
-  output: __S(118, __c14, 6) as any as S.Schema<EditThreatEventsTagsCategoryResponse>,
+  input: __S(1026, __c64, 2) as any as S.Schema<EditThreatEventsTagsCategoryRequest>,
+  output: __S(1029, __c64, 5) as any as S.Schema<EditThreatEventsTagsCategoryResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -4931,8 +4931,8 @@ export const editThreatSignalsArticle: API.OperationMethod<
   EditThreatSignalsArticleError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(119, __c14, 7) as any as S.Schema<EditThreatSignalsArticleRequest>,
-  output: __S(123, __c15, 3) as any as S.Schema<EditThreatSignalsArticleResponse>,
+  input: __S(1040, __c65, 0) as any as S.Schema<EditThreatSignalsArticleRequest>,
+  output: __S(1041, __c65, 1) as any as S.Schema<EditThreatSignalsArticleResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -4946,8 +4946,8 @@ export const editThreatSignalsFeed: API.OperationMethod<
   EditThreatSignalsFeedError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(124, __c15, 4) as any as S.Schema<EditThreatSignalsFeedRequest>,
-  output: __S(77, __c9, 5) as any as S.Schema<EditThreatSignalsFeedResponse>,
+  input: __S(1088, __c68, 0) as any as S.Schema<EditThreatSignalsFeedRequest>,
+  output: __S(592, __c37, 0) as any as S.Schema<EditThreatSignalsFeedResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -4961,8 +4961,8 @@ export const editThreatSignalsSkill: API.OperationMethod<
   EditThreatSignalsSkillError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(125, __c15, 5) as any as S.Schema<EditThreatSignalsSkillRequest>,
-  output: __S(79, __c9, 7) as any as S.Schema<EditThreatSignalsSkillResponse>,
+  input: __S(1104, __c69, 0) as any as S.Schema<EditThreatSignalsSkillRequest>,
+  output: __S(624, __c39, 0) as any as S.Schema<EditThreatSignalsSkillResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -4976,8 +4976,8 @@ export const generateThreatSignalsArticlesTag: API.OperationMethod<
   GenerateThreatSignalsArticlesTagError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(126, __c15, 6) as any as S.Schema<GenerateThreatSignalsArticlesTagRequest>,
-  output: __S(127, __c15, 7) as any as S.Schema<GenerateThreatSignalsArticlesTagResponse>,
+  input: __S(1152, __c72, 0) as any as S.Schema<GenerateThreatSignalsArticlesTagRequest>,
+  output: __S(1153, __c72, 1) as any as S.Schema<GenerateThreatSignalsArticlesTagResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -4991,8 +4991,8 @@ export const getBinaryStorage: API.OperationMethod<
   GetBinaryStorageError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(128, __c16, 0) as any as S.Schema<GetBinaryStorageRequest>,
-  output: __S(81, __c10, 1) as any as S.Schema<GetBinaryStorageResponse>,
+  input: __S(1168, __c73, 0) as any as S.Schema<GetBinaryStorageRequest>,
+  output: __S(656, __c41, 0) as any as S.Schema<GetBinaryStorageResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -5006,8 +5006,8 @@ export const getRequest: API.OperationMethod<
   GetRequestError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(129, __c16, 1) as any as S.Schema<GetRequestRequest>,
-  output: __S(14, __c1, 6) as any as S.Schema<GetRequestResponse>,
+  input: __S(1184, __c74, 0) as any as S.Schema<GetRequestRequest>,
+  output: __S(896, __c56, 0) as any as S.Schema<GetRequestResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -5023,8 +5023,8 @@ export const getRequestMessage: API.PaginatedOperationMethod<
   RequestsMessageGetResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(130, __c16, 2) as any as S.Schema<GetRequestMessageRequest>,
-    output: __S(133, __c16, 5) as any as S.Schema<GetRequestMessageResponse>,
+    input: __S(1200, __c75, 0) as any as S.Schema<GetRequestMessageRequest>,
+    output: __S(1203, __c75, 3) as any as S.Schema<GetRequestMessageResponse>,
     errors: [CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
     retry: Retry.Retry,
@@ -5041,8 +5041,8 @@ export const getRequestPriority: API.OperationMethod<
   GetRequestPriorityError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(134, __c16, 6) as any as S.Schema<GetRequestPriorityRequest>,
-  output: __S(135, __c16, 7) as any as S.Schema<GetRequestPriorityResponse>,
+  input: __S(1216, __c76, 0) as any as S.Schema<GetRequestPriorityRequest>,
+  output: __S(1232, __c77, 0) as any as S.Schema<GetRequestPriorityResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -5056,8 +5056,8 @@ export const getRequestsAsset: API.OperationMethod<
   GetRequestsAssetError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(136, __c17, 0) as any as S.Schema<GetRequestsAssetRequest>,
-  output: __S(137, __c17, 1) as any as S.Schema<GetRequestsAssetResponse>,
+  input: __S(1248, __c78, 0) as any as S.Schema<GetRequestsAssetRequest>,
+  output: __S(1249, __c78, 1) as any as S.Schema<GetRequestsAssetResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -5071,8 +5071,8 @@ export const getScanResult: API.OperationMethod<
   GetScanResultError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(138, __c17, 2) as any as S.Schema<GetScanResultRequest>,
-  output: __S(141, __c17, 5) as any as S.Schema<GetScanResultResponse>,
+  input: __S(1264, __c79, 0) as any as S.Schema<GetScanResultRequest>,
+  output: __S(1267, __c79, 3) as any as S.Schema<GetScanResultResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -5086,8 +5086,8 @@ export const getThreatEvent: API.OperationMethod<
   GetThreatEventError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(142, __c17, 6) as any as S.Schema<GetThreatEventRequest>,
-  output: __S(143, __c17, 7) as any as S.Schema<GetThreatEventResponse>,
+  input: __S(1280, __c80, 0) as any as S.Schema<GetThreatEventRequest>,
+  output: __S(1296, __c81, 0) as any as S.Schema<GetThreatEventResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -5101,8 +5101,8 @@ export const getThreatEventCategory: API.OperationMethod<
   GetThreatEventCategoryError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(144, __c18, 0) as any as S.Schema<GetThreatEventCategoryRequest>,
-  output: __S(30, __c3, 6) as any as S.Schema<GetThreatEventCategoryResponse>,
+  input: __S(1312, __c82, 0) as any as S.Schema<GetThreatEventCategoryRequest>,
+  output: __S(2272, __c142, 0) as any as S.Schema<GetThreatEventCategoryResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -5116,8 +5116,8 @@ export const getThreatEventDataset: API.OperationMethod<
   GetThreatEventDatasetError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(145, __c18, 1) as any as S.Schema<GetThreatEventDatasetRequest>,
-  output: __S(32, __c4, 0) as any as S.Schema<GetThreatEventDatasetResponse>,
+  input: __S(1328, __c83, 0) as any as S.Schema<GetThreatEventDatasetRequest>,
+  output: __S(96, __c6, 0) as any as S.Schema<GetThreatEventDatasetResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -5131,8 +5131,8 @@ export const getThreatEventRaw: API.OperationMethod<
   GetThreatEventRawError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(146, __c18, 2) as any as S.Schema<GetThreatEventRawRequest>,
-  output: __S(147, __c18, 3) as any as S.Schema<GetThreatEventRawResponse>,
+  input: __S(1376, __c86, 0) as any as S.Schema<GetThreatEventRawRequest>,
+  output: __S(1377, __c86, 1) as any as S.Schema<GetThreatEventRawResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -5146,8 +5146,8 @@ export const getThreatEventsDatasetsEvent: API.OperationMethod<
   GetThreatEventsDatasetsEventError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(148, __c18, 4) as any as S.Schema<GetThreatEventsDatasetsEventRequest>,
-  output: __S(28, __c3, 4) as any as S.Schema<GetThreatEventsDatasetsEventResponse>,
+  input: __S(1392, __c87, 0) as any as S.Schema<GetThreatEventsDatasetsEventRequest>,
+  output: __S(2080, __c130, 0) as any as S.Schema<GetThreatEventsDatasetsEventResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -5161,8 +5161,8 @@ export const getThreatEventsIndicatorsByDataset: API.OperationMethod<
   GetThreatEventsIndicatorsByDatasetError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(149, __c18, 5) as any as S.Schema<GetThreatEventsIndicatorsByDatasetRequest>,
-  output: __S(154, __c19, 2) as any as S.Schema<GetThreatEventsIndicatorsByDatasetResponse>,
+  input: __S(1408, __c88, 0) as any as S.Schema<GetThreatEventsIndicatorsByDatasetRequest>,
+  output: __S(1410, __c88, 2) as any as S.Schema<GetThreatEventsIndicatorsByDatasetResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -5176,8 +5176,8 @@ export const getThreatEventsQuery: API.OperationMethod<
   GetThreatEventsQueryError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(155, __c19, 3) as any as S.Schema<GetThreatEventsQueryRequest>,
-  output: __S(38, __c4, 6) as any as S.Schema<GetThreatEventsQueryResponse>,
+  input: __S(1456, __c91, 0) as any as S.Schema<GetThreatEventsQueryRequest>,
+  output: __S(400, __c25, 0) as any as S.Schema<GetThreatEventsQueryResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -5191,8 +5191,8 @@ export const getThreatSignalsArticle: API.OperationMethod<
   GetThreatSignalsArticleError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(156, __c19, 4) as any as S.Schema<GetThreatSignalsArticleRequest>,
-  output: __S(157, __c19, 5) as any as S.Schema<GetThreatSignalsArticleResponse>,
+  input: __S(1472, __c92, 0) as any as S.Schema<GetThreatSignalsArticleRequest>,
+  output: __S(1473, __c92, 1) as any as S.Schema<GetThreatSignalsArticleResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -5206,8 +5206,8 @@ export const getThreatSignalsArticlesContent: API.OperationMethod<
   GetThreatSignalsArticlesContentError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(158, __c19, 6) as any as S.Schema<GetThreatSignalsArticlesContentRequest>,
-  output: __S(83, __c10, 3) as any as S.Schema<GetThreatSignalsArticlesContentResponse>,
+  input: __S(1488, __c93, 0) as any as S.Schema<GetThreatSignalsArticlesContentRequest>,
+  output: __S(704, __c44, 0) as any as S.Schema<GetThreatSignalsArticlesContentResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -5221,8 +5221,8 @@ export const getThreatSignalsArticlesSkillOutput: API.OperationMethod<
   GetThreatSignalsArticlesSkillOutputError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(159, __c19, 7) as any as S.Schema<GetThreatSignalsArticlesSkillOutputRequest>,
-  output: __S(160, __c20, 0) as any as S.Schema<GetThreatSignalsArticlesSkillOutputResponse>,
+  input: __S(1504, __c94, 0) as any as S.Schema<GetThreatSignalsArticlesSkillOutputRequest>,
+  output: __S(1505, __c94, 1) as any as S.Schema<GetThreatSignalsArticlesSkillOutputResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -5236,8 +5236,8 @@ export const getThreatSignalsFeedsRaw: API.OperationMethod<
   GetThreatSignalsFeedsRawError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(161, __c20, 1) as any as S.Schema<GetThreatSignalsFeedsRawRequest>,
-  output: __S(83, __c10, 3) as any as S.Schema<GetThreatSignalsFeedsRawResponse>,
+  input: __S(1520, __c95, 0) as any as S.Schema<GetThreatSignalsFeedsRawRequest>,
+  output: __S(704, __c44, 0) as any as S.Schema<GetThreatSignalsFeedsRawResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -5251,8 +5251,8 @@ export const getThreatSignalsFeedsSkill: API.OperationMethod<
   GetThreatSignalsFeedsSkillError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(162, __c20, 2) as any as S.Schema<GetThreatSignalsFeedsSkillRequest>,
-  output: __S(165, __c20, 5) as any as S.Schema<GetThreatSignalsFeedsSkillResponse>,
+  input: __S(1536, __c96, 0) as any as S.Schema<GetThreatSignalsFeedsSkillRequest>,
+  output: __S(1537, __c96, 1) as any as S.Schema<GetThreatSignalsFeedsSkillResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -5266,8 +5266,8 @@ export const getThreatSignalsSkill: API.OperationMethod<
   GetThreatSignalsSkillError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(166, __c20, 6) as any as S.Schema<GetThreatSignalsSkillRequest>,
-  output: __S(79, __c9, 7) as any as S.Schema<GetThreatSignalsSkillResponse>,
+  input: __S(1568, __c98, 0) as any as S.Schema<GetThreatSignalsSkillRequest>,
+  output: __S(624, __c39, 0) as any as S.Schema<GetThreatSignalsSkillResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -5281,8 +5281,8 @@ export const getThreatSignalsSkillsTagCategory: API.OperationMethod<
   GetThreatSignalsSkillsTagCategoryError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(167, __c20, 7) as any as S.Schema<GetThreatSignalsSkillsTagCategoryRequest>,
-  output: __S(168, __c21, 0) as any as S.Schema<GetThreatSignalsSkillsTagCategoryResponse>,
+  input: __S(1600, __c100, 0) as any as S.Schema<GetThreatSignalsSkillsTagCategoryRequest>,
+  output: __S(1601, __c100, 1) as any as S.Schema<GetThreatSignalsSkillsTagCategoryResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -5296,8 +5296,8 @@ export const listRequests: API.OperationMethod<
   ListRequestsError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(169, __c21, 1) as any as S.Schema<ListRequestsRequest>,
-  output: __S(172, __c21, 4) as any as S.Schema<ListRequestsResponse>,
+  input: __S(1616, __c101, 0) as any as S.Schema<ListRequestsRequest>,
+  output: __S(1619, __c101, 3) as any as S.Schema<ListRequestsResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -5313,8 +5313,8 @@ export const listScanConfigs: API.PaginatedOperationMethod<
   ScansConfigListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(173, __c21, 5) as any as S.Schema<ListScanConfigsRequest>,
-    output: __S(176, __c22, 0) as any as S.Schema<ListScanConfigsResponse>,
+    input: __S(1632, __c102, 0) as any as S.Schema<ListScanConfigsRequest>,
+    output: __S(1635, __c102, 3) as any as S.Schema<ListScanConfigsResponse>,
     errors: [CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
     retry: Retry.Retry,
@@ -5331,8 +5331,8 @@ export const listThreatEventAttackers: API.OperationMethod<
   ListThreatEventAttackersError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(177, __c22, 1) as any as S.Schema<ListThreatEventAttackersRequest>,
-  output: __S(179, __c22, 3) as any as S.Schema<ListThreatEventAttackersResponse>,
+  input: __S(1648, __c103, 0) as any as S.Schema<ListThreatEventAttackersRequest>,
+  output: __S(1680, __c105, 0) as any as S.Schema<ListThreatEventAttackersResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -5346,8 +5346,8 @@ export const listThreatEventCategories: API.OperationMethod<
   ListThreatEventCategoriesError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(180, __c22, 4) as any as S.Schema<ListThreatEventCategoriesRequest>,
-  output: __S(30, __c3, 6) as any as S.Schema<ListThreatEventCategoriesResponse>,
+  input: __S(1696, __c106, 0) as any as S.Schema<ListThreatEventCategoriesRequest>,
+  output: __S(2272, __c142, 0) as any as S.Schema<ListThreatEventCategoriesResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -5361,8 +5361,8 @@ export const listThreatEventCountries: API.OperationMethod<
   ListThreatEventCountriesError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(181, __c22, 5) as any as S.Schema<ListThreatEventCountriesRequest>,
-  output: __S(184, __c23, 0) as any as S.Schema<ListThreatEventCountriesResponse>,
+  input: __S(1712, __c107, 0) as any as S.Schema<ListThreatEventCountriesRequest>,
+  output: __S(1715, __c107, 3) as any as S.Schema<ListThreatEventCountriesResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -5376,8 +5376,8 @@ export const listThreatEventDatasets: API.OperationMethod<
   ListThreatEventDatasetsError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(185, __c23, 1) as any as S.Schema<ListThreatEventDatasetsRequest>,
-  output: __S(186, __c23, 2) as any as S.Schema<ListThreatEventDatasetsResponse>,
+  input: __S(1728, __c108, 0) as any as S.Schema<ListThreatEventDatasetsRequest>,
+  output: __S(1729, __c108, 1) as any as S.Schema<ListThreatEventDatasetsResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -5391,8 +5391,8 @@ export const listThreatEventIndicatorTypes: API.OperationMethod<
   ListThreatEventIndicatorTypesError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(187, __c23, 3) as any as S.Schema<ListThreatEventIndicatorTypesRequest>,
-  output: __S(179, __c22, 3) as any as S.Schema<ListThreatEventIndicatorTypesResponse>,
+  input: __S(1744, __c109, 0) as any as S.Schema<ListThreatEventIndicatorTypesRequest>,
+  output: __S(1680, __c105, 0) as any as S.Schema<ListThreatEventIndicatorTypesResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -5406,8 +5406,8 @@ export const listThreatEvents: API.OperationMethod<
   ListThreatEventsError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(188, __c23, 4) as any as S.Schema<ListThreatEventsRequest>,
-  output: __S(143, __c17, 7) as any as S.Schema<ListThreatEventsResponse>,
+  input: __S(1760, __c110, 0) as any as S.Schema<ListThreatEventsRequest>,
+  output: __S(1296, __c81, 0) as any as S.Schema<ListThreatEventsResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -5421,8 +5421,8 @@ export const listThreatEventsAggregate: API.OperationMethod<
   ListThreatEventsAggregateError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(189, __c23, 5) as any as S.Schema<ListThreatEventsAggregateRequest>,
-  output: __S(193, __c24, 1) as any as S.Schema<ListThreatEventsAggregateResponse>,
+  input: __S(1776, __c111, 0) as any as S.Schema<ListThreatEventsAggregateRequest>,
+  output: __S(1780, __c111, 4) as any as S.Schema<ListThreatEventsAggregateResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -5436,8 +5436,8 @@ export const listThreatEventsCategoriesCatalog: API.OperationMethod<
   ListThreatEventsCategoriesCatalogError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(194, __c24, 2) as any as S.Schema<ListThreatEventsCategoriesCatalogRequest>,
-  output: __S(30, __c3, 6) as any as S.Schema<ListThreatEventsCategoriesCatalogResponse>,
+  input: __S(1824, __c114, 0) as any as S.Schema<ListThreatEventsCategoriesCatalogRequest>,
+  output: __S(2272, __c142, 0) as any as S.Schema<ListThreatEventsCategoriesCatalogResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -5451,8 +5451,8 @@ export const listThreatEventsGraph: API.OperationMethod<
   ListThreatEventsGraphError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(195, __c24, 3) as any as S.Schema<ListThreatEventsGraphRequest>,
-  output: __S(199, __c24, 7) as any as S.Schema<ListThreatEventsGraphResponse>,
+  input: __S(1840, __c115, 0) as any as S.Schema<ListThreatEventsGraphRequest>,
+  output: __S(1844, __c115, 4) as any as S.Schema<ListThreatEventsGraphResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -5466,8 +5466,8 @@ export const listThreatEventsIndicators: API.OperationMethod<
   ListThreatEventsIndicatorsError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(200, __c25, 0) as any as S.Schema<ListThreatEventsIndicatorsRequest>,
-  output: __S(218, __c27, 2) as any as S.Schema<ListThreatEventsIndicatorsResponse>,
+  input: __S(1856, __c116, 0) as any as S.Schema<ListThreatEventsIndicatorsRequest>,
+  output: __S(1870, __c116, 14) as any as S.Schema<ListThreatEventsIndicatorsResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -5481,8 +5481,8 @@ export const listThreatEventsIndicatorsAggregate: API.OperationMethod<
   ListThreatEventsIndicatorsAggregateError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(219, __c27, 3) as any as S.Schema<ListThreatEventsIndicatorsAggregateRequest>,
-  output: __S(222, __c27, 6) as any as S.Schema<ListThreatEventsIndicatorsAggregateResponse>,
+  input: __S(1920, __c120, 0) as any as S.Schema<ListThreatEventsIndicatorsAggregateRequest>,
+  output: __S(1923, __c120, 3) as any as S.Schema<ListThreatEventsIndicatorsAggregateResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -5496,8 +5496,8 @@ export const listThreatEventsIndicatorsByDataset: API.OperationMethod<
   ListThreatEventsIndicatorsByDatasetError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(223, __c27, 7) as any as S.Schema<ListThreatEventsIndicatorsByDatasetRequest>,
-  output: __S(227, __c28, 3) as any as S.Schema<ListThreatEventsIndicatorsByDatasetResponse>,
+  input: __S(1936, __c121, 0) as any as S.Schema<ListThreatEventsIndicatorsByDatasetRequest>,
+  output: __S(1939, __c121, 3) as any as S.Schema<ListThreatEventsIndicatorsByDatasetResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -5511,8 +5511,8 @@ export const listThreatEventsIndicatorsByDatasetTags: API.OperationMethod<
   ListThreatEventsIndicatorsByDatasetTagsError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(228, __c28, 4) as any as S.Schema<ListThreatEventsIndicatorsByDatasetTagsRequest>,
-  output: __S(83, __c10, 3) as any as S.Schema<ListThreatEventsIndicatorsByDatasetTagsResponse>,
+  input: __S(1968, __c123, 0) as any as S.Schema<ListThreatEventsIndicatorsByDatasetTagsRequest>,
+  output: __S(704, __c44, 0) as any as S.Schema<ListThreatEventsIndicatorsByDatasetTagsResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -5526,8 +5526,8 @@ export const listThreatEventsIndicatorsTypes: API.OperationMethod<
   ListThreatEventsIndicatorsTypesError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(229, __c28, 5) as any as S.Schema<ListThreatEventsIndicatorsTypesRequest>,
-  output: __S(179, __c22, 3) as any as S.Schema<ListThreatEventsIndicatorsTypesResponse>,
+  input: __S(1984, __c124, 0) as any as S.Schema<ListThreatEventsIndicatorsTypesRequest>,
+  output: __S(1680, __c105, 0) as any as S.Schema<ListThreatEventsIndicatorsTypesResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -5541,8 +5541,8 @@ export const listThreatEventsQueries: API.OperationMethod<
   ListThreatEventsQueriesError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(230, __c28, 6) as any as S.Schema<ListThreatEventsQueriesRequest>,
-  output: __S(38, __c4, 6) as any as S.Schema<ListThreatEventsQueriesResponse>,
+  input: __S(2000, __c125, 0) as any as S.Schema<ListThreatEventsQueriesRequest>,
+  output: __S(400, __c25, 0) as any as S.Schema<ListThreatEventsQueriesResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -5556,8 +5556,8 @@ export const listThreatEventsRelationships: API.OperationMethod<
   ListThreatEventsRelationshipsError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(231, __c28, 7) as any as S.Schema<ListThreatEventsRelationshipsRequest>,
-  output: __S(28, __c3, 4) as any as S.Schema<ListThreatEventsRelationshipsResponse>,
+  input: __S(2016, __c126, 0) as any as S.Schema<ListThreatEventsRelationshipsRequest>,
+  output: __S(2080, __c130, 0) as any as S.Schema<ListThreatEventsRelationshipsResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -5571,8 +5571,8 @@ export const listThreatEventsTags: API.OperationMethod<
   ListThreatEventsTagsError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(232, __c29, 0) as any as S.Schema<ListThreatEventsTagsRequest>,
-  output: __S(238, __c29, 6) as any as S.Schema<ListThreatEventsTagsResponse>,
+  input: __S(2032, __c127, 0) as any as S.Schema<ListThreatEventsTagsRequest>,
+  output: __S(2038, __c127, 6) as any as S.Schema<ListThreatEventsTagsResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -5586,8 +5586,8 @@ export const listThreatEventsTagsCategories: API.OperationMethod<
   ListThreatEventsTagsCategoriesError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(239, __c29, 7) as any as S.Schema<ListThreatEventsTagsCategoriesRequest>,
-  output: __S(245, __c30, 5) as any as S.Schema<ListThreatEventsTagsCategoriesResponse>,
+  input: __S(2096, __c131, 0) as any as S.Schema<ListThreatEventsTagsCategoriesRequest>,
+  output: __S(2102, __c131, 6) as any as S.Schema<ListThreatEventsTagsCategoriesResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -5601,8 +5601,8 @@ export const listThreatEventsTagsIndicators: API.OperationMethod<
   ListThreatEventsTagsIndicatorsError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(246, __c30, 6) as any as S.Schema<ListThreatEventsTagsIndicatorsRequest>,
-  output: __S(249, __c31, 1) as any as S.Schema<ListThreatEventsTagsIndicatorsResponse>,
+  input: __S(2112, __c132, 0) as any as S.Schema<ListThreatEventsTagsIndicatorsRequest>,
+  output: __S(2115, __c132, 3) as any as S.Schema<ListThreatEventsTagsIndicatorsResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -5616,8 +5616,8 @@ export const listThreatEventsTagsIndicatorsByDataset: API.OperationMethod<
   ListThreatEventsTagsIndicatorsByDatasetError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(250, __c31, 2) as any as S.Schema<ListThreatEventsTagsIndicatorsByDatasetRequest>,
-  output: __S(253, __c31, 5) as any as S.Schema<ListThreatEventsTagsIndicatorsByDatasetResponse>,
+  input: __S(2128, __c133, 0) as any as S.Schema<ListThreatEventsTagsIndicatorsByDatasetRequest>,
+  output: __S(2131, __c133, 3) as any as S.Schema<ListThreatEventsTagsIndicatorsByDatasetResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -5631,8 +5631,12 @@ export const listThreatEventsTargetIndustriesByDataset: API.OperationMethod<
   ListThreatEventsTargetIndustriesByDatasetError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(254, __c31, 6) as any as S.Schema<ListThreatEventsTargetIndustriesByDatasetRequest>,
-  output: __S(179, __c22, 3) as any as S.Schema<ListThreatEventsTargetIndustriesByDatasetResponse>,
+  input: __S(2144, __c134, 0) as any as S.Schema<ListThreatEventsTargetIndustriesByDatasetRequest>,
+  output: __S(
+    1680,
+    __c105,
+    0,
+  ) as any as S.Schema<ListThreatEventsTargetIndustriesByDatasetResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -5646,8 +5650,8 @@ export const listThreatEventsTargetIndustriesCatalog: API.OperationMethod<
   ListThreatEventsTargetIndustriesCatalogError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(255, __c31, 7) as any as S.Schema<ListThreatEventsTargetIndustriesCatalogRequest>,
-  output: __S(179, __c22, 3) as any as S.Schema<ListThreatEventsTargetIndustriesCatalogResponse>,
+  input: __S(2160, __c135, 0) as any as S.Schema<ListThreatEventsTargetIndustriesCatalogRequest>,
+  output: __S(1680, __c105, 0) as any as S.Schema<ListThreatEventsTargetIndustriesCatalogResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -5661,8 +5665,8 @@ export const listThreatEventTargetIndustries: API.OperationMethod<
   ListThreatEventTargetIndustriesError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(256, __c32, 0) as any as S.Schema<ListThreatEventTargetIndustriesRequest>,
-  output: __S(179, __c22, 3) as any as S.Schema<ListThreatEventTargetIndustriesResponse>,
+  input: __S(2176, __c136, 0) as any as S.Schema<ListThreatEventTargetIndustriesRequest>,
+  output: __S(1680, __c105, 0) as any as S.Schema<ListThreatEventTargetIndustriesResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -5676,8 +5680,8 @@ export const listThreatSignalsArticles: API.OperationMethod<
   ListThreatSignalsArticlesError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(257, __c32, 1) as any as S.Schema<ListThreatSignalsArticlesRequest>,
-  output: __S(262, __c32, 6) as any as S.Schema<ListThreatSignalsArticlesResponse>,
+  input: __S(2192, __c137, 0) as any as S.Schema<ListThreatSignalsArticlesRequest>,
+  output: __S(2197, __c137, 5) as any as S.Schema<ListThreatSignalsArticlesResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -5691,8 +5695,8 @@ export const listThreatSignalsCategories: API.OperationMethod<
   ListThreatSignalsCategoriesError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(263, __c32, 7) as any as S.Schema<ListThreatSignalsCategoriesRequest>,
-  output: __S(266, __c33, 2) as any as S.Schema<ListThreatSignalsCategoriesResponse>,
+  input: __S(2208, __c138, 0) as any as S.Schema<ListThreatSignalsCategoriesRequest>,
+  output: __S(2211, __c138, 3) as any as S.Schema<ListThreatSignalsCategoriesResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -5706,8 +5710,8 @@ export const listThreatSignalsFeeds: API.OperationMethod<
   ListThreatSignalsFeedsError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(267, __c33, 3) as any as S.Schema<ListThreatSignalsFeedsRequest>,
-  output: __S(270, __c33, 6) as any as S.Schema<ListThreatSignalsFeedsResponse>,
+  input: __S(2224, __c139, 0) as any as S.Schema<ListThreatSignalsFeedsRequest>,
+  output: __S(2227, __c139, 3) as any as S.Schema<ListThreatSignalsFeedsResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -5721,8 +5725,8 @@ export const listThreatSignalsIndicators: API.OperationMethod<
   ListThreatSignalsIndicatorsError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(271, __c33, 7) as any as S.Schema<ListThreatSignalsIndicatorsRequest>,
-  output: __S(275, __c34, 3) as any as S.Schema<ListThreatSignalsIndicatorsResponse>,
+  input: __S(2240, __c140, 0) as any as S.Schema<ListThreatSignalsIndicatorsRequest>,
+  output: __S(2244, __c140, 4) as any as S.Schema<ListThreatSignalsIndicatorsResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -5736,8 +5740,8 @@ export const listThreatSignalsSkills: API.OperationMethod<
   ListThreatSignalsSkillsError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(276, __c34, 4) as any as S.Schema<ListThreatSignalsSkillsRequest>,
-  output: __S(277, __c34, 5) as any as S.Schema<ListThreatSignalsSkillsResponse>,
+  input: __S(2288, __c143, 0) as any as S.Schema<ListThreatSignalsSkillsRequest>,
+  output: __S(2289, __c143, 1) as any as S.Schema<ListThreatSignalsSkillsResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -5751,8 +5755,8 @@ export const patchScanConfig: API.OperationMethod<
   PatchScanConfigError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(278, __c34, 6) as any as S.Schema<PatchScanConfigRequest>,
-  output: __S(24, __c3, 0) as any as S.Schema<PatchScanConfigResponse>,
+  input: __S(2304, __c144, 0) as any as S.Schema<PatchScanConfigRequest>,
+  output: __S(1808, __c113, 0) as any as S.Schema<PatchScanConfigResponse>,
   errors: [ScanConfigNotFound, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -5766,8 +5770,8 @@ export const patchThreatEvent: API.OperationMethod<
   PatchThreatEventError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(280, __c35, 0) as any as S.Schema<PatchThreatEventRequest>,
-  output: __S(143, __c17, 7) as any as S.Schema<PatchThreatEventResponse>,
+  input: __S(2321, __c145, 1) as any as S.Schema<PatchThreatEventRequest>,
+  output: __S(1296, __c81, 0) as any as S.Schema<PatchThreatEventResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -5781,8 +5785,8 @@ export const patchThreatEventCategory: API.OperationMethod<
   PatchThreatEventCategoryError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(281, __c35, 1) as any as S.Schema<PatchThreatEventCategoryRequest>,
-  output: __S(30, __c3, 6) as any as S.Schema<PatchThreatEventCategoryResponse>,
+  input: __S(2336, __c146, 0) as any as S.Schema<PatchThreatEventCategoryRequest>,
+  output: __S(2272, __c142, 0) as any as S.Schema<PatchThreatEventCategoryResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -5796,8 +5800,8 @@ export const patchThreatEventDataset: API.OperationMethod<
   PatchThreatEventDatasetError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(282, __c35, 2) as any as S.Schema<PatchThreatEventDatasetRequest>,
-  output: __S(32, __c4, 0) as any as S.Schema<PatchThreatEventDatasetResponse>,
+  input: __S(2352, __c147, 0) as any as S.Schema<PatchThreatEventDatasetRequest>,
+  output: __S(96, __c6, 0) as any as S.Schema<PatchThreatEventDatasetResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -5811,8 +5815,8 @@ export const patchThreatEventRaw: API.OperationMethod<
   PatchThreatEventRawError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(283, __c35, 3) as any as S.Schema<PatchThreatEventRawRequest>,
-  output: __S(284, __c35, 4) as any as S.Schema<PatchThreatEventRawResponse>,
+  input: __S(2368, __c148, 0) as any as S.Schema<PatchThreatEventRawRequest>,
+  output: __S(2369, __c148, 1) as any as S.Schema<PatchThreatEventRawResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -5826,8 +5830,8 @@ export const pollThreatSignalsFeed: API.OperationMethod<
   PollThreatSignalsFeedError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(285, __c35, 5) as any as S.Schema<PollThreatSignalsFeedRequest>,
-  output: __S(288, __c36, 0) as any as S.Schema<PollThreatSignalsFeedResponse>,
+  input: __S(2384, __c149, 0) as any as S.Schema<PollThreatSignalsFeedRequest>,
+  output: __S(2387, __c149, 3) as any as S.Schema<PollThreatSignalsFeedResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -5841,8 +5845,8 @@ export const quotaRequestPriority: API.OperationMethod<
   QuotaRequestPriorityError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(289, __c36, 1) as any as S.Schema<QuotaRequestPriorityRequest>,
-  output: __S(290, __c36, 2) as any as S.Schema<QuotaRequestPriorityResponse>,
+  input: __S(2400, __c150, 0) as any as S.Schema<QuotaRequestPriorityRequest>,
+  output: __S(2401, __c150, 1) as any as S.Schema<QuotaRequestPriorityResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -5856,8 +5860,8 @@ export const rawThreatEventDataset: API.OperationMethod<
   RawThreatEventDatasetError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(291, __c36, 3) as any as S.Schema<RawThreatEventDatasetRequest>,
-  output: __S(292, __c36, 4) as any as S.Schema<RawThreatEventDatasetResponse>,
+  input: __S(2416, __c151, 0) as any as S.Schema<RawThreatEventDatasetRequest>,
+  output: __S(2417, __c151, 1) as any as S.Schema<RawThreatEventDatasetResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -5871,8 +5875,8 @@ export const requestsConstants: API.OperationMethod<
   RequestsConstantsError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(293, __c36, 5) as any as S.Schema<RequestsConstantsRequest>,
-  output: __S(295, __c36, 7) as any as S.Schema<RequestsConstantsResponse>,
+  input: __S(2432, __c152, 0) as any as S.Schema<RequestsConstantsRequest>,
+  output: __S(2434, __c152, 2) as any as S.Schema<RequestsConstantsResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -5886,8 +5890,8 @@ export const requestsQuota: API.OperationMethod<
   RequestsQuotaError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(296, __c37, 0) as any as S.Schema<RequestsQuotaRequest>,
-  output: __S(297, __c37, 1) as any as S.Schema<RequestsQuotaResponse>,
+  input: __S(112, __c7, 0) as any as S.Schema<RequestsQuotaRequest>,
+  output: __S(113, __c7, 1) as any as S.Schema<RequestsQuotaResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -5901,8 +5905,8 @@ export const requestsTypes: API.OperationMethod<
   RequestsTypesError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(298, __c37, 2) as any as S.Schema<RequestsTypesRequest>,
-  output: __S(299, __c37, 3) as any as S.Schema<RequestsTypesResponse>,
+  input: __S(128, __c8, 0) as any as S.Schema<RequestsTypesRequest>,
+  output: __S(129, __c8, 1) as any as S.Schema<RequestsTypesResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -5916,8 +5920,8 @@ export const searchThreatSignal: API.OperationMethod<
   SearchThreatSignalError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(300, __c37, 4) as any as S.Schema<SearchThreatSignalRequest>,
-  output: __S(303, __c37, 7) as any as S.Schema<SearchThreatSignalResponse>,
+  input: __S(144, __c9, 0) as any as S.Schema<SearchThreatSignalRequest>,
+  output: __S(162, __c10, 2) as any as S.Schema<SearchThreatSignalResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -5931,8 +5935,8 @@ export const threatEventsBulkCreateRelationships: API.OperationMethod<
   ThreatEventsBulkCreateRelationshipsError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(307, __c38, 3) as any as S.Schema<ThreatEventsBulkCreateRelationshipsRequest>,
-  output: __S(308, __c38, 4) as any as S.Schema<ThreatEventsBulkCreateRelationshipsResponse>,
+  input: __S(179, __c11, 3) as any as S.Schema<ThreatEventsBulkCreateRelationshipsRequest>,
+  output: __S(180, __c11, 4) as any as S.Schema<ThreatEventsBulkCreateRelationshipsResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -5946,8 +5950,8 @@ export const threatSignalsArticlesBulkEdit: API.OperationMethod<
   ThreatSignalsArticlesBulkEditError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(309, __c38, 5) as any as S.Schema<ThreatSignalsArticlesBulkEditRequest>,
-  output: __S(310, __c38, 6) as any as S.Schema<ThreatSignalsArticlesBulkEditResponse>,
+  input: __S(192, __c12, 0) as any as S.Schema<ThreatSignalsArticlesBulkEditRequest>,
+  output: __S(193, __c12, 1) as any as S.Schema<ThreatSignalsArticlesBulkEditResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -5961,8 +5965,8 @@ export const threatSignalsHealth: API.OperationMethod<
   ThreatSignalsHealthError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(311, __c38, 7) as any as S.Schema<ThreatSignalsHealthRequest>,
-  output: __S(312, __c39, 0) as any as S.Schema<ThreatSignalsHealthResponse>,
+  input: __S(208, __c13, 0) as any as S.Schema<ThreatSignalsHealthRequest>,
+  output: __S(209, __c13, 1) as any as S.Schema<ThreatSignalsHealthResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -5976,8 +5980,8 @@ export const threatSignalsSearchSearch: API.OperationMethod<
   ThreatSignalsSearchSearchError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(313, __c39, 1) as any as S.Schema<ThreatSignalsSearchSearchRequest>,
-  output: __S(303, __c37, 7) as any as S.Schema<ThreatSignalsSearchSearchResponse>,
+  input: __S(224, __c14, 0) as any as S.Schema<ThreatSignalsSearchSearchRequest>,
+  output: __S(162, __c10, 2) as any as S.Schema<ThreatSignalsSearchSearchResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -5991,8 +5995,8 @@ export const updateRequest: API.OperationMethod<
   UpdateRequestError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(314, __c39, 2) as any as S.Schema<UpdateRequestRequest>,
-  output: __S(14, __c1, 6) as any as S.Schema<UpdateRequestResponse>,
+  input: __S(240, __c15, 0) as any as S.Schema<UpdateRequestRequest>,
+  output: __S(896, __c56, 0) as any as S.Schema<UpdateRequestResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -6006,8 +6010,8 @@ export const updateRequestAsset: API.OperationMethod<
   UpdateRequestAssetError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(315, __c39, 3) as any as S.Schema<UpdateRequestAssetRequest>,
-  output: __S(316, __c39, 4) as any as S.Schema<UpdateRequestAssetResponse>,
+  input: __S(256, __c16, 0) as any as S.Schema<UpdateRequestAssetRequest>,
+  output: __S(257, __c16, 1) as any as S.Schema<UpdateRequestAssetResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -6021,8 +6025,8 @@ export const updateRequestMessage: API.OperationMethod<
   UpdateRequestMessageError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(317, __c39, 5) as any as S.Schema<UpdateRequestMessageRequest>,
-  output: __S(20, __c2, 4) as any as S.Schema<UpdateRequestMessageResponse>,
+  input: __S(272, __c17, 0) as any as S.Schema<UpdateRequestMessageRequest>,
+  output: __S(1360, __c85, 0) as any as S.Schema<UpdateRequestMessageResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -6036,8 +6040,8 @@ export const updateRequestPriority: API.OperationMethod<
   UpdateRequestPriorityError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(318, __c39, 6) as any as S.Schema<UpdateRequestPriorityRequest>,
-  output: __S(135, __c16, 7) as any as S.Schema<UpdateRequestPriorityResponse>,
+  input: __S(320, __c20, 0) as any as S.Schema<UpdateRequestPriorityRequest>,
+  output: __S(1232, __c77, 0) as any as S.Schema<UpdateRequestPriorityResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -6051,8 +6055,8 @@ export const updateThreatSignalsFeedsSkill: API.OperationMethod<
   UpdateThreatSignalsFeedsSkillError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(319, __c39, 7) as any as S.Schema<UpdateThreatSignalsFeedsSkillRequest>,
-  output: __S(322, __c40, 2) as any as S.Schema<UpdateThreatSignalsFeedsSkillResponse>,
+  input: __S(336, __c21, 0) as any as S.Schema<UpdateThreatSignalsFeedsSkillRequest>,
+  output: __S(339, __c21, 3) as any as S.Schema<UpdateThreatSignalsFeedsSkillResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -6066,8 +6070,8 @@ export const updateThreatSignalsSkillsTagCategory: API.OperationMethod<
   UpdateThreatSignalsSkillsTagCategoryError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(323, __c40, 3) as any as S.Schema<UpdateThreatSignalsSkillsTagCategoryRequest>,
-  output: __S(324, __c40, 4) as any as S.Schema<UpdateThreatSignalsSkillsTagCategoryResponse>,
+  input: __S(352, __c22, 0) as any as S.Schema<UpdateThreatSignalsSkillsTagCategoryRequest>,
+  output: __S(353, __c22, 1) as any as S.Schema<UpdateThreatSignalsSkillsTagCategoryResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -6077,60 +6081,35 @@ export const updateThreatSignalsSkillsTagCategory: API.OperationMethod<
 function __c0(j: number): any {
   switch (j) {
     case 0:
-      return S.Record(S.String, S.Unknown);
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          data: __S(0, __c0, 0),
-          source: S.optional(S.String),
-          tlp: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "ThreatEventsBulkCreateRequestDataItemRaw",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          indicatorType: S.String,
-          value: S.String,
-        }),
-      ).annotate({
-        identifier: "ThreatEventsBulkCreateRequestDataItemIndicatorsItem",
-      });
-    case 3:
-      return S.Array(__S(2, __c0, 2));
-    case 4:
-      return S.Array(S.String);
-    case 5:
       return S.suspend(() =>
         S.Struct({
           category: S.String,
           date: S.String,
           event: S.String,
-          raw: __S(1, __c0, 1),
+          raw: __S(48, __c3, 0),
           tlp: S.String,
           accountId: S.optional(S.Number),
           attacker: S.optional(S.String),
           attackerCountry: S.optional(S.String),
           datasetId: S.optional(S.String),
           indicator: S.optional(S.String),
-          indicators: S.optional(__S(3, __c0, 3)),
+          indicators: S.optional(__S(32, __c2, 0)),
           indicatorType: S.optional(S.String),
           insight: S.optional(S.String),
-          tags: S.optional(__S(4, __c0, 4)),
+          tags: S.optional(__S(16, __c1, 0)),
           targetCountry: S.optional(S.String),
           targetIndustry: S.optional(S.String),
         }),
       ).annotate({
         identifier: "ThreatEventsBulkCreateRequestDataItem",
       });
-    case 6:
-      return S.Array(__S(5, __c0, 5));
-    case 7:
+    case 1:
+      return S.Array(__S(0, __c0, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
-          data: __S(6, __c0, 6),
+          data: __S(1, __c0, 1),
           datasetId: S.String,
           includeCreatedEvents: S.optional(S.Boolean),
         })
@@ -6145,11 +6124,7 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "BulkCreateThreatEventsRequest",
       });
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           eventIndex: S.Number,
@@ -6159,9 +6134,9 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "ThreatEventsBulkCreateResponseCreatedEventsItem",
       });
-    case 1:
-      return S.Array(__S(8, __c1, 0));
-    case 2:
+    case 4:
+      return S.Array(__S(3, __c0, 3));
+    case 5:
       return S.suspend(() =>
         S.Struct({
           createdEventsCount: S.Number,
@@ -6169,204 +6144,23 @@ function __c1(j: number): any {
           errorCount: S.Number,
           queuedIndicatorsCount: S.Number,
           createBulkEventsRequestId: S.optional(S.NullOr(S.String)),
-          createdEvents: S.optional(S.NullOr(__S(9, __c1, 1))),
+          createdEvents: S.optional(S.NullOr(__S(4, __c0, 4))),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({
         identifier: "BulkCreateThreatEventsResponse",
       });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          accountId: S.String.pipe(T.Label("account_id")),
-          file: S.Unknown,
-        })
-          .pipe(
-            T.Http({
-              method: "POST",
-              uri: "/accounts/{account_id}/cloudforce-one/binary",
-              code: 200,
-            }),
-          )
-          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({
-        identifier: "CreateBinaryStorageRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          contentType: S.String.pipe(T.Body("content_type")),
-          md5: S.String,
-          sha1: S.String,
-          sha256: S.String,
-        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({
-        identifier: "CreateBinaryStorageResponse",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          accountId: S.String.pipe(T.Label("account_id")),
-          content: S.optional(S.String),
-          priority: S.optional(S.String),
-          requestType: S.optional(S.String.pipe(T.Body("request_type"))),
-          summary: S.optional(S.String),
-          tlp: S.optional(S.String),
-        })
-          .pipe(
-            T.Http({
-              method: "POST",
-              uri: "/accounts/{account_id}/cloudforce-one/requests/new",
-              code: 200,
-            }),
-          )
-          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({ identifier: "CreateRequestRequest" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String,
-          content: S.String,
-          created: S.String,
-          priority: S.String,
-          request: S.String,
-          summary: S.String,
-          tlp: S.String,
-          updated: S.String,
-          completed: S.optional(S.NullOr(S.String)),
-          messageTokens: S.optional(S.NullOr(S.Number).pipe(T.Body("message_tokens"))),
-          readableId: S.optional(S.NullOr(S.String).pipe(T.Body("readable_id"))),
-          status: S.optional(S.NullOr(S.String)),
-          tokens: S.optional(S.NullOr(S.Number)),
-        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({ identifier: "CreateRequestResponse" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          accountId: S.String.pipe(T.Label("account_id")),
-          requestId: S.String.pipe(T.Label("request_id")),
-          page: S.Number,
-          perPage: S.Number.pipe(T.Body("per_page")),
-        })
-          .pipe(
-            T.Http({
-              method: "POST",
-              uri: "/accounts/{account_id}/cloudforce-one/requests/{request_id}/asset",
-              code: 200,
-            }),
-          )
-          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({
-        identifier: "CreateRequestAssetRequest",
-      });
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
   }
 }
 function __c2(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.Number,
-          name: S.String,
-          created: S.optional(S.NullOr(S.String)),
-          description: S.optional(S.NullOr(S.String)),
-          fileType: S.optional(S.NullOr(S.String).pipe(T.Body("file_type"))),
-        }),
-      ).annotate({
-        identifier: "RequestsAssetsCreateResultItem",
-      });
-    case 1:
-      return S.Array(__S(16, __c2, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          result: __S(17, __c2, 1).pipe(T.EnvelopePayload()),
-          resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
-        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({
-        identifier: "CreateRequestAssetResponse",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          accountId: S.String.pipe(T.Label("account_id")),
-          requestId: S.String.pipe(T.Label("request_id")),
-          content: S.optional(S.String),
-        })
-          .pipe(
-            T.Http({
-              method: "POST",
-              uri: "/accounts/{account_id}/cloudforce-one/requests/{request_id}/message/new",
-              code: 200,
-            }),
-          )
-          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({
-        identifier: "CreateRequestMessageRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.Number,
-          author: S.String,
-          content: S.String,
-          isFollowOnRequest: S.Boolean.pipe(T.Body("is_follow_on_request")),
-          updated: S.String,
-          created: S.optional(S.NullOr(S.String)),
-        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({
-        identifier: "CreateRequestMessageResponse",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          accountId: S.String.pipe(T.Label("account_id")),
-          labels: __S(4, __c0, 4),
-          priority: S.Number,
-          requirement: S.String,
-          tlp: S.String,
-        })
-          .pipe(
-            T.Http({
-              method: "POST",
-              uri: "/accounts/{account_id}/cloudforce-one/requests/priority/new",
-              code: 200,
-            }),
-          )
-          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({
-        identifier: "CreateRequestPriorityRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String,
-          created: S.String,
-          labels: __S(4, __c0, 4),
-          priority: S.Number,
-          requirement: S.String,
-          tlp: S.String,
-          updated: S.String,
-        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({
-        identifier: "CreateRequestPriorityResponse",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          accountId: S.String.pipe(T.Label("account_id")),
-          ips: __S(4, __c0, 4),
-          frequency: S.optional(S.Number),
-          ports: S.optional(__S(4, __c0, 4)),
-        })
-          .pipe(
-            T.Http({
-              method: "POST",
-              uri: "/accounts/{account_id}/cloudforce-one/scans/config",
-              code: 200,
-            }),
-          )
-          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({ identifier: "CreateScanConfigRequest" });
+      return S.Array(__S(49, __c3, 1));
   }
 }
 function __c3(j: number): any {
@@ -6374,127 +6168,33 @@ function __c3(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          id: S.String,
-          accountId: S.String.pipe(T.Body("account_id")),
-          frequency: S.Number,
-          ips: __S(4, __c0, 4),
-          ports: __S(4, __c0, 4),
-        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({ identifier: "CreateScanConfigResponse" });
+          data: __S(64, __c4, 0),
+          source: S.optional(S.String),
+          tlp: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "ThreatEventsBulkCreateRequestDataItemRaw",
+      });
     case 1:
       return S.suspend(() =>
         S.Struct({
-          resourceId: S.String,
-          resourceType: S.String,
-          system: S.String,
-          title: S.optional(S.String),
+          indicatorType: S.String,
+          value: S.String,
         }),
       ).annotate({
-        identifier: "ThreatEventsCreateRequestSource",
+        identifier: "ThreatEventsBulkCreateRequestDataItemIndicatorsItem",
       });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          accountId: S.String.pipe(T.Label("account_id")),
-          category: S.String,
-          date: S.String,
-          event: S.String,
-          raw: __S(1, __c0, 1),
-          tlp: S.String,
-          attacker: S.optional(S.String),
-          attackerCountry: S.optional(S.String),
-          datasetId: S.optional(S.String),
-          indicator: S.optional(S.String),
-          indicators: S.optional(__S(3, __c0, 3)),
-          indicatorType: S.optional(S.String),
-          insight: S.optional(S.String),
-          source: S.optional(__S(25, __c3, 1)),
-          tags: S.optional(__S(4, __c0, 4)),
-          targetCountry: S.optional(S.String),
-          targetIndustry: S.optional(S.String),
-        })
-          .pipe(
-            T.Http({
-              method: "POST",
-              uri: "/accounts/{account_id}/cloudforce-one/events/create",
-              code: 200,
-            }),
-          )
-          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({ identifier: "CreateThreatEventRequest" });
-    case 3:
-      return S.Array(S.Number);
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          attacker: S.String,
-          attackerCountry: S.String,
-          attackerCountryAlpha3: S.String,
-          category: S.String,
-          datasetId: S.String,
-          date: S.String,
-          event: S.String,
-          hasChildren: S.Boolean,
-          indicator: S.String,
-          indicatorType: S.String,
-          indicatorTypeId: S.Number,
-          killChain: S.Number,
-          mitreAttack: __S(4, __c0, 4),
-          mitreCapec: __S(4, __c0, 4),
-          numReferenced: S.Number,
-          numReferences: S.Number,
-          rawId: S.String,
-          referenced: __S(4, __c0, 4),
-          referencedIds: __S(27, __c3, 3),
-          references: __S(4, __c0, 4),
-          referencesIds: __S(27, __c3, 3),
-          tags: __S(4, __c0, 4),
-          targetCountry: S.String,
-          targetCountryAlpha3: S.String,
-          targetIndustry: S.String,
-          tlp: S.String,
-          uuid: S.String,
-          insight: S.optional(S.NullOr(S.String)),
-          releasabilityId: S.optional(S.NullOr(S.String)),
-        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({
-        identifier: "CreateThreatEventResponse",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          accountId: S.String.pipe(T.Label("account_id")),
-          killChain: S.Number,
-          name: S.String,
-          mitreAttack: S.optional(__S(4, __c0, 4)),
-          mitreCapec: S.optional(__S(4, __c0, 4)),
-          shortname: S.optional(S.String),
-        })
-          .pipe(
-            T.Http({
-              method: "POST",
-              uri: "/accounts/{account_id}/cloudforce-one/events/categories/create",
-              code: 200,
-            }),
-          )
-          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({
-        identifier: "CreateThreatEventCategoryRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          killChain: S.Number,
-          name: S.String,
-          uuid: S.String,
-          mitreAttack: S.optional(S.NullOr(__S(4, __c0, 4))),
-          mitreCapec: S.optional(S.NullOr(__S(4, __c0, 4))),
-          shortname: S.optional(S.NullOr(S.String)),
-        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({
-        identifier: "CreateThreatEventCategoryResponse",
-      });
-    case 7:
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, S.Unknown);
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -6514,7 +6214,7 @@ function __c3(j: number): any {
       });
   }
 }
-function __c4(j: number): any {
+function __c6(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -6527,12 +6227,341 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "CreateThreatEventDatasetResponse",
       });
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          accountId: S.String.pipe(T.Label("account_id")),
+        })
+          .pipe(
+            T.Http({
+              method: "GET",
+              uri: "/accounts/{account_id}/cloudforce-one/requests/quota",
+              code: 200,
+            }),
+          )
+          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({ identifier: "RequestsQuotaRequest" });
     case 1:
+      return S.suspend(() =>
+        S.Struct({
+          anniversaryDate: S.optional(S.NullOr(S.String).pipe(T.Body("anniversary_date"))),
+          quarterAnniversaryDate: S.optional(
+            S.NullOr(S.String).pipe(T.Body("quarter_anniversary_date")),
+          ),
+          quota: S.optional(S.NullOr(S.Number)),
+          remaining: S.optional(S.NullOr(S.Number)),
+        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({ identifier: "RequestsQuotaResponse" });
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          accountId: S.String.pipe(T.Label("account_id")),
+        })
+          .pipe(
+            T.Http({
+              method: "GET",
+              uri: "/accounts/{account_id}/cloudforce-one/requests/types",
+              code: 200,
+            }),
+          )
+          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({ identifier: "RequestsTypesRequest" });
+    case 1:
+      return S.suspend(() =>
+        __S(16, __c1, 0).pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({ identifier: "RequestsTypesResponse" });
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          accountId: S.String.pipe(T.Label("account_id")),
+          query: S.String.pipe(T.Query()),
+          feedId: S.optional(S.String.pipe(T.Query("feed_id"))),
+          maxResults: S.optional(S.String.pipe(T.Query("max_results"))),
+        })
+          .pipe(
+            T.Http({
+              method: "GET",
+              uri: "/accounts/{account_id}/cloudforce-one/v2/threat-signals/search",
+              code: 200,
+            }),
+          )
+          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({
+        identifier: "SearchThreatSignalRequest",
+      });
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          articleId: S.String.pipe(T.Body("article_id")),
+          datasetId: S.String.pipe(T.Body("dataset_id")),
+          eventId: S.String.pipe(T.Body("event_id")),
+          feedId: S.String.pipe(T.Body("feed_id")),
+          score: S.Number,
+          text: S.String,
+        }),
+      ).annotate({
+        identifier: "SearchThreatSignalResponseResultsItem",
+      });
+    case 1:
+      return S.Array(__S(160, __c10, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          count: S.Number,
+          results: __S(161, __c10, 1),
+        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({
+        identifier: "SearchThreatSignalResponse",
+      });
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(49, __c3, 1));
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          category: S.String,
+          date: S.String,
+          event: S.String,
+          raw: __S(48, __c3, 0),
+          tlp: S.String,
+          accountId: S.optional(S.Number),
+          attacker: S.optional(S.String),
+          attackerCountry: S.optional(S.String),
+          datasetId: S.optional(S.String),
+          indicator: S.optional(S.String),
+          indicators: S.optional(__S(176, __c11, 0)),
+          indicatorType: S.optional(S.String),
+          insight: S.optional(S.String),
+          tags: S.optional(__S(16, __c1, 0)),
+          targetCountry: S.optional(S.String),
+          targetIndustry: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "ThreatEventsBulkCreateRelationshipsRequestDataItem",
+      });
+    case 2:
+      return S.Array(__S(177, __c11, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          accountId: S.String.pipe(T.Label("account_id")),
+          data: __S(178, __c11, 2),
+          datasetId: S.String,
+        })
+          .pipe(
+            T.Http({
+              method: "POST",
+              uri: "/accounts/{account_id}/cloudforce-one/events/create/bulk/relationships",
+              code: 200,
+            }),
+          )
+          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({
+        identifier: "ThreatEventsBulkCreateRelationshipsRequest",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          createdEventsCount: S.Number,
+          createdIndicatorsCount: S.Number,
+          createdRelationshipsCount: S.Number,
+          errorCount: S.Number,
+        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({
+        identifier: "ThreatEventsBulkCreateRelationshipsResponse",
+      });
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          accountId: S.String.pipe(T.Label("account_id")),
+          articleIds: __S(16, __c1, 0).pipe(T.Body("article_ids")),
+          read: S.Boolean,
+        })
+          .pipe(
+            T.Http({
+              method: "PATCH",
+              uri: "/accounts/{account_id}/cloudforce-one/v2/threat-signals/articles",
+              code: 200,
+            }),
+          )
+          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({
+        identifier: "ThreatSignalsArticlesBulkEditRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          updatedCount: S.Number.pipe(T.Body("updated_count")),
+        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({
+        identifier: "ThreatSignalsArticlesBulkEditResponse",
+      });
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          accountId: S.String.pipe(T.Label("account_id")),
+        })
+          .pipe(
+            T.Http({
+              method: "GET",
+              uri: "/accounts/{account_id}/cloudforce-one/v2/threat-signals/health",
+              code: 200,
+            }),
+          )
+          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({
+        identifier: "ThreatSignalsHealthRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          status: S.String,
+        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({
+        identifier: "ThreatSignalsHealthResponse",
+      });
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          accountId: S.String.pipe(T.Label("account_id")),
+          query: S.String.pipe(T.Query()),
+          feedId: S.optional(S.String.pipe(T.Query("feed_id"))),
+          maxResults: S.optional(S.String.pipe(T.Query("max_results"))),
+        })
+          .pipe(
+            T.Http({
+              method: "GET",
+              uri: "/accounts/{account_id}/cloudforce-one/v2/threat-signals/search",
+              code: 200,
+            }),
+          )
+          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({
+        identifier: "ThreatSignalsSearchSearchRequest",
+      });
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          accountId: S.String.pipe(T.Label("account_id")),
+          requestId: S.String.pipe(T.Label("request_id")),
+          content: S.optional(S.String),
+          priority: S.optional(S.String),
+          requestType: S.optional(S.String.pipe(T.Body("request_type"))),
+          summary: S.optional(S.String),
+          tlp: S.optional(S.String),
+        })
+          .pipe(
+            T.Http({
+              method: "PUT",
+              uri: "/accounts/{account_id}/cloudforce-one/requests/{request_id}",
+              code: 200,
+            }),
+          )
+          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({ identifier: "UpdateRequestRequest" });
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          accountId: S.String.pipe(T.Label("account_id")),
+          requestId: S.String.pipe(T.Label("request_id")),
+          assetId: S.String.pipe(T.Label("asset_id")),
+          source: S.optional(S.String),
+        })
+          .pipe(
+            T.Http({
+              method: "PUT",
+              uri: "/accounts/{account_id}/cloudforce-one/requests/{request_id}/asset/{asset_id}",
+              code: 200,
+            }),
+          )
+          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({
+        identifier: "UpdateRequestAssetRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.Number,
+          name: S.String,
+          created: S.optional(S.NullOr(S.String)),
+          description: S.optional(S.NullOr(S.String)),
+          fileType: S.optional(S.NullOr(S.String).pipe(T.Body("file_type"))),
+        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({
+        identifier: "UpdateRequestAssetResponse",
+      });
+  }
+}
+function __c17(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          accountId: S.String.pipe(T.Label("account_id")),
+          requestId: S.String.pipe(T.Label("request_id")),
+          messageId: S.Number.pipe(T.Label("message_id")),
+          content: S.optional(S.String),
+        })
+          .pipe(
+            T.Http({
+              method: "PUT",
+              uri: "/accounts/{account_id}/cloudforce-one/requests/{request_id}/message/{message_id}",
+              code: 200,
+            }),
+          )
+          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({
+        identifier: "UpdateRequestMessageRequest",
+      });
+  }
+}
+function __c18(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
           eventId: S.String.pipe(T.Label("event_id")),
-          tags: __S(4, __c0, 4),
+          tags: __S(16, __c1, 0),
         })
           .pipe(
             T.Http({
@@ -6545,7 +6574,11 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "CreateThreatEventEventTagRequest",
       });
-    case 2:
+  }
+}
+function __c19(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           success: S.Boolean,
@@ -6553,7 +6586,109 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "CreateThreatEventEventTagResponse",
       });
+  }
+}
+function __c20(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          accountId: S.String.pipe(T.Label("account_id")),
+          priorityId: S.String.pipe(T.Label("priority_id")),
+          labels: __S(16, __c1, 0),
+          priority: S.Number,
+          requirement: S.String,
+          tlp: S.String,
+        })
+          .pipe(
+            T.Http({
+              method: "PUT",
+              uri: "/accounts/{account_id}/cloudforce-one/requests/priority/{priority_id}",
+              code: 200,
+            }),
+          )
+          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({
+        identifier: "UpdateRequestPriorityRequest",
+      });
+  }
+}
+function __c21(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          accountId: S.String.pipe(T.Label("account_id")),
+          feedId: S.String.pipe(T.Label("feed_id")),
+          skillIds: __S(16, __c1, 0).pipe(T.Body("skill_ids")),
+        })
+          .pipe(
+            T.Http({
+              method: "PUT",
+              uri: "/accounts/{account_id}/cloudforce-one/v2/threat-signals/feeds/{feed_id}/skills",
+              code: 200,
+            }),
+          )
+          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({
+        identifier: "UpdateThreatSignalsFeedsSkillRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          position: S.Number,
+          skillId: S.String.pipe(T.Body("skill_id")),
+        }),
+      ).annotate({
+        identifier: "UpdateThreatSignalsFeedsSkillResponseSkillsItem",
+      });
+    case 2:
+      return S.Array(__S(337, __c21, 1));
     case 3:
+      return S.suspend(() =>
+        S.Struct({
+          feedId: S.String.pipe(T.Body("feed_id")),
+          skills: __S(338, __c21, 2),
+        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({
+        identifier: "UpdateThreatSignalsFeedsSkillResponse",
+      });
+  }
+}
+function __c22(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          accountId: S.String.pipe(T.Label("account_id")),
+          skillId: S.String.pipe(T.Label("skill_id")),
+          categoryUuids: __S(16, __c1, 0).pipe(T.Body("category_uuids")),
+        })
+          .pipe(
+            T.Http({
+              method: "PUT",
+              uri: "/accounts/{account_id}/cloudforce-one/v2/threat-signals/skills/{skill_id}/tag-categories",
+              code: 200,
+            }),
+          )
+          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({
+        identifier: "UpdateThreatSignalsSkillsTagCategoryRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          categoryUuids: __S(16, __c1, 0).pipe(T.Body("category_uuids")),
+          skillId: S.String.pipe(T.Body("skill_id")),
+        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({
+        identifier: "UpdateThreatSignalsSkillsTagCategoryResponse",
+      });
+  }
+}
+function __c23(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -6569,7 +6704,7 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "CreateThreatEventsGraphqlRequest",
       });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           data: S.optional(S.NullOr(S.Unknown)),
@@ -6577,7 +6712,11 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "CreateThreatEventsGraphqlResponse",
       });
-    case 5:
+  }
+}
+function __c24(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -6599,7 +6738,11 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "CreateThreatEventsQueryRequest",
       });
-    case 6:
+  }
+}
+function __c25(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.Number,
@@ -6619,11 +6762,91 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "CreateThreatEventsQueryResponse",
       });
-    case 7:
-      return S.Array(S.String);
   }
 }
-function __c5(j: number): any {
+function __c26(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          key: S.String,
+          kind: S.String,
+          allowedValues: S.optional(__S(448, __c28, 0)),
+          annotations: S.optional(__S(432, __c27, 0)),
+          deprecated: S.optional(S.Boolean),
+          deprecatedValues: S.optional(__S(448, __c28, 0)),
+          element: S.optional(S.Unknown),
+          enforcement: S.optional(S.String),
+          format: S.optional(S.String),
+          label: S.optional(S.String),
+          maxLength: S.optional(S.Number),
+          numberConstraint: S.optional(__S(433, __c27, 1)),
+          properties: S.optional(__S(64, __c4, 0)),
+          required: S.optional(S.Boolean),
+        }),
+      ).annotate({
+        identifier: "CreateThreatEventsTagsCategoryRequestSchemaItem",
+      });
+    case 1:
+      return S.Array(__S(416, __c26, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          accountId: S.String.pipe(T.Label("account_id")),
+          name: S.String,
+          description: S.optional(S.String),
+          schema: S.optional(__S(417, __c26, 1)),
+        })
+          .pipe(
+            T.Http({
+              method: "POST",
+              uri: "/accounts/{account_id}/cloudforce-one/events/tags/categories/create",
+              code: 200,
+            }),
+          )
+          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({
+        identifier: "CreateThreatEventsTagsCategoryRequest",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          key: S.String,
+          kind: S.String,
+          allowedValues: S.optional(S.NullOr(__S(448, __c28, 0))),
+          annotations: S.optional(S.NullOr(__S(464, __c29, 0))),
+          deprecated: S.optional(S.NullOr(S.Boolean)),
+          deprecatedValues: S.optional(S.NullOr(__S(448, __c28, 0))),
+          element: S.optional(S.NullOr(S.Unknown)),
+          enforcement: S.optional(S.NullOr(S.String)),
+          format: S.optional(S.NullOr(S.String)),
+          label: S.optional(S.NullOr(S.String)),
+          maxLength: S.optional(S.NullOr(S.Number)),
+          numberConstraint: S.optional(S.NullOr(__S(465, __c29, 1))),
+          properties: S.optional(S.NullOr(__S(64, __c4, 0))),
+          required: S.optional(S.NullOr(S.Boolean)),
+        }),
+      ).annotate({
+        identifier: "CreateThreatEventsTagsCategoryResponseSchemaItem",
+      });
+    case 4:
+      return S.Array(__S(419, __c26, 3));
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String,
+          uuid: S.String,
+          createdAt: S.optional(S.NullOr(S.String)),
+          description: S.optional(S.NullOr(S.String)),
+          schema: S.optional(S.NullOr(__S(420, __c26, 4))),
+          updatedAt: S.optional(S.NullOr(S.String)),
+        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({
+        identifier: "CreateThreatEventsTagsCategoryResponse",
+      });
+  }
+}
+function __c27(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -6644,49 +6867,17 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "CreateThreatEventsTagsCategoryRequestSchemaItemNumberConstraint",
       });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          key: S.String,
-          kind: S.String,
-          allowedValues: S.optional(__S(39, __c4, 7)),
-          annotations: S.optional(__S(40, __c5, 0)),
-          deprecated: S.optional(S.Boolean),
-          deprecatedValues: S.optional(__S(39, __c4, 7)),
-          element: S.optional(S.Unknown),
-          enforcement: S.optional(S.String),
-          format: S.optional(S.String),
-          label: S.optional(S.String),
-          maxLength: S.optional(S.Number),
-          numberConstraint: S.optional(__S(41, __c5, 1)),
-          properties: S.optional(__S(0, __c0, 0)),
-          required: S.optional(S.Boolean),
-        }),
-      ).annotate({
-        identifier: "CreateThreatEventsTagsCategoryRequestSchemaItem",
-      });
-    case 3:
-      return S.Array(__S(42, __c5, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          accountId: S.String.pipe(T.Label("account_id")),
-          name: S.String,
-          description: S.optional(S.String),
-          schema: S.optional(__S(43, __c5, 3)),
-        })
-          .pipe(
-            T.Http({
-              method: "POST",
-              uri: "/accounts/{account_id}/cloudforce-one/events/tags/categories/create",
-              code: 200,
-            }),
-          )
-          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({
-        identifier: "CreateThreatEventsTagsCategoryRequest",
-      });
-    case 5:
+  }
+}
+function __c28(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c29(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           confidence: S.optional(S.NullOr(S.Boolean)),
@@ -6695,7 +6886,7 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "CreateThreatEventsTagsCategoryResponseSchemaItemAnnotations",
       });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           integer: S.optional(S.NullOr(S.Boolean)),
@@ -6705,79 +6896,12 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "CreateThreatEventsTagsCategoryResponseSchemaItemNumberConstraint",
       });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          key: S.String,
-          kind: S.String,
-          allowedValues: S.optional(S.NullOr(__S(39, __c4, 7))),
-          annotations: S.optional(S.NullOr(__S(45, __c5, 5))),
-          deprecated: S.optional(S.NullOr(S.Boolean)),
-          deprecatedValues: S.optional(S.NullOr(__S(39, __c4, 7))),
-          element: S.optional(S.NullOr(S.Unknown)),
-          enforcement: S.optional(S.NullOr(S.String)),
-          format: S.optional(S.NullOr(S.String)),
-          label: S.optional(S.NullOr(S.String)),
-          maxLength: S.optional(S.NullOr(S.Number)),
-          numberConstraint: S.optional(S.NullOr(__S(46, __c5, 6))),
-          properties: S.optional(S.NullOr(__S(0, __c0, 0))),
-          required: S.optional(S.NullOr(S.Boolean)),
-        }),
-      ).annotate({
-        identifier: "CreateThreatEventsTagsCategoryResponseSchemaItem",
-      });
   }
 }
-function __c6(j: number): any {
+function __c30(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(47, __c5, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String,
-          uuid: S.String,
-          createdAt: S.optional(S.NullOr(S.String)),
-          description: S.optional(S.NullOr(S.String)),
-          schema: S.optional(S.NullOr(__S(48, __c6, 0))),
-          updatedAt: S.optional(S.NullOr(S.String)),
-        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({
-        identifier: "CreateThreatEventsTagsCategoryResponse",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          value: S.String,
-          confidence: S.optional(S.Number),
-          tlp: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "ThreatEventsTagsCreateRequestActiveDurationCase1",
-      });
-    case 3:
       return S.Unknown.pipe(/*@__PURE__*/ T.UnionCases([[], ["value", "confidence", "tlp"]]));
-    case 4:
-      return S.Unknown.pipe(/*@__PURE__*/ T.UnionCases([[], ["value", "confidence", "tlp"]]));
-    case 5:
-      return S.Array(__S(50, __c6, 2));
-    case 6:
-      return S.Unknown.pipe(/*@__PURE__*/ T.UnionCases([[], ["value", "confidence", "tlp"]]));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          url: S.String,
-          description: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "ThreatEventsTagsCreateRequestExternalReferencesItem",
-      });
-  }
-}
-function __c7(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(55, __c6, 7));
     case 1:
       return S.Unknown.pipe(/*@__PURE__*/ T.UnionCases([[], ["value", "confidence", "tlp"]]));
     case 2:
@@ -6789,31 +6913,35 @@ function __c7(j: number): any {
     case 5:
       return S.Unknown.pipe(/*@__PURE__*/ T.UnionCases([[], ["value", "confidence", "tlp"]]));
     case 6:
+      return S.Unknown.pipe(/*@__PURE__*/ T.UnionCases([[], ["value", "confidence", "tlp"]]));
+    case 7:
+      return S.Unknown.pipe(/*@__PURE__*/ T.UnionCases([[], ["value", "confidence", "tlp"]]));
+    case 8:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
           value: S.String,
-          activeDuration: S.optional(__S(51, __c6, 3)),
-          actorCategory: S.optional(__S(52, __c6, 4)),
-          aliases: S.optional(__S(53, __c6, 5)),
-          aliasGroupNames: S.optional(__S(4, __c0, 4)),
-          aliasGroupNamesInternal: S.optional(__S(4, __c0, 4)),
-          attributionOrganization: S.optional(__S(54, __c6, 6)),
+          activeDuration: S.optional(__S(480, __c30, 0)),
+          actorCategory: S.optional(__S(481, __c30, 1)),
+          aliases: S.optional(__S(497, __c31, 1)),
+          aliasGroupNames: S.optional(__S(16, __c1, 0)),
+          aliasGroupNamesInternal: S.optional(__S(16, __c1, 0)),
+          attributionOrganization: S.optional(__S(482, __c30, 2)),
           categoryUuid: S.optional(S.String),
           confidence: S.optional(S.Number),
           dateOfDiscovery: S.optional(S.String),
           description: S.optional(S.String),
-          externalReferenceLinks: S.optional(__S(4, __c0, 4)),
-          externalReferences: S.optional(__S(56, __c7, 0)),
-          internalAliases: S.optional(__S(53, __c6, 5)),
+          externalReferenceLinks: S.optional(__S(16, __c1, 0)),
+          externalReferences: S.optional(__S(499, __c31, 3)),
+          internalAliases: S.optional(__S(497, __c31, 1)),
           internalDescription: S.optional(S.String),
           lastSeen: S.optional(S.String),
-          motive: S.optional(__S(57, __c7, 1)),
-          opsecLevel: S.optional(__S(58, __c7, 2)),
-          originCountryISO: S.optional(__S(59, __c7, 3)),
-          priority: S.optional(__S(60, __c7, 4)),
-          properties: S.optional(__S(0, __c0, 0)),
-          sophisticationLevel: S.optional(__S(61, __c7, 5)),
+          motive: S.optional(__S(483, __c30, 3)),
+          opsecLevel: S.optional(__S(484, __c30, 4)),
+          originCountryISO: S.optional(__S(485, __c30, 5)),
+          priority: S.optional(__S(486, __c30, 6)),
+          properties: S.optional(__S(64, __c4, 0)),
+          sophisticationLevel: S.optional(__S(487, __c30, 7)),
           tlp: S.optional(S.String),
         })
           .pipe(
@@ -6827,7 +6955,107 @@ function __c7(j: number): any {
       ).annotate({
         identifier: "CreateThreatEventTagRequest",
       });
-    case 7:
+    case 9:
+      return S.suspend(() =>
+        S.Struct({
+          value: S.String,
+          tlp: S.optional(S.NullOr(S.String)),
+        }),
+      ).annotate({
+        identifier: "ThreatEventsTagsCreateResponseExternalReferencesAnnotatedItem",
+      });
+    case 10:
+      return S.Array(__S(489, __c30, 9));
+    case 11:
+      return S.suspend(() =>
+        S.Struct({
+          uuid: S.String,
+          value: S.String,
+          activeDuration: S.optional(S.NullOr(S.String)),
+          activeDurationAnnotated: S.optional(
+            S.NullOr(__S(500, __c31, 4)).pipe(T.Body("activeDuration_annotated")),
+          ),
+          actorCategory: S.optional(S.NullOr(S.String)),
+          actorCategoryAnnotated: S.optional(
+            S.NullOr(__S(512, __c32, 0)).pipe(T.Body("actorCategory_annotated")),
+          ),
+          aliases: S.optional(S.NullOr(__S(513, __c32, 1))),
+          aliasGroupNames: S.optional(S.NullOr(__S(16, __c1, 0))),
+          aliasGroupNamesInternal: S.optional(S.NullOr(__S(16, __c1, 0))),
+          attributionOrganization: S.optional(S.NullOr(S.String)),
+          attributionOrganizationAnnotated: S.optional(
+            S.NullOr(__S(528, __c33, 0)).pipe(T.Body("attributionOrganization_annotated")),
+          ),
+          categoryName: S.optional(S.NullOr(S.String)),
+          categoryUuid: S.optional(S.NullOr(S.String)),
+          confidence: S.optional(S.NullOr(S.Number)),
+          createdAt: S.optional(S.NullOr(S.String)),
+          dateOfDiscovery: S.optional(S.NullOr(S.String)),
+          description: S.optional(S.NullOr(S.String)),
+          externalReferenceLinks: S.optional(S.NullOr(__S(16, __c1, 0))),
+          externalReferences: S.optional(S.NullOr(__S(515, __c32, 3))),
+          externalReferencesAnnotated: S.optional(
+            S.NullOr(__S(490, __c30, 10)).pipe(T.Body("externalReferences_annotated")),
+          ),
+          internalAliases: S.optional(S.NullOr(__S(513, __c32, 1))),
+          internalDescription: S.optional(S.NullOr(S.String)),
+          lastSeen: S.optional(S.NullOr(S.String)),
+          motive: S.optional(S.NullOr(S.String)),
+          motiveAnnotated: S.optional(
+            S.NullOr(__S(512, __c32, 0)).pipe(T.Body("motive_annotated")),
+          ),
+          opsecLevel: S.optional(S.NullOr(S.String)),
+          opsecLevelAnnotated: S.optional(
+            S.NullOr(__S(512, __c32, 0)).pipe(T.Body("opsecLevel_annotated")),
+          ),
+          originCountryISO: S.optional(S.NullOr(S.String)),
+          originCountryISOAnnotated: S.optional(
+            S.NullOr(__S(512, __c32, 0)).pipe(T.Body("originCountryISO_annotated")),
+          ),
+          priority: S.optional(S.NullOr(S.Number)),
+          priorityAnnotated: S.optional(
+            S.NullOr(__S(516, __c32, 4)).pipe(T.Body("priority_annotated")),
+          ),
+          properties: S.optional(S.NullOr(__S(64, __c4, 0))),
+          sophisticationLevel: S.optional(S.NullOr(S.String)),
+          sophisticationLevelAnnotated: S.optional(
+            S.NullOr(__S(517, __c32, 5)).pipe(T.Body("sophisticationLevel_annotated")),
+          ),
+          tlp: S.optional(S.NullOr(S.String)),
+          updatedAt: S.optional(S.NullOr(S.String)),
+          version: S.optional(S.NullOr(S.Number)),
+        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({
+        identifier: "CreateThreatEventTagResponse",
+      });
+  }
+}
+function __c31(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          value: S.String,
+          confidence: S.optional(S.Number),
+          tlp: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "ThreatEventsTagsCreateRequestActiveDurationCase1",
+      });
+    case 1:
+      return S.Array(__S(496, __c31, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          url: S.String,
+          description: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "ThreatEventsTagsCreateRequestExternalReferencesItem",
+      });
+    case 3:
+      return S.Array(__S(498, __c31, 2));
+    case 4:
       return S.suspend(() =>
         S.Struct({
           value: S.String,
@@ -6838,7 +7066,7 @@ function __c7(j: number): any {
       });
   }
 }
-function __c8(j: number): any {
+function __c32(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -6851,18 +7079,8 @@ function __c8(j: number): any {
         identifier: "ThreatEventsTagsCreateResponseActorCategoryAnnotated",
       });
     case 1:
-      return S.Array(__S(64, __c8, 0));
+      return S.Array(__S(512, __c32, 0));
     case 2:
-      return S.suspend(() =>
-        S.Struct({
-          value: S.String,
-          confidence: S.optional(S.NullOr(S.Number)),
-          tlp: S.optional(S.NullOr(S.String)),
-        }),
-      ).annotate({
-        identifier: "ThreatEventsTagsCreateResponseAttributionOrganizationAnnotated",
-      });
-    case 3:
       return S.suspend(() =>
         S.Struct({
           url: S.String,
@@ -6871,20 +7089,9 @@ function __c8(j: number): any {
       ).annotate({
         identifier: "ThreatEventsTagsCreateResponseExternalReferencesItem",
       });
+    case 3:
+      return S.Array(__S(514, __c32, 2));
     case 4:
-      return S.Array(__S(67, __c8, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          value: S.String,
-          tlp: S.optional(S.NullOr(S.String)),
-        }),
-      ).annotate({
-        identifier: "ThreatEventsTagsCreateResponseExternalReferencesAnnotatedItem",
-      });
-    case 6:
-      return S.Array(__S(69, __c8, 5));
-    case 7:
       return S.suspend(() =>
         S.Struct({
           value: S.Number,
@@ -6893,11 +7100,7 @@ function __c8(j: number): any {
       ).annotate({
         identifier: "ThreatEventsTagsCreateResponsePriorityAnnotated",
       });
-  }
-}
-function __c9(j: number): any {
-  switch (j) {
-    case 0:
+    case 5:
       return S.suspend(() =>
         S.Struct({
           value: S.String,
@@ -6907,67 +7110,25 @@ function __c9(j: number): any {
       ).annotate({
         identifier: "ThreatEventsTagsCreateResponseSophisticationLevelAnnotated",
       });
-    case 1:
+  }
+}
+function __c33(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          uuid: S.String,
           value: S.String,
-          activeDuration: S.optional(S.NullOr(S.String)),
-          activeDurationAnnotated: S.optional(
-            S.NullOr(__S(63, __c7, 7)).pipe(T.Body("activeDuration_annotated")),
-          ),
-          actorCategory: S.optional(S.NullOr(S.String)),
-          actorCategoryAnnotated: S.optional(
-            S.NullOr(__S(64, __c8, 0)).pipe(T.Body("actorCategory_annotated")),
-          ),
-          aliases: S.optional(S.NullOr(__S(65, __c8, 1))),
-          aliasGroupNames: S.optional(S.NullOr(__S(4, __c0, 4))),
-          aliasGroupNamesInternal: S.optional(S.NullOr(__S(4, __c0, 4))),
-          attributionOrganization: S.optional(S.NullOr(S.String)),
-          attributionOrganizationAnnotated: S.optional(
-            S.NullOr(__S(66, __c8, 2)).pipe(T.Body("attributionOrganization_annotated")),
-          ),
-          categoryName: S.optional(S.NullOr(S.String)),
-          categoryUuid: S.optional(S.NullOr(S.String)),
           confidence: S.optional(S.NullOr(S.Number)),
-          createdAt: S.optional(S.NullOr(S.String)),
-          dateOfDiscovery: S.optional(S.NullOr(S.String)),
-          description: S.optional(S.NullOr(S.String)),
-          externalReferenceLinks: S.optional(S.NullOr(__S(4, __c0, 4))),
-          externalReferences: S.optional(S.NullOr(__S(68, __c8, 4))),
-          externalReferencesAnnotated: S.optional(
-            S.NullOr(__S(70, __c8, 6)).pipe(T.Body("externalReferences_annotated")),
-          ),
-          internalAliases: S.optional(S.NullOr(__S(65, __c8, 1))),
-          internalDescription: S.optional(S.NullOr(S.String)),
-          lastSeen: S.optional(S.NullOr(S.String)),
-          motive: S.optional(S.NullOr(S.String)),
-          motiveAnnotated: S.optional(S.NullOr(__S(64, __c8, 0)).pipe(T.Body("motive_annotated"))),
-          opsecLevel: S.optional(S.NullOr(S.String)),
-          opsecLevelAnnotated: S.optional(
-            S.NullOr(__S(64, __c8, 0)).pipe(T.Body("opsecLevel_annotated")),
-          ),
-          originCountryISO: S.optional(S.NullOr(S.String)),
-          originCountryISOAnnotated: S.optional(
-            S.NullOr(__S(64, __c8, 0)).pipe(T.Body("originCountryISO_annotated")),
-          ),
-          priority: S.optional(S.NullOr(S.Number)),
-          priorityAnnotated: S.optional(
-            S.NullOr(__S(71, __c8, 7)).pipe(T.Body("priority_annotated")),
-          ),
-          properties: S.optional(S.NullOr(__S(0, __c0, 0))),
-          sophisticationLevel: S.optional(S.NullOr(S.String)),
-          sophisticationLevelAnnotated: S.optional(
-            S.NullOr(__S(72, __c9, 0)).pipe(T.Body("sophisticationLevel_annotated")),
-          ),
           tlp: S.optional(S.NullOr(S.String)),
-          updatedAt: S.optional(S.NullOr(S.String)),
-          version: S.optional(S.NullOr(S.Number)),
-        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+        }),
       ).annotate({
-        identifier: "CreateThreatEventTagResponse",
+        identifier: "ThreatEventsTagsCreateResponseAttributionOrganizationAnnotated",
       });
-    case 2:
+  }
+}
+function __c34(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -6985,7 +7146,11 @@ function __c9(j: number): any {
       ).annotate({
         identifier: "CreateThreatSignalsArticlesTagRequest",
       });
-    case 3:
+  }
+}
+function __c35(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           appliedBy: S.String.pipe(T.Body("applied_by")),
@@ -6996,7 +7161,11 @@ function __c9(j: number): any {
       ).annotate({
         identifier: "CreateThreatSignalsArticlesTagResponse",
       });
-    case 4:
+  }
+}
+function __c36(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -7019,7 +7188,11 @@ function __c9(j: number): any {
       ).annotate({
         identifier: "CreateThreatSignalsFeedRequest",
       });
-    case 5:
+  }
+}
+function __c37(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
@@ -7041,7 +7214,11 @@ function __c9(j: number): any {
       ).annotate({
         identifier: "CreateThreatSignalsFeedResponse",
       });
-    case 6:
+  }
+}
+function __c38(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -7061,7 +7238,11 @@ function __c9(j: number): any {
       ).annotate({
         identifier: "CreateThreatSignalsSkillRequest",
       });
-    case 7:
+  }
+}
+function __c39(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
@@ -7080,7 +7261,7 @@ function __c9(j: number): any {
       });
   }
 }
-function __c10(j: number): any {
+function __c40(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -7097,11 +7278,51 @@ function __c10(j: number): any {
           )
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "DeleteRequestRequest" });
-    case 1:
+  }
+}
+function __c41(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() => S.Struct({}).pipe(T.KeyDictionary(KEY_DICTIONARY))).annotate({
         identifier: "DeleteRequestResponse",
       });
-    case 2:
+  }
+}
+function __c42(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          accountId: S.String.pipe(T.Label("account_id")),
+          file: S.Unknown,
+        })
+          .pipe(
+            T.Http({
+              method: "POST",
+              uri: "/accounts/{account_id}/cloudforce-one/binary",
+              code: 200,
+            }),
+          )
+          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({
+        identifier: "CreateBinaryStorageRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          contentType: S.String.pipe(T.Body("content_type")),
+          md5: S.String,
+          sha1: S.String,
+          sha256: S.String,
+        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({
+        identifier: "CreateBinaryStorageResponse",
+      });
+  }
+}
+function __c43(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -7119,11 +7340,19 @@ function __c10(j: number): any {
       ).annotate({
         identifier: "DeleteRequestAssetRequest",
       });
-    case 3:
+  }
+}
+function __c44(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() => S.Struct({}).pipe(T.KeyDictionary(KEY_DICTIONARY))).annotate({
         identifier: "DeleteRequestAssetResponse",
       });
-    case 4:
+  }
+}
+function __c45(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -7141,7 +7370,11 @@ function __c10(j: number): any {
       ).annotate({
         identifier: "DeleteRequestMessageRequest",
       });
-    case 5:
+  }
+}
+function __c46(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -7158,7 +7391,11 @@ function __c10(j: number): any {
       ).annotate({
         identifier: "DeleteRequestPriorityRequest",
       });
-    case 6:
+  }
+}
+function __c47(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -7173,13 +7410,13 @@ function __c10(j: number): any {
           )
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "DeleteScanConfigRequest" });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Unknown.pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "DeleteScanConfigResponse" });
   }
 }
-function __c11(j: number): any {
+function __c48(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -7198,7 +7435,11 @@ function __c11(j: number): any {
       ).annotate({
         identifier: "DeleteThreatEventCategoryRequest",
       });
-    case 1:
+  }
+}
+function __c49(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           uuid: S.String,
@@ -7206,7 +7447,11 @@ function __c11(j: number): any {
       ).annotate({
         identifier: "DeleteThreatEventCategoryResponse",
       });
-    case 2:
+  }
+}
+function __c50(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -7223,7 +7468,11 @@ function __c11(j: number): any {
       ).annotate({
         identifier: "DeleteThreatEventEventTagRequest",
       });
-    case 3:
+  }
+}
+function __c51(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -7240,7 +7489,11 @@ function __c11(j: number): any {
       ).annotate({
         identifier: "DeleteThreatEventRelateRequest",
       });
-    case 4:
+  }
+}
+function __c52(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -7257,7 +7510,7 @@ function __c11(j: number): any {
       ).annotate({
         identifier: "DeleteThreatEventsDatasetRequest",
       });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           name: S.String,
@@ -7266,7 +7519,11 @@ function __c11(j: number): any {
       ).annotate({
         identifier: "DeleteThreatEventsDatasetResponse",
       });
-    case 6:
+  }
+}
+function __c53(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -7283,7 +7540,11 @@ function __c11(j: number): any {
       ).annotate({
         identifier: "DeleteThreatEventsQueryRequest",
       });
-    case 7:
+  }
+}
+function __c54(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -7302,7 +7563,52 @@ function __c11(j: number): any {
       });
   }
 }
-function __c12(j: number): any {
+function __c55(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          accountId: S.String.pipe(T.Label("account_id")),
+          content: S.optional(S.String),
+          priority: S.optional(S.String),
+          requestType: S.optional(S.String.pipe(T.Body("request_type"))),
+          summary: S.optional(S.String),
+          tlp: S.optional(S.String),
+        })
+          .pipe(
+            T.Http({
+              method: "POST",
+              uri: "/accounts/{account_id}/cloudforce-one/requests/new",
+              code: 200,
+            }),
+          )
+          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({ identifier: "CreateRequestRequest" });
+  }
+}
+function __c56(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          content: S.String,
+          created: S.String,
+          priority: S.String,
+          request: S.String,
+          summary: S.String,
+          tlp: S.String,
+          updated: S.String,
+          completed: S.optional(S.NullOr(S.String)),
+          messageTokens: S.optional(S.NullOr(S.Number).pipe(T.Body("message_tokens"))),
+          readableId: S.optional(S.NullOr(S.String).pipe(T.Body("readable_id"))),
+          status: S.optional(S.NullOr(S.String)),
+          tokens: S.optional(S.NullOr(S.Number)),
+        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({ identifier: "CreateRequestResponse" });
+  }
+}
+function __c57(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -7321,7 +7627,11 @@ function __c12(j: number): any {
       ).annotate({
         identifier: "DeleteThreatEventsTagsCategoryRequest",
       });
-    case 1:
+  }
+}
+function __c58(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -7339,7 +7649,11 @@ function __c12(j: number): any {
       ).annotate({
         identifier: "DeleteThreatSignalsArticlesTagRequest",
       });
-    case 2:
+  }
+}
+function __c59(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -7356,7 +7670,11 @@ function __c12(j: number): any {
       ).annotate({
         identifier: "DeleteThreatSignalsFeedRequest",
       });
-    case 3:
+  }
+}
+function __c60(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -7373,7 +7691,11 @@ function __c12(j: number): any {
       ).annotate({
         identifier: "DeleteThreatSignalsSkillRequest",
       });
-    case 4:
+  }
+}
+function __c61(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -7396,15 +7718,9 @@ function __c12(j: number): any {
       ).annotate({
         identifier: "EditThreatEventsQueryRequest",
       });
-    case 5:
-      return S.Unknown.pipe(/*@__PURE__*/ T.UnionCases([[], ["value", "confidence", "tlp"]]));
-    case 6:
-      return S.Unknown.pipe(/*@__PURE__*/ T.UnionCases([[], ["value", "confidence", "tlp"]]));
-    case 7:
-      return S.Unknown.pipe(/*@__PURE__*/ T.UnionCases([[], ["value", "confidence", "tlp"]]));
   }
 }
-function __c13(j: number): any {
+function __c62(j: number): any {
   switch (j) {
     case 0:
       return S.Unknown.pipe(/*@__PURE__*/ T.UnionCases([[], ["value", "confidence", "tlp"]]));
@@ -7417,31 +7733,37 @@ function __c13(j: number): any {
     case 4:
       return S.Unknown.pipe(/*@__PURE__*/ T.UnionCases([[], ["value", "confidence", "tlp"]]));
     case 5:
+      return S.Unknown.pipe(/*@__PURE__*/ T.UnionCases([[], ["value", "confidence", "tlp"]]));
+    case 6:
+      return S.Unknown.pipe(/*@__PURE__*/ T.UnionCases([[], ["value", "confidence", "tlp"]]));
+    case 7:
+      return S.Unknown.pipe(/*@__PURE__*/ T.UnionCases([[], ["value", "confidence", "tlp"]]));
+    case 8:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
           tagUuid: S.String.pipe(T.Label("tag_uuid")),
-          activeDuration: S.optional(__S(101, __c12, 5)),
-          actorCategory: S.optional(__S(102, __c12, 6)),
-          aliases: S.optional(__S(53, __c6, 5)),
-          aliasGroupNames: S.optional(__S(4, __c0, 4)),
-          aliasGroupNamesInternal: S.optional(__S(4, __c0, 4)),
-          attributionOrganization: S.optional(__S(103, __c12, 7)),
+          activeDuration: S.optional(__S(992, __c62, 0)),
+          actorCategory: S.optional(__S(993, __c62, 1)),
+          aliases: S.optional(__S(497, __c31, 1)),
+          aliasGroupNames: S.optional(__S(16, __c1, 0)),
+          aliasGroupNamesInternal: S.optional(__S(16, __c1, 0)),
+          attributionOrganization: S.optional(__S(994, __c62, 2)),
           categoryUuid: S.optional(S.String),
           confidence: S.optional(S.Number),
           dateOfDiscovery: S.optional(S.String),
           description: S.optional(S.String),
-          externalReferenceLinks: S.optional(__S(4, __c0, 4)),
-          externalReferences: S.optional(__S(56, __c7, 0)),
-          internalAliases: S.optional(__S(53, __c6, 5)),
+          externalReferenceLinks: S.optional(__S(16, __c1, 0)),
+          externalReferences: S.optional(__S(499, __c31, 3)),
+          internalAliases: S.optional(__S(497, __c31, 1)),
           internalDescription: S.optional(S.String),
           lastSeen: S.optional(S.String),
-          motive: S.optional(__S(104, __c13, 0)),
-          opsecLevel: S.optional(__S(105, __c13, 1)),
-          originCountryISO: S.optional(__S(106, __c13, 2)),
-          priority: S.optional(__S(107, __c13, 3)),
-          properties: S.optional(__S(0, __c0, 0)),
-          sophisticationLevel: S.optional(__S(108, __c13, 4)),
+          motive: S.optional(__S(995, __c62, 3)),
+          opsecLevel: S.optional(__S(996, __c62, 4)),
+          originCountryISO: S.optional(__S(997, __c62, 5)),
+          priority: S.optional(__S(998, __c62, 6)),
+          properties: S.optional(__S(64, __c4, 0)),
+          sophisticationLevel: S.optional(__S(999, __c62, 7)),
           tlp: S.optional(S.String),
           value: S.optional(S.String),
         })
@@ -7456,40 +7778,27 @@ function __c13(j: number): any {
       ).annotate({
         identifier: "EditThreatEventsTagRequest",
       });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          value: S.String,
-          tlp: S.optional(S.NullOr(S.String)),
-        }),
-      ).annotate({
-        identifier: "EditThreatEventsTagResponseExternalReferencesAnnotatedItem",
-      });
-    case 7:
-      return S.Array(__S(110, __c13, 6));
-  }
-}
-function __c14(j: number): any {
-  switch (j) {
-    case 0:
+    case 9:
+      return S.Array(__S(1008, __c63, 0));
+    case 10:
       return S.suspend(() =>
         S.Struct({
           uuid: S.String,
           value: S.String,
           activeDuration: S.optional(S.NullOr(S.String)),
           activeDurationAnnotated: S.optional(
-            S.NullOr(__S(63, __c7, 7)).pipe(T.Body("activeDuration_annotated")),
+            S.NullOr(__S(500, __c31, 4)).pipe(T.Body("activeDuration_annotated")),
           ),
           actorCategory: S.optional(S.NullOr(S.String)),
           actorCategoryAnnotated: S.optional(
-            S.NullOr(__S(64, __c8, 0)).pipe(T.Body("actorCategory_annotated")),
+            S.NullOr(__S(512, __c32, 0)).pipe(T.Body("actorCategory_annotated")),
           ),
-          aliases: S.optional(S.NullOr(__S(65, __c8, 1))),
-          aliasGroupNames: S.optional(S.NullOr(__S(4, __c0, 4))),
-          aliasGroupNamesInternal: S.optional(S.NullOr(__S(4, __c0, 4))),
+          aliases: S.optional(S.NullOr(__S(513, __c32, 1))),
+          aliasGroupNames: S.optional(S.NullOr(__S(16, __c1, 0))),
+          aliasGroupNamesInternal: S.optional(S.NullOr(__S(16, __c1, 0))),
           attributionOrganization: S.optional(S.NullOr(S.String)),
           attributionOrganizationAnnotated: S.optional(
-            S.NullOr(__S(72, __c9, 0)).pipe(T.Body("attributionOrganization_annotated")),
+            S.NullOr(__S(517, __c32, 5)).pipe(T.Body("attributionOrganization_annotated")),
           ),
           categoryName: S.optional(S.NullOr(S.String)),
           categoryUuid: S.optional(S.NullOr(S.String)),
@@ -7497,32 +7806,34 @@ function __c14(j: number): any {
           createdAt: S.optional(S.NullOr(S.String)),
           dateOfDiscovery: S.optional(S.NullOr(S.String)),
           description: S.optional(S.NullOr(S.String)),
-          externalReferenceLinks: S.optional(S.NullOr(__S(4, __c0, 4))),
-          externalReferences: S.optional(S.NullOr(__S(68, __c8, 4))),
+          externalReferenceLinks: S.optional(S.NullOr(__S(16, __c1, 0))),
+          externalReferences: S.optional(S.NullOr(__S(515, __c32, 3))),
           externalReferencesAnnotated: S.optional(
-            S.NullOr(__S(111, __c13, 7)).pipe(T.Body("externalReferences_annotated")),
+            S.NullOr(__S(1001, __c62, 9)).pipe(T.Body("externalReferences_annotated")),
           ),
-          internalAliases: S.optional(S.NullOr(__S(65, __c8, 1))),
+          internalAliases: S.optional(S.NullOr(__S(513, __c32, 1))),
           internalDescription: S.optional(S.NullOr(S.String)),
           lastSeen: S.optional(S.NullOr(S.String)),
           motive: S.optional(S.NullOr(S.String)),
-          motiveAnnotated: S.optional(S.NullOr(__S(64, __c8, 0)).pipe(T.Body("motive_annotated"))),
+          motiveAnnotated: S.optional(
+            S.NullOr(__S(512, __c32, 0)).pipe(T.Body("motive_annotated")),
+          ),
           opsecLevel: S.optional(S.NullOr(S.String)),
           opsecLevelAnnotated: S.optional(
-            S.NullOr(__S(64, __c8, 0)).pipe(T.Body("opsecLevel_annotated")),
+            S.NullOr(__S(512, __c32, 0)).pipe(T.Body("opsecLevel_annotated")),
           ),
           originCountryISO: S.optional(S.NullOr(S.String)),
           originCountryISOAnnotated: S.optional(
-            S.NullOr(__S(64, __c8, 0)).pipe(T.Body("originCountryISO_annotated")),
+            S.NullOr(__S(512, __c32, 0)).pipe(T.Body("originCountryISO_annotated")),
           ),
           priority: S.optional(S.NullOr(S.Number)),
           priorityAnnotated: S.optional(
-            S.NullOr(__S(71, __c8, 7)).pipe(T.Body("priority_annotated")),
+            S.NullOr(__S(516, __c32, 4)).pipe(T.Body("priority_annotated")),
           ),
-          properties: S.optional(S.NullOr(__S(0, __c0, 0))),
+          properties: S.optional(S.NullOr(__S(64, __c4, 0))),
           sophisticationLevel: S.optional(S.NullOr(S.String)),
           sophisticationLevelAnnotated: S.optional(
-            S.NullOr(__S(64, __c8, 0)).pipe(T.Body("sophisticationLevel_annotated")),
+            S.NullOr(__S(512, __c32, 0)).pipe(T.Body("sophisticationLevel_annotated")),
           ),
           tlp: S.optional(S.NullOr(S.String)),
           updatedAt: S.optional(S.NullOr(S.String)),
@@ -7531,37 +7842,54 @@ function __c14(j: number): any {
       ).annotate({
         identifier: "EditThreatEventsTagResponse",
       });
-    case 1:
+  }
+}
+function __c63(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          value: S.String,
+          tlp: S.optional(S.NullOr(S.String)),
+        }),
+      ).annotate({
+        identifier: "EditThreatEventsTagResponseExternalReferencesAnnotatedItem",
+      });
+  }
+}
+function __c64(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           key: S.String,
           kind: S.String,
-          allowedValues: S.optional(__S(4, __c0, 4)),
-          annotations: S.optional(__S(40, __c5, 0)),
+          allowedValues: S.optional(__S(16, __c1, 0)),
+          annotations: S.optional(__S(432, __c27, 0)),
           deprecated: S.optional(S.Boolean),
-          deprecatedValues: S.optional(__S(39, __c4, 7)),
+          deprecatedValues: S.optional(__S(448, __c28, 0)),
           element: S.optional(S.Unknown),
           enforcement: S.optional(S.String),
           format: S.optional(S.String),
           label: S.optional(S.String),
           maxLength: S.optional(S.Number),
-          numberConstraint: S.optional(__S(41, __c5, 1)),
-          properties: S.optional(__S(0, __c0, 0)),
+          numberConstraint: S.optional(__S(433, __c27, 1)),
+          properties: S.optional(__S(64, __c4, 0)),
           required: S.optional(S.Boolean),
         }),
       ).annotate({
         identifier: "EditThreatEventsTagsCategoryRequestSchemaItem",
       });
+    case 1:
+      return S.Array(__S(1024, __c64, 0));
     case 2:
-      return S.Array(__S(113, __c14, 1));
-    case 3:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
           categoryUuid: S.String.pipe(T.Label("category_uuid")),
           description: S.optional(S.String),
           name: S.optional(S.String),
-          schema: S.optional(__S(114, __c14, 2)),
+          schema: S.optional(__S(1025, __c64, 1)),
         })
           .pipe(
             T.Http({
@@ -7574,43 +7902,47 @@ function __c14(j: number): any {
       ).annotate({
         identifier: "EditThreatEventsTagsCategoryRequest",
       });
-    case 4:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           key: S.String,
           kind: S.String,
-          allowedValues: S.optional(S.NullOr(__S(39, __c4, 7))),
-          annotations: S.optional(S.NullOr(__S(45, __c5, 5))),
+          allowedValues: S.optional(S.NullOr(__S(448, __c28, 0))),
+          annotations: S.optional(S.NullOr(__S(464, __c29, 0))),
           deprecated: S.optional(S.NullOr(S.Boolean)),
-          deprecatedValues: S.optional(S.NullOr(__S(39, __c4, 7))),
+          deprecatedValues: S.optional(S.NullOr(__S(448, __c28, 0))),
           element: S.optional(S.NullOr(S.Unknown)),
           enforcement: S.optional(S.NullOr(S.String)),
           format: S.optional(S.NullOr(S.String)),
           label: S.optional(S.NullOr(S.String)),
           maxLength: S.optional(S.NullOr(S.Number)),
-          numberConstraint: S.optional(S.NullOr(__S(46, __c5, 6))),
-          properties: S.optional(S.NullOr(__S(0, __c0, 0))),
+          numberConstraint: S.optional(S.NullOr(__S(465, __c29, 1))),
+          properties: S.optional(S.NullOr(__S(64, __c4, 0))),
           required: S.optional(S.NullOr(S.Boolean)),
         }),
       ).annotate({
         identifier: "EditThreatEventsTagsCategoryResponseSchemaItem",
       });
+    case 4:
+      return S.Array(__S(1027, __c64, 3));
     case 5:
-      return S.Array(__S(116, __c14, 4));
-    case 6:
       return S.suspend(() =>
         S.Struct({
           name: S.String,
           uuid: S.String,
           createdAt: S.optional(S.NullOr(S.String)),
           description: S.optional(S.NullOr(S.String)),
-          schema: S.optional(S.NullOr(__S(117, __c14, 5))),
+          schema: S.optional(S.NullOr(__S(1028, __c64, 4))),
           updatedAt: S.optional(S.NullOr(S.String)),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({
         identifier: "EditThreatEventsTagsCategoryResponse",
       });
-    case 7:
+  }
+}
+function __c65(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -7628,9 +7960,52 @@ function __c14(j: number): any {
       ).annotate({
         identifier: "EditThreatSignalsArticleRequest",
       });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          bulletPoints: __S(1072, __c67, 0).pipe(T.Body("bullet_points")),
+          contentR2Key: S.String.pipe(T.Body("content_r2_key")),
+          feedDisplayName: S.String.pipe(T.Body("feed_display_name")),
+          feedId: S.String.pipe(T.Body("feed_id")),
+          fetchedAt: S.String.pipe(T.Body("fetched_at")),
+          indicatorExtractionStatus: S.String.pipe(T.Body("indicator_extraction_status")),
+          link: S.String,
+          metadata: __S(64, __c4, 0),
+          publishedAt: S.String.pipe(T.Body("published_at")),
+          read: S.Boolean,
+          readAt: S.String.pipe(T.Body("read_at")),
+          sourceCount: S.Number.pipe(T.Body("source_count")),
+          summary: S.String,
+          summaryR2Key: S.String.pipe(T.Body("summary_r2_key")),
+          tags: __S(1057, __c66, 1),
+          title: S.String,
+          skillVersion: S.optional(S.NullOr(S.String).pipe(T.Body("skill_version"))),
+          tagSkillVersion: S.optional(S.NullOr(S.String).pipe(T.Body("tag_skill_version"))),
+        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({
+        identifier: "EditThreatSignalsArticleResponse",
+      });
   }
 }
-function __c15(j: number): any {
+function __c66(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          appliedBy: S.String.pipe(T.Body("applied_by")),
+          categoryId: S.String,
+          uuid: S.String,
+          value: S.String,
+        }),
+      ).annotate({
+        identifier: "EditThreatSignalsArticleResponseTagsItem",
+      });
+    case 1:
+      return S.Array(__S(1056, __c66, 0));
+  }
+}
+function __c67(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -7642,46 +8017,11 @@ function __c15(j: number): any {
       ).annotate({
         identifier: "EditThreatSignalsArticleResponseBulletPoints",
       });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          appliedBy: S.String.pipe(T.Body("applied_by")),
-          categoryId: S.String,
-          uuid: S.String,
-          value: S.String,
-        }),
-      ).annotate({
-        identifier: "EditThreatSignalsArticleResponseTagsItem",
-      });
-    case 2:
-      return S.Array(__S(121, __c15, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String,
-          bulletPoints: __S(120, __c15, 0).pipe(T.Body("bullet_points")),
-          contentR2Key: S.String.pipe(T.Body("content_r2_key")),
-          feedDisplayName: S.String.pipe(T.Body("feed_display_name")),
-          feedId: S.String.pipe(T.Body("feed_id")),
-          fetchedAt: S.String.pipe(T.Body("fetched_at")),
-          indicatorExtractionStatus: S.String.pipe(T.Body("indicator_extraction_status")),
-          link: S.String,
-          metadata: __S(0, __c0, 0),
-          publishedAt: S.String.pipe(T.Body("published_at")),
-          read: S.Boolean,
-          readAt: S.String.pipe(T.Body("read_at")),
-          sourceCount: S.Number.pipe(T.Body("source_count")),
-          summary: S.String,
-          summaryR2Key: S.String.pipe(T.Body("summary_r2_key")),
-          tags: __S(122, __c15, 2),
-          title: S.String,
-          skillVersion: S.optional(S.NullOr(S.String).pipe(T.Body("skill_version"))),
-          tagSkillVersion: S.optional(S.NullOr(S.String).pipe(T.Body("tag_skill_version"))),
-        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({
-        identifier: "EditThreatSignalsArticleResponse",
-      });
-    case 4:
+  }
+}
+function __c68(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -7703,7 +8043,11 @@ function __c15(j: number): any {
       ).annotate({
         identifier: "EditThreatSignalsFeedRequest",
       });
-    case 5:
+  }
+}
+function __c69(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -7725,7 +8069,61 @@ function __c15(j: number): any {
       ).annotate({
         identifier: "EditThreatSignalsSkillRequest",
       });
-    case 6:
+  }
+}
+function __c70(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          accountId: S.String.pipe(T.Label("account_id")),
+          requestId: S.String.pipe(T.Label("request_id")),
+          page: S.Number,
+          perPage: S.Number.pipe(T.Body("per_page")),
+        })
+          .pipe(
+            T.Http({
+              method: "POST",
+              uri: "/accounts/{account_id}/cloudforce-one/requests/{request_id}/asset",
+              code: 200,
+            }),
+          )
+          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({
+        identifier: "CreateRequestAssetRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          result: __S(1137, __c71, 1).pipe(T.EnvelopePayload()),
+          resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
+        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({
+        identifier: "CreateRequestAssetResponse",
+      });
+  }
+}
+function __c71(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.Number,
+          name: S.String,
+          created: S.optional(S.NullOr(S.String)),
+          description: S.optional(S.NullOr(S.String)),
+          fileType: S.optional(S.NullOr(S.String).pipe(T.Body("file_type"))),
+        }),
+      ).annotate({
+        identifier: "RequestsAssetsCreateResultItem",
+      });
+    case 1:
+      return S.Array(__S(1136, __c71, 0));
+  }
+}
+function __c72(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -7742,18 +8140,18 @@ function __c15(j: number): any {
       ).annotate({
         identifier: "GenerateThreatSignalsArticlesTagRequest",
       });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           tagSkillVersion: S.String.pipe(T.Body("tag_skill_version")),
-          tags: __S(122, __c15, 2),
+          tags: __S(1057, __c66, 1),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({
         identifier: "GenerateThreatSignalsArticlesTagResponse",
       });
   }
 }
-function __c16(j: number): any {
+function __c73(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -7770,7 +8168,11 @@ function __c16(j: number): any {
           )
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "GetBinaryStorageRequest" });
-    case 1:
+  }
+}
+function __c74(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -7785,7 +8187,11 @@ function __c16(j: number): any {
           )
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "GetRequestRequest" });
-    case 2:
+  }
+}
+function __c75(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -7806,7 +8212,7 @@ function __c16(j: number): any {
           )
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "GetRequestMessageRequest" });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.Number,
@@ -7819,18 +8225,22 @@ function __c16(j: number): any {
       ).annotate({
         identifier: "RequestsMessageGetResultItem",
       });
-    case 4:
-      return S.Array(__S(131, __c16, 3));
-    case 5:
+    case 2:
+      return S.Array(__S(1201, __c75, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          result: __S(132, __c16, 4).pipe(T.EnvelopePayload()),
+          result: __S(1202, __c75, 2).pipe(T.EnvelopePayload()),
           resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({
         identifier: "GetRequestMessageResponse",
       });
-    case 6:
+  }
+}
+function __c76(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -7847,7 +8257,11 @@ function __c16(j: number): any {
       ).annotate({
         identifier: "GetRequestPriorityRequest",
       });
-    case 7:
+  }
+}
+function __c77(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
@@ -7869,7 +8283,7 @@ function __c16(j: number): any {
       });
   }
 }
-function __c17(j: number): any {
+function __c78(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -7889,9 +8303,13 @@ function __c17(j: number): any {
       ).annotate({ identifier: "GetRequestsAssetRequest" });
     case 1:
       return S.suspend(() =>
-        __S(17, __c2, 1).pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
+        __S(1137, __c71, 1).pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "GetRequestsAssetResponse" });
-    case 2:
+  }
+}
+function __c79(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -7906,7 +8324,7 @@ function __c17(j: number): any {
           )
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "GetScanResultRequest" });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           number: S.optional(S.NullOr(S.Number)),
@@ -7916,15 +8334,19 @@ function __c17(j: number): any {
       ).annotate({
         identifier: "ScansResultsGetResponse1111Item",
       });
-    case 4:
-      return S.Array(__S(139, __c17, 3));
-    case 5:
+    case 2:
+      return S.Array(__S(1265, __c79, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          "1_1_1_1": __S(140, __c17, 4).pipe(T.Body("1.1.1.1")),
+          "1_1_1_1": __S(1266, __c79, 2).pipe(T.Body("1.1.1.1")),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "GetScanResultResponse" });
-    case 6:
+  }
+}
+function __c80(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -7939,7 +8361,11 @@ function __c17(j: number): any {
           )
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "GetThreatEventRequest" });
-    case 7:
+  }
+}
+function __c81(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           attacker: S.String,
@@ -7954,16 +8380,16 @@ function __c17(j: number): any {
           indicatorType: S.String,
           indicatorTypeId: S.Number,
           killChain: S.Number,
-          mitreAttack: __S(4, __c0, 4),
-          mitreCapec: __S(4, __c0, 4),
+          mitreAttack: __S(16, __c1, 0),
+          mitreCapec: __S(16, __c1, 0),
           numReferenced: S.Number,
           numReferences: S.Number,
           rawId: S.String,
-          referenced: __S(4, __c0, 4),
-          referencedIds: __S(27, __c3, 3),
-          references: __S(4, __c0, 4),
-          referencesIds: __S(27, __c3, 3),
-          tags: __S(4, __c0, 4),
+          referenced: __S(16, __c1, 0),
+          referencedIds: __S(2064, __c129, 0),
+          references: __S(16, __c1, 0),
+          referencesIds: __S(2064, __c129, 0),
+          tags: __S(16, __c1, 0),
           targetCountry: S.String,
           targetCountryAlpha3: S.String,
           targetIndustry: S.String,
@@ -7975,7 +8401,7 @@ function __c17(j: number): any {
       ).annotate({ identifier: "GetThreatEventResponse" });
   }
 }
-function __c18(j: number): any {
+function __c82(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -7994,7 +8420,11 @@ function __c18(j: number): any {
       ).annotate({
         identifier: "GetThreatEventCategoryRequest",
       });
-    case 1:
+  }
+}
+function __c83(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -8011,7 +8441,50 @@ function __c18(j: number): any {
       ).annotate({
         identifier: "GetThreatEventDatasetRequest",
       });
-    case 2:
+  }
+}
+function __c84(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          accountId: S.String.pipe(T.Label("account_id")),
+          requestId: S.String.pipe(T.Label("request_id")),
+          content: S.optional(S.String),
+        })
+          .pipe(
+            T.Http({
+              method: "POST",
+              uri: "/accounts/{account_id}/cloudforce-one/requests/{request_id}/message/new",
+              code: 200,
+            }),
+          )
+          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({
+        identifier: "CreateRequestMessageRequest",
+      });
+  }
+}
+function __c85(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.Number,
+          author: S.String,
+          content: S.String,
+          isFollowOnRequest: S.Boolean.pipe(T.Body("is_follow_on_request")),
+          updated: S.String,
+          created: S.optional(S.NullOr(S.String)),
+        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({
+        identifier: "CreateRequestMessageResponse",
+      });
+  }
+}
+function __c86(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -8027,7 +8500,7 @@ function __c18(j: number): any {
           )
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "GetThreatEventRawRequest" });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
@@ -8040,7 +8513,11 @@ function __c18(j: number): any {
       ).annotate({
         identifier: "GetThreatEventRawResponse",
       });
-    case 4:
+  }
+}
+function __c87(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -8058,7 +8535,11 @@ function __c18(j: number): any {
       ).annotate({
         identifier: "GetThreatEventsDatasetsEventRequest",
       });
-    case 5:
+  }
+}
+function __c88(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -8076,7 +8557,30 @@ function __c18(j: number): any {
       ).annotate({
         identifier: "GetThreatEventsIndicatorsByDatasetRequest",
       });
-    case 6:
+    case 1:
+      return S.Array(__S(1424, __c89, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          createdAt: S.String,
+          indicatorType: S.String,
+          updatedAt: S.String,
+          uuid: S.String,
+          value: S.String,
+          datasetId: S.optional(S.NullOr(S.String)),
+          relatedEvents: S.optional(S.NullOr(__S(1409, __c88, 1))),
+          relatedEventsHasMore: S.optional(S.NullOr(S.Boolean)),
+          tags: S.optional(S.NullOr(__S(1440, __c90, 0))),
+          tlp: S.optional(S.NullOr(S.String)),
+        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({
+        identifier: "GetThreatEventsIndicatorsByDatasetResponse",
+      });
+  }
+}
+function __c89(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           datasetId: S.String,
@@ -8086,13 +8590,7 @@ function __c18(j: number): any {
       ).annotate({
         identifier: "GetThreatEventsIndicatorsByDatasetResponseRelatedEventsItem",
       });
-    case 7:
-      return S.Array(__S(150, __c18, 6));
-  }
-}
-function __c19(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           categoryId: S.optional(S.NullOr(S.String)),
@@ -8103,26 +8601,17 @@ function __c19(j: number): any {
       ).annotate({
         identifier: "GetThreatEventsIndicatorsByDatasetResponseTagsItem",
       });
-    case 1:
-      return S.Array(__S(152, __c19, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          createdAt: S.String,
-          indicatorType: S.String,
-          updatedAt: S.String,
-          uuid: S.String,
-          value: S.String,
-          datasetId: S.optional(S.NullOr(S.String)),
-          relatedEvents: S.optional(S.NullOr(__S(151, __c18, 7))),
-          relatedEventsHasMore: S.optional(S.NullOr(S.Boolean)),
-          tags: S.optional(S.NullOr(__S(153, __c19, 1))),
-          tlp: S.optional(S.NullOr(S.String)),
-        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({
-        identifier: "GetThreatEventsIndicatorsByDatasetResponse",
-      });
-    case 3:
+  }
+}
+function __c90(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(1425, __c89, 1));
+  }
+}
+function __c91(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -8139,7 +8628,11 @@ function __c19(j: number): any {
       ).annotate({
         identifier: "GetThreatEventsQueryRequest",
       });
-    case 4:
+  }
+}
+function __c92(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -8156,25 +8649,25 @@ function __c19(j: number): any {
       ).annotate({
         identifier: "GetThreatSignalsArticleRequest",
       });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
-          bulletPoints: __S(120, __c15, 0).pipe(T.Body("bullet_points")),
+          bulletPoints: __S(1072, __c67, 0).pipe(T.Body("bullet_points")),
           contentR2Key: S.String.pipe(T.Body("content_r2_key")),
           feedDisplayName: S.String.pipe(T.Body("feed_display_name")),
           feedId: S.String.pipe(T.Body("feed_id")),
           fetchedAt: S.String.pipe(T.Body("fetched_at")),
           indicatorExtractionStatus: S.String.pipe(T.Body("indicator_extraction_status")),
           link: S.String,
-          metadata: __S(0, __c0, 0),
+          metadata: __S(64, __c4, 0),
           publishedAt: S.String.pipe(T.Body("published_at")),
           read: S.Boolean,
           readAt: S.String.pipe(T.Body("read_at")),
           sourceCount: S.Number.pipe(T.Body("source_count")),
           summary: S.String,
           summaryR2Key: S.String.pipe(T.Body("summary_r2_key")),
-          tags: __S(122, __c15, 2),
+          tags: __S(1057, __c66, 1),
           title: S.String,
           skillVersion: S.optional(S.NullOr(S.String).pipe(T.Body("skill_version"))),
           tagSkillVersion: S.optional(S.NullOr(S.String).pipe(T.Body("tag_skill_version"))),
@@ -8182,7 +8675,11 @@ function __c19(j: number): any {
       ).annotate({
         identifier: "GetThreatSignalsArticleResponse",
       });
-    case 6:
+  }
+}
+function __c93(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -8200,7 +8697,11 @@ function __c19(j: number): any {
       ).annotate({
         identifier: "GetThreatSignalsArticlesContentRequest",
       });
-    case 7:
+  }
+}
+function __c94(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -8218,11 +8719,7 @@ function __c19(j: number): any {
       ).annotate({
         identifier: "GetThreatSignalsArticlesSkillOutputRequest",
       });
-  }
-}
-function __c20(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           articleId: S.String.pipe(T.Body("article_id")),
@@ -8234,7 +8731,11 @@ function __c20(j: number): any {
       ).annotate({
         identifier: "GetThreatSignalsArticlesSkillOutputResponse",
       });
-    case 1:
+  }
+}
+function __c95(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -8252,7 +8753,11 @@ function __c20(j: number): any {
       ).annotate({
         identifier: "GetThreatSignalsFeedsRawRequest",
       });
-    case 2:
+  }
+}
+function __c96(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -8269,7 +8774,20 @@ function __c20(j: number): any {
       ).annotate({
         identifier: "GetThreatSignalsFeedsSkillRequest",
       });
-    case 3:
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          feedId: S.String.pipe(T.Body("feed_id")),
+          skills: __S(1553, __c97, 1),
+        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({
+        identifier: "GetThreatSignalsFeedsSkillResponse",
+      });
+  }
+}
+function __c97(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
@@ -8286,18 +8804,13 @@ function __c20(j: number): any {
       ).annotate({
         identifier: "GetThreatSignalsFeedsSkillResponseSkillsItem",
       });
-    case 4:
-      return S.Array(__S(163, __c20, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          feedId: S.String.pipe(T.Body("feed_id")),
-          skills: __S(164, __c20, 4),
-        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({
-        identifier: "GetThreatSignalsFeedsSkillResponse",
-      });
-    case 6:
+    case 1:
+      return S.Array(__S(1552, __c97, 0));
+  }
+}
+function __c98(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -8314,7 +8827,49 @@ function __c20(j: number): any {
       ).annotate({
         identifier: "GetThreatSignalsSkillRequest",
       });
-    case 7:
+  }
+}
+function __c99(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          accountId: S.String.pipe(T.Label("account_id")),
+          labels: __S(16, __c1, 0),
+          priority: S.Number,
+          requirement: S.String,
+          tlp: S.String,
+        })
+          .pipe(
+            T.Http({
+              method: "POST",
+              uri: "/accounts/{account_id}/cloudforce-one/requests/priority/new",
+              code: 200,
+            }),
+          )
+          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({
+        identifier: "CreateRequestPriorityRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          created: S.String,
+          labels: __S(16, __c1, 0),
+          priority: S.Number,
+          requirement: S.String,
+          tlp: S.String,
+          updated: S.String,
+        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({
+        identifier: "CreateRequestPriorityResponse",
+      });
+  }
+}
+function __c100(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -8331,20 +8886,20 @@ function __c20(j: number): any {
       ).annotate({
         identifier: "GetThreatSignalsSkillsTagCategoryRequest",
       });
-  }
-}
-function __c21(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          categoryUuids: __S(4, __c0, 4).pipe(T.Body("category_uuids")),
+          categoryUuids: __S(16, __c1, 0).pipe(T.Body("category_uuids")),
           skillId: S.String.pipe(T.Body("skill_id")),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({
         identifier: "GetThreatSignalsSkillsTagCategoryResponse",
       });
-    case 1:
+  }
+}
+function __c101(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -8368,7 +8923,7 @@ function __c21(j: number): any {
           )
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "ListRequestsRequest" });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
@@ -8385,13 +8940,17 @@ function __c21(j: number): any {
           tokens: S.optional(S.NullOr(S.Number)),
         }),
       ).annotate({ identifier: "ListRequestsResultItem" });
+    case 2:
+      return S.Array(__S(1617, __c101, 1));
     case 3:
-      return S.Array(__S(170, __c21, 2));
-    case 4:
       return S.suspend(() =>
-        __S(171, __c21, 3).pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
+        __S(1618, __c101, 2).pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "ListRequestsResponse" });
-    case 5:
+  }
+}
+function __c102(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -8405,36 +8964,36 @@ function __c21(j: number): any {
           )
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "ListScanConfigsRequest" });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
           accountId: S.String.pipe(T.Body("account_id")),
           frequency: S.Number,
-          ips: __S(4, __c0, 4),
-          ports: __S(4, __c0, 4),
+          ips: __S(16, __c1, 0),
+          ports: __S(16, __c1, 0),
         }),
       ).annotate({
         identifier: "ScansConfigListResultItem",
       });
-    case 7:
-      return S.Array(__S(174, __c21, 6));
+    case 2:
+      return S.Array(__S(1633, __c102, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          result: __S(1634, __c102, 2).pipe(T.EnvelopePayload()),
+          resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
+        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({ identifier: "ListScanConfigsResponse" });
   }
 }
-function __c22(j: number): any {
+function __c103(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          result: __S(175, __c21, 7).pipe(T.EnvelopePayload()),
-          resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
-        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({ identifier: "ListScanConfigsResponse" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
-          datasetIds: S.optional(__S(4, __c0, 4).pipe(T.Query())),
+          datasetIds: S.optional(__S(16, __c1, 0).pipe(T.Query())),
         })
           .pipe(
             T.Http({
@@ -8447,7 +9006,11 @@ function __c22(j: number): any {
       ).annotate({
         identifier: "ListThreatEventAttackersRequest",
       });
-    case 2:
+  }
+}
+function __c104(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           type: S.String,
@@ -8455,20 +9018,28 @@ function __c22(j: number): any {
       ).annotate({
         identifier: "ThreatEventsAttackersListResponseItems",
       });
-    case 3:
+  }
+}
+function __c105(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          items: __S(178, __c22, 2),
+          items: __S(1664, __c104, 0),
           type: S.String,
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({
         identifier: "ListThreatEventAttackersResponse",
       });
-    case 4:
+  }
+}
+function __c106(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
-          datasetIds: S.optional(__S(4, __c0, 4).pipe(T.Query())),
+          datasetIds: S.optional(__S(16, __c1, 0).pipe(T.Query())),
         })
           .pipe(
             T.Http({
@@ -8481,7 +9052,11 @@ function __c22(j: number): any {
       ).annotate({
         identifier: "ListThreatEventCategoriesRequest",
       });
-    case 5:
+  }
+}
+function __c107(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -8497,7 +9072,7 @@ function __c22(j: number): any {
       ).annotate({
         identifier: "ListThreatEventCountriesRequest",
       });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           alpha2: S.String,
@@ -8507,19 +9082,19 @@ function __c22(j: number): any {
       ).annotate({
         identifier: "ThreatEventsCountriesListResultItem",
       });
-    case 7:
-      return S.Array(__S(182, __c22, 6));
-  }
-}
-function __c23(j: number): any {
-  switch (j) {
-    case 0:
+    case 2:
+      return S.Array(__S(1713, __c107, 1));
+    case 3:
       return S.suspend(() =>
-        __S(183, __c22, 7).pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
+        __S(1714, __c107, 2).pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({
         identifier: "ListThreatEventCountriesResponse",
       });
-    case 1:
+  }
+}
+function __c108(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -8536,7 +9111,7 @@ function __c23(j: number): any {
       ).annotate({
         identifier: "ListThreatEventDatasetsRequest",
       });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           indicatorWriteMode: S.String,
@@ -8549,7 +9124,11 @@ function __c23(j: number): any {
       ).annotate({
         identifier: "ListThreatEventDatasetsResponse",
       });
-    case 3:
+  }
+}
+function __c109(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -8565,21 +9144,25 @@ function __c23(j: number): any {
       ).annotate({
         identifier: "ListThreatEventIndicatorTypesRequest",
       });
-    case 4:
+  }
+}
+function __c110(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
           cache: S.optional(S.String.pipe(T.Query())),
           cursor: S.optional(S.String.pipe(T.Query())),
-          datasetId: S.optional(__S(4, __c0, 4).pipe(T.Query())),
+          datasetId: S.optional(__S(16, __c1, 0).pipe(T.Query())),
           forceRefresh: S.optional(S.Boolean.pipe(T.Query())),
           format: S.optional(S.String.pipe(T.Query())),
           order: S.optional(S.String.pipe(T.Query())),
           orderBy: S.optional(S.String.pipe(T.Query())),
           page: S.optional(S.Number.pipe(T.Query())),
           pageSize: S.optional(S.Number.pipe(T.Query())),
-          search: S.optional(__S(4, __c0, 4).pipe(T.Query())),
-          searchBranches: S.optional(__S(4, __c0, 4).pipe(T.Query())),
+          search: S.optional(__S(16, __c1, 0).pipe(T.Query())),
+          searchBranches: S.optional(__S(16, __c1, 0).pipe(T.Query())),
         })
           .pipe(
             T.Http({
@@ -8590,12 +9173,16 @@ function __c23(j: number): any {
           )
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "ListThreatEventsRequest" });
-    case 5:
+  }
+}
+function __c111(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
           aggregateBy: S.String.pipe(T.Query()),
-          datasetId: S.optional(__S(4, __c0, 4).pipe(T.Query())),
+          datasetId: S.optional(__S(16, __c1, 0).pipe(T.Query())),
           endDate: S.optional(S.String.pipe(T.Query())),
           groupByDate: S.optional(S.Boolean.pipe(T.Query())),
           limit: S.optional(S.Number.pipe(T.Query())),
@@ -8612,7 +9199,7 @@ function __c23(j: number): any {
       ).annotate({
         identifier: "ListThreatEventsAggregateRequest",
       });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           count: S.Number,
@@ -8621,13 +9208,9 @@ function __c23(j: number): any {
       ).annotate({
         identifier: "ListThreatEventsAggregateResponseAggregationsItem",
       });
-    case 7:
-      return S.Array(__S(190, __c23, 6));
-  }
-}
-function __c24(j: number): any {
-  switch (j) {
-    case 0:
+    case 2:
+      return S.Array(__S(1777, __c111, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
           endDate: S.optional(S.NullOr(S.String)),
@@ -8636,18 +9219,57 @@ function __c24(j: number): any {
       ).annotate({
         identifier: "ListThreatEventsAggregateResponseDateRange",
       });
-    case 1:
+    case 4:
       return S.suspend(() =>
         S.Struct({
           aggregateBy: S.String,
-          aggregations: __S(191, __c23, 7),
+          aggregations: __S(1778, __c111, 2),
           total: S.Number,
-          dateRange: S.optional(S.NullOr(__S(192, __c24, 0))),
+          dateRange: S.optional(S.NullOr(__S(1779, __c111, 3))),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({
         identifier: "ListThreatEventsAggregateResponse",
       });
-    case 2:
+  }
+}
+function __c112(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          accountId: S.String.pipe(T.Label("account_id")),
+          ips: __S(16, __c1, 0),
+          frequency: S.optional(S.Number),
+          ports: S.optional(__S(16, __c1, 0)),
+        })
+          .pipe(
+            T.Http({
+              method: "POST",
+              uri: "/accounts/{account_id}/cloudforce-one/scans/config",
+              code: 200,
+            }),
+          )
+          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({ identifier: "CreateScanConfigRequest" });
+  }
+}
+function __c113(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          accountId: S.String.pipe(T.Body("account_id")),
+          frequency: S.Number,
+          ips: __S(16, __c1, 0),
+          ports: __S(16, __c1, 0),
+        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({ identifier: "CreateScanConfigResponse" });
+  }
+}
+function __c114(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -8663,19 +9285,23 @@ function __c24(j: number): any {
       ).annotate({
         identifier: "ListThreatEventsCategoriesCatalogRequest",
       });
-    case 3:
+  }
+}
+function __c115(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
           cursor: S.optional(S.String.pipe(T.Query())),
-          datasetIds: S.optional(__S(4, __c0, 4).pipe(T.Query())),
+          datasetIds: S.optional(__S(16, __c1, 0).pipe(T.Query())),
           direction: S.optional(S.String.pipe(T.Query())),
-          expand: S.optional(__S(4, __c0, 4).pipe(T.Query())),
+          expand: S.optional(__S(16, __c1, 0).pipe(T.Query())),
           hydration: S.optional(S.String.pipe(T.Query())),
           limit: S.optional(S.Number.pipe(T.Query())),
           maxNodes: S.optional(S.Number.pipe(T.Query("max_nodes"))),
-          relationshipTypes: S.optional(__S(4, __c0, 4).pipe(T.Query())),
-          seeds: S.optional(__S(4, __c0, 4).pipe(T.Query())),
+          relationshipTypes: S.optional(__S(16, __c1, 0).pipe(T.Query())),
+          seeds: S.optional(__S(16, __c1, 0).pipe(T.Query())),
         })
           .pipe(
             T.Http({
@@ -8688,7 +9314,7 @@ function __c24(j: number): any {
       ).annotate({
         identifier: "ListThreatEventsGraphRequest",
       });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
@@ -8703,23 +9329,23 @@ function __c24(j: number): any {
       ).annotate({
         identifier: "ListThreatEventsGraphResponseEdgesItem",
       });
-    case 5:
-      return S.Array(__S(196, __c24, 4));
-    case 6:
-      return S.Array(__S(0, __c0, 0));
-    case 7:
+    case 2:
+      return S.Array(__S(1841, __c115, 1));
+    case 3:
+      return S.Array(__S(64, __c4, 0));
+    case 4:
       return S.suspend(() =>
         S.Struct({
-          edges: __S(197, __c24, 5),
-          node: __S(0, __c0, 0),
-          nodes: __S(198, __c24, 6),
+          edges: __S(1842, __c115, 2),
+          node: __S(64, __c4, 0),
+          nodes: __S(1843, __c115, 3),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({
         identifier: "ListThreatEventsGraphResponse",
       });
   }
 }
-function __c25(j: number): any {
+function __c116(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -8729,7 +9355,7 @@ function __c25(j: number): any {
           createdAfter: S.optional(S.String.pipe(T.Query())),
           createdBefore: S.optional(S.String.pipe(T.Query())),
           cursor: S.optional(S.String.pipe(T.Query())),
-          datasetIds: S.optional(__S(4, __c0, 4).pipe(T.Query())),
+          datasetIds: S.optional(__S(16, __c1, 0).pipe(T.Query())),
           format: S.optional(S.String.pipe(T.Query())),
           includeTags: S.optional(S.Boolean.pipe(T.Query())),
           includeTotalCount: S.optional(S.Boolean.pipe(T.Query())),
@@ -8737,11 +9363,11 @@ function __c25(j: number): any {
           name: S.optional(S.String.pipe(T.Query())),
           page: S.optional(S.Number.pipe(T.Query())),
           pageSize: S.optional(S.Number.pipe(T.Query())),
-          relatedEvents: S.optional(__S(4, __c0, 4).pipe(T.Query())),
+          relatedEvents: S.optional(__S(16, __c1, 0).pipe(T.Query())),
           relatedEventsLimit: S.optional(S.Number.pipe(T.Query())),
-          search: S.optional(__S(4, __c0, 4).pipe(T.Query())),
-          tags: S.optional(__S(4, __c0, 4).pipe(T.Query())),
-          tagSearch: S.optional(__S(4, __c0, 4).pipe(T.Query())),
+          search: S.optional(__S(16, __c1, 0).pipe(T.Query())),
+          tags: S.optional(__S(16, __c1, 0).pipe(T.Query())),
+          tagSearch: S.optional(__S(16, __c1, 0).pipe(T.Query())),
         })
           .pipe(
             T.Http({
@@ -8757,7 +9383,7 @@ function __c25(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          items: __S(178, __c22, 2),
+          items: __S(1664, __c104, 0),
           type: S.String,
         }),
       ).annotate({
@@ -8767,8 +9393,8 @@ function __c25(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          datasetId: __S(178, __c22, 2),
-          shardId: __S(178, __c22, 2),
+          datasetId: __S(1664, __c104, 0),
+          shardId: __S(1664, __c104, 0),
         }),
       ).annotate({
         identifier:
@@ -8777,7 +9403,7 @@ function __c25(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          properties: __S(202, __c25, 2),
+          properties: __S(1858, __c116, 2),
           type: S.String,
         }),
       ).annotate({
@@ -8787,7 +9413,7 @@ function __c25(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          items: __S(203, __c25, 3),
+          items: __S(1859, __c116, 3),
           type: S.String,
         }),
       ).annotate({
@@ -8797,10 +9423,10 @@ function __c25(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          complete: __S(178, __c22, 2),
-          failedDatasets: __S(201, __c25, 1),
-          failedShards: __S(204, __c25, 4),
-          warnings: __S(201, __c25, 1),
+          complete: __S(1664, __c104, 0),
+          failedDatasets: __S(1857, __c116, 1),
+          failedShards: __S(1860, __c116, 4),
+          warnings: __S(1857, __c116, 1),
         }),
       ).annotate({
         identifier: "ListThreatEventsIndicatorsResponsePropertiesCompletenessProperties",
@@ -8808,13 +9434,105 @@ function __c25(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          properties: __S(205, __c25, 5),
+          properties: __S(1861, __c116, 5),
           type: S.String,
         }),
       ).annotate({
         identifier: "ListThreatEventsIndicatorsResponsePropertiesCompleteness",
       });
     case 7:
+      return S.suspend(() =>
+        S.Struct({
+          createdAt: S.String,
+          indicatorType: S.String,
+          sources: __S(1873, __c117, 1),
+          updatedAt: S.String,
+          uuid: S.String,
+          value: S.String,
+          datasetId: S.optional(S.NullOr(S.String)),
+          relatedEvents: S.optional(S.NullOr(__S(1888, __c118, 0))),
+          relatedEventsHasMore: S.optional(S.NullOr(S.Boolean)),
+          tags: S.optional(S.NullOr(__S(1904, __c119, 0))),
+          tlp: S.optional(S.NullOr(S.String)),
+        }),
+      ).annotate({
+        identifier: "ListThreatEventsIndicatorsResponsePropertiesIndicatorsItems",
+      });
+    case 8:
+      return S.suspend(() =>
+        S.Struct({
+          items: __S(1863, __c116, 7),
+          type: S.String,
+        }),
+      ).annotate({
+        identifier: "ListThreatEventsIndicatorsResponsePropertiesIndicators",
+      });
+    case 9:
+      return S.suspend(() =>
+        S.Struct({
+          description: S.String,
+          nullable: S.Boolean,
+          type: S.String,
+        }),
+      ).annotate({
+        identifier: "ListThreatEventsIndicatorsResponsePropertiesPaginationPropertiesCursor",
+      });
+    case 10:
+      return S.suspend(() =>
+        S.Struct({
+          description: S.String,
+          type: S.String,
+        }),
+      ).annotate({
+        identifier: "ListThreatEventsIndicatorsResponsePropertiesPaginationPropertiesHasMore",
+      });
+    case 11:
+      return S.suspend(() =>
+        S.Struct({
+          count: __S(1664, __c104, 0),
+          cursor: __S(1865, __c116, 9),
+          hasMore: __S(1866, __c116, 10).pipe(T.Body("has_more")),
+          page: __S(1664, __c104, 0),
+          perPage: __S(1664, __c104, 0).pipe(T.Body("per_page")),
+          totalCount: __S(1865, __c116, 9).pipe(T.Body("total_count")),
+          totalCountIsExact: __S(1866, __c116, 10).pipe(T.Body("total_count_is_exact")),
+        }),
+      ).annotate({
+        identifier: "ListThreatEventsIndicatorsResponsePropertiesPaginationProperties",
+      });
+    case 12:
+      return S.suspend(() =>
+        S.Struct({
+          properties: __S(1867, __c116, 11),
+          type: S.String,
+        }),
+      ).annotate({
+        identifier: "ListThreatEventsIndicatorsResponsePropertiesPagination",
+      });
+    case 13:
+      return S.suspend(() =>
+        S.Struct({
+          completeness: __S(1862, __c116, 6),
+          indicators: __S(1864, __c116, 8),
+          pagination: __S(1868, __c116, 12),
+        }),
+      ).annotate({
+        identifier: "ListThreatEventsIndicatorsResponseProperties",
+      });
+    case 14:
+      return S.suspend(() =>
+        S.Struct({
+          properties: __S(1869, __c116, 13),
+          type: S.String,
+        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({
+        identifier: "ListThreatEventsIndicatorsResponse",
+      });
+  }
+}
+function __c117(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           resourceId: S.String,
@@ -8825,116 +9543,32 @@ function __c25(j: number): any {
       ).annotate({
         identifier: "ListThreatEventsIndicatorsResponsePropertiesIndicatorsItemsSourcesItem",
       });
+    case 1:
+      return S.Array(__S(1872, __c117, 0));
   }
 }
-function __c26(j: number): any {
+function __c118(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(207, __c25, 7));
-    case 1:
-      return S.Array(__S(150, __c18, 6));
-    case 2:
-      return S.Array(__S(152, __c19, 0));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          createdAt: S.String,
-          indicatorType: S.String,
-          sources: __S(208, __c26, 0),
-          updatedAt: S.String,
-          uuid: S.String,
-          value: S.String,
-          datasetId: S.optional(S.NullOr(S.String)),
-          relatedEvents: S.optional(S.NullOr(__S(209, __c26, 1))),
-          relatedEventsHasMore: S.optional(S.NullOr(S.Boolean)),
-          tags: S.optional(S.NullOr(__S(210, __c26, 2))),
-          tlp: S.optional(S.NullOr(S.String)),
-        }),
-      ).annotate({
-        identifier: "ListThreatEventsIndicatorsResponsePropertiesIndicatorsItems",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          items: __S(211, __c26, 3),
-          type: S.String,
-        }),
-      ).annotate({
-        identifier: "ListThreatEventsIndicatorsResponsePropertiesIndicators",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          description: S.String,
-          nullable: S.Boolean,
-          type: S.String,
-        }),
-      ).annotate({
-        identifier: "ListThreatEventsIndicatorsResponsePropertiesPaginationPropertiesCursor",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          description: S.String,
-          type: S.String,
-        }),
-      ).annotate({
-        identifier: "ListThreatEventsIndicatorsResponsePropertiesPaginationPropertiesHasMore",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          count: __S(178, __c22, 2),
-          cursor: __S(213, __c26, 5),
-          hasMore: __S(214, __c26, 6).pipe(T.Body("has_more")),
-          page: __S(178, __c22, 2),
-          perPage: __S(178, __c22, 2).pipe(T.Body("per_page")),
-          totalCount: __S(213, __c26, 5).pipe(T.Body("total_count")),
-          totalCountIsExact: __S(214, __c26, 6).pipe(T.Body("total_count_is_exact")),
-        }),
-      ).annotate({
-        identifier: "ListThreatEventsIndicatorsResponsePropertiesPaginationProperties",
-      });
+      return S.Array(__S(1424, __c89, 0));
   }
 }
-function __c27(j: number): any {
+function __c119(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() =>
-        S.Struct({
-          properties: __S(215, __c26, 7),
-          type: S.String,
-        }),
-      ).annotate({
-        identifier: "ListThreatEventsIndicatorsResponsePropertiesPagination",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          completeness: __S(206, __c25, 6),
-          indicators: __S(212, __c26, 4),
-          pagination: __S(216, __c27, 0),
-        }),
-      ).annotate({
-        identifier: "ListThreatEventsIndicatorsResponseProperties",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          properties: __S(217, __c27, 1),
-          type: S.String,
-        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({
-        identifier: "ListThreatEventsIndicatorsResponse",
-      });
-    case 3:
+      return S.Array(__S(1425, __c89, 1));
+  }
+}
+function __c120(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
           aggregateBy: S.String.pipe(T.Query()),
           createdAfter: S.optional(S.String.pipe(T.Query())),
           createdBefore: S.optional(S.String.pipe(T.Query())),
-          datasetIds: S.optional(__S(4, __c0, 4).pipe(T.Query())),
+          datasetIds: S.optional(__S(16, __c1, 0).pipe(T.Query())),
           eventDateAfter: S.optional(S.String.pipe(T.Query())),
           eventDateBefore: S.optional(S.String.pipe(T.Query())),
           limit: S.optional(S.Number.pipe(T.Query())),
@@ -8952,7 +9586,7 @@ function __c27(j: number): any {
       ).annotate({
         identifier: "ListThreatEventsIndicatorsAggregateRequest",
       });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           count: S.Number,
@@ -8960,20 +9594,24 @@ function __c27(j: number): any {
       ).annotate({
         identifier: "ListThreatEventsIndicatorsAggregateResponseAggregationsItem",
       });
-    case 5:
-      return S.Array(__S(220, __c27, 4));
-    case 6:
+    case 2:
+      return S.Array(__S(1921, __c120, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
           aggregateBy: S.String,
-          aggregations: __S(221, __c27, 5),
+          aggregations: __S(1922, __c120, 2),
           failedDatasets: S.Number,
           total: S.Number,
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({
         identifier: "ListThreatEventsIndicatorsAggregateResponse",
       });
-    case 7:
+  }
+}
+function __c121(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -8982,7 +9620,7 @@ function __c27(j: number): any {
           name: S.optional(S.String.pipe(T.Query())),
           page: S.optional(S.Number.pipe(T.Query())),
           pageSize: S.optional(S.Number.pipe(T.Query())),
-          relatedEvent: S.optional(__S(4, __c0, 4).pipe(T.Query())),
+          relatedEvent: S.optional(__S(16, __c1, 0).pipe(T.Query())),
         })
           .pipe(
             T.Http({
@@ -8995,31 +9633,40 @@ function __c27(j: number): any {
       ).annotate({
         identifier: "ListThreatEventsIndicatorsByDatasetRequest",
       });
-  }
-}
-function __c28(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           createdAt: S.String,
           indicatorType: S.String,
-          sources: __S(208, __c26, 0),
+          sources: __S(1873, __c117, 1),
           updatedAt: S.String,
           uuid: S.String,
           value: S.String,
           datasetId: S.optional(S.NullOr(S.String)),
-          relatedEvents: S.optional(S.NullOr(__S(209, __c26, 1))),
+          relatedEvents: S.optional(S.NullOr(__S(1888, __c118, 0))),
           relatedEventsHasMore: S.optional(S.NullOr(S.Boolean)),
-          tags: S.optional(S.NullOr(__S(210, __c26, 2))),
+          tags: S.optional(S.NullOr(__S(1904, __c119, 0))),
           tlp: S.optional(S.NullOr(S.String)),
         }),
       ).annotate({
         identifier: "ListThreatEventsIndicatorsByDatasetResponseIndicatorsItem",
       });
-    case 1:
-      return S.Array(__S(224, __c28, 0));
     case 2:
+      return S.Array(__S(1937, __c121, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          indicators: __S(1938, __c121, 2),
+          pagination: __S(1952, __c122, 0),
+        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({
+        identifier: "ListThreatEventsIndicatorsByDatasetResponse",
+      });
+  }
+}
+function __c122(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           page: S.Number,
@@ -9030,16 +9677,11 @@ function __c28(j: number): any {
       ).annotate({
         identifier: "ListThreatEventsIndicatorsByDatasetResponsePagination",
       });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          indicators: __S(225, __c28, 1),
-          pagination: __S(226, __c28, 2),
-        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({
-        identifier: "ListThreatEventsIndicatorsByDatasetResponse",
-      });
-    case 4:
+  }
+}
+function __c123(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -9056,11 +9698,15 @@ function __c28(j: number): any {
       ).annotate({
         identifier: "ListThreatEventsIndicatorsByDatasetTagsRequest",
       });
-    case 5:
+  }
+}
+function __c124(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
-          datasetIds: S.optional(__S(4, __c0, 4).pipe(T.Query())),
+          datasetIds: S.optional(__S(16, __c1, 0).pipe(T.Query())),
         })
           .pipe(
             T.Http({
@@ -9073,7 +9719,11 @@ function __c28(j: number): any {
       ).annotate({
         identifier: "ListThreatEventsIndicatorsTypesRequest",
       });
-    case 6:
+  }
+}
+function __c125(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -9089,7 +9739,11 @@ function __c28(j: number): any {
       ).annotate({
         identifier: "ListThreatEventsQueriesRequest",
       });
-    case 7:
+  }
+}
+function __c126(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -9097,7 +9751,7 @@ function __c28(j: number): any {
           datasetId: S.String.pipe(T.Query()),
           direction: S.optional(S.String.pipe(T.Query())),
           includeParent: S.optional(S.Boolean.pipe(T.Query())),
-          indicatorTypeIds: S.optional(__S(4, __c0, 4).pipe(T.Query())),
+          indicatorTypeIds: S.optional(__S(16, __c1, 0).pipe(T.Query())),
           maxDepth: S.optional(S.Number.pipe(T.Query())),
           page: S.optional(S.Number.pipe(T.Query())),
           pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -9116,7 +9770,7 @@ function __c28(j: number): any {
       });
   }
 }
-function __c29(j: number): any {
+function __c127(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -9124,7 +9778,7 @@ function __c29(j: number): any {
           accountId: S.String.pipe(T.Label("account_id")),
           cache: S.optional(S.String.pipe(T.Query())),
           categoryUuid: S.optional(S.String.pipe(T.Query())),
-          filters: S.optional(__S(4, __c0, 4).pipe(T.Query())),
+          filters: S.optional(__S(16, __c1, 0).pipe(T.Query())),
           page: S.optional(S.Number.pipe(T.Query())),
           pageSize: S.optional(S.Number.pipe(T.Query())),
           search: S.optional(S.String.pipe(T.Query())),
@@ -9160,7 +9814,7 @@ function __c29(j: number): any {
         identifier: "ListThreatEventsTagsResponseTagsItemExternalReferencesAnnotatedItem",
       });
     case 3:
-      return S.Array(__S(234, __c29, 2));
+      return S.Array(__S(2034, __c127, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
@@ -9168,18 +9822,18 @@ function __c29(j: number): any {
           value: S.String,
           activeDuration: S.optional(S.NullOr(S.String)),
           activeDurationAnnotated: S.optional(
-            S.NullOr(__S(110, __c13, 6)).pipe(T.Body("activeDuration_annotated")),
+            S.NullOr(__S(1008, __c63, 0)).pipe(T.Body("activeDuration_annotated")),
           ),
           actorCategory: S.optional(S.NullOr(S.String)),
           actorCategoryAnnotated: S.optional(
-            S.NullOr(__S(72, __c9, 0)).pipe(T.Body("actorCategory_annotated")),
+            S.NullOr(__S(517, __c32, 5)).pipe(T.Body("actorCategory_annotated")),
           ),
-          aliases: S.optional(S.NullOr(__S(65, __c8, 1))),
-          aliasGroupNames: S.optional(S.NullOr(__S(4, __c0, 4))),
-          aliasGroupNamesInternal: S.optional(S.NullOr(__S(39, __c4, 7))),
+          aliases: S.optional(S.NullOr(__S(513, __c32, 1))),
+          aliasGroupNames: S.optional(S.NullOr(__S(16, __c1, 0))),
+          aliasGroupNamesInternal: S.optional(S.NullOr(__S(448, __c28, 0))),
           attributionOrganization: S.optional(S.NullOr(S.String)),
           attributionOrganizationAnnotated: S.optional(
-            S.NullOr(__S(233, __c29, 1)).pipe(T.Body("attributionOrganization_annotated")),
+            S.NullOr(__S(2033, __c127, 1)).pipe(T.Body("attributionOrganization_annotated")),
           ),
           categoryName: S.optional(S.NullOr(S.String)),
           categoryUuid: S.optional(S.NullOr(S.String)),
@@ -9187,32 +9841,34 @@ function __c29(j: number): any {
           createdAt: S.optional(S.NullOr(S.String)),
           dateOfDiscovery: S.optional(S.NullOr(S.String)),
           description: S.optional(S.NullOr(S.String)),
-          externalReferenceLinks: S.optional(S.NullOr(__S(4, __c0, 4))),
-          externalReferences: S.optional(S.NullOr(__S(68, __c8, 4))),
+          externalReferenceLinks: S.optional(S.NullOr(__S(16, __c1, 0))),
+          externalReferences: S.optional(S.NullOr(__S(515, __c32, 3))),
           externalReferencesAnnotated: S.optional(
-            S.NullOr(__S(235, __c29, 3)).pipe(T.Body("externalReferences_annotated")),
+            S.NullOr(__S(2035, __c127, 3)).pipe(T.Body("externalReferences_annotated")),
           ),
-          internalAliases: S.optional(S.NullOr(__S(65, __c8, 1))),
+          internalAliases: S.optional(S.NullOr(__S(513, __c32, 1))),
           internalDescription: S.optional(S.NullOr(S.String)),
           lastSeen: S.optional(S.NullOr(S.String)),
           motive: S.optional(S.NullOr(S.String)),
-          motiveAnnotated: S.optional(S.NullOr(__S(64, __c8, 0)).pipe(T.Body("motive_annotated"))),
+          motiveAnnotated: S.optional(
+            S.NullOr(__S(512, __c32, 0)).pipe(T.Body("motive_annotated")),
+          ),
           opsecLevel: S.optional(S.NullOr(S.String)),
           opsecLevelAnnotated: S.optional(
-            S.NullOr(__S(64, __c8, 0)).pipe(T.Body("opsecLevel_annotated")),
+            S.NullOr(__S(512, __c32, 0)).pipe(T.Body("opsecLevel_annotated")),
           ),
           originCountryISO: S.optional(S.NullOr(S.String)),
           originCountryISOAnnotated: S.optional(
-            S.NullOr(__S(66, __c8, 2)).pipe(T.Body("originCountryISO_annotated")),
+            S.NullOr(__S(528, __c33, 0)).pipe(T.Body("originCountryISO_annotated")),
           ),
           priority: S.optional(S.NullOr(S.Number)),
           priorityAnnotated: S.optional(
-            S.NullOr(__S(71, __c8, 7)).pipe(T.Body("priority_annotated")),
+            S.NullOr(__S(516, __c32, 4)).pipe(T.Body("priority_annotated")),
           ),
-          properties: S.optional(S.NullOr(__S(0, __c0, 0))),
+          properties: S.optional(S.NullOr(__S(64, __c4, 0))),
           sophisticationLevel: S.optional(S.NullOr(S.String)),
           sophisticationLevelAnnotated: S.optional(
-            S.NullOr(__S(233, __c29, 1)).pipe(T.Body("sophisticationLevel_annotated")),
+            S.NullOr(__S(2033, __c127, 1)).pipe(T.Body("sophisticationLevel_annotated")),
           ),
           tlp: S.optional(S.NullOr(S.String)),
           updatedAt: S.optional(S.NullOr(S.String)),
@@ -9222,17 +9878,112 @@ function __c29(j: number): any {
         identifier: "ListThreatEventsTagsResponseTagsItem",
       });
     case 5:
-      return S.Array(__S(236, __c29, 4));
+      return S.Array(__S(2036, __c127, 4));
     case 6:
       return S.suspend(() =>
         S.Struct({
-          pagination: __S(226, __c28, 2),
-          tags: __S(237, __c29, 5),
+          pagination: __S(1952, __c122, 0),
+          tags: __S(2037, __c127, 5),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({
         identifier: "ListThreatEventsTagsResponse",
       });
-    case 7:
+  }
+}
+function __c128(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          resourceId: S.String,
+          resourceType: S.String,
+          system: S.String,
+          title: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "ThreatEventsCreateRequestSource",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          accountId: S.String.pipe(T.Label("account_id")),
+          category: S.String,
+          date: S.String,
+          event: S.String,
+          raw: __S(48, __c3, 0),
+          tlp: S.String,
+          attacker: S.optional(S.String),
+          attackerCountry: S.optional(S.String),
+          datasetId: S.optional(S.String),
+          indicator: S.optional(S.String),
+          indicators: S.optional(__S(32, __c2, 0)),
+          indicatorType: S.optional(S.String),
+          insight: S.optional(S.String),
+          source: S.optional(__S(2048, __c128, 0)),
+          tags: S.optional(__S(16, __c1, 0)),
+          targetCountry: S.optional(S.String),
+          targetIndustry: S.optional(S.String),
+        })
+          .pipe(
+            T.Http({
+              method: "POST",
+              uri: "/accounts/{account_id}/cloudforce-one/events/create",
+              code: 200,
+            }),
+          )
+          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({ identifier: "CreateThreatEventRequest" });
+  }
+}
+function __c129(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.Number);
+  }
+}
+function __c130(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          attacker: S.String,
+          attackerCountry: S.String,
+          attackerCountryAlpha3: S.String,
+          category: S.String,
+          datasetId: S.String,
+          date: S.String,
+          event: S.String,
+          hasChildren: S.Boolean,
+          indicator: S.String,
+          indicatorType: S.String,
+          indicatorTypeId: S.Number,
+          killChain: S.Number,
+          mitreAttack: __S(16, __c1, 0),
+          mitreCapec: __S(16, __c1, 0),
+          numReferenced: S.Number,
+          numReferences: S.Number,
+          rawId: S.String,
+          referenced: __S(16, __c1, 0),
+          referencedIds: __S(2064, __c129, 0),
+          references: __S(16, __c1, 0),
+          referencesIds: __S(2064, __c129, 0),
+          tags: __S(16, __c1, 0),
+          targetCountry: S.String,
+          targetCountryAlpha3: S.String,
+          targetIndustry: S.String,
+          tlp: S.String,
+          uuid: S.String,
+          insight: S.optional(S.NullOr(S.String)),
+          releasabilityId: S.optional(S.NullOr(S.String)),
+        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({
+        identifier: "CreateThreatEventResponse",
+      });
+  }
+}
+function __c131(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -9249,69 +10000,69 @@ function __c29(j: number): any {
       ).annotate({
         identifier: "ListThreatEventsTagsCategoriesRequest",
       });
-  }
-}
-function __c30(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Record(S.String, S.Unknown);
     case 1:
+      return S.Record(S.String, S.Unknown);
+    case 2:
       return S.suspend(() =>
         S.Struct({
           key: S.String,
           kind: S.String,
-          allowedValues: S.optional(S.NullOr(__S(39, __c4, 7))),
-          annotations: S.optional(S.NullOr(__S(45, __c5, 5))),
+          allowedValues: S.optional(S.NullOr(__S(448, __c28, 0))),
+          annotations: S.optional(S.NullOr(__S(464, __c29, 0))),
           deprecated: S.optional(S.NullOr(S.Boolean)),
-          deprecatedValues: S.optional(S.NullOr(__S(39, __c4, 7))),
+          deprecatedValues: S.optional(S.NullOr(__S(448, __c28, 0))),
           element: S.optional(S.NullOr(S.Unknown)),
           enforcement: S.optional(S.NullOr(S.String)),
           format: S.optional(S.NullOr(S.String)),
           label: S.optional(S.NullOr(S.String)),
           maxLength: S.optional(S.NullOr(S.Number)),
-          numberConstraint: S.optional(S.NullOr(__S(46, __c5, 6))),
-          properties: S.optional(S.NullOr(__S(240, __c30, 0))),
+          numberConstraint: S.optional(S.NullOr(__S(465, __c29, 1))),
+          properties: S.optional(S.NullOr(__S(2097, __c131, 1))),
           required: S.optional(S.NullOr(S.Boolean)),
         }),
       ).annotate({
         identifier: "ListThreatEventsTagsCategoriesResponseCategoriesItemSchemaItem",
       });
-    case 2:
-      return S.Array(__S(241, __c30, 1));
     case 3:
+      return S.Array(__S(2098, __c131, 2));
+    case 4:
       return S.suspend(() =>
         S.Struct({
           name: S.String,
           uuid: S.String,
           createdAt: S.optional(S.NullOr(S.String)),
           description: S.optional(S.NullOr(S.String)),
-          schema: S.optional(S.NullOr(__S(242, __c30, 2))),
+          schema: S.optional(S.NullOr(__S(2099, __c131, 3))),
           updatedAt: S.optional(S.NullOr(S.String)),
         }),
       ).annotate({
         identifier: "ListThreatEventsTagsCategoriesResponseCategoriesItem",
       });
-    case 4:
-      return S.Array(__S(243, __c30, 3));
     case 5:
+      return S.Array(__S(2100, __c131, 4));
+    case 6:
       return S.suspend(() =>
         S.Struct({
-          categories: __S(244, __c30, 4),
+          categories: __S(2101, __c131, 5),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({
         identifier: "ListThreatEventsTagsCategoriesResponse",
       });
-    case 6:
+  }
+}
+function __c132(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
           tagUuid: S.String.pipe(T.Label("tag_uuid")),
-          datasetIds: S.optional(__S(4, __c0, 4).pipe(T.Query())),
+          datasetIds: S.optional(__S(16, __c1, 0).pipe(T.Query())),
           indicatorType: S.optional(S.String.pipe(T.Query())),
           page: S.optional(S.Number.pipe(T.Query())),
           pageSize: S.optional(S.Number.pipe(T.Query())),
-          relatedEvent: S.optional(__S(4, __c0, 4).pipe(T.Query())),
-          search: S.optional(__S(4, __c0, 4).pipe(T.Query())),
+          relatedEvent: S.optional(__S(16, __c1, 0).pipe(T.Query())),
+          search: S.optional(__S(16, __c1, 0).pipe(T.Query())),
         })
           .pipe(
             T.Http({
@@ -9324,7 +10075,7 @@ function __c30(j: number): any {
       ).annotate({
         identifier: "ListThreatEventsTagsIndicatorsRequest",
       });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           createdAt: S.String,
@@ -9333,30 +10084,30 @@ function __c30(j: number): any {
           uuid: S.String,
           value: S.String,
           datasetId: S.optional(S.NullOr(S.String)),
-          relatedEvents: S.optional(S.NullOr(__S(209, __c26, 1))),
+          relatedEvents: S.optional(S.NullOr(__S(1888, __c118, 0))),
           relatedEventsHasMore: S.optional(S.NullOr(S.Boolean)),
-          tags: S.optional(S.NullOr(__S(153, __c19, 1))),
+          tags: S.optional(S.NullOr(__S(1440, __c90, 0))),
           tlp: S.optional(S.NullOr(S.String)),
         }),
       ).annotate({
         identifier: "ListThreatEventsTagsIndicatorsResponseIndicatorsItem",
       });
-  }
-}
-function __c31(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(247, __c30, 7));
-    case 1:
+    case 2:
+      return S.Array(__S(2113, __c132, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          indicators: __S(248, __c31, 0),
-          pagination: __S(226, __c28, 2),
+          indicators: __S(2114, __c132, 2),
+          pagination: __S(1952, __c122, 0),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({
         identifier: "ListThreatEventsTagsIndicatorsResponse",
       });
-    case 2:
+  }
+}
+function __c133(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -9365,8 +10116,8 @@ function __c31(j: number): any {
           indicatorType: S.optional(S.String.pipe(T.Query())),
           page: S.optional(S.Number.pipe(T.Query())),
           pageSize: S.optional(S.Number.pipe(T.Query())),
-          relatedEvent: S.optional(__S(4, __c0, 4).pipe(T.Query())),
-          search: S.optional(__S(4, __c0, 4).pipe(T.Query())),
+          relatedEvent: S.optional(__S(16, __c1, 0).pipe(T.Query())),
+          search: S.optional(__S(16, __c1, 0).pipe(T.Query())),
         })
           .pipe(
             T.Http({
@@ -9379,7 +10130,7 @@ function __c31(j: number): any {
       ).annotate({
         identifier: "ListThreatEventsTagsIndicatorsByDatasetRequest",
       });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           createdAt: S.String,
@@ -9388,26 +10139,30 @@ function __c31(j: number): any {
           uuid: S.String,
           value: S.String,
           datasetId: S.optional(S.NullOr(S.String)),
-          relatedEvents: S.optional(S.NullOr(__S(209, __c26, 1))),
+          relatedEvents: S.optional(S.NullOr(__S(1888, __c118, 0))),
           relatedEventsHasMore: S.optional(S.NullOr(S.Boolean)),
-          tags: S.optional(S.NullOr(__S(210, __c26, 2))),
+          tags: S.optional(S.NullOr(__S(1904, __c119, 0))),
           tlp: S.optional(S.NullOr(S.String)),
         }),
       ).annotate({
         identifier: "ListThreatEventsTagsIndicatorsByDatasetResponseIndicatorsItem",
       });
-    case 4:
-      return S.Array(__S(251, __c31, 3));
-    case 5:
+    case 2:
+      return S.Array(__S(2129, __c133, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          indicators: __S(252, __c31, 4),
-          pagination: __S(226, __c28, 2),
+          indicators: __S(2130, __c133, 2),
+          pagination: __S(1952, __c122, 0),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({
         identifier: "ListThreatEventsTagsIndicatorsByDatasetResponse",
       });
-    case 6:
+  }
+}
+function __c134(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -9424,7 +10179,11 @@ function __c31(j: number): any {
       ).annotate({
         identifier: "ListThreatEventsTargetIndustriesByDatasetRequest",
       });
-    case 7:
+  }
+}
+function __c135(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -9442,13 +10201,13 @@ function __c31(j: number): any {
       });
   }
 }
-function __c32(j: number): any {
+function __c136(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
-          datasetIds: S.optional(__S(4, __c0, 4).pipe(T.Query())),
+          datasetIds: S.optional(__S(16, __c1, 0).pipe(T.Query())),
         })
           .pipe(
             T.Http({
@@ -9461,11 +10220,15 @@ function __c32(j: number): any {
       ).annotate({
         identifier: "ListThreatEventTargetIndustriesRequest",
       });
-    case 1:
+  }
+}
+function __c137(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
-          articleId: S.optional(__S(4, __c0, 4).pipe(T.Query("article_id"))),
+          articleId: S.optional(__S(16, __c1, 0).pipe(T.Query("article_id"))),
           cursor: S.optional(S.String.pipe(T.Query())),
           feedCategory: S.optional(S.String.pipe(T.Query("feed_category"))),
           feedId: S.optional(S.String.pipe(T.Query("feed_id"))),
@@ -9482,8 +10245,8 @@ function __c32(j: number): any {
           tag: S.optional(S.String.pipe(T.Query())),
           tagAppliedBy: S.optional(S.String.pipe(T.Query("tag_applied_by"))),
           tagCategory: S.optional(S.String.pipe(T.Query("tag_category"))),
-          tagCategoryId: S.optional(__S(4, __c0, 4).pipe(T.Query("tag_category_id"))),
-          tagId: S.optional(__S(4, __c0, 4).pipe(T.Query("tag_id"))),
+          tagCategoryId: S.optional(__S(16, __c1, 0).pipe(T.Query("tag_category_id"))),
+          tagId: S.optional(__S(16, __c1, 0).pipe(T.Query("tag_id"))),
         })
           .pipe(
             T.Http({
@@ -9496,7 +10259,7 @@ function __c32(j: number): any {
       ).annotate({
         identifier: "ListThreatSignalsArticlesRequest",
       });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           appliedBy: S.String.pipe(T.Body("applied_by")),
@@ -9507,9 +10270,9 @@ function __c32(j: number): any {
       ).annotate({
         identifier: "ListThreatSignalsArticlesResponseArticlesItemTagsItem",
       });
+    case 2:
+      return S.Array(__S(2193, __c137, 1));
     case 3:
-      return S.Array(__S(258, __c32, 2));
-    case 4:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
@@ -9523,18 +10286,18 @@ function __c32(j: number): any {
           read: S.Boolean,
           readAt: S.String.pipe(T.Body("read_at")),
           summary: S.String,
-          tags: __S(259, __c32, 3),
+          tags: __S(2194, __c137, 2),
           title: S.String,
         }),
       ).annotate({
         identifier: "ListThreatSignalsArticlesResponseArticlesItem",
       });
+    case 4:
+      return S.Array(__S(2195, __c137, 3));
     case 5:
-      return S.Array(__S(260, __c32, 4));
-    case 6:
       return S.suspend(() =>
         S.Struct({
-          articles: __S(261, __c32, 5),
+          articles: __S(2196, __c137, 4),
           hasMore: S.Boolean.pipe(T.Body("has_more")),
           nextCursor: S.String.pipe(T.Body("next_cursor")),
           totalCount: S.Number.pipe(T.Body("total_count")),
@@ -9543,7 +10306,11 @@ function __c32(j: number): any {
       ).annotate({
         identifier: "ListThreatSignalsArticlesResponse",
       });
-    case 7:
+  }
+}
+function __c138(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -9559,11 +10326,7 @@ function __c32(j: number): any {
       ).annotate({
         identifier: "ListThreatSignalsCategoriesRequest",
       });
-  }
-}
-function __c33(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
@@ -9573,17 +10336,21 @@ function __c33(j: number): any {
       ).annotate({
         identifier: "ListThreatSignalsCategoriesResponseCategoriesItem",
       });
-    case 1:
-      return S.Array(__S(264, __c33, 0));
     case 2:
+      return S.Array(__S(2209, __c138, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          categories: __S(265, __c33, 1),
+          categories: __S(2210, __c138, 2),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({
         identifier: "ListThreatSignalsCategoriesResponse",
       });
-    case 3:
+  }
+}
+function __c139(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -9607,7 +10374,7 @@ function __c33(j: number): any {
       ).annotate({
         identifier: "ListThreatSignalsFeedsRequest",
       });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
@@ -9629,13 +10396,13 @@ function __c33(j: number): any {
       ).annotate({
         identifier: "ListThreatSignalsFeedsResponseFeedsItem",
       });
-    case 5:
-      return S.Array(__S(268, __c33, 4));
-    case 6:
+    case 2:
+      return S.Array(__S(2225, __c139, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
           count: S.Number,
-          feeds: __S(269, __c33, 5),
+          feeds: __S(2226, __c139, 2),
           page: S.Number,
           perPage: S.Number.pipe(T.Body("per_page")),
           totalCount: S.Number.pipe(T.Body("total_count")),
@@ -9643,7 +10410,11 @@ function __c33(j: number): any {
       ).annotate({
         identifier: "ListThreatSignalsFeedsResponse",
       });
-    case 7:
+  }
+}
+function __c140(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -9666,11 +10437,7 @@ function __c33(j: number): any {
       ).annotate({
         identifier: "ListThreatSignalsIndicatorsRequest",
       });
-  }
-}
-function __c34(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
@@ -9685,9 +10452,9 @@ function __c34(j: number): any {
       ).annotate({
         identifier: "ListThreatSignalsIndicatorsResponseIndicatorsItem",
       });
-    case 1:
-      return S.Array(__S(272, __c34, 0));
     case 2:
+      return S.Array(__S(2241, __c140, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
           count: S.Number,
@@ -9701,16 +10468,62 @@ function __c34(j: number): any {
       ).annotate({
         identifier: "ListThreatSignalsIndicatorsResponsePagination",
       });
-    case 3:
+    case 4:
       return S.suspend(() =>
         S.Struct({
-          indicators: __S(273, __c34, 1),
-          pagination: __S(274, __c34, 2),
+          indicators: __S(2242, __c140, 2),
+          pagination: __S(2243, __c140, 3),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({
         identifier: "ListThreatSignalsIndicatorsResponse",
       });
-    case 4:
+  }
+}
+function __c141(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          accountId: S.String.pipe(T.Label("account_id")),
+          killChain: S.Number,
+          name: S.String,
+          mitreAttack: S.optional(__S(16, __c1, 0)),
+          mitreCapec: S.optional(__S(16, __c1, 0)),
+          shortname: S.optional(S.String),
+        })
+          .pipe(
+            T.Http({
+              method: "POST",
+              uri: "/accounts/{account_id}/cloudforce-one/events/categories/create",
+              code: 200,
+            }),
+          )
+          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({
+        identifier: "CreateThreatEventCategoryRequest",
+      });
+  }
+}
+function __c142(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          killChain: S.Number,
+          name: S.String,
+          uuid: S.String,
+          mitreAttack: S.optional(S.NullOr(__S(16, __c1, 0))),
+          mitreCapec: S.optional(S.NullOr(__S(16, __c1, 0))),
+          shortname: S.optional(S.NullOr(S.String)),
+        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({
+        identifier: "CreateThreatEventCategoryResponse",
+      });
+  }
+}
+function __c143(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -9728,27 +10541,31 @@ function __c34(j: number): any {
       ).annotate({
         identifier: "ListThreatSignalsSkillsRequest",
       });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           count: S.Number,
           customSkillsAvailable: S.Boolean.pipe(T.Body("custom_skills_available")),
           page: S.Number,
           perPage: S.Number.pipe(T.Body("per_page")),
-          skills: __S(164, __c20, 4),
+          skills: __S(1553, __c97, 1),
           totalCount: S.Number.pipe(T.Body("total_count")),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({
         identifier: "ListThreatSignalsSkillsResponse",
       });
-    case 6:
+  }
+}
+function __c144(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
           configId: S.String.pipe(T.Label("config_id")),
           frequency: S.optional(S.Number),
-          ips: S.optional(__S(4, __c0, 4)),
-          ports: S.optional(__S(4, __c0, 4)),
+          ips: S.optional(__S(16, __c1, 0)),
+          ports: S.optional(__S(16, __c1, 0)),
         })
           .pipe(
             T.Http({
@@ -9759,21 +10576,21 @@ function __c34(j: number): any {
           )
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "PatchScanConfigRequest" });
-    case 7:
+  }
+}
+function __c145(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          data: S.optional(__S(0, __c0, 0)),
+          data: S.optional(__S(64, __c4, 0)),
           source: S.optional(S.String),
           tlp: S.optional(S.String),
         }),
       ).annotate({
         identifier: "ThreatEventsEditRequestRaw",
       });
-  }
-}
-function __c35(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -9788,7 +10605,7 @@ function __c35(j: number): any {
           indicator: S.optional(S.String),
           indicatorType: S.optional(S.String),
           insight: S.optional(S.String),
-          raw: S.optional(__S(279, __c34, 7)),
+          raw: S.optional(__S(2320, __c145, 0)),
           targetCountry: S.optional(S.String),
           targetIndustry: S.optional(S.String),
           tlp: S.optional(S.String),
@@ -9802,14 +10619,18 @@ function __c35(j: number): any {
           )
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "PatchThreatEventRequest" });
-    case 1:
+  }
+}
+function __c146(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
           categoryId: S.String.pipe(T.Label("category_id")),
           killChain: S.optional(S.Number),
-          mitreAttack: S.optional(__S(4, __c0, 4)),
-          mitreCapec: S.optional(__S(4, __c0, 4)),
+          mitreAttack: S.optional(__S(16, __c1, 0)),
+          mitreCapec: S.optional(__S(16, __c1, 0)),
           name: S.optional(S.String),
           shortname: S.optional(S.String),
         })
@@ -9824,7 +10645,11 @@ function __c35(j: number): any {
       ).annotate({
         identifier: "PatchThreatEventCategoryRequest",
       });
-    case 2:
+  }
+}
+function __c147(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -9843,7 +10668,11 @@ function __c35(j: number): any {
       ).annotate({
         identifier: "PatchThreatEventDatasetRequest",
       });
-    case 3:
+  }
+}
+function __c148(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -9864,7 +10693,7 @@ function __c35(j: number): any {
       ).annotate({
         identifier: "PatchThreatEventRawRequest",
       });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
@@ -9873,7 +10702,11 @@ function __c35(j: number): any {
       ).annotate({
         identifier: "PatchThreatEventRawResponse",
       });
-    case 5:
+  }
+}
+function __c149(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -9890,7 +10723,7 @@ function __c35(j: number): any {
       ).annotate({
         identifier: "PollThreatSignalsFeedRequest",
       });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           feedId: S.String.pipe(T.Body("feed_id")),
@@ -9901,23 +10734,23 @@ function __c35(j: number): any {
       ).annotate({
         identifier: "PollThreatSignalsFeedResponseFeedsItem",
       });
-    case 7:
-      return S.Array(__S(286, __c35, 6));
-  }
-}
-function __c36(j: number): any {
-  switch (j) {
-    case 0:
+    case 2:
+      return S.Array(__S(2385, __c149, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
           errors: S.Number,
-          feeds: __S(287, __c35, 7),
+          feeds: __S(2386, __c149, 2),
           triggered: S.Number,
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({
         identifier: "PollThreatSignalsFeedResponse",
       });
-    case 1:
+  }
+}
+function __c150(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -9933,7 +10766,7 @@ function __c36(j: number): any {
       ).annotate({
         identifier: "QuotaRequestPriorityRequest",
       });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           anniversaryDate: S.optional(S.NullOr(S.String).pipe(T.Body("anniversary_date"))),
@@ -9946,7 +10779,11 @@ function __c36(j: number): any {
       ).annotate({
         identifier: "QuotaRequestPriorityResponse",
       });
-    case 3:
+  }
+}
+function __c151(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -9964,7 +10801,7 @@ function __c36(j: number): any {
       ).annotate({
         identifier: "RawThreatEventDatasetRequest",
       });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.Number,
@@ -9977,7 +10814,11 @@ function __c36(j: number): any {
       ).annotate({
         identifier: "RawThreatEventDatasetResponse",
       });
-    case 5:
+  }
+}
+function __c152(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -9991,404 +10832,20 @@ function __c36(j: number): any {
           )
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "RequestsConstantsRequest" });
-    case 6:
+    case 1:
       return S.Array(S.String);
-    case 7:
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          priority: S.optional(S.NullOr(__S(294, __c36, 6))),
-          status: S.optional(S.NullOr(__S(294, __c36, 6))),
-          tlp: S.optional(S.NullOr(__S(294, __c36, 6))),
+          priority: S.optional(S.NullOr(__S(2433, __c152, 1))),
+          status: S.optional(S.NullOr(__S(2433, __c152, 1))),
+          tlp: S.optional(S.NullOr(__S(2433, __c152, 1))),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({
         identifier: "RequestsConstantsResponse",
       });
   }
 }
-function __c37(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          accountId: S.String.pipe(T.Label("account_id")),
-        })
-          .pipe(
-            T.Http({
-              method: "GET",
-              uri: "/accounts/{account_id}/cloudforce-one/requests/quota",
-              code: 200,
-            }),
-          )
-          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({ identifier: "RequestsQuotaRequest" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          anniversaryDate: S.optional(S.NullOr(S.String).pipe(T.Body("anniversary_date"))),
-          quarterAnniversaryDate: S.optional(
-            S.NullOr(S.String).pipe(T.Body("quarter_anniversary_date")),
-          ),
-          quota: S.optional(S.NullOr(S.Number)),
-          remaining: S.optional(S.NullOr(S.Number)),
-        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({ identifier: "RequestsQuotaResponse" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          accountId: S.String.pipe(T.Label("account_id")),
-        })
-          .pipe(
-            T.Http({
-              method: "GET",
-              uri: "/accounts/{account_id}/cloudforce-one/requests/types",
-              code: 200,
-            }),
-          )
-          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({ identifier: "RequestsTypesRequest" });
-    case 3:
-      return S.suspend(() =>
-        __S(4, __c0, 4).pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({ identifier: "RequestsTypesResponse" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          accountId: S.String.pipe(T.Label("account_id")),
-          query: S.String.pipe(T.Query()),
-          feedId: S.optional(S.String.pipe(T.Query("feed_id"))),
-          maxResults: S.optional(S.String.pipe(T.Query("max_results"))),
-        })
-          .pipe(
-            T.Http({
-              method: "GET",
-              uri: "/accounts/{account_id}/cloudforce-one/v2/threat-signals/search",
-              code: 200,
-            }),
-          )
-          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({
-        identifier: "SearchThreatSignalRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          articleId: S.String.pipe(T.Body("article_id")),
-          datasetId: S.String.pipe(T.Body("dataset_id")),
-          eventId: S.String.pipe(T.Body("event_id")),
-          feedId: S.String.pipe(T.Body("feed_id")),
-          score: S.Number,
-          text: S.String,
-        }),
-      ).annotate({
-        identifier: "SearchThreatSignalResponseResultsItem",
-      });
-    case 6:
-      return S.Array(__S(301, __c37, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          count: S.Number,
-          results: __S(302, __c37, 6),
-        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({
-        identifier: "SearchThreatSignalResponse",
-      });
-  }
-}
-function __c38(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(2, __c0, 2));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          category: S.String,
-          date: S.String,
-          event: S.String,
-          raw: __S(1, __c0, 1),
-          tlp: S.String,
-          accountId: S.optional(S.Number),
-          attacker: S.optional(S.String),
-          attackerCountry: S.optional(S.String),
-          datasetId: S.optional(S.String),
-          indicator: S.optional(S.String),
-          indicators: S.optional(__S(304, __c38, 0)),
-          indicatorType: S.optional(S.String),
-          insight: S.optional(S.String),
-          tags: S.optional(__S(4, __c0, 4)),
-          targetCountry: S.optional(S.String),
-          targetIndustry: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "ThreatEventsBulkCreateRelationshipsRequestDataItem",
-      });
-    case 2:
-      return S.Array(__S(305, __c38, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          accountId: S.String.pipe(T.Label("account_id")),
-          data: __S(306, __c38, 2),
-          datasetId: S.String,
-        })
-          .pipe(
-            T.Http({
-              method: "POST",
-              uri: "/accounts/{account_id}/cloudforce-one/events/create/bulk/relationships",
-              code: 200,
-            }),
-          )
-          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({
-        identifier: "ThreatEventsBulkCreateRelationshipsRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          createdEventsCount: S.Number,
-          createdIndicatorsCount: S.Number,
-          createdRelationshipsCount: S.Number,
-          errorCount: S.Number,
-        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({
-        identifier: "ThreatEventsBulkCreateRelationshipsResponse",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          accountId: S.String.pipe(T.Label("account_id")),
-          articleIds: __S(4, __c0, 4).pipe(T.Body("article_ids")),
-          read: S.Boolean,
-        })
-          .pipe(
-            T.Http({
-              method: "PATCH",
-              uri: "/accounts/{account_id}/cloudforce-one/v2/threat-signals/articles",
-              code: 200,
-            }),
-          )
-          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({
-        identifier: "ThreatSignalsArticlesBulkEditRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          updatedCount: S.Number.pipe(T.Body("updated_count")),
-        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({
-        identifier: "ThreatSignalsArticlesBulkEditResponse",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          accountId: S.String.pipe(T.Label("account_id")),
-        })
-          .pipe(
-            T.Http({
-              method: "GET",
-              uri: "/accounts/{account_id}/cloudforce-one/v2/threat-signals/health",
-              code: 200,
-            }),
-          )
-          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({
-        identifier: "ThreatSignalsHealthRequest",
-      });
-  }
-}
-function __c39(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          status: S.String,
-        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({
-        identifier: "ThreatSignalsHealthResponse",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          accountId: S.String.pipe(T.Label("account_id")),
-          query: S.String.pipe(T.Query()),
-          feedId: S.optional(S.String.pipe(T.Query("feed_id"))),
-          maxResults: S.optional(S.String.pipe(T.Query("max_results"))),
-        })
-          .pipe(
-            T.Http({
-              method: "GET",
-              uri: "/accounts/{account_id}/cloudforce-one/v2/threat-signals/search",
-              code: 200,
-            }),
-          )
-          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({
-        identifier: "ThreatSignalsSearchSearchRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          accountId: S.String.pipe(T.Label("account_id")),
-          requestId: S.String.pipe(T.Label("request_id")),
-          content: S.optional(S.String),
-          priority: S.optional(S.String),
-          requestType: S.optional(S.String.pipe(T.Body("request_type"))),
-          summary: S.optional(S.String),
-          tlp: S.optional(S.String),
-        })
-          .pipe(
-            T.Http({
-              method: "PUT",
-              uri: "/accounts/{account_id}/cloudforce-one/requests/{request_id}",
-              code: 200,
-            }),
-          )
-          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({ identifier: "UpdateRequestRequest" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          accountId: S.String.pipe(T.Label("account_id")),
-          requestId: S.String.pipe(T.Label("request_id")),
-          assetId: S.String.pipe(T.Label("asset_id")),
-          source: S.optional(S.String),
-        })
-          .pipe(
-            T.Http({
-              method: "PUT",
-              uri: "/accounts/{account_id}/cloudforce-one/requests/{request_id}/asset/{asset_id}",
-              code: 200,
-            }),
-          )
-          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({
-        identifier: "UpdateRequestAssetRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.Number,
-          name: S.String,
-          created: S.optional(S.NullOr(S.String)),
-          description: S.optional(S.NullOr(S.String)),
-          fileType: S.optional(S.NullOr(S.String).pipe(T.Body("file_type"))),
-        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({
-        identifier: "UpdateRequestAssetResponse",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          accountId: S.String.pipe(T.Label("account_id")),
-          requestId: S.String.pipe(T.Label("request_id")),
-          messageId: S.Number.pipe(T.Label("message_id")),
-          content: S.optional(S.String),
-        })
-          .pipe(
-            T.Http({
-              method: "PUT",
-              uri: "/accounts/{account_id}/cloudforce-one/requests/{request_id}/message/{message_id}",
-              code: 200,
-            }),
-          )
-          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({
-        identifier: "UpdateRequestMessageRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          accountId: S.String.pipe(T.Label("account_id")),
-          priorityId: S.String.pipe(T.Label("priority_id")),
-          labels: __S(4, __c0, 4),
-          priority: S.Number,
-          requirement: S.String,
-          tlp: S.String,
-        })
-          .pipe(
-            T.Http({
-              method: "PUT",
-              uri: "/accounts/{account_id}/cloudforce-one/requests/priority/{priority_id}",
-              code: 200,
-            }),
-          )
-          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({
-        identifier: "UpdateRequestPriorityRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          accountId: S.String.pipe(T.Label("account_id")),
-          feedId: S.String.pipe(T.Label("feed_id")),
-          skillIds: __S(4, __c0, 4).pipe(T.Body("skill_ids")),
-        })
-          .pipe(
-            T.Http({
-              method: "PUT",
-              uri: "/accounts/{account_id}/cloudforce-one/v2/threat-signals/feeds/{feed_id}/skills",
-              code: 200,
-            }),
-          )
-          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({
-        identifier: "UpdateThreatSignalsFeedsSkillRequest",
-      });
-  }
-}
-function __c40(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          position: S.Number,
-          skillId: S.String.pipe(T.Body("skill_id")),
-        }),
-      ).annotate({
-        identifier: "UpdateThreatSignalsFeedsSkillResponseSkillsItem",
-      });
-    case 1:
-      return S.Array(__S(320, __c40, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          feedId: S.String.pipe(T.Body("feed_id")),
-          skills: __S(321, __c40, 1),
-        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({
-        identifier: "UpdateThreatSignalsFeedsSkillResponse",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          accountId: S.String.pipe(T.Label("account_id")),
-          skillId: S.String.pipe(T.Label("skill_id")),
-          categoryUuids: __S(4, __c0, 4).pipe(T.Body("category_uuids")),
-        })
-          .pipe(
-            T.Http({
-              method: "PUT",
-              uri: "/accounts/{account_id}/cloudforce-one/v2/threat-signals/skills/{skill_id}/tag-categories",
-              code: 200,
-            }),
-          )
-          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({
-        identifier: "UpdateThreatSignalsSkillsTagCategoryRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          categoryUuids: __S(4, __c0, 4).pipe(T.Body("category_uuids")),
-          skillId: S.String.pipe(T.Body("skill_id")),
-        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({
-        identifier: "UpdateThreatSignalsSkillsTagCategoryResponse",
-      });
-  }
-}
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

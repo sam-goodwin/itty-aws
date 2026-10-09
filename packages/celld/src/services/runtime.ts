@@ -591,8 +591,8 @@ export const deleteKv: API.OperationMethod<
   DeleteKvError,
   CelldOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1, __c0, 1) as any as S.Schema<DeleteKvInput>,
-  output: __S(3, __c0, 3) as any as S.Schema<DeleteKvOutput>,
+  input: __S(88, __c11, 0) as any as S.Schema<DeleteKvInput>,
+  output: __S(97, __c12, 1) as any as S.Schema<DeleteKvOutput>,
   errors: [PeerIncompatibleVersion, PeerWrongTarget, PeerReplayRejected],
   protocol: CelldProtocol,
 }));
@@ -606,8 +606,8 @@ export type ExecD1Error =
 /** Execute SQL against a reserved D1 cell with the JSON body {"exec":{"sql":...,"rows":...}}. */
 export const execD1: API.OperationMethod<ExecD1Input, ExecD1Output, ExecD1Error, CelldOpContext> =
   /*@__PURE__*/ API.make(() => ({
-    input: __S(5, __c0, 5) as any as S.Schema<ExecD1Input>,
-    output: __S(11, __c1, 3) as any as S.Schema<ExecD1Output>,
+    input: __S(113, __c14, 1) as any as S.Schema<ExecD1Input>,
+    output: __S(115, __c14, 3) as any as S.Schema<ExecD1Output>,
     errors: [D1ExecutionError, PeerIncompatibleVersion, PeerWrongTarget, PeerReplayRejected],
     protocol: CelldProtocol,
   }));
@@ -625,8 +625,8 @@ export const executeD1Statements: API.OperationMethod<
   ExecuteD1StatementsError,
   CelldOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(14, __c1, 6) as any as S.Schema<ExecuteD1StatementsInput>,
-  output: __S(15, __c1, 7) as any as S.Schema<ExecuteD1StatementsOutput>,
+  input: __S(130, __c16, 2) as any as S.Schema<ExecuteD1StatementsInput>,
+  output: __S(131, __c16, 3) as any as S.Schema<ExecuteD1StatementsOutput>,
   errors: [D1ExecutionError, PeerIncompatibleVersion, PeerWrongTarget, PeerReplayRejected],
   protocol: CelldProtocol,
 }));
@@ -639,8 +639,8 @@ export type GetKvError =
 /** Read one key from a reserved KV namespace. A missing key returns result.found=false. */
 export const getKv: API.OperationMethod<GetKvInput, GetKvOutput, GetKvError, CelldOpContext> =
   /*@__PURE__*/ API.make(() => ({
-    input: __S(16, __c2, 0) as any as S.Schema<GetKvInput>,
-    output: __S(18, __c2, 2) as any as S.Schema<GetKvOutput>,
+    input: __S(136, __c17, 0) as any as S.Schema<GetKvInput>,
+    output: __S(138, __c17, 2) as any as S.Schema<GetKvOutput>,
     errors: [PeerIncompatibleVersion, PeerWrongTarget, PeerReplayRejected],
     protocol: CelldProtocol,
   }));
@@ -657,8 +657,8 @@ export const getKvInfo: API.OperationMethod<
   GetKvInfoError,
   CelldOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(19, __c2, 3) as any as S.Schema<GetKvInfoInput>,
-  output: __S(21, __c2, 5) as any as S.Schema<GetKvInfoOutput>,
+  input: __S(144, __c18, 0) as any as S.Schema<GetKvInfoInput>,
+  output: __S(146, __c18, 2) as any as S.Schema<GetKvInfoOutput>,
   errors: [PeerIncompatibleVersion, PeerWrongTarget, PeerReplayRejected],
   protocol: CelldProtocol,
 }));
@@ -675,8 +675,8 @@ export const getQueueInfo: API.OperationMethod<
   GetQueueInfoError,
   CelldOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(22, __c2, 6) as any as S.Schema<GetQueueInfoInput>,
-  output: __S(24, __c3, 0) as any as S.Schema<GetQueueInfoOutput>,
+  input: __S(152, __c19, 0) as any as S.Schema<GetQueueInfoInput>,
+  output: __S(154, __c19, 2) as any as S.Schema<GetQueueInfoOutput>,
   errors: [PeerIncompatibleVersion, PeerWrongTarget, PeerReplayRejected],
   protocol: CelldProtocol,
 }));
@@ -689,8 +689,8 @@ export type ListKvError =
 /** List keys in a reserved KV namespace. Metadata remains JSON text and expiration is in milliseconds. */
 export const listKv: API.OperationMethod<ListKvInput, ListKvOutput, ListKvError, CelldOpContext> =
   /*@__PURE__*/ API.make(() => ({
-    input: __S(25, __c3, 1) as any as S.Schema<ListKvInput>,
-    output: __S(29, __c3, 5) as any as S.Schema<ListKvOutput>,
+    input: __S(0, __c0, 0) as any as S.Schema<ListKvInput>,
+    output: __S(4, __c0, 4) as any as S.Schema<ListKvOutput>,
     errors: [PeerIncompatibleVersion, PeerWrongTarget, PeerReplayRejected],
     protocol: CelldProtocol,
   }));
@@ -708,8 +708,8 @@ export const migrateD1: API.OperationMethod<
   MigrateD1Error,
   CelldOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(31, __c3, 7) as any as S.Schema<MigrateD1Input>,
-  output: __S(32, __c4, 0) as any as S.Schema<MigrateD1Output>,
+  input: __S(9, __c1, 1) as any as S.Schema<MigrateD1Input>,
+  output: __S(10, __c1, 2) as any as S.Schema<MigrateD1Output>,
   errors: [D1ExecutionError, PeerIncompatibleVersion, PeerWrongTarget, PeerReplayRejected],
   protocol: CelldProtocol,
 }));
@@ -726,8 +726,8 @@ export const pauseQueue: API.OperationMethod<
   PauseQueueError,
   CelldOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(33, __c4, 1) as any as S.Schema<PauseQueueInput>,
-  output: __S(35, __c4, 3) as any as S.Schema<PauseQueueOutput>,
+  input: __S(16, __c2, 0) as any as S.Schema<PauseQueueInput>,
+  output: __S(25, __c3, 1) as any as S.Schema<PauseQueueOutput>,
   errors: [PeerIncompatibleVersion, PeerWrongTarget, PeerReplayRejected],
   protocol: CelldProtocol,
 }));
@@ -744,8 +744,8 @@ export const peekQueue: API.OperationMethod<
   PeekQueueError,
   CelldOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(36, __c4, 4) as any as S.Schema<PeekQueueInput>,
-  output: __S(40, __c5, 0) as any as S.Schema<PeekQueueOutput>,
+  input: __S(32, __c4, 0) as any as S.Schema<PeekQueueInput>,
+  output: __S(36, __c4, 4) as any as S.Schema<PeekQueueOutput>,
   errors: [PeerIncompatibleVersion, PeerWrongTarget, PeerReplayRejected],
   protocol: CelldProtocol,
 }));
@@ -762,8 +762,8 @@ export const purgeQueue: API.OperationMethod<
   PurgeQueueError,
   CelldOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(41, __c5, 1) as any as S.Schema<PurgeQueueInput>,
-  output: __S(44, __c5, 4) as any as S.Schema<PurgeQueueOutput>,
+  input: __S(40, __c5, 0) as any as S.Schema<PurgeQueueInput>,
+  output: __S(42, __c5, 2) as any as S.Schema<PurgeQueueOutput>,
   errors: [PeerIncompatibleVersion, PeerWrongTarget, PeerReplayRejected],
   protocol: CelldProtocol,
 }));
@@ -776,8 +776,8 @@ export type PutKvError =
 /** Write an inline JSON byte array. Expiration is resolved by the cell clock. */
 export const putKv: API.OperationMethod<PutKvInput, PutKvOutput, PutKvError, CelldOpContext> =
   /*@__PURE__*/ API.make(() => ({
-    input: __S(46, __c5, 6) as any as S.Schema<PutKvInput>,
-    output: __S(3, __c0, 3) as any as S.Schema<PutKvOutput>,
+    input: __S(57, __c7, 1) as any as S.Schema<PutKvInput>,
+    output: __S(97, __c12, 1) as any as S.Schema<PutKvOutput>,
     errors: [PeerIncompatibleVersion, PeerWrongTarget, PeerReplayRejected],
     protocol: CelldProtocol,
   }));
@@ -794,8 +794,8 @@ export const putKvBase64: API.OperationMethod<
   PutKvBase64Error,
   CelldOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(47, __c5, 7) as any as S.Schema<PutKvBase64Input>,
-  output: __S(3, __c0, 3) as any as S.Schema<PutKvBase64Output>,
+  input: __S(64, __c8, 0) as any as S.Schema<PutKvBase64Input>,
+  output: __S(97, __c12, 1) as any as S.Schema<PutKvBase64Output>,
   errors: [PeerIncompatibleVersion, PeerWrongTarget, PeerReplayRejected],
   protocol: CelldProtocol,
 }));
@@ -812,8 +812,8 @@ export const redriveQueue: API.OperationMethod<
   RedriveQueueError,
   CelldOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(48, __c6, 0) as any as S.Schema<RedriveQueueInput>,
-  output: __S(50, __c6, 2) as any as S.Schema<RedriveQueueOutput>,
+  input: __S(72, __c9, 0) as any as S.Schema<RedriveQueueInput>,
+  output: __S(74, __c9, 2) as any as S.Schema<RedriveQueueOutput>,
   errors: [PeerIncompatibleVersion, PeerWrongTarget, PeerReplayRejected],
   protocol: CelldProtocol,
 }));
@@ -830,8 +830,8 @@ export const resumeQueue: API.OperationMethod<
   ResumeQueueError,
   CelldOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(51, __c6, 3) as any as S.Schema<ResumeQueueInput>,
-  output: __S(35, __c4, 3) as any as S.Schema<ResumeQueueOutput>,
+  input: __S(80, __c10, 0) as any as S.Schema<ResumeQueueInput>,
+  output: __S(25, __c3, 1) as any as S.Schema<ResumeQueueOutput>,
   errors: [PeerIncompatibleVersion, PeerWrongTarget, PeerReplayRejected],
   protocol: CelldProtocol,
 }));
@@ -840,7 +840,222 @@ export const resumeQueue: API.OperationMethod<
 function __c0(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(S.String);
+      return S.suspend(() =>
+        S.Struct({
+          scope: S.String.pipe(T.Label(), T.LabelEncoding({ preserve: ":$" })),
+          name: S.optional(S.String.pipe(T.Query())),
+          peer_version: S.String.pipe(T.Header("x-cells-peer-version")),
+          peer_source: S.String.pipe(T.Header("x-cells-peer-source")),
+          peer_target: S.String.pipe(T.Header("x-cells-peer-target")),
+          peer_timestamp: S.String.pipe(T.Header("x-cells-peer-timestamp")),
+          peer_nonce: S.String.pipe(T.Header("x-cells-peer-nonce")),
+          peer_body_sha256: S.String.pipe(T.Header("x-cells-peer-body-sha256")),
+          peer_signature: S.String.pipe(T.Header("x-cells-peer-signature")),
+          op: S.String,
+          prefix: S.optional(S.String),
+          limit: S.Number,
+          after: S.optional(S.String),
+        }).pipe(T.Http({ method: "POST", uri: "/runtime/{scope}", code: 200 })),
+      ).annotate({ identifier: "ListKvInput" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String,
+          metadata: S.optional(S.NullOr(S.String)),
+          expiration: S.optional(S.NullOr(S.Number)),
+        }),
+      ).annotate({ identifier: "KvKey" });
+    case 2:
+      return S.Array(__S(1, __c0, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          keys: __S(2, __c0, 2),
+          complete: S.Boolean,
+        }),
+      ).annotate({ identifier: "ListKvResult" });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          result: __S(3, __c0, 3),
+        }),
+      ).annotate({ identifier: "ListKvOutput" });
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String,
+          sql: S.String,
+          table: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "D1Migration" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          scope: S.String.pipe(T.Label(), T.LabelEncoding({ preserve: ":$" })),
+          name: S.optional(S.String.pipe(T.Query())),
+          peer_version: S.String.pipe(T.Header("x-cells-peer-version")),
+          peer_source: S.String.pipe(T.Header("x-cells-peer-source")),
+          peer_target: S.String.pipe(T.Header("x-cells-peer-target")),
+          peer_timestamp: S.String.pipe(T.Header("x-cells-peer-timestamp")),
+          peer_nonce: S.String.pipe(T.Header("x-cells-peer-nonce")),
+          peer_body_sha256: S.String.pipe(T.Header("x-cells-peer-body-sha256")),
+          peer_signature: S.String.pipe(T.Header("x-cells-peer-signature")),
+          migrate: __S(8, __c1, 0),
+        }).pipe(T.Http({ method: "POST", uri: "/runtime/{scope}", code: 200 })),
+      ).annotate({ identifier: "MigrateD1Input" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          result: S.Unknown,
+        }),
+      ).annotate({ identifier: "MigrateD1Output" });
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          scope: S.String.pipe(T.Label(), T.LabelEncoding({ preserve: ":$" })),
+          name: S.optional(S.String.pipe(T.Query())),
+          peer_version: S.String.pipe(T.Header("x-cells-peer-version")),
+          peer_source: S.String.pipe(T.Header("x-cells-peer-source")),
+          peer_target: S.String.pipe(T.Header("x-cells-peer-target")),
+          peer_timestamp: S.String.pipe(T.Header("x-cells-peer-timestamp")),
+          peer_nonce: S.String.pipe(T.Header("x-cells-peer-nonce")),
+          peer_body_sha256: S.String.pipe(T.Header("x-cells-peer-body-sha256")),
+          peer_signature: S.String.pipe(T.Header("x-cells-peer-signature")),
+          op: S.String,
+        }).pipe(T.Http({ method: "POST", uri: "/runtime/{scope}", code: 200 })),
+      ).annotate({ identifier: "PauseQueueInput" });
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          backlog_count: S.Number.pipe(T.Body("backlogCount")),
+          backlog_bytes: S.Number.pipe(T.Body("backlogBytes")),
+          oldest_message_timestamp: S.optional(
+            S.NullOr(S.Number).pipe(T.Body("oldestMessageTimestamp")),
+          ),
+          paused: S.Boolean,
+        }),
+      ).annotate({ identifier: "QueuePausedResult" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          result: __S(24, __c3, 0),
+        }),
+      ).annotate({ identifier: "PauseQueueOutput" });
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          scope: S.String.pipe(T.Label(), T.LabelEncoding({ preserve: ":$" })),
+          name: S.optional(S.String.pipe(T.Query())),
+          peer_version: S.String.pipe(T.Header("x-cells-peer-version")),
+          peer_source: S.String.pipe(T.Header("x-cells-peer-source")),
+          peer_target: S.String.pipe(T.Header("x-cells-peer-target")),
+          peer_timestamp: S.String.pipe(T.Header("x-cells-peer-timestamp")),
+          peer_nonce: S.String.pipe(T.Header("x-cells-peer-nonce")),
+          peer_body_sha256: S.String.pipe(T.Header("x-cells-peer-body-sha256")),
+          peer_signature: S.String.pipe(T.Header("x-cells-peer-signature")),
+          op: S.String,
+          limit: S.optional(S.Number),
+        }).pipe(T.Http({ method: "POST", uri: "/runtime/{scope}", code: 200 })),
+      ).annotate({ identifier: "PeekQueueInput" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          body_base64: S.String.pipe(T.Body("bodyBase64")),
+          content_type: S.String.pipe(T.Body("contentType")),
+          size: S.Number,
+          enqueued_at: S.Number.pipe(T.Body("enqueuedAt")),
+          visible_at: S.Number.pipe(T.Body("visibleAt")),
+          attempts: S.Number,
+          state: S.String,
+          leased_until: S.optional(S.NullOr(S.Number).pipe(T.Body("leasedUntil"))),
+          transfer_target: S.optional(S.NullOr(S.String).pipe(T.Body("transferTarget"))),
+          dead_letter_source: S.optional(S.NullOr(S.String).pipe(T.Body("deadLetterSource"))),
+        }),
+      ).annotate({ identifier: "QueueMessage" });
+    case 2:
+      return S.Array(__S(33, __c4, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          messages: __S(34, __c4, 2),
+        }),
+      ).annotate({ identifier: "PeekQueueResult" });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          result: __S(35, __c4, 3),
+        }),
+      ).annotate({ identifier: "PeekQueueOutput" });
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          scope: S.String.pipe(T.Label(), T.LabelEncoding({ preserve: ":$" })),
+          name: S.optional(S.String.pipe(T.Query())),
+          peer_version: S.String.pipe(T.Header("x-cells-peer-version")),
+          peer_source: S.String.pipe(T.Header("x-cells-peer-source")),
+          peer_target: S.String.pipe(T.Header("x-cells-peer-target")),
+          peer_timestamp: S.String.pipe(T.Header("x-cells-peer-timestamp")),
+          peer_nonce: S.String.pipe(T.Header("x-cells-peer-nonce")),
+          peer_body_sha256: S.String.pipe(T.Header("x-cells-peer-body-sha256")),
+          peer_signature: S.String.pipe(T.Header("x-cells-peer-signature")),
+          op: S.String,
+        }).pipe(T.Http({ method: "POST", uri: "/runtime/{scope}", code: 200 })),
+      ).annotate({ identifier: "PurgeQueueInput" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          deleted: S.Number,
+          leased: S.Number,
+          metrics: __S(48, __c6, 0),
+        }),
+      ).annotate({ identifier: "PurgeQueueResult" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          result: __S(41, __c5, 1),
+        }),
+      ).annotate({ identifier: "PurgeQueueOutput" });
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          backlog_count: S.Number.pipe(T.Body("backlogCount")),
+          backlog_bytes: S.Number.pipe(T.Body("backlogBytes")),
+          oldest_message_timestamp: S.optional(
+            S.NullOr(S.Number).pipe(T.Body("oldestMessageTimestamp")),
+          ),
+        }),
+      ).annotate({ identifier: "QueueMetrics" });
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.Number);
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -854,29 +1069,145 @@ function __c0(j: number): any {
           peer_body_sha256: S.String.pipe(T.Header("x-cells-peer-body-sha256")),
           peer_signature: S.String.pipe(T.Header("x-cells-peer-signature")),
           op: S.String,
-          keys: __S(0, __c0, 0),
+          key: S.String,
+          tag: S.optional(S.String),
+          metadata: S.optional(S.String),
+          expiration: S.optional(S.Number),
+          expiration_ttl: S.optional(S.Number.pipe(T.Body("expirationTtl"))),
+          value: __S(56, __c7, 0),
+        }).pipe(T.Http({ method: "POST", uri: "/runtime/{scope}", code: 200 })),
+      ).annotate({ identifier: "PutKvInput" });
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          scope: S.String.pipe(T.Label(), T.LabelEncoding({ preserve: ":$" })),
+          name: S.optional(S.String.pipe(T.Query())),
+          peer_version: S.String.pipe(T.Header("x-cells-peer-version")),
+          peer_source: S.String.pipe(T.Header("x-cells-peer-source")),
+          peer_target: S.String.pipe(T.Header("x-cells-peer-target")),
+          peer_timestamp: S.String.pipe(T.Header("x-cells-peer-timestamp")),
+          peer_nonce: S.String.pipe(T.Header("x-cells-peer-nonce")),
+          peer_body_sha256: S.String.pipe(T.Header("x-cells-peer-body-sha256")),
+          peer_signature: S.String.pipe(T.Header("x-cells-peer-signature")),
+          op: S.String,
+          key: S.String,
+          tag: S.optional(S.String),
+          metadata: S.optional(S.String),
+          expiration: S.optional(S.Number),
+          expiration_ttl: S.optional(S.Number.pipe(T.Body("expirationTtl"))),
+          value: S.String,
+        }).pipe(T.Http({ method: "POST", uri: "/runtime/{scope}", code: 200 })),
+      ).annotate({ identifier: "PutKvBase64Input" });
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          scope: S.String.pipe(T.Label(), T.LabelEncoding({ preserve: ":$" })),
+          name: S.optional(S.String.pipe(T.Query())),
+          peer_version: S.String.pipe(T.Header("x-cells-peer-version")),
+          peer_source: S.String.pipe(T.Header("x-cells-peer-source")),
+          peer_target: S.String.pipe(T.Header("x-cells-peer-target")),
+          peer_timestamp: S.String.pipe(T.Header("x-cells-peer-timestamp")),
+          peer_nonce: S.String.pipe(T.Header("x-cells-peer-nonce")),
+          peer_body_sha256: S.String.pipe(T.Header("x-cells-peer-body-sha256")),
+          peer_signature: S.String.pipe(T.Header("x-cells-peer-signature")),
+          op: S.String,
+          limit: S.optional(S.Number),
+        }).pipe(T.Http({ method: "POST", uri: "/runtime/{scope}", code: 200 })),
+      ).annotate({ identifier: "RedriveQueueInput" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          redriven: S.Number,
+          metrics: __S(48, __c6, 0),
+        }),
+      ).annotate({ identifier: "RedriveQueueResult" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          result: __S(73, __c9, 1),
+        }),
+      ).annotate({ identifier: "RedriveQueueOutput" });
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          scope: S.String.pipe(T.Label(), T.LabelEncoding({ preserve: ":$" })),
+          name: S.optional(S.String.pipe(T.Query())),
+          peer_version: S.String.pipe(T.Header("x-cells-peer-version")),
+          peer_source: S.String.pipe(T.Header("x-cells-peer-source")),
+          peer_target: S.String.pipe(T.Header("x-cells-peer-target")),
+          peer_timestamp: S.String.pipe(T.Header("x-cells-peer-timestamp")),
+          peer_nonce: S.String.pipe(T.Header("x-cells-peer-nonce")),
+          peer_body_sha256: S.String.pipe(T.Header("x-cells-peer-body-sha256")),
+          peer_signature: S.String.pipe(T.Header("x-cells-peer-signature")),
+          op: S.String,
+        }).pipe(T.Http({ method: "POST", uri: "/runtime/{scope}", code: 200 })),
+      ).annotate({ identifier: "ResumeQueueInput" });
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          scope: S.String.pipe(T.Label(), T.LabelEncoding({ preserve: ":$" })),
+          name: S.optional(S.String.pipe(T.Query())),
+          peer_version: S.String.pipe(T.Header("x-cells-peer-version")),
+          peer_source: S.String.pipe(T.Header("x-cells-peer-source")),
+          peer_target: S.String.pipe(T.Header("x-cells-peer-target")),
+          peer_timestamp: S.String.pipe(T.Header("x-cells-peer-timestamp")),
+          peer_nonce: S.String.pipe(T.Header("x-cells-peer-nonce")),
+          peer_body_sha256: S.String.pipe(T.Header("x-cells-peer-body-sha256")),
+          peer_signature: S.String.pipe(T.Header("x-cells-peer-signature")),
+          op: S.String,
+          keys: __S(104, __c13, 0),
         }).pipe(T.Http({ method: "POST", uri: "/runtime/{scope}", code: 200 })),
       ).annotate({ identifier: "DeleteKvInput" });
-    case 2:
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           ok: S.Boolean,
         }),
       ).annotate({ identifier: "OkResult" });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          result: __S(2, __c0, 2),
+          result: __S(96, __c12, 0),
         }),
       ).annotate({ identifier: "DeleteKvOutput" });
-    case 4:
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           sql: S.String,
           rows: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "D1ExecPayload" });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           scope: S.String.pipe(T.Label(), T.LabelEncoding({ preserve: ":$" })),
@@ -888,52 +1219,56 @@ function __c0(j: number): any {
           peer_nonce: S.String.pipe(T.Header("x-cells-peer-nonce")),
           peer_body_sha256: S.String.pipe(T.Header("x-cells-peer-body-sha256")),
           peer_signature: S.String.pipe(T.Header("x-cells-peer-signature")),
-          exec: __S(4, __c0, 4),
+          exec: __S(112, __c14, 0),
         }).pipe(T.Http({ method: "POST", uri: "/runtime/{scope}", code: 200 })),
       ).annotate({ identifier: "ExecD1Input" });
-    case 6:
-      return S.Array(S.Unknown);
-    case 7:
-      return S.Array(__S(6, __c0, 6));
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          columns: S.optional(__S(0, __c0, 0)),
-          rows: S.optional(__S(7, __c0, 7)),
-          meta: S.optional(S.Unknown),
-        }),
-      ).annotate({ identifier: "D1ResultSet" });
-    case 1:
-      return S.Array(__S(8, __c1, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
           count: S.Number,
           duration: S.Number,
-          results: S.optional(__S(9, __c1, 1)),
+          results: S.optional(__S(123, __c15, 3)),
         }),
       ).annotate({ identifier: "ExecD1Result" });
     case 3:
       return S.suspend(() =>
         S.Struct({
-          result: __S(10, __c1, 2),
+          result: __S(114, __c14, 2),
         }),
       ).annotate({ identifier: "ExecD1Output" });
-    case 4:
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.Unknown);
+    case 1:
+      return S.Array(__S(120, __c15, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          columns: S.optional(__S(104, __c13, 0)),
+          rows: S.optional(__S(121, __c15, 1)),
+          meta: S.optional(S.Unknown),
+        }),
+      ).annotate({ identifier: "D1ResultSet" });
+    case 3:
+      return S.Array(__S(122, __c15, 2));
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           sql: S.String,
-          params: S.optional(__S(6, __c0, 6)),
+          params: S.optional(__S(120, __c15, 0)),
           first: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "D1Statement" });
-    case 5:
-      return S.Array(__S(12, __c1, 4));
-    case 6:
+    case 1:
+      return S.Array(__S(128, __c16, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           scope: S.String.pipe(T.Label(), T.LabelEncoding({ preserve: ":$" })),
@@ -945,20 +1280,20 @@ function __c1(j: number): any {
           peer_nonce: S.String.pipe(T.Header("x-cells-peer-nonce")),
           peer_body_sha256: S.String.pipe(T.Header("x-cells-peer-body-sha256")),
           peer_signature: S.String.pipe(T.Header("x-cells-peer-signature")),
-          statements: __S(13, __c1, 5),
+          statements: __S(129, __c16, 1),
         }).pipe(T.Http({ method: "POST", uri: "/runtime/{scope}", code: 200 })),
       ).annotate({ identifier: "ExecuteD1StatementsInput" });
-    case 7:
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          result: __S(9, __c1, 1),
+          result: __S(123, __c15, 3),
         }),
       ).annotate({
         identifier: "ExecuteD1StatementsOutput",
       });
   }
 }
-function __c2(j: number): any {
+function __c17(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -990,10 +1325,14 @@ function __c2(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          result: __S(17, __c2, 1),
+          result: __S(137, __c17, 1),
         }),
       ).annotate({ identifier: "GetKvOutput" });
-    case 3:
+  }
+}
+function __c18(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           scope: S.String.pipe(T.Label(), T.LabelEncoding({ preserve: ":$" })),
@@ -1008,7 +1347,7 @@ function __c2(j: number): any {
           op: S.String,
         }).pipe(T.Http({ method: "POST", uri: "/runtime/{scope}", code: 200 })),
       ).annotate({ identifier: "GetKvInfoInput" });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           live: S.Number,
@@ -1016,13 +1355,17 @@ function __c2(j: number): any {
           stored: S.Number,
         }),
       ).annotate({ identifier: "GetKvInfoResult" });
-    case 5:
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          result: __S(20, __c2, 4),
+          result: __S(145, __c18, 1),
         }),
       ).annotate({ identifier: "GetKvInfoOutput" });
-    case 6:
+  }
+}
+function __c19(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           scope: S.String.pipe(T.Label(), T.LabelEncoding({ preserve: ":$" })),
@@ -1037,7 +1380,7 @@ function __c2(j: number): any {
           op: S.String,
         }).pipe(T.Http({ method: "POST", uri: "/runtime/{scope}", code: 200 })),
       ).annotate({ identifier: "GetQueueInfoInput" });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           backlog_count: S.Number.pipe(T.Body("backlogCount")),
@@ -1049,306 +1392,14 @@ function __c2(j: number): any {
           paused: S.Boolean,
         }),
       ).annotate({ identifier: "GetQueueInfoResult" });
-  }
-}
-function __c3(j: number): any {
-  switch (j) {
-    case 0:
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          result: __S(23, __c2, 7),
+          result: __S(153, __c19, 1),
         }),
       ).annotate({ identifier: "GetQueueInfoOutput" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          scope: S.String.pipe(T.Label(), T.LabelEncoding({ preserve: ":$" })),
-          name: S.optional(S.String.pipe(T.Query())),
-          peer_version: S.String.pipe(T.Header("x-cells-peer-version")),
-          peer_source: S.String.pipe(T.Header("x-cells-peer-source")),
-          peer_target: S.String.pipe(T.Header("x-cells-peer-target")),
-          peer_timestamp: S.String.pipe(T.Header("x-cells-peer-timestamp")),
-          peer_nonce: S.String.pipe(T.Header("x-cells-peer-nonce")),
-          peer_body_sha256: S.String.pipe(T.Header("x-cells-peer-body-sha256")),
-          peer_signature: S.String.pipe(T.Header("x-cells-peer-signature")),
-          op: S.String,
-          prefix: S.optional(S.String),
-          limit: S.Number,
-          after: S.optional(S.String),
-        }).pipe(T.Http({ method: "POST", uri: "/runtime/{scope}", code: 200 })),
-      ).annotate({ identifier: "ListKvInput" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String,
-          metadata: S.optional(S.NullOr(S.String)),
-          expiration: S.optional(S.NullOr(S.Number)),
-        }),
-      ).annotate({ identifier: "KvKey" });
-    case 3:
-      return S.Array(__S(26, __c3, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          keys: __S(27, __c3, 3),
-          complete: S.Boolean,
-        }),
-      ).annotate({ identifier: "ListKvResult" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          result: __S(28, __c3, 4),
-        }),
-      ).annotate({ identifier: "ListKvOutput" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String,
-          sql: S.String,
-          table: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "D1Migration" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          scope: S.String.pipe(T.Label(), T.LabelEncoding({ preserve: ":$" })),
-          name: S.optional(S.String.pipe(T.Query())),
-          peer_version: S.String.pipe(T.Header("x-cells-peer-version")),
-          peer_source: S.String.pipe(T.Header("x-cells-peer-source")),
-          peer_target: S.String.pipe(T.Header("x-cells-peer-target")),
-          peer_timestamp: S.String.pipe(T.Header("x-cells-peer-timestamp")),
-          peer_nonce: S.String.pipe(T.Header("x-cells-peer-nonce")),
-          peer_body_sha256: S.String.pipe(T.Header("x-cells-peer-body-sha256")),
-          peer_signature: S.String.pipe(T.Header("x-cells-peer-signature")),
-          migrate: __S(30, __c3, 6),
-        }).pipe(T.Http({ method: "POST", uri: "/runtime/{scope}", code: 200 })),
-      ).annotate({ identifier: "MigrateD1Input" });
   }
 }
-function __c4(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          result: S.Unknown,
-        }),
-      ).annotate({ identifier: "MigrateD1Output" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          scope: S.String.pipe(T.Label(), T.LabelEncoding({ preserve: ":$" })),
-          name: S.optional(S.String.pipe(T.Query())),
-          peer_version: S.String.pipe(T.Header("x-cells-peer-version")),
-          peer_source: S.String.pipe(T.Header("x-cells-peer-source")),
-          peer_target: S.String.pipe(T.Header("x-cells-peer-target")),
-          peer_timestamp: S.String.pipe(T.Header("x-cells-peer-timestamp")),
-          peer_nonce: S.String.pipe(T.Header("x-cells-peer-nonce")),
-          peer_body_sha256: S.String.pipe(T.Header("x-cells-peer-body-sha256")),
-          peer_signature: S.String.pipe(T.Header("x-cells-peer-signature")),
-          op: S.String,
-        }).pipe(T.Http({ method: "POST", uri: "/runtime/{scope}", code: 200 })),
-      ).annotate({ identifier: "PauseQueueInput" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          backlog_count: S.Number.pipe(T.Body("backlogCount")),
-          backlog_bytes: S.Number.pipe(T.Body("backlogBytes")),
-          oldest_message_timestamp: S.optional(
-            S.NullOr(S.Number).pipe(T.Body("oldestMessageTimestamp")),
-          ),
-          paused: S.Boolean,
-        }),
-      ).annotate({ identifier: "QueuePausedResult" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          result: __S(34, __c4, 2),
-        }),
-      ).annotate({ identifier: "PauseQueueOutput" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          scope: S.String.pipe(T.Label(), T.LabelEncoding({ preserve: ":$" })),
-          name: S.optional(S.String.pipe(T.Query())),
-          peer_version: S.String.pipe(T.Header("x-cells-peer-version")),
-          peer_source: S.String.pipe(T.Header("x-cells-peer-source")),
-          peer_target: S.String.pipe(T.Header("x-cells-peer-target")),
-          peer_timestamp: S.String.pipe(T.Header("x-cells-peer-timestamp")),
-          peer_nonce: S.String.pipe(T.Header("x-cells-peer-nonce")),
-          peer_body_sha256: S.String.pipe(T.Header("x-cells-peer-body-sha256")),
-          peer_signature: S.String.pipe(T.Header("x-cells-peer-signature")),
-          op: S.String,
-          limit: S.optional(S.Number),
-        }).pipe(T.Http({ method: "POST", uri: "/runtime/{scope}", code: 200 })),
-      ).annotate({ identifier: "PeekQueueInput" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String,
-          body_base64: S.String.pipe(T.Body("bodyBase64")),
-          content_type: S.String.pipe(T.Body("contentType")),
-          size: S.Number,
-          enqueued_at: S.Number.pipe(T.Body("enqueuedAt")),
-          visible_at: S.Number.pipe(T.Body("visibleAt")),
-          attempts: S.Number,
-          state: S.String,
-          leased_until: S.optional(S.NullOr(S.Number).pipe(T.Body("leasedUntil"))),
-          transfer_target: S.optional(S.NullOr(S.String).pipe(T.Body("transferTarget"))),
-          dead_letter_source: S.optional(S.NullOr(S.String).pipe(T.Body("deadLetterSource"))),
-        }),
-      ).annotate({ identifier: "QueueMessage" });
-    case 6:
-      return S.Array(__S(37, __c4, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          messages: __S(38, __c4, 6),
-        }),
-      ).annotate({ identifier: "PeekQueueResult" });
-  }
-}
-function __c5(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          result: __S(39, __c4, 7),
-        }),
-      ).annotate({ identifier: "PeekQueueOutput" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          scope: S.String.pipe(T.Label(), T.LabelEncoding({ preserve: ":$" })),
-          name: S.optional(S.String.pipe(T.Query())),
-          peer_version: S.String.pipe(T.Header("x-cells-peer-version")),
-          peer_source: S.String.pipe(T.Header("x-cells-peer-source")),
-          peer_target: S.String.pipe(T.Header("x-cells-peer-target")),
-          peer_timestamp: S.String.pipe(T.Header("x-cells-peer-timestamp")),
-          peer_nonce: S.String.pipe(T.Header("x-cells-peer-nonce")),
-          peer_body_sha256: S.String.pipe(T.Header("x-cells-peer-body-sha256")),
-          peer_signature: S.String.pipe(T.Header("x-cells-peer-signature")),
-          op: S.String,
-        }).pipe(T.Http({ method: "POST", uri: "/runtime/{scope}", code: 200 })),
-      ).annotate({ identifier: "PurgeQueueInput" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          backlog_count: S.Number.pipe(T.Body("backlogCount")),
-          backlog_bytes: S.Number.pipe(T.Body("backlogBytes")),
-          oldest_message_timestamp: S.optional(
-            S.NullOr(S.Number).pipe(T.Body("oldestMessageTimestamp")),
-          ),
-        }),
-      ).annotate({ identifier: "QueueMetrics" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          deleted: S.Number,
-          leased: S.Number,
-          metrics: __S(42, __c5, 2),
-        }),
-      ).annotate({ identifier: "PurgeQueueResult" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          result: __S(43, __c5, 3),
-        }),
-      ).annotate({ identifier: "PurgeQueueOutput" });
-    case 5:
-      return S.Array(S.Number);
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          scope: S.String.pipe(T.Label(), T.LabelEncoding({ preserve: ":$" })),
-          name: S.optional(S.String.pipe(T.Query())),
-          peer_version: S.String.pipe(T.Header("x-cells-peer-version")),
-          peer_source: S.String.pipe(T.Header("x-cells-peer-source")),
-          peer_target: S.String.pipe(T.Header("x-cells-peer-target")),
-          peer_timestamp: S.String.pipe(T.Header("x-cells-peer-timestamp")),
-          peer_nonce: S.String.pipe(T.Header("x-cells-peer-nonce")),
-          peer_body_sha256: S.String.pipe(T.Header("x-cells-peer-body-sha256")),
-          peer_signature: S.String.pipe(T.Header("x-cells-peer-signature")),
-          op: S.String,
-          key: S.String,
-          tag: S.optional(S.String),
-          metadata: S.optional(S.String),
-          expiration: S.optional(S.Number),
-          expiration_ttl: S.optional(S.Number.pipe(T.Body("expirationTtl"))),
-          value: __S(45, __c5, 5),
-        }).pipe(T.Http({ method: "POST", uri: "/runtime/{scope}", code: 200 })),
-      ).annotate({ identifier: "PutKvInput" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          scope: S.String.pipe(T.Label(), T.LabelEncoding({ preserve: ":$" })),
-          name: S.optional(S.String.pipe(T.Query())),
-          peer_version: S.String.pipe(T.Header("x-cells-peer-version")),
-          peer_source: S.String.pipe(T.Header("x-cells-peer-source")),
-          peer_target: S.String.pipe(T.Header("x-cells-peer-target")),
-          peer_timestamp: S.String.pipe(T.Header("x-cells-peer-timestamp")),
-          peer_nonce: S.String.pipe(T.Header("x-cells-peer-nonce")),
-          peer_body_sha256: S.String.pipe(T.Header("x-cells-peer-body-sha256")),
-          peer_signature: S.String.pipe(T.Header("x-cells-peer-signature")),
-          op: S.String,
-          key: S.String,
-          tag: S.optional(S.String),
-          metadata: S.optional(S.String),
-          expiration: S.optional(S.Number),
-          expiration_ttl: S.optional(S.Number.pipe(T.Body("expirationTtl"))),
-          value: S.String,
-        }).pipe(T.Http({ method: "POST", uri: "/runtime/{scope}", code: 200 })),
-      ).annotate({ identifier: "PutKvBase64Input" });
-  }
-}
-function __c6(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          scope: S.String.pipe(T.Label(), T.LabelEncoding({ preserve: ":$" })),
-          name: S.optional(S.String.pipe(T.Query())),
-          peer_version: S.String.pipe(T.Header("x-cells-peer-version")),
-          peer_source: S.String.pipe(T.Header("x-cells-peer-source")),
-          peer_target: S.String.pipe(T.Header("x-cells-peer-target")),
-          peer_timestamp: S.String.pipe(T.Header("x-cells-peer-timestamp")),
-          peer_nonce: S.String.pipe(T.Header("x-cells-peer-nonce")),
-          peer_body_sha256: S.String.pipe(T.Header("x-cells-peer-body-sha256")),
-          peer_signature: S.String.pipe(T.Header("x-cells-peer-signature")),
-          op: S.String,
-          limit: S.optional(S.Number),
-        }).pipe(T.Http({ method: "POST", uri: "/runtime/{scope}", code: 200 })),
-      ).annotate({ identifier: "RedriveQueueInput" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          redriven: S.Number,
-          metrics: __S(42, __c5, 2),
-        }),
-      ).annotate({ identifier: "RedriveQueueResult" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          result: __S(49, __c6, 1),
-        }),
-      ).annotate({ identifier: "RedriveQueueOutput" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          scope: S.String.pipe(T.Label(), T.LabelEncoding({ preserve: ":$" })),
-          name: S.optional(S.String.pipe(T.Query())),
-          peer_version: S.String.pipe(T.Header("x-cells-peer-version")),
-          peer_source: S.String.pipe(T.Header("x-cells-peer-source")),
-          peer_target: S.String.pipe(T.Header("x-cells-peer-target")),
-          peer_timestamp: S.String.pipe(T.Header("x-cells-peer-timestamp")),
-          peer_nonce: S.String.pipe(T.Header("x-cells-peer-nonce")),
-          peer_body_sha256: S.String.pipe(T.Header("x-cells-peer-body-sha256")),
-          peer_signature: S.String.pipe(T.Header("x-cells-peer-signature")),
-          op: S.String,
-        }).pipe(T.Http({ method: "POST", uri: "/runtime/{scope}", code: 200 })),
-      ).annotate({ identifier: "ResumeQueueInput" });
-  }
-}
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

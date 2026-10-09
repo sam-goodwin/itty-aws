@@ -235,9 +235,9 @@ export const searchAccountReports: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: __S(0, __c0, 0) as any as S.Schema<SearchAccountReportsRequest>,
   output: __S(
-    4,
+    3,
     __c0,
-    4,
+    3,
   ) as any as S.Schema<GoogleAdsHomeservicesLocalservicesV1SearchAccountReportsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
@@ -254,11 +254,11 @@ export const searchDetailedLeadReports: API.PaginatedOperationMethod<
   GcpOpContext,
   GoogleAdsHomeservicesLocalservicesV1SearchDetailedLeadReportsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(5, __c0, 5) as any as S.Schema<SearchDetailedLeadReportsRequest>,
+  input: __S(16, __c2, 0) as any as S.Schema<SearchDetailedLeadReportsRequest>,
   output: __S(
-    12,
-    __c1,
-    4,
+    23,
+    __c2,
+    7,
   ) as any as S.Schema<GoogleAdsHomeservicesLocalservicesV1SearchDetailedLeadReportsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
@@ -294,14 +294,6 @@ function __c0(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          aggregatorProviderId: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GoogleAdsHomeservicesLocalservicesV1AggregatorInfo",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
           averageWeeklyBudget: S.optional(S.Number),
           averageFiveStarRating: S.optional(S.Number),
           phoneLeadResponsiveness: S.optional(S.Number),
@@ -311,7 +303,7 @@ function __c0(j: number): any {
           currentPeriodChargedLeads: S.optional(S.String),
           totalReview: S.optional(S.Number),
           businessName: S.optional(S.String),
-          aggregatorInfo: S.optional(__S(1, __c0, 1)),
+          aggregatorInfo: S.optional(__S(8, __c1, 0)),
           previousPeriodConnectedPhoneCalls: S.optional(S.String),
           accountId: S.optional(S.String),
           currentPeriodTotalCost: S.optional(S.Number),
@@ -323,18 +315,34 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "GoogleAdsHomeservicesLocalservicesV1AccountReport",
       });
+    case 2:
+      return S.Array(__S(1, __c0, 1));
     case 3:
-      return S.Array(__S(2, __c0, 2));
-    case 4:
       return S.suspend(() =>
         S.Struct({
-          accountReports: S.optional(__S(3, __c0, 3)),
+          accountReports: S.optional(__S(2, __c0, 2)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({
         identifier: "GoogleAdsHomeservicesLocalservicesV1SearchAccountReportsResponse",
       });
-    case 5:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          aggregatorProviderId: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GoogleAdsHomeservicesLocalservicesV1AggregatorInfo",
+      });
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -356,7 +364,7 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "SearchDetailedLeadReportsRequest",
       });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           chargedConnectedCallDurationSeconds: S.optional(S.String),
@@ -366,7 +374,7 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "GoogleAdsHomeservicesLocalservicesV1PhoneLead",
       });
-    case 7:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           postalCode: S.optional(S.String),
@@ -377,11 +385,7 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "GoogleAdsHomeservicesLocalservicesV1MessageLead",
       });
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           bookingAppointmentTimestamp: S.optional(S.String),
@@ -393,30 +397,30 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "GoogleAdsHomeservicesLocalservicesV1BookingLead",
       });
-    case 1:
+    case 4:
       return S.suspend(() =>
         S.Struct({
           version: S.optional(S.String),
           id: S.optional(S.String),
         }),
       ).annotate({ identifier: "GoogleTypeTimeZone" });
-    case 2:
+    case 5:
       return S.suspend(() =>
         S.Struct({
-          phoneLead: S.optional(__S(6, __c0, 6)),
+          phoneLead: S.optional(__S(17, __c2, 1)),
           currencyCode: S.optional(S.String),
           disputeStatus: S.optional(S.String),
           leadType: S.optional(S.String),
           accountId: S.optional(S.String),
-          messageLead: S.optional(__S(7, __c0, 7)),
-          bookingLead: S.optional(__S(8, __c1, 0)),
+          messageLead: S.optional(__S(18, __c2, 2)),
+          bookingLead: S.optional(__S(19, __c2, 3)),
           googleAdsLeadId: S.optional(S.String),
           leadCreationTimestamp: S.optional(S.String),
           businessName: S.optional(S.String),
           geo: S.optional(S.String),
-          aggregatorInfo: S.optional(__S(1, __c0, 1)),
+          aggregatorInfo: S.optional(__S(8, __c1, 0)),
           leadCategory: S.optional(S.String),
-          timezone: S.optional(__S(9, __c1, 1)),
+          timezone: S.optional(__S(20, __c2, 4)),
           chargeStatus: S.optional(S.String),
           leadId: S.optional(S.String),
           leadPrice: S.optional(S.Number),
@@ -424,12 +428,12 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "GoogleAdsHomeservicesLocalservicesV1DetailedLeadReport",
       });
-    case 3:
-      return S.Array(__S(10, __c1, 2));
-    case 4:
+    case 6:
+      return S.Array(__S(21, __c2, 5));
+    case 7:
       return S.suspend(() =>
         S.Struct({
-          detailedLeadReports: S.optional(__S(11, __c1, 3)),
+          detailedLeadReports: S.optional(__S(22, __c2, 6)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({
@@ -437,7 +441,6 @@ function __c1(j: number): any {
       });
   }
 }
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

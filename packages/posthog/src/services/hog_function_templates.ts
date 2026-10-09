@@ -130,7 +130,7 @@ export const getHogFunctionTemplate: API.OperationMethod<
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(0, __c0, 0) as any as S.Schema<GetHogFunctionTemplateRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<HogFunctionTemplate>,
+  output: __S(6, __c1, 2) as any as S.Schema<HogFunctionTemplate>,
   errors: [Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -143,8 +143,8 @@ export const listHogFunctionTemplates: API.OperationMethod<
   ListHogFunctionTemplatesError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(4, __c0, 4) as any as S.Schema<ListHogFunctionTemplatesRequest>,
-  output: __S(6, __c0, 6) as any as S.Schema<PaginatedHogFunctionTemplateList>,
+  input: __S(8, __c2, 0) as any as S.Schema<ListHogFunctionTemplatesRequest>,
+  output: __S(13, __c3, 1) as any as S.Schema<PaginatedHogFunctionTemplateList>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -157,8 +157,8 @@ export const listPublicHogFunctionTemplates: API.OperationMethod<
   ListPublicHogFunctionTemplatesError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(7, __c0, 7) as any as S.Schema<ListPublicHogFunctionTemplatesRequest>,
-  output: __S(6, __c0, 6) as any as S.Schema<PaginatedHogFunctionTemplateList>,
+  input: __S(16, __c4, 0) as any as S.Schema<ListPublicHogFunctionTemplatesRequest>,
+  output: __S(13, __c3, 1) as any as S.Schema<PaginatedHogFunctionTemplateList>,
   errors: [BadRequest, Forbidden],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -182,7 +182,11 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "GetHogFunctionTemplateRequest",
       });
-    case 1:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
@@ -195,9 +199,9 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "HogFunctionMappingTemplate",
       });
+    case 1:
+      return S.Array(__S(4, __c1, 0));
     case 2:
-      return S.Array(__S(1, __c0, 1));
-    case 3:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
@@ -213,10 +217,14 @@ function __c0(j: number): any {
           icon_url: S.optional(S.NullOr(S.String)),
           filters: S.optional(S.Unknown),
           masking: S.optional(S.Unknown),
-          mapping_templates: S.optional(S.NullOr(__S(2, __c0, 2))),
+          mapping_templates: S.optional(S.NullOr(__S(5, __c1, 1))),
         }),
       ).annotate({ identifier: "HogFunctionTemplate" });
-    case 4:
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -235,20 +243,28 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "ListHogFunctionTemplatesRequest",
       });
-    case 5:
-      return S.Array(__S(3, __c0, 3));
-    case 6:
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(6, __c1, 2));
+    case 1:
       return S.suspend(() =>
         S.Struct({
           count: S.optional(S.Number),
           next: S.optional(S.NullOr(S.String)),
           previous: S.optional(S.NullOr(S.String)),
-          results: S.optional(__S(5, __c0, 5)),
+          results: S.optional(__S(12, __c3, 0)),
         }),
       ).annotate({
         identifier: "PaginatedHogFunctionTemplateList",
       });
-    case 7:
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           limit: S.optional(S.Number.pipe(T.Query())),
@@ -262,7 +278,6 @@ function __c0(j: number): any {
       });
   }
 }
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

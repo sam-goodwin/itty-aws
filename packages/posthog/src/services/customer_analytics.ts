@@ -580,8 +580,8 @@ export const accountsNotebooksDestroy: API.OperationMethod<
   AccountsNotebooksDestroyError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(0, __c0, 0) as any as S.Schema<AccountsNotebooksDestroyRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<AccountsNotebooksDestroyResponse>,
+  input: __S(128, __c16, 0) as any as S.Schema<AccountsNotebooksDestroyRequest>,
+  output: __S(136, __c17, 0) as any as S.Schema<AccountsNotebooksDestroyResponse>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -594,8 +594,8 @@ export const accountsRelationshipsDestroy: API.OperationMethod<
   AccountsRelationshipsDestroyError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2, __c0, 2) as any as S.Schema<AccountsRelationshipsDestroyRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<AccountsRelationshipsDestroyResponse>,
+  input: __S(144, __c18, 0) as any as S.Schema<AccountsRelationshipsDestroyRequest>,
+  output: __S(136, __c17, 0) as any as S.Schema<AccountsRelationshipsDestroyResponse>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -608,8 +608,8 @@ export const createAccountsCustomPropertyValue: API.OperationMethod<
   CreateAccountsCustomPropertyValueError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3, __c0, 3) as any as S.Schema<CreateAccountsCustomPropertyValueRequest>,
-  output: __S(4, __c0, 4) as any as S.Schema<CustomPropertyValue>,
+  input: __S(152, __c19, 0) as any as S.Schema<CreateAccountsCustomPropertyValueRequest>,
+  output: __S(160, __c20, 0) as any as S.Schema<CustomPropertyValue>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -622,8 +622,8 @@ export const createAccountsNotebook: API.OperationMethod<
   CreateAccountsNotebookError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(5, __c0, 5) as any as S.Schema<CreateAccountsNotebookRequest>,
-  output: __S(8, __c1, 0) as any as S.Schema<AccountNotebook>,
+  input: __S(168, __c21, 0) as any as S.Schema<CreateAccountsNotebookRequest>,
+  output: __S(184, __c23, 0) as any as S.Schema<AccountNotebook>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -636,8 +636,8 @@ export const createAccountsRelationship: API.OperationMethod<
   CreateAccountsRelationshipError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(9, __c1, 1) as any as S.Schema<CreateAccountsRelationshipRequest>,
-  output: __S(12, __c1, 4) as any as S.Schema<AccountRelationship>,
+  input: __S(200, __c25, 0) as any as S.Schema<CreateAccountsRelationshipRequest>,
+  output: __S(210, __c26, 2) as any as S.Schema<AccountRelationship>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -650,8 +650,8 @@ export const createAccountsRelationshipsEnd: API.OperationMethod<
   CreateAccountsRelationshipsEndError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(13, __c1, 5) as any as S.Schema<CreateAccountsRelationshipsEndRequest>,
-  output: __S(12, __c1, 4) as any as S.Schema<AccountRelationship>,
+  input: __S(216, __c27, 0) as any as S.Schema<CreateAccountsRelationshipsEndRequest>,
+  output: __S(210, __c26, 2) as any as S.Schema<AccountRelationship>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -665,8 +665,8 @@ export const createCustomerAnalyticsExternalAccount: API.OperationMethod<
   CreateCustomerAnalyticsExternalAccountError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(16, __c2, 0) as any as S.Schema<CreateCustomerAnalyticsExternalAccountRequest>,
-  output: __S(26, __c3, 2) as any as S.Schema<ExternalAccount>,
+  input: __S(226, __c28, 2) as any as S.Schema<CreateCustomerAnalyticsExternalAccountRequest>,
+  output: __S(243, __c30, 3) as any as S.Schema<ExternalAccount>,
   errors: [BadRequest, Forbidden],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -680,8 +680,8 @@ export const createEventStream: API.OperationMethod<
   CreateEventStreamError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(27, __c3, 3) as any as S.Schema<CreateEventStreamRequest>,
-  output: __S(28, __c3, 4) as any as S.Schema<EventStream>,
+  input: __S(0, __c0, 0) as any as S.Schema<CreateEventStreamRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<EventStream>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -695,8 +695,8 @@ export const eventStreamsAddAccountCreate: API.OperationMethod<
   EventStreamsAddAccountCreateError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(29, __c3, 5) as any as S.Schema<EventStreamsAddAccountCreateRequest>,
-  output: __S(28, __c3, 4) as any as S.Schema<EventStream>,
+  input: __S(16, __c2, 0) as any as S.Schema<EventStreamsAddAccountCreateRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<EventStream>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -710,8 +710,8 @@ export const eventStreamsDestroy: API.OperationMethod<
   EventStreamsDestroyError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(30, __c3, 6) as any as S.Schema<EventStreamsDestroyRequest>,
-  output: __S(31, __c3, 7) as any as S.Schema<EventStreamsDestroyResponse>,
+  input: __S(24, __c3, 0) as any as S.Schema<EventStreamsDestroyRequest>,
+  output: __S(25, __c3, 1) as any as S.Schema<EventStreamsDestroyResponse>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -726,7 +726,7 @@ export const eventStreamsRemoveAccountCreate: API.OperationMethod<
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(32, __c4, 0) as any as S.Schema<EventStreamsRemoveAccountCreateRequest>,
-  output: __S(28, __c3, 4) as any as S.Schema<EventStream>,
+  output: __S(8, __c1, 0) as any as S.Schema<EventStream>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -740,8 +740,8 @@ export const eventStreamsSendTestMessageCreate: API.OperationMethod<
   EventStreamsSendTestMessageCreateError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(33, __c4, 1) as any as S.Schema<EventStreamsSendTestMessageCreateRequest>,
-  output: __S(34, __c4, 2) as any as S.Schema<EventStreamTestMessage>,
+  input: __S(40, __c5, 0) as any as S.Schema<EventStreamsSendTestMessageCreateRequest>,
+  output: __S(41, __c5, 1) as any as S.Schema<EventStreamTestMessage>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -754,8 +754,8 @@ export const getAccountsNotebook: API.OperationMethod<
   GetAccountsNotebookError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(35, __c4, 3) as any as S.Schema<GetAccountsNotebookRequest>,
-  output: __S(8, __c1, 0) as any as S.Schema<AccountNotebook>,
+  input: __S(48, __c6, 0) as any as S.Schema<GetAccountsNotebookRequest>,
+  output: __S(184, __c23, 0) as any as S.Schema<AccountNotebook>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -773,8 +773,8 @@ export const getCustomerAnalyticsExternalAccount: API.OperationMethod<
   GetCustomerAnalyticsExternalAccountError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(36, __c4, 4) as any as S.Schema<GetCustomerAnalyticsExternalAccountRequest>,
-  output: __S(26, __c3, 2) as any as S.Schema<ExternalAccount>,
+  input: __S(56, __c7, 0) as any as S.Schema<GetCustomerAnalyticsExternalAccountRequest>,
+  output: __S(243, __c30, 3) as any as S.Schema<ExternalAccount>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -792,8 +792,8 @@ export const getCustomerAnalyticsExternalAccount2: API.OperationMethod<
   GetCustomerAnalyticsExternalAccount2Error,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(37, __c4, 5) as any as S.Schema<GetCustomerAnalyticsExternalAccountRequest2>,
-  output: __S(43, __c5, 3) as any as S.Schema<ExternalAccountListPage>,
+  input: __S(64, __c8, 0) as any as S.Schema<GetCustomerAnalyticsExternalAccountRequest2>,
+  output: __S(70, __c8, 6) as any as S.Schema<ExternalAccountListPage>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -806,8 +806,8 @@ export const listAccountNotes: API.OperationMethod<
   ListAccountNotesError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(45, __c5, 5) as any as S.Schema<ListAccountNotesRequest>,
-  output: __S(48, __c6, 0) as any as S.Schema<PaginatedAccountNoteList>,
+  input: __S(73, __c9, 1) as any as S.Schema<ListAccountNotesRequest>,
+  output: __S(76, __c9, 4) as any as S.Schema<PaginatedAccountNoteList>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -820,8 +820,8 @@ export const listAccountsCustomPropertyValues: API.OperationMethod<
   ListAccountsCustomPropertyValuesError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(49, __c6, 1) as any as S.Schema<ListAccountsCustomPropertyValuesRequest>,
-  output: __S(51, __c6, 3) as any as S.Schema<ListAccountsCustomPropertyValuesResponse>,
+  input: __S(80, __c10, 0) as any as S.Schema<ListAccountsCustomPropertyValuesRequest>,
+  output: __S(82, __c10, 2) as any as S.Schema<ListAccountsCustomPropertyValuesResponse>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -834,8 +834,8 @@ export const listAccountsNotebooks: API.OperationMethod<
   ListAccountsNotebooksError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(52, __c6, 4) as any as S.Schema<ListAccountsNotebooksRequest>,
-  output: __S(54, __c6, 6) as any as S.Schema<PaginatedAccountNotebookList>,
+  input: __S(88, __c11, 0) as any as S.Schema<ListAccountsNotebooksRequest>,
+  output: __S(90, __c11, 2) as any as S.Schema<PaginatedAccountNotebookList>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -848,8 +848,8 @@ export const listAccountsRelationships: API.OperationMethod<
   ListAccountsRelationshipsError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(55, __c6, 7) as any as S.Schema<ListAccountsRelationshipsRequest>,
-  output: __S(57, __c7, 1) as any as S.Schema<ListAccountsRelationshipsResponse>,
+  input: __S(96, __c12, 0) as any as S.Schema<ListAccountsRelationshipsRequest>,
+  output: __S(98, __c12, 2) as any as S.Schema<ListAccountsRelationshipsResponse>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -863,8 +863,8 @@ export const listEventStreams: API.OperationMethod<
   ListEventStreamsError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(58, __c7, 2) as any as S.Schema<ListEventStreamsRequest>,
-  output: __S(60, __c7, 4) as any as S.Schema<ListEventStreamsResponse>,
+  input: __S(104, __c13, 0) as any as S.Schema<ListEventStreamsRequest>,
+  output: __S(106, __c13, 2) as any as S.Schema<ListEventStreamsResponse>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -878,8 +878,8 @@ export const updateEventStream: API.OperationMethod<
   UpdateEventStreamError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(61, __c7, 5) as any as S.Schema<UpdateEventStreamRequest>,
-  output: __S(28, __c3, 4) as any as S.Schema<EventStream>,
+  input: __S(112, __c14, 0) as any as S.Schema<UpdateEventStreamRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<EventStream>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -893,8 +893,8 @@ export const updateEventStreamsPartial: API.OperationMethod<
   UpdateEventStreamsPartialError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(62, __c7, 6) as any as S.Schema<UpdateEventStreamsPartialRequest>,
-  output: __S(28, __c3, 4) as any as S.Schema<EventStream>,
+  input: __S(120, __c15, 0) as any as S.Schema<UpdateEventStreamsPartialRequest>,
+  output: __S(8, __c1, 0) as any as S.Schema<EventStream>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -907,100 +907,15 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
-          account_id: S.String.pipe(T.Label()),
-          short_id: S.String.pipe(T.Label()),
+          enabled: S.optional(S.Boolean),
+          event_names: S.optional(__S(232, __c29, 0)),
+          slack_integration: S.optional(S.NullOr(S.Number)),
+          slack_channel_id: S.optional(S.String),
+          slack_channel_name: S.optional(S.String),
         }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/api/projects/{project_id}/accounts/{account_id}/notebooks/{short_id}/",
-            code: 200,
-          }),
+          T.Http({ method: "POST", uri: "/api/projects/{project_id}/event_streams/", code: 200 }),
         ),
-      ).annotate({
-        identifier: "AccountsNotebooksDestroyRequest",
-      });
-    case 1:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "AccountsNotebooksDestroyResponse",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          project_id: S.String.pipe(T.Label()),
-          account_id: S.String.pipe(T.Label()),
-          id: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/api/projects/{project_id}/accounts/{account_id}/relationships/{id}/",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "AccountsRelationshipsDestroyRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          project_id: S.String.pipe(T.Label()),
-          account_id: S.String.pipe(T.Label()),
-          definition: S.String,
-          value: S.NullOr(S.Unknown),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/api/projects/{project_id}/accounts/{account_id}/custom_property_values/",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateAccountsCustomPropertyValueRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String,
-          account_id: S.String,
-          definition_id: S.String,
-          value: S.Unknown,
-          created_at: S.String,
-          created_by_id: S.NullOr(S.Number),
-        }),
-      ).annotate({ identifier: "CustomPropertyValue" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          project_id: S.String.pipe(T.Label()),
-          account_id: S.String.pipe(T.Label()),
-          title: S.optional(S.NullOr(S.String)),
-          content: S.optional(S.Unknown),
-          text_content: S.optional(S.NullOr(S.String)),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/api/projects/{project_id}/accounts/{account_id}/notebooks/",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateAccountsNotebookRequest",
-      });
-    case 6:
-      return S.Record(S.String, S.Unknown);
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.Number),
-          uuid: S.optional(S.String),
-          distinct_id: S.optional(S.NullOr(S.String)),
-          first_name: S.optional(S.String),
-          last_name: S.optional(S.String),
-          email: S.optional(S.String),
-          is_email_verified: S.optional(S.NullOr(S.Boolean)),
-          hedgehog_config: S.optional(S.NullOr(__S(6, __c0, 6))),
-          role_at_organization: S.optional(S.NullOr(S.Unknown)),
-        }),
-      ).annotate({ identifier: "UserBasic" });
+      ).annotate({ identifier: "CreateEventStreamRequest" });
   }
 }
 function __c1(j: number): any {
@@ -1009,217 +924,22 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           id: S.String,
-          short_id: S.String,
-          title: S.optional(S.NullOr(S.String)),
-          content: S.optional(S.Unknown),
-          text_content: S.optional(S.NullOr(S.String)),
-          created_at: S.String,
-          created_by: __S(7, __c0, 7),
-          last_modified_at: S.String,
-          last_modified_by: __S(7, __c0, 7),
-        }),
-      ).annotate({ identifier: "AccountNotebook" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          project_id: S.String.pipe(T.Label()),
-          account_id: S.String.pipe(T.Label()),
-          definition: S.String,
-          user: S.Number,
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/api/projects/{project_id}/accounts/{account_id}/relationships/",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateAccountsRelationshipRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String,
-          name: S.String,
-          description: S.optional(S.NullOr(S.String)),
-          is_single_holder: S.optional(S.Boolean),
-          is_controlled: S.Boolean,
-        }),
-      ).annotate({
-        identifier: "AccountRelationshipDefinition",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.Number,
-          email: S.String,
-        }),
-      ).annotate({ identifier: "AccountAssignment" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String,
-          definition: __S(10, __c1, 2),
-          user: S.NullOr(__S(11, __c1, 3)),
-          started_at: S.String,
-          ended_at: S.NullOr(S.String),
-          source: S.NullOr(S.String),
-        }),
-      ).annotate({ identifier: "AccountRelationship" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          project_id: S.String.pipe(T.Label()),
-          account_id: S.String.pipe(T.Label()),
-          id: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/api/projects/{project_id}/accounts/{account_id}/relationships/{id}/end/",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateAccountsRelationshipsEndRequest",
-      });
-    case 6:
-      return S.Array(S.String);
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          website_domain: S.optional(S.NullOr(S.String)),
-          email_domains: S.optional(__S(14, __c1, 6)),
-          known_emails: S.optional(__S(14, __c1, 6)),
-          stripe_customer_id: S.optional(S.NullOr(S.String)),
-          hubspot_deal_id: S.optional(S.NullOr(S.String)),
-          billing_id: S.optional(S.NullOr(S.String)),
-          sfdc_id: S.optional(S.NullOr(S.String)),
-          zendesk_id: S.optional(S.NullOr(S.String)),
-          slack_channel_id: S.optional(S.NullOr(S.String)),
-          usage_dashboard_link: S.optional(S.NullOr(S.String)),
-          metabase_link: S.optional(S.NullOr(S.String)),
-        }),
-      ).annotate({
-        identifier: "CreateCustomerAnalyticsExternalAccountRequestProperties",
-      });
-  }
-}
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          external_id: S.String,
-          name: S.optional(S.NullOr(S.String)),
-          properties: S.optional(S.NullOr(__S(15, __c1, 7))),
-        }).pipe(
-          T.Http({ method: "POST", uri: "/api/customer_analytics/external/account", code: 200 }),
-        ),
-      ).annotate({
-        identifier: "CreateCustomerAnalyticsExternalAccountRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          user_id: S.Number,
-          email: S.NullOr(S.String),
-          name: S.NullOr(S.String),
-          is_organization_member: S.Boolean,
-          is_active: S.Boolean,
-        }),
-      ).annotate({
-        identifier: "ExternalAccountOwnershipHolder",
-      });
-    case 2:
-      return S.Array(S.String);
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          definition_id: S.String,
-          definition_name: S.String,
-          state: S.String,
-          controlled_at: S.NullOr(S.String),
-          relationship_id: S.NullOr(S.String),
-          holder: S.NullOr(__S(17, __c2, 1)),
-          diagnostics: __S(18, __c2, 2),
-        }),
-      ).annotate({
-        identifier: "ExternalAccountRoleOwnership",
-      });
-    case 4:
-      return S.Array(__S(19, __c2, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          account_id: S.String,
-          external_id: S.NullOr(S.String),
-          region: S.NullOr(S.String),
-          roles: __S(20, __c2, 4),
-        }),
-      ).annotate({ identifier: "ExternalAccountOwnership" });
-    case 6:
-      return S.Array(S.String);
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          user_id: S.Number,
-          email: S.String,
-        }),
-      ).annotate({
-        identifier: "ExternalAccountAssignment",
-      });
-  }
-}
-function __c3(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(23, __c2, 7));
-    case 1:
-      return S.Record(S.String, __S(24, __c3, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String,
-          external_id: S.NullOr(S.String),
-          name: S.String,
-          churned_at: S.NullOr(S.String),
-          ignored_at: S.NullOr(S.String),
-          properties: __S(6, __c0, 6),
-          ownership: __S(21, __c2, 5),
-          tags: __S(22, __c2, 6),
-          relationships: __S(25, __c3, 1),
-          custom_properties: __S(6, __c0, 6),
-        }),
-      ).annotate({ identifier: "ExternalAccount" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          project_id: S.String.pipe(T.Label()),
           enabled: S.optional(S.Boolean),
-          event_names: S.optional(__S(22, __c2, 6)),
+          event_names: S.optional(__S(232, __c29, 0)),
           slack_integration: S.optional(S.NullOr(S.Number)),
           slack_channel_id: S.optional(S.String),
           slack_channel_name: S.optional(S.String),
-        }).pipe(
-          T.Http({ method: "POST", uri: "/api/projects/{project_id}/event_streams/", code: 200 }),
-        ),
-      ).annotate({ identifier: "CreateEventStreamRequest" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String,
-          enabled: S.optional(S.Boolean),
-          event_names: S.optional(__S(22, __c2, 6)),
-          slack_integration: S.optional(S.NullOr(S.Number)),
-          slack_channel_id: S.optional(S.String),
-          slack_channel_name: S.optional(S.String),
-          account_ids: __S(22, __c2, 6),
+          account_ids: __S(232, __c29, 0),
           created_at: S.String,
           created_by: S.NullOr(S.Number),
           updated_at: S.NullOr(S.String),
         }),
       ).annotate({ identifier: "EventStream" });
-    case 5:
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -1235,7 +955,11 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "EventStreamsAddAccountCreateRequest",
       });
-    case 6:
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -1250,7 +974,7 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "EventStreamsDestroyRequest",
       });
-    case 7:
+    case 1:
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "EventStreamsDestroyResponse",
       });
@@ -1274,7 +998,11 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "EventStreamsRemoveAccountCreateRequest",
       });
-    case 1:
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -1289,13 +1017,17 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "EventStreamsSendTestMessageCreateRequest",
       });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           channel_id: S.String,
         }),
       ).annotate({ identifier: "EventStreamTestMessage" });
-    case 3:
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -1311,7 +1043,11 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "GetAccountsNotebookRequest",
       });
-    case 4:
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           external_id: S.String.pipe(T.Query()),
@@ -1321,7 +1057,11 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "GetCustomerAnalyticsExternalAccountRequest",
       });
-    case 5:
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           assigned_only: S.optional(S.Boolean.pipe(T.Query())),
@@ -1336,7 +1076,7 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "GetCustomerAnalyticsExternalAccountRequest2",
       });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           user_id: S.Number,
@@ -1346,43 +1086,43 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "ExternalAccountListAssignment",
       });
-    case 7:
-      return S.Array(__S(38, __c4, 6));
-  }
-}
-function __c5(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Record(S.String, __S(39, __c4, 7));
-    case 1:
+    case 2:
+      return S.Array(__S(65, __c8, 1));
+    case 3:
+      return S.Record(S.String, __S(66, __c8, 2));
+    case 4:
       return S.suspend(() =>
         S.Struct({
           external_id: S.String,
           name: S.String,
           churned_at: S.NullOr(S.String),
           ignored_at: S.NullOr(S.String),
-          ownership: __S(21, __c2, 5),
-          relationships: __S(40, __c5, 0),
+          ownership: __S(252, __c31, 4),
+          relationships: __S(67, __c8, 3),
         }),
       ).annotate({ identifier: "ExternalAccountListItem" });
-    case 2:
-      return S.Array(__S(41, __c5, 1));
-    case 3:
+    case 5:
+      return S.Array(__S(68, __c8, 4));
+    case 6:
       return S.suspend(() =>
         S.Struct({
-          results: __S(42, __c5, 2),
+          results: __S(69, __c8, 5),
           next_cursor: S.NullOr(S.String),
         }),
       ).annotate({ identifier: "ExternalAccountListPage" });
-    case 4:
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
       return S.Array(S.Number);
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
           account_id: S.optional(S.String.pipe(T.Query())),
-          assigned_to: S.optional(__S(44, __c5, 4).pipe(T.Query())),
-          created_by: S.optional(__S(44, __c5, 4).pipe(T.Query())),
+          assigned_to: S.optional(__S(72, __c9, 0).pipe(T.Query())),
+          created_by: S.optional(__S(72, __c9, 0).pipe(T.Query())),
           limit: S.optional(S.Number.pipe(T.Query())),
           offset: S.optional(S.Number.pipe(T.Query())),
           search: S.optional(S.String.pipe(T.Query())),
@@ -1390,7 +1130,7 @@ function __c5(j: number): any {
           T.Http({ method: "GET", uri: "/api/projects/{project_id}/account_notes/", code: 200 }),
         ),
       ).annotate({ identifier: "ListAccountNotesRequest" });
-    case 6:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           short_id: S.String,
@@ -1399,25 +1139,25 @@ function __c5(j: number): any {
           last_modified_at: S.String,
           account_id: S.String,
           account_name: S.String,
-          created_by: S.NullOr(__S(7, __c0, 7)),
+          created_by: S.NullOr(__S(176, __c22, 0)),
         }),
       ).annotate({ identifier: "AccountNote" });
-    case 7:
-      return S.Array(__S(46, __c5, 6));
-  }
-}
-function __c6(j: number): any {
-  switch (j) {
-    case 0:
+    case 3:
+      return S.Array(__S(74, __c9, 2));
+    case 4:
       return S.suspend(() =>
         S.Struct({
           count: S.Number,
           next: S.optional(S.NullOr(S.String)),
           previous: S.optional(S.NullOr(S.String)),
-          results: __S(47, __c5, 7),
+          results: __S(75, __c9, 3),
         }),
       ).annotate({ identifier: "PaginatedAccountNoteList" });
-    case 1:
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -1432,13 +1172,17 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "ListAccountsCustomPropertyValuesRequest",
       });
+    case 1:
+      return S.Array(__S(160, __c20, 0));
     case 2:
-      return S.Array(__S(4, __c0, 4));
-    case 3:
-      return S.suspend(() => __S(50, __c6, 2).pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() => __S(81, __c10, 1).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListAccountsCustomPropertyValuesResponse",
       });
-    case 4:
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -1457,20 +1201,24 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "ListAccountsNotebooksRequest",
       });
-    case 5:
-      return S.Array(__S(8, __c1, 0));
-    case 6:
+    case 1:
+      return S.Array(__S(184, __c23, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           count: S.Number,
           next: S.optional(S.NullOr(S.String)),
           previous: S.optional(S.NullOr(S.String)),
-          results: __S(53, __c6, 5),
+          results: __S(89, __c11, 1),
         }),
       ).annotate({
         identifier: "PaginatedAccountNotebookList",
       });
-    case 7:
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -1486,17 +1234,17 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "ListAccountsRelationshipsRequest",
       });
-  }
-}
-function __c7(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(12, __c1, 4));
     case 1:
-      return S.suspend(() => __S(56, __c7, 0).pipe(T.RawResponseRoot())).annotate({
+      return S.Array(__S(210, __c26, 2));
+    case 2:
+      return S.suspend(() => __S(97, __c12, 1).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListAccountsRelationshipsResponse",
       });
-    case 2:
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -1504,19 +1252,23 @@ function __c7(j: number): any {
           T.Http({ method: "GET", uri: "/api/projects/{project_id}/event_streams/", code: 200 }),
         ),
       ).annotate({ identifier: "ListEventStreamsRequest" });
-    case 3:
-      return S.Array(__S(28, __c3, 4));
-    case 4:
-      return S.suspend(() => __S(59, __c7, 3).pipe(T.RawResponseRoot())).annotate({
+    case 1:
+      return S.Array(__S(8, __c1, 0));
+    case 2:
+      return S.suspend(() => __S(105, __c13, 1).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListEventStreamsResponse",
       });
-    case 5:
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
           id: S.String.pipe(T.Label()),
           enabled: S.optional(S.Boolean),
-          event_names: S.optional(__S(22, __c2, 6)),
+          event_names: S.optional(__S(232, __c29, 0)),
           slack_integration: S.optional(S.NullOr(S.Number)),
           slack_channel_id: S.optional(S.String),
           slack_channel_name: S.optional(S.String),
@@ -1528,13 +1280,17 @@ function __c7(j: number): any {
           }),
         ),
       ).annotate({ identifier: "UpdateEventStreamRequest" });
-    case 6:
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
           id: S.String.pipe(T.Label()),
           enabled: S.optional(S.Boolean),
-          event_names: S.optional(__S(22, __c2, 6)),
+          event_names: S.optional(__S(232, __c29, 0)),
           slack_integration: S.optional(S.NullOr(S.Number)),
           slack_channel_id: S.optional(S.String),
           slack_channel_name: S.optional(S.String),
@@ -1550,7 +1306,346 @@ function __c7(j: number): any {
       });
   }
 }
-
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          project_id: S.String.pipe(T.Label()),
+          account_id: S.String.pipe(T.Label()),
+          short_id: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/api/projects/{project_id}/accounts/{account_id}/notebooks/{short_id}/",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "AccountsNotebooksDestroyRequest",
+      });
+  }
+}
+function __c17(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "AccountsNotebooksDestroyResponse",
+      });
+  }
+}
+function __c18(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          project_id: S.String.pipe(T.Label()),
+          account_id: S.String.pipe(T.Label()),
+          id: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/api/projects/{project_id}/accounts/{account_id}/relationships/{id}/",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "AccountsRelationshipsDestroyRequest",
+      });
+  }
+}
+function __c19(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          project_id: S.String.pipe(T.Label()),
+          account_id: S.String.pipe(T.Label()),
+          definition: S.String,
+          value: S.NullOr(S.Unknown),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/api/projects/{project_id}/accounts/{account_id}/custom_property_values/",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateAccountsCustomPropertyValueRequest",
+      });
+  }
+}
+function __c20(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          account_id: S.String,
+          definition_id: S.String,
+          value: S.Unknown,
+          created_at: S.String,
+          created_by_id: S.NullOr(S.Number),
+        }),
+      ).annotate({ identifier: "CustomPropertyValue" });
+  }
+}
+function __c21(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          project_id: S.String.pipe(T.Label()),
+          account_id: S.String.pipe(T.Label()),
+          title: S.optional(S.NullOr(S.String)),
+          content: S.optional(S.Unknown),
+          text_content: S.optional(S.NullOr(S.String)),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/api/projects/{project_id}/accounts/{account_id}/notebooks/",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateAccountsNotebookRequest",
+      });
+  }
+}
+function __c22(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.Number),
+          uuid: S.optional(S.String),
+          distinct_id: S.optional(S.NullOr(S.String)),
+          first_name: S.optional(S.String),
+          last_name: S.optional(S.String),
+          email: S.optional(S.String),
+          is_email_verified: S.optional(S.NullOr(S.Boolean)),
+          hedgehog_config: S.optional(S.NullOr(__S(192, __c24, 0))),
+          role_at_organization: S.optional(S.NullOr(S.Unknown)),
+        }),
+      ).annotate({ identifier: "UserBasic" });
+  }
+}
+function __c23(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          short_id: S.String,
+          title: S.optional(S.NullOr(S.String)),
+          content: S.optional(S.Unknown),
+          text_content: S.optional(S.NullOr(S.String)),
+          created_at: S.String,
+          created_by: __S(176, __c22, 0),
+          last_modified_at: S.String,
+          last_modified_by: __S(176, __c22, 0),
+        }),
+      ).annotate({ identifier: "AccountNotebook" });
+  }
+}
+function __c24(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, S.Unknown);
+  }
+}
+function __c25(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          project_id: S.String.pipe(T.Label()),
+          account_id: S.String.pipe(T.Label()),
+          definition: S.String,
+          user: S.Number,
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/api/projects/{project_id}/accounts/{account_id}/relationships/",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateAccountsRelationshipRequest",
+      });
+  }
+}
+function __c26(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          name: S.String,
+          description: S.optional(S.NullOr(S.String)),
+          is_single_holder: S.optional(S.Boolean),
+          is_controlled: S.Boolean,
+        }),
+      ).annotate({
+        identifier: "AccountRelationshipDefinition",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.Number,
+          email: S.String,
+        }),
+      ).annotate({ identifier: "AccountAssignment" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          definition: __S(208, __c26, 0),
+          user: S.NullOr(__S(209, __c26, 1)),
+          started_at: S.String,
+          ended_at: S.NullOr(S.String),
+          source: S.NullOr(S.String),
+        }),
+      ).annotate({ identifier: "AccountRelationship" });
+  }
+}
+function __c27(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          project_id: S.String.pipe(T.Label()),
+          account_id: S.String.pipe(T.Label()),
+          id: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/api/projects/{project_id}/accounts/{account_id}/relationships/{id}/end/",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateAccountsRelationshipsEndRequest",
+      });
+  }
+}
+function __c28(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          website_domain: S.optional(S.NullOr(S.String)),
+          email_domains: S.optional(__S(224, __c28, 0)),
+          known_emails: S.optional(__S(224, __c28, 0)),
+          stripe_customer_id: S.optional(S.NullOr(S.String)),
+          hubspot_deal_id: S.optional(S.NullOr(S.String)),
+          billing_id: S.optional(S.NullOr(S.String)),
+          sfdc_id: S.optional(S.NullOr(S.String)),
+          zendesk_id: S.optional(S.NullOr(S.String)),
+          slack_channel_id: S.optional(S.NullOr(S.String)),
+          usage_dashboard_link: S.optional(S.NullOr(S.String)),
+          metabase_link: S.optional(S.NullOr(S.String)),
+        }),
+      ).annotate({
+        identifier: "CreateCustomerAnalyticsExternalAccountRequestProperties",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          external_id: S.String,
+          name: S.optional(S.NullOr(S.String)),
+          properties: S.optional(S.NullOr(__S(225, __c28, 1))),
+        }).pipe(
+          T.Http({ method: "POST", uri: "/api/customer_analytics/external/account", code: 200 }),
+        ),
+      ).annotate({
+        identifier: "CreateCustomerAnalyticsExternalAccountRequest",
+      });
+  }
+}
+function __c29(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c30(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          user_id: S.Number,
+          email: S.String,
+        }),
+      ).annotate({
+        identifier: "ExternalAccountAssignment",
+      });
+    case 1:
+      return S.Array(__S(240, __c30, 0));
+    case 2:
+      return S.Record(S.String, __S(241, __c30, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          external_id: S.NullOr(S.String),
+          name: S.String,
+          churned_at: S.NullOr(S.String),
+          ignored_at: S.NullOr(S.String),
+          properties: __S(192, __c24, 0),
+          ownership: __S(252, __c31, 4),
+          tags: __S(232, __c29, 0),
+          relationships: __S(242, __c30, 2),
+          custom_properties: __S(192, __c24, 0),
+        }),
+      ).annotate({ identifier: "ExternalAccount" });
+  }
+}
+function __c31(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          user_id: S.Number,
+          email: S.NullOr(S.String),
+          name: S.NullOr(S.String),
+          is_organization_member: S.Boolean,
+          is_active: S.Boolean,
+        }),
+      ).annotate({
+        identifier: "ExternalAccountOwnershipHolder",
+      });
+    case 1:
+      return S.Array(S.String);
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          definition_id: S.String,
+          definition_name: S.String,
+          state: S.String,
+          controlled_at: S.NullOr(S.String),
+          relationship_id: S.NullOr(S.String),
+          holder: S.NullOr(__S(248, __c31, 0)),
+          diagnostics: __S(249, __c31, 1),
+        }),
+      ).annotate({
+        identifier: "ExternalAccountRoleOwnership",
+      });
+    case 3:
+      return S.Array(__S(250, __c31, 2));
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          account_id: S.String,
+          external_id: S.NullOr(S.String),
+          region: S.NullOr(S.String),
+          roles: __S(251, __c31, 3),
+        }),
+      ).annotate({ identifier: "ExternalAccountOwnership" });
+  }
+}
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

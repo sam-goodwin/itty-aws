@@ -473,8 +473,8 @@ export const createApplication: API.OperationMethod<
   CreateApplicationError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(23, __c2, 7) as any as S.Schema<CreateApplicationRequest>,
-  output: __S(27, __c3, 3) as any as S.Schema<Application>,
+  input: __S(193, __c6, 1) as any as S.Schema<CreateApplicationRequest>,
+  output: __S(249, __c7, 25) as any as S.Schema<Application>,
   errors: [BadRequest, Conflict, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -488,8 +488,8 @@ export const createEnvironment: API.OperationMethod<
   CreateEnvironmentError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(28, __c3, 4) as any as S.Schema<CreateEnvironmentRequest>,
-  output: __S(29, __c3, 5) as any as S.Schema<Environment>,
+  input: __S(256, __c8, 0) as any as S.Schema<CreateEnvironmentRequest>,
+  output: __S(288, __c9, 0) as any as S.Schema<Environment>,
   errors: [BadRequest, Conflict, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -503,8 +503,8 @@ export const deleteApplication: API.OperationMethod<
   DeleteApplicationError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(30, __c3, 6) as any as S.Schema<DeleteApplicationRequest>,
-  output: __S(27, __c3, 3) as any as S.Schema<Application>,
+  input: __S(320, __c10, 0) as any as S.Schema<DeleteApplicationRequest>,
+  output: __S(249, __c7, 25) as any as S.Schema<Application>,
   errors: [NotFound, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -518,8 +518,8 @@ export const getApplication: API.OperationMethod<
   GetApplicationError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(31, __c3, 7) as any as S.Schema<GetApplicationRequest>,
-  output: __S(27, __c3, 3) as any as S.Schema<Application>,
+  input: __S(352, __c11, 0) as any as S.Schema<GetApplicationRequest>,
+  output: __S(249, __c7, 25) as any as S.Schema<Application>,
   errors: [NotFound, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -533,8 +533,8 @@ export const getApplicationEvents: API.OperationMethod<
   GetApplicationEventsError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(32, __c4, 0) as any as S.Schema<GetApplicationEventsRequest>,
-  output: __S(35, __c4, 3) as any as S.Schema<GetApplicationEventsResponse>,
+  input: __S(384, __c12, 0) as any as S.Schema<GetApplicationEventsRequest>,
+  output: __S(385, __c12, 1) as any as S.Schema<GetApplicationEventsResponse>,
   errors: [NotFound, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -548,8 +548,8 @@ export const getApplicationLogs: API.OperationMethod<
   GetApplicationLogsError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(36, __c4, 4) as any as S.Schema<GetApplicationLogsRequest>,
-  output: __S(37, __c4, 5) as any as S.Schema<GetApplicationLogsResponse>,
+  input: __S(448, __c14, 0) as any as S.Schema<GetApplicationLogsRequest>,
+  output: __S(449, __c14, 1) as any as S.Schema<GetApplicationLogsResponse>,
   errors: [BadRequest, NotFound, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -563,8 +563,8 @@ export const getEnvironment: API.OperationMethod<
   GetEnvironmentError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(38, __c4, 6) as any as S.Schema<GetEnvironmentRequest>,
-  output: __S(29, __c3, 5) as any as S.Schema<Environment>,
+  input: __S(480, __c15, 0) as any as S.Schema<GetEnvironmentRequest>,
+  output: __S(288, __c9, 0) as any as S.Schema<Environment>,
   errors: [NotFound, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -578,8 +578,8 @@ export const getOverview: API.OperationMethod<
   GetOverviewError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(39, __c4, 7) as any as S.Schema<GetOverviewRequest>,
-  output: __S(41, __c5, 1) as any as S.Schema<GetOverviewResponse>,
+  input: __S(0, __c0, 0) as any as S.Schema<GetOverviewRequest>,
+  output: __S(2, __c0, 2) as any as S.Schema<GetOverviewResponse>,
   errors: [UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -593,8 +593,8 @@ export const listApplications: API.OperationMethod<
   ListApplicationsError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(42, __c5, 2) as any as S.Schema<ListApplicationsRequest>,
-  output: __S(45, __c5, 5) as any as S.Schema<ListApplicationsResponse>,
+  input: __S(32, __c1, 0) as any as S.Schema<ListApplicationsRequest>,
+  output: __S(66, __c2, 2) as any as S.Schema<ListApplicationsResponse>,
   errors: [BadRequest, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -608,8 +608,8 @@ export const listEnvironments: API.OperationMethod<
   ListEnvironmentsError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(46, __c5, 6) as any as S.Schema<ListEnvironmentsRequest>,
-  output: __S(49, __c6, 1) as any as S.Schema<ListEnvironmentsResponse>,
+  input: __S(96, __c3, 0) as any as S.Schema<ListEnvironmentsRequest>,
+  output: __S(99, __c3, 3) as any as S.Schema<ListEnvironmentsResponse>,
   errors: [BadRequest, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -623,8 +623,8 @@ export const listProjectApplications: API.OperationMethod<
   ListProjectApplicationsError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(50, __c6, 2) as any as S.Schema<ListProjectApplicationsRequest>,
-  output: __S(45, __c5, 5) as any as S.Schema<ListApplicationsResponse>,
+  input: __S(128, __c4, 0) as any as S.Schema<ListProjectApplicationsRequest>,
+  output: __S(66, __c2, 2) as any as S.Schema<ListApplicationsResponse>,
   errors: [BadRequest, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -638,8 +638,8 @@ export const updateApplication: API.OperationMethod<
   UpdateApplicationError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(51, __c6, 3) as any as S.Schema<UpdateApplicationRequest>,
-  output: __S(27, __c3, 3) as any as S.Schema<Application>,
+  input: __S(160, __c5, 0) as any as S.Schema<UpdateApplicationRequest>,
+  output: __S(249, __c7, 25) as any as S.Schema<Application>,
   errors: [BadRequest, NotFound, Conflict, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -647,6 +647,194 @@ export const updateApplication: API.OperationMethod<
 
 // Schema builders: each runs one schema initializer, on that schema's first use.
 function __c0(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          projectId: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/v1alpha/projects/{projectId}/overview",
+            code: 200,
+            baseUrl: "https://sca.api.{region}stackit.cloud",
+          }),
+        ),
+      ).annotate({ identifier: "GetOverviewRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          applicationsRunning: S.optional(S.Number),
+          applicationsTotal: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "Summary" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          summary: __S(1, __c0, 1),
+        }),
+      ).annotate({ identifier: "GetOverviewResponse" });
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          projectId: S.String.pipe(T.Label()),
+          environmentId: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/v1alpha/projects/{projectId}/environments/{environmentId}/applications",
+            code: 200,
+            baseUrl: "https://sca.api.{region}stackit.cloud",
+          }),
+        ),
+      ).annotate({ identifier: "ListApplicationsRequest" });
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          containers: S.optional(S.Number),
+          createdAt: S.optional(S.String),
+          displayName: S.optional(S.String),
+          environmentId: S.optional(S.String),
+          environmentName: S.optional(S.String),
+          id: S.optional(S.String),
+          instances: S.optional(S.Number),
+          internalUrl: S.optional(S.String),
+          lastDeployment: S.optional(S.String),
+          status: S.optional(S.String),
+          stopped: S.optional(S.Boolean),
+          url: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ApplicationSummary" });
+    case 1:
+      return S.Array(__S(64, __c2, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          items: S.optional(__S(65, __c2, 1)),
+        }),
+      ).annotate({ identifier: "ListApplicationsResponse" });
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          projectId: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/v1alpha/projects/{projectId}/environments",
+            code: 200,
+            baseUrl: "https://sca.api.{region}stackit.cloud",
+          }),
+        ),
+      ).annotate({ identifier: "ListEnvironmentsRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          applicationsNumber: S.optional(S.Number),
+          createdAt: S.optional(S.String),
+          default: S.optional(S.Boolean),
+          displayName: S.optional(S.String),
+          id: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "EnvironmentSummary" });
+    case 2:
+      return S.Array(__S(97, __c3, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          items: S.optional(__S(98, __c3, 2)),
+        }),
+      ).annotate({ identifier: "ListEnvironmentsResponse" });
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          projectId: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/v1alpha/projects/{projectId}/applications",
+            code: 200,
+            baseUrl: "https://sca.api.{region}stackit.cloud",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListProjectApplicationsRequest",
+      });
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          projectId: S.String.pipe(T.Label()),
+          environmentId: S.String.pipe(T.Label()),
+          applicationId: S.String.pipe(T.Label()),
+          containers: S.optional(__S(228, __c7, 4)),
+          network: S.optional(__S(229, __c7, 5)),
+          registry: S.optional(__S(232, __c7, 8)),
+          scaling: S.optional(__S(243, __c7, 19)),
+          secrets: S.optional(__S(245, __c7, 21)),
+          stopped: S.optional(S.Boolean),
+        }).pipe(
+          T.Http({
+            method: "PATCH",
+            uri: "/v1alpha/projects/{projectId}/environments/{environmentId}/applications/{applicationId}",
+            code: 200,
+            baseUrl: "https://sca.api.{region}stackit.cloud",
+          }),
+        ),
+      ).annotate({ identifier: "UpdateApplicationRequest" });
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          currentStatus: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "RuntimeStatusInput" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          projectId: S.String.pipe(T.Label()),
+          environmentId: S.String.pipe(T.Label()),
+          containers: __S(228, __c7, 4),
+          displayName: S.String,
+          network: S.optional(__S(229, __c7, 5)),
+          registry: S.optional(__S(232, __c7, 8)),
+          runtimeStatus: S.optional(__S(192, __c6, 0)),
+          scaling: __S(243, __c7, 19),
+          secrets: S.optional(__S(245, __c7, 21)),
+          stopped: S.optional(S.Boolean),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/v1alpha/projects/{projectId}/environments/{environmentId}/applications",
+            code: 200,
+            baseUrl: "https://sca.api.{region}stackit.cloud",
+          }),
+        ),
+      ).annotate({ identifier: "CreateApplicationRequest" });
+  }
+}
+function __c7(j: number): any {
   switch (j) {
     case 0:
       return S.Array(S.String);
@@ -659,25 +847,25 @@ function __c0(j: number): any {
         }),
       ).annotate({ identifier: "EnvVar" });
     case 2:
-      return S.Array(__S(1, __c0, 1));
+      return S.Array(__S(225, __c7, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          args: S.optional(__S(0, __c0, 0)),
-          command: S.optional(__S(0, __c0, 0)),
+          args: S.optional(__S(224, __c7, 0)),
+          command: S.optional(__S(224, __c7, 0)),
           cpu: S.optional(S.Number),
-          environmentVariables: S.optional(__S(2, __c0, 2)),
+          environmentVariables: S.optional(__S(226, __c7, 2)),
           image: S.String,
           memory: S.optional(S.Number),
           name: S.String,
         }),
       ).annotate({ identifier: "Container" });
     case 4:
-      return S.Array(__S(3, __c0, 3));
+      return S.Array(__S(227, __c7, 3));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          ingressAcl: S.optional(__S(0, __c0, 0)),
+          ingressAcl: S.optional(__S(224, __c7, 0)),
           internalPort: S.optional(S.Number),
           port: S.optional(S.Number),
           publicIngress: S.optional(S.Boolean),
@@ -696,165 +884,129 @@ function __c0(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          credentials: S.optional(__S(6, __c0, 6)),
+          credentials: S.optional(__S(230, __c7, 6)),
           type: S.String,
         }),
       ).annotate({ identifier: "ApplicationRegistry" });
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(7, __c0, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          currentStatus: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "RuntimeStatusInput" });
-    case 2:
+    case 8:
+      return S.Array(__S(231, __c7, 7));
+    case 9:
       return S.suspend(() =>
         S.Struct({
           name: S.String,
           value: S.String,
         }),
       ).annotate({ identifier: "CustomRuleParameter" });
-    case 3:
-      return S.Array(__S(10, __c1, 2));
-    case 4:
+    case 10:
+      return S.Array(__S(233, __c7, 9));
+    case 11:
       return S.suspend(() =>
         S.Struct({
           parameter: S.String,
           secret: S.String.pipe(T.SensitiveValue({})),
         }),
       ).annotate({ identifier: "CustomRuleSecretMapping" });
-    case 5:
-      return S.Array(__S(12, __c1, 4));
-    case 6:
+    case 12:
+      return S.Array(__S(235, __c7, 11));
+    case 13:
       return S.suspend(() =>
         S.Struct({
-          parameters: S.optional(__S(11, __c1, 3)),
-          secretsMapping: S.optional(__S(13, __c1, 5)),
+          parameters: S.optional(__S(234, __c7, 10)),
+          secretsMapping: S.optional(__S(236, __c7, 12)),
           type: S.String,
         }),
       ).annotate({ identifier: "CustomScaleRule" });
-    case 7:
+    case 14:
       return S.suspend(() =>
         S.Struct({
           concurrency: S.optional(S.Number),
           rps: S.optional(S.Number),
         }),
       ).annotate({ identifier: "HttpScaleRule" });
-  }
-}
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
+    case 15:
       return S.suspend(() =>
         S.Struct({
-          customRule: S.optional(__S(14, __c1, 6)),
-          httpRule: S.optional(__S(15, __c1, 7)),
+          customRule: S.optional(__S(237, __c7, 13)),
+          httpRule: S.optional(__S(238, __c7, 14)),
           name: S.String,
           type: S.String,
         }),
       ).annotate({ identifier: "ScaleRule" });
-    case 1:
-      return S.Array(__S(16, __c2, 0));
-    case 2:
+    case 16:
+      return S.Array(__S(239, __c7, 15));
+    case 17:
       return S.suspend(() =>
         S.Struct({
           allowScaleToZero: S.optional(S.Boolean),
           maxInstances: S.Number,
           minInstances: S.Number,
-          rules: __S(17, __c2, 1),
+          rules: __S(240, __c7, 16),
         }),
       ).annotate({ identifier: "AutoScaling" });
-    case 3:
+    case 18:
       return S.suspend(() =>
         S.Struct({
           instances: S.Number,
         }),
       ).annotate({ identifier: "ManualScaling" });
-    case 4:
+    case 19:
       return S.suspend(() =>
         S.Struct({
-          autoScaling: S.optional(__S(18, __c2, 2)),
-          manualScaling: S.optional(__S(19, __c2, 3)),
+          autoScaling: S.optional(__S(241, __c7, 17)),
+          manualScaling: S.optional(__S(242, __c7, 18)),
           type: S.String,
         }),
       ).annotate({ identifier: "Scaling" });
-    case 5:
+    case 20:
       return S.suspend(() =>
         S.Struct({
           key: S.String,
           value: S.optional(S.String),
         }),
       ).annotate({ identifier: "ApplicationSecret" });
-    case 6:
-      return S.Array(__S(21, __c2, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          projectId: S.String.pipe(T.Label()),
-          environmentId: S.String.pipe(T.Label()),
-          containers: __S(4, __c0, 4),
-          displayName: S.String,
-          network: S.optional(__S(5, __c0, 5)),
-          registry: S.optional(__S(8, __c1, 0)),
-          runtimeStatus: S.optional(__S(9, __c1, 1)),
-          scaling: __S(20, __c2, 4),
-          secrets: S.optional(__S(22, __c2, 6)),
-          stopped: S.optional(S.Boolean),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/v1alpha/projects/{projectId}/environments/{environmentId}/applications",
-            code: 200,
-            baseUrl: "https://sca.api.{region}stackit.cloud",
-          }),
-        ),
-      ).annotate({ identifier: "CreateApplicationRequest" });
-  }
-}
-function __c3(j: number): any {
-  switch (j) {
-    case 0:
+    case 21:
+      return S.Array(__S(244, __c7, 20));
+    case 22:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
           status: S.optional(S.String),
         }),
       ).annotate({ identifier: "Instance" });
-    case 1:
-      return S.Array(__S(24, __c3, 0));
-    case 2:
+    case 23:
+      return S.Array(__S(246, __c7, 22));
+    case 24:
       return S.suspend(() =>
         S.Struct({
           currentStatus: S.optional(S.String),
-          failureReasons: S.optional(__S(0, __c0, 0)),
-          instances: S.optional(__S(25, __c3, 1)),
+          failureReasons: S.optional(__S(224, __c7, 0)),
+          instances: S.optional(__S(247, __c7, 23)),
           internalUrl: S.optional(S.String),
           lastDeployment: S.optional(S.String),
-          urls: S.optional(__S(0, __c0, 0)),
+          urls: S.optional(__S(224, __c7, 0)),
         }),
       ).annotate({ identifier: "RuntimeStatus" });
-    case 3:
+    case 25:
       return S.suspend(() =>
         S.Struct({
-          containers: __S(4, __c0, 4),
+          containers: __S(228, __c7, 4),
           displayName: S.String,
           environmentId: S.optional(S.String),
           environmentName: S.optional(S.String),
           id: S.optional(S.String),
-          network: S.optional(__S(5, __c0, 5)),
-          registry: S.optional(__S(8, __c1, 0)),
-          runtimeStatus: S.optional(__S(26, __c3, 2)),
-          scaling: __S(20, __c2, 4),
-          secrets: S.optional(__S(22, __c2, 6)),
+          network: S.optional(__S(229, __c7, 5)),
+          registry: S.optional(__S(232, __c7, 8)),
+          runtimeStatus: S.optional(__S(248, __c7, 24)),
+          scaling: __S(243, __c7, 19),
+          secrets: S.optional(__S(245, __c7, 21)),
           stopped: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "Application" });
-    case 4:
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.Label()),
@@ -869,7 +1021,11 @@ function __c3(j: number): any {
           }),
         ),
       ).annotate({ identifier: "CreateEnvironmentRequest" });
-    case 5:
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           createdAt: S.optional(S.String),
@@ -879,7 +1035,11 @@ function __c3(j: number): any {
           status: S.optional(S.String),
         }),
       ).annotate({ identifier: "Environment" });
-    case 6:
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.Label()),
@@ -894,7 +1054,11 @@ function __c3(j: number): any {
           }),
         ),
       ).annotate({ identifier: "DeleteApplicationRequest" });
-    case 7:
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.Label()),
@@ -911,7 +1075,7 @@ function __c3(j: number): any {
       ).annotate({ identifier: "GetApplicationRequest" });
   }
 }
-function __c4(j: number): any {
+function __c12(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -933,20 +1097,28 @@ function __c4(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          message: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Event" });
-    case 2:
-      return S.Array(__S(33, __c4, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          events: S.optional(__S(34, __c4, 2)),
+          events: S.optional(__S(417, __c13, 1)),
         }),
       ).annotate({
         identifier: "GetApplicationEventsResponse",
       });
-    case 4:
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          message: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Event" });
+    case 1:
+      return S.Array(__S(416, __c13, 0));
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.Label()),
@@ -966,15 +1138,19 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "GetApplicationLogsRequest",
       });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          logs: S.optional(__S(34, __c4, 2)),
+          logs: S.optional(__S(417, __c13, 1)),
         }),
       ).annotate({
         identifier: "GetApplicationLogsResponse",
       });
-    case 6:
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.Label()),
@@ -988,149 +1164,8 @@ function __c4(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetEnvironmentRequest" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          projectId: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/v1alpha/projects/{projectId}/overview",
-            code: 200,
-            baseUrl: "https://sca.api.{region}stackit.cloud",
-          }),
-        ),
-      ).annotate({ identifier: "GetOverviewRequest" });
   }
 }
-function __c5(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          applicationsRunning: S.optional(S.Number),
-          applicationsTotal: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "Summary" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          summary: __S(40, __c5, 0),
-        }),
-      ).annotate({ identifier: "GetOverviewResponse" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          projectId: S.String.pipe(T.Label()),
-          environmentId: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/v1alpha/projects/{projectId}/environments/{environmentId}/applications",
-            code: 200,
-            baseUrl: "https://sca.api.{region}stackit.cloud",
-          }),
-        ),
-      ).annotate({ identifier: "ListApplicationsRequest" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          containers: S.optional(S.Number),
-          createdAt: S.optional(S.String),
-          displayName: S.optional(S.String),
-          environmentId: S.optional(S.String),
-          environmentName: S.optional(S.String),
-          id: S.optional(S.String),
-          instances: S.optional(S.Number),
-          internalUrl: S.optional(S.String),
-          lastDeployment: S.optional(S.String),
-          status: S.optional(S.String),
-          stopped: S.optional(S.Boolean),
-          url: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ApplicationSummary" });
-    case 4:
-      return S.Array(__S(43, __c5, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          items: S.optional(__S(44, __c5, 4)),
-        }),
-      ).annotate({ identifier: "ListApplicationsResponse" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          projectId: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/v1alpha/projects/{projectId}/environments",
-            code: 200,
-            baseUrl: "https://sca.api.{region}stackit.cloud",
-          }),
-        ),
-      ).annotate({ identifier: "ListEnvironmentsRequest" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          applicationsNumber: S.optional(S.Number),
-          createdAt: S.optional(S.String),
-          default: S.optional(S.Boolean),
-          displayName: S.optional(S.String),
-          id: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "EnvironmentSummary" });
-  }
-}
-function __c6(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(47, __c5, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          items: S.optional(__S(48, __c6, 0)),
-        }),
-      ).annotate({ identifier: "ListEnvironmentsResponse" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          projectId: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/v1alpha/projects/{projectId}/applications",
-            code: 200,
-            baseUrl: "https://sca.api.{region}stackit.cloud",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListProjectApplicationsRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          projectId: S.String.pipe(T.Label()),
-          environmentId: S.String.pipe(T.Label()),
-          applicationId: S.String.pipe(T.Label()),
-          containers: S.optional(__S(4, __c0, 4)),
-          network: S.optional(__S(5, __c0, 5)),
-          registry: S.optional(__S(8, __c1, 0)),
-          scaling: S.optional(__S(20, __c2, 4)),
-          secrets: S.optional(__S(22, __c2, 6)),
-          stopped: S.optional(S.Boolean),
-        }).pipe(
-          T.Http({
-            method: "PATCH",
-            uri: "/v1alpha/projects/{projectId}/environments/{environmentId}/applications/{applicationId}",
-            code: 200,
-            baseUrl: "https://sca.api.{region}stackit.cloud",
-          }),
-        ),
-      ).annotate({ identifier: "UpdateApplicationRequest" });
-  }
-}
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

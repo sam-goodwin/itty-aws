@@ -10714,8 +10714,8 @@ export const getAuthUser: API.OperationMethod<
   GetAuthUserError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(4, __c0, 4) as any as S.Schema<GetAuthUserRequest>,
-  output: __S(6, __c0, 6) as any as S.Schema<GetAuthUserResponse>,
+  input: __S(16, __c1, 0) as any as S.Schema<GetAuthUserRequest>,
+  output: __S(17, __c1, 1) as any as S.Schema<GetAuthUserResponse>,
   errors: [BadRequest, Forbidden, Conflict],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -10729,8 +10729,8 @@ export const listEventTypes: API.OperationMethod<
   ListEventTypesError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(7, __c0, 7) as any as S.Schema<ListEventTypesRequest>,
-  output: __S(13, __c1, 5) as any as S.Schema<ListEventTypesResponse>,
+  input: __S(32, __c2, 0) as any as S.Schema<ListEventTypesRequest>,
+  output: __S(37, __c2, 5) as any as S.Schema<ListEventTypesResponse>,
   errors: [BadRequest, Forbidden],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -10744,8 +10744,8 @@ export const listUserEvents: API.OperationMethod<
   ListUserEventsError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(14, __c1, 6) as any as S.Schema<ListUserEventsRequest>,
-  output: __S(21, __c2, 5) as any as S.Schema<ListUserEventsResponse>,
+  input: __S(65, __c4, 1) as any as S.Schema<ListUserEventsRequest>,
+  output: __S(72, __c4, 8) as any as S.Schema<ListUserEventsResponse>,
   errors: [BadRequest, Forbidden],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -10779,30 +10779,32 @@ function __c0(j: number): any {
           message: S.String,
         }),
       ).annotate({ identifier: "DeleteRequestResponse" });
-    case 4:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({}).pipe(T.Http({ method: "GET", uri: "/v2/user", code: 200 })),
       ).annotate({ identifier: "GetAuthUserRequest" });
-    case 5:
-      return S.Array(S.String);
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           user: S.Unknown,
         }),
       ).annotate({ identifier: "GetAuthUserResponse" });
-    case 7:
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           teamId: S.optional(S.String.pipe(T.Query())),
           slug: S.optional(S.String.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/v1/events/types", code: 200 })),
       ).annotate({ identifier: "ListEventTypesRequest" });
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           label: S.String,
@@ -10811,30 +10813,40 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "ListEventTypesResponseCategoriesItem",
       });
-    case 1:
-      return S.Array(__S(8, __c1, 0));
     case 2:
-      return S.Array(S.String);
+      return S.Array(__S(33, __c2, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          categories: __S(10, __c1, 2),
+          categories: __S(48, __c3, 0),
           deprecated: S.optional(S.Boolean),
           description: S.String,
           name: S.String,
-          replacedBy: S.optional(__S(10, __c1, 2)),
+          replacedBy: S.optional(__S(48, __c3, 0)),
         }),
       ).annotate({ identifier: "ListEventType" });
     case 4:
-      return S.Array(__S(11, __c1, 3));
+      return S.Array(__S(35, __c2, 3));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          categories: __S(9, __c1, 1),
-          types: __S(12, __c1, 4),
+          categories: __S(34, __c2, 2),
+          types: __S(36, __c2, 4),
         }),
       ).annotate({ identifier: "ListEventTypesResponse" });
-    case 6:
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+    case 1:
       return S.suspend(() =>
         S.Struct({
           limit: S.optional(S.Number.pipe(T.Query())),
@@ -10850,7 +10862,7 @@ function __c1(j: number): any {
           slug: S.optional(S.String.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/v3/events", code: 200 })),
       ).annotate({ identifier: "ListUserEventsRequest" });
-    case 7:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           end: S.Number,
@@ -10858,13 +10870,9 @@ function __c1(j: number): any {
           type: S.String,
         }),
       ).annotate({ identifier: "UserEventEntitiesItem" });
-  }
-}
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(15, __c1, 7));
-    case 1:
+    case 3:
+      return S.Array(__S(66, __c4, 2));
+    case 4:
       return S.suspend(() =>
         S.Struct({
           avatar: S.String,
@@ -10874,14 +10882,14 @@ function __c2(j: number): any {
           username: S.String,
         }),
       ).annotate({ identifier: "UserEventUser" });
-    case 2:
+    case 5:
       return S.Array(S.Unknown);
-    case 3:
+    case 6:
       return S.suspend(() =>
         S.Struct({
-          categories: S.optional(__S(10, __c1, 2)),
+          categories: S.optional(__S(48, __c3, 0)),
           createdAt: S.Number,
-          entities: __S(16, __c2, 0),
+          entities: __S(67, __c4, 3),
           id: S.String,
           payload: S.optional(S.Unknown),
           principal: S.optional(S.Unknown),
@@ -10891,23 +10899,22 @@ function __c2(j: number): any {
           text: S.String,
           tokenId: S.optional(S.String),
           type: S.optional(S.String),
-          user: S.optional(__S(17, __c2, 1)),
+          user: S.optional(__S(68, __c4, 4)),
           userId: S.optional(S.String),
-          via: S.optional(__S(18, __c2, 2)),
-          viaIds: S.optional(__S(5, __c0, 5)),
+          via: S.optional(__S(69, __c4, 5)),
+          viaIds: S.optional(__S(64, __c4, 0)),
         }),
       ).annotate({ identifier: "UserEvent" });
-    case 4:
-      return S.Array(__S(19, __c2, 3));
-    case 5:
+    case 7:
+      return S.Array(__S(70, __c4, 6));
+    case 8:
       return S.suspend(() =>
         S.Struct({
-          events: __S(20, __c2, 4),
+          events: __S(71, __c4, 7),
         }),
       ).annotate({ identifier: "ListUserEventsResponse" });
   }
 }
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

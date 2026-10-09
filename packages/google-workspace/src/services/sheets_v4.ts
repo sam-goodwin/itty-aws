@@ -3709,8 +3709,8 @@ export const appendSpreadsheetsValues: API.OperationMethod<
   AppendSpreadsheetsValuesError,
   GoogleWorkspaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3, __c0, 3) as any as S.Schema<AppendSpreadsheetsValuesRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<AppendValuesResponse>,
+  input: __S(704, __c22, 0) as any as S.Schema<AppendSpreadsheetsValuesRequest>,
+  output: __S(705, __c22, 1) as any as S.Schema<AppendValuesResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -3729,8 +3729,8 @@ export const batchClearByDataFilterSpreadsheetsValues: API.OperationMethod<
   BatchClearByDataFilterSpreadsheetsValuesError,
   GoogleWorkspaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(13, __c1, 5) as any as S.Schema<BatchClearByDataFilterSpreadsheetsValuesRequest>,
-  output: __S(15, __c1, 7) as any as S.Schema<BatchClearValuesByDataFilterResponse>,
+  input: __S(800, __c25, 0) as any as S.Schema<BatchClearByDataFilterSpreadsheetsValuesRequest>,
+  output: __S(801, __c25, 1) as any as S.Schema<BatchClearValuesByDataFilterResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -3749,8 +3749,8 @@ export const batchClearSpreadsheetsValues: API.OperationMethod<
   BatchClearSpreadsheetsValuesError,
   GoogleWorkspaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(17, __c2, 1) as any as S.Schema<BatchClearSpreadsheetsValuesRequest>,
-  output: __S(18, __c2, 2) as any as S.Schema<BatchClearValuesResponse>,
+  input: __S(1025, __c32, 1) as any as S.Schema<BatchClearSpreadsheetsValuesRequest>,
+  output: __S(1026, __c32, 2) as any as S.Schema<BatchClearValuesResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -3769,8 +3769,8 @@ export const batchGetByDataFilterSpreadsheetsValues: API.OperationMethod<
   BatchGetByDataFilterSpreadsheetsValuesError,
   GoogleWorkspaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(20, __c2, 4) as any as S.Schema<BatchGetByDataFilterSpreadsheetsValuesRequest>,
-  output: __S(23, __c2, 7) as any as S.Schema<BatchGetValuesByDataFilterResponse>,
+  input: __S(1057, __c33, 1) as any as S.Schema<BatchGetByDataFilterSpreadsheetsValuesRequest>,
+  output: __S(1060, __c33, 4) as any as S.Schema<BatchGetValuesByDataFilterResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -3784,8 +3784,8 @@ export const batchGetSpreadsheetsValues: API.OperationMethod<
   BatchGetSpreadsheetsValuesError,
   GoogleWorkspaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(24, __c3, 0) as any as S.Schema<BatchGetSpreadsheetsValuesRequest>,
-  output: __S(26, __c3, 2) as any as S.Schema<BatchGetValuesResponse>,
+  input: __S(1088, __c34, 0) as any as S.Schema<BatchGetSpreadsheetsValuesRequest>,
+  output: __S(1089, __c34, 1) as any as S.Schema<BatchGetValuesResponse>,
   errors: [NotFound, Forbidden, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -3804,8 +3804,8 @@ export const batchUpdateByDataFilterSpreadsheetsValues: API.OperationMethod<
   BatchUpdateByDataFilterSpreadsheetsValuesError,
   GoogleWorkspaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(30, __c3, 6) as any as S.Schema<BatchUpdateByDataFilterSpreadsheetsValuesRequest>,
-  output: __S(33, __c4, 1) as any as S.Schema<BatchUpdateValuesByDataFilterResponse>,
+  input: __S(1155, __c36, 3) as any as S.Schema<BatchUpdateByDataFilterSpreadsheetsValuesRequest>,
+  output: __S(1158, __c36, 6) as any as S.Schema<BatchUpdateValuesByDataFilterResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -3824,8 +3824,8 @@ export const batchUpdateSpreadsheets: API.OperationMethod<
   BatchUpdateSpreadsheetsError,
   GoogleWorkspaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(262, __c32, 6) as any as S.Schema<BatchUpdateSpreadsheetsRequest>,
-  output: __S(316, __c39, 4) as any as S.Schema<BatchUpdateSpreadsheetResponse>,
+  input: __S(78, __c2, 14) as any as S.Schema<BatchUpdateSpreadsheetsRequest>,
+  output: __S(102, __c3, 6) as any as S.Schema<BatchUpdateSpreadsheetResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -3844,8 +3844,8 @@ export const batchUpdateSpreadsheetsValues: API.OperationMethod<
   BatchUpdateSpreadsheetsValuesError,
   GoogleWorkspaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(318, __c39, 6) as any as S.Schema<BatchUpdateSpreadsheetsValuesRequest>,
-  output: __S(320, __c40, 0) as any as S.Schema<BatchUpdateValuesResponse>,
+  input: __S(385, __c12, 1) as any as S.Schema<BatchUpdateSpreadsheetsValuesRequest>,
+  output: __S(387, __c12, 3) as any as S.Schema<BatchUpdateValuesResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -3864,8 +3864,8 @@ export const clearSpreadsheetsValues: API.OperationMethod<
   ClearSpreadsheetsValuesError,
   GoogleWorkspaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(322, __c40, 2) as any as S.Schema<ClearSpreadsheetsValuesRequest>,
-  output: __S(323, __c40, 3) as any as S.Schema<ClearValuesResponse>,
+  input: __S(417, __c13, 1) as any as S.Schema<ClearSpreadsheetsValuesRequest>,
+  output: __S(418, __c13, 2) as any as S.Schema<ClearValuesResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -3884,8 +3884,8 @@ export const copyToSpreadsheetsSheets: API.OperationMethod<
   CopyToSpreadsheetsSheetsError,
   GoogleWorkspaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(325, __c40, 5) as any as S.Schema<CopyToSpreadsheetsSheetsRequest>,
-  output: __S(202, __c25, 2) as any as S.Schema<SheetProperties>,
+  input: __S(449, __c14, 1) as any as S.Schema<CopyToSpreadsheetsSheetsRequest>,
+  output: __S(136, __c4, 8) as any as S.Schema<SheetProperties>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -3904,8 +3904,8 @@ export const createSpreadsheets: API.OperationMethod<
   CreateSpreadsheetsError,
   GoogleWorkspaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(326, __c40, 6) as any as S.Schema<CreateSpreadsheetsRequest>,
-  output: __S(315, __c39, 3) as any as S.Schema<Spreadsheet>,
+  input: __S(480, __c15, 0) as any as S.Schema<CreateSpreadsheetsRequest>,
+  output: __S(329, __c10, 9) as any as S.Schema<Spreadsheet>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -3924,8 +3924,8 @@ export const getByDataFilterSpreadsheets: API.OperationMethod<
   GetByDataFilterSpreadsheetsError,
   GoogleWorkspaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(328, __c41, 0) as any as S.Schema<GetByDataFilterSpreadsheetsRequest>,
-  output: __S(315, __c39, 3) as any as S.Schema<Spreadsheet>,
+  input: __S(513, __c16, 1) as any as S.Schema<GetByDataFilterSpreadsheetsRequest>,
+  output: __S(329, __c10, 9) as any as S.Schema<Spreadsheet>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -3939,8 +3939,8 @@ export const getSpreadsheets: API.OperationMethod<
   GetSpreadsheetsError,
   GoogleWorkspaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(329, __c41, 1) as any as S.Schema<GetSpreadsheetsRequest>,
-  output: __S(315, __c39, 3) as any as S.Schema<Spreadsheet>,
+  input: __S(544, __c17, 0) as any as S.Schema<GetSpreadsheetsRequest>,
+  output: __S(329, __c10, 9) as any as S.Schema<Spreadsheet>,
   errors: [NotFound, Forbidden, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -3954,8 +3954,8 @@ export const getSpreadsheetsDeveloperMetadata: API.OperationMethod<
   GetSpreadsheetsDeveloperMetadataError,
   GoogleWorkspaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(330, __c41, 2) as any as S.Schema<GetSpreadsheetsDeveloperMetadataRequest>,
-  output: __S(53, __c6, 5) as any as S.Schema<DeveloperMetadata>,
+  input: __S(576, __c18, 0) as any as S.Schema<GetSpreadsheetsDeveloperMetadataRequest>,
+  output: __S(352, __c11, 0) as any as S.Schema<DeveloperMetadata>,
   errors: [NotFound, Forbidden, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -3969,8 +3969,8 @@ export const getSpreadsheetsValues: API.OperationMethod<
   GetSpreadsheetsValuesError,
   GoogleWorkspaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(331, __c41, 3) as any as S.Schema<GetSpreadsheetsValuesRequest>,
-  output: __S(2, __c0, 2) as any as S.Schema<ValueRange>,
+  input: __S(608, __c19, 0) as any as S.Schema<GetSpreadsheetsValuesRequest>,
+  output: __S(770, __c24, 2) as any as S.Schema<ValueRange>,
   errors: [NotFound, Forbidden, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -3989,8 +3989,8 @@ export const searchSpreadsheetsDeveloperMetadata: API.OperationMethod<
   SearchSpreadsheetsDeveloperMetadataError,
   GoogleWorkspaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(332, __c41, 4) as any as S.Schema<SearchSpreadsheetsDeveloperMetadataRequest>,
-  output: __S(335, __c41, 7) as any as S.Schema<SearchDeveloperMetadataResponse>,
+  input: __S(640, __c20, 0) as any as S.Schema<SearchSpreadsheetsDeveloperMetadataRequest>,
+  output: __S(643, __c20, 3) as any as S.Schema<SearchDeveloperMetadataResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -4009,8 +4009,8 @@ export const updateSpreadsheetsValues: API.OperationMethod<
   UpdateSpreadsheetsValuesError,
   GoogleWorkspaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(336, __c42, 0) as any as S.Schema<UpdateSpreadsheetsValuesRequest>,
-  output: __S(4, __c0, 4) as any as S.Schema<UpdateValuesResponse>,
+  input: __S(672, __c21, 0) as any as S.Schema<UpdateSpreadsheetsValuesRequest>,
+  output: __S(736, __c23, 0) as any as S.Schema<UpdateValuesResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -4020,77 +4020,252 @@ export const updateSpreadsheetsValues: API.OperationMethod<
 function __c0(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(S.Unknown);
+      return S.suspend(() =>
+        S.Struct({
+          sheetId: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "ClearBasicFilterRequest" });
     case 1:
-      return S.Array(__S(0, __c0, 0));
+      return S.suspend(() =>
+        S.Struct({
+          destination: S.optional(__S(960, __c30, 0)),
+          pasteOrientation: S.optional(S.String),
+          source: S.optional(__S(960, __c30, 0)),
+          pasteType: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "CopyPasteRequest" });
     case 2:
       return S.suspend(() =>
         S.Struct({
-          values: S.optional(__S(1, __c0, 1)),
-          majorDimension: S.optional(S.String),
-          range: S.optional(S.String),
+          fillLength: S.optional(S.Number),
+          dimension: S.optional(S.String),
+          source: S.optional(__S(960, __c30, 0)),
         }),
-      ).annotate({ identifier: "ValueRange" });
+      ).annotate({ identifier: "SourceAndDestination" });
     case 3:
       return S.suspend(() =>
         S.Struct({
-          includeValuesInResponse: S.optional(S.Boolean.pipe(T.Query())),
-          responseDateTimeRenderOption: S.optional(S.String.pipe(T.Query())),
-          responseValueRenderOption: S.optional(S.String.pipe(T.Query())),
-          valueInputOption: S.optional(S.String.pipe(T.Query())),
-          insertDataOption: S.optional(S.String.pipe(T.Query())),
-          spreadsheetId: S.String.pipe(T.Label()),
-          range: S.String.pipe(T.Label()),
-          body: S.optional(__S(2, __c0, 2).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v4/spreadsheets/{spreadsheetId}/values/{range}:append",
-            baseUrl: "https://sheets.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "AppendSpreadsheetsValuesRequest",
-      });
+          sourceAndDestination: S.optional(__S(2, __c0, 2)),
+          useAlternateSeries: S.optional(S.Boolean),
+          range: S.optional(__S(960, __c30, 0)),
+        }),
+      ).annotate({ identifier: "AutoFillRequest" });
     case 4:
       return S.suspend(() =>
         S.Struct({
-          updatedRange: S.optional(S.String),
-          updatedData: S.optional(__S(2, __c0, 2)),
-          updatedRows: S.optional(S.Number),
-          updatedColumns: S.optional(S.Number),
-          updatedCells: S.optional(S.Number),
-          spreadsheetId: S.optional(S.String),
+          table: S.optional(__S(167, __c5, 7)),
         }),
-      ).annotate({ identifier: "UpdateValuesResponse" });
+      ).annotate({ identifier: "AddTableRequest" });
     case 5:
       return S.suspend(() =>
         S.Struct({
-          updates: S.optional(__S(4, __c0, 4)),
-          spreadsheetId: S.optional(S.String),
-          tableRange: S.optional(S.String),
+          range: S.optional(__S(960, __c30, 0)),
+          shiftDimension: S.optional(S.String),
         }),
-      ).annotate({ identifier: "AppendValuesResponse" });
+      ).annotate({ identifier: "DeleteRangeRequest" });
     case 6:
       return S.suspend(() =>
         S.Struct({
+          columnReferences: S.optional(__S(168, __c5, 8)),
           sheetId: S.optional(S.Number),
-          dimension: S.optional(S.String),
-          endIndex: S.optional(S.Number),
-          startIndex: S.optional(S.Number),
         }),
-      ).annotate({ identifier: "DimensionRange" });
+      ).annotate({
+        identifier: "DataSourceSheetDimensionRange",
+      });
     case 7:
       return S.suspend(() =>
         S.Struct({
-          sheetId: S.optional(S.Number),
-          spreadsheet: S.optional(S.Boolean),
-          locationType: S.optional(S.String),
-          dimensionRange: S.optional(__S(6, __c0, 6)),
+          dataSourceSheetRange: S.optional(__S(6, __c0, 6)),
+          fields: S.optional(S.String),
+          range: S.optional(__S(928, __c29, 0)),
+          properties: S.optional(__S(170, __c5, 10)),
         }),
       ).annotate({
-        identifier: "DeveloperMetadataLocation",
+        identifier: "UpdateDimensionPropertiesRequest",
       });
+    case 8:
+      return S.suspend(() =>
+        S.Struct({
+          filter: S.optional(__S(177, __c5, 17)),
+          fields: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "UpdateFilterViewRequest" });
+    case 9:
+      return S.Array(__S(928, __c29, 0));
+    case 10:
+      return S.suspend(() =>
+        S.Struct({
+          range: S.optional(__S(960, __c30, 0)),
+          comparisonColumns: S.optional(__S(9, __c0, 9)),
+        }),
+      ).annotate({ identifier: "DeleteDuplicatesRequest" });
+    case 11:
+      return S.suspend(() =>
+        S.Struct({
+          dimension: S.optional(S.String),
+          length: S.optional(S.Number),
+          sheetId: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "AppendDimensionRequest" });
+    case 12:
+      return S.suspend(() =>
+        S.Struct({
+          commentId: S.optional(S.String),
+          post: S.optional(__S(179, __c5, 19)),
+        }),
+      ).annotate({ identifier: "AddCommentReplyRequest" });
+    case 13:
+      return S.suspend(() =>
+        S.Struct({
+          range: S.optional(__S(960, __c30, 0)),
+        }),
+      ).annotate({ identifier: "RandomizeRangeRequest" });
+    case 14:
+      return S.suspend(() =>
+        S.Struct({
+          fields: S.optional(S.String),
+          dimensionGroup: S.optional(__S(180, __c5, 20)),
+        }),
+      ).annotate({
+        identifier: "UpdateDimensionGroupRequest",
+      });
+    case 15:
+      return S.suspend(() =>
+        S.Struct({
+          inheritFromBefore: S.optional(S.Boolean),
+          range: S.optional(__S(928, __c29, 0)),
+        }),
+      ).annotate({ identifier: "InsertDimensionRequest" });
+    case 16:
+      return S.suspend(() =>
+        S.Struct({
+          range: S.optional(__S(928, __c29, 0)),
+        }),
+      ).annotate({
+        identifier: "DeleteDimensionGroupRequest",
+      });
+    case 17:
+      return S.suspend(() =>
+        S.Struct({
+          top: S.optional(__S(181, __c5, 21)),
+          right: S.optional(__S(181, __c5, 21)),
+          range: S.optional(__S(960, __c30, 0)),
+          left: S.optional(__S(181, __c5, 21)),
+          innerHorizontal: S.optional(__S(181, __c5, 21)),
+          innerVertical: S.optional(__S(181, __c5, 21)),
+          bottom: S.optional(__S(181, __c5, 21)),
+        }),
+      ).annotate({ identifier: "UpdateBordersRequest" });
+    case 18:
+      return S.suspend(() =>
+        S.Struct({
+          mergeType: S.optional(S.String),
+          range: S.optional(__S(960, __c30, 0)),
+        }),
+      ).annotate({ identifier: "MergeCellsRequest" });
+    case 19:
+      return S.suspend(() =>
+        S.Struct({
+          fields: S.optional(S.String),
+          protectedRange: S.optional(__S(184, __c5, 24)),
+        }),
+      ).annotate({
+        identifier: "UpdateProtectedRangeRequest",
+      });
+    case 20:
+      return S.suspend(() =>
+        S.Struct({
+          objectId: S.optional(S.Number),
+        }),
+      ).annotate({
+        identifier: "DeleteEmbeddedObjectRequest",
+      });
+    case 21:
+      return S.suspend(() =>
+        S.Struct({
+          namedRange: S.optional(__S(185, __c5, 25)),
+        }),
+      ).annotate({ identifier: "AddNamedRangeRequest" });
+    case 22:
+      return S.suspend(() =>
+        S.Struct({
+          fields: S.optional(S.String),
+          objectId: S.optional(S.Number),
+          newPosition: S.optional(__S(188, __c5, 28)),
+        }),
+      ).annotate({
+        identifier: "UpdateEmbeddedObjectPositionRequest",
+      });
+    case 23:
+      return S.suspend(() =>
+        S.Struct({
+          chartId: S.optional(S.Number),
+          spec: S.optional(__S(235, __c7, 11)),
+        }),
+      ).annotate({ identifier: "UpdateChartSpecRequest" });
+    case 24:
+      return S.suspend(() =>
+        S.Struct({
+          slicerId: S.optional(S.Number),
+          spec: S.optional(__S(236, __c7, 12)),
+          fields: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "UpdateSlicerSpecRequest" });
+    case 25:
+      return S.suspend(() =>
+        S.Struct({
+          html: S.optional(S.Boolean),
+          delimiter: S.optional(S.String),
+          coordinate: S.optional(__S(186, __c5, 26)),
+          data: S.optional(S.String),
+          type: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "PasteDataRequest" });
+    case 26:
+      return S.suspend(() =>
+        S.Struct({
+          range: S.optional(__S(960, __c30, 0)),
+          filteredRowsIncluded: S.optional(S.Boolean),
+          rule: S.optional(__S(237, __c7, 13)),
+        }),
+      ).annotate({ identifier: "SetDataValidationRequest" });
+    case 27:
+      return S.suspend(() =>
+        S.Struct({
+          chart: S.optional(__S(239, __c7, 15)),
+        }),
+      ).annotate({ identifier: "AddChartRequest" });
+    case 28:
+      return S.suspend(() =>
+        S.Struct({
+          namedRange: S.optional(__S(185, __c5, 25)),
+          fields: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "UpdateNamedRangeRequest" });
+    case 29:
+      return S.suspend(() =>
+        S.Struct({
+          source: S.optional(__S(960, __c30, 0)),
+          delimiter: S.optional(S.String),
+          delimiterType: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "TextToColumnsRequest" });
+    case 30:
+      return S.suspend(() =>
+        S.Struct({
+          protectedRangeId: S.optional(S.Number),
+        }),
+      ).annotate({
+        identifier: "DeleteProtectedRangeRequest",
+      });
+    case 31:
+      return S.suspend(() =>
+        S.Struct({
+          commentId: S.optional(S.String),
+          content: S.optional(S.String),
+          postId: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "UpdateCommentPostRequest" });
   }
 }
 function __c1(j: number): any {
@@ -4098,68 +4273,252 @@ function __c1(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          metadataValue: S.optional(S.String),
-          locationType: S.optional(S.String),
-          metadataId: S.optional(S.Number),
-          metadataKey: S.optional(S.String),
-          visibility: S.optional(S.String),
-          metadataLocation: S.optional(__S(7, __c0, 7)),
-          locationMatchingStrategy: S.optional(S.String),
+          coordinate: S.optional(__S(186, __c5, 26)),
+          assigneeEmailAddress: S.optional(S.String),
+          content: S.optional(S.String),
         }),
-      ).annotate({ identifier: "DeveloperMetadataLookup" });
+      ).annotate({ identifier: "InsertCommentRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
-          endColumnIndex: S.optional(S.Number),
-          startRowIndex: S.optional(S.Number),
-          endRowIndex: S.optional(S.Number),
-          startColumnIndex: S.optional(S.Number),
-          sheetId: S.optional(S.Number),
+          cell: S.optional(__S(275, __c8, 19)),
+          range: S.optional(__S(960, __c30, 0)),
+          fields: S.optional(S.String),
         }),
-      ).annotate({ identifier: "GridRange" });
+      ).annotate({ identifier: "RepeatCellRequest" });
     case 2:
       return S.suspend(() =>
         S.Struct({
-          developerMetadataLookup: S.optional(__S(8, __c1, 0)),
-          a1Range: S.optional(S.String),
-          gridRange: S.optional(__S(9, __c1, 1)),
+          tableId: S.optional(S.String),
         }),
-      ).annotate({ identifier: "DataFilter" });
+      ).annotate({ identifier: "DeleteTableRequest" });
     case 3:
-      return S.Array(__S(10, __c1, 2));
+      return S.suspend(() =>
+        S.Struct({
+          protectedRange: S.optional(__S(184, __c5, 24)),
+        }),
+      ).annotate({ identifier: "AddProtectedRangeRequest" });
     case 4:
       return S.suspend(() =>
         S.Struct({
-          dataFilters: S.optional(__S(11, __c1, 3)),
+          newIndex: S.optional(S.Number),
+          sheetId: S.optional(S.Number),
+          index: S.optional(S.Number),
+          rule: S.optional(__S(279, __c8, 23)),
         }),
       ).annotate({
-        identifier: "BatchClearValuesByDataFilterRequest",
+        identifier: "UpdateConditionalFormatRuleRequest",
       });
     case 5:
       return S.suspend(() =>
         S.Struct({
-          spreadsheetId: S.String.pipe(T.Label()),
-          body: S.optional(__S(12, __c1, 4).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v4/spreadsheets/{spreadsheetId}/values:batchClearByDataFilter",
-            baseUrl: "https://sheets.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "BatchClearByDataFilterSpreadsheetsValuesRequest",
-      });
+          range: S.optional(__S(928, __c29, 0)),
+        }),
+      ).annotate({ identifier: "DeleteDimensionRequest" });
     case 6:
-      return S.Array(S.String);
+      return S.suspend(() =>
+        S.Struct({
+          postId: S.optional(S.String),
+          commentId: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "DeleteCommentReplyRequest",
+      });
     case 7:
       return S.suspend(() =>
         S.Struct({
-          spreadsheetId: S.optional(S.String),
-          clearedRanges: S.optional(__S(14, __c1, 6)),
+          fields: S.optional(S.String),
+          properties: S.optional(__S(136, __c4, 8)),
         }),
       ).annotate({
-        identifier: "BatchClearValuesByDataFilterResponse",
+        identifier: "UpdateSheetPropertiesRequest",
+      });
+    case 8:
+      return S.suspend(() =>
+        S.Struct({
+          index: S.optional(S.Number),
+          sheetId: S.optional(S.Number),
+        }),
+      ).annotate({
+        identifier: "DeleteConditionalFormatRuleRequest",
+      });
+    case 9:
+      return S.suspend(() =>
+        S.Struct({
+          range: S.optional(__S(960, __c30, 0)),
+          sortSpecs: S.optional(__S(174, __c5, 14)),
+        }),
+      ).annotate({ identifier: "SortRangeRequest" });
+    case 10:
+      return S.suspend(() =>
+        S.Struct({
+          fields: S.optional(S.String),
+          range: S.optional(__S(960, __c30, 0)),
+          start: S.optional(__S(186, __c5, 26)),
+          rows: S.optional(__S(282, __c8, 26)),
+        }),
+      ).annotate({ identifier: "UpdateCellsRequest" });
+    case 11:
+      return S.suspend(() =>
+        S.Struct({
+          filter: S.optional(__S(283, __c8, 27)),
+        }),
+      ).annotate({ identifier: "SetBasicFilterRequest" });
+    case 12:
+      return S.suspend(() =>
+        S.Struct({
+          destination: S.optional(__S(186, __c5, 26)),
+          pasteType: S.optional(S.String),
+          source: S.optional(__S(960, __c30, 0)),
+        }),
+      ).annotate({ identifier: "CutPasteRequest" });
+    case 13:
+      return S.suspend(() =>
+        S.Struct({
+          index: S.optional(S.Number),
+          rule: S.optional(__S(279, __c8, 23)),
+        }),
+      ).annotate({
+        identifier: "AddConditionalFormatRuleRequest",
+      });
+    case 14:
+      return S.suspend(() =>
+        S.Struct({
+          properties: S.optional(__S(136, __c4, 8)),
+        }),
+      ).annotate({ identifier: "AddSheetRequest" });
+    case 15:
+      return S.suspend(() =>
+        S.Struct({
+          fields: S.optional(S.String),
+          table: S.optional(__S(167, __c5, 7)),
+        }),
+      ).annotate({ identifier: "UpdateTableRequest" });
+    case 16:
+      return S.suspend(() =>
+        S.Struct({
+          objectId: S.optional(S.Number),
+          border: S.optional(__S(238, __c7, 14)),
+          fields: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "UpdateEmbeddedObjectBorderRequest",
+      });
+    case 17:
+      return S.suspend(() =>
+        S.Struct({
+          fields: S.optional(S.String),
+          properties: S.optional(__S(288, __c9, 0)),
+        }),
+      ).annotate({
+        identifier: "UpdateSpreadsheetPropertiesRequest",
+      });
+    case 18:
+      return S.suspend(() =>
+        S.Struct({
+          dataFilters: S.optional(__S(896, __c28, 0)),
+          developerMetadata: S.optional(__S(352, __c11, 0)),
+          fields: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "UpdateDeveloperMetadataRequest",
+      });
+    case 19:
+      return S.suspend(() =>
+        S.Struct({
+          bandedRange: S.optional(__S(290, __c9, 2)),
+          fields: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "UpdateBandingRequest" });
+    case 20:
+      return S.suspend(() =>
+        S.Struct({
+          sheetId: S.optional(S.String),
+          chartId: S.optional(S.Number),
+          dataSourcePivotTableAnchorCell: S.optional(__S(186, __c5, 26)),
+          dataSourceFormulaCell: S.optional(__S(186, __c5, 26)),
+          dataSourceTableAnchorCell: S.optional(__S(186, __c5, 26)),
+        }),
+      ).annotate({
+        identifier: "DataSourceObjectReference",
+      });
+    case 21:
+      return S.Array(__S(52, __c1, 20));
+    case 22:
+      return S.suspend(() =>
+        S.Struct({
+          references: S.optional(__S(53, __c1, 21)),
+        }),
+      ).annotate({
+        identifier: "DataSourceObjectReferences",
+      });
+    case 23:
+      return S.suspend(() =>
+        S.Struct({
+          references: S.optional(__S(54, __c1, 22)),
+          isAll: S.optional(S.Boolean),
+          dataSourceId: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "CancelDataSourceRefreshRequest",
+      });
+    case 24:
+      return S.suspend(() =>
+        S.Struct({
+          dataSourceId: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "DeleteDataSourceRequest" });
+    case 25:
+      return S.suspend(() =>
+        S.Struct({
+          dataSource: S.optional(__S(298, __c9, 10)),
+        }),
+      ).annotate({ identifier: "AddDataSourceRequest" });
+    case 26:
+      return S.suspend(() =>
+        S.Struct({
+          developerMetadata: S.optional(__S(352, __c11, 0)),
+        }),
+      ).annotate({
+        identifier: "CreateDeveloperMetadataRequest",
+      });
+    case 27:
+      return S.suspend(() =>
+        S.Struct({
+          namedRangeId: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "DeleteNamedRangeRequest" });
+    case 28:
+      return S.suspend(() =>
+        S.Struct({
+          newSheetName: S.optional(S.String),
+          sourceSheetId: S.optional(S.Number),
+          insertSheetIndex: S.optional(S.Number),
+          newSheetId: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "DuplicateSheetRequest" });
+    case 29:
+      return S.suspend(() =>
+        S.Struct({
+          bandedRange: S.optional(__S(290, __c9, 2)),
+        }),
+      ).annotate({ identifier: "AddBandingRequest" });
+    case 30:
+      return S.suspend(() =>
+        S.Struct({
+          references: S.optional(__S(54, __c1, 22)),
+          isAll: S.optional(S.Boolean),
+          force: S.optional(S.Boolean),
+          dataSourceId: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "RefreshDataSourceRequest" });
+    case 31:
+      return S.suspend(() =>
+        S.Struct({
+          filterId: S.optional(S.Number),
+        }),
+      ).annotate({
+        identifier: "DuplicateFilterViewRequest",
       });
   }
 }
@@ -4168,74 +4527,322 @@ function __c2(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          ranges: S.optional(__S(14, __c1, 6)),
+          dimensions: S.optional(__S(928, __c29, 0)),
+          dataSourceSheetDimensions: S.optional(__S(6, __c0, 6)),
         }),
-      ).annotate({ identifier: "BatchClearValuesRequest" });
+      ).annotate({
+        identifier: "AutoResizeDimensionsRequest",
+      });
     case 1:
       return S.suspend(() =>
         S.Struct({
-          spreadsheetId: S.String.pipe(T.Label()),
-          body: S.optional(__S(16, __c2, 0).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v4/spreadsheets/{spreadsheetId}/values:batchClear",
-            baseUrl: "https://sheets.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "BatchClearSpreadsheetsValuesRequest",
-      });
+          bandedRangeId: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "DeleteBandingRequest" });
     case 2:
       return S.suspend(() =>
         S.Struct({
-          spreadsheetId: S.optional(S.String),
-          clearedRanges: S.optional(__S(14, __c1, 6)),
+          filter: S.optional(__S(177, __c5, 17)),
         }),
-      ).annotate({ identifier: "BatchClearValuesResponse" });
+      ).annotate({ identifier: "AddFilterViewRequest" });
     case 3:
       return S.suspend(() =>
         S.Struct({
-          majorDimension: S.optional(S.String),
-          dateTimeRenderOption: S.optional(S.String),
-          dataFilters: S.optional(__S(11, __c1, 3)),
-          valueRenderOption: S.optional(S.String),
+          commentId: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "BatchGetValuesByDataFilterRequest",
-      });
+      ).annotate({ identifier: "DeleteCommentRequest" });
     case 4:
       return S.suspend(() =>
         S.Struct({
+          dataSource: S.optional(__S(298, __c9, 10)),
+          fields: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "UpdateDataSourceRequest" });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          source: S.optional(__S(928, __c29, 0)),
+          destinationIndex: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "MoveDimensionRequest" });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          sheetId: S.optional(S.Number),
+          rows: S.optional(__S(282, __c8, 26)),
+          fields: S.optional(S.String),
+          tableId: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "AppendCellsRequest" });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          matchEntireCell: S.optional(S.Boolean),
+          allSheets: S.optional(S.Boolean),
+          searchByRegex: S.optional(S.Boolean),
+          range: S.optional(__S(960, __c30, 0)),
+          sheetId: S.optional(S.Number),
+          includeFormulas: S.optional(S.Boolean),
+          replacement: S.optional(S.String),
+          find: S.optional(S.String),
+          matchCase: S.optional(S.Boolean),
+        }),
+      ).annotate({ identifier: "FindReplaceRequest" });
+    case 8:
+      return S.suspend(() =>
+        S.Struct({
+          filterId: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "DeleteFilterViewRequest" });
+    case 9:
+      return S.suspend(() =>
+        S.Struct({
+          dataFilter: S.optional(__S(993, __c31, 1)),
+        }),
+      ).annotate({
+        identifier: "DeleteDeveloperMetadataRequest",
+      });
+    case 10:
+      return S.suspend(() =>
+        S.Struct({
+          slicer: S.optional(__S(299, __c9, 11)),
+        }),
+      ).annotate({ identifier: "AddSlicerRequest" });
+    case 11:
+      return S.suspend(() =>
+        S.Struct({
+          clearBasicFilter: S.optional(__S(0, __c0, 0)),
+          copyPaste: S.optional(__S(1, __c0, 1)),
+          autoFill: S.optional(__S(3, __c0, 3)),
+          addTable: S.optional(__S(4, __c0, 4)),
+          deleteRange: S.optional(__S(5, __c0, 5)),
+          updateDimensionProperties: S.optional(__S(7, __c0, 7)),
+          updateFilterView: S.optional(__S(8, __c0, 8)),
+          deleteDuplicates: S.optional(__S(10, __c0, 10)),
+          appendDimension: S.optional(__S(11, __c0, 11)),
+          addCommentReply: S.optional(__S(12, __c0, 12)),
+          randomizeRange: S.optional(__S(13, __c0, 13)),
+          updateDimensionGroup: S.optional(__S(14, __c0, 14)),
+          insertDimension: S.optional(__S(15, __c0, 15)),
+          deleteDimensionGroup: S.optional(__S(16, __c0, 16)),
+          updateBorders: S.optional(__S(17, __c0, 17)),
+          mergeCells: S.optional(__S(18, __c0, 18)),
+          updateProtectedRange: S.optional(__S(19, __c0, 19)),
+          deleteEmbeddedObject: S.optional(__S(20, __c0, 20)),
+          addNamedRange: S.optional(__S(21, __c0, 21)),
+          updateEmbeddedObjectPosition: S.optional(__S(22, __c0, 22)),
+          updateChartSpec: S.optional(__S(23, __c0, 23)),
+          updateSlicerSpec: S.optional(__S(24, __c0, 24)),
+          pasteData: S.optional(__S(25, __c0, 25)),
+          setDataValidation: S.optional(__S(26, __c0, 26)),
+          addChart: S.optional(__S(27, __c0, 27)),
+          updateNamedRange: S.optional(__S(28, __c0, 28)),
+          textToColumns: S.optional(__S(29, __c0, 29)),
+          deleteProtectedRange: S.optional(__S(30, __c0, 30)),
+          updateCommentPost: S.optional(__S(31, __c0, 31)),
+          insertComment: S.optional(__S(32, __c1, 0)),
+          repeatCell: S.optional(__S(33, __c1, 1)),
+          deleteSheet: S.optional(__S(0, __c0, 0)),
+          deleteTable: S.optional(__S(34, __c1, 2)),
+          addProtectedRange: S.optional(__S(35, __c1, 3)),
+          updateConditionalFormatRule: S.optional(__S(36, __c1, 4)),
+          deleteDimension: S.optional(__S(37, __c1, 5)),
+          deleteCommentReply: S.optional(__S(38, __c1, 6)),
+          updateSheetProperties: S.optional(__S(39, __c1, 7)),
+          deleteConditionalFormatRule: S.optional(__S(40, __c1, 8)),
+          sortRange: S.optional(__S(41, __c1, 9)),
+          updateCells: S.optional(__S(42, __c1, 10)),
+          setBasicFilter: S.optional(__S(43, __c1, 11)),
+          unmergeCells: S.optional(__S(13, __c0, 13)),
+          cutPaste: S.optional(__S(44, __c1, 12)),
+          addConditionalFormatRule: S.optional(__S(45, __c1, 13)),
+          addSheet: S.optional(__S(46, __c1, 14)),
+          updateTable: S.optional(__S(47, __c1, 15)),
+          updateEmbeddedObjectBorder: S.optional(__S(48, __c1, 16)),
+          trimWhitespace: S.optional(__S(13, __c0, 13)),
+          updateSpreadsheetProperties: S.optional(__S(49, __c1, 17)),
+          updateDeveloperMetadata: S.optional(__S(50, __c1, 18)),
+          insertRange: S.optional(__S(5, __c0, 5)),
+          updateBanding: S.optional(__S(51, __c1, 19)),
+          cancelDataSourceRefresh: S.optional(__S(55, __c1, 23)),
+          deleteDataSource: S.optional(__S(56, __c1, 24)),
+          addDataSource: S.optional(__S(57, __c1, 25)),
+          createDeveloperMetadata: S.optional(__S(58, __c1, 26)),
+          deleteNamedRange: S.optional(__S(59, __c1, 27)),
+          duplicateSheet: S.optional(__S(60, __c1, 28)),
+          addBanding: S.optional(__S(61, __c1, 29)),
+          refreshDataSource: S.optional(__S(62, __c1, 30)),
+          duplicateFilterView: S.optional(__S(63, __c1, 31)),
+          autoResizeDimensions: S.optional(__S(64, __c2, 0)),
+          deleteBanding: S.optional(__S(65, __c2, 1)),
+          addFilterView: S.optional(__S(66, __c2, 2)),
+          deleteComment: S.optional(__S(67, __c2, 3)),
+          updateDataSource: S.optional(__S(68, __c2, 4)),
+          addDimensionGroup: S.optional(__S(37, __c1, 5)),
+          moveDimension: S.optional(__S(69, __c2, 5)),
+          appendCells: S.optional(__S(70, __c2, 6)),
+          findReplace: S.optional(__S(71, __c2, 7)),
+          deleteFilterView: S.optional(__S(72, __c2, 8)),
+          deleteDeveloperMetadata: S.optional(__S(73, __c2, 9)),
+          addSlicer: S.optional(__S(74, __c2, 10)),
+        }),
+      ).annotate({ identifier: "Request" });
+    case 12:
+      return S.Array(__S(75, __c2, 11));
+    case 13:
+      return S.suspend(() =>
+        S.Struct({
+          includeSpreadsheetInResponse: S.optional(S.Boolean),
+          requests: S.optional(__S(76, __c2, 12)),
+          responseRanges: S.optional(__S(864, __c27, 0)),
+          commentsViewMode: S.optional(S.String),
+          responseIncludeGridData: S.optional(S.Boolean),
+        }),
+      ).annotate({
+        identifier: "BatchUpdateSpreadsheetRequest",
+      });
+    case 14:
+      return S.suspend(() =>
+        S.Struct({
           spreadsheetId: S.String.pipe(T.Label()),
-          body: S.optional(__S(19, __c2, 3).pipe(T.HttpBody())),
+          body: S.optional(__S(77, __c2, 13).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
-            uri: "v4/spreadsheets/{spreadsheetId}/values:batchGetByDataFilter",
+            uri: "v4/spreadsheets/{spreadsheetId}:batchUpdate",
             baseUrl: "https://sheets.googleapis.com/",
           }),
         ),
       ).annotate({
-        identifier: "BatchGetByDataFilterSpreadsheetsValuesRequest",
+        identifier: "BatchUpdateSpreadsheetsRequest",
       });
-    case 5:
+    case 15:
       return S.suspend(() =>
         S.Struct({
-          dataFilters: S.optional(__S(11, __c1, 3)),
-          valueRange: S.optional(__S(2, __c0, 2)),
+          cellsChangedCount: S.optional(S.Number),
         }),
-      ).annotate({ identifier: "MatchedValueRange" });
-    case 6:
-      return S.Array(__S(21, __c2, 5));
-    case 7:
+      ).annotate({ identifier: "TrimWhitespaceResponse" });
+    case 16:
       return S.suspend(() =>
         S.Struct({
-          spreadsheetId: S.optional(S.String),
-          valueRanges: S.optional(__S(22, __c2, 6)),
+          commentThread: S.optional(__S(301, __c9, 13)),
+        }),
+      ).annotate({ identifier: "InsertCommentResponse" });
+    case 17:
+      return S.suspend(() =>
+        S.Struct({
+          rule: S.optional(__S(279, __c8, 23)),
         }),
       ).annotate({
-        identifier: "BatchGetValuesByDataFilterResponse",
+        identifier: "DeleteConditionalFormatRuleResponse",
+      });
+    case 18:
+      return S.suspend(() =>
+        S.Struct({
+          dataExecutionStatus: S.optional(__S(131, __c4, 3)),
+          dataSource: S.optional(__S(298, __c9, 10)),
+        }),
+      ).annotate({ identifier: "UpdateDataSourceResponse" });
+    case 19:
+      return S.suspend(() =>
+        S.Struct({
+          filter: S.optional(__S(177, __c5, 17)),
+        }),
+      ).annotate({
+        identifier: "DuplicateFilterViewResponse",
+      });
+    case 20:
+      return S.suspend(() =>
+        S.Struct({
+          post: S.optional(__S(179, __c5, 19)),
+        }),
+      ).annotate({ identifier: "AddCommentReplyResponse" });
+    case 21:
+      return S.suspend(() =>
+        S.Struct({
+          developerMetadata: S.optional(__S(169, __c5, 9)),
+        }),
+      ).annotate({
+        identifier: "UpdateDeveloperMetadataResponse",
+      });
+    case 22:
+      return S.suspend(() =>
+        S.Struct({
+          state: S.optional(S.String),
+          errorCode: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "RefreshCancellationStatus",
+      });
+    case 23:
+      return S.suspend(() =>
+        S.Struct({
+          reference: S.optional(__S(52, __c1, 20)),
+          refreshCancellationStatus: S.optional(__S(86, __c2, 22)),
+        }),
+      ).annotate({
+        identifier: "CancelDataSourceRefreshStatus",
+      });
+    case 24:
+      return S.Array(__S(87, __c2, 23));
+    case 25:
+      return S.suspend(() =>
+        S.Struct({
+          statuses: S.optional(__S(88, __c2, 24)),
+        }),
+      ).annotate({
+        identifier: "CancelDataSourceRefreshResponse",
+      });
+    case 26:
+      return S.suspend(() =>
+        S.Struct({
+          position: S.optional(__S(188, __c5, 28)),
+        }),
+      ).annotate({
+        identifier: "UpdateEmbeddedObjectPositionResponse",
+      });
+    case 27:
+      return S.suspend(() =>
+        S.Struct({
+          protectedRange: S.optional(__S(184, __c5, 24)),
+        }),
+      ).annotate({
+        identifier: "AddProtectedRangeResponse",
+      });
+    case 28:
+      return S.suspend(() =>
+        S.Struct({
+          formulasChanged: S.optional(S.Number),
+          sheetsChanged: S.optional(S.Number),
+          valuesChanged: S.optional(S.Number),
+          occurrencesChanged: S.optional(S.Number),
+          rowsChanged: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "FindReplaceResponse" });
+    case 29:
+      return S.suspend(() =>
+        S.Struct({
+          dimensionGroups: S.optional(__S(302, __c9, 14)),
+        }),
+      ).annotate({
+        identifier: "AddDimensionGroupResponse",
+      });
+    case 30:
+      return S.suspend(() =>
+        S.Struct({
+          duplicatesRemovedCount: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "DeleteDuplicatesResponse" });
+    case 31:
+      return S.suspend(() =>
+        S.Struct({
+          oldRule: S.optional(__S(279, __c8, 23)),
+          oldIndex: S.optional(S.Number),
+          newIndex: S.optional(S.Number),
+          newRule: S.optional(__S(279, __c8, 23)),
+        }),
+      ).annotate({
+        identifier: "UpdateConditionalFormatRuleResponse",
       });
   }
 }
@@ -4244,131 +4851,80 @@ function __c3(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          majorDimension: S.optional(S.String.pipe(T.Query())),
-          dateTimeRenderOption: S.optional(S.String.pipe(T.Query())),
-          ranges: S.optional(__S(14, __c1, 6).pipe(T.Query())),
-          spreadsheetId: S.String.pipe(T.Label()),
-          valueRenderOption: S.optional(S.String.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v4/spreadsheets/{spreadsheetId}/values:batchGet",
-            baseUrl: "https://sheets.googleapis.com/",
-          }),
-        ),
+          reference: S.optional(__S(52, __c1, 20)),
+          dataExecutionStatus: S.optional(__S(131, __c4, 3)),
+        }),
       ).annotate({
-        identifier: "BatchGetSpreadsheetsValuesRequest",
+        identifier: "RefreshDataSourceObjectExecutionStatus",
       });
     case 1:
-      return S.Array(__S(2, __c0, 2));
+      return S.Array(__S(96, __c3, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          spreadsheetId: S.optional(S.String),
-          valueRanges: S.optional(__S(25, __c3, 1)),
+          statuses: S.optional(__S(97, __c3, 1)),
         }),
-      ).annotate({ identifier: "BatchGetValuesResponse" });
+      ).annotate({
+        identifier: "RefreshDataSourceResponse",
+      });
     case 3:
       return S.suspend(() =>
         S.Struct({
-          dataFilter: S.optional(__S(10, __c1, 2)),
-          majorDimension: S.optional(S.String),
-          values: S.optional(__S(1, __c0, 1)),
-        }),
-      ).annotate({ identifier: "DataFilterValueRange" });
-    case 4:
-      return S.Array(__S(27, __c3, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          data: S.optional(__S(28, __c3, 4)),
-          includeValuesInResponse: S.optional(S.Boolean),
-          responseDateTimeRenderOption: S.optional(S.String),
-          responseValueRenderOption: S.optional(S.String),
-          valueInputOption: S.optional(S.String),
+          deletedDeveloperMetadata: S.optional(__S(169, __c5, 9)),
         }),
       ).annotate({
-        identifier: "BatchUpdateValuesByDataFilterRequest",
+        identifier: "DeleteDeveloperMetadataResponse",
       });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          trimWhitespace: S.optional(__S(79, __c2, 15)),
+          addTable: S.optional(__S(4, __c0, 4)),
+          addFilterView: S.optional(__S(66, __c2, 2)),
+          insertComment: S.optional(__S(80, __c2, 16)),
+          addBanding: S.optional(__S(61, __c1, 29)),
+          deleteConditionalFormatRule: S.optional(__S(81, __c2, 17)),
+          addSheet: S.optional(__S(46, __c1, 14)),
+          updateDataSource: S.optional(__S(82, __c2, 18)),
+          duplicateFilterView: S.optional(__S(83, __c2, 19)),
+          createDeveloperMetadata: S.optional(__S(58, __c1, 26)),
+          addCommentReply: S.optional(__S(84, __c2, 20)),
+          updateDeveloperMetadata: S.optional(__S(85, __c2, 21)),
+          cancelDataSourceRefresh: S.optional(__S(89, __c2, 25)),
+          updateEmbeddedObjectPosition: S.optional(__S(90, __c2, 26)),
+          addProtectedRange: S.optional(__S(91, __c2, 27)),
+          findReplace: S.optional(__S(92, __c2, 28)),
+          addChart: S.optional(__S(27, __c0, 27)),
+          addDimensionGroup: S.optional(__S(93, __c2, 29)),
+          addDataSource: S.optional(__S(82, __c2, 18)),
+          addNamedRange: S.optional(__S(21, __c0, 21)),
+          addSlicer: S.optional(__S(74, __c2, 10)),
+          deleteDuplicates: S.optional(__S(94, __c2, 30)),
+          updateConditionalFormatRule: S.optional(__S(95, __c2, 31)),
+          duplicateSheet: S.optional(__S(46, __c1, 14)),
+          refreshDataSource: S.optional(__S(98, __c3, 2)),
+          deleteDimensionGroup: S.optional(__S(93, __c2, 29)),
+          deleteDeveloperMetadata: S.optional(__S(99, __c3, 3)),
+        }),
+      ).annotate({ identifier: "Response" });
+    case 5:
+      return S.Array(__S(100, __c3, 4));
     case 6:
       return S.suspend(() =>
         S.Struct({
-          spreadsheetId: S.String.pipe(T.Label()),
-          body: S.optional(__S(29, __c3, 5).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v4/spreadsheets/{spreadsheetId}/values:batchUpdateByDataFilter",
-            baseUrl: "https://sheets.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "BatchUpdateByDataFilterSpreadsheetsValuesRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          updatedColumns: S.optional(S.Number),
-          updatedRows: S.optional(S.Number),
-          updatedData: S.optional(__S(2, __c0, 2)),
-          updatedRange: S.optional(S.String),
-          updatedCells: S.optional(S.Number),
-          dataFilter: S.optional(__S(10, __c1, 2)),
+          replies: S.optional(__S(101, __c3, 5)),
+          spreadsheetId: S.optional(S.String),
+          commentUpdateState: S.optional(S.String),
+          updatedSpreadsheet: S.optional(__S(329, __c10, 9)),
         }),
       ).annotate({
-        identifier: "UpdateValuesByDataFilterResponse",
+        identifier: "BatchUpdateSpreadsheetResponse",
       });
   }
 }
 function __c4(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(31, __c3, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          totalUpdatedSheets: S.optional(S.Number),
-          totalUpdatedCells: S.optional(S.Number),
-          spreadsheetId: S.optional(S.String),
-          totalUpdatedColumns: S.optional(S.Number),
-          responses: S.optional(__S(32, __c4, 0)),
-          totalUpdatedRows: S.optional(S.Number),
-        }),
-      ).annotate({
-        identifier: "BatchUpdateValuesByDataFilterResponse",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          sheetId: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "ClearBasicFilterRequest" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          destination: S.optional(__S(9, __c1, 1)),
-          pasteOrientation: S.optional(S.String),
-          source: S.optional(__S(9, __c1, 1)),
-          pasteType: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "CopyPasteRequest" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          fillLength: S.optional(S.Number),
-          dimension: S.optional(S.String),
-          source: S.optional(__S(9, __c1, 1)),
-        }),
-      ).annotate({ identifier: "SourceAndDestination" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          sourceAndDestination: S.optional(__S(36, __c4, 4)),
-          useAlternateSeries: S.optional(S.Boolean),
-          range: S.optional(__S(9, __c1, 1)),
-        }),
-      ).annotate({ identifier: "AutoFillRequest" });
-    case 6:
       return S.suspend(() =>
         S.Struct({
           green: S.optional(S.Number),
@@ -4377,13 +4933,76 @@ function __c4(j: number): any {
           red: S.optional(S.Number),
         }),
       ).annotate({ identifier: "Color" });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          rgbColor: S.optional(__S(38, __c4, 6)),
+          rgbColor: S.optional(__S(128, __c4, 0)),
           themeColor: S.optional(S.String),
         }),
       ).annotate({ identifier: "ColorStyle" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "DataSourceColumnReference",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          errorMessage: S.optional(S.String),
+          state: S.optional(S.String),
+          lastRefreshTime: S.optional(S.String),
+          errorCode: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "DataExecutionStatus" });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          reference: S.optional(__S(130, __c4, 2)),
+          formula: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "DataSourceColumn" });
+    case 5:
+      return S.Array(__S(132, __c4, 4));
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          columns: S.optional(__S(133, __c4, 5)),
+          dataSourceId: S.optional(S.String),
+          dataExecutionStatus: S.optional(__S(131, __c4, 3)),
+        }),
+      ).annotate({
+        identifier: "DataSourceSheetProperties",
+      });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          frozenRowCount: S.optional(S.Number),
+          columnGroupControlAfter: S.optional(S.Boolean),
+          rowGroupControlAfter: S.optional(S.Boolean),
+          frozenColumnCount: S.optional(S.Number),
+          hideGridlines: S.optional(S.Boolean),
+          columnCount: S.optional(S.Number),
+          rowCount: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "GridProperties" });
+    case 8:
+      return S.suspend(() =>
+        S.Struct({
+          tabColorStyle: S.optional(__S(129, __c4, 1)),
+          dataSourceSheetProperties: S.optional(__S(134, __c4, 6)),
+          hidden: S.optional(S.Boolean),
+          sheetType: S.optional(S.String),
+          index: S.optional(S.Number),
+          sheetId: S.optional(S.Number),
+          gridProperties: S.optional(__S(135, __c4, 7)),
+          tabColor: S.optional(__S(128, __c4, 0)),
+          title: S.optional(S.String),
+          rightToLeft: S.optional(S.Boolean),
+        }),
+      ).annotate({ identifier: "SheetProperties" });
   }
 }
 function __c5(j: number): any {
@@ -4391,10 +5010,10 @@ function __c5(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          secondBandColorStyle: S.optional(__S(39, __c4, 7)),
-          headerColorStyle: S.optional(__S(39, __c4, 7)),
-          firstBandColorStyle: S.optional(__S(39, __c4, 7)),
-          footerColorStyle: S.optional(__S(39, __c4, 7)),
+          secondBandColorStyle: S.optional(__S(129, __c4, 1)),
+          headerColorStyle: S.optional(__S(129, __c4, 1)),
+          firstBandColorStyle: S.optional(__S(129, __c4, 1)),
+          footerColorStyle: S.optional(__S(129, __c4, 1)),
         }),
       ).annotate({ identifier: "TableRowsProperties" });
     case 1:
@@ -4405,18 +5024,18 @@ function __c5(j: number): any {
         }),
       ).annotate({ identifier: "ConditionValue" });
     case 2:
-      return S.Array(__S(41, __c5, 1));
+      return S.Array(__S(161, __c5, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
           type: S.optional(S.String),
-          values: S.optional(__S(42, __c5, 2)),
+          values: S.optional(__S(162, __c5, 2)),
         }),
       ).annotate({ identifier: "BooleanCondition" });
     case 4:
       return S.suspend(() =>
         S.Struct({
-          condition: S.optional(__S(43, __c5, 3)),
+          condition: S.optional(__S(163, __c5, 3)),
         }),
       ).annotate({
         identifier: "TableColumnDataValidationRule",
@@ -4426,174 +5045,87 @@ function __c5(j: number): any {
         S.Struct({
           columnIndex: S.optional(S.Number),
           columnType: S.optional(S.String),
-          dataValidationRule: S.optional(__S(44, __c5, 4)),
+          dataValidationRule: S.optional(__S(164, __c5, 4)),
           columnName: S.optional(S.String),
         }),
       ).annotate({ identifier: "TableColumnProperties" });
     case 6:
-      return S.Array(__S(45, __c5, 5));
+      return S.Array(__S(165, __c5, 5));
     case 7:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
-          rowsProperties: S.optional(__S(40, __c5, 0)),
-          range: S.optional(__S(9, __c1, 1)),
+          rowsProperties: S.optional(__S(160, __c5, 0)),
+          range: S.optional(__S(960, __c30, 0)),
           tableId: S.optional(S.String),
-          columnProperties: S.optional(__S(46, __c5, 6)),
+          columnProperties: S.optional(__S(166, __c5, 6)),
         }),
       ).annotate({ identifier: "Table" });
-  }
-}
-function __c6(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          table: S.optional(__S(47, __c5, 7)),
-        }),
-      ).annotate({ identifier: "AddTableRequest" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          range: S.optional(__S(9, __c1, 1)),
-          shiftDimension: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "DeleteRangeRequest" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "DataSourceColumnReference",
-      });
-    case 3:
-      return S.Array(__S(50, __c6, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          columnReferences: S.optional(__S(51, __c6, 3)),
-          sheetId: S.optional(S.Number),
-        }),
-      ).annotate({
-        identifier: "DataSourceSheetDimensionRange",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          visibility: S.optional(S.String),
-          metadataValue: S.optional(S.String),
-          metadataId: S.optional(S.Number),
-          location: S.optional(__S(7, __c0, 7)),
-          metadataKey: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "DeveloperMetadata" });
-    case 6:
-      return S.Array(__S(53, __c6, 5));
-    case 7:
+    case 8:
+      return S.Array(__S(130, __c4, 2));
+    case 9:
+      return S.Array(__S(352, __c11, 0));
+    case 10:
       return S.suspend(() =>
         S.Struct({
           hiddenByFilter: S.optional(S.Boolean),
-          developerMetadata: S.optional(__S(54, __c6, 6)),
+          developerMetadata: S.optional(__S(169, __c5, 9)),
           hiddenByUser: S.optional(S.Boolean),
           pixelSize: S.optional(S.Number),
-          dataSourceColumnReference: S.optional(__S(50, __c6, 2)),
+          dataSourceColumnReference: S.optional(__S(130, __c4, 2)),
         }),
       ).annotate({ identifier: "DimensionProperties" });
-  }
-}
-function __c7(j: number): any {
-  switch (j) {
-    case 0:
+    case 11:
       return S.suspend(() =>
         S.Struct({
-          dataSourceSheetRange: S.optional(__S(52, __c6, 4)),
-          fields: S.optional(S.String),
-          range: S.optional(__S(6, __c0, 6)),
-          properties: S.optional(__S(55, __c6, 7)),
-        }),
-      ).annotate({
-        identifier: "UpdateDimensionPropertiesRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          visibleBackgroundColorStyle: S.optional(__S(39, __c4, 7)),
-          visibleForegroundColorStyle: S.optional(__S(39, __c4, 7)),
-          hiddenValues: S.optional(__S(14, __c1, 6)),
-          visibleBackgroundColor: S.optional(__S(38, __c4, 6)),
-          visibleForegroundColor: S.optional(__S(38, __c4, 6)),
-          condition: S.optional(__S(43, __c5, 3)),
+          visibleBackgroundColorStyle: S.optional(__S(129, __c4, 1)),
+          visibleForegroundColorStyle: S.optional(__S(129, __c4, 1)),
+          hiddenValues: S.optional(__S(864, __c27, 0)),
+          visibleBackgroundColor: S.optional(__S(128, __c4, 0)),
+          visibleForegroundColor: S.optional(__S(128, __c4, 0)),
+          condition: S.optional(__S(163, __c5, 3)),
         }),
       ).annotate({ identifier: "FilterCriteria" });
-    case 2:
-      return S.Record(S.String, __S(57, __c7, 1));
-    case 3:
+    case 12:
+      return S.Record(S.String, __S(171, __c5, 11));
+    case 13:
       return S.suspend(() =>
         S.Struct({
-          foregroundColorStyle: S.optional(__S(39, __c4, 7)),
-          dataSourceColumnReference: S.optional(__S(50, __c6, 2)),
-          backgroundColor: S.optional(__S(38, __c4, 6)),
+          foregroundColorStyle: S.optional(__S(129, __c4, 1)),
+          dataSourceColumnReference: S.optional(__S(130, __c4, 2)),
+          backgroundColor: S.optional(__S(128, __c4, 0)),
           dimensionIndex: S.optional(S.Number),
-          backgroundColorStyle: S.optional(__S(39, __c4, 7)),
-          foregroundColor: S.optional(__S(38, __c4, 6)),
+          backgroundColorStyle: S.optional(__S(129, __c4, 1)),
+          foregroundColor: S.optional(__S(128, __c4, 0)),
           sortOrder: S.optional(S.String),
         }),
       ).annotate({ identifier: "SortSpec" });
-    case 4:
-      return S.Array(__S(59, __c7, 3));
-    case 5:
+    case 14:
+      return S.Array(__S(173, __c5, 13));
+    case 15:
       return S.suspend(() =>
         S.Struct({
-          filterCriteria: S.optional(__S(57, __c7, 1)),
-          dataSourceColumnReference: S.optional(__S(50, __c6, 2)),
+          filterCriteria: S.optional(__S(171, __c5, 11)),
+          dataSourceColumnReference: S.optional(__S(130, __c4, 2)),
           columnIndex: S.optional(S.Number),
         }),
       ).annotate({ identifier: "FilterSpec" });
-    case 6:
-      return S.Array(__S(61, __c7, 5));
-    case 7:
+    case 16:
+      return S.Array(__S(175, __c5, 15));
+    case 17:
       return S.suspend(() =>
         S.Struct({
           title: S.optional(S.String),
           namedRangeId: S.optional(S.String),
-          range: S.optional(__S(9, __c1, 1)),
-          criteria: S.optional(__S(58, __c7, 2)),
+          range: S.optional(__S(960, __c30, 0)),
+          criteria: S.optional(__S(172, __c5, 12)),
           tableId: S.optional(S.String),
           filterViewId: S.optional(S.Number),
-          sortSpecs: S.optional(__S(60, __c7, 4)),
-          filterSpecs: S.optional(__S(62, __c7, 6)),
+          sortSpecs: S.optional(__S(174, __c5, 14)),
+          filterSpecs: S.optional(__S(176, __c5, 16)),
         }),
       ).annotate({ identifier: "FilterView" });
-  }
-}
-function __c8(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          filter: S.optional(__S(63, __c7, 7)),
-          fields: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "UpdateFilterViewRequest" });
-    case 1:
-      return S.Array(__S(6, __c0, 6));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          range: S.optional(__S(9, __c1, 1)),
-          comparisonColumns: S.optional(__S(65, __c8, 1)),
-        }),
-      ).annotate({ identifier: "DeleteDuplicatesRequest" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          dimension: S.optional(S.String),
-          length: S.optional(S.Number),
-          sheetId: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "AppendDimensionRequest" });
-    case 4:
+    case 18:
       return S.suspend(() =>
         S.Struct({
           user: S.optional(S.String),
@@ -4602,12 +5134,12 @@ function __c8(j: number): any {
           displayName: S.optional(S.String),
         }),
       ).annotate({ identifier: "PostAuthor" });
-    case 5:
+    case 19:
       return S.suspend(() =>
         S.Struct({
           deleted: S.optional(S.Boolean),
           updateTime: S.optional(S.String),
-          author: S.optional(__S(68, __c8, 4)),
+          author: S.optional(__S(178, __c5, 18)),
           commentAction: S.optional(S.String),
           fromImportedSpreadsheet: S.optional(S.Boolean),
           postId: S.optional(S.String),
@@ -4618,143 +5150,56 @@ function __c8(j: number): any {
           contentHtml: S.optional(S.String),
         }),
       ).annotate({ identifier: "Post" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          commentId: S.optional(S.String),
-          post: S.optional(__S(69, __c8, 5)),
-        }),
-      ).annotate({ identifier: "AddCommentReplyRequest" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          range: S.optional(__S(9, __c1, 1)),
-        }),
-      ).annotate({ identifier: "RandomizeRangeRequest" });
-  }
-}
-function __c9(j: number): any {
-  switch (j) {
-    case 0:
+    case 20:
       return S.suspend(() =>
         S.Struct({
           collapsed: S.optional(S.Boolean),
           depth: S.optional(S.Number),
-          range: S.optional(__S(6, __c0, 6)),
+          range: S.optional(__S(928, __c29, 0)),
         }),
       ).annotate({ identifier: "DimensionGroup" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          fields: S.optional(S.String),
-          dimensionGroup: S.optional(__S(72, __c9, 0)),
-        }),
-      ).annotate({
-        identifier: "UpdateDimensionGroupRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          inheritFromBefore: S.optional(S.Boolean),
-          range: S.optional(__S(6, __c0, 6)),
-        }),
-      ).annotate({ identifier: "InsertDimensionRequest" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          range: S.optional(__S(6, __c0, 6)),
-        }),
-      ).annotate({
-        identifier: "DeleteDimensionGroupRequest",
-      });
-    case 4:
+    case 21:
       return S.suspend(() =>
         S.Struct({
           width: S.optional(S.Number),
           style: S.optional(S.String),
-          color: S.optional(__S(38, __c4, 6)),
-          colorStyle: S.optional(__S(39, __c4, 7)),
+          color: S.optional(__S(128, __c4, 0)),
+          colorStyle: S.optional(__S(129, __c4, 1)),
         }),
       ).annotate({ identifier: "Border" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          top: S.optional(__S(76, __c9, 4)),
-          right: S.optional(__S(76, __c9, 4)),
-          range: S.optional(__S(9, __c1, 1)),
-          left: S.optional(__S(76, __c9, 4)),
-          innerHorizontal: S.optional(__S(76, __c9, 4)),
-          innerVertical: S.optional(__S(76, __c9, 4)),
-          bottom: S.optional(__S(76, __c9, 4)),
-        }),
-      ).annotate({ identifier: "UpdateBordersRequest" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          mergeType: S.optional(S.String),
-          range: S.optional(__S(9, __c1, 1)),
-        }),
-      ).annotate({ identifier: "MergeCellsRequest" });
-    case 7:
-      return S.Array(__S(9, __c1, 1));
-  }
-}
-function __c10(j: number): any {
-  switch (j) {
-    case 0:
+    case 22:
+      return S.Array(__S(960, __c30, 0));
+    case 23:
       return S.suspend(() =>
         S.Struct({
           domainUsersCanEdit: S.optional(S.Boolean),
-          groups: S.optional(__S(14, __c1, 6)),
-          users: S.optional(__S(14, __c1, 6)),
+          groups: S.optional(__S(864, __c27, 0)),
+          users: S.optional(__S(864, __c27, 0)),
         }),
       ).annotate({ identifier: "Editors" });
-    case 1:
+    case 24:
       return S.suspend(() =>
         S.Struct({
-          range: S.optional(__S(9, __c1, 1)),
+          range: S.optional(__S(960, __c30, 0)),
           warningOnly: S.optional(S.Boolean),
           namedRangeId: S.optional(S.String),
           requestingUserCanEdit: S.optional(S.Boolean),
-          unprotectedRanges: S.optional(__S(79, __c9, 7)),
+          unprotectedRanges: S.optional(__S(182, __c5, 22)),
           protectedRangeId: S.optional(S.Number),
           tableId: S.optional(S.String),
           description: S.optional(S.String),
-          editors: S.optional(__S(80, __c10, 0)),
+          editors: S.optional(__S(183, __c5, 23)),
         }),
       ).annotate({ identifier: "ProtectedRange" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          fields: S.optional(S.String),
-          protectedRange: S.optional(__S(81, __c10, 1)),
-        }),
-      ).annotate({
-        identifier: "UpdateProtectedRangeRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          objectId: S.optional(S.Number),
-        }),
-      ).annotate({
-        identifier: "DeleteEmbeddedObjectRequest",
-      });
-    case 4:
+    case 25:
       return S.suspend(() =>
         S.Struct({
           namedRangeId: S.optional(S.String),
           name: S.optional(S.String),
-          range: S.optional(__S(9, __c1, 1)),
+          range: S.optional(__S(960, __c30, 0)),
         }),
       ).annotate({ identifier: "NamedRange" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          namedRange: S.optional(__S(84, __c10, 4)),
-        }),
-      ).annotate({ identifier: "AddNamedRangeRequest" });
-    case 6:
+    case 26:
       return S.suspend(() =>
         S.Struct({
           sheetId: S.optional(S.Number),
@@ -4762,51 +5207,37 @@ function __c10(j: number): any {
           columnIndex: S.optional(S.Number),
         }),
       ).annotate({ identifier: "GridCoordinate" });
-    case 7:
+    case 27:
       return S.suspend(() =>
         S.Struct({
           offsetXPixels: S.optional(S.Number),
           offsetYPixels: S.optional(S.Number),
-          anchorCell: S.optional(__S(86, __c10, 6)),
+          anchorCell: S.optional(__S(186, __c5, 26)),
           heightPixels: S.optional(S.Number),
           widthPixels: S.optional(S.Number),
         }),
       ).annotate({ identifier: "OverlayPosition" });
-  }
-}
-function __c11(j: number): any {
-  switch (j) {
-    case 0:
+    case 28:
       return S.suspend(() =>
         S.Struct({
-          overlayPosition: S.optional(__S(87, __c10, 7)),
+          overlayPosition: S.optional(__S(187, __c5, 27)),
           sheetId: S.optional(S.Number),
           newSheet: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "EmbeddedObjectPosition" });
-    case 1:
+    case 29:
       return S.suspend(() =>
         S.Struct({
-          fields: S.optional(S.String),
-          objectId: S.optional(S.Number),
-          newPosition: S.optional(__S(88, __c11, 0)),
-        }),
-      ).annotate({
-        identifier: "UpdateEmbeddedObjectPositionRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          sources: S.optional(__S(79, __c9, 7)),
+          sources: S.optional(__S(182, __c5, 22)),
         }),
       ).annotate({ identifier: "ChartSourceRange" });
-    case 3:
+    case 30:
       return S.suspend(() =>
         S.Struct({
           type: S.optional(S.String),
         }),
       ).annotate({ identifier: "ChartDateTimeRule" });
-    case 4:
+    case 31:
       return S.suspend(() =>
         S.Struct({
           minValue: S.optional(S.Number),
@@ -4814,47 +5245,47 @@ function __c11(j: number): any {
           maxValue: S.optional(S.Number),
         }),
       ).annotate({ identifier: "ChartHistogramRule" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          dateTimeRule: S.optional(__S(91, __c11, 3)),
-          histogramRule: S.optional(__S(92, __c11, 4)),
-        }),
-      ).annotate({ identifier: "ChartGroupRule" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          sourceRange: S.optional(__S(90, __c11, 2)),
-          columnReference: S.optional(__S(50, __c6, 2)),
-          aggregateType: S.optional(S.String),
-          groupRule: S.optional(__S(93, __c11, 5)),
-        }),
-      ).annotate({ identifier: "ChartData" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          barColor: S.optional(__S(38, __c4, 6)),
-          barColorStyle: S.optional(__S(39, __c4, 7)),
-          data: S.optional(__S(94, __c11, 6)),
-        }),
-      ).annotate({ identifier: "HistogramSeries" });
   }
 }
-function __c12(j: number): any {
+function __c6(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(95, __c11, 7));
+      return S.suspend(() =>
+        S.Struct({
+          dateTimeRule: S.optional(__S(190, __c5, 30)),
+          histogramRule: S.optional(__S(191, __c5, 31)),
+        }),
+      ).annotate({ identifier: "ChartGroupRule" });
     case 1:
+      return S.suspend(() =>
+        S.Struct({
+          sourceRange: S.optional(__S(189, __c5, 29)),
+          columnReference: S.optional(__S(130, __c4, 2)),
+          aggregateType: S.optional(S.String),
+          groupRule: S.optional(__S(192, __c6, 0)),
+        }),
+      ).annotate({ identifier: "ChartData" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          barColor: S.optional(__S(128, __c4, 0)),
+          barColorStyle: S.optional(__S(129, __c4, 1)),
+          data: S.optional(__S(193, __c6, 1)),
+        }),
+      ).annotate({ identifier: "HistogramSeries" });
+    case 3:
+      return S.Array(__S(194, __c6, 2));
+    case 4:
       return S.suspend(() =>
         S.Struct({
           bucketSize: S.optional(S.Number),
           showItemDividers: S.optional(S.Boolean),
-          series: S.optional(__S(96, __c12, 0)),
+          series: S.optional(__S(195, __c6, 3)),
           legendPosition: S.optional(S.String),
           outlierPercentile: S.optional(S.Number),
         }),
       ).annotate({ identifier: "HistogramChartSpec" });
-    case 2:
+    case 5:
       return S.suspend(() =>
         S.Struct({
           label: S.optional(S.String),
@@ -4864,105 +5295,101 @@ function __c12(j: number): any {
       ).annotate({
         identifier: "WaterfallChartCustomSubtotal",
       });
-    case 3:
-      return S.Array(__S(98, __c12, 2));
-    case 4:
+    case 6:
+      return S.Array(__S(197, __c6, 5));
+    case 7:
       return S.suspend(() =>
         S.Struct({
-          colorStyle: S.optional(__S(39, __c4, 7)),
+          colorStyle: S.optional(__S(129, __c4, 1)),
           label: S.optional(S.String),
-          color: S.optional(__S(38, __c4, 6)),
+          color: S.optional(__S(128, __c4, 0)),
         }),
       ).annotate({
         identifier: "WaterfallChartColumnStyle",
       });
-    case 5:
+    case 8:
       return S.suspend(() =>
         S.Struct({
           uri: S.optional(S.String),
         }),
       ).annotate({ identifier: "Link" });
-    case 6:
+    case 9:
       return S.suspend(() =>
         S.Struct({
           italic: S.optional(S.Boolean),
-          link: S.optional(__S(101, __c12, 5)),
-          foregroundColor: S.optional(__S(38, __c4, 6)),
+          link: S.optional(__S(200, __c6, 8)),
+          foregroundColor: S.optional(__S(128, __c4, 0)),
           strikethrough: S.optional(S.Boolean),
-          foregroundColorStyle: S.optional(__S(39, __c4, 7)),
+          foregroundColorStyle: S.optional(__S(129, __c4, 1)),
           fontSize: S.optional(S.Number),
           bold: S.optional(S.Boolean),
           underline: S.optional(S.Boolean),
           fontFamily: S.optional(S.String),
         }),
       ).annotate({ identifier: "TextFormat" });
-    case 7:
+    case 10:
       return S.suspend(() =>
         S.Struct({
           type: S.optional(S.String),
           placement: S.optional(S.String),
-          textFormat: S.optional(__S(102, __c12, 6)),
-          customLabelData: S.optional(__S(94, __c11, 6)),
+          textFormat: S.optional(__S(201, __c6, 9)),
+          customLabelData: S.optional(__S(193, __c6, 1)),
         }),
       ).annotate({ identifier: "DataLabel" });
-  }
-}
-function __c13(j: number): any {
-  switch (j) {
-    case 0:
+    case 11:
       return S.suspend(() =>
         S.Struct({
-          customSubtotals: S.optional(__S(99, __c12, 3)),
-          negativeColumnsStyle: S.optional(__S(100, __c12, 4)),
-          subtotalColumnsStyle: S.optional(__S(100, __c12, 4)),
-          positiveColumnsStyle: S.optional(__S(100, __c12, 4)),
-          dataLabel: S.optional(__S(103, __c12, 7)),
-          data: S.optional(__S(94, __c11, 6)),
+          customSubtotals: S.optional(__S(198, __c6, 6)),
+          negativeColumnsStyle: S.optional(__S(199, __c6, 7)),
+          subtotalColumnsStyle: S.optional(__S(199, __c6, 7)),
+          positiveColumnsStyle: S.optional(__S(199, __c6, 7)),
+          dataLabel: S.optional(__S(202, __c6, 10)),
+          data: S.optional(__S(193, __c6, 1)),
           hideTrailingSubtotal: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "WaterfallChartSeries" });
-    case 1:
-      return S.Array(__S(104, __c13, 0));
-    case 2:
+    case 12:
+      return S.Array(__S(203, __c6, 11));
+    case 13:
       return S.suspend(() =>
         S.Struct({
-          data: S.optional(__S(94, __c11, 6)),
+          data: S.optional(__S(193, __c6, 1)),
           reversed: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "WaterfallChartDomain" });
-    case 3:
+    case 14:
       return S.suspend(() =>
         S.Struct({
           type: S.optional(S.String),
           width: S.optional(S.Number),
         }),
       ).annotate({ identifier: "LineStyle" });
-    case 4:
+    case 15:
       return S.suspend(() =>
         S.Struct({
           firstValueIsTotal: S.optional(S.Boolean),
-          series: S.optional(__S(105, __c13, 1)),
+          series: S.optional(__S(204, __c6, 12)),
           hideConnectorLines: S.optional(S.Boolean),
           stackedType: S.optional(S.String),
-          domain: S.optional(__S(106, __c13, 2)),
-          totalDataLabel: S.optional(__S(103, __c12, 7)),
-          connectorLineStyle: S.optional(__S(107, __c13, 3)),
+          domain: S.optional(__S(205, __c6, 13)),
+          totalDataLabel: S.optional(__S(202, __c6, 10)),
+          connectorLineStyle: S.optional(__S(206, __c6, 14)),
         }),
       ).annotate({ identifier: "WaterfallChartSpec" });
-    case 5:
+    case 16:
       return S.suspend(() =>
         S.Struct({
           horizontalAlignment: S.optional(S.String),
         }),
       ).annotate({ identifier: "TextPosition" });
-    case 6:
+    case 17:
       return S.suspend(() =>
         S.Struct({
-          position: S.optional(__S(109, __c13, 5)),
-          textFormat: S.optional(__S(102, __c12, 6)),
+          position: S.optional(__S(208, __c6, 16)),
+          textFormat: S.optional(__S(201, __c6, 9)),
         }),
       ).annotate({ identifier: "KeyValueFormat" });
-    case 7:
+    case 18:
       return S.suspend(() =>
         S.Struct({
           prefix: S.optional(S.String),
@@ -4971,121 +5398,113 @@ function __c13(j: number): any {
       ).annotate({
         identifier: "ChartCustomNumberFormatOptions",
       });
-  }
-}
-function __c14(j: number): any {
-  switch (j) {
-    case 0:
+    case 19:
       return S.suspend(() =>
         S.Struct({
-          position: S.optional(__S(109, __c13, 5)),
-          positiveColor: S.optional(__S(38, __c4, 6)),
-          textFormat: S.optional(__S(102, __c12, 6)),
-          negativeColor: S.optional(__S(38, __c4, 6)),
-          positiveColorStyle: S.optional(__S(39, __c4, 7)),
-          negativeColorStyle: S.optional(__S(39, __c4, 7)),
+          position: S.optional(__S(208, __c6, 16)),
+          positiveColor: S.optional(__S(128, __c4, 0)),
+          textFormat: S.optional(__S(201, __c6, 9)),
+          negativeColor: S.optional(__S(128, __c4, 0)),
+          positiveColorStyle: S.optional(__S(129, __c4, 1)),
+          negativeColorStyle: S.optional(__S(129, __c4, 1)),
           comparisonType: S.optional(S.String),
           description: S.optional(S.String),
         }),
       ).annotate({ identifier: "BaselineValueFormat" });
-    case 1:
+    case 20:
       return S.suspend(() =>
         S.Struct({
           numberFormatSource: S.optional(S.String),
           aggregateType: S.optional(S.String),
-          keyValueFormat: S.optional(__S(110, __c13, 6)),
-          customFormatOptions: S.optional(__S(111, __c13, 7)),
-          keyValueData: S.optional(__S(94, __c11, 6)),
-          baselineValueData: S.optional(__S(94, __c11, 6)),
-          baselineValueFormat: S.optional(__S(112, __c14, 0)),
+          keyValueFormat: S.optional(__S(209, __c6, 17)),
+          customFormatOptions: S.optional(__S(210, __c6, 18)),
+          keyValueData: S.optional(__S(193, __c6, 1)),
+          baselineValueData: S.optional(__S(193, __c6, 1)),
+          baselineValueFormat: S.optional(__S(211, __c6, 19)),
           scaleFactor: S.optional(S.Number),
         }),
       ).annotate({ identifier: "ScorecardChartSpec" });
-    case 2:
+    case 21:
       return S.suspend(() =>
         S.Struct({
-          domain: S.optional(__S(94, __c11, 6)),
+          domain: S.optional(__S(193, __c6, 1)),
           legendPosition: S.optional(S.String),
           bubbleOpacity: S.optional(S.Number),
           bubbleMinRadiusSize: S.optional(S.Number),
-          series: S.optional(__S(94, __c11, 6)),
-          bubbleBorderColor: S.optional(__S(38, __c4, 6)),
-          bubbleLabels: S.optional(__S(94, __c11, 6)),
-          groupIds: S.optional(__S(94, __c11, 6)),
-          bubbleBorderColorStyle: S.optional(__S(39, __c4, 7)),
+          series: S.optional(__S(193, __c6, 1)),
+          bubbleBorderColor: S.optional(__S(128, __c4, 0)),
+          bubbleLabels: S.optional(__S(193, __c6, 1)),
+          groupIds: S.optional(__S(193, __c6, 1)),
+          bubbleBorderColorStyle: S.optional(__S(129, __c4, 1)),
           bubbleMaxRadiusSize: S.optional(S.Number),
-          bubbleTextStyle: S.optional(__S(102, __c12, 6)),
-          bubbleSizes: S.optional(__S(94, __c11, 6)),
+          bubbleTextStyle: S.optional(__S(201, __c6, 9)),
+          bubbleSizes: S.optional(__S(193, __c6, 1)),
         }),
       ).annotate({ identifier: "BubbleChartSpec" });
-    case 3:
+    case 22:
       return S.suspend(() =>
         S.Struct({
-          midValueColorStyle: S.optional(__S(39, __c4, 7)),
-          minValueColor: S.optional(__S(38, __c4, 6)),
-          minValueColorStyle: S.optional(__S(39, __c4, 7)),
-          maxValueColorStyle: S.optional(__S(39, __c4, 7)),
-          midValueColor: S.optional(__S(38, __c4, 6)),
-          noDataColor: S.optional(__S(38, __c4, 6)),
-          noDataColorStyle: S.optional(__S(39, __c4, 7)),
-          maxValueColor: S.optional(__S(38, __c4, 6)),
+          midValueColorStyle: S.optional(__S(129, __c4, 1)),
+          minValueColor: S.optional(__S(128, __c4, 0)),
+          minValueColorStyle: S.optional(__S(129, __c4, 1)),
+          maxValueColorStyle: S.optional(__S(129, __c4, 1)),
+          midValueColor: S.optional(__S(128, __c4, 0)),
+          noDataColor: S.optional(__S(128, __c4, 0)),
+          noDataColorStyle: S.optional(__S(129, __c4, 1)),
+          maxValueColor: S.optional(__S(128, __c4, 0)),
         }),
       ).annotate({ identifier: "TreemapChartColorScale" });
-    case 4:
+    case 23:
       return S.suspend(() =>
         S.Struct({
           levels: S.optional(S.Number),
-          sizeData: S.optional(__S(94, __c11, 6)),
+          sizeData: S.optional(__S(193, __c6, 1)),
           minValue: S.optional(S.Number),
-          colorData: S.optional(__S(94, __c11, 6)),
+          colorData: S.optional(__S(193, __c6, 1)),
           hintedLevels: S.optional(S.Number),
           maxValue: S.optional(S.Number),
-          textFormat: S.optional(__S(102, __c12, 6)),
-          headerColor: S.optional(__S(38, __c4, 6)),
-          colorScale: S.optional(__S(115, __c14, 3)),
-          labels: S.optional(__S(94, __c11, 6)),
-          headerColorStyle: S.optional(__S(39, __c4, 7)),
-          parentLabels: S.optional(__S(94, __c11, 6)),
+          textFormat: S.optional(__S(201, __c6, 9)),
+          headerColor: S.optional(__S(128, __c4, 0)),
+          colorScale: S.optional(__S(214, __c6, 22)),
+          labels: S.optional(__S(193, __c6, 1)),
+          headerColorStyle: S.optional(__S(129, __c4, 1)),
+          parentLabels: S.optional(__S(193, __c6, 1)),
           hideTooltips: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "TreemapChartSpec" });
-    case 5:
+    case 24:
       return S.suspend(() =>
         S.Struct({
           threeDimensional: S.optional(S.Boolean),
-          series: S.optional(__S(94, __c11, 6)),
+          series: S.optional(__S(193, __c6, 1)),
           legendPosition: S.optional(S.String),
           pieHole: S.optional(S.Number),
-          domain: S.optional(__S(94, __c11, 6)),
+          domain: S.optional(__S(193, __c6, 1)),
         }),
       ).annotate({ identifier: "PieChartSpec" });
-    case 6:
+    case 25:
       return S.suspend(() =>
         S.Struct({
-          labels: S.optional(__S(94, __c11, 6)),
-          nodeColorStyle: S.optional(__S(39, __c4, 7)),
-          parentLabels: S.optional(__S(94, __c11, 6)),
-          selectedNodeColor: S.optional(__S(38, __c4, 6)),
+          labels: S.optional(__S(193, __c6, 1)),
+          nodeColorStyle: S.optional(__S(129, __c4, 1)),
+          parentLabels: S.optional(__S(193, __c6, 1)),
+          selectedNodeColor: S.optional(__S(128, __c4, 0)),
           nodeSize: S.optional(S.String),
-          nodeColor: S.optional(__S(38, __c4, 6)),
-          selectedNodeColorStyle: S.optional(__S(39, __c4, 7)),
-          tooltips: S.optional(__S(94, __c11, 6)),
+          nodeColor: S.optional(__S(128, __c4, 0)),
+          selectedNodeColorStyle: S.optional(__S(129, __c4, 1)),
+          tooltips: S.optional(__S(193, __c6, 1)),
         }),
       ).annotate({ identifier: "OrgChartSpec" });
-    case 7:
+    case 26:
       return S.suspend(() =>
         S.Struct({
           reversed: S.optional(S.Boolean),
-          domain: S.optional(__S(94, __c11, 6)),
+          domain: S.optional(__S(193, __c6, 1)),
         }),
       ).annotate({ identifier: "BasicChartDomain" });
-  }
-}
-function __c15(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(119, __c14, 7));
-    case 1:
+    case 27:
+      return S.Array(__S(218, __c6, 26));
+    case 28:
       return S.suspend(() =>
         S.Struct({
           viewWindowMin: S.optional(S.Number),
@@ -5095,306 +5514,207 @@ function __c15(j: number): any {
       ).annotate({
         identifier: "ChartAxisViewWindowOptions",
       });
-    case 2:
+    case 29:
       return S.suspend(() =>
         S.Struct({
           position: S.optional(S.String),
-          titleTextPosition: S.optional(__S(109, __c13, 5)),
-          viewWindowOptions: S.optional(__S(121, __c15, 1)),
-          format: S.optional(__S(102, __c12, 6)),
+          titleTextPosition: S.optional(__S(208, __c6, 16)),
+          viewWindowOptions: S.optional(__S(220, __c6, 28)),
+          format: S.optional(__S(201, __c6, 9)),
           title: S.optional(S.String),
         }),
       ).annotate({ identifier: "BasicChartAxis" });
-    case 3:
-      return S.Array(__S(122, __c15, 2));
-    case 4:
+    case 30:
+      return S.Array(__S(221, __c6, 29));
+    case 31:
       return S.suspend(() =>
         S.Struct({
           shape: S.optional(S.String),
           size: S.optional(S.Number),
         }),
       ).annotate({ identifier: "PointStyle" });
-    case 5:
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          pointStyle: S.optional(__S(124, __c15, 4)),
-          color: S.optional(__S(38, __c4, 6)),
+          pointStyle: S.optional(__S(223, __c6, 31)),
+          color: S.optional(__S(128, __c4, 0)),
           index: S.optional(S.Number),
-          colorStyle: S.optional(__S(39, __c4, 7)),
+          colorStyle: S.optional(__S(129, __c4, 1)),
         }),
       ).annotate({
         identifier: "BasicSeriesDataPointStyleOverride",
       });
-    case 6:
-      return S.Array(__S(125, __c15, 5));
-    case 7:
+    case 1:
+      return S.Array(__S(224, __c7, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          lineStyle: S.optional(__S(107, __c13, 3)),
-          styleOverrides: S.optional(__S(126, __c15, 6)),
-          dataLabel: S.optional(__S(103, __c12, 7)),
-          series: S.optional(__S(94, __c11, 6)),
+          lineStyle: S.optional(__S(206, __c6, 14)),
+          styleOverrides: S.optional(__S(225, __c7, 1)),
+          dataLabel: S.optional(__S(202, __c6, 10)),
+          series: S.optional(__S(193, __c6, 1)),
           targetAxis: S.optional(S.String),
-          pointStyle: S.optional(__S(124, __c15, 4)),
-          color: S.optional(__S(38, __c4, 6)),
-          colorStyle: S.optional(__S(39, __c4, 7)),
+          pointStyle: S.optional(__S(223, __c6, 31)),
+          color: S.optional(__S(128, __c4, 0)),
+          colorStyle: S.optional(__S(129, __c4, 1)),
           type: S.optional(S.String),
         }),
       ).annotate({ identifier: "BasicChartSeries" });
-  }
-}
-function __c16(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(127, __c15, 7));
-    case 1:
+    case 3:
+      return S.Array(__S(226, __c7, 2));
+    case 4:
       return S.suspend(() =>
         S.Struct({
           legendPosition: S.optional(S.String),
-          totalDataLabel: S.optional(__S(103, __c12, 7)),
+          totalDataLabel: S.optional(__S(202, __c6, 10)),
           chartType: S.optional(S.String),
           stackedType: S.optional(S.String),
           compareMode: S.optional(S.String),
           threeDimensional: S.optional(S.Boolean),
-          domains: S.optional(__S(120, __c15, 0)),
+          domains: S.optional(__S(219, __c6, 27)),
           interpolateNulls: S.optional(S.Boolean),
           lineSmoothing: S.optional(S.Boolean),
-          axis: S.optional(__S(123, __c15, 3)),
-          series: S.optional(__S(128, __c16, 0)),
+          axis: S.optional(__S(222, __c6, 30)),
+          series: S.optional(__S(227, __c7, 3)),
           headerCount: S.optional(S.Number),
         }),
       ).annotate({ identifier: "BasicChartSpec" });
-    case 2:
+    case 5:
       return S.suspend(() =>
         S.Struct({
-          errorMessage: S.optional(S.String),
-          state: S.optional(S.String),
-          lastRefreshTime: S.optional(S.String),
-          errorCode: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "DataExecutionStatus" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          dataExecutionStatus: S.optional(__S(130, __c16, 2)),
+          dataExecutionStatus: S.optional(__S(131, __c4, 3)),
           dataSourceId: S.optional(S.String),
         }),
       ).annotate({
         identifier: "DataSourceChartProperties",
       });
-    case 4:
+    case 6:
       return S.suspend(() =>
         S.Struct({
-          data: S.optional(__S(94, __c11, 6)),
+          data: S.optional(__S(193, __c6, 1)),
         }),
       ).annotate({ identifier: "CandlestickSeries" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          openSeries: S.optional(__S(132, __c16, 4)),
-          highSeries: S.optional(__S(132, __c16, 4)),
-          lowSeries: S.optional(__S(132, __c16, 4)),
-          closeSeries: S.optional(__S(132, __c16, 4)),
-        }),
-      ).annotate({ identifier: "CandlestickData" });
-    case 6:
-      return S.Array(__S(133, __c16, 5));
     case 7:
       return S.suspend(() =>
         S.Struct({
+          openSeries: S.optional(__S(230, __c7, 6)),
+          highSeries: S.optional(__S(230, __c7, 6)),
+          lowSeries: S.optional(__S(230, __c7, 6)),
+          closeSeries: S.optional(__S(230, __c7, 6)),
+        }),
+      ).annotate({ identifier: "CandlestickData" });
+    case 8:
+      return S.Array(__S(231, __c7, 7));
+    case 9:
+      return S.suspend(() =>
+        S.Struct({
           reversed: S.optional(S.Boolean),
-          data: S.optional(__S(94, __c11, 6)),
+          data: S.optional(__S(193, __c6, 1)),
         }),
       ).annotate({ identifier: "CandlestickDomain" });
-  }
-}
-function __c17(j: number): any {
-  switch (j) {
-    case 0:
+    case 10:
       return S.suspend(() =>
         S.Struct({
-          data: S.optional(__S(134, __c16, 6)),
-          domain: S.optional(__S(135, __c16, 7)),
+          data: S.optional(__S(232, __c7, 8)),
+          domain: S.optional(__S(233, __c7, 9)),
         }),
       ).annotate({ identifier: "CandlestickChartSpec" });
-    case 1:
+    case 11:
       return S.suspend(() =>
         S.Struct({
-          histogramChart: S.optional(__S(97, __c12, 1)),
-          backgroundColor: S.optional(__S(38, __c4, 6)),
-          waterfallChart: S.optional(__S(108, __c13, 4)),
-          backgroundColorStyle: S.optional(__S(39, __c4, 7)),
+          histogramChart: S.optional(__S(196, __c6, 4)),
+          backgroundColor: S.optional(__S(128, __c4, 0)),
+          waterfallChart: S.optional(__S(207, __c6, 15)),
+          backgroundColorStyle: S.optional(__S(129, __c4, 1)),
           hiddenDimensionStrategy: S.optional(S.String),
-          scorecardChart: S.optional(__S(113, __c14, 1)),
-          subtitleTextPosition: S.optional(__S(109, __c13, 5)),
-          bubbleChart: S.optional(__S(114, __c14, 2)),
+          scorecardChart: S.optional(__S(212, __c6, 20)),
+          subtitleTextPosition: S.optional(__S(208, __c6, 16)),
+          bubbleChart: S.optional(__S(213, __c6, 21)),
           altText: S.optional(S.String),
-          treemapChart: S.optional(__S(116, __c14, 4)),
-          sortSpecs: S.optional(__S(60, __c7, 4)),
-          titleTextFormat: S.optional(__S(102, __c12, 6)),
+          treemapChart: S.optional(__S(215, __c6, 23)),
+          sortSpecs: S.optional(__S(174, __c5, 14)),
+          titleTextFormat: S.optional(__S(201, __c6, 9)),
           maximized: S.optional(S.Boolean),
-          pieChart: S.optional(__S(117, __c14, 5)),
-          filterSpecs: S.optional(__S(62, __c7, 6)),
-          orgChart: S.optional(__S(118, __c14, 6)),
-          titleTextPosition: S.optional(__S(109, __c13, 5)),
-          basicChart: S.optional(__S(129, __c16, 1)),
-          subtitleTextFormat: S.optional(__S(102, __c12, 6)),
+          pieChart: S.optional(__S(216, __c6, 24)),
+          filterSpecs: S.optional(__S(176, __c5, 16)),
+          orgChart: S.optional(__S(217, __c6, 25)),
+          titleTextPosition: S.optional(__S(208, __c6, 16)),
+          basicChart: S.optional(__S(228, __c7, 4)),
+          subtitleTextFormat: S.optional(__S(201, __c6, 9)),
           title: S.optional(S.String),
           fontName: S.optional(S.String),
-          dataSourceChartProperties: S.optional(__S(131, __c16, 3)),
+          dataSourceChartProperties: S.optional(__S(229, __c7, 5)),
           subtitle: S.optional(S.String),
-          candlestickChart: S.optional(__S(136, __c17, 0)),
+          candlestickChart: S.optional(__S(234, __c7, 10)),
         }),
       ).annotate({ identifier: "ChartSpec" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          chartId: S.optional(S.Number),
-          spec: S.optional(__S(137, __c17, 1)),
-        }),
-      ).annotate({ identifier: "UpdateChartSpecRequest" });
-    case 3:
+    case 12:
       return S.suspend(() =>
         S.Struct({
           horizontalAlignment: S.optional(S.String),
-          textFormat: S.optional(__S(102, __c12, 6)),
+          textFormat: S.optional(__S(201, __c6, 9)),
           applyToPivotTables: S.optional(S.Boolean),
           columnIndex: S.optional(S.Number),
-          backgroundColor: S.optional(__S(38, __c4, 6)),
-          filterCriteria: S.optional(__S(57, __c7, 1)),
-          backgroundColorStyle: S.optional(__S(39, __c4, 7)),
-          dataRange: S.optional(__S(9, __c1, 1)),
+          backgroundColor: S.optional(__S(128, __c4, 0)),
+          filterCriteria: S.optional(__S(171, __c5, 11)),
+          backgroundColorStyle: S.optional(__S(129, __c4, 1)),
+          dataRange: S.optional(__S(960, __c30, 0)),
           title: S.optional(S.String),
         }),
       ).annotate({ identifier: "SlicerSpec" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          slicerId: S.optional(S.Number),
-          spec: S.optional(__S(139, __c17, 3)),
-          fields: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "UpdateSlicerSpecRequest" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          html: S.optional(S.Boolean),
-          delimiter: S.optional(S.String),
-          coordinate: S.optional(__S(86, __c10, 6)),
-          data: S.optional(S.String),
-          type: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "PasteDataRequest" });
-    case 6:
+    case 13:
       return S.suspend(() =>
         S.Struct({
           inputMessage: S.optional(S.String),
           showCustomUi: S.optional(S.Boolean),
-          condition: S.optional(__S(43, __c5, 3)),
+          condition: S.optional(__S(163, __c5, 3)),
           strict: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "DataValidationRule" });
-    case 7:
+    case 14:
       return S.suspend(() =>
         S.Struct({
-          range: S.optional(__S(9, __c1, 1)),
-          filteredRowsIncluded: S.optional(S.Boolean),
-          rule: S.optional(__S(142, __c17, 6)),
-        }),
-      ).annotate({ identifier: "SetDataValidationRequest" });
-  }
-}
-function __c18(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          color: S.optional(__S(38, __c4, 6)),
-          colorStyle: S.optional(__S(39, __c4, 7)),
+          color: S.optional(__S(128, __c4, 0)),
+          colorStyle: S.optional(__S(129, __c4, 1)),
         }),
       ).annotate({ identifier: "EmbeddedObjectBorder" });
-    case 1:
+    case 15:
       return S.suspend(() =>
         S.Struct({
-          position: S.optional(__S(88, __c11, 0)),
-          border: S.optional(__S(144, __c18, 0)),
-          spec: S.optional(__S(137, __c17, 1)),
+          position: S.optional(__S(188, __c5, 28)),
+          border: S.optional(__S(238, __c7, 14)),
+          spec: S.optional(__S(235, __c7, 11)),
           chartId: S.optional(S.Number),
         }),
       ).annotate({ identifier: "EmbeddedChart" });
-    case 2:
+    case 16:
       return S.suspend(() =>
         S.Struct({
-          chart: S.optional(__S(145, __c18, 1)),
-        }),
-      ).annotate({ identifier: "AddChartRequest" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          namedRange: S.optional(__S(84, __c10, 4)),
-          fields: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "UpdateNamedRangeRequest" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          source: S.optional(__S(9, __c1, 1)),
-          delimiter: S.optional(S.String),
-          delimiterType: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "TextToColumnsRequest" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          protectedRangeId: S.optional(S.Number),
-        }),
-      ).annotate({
-        identifier: "DeleteProtectedRangeRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          commentId: S.optional(S.String),
-          content: S.optional(S.String),
-          postId: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "UpdateCommentPostRequest" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          coordinate: S.optional(__S(86, __c10, 6)),
-          assigneeEmailAddress: S.optional(S.String),
-          content: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "InsertCommentRequest" });
-  }
-}
-function __c19(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          left: S.optional(__S(76, __c9, 4)),
-          right: S.optional(__S(76, __c9, 4)),
-          top: S.optional(__S(76, __c9, 4)),
-          bottom: S.optional(__S(76, __c9, 4)),
+          left: S.optional(__S(181, __c5, 21)),
+          right: S.optional(__S(181, __c5, 21)),
+          top: S.optional(__S(181, __c5, 21)),
+          bottom: S.optional(__S(181, __c5, 21)),
         }),
       ).annotate({ identifier: "Borders" });
-    case 1:
+    case 17:
       return S.suspend(() =>
         S.Struct({
           type: S.optional(S.String),
           pattern: S.optional(S.String),
         }),
       ).annotate({ identifier: "NumberFormat" });
-    case 2:
+    case 18:
       return S.suspend(() =>
         S.Struct({
           angle: S.optional(S.Number),
           vertical: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "TextRotation" });
-    case 3:
+    case 19:
       return S.suspend(() =>
         S.Struct({
           top: S.optional(S.Number),
@@ -5403,86 +5723,82 @@ function __c19(j: number): any {
           left: S.optional(S.Number),
         }),
       ).annotate({ identifier: "Padding" });
-    case 4:
+    case 20:
       return S.suspend(() =>
         S.Struct({
-          backgroundColor: S.optional(__S(38, __c4, 6)),
+          backgroundColor: S.optional(__S(128, __c4, 0)),
           hyperlinkDisplayType: S.optional(S.String),
-          textFormat: S.optional(__S(102, __c12, 6)),
-          borders: S.optional(__S(152, __c19, 0)),
-          numberFormat: S.optional(__S(153, __c19, 1)),
-          textRotation: S.optional(__S(154, __c19, 2)),
+          textFormat: S.optional(__S(201, __c6, 9)),
+          borders: S.optional(__S(240, __c7, 16)),
+          numberFormat: S.optional(__S(241, __c7, 17)),
+          textRotation: S.optional(__S(242, __c7, 18)),
           verticalAlignment: S.optional(S.String),
-          padding: S.optional(__S(155, __c19, 3)),
+          padding: S.optional(__S(243, __c7, 19)),
           textDirection: S.optional(S.String),
           wrapStrategy: S.optional(S.String),
-          backgroundColorStyle: S.optional(__S(39, __c4, 7)),
+          backgroundColorStyle: S.optional(__S(129, __c4, 1)),
           horizontalAlignment: S.optional(S.String),
         }),
       ).annotate({ identifier: "CellFormat" });
-    case 5:
+    case 21:
       return S.suspend(() =>
         S.Struct({
           dataSourceId: S.optional(S.String),
-          dataExecutionStatus: S.optional(__S(130, __c16, 2)),
+          dataExecutionStatus: S.optional(__S(131, __c4, 3)),
         }),
       ).annotate({ identifier: "DataSourceFormula" });
-    case 6:
+    case 22:
       return S.suspend(() =>
         S.Struct({
           uri: S.optional(S.String),
           mimeType: S.optional(S.String),
         }),
       ).annotate({ identifier: "RichLinkProperties" });
-    case 7:
+    case 23:
       return S.suspend(() =>
         S.Struct({
           email: S.optional(S.String),
           displayFormat: S.optional(S.String),
         }),
       ).annotate({ identifier: "PersonProperties" });
-  }
-}
-function __c20(j: number): any {
-  switch (j) {
-    case 0:
+    case 24:
       return S.suspend(() =>
         S.Struct({
-          richLinkProperties: S.optional(__S(158, __c19, 6)),
-          personProperties: S.optional(__S(159, __c19, 7)),
+          richLinkProperties: S.optional(__S(246, __c7, 22)),
+          personProperties: S.optional(__S(247, __c7, 23)),
         }),
       ).annotate({ identifier: "Chip" });
-    case 1:
+    case 25:
       return S.suspend(() =>
         S.Struct({
           startIndex: S.optional(S.Number),
-          chip: S.optional(__S(160, __c20, 0)),
+          chip: S.optional(__S(248, __c7, 24)),
         }),
       ).annotate({ identifier: "ChipRun" });
-    case 2:
-      return S.Array(__S(161, __c20, 1));
-    case 3:
+    case 26:
+      return S.Array(__S(249, __c7, 25));
+    case 27:
       return S.suspend(() =>
         S.Struct({
-          filterSpecs: S.optional(__S(62, __c7, 6)),
+          filterSpecs: S.optional(__S(176, __c5, 16)),
           dataSourceId: S.optional(S.String),
-          dataExecutionStatus: S.optional(__S(130, __c16, 2)),
-          columns: S.optional(__S(51, __c6, 3)),
+          dataExecutionStatus: S.optional(__S(131, __c4, 3)),
+          columns: S.optional(__S(168, __c5, 8)),
           columnSelectionType: S.optional(S.String),
-          sortSpecs: S.optional(__S(60, __c7, 4)),
+          sortSpecs: S.optional(__S(174, __c5, 14)),
           rowLimit: S.optional(S.Number),
         }),
       ).annotate({ identifier: "DataSourceTable" });
-    case 4:
+    case 28:
       return S.suspend(() =>
         S.Struct({
           startIndex: S.optional(S.Number),
-          format: S.optional(__S(102, __c12, 6)),
+          format: S.optional(__S(201, __c6, 9)),
         }),
       ).annotate({ identifier: "TextFormatRun" });
-    case 5:
-      return S.Array(__S(164, __c20, 4));
-    case 6:
+    case 29:
+      return S.Array(__S(252, __c7, 28));
+    case 30:
       return S.suspend(() =>
         S.Struct({
           sourceColumnOffset: S.optional(S.Number),
@@ -5490,14 +5806,14 @@ function __c20(j: number): any {
           formula: S.optional(S.String),
           calculatedDisplayType: S.optional(S.String),
           name: S.optional(S.String),
-          dataSourceColumnReference: S.optional(__S(50, __c6, 2)),
+          dataSourceColumnReference: S.optional(__S(130, __c4, 2)),
         }),
       ).annotate({ identifier: "PivotValue" });
-    case 7:
-      return S.Array(__S(166, __c20, 6));
+    case 31:
+      return S.Array(__S(254, __c7, 30));
   }
 }
-function __c21(j: number): any {
+function __c8(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5510,27 +5826,27 @@ function __c21(j: number): any {
       return S.suspend(() =>
         S.Struct({
           stringValue: S.optional(S.String),
-          errorValue: S.optional(__S(168, __c21, 0)),
+          errorValue: S.optional(__S(256, __c8, 0)),
           formulaValue: S.optional(S.String),
           numberValue: S.optional(S.Number),
           boolValue: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "ExtendedValue" });
     case 2:
-      return S.Array(__S(169, __c21, 1));
+      return S.Array(__S(257, __c8, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          items: S.optional(__S(170, __c21, 2)),
-          groupName: S.optional(__S(169, __c21, 1)),
+          items: S.optional(__S(258, __c8, 2)),
+          groupName: S.optional(__S(257, __c8, 1)),
         }),
       ).annotate({ identifier: "ManualRuleGroup" });
     case 4:
-      return S.Array(__S(171, __c21, 3));
+      return S.Array(__S(259, __c8, 3));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          groups: S.optional(__S(172, __c21, 4)),
+          groups: S.optional(__S(260, __c8, 4)),
         }),
       ).annotate({ identifier: "ManualRule" });
     case 6:
@@ -5544,370 +5860,174 @@ function __c21(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          dateTimeRule: S.optional(__S(91, __c11, 3)),
-          manualRule: S.optional(__S(173, __c21, 5)),
-          histogramRule: S.optional(__S(174, __c21, 6)),
+          dateTimeRule: S.optional(__S(190, __c5, 30)),
+          manualRule: S.optional(__S(261, __c8, 5)),
+          histogramRule: S.optional(__S(262, __c8, 6)),
         }),
       ).annotate({ identifier: "PivotGroupRule" });
-  }
-}
-function __c22(j: number): any {
-  switch (j) {
-    case 0:
+    case 8:
       return S.suspend(() =>
         S.Struct({
           valuesIndex: S.optional(S.Number),
-          buckets: S.optional(__S(170, __c21, 2)),
+          buckets: S.optional(__S(258, __c8, 2)),
         }),
       ).annotate({
         identifier: "PivotGroupSortValueBucket",
       });
-    case 1:
+    case 9:
       return S.suspend(() =>
         S.Struct({
           countLimit: S.optional(S.Number),
           applyOrder: S.optional(S.Number),
         }),
       ).annotate({ identifier: "PivotGroupLimit" });
-    case 2:
+    case 10:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(169, __c21, 1)),
+          value: S.optional(__S(257, __c8, 1)),
           collapsed: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "PivotGroupValueMetadata" });
-    case 3:
-      return S.Array(__S(178, __c22, 2));
-    case 4:
+    case 11:
+      return S.Array(__S(266, __c8, 10));
+    case 12:
       return S.suspend(() =>
         S.Struct({
-          groupRule: S.optional(__S(175, __c21, 7)),
-          valueBucket: S.optional(__S(176, __c22, 0)),
-          groupLimit: S.optional(__S(177, __c22, 1)),
-          dataSourceColumnReference: S.optional(__S(50, __c6, 2)),
+          groupRule: S.optional(__S(263, __c8, 7)),
+          valueBucket: S.optional(__S(264, __c8, 8)),
+          groupLimit: S.optional(__S(265, __c8, 9)),
+          dataSourceColumnReference: S.optional(__S(130, __c4, 2)),
           repeatHeadings: S.optional(S.Boolean),
           sortOrder: S.optional(S.String),
           showTotals: S.optional(S.Boolean),
-          valueMetadata: S.optional(__S(179, __c22, 3)),
+          valueMetadata: S.optional(__S(267, __c8, 11)),
           sourceColumnOffset: S.optional(S.Number),
           label: S.optional(S.String),
         }),
       ).annotate({ identifier: "PivotGroup" });
-    case 5:
-      return S.Array(__S(180, __c22, 4));
-    case 6:
+    case 13:
+      return S.Array(__S(268, __c8, 12));
+    case 14:
       return S.suspend(() =>
         S.Struct({
-          visibleValues: S.optional(__S(14, __c1, 6)),
-          condition: S.optional(__S(43, __c5, 3)),
+          visibleValues: S.optional(__S(864, __c27, 0)),
+          condition: S.optional(__S(163, __c5, 3)),
           visibleByDefault: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "PivotFilterCriteria" });
-    case 7:
-      return S.Record(S.String, __S(182, __c22, 6));
-  }
-}
-function __c23(j: number): any {
-  switch (j) {
-    case 0:
+    case 15:
+      return S.Record(S.String, __S(270, __c8, 14));
+    case 16:
       return S.suspend(() =>
         S.Struct({
-          filterCriteria: S.optional(__S(182, __c22, 6)),
-          dataSourceColumnReference: S.optional(__S(50, __c6, 2)),
+          filterCriteria: S.optional(__S(270, __c8, 14)),
+          dataSourceColumnReference: S.optional(__S(130, __c4, 2)),
           columnOffsetIndex: S.optional(S.Number),
         }),
       ).annotate({ identifier: "PivotFilterSpec" });
-    case 1:
-      return S.Array(__S(184, __c23, 0));
-    case 2:
+    case 17:
+      return S.Array(__S(272, __c8, 16));
+    case 18:
       return S.suspend(() =>
         S.Struct({
           dataSourceId: S.optional(S.String),
-          values: S.optional(__S(167, __c20, 7)),
-          columns: S.optional(__S(181, __c22, 5)),
-          source: S.optional(__S(9, __c1, 1)),
-          rows: S.optional(__S(181, __c22, 5)),
-          criteria: S.optional(__S(183, __c22, 7)),
-          dataExecutionStatus: S.optional(__S(130, __c16, 2)),
+          values: S.optional(__S(255, __c7, 31)),
+          columns: S.optional(__S(269, __c8, 13)),
+          source: S.optional(__S(960, __c30, 0)),
+          rows: S.optional(__S(269, __c8, 13)),
+          criteria: S.optional(__S(271, __c8, 15)),
+          dataExecutionStatus: S.optional(__S(131, __c4, 3)),
           valueLayout: S.optional(S.String),
-          filterSpecs: S.optional(__S(185, __c23, 1)),
+          filterSpecs: S.optional(__S(273, __c8, 17)),
         }),
       ).annotate({ identifier: "PivotTable" });
-    case 3:
+    case 19:
       return S.suspend(() =>
         S.Struct({
           hyperlink: S.optional(S.String),
-          effectiveFormat: S.optional(__S(156, __c19, 4)),
-          userEnteredFormat: S.optional(__S(156, __c19, 4)),
-          dataSourceFormula: S.optional(__S(157, __c19, 5)),
-          chipRuns: S.optional(__S(162, __c20, 2)),
+          effectiveFormat: S.optional(__S(244, __c7, 20)),
+          userEnteredFormat: S.optional(__S(244, __c7, 20)),
+          dataSourceFormula: S.optional(__S(245, __c7, 21)),
+          chipRuns: S.optional(__S(250, __c7, 26)),
           formattedValue: S.optional(S.String),
-          dataSourceTable: S.optional(__S(163, __c20, 3)),
-          textFormatRuns: S.optional(__S(165, __c20, 5)),
+          dataSourceTable: S.optional(__S(251, __c7, 27)),
+          textFormatRuns: S.optional(__S(253, __c7, 29)),
           note: S.optional(S.String),
-          pivotTable: S.optional(__S(186, __c23, 2)),
-          dataValidation: S.optional(__S(142, __c17, 6)),
-          effectiveValue: S.optional(__S(169, __c21, 1)),
-          userEnteredValue: S.optional(__S(169, __c21, 1)),
+          pivotTable: S.optional(__S(274, __c8, 18)),
+          dataValidation: S.optional(__S(237, __c7, 13)),
+          effectiveValue: S.optional(__S(257, __c8, 1)),
+          userEnteredValue: S.optional(__S(257, __c8, 1)),
         }),
       ).annotate({ identifier: "CellData" });
-    case 4:
+    case 20:
       return S.suspend(() =>
         S.Struct({
-          cell: S.optional(__S(187, __c23, 3)),
-          range: S.optional(__S(9, __c1, 1)),
-          fields: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "RepeatCellRequest" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          tableId: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "DeleteTableRequest" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          protectedRange: S.optional(__S(81, __c10, 1)),
-        }),
-      ).annotate({ identifier: "AddProtectedRangeRequest" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          colorStyle: S.optional(__S(39, __c4, 7)),
+          colorStyle: S.optional(__S(129, __c4, 1)),
           value: S.optional(S.String),
-          color: S.optional(__S(38, __c4, 6)),
+          color: S.optional(__S(128, __c4, 0)),
           type: S.optional(S.String),
         }),
       ).annotate({ identifier: "InterpolationPoint" });
-  }
-}
-function __c24(j: number): any {
-  switch (j) {
-    case 0:
+    case 21:
       return S.suspend(() =>
         S.Struct({
-          midpoint: S.optional(__S(191, __c23, 7)),
-          maxpoint: S.optional(__S(191, __c23, 7)),
-          minpoint: S.optional(__S(191, __c23, 7)),
+          midpoint: S.optional(__S(276, __c8, 20)),
+          maxpoint: S.optional(__S(276, __c8, 20)),
+          minpoint: S.optional(__S(276, __c8, 20)),
         }),
       ).annotate({ identifier: "GradientRule" });
-    case 1:
+    case 22:
       return S.suspend(() =>
         S.Struct({
-          condition: S.optional(__S(43, __c5, 3)),
-          format: S.optional(__S(156, __c19, 4)),
+          condition: S.optional(__S(163, __c5, 3)),
+          format: S.optional(__S(244, __c7, 20)),
         }),
       ).annotate({ identifier: "BooleanRule" });
-    case 2:
+    case 23:
       return S.suspend(() =>
         S.Struct({
-          gradientRule: S.optional(__S(192, __c24, 0)),
-          booleanRule: S.optional(__S(193, __c24, 1)),
-          ranges: S.optional(__S(79, __c9, 7)),
+          gradientRule: S.optional(__S(277, __c8, 21)),
+          booleanRule: S.optional(__S(278, __c8, 22)),
+          ranges: S.optional(__S(182, __c5, 22)),
         }),
       ).annotate({ identifier: "ConditionalFormatRule" });
-    case 3:
+    case 24:
+      return S.Array(__S(275, __c8, 19));
+    case 25:
       return S.suspend(() =>
         S.Struct({
-          newIndex: S.optional(S.Number),
-          sheetId: S.optional(S.Number),
-          index: S.optional(S.Number),
-          rule: S.optional(__S(194, __c24, 2)),
-        }),
-      ).annotate({
-        identifier: "UpdateConditionalFormatRuleRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          range: S.optional(__S(6, __c0, 6)),
-        }),
-      ).annotate({ identifier: "DeleteDimensionRequest" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          postId: S.optional(S.String),
-          commentId: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "DeleteCommentReplyRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          reference: S.optional(__S(50, __c6, 2)),
-          formula: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "DataSourceColumn" });
-    case 7:
-      return S.Array(__S(198, __c24, 6));
-  }
-}
-function __c25(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          columns: S.optional(__S(199, __c24, 7)),
-          dataSourceId: S.optional(S.String),
-          dataExecutionStatus: S.optional(__S(130, __c16, 2)),
-        }),
-      ).annotate({
-        identifier: "DataSourceSheetProperties",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          frozenRowCount: S.optional(S.Number),
-          columnGroupControlAfter: S.optional(S.Boolean),
-          rowGroupControlAfter: S.optional(S.Boolean),
-          frozenColumnCount: S.optional(S.Number),
-          hideGridlines: S.optional(S.Boolean),
-          columnCount: S.optional(S.Number),
-          rowCount: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "GridProperties" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          tabColorStyle: S.optional(__S(39, __c4, 7)),
-          dataSourceSheetProperties: S.optional(__S(200, __c25, 0)),
-          hidden: S.optional(S.Boolean),
-          sheetType: S.optional(S.String),
-          index: S.optional(S.Number),
-          sheetId: S.optional(S.Number),
-          gridProperties: S.optional(__S(201, __c25, 1)),
-          tabColor: S.optional(__S(38, __c4, 6)),
-          title: S.optional(S.String),
-          rightToLeft: S.optional(S.Boolean),
-        }),
-      ).annotate({ identifier: "SheetProperties" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          fields: S.optional(S.String),
-          properties: S.optional(__S(202, __c25, 2)),
-        }),
-      ).annotate({
-        identifier: "UpdateSheetPropertiesRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          index: S.optional(S.Number),
-          sheetId: S.optional(S.Number),
-        }),
-      ).annotate({
-        identifier: "DeleteConditionalFormatRuleRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          range: S.optional(__S(9, __c1, 1)),
-          sortSpecs: S.optional(__S(60, __c7, 4)),
-        }),
-      ).annotate({ identifier: "SortRangeRequest" });
-    case 6:
-      return S.Array(__S(187, __c23, 3));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          values: S.optional(__S(206, __c25, 6)),
+          values: S.optional(__S(280, __c8, 24)),
         }),
       ).annotate({ identifier: "RowData" });
-  }
-}
-function __c26(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(207, __c25, 7));
-    case 1:
+    case 26:
+      return S.Array(__S(281, __c8, 25));
+    case 27:
       return S.suspend(() =>
         S.Struct({
-          fields: S.optional(S.String),
-          range: S.optional(__S(9, __c1, 1)),
-          start: S.optional(__S(86, __c10, 6)),
-          rows: S.optional(__S(208, __c26, 0)),
-        }),
-      ).annotate({ identifier: "UpdateCellsRequest" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          sortSpecs: S.optional(__S(60, __c7, 4)),
+          sortSpecs: S.optional(__S(174, __c5, 14)),
           tableId: S.optional(S.String),
-          range: S.optional(__S(9, __c1, 1)),
-          criteria: S.optional(__S(58, __c7, 2)),
-          filterSpecs: S.optional(__S(62, __c7, 6)),
+          range: S.optional(__S(960, __c30, 0)),
+          criteria: S.optional(__S(172, __c5, 12)),
+          filterSpecs: S.optional(__S(176, __c5, 16)),
         }),
       ).annotate({ identifier: "BasicFilter" });
-    case 3:
+    case 28:
       return S.suspend(() =>
         S.Struct({
-          filter: S.optional(__S(210, __c26, 2)),
-        }),
-      ).annotate({ identifier: "SetBasicFilterRequest" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          destination: S.optional(__S(86, __c10, 6)),
-          pasteType: S.optional(S.String),
-          source: S.optional(__S(9, __c1, 1)),
-        }),
-      ).annotate({ identifier: "CutPasteRequest" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          index: S.optional(S.Number),
-          rule: S.optional(__S(194, __c24, 2)),
-        }),
-      ).annotate({
-        identifier: "AddConditionalFormatRuleRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          properties: S.optional(__S(202, __c25, 2)),
-        }),
-      ).annotate({ identifier: "AddSheetRequest" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          fields: S.optional(S.String),
-          table: S.optional(__S(47, __c5, 7)),
-        }),
-      ).annotate({ identifier: "UpdateTableRequest" });
-  }
-}
-function __c27(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          objectId: S.optional(S.Number),
-          border: S.optional(__S(144, __c18, 0)),
-          fields: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "UpdateEmbeddedObjectBorderRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          color: S.optional(__S(39, __c4, 7)),
+          color: S.optional(__S(129, __c4, 1)),
           colorType: S.optional(S.String),
         }),
       ).annotate({ identifier: "ThemeColorPair" });
-    case 2:
-      return S.Array(__S(217, __c27, 1));
-    case 3:
+    case 29:
+      return S.Array(__S(284, __c8, 28));
+    case 30:
       return S.suspend(() =>
         S.Struct({
           primaryFontFamily: S.optional(S.String),
-          themeColors: S.optional(__S(218, __c27, 2)),
+          themeColors: S.optional(__S(285, __c8, 29)),
         }),
       ).annotate({ identifier: "SpreadsheetTheme" });
-    case 4:
+    case 31:
       return S.suspend(() =>
         S.Struct({
           maxIterations: S.optional(S.Number),
@@ -5916,125 +6036,57 @@ function __c27(j: number): any {
       ).annotate({
         identifier: "IterativeCalculationSettings",
       });
-    case 5:
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          defaultFormat: S.optional(__S(156, __c19, 4)),
+          defaultFormat: S.optional(__S(244, __c7, 20)),
           autoRecalc: S.optional(S.String),
           importFunctionsExternalUrlAccessAllowed: S.optional(S.Boolean),
           timeZone: S.optional(S.String),
           locale: S.optional(S.String),
           title: S.optional(S.String),
-          spreadsheetTheme: S.optional(__S(219, __c27, 3)),
-          iterativeCalculationSettings: S.optional(__S(220, __c27, 4)),
+          spreadsheetTheme: S.optional(__S(286, __c8, 30)),
+          iterativeCalculationSettings: S.optional(__S(287, __c8, 31)),
         }),
       ).annotate({ identifier: "SpreadsheetProperties" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          fields: S.optional(S.String),
-          properties: S.optional(__S(221, __c27, 5)),
-        }),
-      ).annotate({
-        identifier: "UpdateSpreadsheetPropertiesRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          dataFilters: S.optional(__S(11, __c1, 3)),
-          developerMetadata: S.optional(__S(53, __c6, 5)),
-          fields: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "UpdateDeveloperMetadataRequest",
-      });
-  }
-}
-function __c28(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          firstBandColorStyle: S.optional(__S(39, __c4, 7)),
-          headerColor: S.optional(__S(38, __c4, 6)),
-          secondBandColor: S.optional(__S(38, __c4, 6)),
-          headerColorStyle: S.optional(__S(39, __c4, 7)),
-          footerColor: S.optional(__S(38, __c4, 6)),
-          footerColorStyle: S.optional(__S(39, __c4, 7)),
-          secondBandColorStyle: S.optional(__S(39, __c4, 7)),
-          firstBandColor: S.optional(__S(38, __c4, 6)),
-        }),
-      ).annotate({ identifier: "BandingProperties" });
     case 1:
       return S.suspend(() =>
         S.Struct({
-          columnProperties: S.optional(__S(224, __c28, 0)),
-          bandedRangeReference: S.optional(S.String),
-          range: S.optional(__S(9, __c1, 1)),
-          bandedRangeId: S.optional(S.Number),
-          rowProperties: S.optional(__S(224, __c28, 0)),
+          firstBandColorStyle: S.optional(__S(129, __c4, 1)),
+          headerColor: S.optional(__S(128, __c4, 0)),
+          secondBandColor: S.optional(__S(128, __c4, 0)),
+          headerColorStyle: S.optional(__S(129, __c4, 1)),
+          footerColor: S.optional(__S(128, __c4, 0)),
+          footerColorStyle: S.optional(__S(129, __c4, 1)),
+          secondBandColorStyle: S.optional(__S(129, __c4, 1)),
+          firstBandColor: S.optional(__S(128, __c4, 0)),
         }),
-      ).annotate({ identifier: "BandedRange" });
+      ).annotate({ identifier: "BandingProperties" });
     case 2:
       return S.suspend(() =>
         S.Struct({
-          bandedRange: S.optional(__S(225, __c28, 1)),
-          fields: S.optional(S.String),
+          columnProperties: S.optional(__S(289, __c9, 1)),
+          bandedRangeReference: S.optional(S.String),
+          range: S.optional(__S(960, __c30, 0)),
+          bandedRangeId: S.optional(S.Number),
+          rowProperties: S.optional(__S(289, __c9, 1)),
         }),
-      ).annotate({ identifier: "UpdateBandingRequest" });
+      ).annotate({ identifier: "BandedRange" });
     case 3:
       return S.suspend(() =>
         S.Struct({
-          sheetId: S.optional(S.String),
-          chartId: S.optional(S.Number),
-          dataSourcePivotTableAnchorCell: S.optional(__S(86, __c10, 6)),
-          dataSourceFormulaCell: S.optional(__S(86, __c10, 6)),
-          dataSourceTableAnchorCell: S.optional(__S(86, __c10, 6)),
-        }),
-      ).annotate({
-        identifier: "DataSourceObjectReference",
-      });
-    case 4:
-      return S.Array(__S(227, __c28, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          references: S.optional(__S(228, __c28, 4)),
-        }),
-      ).annotate({
-        identifier: "DataSourceObjectReferences",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          references: S.optional(__S(229, __c28, 5)),
-          isAll: S.optional(S.Boolean),
-          dataSourceId: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "CancelDataSourceRefreshRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          dataSourceId: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "DeleteDataSourceRequest" });
-  }
-}
-function __c29(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
           name: S.optional(S.String),
-          range: S.optional(__S(9, __c1, 1)),
+          range: S.optional(__S(960, __c30, 0)),
           namedRangeId: S.optional(S.String),
         }),
       ).annotate({ identifier: "DataSourceParameter" });
-    case 1:
-      return S.Array(__S(232, __c29, 0));
-    case 2:
+    case 4:
+      return S.Array(__S(291, __c9, 3));
+    case 5:
       return S.suspend(() =>
         S.Struct({
           explore: S.optional(S.String),
@@ -6042,7 +6094,7 @@ function __c29(j: number): any {
           model: S.optional(S.String),
         }),
       ).annotate({ identifier: "LookerDataSourceSpec" });
-    case 3:
+    case 6:
       return S.suspend(() =>
         S.Struct({
           tableProjectId: S.optional(S.String),
@@ -6050,595 +6102,130 @@ function __c29(j: number): any {
           tableId: S.optional(S.String),
         }),
       ).annotate({ identifier: "BigQueryTableSpec" });
-    case 4:
+    case 7:
       return S.suspend(() =>
         S.Struct({
           rawQuery: S.optional(S.String),
         }),
       ).annotate({ identifier: "BigQueryQuerySpec" });
-    case 5:
+    case 8:
       return S.suspend(() =>
         S.Struct({
-          tableSpec: S.optional(__S(235, __c29, 3)),
+          tableSpec: S.optional(__S(294, __c9, 6)),
           projectId: S.optional(S.String),
-          querySpec: S.optional(__S(236, __c29, 4)),
+          querySpec: S.optional(__S(295, __c9, 7)),
         }),
       ).annotate({ identifier: "BigQueryDataSourceSpec" });
-    case 6:
+    case 9:
       return S.suspend(() =>
         S.Struct({
-          parameters: S.optional(__S(233, __c29, 1)),
-          looker: S.optional(__S(234, __c29, 2)),
-          bigQuery: S.optional(__S(237, __c29, 5)),
+          parameters: S.optional(__S(292, __c9, 4)),
+          looker: S.optional(__S(293, __c9, 5)),
+          bigQuery: S.optional(__S(296, __c9, 8)),
         }),
       ).annotate({ identifier: "DataSourceSpec" });
-    case 7:
+    case 10:
       return S.suspend(() =>
         S.Struct({
-          calculatedColumns: S.optional(__S(199, __c24, 7)),
+          calculatedColumns: S.optional(__S(133, __c4, 5)),
           dataSourceId: S.optional(S.String),
           sheetId: S.optional(S.Number),
-          spec: S.optional(__S(238, __c29, 6)),
+          spec: S.optional(__S(297, __c9, 9)),
         }),
       ).annotate({ identifier: "DataSource" });
-  }
-}
-function __c30(j: number): any {
-  switch (j) {
-    case 0:
+    case 11:
       return S.suspend(() =>
         S.Struct({
-          dataSource: S.optional(__S(239, __c29, 7)),
-        }),
-      ).annotate({ identifier: "AddDataSourceRequest" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          developerMetadata: S.optional(__S(53, __c6, 5)),
-        }),
-      ).annotate({
-        identifier: "CreateDeveloperMetadataRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          namedRangeId: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "DeleteNamedRangeRequest" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          newSheetName: S.optional(S.String),
-          sourceSheetId: S.optional(S.Number),
-          insertSheetIndex: S.optional(S.Number),
-          newSheetId: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "DuplicateSheetRequest" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          bandedRange: S.optional(__S(225, __c28, 1)),
-        }),
-      ).annotate({ identifier: "AddBandingRequest" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          references: S.optional(__S(229, __c28, 5)),
-          isAll: S.optional(S.Boolean),
-          force: S.optional(S.Boolean),
-          dataSourceId: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "RefreshDataSourceRequest" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          filterId: S.optional(S.Number),
-        }),
-      ).annotate({
-        identifier: "DuplicateFilterViewRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          dimensions: S.optional(__S(6, __c0, 6)),
-          dataSourceSheetDimensions: S.optional(__S(52, __c6, 4)),
-        }),
-      ).annotate({
-        identifier: "AutoResizeDimensionsRequest",
-      });
-  }
-}
-function __c31(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          bandedRangeId: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "DeleteBandingRequest" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          filter: S.optional(__S(63, __c7, 7)),
-        }),
-      ).annotate({ identifier: "AddFilterViewRequest" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          commentId: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "DeleteCommentRequest" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          dataSource: S.optional(__S(239, __c29, 7)),
-          fields: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "UpdateDataSourceRequest" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          source: S.optional(__S(6, __c0, 6)),
-          destinationIndex: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "MoveDimensionRequest" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          sheetId: S.optional(S.Number),
-          rows: S.optional(__S(208, __c26, 0)),
-          fields: S.optional(S.String),
-          tableId: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "AppendCellsRequest" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          matchEntireCell: S.optional(S.Boolean),
-          allSheets: S.optional(S.Boolean),
-          searchByRegex: S.optional(S.Boolean),
-          range: S.optional(__S(9, __c1, 1)),
-          sheetId: S.optional(S.Number),
-          includeFormulas: S.optional(S.Boolean),
-          replacement: S.optional(S.String),
-          find: S.optional(S.String),
-          matchCase: S.optional(S.Boolean),
-        }),
-      ).annotate({ identifier: "FindReplaceRequest" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          filterId: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "DeleteFilterViewRequest" });
-  }
-}
-function __c32(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          dataFilter: S.optional(__S(10, __c1, 2)),
-        }),
-      ).annotate({
-        identifier: "DeleteDeveloperMetadataRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          position: S.optional(__S(88, __c11, 0)),
+          position: S.optional(__S(188, __c5, 28)),
           slicerId: S.optional(S.Number),
-          spec: S.optional(__S(139, __c17, 3)),
+          spec: S.optional(__S(236, __c7, 12)),
         }),
       ).annotate({ identifier: "Slicer" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          slicer: S.optional(__S(257, __c32, 1)),
-        }),
-      ).annotate({ identifier: "AddSlicerRequest" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          clearBasicFilter: S.optional(__S(34, __c4, 2)),
-          copyPaste: S.optional(__S(35, __c4, 3)),
-          autoFill: S.optional(__S(37, __c4, 5)),
-          addTable: S.optional(__S(48, __c6, 0)),
-          deleteRange: S.optional(__S(49, __c6, 1)),
-          updateDimensionProperties: S.optional(__S(56, __c7, 0)),
-          updateFilterView: S.optional(__S(64, __c8, 0)),
-          deleteDuplicates: S.optional(__S(66, __c8, 2)),
-          appendDimension: S.optional(__S(67, __c8, 3)),
-          addCommentReply: S.optional(__S(70, __c8, 6)),
-          randomizeRange: S.optional(__S(71, __c8, 7)),
-          updateDimensionGroup: S.optional(__S(73, __c9, 1)),
-          insertDimension: S.optional(__S(74, __c9, 2)),
-          deleteDimensionGroup: S.optional(__S(75, __c9, 3)),
-          updateBorders: S.optional(__S(77, __c9, 5)),
-          mergeCells: S.optional(__S(78, __c9, 6)),
-          updateProtectedRange: S.optional(__S(82, __c10, 2)),
-          deleteEmbeddedObject: S.optional(__S(83, __c10, 3)),
-          addNamedRange: S.optional(__S(85, __c10, 5)),
-          updateEmbeddedObjectPosition: S.optional(__S(89, __c11, 1)),
-          updateChartSpec: S.optional(__S(138, __c17, 2)),
-          updateSlicerSpec: S.optional(__S(140, __c17, 4)),
-          pasteData: S.optional(__S(141, __c17, 5)),
-          setDataValidation: S.optional(__S(143, __c17, 7)),
-          addChart: S.optional(__S(146, __c18, 2)),
-          updateNamedRange: S.optional(__S(147, __c18, 3)),
-          textToColumns: S.optional(__S(148, __c18, 4)),
-          deleteProtectedRange: S.optional(__S(149, __c18, 5)),
-          updateCommentPost: S.optional(__S(150, __c18, 6)),
-          insertComment: S.optional(__S(151, __c18, 7)),
-          repeatCell: S.optional(__S(188, __c23, 4)),
-          deleteSheet: S.optional(__S(34, __c4, 2)),
-          deleteTable: S.optional(__S(189, __c23, 5)),
-          addProtectedRange: S.optional(__S(190, __c23, 6)),
-          updateConditionalFormatRule: S.optional(__S(195, __c24, 3)),
-          deleteDimension: S.optional(__S(196, __c24, 4)),
-          deleteCommentReply: S.optional(__S(197, __c24, 5)),
-          updateSheetProperties: S.optional(__S(203, __c25, 3)),
-          deleteConditionalFormatRule: S.optional(__S(204, __c25, 4)),
-          sortRange: S.optional(__S(205, __c25, 5)),
-          updateCells: S.optional(__S(209, __c26, 1)),
-          setBasicFilter: S.optional(__S(211, __c26, 3)),
-          unmergeCells: S.optional(__S(71, __c8, 7)),
-          cutPaste: S.optional(__S(212, __c26, 4)),
-          addConditionalFormatRule: S.optional(__S(213, __c26, 5)),
-          addSheet: S.optional(__S(214, __c26, 6)),
-          updateTable: S.optional(__S(215, __c26, 7)),
-          updateEmbeddedObjectBorder: S.optional(__S(216, __c27, 0)),
-          trimWhitespace: S.optional(__S(71, __c8, 7)),
-          updateSpreadsheetProperties: S.optional(__S(222, __c27, 6)),
-          updateDeveloperMetadata: S.optional(__S(223, __c27, 7)),
-          insertRange: S.optional(__S(49, __c6, 1)),
-          updateBanding: S.optional(__S(226, __c28, 2)),
-          cancelDataSourceRefresh: S.optional(__S(230, __c28, 6)),
-          deleteDataSource: S.optional(__S(231, __c28, 7)),
-          addDataSource: S.optional(__S(240, __c30, 0)),
-          createDeveloperMetadata: S.optional(__S(241, __c30, 1)),
-          deleteNamedRange: S.optional(__S(242, __c30, 2)),
-          duplicateSheet: S.optional(__S(243, __c30, 3)),
-          addBanding: S.optional(__S(244, __c30, 4)),
-          refreshDataSource: S.optional(__S(245, __c30, 5)),
-          duplicateFilterView: S.optional(__S(246, __c30, 6)),
-          autoResizeDimensions: S.optional(__S(247, __c30, 7)),
-          deleteBanding: S.optional(__S(248, __c31, 0)),
-          addFilterView: S.optional(__S(249, __c31, 1)),
-          deleteComment: S.optional(__S(250, __c31, 2)),
-          updateDataSource: S.optional(__S(251, __c31, 3)),
-          addDimensionGroup: S.optional(__S(196, __c24, 4)),
-          moveDimension: S.optional(__S(252, __c31, 4)),
-          appendCells: S.optional(__S(253, __c31, 5)),
-          findReplace: S.optional(__S(254, __c31, 6)),
-          deleteFilterView: S.optional(__S(255, __c31, 7)),
-          deleteDeveloperMetadata: S.optional(__S(256, __c32, 0)),
-          addSlicer: S.optional(__S(258, __c32, 2)),
-        }),
-      ).annotate({ identifier: "Request" });
-    case 4:
-      return S.Array(__S(259, __c32, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          includeSpreadsheetInResponse: S.optional(S.Boolean),
-          requests: S.optional(__S(260, __c32, 4)),
-          responseRanges: S.optional(__S(14, __c1, 6)),
-          commentsViewMode: S.optional(S.String),
-          responseIncludeGridData: S.optional(S.Boolean),
-        }),
-      ).annotate({
-        identifier: "BatchUpdateSpreadsheetRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          spreadsheetId: S.String.pipe(T.Label()),
-          body: S.optional(__S(261, __c32, 5).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v4/spreadsheets/{spreadsheetId}:batchUpdate",
-            baseUrl: "https://sheets.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "BatchUpdateSpreadsheetsRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          cellsChangedCount: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "TrimWhitespaceResponse" });
-  }
-}
-function __c33(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(69, __c8, 5));
-    case 1:
+    case 12:
+      return S.Array(__S(179, __c5, 19));
+    case 13:
       return S.suspend(() =>
         S.Struct({
           anchorId: S.optional(S.String),
-          headPost: S.optional(__S(69, __c8, 5)),
-          replies: S.optional(__S(264, __c33, 0)),
+          headPost: S.optional(__S(179, __c5, 19)),
+          replies: S.optional(__S(300, __c9, 12)),
           status: S.optional(S.String),
           commentId: S.optional(S.String),
           plainTextQuote: S.optional(S.String),
         }),
       ).annotate({ identifier: "CommentThread" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          commentThread: S.optional(__S(265, __c33, 1)),
-        }),
-      ).annotate({ identifier: "InsertCommentResponse" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          rule: S.optional(__S(194, __c24, 2)),
-        }),
-      ).annotate({
-        identifier: "DeleteConditionalFormatRuleResponse",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          dataExecutionStatus: S.optional(__S(130, __c16, 2)),
-          dataSource: S.optional(__S(239, __c29, 7)),
-        }),
-      ).annotate({ identifier: "UpdateDataSourceResponse" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          filter: S.optional(__S(63, __c7, 7)),
-        }),
-      ).annotate({
-        identifier: "DuplicateFilterViewResponse",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          post: S.optional(__S(69, __c8, 5)),
-        }),
-      ).annotate({ identifier: "AddCommentReplyResponse" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          developerMetadata: S.optional(__S(54, __c6, 6)),
-        }),
-      ).annotate({
-        identifier: "UpdateDeveloperMetadataResponse",
-      });
-  }
-}
-function __c34(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          state: S.optional(S.String),
-          errorCode: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "RefreshCancellationStatus",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          reference: S.optional(__S(227, __c28, 3)),
-          refreshCancellationStatus: S.optional(__S(272, __c34, 0)),
-        }),
-      ).annotate({
-        identifier: "CancelDataSourceRefreshStatus",
-      });
-    case 2:
-      return S.Array(__S(273, __c34, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          statuses: S.optional(__S(274, __c34, 2)),
-        }),
-      ).annotate({
-        identifier: "CancelDataSourceRefreshResponse",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          position: S.optional(__S(88, __c11, 0)),
-        }),
-      ).annotate({
-        identifier: "UpdateEmbeddedObjectPositionResponse",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          protectedRange: S.optional(__S(81, __c10, 1)),
-        }),
-      ).annotate({
-        identifier: "AddProtectedRangeResponse",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          formulasChanged: S.optional(S.Number),
-          sheetsChanged: S.optional(S.Number),
-          valuesChanged: S.optional(S.Number),
-          occurrencesChanged: S.optional(S.Number),
-          rowsChanged: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "FindReplaceResponse" });
-    case 7:
-      return S.Array(__S(72, __c9, 0));
-  }
-}
-function __c35(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          dimensionGroups: S.optional(__S(279, __c34, 7)),
-        }),
-      ).annotate({
-        identifier: "AddDimensionGroupResponse",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          duplicatesRemovedCount: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "DeleteDuplicatesResponse" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          oldRule: S.optional(__S(194, __c24, 2)),
-          oldIndex: S.optional(S.Number),
-          newIndex: S.optional(S.Number),
-          newRule: S.optional(__S(194, __c24, 2)),
-        }),
-      ).annotate({
-        identifier: "UpdateConditionalFormatRuleResponse",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          reference: S.optional(__S(227, __c28, 3)),
-          dataExecutionStatus: S.optional(__S(130, __c16, 2)),
-        }),
-      ).annotate({
-        identifier: "RefreshDataSourceObjectExecutionStatus",
-      });
-    case 4:
-      return S.Array(__S(283, __c35, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          statuses: S.optional(__S(284, __c35, 4)),
-        }),
-      ).annotate({
-        identifier: "RefreshDataSourceResponse",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          deletedDeveloperMetadata: S.optional(__S(54, __c6, 6)),
-        }),
-      ).annotate({
-        identifier: "DeleteDeveloperMetadataResponse",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          trimWhitespace: S.optional(__S(263, __c32, 7)),
-          addTable: S.optional(__S(48, __c6, 0)),
-          addFilterView: S.optional(__S(249, __c31, 1)),
-          insertComment: S.optional(__S(266, __c33, 2)),
-          addBanding: S.optional(__S(244, __c30, 4)),
-          deleteConditionalFormatRule: S.optional(__S(267, __c33, 3)),
-          addSheet: S.optional(__S(214, __c26, 6)),
-          updateDataSource: S.optional(__S(268, __c33, 4)),
-          duplicateFilterView: S.optional(__S(269, __c33, 5)),
-          createDeveloperMetadata: S.optional(__S(241, __c30, 1)),
-          addCommentReply: S.optional(__S(270, __c33, 6)),
-          updateDeveloperMetadata: S.optional(__S(271, __c33, 7)),
-          cancelDataSourceRefresh: S.optional(__S(275, __c34, 3)),
-          updateEmbeddedObjectPosition: S.optional(__S(276, __c34, 4)),
-          addProtectedRange: S.optional(__S(277, __c34, 5)),
-          findReplace: S.optional(__S(278, __c34, 6)),
-          addChart: S.optional(__S(146, __c18, 2)),
-          addDimensionGroup: S.optional(__S(280, __c35, 0)),
-          addDataSource: S.optional(__S(268, __c33, 4)),
-          addNamedRange: S.optional(__S(85, __c10, 5)),
-          addSlicer: S.optional(__S(258, __c32, 2)),
-          deleteDuplicates: S.optional(__S(281, __c35, 1)),
-          updateConditionalFormatRule: S.optional(__S(282, __c35, 2)),
-          duplicateSheet: S.optional(__S(214, __c26, 6)),
-          refreshDataSource: S.optional(__S(285, __c35, 5)),
-          deleteDimensionGroup: S.optional(__S(280, __c35, 0)),
-          deleteDeveloperMetadata: S.optional(__S(286, __c35, 6)),
-        }),
-      ).annotate({ identifier: "Response" });
-  }
-}
-function __c36(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(287, __c35, 7));
-    case 1:
-      return S.Array(__S(239, __c29, 7));
-    case 2:
-      return S.Array(__S(265, __c33, 1));
-    case 3:
-      return S.Array(__S(145, __c18, 1));
-    case 4:
-      return S.Array(__S(194, __c24, 2));
-    case 5:
-      return S.Array(__S(225, __c28, 1));
-    case 6:
-      return S.Array(__S(47, __c5, 7));
-    case 7:
-      return S.Array(__S(63, __c7, 7));
-  }
-}
-function __c37(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(81, __c10, 1));
-    case 1:
-      return S.Array(__S(257, __c32, 1));
-    case 2:
-      return S.Array(__S(55, __c6, 7));
-    case 3:
+    case 14:
+      return S.Array(__S(180, __c5, 20));
+    case 15:
+      return S.Array(__S(298, __c9, 10));
+    case 16:
+      return S.Array(__S(301, __c9, 13));
+    case 17:
+      return S.Array(__S(239, __c7, 15));
+    case 18:
+      return S.Array(__S(279, __c8, 23));
+    case 19:
+      return S.Array(__S(290, __c9, 2));
+    case 20:
+      return S.Array(__S(167, __c5, 7));
+    case 21:
+      return S.Array(__S(177, __c5, 17));
+    case 22:
+      return S.Array(__S(184, __c5, 24));
+    case 23:
+      return S.Array(__S(299, __c9, 11));
+    case 24:
+      return S.Array(__S(170, __c5, 10));
+    case 25:
       return S.suspend(() =>
         S.Struct({
           startColumn: S.optional(S.Number),
-          columnMetadata: S.optional(__S(298, __c37, 2)),
+          columnMetadata: S.optional(__S(312, __c9, 24)),
           startRow: S.optional(S.Number),
-          rowData: S.optional(__S(208, __c26, 0)),
-          rowMetadata: S.optional(__S(298, __c37, 2)),
+          rowData: S.optional(__S(282, __c8, 26)),
+          rowMetadata: S.optional(__S(312, __c9, 24)),
         }),
       ).annotate({ identifier: "GridData" });
-    case 4:
-      return S.Array(__S(299, __c37, 3));
-    case 5:
+    case 26:
+      return S.Array(__S(313, __c9, 25));
+    case 27:
       return S.suspend(() =>
         S.Struct({
           anchorId: S.optional(S.String),
-          range: S.optional(__S(9, __c1, 1)),
+          range: S.optional(__S(960, __c30, 0)),
         }),
       ).annotate({ identifier: "CommentAnchor" });
-    case 6:
-      return S.Array(__S(301, __c37, 5));
-    case 7:
+    case 28:
+      return S.Array(__S(315, __c9, 27));
+    case 29:
       return S.suspend(() =>
         S.Struct({
-          charts: S.optional(__S(291, __c36, 3)),
-          conditionalFormats: S.optional(__S(292, __c36, 4)),
-          properties: S.optional(__S(202, __c25, 2)),
-          bandedRanges: S.optional(__S(293, __c36, 5)),
-          tables: S.optional(__S(294, __c36, 6)),
-          merges: S.optional(__S(79, __c9, 7)),
-          filterViews: S.optional(__S(295, __c36, 7)),
-          developerMetadata: S.optional(__S(54, __c6, 6)),
-          protectedRanges: S.optional(__S(296, __c37, 0)),
-          basicFilter: S.optional(__S(210, __c26, 2)),
-          slicers: S.optional(__S(297, __c37, 1)),
-          data: S.optional(__S(300, __c37, 4)),
-          rowGroups: S.optional(__S(279, __c34, 7)),
-          columnGroups: S.optional(__S(279, __c34, 7)),
-          commentAnchors: S.optional(__S(302, __c37, 6)),
+          charts: S.optional(__S(305, __c9, 17)),
+          conditionalFormats: S.optional(__S(306, __c9, 18)),
+          properties: S.optional(__S(136, __c4, 8)),
+          bandedRanges: S.optional(__S(307, __c9, 19)),
+          tables: S.optional(__S(308, __c9, 20)),
+          merges: S.optional(__S(182, __c5, 22)),
+          filterViews: S.optional(__S(309, __c9, 21)),
+          developerMetadata: S.optional(__S(169, __c5, 9)),
+          protectedRanges: S.optional(__S(310, __c9, 22)),
+          basicFilter: S.optional(__S(283, __c8, 27)),
+          slicers: S.optional(__S(311, __c9, 23)),
+          data: S.optional(__S(314, __c9, 26)),
+          rowGroups: S.optional(__S(302, __c9, 14)),
+          columnGroups: S.optional(__S(302, __c9, 14)),
+          commentAnchors: S.optional(__S(316, __c9, 28)),
         }),
       ).annotate({ identifier: "Sheet" });
+    case 30:
+      return S.Array(__S(317, __c9, 29));
+    case 31:
+      return S.Array(__S(185, __c5, 25));
   }
 }
-function __c38(j: number): any {
+function __c10(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(303, __c37, 7));
-    case 1:
-      return S.Array(__S(84, __c10, 4));
-    case 2:
       return S.suspend(() =>
         S.Struct({
           minutes: S.optional(S.Number),
@@ -6647,103 +6234,106 @@ function __c38(j: number): any {
           nanos: S.optional(S.Number),
         }),
       ).annotate({ identifier: "TimeOfDay" });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          startTime: S.optional(__S(306, __c38, 2)),
+          startTime: S.optional(__S(320, __c10, 0)),
         }),
       ).annotate({
         identifier: "DataSourceRefreshDailySchedule",
       });
-    case 4:
+    case 2:
       return S.Array(S.String);
-    case 5:
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          daysOfWeek: S.optional(__S(308, __c38, 4)),
-          startTime: S.optional(__S(306, __c38, 2)),
+          daysOfWeek: S.optional(__S(322, __c10, 2)),
+          startTime: S.optional(__S(320, __c10, 0)),
         }),
       ).annotate({
         identifier: "DataSourceRefreshWeeklySchedule",
       });
-    case 6:
+    case 4:
       return S.suspend(() =>
         S.Struct({
           startTime: S.optional(S.String),
           endTime: S.optional(S.String),
         }),
       ).annotate({ identifier: "Interval" });
-    case 7:
+    case 5:
       return S.Array(S.Number);
-  }
-}
-function __c39(j: number): any {
-  switch (j) {
-    case 0:
+    case 6:
       return S.suspend(() =>
         S.Struct({
-          daysOfMonth: S.optional(__S(311, __c38, 7)),
-          startTime: S.optional(__S(306, __c38, 2)),
+          daysOfMonth: S.optional(__S(325, __c10, 5)),
+          startTime: S.optional(__S(320, __c10, 0)),
         }),
       ).annotate({
         identifier: "DataSourceRefreshMonthlySchedule",
       });
-    case 1:
+    case 7:
       return S.suspend(() =>
         S.Struct({
           enabled: S.optional(S.Boolean),
-          dailySchedule: S.optional(__S(307, __c38, 3)),
-          weeklySchedule: S.optional(__S(309, __c38, 5)),
-          nextRun: S.optional(__S(310, __c38, 6)),
-          monthlySchedule: S.optional(__S(312, __c39, 0)),
+          dailySchedule: S.optional(__S(321, __c10, 1)),
+          weeklySchedule: S.optional(__S(323, __c10, 3)),
+          nextRun: S.optional(__S(324, __c10, 4)),
+          monthlySchedule: S.optional(__S(326, __c10, 6)),
           refreshScope: S.optional(S.String),
         }),
       ).annotate({
         identifier: "DataSourceRefreshSchedule",
       });
-    case 2:
-      return S.Array(__S(313, __c39, 1));
-    case 3:
+    case 8:
+      return S.Array(__S(327, __c10, 7));
+    case 9:
       return S.suspend(() =>
         S.Struct({
-          dataSources: S.optional(__S(289, __c36, 1)),
-          properties: S.optional(__S(221, __c27, 5)),
+          dataSources: S.optional(__S(303, __c9, 15)),
+          properties: S.optional(__S(288, __c9, 0)),
           spreadsheetId: S.optional(S.String),
           spreadsheetUrl: S.optional(S.String),
-          developerMetadata: S.optional(__S(54, __c6, 6)),
-          comments: S.optional(__S(290, __c36, 2)),
+          developerMetadata: S.optional(__S(169, __c5, 9)),
+          comments: S.optional(__S(304, __c9, 16)),
           commentsViewMode: S.optional(S.String),
-          sheets: S.optional(__S(304, __c38, 0)),
-          namedRanges: S.optional(__S(305, __c38, 1)),
-          dataSourceSchedules: S.optional(__S(314, __c39, 2)),
+          sheets: S.optional(__S(318, __c9, 30)),
+          namedRanges: S.optional(__S(319, __c9, 31)),
+          dataSourceSchedules: S.optional(__S(328, __c10, 8)),
         }),
       ).annotate({ identifier: "Spreadsheet" });
-    case 4:
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          replies: S.optional(__S(288, __c36, 0)),
-          spreadsheetId: S.optional(S.String),
-          commentUpdateState: S.optional(S.String),
-          updatedSpreadsheet: S.optional(__S(315, __c39, 3)),
+          visibility: S.optional(S.String),
+          metadataValue: S.optional(S.String),
+          metadataId: S.optional(S.Number),
+          location: S.optional(__S(929, __c29, 1)),
+          metadataKey: S.optional(S.String),
         }),
-      ).annotate({
-        identifier: "BatchUpdateSpreadsheetResponse",
-      });
-    case 5:
+      ).annotate({ identifier: "DeveloperMetadata" });
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           includeValuesInResponse: S.optional(S.Boolean),
-          data: S.optional(__S(25, __c3, 1)),
+          data: S.optional(__S(1120, __c35, 0)),
           responseDateTimeRenderOption: S.optional(S.String),
           valueInputOption: S.optional(S.String),
           responseValueRenderOption: S.optional(S.String),
         }),
       ).annotate({ identifier: "BatchUpdateValuesRequest" });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           spreadsheetId: S.String.pipe(T.Label()),
-          body: S.optional(__S(317, __c39, 5).pipe(T.HttpBody())),
+          body: S.optional(__S(384, __c12, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -6754,13 +6344,9 @@ function __c39(j: number): any {
       ).annotate({
         identifier: "BatchUpdateSpreadsheetsValuesRequest",
       });
-    case 7:
-      return S.Array(__S(4, __c0, 4));
-  }
-}
-function __c40(j: number): any {
-  switch (j) {
-    case 0:
+    case 2:
+      return S.Array(__S(736, __c23, 0));
+    case 3:
       return S.suspend(() =>
         S.Struct({
           spreadsheetId: S.optional(S.String),
@@ -6768,21 +6354,25 @@ function __c40(j: number): any {
           totalUpdatedSheets: S.optional(S.Number),
           totalUpdatedColumns: S.optional(S.Number),
           totalUpdatedCells: S.optional(S.Number),
-          responses: S.optional(__S(319, __c39, 7)),
+          responses: S.optional(__S(386, __c12, 2)),
         }),
       ).annotate({
         identifier: "BatchUpdateValuesResponse",
       });
-    case 1:
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "ClearValuesRequest",
       });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           range: S.String.pipe(T.Label()),
           spreadsheetId: S.String.pipe(T.Label()),
-          body: S.optional(__S(321, __c40, 1).pipe(T.HttpBody())),
+          body: S.optional(__S(416, __c13, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -6793,14 +6383,18 @@ function __c40(j: number): any {
       ).annotate({
         identifier: "ClearSpreadsheetsValuesRequest",
       });
-    case 3:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           spreadsheetId: S.optional(S.String),
           clearedRange: S.optional(S.String),
         }),
       ).annotate({ identifier: "ClearValuesResponse" });
-    case 4:
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           destinationSpreadsheetId: S.optional(S.String),
@@ -6808,12 +6402,12 @@ function __c40(j: number): any {
       ).annotate({
         identifier: "CopySheetToAnotherSpreadsheetRequest",
       });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           sheetId: S.Number.pipe(T.Label()),
           spreadsheetId: S.String.pipe(T.Label()),
-          body: S.optional(__S(324, __c40, 4).pipe(T.HttpBody())),
+          body: S.optional(__S(448, __c14, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -6824,10 +6418,14 @@ function __c40(j: number): any {
       ).annotate({
         identifier: "CopyToSpreadsheetsSheetsRequest",
       });
-    case 6:
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          body: S.optional(__S(315, __c39, 3).pipe(T.HttpBody())),
+          body: S.optional(__S(329, __c10, 9).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -6838,26 +6436,26 @@ function __c40(j: number): any {
       ).annotate({
         identifier: "CreateSpreadsheetsRequest",
       });
-    case 7:
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           includeGridData: S.optional(S.Boolean),
-          dataFilters: S.optional(__S(11, __c1, 3)),
+          dataFilters: S.optional(__S(896, __c28, 0)),
           excludeTablesInBandedRanges: S.optional(S.Boolean),
           commentsViewMode: S.optional(S.String),
         }),
       ).annotate({
         identifier: "GetSpreadsheetByDataFilterRequest",
       });
-  }
-}
-function __c41(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           spreadsheetId: S.String.pipe(T.Label()),
-          body: S.optional(__S(327, __c40, 7).pipe(T.HttpBody())),
+          body: S.optional(__S(512, __c16, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -6868,13 +6466,17 @@ function __c41(j: number): any {
       ).annotate({
         identifier: "GetByDataFilterSpreadsheetsRequest",
       });
-    case 1:
+  }
+}
+function __c17(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           includeGridData: S.optional(S.Boolean.pipe(T.Query())),
           excludeTablesInBandedRanges: S.optional(S.Boolean.pipe(T.Query())),
           spreadsheetId: S.String.pipe(T.Label()),
-          ranges: S.optional(__S(14, __c1, 6).pipe(T.Query())),
+          ranges: S.optional(__S(864, __c27, 0).pipe(T.Query())),
           commentsViewMode: S.optional(S.String.pipe(T.Query())),
         }).pipe(
           T.Http({
@@ -6884,7 +6486,11 @@ function __c41(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetSpreadsheetsRequest" });
-    case 2:
+  }
+}
+function __c18(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           metadataId: S.Number.pipe(T.Label()),
@@ -6899,7 +6505,11 @@ function __c41(j: number): any {
       ).annotate({
         identifier: "GetSpreadsheetsDeveloperMetadataRequest",
       });
-    case 3:
+  }
+}
+function __c19(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           majorDimension: S.optional(S.String.pipe(T.Query())),
@@ -6917,11 +6527,15 @@ function __c41(j: number): any {
       ).annotate({
         identifier: "GetSpreadsheetsValuesRequest",
       });
-    case 4:
+  }
+}
+function __c20(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           spreadsheetId: S.String.pipe(T.Label()),
-          body: S.optional(__S(12, __c1, 4).pipe(T.HttpBody())),
+          body: S.optional(__S(832, __c26, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -6932,26 +6546,26 @@ function __c41(j: number): any {
       ).annotate({
         identifier: "SearchSpreadsheetsDeveloperMetadataRequest",
       });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          dataFilters: S.optional(__S(11, __c1, 3)),
-          developerMetadata: S.optional(__S(53, __c6, 5)),
+          dataFilters: S.optional(__S(896, __c28, 0)),
+          developerMetadata: S.optional(__S(352, __c11, 0)),
         }),
       ).annotate({ identifier: "MatchedDeveloperMetadata" });
-    case 6:
-      return S.Array(__S(333, __c41, 5));
-    case 7:
+    case 2:
+      return S.Array(__S(641, __c20, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          matchedDeveloperMetadata: S.optional(__S(334, __c41, 6)),
+          matchedDeveloperMetadata: S.optional(__S(642, __c20, 2)),
         }),
       ).annotate({
         identifier: "SearchDeveloperMetadataResponse",
       });
   }
 }
-function __c42(j: number): any {
+function __c21(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -6962,7 +6576,7 @@ function __c42(j: number): any {
           spreadsheetId: S.String.pipe(T.Label()),
           valueInputOption: S.optional(S.String.pipe(T.Query())),
           responseValueRenderOption: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(2, __c0, 2).pipe(T.HttpBody())),
+          body: S.optional(__S(770, __c24, 2).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -6975,7 +6589,368 @@ function __c42(j: number): any {
       });
   }
 }
-
+function __c22(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          includeValuesInResponse: S.optional(S.Boolean.pipe(T.Query())),
+          responseDateTimeRenderOption: S.optional(S.String.pipe(T.Query())),
+          responseValueRenderOption: S.optional(S.String.pipe(T.Query())),
+          valueInputOption: S.optional(S.String.pipe(T.Query())),
+          insertDataOption: S.optional(S.String.pipe(T.Query())),
+          spreadsheetId: S.String.pipe(T.Label()),
+          range: S.String.pipe(T.Label()),
+          body: S.optional(__S(770, __c24, 2).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v4/spreadsheets/{spreadsheetId}/values/{range}:append",
+            baseUrl: "https://sheets.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "AppendSpreadsheetsValuesRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          updates: S.optional(__S(736, __c23, 0)),
+          spreadsheetId: S.optional(S.String),
+          tableRange: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "AppendValuesResponse" });
+  }
+}
+function __c23(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          updatedRange: S.optional(S.String),
+          updatedData: S.optional(__S(770, __c24, 2)),
+          updatedRows: S.optional(S.Number),
+          updatedColumns: S.optional(S.Number),
+          updatedCells: S.optional(S.Number),
+          spreadsheetId: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "UpdateValuesResponse" });
+  }
+}
+function __c24(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.Unknown);
+    case 1:
+      return S.Array(__S(768, __c24, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          values: S.optional(__S(769, __c24, 1)),
+          majorDimension: S.optional(S.String),
+          range: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ValueRange" });
+  }
+}
+function __c25(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          spreadsheetId: S.String.pipe(T.Label()),
+          body: S.optional(__S(832, __c26, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v4/spreadsheets/{spreadsheetId}/values:batchClearByDataFilter",
+            baseUrl: "https://sheets.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "BatchClearByDataFilterSpreadsheetsValuesRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          spreadsheetId: S.optional(S.String),
+          clearedRanges: S.optional(__S(864, __c27, 0)),
+        }),
+      ).annotate({
+        identifier: "BatchClearValuesByDataFilterResponse",
+      });
+  }
+}
+function __c26(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          dataFilters: S.optional(__S(896, __c28, 0)),
+        }),
+      ).annotate({
+        identifier: "BatchClearValuesByDataFilterRequest",
+      });
+  }
+}
+function __c27(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c28(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(993, __c31, 1));
+  }
+}
+function __c29(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          sheetId: S.optional(S.Number),
+          dimension: S.optional(S.String),
+          endIndex: S.optional(S.Number),
+          startIndex: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "DimensionRange" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          sheetId: S.optional(S.Number),
+          spreadsheet: S.optional(S.Boolean),
+          locationType: S.optional(S.String),
+          dimensionRange: S.optional(__S(928, __c29, 0)),
+        }),
+      ).annotate({
+        identifier: "DeveloperMetadataLocation",
+      });
+  }
+}
+function __c30(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          endColumnIndex: S.optional(S.Number),
+          startRowIndex: S.optional(S.Number),
+          endRowIndex: S.optional(S.Number),
+          startColumnIndex: S.optional(S.Number),
+          sheetId: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "GridRange" });
+  }
+}
+function __c31(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          metadataValue: S.optional(S.String),
+          locationType: S.optional(S.String),
+          metadataId: S.optional(S.Number),
+          metadataKey: S.optional(S.String),
+          visibility: S.optional(S.String),
+          metadataLocation: S.optional(__S(929, __c29, 1)),
+          locationMatchingStrategy: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "DeveloperMetadataLookup" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          developerMetadataLookup: S.optional(__S(992, __c31, 0)),
+          a1Range: S.optional(S.String),
+          gridRange: S.optional(__S(960, __c30, 0)),
+        }),
+      ).annotate({ identifier: "DataFilter" });
+  }
+}
+function __c32(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          ranges: S.optional(__S(864, __c27, 0)),
+        }),
+      ).annotate({ identifier: "BatchClearValuesRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          spreadsheetId: S.String.pipe(T.Label()),
+          body: S.optional(__S(1024, __c32, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v4/spreadsheets/{spreadsheetId}/values:batchClear",
+            baseUrl: "https://sheets.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "BatchClearSpreadsheetsValuesRequest",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          spreadsheetId: S.optional(S.String),
+          clearedRanges: S.optional(__S(864, __c27, 0)),
+        }),
+      ).annotate({ identifier: "BatchClearValuesResponse" });
+  }
+}
+function __c33(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          majorDimension: S.optional(S.String),
+          dateTimeRenderOption: S.optional(S.String),
+          dataFilters: S.optional(__S(896, __c28, 0)),
+          valueRenderOption: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "BatchGetValuesByDataFilterRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          spreadsheetId: S.String.pipe(T.Label()),
+          body: S.optional(__S(1056, __c33, 0).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v4/spreadsheets/{spreadsheetId}/values:batchGetByDataFilter",
+            baseUrl: "https://sheets.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "BatchGetByDataFilterSpreadsheetsValuesRequest",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          dataFilters: S.optional(__S(896, __c28, 0)),
+          valueRange: S.optional(__S(770, __c24, 2)),
+        }),
+      ).annotate({ identifier: "MatchedValueRange" });
+    case 3:
+      return S.Array(__S(1058, __c33, 2));
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          spreadsheetId: S.optional(S.String),
+          valueRanges: S.optional(__S(1059, __c33, 3)),
+        }),
+      ).annotate({
+        identifier: "BatchGetValuesByDataFilterResponse",
+      });
+  }
+}
+function __c34(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          majorDimension: S.optional(S.String.pipe(T.Query())),
+          dateTimeRenderOption: S.optional(S.String.pipe(T.Query())),
+          ranges: S.optional(__S(864, __c27, 0).pipe(T.Query())),
+          spreadsheetId: S.String.pipe(T.Label()),
+          valueRenderOption: S.optional(S.String.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v4/spreadsheets/{spreadsheetId}/values:batchGet",
+            baseUrl: "https://sheets.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "BatchGetSpreadsheetsValuesRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          spreadsheetId: S.optional(S.String),
+          valueRanges: S.optional(__S(1120, __c35, 0)),
+        }),
+      ).annotate({ identifier: "BatchGetValuesResponse" });
+  }
+}
+function __c35(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(770, __c24, 2));
+  }
+}
+function __c36(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          dataFilter: S.optional(__S(993, __c31, 1)),
+          majorDimension: S.optional(S.String),
+          values: S.optional(__S(769, __c24, 1)),
+        }),
+      ).annotate({ identifier: "DataFilterValueRange" });
+    case 1:
+      return S.Array(__S(1152, __c36, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          data: S.optional(__S(1153, __c36, 1)),
+          includeValuesInResponse: S.optional(S.Boolean),
+          responseDateTimeRenderOption: S.optional(S.String),
+          responseValueRenderOption: S.optional(S.String),
+          valueInputOption: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "BatchUpdateValuesByDataFilterRequest",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          spreadsheetId: S.String.pipe(T.Label()),
+          body: S.optional(__S(1154, __c36, 2).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v4/spreadsheets/{spreadsheetId}/values:batchUpdateByDataFilter",
+            baseUrl: "https://sheets.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "BatchUpdateByDataFilterSpreadsheetsValuesRequest",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          updatedColumns: S.optional(S.Number),
+          updatedRows: S.optional(S.Number),
+          updatedData: S.optional(__S(770, __c24, 2)),
+          updatedRange: S.optional(S.String),
+          updatedCells: S.optional(S.Number),
+          dataFilter: S.optional(__S(993, __c31, 1)),
+        }),
+      ).annotate({
+        identifier: "UpdateValuesByDataFilterResponse",
+      });
+    case 5:
+      return S.Array(__S(1156, __c36, 4));
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          totalUpdatedSheets: S.optional(S.Number),
+          totalUpdatedCells: S.optional(S.Number),
+          spreadsheetId: S.optional(S.String),
+          totalUpdatedColumns: S.optional(S.Number),
+          responses: S.optional(__S(1157, __c36, 5)),
+          totalUpdatedRows: S.optional(S.Number),
+        }),
+      ).annotate({
+        identifier: "BatchUpdateValuesByDataFilterResponse",
+      });
+  }
+}
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

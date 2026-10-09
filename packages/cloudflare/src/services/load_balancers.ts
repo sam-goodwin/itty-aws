@@ -4304,7 +4304,7 @@ export const bulkPatchPools: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
     input: __S(0, __c0, 0) as any as S.Schema<BulkPatchPoolsRequest>,
-    output: __S(12, __c1, 4) as any as S.Schema<BulkPatchPoolsResponse>,
+    output: __S(6, __c0, 6) as any as S.Schema<BulkPatchPoolsResponse>,
     errors: [CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
     retry: Retry.Retry,
@@ -4324,8 +4324,8 @@ export const createLoadBalancer: API.OperationMethod<
   CreateLoadBalancerError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(27, __c3, 3) as any as S.Schema<CreateLoadBalancerRequest>,
-  output: __S(44, __c5, 4) as any as S.Schema<CreateLoadBalancerResponse>,
+  input: __S(53, __c3, 5) as any as S.Schema<CreateLoadBalancerRequest>,
+  output: __S(62, __c3, 14) as any as S.Schema<CreateLoadBalancerResponse>,
   errors: [LoadBalancingNotEnabledForZone, Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -4339,8 +4339,8 @@ export const createMonitor: API.OperationMethod<
   CreateMonitorError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(45, __c5, 5) as any as S.Schema<CreateMonitorRequest>,
-  output: __S(46, __c5, 6) as any as S.Schema<CreateMonitorResponse>,
+  input: __S(128, __c8, 0) as any as S.Schema<CreateMonitorRequest>,
+  output: __S(129, __c8, 1) as any as S.Schema<CreateMonitorResponse>,
   errors: [MonitorIntervalOutOfRange, Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -4354,8 +4354,8 @@ export const createMonitorGroup: API.OperationMethod<
   CreateMonitorGroupError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(49, __c6, 1) as any as S.Schema<CreateMonitorGroupRequest>,
-  output: __S(52, __c6, 4) as any as S.Schema<CreateMonitorGroupResponse>,
+  input: __S(144, __c9, 0) as any as S.Schema<CreateMonitorGroupRequest>,
+  output: __S(176, __c11, 0) as any as S.Schema<CreateMonitorGroupResponse>,
   errors: [MonitorGroupsNotEnabled, Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -4369,8 +4369,8 @@ export const createMonitorPreview: API.OperationMethod<
   CreateMonitorPreviewError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(53, __c6, 5) as any as S.Schema<CreateMonitorPreviewRequest>,
-  output: __S(55, __c6, 7) as any as S.Schema<CreateMonitorPreviewResponse>,
+  input: __S(208, __c13, 0) as any as S.Schema<CreateMonitorPreviewRequest>,
+  output: __S(209, __c13, 1) as any as S.Schema<CreateMonitorPreviewResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -4384,8 +4384,8 @@ export const createPool: API.OperationMethod<
   CreatePoolError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(63, __c7, 7) as any as S.Schema<CreatePoolRequest>,
-  output: __S(67, __c8, 3) as any as S.Schema<CreatePoolResponse>,
+  input: __S(240, __c15, 0) as any as S.Schema<CreatePoolRequest>,
+  output: __S(241, __c15, 1) as any as S.Schema<CreatePoolResponse>,
   errors: [PoolAccessFailed, Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -4399,8 +4399,8 @@ export const createPoolHealth: API.OperationMethod<
   CreatePoolHealthError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(68, __c8, 4) as any as S.Schema<CreatePoolHealthRequest>,
-  output: __S(69, __c8, 5) as any as S.Schema<CreatePoolHealthResponse>,
+  input: __S(288, __c18, 0) as any as S.Schema<CreatePoolHealthRequest>,
+  output: __S(289, __c18, 1) as any as S.Schema<CreatePoolHealthResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -4414,8 +4414,8 @@ export const deleteLoadBalancer: API.OperationMethod<
   DeleteLoadBalancerError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(70, __c8, 6) as any as S.Schema<DeleteLoadBalancerRequest>,
-  output: __S(71, __c8, 7) as any as S.Schema<DeleteLoadBalancerResponse>,
+  input: __S(304, __c19, 0) as any as S.Schema<DeleteLoadBalancerRequest>,
+  output: __S(305, __c19, 1) as any as S.Schema<DeleteLoadBalancerResponse>,
   errors: [LoadBalancerNotFound, Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -4429,8 +4429,8 @@ export const deleteMonitor: API.OperationMethod<
   DeleteMonitorError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(72, __c9, 0) as any as S.Schema<DeleteMonitorRequest>,
-  output: __S(73, __c9, 1) as any as S.Schema<DeleteMonitorResponse>,
+  input: __S(320, __c20, 0) as any as S.Schema<DeleteMonitorRequest>,
+  output: __S(336, __c21, 0) as any as S.Schema<DeleteMonitorResponse>,
   errors: [MonitorNotFound, MonitorInUse, Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -4448,8 +4448,8 @@ export const deleteMonitorGroup: API.OperationMethod<
   DeleteMonitorGroupError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(74, __c9, 2) as any as S.Schema<DeleteMonitorGroupRequest>,
-  output: __S(52, __c6, 4) as any as S.Schema<DeleteMonitorGroupResponse>,
+  input: __S(352, __c22, 0) as any as S.Schema<DeleteMonitorGroupRequest>,
+  output: __S(176, __c11, 0) as any as S.Schema<DeleteMonitorGroupResponse>,
   errors: [
     MonitorGroupNotFound,
     MonitorGroupInUse,
@@ -4469,8 +4469,8 @@ export const deletePool: API.OperationMethod<
   DeletePoolError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(75, __c9, 3) as any as S.Schema<DeletePoolRequest>,
-  output: __S(73, __c9, 1) as any as S.Schema<DeletePoolResponse>,
+  input: __S(368, __c23, 0) as any as S.Schema<DeletePoolRequest>,
+  output: __S(336, __c21, 0) as any as S.Schema<DeletePoolResponse>,
   errors: [PoolNotFound, PoolInUse, Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -4484,8 +4484,8 @@ export const getLoadBalancer: API.OperationMethod<
   GetLoadBalancerError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(76, __c9, 4) as any as S.Schema<GetLoadBalancerRequest>,
-  output: __S(85, __c10, 5) as any as S.Schema<GetLoadBalancerResponse>,
+  input: __S(384, __c24, 0) as any as S.Schema<GetLoadBalancerRequest>,
+  output: __S(393, __c24, 9) as any as S.Schema<GetLoadBalancerResponse>,
   errors: [LoadBalancerNotFound, Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -4499,8 +4499,8 @@ export const getMonitor: API.OperationMethod<
   GetMonitorError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(86, __c10, 6) as any as S.Schema<GetMonitorRequest>,
-  output: __S(87, __c10, 7) as any as S.Schema<GetMonitorResponse>,
+  input: __S(400, __c25, 0) as any as S.Schema<GetMonitorRequest>,
+  output: __S(401, __c25, 1) as any as S.Schema<GetMonitorResponse>,
   errors: [MonitorNotFound, Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -4514,8 +4514,8 @@ export const getMonitorGroup: API.OperationMethod<
   GetMonitorGroupError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(88, __c11, 0) as any as S.Schema<GetMonitorGroupRequest>,
-  output: __S(89, __c11, 1) as any as S.Schema<GetMonitorGroupResponse>,
+  input: __S(416, __c26, 0) as any as S.Schema<GetMonitorGroupRequest>,
+  output: __S(417, __c26, 1) as any as S.Schema<GetMonitorGroupResponse>,
   errors: [MonitorGroupNotFound, Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -4531,8 +4531,8 @@ export const getMonitorGroupReference: API.PaginatedOperationMethod<
   MonitorGroupsReferencesGetResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(90, __c11, 2) as any as S.Schema<GetMonitorGroupReferenceRequest>,
-    output: __S(93, __c11, 5) as any as S.Schema<GetMonitorGroupReferenceResponse>,
+    input: __S(432, __c27, 0) as any as S.Schema<GetMonitorGroupReferenceRequest>,
+    output: __S(448, __c28, 0) as any as S.Schema<GetMonitorGroupReferenceResponse>,
     errors: [CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
     retry: Retry.Retry,
@@ -4551,8 +4551,8 @@ export const getMonitorReference: API.PaginatedOperationMethod<
   MonitorsReferencesGetResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(94, __c11, 6) as any as S.Schema<GetMonitorReferenceRequest>,
-    output: __S(93, __c11, 5) as any as S.Schema<GetMonitorReferenceResponse>,
+    input: __S(480, __c30, 0) as any as S.Schema<GetMonitorReferenceRequest>,
+    output: __S(448, __c28, 0) as any as S.Schema<GetMonitorReferenceResponse>,
     errors: [CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
     retry: Retry.Retry,
@@ -4569,8 +4569,8 @@ export const getPool: API.OperationMethod<
   GetPoolError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(95, __c11, 7) as any as S.Schema<GetPoolRequest>,
-  output: __S(96, __c12, 0) as any as S.Schema<GetPoolResponse>,
+  input: __S(496, __c31, 0) as any as S.Schema<GetPoolRequest>,
+  output: __S(497, __c31, 1) as any as S.Schema<GetPoolResponse>,
   errors: [PoolNotFound, Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -4584,8 +4584,8 @@ export const getPoolHealth: API.OperationMethod<
   GetPoolHealthError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(97, __c12, 1) as any as S.Schema<GetPoolHealthRequest>,
-  output: __S(102, __c12, 6) as any as S.Schema<GetPoolHealthResponse>,
+  input: __S(512, __c32, 0) as any as S.Schema<GetPoolHealthRequest>,
+  output: __S(516, __c32, 4) as any as S.Schema<GetPoolHealthResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -4601,8 +4601,8 @@ export const getPoolReference: API.PaginatedOperationMethod<
   PoolsReferencesGetResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(103, __c12, 7) as any as S.Schema<GetPoolReferenceRequest>,
-    output: __S(104, __c13, 0) as any as S.Schema<GetPoolReferenceResponse>,
+    input: __S(544, __c34, 0) as any as S.Schema<GetPoolReferenceRequest>,
+    output: __S(545, __c34, 1) as any as S.Schema<GetPoolReferenceResponse>,
     errors: [CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
     retry: Retry.Retry,
@@ -4619,8 +4619,8 @@ export const getPreview: API.OperationMethod<
   GetPreviewError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(105, __c13, 1) as any as S.Schema<GetPreviewRequest>,
-  output: __S(110, __c13, 6) as any as S.Schema<GetPreviewResponse>,
+  input: __S(560, __c35, 0) as any as S.Schema<GetPreviewRequest>,
+  output: __S(565, __c35, 5) as any as S.Schema<GetPreviewResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -4634,8 +4634,8 @@ export const getRegion: API.OperationMethod<
   GetRegionError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(111, __c13, 7) as any as S.Schema<GetRegionRequest>,
-  output: __S(112, __c14, 0) as any as S.Schema<GetRegionResponse>,
+  input: __S(576, __c36, 0) as any as S.Schema<GetRegionRequest>,
+  output: __S(592, __c37, 0) as any as S.Schema<GetRegionResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -4651,8 +4651,8 @@ export const listLoadBalancers: API.PaginatedOperationMethod<
   ListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(113, __c14, 1) as any as S.Schema<ListLoadBalancersRequest>,
-    output: __S(124, __c15, 4) as any as S.Schema<ListLoadBalancersResponse>,
+    input: __S(608, __c38, 0) as any as S.Schema<ListLoadBalancersRequest>,
+    output: __S(619, __c38, 11) as any as S.Schema<ListLoadBalancersResponse>,
     errors: [CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
     retry: Retry.Retry,
@@ -4671,8 +4671,8 @@ export const listMonitorGroups: API.PaginatedOperationMethod<
   MonitorGroupsListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(125, __c15, 5) as any as S.Schema<ListMonitorGroupsRequest>,
-    output: __S(128, __c16, 0) as any as S.Schema<ListMonitorGroupsResponse>,
+    input: __S(624, __c39, 0) as any as S.Schema<ListMonitorGroupsRequest>,
+    output: __S(627, __c39, 3) as any as S.Schema<ListMonitorGroupsResponse>,
     errors: [CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
     retry: Retry.Retry,
@@ -4691,8 +4691,8 @@ export const listMonitors: API.PaginatedOperationMethod<
   MonitorsListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(129, __c16, 1) as any as S.Schema<ListMonitorsRequest>,
-    output: __S(132, __c16, 4) as any as S.Schema<ListMonitorsResponse>,
+    input: __S(640, __c40, 0) as any as S.Schema<ListMonitorsRequest>,
+    output: __S(643, __c40, 3) as any as S.Schema<ListMonitorsResponse>,
     errors: [CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
     retry: Retry.Retry,
@@ -4711,8 +4711,8 @@ export const listPools: API.PaginatedOperationMethod<
   PoolsListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(133, __c16, 5) as any as S.Schema<ListPoolsRequest>,
-    output: __S(136, __c17, 0) as any as S.Schema<ListPoolsResponse>,
+    input: __S(656, __c41, 0) as any as S.Schema<ListPoolsRequest>,
+    output: __S(659, __c41, 3) as any as S.Schema<ListPoolsResponse>,
     errors: [CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
     retry: Retry.Retry,
@@ -4729,8 +4729,8 @@ export const listRegions: API.OperationMethod<
   ListRegionsError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(137, __c17, 1) as any as S.Schema<ListRegionsRequest>,
-  output: __S(112, __c14, 0) as any as S.Schema<ListRegionsResponse>,
+  input: __S(672, __c42, 0) as any as S.Schema<ListRegionsRequest>,
+  output: __S(592, __c37, 0) as any as S.Schema<ListRegionsResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -4744,8 +4744,8 @@ export const listSearches: API.OperationMethod<
   ListSearchesError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(138, __c17, 2) as any as S.Schema<ListSearchesRequest>,
-  output: __S(142, __c17, 6) as any as S.Schema<ListSearchesResponse>,
+  input: __S(688, __c43, 0) as any as S.Schema<ListSearchesRequest>,
+  output: __S(692, __c43, 4) as any as S.Schema<ListSearchesResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -4759,8 +4759,8 @@ export const patchLoadBalancer: API.OperationMethod<
   PatchLoadBalancerError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(148, __c18, 4) as any as S.Schema<PatchLoadBalancerRequest>,
-  output: __S(157, __c19, 5) as any as S.Schema<PatchLoadBalancerResponse>,
+  input: __S(709, __c44, 5) as any as S.Schema<PatchLoadBalancerRequest>,
+  output: __S(718, __c44, 14) as any as S.Schema<PatchLoadBalancerResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -4774,8 +4774,8 @@ export const patchMonitor: API.OperationMethod<
   PatchMonitorError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(158, __c19, 6) as any as S.Schema<PatchMonitorRequest>,
-  output: __S(159, __c19, 7) as any as S.Schema<PatchMonitorResponse>,
+  input: __S(720, __c45, 0) as any as S.Schema<PatchMonitorRequest>,
+  output: __S(721, __c45, 1) as any as S.Schema<PatchMonitorResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -4789,8 +4789,8 @@ export const patchMonitorGroup: API.OperationMethod<
   PatchMonitorGroupError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(160, __c20, 0) as any as S.Schema<PatchMonitorGroupRequest>,
-  output: __S(52, __c6, 4) as any as S.Schema<PatchMonitorGroupResponse>,
+  input: __S(736, __c46, 0) as any as S.Schema<PatchMonitorGroupRequest>,
+  output: __S(176, __c11, 0) as any as S.Schema<PatchMonitorGroupResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -4804,8 +4804,8 @@ export const patchPool: API.OperationMethod<
   PatchPoolError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(161, __c20, 1) as any as S.Schema<PatchPoolRequest>,
-  output: __S(162, __c20, 2) as any as S.Schema<PatchPoolResponse>,
+  input: __S(752, __c47, 0) as any as S.Schema<PatchPoolRequest>,
+  output: __S(753, __c47, 1) as any as S.Schema<PatchPoolResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -4823,8 +4823,8 @@ export const updateLoadBalancer: API.OperationMethod<
   UpdateLoadBalancerError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(168, __c21, 0) as any as S.Schema<UpdateLoadBalancerRequest>,
-  output: __S(177, __c22, 1) as any as S.Schema<UpdateLoadBalancerResponse>,
+  input: __S(773, __c48, 5) as any as S.Schema<UpdateLoadBalancerRequest>,
+  output: __S(782, __c48, 14) as any as S.Schema<UpdateLoadBalancerResponse>,
   errors: [
     LoadBalancerNotFound,
     LoadBalancingNotEnabledForZone,
@@ -4848,8 +4848,8 @@ export const updateMonitor: API.OperationMethod<
   UpdateMonitorError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(178, __c22, 2) as any as S.Schema<UpdateMonitorRequest>,
-  output: __S(179, __c22, 3) as any as S.Schema<UpdateMonitorResponse>,
+  input: __S(784, __c49, 0) as any as S.Schema<UpdateMonitorRequest>,
+  output: __S(785, __c49, 1) as any as S.Schema<UpdateMonitorResponse>,
   errors: [
     MonitorNotFound,
     MonitorIntervalOutOfRange,
@@ -4873,8 +4873,8 @@ export const updateMonitorGroup: API.OperationMethod<
   UpdateMonitorGroupError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(180, __c22, 4) as any as S.Schema<UpdateMonitorGroupRequest>,
-  output: __S(52, __c6, 4) as any as S.Schema<UpdateMonitorGroupResponse>,
+  input: __S(800, __c50, 0) as any as S.Schema<UpdateMonitorGroupRequest>,
+  output: __S(176, __c11, 0) as any as S.Schema<UpdateMonitorGroupResponse>,
   errors: [
     MonitorGroupNotFound,
     MonitorGroupsNotEnabled,
@@ -4894,8 +4894,8 @@ export const updatePool: API.OperationMethod<
   UpdatePoolError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(181, __c22, 5) as any as S.Schema<UpdatePoolRequest>,
-  output: __S(182, __c22, 6) as any as S.Schema<UpdatePoolResponse>,
+  input: __S(816, __c51, 0) as any as S.Schema<UpdatePoolRequest>,
+  output: __S(817, __c51, 1) as any as S.Schema<UpdatePoolResponse>,
   errors: [PoolNotFound, PoolAccessFailed, Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -4920,8 +4920,80 @@ function __c0(j: number): any {
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "BulkPatchPoolsRequest" });
     case 1:
-      return S.Array(S.String);
+      return S.suspend(() =>
+        S.Struct({
+          host: S.optional(S.NullOr(__S(16, __c1, 0)).pipe(T.Body("Host"))),
+        }),
+      ).annotate({
+        identifier: "PoolsBulkEditResultItemOriginsItemHeader",
+      });
     case 2:
+      return S.suspend(() =>
+        S.Struct({
+          address: S.optional(S.NullOr(S.String)),
+          disabledAt: S.optional(S.NullOr(S.String).pipe(T.Body("disabled_at"))),
+          enabled: S.optional(S.NullOr(S.Boolean)),
+          flattenCname: S.optional(S.NullOr(S.Boolean).pipe(T.Body("flatten_cname"))),
+          header: S.optional(S.NullOr(__S(1, __c0, 1))),
+          name: S.optional(S.NullOr(S.String)),
+          port: S.optional(S.NullOr(S.Number)),
+          virtualNetworkId: S.optional(S.NullOr(S.String).pipe(T.Body("virtual_network_id"))),
+          weight: S.optional(S.NullOr(S.Number)),
+        }),
+      ).annotate({
+        identifier: "PoolsBulkEditResultItemOriginsItem",
+      });
+    case 3:
+      return S.Array(__S(2, __c0, 2));
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.NullOr(S.String)),
+          checkRegions: S.optional(S.NullOr(__S(32, __c2, 0)).pipe(T.Body("check_regions"))),
+          createdOn: S.optional(S.NullOr(S.String).pipe(T.Body("created_on"))),
+          description: S.optional(S.NullOr(S.String)),
+          disabledAt: S.optional(S.NullOr(S.String).pipe(T.Body("disabled_at"))),
+          enabled: S.optional(S.NullOr(S.Boolean)),
+          healthSources: S.optional(S.NullOr(__S(32, __c2, 0)).pipe(T.Body("health_sources"))),
+          latitude: S.optional(S.NullOr(S.Number)),
+          loadShedding: S.optional(S.NullOr(__S(33, __c2, 1)).pipe(T.Body("load_shedding"))),
+          longitude: S.optional(S.NullOr(S.Number)),
+          minimumOrigins: S.optional(S.NullOr(S.Number).pipe(T.Body("minimum_origins"))),
+          modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
+          monitor: S.optional(S.NullOr(S.String)),
+          monitorGroup: S.optional(S.NullOr(S.String).pipe(T.Body("monitor_group"))),
+          name: S.optional(S.NullOr(S.String)),
+          networks: S.optional(S.NullOr(__S(16, __c1, 0))),
+          notificationEmail: S.optional(S.NullOr(S.String).pipe(T.Body("notification_email"))),
+          notificationFilter: S.optional(
+            S.NullOr(__S(35, __c2, 3)).pipe(T.Body("notification_filter")),
+          ),
+          originSteering: S.optional(S.NullOr(__S(36, __c2, 4)).pipe(T.Body("origin_steering"))),
+          origins: S.optional(S.NullOr(__S(3, __c0, 3))),
+        }),
+      ).annotate({ identifier: "PoolsBulkEditResultItem" });
+    case 5:
+      return S.Array(__S(4, __c0, 4));
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          result: __S(5, __c0, 5).pipe(T.EnvelopePayload()),
+          resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
+        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({ identifier: "BulkPatchPoolsResponse" });
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+    case 1:
       return S.suspend(() =>
         S.Struct({
           defaultPercent: S.optional(S.NullOr(S.Number).pipe(T.Body("default_percent"))),
@@ -4932,9 +5004,7 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "PoolsBulkEditResultItemLoadShedding",
       });
-    case 3:
-      return S.Array(S.String);
-    case 4:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           disable: S.optional(S.NullOr(S.Boolean)),
@@ -4943,191 +5013,22 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "PoolsBulkEditResultItemNotificationFilterOrigin",
       });
-    case 5:
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          origin: S.optional(S.NullOr(__S(4, __c0, 4))),
-          pool: S.optional(S.NullOr(__S(4, __c0, 4))),
+          origin: S.optional(S.NullOr(__S(34, __c2, 2))),
+          pool: S.optional(S.NullOr(__S(34, __c2, 2))),
         }),
       ).annotate({
         identifier: "PoolsBulkEditResultItemNotificationFilter",
       });
-    case 6:
+    case 4:
       return S.suspend(() =>
         S.Struct({
           policy: S.optional(S.NullOr(S.String)),
         }),
       ).annotate({
         identifier: "PoolsBulkEditResultItemOriginSteering",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          host: S.optional(S.NullOr(__S(3, __c0, 3)).pipe(T.Body("Host"))),
-        }),
-      ).annotate({
-        identifier: "PoolsBulkEditResultItemOriginsItemHeader",
-      });
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          address: S.optional(S.NullOr(S.String)),
-          disabledAt: S.optional(S.NullOr(S.String).pipe(T.Body("disabled_at"))),
-          enabled: S.optional(S.NullOr(S.Boolean)),
-          flattenCname: S.optional(S.NullOr(S.Boolean).pipe(T.Body("flatten_cname"))),
-          header: S.optional(S.NullOr(__S(7, __c0, 7))),
-          name: S.optional(S.NullOr(S.String)),
-          port: S.optional(S.NullOr(S.Number)),
-          virtualNetworkId: S.optional(S.NullOr(S.String).pipe(T.Body("virtual_network_id"))),
-          weight: S.optional(S.NullOr(S.Number)),
-        }),
-      ).annotate({
-        identifier: "PoolsBulkEditResultItemOriginsItem",
-      });
-    case 1:
-      return S.Array(__S(8, __c1, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.NullOr(S.String)),
-          checkRegions: S.optional(S.NullOr(__S(1, __c0, 1)).pipe(T.Body("check_regions"))),
-          createdOn: S.optional(S.NullOr(S.String).pipe(T.Body("created_on"))),
-          description: S.optional(S.NullOr(S.String)),
-          disabledAt: S.optional(S.NullOr(S.String).pipe(T.Body("disabled_at"))),
-          enabled: S.optional(S.NullOr(S.Boolean)),
-          healthSources: S.optional(S.NullOr(__S(1, __c0, 1)).pipe(T.Body("health_sources"))),
-          latitude: S.optional(S.NullOr(S.Number)),
-          loadShedding: S.optional(S.NullOr(__S(2, __c0, 2)).pipe(T.Body("load_shedding"))),
-          longitude: S.optional(S.NullOr(S.Number)),
-          minimumOrigins: S.optional(S.NullOr(S.Number).pipe(T.Body("minimum_origins"))),
-          modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
-          monitor: S.optional(S.NullOr(S.String)),
-          monitorGroup: S.optional(S.NullOr(S.String).pipe(T.Body("monitor_group"))),
-          name: S.optional(S.NullOr(S.String)),
-          networks: S.optional(S.NullOr(__S(3, __c0, 3))),
-          notificationEmail: S.optional(S.NullOr(S.String).pipe(T.Body("notification_email"))),
-          notificationFilter: S.optional(
-            S.NullOr(__S(5, __c0, 5)).pipe(T.Body("notification_filter")),
-          ),
-          originSteering: S.optional(S.NullOr(__S(6, __c0, 6)).pipe(T.Body("origin_steering"))),
-          origins: S.optional(S.NullOr(__S(9, __c1, 1))),
-        }),
-      ).annotate({ identifier: "PoolsBulkEditResultItem" });
-    case 3:
-      return S.Array(__S(10, __c1, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          result: __S(11, __c1, 3).pipe(T.EnvelopePayload()),
-          resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
-        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({ identifier: "BulkPatchPoolsResponse" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          failoverAcrossPools: S.optional(S.Boolean.pipe(T.Body("failover_across_pools"))),
-        }),
-      ).annotate({
-        identifier: "CreateRequestAdaptiveRouting",
-      });
-    case 6:
-      return S.Record(S.String, __S(3, __c0, 3));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          mode: S.optional(S.String),
-          preferEcs: S.optional(S.String.pipe(T.Body("prefer_ecs"))),
-        }),
-      ).annotate({
-        identifier: "CreateRequestLocationStrategy",
-      });
-  }
-}
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Record(S.String, S.Number);
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          defaultWeight: S.optional(S.Number.pipe(T.Body("default_weight"))),
-          poolWeights: S.optional(__S(16, __c2, 0).pipe(T.Body("pool_weights"))),
-        }),
-      ).annotate({
-        identifier: "CreateRequestRandomSteering",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          contentType: S.optional(S.String.pipe(T.Body("content_type"))),
-          location: S.optional(S.String),
-          messageBody: S.optional(S.String.pipe(T.Body("message_body"))),
-          statusCode: S.optional(S.Number.pipe(T.Body("status_code"))),
-        }),
-      ).annotate({
-        identifier: "CreateRequestRulesItemFixedResponse",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          mode: S.optional(S.String),
-          preferEcs: S.optional(S.String.pipe(T.Body("prefer_ecs"))),
-        }),
-      ).annotate({
-        identifier: "CreateRequestRulesItemOverridesLocationStrategy",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          defaultWeight: S.optional(S.Number.pipe(T.Body("default_weight"))),
-          poolWeights: S.optional(__S(16, __c2, 0).pipe(T.Body("pool_weights"))),
-        }),
-      ).annotate({
-        identifier: "CreateRequestRulesItemOverridesRandomSteering",
-      });
-    case 5:
-      return S.Array(S.String);
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          drainDuration: S.optional(S.Number.pipe(T.Body("drain_duration"))),
-          headers: S.optional(__S(21, __c2, 5)),
-          requireAllHeaders: S.optional(S.Boolean.pipe(T.Body("require_all_headers"))),
-          samesite: S.optional(S.String),
-          secure: S.optional(S.String),
-          zeroDowntimeFailover: S.optional(S.String.pipe(T.Body("zero_downtime_failover"))),
-        }),
-      ).annotate({
-        identifier: "CreateRequestRulesItemOverridesSessionAffinityAttributes",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          adaptiveRouting: S.optional(__S(13, __c1, 5).pipe(T.Body("adaptive_routing"))),
-          countryPools: S.optional(__S(14, __c1, 6).pipe(T.Body("country_pools"))),
-          defaultPools: S.optional(__S(3, __c0, 3).pipe(T.Body("default_pools"))),
-          fallbackPool: S.optional(S.String.pipe(T.Body("fallback_pool"))),
-          locationStrategy: S.optional(__S(19, __c2, 3).pipe(T.Body("location_strategy"))),
-          poolDefaultWeight: S.optional(S.Number.pipe(T.Body("pool_default_weight"))),
-          poolWeights: S.optional(__S(16, __c2, 0).pipe(T.Body("pool_weights"))),
-          pools: S.optional(__S(3, __c0, 3)),
-          popPools: S.optional(__S(14, __c1, 6).pipe(T.Body("pop_pools"))),
-          randomSteering: S.optional(__S(20, __c2, 4).pipe(T.Body("random_steering"))),
-          regionPools: S.optional(__S(14, __c1, 6).pipe(T.Body("region_pools"))),
-          sessionAffinity: S.optional(S.String.pipe(T.Body("session_affinity"))),
-          sessionAffinityAttributes: S.optional(
-            __S(22, __c2, 6).pipe(T.Body("session_affinity_attributes")),
-          ),
-          sessionAffinityTtl: S.optional(S.Number.pipe(T.Body("session_affinity_ttl"))),
-          steeringPolicy: S.optional(S.String.pipe(T.Body("steering_policy"))),
-          ttl: S.optional(S.Number),
-        }),
-      ).annotate({
-        identifier: "CreateRequestRulesItemOverrides",
       });
   }
 }
@@ -5136,22 +5037,60 @@ function __c3(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
+          drainDuration: S.optional(S.Number.pipe(T.Body("drain_duration"))),
+          headers: S.optional(__S(81, __c5, 1)),
+          requireAllHeaders: S.optional(S.Boolean.pipe(T.Body("require_all_headers"))),
+          samesite: S.optional(S.String),
+          secure: S.optional(S.String),
+          zeroDowntimeFailover: S.optional(S.String.pipe(T.Body("zero_downtime_failover"))),
+        }),
+      ).annotate({
+        identifier: "CreateRequestRulesItemOverridesSessionAffinityAttributes",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          adaptiveRouting: S.optional(__S(112, __c7, 0).pipe(T.Body("adaptive_routing"))),
+          countryPools: S.optional(__S(64, __c4, 0).pipe(T.Body("country_pools"))),
+          defaultPools: S.optional(__S(16, __c1, 0).pipe(T.Body("default_pools"))),
+          fallbackPool: S.optional(S.String.pipe(T.Body("fallback_pool"))),
+          locationStrategy: S.optional(__S(116, __c7, 4).pipe(T.Body("location_strategy"))),
+          poolDefaultWeight: S.optional(S.Number.pipe(T.Body("pool_default_weight"))),
+          poolWeights: S.optional(__S(80, __c5, 0).pipe(T.Body("pool_weights"))),
+          pools: S.optional(__S(16, __c1, 0)),
+          popPools: S.optional(__S(64, __c4, 0).pipe(T.Body("pop_pools"))),
+          randomSteering: S.optional(__S(117, __c7, 5).pipe(T.Body("random_steering"))),
+          regionPools: S.optional(__S(64, __c4, 0).pipe(T.Body("region_pools"))),
+          sessionAffinity: S.optional(S.String.pipe(T.Body("session_affinity"))),
+          sessionAffinityAttributes: S.optional(
+            __S(48, __c3, 0).pipe(T.Body("session_affinity_attributes")),
+          ),
+          sessionAffinityTtl: S.optional(S.Number.pipe(T.Body("session_affinity_ttl"))),
+          steeringPolicy: S.optional(S.String.pipe(T.Body("steering_policy"))),
+          ttl: S.optional(S.Number),
+        }),
+      ).annotate({
+        identifier: "CreateRequestRulesItemOverrides",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
           condition: S.optional(S.String),
           disabled: S.optional(S.Boolean),
-          fixedResponse: S.optional(__S(18, __c2, 2).pipe(T.Body("fixed_response"))),
+          fixedResponse: S.optional(__S(115, __c7, 3).pipe(T.Body("fixed_response"))),
           name: S.optional(S.String),
-          overrides: S.optional(__S(23, __c2, 7)),
+          overrides: S.optional(__S(49, __c3, 1)),
           priority: S.optional(S.Number),
           terminates: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "CreateRequestRulesItem" });
-    case 1:
-      return S.Array(__S(24, __c3, 0));
-    case 2:
+    case 3:
+      return S.Array(__S(50, __c3, 2));
+    case 4:
       return S.suspend(() =>
         S.Struct({
           drainDuration: S.optional(S.Number.pipe(T.Body("drain_duration"))),
-          headers: S.optional(__S(3, __c0, 3)),
+          headers: S.optional(__S(16, __c1, 0)),
           requireAllHeaders: S.optional(S.Boolean.pipe(T.Body("require_all_headers"))),
           samesite: S.optional(S.String),
           secure: S.optional(S.String),
@@ -5160,27 +5099,27 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "CreateRequestSessionAffinityAttributes",
       });
-    case 3:
+    case 5:
       return S.suspend(() =>
         S.Struct({
           zoneId: S.String.pipe(T.Label("zone_id")),
-          defaultPools: __S(3, __c0, 3).pipe(T.Body("default_pools")),
+          defaultPools: __S(16, __c1, 0).pipe(T.Body("default_pools")),
           fallbackPool: S.String.pipe(T.Body("fallback_pool")),
           name: S.String,
-          adaptiveRouting: S.optional(__S(13, __c1, 5).pipe(T.Body("adaptive_routing"))),
-          countryPools: S.optional(__S(14, __c1, 6).pipe(T.Body("country_pools"))),
+          adaptiveRouting: S.optional(__S(112, __c7, 0).pipe(T.Body("adaptive_routing"))),
+          countryPools: S.optional(__S(64, __c4, 0).pipe(T.Body("country_pools"))),
           description: S.optional(S.String),
           enabled: S.optional(S.Boolean),
-          locationStrategy: S.optional(__S(15, __c1, 7).pipe(T.Body("location_strategy"))),
-          networks: S.optional(__S(3, __c0, 3)),
-          popPools: S.optional(__S(14, __c1, 6).pipe(T.Body("pop_pools"))),
+          locationStrategy: S.optional(__S(113, __c7, 1).pipe(T.Body("location_strategy"))),
+          networks: S.optional(__S(16, __c1, 0)),
+          popPools: S.optional(__S(64, __c4, 0).pipe(T.Body("pop_pools"))),
           proxied: S.optional(S.Boolean),
-          randomSteering: S.optional(__S(17, __c2, 1).pipe(T.Body("random_steering"))),
-          regionPools: S.optional(__S(14, __c1, 6).pipe(T.Body("region_pools"))),
-          rules: S.optional(__S(25, __c3, 1)),
+          randomSteering: S.optional(__S(114, __c7, 2).pipe(T.Body("random_steering"))),
+          regionPools: S.optional(__S(64, __c4, 0).pipe(T.Body("region_pools"))),
+          rules: S.optional(__S(51, __c3, 3)),
           sessionAffinity: S.optional(S.String.pipe(T.Body("session_affinity"))),
           sessionAffinityAttributes: S.optional(
-            __S(26, __c3, 2).pipe(T.Body("session_affinity_attributes")),
+            __S(52, __c3, 4).pipe(T.Body("session_affinity_attributes")),
           ),
           sessionAffinityTtl: S.optional(S.Number.pipe(T.Body("session_affinity_ttl"))),
           steeringPolicy: S.optional(S.String.pipe(T.Body("steering_policy"))),
@@ -5191,117 +5130,37 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "CreateLoadBalancerRequest",
       });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          failoverAcrossPools: S.optional(
-            S.NullOr(S.Boolean).pipe(T.Body("failover_across_pools")),
-          ),
-        }),
-      ).annotate({
-        identifier: "CreateResponseAdaptiveRouting",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          mode: S.optional(S.NullOr(S.String)),
-          preferEcs: S.optional(S.NullOr(S.String).pipe(T.Body("prefer_ecs"))),
-        }),
-      ).annotate({
-        identifier: "CreateResponseLocationStrategy",
-      });
     case 6:
-      return S.suspend(() =>
-        S.Struct({
-          contentType: S.optional(S.NullOr(S.String).pipe(T.Body("content_type"))),
-          location: S.optional(S.NullOr(S.String)),
-          messageBody: S.optional(S.NullOr(S.String).pipe(T.Body("message_body"))),
-          statusCode: S.optional(S.NullOr(S.Number).pipe(T.Body("status_code"))),
-        }),
-      ).annotate({
-        identifier: "CreateResponsePoolSetsItemFixedResponse",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          countries: S.optional(S.NullOr(__S(3, __c0, 3))),
-          pops: S.optional(S.NullOr(__S(3, __c0, 3))),
-          regions: S.optional(S.NullOr(__S(3, __c0, 3))),
-        }),
-      ).annotate({
-        identifier: "CreateResponsePoolSetsItemMatchTopology",
-      });
-  }
-}
-function __c4(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          default: S.optional(S.NullOr(S.Boolean)),
-          topology: S.optional(S.NullOr(__S(31, __c3, 7))),
-        }),
-      ).annotate({
-        identifier: "CreateResponsePoolSetsItemMatch",
-      });
-    case 1:
       return S.suspend(() =>
         S.Struct({
           fallbackPool: S.optional(S.NullOr(S.String).pipe(T.Body("fallback_pool"))),
           poolDefaultWeight: S.optional(S.NullOr(S.Number).pipe(T.Body("pool_default_weight"))),
-          poolWeights: S.optional(S.NullOr(__S(16, __c2, 0)).pipe(T.Body("pool_weights"))),
-          pools: S.optional(S.NullOr(__S(3, __c0, 3))),
+          poolWeights: S.optional(S.NullOr(__S(80, __c5, 0)).pipe(T.Body("pool_weights"))),
+          pools: S.optional(S.NullOr(__S(16, __c1, 0))),
           steeringPolicy: S.optional(S.NullOr(S.String).pipe(T.Body("steering_policy"))),
         }),
       ).annotate({
         identifier: "CreateResponsePoolSetsItemOverrides",
       });
-    case 2:
+    case 7:
       return S.suspend(() =>
         S.Struct({
           disabled: S.optional(S.NullOr(S.Boolean)),
-          fixedResponse: S.optional(S.NullOr(__S(30, __c3, 6)).pipe(T.Body("fixed_response"))),
-          match: S.optional(S.NullOr(__S(32, __c4, 0))),
+          fixedResponse: S.optional(S.NullOr(__S(84, __c5, 4)).pipe(T.Body("fixed_response"))),
+          match: S.optional(S.NullOr(__S(86, __c5, 6))),
           name: S.optional(S.NullOr(S.String)),
-          overrides: S.optional(S.NullOr(__S(33, __c4, 1))),
+          overrides: S.optional(S.NullOr(__S(54, __c3, 6))),
         }),
       ).annotate({
         identifier: "CreateResponsePoolSetsItem",
       });
-    case 3:
-      return S.Array(__S(34, __c4, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          defaultWeight: S.optional(S.NullOr(S.Number).pipe(T.Body("default_weight"))),
-          poolWeights: S.optional(S.NullOr(__S(16, __c2, 0)).pipe(T.Body("pool_weights"))),
-        }),
-      ).annotate({
-        identifier: "CreateResponseRandomSteering",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          mode: S.optional(S.NullOr(S.String)),
-          preferEcs: S.optional(S.NullOr(S.String).pipe(T.Body("prefer_ecs"))),
-        }),
-      ).annotate({
-        identifier: "CreateResponseRulesItemOverridesLocationStrategy",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          defaultWeight: S.optional(S.NullOr(S.Number).pipe(T.Body("default_weight"))),
-          poolWeights: S.optional(S.NullOr(__S(16, __c2, 0)).pipe(T.Body("pool_weights"))),
-        }),
-      ).annotate({
-        identifier: "CreateResponseRulesItemOverridesRandomSteering",
-      });
-    case 7:
+    case 8:
+      return S.Array(__S(55, __c3, 7));
+    case 9:
       return S.suspend(() =>
         S.Struct({
           drainDuration: S.optional(S.NullOr(S.Number).pipe(T.Body("drain_duration"))),
-          headers: S.optional(S.NullOr(__S(21, __c2, 5))),
+          headers: S.optional(S.NullOr(__S(81, __c5, 1))),
           requireAllHeaders: S.optional(S.NullOr(S.Boolean).pipe(T.Body("require_all_headers"))),
           samesite: S.optional(S.NullOr(S.String)),
           secure: S.optional(S.NullOr(S.String)),
@@ -5312,29 +5171,25 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "CreateResponseRulesItemOverridesSessionAffinityAttributes",
       });
-  }
-}
-function __c5(j: number): any {
-  switch (j) {
-    case 0:
+    case 10:
       return S.suspend(() =>
         S.Struct({
-          adaptiveRouting: S.optional(S.NullOr(__S(28, __c3, 4)).pipe(T.Body("adaptive_routing"))),
-          countryPools: S.optional(S.NullOr(__S(14, __c1, 6)).pipe(T.Body("country_pools"))),
-          defaultPools: S.optional(S.NullOr(__S(3, __c0, 3)).pipe(T.Body("default_pools"))),
+          adaptiveRouting: S.optional(S.NullOr(__S(82, __c5, 2)).pipe(T.Body("adaptive_routing"))),
+          countryPools: S.optional(S.NullOr(__S(64, __c4, 0)).pipe(T.Body("country_pools"))),
+          defaultPools: S.optional(S.NullOr(__S(16, __c1, 0)).pipe(T.Body("default_pools"))),
           fallbackPool: S.optional(S.NullOr(S.String).pipe(T.Body("fallback_pool"))),
           locationStrategy: S.optional(
-            S.NullOr(__S(37, __c4, 5)).pipe(T.Body("location_strategy")),
+            S.NullOr(__S(96, __c6, 0)).pipe(T.Body("location_strategy")),
           ),
           poolDefaultWeight: S.optional(S.NullOr(S.Number).pipe(T.Body("pool_default_weight"))),
-          poolWeights: S.optional(S.NullOr(__S(16, __c2, 0)).pipe(T.Body("pool_weights"))),
-          pools: S.optional(S.NullOr(__S(3, __c0, 3))),
-          popPools: S.optional(S.NullOr(__S(14, __c1, 6)).pipe(T.Body("pop_pools"))),
-          randomSteering: S.optional(S.NullOr(__S(38, __c4, 6)).pipe(T.Body("random_steering"))),
-          regionPools: S.optional(S.NullOr(__S(14, __c1, 6)).pipe(T.Body("region_pools"))),
+          poolWeights: S.optional(S.NullOr(__S(80, __c5, 0)).pipe(T.Body("pool_weights"))),
+          pools: S.optional(S.NullOr(__S(16, __c1, 0))),
+          popPools: S.optional(S.NullOr(__S(64, __c4, 0)).pipe(T.Body("pop_pools"))),
+          randomSteering: S.optional(S.NullOr(__S(88, __c5, 8)).pipe(T.Body("random_steering"))),
+          regionPools: S.optional(S.NullOr(__S(64, __c4, 0)).pipe(T.Body("region_pools"))),
           sessionAffinity: S.optional(S.NullOr(S.String).pipe(T.Body("session_affinity"))),
           sessionAffinityAttributes: S.optional(
-            S.NullOr(__S(39, __c4, 7)).pipe(T.Body("session_affinity_attributes")),
+            S.NullOr(__S(57, __c3, 9)).pipe(T.Body("session_affinity_attributes")),
           ),
           sessionAffinityTtl: S.optional(S.NullOr(S.Number).pipe(T.Body("session_affinity_ttl"))),
           steeringPolicy: S.optional(S.NullOr(S.String).pipe(T.Body("steering_policy"))),
@@ -5343,25 +5198,25 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "CreateResponseRulesItemOverrides",
       });
-    case 1:
+    case 11:
       return S.suspend(() =>
         S.Struct({
           condition: S.optional(S.NullOr(S.String)),
           disabled: S.optional(S.NullOr(S.Boolean)),
-          fixedResponse: S.optional(S.NullOr(__S(30, __c3, 6)).pipe(T.Body("fixed_response"))),
+          fixedResponse: S.optional(S.NullOr(__S(84, __c5, 4)).pipe(T.Body("fixed_response"))),
           name: S.optional(S.NullOr(S.String)),
-          overrides: S.optional(S.NullOr(__S(40, __c5, 0))),
+          overrides: S.optional(S.NullOr(__S(58, __c3, 10))),
           priority: S.optional(S.NullOr(S.Number)),
           terminates: S.optional(S.NullOr(S.Boolean)),
         }),
       ).annotate({ identifier: "CreateResponseRulesItem" });
-    case 2:
-      return S.Array(__S(41, __c5, 1));
-    case 3:
+    case 12:
+      return S.Array(__S(59, __c3, 11));
+    case 13:
       return S.suspend(() =>
         S.Struct({
           drainDuration: S.optional(S.NullOr(S.Number).pipe(T.Body("drain_duration"))),
-          headers: S.optional(S.NullOr(__S(3, __c0, 3))),
+          headers: S.optional(S.NullOr(__S(16, __c1, 0))),
           requireAllHeaders: S.optional(S.NullOr(S.Boolean).pipe(T.Body("require_all_headers"))),
           samesite: S.optional(S.NullOr(S.String)),
           secure: S.optional(S.NullOr(S.String)),
@@ -5372,32 +5227,32 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "CreateResponseSessionAffinityAttributes",
       });
-    case 4:
+    case 14:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.NullOr(S.String)),
-          adaptiveRouting: S.optional(S.NullOr(__S(28, __c3, 4)).pipe(T.Body("adaptive_routing"))),
-          countryPools: S.optional(S.NullOr(__S(14, __c1, 6)).pipe(T.Body("country_pools"))),
+          adaptiveRouting: S.optional(S.NullOr(__S(82, __c5, 2)).pipe(T.Body("adaptive_routing"))),
+          countryPools: S.optional(S.NullOr(__S(64, __c4, 0)).pipe(T.Body("country_pools"))),
           createdOn: S.optional(S.NullOr(S.String).pipe(T.Body("created_on"))),
-          defaultPools: S.optional(S.NullOr(__S(3, __c0, 3)).pipe(T.Body("default_pools"))),
+          defaultPools: S.optional(S.NullOr(__S(16, __c1, 0)).pipe(T.Body("default_pools"))),
           description: S.optional(S.NullOr(S.String)),
           enabled: S.optional(S.NullOr(S.Boolean)),
           fallbackPool: S.optional(S.NullOr(S.String).pipe(T.Body("fallback_pool"))),
           locationStrategy: S.optional(
-            S.NullOr(__S(29, __c3, 5)).pipe(T.Body("location_strategy")),
+            S.NullOr(__S(83, __c5, 3)).pipe(T.Body("location_strategy")),
           ),
           modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
           name: S.optional(S.NullOr(S.String)),
-          networks: S.optional(S.NullOr(__S(3, __c0, 3))),
-          poolSets: S.optional(S.NullOr(__S(35, __c4, 3)).pipe(T.Body("pool_sets"))),
-          popPools: S.optional(S.NullOr(__S(14, __c1, 6)).pipe(T.Body("pop_pools"))),
+          networks: S.optional(S.NullOr(__S(16, __c1, 0))),
+          poolSets: S.optional(S.NullOr(__S(56, __c3, 8)).pipe(T.Body("pool_sets"))),
+          popPools: S.optional(S.NullOr(__S(64, __c4, 0)).pipe(T.Body("pop_pools"))),
           proxied: S.optional(S.NullOr(S.Boolean)),
-          randomSteering: S.optional(S.NullOr(__S(36, __c4, 4)).pipe(T.Body("random_steering"))),
-          regionPools: S.optional(S.NullOr(__S(14, __c1, 6)).pipe(T.Body("region_pools"))),
-          rules: S.optional(S.NullOr(__S(42, __c5, 2))),
+          randomSteering: S.optional(S.NullOr(__S(87, __c5, 7)).pipe(T.Body("random_steering"))),
+          regionPools: S.optional(S.NullOr(__S(64, __c4, 0)).pipe(T.Body("region_pools"))),
+          rules: S.optional(S.NullOr(__S(60, __c3, 12))),
           sessionAffinity: S.optional(S.NullOr(S.String).pipe(T.Body("session_affinity"))),
           sessionAffinityAttributes: S.optional(
-            S.NullOr(__S(43, __c5, 3)).pipe(T.Body("session_affinity_attributes")),
+            S.NullOr(__S(61, __c3, 13)).pipe(T.Body("session_affinity_attributes")),
           ),
           sessionAffinityTtl: S.optional(S.NullOr(S.Number).pipe(T.Body("session_affinity_ttl"))),
           steeringPolicy: S.optional(S.NullOr(S.String).pipe(T.Body("steering_policy"))),
@@ -5407,7 +5262,164 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "CreateLoadBalancerResponse",
       });
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, __S(16, __c1, 0));
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, S.Number);
+    case 1:
+      return S.Array(S.String);
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          failoverAcrossPools: S.optional(
+            S.NullOr(S.Boolean).pipe(T.Body("failover_across_pools")),
+          ),
+        }),
+      ).annotate({
+        identifier: "CreateResponseAdaptiveRouting",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          mode: S.optional(S.NullOr(S.String)),
+          preferEcs: S.optional(S.NullOr(S.String).pipe(T.Body("prefer_ecs"))),
+        }),
+      ).annotate({
+        identifier: "CreateResponseLocationStrategy",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          contentType: S.optional(S.NullOr(S.String).pipe(T.Body("content_type"))),
+          location: S.optional(S.NullOr(S.String)),
+          messageBody: S.optional(S.NullOr(S.String).pipe(T.Body("message_body"))),
+          statusCode: S.optional(S.NullOr(S.Number).pipe(T.Body("status_code"))),
+        }),
+      ).annotate({
+        identifier: "CreateResponsePoolSetsItemFixedResponse",
+      });
     case 5:
+      return S.suspend(() =>
+        S.Struct({
+          countries: S.optional(S.NullOr(__S(16, __c1, 0))),
+          pops: S.optional(S.NullOr(__S(16, __c1, 0))),
+          regions: S.optional(S.NullOr(__S(16, __c1, 0))),
+        }),
+      ).annotate({
+        identifier: "CreateResponsePoolSetsItemMatchTopology",
+      });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          default: S.optional(S.NullOr(S.Boolean)),
+          topology: S.optional(S.NullOr(__S(85, __c5, 5))),
+        }),
+      ).annotate({
+        identifier: "CreateResponsePoolSetsItemMatch",
+      });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          defaultWeight: S.optional(S.NullOr(S.Number).pipe(T.Body("default_weight"))),
+          poolWeights: S.optional(S.NullOr(__S(80, __c5, 0)).pipe(T.Body("pool_weights"))),
+        }),
+      ).annotate({
+        identifier: "CreateResponseRandomSteering",
+      });
+    case 8:
+      return S.suspend(() =>
+        S.Struct({
+          defaultWeight: S.optional(S.NullOr(S.Number).pipe(T.Body("default_weight"))),
+          poolWeights: S.optional(S.NullOr(__S(80, __c5, 0)).pipe(T.Body("pool_weights"))),
+        }),
+      ).annotate({
+        identifier: "CreateResponseRulesItemOverridesRandomSteering",
+      });
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          mode: S.optional(S.NullOr(S.String)),
+          preferEcs: S.optional(S.NullOr(S.String).pipe(T.Body("prefer_ecs"))),
+        }),
+      ).annotate({
+        identifier: "CreateResponseRulesItemOverridesLocationStrategy",
+      });
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          failoverAcrossPools: S.optional(S.Boolean.pipe(T.Body("failover_across_pools"))),
+        }),
+      ).annotate({
+        identifier: "CreateRequestAdaptiveRouting",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          mode: S.optional(S.String),
+          preferEcs: S.optional(S.String.pipe(T.Body("prefer_ecs"))),
+        }),
+      ).annotate({
+        identifier: "CreateRequestLocationStrategy",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          defaultWeight: S.optional(S.Number.pipe(T.Body("default_weight"))),
+          poolWeights: S.optional(__S(80, __c5, 0).pipe(T.Body("pool_weights"))),
+        }),
+      ).annotate({
+        identifier: "CreateRequestRandomSteering",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          contentType: S.optional(S.String.pipe(T.Body("content_type"))),
+          location: S.optional(S.String),
+          messageBody: S.optional(S.String.pipe(T.Body("message_body"))),
+          statusCode: S.optional(S.Number.pipe(T.Body("status_code"))),
+        }),
+      ).annotate({
+        identifier: "CreateRequestRulesItemFixedResponse",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          mode: S.optional(S.String),
+          preferEcs: S.optional(S.String.pipe(T.Body("prefer_ecs"))),
+        }),
+      ).annotate({
+        identifier: "CreateRequestRulesItemOverridesLocationStrategy",
+      });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          defaultWeight: S.optional(S.Number.pipe(T.Body("default_weight"))),
+          poolWeights: S.optional(__S(80, __c5, 0).pipe(T.Body("pool_weights"))),
+        }),
+      ).annotate({
+        identifier: "CreateRequestRulesItemOverridesRandomSteering",
+      });
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -5418,7 +5430,7 @@ function __c5(j: number): any {
           expectedBody: S.optional(S.String.pipe(T.Body("expected_body"))),
           expectedCodes: S.optional(S.String.pipe(T.Body("expected_codes"))),
           followRedirects: S.optional(S.Boolean.pipe(T.Body("follow_redirects"))),
-          header: S.optional(__S(14, __c1, 6)),
+          header: S.optional(__S(64, __c4, 0)),
           interval: S.optional(S.Number),
           method: S.optional(S.String),
           path: S.optional(S.String),
@@ -5437,7 +5449,7 @@ function __c5(j: number): any {
           )
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "CreateMonitorRequest" });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.NullOr(S.String)),
@@ -5449,7 +5461,7 @@ function __c5(j: number): any {
           expectedBody: S.optional(S.NullOr(S.String).pipe(T.Body("expected_body"))),
           expectedCodes: S.optional(S.NullOr(S.String).pipe(T.Body("expected_codes"))),
           followRedirects: S.optional(S.NullOr(S.Boolean).pipe(T.Body("follow_redirects"))),
-          header: S.optional(S.NullOr(__S(14, __c1, 6))),
+          header: S.optional(S.NullOr(__S(64, __c4, 0))),
           interval: S.optional(S.NullOr(S.Number)),
           method: S.optional(S.NullOr(S.String)),
           modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
@@ -5461,31 +5473,16 @@ function __c5(j: number): any {
           type: S.optional(S.NullOr(S.String)),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "CreateMonitorResponse" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          enabled: S.Boolean,
-          monitorId: S.String.pipe(T.Body("monitor_id")),
-          monitoringOnly: S.Boolean.pipe(T.Body("monitoring_only")),
-          mustBeHealthy: S.Boolean.pipe(T.Body("must_be_healthy")),
-          createdAt: S.optional(S.String.pipe(T.Body("created_at"))),
-          updatedAt: S.optional(S.String.pipe(T.Body("updated_at"))),
-        }),
-      ).annotate({
-        identifier: "MonitorGroupsCreateRequestMembersItem",
-      });
   }
 }
-function __c6(j: number): any {
+function __c9(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(47, __c5, 7));
-    case 1:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
           description: S.String,
-          members: __S(48, __c6, 0),
+          members: __S(193, __c12, 1),
         })
           .pipe(
             T.Http({
@@ -5498,7 +5495,11 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "CreateMonitorGroupRequest",
       });
-    case 2:
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           enabled: S.Boolean,
@@ -5511,21 +5512,48 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "MonitorGroupsCreateResponseMembersItem",
       });
-    case 3:
-      return S.Array(__S(50, __c6, 2));
-    case 4:
+    case 1:
+      return S.Array(__S(160, __c10, 0));
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
           description: S.String,
-          members: __S(51, __c6, 3),
+          members: __S(161, __c10, 1),
           createdOn: S.optional(S.NullOr(S.String).pipe(T.Body("created_on"))),
           modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({
         identifier: "CreateMonitorGroupResponse",
       });
-    case 5:
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          enabled: S.Boolean,
+          monitorId: S.String.pipe(T.Body("monitor_id")),
+          monitoringOnly: S.Boolean.pipe(T.Body("monitoring_only")),
+          mustBeHealthy: S.Boolean.pipe(T.Body("must_be_healthy")),
+          createdAt: S.optional(S.String.pipe(T.Body("created_at"))),
+          updatedAt: S.optional(S.String.pipe(T.Body("updated_at"))),
+        }),
+      ).annotate({
+        identifier: "MonitorGroupsCreateRequestMembersItem",
+      });
+    case 1:
+      return S.Array(__S(192, __c12, 0));
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -5537,7 +5565,7 @@ function __c6(j: number): any {
           expectedBody: S.optional(S.String.pipe(T.Body("expected_body"))),
           expectedCodes: S.optional(S.String.pipe(T.Body("expected_codes"))),
           followRedirects: S.optional(S.Boolean.pipe(T.Body("follow_redirects"))),
-          header: S.optional(__S(14, __c1, 6)),
+          header: S.optional(__S(64, __c4, 0)),
           interval: S.optional(S.Number),
           method: S.optional(S.String),
           path: S.optional(S.String),
@@ -5558,12 +5586,10 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "CreateMonitorPreviewRequest",
       });
-    case 6:
-      return S.Record(S.String, S.String);
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          pools: S.optional(S.NullOr(__S(54, __c6, 6))),
+          pools: S.optional(S.NullOr(__S(224, __c14, 0))),
           previewId: S.optional(S.NullOr(S.String).pipe(T.Body("preview_id"))),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({
@@ -5571,12 +5597,106 @@ function __c6(j: number): any {
       });
   }
 }
-function __c7(j: number): any {
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, S.String);
+  }
+}
+function __c15(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          host: S.optional(__S(3, __c0, 3).pipe(T.Body("Host"))),
+          accountId: S.String.pipe(T.Label("account_id")),
+          name: S.String,
+          origins: __S(274, __c17, 2),
+          description: S.optional(S.String),
+          enabled: S.optional(S.Boolean),
+          latitude: S.optional(S.Number),
+          loadShedding: S.optional(__S(275, __c17, 3).pipe(T.Body("load_shedding"))),
+          longitude: S.optional(S.Number),
+          minimumOrigins: S.optional(S.Number.pipe(T.Body("minimum_origins"))),
+          monitor: S.optional(S.String),
+          monitorGroup: S.optional(S.String.pipe(T.Body("monitor_group"))),
+          notificationEmail: S.optional(S.String.pipe(T.Body("notification_email"))),
+          notificationFilter: S.optional(__S(277, __c17, 5).pipe(T.Body("notification_filter"))),
+          originSteering: S.optional(__S(278, __c17, 6).pipe(T.Body("origin_steering"))),
+        })
+          .pipe(
+            T.Http({
+              method: "POST",
+              uri: "/accounts/{account_id}/load_balancers/pools",
+              code: 200,
+            }),
+          )
+          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({ identifier: "CreatePoolRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.NullOr(S.String)),
+          checkRegions: S.optional(S.NullOr(__S(32, __c2, 0)).pipe(T.Body("check_regions"))),
+          createdOn: S.optional(S.NullOr(S.String).pipe(T.Body("created_on"))),
+          description: S.optional(S.NullOr(S.String)),
+          disabledAt: S.optional(S.NullOr(S.String).pipe(T.Body("disabled_at"))),
+          enabled: S.optional(S.NullOr(S.Boolean)),
+          healthSources: S.optional(S.NullOr(__S(32, __c2, 0)).pipe(T.Body("health_sources"))),
+          latitude: S.optional(S.NullOr(S.Number)),
+          loadShedding: S.optional(S.NullOr(__S(33, __c2, 1)).pipe(T.Body("load_shedding"))),
+          longitude: S.optional(S.NullOr(S.Number)),
+          minimumOrigins: S.optional(S.NullOr(S.Number).pipe(T.Body("minimum_origins"))),
+          modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
+          monitor: S.optional(S.NullOr(S.String)),
+          monitorGroup: S.optional(S.NullOr(S.String).pipe(T.Body("monitor_group"))),
+          name: S.optional(S.NullOr(S.String)),
+          networks: S.optional(S.NullOr(__S(16, __c1, 0))),
+          notificationEmail: S.optional(S.NullOr(S.String).pipe(T.Body("notification_email"))),
+          notificationFilter: S.optional(
+            S.NullOr(__S(35, __c2, 3)).pipe(T.Body("notification_filter")),
+          ),
+          originSteering: S.optional(S.NullOr(__S(36, __c2, 4)).pipe(T.Body("origin_steering"))),
+          origins: S.optional(S.NullOr(__S(258, __c16, 2))),
+        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({ identifier: "CreatePoolResponse" });
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          host: S.optional(S.NullOr(__S(16, __c1, 0)).pipe(T.Body("Host"))),
+        }),
+      ).annotate({
+        identifier: "PoolsCreateResponseOriginsItemHeader",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          address: S.optional(S.NullOr(S.String)),
+          disabledAt: S.optional(S.NullOr(S.String).pipe(T.Body("disabled_at"))),
+          enabled: S.optional(S.NullOr(S.Boolean)),
+          flattenCname: S.optional(S.NullOr(S.Boolean).pipe(T.Body("flatten_cname"))),
+          header: S.optional(S.NullOr(__S(256, __c16, 0))),
+          name: S.optional(S.NullOr(S.String)),
+          port: S.optional(S.NullOr(S.Number)),
+          virtualNetworkId: S.optional(S.NullOr(S.String).pipe(T.Body("virtual_network_id"))),
+          weight: S.optional(S.NullOr(S.Number)),
+        }),
+      ).annotate({
+        identifier: "PoolsCreateResponseOriginsItem",
+      });
+    case 2:
+      return S.Array(__S(257, __c16, 1));
+  }
+}
+function __c17(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          host: S.optional(__S(16, __c1, 0).pipe(T.Body("Host"))),
         }),
       ).annotate({
         identifier: "PoolsCreateRequestOriginsItemHeader",
@@ -5588,7 +5708,7 @@ function __c7(j: number): any {
           disabledAt: S.optional(S.String.pipe(T.Body("disabled_at"))),
           enabled: S.optional(S.Boolean),
           flattenCname: S.optional(S.Boolean.pipe(T.Body("flatten_cname"))),
-          header: S.optional(__S(56, __c7, 0)),
+          header: S.optional(__S(272, __c17, 0)),
           name: S.optional(S.String),
           port: S.optional(S.Number),
           virtualNetworkId: S.optional(S.String.pipe(T.Body("virtual_network_id"))),
@@ -5598,7 +5718,7 @@ function __c7(j: number): any {
         identifier: "PoolsCreateRequestOriginsItem",
       });
     case 2:
-      return S.Array(__S(57, __c7, 1));
+      return S.Array(__S(273, __c17, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
@@ -5622,8 +5742,8 @@ function __c7(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          origin: S.optional(__S(60, __c7, 4)),
-          pool: S.optional(__S(60, __c7, 4)),
+          origin: S.optional(__S(276, __c17, 4)),
+          pool: S.optional(__S(276, __c17, 4)),
         }),
       ).annotate({
         identifier: "PoolsCreateRequestNotificationFilter",
@@ -5636,91 +5756,11 @@ function __c7(j: number): any {
       ).annotate({
         identifier: "PoolsCreateRequestOriginSteering",
       });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          accountId: S.String.pipe(T.Label("account_id")),
-          name: S.String,
-          origins: __S(58, __c7, 2),
-          description: S.optional(S.String),
-          enabled: S.optional(S.Boolean),
-          latitude: S.optional(S.Number),
-          loadShedding: S.optional(__S(59, __c7, 3).pipe(T.Body("load_shedding"))),
-          longitude: S.optional(S.Number),
-          minimumOrigins: S.optional(S.Number.pipe(T.Body("minimum_origins"))),
-          monitor: S.optional(S.String),
-          monitorGroup: S.optional(S.String.pipe(T.Body("monitor_group"))),
-          notificationEmail: S.optional(S.String.pipe(T.Body("notification_email"))),
-          notificationFilter: S.optional(__S(61, __c7, 5).pipe(T.Body("notification_filter"))),
-          originSteering: S.optional(__S(62, __c7, 6).pipe(T.Body("origin_steering"))),
-        })
-          .pipe(
-            T.Http({
-              method: "POST",
-              uri: "/accounts/{account_id}/load_balancers/pools",
-              code: 200,
-            }),
-          )
-          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({ identifier: "CreatePoolRequest" });
   }
 }
-function __c8(j: number): any {
+function __c18(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() =>
-        S.Struct({
-          host: S.optional(S.NullOr(__S(3, __c0, 3)).pipe(T.Body("Host"))),
-        }),
-      ).annotate({
-        identifier: "PoolsCreateResponseOriginsItemHeader",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          address: S.optional(S.NullOr(S.String)),
-          disabledAt: S.optional(S.NullOr(S.String).pipe(T.Body("disabled_at"))),
-          enabled: S.optional(S.NullOr(S.Boolean)),
-          flattenCname: S.optional(S.NullOr(S.Boolean).pipe(T.Body("flatten_cname"))),
-          header: S.optional(S.NullOr(__S(64, __c8, 0))),
-          name: S.optional(S.NullOr(S.String)),
-          port: S.optional(S.NullOr(S.Number)),
-          virtualNetworkId: S.optional(S.NullOr(S.String).pipe(T.Body("virtual_network_id"))),
-          weight: S.optional(S.NullOr(S.Number)),
-        }),
-      ).annotate({
-        identifier: "PoolsCreateResponseOriginsItem",
-      });
-    case 2:
-      return S.Array(__S(65, __c8, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.NullOr(S.String)),
-          checkRegions: S.optional(S.NullOr(__S(1, __c0, 1)).pipe(T.Body("check_regions"))),
-          createdOn: S.optional(S.NullOr(S.String).pipe(T.Body("created_on"))),
-          description: S.optional(S.NullOr(S.String)),
-          disabledAt: S.optional(S.NullOr(S.String).pipe(T.Body("disabled_at"))),
-          enabled: S.optional(S.NullOr(S.Boolean)),
-          healthSources: S.optional(S.NullOr(__S(1, __c0, 1)).pipe(T.Body("health_sources"))),
-          latitude: S.optional(S.NullOr(S.Number)),
-          loadShedding: S.optional(S.NullOr(__S(2, __c0, 2)).pipe(T.Body("load_shedding"))),
-          longitude: S.optional(S.NullOr(S.Number)),
-          minimumOrigins: S.optional(S.NullOr(S.Number).pipe(T.Body("minimum_origins"))),
-          modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
-          monitor: S.optional(S.NullOr(S.String)),
-          monitorGroup: S.optional(S.NullOr(S.String).pipe(T.Body("monitor_group"))),
-          name: S.optional(S.NullOr(S.String)),
-          networks: S.optional(S.NullOr(__S(3, __c0, 3))),
-          notificationEmail: S.optional(S.NullOr(S.String).pipe(T.Body("notification_email"))),
-          notificationFilter: S.optional(
-            S.NullOr(__S(5, __c0, 5)).pipe(T.Body("notification_filter")),
-          ),
-          originSteering: S.optional(S.NullOr(__S(6, __c0, 6)).pipe(T.Body("origin_steering"))),
-          origins: S.optional(S.NullOr(__S(66, __c8, 2))),
-        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({ identifier: "CreatePoolResponse" });
-    case 4:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -5732,7 +5772,7 @@ function __c8(j: number): any {
           expectedBody: S.optional(S.String.pipe(T.Body("expected_body"))),
           expectedCodes: S.optional(S.String.pipe(T.Body("expected_codes"))),
           followRedirects: S.optional(S.Boolean.pipe(T.Body("follow_redirects"))),
-          header: S.optional(__S(14, __c1, 6)),
+          header: S.optional(__S(64, __c4, 0)),
           interval: S.optional(S.Number),
           method: S.optional(S.String),
           path: S.optional(S.String),
@@ -5751,14 +5791,18 @@ function __c8(j: number): any {
           )
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "CreatePoolHealthRequest" });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          pools: S.optional(S.NullOr(__S(54, __c6, 6))),
+          pools: S.optional(S.NullOr(__S(224, __c14, 0))),
           previewId: S.optional(S.NullOr(S.String).pipe(T.Body("preview_id"))),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "CreatePoolHealthResponse" });
-    case 6:
+  }
+}
+function __c19(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           zoneId: S.String.pipe(T.Label("zone_id")),
@@ -5775,7 +5819,7 @@ function __c8(j: number): any {
       ).annotate({
         identifier: "DeleteLoadBalancerRequest",
       });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.NullOr(S.String)),
@@ -5785,7 +5829,7 @@ function __c8(j: number): any {
       });
   }
 }
-function __c9(j: number): any {
+function __c20(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5802,13 +5846,21 @@ function __c9(j: number): any {
           )
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "DeleteMonitorRequest" });
-    case 1:
+  }
+}
+function __c21(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.NullOr(S.String)),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "DeleteMonitorResponse" });
-    case 2:
+  }
+}
+function __c22(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -5825,7 +5877,11 @@ function __c9(j: number): any {
       ).annotate({
         identifier: "DeleteMonitorGroupRequest",
       });
-    case 3:
+  }
+}
+function __c23(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -5840,7 +5896,11 @@ function __c9(j: number): any {
           )
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "DeletePoolRequest" });
-    case 4:
+  }
+}
+function __c24(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           zoneId: S.String.pipe(T.Label("zone_id")),
@@ -5855,39 +5915,35 @@ function __c9(j: number): any {
           )
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "GetLoadBalancerRequest" });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           fallbackPool: S.optional(S.NullOr(S.String).pipe(T.Body("fallback_pool"))),
           poolDefaultWeight: S.optional(S.NullOr(S.Number).pipe(T.Body("pool_default_weight"))),
-          poolWeights: S.optional(S.NullOr(__S(16, __c2, 0)).pipe(T.Body("pool_weights"))),
-          pools: S.optional(S.NullOr(__S(3, __c0, 3))),
+          poolWeights: S.optional(S.NullOr(__S(80, __c5, 0)).pipe(T.Body("pool_weights"))),
+          pools: S.optional(S.NullOr(__S(16, __c1, 0))),
           steeringPolicy: S.optional(S.NullOr(S.String).pipe(T.Body("steering_policy"))),
         }),
       ).annotate({
         identifier: "GetResponsePoolSetsItemOverrides",
       });
-    case 6:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           disabled: S.optional(S.NullOr(S.Boolean)),
-          fixedResponse: S.optional(S.NullOr(__S(30, __c3, 6)).pipe(T.Body("fixed_response"))),
-          match: S.optional(S.NullOr(__S(32, __c4, 0))),
+          fixedResponse: S.optional(S.NullOr(__S(84, __c5, 4)).pipe(T.Body("fixed_response"))),
+          match: S.optional(S.NullOr(__S(86, __c5, 6))),
           name: S.optional(S.NullOr(S.String)),
-          overrides: S.optional(S.NullOr(__S(77, __c9, 5))),
+          overrides: S.optional(S.NullOr(__S(385, __c24, 1))),
         }),
       ).annotate({ identifier: "GetResponsePoolSetsItem" });
-    case 7:
-      return S.Array(__S(78, __c9, 6));
-  }
-}
-function __c10(j: number): any {
-  switch (j) {
-    case 0:
+    case 3:
+      return S.Array(__S(386, __c24, 2));
+    case 4:
       return S.suspend(() =>
         S.Struct({
           drainDuration: S.optional(S.NullOr(S.Number).pipe(T.Body("drain_duration"))),
-          headers: S.optional(S.NullOr(__S(21, __c2, 5))),
+          headers: S.optional(S.NullOr(__S(81, __c5, 1))),
           requireAllHeaders: S.optional(S.NullOr(S.Boolean).pipe(T.Body("require_all_headers"))),
           samesite: S.optional(S.NullOr(S.String)),
           secure: S.optional(S.NullOr(S.String)),
@@ -5898,25 +5954,25 @@ function __c10(j: number): any {
       ).annotate({
         identifier: "GetResponseRulesItemOverridesSessionAffinityAttributes",
       });
-    case 1:
+    case 5:
       return S.suspend(() =>
         S.Struct({
-          adaptiveRouting: S.optional(S.NullOr(__S(28, __c3, 4)).pipe(T.Body("adaptive_routing"))),
-          countryPools: S.optional(S.NullOr(__S(14, __c1, 6)).pipe(T.Body("country_pools"))),
-          defaultPools: S.optional(S.NullOr(__S(3, __c0, 3)).pipe(T.Body("default_pools"))),
+          adaptiveRouting: S.optional(S.NullOr(__S(82, __c5, 2)).pipe(T.Body("adaptive_routing"))),
+          countryPools: S.optional(S.NullOr(__S(64, __c4, 0)).pipe(T.Body("country_pools"))),
+          defaultPools: S.optional(S.NullOr(__S(16, __c1, 0)).pipe(T.Body("default_pools"))),
           fallbackPool: S.optional(S.NullOr(S.String).pipe(T.Body("fallback_pool"))),
           locationStrategy: S.optional(
-            S.NullOr(__S(29, __c3, 5)).pipe(T.Body("location_strategy")),
+            S.NullOr(__S(83, __c5, 3)).pipe(T.Body("location_strategy")),
           ),
           poolDefaultWeight: S.optional(S.NullOr(S.Number).pipe(T.Body("pool_default_weight"))),
-          poolWeights: S.optional(S.NullOr(__S(16, __c2, 0)).pipe(T.Body("pool_weights"))),
-          pools: S.optional(S.NullOr(__S(3, __c0, 3))),
-          popPools: S.optional(S.NullOr(__S(14, __c1, 6)).pipe(T.Body("pop_pools"))),
-          randomSteering: S.optional(S.NullOr(__S(38, __c4, 6)).pipe(T.Body("random_steering"))),
-          regionPools: S.optional(S.NullOr(__S(14, __c1, 6)).pipe(T.Body("region_pools"))),
+          poolWeights: S.optional(S.NullOr(__S(80, __c5, 0)).pipe(T.Body("pool_weights"))),
+          pools: S.optional(S.NullOr(__S(16, __c1, 0))),
+          popPools: S.optional(S.NullOr(__S(64, __c4, 0)).pipe(T.Body("pop_pools"))),
+          randomSteering: S.optional(S.NullOr(__S(88, __c5, 8)).pipe(T.Body("random_steering"))),
+          regionPools: S.optional(S.NullOr(__S(64, __c4, 0)).pipe(T.Body("region_pools"))),
           sessionAffinity: S.optional(S.NullOr(S.String).pipe(T.Body("session_affinity"))),
           sessionAffinityAttributes: S.optional(
-            S.NullOr(__S(80, __c10, 0)).pipe(T.Body("session_affinity_attributes")),
+            S.NullOr(__S(388, __c24, 4)).pipe(T.Body("session_affinity_attributes")),
           ),
           sessionAffinityTtl: S.optional(S.NullOr(S.Number).pipe(T.Body("session_affinity_ttl"))),
           steeringPolicy: S.optional(S.NullOr(S.String).pipe(T.Body("steering_policy"))),
@@ -5925,25 +5981,25 @@ function __c10(j: number): any {
       ).annotate({
         identifier: "GetResponseRulesItemOverrides",
       });
-    case 2:
+    case 6:
       return S.suspend(() =>
         S.Struct({
           condition: S.optional(S.NullOr(S.String)),
           disabled: S.optional(S.NullOr(S.Boolean)),
-          fixedResponse: S.optional(S.NullOr(__S(30, __c3, 6)).pipe(T.Body("fixed_response"))),
+          fixedResponse: S.optional(S.NullOr(__S(84, __c5, 4)).pipe(T.Body("fixed_response"))),
           name: S.optional(S.NullOr(S.String)),
-          overrides: S.optional(S.NullOr(__S(81, __c10, 1))),
+          overrides: S.optional(S.NullOr(__S(389, __c24, 5))),
           priority: S.optional(S.NullOr(S.Number)),
           terminates: S.optional(S.NullOr(S.Boolean)),
         }),
       ).annotate({ identifier: "GetResponseRulesItem" });
-    case 3:
-      return S.Array(__S(82, __c10, 2));
-    case 4:
+    case 7:
+      return S.Array(__S(390, __c24, 6));
+    case 8:
       return S.suspend(() =>
         S.Struct({
           drainDuration: S.optional(S.NullOr(S.Number).pipe(T.Body("drain_duration"))),
-          headers: S.optional(S.NullOr(__S(3, __c0, 3))),
+          headers: S.optional(S.NullOr(__S(16, __c1, 0))),
           requireAllHeaders: S.optional(S.NullOr(S.Boolean).pipe(T.Body("require_all_headers"))),
           samesite: S.optional(S.NullOr(S.String)),
           secure: S.optional(S.NullOr(S.String)),
@@ -5954,32 +6010,32 @@ function __c10(j: number): any {
       ).annotate({
         identifier: "GetResponseSessionAffinityAttributes",
       });
-    case 5:
+    case 9:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.NullOr(S.String)),
-          adaptiveRouting: S.optional(S.NullOr(__S(28, __c3, 4)).pipe(T.Body("adaptive_routing"))),
-          countryPools: S.optional(S.NullOr(__S(14, __c1, 6)).pipe(T.Body("country_pools"))),
+          adaptiveRouting: S.optional(S.NullOr(__S(82, __c5, 2)).pipe(T.Body("adaptive_routing"))),
+          countryPools: S.optional(S.NullOr(__S(64, __c4, 0)).pipe(T.Body("country_pools"))),
           createdOn: S.optional(S.NullOr(S.String).pipe(T.Body("created_on"))),
-          defaultPools: S.optional(S.NullOr(__S(3, __c0, 3)).pipe(T.Body("default_pools"))),
+          defaultPools: S.optional(S.NullOr(__S(16, __c1, 0)).pipe(T.Body("default_pools"))),
           description: S.optional(S.NullOr(S.String)),
           enabled: S.optional(S.NullOr(S.Boolean)),
           fallbackPool: S.optional(S.NullOr(S.String).pipe(T.Body("fallback_pool"))),
           locationStrategy: S.optional(
-            S.NullOr(__S(29, __c3, 5)).pipe(T.Body("location_strategy")),
+            S.NullOr(__S(83, __c5, 3)).pipe(T.Body("location_strategy")),
           ),
           modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
           name: S.optional(S.NullOr(S.String)),
-          networks: S.optional(S.NullOr(__S(3, __c0, 3))),
-          poolSets: S.optional(S.NullOr(__S(79, __c9, 7)).pipe(T.Body("pool_sets"))),
-          popPools: S.optional(S.NullOr(__S(14, __c1, 6)).pipe(T.Body("pop_pools"))),
+          networks: S.optional(S.NullOr(__S(16, __c1, 0))),
+          poolSets: S.optional(S.NullOr(__S(387, __c24, 3)).pipe(T.Body("pool_sets"))),
+          popPools: S.optional(S.NullOr(__S(64, __c4, 0)).pipe(T.Body("pop_pools"))),
           proxied: S.optional(S.NullOr(S.Boolean)),
-          randomSteering: S.optional(S.NullOr(__S(36, __c4, 4)).pipe(T.Body("random_steering"))),
-          regionPools: S.optional(S.NullOr(__S(14, __c1, 6)).pipe(T.Body("region_pools"))),
-          rules: S.optional(S.NullOr(__S(83, __c10, 3))),
+          randomSteering: S.optional(S.NullOr(__S(87, __c5, 7)).pipe(T.Body("random_steering"))),
+          regionPools: S.optional(S.NullOr(__S(64, __c4, 0)).pipe(T.Body("region_pools"))),
+          rules: S.optional(S.NullOr(__S(391, __c24, 7))),
           sessionAffinity: S.optional(S.NullOr(S.String).pipe(T.Body("session_affinity"))),
           sessionAffinityAttributes: S.optional(
-            S.NullOr(__S(84, __c10, 4)).pipe(T.Body("session_affinity_attributes")),
+            S.NullOr(__S(392, __c24, 8)).pipe(T.Body("session_affinity_attributes")),
           ),
           sessionAffinityTtl: S.optional(S.NullOr(S.Number).pipe(T.Body("session_affinity_ttl"))),
           steeringPolicy: S.optional(S.NullOr(S.String).pipe(T.Body("steering_policy"))),
@@ -5987,7 +6043,11 @@ function __c10(j: number): any {
           zoneName: S.optional(S.NullOr(S.String).pipe(T.Body("zone_name"))),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "GetLoadBalancerResponse" });
-    case 6:
+  }
+}
+function __c25(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -6002,7 +6062,7 @@ function __c10(j: number): any {
           )
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "GetMonitorRequest" });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.NullOr(S.String)),
@@ -6014,7 +6074,7 @@ function __c10(j: number): any {
           expectedBody: S.optional(S.NullOr(S.String).pipe(T.Body("expected_body"))),
           expectedCodes: S.optional(S.NullOr(S.String).pipe(T.Body("expected_codes"))),
           followRedirects: S.optional(S.NullOr(S.Boolean).pipe(T.Body("follow_redirects"))),
-          header: S.optional(S.NullOr(__S(14, __c1, 6))),
+          header: S.optional(S.NullOr(__S(64, __c4, 0))),
           interval: S.optional(S.NullOr(S.Number)),
           method: S.optional(S.NullOr(S.String)),
           modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
@@ -6028,7 +6088,7 @@ function __c10(j: number): any {
       ).annotate({ identifier: "GetMonitorResponse" });
   }
 }
-function __c11(j: number): any {
+function __c26(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -6050,12 +6110,16 @@ function __c11(j: number): any {
         S.Struct({
           id: S.String,
           description: S.String,
-          members: __S(51, __c6, 3),
+          members: __S(161, __c10, 1),
           createdOn: S.optional(S.NullOr(S.String).pipe(T.Body("created_on"))),
           modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "GetMonitorGroupResponse" });
-    case 2:
+  }
+}
+function __c27(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -6072,7 +6136,24 @@ function __c11(j: number): any {
       ).annotate({
         identifier: "GetMonitorGroupReferenceRequest",
       });
-    case 3:
+  }
+}
+function __c28(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          result: __S(465, __c29, 1).pipe(T.EnvelopePayload()),
+          resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
+        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({
+        identifier: "GetMonitorGroupReferenceResponse",
+      });
+  }
+}
+function __c29(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           referenceType: S.optional(S.NullOr(S.String).pipe(T.Body("reference_type"))),
@@ -6083,18 +6164,13 @@ function __c11(j: number): any {
       ).annotate({
         identifier: "MonitorGroupsReferencesGetResultItem",
       });
-    case 4:
-      return S.Array(__S(91, __c11, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          result: __S(92, __c11, 4).pipe(T.EnvelopePayload()),
-          resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
-        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({
-        identifier: "GetMonitorGroupReferenceResponse",
-      });
-    case 6:
+    case 1:
+      return S.Array(__S(464, __c29, 0));
+  }
+}
+function __c30(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -6111,7 +6187,11 @@ function __c11(j: number): any {
       ).annotate({
         identifier: "GetMonitorReferenceRequest",
       });
-    case 7:
+  }
+}
+function __c31(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -6126,38 +6206,38 @@ function __c11(j: number): any {
           )
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "GetPoolRequest" });
-  }
-}
-function __c12(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.NullOr(S.String)),
-          checkRegions: S.optional(S.NullOr(__S(1, __c0, 1)).pipe(T.Body("check_regions"))),
+          checkRegions: S.optional(S.NullOr(__S(32, __c2, 0)).pipe(T.Body("check_regions"))),
           createdOn: S.optional(S.NullOr(S.String).pipe(T.Body("created_on"))),
           description: S.optional(S.NullOr(S.String)),
           disabledAt: S.optional(S.NullOr(S.String).pipe(T.Body("disabled_at"))),
           enabled: S.optional(S.NullOr(S.Boolean)),
-          healthSources: S.optional(S.NullOr(__S(1, __c0, 1)).pipe(T.Body("health_sources"))),
+          healthSources: S.optional(S.NullOr(__S(32, __c2, 0)).pipe(T.Body("health_sources"))),
           latitude: S.optional(S.NullOr(S.Number)),
-          loadShedding: S.optional(S.NullOr(__S(2, __c0, 2)).pipe(T.Body("load_shedding"))),
+          loadShedding: S.optional(S.NullOr(__S(33, __c2, 1)).pipe(T.Body("load_shedding"))),
           longitude: S.optional(S.NullOr(S.Number)),
           minimumOrigins: S.optional(S.NullOr(S.Number).pipe(T.Body("minimum_origins"))),
           modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
           monitor: S.optional(S.NullOr(S.String)),
           monitorGroup: S.optional(S.NullOr(S.String).pipe(T.Body("monitor_group"))),
           name: S.optional(S.NullOr(S.String)),
-          networks: S.optional(S.NullOr(__S(3, __c0, 3))),
+          networks: S.optional(S.NullOr(__S(16, __c1, 0))),
           notificationEmail: S.optional(S.NullOr(S.String).pipe(T.Body("notification_email"))),
           notificationFilter: S.optional(
-            S.NullOr(__S(5, __c0, 5)).pipe(T.Body("notification_filter")),
+            S.NullOr(__S(35, __c2, 3)).pipe(T.Body("notification_filter")),
           ),
-          originSteering: S.optional(S.NullOr(__S(6, __c0, 6)).pipe(T.Body("origin_steering"))),
-          origins: S.optional(S.NullOr(__S(66, __c8, 2))),
+          originSteering: S.optional(S.NullOr(__S(36, __c2, 4)).pipe(T.Body("origin_steering"))),
+          origins: S.optional(S.NullOr(__S(258, __c16, 2))),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "GetPoolResponse" });
-    case 1:
+  }
+}
+function __c32(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -6172,7 +6252,37 @@ function __c12(j: number): any {
           )
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "GetPoolHealthRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          ip: S.optional(S.NullOr(__S(528, __c33, 0))),
+        }),
+      ).annotate({
+        identifier: "PoolsHealthGetResponsePopHealthOriginsItem",
+      });
     case 2:
+      return S.Array(__S(513, __c32, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          healthy: S.optional(S.NullOr(S.Boolean)),
+          origins: S.optional(S.NullOr(__S(514, __c32, 2))),
+        }),
+      ).annotate({
+        identifier: "PoolsHealthGetResponsePopHealth",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          poolId: S.optional(S.NullOr(S.String).pipe(T.Body("pool_id"))),
+          popHealth: S.optional(S.NullOr(__S(515, __c32, 3)).pipe(T.Body("pop_health"))),
+        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({ identifier: "GetPoolHealthResponse" });
+  }
+}
+function __c33(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           failureReason: S.optional(S.NullOr(S.String).pipe(T.Body("failure_reason"))),
@@ -6183,33 +6293,11 @@ function __c12(j: number): any {
       ).annotate({
         identifier: "PoolsHealthGetResponsePopHealthOriginsItemIp",
       });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          ip: S.optional(S.NullOr(__S(98, __c12, 2))),
-        }),
-      ).annotate({
-        identifier: "PoolsHealthGetResponsePopHealthOriginsItem",
-      });
-    case 4:
-      return S.Array(__S(99, __c12, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          healthy: S.optional(S.NullOr(S.Boolean)),
-          origins: S.optional(S.NullOr(__S(100, __c12, 4))),
-        }),
-      ).annotate({
-        identifier: "PoolsHealthGetResponsePopHealth",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          poolId: S.optional(S.NullOr(S.String).pipe(T.Body("pool_id"))),
-          popHealth: S.optional(S.NullOr(__S(101, __c12, 5)).pipe(T.Body("pop_health"))),
-        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({ identifier: "GetPoolHealthResponse" });
-    case 7:
+  }
+}
+function __c34(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -6224,18 +6312,18 @@ function __c12(j: number): any {
           )
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "GetPoolReferenceRequest" });
-  }
-}
-function __c13(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          result: __S(92, __c11, 4).pipe(T.EnvelopePayload()),
+          result: __S(465, __c29, 1).pipe(T.EnvelopePayload()),
           resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "GetPoolReferenceResponse" });
-    case 1:
+  }
+}
+function __c35(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -6250,24 +6338,28 @@ function __c13(j: number): any {
           )
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "GetPreviewRequest" });
+    case 1:
+      return S.Record(S.String, __S(528, __c33, 0));
     case 2:
-      return S.Record(S.String, __S(98, __c12, 2));
+      return S.Array(__S(561, __c35, 1));
     case 3:
-      return S.Array(__S(106, __c13, 2));
-    case 4:
       return S.suspend(() =>
         S.Struct({
           healthy: S.optional(S.NullOr(S.Boolean)),
-          origins: S.optional(S.NullOr(__S(107, __c13, 3))),
+          origins: S.optional(S.NullOr(__S(562, __c35, 2))),
         }),
       ).annotate({ identifier: "PreviewsGetResultValue" });
+    case 4:
+      return S.Record(S.String, __S(563, __c35, 3));
     case 5:
-      return S.Record(S.String, __S(108, __c13, 4));
-    case 6:
       return S.suspend(() =>
-        __S(109, __c13, 5).pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
+        __S(564, __c35, 4).pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "GetPreviewResponse" });
-    case 7:
+  }
+}
+function __c36(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -6284,13 +6376,17 @@ function __c13(j: number): any {
       ).annotate({ identifier: "GetRegionRequest" });
   }
 }
-function __c14(j: number): any {
+function __c37(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Unknown.pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "GetRegionResponse" });
-    case 1:
+  }
+}
+function __c38(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           zoneId: S.String.pipe(T.Label("zone_id")),
@@ -6298,37 +6394,37 @@ function __c14(j: number): any {
           .pipe(T.Http({ method: "GET", uri: "/zones/{zone_id}/load_balancers", code: 200 }))
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "ListLoadBalancersRequest" });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           fallbackPool: S.optional(S.NullOr(S.String).pipe(T.Body("fallback_pool"))),
           poolDefaultWeight: S.optional(S.NullOr(S.Number).pipe(T.Body("pool_default_weight"))),
-          poolWeights: S.optional(S.NullOr(__S(16, __c2, 0)).pipe(T.Body("pool_weights"))),
-          pools: S.optional(S.NullOr(__S(3, __c0, 3))),
+          poolWeights: S.optional(S.NullOr(__S(80, __c5, 0)).pipe(T.Body("pool_weights"))),
+          pools: S.optional(S.NullOr(__S(16, __c1, 0))),
           steeringPolicy: S.optional(S.NullOr(S.String).pipe(T.Body("steering_policy"))),
         }),
       ).annotate({
         identifier: "ListResultItemPoolSetsItemOverrides",
       });
-    case 3:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           disabled: S.optional(S.NullOr(S.Boolean)),
-          fixedResponse: S.optional(S.NullOr(__S(30, __c3, 6)).pipe(T.Body("fixed_response"))),
-          match: S.optional(S.NullOr(__S(32, __c4, 0))),
+          fixedResponse: S.optional(S.NullOr(__S(84, __c5, 4)).pipe(T.Body("fixed_response"))),
+          match: S.optional(S.NullOr(__S(86, __c5, 6))),
           name: S.optional(S.NullOr(S.String)),
-          overrides: S.optional(S.NullOr(__S(114, __c14, 2))),
+          overrides: S.optional(S.NullOr(__S(609, __c38, 1))),
         }),
       ).annotate({
         identifier: "ListResultItemPoolSetsItem",
       });
+    case 3:
+      return S.Array(__S(610, __c38, 2));
     case 4:
-      return S.Array(__S(115, __c14, 3));
-    case 5:
       return S.suspend(() =>
         S.Struct({
           drainDuration: S.optional(S.NullOr(S.Number).pipe(T.Body("drain_duration"))),
-          headers: S.optional(S.NullOr(__S(21, __c2, 5))),
+          headers: S.optional(S.NullOr(__S(81, __c5, 1))),
           requireAllHeaders: S.optional(S.NullOr(S.Boolean).pipe(T.Body("require_all_headers"))),
           samesite: S.optional(S.NullOr(S.String)),
           secure: S.optional(S.NullOr(S.String)),
@@ -6339,25 +6435,25 @@ function __c14(j: number): any {
       ).annotate({
         identifier: "ListResultItemRulesItemOverridesSessionAffinityAttributes",
       });
-    case 6:
+    case 5:
       return S.suspend(() =>
         S.Struct({
-          adaptiveRouting: S.optional(S.NullOr(__S(28, __c3, 4)).pipe(T.Body("adaptive_routing"))),
-          countryPools: S.optional(S.NullOr(__S(14, __c1, 6)).pipe(T.Body("country_pools"))),
-          defaultPools: S.optional(S.NullOr(__S(3, __c0, 3)).pipe(T.Body("default_pools"))),
+          adaptiveRouting: S.optional(S.NullOr(__S(82, __c5, 2)).pipe(T.Body("adaptive_routing"))),
+          countryPools: S.optional(S.NullOr(__S(64, __c4, 0)).pipe(T.Body("country_pools"))),
+          defaultPools: S.optional(S.NullOr(__S(16, __c1, 0)).pipe(T.Body("default_pools"))),
           fallbackPool: S.optional(S.NullOr(S.String).pipe(T.Body("fallback_pool"))),
           locationStrategy: S.optional(
-            S.NullOr(__S(37, __c4, 5)).pipe(T.Body("location_strategy")),
+            S.NullOr(__S(96, __c6, 0)).pipe(T.Body("location_strategy")),
           ),
           poolDefaultWeight: S.optional(S.NullOr(S.Number).pipe(T.Body("pool_default_weight"))),
-          poolWeights: S.optional(S.NullOr(__S(16, __c2, 0)).pipe(T.Body("pool_weights"))),
-          pools: S.optional(S.NullOr(__S(3, __c0, 3))),
-          popPools: S.optional(S.NullOr(__S(14, __c1, 6)).pipe(T.Body("pop_pools"))),
-          randomSteering: S.optional(S.NullOr(__S(38, __c4, 6)).pipe(T.Body("random_steering"))),
-          regionPools: S.optional(S.NullOr(__S(14, __c1, 6)).pipe(T.Body("region_pools"))),
+          poolWeights: S.optional(S.NullOr(__S(80, __c5, 0)).pipe(T.Body("pool_weights"))),
+          pools: S.optional(S.NullOr(__S(16, __c1, 0))),
+          popPools: S.optional(S.NullOr(__S(64, __c4, 0)).pipe(T.Body("pop_pools"))),
+          randomSteering: S.optional(S.NullOr(__S(88, __c5, 8)).pipe(T.Body("random_steering"))),
+          regionPools: S.optional(S.NullOr(__S(64, __c4, 0)).pipe(T.Body("region_pools"))),
           sessionAffinity: S.optional(S.NullOr(S.String).pipe(T.Body("session_affinity"))),
           sessionAffinityAttributes: S.optional(
-            S.NullOr(__S(117, __c14, 5)).pipe(T.Body("session_affinity_attributes")),
+            S.NullOr(__S(612, __c38, 4)).pipe(T.Body("session_affinity_attributes")),
           ),
           sessionAffinityTtl: S.optional(S.NullOr(S.Number).pipe(T.Body("session_affinity_ttl"))),
           steeringPolicy: S.optional(S.NullOr(S.String).pipe(T.Body("steering_policy"))),
@@ -6366,29 +6462,25 @@ function __c14(j: number): any {
       ).annotate({
         identifier: "ListResultItemRulesItemOverrides",
       });
-    case 7:
+    case 6:
       return S.suspend(() =>
         S.Struct({
           condition: S.optional(S.NullOr(S.String)),
           disabled: S.optional(S.NullOr(S.Boolean)),
-          fixedResponse: S.optional(S.NullOr(__S(30, __c3, 6)).pipe(T.Body("fixed_response"))),
+          fixedResponse: S.optional(S.NullOr(__S(84, __c5, 4)).pipe(T.Body("fixed_response"))),
           name: S.optional(S.NullOr(S.String)),
-          overrides: S.optional(S.NullOr(__S(118, __c14, 6))),
+          overrides: S.optional(S.NullOr(__S(613, __c38, 5))),
           priority: S.optional(S.NullOr(S.Number)),
           terminates: S.optional(S.NullOr(S.Boolean)),
         }),
       ).annotate({ identifier: "ListResultItemRulesItem" });
-  }
-}
-function __c15(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(119, __c14, 7));
-    case 1:
+    case 7:
+      return S.Array(__S(614, __c38, 6));
+    case 8:
       return S.suspend(() =>
         S.Struct({
           drainDuration: S.optional(S.NullOr(S.Number).pipe(T.Body("drain_duration"))),
-          headers: S.optional(S.NullOr(__S(3, __c0, 3))),
+          headers: S.optional(S.NullOr(__S(16, __c1, 0))),
           requireAllHeaders: S.optional(S.NullOr(S.Boolean).pipe(T.Body("require_all_headers"))),
           samesite: S.optional(S.NullOr(S.String)),
           secure: S.optional(S.NullOr(S.String)),
@@ -6399,32 +6491,32 @@ function __c15(j: number): any {
       ).annotate({
         identifier: "ListResultItemSessionAffinityAttributes",
       });
-    case 2:
+    case 9:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.NullOr(S.String)),
-          adaptiveRouting: S.optional(S.NullOr(__S(28, __c3, 4)).pipe(T.Body("adaptive_routing"))),
-          countryPools: S.optional(S.NullOr(__S(14, __c1, 6)).pipe(T.Body("country_pools"))),
+          adaptiveRouting: S.optional(S.NullOr(__S(82, __c5, 2)).pipe(T.Body("adaptive_routing"))),
+          countryPools: S.optional(S.NullOr(__S(64, __c4, 0)).pipe(T.Body("country_pools"))),
           createdOn: S.optional(S.NullOr(S.String).pipe(T.Body("created_on"))),
-          defaultPools: S.optional(S.NullOr(__S(3, __c0, 3)).pipe(T.Body("default_pools"))),
+          defaultPools: S.optional(S.NullOr(__S(16, __c1, 0)).pipe(T.Body("default_pools"))),
           description: S.optional(S.NullOr(S.String)),
           enabled: S.optional(S.NullOr(S.Boolean)),
           fallbackPool: S.optional(S.NullOr(S.String).pipe(T.Body("fallback_pool"))),
           locationStrategy: S.optional(
-            S.NullOr(__S(29, __c3, 5)).pipe(T.Body("location_strategy")),
+            S.NullOr(__S(83, __c5, 3)).pipe(T.Body("location_strategy")),
           ),
           modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
           name: S.optional(S.NullOr(S.String)),
-          networks: S.optional(S.NullOr(__S(3, __c0, 3))),
-          poolSets: S.optional(S.NullOr(__S(116, __c14, 4)).pipe(T.Body("pool_sets"))),
-          popPools: S.optional(S.NullOr(__S(14, __c1, 6)).pipe(T.Body("pop_pools"))),
+          networks: S.optional(S.NullOr(__S(16, __c1, 0))),
+          poolSets: S.optional(S.NullOr(__S(611, __c38, 3)).pipe(T.Body("pool_sets"))),
+          popPools: S.optional(S.NullOr(__S(64, __c4, 0)).pipe(T.Body("pop_pools"))),
           proxied: S.optional(S.NullOr(S.Boolean)),
-          randomSteering: S.optional(S.NullOr(__S(36, __c4, 4)).pipe(T.Body("random_steering"))),
-          regionPools: S.optional(S.NullOr(__S(14, __c1, 6)).pipe(T.Body("region_pools"))),
-          rules: S.optional(S.NullOr(__S(120, __c15, 0))),
+          randomSteering: S.optional(S.NullOr(__S(87, __c5, 7)).pipe(T.Body("random_steering"))),
+          regionPools: S.optional(S.NullOr(__S(64, __c4, 0)).pipe(T.Body("region_pools"))),
+          rules: S.optional(S.NullOr(__S(615, __c38, 7))),
           sessionAffinity: S.optional(S.NullOr(S.String).pipe(T.Body("session_affinity"))),
           sessionAffinityAttributes: S.optional(
-            S.NullOr(__S(121, __c15, 1)).pipe(T.Body("session_affinity_attributes")),
+            S.NullOr(__S(616, __c38, 8)).pipe(T.Body("session_affinity_attributes")),
           ),
           sessionAffinityTtl: S.optional(S.NullOr(S.Number).pipe(T.Body("session_affinity_ttl"))),
           steeringPolicy: S.optional(S.NullOr(S.String).pipe(T.Body("steering_policy"))),
@@ -6432,18 +6524,22 @@ function __c15(j: number): any {
           zoneName: S.optional(S.NullOr(S.String).pipe(T.Body("zone_name"))),
         }),
       ).annotate({ identifier: "ListResultItem" });
-    case 3:
-      return S.Array(__S(122, __c15, 2));
-    case 4:
+    case 10:
+      return S.Array(__S(617, __c38, 9));
+    case 11:
       return S.suspend(() =>
         S.Struct({
-          result: __S(123, __c15, 3).pipe(T.EnvelopePayload()),
+          result: __S(618, __c38, 10).pipe(T.EnvelopePayload()),
           resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({
         identifier: "ListLoadBalancersResponse",
       });
-    case 5:
+  }
+}
+function __c39(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -6457,34 +6553,34 @@ function __c15(j: number): any {
           )
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "ListMonitorGroupsRequest" });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
           description: S.String,
-          members: __S(51, __c6, 3),
+          members: __S(161, __c10, 1),
           createdOn: S.optional(S.NullOr(S.String).pipe(T.Body("created_on"))),
           modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
         }),
       ).annotate({
         identifier: "MonitorGroupsListResultItem",
       });
-    case 7:
-      return S.Array(__S(126, __c15, 6));
-  }
-}
-function __c16(j: number): any {
-  switch (j) {
-    case 0:
+    case 2:
+      return S.Array(__S(625, __c39, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          result: __S(127, __c15, 7).pipe(T.EnvelopePayload()),
+          result: __S(626, __c39, 2).pipe(T.EnvelopePayload()),
           resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({
         identifier: "ListMonitorGroupsResponse",
       });
-    case 1:
+  }
+}
+function __c40(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -6498,7 +6594,7 @@ function __c16(j: number): any {
           )
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "ListMonitorsRequest" });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.NullOr(S.String)),
@@ -6510,7 +6606,7 @@ function __c16(j: number): any {
           expectedBody: S.optional(S.NullOr(S.String).pipe(T.Body("expected_body"))),
           expectedCodes: S.optional(S.NullOr(S.String).pipe(T.Body("expected_codes"))),
           followRedirects: S.optional(S.NullOr(S.Boolean).pipe(T.Body("follow_redirects"))),
-          header: S.optional(S.NullOr(__S(14, __c1, 6))),
+          header: S.optional(S.NullOr(__S(64, __c4, 0))),
           interval: S.optional(S.NullOr(S.Number)),
           method: S.optional(S.NullOr(S.String)),
           modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
@@ -6522,16 +6618,20 @@ function __c16(j: number): any {
           type: S.optional(S.NullOr(S.String)),
         }),
       ).annotate({ identifier: "MonitorsListResultItem" });
+    case 2:
+      return S.Array(__S(641, __c40, 1));
     case 3:
-      return S.Array(__S(130, __c16, 2));
-    case 4:
       return S.suspend(() =>
         S.Struct({
-          result: __S(131, __c16, 3).pipe(T.EnvelopePayload()),
+          result: __S(642, __c40, 2).pipe(T.EnvelopePayload()),
           resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "ListMonitorsResponse" });
-    case 5:
+  }
+}
+function __c41(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -6546,47 +6646,47 @@ function __c16(j: number): any {
           )
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "ListPoolsRequest" });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.NullOr(S.String)),
-          checkRegions: S.optional(S.NullOr(__S(1, __c0, 1)).pipe(T.Body("check_regions"))),
+          checkRegions: S.optional(S.NullOr(__S(32, __c2, 0)).pipe(T.Body("check_regions"))),
           createdOn: S.optional(S.NullOr(S.String).pipe(T.Body("created_on"))),
           description: S.optional(S.NullOr(S.String)),
           disabledAt: S.optional(S.NullOr(S.String).pipe(T.Body("disabled_at"))),
           enabled: S.optional(S.NullOr(S.Boolean)),
-          healthSources: S.optional(S.NullOr(__S(1, __c0, 1)).pipe(T.Body("health_sources"))),
+          healthSources: S.optional(S.NullOr(__S(32, __c2, 0)).pipe(T.Body("health_sources"))),
           latitude: S.optional(S.NullOr(S.Number)),
-          loadShedding: S.optional(S.NullOr(__S(2, __c0, 2)).pipe(T.Body("load_shedding"))),
+          loadShedding: S.optional(S.NullOr(__S(33, __c2, 1)).pipe(T.Body("load_shedding"))),
           longitude: S.optional(S.NullOr(S.Number)),
           minimumOrigins: S.optional(S.NullOr(S.Number).pipe(T.Body("minimum_origins"))),
           modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
           monitor: S.optional(S.NullOr(S.String)),
           monitorGroup: S.optional(S.NullOr(S.String).pipe(T.Body("monitor_group"))),
           name: S.optional(S.NullOr(S.String)),
-          networks: S.optional(S.NullOr(__S(3, __c0, 3))),
+          networks: S.optional(S.NullOr(__S(16, __c1, 0))),
           notificationEmail: S.optional(S.NullOr(S.String).pipe(T.Body("notification_email"))),
           notificationFilter: S.optional(
-            S.NullOr(__S(5, __c0, 5)).pipe(T.Body("notification_filter")),
+            S.NullOr(__S(35, __c2, 3)).pipe(T.Body("notification_filter")),
           ),
-          originSteering: S.optional(S.NullOr(__S(6, __c0, 6)).pipe(T.Body("origin_steering"))),
-          origins: S.optional(S.NullOr(__S(66, __c8, 2))),
+          originSteering: S.optional(S.NullOr(__S(36, __c2, 4)).pipe(T.Body("origin_steering"))),
+          origins: S.optional(S.NullOr(__S(258, __c16, 2))),
         }),
       ).annotate({ identifier: "PoolsListResultItem" });
-    case 7:
-      return S.Array(__S(134, __c16, 6));
-  }
-}
-function __c17(j: number): any {
-  switch (j) {
-    case 0:
+    case 2:
+      return S.Array(__S(657, __c41, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          result: __S(135, __c16, 7).pipe(T.EnvelopePayload()),
+          result: __S(658, __c41, 2).pipe(T.EnvelopePayload()),
           resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "ListPoolsResponse" });
-    case 1:
+  }
+}
+function __c42(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -6603,7 +6703,11 @@ function __c17(j: number): any {
           )
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "ListRegionsRequest" });
-    case 2:
+  }
+}
+function __c43(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -6621,13 +6725,13 @@ function __c17(j: number): any {
           )
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "ListSearchesRequest" });
-    case 3:
+    case 1:
       return S.Array(S.Unknown);
-    case 4:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           referenceType: S.optional(S.NullOr(S.String).pipe(T.Body("reference_type"))),
-          references: S.optional(S.NullOr(__S(139, __c17, 3))),
+          references: S.optional(S.NullOr(__S(689, __c43, 1))),
           resourceId: S.optional(S.NullOr(S.String).pipe(T.Body("resource_id"))),
           resourceName: S.optional(S.NullOr(S.String).pipe(T.Body("resource_name"))),
           resourceType: S.optional(S.NullOr(S.String).pipe(T.Body("resource_type"))),
@@ -6635,19 +6739,23 @@ function __c17(j: number): any {
       ).annotate({
         identifier: "SearchesListResponseResourcesItem",
       });
-    case 5:
-      return S.Array(__S(140, __c17, 4));
-    case 6:
+    case 3:
+      return S.Array(__S(690, __c43, 2));
+    case 4:
       return S.suspend(() =>
         S.Struct({
-          resources: S.optional(S.NullOr(__S(141, __c17, 5))),
+          resources: S.optional(S.NullOr(__S(691, __c43, 3))),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "ListSearchesResponse" });
-    case 7:
+  }
+}
+function __c44(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           drainDuration: S.optional(S.Number.pipe(T.Body("drain_duration"))),
-          headers: S.optional(__S(21, __c2, 5)),
+          headers: S.optional(__S(81, __c5, 1)),
           requireAllHeaders: S.optional(S.Boolean.pipe(T.Body("require_all_headers"))),
           samesite: S.optional(S.String),
           secure: S.optional(S.String),
@@ -6656,27 +6764,23 @@ function __c17(j: number): any {
       ).annotate({
         identifier: "EditRequestRulesItemOverridesSessionAffinityAttributes",
       });
-  }
-}
-function __c18(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          adaptiveRouting: S.optional(__S(13, __c1, 5).pipe(T.Body("adaptive_routing"))),
-          countryPools: S.optional(__S(14, __c1, 6).pipe(T.Body("country_pools"))),
-          defaultPools: S.optional(__S(3, __c0, 3).pipe(T.Body("default_pools"))),
+          adaptiveRouting: S.optional(__S(112, __c7, 0).pipe(T.Body("adaptive_routing"))),
+          countryPools: S.optional(__S(64, __c4, 0).pipe(T.Body("country_pools"))),
+          defaultPools: S.optional(__S(16, __c1, 0).pipe(T.Body("default_pools"))),
           fallbackPool: S.optional(S.String.pipe(T.Body("fallback_pool"))),
-          locationStrategy: S.optional(__S(19, __c2, 3).pipe(T.Body("location_strategy"))),
+          locationStrategy: S.optional(__S(116, __c7, 4).pipe(T.Body("location_strategy"))),
           poolDefaultWeight: S.optional(S.Number.pipe(T.Body("pool_default_weight"))),
-          poolWeights: S.optional(__S(16, __c2, 0).pipe(T.Body("pool_weights"))),
-          pools: S.optional(__S(3, __c0, 3)),
-          popPools: S.optional(__S(14, __c1, 6).pipe(T.Body("pop_pools"))),
-          randomSteering: S.optional(__S(20, __c2, 4).pipe(T.Body("random_steering"))),
-          regionPools: S.optional(__S(14, __c1, 6).pipe(T.Body("region_pools"))),
+          poolWeights: S.optional(__S(80, __c5, 0).pipe(T.Body("pool_weights"))),
+          pools: S.optional(__S(16, __c1, 0)),
+          popPools: S.optional(__S(64, __c4, 0).pipe(T.Body("pop_pools"))),
+          randomSteering: S.optional(__S(117, __c7, 5).pipe(T.Body("random_steering"))),
+          regionPools: S.optional(__S(64, __c4, 0).pipe(T.Body("region_pools"))),
           sessionAffinity: S.optional(S.String.pipe(T.Body("session_affinity"))),
           sessionAffinityAttributes: S.optional(
-            __S(143, __c17, 7).pipe(T.Body("session_affinity_attributes")),
+            __S(704, __c44, 0).pipe(T.Body("session_affinity_attributes")),
           ),
           sessionAffinityTtl: S.optional(S.Number.pipe(T.Body("session_affinity_ttl"))),
           steeringPolicy: S.optional(S.String.pipe(T.Body("steering_policy"))),
@@ -6685,25 +6789,25 @@ function __c18(j: number): any {
       ).annotate({
         identifier: "EditRequestRulesItemOverrides",
       });
-    case 1:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           condition: S.optional(S.String),
           disabled: S.optional(S.Boolean),
-          fixedResponse: S.optional(__S(18, __c2, 2).pipe(T.Body("fixed_response"))),
+          fixedResponse: S.optional(__S(115, __c7, 3).pipe(T.Body("fixed_response"))),
           name: S.optional(S.String),
-          overrides: S.optional(__S(144, __c18, 0)),
+          overrides: S.optional(__S(705, __c44, 1)),
           priority: S.optional(S.Number),
           terminates: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "EditRequestRulesItem" });
-    case 2:
-      return S.Array(__S(145, __c18, 1));
     case 3:
+      return S.Array(__S(706, __c44, 2));
+    case 4:
       return S.suspend(() =>
         S.Struct({
           drainDuration: S.optional(S.Number.pipe(T.Body("drain_duration"))),
-          headers: S.optional(__S(3, __c0, 3)),
+          headers: S.optional(__S(16, __c1, 0)),
           requireAllHeaders: S.optional(S.Boolean.pipe(T.Body("require_all_headers"))),
           samesite: S.optional(S.String),
           secure: S.optional(S.String),
@@ -6712,28 +6816,28 @@ function __c18(j: number): any {
       ).annotate({
         identifier: "EditRequestSessionAffinityAttributes",
       });
-    case 4:
+    case 5:
       return S.suspend(() =>
         S.Struct({
           zoneId: S.String.pipe(T.Label("zone_id")),
           loadBalancerId: S.String.pipe(T.Label("load_balancer_id")),
-          adaptiveRouting: S.optional(__S(13, __c1, 5).pipe(T.Body("adaptive_routing"))),
-          countryPools: S.optional(__S(14, __c1, 6).pipe(T.Body("country_pools"))),
-          defaultPools: S.optional(__S(3, __c0, 3).pipe(T.Body("default_pools"))),
+          adaptiveRouting: S.optional(__S(112, __c7, 0).pipe(T.Body("adaptive_routing"))),
+          countryPools: S.optional(__S(64, __c4, 0).pipe(T.Body("country_pools"))),
+          defaultPools: S.optional(__S(16, __c1, 0).pipe(T.Body("default_pools"))),
           description: S.optional(S.String),
           enabled: S.optional(S.Boolean),
           fallbackPool: S.optional(S.String.pipe(T.Body("fallback_pool"))),
-          locationStrategy: S.optional(__S(15, __c1, 7).pipe(T.Body("location_strategy"))),
+          locationStrategy: S.optional(__S(113, __c7, 1).pipe(T.Body("location_strategy"))),
           name: S.optional(S.String),
-          networks: S.optional(__S(3, __c0, 3)),
-          popPools: S.optional(__S(14, __c1, 6).pipe(T.Body("pop_pools"))),
+          networks: S.optional(__S(16, __c1, 0)),
+          popPools: S.optional(__S(64, __c4, 0).pipe(T.Body("pop_pools"))),
           proxied: S.optional(S.Boolean),
-          randomSteering: S.optional(__S(17, __c2, 1).pipe(T.Body("random_steering"))),
-          regionPools: S.optional(__S(14, __c1, 6).pipe(T.Body("region_pools"))),
-          rules: S.optional(__S(146, __c18, 2)),
+          randomSteering: S.optional(__S(114, __c7, 2).pipe(T.Body("random_steering"))),
+          regionPools: S.optional(__S(64, __c4, 0).pipe(T.Body("region_pools"))),
+          rules: S.optional(__S(707, __c44, 3)),
           sessionAffinity: S.optional(S.String.pipe(T.Body("session_affinity"))),
           sessionAffinityAttributes: S.optional(
-            __S(147, __c18, 3).pipe(T.Body("session_affinity_attributes")),
+            __S(708, __c44, 4).pipe(T.Body("session_affinity_attributes")),
           ),
           sessionAffinityTtl: S.optional(S.Number.pipe(T.Body("session_affinity_ttl"))),
           steeringPolicy: S.optional(S.String.pipe(T.Body("steering_policy"))),
@@ -6748,39 +6852,35 @@ function __c18(j: number): any {
           )
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "PatchLoadBalancerRequest" });
-    case 5:
+    case 6:
       return S.suspend(() =>
         S.Struct({
           fallbackPool: S.optional(S.NullOr(S.String).pipe(T.Body("fallback_pool"))),
           poolDefaultWeight: S.optional(S.NullOr(S.Number).pipe(T.Body("pool_default_weight"))),
-          poolWeights: S.optional(S.NullOr(__S(16, __c2, 0)).pipe(T.Body("pool_weights"))),
-          pools: S.optional(S.NullOr(__S(3, __c0, 3))),
+          poolWeights: S.optional(S.NullOr(__S(80, __c5, 0)).pipe(T.Body("pool_weights"))),
+          pools: S.optional(S.NullOr(__S(16, __c1, 0))),
           steeringPolicy: S.optional(S.NullOr(S.String).pipe(T.Body("steering_policy"))),
         }),
       ).annotate({
         identifier: "EditResponsePoolSetsItemOverrides",
       });
-    case 6:
+    case 7:
       return S.suspend(() =>
         S.Struct({
           disabled: S.optional(S.NullOr(S.Boolean)),
-          fixedResponse: S.optional(S.NullOr(__S(30, __c3, 6)).pipe(T.Body("fixed_response"))),
-          match: S.optional(S.NullOr(__S(32, __c4, 0))),
+          fixedResponse: S.optional(S.NullOr(__S(84, __c5, 4)).pipe(T.Body("fixed_response"))),
+          match: S.optional(S.NullOr(__S(86, __c5, 6))),
           name: S.optional(S.NullOr(S.String)),
-          overrides: S.optional(S.NullOr(__S(149, __c18, 5))),
+          overrides: S.optional(S.NullOr(__S(710, __c44, 6))),
         }),
       ).annotate({ identifier: "EditResponsePoolSetsItem" });
-    case 7:
-      return S.Array(__S(150, __c18, 6));
-  }
-}
-function __c19(j: number): any {
-  switch (j) {
-    case 0:
+    case 8:
+      return S.Array(__S(711, __c44, 7));
+    case 9:
       return S.suspend(() =>
         S.Struct({
           drainDuration: S.optional(S.NullOr(S.Number).pipe(T.Body("drain_duration"))),
-          headers: S.optional(S.NullOr(__S(21, __c2, 5))),
+          headers: S.optional(S.NullOr(__S(81, __c5, 1))),
           requireAllHeaders: S.optional(S.NullOr(S.Boolean).pipe(T.Body("require_all_headers"))),
           samesite: S.optional(S.NullOr(S.String)),
           secure: S.optional(S.NullOr(S.String)),
@@ -6791,25 +6891,25 @@ function __c19(j: number): any {
       ).annotate({
         identifier: "EditResponseRulesItemOverridesSessionAffinityAttributes",
       });
-    case 1:
+    case 10:
       return S.suspend(() =>
         S.Struct({
-          adaptiveRouting: S.optional(S.NullOr(__S(28, __c3, 4)).pipe(T.Body("adaptive_routing"))),
-          countryPools: S.optional(S.NullOr(__S(14, __c1, 6)).pipe(T.Body("country_pools"))),
-          defaultPools: S.optional(S.NullOr(__S(3, __c0, 3)).pipe(T.Body("default_pools"))),
+          adaptiveRouting: S.optional(S.NullOr(__S(82, __c5, 2)).pipe(T.Body("adaptive_routing"))),
+          countryPools: S.optional(S.NullOr(__S(64, __c4, 0)).pipe(T.Body("country_pools"))),
+          defaultPools: S.optional(S.NullOr(__S(16, __c1, 0)).pipe(T.Body("default_pools"))),
           fallbackPool: S.optional(S.NullOr(S.String).pipe(T.Body("fallback_pool"))),
           locationStrategy: S.optional(
-            S.NullOr(__S(29, __c3, 5)).pipe(T.Body("location_strategy")),
+            S.NullOr(__S(83, __c5, 3)).pipe(T.Body("location_strategy")),
           ),
           poolDefaultWeight: S.optional(S.NullOr(S.Number).pipe(T.Body("pool_default_weight"))),
-          poolWeights: S.optional(S.NullOr(__S(16, __c2, 0)).pipe(T.Body("pool_weights"))),
-          pools: S.optional(S.NullOr(__S(3, __c0, 3))),
-          popPools: S.optional(S.NullOr(__S(14, __c1, 6)).pipe(T.Body("pop_pools"))),
-          randomSteering: S.optional(S.NullOr(__S(38, __c4, 6)).pipe(T.Body("random_steering"))),
-          regionPools: S.optional(S.NullOr(__S(14, __c1, 6)).pipe(T.Body("region_pools"))),
+          poolWeights: S.optional(S.NullOr(__S(80, __c5, 0)).pipe(T.Body("pool_weights"))),
+          pools: S.optional(S.NullOr(__S(16, __c1, 0))),
+          popPools: S.optional(S.NullOr(__S(64, __c4, 0)).pipe(T.Body("pop_pools"))),
+          randomSteering: S.optional(S.NullOr(__S(88, __c5, 8)).pipe(T.Body("random_steering"))),
+          regionPools: S.optional(S.NullOr(__S(64, __c4, 0)).pipe(T.Body("region_pools"))),
           sessionAffinity: S.optional(S.NullOr(S.String).pipe(T.Body("session_affinity"))),
           sessionAffinityAttributes: S.optional(
-            S.NullOr(__S(152, __c19, 0)).pipe(T.Body("session_affinity_attributes")),
+            S.NullOr(__S(713, __c44, 9)).pipe(T.Body("session_affinity_attributes")),
           ),
           sessionAffinityTtl: S.optional(S.NullOr(S.Number).pipe(T.Body("session_affinity_ttl"))),
           steeringPolicy: S.optional(S.NullOr(S.String).pipe(T.Body("steering_policy"))),
@@ -6818,25 +6918,25 @@ function __c19(j: number): any {
       ).annotate({
         identifier: "EditResponseRulesItemOverrides",
       });
-    case 2:
+    case 11:
       return S.suspend(() =>
         S.Struct({
           condition: S.optional(S.NullOr(S.String)),
           disabled: S.optional(S.NullOr(S.Boolean)),
-          fixedResponse: S.optional(S.NullOr(__S(30, __c3, 6)).pipe(T.Body("fixed_response"))),
+          fixedResponse: S.optional(S.NullOr(__S(84, __c5, 4)).pipe(T.Body("fixed_response"))),
           name: S.optional(S.NullOr(S.String)),
-          overrides: S.optional(S.NullOr(__S(153, __c19, 1))),
+          overrides: S.optional(S.NullOr(__S(714, __c44, 10))),
           priority: S.optional(S.NullOr(S.Number)),
           terminates: S.optional(S.NullOr(S.Boolean)),
         }),
       ).annotate({ identifier: "EditResponseRulesItem" });
-    case 3:
-      return S.Array(__S(154, __c19, 2));
-    case 4:
+    case 12:
+      return S.Array(__S(715, __c44, 11));
+    case 13:
       return S.suspend(() =>
         S.Struct({
           drainDuration: S.optional(S.NullOr(S.Number).pipe(T.Body("drain_duration"))),
-          headers: S.optional(S.NullOr(__S(3, __c0, 3))),
+          headers: S.optional(S.NullOr(__S(16, __c1, 0))),
           requireAllHeaders: S.optional(S.NullOr(S.Boolean).pipe(T.Body("require_all_headers"))),
           samesite: S.optional(S.NullOr(S.String)),
           secure: S.optional(S.NullOr(S.String)),
@@ -6847,32 +6947,32 @@ function __c19(j: number): any {
       ).annotate({
         identifier: "EditResponseSessionAffinityAttributes",
       });
-    case 5:
+    case 14:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.NullOr(S.String)),
-          adaptiveRouting: S.optional(S.NullOr(__S(28, __c3, 4)).pipe(T.Body("adaptive_routing"))),
-          countryPools: S.optional(S.NullOr(__S(14, __c1, 6)).pipe(T.Body("country_pools"))),
+          adaptiveRouting: S.optional(S.NullOr(__S(82, __c5, 2)).pipe(T.Body("adaptive_routing"))),
+          countryPools: S.optional(S.NullOr(__S(64, __c4, 0)).pipe(T.Body("country_pools"))),
           createdOn: S.optional(S.NullOr(S.String).pipe(T.Body("created_on"))),
-          defaultPools: S.optional(S.NullOr(__S(3, __c0, 3)).pipe(T.Body("default_pools"))),
+          defaultPools: S.optional(S.NullOr(__S(16, __c1, 0)).pipe(T.Body("default_pools"))),
           description: S.optional(S.NullOr(S.String)),
           enabled: S.optional(S.NullOr(S.Boolean)),
           fallbackPool: S.optional(S.NullOr(S.String).pipe(T.Body("fallback_pool"))),
           locationStrategy: S.optional(
-            S.NullOr(__S(29, __c3, 5)).pipe(T.Body("location_strategy")),
+            S.NullOr(__S(83, __c5, 3)).pipe(T.Body("location_strategy")),
           ),
           modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
           name: S.optional(S.NullOr(S.String)),
-          networks: S.optional(S.NullOr(__S(3, __c0, 3))),
-          poolSets: S.optional(S.NullOr(__S(151, __c18, 7)).pipe(T.Body("pool_sets"))),
-          popPools: S.optional(S.NullOr(__S(14, __c1, 6)).pipe(T.Body("pop_pools"))),
+          networks: S.optional(S.NullOr(__S(16, __c1, 0))),
+          poolSets: S.optional(S.NullOr(__S(712, __c44, 8)).pipe(T.Body("pool_sets"))),
+          popPools: S.optional(S.NullOr(__S(64, __c4, 0)).pipe(T.Body("pop_pools"))),
           proxied: S.optional(S.NullOr(S.Boolean)),
-          randomSteering: S.optional(S.NullOr(__S(36, __c4, 4)).pipe(T.Body("random_steering"))),
-          regionPools: S.optional(S.NullOr(__S(14, __c1, 6)).pipe(T.Body("region_pools"))),
-          rules: S.optional(S.NullOr(__S(155, __c19, 3))),
+          randomSteering: S.optional(S.NullOr(__S(87, __c5, 7)).pipe(T.Body("random_steering"))),
+          regionPools: S.optional(S.NullOr(__S(64, __c4, 0)).pipe(T.Body("region_pools"))),
+          rules: S.optional(S.NullOr(__S(716, __c44, 12))),
           sessionAffinity: S.optional(S.NullOr(S.String).pipe(T.Body("session_affinity"))),
           sessionAffinityAttributes: S.optional(
-            S.NullOr(__S(156, __c19, 4)).pipe(T.Body("session_affinity_attributes")),
+            S.NullOr(__S(717, __c44, 13)).pipe(T.Body("session_affinity_attributes")),
           ),
           sessionAffinityTtl: S.optional(S.NullOr(S.Number).pipe(T.Body("session_affinity_ttl"))),
           steeringPolicy: S.optional(S.NullOr(S.String).pipe(T.Body("steering_policy"))),
@@ -6882,7 +6982,11 @@ function __c19(j: number): any {
       ).annotate({
         identifier: "PatchLoadBalancerResponse",
       });
-    case 6:
+  }
+}
+function __c45(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -6894,7 +6998,7 @@ function __c19(j: number): any {
           expectedBody: S.optional(S.String.pipe(T.Body("expected_body"))),
           expectedCodes: S.optional(S.String.pipe(T.Body("expected_codes"))),
           followRedirects: S.optional(S.Boolean.pipe(T.Body("follow_redirects"))),
-          header: S.optional(__S(14, __c1, 6)),
+          header: S.optional(__S(64, __c4, 0)),
           interval: S.optional(S.Number),
           method: S.optional(S.String),
           path: S.optional(S.String),
@@ -6913,7 +7017,7 @@ function __c19(j: number): any {
           )
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "PatchMonitorRequest" });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.NullOr(S.String)),
@@ -6925,7 +7029,7 @@ function __c19(j: number): any {
           expectedBody: S.optional(S.NullOr(S.String).pipe(T.Body("expected_body"))),
           expectedCodes: S.optional(S.NullOr(S.String).pipe(T.Body("expected_codes"))),
           followRedirects: S.optional(S.NullOr(S.Boolean).pipe(T.Body("follow_redirects"))),
-          header: S.optional(S.NullOr(__S(14, __c1, 6))),
+          header: S.optional(S.NullOr(__S(64, __c4, 0))),
           interval: S.optional(S.NullOr(S.Number)),
           method: S.optional(S.NullOr(S.String)),
           modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
@@ -6939,7 +7043,7 @@ function __c19(j: number): any {
       ).annotate({ identifier: "PatchMonitorResponse" });
   }
 }
-function __c20(j: number): any {
+function __c46(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -6947,7 +7051,7 @@ function __c20(j: number): any {
           accountId: S.String.pipe(T.Label("account_id")),
           monitorGroupId: S.String.pipe(T.Label("monitor_group_id")),
           description: S.String,
-          members: __S(48, __c6, 0),
+          members: __S(193, __c12, 1),
         })
           .pipe(
             T.Http({
@@ -6958,26 +7062,30 @@ function __c20(j: number): any {
           )
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "PatchMonitorGroupRequest" });
-    case 1:
+  }
+}
+function __c47(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
           poolId: S.String.pipe(T.Label("pool_id")),
-          checkRegions: S.optional(__S(1, __c0, 1).pipe(T.Body("check_regions"))),
+          checkRegions: S.optional(__S(32, __c2, 0).pipe(T.Body("check_regions"))),
           description: S.optional(S.String),
           enabled: S.optional(S.Boolean),
-          healthSources: S.optional(__S(1, __c0, 1).pipe(T.Body("health_sources"))),
+          healthSources: S.optional(__S(32, __c2, 0).pipe(T.Body("health_sources"))),
           latitude: S.optional(S.Number),
-          loadShedding: S.optional(__S(59, __c7, 3).pipe(T.Body("load_shedding"))),
+          loadShedding: S.optional(__S(275, __c17, 3).pipe(T.Body("load_shedding"))),
           longitude: S.optional(S.Number),
           minimumOrigins: S.optional(S.Number.pipe(T.Body("minimum_origins"))),
           monitor: S.optional(S.String),
           monitorGroup: S.optional(S.String.pipe(T.Body("monitor_group"))),
           name: S.optional(S.String),
           notificationEmail: S.optional(S.String.pipe(T.Body("notification_email"))),
-          notificationFilter: S.optional(__S(61, __c7, 5).pipe(T.Body("notification_filter"))),
-          originSteering: S.optional(__S(62, __c7, 6).pipe(T.Body("origin_steering"))),
-          origins: S.optional(__S(58, __c7, 2)),
+          notificationFilter: S.optional(__S(277, __c17, 5).pipe(T.Body("notification_filter"))),
+          originSteering: S.optional(__S(278, __c17, 6).pipe(T.Body("origin_steering"))),
+          origins: S.optional(__S(274, __c17, 2)),
         })
           .pipe(
             T.Http({
@@ -6988,38 +7096,42 @@ function __c20(j: number): any {
           )
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "PatchPoolRequest" });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.NullOr(S.String)),
-          checkRegions: S.optional(S.NullOr(__S(1, __c0, 1)).pipe(T.Body("check_regions"))),
+          checkRegions: S.optional(S.NullOr(__S(32, __c2, 0)).pipe(T.Body("check_regions"))),
           createdOn: S.optional(S.NullOr(S.String).pipe(T.Body("created_on"))),
           description: S.optional(S.NullOr(S.String)),
           disabledAt: S.optional(S.NullOr(S.String).pipe(T.Body("disabled_at"))),
           enabled: S.optional(S.NullOr(S.Boolean)),
-          healthSources: S.optional(S.NullOr(__S(1, __c0, 1)).pipe(T.Body("health_sources"))),
+          healthSources: S.optional(S.NullOr(__S(32, __c2, 0)).pipe(T.Body("health_sources"))),
           latitude: S.optional(S.NullOr(S.Number)),
-          loadShedding: S.optional(S.NullOr(__S(2, __c0, 2)).pipe(T.Body("load_shedding"))),
+          loadShedding: S.optional(S.NullOr(__S(33, __c2, 1)).pipe(T.Body("load_shedding"))),
           longitude: S.optional(S.NullOr(S.Number)),
           minimumOrigins: S.optional(S.NullOr(S.Number).pipe(T.Body("minimum_origins"))),
           modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
           monitor: S.optional(S.NullOr(S.String)),
           monitorGroup: S.optional(S.NullOr(S.String).pipe(T.Body("monitor_group"))),
           name: S.optional(S.NullOr(S.String)),
-          networks: S.optional(S.NullOr(__S(3, __c0, 3))),
+          networks: S.optional(S.NullOr(__S(16, __c1, 0))),
           notificationEmail: S.optional(S.NullOr(S.String).pipe(T.Body("notification_email"))),
           notificationFilter: S.optional(
-            S.NullOr(__S(5, __c0, 5)).pipe(T.Body("notification_filter")),
+            S.NullOr(__S(35, __c2, 3)).pipe(T.Body("notification_filter")),
           ),
-          originSteering: S.optional(S.NullOr(__S(6, __c0, 6)).pipe(T.Body("origin_steering"))),
-          origins: S.optional(S.NullOr(__S(66, __c8, 2))),
+          originSteering: S.optional(S.NullOr(__S(36, __c2, 4)).pipe(T.Body("origin_steering"))),
+          origins: S.optional(S.NullOr(__S(258, __c16, 2))),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "PatchPoolResponse" });
-    case 3:
+  }
+}
+function __c48(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           drainDuration: S.optional(S.Number.pipe(T.Body("drain_duration"))),
-          headers: S.optional(__S(21, __c2, 5)),
+          headers: S.optional(__S(81, __c5, 1)),
           requireAllHeaders: S.optional(S.Boolean.pipe(T.Body("require_all_headers"))),
           samesite: S.optional(S.String),
           secure: S.optional(S.String),
@@ -7028,23 +7140,23 @@ function __c20(j: number): any {
       ).annotate({
         identifier: "UpdateRequestRulesItemOverridesSessionAffinityAttributes",
       });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          adaptiveRouting: S.optional(__S(13, __c1, 5).pipe(T.Body("adaptive_routing"))),
-          countryPools: S.optional(__S(14, __c1, 6).pipe(T.Body("country_pools"))),
-          defaultPools: S.optional(__S(3, __c0, 3).pipe(T.Body("default_pools"))),
+          adaptiveRouting: S.optional(__S(112, __c7, 0).pipe(T.Body("adaptive_routing"))),
+          countryPools: S.optional(__S(64, __c4, 0).pipe(T.Body("country_pools"))),
+          defaultPools: S.optional(__S(16, __c1, 0).pipe(T.Body("default_pools"))),
           fallbackPool: S.optional(S.String.pipe(T.Body("fallback_pool"))),
-          locationStrategy: S.optional(__S(19, __c2, 3).pipe(T.Body("location_strategy"))),
+          locationStrategy: S.optional(__S(116, __c7, 4).pipe(T.Body("location_strategy"))),
           poolDefaultWeight: S.optional(S.Number.pipe(T.Body("pool_default_weight"))),
-          poolWeights: S.optional(__S(16, __c2, 0).pipe(T.Body("pool_weights"))),
-          pools: S.optional(__S(3, __c0, 3)),
-          popPools: S.optional(__S(14, __c1, 6).pipe(T.Body("pop_pools"))),
-          randomSteering: S.optional(__S(20, __c2, 4).pipe(T.Body("random_steering"))),
-          regionPools: S.optional(__S(14, __c1, 6).pipe(T.Body("region_pools"))),
+          poolWeights: S.optional(__S(80, __c5, 0).pipe(T.Body("pool_weights"))),
+          pools: S.optional(__S(16, __c1, 0)),
+          popPools: S.optional(__S(64, __c4, 0).pipe(T.Body("pop_pools"))),
+          randomSteering: S.optional(__S(117, __c7, 5).pipe(T.Body("random_steering"))),
+          regionPools: S.optional(__S(64, __c4, 0).pipe(T.Body("region_pools"))),
           sessionAffinity: S.optional(S.String.pipe(T.Body("session_affinity"))),
           sessionAffinityAttributes: S.optional(
-            __S(163, __c20, 3).pipe(T.Body("session_affinity_attributes")),
+            __S(768, __c48, 0).pipe(T.Body("session_affinity_attributes")),
           ),
           sessionAffinityTtl: S.optional(S.Number.pipe(T.Body("session_affinity_ttl"))),
           steeringPolicy: S.optional(S.String.pipe(T.Body("steering_policy"))),
@@ -7053,25 +7165,25 @@ function __c20(j: number): any {
       ).annotate({
         identifier: "UpdateRequestRulesItemOverrides",
       });
-    case 5:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           condition: S.optional(S.String),
           disabled: S.optional(S.Boolean),
-          fixedResponse: S.optional(__S(18, __c2, 2).pipe(T.Body("fixed_response"))),
+          fixedResponse: S.optional(__S(115, __c7, 3).pipe(T.Body("fixed_response"))),
           name: S.optional(S.String),
-          overrides: S.optional(__S(164, __c20, 4)),
+          overrides: S.optional(__S(769, __c48, 1)),
           priority: S.optional(S.Number),
           terminates: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "UpdateRequestRulesItem" });
-    case 6:
-      return S.Array(__S(165, __c20, 5));
-    case 7:
+    case 3:
+      return S.Array(__S(770, __c48, 2));
+    case 4:
       return S.suspend(() =>
         S.Struct({
           drainDuration: S.optional(S.Number.pipe(T.Body("drain_duration"))),
-          headers: S.optional(__S(3, __c0, 3)),
+          headers: S.optional(__S(16, __c1, 0)),
           requireAllHeaders: S.optional(S.Boolean.pipe(T.Body("require_all_headers"))),
           samesite: S.optional(S.String),
           secure: S.optional(S.String),
@@ -7080,32 +7192,28 @@ function __c20(j: number): any {
       ).annotate({
         identifier: "UpdateRequestSessionAffinityAttributes",
       });
-  }
-}
-function __c21(j: number): any {
-  switch (j) {
-    case 0:
+    case 5:
       return S.suspend(() =>
         S.Struct({
           zoneId: S.String.pipe(T.Label("zone_id")),
           loadBalancerId: S.String.pipe(T.Label("load_balancer_id")),
-          defaultPools: __S(3, __c0, 3).pipe(T.Body("default_pools")),
+          defaultPools: __S(16, __c1, 0).pipe(T.Body("default_pools")),
           fallbackPool: S.String.pipe(T.Body("fallback_pool")),
           name: S.String,
-          adaptiveRouting: S.optional(__S(13, __c1, 5).pipe(T.Body("adaptive_routing"))),
-          countryPools: S.optional(__S(14, __c1, 6).pipe(T.Body("country_pools"))),
+          adaptiveRouting: S.optional(__S(112, __c7, 0).pipe(T.Body("adaptive_routing"))),
+          countryPools: S.optional(__S(64, __c4, 0).pipe(T.Body("country_pools"))),
           description: S.optional(S.String),
           enabled: S.optional(S.Boolean),
-          locationStrategy: S.optional(__S(15, __c1, 7).pipe(T.Body("location_strategy"))),
-          networks: S.optional(__S(3, __c0, 3)),
-          popPools: S.optional(__S(14, __c1, 6).pipe(T.Body("pop_pools"))),
+          locationStrategy: S.optional(__S(113, __c7, 1).pipe(T.Body("location_strategy"))),
+          networks: S.optional(__S(16, __c1, 0)),
+          popPools: S.optional(__S(64, __c4, 0).pipe(T.Body("pop_pools"))),
           proxied: S.optional(S.Boolean),
-          randomSteering: S.optional(__S(17, __c2, 1).pipe(T.Body("random_steering"))),
-          regionPools: S.optional(__S(14, __c1, 6).pipe(T.Body("region_pools"))),
-          rules: S.optional(__S(166, __c20, 6)),
+          randomSteering: S.optional(__S(114, __c7, 2).pipe(T.Body("random_steering"))),
+          regionPools: S.optional(__S(64, __c4, 0).pipe(T.Body("region_pools"))),
+          rules: S.optional(__S(771, __c48, 3)),
           sessionAffinity: S.optional(S.String.pipe(T.Body("session_affinity"))),
           sessionAffinityAttributes: S.optional(
-            __S(167, __c20, 7).pipe(T.Body("session_affinity_attributes")),
+            __S(772, __c48, 4).pipe(T.Body("session_affinity_attributes")),
           ),
           sessionAffinityTtl: S.optional(S.Number.pipe(T.Body("session_affinity_ttl"))),
           steeringPolicy: S.optional(S.String.pipe(T.Body("steering_policy"))),
@@ -7122,37 +7230,37 @@ function __c21(j: number): any {
       ).annotate({
         identifier: "UpdateLoadBalancerRequest",
       });
-    case 1:
+    case 6:
       return S.suspend(() =>
         S.Struct({
           fallbackPool: S.optional(S.NullOr(S.String).pipe(T.Body("fallback_pool"))),
           poolDefaultWeight: S.optional(S.NullOr(S.Number).pipe(T.Body("pool_default_weight"))),
-          poolWeights: S.optional(S.NullOr(__S(16, __c2, 0)).pipe(T.Body("pool_weights"))),
-          pools: S.optional(S.NullOr(__S(3, __c0, 3))),
+          poolWeights: S.optional(S.NullOr(__S(80, __c5, 0)).pipe(T.Body("pool_weights"))),
+          pools: S.optional(S.NullOr(__S(16, __c1, 0))),
           steeringPolicy: S.optional(S.NullOr(S.String).pipe(T.Body("steering_policy"))),
         }),
       ).annotate({
         identifier: "UpdateResponsePoolSetsItemOverrides",
       });
-    case 2:
+    case 7:
       return S.suspend(() =>
         S.Struct({
           disabled: S.optional(S.NullOr(S.Boolean)),
-          fixedResponse: S.optional(S.NullOr(__S(30, __c3, 6)).pipe(T.Body("fixed_response"))),
-          match: S.optional(S.NullOr(__S(32, __c4, 0))),
+          fixedResponse: S.optional(S.NullOr(__S(84, __c5, 4)).pipe(T.Body("fixed_response"))),
+          match: S.optional(S.NullOr(__S(86, __c5, 6))),
           name: S.optional(S.NullOr(S.String)),
-          overrides: S.optional(S.NullOr(__S(169, __c21, 1))),
+          overrides: S.optional(S.NullOr(__S(774, __c48, 6))),
         }),
       ).annotate({
         identifier: "UpdateResponsePoolSetsItem",
       });
-    case 3:
-      return S.Array(__S(170, __c21, 2));
-    case 4:
+    case 8:
+      return S.Array(__S(775, __c48, 7));
+    case 9:
       return S.suspend(() =>
         S.Struct({
           drainDuration: S.optional(S.NullOr(S.Number).pipe(T.Body("drain_duration"))),
-          headers: S.optional(S.NullOr(__S(21, __c2, 5))),
+          headers: S.optional(S.NullOr(__S(81, __c5, 1))),
           requireAllHeaders: S.optional(S.NullOr(S.Boolean).pipe(T.Body("require_all_headers"))),
           samesite: S.optional(S.NullOr(S.String)),
           secure: S.optional(S.NullOr(S.String)),
@@ -7163,25 +7271,25 @@ function __c21(j: number): any {
       ).annotate({
         identifier: "UpdateResponseRulesItemOverridesSessionAffinityAttributes",
       });
-    case 5:
+    case 10:
       return S.suspend(() =>
         S.Struct({
-          adaptiveRouting: S.optional(S.NullOr(__S(28, __c3, 4)).pipe(T.Body("adaptive_routing"))),
-          countryPools: S.optional(S.NullOr(__S(14, __c1, 6)).pipe(T.Body("country_pools"))),
-          defaultPools: S.optional(S.NullOr(__S(3, __c0, 3)).pipe(T.Body("default_pools"))),
+          adaptiveRouting: S.optional(S.NullOr(__S(82, __c5, 2)).pipe(T.Body("adaptive_routing"))),
+          countryPools: S.optional(S.NullOr(__S(64, __c4, 0)).pipe(T.Body("country_pools"))),
+          defaultPools: S.optional(S.NullOr(__S(16, __c1, 0)).pipe(T.Body("default_pools"))),
           fallbackPool: S.optional(S.NullOr(S.String).pipe(T.Body("fallback_pool"))),
           locationStrategy: S.optional(
-            S.NullOr(__S(37, __c4, 5)).pipe(T.Body("location_strategy")),
+            S.NullOr(__S(96, __c6, 0)).pipe(T.Body("location_strategy")),
           ),
           poolDefaultWeight: S.optional(S.NullOr(S.Number).pipe(T.Body("pool_default_weight"))),
-          poolWeights: S.optional(S.NullOr(__S(16, __c2, 0)).pipe(T.Body("pool_weights"))),
-          pools: S.optional(S.NullOr(__S(3, __c0, 3))),
-          popPools: S.optional(S.NullOr(__S(14, __c1, 6)).pipe(T.Body("pop_pools"))),
-          randomSteering: S.optional(S.NullOr(__S(38, __c4, 6)).pipe(T.Body("random_steering"))),
-          regionPools: S.optional(S.NullOr(__S(14, __c1, 6)).pipe(T.Body("region_pools"))),
+          poolWeights: S.optional(S.NullOr(__S(80, __c5, 0)).pipe(T.Body("pool_weights"))),
+          pools: S.optional(S.NullOr(__S(16, __c1, 0))),
+          popPools: S.optional(S.NullOr(__S(64, __c4, 0)).pipe(T.Body("pop_pools"))),
+          randomSteering: S.optional(S.NullOr(__S(88, __c5, 8)).pipe(T.Body("random_steering"))),
+          regionPools: S.optional(S.NullOr(__S(64, __c4, 0)).pipe(T.Body("region_pools"))),
           sessionAffinity: S.optional(S.NullOr(S.String).pipe(T.Body("session_affinity"))),
           sessionAffinityAttributes: S.optional(
-            S.NullOr(__S(172, __c21, 4)).pipe(T.Body("session_affinity_attributes")),
+            S.NullOr(__S(777, __c48, 9)).pipe(T.Body("session_affinity_attributes")),
           ),
           sessionAffinityTtl: S.optional(S.NullOr(S.Number).pipe(T.Body("session_affinity_ttl"))),
           steeringPolicy: S.optional(S.NullOr(S.String).pipe(T.Body("steering_policy"))),
@@ -7190,29 +7298,25 @@ function __c21(j: number): any {
       ).annotate({
         identifier: "UpdateResponseRulesItemOverrides",
       });
-    case 6:
+    case 11:
       return S.suspend(() =>
         S.Struct({
           condition: S.optional(S.NullOr(S.String)),
           disabled: S.optional(S.NullOr(S.Boolean)),
-          fixedResponse: S.optional(S.NullOr(__S(30, __c3, 6)).pipe(T.Body("fixed_response"))),
+          fixedResponse: S.optional(S.NullOr(__S(84, __c5, 4)).pipe(T.Body("fixed_response"))),
           name: S.optional(S.NullOr(S.String)),
-          overrides: S.optional(S.NullOr(__S(173, __c21, 5))),
+          overrides: S.optional(S.NullOr(__S(778, __c48, 10))),
           priority: S.optional(S.NullOr(S.Number)),
           terminates: S.optional(S.NullOr(S.Boolean)),
         }),
       ).annotate({ identifier: "UpdateResponseRulesItem" });
-    case 7:
-      return S.Array(__S(174, __c21, 6));
-  }
-}
-function __c22(j: number): any {
-  switch (j) {
-    case 0:
+    case 12:
+      return S.Array(__S(779, __c48, 11));
+    case 13:
       return S.suspend(() =>
         S.Struct({
           drainDuration: S.optional(S.NullOr(S.Number).pipe(T.Body("drain_duration"))),
-          headers: S.optional(S.NullOr(__S(3, __c0, 3))),
+          headers: S.optional(S.NullOr(__S(16, __c1, 0))),
           requireAllHeaders: S.optional(S.NullOr(S.Boolean).pipe(T.Body("require_all_headers"))),
           samesite: S.optional(S.NullOr(S.String)),
           secure: S.optional(S.NullOr(S.String)),
@@ -7223,32 +7327,32 @@ function __c22(j: number): any {
       ).annotate({
         identifier: "UpdateResponseSessionAffinityAttributes",
       });
-    case 1:
+    case 14:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.NullOr(S.String)),
-          adaptiveRouting: S.optional(S.NullOr(__S(28, __c3, 4)).pipe(T.Body("adaptive_routing"))),
-          countryPools: S.optional(S.NullOr(__S(14, __c1, 6)).pipe(T.Body("country_pools"))),
+          adaptiveRouting: S.optional(S.NullOr(__S(82, __c5, 2)).pipe(T.Body("adaptive_routing"))),
+          countryPools: S.optional(S.NullOr(__S(64, __c4, 0)).pipe(T.Body("country_pools"))),
           createdOn: S.optional(S.NullOr(S.String).pipe(T.Body("created_on"))),
-          defaultPools: S.optional(S.NullOr(__S(3, __c0, 3)).pipe(T.Body("default_pools"))),
+          defaultPools: S.optional(S.NullOr(__S(16, __c1, 0)).pipe(T.Body("default_pools"))),
           description: S.optional(S.NullOr(S.String)),
           enabled: S.optional(S.NullOr(S.Boolean)),
           fallbackPool: S.optional(S.NullOr(S.String).pipe(T.Body("fallback_pool"))),
           locationStrategy: S.optional(
-            S.NullOr(__S(29, __c3, 5)).pipe(T.Body("location_strategy")),
+            S.NullOr(__S(83, __c5, 3)).pipe(T.Body("location_strategy")),
           ),
           modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
           name: S.optional(S.NullOr(S.String)),
-          networks: S.optional(S.NullOr(__S(3, __c0, 3))),
-          poolSets: S.optional(S.NullOr(__S(171, __c21, 3)).pipe(T.Body("pool_sets"))),
-          popPools: S.optional(S.NullOr(__S(14, __c1, 6)).pipe(T.Body("pop_pools"))),
+          networks: S.optional(S.NullOr(__S(16, __c1, 0))),
+          poolSets: S.optional(S.NullOr(__S(776, __c48, 8)).pipe(T.Body("pool_sets"))),
+          popPools: S.optional(S.NullOr(__S(64, __c4, 0)).pipe(T.Body("pop_pools"))),
           proxied: S.optional(S.NullOr(S.Boolean)),
-          randomSteering: S.optional(S.NullOr(__S(36, __c4, 4)).pipe(T.Body("random_steering"))),
-          regionPools: S.optional(S.NullOr(__S(14, __c1, 6)).pipe(T.Body("region_pools"))),
-          rules: S.optional(S.NullOr(__S(175, __c21, 7))),
+          randomSteering: S.optional(S.NullOr(__S(87, __c5, 7)).pipe(T.Body("random_steering"))),
+          regionPools: S.optional(S.NullOr(__S(64, __c4, 0)).pipe(T.Body("region_pools"))),
+          rules: S.optional(S.NullOr(__S(780, __c48, 12))),
           sessionAffinity: S.optional(S.NullOr(S.String).pipe(T.Body("session_affinity"))),
           sessionAffinityAttributes: S.optional(
-            S.NullOr(__S(176, __c22, 0)).pipe(T.Body("session_affinity_attributes")),
+            S.NullOr(__S(781, __c48, 13)).pipe(T.Body("session_affinity_attributes")),
           ),
           sessionAffinityTtl: S.optional(S.NullOr(S.Number).pipe(T.Body("session_affinity_ttl"))),
           steeringPolicy: S.optional(S.NullOr(S.String).pipe(T.Body("steering_policy"))),
@@ -7258,7 +7362,11 @@ function __c22(j: number): any {
       ).annotate({
         identifier: "UpdateLoadBalancerResponse",
       });
-    case 2:
+  }
+}
+function __c49(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
@@ -7270,7 +7378,7 @@ function __c22(j: number): any {
           expectedBody: S.optional(S.String.pipe(T.Body("expected_body"))),
           expectedCodes: S.optional(S.String.pipe(T.Body("expected_codes"))),
           followRedirects: S.optional(S.Boolean.pipe(T.Body("follow_redirects"))),
-          header: S.optional(__S(14, __c1, 6)),
+          header: S.optional(__S(64, __c4, 0)),
           interval: S.optional(S.Number),
           method: S.optional(S.String),
           path: S.optional(S.String),
@@ -7289,7 +7397,7 @@ function __c22(j: number): any {
           )
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "UpdateMonitorRequest" });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.NullOr(S.String)),
@@ -7301,7 +7409,7 @@ function __c22(j: number): any {
           expectedBody: S.optional(S.NullOr(S.String).pipe(T.Body("expected_body"))),
           expectedCodes: S.optional(S.NullOr(S.String).pipe(T.Body("expected_codes"))),
           followRedirects: S.optional(S.NullOr(S.Boolean).pipe(T.Body("follow_redirects"))),
-          header: S.optional(S.NullOr(__S(14, __c1, 6))),
+          header: S.optional(S.NullOr(__S(64, __c4, 0))),
           interval: S.optional(S.NullOr(S.Number)),
           method: S.optional(S.NullOr(S.String)),
           modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
@@ -7313,13 +7421,17 @@ function __c22(j: number): any {
           type: S.optional(S.NullOr(S.String)),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "UpdateMonitorResponse" });
-    case 4:
+  }
+}
+function __c50(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
           monitorGroupId: S.String.pipe(T.Label("monitor_group_id")),
           description: S.String,
-          members: __S(48, __c6, 0),
+          members: __S(193, __c12, 1),
         })
           .pipe(
             T.Http({
@@ -7332,26 +7444,30 @@ function __c22(j: number): any {
       ).annotate({
         identifier: "UpdateMonitorGroupRequest",
       });
-    case 5:
+  }
+}
+function __c51(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
           poolId: S.String.pipe(T.Label("pool_id")),
           name: S.String,
-          origins: __S(58, __c7, 2),
-          checkRegions: S.optional(__S(1, __c0, 1).pipe(T.Body("check_regions"))),
+          origins: __S(274, __c17, 2),
+          checkRegions: S.optional(__S(32, __c2, 0).pipe(T.Body("check_regions"))),
           description: S.optional(S.String),
           enabled: S.optional(S.Boolean),
-          healthSources: S.optional(__S(1, __c0, 1).pipe(T.Body("health_sources"))),
+          healthSources: S.optional(__S(32, __c2, 0).pipe(T.Body("health_sources"))),
           latitude: S.optional(S.Number),
-          loadShedding: S.optional(__S(59, __c7, 3).pipe(T.Body("load_shedding"))),
+          loadShedding: S.optional(__S(275, __c17, 3).pipe(T.Body("load_shedding"))),
           longitude: S.optional(S.Number),
           minimumOrigins: S.optional(S.Number.pipe(T.Body("minimum_origins"))),
           monitor: S.optional(S.String),
           monitorGroup: S.optional(S.String.pipe(T.Body("monitor_group"))),
           notificationEmail: S.optional(S.String.pipe(T.Body("notification_email"))),
-          notificationFilter: S.optional(__S(61, __c7, 5).pipe(T.Body("notification_filter"))),
-          originSteering: S.optional(__S(62, __c7, 6).pipe(T.Body("origin_steering"))),
+          notificationFilter: S.optional(__S(277, __c17, 5).pipe(T.Body("notification_filter"))),
+          originSteering: S.optional(__S(278, __c17, 6).pipe(T.Body("origin_steering"))),
         })
           .pipe(
             T.Http({
@@ -7362,36 +7478,35 @@ function __c22(j: number): any {
           )
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "UpdatePoolRequest" });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.NullOr(S.String)),
-          checkRegions: S.optional(S.NullOr(__S(1, __c0, 1)).pipe(T.Body("check_regions"))),
+          checkRegions: S.optional(S.NullOr(__S(32, __c2, 0)).pipe(T.Body("check_regions"))),
           createdOn: S.optional(S.NullOr(S.String).pipe(T.Body("created_on"))),
           description: S.optional(S.NullOr(S.String)),
           disabledAt: S.optional(S.NullOr(S.String).pipe(T.Body("disabled_at"))),
           enabled: S.optional(S.NullOr(S.Boolean)),
-          healthSources: S.optional(S.NullOr(__S(1, __c0, 1)).pipe(T.Body("health_sources"))),
+          healthSources: S.optional(S.NullOr(__S(32, __c2, 0)).pipe(T.Body("health_sources"))),
           latitude: S.optional(S.NullOr(S.Number)),
-          loadShedding: S.optional(S.NullOr(__S(2, __c0, 2)).pipe(T.Body("load_shedding"))),
+          loadShedding: S.optional(S.NullOr(__S(33, __c2, 1)).pipe(T.Body("load_shedding"))),
           longitude: S.optional(S.NullOr(S.Number)),
           minimumOrigins: S.optional(S.NullOr(S.Number).pipe(T.Body("minimum_origins"))),
           modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
           monitor: S.optional(S.NullOr(S.String)),
           monitorGroup: S.optional(S.NullOr(S.String).pipe(T.Body("monitor_group"))),
           name: S.optional(S.NullOr(S.String)),
-          networks: S.optional(S.NullOr(__S(3, __c0, 3))),
+          networks: S.optional(S.NullOr(__S(16, __c1, 0))),
           notificationEmail: S.optional(S.NullOr(S.String).pipe(T.Body("notification_email"))),
           notificationFilter: S.optional(
-            S.NullOr(__S(5, __c0, 5)).pipe(T.Body("notification_filter")),
+            S.NullOr(__S(35, __c2, 3)).pipe(T.Body("notification_filter")),
           ),
-          originSteering: S.optional(S.NullOr(__S(6, __c0, 6)).pipe(T.Body("origin_steering"))),
-          origins: S.optional(S.NullOr(__S(66, __c8, 2))),
+          originSteering: S.optional(S.NullOr(__S(36, __c2, 4)).pipe(T.Body("origin_steering"))),
+          origins: S.optional(S.NullOr(__S(258, __c16, 2))),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "UpdatePoolResponse" });
   }
 }
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

@@ -3175,8 +3175,8 @@ export const activateMessageTemplate: API.OperationMethod<
   ActivateMessageTemplateError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(0, __c0, 0) as any as S.Schema<ActivateMessageTemplateRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<ActivateMessageTemplateResponse>,
+  input: __S(192, __c6, 0) as any as S.Schema<ActivateMessageTemplateRequest>,
+  output: __S(224, __c7, 0) as any as S.Schema<ActivateMessageTemplateResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -3207,8 +3207,8 @@ export const createAIAgent: API.OperationMethod<
   CreateAIAgentError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(42, __c5, 2) as any as S.Schema<CreateAIAgentRequest>,
-  output: __S(44, __c5, 4) as any as S.Schema<CreateAIAgentResponse>,
+  input: __S(256, __c8, 0) as any as S.Schema<CreateAIAgentRequest>,
+  output: __S(480, __c15, 0) as any as S.Schema<CreateAIAgentResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -3241,8 +3241,8 @@ export const createAIAgentVersion: API.OperationMethod<
   CreateAIAgentVersionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(45, __c5, 5) as any as S.Schema<CreateAIAgentVersionRequest>,
-  output: __S(46, __c5, 6) as any as S.Schema<CreateAIAgentVersionResponse>,
+  input: __S(512, __c16, 0) as any as S.Schema<CreateAIAgentVersionRequest>,
+  output: __S(513, __c16, 1) as any as S.Schema<CreateAIAgentVersionResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -3275,8 +3275,8 @@ export const createAIGuardrail: API.OperationMethod<
   CreateAIGuardrailError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(66, __c8, 2) as any as S.Schema<CreateAIGuardrailRequest>,
-  output: __S(68, __c8, 4) as any as S.Schema<CreateAIGuardrailResponse>,
+  input: __S(544, __c17, 0) as any as S.Schema<CreateAIGuardrailRequest>,
+  output: __S(640, __c20, 0) as any as S.Schema<CreateAIGuardrailResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -3309,8 +3309,8 @@ export const createAIGuardrailVersion: API.OperationMethod<
   CreateAIGuardrailVersionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(69, __c8, 5) as any as S.Schema<CreateAIGuardrailVersionRequest>,
-  output: __S(70, __c8, 6) as any as S.Schema<CreateAIGuardrailVersionResponse>,
+  input: __S(672, __c21, 0) as any as S.Schema<CreateAIGuardrailVersionRequest>,
+  output: __S(673, __c21, 1) as any as S.Schema<CreateAIGuardrailVersionResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -3343,8 +3343,8 @@ export const createAIPrompt: API.OperationMethod<
   CreateAIPromptError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(74, __c9, 2) as any as S.Schema<CreateAIPromptRequest>,
-  output: __S(76, __c9, 4) as any as S.Schema<CreateAIPromptResponse>,
+  input: __S(704, __c22, 0) as any as S.Schema<CreateAIPromptRequest>,
+  output: __S(768, __c24, 0) as any as S.Schema<CreateAIPromptResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -3377,8 +3377,8 @@ export const createAIPromptVersion: API.OperationMethod<
   CreateAIPromptVersionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(77, __c9, 5) as any as S.Schema<CreateAIPromptVersionRequest>,
-  output: __S(78, __c9, 6) as any as S.Schema<CreateAIPromptVersionResponse>,
+  input: __S(800, __c25, 0) as any as S.Schema<CreateAIPromptVersionRequest>,
+  output: __S(801, __c25, 1) as any as S.Schema<CreateAIPromptVersionResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -3409,8 +3409,8 @@ export const createAssistant: API.OperationMethod<
   CreateAssistantError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(80, __c10, 0) as any as S.Schema<CreateAssistantRequest>,
-  output: __S(88, __c11, 0) as any as S.Schema<CreateAssistantResponse>,
+  input: __S(832, __c26, 0) as any as S.Schema<CreateAssistantRequest>,
+  output: __S(928, __c29, 0) as any as S.Schema<CreateAssistantResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -3439,8 +3439,8 @@ export const createAssistantAssociation: API.OperationMethod<
   CreateAssistantAssociationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(91, __c11, 3) as any as S.Schema<CreateAssistantAssociationRequest>,
-  output: __S(95, __c11, 7) as any as S.Schema<CreateAssistantAssociationResponse>,
+  input: __S(993, __c31, 1) as any as S.Schema<CreateAssistantAssociationRequest>,
+  output: __S(1025, __c32, 1) as any as S.Schema<CreateAssistantAssociationResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -3470,8 +3470,8 @@ export const createContent: API.OperationMethod<
   CreateContentError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(97, __c12, 1) as any as S.Schema<CreateContentRequest>,
-  output: __S(99, __c12, 3) as any as S.Schema<CreateContentResponse>,
+  input: __S(1088, __c34, 0) as any as S.Schema<CreateContentRequest>,
+  output: __S(1153, __c36, 1) as any as S.Schema<CreateContentResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -3513,8 +3513,8 @@ export const createContentAssociation: API.OperationMethod<
   CreateContentAssociationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(102, __c12, 6) as any as S.Schema<CreateContentAssociationRequest>,
-  output: __S(104, __c13, 0) as any as S.Schema<CreateContentAssociationResponse>,
+  input: __S(1184, __c37, 0) as any as S.Schema<CreateContentAssociationRequest>,
+  output: __S(1217, __c38, 1) as any as S.Schema<CreateContentAssociationResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -3557,8 +3557,8 @@ export const createKnowledgeBase: API.OperationMethod<
   CreateKnowledgeBaseError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(124, __c15, 4) as any as S.Schema<CreateKnowledgeBaseRequest>,
-  output: __S(126, __c15, 6) as any as S.Schema<CreateKnowledgeBaseResponse>,
+  input: __S(1280, __c40, 0) as any as S.Schema<CreateKnowledgeBaseRequest>,
+  output: __S(1312, __c41, 0) as any as S.Schema<CreateKnowledgeBaseResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -3588,8 +3588,8 @@ export const createMessageTemplate: API.OperationMethod<
   CreateMessageTemplateError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(148, __c18, 4) as any as S.Schema<CreateMessageTemplateRequest>,
-  output: __S(152, __c19, 0) as any as S.Schema<CreateMessageTemplateResponse>,
+  input: __S(1408, __c44, 0) as any as S.Schema<CreateMessageTemplateRequest>,
+  output: __S(1441, __c45, 1) as any as S.Schema<CreateMessageTemplateResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -3621,8 +3621,8 @@ export const createMessageTemplateAttachment: API.OperationMethod<
   CreateMessageTemplateAttachmentError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(153, __c19, 1) as any as S.Schema<CreateMessageTemplateAttachmentRequest>,
-  output: __S(155, __c19, 3) as any as S.Schema<CreateMessageTemplateAttachmentResponse>,
+  input: __S(1632, __c51, 0) as any as S.Schema<CreateMessageTemplateAttachmentRequest>,
+  output: __S(1633, __c51, 1) as any as S.Schema<CreateMessageTemplateAttachmentResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -3654,8 +3654,8 @@ export const createMessageTemplateVersion: API.OperationMethod<
   CreateMessageTemplateVersionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(156, __c19, 4) as any as S.Schema<CreateMessageTemplateVersionRequest>,
-  output: __S(159, __c19, 7) as any as S.Schema<CreateMessageTemplateVersionResponse>,
+  input: __S(1696, __c53, 0) as any as S.Schema<CreateMessageTemplateVersionRequest>,
+  output: __S(1729, __c54, 1) as any as S.Schema<CreateMessageTemplateVersionResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -3686,8 +3686,8 @@ export const createQuickResponse: API.OperationMethod<
   CreateQuickResponseError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(160, __c20, 0) as any as S.Schema<CreateQuickResponseRequest>,
-  output: __S(163, __c20, 3) as any as S.Schema<CreateQuickResponseResponse>,
+  input: __S(1792, __c56, 0) as any as S.Schema<CreateQuickResponseRequest>,
+  output: __S(1824, __c57, 0) as any as S.Schema<CreateQuickResponseResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -3718,8 +3718,8 @@ export const createSession: API.OperationMethod<
   CreateSessionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(164, __c20, 4) as any as S.Schema<CreateSessionRequest>,
-  output: __S(166, __c20, 6) as any as S.Schema<CreateSessionResponse>,
+  input: __S(1920, __c60, 0) as any as S.Schema<CreateSessionRequest>,
+  output: __S(1953, __c61, 1) as any as S.Schema<CreateSessionResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -3749,8 +3749,8 @@ export const deactivateMessageTemplate: API.OperationMethod<
   DeactivateMessageTemplateError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(167, __c20, 7) as any as S.Schema<DeactivateMessageTemplateRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<DeactivateMessageTemplateResponse>,
+  input: __S(1984, __c62, 0) as any as S.Schema<DeactivateMessageTemplateRequest>,
+  output: __S(224, __c7, 0) as any as S.Schema<DeactivateMessageTemplateResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -3779,8 +3779,8 @@ export const deleteAIAgent: API.OperationMethod<
   DeleteAIAgentError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(168, __c21, 0) as any as S.Schema<DeleteAIAgentRequest>,
-  output: __S(169, __c21, 1) as any as S.Schema<DeleteAIAgentResponse>,
+  input: __S(2016, __c63, 0) as any as S.Schema<DeleteAIAgentRequest>,
+  output: __S(2048, __c64, 0) as any as S.Schema<DeleteAIAgentResponse>,
   errors: [
     AccessDeniedException,
     ResourceNotFoundException,
@@ -3810,8 +3810,8 @@ export const deleteAIAgentVersion: API.OperationMethod<
   DeleteAIAgentVersionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(170, __c21, 2) as any as S.Schema<DeleteAIAgentVersionRequest>,
-  output: __S(169, __c21, 1) as any as S.Schema<DeleteAIAgentVersionResponse>,
+  input: __S(2080, __c65, 0) as any as S.Schema<DeleteAIAgentVersionRequest>,
+  output: __S(2048, __c64, 0) as any as S.Schema<DeleteAIAgentVersionResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -3842,8 +3842,8 @@ export const deleteAIGuardrail: API.OperationMethod<
   DeleteAIGuardrailError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(171, __c21, 3) as any as S.Schema<DeleteAIGuardrailRequest>,
-  output: __S(169, __c21, 1) as any as S.Schema<DeleteAIGuardrailResponse>,
+  input: __S(2112, __c66, 0) as any as S.Schema<DeleteAIGuardrailRequest>,
+  output: __S(2048, __c64, 0) as any as S.Schema<DeleteAIGuardrailResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -3874,8 +3874,8 @@ export const deleteAIGuardrailVersion: API.OperationMethod<
   DeleteAIGuardrailVersionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(172, __c21, 4) as any as S.Schema<DeleteAIGuardrailVersionRequest>,
-  output: __S(173, __c21, 5) as any as S.Schema<DeleteAIGuardrailVersionResponse>,
+  input: __S(2144, __c67, 0) as any as S.Schema<DeleteAIGuardrailVersionRequest>,
+  output: __S(2176, __c68, 0) as any as S.Schema<DeleteAIGuardrailVersionResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -3905,8 +3905,8 @@ export const deleteAIPrompt: API.OperationMethod<
   DeleteAIPromptError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(174, __c21, 6) as any as S.Schema<DeleteAIPromptRequest>,
-  output: __S(169, __c21, 1) as any as S.Schema<DeleteAIPromptResponse>,
+  input: __S(2208, __c69, 0) as any as S.Schema<DeleteAIPromptRequest>,
+  output: __S(2048, __c64, 0) as any as S.Schema<DeleteAIPromptResponse>,
   errors: [
     AccessDeniedException,
     ResourceNotFoundException,
@@ -3936,8 +3936,8 @@ export const deleteAIPromptVersion: API.OperationMethod<
   DeleteAIPromptVersionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(175, __c21, 7) as any as S.Schema<DeleteAIPromptVersionRequest>,
-  output: __S(169, __c21, 1) as any as S.Schema<DeleteAIPromptVersionResponse>,
+  input: __S(2240, __c70, 0) as any as S.Schema<DeleteAIPromptVersionRequest>,
+  output: __S(2048, __c64, 0) as any as S.Schema<DeleteAIPromptVersionResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -3966,8 +3966,8 @@ export const deleteAssistant: API.OperationMethod<
   DeleteAssistantError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(176, __c22, 0) as any as S.Schema<DeleteAssistantRequest>,
-  output: __S(169, __c21, 1) as any as S.Schema<DeleteAssistantResponse>,
+  input: __S(2272, __c71, 0) as any as S.Schema<DeleteAssistantRequest>,
+  output: __S(2048, __c64, 0) as any as S.Schema<DeleteAssistantResponse>,
   errors: [
     AccessDeniedException,
     ResourceNotFoundException,
@@ -3994,8 +3994,8 @@ export const deleteAssistantAssociation: API.OperationMethod<
   DeleteAssistantAssociationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(177, __c22, 1) as any as S.Schema<DeleteAssistantAssociationRequest>,
-  output: __S(173, __c21, 5) as any as S.Schema<DeleteAssistantAssociationResponse>,
+  input: __S(2304, __c72, 0) as any as S.Schema<DeleteAssistantAssociationRequest>,
+  output: __S(2176, __c68, 0) as any as S.Schema<DeleteAssistantAssociationResponse>,
   errors: [
     AccessDeniedException,
     ResourceNotFoundException,
@@ -4023,8 +4023,8 @@ export const deleteContent: API.OperationMethod<
   DeleteContentError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(178, __c22, 2) as any as S.Schema<DeleteContentRequest>,
-  output: __S(169, __c21, 1) as any as S.Schema<DeleteContentResponse>,
+  input: __S(2336, __c73, 0) as any as S.Schema<DeleteContentRequest>,
+  output: __S(2048, __c64, 0) as any as S.Schema<DeleteContentResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -4054,8 +4054,8 @@ export const deleteContentAssociation: API.OperationMethod<
   DeleteContentAssociationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(179, __c22, 3) as any as S.Schema<DeleteContentAssociationRequest>,
-  output: __S(173, __c21, 5) as any as S.Schema<DeleteContentAssociationResponse>,
+  input: __S(2368, __c74, 0) as any as S.Schema<DeleteContentAssociationRequest>,
+  output: __S(2176, __c68, 0) as any as S.Schema<DeleteContentAssociationResponse>,
   errors: [
     AccessDeniedException,
     ResourceNotFoundException,
@@ -4083,8 +4083,8 @@ export const deleteImportJob: API.OperationMethod<
   DeleteImportJobError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(180, __c22, 4) as any as S.Schema<DeleteImportJobRequest>,
-  output: __S(169, __c21, 1) as any as S.Schema<DeleteImportJobResponse>,
+  input: __S(2400, __c75, 0) as any as S.Schema<DeleteImportJobRequest>,
+  output: __S(2048, __c64, 0) as any as S.Schema<DeleteImportJobResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -4115,8 +4115,8 @@ export const deleteKnowledgeBase: API.OperationMethod<
   DeleteKnowledgeBaseError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(181, __c22, 5) as any as S.Schema<DeleteKnowledgeBaseRequest>,
-  output: __S(169, __c21, 1) as any as S.Schema<DeleteKnowledgeBaseResponse>,
+  input: __S(2432, __c76, 0) as any as S.Schema<DeleteKnowledgeBaseRequest>,
+  output: __S(2048, __c64, 0) as any as S.Schema<DeleteKnowledgeBaseResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -4145,8 +4145,8 @@ export const deleteMessageTemplate: API.OperationMethod<
   DeleteMessageTemplateError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(182, __c22, 6) as any as S.Schema<DeleteMessageTemplateRequest>,
-  output: __S(169, __c21, 1) as any as S.Schema<DeleteMessageTemplateResponse>,
+  input: __S(2464, __c77, 0) as any as S.Schema<DeleteMessageTemplateRequest>,
+  output: __S(2048, __c64, 0) as any as S.Schema<DeleteMessageTemplateResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -4175,8 +4175,8 @@ export const deleteMessageTemplateAttachment: API.OperationMethod<
   DeleteMessageTemplateAttachmentError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(183, __c22, 7) as any as S.Schema<DeleteMessageTemplateAttachmentRequest>,
-  output: __S(173, __c21, 5) as any as S.Schema<DeleteMessageTemplateAttachmentResponse>,
+  input: __S(2496, __c78, 0) as any as S.Schema<DeleteMessageTemplateAttachmentRequest>,
+  output: __S(2176, __c68, 0) as any as S.Schema<DeleteMessageTemplateAttachmentResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -4204,8 +4204,8 @@ export const deleteQuickResponse: API.OperationMethod<
   DeleteQuickResponseError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(184, __c23, 0) as any as S.Schema<DeleteQuickResponseRequest>,
-  output: __S(169, __c21, 1) as any as S.Schema<DeleteQuickResponseResponse>,
+  input: __S(2528, __c79, 0) as any as S.Schema<DeleteQuickResponseRequest>,
+  output: __S(2048, __c64, 0) as any as S.Schema<DeleteQuickResponseResponse>,
   errors: [
     AccessDeniedException,
     ResourceNotFoundException,
@@ -4233,8 +4233,8 @@ export const getAIAgent: API.OperationMethod<
   GetAIAgentError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(185, __c23, 1) as any as S.Schema<GetAIAgentRequest>,
-  output: __S(186, __c23, 2) as any as S.Schema<GetAIAgentResponse>,
+  input: __S(2560, __c80, 0) as any as S.Schema<GetAIAgentRequest>,
+  output: __S(2561, __c80, 1) as any as S.Schema<GetAIAgentResponse>,
   errors: [
     AccessDeniedException,
     ResourceNotFoundException,
@@ -4263,8 +4263,8 @@ export const getAIGuardrail: API.OperationMethod<
   GetAIGuardrailError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(187, __c23, 3) as any as S.Schema<GetAIGuardrailRequest>,
-  output: __S(188, __c23, 4) as any as S.Schema<GetAIGuardrailResponse>,
+  input: __S(2592, __c81, 0) as any as S.Schema<GetAIGuardrailRequest>,
+  output: __S(2593, __c81, 1) as any as S.Schema<GetAIGuardrailResponse>,
   errors: [
     AccessDeniedException,
     ResourceNotFoundException,
@@ -4293,8 +4293,8 @@ export const getAIPrompt: API.OperationMethod<
   GetAIPromptError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(189, __c23, 5) as any as S.Schema<GetAIPromptRequest>,
-  output: __S(190, __c23, 6) as any as S.Schema<GetAIPromptResponse>,
+  input: __S(2624, __c82, 0) as any as S.Schema<GetAIPromptRequest>,
+  output: __S(2625, __c82, 1) as any as S.Schema<GetAIPromptResponse>,
   errors: [
     AccessDeniedException,
     ResourceNotFoundException,
@@ -4322,8 +4322,8 @@ export const getAssistant: API.OperationMethod<
   GetAssistantError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(191, __c23, 7) as any as S.Schema<GetAssistantRequest>,
-  output: __S(88, __c11, 0) as any as S.Schema<GetAssistantResponse>,
+  input: __S(2656, __c83, 0) as any as S.Schema<GetAssistantRequest>,
+  output: __S(928, __c29, 0) as any as S.Schema<GetAssistantResponse>,
   errors: [
     AccessDeniedException,
     ResourceNotFoundException,
@@ -4350,8 +4350,8 @@ export const getAssistantAssociation: API.OperationMethod<
   GetAssistantAssociationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(192, __c24, 0) as any as S.Schema<GetAssistantAssociationRequest>,
-  output: __S(95, __c11, 7) as any as S.Schema<GetAssistantAssociationResponse>,
+  input: __S(2688, __c84, 0) as any as S.Schema<GetAssistantAssociationRequest>,
+  output: __S(1025, __c32, 1) as any as S.Schema<GetAssistantAssociationResponse>,
   errors: [
     AccessDeniedException,
     ResourceNotFoundException,
@@ -4378,8 +4378,8 @@ export const getContent: API.OperationMethod<
   GetContentError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(193, __c24, 1) as any as S.Schema<GetContentRequest>,
-  output: __S(99, __c12, 3) as any as S.Schema<GetContentResponse>,
+  input: __S(2720, __c85, 0) as any as S.Schema<GetContentRequest>,
+  output: __S(1153, __c36, 1) as any as S.Schema<GetContentResponse>,
   errors: [
     AccessDeniedException,
     ResourceNotFoundException,
@@ -4408,8 +4408,8 @@ export const getContentAssociation: API.OperationMethod<
   GetContentAssociationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(194, __c24, 2) as any as S.Schema<GetContentAssociationRequest>,
-  output: __S(104, __c13, 0) as any as S.Schema<GetContentAssociationResponse>,
+  input: __S(2752, __c86, 0) as any as S.Schema<GetContentAssociationRequest>,
+  output: __S(1217, __c38, 1) as any as S.Schema<GetContentAssociationResponse>,
   errors: [
     AccessDeniedException,
     ResourceNotFoundException,
@@ -4436,8 +4436,8 @@ export const getContentSummary: API.OperationMethod<
   GetContentSummaryError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(195, __c24, 3) as any as S.Schema<GetContentSummaryRequest>,
-  output: __S(197, __c24, 5) as any as S.Schema<GetContentSummaryResponse>,
+  input: __S(2784, __c87, 0) as any as S.Schema<GetContentSummaryRequest>,
+  output: __S(2785, __c87, 1) as any as S.Schema<GetContentSummaryResponse>,
   errors: [
     AccessDeniedException,
     ResourceNotFoundException,
@@ -4463,8 +4463,8 @@ export const getImportJob: API.OperationMethod<
   GetImportJobError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(198, __c24, 6) as any as S.Schema<GetImportJobRequest>,
-  output: __S(203, __c25, 3) as any as S.Schema<GetImportJobResponse>,
+  input: __S(2848, __c89, 0) as any as S.Schema<GetImportJobRequest>,
+  output: __S(2913, __c91, 1) as any as S.Schema<GetImportJobResponse>,
   errors: [AccessDeniedException, ResourceNotFoundException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -4486,8 +4486,8 @@ export const getKnowledgeBase: API.OperationMethod<
   GetKnowledgeBaseError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(204, __c25, 4) as any as S.Schema<GetKnowledgeBaseRequest>,
-  output: __S(205, __c25, 5) as any as S.Schema<GetKnowledgeBaseResponse>,
+  input: __S(2944, __c92, 0) as any as S.Schema<GetKnowledgeBaseRequest>,
+  output: __S(2945, __c92, 1) as any as S.Schema<GetKnowledgeBaseResponse>,
   errors: [
     AccessDeniedException,
     ResourceNotFoundException,
@@ -4515,8 +4515,8 @@ export const getMessageTemplate: API.OperationMethod<
   GetMessageTemplateError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(206, __c25, 6) as any as S.Schema<GetMessageTemplateRequest>,
-  output: __S(159, __c19, 7) as any as S.Schema<GetMessageTemplateResponse>,
+  input: __S(2976, __c93, 0) as any as S.Schema<GetMessageTemplateRequest>,
+  output: __S(1729, __c54, 1) as any as S.Schema<GetMessageTemplateResponse>,
   errors: [
     AccessDeniedException,
     ResourceNotFoundException,
@@ -4544,8 +4544,8 @@ export const getNextMessage: API.OperationMethod<
   GetNextMessageError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(207, __c25, 7) as any as S.Schema<GetNextMessageRequest>,
-  output: __S(220, __c27, 4) as any as S.Schema<GetNextMessageResponse>,
+  input: __S(3008, __c94, 0) as any as S.Schema<GetNextMessageRequest>,
+  output: __S(3010, __c94, 2) as any as S.Schema<GetNextMessageResponse>,
   errors: [
     AccessDeniedException,
     ResourceNotFoundException,
@@ -4572,8 +4572,8 @@ export const getQuickResponse: API.OperationMethod<
   GetQuickResponseError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(221, __c27, 5) as any as S.Schema<GetQuickResponseRequest>,
-  output: __S(222, __c27, 6) as any as S.Schema<GetQuickResponseResponse>,
+  input: __S(3200, __c100, 0) as any as S.Schema<GetQuickResponseRequest>,
+  output: __S(3201, __c100, 1) as any as S.Schema<GetQuickResponseResponse>,
   errors: [
     AccessDeniedException,
     ResourceNotFoundException,
@@ -4601,8 +4601,8 @@ export const getRecommendations: API.OperationMethod<
   GetRecommendationsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(223, __c27, 7) as any as S.Schema<GetRecommendationsRequest>,
-  output: __S(252, __c31, 4) as any as S.Schema<GetRecommendationsResponse>,
+  input: __S(3232, __c101, 0) as any as S.Schema<GetRecommendationsRequest>,
+  output: __S(3239, __c101, 7) as any as S.Schema<GetRecommendationsResponse>,
   errors: [AccessDeniedException, ResourceNotFoundException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -4624,8 +4624,8 @@ export const getSession: API.OperationMethod<
   GetSessionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(253, __c31, 5) as any as S.Schema<GetSessionRequest>,
-  output: __S(166, __c20, 6) as any as S.Schema<GetSessionResponse>,
+  input: __S(3296, __c103, 0) as any as S.Schema<GetSessionRequest>,
+  output: __S(1953, __c61, 1) as any as S.Schema<GetSessionResponse>,
   errors: [
     AccessDeniedException,
     ResourceNotFoundException,
@@ -4654,8 +4654,8 @@ export const listAIAgents: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   AIAgentSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(254, __c31, 6) as any as S.Schema<ListAIAgentsRequest>,
-  output: __S(257, __c32, 1) as any as S.Schema<ListAIAgentsResponse>,
+  input: __S(3328, __c104, 0) as any as S.Schema<ListAIAgentsRequest>,
+  output: __S(3330, __c104, 2) as any as S.Schema<ListAIAgentsResponse>,
   errors: [
     AccessDeniedException,
     ResourceNotFoundException,
@@ -4691,8 +4691,8 @@ export const listAIAgentVersions: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   AIAgentVersionSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(258, __c32, 2) as any as S.Schema<ListAIAgentVersionsRequest>,
-  output: __S(261, __c32, 5) as any as S.Schema<ListAIAgentVersionsResponse>,
+  input: __S(3392, __c106, 0) as any as S.Schema<ListAIAgentVersionsRequest>,
+  output: __S(3395, __c106, 3) as any as S.Schema<ListAIAgentVersionsResponse>,
   errors: [
     AccessDeniedException,
     ResourceNotFoundException,
@@ -4728,8 +4728,8 @@ export const listAIGuardrails: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   AIGuardrailSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(262, __c32, 6) as any as S.Schema<ListAIGuardrailsRequest>,
-  output: __S(265, __c33, 1) as any as S.Schema<ListAIGuardrailsResponse>,
+  input: __S(3424, __c107, 0) as any as S.Schema<ListAIGuardrailsRequest>,
+  output: __S(3426, __c107, 2) as any as S.Schema<ListAIGuardrailsResponse>,
   errors: [
     AccessDeniedException,
     ResourceNotFoundException,
@@ -4765,8 +4765,8 @@ export const listAIGuardrailVersions: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   AIGuardrailVersionSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(266, __c33, 2) as any as S.Schema<ListAIGuardrailVersionsRequest>,
-  output: __S(269, __c33, 5) as any as S.Schema<ListAIGuardrailVersionsResponse>,
+  input: __S(3488, __c109, 0) as any as S.Schema<ListAIGuardrailVersionsRequest>,
+  output: __S(3491, __c109, 3) as any as S.Schema<ListAIGuardrailVersionsResponse>,
   errors: [
     AccessDeniedException,
     ResourceNotFoundException,
@@ -4802,8 +4802,8 @@ export const listAIPrompts: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   AIPromptSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(270, __c33, 6) as any as S.Schema<ListAIPromptsRequest>,
-  output: __S(273, __c34, 1) as any as S.Schema<ListAIPromptsResponse>,
+  input: __S(3520, __c110, 0) as any as S.Schema<ListAIPromptsRequest>,
+  output: __S(3522, __c110, 2) as any as S.Schema<ListAIPromptsResponse>,
   errors: [
     AccessDeniedException,
     ResourceNotFoundException,
@@ -4839,8 +4839,8 @@ export const listAIPromptVersions: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   AIPromptVersionSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(274, __c34, 2) as any as S.Schema<ListAIPromptVersionsRequest>,
-  output: __S(277, __c34, 5) as any as S.Schema<ListAIPromptVersionsResponse>,
+  input: __S(3584, __c112, 0) as any as S.Schema<ListAIPromptVersionsRequest>,
+  output: __S(3587, __c112, 3) as any as S.Schema<ListAIPromptVersionsResponse>,
   errors: [
     AccessDeniedException,
     ResourceNotFoundException,
@@ -4874,8 +4874,8 @@ export const listAssistantAssociations: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   AssistantAssociationSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(278, __c34, 6) as any as S.Schema<ListAssistantAssociationsRequest>,
-  output: __S(281, __c35, 1) as any as S.Schema<ListAssistantAssociationsResponse>,
+  input: __S(3616, __c113, 0) as any as S.Schema<ListAssistantAssociationsRequest>,
+  output: __S(3619, __c113, 3) as any as S.Schema<ListAssistantAssociationsResponse>,
   errors: [AccessDeniedException, ResourceNotFoundException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -4903,8 +4903,8 @@ export const listAssistants: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   AssistantSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(282, __c35, 2) as any as S.Schema<ListAssistantsRequest>,
-  output: __S(284, __c35, 4) as any as S.Schema<ListAssistantsResponse>,
+  input: __S(3648, __c114, 0) as any as S.Schema<ListAssistantsRequest>,
+  output: __S(3650, __c114, 2) as any as S.Schema<ListAssistantsResponse>,
   errors: [AccessDeniedException, UnauthorizedException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -4935,8 +4935,8 @@ export const listContentAssociations: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   ContentAssociationSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(285, __c35, 5) as any as S.Schema<ListContentAssociationsRequest>,
-  output: __S(288, __c36, 0) as any as S.Schema<ListContentAssociationsResponse>,
+  input: __S(3680, __c115, 0) as any as S.Schema<ListContentAssociationsRequest>,
+  output: __S(3683, __c115, 3) as any as S.Schema<ListContentAssociationsResponse>,
   errors: [
     AccessDeniedException,
     ResourceNotFoundException,
@@ -4969,8 +4969,8 @@ export const listContents: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   ContentSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(289, __c36, 1) as any as S.Schema<ListContentsRequest>,
-  output: __S(291, __c36, 3) as any as S.Schema<ListContentsResponse>,
+  input: __S(3712, __c116, 0) as any as S.Schema<ListContentsRequest>,
+  output: __S(3745, __c117, 1) as any as S.Schema<ListContentsResponse>,
   errors: [AccessDeniedException, ResourceNotFoundException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -4994,8 +4994,8 @@ export const listImportJobs: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   ImportJobSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(292, __c36, 4) as any as S.Schema<ListImportJobsRequest>,
-  output: __S(295, __c36, 7) as any as S.Schema<ListImportJobsResponse>,
+  input: __S(3776, __c118, 0) as any as S.Schema<ListImportJobsRequest>,
+  output: __S(3779, __c118, 3) as any as S.Schema<ListImportJobsResponse>,
   errors: [AccessDeniedException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -5019,8 +5019,8 @@ export const listKnowledgeBases: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   KnowledgeBaseSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(296, __c37, 0) as any as S.Schema<ListKnowledgeBasesRequest>,
-  output: __S(299, __c37, 3) as any as S.Schema<ListKnowledgeBasesResponse>,
+  input: __S(3808, __c119, 0) as any as S.Schema<ListKnowledgeBasesRequest>,
+  output: __S(3811, __c119, 3) as any as S.Schema<ListKnowledgeBasesResponse>,
   errors: [AccessDeniedException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -5048,8 +5048,8 @@ export const listMessages: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   MessageOutput
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(300, __c37, 4) as any as S.Schema<ListMessagesRequest>,
-  output: __S(302, __c37, 6) as any as S.Schema<ListMessagesResponse>,
+  input: __S(3840, __c120, 0) as any as S.Schema<ListMessagesRequest>,
+  output: __S(3842, __c120, 2) as any as S.Schema<ListMessagesResponse>,
   errors: [AccessDeniedException, ResourceNotFoundException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -5078,8 +5078,8 @@ export const listMessageTemplates: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   MessageTemplateSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(303, __c37, 7) as any as S.Schema<ListMessageTemplatesRequest>,
-  output: __S(306, __c38, 2) as any as S.Schema<ListMessageTemplatesResponse>,
+  input: __S(3872, __c121, 0) as any as S.Schema<ListMessageTemplatesRequest>,
+  output: __S(3875, __c121, 3) as any as S.Schema<ListMessageTemplatesResponse>,
   errors: [
     AccessDeniedException,
     ResourceNotFoundException,
@@ -5113,8 +5113,8 @@ export const listMessageTemplateVersions: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   MessageTemplateVersionSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(307, __c38, 3) as any as S.Schema<ListMessageTemplateVersionsRequest>,
-  output: __S(310, __c38, 6) as any as S.Schema<ListMessageTemplateVersionsResponse>,
+  input: __S(3904, __c122, 0) as any as S.Schema<ListMessageTemplateVersionsRequest>,
+  output: __S(3907, __c122, 3) as any as S.Schema<ListMessageTemplateVersionsResponse>,
   errors: [
     AccessDeniedException,
     ResourceNotFoundException,
@@ -5150,8 +5150,8 @@ export const listModels: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   ModelSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(311, __c38, 7) as any as S.Schema<ListModelsRequest>,
-  output: __S(314, __c39, 2) as any as S.Schema<ListModelsResponse>,
+  input: __S(3936, __c123, 0) as any as S.Schema<ListModelsRequest>,
+  output: __S(3939, __c123, 3) as any as S.Schema<ListModelsResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -5186,8 +5186,8 @@ export const listQuickResponses: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   QuickResponseSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(315, __c39, 3) as any as S.Schema<ListQuickResponsesRequest>,
-  output: __S(318, __c39, 6) as any as S.Schema<ListQuickResponsesResponse>,
+  input: __S(3968, __c124, 0) as any as S.Schema<ListQuickResponsesRequest>,
+  output: __S(3971, __c124, 3) as any as S.Schema<ListQuickResponsesResponse>,
   errors: [AccessDeniedException, ResourceNotFoundException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -5215,8 +5215,8 @@ export const listSpans: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   Span
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(319, __c39, 7) as any as S.Schema<ListSpansRequest>,
-  output: __S(337, __c42, 1) as any as S.Schema<ListSpansResponse>,
+  input: __S(4000, __c125, 0) as any as S.Schema<ListSpansRequest>,
+  output: __S(4018, __c125, 18) as any as S.Schema<ListSpansResponse>,
   errors: [AccessDeniedException, ResourceNotFoundException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -5239,8 +5239,8 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(338, __c42, 2) as any as S.Schema<ListTagsForResourceRequest>,
-  output: __S(339, __c42, 3) as any as S.Schema<ListTagsForResourceResponse>,
+  input: __S(4032, __c126, 0) as any as S.Schema<ListTagsForResourceRequest>,
+  output: __S(4033, __c126, 1) as any as S.Schema<ListTagsForResourceResponse>,
   errors: [ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -5261,8 +5261,8 @@ export const notifyRecommendationsReceived: API.OperationMethod<
   NotifyRecommendationsReceivedError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(340, __c42, 4) as any as S.Schema<NotifyRecommendationsReceivedRequest>,
-  output: __S(343, __c42, 7) as any as S.Schema<NotifyRecommendationsReceivedResponse>,
+  input: __S(4064, __c127, 0) as any as S.Schema<NotifyRecommendationsReceivedRequest>,
+  output: __S(4067, __c127, 3) as any as S.Schema<NotifyRecommendationsReceivedResponse>,
   errors: [AccessDeniedException, ResourceNotFoundException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -5283,8 +5283,8 @@ export const putFeedback: API.OperationMethod<
   PutFeedbackError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(346, __c43, 2) as any as S.Schema<PutFeedbackRequest>,
-  output: __S(347, __c43, 3) as any as S.Schema<PutFeedbackResponse>,
+  input: __S(4098, __c128, 2) as any as S.Schema<PutFeedbackRequest>,
+  output: __S(4099, __c128, 3) as any as S.Schema<PutFeedbackResponse>,
   errors: [AccessDeniedException, ResourceNotFoundException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -5309,8 +5309,8 @@ export const queryAssistant: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   ResultData
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(354, __c44, 2) as any as S.Schema<QueryAssistantRequest>,
-  output: __S(357, __c44, 5) as any as S.Schema<QueryAssistantResponse>,
+  input: __S(4134, __c129, 6) as any as S.Schema<QueryAssistantRequest>,
+  output: __S(4137, __c129, 9) as any as S.Schema<QueryAssistantResponse>,
   errors: [
     AccessDeniedException,
     RequestTimeoutException,
@@ -5343,8 +5343,8 @@ export const removeAssistantAIAgent: API.OperationMethod<
   RemoveAssistantAIAgentError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(358, __c44, 6) as any as S.Schema<RemoveAssistantAIAgentRequest>,
-  output: __S(169, __c21, 1) as any as S.Schema<RemoveAssistantAIAgentResponse>,
+  input: __S(4160, __c130, 0) as any as S.Schema<RemoveAssistantAIAgentRequest>,
+  output: __S(2048, __c64, 0) as any as S.Schema<RemoveAssistantAIAgentResponse>,
   errors: [
     AccessDeniedException,
     ResourceNotFoundException,
@@ -5370,8 +5370,8 @@ export const removeKnowledgeBaseTemplateUri: API.OperationMethod<
   RemoveKnowledgeBaseTemplateUriError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(359, __c44, 7) as any as S.Schema<RemoveKnowledgeBaseTemplateUriRequest>,
-  output: __S(173, __c21, 5) as any as S.Schema<RemoveKnowledgeBaseTemplateUriResponse>,
+  input: __S(4192, __c131, 0) as any as S.Schema<RemoveKnowledgeBaseTemplateUriRequest>,
+  output: __S(2176, __c68, 0) as any as S.Schema<RemoveKnowledgeBaseTemplateUriResponse>,
   errors: [AccessDeniedException, ResourceNotFoundException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -5393,8 +5393,8 @@ export const renderMessageTemplate: API.OperationMethod<
   RenderMessageTemplateError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(360, __c45, 0) as any as S.Schema<RenderMessageTemplateRequest>,
-  output: __S(361, __c45, 1) as any as S.Schema<RenderMessageTemplateResponse>,
+  input: __S(4224, __c132, 0) as any as S.Schema<RenderMessageTemplateRequest>,
+  output: __S(4225, __c132, 1) as any as S.Schema<RenderMessageTemplateResponse>,
   errors: [
     AccessDeniedException,
     ResourceNotFoundException,
@@ -5425,8 +5425,8 @@ export const retrieve: API.OperationMethod<
   RetrieveError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(367, __c45, 7) as any as S.Schema<RetrieveRequest>,
-  output: __S(372, __c46, 4) as any as S.Schema<RetrieveResponse>,
+  input: __S(4261, __c133, 5) as any as S.Schema<RetrieveRequest>,
+  output: __S(4266, __c133, 10) as any as S.Schema<RetrieveResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -5458,8 +5458,8 @@ export const searchContent: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   ContentSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(376, __c47, 0) as any as S.Schema<SearchContentRequest>,
-  output: __S(291, __c36, 3) as any as S.Schema<SearchContentResponse>,
+  input: __S(4288, __c134, 0) as any as S.Schema<SearchContentRequest>,
+  output: __S(3745, __c117, 1) as any as S.Schema<SearchContentResponse>,
   errors: [
     AccessDeniedException,
     ResourceNotFoundException,
@@ -5494,8 +5494,8 @@ export const searchMessageTemplates: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   MessageTemplateSearchResultData
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(383, __c47, 7) as any as S.Schema<SearchMessageTemplatesRequest>,
-  output: __S(386, __c48, 2) as any as S.Schema<SearchMessageTemplatesResponse>,
+  input: __S(4358, __c136, 6) as any as S.Schema<SearchMessageTemplatesRequest>,
+  output: __S(4361, __c136, 9) as any as S.Schema<SearchMessageTemplatesResponse>,
   errors: [
     AccessDeniedException,
     ResourceNotFoundException,
@@ -5531,8 +5531,8 @@ export const searchQuickResponses: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   QuickResponseSearchResultData
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(393, __c49, 1) as any as S.Schema<SearchQuickResponsesRequest>,
-  output: __S(396, __c49, 4) as any as S.Schema<SearchQuickResponsesResponse>,
+  input: __S(4390, __c137, 6) as any as S.Schema<SearchQuickResponsesRequest>,
+  output: __S(4393, __c137, 9) as any as S.Schema<SearchQuickResponsesResponse>,
   errors: [
     AccessDeniedException,
     RequestTimeoutException,
@@ -5567,8 +5567,8 @@ export const searchSessions: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   SessionSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(397, __c49, 5) as any as S.Schema<SearchSessionsRequest>,
-  output: __S(400, __c50, 0) as any as S.Schema<SearchSessionsResponse>,
+  input: __S(4416, __c138, 0) as any as S.Schema<SearchSessionsRequest>,
+  output: __S(4419, __c138, 3) as any as S.Schema<SearchSessionsResponse>,
   errors: [
     AccessDeniedException,
     ResourceNotFoundException,
@@ -5605,8 +5605,8 @@ export const sendMessage: API.OperationMethod<
   SendMessageError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(406, __c50, 6) as any as S.Schema<SendMessageRequest>,
-  output: __S(407, __c50, 7) as any as S.Schema<SendMessageResponse>,
+  input: __S(4453, __c139, 5) as any as S.Schema<SendMessageRequest>,
+  output: __S(4454, __c139, 6) as any as S.Schema<SendMessageResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -5637,8 +5637,8 @@ export const startContentUpload: API.OperationMethod<
   StartContentUploadError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(408, __c51, 0) as any as S.Schema<StartContentUploadRequest>,
-  output: __S(409, __c51, 1) as any as S.Schema<StartContentUploadResponse>,
+  input: __S(4480, __c140, 0) as any as S.Schema<StartContentUploadRequest>,
+  output: __S(4481, __c140, 1) as any as S.Schema<StartContentUploadResponse>,
   errors: [
     AccessDeniedException,
     ResourceNotFoundException,
@@ -5669,8 +5669,8 @@ export const startImportJob: API.OperationMethod<
   StartImportJobError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(410, __c51, 2) as any as S.Schema<StartImportJobRequest>,
-  output: __S(203, __c25, 3) as any as S.Schema<StartImportJobResponse>,
+  input: __S(4512, __c141, 0) as any as S.Schema<StartImportJobRequest>,
+  output: __S(2913, __c91, 1) as any as S.Schema<StartImportJobResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -5694,8 +5694,8 @@ export const tagResource: API.OperationMethod<
   TagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(411, __c51, 3) as any as S.Schema<TagResourceRequest>,
-  output: __S(169, __c21, 1) as any as S.Schema<TagResourceResponse>,
+  input: __S(4544, __c142, 0) as any as S.Schema<TagResourceRequest>,
+  output: __S(2048, __c64, 0) as any as S.Schema<TagResourceResponse>,
   errors: [ResourceNotFoundException, TooManyTagsException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -5712,8 +5712,8 @@ export const untagResource: API.OperationMethod<
   UntagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(412, __c51, 4) as any as S.Schema<UntagResourceRequest>,
-  output: __S(169, __c21, 1) as any as S.Schema<UntagResourceResponse>,
+  input: __S(4576, __c143, 0) as any as S.Schema<UntagResourceRequest>,
+  output: __S(2048, __c64, 0) as any as S.Schema<UntagResourceResponse>,
   errors: [ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -5737,8 +5737,8 @@ export const updateAIAgent: API.OperationMethod<
   UpdateAIAgentError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(413, __c51, 5) as any as S.Schema<UpdateAIAgentRequest>,
-  output: __S(44, __c5, 4) as any as S.Schema<UpdateAIAgentResponse>,
+  input: __S(4608, __c144, 0) as any as S.Schema<UpdateAIAgentRequest>,
+  output: __S(480, __c15, 0) as any as S.Schema<UpdateAIAgentResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -5769,8 +5769,8 @@ export const updateAIGuardrail: API.OperationMethod<
   UpdateAIGuardrailError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(414, __c51, 6) as any as S.Schema<UpdateAIGuardrailRequest>,
-  output: __S(68, __c8, 4) as any as S.Schema<UpdateAIGuardrailResponse>,
+  input: __S(4640, __c145, 0) as any as S.Schema<UpdateAIGuardrailRequest>,
+  output: __S(640, __c20, 0) as any as S.Schema<UpdateAIGuardrailResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -5801,8 +5801,8 @@ export const updateAIPrompt: API.OperationMethod<
   UpdateAIPromptError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(415, __c51, 7) as any as S.Schema<UpdateAIPromptRequest>,
-  output: __S(76, __c9, 4) as any as S.Schema<UpdateAIPromptResponse>,
+  input: __S(4672, __c146, 0) as any as S.Schema<UpdateAIPromptRequest>,
+  output: __S(768, __c24, 0) as any as S.Schema<UpdateAIPromptResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -5831,8 +5831,8 @@ export const updateAssistantAIAgent: API.OperationMethod<
   UpdateAssistantAIAgentError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(416, __c52, 0) as any as S.Schema<UpdateAssistantAIAgentRequest>,
-  output: __S(417, __c52, 1) as any as S.Schema<UpdateAssistantAIAgentResponse>,
+  input: __S(4704, __c147, 0) as any as S.Schema<UpdateAssistantAIAgentRequest>,
+  output: __S(4705, __c147, 1) as any as S.Schema<UpdateAssistantAIAgentResponse>,
   errors: [
     AccessDeniedException,
     ResourceNotFoundException,
@@ -5860,8 +5860,8 @@ export const updateContent: API.OperationMethod<
   UpdateContentError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(418, __c52, 2) as any as S.Schema<UpdateContentRequest>,
-  output: __S(99, __c12, 3) as any as S.Schema<UpdateContentResponse>,
+  input: __S(4736, __c148, 0) as any as S.Schema<UpdateContentRequest>,
+  output: __S(1153, __c36, 1) as any as S.Schema<UpdateContentResponse>,
   errors: [
     AccessDeniedException,
     PreconditionFailedException,
@@ -5888,8 +5888,8 @@ export const updateKnowledgeBaseTemplateUri: API.OperationMethod<
   UpdateKnowledgeBaseTemplateUriError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(419, __c52, 3) as any as S.Schema<UpdateKnowledgeBaseTemplateUriRequest>,
-  output: __S(126, __c15, 6) as any as S.Schema<UpdateKnowledgeBaseTemplateUriResponse>,
+  input: __S(0, __c0, 0) as any as S.Schema<UpdateKnowledgeBaseTemplateUriRequest>,
+  output: __S(1312, __c41, 0) as any as S.Schema<UpdateKnowledgeBaseTemplateUriResponse>,
   errors: [AccessDeniedException, ResourceNotFoundException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -5912,8 +5912,8 @@ export const updateMessageTemplate: API.OperationMethod<
   UpdateMessageTemplateError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(420, __c52, 4) as any as S.Schema<UpdateMessageTemplateRequest>,
-  output: __S(152, __c19, 0) as any as S.Schema<UpdateMessageTemplateResponse>,
+  input: __S(32, __c1, 0) as any as S.Schema<UpdateMessageTemplateRequest>,
+  output: __S(1441, __c45, 1) as any as S.Schema<UpdateMessageTemplateResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -5942,8 +5942,8 @@ export const updateMessageTemplateMetadata: API.OperationMethod<
   UpdateMessageTemplateMetadataError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(421, __c52, 5) as any as S.Schema<UpdateMessageTemplateMetadataRequest>,
-  output: __S(152, __c19, 0) as any as S.Schema<UpdateMessageTemplateMetadataResponse>,
+  input: __S(64, __c2, 0) as any as S.Schema<UpdateMessageTemplateMetadataRequest>,
+  output: __S(1441, __c45, 1) as any as S.Schema<UpdateMessageTemplateMetadataResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -5973,8 +5973,8 @@ export const updateQuickResponse: API.OperationMethod<
   UpdateQuickResponseError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(422, __c52, 6) as any as S.Schema<UpdateQuickResponseRequest>,
-  output: __S(163, __c20, 3) as any as S.Schema<UpdateQuickResponseResponse>,
+  input: __S(96, __c3, 0) as any as S.Schema<UpdateQuickResponseRequest>,
+  output: __S(1824, __c57, 0) as any as S.Schema<UpdateQuickResponseResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -6003,8 +6003,8 @@ export const updateSession: API.OperationMethod<
   UpdateSessionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(423, __c52, 7) as any as S.Schema<UpdateSessionRequest>,
-  output: __S(166, __c20, 6) as any as S.Schema<UpdateSessionResponse>,
+  input: __S(128, __c4, 0) as any as S.Schema<UpdateSessionRequest>,
+  output: __S(1953, __c61, 1) as any as S.Schema<UpdateSessionResponse>,
   errors: [
     AccessDeniedException,
     ResourceNotFoundException,
@@ -6031,8 +6031,8 @@ export const updateSessionData: API.OperationMethod<
   UpdateSessionDataError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(424, __c53, 0) as any as S.Schema<UpdateSessionDataRequest>,
-  output: __S(425, __c53, 1) as any as S.Schema<UpdateSessionDataResponse>,
+  input: __S(160, __c5, 0) as any as S.Schema<UpdateSessionDataRequest>,
+  output: __S(161, __c5, 1) as any as S.Schema<UpdateSessionDataResponse>,
   errors: [
     AccessDeniedException,
     ResourceNotFoundException,
@@ -6046,6 +6046,180 @@ export const updateSessionData: API.OperationMethod<
 
 // Schema builders: each runs one schema initializer, on that schema's first use.
 function __c0(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          knowledgeBaseId: S.String.pipe(T.HttpLabel("knowledgeBaseId")),
+          templateUri: S.String,
+        }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/knowledgeBases/{knowledgeBaseId}/templateUri" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "UpdateKnowledgeBaseTemplateUriRequest",
+      });
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          knowledgeBaseId: S.String.pipe(T.HttpLabel("knowledgeBaseId")),
+          messageTemplateId: S.String.pipe(T.HttpLabel("messageTemplateId")),
+          content: S.optional(__S(1546, __c48, 10)),
+          language: S.optional(S.String),
+          sourceConfiguration: S.optional(__S(1601, __c50, 1)),
+          defaultAttributes: S.optional(__S(1552, __c48, 16)),
+        }).pipe(
+          T.all(
+            T.Http({
+              method: "POST",
+              uri: "/knowledgeBases/{knowledgeBaseId}/messageTemplates/{messageTemplateId}",
+            }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "UpdateMessageTemplateRequest",
+      });
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          knowledgeBaseId: S.String.pipe(T.HttpLabel("knowledgeBaseId")),
+          messageTemplateId: S.String.pipe(T.HttpLabel("messageTemplateId")),
+          name: S.optional(S.String),
+          description: S.optional(S.String),
+          groupingConfiguration: S.optional(__S(1504, __c47, 0)),
+        }).pipe(
+          T.all(
+            T.Http({
+              method: "POST",
+              uri: "/knowledgeBases/{knowledgeBaseId}/messageTemplates/{messageTemplateId}/metadata",
+            }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "UpdateMessageTemplateMetadataRequest",
+      });
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          knowledgeBaseId: S.String.pipe(T.HttpLabel("knowledgeBaseId")),
+          quickResponseId: S.String.pipe(T.HttpLabel("quickResponseId")),
+          name: S.optional(S.String),
+          content: S.optional(__S(1472, __c46, 0)),
+          contentType: S.optional(S.String),
+          groupingConfiguration: S.optional(__S(1504, __c47, 0)),
+          removeGroupingConfiguration: S.optional(S.Boolean),
+          description: S.optional(S.String),
+          removeDescription: S.optional(S.Boolean),
+          shortcutKey: S.optional(S.String),
+          removeShortcutKey: S.optional(S.Boolean),
+          isActive: S.optional(S.Boolean),
+          channels: S.optional(__S(320, __c10, 0)),
+          language: S.optional(S.String),
+        }).pipe(
+          T.all(
+            T.Http({
+              method: "POST",
+              uri: "/knowledgeBases/{knowledgeBaseId}/quickResponses/{quickResponseId}",
+            }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "UpdateQuickResponseRequest",
+      });
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          assistantId: S.String.pipe(T.HttpLabel("assistantId")),
+          sessionId: S.String.pipe(T.HttpLabel("sessionId")),
+          description: S.optional(S.String),
+          tagFilter: S.optional(__S(388, __c12, 4)),
+          aiAgentConfiguration: S.optional(__S(898, __c28, 2)),
+          orchestratorConfigurationList: S.optional(__S(900, __c28, 4)),
+          removeOrchestratorConfigurationList: S.optional(S.Boolean),
+        }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/assistants/{assistantId}/sessions/{sessionId}" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "UpdateSessionRequest" });
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          assistantId: S.String.pipe(T.HttpLabel("assistantId")),
+          sessionId: S.String.pipe(T.HttpLabel("sessionId")),
+          namespace: S.optional(S.String),
+          data: __S(3042, __c95, 2),
+        }).pipe(
+          T.all(
+            T.Http({ method: "PATCH", uri: "/assistants/{assistantId}/sessions/{sessionId}/data" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "UpdateSessionDataRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          sessionArn: S.String,
+          sessionId: S.String,
+          namespace: S.String,
+          data: __S(3042, __c95, 2),
+        }),
+      ).annotate({
+        identifier: "UpdateSessionDataResponse",
+      });
+  }
+}
+function __c6(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -6069,7 +6243,11 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "ActivateMessageTemplateRequest",
       });
-    case 1:
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           messageTemplateArn: S.String,
@@ -6079,303 +6257,20 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "ActivateMessageTemplateResponse",
       });
-    case 2:
-      return S.suspend(() => S.Struct({ key: S.String, value: S.optional(S.String) })).annotate({
-        identifier: "TagCondition",
-      });
-    case 3:
-      return S.Array(__S(2, __c0, 2));
-    case 4:
-      return S.Union([
-        /*@__PURE__*/ S.Struct({ andConditions: __S(3, __c0, 3) }),
-        /*@__PURE__*/ S.Struct({ tagCondition: __S(2, __c0, 2) }),
-      ]);
-    case 5:
-      return S.Array(__S(4, __c0, 4));
-    case 6:
-      return S.Union([
-        /*@__PURE__*/ S.Struct({ tagCondition: __S(2, __c0, 2) }),
-        /*@__PURE__*/ S.Struct({ andConditions: __S(3, __c0, 3) }),
-        /*@__PURE__*/ S.Struct({ orConditions: __S(5, __c0, 5) }),
-      ]);
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          contentTagFilter: S.optional(__S(6, __c0, 6)),
-          maxResults: S.optional(S.Number),
-          overrideKnowledgeBaseSearchType: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "KnowledgeBaseAssociationConfigurationData",
-      });
   }
 }
-function __c1(j: number): any {
+function __c8(j: number): any {
   switch (j) {
     case 0:
-      return S.Union([
-        /*@__PURE__*/ S.Struct({
-          knowledgeBaseAssociationConfigurationData: __S(7, __c0, 7),
-        }),
-      ]);
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          associationId: S.optional(S.String),
-          associationType: S.optional(S.String),
-          associationConfigurationData: S.optional(__S(8, __c1, 0)),
-        }),
-      ).annotate({ identifier: "AssociationConfiguration" });
-    case 2:
-      return S.Array(__S(9, __c1, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          answerGenerationAIPromptId: S.optional(S.String),
-          answerGenerationAIGuardrailId: S.optional(S.String),
-          associationConfigurations: S.optional(__S(10, __c1, 2)),
-          locale: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "ManualSearchAIAgentConfiguration",
-      });
-    case 4:
-      return S.Array(SensitiveString);
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          intentLabelingGenerationAIPromptId: S.optional(S.String),
-          queryReformulationAIPromptId: S.optional(S.String),
-          answerGenerationAIPromptId: S.optional(S.String),
-          answerGenerationAIGuardrailId: S.optional(S.String),
-          associationConfigurations: S.optional(__S(10, __c1, 2)),
-          locale: S.optional(S.String),
-          suggestedMessages: S.optional(__S(12, __c1, 4)),
-        }),
-      ).annotate({
-        identifier: "AnswerRecommendationAIAgentConfiguration",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          selfServicePreProcessingAIPromptId: S.optional(S.String),
-          selfServiceAnswerGenerationAIPromptId: S.optional(S.String),
-          selfServiceAIGuardrailId: S.optional(S.String),
-          associationConfigurations: S.optional(__S(10, __c1, 2)),
-        }),
-      ).annotate({
-        identifier: "SelfServiceAIAgentConfiguration",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          emailResponseAIPromptId: S.optional(S.String),
-          emailQueryReformulationAIPromptId: S.optional(S.String),
-          locale: S.optional(S.String),
-          associationConfigurations: S.optional(__S(10, __c1, 2)),
-        }),
-      ).annotate({
-        identifier: "EmailResponseAIAgentConfiguration",
-      });
-  }
-}
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({ emailOverviewAIPromptId: S.optional(S.String), locale: S.optional(S.String) }),
-      ).annotate({
-        identifier: "EmailOverviewAIAgentConfiguration",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          emailGenerativeAnswerAIPromptId: S.optional(S.String),
-          emailQueryReformulationAIPromptId: S.optional(S.String),
-          locale: S.optional(S.String),
-          associationConfigurations: S.optional(__S(10, __c1, 2)),
-        }),
-      ).annotate({
-        identifier: "EmailGenerativeAnswerAIAgentConfiguration",
-      });
-    case 2:
-      return S.Array(S.String);
-    case 3:
-      return S.suspend(() =>
-        S.Struct({ instruction: S.optional(S.String), examples: S.optional(__S(18, __c2, 2)) }),
-      ).annotate({ identifier: "ToolInstruction" });
-    case 4:
-      return S.suspend(() => S.Struct({ type: S.String, value: SensitiveString })).annotate({
-        identifier: "ToolOverrideConstantInputValue",
-      });
-    case 5:
-      return S.Union([/*@__PURE__*/ S.Struct({ constant: __S(20, __c2, 4) })]);
-    case 6:
-      return S.suspend(() => S.Struct({ jsonPath: S.String, value: __S(21, __c2, 5) })).annotate({
-        identifier: "ToolOverrideInputValue",
-      });
-    case 7:
-      return S.Array(__S(22, __c2, 6));
-  }
-}
-function __c3(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          outputVariableNameOverride: S.optional(S.String),
-          sessionDataNamespace: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ToolOutputConfiguration" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({ jsonPath: S.String, outputConfiguration: S.optional(__S(24, __c3, 0)) }),
-      ).annotate({ identifier: "ToolOutputFilter" });
-    case 2:
-      return S.Array(__S(25, __c3, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({ title: S.optional(S.String), destructiveHint: S.optional(S.Boolean) }),
-      ).annotate({ identifier: "Annotation" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({ isUserConfirmationRequired: S.optional(S.Boolean) }),
-      ).annotate({
-        identifier: "UserInteractionConfiguration",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          toolName: S.String,
-          toolType: S.String,
-          title: S.optional(SensitiveString),
-          toolId: S.optional(S.String),
-          description: S.optional(SensitiveString),
-          instruction: S.optional(__S(19, __c2, 3)),
-          overrideInputValues: S.optional(__S(23, __c2, 7)),
-          outputFilters: S.optional(__S(26, __c3, 2)),
-          inputSchema: S.optional(S.Any),
-          outputSchema: S.optional(S.Any),
-          annotations: S.optional(__S(27, __c3, 3)),
-          userInteractionConfiguration: S.optional(__S(28, __c3, 4)),
-        }),
-      ).annotate({ identifier: "ToolConfiguration" });
-    case 6:
-      return S.Array(__S(29, __c3, 5));
-    case 7:
-      return S.Union([
-        /*@__PURE__*/ S.Struct({ aiAgentId: S.String }),
-        /*@__PURE__*/ S.Struct({ applicationId: S.String }),
-      ]);
-  }
-}
-function __c4(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({ agentTarget: __S(31, __c3, 7), instruction: S.optional(__S(19, __c2, 3)) }),
-      ).annotate({
-        identifier: "DelegateAgentConfiguration",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          agentTarget: __S(31, __c3, 7),
-          instruction: S.optional(__S(19, __c2, 3)),
-          audioStreamingEnabled: S.optional(S.Boolean),
-          immediateHandoff: S.optional(S.Boolean),
-        }),
-      ).annotate({
-        identifier: "HandoffAgentConfiguration",
-      });
-    case 2:
-      return S.Union([
-        /*@__PURE__*/ S.Struct({ delegateAgentConfiguration: __S(32, __c4, 0) }),
-        /*@__PURE__*/ S.Struct({ handoffAgentConfiguration: __S(33, __c4, 1) }),
-      ]);
-    case 3:
-      return S.Array(__S(34, __c4, 2));
-    case 4:
-      return S.Array(S.Any);
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          orchestrationAIPromptId: S.optional(S.String),
-          orchestrationAIGuardrailId: S.optional(S.String),
-          toolConfigurations: S.optional(__S(30, __c3, 6)),
-          multiAgentConfigurations: S.optional(__S(35, __c4, 3)),
-          connectInstanceArn: S.optional(S.String),
-          locale: S.optional(S.String),
-          inputSchemas: S.optional(__S(36, __c4, 4)),
-          outputSchemas: S.optional(__S(36, __c4, 4)),
-        }),
-      ).annotate({
-        identifier: "OrchestrationAIAgentConfiguration",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          noteTakingAIPromptId: S.optional(S.String),
-          noteTakingAIGuardrailId: S.optional(S.String),
-          locale: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "NoteTakingAIAgentConfiguration",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          caseSummarizationAIPromptId: S.optional(S.String),
-          caseSummarizationAIGuardrailId: S.optional(S.String),
-          locale: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "CaseSummarizationAIAgentConfiguration",
-      });
-  }
-}
-function __c5(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Union([
-        /*@__PURE__*/ S.Struct({
-          manualSearchAIAgentConfiguration: __S(11, __c1, 3),
-        }),
-        /*@__PURE__*/ S.Struct({
-          answerRecommendationAIAgentConfiguration: __S(13, __c1, 5),
-        }),
-        /*@__PURE__*/ S.Struct({
-          selfServiceAIAgentConfiguration: __S(14, __c1, 6),
-        }),
-        /*@__PURE__*/ S.Struct({
-          emailResponseAIAgentConfiguration: __S(15, __c1, 7),
-        }),
-        /*@__PURE__*/ S.Struct({
-          emailOverviewAIAgentConfiguration: __S(16, __c2, 0),
-        }),
-        /*@__PURE__*/ S.Struct({
-          emailGenerativeAnswerAIAgentConfiguration: __S(17, __c2, 1),
-        }),
-        /*@__PURE__*/ S.Struct({
-          orchestrationAIAgentConfiguration: __S(37, __c4, 5),
-        }),
-        /*@__PURE__*/ S.Struct({ noteTakingAIAgentConfiguration: __S(38, __c4, 6) }),
-        /*@__PURE__*/ S.Struct({
-          caseSummarizationAIAgentConfiguration: __S(39, __c4, 7),
-        }),
-      ]);
-    case 1:
-      return S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
-    case 2:
       return S.suspend(() =>
         S.Struct({
           clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
           assistantId: S.String.pipe(T.HttpLabel("assistantId")),
           name: S.String,
           type: S.String,
-          configuration: __S(40, __c5, 0),
+          configuration: __S(447, __c13, 31),
           visibilityStatus: S.String,
-          tags: S.optional(__S(41, __c5, 1)),
+          tags: S.optional(__S(288, __c9, 0)),
           description: S.optional(S.String),
         }).pipe(
           T.all(
@@ -6388,7 +6283,291 @@ function __c5(j: number): any {
           ),
         ),
       ).annotate({ identifier: "CreateAIAgentRequest" });
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(SensitiveString);
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({ key: S.String, value: S.optional(S.String) })).annotate({
+        identifier: "TagCondition",
+      });
+    case 1:
+      return S.Array(__S(384, __c12, 0));
+    case 2:
+      return S.Union([
+        /*@__PURE__*/ S.Struct({ andConditions: __S(385, __c12, 1) }),
+        /*@__PURE__*/ S.Struct({ tagCondition: __S(384, __c12, 0) }),
+      ]);
     case 3:
+      return S.Array(__S(386, __c12, 2));
+    case 4:
+      return S.Union([
+        /*@__PURE__*/ S.Struct({ tagCondition: __S(384, __c12, 0) }),
+        /*@__PURE__*/ S.Struct({ andConditions: __S(385, __c12, 1) }),
+        /*@__PURE__*/ S.Struct({ orConditions: __S(387, __c12, 3) }),
+      ]);
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          contentTagFilter: S.optional(__S(388, __c12, 4)),
+          maxResults: S.optional(S.Number),
+          overrideKnowledgeBaseSearchType: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "KnowledgeBaseAssociationConfigurationData",
+      });
+    case 1:
+      return S.Union([
+        /*@__PURE__*/ S.Struct({
+          knowledgeBaseAssociationConfigurationData: __S(416, __c13, 0),
+        }),
+      ]);
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          associationId: S.optional(S.String),
+          associationType: S.optional(S.String),
+          associationConfigurationData: S.optional(__S(417, __c13, 1)),
+        }),
+      ).annotate({ identifier: "AssociationConfiguration" });
+    case 3:
+      return S.Array(__S(418, __c13, 2));
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          answerGenerationAIPromptId: S.optional(S.String),
+          answerGenerationAIGuardrailId: S.optional(S.String),
+          associationConfigurations: S.optional(__S(419, __c13, 3)),
+          locale: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "ManualSearchAIAgentConfiguration",
+      });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          intentLabelingGenerationAIPromptId: S.optional(S.String),
+          queryReformulationAIPromptId: S.optional(S.String),
+          answerGenerationAIPromptId: S.optional(S.String),
+          answerGenerationAIGuardrailId: S.optional(S.String),
+          associationConfigurations: S.optional(__S(419, __c13, 3)),
+          locale: S.optional(S.String),
+          suggestedMessages: S.optional(__S(320, __c10, 0)),
+        }),
+      ).annotate({
+        identifier: "AnswerRecommendationAIAgentConfiguration",
+      });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          selfServicePreProcessingAIPromptId: S.optional(S.String),
+          selfServiceAnswerGenerationAIPromptId: S.optional(S.String),
+          selfServiceAIGuardrailId: S.optional(S.String),
+          associationConfigurations: S.optional(__S(419, __c13, 3)),
+        }),
+      ).annotate({
+        identifier: "SelfServiceAIAgentConfiguration",
+      });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          emailResponseAIPromptId: S.optional(S.String),
+          emailQueryReformulationAIPromptId: S.optional(S.String),
+          locale: S.optional(S.String),
+          associationConfigurations: S.optional(__S(419, __c13, 3)),
+        }),
+      ).annotate({
+        identifier: "EmailResponseAIAgentConfiguration",
+      });
+    case 8:
+      return S.suspend(() =>
+        S.Struct({ emailOverviewAIPromptId: S.optional(S.String), locale: S.optional(S.String) }),
+      ).annotate({
+        identifier: "EmailOverviewAIAgentConfiguration",
+      });
+    case 9:
+      return S.suspend(() =>
+        S.Struct({
+          emailGenerativeAnswerAIPromptId: S.optional(S.String),
+          emailQueryReformulationAIPromptId: S.optional(S.String),
+          locale: S.optional(S.String),
+          associationConfigurations: S.optional(__S(419, __c13, 3)),
+        }),
+      ).annotate({
+        identifier: "EmailGenerativeAnswerAIAgentConfiguration",
+      });
+    case 10:
+      return S.suspend(() =>
+        S.Struct({ instruction: S.optional(S.String), examples: S.optional(__S(352, __c11, 0)) }),
+      ).annotate({ identifier: "ToolInstruction" });
+    case 11:
+      return S.suspend(() => S.Struct({ type: S.String, value: SensitiveString })).annotate({
+        identifier: "ToolOverrideConstantInputValue",
+      });
+    case 12:
+      return S.Union([/*@__PURE__*/ S.Struct({ constant: __S(427, __c13, 11) })]);
+    case 13:
+      return S.suspend(() => S.Struct({ jsonPath: S.String, value: __S(428, __c13, 12) })).annotate(
+        { identifier: "ToolOverrideInputValue" },
+      );
+    case 14:
+      return S.Array(__S(429, __c13, 13));
+    case 15:
+      return S.suspend(() =>
+        S.Struct({
+          outputVariableNameOverride: S.optional(S.String),
+          sessionDataNamespace: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ToolOutputConfiguration" });
+    case 16:
+      return S.suspend(() =>
+        S.Struct({ jsonPath: S.String, outputConfiguration: S.optional(__S(431, __c13, 15)) }),
+      ).annotate({ identifier: "ToolOutputFilter" });
+    case 17:
+      return S.Array(__S(432, __c13, 16));
+    case 18:
+      return S.suspend(() =>
+        S.Struct({ title: S.optional(S.String), destructiveHint: S.optional(S.Boolean) }),
+      ).annotate({ identifier: "Annotation" });
+    case 19:
+      return S.suspend(() =>
+        S.Struct({ isUserConfirmationRequired: S.optional(S.Boolean) }),
+      ).annotate({
+        identifier: "UserInteractionConfiguration",
+      });
+    case 20:
+      return S.suspend(() =>
+        S.Struct({
+          toolName: S.String,
+          toolType: S.String,
+          title: S.optional(SensitiveString),
+          toolId: S.optional(S.String),
+          description: S.optional(SensitiveString),
+          instruction: S.optional(__S(426, __c13, 10)),
+          overrideInputValues: S.optional(__S(430, __c13, 14)),
+          outputFilters: S.optional(__S(433, __c13, 17)),
+          inputSchema: S.optional(S.Any),
+          outputSchema: S.optional(S.Any),
+          annotations: S.optional(__S(434, __c13, 18)),
+          userInteractionConfiguration: S.optional(__S(435, __c13, 19)),
+        }),
+      ).annotate({ identifier: "ToolConfiguration" });
+    case 21:
+      return S.Array(__S(436, __c13, 20));
+    case 22:
+      return S.Union([
+        /*@__PURE__*/ S.Struct({ aiAgentId: S.String }),
+        /*@__PURE__*/ S.Struct({ applicationId: S.String }),
+      ]);
+    case 23:
+      return S.suspend(() =>
+        S.Struct({
+          agentTarget: __S(438, __c13, 22),
+          instruction: S.optional(__S(426, __c13, 10)),
+        }),
+      ).annotate({
+        identifier: "DelegateAgentConfiguration",
+      });
+    case 24:
+      return S.suspend(() =>
+        S.Struct({
+          agentTarget: __S(438, __c13, 22),
+          instruction: S.optional(__S(426, __c13, 10)),
+          audioStreamingEnabled: S.optional(S.Boolean),
+          immediateHandoff: S.optional(S.Boolean),
+        }),
+      ).annotate({
+        identifier: "HandoffAgentConfiguration",
+      });
+    case 25:
+      return S.Union([
+        /*@__PURE__*/ S.Struct({ delegateAgentConfiguration: __S(439, __c13, 23) }),
+        /*@__PURE__*/ S.Struct({ handoffAgentConfiguration: __S(440, __c13, 24) }),
+      ]);
+    case 26:
+      return S.Array(__S(441, __c13, 25));
+    case 27:
+      return S.Array(S.Any);
+    case 28:
+      return S.suspend(() =>
+        S.Struct({
+          orchestrationAIPromptId: S.optional(S.String),
+          orchestrationAIGuardrailId: S.optional(S.String),
+          toolConfigurations: S.optional(__S(437, __c13, 21)),
+          multiAgentConfigurations: S.optional(__S(442, __c13, 26)),
+          connectInstanceArn: S.optional(S.String),
+          locale: S.optional(S.String),
+          inputSchemas: S.optional(__S(443, __c13, 27)),
+          outputSchemas: S.optional(__S(443, __c13, 27)),
+        }),
+      ).annotate({
+        identifier: "OrchestrationAIAgentConfiguration",
+      });
+    case 29:
+      return S.suspend(() =>
+        S.Struct({
+          noteTakingAIPromptId: S.optional(S.String),
+          noteTakingAIGuardrailId: S.optional(S.String),
+          locale: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "NoteTakingAIAgentConfiguration",
+      });
+    case 30:
+      return S.suspend(() =>
+        S.Struct({
+          caseSummarizationAIPromptId: S.optional(S.String),
+          caseSummarizationAIGuardrailId: S.optional(S.String),
+          locale: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "CaseSummarizationAIAgentConfiguration",
+      });
+    case 31:
+      return S.Union([
+        /*@__PURE__*/ S.Struct({ manualSearchAIAgentConfiguration: __S(420, __c13, 4) }),
+        /*@__PURE__*/ S.Struct({
+          answerRecommendationAIAgentConfiguration: __S(421, __c13, 5),
+        }),
+        /*@__PURE__*/ S.Struct({ selfServiceAIAgentConfiguration: __S(422, __c13, 6) }),
+        /*@__PURE__*/ S.Struct({ emailResponseAIAgentConfiguration: __S(423, __c13, 7) }),
+        /*@__PURE__*/ S.Struct({ emailOverviewAIAgentConfiguration: __S(424, __c13, 8) }),
+        /*@__PURE__*/ S.Struct({
+          emailGenerativeAnswerAIAgentConfiguration: __S(425, __c13, 9),
+        }),
+        /*@__PURE__*/ S.Struct({ orchestrationAIAgentConfiguration: __S(444, __c13, 28) }),
+        /*@__PURE__*/ S.Struct({ noteTakingAIAgentConfiguration: __S(445, __c13, 29) }),
+        /*@__PURE__*/ S.Struct({
+          caseSummarizationAIAgentConfiguration: __S(446, __c13, 30),
+        }),
+      ]);
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           assistantId: S.String,
@@ -6397,20 +6576,28 @@ function __c5(j: number): any {
           aiAgentArn: S.String,
           name: S.String,
           type: S.String,
-          configuration: __S(40, __c5, 0),
+          configuration: __S(447, __c13, 31),
           modifiedTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           description: S.optional(S.String),
           visibilityStatus: S.String,
-          tags: S.optional(__S(41, __c5, 1)),
+          tags: S.optional(__S(288, __c9, 0)),
           origin: S.optional(S.String),
           status: S.optional(S.String),
         }),
       ).annotate({ identifier: "AIAgentData" });
-    case 4:
-      return S.suspend(() => S.Struct({ aiAgent: S.optional(__S(43, __c5, 3)) })).annotate({
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({ aiAgent: S.optional(__S(448, __c14, 0)) })).annotate({
         identifier: "CreateAIAgentResponse",
       });
-    case 5:
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           assistantId: S.String.pipe(T.HttpLabel("assistantId")),
@@ -6433,113 +6620,17 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "CreateAIAgentVersionRequest",
       });
-    case 6:
+    case 1:
       return S.suspend(() =>
-        S.Struct({ aiAgent: S.optional(__S(43, __c5, 3)), versionNumber: S.optional(S.Number) }),
+        S.Struct({ aiAgent: S.optional(__S(448, __c14, 0)), versionNumber: S.optional(S.Number) }),
       ).annotate({
         identifier: "CreateAIAgentVersionResponse",
       });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          name: SensitiveString,
-          definition: SensitiveString,
-          examples: S.optional(__S(12, __c1, 4)),
-          type: SensitiveString,
-        }),
-      ).annotate({ identifier: "GuardrailTopicConfig" });
   }
 }
-function __c6(j: number): any {
+function __c17(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(47, __c5, 7));
-    case 1:
-      return S.suspend(() => S.Struct({ topicsConfig: __S(48, __c6, 0) })).annotate({
-        identifier: "AIGuardrailTopicPolicyConfig",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          type: SensitiveString,
-          inputStrength: SensitiveString,
-          outputStrength: SensitiveString,
-        }),
-      ).annotate({
-        identifier: "GuardrailContentFilterConfig",
-      });
-    case 3:
-      return S.Array(__S(50, __c6, 2));
-    case 4:
-      return S.suspend(() => S.Struct({ filtersConfig: __S(51, __c6, 3) })).annotate({
-        identifier: "AIGuardrailContentPolicyConfig",
-      });
-    case 5:
-      return S.suspend(() => S.Struct({ text: SensitiveString })).annotate({
-        identifier: "GuardrailWordConfig",
-      });
-    case 6:
-      return S.Array(__S(53, __c6, 5));
-    case 7:
-      return S.suspend(() => S.Struct({ type: SensitiveString })).annotate({
-        identifier: "GuardrailManagedWordsConfig",
-      });
-  }
-}
-function __c7(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(55, __c6, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          wordsConfig: S.optional(__S(54, __c6, 6)),
-          managedWordListsConfig: S.optional(__S(56, __c7, 0)),
-        }),
-      ).annotate({
-        identifier: "AIGuardrailWordPolicyConfig",
-      });
-    case 2:
-      return S.suspend(() => S.Struct({ type: SensitiveString, action: SensitiveString })).annotate(
-        { identifier: "GuardrailPiiEntityConfig" },
-      );
-    case 3:
-      return S.Array(__S(58, __c7, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          name: SensitiveString,
-          description: S.optional(SensitiveString),
-          pattern: SensitiveString,
-          action: SensitiveString,
-        }),
-      ).annotate({ identifier: "GuardrailRegexConfig" });
-    case 5:
-      return S.Array(__S(60, __c7, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          piiEntitiesConfig: S.optional(__S(59, __c7, 3)),
-          regexesConfig: S.optional(__S(61, __c7, 5)),
-        }),
-      ).annotate({
-        identifier: "AIGuardrailSensitiveInformationPolicyConfig",
-      });
-    case 7:
-      return S.suspend(() => S.Struct({ type: SensitiveString, threshold: S.Number })).annotate({
-        identifier: "GuardrailContextualGroundingFilterConfig",
-      });
-  }
-}
-function __c8(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(63, __c7, 7));
-    case 1:
-      return S.suspend(() => S.Struct({ filtersConfig: __S(64, __c8, 0) })).annotate({
-        identifier: "AIGuardrailContextualGroundingPolicyConfig",
-      });
-    case 2:
       return S.suspend(() =>
         S.Struct({
           clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
@@ -6549,12 +6640,12 @@ function __c8(j: number): any {
           blockedOutputsMessaging: SensitiveString,
           visibilityStatus: S.String,
           description: S.optional(SensitiveString),
-          topicPolicyConfig: S.optional(__S(49, __c6, 1)),
-          contentPolicyConfig: S.optional(__S(52, __c6, 4)),
-          wordPolicyConfig: S.optional(__S(57, __c7, 1)),
-          sensitiveInformationPolicyConfig: S.optional(__S(62, __c7, 6)),
-          contextualGroundingPolicyConfig: S.optional(__S(65, __c8, 1)),
-          tags: S.optional(__S(41, __c5, 1)),
+          topicPolicyConfig: S.optional(__S(610, __c19, 2)),
+          contentPolicyConfig: S.optional(__S(613, __c19, 5)),
+          wordPolicyConfig: S.optional(__S(617, __c19, 9)),
+          sensitiveInformationPolicyConfig: S.optional(__S(622, __c19, 14)),
+          contextualGroundingPolicyConfig: S.optional(__S(625, __c19, 17)),
+          tags: S.optional(__S(288, __c9, 0)),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/assistants/{assistantId}/aiguardrails" }),
@@ -6566,7 +6657,103 @@ function __c8(j: number): any {
           ),
         ),
       ).annotate({ identifier: "CreateAIGuardrailRequest" });
+  }
+}
+function __c18(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({ text: SensitiveString })).annotate({
+        identifier: "GuardrailWordConfig",
+      });
+  }
+}
+function __c19(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: SensitiveString,
+          definition: SensitiveString,
+          examples: S.optional(__S(320, __c10, 0)),
+          type: SensitiveString,
+        }),
+      ).annotate({ identifier: "GuardrailTopicConfig" });
+    case 1:
+      return S.Array(__S(608, __c19, 0));
+    case 2:
+      return S.suspend(() => S.Struct({ topicsConfig: __S(609, __c19, 1) })).annotate({
+        identifier: "AIGuardrailTopicPolicyConfig",
+      });
     case 3:
+      return S.suspend(() =>
+        S.Struct({
+          type: SensitiveString,
+          inputStrength: SensitiveString,
+          outputStrength: SensitiveString,
+        }),
+      ).annotate({
+        identifier: "GuardrailContentFilterConfig",
+      });
+    case 4:
+      return S.Array(__S(611, __c19, 3));
+    case 5:
+      return S.suspend(() => S.Struct({ filtersConfig: __S(612, __c19, 4) })).annotate({
+        identifier: "AIGuardrailContentPolicyConfig",
+      });
+    case 6:
+      return S.Array(__S(576, __c18, 0));
+    case 7:
+      return S.suspend(() => S.Struct({ type: SensitiveString })).annotate({
+        identifier: "GuardrailManagedWordsConfig",
+      });
+    case 8:
+      return S.Array(__S(615, __c19, 7));
+    case 9:
+      return S.suspend(() =>
+        S.Struct({
+          wordsConfig: S.optional(__S(614, __c19, 6)),
+          managedWordListsConfig: S.optional(__S(616, __c19, 8)),
+        }),
+      ).annotate({
+        identifier: "AIGuardrailWordPolicyConfig",
+      });
+    case 10:
+      return S.suspend(() => S.Struct({ type: SensitiveString, action: SensitiveString })).annotate(
+        { identifier: "GuardrailPiiEntityConfig" },
+      );
+    case 11:
+      return S.Array(__S(618, __c19, 10));
+    case 12:
+      return S.suspend(() =>
+        S.Struct({
+          name: SensitiveString,
+          description: S.optional(SensitiveString),
+          pattern: SensitiveString,
+          action: SensitiveString,
+        }),
+      ).annotate({ identifier: "GuardrailRegexConfig" });
+    case 13:
+      return S.Array(__S(620, __c19, 12));
+    case 14:
+      return S.suspend(() =>
+        S.Struct({
+          piiEntitiesConfig: S.optional(__S(619, __c19, 11)),
+          regexesConfig: S.optional(__S(621, __c19, 13)),
+        }),
+      ).annotate({
+        identifier: "AIGuardrailSensitiveInformationPolicyConfig",
+      });
+    case 15:
+      return S.suspend(() => S.Struct({ type: SensitiveString, threshold: S.Number })).annotate({
+        identifier: "GuardrailContextualGroundingFilterConfig",
+      });
+    case 16:
+      return S.Array(__S(623, __c19, 15));
+    case 17:
+      return S.suspend(() => S.Struct({ filtersConfig: __S(624, __c19, 16) })).annotate({
+        identifier: "AIGuardrailContextualGroundingPolicyConfig",
+      });
+    case 18:
       return S.suspend(() =>
         S.Struct({
           assistantId: S.String,
@@ -6578,21 +6765,29 @@ function __c8(j: number): any {
           blockedInputMessaging: SensitiveString,
           blockedOutputsMessaging: SensitiveString,
           description: S.optional(SensitiveString),
-          topicPolicyConfig: S.optional(__S(49, __c6, 1)),
-          contentPolicyConfig: S.optional(__S(52, __c6, 4)),
-          wordPolicyConfig: S.optional(__S(57, __c7, 1)),
-          sensitiveInformationPolicyConfig: S.optional(__S(62, __c7, 6)),
-          contextualGroundingPolicyConfig: S.optional(__S(65, __c8, 1)),
-          tags: S.optional(__S(41, __c5, 1)),
+          topicPolicyConfig: S.optional(__S(610, __c19, 2)),
+          contentPolicyConfig: S.optional(__S(613, __c19, 5)),
+          wordPolicyConfig: S.optional(__S(617, __c19, 9)),
+          sensitiveInformationPolicyConfig: S.optional(__S(622, __c19, 14)),
+          contextualGroundingPolicyConfig: S.optional(__S(625, __c19, 17)),
+          tags: S.optional(__S(288, __c9, 0)),
           status: S.optional(S.String),
           modifiedTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
         }),
       ).annotate({ identifier: "AIGuardrailData" });
-    case 4:
-      return S.suspend(() => S.Struct({ aiGuardrail: S.optional(__S(67, __c8, 3)) })).annotate({
+  }
+}
+function __c20(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({ aiGuardrail: S.optional(__S(626, __c19, 18)) })).annotate({
         identifier: "CreateAIGuardrailResponse",
       });
-    case 5:
+  }
+}
+function __c21(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           assistantId: S.String.pipe(T.HttpLabel("assistantId")),
@@ -6615,55 +6810,34 @@ function __c8(j: number): any {
       ).annotate({
         identifier: "CreateAIGuardrailVersionRequest",
       });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          aiGuardrail: S.optional(__S(67, __c8, 3)),
+          aiGuardrail: S.optional(__S(626, __c19, 18)),
           versionNumber: S.optional(S.Number),
         }),
       ).annotate({
         identifier: "CreateAIGuardrailVersionResponse",
       });
-    case 7:
-      return S.suspend(() => S.Struct({ text: SensitiveString })).annotate({
-        identifier: "TextFullAIPromptEditTemplateConfiguration",
-      });
   }
 }
-function __c9(j: number): any {
+function __c22(j: number): any {
   switch (j) {
     case 0:
-      return S.Union([
-        /*@__PURE__*/ S.Struct({
-          textFullAIPromptEditTemplateConfiguration: __S(71, __c8, 7),
-        }),
-      ]);
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          temperature: S.optional(S.Number),
-          topP: S.optional(S.Number),
-          topK: S.optional(S.Number),
-          maxTokensToSample: S.optional(S.Number),
-        }),
-      ).annotate({
-        identifier: "AIPromptInferenceConfiguration",
-      });
-    case 2:
       return S.suspend(() =>
         S.Struct({
           clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
           assistantId: S.String.pipe(T.HttpLabel("assistantId")),
           name: S.String,
           type: S.String,
-          templateConfiguration: __S(72, __c9, 0),
+          templateConfiguration: __S(737, __c23, 1),
           visibilityStatus: S.String,
           templateType: S.String,
           modelId: S.String,
           apiFormat: S.String,
-          tags: S.optional(__S(41, __c5, 1)),
+          tags: S.optional(__S(288, __c9, 0)),
           description: S.optional(S.String),
-          inferenceConfiguration: S.optional(__S(73, __c9, 1)),
+          inferenceConfiguration: S.optional(__S(738, __c23, 2)),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/assistants/{assistantId}/aiprompts" }),
@@ -6675,6 +6849,31 @@ function __c9(j: number): any {
           ),
         ),
       ).annotate({ identifier: "CreateAIPromptRequest" });
+  }
+}
+function __c23(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({ text: SensitiveString })).annotate({
+        identifier: "TextFullAIPromptEditTemplateConfiguration",
+      });
+    case 1:
+      return S.Union([
+        /*@__PURE__*/ S.Struct({
+          textFullAIPromptEditTemplateConfiguration: __S(736, __c23, 0),
+        }),
+      ]);
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          temperature: S.optional(S.Number),
+          topP: S.optional(S.Number),
+          topK: S.optional(S.Number),
+          maxTokensToSample: S.optional(S.Number),
+        }),
+      ).annotate({
+        identifier: "AIPromptInferenceConfiguration",
+      });
     case 3:
       return S.suspend(() =>
         S.Struct({
@@ -6687,21 +6886,29 @@ function __c9(j: number): any {
           templateType: S.String,
           modelId: S.String,
           apiFormat: S.String,
-          templateConfiguration: __S(72, __c9, 0),
-          inferenceConfiguration: S.optional(__S(73, __c9, 1)),
+          templateConfiguration: __S(737, __c23, 1),
+          inferenceConfiguration: S.optional(__S(738, __c23, 2)),
           modifiedTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           description: S.optional(S.String),
           visibilityStatus: S.String,
-          tags: S.optional(__S(41, __c5, 1)),
+          tags: S.optional(__S(288, __c9, 0)),
           origin: S.optional(S.String),
           status: S.optional(S.String),
         }),
       ).annotate({ identifier: "AIPromptData" });
-    case 4:
-      return S.suspend(() => S.Struct({ aiPrompt: S.optional(__S(75, __c9, 3)) })).annotate({
+  }
+}
+function __c24(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({ aiPrompt: S.optional(__S(739, __c23, 3)) })).annotate({
         identifier: "CreateAIPromptResponse",
       });
-    case 5:
+  }
+}
+function __c25(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           assistantId: S.String.pipe(T.HttpLabel("assistantId")),
@@ -6724,19 +6931,15 @@ function __c9(j: number): any {
       ).annotate({
         identifier: "CreateAIPromptVersionRequest",
       });
-    case 6:
+    case 1:
       return S.suspend(() =>
-        S.Struct({ aiPrompt: S.optional(__S(75, __c9, 3)), versionNumber: S.optional(S.Number) }),
+        S.Struct({ aiPrompt: S.optional(__S(739, __c23, 3)), versionNumber: S.optional(S.Number) }),
       ).annotate({
         identifier: "CreateAIPromptVersionResponse",
       });
-    case 7:
-      return S.suspend(() => S.Struct({ kmsKeyId: S.optional(S.String) })).annotate({
-        identifier: "ServerSideEncryptionConfiguration",
-      });
   }
 }
-function __c10(j: number): any {
+function __c26(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -6745,35 +6948,59 @@ function __c10(j: number): any {
           name: S.String,
           type: S.String,
           description: S.optional(S.String),
-          tags: S.optional(__S(41, __c5, 1)),
-          serverSideEncryptionConfiguration: S.optional(__S(79, __c9, 7)),
+          tags: S.optional(__S(288, __c9, 0)),
+          serverSideEncryptionConfiguration: S.optional(__S(864, __c27, 0)),
         }).pipe(
           T.all(T.Http({ method: "POST", uri: "/assistants" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "CreateAssistantRequest" });
-    case 1:
+  }
+}
+function __c27(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({ kmsKeyId: S.optional(S.String) })).annotate({
+        identifier: "ServerSideEncryptionConfiguration",
+      });
+  }
+}
+function __c28(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() => S.Struct({ topicIntegrationArn: S.optional(S.String) })).annotate({
         identifier: "AssistantIntegrationConfiguration",
       });
-    case 2:
-      return S.suspend(() => S.Struct({ type: S.optional(S.String) })).annotate({
-        identifier: "AssistantCapabilityConfiguration",
-      });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({ aiAgentId: S.String, enabled: S.optional(S.Boolean) }),
       ).annotate({ identifier: "AIAgentConfigurationData" });
-    case 4:
-      return S.Record(S.String, /*@__PURE__*/ __S(83, __c10, 3).pipe(S.optional));
-    case 5:
+    case 2:
+      return S.Record(S.String, /*@__PURE__*/ __S(897, __c28, 1).pipe(S.optional));
+    case 3:
       return S.suspend(() =>
         S.Struct({ aiAgentId: S.optional(S.String), orchestratorUseCase: S.String }),
       ).annotate({
         identifier: "OrchestratorConfigurationEntry",
       });
-    case 6:
-      return S.Array(__S(85, __c10, 5));
-    case 7:
+    case 4:
+      return S.Array(__S(899, __c28, 3));
+  }
+}
+function __c29(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({ assistant: S.optional(__S(961, __c30, 1)) })).annotate({
+        identifier: "CreateAssistantResponse",
+      });
+  }
+}
+function __c30(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({ type: S.optional(S.String) })).annotate({
+        identifier: "AssistantCapabilityConfiguration",
+      });
+    case 1:
       return S.suspend(() =>
         S.Struct({
           assistantId: S.String,
@@ -6782,43 +7009,33 @@ function __c10(j: number): any {
           type: S.String,
           status: S.String,
           description: S.optional(S.String),
-          tags: S.optional(__S(41, __c5, 1)),
-          serverSideEncryptionConfiguration: S.optional(__S(79, __c9, 7)),
-          integrationConfiguration: S.optional(__S(81, __c10, 1)),
-          capabilityConfiguration: S.optional(__S(82, __c10, 2)),
-          aiAgentConfiguration: S.optional(__S(84, __c10, 4)),
-          orchestratorConfigurationList: S.optional(__S(86, __c10, 6)),
+          tags: S.optional(__S(288, __c9, 0)),
+          serverSideEncryptionConfiguration: S.optional(__S(864, __c27, 0)),
+          integrationConfiguration: S.optional(__S(896, __c28, 0)),
+          capabilityConfiguration: S.optional(__S(960, __c30, 0)),
+          aiAgentConfiguration: S.optional(__S(898, __c28, 2)),
+          orchestratorConfigurationList: S.optional(__S(900, __c28, 4)),
         }),
       ).annotate({ identifier: "AssistantData" });
   }
 }
-function __c11(j: number): any {
+function __c31(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => S.Struct({ assistant: S.optional(__S(87, __c10, 7)) })).annotate({
-        identifier: "CreateAssistantResponse",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({ bedrockKnowledgeBaseArn: S.String, accessRoleArn: S.String }),
-      ).annotate({
-        identifier: "ExternalBedrockKnowledgeBaseConfig",
-      });
-    case 2:
       return S.Union([
         /*@__PURE__*/ S.Struct({ knowledgeBaseId: S.String }),
         /*@__PURE__*/ S.Struct({
-          externalBedrockKnowledgeBaseConfig: __S(89, __c11, 1),
+          externalBedrockKnowledgeBaseConfig: __S(1056, __c33, 0),
         }),
       ]);
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           assistantId: S.String.pipe(T.HttpLabel("assistantId")),
           associationType: S.String,
-          association: __S(90, __c11, 2),
+          association: __S(992, __c31, 0),
           clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-          tags: S.optional(__S(41, __c5, 1)),
+          tags: S.optional(__S(288, __c9, 0)),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/assistants/{assistantId}/associations" }),
@@ -6832,20 +7049,11 @@ function __c11(j: number): any {
       ).annotate({
         identifier: "CreateAssistantAssociationRequest",
       });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({ knowledgeBaseId: S.optional(S.String), knowledgeBaseArn: S.optional(S.String) }),
-      ).annotate({
-        identifier: "KnowledgeBaseAssociationData",
-      });
-    case 5:
-      return S.Union([
-        /*@__PURE__*/ S.Struct({ knowledgeBaseAssociation: __S(92, __c11, 4) }),
-        /*@__PURE__*/ S.Struct({
-          externalBedrockKnowledgeBaseConfig: __S(89, __c11, 1),
-        }),
-      ]);
-    case 6:
+  }
+}
+function __c32(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           assistantAssociationId: S.String,
@@ -6853,33 +7061,54 @@ function __c11(j: number): any {
           assistantId: S.String,
           assistantArn: S.String,
           associationType: S.String,
-          associationData: __S(93, __c11, 5),
-          tags: S.optional(__S(41, __c5, 1)),
+          associationData: __S(1058, __c33, 2),
+          tags: S.optional(__S(288, __c9, 0)),
         }),
       ).annotate({ identifier: "AssistantAssociationData" });
-    case 7:
+    case 1:
       return S.suspend(() =>
-        S.Struct({ assistantAssociation: S.optional(__S(94, __c11, 6)) }),
+        S.Struct({ assistantAssociation: S.optional(__S(1024, __c32, 0)) }),
       ).annotate({
         identifier: "CreateAssistantAssociationResponse",
       });
   }
 }
-function __c12(j: number): any {
+function __c33(j: number): any {
   switch (j) {
     case 0:
-      return S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
+      return S.suspend(() =>
+        S.Struct({ bedrockKnowledgeBaseArn: S.String, accessRoleArn: S.String }),
+      ).annotate({
+        identifier: "ExternalBedrockKnowledgeBaseConfig",
+      });
     case 1:
+      return S.suspend(() =>
+        S.Struct({ knowledgeBaseId: S.optional(S.String), knowledgeBaseArn: S.optional(S.String) }),
+      ).annotate({
+        identifier: "KnowledgeBaseAssociationData",
+      });
+    case 2:
+      return S.Union([
+        /*@__PURE__*/ S.Struct({ knowledgeBaseAssociation: __S(1057, __c33, 1) }),
+        /*@__PURE__*/ S.Struct({
+          externalBedrockKnowledgeBaseConfig: __S(1056, __c33, 0),
+        }),
+      ]);
+  }
+}
+function __c34(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           knowledgeBaseId: S.String.pipe(T.HttpLabel("knowledgeBaseId")),
           name: S.String,
           title: S.optional(S.String),
           overrideLinkOutUri: S.optional(S.String),
-          metadata: S.optional(__S(96, __c12, 0)),
+          metadata: S.optional(__S(1120, __c35, 0)),
           uploadId: S.String,
           clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-          tags: S.optional(__S(41, __c5, 1)),
+          tags: S.optional(__S(288, __c9, 0)),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/knowledgeBases/{knowledgeBaseId}/contents" }),
@@ -6891,7 +7120,17 @@ function __c12(j: number): any {
           ),
         ),
       ).annotate({ identifier: "CreateContentRequest" });
-    case 2:
+  }
+}
+function __c35(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
+  }
+}
+function __c36(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           contentArn: S.String,
@@ -6903,36 +7142,30 @@ function __c12(j: number): any {
           title: S.String,
           contentType: S.String,
           status: S.String,
-          metadata: __S(96, __c12, 0),
-          tags: S.optional(__S(41, __c5, 1)),
+          metadata: __S(1120, __c35, 0),
+          tags: S.optional(__S(288, __c9, 0)),
           linkOutUri: S.optional(S.String),
           url: SensitiveString,
           urlExpiry: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
         }),
       ).annotate({ identifier: "ContentData" });
-    case 3:
-      return S.suspend(() => S.Struct({ content: S.optional(__S(98, __c12, 2)) })).annotate({
+    case 1:
+      return S.suspend(() => S.Struct({ content: S.optional(__S(1152, __c36, 0)) })).annotate({
         identifier: "CreateContentResponse",
       });
-    case 4:
-      return S.suspend(() => S.Struct({ flowId: S.optional(S.String) })).annotate({
-        identifier: "AmazonConnectGuideAssociationData",
-      });
-    case 5:
-      return S.Union([
-        /*@__PURE__*/ S.Struct({
-          amazonConnectGuideAssociation: __S(100, __c12, 4),
-        }),
-      ]);
-    case 6:
+  }
+}
+function __c37(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
           knowledgeBaseId: S.String.pipe(T.HttpLabel("knowledgeBaseId")),
           contentId: S.String.pipe(T.HttpLabel("contentId")),
           associationType: S.String,
-          association: __S(101, __c12, 5),
-          tags: S.optional(__S(41, __c5, 1)),
+          association: __S(1249, __c39, 1),
+          tags: S.optional(__S(288, __c9, 0)),
         }).pipe(
           T.all(
             T.Http({
@@ -6949,7 +7182,11 @@ function __c12(j: number): any {
       ).annotate({
         identifier: "CreateContentAssociationRequest",
       });
-    case 7:
+  }
+}
+function __c38(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           knowledgeBaseId: S.String,
@@ -6959,87 +7196,150 @@ function __c12(j: number): any {
           contentAssociationId: S.String,
           contentAssociationArn: S.String,
           associationType: S.String,
-          associationData: __S(101, __c12, 5),
-          tags: S.optional(__S(41, __c5, 1)),
+          associationData: __S(1249, __c39, 1),
+          tags: S.optional(__S(288, __c9, 0)),
         }),
       ).annotate({ identifier: "ContentAssociationData" });
-  }
-}
-function __c13(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
-        S.Struct({ contentAssociation: S.optional(__S(103, __c12, 7)) }),
+        S.Struct({ contentAssociation: S.optional(__S(1216, __c38, 0)) }),
       ).annotate({
         identifier: "CreateContentAssociationResponse",
       });
+  }
+}
+function __c39(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({ flowId: S.optional(S.String) })).annotate({
+        identifier: "AmazonConnectGuideAssociationData",
+      });
     case 1:
+      return S.Union([
+        /*@__PURE__*/ S.Struct({ amazonConnectGuideAssociation: __S(1248, __c39, 0) }),
+      ]);
+  }
+}
+function __c40(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
-        S.Struct({ appIntegrationArn: S.String, objectFields: S.optional(__S(18, __c2, 2)) }),
+        S.Struct({
+          clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
+          name: S.String,
+          knowledgeBaseType: S.String,
+          sourceConfiguration: S.optional(__S(1383, __c43, 7)),
+          renderingConfiguration: S.optional(__S(1384, __c43, 8)),
+          vectorIngestionConfiguration: S.optional(__S(1394, __c43, 18)),
+          serverSideEncryptionConfiguration: S.optional(__S(864, __c27, 0)),
+          description: S.optional(S.String),
+          tags: S.optional(__S(288, __c9, 0)),
+        }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/knowledgeBases" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({
+        identifier: "CreateKnowledgeBaseRequest",
+      });
+  }
+}
+function __c41(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({ knowledgeBase: S.optional(__S(1344, __c42, 0)) })).annotate(
+        {
+          identifier: "CreateKnowledgeBaseResponse",
+        },
+      );
+  }
+}
+function __c42(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          knowledgeBaseId: S.String,
+          knowledgeBaseArn: S.String,
+          name: S.String,
+          knowledgeBaseType: S.String,
+          status: S.String,
+          lastContentModificationTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+          vectorIngestionConfiguration: S.optional(__S(1394, __c43, 18)),
+          sourceConfiguration: S.optional(__S(1383, __c43, 7)),
+          renderingConfiguration: S.optional(__S(1384, __c43, 8)),
+          serverSideEncryptionConfiguration: S.optional(__S(864, __c27, 0)),
+          description: S.optional(S.String),
+          tags: S.optional(__S(288, __c9, 0)),
+          ingestionStatus: S.optional(S.String),
+          ingestionFailureReasons: S.optional(__S(352, __c11, 0)),
+        }),
+      ).annotate({ identifier: "KnowledgeBaseData" });
+  }
+}
+function __c43(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ appIntegrationArn: S.String, objectFields: S.optional(__S(352, __c11, 0)) }),
       ).annotate({
         identifier: "AppIntegrationsConfiguration",
       });
-    case 2:
+    case 1:
       return S.suspend(() => S.Struct({ url: S.optional(S.String) })).annotate({
         identifier: "SeedUrl",
       });
+    case 2:
+      return S.Array(__S(1377, __c43, 1));
     case 3:
-      return S.Array(__S(106, __c13, 2));
-    case 4:
-      return S.suspend(() => S.Struct({ seedUrls: S.optional(__S(107, __c13, 3)) })).annotate({
+      return S.suspend(() => S.Struct({ seedUrls: S.optional(__S(1378, __c43, 2)) })).annotate({
         identifier: "UrlConfiguration",
       });
-    case 5:
+    case 4:
       return S.suspend(() => S.Struct({ rateLimit: S.optional(S.Number) })).annotate({
         identifier: "WebCrawlerLimits",
       });
-    case 6:
+    case 5:
       return S.suspend(() =>
         S.Struct({
-          urlConfiguration: __S(108, __c13, 4),
-          crawlerLimits: S.optional(__S(109, __c13, 5)),
-          inclusionFilters: S.optional(__S(12, __c1, 4)),
-          exclusionFilters: S.optional(__S(12, __c1, 4)),
+          urlConfiguration: __S(1379, __c43, 3),
+          crawlerLimits: S.optional(__S(1380, __c43, 4)),
+          inclusionFilters: S.optional(__S(320, __c10, 0)),
+          exclusionFilters: S.optional(__S(320, __c10, 0)),
           scope: S.optional(S.String),
         }),
       ).annotate({ identifier: "WebCrawlerConfiguration" });
+    case 6:
+      return S.Union([/*@__PURE__*/ S.Struct({ webCrawlerConfiguration: __S(1381, __c43, 5) })]);
     case 7:
-      return S.Union([/*@__PURE__*/ S.Struct({ webCrawlerConfiguration: __S(110, __c13, 6) })]);
-  }
-}
-function __c14(j: number): any {
-  switch (j) {
-    case 0:
       return S.Union([
-        /*@__PURE__*/ S.Struct({ appIntegrations: __S(105, __c13, 1) }),
-        /*@__PURE__*/ S.Struct({ managedSourceConfiguration: __S(111, __c13, 7) }),
+        /*@__PURE__*/ S.Struct({ appIntegrations: __S(1376, __c43, 0) }),
+        /*@__PURE__*/ S.Struct({ managedSourceConfiguration: __S(1382, __c43, 6) }),
       ]);
-    case 1:
+    case 8:
       return S.suspend(() => S.Struct({ templateUri: S.optional(S.String) })).annotate({
         identifier: "RenderingConfiguration",
       });
-    case 2:
+    case 9:
       return S.suspend(() =>
         S.Struct({ maxTokens: S.Number, overlapPercentage: S.Number }),
       ).annotate({
         identifier: "FixedSizeChunkingConfiguration",
       });
-    case 3:
+    case 10:
       return S.suspend(() => S.Struct({ maxTokens: S.Number })).annotate({
         identifier: "HierarchicalChunkingLevelConfiguration",
       });
-    case 4:
-      return S.Array(__S(115, __c14, 3));
-    case 5:
+    case 11:
+      return S.Array(__S(1386, __c43, 10));
+    case 12:
       return S.suspend(() =>
         S.Struct({
-          levelConfigurations: __S(116, __c14, 4),
+          levelConfigurations: __S(1387, __c43, 11),
           overlapTokens: S.Number,
         }),
       ).annotate({
         identifier: "HierarchicalChunkingConfiguration",
       });
-    case 6:
+    case 13:
       return S.suspend(() =>
         S.Struct({
           maxTokens: S.Number,
@@ -7049,97 +7349,129 @@ function __c14(j: number): any {
       ).annotate({
         identifier: "SemanticChunkingConfiguration",
       });
-    case 7:
+    case 14:
       return S.suspend(() =>
         S.Struct({
           chunkingStrategy: S.String,
-          fixedSizeChunkingConfiguration: S.optional(__S(114, __c14, 2)),
-          hierarchicalChunkingConfiguration: S.optional(__S(117, __c14, 5)),
-          semanticChunkingConfiguration: S.optional(__S(118, __c14, 6)),
+          fixedSizeChunkingConfiguration: S.optional(__S(1385, __c43, 9)),
+          hierarchicalChunkingConfiguration: S.optional(__S(1388, __c43, 12)),
+          semanticChunkingConfiguration: S.optional(__S(1389, __c43, 13)),
         }),
       ).annotate({ identifier: "ChunkingConfiguration" });
-  }
-}
-function __c15(j: number): any {
-  switch (j) {
-    case 0:
+    case 15:
       return S.suspend(() => S.Struct({ parsingPromptText: S.String })).annotate({
         identifier: "ParsingPrompt",
       });
-    case 1:
+    case 16:
       return S.suspend(() =>
-        S.Struct({ modelArn: S.String, parsingPrompt: S.optional(__S(120, __c15, 0)) }),
+        S.Struct({ modelArn: S.String, parsingPrompt: S.optional(__S(1391, __c43, 15)) }),
       ).annotate({
         identifier: "BedrockFoundationModelConfigurationForParsing",
       });
-    case 2:
+    case 17:
       return S.suspend(() =>
         S.Struct({
           parsingStrategy: S.String,
-          bedrockFoundationModelConfiguration: S.optional(__S(121, __c15, 1)),
+          bedrockFoundationModelConfiguration: S.optional(__S(1392, __c43, 16)),
         }),
       ).annotate({ identifier: "ParsingConfiguration" });
-    case 3:
+    case 18:
       return S.suspend(() =>
         S.Struct({
-          chunkingConfiguration: S.optional(__S(119, __c14, 7)),
-          parsingConfiguration: S.optional(__S(122, __c15, 2)),
+          chunkingConfiguration: S.optional(__S(1390, __c43, 14)),
+          parsingConfiguration: S.optional(__S(1393, __c43, 17)),
         }),
       ).annotate({
         identifier: "VectorIngestionConfiguration",
       });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-          name: S.String,
-          knowledgeBaseType: S.String,
-          sourceConfiguration: S.optional(__S(112, __c14, 0)),
-          renderingConfiguration: S.optional(__S(113, __c14, 1)),
-          vectorIngestionConfiguration: S.optional(__S(123, __c15, 3)),
-          serverSideEncryptionConfiguration: S.optional(__S(79, __c9, 7)),
-          description: S.optional(S.String),
-          tags: S.optional(__S(41, __c5, 1)),
-        }).pipe(
-          T.all(T.Http({ method: "POST", uri: "/knowledgeBases" }), svc, auth, proto, ver, rules),
-        ),
-      ).annotate({
-        identifier: "CreateKnowledgeBaseRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          knowledgeBaseId: S.String,
-          knowledgeBaseArn: S.String,
-          name: S.String,
-          knowledgeBaseType: S.String,
-          status: S.String,
-          lastContentModificationTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          vectorIngestionConfiguration: S.optional(__S(123, __c15, 3)),
-          sourceConfiguration: S.optional(__S(112, __c14, 0)),
-          renderingConfiguration: S.optional(__S(113, __c14, 1)),
-          serverSideEncryptionConfiguration: S.optional(__S(79, __c9, 7)),
-          description: S.optional(S.String),
-          tags: S.optional(__S(41, __c5, 1)),
-          ingestionStatus: S.optional(S.String),
-          ingestionFailureReasons: S.optional(__S(18, __c2, 2)),
-        }),
-      ).annotate({ identifier: "KnowledgeBaseData" });
-    case 6:
-      return S.suspend(() => S.Struct({ knowledgeBase: S.optional(__S(125, __c15, 5)) })).annotate({
-        identifier: "CreateKnowledgeBaseResponse",
-      });
-    case 7:
-      return S.Union([/*@__PURE__*/ S.Struct({ content: SensitiveString })]);
   }
 }
-function __c16(j: number): any {
+function __c44(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          plainText: S.optional(__S(127, __c15, 7)),
-          html: S.optional(__S(127, __c15, 7)),
+          knowledgeBaseId: S.String.pipe(T.HttpLabel("knowledgeBaseId")),
+          name: S.optional(S.String),
+          content: S.optional(__S(1546, __c48, 10)),
+          description: S.optional(S.String),
+          channelSubtype: S.String,
+          language: S.optional(S.String),
+          sourceConfiguration: S.optional(__S(1601, __c50, 1)),
+          defaultAttributes: S.optional(__S(1552, __c48, 16)),
+          groupingConfiguration: S.optional(__S(1504, __c47, 0)),
+          clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
+          tags: S.optional(__S(288, __c9, 0)),
+        }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/knowledgeBases/{knowledgeBaseId}/messageTemplates" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "CreateMessageTemplateRequest",
+      });
+  }
+}
+function __c45(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          messageTemplateArn: S.String,
+          messageTemplateId: S.String,
+          knowledgeBaseArn: S.String,
+          knowledgeBaseId: S.String,
+          name: S.String,
+          channel: S.optional(SensitiveString),
+          channelSubtype: S.String,
+          createdTime: T.DateFromString.pipe(T.TimestampFormat("date-time")),
+          lastModifiedTime: T.DateFromString.pipe(T.TimestampFormat("date-time")),
+          lastModifiedBy: S.String,
+          content: S.optional(__S(1546, __c48, 10)),
+          description: S.optional(S.String),
+          language: S.optional(S.String),
+          sourceConfigurationSummary: S.optional(__S(1569, __c49, 1)),
+          groupingConfiguration: S.optional(__S(1504, __c47, 0)),
+          defaultAttributes: S.optional(__S(1552, __c48, 16)),
+          attributeTypes: S.optional(__S(352, __c11, 0)),
+          messageTemplateContentSha256: S.String,
+          tags: S.optional(__S(288, __c9, 0)),
+        }),
+      ).annotate({ identifier: "MessageTemplateData" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({ messageTemplate: S.optional(__S(1440, __c45, 0)) }),
+      ).annotate({
+        identifier: "CreateMessageTemplateResponse",
+      });
+  }
+}
+function __c46(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Union([/*@__PURE__*/ S.Struct({ content: SensitiveString })]);
+  }
+}
+function __c47(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ criteria: S.optional(SensitiveString), values: S.optional(__S(320, __c10, 0)) }),
+      ).annotate({ identifier: "GroupingConfiguration" });
+  }
+}
+function __c48(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          plainText: S.optional(__S(1472, __c46, 0)),
+          html: S.optional(__S(1472, __c46, 0)),
         }),
       ).annotate({
         identifier: "EmailMessageTemplateContentBody",
@@ -7149,23 +7481,23 @@ function __c16(j: number): any {
         S.Struct({ name: S.optional(S.String), value: S.optional(SensitiveString) }),
       ).annotate({ identifier: "EmailHeader" });
     case 2:
-      return S.Array(__S(129, __c16, 1));
+      return S.Array(__S(1537, __c48, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
           subject: S.optional(SensitiveString),
-          body: S.optional(__S(128, __c16, 0)),
-          headers: S.optional(__S(130, __c16, 2)),
+          body: S.optional(__S(1536, __c48, 0)),
+          headers: S.optional(__S(1538, __c48, 2)),
         }),
       ).annotate({
         identifier: "EmailMessageTemplateContent",
       });
     case 4:
-      return S.suspend(() => S.Struct({ plainText: S.optional(__S(127, __c15, 7)) })).annotate({
+      return S.suspend(() => S.Struct({ plainText: S.optional(__S(1472, __c46, 0)) })).annotate({
         identifier: "SMSMessageTemplateContentBody",
       });
     case 5:
-      return S.suspend(() => S.Struct({ body: S.optional(__S(132, __c16, 4)) })).annotate({
+      return S.suspend(() => S.Struct({ body: S.optional(__S(1540, __c48, 4)) })).annotate({
         identifier: "SMSMessageTemplateContent",
       });
     case 6:
@@ -7176,89 +7508,69 @@ function __c16(j: number): any {
       return S.suspend(() =>
         S.Struct({
           title: S.optional(SensitiveString),
-          body: S.optional(__S(127, __c15, 7)),
+          body: S.optional(__S(1472, __c46, 0)),
           action: S.optional(S.String),
           sound: S.optional(SensitiveString),
           url: S.optional(SensitiveString),
           imageUrl: S.optional(SensitiveString),
           imageIconUrl: S.optional(SensitiveString),
           smallImageIconUrl: S.optional(SensitiveString),
-          rawContent: S.optional(__S(127, __c15, 7)),
+          rawContent: S.optional(__S(1472, __c46, 0)),
         }),
       ).annotate({
         identifier: "PushADMMessageTemplateContent",
       });
-  }
-}
-function __c17(j: number): any {
-  switch (j) {
-    case 0:
+    case 8:
       return S.suspend(() =>
         S.Struct({
           title: S.optional(SensitiveString),
-          body: S.optional(__S(127, __c15, 7)),
+          body: S.optional(__S(1472, __c46, 0)),
           action: S.optional(S.String),
           sound: S.optional(SensitiveString),
           url: S.optional(SensitiveString),
           mediaUrl: S.optional(SensitiveString),
-          rawContent: S.optional(__S(127, __c15, 7)),
+          rawContent: S.optional(__S(1472, __c46, 0)),
         }),
       ).annotate({
         identifier: "PushAPNSMessageTemplateContent",
       });
-    case 1:
+    case 9:
       return S.suspend(() =>
         S.Struct({
-          adm: S.optional(__S(135, __c16, 7)),
-          apns: S.optional(__S(136, __c17, 0)),
-          fcm: S.optional(__S(135, __c16, 7)),
-          baidu: S.optional(__S(135, __c16, 7)),
+          adm: S.optional(__S(1543, __c48, 7)),
+          apns: S.optional(__S(1544, __c48, 8)),
+          fcm: S.optional(__S(1543, __c48, 7)),
+          baidu: S.optional(__S(1543, __c48, 7)),
         }),
       ).annotate({
         identifier: "PushMessageTemplateContent",
       });
-    case 2:
+    case 10:
       return S.Union([
-        /*@__PURE__*/ S.Struct({ email: __S(131, __c16, 3) }),
-        /*@__PURE__*/ S.Struct({ sms: __S(133, __c16, 5) }),
-        /*@__PURE__*/ S.Struct({ whatsApp: __S(134, __c16, 6) }),
-        /*@__PURE__*/ S.Struct({ push: __S(137, __c17, 1) }),
+        /*@__PURE__*/ S.Struct({ email: __S(1539, __c48, 3) }),
+        /*@__PURE__*/ S.Struct({ sms: __S(1541, __c48, 5) }),
+        /*@__PURE__*/ S.Struct({ whatsApp: __S(1542, __c48, 6) }),
+        /*@__PURE__*/ S.Struct({ push: __S(1545, __c48, 9) }),
       ]);
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          businessAccountId: S.String,
-          templateId: S.String,
-          components: S.optional(__S(18, __c2, 2)),
-        }),
-      ).annotate({
-        identifier: "WhatsAppMessageTemplateSourceConfiguration",
-      });
-    case 4:
-      return S.Union([/*@__PURE__*/ S.Struct({ whatsApp: __S(139, __c17, 3) })]);
-    case 5:
+    case 11:
       return S.suspend(() => S.Struct({ address: S.optional(SensitiveString) })).annotate({
         identifier: "SystemEndpointAttributes",
       });
-    case 6:
+    case 12:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(SensitiveString),
-          customerEndpoint: S.optional(__S(141, __c17, 5)),
-          systemEndpoint: S.optional(__S(141, __c17, 5)),
+          customerEndpoint: S.optional(__S(1547, __c48, 11)),
+          systemEndpoint: S.optional(__S(1547, __c48, 11)),
         }),
       ).annotate({ identifier: "SystemAttributes" });
-    case 7:
+    case 13:
       return S.suspend(() =>
         S.Struct({ firstName: S.optional(SensitiveString), lastName: S.optional(SensitiveString) }),
       ).annotate({ identifier: "AgentAttributes" });
-  }
-}
-function __c18(j: number): any {
-  switch (j) {
-    case 0:
+    case 14:
       return S.Record(S.String, /*@__PURE__*/ SensitiveString.pipe(S.optional));
-    case 1:
+    case 15:
       return S.suspend(() =>
         S.Struct({
           profileId: S.optional(SensitiveString),
@@ -7318,104 +7630,63 @@ function __c18(j: number): any {
           billingPostalCode: S.optional(SensitiveString),
           billingProvince: S.optional(SensitiveString),
           billingState: S.optional(SensitiveString),
-          custom: S.optional(__S(144, __c18, 0)),
+          custom: S.optional(__S(1550, __c48, 14)),
         }),
       ).annotate({
         identifier: "CustomerProfileAttributes",
       });
-    case 2:
+    case 16:
       return S.suspend(() =>
         S.Struct({
-          systemAttributes: S.optional(__S(142, __c17, 6)),
-          agentAttributes: S.optional(__S(143, __c17, 7)),
-          customerProfileAttributes: S.optional(__S(145, __c18, 1)),
-          customAttributes: S.optional(__S(144, __c18, 0)),
+          systemAttributes: S.optional(__S(1548, __c48, 12)),
+          agentAttributes: S.optional(__S(1549, __c48, 13)),
+          customerProfileAttributes: S.optional(__S(1551, __c48, 15)),
+          customAttributes: S.optional(__S(1550, __c48, 14)),
         }),
       ).annotate({
         identifier: "MessageTemplateAttributes",
       });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({ criteria: S.optional(SensitiveString), values: S.optional(__S(12, __c1, 4)) }),
-      ).annotate({ identifier: "GroupingConfiguration" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          knowledgeBaseId: S.String.pipe(T.HttpLabel("knowledgeBaseId")),
-          name: S.optional(S.String),
-          content: S.optional(__S(138, __c17, 2)),
-          description: S.optional(S.String),
-          channelSubtype: S.String,
-          language: S.optional(S.String),
-          sourceConfiguration: S.optional(__S(140, __c17, 4)),
-          defaultAttributes: S.optional(__S(146, __c18, 2)),
-          groupingConfiguration: S.optional(__S(147, __c18, 3)),
-          clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-          tags: S.optional(__S(41, __c5, 1)),
-        }).pipe(
-          T.all(
-            T.Http({ method: "POST", uri: "/knowledgeBases/{knowledgeBaseId}/messageTemplates" }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({
-        identifier: "CreateMessageTemplateRequest",
-      });
-    case 5:
+  }
+}
+function __c49(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           businessAccountId: S.String,
           templateId: S.String,
           name: S.optional(S.String),
           language: S.optional(S.String),
-          components: S.optional(__S(18, __c2, 2)),
+          components: S.optional(__S(352, __c11, 0)),
           status: S.optional(S.String),
           statusReason: S.optional(SensitiveString),
         }),
       ).annotate({
         identifier: "WhatsAppMessageTemplateSourceConfigurationSummary",
       });
-    case 6:
-      return S.Union([/*@__PURE__*/ S.Struct({ whatsApp: __S(149, __c18, 5) })]);
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          messageTemplateArn: S.String,
-          messageTemplateId: S.String,
-          knowledgeBaseArn: S.String,
-          knowledgeBaseId: S.String,
-          name: S.String,
-          channel: S.optional(SensitiveString),
-          channelSubtype: S.String,
-          createdTime: T.DateFromString.pipe(T.TimestampFormat("date-time")),
-          lastModifiedTime: T.DateFromString.pipe(T.TimestampFormat("date-time")),
-          lastModifiedBy: S.String,
-          content: S.optional(__S(138, __c17, 2)),
-          description: S.optional(S.String),
-          language: S.optional(S.String),
-          sourceConfigurationSummary: S.optional(__S(150, __c18, 6)),
-          groupingConfiguration: S.optional(__S(147, __c18, 3)),
-          defaultAttributes: S.optional(__S(146, __c18, 2)),
-          attributeTypes: S.optional(__S(18, __c2, 2)),
-          messageTemplateContentSha256: S.String,
-          tags: S.optional(__S(41, __c5, 1)),
-        }),
-      ).annotate({ identifier: "MessageTemplateData" });
+    case 1:
+      return S.Union([/*@__PURE__*/ S.Struct({ whatsApp: __S(1568, __c49, 0) })]);
   }
 }
-function __c19(j: number): any {
+function __c50(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({ messageTemplate: S.optional(__S(151, __c18, 7)) }),
+        S.Struct({
+          businessAccountId: S.String,
+          templateId: S.String,
+          components: S.optional(__S(352, __c11, 0)),
+        }),
       ).annotate({
-        identifier: "CreateMessageTemplateResponse",
+        identifier: "WhatsAppMessageTemplateSourceConfiguration",
       });
     case 1:
+      return S.Union([/*@__PURE__*/ S.Struct({ whatsApp: __S(1600, __c50, 0) })]);
+  }
+}
+function __c51(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           knowledgeBaseId: S.String.pipe(T.HttpLabel("knowledgeBaseId")),
@@ -7440,7 +7711,15 @@ function __c19(j: number): any {
       ).annotate({
         identifier: "CreateMessageTemplateAttachmentRequest",
       });
-    case 2:
+    case 1:
+      return S.suspend(() => S.Struct({ attachment: S.optional(__S(1664, __c52, 0)) })).annotate({
+        identifier: "CreateMessageTemplateAttachmentResponse",
+      });
+  }
+}
+function __c52(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           contentDisposition: S.String,
@@ -7453,11 +7732,11 @@ function __c19(j: number): any {
       ).annotate({
         identifier: "MessageTemplateAttachment",
       });
-    case 3:
-      return S.suspend(() => S.Struct({ attachment: S.optional(__S(154, __c19, 2)) })).annotate({
-        identifier: "CreateMessageTemplateAttachmentResponse",
-      });
-    case 4:
+  }
+}
+function __c53(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           knowledgeBaseId: S.String.pipe(T.HttpLabel("knowledgeBaseId")),
@@ -7479,9 +7758,11 @@ function __c19(j: number): any {
       ).annotate({
         identifier: "CreateMessageTemplateVersionRequest",
       });
-    case 5:
-      return S.Array(__S(154, __c19, 2));
-    case 6:
+  }
+}
+function __c54(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           messageTemplateArn: S.String,
@@ -7494,47 +7775,53 @@ function __c19(j: number): any {
           createdTime: T.DateFromString.pipe(T.TimestampFormat("date-time")),
           lastModifiedTime: T.DateFromString.pipe(T.TimestampFormat("date-time")),
           lastModifiedBy: S.String,
-          content: S.optional(__S(138, __c17, 2)),
+          content: S.optional(__S(1546, __c48, 10)),
           description: S.optional(S.String),
           language: S.optional(S.String),
-          sourceConfigurationSummary: S.optional(__S(150, __c18, 6)),
-          groupingConfiguration: S.optional(__S(147, __c18, 3)),
-          defaultAttributes: S.optional(__S(146, __c18, 2)),
-          attributeTypes: S.optional(__S(18, __c2, 2)),
-          attachments: S.optional(__S(157, __c19, 5)),
+          sourceConfigurationSummary: S.optional(__S(1569, __c49, 1)),
+          groupingConfiguration: S.optional(__S(1504, __c47, 0)),
+          defaultAttributes: S.optional(__S(1552, __c48, 16)),
+          attributeTypes: S.optional(__S(352, __c11, 0)),
+          attachments: S.optional(__S(1760, __c55, 0)),
           isActive: S.optional(S.Boolean),
           versionNumber: S.optional(S.Number),
           messageTemplateContentSha256: S.String,
-          tags: S.optional(__S(41, __c5, 1)),
+          tags: S.optional(__S(288, __c9, 0)),
         }),
       ).annotate({
         identifier: "ExtendedMessageTemplateData",
       });
-    case 7:
+    case 1:
       return S.suspend(() =>
-        S.Struct({ messageTemplate: S.optional(__S(158, __c19, 6)) }),
+        S.Struct({ messageTemplate: S.optional(__S(1728, __c54, 0)) }),
       ).annotate({
         identifier: "CreateMessageTemplateVersionResponse",
       });
   }
 }
-function __c20(j: number): any {
+function __c55(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(1664, __c52, 0));
+  }
+}
+function __c56(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           knowledgeBaseId: S.String.pipe(T.HttpLabel("knowledgeBaseId")),
           name: S.String,
-          content: __S(127, __c15, 7),
+          content: __S(1472, __c46, 0),
           contentType: S.optional(S.String),
-          groupingConfiguration: S.optional(__S(147, __c18, 3)),
+          groupingConfiguration: S.optional(__S(1504, __c47, 0)),
           description: S.optional(S.String),
           shortcutKey: S.optional(S.String),
           isActive: S.optional(S.Boolean),
-          channels: S.optional(__S(12, __c1, 4)),
+          channels: S.optional(__S(320, __c10, 0)),
           language: S.optional(S.String),
           clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-          tags: S.optional(__S(41, __c5, 1)),
+          tags: S.optional(__S(288, __c9, 0)),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/knowledgeBases/{knowledgeBaseId}/quickResponses" }),
@@ -7548,14 +7835,21 @@ function __c20(j: number): any {
       ).annotate({
         identifier: "CreateQuickResponseRequest",
       });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          plainText: S.optional(__S(127, __c15, 7)),
-          markdown: S.optional(__S(127, __c15, 7)),
-        }),
-      ).annotate({ identifier: "QuickResponseContents" });
-    case 2:
+  }
+}
+function __c57(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({ quickResponse: S.optional(__S(1856, __c58, 0)) })).annotate(
+        {
+          identifier: "CreateQuickResponseResponse",
+        },
+      );
+  }
+}
+function __c58(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           quickResponseArn: S.String,
@@ -7567,33 +7861,44 @@ function __c20(j: number): any {
           status: S.String,
           createdTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
           lastModifiedTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-          contents: S.optional(__S(161, __c20, 1)),
+          contents: S.optional(__S(1888, __c59, 0)),
           description: S.optional(S.String),
-          groupingConfiguration: S.optional(__S(147, __c18, 3)),
+          groupingConfiguration: S.optional(__S(1504, __c47, 0)),
           shortcutKey: S.optional(S.String),
           lastModifiedBy: S.optional(S.String),
           isActive: S.optional(S.Boolean),
-          channels: S.optional(__S(12, __c1, 4)),
+          channels: S.optional(__S(320, __c10, 0)),
           language: S.optional(S.String),
-          tags: S.optional(__S(41, __c5, 1)),
+          tags: S.optional(__S(288, __c9, 0)),
         }),
       ).annotate({ identifier: "QuickResponseData" });
-    case 3:
-      return S.suspend(() => S.Struct({ quickResponse: S.optional(__S(162, __c20, 2)) })).annotate({
-        identifier: "CreateQuickResponseResponse",
-      });
-    case 4:
+  }
+}
+function __c59(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          plainText: S.optional(__S(1472, __c46, 0)),
+          markdown: S.optional(__S(1472, __c46, 0)),
+        }),
+      ).annotate({ identifier: "QuickResponseContents" });
+  }
+}
+function __c60(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
           assistantId: S.String.pipe(T.HttpLabel("assistantId")),
           name: S.String,
           description: S.optional(S.String),
-          tags: S.optional(__S(41, __c5, 1)),
-          tagFilter: S.optional(__S(6, __c0, 6)),
-          aiAgentConfiguration: S.optional(__S(84, __c10, 4)),
+          tags: S.optional(__S(288, __c9, 0)),
+          tagFilter: S.optional(__S(388, __c12, 4)),
+          aiAgentConfiguration: S.optional(__S(898, __c28, 2)),
           contactArn: S.optional(S.String),
-          orchestratorConfigurationList: S.optional(__S(86, __c10, 6)),
+          orchestratorConfigurationList: S.optional(__S(900, __c28, 4)),
           removeOrchestratorConfigurationList: S.optional(S.Boolean),
         }).pipe(
           T.all(
@@ -7606,26 +7911,34 @@ function __c20(j: number): any {
           ),
         ),
       ).annotate({ identifier: "CreateSessionRequest" });
-    case 5:
+  }
+}
+function __c61(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           sessionArn: S.String,
           sessionId: S.String,
           name: S.String,
           description: S.optional(S.String),
-          tags: S.optional(__S(41, __c5, 1)),
-          integrationConfiguration: S.optional(__S(81, __c10, 1)),
-          tagFilter: S.optional(__S(6, __c0, 6)),
-          aiAgentConfiguration: S.optional(__S(84, __c10, 4)),
+          tags: S.optional(__S(288, __c9, 0)),
+          integrationConfiguration: S.optional(__S(896, __c28, 0)),
+          tagFilter: S.optional(__S(388, __c12, 4)),
+          aiAgentConfiguration: S.optional(__S(898, __c28, 2)),
           origin: S.optional(S.String),
-          orchestratorConfigurationList: S.optional(__S(86, __c10, 6)),
+          orchestratorConfigurationList: S.optional(__S(900, __c28, 4)),
         }),
       ).annotate({ identifier: "SessionData" });
-    case 6:
-      return S.suspend(() => S.Struct({ session: S.optional(__S(165, __c20, 5)) })).annotate({
+    case 1:
+      return S.suspend(() => S.Struct({ session: S.optional(__S(1952, __c61, 0)) })).annotate({
         identifier: "CreateSessionResponse",
       });
-    case 7:
+  }
+}
+function __c62(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           knowledgeBaseId: S.String.pipe(T.HttpLabel("knowledgeBaseId")),
@@ -7649,7 +7962,7 @@ function __c20(j: number): any {
       });
   }
 }
-function __c21(j: number): any {
+function __c63(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -7667,11 +7980,19 @@ function __c21(j: number): any {
           ),
         ),
       ).annotate({ identifier: "DeleteAIAgentRequest" });
-    case 1:
+  }
+}
+function __c64(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "DeleteAIAgentResponse",
       });
-    case 2:
+  }
+}
+function __c65(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           assistantId: S.String.pipe(T.HttpLabel("assistantId")),
@@ -7693,7 +8014,11 @@ function __c21(j: number): any {
       ).annotate({
         identifier: "DeleteAIAgentVersionRequest",
       });
-    case 3:
+  }
+}
+function __c66(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           assistantId: S.String.pipe(T.HttpLabel("assistantId")),
@@ -7712,7 +8037,11 @@ function __c21(j: number): any {
           ),
         ),
       ).annotate({ identifier: "DeleteAIGuardrailRequest" });
-    case 4:
+  }
+}
+function __c67(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           assistantId: S.String.pipe(T.HttpLabel("assistantId")),
@@ -7734,11 +8063,19 @@ function __c21(j: number): any {
       ).annotate({
         identifier: "DeleteAIGuardrailVersionRequest",
       });
-    case 5:
+  }
+}
+function __c68(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "DeleteAIGuardrailVersionResponse",
       });
-    case 6:
+  }
+}
+function __c69(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           assistantId: S.String.pipe(T.HttpLabel("assistantId")),
@@ -7754,7 +8091,11 @@ function __c21(j: number): any {
           ),
         ),
       ).annotate({ identifier: "DeleteAIPromptRequest" });
-    case 7:
+  }
+}
+function __c70(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           assistantId: S.String.pipe(T.HttpLabel("assistantId")),
@@ -7778,7 +8119,7 @@ function __c21(j: number): any {
       });
   }
 }
-function __c22(j: number): any {
+function __c71(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -7793,7 +8134,11 @@ function __c22(j: number): any {
           ),
         ),
       ).annotate({ identifier: "DeleteAssistantRequest" });
-    case 1:
+  }
+}
+function __c72(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           assistantAssociationId: S.String.pipe(T.HttpLabel("assistantAssociationId")),
@@ -7814,7 +8159,11 @@ function __c22(j: number): any {
       ).annotate({
         identifier: "DeleteAssistantAssociationRequest",
       });
-    case 2:
+  }
+}
+function __c73(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           knowledgeBaseId: S.String.pipe(T.HttpLabel("knowledgeBaseId")),
@@ -7833,7 +8182,11 @@ function __c22(j: number): any {
           ),
         ),
       ).annotate({ identifier: "DeleteContentRequest" });
-    case 3:
+  }
+}
+function __c74(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           knowledgeBaseId: S.String.pipe(T.HttpLabel("knowledgeBaseId")),
@@ -7855,7 +8208,11 @@ function __c22(j: number): any {
       ).annotate({
         identifier: "DeleteContentAssociationRequest",
       });
-    case 4:
+  }
+}
+function __c75(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           knowledgeBaseId: S.String.pipe(T.HttpLabel("knowledgeBaseId")),
@@ -7874,7 +8231,11 @@ function __c22(j: number): any {
           ),
         ),
       ).annotate({ identifier: "DeleteImportJobRequest" });
-    case 5:
+  }
+}
+function __c76(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ knowledgeBaseId: S.String.pipe(T.HttpLabel("knowledgeBaseId")) }).pipe(
           T.all(
@@ -7889,7 +8250,11 @@ function __c22(j: number): any {
       ).annotate({
         identifier: "DeleteKnowledgeBaseRequest",
       });
-    case 6:
+  }
+}
+function __c77(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           knowledgeBaseId: S.String.pipe(T.HttpLabel("knowledgeBaseId")),
@@ -7910,7 +8275,11 @@ function __c22(j: number): any {
       ).annotate({
         identifier: "DeleteMessageTemplateRequest",
       });
-    case 7:
+  }
+}
+function __c78(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           knowledgeBaseId: S.String.pipe(T.HttpLabel("knowledgeBaseId")),
@@ -7934,7 +8303,7 @@ function __c22(j: number): any {
       });
   }
 }
-function __c23(j: number): any {
+function __c79(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -7957,7 +8326,11 @@ function __c23(j: number): any {
       ).annotate({
         identifier: "DeleteQuickResponseRequest",
       });
-    case 1:
+  }
+}
+function __c80(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           assistantId: S.String.pipe(T.HttpLabel("assistantId")),
@@ -7973,11 +8346,15 @@ function __c23(j: number): any {
           ),
         ),
       ).annotate({ identifier: "GetAIAgentRequest" });
-    case 2:
+    case 1:
       return S.suspend(() =>
-        S.Struct({ aiAgent: S.optional(__S(43, __c5, 3)), versionNumber: S.optional(S.Number) }),
+        S.Struct({ aiAgent: S.optional(__S(448, __c14, 0)), versionNumber: S.optional(S.Number) }),
       ).annotate({ identifier: "GetAIAgentResponse" });
-    case 3:
+  }
+}
+function __c81(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           assistantId: S.String.pipe(T.HttpLabel("assistantId")),
@@ -7996,14 +8373,18 @@ function __c23(j: number): any {
           ),
         ),
       ).annotate({ identifier: "GetAIGuardrailRequest" });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          aiGuardrail: S.optional(__S(67, __c8, 3)),
+          aiGuardrail: S.optional(__S(626, __c19, 18)),
           versionNumber: S.optional(S.Number),
         }),
       ).annotate({ identifier: "GetAIGuardrailResponse" });
-    case 5:
+  }
+}
+function __c82(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           assistantId: S.String.pipe(T.HttpLabel("assistantId")),
@@ -8019,11 +8400,15 @@ function __c23(j: number): any {
           ),
         ),
       ).annotate({ identifier: "GetAIPromptRequest" });
-    case 6:
+    case 1:
       return S.suspend(() =>
-        S.Struct({ aiPrompt: S.optional(__S(75, __c9, 3)), versionNumber: S.optional(S.Number) }),
+        S.Struct({ aiPrompt: S.optional(__S(739, __c23, 3)), versionNumber: S.optional(S.Number) }),
       ).annotate({ identifier: "GetAIPromptResponse" });
-    case 7:
+  }
+}
+function __c83(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ assistantId: S.String.pipe(T.HttpLabel("assistantId")) }).pipe(
           T.all(
@@ -8038,7 +8423,7 @@ function __c23(j: number): any {
       ).annotate({ identifier: "GetAssistantRequest" });
   }
 }
-function __c24(j: number): any {
+function __c84(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -8061,7 +8446,11 @@ function __c24(j: number): any {
       ).annotate({
         identifier: "GetAssistantAssociationRequest",
       });
-    case 1:
+  }
+}
+function __c85(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           contentId: S.String.pipe(T.HttpLabel("contentId")),
@@ -8080,7 +8469,11 @@ function __c24(j: number): any {
           ),
         ),
       ).annotate({ identifier: "GetContentRequest" });
-    case 2:
+  }
+}
+function __c86(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           knowledgeBaseId: S.String.pipe(T.HttpLabel("knowledgeBaseId")),
@@ -8102,7 +8495,11 @@ function __c24(j: number): any {
       ).annotate({
         identifier: "GetContentAssociationRequest",
       });
-    case 3:
+  }
+}
+function __c87(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           contentId: S.String.pipe(T.HttpLabel("contentId")),
@@ -8121,7 +8518,17 @@ function __c24(j: number): any {
           ),
         ),
       ).annotate({ identifier: "GetContentSummaryRequest" });
-    case 4:
+    case 1:
+      return S.suspend(() =>
+        S.Struct({ contentSummary: S.optional(__S(2816, __c88, 0)) }),
+      ).annotate({
+        identifier: "GetContentSummaryResponse",
+      });
+  }
+}
+function __c88(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           contentArn: S.String,
@@ -8133,17 +8540,15 @@ function __c24(j: number): any {
           title: S.String,
           contentType: S.String,
           status: S.String,
-          metadata: __S(96, __c12, 0),
-          tags: S.optional(__S(41, __c5, 1)),
+          metadata: __S(1120, __c35, 0),
+          tags: S.optional(__S(288, __c9, 0)),
         }),
       ).annotate({ identifier: "ContentSummary" });
-    case 5:
-      return S.suspend(() => S.Struct({ contentSummary: S.optional(__S(196, __c24, 4)) })).annotate(
-        {
-          identifier: "GetContentSummaryResponse",
-        },
-      );
-    case 6:
+  }
+}
+function __c89(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           importJobId: S.String.pipe(T.HttpLabel("importJobId")),
@@ -8162,23 +8567,27 @@ function __c24(j: number): any {
           ),
         ),
       ).annotate({ identifier: "GetImportJobRequest" });
-    case 7:
+  }
+}
+function __c90(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() => S.Struct({ instanceId: S.optional(S.String) })).annotate({
         identifier: "ConnectConfiguration",
       });
-  }
-}
-function __c25(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Union([/*@__PURE__*/ S.Struct({ connectConfiguration: __S(199, __c24, 7) })]);
     case 1:
+      return S.Union([/*@__PURE__*/ S.Struct({ connectConfiguration: __S(2880, __c90, 0) })]);
+    case 2:
       return S.suspend(() =>
-        S.Struct({ source: S.String, configuration: __S(200, __c25, 0) }),
+        S.Struct({ source: S.String, configuration: __S(2881, __c90, 1) }),
       ).annotate({
         identifier: "ExternalSourceConfiguration",
       });
-    case 2:
+  }
+}
+function __c91(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           importJobId: S.String,
@@ -8192,15 +8601,19 @@ function __c25(j: number): any {
           urlExpiry: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
           createdTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
           lastModifiedTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-          metadata: S.optional(__S(96, __c12, 0)),
-          externalSourceConfiguration: S.optional(__S(201, __c25, 1)),
+          metadata: S.optional(__S(1120, __c35, 0)),
+          externalSourceConfiguration: S.optional(__S(2882, __c90, 2)),
         }),
       ).annotate({ identifier: "ImportJobData" });
-    case 3:
-      return S.suspend(() => S.Struct({ importJob: S.optional(__S(202, __c25, 2)) })).annotate({
+    case 1:
+      return S.suspend(() => S.Struct({ importJob: S.optional(__S(2912, __c91, 0)) })).annotate({
         identifier: "GetImportJobResponse",
       });
-    case 4:
+  }
+}
+function __c92(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ knowledgeBaseId: S.String.pipe(T.HttpLabel("knowledgeBaseId")) }).pipe(
           T.all(
@@ -8213,11 +8626,15 @@ function __c25(j: number): any {
           ),
         ),
       ).annotate({ identifier: "GetKnowledgeBaseRequest" });
-    case 5:
-      return S.suspend(() => S.Struct({ knowledgeBase: S.optional(__S(125, __c15, 5)) })).annotate({
-        identifier: "GetKnowledgeBaseResponse",
-      });
-    case 6:
+    case 1:
+      return S.suspend(() => S.Struct({ knowledgeBase: S.optional(__S(1344, __c42, 0)) })).annotate(
+        { identifier: "GetKnowledgeBaseResponse" },
+      );
+  }
+}
+function __c93(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           messageTemplateId: S.String.pipe(T.HttpLabel("messageTemplateId")),
@@ -8238,7 +8655,11 @@ function __c25(j: number): any {
       ).annotate({
         identifier: "GetMessageTemplateRequest",
       });
-    case 7:
+  }
+}
+function __c94(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           assistantId: S.String.pipe(T.HttpLabel("assistantId")),
@@ -8258,9 +8679,37 @@ function __c25(j: number): any {
           ),
         ),
       ).annotate({ identifier: "GetNextMessageRequest" });
+    case 1:
+      return S.suspend(() => S.Struct({ status: S.String, reason: S.optional(S.String) })).annotate(
+        { identifier: "ConversationState" },
+      );
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          type: S.String,
+          response: __S(3104, __c97, 0),
+          requestMessageId: S.String,
+          conversationState: __S(3009, __c94, 1),
+          nextMessageToken: S.optional(S.String),
+          conversationSessionData: S.optional(__S(3042, __c95, 2)),
+          chunkedResponseTerminated: S.optional(S.Boolean),
+        }),
+      ).annotate({ identifier: "GetNextMessageResponse" });
   }
 }
-function __c26(j: number): any {
+function __c95(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Union([/*@__PURE__*/ S.Struct({ stringValue: SensitiveString })]);
+    case 1:
+      return S.suspend(() =>
+        S.Struct({ key: SensitiveString, value: __S(3040, __c95, 0) }),
+      ).annotate({ identifier: "RuntimeSessionData" });
+    case 2:
+      return S.Array(__S(3041, __c95, 1));
+  }
+}
+function __c96(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -8269,32 +8718,53 @@ function __c26(j: number): any {
           endOffsetExclusive: S.optional(S.Number),
         }),
       ).annotate({ identifier: "CitationSpan" });
-    case 1:
+  }
+}
+function __c97(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          value: __S(3172, __c99, 4),
+          messageId: S.String,
+          participant: S.String,
+          timestamp: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+        }),
+      ).annotate({ identifier: "MessageOutput" });
+  }
+}
+function __c98(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({ blocked: S.Boolean })).annotate({
+        identifier: "AIGuardrailAssessment",
+      });
+  }
+}
+function __c99(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           contentId: S.optional(S.String),
           title: S.optional(SensitiveString),
           knowledgeBaseId: S.optional(S.String),
-          citationSpan: __S(208, __c26, 0),
+          citationSpan: __S(3072, __c96, 0),
           sourceURL: S.optional(SensitiveString),
           referenceType: S.String,
         }),
       ).annotate({ identifier: "Citation" });
+    case 1:
+      return S.Array(__S(3168, __c99, 0));
     case 2:
-      return S.Array(__S(209, __c26, 1));
-    case 3:
-      return S.suspend(() => S.Struct({ blocked: S.Boolean })).annotate({
-        identifier: "AIGuardrailAssessment",
-      });
-    case 4:
       return S.suspend(() =>
         S.Struct({
           value: S.optional(SensitiveString),
-          citations: S.optional(__S(210, __c26, 2)),
-          aiGuardrailAssessment: S.optional(__S(211, __c26, 3)),
+          citations: S.optional(__S(3169, __c99, 1)),
+          aiGuardrailAssessment: S.optional(__S(3136, __c98, 0)),
         }),
       ).annotate({ identifier: "TextMessage" });
-    case 5:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           toolUseId: S.String,
@@ -8303,50 +8773,17 @@ function __c26(j: number): any {
           inputSchema: S.optional(S.Any),
         }),
       ).annotate({ identifier: "ToolUseResultData" });
-    case 6:
+    case 4:
       return S.Union([
-        /*@__PURE__*/ S.Struct({ text: __S(212, __c26, 4) }),
-        /*@__PURE__*/ S.Struct({ toolUseResult: __S(213, __c26, 5) }),
+        /*@__PURE__*/ S.Struct({ text: __S(3170, __c99, 2) }),
+        /*@__PURE__*/ S.Struct({ toolUseResult: __S(3171, __c99, 3) }),
         /*@__PURE__*/ S.Struct({ data: S.Any }),
       ]);
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          value: __S(214, __c26, 6),
-          messageId: S.String,
-          participant: S.String,
-          timestamp: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-        }),
-      ).annotate({ identifier: "MessageOutput" });
   }
 }
-function __c27(j: number): any {
+function __c100(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => S.Struct({ status: S.String, reason: S.optional(S.String) })).annotate(
-        { identifier: "ConversationState" },
-      );
-    case 1:
-      return S.Union([/*@__PURE__*/ S.Struct({ stringValue: SensitiveString })]);
-    case 2:
-      return S.suspend(() =>
-        S.Struct({ key: SensitiveString, value: __S(217, __c27, 1) }),
-      ).annotate({ identifier: "RuntimeSessionData" });
-    case 3:
-      return S.Array(__S(218, __c27, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          type: S.String,
-          response: __S(215, __c26, 7),
-          requestMessageId: S.String,
-          conversationState: __S(216, __c27, 0),
-          nextMessageToken: S.optional(S.String),
-          conversationSessionData: S.optional(__S(219, __c27, 3)),
-          chunkedResponseTerminated: S.optional(S.Boolean),
-        }),
-      ).annotate({ identifier: "GetNextMessageResponse" });
-    case 5:
       return S.suspend(() =>
         S.Struct({
           quickResponseId: S.String.pipe(T.HttpLabel("quickResponseId")),
@@ -8365,11 +8802,15 @@ function __c27(j: number): any {
           ),
         ),
       ).annotate({ identifier: "GetQuickResponseRequest" });
-    case 6:
-      return S.suspend(() => S.Struct({ quickResponse: S.optional(__S(162, __c20, 2)) })).annotate({
-        identifier: "GetQuickResponseResponse",
-      });
-    case 7:
+    case 1:
+      return S.suspend(() => S.Struct({ quickResponse: S.optional(__S(1856, __c58, 0)) })).annotate(
+        { identifier: "GetQuickResponseResponse" },
+      );
+  }
+}
+function __c101(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           assistantId: S.String.pipe(T.HttpLabel("assistantId")),
@@ -8394,9 +8835,49 @@ function __c27(j: number): any {
       ).annotate({
         identifier: "GetRecommendationsRequest",
       });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          recommendationId: S.String,
+          document: S.optional(__S(3267, __c102, 3)),
+          relevanceScore: S.optional(S.Number),
+          relevanceLevel: S.optional(S.String),
+          type: S.optional(S.String),
+          data: S.optional(__S(3285, __c102, 21)),
+        }),
+      ).annotate({ identifier: "RecommendationData" });
+    case 2:
+      return S.Array(__S(3233, __c101, 1));
+    case 3:
+      return S.suspend(() => S.Struct({ text: S.optional(SensitiveString) })).annotate({
+        identifier: "QueryRecommendationTriggerData",
+      });
+    case 4:
+      return S.Union([/*@__PURE__*/ S.Struct({ query: __S(3235, __c101, 3) })]);
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          type: S.String,
+          source: S.String,
+          data: __S(3236, __c101, 4),
+          recommendationIds: __S(352, __c11, 0),
+        }),
+      ).annotate({ identifier: "RecommendationTrigger" });
+    case 6:
+      return S.Array(__S(3237, __c101, 5));
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          recommendations: __S(3234, __c101, 2),
+          triggers: S.optional(__S(3238, __c101, 6)),
+        }),
+      ).annotate({
+        identifier: "GetRecommendationsResponse",
+      });
   }
 }
-function __c28(j: number): any {
+function __c102(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -8410,17 +8891,20 @@ function __c28(j: number): any {
         }),
       ).annotate({ identifier: "ContentReference" });
     case 1:
-      return S.Array(__S(208, __c26, 0));
+      return S.Array(__S(3072, __c96, 0));
     case 2:
       return S.suspend(() =>
-        S.Struct({ text: S.optional(SensitiveString), highlights: S.optional(__S(225, __c28, 1)) }),
+        S.Struct({
+          text: S.optional(SensitiveString),
+          highlights: S.optional(__S(3265, __c102, 1)),
+        }),
       ).annotate({ identifier: "DocumentText" });
     case 3:
       return S.suspend(() =>
         S.Struct({
-          contentReference: __S(224, __c28, 0),
-          title: S.optional(__S(226, __c28, 2)),
-          excerpt: S.optional(__S(226, __c28, 2)),
+          contentReference: __S(3264, __c102, 0),
+          title: S.optional(__S(3266, __c102, 2)),
+          excerpt: S.optional(__S(3266, __c102, 2)),
         }),
       ).annotate({ identifier: "Document" });
     case 4:
@@ -8433,48 +8917,42 @@ function __c28(j: number): any {
       });
     case 6:
       return S.Union([
-        /*@__PURE__*/ S.Struct({ contentReference: __S(224, __c28, 0) }),
-        /*@__PURE__*/ S.Struct({ generativeReference: __S(228, __c28, 4) }),
-        /*@__PURE__*/ S.Struct({ suggestedMessageReference: __S(229, __c28, 5) }),
+        /*@__PURE__*/ S.Struct({ contentReference: __S(3264, __c102, 0) }),
+        /*@__PURE__*/ S.Struct({ generativeReference: __S(3268, __c102, 4) }),
+        /*@__PURE__*/ S.Struct({ suggestedMessageReference: __S(3269, __c102, 5) }),
       ]);
     case 7:
       return S.suspend(() =>
         S.Struct({
-          title: S.optional(__S(226, __c28, 2)),
-          excerpt: S.optional(__S(226, __c28, 2)),
+          title: S.optional(__S(3266, __c102, 2)),
+          excerpt: S.optional(__S(3266, __c102, 2)),
         }),
       ).annotate({ identifier: "TextData" });
-  }
-}
-function __c29(j: number): any {
-  switch (j) {
-    case 0:
+    case 8:
       return S.suspend(() =>
         S.Struct({ relevanceScore: S.optional(S.Number), relevanceLevel: S.optional(S.String) }),
       ).annotate({ identifier: "RankingData" });
-    case 1:
+    case 9:
       return S.suspend(() =>
-        S.Struct({ textData: __S(231, __c28, 7), rankingData: __S(232, __c29, 0) }),
-      ).annotate({
-        identifier: "ContentDataDetails",
-      });
-    case 2:
+        S.Struct({ textData: __S(3271, __c102, 7), rankingData: __S(3272, __c102, 8) }),
+      ).annotate({ identifier: "ContentDataDetails" });
+    case 10:
       return S.Array(
-        /*@__PURE__*/ S.suspend((): S.Schema<DataSummary> => __S(245, __c30, 5)).annotate({
+        /*@__PURE__*/ S.suspend((): S.Schema<DataSummary> => __S(3285, __c102, 21)).annotate({
           identifier: "DataSummary",
         }),
       );
-    case 3:
+    case 11:
       return S.suspend(() =>
         S.Struct({
           completion: SensitiveString,
-          references: S.suspend(() => __S(234, __c29, 2)).annotate({
+          references: S.suspend(() => __S(3274, __c102, 10)).annotate({
             identifier: "DataSummaryList",
           }),
-          rankingData: __S(232, __c29, 0),
+          rankingData: __S(3272, __c102, 8),
         }),
       ).annotate({ identifier: "GenerativeDataDetails" });
-    case 4:
+    case 12:
       return S.suspend(() =>
         S.Struct({
           intent: SensitiveString,
@@ -8484,134 +8962,90 @@ function __c29(j: number): any {
       ).annotate({
         identifier: "IntentDetectedDataDetails",
       });
-    case 5:
+    case 13:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
           type: S.String,
-          textData: __S(231, __c28, 7),
-          rankingData: __S(232, __c29, 0),
-          citationSpan: S.optional(__S(208, __c26, 0)),
+          textData: __S(3271, __c102, 7),
+          rankingData: __S(3272, __c102, 8),
+          citationSpan: S.optional(__S(3072, __c96, 0)),
         }),
       ).annotate({ identifier: "SourceContentDataDetails" });
-    case 6:
+    case 14:
       return S.suspend(() =>
         S.Struct({
           completion: S.optional(SensitiveString),
           references: S.optional(
-            S.suspend(() => __S(234, __c29, 2)).annotate({ identifier: "DataSummaryList" }),
+            S.suspend(() => __S(3274, __c102, 10)).annotate({ identifier: "DataSummaryList" }),
           ),
           nextChunkToken: S.optional(S.String),
         }),
       ).annotate({
         identifier: "GenerativeChunkDataDetails",
       });
-    case 7:
+    case 15:
       return S.suspend(() =>
         S.Struct({ completion: S.optional(SensitiveString), nextChunkToken: S.optional(S.String) }),
       ).annotate({
         identifier: "EmailResponseChunkDataDetails",
       });
-  }
-}
-function __c30(j: number): any {
-  switch (j) {
-    case 0:
+    case 16:
       return S.suspend(() => S.Struct({ messageText: SensitiveString })).annotate({
         identifier: "SuggestedMessageDataDetails",
       });
-    case 1:
+    case 17:
       return S.suspend(() => S.Struct({ completion: S.optional(SensitiveString) })).annotate({
         identifier: "NotesDataDetails",
       });
-    case 2:
+    case 18:
       return S.suspend(() =>
         S.Struct({ completion: S.optional(SensitiveString), nextChunkToken: S.optional(S.String) }),
       ).annotate({ identifier: "NotesChunkDataDetails" });
-    case 3:
+    case 19:
       return S.suspend(() => S.Struct({ nextMessageToken: S.String })).annotate({
         identifier: "ProactiveRecommendationDataDetails",
       });
-    case 4:
+    case 20:
       return S.Union([
-        /*@__PURE__*/ S.Struct({ contentData: __S(233, __c29, 1) }),
+        /*@__PURE__*/ S.Struct({ contentData: __S(3273, __c102, 9) }),
         /*@__PURE__*/ S.Struct({
           generativeData: /*@__PURE__*/ S.suspend((): S.Schema<GenerativeDataDetails> =>
-            __S(235, __c29, 3),
+            __S(3275, __c102, 11),
           ).annotate({ identifier: "GenerativeDataDetails" }),
         }),
-        /*@__PURE__*/ S.Struct({ intentDetectedData: __S(236, __c29, 4) }),
-        /*@__PURE__*/ S.Struct({ sourceContentData: __S(237, __c29, 5) }),
+        /*@__PURE__*/ S.Struct({ intentDetectedData: __S(3276, __c102, 12) }),
+        /*@__PURE__*/ S.Struct({ sourceContentData: __S(3277, __c102, 13) }),
         /*@__PURE__*/ S.Struct({
           generativeChunkData: /*@__PURE__*/ S.suspend((): S.Schema<GenerativeChunkDataDetails> =>
-            __S(238, __c29, 6),
+            __S(3278, __c102, 14),
           ).annotate({ identifier: "GenerativeChunkDataDetails" }),
         }),
-        /*@__PURE__*/ S.Struct({ emailResponseChunkData: __S(239, __c29, 7) }),
-        /*@__PURE__*/ S.Struct({ emailOverviewChunkData: __S(239, __c29, 7) }),
+        /*@__PURE__*/ S.Struct({ emailResponseChunkData: __S(3279, __c102, 15) }),
+        /*@__PURE__*/ S.Struct({ emailOverviewChunkData: __S(3279, __c102, 15) }),
         /*@__PURE__*/ S.Struct({
           emailGenerativeAnswerChunkData: /*@__PURE__*/ S.suspend(
-            (): S.Schema<EmailGenerativeAnswerChunkDataDetails> => __S(238, __c29, 6),
+            (): S.Schema<EmailGenerativeAnswerChunkDataDetails> => __S(3278, __c102, 14),
           ).annotate({ identifier: "EmailGenerativeAnswerChunkDataDetails" }),
         }),
-        /*@__PURE__*/ S.Struct({ caseSummarizationChunkData: __S(239, __c29, 7) }),
-        /*@__PURE__*/ S.Struct({ suggestedMessageData: __S(240, __c30, 0) }),
-        /*@__PURE__*/ S.Struct({ notesData: __S(241, __c30, 1) }),
-        /*@__PURE__*/ S.Struct({ notesChunkData: __S(242, __c30, 2) }),
-        /*@__PURE__*/ S.Struct({ proactiveRecommendationData: __S(243, __c30, 3) }),
+        /*@__PURE__*/ S.Struct({ caseSummarizationChunkData: __S(3279, __c102, 15) }),
+        /*@__PURE__*/ S.Struct({ suggestedMessageData: __S(3280, __c102, 16) }),
+        /*@__PURE__*/ S.Struct({ notesData: __S(3281, __c102, 17) }),
+        /*@__PURE__*/ S.Struct({ notesChunkData: __S(3282, __c102, 18) }),
+        /*@__PURE__*/ S.Struct({ proactiveRecommendationData: __S(3283, __c102, 19) }),
       ]);
-    case 5:
+    case 21:
       return S.suspend(() =>
         S.Struct({
-          reference: __S(230, __c28, 6),
-          details: S.suspend(() => __S(244, __c30, 4)).annotate({ identifier: "DataDetails" }),
+          reference: __S(3270, __c102, 6),
+          details: S.suspend(() => __S(3284, __c102, 20)).annotate({ identifier: "DataDetails" }),
         }),
       ).annotate({ identifier: "DataSummary" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          recommendationId: S.String,
-          document: S.optional(__S(227, __c28, 3)),
-          relevanceScore: S.optional(S.Number),
-          relevanceLevel: S.optional(S.String),
-          type: S.optional(S.String),
-          data: S.optional(__S(245, __c30, 5)),
-        }),
-      ).annotate({ identifier: "RecommendationData" });
-    case 7:
-      return S.Array(__S(246, __c30, 6));
   }
 }
-function __c31(j: number): any {
+function __c103(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => S.Struct({ text: S.optional(SensitiveString) })).annotate({
-        identifier: "QueryRecommendationTriggerData",
-      });
-    case 1:
-      return S.Union([/*@__PURE__*/ S.Struct({ query: __S(248, __c31, 0) })]);
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String,
-          type: S.String,
-          source: S.String,
-          data: __S(249, __c31, 1),
-          recommendationIds: __S(18, __c2, 2),
-        }),
-      ).annotate({ identifier: "RecommendationTrigger" });
-    case 3:
-      return S.Array(__S(250, __c31, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          recommendations: __S(247, __c30, 7),
-          triggers: S.optional(__S(251, __c31, 3)),
-        }),
-      ).annotate({
-        identifier: "GetRecommendationsResponse",
-      });
-    case 5:
       return S.suspend(() =>
         S.Struct({
           assistantId: S.String.pipe(T.HttpLabel("assistantId")),
@@ -8627,7 +9061,11 @@ function __c31(j: number): any {
           ),
         ),
       ).annotate({ identifier: "GetSessionRequest" });
-    case 6:
+  }
+}
+function __c104(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           assistantId: S.String.pipe(T.HttpLabel("assistantId")),
@@ -8645,7 +9083,17 @@ function __c31(j: number): any {
           ),
         ),
       ).annotate({ identifier: "ListAIAgentsRequest" });
-    case 7:
+    case 1:
+      return S.Array(__S(3360, __c105, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({ aiAgentSummaries: __S(3329, __c104, 1), nextToken: S.optional(S.String) }),
+      ).annotate({ identifier: "ListAIAgentsResponse" });
+  }
+}
+function __c105(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String,
@@ -8656,24 +9104,18 @@ function __c31(j: number): any {
           aiAgentArn: S.String,
           modifiedTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           visibilityStatus: S.String,
-          configuration: S.optional(__S(40, __c5, 0)),
+          configuration: S.optional(__S(447, __c13, 31)),
           origin: S.optional(S.String),
           description: S.optional(S.String),
           status: S.optional(S.String),
-          tags: S.optional(__S(41, __c5, 1)),
+          tags: S.optional(__S(288, __c9, 0)),
         }),
       ).annotate({ identifier: "AIAgentSummary" });
   }
 }
-function __c32(j: number): any {
+function __c106(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(255, __c31, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({ aiAgentSummaries: __S(256, __c32, 0), nextToken: S.optional(S.String) }),
-      ).annotate({ identifier: "ListAIAgentsResponse" });
-    case 2:
       return S.suspend(() =>
         S.Struct({
           assistantId: S.String.pipe(T.HttpLabel("assistantId")),
@@ -8697,25 +9139,29 @@ function __c32(j: number): any {
       ).annotate({
         identifier: "ListAIAgentVersionsRequest",
       });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          aiAgentSummary: S.optional(__S(255, __c31, 7)),
+          aiAgentSummary: S.optional(__S(3360, __c105, 0)),
           versionNumber: S.optional(S.Number),
         }),
       ).annotate({ identifier: "AIAgentVersionSummary" });
-    case 4:
-      return S.Array(__S(259, __c32, 3));
-    case 5:
+    case 2:
+      return S.Array(__S(3393, __c106, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          aiAgentVersionSummaries: __S(260, __c32, 4),
+          aiAgentVersionSummaries: __S(3394, __c106, 2),
           nextToken: S.optional(S.String),
         }),
       ).annotate({
         identifier: "ListAIAgentVersionsResponse",
       });
-    case 6:
+  }
+}
+function __c107(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           assistantId: S.String.pipe(T.HttpLabel("assistantId")),
@@ -8732,7 +9178,17 @@ function __c32(j: number): any {
           ),
         ),
       ).annotate({ identifier: "ListAIGuardrailsRequest" });
-    case 7:
+    case 1:
+      return S.Array(__S(3456, __c108, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({ aiGuardrailSummaries: __S(3425, __c107, 1), nextToken: S.optional(S.String) }),
+      ).annotate({ identifier: "ListAIGuardrailsResponse" });
+  }
+}
+function __c108(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String,
@@ -8744,23 +9200,14 @@ function __c32(j: number): any {
           visibilityStatus: S.String,
           description: S.optional(SensitiveString),
           status: S.optional(S.String),
-          tags: S.optional(__S(41, __c5, 1)),
+          tags: S.optional(__S(288, __c9, 0)),
         }),
       ).annotate({ identifier: "AIGuardrailSummary" });
   }
 }
-function __c33(j: number): any {
+function __c109(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(263, __c32, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          aiGuardrailSummaries: __S(264, __c33, 0),
-          nextToken: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ListAIGuardrailsResponse" });
-    case 2:
       return S.suspend(() =>
         S.Struct({
           assistantId: S.String.pipe(T.HttpLabel("assistantId")),
@@ -8783,27 +9230,31 @@ function __c33(j: number): any {
       ).annotate({
         identifier: "ListAIGuardrailVersionsRequest",
       });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          aiGuardrailSummary: S.optional(__S(263, __c32, 7)),
+          aiGuardrailSummary: S.optional(__S(3456, __c108, 0)),
           versionNumber: S.optional(S.Number),
         }),
       ).annotate({
         identifier: "AIGuardrailVersionSummary",
       });
-    case 4:
-      return S.Array(__S(267, __c33, 3));
-    case 5:
+    case 2:
+      return S.Array(__S(3489, __c109, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          aiGuardrailVersionSummaries: __S(268, __c33, 4),
+          aiGuardrailVersionSummaries: __S(3490, __c109, 2),
           nextToken: S.optional(S.String),
         }),
       ).annotate({
         identifier: "ListAIGuardrailVersionsResponse",
       });
-    case 6:
+  }
+}
+function __c110(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           assistantId: S.String.pipe(T.HttpLabel("assistantId")),
@@ -8821,7 +9272,17 @@ function __c33(j: number): any {
           ),
         ),
       ).annotate({ identifier: "ListAIPromptsRequest" });
-    case 7:
+    case 1:
+      return S.Array(__S(3552, __c111, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({ aiPromptSummaries: __S(3521, __c110, 1), nextToken: S.optional(S.String) }),
+      ).annotate({ identifier: "ListAIPromptsResponse" });
+  }
+}
+function __c111(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String,
@@ -8838,20 +9299,14 @@ function __c33(j: number): any {
           origin: S.optional(S.String),
           description: S.optional(S.String),
           status: S.optional(S.String),
-          tags: S.optional(__S(41, __c5, 1)),
+          tags: S.optional(__S(288, __c9, 0)),
         }),
       ).annotate({ identifier: "AIPromptSummary" });
   }
 }
-function __c34(j: number): any {
+function __c112(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(271, __c33, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({ aiPromptSummaries: __S(272, __c34, 0), nextToken: S.optional(S.String) }),
-      ).annotate({ identifier: "ListAIPromptsResponse" });
-    case 2:
       return S.suspend(() =>
         S.Struct({
           assistantId: S.String.pipe(T.HttpLabel("assistantId")),
@@ -8875,25 +9330,29 @@ function __c34(j: number): any {
       ).annotate({
         identifier: "ListAIPromptVersionsRequest",
       });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          aiPromptSummary: S.optional(__S(271, __c33, 7)),
+          aiPromptSummary: S.optional(__S(3552, __c111, 0)),
           versionNumber: S.optional(S.Number),
         }),
       ).annotate({ identifier: "AIPromptVersionSummary" });
-    case 4:
-      return S.Array(__S(275, __c34, 3));
-    case 5:
+    case 2:
+      return S.Array(__S(3585, __c112, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          aiPromptVersionSummaries: __S(276, __c34, 4),
+          aiPromptVersionSummaries: __S(3586, __c112, 2),
           nextToken: S.optional(S.String),
         }),
       ).annotate({
         identifier: "ListAIPromptVersionsResponse",
       });
-    case 6:
+  }
+}
+function __c113(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
@@ -8912,7 +9371,7 @@ function __c34(j: number): any {
       ).annotate({
         identifier: "ListAssistantAssociationsRequest",
       });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           assistantAssociationId: S.String,
@@ -8920,41 +9379,45 @@ function __c34(j: number): any {
           assistantId: S.String,
           assistantArn: S.String,
           associationType: S.String,
-          associationData: __S(93, __c11, 5),
-          tags: S.optional(__S(41, __c5, 1)),
+          associationData: __S(1058, __c33, 2),
+          tags: S.optional(__S(288, __c9, 0)),
         }),
       ).annotate({
         identifier: "AssistantAssociationSummary",
       });
-  }
-}
-function __c35(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(279, __c34, 7));
-    case 1:
+    case 2:
+      return S.Array(__S(3617, __c113, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          assistantAssociationSummaries: __S(280, __c35, 0),
+          assistantAssociationSummaries: __S(3618, __c113, 2),
           nextToken: S.optional(S.String),
         }),
       ).annotate({
         identifier: "ListAssistantAssociationsResponse",
       });
-    case 2:
+  }
+}
+function __c114(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
           maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
         }).pipe(T.all(T.Http({ method: "GET", uri: "/assistants" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "ListAssistantsRequest" });
-    case 3:
-      return S.Array(__S(87, __c10, 7));
-    case 4:
+    case 1:
+      return S.Array(__S(961, __c30, 1));
+    case 2:
       return S.suspend(() =>
-        S.Struct({ assistantSummaries: __S(283, __c35, 3), nextToken: S.optional(S.String) }),
+        S.Struct({ assistantSummaries: __S(3649, __c114, 1), nextToken: S.optional(S.String) }),
       ).annotate({ identifier: "ListAssistantsResponse" });
-    case 5:
+  }
+}
+function __c115(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
@@ -8977,7 +9440,7 @@ function __c35(j: number): any {
       ).annotate({
         identifier: "ListContentAssociationsRequest",
       });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           knowledgeBaseId: S.String,
@@ -8987,28 +9450,28 @@ function __c35(j: number): any {
           contentAssociationId: S.String,
           contentAssociationArn: S.String,
           associationType: S.String,
-          associationData: __S(101, __c12, 5),
-          tags: S.optional(__S(41, __c5, 1)),
+          associationData: __S(1249, __c39, 1),
+          tags: S.optional(__S(288, __c9, 0)),
         }),
       ).annotate({
         identifier: "ContentAssociationSummary",
       });
-    case 7:
-      return S.Array(__S(286, __c35, 6));
-  }
-}
-function __c36(j: number): any {
-  switch (j) {
-    case 0:
+    case 2:
+      return S.Array(__S(3681, __c115, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          contentAssociationSummaries: __S(287, __c35, 7),
+          contentAssociationSummaries: __S(3682, __c115, 2),
           nextToken: S.optional(S.String),
         }),
       ).annotate({
         identifier: "ListContentAssociationsResponse",
       });
-    case 1:
+  }
+}
+function __c116(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
@@ -9025,13 +9488,21 @@ function __c36(j: number): any {
           ),
         ),
       ).annotate({ identifier: "ListContentsRequest" });
-    case 2:
-      return S.Array(__S(196, __c24, 4));
-    case 3:
+  }
+}
+function __c117(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(2816, __c88, 0));
+    case 1:
       return S.suspend(() =>
-        S.Struct({ contentSummaries: __S(290, __c36, 2), nextToken: S.optional(S.String) }),
+        S.Struct({ contentSummaries: __S(3744, __c117, 0), nextToken: S.optional(S.String) }),
       ).annotate({ identifier: "ListContentsResponse" });
-    case 4:
+  }
+}
+function __c118(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
@@ -9048,7 +9519,7 @@ function __c36(j: number): any {
           ),
         ),
       ).annotate({ identifier: "ListImportJobsRequest" });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           importJobId: S.String,
@@ -9059,19 +9530,19 @@ function __c36(j: number): any {
           status: S.String,
           createdTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
           lastModifiedTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-          metadata: S.optional(__S(96, __c12, 0)),
-          externalSourceConfiguration: S.optional(__S(201, __c25, 1)),
+          metadata: S.optional(__S(1120, __c35, 0)),
+          externalSourceConfiguration: S.optional(__S(2882, __c90, 2)),
         }),
       ).annotate({ identifier: "ImportJobSummary" });
-    case 6:
-      return S.Array(__S(293, __c36, 5));
-    case 7:
+    case 2:
+      return S.Array(__S(3777, __c118, 1));
+    case 3:
       return S.suspend(() =>
-        S.Struct({ importJobSummaries: __S(294, __c36, 6), nextToken: S.optional(S.String) }),
+        S.Struct({ importJobSummaries: __S(3778, __c118, 2), nextToken: S.optional(S.String) }),
       ).annotate({ identifier: "ListImportJobsResponse" });
   }
 }
-function __c37(j: number): any {
+function __c119(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -9092,23 +9563,27 @@ function __c37(j: number): any {
           name: S.String,
           knowledgeBaseType: S.String,
           status: S.String,
-          sourceConfiguration: S.optional(__S(112, __c14, 0)),
-          vectorIngestionConfiguration: S.optional(__S(123, __c15, 3)),
-          renderingConfiguration: S.optional(__S(113, __c14, 1)),
-          serverSideEncryptionConfiguration: S.optional(__S(79, __c9, 7)),
+          sourceConfiguration: S.optional(__S(1383, __c43, 7)),
+          vectorIngestionConfiguration: S.optional(__S(1394, __c43, 18)),
+          renderingConfiguration: S.optional(__S(1384, __c43, 8)),
+          serverSideEncryptionConfiguration: S.optional(__S(864, __c27, 0)),
           description: S.optional(S.String),
-          tags: S.optional(__S(41, __c5, 1)),
+          tags: S.optional(__S(288, __c9, 0)),
         }),
       ).annotate({ identifier: "KnowledgeBaseSummary" });
     case 2:
-      return S.Array(__S(297, __c37, 1));
+      return S.Array(__S(3809, __c119, 1));
     case 3:
       return S.suspend(() =>
-        S.Struct({ knowledgeBaseSummaries: __S(298, __c37, 2), nextToken: S.optional(S.String) }),
+        S.Struct({ knowledgeBaseSummaries: __S(3810, __c119, 2), nextToken: S.optional(S.String) }),
       ).annotate({
         identifier: "ListKnowledgeBasesResponse",
       });
-    case 4:
+  }
+}
+function __c120(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           assistantId: S.String.pipe(T.HttpLabel("assistantId")),
@@ -9130,13 +9605,17 @@ function __c37(j: number): any {
           ),
         ),
       ).annotate({ identifier: "ListMessagesRequest" });
-    case 5:
-      return S.Array(__S(215, __c26, 7));
-    case 6:
+    case 1:
+      return S.Array(__S(3104, __c97, 0));
+    case 2:
       return S.suspend(() =>
-        S.Struct({ messages: __S(301, __c37, 5), nextToken: S.optional(S.String) }),
+        S.Struct({ messages: __S(3841, __c120, 1), nextToken: S.optional(S.String) }),
       ).annotate({ identifier: "ListMessagesResponse" });
-    case 7:
+  }
+}
+function __c121(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
@@ -9155,11 +9634,7 @@ function __c37(j: number): any {
       ).annotate({
         identifier: "ListMessageTemplatesRequest",
       });
-  }
-}
-function __c38(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           messageTemplateArn: S.String,
@@ -9172,24 +9647,28 @@ function __c38(j: number): any {
           createdTime: T.DateFromString.pipe(T.TimestampFormat("date-time")),
           lastModifiedTime: T.DateFromString.pipe(T.TimestampFormat("date-time")),
           lastModifiedBy: S.String,
-          sourceConfiguration: S.optional(__S(140, __c17, 4)),
+          sourceConfiguration: S.optional(__S(1601, __c50, 1)),
           activeVersionNumber: S.optional(S.Number),
           description: S.optional(S.String),
-          tags: S.optional(__S(41, __c5, 1)),
+          tags: S.optional(__S(288, __c9, 0)),
         }),
       ).annotate({ identifier: "MessageTemplateSummary" });
-    case 1:
-      return S.Array(__S(304, __c38, 0));
     case 2:
+      return S.Array(__S(3873, __c121, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          messageTemplateSummaries: __S(305, __c38, 1),
+          messageTemplateSummaries: __S(3874, __c121, 2),
           nextToken: S.optional(S.String),
         }),
       ).annotate({
         identifier: "ListMessageTemplatesResponse",
       });
-    case 3:
+  }
+}
+function __c122(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           knowledgeBaseId: S.String.pipe(T.HttpLabel("knowledgeBaseId")),
@@ -9212,7 +9691,7 @@ function __c38(j: number): any {
       ).annotate({
         identifier: "ListMessageTemplateVersionsRequest",
       });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           messageTemplateArn: S.String,
@@ -9228,18 +9707,22 @@ function __c38(j: number): any {
       ).annotate({
         identifier: "MessageTemplateVersionSummary",
       });
-    case 5:
-      return S.Array(__S(308, __c38, 4));
-    case 6:
+    case 2:
+      return S.Array(__S(3905, __c122, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          messageTemplateVersionSummaries: __S(309, __c38, 5),
+          messageTemplateVersionSummaries: __S(3906, __c122, 2),
           nextToken: S.optional(S.String),
         }),
       ).annotate({
         identifier: "ListMessageTemplateVersionsResponse",
       });
-    case 7:
+  }
+}
+function __c123(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           assistantId: S.String.pipe(T.HttpLabel("assistantId")),
@@ -9258,30 +9741,30 @@ function __c38(j: number): any {
           ),
         ),
       ).annotate({ identifier: "ListModelsRequest" });
-  }
-}
-function __c39(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           modelId: S.String,
           displayName: S.String,
           crossRegionStatus: S.optional(S.String),
           supportsPromptCaching: S.optional(S.Boolean),
-          supportedAIPromptTypes: S.optional(__S(18, __c2, 2)),
+          supportedAIPromptTypes: S.optional(__S(352, __c11, 0)),
           modelLifecycle: S.optional(S.String),
           legacyTimestamp: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           endOfLifeTimestamp: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
         }),
       ).annotate({ identifier: "ModelSummary" });
-    case 1:
-      return S.Array(__S(312, __c39, 0));
     case 2:
-      return S.suspend(() =>
-        S.Struct({ modelSummaries: __S(313, __c39, 1), nextToken: S.optional(S.String) }),
-      ).annotate({ identifier: "ListModelsResponse" });
+      return S.Array(__S(3937, __c123, 1));
     case 3:
+      return S.suspend(() =>
+        S.Struct({ modelSummaries: __S(3938, __c123, 2), nextToken: S.optional(S.String) }),
+      ).annotate({ identifier: "ListModelsResponse" });
+  }
+}
+function __c124(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
@@ -9300,7 +9783,7 @@ function __c39(j: number): any {
       ).annotate({
         identifier: "ListQuickResponsesRequest",
       });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           quickResponseArn: S.String,
@@ -9315,22 +9798,23 @@ function __c39(j: number): any {
           description: S.optional(S.String),
           lastModifiedBy: S.optional(S.String),
           isActive: S.optional(S.Boolean),
-          channels: S.optional(__S(12, __c1, 4)),
-          tags: S.optional(__S(41, __c5, 1)),
+          channels: S.optional(__S(320, __c10, 0)),
+          tags: S.optional(__S(288, __c9, 0)),
         }),
       ).annotate({ identifier: "QuickResponseSummary" });
-    case 5:
-      return S.Array(__S(316, __c39, 4));
-    case 6:
+    case 2:
+      return S.Array(__S(3969, __c124, 1));
+    case 3:
       return S.suspend(() =>
-        S.Struct({
-          quickResponseSummaries: __S(317, __c39, 5),
-          nextToken: S.optional(S.String),
-        }),
+        S.Struct({ quickResponseSummaries: __S(3970, __c124, 2), nextToken: S.optional(S.String) }),
       ).annotate({
         identifier: "ListQuickResponsesResponse",
       });
-    case 7:
+  }
+}
+function __c125(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           assistantId: S.String.pipe(T.HttpLabel("assistantId")),
@@ -9348,11 +9832,7 @@ function __c39(j: number): any {
           ),
         ),
       ).annotate({ identifier: "ListSpansRequest" });
-  }
-}
-function __c40(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           contentId: S.optional(S.String),
@@ -9361,87 +9841,83 @@ function __c40(j: number): any {
           knowledgeBaseArn: S.optional(S.String),
         }),
       ).annotate({ identifier: "SpanCitation" });
-    case 1:
-      return S.Array(__S(320, __c40, 0));
     case 2:
+      return S.Array(__S(4001, __c125, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
           value: SensitiveString,
-          citations: S.optional(__S(321, __c40, 1)),
-          aiGuardrailAssessment: S.optional(__S(211, __c26, 3)),
+          citations: S.optional(__S(4002, __c125, 2)),
+          aiGuardrailAssessment: S.optional(__S(3136, __c98, 0)),
         }),
       ).annotate({ identifier: "SpanTextValue" });
-    case 3:
+    case 4:
       return S.suspend(() =>
         S.Struct({ toolUseId: S.String, name: S.String, arguments: S.Any }),
       ).annotate({ identifier: "SpanToolUseValue" });
-    case 4:
+    case 5:
       return S.suspend(() =>
         S.Struct({
           toolUseId: S.String,
-          values: S.suspend(() => __S(327, __c40, 7)).annotate({
+          values: S.suspend(() => __S(4008, __c125, 8)).annotate({
             identifier: "SpanMessageValueList",
           }),
           error: S.optional(S.String),
         }),
       ).annotate({ identifier: "SpanToolResultValue" });
-    case 5:
+    case 6:
       return S.suspend(() => S.Struct({ value: SensitiveString })).annotate({
         identifier: "SpanReasoningValue",
       });
-    case 6:
+    case 7:
       return S.Union([
-        /*@__PURE__*/ S.Struct({ text: __S(322, __c40, 2) }),
-        /*@__PURE__*/ S.Struct({ toolUse: __S(323, __c40, 3) }),
+        /*@__PURE__*/ S.Struct({ text: __S(4003, __c125, 3) }),
+        /*@__PURE__*/ S.Struct({ toolUse: __S(4004, __c125, 4) }),
         /*@__PURE__*/ S.Struct({
           toolResult: /*@__PURE__*/ S.suspend((): S.Schema<SpanToolResultValue> =>
-            __S(324, __c40, 4),
+            __S(4005, __c125, 5),
           ).annotate({
             identifier: "SpanToolResultValue",
           }),
         }),
-        /*@__PURE__*/ S.Struct({ reasoning: __S(325, __c40, 5) }),
+        /*@__PURE__*/ S.Struct({ reasoning: __S(4006, __c125, 6) }),
       ]);
-    case 7:
+    case 8:
       return S.Array(
-        /*@__PURE__*/ S.suspend(() => __S(326, __c40, 6)).annotate({
+        /*@__PURE__*/ S.suspend(() => __S(4007, __c125, 7)).annotate({
           identifier: "SpanMessageValue",
         }),
       );
-  }
-}
-function __c41(j: number): any {
-  switch (j) {
-    case 0:
+    case 9:
       return S.suspend(() =>
         S.Struct({
           messageId: S.String,
           participant: S.String,
           timestamp: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-          values: __S(327, __c40, 7),
+          values: __S(4008, __c125, 8),
         }),
       ).annotate({ identifier: "SpanMessage" });
-    case 1:
-      return S.Array(__S(328, __c41, 0));
-    case 2:
+    case 10:
+      return S.Array(__S(4009, __c125, 9));
+    case 11:
       return S.suspend(() =>
         S.Struct({ policyType: S.String, action: S.String, details: S.optional(S.String) }),
       ).annotate({ identifier: "GuardrailPolicyResult" });
-    case 3:
-      return S.Array(__S(330, __c41, 2));
-    case 4:
+    case 12:
+      return S.Array(__S(4011, __c125, 11));
+    case 13:
       return S.suspend(() =>
         S.Struct({
           guardrailId: S.String,
           guardrailName: S.String,
           source: S.String,
           action: S.String,
-          policies: S.optional(__S(331, __c41, 3)),
+          policies: S.optional(__S(4012, __c125, 12)),
         }),
       ).annotate({ identifier: "SpanGuardrailAssessment" });
-    case 5:
-      return S.Array(__S(332, __c41, 4));
-    case 6:
+    case 14:
+      return S.Array(__S(4013, __c125, 13));
+    case 15:
       return S.suspend(() =>
         S.Struct({
           operationName: S.optional(S.String),
@@ -9467,25 +9943,25 @@ function __c41(j: number): any {
           temperature: S.optional(S.Number),
           topP: S.optional(S.Number),
           responseModel: S.optional(S.String),
-          responseFinishReasons: S.optional(__S(18, __c2, 2)),
+          responseFinishReasons: S.optional(__S(352, __c11, 0)),
           usageInputTokens: S.optional(S.Number),
           usageOutputTokens: S.optional(S.Number),
           usageTotalTokens: S.optional(S.Number),
           cacheReadInputTokens: S.optional(S.Number),
           cacheWriteInputTokens: S.optional(S.Number),
-          inputMessages: S.optional(__S(329, __c41, 1)),
-          outputMessages: S.optional(__S(329, __c41, 1)),
-          systemInstructions: S.optional(__S(327, __c40, 7)),
+          inputMessages: S.optional(__S(4010, __c125, 10)),
+          outputMessages: S.optional(__S(4010, __c125, 10)),
+          systemInstructions: S.optional(__S(4008, __c125, 8)),
           promptArn: S.optional(S.String),
           promptId: S.optional(S.String),
           promptType: S.optional(S.String),
           promptName: S.optional(S.String),
           promptVersion: S.optional(S.Number),
           timeToFirstTokenMs: S.optional(S.Number),
-          guardrailAssessments: S.optional(__S(333, __c41, 5)),
+          guardrailAssessments: S.optional(__S(4014, __c125, 14)),
         }),
       ).annotate({ identifier: "SpanAttributes" });
-    case 7:
+    case 16:
       return S.suspend(() =>
         S.Struct({
           spanId: S.String,
@@ -9500,20 +9976,20 @@ function __c41(j: number): any {
           statusDescription: S.optional(S.String),
           requestId: S.String,
           originRequestId: S.optional(S.String),
-          attributes: __S(334, __c41, 6),
+          attributes: __S(4015, __c125, 15),
         }),
       ).annotate({ identifier: "Span" });
+    case 17:
+      return S.Array(__S(4016, __c125, 16));
+    case 18:
+      return S.suspend(() =>
+        S.Struct({ spans: __S(4017, __c125, 17), nextToken: S.optional(S.String) }),
+      ).annotate({ identifier: "ListSpansResponse" });
   }
 }
-function __c42(j: number): any {
+function __c126(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(335, __c41, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({ spans: __S(336, __c42, 0), nextToken: S.optional(S.String) }),
-      ).annotate({ identifier: "ListSpansResponse" });
-    case 2:
       return S.suspend(() =>
         S.Struct({ resourceArn: S.String.pipe(T.HttpLabel("resourceArn")) }).pipe(
           T.all(
@@ -9528,16 +10004,20 @@ function __c42(j: number): any {
       ).annotate({
         identifier: "ListTagsForResourceRequest",
       });
-    case 3:
-      return S.suspend(() => S.Struct({ tags: S.optional(__S(41, __c5, 1)) })).annotate({
+    case 1:
+      return S.suspend(() => S.Struct({ tags: S.optional(__S(288, __c9, 0)) })).annotate({
         identifier: "ListTagsForResourceResponse",
       });
-    case 4:
+  }
+}
+function __c127(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           assistantId: S.String.pipe(T.HttpLabel("assistantId")),
           sessionId: S.String.pipe(T.HttpLabel("sessionId")),
-          recommendationIds: __S(18, __c2, 2),
+          recommendationIds: __S(352, __c11, 0),
         }).pipe(
           T.all(
             T.Http({
@@ -9554,26 +10034,26 @@ function __c42(j: number): any {
       ).annotate({
         identifier: "NotifyRecommendationsReceivedRequest",
       });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({ recommendationId: S.optional(S.String), message: S.optional(S.String) }),
       ).annotate({
         identifier: "NotifyRecommendationsReceivedError",
       });
-    case 6:
-      return S.Array(__S(341, __c42, 5));
-    case 7:
+    case 2:
+      return S.Array(__S(4065, __c127, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          recommendationIds: S.optional(__S(18, __c2, 2)),
-          errors: S.optional(__S(342, __c42, 6)),
+          recommendationIds: S.optional(__S(352, __c11, 0)),
+          errors: S.optional(__S(4066, __c127, 2)),
         }),
       ).annotate({
         identifier: "NotifyRecommendationsReceivedResponse",
       });
   }
 }
-function __c43(j: number): any {
+function __c128(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() => S.Struct({ relevance: S.String })).annotate({
@@ -9581,7 +10061,7 @@ function __c43(j: number): any {
       });
     case 1:
       return S.Union([
-        /*@__PURE__*/ S.Struct({ generativeContentFeedbackData: __S(344, __c43, 0) }),
+        /*@__PURE__*/ S.Struct({ generativeContentFeedbackData: __S(4096, __c128, 0) }),
       ]);
     case 2:
       return S.suspend(() =>
@@ -9589,7 +10069,7 @@ function __c43(j: number): any {
           assistantId: S.String.pipe(T.HttpLabel("assistantId")),
           targetId: S.String,
           targetType: S.String,
-          contentFeedback: __S(345, __c43, 1),
+          contentFeedback: __S(4097, __c128, 1),
         }).pipe(
           T.all(
             T.Http({ method: "PUT", uri: "/assistants/{assistantId}/feedback" }),
@@ -9608,36 +10088,36 @@ function __c43(j: number): any {
           assistantArn: S.String,
           targetId: S.String,
           targetType: S.String,
-          contentFeedback: __S(345, __c43, 1),
+          contentFeedback: __S(4097, __c128, 1),
         }),
       ).annotate({ identifier: "PutFeedbackResponse" });
-    case 4:
+  }
+}
+function __c129(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ field: S.String, comparator: S.String, value: S.String }),
       ).annotate({ identifier: "QueryConditionItem" });
-    case 5:
-      return S.Union([/*@__PURE__*/ S.Struct({ single: __S(348, __c43, 4) })]);
-    case 6:
-      return S.Array(__S(349, __c43, 5));
-    case 7:
+    case 1:
+      return S.Union([/*@__PURE__*/ S.Struct({ single: __S(4128, __c129, 0) })]);
+    case 2:
+      return S.Array(__S(4129, __c129, 1));
+    case 3:
       return S.suspend(() => S.Struct({ intentId: S.String })).annotate({
         identifier: "IntentInputData",
       });
-  }
-}
-function __c44(j: number): any {
-  switch (j) {
-    case 0:
+    case 4:
       return S.suspend(() => S.Struct({ caseArn: S.String })).annotate({
         identifier: "CaseSummarizationInputData",
       });
-    case 1:
+    case 5:
       return S.Union([
-        /*@__PURE__*/ S.Struct({ queryTextInputData: __S(53, __c6, 5) }),
-        /*@__PURE__*/ S.Struct({ intentInputData: __S(351, __c43, 7) }),
-        /*@__PURE__*/ S.Struct({ caseSummarizationInputData: __S(352, __c44, 0) }),
+        /*@__PURE__*/ S.Struct({ queryTextInputData: __S(576, __c18, 0) }),
+        /*@__PURE__*/ S.Struct({ intentInputData: __S(4131, __c129, 3) }),
+        /*@__PURE__*/ S.Struct({ caseSummarizationInputData: __S(4132, __c129, 4) }),
       ]);
-    case 2:
+    case 6:
       return S.suspend(() =>
         S.Struct({
           assistantId: S.String.pipe(T.HttpLabel("assistantId")),
@@ -9645,8 +10125,8 @@ function __c44(j: number): any {
           nextToken: S.optional(S.String),
           maxResults: S.optional(S.Number),
           sessionId: S.optional(S.String),
-          queryCondition: S.optional(__S(350, __c43, 6)),
-          queryInputData: S.optional(__S(353, __c44, 1)),
+          queryCondition: S.optional(__S(4130, __c129, 2)),
+          queryInputData: S.optional(__S(4133, __c129, 5)),
           overrideKnowledgeBaseSearchType: S.optional(S.String),
         }).pipe(
           T.all(
@@ -9659,23 +10139,27 @@ function __c44(j: number): any {
           ),
         ),
       ).annotate({ identifier: "QueryAssistantRequest" });
-    case 3:
+    case 7:
       return S.suspend(() =>
         S.Struct({
           resultId: S.String,
-          document: S.optional(__S(227, __c28, 3)),
+          document: S.optional(__S(3267, __c102, 3)),
           relevanceScore: S.optional(S.Number),
-          data: S.optional(__S(245, __c30, 5)),
+          data: S.optional(__S(3285, __c102, 21)),
           type: S.optional(S.String),
         }),
       ).annotate({ identifier: "ResultData" });
-    case 4:
-      return S.Array(__S(355, __c44, 3));
-    case 5:
+    case 8:
+      return S.Array(__S(4135, __c129, 7));
+    case 9:
       return S.suspend(() =>
-        S.Struct({ results: __S(356, __c44, 4), nextToken: S.optional(S.String) }),
+        S.Struct({ results: __S(4136, __c129, 8), nextToken: S.optional(S.String) }),
       ).annotate({ identifier: "QueryAssistantResponse" });
-    case 6:
+  }
+}
+function __c130(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           assistantId: S.String.pipe(T.HttpLabel("assistantId")),
@@ -9694,7 +10178,11 @@ function __c44(j: number): any {
       ).annotate({
         identifier: "RemoveAssistantAIAgentRequest",
       });
-    case 7:
+  }
+}
+function __c131(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({ knowledgeBaseId: S.String.pipe(T.HttpLabel("knowledgeBaseId")) }).pipe(
           T.all(
@@ -9711,14 +10199,14 @@ function __c44(j: number): any {
       });
   }
 }
-function __c45(j: number): any {
+function __c132(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           knowledgeBaseId: S.String.pipe(T.HttpLabel("knowledgeBaseId")),
           messageTemplateId: S.String.pipe(T.HttpLabel("messageTemplateId")),
-          attributes: __S(146, __c18, 2),
+          attributes: __S(1552, __c48, 16),
         }).pipe(
           T.all(
             T.Http({
@@ -9738,64 +10226,68 @@ function __c45(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          content: S.optional(__S(138, __c17, 2)),
-          sourceConfigurationSummary: S.optional(__S(150, __c18, 6)),
-          attributesNotInterpolated: S.optional(__S(18, __c2, 2)),
-          attachments: S.optional(__S(157, __c19, 5)),
+          content: S.optional(__S(1546, __c48, 10)),
+          sourceConfigurationSummary: S.optional(__S(1569, __c49, 1)),
+          attributesNotInterpolated: S.optional(__S(352, __c11, 0)),
+          attachments: S.optional(__S(1760, __c55, 0)),
         }),
       ).annotate({
         identifier: "RenderMessageTemplateResponse",
       });
-    case 2:
-      return S.Union([/*@__PURE__*/ S.Struct({ assistantAssociationIds: __S(18, __c2, 2) })]);
-    case 3:
+  }
+}
+function __c133(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Union([/*@__PURE__*/ S.Struct({ assistantAssociationIds: __S(352, __c11, 0) })]);
+    case 1:
       return S.Array(
-        /*@__PURE__*/ S.suspend(() => __S(365, __c45, 5)).annotate({
+        /*@__PURE__*/ S.suspend(() => __S(4259, __c133, 3)).annotate({
           identifier: "RetrievalFilterConfiguration",
         }),
       );
-    case 4:
+    case 2:
       return S.suspend(() => S.Struct({ key: S.String, value: S.Any })).annotate({
         identifier: "FilterAttribute",
       });
-    case 5:
+    case 3:
       return S.Union([
         /*@__PURE__*/ S.Struct({
-          andAll: /*@__PURE__*/ S.suspend(() => __S(363, __c45, 3)).annotate({
+          andAll: /*@__PURE__*/ S.suspend(() => __S(4257, __c133, 1)).annotate({
             identifier: "RetrievalFilterList",
           }),
         }),
-        /*@__PURE__*/ S.Struct({ equals: __S(364, __c45, 4) }),
-        /*@__PURE__*/ S.Struct({ greaterThan: __S(364, __c45, 4) }),
-        /*@__PURE__*/ S.Struct({ greaterThanOrEquals: __S(364, __c45, 4) }),
-        /*@__PURE__*/ S.Struct({ in: __S(364, __c45, 4) }),
-        /*@__PURE__*/ S.Struct({ lessThan: __S(364, __c45, 4) }),
-        /*@__PURE__*/ S.Struct({ lessThanOrEquals: __S(364, __c45, 4) }),
-        /*@__PURE__*/ S.Struct({ listContains: __S(364, __c45, 4) }),
-        /*@__PURE__*/ S.Struct({ notEquals: __S(364, __c45, 4) }),
-        /*@__PURE__*/ S.Struct({ notIn: __S(364, __c45, 4) }),
+        /*@__PURE__*/ S.Struct({ equals: __S(4258, __c133, 2) }),
+        /*@__PURE__*/ S.Struct({ greaterThan: __S(4258, __c133, 2) }),
+        /*@__PURE__*/ S.Struct({ greaterThanOrEquals: __S(4258, __c133, 2) }),
+        /*@__PURE__*/ S.Struct({ in: __S(4258, __c133, 2) }),
+        /*@__PURE__*/ S.Struct({ lessThan: __S(4258, __c133, 2) }),
+        /*@__PURE__*/ S.Struct({ lessThanOrEquals: __S(4258, __c133, 2) }),
+        /*@__PURE__*/ S.Struct({ listContains: __S(4258, __c133, 2) }),
+        /*@__PURE__*/ S.Struct({ notEquals: __S(4258, __c133, 2) }),
+        /*@__PURE__*/ S.Struct({ notIn: __S(4258, __c133, 2) }),
         /*@__PURE__*/ S.Struct({
-          orAll: /*@__PURE__*/ S.suspend(() => __S(363, __c45, 3)).annotate({
+          orAll: /*@__PURE__*/ S.suspend(() => __S(4257, __c133, 1)).annotate({
             identifier: "RetrievalFilterList",
           }),
         }),
-        /*@__PURE__*/ S.Struct({ startsWith: __S(364, __c45, 4) }),
-        /*@__PURE__*/ S.Struct({ stringContains: __S(364, __c45, 4) }),
+        /*@__PURE__*/ S.Struct({ startsWith: __S(4258, __c133, 2) }),
+        /*@__PURE__*/ S.Struct({ stringContains: __S(4258, __c133, 2) }),
       ]);
-    case 6:
+    case 4:
       return S.suspend(() =>
         S.Struct({
-          knowledgeSource: __S(362, __c45, 2),
-          filter: S.optional(__S(365, __c45, 5)),
+          knowledgeSource: __S(4256, __c133, 0),
+          filter: S.optional(__S(4259, __c133, 3)),
           numberOfResults: S.optional(S.Number),
           overrideKnowledgeBaseSearchType: S.optional(S.String),
         }),
       ).annotate({ identifier: "RetrievalConfiguration" });
-    case 7:
+    case 5:
       return S.suspend(() =>
         S.Struct({
           assistantId: S.String.pipe(T.HttpLabel("assistantId")),
-          retrievalConfiguration: __S(366, __c45, 6),
+          retrievalConfiguration: __S(4260, __c133, 4),
           retrievalQuery: SensitiveString,
         }).pipe(
           T.all(
@@ -9808,11 +10300,7 @@ function __c45(j: number): any {
           ),
         ),
       ).annotate({ identifier: "RetrieveRequest" });
-  }
-}
-function __c46(j: number): any {
-  switch (j) {
-    case 0:
+    case 6:
       return S.suspend(() =>
         S.Struct({
           associationId: S.String,
@@ -9821,31 +10309,21 @@ function __c46(j: number): any {
           contentText: SensitiveString,
         }),
       ).annotate({ identifier: "RetrieveResult" });
-    case 1:
-      return S.Array(__S(368, __c46, 0));
-    case 2:
+    case 7:
+      return S.Array(__S(4262, __c133, 6));
+    case 8:
       return S.suspend(() =>
         S.Struct({ associationId: S.String, code: S.String, message: S.String }),
       ).annotate({ identifier: "RetrieveError" });
-    case 3:
-      return S.Array(__S(370, __c46, 2));
-    case 4:
+    case 9:
+      return S.Array(__S(4264, __c133, 8));
+    case 10:
       return S.suspend(() =>
-        S.Struct({ results: __S(369, __c46, 1), errors: S.optional(__S(371, __c46, 3)) }),
+        S.Struct({ results: __S(4263, __c133, 7), errors: S.optional(__S(4265, __c133, 9)) }),
       ).annotate({ identifier: "RetrieveResponse" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({ field: S.String, operator: S.String, value: S.String }),
-      ).annotate({ identifier: "Filter" });
-    case 6:
-      return S.Array(__S(373, __c46, 5));
-    case 7:
-      return S.suspend(() => S.Struct({ filters: __S(374, __c46, 6) })).annotate({
-        identifier: "SearchExpression",
-      });
   }
 }
-function __c47(j: number): any {
+function __c134(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -9853,7 +10331,7 @@ function __c47(j: number): any {
           nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
           maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
           knowledgeBaseId: S.String.pipe(T.HttpLabel("knowledgeBaseId")),
-          searchExpression: __S(375, __c46, 7),
+          searchExpression: __S(4322, __c135, 2),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/knowledgeBases/{knowledgeBaseId}/search" }),
@@ -9865,11 +10343,29 @@ function __c47(j: number): any {
           ),
         ),
       ).annotate({ identifier: "SearchContentRequest" });
+  }
+}
+function __c135(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ field: S.String, operator: S.String, value: S.String }),
+      ).annotate({ identifier: "Filter" });
     case 1:
+      return S.Array(__S(4320, __c135, 0));
+    case 2:
+      return S.suspend(() => S.Struct({ filters: __S(4321, __c135, 1) })).annotate({
+        identifier: "SearchExpression",
+      });
+  }
+}
+function __c136(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String,
-          values: __S(18, __c2, 2),
+          values: __S(352, __c11, 0),
           operator: S.String,
           allowFuzziness: S.optional(S.Boolean),
           priority: S.optional(S.String),
@@ -9877,40 +10373,40 @@ function __c47(j: number): any {
       ).annotate({
         identifier: "MessageTemplateQueryField",
       });
+    case 1:
+      return S.Array(__S(4352, __c136, 0));
     case 2:
-      return S.Array(__S(377, __c47, 1));
-    case 3:
       return S.suspend(() =>
         S.Struct({
           name: S.String,
-          values: S.optional(__S(18, __c2, 2)),
+          values: S.optional(__S(352, __c11, 0)),
           operator: S.String,
           includeNoExistence: S.optional(S.Boolean),
         }),
       ).annotate({
         identifier: "MessageTemplateFilterField",
       });
+    case 3:
+      return S.Array(__S(4354, __c136, 2));
     case 4:
-      return S.Array(__S(379, __c47, 3));
-    case 5:
       return S.suspend(() => S.Struct({ name: S.String, order: S.optional(S.String) })).annotate({
         identifier: "MessageTemplateOrderField",
       });
-    case 6:
+    case 5:
       return S.suspend(() =>
         S.Struct({
-          queries: S.optional(__S(378, __c47, 2)),
-          filters: S.optional(__S(380, __c47, 4)),
-          orderOnField: S.optional(__S(381, __c47, 5)),
+          queries: S.optional(__S(4353, __c136, 1)),
+          filters: S.optional(__S(4355, __c136, 3)),
+          orderOnField: S.optional(__S(4356, __c136, 4)),
         }),
       ).annotate({
         identifier: "MessageTemplateSearchExpression",
       });
-    case 7:
+    case 6:
       return S.suspend(() =>
         S.Struct({
           knowledgeBaseId: S.String.pipe(T.HttpLabel("knowledgeBaseId")),
-          searchExpression: __S(382, __c47, 6),
+          searchExpression: __S(4357, __c136, 5),
           nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
           maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
         }).pipe(
@@ -9929,11 +10425,7 @@ function __c47(j: number): any {
       ).annotate({
         identifier: "SearchMessageTemplatesRequest",
       });
-  }
-}
-function __c48(j: number): any {
-  switch (j) {
-    case 0:
+    case 7:
       return S.suspend(() =>
         S.Struct({
           messageTemplateArn: S.String,
@@ -9949,71 +10441,71 @@ function __c48(j: number): any {
           isActive: S.optional(S.Boolean),
           versionNumber: S.optional(S.Number),
           description: S.optional(S.String),
-          sourceConfigurationSummary: S.optional(__S(150, __c18, 6)),
-          groupingConfiguration: S.optional(__S(147, __c18, 3)),
+          sourceConfigurationSummary: S.optional(__S(1569, __c49, 1)),
+          groupingConfiguration: S.optional(__S(1504, __c47, 0)),
           language: S.optional(S.String),
-          tags: S.optional(__S(41, __c5, 1)),
+          tags: S.optional(__S(288, __c9, 0)),
         }),
       ).annotate({
         identifier: "MessageTemplateSearchResultData",
       });
-    case 1:
-      return S.Array(__S(384, __c48, 0));
-    case 2:
+    case 8:
+      return S.Array(__S(4359, __c136, 7));
+    case 9:
       return S.suspend(() =>
-        S.Struct({ results: __S(385, __c48, 1), nextToken: S.optional(S.String) }),
+        S.Struct({ results: __S(4360, __c136, 8), nextToken: S.optional(S.String) }),
       ).annotate({
         identifier: "SearchMessageTemplatesResponse",
       });
-    case 3:
+  }
+}
+function __c137(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String,
-          values: __S(18, __c2, 2),
+          values: __S(352, __c11, 0),
           operator: S.String,
           allowFuzziness: S.optional(S.Boolean),
           priority: S.optional(S.String),
         }),
       ).annotate({ identifier: "QuickResponseQueryField" });
-    case 4:
-      return S.Array(__S(387, __c48, 3));
-    case 5:
+    case 1:
+      return S.Array(__S(4384, __c137, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           name: S.String,
-          values: S.optional(__S(18, __c2, 2)),
+          values: S.optional(__S(352, __c11, 0)),
           operator: S.String,
           includeNoExistence: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "QuickResponseFilterField" });
-    case 6:
-      return S.Array(__S(389, __c48, 5));
-    case 7:
+    case 3:
+      return S.Array(__S(4386, __c137, 2));
+    case 4:
       return S.suspend(() => S.Struct({ name: S.String, order: S.optional(S.String) })).annotate({
         identifier: "QuickResponseOrderField",
       });
-  }
-}
-function __c49(j: number): any {
-  switch (j) {
-    case 0:
+    case 5:
       return S.suspend(() =>
         S.Struct({
-          queries: S.optional(__S(388, __c48, 4)),
-          filters: S.optional(__S(390, __c48, 6)),
-          orderOnField: S.optional(__S(391, __c48, 7)),
+          queries: S.optional(__S(4385, __c137, 1)),
+          filters: S.optional(__S(4387, __c137, 3)),
+          orderOnField: S.optional(__S(4388, __c137, 4)),
         }),
       ).annotate({
         identifier: "QuickResponseSearchExpression",
       });
-    case 1:
+    case 6:
       return S.suspend(() =>
         S.Struct({
           knowledgeBaseId: S.String.pipe(T.HttpLabel("knowledgeBaseId")),
-          searchExpression: __S(392, __c49, 0),
+          searchExpression: __S(4389, __c137, 5),
           nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
           maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
-          attributes: S.optional(__S(96, __c12, 0)),
+          attributes: S.optional(__S(1120, __c35, 0)),
         }).pipe(
           T.all(
             T.Http({
@@ -10030,7 +10522,7 @@ function __c49(j: number): any {
       ).annotate({
         identifier: "SearchQuickResponsesRequest",
       });
-    case 2:
+    case 7:
       return S.suspend(() =>
         S.Struct({
           quickResponseArn: S.String,
@@ -10040,38 +10532,42 @@ function __c49(j: number): any {
           name: S.String,
           contentType: S.String,
           status: S.String,
-          contents: __S(161, __c20, 1),
+          contents: __S(1888, __c59, 0),
           createdTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
           lastModifiedTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
           isActive: S.Boolean,
           description: S.optional(S.String),
-          groupingConfiguration: S.optional(__S(147, __c18, 3)),
+          groupingConfiguration: S.optional(__S(1504, __c47, 0)),
           shortcutKey: S.optional(S.String),
           lastModifiedBy: S.optional(S.String),
-          channels: S.optional(__S(12, __c1, 4)),
+          channels: S.optional(__S(320, __c10, 0)),
           language: S.optional(S.String),
-          attributesNotInterpolated: S.optional(__S(18, __c2, 2)),
-          attributesInterpolated: S.optional(__S(18, __c2, 2)),
-          tags: S.optional(__S(41, __c5, 1)),
+          attributesNotInterpolated: S.optional(__S(352, __c11, 0)),
+          attributesInterpolated: S.optional(__S(352, __c11, 0)),
+          tags: S.optional(__S(288, __c9, 0)),
         }),
       ).annotate({
         identifier: "QuickResponseSearchResultData",
       });
-    case 3:
-      return S.Array(__S(394, __c49, 2));
-    case 4:
+    case 8:
+      return S.Array(__S(4391, __c137, 7));
+    case 9:
       return S.suspend(() =>
-        S.Struct({ results: __S(395, __c49, 3), nextToken: S.optional(S.String) }),
+        S.Struct({ results: __S(4392, __c137, 8), nextToken: S.optional(S.String) }),
       ).annotate({
         identifier: "SearchQuickResponsesResponse",
       });
-    case 5:
+  }
+}
+function __c138(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
           maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
           assistantId: S.String.pipe(T.HttpLabel("assistantId")),
-          searchExpression: __S(375, __c46, 7),
+          searchExpression: __S(4322, __c135, 2),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/assistants/{assistantId}/searchSessions" }),
@@ -10083,7 +10579,7 @@ function __c49(j: number): any {
           ),
         ),
       ).annotate({ identifier: "SearchSessionsRequest" });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           sessionId: S.String,
@@ -10092,21 +10588,21 @@ function __c49(j: number): any {
           assistantArn: S.String,
         }),
       ).annotate({ identifier: "SessionSummary" });
-    case 7:
-      return S.Array(__S(398, __c49, 6));
+    case 2:
+      return S.Array(__S(4417, __c138, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({ sessionSummaries: __S(4418, __c138, 2), nextToken: S.optional(S.String) }),
+      ).annotate({ identifier: "SearchSessionsResponse" });
   }
 }
-function __c50(j: number): any {
+function __c139(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() =>
-        S.Struct({ sessionSummaries: __S(399, __c49, 7), nextToken: S.optional(S.String) }),
-      ).annotate({ identifier: "SearchSessionsResponse" });
-    case 1:
-      return S.suspend(() => S.Struct({ value: __S(214, __c26, 6) })).annotate({
+      return S.suspend(() => S.Struct({ value: __S(3172, __c99, 4) })).annotate({
         identifier: "MessageInput",
       });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           turnNumber: S.optional(S.Number),
@@ -10117,32 +10613,32 @@ function __c50(j: number): any {
       ).annotate({
         identifier: "SelfServiceConversationHistory",
       });
+    case 2:
+      return S.Array(__S(4449, __c139, 1));
     case 3:
-      return S.Array(__S(402, __c50, 2));
-    case 4:
       return S.suspend(() =>
-        S.Struct({ selfServiceConversationHistory: __S(403, __c50, 3) }),
+        S.Struct({ selfServiceConversationHistory: __S(4450, __c139, 2) }),
       ).annotate({ identifier: "ConversationContext" });
-    case 5:
+    case 4:
       return S.suspend(() =>
         S.Struct({
           generateFillerMessage: S.optional(S.Boolean),
           generateChunkedMessage: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "MessageConfiguration" });
-    case 6:
+    case 5:
       return S.suspend(() =>
         S.Struct({
           assistantId: S.String.pipe(T.HttpLabel("assistantId")),
           sessionId: S.String.pipe(T.HttpLabel("sessionId")),
           type: S.String,
-          message: __S(401, __c50, 1),
+          message: __S(4448, __c139, 0),
           aiAgentId: S.optional(S.String),
-          conversationContext: S.optional(__S(404, __c50, 4)),
-          configuration: S.optional(__S(405, __c50, 5)),
+          conversationContext: S.optional(__S(4451, __c139, 3)),
+          configuration: S.optional(__S(4452, __c139, 4)),
           clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
           orchestratorUseCase: S.optional(S.String),
-          metadata: S.optional(__S(96, __c12, 0)),
+          metadata: S.optional(__S(1120, __c35, 0)),
           originRequestId: S.optional(S.String),
         }).pipe(
           T.all(
@@ -10158,17 +10654,17 @@ function __c50(j: number): any {
           ),
         ),
       ).annotate({ identifier: "SendMessageRequest" });
-    case 7:
+    case 6:
       return S.suspend(() =>
         S.Struct({
           requestMessageId: S.String,
-          configuration: S.optional(__S(405, __c50, 5)),
+          configuration: S.optional(__S(4452, __c139, 4)),
           nextMessageToken: S.String,
         }),
       ).annotate({ identifier: "SendMessageResponse" });
   }
 }
-function __c51(j: number): any {
+function __c140(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -10195,20 +10691,24 @@ function __c51(j: number): any {
           uploadId: S.String,
           url: SensitiveString,
           urlExpiry: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-          headersToInclude: __S(41, __c5, 1),
+          headersToInclude: __S(288, __c9, 0),
         }),
       ).annotate({
         identifier: "StartContentUploadResponse",
       });
-    case 2:
+  }
+}
+function __c141(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           knowledgeBaseId: S.String.pipe(T.HttpLabel("knowledgeBaseId")),
           importJobType: S.String,
           uploadId: S.String,
           clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-          metadata: S.optional(__S(96, __c12, 0)),
-          externalSourceConfiguration: S.optional(__S(201, __c25, 1)),
+          metadata: S.optional(__S(1120, __c35, 0)),
+          externalSourceConfiguration: S.optional(__S(2882, __c90, 2)),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/knowledgeBases/{knowledgeBaseId}/importJobs" }),
@@ -10220,11 +10720,15 @@ function __c51(j: number): any {
           ),
         ),
       ).annotate({ identifier: "StartImportJobRequest" });
-    case 3:
+  }
+}
+function __c142(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           resourceArn: S.String.pipe(T.HttpLabel("resourceArn")),
-          tags: __S(41, __c5, 1),
+          tags: __S(288, __c9, 0),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/tags/{resourceArn}" }),
@@ -10236,11 +10740,15 @@ function __c51(j: number): any {
           ),
         ),
       ).annotate({ identifier: "TagResourceRequest" });
-    case 4:
+  }
+}
+function __c143(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           resourceArn: S.String.pipe(T.HttpLabel("resourceArn")),
-          tagKeys: __S(18, __c2, 2).pipe(T.HttpQuery("tagKeys")),
+          tagKeys: __S(352, __c11, 0).pipe(T.HttpQuery("tagKeys")),
         }).pipe(
           T.all(
             T.Http({ method: "DELETE", uri: "/tags/{resourceArn}" }),
@@ -10252,14 +10760,18 @@ function __c51(j: number): any {
           ),
         ),
       ).annotate({ identifier: "UntagResourceRequest" });
-    case 5:
+  }
+}
+function __c144(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
           assistantId: S.String.pipe(T.HttpLabel("assistantId")),
           aiAgentId: S.String.pipe(T.HttpLabel("aiAgentId")),
           visibilityStatus: S.String,
-          configuration: S.optional(__S(40, __c5, 0)),
+          configuration: S.optional(__S(447, __c13, 31)),
           description: S.optional(S.String),
         }).pipe(
           T.all(
@@ -10272,7 +10784,11 @@ function __c51(j: number): any {
           ),
         ),
       ).annotate({ identifier: "UpdateAIAgentRequest" });
-    case 6:
+  }
+}
+function __c145(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
@@ -10282,11 +10798,11 @@ function __c51(j: number): any {
           blockedInputMessaging: SensitiveString,
           blockedOutputsMessaging: SensitiveString,
           description: S.optional(SensitiveString),
-          topicPolicyConfig: S.optional(__S(49, __c6, 1)),
-          contentPolicyConfig: S.optional(__S(52, __c6, 4)),
-          wordPolicyConfig: S.optional(__S(57, __c7, 1)),
-          sensitiveInformationPolicyConfig: S.optional(__S(62, __c7, 6)),
-          contextualGroundingPolicyConfig: S.optional(__S(65, __c8, 1)),
+          topicPolicyConfig: S.optional(__S(610, __c19, 2)),
+          contentPolicyConfig: S.optional(__S(613, __c19, 5)),
+          wordPolicyConfig: S.optional(__S(617, __c19, 9)),
+          sensitiveInformationPolicyConfig: S.optional(__S(622, __c19, 14)),
+          contextualGroundingPolicyConfig: S.optional(__S(625, __c19, 17)),
         }).pipe(
           T.all(
             T.Http({
@@ -10301,17 +10817,21 @@ function __c51(j: number): any {
           ),
         ),
       ).annotate({ identifier: "UpdateAIGuardrailRequest" });
-    case 7:
+  }
+}
+function __c146(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
           assistantId: S.String.pipe(T.HttpLabel("assistantId")),
           aiPromptId: S.String.pipe(T.HttpLabel("aiPromptId")),
           visibilityStatus: S.String,
-          templateConfiguration: S.optional(__S(72, __c9, 0)),
+          templateConfiguration: S.optional(__S(737, __c23, 1)),
           description: S.optional(S.String),
           modelId: S.optional(S.String),
-          inferenceConfiguration: S.optional(__S(73, __c9, 1)),
+          inferenceConfiguration: S.optional(__S(738, __c23, 2)),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/assistants/{assistantId}/aiprompts/{aiPromptId}" }),
@@ -10325,14 +10845,14 @@ function __c51(j: number): any {
       ).annotate({ identifier: "UpdateAIPromptRequest" });
   }
 }
-function __c52(j: number): any {
+function __c147(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           assistantId: S.String.pipe(T.HttpLabel("assistantId")),
           aiAgentType: S.String,
-          configuration: __S(83, __c10, 3),
+          configuration: __S(897, __c28, 1),
           orchestratorUseCase: S.optional(S.String),
         }).pipe(
           T.all(
@@ -10348,10 +10868,14 @@ function __c52(j: number): any {
         identifier: "UpdateAssistantAIAgentRequest",
       });
     case 1:
-      return S.suspend(() => S.Struct({ assistant: S.optional(__S(87, __c10, 7)) })).annotate({
+      return S.suspend(() => S.Struct({ assistant: S.optional(__S(961, __c30, 1)) })).annotate({
         identifier: "UpdateAssistantAIAgentResponse",
       });
-    case 2:
+  }
+}
+function __c148(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           knowledgeBaseId: S.String.pipe(T.HttpLabel("knowledgeBaseId")),
@@ -10360,7 +10884,7 @@ function __c52(j: number): any {
           title: S.optional(S.String),
           overrideLinkOutUri: S.optional(S.String),
           removeOverrideLinkOutUri: S.optional(S.Boolean),
-          metadata: S.optional(__S(96, __c12, 0)),
+          metadata: S.optional(__S(1120, __c35, 0)),
           uploadId: S.optional(S.String),
         }).pipe(
           T.all(
@@ -10376,163 +10900,8 @@ function __c52(j: number): any {
           ),
         ),
       ).annotate({ identifier: "UpdateContentRequest" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          knowledgeBaseId: S.String.pipe(T.HttpLabel("knowledgeBaseId")),
-          templateUri: S.String,
-        }).pipe(
-          T.all(
-            T.Http({ method: "POST", uri: "/knowledgeBases/{knowledgeBaseId}/templateUri" }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({
-        identifier: "UpdateKnowledgeBaseTemplateUriRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          knowledgeBaseId: S.String.pipe(T.HttpLabel("knowledgeBaseId")),
-          messageTemplateId: S.String.pipe(T.HttpLabel("messageTemplateId")),
-          content: S.optional(__S(138, __c17, 2)),
-          language: S.optional(S.String),
-          sourceConfiguration: S.optional(__S(140, __c17, 4)),
-          defaultAttributes: S.optional(__S(146, __c18, 2)),
-        }).pipe(
-          T.all(
-            T.Http({
-              method: "POST",
-              uri: "/knowledgeBases/{knowledgeBaseId}/messageTemplates/{messageTemplateId}",
-            }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({
-        identifier: "UpdateMessageTemplateRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          knowledgeBaseId: S.String.pipe(T.HttpLabel("knowledgeBaseId")),
-          messageTemplateId: S.String.pipe(T.HttpLabel("messageTemplateId")),
-          name: S.optional(S.String),
-          description: S.optional(S.String),
-          groupingConfiguration: S.optional(__S(147, __c18, 3)),
-        }).pipe(
-          T.all(
-            T.Http({
-              method: "POST",
-              uri: "/knowledgeBases/{knowledgeBaseId}/messageTemplates/{messageTemplateId}/metadata",
-            }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({
-        identifier: "UpdateMessageTemplateMetadataRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          knowledgeBaseId: S.String.pipe(T.HttpLabel("knowledgeBaseId")),
-          quickResponseId: S.String.pipe(T.HttpLabel("quickResponseId")),
-          name: S.optional(S.String),
-          content: S.optional(__S(127, __c15, 7)),
-          contentType: S.optional(S.String),
-          groupingConfiguration: S.optional(__S(147, __c18, 3)),
-          removeGroupingConfiguration: S.optional(S.Boolean),
-          description: S.optional(S.String),
-          removeDescription: S.optional(S.Boolean),
-          shortcutKey: S.optional(S.String),
-          removeShortcutKey: S.optional(S.Boolean),
-          isActive: S.optional(S.Boolean),
-          channels: S.optional(__S(12, __c1, 4)),
-          language: S.optional(S.String),
-        }).pipe(
-          T.all(
-            T.Http({
-              method: "POST",
-              uri: "/knowledgeBases/{knowledgeBaseId}/quickResponses/{quickResponseId}",
-            }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({
-        identifier: "UpdateQuickResponseRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          assistantId: S.String.pipe(T.HttpLabel("assistantId")),
-          sessionId: S.String.pipe(T.HttpLabel("sessionId")),
-          description: S.optional(S.String),
-          tagFilter: S.optional(__S(6, __c0, 6)),
-          aiAgentConfiguration: S.optional(__S(84, __c10, 4)),
-          orchestratorConfigurationList: S.optional(__S(86, __c10, 6)),
-          removeOrchestratorConfigurationList: S.optional(S.Boolean),
-        }).pipe(
-          T.all(
-            T.Http({ method: "POST", uri: "/assistants/{assistantId}/sessions/{sessionId}" }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({ identifier: "UpdateSessionRequest" });
   }
 }
-function __c53(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          assistantId: S.String.pipe(T.HttpLabel("assistantId")),
-          sessionId: S.String.pipe(T.HttpLabel("sessionId")),
-          namespace: S.optional(S.String),
-          data: __S(219, __c27, 3),
-        }).pipe(
-          T.all(
-            T.Http({ method: "PATCH", uri: "/assistants/{assistantId}/sessions/{sessionId}/data" }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({ identifier: "UpdateSessionDataRequest" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          sessionArn: S.String,
-          sessionId: S.String,
-          namespace: S.String,
-          data: __S(219, __c27, 3),
-        }),
-      ).annotate({
-        identifier: "UpdateSessionDataResponse",
-      });
-  }
-}
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

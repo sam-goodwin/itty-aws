@@ -237,8 +237,8 @@ export const createUpdate: API.OperationMethod<
   CreateUpdateError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(0, __c0, 0) as any as S.Schema<CreateUpdateRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<Update>,
+  input: __S(20, __c5, 0) as any as S.Schema<CreateUpdateRequest>,
+  output: __S(24, __c6, 0) as any as S.Schema<Update>,
   errors: [BadRequest, NotFound, Conflict, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -252,8 +252,8 @@ export const createUpdateSchedule: API.OperationMethod<
   CreateUpdateScheduleError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2, __c0, 2) as any as S.Schema<CreateUpdateScheduleRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<CreateUpdateScheduleResponse>,
+  input: __S(28, __c7, 0) as any as S.Schema<CreateUpdateScheduleRequest>,
+  output: __S(32, __c8, 0) as any as S.Schema<CreateUpdateScheduleResponse>,
   errors: [BadRequest, NotFound, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -267,8 +267,8 @@ export const deleteUpdateSchedule: API.OperationMethod<
   DeleteUpdateScheduleError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(4, __c0, 4) as any as S.Schema<DeleteUpdateScheduleRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<DeleteUpdateScheduleResponse>,
+  input: __S(36, __c9, 0) as any as S.Schema<DeleteUpdateScheduleRequest>,
+  output: __S(40, __c10, 0) as any as S.Schema<DeleteUpdateScheduleResponse>,
   errors: [BadRequest, NotFound, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -282,8 +282,8 @@ export const disableServiceResource: API.OperationMethod<
   DisableServiceResourceError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(6, __c0, 6) as any as S.Schema<DisableServiceResourceRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<DisableServiceResourceResponse>,
+  input: __S(44, __c11, 0) as any as S.Schema<DisableServiceResourceRequest>,
+  output: __S(40, __c10, 0) as any as S.Schema<DisableServiceResourceResponse>,
   errors: [BadRequest, NotFound, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -297,8 +297,8 @@ export const enableServiceResource: API.OperationMethod<
   EnableServiceResourceError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(7, __c0, 7) as any as S.Schema<EnableServiceResourceRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<EnableServiceResourceResponse>,
+  input: __S(48, __c12, 0) as any as S.Schema<EnableServiceResourceRequest>,
+  output: __S(40, __c10, 0) as any as S.Schema<EnableServiceResourceResponse>,
   errors: [BadRequest, NotFound, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -312,8 +312,8 @@ export const getServiceResource: API.OperationMethod<
   GetServiceResourceError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(8, __c1, 0) as any as S.Schema<GetServiceResourceRequest>,
-  output: __S(9, __c1, 1) as any as S.Schema<GetUpdateServiceResponse>,
+  input: __S(52, __c13, 0) as any as S.Schema<GetServiceResourceRequest>,
+  output: __S(53, __c13, 1) as any as S.Schema<GetUpdateServiceResponse>,
   errors: [BadRequest, NotFound, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -327,8 +327,8 @@ export const getUpdate: API.OperationMethod<
   GetUpdateError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(10, __c1, 2) as any as S.Schema<GetUpdateRequest>,
-  output: __S(1, __c0, 1) as any as S.Schema<Update>,
+  input: __S(56, __c14, 0) as any as S.Schema<GetUpdateRequest>,
+  output: __S(24, __c6, 0) as any as S.Schema<Update>,
   errors: [BadRequest, NotFound, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -342,8 +342,8 @@ export const getUpdateSchedule: API.OperationMethod<
   GetUpdateScheduleError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(11, __c1, 3) as any as S.Schema<GetUpdateScheduleRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<GetUpdateScheduleResponse>,
+  input: __S(0, __c0, 0) as any as S.Schema<GetUpdateScheduleRequest>,
+  output: __S(32, __c8, 0) as any as S.Schema<GetUpdateScheduleResponse>,
   errors: [BadRequest, NotFound, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -357,8 +357,8 @@ export const listUpdatePolicies: API.OperationMethod<
   ListUpdatePoliciesError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(12, __c1, 4) as any as S.Schema<ListUpdatePoliciesRequest>,
-  output: __S(15, __c1, 7) as any as S.Schema<GetUpdatePoliciesResponse>,
+  input: __S(4, __c1, 0) as any as S.Schema<ListUpdatePoliciesRequest>,
+  output: __S(7, __c1, 3) as any as S.Schema<GetUpdatePoliciesResponse>,
   errors: [BadRequest, NotFound, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -372,8 +372,8 @@ export const listUpdates: API.OperationMethod<
   ListUpdatesError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(16, __c2, 0) as any as S.Schema<ListUpdatesRequest>,
-  output: __S(18, __c2, 2) as any as S.Schema<GetUpdatesListResponse>,
+  input: __S(8, __c2, 0) as any as S.Schema<ListUpdatesRequest>,
+  output: __S(10, __c2, 2) as any as S.Schema<GetUpdatesListResponse>,
   errors: [BadRequest, NotFound, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -387,8 +387,8 @@ export const listUpdateSchedules: API.OperationMethod<
   ListUpdateSchedulesError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(19, __c2, 3) as any as S.Schema<ListUpdateSchedulesRequest>,
-  output: __S(22, __c2, 6) as any as S.Schema<GetUpdateSchedulesResponse>,
+  input: __S(12, __c3, 0) as any as S.Schema<ListUpdateSchedulesRequest>,
+  output: __S(15, __c3, 3) as any as S.Schema<GetUpdateSchedulesResponse>,
   errors: [BadRequest, NotFound, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -402,8 +402,8 @@ export const updateUpdateSchedule: API.OperationMethod<
   UpdateUpdateScheduleError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(23, __c2, 7) as any as S.Schema<UpdateUpdateScheduleRequest>,
-  output: __S(3, __c0, 3) as any as S.Schema<UpdateUpdateScheduleResponse>,
+  input: __S(16, __c4, 0) as any as S.Schema<UpdateUpdateScheduleRequest>,
+  output: __S(32, __c8, 0) as any as S.Schema<UpdateUpdateScheduleResponse>,
   errors: [BadRequest, NotFound, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -413,168 +413,6 @@ export const updateUpdateSchedule: API.OperationMethod<
 function __c0(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() =>
-        S.Struct({
-          projectId: S.String.pipe(T.Label()),
-          region: S.String.pipe(T.Label()),
-          serverId: S.String.pipe(T.Label()),
-          backupBeforeUpdate: S.optional(S.Boolean),
-          maintenanceWindow: S.Number,
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/v2/projects/{projectId}/regions/{region}/servers/{serverId}/updates",
-            code: 200,
-            baseUrl: "https://server-update.api.stackit.cloud",
-          }),
-        ),
-      ).annotate({ identifier: "CreateUpdateRequest" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          endDate: S.optional(S.String),
-          failReason: S.optional(S.String),
-          failedUpdates: S.optional(S.Number),
-          id: S.Number,
-          installedUpdates: S.optional(S.Number),
-          startDate: S.String,
-          status: S.String,
-        }),
-      ).annotate({ identifier: "Update" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          projectId: S.String.pipe(T.Label()),
-          region: S.String.pipe(T.Label()),
-          serverId: S.String.pipe(T.Label()),
-          enabled: S.Boolean,
-          maintenanceWindow: S.Number,
-          name: S.String,
-          rrule: S.String,
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/v2/projects/{projectId}/regions/{region}/servers/{serverId}/update-schedules",
-            code: 200,
-            baseUrl: "https://server-update.api.stackit.cloud",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateUpdateScheduleRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          enabled: S.Boolean,
-          maintenanceWindow: S.Number,
-          name: S.String,
-          rrule: S.String,
-          id: S.Number,
-        }),
-      ).annotate({
-        identifier: "CreateUpdateScheduleResponse",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          projectId: S.String.pipe(T.Label()),
-          region: S.String.pipe(T.Label()),
-          serverId: S.String.pipe(T.Label()),
-          scheduleId: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/v2/projects/{projectId}/regions/{region}/servers/{serverId}/update-schedules/{scheduleId}",
-            code: 200,
-            baseUrl: "https://server-update.api.stackit.cloud",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteUpdateScheduleRequest",
-      });
-    case 5:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "DeleteUpdateScheduleResponse",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          projectId: S.String.pipe(T.Label()),
-          region: S.String.pipe(T.Label()),
-          serverId: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/v2/projects/{projectId}/regions/{region}/servers/{serverId}/service",
-            code: 200,
-            baseUrl: "https://server-update.api.stackit.cloud",
-          }),
-        ),
-      ).annotate({
-        identifier: "DisableServiceResourceRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          projectId: S.String.pipe(T.Label()),
-          region: S.String.pipe(T.Label()),
-          serverId: S.String.pipe(T.Label()),
-          updatePolicyId: S.optional(S.String),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/v2/projects/{projectId}/regions/{region}/servers/{serverId}/service",
-            code: 200,
-            baseUrl: "https://server-update.api.stackit.cloud",
-          }),
-        ),
-      ).annotate({
-        identifier: "EnableServiceResourceRequest",
-      });
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          projectId: S.String.pipe(T.Label()),
-          region: S.String.pipe(T.Label()),
-          serverId: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/v2/projects/{projectId}/regions/{region}/servers/{serverId}/service",
-            code: 200,
-            baseUrl: "https://server-update.api.stackit.cloud",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetServiceResourceRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          enabled: S.optional(S.Boolean),
-        }),
-      ).annotate({ identifier: "GetUpdateServiceResponse" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          projectId: S.String.pipe(T.Label()),
-          region: S.String.pipe(T.Label()),
-          serverId: S.String.pipe(T.Label()),
-          updateId: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/v2/projects/{projectId}/regions/{region}/servers/{serverId}/updates/{updateId}",
-            code: 200,
-            baseUrl: "https://server-update.api.stackit.cloud",
-          }),
-        ),
-      ).annotate({ identifier: "GetUpdateRequest" });
-    case 3:
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.Label()),
@@ -590,7 +428,11 @@ function __c1(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetUpdateScheduleRequest" });
-    case 4:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.Label()),
@@ -605,7 +447,7 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "ListUpdatePoliciesRequest",
       });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           default: S.optional(S.Boolean),
@@ -617,12 +459,12 @@ function __c1(j: number): any {
           rrule: S.optional(S.String),
         }),
       ).annotate({ identifier: "UpdatePolicy" });
-    case 6:
-      return S.Array(__S(13, __c1, 5));
-    case 7:
+    case 2:
+      return S.Array(__S(5, __c1, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          items: S.optional(__S(14, __c1, 6)),
+          items: S.optional(__S(6, __c1, 2)),
         }),
       ).annotate({
         identifier: "GetUpdatePoliciesResponse",
@@ -647,14 +489,18 @@ function __c2(j: number): any {
         ),
       ).annotate({ identifier: "ListUpdatesRequest" });
     case 1:
-      return S.Array(__S(1, __c0, 1));
+      return S.Array(__S(24, __c6, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          items: S.optional(__S(17, __c2, 1)),
+          items: S.optional(__S(9, __c2, 1)),
         }),
       ).annotate({ identifier: "GetUpdatesListResponse" });
-    case 3:
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.Label()),
@@ -671,7 +517,7 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "ListUpdateSchedulesRequest",
       });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           enabled: S.Boolean,
@@ -681,17 +527,21 @@ function __c2(j: number): any {
           id: S.Number,
         }),
       ).annotate({ identifier: "UpdateSchedule" });
-    case 5:
-      return S.Array(__S(20, __c2, 4));
-    case 6:
+    case 2:
+      return S.Array(__S(13, __c3, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          items: S.optional(__S(21, __c2, 5)),
+          items: S.optional(__S(14, __c3, 2)),
         }),
       ).annotate({
         identifier: "GetUpdateSchedulesResponse",
       });
-    case 7:
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.Label()),
@@ -715,7 +565,204 @@ function __c2(j: number): any {
       });
   }
 }
-
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          projectId: S.String.pipe(T.Label()),
+          region: S.String.pipe(T.Label()),
+          serverId: S.String.pipe(T.Label()),
+          backupBeforeUpdate: S.optional(S.Boolean),
+          maintenanceWindow: S.Number,
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/v2/projects/{projectId}/regions/{region}/servers/{serverId}/updates",
+            code: 200,
+            baseUrl: "https://server-update.api.stackit.cloud",
+          }),
+        ),
+      ).annotate({ identifier: "CreateUpdateRequest" });
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          endDate: S.optional(S.String),
+          failReason: S.optional(S.String),
+          failedUpdates: S.optional(S.Number),
+          id: S.Number,
+          installedUpdates: S.optional(S.Number),
+          startDate: S.String,
+          status: S.String,
+        }),
+      ).annotate({ identifier: "Update" });
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          projectId: S.String.pipe(T.Label()),
+          region: S.String.pipe(T.Label()),
+          serverId: S.String.pipe(T.Label()),
+          enabled: S.Boolean,
+          maintenanceWindow: S.Number,
+          name: S.String,
+          rrule: S.String,
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/v2/projects/{projectId}/regions/{region}/servers/{serverId}/update-schedules",
+            code: 200,
+            baseUrl: "https://server-update.api.stackit.cloud",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateUpdateScheduleRequest",
+      });
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          enabled: S.Boolean,
+          maintenanceWindow: S.Number,
+          name: S.String,
+          rrule: S.String,
+          id: S.Number,
+        }),
+      ).annotate({
+        identifier: "CreateUpdateScheduleResponse",
+      });
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          projectId: S.String.pipe(T.Label()),
+          region: S.String.pipe(T.Label()),
+          serverId: S.String.pipe(T.Label()),
+          scheduleId: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/v2/projects/{projectId}/regions/{region}/servers/{serverId}/update-schedules/{scheduleId}",
+            code: 200,
+            baseUrl: "https://server-update.api.stackit.cloud",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteUpdateScheduleRequest",
+      });
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "DeleteUpdateScheduleResponse",
+      });
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          projectId: S.String.pipe(T.Label()),
+          region: S.String.pipe(T.Label()),
+          serverId: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/v2/projects/{projectId}/regions/{region}/servers/{serverId}/service",
+            code: 200,
+            baseUrl: "https://server-update.api.stackit.cloud",
+          }),
+        ),
+      ).annotate({
+        identifier: "DisableServiceResourceRequest",
+      });
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          projectId: S.String.pipe(T.Label()),
+          region: S.String.pipe(T.Label()),
+          serverId: S.String.pipe(T.Label()),
+          updatePolicyId: S.optional(S.String),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/v2/projects/{projectId}/regions/{region}/servers/{serverId}/service",
+            code: 200,
+            baseUrl: "https://server-update.api.stackit.cloud",
+          }),
+        ),
+      ).annotate({
+        identifier: "EnableServiceResourceRequest",
+      });
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          projectId: S.String.pipe(T.Label()),
+          region: S.String.pipe(T.Label()),
+          serverId: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/v2/projects/{projectId}/regions/{region}/servers/{serverId}/service",
+            code: 200,
+            baseUrl: "https://server-update.api.stackit.cloud",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetServiceResourceRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          enabled: S.optional(S.Boolean),
+        }),
+      ).annotate({ identifier: "GetUpdateServiceResponse" });
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          projectId: S.String.pipe(T.Label()),
+          region: S.String.pipe(T.Label()),
+          serverId: S.String.pipe(T.Label()),
+          updateId: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/v2/projects/{projectId}/regions/{region}/servers/{serverId}/updates/{updateId}",
+            code: 200,
+            baseUrl: "https://server-update.api.stackit.cloud",
+          }),
+        ),
+      ).annotate({ identifier: "GetUpdateRequest" });
+  }
+}
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

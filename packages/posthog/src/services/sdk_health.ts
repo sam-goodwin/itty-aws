@@ -135,7 +135,7 @@ export const getSdkHealthReport: API.OperationMethod<
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(0, __c0, 0) as any as S.Schema<GetSdkHealthReportRequest>,
-  output: __S(8, __c1, 0) as any as S.Schema<SdkHealthReport>,
+  output: __S(8, __c0, 8) as any as S.Schema<SdkHealthReport>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -209,11 +209,7 @@ function __c0(j: number): any {
       ).annotate({ identifier: "SdkAssessment" });
     case 7:
       return S.Array(__S(6, __c0, 6));
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
+    case 8:
       return S.suspend(() =>
         S.Struct({
           overall_health: S.optional(S.String),
@@ -225,7 +221,6 @@ function __c1(j: number): any {
       ).annotate({ identifier: "SdkHealthReport" });
   }
 }
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

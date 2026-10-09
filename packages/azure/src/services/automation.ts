@@ -6032,8 +6032,8 @@ export const AutomationAccountCreateOrUpdate: API.OperationMethod<
   AutomationAccountCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(9, __c1, 1) as any as S.Schema<AutomationAccountCreateOrUpdateRequest>,
-  output: __S(21, __c2, 5) as any as S.Schema<AutomationAccountCreateOrUpdateResponse>,
+  input: __S(1, __c0, 1) as any as S.Schema<AutomationAccountCreateOrUpdateRequest>,
+  output: __S(96, __c6, 0) as any as S.Schema<AutomationAccountCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6047,8 +6047,8 @@ export const CertificateCreateOrUpdate: API.OperationMethod<
   CertificateCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(23, __c2, 7) as any as S.Schema<CertificateCreateOrUpdateRequest>,
-  output: __S(25, __c3, 1) as any as S.Schema<CertificateCreateOrUpdateResponse>,
+  input: __S(177, __c11, 1) as any as S.Schema<CertificateCreateOrUpdateRequest>,
+  output: __S(192, __c12, 0) as any as S.Schema<CertificateCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6062,8 +6062,8 @@ export const ConnectionCreateOrUpdate: API.OperationMethod<
   ConnectionCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(28, __c3, 4) as any as S.Schema<ConnectionCreateOrUpdateRequest>,
-  output: __S(30, __c3, 6) as any as S.Schema<ConnectionCreateOrUpdateResponse>,
+  input: __S(1777, __c111, 1) as any as S.Schema<ConnectionCreateOrUpdateRequest>,
+  output: __S(1778, __c111, 2) as any as S.Schema<ConnectionCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6077,8 +6077,8 @@ export const ConnectionTypeCreateOrUpdate: API.OperationMethod<
   ConnectionTypeCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(34, __c4, 2) as any as S.Schema<ConnectionTypeCreateOrUpdateRequest>,
-  output: __S(36, __c4, 4) as any as S.Schema<ConnectionTypeCreateOrUpdateResponse>,
+  input: __S(1985, __c124, 1) as any as S.Schema<ConnectionTypeCreateOrUpdateRequest>,
+  output: __S(2000, __c125, 0) as any as S.Schema<ConnectionTypeCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6092,8 +6092,8 @@ export const ConvertGraphRunbookContent: API.OperationMethod<
   ConvertGraphRunbookContentError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(38, __c4, 6) as any as S.Schema<ConvertGraphRunbookContentRequest>,
-  output: __S(39, __c4, 7) as any as S.Schema<GraphicalRunbookContent>,
+  input: __S(2289, __c143, 1) as any as S.Schema<ConvertGraphRunbookContentRequest>,
+  output: __S(2290, __c143, 2) as any as S.Schema<GraphicalRunbookContent>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6107,8 +6107,8 @@ export const CreateHybridRunbookWorker: API.OperationMethod<
   CreateHybridRunbookWorkerError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(41, __c5, 1) as any as S.Schema<CreateHybridRunbookWorkerRequest>,
-  output: __S(43, __c5, 3) as any as S.Schema<CreateHybridRunbookWorkerResponse>,
+  input: __S(2576, __c161, 0) as any as S.Schema<CreateHybridRunbookWorkerRequest>,
+  output: __S(2608, __c163, 0) as any as S.Schema<CreateHybridRunbookWorkerResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6122,8 +6122,8 @@ export const CreateHybridRunbookWorkerGroup: API.OperationMethod<
   CreateHybridRunbookWorkerGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(45, __c5, 5) as any as S.Schema<CreateHybridRunbookWorkerGroupRequest>,
-  output: __S(47, __c5, 7) as any as S.Schema<CreateHybridRunbookWorkerGroupResponse>,
+  input: __S(2880, __c180, 0) as any as S.Schema<CreateHybridRunbookWorkerGroupRequest>,
+  output: __S(2928, __c183, 0) as any as S.Schema<CreateHybridRunbookWorkerGroupResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6137,8 +6137,8 @@ export const CreateJob: API.OperationMethod<
   CreateJobError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(49, __c6, 1) as any as S.Schema<CreateJobRequest>,
-  output: __S(52, __c6, 4) as any as S.Schema<CreateJobResponse>,
+  input: __S(3265, __c204, 1) as any as S.Schema<CreateJobRequest>,
+  output: __S(3281, __c205, 1) as any as S.Schema<CreateJobResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6152,8 +6152,8 @@ export const CreateJobSchedule: API.OperationMethod<
   CreateJobScheduleError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(54, __c6, 6) as any as S.Schema<CreateJobScheduleRequest>,
-  output: __S(56, __c7, 0) as any as S.Schema<CreateJobScheduleResponse>,
+  input: __S(3569, __c223, 1) as any as S.Schema<CreateJobScheduleRequest>,
+  output: __S(3570, __c223, 2) as any as S.Schema<CreateJobScheduleResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6167,8 +6167,8 @@ export const CreateRuntimeEnvironment: API.OperationMethod<
   CreateRuntimeEnvironmentError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(59, __c7, 3) as any as S.Schema<CreateRuntimeEnvironmentRequest>,
-  output: __S(60, __c7, 4) as any as S.Schema<CreateRuntimeEnvironmentResponse>,
+  input: __S(3872, __c242, 0) as any as S.Schema<CreateRuntimeEnvironmentRequest>,
+  output: __S(3904, __c244, 0) as any as S.Schema<CreateRuntimeEnvironmentResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6182,8 +6182,8 @@ export const CreateSoftwareUpdateConfiguration: API.OperationMethod<
   CreateSoftwareUpdateConfigurationError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(80, __c10, 0) as any as S.Schema<CreateSoftwareUpdateConfigurationRequest>,
-  output: __S(83, __c10, 3) as any as S.Schema<CreateSoftwareUpdateConfigurationResponse>,
+  input: __S(226, __c14, 2) as any as S.Schema<CreateSoftwareUpdateConfigurationRequest>,
+  output: __S(274, __c17, 2) as any as S.Schema<CreateSoftwareUpdateConfigurationResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6197,8 +6197,8 @@ export const CreateSourceControlSyncJob: API.OperationMethod<
   CreateSourceControlSyncJobError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(85, __c10, 5) as any as S.Schema<CreateSourceControlSyncJobRequest>,
-  output: __S(87, __c10, 7) as any as S.Schema<SourceControlSyncJob>,
+  input: __S(497, __c31, 1) as any as S.Schema<CreateSourceControlSyncJobRequest>,
+  output: __S(513, __c32, 1) as any as S.Schema<SourceControlSyncJob>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6212,8 +6212,8 @@ export const CreateTestJob: API.OperationMethod<
   CreateTestJobError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(88, __c11, 0) as any as S.Schema<CreateTestJobRequest>,
-  output: __S(89, __c11, 1) as any as S.Schema<TestJob>,
+  input: __S(688, __c43, 0) as any as S.Schema<CreateTestJobRequest>,
+  output: __S(704, __c44, 0) as any as S.Schema<TestJob>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6227,8 +6227,8 @@ export const CredentialCreateOrUpdate: API.OperationMethod<
   CredentialCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(91, __c11, 3) as any as S.Schema<CredentialCreateOrUpdateRequest>,
-  output: __S(93, __c11, 5) as any as S.Schema<CredentialCreateOrUpdateResponse>,
+  input: __S(897, __c56, 1) as any as S.Schema<CredentialCreateOrUpdateRequest>,
+  output: __S(898, __c56, 2) as any as S.Schema<CredentialCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6242,8 +6242,8 @@ export const DeleteAutomationAccount: API.OperationMethod<
   DeleteAutomationAccountError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(94, __c11, 6) as any as S.Schema<DeleteAutomationAccountRequest>,
-  output: __S(95, __c11, 7) as any as S.Schema<DeleteAutomationAccountResponse>,
+  input: __S(1104, __c69, 0) as any as S.Schema<DeleteAutomationAccountRequest>,
+  output: __S(1120, __c70, 0) as any as S.Schema<DeleteAutomationAccountResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6257,8 +6257,8 @@ export const DeleteCertificate: API.OperationMethod<
   DeleteCertificateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(96, __c12, 0) as any as S.Schema<DeleteCertificateRequest>,
-  output: __S(97, __c12, 1) as any as S.Schema<DeleteCertificateResponse>,
+  input: __S(1312, __c82, 0) as any as S.Schema<DeleteCertificateRequest>,
+  output: __S(1328, __c83, 0) as any as S.Schema<DeleteCertificateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6272,8 +6272,8 @@ export const DeleteConnection: API.OperationMethod<
   DeleteConnectionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(98, __c12, 2) as any as S.Schema<DeleteConnectionRequest>,
-  output: __S(97, __c12, 1) as any as S.Schema<DeleteConnectionResponse>,
+  input: __S(1520, __c95, 0) as any as S.Schema<DeleteConnectionRequest>,
+  output: __S(1328, __c83, 0) as any as S.Schema<DeleteConnectionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6287,8 +6287,8 @@ export const DeleteConnectionType: API.OperationMethod<
   DeleteConnectionTypeError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(99, __c12, 3) as any as S.Schema<DeleteConnectionTypeRequest>,
-  output: __S(97, __c12, 1) as any as S.Schema<DeleteConnectionTypeResponse>,
+  input: __S(1696, __c106, 0) as any as S.Schema<DeleteConnectionTypeRequest>,
+  output: __S(1328, __c83, 0) as any as S.Schema<DeleteConnectionTypeResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6302,8 +6302,8 @@ export const DeleteCredential: API.OperationMethod<
   DeleteCredentialError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(100, __c12, 4) as any as S.Schema<DeleteCredentialRequest>,
-  output: __S(97, __c12, 1) as any as S.Schema<DeleteCredentialResponse>,
+  input: __S(1744, __c109, 0) as any as S.Schema<DeleteCredentialRequest>,
+  output: __S(1328, __c83, 0) as any as S.Schema<DeleteCredentialResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6317,8 +6317,8 @@ export const DeleteDscConfiguration: API.OperationMethod<
   DeleteDscConfigurationError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(101, __c12, 5) as any as S.Schema<DeleteDscConfigurationRequest>,
-  output: __S(97, __c12, 1) as any as S.Schema<DeleteDscConfigurationResponse>,
+  input: __S(1760, __c110, 0) as any as S.Schema<DeleteDscConfigurationRequest>,
+  output: __S(1328, __c83, 0) as any as S.Schema<DeleteDscConfigurationResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6332,8 +6332,8 @@ export const DeleteDscNode: API.OperationMethod<
   DeleteDscNodeError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(102, __c12, 6) as any as S.Schema<DeleteDscNodeRequest>,
-  output: __S(97, __c12, 1) as any as S.Schema<DeleteDscNodeResponse>,
+  input: __S(1824, __c114, 0) as any as S.Schema<DeleteDscNodeRequest>,
+  output: __S(1328, __c83, 0) as any as S.Schema<DeleteDscNodeResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6347,8 +6347,8 @@ export const DeleteDscNodeConfiguration: API.OperationMethod<
   DeleteDscNodeConfigurationError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(103, __c12, 7) as any as S.Schema<DeleteDscNodeConfigurationRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<DeleteDscNodeConfigurationResponse>,
+  input: __S(1840, __c115, 0) as any as S.Schema<DeleteDscNodeConfigurationRequest>,
+  output: __S(80, __c5, 0) as any as S.Schema<DeleteDscNodeConfigurationResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6362,8 +6362,8 @@ export const DeleteHybridRunbookWorker: API.OperationMethod<
   DeleteHybridRunbookWorkerError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(104, __c13, 0) as any as S.Schema<DeleteHybridRunbookWorkerRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<DeleteHybridRunbookWorkerResponse>,
+  input: __S(1856, __c116, 0) as any as S.Schema<DeleteHybridRunbookWorkerRequest>,
+  output: __S(80, __c5, 0) as any as S.Schema<DeleteHybridRunbookWorkerResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6377,8 +6377,8 @@ export const DeleteHybridRunbookWorkerGroup: API.OperationMethod<
   DeleteHybridRunbookWorkerGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(105, __c13, 1) as any as S.Schema<DeleteHybridRunbookWorkerGroupRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<DeleteHybridRunbookWorkerGroupResponse>,
+  input: __S(1872, __c117, 0) as any as S.Schema<DeleteHybridRunbookWorkerGroupRequest>,
+  output: __S(80, __c5, 0) as any as S.Schema<DeleteHybridRunbookWorkerGroupResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6392,8 +6392,8 @@ export const DeleteJobSchedule: API.OperationMethod<
   DeleteJobScheduleError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(106, __c13, 2) as any as S.Schema<DeleteJobScheduleRequest>,
-  output: __S(97, __c12, 1) as any as S.Schema<DeleteJobScheduleResponse>,
+  input: __S(1888, __c118, 0) as any as S.Schema<DeleteJobScheduleRequest>,
+  output: __S(1328, __c83, 0) as any as S.Schema<DeleteJobScheduleResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6407,8 +6407,8 @@ export const DeleteModule: API.OperationMethod<
   DeleteModuleError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(107, __c13, 3) as any as S.Schema<DeleteModuleRequest>,
-  output: __S(97, __c12, 1) as any as S.Schema<DeleteModuleResponse>,
+  input: __S(1904, __c119, 0) as any as S.Schema<DeleteModuleRequest>,
+  output: __S(1328, __c83, 0) as any as S.Schema<DeleteModuleResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6422,8 +6422,8 @@ export const DeletePackage: API.OperationMethod<
   DeletePackageError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(108, __c13, 4) as any as S.Schema<DeletePackageRequest>,
-  output: __S(97, __c12, 1) as any as S.Schema<DeletePackageResponse>,
+  input: __S(1920, __c120, 0) as any as S.Schema<DeletePackageRequest>,
+  output: __S(1328, __c83, 0) as any as S.Schema<DeletePackageResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6437,8 +6437,8 @@ export const DeletePrivateEndpointConnection: API.OperationMethod<
   DeletePrivateEndpointConnectionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(109, __c13, 5) as any as S.Schema<DeletePrivateEndpointConnectionRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<DeletePrivateEndpointConnectionResponse>,
+  input: __S(1936, __c121, 0) as any as S.Schema<DeletePrivateEndpointConnectionRequest>,
+  output: __S(80, __c5, 0) as any as S.Schema<DeletePrivateEndpointConnectionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6452,8 +6452,8 @@ export const DeletePython2Package: API.OperationMethod<
   DeletePython2PackageError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(110, __c13, 6) as any as S.Schema<DeletePython2PackageRequest>,
-  output: __S(97, __c12, 1) as any as S.Schema<DeletePython2PackageResponse>,
+  input: __S(1952, __c122, 0) as any as S.Schema<DeletePython2PackageRequest>,
+  output: __S(1328, __c83, 0) as any as S.Schema<DeletePython2PackageResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6467,8 +6467,8 @@ export const DeletePython3Package: API.OperationMethod<
   DeletePython3PackageError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(111, __c13, 7) as any as S.Schema<DeletePython3PackageRequest>,
-  output: __S(97, __c12, 1) as any as S.Schema<DeletePython3PackageResponse>,
+  input: __S(1968, __c123, 0) as any as S.Schema<DeletePython3PackageRequest>,
+  output: __S(1328, __c83, 0) as any as S.Schema<DeletePython3PackageResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6482,8 +6482,8 @@ export const DeleteRunbook: API.OperationMethod<
   DeleteRunbookError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(112, __c14, 0) as any as S.Schema<DeleteRunbookRequest>,
-  output: __S(97, __c12, 1) as any as S.Schema<DeleteRunbookResponse>,
+  input: __S(2032, __c127, 0) as any as S.Schema<DeleteRunbookRequest>,
+  output: __S(1328, __c83, 0) as any as S.Schema<DeleteRunbookResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6497,8 +6497,8 @@ export const DeleteRuntimeEnvironment: API.OperationMethod<
   DeleteRuntimeEnvironmentError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(113, __c14, 1) as any as S.Schema<DeleteRuntimeEnvironmentRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<DeleteRuntimeEnvironmentResponse>,
+  input: __S(2048, __c128, 0) as any as S.Schema<DeleteRuntimeEnvironmentRequest>,
+  output: __S(80, __c5, 0) as any as S.Schema<DeleteRuntimeEnvironmentResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6512,8 +6512,8 @@ export const DeleteSchedule: API.OperationMethod<
   DeleteScheduleError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(114, __c14, 2) as any as S.Schema<DeleteScheduleRequest>,
-  output: __S(97, __c12, 1) as any as S.Schema<DeleteScheduleResponse>,
+  input: __S(2064, __c129, 0) as any as S.Schema<DeleteScheduleRequest>,
+  output: __S(1328, __c83, 0) as any as S.Schema<DeleteScheduleResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6527,8 +6527,8 @@ export const DeleteSoftwareUpdateConfiguration: API.OperationMethod<
   DeleteSoftwareUpdateConfigurationError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(115, __c14, 3) as any as S.Schema<DeleteSoftwareUpdateConfigurationRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<DeleteSoftwareUpdateConfigurationResponse>,
+  input: __S(2080, __c130, 0) as any as S.Schema<DeleteSoftwareUpdateConfigurationRequest>,
+  output: __S(80, __c5, 0) as any as S.Schema<DeleteSoftwareUpdateConfigurationResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6542,8 +6542,8 @@ export const DeleteSourceControl: API.OperationMethod<
   DeleteSourceControlError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(116, __c14, 4) as any as S.Schema<DeleteSourceControlRequest>,
-  output: __S(97, __c12, 1) as any as S.Schema<DeleteSourceControlResponse>,
+  input: __S(2096, __c131, 0) as any as S.Schema<DeleteSourceControlRequest>,
+  output: __S(1328, __c83, 0) as any as S.Schema<DeleteSourceControlResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6557,8 +6557,8 @@ export const DeleteVariable: API.OperationMethod<
   DeleteVariableError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(117, __c14, 5) as any as S.Schema<DeleteVariableRequest>,
-  output: __S(97, __c12, 1) as any as S.Schema<DeleteVariableResponse>,
+  input: __S(2112, __c132, 0) as any as S.Schema<DeleteVariableRequest>,
+  output: __S(1328, __c83, 0) as any as S.Schema<DeleteVariableResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6572,8 +6572,8 @@ export const DeleteWatcher: API.OperationMethod<
   DeleteWatcherError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(118, __c14, 6) as any as S.Schema<DeleteWatcherRequest>,
-  output: __S(97, __c12, 1) as any as S.Schema<DeleteWatcherResponse>,
+  input: __S(2128, __c133, 0) as any as S.Schema<DeleteWatcherRequest>,
+  output: __S(1328, __c83, 0) as any as S.Schema<DeleteWatcherResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6587,8 +6587,8 @@ export const DeleteWebhook: API.OperationMethod<
   DeleteWebhookError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(119, __c14, 7) as any as S.Schema<DeleteWebhookRequest>,
-  output: __S(97, __c12, 1) as any as S.Schema<DeleteWebhookResponse>,
+  input: __S(2144, __c134, 0) as any as S.Schema<DeleteWebhookRequest>,
+  output: __S(1328, __c83, 0) as any as S.Schema<DeleteWebhookResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6602,8 +6602,8 @@ export const DscConfigurationCreateOrUpdate: API.OperationMethod<
   DscConfigurationCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(125, __c15, 5) as any as S.Schema<DscConfigurationCreateOrUpdateRequest>,
-  output: __S(127, __c15, 7) as any as S.Schema<DscConfigurationCreateOrUpdateResponse>,
+  input: __S(2160, __c135, 0) as any as S.Schema<DscConfigurationCreateOrUpdateRequest>,
+  output: __S(2224, __c139, 0) as any as S.Schema<DscConfigurationCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6617,8 +6617,8 @@ export const DscNodeConfigurationCreateOrUpdate: API.OperationMethod<
   DscNodeConfigurationCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(129, __c16, 1) as any as S.Schema<DscNodeConfigurationCreateOrUpdateRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<DscNodeConfigurationCreateOrUpdateResponse>,
+  input: __S(2273, __c142, 1) as any as S.Schema<DscNodeConfigurationCreateOrUpdateRequest>,
+  output: __S(80, __c5, 0) as any as S.Schema<DscNodeConfigurationCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6632,8 +6632,8 @@ export const EditRunbookDraftUndo: API.OperationMethod<
   EditRunbookDraftUndoError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(130, __c16, 2) as any as S.Schema<EditRunbookDraftUndoRequest>,
-  output: __S(131, __c16, 3) as any as S.Schema<EditRunbookDraftUndoResult>,
+  input: __S(2304, __c144, 0) as any as S.Schema<EditRunbookDraftUndoRequest>,
+  output: __S(2305, __c144, 1) as any as S.Schema<EditRunbookDraftUndoResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6647,8 +6647,8 @@ export const GenerateWebhookUri: API.OperationMethod<
   GenerateWebhookUriError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(132, __c16, 4) as any as S.Schema<GenerateWebhookUriRequest>,
-  output: __S(133, __c16, 5) as any as S.Schema<GenerateWebhookUriResponse>,
+  input: __S(2320, __c145, 0) as any as S.Schema<GenerateWebhookUriRequest>,
+  output: __S(2336, __c146, 0) as any as S.Schema<GenerateWebhookUriResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6662,8 +6662,8 @@ export const GetActivity: API.OperationMethod<
   GetActivityError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(134, __c16, 6) as any as S.Schema<GetActivityRequest>,
-  output: __S(144, __c18, 0) as any as S.Schema<Activity>,
+  input: __S(2352, __c147, 0) as any as S.Schema<GetActivityRequest>,
+  output: __S(2375, __c148, 7) as any as S.Schema<Activity>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6677,8 +6677,8 @@ export const GetAgentRegistrationInformation: API.OperationMethod<
   GetAgentRegistrationInformationError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(145, __c18, 1) as any as S.Schema<GetAgentRegistrationInformationRequest>,
-  output: __S(147, __c18, 3) as any as S.Schema<AgentRegistration>,
+  input: __S(2400, __c150, 0) as any as S.Schema<GetAgentRegistrationInformationRequest>,
+  output: __S(2417, __c151, 1) as any as S.Schema<AgentRegistration>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6692,8 +6692,8 @@ export const GetAutomationAccount: API.OperationMethod<
   GetAutomationAccountError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(148, __c18, 4) as any as S.Schema<GetAutomationAccountRequest>,
-  output: __S(21, __c2, 5) as any as S.Schema<GetAutomationAccountResponse>,
+  input: __S(2432, __c152, 0) as any as S.Schema<GetAutomationAccountRequest>,
+  output: __S(96, __c6, 0) as any as S.Schema<GetAutomationAccountResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6707,8 +6707,8 @@ export const GetCertificate: API.OperationMethod<
   GetCertificateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(149, __c18, 5) as any as S.Schema<GetCertificateRequest>,
-  output: __S(150, __c18, 6) as any as S.Schema<GetCertificateResponse>,
+  input: __S(2448, __c153, 0) as any as S.Schema<GetCertificateRequest>,
+  output: __S(2464, __c154, 0) as any as S.Schema<GetCertificateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6722,8 +6722,8 @@ export const GetConnection: API.OperationMethod<
   GetConnectionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(151, __c18, 7) as any as S.Schema<GetConnectionRequest>,
-  output: __S(152, __c19, 0) as any as S.Schema<GetConnectionResponse>,
+  input: __S(2480, __c155, 0) as any as S.Schema<GetConnectionRequest>,
+  output: __S(2496, __c156, 0) as any as S.Schema<GetConnectionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6737,8 +6737,8 @@ export const GetConnectionType: API.OperationMethod<
   GetConnectionTypeError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(153, __c19, 1) as any as S.Schema<GetConnectionTypeRequest>,
-  output: __S(36, __c4, 4) as any as S.Schema<GetConnectionTypeResponse>,
+  input: __S(2512, __c157, 0) as any as S.Schema<GetConnectionTypeRequest>,
+  output: __S(2000, __c125, 0) as any as S.Schema<GetConnectionTypeResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6752,8 +6752,8 @@ export const GetCredential: API.OperationMethod<
   GetCredentialError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(154, __c19, 2) as any as S.Schema<GetCredentialRequest>,
-  output: __S(155, __c19, 3) as any as S.Schema<GetCredentialResponse>,
+  input: __S(2528, __c158, 0) as any as S.Schema<GetCredentialRequest>,
+  output: __S(2544, __c159, 0) as any as S.Schema<GetCredentialResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6767,8 +6767,8 @@ export const GetDscConfiguration: API.OperationMethod<
   GetDscConfigurationError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(156, __c19, 4) as any as S.Schema<GetDscConfigurationRequest>,
-  output: __S(127, __c15, 7) as any as S.Schema<GetDscConfigurationResponse>,
+  input: __S(2560, __c160, 0) as any as S.Schema<GetDscConfigurationRequest>,
+  output: __S(2224, __c139, 0) as any as S.Schema<GetDscConfigurationResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6782,8 +6782,8 @@ export const GetDscConfigurationContent: API.OperationMethod<
   GetDscConfigurationContentError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(157, __c19, 5) as any as S.Schema<GetDscConfigurationContentRequest>,
-  output: __S(133, __c16, 5) as any as S.Schema<GetDscConfigurationContentResponse>,
+  input: __S(2640, __c165, 0) as any as S.Schema<GetDscConfigurationContentRequest>,
+  output: __S(2336, __c146, 0) as any as S.Schema<GetDscConfigurationContentResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6797,8 +6797,8 @@ export const GetDscNode: API.OperationMethod<
   GetDscNodeError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(158, __c19, 6) as any as S.Schema<GetDscNodeRequest>,
-  output: __S(162, __c20, 2) as any as S.Schema<GetDscNodeResponse>,
+  input: __S(2656, __c166, 0) as any as S.Schema<GetDscNodeRequest>,
+  output: __S(2675, __c167, 3) as any as S.Schema<GetDscNodeResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6812,8 +6812,8 @@ export const GetDscNodeConfiguration: API.OperationMethod<
   GetDscNodeConfigurationError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(163, __c20, 3) as any as S.Schema<GetDscNodeConfigurationRequest>,
-  output: __S(165, __c20, 5) as any as S.Schema<GetDscNodeConfigurationResponse>,
+  input: __S(2688, __c168, 0) as any as S.Schema<GetDscNodeConfigurationRequest>,
+  output: __S(2689, __c168, 1) as any as S.Schema<GetDscNodeConfigurationResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6827,8 +6827,8 @@ export const GetHybridRunbookWorker: API.OperationMethod<
   GetHybridRunbookWorkerError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(166, __c20, 6) as any as S.Schema<GetHybridRunbookWorkerRequest>,
-  output: __S(43, __c5, 3) as any as S.Schema<GetHybridRunbookWorkerResponse>,
+  input: __S(2720, __c170, 0) as any as S.Schema<GetHybridRunbookWorkerRequest>,
+  output: __S(2608, __c163, 0) as any as S.Schema<GetHybridRunbookWorkerResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6842,8 +6842,8 @@ export const GetHybridRunbookWorkerGroup: API.OperationMethod<
   GetHybridRunbookWorkerGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(167, __c20, 7) as any as S.Schema<GetHybridRunbookWorkerGroupRequest>,
-  output: __S(47, __c5, 7) as any as S.Schema<GetHybridRunbookWorkerGroupResponse>,
+  input: __S(2736, __c171, 0) as any as S.Schema<GetHybridRunbookWorkerGroupRequest>,
+  output: __S(2928, __c183, 0) as any as S.Schema<GetHybridRunbookWorkerGroupResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6857,8 +6857,8 @@ export const GetJob: API.OperationMethod<
   GetJobError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(168, __c21, 0) as any as S.Schema<GetJobRequest>,
-  output: __S(52, __c6, 4) as any as S.Schema<GetJobResponse>,
+  input: __S(2752, __c172, 0) as any as S.Schema<GetJobRequest>,
+  output: __S(3281, __c205, 1) as any as S.Schema<GetJobResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6872,8 +6872,8 @@ export const GetJobOutput: API.OperationMethod<
   GetJobOutputError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(169, __c21, 1) as any as S.Schema<GetJobOutputRequest>,
-  output: __S(170, __c21, 2) as any as S.Schema<GetJobOutputResponse>,
+  input: __S(2768, __c173, 0) as any as S.Schema<GetJobOutputRequest>,
+  output: __S(2769, __c173, 1) as any as S.Schema<GetJobOutputResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6887,8 +6887,8 @@ export const GetJobRunbookContent: API.OperationMethod<
   GetJobRunbookContentError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(171, __c21, 3) as any as S.Schema<GetJobRunbookContentRequest>,
-  output: __S(133, __c16, 5) as any as S.Schema<GetJobRunbookContentResponse>,
+  input: __S(2784, __c174, 0) as any as S.Schema<GetJobRunbookContentRequest>,
+  output: __S(2336, __c146, 0) as any as S.Schema<GetJobRunbookContentResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6902,8 +6902,8 @@ export const GetJobSchedule: API.OperationMethod<
   GetJobScheduleError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(172, __c21, 4) as any as S.Schema<GetJobScheduleRequest>,
-  output: __S(173, __c21, 5) as any as S.Schema<GetJobScheduleResponse>,
+  input: __S(2800, __c175, 0) as any as S.Schema<GetJobScheduleRequest>,
+  output: __S(2816, __c176, 0) as any as S.Schema<GetJobScheduleResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6917,8 +6917,8 @@ export const GetJobStream: API.OperationMethod<
   GetJobStreamError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(174, __c21, 6) as any as S.Schema<GetJobStreamRequest>,
-  output: __S(177, __c22, 1) as any as S.Schema<JobStream>,
+  input: __S(2832, __c177, 0) as any as S.Schema<GetJobStreamRequest>,
+  output: __S(2865, __c179, 1) as any as S.Schema<JobStream>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6932,8 +6932,8 @@ export const GetLinkedWorkspace: API.OperationMethod<
   GetLinkedWorkspaceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(178, __c22, 2) as any as S.Schema<GetLinkedWorkspaceRequest>,
-  output: __S(11, __c1, 3) as any as S.Schema<LinkedWorkspace>,
+  input: __S(2944, __c184, 0) as any as S.Schema<GetLinkedWorkspaceRequest>,
+  output: __S(112, __c7, 0) as any as S.Schema<LinkedWorkspace>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6947,8 +6947,8 @@ export const GetModule: API.OperationMethod<
   GetModuleError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(179, __c22, 3) as any as S.Schema<GetModuleRequest>,
-  output: __S(182, __c22, 6) as any as S.Schema<GetModuleResponse>,
+  input: __S(2960, __c185, 0) as any as S.Schema<GetModuleRequest>,
+  output: __S(2976, __c186, 0) as any as S.Schema<GetModuleResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6962,8 +6962,8 @@ export const GetNodeCountInformation: API.OperationMethod<
   GetNodeCountInformationError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(183, __c22, 7) as any as S.Schema<GetNodeCountInformationRequest>,
-  output: __S(187, __c23, 3) as any as S.Schema<NodeCounts>,
+  input: __S(3024, __c189, 0) as any as S.Schema<GetNodeCountInformationRequest>,
+  output: __S(3028, __c189, 4) as any as S.Schema<NodeCounts>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6977,8 +6977,8 @@ export const GetNodeReport: API.OperationMethod<
   GetNodeReportError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(188, __c23, 4) as any as S.Schema<GetNodeReportRequest>,
-  output: __S(196, __c24, 4) as any as S.Schema<DscNodeReport>,
+  input: __S(3040, __c190, 0) as any as S.Schema<GetNodeReportRequest>,
+  output: __S(3063, __c191, 7) as any as S.Schema<DscNodeReport>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6992,8 +6992,8 @@ export const GetNodeReportContent: API.OperationMethod<
   GetNodeReportContentError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(197, __c24, 5) as any as S.Schema<GetNodeReportContentRequest>,
-  output: __S(133, __c16, 5) as any as S.Schema<GetNodeReportContentResponse>,
+  input: __S(3072, __c192, 0) as any as S.Schema<GetNodeReportContentRequest>,
+  output: __S(2336, __c146, 0) as any as S.Schema<GetNodeReportContentResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7007,8 +7007,8 @@ export const GetPackage: API.OperationMethod<
   GetPackageError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(198, __c24, 6) as any as S.Schema<GetPackageRequest>,
-  output: __S(200, __c25, 0) as any as S.Schema<GetPackageResponse>,
+  input: __S(3088, __c193, 0) as any as S.Schema<GetPackageRequest>,
+  output: __S(3120, __c195, 0) as any as S.Schema<GetPackageResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7022,8 +7022,8 @@ export const GetPrivateEndpointConnection: API.OperationMethod<
   GetPrivateEndpointConnectionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(201, __c25, 1) as any as S.Schema<GetPrivateEndpointConnectionRequest>,
-  output: __S(15, __c1, 7) as any as S.Schema<GetPrivateEndpointConnectionResponse>,
+  input: __S(3136, __c196, 0) as any as S.Schema<GetPrivateEndpointConnectionRequest>,
+  output: __S(130, __c8, 2) as any as S.Schema<GetPrivateEndpointConnectionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7037,8 +7037,8 @@ export const GetPython2Package: API.OperationMethod<
   GetPython2PackageError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(202, __c25, 2) as any as S.Schema<GetPython2PackageRequest>,
-  output: __S(203, __c25, 3) as any as S.Schema<GetPython2PackageResponse>,
+  input: __S(3152, __c197, 0) as any as S.Schema<GetPython2PackageRequest>,
+  output: __S(3168, __c198, 0) as any as S.Schema<GetPython2PackageResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7052,8 +7052,8 @@ export const GetPython3Package: API.OperationMethod<
   GetPython3PackageError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(204, __c25, 4) as any as S.Schema<GetPython3PackageRequest>,
-  output: __S(203, __c25, 3) as any as S.Schema<GetPython3PackageResponse>,
+  input: __S(3184, __c199, 0) as any as S.Schema<GetPython3PackageRequest>,
+  output: __S(3168, __c198, 0) as any as S.Schema<GetPython3PackageResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7067,8 +7067,8 @@ export const GetRunbook: API.OperationMethod<
   GetRunbookError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(205, __c25, 5) as any as S.Schema<GetRunbookRequest>,
-  output: __S(208, __c26, 0) as any as S.Schema<GetRunbookResponse>,
+  input: __S(3200, __c200, 0) as any as S.Schema<GetRunbookRequest>,
+  output: __S(3232, __c202, 0) as any as S.Schema<GetRunbookResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7082,8 +7082,8 @@ export const GetRunbookContent: API.OperationMethod<
   GetRunbookContentError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(209, __c26, 1) as any as S.Schema<GetRunbookContentRequest>,
-  output: __S(133, __c16, 5) as any as S.Schema<GetRunbookContentResponse>,
+  input: __S(3312, __c207, 0) as any as S.Schema<GetRunbookContentRequest>,
+  output: __S(2336, __c146, 0) as any as S.Schema<GetRunbookContentResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7097,8 +7097,8 @@ export const GetRunbookDraft: API.OperationMethod<
   GetRunbookDraftError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(210, __c26, 2) as any as S.Schema<GetRunbookDraftRequest>,
-  output: __S(206, __c25, 6) as any as S.Schema<RunbookDraft>,
+  input: __S(3328, __c208, 0) as any as S.Schema<GetRunbookDraftRequest>,
+  output: __S(3248, __c203, 0) as any as S.Schema<RunbookDraft>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7112,8 +7112,8 @@ export const GetRunbookDraftContent: API.OperationMethod<
   GetRunbookDraftContentError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(211, __c26, 3) as any as S.Schema<GetRunbookDraftContentRequest>,
-  output: __S(133, __c16, 5) as any as S.Schema<GetRunbookDraftContentResponse>,
+  input: __S(3344, __c209, 0) as any as S.Schema<GetRunbookDraftContentRequest>,
+  output: __S(2336, __c146, 0) as any as S.Schema<GetRunbookDraftContentResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7127,8 +7127,8 @@ export const GetRuntimeEnvironment: API.OperationMethod<
   GetRuntimeEnvironmentError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(212, __c26, 4) as any as S.Schema<GetRuntimeEnvironmentRequest>,
-  output: __S(60, __c7, 4) as any as S.Schema<GetRuntimeEnvironmentResponse>,
+  input: __S(3360, __c210, 0) as any as S.Schema<GetRuntimeEnvironmentRequest>,
+  output: __S(3904, __c244, 0) as any as S.Schema<GetRuntimeEnvironmentResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7142,8 +7142,8 @@ export const GetSchedule: API.OperationMethod<
   GetScheduleError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(213, __c26, 5) as any as S.Schema<GetScheduleRequest>,
-  output: __S(215, __c26, 7) as any as S.Schema<GetScheduleResponse>,
+  input: __S(3376, __c211, 0) as any as S.Schema<GetScheduleRequest>,
+  output: __S(3408, __c213, 0) as any as S.Schema<GetScheduleResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7157,8 +7157,8 @@ export const GetSoftwareUpdateConfigurationByName: API.OperationMethod<
   GetSoftwareUpdateConfigurationByNameError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(216, __c27, 0) as any as S.Schema<GetSoftwareUpdateConfigurationByNameRequest>,
-  output: __S(83, __c10, 3) as any as S.Schema<GetSoftwareUpdateConfigurationByNameResponse>,
+  input: __S(3424, __c214, 0) as any as S.Schema<GetSoftwareUpdateConfigurationByNameRequest>,
+  output: __S(274, __c17, 2) as any as S.Schema<GetSoftwareUpdateConfigurationByNameResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7172,8 +7172,12 @@ export const GetSoftwareUpdateConfigurationMachineRunById: API.OperationMethod<
   GetSoftwareUpdateConfigurationMachineRunByIdError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(217, __c27, 1) as any as S.Schema<GetSoftwareUpdateConfigurationMachineRunByIdRequest>,
-  output: __S(219, __c27, 3) as any as S.Schema<SoftwareUpdateConfigurationMachineRun>,
+  input: __S(
+    3440,
+    __c215,
+    0,
+  ) as any as S.Schema<GetSoftwareUpdateConfigurationMachineRunByIdRequest>,
+  output: __S(3457, __c216, 1) as any as S.Schema<SoftwareUpdateConfigurationMachineRun>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7187,8 +7191,8 @@ export const GetSoftwareUpdateConfigurationRunById: API.OperationMethod<
   GetSoftwareUpdateConfigurationRunByIdError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(220, __c27, 4) as any as S.Schema<GetSoftwareUpdateConfigurationRunByIdRequest>,
-  output: __S(224, __c28, 0) as any as S.Schema<SoftwareUpdateConfigurationRun>,
+  input: __S(3472, __c217, 0) as any as S.Schema<GetSoftwareUpdateConfigurationRunByIdRequest>,
+  output: __S(3491, __c218, 3) as any as S.Schema<SoftwareUpdateConfigurationRun>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7202,8 +7206,8 @@ export const GetSourceControl: API.OperationMethod<
   GetSourceControlError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(225, __c28, 1) as any as S.Schema<GetSourceControlRequest>,
-  output: __S(227, __c28, 3) as any as S.Schema<GetSourceControlResponse>,
+  input: __S(3504, __c219, 0) as any as S.Schema<GetSourceControlRequest>,
+  output: __S(3520, __c220, 0) as any as S.Schema<GetSourceControlResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7217,8 +7221,8 @@ export const GetSourceControlSyncJob: API.OperationMethod<
   GetSourceControlSyncJobError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(228, __c28, 4) as any as S.Schema<GetSourceControlSyncJobRequest>,
-  output: __S(230, __c28, 6) as any as S.Schema<SourceControlSyncJobById>,
+  input: __S(3552, __c222, 0) as any as S.Schema<GetSourceControlSyncJobRequest>,
+  output: __S(3554, __c222, 2) as any as S.Schema<SourceControlSyncJobById>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7232,8 +7236,8 @@ export const GetSourceControlSyncJobStream: API.OperationMethod<
   GetSourceControlSyncJobStreamError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(231, __c28, 7) as any as S.Schema<GetSourceControlSyncJobStreamRequest>,
-  output: __S(233, __c29, 1) as any as S.Schema<SourceControlSyncJobStreamById>,
+  input: __S(3600, __c225, 0) as any as S.Schema<GetSourceControlSyncJobStreamRequest>,
+  output: __S(3602, __c225, 2) as any as S.Schema<SourceControlSyncJobStreamById>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7247,8 +7251,8 @@ export const GetTestJob: API.OperationMethod<
   GetTestJobError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(234, __c29, 2) as any as S.Schema<GetTestJobRequest>,
-  output: __S(89, __c11, 1) as any as S.Schema<TestJob>,
+  input: __S(3616, __c226, 0) as any as S.Schema<GetTestJobRequest>,
+  output: __S(704, __c44, 0) as any as S.Schema<TestJob>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7262,8 +7266,8 @@ export const GetTestJobStream: API.OperationMethod<
   GetTestJobStreamError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(235, __c29, 3) as any as S.Schema<GetTestJobStreamRequest>,
-  output: __S(177, __c22, 1) as any as S.Schema<JobStream>,
+  input: __S(3632, __c227, 0) as any as S.Schema<GetTestJobStreamRequest>,
+  output: __S(2865, __c179, 1) as any as S.Schema<JobStream>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7277,8 +7281,8 @@ export const GetVariable: API.OperationMethod<
   GetVariableError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(236, __c29, 4) as any as S.Schema<GetVariableRequest>,
-  output: __S(238, __c29, 6) as any as S.Schema<GetVariableResponse>,
+  input: __S(3648, __c228, 0) as any as S.Schema<GetVariableRequest>,
+  output: __S(3664, __c229, 0) as any as S.Schema<GetVariableResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7292,8 +7296,8 @@ export const GetWatcher: API.OperationMethod<
   GetWatcherError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(239, __c29, 7) as any as S.Schema<GetWatcherRequest>,
-  output: __S(241, __c30, 1) as any as S.Schema<GetWatcherResponse>,
+  input: __S(3696, __c231, 0) as any as S.Schema<GetWatcherRequest>,
+  output: __S(3712, __c232, 0) as any as S.Schema<GetWatcherResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7307,8 +7311,8 @@ export const GetWebhook: API.OperationMethod<
   GetWebhookError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(242, __c30, 2) as any as S.Schema<GetWebhookRequest>,
-  output: __S(244, __c30, 4) as any as S.Schema<GetWebhookResponse>,
+  input: __S(3744, __c234, 0) as any as S.Schema<GetWebhookRequest>,
+  output: __S(3760, __c235, 0) as any as S.Schema<GetWebhookResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7322,8 +7326,8 @@ export const ListActivityByModule: API.OperationMethod<
   ListActivityByModuleError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(245, __c30, 5) as any as S.Schema<ListActivityByModuleRequest>,
-  output: __S(247, __c30, 7) as any as S.Schema<ActivityListResult>,
+  input: __S(3792, __c237, 0) as any as S.Schema<ListActivityByModuleRequest>,
+  output: __S(3794, __c237, 2) as any as S.Schema<ActivityListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7337,8 +7341,8 @@ export const ListAutomationAccount: API.OperationMethod<
   ListAutomationAccountError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(248, __c31, 0) as any as S.Schema<ListAutomationAccountRequest>,
-  output: __S(251, __c31, 3) as any as S.Schema<AutomationAccountListResult>,
+  input: __S(3808, __c238, 0) as any as S.Schema<ListAutomationAccountRequest>,
+  output: __S(3826, __c239, 2) as any as S.Schema<AutomationAccountListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7352,8 +7356,8 @@ export const ListAutomationAccountByResourceGroup: API.OperationMethod<
   ListAutomationAccountByResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(252, __c31, 4) as any as S.Schema<ListAutomationAccountByResourceGroupRequest>,
-  output: __S(251, __c31, 3) as any as S.Schema<AutomationAccountListResult>,
+  input: __S(3840, __c240, 0) as any as S.Schema<ListAutomationAccountByResourceGroupRequest>,
+  output: __S(3826, __c239, 2) as any as S.Schema<AutomationAccountListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7367,8 +7371,8 @@ export const ListAutomationAccountDeletedRunbooks: API.OperationMethod<
   ListAutomationAccountDeletedRunbooksError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(253, __c31, 5) as any as S.Schema<ListAutomationAccountDeletedRunbooksRequest>,
-  output: __S(257, __c32, 1) as any as S.Schema<DeletedRunbookListResult>,
+  input: __S(3856, __c241, 0) as any as S.Schema<ListAutomationAccountDeletedRunbooksRequest>,
+  output: __S(3860, __c241, 4) as any as S.Schema<DeletedRunbookListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7382,8 +7386,8 @@ export const ListCertificateByAutomationAccount: API.OperationMethod<
   ListCertificateByAutomationAccountError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(258, __c32, 2) as any as S.Schema<ListCertificateByAutomationAccountRequest>,
-  output: __S(260, __c32, 4) as any as S.Schema<CertificateListResult>,
+  input: __S(3920, __c245, 0) as any as S.Schema<ListCertificateByAutomationAccountRequest>,
+  output: __S(3922, __c245, 2) as any as S.Schema<CertificateListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7397,8 +7401,8 @@ export const ListConnectionByAutomationAccount: API.OperationMethod<
   ListConnectionByAutomationAccountError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(261, __c32, 5) as any as S.Schema<ListConnectionByAutomationAccountRequest>,
-  output: __S(263, __c32, 7) as any as S.Schema<ConnectionListResult>,
+  input: __S(3936, __c246, 0) as any as S.Schema<ListConnectionByAutomationAccountRequest>,
+  output: __S(3938, __c246, 2) as any as S.Schema<ConnectionListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7412,8 +7416,8 @@ export const ListConnectionTypeByAutomationAccount: API.OperationMethod<
   ListConnectionTypeByAutomationAccountError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(264, __c33, 0) as any as S.Schema<ListConnectionTypeByAutomationAccountRequest>,
-  output: __S(267, __c33, 3) as any as S.Schema<ConnectionTypeListResult>,
+  input: __S(3952, __c247, 0) as any as S.Schema<ListConnectionTypeByAutomationAccountRequest>,
+  output: __S(3955, __c247, 3) as any as S.Schema<ConnectionTypeListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7427,8 +7431,8 @@ export const ListCredentialByAutomationAccount: API.OperationMethod<
   ListCredentialByAutomationAccountError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(268, __c33, 4) as any as S.Schema<ListCredentialByAutomationAccountRequest>,
-  output: __S(270, __c33, 6) as any as S.Schema<CredentialListResult>,
+  input: __S(3968, __c248, 0) as any as S.Schema<ListCredentialByAutomationAccountRequest>,
+  output: __S(3970, __c248, 2) as any as S.Schema<CredentialListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7442,8 +7446,8 @@ export const ListDeletedAutomationAccountBySubscription: API.OperationMethod<
   ListDeletedAutomationAccountBySubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(271, __c33, 7) as any as S.Schema<ListDeletedAutomationAccountBySubscriptionRequest>,
-  output: __S(275, __c34, 3) as any as S.Schema<DeletedAutomationAccountListResult>,
+  input: __S(3984, __c249, 0) as any as S.Schema<ListDeletedAutomationAccountBySubscriptionRequest>,
+  output: __S(3988, __c249, 4) as any as S.Schema<DeletedAutomationAccountListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7457,8 +7461,8 @@ export const ListDscConfigurationByAutomationAccount: API.OperationMethod<
   ListDscConfigurationByAutomationAccountError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(276, __c34, 4) as any as S.Schema<ListDscConfigurationByAutomationAccountRequest>,
-  output: __S(279, __c34, 7) as any as S.Schema<DscConfigurationListResult>,
+  input: __S(4000, __c250, 0) as any as S.Schema<ListDscConfigurationByAutomationAccountRequest>,
+  output: __S(4003, __c250, 3) as any as S.Schema<DscConfigurationListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7472,8 +7476,8 @@ export const ListDscNodeByAutomationAccount: API.OperationMethod<
   ListDscNodeByAutomationAccountError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(280, __c35, 0) as any as S.Schema<ListDscNodeByAutomationAccountRequest>,
-  output: __S(282, __c35, 2) as any as S.Schema<DscNodeListResult>,
+  input: __S(4016, __c251, 0) as any as S.Schema<ListDscNodeByAutomationAccountRequest>,
+  output: __S(4018, __c251, 2) as any as S.Schema<DscNodeListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7487,8 +7491,12 @@ export const ListDscNodeConfigurationByAutomationAccount: API.OperationMethod<
   ListDscNodeConfigurationByAutomationAccountError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(283, __c35, 3) as any as S.Schema<ListDscNodeConfigurationByAutomationAccountRequest>,
-  output: __S(286, __c35, 6) as any as S.Schema<DscNodeConfigurationListResult>,
+  input: __S(
+    4032,
+    __c252,
+    0,
+  ) as any as S.Schema<ListDscNodeConfigurationByAutomationAccountRequest>,
+  output: __S(4035, __c252, 3) as any as S.Schema<DscNodeConfigurationListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7502,8 +7510,8 @@ export const ListFieldByType: API.OperationMethod<
   ListFieldByTypeError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(287, __c35, 7) as any as S.Schema<ListFieldByTypeRequest>,
-  output: __S(288, __c36, 0) as any as S.Schema<TypeFieldListResult>,
+  input: __S(4048, __c253, 0) as any as S.Schema<ListFieldByTypeRequest>,
+  output: __S(4064, __c254, 0) as any as S.Schema<TypeFieldListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7518,11 +7526,11 @@ export const ListHybridRunbookWorkerByHybridRunbookWorkerGroup: API.OperationMet
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    289,
-    __c36,
-    1,
+    4080,
+    __c255,
+    0,
   ) as any as S.Schema<ListHybridRunbookWorkerByHybridRunbookWorkerGroupRequest>,
-  output: __S(292, __c36, 4) as any as S.Schema<HybridRunbookWorkersListResult>,
+  output: __S(4083, __c255, 3) as any as S.Schema<HybridRunbookWorkersListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7537,11 +7545,11 @@ export const ListHybridRunbookWorkerGroupByAutomationAccount: API.OperationMetho
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    293,
-    __c36,
-    5,
+    304,
+    __c19,
+    0,
   ) as any as S.Schema<ListHybridRunbookWorkerGroupByAutomationAccountRequest>,
-  output: __S(296, __c37, 0) as any as S.Schema<HybridRunbookWorkerGroupsListResult>,
+  output: __S(307, __c19, 3) as any as S.Schema<HybridRunbookWorkerGroupsListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7555,8 +7563,8 @@ export const ListJobByAutomationAccount: API.OperationMethod<
   ListJobByAutomationAccountError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(297, __c37, 1) as any as S.Schema<ListJobByAutomationAccountRequest>,
-  output: __S(301, __c37, 5) as any as S.Schema<JobListResultV2>,
+  input: __S(320, __c20, 0) as any as S.Schema<ListJobByAutomationAccountRequest>,
+  output: __S(324, __c20, 4) as any as S.Schema<JobListResultV2>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7570,8 +7578,8 @@ export const ListJobScheduleByAutomationAccount: API.OperationMethod<
   ListJobScheduleByAutomationAccountError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(302, __c37, 6) as any as S.Schema<ListJobScheduleByAutomationAccountRequest>,
-  output: __S(304, __c38, 0) as any as S.Schema<JobScheduleListResult>,
+  input: __S(336, __c21, 0) as any as S.Schema<ListJobScheduleByAutomationAccountRequest>,
+  output: __S(338, __c21, 2) as any as S.Schema<JobScheduleListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7585,8 +7593,8 @@ export const ListJobStreamByJob: API.OperationMethod<
   ListJobStreamByJobError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(305, __c38, 1) as any as S.Schema<ListJobStreamByJobRequest>,
-  output: __S(307, __c38, 3) as any as S.Schema<JobStreamListResult>,
+  input: __S(352, __c22, 0) as any as S.Schema<ListJobStreamByJobRequest>,
+  output: __S(369, __c23, 1) as any as S.Schema<JobStreamListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7600,8 +7608,8 @@ export const ListKeyByAutomationAccount: API.OperationMethod<
   ListKeyByAutomationAccountError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(308, __c38, 4) as any as S.Schema<ListKeyByAutomationAccountRequest>,
-  output: __S(311, __c38, 7) as any as S.Schema<KeyListResult>,
+  input: __S(384, __c24, 0) as any as S.Schema<ListKeyByAutomationAccountRequest>,
+  output: __S(387, __c24, 3) as any as S.Schema<KeyListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7615,8 +7623,8 @@ export const ListModuleByAutomationAccount: API.OperationMethod<
   ListModuleByAutomationAccountError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(312, __c39, 0) as any as S.Schema<ListModuleByAutomationAccountRequest>,
-  output: __S(314, __c39, 2) as any as S.Schema<ModuleListResult>,
+  input: __S(400, __c25, 0) as any as S.Schema<ListModuleByAutomationAccountRequest>,
+  output: __S(417, __c26, 1) as any as S.Schema<ModuleListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7630,8 +7638,8 @@ export const ListNodeReportByNode: API.OperationMethod<
   ListNodeReportByNodeError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(315, __c39, 3) as any as S.Schema<ListNodeReportByNodeRequest>,
-  output: __S(317, __c39, 5) as any as S.Schema<DscNodeReportListResult>,
+  input: __S(432, __c27, 0) as any as S.Schema<ListNodeReportByNodeRequest>,
+  output: __S(434, __c27, 2) as any as S.Schema<DscNodeReportListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7645,8 +7653,8 @@ export const ListObjectDataTypeFieldsByType: API.OperationMethod<
   ListObjectDataTypeFieldsByTypeError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(318, __c39, 6) as any as S.Schema<ListObjectDataTypeFieldsByTypeRequest>,
-  output: __S(288, __c36, 0) as any as S.Schema<TypeFieldListResult>,
+  input: __S(448, __c28, 0) as any as S.Schema<ListObjectDataTypeFieldsByTypeRequest>,
+  output: __S(4064, __c254, 0) as any as S.Schema<TypeFieldListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7660,8 +7668,8 @@ export const ListOperations: API.OperationMethod<
   ListOperationsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(319, __c39, 7) as any as S.Schema<ListOperationsRequest>,
-  output: __S(331, __c41, 3) as any as S.Schema<OperationListResult>,
+  input: __S(464, __c29, 0) as any as S.Schema<ListOperationsRequest>,
+  output: __S(476, __c29, 12) as any as S.Schema<OperationListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7675,8 +7683,8 @@ export const ListPackageByRuntimeEnvironment: API.OperationMethod<
   ListPackageByRuntimeEnvironmentError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(332, __c41, 4) as any as S.Schema<ListPackageByRuntimeEnvironmentRequest>,
-  output: __S(334, __c41, 6) as any as S.Schema<PackageListResult>,
+  input: __S(480, __c30, 0) as any as S.Schema<ListPackageByRuntimeEnvironmentRequest>,
+  output: __S(482, __c30, 2) as any as S.Schema<PackageListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7691,11 +7699,11 @@ export const ListPrivateEndpointConnectionByAutomationAccount: API.OperationMeth
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    335,
-    __c41,
-    7,
+    528,
+    __c33,
+    0,
   ) as any as S.Schema<ListPrivateEndpointConnectionByAutomationAccountRequest>,
-  output: __S(336, __c42, 0) as any as S.Schema<PrivateEndpointConnectionListResult>,
+  output: __S(529, __c33, 1) as any as S.Schema<PrivateEndpointConnectionListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7709,8 +7717,8 @@ export const ListPython2PackageByAutomationAccount: API.OperationMethod<
   ListPython2PackageByAutomationAccountError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(337, __c42, 1) as any as S.Schema<ListPython2PackageByAutomationAccountRequest>,
-  output: __S(314, __c39, 2) as any as S.Schema<ModuleListResult>,
+  input: __S(544, __c34, 0) as any as S.Schema<ListPython2PackageByAutomationAccountRequest>,
+  output: __S(417, __c26, 1) as any as S.Schema<ModuleListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7724,8 +7732,8 @@ export const ListPython3PackageByAutomationAccount: API.OperationMethod<
   ListPython3PackageByAutomationAccountError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(338, __c42, 2) as any as S.Schema<ListPython3PackageByAutomationAccountRequest>,
-  output: __S(314, __c39, 2) as any as S.Schema<ModuleListResult>,
+  input: __S(560, __c35, 0) as any as S.Schema<ListPython3PackageByAutomationAccountRequest>,
+  output: __S(417, __c26, 1) as any as S.Schema<ModuleListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7739,8 +7747,8 @@ export const ListRunbookByAutomationAccount: API.OperationMethod<
   ListRunbookByAutomationAccountError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(339, __c42, 3) as any as S.Schema<ListRunbookByAutomationAccountRequest>,
-  output: __S(341, __c42, 5) as any as S.Schema<RunbookListResult>,
+  input: __S(576, __c36, 0) as any as S.Schema<ListRunbookByAutomationAccountRequest>,
+  output: __S(578, __c36, 2) as any as S.Schema<RunbookListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7754,8 +7762,8 @@ export const ListRuntimeEnvironmentByAutomationAccount: API.OperationMethod<
   ListRuntimeEnvironmentByAutomationAccountError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(342, __c42, 6) as any as S.Schema<ListRuntimeEnvironmentByAutomationAccountRequest>,
-  output: __S(345, __c43, 1) as any as S.Schema<RuntimeEnvironmentListResult>,
+  input: __S(592, __c37, 0) as any as S.Schema<ListRuntimeEnvironmentByAutomationAccountRequest>,
+  output: __S(595, __c37, 3) as any as S.Schema<RuntimeEnvironmentListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7769,8 +7777,8 @@ export const ListScheduleByAutomationAccount: API.OperationMethod<
   ListScheduleByAutomationAccountError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(346, __c43, 2) as any as S.Schema<ListScheduleByAutomationAccountRequest>,
-  output: __S(348, __c43, 4) as any as S.Schema<ScheduleListResult>,
+  input: __S(608, __c38, 0) as any as S.Schema<ListScheduleByAutomationAccountRequest>,
+  output: __S(610, __c38, 2) as any as S.Schema<ScheduleListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7784,8 +7792,8 @@ export const ListSoftwareUpdateConfigurationMachineRuns: API.OperationMethod<
   ListSoftwareUpdateConfigurationMachineRunsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(349, __c43, 5) as any as S.Schema<ListSoftwareUpdateConfigurationMachineRunsRequest>,
-  output: __S(351, __c43, 7) as any as S.Schema<SoftwareUpdateConfigurationMachineRunListResult>,
+  input: __S(624, __c39, 0) as any as S.Schema<ListSoftwareUpdateConfigurationMachineRunsRequest>,
+  output: __S(626, __c39, 2) as any as S.Schema<SoftwareUpdateConfigurationMachineRunListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7799,8 +7807,8 @@ export const ListSoftwareUpdateConfigurationRuns: API.OperationMethod<
   ListSoftwareUpdateConfigurationRunsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(352, __c44, 0) as any as S.Schema<ListSoftwareUpdateConfigurationRunsRequest>,
-  output: __S(354, __c44, 2) as any as S.Schema<SoftwareUpdateConfigurationRunListResult>,
+  input: __S(640, __c40, 0) as any as S.Schema<ListSoftwareUpdateConfigurationRunsRequest>,
+  output: __S(642, __c40, 2) as any as S.Schema<SoftwareUpdateConfigurationRunListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7814,8 +7822,8 @@ export const ListSoftwareUpdateConfigurations: API.OperationMethod<
   ListSoftwareUpdateConfigurationsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(355, __c44, 3) as any as S.Schema<ListSoftwareUpdateConfigurationsRequest>,
-  output: __S(359, __c44, 7) as any as S.Schema<SoftwareUpdateConfigurationListResult>,
+  input: __S(656, __c41, 0) as any as S.Schema<ListSoftwareUpdateConfigurationsRequest>,
+  output: __S(660, __c41, 4) as any as S.Schema<SoftwareUpdateConfigurationListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7829,8 +7837,8 @@ export const ListSourceControlByAutomationAccount: API.OperationMethod<
   ListSourceControlByAutomationAccountError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(360, __c45, 0) as any as S.Schema<ListSourceControlByAutomationAccountRequest>,
-  output: __S(362, __c45, 2) as any as S.Schema<SourceControlListResult>,
+  input: __S(672, __c42, 0) as any as S.Schema<ListSourceControlByAutomationAccountRequest>,
+  output: __S(674, __c42, 2) as any as S.Schema<SourceControlListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7844,8 +7852,8 @@ export const ListSourceControlSyncJobByAutomationAccount: API.OperationMethod<
   ListSourceControlSyncJobByAutomationAccountError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(363, __c45, 3) as any as S.Schema<ListSourceControlSyncJobByAutomationAccountRequest>,
-  output: __S(365, __c45, 5) as any as S.Schema<SourceControlSyncJobListResult>,
+  input: __S(720, __c45, 0) as any as S.Schema<ListSourceControlSyncJobByAutomationAccountRequest>,
+  output: __S(722, __c45, 2) as any as S.Schema<SourceControlSyncJobListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7859,8 +7867,8 @@ export const ListSourceControlSyncJobStreamBySyncJob: API.OperationMethod<
   ListSourceControlSyncJobStreamBySyncJobError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(366, __c45, 6) as any as S.Schema<ListSourceControlSyncJobStreamBySyncJobRequest>,
-  output: __S(370, __c46, 2) as any as S.Schema<SourceControlSyncJobStreamsListBySyncJob>,
+  input: __S(736, __c46, 0) as any as S.Schema<ListSourceControlSyncJobStreamBySyncJobRequest>,
+  output: __S(740, __c46, 4) as any as S.Schema<SourceControlSyncJobStreamsListBySyncJob>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7874,8 +7882,8 @@ export const ListStatisticsByAutomationAccount: API.OperationMethod<
   ListStatisticsByAutomationAccountError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(371, __c46, 3) as any as S.Schema<ListStatisticsByAutomationAccountRequest>,
-  output: __S(374, __c46, 6) as any as S.Schema<StatisticsListResult>,
+  input: __S(752, __c47, 0) as any as S.Schema<ListStatisticsByAutomationAccountRequest>,
+  output: __S(755, __c47, 3) as any as S.Schema<StatisticsListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7889,8 +7897,8 @@ export const ListTestJobStreamByTestJob: API.OperationMethod<
   ListTestJobStreamByTestJobError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(375, __c46, 7) as any as S.Schema<ListTestJobStreamByTestJobRequest>,
-  output: __S(307, __c38, 3) as any as S.Schema<JobStreamListResult>,
+  input: __S(768, __c48, 0) as any as S.Schema<ListTestJobStreamByTestJobRequest>,
+  output: __S(369, __c23, 1) as any as S.Schema<JobStreamListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7904,8 +7912,8 @@ export const ListUsageByAutomationAccount: API.OperationMethod<
   ListUsageByAutomationAccountError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(376, __c47, 0) as any as S.Schema<ListUsageByAutomationAccountRequest>,
-  output: __S(380, __c47, 4) as any as S.Schema<UsageListResult>,
+  input: __S(784, __c49, 0) as any as S.Schema<ListUsageByAutomationAccountRequest>,
+  output: __S(788, __c49, 4) as any as S.Schema<UsageListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7919,8 +7927,8 @@ export const ListVariableByAutomationAccount: API.OperationMethod<
   ListVariableByAutomationAccountError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(381, __c47, 5) as any as S.Schema<ListVariableByAutomationAccountRequest>,
-  output: __S(383, __c47, 7) as any as S.Schema<VariableListResult>,
+  input: __S(800, __c50, 0) as any as S.Schema<ListVariableByAutomationAccountRequest>,
+  output: __S(802, __c50, 2) as any as S.Schema<VariableListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7934,8 +7942,8 @@ export const ListWatcherByAutomationAccount: API.OperationMethod<
   ListWatcherByAutomationAccountError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(384, __c48, 0) as any as S.Schema<ListWatcherByAutomationAccountRequest>,
-  output: __S(386, __c48, 2) as any as S.Schema<WatcherListResult>,
+  input: __S(816, __c51, 0) as any as S.Schema<ListWatcherByAutomationAccountRequest>,
+  output: __S(818, __c51, 2) as any as S.Schema<WatcherListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7949,8 +7957,8 @@ export const ListWebhookByAutomationAccount: API.OperationMethod<
   ListWebhookByAutomationAccountError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(387, __c48, 3) as any as S.Schema<ListWebhookByAutomationAccountRequest>,
-  output: __S(389, __c48, 5) as any as S.Schema<WebhookListResult>,
+  input: __S(832, __c52, 0) as any as S.Schema<ListWebhookByAutomationAccountRequest>,
+  output: __S(834, __c52, 2) as any as S.Schema<WebhookListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7964,8 +7972,8 @@ export const ModuleCreateOrUpdate: API.OperationMethod<
   ModuleCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(391, __c48, 7) as any as S.Schema<ModuleCreateOrUpdateRequest>,
-  output: __S(203, __c25, 3) as any as S.Schema<ModuleCreateOrUpdateResponse>,
+  input: __S(848, __c53, 0) as any as S.Schema<ModuleCreateOrUpdateRequest>,
+  output: __S(3168, __c198, 0) as any as S.Schema<ModuleCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7979,8 +7987,8 @@ export const MoveHybridRunbookWorker: API.OperationMethod<
   MoveHybridRunbookWorkerError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(392, __c49, 0) as any as S.Schema<MoveHybridRunbookWorkerRequest>,
-  output: __S(95, __c11, 7) as any as S.Schema<MoveHybridRunbookWorkerResponse>,
+  input: __S(880, __c55, 0) as any as S.Schema<MoveHybridRunbookWorkerRequest>,
+  output: __S(1120, __c70, 0) as any as S.Schema<MoveHybridRunbookWorkerResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7994,8 +8002,8 @@ export const ObjectDataTypesListFieldsByModuleAndType: API.OperationMethod<
   ObjectDataTypesListFieldsByModuleAndTypeError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(393, __c49, 1) as any as S.Schema<ObjectDataTypesListFieldsByModuleAndTypeRequest>,
-  output: __S(288, __c36, 0) as any as S.Schema<TypeFieldListResult>,
+  input: __S(928, __c58, 0) as any as S.Schema<ObjectDataTypesListFieldsByModuleAndTypeRequest>,
+  output: __S(4064, __c254, 0) as any as S.Schema<TypeFieldListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8009,8 +8017,8 @@ export const PackageCreateOrUpdate: API.OperationMethod<
   PackageCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(395, __c49, 3) as any as S.Schema<PackageCreateOrUpdateRequest>,
-  output: __S(396, __c49, 4) as any as S.Schema<PackageCreateOrUpdateResponse>,
+  input: __S(944, __c59, 0) as any as S.Schema<PackageCreateOrUpdateRequest>,
+  output: __S(945, __c59, 1) as any as S.Schema<PackageCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8024,8 +8032,8 @@ export const PatchHybridRunbookWorker: API.OperationMethod<
   PatchHybridRunbookWorkerError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(397, __c49, 5) as any as S.Schema<PatchHybridRunbookWorkerRequest>,
-  output: __S(43, __c5, 3) as any as S.Schema<PatchHybridRunbookWorkerResponse>,
+  input: __S(976, __c61, 0) as any as S.Schema<PatchHybridRunbookWorkerRequest>,
+  output: __S(2608, __c163, 0) as any as S.Schema<PatchHybridRunbookWorkerResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8039,8 +8047,8 @@ export const PrivateEndpointConnectionsCreateOrUpdate: API.OperationMethod<
   PrivateEndpointConnectionsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(400, __c50, 0) as any as S.Schema<PrivateEndpointConnectionsCreateOrUpdateRequest>,
-  output: __S(15, __c1, 7) as any as S.Schema<PrivateEndpointConnectionsCreateOrUpdateResponse>,
+  input: __S(994, __c62, 2) as any as S.Schema<PrivateEndpointConnectionsCreateOrUpdateRequest>,
+  output: __S(130, __c8, 2) as any as S.Schema<PrivateEndpointConnectionsCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8054,8 +8062,8 @@ export const PrivateLinkResourcesAutomation: API.OperationMethod<
   PrivateLinkResourcesAutomationError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(401, __c50, 1) as any as S.Schema<PrivateLinkResourcesAutomationRequest>,
-  output: __S(405, __c50, 5) as any as S.Schema<PrivateLinkResourceListResult>,
+  input: __S(1008, __c63, 0) as any as S.Schema<PrivateLinkResourcesAutomationRequest>,
+  output: __S(1012, __c63, 4) as any as S.Schema<PrivateLinkResourceListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8069,8 +8077,8 @@ export const PublishRunbook: API.OperationMethod<
   PublishRunbookError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(406, __c50, 6) as any as S.Schema<PublishRunbookRequest>,
-  output: __S(97, __c12, 1) as any as S.Schema<PublishRunbookResponse>,
+  input: __S(1024, __c64, 0) as any as S.Schema<PublishRunbookRequest>,
+  output: __S(1328, __c83, 0) as any as S.Schema<PublishRunbookResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8084,8 +8092,8 @@ export const Python2PackageCreateOrUpdate: API.OperationMethod<
   Python2PackageCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(407, __c50, 7) as any as S.Schema<Python2PackageCreateOrUpdateRequest>,
-  output: __S(203, __c25, 3) as any as S.Schema<Python2PackageCreateOrUpdateResponse>,
+  input: __S(1040, __c65, 0) as any as S.Schema<Python2PackageCreateOrUpdateRequest>,
+  output: __S(3168, __c198, 0) as any as S.Schema<Python2PackageCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8099,8 +8107,8 @@ export const Python3PackageCreateOrUpdate: API.OperationMethod<
   Python3PackageCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(408, __c51, 0) as any as S.Schema<Python3PackageCreateOrUpdateRequest>,
-  output: __S(203, __c25, 3) as any as S.Schema<Python3PackageCreateOrUpdateResponse>,
+  input: __S(1056, __c66, 0) as any as S.Schema<Python3PackageCreateOrUpdateRequest>,
+  output: __S(3168, __c198, 0) as any as S.Schema<Python3PackageCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8114,8 +8122,8 @@ export const RegenerateAgentRegistrationInformationKey: API.OperationMethod<
   RegenerateAgentRegistrationInformationKeyError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(409, __c51, 1) as any as S.Schema<RegenerateAgentRegistrationInformationKeyRequest>,
-  output: __S(147, __c18, 3) as any as S.Schema<AgentRegistration>,
+  input: __S(1072, __c67, 0) as any as S.Schema<RegenerateAgentRegistrationInformationKeyRequest>,
+  output: __S(2417, __c151, 1) as any as S.Schema<AgentRegistration>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8129,8 +8137,8 @@ export const ReplaceRunbookDraftContent: API.OperationMethod<
   ReplaceRunbookDraftContentError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(410, __c51, 2) as any as S.Schema<ReplaceRunbookDraftContentRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<ReplaceRunbookDraftContentResponse>,
+  input: __S(1088, __c68, 0) as any as S.Schema<ReplaceRunbookDraftContentRequest>,
+  output: __S(80, __c5, 0) as any as S.Schema<ReplaceRunbookDraftContentResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8144,8 +8152,8 @@ export const ResumeJob: API.OperationMethod<
   ResumeJobError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(411, __c51, 3) as any as S.Schema<ResumeJobRequest>,
-  output: __S(97, __c12, 1) as any as S.Schema<ResumeJobResponse>,
+  input: __S(1136, __c71, 0) as any as S.Schema<ResumeJobRequest>,
+  output: __S(1328, __c83, 0) as any as S.Schema<ResumeJobResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8159,8 +8167,8 @@ export const ResumeTestJob: API.OperationMethod<
   ResumeTestJobError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(412, __c51, 4) as any as S.Schema<ResumeTestJobRequest>,
-  output: __S(97, __c12, 1) as any as S.Schema<ResumeTestJobResponse>,
+  input: __S(1152, __c72, 0) as any as S.Schema<ResumeTestJobRequest>,
+  output: __S(1328, __c83, 0) as any as S.Schema<ResumeTestJobResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8174,8 +8182,8 @@ export const RunbookCreateOrUpdate: API.OperationMethod<
   RunbookCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(414, __c51, 6) as any as S.Schema<RunbookCreateOrUpdateRequest>,
-  output: __S(415, __c51, 7) as any as S.Schema<RunbookCreateOrUpdateResponse>,
+  input: __S(1169, __c73, 1) as any as S.Schema<RunbookCreateOrUpdateRequest>,
+  output: __S(1170, __c73, 2) as any as S.Schema<RunbookCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8189,8 +8197,8 @@ export const ScheduleCreateOrUpdate: API.OperationMethod<
   ScheduleCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(417, __c52, 1) as any as S.Schema<ScheduleCreateOrUpdateRequest>,
-  output: __S(418, __c52, 2) as any as S.Schema<ScheduleCreateOrUpdateResponse>,
+  input: __S(1185, __c74, 1) as any as S.Schema<ScheduleCreateOrUpdateRequest>,
+  output: __S(1186, __c74, 2) as any as S.Schema<ScheduleCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8204,8 +8212,8 @@ export const SourceControlCreateOrUpdate: API.OperationMethod<
   SourceControlCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(421, __c52, 5) as any as S.Schema<SourceControlCreateOrUpdateRequest>,
-  output: __S(422, __c52, 6) as any as S.Schema<SourceControlCreateOrUpdateResponse>,
+  input: __S(1201, __c75, 1) as any as S.Schema<SourceControlCreateOrUpdateRequest>,
+  output: __S(1217, __c76, 1) as any as S.Schema<SourceControlCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8219,8 +8227,8 @@ export const StartWatcher: API.OperationMethod<
   StartWatcherError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(423, __c52, 7) as any as S.Schema<StartWatcherRequest>,
-  output: __S(97, __c12, 1) as any as S.Schema<StartWatcherResponse>,
+  input: __S(1232, __c77, 0) as any as S.Schema<StartWatcherRequest>,
+  output: __S(1328, __c83, 0) as any as S.Schema<StartWatcherResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8234,8 +8242,8 @@ export const StopJob: API.OperationMethod<
   StopJobError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(424, __c53, 0) as any as S.Schema<StopJobRequest>,
-  output: __S(97, __c12, 1) as any as S.Schema<StopJobResponse>,
+  input: __S(1248, __c78, 0) as any as S.Schema<StopJobRequest>,
+  output: __S(1328, __c83, 0) as any as S.Schema<StopJobResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8249,8 +8257,8 @@ export const StopTestJob: API.OperationMethod<
   StopTestJobError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(425, __c53, 1) as any as S.Schema<StopTestJobRequest>,
-  output: __S(97, __c12, 1) as any as S.Schema<StopTestJobResponse>,
+  input: __S(1264, __c79, 0) as any as S.Schema<StopTestJobRequest>,
+  output: __S(1328, __c83, 0) as any as S.Schema<StopTestJobResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8264,8 +8272,8 @@ export const StopWatcher: API.OperationMethod<
   StopWatcherError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(426, __c53, 2) as any as S.Schema<StopWatcherRequest>,
-  output: __S(97, __c12, 1) as any as S.Schema<StopWatcherResponse>,
+  input: __S(1280, __c80, 0) as any as S.Schema<StopWatcherRequest>,
+  output: __S(1328, __c83, 0) as any as S.Schema<StopWatcherResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8279,8 +8287,8 @@ export const SuspendJob: API.OperationMethod<
   SuspendJobError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(427, __c53, 3) as any as S.Schema<SuspendJobRequest>,
-  output: __S(97, __c12, 1) as any as S.Schema<SuspendJobResponse>,
+  input: __S(1296, __c81, 0) as any as S.Schema<SuspendJobRequest>,
+  output: __S(1328, __c83, 0) as any as S.Schema<SuspendJobResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8294,8 +8302,8 @@ export const SuspendTestJob: API.OperationMethod<
   SuspendTestJobError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(428, __c53, 4) as any as S.Schema<SuspendTestJobRequest>,
-  output: __S(97, __c12, 1) as any as S.Schema<SuspendTestJobResponse>,
+  input: __S(1344, __c84, 0) as any as S.Schema<SuspendTestJobRequest>,
+  output: __S(1328, __c83, 0) as any as S.Schema<SuspendTestJobResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8309,8 +8317,8 @@ export const UpdateAutomationAccount: API.OperationMethod<
   UpdateAutomationAccountError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(430, __c53, 6) as any as S.Schema<UpdateAutomationAccountRequest>,
-  output: __S(21, __c2, 5) as any as S.Schema<UpdateAutomationAccountResponse>,
+  input: __S(1361, __c85, 1) as any as S.Schema<UpdateAutomationAccountRequest>,
+  output: __S(96, __c6, 0) as any as S.Schema<UpdateAutomationAccountResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8324,8 +8332,8 @@ export const UpdateCertificate: API.OperationMethod<
   UpdateCertificateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(432, __c54, 0) as any as S.Schema<UpdateCertificateRequest>,
-  output: __S(25, __c3, 1) as any as S.Schema<UpdateCertificateResponse>,
+  input: __S(1377, __c86, 1) as any as S.Schema<UpdateCertificateRequest>,
+  output: __S(192, __c12, 0) as any as S.Schema<UpdateCertificateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8339,8 +8347,8 @@ export const UpdateConnection: API.OperationMethod<
   UpdateConnectionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(434, __c54, 2) as any as S.Schema<UpdateConnectionRequest>,
-  output: __S(152, __c19, 0) as any as S.Schema<UpdateConnectionResponse>,
+  input: __S(1393, __c87, 1) as any as S.Schema<UpdateConnectionRequest>,
+  output: __S(2496, __c156, 0) as any as S.Schema<UpdateConnectionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8354,8 +8362,8 @@ export const UpdateCredential: API.OperationMethod<
   UpdateCredentialError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(436, __c54, 4) as any as S.Schema<UpdateCredentialRequest>,
-  output: __S(155, __c19, 3) as any as S.Schema<UpdateCredentialResponse>,
+  input: __S(1409, __c88, 1) as any as S.Schema<UpdateCredentialRequest>,
+  output: __S(2544, __c159, 0) as any as S.Schema<UpdateCredentialResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8369,8 +8377,8 @@ export const UpdateDscConfiguration: API.OperationMethod<
   UpdateDscConfigurationError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(437, __c54, 5) as any as S.Schema<UpdateDscConfigurationRequest>,
-  output: __S(127, __c15, 7) as any as S.Schema<UpdateDscConfigurationResponse>,
+  input: __S(1424, __c89, 0) as any as S.Schema<UpdateDscConfigurationRequest>,
+  output: __S(2224, __c139, 0) as any as S.Schema<UpdateDscConfigurationResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8384,8 +8392,8 @@ export const UpdateDscNode: API.OperationMethod<
   UpdateDscNodeError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(439, __c54, 7) as any as S.Schema<UpdateDscNodeRequest>,
-  output: __S(162, __c20, 2) as any as S.Schema<UpdateDscNodeResponse>,
+  input: __S(1441, __c90, 1) as any as S.Schema<UpdateDscNodeRequest>,
+  output: __S(2675, __c167, 3) as any as S.Schema<UpdateDscNodeResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8399,8 +8407,8 @@ export const UpdateHybridRunbookWorkerGroup: API.OperationMethod<
   UpdateHybridRunbookWorkerGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(440, __c55, 0) as any as S.Schema<UpdateHybridRunbookWorkerGroupRequest>,
-  output: __S(47, __c5, 7) as any as S.Schema<UpdateHybridRunbookWorkerGroupResponse>,
+  input: __S(1456, __c91, 0) as any as S.Schema<UpdateHybridRunbookWorkerGroupRequest>,
+  output: __S(2928, __c183, 0) as any as S.Schema<UpdateHybridRunbookWorkerGroupResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8414,8 +8422,8 @@ export const UpdateModule: API.OperationMethod<
   UpdateModuleError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(442, __c55, 2) as any as S.Schema<UpdateModuleRequest>,
-  output: __S(182, __c22, 6) as any as S.Schema<UpdateModuleResponse>,
+  input: __S(1472, __c92, 0) as any as S.Schema<UpdateModuleRequest>,
+  output: __S(2976, __c186, 0) as any as S.Schema<UpdateModuleResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8429,8 +8437,8 @@ export const UpdatePackage: API.OperationMethod<
   UpdatePackageError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(443, __c55, 3) as any as S.Schema<UpdatePackageRequest>,
-  output: __S(200, __c25, 0) as any as S.Schema<UpdatePackageResponse>,
+  input: __S(1504, __c94, 0) as any as S.Schema<UpdatePackageRequest>,
+  output: __S(3120, __c195, 0) as any as S.Schema<UpdatePackageResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8444,8 +8452,8 @@ export const UpdatePython2Package: API.OperationMethod<
   UpdatePython2PackageError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(444, __c55, 4) as any as S.Schema<UpdatePython2PackageRequest>,
-  output: __S(203, __c25, 3) as any as S.Schema<UpdatePython2PackageResponse>,
+  input: __S(1536, __c96, 0) as any as S.Schema<UpdatePython2PackageRequest>,
+  output: __S(3168, __c198, 0) as any as S.Schema<UpdatePython2PackageResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8459,8 +8467,8 @@ export const UpdatePython3Package: API.OperationMethod<
   UpdatePython3PackageError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(445, __c55, 5) as any as S.Schema<UpdatePython3PackageRequest>,
-  output: __S(203, __c25, 3) as any as S.Schema<UpdatePython3PackageResponse>,
+  input: __S(1552, __c97, 0) as any as S.Schema<UpdatePython3PackageRequest>,
+  output: __S(3168, __c198, 0) as any as S.Schema<UpdatePython3PackageResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8474,8 +8482,8 @@ export const UpdateRunbook: API.OperationMethod<
   UpdateRunbookError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(447, __c55, 7) as any as S.Schema<UpdateRunbookRequest>,
-  output: __S(208, __c26, 0) as any as S.Schema<UpdateRunbookResponse>,
+  input: __S(1569, __c98, 1) as any as S.Schema<UpdateRunbookRequest>,
+  output: __S(3232, __c202, 0) as any as S.Schema<UpdateRunbookResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8489,8 +8497,8 @@ export const UpdateRuntimeEnvironment: API.OperationMethod<
   UpdateRuntimeEnvironmentError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(449, __c56, 1) as any as S.Schema<UpdateRuntimeEnvironmentRequest>,
-  output: __S(60, __c7, 4) as any as S.Schema<UpdateRuntimeEnvironmentResponse>,
+  input: __S(1585, __c99, 1) as any as S.Schema<UpdateRuntimeEnvironmentRequest>,
+  output: __S(3904, __c244, 0) as any as S.Schema<UpdateRuntimeEnvironmentResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8504,8 +8512,8 @@ export const UpdateSchedule: API.OperationMethod<
   UpdateScheduleError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(451, __c56, 3) as any as S.Schema<UpdateScheduleRequest>,
-  output: __S(215, __c26, 7) as any as S.Schema<UpdateScheduleResponse>,
+  input: __S(1601, __c100, 1) as any as S.Schema<UpdateScheduleRequest>,
+  output: __S(3408, __c213, 0) as any as S.Schema<UpdateScheduleResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8519,8 +8527,8 @@ export const UpdateSourceControl: API.OperationMethod<
   UpdateSourceControlError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(453, __c56, 5) as any as S.Schema<UpdateSourceControlRequest>,
-  output: __S(422, __c52, 6) as any as S.Schema<UpdateSourceControlResponse>,
+  input: __S(1617, __c101, 1) as any as S.Schema<UpdateSourceControlRequest>,
+  output: __S(1217, __c76, 1) as any as S.Schema<UpdateSourceControlResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8534,8 +8542,8 @@ export const UpdateVariable: API.OperationMethod<
   UpdateVariableError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(455, __c56, 7) as any as S.Schema<UpdateVariableRequest>,
-  output: __S(238, __c29, 6) as any as S.Schema<UpdateVariableResponse>,
+  input: __S(1633, __c102, 1) as any as S.Schema<UpdateVariableRequest>,
+  output: __S(3664, __c229, 0) as any as S.Schema<UpdateVariableResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8549,8 +8557,8 @@ export const UpdateWatcher: API.OperationMethod<
   UpdateWatcherError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(457, __c57, 1) as any as S.Schema<UpdateWatcherRequest>,
-  output: __S(241, __c30, 1) as any as S.Schema<UpdateWatcherResponse>,
+  input: __S(1649, __c103, 1) as any as S.Schema<UpdateWatcherRequest>,
+  output: __S(3712, __c232, 0) as any as S.Schema<UpdateWatcherResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8564,8 +8572,8 @@ export const UpdateWebhook: API.OperationMethod<
   UpdateWebhookError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(459, __c57, 3) as any as S.Schema<UpdateWebhookRequest>,
-  output: __S(244, __c30, 4) as any as S.Schema<UpdateWebhookResponse>,
+  input: __S(1665, __c104, 1) as any as S.Schema<UpdateWebhookRequest>,
+  output: __S(3760, __c235, 0) as any as S.Schema<UpdateWebhookResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8579,8 +8587,8 @@ export const VariableCreateOrUpdate: API.OperationMethod<
   VariableCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(461, __c57, 5) as any as S.Schema<VariableCreateOrUpdateRequest>,
-  output: __S(462, __c57, 6) as any as S.Schema<VariableCreateOrUpdateResponse>,
+  input: __S(1681, __c105, 1) as any as S.Schema<VariableCreateOrUpdateRequest>,
+  output: __S(1682, __c105, 2) as any as S.Schema<VariableCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8594,8 +8602,8 @@ export const WatcherCreateOrUpdate: API.OperationMethod<
   WatcherCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(464, __c58, 0) as any as S.Schema<WatcherCreateOrUpdateRequest>,
-  output: __S(465, __c58, 1) as any as S.Schema<WatcherCreateOrUpdateResponse>,
+  input: __S(1713, __c107, 1) as any as S.Schema<WatcherCreateOrUpdateRequest>,
+  output: __S(1714, __c107, 2) as any as S.Schema<WatcherCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8609,8 +8617,8 @@ export const WebhookCreateOrUpdate: API.OperationMethod<
   WebhookCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(467, __c58, 3) as any as S.Schema<WebhookCreateOrUpdateRequest>,
-  output: __S(468, __c58, 4) as any as S.Schema<WebhookCreateOrUpdateResponse>,
+  input: __S(1729, __c108, 1) as any as S.Schema<WebhookCreateOrUpdateRequest>,
+  output: __S(1730, __c108, 2) as any as S.Schema<WebhookCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8618,6 +8626,165 @@ export const WebhookCreateOrUpdate: API.OperationMethod<
 
 // Schema builders: each runs one schema initializer, on that schema's first use.
 function __c0(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          sku: S.optional(__S(160, __c10, 0)),
+          encryption: S.optional(__S(163, __c10, 3)),
+          publicNetworkAccess: S.optional(S.Boolean),
+          disableLocalAuth: S.optional(S.Boolean),
+          createMode: S.optional(S.String),
+          automationAccountId: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "AutomationAccountCreateOrUpdateProperties",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          automationAccountName: S.String.pipe(T.Label()),
+          properties: S.optional(__S(0, __c0, 0)),
+          name: S.optional(S.String),
+          location: S.optional(S.String),
+          identity: S.optional(__S(49, __c3, 1)),
+          tags: S.optional(__S(64, __c4, 0)),
+        }).pipe(
+          T.Http({
+            method: "PUT",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}",
+            code: 200,
+            apiVersion: "2024-10-23",
+          }),
+        ),
+      ).annotate({
+        identifier: "AutomationAccountCreateOrUpdateRequest",
+      });
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          createdBy: S.optional(S.String),
+          createdByType: S.optional(S.String),
+          createdAt: S.optional(S.String),
+          lastModifiedBy: S.optional(S.String),
+          lastModifiedByType: S.optional(S.String),
+          lastModifiedAt: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "SystemData" });
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, __S(80, __c5, 0));
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          type: S.optional(S.String),
+          userAssignedIdentities: S.optional(__S(48, __c3, 0)),
+        }),
+      ).annotate({ identifier: "IdentityInput" });
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, S.String);
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "UserAssignedIdentitiesPropertiesInput",
+      });
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(16, __c1, 0)),
+          tags: S.optional(__S(64, __c4, 0)),
+          location: S.String,
+          properties: S.optional(__S(164, __c10, 4)),
+          etag: S.optional(S.String),
+          identity: S.optional(__S(167, __c10, 7)),
+        }),
+      ).annotate({
+        identifier: "AutomationAccountCreateOrUpdateResponse",
+      });
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "PrivateEndpointProperty" });
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          status: S.optional(S.String),
+          description: S.optional(S.String),
+          actionsRequired: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "PrivateLinkServiceConnectionStateProperty",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          privateEndpoint: S.optional(__S(112, __c7, 0)),
+          groupIds: S.optional(__S(32, __c2, 0)),
+          privateLinkServiceConnectionState: S.optional(__S(128, __c8, 0)),
+        }),
+      ).annotate({
+        identifier: "PrivateEndpointConnectionProperties",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(16, __c1, 0)),
+          properties: S.optional(__S(129, __c8, 1)),
+        }),
+      ).annotate({
+        identifier: "PrivateEndpointConnection",
+      });
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(130, __c8, 2));
+  }
+}
+function __c10(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -8646,133 +8813,22 @@ function __c0(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          keyVaultProperties: S.optional(__S(1, __c0, 1)),
+          keyVaultProperties: S.optional(__S(161, __c10, 1)),
           keySource: S.optional(S.String),
-          identity: S.optional(__S(2, __c0, 2)),
+          identity: S.optional(__S(162, __c10, 2)),
         }),
       ).annotate({ identifier: "EncryptionProperties" });
     case 4:
       return S.suspend(() =>
         S.Struct({
-          sku: S.optional(__S(0, __c0, 0)),
-          encryption: S.optional(__S(3, __c0, 3)),
-          publicNetworkAccess: S.optional(S.Boolean),
-          disableLocalAuth: S.optional(S.Boolean),
-          createMode: S.optional(S.String),
-          automationAccountId: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "AutomationAccountCreateOrUpdateProperties",
-      });
-    case 5:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "UserAssignedIdentitiesPropertiesInput",
-      });
-    case 6:
-      return S.Record(S.String, __S(5, __c0, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          type: S.optional(S.String),
-          userAssignedIdentities: S.optional(__S(6, __c0, 6)),
-        }),
-      ).annotate({ identifier: "IdentityInput" });
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Record(S.String, S.String);
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          automationAccountName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(4, __c0, 4)),
-          name: S.optional(S.String),
-          location: S.optional(S.String),
-          identity: S.optional(__S(7, __c0, 7)),
-          tags: S.optional(__S(8, __c1, 0)),
-        }).pipe(
-          T.Http({
-            method: "PUT",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}",
-            code: 200,
-            apiVersion: "2024-10-23",
-          }),
-        ),
-      ).annotate({
-        identifier: "AutomationAccountCreateOrUpdateRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          createdBy: S.optional(S.String),
-          createdByType: S.optional(S.String),
-          createdAt: S.optional(S.String),
-          lastModifiedBy: S.optional(S.String),
-          lastModifiedByType: S.optional(S.String),
-          lastModifiedAt: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "SystemData" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "PrivateEndpointProperty" });
-    case 4:
-      return S.Array(S.String);
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          status: S.optional(S.String),
-          description: S.optional(S.String),
-          actionsRequired: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "PrivateLinkServiceConnectionStateProperty",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          privateEndpoint: S.optional(__S(11, __c1, 3)),
-          groupIds: S.optional(__S(12, __c1, 4)),
-          privateLinkServiceConnectionState: S.optional(__S(13, __c1, 5)),
-        }),
-      ).annotate({
-        identifier: "PrivateEndpointConnectionProperties",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(10, __c1, 2)),
-          properties: S.optional(__S(14, __c1, 6)),
-        }),
-      ).annotate({
-        identifier: "PrivateEndpointConnection",
-      });
-  }
-}
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(15, __c1, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          sku: S.optional(__S(0, __c0, 0)),
+          sku: S.optional(__S(160, __c10, 0)),
           lastModifiedBy: S.optional(S.String),
           state: S.optional(S.String),
           creationTime: S.optional(S.String),
           lastModifiedTime: S.optional(S.String),
           description: S.optional(S.String),
-          encryption: S.optional(__S(3, __c0, 3)),
-          privateEndpointConnections: S.optional(__S(16, __c2, 0)),
+          encryption: S.optional(__S(163, __c10, 3)),
+          privateEndpointConnections: S.optional(__S(144, __c9, 0)),
           publicNetworkAccess: S.optional(S.Boolean),
           disableLocalAuth: S.optional(S.Boolean),
           automationHybridServiceUrl: S.optional(S.String),
@@ -8780,7 +8836,7 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "AutomationAccountProperties",
       });
-    case 2:
+    case 5:
       return S.suspend(() =>
         S.Struct({
           principalId: S.optional(S.String),
@@ -8789,34 +8845,22 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "UserAssignedIdentitiesProperties",
       });
-    case 3:
-      return S.Record(S.String, __S(18, __c2, 2));
-    case 4:
+    case 6:
+      return S.Record(S.String, __S(165, __c10, 5));
+    case 7:
       return S.suspend(() =>
         S.Struct({
           principalId: S.optional(S.String),
           tenantId: S.optional(S.String),
           type: S.optional(S.String),
-          userAssignedIdentities: S.optional(__S(19, __c2, 3)),
+          userAssignedIdentities: S.optional(__S(166, __c10, 6)),
         }),
       ).annotate({ identifier: "Identity" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(10, __c1, 2)),
-          tags: S.optional(__S(8, __c1, 0)),
-          location: S.String,
-          properties: S.optional(__S(17, __c2, 1)),
-          etag: S.optional(S.String),
-          identity: S.optional(__S(20, __c2, 4)),
-        }),
-      ).annotate({
-        identifier: "AutomationAccountCreateOrUpdateResponse",
-      });
-    case 6:
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           base64Value: S.String,
@@ -8827,7 +8871,7 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "CertificateCreateOrUpdateProperties",
       });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -8835,7 +8879,7 @@ function __c2(j: number): any {
           automationAccountName: S.String.pipe(T.Label()),
           certificateName: S.String.pipe(T.Label()),
           name: S.String,
-          properties: __S(22, __c2, 6),
+          properties: __S(176, __c11, 0),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -8849,7 +8893,23 @@ function __c2(j: number): any {
       });
   }
 }
-function __c3(j: number): any {
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(16, __c1, 0)),
+          properties: S.optional(__S(208, __c13, 0)),
+        }),
+      ).annotate({
+        identifier: "CertificateCreateOrUpdateResponse",
+      });
+  }
+}
+function __c13(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -8862,555 +8922,11 @@ function __c3(j: number): any {
           description: S.optional(S.String),
         }),
       ).annotate({ identifier: "CertificateProperties" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(10, __c1, 2)),
-          properties: S.optional(__S(24, __c3, 0)),
-        }),
-      ).annotate({
-        identifier: "CertificateCreateOrUpdateResponse",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "ConnectionTypeAssociationProperty",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          description: S.optional(S.String),
-          connectionType: __S(26, __c3, 2),
-          fieldDefinitionValues: S.optional(__S(8, __c1, 0)),
-        }),
-      ).annotate({
-        identifier: "ConnectionCreateOrUpdateProperties",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          automationAccountName: S.String.pipe(T.Label()),
-          connectionName: S.String.pipe(T.Label()),
-          name: S.String,
-          properties: __S(27, __c3, 3),
-        }).pipe(
-          T.Http({
-            method: "PUT",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/connections/{connectionName}",
-            code: 200,
-            apiVersion: "2024-10-23",
-          }),
-        ),
-      ).annotate({
-        identifier: "ConnectionCreateOrUpdateRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          connectionType: S.optional(__S(26, __c3, 2)),
-          fieldDefinitionValues: S.optional(__S(8, __c1, 0)),
-          creationTime: S.optional(S.String),
-          lastModifiedTime: S.optional(S.String),
-          description: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ConnectionProperties" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(10, __c1, 2)),
-          properties: S.optional(__S(29, __c3, 5)),
-        }),
-      ).annotate({
-        identifier: "ConnectionCreateOrUpdateResponse",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          isEncrypted: S.optional(S.Boolean),
-          isOptional: S.optional(S.Boolean),
-          type: S.String,
-        }),
-      ).annotate({ identifier: "FieldDefinition" });
   }
 }
-function __c4(j: number): any {
+function __c14(j: number): any {
   switch (j) {
     case 0:
-      return S.Record(S.String, __S(31, __c3, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          isGlobal: S.optional(S.Boolean),
-          fieldDefinitions: __S(32, __c4, 0),
-        }),
-      ).annotate({
-        identifier: "ConnectionTypeCreateOrUpdateProperties",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          automationAccountName: S.String.pipe(T.Label()),
-          connectionTypeName: S.String.pipe(T.Label()),
-          name: S.String,
-          properties: __S(33, __c4, 1),
-        }).pipe(
-          T.Http({
-            method: "PUT",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/connectionTypes/{connectionTypeName}",
-            code: 200,
-            apiVersion: "2024-10-23",
-          }),
-        ),
-      ).annotate({
-        identifier: "ConnectionTypeCreateOrUpdateRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          isGlobal: S.optional(S.Boolean),
-          fieldDefinitions: S.optional(__S(32, __c4, 0)),
-          creationTime: S.optional(S.String),
-          lastModifiedTime: S.optional(S.String),
-          description: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ConnectionTypeProperties" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(10, __c1, 2)),
-          properties: S.optional(__S(35, __c4, 3)),
-        }),
-      ).annotate({
-        identifier: "ConnectionTypeCreateOrUpdateResponse",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          schemaVersion: S.optional(S.String),
-          runbookDefinition: S.optional(S.String),
-          runbookType: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "RawGraphicalRunbookContent",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          automationAccountName: S.String.pipe(T.Label()),
-          rawContent: S.optional(S.NullOr(__S(37, __c4, 5))),
-          graphRunbookJson: S.optional(S.NullOr(S.String)),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/convertGraphRunbookContent",
-            code: 200,
-            apiVersion: "2024-10-23",
-          }),
-        ),
-      ).annotate({
-        identifier: "ConvertGraphRunbookContentRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          rawContent: S.optional(S.NullOr(__S(37, __c4, 5))),
-          graphRunbookJson: S.optional(S.NullOr(S.String)),
-        }),
-      ).annotate({ identifier: "GraphicalRunbookContent" });
-  }
-}
-function __c5(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          vmResourceId: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "HybridRunbookWorkerCreateOrUpdateParameters",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          automationAccountName: S.String.pipe(T.Label()),
-          hybridRunbookWorkerGroupName: S.String.pipe(T.Label()),
-          hybridRunbookWorkerId: S.String.pipe(T.Label()),
-          properties: S.optional(__S(40, __c5, 0)),
-        }).pipe(
-          T.Http({
-            method: "PUT",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/hybridRunbookWorkerGroups/{hybridRunbookWorkerGroupName}/hybridRunbookWorkers/{hybridRunbookWorkerId}",
-            code: 200,
-            apiVersion: "2024-10-23",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateHybridRunbookWorkerRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          ip: S.optional(S.String),
-          registeredDateTime: S.optional(S.String),
-          lastSeenDateTime: S.optional(S.String),
-          vmResourceId: S.optional(S.String),
-          workerType: S.optional(S.String),
-          workerName: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "HybridRunbookWorkerProperties",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(10, __c1, 2)),
-          tags: S.optional(__S(8, __c1, 0)),
-          location: S.String,
-          properties: S.optional(__S(42, __c5, 2)),
-        }),
-      ).annotate({
-        identifier: "CreateHybridRunbookWorkerResponse",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          credential: S.optional(__S(26, __c3, 2)),
-        }),
-      ).annotate({
-        identifier: "HybridRunbookWorkerGroupCreateOrUpdateProperties",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          automationAccountName: S.String.pipe(T.Label()),
-          hybridRunbookWorkerGroupName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(44, __c5, 4)),
-          name: S.optional(S.String),
-        }).pipe(
-          T.Http({
-            method: "PUT",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/hybridRunbookWorkerGroups/{hybridRunbookWorkerGroupName}",
-            code: 200,
-            apiVersion: "2024-10-23",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateHybridRunbookWorkerGroupRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          groupType: S.optional(S.String),
-          credential: S.optional(__S(26, __c3, 2)),
-        }),
-      ).annotate({
-        identifier: "HybridRunbookWorkerGroupProperties",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(10, __c1, 2)),
-          tags: S.optional(__S(8, __c1, 0)),
-          location: S.String,
-          properties: S.optional(__S(46, __c5, 6)),
-        }),
-      ).annotate({
-        identifier: "CreateHybridRunbookWorkerGroupResponse",
-      });
-  }
-}
-function __c6(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          runbook: S.optional(__S(26, __c3, 2)),
-          parameters: S.optional(__S(8, __c1, 0)),
-          runOn: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "JobCreateProperties" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          automationAccountName: S.String.pipe(T.Label()),
-          jobName: S.String.pipe(T.Label()),
-          properties: __S(48, __c6, 0),
-        }).pipe(
-          T.Http({
-            method: "PUT",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/jobs/{jobName}",
-            code: 200,
-            apiVersion: "2024-10-23",
-          }),
-        ),
-      ).annotate({ identifier: "CreateJobRequest" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          runtimeEnvironmentName: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "JobRuntimeEnvironment" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          runbook: S.optional(__S(26, __c3, 2)),
-          startedBy: S.optional(S.String),
-          runOn: S.optional(S.String),
-          jobRuntimeEnvironment: S.optional(__S(50, __c6, 2)),
-          jobId: S.optional(S.String),
-          creationTime: S.optional(S.String),
-          status: S.optional(S.String),
-          statusDetails: S.optional(S.String),
-          startTime: S.optional(S.NullOr(S.String)),
-          endTime: S.optional(S.NullOr(S.String)),
-          exception: S.optional(S.String),
-          lastModifiedTime: S.optional(S.NullOr(S.String)),
-          lastStatusModifiedTime: S.optional(S.NullOr(S.String)),
-          parameters: S.optional(__S(8, __c1, 0)),
-          provisioningState: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "JobProperties" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(10, __c1, 2)),
-          properties: S.optional(__S(51, __c6, 3)),
-        }),
-      ).annotate({ identifier: "CreateJobResponse" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          schedule: __S(26, __c3, 2),
-          runbook: __S(26, __c3, 2),
-          runOn: S.optional(S.String),
-          parameters: S.optional(__S(8, __c1, 0)),
-        }),
-      ).annotate({
-        identifier: "JobScheduleCreateProperties",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          automationAccountName: S.String.pipe(T.Label()),
-          jobScheduleId: S.String.pipe(T.Label()),
-          properties: __S(53, __c6, 5),
-        }).pipe(
-          T.Http({
-            method: "PUT",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/jobSchedules/{jobScheduleId}",
-            code: 200,
-            apiVersion: "2024-10-23",
-          }),
-        ),
-      ).annotate({ identifier: "CreateJobScheduleRequest" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          jobScheduleId: S.optional(S.String),
-          schedule: S.optional(__S(26, __c3, 2)),
-          runbook: S.optional(__S(26, __c3, 2)),
-          runOn: S.optional(S.String),
-          parameters: S.optional(__S(8, __c1, 0)),
-        }),
-      ).annotate({ identifier: "JobScheduleProperties" });
-  }
-}
-function __c7(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(10, __c1, 2)),
-          properties: S.optional(__S(55, __c6, 7)),
-        }),
-      ).annotate({
-        identifier: "CreateJobScheduleResponse",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          language: S.optional(S.String),
-          version: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "RuntimeProperties" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          runtime: S.optional(__S(57, __c7, 1)),
-          defaultPackages: S.optional(__S(8, __c1, 0)),
-          description: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "RuntimeEnvironmentProperties",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          automationAccountName: S.String.pipe(T.Label()),
-          runtimeEnvironmentName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(8, __c1, 0)),
-          location: S.String,
-          properties: S.optional(__S(58, __c7, 2)),
-        }).pipe(
-          T.Http({
-            method: "PUT",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/runtimeEnvironments/{runtimeEnvironmentName}",
-            code: 200,
-            apiVersion: "2024-10-23",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateRuntimeEnvironmentRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(10, __c1, 2)),
-          tags: S.optional(__S(8, __c1, 0)),
-          location: S.String,
-          properties: S.optional(__S(58, __c7, 2)),
-        }),
-      ).annotate({
-        identifier: "CreateRuntimeEnvironmentResponse",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          includedUpdateClassifications: S.optional(S.String),
-          excludedKbNumbers: S.optional(__S(12, __c1, 4)),
-          includedKbNumbers: S.optional(__S(12, __c1, 4)),
-          rebootSetting: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "WindowsProperties" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          includedPackageClassifications: S.optional(S.String),
-          excludedPackageNameMasks: S.optional(__S(12, __c1, 4)),
-          includedPackageNameMasks: S.optional(__S(12, __c1, 4)),
-          rebootSetting: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "LinuxProperties" });
-    case 7:
-      return S.Record(S.String, __S(12, __c1, 4));
-  }
-}
-function __c8(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          tags: S.optional(__S(63, __c7, 7)),
-          filterOperator: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "TagSettingsProperties" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          scope: S.optional(__S(12, __c1, 4)),
-          locations: S.optional(__S(12, __c1, 4)),
-          tagSettings: S.optional(__S(64, __c8, 0)),
-        }),
-      ).annotate({ identifier: "AzureQueryProperties" });
-    case 2:
-      return S.Array(__S(65, __c8, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          functionAlias: S.optional(S.String),
-          workspaceId: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "NonAzureQueryProperties" });
-    case 4:
-      return S.Array(__S(67, __c8, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          azureQueries: S.optional(__S(66, __c8, 2)),
-          nonAzureQueries: S.optional(__S(68, __c8, 4)),
-        }),
-      ).annotate({ identifier: "TargetProperties" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          operatingSystem: S.String,
-          windows: S.optional(__S(61, __c7, 5)),
-          linux: S.optional(__S(62, __c7, 6)),
-          duration: S.optional(S.String),
-          azureVirtualMachines: S.optional(__S(12, __c1, 4)),
-          nonAzureComputerNames: S.optional(__S(12, __c1, 4)),
-          targets: S.optional(__S(69, __c8, 5)),
-        }),
-      ).annotate({ identifier: "UpdateConfiguration" });
-    case 7:
-      return S.Array(S.Number);
-  }
-}
-function __c9(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          occurrence: S.optional(S.Number),
-          day: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "AdvancedScheduleMonthlyOccurrence",
-      });
-    case 1:
-      return S.Array(__S(72, __c9, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          weekDays: S.optional(__S(12, __c1, 4)),
-          monthDays: S.optional(__S(71, __c8, 7)),
-          monthlyOccurrences: S.optional(__S(73, __c9, 1)),
-        }),
-      ).annotate({ identifier: "AdvancedSchedule" });
-    case 3:
       return S.suspend(() =>
         S.Struct({
           startTime: S.optional(S.String),
@@ -9422,7 +8938,7 @@ function __c9(j: number): any {
           interval: S.optional(S.Number),
           frequency: S.optional(S.String),
           timeZone: S.optional(S.String),
-          advancedSchedule: S.optional(__S(74, __c9, 2)),
+          advancedSchedule: S.optional(__S(259, __c16, 3)),
           creationTime: S.optional(S.String),
           lastModifiedTime: S.optional(S.String),
           description: S.optional(S.String),
@@ -9430,52 +8946,25 @@ function __c9(j: number): any {
       ).annotate({
         identifier: "SUCSchedulePropertiesInput",
       });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          code: S.optional(S.String),
-          message: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "AutomationErrorResponse" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          parameters: S.optional(__S(8, __c1, 0)),
-          source: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "TaskProperties" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          preTask: S.optional(__S(77, __c9, 5)),
-          postTask: S.optional(__S(77, __c9, 5)),
-        }),
-      ).annotate({
-        identifier: "SoftwareUpdateConfigurationTasks",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          updateConfiguration: __S(70, __c8, 6),
-          scheduleInfo: __S(75, __c9, 3),
-          error: S.optional(__S(76, __c9, 4)),
-          tasks: S.optional(__S(78, __c9, 6)),
+          updateConfiguration: __S(297, __c18, 9),
+          scheduleInfo: __S(224, __c14, 0),
+          error: S.optional(__S(240, __c15, 0)),
+          tasks: S.optional(__S(299, __c18, 11)),
         }),
       ).annotate({
         identifier: "SoftwareUpdateConfigurationPropertiesInput",
       });
-  }
-}
-function __c10(j: number): any {
-  switch (j) {
-    case 0:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           automationAccountName: S.String.pipe(T.Label()),
           softwareUpdateConfigurationName: S.String.pipe(T.Label()),
-          properties: __S(79, __c9, 7),
+          properties: __S(225, __c14, 1),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -9487,7 +8976,47 @@ function __c10(j: number): any {
       ).annotate({
         identifier: "CreateSoftwareUpdateConfigurationRequest",
       });
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          code: S.optional(S.String),
+          message: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "AutomationErrorResponse" });
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.Number);
     case 1:
+      return S.suspend(() =>
+        S.Struct({
+          occurrence: S.optional(S.Number),
+          day: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "AdvancedScheduleMonthlyOccurrence",
+      });
+    case 2:
+      return S.Array(__S(257, __c16, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          weekDays: S.optional(__S(32, __c2, 0)),
+          monthDays: S.optional(__S(256, __c16, 0)),
+          monthlyOccurrences: S.optional(__S(258, __c16, 2)),
+        }),
+      ).annotate({ identifier: "AdvancedSchedule" });
+  }
+}
+function __c17(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           startTime: S.optional(S.String),
@@ -9500,868 +9029,40 @@ function __c10(j: number): any {
           interval: S.optional(S.Number),
           frequency: S.optional(S.String),
           timeZone: S.optional(S.String),
-          advancedSchedule: S.optional(__S(74, __c9, 2)),
+          advancedSchedule: S.optional(__S(259, __c16, 3)),
           creationTime: S.optional(S.String),
           lastModifiedTime: S.optional(S.String),
           description: S.optional(S.String),
         }),
       ).annotate({ identifier: "SUCScheduleProperties" });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          updateConfiguration: __S(70, __c8, 6),
-          scheduleInfo: __S(81, __c10, 1),
+          updateConfiguration: __S(297, __c18, 9),
+          scheduleInfo: __S(272, __c17, 0),
           provisioningState: S.optional(S.String),
-          error: S.optional(__S(76, __c9, 4)),
+          error: S.optional(__S(240, __c15, 0)),
           creationTime: S.optional(S.String),
           createdBy: S.optional(S.String),
           lastModifiedTime: S.optional(S.String),
           lastModifiedBy: S.optional(S.String),
-          tasks: S.optional(__S(78, __c9, 6)),
+          tasks: S.optional(__S(299, __c18, 11)),
         }),
       ).annotate({
         identifier: "SoftwareUpdateConfigurationProperties",
       });
-    case 3:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(10, __c1, 2)),
-          properties: __S(82, __c10, 2),
+          systemData: S.optional(__S(16, __c1, 0)),
+          properties: __S(273, __c17, 1),
         }),
       ).annotate({
         identifier: "CreateSoftwareUpdateConfigurationResponse",
       });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          commitId: S.String,
-        }),
-      ).annotate({
-        identifier: "SourceControlSyncJobCreateProperties",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          automationAccountName: S.String.pipe(T.Label()),
-          sourceControlName: S.String.pipe(T.Label()),
-          sourceControlSyncJobId: S.String.pipe(T.Label()),
-          properties: __S(84, __c10, 4),
-        }).pipe(
-          T.Http({
-            method: "PUT",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/sourceControls/{sourceControlName}/sourceControlSyncJobs/{sourceControlSyncJobId}",
-            code: 200,
-            apiVersion: "2024-10-23",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateSourceControlSyncJobRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          sourceControlSyncJobId: S.optional(S.String),
-          creationTime: S.optional(S.String),
-          provisioningState: S.optional(S.String),
-          startTime: S.optional(S.NullOr(S.String)),
-          endTime: S.optional(S.NullOr(S.String)),
-          syncType: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "SourceControlSyncJobProperties",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          id: S.optional(S.String),
-          properties: S.optional(__S(86, __c10, 6)),
-        }),
-      ).annotate({ identifier: "SourceControlSyncJob" });
-  }
-}
-function __c11(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          automationAccountName: S.String.pipe(T.Label()),
-          runbookName: S.String.pipe(T.Label()),
-          parameters: S.optional(__S(8, __c1, 0)),
-          runOn: S.optional(S.String),
-          runtimeEnvironment: S.optional(S.String),
-        }).pipe(
-          T.Http({
-            method: "PUT",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/runbooks/{runbookName}/draft/testJob",
-            code: 200,
-            apiVersion: "2024-10-23",
-          }),
-        ),
-      ).annotate({ identifier: "CreateTestJobRequest" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          creationTime: S.optional(S.String),
-          status: S.optional(S.String),
-          statusDetails: S.optional(S.String),
-          runOn: S.optional(S.String),
-          startTime: S.optional(S.NullOr(S.String)),
-          endTime: S.optional(S.NullOr(S.String)),
-          exception: S.optional(S.String),
-          lastModifiedTime: S.optional(S.String),
-          lastStatusModifiedTime: S.optional(S.NullOr(S.String)),
-          parameters: S.optional(__S(8, __c1, 0)),
-          logActivityTrace: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "TestJob" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          userName: S.String,
-          password: S.String.pipe(T.SensitiveValue({})),
-          description: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "CredentialCreateOrUpdateProperties",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          automationAccountName: S.String.pipe(T.Label()),
-          credentialName: S.String.pipe(T.Label()),
-          name: S.String,
-          properties: __S(90, __c11, 2),
-        }).pipe(
-          T.Http({
-            method: "PUT",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/credentials/{credentialName}",
-            code: 200,
-            apiVersion: "2024-10-23",
-          }),
-        ),
-      ).annotate({
-        identifier: "CredentialCreateOrUpdateRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          userName: S.optional(S.String),
-          creationTime: S.optional(S.String),
-          lastModifiedTime: S.optional(S.String),
-          description: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "CredentialProperties" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(10, __c1, 2)),
-          properties: S.optional(__S(92, __c11, 4)),
-        }),
-      ).annotate({
-        identifier: "CredentialCreateOrUpdateResponse",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          automationAccountName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}",
-            code: 200,
-            apiVersion: "2024-10-23",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteAutomationAccountRequest",
-      });
-    case 7:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "DeleteAutomationAccountResponse",
-      });
-  }
-}
-function __c12(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          automationAccountName: S.String.pipe(T.Label()),
-          certificateName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/certificates/{certificateName}",
-            code: 200,
-            apiVersion: "2024-10-23",
-          }),
-        ),
-      ).annotate({ identifier: "DeleteCertificateRequest" });
-    case 1:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "DeleteCertificateResponse",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          automationAccountName: S.String.pipe(T.Label()),
-          connectionName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/connections/{connectionName}",
-            code: 200,
-            apiVersion: "2024-10-23",
-          }),
-        ),
-      ).annotate({ identifier: "DeleteConnectionRequest" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          automationAccountName: S.String.pipe(T.Label()),
-          connectionTypeName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/connectionTypes/{connectionTypeName}",
-            code: 200,
-            apiVersion: "2024-10-23",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteConnectionTypeRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          automationAccountName: S.String.pipe(T.Label()),
-          credentialName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/credentials/{credentialName}",
-            code: 200,
-            apiVersion: "2024-10-23",
-          }),
-        ),
-      ).annotate({ identifier: "DeleteCredentialRequest" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          automationAccountName: S.String.pipe(T.Label()),
-          configurationName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/configurations/{configurationName}",
-            code: 200,
-            apiVersion: "2024-10-23",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteDscConfigurationRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          automationAccountName: S.String.pipe(T.Label()),
-          nodeId: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/nodes/{nodeId}",
-            code: 200,
-            apiVersion: "2024-10-23",
-          }),
-        ),
-      ).annotate({ identifier: "DeleteDscNodeRequest" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          automationAccountName: S.String.pipe(T.Label()),
-          nodeConfigurationName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/nodeConfigurations/{nodeConfigurationName}",
-            code: 200,
-            apiVersion: "2024-10-23",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteDscNodeConfigurationRequest",
-      });
-  }
-}
-function __c13(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          automationAccountName: S.String.pipe(T.Label()),
-          hybridRunbookWorkerGroupName: S.String.pipe(T.Label()),
-          hybridRunbookWorkerId: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/hybridRunbookWorkerGroups/{hybridRunbookWorkerGroupName}/hybridRunbookWorkers/{hybridRunbookWorkerId}",
-            code: 200,
-            apiVersion: "2024-10-23",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteHybridRunbookWorkerRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          automationAccountName: S.String.pipe(T.Label()),
-          hybridRunbookWorkerGroupName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/hybridRunbookWorkerGroups/{hybridRunbookWorkerGroupName}",
-            code: 200,
-            apiVersion: "2024-10-23",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteHybridRunbookWorkerGroupRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          automationAccountName: S.String.pipe(T.Label()),
-          jobScheduleId: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/jobSchedules/{jobScheduleId}",
-            code: 200,
-            apiVersion: "2024-10-23",
-          }),
-        ),
-      ).annotate({ identifier: "DeleteJobScheduleRequest" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          automationAccountName: S.String.pipe(T.Label()),
-          moduleName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/modules/{moduleName}",
-            code: 200,
-            apiVersion: "2024-10-23",
-          }),
-        ),
-      ).annotate({ identifier: "DeleteModuleRequest" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          automationAccountName: S.String.pipe(T.Label()),
-          runtimeEnvironmentName: S.String.pipe(T.Label()),
-          packageName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/runtimeEnvironments/{runtimeEnvironmentName}/packages/{packageName}",
-            code: 200,
-            apiVersion: "2024-10-23",
-          }),
-        ),
-      ).annotate({ identifier: "DeletePackageRequest" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          automationAccountName: S.String.pipe(T.Label()),
-          privateEndpointConnectionName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/privateEndpointConnections/{privateEndpointConnectionName}",
-            code: 200,
-            apiVersion: "2024-10-23",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeletePrivateEndpointConnectionRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          automationAccountName: S.String.pipe(T.Label()),
-          packageName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/python2Packages/{packageName}",
-            code: 200,
-            apiVersion: "2024-10-23",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeletePython2PackageRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          automationAccountName: S.String.pipe(T.Label()),
-          packageName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/python3Packages/{packageName}",
-            code: 200,
-            apiVersion: "2024-10-23",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeletePython3PackageRequest",
-      });
-  }
-}
-function __c14(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          automationAccountName: S.String.pipe(T.Label()),
-          runbookName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/runbooks/{runbookName}",
-            code: 200,
-            apiVersion: "2024-10-23",
-          }),
-        ),
-      ).annotate({ identifier: "DeleteRunbookRequest" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          automationAccountName: S.String.pipe(T.Label()),
-          runtimeEnvironmentName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/runtimeEnvironments/{runtimeEnvironmentName}",
-            code: 200,
-            apiVersion: "2024-10-23",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteRuntimeEnvironmentRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          automationAccountName: S.String.pipe(T.Label()),
-          scheduleName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/schedules/{scheduleName}",
-            code: 200,
-            apiVersion: "2024-10-23",
-          }),
-        ),
-      ).annotate({ identifier: "DeleteScheduleRequest" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          automationAccountName: S.String.pipe(T.Label()),
-          softwareUpdateConfigurationName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/softwareUpdateConfigurations/{softwareUpdateConfigurationName}",
-            code: 200,
-            apiVersion: "2024-10-23",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteSoftwareUpdateConfigurationRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          automationAccountName: S.String.pipe(T.Label()),
-          sourceControlName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/sourceControls/{sourceControlName}",
-            code: 200,
-            apiVersion: "2024-10-23",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteSourceControlRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          automationAccountName: S.String.pipe(T.Label()),
-          variableName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/variables/{variableName}",
-            code: 200,
-            apiVersion: "2024-10-23",
-          }),
-        ),
-      ).annotate({ identifier: "DeleteVariableRequest" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          automationAccountName: S.String.pipe(T.Label()),
-          watcherName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/watchers/{watcherName}",
-            code: 200,
-            apiVersion: "2024-10-23",
-          }),
-        ),
-      ).annotate({ identifier: "DeleteWatcherRequest" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          automationAccountName: S.String.pipe(T.Label()),
-          webhookName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/webhooks/{webhookName}",
-            code: 200,
-            apiVersion: "2024-10-23",
-          }),
-        ),
-      ).annotate({ identifier: "DeleteWebhookRequest" });
-  }
-}
-function __c15(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          algorithm: S.String,
-          value: S.String,
-        }),
-      ).annotate({ identifier: "ContentHash" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          hash: S.optional(__S(120, __c15, 0)),
-          type: S.optional(S.String),
-          value: S.optional(S.String),
-          version: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ContentSource" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          type: S.optional(S.String),
-          isMandatory: S.optional(S.Boolean),
-          position: S.optional(S.Number),
-          defaultValue: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "DscConfigurationParameter",
-      });
-    case 3:
-      return S.Record(S.String, __S(122, __c15, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          logVerbose: S.optional(S.Boolean),
-          logProgress: S.optional(S.Boolean),
-          source: __S(121, __c15, 1),
-          parameters: S.optional(__S(123, __c15, 3)),
-          description: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "DscConfigurationCreateOrUpdateProperties",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          automationAccountName: S.String.pipe(T.Label()),
-          configurationName: S.String.pipe(T.Label()),
-          properties: __S(124, __c15, 4),
-          name: S.optional(S.String),
-          location: S.optional(S.String),
-          tags: S.optional(__S(8, __c1, 0)),
-        }).pipe(
-          T.Http({
-            method: "PUT",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/configurations/{configurationName}",
-            code: 200,
-            apiVersion: "2024-10-23",
-          }),
-        ),
-      ).annotate({
-        identifier: "DscConfigurationCreateOrUpdateRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          provisioningState: S.optional(S.String),
-          jobCount: S.optional(S.Number),
-          parameters: S.optional(__S(123, __c15, 3)),
-          source: S.optional(__S(121, __c15, 1)),
-          state: S.optional(S.String),
-          logVerbose: S.optional(S.Boolean),
-          creationTime: S.optional(S.String),
-          lastModifiedTime: S.optional(S.String),
-          nodeConfigurationCount: S.optional(S.Number),
-          description: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "DscConfigurationProperties",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(10, __c1, 2)),
-          tags: S.optional(__S(8, __c1, 0)),
-          location: S.String,
-          properties: S.optional(__S(126, __c15, 6)),
-          etag: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "DscConfigurationCreateOrUpdateResponse",
-      });
-  }
-}
-function __c16(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          source: __S(121, __c15, 1),
-          configuration: __S(26, __c3, 2),
-          incrementNodeConfigurationBuild: S.optional(S.Boolean),
-        }),
-      ).annotate({
-        identifier: "DscNodeConfigurationCreateOrUpdateParametersProperties",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          automationAccountName: S.String.pipe(T.Label()),
-          nodeConfigurationName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(128, __c16, 0)),
-          name: S.optional(S.String),
-          tags: S.optional(__S(8, __c1, 0)),
-        }).pipe(
-          T.Http({
-            method: "PUT",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/nodeConfigurations/{nodeConfigurationName}",
-            code: 200,
-            apiVersion: "2024-10-23",
-          }),
-        ),
-      ).annotate({
-        identifier: "DscNodeConfigurationCreateOrUpdateRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          automationAccountName: S.String.pipe(T.Label()),
-          runbookName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/runbooks/{runbookName}/draft/undoEdit",
-            code: 200,
-            apiVersion: "2024-10-23",
-          }),
-        ),
-      ).annotate({
-        identifier: "EditRunbookDraftUndoRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          statusCode: S.optional(S.String),
-          requestId: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "EditRunbookDraftUndoResult",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          automationAccountName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/webhooks/generateUri",
-            code: 200,
-            apiVersion: "2024-10-23",
-          }),
-        ),
-      ).annotate({
-        identifier: "GenerateWebhookUriRequest",
-      });
-    case 5:
-      return S.suspend(() => S.String.pipe(T.RawResponseRoot())).annotate({
-        identifier: "GenerateWebhookUriResponse",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          automationAccountName: S.String.pipe(T.Label()),
-          moduleName: S.String.pipe(T.Label()),
-          activityName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/modules/{moduleName}/activities/{activityName}",
-            code: 200,
-            apiVersion: "2024-10-23",
-          }),
-        ),
-      ).annotate({ identifier: "GetActivityRequest" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          memberValue: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "ActivityParameterValidationSet",
-      });
-  }
-}
-function __c17(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(135, __c16, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          isMandatory: S.optional(S.Boolean),
-          isDynamic: S.optional(S.Boolean),
-          position: S.optional(S.Number),
-          valueFromPipeline: S.optional(S.Boolean),
-          valueFromPipelineByPropertyName: S.optional(S.Boolean),
-          valueFromRemainingArguments: S.optional(S.Boolean),
-          description: S.optional(S.String),
-          validationSet: S.optional(__S(136, __c17, 0)),
-        }),
-      ).annotate({ identifier: "ActivityParameter" });
-    case 2:
-      return S.Array(__S(137, __c17, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.optional(S.String),
-          parameters: S.optional(__S(138, __c17, 2)),
-        }),
-      ).annotate({ identifier: "ActivityParameterSet" });
-    case 4:
-      return S.Array(__S(139, __c17, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ActivityOutputType" });
-    case 6:
-      return S.Array(__S(141, __c17, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          definition: S.optional(S.String),
-          parameterSets: S.optional(__S(140, __c17, 4)),
-          outputTypes: S.optional(__S(142, __c17, 6)),
-          creationTime: S.optional(S.String),
-          lastModifiedTime: S.optional(S.String),
-          description: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ActivityProperties" });
   }
 }
 function __c18(j: number): any {
@@ -10369,1904 +9070,89 @@ function __c18(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          properties: S.optional(__S(143, __c17, 7)),
+          includedUpdateClassifications: S.optional(S.String),
+          excludedKbNumbers: S.optional(__S(32, __c2, 0)),
+          includedKbNumbers: S.optional(__S(32, __c2, 0)),
+          rebootSetting: S.optional(S.String),
         }),
-      ).annotate({ identifier: "Activity" });
+      ).annotate({ identifier: "WindowsProperties" });
     case 1:
       return S.suspend(() =>
         S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          automationAccountName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/agentRegistrationInformation",
-            code: 200,
-            apiVersion: "2024-10-23",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetAgentRegistrationInformationRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          primary: S.optional(S.String),
-          secondary: S.optional(S.String),
+          includedPackageClassifications: S.optional(S.String),
+          excludedPackageNameMasks: S.optional(__S(32, __c2, 0)),
+          includedPackageNameMasks: S.optional(__S(32, __c2, 0)),
+          rebootSetting: S.optional(S.String),
         }),
-      ).annotate({ identifier: "AgentRegistrationKeys" });
+      ).annotate({ identifier: "LinuxProperties" });
+    case 2:
+      return S.Record(S.String, __S(32, __c2, 0));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          dscMetaConfiguration: S.optional(S.String),
-          endpoint: S.optional(S.String),
-          keys: S.optional(__S(146, __c18, 2)),
-          id: S.optional(S.String),
+          tags: S.optional(__S(290, __c18, 2)),
+          filterOperator: S.optional(S.String),
         }),
-      ).annotate({ identifier: "AgentRegistration" });
+      ).annotate({ identifier: "TagSettingsProperties" });
     case 4:
       return S.suspend(() =>
         S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          automationAccountName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}",
-            code: 200,
-            apiVersion: "2024-10-23",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetAutomationAccountRequest",
-      });
+          scope: S.optional(__S(32, __c2, 0)),
+          locations: S.optional(__S(32, __c2, 0)),
+          tagSettings: S.optional(__S(291, __c18, 3)),
+        }),
+      ).annotate({ identifier: "AzureQueryProperties" });
     case 5:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          automationAccountName: S.String.pipe(T.Label()),
-          certificateName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/certificates/{certificateName}",
-            code: 200,
-            apiVersion: "2024-10-23",
-          }),
-        ),
-      ).annotate({ identifier: "GetCertificateRequest" });
+      return S.Array(__S(292, __c18, 4));
     case 6:
       return S.suspend(() =>
         S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(10, __c1, 2)),
-          properties: S.optional(__S(24, __c3, 0)),
+          functionAlias: S.optional(S.String),
+          workspaceId: S.optional(S.String),
         }),
-      ).annotate({ identifier: "GetCertificateResponse" });
+      ).annotate({ identifier: "NonAzureQueryProperties" });
     case 7:
+      return S.Array(__S(294, __c18, 6));
+    case 8:
       return S.suspend(() =>
         S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          automationAccountName: S.String.pipe(T.Label()),
-          connectionName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/connections/{connectionName}",
-            code: 200,
-            apiVersion: "2024-10-23",
-          }),
-        ),
-      ).annotate({ identifier: "GetConnectionRequest" });
+          azureQueries: S.optional(__S(293, __c18, 5)),
+          nonAzureQueries: S.optional(__S(295, __c18, 7)),
+        }),
+      ).annotate({ identifier: "TargetProperties" });
+    case 9:
+      return S.suspend(() =>
+        S.Struct({
+          operatingSystem: S.String,
+          windows: S.optional(__S(288, __c18, 0)),
+          linux: S.optional(__S(289, __c18, 1)),
+          duration: S.optional(S.String),
+          azureVirtualMachines: S.optional(__S(32, __c2, 0)),
+          nonAzureComputerNames: S.optional(__S(32, __c2, 0)),
+          targets: S.optional(__S(296, __c18, 8)),
+        }),
+      ).annotate({ identifier: "UpdateConfiguration" });
+    case 10:
+      return S.suspend(() =>
+        S.Struct({
+          parameters: S.optional(__S(64, __c4, 0)),
+          source: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "TaskProperties" });
+    case 11:
+      return S.suspend(() =>
+        S.Struct({
+          preTask: S.optional(__S(298, __c18, 10)),
+          postTask: S.optional(__S(298, __c18, 10)),
+        }),
+      ).annotate({
+        identifier: "SoftwareUpdateConfigurationTasks",
+      });
   }
 }
 function __c19(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(10, __c1, 2)),
-          properties: S.optional(__S(29, __c3, 5)),
-        }),
-      ).annotate({ identifier: "GetConnectionResponse" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          automationAccountName: S.String.pipe(T.Label()),
-          connectionTypeName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/connectionTypes/{connectionTypeName}",
-            code: 200,
-            apiVersion: "2024-10-23",
-          }),
-        ),
-      ).annotate({ identifier: "GetConnectionTypeRequest" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          automationAccountName: S.String.pipe(T.Label()),
-          credentialName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/credentials/{credentialName}",
-            code: 200,
-            apiVersion: "2024-10-23",
-          }),
-        ),
-      ).annotate({ identifier: "GetCredentialRequest" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(10, __c1, 2)),
-          properties: S.optional(__S(92, __c11, 4)),
-        }),
-      ).annotate({ identifier: "GetCredentialResponse" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          automationAccountName: S.String.pipe(T.Label()),
-          configurationName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/configurations/{configurationName}",
-            code: 200,
-            apiVersion: "2024-10-23",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetDscConfigurationRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          automationAccountName: S.String.pipe(T.Label()),
-          configurationName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/configurations/{configurationName}/content",
-            code: 200,
-            apiVersion: "2024-10-23",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetDscConfigurationContentRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          automationAccountName: S.String.pipe(T.Label()),
-          nodeId: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/nodes/{nodeId}",
-            code: 200,
-            apiVersion: "2024-10-23",
-          }),
-        ),
-      ).annotate({ identifier: "GetDscNodeRequest" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.optional(S.String),
-          version: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "DscNodeExtensionHandlerAssociationProperty",
-      });
-  }
-}
-function __c20(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(159, __c19, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          lastSeen: S.optional(S.String),
-          registrationTime: S.optional(S.String),
-          ip: S.optional(S.String),
-          accountId: S.optional(S.String),
-          nodeConfiguration: S.optional(S.NullOr(__S(26, __c3, 2))),
-          status: S.optional(S.String),
-          nodeId: S.optional(S.String),
-          etag: S.optional(S.String),
-          totalCount: S.optional(S.Number),
-          extensionHandler: S.optional(__S(160, __c20, 0)),
-        }),
-      ).annotate({ identifier: "DscNodeProperties" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(10, __c1, 2)),
-          properties: S.optional(__S(161, __c20, 1)),
-        }),
-      ).annotate({ identifier: "GetDscNodeResponse" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          automationAccountName: S.String.pipe(T.Label()),
-          nodeConfigurationName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/nodeConfigurations/{nodeConfigurationName}",
-            code: 200,
-            apiVersion: "2024-10-23",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetDscNodeConfigurationRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          lastModifiedTime: S.optional(S.String),
-          creationTime: S.optional(S.String),
-          configuration: S.optional(__S(26, __c3, 2)),
-          source: S.optional(S.String),
-          nodeCount: S.optional(S.Number),
-          incrementNodeConfigurationBuild: S.optional(S.Boolean),
-        }),
-      ).annotate({
-        identifier: "DscNodeConfigurationProperties",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(10, __c1, 2)),
-          properties: S.optional(__S(164, __c20, 4)),
-        }),
-      ).annotate({
-        identifier: "GetDscNodeConfigurationResponse",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          automationAccountName: S.String.pipe(T.Label()),
-          hybridRunbookWorkerGroupName: S.String.pipe(T.Label()),
-          hybridRunbookWorkerId: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/hybridRunbookWorkerGroups/{hybridRunbookWorkerGroupName}/hybridRunbookWorkers/{hybridRunbookWorkerId}",
-            code: 200,
-            apiVersion: "2024-10-23",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetHybridRunbookWorkerRequest",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          automationAccountName: S.String.pipe(T.Label()),
-          hybridRunbookWorkerGroupName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/hybridRunbookWorkerGroups/{hybridRunbookWorkerGroupName}",
-            code: 200,
-            apiVersion: "2024-10-23",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetHybridRunbookWorkerGroupRequest",
-      });
-  }
-}
-function __c21(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          automationAccountName: S.String.pipe(T.Label()),
-          jobName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/jobs/{jobName}",
-            code: 200,
-            apiVersion: "2024-10-23",
-          }),
-        ),
-      ).annotate({ identifier: "GetJobRequest" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          automationAccountName: S.String.pipe(T.Label()),
-          jobName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/jobs/{jobName}/output",
-            code: 200,
-            apiVersion: "2024-10-23",
-          }),
-        ),
-      ).annotate({ identifier: "GetJobOutputRequest" });
-    case 2:
-      return S.suspend(() => S.String.pipe(T.RawResponseRoot())).annotate({
-        identifier: "GetJobOutputResponse",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          automationAccountName: S.String.pipe(T.Label()),
-          jobName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/jobs/{jobName}/runbookContent",
-            code: 200,
-            apiVersion: "2024-10-23",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetJobRunbookContentRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          automationAccountName: S.String.pipe(T.Label()),
-          jobScheduleId: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/jobSchedules/{jobScheduleId}",
-            code: 200,
-            apiVersion: "2024-10-23",
-          }),
-        ),
-      ).annotate({ identifier: "GetJobScheduleRequest" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(10, __c1, 2)),
-          properties: S.optional(__S(55, __c6, 7)),
-        }),
-      ).annotate({ identifier: "GetJobScheduleResponse" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          automationAccountName: S.String.pipe(T.Label()),
-          jobName: S.String.pipe(T.Label()),
-          jobStreamId: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/jobs/{jobName}/streams/{jobStreamId}",
-            code: 200,
-            apiVersion: "2024-10-23",
-          }),
-        ),
-      ).annotate({ identifier: "GetJobStreamRequest" });
-    case 7:
-      return S.Record(S.String, S.Unknown);
-  }
-}
-function __c22(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          jobStreamId: S.optional(S.String),
-          time: S.optional(S.String),
-          streamType: S.optional(S.String),
-          streamText: S.optional(S.String),
-          summary: S.optional(S.NullOr(S.String)),
-          value: S.optional(__S(175, __c21, 7)),
-        }),
-      ).annotate({ identifier: "JobStreamProperties" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          properties: S.optional(__S(176, __c22, 0)),
-        }),
-      ).annotate({ identifier: "JobStream" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          automationAccountName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/linkedWorkspace",
-            code: 200,
-            apiVersion: "2024-10-23",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetLinkedWorkspaceRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          automationAccountName: S.String.pipe(T.Label()),
-          moduleName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/modules/{moduleName}",
-            code: 200,
-            apiVersion: "2024-10-23",
-          }),
-        ),
-      ).annotate({ identifier: "GetModuleRequest" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          uri: S.optional(S.String),
-          contentHash: S.optional(__S(120, __c15, 0)),
-          version: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ContentLink" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          isGlobal: S.optional(S.Boolean),
-          version: S.optional(S.String),
-          sizeInBytes: S.optional(S.Number),
-          activityCount: S.optional(S.Number),
-          provisioningState: S.optional(S.String),
-          contentLink: S.optional(__S(180, __c22, 4)),
-          error: S.optional(__S(76, __c9, 4)),
-          creationTime: S.optional(S.String),
-          lastModifiedTime: S.optional(S.String),
-          description: S.optional(S.String),
-          isComposite: S.optional(S.Boolean),
-        }),
-      ).annotate({ identifier: "ModuleProperties" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(10, __c1, 2)),
-          tags: S.optional(__S(8, __c1, 0)),
-          location: S.String,
-          properties: S.optional(__S(181, __c22, 5)),
-          etag: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "GetModuleResponse" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          automationAccountName: S.String.pipe(T.Label()),
-          countType: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/nodecounts/{countType}",
-            code: 200,
-            apiVersion: "2024-10-23",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetNodeCountInformationRequest",
-      });
-  }
-}
-function __c23(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          count: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "NodeCountProperties" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.optional(S.String),
-          properties: S.optional(__S(184, __c23, 0)),
-        }),
-      ).annotate({ identifier: "NodeCount" });
-    case 2:
-      return S.Array(__S(185, __c23, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          value: S.optional(__S(186, __c23, 2)),
-          totalCount: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "NodeCounts" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          automationAccountName: S.String.pipe(T.Label()),
-          nodeId: S.String.pipe(T.Label()),
-          reportId: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/nodes/{nodeId}/reports/{reportId}",
-            code: 200,
-            apiVersion: "2024-10-23",
-          }),
-        ),
-      ).annotate({ identifier: "GetNodeReportRequest" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          errorSource: S.optional(S.String),
-          resourceId: S.optional(S.String),
-          errorCode: S.optional(S.String),
-          errorMessage: S.optional(S.String),
-          locale: S.optional(S.String),
-          errorDetails: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "DscReportError" });
-    case 6:
-      return S.Array(__S(189, __c23, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          resourceId: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "DscReportResourceNavigation",
-      });
-  }
-}
-function __c24(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(191, __c23, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          resourceId: S.optional(S.String),
-          sourceInfo: S.optional(S.String),
-          dependsOn: S.optional(__S(192, __c24, 0)),
-          moduleName: S.optional(S.String),
-          moduleVersion: S.optional(S.String),
-          resourceName: S.optional(S.String),
-          error: S.optional(S.String),
-          status: S.optional(S.String),
-          durationInSeconds: S.optional(S.Number),
-          startDate: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "DscReportResource" });
-    case 2:
-      return S.Array(__S(193, __c24, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          configurationModeFrequencyMins: S.optional(S.Number),
-          rebootNodeIfNeeded: S.optional(S.Boolean),
-          configurationMode: S.optional(S.String),
-          actionAfterReboot: S.optional(S.String),
-          certificateId: S.optional(S.String),
-          refreshFrequencyMins: S.optional(S.Number),
-          allowModuleOverwrite: S.optional(S.Boolean),
-        }),
-      ).annotate({ identifier: "DscMetaConfiguration" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          endTime: S.optional(S.NullOr(S.String)),
-          lastModifiedTime: S.optional(S.String),
-          startTime: S.optional(S.NullOr(S.String)),
-          type: S.optional(S.String),
-          reportId: S.optional(S.String),
-          status: S.optional(S.String),
-          refreshMode: S.optional(S.String),
-          rebootRequested: S.optional(S.String),
-          reportFormatVersion: S.optional(S.String),
-          configurationVersion: S.optional(S.String),
-          id: S.optional(S.String),
-          errors: S.optional(__S(190, __c23, 6)),
-          resources: S.optional(__S(194, __c24, 2)),
-          metaConfiguration: S.optional(__S(195, __c24, 3)),
-          hostName: S.optional(S.String),
-          iPV4Addresses: S.optional(__S(12, __c1, 4)),
-          iPV6Addresses: S.optional(__S(12, __c1, 4)),
-          numberOfResources: S.optional(S.Number),
-          rawErrors: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "DscNodeReport" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          automationAccountName: S.String.pipe(T.Label()),
-          nodeId: S.String.pipe(T.Label()),
-          reportId: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/nodes/{nodeId}/reports/{reportId}/content",
-            code: 200,
-            apiVersion: "2024-10-23",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetNodeReportContentRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          automationAccountName: S.String.pipe(T.Label()),
-          runtimeEnvironmentName: S.String.pipe(T.Label()),
-          packageName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/runtimeEnvironments/{runtimeEnvironmentName}/packages/{packageName}",
-            code: 200,
-            apiVersion: "2024-10-23",
-          }),
-        ),
-      ).annotate({ identifier: "GetPackageRequest" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          default: S.optional(S.Boolean),
-          version: S.optional(S.String),
-          sizeInBytes: S.optional(S.Number),
-          provisioningState: S.optional(S.String),
-          contentLink: S.optional(__S(180, __c22, 4)),
-          error: S.optional(__S(76, __c9, 4)),
-          allOf: S.optional(__S(10, __c1, 2)),
-        }),
-      ).annotate({ identifier: "PackageProperties" });
-  }
-}
-function __c25(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(10, __c1, 2)),
-          tags: S.optional(__S(8, __c1, 0)),
-          location: S.String,
-          properties: S.optional(__S(199, __c24, 7)),
-        }),
-      ).annotate({ identifier: "GetPackageResponse" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          automationAccountName: S.String.pipe(T.Label()),
-          privateEndpointConnectionName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/privateEndpointConnections/{privateEndpointConnectionName}",
-            code: 200,
-            apiVersion: "2024-10-23",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetPrivateEndpointConnectionRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          automationAccountName: S.String.pipe(T.Label()),
-          packageName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/python2Packages/{packageName}",
-            code: 200,
-            apiVersion: "2024-10-23",
-          }),
-        ),
-      ).annotate({ identifier: "GetPython2PackageRequest" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(10, __c1, 2)),
-          tags: S.optional(__S(8, __c1, 0)),
-          location: S.String,
-          properties: S.optional(__S(181, __c22, 5)),
-          etag: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "GetPython2PackageResponse",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          automationAccountName: S.String.pipe(T.Label()),
-          packageName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/python3Packages/{packageName}",
-            code: 200,
-            apiVersion: "2024-10-23",
-          }),
-        ),
-      ).annotate({ identifier: "GetPython3PackageRequest" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          automationAccountName: S.String.pipe(T.Label()),
-          runbookName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/runbooks/{runbookName}",
-            code: 200,
-            apiVersion: "2024-10-23",
-          }),
-        ),
-      ).annotate({ identifier: "GetRunbookRequest" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          inEdit: S.optional(S.Boolean),
-          draftContentLink: S.optional(__S(180, __c22, 4)),
-          creationTime: S.optional(S.String),
-          lastModifiedTime: S.optional(S.String),
-          parameters: S.optional(__S(123, __c15, 3)),
-          outputTypes: S.optional(__S(12, __c1, 4)),
-        }),
-      ).annotate({ identifier: "RunbookDraft" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          runtimeEnvironment: S.optional(S.String),
-          runbookType: S.optional(S.String),
-          publishContentLink: S.optional(__S(180, __c22, 4)),
-          state: S.optional(S.String),
-          logVerbose: S.optional(S.Boolean),
-          logProgress: S.optional(S.Boolean),
-          logActivityTrace: S.optional(S.Number),
-          jobCount: S.optional(S.Number),
-          parameters: S.optional(__S(123, __c15, 3)),
-          outputTypes: S.optional(__S(12, __c1, 4)),
-          draft: S.optional(__S(206, __c25, 6)),
-          provisioningState: S.optional(S.String),
-          lastModifiedBy: S.optional(S.String),
-          creationTime: S.optional(S.String),
-          lastModifiedTime: S.optional(S.String),
-          description: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "RunbookProperties" });
-  }
-}
-function __c26(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(10, __c1, 2)),
-          tags: S.optional(__S(8, __c1, 0)),
-          location: S.String,
-          properties: S.optional(__S(207, __c25, 7)),
-          etag: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "GetRunbookResponse" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          automationAccountName: S.String.pipe(T.Label()),
-          runbookName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/runbooks/{runbookName}/content",
-            code: 200,
-            apiVersion: "2024-10-23",
-          }),
-        ),
-      ).annotate({ identifier: "GetRunbookContentRequest" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          automationAccountName: S.String.pipe(T.Label()),
-          runbookName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/runbooks/{runbookName}/draft",
-            code: 200,
-            apiVersion: "2024-10-23",
-          }),
-        ),
-      ).annotate({ identifier: "GetRunbookDraftRequest" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          automationAccountName: S.String.pipe(T.Label()),
-          runbookName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/runbooks/{runbookName}/draft/content",
-            code: 200,
-            apiVersion: "2024-10-23",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetRunbookDraftContentRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          automationAccountName: S.String.pipe(T.Label()),
-          runtimeEnvironmentName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/runtimeEnvironments/{runtimeEnvironmentName}",
-            code: 200,
-            apiVersion: "2024-10-23",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetRuntimeEnvironmentRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          automationAccountName: S.String.pipe(T.Label()),
-          scheduleName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/schedules/{scheduleName}",
-            code: 200,
-            apiVersion: "2024-10-23",
-          }),
-        ),
-      ).annotate({ identifier: "GetScheduleRequest" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          startTime: S.optional(S.String),
-          startTimeOffsetMinutes: S.optional(S.Number),
-          expiryTime: S.optional(S.NullOr(S.String)),
-          expiryTimeOffsetMinutes: S.optional(S.Number),
-          isEnabled: S.optional(S.Boolean),
-          nextRun: S.optional(S.NullOr(S.String)),
-          nextRunOffsetMinutes: S.optional(S.Number),
-          interval: S.optional(S.Unknown),
-          frequency: S.optional(S.String),
-          timeZone: S.optional(S.String),
-          advancedSchedule: S.optional(__S(74, __c9, 2)),
-          creationTime: S.optional(S.String),
-          lastModifiedTime: S.optional(S.String),
-          description: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ScheduleProperties" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(10, __c1, 2)),
-          properties: S.optional(__S(214, __c26, 6)),
-        }),
-      ).annotate({ identifier: "GetScheduleResponse" });
-  }
-}
-function __c27(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          automationAccountName: S.String.pipe(T.Label()),
-          softwareUpdateConfigurationName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/softwareUpdateConfigurations/{softwareUpdateConfigurationName}",
-            code: 200,
-            apiVersion: "2024-10-23",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetSoftwareUpdateConfigurationByNameRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          automationAccountName: S.String.pipe(T.Label()),
-          softwareUpdateConfigurationMachineRunId: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/softwareUpdateConfigurationMachineRuns/{softwareUpdateConfigurationMachineRunId}",
-            code: 200,
-            apiVersion: "2024-10-23",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetSoftwareUpdateConfigurationMachineRunByIdRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          targetComputer: S.optional(S.String),
-          targetComputerType: S.optional(S.String),
-          softwareUpdateConfiguration: S.optional(__S(26, __c3, 2)),
-          status: S.optional(S.String),
-          osType: S.optional(S.String),
-          correlationId: S.optional(S.String),
-          sourceComputerId: S.optional(S.String),
-          startTime: S.optional(S.String),
-          endTime: S.optional(S.NullOr(S.String)),
-          configuredDuration: S.optional(S.String),
-          job: S.optional(__S(11, __c1, 3)),
-          creationTime: S.optional(S.String),
-          createdBy: S.optional(S.String),
-          lastModifiedTime: S.optional(S.String),
-          lastModifiedBy: S.optional(S.String),
-          error: S.optional(__S(76, __c9, 4)),
-        }),
-      ).annotate({
-        identifier: "UpdateConfigurationMachineRunProperties",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.optional(S.String),
-          id: S.optional(S.String),
-          properties: S.optional(__S(218, __c27, 2)),
-        }),
-      ).annotate({
-        identifier: "SoftwareUpdateConfigurationMachineRun",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          automationAccountName: S.String.pipe(T.Label()),
-          softwareUpdateConfigurationRunId: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/softwareUpdateConfigurationRuns/{softwareUpdateConfigurationRunId}",
-            code: 200,
-            apiVersion: "2024-10-23",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetSoftwareUpdateConfigurationRunByIdRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          status: S.optional(S.String),
-          source: S.optional(S.String),
-          jobId: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "SoftwareUpdateConfigurationRunTaskProperties",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          preTask: S.optional(__S(221, __c27, 5)),
-          postTask: S.optional(__S(221, __c27, 5)),
-        }),
-      ).annotate({
-        identifier: "SoftwareUpdateConfigurationRunTasks",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          softwareUpdateConfiguration: S.optional(__S(26, __c3, 2)),
-          status: S.optional(S.String),
-          configuredDuration: S.optional(S.String),
-          osType: S.optional(S.String),
-          startTime: S.optional(S.String),
-          endTime: S.optional(S.NullOr(S.String)),
-          computerCount: S.optional(S.Number),
-          failedCount: S.optional(S.Number),
-          creationTime: S.optional(S.String),
-          createdBy: S.optional(S.String),
-          lastModifiedTime: S.optional(S.String),
-          lastModifiedBy: S.optional(S.String),
-          tasks: S.optional(__S(222, __c27, 6)),
-        }),
-      ).annotate({
-        identifier: "SoftwareUpdateConfigurationRunProperties",
-      });
-  }
-}
-function __c28(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.optional(S.String),
-          id: S.optional(S.String),
-          properties: S.optional(__S(223, __c27, 7)),
-        }),
-      ).annotate({
-        identifier: "SoftwareUpdateConfigurationRun",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          automationAccountName: S.String.pipe(T.Label()),
-          sourceControlName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/sourceControls/{sourceControlName}",
-            code: 200,
-            apiVersion: "2024-10-23",
-          }),
-        ),
-      ).annotate({ identifier: "GetSourceControlRequest" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          repoUrl: S.optional(S.String),
-          branch: S.optional(S.String),
-          folderPath: S.optional(S.String),
-          autoSync: S.optional(S.Boolean),
-          publishRunbook: S.optional(S.Boolean),
-          sourceType: S.optional(S.String),
-          description: S.optional(S.String),
-          creationTime: S.optional(S.String),
-          lastModifiedTime: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "SourceControlProperties" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(10, __c1, 2)),
-          properties: S.optional(__S(226, __c28, 2)),
-        }),
-      ).annotate({ identifier: "GetSourceControlResponse" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          automationAccountName: S.String.pipe(T.Label()),
-          sourceControlName: S.String.pipe(T.Label()),
-          sourceControlSyncJobId: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/sourceControls/{sourceControlName}/sourceControlSyncJobs/{sourceControlSyncJobId}",
-            code: 200,
-            apiVersion: "2024-10-23",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetSourceControlSyncJobRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          sourceControlSyncJobId: S.optional(S.String),
-          creationTime: S.optional(S.String),
-          provisioningState: S.optional(S.String),
-          startTime: S.optional(S.NullOr(S.String)),
-          endTime: S.optional(S.NullOr(S.String)),
-          syncType: S.optional(S.String),
-          exception: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "SourceControlSyncJobByIdProperties",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          properties: S.optional(__S(229, __c28, 5)),
-        }),
-      ).annotate({ identifier: "SourceControlSyncJobById" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          automationAccountName: S.String.pipe(T.Label()),
-          sourceControlName: S.String.pipe(T.Label()),
-          sourceControlSyncJobId: S.String.pipe(T.Label()),
-          streamId: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/sourceControls/{sourceControlName}/sourceControlSyncJobs/{sourceControlSyncJobId}/streams/{streamId}",
-            code: 200,
-            apiVersion: "2024-10-23",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetSourceControlSyncJobStreamRequest",
-      });
-  }
-}
-function __c29(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          sourceControlSyncJobStreamId: S.optional(S.String),
-          summary: S.optional(S.String),
-          time: S.optional(S.NullOr(S.String)),
-          streamType: S.optional(S.String),
-          streamText: S.optional(S.String),
-          value: S.optional(__S(175, __c21, 7)),
-        }),
-      ).annotate({
-        identifier: "SourceControlSyncJobStreamByIdProperties",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          properties: S.optional(__S(232, __c29, 0)),
-        }),
-      ).annotate({
-        identifier: "SourceControlSyncJobStreamById",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          automationAccountName: S.String.pipe(T.Label()),
-          runbookName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/runbooks/{runbookName}/draft/testJob",
-            code: 200,
-            apiVersion: "2024-10-23",
-          }),
-        ),
-      ).annotate({ identifier: "GetTestJobRequest" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          automationAccountName: S.String.pipe(T.Label()),
-          runbookName: S.String.pipe(T.Label()),
-          jobStreamId: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/runbooks/{runbookName}/draft/testJob/streams/{jobStreamId}",
-            code: 200,
-            apiVersion: "2024-10-23",
-          }),
-        ),
-      ).annotate({ identifier: "GetTestJobStreamRequest" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          automationAccountName: S.String.pipe(T.Label()),
-          variableName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/variables/{variableName}",
-            code: 200,
-            apiVersion: "2024-10-23",
-          }),
-        ),
-      ).annotate({ identifier: "GetVariableRequest" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          value: S.optional(S.String),
-          isEncrypted: S.optional(S.NullOr(S.Boolean)),
-          creationTime: S.optional(S.String),
-          lastModifiedTime: S.optional(S.String),
-          description: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "VariableProperties" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(10, __c1, 2)),
-          properties: S.optional(__S(237, __c29, 5)),
-        }),
-      ).annotate({ identifier: "GetVariableResponse" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          automationAccountName: S.String.pipe(T.Label()),
-          watcherName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/watchers/{watcherName}",
-            code: 200,
-            apiVersion: "2024-10-23",
-          }),
-        ),
-      ).annotate({ identifier: "GetWatcherRequest" });
-  }
-}
-function __c30(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          executionFrequencyInSeconds: S.optional(S.Number),
-          scriptName: S.optional(S.String),
-          scriptParameters: S.optional(__S(8, __c1, 0)),
-          scriptRunOn: S.optional(S.String),
-          status: S.optional(S.String),
-          creationTime: S.optional(S.String),
-          lastModifiedTime: S.optional(S.String),
-          lastModifiedBy: S.optional(S.String),
-          description: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "WatcherProperties" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(10, __c1, 2)),
-          properties: S.optional(__S(240, __c30, 0)),
-          etag: S.optional(S.String),
-          tags: S.optional(__S(8, __c1, 0)),
-          location: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "GetWatcherResponse" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          automationAccountName: S.String.pipe(T.Label()),
-          webhookName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/webhooks/{webhookName}",
-            code: 200,
-            apiVersion: "2024-10-23",
-          }),
-        ),
-      ).annotate({ identifier: "GetWebhookRequest" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          isEnabled: S.optional(S.Boolean),
-          uri: S.optional(S.String),
-          expiryTime: S.optional(S.String),
-          lastInvokedTime: S.optional(S.NullOr(S.String)),
-          parameters: S.optional(__S(8, __c1, 0)),
-          runbook: S.optional(__S(26, __c3, 2)),
-          runOn: S.optional(S.String),
-          creationTime: S.optional(S.String),
-          lastModifiedTime: S.optional(S.String),
-          lastModifiedBy: S.optional(S.String),
-          description: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "WebhookProperties" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(10, __c1, 2)),
-          properties: S.optional(__S(243, __c30, 3)),
-        }),
-      ).annotate({ identifier: "GetWebhookResponse" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          automationAccountName: S.String.pipe(T.Label()),
-          moduleName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/modules/{moduleName}/activities",
-            code: 200,
-            apiVersion: "2024-10-23",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListActivityByModuleRequest",
-      });
-    case 6:
-      return S.Array(__S(144, __c18, 0));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          value: __S(246, __c30, 6),
-          nextLink: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ActivityListResult" });
-  }
-}
-function __c31(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/providers/Microsoft.Automation/automationAccounts",
-            code: 200,
-            apiVersion: "2024-10-23",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListAutomationAccountRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(10, __c1, 2)),
-          tags: S.optional(__S(8, __c1, 0)),
-          location: S.String,
-          properties: S.optional(__S(17, __c2, 1)),
-          etag: S.optional(S.String),
-          identity: S.optional(__S(20, __c2, 4)),
-        }),
-      ).annotate({ identifier: "AutomationAccount" });
-    case 2:
-      return S.Array(__S(249, __c31, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          value: __S(250, __c31, 2),
-          nextLink: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "AutomationAccountListResult",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts",
-            code: 200,
-            apiVersion: "2024-10-23",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListAutomationAccountByResourceGroupRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          automationAccountName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/listDeletedRunbooks",
-            code: 200,
-            apiVersion: "2024-10-23",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListAutomationAccountDeletedRunbooksRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          runbookId: S.optional(S.String),
-          runbookType: S.optional(S.String),
-          runtime: S.optional(S.String),
-          runtimeEnvironment: S.optional(S.NullOr(S.String)),
-          creationTime: S.optional(S.String),
-          deletionTime: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "DeletedRunbookProperties" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          properties: S.optional(__S(254, __c31, 6)),
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          location: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "DeletedRunbook" });
-  }
-}
-function __c32(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(255, __c31, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          value: __S(256, __c32, 0),
-          nextLink: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "DeletedRunbookListResult" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          automationAccountName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/certificates",
-            code: 200,
-            apiVersion: "2024-10-23",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListCertificateByAutomationAccountRequest",
-      });
-    case 3:
-      return S.Array(__S(150, __c18, 6));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          value: __S(259, __c32, 3),
-          nextLink: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "CertificateListResult" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          automationAccountName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/connections",
-            code: 200,
-            apiVersion: "2024-10-23",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListConnectionByAutomationAccountRequest",
-      });
-    case 6:
-      return S.Array(__S(152, __c19, 0));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          value: __S(262, __c32, 6),
-          nextLink: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ConnectionListResult" });
-  }
-}
-function __c33(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          automationAccountName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/connectionTypes",
-            code: 200,
-            apiVersion: "2024-10-23",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListConnectionTypeByAutomationAccountRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(10, __c1, 2)),
-          properties: S.optional(__S(35, __c4, 3)),
-        }),
-      ).annotate({ identifier: "ConnectionType" });
-    case 2:
-      return S.Array(__S(265, __c33, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          value: __S(266, __c33, 2),
-          nextLink: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ConnectionTypeListResult" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          automationAccountName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/credentials",
-            code: 200,
-            apiVersion: "2024-10-23",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListCredentialByAutomationAccountRequest",
-      });
-    case 5:
-      return S.Array(__S(155, __c19, 3));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          value: __S(269, __c33, 5),
-          nextLink: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "CredentialListResult" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/providers/Microsoft.Automation/deletedAutomationAccounts",
-            code: 200,
-            apiVersion: "2024-10-23",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListDeletedAutomationAccountBySubscriptionRequest",
-      });
-  }
-}
-function __c34(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          automationAccountResourceId: S.optional(
-            S.String.pipe(T.Body("AutomationAccountResourceId")),
-          ),
-          automationAccountId: S.optional(S.String.pipe(T.Body("AutomationAccountId"))),
-          location: S.optional(S.String.pipe(T.Body("Location"))),
-          deletionTime: S.optional(S.String.pipe(T.Body("DeletedTime"))),
-        }),
-      ).annotate({
-        identifier: "DeletedAutomationAccountProperties",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          properties: S.optional(__S(272, __c34, 0).pipe(T.Body("Properties"))),
-          id: S.optional(S.String.pipe(T.Body("Id"))),
-          name: S.optional(S.String.pipe(T.Body("Name"))),
-          type: S.optional(S.String.pipe(T.Body("Type"))),
-          location: S.optional(S.String.pipe(T.Body("Location"))),
-        }),
-      ).annotate({ identifier: "DeletedAutomationAccount" });
-    case 2:
-      return S.Array(__S(273, __c34, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          value: S.optional(__S(274, __c34, 2)),
-        }),
-      ).annotate({
-        identifier: "DeletedAutomationAccountListResult",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          automationAccountName: S.String.pipe(T.Label()),
-          _filter: S.optional(S.String.pipe(T.Query("$filter"))),
-          _skip: S.optional(S.Number.pipe(T.Query("$skip"))),
-          _top: S.optional(S.Number.pipe(T.Query("$top"))),
-          _inlinecount: S.optional(S.String.pipe(T.Query("$inlinecount"))),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/configurations",
-            code: 200,
-            apiVersion: "2024-10-23",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListDscConfigurationByAutomationAccountRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(10, __c1, 2)),
-          tags: S.optional(__S(8, __c1, 0)),
-          location: S.String,
-          properties: S.optional(__S(126, __c15, 6)),
-          etag: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "DscConfiguration" });
-    case 6:
-      return S.Array(__S(277, __c34, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          value: S.optional(__S(278, __c34, 6)),
-          nextLink: S.optional(S.String),
-          totalCount: S.optional(S.Number),
-        }),
-      ).annotate({
-        identifier: "DscConfigurationListResult",
-      });
-  }
-}
-function __c35(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          automationAccountName: S.String.pipe(T.Label()),
-          _filter: S.optional(S.String.pipe(T.Query("$filter"))),
-          _skip: S.optional(S.Number.pipe(T.Query("$skip"))),
-          _top: S.optional(S.Number.pipe(T.Query("$top"))),
-          _inlinecount: S.optional(S.String.pipe(T.Query("$inlinecount"))),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/nodes",
-            code: 200,
-            apiVersion: "2024-10-23",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListDscNodeByAutomationAccountRequest",
-      });
-    case 1:
-      return S.Array(__S(162, __c20, 2));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          value: S.optional(__S(281, __c35, 1)),
-          nextLink: S.optional(S.String),
-          totalCount: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "DscNodeListResult" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          automationAccountName: S.String.pipe(T.Label()),
-          _filter: S.optional(S.String.pipe(T.Query("$filter"))),
-          _skip: S.optional(S.Number.pipe(T.Query("$skip"))),
-          _top: S.optional(S.Number.pipe(T.Query("$top"))),
-          _inlinecount: S.optional(S.String.pipe(T.Query("$inlinecount"))),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/nodeConfigurations",
-            code: 200,
-            apiVersion: "2024-10-23",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListDscNodeConfigurationByAutomationAccountRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(10, __c1, 2)),
-          properties: S.optional(__S(164, __c20, 4)),
-        }),
-      ).annotate({ identifier: "DscNodeConfiguration" });
-    case 5:
-      return S.Array(__S(284, __c35, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          value: S.optional(__S(285, __c35, 5)),
-          nextLink: S.optional(S.String),
-          totalCount: S.optional(S.Number),
-        }),
-      ).annotate({
-        identifier: "DscNodeConfigurationListResult",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          automationAccountName: S.String.pipe(T.Label()),
-          moduleName: S.String.pipe(T.Label()),
-          typeName: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/modules/{moduleName}/types/{typeName}/fields",
-            code: 200,
-            apiVersion: "2024-10-23",
-          }),
-        ),
-      ).annotate({ identifier: "ListFieldByTypeRequest" });
-  }
-}
-function __c36(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          value: S.optional(__S(142, __c17, 6)),
-          nextLink: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "TypeFieldListResult" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          automationAccountName: S.String.pipe(T.Label()),
-          hybridRunbookWorkerGroupName: S.String.pipe(T.Label()),
-          _filter: S.optional(S.String.pipe(T.Query("$filter"))),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/hybridRunbookWorkerGroups/{hybridRunbookWorkerGroupName}/hybridRunbookWorkers",
-            code: 200,
-            apiVersion: "2024-10-23",
-          }),
-        ),
-      ).annotate({
-        identifier: "ListHybridRunbookWorkerByHybridRunbookWorkerGroupRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(10, __c1, 2)),
-          tags: S.optional(__S(8, __c1, 0)),
-          location: S.String,
-          properties: S.optional(__S(42, __c5, 2)),
-        }),
-      ).annotate({ identifier: "HybridRunbookWorker" });
-    case 3:
-      return S.Array(__S(290, __c36, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          value: __S(291, __c36, 3),
-          nextLink: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "HybridRunbookWorkersListResult",
-      });
-    case 5:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -12284,34 +9170,34 @@ function __c36(j: number): any {
       ).annotate({
         identifier: "ListHybridRunbookWorkerGroupByAutomationAccountRequest",
       });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(10, __c1, 2)),
-          tags: S.optional(__S(8, __c1, 0)),
+          systemData: S.optional(__S(16, __c1, 0)),
+          tags: S.optional(__S(64, __c4, 0)),
           location: S.String,
-          properties: S.optional(__S(46, __c5, 6)),
+          properties: S.optional(__S(2912, __c182, 0)),
         }),
       ).annotate({ identifier: "HybridRunbookWorkerGroup" });
-    case 7:
-      return S.Array(__S(294, __c36, 6));
-  }
-}
-function __c37(j: number): any {
-  switch (j) {
-    case 0:
+    case 2:
+      return S.Array(__S(305, __c19, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          value: __S(295, __c36, 7),
+          value: __S(306, __c19, 2),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
         identifier: "HybridRunbookWorkerGroupsListResult",
       });
-    case 1:
+  }
+}
+function __c20(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -12329,10 +9215,10 @@ function __c37(j: number): any {
       ).annotate({
         identifier: "ListJobByAutomationAccountRequest",
       });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          runbook: S.optional(__S(26, __c3, 2)),
+          runbook: S.optional(__S(1808, __c113, 0)),
           jobId: S.optional(S.String),
           startedBy: S.optional(S.NullOr(S.String)),
           creationTime: S.optional(S.String),
@@ -12341,32 +9227,36 @@ function __c37(j: number): any {
           endTime: S.optional(S.NullOr(S.String)),
           lastModifiedTime: S.optional(S.NullOr(S.String)),
           provisioningState: S.optional(S.String),
-          jobRuntimeEnvironment: S.optional(__S(50, __c6, 2)),
+          jobRuntimeEnvironment: S.optional(__S(3296, __c206, 0)),
           runOn: S.optional(S.String),
         }),
       ).annotate({
         identifier: "JobCollectionItemProperties",
       });
-    case 3:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(10, __c1, 2)),
-          properties: __S(298, __c37, 2),
+          systemData: S.optional(__S(16, __c1, 0)),
+          properties: __S(321, __c20, 1),
         }),
       ).annotate({ identifier: "JobCollectionItem" });
+    case 3:
+      return S.Array(__S(322, __c20, 2));
     case 4:
-      return S.Array(__S(299, __c37, 3));
-    case 5:
       return S.suspend(() =>
         S.Struct({
-          value: __S(300, __c37, 4),
+          value: __S(323, __c20, 3),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "JobListResultV2" });
-    case 6:
+  }
+}
+function __c21(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -12384,20 +9274,20 @@ function __c37(j: number): any {
       ).annotate({
         identifier: "ListJobScheduleByAutomationAccountRequest",
       });
-    case 7:
-      return S.Array(__S(173, __c21, 5));
-  }
-}
-function __c38(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
+      return S.Array(__S(2816, __c176, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          value: __S(303, __c37, 7),
+          value: __S(337, __c21, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "JobScheduleListResult" });
-    case 1:
+  }
+}
+function __c22(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -12416,16 +9306,24 @@ function __c38(j: number): any {
       ).annotate({
         identifier: "ListJobStreamByJobRequest",
       });
-    case 2:
-      return S.Array(__S(177, __c22, 1));
-    case 3:
+  }
+}
+function __c23(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(2865, __c179, 1));
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          value: __S(306, __c38, 2),
+          value: __S(368, __c23, 0),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "JobStreamListResult" });
-    case 4:
+  }
+}
+function __c24(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -12442,7 +9340,7 @@ function __c38(j: number): any {
       ).annotate({
         identifier: "ListKeyByAutomationAccountRequest",
       });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           KeyName: S.optional(S.String),
@@ -12450,17 +9348,17 @@ function __c38(j: number): any {
           Value: S.optional(S.String),
         }),
       ).annotate({ identifier: "Key" });
-    case 6:
-      return S.Array(__S(309, __c38, 5));
-    case 7:
+    case 2:
+      return S.Array(__S(385, __c24, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          keys: S.optional(__S(310, __c38, 6)),
+          keys: S.optional(__S(386, __c24, 2)),
         }),
       ).annotate({ identifier: "KeyListResult" });
   }
 }
-function __c39(j: number): any {
+function __c25(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -12479,16 +9377,24 @@ function __c39(j: number): any {
       ).annotate({
         identifier: "ListModuleByAutomationAccountRequest",
       });
+  }
+}
+function __c26(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(2976, __c186, 0));
     case 1:
-      return S.Array(__S(182, __c22, 6));
-    case 2:
       return S.suspend(() =>
         S.Struct({
-          value: __S(313, __c39, 1),
+          value: __S(416, __c26, 0),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ModuleListResult" });
-    case 3:
+  }
+}
+function __c27(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -12507,16 +9413,20 @@ function __c39(j: number): any {
       ).annotate({
         identifier: "ListNodeReportByNodeRequest",
       });
-    case 4:
-      return S.Array(__S(196, __c24, 4));
-    case 5:
+    case 1:
+      return S.Array(__S(3063, __c191, 7));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          value: __S(316, __c39, 4),
+          value: __S(433, __c27, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "DscNodeReportListResult" });
-    case 6:
+  }
+}
+function __c28(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -12534,7 +9444,11 @@ function __c39(j: number): any {
       ).annotate({
         identifier: "ListObjectDataTypeFieldsByTypeRequest",
       });
-    case 7:
+  }
+}
+function __c29(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({}).pipe(
           T.Http({
@@ -12545,11 +9459,7 @@ function __c39(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ListOperationsRequest" });
-  }
-}
-function __c40(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           provider: S.optional(S.String),
@@ -12558,16 +9468,16 @@ function __c40(j: number): any {
           description: S.optional(S.String),
         }),
       ).annotate({ identifier: "OperationDisplay" });
-    case 1:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
           displayName: S.optional(S.String),
         }),
       ).annotate({ identifier: "Dimension" });
-    case 2:
-      return S.Array(__S(321, __c40, 1));
     case 3:
+      return S.Array(__S(466, __c29, 2));
+    case 4:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
@@ -12575,12 +9485,12 @@ function __c40(j: number): any {
           displayDescription: S.optional(S.String),
           unit: S.optional(S.String),
           aggregationType: S.optional(S.String),
-          dimensions: S.optional(__S(322, __c40, 2)),
+          dimensions: S.optional(__S(467, __c29, 3)),
         }),
       ).annotate({ identifier: "MetricSpecification" });
-    case 4:
-      return S.Array(__S(323, __c40, 3));
     case 5:
+      return S.Array(__S(468, __c29, 4));
+    case 6:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
@@ -12588,48 +9498,48 @@ function __c40(j: number): any {
           blobDuration: S.optional(S.String),
         }),
       ).annotate({ identifier: "LogSpecification" });
-    case 6:
-      return S.Array(__S(325, __c40, 5));
     case 7:
+      return S.Array(__S(470, __c29, 6));
+    case 8:
       return S.suspend(() =>
         S.Struct({
-          metricSpecifications: S.optional(__S(324, __c40, 4)),
-          logSpecifications: S.optional(__S(326, __c40, 6)),
+          metricSpecifications: S.optional(__S(469, __c29, 5)),
+          logSpecifications: S.optional(__S(471, __c29, 7)),
         }),
       ).annotate({
         identifier: "OperationPropertiesFormatServiceSpecification",
       });
-  }
-}
-function __c41(j: number): any {
-  switch (j) {
-    case 0:
+    case 9:
       return S.suspend(() =>
         S.Struct({
-          serviceSpecification: S.optional(__S(327, __c40, 7)),
+          serviceSpecification: S.optional(__S(472, __c29, 8)),
         }),
       ).annotate({
         identifier: "OperationPropertiesFormat",
       });
-    case 1:
+    case 10:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
-          display: S.optional(__S(320, __c40, 0)),
+          display: S.optional(__S(465, __c29, 1)),
           origin: S.optional(S.String),
-          properties: S.optional(__S(328, __c41, 0)),
+          properties: S.optional(__S(473, __c29, 9)),
         }),
       ).annotate({ identifier: "Operation" });
-    case 2:
-      return S.Array(__S(329, __c41, 1));
-    case 3:
+    case 11:
+      return S.Array(__S(474, __c29, 10));
+    case 12:
       return S.suspend(() =>
         S.Struct({
-          value: __S(330, __c41, 2),
+          value: __S(475, __c29, 11),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "OperationListResult" });
-    case 4:
+  }
+}
+function __c30(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -12647,16 +9557,78 @@ function __c41(j: number): any {
       ).annotate({
         identifier: "ListPackageByRuntimeEnvironmentRequest",
       });
-    case 5:
-      return S.Array(__S(200, __c25, 0));
-    case 6:
+    case 1:
+      return S.Array(__S(3120, __c195, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          value: __S(333, __c41, 5),
+          value: __S(481, __c30, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "PackageListResult" });
-    case 7:
+  }
+}
+function __c31(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          commitId: S.String,
+        }),
+      ).annotate({
+        identifier: "SourceControlSyncJobCreateProperties",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          automationAccountName: S.String.pipe(T.Label()),
+          sourceControlName: S.String.pipe(T.Label()),
+          sourceControlSyncJobId: S.String.pipe(T.Label()),
+          properties: __S(496, __c31, 0),
+        }).pipe(
+          T.Http({
+            method: "PUT",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/sourceControls/{sourceControlName}/sourceControlSyncJobs/{sourceControlSyncJobId}",
+            code: 200,
+            apiVersion: "2024-10-23",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateSourceControlSyncJobRequest",
+      });
+  }
+}
+function __c32(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          sourceControlSyncJobId: S.optional(S.String),
+          creationTime: S.optional(S.String),
+          provisioningState: S.optional(S.String),
+          startTime: S.optional(S.NullOr(S.String)),
+          endTime: S.optional(S.NullOr(S.String)),
+          syncType: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "SourceControlSyncJobProperties",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          id: S.optional(S.String),
+          properties: S.optional(__S(512, __c32, 0)),
+        }),
+      ).annotate({ identifier: "SourceControlSyncJob" });
+  }
+}
+function __c33(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -12673,20 +9645,20 @@ function __c41(j: number): any {
       ).annotate({
         identifier: "ListPrivateEndpointConnectionByAutomationAccountRequest",
       });
-  }
-}
-function __c42(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(16, __c2, 0)),
+          value: S.optional(__S(144, __c9, 0)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
         identifier: "PrivateEndpointConnectionListResult",
       });
-    case 1:
+  }
+}
+function __c34(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -12703,7 +9675,11 @@ function __c42(j: number): any {
       ).annotate({
         identifier: "ListPython2PackageByAutomationAccountRequest",
       });
-    case 2:
+  }
+}
+function __c35(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -12720,7 +9696,11 @@ function __c42(j: number): any {
       ).annotate({
         identifier: "ListPython3PackageByAutomationAccountRequest",
       });
-    case 3:
+  }
+}
+function __c36(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -12737,16 +9717,20 @@ function __c42(j: number): any {
       ).annotate({
         identifier: "ListRunbookByAutomationAccountRequest",
       });
-    case 4:
-      return S.Array(__S(208, __c26, 0));
-    case 5:
+    case 1:
+      return S.Array(__S(3232, __c202, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          value: __S(340, __c42, 4),
+          value: __S(577, __c36, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "RunbookListResult" });
-    case 6:
+  }
+}
+function __c37(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -12763,34 +9747,34 @@ function __c42(j: number): any {
       ).annotate({
         identifier: "ListRuntimeEnvironmentByAutomationAccountRequest",
       });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(10, __c1, 2)),
-          tags: S.optional(__S(8, __c1, 0)),
+          systemData: S.optional(__S(16, __c1, 0)),
+          tags: S.optional(__S(64, __c4, 0)),
           location: S.String,
-          properties: S.optional(__S(58, __c7, 2)),
+          properties: S.optional(__S(3889, __c243, 1)),
         }),
       ).annotate({ identifier: "RuntimeEnvironment" });
-  }
-}
-function __c43(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(343, __c42, 7));
-    case 1:
+    case 2:
+      return S.Array(__S(593, __c37, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          value: __S(344, __c43, 0),
+          value: __S(594, __c37, 2),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
         identifier: "RuntimeEnvironmentListResult",
       });
-    case 2:
+  }
+}
+function __c38(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -12807,16 +9791,20 @@ function __c43(j: number): any {
       ).annotate({
         identifier: "ListScheduleByAutomationAccountRequest",
       });
-    case 3:
-      return S.Array(__S(215, __c26, 7));
-    case 4:
+    case 1:
+      return S.Array(__S(3408, __c213, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          value: __S(347, __c43, 3),
+          value: __S(609, __c38, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ScheduleListResult" });
-    case 5:
+  }
+}
+function __c39(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -12836,12 +9824,12 @@ function __c43(j: number): any {
       ).annotate({
         identifier: "ListSoftwareUpdateConfigurationMachineRunsRequest",
       });
-    case 6:
-      return S.Array(__S(219, __c27, 3));
-    case 7:
+    case 1:
+      return S.Array(__S(3457, __c216, 1));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          value: __S(350, __c43, 6),
+          value: __S(625, __c39, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
@@ -12849,7 +9837,7 @@ function __c43(j: number): any {
       });
   }
 }
-function __c44(j: number): any {
+function __c40(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -12872,17 +9860,21 @@ function __c44(j: number): any {
         identifier: "ListSoftwareUpdateConfigurationRunsRequest",
       });
     case 1:
-      return S.Array(__S(224, __c28, 0));
+      return S.Array(__S(3491, __c218, 3));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: __S(353, __c44, 1),
+          value: __S(641, __c40, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
         identifier: "SoftwareUpdateConfigurationRunListResult",
       });
-    case 3:
+  }
+}
+function __c41(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -12900,11 +9892,11 @@ function __c44(j: number): any {
       ).annotate({
         identifier: "ListSoftwareUpdateConfigurationsRequest",
       });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          updateConfiguration: S.optional(__S(70, __c8, 6)),
-          tasks: S.optional(__S(78, __c9, 6)),
+          updateConfiguration: S.optional(__S(297, __c18, 9)),
+          tasks: S.optional(__S(299, __c18, 11)),
           frequency: S.optional(S.String),
           startTime: S.optional(S.String),
           creationTime: S.optional(S.String),
@@ -12915,29 +9907,29 @@ function __c44(j: number): any {
       ).annotate({
         identifier: "SoftwareUpdateConfigurationCollectionItemProperties",
       });
-    case 5:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
           id: S.optional(S.String),
-          properties: __S(356, __c44, 4),
+          properties: __S(657, __c41, 1),
         }),
       ).annotate({
         identifier: "SoftwareUpdateConfigurationCollectionItem",
       });
-    case 6:
-      return S.Array(__S(357, __c44, 5));
-    case 7:
+    case 3:
+      return S.Array(__S(658, __c41, 2));
+    case 4:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(358, __c44, 6)),
+          value: S.optional(__S(659, __c41, 3)),
         }),
       ).annotate({
         identifier: "SoftwareUpdateConfigurationListResult",
       });
   }
 }
-function __c45(j: number): any {
+function __c42(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -12958,15 +9950,62 @@ function __c45(j: number): any {
         identifier: "ListSourceControlByAutomationAccountRequest",
       });
     case 1:
-      return S.Array(__S(227, __c28, 3));
+      return S.Array(__S(3520, __c220, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: __S(361, __c45, 1),
+          value: __S(673, __c42, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "SourceControlListResult" });
-    case 3:
+  }
+}
+function __c43(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          automationAccountName: S.String.pipe(T.Label()),
+          runbookName: S.String.pipe(T.Label()),
+          parameters: S.optional(__S(64, __c4, 0)),
+          runOn: S.optional(S.String),
+          runtimeEnvironment: S.optional(S.String),
+        }).pipe(
+          T.Http({
+            method: "PUT",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/runbooks/{runbookName}/draft/testJob",
+            code: 200,
+            apiVersion: "2024-10-23",
+          }),
+        ),
+      ).annotate({ identifier: "CreateTestJobRequest" });
+  }
+}
+function __c44(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          creationTime: S.optional(S.String),
+          status: S.optional(S.String),
+          statusDetails: S.optional(S.String),
+          runOn: S.optional(S.String),
+          startTime: S.optional(S.NullOr(S.String)),
+          endTime: S.optional(S.NullOr(S.String)),
+          exception: S.optional(S.String),
+          lastModifiedTime: S.optional(S.String),
+          lastStatusModifiedTime: S.optional(S.NullOr(S.String)),
+          parameters: S.optional(__S(64, __c4, 0)),
+          logActivityTrace: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "TestJob" });
+  }
+}
+function __c45(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -12985,18 +10024,22 @@ function __c45(j: number): any {
       ).annotate({
         identifier: "ListSourceControlSyncJobByAutomationAccountRequest",
       });
-    case 4:
-      return S.Array(__S(87, __c10, 7));
-    case 5:
+    case 1:
+      return S.Array(__S(513, __c32, 1));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          value: __S(364, __c45, 4),
+          value: __S(721, __c45, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
         identifier: "SourceControlSyncJobListResult",
       });
-    case 6:
+  }
+}
+function __c46(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -13016,7 +10059,7 @@ function __c45(j: number): any {
       ).annotate({
         identifier: "ListSourceControlSyncJobStreamBySyncJobRequest",
       });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           sourceControlSyncJobStreamId: S.optional(S.String),
@@ -13027,31 +10070,31 @@ function __c45(j: number): any {
       ).annotate({
         identifier: "SourceControlSyncJobStreamProperties",
       });
-  }
-}
-function __c46(j: number): any {
-  switch (j) {
-    case 0:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
-          properties: S.optional(__S(367, __c45, 7)),
+          properties: S.optional(__S(737, __c46, 1)),
         }),
       ).annotate({
         identifier: "SourceControlSyncJobStream",
       });
-    case 1:
-      return S.Array(__S(368, __c46, 0));
-    case 2:
+    case 3:
+      return S.Array(__S(738, __c46, 2));
+    case 4:
       return S.suspend(() =>
         S.Struct({
-          value: __S(369, __c46, 1),
+          value: __S(739, __c46, 3),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
         identifier: "SourceControlSyncJobStreamsListBySyncJob",
       });
-    case 3:
+  }
+}
+function __c47(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -13069,7 +10112,7 @@ function __c46(j: number): any {
       ).annotate({
         identifier: "ListStatisticsByAutomationAccountRequest",
       });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           counterProperty: S.optional(S.String),
@@ -13079,16 +10122,20 @@ function __c46(j: number): any {
           id: S.optional(S.String),
         }),
       ).annotate({ identifier: "Statistics" });
-    case 5:
-      return S.Array(__S(372, __c46, 4));
-    case 6:
+    case 2:
+      return S.Array(__S(753, __c47, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(373, __c46, 5)),
+          value: S.optional(__S(754, __c47, 2)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "StatisticsListResult" });
-    case 7:
+  }
+}
+function __c48(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -13109,7 +10156,7 @@ function __c46(j: number): any {
       });
   }
 }
-function __c47(j: number): any {
+function __c49(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -13139,7 +10186,7 @@ function __c47(j: number): any {
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
-          name: S.optional(__S(377, __c47, 1)),
+          name: S.optional(__S(785, __c49, 1)),
           unit: S.optional(S.String),
           currentValue: S.optional(S.Number),
           limit: S.optional(S.Number),
@@ -13147,15 +10194,19 @@ function __c47(j: number): any {
         }),
       ).annotate({ identifier: "Usage" });
     case 3:
-      return S.Array(__S(378, __c47, 2));
+      return S.Array(__S(786, __c49, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(379, __c47, 3)),
+          value: S.optional(__S(787, __c49, 3)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "UsageListResult" });
-    case 5:
+  }
+}
+function __c50(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -13172,18 +10223,18 @@ function __c47(j: number): any {
       ).annotate({
         identifier: "ListVariableByAutomationAccountRequest",
       });
-    case 6:
-      return S.Array(__S(238, __c29, 6));
-    case 7:
+    case 1:
+      return S.Array(__S(3664, __c229, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          value: __S(382, __c47, 6),
+          value: __S(801, __c50, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "VariableListResult" });
   }
 }
-function __c48(j: number): any {
+function __c51(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -13204,15 +10255,19 @@ function __c48(j: number): any {
         identifier: "ListWatcherByAutomationAccountRequest",
       });
     case 1:
-      return S.Array(__S(241, __c30, 1));
+      return S.Array(__S(3712, __c232, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: __S(385, __c48, 1),
+          value: __S(817, __c51, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "WatcherListResult" });
-    case 3:
+  }
+}
+function __c52(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -13230,34 +10285,30 @@ function __c48(j: number): any {
       ).annotate({
         identifier: "ListWebhookByAutomationAccountRequest",
       });
-    case 4:
-      return S.Array(__S(244, __c30, 4));
-    case 5:
+    case 1:
+      return S.Array(__S(3760, __c235, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          value: __S(388, __c48, 4),
+          value: __S(833, __c52, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "WebhookListResult" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          contentLink: __S(180, __c22, 4),
-        }),
-      ).annotate({
-        identifier: "ModuleCreateOrUpdateProperties",
-      });
-    case 7:
+  }
+}
+function __c53(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           automationAccountName: S.String.pipe(T.Label()),
           moduleName: S.String.pipe(T.Label()),
-          properties: __S(390, __c48, 6),
+          properties: __S(864, __c54, 0),
           name: S.optional(S.String),
           location: S.optional(S.String),
-          tags: S.optional(__S(8, __c1, 0)),
+          tags: S.optional(__S(64, __c4, 0)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -13271,7 +10322,19 @@ function __c48(j: number): any {
       });
   }
 }
-function __c49(j: number): any {
+function __c54(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          contentLink: __S(2992, __c187, 0),
+        }),
+      ).annotate({
+        identifier: "ModuleCreateOrUpdateProperties",
+      });
+  }
+}
+function __c55(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -13292,7 +10355,70 @@ function __c49(j: number): any {
       ).annotate({
         identifier: "MoveHybridRunbookWorkerRequest",
       });
+  }
+}
+function __c56(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          userName: S.String,
+          password: S.String.pipe(T.SensitiveValue({})),
+          description: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "CredentialCreateOrUpdateProperties",
+      });
     case 1:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          automationAccountName: S.String.pipe(T.Label()),
+          credentialName: S.String.pipe(T.Label()),
+          name: S.String,
+          properties: __S(896, __c56, 0),
+        }).pipe(
+          T.Http({
+            method: "PUT",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/credentials/{credentialName}",
+            code: 200,
+            apiVersion: "2024-10-23",
+          }),
+        ),
+      ).annotate({
+        identifier: "CredentialCreateOrUpdateRequest",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(16, __c1, 0)),
+          properties: S.optional(__S(912, __c57, 0)),
+        }),
+      ).annotate({
+        identifier: "CredentialCreateOrUpdateResponse",
+      });
+  }
+}
+function __c57(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          userName: S.optional(S.String),
+          creationTime: S.optional(S.String),
+          lastModifiedTime: S.optional(S.String),
+          description: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "CredentialProperties" });
+  }
+}
+function __c58(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -13311,16 +10437,11 @@ function __c49(j: number): any {
       ).annotate({
         identifier: "ObjectDataTypesListFieldsByModuleAndTypeRequest",
       });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          tags: S.optional(__S(8, __c1, 0)),
-          location: S.String,
-        }),
-      ).annotate({
-        identifier: "PackageCreateOrUpdateRequestAllOf",
-      });
-    case 3:
+  }
+}
+function __c59(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -13328,8 +10449,8 @@ function __c49(j: number): any {
           automationAccountName: S.String.pipe(T.Label()),
           runtimeEnvironmentName: S.String.pipe(T.Label()),
           packageName: S.String.pipe(T.Label()),
-          properties: __S(390, __c48, 6),
-          allOf: S.optional(__S(394, __c49, 2)),
+          properties: __S(864, __c54, 0),
+          allOf: S.optional(__S(960, __c60, 0)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -13341,21 +10462,38 @@ function __c49(j: number): any {
       ).annotate({
         identifier: "PackageCreateOrUpdateRequest",
       });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(10, __c1, 2)),
-          tags: S.optional(__S(8, __c1, 0)),
+          systemData: S.optional(__S(16, __c1, 0)),
+          tags: S.optional(__S(64, __c4, 0)),
           location: S.String,
-          properties: S.optional(__S(199, __c24, 7)),
+          properties: S.optional(__S(3104, __c194, 0)),
         }),
       ).annotate({
         identifier: "PackageCreateOrUpdateResponse",
       });
-    case 5:
+  }
+}
+function __c60(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          tags: S.optional(__S(64, __c4, 0)),
+          location: S.String,
+        }),
+      ).annotate({
+        identifier: "PackageCreateOrUpdateRequestAllOf",
+      });
+  }
+}
+function __c61(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -13363,7 +10501,7 @@ function __c49(j: number): any {
           automationAccountName: S.String.pipe(T.Label()),
           hybridRunbookWorkerGroupName: S.String.pipe(T.Label()),
           hybridRunbookWorkerId: S.String.pipe(T.Label()),
-          properties: S.optional(__S(40, __c5, 0)),
+          properties: S.optional(__S(2592, __c162, 0)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -13375,7 +10513,11 @@ function __c49(j: number): any {
       ).annotate({
         identifier: "PatchHybridRunbookWorkerRequest",
       });
-    case 6:
+  }
+}
+function __c62(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           status: S.optional(S.String),
@@ -13384,28 +10526,24 @@ function __c49(j: number): any {
       ).annotate({
         identifier: "PrivateLinkServiceConnectionStatePropertyInput",
       });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          privateEndpoint: S.optional(__S(11, __c1, 3)),
-          groupIds: S.optional(__S(12, __c1, 4)),
-          privateLinkServiceConnectionState: S.optional(__S(398, __c49, 6)),
+          privateEndpoint: S.optional(__S(112, __c7, 0)),
+          groupIds: S.optional(__S(32, __c2, 0)),
+          privateLinkServiceConnectionState: S.optional(__S(992, __c62, 0)),
         }),
       ).annotate({
         identifier: "PrivateEndpointConnectionPropertiesInput",
       });
-  }
-}
-function __c50(j: number): any {
-  switch (j) {
-    case 0:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           automationAccountName: S.String.pipe(T.Label()),
           privateEndpointConnectionName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(399, __c49, 7)),
+          properties: S.optional(__S(993, __c62, 1)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -13417,7 +10555,11 @@ function __c50(j: number): any {
       ).annotate({
         identifier: "PrivateEndpointConnectionsCreateOrUpdateRequest",
       });
-    case 1:
+  }
+}
+function __c63(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -13434,37 +10576,41 @@ function __c50(j: number): any {
       ).annotate({
         identifier: "PrivateLinkResourcesAutomationRequest",
       });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           groupId: S.optional(S.String),
-          requiredMembers: S.optional(__S(12, __c1, 4)),
+          requiredMembers: S.optional(__S(32, __c2, 0)),
         }),
       ).annotate({
         identifier: "PrivateLinkResourceProperties",
       });
-    case 3:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(10, __c1, 2)),
-          properties: S.optional(__S(402, __c50, 2)),
+          systemData: S.optional(__S(16, __c1, 0)),
+          properties: S.optional(__S(1009, __c63, 1)),
         }),
       ).annotate({ identifier: "PrivateLinkResource" });
+    case 3:
+      return S.Array(__S(1010, __c63, 2));
     case 4:
-      return S.Array(__S(403, __c50, 3));
-    case 5:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(404, __c50, 4)),
+          value: S.optional(__S(1011, __c63, 3)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
         identifier: "PrivateLinkResourceListResult",
       });
-    case 6:
+  }
+}
+function __c64(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -13480,15 +10626,19 @@ function __c50(j: number): any {
           }),
         ),
       ).annotate({ identifier: "PublishRunbookRequest" });
-    case 7:
+  }
+}
+function __c65(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           automationAccountName: S.String.pipe(T.Label()),
           packageName: S.String.pipe(T.Label()),
-          properties: __S(390, __c48, 6),
-          tags: S.optional(__S(8, __c1, 0)),
+          properties: __S(864, __c54, 0),
+          tags: S.optional(__S(64, __c4, 0)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -13502,7 +10652,7 @@ function __c50(j: number): any {
       });
   }
 }
-function __c51(j: number): any {
+function __c66(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -13511,8 +10661,8 @@ function __c51(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           automationAccountName: S.String.pipe(T.Label()),
           packageName: S.String.pipe(T.Label()),
-          properties: __S(390, __c48, 6),
-          tags: S.optional(__S(8, __c1, 0)),
+          properties: __S(864, __c54, 0),
+          tags: S.optional(__S(64, __c4, 0)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -13524,7 +10674,11 @@ function __c51(j: number): any {
       ).annotate({
         identifier: "Python3PackageCreateOrUpdateRequest",
       });
-    case 1:
+  }
+}
+function __c67(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -13542,7 +10696,11 @@ function __c51(j: number): any {
       ).annotate({
         identifier: "RegenerateAgentRegistrationInformationKeyRequest",
       });
-    case 2:
+  }
+}
+function __c68(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -13561,7 +10719,40 @@ function __c51(j: number): any {
       ).annotate({
         identifier: "ReplaceRunbookDraftContentRequest",
       });
-    case 3:
+  }
+}
+function __c69(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          automationAccountName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}",
+            code: 200,
+            apiVersion: "2024-10-23",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteAutomationAccountRequest",
+      });
+  }
+}
+function __c70(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "DeleteAutomationAccountResponse",
+      });
+  }
+}
+function __c71(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -13577,7 +10768,11 @@ function __c51(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ResumeJobRequest" });
-    case 4:
+  }
+}
+function __c72(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -13593,32 +10788,36 @@ function __c51(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ResumeTestJobRequest" });
-    case 5:
+  }
+}
+function __c73(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           logVerbose: S.optional(S.Boolean),
           logProgress: S.optional(S.Boolean),
           runtimeEnvironment: S.optional(S.String),
           runbookType: S.String,
-          draft: S.optional(__S(206, __c25, 6)),
-          publishContentLink: S.optional(__S(180, __c22, 4)),
+          draft: S.optional(__S(3248, __c203, 0)),
+          publishContentLink: S.optional(__S(2992, __c187, 0)),
           description: S.optional(S.String),
           logActivityTrace: S.optional(S.Number),
         }),
       ).annotate({
         identifier: "RunbookCreateOrUpdateProperties",
       });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           automationAccountName: S.String.pipe(T.Label()),
           runbookName: S.String.pipe(T.Label()),
-          properties: __S(413, __c51, 5),
+          properties: __S(1168, __c73, 0),
           name: S.optional(S.String),
           location: S.optional(S.String),
-          tags: S.optional(__S(8, __c1, 0)),
+          tags: S.optional(__S(64, __c4, 0)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -13630,16 +10829,16 @@ function __c51(j: number): any {
       ).annotate({
         identifier: "RunbookCreateOrUpdateRequest",
       });
-    case 7:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(10, __c1, 2)),
-          tags: S.optional(__S(8, __c1, 0)),
+          systemData: S.optional(__S(16, __c1, 0)),
+          tags: S.optional(__S(64, __c4, 0)),
           location: S.String,
-          properties: S.optional(__S(207, __c25, 7)),
+          properties: S.optional(__S(3216, __c201, 0)),
           etag: S.optional(S.String),
         }),
       ).annotate({
@@ -13647,7 +10846,7 @@ function __c51(j: number): any {
       });
   }
 }
-function __c52(j: number): any {
+function __c74(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -13658,7 +10857,7 @@ function __c52(j: number): any {
           interval: S.optional(S.Unknown),
           frequency: S.String,
           timeZone: S.optional(S.String),
-          advancedSchedule: S.optional(__S(74, __c9, 2)),
+          advancedSchedule: S.optional(__S(259, __c16, 3)),
         }),
       ).annotate({
         identifier: "ScheduleCreateOrUpdateProperties",
@@ -13671,7 +10870,7 @@ function __c52(j: number): any {
           automationAccountName: S.String.pipe(T.Label()),
           scheduleName: S.String.pipe(T.Label()),
           name: S.String,
-          properties: __S(416, __c52, 0),
+          properties: __S(1184, __c74, 0),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -13689,23 +10888,17 @@ function __c52(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(10, __c1, 2)),
-          properties: S.optional(__S(214, __c26, 6)),
+          systemData: S.optional(__S(16, __c1, 0)),
+          properties: S.optional(__S(3392, __c212, 0)),
         }),
       ).annotate({
         identifier: "ScheduleCreateOrUpdateResponse",
       });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          accessToken: S.optional(S.String.pipe(T.SensitiveValue({}))),
-          refreshToken: S.optional(S.String.pipe(T.SensitiveValue({}))),
-          tokenType: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "SourceControlSecurityTokenProperties",
-      });
-    case 4:
+  }
+}
+function __c75(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           repoUrl: S.optional(S.String),
@@ -13714,20 +10907,20 @@ function __c52(j: number): any {
           autoSync: S.optional(S.Boolean),
           publishRunbook: S.optional(S.Boolean),
           sourceType: S.optional(S.String),
-          securityToken: S.optional(__S(419, __c52, 3)),
+          securityToken: S.optional(__S(1216, __c76, 0)),
           description: S.optional(S.String),
         }),
       ).annotate({
         identifier: "SourceControlCreateOrUpdateProperties",
       });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           automationAccountName: S.String.pipe(T.Label()),
           sourceControlName: S.String.pipe(T.Label()),
-          properties: __S(420, __c52, 4),
+          properties: __S(1200, __c75, 0),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -13739,19 +10932,37 @@ function __c52(j: number): any {
       ).annotate({
         identifier: "SourceControlCreateOrUpdateRequest",
       });
-    case 6:
+  }
+}
+function __c76(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          accessToken: S.optional(S.String.pipe(T.SensitiveValue({}))),
+          refreshToken: S.optional(S.String.pipe(T.SensitiveValue({}))),
+          tokenType: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "SourceControlSecurityTokenProperties",
+      });
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(10, __c1, 2)),
-          properties: S.optional(__S(226, __c28, 2)),
+          systemData: S.optional(__S(16, __c1, 0)),
+          properties: S.optional(__S(3536, __c221, 0)),
         }),
       ).annotate({
         identifier: "SourceControlCreateOrUpdateResponse",
       });
-    case 7:
+  }
+}
+function __c77(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -13769,7 +10980,7 @@ function __c52(j: number): any {
       ).annotate({ identifier: "StartWatcherRequest" });
   }
 }
-function __c53(j: number): any {
+function __c78(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -13787,7 +10998,11 @@ function __c53(j: number): any {
           }),
         ),
       ).annotate({ identifier: "StopJobRequest" });
-    case 1:
+  }
+}
+function __c79(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -13803,7 +11018,11 @@ function __c53(j: number): any {
           }),
         ),
       ).annotate({ identifier: "StopTestJobRequest" });
-    case 2:
+  }
+}
+function __c80(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -13819,7 +11038,11 @@ function __c53(j: number): any {
           }),
         ),
       ).annotate({ identifier: "StopWatcherRequest" });
-    case 3:
+  }
+}
+function __c81(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -13835,7 +11058,39 @@ function __c53(j: number): any {
           }),
         ),
       ).annotate({ identifier: "SuspendJobRequest" });
-    case 4:
+  }
+}
+function __c82(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          automationAccountName: S.String.pipe(T.Label()),
+          certificateName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/certificates/{certificateName}",
+            code: 200,
+            apiVersion: "2024-10-23",
+          }),
+        ),
+      ).annotate({ identifier: "DeleteCertificateRequest" });
+  }
+}
+function __c83(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "DeleteCertificateResponse",
+      });
+  }
+}
+function __c84(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -13851,28 +11106,32 @@ function __c53(j: number): any {
           }),
         ),
       ).annotate({ identifier: "SuspendTestJobRequest" });
-    case 5:
+  }
+}
+function __c85(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          sku: S.optional(__S(0, __c0, 0)),
-          encryption: S.optional(__S(3, __c0, 3)),
+          sku: S.optional(__S(160, __c10, 0)),
+          encryption: S.optional(__S(163, __c10, 3)),
           publicNetworkAccess: S.optional(S.Boolean),
           disableLocalAuth: S.optional(S.Boolean),
         }),
       ).annotate({
         identifier: "AutomationAccountUpdateProperties",
       });
-    case 6:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           automationAccountName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(429, __c53, 5)),
+          properties: S.optional(__S(1360, __c85, 0)),
           name: S.optional(S.String),
           location: S.optional(S.String),
-          identity: S.optional(__S(7, __c0, 7)),
-          tags: S.optional(__S(8, __c1, 0)),
+          identity: S.optional(__S(49, __c3, 1)),
+          tags: S.optional(__S(64, __c4, 0)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -13884,7 +11143,11 @@ function __c53(j: number): any {
       ).annotate({
         identifier: "UpdateAutomationAccountRequest",
       });
-    case 7:
+  }
+}
+function __c86(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           description: S.optional(S.String),
@@ -13892,11 +11155,7 @@ function __c53(j: number): any {
       ).annotate({
         identifier: "CertificateUpdateProperties",
       });
-  }
-}
-function __c54(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -13904,7 +11163,7 @@ function __c54(j: number): any {
           automationAccountName: S.String.pipe(T.Label()),
           certificateName: S.String.pipe(T.Label()),
           name: S.optional(S.String),
-          properties: S.optional(__S(431, __c53, 7)),
+          properties: S.optional(__S(1376, __c86, 0)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -13914,16 +11173,20 @@ function __c54(j: number): any {
           }),
         ),
       ).annotate({ identifier: "UpdateCertificateRequest" });
-    case 1:
+  }
+}
+function __c87(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           description: S.optional(S.String),
-          fieldDefinitionValues: S.optional(__S(8, __c1, 0)),
+          fieldDefinitionValues: S.optional(__S(64, __c4, 0)),
         }),
       ).annotate({
         identifier: "ConnectionUpdateProperties",
       });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -13931,7 +11194,7 @@ function __c54(j: number): any {
           automationAccountName: S.String.pipe(T.Label()),
           connectionName: S.String.pipe(T.Label()),
           name: S.optional(S.String),
-          properties: S.optional(__S(433, __c54, 1)),
+          properties: S.optional(__S(1392, __c87, 0)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -13941,7 +11204,11 @@ function __c54(j: number): any {
           }),
         ),
       ).annotate({ identifier: "UpdateConnectionRequest" });
-    case 3:
+  }
+}
+function __c88(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           userName: S.optional(S.String),
@@ -13951,7 +11218,7 @@ function __c54(j: number): any {
       ).annotate({
         identifier: "CredentialUpdateProperties",
       });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -13959,7 +11226,7 @@ function __c54(j: number): any {
           automationAccountName: S.String.pipe(T.Label()),
           credentialName: S.String.pipe(T.Label()),
           name: S.optional(S.String),
-          properties: S.optional(__S(435, __c54, 3)),
+          properties: S.optional(__S(1408, __c88, 0)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -13969,16 +11236,20 @@ function __c54(j: number): any {
           }),
         ),
       ).annotate({ identifier: "UpdateCredentialRequest" });
-    case 5:
+  }
+}
+function __c89(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           automationAccountName: S.String.pipe(T.Label()),
           configurationName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(124, __c15, 4)),
+          properties: S.optional(__S(2176, __c136, 0)),
           name: S.optional(S.String),
-          tags: S.optional(__S(8, __c1, 0)),
+          tags: S.optional(__S(64, __c4, 0)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -13990,22 +11261,26 @@ function __c54(j: number): any {
       ).annotate({
         identifier: "UpdateDscConfigurationRequest",
       });
-    case 6:
+  }
+}
+function __c90(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          nodeConfiguration: S.optional(__S(26, __c3, 2)),
+          nodeConfiguration: S.optional(__S(1808, __c113, 0)),
         }),
       ).annotate({
         identifier: "DscNodeUpdateParametersProperties",
       });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           automationAccountName: S.String.pipe(T.Label()),
           nodeId: S.String.pipe(T.Label()),
-          properties: S.optional(__S(438, __c54, 6)),
+          properties: S.optional(__S(1440, __c90, 0)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -14017,7 +11292,7 @@ function __c54(j: number): any {
       ).annotate({ identifier: "UpdateDscNodeRequest" });
   }
 }
-function __c55(j: number): any {
+function __c91(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -14026,7 +11301,7 @@ function __c55(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           automationAccountName: S.String.pipe(T.Label()),
           hybridRunbookWorkerGroupName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(44, __c5, 4)),
+          properties: S.optional(__S(2896, __c181, 0)),
           name: S.optional(S.String),
         }).pipe(
           T.Http({
@@ -14039,21 +11314,19 @@ function __c55(j: number): any {
       ).annotate({
         identifier: "UpdateHybridRunbookWorkerGroupRequest",
       });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          contentLink: S.optional(__S(180, __c22, 4)),
-        }),
-      ).annotate({ identifier: "ModuleUpdateProperties" });
-    case 2:
+  }
+}
+function __c92(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           automationAccountName: S.String.pipe(T.Label()),
           moduleName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(441, __c55, 1)),
-          tags: S.optional(__S(8, __c1, 0)),
+          properties: S.optional(__S(1488, __c93, 0)),
+          tags: S.optional(__S(64, __c4, 0)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -14063,7 +11336,21 @@ function __c55(j: number): any {
           }),
         ),
       ).annotate({ identifier: "UpdateModuleRequest" });
-    case 3:
+  }
+}
+function __c93(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          contentLink: S.optional(__S(2992, __c187, 0)),
+        }),
+      ).annotate({ identifier: "ModuleUpdateProperties" });
+  }
+}
+function __c94(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -14071,8 +11358,8 @@ function __c55(j: number): any {
           automationAccountName: S.String.pipe(T.Label()),
           runtimeEnvironmentName: S.String.pipe(T.Label()),
           packageName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(441, __c55, 1)),
-          allOf: S.optional(__S(394, __c49, 2)),
+          properties: S.optional(__S(1488, __c93, 0)),
+          allOf: S.optional(__S(960, __c60, 0)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -14082,14 +11369,38 @@ function __c55(j: number): any {
           }),
         ),
       ).annotate({ identifier: "UpdatePackageRequest" });
-    case 4:
+  }
+}
+function __c95(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          automationAccountName: S.String.pipe(T.Label()),
+          connectionName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/connections/{connectionName}",
+            code: 200,
+            apiVersion: "2024-10-23",
+          }),
+        ),
+      ).annotate({ identifier: "DeleteConnectionRequest" });
+  }
+}
+function __c96(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           automationAccountName: S.String.pipe(T.Label()),
           packageName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(8, __c1, 0)),
+          tags: S.optional(__S(64, __c4, 0)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -14101,14 +11412,18 @@ function __c55(j: number): any {
       ).annotate({
         identifier: "UpdatePython2PackageRequest",
       });
-    case 5:
+  }
+}
+function __c97(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           automationAccountName: S.String.pipe(T.Label()),
           packageName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(8, __c1, 0)),
+          tags: S.optional(__S(64, __c4, 0)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -14120,7 +11435,11 @@ function __c55(j: number): any {
       ).annotate({
         identifier: "UpdatePython3PackageRequest",
       });
-    case 6:
+  }
+}
+function __c98(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           description: S.optional(S.String),
@@ -14129,17 +11448,17 @@ function __c55(j: number): any {
           logActivityTrace: S.optional(S.Number),
         }),
       ).annotate({ identifier: "RunbookUpdateProperties" });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           automationAccountName: S.String.pipe(T.Label()),
           runbookName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(446, __c55, 6)),
+          properties: S.optional(__S(1568, __c98, 0)),
           name: S.optional(S.String),
           location: S.optional(S.String),
-          tags: S.optional(__S(8, __c1, 0)),
+          tags: S.optional(__S(64, __c4, 0)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -14151,12 +11470,12 @@ function __c55(j: number): any {
       ).annotate({ identifier: "UpdateRunbookRequest" });
   }
 }
-function __c56(j: number): any {
+function __c99(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          defaultPackages: S.optional(__S(8, __c1, 0)),
+          defaultPackages: S.optional(__S(64, __c4, 0)),
         }),
       ).annotate({
         identifier: "RuntimeEnvironmentUpdateProperties",
@@ -14168,7 +11487,7 @@ function __c56(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           automationAccountName: S.String.pipe(T.Label()),
           runtimeEnvironmentName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(448, __c56, 0)),
+          properties: S.optional(__S(1584, __c99, 0)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -14180,14 +11499,18 @@ function __c56(j: number): any {
       ).annotate({
         identifier: "UpdateRuntimeEnvironmentRequest",
       });
-    case 2:
+  }
+}
+function __c100(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           description: S.optional(S.String),
           isEnabled: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "ScheduleUpdateProperties" });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -14195,7 +11518,7 @@ function __c56(j: number): any {
           automationAccountName: S.String.pipe(T.Label()),
           scheduleName: S.String.pipe(T.Label()),
           name: S.optional(S.String),
-          properties: S.optional(__S(450, __c56, 2)),
+          properties: S.optional(__S(1600, __c100, 0)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -14205,27 +11528,31 @@ function __c56(j: number): any {
           }),
         ),
       ).annotate({ identifier: "UpdateScheduleRequest" });
-    case 4:
+  }
+}
+function __c101(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           branch: S.optional(S.String),
           folderPath: S.optional(S.String),
           autoSync: S.optional(S.Boolean),
           publishRunbook: S.optional(S.Boolean),
-          securityToken: S.optional(__S(419, __c52, 3)),
+          securityToken: S.optional(__S(1216, __c76, 0)),
           description: S.optional(S.String),
         }),
       ).annotate({
         identifier: "SourceControlUpdateProperties",
       });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           automationAccountName: S.String.pipe(T.Label()),
           sourceControlName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(452, __c56, 4)),
+          properties: S.optional(__S(1616, __c101, 0)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -14237,14 +11564,18 @@ function __c56(j: number): any {
       ).annotate({
         identifier: "UpdateSourceControlRequest",
       });
-    case 6:
+  }
+}
+function __c102(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           value: S.optional(S.String),
           description: S.optional(S.String),
         }),
       ).annotate({ identifier: "VariableUpdateProperties" });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -14252,7 +11583,7 @@ function __c56(j: number): any {
           automationAccountName: S.String.pipe(T.Label()),
           variableName: S.String.pipe(T.Label()),
           name: S.optional(S.String),
-          properties: S.optional(__S(454, __c56, 6)),
+          properties: S.optional(__S(1632, __c102, 0)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -14264,7 +11595,7 @@ function __c56(j: number): any {
       ).annotate({ identifier: "UpdateVariableRequest" });
   }
 }
-function __c57(j: number): any {
+function __c103(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -14279,7 +11610,7 @@ function __c57(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           automationAccountName: S.String.pipe(T.Label()),
           watcherName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(456, __c57, 0)),
+          properties: S.optional(__S(1648, __c103, 0)),
           name: S.optional(S.String),
         }).pipe(
           T.Http({
@@ -14290,16 +11621,20 @@ function __c57(j: number): any {
           }),
         ),
       ).annotate({ identifier: "UpdateWatcherRequest" });
-    case 2:
+  }
+}
+function __c104(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           isEnabled: S.optional(S.Boolean),
           runOn: S.optional(S.String),
-          parameters: S.optional(__S(8, __c1, 0)),
+          parameters: S.optional(__S(64, __c4, 0)),
           description: S.optional(S.String),
         }),
       ).annotate({ identifier: "WebhookUpdateProperties" });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -14307,7 +11642,7 @@ function __c57(j: number): any {
           automationAccountName: S.String.pipe(T.Label()),
           webhookName: S.String.pipe(T.Label()),
           name: S.optional(S.String),
-          properties: S.optional(__S(458, __c57, 2)),
+          properties: S.optional(__S(1664, __c104, 0)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -14317,7 +11652,11 @@ function __c57(j: number): any {
           }),
         ),
       ).annotate({ identifier: "UpdateWebhookRequest" });
-    case 4:
+  }
+}
+function __c105(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           value: S.optional(S.String),
@@ -14327,7 +11666,7 @@ function __c57(j: number): any {
       ).annotate({
         identifier: "VariableCreateOrUpdateProperties",
       });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -14335,7 +11674,7 @@ function __c57(j: number): any {
           automationAccountName: S.String.pipe(T.Label()),
           variableName: S.String.pipe(T.Label()),
           name: S.String,
-          properties: __S(460, __c57, 4),
+          properties: __S(1680, __c105, 0),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -14347,31 +11686,21 @@ function __c57(j: number): any {
       ).annotate({
         identifier: "VariableCreateOrUpdateRequest",
       });
-    case 6:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(10, __c1, 2)),
-          properties: S.optional(__S(237, __c29, 5)),
+          systemData: S.optional(__S(16, __c1, 0)),
+          properties: S.optional(__S(3680, __c230, 0)),
         }),
       ).annotate({
         identifier: "VariableCreateOrUpdateResponse",
       });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          executionFrequencyInSeconds: S.optional(S.Number),
-          scriptName: S.optional(S.String),
-          scriptParameters: S.optional(__S(8, __c1, 0)),
-          scriptRunOn: S.optional(S.String),
-          description: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "WatcherPropertiesInput" });
   }
 }
-function __c58(j: number): any {
+function __c106(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -14379,10 +11708,42 @@ function __c58(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           automationAccountName: S.String.pipe(T.Label()),
+          connectionTypeName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/connectionTypes/{connectionTypeName}",
+            code: 200,
+            apiVersion: "2024-10-23",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteConnectionTypeRequest",
+      });
+  }
+}
+function __c107(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          executionFrequencyInSeconds: S.optional(S.Number),
+          scriptName: S.optional(S.String),
+          scriptParameters: S.optional(__S(64, __c4, 0)),
+          scriptRunOn: S.optional(S.String),
+          description: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "WatcherPropertiesInput" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          automationAccountName: S.String.pipe(T.Label()),
           watcherName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(463, __c57, 7)),
+          properties: S.optional(__S(1712, __c107, 0)),
           etag: S.optional(S.String),
-          tags: S.optional(__S(8, __c1, 0)),
+          tags: S.optional(__S(64, __c4, 0)),
           location: S.optional(S.String),
         }).pipe(
           T.Http({
@@ -14395,35 +11756,39 @@ function __c58(j: number): any {
       ).annotate({
         identifier: "WatcherCreateOrUpdateRequest",
       });
-    case 1:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(10, __c1, 2)),
-          properties: S.optional(__S(240, __c30, 0)),
+          systemData: S.optional(__S(16, __c1, 0)),
+          properties: S.optional(__S(3728, __c233, 0)),
           etag: S.optional(S.String),
-          tags: S.optional(__S(8, __c1, 0)),
+          tags: S.optional(__S(64, __c4, 0)),
           location: S.optional(S.String),
         }),
       ).annotate({
         identifier: "WatcherCreateOrUpdateResponse",
       });
-    case 2:
+  }
+}
+function __c108(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           isEnabled: S.optional(S.Boolean),
           uri: S.optional(S.String),
           expiryTime: S.optional(S.String),
-          parameters: S.optional(__S(8, __c1, 0)),
-          runbook: S.optional(__S(26, __c3, 2)),
+          parameters: S.optional(__S(64, __c4, 0)),
+          runbook: S.optional(__S(1808, __c113, 0)),
           runOn: S.optional(S.String),
         }),
       ).annotate({
         identifier: "WebhookCreateOrUpdateProperties",
       });
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -14431,7 +11796,7 @@ function __c58(j: number): any {
           automationAccountName: S.String.pipe(T.Label()),
           webhookName: S.String.pipe(T.Label()),
           name: S.String,
-          properties: __S(466, __c58, 2),
+          properties: __S(1728, __c108, 0),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -14443,21 +11808,3451 @@ function __c58(j: number): any {
       ).annotate({
         identifier: "WebhookCreateOrUpdateRequest",
       });
-    case 4:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(10, __c1, 2)),
-          properties: S.optional(__S(243, __c30, 3)),
+          systemData: S.optional(__S(16, __c1, 0)),
+          properties: S.optional(__S(3776, __c236, 0)),
         }),
       ).annotate({
         identifier: "WebhookCreateOrUpdateResponse",
       });
   }
 }
-
+function __c109(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          automationAccountName: S.String.pipe(T.Label()),
+          credentialName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/credentials/{credentialName}",
+            code: 200,
+            apiVersion: "2024-10-23",
+          }),
+        ),
+      ).annotate({ identifier: "DeleteCredentialRequest" });
+  }
+}
+function __c110(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          automationAccountName: S.String.pipe(T.Label()),
+          configurationName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/configurations/{configurationName}",
+            code: 200,
+            apiVersion: "2024-10-23",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteDscConfigurationRequest",
+      });
+  }
+}
+function __c111(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          description: S.optional(S.String),
+          connectionType: __S(1808, __c113, 0),
+          fieldDefinitionValues: S.optional(__S(64, __c4, 0)),
+        }),
+      ).annotate({
+        identifier: "ConnectionCreateOrUpdateProperties",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          automationAccountName: S.String.pipe(T.Label()),
+          connectionName: S.String.pipe(T.Label()),
+          name: S.String,
+          properties: __S(1776, __c111, 0),
+        }).pipe(
+          T.Http({
+            method: "PUT",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/connections/{connectionName}",
+            code: 200,
+            apiVersion: "2024-10-23",
+          }),
+        ),
+      ).annotate({
+        identifier: "ConnectionCreateOrUpdateRequest",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(16, __c1, 0)),
+          properties: S.optional(__S(1792, __c112, 0)),
+        }),
+      ).annotate({
+        identifier: "ConnectionCreateOrUpdateResponse",
+      });
+  }
+}
+function __c112(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          connectionType: S.optional(__S(1808, __c113, 0)),
+          fieldDefinitionValues: S.optional(__S(64, __c4, 0)),
+          creationTime: S.optional(S.String),
+          lastModifiedTime: S.optional(S.String),
+          description: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ConnectionProperties" });
+  }
+}
+function __c113(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "ConnectionTypeAssociationProperty",
+      });
+  }
+}
+function __c114(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          automationAccountName: S.String.pipe(T.Label()),
+          nodeId: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/nodes/{nodeId}",
+            code: 200,
+            apiVersion: "2024-10-23",
+          }),
+        ),
+      ).annotate({ identifier: "DeleteDscNodeRequest" });
+  }
+}
+function __c115(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          automationAccountName: S.String.pipe(T.Label()),
+          nodeConfigurationName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/nodeConfigurations/{nodeConfigurationName}",
+            code: 200,
+            apiVersion: "2024-10-23",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteDscNodeConfigurationRequest",
+      });
+  }
+}
+function __c116(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          automationAccountName: S.String.pipe(T.Label()),
+          hybridRunbookWorkerGroupName: S.String.pipe(T.Label()),
+          hybridRunbookWorkerId: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/hybridRunbookWorkerGroups/{hybridRunbookWorkerGroupName}/hybridRunbookWorkers/{hybridRunbookWorkerId}",
+            code: 200,
+            apiVersion: "2024-10-23",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteHybridRunbookWorkerRequest",
+      });
+  }
+}
+function __c117(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          automationAccountName: S.String.pipe(T.Label()),
+          hybridRunbookWorkerGroupName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/hybridRunbookWorkerGroups/{hybridRunbookWorkerGroupName}",
+            code: 200,
+            apiVersion: "2024-10-23",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteHybridRunbookWorkerGroupRequest",
+      });
+  }
+}
+function __c118(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          automationAccountName: S.String.pipe(T.Label()),
+          jobScheduleId: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/jobSchedules/{jobScheduleId}",
+            code: 200,
+            apiVersion: "2024-10-23",
+          }),
+        ),
+      ).annotate({ identifier: "DeleteJobScheduleRequest" });
+  }
+}
+function __c119(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          automationAccountName: S.String.pipe(T.Label()),
+          moduleName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/modules/{moduleName}",
+            code: 200,
+            apiVersion: "2024-10-23",
+          }),
+        ),
+      ).annotate({ identifier: "DeleteModuleRequest" });
+  }
+}
+function __c120(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          automationAccountName: S.String.pipe(T.Label()),
+          runtimeEnvironmentName: S.String.pipe(T.Label()),
+          packageName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/runtimeEnvironments/{runtimeEnvironmentName}/packages/{packageName}",
+            code: 200,
+            apiVersion: "2024-10-23",
+          }),
+        ),
+      ).annotate({ identifier: "DeletePackageRequest" });
+  }
+}
+function __c121(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          automationAccountName: S.String.pipe(T.Label()),
+          privateEndpointConnectionName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/privateEndpointConnections/{privateEndpointConnectionName}",
+            code: 200,
+            apiVersion: "2024-10-23",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeletePrivateEndpointConnectionRequest",
+      });
+  }
+}
+function __c122(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          automationAccountName: S.String.pipe(T.Label()),
+          packageName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/python2Packages/{packageName}",
+            code: 200,
+            apiVersion: "2024-10-23",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeletePython2PackageRequest",
+      });
+  }
+}
+function __c123(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          automationAccountName: S.String.pipe(T.Label()),
+          packageName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/python3Packages/{packageName}",
+            code: 200,
+            apiVersion: "2024-10-23",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeletePython3PackageRequest",
+      });
+  }
+}
+function __c124(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          isGlobal: S.optional(S.Boolean),
+          fieldDefinitions: __S(2017, __c126, 1),
+        }),
+      ).annotate({
+        identifier: "ConnectionTypeCreateOrUpdateProperties",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          automationAccountName: S.String.pipe(T.Label()),
+          connectionTypeName: S.String.pipe(T.Label()),
+          name: S.String,
+          properties: __S(1984, __c124, 0),
+        }).pipe(
+          T.Http({
+            method: "PUT",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/connectionTypes/{connectionTypeName}",
+            code: 200,
+            apiVersion: "2024-10-23",
+          }),
+        ),
+      ).annotate({
+        identifier: "ConnectionTypeCreateOrUpdateRequest",
+      });
+  }
+}
+function __c125(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(16, __c1, 0)),
+          properties: S.optional(__S(2018, __c126, 2)),
+        }),
+      ).annotate({
+        identifier: "ConnectionTypeCreateOrUpdateResponse",
+      });
+  }
+}
+function __c126(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          isEncrypted: S.optional(S.Boolean),
+          isOptional: S.optional(S.Boolean),
+          type: S.String,
+        }),
+      ).annotate({ identifier: "FieldDefinition" });
+    case 1:
+      return S.Record(S.String, __S(2016, __c126, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          isGlobal: S.optional(S.Boolean),
+          fieldDefinitions: S.optional(__S(2017, __c126, 1)),
+          creationTime: S.optional(S.String),
+          lastModifiedTime: S.optional(S.String),
+          description: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ConnectionTypeProperties" });
+  }
+}
+function __c127(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          automationAccountName: S.String.pipe(T.Label()),
+          runbookName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/runbooks/{runbookName}",
+            code: 200,
+            apiVersion: "2024-10-23",
+          }),
+        ),
+      ).annotate({ identifier: "DeleteRunbookRequest" });
+  }
+}
+function __c128(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          automationAccountName: S.String.pipe(T.Label()),
+          runtimeEnvironmentName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/runtimeEnvironments/{runtimeEnvironmentName}",
+            code: 200,
+            apiVersion: "2024-10-23",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteRuntimeEnvironmentRequest",
+      });
+  }
+}
+function __c129(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          automationAccountName: S.String.pipe(T.Label()),
+          scheduleName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/schedules/{scheduleName}",
+            code: 200,
+            apiVersion: "2024-10-23",
+          }),
+        ),
+      ).annotate({ identifier: "DeleteScheduleRequest" });
+  }
+}
+function __c130(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          automationAccountName: S.String.pipe(T.Label()),
+          softwareUpdateConfigurationName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/softwareUpdateConfigurations/{softwareUpdateConfigurationName}",
+            code: 200,
+            apiVersion: "2024-10-23",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteSoftwareUpdateConfigurationRequest",
+      });
+  }
+}
+function __c131(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          automationAccountName: S.String.pipe(T.Label()),
+          sourceControlName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/sourceControls/{sourceControlName}",
+            code: 200,
+            apiVersion: "2024-10-23",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteSourceControlRequest",
+      });
+  }
+}
+function __c132(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          automationAccountName: S.String.pipe(T.Label()),
+          variableName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/variables/{variableName}",
+            code: 200,
+            apiVersion: "2024-10-23",
+          }),
+        ),
+      ).annotate({ identifier: "DeleteVariableRequest" });
+  }
+}
+function __c133(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          automationAccountName: S.String.pipe(T.Label()),
+          watcherName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/watchers/{watcherName}",
+            code: 200,
+            apiVersion: "2024-10-23",
+          }),
+        ),
+      ).annotate({ identifier: "DeleteWatcherRequest" });
+  }
+}
+function __c134(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          automationAccountName: S.String.pipe(T.Label()),
+          webhookName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/webhooks/{webhookName}",
+            code: 200,
+            apiVersion: "2024-10-23",
+          }),
+        ),
+      ).annotate({ identifier: "DeleteWebhookRequest" });
+  }
+}
+function __c135(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          automationAccountName: S.String.pipe(T.Label()),
+          configurationName: S.String.pipe(T.Label()),
+          properties: __S(2176, __c136, 0),
+          name: S.optional(S.String),
+          location: S.optional(S.String),
+          tags: S.optional(__S(64, __c4, 0)),
+        }).pipe(
+          T.Http({
+            method: "PUT",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/configurations/{configurationName}",
+            code: 200,
+            apiVersion: "2024-10-23",
+          }),
+        ),
+      ).annotate({
+        identifier: "DscConfigurationCreateOrUpdateRequest",
+      });
+  }
+}
+function __c136(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          logVerbose: S.optional(S.Boolean),
+          logProgress: S.optional(S.Boolean),
+          source: __S(2208, __c138, 0),
+          parameters: S.optional(__S(2241, __c140, 1)),
+          description: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "DscConfigurationCreateOrUpdateProperties",
+      });
+  }
+}
+function __c137(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          algorithm: S.String,
+          value: S.String,
+        }),
+      ).annotate({ identifier: "ContentHash" });
+  }
+}
+function __c138(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          hash: S.optional(__S(2192, __c137, 0)),
+          type: S.optional(S.String),
+          value: S.optional(S.String),
+          version: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ContentSource" });
+  }
+}
+function __c139(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(16, __c1, 0)),
+          tags: S.optional(__S(64, __c4, 0)),
+          location: S.String,
+          properties: S.optional(__S(2256, __c141, 0)),
+          etag: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "DscConfigurationCreateOrUpdateResponse",
+      });
+  }
+}
+function __c140(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          type: S.optional(S.String),
+          isMandatory: S.optional(S.Boolean),
+          position: S.optional(S.Number),
+          defaultValue: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "DscConfigurationParameter",
+      });
+    case 1:
+      return S.Record(S.String, __S(2240, __c140, 0));
+  }
+}
+function __c141(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          provisioningState: S.optional(S.String),
+          jobCount: S.optional(S.Number),
+          parameters: S.optional(__S(2241, __c140, 1)),
+          source: S.optional(__S(2208, __c138, 0)),
+          state: S.optional(S.String),
+          logVerbose: S.optional(S.Boolean),
+          creationTime: S.optional(S.String),
+          lastModifiedTime: S.optional(S.String),
+          nodeConfigurationCount: S.optional(S.Number),
+          description: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "DscConfigurationProperties",
+      });
+  }
+}
+function __c142(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          source: __S(2208, __c138, 0),
+          configuration: __S(1808, __c113, 0),
+          incrementNodeConfigurationBuild: S.optional(S.Boolean),
+        }),
+      ).annotate({
+        identifier: "DscNodeConfigurationCreateOrUpdateParametersProperties",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          automationAccountName: S.String.pipe(T.Label()),
+          nodeConfigurationName: S.String.pipe(T.Label()),
+          properties: S.optional(__S(2272, __c142, 0)),
+          name: S.optional(S.String),
+          tags: S.optional(__S(64, __c4, 0)),
+        }).pipe(
+          T.Http({
+            method: "PUT",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/nodeConfigurations/{nodeConfigurationName}",
+            code: 200,
+            apiVersion: "2024-10-23",
+          }),
+        ),
+      ).annotate({
+        identifier: "DscNodeConfigurationCreateOrUpdateRequest",
+      });
+  }
+}
+function __c143(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          schemaVersion: S.optional(S.String),
+          runbookDefinition: S.optional(S.String),
+          runbookType: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "RawGraphicalRunbookContent",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          automationAccountName: S.String.pipe(T.Label()),
+          rawContent: S.optional(S.NullOr(__S(2288, __c143, 0))),
+          graphRunbookJson: S.optional(S.NullOr(S.String)),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/convertGraphRunbookContent",
+            code: 200,
+            apiVersion: "2024-10-23",
+          }),
+        ),
+      ).annotate({
+        identifier: "ConvertGraphRunbookContentRequest",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          rawContent: S.optional(S.NullOr(__S(2288, __c143, 0))),
+          graphRunbookJson: S.optional(S.NullOr(S.String)),
+        }),
+      ).annotate({ identifier: "GraphicalRunbookContent" });
+  }
+}
+function __c144(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          automationAccountName: S.String.pipe(T.Label()),
+          runbookName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/runbooks/{runbookName}/draft/undoEdit",
+            code: 200,
+            apiVersion: "2024-10-23",
+          }),
+        ),
+      ).annotate({
+        identifier: "EditRunbookDraftUndoRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          statusCode: S.optional(S.String),
+          requestId: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "EditRunbookDraftUndoResult",
+      });
+  }
+}
+function __c145(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          automationAccountName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/webhooks/generateUri",
+            code: 200,
+            apiVersion: "2024-10-23",
+          }),
+        ),
+      ).annotate({
+        identifier: "GenerateWebhookUriRequest",
+      });
+  }
+}
+function __c146(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.String.pipe(T.RawResponseRoot())).annotate({
+        identifier: "GenerateWebhookUriResponse",
+      });
+  }
+}
+function __c147(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          automationAccountName: S.String.pipe(T.Label()),
+          moduleName: S.String.pipe(T.Label()),
+          activityName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/modules/{moduleName}/activities/{activityName}",
+            code: 200,
+            apiVersion: "2024-10-23",
+          }),
+        ),
+      ).annotate({ identifier: "GetActivityRequest" });
+  }
+}
+function __c148(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          memberValue: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "ActivityParameterValidationSet",
+      });
+    case 1:
+      return S.Array(__S(2368, __c148, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          isMandatory: S.optional(S.Boolean),
+          isDynamic: S.optional(S.Boolean),
+          position: S.optional(S.Number),
+          valueFromPipeline: S.optional(S.Boolean),
+          valueFromPipelineByPropertyName: S.optional(S.Boolean),
+          valueFromRemainingArguments: S.optional(S.Boolean),
+          description: S.optional(S.String),
+          validationSet: S.optional(__S(2369, __c148, 1)),
+        }),
+      ).annotate({ identifier: "ActivityParameter" });
+    case 3:
+      return S.Array(__S(2370, __c148, 2));
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.optional(S.String),
+          parameters: S.optional(__S(2371, __c148, 3)),
+        }),
+      ).annotate({ identifier: "ActivityParameterSet" });
+    case 5:
+      return S.Array(__S(2372, __c148, 4));
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          definition: S.optional(S.String),
+          parameterSets: S.optional(__S(2373, __c148, 5)),
+          outputTypes: S.optional(__S(2385, __c149, 1)),
+          creationTime: S.optional(S.String),
+          lastModifiedTime: S.optional(S.String),
+          description: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ActivityProperties" });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          properties: S.optional(__S(2374, __c148, 6)),
+        }),
+      ).annotate({ identifier: "Activity" });
+  }
+}
+function __c149(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ActivityOutputType" });
+    case 1:
+      return S.Array(__S(2384, __c149, 0));
+  }
+}
+function __c150(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          automationAccountName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/agentRegistrationInformation",
+            code: 200,
+            apiVersion: "2024-10-23",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetAgentRegistrationInformationRequest",
+      });
+  }
+}
+function __c151(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          primary: S.optional(S.String),
+          secondary: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "AgentRegistrationKeys" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          dscMetaConfiguration: S.optional(S.String),
+          endpoint: S.optional(S.String),
+          keys: S.optional(__S(2416, __c151, 0)),
+          id: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "AgentRegistration" });
+  }
+}
+function __c152(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          automationAccountName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}",
+            code: 200,
+            apiVersion: "2024-10-23",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetAutomationAccountRequest",
+      });
+  }
+}
+function __c153(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          automationAccountName: S.String.pipe(T.Label()),
+          certificateName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/certificates/{certificateName}",
+            code: 200,
+            apiVersion: "2024-10-23",
+          }),
+        ),
+      ).annotate({ identifier: "GetCertificateRequest" });
+  }
+}
+function __c154(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(16, __c1, 0)),
+          properties: S.optional(__S(208, __c13, 0)),
+        }),
+      ).annotate({ identifier: "GetCertificateResponse" });
+  }
+}
+function __c155(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          automationAccountName: S.String.pipe(T.Label()),
+          connectionName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/connections/{connectionName}",
+            code: 200,
+            apiVersion: "2024-10-23",
+          }),
+        ),
+      ).annotate({ identifier: "GetConnectionRequest" });
+  }
+}
+function __c156(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(16, __c1, 0)),
+          properties: S.optional(__S(1792, __c112, 0)),
+        }),
+      ).annotate({ identifier: "GetConnectionResponse" });
+  }
+}
+function __c157(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          automationAccountName: S.String.pipe(T.Label()),
+          connectionTypeName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/connectionTypes/{connectionTypeName}",
+            code: 200,
+            apiVersion: "2024-10-23",
+          }),
+        ),
+      ).annotate({ identifier: "GetConnectionTypeRequest" });
+  }
+}
+function __c158(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          automationAccountName: S.String.pipe(T.Label()),
+          credentialName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/credentials/{credentialName}",
+            code: 200,
+            apiVersion: "2024-10-23",
+          }),
+        ),
+      ).annotate({ identifier: "GetCredentialRequest" });
+  }
+}
+function __c159(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(16, __c1, 0)),
+          properties: S.optional(__S(912, __c57, 0)),
+        }),
+      ).annotate({ identifier: "GetCredentialResponse" });
+  }
+}
+function __c160(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          automationAccountName: S.String.pipe(T.Label()),
+          configurationName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/configurations/{configurationName}",
+            code: 200,
+            apiVersion: "2024-10-23",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetDscConfigurationRequest",
+      });
+  }
+}
+function __c161(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          automationAccountName: S.String.pipe(T.Label()),
+          hybridRunbookWorkerGroupName: S.String.pipe(T.Label()),
+          hybridRunbookWorkerId: S.String.pipe(T.Label()),
+          properties: S.optional(__S(2592, __c162, 0)),
+        }).pipe(
+          T.Http({
+            method: "PUT",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/hybridRunbookWorkerGroups/{hybridRunbookWorkerGroupName}/hybridRunbookWorkers/{hybridRunbookWorkerId}",
+            code: 200,
+            apiVersion: "2024-10-23",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateHybridRunbookWorkerRequest",
+      });
+  }
+}
+function __c162(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          vmResourceId: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "HybridRunbookWorkerCreateOrUpdateParameters",
+      });
+  }
+}
+function __c163(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(16, __c1, 0)),
+          tags: S.optional(__S(64, __c4, 0)),
+          location: S.String,
+          properties: S.optional(__S(2624, __c164, 0)),
+        }),
+      ).annotate({
+        identifier: "CreateHybridRunbookWorkerResponse",
+      });
+  }
+}
+function __c164(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          ip: S.optional(S.String),
+          registeredDateTime: S.optional(S.String),
+          lastSeenDateTime: S.optional(S.String),
+          vmResourceId: S.optional(S.String),
+          workerType: S.optional(S.String),
+          workerName: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "HybridRunbookWorkerProperties",
+      });
+  }
+}
+function __c165(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          automationAccountName: S.String.pipe(T.Label()),
+          configurationName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/configurations/{configurationName}/content",
+            code: 200,
+            apiVersion: "2024-10-23",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetDscConfigurationContentRequest",
+      });
+  }
+}
+function __c166(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          automationAccountName: S.String.pipe(T.Label()),
+          nodeId: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/nodes/{nodeId}",
+            code: 200,
+            apiVersion: "2024-10-23",
+          }),
+        ),
+      ).annotate({ identifier: "GetDscNodeRequest" });
+  }
+}
+function __c167(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.optional(S.String),
+          version: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "DscNodeExtensionHandlerAssociationProperty",
+      });
+    case 1:
+      return S.Array(__S(2672, __c167, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          lastSeen: S.optional(S.String),
+          registrationTime: S.optional(S.String),
+          ip: S.optional(S.String),
+          accountId: S.optional(S.String),
+          nodeConfiguration: S.optional(S.NullOr(__S(1808, __c113, 0))),
+          status: S.optional(S.String),
+          nodeId: S.optional(S.String),
+          etag: S.optional(S.String),
+          totalCount: S.optional(S.Number),
+          extensionHandler: S.optional(__S(2673, __c167, 1)),
+        }),
+      ).annotate({ identifier: "DscNodeProperties" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(16, __c1, 0)),
+          properties: S.optional(__S(2674, __c167, 2)),
+        }),
+      ).annotate({ identifier: "GetDscNodeResponse" });
+  }
+}
+function __c168(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          automationAccountName: S.String.pipe(T.Label()),
+          nodeConfigurationName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/nodeConfigurations/{nodeConfigurationName}",
+            code: 200,
+            apiVersion: "2024-10-23",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetDscNodeConfigurationRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(16, __c1, 0)),
+          properties: S.optional(__S(2704, __c169, 0)),
+        }),
+      ).annotate({
+        identifier: "GetDscNodeConfigurationResponse",
+      });
+  }
+}
+function __c169(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          lastModifiedTime: S.optional(S.String),
+          creationTime: S.optional(S.String),
+          configuration: S.optional(__S(1808, __c113, 0)),
+          source: S.optional(S.String),
+          nodeCount: S.optional(S.Number),
+          incrementNodeConfigurationBuild: S.optional(S.Boolean),
+        }),
+      ).annotate({
+        identifier: "DscNodeConfigurationProperties",
+      });
+  }
+}
+function __c170(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          automationAccountName: S.String.pipe(T.Label()),
+          hybridRunbookWorkerGroupName: S.String.pipe(T.Label()),
+          hybridRunbookWorkerId: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/hybridRunbookWorkerGroups/{hybridRunbookWorkerGroupName}/hybridRunbookWorkers/{hybridRunbookWorkerId}",
+            code: 200,
+            apiVersion: "2024-10-23",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetHybridRunbookWorkerRequest",
+      });
+  }
+}
+function __c171(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          automationAccountName: S.String.pipe(T.Label()),
+          hybridRunbookWorkerGroupName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/hybridRunbookWorkerGroups/{hybridRunbookWorkerGroupName}",
+            code: 200,
+            apiVersion: "2024-10-23",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetHybridRunbookWorkerGroupRequest",
+      });
+  }
+}
+function __c172(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          automationAccountName: S.String.pipe(T.Label()),
+          jobName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/jobs/{jobName}",
+            code: 200,
+            apiVersion: "2024-10-23",
+          }),
+        ),
+      ).annotate({ identifier: "GetJobRequest" });
+  }
+}
+function __c173(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          automationAccountName: S.String.pipe(T.Label()),
+          jobName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/jobs/{jobName}/output",
+            code: 200,
+            apiVersion: "2024-10-23",
+          }),
+        ),
+      ).annotate({ identifier: "GetJobOutputRequest" });
+    case 1:
+      return S.suspend(() => S.String.pipe(T.RawResponseRoot())).annotate({
+        identifier: "GetJobOutputResponse",
+      });
+  }
+}
+function __c174(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          automationAccountName: S.String.pipe(T.Label()),
+          jobName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/jobs/{jobName}/runbookContent",
+            code: 200,
+            apiVersion: "2024-10-23",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetJobRunbookContentRequest",
+      });
+  }
+}
+function __c175(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          automationAccountName: S.String.pipe(T.Label()),
+          jobScheduleId: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/jobSchedules/{jobScheduleId}",
+            code: 200,
+            apiVersion: "2024-10-23",
+          }),
+        ),
+      ).annotate({ identifier: "GetJobScheduleRequest" });
+  }
+}
+function __c176(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(16, __c1, 0)),
+          properties: S.optional(__S(3584, __c224, 0)),
+        }),
+      ).annotate({ identifier: "GetJobScheduleResponse" });
+  }
+}
+function __c177(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          automationAccountName: S.String.pipe(T.Label()),
+          jobName: S.String.pipe(T.Label()),
+          jobStreamId: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/jobs/{jobName}/streams/{jobStreamId}",
+            code: 200,
+            apiVersion: "2024-10-23",
+          }),
+        ),
+      ).annotate({ identifier: "GetJobStreamRequest" });
+  }
+}
+function __c178(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, S.Unknown);
+  }
+}
+function __c179(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          jobStreamId: S.optional(S.String),
+          time: S.optional(S.String),
+          streamType: S.optional(S.String),
+          streamText: S.optional(S.String),
+          summary: S.optional(S.NullOr(S.String)),
+          value: S.optional(__S(2848, __c178, 0)),
+        }),
+      ).annotate({ identifier: "JobStreamProperties" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          properties: S.optional(__S(2864, __c179, 0)),
+        }),
+      ).annotate({ identifier: "JobStream" });
+  }
+}
+function __c180(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          automationAccountName: S.String.pipe(T.Label()),
+          hybridRunbookWorkerGroupName: S.String.pipe(T.Label()),
+          properties: S.optional(__S(2896, __c181, 0)),
+          name: S.optional(S.String),
+        }).pipe(
+          T.Http({
+            method: "PUT",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/hybridRunbookWorkerGroups/{hybridRunbookWorkerGroupName}",
+            code: 200,
+            apiVersion: "2024-10-23",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateHybridRunbookWorkerGroupRequest",
+      });
+  }
+}
+function __c181(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          credential: S.optional(__S(1808, __c113, 0)),
+        }),
+      ).annotate({
+        identifier: "HybridRunbookWorkerGroupCreateOrUpdateProperties",
+      });
+  }
+}
+function __c182(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          groupType: S.optional(S.String),
+          credential: S.optional(__S(1808, __c113, 0)),
+        }),
+      ).annotate({
+        identifier: "HybridRunbookWorkerGroupProperties",
+      });
+  }
+}
+function __c183(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(16, __c1, 0)),
+          tags: S.optional(__S(64, __c4, 0)),
+          location: S.String,
+          properties: S.optional(__S(2912, __c182, 0)),
+        }),
+      ).annotate({
+        identifier: "CreateHybridRunbookWorkerGroupResponse",
+      });
+  }
+}
+function __c184(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          automationAccountName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/linkedWorkspace",
+            code: 200,
+            apiVersion: "2024-10-23",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetLinkedWorkspaceRequest",
+      });
+  }
+}
+function __c185(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          automationAccountName: S.String.pipe(T.Label()),
+          moduleName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/modules/{moduleName}",
+            code: 200,
+            apiVersion: "2024-10-23",
+          }),
+        ),
+      ).annotate({ identifier: "GetModuleRequest" });
+  }
+}
+function __c186(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(16, __c1, 0)),
+          tags: S.optional(__S(64, __c4, 0)),
+          location: S.String,
+          properties: S.optional(__S(3008, __c188, 0)),
+          etag: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "GetModuleResponse" });
+  }
+}
+function __c187(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          uri: S.optional(S.String),
+          contentHash: S.optional(__S(2192, __c137, 0)),
+          version: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ContentLink" });
+  }
+}
+function __c188(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          isGlobal: S.optional(S.Boolean),
+          version: S.optional(S.String),
+          sizeInBytes: S.optional(S.Number),
+          activityCount: S.optional(S.Number),
+          provisioningState: S.optional(S.String),
+          contentLink: S.optional(__S(2992, __c187, 0)),
+          error: S.optional(__S(240, __c15, 0)),
+          creationTime: S.optional(S.String),
+          lastModifiedTime: S.optional(S.String),
+          description: S.optional(S.String),
+          isComposite: S.optional(S.Boolean),
+        }),
+      ).annotate({ identifier: "ModuleProperties" });
+  }
+}
+function __c189(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          automationAccountName: S.String.pipe(T.Label()),
+          countType: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/nodecounts/{countType}",
+            code: 200,
+            apiVersion: "2024-10-23",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetNodeCountInformationRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          count: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "NodeCountProperties" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.optional(S.String),
+          properties: S.optional(__S(3025, __c189, 1)),
+        }),
+      ).annotate({ identifier: "NodeCount" });
+    case 3:
+      return S.Array(__S(3026, __c189, 2));
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          value: S.optional(__S(3027, __c189, 3)),
+          totalCount: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "NodeCounts" });
+  }
+}
+function __c190(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          automationAccountName: S.String.pipe(T.Label()),
+          nodeId: S.String.pipe(T.Label()),
+          reportId: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/nodes/{nodeId}/reports/{reportId}",
+            code: 200,
+            apiVersion: "2024-10-23",
+          }),
+        ),
+      ).annotate({ identifier: "GetNodeReportRequest" });
+  }
+}
+function __c191(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          errorSource: S.optional(S.String),
+          resourceId: S.optional(S.String),
+          errorCode: S.optional(S.String),
+          errorMessage: S.optional(S.String),
+          locale: S.optional(S.String),
+          errorDetails: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "DscReportError" });
+    case 1:
+      return S.Array(__S(3056, __c191, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          resourceId: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "DscReportResourceNavigation",
+      });
+    case 3:
+      return S.Array(__S(3058, __c191, 2));
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          resourceId: S.optional(S.String),
+          sourceInfo: S.optional(S.String),
+          dependsOn: S.optional(__S(3059, __c191, 3)),
+          moduleName: S.optional(S.String),
+          moduleVersion: S.optional(S.String),
+          resourceName: S.optional(S.String),
+          error: S.optional(S.String),
+          status: S.optional(S.String),
+          durationInSeconds: S.optional(S.Number),
+          startDate: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "DscReportResource" });
+    case 5:
+      return S.Array(__S(3060, __c191, 4));
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          configurationModeFrequencyMins: S.optional(S.Number),
+          rebootNodeIfNeeded: S.optional(S.Boolean),
+          configurationMode: S.optional(S.String),
+          actionAfterReboot: S.optional(S.String),
+          certificateId: S.optional(S.String),
+          refreshFrequencyMins: S.optional(S.Number),
+          allowModuleOverwrite: S.optional(S.Boolean),
+        }),
+      ).annotate({ identifier: "DscMetaConfiguration" });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          endTime: S.optional(S.NullOr(S.String)),
+          lastModifiedTime: S.optional(S.String),
+          startTime: S.optional(S.NullOr(S.String)),
+          type: S.optional(S.String),
+          reportId: S.optional(S.String),
+          status: S.optional(S.String),
+          refreshMode: S.optional(S.String),
+          rebootRequested: S.optional(S.String),
+          reportFormatVersion: S.optional(S.String),
+          configurationVersion: S.optional(S.String),
+          id: S.optional(S.String),
+          errors: S.optional(__S(3057, __c191, 1)),
+          resources: S.optional(__S(3061, __c191, 5)),
+          metaConfiguration: S.optional(__S(3062, __c191, 6)),
+          hostName: S.optional(S.String),
+          iPV4Addresses: S.optional(__S(32, __c2, 0)),
+          iPV6Addresses: S.optional(__S(32, __c2, 0)),
+          numberOfResources: S.optional(S.Number),
+          rawErrors: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "DscNodeReport" });
+  }
+}
+function __c192(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          automationAccountName: S.String.pipe(T.Label()),
+          nodeId: S.String.pipe(T.Label()),
+          reportId: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/nodes/{nodeId}/reports/{reportId}/content",
+            code: 200,
+            apiVersion: "2024-10-23",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetNodeReportContentRequest",
+      });
+  }
+}
+function __c193(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          automationAccountName: S.String.pipe(T.Label()),
+          runtimeEnvironmentName: S.String.pipe(T.Label()),
+          packageName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/runtimeEnvironments/{runtimeEnvironmentName}/packages/{packageName}",
+            code: 200,
+            apiVersion: "2024-10-23",
+          }),
+        ),
+      ).annotate({ identifier: "GetPackageRequest" });
+  }
+}
+function __c194(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          default: S.optional(S.Boolean),
+          version: S.optional(S.String),
+          sizeInBytes: S.optional(S.Number),
+          provisioningState: S.optional(S.String),
+          contentLink: S.optional(__S(2992, __c187, 0)),
+          error: S.optional(__S(240, __c15, 0)),
+          allOf: S.optional(__S(16, __c1, 0)),
+        }),
+      ).annotate({ identifier: "PackageProperties" });
+  }
+}
+function __c195(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(16, __c1, 0)),
+          tags: S.optional(__S(64, __c4, 0)),
+          location: S.String,
+          properties: S.optional(__S(3104, __c194, 0)),
+        }),
+      ).annotate({ identifier: "GetPackageResponse" });
+  }
+}
+function __c196(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          automationAccountName: S.String.pipe(T.Label()),
+          privateEndpointConnectionName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/privateEndpointConnections/{privateEndpointConnectionName}",
+            code: 200,
+            apiVersion: "2024-10-23",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetPrivateEndpointConnectionRequest",
+      });
+  }
+}
+function __c197(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          automationAccountName: S.String.pipe(T.Label()),
+          packageName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/python2Packages/{packageName}",
+            code: 200,
+            apiVersion: "2024-10-23",
+          }),
+        ),
+      ).annotate({ identifier: "GetPython2PackageRequest" });
+  }
+}
+function __c198(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(16, __c1, 0)),
+          tags: S.optional(__S(64, __c4, 0)),
+          location: S.String,
+          properties: S.optional(__S(3008, __c188, 0)),
+          etag: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "GetPython2PackageResponse",
+      });
+  }
+}
+function __c199(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          automationAccountName: S.String.pipe(T.Label()),
+          packageName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/python3Packages/{packageName}",
+            code: 200,
+            apiVersion: "2024-10-23",
+          }),
+        ),
+      ).annotate({ identifier: "GetPython3PackageRequest" });
+  }
+}
+function __c200(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          automationAccountName: S.String.pipe(T.Label()),
+          runbookName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/runbooks/{runbookName}",
+            code: 200,
+            apiVersion: "2024-10-23",
+          }),
+        ),
+      ).annotate({ identifier: "GetRunbookRequest" });
+  }
+}
+function __c201(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          runtimeEnvironment: S.optional(S.String),
+          runbookType: S.optional(S.String),
+          publishContentLink: S.optional(__S(2992, __c187, 0)),
+          state: S.optional(S.String),
+          logVerbose: S.optional(S.Boolean),
+          logProgress: S.optional(S.Boolean),
+          logActivityTrace: S.optional(S.Number),
+          jobCount: S.optional(S.Number),
+          parameters: S.optional(__S(2241, __c140, 1)),
+          outputTypes: S.optional(__S(32, __c2, 0)),
+          draft: S.optional(__S(3248, __c203, 0)),
+          provisioningState: S.optional(S.String),
+          lastModifiedBy: S.optional(S.String),
+          creationTime: S.optional(S.String),
+          lastModifiedTime: S.optional(S.String),
+          description: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "RunbookProperties" });
+  }
+}
+function __c202(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(16, __c1, 0)),
+          tags: S.optional(__S(64, __c4, 0)),
+          location: S.String,
+          properties: S.optional(__S(3216, __c201, 0)),
+          etag: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "GetRunbookResponse" });
+  }
+}
+function __c203(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          inEdit: S.optional(S.Boolean),
+          draftContentLink: S.optional(__S(2992, __c187, 0)),
+          creationTime: S.optional(S.String),
+          lastModifiedTime: S.optional(S.String),
+          parameters: S.optional(__S(2241, __c140, 1)),
+          outputTypes: S.optional(__S(32, __c2, 0)),
+        }),
+      ).annotate({ identifier: "RunbookDraft" });
+  }
+}
+function __c204(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          runbook: S.optional(__S(1808, __c113, 0)),
+          parameters: S.optional(__S(64, __c4, 0)),
+          runOn: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "JobCreateProperties" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          automationAccountName: S.String.pipe(T.Label()),
+          jobName: S.String.pipe(T.Label()),
+          properties: __S(3264, __c204, 0),
+        }).pipe(
+          T.Http({
+            method: "PUT",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/jobs/{jobName}",
+            code: 200,
+            apiVersion: "2024-10-23",
+          }),
+        ),
+      ).annotate({ identifier: "CreateJobRequest" });
+  }
+}
+function __c205(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          runbook: S.optional(__S(1808, __c113, 0)),
+          startedBy: S.optional(S.String),
+          runOn: S.optional(S.String),
+          jobRuntimeEnvironment: S.optional(__S(3296, __c206, 0)),
+          jobId: S.optional(S.String),
+          creationTime: S.optional(S.String),
+          status: S.optional(S.String),
+          statusDetails: S.optional(S.String),
+          startTime: S.optional(S.NullOr(S.String)),
+          endTime: S.optional(S.NullOr(S.String)),
+          exception: S.optional(S.String),
+          lastModifiedTime: S.optional(S.NullOr(S.String)),
+          lastStatusModifiedTime: S.optional(S.NullOr(S.String)),
+          parameters: S.optional(__S(64, __c4, 0)),
+          provisioningState: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "JobProperties" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(16, __c1, 0)),
+          properties: S.optional(__S(3280, __c205, 0)),
+        }),
+      ).annotate({ identifier: "CreateJobResponse" });
+  }
+}
+function __c206(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          runtimeEnvironmentName: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "JobRuntimeEnvironment" });
+  }
+}
+function __c207(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          automationAccountName: S.String.pipe(T.Label()),
+          runbookName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/runbooks/{runbookName}/content",
+            code: 200,
+            apiVersion: "2024-10-23",
+          }),
+        ),
+      ).annotate({ identifier: "GetRunbookContentRequest" });
+  }
+}
+function __c208(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          automationAccountName: S.String.pipe(T.Label()),
+          runbookName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/runbooks/{runbookName}/draft",
+            code: 200,
+            apiVersion: "2024-10-23",
+          }),
+        ),
+      ).annotate({ identifier: "GetRunbookDraftRequest" });
+  }
+}
+function __c209(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          automationAccountName: S.String.pipe(T.Label()),
+          runbookName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/runbooks/{runbookName}/draft/content",
+            code: 200,
+            apiVersion: "2024-10-23",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetRunbookDraftContentRequest",
+      });
+  }
+}
+function __c210(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          automationAccountName: S.String.pipe(T.Label()),
+          runtimeEnvironmentName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/runtimeEnvironments/{runtimeEnvironmentName}",
+            code: 200,
+            apiVersion: "2024-10-23",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetRuntimeEnvironmentRequest",
+      });
+  }
+}
+function __c211(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          automationAccountName: S.String.pipe(T.Label()),
+          scheduleName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/schedules/{scheduleName}",
+            code: 200,
+            apiVersion: "2024-10-23",
+          }),
+        ),
+      ).annotate({ identifier: "GetScheduleRequest" });
+  }
+}
+function __c212(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          startTime: S.optional(S.String),
+          startTimeOffsetMinutes: S.optional(S.Number),
+          expiryTime: S.optional(S.NullOr(S.String)),
+          expiryTimeOffsetMinutes: S.optional(S.Number),
+          isEnabled: S.optional(S.Boolean),
+          nextRun: S.optional(S.NullOr(S.String)),
+          nextRunOffsetMinutes: S.optional(S.Number),
+          interval: S.optional(S.Unknown),
+          frequency: S.optional(S.String),
+          timeZone: S.optional(S.String),
+          advancedSchedule: S.optional(__S(259, __c16, 3)),
+          creationTime: S.optional(S.String),
+          lastModifiedTime: S.optional(S.String),
+          description: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ScheduleProperties" });
+  }
+}
+function __c213(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(16, __c1, 0)),
+          properties: S.optional(__S(3392, __c212, 0)),
+        }),
+      ).annotate({ identifier: "GetScheduleResponse" });
+  }
+}
+function __c214(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          automationAccountName: S.String.pipe(T.Label()),
+          softwareUpdateConfigurationName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/softwareUpdateConfigurations/{softwareUpdateConfigurationName}",
+            code: 200,
+            apiVersion: "2024-10-23",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetSoftwareUpdateConfigurationByNameRequest",
+      });
+  }
+}
+function __c215(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          automationAccountName: S.String.pipe(T.Label()),
+          softwareUpdateConfigurationMachineRunId: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/softwareUpdateConfigurationMachineRuns/{softwareUpdateConfigurationMachineRunId}",
+            code: 200,
+            apiVersion: "2024-10-23",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetSoftwareUpdateConfigurationMachineRunByIdRequest",
+      });
+  }
+}
+function __c216(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          targetComputer: S.optional(S.String),
+          targetComputerType: S.optional(S.String),
+          softwareUpdateConfiguration: S.optional(__S(1808, __c113, 0)),
+          status: S.optional(S.String),
+          osType: S.optional(S.String),
+          correlationId: S.optional(S.String),
+          sourceComputerId: S.optional(S.String),
+          startTime: S.optional(S.String),
+          endTime: S.optional(S.NullOr(S.String)),
+          configuredDuration: S.optional(S.String),
+          job: S.optional(__S(112, __c7, 0)),
+          creationTime: S.optional(S.String),
+          createdBy: S.optional(S.String),
+          lastModifiedTime: S.optional(S.String),
+          lastModifiedBy: S.optional(S.String),
+          error: S.optional(__S(240, __c15, 0)),
+        }),
+      ).annotate({
+        identifier: "UpdateConfigurationMachineRunProperties",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.optional(S.String),
+          id: S.optional(S.String),
+          properties: S.optional(__S(3456, __c216, 0)),
+        }),
+      ).annotate({
+        identifier: "SoftwareUpdateConfigurationMachineRun",
+      });
+  }
+}
+function __c217(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          automationAccountName: S.String.pipe(T.Label()),
+          softwareUpdateConfigurationRunId: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/softwareUpdateConfigurationRuns/{softwareUpdateConfigurationRunId}",
+            code: 200,
+            apiVersion: "2024-10-23",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetSoftwareUpdateConfigurationRunByIdRequest",
+      });
+  }
+}
+function __c218(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          status: S.optional(S.String),
+          source: S.optional(S.String),
+          jobId: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "SoftwareUpdateConfigurationRunTaskProperties",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          preTask: S.optional(__S(3488, __c218, 0)),
+          postTask: S.optional(__S(3488, __c218, 0)),
+        }),
+      ).annotate({
+        identifier: "SoftwareUpdateConfigurationRunTasks",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          softwareUpdateConfiguration: S.optional(__S(1808, __c113, 0)),
+          status: S.optional(S.String),
+          configuredDuration: S.optional(S.String),
+          osType: S.optional(S.String),
+          startTime: S.optional(S.String),
+          endTime: S.optional(S.NullOr(S.String)),
+          computerCount: S.optional(S.Number),
+          failedCount: S.optional(S.Number),
+          creationTime: S.optional(S.String),
+          createdBy: S.optional(S.String),
+          lastModifiedTime: S.optional(S.String),
+          lastModifiedBy: S.optional(S.String),
+          tasks: S.optional(__S(3489, __c218, 1)),
+        }),
+      ).annotate({
+        identifier: "SoftwareUpdateConfigurationRunProperties",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.optional(S.String),
+          id: S.optional(S.String),
+          properties: S.optional(__S(3490, __c218, 2)),
+        }),
+      ).annotate({
+        identifier: "SoftwareUpdateConfigurationRun",
+      });
+  }
+}
+function __c219(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          automationAccountName: S.String.pipe(T.Label()),
+          sourceControlName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/sourceControls/{sourceControlName}",
+            code: 200,
+            apiVersion: "2024-10-23",
+          }),
+        ),
+      ).annotate({ identifier: "GetSourceControlRequest" });
+  }
+}
+function __c220(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(16, __c1, 0)),
+          properties: S.optional(__S(3536, __c221, 0)),
+        }),
+      ).annotate({ identifier: "GetSourceControlResponse" });
+  }
+}
+function __c221(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          repoUrl: S.optional(S.String),
+          branch: S.optional(S.String),
+          folderPath: S.optional(S.String),
+          autoSync: S.optional(S.Boolean),
+          publishRunbook: S.optional(S.Boolean),
+          sourceType: S.optional(S.String),
+          description: S.optional(S.String),
+          creationTime: S.optional(S.String),
+          lastModifiedTime: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "SourceControlProperties" });
+  }
+}
+function __c222(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          automationAccountName: S.String.pipe(T.Label()),
+          sourceControlName: S.String.pipe(T.Label()),
+          sourceControlSyncJobId: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/sourceControls/{sourceControlName}/sourceControlSyncJobs/{sourceControlSyncJobId}",
+            code: 200,
+            apiVersion: "2024-10-23",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetSourceControlSyncJobRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          sourceControlSyncJobId: S.optional(S.String),
+          creationTime: S.optional(S.String),
+          provisioningState: S.optional(S.String),
+          startTime: S.optional(S.NullOr(S.String)),
+          endTime: S.optional(S.NullOr(S.String)),
+          syncType: S.optional(S.String),
+          exception: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "SourceControlSyncJobByIdProperties",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          properties: S.optional(__S(3553, __c222, 1)),
+        }),
+      ).annotate({ identifier: "SourceControlSyncJobById" });
+  }
+}
+function __c223(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          schedule: __S(1808, __c113, 0),
+          runbook: __S(1808, __c113, 0),
+          runOn: S.optional(S.String),
+          parameters: S.optional(__S(64, __c4, 0)),
+        }),
+      ).annotate({
+        identifier: "JobScheduleCreateProperties",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          automationAccountName: S.String.pipe(T.Label()),
+          jobScheduleId: S.String.pipe(T.Label()),
+          properties: __S(3568, __c223, 0),
+        }).pipe(
+          T.Http({
+            method: "PUT",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/jobSchedules/{jobScheduleId}",
+            code: 200,
+            apiVersion: "2024-10-23",
+          }),
+        ),
+      ).annotate({ identifier: "CreateJobScheduleRequest" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(16, __c1, 0)),
+          properties: S.optional(__S(3584, __c224, 0)),
+        }),
+      ).annotate({
+        identifier: "CreateJobScheduleResponse",
+      });
+  }
+}
+function __c224(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          jobScheduleId: S.optional(S.String),
+          schedule: S.optional(__S(1808, __c113, 0)),
+          runbook: S.optional(__S(1808, __c113, 0)),
+          runOn: S.optional(S.String),
+          parameters: S.optional(__S(64, __c4, 0)),
+        }),
+      ).annotate({ identifier: "JobScheduleProperties" });
+  }
+}
+function __c225(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          automationAccountName: S.String.pipe(T.Label()),
+          sourceControlName: S.String.pipe(T.Label()),
+          sourceControlSyncJobId: S.String.pipe(T.Label()),
+          streamId: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/sourceControls/{sourceControlName}/sourceControlSyncJobs/{sourceControlSyncJobId}/streams/{streamId}",
+            code: 200,
+            apiVersion: "2024-10-23",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetSourceControlSyncJobStreamRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          sourceControlSyncJobStreamId: S.optional(S.String),
+          summary: S.optional(S.String),
+          time: S.optional(S.NullOr(S.String)),
+          streamType: S.optional(S.String),
+          streamText: S.optional(S.String),
+          value: S.optional(__S(2848, __c178, 0)),
+        }),
+      ).annotate({
+        identifier: "SourceControlSyncJobStreamByIdProperties",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          properties: S.optional(__S(3601, __c225, 1)),
+        }),
+      ).annotate({
+        identifier: "SourceControlSyncJobStreamById",
+      });
+  }
+}
+function __c226(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          automationAccountName: S.String.pipe(T.Label()),
+          runbookName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/runbooks/{runbookName}/draft/testJob",
+            code: 200,
+            apiVersion: "2024-10-23",
+          }),
+        ),
+      ).annotate({ identifier: "GetTestJobRequest" });
+  }
+}
+function __c227(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          automationAccountName: S.String.pipe(T.Label()),
+          runbookName: S.String.pipe(T.Label()),
+          jobStreamId: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/runbooks/{runbookName}/draft/testJob/streams/{jobStreamId}",
+            code: 200,
+            apiVersion: "2024-10-23",
+          }),
+        ),
+      ).annotate({ identifier: "GetTestJobStreamRequest" });
+  }
+}
+function __c228(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          automationAccountName: S.String.pipe(T.Label()),
+          variableName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/variables/{variableName}",
+            code: 200,
+            apiVersion: "2024-10-23",
+          }),
+        ),
+      ).annotate({ identifier: "GetVariableRequest" });
+  }
+}
+function __c229(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(16, __c1, 0)),
+          properties: S.optional(__S(3680, __c230, 0)),
+        }),
+      ).annotate({ identifier: "GetVariableResponse" });
+  }
+}
+function __c230(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          value: S.optional(S.String),
+          isEncrypted: S.optional(S.NullOr(S.Boolean)),
+          creationTime: S.optional(S.String),
+          lastModifiedTime: S.optional(S.String),
+          description: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "VariableProperties" });
+  }
+}
+function __c231(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          automationAccountName: S.String.pipe(T.Label()),
+          watcherName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/watchers/{watcherName}",
+            code: 200,
+            apiVersion: "2024-10-23",
+          }),
+        ),
+      ).annotate({ identifier: "GetWatcherRequest" });
+  }
+}
+function __c232(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(16, __c1, 0)),
+          properties: S.optional(__S(3728, __c233, 0)),
+          etag: S.optional(S.String),
+          tags: S.optional(__S(64, __c4, 0)),
+          location: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "GetWatcherResponse" });
+  }
+}
+function __c233(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          executionFrequencyInSeconds: S.optional(S.Number),
+          scriptName: S.optional(S.String),
+          scriptParameters: S.optional(__S(64, __c4, 0)),
+          scriptRunOn: S.optional(S.String),
+          status: S.optional(S.String),
+          creationTime: S.optional(S.String),
+          lastModifiedTime: S.optional(S.String),
+          lastModifiedBy: S.optional(S.String),
+          description: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "WatcherProperties" });
+  }
+}
+function __c234(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          automationAccountName: S.String.pipe(T.Label()),
+          webhookName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/webhooks/{webhookName}",
+            code: 200,
+            apiVersion: "2024-10-23",
+          }),
+        ),
+      ).annotate({ identifier: "GetWebhookRequest" });
+  }
+}
+function __c235(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(16, __c1, 0)),
+          properties: S.optional(__S(3776, __c236, 0)),
+        }),
+      ).annotate({ identifier: "GetWebhookResponse" });
+  }
+}
+function __c236(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          isEnabled: S.optional(S.Boolean),
+          uri: S.optional(S.String),
+          expiryTime: S.optional(S.String),
+          lastInvokedTime: S.optional(S.NullOr(S.String)),
+          parameters: S.optional(__S(64, __c4, 0)),
+          runbook: S.optional(__S(1808, __c113, 0)),
+          runOn: S.optional(S.String),
+          creationTime: S.optional(S.String),
+          lastModifiedTime: S.optional(S.String),
+          lastModifiedBy: S.optional(S.String),
+          description: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "WebhookProperties" });
+  }
+}
+function __c237(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          automationAccountName: S.String.pipe(T.Label()),
+          moduleName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/modules/{moduleName}/activities",
+            code: 200,
+            apiVersion: "2024-10-23",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListActivityByModuleRequest",
+      });
+    case 1:
+      return S.Array(__S(2375, __c148, 7));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          value: __S(3793, __c237, 1),
+          nextLink: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ActivityListResult" });
+  }
+}
+function __c238(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/providers/Microsoft.Automation/automationAccounts",
+            code: 200,
+            apiVersion: "2024-10-23",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListAutomationAccountRequest",
+      });
+  }
+}
+function __c239(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(16, __c1, 0)),
+          tags: S.optional(__S(64, __c4, 0)),
+          location: S.String,
+          properties: S.optional(__S(164, __c10, 4)),
+          etag: S.optional(S.String),
+          identity: S.optional(__S(167, __c10, 7)),
+        }),
+      ).annotate({ identifier: "AutomationAccount" });
+    case 1:
+      return S.Array(__S(3824, __c239, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          value: __S(3825, __c239, 1),
+          nextLink: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "AutomationAccountListResult",
+      });
+  }
+}
+function __c240(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts",
+            code: 200,
+            apiVersion: "2024-10-23",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListAutomationAccountByResourceGroupRequest",
+      });
+  }
+}
+function __c241(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          automationAccountName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/listDeletedRunbooks",
+            code: 200,
+            apiVersion: "2024-10-23",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListAutomationAccountDeletedRunbooksRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          runbookId: S.optional(S.String),
+          runbookType: S.optional(S.String),
+          runtime: S.optional(S.String),
+          runtimeEnvironment: S.optional(S.NullOr(S.String)),
+          creationTime: S.optional(S.String),
+          deletionTime: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "DeletedRunbookProperties" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          properties: S.optional(__S(3857, __c241, 1)),
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          location: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "DeletedRunbook" });
+    case 3:
+      return S.Array(__S(3858, __c241, 2));
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          value: __S(3859, __c241, 3),
+          nextLink: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "DeletedRunbookListResult" });
+  }
+}
+function __c242(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          automationAccountName: S.String.pipe(T.Label()),
+          runtimeEnvironmentName: S.String.pipe(T.Label()),
+          tags: S.optional(__S(64, __c4, 0)),
+          location: S.String,
+          properties: S.optional(__S(3889, __c243, 1)),
+        }).pipe(
+          T.Http({
+            method: "PUT",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/runtimeEnvironments/{runtimeEnvironmentName}",
+            code: 200,
+            apiVersion: "2024-10-23",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateRuntimeEnvironmentRequest",
+      });
+  }
+}
+function __c243(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          language: S.optional(S.String),
+          version: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "RuntimeProperties" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          runtime: S.optional(__S(3888, __c243, 0)),
+          defaultPackages: S.optional(__S(64, __c4, 0)),
+          description: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "RuntimeEnvironmentProperties",
+      });
+  }
+}
+function __c244(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(16, __c1, 0)),
+          tags: S.optional(__S(64, __c4, 0)),
+          location: S.String,
+          properties: S.optional(__S(3889, __c243, 1)),
+        }),
+      ).annotate({
+        identifier: "CreateRuntimeEnvironmentResponse",
+      });
+  }
+}
+function __c245(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          automationAccountName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/certificates",
+            code: 200,
+            apiVersion: "2024-10-23",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListCertificateByAutomationAccountRequest",
+      });
+    case 1:
+      return S.Array(__S(2464, __c154, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          value: __S(3921, __c245, 1),
+          nextLink: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "CertificateListResult" });
+  }
+}
+function __c246(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          automationAccountName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/connections",
+            code: 200,
+            apiVersion: "2024-10-23",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListConnectionByAutomationAccountRequest",
+      });
+    case 1:
+      return S.Array(__S(2496, __c156, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          value: __S(3937, __c246, 1),
+          nextLink: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ConnectionListResult" });
+  }
+}
+function __c247(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          automationAccountName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/connectionTypes",
+            code: 200,
+            apiVersion: "2024-10-23",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListConnectionTypeByAutomationAccountRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(16, __c1, 0)),
+          properties: S.optional(__S(2018, __c126, 2)),
+        }),
+      ).annotate({ identifier: "ConnectionType" });
+    case 2:
+      return S.Array(__S(3953, __c247, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          value: __S(3954, __c247, 2),
+          nextLink: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ConnectionTypeListResult" });
+  }
+}
+function __c248(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          automationAccountName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/credentials",
+            code: 200,
+            apiVersion: "2024-10-23",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListCredentialByAutomationAccountRequest",
+      });
+    case 1:
+      return S.Array(__S(2544, __c159, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          value: __S(3969, __c248, 1),
+          nextLink: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "CredentialListResult" });
+  }
+}
+function __c249(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/providers/Microsoft.Automation/deletedAutomationAccounts",
+            code: 200,
+            apiVersion: "2024-10-23",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListDeletedAutomationAccountBySubscriptionRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          automationAccountResourceId: S.optional(
+            S.String.pipe(T.Body("AutomationAccountResourceId")),
+          ),
+          automationAccountId: S.optional(S.String.pipe(T.Body("AutomationAccountId"))),
+          location: S.optional(S.String.pipe(T.Body("Location"))),
+          deletionTime: S.optional(S.String.pipe(T.Body("DeletedTime"))),
+        }),
+      ).annotate({
+        identifier: "DeletedAutomationAccountProperties",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          properties: S.optional(__S(3985, __c249, 1).pipe(T.Body("Properties"))),
+          id: S.optional(S.String.pipe(T.Body("Id"))),
+          name: S.optional(S.String.pipe(T.Body("Name"))),
+          type: S.optional(S.String.pipe(T.Body("Type"))),
+          location: S.optional(S.String.pipe(T.Body("Location"))),
+        }),
+      ).annotate({ identifier: "DeletedAutomationAccount" });
+    case 3:
+      return S.Array(__S(3986, __c249, 2));
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          value: S.optional(__S(3987, __c249, 3)),
+        }),
+      ).annotate({
+        identifier: "DeletedAutomationAccountListResult",
+      });
+  }
+}
+function __c250(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          automationAccountName: S.String.pipe(T.Label()),
+          _filter: S.optional(S.String.pipe(T.Query("$filter"))),
+          _skip: S.optional(S.Number.pipe(T.Query("$skip"))),
+          _top: S.optional(S.Number.pipe(T.Query("$top"))),
+          _inlinecount: S.optional(S.String.pipe(T.Query("$inlinecount"))),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/configurations",
+            code: 200,
+            apiVersion: "2024-10-23",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListDscConfigurationByAutomationAccountRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(16, __c1, 0)),
+          tags: S.optional(__S(64, __c4, 0)),
+          location: S.String,
+          properties: S.optional(__S(2256, __c141, 0)),
+          etag: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "DscConfiguration" });
+    case 2:
+      return S.Array(__S(4001, __c250, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          value: S.optional(__S(4002, __c250, 2)),
+          nextLink: S.optional(S.String),
+          totalCount: S.optional(S.Number),
+        }),
+      ).annotate({
+        identifier: "DscConfigurationListResult",
+      });
+  }
+}
+function __c251(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          automationAccountName: S.String.pipe(T.Label()),
+          _filter: S.optional(S.String.pipe(T.Query("$filter"))),
+          _skip: S.optional(S.Number.pipe(T.Query("$skip"))),
+          _top: S.optional(S.Number.pipe(T.Query("$top"))),
+          _inlinecount: S.optional(S.String.pipe(T.Query("$inlinecount"))),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/nodes",
+            code: 200,
+            apiVersion: "2024-10-23",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListDscNodeByAutomationAccountRequest",
+      });
+    case 1:
+      return S.Array(__S(2675, __c167, 3));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          value: S.optional(__S(4017, __c251, 1)),
+          nextLink: S.optional(S.String),
+          totalCount: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "DscNodeListResult" });
+  }
+}
+function __c252(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          automationAccountName: S.String.pipe(T.Label()),
+          _filter: S.optional(S.String.pipe(T.Query("$filter"))),
+          _skip: S.optional(S.Number.pipe(T.Query("$skip"))),
+          _top: S.optional(S.Number.pipe(T.Query("$top"))),
+          _inlinecount: S.optional(S.String.pipe(T.Query("$inlinecount"))),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/nodeConfigurations",
+            code: 200,
+            apiVersion: "2024-10-23",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListDscNodeConfigurationByAutomationAccountRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(16, __c1, 0)),
+          properties: S.optional(__S(2704, __c169, 0)),
+        }),
+      ).annotate({ identifier: "DscNodeConfiguration" });
+    case 2:
+      return S.Array(__S(4033, __c252, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          value: S.optional(__S(4034, __c252, 2)),
+          nextLink: S.optional(S.String),
+          totalCount: S.optional(S.Number),
+        }),
+      ).annotate({
+        identifier: "DscNodeConfigurationListResult",
+      });
+  }
+}
+function __c253(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          automationAccountName: S.String.pipe(T.Label()),
+          moduleName: S.String.pipe(T.Label()),
+          typeName: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/modules/{moduleName}/types/{typeName}/fields",
+            code: 200,
+            apiVersion: "2024-10-23",
+          }),
+        ),
+      ).annotate({ identifier: "ListFieldByTypeRequest" });
+  }
+}
+function __c254(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          value: S.optional(__S(2385, __c149, 1)),
+          nextLink: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "TypeFieldListResult" });
+  }
+}
+function __c255(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          automationAccountName: S.String.pipe(T.Label()),
+          hybridRunbookWorkerGroupName: S.String.pipe(T.Label()),
+          _filter: S.optional(S.String.pipe(T.Query("$filter"))),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/hybridRunbookWorkerGroups/{hybridRunbookWorkerGroupName}/hybridRunbookWorkers",
+            code: 200,
+            apiVersion: "2024-10-23",
+          }),
+        ),
+      ).annotate({
+        identifier: "ListHybridRunbookWorkerByHybridRunbookWorkerGroupRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(16, __c1, 0)),
+          tags: S.optional(__S(64, __c4, 0)),
+          location: S.String,
+          properties: S.optional(__S(2624, __c164, 0)),
+        }),
+      ).annotate({ identifier: "HybridRunbookWorker" });
+    case 2:
+      return S.Array(__S(4081, __c255, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          value: __S(4082, __c255, 2),
+          nextLink: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "HybridRunbookWorkersListResult",
+      });
+  }
+}
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

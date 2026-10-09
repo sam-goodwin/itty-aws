@@ -710,8 +710,8 @@ export const batchGetCategories: API.OperationMethod<
   BatchGetCategoriesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1, __c0, 1) as any as S.Schema<BatchGetCategoriesRequest>,
-  output: __S(8, __c1, 0) as any as S.Schema<BatchGetCategoriesResponse>,
+  input: __S(288, __c9, 0) as any as S.Schema<BatchGetCategoriesRequest>,
+  output: __S(289, __c9, 1) as any as S.Schema<BatchGetCategoriesResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -730,8 +730,8 @@ export const createAccountsLocations: API.OperationMethod<
   CreateAccountsLocationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(41, __c5, 1) as any as S.Schema<CreateAccountsLocationsRequest>,
-  output: __S(40, __c5, 0) as any as S.Schema<Location>,
+  input: __S(384, __c12, 0) as any as S.Schema<CreateAccountsLocationsRequest>,
+  output: __S(447, __c13, 31) as any as S.Schema<Location>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -745,8 +745,8 @@ export const deleteLocations: API.OperationMethod<
   DeleteLocationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(42, __c5, 2) as any as S.Schema<DeleteLocationsRequest>,
-  output: __S(43, __c5, 3) as any as S.Schema<Empty>,
+  input: __S(448, __c14, 0) as any as S.Schema<DeleteLocationsRequest>,
+  output: __S(449, __c14, 1) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -760,8 +760,8 @@ export const getAttributesLocations: API.OperationMethod<
   GetAttributesLocationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(44, __c5, 4) as any as S.Schema<GetAttributesLocationsRequest>,
-  output: __S(51, __c6, 3) as any as S.Schema<Attributes>,
+  input: __S(480, __c15, 0) as any as S.Schema<GetAttributesLocationsRequest>,
+  output: __S(517, __c16, 5) as any as S.Schema<Attributes>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -771,8 +771,8 @@ export type GetChainsError = NotFound | Forbidden | GcpOpError;
 /** Gets the specified chain. Returns `NOT_FOUND` if the chain does not exist. */
 export const getChains: API.OperationMethod<GetChainsRequest, Chain, GetChainsError, GcpOpContext> =
   /*@__PURE__*/ API.make(() => ({
-    input: __S(52, __c6, 4) as any as S.Schema<GetChainsRequest>,
-    output: __S(56, __c7, 0) as any as S.Schema<Chain>,
+    input: __S(576, __c18, 0) as any as S.Schema<GetChainsRequest>,
+    output: __S(611, __c19, 3) as any as S.Schema<Chain>,
     errors: [NotFound, Forbidden, UnknownGCPError],
     protocol: GcpProtocol,
     retry: Retry.Retry,
@@ -786,8 +786,8 @@ export const getGoogleUpdatedLocations: API.OperationMethod<
   GetGoogleUpdatedLocationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(57, __c7, 1) as any as S.Schema<GetGoogleUpdatedLocationsRequest>,
-  output: __S(58, __c7, 2) as any as S.Schema<GoogleUpdatedLocation>,
+  input: __S(640, __c20, 0) as any as S.Schema<GetGoogleUpdatedLocationsRequest>,
+  output: __S(641, __c20, 1) as any as S.Schema<GoogleUpdatedLocation>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -801,8 +801,8 @@ export const getGoogleUpdatedLocationsAttributes: API.OperationMethod<
   GetGoogleUpdatedLocationsAttributesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(59, __c7, 3) as any as S.Schema<GetGoogleUpdatedLocationsAttributesRequest>,
-  output: __S(51, __c6, 3) as any as S.Schema<Attributes>,
+  input: __S(0, __c0, 0) as any as S.Schema<GetGoogleUpdatedLocationsAttributesRequest>,
+  output: __S(517, __c16, 5) as any as S.Schema<Attributes>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -816,8 +816,8 @@ export const getLocations: API.OperationMethod<
   GetLocationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(60, __c7, 4) as any as S.Schema<GetLocationsRequest>,
-  output: __S(40, __c5, 0) as any as S.Schema<Location>,
+  input: __S(32, __c1, 0) as any as S.Schema<GetLocationsRequest>,
+  output: __S(447, __c13, 31) as any as S.Schema<Location>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -832,8 +832,8 @@ export const listAccountsLocations: API.PaginatedOperationMethod<
   GcpOpContext,
   ListLocationsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(61, __c7, 5) as any as S.Schema<ListAccountsLocationsRequest>,
-  output: __S(63, __c7, 7) as any as S.Schema<ListLocationsResponse>,
+  input: __S(64, __c2, 0) as any as S.Schema<ListAccountsLocationsRequest>,
+  output: __S(66, __c2, 2) as any as S.Schema<ListLocationsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -849,8 +849,8 @@ export const listAttributes: API.PaginatedOperationMethod<
   GcpOpContext,
   ListAttributeMetadataResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(64, __c8, 0) as any as S.Schema<ListAttributesRequest>,
-  output: __S(69, __c8, 5) as any as S.Schema<ListAttributeMetadataResponse>,
+  input: __S(96, __c3, 0) as any as S.Schema<ListAttributesRequest>,
+  output: __S(101, __c3, 5) as any as S.Schema<ListAttributeMetadataResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -866,8 +866,8 @@ export const listCategories: API.PaginatedOperationMethod<
   GcpOpContext,
   ListCategoriesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(70, __c8, 6) as any as S.Schema<ListCategoriesRequest>,
-  output: __S(71, __c8, 7) as any as S.Schema<ListCategoriesResponse>,
+  input: __S(128, __c4, 0) as any as S.Schema<ListCategoriesRequest>,
+  output: __S(129, __c4, 1) as any as S.Schema<ListCategoriesResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -882,8 +882,8 @@ export const patchLocations: API.OperationMethod<
   PatchLocationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(72, __c9, 0) as any as S.Schema<PatchLocationsRequest>,
-  output: __S(40, __c5, 0) as any as S.Schema<Location>,
+  input: __S(160, __c5, 0) as any as S.Schema<PatchLocationsRequest>,
+  output: __S(447, __c13, 31) as any as S.Schema<Location>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -897,8 +897,8 @@ export const searchChains: API.OperationMethod<
   SearchChainsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(73, __c9, 1) as any as S.Schema<SearchChainsRequest>,
-  output: __S(75, __c9, 3) as any as S.Schema<SearchChainsResponse>,
+  input: __S(192, __c6, 0) as any as S.Schema<SearchChainsRequest>,
+  output: __S(194, __c6, 2) as any as S.Schema<SearchChainsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -912,8 +912,8 @@ export const searchGoogleLocations: API.OperationMethod<
   SearchGoogleLocationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(77, __c9, 5) as any as S.Schema<SearchGoogleLocationsRequest_>,
-  output: __S(80, __c10, 0) as any as S.Schema<SearchGoogleLocationsResponse>,
+  input: __S(225, __c7, 1) as any as S.Schema<SearchGoogleLocationsRequest_>,
+  output: __S(228, __c7, 4) as any as S.Schema<SearchGoogleLocationsResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -932,8 +932,8 @@ export const updateAttributesLocations: API.OperationMethod<
   UpdateAttributesLocationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(81, __c10, 1) as any as S.Schema<UpdateAttributesLocationsRequest>,
-  output: __S(51, __c6, 3) as any as S.Schema<Attributes>,
+  input: __S(256, __c8, 0) as any as S.Schema<UpdateAttributesLocationsRequest>,
+  output: __S(517, __c16, 5) as any as S.Schema<Attributes>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -943,478 +943,6 @@ export const updateAttributesLocations: API.OperationMethod<
 function __c0(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(S.String);
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          view: S.optional(S.String.pipe(T.Query())),
-          regionCode: S.optional(S.String.pipe(T.Query())),
-          languageCode: S.optional(S.String.pipe(T.Query())),
-          names: S.optional(__S(0, __c0, 0).pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v1/categories:batchGet",
-            baseUrl: "https://mybusinessbusinessinformation.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "BatchGetCategoriesRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          displayName: S.optional(S.String),
-          serviceTypeId: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ServiceType" });
-    case 3:
-      return S.Array(__S(2, __c0, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          hoursTypeId: S.optional(S.String),
-          displayName: S.optional(S.String),
-          localizedDisplayName: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "MoreHoursType" });
-    case 5:
-      return S.Array(__S(4, __c0, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          displayName: S.optional(S.String),
-          serviceTypes: S.optional(__S(3, __c0, 3)),
-          moreHoursTypes: S.optional(__S(5, __c0, 5)),
-          name: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Category" });
-    case 7:
-      return S.Array(__S(6, __c0, 6));
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          categories: S.optional(__S(7, __c0, 7)),
-        }),
-      ).annotate({
-        identifier: "BatchGetCategoriesResponse",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          additionalPhones: S.optional(__S(0, __c0, 0)),
-          primaryPhone: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "PhoneNumbers" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          minutes: S.optional(S.Number),
-          hours: S.optional(S.Number),
-          nanos: S.optional(S.Number),
-          seconds: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "TimeOfDay" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          closeTime: S.optional(__S(10, __c1, 2)),
-          openTime: S.optional(__S(10, __c1, 2)),
-          closeDay: S.optional(S.String),
-          openDay: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "TimePeriod" });
-    case 4:
-      return S.Array(__S(11, __c1, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          hoursTypeId: S.optional(S.String),
-          periods: S.optional(__S(12, __c1, 4)),
-        }),
-      ).annotate({ identifier: "MoreHours" });
-    case 6:
-      return S.Array(__S(13, __c1, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          primaryCategory: S.optional(__S(6, __c0, 6)),
-          additionalCategories: S.optional(__S(7, __c0, 7)),
-        }),
-      ).annotate({ identifier: "Categories" });
-  }
-}
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          sortingCode: S.optional(S.String),
-          organization: S.optional(S.String),
-          regionCode: S.optional(S.String),
-          postalCode: S.optional(S.String),
-          addressLines: S.optional(__S(0, __c0, 0)),
-          administrativeArea: S.optional(S.String),
-          sublocality: S.optional(S.String),
-          recipients: S.optional(__S(0, __c0, 0)),
-          revision: S.optional(S.Number),
-          languageCode: S.optional(S.String),
-          locality: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "PostalAddress" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          year: S.optional(S.Number),
-          day: S.optional(S.Number),
-          month: S.optional(S.Number),
-        }),
-      ).annotate({
-        identifier: "Mybusinessbusinessinformation_Date",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          closeTime: S.optional(__S(10, __c1, 2)),
-          endDate: S.optional(__S(17, __c2, 1)),
-          closed: S.optional(S.Boolean),
-          startDate: S.optional(__S(17, __c2, 1)),
-          openTime: S.optional(__S(10, __c1, 2)),
-        }),
-      ).annotate({ identifier: "SpecialHourPeriod" });
-    case 3:
-      return S.Array(__S(18, __c2, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          specialHourPeriods: S.optional(__S(19, __c2, 3)),
-        }),
-      ).annotate({ identifier: "SpecialHours" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          units: S.optional(S.String),
-          nanos: S.optional(S.Number),
-          currencyCode: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Money" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          description: S.optional(S.String),
-          languageCode: S.optional(S.String),
-          displayName: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Label" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          label: S.optional(__S(22, __c2, 6)),
-          category: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "FreeFormServiceItem" });
-  }
-}
-function __c3(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          serviceTypeId: S.optional(S.String),
-          description: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "StructuredServiceItem" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          price: S.optional(__S(21, __c2, 5)),
-          freeFormServiceItem: S.optional(__S(23, __c2, 7)),
-          structuredServiceItem: S.optional(__S(24, __c3, 0)),
-        }),
-      ).annotate({ identifier: "ServiceItem" });
-    case 2:
-      return S.Array(__S(25, __c3, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          description: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Profile" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          canDelete: S.optional(S.Boolean),
-          canHaveBusinessCalls: S.optional(S.Boolean),
-          placeId: S.optional(S.String),
-          canHaveFoodMenus: S.optional(S.Boolean),
-          hasVoiceOfMerchant: S.optional(S.Boolean),
-          duplicateLocation: S.optional(S.String),
-          hasGoogleUpdated: S.optional(S.Boolean),
-          canModifyServiceList: S.optional(S.Boolean),
-          newReviewUri: S.optional(S.String),
-          mapsUri: S.optional(S.String),
-          hasPendingEdits: S.optional(S.Boolean),
-          isParticularlyPersonalPlace: S.optional(S.Boolean),
-          canOperateLodgingData: S.optional(S.Boolean),
-          canOperateLocalPost: S.optional(S.Boolean),
-          canOperateHealthData: S.optional(S.Boolean),
-        }),
-      ).annotate({ identifier: "Metadata" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          periods: S.optional(__S(12, __c1, 4)),
-        }),
-      ).annotate({ identifier: "BusinessHours" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          latitude: S.optional(S.Number),
-          longitude: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "LatLng" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          adPhone: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "AdWordsLocationExtensions",
-      });
-  }
-}
-function __c4(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          placeId: S.optional(S.String),
-          placeName: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "PlaceInfo" });
-    case 1:
-      return S.Array(__S(32, __c4, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          placeInfos: S.optional(__S(33, __c4, 1)),
-        }),
-      ).annotate({ identifier: "Places" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          places: S.optional(__S(34, __c4, 2)),
-          regionCode: S.optional(S.String),
-          businessType: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ServiceAreaBusiness" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          canReopen: S.optional(S.Boolean),
-          openingDate: S.optional(__S(17, __c2, 1)),
-          status: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "OpenInfo" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          placeId: S.optional(S.String),
-          relationType: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "RelevantLocation" });
-    case 6:
-      return S.Array(__S(37, __c4, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          childrenLocations: S.optional(__S(38, __c4, 6)),
-          parentChain: S.optional(S.String),
-          parentLocation: S.optional(__S(37, __c4, 5)),
-        }),
-      ).annotate({ identifier: "RelationshipData" });
-  }
-}
-function __c5(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          phoneNumbers: S.optional(__S(9, __c1, 1)),
-          moreHours: S.optional(__S(14, __c1, 6)),
-          websiteUri: S.optional(S.String),
-          categories: S.optional(__S(15, __c1, 7)),
-          storefrontAddress: S.optional(__S(16, __c2, 0)),
-          name: S.optional(S.String),
-          languageCode: S.optional(S.String),
-          specialHours: S.optional(__S(20, __c2, 4)),
-          title: S.optional(S.String),
-          serviceItems: S.optional(__S(26, __c3, 2)),
-          labels: S.optional(__S(0, __c0, 0)),
-          profile: S.optional(__S(27, __c3, 3)),
-          metadata: S.optional(__S(28, __c3, 4)),
-          regularHours: S.optional(__S(29, __c3, 5)),
-          latlng: S.optional(__S(30, __c3, 6)),
-          adWordsLocationExtensions: S.optional(__S(31, __c3, 7)),
-          serviceArea: S.optional(__S(35, __c4, 3)),
-          openInfo: S.optional(__S(36, __c4, 4)),
-          storeCode: S.optional(S.String),
-          relationshipData: S.optional(__S(39, __c4, 7)),
-        }),
-      ).annotate({ identifier: "Location" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          validateOnly: S.optional(S.Boolean.pipe(T.Query())),
-          parent: S.String.pipe(T.Label()),
-          requestId: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(__S(40, __c5, 0).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "v1/{+parent}/locations",
-            baseUrl: "https://mybusinessbusinessinformation.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateAccountsLocationsRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "v1/{+name}",
-            baseUrl: "https://mybusinessbusinessinformation.googleapis.com/",
-          }),
-        ),
-      ).annotate({ identifier: "DeleteLocationsRequest" });
-    case 3:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "Empty",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v1/{+name}",
-            baseUrl: "https://mybusinessbusinessinformation.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetAttributesLocationsRequest",
-      });
-    case 5:
-      return S.Array(S.Unknown);
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          unsetValues: S.optional(__S(0, __c0, 0)),
-          setValues: S.optional(__S(0, __c0, 0)),
-        }),
-      ).annotate({
-        identifier: "RepeatedEnumAttributeValue",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          uri: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "UriAttributeValue" });
-  }
-}
-function __c6(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(47, __c5, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.optional(S.String),
-          values: S.optional(__S(45, __c5, 5)),
-          repeatedEnumValue: S.optional(__S(46, __c5, 6)),
-          valueType: S.optional(S.String),
-          uriValues: S.optional(__S(48, __c6, 0)),
-        }),
-      ).annotate({ identifier: "Attribute" });
-    case 2:
-      return S.Array(__S(49, __c6, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          attributes: S.optional(__S(50, __c6, 2)),
-          name: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Attributes" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v1/{+name}",
-            baseUrl: "https://mybusinessbusinessinformation.googleapis.com/",
-          }),
-        ),
-      ).annotate({ identifier: "GetChainsRequest" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          displayName: S.optional(S.String),
-          languageCode: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ChainName" });
-    case 6:
-      return S.Array(__S(53, __c6, 5));
-    case 7:
-      return S.Array(__S(47, __c5, 7));
-  }
-}
-function __c7(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          chainNames: S.optional(__S(54, __c6, 6)),
-          websites: S.optional(__S(55, __c6, 7)),
-          name: S.optional(S.String),
-          locationCount: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "Chain" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String.pipe(T.Label()),
-          readMask: S.optional(S.String.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "v1/{+name}:getGoogleUpdated",
-            baseUrl: "https://mybusinessbusinessinformation.googleapis.com/",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetGoogleUpdatedLocationsRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          pendingMask: S.optional(S.String),
-          location: S.optional(__S(40, __c5, 0)),
-          diffMask: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "GoogleUpdatedLocation" });
-    case 3:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -1428,7 +956,11 @@ function __c7(j: number): any {
       ).annotate({
         identifier: "GetGoogleUpdatedLocationsAttributesRequest",
       });
-    case 4:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
@@ -1441,7 +973,11 @@ function __c7(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetLocationsRequest" });
-    case 5:
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           readMask: S.optional(S.String.pipe(T.Query())),
@@ -1460,19 +996,19 @@ function __c7(j: number): any {
       ).annotate({
         identifier: "ListAccountsLocationsRequest",
       });
-    case 6:
-      return S.Array(__S(40, __c5, 0));
-    case 7:
+    case 1:
+      return S.Array(__S(447, __c13, 31));
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          locations: S.optional(__S(62, __c7, 6)),
+          locations: S.optional(__S(65, __c2, 1)),
           nextPageToken: S.optional(S.String),
           totalSize: S.optional(S.Number),
         }),
       ).annotate({ identifier: "ListLocationsResponse" });
   }
 }
-function __c8(j: number): any {
+function __c3(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1500,7 +1036,7 @@ function __c8(j: number): any {
         }),
       ).annotate({ identifier: "AttributeValueMetadata" });
     case 2:
-      return S.Array(__S(65, __c8, 1));
+      return S.Array(__S(97, __c3, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
@@ -1508,23 +1044,27 @@ function __c8(j: number): any {
           displayName: S.optional(S.String),
           groupDisplayName: S.optional(S.String),
           parent: S.optional(S.String),
-          valueMetadata: S.optional(__S(66, __c8, 2)),
+          valueMetadata: S.optional(__S(98, __c3, 2)),
           repeatable: S.optional(S.Boolean),
           deprecated: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "AttributeMetadata" });
     case 4:
-      return S.Array(__S(67, __c8, 3));
+      return S.Array(__S(99, __c3, 3));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          attributeMetadata: S.optional(__S(68, __c8, 4)),
+          attributeMetadata: S.optional(__S(100, __c3, 4)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({
         identifier: "ListAttributeMetadataResponse",
       });
-    case 6:
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           view: S.optional(S.String.pipe(T.Query())),
@@ -1541,16 +1081,16 @@ function __c8(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ListCategoriesRequest" });
-    case 7:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          categories: S.optional(__S(7, __c0, 7)),
+          categories: S.optional(__S(357, __c11, 5)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListCategoriesResponse" });
   }
 }
-function __c9(j: number): any {
+function __c5(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1558,7 +1098,7 @@ function __c9(j: number): any {
           name: S.String.pipe(T.Label()),
           updateMask: S.optional(S.String.pipe(T.Query())),
           validateOnly: S.optional(S.Boolean.pipe(T.Query())),
-          body: S.optional(__S(40, __c5, 0).pipe(T.HttpBody())),
+          body: S.optional(__S(447, __c13, 31).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -1567,7 +1107,11 @@ function __c9(j: number): any {
           }),
         ),
       ).annotate({ identifier: "PatchLocationsRequest" });
-    case 1:
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -1580,28 +1124,32 @@ function __c9(j: number): any {
           }),
         ),
       ).annotate({ identifier: "SearchChainsRequest" });
+    case 1:
+      return S.Array(__S(611, __c19, 3));
     case 2:
-      return S.Array(__S(56, __c7, 0));
-    case 3:
       return S.suspend(() =>
         S.Struct({
-          chains: S.optional(__S(74, __c9, 2)),
+          chains: S.optional(__S(193, __c6, 1)),
         }),
       ).annotate({ identifier: "SearchChainsResponse" });
-    case 4:
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           pageSize: S.optional(S.Number),
           query: S.optional(S.String),
-          location: S.optional(__S(40, __c5, 0)),
+          location: S.optional(__S(447, __c13, 31)),
         }),
       ).annotate({
         identifier: "SearchGoogleLocationsRequest",
       });
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          body: S.optional(__S(76, __c9, 4).pipe(T.HttpBody())),
+          body: S.optional(__S(224, __c7, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -1612,34 +1160,34 @@ function __c9(j: number): any {
       ).annotate({
         identifier: "SearchGoogleLocationsRequest_",
       });
-    case 6:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           requestAdminRightsUri: S.optional(S.String),
           name: S.optional(S.String),
-          location: S.optional(__S(40, __c5, 0)),
+          location: S.optional(__S(447, __c13, 31)),
         }),
       ).annotate({ identifier: "GoogleLocation" });
-    case 7:
-      return S.Array(__S(78, __c9, 6));
-  }
-}
-function __c10(j: number): any {
-  switch (j) {
-    case 0:
+    case 3:
+      return S.Array(__S(226, __c7, 2));
+    case 4:
       return S.suspend(() =>
         S.Struct({
-          googleLocations: S.optional(__S(79, __c9, 7)),
+          googleLocations: S.optional(__S(227, __c7, 3)),
         }),
       ).annotate({
         identifier: "SearchGoogleLocationsResponse",
       });
-    case 1:
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           attributeMask: S.optional(S.String.pipe(T.Query())),
           name: S.String.pipe(T.Label()),
-          body: S.optional(__S(51, __c6, 3).pipe(T.HttpBody())),
+          body: S.optional(__S(517, __c16, 5).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -1652,7 +1200,498 @@ function __c10(j: number): any {
       });
   }
 }
-
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          view: S.optional(S.String.pipe(T.Query())),
+          regionCode: S.optional(S.String.pipe(T.Query())),
+          languageCode: S.optional(S.String.pipe(T.Query())),
+          names: S.optional(__S(320, __c10, 0).pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v1/categories:batchGet",
+            baseUrl: "https://mybusinessbusinessinformation.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "BatchGetCategoriesRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          categories: S.optional(__S(357, __c11, 5)),
+        }),
+      ).annotate({
+        identifier: "BatchGetCategoriesResponse",
+      });
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          displayName: S.optional(S.String),
+          serviceTypeId: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ServiceType" });
+    case 1:
+      return S.Array(__S(352, __c11, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          hoursTypeId: S.optional(S.String),
+          displayName: S.optional(S.String),
+          localizedDisplayName: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "MoreHoursType" });
+    case 3:
+      return S.Array(__S(354, __c11, 2));
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          displayName: S.optional(S.String),
+          serviceTypes: S.optional(__S(353, __c11, 1)),
+          moreHoursTypes: S.optional(__S(355, __c11, 3)),
+          name: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Category" });
+    case 5:
+      return S.Array(__S(356, __c11, 4));
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          validateOnly: S.optional(S.Boolean.pipe(T.Query())),
+          parent: S.String.pipe(T.Label()),
+          requestId: S.optional(S.String.pipe(T.Query())),
+          body: S.optional(__S(447, __c13, 31).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "v1/{+parent}/locations",
+            baseUrl: "https://mybusinessbusinessinformation.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateAccountsLocationsRequest",
+      });
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          additionalPhones: S.optional(__S(320, __c10, 0)),
+          primaryPhone: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "PhoneNumbers" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          minutes: S.optional(S.Number),
+          hours: S.optional(S.Number),
+          nanos: S.optional(S.Number),
+          seconds: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "TimeOfDay" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          closeTime: S.optional(__S(417, __c13, 1)),
+          openTime: S.optional(__S(417, __c13, 1)),
+          closeDay: S.optional(S.String),
+          openDay: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "TimePeriod" });
+    case 3:
+      return S.Array(__S(418, __c13, 2));
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          hoursTypeId: S.optional(S.String),
+          periods: S.optional(__S(419, __c13, 3)),
+        }),
+      ).annotate({ identifier: "MoreHours" });
+    case 5:
+      return S.Array(__S(420, __c13, 4));
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          primaryCategory: S.optional(__S(356, __c11, 4)),
+          additionalCategories: S.optional(__S(357, __c11, 5)),
+        }),
+      ).annotate({ identifier: "Categories" });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          sortingCode: S.optional(S.String),
+          organization: S.optional(S.String),
+          regionCode: S.optional(S.String),
+          postalCode: S.optional(S.String),
+          addressLines: S.optional(__S(320, __c10, 0)),
+          administrativeArea: S.optional(S.String),
+          sublocality: S.optional(S.String),
+          recipients: S.optional(__S(320, __c10, 0)),
+          revision: S.optional(S.Number),
+          languageCode: S.optional(S.String),
+          locality: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "PostalAddress" });
+    case 8:
+      return S.suspend(() =>
+        S.Struct({
+          year: S.optional(S.Number),
+          day: S.optional(S.Number),
+          month: S.optional(S.Number),
+        }),
+      ).annotate({
+        identifier: "Mybusinessbusinessinformation_Date",
+      });
+    case 9:
+      return S.suspend(() =>
+        S.Struct({
+          closeTime: S.optional(__S(417, __c13, 1)),
+          endDate: S.optional(__S(424, __c13, 8)),
+          closed: S.optional(S.Boolean),
+          startDate: S.optional(__S(424, __c13, 8)),
+          openTime: S.optional(__S(417, __c13, 1)),
+        }),
+      ).annotate({ identifier: "SpecialHourPeriod" });
+    case 10:
+      return S.Array(__S(425, __c13, 9));
+    case 11:
+      return S.suspend(() =>
+        S.Struct({
+          specialHourPeriods: S.optional(__S(426, __c13, 10)),
+        }),
+      ).annotate({ identifier: "SpecialHours" });
+    case 12:
+      return S.suspend(() =>
+        S.Struct({
+          units: S.optional(S.String),
+          nanos: S.optional(S.Number),
+          currencyCode: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Money" });
+    case 13:
+      return S.suspend(() =>
+        S.Struct({
+          description: S.optional(S.String),
+          languageCode: S.optional(S.String),
+          displayName: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Label" });
+    case 14:
+      return S.suspend(() =>
+        S.Struct({
+          label: S.optional(__S(429, __c13, 13)),
+          category: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "FreeFormServiceItem" });
+    case 15:
+      return S.suspend(() =>
+        S.Struct({
+          serviceTypeId: S.optional(S.String),
+          description: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "StructuredServiceItem" });
+    case 16:
+      return S.suspend(() =>
+        S.Struct({
+          price: S.optional(__S(428, __c13, 12)),
+          freeFormServiceItem: S.optional(__S(430, __c13, 14)),
+          structuredServiceItem: S.optional(__S(431, __c13, 15)),
+        }),
+      ).annotate({ identifier: "ServiceItem" });
+    case 17:
+      return S.Array(__S(432, __c13, 16));
+    case 18:
+      return S.suspend(() =>
+        S.Struct({
+          description: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Profile" });
+    case 19:
+      return S.suspend(() =>
+        S.Struct({
+          canDelete: S.optional(S.Boolean),
+          canHaveBusinessCalls: S.optional(S.Boolean),
+          placeId: S.optional(S.String),
+          canHaveFoodMenus: S.optional(S.Boolean),
+          hasVoiceOfMerchant: S.optional(S.Boolean),
+          duplicateLocation: S.optional(S.String),
+          hasGoogleUpdated: S.optional(S.Boolean),
+          canModifyServiceList: S.optional(S.Boolean),
+          newReviewUri: S.optional(S.String),
+          mapsUri: S.optional(S.String),
+          hasPendingEdits: S.optional(S.Boolean),
+          isParticularlyPersonalPlace: S.optional(S.Boolean),
+          canOperateLodgingData: S.optional(S.Boolean),
+          canOperateLocalPost: S.optional(S.Boolean),
+          canOperateHealthData: S.optional(S.Boolean),
+        }),
+      ).annotate({ identifier: "Metadata" });
+    case 20:
+      return S.suspend(() =>
+        S.Struct({
+          periods: S.optional(__S(419, __c13, 3)),
+        }),
+      ).annotate({ identifier: "BusinessHours" });
+    case 21:
+      return S.suspend(() =>
+        S.Struct({
+          latitude: S.optional(S.Number),
+          longitude: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "LatLng" });
+    case 22:
+      return S.suspend(() =>
+        S.Struct({
+          adPhone: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "AdWordsLocationExtensions",
+      });
+    case 23:
+      return S.suspend(() =>
+        S.Struct({
+          placeId: S.optional(S.String),
+          placeName: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "PlaceInfo" });
+    case 24:
+      return S.Array(__S(439, __c13, 23));
+    case 25:
+      return S.suspend(() =>
+        S.Struct({
+          placeInfos: S.optional(__S(440, __c13, 24)),
+        }),
+      ).annotate({ identifier: "Places" });
+    case 26:
+      return S.suspend(() =>
+        S.Struct({
+          places: S.optional(__S(441, __c13, 25)),
+          regionCode: S.optional(S.String),
+          businessType: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ServiceAreaBusiness" });
+    case 27:
+      return S.suspend(() =>
+        S.Struct({
+          canReopen: S.optional(S.Boolean),
+          openingDate: S.optional(__S(424, __c13, 8)),
+          status: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "OpenInfo" });
+    case 28:
+      return S.suspend(() =>
+        S.Struct({
+          placeId: S.optional(S.String),
+          relationType: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "RelevantLocation" });
+    case 29:
+      return S.Array(__S(444, __c13, 28));
+    case 30:
+      return S.suspend(() =>
+        S.Struct({
+          childrenLocations: S.optional(__S(445, __c13, 29)),
+          parentChain: S.optional(S.String),
+          parentLocation: S.optional(__S(444, __c13, 28)),
+        }),
+      ).annotate({ identifier: "RelationshipData" });
+    case 31:
+      return S.suspend(() =>
+        S.Struct({
+          phoneNumbers: S.optional(__S(416, __c13, 0)),
+          moreHours: S.optional(__S(421, __c13, 5)),
+          websiteUri: S.optional(S.String),
+          categories: S.optional(__S(422, __c13, 6)),
+          storefrontAddress: S.optional(__S(423, __c13, 7)),
+          name: S.optional(S.String),
+          languageCode: S.optional(S.String),
+          specialHours: S.optional(__S(427, __c13, 11)),
+          title: S.optional(S.String),
+          serviceItems: S.optional(__S(433, __c13, 17)),
+          labels: S.optional(__S(320, __c10, 0)),
+          profile: S.optional(__S(434, __c13, 18)),
+          metadata: S.optional(__S(435, __c13, 19)),
+          regularHours: S.optional(__S(436, __c13, 20)),
+          latlng: S.optional(__S(437, __c13, 21)),
+          adWordsLocationExtensions: S.optional(__S(438, __c13, 22)),
+          serviceArea: S.optional(__S(442, __c13, 26)),
+          openInfo: S.optional(__S(443, __c13, 27)),
+          storeCode: S.optional(S.String),
+          relationshipData: S.optional(__S(446, __c13, 30)),
+        }),
+      ).annotate({ identifier: "Location" });
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "v1/{+name}",
+            baseUrl: "https://mybusinessbusinessinformation.googleapis.com/",
+          }),
+        ),
+      ).annotate({ identifier: "DeleteLocationsRequest" });
+    case 1:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "Empty",
+      });
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v1/{+name}",
+            baseUrl: "https://mybusinessbusinessinformation.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetAttributesLocationsRequest",
+      });
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.Unknown);
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          unsetValues: S.optional(__S(320, __c10, 0)),
+          setValues: S.optional(__S(320, __c10, 0)),
+        }),
+      ).annotate({
+        identifier: "RepeatedEnumAttributeValue",
+      });
+    case 2:
+      return S.Array(__S(544, __c17, 0));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.optional(S.String),
+          values: S.optional(__S(512, __c16, 0)),
+          repeatedEnumValue: S.optional(__S(513, __c16, 1)),
+          valueType: S.optional(S.String),
+          uriValues: S.optional(__S(514, __c16, 2)),
+        }),
+      ).annotate({ identifier: "Attribute" });
+    case 4:
+      return S.Array(__S(515, __c16, 3));
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          attributes: S.optional(__S(516, __c16, 4)),
+          name: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Attributes" });
+  }
+}
+function __c17(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          uri: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "UriAttributeValue" });
+  }
+}
+function __c18(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v1/{+name}",
+            baseUrl: "https://mybusinessbusinessinformation.googleapis.com/",
+          }),
+        ),
+      ).annotate({ identifier: "GetChainsRequest" });
+  }
+}
+function __c19(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          displayName: S.optional(S.String),
+          languageCode: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ChainName" });
+    case 1:
+      return S.Array(__S(608, __c19, 0));
+    case 2:
+      return S.Array(__S(544, __c17, 0));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          chainNames: S.optional(__S(609, __c19, 1)),
+          websites: S.optional(__S(610, __c19, 2)),
+          name: S.optional(S.String),
+          locationCount: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "Chain" });
+  }
+}
+function __c20(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+          readMask: S.optional(S.String.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "v1/{+name}:getGoogleUpdated",
+            baseUrl: "https://mybusinessbusinessinformation.googleapis.com/",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetGoogleUpdatedLocationsRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          pendingMask: S.optional(S.String),
+          location: S.optional(__S(447, __c13, 31)),
+          diffMask: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "GoogleUpdatedLocation" });
+  }
+}
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

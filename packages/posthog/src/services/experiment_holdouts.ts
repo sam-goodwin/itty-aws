@@ -322,8 +322,8 @@ export const createExperimentHoldout: API.OperationMethod<
   CreateExperimentHoldoutError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3, __c0, 3) as any as S.Schema<CreateExperimentHoldoutRequest>,
-  output: __S(6, __c0, 6) as any as S.Schema<ExperimentHoldout>,
+  input: __S(0, __c0, 0) as any as S.Schema<CreateExperimentHoldoutRequest>,
+  output: __S(13, __c1, 5) as any as S.Schema<ExperimentHoldout>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -337,8 +337,8 @@ export const experimentHoldoutsDestroy: API.OperationMethod<
   ExperimentHoldoutsDestroyError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(7, __c0, 7) as any as S.Schema<ExperimentHoldoutsDestroyRequest>,
-  output: __S(8, __c1, 0) as any as S.Schema<ExperimentHoldoutsDestroyResponse>,
+  input: __S(16, __c2, 0) as any as S.Schema<ExperimentHoldoutsDestroyRequest>,
+  output: __S(17, __c2, 1) as any as S.Schema<ExperimentHoldoutsDestroyResponse>,
   errors: [Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -352,8 +352,8 @@ export const getExperimentHoldout: API.OperationMethod<
   GetExperimentHoldoutError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(9, __c1, 1) as any as S.Schema<GetExperimentHoldoutRequest>,
-  output: __S(6, __c0, 6) as any as S.Schema<ExperimentHoldout>,
+  input: __S(24, __c3, 0) as any as S.Schema<GetExperimentHoldoutRequest>,
+  output: __S(13, __c1, 5) as any as S.Schema<ExperimentHoldout>,
   errors: [Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -367,8 +367,8 @@ export const listExperimentHoldouts: API.OperationMethod<
   ListExperimentHoldoutsError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(10, __c1, 2) as any as S.Schema<ListExperimentHoldoutsRequest>,
-  output: __S(12, __c1, 4) as any as S.Schema<PaginatedExperimentHoldoutList>,
+  input: __S(32, __c4, 0) as any as S.Schema<ListExperimentHoldoutsRequest>,
+  output: __S(34, __c4, 2) as any as S.Schema<PaginatedExperimentHoldoutList>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -382,8 +382,8 @@ export const updateExperimentHoldout: API.OperationMethod<
   UpdateExperimentHoldoutError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(13, __c1, 5) as any as S.Schema<UpdateExperimentHoldoutRequest>,
-  output: __S(6, __c0, 6) as any as S.Schema<ExperimentHoldout>,
+  input: __S(40, __c5, 0) as any as S.Schema<UpdateExperimentHoldoutRequest>,
+  output: __S(13, __c1, 5) as any as S.Schema<ExperimentHoldout>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -401,8 +401,8 @@ export const updateExperimentHoldoutsPartial: API.OperationMethod<
   UpdateExperimentHoldoutsPartialError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(14, __c1, 6) as any as S.Schema<UpdateExperimentHoldoutsPartialRequest>,
-  output: __S(6, __c0, 6) as any as S.Schema<ExperimentHoldout>,
+  input: __S(48, __c6, 0) as any as S.Schema<UpdateExperimentHoldoutsPartialRequest>,
+  output: __S(13, __c1, 5) as any as S.Schema<ExperimentHoldout>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -412,27 +412,12 @@ export const updateExperimentHoldoutsPartial: API.OperationMethod<
 function __c0(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(S.Unknown);
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          properties: S.optional(__S(0, __c0, 0)),
-          rollout_percentage: S.optional(S.Number),
-          variant: S.optional(S.NullOr(S.String)),
-          aggregation_group_type_index: S.optional(S.NullOr(S.Number)),
-        }),
-      ).annotate({
-        identifier: "FeatureFlagConditionGroupSchema",
-      });
-    case 2:
-      return S.Array(__S(1, __c0, 1));
-    case 3:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
           name: S.optional(S.String),
           description: S.optional(S.NullOr(S.String)),
-          filters: S.optional(__S(2, __c0, 2)),
+          filters: S.optional(__S(10, __c1, 2)),
         }).pipe(
           T.Http({
             method: "POST",
@@ -443,9 +428,28 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "CreateExperimentHoldoutRequest",
       });
-    case 4:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.Unknown);
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          properties: S.optional(__S(8, __c1, 0)),
+          rollout_percentage: S.optional(S.Number),
+          variant: S.optional(S.NullOr(S.String)),
+          aggregation_group_type_index: S.optional(S.NullOr(S.Number)),
+        }),
+      ).annotate({
+        identifier: "FeatureFlagConditionGroupSchema",
+      });
+    case 2:
+      return S.Array(__S(9, __c1, 1));
+    case 3:
       return S.Record(S.String, S.Unknown);
-    case 5:
+    case 4:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.Number),
@@ -455,24 +459,28 @@ function __c0(j: number): any {
           last_name: S.optional(S.String),
           email: S.optional(S.String),
           is_email_verified: S.optional(S.NullOr(S.Boolean)),
-          hedgehog_config: S.optional(S.NullOr(__S(4, __c0, 4))),
+          hedgehog_config: S.optional(S.NullOr(__S(11, __c1, 3))),
           role_at_organization: S.optional(S.NullOr(S.Unknown)),
         }),
       ).annotate({ identifier: "UserBasic" });
-    case 6:
+    case 5:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.Number),
           name: S.optional(S.String),
           description: S.optional(S.NullOr(S.String)),
-          filters: S.optional(__S(2, __c0, 2)),
-          created_by: S.optional(S.NullOr(__S(5, __c0, 5))),
+          filters: S.optional(__S(10, __c1, 2)),
+          created_by: S.optional(S.NullOr(__S(12, __c1, 4))),
           created_at: S.optional(S.String),
           updated_at: S.optional(S.String),
           user_access_level: S.optional(S.NullOr(S.String)),
         }),
       ).annotate({ identifier: "ExperimentHoldout" });
-    case 7:
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -487,15 +495,15 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "ExperimentHoldoutsDestroyRequest",
       });
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "ExperimentHoldoutsDestroyResponse",
       });
-    case 1:
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -510,7 +518,11 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "GetExperimentHoldoutRequest",
       });
-    case 2:
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
@@ -526,27 +538,31 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "ListExperimentHoldoutsRequest",
       });
-    case 3:
-      return S.Array(__S(6, __c0, 6));
-    case 4:
+    case 1:
+      return S.Array(__S(13, __c1, 5));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           count: S.optional(S.Number),
           next: S.optional(S.NullOr(S.String)),
           previous: S.optional(S.NullOr(S.String)),
-          results: S.optional(__S(11, __c1, 3)),
+          results: S.optional(__S(33, __c4, 1)),
         }),
       ).annotate({
         identifier: "PaginatedExperimentHoldoutList",
       });
-    case 5:
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
           id: S.Number.pipe(T.Label()),
           name: S.optional(S.String),
           description: S.optional(S.NullOr(S.String)),
-          filters: S.optional(__S(2, __c0, 2)),
+          filters: S.optional(__S(10, __c1, 2)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -557,14 +573,18 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "UpdateExperimentHoldoutRequest",
       });
-    case 6:
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
           id: S.Number.pipe(T.Label()),
           name: S.optional(S.String),
           description: S.optional(S.NullOr(S.String)),
-          filters: S.optional(__S(2, __c0, 2)),
+          filters: S.optional(__S(10, __c1, 2)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -577,7 +597,6 @@ function __c1(j: number): any {
       });
   }
 }
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

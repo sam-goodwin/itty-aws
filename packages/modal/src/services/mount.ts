@@ -83,8 +83,8 @@ export const mountGetOrCreate: API.OperationMethod<
   MountGetOrCreateError,
   ModalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(5, __c0, 5) as any as S.Schema<MountGetOrCreateRequest>,
-  output: __S(7, __c0, 7) as any as S.Schema<MountGetOrCreateResponse>,
+  input: __S(10, __c1, 2) as any as S.Schema<MountGetOrCreateRequest>,
+  output: __S(12, __c1, 4) as any as S.Schema<MountGetOrCreateResponse>,
   errors: [UnknownModalError],
   protocol: ModalProtocol,
   retry: Retry.Retry,
@@ -97,8 +97,8 @@ export const mountPutFile: API.OperationMethod<
   MountPutFileError,
   ModalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(8, __c1, 0) as any as S.Schema<MountPutFileRequest>,
-  output: __S(9, __c1, 1) as any as S.Schema<MountPutFileResponse>,
+  input: __S(16, __c2, 0) as any as S.Schema<MountPutFileRequest>,
+  output: __S(17, __c2, 1) as any as S.Schema<MountPutFileResponse>,
   errors: [UnknownModalError],
   protocol: ModalProtocol,
   retry: Retry.Retry,
@@ -131,7 +131,11 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "MountBatchedCheckExistenceResponse",
       });
-    case 3:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           filename: S.optional(S.String),
@@ -140,37 +144,37 @@ function __c0(j: number): any {
           mode: S.optional(S.Number),
         }),
       ).annotate({ identifier: "MountFile" });
-    case 4:
-      return S.Array(__S(3, __c0, 3));
-    case 5:
+    case 1:
+      return S.Array(__S(8, __c1, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           deploymentName: S.optional(S.String),
           namespace: S.optional(S.String),
           environmentName: S.optional(S.String),
           objectCreationType: S.optional(S.String),
-          files: S.optional(__S(4, __c0, 4)),
+          files: S.optional(__S(9, __c1, 1)),
           appId: S.optional(S.String),
         }).pipe(
           T.Http({ method: "POST", uri: "/modal.client.ModalClient/MountGetOrCreate", code: 200 }),
         ),
       ).annotate({ identifier: "MountGetOrCreateRequest" });
-    case 6:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           contentChecksumSha256Hex: S.optional(S.String),
         }),
       ).annotate({ identifier: "MountHandleMetadata" });
-    case 7:
+    case 4:
       return S.suspend(() =>
         S.Struct({
           mountId: S.optional(S.String),
-          handleMetadata: S.optional(__S(6, __c0, 6)),
+          handleMetadata: S.optional(__S(11, __c1, 3)),
         }),
       ).annotate({ identifier: "MountGetOrCreateResponse" });
   }
 }
-function __c1(j: number): any {
+function __c2(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -190,7 +194,6 @@ function __c1(j: number): any {
       ).annotate({ identifier: "MountPutFileResponse" });
   }
 }
-
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

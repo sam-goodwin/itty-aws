@@ -454,8 +454,8 @@ export const batchAcknowledgeAlarm: API.OperationMethod<
   BatchAcknowledgeAlarmError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2, __c0, 2) as any as S.Schema<BatchAcknowledgeAlarmRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<BatchAcknowledgeAlarmResponse>,
+  input: __S(112, __c7, 0) as any as S.Schema<BatchAcknowledgeAlarmRequest>,
+  output: __S(146, __c9, 2) as any as S.Schema<BatchAcknowledgeAlarmResponse>,
   errors: [
     InternalFailureException,
     InvalidRequestException,
@@ -482,8 +482,8 @@ export const batchDeleteDetector: API.OperationMethod<
   BatchDeleteDetectorError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(8, __c1, 0) as any as S.Schema<BatchDeleteDetectorRequest>,
-  output: __S(11, __c1, 3) as any as S.Schema<BatchDeleteDetectorResponse>,
+  input: __S(162, __c10, 2) as any as S.Schema<BatchDeleteDetectorRequest>,
+  output: __S(163, __c10, 3) as any as S.Schema<BatchDeleteDetectorResponse>,
   errors: [
     InternalFailureException,
     InvalidRequestException,
@@ -511,8 +511,8 @@ export const batchDisableAlarm: API.OperationMethod<
   BatchDisableAlarmError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(12, __c1, 4) as any as S.Schema<BatchDisableAlarmRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<BatchDisableAlarmResponse>,
+  input: __S(192, __c12, 0) as any as S.Schema<BatchDisableAlarmRequest>,
+  output: __S(146, __c9, 2) as any as S.Schema<BatchDisableAlarmResponse>,
   errors: [
     InternalFailureException,
     InvalidRequestException,
@@ -540,8 +540,8 @@ export const batchEnableAlarm: API.OperationMethod<
   BatchEnableAlarmError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(13, __c1, 5) as any as S.Schema<BatchEnableAlarmRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<BatchEnableAlarmResponse>,
+  input: __S(208, __c13, 0) as any as S.Schema<BatchEnableAlarmRequest>,
+  output: __S(146, __c9, 2) as any as S.Schema<BatchEnableAlarmResponse>,
   errors: [
     InternalFailureException,
     InvalidRequestException,
@@ -572,8 +572,8 @@ export const batchPutMessage: API.OperationMethod<
   BatchPutMessageError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(17, __c2, 1) as any as S.Schema<BatchPutMessageRequest>,
-  output: __S(18, __c2, 2) as any as S.Schema<BatchPutMessageResponse>,
+  input: __S(227, __c14, 3) as any as S.Schema<BatchPutMessageRequest>,
+  output: __S(228, __c14, 4) as any as S.Schema<BatchPutMessageResponse>,
   errors: [
     InternalFailureException,
     InvalidRequestException,
@@ -601,8 +601,8 @@ export const batchResetAlarm: API.OperationMethod<
   BatchResetAlarmError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(19, __c2, 3) as any as S.Schema<BatchResetAlarmRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<BatchResetAlarmResponse>,
+  input: __S(0, __c0, 0) as any as S.Schema<BatchResetAlarmRequest>,
+  output: __S(146, __c9, 2) as any as S.Schema<BatchResetAlarmResponse>,
   errors: [
     InternalFailureException,
     InvalidRequestException,
@@ -630,8 +630,8 @@ export const batchSnoozeAlarm: API.OperationMethod<
   BatchSnoozeAlarmError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(22, __c2, 6) as any as S.Schema<BatchSnoozeAlarmRequest>,
-  output: __S(5, __c0, 5) as any as S.Schema<BatchSnoozeAlarmResponse>,
+  input: __S(18, __c1, 2) as any as S.Schema<BatchSnoozeAlarmRequest>,
+  output: __S(146, __c9, 2) as any as S.Schema<BatchSnoozeAlarmResponse>,
   errors: [
     InternalFailureException,
     InvalidRequestException,
@@ -659,8 +659,8 @@ export const batchUpdateDetector: API.OperationMethod<
   BatchUpdateDetectorError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(30, __c3, 6) as any as S.Schema<BatchUpdateDetectorRequest>,
-  output: __S(31, __c3, 7) as any as S.Schema<BatchUpdateDetectorResponse>,
+  input: __S(39, __c2, 7) as any as S.Schema<BatchUpdateDetectorRequest>,
+  output: __S(40, __c2, 8) as any as S.Schema<BatchUpdateDetectorResponse>,
   errors: [
     InternalFailureException,
     InvalidRequestException,
@@ -688,8 +688,8 @@ export const describeAlarm: API.OperationMethod<
   DescribeAlarmError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(32, __c4, 0) as any as S.Schema<DescribeAlarmRequest>,
-  output: __S(42, __c5, 2) as any as S.Schema<DescribeAlarmResponse>,
+  input: __S(48, __c3, 0) as any as S.Schema<DescribeAlarmRequest>,
+  output: __S(58, __c3, 10) as any as S.Schema<DescribeAlarmResponse>,
   errors: [
     InternalFailureException,
     InvalidRequestException,
@@ -718,8 +718,8 @@ export const describeDetector: API.OperationMethod<
   DescribeDetectorError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(43, __c5, 3) as any as S.Schema<DescribeDetectorRequest>,
-  output: __S(50, __c6, 2) as any as S.Schema<DescribeDetectorResponse>,
+  input: __S(64, __c4, 0) as any as S.Schema<DescribeDetectorRequest>,
+  output: __S(71, __c4, 7) as any as S.Schema<DescribeDetectorResponse>,
   errors: [
     InternalFailureException,
     InvalidRequestException,
@@ -749,8 +749,8 @@ export const listAlarms: API.OperationMethod<
   ListAlarmsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(51, __c6, 3) as any as S.Schema<ListAlarmsRequest>,
-  output: __S(54, __c6, 6) as any as S.Schema<ListAlarmsResponse>,
+  input: __S(80, __c5, 0) as any as S.Schema<ListAlarmsRequest>,
+  output: __S(83, __c5, 3) as any as S.Schema<ListAlarmsResponse>,
   errors: [
     InternalFailureException,
     InvalidRequestException,
@@ -779,8 +779,8 @@ export const listDetectors: API.OperationMethod<
   ListDetectorsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(55, __c6, 7) as any as S.Schema<ListDetectorsRequest>,
-  output: __S(59, __c7, 3) as any as S.Schema<ListDetectorsResponse>,
+  input: __S(96, __c6, 0) as any as S.Schema<ListDetectorsRequest>,
+  output: __S(100, __c6, 4) as any as S.Schema<ListDetectorsResponse>,
   errors: [
     InternalFailureException,
     InvalidRequestException,
@@ -798,152 +798,17 @@ function __c0(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({
-          requestId: S.String,
-          alarmModelName: S.String,
-          keyValue: S.optional(S.String),
-          note: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "AcknowledgeAlarmActionRequest",
-      });
-    case 1:
-      return S.Array(__S(0, __c0, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({ acknowledgeActionRequests: __S(1, __c0, 1) }).pipe(
-          T.all(
-            T.Http({ method: "POST", uri: "/alarms/acknowledge" }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({
-        identifier: "BatchAcknowledgeAlarmRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          requestId: S.optional(S.String),
-          errorCode: S.optional(S.String),
-          errorMessage: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "BatchAlarmActionErrorEntry",
-      });
-    case 4:
-      return S.Array(__S(3, __c0, 3));
-    case 5:
-      return S.suspend(() => S.Struct({ errorEntries: S.optional(__S(4, __c0, 4)) })).annotate({
-        identifier: "BatchAcknowledgeAlarmResponse",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          messageId: S.String,
-          detectorModelName: S.String,
-          keyValue: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "DeleteDetectorRequest",
-      });
-    case 7:
-      return S.Array(__S(6, __c0, 6));
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({ detectors: __S(7, __c0, 7) }).pipe(
-          T.all(T.Http({ method: "POST", uri: "/detectors/delete" }), svc, auth, proto, ver, rules),
-        ),
-      ).annotate({
-        identifier: "BatchDeleteDetectorRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          messageId: S.optional(S.String),
-          errorCode: S.optional(S.String),
-          errorMessage: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "BatchDeleteDetectorErrorEntry",
-      });
-    case 2:
-      return S.Array(__S(9, __c1, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          batchDeleteDetectorErrorEntries: S.optional(__S(10, __c1, 2)),
-        }),
-      ).annotate({
-        identifier: "BatchDeleteDetectorResponse",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({ disableActionRequests: __S(1, __c0, 1) }).pipe(
-          T.all(T.Http({ method: "POST", uri: "/alarms/disable" }), svc, auth, proto, ver, rules),
-        ),
-      ).annotate({
-        identifier: "BatchDisableAlarmRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({ enableActionRequests: __S(1, __c0, 1) }).pipe(
-          T.all(T.Http({ method: "POST", uri: "/alarms/enable" }), svc, auth, proto, ver, rules),
-        ),
-      ).annotate({
-        identifier: "BatchEnableAlarmRequest",
-      });
-    case 6:
-      return S.suspend(() => S.Struct({ timeInMillis: S.optional(S.Number) })).annotate({
-        identifier: "TimestampValue",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          messageId: S.String,
-          inputName: S.String,
-          payload: T.Blob,
-          timestamp: S.optional(__S(14, __c1, 6)),
-        }),
-      ).annotate({ identifier: "Message" });
-  }
-}
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(15, __c1, 7));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({ messages: __S(16, __c2, 0) }).pipe(
-          T.all(T.Http({ method: "POST", uri: "/inputs/messages" }), svc, auth, proto, ver, rules),
-        ),
-      ).annotate({
-        identifier: "BatchPutMessageRequest",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          BatchPutMessageErrorEntries: S.optional(__S(10, __c1, 2)),
-        }),
-      ).annotate({
-        identifier: "BatchPutMessageResponse",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({ resetActionRequests: __S(1, __c0, 1) }).pipe(
+        S.Struct({ resetActionRequests: __S(129, __c8, 1) }).pipe(
           T.all(T.Http({ method: "POST", uri: "/alarms/reset" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({
         identifier: "BatchResetAlarmRequest",
       });
-    case 4:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           requestId: S.String,
@@ -955,74 +820,74 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "SnoozeAlarmActionRequest",
       });
-    case 5:
-      return S.Array(__S(20, __c2, 4));
-    case 6:
+    case 1:
+      return S.Array(__S(16, __c1, 0));
+    case 2:
       return S.suspend(() =>
-        S.Struct({ snoozeActionRequests: __S(21, __c2, 5) }).pipe(
+        S.Struct({ snoozeActionRequests: __S(17, __c1, 1) }).pipe(
           T.all(T.Http({ method: "POST", uri: "/alarms/snooze" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({
         identifier: "BatchSnoozeAlarmRequest",
       });
-    case 7:
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() => S.Struct({ name: S.String, value: S.String })).annotate({
         identifier: "VariableDefinition",
       });
-  }
-}
-function __c3(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(23, __c2, 7));
     case 1:
+      return S.Array(__S(32, __c2, 0));
+    case 2:
       return S.suspend(() => S.Struct({ name: S.String, seconds: S.Number })).annotate({
         identifier: "TimerDefinition",
       });
-    case 2:
-      return S.Array(__S(25, __c3, 1));
     case 3:
+      return S.Array(__S(34, __c2, 2));
+    case 4:
       return S.suspend(() =>
         S.Struct({
           stateName: S.String,
-          variables: __S(24, __c3, 0),
-          timers: __S(26, __c3, 2),
+          variables: __S(33, __c2, 1),
+          timers: __S(35, __c2, 3),
         }),
       ).annotate({
         identifier: "DetectorStateDefinition",
       });
-    case 4:
+    case 5:
       return S.suspend(() =>
         S.Struct({
           messageId: S.String,
           detectorModelName: S.String,
           keyValue: S.optional(S.String),
-          state: __S(27, __c3, 3),
+          state: __S(36, __c2, 4),
         }),
       ).annotate({
         identifier: "UpdateDetectorRequest",
       });
-    case 5:
-      return S.Array(__S(28, __c3, 4));
     case 6:
+      return S.Array(__S(37, __c2, 5));
+    case 7:
       return S.suspend(() =>
-        S.Struct({ detectors: __S(29, __c3, 5) }).pipe(
+        S.Struct({ detectors: __S(38, __c2, 6) }).pipe(
           T.all(T.Http({ method: "POST", uri: "/detectors" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({
         identifier: "BatchUpdateDetectorRequest",
       });
-    case 7:
+    case 8:
       return S.suspend(() =>
         S.Struct({
-          batchUpdateDetectorErrorEntries: S.optional(__S(10, __c1, 2)),
+          batchUpdateDetectorErrorEntries: S.optional(__S(177, __c11, 1)),
         }),
       ).annotate({
         identifier: "BatchUpdateDetectorResponse",
       });
   }
 }
-function __c4(j: number): any {
+function __c3(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1054,7 +919,7 @@ function __c4(j: number): any {
       });
     case 2:
       return S.suspend(() =>
-        S.Struct({ simpleRuleEvaluation: S.optional(__S(33, __c4, 1)) }),
+        S.Struct({ simpleRuleEvaluation: S.optional(__S(49, __c3, 1)) }),
       ).annotate({ identifier: "RuleEvaluation" });
     case 3:
       return S.suspend(() =>
@@ -1073,11 +938,11 @@ function __c4(j: number): any {
       return S.suspend(() =>
         S.Struct({
           actionName: S.optional(S.String),
-          snoozeActionConfiguration: S.optional(__S(35, __c4, 3)),
-          enableActionConfiguration: S.optional(__S(36, __c4, 4)),
-          disableActionConfiguration: S.optional(__S(36, __c4, 4)),
-          acknowledgeActionConfiguration: S.optional(__S(36, __c4, 4)),
-          resetActionConfiguration: S.optional(__S(36, __c4, 4)),
+          snoozeActionConfiguration: S.optional(__S(51, __c3, 3)),
+          enableActionConfiguration: S.optional(__S(52, __c3, 4)),
+          disableActionConfiguration: S.optional(__S(52, __c3, 4)),
+          acknowledgeActionConfiguration: S.optional(__S(52, __c3, 4)),
+          resetActionConfiguration: S.optional(__S(52, __c3, 4)),
         }),
       ).annotate({ identifier: "CustomerAction" });
     case 6:
@@ -1088,39 +953,39 @@ function __c4(j: number): any {
       return S.suspend(() =>
         S.Struct({
           eventType: S.optional(S.String),
-          stateChangeConfiguration: S.optional(__S(38, __c4, 6)),
+          stateChangeConfiguration: S.optional(__S(54, __c3, 6)),
         }),
       ).annotate({ identifier: "SystemEvent" });
-  }
-}
-function __c5(j: number): any {
-  switch (j) {
-    case 0:
+    case 8:
       return S.suspend(() =>
         S.Struct({
           stateName: S.optional(S.String),
-          ruleEvaluation: S.optional(__S(34, __c4, 2)),
-          customerAction: S.optional(__S(37, __c4, 5)),
-          systemEvent: S.optional(__S(39, __c4, 7)),
+          ruleEvaluation: S.optional(__S(50, __c3, 2)),
+          customerAction: S.optional(__S(53, __c3, 5)),
+          systemEvent: S.optional(__S(55, __c3, 7)),
         }),
       ).annotate({ identifier: "AlarmState" });
-    case 1:
+    case 9:
       return S.suspend(() =>
         S.Struct({
           alarmModelName: S.optional(S.String),
           alarmModelVersion: S.optional(S.String),
           keyValue: S.optional(S.String),
-          alarmState: S.optional(__S(40, __c5, 0)),
+          alarmState: S.optional(__S(56, __c3, 8)),
           severity: S.optional(S.Number),
           creationTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           lastUpdateTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
         }),
       ).annotate({ identifier: "Alarm" });
-    case 2:
-      return S.suspend(() => S.Struct({ alarm: S.optional(__S(41, __c5, 1)) })).annotate({
+    case 10:
+      return S.suspend(() => S.Struct({ alarm: S.optional(__S(57, __c3, 9)) })).annotate({
         identifier: "DescribeAlarmResponse",
       });
-    case 3:
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           detectorModelName: S.String.pipe(T.HttpLabel("detectorModelName")),
@@ -1141,45 +1006,45 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "DescribeDetectorRequest",
       });
-    case 4:
+    case 1:
       return S.suspend(() => S.Struct({ name: S.String, value: S.String })).annotate({
         identifier: "Variable",
       });
-    case 5:
-      return S.Array(__S(44, __c5, 4));
-    case 6:
+    case 2:
+      return S.Array(__S(65, __c4, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
           name: S.String,
           timestamp: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
         }),
       ).annotate({ identifier: "Timer" });
-    case 7:
-      return S.Array(__S(46, __c5, 6));
-  }
-}
-function __c6(j: number): any {
-  switch (j) {
-    case 0:
+    case 4:
+      return S.Array(__S(67, __c4, 3));
+    case 5:
       return S.suspend(() =>
-        S.Struct({ stateName: S.String, variables: __S(45, __c5, 5), timers: __S(47, __c5, 7) }),
+        S.Struct({ stateName: S.String, variables: __S(66, __c4, 2), timers: __S(68, __c4, 4) }),
       ).annotate({ identifier: "DetectorState" });
-    case 1:
+    case 6:
       return S.suspend(() =>
         S.Struct({
           detectorModelName: S.optional(S.String),
           keyValue: S.optional(S.String),
           detectorModelVersion: S.optional(S.String),
-          state: S.optional(__S(48, __c6, 0)),
+          state: S.optional(__S(69, __c4, 5)),
           creationTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           lastUpdateTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
         }),
       ).annotate({ identifier: "Detector" });
-    case 2:
-      return S.suspend(() => S.Struct({ detector: S.optional(__S(49, __c6, 1)) })).annotate({
+    case 7:
+      return S.suspend(() => S.Struct({ detector: S.optional(__S(70, __c4, 6)) })).annotate({
         identifier: "DescribeDetectorResponse",
       });
-    case 3:
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           alarmModelName: S.String.pipe(T.HttpLabel("alarmModelName")),
@@ -1198,7 +1063,7 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "ListAlarmsRequest",
       });
-    case 4:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           alarmModelName: S.optional(S.String),
@@ -1209,18 +1074,22 @@ function __c6(j: number): any {
           lastUpdateTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
         }),
       ).annotate({ identifier: "AlarmSummary" });
-    case 5:
-      return S.Array(__S(52, __c6, 4));
-    case 6:
+    case 2:
+      return S.Array(__S(81, __c5, 1));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          alarmSummaries: S.optional(__S(53, __c6, 5)),
+          alarmSummaries: S.optional(__S(82, __c5, 2)),
           nextToken: S.optional(S.String),
         }),
       ).annotate({
         identifier: "ListAlarmsResponse",
       });
-    case 7:
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           detectorModelName: S.String.pipe(T.HttpLabel("detectorModelName")),
@@ -1240,33 +1109,29 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "ListDetectorsRequest",
       });
-  }
-}
-function __c7(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() => S.Struct({ stateName: S.optional(S.String) })).annotate({
         identifier: "DetectorStateSummary",
       });
-    case 1:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           detectorModelName: S.optional(S.String),
           keyValue: S.optional(S.String),
           detectorModelVersion: S.optional(S.String),
-          state: S.optional(__S(56, __c7, 0)),
+          state: S.optional(__S(97, __c6, 1)),
           creationTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           lastUpdateTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
         }),
       ).annotate({
         identifier: "DetectorSummary",
       });
-    case 2:
-      return S.Array(__S(57, __c7, 1));
     case 3:
+      return S.Array(__S(98, __c6, 2));
+    case 4:
       return S.suspend(() =>
         S.Struct({
-          detectorSummaries: S.optional(__S(58, __c7, 2)),
+          detectorSummaries: S.optional(__S(99, __c6, 3)),
           nextToken: S.optional(S.String),
         }),
       ).annotate({
@@ -1274,7 +1139,169 @@ function __c7(j: number): any {
       });
   }
 }
-
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ acknowledgeActionRequests: __S(129, __c8, 1) }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/alarms/acknowledge" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({
+        identifier: "BatchAcknowledgeAlarmRequest",
+      });
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          requestId: S.String,
+          alarmModelName: S.String,
+          keyValue: S.optional(S.String),
+          note: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "AcknowledgeAlarmActionRequest",
+      });
+    case 1:
+      return S.Array(__S(128, __c8, 0));
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          requestId: S.optional(S.String),
+          errorCode: S.optional(S.String),
+          errorMessage: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "BatchAlarmActionErrorEntry",
+      });
+    case 1:
+      return S.Array(__S(144, __c9, 0));
+    case 2:
+      return S.suspend(() => S.Struct({ errorEntries: S.optional(__S(145, __c9, 1)) })).annotate({
+        identifier: "BatchAcknowledgeAlarmResponse",
+      });
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          messageId: S.String,
+          detectorModelName: S.String,
+          keyValue: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "DeleteDetectorRequest",
+      });
+    case 1:
+      return S.Array(__S(160, __c10, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({ detectors: __S(161, __c10, 1) }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/detectors/delete" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({
+        identifier: "BatchDeleteDetectorRequest",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          batchDeleteDetectorErrorEntries: S.optional(__S(177, __c11, 1)),
+        }),
+      ).annotate({
+        identifier: "BatchDeleteDetectorResponse",
+      });
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          messageId: S.optional(S.String),
+          errorCode: S.optional(S.String),
+          errorMessage: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "BatchDeleteDetectorErrorEntry",
+      });
+    case 1:
+      return S.Array(__S(176, __c11, 0));
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ disableActionRequests: __S(129, __c8, 1) }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/alarms/disable" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({
+        identifier: "BatchDisableAlarmRequest",
+      });
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ enableActionRequests: __S(129, __c8, 1) }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/alarms/enable" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({
+        identifier: "BatchEnableAlarmRequest",
+      });
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({ timeInMillis: S.optional(S.Number) })).annotate({
+        identifier: "TimestampValue",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          messageId: S.String,
+          inputName: S.String,
+          payload: T.Blob,
+          timestamp: S.optional(__S(224, __c14, 0)),
+        }),
+      ).annotate({ identifier: "Message" });
+    case 2:
+      return S.Array(__S(225, __c14, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({ messages: __S(226, __c14, 2) }).pipe(
+          T.all(T.Http({ method: "POST", uri: "/inputs/messages" }), svc, auth, proto, ver, rules),
+        ),
+      ).annotate({
+        identifier: "BatchPutMessageRequest",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          BatchPutMessageErrorEntries: S.optional(__S(177, __c11, 1)),
+        }),
+      ).annotate({
+        identifier: "BatchPutMessageResponse",
+      });
+  }
+}
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

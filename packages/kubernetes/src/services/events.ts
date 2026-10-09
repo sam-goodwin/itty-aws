@@ -690,8 +690,8 @@ export const createEventsV1NamespacedEvent: API.OperationMethod<
   CreateEventsV1NamespacedEventError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(10, __c1, 2) as any as S.Schema<CreateEventsV1NamespacedEventRequest>,
-  output: __S(11, __c1, 3) as any as S.Schema<IoK8sApiEventsV1Event>,
+  input: __S(112, __c7, 0) as any as S.Schema<CreateEventsV1NamespacedEventRequest>,
+  output: __S(153, __c9, 9) as any as S.Schema<IoK8sApiEventsV1Event>,
   errors: [Conflict, UnprocessableEntity, UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -705,8 +705,8 @@ export const deleteEventsV1CollectionNamespacedEvent: API.OperationMethod<
   DeleteEventsV1CollectionNamespacedEventError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(13, __c1, 5) as any as S.Schema<DeleteEventsV1CollectionNamespacedEventRequest>,
-  output: __S(19, __c2, 3) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1Status>,
+  input: __S(160, __c10, 0) as any as S.Schema<DeleteEventsV1CollectionNamespacedEventRequest>,
+  output: __S(180, __c11, 4) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1Status>,
   errors: [UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -720,8 +720,8 @@ export const deleteEventsV1NamespacedEvent: API.OperationMethod<
   DeleteEventsV1NamespacedEventError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(20, __c2, 4) as any as S.Schema<DeleteEventsV1NamespacedEventRequest>,
-  output: __S(19, __c2, 3) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1Status>,
+  input: __S(208, __c13, 0) as any as S.Schema<DeleteEventsV1NamespacedEventRequest>,
+  output: __S(180, __c11, 4) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1Status>,
   errors: [NotFound, Conflict, UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -735,8 +735,8 @@ export const getEventsAPIGroup: API.OperationMethod<
   GetEventsAPIGroupError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(21, __c2, 5) as any as S.Schema<GetEventsAPIGroupRequest>,
-  output: __S(26, __c3, 2) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1APIGroup>,
+  input: __S(224, __c14, 0) as any as S.Schema<GetEventsAPIGroupRequest>,
+  output: __S(229, __c14, 5) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1APIGroup>,
   errors: [UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -750,8 +750,8 @@ export const getEventsV1APIResources: API.OperationMethod<
   GetEventsV1APIResourcesError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(27, __c3, 3) as any as S.Schema<GetEventsV1APIResourcesRequest>,
-  output: __S(30, __c3, 6) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1APIResourceList>,
+  input: __S(240, __c15, 0) as any as S.Schema<GetEventsV1APIResourcesRequest>,
+  output: __S(243, __c15, 3) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1APIResourceList>,
   errors: [UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -765,8 +765,8 @@ export const listEventsV1EventForAllNamespaces: API.OperationMethod<
   ListEventsV1EventForAllNamespacesError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(31, __c3, 7) as any as S.Schema<ListEventsV1EventForAllNamespacesRequest>,
-  output: __S(33, __c4, 1) as any as S.Schema<IoK8sApiEventsV1EventList>,
+  input: __S(256, __c16, 0) as any as S.Schema<ListEventsV1EventForAllNamespacesRequest>,
+  output: __S(273, __c17, 1) as any as S.Schema<IoK8sApiEventsV1EventList>,
   errors: [UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -780,8 +780,8 @@ export const listEventsV1NamespacedEvent: API.OperationMethod<
   ListEventsV1NamespacedEventError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(34, __c4, 2) as any as S.Schema<ListEventsV1NamespacedEventRequest>,
-  output: __S(33, __c4, 1) as any as S.Schema<IoK8sApiEventsV1EventList>,
+  input: __S(288, __c18, 0) as any as S.Schema<ListEventsV1NamespacedEventRequest>,
+  output: __S(273, __c17, 1) as any as S.Schema<IoK8sApiEventsV1EventList>,
   errors: [UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -799,8 +799,8 @@ export const patchEventsV1NamespacedEvent: API.OperationMethod<
   PatchEventsV1NamespacedEventError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(35, __c4, 3) as any as S.Schema<PatchEventsV1NamespacedEventRequest>,
-  output: __S(11, __c1, 3) as any as S.Schema<IoK8sApiEventsV1Event>,
+  input: __S(0, __c0, 0) as any as S.Schema<PatchEventsV1NamespacedEventRequest>,
+  output: __S(153, __c9, 9) as any as S.Schema<IoK8sApiEventsV1Event>,
   errors: [NotFound, Conflict, UnprocessableEntity, UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -814,8 +814,8 @@ export const readEventsV1NamespacedEvent: API.OperationMethod<
   ReadEventsV1NamespacedEventError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(36, __c4, 4) as any as S.Schema<ReadEventsV1NamespacedEventRequest>,
-  output: __S(11, __c1, 3) as any as S.Schema<IoK8sApiEventsV1Event>,
+  input: __S(16, __c1, 0) as any as S.Schema<ReadEventsV1NamespacedEventRequest>,
+  output: __S(153, __c9, 9) as any as S.Schema<IoK8sApiEventsV1Event>,
   errors: [NotFound, UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -833,8 +833,8 @@ export const replaceEventsV1NamespacedEvent: API.OperationMethod<
   ReplaceEventsV1NamespacedEventError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(37, __c4, 5) as any as S.Schema<ReplaceEventsV1NamespacedEventRequest>,
-  output: __S(11, __c1, 3) as any as S.Schema<IoK8sApiEventsV1Event>,
+  input: __S(32, __c2, 0) as any as S.Schema<ReplaceEventsV1NamespacedEventRequest>,
+  output: __S(153, __c9, 9) as any as S.Schema<IoK8sApiEventsV1Event>,
   errors: [NotFound, Conflict, UnprocessableEntity, UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -848,8 +848,8 @@ export const watchEventsV1EventListForAllNamespaces: API.OperationMethod<
   WatchEventsV1EventListForAllNamespacesError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(38, __c4, 6) as any as S.Schema<WatchEventsV1EventListForAllNamespacesRequest>,
-  output: __S(39, __c4, 7) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1WatchEvent>,
+  input: __S(48, __c3, 0) as any as S.Schema<WatchEventsV1EventListForAllNamespacesRequest>,
+  output: __S(64, __c4, 0) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1WatchEvent>,
   errors: [UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -863,8 +863,8 @@ export const watchEventsV1NamespacedEvent: API.OperationMethod<
   WatchEventsV1NamespacedEventError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(40, __c5, 0) as any as S.Schema<WatchEventsV1NamespacedEventRequest>,
-  output: __S(39, __c4, 7) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1WatchEvent>,
+  input: __S(80, __c5, 0) as any as S.Schema<WatchEventsV1NamespacedEventRequest>,
+  output: __S(64, __c4, 0) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1WatchEvent>,
   errors: [UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -878,8 +878,8 @@ export const watchEventsV1NamespacedEventList: API.OperationMethod<
   WatchEventsV1NamespacedEventListError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(41, __c5, 1) as any as S.Schema<WatchEventsV1NamespacedEventListRequest>,
-  output: __S(39, __c4, 7) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1WatchEvent>,
+  input: __S(96, __c6, 0) as any as S.Schema<WatchEventsV1NamespacedEventListRequest>,
+  output: __S(64, __c4, 0) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1WatchEvent>,
   errors: [UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -889,426 +889,6 @@ export const watchEventsV1NamespacedEventList: API.OperationMethod<
 function __c0(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() =>
-        S.Struct({
-          component: S.optional(S.String),
-          host: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "IoK8sApiCoreV1EventSource",
-      });
-    case 1:
-      return S.Record(S.String, S.String);
-    case 2:
-      return S.Array(S.String);
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          apiVersion: S.optional(S.String),
-          fieldsType: S.optional(S.String),
-          fieldsV1: S.optional(S.Unknown),
-          manager: S.optional(S.String),
-          operation: S.optional(S.String),
-          subresource: S.optional(S.String),
-          time: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "IoK8sApimachineryPkgApisMetaV1ManagedFieldsEntry",
-      });
-    case 4:
-      return S.Array(__S(3, __c0, 3));
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          apiVersion: S.String,
-          blockOwnerDeletion: S.optional(S.Boolean),
-          controller: S.optional(S.Boolean),
-          kind: S.String,
-          name: S.String,
-          uid: S.String,
-        }),
-      ).annotate({
-        identifier: "IoK8sApimachineryPkgApisMetaV1OwnerReference",
-      });
-    case 6:
-      return S.Array(__S(5, __c0, 5));
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          annotations: S.optional(__S(1, __c0, 1)),
-          creationTimestamp: S.optional(S.String),
-          deletionGracePeriodSeconds: S.optional(S.Number),
-          deletionTimestamp: S.optional(S.String),
-          finalizers: S.optional(__S(2, __c0, 2)),
-          generateName: S.optional(S.String),
-          generation: S.optional(S.Number),
-          labels: S.optional(__S(1, __c0, 1)),
-          managedFields: S.optional(__S(4, __c0, 4)),
-          name: S.optional(S.String),
-          namespace: S.optional(S.String),
-          ownerReferences: S.optional(__S(6, __c0, 6)),
-          resourceVersion: S.optional(S.String),
-          selfLink: S.optional(S.String),
-          uid: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "IoK8sApimachineryPkgApisMetaV1ObjectMeta",
-      });
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          apiVersion: S.optional(S.String),
-          fieldPath: S.optional(S.String),
-          kind: S.optional(S.String),
-          name: S.optional(S.String),
-          namespace: S.optional(S.String),
-          resourceVersion: S.optional(S.String),
-          uid: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "IoK8sApiCoreV1ObjectReference",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          count: S.Number,
-          lastObservedTime: S.String,
-        }),
-      ).annotate({
-        identifier: "IoK8sApiEventsV1EventSeries",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          namespace: S.String.pipe(T.Label()),
-          pretty: S.optional(S.String.pipe(T.Query())),
-          dryRun: S.optional(S.String.pipe(T.Query())),
-          fieldManager: S.optional(S.String.pipe(T.Query())),
-          fieldValidation: S.optional(S.String.pipe(T.Query())),
-          action: S.String,
-          apiVersion: S.optional(S.String),
-          deprecatedCount: S.optional(S.Number),
-          deprecatedFirstTimestamp: S.optional(S.String),
-          deprecatedLastTimestamp: S.optional(S.String),
-          deprecatedSource: S.optional(__S(0, __c0, 0)),
-          eventTime: S.String,
-          kind: S.optional(S.String),
-          metadata: S.optional(__S(7, __c0, 7)),
-          note: S.optional(S.String),
-          reason: S.String,
-          regarding: S.optional(__S(8, __c1, 0)),
-          related: S.optional(__S(8, __c1, 0)),
-          reportingController: S.String,
-          reportingInstance: S.String,
-          series: S.optional(__S(9, __c1, 1)),
-          type: S.String,
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "/apis/events.k8s.io/v1/namespaces/{namespace}/events",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateEventsV1NamespacedEventRequest",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          action: S.String,
-          apiVersion: S.optional(S.String),
-          deprecatedCount: S.optional(S.Number),
-          deprecatedFirstTimestamp: S.optional(S.String),
-          deprecatedLastTimestamp: S.optional(S.String),
-          deprecatedSource: S.optional(__S(0, __c0, 0)),
-          eventTime: S.String,
-          kind: S.optional(S.String),
-          metadata: S.optional(__S(7, __c0, 7)),
-          note: S.optional(S.String),
-          reason: S.String,
-          regarding: S.optional(__S(8, __c1, 0)),
-          related: S.optional(__S(8, __c1, 0)),
-          reportingController: S.String,
-          reportingInstance: S.String,
-          series: S.optional(__S(9, __c1, 1)),
-          type: S.String,
-        }),
-      ).annotate({ identifier: "IoK8sApiEventsV1Event" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          resourceVersion: S.optional(S.String),
-          uid: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "IoK8sApimachineryPkgApisMetaV1Preconditions",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          namespace: S.String.pipe(T.Label()),
-          pretty: S.optional(S.String.pipe(T.Query())),
-          continue: S.optional(S.String.pipe(T.Query())),
-          dryRun: S.optional(S.String.pipe(T.Query())),
-          fieldSelector: S.optional(S.String.pipe(T.Query())),
-          gracePeriodSeconds: S.optional(S.Number.pipe(T.Query())),
-          ignoreStoreReadErrorWithClusterBreakingPotential: S.optional(S.Boolean.pipe(T.Query())),
-          labelSelector: S.optional(S.String.pipe(T.Query())),
-          limit: S.optional(S.Number.pipe(T.Query())),
-          orphanDependents: S.optional(S.Boolean.pipe(T.Query())),
-          propagationPolicy: S.optional(S.String.pipe(T.Query())),
-          resourceVersion: S.optional(S.String.pipe(T.Query())),
-          resourceVersionMatch: S.optional(S.String.pipe(T.Query())),
-          sendInitialEvents: S.optional(S.Boolean.pipe(T.Query())),
-          shardSelector: S.optional(S.String.pipe(T.Query())),
-          timeoutSeconds: S.optional(S.Number.pipe(T.Query())),
-          apiVersion: S.optional(S.String),
-          kind: S.optional(S.String),
-          preconditions: S.optional(__S(12, __c1, 4)),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/apis/events.k8s.io/v1/namespaces/{namespace}/events",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteEventsV1CollectionNamespacedEventRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          field: S.optional(S.String),
-          message: S.optional(S.String),
-          reason: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "IoK8sApimachineryPkgApisMetaV1StatusCause",
-      });
-    case 7:
-      return S.Array(__S(14, __c1, 6));
-  }
-}
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          causes: S.optional(__S(15, __c1, 7)),
-          group: S.optional(S.String),
-          kind: S.optional(S.String),
-          name: S.optional(S.String),
-          retryAfterSeconds: S.optional(S.Number),
-          uid: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "IoK8sApimachineryPkgApisMetaV1StatusDetails",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          selector: S.String,
-        }),
-      ).annotate({
-        identifier: "IoK8sApimachineryPkgApisMetaV1ShardInfo",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          continue: S.optional(S.String),
-          remainingItemCount: S.optional(S.Number),
-          resourceVersion: S.optional(S.String),
-          selfLink: S.optional(S.String),
-          shardInfo: S.optional(__S(17, __c2, 1)),
-        }),
-      ).annotate({
-        identifier: "IoK8sApimachineryPkgApisMetaV1ListMeta",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          apiVersion: S.optional(S.String),
-          code: S.optional(S.Number),
-          details: S.optional(__S(16, __c2, 0)),
-          kind: S.optional(S.String),
-          message: S.optional(S.String),
-          metadata: S.optional(__S(18, __c2, 2)),
-          reason: S.optional(S.String),
-          status: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "IoK8sApimachineryPkgApisMetaV1Status",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          namespace: S.String.pipe(T.Label()),
-          name: S.String.pipe(T.Label()),
-          pretty: S.optional(S.String.pipe(T.Query())),
-          dryRun: S.optional(S.String.pipe(T.Query())),
-          gracePeriodSeconds: S.optional(S.Number.pipe(T.Query())),
-          ignoreStoreReadErrorWithClusterBreakingPotential: S.optional(S.Boolean.pipe(T.Query())),
-          orphanDependents: S.optional(S.Boolean.pipe(T.Query())),
-          propagationPolicy: S.optional(S.String.pipe(T.Query())),
-          apiVersion: S.optional(S.String),
-          kind: S.optional(S.String),
-          preconditions: S.optional(__S(12, __c1, 4)),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "/apis/events.k8s.io/v1/namespaces/{namespace}/events/{name}",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteEventsV1NamespacedEventRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({}).pipe(T.Http({ method: "GET", uri: "/apis/events.k8s.io/", code: 200 })),
-      ).annotate({ identifier: "GetEventsAPIGroupRequest" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          groupVersion: S.String,
-          version: S.String,
-        }),
-      ).annotate({
-        identifier: "IoK8sApimachineryPkgApisMetaV1GroupVersionForDiscovery",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          clientCIDR: S.String,
-          serverAddress: S.String,
-        }),
-      ).annotate({
-        identifier: "IoK8sApimachineryPkgApisMetaV1ServerAddressByClientCIDR",
-      });
-  }
-}
-function __c3(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(23, __c2, 7));
-    case 1:
-      return S.Array(__S(22, __c2, 6));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          apiVersion: S.optional(S.String),
-          kind: S.optional(S.String),
-          name: S.String,
-          preferredVersion: S.optional(__S(22, __c2, 6)),
-          serverAddressByClientCIDRs: S.optional(__S(24, __c3, 0)),
-          versions: __S(25, __c3, 1),
-        }),
-      ).annotate({
-        identifier: "IoK8sApimachineryPkgApisMetaV1APIGroup",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({}).pipe(T.Http({ method: "GET", uri: "/apis/events.k8s.io/v1/", code: 200 })),
-      ).annotate({
-        identifier: "GetEventsV1APIResourcesRequest",
-      });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          categories: S.optional(__S(2, __c0, 2)),
-          group: S.optional(S.String),
-          kind: S.String,
-          name: S.String,
-          namespaced: S.Boolean,
-          shortNames: S.optional(__S(2, __c0, 2)),
-          singularName: S.String,
-          storageVersionHash: S.optional(S.String),
-          verbs: __S(2, __c0, 2),
-          version: S.optional(S.String),
-        }),
-      ).annotate({
-        identifier: "IoK8sApimachineryPkgApisMetaV1APIResource",
-      });
-    case 5:
-      return S.Array(__S(28, __c3, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          apiVersion: S.optional(S.String),
-          groupVersion: S.String,
-          kind: S.optional(S.String),
-          resources: __S(29, __c3, 5),
-        }),
-      ).annotate({
-        identifier: "IoK8sApimachineryPkgApisMetaV1APIResourceList",
-      });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          allowWatchBookmarks: S.optional(S.Boolean.pipe(T.Query())),
-          continue: S.optional(S.String.pipe(T.Query())),
-          fieldSelector: S.optional(S.String.pipe(T.Query())),
-          labelSelector: S.optional(S.String.pipe(T.Query())),
-          limit: S.optional(S.Number.pipe(T.Query())),
-          pretty: S.optional(S.String.pipe(T.Query())),
-          resourceVersion: S.optional(S.String.pipe(T.Query())),
-          resourceVersionMatch: S.optional(S.String.pipe(T.Query())),
-          sendInitialEvents: S.optional(S.Boolean.pipe(T.Query())),
-          shardSelector: S.optional(S.String.pipe(T.Query())),
-          timeoutSeconds: S.optional(S.Number.pipe(T.Query())),
-          watch: S.optional(S.Boolean.pipe(T.Query())),
-        }).pipe(T.Http({ method: "GET", uri: "/apis/events.k8s.io/v1/events", code: 200 })),
-      ).annotate({
-        identifier: "ListEventsV1EventForAllNamespacesRequest",
-      });
-  }
-}
-function __c4(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(11, __c1, 3));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          apiVersion: S.optional(S.String),
-          items: __S(32, __c4, 0),
-          kind: S.optional(S.String),
-          metadata: S.optional(__S(18, __c2, 2)),
-        }),
-      ).annotate({
-        identifier: "IoK8sApiEventsV1EventList",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          namespace: S.String.pipe(T.Label()),
-          pretty: S.optional(S.String.pipe(T.Query())),
-          allowWatchBookmarks: S.optional(S.Boolean.pipe(T.Query())),
-          continue: S.optional(S.String.pipe(T.Query())),
-          fieldSelector: S.optional(S.String.pipe(T.Query())),
-          labelSelector: S.optional(S.String.pipe(T.Query())),
-          limit: S.optional(S.Number.pipe(T.Query())),
-          resourceVersion: S.optional(S.String.pipe(T.Query())),
-          resourceVersionMatch: S.optional(S.String.pipe(T.Query())),
-          sendInitialEvents: S.optional(S.Boolean.pipe(T.Query())),
-          shardSelector: S.optional(S.String.pipe(T.Query())),
-          timeoutSeconds: S.optional(S.Number.pipe(T.Query())),
-          watch: S.optional(S.Boolean.pipe(T.Query())),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "/apis/events.k8s.io/v1/namespaces/{namespace}/events",
-            code: 200,
-          }),
-        ),
-      ).annotate({
-        identifier: "ListEventsV1NamespacedEventRequest",
-      });
-    case 3:
       return S.suspend(() =>
         S.Struct({
           namespace: S.String.pipe(T.Label()),
@@ -1328,7 +908,11 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "PatchEventsV1NamespacedEventRequest",
       });
-    case 4:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           namespace: S.String.pipe(T.Label()),
@@ -1344,7 +928,11 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "ReadEventsV1NamespacedEventRequest",
       });
-    case 5:
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           namespace: S.String.pipe(T.Label()),
@@ -1358,17 +946,17 @@ function __c4(j: number): any {
           deprecatedCount: S.optional(S.Number),
           deprecatedFirstTimestamp: S.optional(S.String),
           deprecatedLastTimestamp: S.optional(S.String),
-          deprecatedSource: S.optional(__S(0, __c0, 0)),
+          deprecatedSource: S.optional(__S(144, __c9, 0)),
           eventTime: S.String,
           kind: S.optional(S.String),
-          metadata: S.optional(__S(7, __c0, 7)),
+          metadata: S.optional(__S(150, __c9, 6)),
           note: S.optional(S.String),
           reason: S.String,
-          regarding: S.optional(__S(8, __c1, 0)),
-          related: S.optional(__S(8, __c1, 0)),
+          regarding: S.optional(__S(151, __c9, 7)),
+          related: S.optional(__S(151, __c9, 7)),
           reportingController: S.String,
           reportingInstance: S.String,
-          series: S.optional(__S(9, __c1, 1)),
+          series: S.optional(__S(152, __c9, 8)),
           type: S.String,
         }).pipe(
           T.Http({
@@ -1380,7 +968,11 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "ReplaceEventsV1NamespacedEventRequest",
       });
-    case 6:
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           allowWatchBookmarks: S.optional(S.Boolean.pipe(T.Query())),
@@ -1399,7 +991,11 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "WatchEventsV1EventListForAllNamespacesRequest",
       });
-    case 7:
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           object: S.Unknown,
@@ -1439,7 +1035,11 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "WatchEventsV1NamespacedEventRequest",
       });
-    case 1:
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           namespace: S.String.pipe(T.Label()),
@@ -1467,7 +1067,458 @@ function __c5(j: number): any {
       });
   }
 }
-
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          namespace: S.String.pipe(T.Label()),
+          pretty: S.optional(S.String.pipe(T.Query())),
+          dryRun: S.optional(S.String.pipe(T.Query())),
+          fieldManager: S.optional(S.String.pipe(T.Query())),
+          fieldValidation: S.optional(S.String.pipe(T.Query())),
+          action: S.String,
+          apiVersion: S.optional(S.String),
+          deprecatedCount: S.optional(S.Number),
+          deprecatedFirstTimestamp: S.optional(S.String),
+          deprecatedLastTimestamp: S.optional(S.String),
+          deprecatedSource: S.optional(__S(144, __c9, 0)),
+          eventTime: S.String,
+          kind: S.optional(S.String),
+          metadata: S.optional(__S(150, __c9, 6)),
+          note: S.optional(S.String),
+          reason: S.String,
+          regarding: S.optional(__S(151, __c9, 7)),
+          related: S.optional(__S(151, __c9, 7)),
+          reportingController: S.String,
+          reportingInstance: S.String,
+          series: S.optional(__S(152, __c9, 8)),
+          type: S.String,
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/apis/events.k8s.io/v1/namespaces/{namespace}/events",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateEventsV1NamespacedEventRequest",
+      });
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          component: S.optional(S.String),
+          host: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "IoK8sApiCoreV1EventSource",
+      });
+    case 1:
+      return S.Record(S.String, S.String);
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          apiVersion: S.optional(S.String),
+          fieldsType: S.optional(S.String),
+          fieldsV1: S.optional(S.Unknown),
+          manager: S.optional(S.String),
+          operation: S.optional(S.String),
+          subresource: S.optional(S.String),
+          time: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "IoK8sApimachineryPkgApisMetaV1ManagedFieldsEntry",
+      });
+    case 3:
+      return S.Array(__S(146, __c9, 2));
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          apiVersion: S.String,
+          blockOwnerDeletion: S.optional(S.Boolean),
+          controller: S.optional(S.Boolean),
+          kind: S.String,
+          name: S.String,
+          uid: S.String,
+        }),
+      ).annotate({
+        identifier: "IoK8sApimachineryPkgApisMetaV1OwnerReference",
+      });
+    case 5:
+      return S.Array(__S(148, __c9, 4));
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          annotations: S.optional(__S(145, __c9, 1)),
+          creationTimestamp: S.optional(S.String),
+          deletionGracePeriodSeconds: S.optional(S.Number),
+          deletionTimestamp: S.optional(S.String),
+          finalizers: S.optional(__S(128, __c8, 0)),
+          generateName: S.optional(S.String),
+          generation: S.optional(S.Number),
+          labels: S.optional(__S(145, __c9, 1)),
+          managedFields: S.optional(__S(147, __c9, 3)),
+          name: S.optional(S.String),
+          namespace: S.optional(S.String),
+          ownerReferences: S.optional(__S(149, __c9, 5)),
+          resourceVersion: S.optional(S.String),
+          selfLink: S.optional(S.String),
+          uid: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "IoK8sApimachineryPkgApisMetaV1ObjectMeta",
+      });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          apiVersion: S.optional(S.String),
+          fieldPath: S.optional(S.String),
+          kind: S.optional(S.String),
+          name: S.optional(S.String),
+          namespace: S.optional(S.String),
+          resourceVersion: S.optional(S.String),
+          uid: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "IoK8sApiCoreV1ObjectReference",
+      });
+    case 8:
+      return S.suspend(() =>
+        S.Struct({
+          count: S.Number,
+          lastObservedTime: S.String,
+        }),
+      ).annotate({
+        identifier: "IoK8sApiEventsV1EventSeries",
+      });
+    case 9:
+      return S.suspend(() =>
+        S.Struct({
+          action: S.String,
+          apiVersion: S.optional(S.String),
+          deprecatedCount: S.optional(S.Number),
+          deprecatedFirstTimestamp: S.optional(S.String),
+          deprecatedLastTimestamp: S.optional(S.String),
+          deprecatedSource: S.optional(__S(144, __c9, 0)),
+          eventTime: S.String,
+          kind: S.optional(S.String),
+          metadata: S.optional(__S(150, __c9, 6)),
+          note: S.optional(S.String),
+          reason: S.String,
+          regarding: S.optional(__S(151, __c9, 7)),
+          related: S.optional(__S(151, __c9, 7)),
+          reportingController: S.String,
+          reportingInstance: S.String,
+          series: S.optional(__S(152, __c9, 8)),
+          type: S.String,
+        }),
+      ).annotate({ identifier: "IoK8sApiEventsV1Event" });
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          namespace: S.String.pipe(T.Label()),
+          pretty: S.optional(S.String.pipe(T.Query())),
+          continue: S.optional(S.String.pipe(T.Query())),
+          dryRun: S.optional(S.String.pipe(T.Query())),
+          fieldSelector: S.optional(S.String.pipe(T.Query())),
+          gracePeriodSeconds: S.optional(S.Number.pipe(T.Query())),
+          ignoreStoreReadErrorWithClusterBreakingPotential: S.optional(S.Boolean.pipe(T.Query())),
+          labelSelector: S.optional(S.String.pipe(T.Query())),
+          limit: S.optional(S.Number.pipe(T.Query())),
+          orphanDependents: S.optional(S.Boolean.pipe(T.Query())),
+          propagationPolicy: S.optional(S.String.pipe(T.Query())),
+          resourceVersion: S.optional(S.String.pipe(T.Query())),
+          resourceVersionMatch: S.optional(S.String.pipe(T.Query())),
+          sendInitialEvents: S.optional(S.Boolean.pipe(T.Query())),
+          shardSelector: S.optional(S.String.pipe(T.Query())),
+          timeoutSeconds: S.optional(S.Number.pipe(T.Query())),
+          apiVersion: S.optional(S.String),
+          kind: S.optional(S.String),
+          preconditions: S.optional(__S(176, __c11, 0)),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/apis/events.k8s.io/v1/namespaces/{namespace}/events",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteEventsV1CollectionNamespacedEventRequest",
+      });
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          resourceVersion: S.optional(S.String),
+          uid: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "IoK8sApimachineryPkgApisMetaV1Preconditions",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          field: S.optional(S.String),
+          message: S.optional(S.String),
+          reason: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "IoK8sApimachineryPkgApisMetaV1StatusCause",
+      });
+    case 2:
+      return S.Array(__S(177, __c11, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          causes: S.optional(__S(178, __c11, 2)),
+          group: S.optional(S.String),
+          kind: S.optional(S.String),
+          name: S.optional(S.String),
+          retryAfterSeconds: S.optional(S.Number),
+          uid: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "IoK8sApimachineryPkgApisMetaV1StatusDetails",
+      });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          apiVersion: S.optional(S.String),
+          code: S.optional(S.Number),
+          details: S.optional(__S(179, __c11, 3)),
+          kind: S.optional(S.String),
+          message: S.optional(S.String),
+          metadata: S.optional(__S(193, __c12, 1)),
+          reason: S.optional(S.String),
+          status: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "IoK8sApimachineryPkgApisMetaV1Status",
+      });
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          selector: S.String,
+        }),
+      ).annotate({
+        identifier: "IoK8sApimachineryPkgApisMetaV1ShardInfo",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          continue: S.optional(S.String),
+          remainingItemCount: S.optional(S.Number),
+          resourceVersion: S.optional(S.String),
+          selfLink: S.optional(S.String),
+          shardInfo: S.optional(__S(192, __c12, 0)),
+        }),
+      ).annotate({
+        identifier: "IoK8sApimachineryPkgApisMetaV1ListMeta",
+      });
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          namespace: S.String.pipe(T.Label()),
+          name: S.String.pipe(T.Label()),
+          pretty: S.optional(S.String.pipe(T.Query())),
+          dryRun: S.optional(S.String.pipe(T.Query())),
+          gracePeriodSeconds: S.optional(S.Number.pipe(T.Query())),
+          ignoreStoreReadErrorWithClusterBreakingPotential: S.optional(S.Boolean.pipe(T.Query())),
+          orphanDependents: S.optional(S.Boolean.pipe(T.Query())),
+          propagationPolicy: S.optional(S.String.pipe(T.Query())),
+          apiVersion: S.optional(S.String),
+          kind: S.optional(S.String),
+          preconditions: S.optional(__S(176, __c11, 0)),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/apis/events.k8s.io/v1/namespaces/{namespace}/events/{name}",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteEventsV1NamespacedEventRequest",
+      });
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({}).pipe(T.Http({ method: "GET", uri: "/apis/events.k8s.io/", code: 200 })),
+      ).annotate({ identifier: "GetEventsAPIGroupRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          groupVersion: S.String,
+          version: S.String,
+        }),
+      ).annotate({
+        identifier: "IoK8sApimachineryPkgApisMetaV1GroupVersionForDiscovery",
+      });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          clientCIDR: S.String,
+          serverAddress: S.String,
+        }),
+      ).annotate({
+        identifier: "IoK8sApimachineryPkgApisMetaV1ServerAddressByClientCIDR",
+      });
+    case 3:
+      return S.Array(__S(226, __c14, 2));
+    case 4:
+      return S.Array(__S(225, __c14, 1));
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          apiVersion: S.optional(S.String),
+          kind: S.optional(S.String),
+          name: S.String,
+          preferredVersion: S.optional(__S(225, __c14, 1)),
+          serverAddressByClientCIDRs: S.optional(__S(227, __c14, 3)),
+          versions: __S(228, __c14, 4),
+        }),
+      ).annotate({
+        identifier: "IoK8sApimachineryPkgApisMetaV1APIGroup",
+      });
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({}).pipe(T.Http({ method: "GET", uri: "/apis/events.k8s.io/v1/", code: 200 })),
+      ).annotate({
+        identifier: "GetEventsV1APIResourcesRequest",
+      });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          categories: S.optional(__S(128, __c8, 0)),
+          group: S.optional(S.String),
+          kind: S.String,
+          name: S.String,
+          namespaced: S.Boolean,
+          shortNames: S.optional(__S(128, __c8, 0)),
+          singularName: S.String,
+          storageVersionHash: S.optional(S.String),
+          verbs: __S(128, __c8, 0),
+          version: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier: "IoK8sApimachineryPkgApisMetaV1APIResource",
+      });
+    case 2:
+      return S.Array(__S(241, __c15, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          apiVersion: S.optional(S.String),
+          groupVersion: S.String,
+          kind: S.optional(S.String),
+          resources: __S(242, __c15, 2),
+        }),
+      ).annotate({
+        identifier: "IoK8sApimachineryPkgApisMetaV1APIResourceList",
+      });
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          allowWatchBookmarks: S.optional(S.Boolean.pipe(T.Query())),
+          continue: S.optional(S.String.pipe(T.Query())),
+          fieldSelector: S.optional(S.String.pipe(T.Query())),
+          labelSelector: S.optional(S.String.pipe(T.Query())),
+          limit: S.optional(S.Number.pipe(T.Query())),
+          pretty: S.optional(S.String.pipe(T.Query())),
+          resourceVersion: S.optional(S.String.pipe(T.Query())),
+          resourceVersionMatch: S.optional(S.String.pipe(T.Query())),
+          sendInitialEvents: S.optional(S.Boolean.pipe(T.Query())),
+          shardSelector: S.optional(S.String.pipe(T.Query())),
+          timeoutSeconds: S.optional(S.Number.pipe(T.Query())),
+          watch: S.optional(S.Boolean.pipe(T.Query())),
+        }).pipe(T.Http({ method: "GET", uri: "/apis/events.k8s.io/v1/events", code: 200 })),
+      ).annotate({
+        identifier: "ListEventsV1EventForAllNamespacesRequest",
+      });
+  }
+}
+function __c17(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(153, __c9, 9));
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          apiVersion: S.optional(S.String),
+          items: __S(272, __c17, 0),
+          kind: S.optional(S.String),
+          metadata: S.optional(__S(193, __c12, 1)),
+        }),
+      ).annotate({
+        identifier: "IoK8sApiEventsV1EventList",
+      });
+  }
+}
+function __c18(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          namespace: S.String.pipe(T.Label()),
+          pretty: S.optional(S.String.pipe(T.Query())),
+          allowWatchBookmarks: S.optional(S.Boolean.pipe(T.Query())),
+          continue: S.optional(S.String.pipe(T.Query())),
+          fieldSelector: S.optional(S.String.pipe(T.Query())),
+          labelSelector: S.optional(S.String.pipe(T.Query())),
+          limit: S.optional(S.Number.pipe(T.Query())),
+          resourceVersion: S.optional(S.String.pipe(T.Query())),
+          resourceVersionMatch: S.optional(S.String.pipe(T.Query())),
+          sendInitialEvents: S.optional(S.Boolean.pipe(T.Query())),
+          shardSelector: S.optional(S.String.pipe(T.Query())),
+          timeoutSeconds: S.optional(S.Number.pipe(T.Query())),
+          watch: S.optional(S.Boolean.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/apis/events.k8s.io/v1/namespaces/{namespace}/events",
+            code: 200,
+          }),
+        ),
+      ).annotate({
+        identifier: "ListEventsV1NamespacedEventRequest",
+      });
+  }
+}
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));

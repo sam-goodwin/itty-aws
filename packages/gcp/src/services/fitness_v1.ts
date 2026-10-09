@@ -462,8 +462,8 @@ export const aggregateUsersDataset: API.OperationMethod<
   AggregateUsersDatasetError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(8, __c1, 0) as any as S.Schema<AggregateUsersDatasetRequest>,
-  output: __S(22, __c2, 6) as any as S.Schema<AggregateResponse>,
+  input: __S(119, __c7, 7) as any as S.Schema<AggregateUsersDatasetRequest>,
+  output: __S(123, __c7, 11) as any as S.Schema<AggregateResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -477,8 +477,8 @@ export const createUsersDataSources: API.OperationMethod<
   CreateUsersDataSourcesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(28, __c3, 4) as any as S.Schema<CreateUsersDataSourcesRequest>,
-  output: __S(27, __c3, 3) as any as S.Schema<DataSource>,
+  input: __S(208, __c13, 0) as any as S.Schema<CreateUsersDataSourcesRequest>,
+  output: __S(228, __c14, 4) as any as S.Schema<DataSource>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -492,8 +492,8 @@ export const deleteUsersDataSources: API.OperationMethod<
   DeleteUsersDataSourcesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(29, __c3, 5) as any as S.Schema<DeleteUsersDataSourcesRequest>,
-  output: __S(27, __c3, 3) as any as S.Schema<DataSource>,
+  input: __S(240, __c15, 0) as any as S.Schema<DeleteUsersDataSourcesRequest>,
+  output: __S(228, __c14, 4) as any as S.Schema<DataSource>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -512,8 +512,8 @@ export const deleteUsersDataSourcesDatasets: API.OperationMethod<
   DeleteUsersDataSourcesDatasetsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(30, __c3, 6) as any as S.Schema<DeleteUsersDataSourcesDatasetsRequest>,
-  output: __S(31, __c3, 7) as any as S.Schema<DeleteUsersDataSourcesDatasetsResponse>,
+  input: __S(256, __c16, 0) as any as S.Schema<DeleteUsersDataSourcesDatasetsRequest>,
+  output: __S(257, __c16, 1) as any as S.Schema<DeleteUsersDataSourcesDatasetsResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -527,8 +527,8 @@ export const deleteUsersSessions: API.OperationMethod<
   DeleteUsersSessionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(32, __c4, 0) as any as S.Schema<DeleteUsersSessionsRequest>,
-  output: __S(33, __c4, 1) as any as S.Schema<DeleteUsersSessionsResponse>,
+  input: __S(272, __c17, 0) as any as S.Schema<DeleteUsersSessionsRequest>,
+  output: __S(273, __c17, 1) as any as S.Schema<DeleteUsersSessionsResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -542,8 +542,8 @@ export const getUsersDataSources: API.OperationMethod<
   GetUsersDataSourcesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(34, __c4, 2) as any as S.Schema<GetUsersDataSourcesRequest>,
-  output: __S(27, __c3, 3) as any as S.Schema<DataSource>,
+  input: __S(288, __c18, 0) as any as S.Schema<GetUsersDataSourcesRequest>,
+  output: __S(228, __c14, 4) as any as S.Schema<DataSource>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -558,8 +558,8 @@ export const getUsersDataSourcesDatasets: API.PaginatedOperationMethod<
   GcpOpContext,
   Dataset
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(35, __c4, 3) as any as S.Schema<GetUsersDataSourcesDatasetsRequest>,
-  output: __S(18, __c2, 2) as any as S.Schema<Dataset>,
+  input: __S(0, __c0, 0) as any as S.Schema<GetUsersDataSourcesDatasetsRequest>,
+  output: __S(144, __c9, 0) as any as S.Schema<Dataset>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -574,8 +574,8 @@ export const listUsersDataSources: API.OperationMethod<
   ListUsersDataSourcesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(37, __c4, 5) as any as S.Schema<ListUsersDataSourcesRequest>,
-  output: __S(39, __c4, 7) as any as S.Schema<ListDataSourcesResponse>,
+  input: __S(17, __c1, 1) as any as S.Schema<ListUsersDataSourcesRequest>,
+  output: __S(19, __c1, 3) as any as S.Schema<ListDataSourcesResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -590,8 +590,8 @@ export const listUsersDataSourcesDataPointChanges: API.PaginatedOperationMethod<
   GcpOpContext,
   ListDataPointChangesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(40, __c5, 0) as any as S.Schema<ListUsersDataSourcesDataPointChangesRequest>,
-  output: __S(41, __c5, 1) as any as S.Schema<ListDataPointChangesResponse>,
+  input: __S(32, __c2, 0) as any as S.Schema<ListUsersDataSourcesDataPointChangesRequest>,
+  output: __S(33, __c2, 1) as any as S.Schema<ListDataPointChangesResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -607,8 +607,8 @@ export const listUsersSessions: API.PaginatedOperationMethod<
   GcpOpContext,
   ListSessionsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(43, __c5, 3) as any as S.Schema<ListUsersSessionsRequest>,
-  output: __S(45, __c5, 5) as any as S.Schema<ListSessionsResponse>,
+  input: __S(49, __c3, 1) as any as S.Schema<ListUsersSessionsRequest>,
+  output: __S(51, __c3, 3) as any as S.Schema<ListSessionsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -628,8 +628,8 @@ export const patchUsersDataSourcesDatasets: API.OperationMethod<
   PatchUsersDataSourcesDatasetsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(46, __c5, 6) as any as S.Schema<PatchUsersDataSourcesDatasetsRequest>,
-  output: __S(18, __c2, 2) as any as S.Schema<Dataset>,
+  input: __S(64, __c4, 0) as any as S.Schema<PatchUsersDataSourcesDatasetsRequest>,
+  output: __S(144, __c9, 0) as any as S.Schema<Dataset>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -643,8 +643,8 @@ export const updateUsersDataSources: API.OperationMethod<
   UpdateUsersDataSourcesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(47, __c5, 7) as any as S.Schema<UpdateUsersDataSourcesRequest>,
-  output: __S(27, __c3, 3) as any as S.Schema<DataSource>,
+  input: __S(80, __c5, 0) as any as S.Schema<UpdateUsersDataSourcesRequest>,
+  output: __S(228, __c14, 4) as any as S.Schema<DataSource>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -658,8 +658,8 @@ export const updateUsersSessions: API.OperationMethod<
   UpdateUsersSessionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(48, __c6, 0) as any as S.Schema<UpdateUsersSessionsRequest>,
-  output: __S(10, __c1, 2) as any as S.Schema<Session>,
+  input: __S(96, __c6, 0) as any as S.Schema<UpdateUsersSessionsRequest>,
+  output: __S(160, __c10, 0) as any as S.Schema<Session>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -669,308 +669,6 @@ export const updateUsersSessions: API.OperationMethod<
 function __c0(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() =>
-        S.Struct({
-          minDurationMillis: S.optional(S.String),
-          activityDataSourceId: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "BucketByActivity" });
-    case 1:
-      return S.Array(S.String);
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          type: S.optional(S.String),
-          timeZoneId: S.optional(S.String),
-          value: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "BucketByTimePeriod" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          durationMillis: S.optional(S.String),
-          period: S.optional(__S(2, __c0, 2)),
-        }),
-      ).annotate({ identifier: "BucketByTime" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          dataSourceId: S.optional(S.String),
-          dataTypeName: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "AggregateBy" });
-    case 5:
-      return S.Array(__S(4, __c0, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          minDurationMillis: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "BucketBySession" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          bucketByActivityType: S.optional(__S(0, __c0, 0)),
-          bucketByActivitySegment: S.optional(__S(0, __c0, 0)),
-          filteredDataQualityStandard: S.optional(__S(1, __c0, 1)),
-          bucketByTime: S.optional(__S(3, __c0, 3)),
-          startTimeMillis: S.optional(S.String),
-          endTimeMillis: S.optional(S.String),
-          aggregateBy: S.optional(__S(5, __c0, 5)),
-          bucketBySession: S.optional(__S(6, __c0, 6)),
-        }),
-      ).annotate({ identifier: "AggregateRequest" });
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          userId: S.String.pipe(T.Label()),
-          body: S.optional(__S(7, __c0, 7).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "{userId}/dataset:aggregate",
-            baseUrl: "https://fitness.googleapis.com/fitness/v1/users/",
-          }),
-        ),
-      ).annotate({
-        identifier: "AggregateUsersDatasetRequest",
-      });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          packageName: S.optional(S.String),
-          name: S.optional(S.String),
-          version: S.optional(S.String),
-          detailsUrl: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Application" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.optional(S.String),
-          id: S.optional(S.String),
-          application: S.optional(__S(9, __c1, 1)),
-          startTimeMillis: S.optional(S.String),
-          activeTimeMillis: S.optional(S.String),
-          activityType: S.optional(S.Number),
-          description: S.optional(S.String),
-          modifiedTimeMillis: S.optional(S.String),
-          endTimeMillis: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Session" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          fpVal: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "MapValue" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          key: S.optional(S.String),
-          value: S.optional(__S(11, __c1, 3)),
-        }),
-      ).annotate({ identifier: "ValueMapValEntry" });
-    case 5:
-      return S.Array(__S(12, __c1, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          fpVal: S.optional(S.Number),
-          mapVal: S.optional(__S(13, __c1, 5)),
-          stringVal: S.optional(S.String),
-          intVal: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "Value" });
-    case 7:
-      return S.Array(__S(14, __c1, 6));
-  }
-}
-function __c2(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          value: S.optional(__S(15, __c1, 7)),
-          rawTimestampNanos: S.optional(S.String),
-          startTimeNanos: S.optional(S.String),
-          computationTimeMillis: S.optional(S.String),
-          originDataSourceId: S.optional(S.String),
-          endTimeNanos: S.optional(S.String),
-          dataTypeName: S.optional(S.String),
-          modifiedTimeMillis: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "DataPoint" });
-    case 1:
-      return S.Array(__S(16, __c2, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          point: S.optional(__S(17, __c2, 1)),
-          dataSourceId: S.optional(S.String),
-          minStartTimeNs: S.optional(S.String),
-          nextPageToken: S.optional(S.String),
-          maxEndTimeNs: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Dataset" });
-    case 3:
-      return S.Array(__S(18, __c2, 2));
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          activity: S.optional(S.Number),
-          endTimeMillis: S.optional(S.String),
-          session: S.optional(__S(10, __c1, 2)),
-          dataset: S.optional(__S(19, __c2, 3)),
-          startTimeMillis: S.optional(S.String),
-          type: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "AggregateBucket" });
-    case 5:
-      return S.Array(__S(20, __c2, 4));
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          bucket: S.optional(__S(21, __c2, 5)),
-        }),
-      ).annotate({ identifier: "AggregateResponse" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          version: S.optional(S.String),
-          type: S.optional(S.String),
-          model: S.optional(S.String),
-          manufacturer: S.optional(S.String),
-          uid: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "Device" });
-  }
-}
-function __c3(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          format: S.optional(S.String),
-          optional: S.optional(S.Boolean),
-          name: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "DataTypeField" });
-    case 1:
-      return S.Array(__S(24, __c3, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          field: S.optional(__S(25, __c3, 1)),
-          name: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "DataType" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          dataStreamId: S.optional(S.String),
-          application: S.optional(__S(9, __c1, 1)),
-          device: S.optional(__S(23, __c2, 7)),
-          dataType: S.optional(__S(26, __c3, 2)),
-          name: S.optional(S.String),
-          dataStreamName: S.optional(S.String),
-          type: S.optional(S.String),
-          dataQualityStandard: S.optional(__S(1, __c0, 1)),
-        }),
-      ).annotate({ identifier: "DataSource" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          userId: S.String.pipe(T.Label()),
-          body: S.optional(__S(27, __c3, 3).pipe(T.HttpBody())),
-        }).pipe(
-          T.Http({
-            method: "POST",
-            uri: "{userId}/dataSources",
-            baseUrl: "https://fitness.googleapis.com/fitness/v1/users/",
-          }),
-        ),
-      ).annotate({
-        identifier: "CreateUsersDataSourcesRequest",
-      });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          userId: S.String.pipe(T.Label()),
-          dataSourceId: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "{userId}/dataSources/{dataSourceId}",
-            baseUrl: "https://fitness.googleapis.com/fitness/v1/users/",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteUsersDataSourcesRequest",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          dataSourceId: S.String.pipe(T.Label()),
-          datasetId: S.String.pipe(T.Label()),
-          userId: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "{userId}/dataSources/{dataSourceId}/datasets/{datasetId}",
-            baseUrl: "https://fitness.googleapis.com/fitness/v1/users/",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteUsersDataSourcesDatasetsRequest",
-      });
-    case 7:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "DeleteUsersDataSourcesDatasetsResponse",
-      });
-  }
-}
-function __c4(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          userId: S.String.pipe(T.Label()),
-          sessionId: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "DELETE",
-            uri: "{userId}/sessions/{sessionId}",
-            baseUrl: "https://fitness.googleapis.com/fitness/v1/users/",
-          }),
-        ),
-      ).annotate({
-        identifier: "DeleteUsersSessionsRequest",
-      });
-    case 1:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "DeleteUsersSessionsResponse",
-      });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          userId: S.String.pipe(T.Label()),
-          dataSourceId: S.String.pipe(T.Label()),
-        }).pipe(
-          T.Http({
-            method: "GET",
-            uri: "{userId}/dataSources/{dataSourceId}",
-            baseUrl: "https://fitness.googleapis.com/fitness/v1/users/",
-          }),
-        ),
-      ).annotate({
-        identifier: "GetUsersDataSourcesRequest",
-      });
-    case 3:
       return S.suspend(() =>
         S.Struct({
           datasetId: S.String.pipe(T.Label()),
@@ -988,12 +686,16 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "GetUsersDataSourcesDatasetsRequest",
       });
-    case 4:
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
       return S.Array(S.String);
-    case 5:
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          dataTypeName: S.optional(__S(36, __c4, 4).pipe(T.Query())),
+          dataTypeName: S.optional(__S(16, __c1, 0).pipe(T.Query())),
           userId: S.String.pipe(T.Label()),
         }).pipe(
           T.Http({
@@ -1005,17 +707,17 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "ListUsersDataSourcesRequest",
       });
-    case 6:
-      return S.Array(__S(27, __c3, 3));
-    case 7:
+    case 2:
+      return S.Array(__S(228, __c14, 4));
+    case 3:
       return S.suspend(() =>
         S.Struct({
-          dataSource: S.optional(__S(38, __c4, 6)),
+          dataSource: S.optional(__S(18, __c1, 2)),
         }),
       ).annotate({ identifier: "ListDataSourcesResponse" });
   }
 }
-function __c5(j: number): any {
+function __c2(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1037,17 +739,21 @@ function __c5(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          insertedDataPoint: S.optional(__S(17, __c2, 1)),
+          insertedDataPoint: S.optional(__S(134, __c8, 6)),
           dataSourceId: S.optional(S.String),
           nextPageToken: S.optional(S.String),
-          deletedDataPoint: S.optional(__S(17, __c2, 1)),
+          deletedDataPoint: S.optional(__S(134, __c8, 6)),
         }),
       ).annotate({
         identifier: "ListDataPointChangesResponse",
       });
-    case 2:
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
       return S.Array(S.Number);
-    case 3:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           endTime: S.optional(S.String.pipe(T.Query())),
@@ -1055,7 +761,7 @@ function __c5(j: number): any {
           userId: S.String.pipe(T.Label()),
           includeDeleted: S.optional(S.Boolean.pipe(T.Query())),
           startTime: S.optional(S.String.pipe(T.Query())),
-          activityType: S.optional(__S(42, __c5, 2).pipe(T.Query())),
+          activityType: S.optional(__S(48, __c3, 0).pipe(T.Query())),
         }).pipe(
           T.Http({
             method: "GET",
@@ -1064,24 +770,28 @@ function __c5(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ListUsersSessionsRequest" });
-    case 4:
-      return S.Array(__S(10, __c1, 2));
-    case 5:
+    case 2:
+      return S.Array(__S(160, __c10, 0));
+    case 3:
       return S.suspend(() =>
         S.Struct({
           hasMoreData: S.optional(S.Boolean),
-          session: S.optional(__S(44, __c5, 4)),
+          session: S.optional(__S(50, __c3, 2)),
           nextPageToken: S.optional(S.String),
-          deletedSession: S.optional(__S(44, __c5, 4)),
+          deletedSession: S.optional(__S(50, __c3, 2)),
         }),
       ).annotate({ identifier: "ListSessionsResponse" });
-    case 6:
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           userId: S.String.pipe(T.Label()),
           dataSourceId: S.String.pipe(T.Label()),
           datasetId: S.String.pipe(T.Label()),
-          body: S.optional(__S(18, __c2, 2).pipe(T.HttpBody())),
+          body: S.optional(__S(144, __c9, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -1092,12 +802,16 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "PatchUsersDataSourcesDatasetsRequest",
       });
-    case 7:
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           userId: S.String.pipe(T.Label()),
           dataSourceId: S.String.pipe(T.Label()),
-          body: S.optional(__S(27, __c3, 3).pipe(T.HttpBody())),
+          body: S.optional(__S(228, __c14, 4).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -1117,7 +831,7 @@ function __c6(j: number): any {
         S.Struct({
           sessionId: S.String.pipe(T.Label()),
           userId: S.String.pipe(T.Label()),
-          body: S.optional(__S(10, __c1, 2).pipe(T.HttpBody())),
+          body: S.optional(__S(160, __c10, 0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -1130,7 +844,340 @@ function __c6(j: number): any {
       });
   }
 }
-
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          minDurationMillis: S.optional(S.String),
+          activityDataSourceId: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "BucketByActivity" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          type: S.optional(S.String),
+          timeZoneId: S.optional(S.String),
+          value: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "BucketByTimePeriod" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          durationMillis: S.optional(S.String),
+          period: S.optional(__S(113, __c7, 1)),
+        }),
+      ).annotate({ identifier: "BucketByTime" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          dataSourceId: S.optional(S.String),
+          dataTypeName: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "AggregateBy" });
+    case 4:
+      return S.Array(__S(115, __c7, 3));
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          minDurationMillis: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "BucketBySession" });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          bucketByActivityType: S.optional(__S(112, __c7, 0)),
+          bucketByActivitySegment: S.optional(__S(112, __c7, 0)),
+          filteredDataQualityStandard: S.optional(__S(192, __c12, 0)),
+          bucketByTime: S.optional(__S(114, __c7, 2)),
+          startTimeMillis: S.optional(S.String),
+          endTimeMillis: S.optional(S.String),
+          aggregateBy: S.optional(__S(116, __c7, 4)),
+          bucketBySession: S.optional(__S(117, __c7, 5)),
+        }),
+      ).annotate({ identifier: "AggregateRequest" });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          userId: S.String.pipe(T.Label()),
+          body: S.optional(__S(118, __c7, 6).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "{userId}/dataset:aggregate",
+            baseUrl: "https://fitness.googleapis.com/fitness/v1/users/",
+          }),
+        ),
+      ).annotate({
+        identifier: "AggregateUsersDatasetRequest",
+      });
+    case 8:
+      return S.Array(__S(144, __c9, 0));
+    case 9:
+      return S.suspend(() =>
+        S.Struct({
+          activity: S.optional(S.Number),
+          endTimeMillis: S.optional(S.String),
+          session: S.optional(__S(160, __c10, 0)),
+          dataset: S.optional(__S(120, __c7, 8)),
+          startTimeMillis: S.optional(S.String),
+          type: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "AggregateBucket" });
+    case 10:
+      return S.Array(__S(121, __c7, 9));
+    case 11:
+      return S.suspend(() =>
+        S.Struct({
+          bucket: S.optional(__S(122, __c7, 10)),
+        }),
+      ).annotate({ identifier: "AggregateResponse" });
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          fpVal: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "MapValue" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          key: S.optional(S.String),
+          value: S.optional(__S(128, __c8, 0)),
+        }),
+      ).annotate({ identifier: "ValueMapValEntry" });
+    case 2:
+      return S.Array(__S(129, __c8, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          fpVal: S.optional(S.Number),
+          mapVal: S.optional(__S(130, __c8, 2)),
+          stringVal: S.optional(S.String),
+          intVal: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "Value" });
+    case 4:
+      return S.Array(__S(131, __c8, 3));
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          value: S.optional(__S(132, __c8, 4)),
+          rawTimestampNanos: S.optional(S.String),
+          startTimeNanos: S.optional(S.String),
+          computationTimeMillis: S.optional(S.String),
+          originDataSourceId: S.optional(S.String),
+          endTimeNanos: S.optional(S.String),
+          dataTypeName: S.optional(S.String),
+          modifiedTimeMillis: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "DataPoint" });
+    case 6:
+      return S.Array(__S(133, __c8, 5));
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          point: S.optional(__S(134, __c8, 6)),
+          dataSourceId: S.optional(S.String),
+          minStartTimeNs: S.optional(S.String),
+          nextPageToken: S.optional(S.String),
+          maxEndTimeNs: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Dataset" });
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.optional(S.String),
+          id: S.optional(S.String),
+          application: S.optional(__S(176, __c11, 0)),
+          startTimeMillis: S.optional(S.String),
+          activeTimeMillis: S.optional(S.String),
+          activityType: S.optional(S.Number),
+          description: S.optional(S.String),
+          modifiedTimeMillis: S.optional(S.String),
+          endTimeMillis: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Session" });
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          packageName: S.optional(S.String),
+          name: S.optional(S.String),
+          version: S.optional(S.String),
+          detailsUrl: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Application" });
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          userId: S.String.pipe(T.Label()),
+          body: S.optional(__S(228, __c14, 4).pipe(T.HttpBody())),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "{userId}/dataSources",
+            baseUrl: "https://fitness.googleapis.com/fitness/v1/users/",
+          }),
+        ),
+      ).annotate({
+        identifier: "CreateUsersDataSourcesRequest",
+      });
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          version: S.optional(S.String),
+          type: S.optional(S.String),
+          model: S.optional(S.String),
+          manufacturer: S.optional(S.String),
+          uid: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Device" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          format: S.optional(S.String),
+          optional: S.optional(S.Boolean),
+          name: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "DataTypeField" });
+    case 2:
+      return S.Array(__S(225, __c14, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          field: S.optional(__S(226, __c14, 2)),
+          name: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "DataType" });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          dataStreamId: S.optional(S.String),
+          application: S.optional(__S(176, __c11, 0)),
+          device: S.optional(__S(224, __c14, 0)),
+          dataType: S.optional(__S(227, __c14, 3)),
+          name: S.optional(S.String),
+          dataStreamName: S.optional(S.String),
+          type: S.optional(S.String),
+          dataQualityStandard: S.optional(__S(192, __c12, 0)),
+        }),
+      ).annotate({ identifier: "DataSource" });
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          userId: S.String.pipe(T.Label()),
+          dataSourceId: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "{userId}/dataSources/{dataSourceId}",
+            baseUrl: "https://fitness.googleapis.com/fitness/v1/users/",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteUsersDataSourcesRequest",
+      });
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          dataSourceId: S.String.pipe(T.Label()),
+          datasetId: S.String.pipe(T.Label()),
+          userId: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "{userId}/dataSources/{dataSourceId}/datasets/{datasetId}",
+            baseUrl: "https://fitness.googleapis.com/fitness/v1/users/",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteUsersDataSourcesDatasetsRequest",
+      });
+    case 1:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "DeleteUsersDataSourcesDatasetsResponse",
+      });
+  }
+}
+function __c17(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          userId: S.String.pipe(T.Label()),
+          sessionId: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "{userId}/sessions/{sessionId}",
+            baseUrl: "https://fitness.googleapis.com/fitness/v1/users/",
+          }),
+        ),
+      ).annotate({
+        identifier: "DeleteUsersSessionsRequest",
+      });
+    case 1:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "DeleteUsersSessionsResponse",
+      });
+  }
+}
+function __c18(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          userId: S.String.pipe(T.Label()),
+          dataSourceId: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "{userId}/dataSources/{dataSourceId}",
+            baseUrl: "https://fitness.googleapis.com/fitness/v1/users/",
+          }),
+        ),
+      ).annotate({
+        identifier: "GetUsersDataSourcesRequest",
+      });
+  }
+}
 // Schema table: entry i is schema j of builder f, made on first reach.
 function __S(i: number, f: (j: number) => unknown, j: number): any {
   return (__s[i] ??= __L.at(f, j));
